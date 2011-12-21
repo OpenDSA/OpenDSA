@@ -1,7 +1,7 @@
 <p class="footertext">
 <div align="center">
 <p>
-Module created on <ODSAdate> at <ODSAtime>.
+Module created <ODSAdate> at <ODSAtime>.
 </p>
 <a rel="license"
 href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">
@@ -22,3 +22,6 @@ Commons Attribution-Noncommercial-Share Alike 3.0 United States
 License</a>.
 </div>
 </p>
+
+</body>
+</html>

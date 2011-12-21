@@ -1,3 +1,31 @@
+
+\subsection{A Binary Tree Node ADT}
+\label{BinADT}
+
+\index{binary tree!node|(}
+Just as a linked list is comprised of a collection of link objects, a
+tree is comprised of a collection of node objects.
+Figure~\ref{BinNodeADT} shows an ADT for binary tree nodes, called
+\Cref{BinNode}.\index{abstract data type (ADT)}
+This class will be used by some of the binary tree structures presented
+later.
+Class \Cref{BinNode} is a \Gen\ with parameter \Cref{E}, which
+is the type for the data record stored in the node.
+Member functions are provided that set or return the element value,
+set or return a \pointref\ to the left child,
+set or return a \pointref\ to the right child,
+or indicate whether the node is a leaf.
+
+\begin{figure}
+\xprogfig{BinNode.book}
+\vspace{-\bigskipamount}
+\vspace{-\medskipamount}
+\capt{4.5in}{A binary tree node ADT}
+{A binary tree node ADT.}{BinNodeADT}
+\end{figure}
+\index{binary tree!node|)}
+
+
 \section{Binary Tree Traversals}
 \label{BinTravers}
 
