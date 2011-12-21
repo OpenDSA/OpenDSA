@@ -82,7 +82,7 @@ any node that has at least one non-empty child.
 </p>
 
 <center>
-<img src="BinExamp.png" alt="An example binary tree" />
+<img src="Images/BinExamp.png" alt="An example binary tree" />
 </center>
 
 <p class="caption">
@@ -106,7 +106,7 @@ The height of this tree is 4.
 </p>
 
 <center>
-<img src="BinDiff.png" alt="Two different binary trees" />
+<img src="Images/BinDiff.png" alt="Two different binary trees" />
 </center>
 
 <p class="caption">
@@ -143,7 +143,7 @@ The bottom level has its nodes filled in from the left side.
 </p>
 
 <center>
-<img src="FullComp.png" alt="Full and complete binary trees" />
+<img src="Images/FullComp.png" alt="Full and complete binary trees" />
 </center>
 
 <p class="caption">
