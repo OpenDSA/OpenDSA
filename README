@@ -1,3 +1,6 @@
 This is the working directory for the OpenDSA project.
 
 Modules: The source directory for .mod files
+
+To check this out:
+  git clone git:github.com/cashaffer/OpenDSA.git OpenDSA
