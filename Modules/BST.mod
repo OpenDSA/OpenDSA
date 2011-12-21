@@ -1,6 +1,8 @@
 <ODSAtitle "Binary Search Trees">
 <ODSAprereq "BinTreeImp">
 
+<div id="module">
+
 Section~\ref{Dictionary} presented the\index{bst@BST|(}
 dictionary ADT,\index{abstract data type (ADT)} along with
 dictionary implementations based on sorted and unsorted lists.
@@ -410,3 +412,5 @@ Other search trees\index{search trees} are guaranteed to remain
 balanced, such as the \TTtree\ of
 Section~\ref{TTTree}.\index{two-three@\TTtree}
 \index{bst@BST|)}
+
+</div>

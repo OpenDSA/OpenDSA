@@ -1,0 +1,72 @@
+Notes on defining modules for OpenDSA
+
+An OpenDSA module is made by creating a .mod file.
+The OpenDSA Module Preprocessor (OMP) will convert a .mod file into a
+proper HTML file.
+Actually, OMP works on a collection of .mod files
+to support any necessary crossreferences and linking.
+
+Organization:
+OMP works on a directory or folder that contains the .mod files.
+It should also contain files "Header.txt" and "Footer.txt".
+File "Header.txt" will be placed (with appropriate processing)
+at the head of each .mod file, and "Footer.txt" will be
+placed at the end of each .mod file.
+
+External variables:
+
+A collection has an external variable {collection} (given as a
+parameter to the preprocessor) that gives the title for the collection
+(i.e., the "book" or "course" title when everything is bound together).
+
+{collectionURL} is the base URL for the collection. This is also given
+as a parameter to the preprocessor.
+
+Tags:
+
+All tags are of the form ODSAxxx.
+OMP works by going through the collection of .mod files looking for
+ODSA tags, and replaces each one as appropriate.
+OMP will also attach a header block and a footer block to the file.
+
+<ODSAsettitle "{title}"> defines the title of the module.
+This will automatically appear at the top of the module within
+<h1></h1> tags.
+
+<ODSAtitle> is replaced by the defined title of the current module.
+This is used in Header.txt to help set the page title.
+<ODSAtitle "{module}"> is replaced by the defined title of the
+specified {module}.
+
+<ODSAcollection> is replaced by the value of {collection}.
+This is used in Header.txt.
+
+<ODSAdate> is replaced by the current date.
+This is used in Footer.txt.
+
+<ODSAtime> is replaced by the current tiem.
+This is used in Footer.txt.
+
+<ODSAprereq "{module}"> defines {module} to be a prerequisite for the
+current module in the Knowledge Map.
+{module} must be a file name for some selected module in the
+collection.
+
+<ODSAref "{module}"> defines a link to another module.
+{module} must be a file name for some selected module in the
+collection.
+The result will be to place the following text into the HTML file:
+"<a href="{collectionURL}/module.html">{module.ODSAtitle}".
+
+<ODSAdef "{word}"> defines a word or phrase to add to the glossary.
+The glossary is a separate file that is created as part of processing
+the .mod file collection.
+Each word in the glossary appears along with its module tite,
+and has a link back to the point in the module
+where the OSDAdef was placed.
+In the .mod file, all it does is put <b></b> tags around {word}.
+It is OK if the same word or phrase is "defined" multiple times.
+The glossary terms should appear in alphabetical order.
+
+<ODSAif "{module}">
+</ODSAif>

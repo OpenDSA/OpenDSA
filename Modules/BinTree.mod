@@ -1,19 +1,18 @@
-<ODSAtitle "Binary Trees">
+<ODSAsettitle "Binary Trees">
 <ODSAprereq "List">
 <ODSAprereq "LinkedList">
 <ODSAprereq "ArrayBasedList">
 
 <p>
-Lists (see <ODSAref "List">) have a fundamental
-limitation:
+Lists have a fundamental limitation:
 Either search or insert can be made efficient, but not both at the
 same time.
 For example, a linked list representation
-(<ODSAref "LinkedList">)
+(Module <ODSAref "LinkedList">)
 can support fast insert
 (just stick it at the end), but does not support fast search.
 An array-based list
-(<ODSAref "ArrayBasedList">
+(Module <ODSAref "ArrayBasedList">
 can support binary search, but this requires that
 the insert operation can keep the elements sorted.
 </p>
@@ -31,27 +30,25 @@ or organizing the information needed to drive data compression
 algorithms.
 </p>
 
-<ODSAif "List">
-<p>
-This is where I talk about lists.
-</p>
-</ODSAif>
-
 <p>
 This module presents definitions and some key properties
 for binary trees.
-<ODSAref "BinTreeTraversal">
+Module <ODSAref "BinTreeTraversal">
 discusses how to process all nodes of the
 binary tree in an organized manner.
-<ODSAref "BinTreeImp">
+<ODSAif "BinTreeImp">
+Module <ODSAref "BinTreeImp">
 presents various methods for implementing binary
 trees and their nodes.
-Modules <ODSAref "BST">, <ODSAref "Heap">, and <ODSAref "Huffman">
-present three examples of binary trees used in specific applications.
+</ODSAif>
+Other modules present examples of binary trees used in specific
+applications.
 The Binary Search Tree (BST) is used for implementing dictionaries.
 Heaps are used for implementing priority queues.
+<ODSAif "Huffman">
 Huffman coding trees are used for text compression.
-The BST, heap, and Huffman coding tree each have distinctive
+</ODSAif>
+Each of these trees has distinctive
 structural features that affect their implementation and use.
 </p>
 
