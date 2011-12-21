@@ -4,5 +4,7 @@ Modules: The source directory for .mod files
 
 Doc: Documentation. Currently contains the preprocessor spec.
 
+Images: Images used by the modules.
+
 To check this repository out:
   git clone git://github.com/cashaffer/OpenDSA.git OpenDSA
