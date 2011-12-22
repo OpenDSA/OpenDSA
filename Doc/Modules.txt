@@ -86,3 +86,27 @@ At the place where the <ODSAfig> tag appears, it is replaced with the
 text "Figure {modulenumber}.{figurenumber}".
 The figure can be reference later with an <ODSAref "{label}"> tag, at
 which point it will be replace with "{modulenumber}.{figurenumber}".
+
+<ODSAtable "{label"> defines a label for a table.
+This label is associated with the table counter, which starts at 1
+with each module.
+At the place where the <ODSAfig> tag appears, it is replaced with the
+text "Table {modulenumber}.{tablenumber}".
+The table can be reference later with an <ODSAref "{label}"> tag, at
+which point it will be replace with "{modulenumber}.{tablenumber}".
+
+<ODSAtheorem "{label"> defines a label for a theorem.
+This label is associated with the figure counter, which starts at 1
+with each module.
+At the place where the <ODSAfig> tag appears, it is replaced with the
+text "Theorem {modulenumber}.{theoremnumber}".
+The theorem can be reference later with an <ODSAref "{label}"> tag, at
+which point it will be replace with "{modulenumber}.{theoremnumber}".
+
+<ODSAeq "{label"> defines a label for an equation.
+This label is associated with the equation counter, which starts at 1
+with each module.
+At the place where the <ODSAfig> tag appears, it is replaced with the
+text "Equation {modulenumber}.{equationnumber}".
+The equation can be reference later with an <ODSAref "{label}"> tag, at
+which point it will be replace with "{modulenumber}.{equationnumber}".
