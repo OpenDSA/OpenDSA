@@ -1,7 +1,7 @@
-<ODSAsettitle "Binary Trees">
-<ODSAprereq "List">
-<ODSAprereq "LinkedList">
-<ODSAprereq "ArrayBasedList">
+<ODSAsettitle "Binary Trees" />
+<ODSAprereq "List" />
+<ODSAprereq "LinkedList" />
+<ODSAprereq "ArrayBasedList" />
 
 <p>
 Tree structures enable efficient access and efficient update to
@@ -19,7 +19,7 @@ algorithms.
 <p>
 This module presents definitions and some key properties
 for binary trees.
-Module <ODSAref "BinTreeTraversal">
+Module <ODSAref "BinTreeTraversal" />
 discusses how to process all nodes of the
 binary tree in an organized manner.
 <ODSAif "BinTreeImp">
@@ -86,7 +86,7 @@ any node that has at least one non-empty child.
 </center>
 
 <p class="caption">
-<ODSAfig "BinExamp">
+<ODSAfig "BinExample">
 A binary tree.
 Node <i>A</i> is the root.
 Nodes <i>B</i> and <i>C</i> are <i>A</i>'s children.
@@ -119,7 +119,7 @@ Two different binary trees.
 </p>
 
 <p>
-Figure <ODSAref "BinExamp"> illustrates the various terms used to
+Figure <ODSAref "BinExample"> illustrates the various terms used to
 identify parts of a binary tree.
 Figure <ODSAref "BinDiff"> illustrates an important point regarding the
 structure of binary trees.

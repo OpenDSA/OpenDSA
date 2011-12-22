@@ -1,97 +1,66 @@
+<ODSAsettitle "Binary Tree Traversals">
+<ODSAprereq "BinTree">
+<ODSAprereq "BinTreeNodeADT">
 
-\subsection{A Binary Tree Node ADT}
-\label{BinADT}
-
-\index{binary tree!node|(}
-Just as a linked list is comprised of a collection of link objects, a
-tree is comprised of a collection of node objects.
-Figure~\ref{BinNodeADT} shows an ADT for binary tree nodes, called
-\Cref{BinNode}.\index{abstract data type (ADT)}
-This class will be used by some of the binary tree structures presented
-later.
-Class \Cref{BinNode} is a \Gen\ with parameter \Cref{E}, which
-is the type for the data record stored in the node.
-Member functions are provided that set or return the element value,
-set or return a \pointref\ to the left child,
-set or return a \pointref\ to the right child,
-or indicate whether the node is a leaf.
-
-\begin{figure}
-\xprogfig{BinNode.book}
-\vspace{-\bigskipamount}
-\vspace{-\medskipamount}
-\capt{4.5in}{A binary tree node ADT}
-{A binary tree node ADT.}{BinNodeADT}
-\end{figure}
-\index{binary tree!node|)}
-
-
-\section{Binary Tree Traversals}
-\label{BinTravers}
-
-\index{traversal!binary tree|(}
-Often we wish to process a binary tree by ``visiting'' each of its
+<p>
+Often we wish to process a binary tree by "visiting" each of its
 nodes, each time performing a specific action such as printing the
 contents of the node.
 Any process for visiting all of the nodes in some order is
-called a \defit{traversal}.
+called a <ODSAdef "traversal">.
 Any traversal that lists every node in the tree exactly once is
-called an \defit{enumeration}\index{traversal!enumeration} of the
-tree's nodes.
+called an <ODSAdef "enumeration"> of the tree's nodes.
 Some applications do not require that the nodes be visited in any
 particular order as long as each node is visited precisely once.
 For other applications, nodes must be visited in an order that
 preserves some relationship.
 For example, we might wish to make sure that we visit any given node
-\emph{before} we visit its children.
-This is called a \defit{preorder traversal}.
+<i>before</i> we visit its children.
+This is called a <ODSAdef "preorder traversal">.
+</p>
 
-\newpage
-
-\begin{example}
+<p class="example">
 The preorder enumeration for the tree of
-Figure~\ref{BinExample} is
+Figure <ODSAref "BinExample"> is
 
-\vspace{-\medskipamount}
-\[{\rm A B D C E G F H I.}\]
+<br/>
+<b>A B D C E G F H I</b>
 
-\vspace{-\medskipamount}
+<br/>
 The first node printed is the root.
 Then all nodes of the left subtree are printed (in preorder) before
 any node of the right subtree.
-\end{example}
+</p>
 
+<p>
 Alternatively, we might wish to visit each node only
-\emph{after} we visit its children (and their subtrees).
+<i>after</i> we visit its children (and their subtrees).
 For example, this would be necessary if we wish to return all nodes in 
 the tree to free store.
 We would like to delete the children of a node before deleting the
 node itself.
 But to do that requires that the children's children be deleted
 first, and so on.
-This is called a \defit{postorder traversal}.
+This is called a <ODSAdef "postorder traversal">.
+</p>
 
-\begin{example}
-The postorder enumeration for the tree of Figure~\ref{BinExample}
-is \[{\rm D B G E H I F C A.}\]
+<p class="example">
+The postorder enumeration for the tree of Figure <ODSAref "BinExample">
+is <b>D B G E H I F C A</b>.
+</p>
 
-\vspace{-\medskipamount}
-\end{example}
-
-An \defit{inorder traversal} first visits the left child
+An <ODSAdef "inorder traversal" first visits the left child
 (including its entire subtree), then visits the node, and finally
 visits the right child (including its entire
 subtree).
-The binary search tree of Section~\ref{BST} makes use of this
+The binary search tree (see Module <ODSAref "BST"> makes use of this
 traversal to print all nodes in ascending order of value.
+</p>
 
-\begin{example}
-The inorder enumeration for the tree of Figure~\ref{BinExample}
-is \[{\rm B D A G E C H F I.}\]
-
-\vspace{-\smallskipamount}
-\vspace{-\medskipamount}
-\end{example}
+<p class="example">
+The inorder enumeration for the tree of Figure <ODSAref "BinExample">
+is <b>B D A G E C H F I</b>.
+</p>
 
 \index{recursion|(}
 A traversal routine is naturally written as a recursive
