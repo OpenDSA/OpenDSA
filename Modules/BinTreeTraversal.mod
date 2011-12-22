@@ -1,27 +1,27 @@
-<ODSAsettitle "Binary Tree Traversals">
-<ODSAprereq "BinTree">
-<ODSAprereq "BinTreeNodeADT">
+<ODSAsettitle "Binary Tree Traversals" />
+<ODSAprereq "BinTree" />
+<ODSAprereq "BinTreeNodeADT" />
 
 <p>
 Often we wish to process a binary tree by "visiting" each of its
 nodes, each time performing a specific action such as printing the
 contents of the node.
 Any process for visiting all of the nodes in some order is
-called a <ODSAdef "traversal">.
+called a <ODSAdef "traversal" />.
 Any traversal that lists every node in the tree exactly once is
-called an <ODSAdef "enumeration"> of the tree's nodes.
+called an <ODSAdef "enumeration" /> of the tree's nodes.
 Some applications do not require that the nodes be visited in any
 particular order as long as each node is visited precisely once.
 For other applications, nodes must be visited in an order that
 preserves some relationship.
 For example, we might wish to make sure that we visit any given node
 <i>before</i> we visit its children.
-This is called a <ODSAdef "preorder traversal">.
+This is called a <ODSAdef "preorder traversal" />.
 </p>
 
 <p class="example">
 The preorder enumeration for the tree of
-Figure <ODSAref "BinExample"> is
+Figure <ODSAref "BinExample" /> is
 
 <br/>
 <b>A B D C E G F H I</b>
@@ -41,24 +41,25 @@ We would like to delete the children of a node before deleting the
 node itself.
 But to do that requires that the children's children be deleted
 first, and so on.
-This is called a <ODSAdef "postorder traversal">.
+This is called a <ODSAdef "postorder traversal" />.
 </p>
 
 <p class="example">
-The postorder enumeration for the tree of Figure <ODSAref "BinExample">
+The postorder enumeration for the tree of
+Figure <ODSAref "BinExample" />
 is <b>D B G E H I F C A</b>.
 </p>
 
-An <ODSAdef "inorder traversal" first visits the left child
+An <ODSAdef "inorder traversal" /> first visits the left child
 (including its entire subtree), then visits the node, and finally
 visits the right child (including its entire
 subtree).
-The binary search tree (see Module <ODSAref "BST"> makes use of this
+The binary search tree (see Module <ODSAref "BST" />) makes use of this
 traversal to print all nodes in ascending order of value.
 </p>
 
 <p class="example">
-The inorder enumeration for the tree of Figure <ODSAref "BinExample">
+The inorder enumeration for the tree of Figure <ODSAref "BinExample" />
 is <b>B D A G E C H F I</b>.
 </p>
 

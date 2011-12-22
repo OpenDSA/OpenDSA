@@ -1,15 +1,15 @@
 <ODSAtitle "Binary Tree Implementation" />
 <ODSAprereq "BinTree" />
 
-\index{binary tree!node|(}
+<p>
 In this section we examine ways to implement binary tree nodes.
 We begin with some options for pointer-based
 binary tree node implementations.
 Then comes a discussion on techniques for determining the space
-requirements for a given
-implementation.\index{binary tree!space requirements} 
+requirements for a given implementation.
 The section concludes with an introduction to the 
 array-based implementation for complete binary trees.
+</p>
 
 \subsection{Pointer-Based Node Implementations}
 \label{PointerBin}
