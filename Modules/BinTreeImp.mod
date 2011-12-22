@@ -1,5 +1,5 @@
-<ODSAtitle "Binary Tree Implementation">
-<ODSAprereq "BinTree">
+<ODSAtitle "Binary Tree Implementation" />
+<ODSAprereq "BinTree" />
 
 \index{binary tree!node|(}
 In this section we examine ways to implement binary tree nodes.

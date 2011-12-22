@@ -1,10 +1,10 @@
-<ODSAsettitle "Binary Tree Node ADT">
-<ODSAprereq "BinTree">
+<ODSAsettitle "Binary Tree Node ADT" />
+<ODSAprereq "BinTree" />
 
 <p>
 Just as a linked list is comprised of a collection of link objects, a
 tree is comprised of a collection of node objects.
-Figure <ODSAref "BinNodeADT"> shows an ADT for binary tree nodes,
+Figure <ODSAref "BinNodeADT" /> shows an ADT for binary tree nodes,
 called <tt>BinNode</tt>
 This class will be used by some of the binary tree structures
 presented later.
@@ -16,7 +16,23 @@ set or return a pointer to the right child,
 or indicate whether the node is a leaf.
 </p>
 
-<CODE "BinNode.book">
+<pre>
+/** ADT for binary tree nodes */
+public interface BinNode<E> {
+  /** Get and set the element value */
+  public E element();
+  public void setElement(E v);
+
+  /** @return The left child */
+  public BinNode<E> left();
+
+  /** @return The right child */
+  public BinNode<E> right();
+
+  /** @return True if a leaf node, false otherwise */
+  public boolean isLeaf();
+}
+</pre>
 
 <p class="caption">
 <ODSAfig "BinNodeADT">
