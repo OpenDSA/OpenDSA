@@ -1,6 +1,7 @@
 <ODSAsettitle "Binary Tree Traversals" />
 <ODSAprereq "BinTree" />
 <ODSAprereq "BinTreeNodeADT" />
+<ODSAprereq "DesignPatterns" />
 
 <p>
 Often we wish to process a binary tree by "visiting" each of its
@@ -64,106 +65,135 @@ The inorder enumeration for the tree of Figure <ODSAref "BinExample" />
 is <b>B D A G E C H F I</b>.
 </p>
 
-\index{recursion|(}
+<p>
 A traversal routine is naturally written as a recursive
 function.
 Its input parameter is a pointer to a node which we will call
-\Cref{rt} because each node can be viewed as the root of a some
+<tt>rt</tt> because each node can be viewed as the root of a some
 subtree.
 The initial call to the traversal function passes in a pointer to the
 root node of the tree.
-The traversal function visits \Cref{rt} and its children (if any) 
+The traversal function visits <tt>rt</tt> and its children (if any) 
 in the desired order.
-For example, a preorder traversal specifies that \Cref{rt} be
+For example, a preorder traversal specifies that <tt>rt</tt> be
 visited before its children.
 This can easily be implemented as follows.
+</p>
 
-\xproghere{preorder.book}
+<pre>
+void preorder(BinNode rt)
+{
+  if (rt == null) return; // Empty subtree - do nothing
+  visit(rt);              // Process root node
+  preorder(rt.left());    // Process all nodes in left
+  preorder(rt.right());   // Process all nodes in right
+}
+</pre>
 
-\noindent Function \Cref{preorder} first checks that the tree is not
-empty (if it is, then the traversal is done and \Cref{preorder} simply
-returns).
-Otherwise, \Cref{preorder} makes  a call to \Cref{visit},
+<p>
+Function <tt>preorder</tt> first checks that the tree is not
+empty (if it is, then the traversal is done and <tt>preorder</tt>
+simply returns).
+Otherwise, <tt>preorder</tt> makes  a call to <tt>visit</tt>,
 which processes the root node (i.e., prints the value or performs
 whatever computation as required by the application).
-Function \Cref{preorder} is then called recursively on the left
+Function <tt>preorder</tt> is then called recursively on the left
 subtree, which will visit all nodes in that subtree.
-Finally, \Cref{preorder} is called on the right subtree, visiting all
-nodes in the right subtree.
+Finally, <tt>preorder</tt> is called on the right subtree,
+visiting all nodes in the right subtree.
 Postorder and inorder traversals are similar.
 They simply change the order in which the node and its children are
 visited, as appropriate.
+</p>
 
+<p>
 An important decision in the implementation of any recursive function
 on trees is when to check for an empty subtree.
-Function \Cref{preorder} first checks to see if the value for
-\Cref{root} is \NULL.
+Function <tt>preorder</tt> first checks to see if the value for
+<tt>rt</tt> is <tt>NULL</tt>.
 If not, it will recursively call itself on the left and right children 
-of \Cref{root}.
-In other words, \Cref{preorder} makes no attempt to avoid calling
+of <tt>rt</tt>.
+In other words, <tt>preorder</tt> makes no attempt to avoid calling
 itself on an empty child.
 Some programmers use an alternate design in which the left and
 right pointers of the current node are checked so that the recursive
 call is made only on non-empty children.
 Such a design typically looks as follows:
+</p>
 
-\xproghere{preorder2.book}
+<pre>
+void preorder2(BinNode rt)
+{
+  visit(rt);
+  if (rt.left() != null) preorder2(rt.left());
+  if (rt.right() != null) preorder2(rt.right());
+}
+</pre>
 
-At first it might appear that \Cref{preorder2} is more efficient
-than \Cref{preorder}, because it makes only half as many recursive
-calls. (Why?)
-On the other hand, \Cref{preorder2} must access the left and right
+<p>
+At first it might appear that <tt>preorder2</tt> is more efficient
+than <tt>preorder</tt>, because it makes only half as many recursive
+calls.On the other hand, <tt>preorder2</tt> must access the left and right
 child pointers twice as often.
 The net result is little or no performance improvement.
+</p>
 
-In reality, the design of \Cref{preorder2} is inferior to
-that of \Cref{preorder} for two reasons.
+<p class="TODO">
+Question:
+Why does preorder 2 make only half as many recursive calls?
+Answer: Because half the pointers are null.
+</p>
+
+<p>
+In reality, the design of <tt>preorder2</tt> is inferior to
+that of <tt>preorder</tt> for two reasons.
 First, while it is not apparent in this simple example,
 for more complex traversals it can become awkward to place the check
-for the \NULL\ pointer in the calling code.
-Even here we had to write two tests for \NULL,
-rather than the one needed by \Cref{preorder}.
-The more important concern with \Cref{preorder2} is that it
+for the <tt>NULL</tt> pointer in the calling code.
+Even here we had to write two tests for <tt>NULL</tt>,
+rather than the one needed by <tt>preorder</tt>.
+The more important concern with <tt>preorder2</tt> is that it
 tends to be error prone.
-While \Cref{preorder2} insures that no recursive
+While <tt>preorder2</tt> insures that no recursive
 calls will be made on empty subtrees, it will fail if the initial call 
-passes in a \NULL\ pointer.
+passes in a <tt>NULL</tt> pointer.
 This would occur if the original tree is empty.
-To avoid the bug, either \Cref{preorder2} needs
-an additional test for a \NULL\ pointer at the beginning
+To avoid the bug, either <tt>preorder2</tt> needs
+an additional test for a <tt>NULL</tt> pointer at the beginning
 (making the subsequent tests redundant after all), or the caller of
-\Cref{preorder2} has a hidden obligation\index{obligations, hidden} to
+<tt>preorder2</tt> has a hidden obligation to
 pass in a non-empty tree, which is unreliable design.
 The net result is that many programmers forget to test for the
 possibility that the empty tree is being traversed.
 By using the first design, which explicitly supports processing of
 empty subtrees, the problem is avoided.
-\index{recursion|)}
+</p>
 
-\index{design pattern!visitor|(}
+<p>
 Another issue to consider when designing a traversal is how to
 define the visitor function that is to be executed on every node.
 One approach is simply to write a new version of the traversal for
 each such visitor function as needed.
 The disadvantage to this is that whatever function does the traversal
-must have access to the \Cref{BinNode} class.
+must have access to the <tt>BinNode</tt> class.
 It is probably better design to permit only the tree class to have
-access to the \Cref{BinNode} class.
+access to the <tt>BinNode</tt> class.
+</p>
 
+<p>
 Another approach is for the tree class to supply a generic traversal
-function which takes the visitor
-\ifthenelse{\boolean{cpp}}{either as a template parameter or}{}
-as a function parameter.
+function which takes the visitor as a function parameter.
 This is known as the
-\defit{visitor design pattern}.\index{design pattern!visitor}
+<ODSAdef "visitor design pattern" \>.
 A major constraint on this approach is that the
-\defit{signature} for all visitor functions, that is, their return
-type and parameters, must be fixed in advance.
+<ODSAdef "signature" \> for all visitor functions, that is,
+their return type and parameters, must be fixed in advance.
 Thus, the designer of the generic traversal function must be able to
-adequately judge what parameters and return type will likely be needed 
+adequately judge what parameters and return type will likely be needed
 by potential visitor functions.
-\index{design pattern!visitor|)}
+</p>
 
+<p>
 Handling information flow between parts of a program can
 be a significant design challenge, especially when dealing with
 recursive functions such as tree traversals.
@@ -174,66 +204,85 @@ We will see many examples throughout the book that illustrate methods
 for passing information in and out of recursive functions as they
 traverse a tree structure.
 Here are a few simple examples.
+</p>
 
+<p>
 First we consider the simple case where a computation requires
 that we communicate information back up the tree to the end user.
+</p>
 
-\begin{example}
+<p class="example">
 We wish to count the number of nodes in a binary tree.
 The key insight is that the total count for any (non-empty) subtree is
 one for the root plus the counts for the left and right subtrees.
 Where do left and right subtree counts come from?
-Calls to function \Cref{count} on the subtrees will compute this for
+Calls to function <tt>count</tt> on the subtrees will compute this for
 us.
-Thus, we can implement \Cref{count} as follows.
+Thus, we can implement <tt>count</tt> as follows.
+</p>
 
-\xprogexamp{count.book}
+<pre>
+int count(BinNode rt) {
+  if (rt == null) return 0;  // Nothing to count
+  return 1 + count(rt.left()) + count(rt.right());
+}
+</pre>
 
-\end{example}
-
-\ifthenelse{\boolean{java}}{\newpage}{}
-
+<p>
 Another problem that occurs when recursively processing data
 collections is controlling which members of the collection will be
 visited.
-For example, some tree ``traversals'' might in fact visit only some
+For example, some tree "traversals" might in fact visit only some
 tree nodes, while avoiding processing of others.
-Exercise~\ref{BinaryTree}.\ref{BSTRangeExer} must solve exactly this
-problem in the context of a binary search tree.
-It must visit only those children of a given node that might possibly
-fall within a given range of values.
+An example is trying to find nodes in a BST whose key value falls
+within a specified range.
+This function must visit only those children of a given node that
+might possibly fall within a given range of values.
 Fortunately, it requires only a simple local calculation to determine
 which child(ren) to visit.
+</p>
 
+<p>
 A more difficult situation is illustrated by the following problem.
 Given an arbitrary binary tree we wish to determine if,
-for every node~\svar{A}, are all nodes in \svar{A}'s left subtree
-less than the value of~\svar{A}, and are all nodes in \svar{A}'s right
-subtree greater than the value of \svar{A}?
-(This happens to be the definition for a binary search tree, described
-in Section~\ref{BST}.)
+for every node <i>A</i>, are all nodes in <i>A</i>'s left subtree
+less than the value of <i>A</i>, and are all nodes in <i>A</i>'s right
+subtree greater than the value of <i>A</i>?
+(This happens to be the definition for a binary search tree,
+see Module <ODSAref "BST" \>.)
 Unfortunately, to make this decision we need to know some context
 that is not available just by looking at the node's parent or children.
-As shown by Figure~\ref{BSTCheckFig},
-it is not enough to verify that \svar{A}'s left child has a value less
-than that of \svar{A}, and that \svar{A}'s right child has a greater value.
-Nor is it enough to verify that \svar{A} has a value consistent with
+As shown by Figure <ODSAref "BSTCheckFig" \>,
+it is not enough to verify that <i>A</i>'s left child has a value less
+than that of <i>A</i>, and that <i>A</i>'s right child has a greater
+value.
+Nor is it enough to verify that <i>A</i> has a value consistent with
 that of its parent.
 In fact, we need to know information about what range of values is
 legal for a given node.
 That information might come from any of the node's ancestors.
 Thus, relevant range information must be passed down the tree.
 We can implement this function as follows.
+</p>
 
-\begin{figure}
-\pdffig{BSTCheckFig}
-\capt{4.5in}{Binary tree checking}
-{To be a binary search tree, the left child of the node with value~40
-must have a value between~20 and~40.}{BSTCheckFig}
-\end{figure}
+<center>
+<img src="Images/BSTCheckFig.png" alt="Binary tree checking" />
+</center>
 
-\xproghere{checkBST.book}
+<p class="caption">
+To be a binary search tree, the left child of the node with value 40
+must have a value between 20 and 40.
+</p>
 
-\index{traversal!binary tree|)}
-
-\ifthenelse{\boolean{java}}{\newpage}{}
+<pre>
+boolean checkBST(BinNode<Integer> rt,
+                 int low, int high) {
+  if (rt == null) return true; // Empty subtree
+  int rootkey = rt.element();
+  if ((rootkey < low) || (rootkey > high))
+    return false; // Out of range
+  if (!checkBST(rt.left(), low, rootkey))
+    return false; // Left side failed
+  return checkBST(rt.right(), rootkey, high);
+}
+</pre>
