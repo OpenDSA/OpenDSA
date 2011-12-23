@@ -22,6 +22,14 @@ def parse(filename, modDir='', targetDir=''):
          str =  re.split('ODSAtitle "', line, flags=re.IGNORECASE)[1]
          title = str.partition('"')[0]
          line = line.replace('<ODSAtitle "'+title+'">','<title>'+title+'</title>') 
+      if '<ODSAsettitle \"' in line:
+         str =  re.split('ODSAsettitle "', line, flags=re.IGNORECASE)[1]
+         title = str.partition('"')[0]
+         line = line.replace('<ODSAsettitle "'+title+'">','<h1>'+title+'</h1>')
+      if '<ODSAdef \"' in line:
+         str =  re.split('ODSAdef "', line, flags=re.IGNORECASE)[1]
+         title = str.partition('"')[0]
+         line = line.replace('<ODSAdef "'+title+'">','<b>'+title+'</b>')
       if '<ODSAref \"' in line:
          str =  re.split('ODSAref "', line, flags=re.IGNORECASE)[1]
          title = str.partition('"')[0]
