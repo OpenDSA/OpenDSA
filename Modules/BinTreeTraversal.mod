@@ -50,6 +50,7 @@ Figure <ODSAref "BinExample" />
 is <b>D B G E H I F C A</b>.
 </p>
 
+<p>
 An <ODSAdef "inorder traversal" /> first visits the left child
 (including its entire subtree), then visits the node, and finally
 visits the right child (including its entire
