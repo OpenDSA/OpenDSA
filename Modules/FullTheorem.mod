@@ -1,6 +1,6 @@
-<ODSAsettitle "The Full Binary Tree Theorem">
-<ODSAprereq "Induction">
-<ODSAprereq "BinTree">
+<ODSAsettitle "The Full Binary Tree Theorem" />
+<ODSAprereq "Induction" />
+<ODSAprereq "BinTree" />
 
 <p>
 Some binary tree implementations store data only at the leaf nodes,
@@ -18,7 +18,7 @@ leaves in a tree containing <i>n</i> internal nodes.
 Unfortunately, this fraction is not fixed.
 A binary tree of <i>n</i> internal nodes might have only one leaf.
 This occurs when the internal nodes are arranged in a chain ending
-in a single leaf as shown in Figure <ODSAref "OneLeaf">.
+in a single leaf as shown in Figure <ODSAref "OneLeaf" />.
 In this example, the number of leaves is low because each
 internal node has only one non-empty child.
 To find an upper bound on the number of leaves for a tree of <i>n</i>
@@ -40,12 +40,12 @@ alt="A tree containing many internal nodes and a single leaf." />
 </center>
 
 <p class="caption">
-<ODSAfig "OneLeaf">
+<ODSAfig "OneLeaf" />
 A tree containing many internal nodes and a single leaf.
 </p>
 
 <p class="theorem">
-<ODSAtheorem "FullTree">
+<ODSAtheorem "FullTree" />
 <b>Full Binary Tree Theorem:</b>
 The number of leaves in a non-empty full binary tree is one
 more than the number of internal nodes.
@@ -111,41 +111,40 @@ each suggests a useful way of thinking about binary trees.
 </p>
 
 <p class="theorem">
-<ODSAtheorem "SubTreeThrm">
+<ODSAtheorem "SubTreeThrm" />
 The number of empty subtrees in a non-empty binary tree is one
 more than the number of nodes in the tree.
 </p>
 
-\noindent{\sffamily\textbf{Proof 1}}:
-Take an arbitrary binary tree \cvar{T} and replace every
+<p class="proof">
+<b>Proof 1</b>:
+Take an arbitrary binary tree <b>T</b> and replace every
 empty subtree with a leaf node.
-Call the new tree \(\cvar{T}'\).
-All nodes originally in~\cvar{T} will be internal nodes in
-\(\cvar{T}'\) (because even the leaf nodes of \cvar{T} have children
-in~\(\cvar{T}'\)).
-\(\cvar{T}'\) is a full binary tree, because every internal node of
-\cvar{T} now must have two children in \(\cvar{T}'\), and each leaf node
-in \cvar{T} must have two children in \(\cvar{T}'\)
+Call the new tree <b>T'</b>.
+All nodes originally in <b>T</b> will be internal nodes in
+<b>T'</b> (because even the leaf nodes of <b>T</b> have children
+in <b>T'</b>.
+<b>T'</b> is a full binary tree, because every internal node of
+<b>T</b> now must have two children in <b>T'</b>, and each leaf node
+in <b>T</b> must have two children in <b>T'</b>
 (the leaves just added).
 The Full Binary Tree Theorem tells us that the number of leaves
 in a full binary tree is one more than the number of internal nodes.
 Thus, the number of new leaves that were added to create
-\(\cvar{T}'\) is one more than the number of nodes in \cvar{T}.
-Each leaf node in \(\cvar{T}'\) corresponds to an
-empty subtree in \cvar{T}.
-Thus, the number of empty subtrees in \cvar{T} is one more
-than the number of nodes in \cvar{T}.
-\hfill\(\Box\)
-\bigskip
+<b>T'</b> is one more than the number of nodes in <b>T</b>.
+Each leaf node in <b>T'</b> corresponds to an
+empty subtree in <b>T</b>.
+Thus, the number of empty subtrees in <b>T</b> is one more
+than the number of nodes in <b>T</b>.
+</p>
 
-\noindent{\sffamily\textbf{Proof 2}}:
-By definition, every node in binary tree~\cvar{T} has two children,
-for a total of \(2n\) children in a tree of \(n\) nodes.
+<p class="proof">
+<b>Proof 2</b>:
+By definition, every node in binary tree <b>T</b> has two children,
+for a total of 2<i>n</i> children in a tree of <i>n</i> nodes.
 Every node except the root node has one parent, for a total of
-\(n-1\) nodes with parents.
-In other words, there are \(n-1\) non-empty children.
-Because the total number of children is \(2n\), the remaining \(n+1\)
-children must be empty.
-\hfill\(\Box\)
-\index{full binary tree theorem|)}
-\index{binary tree!full|)}
+<i>n</i>-1 nodes with parents.
+In other words, there are <i>n</i>-1 non-empty children.
+Because the total number of children is <i>2n</i>, the remaining
+<i>n</i>+1 children must be empty.
+</p>

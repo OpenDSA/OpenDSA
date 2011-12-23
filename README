@@ -6,5 +6,7 @@ Doc: Documentation. Currently contains the preprocessor spec.
 
 Images: Images used by the modules.
 
+Scripts: Scripts used to process the content.
+
 To check this repository out:
   git clone git://github.com/cashaffer/OpenDSA.git OpenDSA

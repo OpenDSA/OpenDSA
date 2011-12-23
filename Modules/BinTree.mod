@@ -1,7 +1,7 @@
-<ODSAsettitle "Binary Trees">
-<ODSAprereq "List">
-<ODSAprereq "LinkedList">
-<ODSAprereq "ArrayBasedList">
+<ODSAsettitle "Binary Trees" />
+<ODSAprereq "List" />
+<ODSAprereq "LinkedList" />
+<ODSAprereq "ArrayBasedList" />
 
 <p>
 Tree structures enable efficient access and efficient update to
@@ -19,11 +19,11 @@ algorithms.
 <p>
 This module presents definitions and some key properties
 for binary trees.
-Module <ODSAref "BinTreeTraversal">
+Module <ODSAref "BinTreeTraversal" />
 discusses how to process all nodes of the
 binary tree in an organized manner.
 <ODSAif "BinTreeImp">
-Module <ODSAref "BinTreeImp">
+Module <ODSAref "BinTreeImp" />
 presents various methods for implementing binary
 trees and their nodes.
 </ODSAif>
@@ -41,18 +41,18 @@ structural features that affect their implementation and use.
 <h2>Definitions and Properties</h2>
 
 <p>
-A <ODSAdef "binary tree"> is made up of a finite set of elements
-called <ODSAdef "nodes">.
+A <ODSAdef "binary tree" /> is made up of a finite set of elements
+called <ODSAdef "nodes" />.
 This set either is empty or consists of a node called the
-<ODSAdef "root"> together with two binary trees, called the left and
+<ODSAdef "root" /> together with two binary trees, called the left and
 right 
-<ODSAdef "subtrees">, which are disjoint from each other and from the
+<ODSAdef "subtrees" />, which are disjoint from each other and from the
 root.
 (Disjoint means that they have no nodes in common.)
 The roots of these subtrees are
-<ODSAdef "children"> of the root.
-There is an <ODSAdef "edge"> from a node to each of its children,
-and a node is said to be the <ODSAdef "parent"> of its children.
+<ODSAdef "children" /> of the root.
+There is an <ODSAdef "edge" /> from a node to each of its children,
+and a node is said to be the <ODSAdef "parent" /> of its children.
 </p>
 
 <p>
@@ -61,23 +61,23 @@ If <i>n</i><sub>1</sub>, <i>n</i><sub>2</sub>, ...,
 is a sequence of nodes in the tree such
 that <i>n</i><sub>i</sub> is the parent of
 <i>n</i><sub><i>i</i>+1</sub> for 1 &#8804; <i>i</i> &lt; <i>k</i>,
-then this sequence is called a <ODSAdef "path"> from
+then this sequence is called a <ODSAdef "path"/> from
 <i>n</i><sub>1</sub> to <i>n<sub>k</sub></i>.
-The <ODSAdef "length"> of the path is <i>k</i>-1.
+The <ODSAdef "length" /> of the path is <i>k</i>-1.
 If there is a path from node <i>R</i> to node <i>M</i>,
-then <i>R</i> is an <ODSAdef "ancestor"> of <i>M</i>, and
-<i>M</i> is a <ODSAdef "descendant"> of <i>R</i>.
+then <i>R</i> is an <ODSAdef "ancestor" /> of <i>M</i>, and
+<i>M</i> is a <ODSAdef "descendant" /> of <i>R</i>.
 Thus, all nodes in the tree are descendants of the root of the tree,
 while the root is the ancestor of all nodes.
-The <ODSAdef "depth"> of a node <i>M</i> in the tree is the length of
+The <ODSAdef "depth" /> of a node <i>M</i> in the tree is the length of
 the path from the root of the tree to <i>M</i>.
-The <ODSAdef "height"> of a tree is one more than the depth of the
+The <ODSAdef "height" /> of a tree is one more than the depth of the
 deepest node in the tree.
 All nodes of depth <i>d</i> are at
-<ODSAdef "level"> <i>d</i> in the tree.
+<ODSAdef "level" /> <i>d</i> in the tree.
 The root is the only node at level 0, and its depth is 0.
-A <ODSAdef "leaf"> node is any node that has two empty children.
-An <ODSAdef "internal"> node is
+A <ODSAdef "leaf" /> node is any node that has two empty children.
+An <ODSAdef "internal" /> node is
 any node that has at least one non-empty child.
 </p>
 
@@ -86,7 +86,7 @@ any node that has at least one non-empty child.
 </center>
 
 <p class="caption">
-<ODSAfig "BinExamp">
+<ODSAfig "BinExample" />
 A binary tree.
 Node <i>A</i> is the root.
 Nodes <i>B</i> and <i>C</i> are <i>A</i>'s children.
@@ -110,7 +110,7 @@ The height of this tree is 4.
 </center>
 
 <p class="caption">
-<ODSAfig "BinDiff">
+<ODSAfig "BinDiff" />
 Two different binary trees.
 (a) A binary tree whose root has a non-empty left child.
 (b) A binary tree whose root has a non-empty right child.
@@ -119,22 +119,22 @@ Two different binary trees.
 </p>
 
 <p>
-Figure <ODSAref "BinExamp"> illustrates the various terms used to
+Figure <ODSAref "BinExample" /> illustrates the various terms used to
 identify parts of a binary tree.
-Figure <ODSAref "BinDiff"> illustrates an important point regarding the
+Figure <ODSAref "BinDiff" /> illustrates an important point regarding the
 structure of binary trees.
 Because <i>all</i> binary tree nodes have two children
 (one or both of which might be empty), the two binary
-trees of Figure <ODSAref "BinDiff"> are <i>not</i> the same.
+trees of Figure <ODSAref "BinDiff" /> are <i>not</i> the same.
 </p>
 
 <p>
 Two restricted forms of binary tree are sufficiently
 important to warrant special names.
-Each node in a <ODSAdef "full"> binary tree
+Each node in a <ODSAdef "full" /> binary tree
 is either (1) an internal node with exactly two non-empty children or
 (2) a leaf.
-A <ODSAdef "complete"> binary tree has
+A <ODSAdef "complete" /> binary tree has
 a restricted shape obtained by starting at the root and filling the
 tree by levels from left to right.
 In the complete binary tree of height <i>d</i>, all levels
@@ -147,24 +147,24 @@ The bottom level has its nodes filled in from the left side.
 </center>
 
 <p class="caption">
-<ODSAfig "FullComplete">
+<ODSAfig "FullComplete" />
 Examples of full and complete binary trees.
 (a) This tree is full (but not complete).
 (b)~This tree is complete (but not full).
 </p>
 
 <p>
-Figure <ODSAref "FullComplete"> illustrates the differences between
+Figure <ODSAref "FullComplete" /> illustrates the differences between
 full and complete binary trees.
 There is no particular relationship between these two tree shapes;
-that is, the tree of Figure <ODSAref "FullComplete">(a) is full but
-not complete while the tree of Figure <ODSAref "FullComplete">(b) is
+that is, the tree of Figure <ODSAref "FullComplete" />(a) is full but
+not complete while the tree of Figure <ODSAref "FullComplete" />(b) is
 complete but not full.
-The heap data structure (Module <ODSAref "Heap">) is an example
+The heap data structure (Module <ODSAref "Heap" />) is an example
 of a complete binary tree.
 The Huffman coding tree
 <ODSAif "Huffman">
-(Module <ODSAref "Huffman">)
+(Module <ODSAref "Huffman" />)
 </ODSAif>
 is an example of a full binary tree.
 </p>
@@ -183,4 +183,4 @@ complete binary tree is as wide as possible.
 
 <p class="TODO">
 [EXERCISE HERE TO TEST KNOWLEDGE OF THE TERMINOLOGY.]
-</TODO>
+</p>

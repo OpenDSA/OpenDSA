@@ -36,38 +36,39 @@ OMP works by going through the collection of .mod files looking for
 ODSA tags, and replaces each one as appropriate.
 OMP will also attach a header block and a footer block to the file.
 
-<ODSAsettitle "{title}"> defines the title of the module.
+<ODSAsettitle "{title}" /> defines the title of the module.
 This will automatically appear at the top of the module within
 <h1></h1> tags.
 
-<ODSAtitle> is replaced by the defined title of the current module.
+<ODSAtitle/> is replaced by the defined title of the current module.
 This is used in Header.txt to help set the page title.
 <ODSAtitle "{module}"> is replaced by the defined title of the
 specified {module}.
 
-<ODSAcollection> is replaced by the value of {collection}.
+<ODSAcollection/> is replaced by the value of {collection}.
 This is used in Header.txt.
 
-<ODSAdate> is replaced by the current date.
+<ODSAdate/> is replaced by the current date.
 This is used in Footer.txt.
 
-<ODSAtime> is replaced by the current tiem.
+<ODSAtime/> is replaced by the current tiem.
 This is used in Footer.txt.
 
-<ODSAprereq "{module}"> defines {module} to be a prerequisite for the
+<ODSAprereq "{module}" /> defines {module} to be a prerequisite for the
 current module in the Knowledge Map.
 {module} must be a file name for some selected module in the
 collection.
 
-<ODSAref "{module}"> defines a link to another module.
+<ODSAref "{module}" /> defines a link to another module.
 {module} must be a file name for some selected module in the
 collection.
 The result will be to place the following text into the HTML file:
 "<a href="{collectionURL}/{module}.html">{modulenumber}</a>".
 
-<ODSAdef "{word}"> defines a word or phrase to add to the glossary.
-The glossary is a separate file that is created as part of processing
-the .mod file collection.
+<ODSAdef "{phrase}" /> defines a word or phrase to add to the
+glossary.
+The glossary is a separate file that is created as part of
+processing the .mod file collection.
 Each word in the glossary appears along with its module tite,
 and has a link back to the point in the module
 where the OSDAdef was placed.
@@ -75,38 +76,42 @@ In the .mod file, all it does is put <b></b> tags around {word}.
 It is OK if the same word or phrase is "defined" multiple times.
 The glossary terms should appear in alphabetical order.
 
-<ODSAif "{module}"> defines the start of a block of text that appears
-only if {module} is part of the collection.
-The text block ends with </ODSAif>.
+<ODSAif "{module}"> {HTML} </ODSAif>
+defines a block of text that appears only if {module} is part of the
+collection.
 
-<ODSAfig "{label}"> defines a label for a figure.
+<ODSAfig "{label}" /> defines a label for a figure.
 This label is associated with the figure counter, which starts at 1
 with each module.
 At the place where the <ODSAfig> tag appears, it is replaced with the
 text "Figure {modulenumber}.{figurenumber}".
-The figure can be reference later with an <ODSAref "{label}"> tag, at
-which point it will be replace with "{modulenumber}.{figurenumber}".
+The figure can be reference later with an <ODSAref "{label}" /> tag,
+at which point it will be replace with
+"{modulenumber}.{figurenumber}".
 
-<ODSAtable "{label"> defines a label for a table.
+<ODSAtable "{label}" /> defines a label for a table.
 This label is associated with the table counter, which starts at 1
 with each module.
-At the place where the <ODSAfig> tag appears, it is replaced with the
-text "Table {modulenumber}.{tablenumber}".
-The table can be reference later with an <ODSAref "{label}"> tag, at
-which point it will be replace with "{modulenumber}.{tablenumber}".
+At the place where the <ODSAtable> tag appears, it is replaced with
+the text "Table {modulenumber}.{tablenumber}".
+The table can be reference later with an <ODSAref "{label}" /> tag,
+at which point it will be replace with
+"{modulenumber}.{tablenumber}".
 
-<ODSAtheorem "{label"> defines a label for a theorem.
+<ODSAtheorem "{label}" /> defines a label for a theorem.
 This label is associated with the figure counter, which starts at 1
 with each module.
-At the place where the <ODSAfig> tag appears, it is replaced with the
-text "Theorem {modulenumber}.{theoremnumber}".
-The theorem can be reference later with an <ODSAref "{label}"> tag, at
-which point it will be replace with "{modulenumber}.{theoremnumber}".
+At the place where the <ODSAtheorem> tag appears, it is replaced with
+the text "Theorem {modulenumber}.{theoremnumber}".
+The theorem can be reference later with an <ODSAref "{label}" /> tag,
+at which point it will be replace with
+"{modulenumber}.{theoremnumber}".
 
-<ODSAeq "{label"> defines a label for an equation.
+<ODSAeq "{label}" /> defines a label for an equation.
 This label is associated with the equation counter, which starts at 1
 with each module.
-At the place where the <ODSAfig> tag appears, it is replaced with the
+At the place where the <ODSAeq> tag appears, it is replaced with the
 text "Equation {modulenumber}.{equationnumber}".
-The equation can be reference later with an <ODSAref "{label}"> tag, at
-which point it will be replace with "{modulenumber}.{equationnumber}".
+The equation can be reference later with an <ODSAref "{label}" /> tag,
+at which point it will be replace with
+"{modulenumber}.{equationnumber}".
