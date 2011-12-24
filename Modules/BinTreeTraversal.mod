@@ -1,4 +1,4 @@
-<ODSAsettitle "Binary Tree Traversals" />
+<ODSAsettitle>Binary Tree Traversals</ODSAsettitle>
 <ODSAprereq "BinTree" />
 <ODSAprereq "BinTreeNodeADT" />
 <ODSAprereq "DesignPatterns" />
@@ -16,7 +16,7 @@ particular order as long as each node is visited precisely once.
 For other applications, nodes must be visited in an order that
 preserves some relationship.
 For example, we might wish to make sure that we visit any given node
-<i>before</i> we visit its children.
+<em>before</em> we visit its children.
 This is called a <ODSAdef "preorder traversal" />.
 </p>
 
@@ -35,7 +35,7 @@ any node of the right subtree.
 
 <p>
 Alternatively, we might wish to visit each node only
-<i>after</i> we visit its children (and their subtrees).
+<em>after</em> we visit its children (and their subtrees).
 For example, this would be necessary if we wish to return all nodes in 
 the tree to free store.
 We would like to delete the children of a node before deleting the

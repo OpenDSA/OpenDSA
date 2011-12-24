@@ -1,4 +1,4 @@
-<ODSAsettitle "The Full Binary Tree Theorem" />
+<ODSAsettitle>The Full Binary Tree Theorem</ODSAsettitle>
 <ODSAprereq "Induction" />
 <ODSAprereq "BinTree" />
 
@@ -104,7 +104,7 @@ When analyzing the space requirements for a binary tree
 implementation,
 it is useful to know how many empty subtrees a tree contains.
 A simple extension of the Full Binary Tree Theorem tells us exactly
-how many empty subtrees there are in <i>any</i> binary tree, whether
+how many empty subtrees there are in <em>any</em> binary tree, whether
 full or not.
 Here are two approaches to proving the following theorem, and
 each suggests a useful way of thinking about binary trees.

@@ -1,4 +1,4 @@
-<ODSAsettitle "Binary Trees" />
+<ODSAsettitle>Binary Trees</ODSAsettitle>
 <ODSAprereq "List" />
 <ODSAprereq "LinkedList" />
 <ODSAprereq "ArrayBasedList" />
@@ -123,9 +123,9 @@ Figure <ODSAref "BinExample" /> illustrates the various terms used to
 identify parts of a binary tree.
 Figure <ODSAref "BinDiff" /> illustrates an important point regarding the
 structure of binary trees.
-Because <i>all</i> binary tree nodes have two children
+Because <em>all</em> binary tree nodes have two children
 (one or both of which might be empty), the two binary
-trees of Figure <ODSAref "BinDiff" /> are <i>not</i> the same.
+trees of Figure <ODSAref "BinDiff" /> are <em>not</em> the same.
 </p>
 
 <p>

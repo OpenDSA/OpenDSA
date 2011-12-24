@@ -1,4 +1,4 @@
-<ODSAsettitle "Binary Tree Node ADT" />
+<ODSAsettitle>Binary Tree Node ADT</ODSAsettitle>
 <ODSAprereq "BinTree" />
 
 <p>

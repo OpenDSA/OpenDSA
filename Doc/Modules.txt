@@ -36,7 +36,7 @@ OMP works by going through the collection of .mod files looking for
 ODSA tags, and replaces each one as appropriate.
 OMP will also attach a header block and a footer block to the file.
 
-<ODSAsettitle "{title}" /> defines the title of the module.
+<ODSAsettitle>{title}</ODSAsettitel> defines the title of the module.
 This will automatically appear at the top of the module within
 <h1></h1> tags.
 
