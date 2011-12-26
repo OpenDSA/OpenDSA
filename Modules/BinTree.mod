@@ -1,7 +1,4 @@
 <ODSAsettitle>Binary Trees</ODSAsettitle>
-<ODSAprereq "List" />
-<ODSAprereq "LinkedList" />
-<ODSAprereq "ArrayBasedList" />
 
 <p>
 Tree structures enable efficient access and efficient update to
