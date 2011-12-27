@@ -6,7 +6,7 @@ Module created <ODSAdate> at <ODSAtime>.
 <a rel="license"
 href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">
 <img alt="Creative Commons License" style="border-width:0"
-src="CC88x31.png" />
+src="Images/CC88x31.png" />
 </a>
 This tutorial was created as part of the OpenDSA project, which seeks
 to provide
