@@ -56,10 +56,7 @@ relatively common letters, should be storable in less space than words
 such as ``MUCK,'' which are composed of relatively uncommon letters.
 </p>
 
-TODO: GENERATE IMAGE FOR TABLE
-
-\begin{mytable}
-\begin{center}
+<img src="http://www.forkosh.com/mathtex.cgi?
 \begin{tabular}{c|c||c|c}
 \multicolumn{1}{c}{\textbf{Letter}} &
 \multicolumn{1}{|c||}{\textbf{Frequency}} &
@@ -79,9 +76,8 @@ J &  4 & W & 22\\
 K &  7 & X &  4\\
 L & 42 & Y & 22\\
 M & 24 & Z &  2\\
-\end{tabular}
-\end{center}
-\vspace{-\medskipamount}
+\end{tabular}"
+   alt="" border=0 align="middle">.
 
 <p class="caption">
 <ODSAfig "Freq" \>

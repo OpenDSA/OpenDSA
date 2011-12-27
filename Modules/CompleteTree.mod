@@ -47,7 +47,9 @@ nodes.
 <img src="Images/BinArray.png" alt="Complete binary tree stored in an array" />
 </center>
 
-TODO: Generate image for Figure 5.12(b) from table.
+<p class=TODO">
+Generate image for Figure 5.12(b) from table.
+</p>
 
 <p class="caption">
 <ODSAfig "BinArray" \>

@@ -168,7 +168,7 @@ in the BST.
 
 <p>
 Notice that in Figure <ODSAref "BSTClass" \>, public member function
-<tt>find</i> calls private member function <tt>findhelp</tt>.
+<tt>find</tt> calls private member function <tt>findhelp</tt>.
 Method <tt>find</tt> takes the search key as an explicit parameter
 and its BST as an implicit parameter, and returns the record that
 matches the key.
@@ -490,8 +490,9 @@ enough for this purpose), then each insertion will cost on average
 However, if the records are inserted in order of increasing value,
 then the resulting tree will be a chain of height <i>n</i>.
 The cost of insertion in this case will be
-TODO: EQUATION
-\(\sum_{i=1}^{n} i = \Thetantwo\).
+<img src="http://www.forkosh.com/mathtex.cgi?
+\sum_{i=1}^{n} i = \Theta(n^2)"
+   alt="" border=0 align="middle">.
 </p>
 
 <p>

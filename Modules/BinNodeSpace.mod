@@ -63,8 +63,13 @@ Again assume the tree stores a pointer to the data field.
 Because about half of the nodes are leaves and half internal nodes,
 and because only internal nodes now have child pointers, the
 overhead fraction in this case will be approximately
-<TODO: EQUATION>
-\[\frac{\frac{n}{2} (2P)}{\frac{n}{2} (2P) + Dn} = \frac{P}{P + D}.\]
+</p>
+
+<img src="http://www.forkosh.com/mathtex.cgi?
+\frac{\frac{n}{2} (2P)}{\frac{n}{2} (2P) + Dn} = \frac{P}{P + D}."
+   alt="" border=0 align="middle">.
+
+<p>
 If <i>P</i> = <i>D</i>, the overhead drops to about one half of the
 total space.
 However, if only leaf nodes store useful information, the overhead
@@ -78,8 +83,10 @@ at the leaf nodes, a better implementation would have
 the internal nodes store two pointers and no data
 field while the leaf nodes store only a pointer to the data field.
 This implementation requires
-<TODO: EQUATION>
-\(\frac{n}{2}2P + \frac{n}{2}(p+d)\) units of space.
+<img src="http://www.forkosh.com/mathtex.cgi?
+\frac{n}{2}2P + \frac{n}{2}(p+d)\)"
+   alt="" border=0 align="middle">.
+units of space.
 If <i>P</i> = <i>D</i>, then the overhead is
 3<i>P</i>/(3<i>P</i> + <i>D</i>) = 3/4.
 It might seem counter-intuitive that the overhead ratio has gone up
