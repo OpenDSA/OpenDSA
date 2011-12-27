@@ -136,8 +136,7 @@ An expression tree for 4<i>x</i>(2<i>x</i> + <i>a</i>) - <i>c</i>.
 As an example of a tree that stores different information at the leaf
 and internal nodes, consider the expression tree illustrated by
 Figure <ODSAref "DiffNodes" />.
-The expression tree represents an algebraic
-expression\index{equation, representation}
+The expression tree represents an algebraic expression
 composed of binary operators such as addition, subtraction,
 multiplication, and division.
 Internal nodes store operators, while the leaves store operands.
@@ -219,14 +218,14 @@ public static void traverse(VarBinNode rt) {
 </pre>
 
 <p class="caption">
-<ODSAfig "VarNodeI" \>
+<ODSAfig "VarNodeI" />
 An implementation for separate internal and leaf node
 representations using Java class inheritance
 and virtual functions.
 </p>
 
 <p>
-Figure <ODSAref "VarNodeI" \> includes two subclasses derived from
+Figure <ODSAref "VarNodeI" /> includes two subclasses derived from
 class <tt>VarBinNode</tt>, named <tt>LeafNode</tt> and
 <tt>IntlNode</tt>.
 Class <tt>IntlNode</tt> can access its children through
@@ -248,11 +247,11 @@ There is another approach that we can take to represent separate leaf
 and internal nodes, also using a virtual base class and separate node
 classes for the two types.
 This is to implement nodes using the
-<ODSAdef "composite design pattern" \>.
+<ODSAdef "composite design pattern" />.
 This approach is noticeably different from the one of
-Figure <ODSAref "VarNodeI" \> in that the node classes themselves
+Figure <ODSAref "VarNodeI" /> in that the node classes themselves
 implement the functionality of <tt>traverse</tt>.
-Figure <ODSAref "VarNodeC" \> shows the implementation.
+Figure <ODSAref "VarNodeC" /> shows the implementation.
 Here, base class <tt>VarBinNode</tt> declares a member function
 <tt>traverse</tt> that each subclass must implement.
 Each subclass then implements its own appropriate behavior for its
@@ -310,7 +309,7 @@ public static void traverse(VarBinNode rt) {
 </pre>
 
 <p class="caption">
-<ODSAfig "VarNodeC" \>
+<ODSAfig "VarNodeC" />
 A second implementation for separate internal and leaf node
 representations using Java class inheritance
 and virtual functions using the composite design pattern.
@@ -319,21 +318,21 @@ embedded into the node subclasses.
 </p>
 
 <p>
-When comparing the implementations of Figures <ODSAref "VarNodeI" \>
-and <ODSAref "VarNodeC" \>, each has advantages and disadvantages.
+When comparing the implementations of Figures <ODSAref "VarNodeI" />
+and <ODSAref "VarNodeC" />, each has advantages and disadvantages.
 The first does not require that the node classes know about
 the <tt>traverse</tt> function.
 With this approach, it is easy to add new methods to the tree class
 that do other traversals or other operations on nodes of the tree.
 However, we see that <tt>traverse</tt> in
-Figure <ODSAref "VarNodeI" \> does 
+Figure <ODSAref "VarNodeI" /> does 
 need to be familiar with each node subclass.
 Adding a new node subclass would therefore require modifications to
 the <tt>traverse</tt> function.
-In contrast, the approach of Figure <ODSAref "VarNodeC" \> requires
+In contrast, the approach of Figure <ODSAref "VarNodeC" /> requires
 that any new operation on the tree that requires a traversal also be
 implemented in the node subclasses.
-On the other hand, the approach of Figure <ODSAref "VarNodeC" \>
+On the other hand, the approach of Figure <ODSAref "VarNodeC" />
 avoids the need for the <tt>traverse</tt> function to know
 anything about the distinct abilities of the node subclasses.
 Those subclasses handle the responsibility of performing a traversal
@@ -347,17 +346,17 @@ problem.
 A disadvantage is that the traversal operation must not be called on a
 NULL pointer, because there is no object to catch the call.
 This problem could be avoided by using a flyweight
-(see Module <ODSAref "DesignPatterns" \>) to implement empty nodes.
+(see Module <ODSAref "DesignPatterns" />) to implement empty nodes.
 </p>
 
 <p>
-Typically, the version of Figure <ODSAref "VarNodeI" \> would be
+Typically, the version of Figure <ODSAref "VarNodeI" /> would be
 preferred in this example if <tt>traverse</tt> is a member function of
 the tree class, and if the node subclasses are hidden from users of
 that tree class.
 On the other hand, if the nodes are objects that have meaning
 to users of the tree separate from their existence as nodes in the
-tree, then the version of Figure <ODSAref "VarNodeC" \> might be
+tree, then the version of Figure <ODSAref "VarNodeC" /> might be
 preferred because hiding the internal behavior of the nodes becomes
 more important.
 </p>

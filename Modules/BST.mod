@@ -1,12 +1,12 @@
 <ODSAsettitle>Binary Search Trees</ODSAsettitle>
-<ODSAprereq "BinTreeImp" \>
-<ODSAprereq "Dictionary" \>
-<ODSAprereq "List" \>
-<ODSAprereq "LinkedList" \>
-<ODSAprereq "ArrayBasedList" \>
+<ODSAprereq "BinTreeImp" />
+<ODSAprereq "Dictionary" />
+<ODSAprereq "List" />
+<ODSAprereq "LinkedList" />
+<ODSAprereq "ArrayBasedList" />
 
 <p>
-Module <ODSAref "Dictionary" \> presented the dictionary ADT,
+Module <ODSAref "Dictionary" /> presented the dictionary ADT,
 along with dictionary implementations based on sorted and unsorted
 lists.
 When implementing the dictionary with an unsorted list,
@@ -37,17 +37,17 @@ which allows an improved solution to this problem.
 
 <p>
 A BST is a binary tree that conforms to the following condition, known 
-as the <ODSAdef "Binary Search Tree Property" \>.
+as the <ODSAdef "Binary Search Tree Property" />.
 All nodes stored in the left
 subtree of a node whose key value is <i>K</i> have key values less
 than <i>K</i>.
 All nodes stored in the right subtree of a node whose key value
 is <i>K</i> have key values greater than or equal to <i>K</i>.
-Figure <ODSAref "BSTShape" \> shows two BSTs for a collection of
+Figure <ODSAref "BSTShape" /> shows two BSTs for a collection of
 values.
 One consequence of the Binary Search Tree Property is that if the BST
 nodes are printed using an inorder traversal
-(see Module <ODSAref "BinTraverse" \>)
+(see Module <ODSAref "BinTraverse" />)
 the resulting enumeration will be in
 sorted order from lowest to highest.
 </p>
@@ -57,7 +57,7 @@ sorted order from lowest to highest.
 </center>
 
 <p class="caption">
-<ODSAfig "BSTShape" \>
+<ODSAfig "BSTShape" />
 Two Binary Search Trees for a collection of values.
 Tree (a) results if values are inserted
 in the order 37, 24, 42, 7, 2, 40, 42, 32, 120.
@@ -66,11 +66,11 @@ order 120, 42, 42, 7, 2, 32, 37, 24, 40.
 </p>
 
 <p>
-Figure <ODSAref "BSTClass" \> shows a class declaration for the BST
+Figure <ODSAref "BSTClass" /> shows a class declaration for the BST
 that implements the dictionary ADT.
 The public member functions include those required by the dictionary
 ADT, along with a constructor and destructor.
-Recall from the discussion in Module <ODSAref "Dictionary" \> that
+Recall from the discussion in Module <ODSAref "Dictionary" /> that
 there are various ways to deal with keys and comparing records
 (three approaches  being key/value pairs, a special comparison
 method such as using the <tt>Comparator</tt> class,
@@ -132,7 +132,7 @@ class BST<Key extends Comparable<? super Key>, E>
 </pre>
 
 <p class="caption">
-<ODSAfig "BSTClass" \>
+<ODSAfig "BSTClass" />
 The binary search tree implementation.
 </p>
 
@@ -155,7 +155,7 @@ no record exists in the BST whose key value is <i>K</i>.
 
 <p class="example">
 Consider searching for the node with key value 32 in the tree of
-Figure <ODSAref "BSTShape" \>(a).
+Figure <ODSAref "BSTShape" />(a).
 Because 32 is less than the root value of 37, the search
 proceeds to the left subtree.
 Because 32 is greater than 24, we search in 24's right subtree.
@@ -167,7 +167,7 @@ in the BST.
 </p>
 
 <p>
-Notice that in Figure <ODSAref "BSTClass" \>, public member function
+Notice that in Figure <ODSAref "BSTClass" />, public member function
 <tt>find</tt> calls private member function <tt>findhelp</tt>.
 Method <tt>find</tt> takes the search key as an explicit parameter
 and its BST as an implicit parameter, and returns the record that
@@ -220,7 +220,7 @@ duplicate in the right subtree.
 <p class="caption">
 An example of BST insertion.
 A record with value 35 is inserted into the BST of
-Figure <ODSAref "BSTShape" \>(a).
+Figure <ODSAref "BSTShape" />(a).
 The node with value 32 becomes the parent of the new node
 containing~35.
 </p>
@@ -229,7 +229,7 @@ containing~35.
 Call this node <i>R'</i>.
 We then add a new node containing the new record as a child
 of <i>R'</i>.
-Figure <ODSAref "BSTAdd" \> illustrates this operation.
+Figure <ODSAref "BSTAdd" /> illustrates this operation.
 The value 35 is added as the right child of the node with value 32.
 Here is the implementation for <tt>inserthelp</tt>.
 </p>
@@ -272,7 +272,7 @@ is probably more expensive than the assignment!
 The shape of a BST depends on the order in which elements are inserted.
 A new element is added to the BST as a new leaf node,
 potentially increasing the depth of the tree.
-Figure <ODSAref "BSTShape" \> illustrates two BSTs for a collection of
+Figure <ODSAref "BSTShape" /> illustrates two BSTs for a collection of
 values.
 It is possible for the BST containing <i>n</i> nodes to be a chain of
 nodes with height <i>n</i>.
@@ -313,14 +313,14 @@ private BSTNode<Key,E> deletemin(BSTNode<Key,E> rt) {
 </pre>
 
 <p class="example">
-Figure <ODSAref "DelMin" \> illustrates the <tt>deletemin</tt>
+Figure <ODSAref "DelMin" /> illustrates the <tt>deletemin</tt>
 process.
 Beginning at the root node with value 10,
 <tt>deletemin</tt> follows the left link until there is no further
 left link, in this case reaching the node with value 5.
 The node with value10 is changed to point to the right child of the
 node containing the minimum value.
-This is indicated in Figure <ODSAref "DelMin" \> by a dashed line.
+This is indicated in Figure <ODSAref "DelMin" /> by a dashed line.
 </p>
 
 <center>
@@ -390,7 +390,7 @@ then the BST property is maintained.
 
 <p class="example">
 Assume that we wish to remove the value 37 from the BST
-of Figure <ODSAref "BSTShape" \>(a).
+of Figure <ODSAref "BSTShape" />(a).
 Instead of removing the root node, we remove the node with the least
 value in the right subtree (using the <tt>deletemin</tt>
 operation).
@@ -398,7 +398,7 @@ This value can then replace the value in the root.
 In this example we first remove the node with value 40,
 because it contains the least value in the right subtree.
 We then substitute 40 as the new value for the root node.
-Figure <ODSAref "Remove" \> illustrates this process.
+Figure <ODSAref "Remove" /> illustrates this process.
 </p>
 
 <center>
@@ -425,7 +425,7 @@ subtree will result in a tree with equal values to the left of the
 node now containing <i>G</i>.
 Precisely this situation occurs if we replace value 120 with the
 greatest value in the left subtree of Figure
-<ODSAref "BSTShape" \>(b).
+<ODSAref "BSTShape" />(b).
 Selecting the least value from the right subtree does not
 have a similar problem, because it does not violate the Binary Search
 Tree Property if equal values appear in the right subtree.
@@ -470,7 +470,7 @@ removed, or in the case when this node has two children,
 the depth of the node with smallest value in its right subtree. 
 Thus, in the worst case, the cost for any one of these operations is
 the depth of the deepest node in the tree.
-This is why it is desirable to keep BSTs <ODSAdef "balanced" \>,
+This is why it is desirable to keep BSTs <ODSAdef "balanced" />,
 that is, with least possible height.
 If a binary tree is balanced, then the height for a tree of <i>n</i>
 nodes is approximately log <i>n</i>.

@@ -1,6 +1,6 @@
 <ODSAsettitle>Heaps and Priority Queues</ODSAsettitle>
-<ODSAprereq "CompleteTree" \>
-<ODSAprereq "Induction" \>
+<ODSAprereq "CompleteTree" />
+<ODSAprereq "Induction" />
 
 <p>
 There are many situations, both in real life and in computing
@@ -11,16 +11,16 @@ next the "most critical" patient rather than the one who arrived
 first.
 When scheduling programs for execution in a multitasking
 operating system, at any given moment there might be several programs
-(usually called <ODSAdef "jobs" \> ready to run.
+(usually called <ODSAdef "jobs" /> ready to run.
 The next job selected is the one with the highest
-<ODSAdef "priority" \>. 
+<ODSAdef "priority" />. 
 Priority is indicated by a particular value associated with the job
 (and might change while the job remains in the wait list).
 </p>
 
 <p>
 When a collection of objects is organized by importance or priority,
-we call this a <OpenDSA "priority queue" \>.
+we call this a <OpenDSA "priority queue" />.
 A normal queue data structure will not implement a priority queue
 efficiently because search for the element with highest priority will
 take &Theta;(<i>n</i>) time.
@@ -36,20 +36,20 @@ have good performance for this special application.
 </p>
 
 <p>
-This section presents the <ODSAdef "heap" \>
+This section presents the <ODSAdef "heap" />
 data structure.
 (Note that the term "heap" is also sometimes used to refer to a memory
 pool.
 <ODSAif>
-(See Module <ODSAref "MemMan" \>.}
+(See Module <ODSAref "MemMan" />.}
 </ODSAif>
 A heap is defined by two properties.
 First, it is a complete binary tree,
 so heaps are nearly always implemented using
 the array representation for complete binary trees presented
-in Module <ODSAref "CompleteTree" \>.
+in Module <ODSAref "CompleteTree" />.
 Second, the values stored in a heap are
-<ODSAdef "partially ordered" \>.
+<ODSAdef "partially ordered" />.
 This means that there is a relationship between the value stored at
 any node and the values of its children.
 There are two variants of the heap, depending on the definition of
@@ -57,8 +57,8 @@ this relationship.
 </p>
 
 <p>
-A <ODSAdef "max-heap" \> has the property that every node stores a
-value that is <em>greater<\em> than or equal to the value of either of
+A <ODSAdef "max-heap" /> has the property that every node stores a
+value that is <em>greater</em> than or equal to the value of either of
 its children.
 Because the root has a value greater than or equal to its children,
 which in turn have values greater than or equal to their children, the
@@ -66,7 +66,7 @@ root stores the maximum of all values in the tree.
 </p>
 
 <p>
-A <ODSAdef "min-heap" \> has the property that every node stores a
+A <ODSAdef "min-heap" /> has the property that every node stores a
 value that is <em>less</em>
 than or equal to that of its children.
 Because the root has a value less than or equal to its children, which
@@ -82,7 +82,7 @@ subtree of the root are greater than the values for every node of the
 right subtree.
 We can contrast BSTs and heaps by the strength of their ordering
 relationships.
-A BST defines a <ODSAdef "total order" \> on its nodes in that,
+A BST defines a <ODSAdef "total order" /> on its nodes in that,
 given the positions for any two nodes in the tree, the one to the
 "left" (equivalently, the one appearing earlier in an inorder
 traversal) has a smaller key value than the one to the "right".
@@ -201,15 +201,15 @@ public class MaxHeap<E extends Comparable<? super E>> {
     return Heap[n];
   }
 }
-<\pre>
+</pre>
 
 <p class="caption">
-<ODSAfig "HeapClass" \>
+<ODSAfig "HeapClass" />
 An implementation for the heap.
 </p>
 
 <p>
-Figure <ODSAref "HeapClass" \> shows an implementation for
+Figure <ODSAref "HeapClass" /> shows an implementation for
 heaps.
 The class is a generic with one type parameter, <tt>E</tt>,
 which defines the type for the data elements stored in the heap.
@@ -304,7 +304,7 @@ worst case.
 </center>
 
 <p class="caption">
-<ODSAfig "HeapBuild" \>
+<ODSAfig "HeapBuild" />
 Two series of exchanges to build a max-heap.
 (a) This heap is built by a series of nine exchanges in the order
 (4-2), (4-1), (2-1), (5-2), (5-4), (6-3), (6-5), (7-5), (7-6).
@@ -316,12 +316,12 @@ Two series of exchanges to build a max-heap.
 If all <i>n</i> values are available at the beginning of the
 building process, we can build the heap faster than just
 inserting the values into the heap one by one.
-Consider Figure <ODSAref "HeapBuild" \>(a), which shows one series of
+Consider Figure <ODSAref "HeapBuild" />(a), which shows one series of
 exchanges that could be used to build the heap.
 All exchanges are between a node and one of its children.
 The heap is formed as a result of this exchange process.
 The array for the right-hand tree of
-Figure <ODSAref "HeapBuild" \>(a) would appear as follows:
+Figure <ODSAref "HeapBuild" />(a) would appear as follows:
 </p>
 
 <img src="http://www.forkosh.com/mathtex.cgi?
@@ -334,7 +334,7 @@ Figure <ODSAref "HeapBuild" \>(a) would appear as follows:
    alt="" border=0 align="middle">
 
 <p>
-Figure <ODSAref "HeapBuild" \>(b) shows an alternate series of
+Figure <ODSAref "HeapBuild" />(b) shows an alternate series of
 exchanges that also forms a heap, but much more efficiently.
 The equivalent array representation would be
 </p>
@@ -360,7 +360,7 @@ So, how do we pick the best rearrangement?
 One good algorithm stems from induction.
 Suppose that the left and right subtrees of the root are already
 heaps, and <i>R</i> is the name of the element at the root.
-This situation is illustrated by Figure <ODSAref "HeapInduct" \>.
+This situation is illustrated by Figure <ODSAref "HeapInduct" />.
 In this case there are two possibilities.
 (1) <i>R</i> has a value greater than or equal to its two children.
 In this case, construction is complete.
@@ -375,7 +375,7 @@ children, or is a leaf node.
 This process is implemented by the private method
 <tt>siftdown</tt>.
 The siftdown operation is illustrated by
-Figure <ODSAref "SiftPic" \>.
+Figure <ODSAref "SiftPic" />.
 </p>
 
 <center>
@@ -383,7 +383,7 @@ Figure <ODSAref "SiftPic" \>.
 </center>
 
 <p class="caption">
-<ODSAfig "HeapInduct" \>
+<ODSAfig "HeapInduct" />
 Final stage in the heap-building algorithm.
 Both subtrees of node <i>R</i> are heaps.
 All that remains is to push <i>R</i> down to its proper level in the
@@ -395,7 +395,7 @@ heap.
 </center>
 
 <p class="caption">
-<ODSAfig "SiftPic" \>
+<ODSAfig "SiftPic" />
 The siftdown operation.
 The subtrees of the root are assumed to be heaps.
 (a) The partially completed heap.
@@ -414,7 +414,7 @@ Actually, the build process need not visit the leaf nodes
 (they can never move down because they are already at the bottom), so
 the building algorithm can start in the middle of the array, with the
 first internal node.
-The exchanges shown in Figure <ODSAref "HeapBuild" \>(b) result from
+The exchanges shown in Figure <ODSAref "HeapBuild" />(b) result from
 this process.
 Method <tt>buildHeap</tt> implements the building algorithm.
 </p>
@@ -443,7 +443,7 @@ therefore
    alt="" border=0 align="middle">
 
 <p>
-From Equation <ODSAref "IHalvesSum" \> we know that this summation
+From Equation <ODSAref "IHalvesSum" /> we know that this summation
 has a closed-form solution of approximately 2,
 so this algorithm takes &Theta;(<i>n</i>) time in the worst case.
 This is far better than building the heap one element at a time,
@@ -498,6 +498,6 @@ efficient search for objects (such as a BST).
 Records in the auxiliary data structure will store
 the object's heap index, so that the object can be
 deleted from the heap and reinserted with its new priority.
-Modules <ODSAref "SSSP" \> and <ODSAref "PrimsSec" \> present
+Modules <ODSAref "SSSP" /> and <ODSAref "PrimsSec" /> present
 applications for a priority queue with priority updating.
 </p>

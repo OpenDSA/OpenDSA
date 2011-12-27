@@ -1,10 +1,10 @@
 <ODSAsettitle>Proof of Optimality for Huffman Coding</ODSAsettitle>
-<ODSAprereq "Huffman" \>
-<ODSAprereq "Induction" \>
+<ODSAprereq "Huffman" />
+<ODSAprereq "Induction" />
 
 <p>
 Huffman tree building is an example of a
-<ODSAdef "greedy algorithm" \>.
+<ODSAdef "greedy algorithm" />.
 At each step, the algorithm makes a "greedy" decision to merge
 the two subtrees with least weight.
 This makes the algorithm simple, but does it give the desired result?
@@ -28,7 +28,7 @@ selects them in the first step of the construction process.
 Assume that <i>l</i><sub>1</sub> and <i>l</i><sub>2</sub> are not the
 deepest nodes in the tree.
 In this case, the Huffman tree must either look as shown in
-Figure <ODSAref "HuffProof" \>, or in some sense be symmetrical to
+Figure <ODSAref "HuffProof" />, or in some sense be symmetrical to
 this.
 For this situation to occur, the parent of <i>l</i><sub>1</sub>
 and <i>l</i><sub>2</sub>,
@@ -45,9 +45,9 @@ However, this is impossible because <i>l</i><sub>1</sub> and
 </center>
 
 <p class="caption">
-<ODSAfig "HuffProof" \>
+<ODSAfig "HuffProof" />
 An impossible Huffman tree, showing the situation where the two nodes 
-with least weight, <i>l</i><sub>1<\sub> and <i>l</i><sub>2</sub>, are
+with least weight, <i>l</i><sub>1</sub> and <i>l</i><sub>2</sub>, are
 not the deepest nodes in the tree.
 Triangles represent subtrees.
 </p>
@@ -103,8 +103,8 @@ must also have minimum external path length.
 </p>
 
 <p>
-Thus by mathematical induction, function \Cref{buildHuff} creates the
-Huffman tree with minimum external path length.
+Thus by mathematical induction, function <tt>buildHuff</tt> creates
+the Huffman tree with minimum external path length.
 </p>
 </li>
 

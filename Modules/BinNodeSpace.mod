@@ -1,6 +1,6 @@
 <ODSAsettitle>Binary Tree Space Requirements</ODSAsettitle>
-<ODSAprereq "BinTreeNodeADT" \>
-<ODSAFullTheorem" \>
+<ODSAprereq "BinTreeNodeADT" />
+<ODSAFullTheorem" />
 
 <p>
 This module presents techniques for calculating the amount of
@@ -16,7 +16,7 @@ full binary tree.
 
 <p>
 In a simple pointer-based implementation for the binary tree such
-as that of Figure <ODSAref "BinNodeClass" \>, every node has two
+as that of Figure <ODSAref "BinNodeClass" />, every node has two
 pointers to its children (even when the children are NULL).
 This implementation requires total space amounting to
 <i>n</i>(2<i>P</i> + <i>D</i>) for a tree of <i>n</i> nodes.
@@ -28,7 +28,7 @@ The actual value for this expression depends on the relative size of
 pointers versus data fields.
 If we arbitrarily assume that <i>P</i> = <i>D</i>, then a full tree
 has about two thirds of its total space taken up in overhead.
-Worse yet, Theorem <ODSAref "SubTreeThrm" \>
+Worse yet, Theorem <ODSAref "SubTreeThrm" />
 tells us that about half of the
 pointers are ``wasted'' NULL values that serve only to indicate tree
 structure, but which do not provide access to new data.

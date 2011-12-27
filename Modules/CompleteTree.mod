@@ -1,8 +1,8 @@
 <ODSAsettitle>Array Implementation for Complete Binary Trees</ODSAsettitle>
-<ODSAprereq "BinTreeImp" \>
+<ODSAprereq "BinTreeImp" />
 
 <p>
-Module <ODSAref "BinTreeImp" \> explains how a large
+Module <ODSAref "BinTreeImp" /> explains how a large
 fraction of the space in a typical binary tree node implementation is
 devoted to structural overhead, not to storing data.
 This module presents a simple, compact implementation
@@ -17,7 +17,7 @@ occurrence that there is no reason to develop a special
 implementation for it.
 However, the complete binary tree has practical uses, the most
 important being the heap data structure discussed in
-Module <ODSAref "Heap" \>.
+Module <ODSAref "Heap" />.
 Heaps are often used to implement priority queues
 and for external sorting algorithms.
 </p>
@@ -25,14 +25,14 @@ and for external sorting algorithms.
 <p>
 We begin by assigning numbers to the node positions in the complete
 binary tree, level by level, from left to right as shown in
-Figure <ODSAref "BinArray" \>(a). 
+Figure <ODSAref "BinArray" />(a). 
 An array can store the tree's data values efficiently, placing
 each data value in the array position corresponding to that node's
 position within the tree.
-Figure <ODSAref "BinArray" \>(b) lists the array indices for the
+Figure <ODSAref "BinArray" />(b) lists the array indices for the
 children, parent, and siblings of each node in
-Figure <ODSAref "BinArray" \>(a).
-From Figure <ODSAref "BinArray" \>(b), you should see a pattern
+Figure <ODSAref "BinArray" />(a).
+From Figure <ODSAref "BinArray" />(b), you should see a pattern
 regarding the positions of a node's relatives within the array.
 Simple formulas can be derived for calculating the array index
 for each relative of a node <i>r</i> from <i>r</i>'s index.
@@ -52,7 +52,7 @@ Generate image for Figure 5.12(b) from table.
 </p>
 
 <p class="caption">
-<ODSAfig "BinArray" \>
+<ODSAfig "BinArray" />
 A complete binary tree and its array implementation.
 (a) The complete binary tree with twelve nodes.
 Each node has been labeled with its position in the tree.

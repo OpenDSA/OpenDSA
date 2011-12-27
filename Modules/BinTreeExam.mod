@@ -1,5 +1,5 @@
 <ODSAsettitle>Binary Tree Chapter Exam</ODSAsettitle>
-<ODSAprereq "BinTree" \>
+<ODSAprereq "BinTree" />
 
 <p>
 This module contains "end of chapter" questions to review things
