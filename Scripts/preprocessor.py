@@ -2,6 +2,14 @@ import os
 import sys
 import re
 import datetime
+import shutil
+
+
+
+def copyImgCSS(modDir,targetDir):
+   shutil.copytree(modDir+'Images',targetDir+'/Images')
+   shutil.copy(modDir+'OpenDSA.css',targetDir+'/')
+   shutil.copy(modDir+'CC88x31.png',targetDir+'/')
 
 def modHeader(modDir, title, collection):
    nhead =[]
@@ -38,7 +46,7 @@ def modTitle(modName, modDir=''):
       return title
    except IOError:
       print 'Error no file for module <'+modName +'>!'
-      title = 'missing module'
+      title = modName
       return title
 
 def parse(filename, modDir, targetDir, col):
@@ -59,7 +67,12 @@ def parse(filename, modDir, targetDir, col):
       if '<ODSAref \"' in line:
          str =  re.split('ODSAref "', line, flags=re.IGNORECASE)[1]
          title = str.partition('"')[0]
-         line = line.replace('<ODSAref "'+title+'">','<a href="'+title+'.html">'+title+'.'+ modTitle(title, modDir)+'</a>')
+         mtitle = modTitle(title, modDir)
+         if mtitle =='': 
+            mtitle = title
+            line = line.replace('<ODSAref "'+title+'" />',mtitle)
+         else:
+            line = line.replace('<ODSAref "'+title+'" />','<a href="'+title+'.html">'+title+'.'+ mtitle+'</a>')
       newline.append(line)
    head = modHeader(modDir,title1, col)
    foot = modFooter(modDir)
@@ -109,6 +122,7 @@ def main(argv):
      modDir=argv[2]
      modDest=argv[3]
 
+  copyImgCSS(modDir, modDest)
   fileLst =  enumFile(modDir)
   for fl in fileLst:
      if os.path.splitext(fl)[1][1:] == 'mod':
