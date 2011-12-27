@@ -1,5 +1,5 @@
 <ODSAtitle>Binary Tree Node Implementations</ODSAtitle>
-<ODSAprereq "DesignPatterns />
+<ODSAprereq "DesignPatterns" />
 <ODSAprereq "Dictionary" />
 <ODSAprereq "BinTree" />
 <ODSAprereq "BinTreeNodeADT" />

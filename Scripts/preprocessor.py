@@ -4,6 +4,28 @@ import re
 import datetime
 import shutil
 
+from operator import itemgetter, attrgetter
+
+
+class modPreReq:
+   
+   def __init__(self,filename):
+      self.name =''
+      self.description=''
+      self.prereq=[]
+      self.prereqNum =0
+      fls = open(filename,'r')
+      data = fls.readlines()
+      fls.close()
+      self.name = os.path.basename(filename)
+      for line in data:
+         if '<ODSAsettitle>' in line:
+            str =  re.split('ODSAsettitle>', line, flags=re.IGNORECASE)[1]
+            self.description = str.partition('<')[0]
+         if '<ODSAprereq \"' in line:
+            str =  re.split('ODSAprereq "', line, flags=re.IGNORECASE)[1]
+            self.prereq.append(str.partition('"')[0])
+      self.prereqNum = len(self.prereq)
 
 
 def copyImgCSS(modDir,targetDir):
@@ -124,6 +146,16 @@ def main(argv):
 
   copyImgCSS(modDir, modDest)
   fileLst =  enumFile(modDir)
+  modList =[]
+  for fl in fileLst:
+     if os.path.splitext(fl)[1][1:] == 'mod':
+        x = modPreReq(fl)
+        modList.append(x)
+  modList1 = sorted(modList,key = attrgetter('prereqNum'))
+  for ml in modList1:
+     print ml.name
+     print ml.prereq
+ 
   for fl in fileLst:
      if os.path.splitext(fl)[1][1:] == 'mod':
         print "preprocessing " + fl
