@@ -28,11 +28,6 @@ class modPreReq:
       self.prereqNum = len(self.prereq)
 
 
-def copyImgCSS(modDir,targetDir):
-   shutil.copytree(modDir+'Images',targetDir+'/Images')
-   shutil.copy(modDir+'OpenDSA.css',targetDir+'/')
-   shutil.copy(modDir+'CC88x31.png',targetDir+'/')
-
 def modHeader(modDir, title, collection):
    nhead =[]
    hfile = open(modDir+'Header.txt','r')
@@ -144,7 +139,6 @@ def main(argv):
      modDir=argv[2]
      modDest=argv[3]
 
-  copyImgCSS(modDir, modDest)
   fileLst =  enumFile(modDir)
   modList =[]
   for fl in fileLst:

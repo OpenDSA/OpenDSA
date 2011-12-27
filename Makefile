@@ -1,5 +1,5 @@
 RM = rm -rf
-TARGT = Target
+TARGET = build
 
 all: target
 
@@ -15,4 +15,3 @@ target:
 	-mkdir $(TARGET)/Images
 	cp Modules/Images/* $(TARGET)/Images
 	python Scripts/preprocessor.py  -c="OpenDSA Textbook" Modules/ $(TARGET)
-
