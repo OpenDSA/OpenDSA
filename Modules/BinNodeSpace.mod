@@ -1,5 +1,6 @@
 <ODSAsettitle>Binary Tree Space Requirements</ODSAsettitle>
 <ODSAprereq "BinTreeNodeADT" \>
+<ODSAFullTheorem" \>
 
 <p>
 This module presents techniques for calculating the amount of
