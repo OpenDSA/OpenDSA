@@ -239,7 +239,7 @@ size allowed for the heap (the size of the array).
 </p>
 
 <p>
-Method <tt>heapsize<tt> returns the current size of the heap.
+Method <tt>heapsize</tt> returns the current size of the heap.
 <tt>H.isLeaf(pos)</tt> returns TRUE if position
 <tt>pos</tt> is a leaf in heap <tt>H</tt>, and FALSE otherwise.
 Members <tt>leftchild</tt>, <tt>rightchild</tt>,
