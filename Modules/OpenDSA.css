@@ -61,6 +61,18 @@ div section {
   border-top: 1px solid black;
 }
 
+figcaption { 
+  color:blue;
+}
+
+p.TODO {
+  color:red;
+}
+
+p.footertext { 
+  border-top: 1px solid black;
+}
+
 p.annotation {
   color:red;
 }

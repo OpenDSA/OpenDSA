@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAtitle>Binary Tree Node Implementations</ODSAtitle>
+<ODSAsettitle>Binary Tree Node Implementations</ODSAsettitle>
 <ODSAprereq "Dictionary" />
 <ODSAprereq "BinTree" />
 <ODSAprereq "BinTreeNodeADT" />
@@ -33,6 +33,7 @@ Figure <ODSAref "BinStPic" />
 illustrates the <tt>BSTNode</tt> implementation.
 </p>
 
+<figure>
 <pre>
 /** Binary tree node implementation: Pointers to children
     @param E The data element
@@ -73,20 +74,23 @@ class BSTNode<Key, E> implements BinNode<E> {
 }
 </pre>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "BinStPic" />
 A binary tree node class implementation.
-</p>
+</figcaption>
+</figure>
 
+<figure>
 <center>
 <img src="Images/BinLink.png" alt="Binary tree node implementation" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "BinLink" />
 Illustration of a typical pointer-based binary tree implementation,
 where each node stores two child pointers and a value.
-</p>
+</figcaption>
+</figure>
 
 <p>
 Some programmers find it convenient to add a pointer to the
@@ -123,14 +127,16 @@ Thus, there are many reasons why it can save space to have separate
 implementations for internal and leaf nodes.
 </p>
 
+<figure>
 <center>
 <img src="Images/DiffNode.png" alt="Expression Tree" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "DiffNodes" />
 An expression tree for 4<i>x</i>(2<i>x</i> + <i>a</i>) - <i>c</i>.
-</p>
+</figcaption>
+</figure>
 
 <p>
 As an example of a tree that stores different information at the leaf
@@ -165,7 +171,7 @@ with subclasses defined for the internal and leaf nodes.
 The base class of Figure <ODSAref "VarNodeI" /> is named
 <tt>VarBinNode</tt>.
 It includes a virtual member function named
-<tt>isLeaf</i>, which indicates the node type.
+<tt>isLeaf</tt>, which indicates the node type.
 Subclasses for the internal and leaf node types each implement
 <tt>isLeaf</tt>.
 Internal nodes store child pointers of the base class type;
@@ -174,6 +180,7 @@ Whenever a node is examined, its version of <tt>isLeaf</tt> indicates
 the node's subclass.
 </p>
 
+<figure>
 <pre>
 /** Base class for expression tree nodes */
 public interface VarBinNode {
@@ -217,12 +224,13 @@ public static void traverse(VarBinNode rt) {
 }
 </pre>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "VarNodeI" />
 An implementation for separate internal and leaf node
 representations using Java class inheritance
 and virtual functions.
-</p>
+</figcaption>
+</figure>
 
 <p>
 Figure <ODSAref "VarNodeI" /> includes two subclasses derived from

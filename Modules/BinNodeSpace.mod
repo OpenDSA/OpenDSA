@@ -66,9 +66,11 @@ and because only internal nodes now have child pointers, the
 overhead fraction in this case will be approximately
 </p>
 
+<center>
 <img src="http://www.forkosh.com/mathtex.cgi?
 \frac{\frac{n}{2} (2P)}{\frac{n}{2} (2P) + Dn} = \frac{P}{P + D}."
    alt="" border=0 align="middle">.
+</center>
 
 <p>
 If <i>P</i> = <i>D</i>, the overhead drops to about one half of the
@@ -86,7 +88,7 @@ field while the leaf nodes store only a pointer to the data field.
 This implementation requires
 <img src="http://www.forkosh.com/mathtex.cgi?
 \frac{n}{2}2P + \frac{n}{2}(p+d)\)"
-   alt="" border=0 align="middle">.
+   alt="" border=0 align="middle">
 units of space.
 If <i>P</i> = <i>D</i>, then the overhead is
 3<i>P</i>/(3<i>P</i> + <i>D</i>) = 3/4.

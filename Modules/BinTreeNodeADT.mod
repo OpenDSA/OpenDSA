@@ -17,6 +17,7 @@ set or return a pointer to the right child,
 or indicate whether the node is a leaf.
 </p>
 
+<figure>
 <pre>
 /** ADT for binary tree nodes */
 public interface BinNode<E> {
@@ -35,9 +36,10 @@ public interface BinNode<E> {
 }
 </pre>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "BinNodeADT">
 A binary tree node ADT.
-</p>
+</figcaption>
+</figure>
 
 </div>

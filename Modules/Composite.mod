@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAtitle>Expression Tree Composite Design</ODSAtitle>
+<ODSAsettitle>Expression Tree Composite Design</ODSAsettitle>
 <ODSAprereq "DesignPatterns" />
 <ODSAprereq "BinTreeImp" />
 
@@ -22,6 +22,7 @@ on the root node, which in turn invokes <tt>traverse</tt> on its
 children. 
 </p>
 
+<figure>
 <pre>
 /** Base class: Composite */
 public interface VarBinNode {
@@ -69,14 +70,15 @@ public static void traverse(VarBinNode rt) {
 }
 </pre>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "VarNodeC" />
 A second implementation for separate internal and leaf node
 representations using Java class inheritance
 and virtual functions using the composite design pattern.
 Here, the functionality of <tt>traverse</tt> is
 embedded into the node subclasses.
-</p>
+</figcaption>
+</figure>
 
 <p>
 When comparing the implementations of Figures <ODSAref "VarNodeI" />

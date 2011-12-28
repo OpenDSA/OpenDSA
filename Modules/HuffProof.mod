@@ -41,17 +41,19 @@ However, this is impossible because <i>l</i><sub>1</sub> and
 <i>l</i><sub>2</sub> are the letters with least frequency.
 </p>
 
+<figure>
 <center>
 <img src="Images/HProof.png" alt="An impossible Huffman tree" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HuffProof" />
 An impossible Huffman tree, showing the situation where the two nodes 
 with least weight, <i>l</i><sub>1</sub> and <i>l</i><sub>2</sub>, are
 not the deepest nodes in the tree.
 Triangles represent subtrees.
-</p>
+</figcaption>
+</figure>
 
 <p class="theorem">
 Function <tt>buildHuff</tt> builds the Huffman tree with the minimum

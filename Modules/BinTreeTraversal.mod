@@ -24,9 +24,7 @@ This is called a <dfn>preorder traversal</dfn>.
 <p class="example">
 The preorder enumeration for the tree of
 Figure <ODSAref "BinExample" /> is
-
-<br/>
-<b>A B D C E G F H I</b>
+<b>A B D C E G F H I</b>.
 
 <br/>
 The first node printed is the root.
@@ -253,6 +251,21 @@ subtree greater than the value of <i>A</i>?
 see Module <ODSAref "BST" />.)
 Unfortunately, to make this decision we need to know some context
 that is not available just by looking at the node's parent or children.
+</p>
+
+<figure>
+<center>
+<img src="Images/BSTCheckFig.png" alt="Binary tree checking" />
+</center>
+
+<figcaption>
+<ODSAfig "BSTCheckFig" \>
+To be a binary search tree, the left child of the node with value 40
+must have a value between 20 and 40.
+</figcaption>
+</figure>
+
+<p>
 As shown by Figure <ODSAref "BSTCheckFig" />,
 it is not enough to verify that <i>A</i>'s left child has a value less
 than that of <i>A</i>, and that <i>A</i>'s right child has a greater
@@ -264,15 +277,6 @@ legal for a given node.
 That information might come from any of the node's ancestors.
 Thus, relevant range information must be passed down the tree.
 We can implement this function as follows.
-</p>
-
-<center>
-<img src="Images/BSTCheckFig.png" alt="Binary tree checking" />
-</center>
-
-<p class="caption">
-To be a binary search tree, the left child of the node with value 40
-must have a value between 20 and 40.
 </p>
 
 <pre>

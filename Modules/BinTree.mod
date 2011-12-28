@@ -79,11 +79,13 @@ An <dfn>internal</dfn> node is
 any node that has at least one non-empty child.
 </p>
 
+<figure>
 <center>
 <img src="Images/BinExamp.png" alt="An example binary tree" />
+<br/>
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "BinExample" />
 A binary tree.
 Node <i>A</i> is the root.
@@ -101,20 +103,24 @@ Nodes <i>A</i>, <i>B</i>, <i>C</i>, <i>E</i>, and <i>F</i> are
 internal nodes.
 The depth of <i>I</i> is 3.
 The height of this tree is 4.
-</p>
+</figcaption>
+</figure>
 
+<figure>
 <center>
 <img src="Images/BinDiff.png" alt="Two different binary trees" />
+<br/>
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "BinDiff" />
 Two different binary trees.
 (a) A binary tree whose root has a non-empty left child.
 (b) A binary tree whose root has a non-empty right child.
 (c) The binary tree of (a) with the missing right child made explicit.
 (d) The binary tree of (b) with the missing left child made explicit.
-</p>
+</figcaption>
+</figure>
 
 <p>
 Figure <ODSAref "BinExample" /> illustrates the various terms used to
@@ -140,16 +146,18 @@ except possibly level <i>d</i>-1 are completely full.
 The bottom level has its nodes filled in from the left side.
 </p>
 
+<figure>
 <center>
 <img src="Images/FullComp.png" alt="Full and complete binary trees" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "FullComplete" />
 Examples of full and complete binary trees.
 (a) This tree is full (but not complete).
 (b)~This tree is complete (but not full).
-</p>
+</figcaption>
+</figure>
 
 <p>
 Figure <ODSAref "FullComplete" /> illustrates the differences between

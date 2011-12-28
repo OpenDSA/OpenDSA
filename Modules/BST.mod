@@ -53,18 +53,21 @@ the resulting enumeration will be in
 sorted order from lowest to highest.
 </p>
 
+<figure>
 <center>
 <img src="Images/BSTShape.png" alt="Two Binary Search Trees" />
+<br/>
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "BSTShape" />
 Two Binary Search Trees for a collection of values.
 Tree (a) results if values are inserted
 in the order 37, 24, 42, 7, 2, 40, 42, 32, 120.
 Tree (b) results if the same values are inserted in the
 order 120, 42, 42, 7, 2, 32, 37, 24, 40.
-</p>
+</figcaption>
+</figure>
 
 <p>
 Figure <ODSAref "BSTClass" /> shows a class declaration for the BST
@@ -80,6 +83,7 @@ Our BST implementation will handle comparison by explicitly storing
 a key separate from the data value at each node of the tree.
 </p>
 
+<figure>
 <pre>
 /** Binary Search Tree implementation for Dictionary ADT */
 class BST<Key extends Comparable<? super Key>, E>
@@ -132,10 +136,11 @@ class BST<Key extends Comparable<? super Key>, E>
 }
 </pre>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "BSTClass" />
 The binary search tree implementation.
-</p>
+</figcaption>
+</figure>
 
 <p>
 To find a record with key value <i>K</i> in a BST, begin at the root.
@@ -201,30 +206,24 @@ Inserting a record with key value <i>k</i> requires that we first find
 where that record would have been if it were in the tree.
 This takes us to either a leaf node, or to an internal node with no
 child in the appropriate direction.
+<sup><a href="#fn1" id="r1">[1]</a></sup>
 </p>
 
-<p class="footnote">
-This assumes that no node
-has a key value equal to the one being inserted.
-If we find a node that duplicates the key value to be inserted,
-we have two options.
-If the application does not allow nodes with equal keys, then this
-insertion should be treated as an error (or ignored).
-If duplicate keys are allowed, our convention will be to insert the
-duplicate in the right subtree.
-</p>
-
+<figure>
 <center>
 <img src="Images/BSTAdd.png" alt="Inserting a node into a BST" />
+<br/>
 </center>
 
-<p class="caption">
+<figcaption>
+<ODSAfig "BSTAdd" \>
 An example of BST insertion.
 A record with value 35 is inserted into the BST of
 Figure <ODSAref "BSTShape" />(a).
 The node with value 32 becomes the parent of the new node
 containing~35.
-</p>
+</figcaption>
+</figure>
 
 <p>
 Call this node <i>R'</i>.
@@ -324,17 +323,21 @@ node containing the minimum value.
 This is indicated in Figure <ODSAref "DelMin" /> by a dashed line.
 </p>
 
+<figure>
 <center>
 <img src="Images/DelMin.png" alt="Deleting the node with minimum value" />
+<br/>
 </center>
 
-<p class="DelMin">
+<figcaption>
+<ODSAfig "DelMin" \>
 An example of deleting the node with minimum value.
 In this tree, the node with minimum value, 5, is the left child of the
 root.
 Thus, the root's <tt>left</tt> pointer is changed to point to 5's right
 child.
-</p>
+</figcaption>
+</figure>
 
 <p>
 A pointer to the node containing the minimum-valued element is stored
@@ -402,16 +405,20 @@ We then substitute 40 as the new value for the root node.
 Figure <ODSAref "Remove" /> illustrates this process.
 </p>
 
+<figure>
 <center>
 <img src="Images/Remove.png" alt="Removing a node from the BST" />
+<br/>
 </center>
 
-<p class="caption">
+<figcaption>
+<ODSAfig "Remove" \>
 An example of removing the value 37 from the BST.
 The node containing this value has two children.
 We replace value 37 with the least value from the
 node's right subtree, in this case 40.
-</p>
+</figcaption>
+</figure>
 
 <p>
 When duplicate node values do not appear in the tree, it makes no
@@ -527,5 +534,19 @@ Two examples are the AVL tree and the splay tree.
 Other search trees are guaranteed to remain
 balanced, such as the 2-3 Tree.
 </p>
+
+<section>
+<p id="fn1"><a href="#r1">[1]</a>
+This assumes that no node
+has a key value equal to the one being inserted.
+If we find a node that duplicates the key value to be inserted,
+we have two options.
+If the application does not allow nodes with equal keys, then this
+insertion should be treated as an error (or ignored).
+If duplicate keys are allowed, our convention will be to insert the
+duplicate in the right subtree.
+</p>
+</section>
+
 
 </div>

@@ -43,23 +43,24 @@ This means there is no overhead to the array implementation if the
 array is selected to be of size <i>n</i> for a tree of <i>n</i>
 nodes.
 
-
+<figure>
 <center>
 <img src="Images/BinArray.png" alt="Complete binary tree stored in an array" />
 </center>
 
-<p class=TODO">
+<p class="TODO">
 Generate image for Figure 5.12(b) from table.
 </p>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "BinArray" />
 A complete binary tree and its array implementation.
 (a) The complete binary tree with twelve nodes.
 Each node has been labeled with its position in the tree.
 (b) The positions for the relatives of each node.
 A dash indicates that the relative does not exist.
-</p>
+</figcaption>
+</figure>
 
 <p>
 The formulae for calculating the array indices of the various

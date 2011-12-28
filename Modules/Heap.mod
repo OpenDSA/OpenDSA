@@ -105,6 +105,7 @@ actually a tree structure, while the typical physical implementation
 uses an array.
 </p>
 
+<figure>
 <pre>
 /** Max-heap implementation */
 public class MaxHeap<E extends Comparable<? super E>> {
@@ -199,10 +200,11 @@ public class MaxHeap<E extends Comparable<? super E>> {
 }
 </pre>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HeapClass" />
 An implementation for the heap.
-</p>
+</figcaption>
+</figure>
 
 <p>
 Figure <ODSAref "HeapClass" /> shows an implementation for
@@ -295,18 +297,20 @@ one at a time, will take &Theta;(<i>n</i> log <i>n</i>) time in the
 worst case.
 </p>
 
+<figure>
 <center>
 <img src="Images/HeapBld.png" alt="Two series of exchanges to build a heap" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HeapBuild" />
 Two series of exchanges to build a max-heap.
 (a) This heap is built by a series of nine exchanges in the order
 (4-2), (4-1), (2-1), (5-2), (5-4), (6-3), (6-5), (7-5), (7-6).
 (b) This heap is built by a series of four exchanges in the order
 (5-2), (7-3), (7-1), (6-1).
-</p>
+</figcaption>
+</figure>
 
 <p>
 If all <i>n</i> values are available at the beginning of the
@@ -374,30 +378,34 @@ The siftdown operation is illustrated by
 Figure <ODSAref "SiftPic" />.
 </p>
 
+<figure>
 <center>
 <img src="Images/HeapInd.png" alt="An example of heap building" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HeapInduct" />
 Final stage in the heap-building algorithm.
 Both subtrees of node <i>R</i> are heaps.
 All that remains is to push <i>R</i> down to its proper level in the
 heap.
-</p>
+</figcaption>
+</figure>
 
+<figure>
 <center>
 <img src="Images/SiftPic.png" alt="The siftdown operation" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "SiftPic" />
 The siftdown operation.
 The subtrees of the root are assumed to be heaps.
 (a) The partially completed heap.
 (b) Values 1 and 7 are swapped.
 (c) Values 1 and 6 are swapped to form the final heap.
-</p>
+</figcaption>
+</figure>
 
 <p>
 This approach assumes that the subtrees are already heaps,

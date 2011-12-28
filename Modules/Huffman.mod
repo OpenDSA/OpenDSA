@@ -54,6 +54,7 @@ relatively common letters, should be storable in less space than words
 such as ``MUCK,'' which are composed of relatively uncommon letters.
 </p>
 
+<figure>
 <img src="http://www.forkosh.com/mathtex.cgi?
 \begin{tabular}{c|c||c|c}
 \multicolumn{1}{c}{\textbf{Letter}} &
@@ -77,13 +78,14 @@ M & 24 & Z &  2\\
 \end{tabular}"
    alt="" border=0 align="middle">.
 
-<p class="caption">
+<figcaption>
 <ODSAfig "Freq" />
 Relative frequencies for the 26 letters of the alphabet as they
 appear in a selected set of English documents.
 "Frequency" represents the expected frequency of occurrence per
 1000 letters, ignoring case.
-</p>
+</figcaption>
+</figure>
 
 <p>
 If some characters are used more frequently than others, is
@@ -149,6 +151,7 @@ This process is repeated until all of the partial Huffman trees have
 been combined into one.
 </p>
 
+<figure>
 <img src="http://www.forkosh.com/mathtex.cgi?
 \begin{tabular}{|l|cccccccc|}
 \hline
@@ -158,20 +161,23 @@ been combined into one.
 \end{tabular}"
    alt="" border=0 align="middle">
 
-<p class="caption">
+<figcaption>
 <ODSAfig "FreqExamp" />
 The relative frequencies for eight selected letters.
-</p>
+</figcaption>
+</figure>
 
+<figure>
 <center>
 <img src="Images/HuffTree.png" alt="Building a Huffman tree" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HuffTree" />
 The first five steps of the building process for a sample Huffman
 tree.
-</p>
+</figcaption>
+</figure>
 
 <p class="example">
 Figure <ODSAref "HuffTree" /> illustrates part of the Huffman tree
@@ -210,15 +216,18 @@ built.
 This tree is shown in Figure <ODSAref "HuffCode" />.
 </p>
 
+<figure>
 <center>
 <img src="Images/HuffCode.png" alt="A Huffman tree" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HuffCode" />
 A Huffman tree for the letters of Figure <ODSAref "FreqExamp" />.
-</p>
+</figcaption>
+</figure>
 
+<figure>
 <pre>
 /** Huffman tree node implementation: Base class */
 public interface HuffBaseNode<E> {
@@ -270,12 +279,13 @@ class HuffInternalNode<E> implements HuffBaseNode<E> {
 }
 </pre>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HuffNode" />
 Implementation for Huffman tree nodes.
 Internal nodes and leaf nodes are represented by separate classes,
 each derived from an abstract base class.
-</p>
+</figcaption>
+</figure>
 
 <p>
 Figure <ODSAref "HuffNode" /> shows an implementation for Huffman tree
@@ -322,6 +332,7 @@ class HuffTree<E> implements Comparable<HuffTree<E>>{
 Class declarations for the Huffman tree.
 </p>
 
+<figure>
 <pre>
 static HuffTree<Character> buildTree() {
   HuffTree tmp1, tmp2, tmp3 = null;
@@ -337,7 +348,7 @@ static HuffTree<Character> buildTree() {
 }
 </pre>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HuffBuild" />
 Implementation for the Huffman tree construction function.
 <tt>buildHuff</tt> takes as input <tt>fl</tt>, the min-heap
@@ -351,7 +362,8 @@ and <tt>temp2</tt>.
 A tree is created (<tt>temp3</tt>) such that the left and right subtrees 
 are <tt>temp1</tt> and <tt>temp2</tt>, respectively.
 Finally, <tt>temp3</tt> is returned to <tt>fl</tt>.
-</p>
+</figure>
+</figcaption>
 
 <h2>Assigning and Using Huffman Codes</h2>
 
@@ -371,6 +383,7 @@ The code for K is `111101' because the path to the node for K
 takes four right branches, then a left, and finally one last right.
 Figure <ODSAref "TheCodes" /> lists the codes for all eight letters.
 
+<figure>
 <img src="http://www.forkosh.com/mathtex.cgi?
 \begin{tabular}{c|c|l|c}
 \multicolumn{1}{c}{\textbf{Letter}} &
@@ -389,10 +402,11 @@ Z & 2 & 111100 & 6\\
 \end{tabular}"
    alt="" border=0 align="middle">
 
-<p class="caption">
+<figcaption>
 <ODSAfig "TheCodes" />
 The Huffman codes for the letters of Figure <ODSAref "FreqExamp" />.
-</p>
+</figcaption>
+</figure>
 
 <p>
 Given codes for the letters, it is a simple matter to
@@ -521,12 +535,11 @@ where <i>f</i><sub>i</sub> is the (relative) frequency of letter
 <i>i</i> and <i>f</i><sub>T</sub> is the total for all letter
 frequencies.
 For this set of frequencies, the expected cost per letter is
-</p>
-
 <img src="http://www.forkosh.com/mathtex.cgi?
 [(1 \times 120) + (3 \times 121) + (4 \times 32) +
   (5 \times 24) + (6 \times 9)]/306 = 785/306 \approx 2.57"
-   alt="" border=0 align="middle">
+   alt="" border=0 align="middle">.
+</p>
 
 <p>
 A fixed-length code for these eight characters would require

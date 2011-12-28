@@ -35,15 +35,17 @@ binary tree implementation whose leaves require a different amount of
 space from its internal nodes.
 </p>
 
+<figure>
 <center>
 <img src="Images/OneLeaf.png"
 alt="A tree containing many internal nodes and a single leaf." />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "OneLeaf" />
 A tree containing many internal nodes and a single leaf.
-</p>
+</figcaption>
+</figure>
 
 <p class="theorem">
 <ODSAtheorem "FullTree" />
