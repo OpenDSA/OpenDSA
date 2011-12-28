@@ -184,9 +184,9 @@ access to the <tt>BinNode</tt> class.
 Another approach is for the tree class to supply a generic traversal
 function which takes the visitor as a function parameter.
 This is known as the
-<ODSAdef "visitor design pattern" \>.
+<ODSAdef "visitor design pattern" />.
 A major constraint on this approach is that the
-<ODSAdef "signature" \> for all visitor functions, that is,
+<ODSAdef "signature" /> for all visitor functions, that is,
 their return type and parameters, must be fixed in advance.
 Thus, the designer of the generic traversal function must be able to
 adequately judge what parameters and return type will likely be needed
@@ -249,10 +249,10 @@ for every node <i>A</i>, are all nodes in <i>A</i>'s left subtree
 less than the value of <i>A</i>, and are all nodes in <i>A</i>'s right
 subtree greater than the value of <i>A</i>?
 (This happens to be the definition for a binary search tree,
-see Module <ODSAref "BST" \>.)
+see Module <ODSAref "BST" />.)
 Unfortunately, to make this decision we need to know some context
 that is not available just by looking at the node's parent or children.
-As shown by Figure <ODSAref "BSTCheckFig" \>,
+As shown by Figure <ODSAref "BSTCheckFig" />,
 it is not enough to verify that <i>A</i>'s left child has a value less
 than that of <i>A</i>, and that <i>A</i>'s right child has a greater
 value.

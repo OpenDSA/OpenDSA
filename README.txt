@@ -1,5 +1,7 @@
 This is the working directory for the OpenDSA project.
 
+Makefile: Typing "make" will generate the target directory with HTML files.
+
 Modules: The source directory for .mod files
 
 Doc: Documentation. Currently contains the preprocessor spec.
