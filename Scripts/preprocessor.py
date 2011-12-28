@@ -81,7 +81,7 @@ def parse(filename, modDir, targetDir, col):
          str =  re.split('ODSAdef>', line, re.IGNORECASE)[1]
          title = str.partition('<')[0]
          line = line.replace('<ODSAdef>'+title+'</ODSAdef>','<b>'+title+'</b>')
-     if '<ODSAref \"' in line:
+      if '<ODSAref \"' in line:
          str =  re.split('ODSAref "', line, re.IGNORECASE)[1]
          title = str.partition('"')[0]
          mtitle = modTitle(title, modDir)
@@ -146,9 +146,9 @@ def main(argv):
         x = modPreReq(fl)
         modList.append(x)
   modList1 = sorted(modList,key = attrgetter('prereqNum'))
-  #for ml in modList1:
-  #   print ml.name
-  #   print ml.prereq
+  for ml in modList1:
+     print ml.name
+     print ml.prereq
  
   for fl in fileLst:
      if os.path.splitext(fl)[1][1:] == 'mod':
