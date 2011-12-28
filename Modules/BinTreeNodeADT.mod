@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>Binary Tree Node ADT</ODSAsettitle>
 <ODSAprereq "BinTree" />
 
@@ -38,3 +39,5 @@ public interface BinNode<E> {
 <ODSAfig "BinNodeADT">
 A binary tree node ADT.
 </p>
+
+</div>

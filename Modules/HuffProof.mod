@@ -1,10 +1,11 @@
+<div id="content">
 <ODSAsettitle>Proof of Optimality for Huffman Coding</ODSAsettitle>
 <ODSAprereq "Huffman" />
 <ODSAprereq "Induction" />
 
 <p>
 Huffman tree building is an example of a
-<ODSAdef "greedy algorithm" />.
+<dfn>greedy algorithm</dfn>.
 At each step, the algorithm makes a "greedy" decision to merge
 the two subtrees with least weight.
 This makes the algorithm simple, but does it give the desired result?
@@ -109,3 +110,5 @@ the Huffman tree with minimum external path length.
 </li>
 
 </ul>
+
+</div>

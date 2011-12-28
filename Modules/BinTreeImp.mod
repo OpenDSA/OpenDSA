@@ -1,5 +1,5 @@
+<div id="content">
 <ODSAtitle>Binary Tree Node Implementations</ODSAtitle>
-<ODSAprereq "DesignPatterns" />
 <ODSAprereq "Dictionary" />
 <ODSAprereq "BinTree" />
 <ODSAprereq "BinTreeNodeADT" />
@@ -156,9 +156,9 @@ At the same time, leaf nodes need not store child pointers.
 <p>
 Java allows us to differentiate leaf from internal
 nodes through the use of class inheritance.
-A <ODSAdef "base class" /> provides a general definition for an
+A <dfn>base class</dfn> provides a general definition for an
 object,
-and a <ODSAdef "subclass" /> modifies a base class to add more
+and a <dfn>subclass</dfn> modifies a base class to add more
 detail.
 A base class can be declared for binary tree nodes in general,
 with subclasses defined for the internal and leaf nodes.
@@ -242,131 +242,4 @@ type-casting the base class pointer as appropriate, as shown in
 function <tt>traverse</tt>.
 </p>
 
-<p>
-There is another approach that we can take to represent separate leaf
-and internal nodes, also using a virtual base class and separate node
-classes for the two types.
-This is to implement nodes using the
-<ODSAdef "composite design pattern" />.
-This approach is noticeably different from the one of
-Figure <ODSAref "VarNodeI" /> in that the node classes themselves
-implement the functionality of <tt>traverse</tt>.
-Figure <ODSAref "VarNodeC" /> shows the implementation.
-Here, base class <tt>VarBinNode</tt> declares a member function
-<tt>traverse</tt> that each subclass must implement.
-Each subclass then implements its own appropriate behavior for its
-role in a traversal.
-The whole traversal process is called by invoking <tt>traverse</tt>
-on the root node, which in turn invokes <tt>traverse</tt> on its
-children. 
-</p>
-
-<pre>
-/** Base class: Composite */
-public interface VarBinNode {
-  public boolean isLeaf();
-  public void traverse();
-}
-
-/** Leaf node: Composite */
-class VarLeafNode implements VarBinNode {
-  private String operand;                 // Operand value
-
-  public VarLeafNode(String val) { operand = val; }
-  public boolean isLeaf() { return true; }
-  public String value() { return operand; }
-
-  public void traverse() {
-    Visit.VisitLeafNode(operand);
-  }
-}
-
-/** Internal node: Composite */
-class VarIntlNode implements VarBinNode { // Internal node
-  private VarBinNode left;                // Left child
-  private VarBinNode right;               // Right child
-  private Character operator;             // Operator value
-
-  public VarIntlNode(Character op,
-                     VarBinNode l, VarBinNode r)
-    { operator = op; left = l; right = r; }
-  public boolean isLeaf() { return false; }
-  public VarBinNode leftchild() { return left; }
-  public VarBinNode rightchild() { return right; }
-  public Character value() { return operator; }
-
-  public void traverse() {
-    Visit.VisitInternalNode(operator);
-    if (left != null) left.traverse();
-    if (right != null) right.traverse();
-  }
-}
-
-/** Preorder traversal */
-public static void traverse(VarBinNode rt) {
-  if (rt != null) rt.traverse();
-}
-</pre>
-
-<p class="caption">
-<ODSAfig "VarNodeC" />
-A second implementation for separate internal and leaf node
-representations using Java class inheritance
-and virtual functions using the composite design pattern.
-Here, the functionality of <tt>traverse</tt> is
-embedded into the node subclasses.
-</p>
-
-<p>
-When comparing the implementations of Figures <ODSAref "VarNodeI" />
-and <ODSAref "VarNodeC" />, each has advantages and disadvantages.
-The first does not require that the node classes know about
-the <tt>traverse</tt> function.
-With this approach, it is easy to add new methods to the tree class
-that do other traversals or other operations on nodes of the tree.
-However, we see that <tt>traverse</tt> in
-Figure <ODSAref "VarNodeI" /> does 
-need to be familiar with each node subclass.
-Adding a new node subclass would therefore require modifications to
-the <tt>traverse</tt> function.
-In contrast, the approach of Figure <ODSAref "VarNodeC" /> requires
-that any new operation on the tree that requires a traversal also be
-implemented in the node subclasses.
-On the other hand, the approach of Figure <ODSAref "VarNodeC" />
-avoids the need for the <tt>traverse</tt> function to know
-anything about the distinct abilities of the node subclasses.
-Those subclasses handle the responsibility of performing a traversal
-on themselves.
-A secondary benefit is that there is no need for <tt>traverse</tt> to
-explicitly enumerate all of the different node subclasses,
-directing appropriate action for each.
-With only two node classes this is a minor point.
-But if there were many such subclasses, this could become a bigger
-problem.
-A disadvantage is that the traversal operation must not be called on a
-NULL pointer, because there is no object to catch the call.
-This problem could be avoided by using a flyweight
-(see Module <ODSAref "DesignPatterns" />) to implement empty nodes.
-</p>
-
-<p>
-Typically, the version of Figure <ODSAref "VarNodeI" /> would be
-preferred in this example if <tt>traverse</tt> is a member function of
-the tree class, and if the node subclasses are hidden from users of
-that tree class.
-On the other hand, if the nodes are objects that have meaning
-to users of the tree separate from their existence as nodes in the
-tree, then the version of Figure <ODSAref "VarNodeC" /> might be
-preferred because hiding the internal behavior of the nodes becomes
-more important.
-</p>
-
-<p>
-Another advantage of the composite design is that implementing each
-node type's functionality might be easier.
-This is because you can focus solely on the information passing and
-other behavior needed by this node type to do its job.
-This breaks down the complexity that many programmers feel overwhelmed
-by when dealing with complex information flows related to recursive
-processing.
-</p>
+</div>

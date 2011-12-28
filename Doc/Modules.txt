@@ -65,15 +65,16 @@ collection.
 The result will be to place the following text into the HTML file:
 "<a href="{collectionURL}/{module}.html">{modulenumber}</a>".
 
-<ODSAdef "{phrase}" /> defines a word or phrase to add to the
+<dfn>{phrase}</dfn> defines a word or phrase to add to the
 glossary.
 The glossary is a separate file that is created as part of
 processing the .mod file collection.
-Each word in the glossary appears along with its module tite,
+Each word in the glossary appears along with its module title,
 and has a link back to the point in the module
-where the OSDAdef was placed.
-In the .mod file, all it does is put <b></b> tags around {word}.
-It is OK if the same word or phrase is "defined" multiple times.
+where the <dfn> tag was placed.
+It is OK if the same word or phrase is "defined" multiple times, there
+will simply be multiple appearances of the word in the glossary.
+For example, "edge" can be defined both for trees and for graphs.
 The glossary terms should appear in alphabetical order.
 
 <ODSAif "{module}"> {HTML} </ODSAif>

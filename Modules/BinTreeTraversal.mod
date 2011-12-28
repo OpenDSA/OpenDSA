@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>Binary Tree Traversals</ODSAsettitle>
 <ODSAprereq "BinTree" />
 <ODSAprereq "BinTreeNodeADT" />
@@ -8,16 +9,16 @@ Often we wish to process a binary tree by "visiting" each of its
 nodes, each time performing a specific action such as printing the
 contents of the node.
 Any process for visiting all of the nodes in some order is
-called a <ODSAdef "traversal" />.
+called a <dfn>traversal</dfn>.
 Any traversal that lists every node in the tree exactly once is
-called an <ODSAdef "enumeration" /> of the tree's nodes.
+called an <dfn>enumeration</dfn> of the tree's nodes.
 Some applications do not require that the nodes be visited in any
 particular order as long as each node is visited precisely once.
 For other applications, nodes must be visited in an order that
 preserves some relationship.
 For example, we might wish to make sure that we visit any given node
 <em>before</em> we visit its children.
-This is called a <ODSAdef "preorder traversal" />.
+This is called a <dfn>preorder traversal</dfn>.
 </p>
 
 <p class="example">
@@ -42,7 +43,7 @@ We would like to delete the children of a node before deleting the
 node itself.
 But to do that requires that the children's children be deleted
 first, and so on.
-This is called a <ODSAdef "postorder traversal" />.
+This is called a <dfn>postorder traversal</dfn>.
 </p>
 
 <p class="example">
@@ -52,7 +53,7 @@ is <b>D B G E H I F C A</b>.
 </p>
 
 <p>
-An <ODSAdef "inorder traversal" /> first visits the left child
+An <dfn>inorder traversal</dfn> first visits the left child
 (including its entire subtree), then visits the node, and finally
 visits the right child (including its entire
 subtree).
@@ -184,9 +185,9 @@ access to the <tt>BinNode</tt> class.
 Another approach is for the tree class to supply a generic traversal
 function which takes the visitor as a function parameter.
 This is known as the
-<ODSAdef "visitor design pattern" />.
+<dfn>visitor design pattern</dfn>.
 A major constraint on this approach is that the
-<ODSAdef "signature" /> for all visitor functions, that is,
+<dfn>signature</dfn> for all visitor functions, that is,
 their return type and parameters, must be fixed in advance.
 Thus, the designer of the generic traversal function must be able to
 adequately judge what parameters and return type will likely be needed
@@ -286,3 +287,5 @@ boolean checkBST(BinNode<Integer> rt,
   return checkBST(rt.right(), rootkey, high);
 }
 </pre>
+
+</div>

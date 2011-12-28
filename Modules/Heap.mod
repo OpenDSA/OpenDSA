@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>Heaps and Priority Queues</ODSAsettitle>
 <ODSAprereq "CompleteTree" />
 <ODSAprereq "Induction" />
@@ -11,9 +12,9 @@ next the "most critical" patient rather than the one who arrived
 first.
 When scheduling programs for execution in a multitasking
 operating system, at any given moment there might be several programs
-(usually called <ODSAdef "jobs" /> ready to run.
+(usually called <dfn>jobs</dfn> ready to run.
 The next job selected is the one with the highest
-<ODSAdef "priority" />. 
+<dfn>priority</dfn>. 
 Priority is indicated by a particular value associated with the job
 (and might change while the job remains in the wait list).
 </p>
@@ -36,20 +37,15 @@ have good performance for this special application.
 </p>
 
 <p>
-This section presents the <ODSAdef "heap" />
-data structure.
-(Note that the term "heap" is also sometimes used to refer to a memory
-pool.
-<ODSAif>
-(See Module <ODSAref "MemMan" />.}
-</ODSAif>
+This section presents the <dfn>heap</dfn>
+data structure. <sup><a href="#fn1" id="r1">[1]</a></sup>
 A heap is defined by two properties.
 First, it is a complete binary tree,
 so heaps are nearly always implemented using
 the array representation for complete binary trees presented
 in Module <ODSAref "CompleteTree" />.
 Second, the values stored in a heap are
-<ODSAdef "partially ordered" />.
+<dfn>partially ordered</dfn>.
 This means that there is a relationship between the value stored at
 any node and the values of its children.
 There are two variants of the heap, depending on the definition of
@@ -57,7 +53,7 @@ this relationship.
 </p>
 
 <p>
-A <ODSAdef "max-heap" /> has the property that every node stores a
+A <dfn>max-heap</dfn> has the property that every node stores a
 value that is <em>greater</em> than or equal to the value of either of
 its children.
 Because the root has a value greater than or equal to its children,
@@ -66,7 +62,7 @@ root stores the maximum of all values in the tree.
 </p>
 
 <p>
-A <ODSAdef "min-heap" /> has the property that every node stores a
+A <dfn>min-heap</dfn> has the property that every node stores a
 value that is <em>less</em>
 than or equal to that of its children.
 Because the root has a value less than or equal to its children, which
@@ -82,7 +78,7 @@ subtree of the root are greater than the values for every node of the
 right subtree.
 We can contrast BSTs and heaps by the strength of their ordering
 relationships.
-A BST defines a <ODSAdef "total order" /> on its nodes in that,
+A BST defines a <dfn>total order</dfn> on its nodes in that,
 given the positions for any two nodes in the tree, the one to the
 "left" (equivalently, the one appearing earlier in an inorder
 traversal) has a smaller key value than the one to the "right".
@@ -501,3 +497,15 @@ deleted from the heap and reinserted with its new priority.
 Modules <ODSAref "SSSP" /> and <ODSAref "PrimsSec" /> present
 applications for a priority queue with priority updating.
 </p>
+
+<section>
+<p id="fn1"><a href="#r1">[1]</a>
+Note that the term "heap" is also sometimes used to refer to a memory
+pool.
+<ODSAif>
+(See Module <ODSAref "MemMan" />.)
+</ODSAif>
+</p>
+</section>
+
+</div>

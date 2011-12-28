@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>Huffman Coding Trees</ODSAsettitle>
 <ODSAprereq "BinTreeImp" />
 <ODSAprereq "SpaceBounds" />
@@ -25,17 +26,14 @@ each character.
 For example, it takes &lceil; log 128 &rceil;
 or seven bits to provide the 128~unique codes needed to represent the
 128~symbols of the ASCII character set.
-(The ASCII standard is eight bits, not seven, even though there are
-only 128 characters represented.
-The eighth bit is used either to check for transmission errors, or to
-support ``extended'' ASCII codes with an additional 128 characters.)
+<sup><a href="#fn1" id="r1">[1]</a></sup>
 </p>
 
 <p>
 The requirement for &lceil; log <i>n</i> &rceil; bits to represent
 <i>n</i> unique code values assumes that all codes will be the same
 length, as are ASCII codes.
-This is called a <ODSAdef "fixed-length" /> coding scheme.
+This is called a <dfn>fixed-length</dfn> coding scheme.
 If all characters were used equally often, then a fixed-length coding
 scheme is the most space efficient method.
 However, you are probably aware that not all characters are used
@@ -96,20 +94,20 @@ this might be worthwhile if such characters appear rarely enough.
 This concept is at the heart of file compression techniques in common
 use today.
 The next section presents one such approach to assigning
-<ODSAdef "variable-length" /> codes, called Huffman coding.
+<dfn>variable-length</dfn> codes, called Huffman coding.
 While it is not commonly used in its simplest form for file
 compression (there are better methods), Huffman coding gives
 the flavor of such coding schemes.
 One motivation for studying Huffman coding is because it provides our
 first opportunity to see a type of tree structure referred to as a
-<ODSAdef "search trie" />
+<dfn>search trie</dfn>
 </p>
 
 <h2>Building Huffman Coding Trees</h2>
 
 <p>
 Huffman coding assigns codes to characters such that the length of
-the code depends on the relative frequency or <ODSAdef "weight" /> of
+the code depends on the relative frequency or <dfn>weight</dfn> of
 the corresponding character.
 Thus, it is a variable-length code.
 If the estimated frequencies for letters match
@@ -117,14 +115,14 @@ the actual frequency found in an encoded message, then the
 length of that message will typically be less than if a fixed-length
 code had been used.
 The Huffman code for each letter is derived from a full
-binary tree called the <ODSAdef "Huffman coding tree" />,
-or simply the <ODSAdef "Huffman tree" />.
+binary tree called the <dfn>Huffman coding tree</dfn>,
+or simply the <dfn>Huffman tree</dfn>.
 Each leaf of the Huffman tree corresponds to a letter, and we define
 the weight of the leaf node to be the weight (frequency) of its
 associated letter.
 The goal is to build a tree with the
-<ODSAdef "minimum external path weight" />.
-Define the <ODSAdef "weighted path length" /> of a leaf to be
+<dfn>minimum external path weight</dfn>.
+Define the <dfn>weighted path length</dfn> of a leaf to be
 its weight times its depth.
 The binary tree with minimum external path weight is the one with the
 minimum sum of weighted path lengths for the given set of leaves.
@@ -195,10 +193,7 @@ the letters are ordered by frequency as
 <p>
 Because the first two letters on the list are Z and K, they are
 selected to be the first trees joined together.
-(Note that for clarity, the examples for building Huffman
-trees show a sorted list to keep the letters ordered by frequency.
-But a real implementation would use a heap to implement the priority
-queue for efficiency.)
+<sup><a href="#fn2" id="r2">[2]</a></sup>
 They become the children of a root node with weight 9.
 Thus, a tree whose root has weight 9 is placed back on the list, where
 it takes up the first position.
@@ -445,7 +440,7 @@ last two letters are C and K, spelling the word "DUCK."
 
 <p>
 A set of codes is said to meet
-the <ODSAdef "prefix property" /> if no code in the set is the prefix
+the <dfn>prefix property</dfn> if no code in the set is the prefix
 of another.
 The prefix property guarantees that there will be no ambiguity
 in how a bit string is decoded.
@@ -602,7 +597,25 @@ encountered when going down the tree.
 But the splits in the key space are predetermined for the Huffman
 tree.
 Search tree structures whose splitting points in the key space are
-predetermined are given the special name <ODSAdef "trie" /> to
+predetermined are given the special name <dfn>trie</dfn> to
 distinguish them from the type of search tree (like the BST) whose
 splitting points are determined by the data.
 </p>
+
+<section>
+<p id="fn1"><a href="#r1">[1]</a>
+The ASCII standard is eight bits, not seven, even though there are
+only 128 characters represented.
+The eighth bit is used either to check for transmission errors, or to
+support ``extended'' ASCII codes with an additional 128 characters.
+</p>
+
+<p id="fn2"><a href="#r2">[2]</a>
+Note that for clarity, the examples for building Huffman
+trees show a sorted list to keep the letters ordered by frequency.
+But a real implementation would use a heap to implement the priority
+queue for efficiency.
+</p>
+</section>
+
+</div>

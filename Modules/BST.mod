@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>Binary Search Trees</ODSAsettitle>
 <ODSAprereq "BinTreeImp" />
 <ODSAprereq "Dictionary" />
@@ -37,7 +38,7 @@ which allows an improved solution to this problem.
 
 <p>
 A BST is a binary tree that conforms to the following condition, known 
-as the <ODSAdef "Binary Search Tree Property" />.
+as the <dfn>Binary Search Tree Property</dfn>.
 All nodes stored in the left
 subtree of a node whose key value is <i>K</i> have key values less
 than <i>K</i>.
@@ -470,7 +471,7 @@ removed, or in the case when this node has two children,
 the depth of the node with smallest value in its right subtree. 
 Thus, in the worst case, the cost for any one of these operations is
 the depth of the deepest node in the tree.
-This is why it is desirable to keep BSTs <ODSAdef "balanced" />,
+This is why it is desirable to keep BSTs <dfn>balanced</dfn>,
 that is, with least possible height.
 If a binary tree is balanced, then the height for a tree of <i>n</i>
 nodes is approximately log <i>n</i>.
@@ -526,3 +527,5 @@ Two examples are the AVL tree and the splay tree.
 Other search trees are guaranteed to remain
 balanced, such as the 2-3 Tree.
 </p>
+
+</div>

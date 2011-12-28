@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>Binary Tree Space Requirements</ODSAsettitle>
 <ODSAprereq "BinTreeNodeADT" />
 <ODSAFullTheorem" />
@@ -137,3 +138,5 @@ This worked perfectly on various 32-bit workstations.
 Unfortunately, in those days IBM PC-compatibles used 16-bit pointers.
 We never did figure out how to port our code to the 16-bit machine.
 </p>
+
+</div>

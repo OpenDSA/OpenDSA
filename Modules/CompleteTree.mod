@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>Array Implementation for Complete Binary Trees</ODSAsettitle>
 <ODSAprereq "BinTreeImp" />
 
@@ -86,3 +87,5 @@ Left sibling(<i>r</i>) = <i>r</i> - 1 if <i>r</i> is even.
 Right sibling(<i>r</i>) = <i>r</i> + 1 if <i>r</i>
 is odd and <i>r</i> + 1 &lt; <i>n</i>.
 </ul>
+
+</div>

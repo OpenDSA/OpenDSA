@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>The Full Binary Tree Theorem</ODSAsettitle>
 <ODSAprereq "Induction" />
 <ODSAprereq "BinTree" />
@@ -148,3 +149,5 @@ In other words, there are <i>n</i>-1 non-empty children.
 Because the total number of children is <i>2n</i>, the remaining
 <i>n</i>+1 children must be empty.
 </p>
+
+</div>

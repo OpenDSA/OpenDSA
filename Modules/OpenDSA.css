@@ -57,6 +57,10 @@ div h1 {
   padding: 8px 8px 2px 8px;
 }
 
+div section { 
+  border-top: 1px solid black;
+}
+
 p.annotation {
   color:red;
 }
@@ -71,4 +75,9 @@ a:hover {
 
 applet {
   border: 1px solid black;
+}
+
+dfn {
+  font-style: Normal;
+  font-weight: Bold;
 }

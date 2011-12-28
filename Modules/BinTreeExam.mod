@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>Binary Tree Chapter Exam</ODSAsettitle>
 <ODSAprereq "BinTree" />
 
@@ -19,3 +20,5 @@ chapter. Need to be careful that the selection is limited to modules
 that were actually selected for this instantiation of the book, so
 the exercise logic has to verify that dynamically.
 </p>
+
+</div>
