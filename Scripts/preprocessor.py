@@ -20,10 +20,10 @@ class modPreReq:
       self.name = os.path.basename(filename)
       for line in data:
          if '<ODSAsettitle>' in line:
-            str =  re.split('ODSAsettitle>', line, flags=re.IGNORECASE)[1]
+            str =  re.split('ODSAsettitle>', line, re.IGNORECASE)[1]
             self.description = str.partition('<')[0]
          if '<ODSAprereq \"' in line:
-            str =  re.split('ODSAprereq "', line, flags=re.IGNORECASE)[1]
+            str =  re.split('ODSAprereq "', line, re.IGNORECASE)[1]
             self.prereq.append(str.partition('"')[0])
       self.prereqNum = len(self.prereq)
 
@@ -62,7 +62,7 @@ def modTitle(modName, modDir=''):
       title = ''
       for line in data:
          if '<ODSAsettitle>' in line:
-            str =  re.split('ODSAsettitle>', line, flags=re.IGNORECASE)[1]
+            str =  re.split('ODSAsettitle>', line, re.IGNORECASE)[1]
             title = str.partition('<')[0]
       fls.close()
       return title
@@ -79,15 +79,15 @@ def parse(filename, modDir, targetDir, col):
    title1 =''
    for line in data:
       if '<ODSAsettitle>' in line:
-         str =  re.split('ODSAsettitle>', line, flags=re.IGNORECASE)[1]
+         str =  re.split('ODSAsettitle>', line, re.IGNORECASE)[1]
          title1 = str.partition('<')[0]
          line = line.replace('<ODSAsettitle>'+title1+'</ODSAsettitle>','<h1>'+title1+'</h1>')
       if '<ODSAdef \"' in line:
-         str =  re.split('ODSAdef "', line, flags=re.IGNORECASE)[1]
+         str =  re.split('ODSAdef "', line, re.IGNORECASE)[1]
          title = str.partition('"')[0]
          line = line.replace('<ODSAdef "'+title+'">','<b>'+title+'</b>')
       if '<ODSAref \"' in line:
-         str =  re.split('ODSAref "', line, flags=re.IGNORECASE)[1]
+         str =  re.split('ODSAref "', line, re.IGNORECASE)[1]
          title = str.partition('"')[0]
          mtitle = modTitle(title, modDir)
          if mtitle =='': 
