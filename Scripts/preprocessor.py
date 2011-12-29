@@ -105,7 +105,49 @@ def modTitle(modName, modDir=''):
       title = modName
       return title
 
-def parse(filename, modDir, targetDir, col):
+
+def parseDict(filename, modDir, targetDir, i):
+   fls = open(modDir+'/'+filename,'r')
+   data = fls.readlines()
+   fls.close()
+   newline =[]
+   fig=0
+   tab=0
+   theo=0
+   eq=0
+   global table
+   table={os.path.splitext(os.path.basename(filename))[0]:i}
+   title1 =''
+   for line in data:
+      if '<ODSAfig \"' in line:
+         for j in xrange(0,len(re.split('ODSAref "', line, re.IGNORECASE))):
+            fig=fig+1
+            str =  re.split('<ODSAfig "', line, re.IGNORECASE)[1]
+            title = str.partition('"')[0]
+            table[title]='%s.%s'%(i,fig)
+            t='%s.%s'%(i,fig)
+            line = line.replace('<ODSAfig "'+title+'" />','<a name="'+t+'">'+t+'</a>')
+      if '<ODSAtable \"' in line:
+         for j in xrange(0,len(re.split('ODSAtable "', line, re.IGNORECASE))):
+            tab=tab+1
+            str =  re.split('<ODSAtable "', line, re.IGNORECASE)[1]
+            title = str.partition('"')[0]
+            table[title]='%s.%s'%(i,tab)
+      if '<ODSAtheorem \"' in line:
+         for j in xrange(0,len(re.split('ODSAtheorem "', line, re.IGNORECASE))):
+            theo=theo+1
+            str =  re.split('<ODSAtheorem "', line, re.IGNORECASE)[1]
+            title = str.partition('"')[0]
+            table[title]='%s.%s'%(i,theo)
+      if '<ODSAeq \"' in line:
+         for j in xrange(0,len(re.split('ODSAeq "', line, re.IGNORECASE))):
+            eq=eq+1
+            str =  re.split('<ODSAeq "', line, re.IGNORECASE)[1]
+            title = str.partition('"')[0]
+            table[title]='%s.%s'%(i,eq) 
+   return table
+
+def parse(filename, modDir, targetDir, col, table):
    fls = open(modDir+'/'+filename,'r')
    data = fls.readlines()
    fls.close()
@@ -126,12 +168,23 @@ def parse(filename, modDir, targetDir, col):
          for j in xrange(1,len(re.split('ODSAref "', line, re.IGNORECASE))):
             str =  re.split('<ODSAref "', line, re.IGNORECASE)[1]
             title = str.partition('"')[0]
-            mtitle = modTitle(title, modDir)
-            if mtitle =='': 
-               mtitle = title
+            #mtitle = modTitle(title, modDir)
+            default = title
+            mtitle = table.get(title,default) #table[title]
+            if mtitle ==title: 
+               #mtitle = title
                line = line.replace('<ODSAref "'+title+'" />',mtitle)
             else:
-               line = line.replace('<ODSAref "'+title+'" />','<a href="'+title+'.html">'+title+'.'+ mtitle+'</a>')
+               st='%s'%(mtitle)
+               val = st.partition('.')[0]
+               key=''
+               for item in table.items():
+                  if ('%s'%(item[1])) == val:
+                     key=item[0]
+               if st.partition('.')[2]=='':
+                  line = line.replace('<ODSAref "'+title+'" />','<a href="'+key+'.html">%s'%(mtitle)+'</a> ')
+               else:
+                  line = line.replace('<ODSAref "'+title+'" />','<a href="'+key+'.html#%s">%s'%(mtitle,mtitle)+'</a> ')
       newline.append(line)
    head = modHeader(modDir,title1, col)
    foot = modFooter(modDir)
@@ -192,15 +245,16 @@ def main(argv):
   modList1 = sorted(modList,key = attrgetter('prereqNum'))
   for ml in modList1:
      ml.verifPreref(modRost)
-  #for ml in modList1:
-   #  ml.verifPreref(modRost)
 
   finalList =modOrdering(modList1)
-  
-
+ 
+  finalTable={}
+  z =1
   for fl in finalList:
         print "preprocessing " + os.path.splitext(os.path.basename(fl.name))[0]
-        content = parse(fl.name, modDir, modDest,col)
+        finalTable.update(parseDict(fl.name, modDir, modDest, z))
+        z=z+1
+        content = parse(fl.name, modDir, modDest,col,finalTable)
         try:
            nfile = open(modDest+'/'+os.path.splitext(os.path.basename(fl.name))[0]+'.html','w')
            nfile.writelines(content)
