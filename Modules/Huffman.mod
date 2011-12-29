@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>Huffman Coding Trees</ODSAsettitle>
 <ODSAprereq "BinTreeImp" />
 <ODSAprereq "SpaceBounds" />
@@ -25,17 +26,14 @@ each character.
 For example, it takes &lceil; log 128 &rceil;
 or seven bits to provide the 128~unique codes needed to represent the
 128~symbols of the ASCII character set.
-(The ASCII standard is eight bits, not seven, even though there are
-only 128 characters represented.
-The eighth bit is used either to check for transmission errors, or to
-support ``extended'' ASCII codes with an additional 128 characters.)
+<sup><a href="#fn1" id="r1">[1]</a></sup>
 </p>
 
 <p>
 The requirement for &lceil; log <i>n</i> &rceil; bits to represent
 <i>n</i> unique code values assumes that all codes will be the same
 length, as are ASCII codes.
-This is called a <ODSAdef "fixed-length" /> coding scheme.
+This is called a <dfn>fixed-length</dfn> coding scheme.
 If all characters were used equally often, then a fixed-length coding
 scheme is the most space efficient method.
 However, you are probably aware that not all characters are used
@@ -56,6 +54,7 @@ relatively common letters, should be storable in less space than words
 such as ``MUCK,'' which are composed of relatively uncommon letters.
 </p>
 
+<figure>
 <img src="http://www.forkosh.com/mathtex.cgi?
 \begin{tabular}{c|c||c|c}
 \multicolumn{1}{c}{\textbf{Letter}} &
@@ -79,13 +78,14 @@ M & 24 & Z &  2\\
 \end{tabular}"
    alt="" border=0 align="middle">.
 
-<p class="caption">
+<figcaption>
 <ODSAfig "Freq" />
 Relative frequencies for the 26 letters of the alphabet as they
 appear in a selected set of English documents.
 "Frequency" represents the expected frequency of occurrence per
 1000 letters, ignoring case.
-</p>
+</figcaption>
+</figure>
 
 <p>
 If some characters are used more frequently than others, is
@@ -96,20 +96,20 @@ this might be worthwhile if such characters appear rarely enough.
 This concept is at the heart of file compression techniques in common
 use today.
 The next section presents one such approach to assigning
-<ODSAdef "variable-length" /> codes, called Huffman coding.
+<dfn>variable-length</dfn> codes, called Huffman coding.
 While it is not commonly used in its simplest form for file
 compression (there are better methods), Huffman coding gives
 the flavor of such coding schemes.
 One motivation for studying Huffman coding is because it provides our
 first opportunity to see a type of tree structure referred to as a
-<ODSAdef "search trie" />
+<dfn>search trie</dfn>
 </p>
 
 <h2>Building Huffman Coding Trees</h2>
 
 <p>
 Huffman coding assigns codes to characters such that the length of
-the code depends on the relative frequency or <ODSAdef "weight" /> of
+the code depends on the relative frequency or <dfn>weight</dfn> of
 the corresponding character.
 Thus, it is a variable-length code.
 If the estimated frequencies for letters match
@@ -117,14 +117,14 @@ the actual frequency found in an encoded message, then the
 length of that message will typically be less than if a fixed-length
 code had been used.
 The Huffman code for each letter is derived from a full
-binary tree called the <ODSAdef "Huffman coding tree" />,
-or simply the <ODSAdef "Huffman tree" />.
+binary tree called the <dfn>Huffman coding tree</dfn>,
+or simply the <dfn>Huffman tree</dfn>.
 Each leaf of the Huffman tree corresponds to a letter, and we define
 the weight of the leaf node to be the weight (frequency) of its
 associated letter.
 The goal is to build a tree with the
-<ODSAdef "minimum external path weight" />.
-Define the <ODSAdef "weighted path length" /> of a leaf to be
+<dfn>minimum external path weight</dfn>.
+Define the <dfn>weighted path length</dfn> of a leaf to be
 its weight times its depth.
 The binary tree with minimum external path weight is the one with the
 minimum sum of weighted path lengths for the given set of leaves.
@@ -151,6 +151,7 @@ This process is repeated until all of the partial Huffman trees have
 been combined into one.
 </p>
 
+<figure>
 <img src="http://www.forkosh.com/mathtex.cgi?
 \begin{tabular}{|l|cccccccc|}
 \hline
@@ -160,20 +161,23 @@ been combined into one.
 \end{tabular}"
    alt="" border=0 align="middle">
 
-<p class="caption">
+<figcaption>
 <ODSAfig "FreqExamp" />
 The relative frequencies for eight selected letters.
-</p>
+</figcaption>
+</figure>
 
+<figure>
 <center>
 <img src="Images/HuffTree.png" alt="Building a Huffman tree" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HuffTree" />
 The first five steps of the building process for a sample Huffman
 tree.
-</p>
+</figcaption>
+</figure>
 
 <p class="example">
 Figure <ODSAref "HuffTree" /> illustrates part of the Huffman tree
@@ -195,10 +199,7 @@ the letters are ordered by frequency as
 <p>
 Because the first two letters on the list are Z and K, they are
 selected to be the first trees joined together.
-(Note that for clarity, the examples for building Huffman
-trees show a sorted list to keep the letters ordered by frequency.
-But a real implementation would use a heap to implement the priority
-queue for efficiency.)
+<sup><a href="#fn2" id="r2">[2]</a></sup>
 They become the children of a root node with weight 9.
 Thus, a tree whose root has weight 9 is placed back on the list, where
 it takes up the first position.
@@ -215,15 +216,18 @@ built.
 This tree is shown in Figure <ODSAref "HuffCode" />.
 </p>
 
+<figure>
 <center>
 <img src="Images/HuffCode.png" alt="A Huffman tree" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HuffCode" />
 A Huffman tree for the letters of Figure <ODSAref "FreqExamp" />.
-</p>
+</figcaption>
+</figure>
 
+<figure>
 <pre>
 /** Huffman tree node implementation: Base class */
 public interface HuffBaseNode<E> {
@@ -275,20 +279,21 @@ class HuffInternalNode<E> implements HuffBaseNode<E> {
 }
 </pre>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HuffNode" />
 Implementation for Huffman tree nodes.
 Internal nodes and leaf nodes are represented by separate classes,
 each derived from an abstract base class.
-</p>
+</figcaption>
+</figure>
 
 <p>
 Figure <ODSAref "HuffNode" /> shows an implementation for Huffman tree
 nodes.
-This implementation is similar to the <tt>VarBinNode</tt>
+This implementation is similar to the <code>VarBinNode</code>
 implementation of Figure <ODSAref "VarNodeI" />.
-There is an abstract base class, named <tt>HuffNode</tt>, and two
-subclasses, named <tt>LeafNode</tt> and <tt>IntlNode</tt>.
+There is an abstract base class, named <code>HuffNode</code>, and two
+subclasses, named <code>LeafNode</code> and <code>IntlNode</code>.
 This implementation reflects the fact that leaf and internal nodes
 contain distinctly different information.
 </p>
@@ -327,6 +332,7 @@ class HuffTree<E> implements Comparable<HuffTree<E>>{
 Class declarations for the Huffman tree.
 </p>
 
+<figure>
 <pre>
 static HuffTree<Character> buildTree() {
   HuffTree tmp1, tmp2, tmp3 = null;
@@ -342,21 +348,22 @@ static HuffTree<Character> buildTree() {
 }
 </pre>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HuffBuild" />
 Implementation for the Huffman tree construction function.
-<tt>buildHuff</tt> takes as input <tt>fl</tt>, the min-heap
+<code>buildHuff</code> takes as input <code>fl</code>, the min-heap
 of partial Huffman trees, which initially are single leaf nodes as
 shown in Step 1 of Figure <ODSAref "HuffTree" />.
-The body of function <tt>buildTree</tt> consists mainly of a
-<tt>for</tt> loop.
-On each iteration of the <tt>for</tt> loop, the first two partial
-trees are taken off the heap and placed in variables <tt>temp1</tt>
-and <tt>temp2</tt>.
-A tree is created (<tt>temp3</tt>) such that the left and right subtrees 
-are <tt>temp1</tt> and <tt>temp2</tt>, respectively.
-Finally, <tt>temp3</tt> is returned to <tt>fl</tt>.
-</p>
+The body of function <code>buildTree</code> consists mainly of a
+<code>for</code> loop.
+On each iteration of the <code>for</code> loop, the first two partial
+trees are taken off the heap and placed in variables <code>temp1</code>
+and <code>temp2</code>.
+A tree is created (<code>temp3</code>) such that the left and right subtrees 
+are <code>temp1</code> and <code>temp2</code>, respectively.
+Finally, <code>temp3</code> is returned to <code>fl</code>.
+</figure>
+</figcaption>
 
 <h2>Assigning and Using Huffman Codes</h2>
 
@@ -376,6 +383,7 @@ The code for K is `111101' because the path to the node for K
 takes four right branches, then a left, and finally one last right.
 Figure <ODSAref "TheCodes" /> lists the codes for all eight letters.
 
+<figure>
 <img src="http://www.forkosh.com/mathtex.cgi?
 \begin{tabular}{c|c|l|c}
 \multicolumn{1}{c}{\textbf{Letter}} &
@@ -394,10 +402,11 @@ Z & 2 & 111100 & 6\\
 \end{tabular}"
    alt="" border=0 align="middle">
 
-<p class="caption">
+<figcaption>
 <ODSAfig "TheCodes" />
 The Huffman codes for the letters of Figure <ODSAref "FreqExamp" />.
-</p>
+</figcaption>
+</figure>
 
 <p>
 Given codes for the letters, it is a simple matter to
@@ -445,7 +454,7 @@ last two letters are C and K, spelling the word "DUCK."
 
 <p>
 A set of codes is said to meet
-the <ODSAdef "prefix property" /> if no code in the set is the prefix
+the <dfn>prefix property</dfn> if no code in the set is the prefix
 of another.
 The prefix property guarantees that there will be no ambiguity
 in how a bit string is decoded.
@@ -526,12 +535,11 @@ where <i>f</i><sub>i</sub> is the (relative) frequency of letter
 <i>i</i> and <i>f</i><sub>T</sub> is the total for all letter
 frequencies.
 For this set of frequencies, the expected cost per letter is
-</p>
-
 <img src="http://www.forkosh.com/mathtex.cgi?
 [(1 \times 120) + (3 \times 121) + (4 \times 32) +
   (5 \times 24) + (6 \times 9)]/306 = 785/306 \approx 2.57"
-   alt="" border=0 align="middle">
+   alt="" border=0 align="middle">.
+</p>
 
 <p>
 A fixed-length code for these eight characters would require
@@ -602,7 +610,25 @@ encountered when going down the tree.
 But the splits in the key space are predetermined for the Huffman
 tree.
 Search tree structures whose splitting points in the key space are
-predetermined are given the special name <ODSAdef "trie" /> to
+predetermined are given the special name <dfn>trie</dfn> to
 distinguish them from the type of search tree (like the BST) whose
 splitting points are determined by the data.
 </p>
+
+<section>
+<p id="fn1"><a href="#r1">[1]</a>
+The ASCII standard is eight bits, not seven, even though there are
+only 128 characters represented.
+The eighth bit is used either to check for transmission errors, or to
+support ``extended'' ASCII codes with an additional 128 characters.
+</p>
+
+<p id="fn2"><a href="#r2">[2]</a>
+Note that for clarity, the examples for building Huffman
+trees show a sorted list to keep the letters ordered by frequency.
+But a real implementation would use a heap to implement the priority
+queue for efficiency.
+</p>
+</section>
+
+</div>

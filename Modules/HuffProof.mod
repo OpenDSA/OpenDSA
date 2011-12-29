@@ -1,10 +1,11 @@
+<div id="content">
 <ODSAsettitle>Proof of Optimality for Huffman Coding</ODSAsettitle>
 <ODSAprereq "Huffman" />
 <ODSAprereq "Induction" />
 
 <p>
 Huffman tree building is an example of a
-<ODSAdef "greedy algorithm" />.
+<dfn>greedy algorithm</dfn>.
 At each step, the algorithm makes a "greedy" decision to merge
 the two subtrees with least weight.
 This makes the algorithm simple, but does it give the desired result?
@@ -14,7 +15,7 @@ The proof requires the following lemma.
 </p>
 
 <p class="lemma">
-For any Huffman tree built by function <tt>buildHuff</tt> containing at
+For any Huffman tree built by function <code>buildHuff</code> containing at
 least two letters, the two letters with least frequency are stored in
 siblings nodes whose depth is at least as deep as any other leaf nodes
 in the tree.
@@ -23,7 +24,7 @@ in the tree.
 <p class="proof">
 Call the two letters with least frequency <i>l</i><sub>1</sub>
 and <i>l</i><sub>2</sub>.
-They must be siblings because <tt>buildHuff</tt>
+They must be siblings because <code>buildHuff</code>
 selects them in the first step of the construction process.
 Assume that <i>l</i><sub>1</sub> and <i>l</i><sub>2</sub> are not the
 deepest nodes in the tree.
@@ -34,26 +35,28 @@ For this situation to occur, the parent of <i>l</i><sub>1</sub>
 and <i>l</i><sub>2</sub>,
 labeled <i>V</i>, must have greater weight than the node
 labeled <i>X</i>.
-Otherwise, function <tt>buildHuff</tt> would have selected node
+Otherwise, function <code>buildHuff</code> would have selected node
 <i>V</i> in place of node <i>X</i> as the child of node <i>U</i>.
 However, this is impossible because <i>l</i><sub>1</sub> and
 <i>l</i><sub>2</sub> are the letters with least frequency.
 </p>
 
+<figure>
 <center>
 <img src="Images/HProof.png" alt="An impossible Huffman tree" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HuffProof" />
 An impossible Huffman tree, showing the situation where the two nodes 
 with least weight, <i>l</i><sub>1</sub> and <i>l</i><sub>2</sub>, are
 not the deepest nodes in the tree.
 Triangles represent subtrees.
-</p>
+</figcaption>
+</figure>
 
 <p class="theorem">
-Function <tt>buildHuff</tt> builds the Huffman tree with the minimum
+Function <code>buildHuff</code> builds the Huffman tree with the minimum
 external path weight for the given set of letters.
 </p>
 
@@ -71,14 +74,14 @@ each with identical weighted path lengths for the two leaves.
 
 <li>
 <b>Induction Hypothesis</b>: Assume that any tree created by
-<tt>buildHuff</tt> that contains <i>n</i>-1 leaves has minimum
+<code>buildHuff</code> that contains <i>n</i>-1 leaves has minimum
 external path length.
 </li>
 
 <li>
 <p>
 <b>Induction Step</b>: Given a Huffman tree <b>T</b> built by
-<tt>buildHuff</tt> with <i>n</i> leaves,
+<code>buildHuff</code> with <i>n</i> leaves,
 <i>n</i> &ge; 2, suppose that
 <i>w</i><sub>1</sub> &le; <i>w</i><sub>2</sub> &le;
 ... &le; <i>w</i><sub>n</sub> where
@@ -103,9 +106,11 @@ must also have minimum external path length.
 </p>
 
 <p>
-Thus by mathematical induction, function <tt>buildHuff</tt> creates
+Thus by mathematical induction, function <code>buildHuff</code> creates
 the Huffman tree with minimum external path length.
 </p>
 </li>
 
 </ul>
+
+</div>

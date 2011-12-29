@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>The Full Binary Tree Theorem</ODSAsettitle>
 <ODSAprereq "Induction" />
 <ODSAprereq "BinTree" />
@@ -34,15 +35,17 @@ binary tree implementation whose leaves require a different amount of
 space from its internal nodes.
 </p>
 
+<figure>
 <center>
 <img src="Images/OneLeaf.png"
 alt="A tree containing many internal nodes and a single leaf." />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "OneLeaf" />
 A tree containing many internal nodes and a single leaf.
-</p>
+</figcaption>
+</figure>
 
 <p class="theorem">
 <ODSAtheorem "FullTree" />
@@ -148,3 +151,5 @@ In other words, there are <i>n</i>-1 non-empty children.
 Because the total number of children is <i>2n</i>, the remaining
 <i>n</i>+1 children must be empty.
 </p>
+
+</div>

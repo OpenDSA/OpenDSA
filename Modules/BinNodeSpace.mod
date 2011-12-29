@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>Binary Tree Space Requirements</ODSAsettitle>
 <ODSAprereq "BinTreeNodeADT" />
 <ODSAFullTheorem" />
@@ -65,9 +66,11 @@ and because only internal nodes now have child pointers, the
 overhead fraction in this case will be approximately
 </p>
 
+<center>
 <img src="http://www.forkosh.com/mathtex.cgi?
 \frac{\frac{n}{2} (2P)}{\frac{n}{2} (2P) + Dn} = \frac{P}{P + D}."
    alt="" border=0 align="middle">.
+</center>
 
 <p>
 If <i>P</i> = <i>D</i>, the overhead drops to about one half of the
@@ -85,7 +88,7 @@ field while the leaf nodes store only a pointer to the data field.
 This implementation requires
 <img src="http://www.forkosh.com/mathtex.cgi?
 \frac{n}{2}2P + \frac{n}{2}(p+d)\)"
-   alt="" border=0 align="middle">.
+   alt="" border=0 align="middle">
 units of space.
 If <i>P</i> = <i>D</i>, then the overhead is
 3<i>P</i>/(3<i>P</i> + <i>D</i>) = 3/4.
@@ -104,7 +107,7 @@ there must be a way to distinguish between the node types.
 When separate node types are implemented via Java subclasses,
 the runtime environment stores information with
 each object allowing it to determine, for example, the correct
-subclass to use when the <tt>isLeaf</tt> virtual function
+subclass to use when the <code>isLeaf</code> virtual function
 is called.
 Thus, each node requires additional space.
 Only one bit is truly necessary to distinguish the two possibilities.
@@ -137,3 +140,5 @@ This worked perfectly on various 32-bit workstations.
 Unfortunately, in those days IBM PC-compatibles used 16-bit pointers.
 We never did figure out how to port our code to the 16-bit machine.
 </p>
+
+</div>

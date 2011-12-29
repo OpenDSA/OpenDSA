@@ -1,3 +1,4 @@
+<div id="content">
 <ODSAsettitle>Heaps and Priority Queues</ODSAsettitle>
 <ODSAprereq "CompleteTree" />
 <ODSAprereq "Induction" />
@@ -11,9 +12,9 @@ next the "most critical" patient rather than the one who arrived
 first.
 When scheduling programs for execution in a multitasking
 operating system, at any given moment there might be several programs
-(usually called <ODSAdef "jobs" /> ready to run.
+(usually called <dfn>jobs</dfn> ready to run.
 The next job selected is the one with the highest
-<ODSAdef "priority" />. 
+<dfn>priority</dfn>. 
 Priority is indicated by a particular value associated with the job
 (and might change while the job remains in the wait list).
 </p>
@@ -36,20 +37,15 @@ have good performance for this special application.
 </p>
 
 <p>
-This section presents the <ODSAdef "heap" />
-data structure.
-(Note that the term "heap" is also sometimes used to refer to a memory
-pool.
-<ODSAif>
-(See Module <ODSAref "MemMan" />.}
-</ODSAif>
+This section presents the <dfn>heap</dfn>
+data structure. <sup><a href="#fn1" id="r1">[1]</a></sup>
 A heap is defined by two properties.
 First, it is a complete binary tree,
 so heaps are nearly always implemented using
 the array representation for complete binary trees presented
 in Module <ODSAref "CompleteTree" />.
 Second, the values stored in a heap are
-<ODSAdef "partially ordered" />.
+<dfn>partially ordered</dfn>.
 This means that there is a relationship between the value stored at
 any node and the values of its children.
 There are two variants of the heap, depending on the definition of
@@ -57,7 +53,7 @@ this relationship.
 </p>
 
 <p>
-A <ODSAdef "max-heap" /> has the property that every node stores a
+A <dfn>max-heap</dfn> has the property that every node stores a
 value that is <em>greater</em> than or equal to the value of either of
 its children.
 Because the root has a value greater than or equal to its children,
@@ -66,7 +62,7 @@ root stores the maximum of all values in the tree.
 </p>
 
 <p>
-A <ODSAdef "min-heap" /> has the property that every node stores a
+A <dfn>min-heap</dfn> has the property that every node stores a
 value that is <em>less</em>
 than or equal to that of its children.
 Because the root has a value less than or equal to its children, which
@@ -82,7 +78,7 @@ subtree of the root are greater than the values for every node of the
 right subtree.
 We can contrast BSTs and heaps by the strength of their ordering
 relationships.
-A BST defines a <ODSAdef "total order" /> on its nodes in that,
+A BST defines a <dfn>total order</dfn> on its nodes in that,
 given the positions for any two nodes in the tree, the one to the
 "left" (equivalently, the one appearing earlier in an inorder
 traversal) has a smaller key value than the one to the "right".
@@ -109,6 +105,7 @@ actually a tree structure, while the typical physical implementation
 uses an array.
 </p>
 
+<figure>
 <pre>
 /** Max-heap implementation */
 public class MaxHeap<E extends Comparable<? super E>> {
@@ -203,18 +200,19 @@ public class MaxHeap<E extends Comparable<? super E>> {
 }
 </pre>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HeapClass" />
 An implementation for the heap.
-</p>
+</figcaption>
+</figure>
 
 <p>
 Figure <ODSAref "HeapClass" /> shows an implementation for
 heaps.
-The class is a generic with one type parameter, <tt>E</tt>,
+The class is a generic with one type parameter, <code>E</code>,
 which defines the type for the data elements stored in the heap.
-<tt>E</tt> must extend the <tt>Comparable</tt> interface,
-and so we can use the <tt>compareTo</tt> method for comparing records
+<code>E</code> must extend the <code>Comparable</code> interface,
+and so we can use the <code>compareTo</code> method for comparing records
 in the heap.
 </p>
 
@@ -239,18 +237,18 @@ size allowed for the heap (the size of the array).
 </p>
 
 <p>
-Method <tt>heapsize</tt> returns the current size of the heap.
-<tt>H.isLeaf(pos)</tt> returns TRUE if position
-<tt>pos</tt> is a leaf in heap <tt>H</tt>, and FALSE otherwise.
-Members <tt>leftchild</tt>, <tt>rightchild</tt>,
-and <tt>parent</tt> return the position (actually, the array index)
+Method <code>heapsize</code> returns the current size of the heap.
+<code>H.isLeaf(pos)</code> returns TRUE if position
+<code>pos</code> is a leaf in heap <code>H</code>, and FALSE otherwise.
+Members <code>leftchild</code>, <code>rightchild</code>,
+and <code>parent</code> return the position (actually, the array index)
 for the left child, right child, and parent of the position passed,
 respectively.
 </p>
 
 <p>
 One way to build a heap is to insert the elements one at a time.
-Method <tt>insert</tt> will insert a new element <i>V</i> into
+Method <code>insert</code> will insert a new element <i>V</i> into
 the heap.
 You might expect the heap insertion process to be similar to the
 insert function for a BST, starting at the root and working down
@@ -258,9 +256,9 @@ through the heap.
 However, this approach is not likely to work because the heap must
 maintain the shape of a complete binary tree.
 Equivalently, if the heap takes up the first
-<i>n</i> positions of its array prior to the call to <tt>insert</tt>,
+<i>n</i> positions of its array prior to the call to <code>insert</code>,
 it must take up the first <i>n</i>+1 positions after.
-To accomplish this, <tt>insert</tt> first places <i>V</i> at
+To accomplish this, <code>insert</code> first places <i>V</i> at
 position <i>n</i> of the array.
 Of course, <i>V</i> is unlikely to be in the correct position.
 To move <i>V</i> to the right place, it is compared to its parent's
@@ -291,7 +289,7 @@ To be precise, the height of a heap with <i>n</i> nodes is
 </p>
 
 <p>
-Each call to <tt>insert</tt> takes &Theta;(log <i>n</i> time in the
+Each call to <code>insert</code> takes &Theta;(log <i>n</i> time in the
 worst case, because the value being inserted can move at most the
 distance from the bottom of the tree to the top of the tree.
 Thus, to insert <i>n</i> values into the heap, if we insert them 
@@ -299,18 +297,20 @@ one at a time, will take &Theta;(<i>n</i> log <i>n</i>) time in the
 worst case.
 </p>
 
+<figure>
 <center>
 <img src="Images/HeapBld.png" alt="Two series of exchanges to build a heap" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HeapBuild" />
 Two series of exchanges to build a max-heap.
 (a) This heap is built by a series of nine exchanges in the order
 (4-2), (4-1), (2-1), (5-2), (5-4), (6-3), (6-5), (7-5), (7-6).
 (b) This heap is built by a series of four exchanges in the order
 (5-2), (7-3), (7-1), (6-1).
-</p>
+</figcaption>
+</figure>
 
 <p>
 If all <i>n</i> values are available at the beginning of the
@@ -373,35 +373,39 @@ In this case, we simply continue the process of "pushing down"
 <i>R</i> until it reaches a level where it is greater than its
 children, or is a leaf node.
 This process is implemented by the private method
-<tt>siftdown</tt>.
+<code>siftdown</code>.
 The siftdown operation is illustrated by
 Figure <ODSAref "SiftPic" />.
 </p>
 
+<figure>
 <center>
 <img src="Images/HeapInd.png" alt="An example of heap building" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "HeapInduct" />
 Final stage in the heap-building algorithm.
 Both subtrees of node <i>R</i> are heaps.
 All that remains is to push <i>R</i> down to its proper level in the
 heap.
-</p>
+</figcaption>
+</figure>
 
+<figure>
 <center>
 <img src="Images/SiftPic.png" alt="The siftdown operation" />
 </center>
 
-<p class="caption">
+<figcaption>
 <ODSAfig "SiftPic" />
 The siftdown operation.
 The subtrees of the root are assumed to be heaps.
 (a) The partially completed heap.
 (b) Values 1 and 7 are swapped.
 (c) Values 1 and 6 are swapped to form the final heap.
-</p>
+</figcaption>
+</figure>
 
 <p>
 This approach assumes that the subtrees are already heaps,
@@ -416,14 +420,14 @@ the building algorithm can start in the middle of the array, with the
 first internal node.
 The exchanges shown in Figure <ODSAref "HeapBuild" />(b) result from
 this process.
-Method <tt>buildHeap</tt> implements the building algorithm.
+Method <code>buildHeap</code> implements the building algorithm.
 </p>
 
 <p>
-What is the cost of <tt>buildHeap</tt>?
+What is the cost of <code>buildHeap</code>?
 Clearly it is the sum of the costs for the calls to
-<tt>siftdown</tt>.
-Each <tt>siftdown</tt> operation can cost at most the number of
+<code>siftdown</code>.
+Each <code>siftdown</code> operation can cost at most the number of
 levels it takes for the node being sifted to reach the bottom of the
 tree.
 In any complete tree, approximately half of the nodes are leaves
@@ -464,7 +468,7 @@ root position.
 We now consider the heap to be one element smaller.
 Unfortunately, the new root value is probably
 <em>not</em> the maximum value in the new heap.
-This problem is easily solved by using <tt>siftdown</tt> to reorder
+This problem is easily solved by using <code>siftdown</code> to reorder
 the heap.
 Because the heap is log <i>n</i> levels deep, the cost of deleting
 the maximum element is &Theta;(log <i>n</i>) in the average and worst
@@ -476,7 +480,7 @@ The heap is a natural implementation for the priority queue discussed
 at the beginning of this section.
 Jobs can be added to the heap (using their priority value as the
 ordering key) when needed.
-Method <tt>removemax</tt> can be called whenever a new job is to be
+Method <code>removemax</code> can be called whenever a new job is to be
 executed.
 </p>
 
@@ -490,7 +494,7 @@ arbitrary value; it is only good for finding the maximum value.
 However, if we already know the index for an object within the heap,
 it is a simple matter to update its priority (including changing its
 position to maintain the heap property) or remove it.
-The <tt>remove</tt> method takes as input the position of the
+The <code>remove</code> method takes as input the position of the
 node to be removed from the heap.
 A typical implementation for priority queues requiring updating of
 priorities will need to use an auxiliary data structure that supports
@@ -501,3 +505,15 @@ deleted from the heap and reinserted with its new priority.
 Modules <ODSAref "SSSP" /> and <ODSAref "PrimsSec" /> present
 applications for a priority queue with priority updating.
 </p>
+
+<section>
+<p id="fn1"><a href="#r1">[1]</a>
+Note that the term "heap" is also sometimes used to refer to a memory
+pool.
+<ODSAif>
+(See Module <ODSAref "MemMan" />.)
+</ODSAif>
+</p>
+</section>
+
+</div>
