@@ -27,9 +27,45 @@ class modPreReq:
             self.prereq.append(str.partition('"')[0])
       self.prereqNum = len(self.prereq)
 
-  # def verifPreref(modRoster):
-   #   for i in self.prereq:
+   def verifPreref(self, modRoster):
+      set1 = set(self.prereq)
+      set2 = set(modRoster)
+      for i in self.prereq:
+         if i not in modRoster:
+            self.prereq.remove(i)
+      if not (set1.issubset(set2)):
+         self.verifPreref(modRoster)
+      self.prereqNum = len(self.prereq) 
       
+
+
+
+
+def modOrdering(modRoster):
+   finalMod=[]
+   tmpMod=[]
+   q = len(modRoster)
+   for k in modRoster :
+      if k.prereqNum == 0:
+         finalMod.append(k)
+         modRoster.remove(k)
+         tmpMod.append(os.path.splitext(os.path.basename(k.name))[0])
+   while len(finalMod) <= q:
+      for l in modRoster:
+         set1 = set(l.prereq)
+         set2 = set(tmpMod)
+         set3 = set1.difference(set2)
+         if len(set3)==0:
+            finalMod.append(l)
+            tmpMod.append(os.path.splitext(os.path.basename(l.name))[0])
+            modRoster.remove(l)
+      if(len(modRoster)==1):
+         finalMod.append(modRoster.pop())
+         #tmpMod.append(os.path.splitext(os.path.basename(modRoster.pop().name))[0])
+            #modRoster.remove(l)
+         return finalMod
+   return finalMod
+
 
 def modHeader(modDir, title, collection):
    nhead =[]
@@ -70,7 +106,7 @@ def modTitle(modName, modDir=''):
       return title
 
 def parse(filename, modDir, targetDir, col):
-   fls = open(filename,'r')
+   fls = open(modDir+'/'+filename,'r')
    data = fls.readlines()
    fls.close()
    newline =[]
@@ -89,7 +125,6 @@ def parse(filename, modDir, targetDir, col):
       if '<ODSAref \"' in line:
          for j in xrange(1,len(re.split('ODSAref "', line, re.IGNORECASE))):
             str =  re.split('<ODSAref "', line, re.IGNORECASE)[1]
-            #print ('size Str==%s'%(len(re.split('ODSAref "', line, re.IGNORECASE))))
             title = str.partition('"')[0]
             mtitle = modTitle(title, modDir)
             if mtitle =='': 
@@ -148,21 +183,26 @@ def main(argv):
 
   fileLst =  enumFile(modDir)
   modList =[]
+  modRost=[]
   for fl in fileLst:
      if os.path.splitext(fl)[1][1:] == 'mod':
+        modRost.append(os.path.splitext(os.path.basename(fl))[0])
         x = modPreReq(fl)
         modList.append(x)
   modList1 = sorted(modList,key = attrgetter('prereqNum'))
   for ml in modList1:
-     print ml.name
-     print ml.prereq
- 
-  for fl in fileLst:
-     if os.path.splitext(fl)[1][1:] == 'mod':
-        print "preprocessing " + fl
-        content = parse(fl, modDir, modDest,col)
+     ml.verifPreref(modRost)
+  #for ml in modList1:
+   #  ml.verifPreref(modRost)
+
+  finalList =modOrdering(modList1)
+  
+
+  for fl in finalList:
+        print "preprocessing " + os.path.splitext(os.path.basename(fl.name))[0]
+        content = parse(fl.name, modDir, modDest,col)
         try:
-           nfile = open(modDest+'/'+os.path.splitext(os.path.basename(fl))[0]+'.html','w')
+           nfile = open(modDest+'/'+os.path.splitext(os.path.basename(fl.name))[0]+'.html','w')
            nfile.writelines(content)
            nfile.close
         except IOError:

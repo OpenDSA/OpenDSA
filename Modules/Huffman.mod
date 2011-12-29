@@ -2,7 +2,6 @@
 <ODSAsettitle>Huffman Coding Trees</ODSAsettitle>
 <ODSAprereq "BinTreeImp" />
 <ODSAprereq "SpaceBounds" />
-<ODSAprereq "BinTreeImp" />
 
 The space/time tradeoff principle presented in
 Module <OpenDSA "SpaceBounds" /> states that one can often gain an
