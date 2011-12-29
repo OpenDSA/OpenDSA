@@ -107,7 +107,7 @@ there must be a way to distinguish between the node types.
 When separate node types are implemented via Java subclasses,
 the runtime environment stores information with
 each object allowing it to determine, for example, the correct
-subclass to use when the <tt>isLeaf</tt> virtual function
+subclass to use when the <code>isLeaf</code> virtual function
 is called.
 Thus, each node requires additional space.
 Only one bit is truly necessary to distinguish the two possibilities.

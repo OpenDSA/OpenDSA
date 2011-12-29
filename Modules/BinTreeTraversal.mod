@@ -68,13 +68,13 @@ is <b>B D A G E C H F I</b>.
 A traversal routine is naturally written as a recursive
 function.
 Its input parameter is a pointer to a node which we will call
-<tt>rt</tt> because each node can be viewed as the root of a some
+<code>rt</code> because each node can be viewed as the root of a some
 subtree.
 The initial call to the traversal function passes in a pointer to the
 root node of the tree.
-The traversal function visits <tt>rt</tt> and its children (if any) 
+The traversal function visits <code>rt</code> and its children (if any) 
 in the desired order.
-For example, a preorder traversal specifies that <tt>rt</tt> be
+For example, a preorder traversal specifies that <code>rt</code> be
 visited before its children.
 This can easily be implemented as follows.
 </p>
@@ -90,15 +90,15 @@ void preorder(BinNode rt)
 </pre>
 
 <p>
-Function <tt>preorder</tt> first checks that the tree is not
-empty (if it is, then the traversal is done and <tt>preorder</tt>
+Function <code>preorder</code> first checks that the tree is not
+empty (if it is, then the traversal is done and <code>preorder</code>
 simply returns).
-Otherwise, <tt>preorder</tt> makes  a call to <tt>visit</tt>,
+Otherwise, <code>preorder</code> makes  a call to <code>visit</code>,
 which processes the root node (i.e., prints the value or performs
 whatever computation as required by the application).
-Function <tt>preorder</tt> is then called recursively on the left
+Function <code>preorder</code> is then called recursively on the left
 subtree, which will visit all nodes in that subtree.
-Finally, <tt>preorder</tt> is called on the right subtree,
+Finally, <code>preorder</code> is called on the right subtree,
 visiting all nodes in the right subtree.
 Postorder and inorder traversals are similar.
 They simply change the order in which the node and its children are
@@ -108,11 +108,11 @@ visited, as appropriate.
 <p>
 An important decision in the implementation of any recursive function
 on trees is when to check for an empty subtree.
-Function <tt>preorder</tt> first checks to see if the value for
-<tt>rt</tt> is <tt>NULL</tt>.
+Function <code>preorder</code> first checks to see if the value for
+<code>rt</code> is <code>NULL</code>.
 If not, it will recursively call itself on the left and right children 
-of <tt>rt</tt>.
-In other words, <tt>preorder</tt> makes no attempt to avoid calling
+of <code>rt</code>.
+In other words, <code>preorder</code> makes no attempt to avoid calling
 itself on an empty child.
 Some programmers use an alternate design in which the left and
 right pointers of the current node are checked so that the recursive
@@ -130,9 +130,9 @@ void preorder2(BinNode rt)
 </pre>
 
 <p>
-At first it might appear that <tt>preorder2</tt> is more efficient
-than <tt>preorder</tt>, because it makes only half as many recursive
-calls.On the other hand, <tt>preorder2</tt> must access the left and right
+At first it might appear that <code>preorder2</code> is more efficient
+than <code>preorder</code>, because it makes only half as many recursive
+calls.On the other hand, <code>preorder2</code> must access the left and right
 child pointers twice as often.
 The net result is little or no performance improvement.
 </p>
@@ -144,23 +144,23 @@ Answer: Because half the pointers are null.
 </p>
 
 <p>
-In reality, the design of <tt>preorder2</tt> is inferior to
-that of <tt>preorder</tt> for two reasons.
+In reality, the design of <code>preorder2</code> is inferior to
+that of <code>preorder</code> for two reasons.
 First, while it is not apparent in this simple example,
 for more complex traversals it can become awkward to place the check
-for the <tt>NULL</tt> pointer in the calling code.
-Even here we had to write two tests for <tt>NULL</tt>,
-rather than the one needed by <tt>preorder</tt>.
-The more important concern with <tt>preorder2</tt> is that it
+for the <code>NULL</code> pointer in the calling code.
+Even here we had to write two tests for <code>NULL</code>,
+rather than the one needed by <code>preorder</code>.
+The more important concern with <code>preorder2</code> is that it
 tends to be error prone.
-While <tt>preorder2</tt> insures that no recursive
+While <code>preorder2</code> insures that no recursive
 calls will be made on empty subtrees, it will fail if the initial call 
-passes in a <tt>NULL</tt> pointer.
+passes in a <code>NULL</code> pointer.
 This would occur if the original tree is empty.
-To avoid the bug, either <tt>preorder2</tt> needs
-an additional test for a <tt>NULL</tt> pointer at the beginning
+To avoid the bug, either <code>preorder2</code> needs
+an additional test for a <code>NULL</code> pointer at the beginning
 (making the subsequent tests redundant after all), or the caller of
-<tt>preorder2</tt> has a hidden obligation to
+<code>preorder2</code> has a hidden obligation to
 pass in a non-empty tree, which is unreliable design.
 The net result is that many programmers forget to test for the
 possibility that the empty tree is being traversed.
@@ -174,9 +174,9 @@ define the visitor function that is to be executed on every node.
 One approach is simply to write a new version of the traversal for
 each such visitor function as needed.
 The disadvantage to this is that whatever function does the traversal
-must have access to the <tt>BinNode</tt> class.
+must have access to the <code>BinNode</code> class.
 It is probably better design to permit only the tree class to have
-access to the <tt>BinNode</tt> class.
+access to the <code>BinNode</code> class.
 </p>
 
 <p>
@@ -215,9 +215,9 @@ We wish to count the number of nodes in a binary tree.
 The key insight is that the total count for any (non-empty) subtree is
 one for the root plus the counts for the left and right subtrees.
 Where do left and right subtree counts come from?
-Calls to function <tt>count</tt> on the subtrees will compute this for
+Calls to function <code>count</code> on the subtrees will compute this for
 us.
-Thus, we can implement <tt>count</tt> as follows.
+Thus, we can implement <code>count</code> as follows.
 </p>
 
 <pre>

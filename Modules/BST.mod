@@ -77,7 +77,7 @@ ADT, along with a constructor and destructor.
 Recall from the discussion in Module <ODSAref "Dictionary" /> that
 there are various ways to deal with keys and comparing records
 (three approaches  being key/value pairs, a special comparison
-method such as using the <tt>Comparator</tt> class,
+method such as using the <code>Comparator</code> class,
 and passing in a comparator function).
 Our BST implementation will handle comparison by explicitly storing
 a key separate from the data value at each node of the tree.
@@ -174,14 +174,14 @@ in the BST.
 
 <p>
 Notice that in Figure <ODSAref "BSTClass" />, public member function
-<tt>find</tt> calls private member function <tt>findhelp</tt>.
-Method <tt>find</tt> takes the search key as an explicit parameter
+<code>find</code> calls private member function <code>findhelp</code>.
+Method <code>find</code> takes the search key as an explicit parameter
 and its BST as an implicit parameter, and returns the record that
 matches the key.
 However, the find operation is most easily implemented as a
 recursive function whose parameters are the root of a
 subtree and the search key.
-Member <tt>findhelp</tt> has the desired form for this recursive
+Member <code>findhelp</code> has the desired form for this recursive
 subroutine and is implemented as follows.
 </p>
 
@@ -231,7 +231,7 @@ We then add a new node containing the new record as a child
 of <i>R'</i>.
 Figure <ODSAref "BSTAdd" /> illustrates this operation.
 The value 35 is added as the right child of the node with value 32.
-Here is the implementation for <tt>inserthelp</tt>.
+Here is the implementation for <code>inserthelp</code>.
 </p>
 
 <pre>
@@ -250,9 +250,9 @@ private BSTNode<Key,E> inserthelp(BSTNode<Key,E> rt,
 
 <p>
 You should pay careful attention to the implementation for
-<tt>inserthelp</tt>.
-Note that <tt>inserthelp</tt> returns a pointer to a
-<tt>BSTNode</tt>.
+<code>inserthelp</code>.
+Note that <code>inserthelp</code> returns a pointer to a
+<code>BSTNode</code>.
 What is being returned is a subtree identical to the old subtree,
 except that it has been modified to contain the new record being
 inserted.
@@ -301,7 +301,7 @@ We know that <i>S</i> has no left child (because if <i>S</i> did have
 a left child, <i>S</i> would not be the node with minimum key value).
 Thus, changing the pointer as described will maintain a BST, with
 <i>S</i> removed.
-The code for this method, named <tt>deletemin</tt>, is as follows:
+The code for this method, named <code>deletemin</code>, is as follows:
 </p>
 
 <pre>
@@ -313,10 +313,10 @@ private BSTNode<Key,E> deletemin(BSTNode<Key,E> rt) {
 </pre>
 
 <p class="example">
-Figure <ODSAref "DelMin" /> illustrates the <tt>deletemin</tt>
+Figure <ODSAref "DelMin" /> illustrates the <code>deletemin</code>
 process.
 Beginning at the root node with value 10,
-<tt>deletemin</tt> follows the left link until there is no further
+<code>deletemin</code> follows the left link until there is no further
 left link, in this case reaching the node with value 5.
 The node with value10 is changed to point to the right child of the
 node containing the minimum value.
@@ -334,23 +334,23 @@ This is indicated in Figure <ODSAref "DelMin" /> by a dashed line.
 An example of deleting the node with minimum value.
 In this tree, the node with minimum value, 5, is the left child of the
 root.
-Thus, the root's <tt>left</tt> pointer is changed to point to 5's right
+Thus, the root's <code>left</code> pointer is changed to point to 5's right
 child.
 </figcaption>
 </figure>
 
 <p>
 A pointer to the node containing the minimum-valued element is stored
-in parameter <tt>S</tt>.
-The return value of the <tt>deletemin</tt> method is the subtree of
+in parameter <code>S</code>.
+The return value of the <code>deletemin</code> method is the subtree of
 the current node with the minimum-valued node in the subtree removed.
-As with method <tt>inserthelp</tt>, each node on the path back to the
+As with method <code>inserthelp</code>, each node on the path back to the
 root has its left child pointer reassigned to the subtree resulting
-from its call to the <tt>deletemin</tt> method.
+from its call to the <code>deletemin</code> method.
 </p>
 
 <p>
-A useful companion method is <tt>getmin</tt> which returns a
+A useful companion method is <code>getmin</code> which returns a
 pointer to the node containing the minimum value in the subtree.
 </p>
 
@@ -370,7 +370,7 @@ Once <i>R</i> is found, there are several possibilities.
 If <i>R</i> has no children, then <i>R</i>'s parent has its pointer
 set to NULL.
 If <i>R</i> has one child, then <i>R</i>'s parent has
-its pointer set to <i>R</i>'s child (similar to <tt>deletemin</tt>).
+its pointer set to <i>R</i>'s child (similar to <code>deletemin</code>).
 The problem comes if <i>R</i> has two children.
 One simple approach, though expensive, is to set <i>R</i>'s parent to
 point to one of <i>R</i>'s subtrees, and then reinsert the remaining
@@ -396,7 +396,7 @@ then the BST property is maintained.
 Assume that we wish to remove the value 37 from the BST
 of Figure <ODSAref "BSTShape" />(a).
 Instead of removing the root node, we remove the node with the least
-value in the right subtree (using the <tt>deletemin</tt>
+value in the right subtree (using the <code>deletemin</code>
 operation).
 This value can then replace the value in the root.
 In this example we first remove the node with value 40,
@@ -441,10 +441,10 @@ Tree Property if equal values appear in the right subtree.
 
 <p>
 From the above, we see that if we want to remove the record stored in
-a node with two children, then we simply call <tt>deletemin</tt> on
+a node with two children, then we simply call <code>deletemin</code> on
 the node's right subtree and substitute the record returned for the
 record being removed.
-Here is an implementation for <tt>removehelp</tt>. 
+Here is an implementation for <code>removehelp</code>. 
 </p>
 
 <pre>
@@ -471,9 +471,9 @@ private BSTNode<Key,E> removehelp(BSTNode<Key,E> rt,Key k) {
 </pre>
 
 <p>
-The cost for <tt>findhelp</tt> and <tt>inserthelp</tt> is the depth of
+The cost for <code>findhelp</code> and <code>inserthelp</code> is the depth of
 the node found or inserted.
-The cost for <tt>removehelp</tt> is the depth of the node being
+The cost for <code>removehelp</code> is the depth of the node being
 removed, or in the case when this node has two children,
 the depth of the node with smallest value in its right subtree. 
 Thus, in the worst case, the cost for any one of these operations is
@@ -511,7 +511,7 @@ is followed exactly once.
 </p>
 
 <p>
-Below is an example traversal, named <tt>printhelp</tt>.
+Below is an example traversal, named <code>printhelp</code>.
 It performs an inorder traversal on the BST to print the node values
 in ascending order.
 </p>

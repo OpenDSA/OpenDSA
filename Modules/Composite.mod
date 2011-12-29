@@ -11,14 +11,14 @@ This is to implement nodes using the
 <dfn>composite design pattern</dfn>.
 This approach is noticeably different from the one of
 Figure <ODSAref "VarNodeI" /> in that the node classes themselves
-implement the functionality of <tt>traverse</tt>.
+implement the functionality of <code>traverse</code>.
 Figure <ODSAref "VarNodeC" /> shows the implementation.
-Here, base class <tt>VarBinNode</tt> declares a member function
-<tt>traverse</tt> that each subclass must implement.
+Here, base class <code>VarBinNode</code> declares a member function
+<code>traverse</code> that each subclass must implement.
 Each subclass then implements its own appropriate behavior for its
 role in a traversal.
-The whole traversal process is called by invoking <tt>traverse</tt>
-on the root node, which in turn invokes <tt>traverse</tt> on its
+The whole traversal process is called by invoking <code>traverse</code>
+on the root node, which in turn invokes <code>traverse</code> on its
 children. 
 </p>
 
@@ -75,7 +75,7 @@ public static void traverse(VarBinNode rt) {
 A second implementation for separate internal and leaf node
 representations using Java class inheritance
 and virtual functions using the composite design pattern.
-Here, the functionality of <tt>traverse</tt> is
+Here, the functionality of <code>traverse</code> is
 embedded into the node subclasses.
 </figcaption>
 </figure>
@@ -84,23 +84,23 @@ embedded into the node subclasses.
 When comparing the implementations of Figures <ODSAref "VarNodeI" />
 and <ODSAref "VarNodeC" />, each has advantages and disadvantages.
 The first does not require that the node classes know about
-the <tt>traverse</tt> function.
+the <code>traverse</code> function.
 With this approach, it is easy to add new methods to the tree class
 that do other traversals or other operations on nodes of the tree.
-However, we see that <tt>traverse</tt> in
+However, we see that <code>traverse</code> in
 Figure <ODSAref "VarNodeI" /> does 
 need to be familiar with each node subclass.
 Adding a new node subclass would therefore require modifications to
-the <tt>traverse</tt> function.
+the <code>traverse</code> function.
 In contrast, the approach of Figure <ODSAref "VarNodeC" /> requires
 that any new operation on the tree that requires a traversal also be
 implemented in the node subclasses.
 On the other hand, the approach of Figure <ODSAref "VarNodeC" />
-avoids the need for the <tt>traverse</tt> function to know
+avoids the need for the <code>traverse</code> function to know
 anything about the distinct abilities of the node subclasses.
 Those subclasses handle the responsibility of performing a traversal
 on themselves.
-A secondary benefit is that there is no need for <tt>traverse</tt> to
+A secondary benefit is that there is no need for <code>traverse</code> to
 explicitly enumerate all of the different node subclasses,
 directing appropriate action for each.
 With only two node classes this is a minor point.
@@ -114,7 +114,7 @@ This problem could be avoided by using a flyweight
 
 <p>
 Typically, the version of Figure <ODSAref "VarNodeI" /> would be
-preferred in this example if <tt>traverse</tt> is a member function of
+preferred in this example if <code>traverse</code> is a member function of
 the tree class, and if the node subclasses are hidden from users of
 that tree class.
 On the other hand, if the nodes are objects that have meaning

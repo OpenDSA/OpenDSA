@@ -209,10 +209,10 @@ An implementation for the heap.
 <p>
 Figure <ODSAref "HeapClass" /> shows an implementation for
 heaps.
-The class is a generic with one type parameter, <tt>E</tt>,
+The class is a generic with one type parameter, <code>E</code>,
 which defines the type for the data elements stored in the heap.
-<tt>E</tt> must extend the <tt>Comparable</tt> interface,
-and so we can use the <tt>compareTo</tt> method for comparing records
+<code>E</code> must extend the <code>Comparable</code> interface,
+and so we can use the <code>compareTo</code> method for comparing records
 in the heap.
 </p>
 
@@ -237,18 +237,18 @@ size allowed for the heap (the size of the array).
 </p>
 
 <p>
-Method <tt>heapsize</tt> returns the current size of the heap.
-<tt>H.isLeaf(pos)</tt> returns TRUE if position
-<tt>pos</tt> is a leaf in heap <tt>H</tt>, and FALSE otherwise.
-Members <tt>leftchild</tt>, <tt>rightchild</tt>,
-and <tt>parent</tt> return the position (actually, the array index)
+Method <code>heapsize</code> returns the current size of the heap.
+<code>H.isLeaf(pos)</code> returns TRUE if position
+<code>pos</code> is a leaf in heap <code>H</code>, and FALSE otherwise.
+Members <code>leftchild</code>, <code>rightchild</code>,
+and <code>parent</code> return the position (actually, the array index)
 for the left child, right child, and parent of the position passed,
 respectively.
 </p>
 
 <p>
 One way to build a heap is to insert the elements one at a time.
-Method <tt>insert</tt> will insert a new element <i>V</i> into
+Method <code>insert</code> will insert a new element <i>V</i> into
 the heap.
 You might expect the heap insertion process to be similar to the
 insert function for a BST, starting at the root and working down
@@ -256,9 +256,9 @@ through the heap.
 However, this approach is not likely to work because the heap must
 maintain the shape of a complete binary tree.
 Equivalently, if the heap takes up the first
-<i>n</i> positions of its array prior to the call to <tt>insert</tt>,
+<i>n</i> positions of its array prior to the call to <code>insert</code>,
 it must take up the first <i>n</i>+1 positions after.
-To accomplish this, <tt>insert</tt> first places <i>V</i> at
+To accomplish this, <code>insert</code> first places <i>V</i> at
 position <i>n</i> of the array.
 Of course, <i>V</i> is unlikely to be in the correct position.
 To move <i>V</i> to the right place, it is compared to its parent's
@@ -289,7 +289,7 @@ To be precise, the height of a heap with <i>n</i> nodes is
 </p>
 
 <p>
-Each call to <tt>insert</tt> takes &Theta;(log <i>n</i> time in the
+Each call to <code>insert</code> takes &Theta;(log <i>n</i> time in the
 worst case, because the value being inserted can move at most the
 distance from the bottom of the tree to the top of the tree.
 Thus, to insert <i>n</i> values into the heap, if we insert them 
@@ -373,7 +373,7 @@ In this case, we simply continue the process of "pushing down"
 <i>R</i> until it reaches a level where it is greater than its
 children, or is a leaf node.
 This process is implemented by the private method
-<tt>siftdown</tt>.
+<code>siftdown</code>.
 The siftdown operation is illustrated by
 Figure <ODSAref "SiftPic" />.
 </p>
@@ -420,14 +420,14 @@ the building algorithm can start in the middle of the array, with the
 first internal node.
 The exchanges shown in Figure <ODSAref "HeapBuild" />(b) result from
 this process.
-Method <tt>buildHeap</tt> implements the building algorithm.
+Method <code>buildHeap</code> implements the building algorithm.
 </p>
 
 <p>
-What is the cost of <tt>buildHeap</tt>?
+What is the cost of <code>buildHeap</code>?
 Clearly it is the sum of the costs for the calls to
-<tt>siftdown</tt>.
-Each <tt>siftdown</tt> operation can cost at most the number of
+<code>siftdown</code>.
+Each <code>siftdown</code> operation can cost at most the number of
 levels it takes for the node being sifted to reach the bottom of the
 tree.
 In any complete tree, approximately half of the nodes are leaves
@@ -468,7 +468,7 @@ root position.
 We now consider the heap to be one element smaller.
 Unfortunately, the new root value is probably
 <em>not</em> the maximum value in the new heap.
-This problem is easily solved by using <tt>siftdown</tt> to reorder
+This problem is easily solved by using <code>siftdown</code> to reorder
 the heap.
 Because the heap is log <i>n</i> levels deep, the cost of deleting
 the maximum element is &Theta;(log <i>n</i>) in the average and worst
@@ -480,7 +480,7 @@ The heap is a natural implementation for the priority queue discussed
 at the beginning of this section.
 Jobs can be added to the heap (using their priority value as the
 ordering key) when needed.
-Method <tt>removemax</tt> can be called whenever a new job is to be
+Method <code>removemax</code> can be called whenever a new job is to be
 executed.
 </p>
 
@@ -494,7 +494,7 @@ arbitrary value; it is only good for finding the maximum value.
 However, if we already know the index for an object within the heap,
 it is a simple matter to update its priority (including changing its
 position to maintain the heap property) or remove it.
-The <tt>remove</tt> method takes as input the position of the
+The <code>remove</code> method takes as input the position of the
 node to be removed from the heap.
 A typical implementation for priority queues requiring updating of
 priorities will need to use an auxiliary data structure that supports

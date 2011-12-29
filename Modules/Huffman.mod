@@ -290,10 +290,10 @@ each derived from an abstract base class.
 <p>
 Figure <ODSAref "HuffNode" /> shows an implementation for Huffman tree
 nodes.
-This implementation is similar to the <tt>VarBinNode</tt>
+This implementation is similar to the <code>VarBinNode</code>
 implementation of Figure <ODSAref "VarNodeI" />.
-There is an abstract base class, named <tt>HuffNode</tt>, and two
-subclasses, named <tt>LeafNode</tt> and <tt>IntlNode</tt>.
+There is an abstract base class, named <code>HuffNode</code>, and two
+subclasses, named <code>LeafNode</code> and <code>IntlNode</code>.
 This implementation reflects the fact that leaf and internal nodes
 contain distinctly different information.
 </p>
@@ -351,17 +351,17 @@ static HuffTree<Character> buildTree() {
 <figcaption>
 <ODSAfig "HuffBuild" />
 Implementation for the Huffman tree construction function.
-<tt>buildHuff</tt> takes as input <tt>fl</tt>, the min-heap
+<code>buildHuff</code> takes as input <code>fl</code>, the min-heap
 of partial Huffman trees, which initially are single leaf nodes as
 shown in Step 1 of Figure <ODSAref "HuffTree" />.
-The body of function <tt>buildTree</tt> consists mainly of a
-<tt>for</tt> loop.
-On each iteration of the <tt>for</tt> loop, the first two partial
-trees are taken off the heap and placed in variables <tt>temp1</tt>
-and <tt>temp2</tt>.
-A tree is created (<tt>temp3</tt>) such that the left and right subtrees 
-are <tt>temp1</tt> and <tt>temp2</tt>, respectively.
-Finally, <tt>temp3</tt> is returned to <tt>fl</tt>.
+The body of function <code>buildTree</code> consists mainly of a
+<code>for</code> loop.
+On each iteration of the <code>for</code> loop, the first two partial
+trees are taken off the heap and placed in variables <code>temp1</code>
+and <code>temp2</code>.
+A tree is created (<code>temp3</code>) such that the left and right subtrees 
+are <code>temp1</code> and <code>temp2</code>, respectively.
+Finally, <code>temp3</code> is returned to <code>fl</code>.
 </figure>
 </figcaption>
 

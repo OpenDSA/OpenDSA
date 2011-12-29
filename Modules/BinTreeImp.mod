@@ -18,19 +18,19 @@ pointers to the two children.
 
 <p>
 Figure <ODSAref "BinNodeClass" /> shows a simple implementation for the
-<tt>BinNode</tt> abstract class, which we will name <tt>BSTNode</tt>.
-Class <tt>BSTNode</tt> includes a data member of type <tt>E</tt>,
+<code>BinNode</code> abstract class, which we will name <code>BSTNode</code>.
+Class <code>BSTNode</code> includes a data member of type <code>E</code>,
 (which is the second generic parameter) for the element type.
 To support search structures such as the Binary Search Tree, an
 additional field is included, with corresponding access methods,
 to store a key value
 (whose purpose is explained in Module <ODSAref "Dictionary" />).
 Its type is determined by the first generic parameter, named
-<tt>Key</tt>.
-Every <tt>BSTNode</tt> object also has two pointers,
+<code>Key</code>.
+Every <code>BSTNode</code> object also has two pointers,
 one to its left child and another to its right child.
 Figure <ODSAref "BinStPic" />
-illustrates the <tt>BSTNode</tt> implementation.
+illustrates the <code>BSTNode</code> implementation.
 </p>
 
 <figure>
@@ -169,14 +169,14 @@ detail.
 A base class can be declared for binary tree nodes in general,
 with subclasses defined for the internal and leaf nodes.
 The base class of Figure <ODSAref "VarNodeI" /> is named
-<tt>VarBinNode</tt>.
+<code>VarBinNode</code>.
 It includes a virtual member function named
-<tt>isLeaf</tt>, which indicates the node type.
+<code>isLeaf</code>, which indicates the node type.
 Subclasses for the internal and leaf node types each implement
-<tt>isLeaf</tt>.
+<code>isLeaf</code>.
 Internal nodes store child pointers of the base class type;
 they do not distinguish their children's actual subclass.
-Whenever a node is examined, its version of <tt>isLeaf</tt> indicates
+Whenever a node is examined, its version of <code>isLeaf</code> indicates
 the node's subclass.
 </p>
 
@@ -234,20 +234,20 @@ and virtual functions.
 
 <p>
 Figure <ODSAref "VarNodeI" /> includes two subclasses derived from
-class <tt>VarBinNode</tt>, named <tt>LeafNode</tt> and
-<tt>IntlNode</tt>.
-Class <tt>IntlNode</tt> can access its children through
-pointers of type <tt>VarBinNode</tt>.
-Function <tt>traverse</tt> illustrates the use of these classes.
-When <tt>traverse</tt> calls method <tt>isLeaf</tt>,
+class <code>VarBinNode</code>, named <code>LeafNode</code> and
+<code>IntlNode</code>.
+Class <code>IntlNode</code> can access its children through
+pointers of type <code>VarBinNode</code>.
+Function <code>traverse</code> illustrates the use of these classes.
+When <code>traverse</code> calls method <code>isLeaf</code>,
 Java's runtime environment
-determines which subclass this particular instance of <tt>rt</tt>
-happens to be and calls that subclass's version of <tt>isLeaf</tt>.
-Method <tt>isLeaf</tt> then provides the actual node type to its
+determines which subclass this particular instance of <code>rt</code>
+happens to be and calls that subclass's version of <code>isLeaf</code>.
+Method <code>isLeaf</code> then provides the actual node type to its
 caller.
 The other member functions for the derived subclasses are accessed by
 type-casting the base class pointer as appropriate, as shown in
-function <tt>traverse</tt>.
+function <code>traverse</code>.
 </p>
 
 </div>
