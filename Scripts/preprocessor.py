@@ -27,6 +27,9 @@ class modPreReq:
             self.prereq.append(str.partition('"')[0])
       self.prereqNum = len(self.prereq)
 
+  # def verifPreref(modRoster):
+   #   for i in self.prereq:
+      
 
 def modHeader(modDir, title, collection):
    nhead =[]
@@ -76,20 +79,24 @@ def parse(filename, modDir, targetDir, col):
       if '<ODSAsettitle>' in line:
          str =  re.split('ODSAsettitle>', line, re.IGNORECASE)[1]
          title1 = str.partition('<')[0]
-         line = line.replace('<ODSAsettitle>'+title1+'</ODSAsettitle>','<h1>'+title1+'</h1>')
+         line = line.replace('<ODSAsettitle>','<h1>')
+         line = line.replace('</ODSAsettitle>','</h1>')
       if '<ODSAdef>' in line:
          str =  re.split('ODSAdef>', line, re.IGNORECASE)[1]
          title = str.partition('<')[0]
-         line = line.replace('<ODSAdef>'+title+'</ODSAdef>','<b>'+title+'</b>')
+         line = line.replace('<ODSAdef>','<b>')
+         line = line.replace('</ODSAdef>','</b>')
       if '<ODSAref \"' in line:
-         str =  re.split('ODSAref "', line, re.IGNORECASE)[1]
-         title = str.partition('"')[0]
-         mtitle = modTitle(title, modDir)
-         if mtitle =='': 
-            mtitle = title
-            line = line.replace('<ODSAref "'+title+'" />',mtitle)
-         else:
-            line = line.replace('<ODSAref "'+title+'" />','<a href="'+title+'.html">'+title+'.'+ mtitle+'</a>')
+         for j in xrange(1,len(re.split('ODSAref "', line, re.IGNORECASE))):
+            str =  re.split('<ODSAref "', line, re.IGNORECASE)[1]
+            #print ('size Str==%s'%(len(re.split('ODSAref "', line, re.IGNORECASE))))
+            title = str.partition('"')[0]
+            mtitle = modTitle(title, modDir)
+            if mtitle =='': 
+               mtitle = title
+               line = line.replace('<ODSAref "'+title+'" />',mtitle)
+            else:
+               line = line.replace('<ODSAref "'+title+'" />','<a href="'+title+'.html">'+title+'.'+ mtitle+'</a>')
       newline.append(line)
    head = modHeader(modDir,title1, col)
    foot = modFooter(modDir)
