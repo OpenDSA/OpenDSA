@@ -125,8 +125,6 @@ def parseDict(filename, modDir, targetDir, i):
             str =  re.split('<ODSAfig "', line, re.IGNORECASE)[1]
             title = str.partition('"')[0]
             table[title]='%s.%s'%(i,fig)
-            t='%s.%s'%(i,fig)
-            line = line.replace('<ODSAfig "'+title+'" />','Figure '+t)
       if '<ODSAtable \"' in line:
          for j in xrange(0,len(re.split('ODSAtable "', line, re.IGNORECASE))):
             tab=tab+1
@@ -152,7 +150,9 @@ def parse(filename, modDir, targetDir, col, table):
    data = fls.readlines()
    fls.close()
    newline =[]
+   glossary=[]
    title1 =''
+   b=1
    modname =os.path.splitext(os.path.basename(filename))[0]
    for line in data:
       if '<ODSAsettitle>' in line:
@@ -160,11 +160,20 @@ def parse(filename, modDir, targetDir, col, table):
          title1 = str.partition('<')[0]
          line = line.replace('<ODSAsettitle>','<h1>Module %s: '%(table[modname]))
          line = line.replace('</ODSAsettitle>','</h1>')
-      if '<ODSAdef>' in line:
-         str =  re.split('ODSAdef>', line, re.IGNORECASE)[1]
+      if '<dfn>' in line:
+         str =  re.split('<dfn>', line, re.IGNORECASE)[1]
          title = str.partition('<')[0]
-         line = line.replace('<ODSAdef>','<b>')
-         line = line.replace('</ODSAdef>','</b>')
+         line = line.replace('<dfn>','<b>')
+         v="def:%s.%s"%(table[modname],b)
+         line = line.replace('</dfn>','</b><a name="'+v+'"></a>')
+         glossary.append(title+' <a href="'+modname+'.html#'+v+'">'+v+'</a><br />\n')
+         b=b+1
+         try:
+           gfile = open('glossary.html.tmp','a')
+           gfile.writelines(glossary)
+           gfile.close
+         except IOError:
+           print 'Error when saving temporary glossary file'
       if '<ODSAfig \"' in line:
          for j in xrange(0,len(re.split('ODSAref "', line, re.IGNORECASE))):
             str =  re.split('<ODSAfig "', line, re.IGNORECASE)[1]
@@ -225,9 +234,9 @@ def parse(filename, modDir, targetDir, col, table):
                   if ('%s'%(item[1])) == val:
                      key=item[0]
                if st.partition('.')[2]=='':
-                  line = line.replace('<ODSAref "'+title+'" />','<a href="'+key+'.html">%s'%(mtitle)+'</a> ')
+                  line = line.replace('<ODSAref "'+title+'" />','<a href="'+key.lower()+'.html">%s'%(mtitle)+'</a> ')
                else:
-                  line = line.replace('<ODSAref "'+title+'" />','<a href="'+key+'.html#%s">%s'%(mtitle,mtitle)+'</a> ')
+                  line = line.replace('<ODSAref "'+title+'" />','<a href="'+key.lower()+'.html#%s">%s'%(mtitle,mtitle)+'</a> ')
       newline.append(line)
    head = modHeader(modDir,title1, col)
    foot = modFooter(modDir)
@@ -301,11 +310,31 @@ def main(argv):
         print "preprocessing " + os.path.splitext(os.path.basename(fl.name))[0]+'...'
         content = parse(fl.name, modDir, modDest,col,finalTable)
         try:
-           nfile = open(modDest+'/'+os.path.splitext(os.path.basename(fl.name))[0]+'.html','w')
+           nfile = open(modDest+'/'+os.path.splitext(os.path.basename(fl.name))[0].lower()+'.html','w')
            nfile.writelines(content)
            nfile.close
         except IOError:
            print 'Error when saving html file'
+
+  print 'Building glossary...'
+  gfile = open('glossary.html.tmp','r')
+  glos = gfile.readlines()
+  gfile.close()
+  lowerglos=[] #lower case all glossary terms-- to ease the alphabetical sorting
+  for g in glos:
+     lowerglos.append(g.capitalize())
+  lowerglos = list(set(lowerglos))  #remove duplicates
+  lowerglos.sort()
+  try:
+     dfile =open('glossary.html.tmp1','a')
+     dfile.writelines('<h1>Glossary</h1>\n')
+     dfile.writelines(lowerglos)
+     dfile.close
+     shutil.move('glossary.html.tmp1',modDest+'/glossary.html')
+     os.remove('glossary.html.tmp')
+  except IOError:
+     print 'Error when saving glossary file'
+
 
 if __name__ == "__main__":
    sys.exit(main(sys.argv))
