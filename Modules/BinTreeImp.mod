@@ -134,7 +134,8 @@ implementations for internal and leaf nodes.
 
 <figcaption>
 <ODSAfig "DiffNodes" />
-An expression tree for 4<i>x</i>(2<i>x</i> + <i>a</i>) - <i>c</i>.
+An expression tree for
+4<var>x</var>(2<var>x</var> + <var>a</var>) - <var>c</var>.
 </figcaption>
 </figure>
 
@@ -147,7 +148,7 @@ composed of binary operators such as addition, subtraction,
 multiplication, and division.
 Internal nodes store operators, while the leaves store operands.
 The tree of Figure <ODSAref "DiffNodes" /> represents the expression
-4<i>x</i>(2<i>x</i> + <i>a</i>) - <i>c</i>.
+4<var>x</var>(2<var>x</var> + <var>a</var>) - <var>c</var>.
 The storage requirements for a leaf in an expression tree are quite
 different from those of an internal node.
 Internal nodes store one of a small set of operators,

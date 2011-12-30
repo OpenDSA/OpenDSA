@@ -65,6 +65,11 @@ figcaption {
   color:blue;
 }
 
+var.cvar {
+  font-weight: bold;
+  font-style: Normal;
+}
+
 p.TODO {
   color:red;
 }
@@ -91,5 +96,5 @@ applet {
 
 dfn {
   font-style: Normal;
-  font-weight: Bold;
+  font-weight: bold;
 }

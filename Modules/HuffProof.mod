@@ -22,23 +22,24 @@ in the tree.
 </p>
 
 <p class="proof">
-Call the two letters with least frequency <i>l</i><sub>1</sub>
-and <i>l</i><sub>2</sub>.
+Call the two letters with least frequency <var>l<sub>1</sub></var>
+and <var>l<sub>2</sub></var>.
 They must be siblings because <code>buildHuff</code>
 selects them in the first step of the construction process.
-Assume that <i>l</i><sub>1</sub> and <i>l</i><sub>2</sub> are not the
-deepest nodes in the tree.
+Assume that <var>l<sub>1</sub></var> and <var>l<sub>2</sub></var> are
+not the deepest nodes in the tree.
 In this case, the Huffman tree must either look as shown in
 Figure <ODSAref "HuffProof" />, or in some sense be symmetrical to
 this.
-For this situation to occur, the parent of <i>l</i><sub>1</sub>
-and <i>l</i><sub>2</sub>,
-labeled <i>V</i>, must have greater weight than the node
-labeled <i>X</i>.
+For this situation to occur, the parent of <var>l<sub>1</sub></var>
+and <var>l<sub>2</sub></var>,
+labeled <var>V</var>, must have greater weight than the node
+labeled <var>X</var>.
 Otherwise, function <code>buildHuff</code> would have selected node
-<i>V</i> in place of node <i>X</i> as the child of node <i>U</i>.
-However, this is impossible because <i>l</i><sub>1</sub> and
-<i>l</i><sub>2</sub> are the letters with least frequency.
+<var>V</var> in place of node <var>X</var> as the child of node
+<var>U</var>.
+However, this is impossible because <var>l<sub>1</sub></var> and
+<var>l<sub>2</sub></var> are the letters with least frequency.
 </p>
 
 <figure>
@@ -49,8 +50,8 @@ However, this is impossible because <i>l</i><sub>1</sub> and
 <figcaption>
 <ODSAfig "HuffProof" />
 An impossible Huffman tree, showing the situation where the two nodes 
-with least weight, <i>l</i><sub>1</sub> and <i>l</i><sub>2</sub>, are
-not the deepest nodes in the tree.
+with least weight, <var>l<sub>1</sub></var> and
+<var>l<sub>2</sub></var>, are not the deepest nodes in the tree.
 Triangles represent subtrees.
 </figcaption>
 </figure>
@@ -80,29 +81,31 @@ external path length.
 
 <li>
 <p>
-<b>Induction Step</b>: Given a Huffman tree <b>T</b> built by
-<code>buildHuff</code> with <i>n</i> leaves,
+<b>Induction Step</b>: Given a Huffman tree <var class="cvar">T</var>
+built by <code>buildHuff</code> with <i>n</i> leaves,
 <i>n</i> &ge; 2, suppose that
 <i>w</i><sub>1</sub> &le; <i>w</i><sub>2</sub> &le;
 ... &le; <i>w</i><sub>n</sub> where
 <i>w</i><sub>1</sub> to <i>w</i><sub>n</sub> are the weights of the
 letters.
-Call <i>V</i> the parent of the letters with frequencies <i>w</i><sub>1</sub>
-and <i>w</i><sub>2</sub>.
+Call <var>V</var> the parent of the letters with frequencies
+<i>w</i><sub>1</sub> and <i>w</i><sub>2</sub>.
 From the lemma, we know that the leaf nodes containing the letters
 with frequencies <i>w</i><sub>1</sub> and <i>w</i><sub>2</sub> are as
-deep as any nodes in <b>T</b>.
+deep as any nodes in <var class="cvar">T</var>.
 If any other leaf nodes in the tree were deeper, we could reduce their 
 weighted path length by swapping them with <i>w</i><sub>1</sub> or
 <i>w</i><sub>2</sub>.
 But the lemma tells us that no such deeper nodes exist.
-Call <b>T'</b> the Huffman tree that is identical to <b>T</b> except
-that node <i>V</i> is replaced with a leaf node <i>V</i>' whose
-weight is <i>w</i><sub>1</sub> + <i>w</i><sub>2</sub>.
-By the induction hypothesis, <b>T'</b> has minimum external path
+Call <var class="cvar">T'</var> the Huffman tree that is identical to
+<var class="cvar">T</var> except 
+that node <var>V</var> is replaced with a leaf node <var>V'</var>
+whose weight is <i>w</i><sub>1</sub> + <i>w</i><sub>2</sub>.
+By the induction hypothesis, <var class="cvar">T'</var> has minimum
+external path length.
+Returning the children to <var>V'</var> restores tree
+<var class="cvar">T</var>, which must also have minimum external path
 length.
-Returning the children to <i>V</i>' restores tree <b>T</b>, which
-must also have minimum external path length.
 </p>
 
 <p>

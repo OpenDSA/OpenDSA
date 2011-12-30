@@ -248,7 +248,7 @@ respectively.
 
 <p>
 One way to build a heap is to insert the elements one at a time.
-Method <code>insert</code> will insert a new element <i>V</i> into
+Method <code>insert</code> will insert a new element <var>V</var> into
 the heap.
 You might expect the heap insertion process to be similar to the
 insert function for a BST, starting at the root and working down
@@ -256,20 +256,21 @@ through the heap.
 However, this approach is not likely to work because the heap must
 maintain the shape of a complete binary tree.
 Equivalently, if the heap takes up the first
-<i>n</i> positions of its array prior to the call to <code>insert</code>,
+<i>n</i> positions of its array prior to the call to
+<code>insert</code>,
 it must take up the first <i>n</i>+1 positions after.
-To accomplish this, <code>insert</code> first places <i>V</i> at
+To accomplish this, <code>insert</code> first places <var>V</var> at
 position <i>n</i> of the array.
-Of course, <i>V</i> is unlikely to be in the correct position.
-To move <i>V</i> to the right place, it is compared to its parent's
-value.
-If the value of <i>V</i> is less than or equal to the value of its
+Of course, <var>V</var> is unlikely to be in the correct position.
+To move <var>V</var> to the right place, it is compared to its
+parent's value.
+If the value of <var>V</var> is less than or equal to the value of its
 parent, then it is in the correct place and the insert routine is
 finished.
-If the value of <i>V</i> is greater than that of its parent, then the
-two elements swap positions.
-From here, the process of comparing <i>V</i> to its (current) parent
-continues until <i>V</i> reaches its correct position.
+If the value of <var>V</var> is greater than that of its parent, then
+the two elements swap positions.
+From here, the process of comparing <var>V</var> to its (current)
+parent continues until <var>V</var> reaches its correct position.
 </p>
 
 <p>
@@ -359,18 +360,19 @@ So, how do we pick the best rearrangement?
 <p>
 One good algorithm stems from induction.
 Suppose that the left and right subtrees of the root are already
-heaps, and <i>R</i> is the name of the element at the root.
+heaps, and <var>R</var> is the name of the element at the root.
 This situation is illustrated by Figure <ODSAref "HeapInduct" />.
 In this case there are two possibilities.
-(1) <i>R</i> has a value greater than or equal to its two children.
+(1) <var>R</var> has a value greater than or equal to its two
+children.
 In this case, construction is complete.
-(2) <i>R</i> has a value less than one or both of its children.
-In this case, <i>R</i> should be exchanged with the child that has
+(2) <var>R</var> has a value less than one or both of its children.
+In this case, <var>R</var> should be exchanged with the child that has
 greater value.
-The result will be a heap, except that <i>R</i>
+The result will be a heap, except that <var>R</var>
 might still be less than one or both of its (new) children.
 In this case, we simply continue the process of "pushing down"
-<i>R</i> until it reaches a level where it is greater than its
+<var>R</var> until it reaches a level where it is greater than its
 children, or is a leaf node.
 This process is implemented by the private method
 <code>siftdown</code>.
@@ -386,9 +388,9 @@ Figure <ODSAref "SiftPic" />.
 <figcaption>
 <ODSAfig "HeapInduct" />
 Final stage in the heap-building algorithm.
-Both subtrees of node <i>R</i> are heaps.
-All that remains is to push <i>R</i> down to its proper level in the
-heap.
+Both subtrees of node <var>R</var> are heaps.
+All that remains is to push <var>R</var> down to its proper level in
+the heap.
 </figcaption>
 </figure>
 

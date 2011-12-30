@@ -513,8 +513,8 @@ times in 306 letters.
 Finally, letters K and Z have code lengths of six, and
 together are expected to appear only 9 times in 306 letters.
 The average expected cost per character is simply the sum of the cost
-for each character (<i>c</i><sub>i</sub>) times the probability of its
-occurring (<i>p</i><sub>i</sub>), or
+for each character (<i>c<sub>i</sub></i>) times the probability of
+its occurring (<i>p<sub>i</sub></i>), or
 </p>
 
 <img src="http://www.forkosh.com/mathtex.cgi?

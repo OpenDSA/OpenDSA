@@ -54,21 +54,21 @@ and a node is said to be the <dfn>parent</dfn> of its children.
 </p>
 
 <p>
-If <i>n</i><sub>1</sub>, <i>n</i><sub>2</sub>, ...,
-<i>n<sub>k</sub></i>
+If <var>n<sub>1</sub></var>, <var>n<sub>2</sub></var>, ...,
+<var>n<sub>k</sub></var>
 is a sequence of nodes in the tree such
-that <i>n<sub>i</sub></i> is the parent of
-<i>n</i><sub><i>i</i>+1</sub> for 1 &le; <i>i</i> &lt; <i>k</i>,
+that <var>n<sub>i</sub></var> is the parent of
+<var>n<sub><i>i</i>+1</sub></var> for 1 &le; <i>i</i> &lt; <i>k</i>,
 then this sequence is called a <dfn>path</dfn> from
-<i>n</i><sub>1</sub> to <i>n<sub>k</sub></i>.
+<var>n<sub>1</sub></var> to <var>n<sub>k</sub></var>.
 The <dfn>length</dfn> of the path is <i>k</i>-1.
-If there is a path from node <i>R</i> to node <i>M</i>,
-then <i>R</i> is an <dfn>ancestor</dfn> of <i>M</i>, and
-<i>M</i> is a <dfn>descendant</dfn> of <i>R</i>.
+If there is a path from node <var>R</var> to node <var>M</var>,
+then <var>R</var> is an <dfn>ancestor</dfn> of <var>M</var>, and
+<var>M</var> is a <dfn>descendant</dfn> of <var>R</var>.
 Thus, all nodes in the tree are descendants of the root of the tree,
 while the root is the ancestor of all nodes.
-The <dfn>depth</dfn> of a node <i>M</i> in the tree is the length of
-the path from the root of the tree to <i>M</i>.
+The <dfn>depth</dfn> of a node <var>M</var> in the tree is the length
+of the path from the root of the tree to <var>M</var>.
 The <dfn>height</dfn> of a tree is one more than the depth of the
 deepest node in the tree.
 All nodes of depth <i>d</i> are at
@@ -88,20 +88,22 @@ any node that has at least one non-empty child.
 <figcaption>
 <ODSAfig "BinExample" />
 A binary tree.
-Node <i>A</i> is the root.
-Nodes <i>B</i> and <i>C</i> are <i>A</i>'s children.
-Nodes <i>B</i> and <i>D</i> together form a subtree.
-Node <i>B</i> has two children:
-Its left child is the empty tree and its right child is <i>D</i>.
-Nodes <i>A</i>, <i>C</i>, and <i>E</i> are ancestors of <i>G</i>.
-Nodes <i>D</i>, <i>E</i>, and <i>F</i> make up level 2 of the tree;
-node <i>A</i> is at level 0.
-The edges from <i>A</i> to <i>C</i> to <i>E</i> to <i>G</i>
+Node <var>A</var> is the root.
+Nodes <var>B</var> and <var>C</var> are <var>A</var>'s children.
+Nodes <var>B</var> and <var>D</var> together form a subtree.
+Node <var>B</var> has two children:
+Its left child is the empty tree and its right child is <var>D</var>.
+Nodes <var>A</var>, <var>C</var>, and <var>E</var> are ancestors of
+<var>G</var>.
+Nodes <var>D</var>, <var>E</var>, and <var>F</var> make up level 2 of
+the tree;
+node <var>A</var> is at level 0.
+The edges from <var>A</var> to <var>C</var> to <var>E</var> to <var>G</var>
 form a path of length 3.
-Nodes <i>D</i>, <i>G</i>, <i>H</i>, and <i>I</i> are leaves.
-Nodes <i>A</i>, <i>B</i>, <i>C</i>, <i>E</i>, and <i>F</i> are
-internal nodes.
-The depth of <i>I</i> is 3.
+Nodes <var>D</var>, <var>G</var>, <var>H</var>, and <var>I</var> are leaves.
+Nodes <var>A</var>, <var>B</var>, <var>C</var>, <var>E</var>, and
+<var>F</var> are internal nodes.
+The depth of <var>I</var> is 3.
 The height of this tree is 4.
 </figcaption>
 </figure>

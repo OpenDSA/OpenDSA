@@ -36,7 +36,7 @@ Figure <ODSAref "BinArray" />(a).
 From Figure <ODSAref "BinArray" />(b), you should see a pattern
 regarding the positions of a node's relatives within the array.
 Simple formulas can be derived for calculating the array index
-for each relative of a node <i>r</i> from <i>r</i>'s index.
+for each relative of a node <var>R</var> from <var>R</var>'s index.
 No explicit pointers are necessary to reach a node's left or
 right child.
 This means there is no overhead to the array implementation if the

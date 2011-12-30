@@ -244,9 +244,9 @@ which child(ren) to visit.
 <p>
 A more difficult situation is illustrated by the following problem.
 Given an arbitrary binary tree we wish to determine if,
-for every node <i>A</i>, are all nodes in <i>A</i>'s left subtree
-less than the value of <i>A</i>, and are all nodes in <i>A</i>'s right
-subtree greater than the value of <i>A</i>?
+for every node <var>A</var>, are all nodes in <var>A</var>'s left
+subtree less than the value of <var>A</var>, and are all nodes in
+<var>A</var>'s right subtree greater than the value of <var>A</var>?
 (This happens to be the definition for a binary search tree,
 see Module <ODSAref "BST" />.)
 Unfortunately, to make this decision we need to know some context
@@ -267,11 +267,11 @@ must have a value between 20 and 40.
 
 <p>
 As shown by Figure <ODSAref "BSTCheckFig" />,
-it is not enough to verify that <i>A</i>'s left child has a value less
-than that of <i>A</i>, and that <i>A</i>'s right child has a greater
-value.
-Nor is it enough to verify that <i>A</i> has a value consistent with
-that of its parent.
+it is not enough to verify that <var>A</var>'s left child has a value
+less than that of <var>A</var>, and that <var>A</var>'s right child
+has a greater value.
+Nor is it enough to verify that <var>A</var> has a value consistent
+with that of its parent.
 In fact, we need to know information about what range of values is
 legal for a given node.
 That information might come from any of the node's ancestors.
