@@ -67,9 +67,11 @@ figcaption {
 
 var.cvar {
   font-weight: bold;
-  font-style: Normal;
+  font-style: normal;
 }
-
+var sub, var sup {
+  font-style: normal;
+}
 p.TODO {
   color:red;
 }
