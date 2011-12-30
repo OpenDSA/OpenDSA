@@ -21,7 +21,7 @@ If the list is implemented using a linked list, then no speedup to the
 search operation will result from storing the records in sorted order.
 On the other hand, if we use a sorted array-based list to implement
 the dictionary, then binary search can be used to find a record in
-only &Theta;(log <i>n</i> time.
+only &Theta;(log <i>n</i>) time.
 However, insertion will now require &Theta;(<i>n</i>) time on average
 because, once the proper location for the new record in the sorted
 list has been found, many records might be shifted to make room for
@@ -40,10 +40,10 @@ which allows an improved solution to this problem.
 A BST is a binary tree that conforms to the following condition, known 
 as the <dfn>Binary Search Tree Property</dfn>.
 All nodes stored in the left
-subtree of a node whose key value is <i>K</i> have key values less
-than <i>K</i>.
+subtree of a node whose key value is <var>K</var> have key values less
+than <var>K</var>.
 All nodes stored in the right subtree of a node whose key value
-is <i>K</i> have key values greater than or equal to <i>K</i>.
+is <var>K</var> have key values greater than or equal to <var>K</var>.
 Figure <ODSAref "BSTShape" /> shows two BSTs for a collection of
 values.
 One consequence of the Binary Search Tree Property is that if the BST
@@ -143,20 +143,20 @@ The binary search tree implementation.
 </figure>
 
 <p>
-To find a record with key value <i>K</i> in a BST, begin at the root.
-If~the root stores a record with key value <i>K</i>,
+To find a record with key value <var>K</var> in a BST, begin at the root.
+If~the root stores a record with key value <var>K</var>,
 then the search is over.
 If not, then we must search deeper in the tree.
 What makes the BST efficient during search is that we need search only
 one of the node's two subtrees.
-If <i>K</i> is less than the root node's key value,
+If <var>K</var> is less than the root node's key value,
 we search only the left subtree.
-If <i>K</i> is greater than the root node's key value, we search only
+If <var>K</var> is greater than the root node's key value, we search only
 the right subtree.
-This process continues until a record with key value <i>K</i> is
+This process continues until a record with key value <var>K</var> is
 found, or we reach a leaf node.
-If we reach a leaf node without encountering <i>K</i>, then
-no record exists in the BST whose key value is <i>K</i>.
+If we reach a leaf node without encountering <var>K</var>, then
+no record exists in the BST whose key value is <var>K</var>.
 </p>
 
 <p class="example">
@@ -202,7 +202,7 @@ If a suitable record is not found, NULL is returned.
 </p>
 
 <p>
-Inserting a record with key value <i>k</i> requires that we first find
+Inserting a record with key value <var>K</var> requires that we first find
 where that record would have been if it were in the tree.
 This takes us to either a leaf node, or to an internal node with no
 child in the appropriate direction.
@@ -226,9 +226,9 @@ containing~35.
 </figure>
 
 <p>
-Call this node <i>R'</i>.
+Call this node <var>R'</var>.
 We then add a new node containing the new record as a child
-of <i>R'</i>.
+of <var>R'</var>.
 Figure <ODSAref "BSTAdd" /> illustrates this operation.
 The value 35 is added as the right child of the node with value 32.
 Here is the implementation for <code>inserthelp</code>.
@@ -294,13 +294,14 @@ This routine will be used later by the general node removal function.
 To~remove the node with the minimum key value from a subtree,
 first find that node by continuously moving down the left link until
 there is no further left link to follow.
-Call this node <i>S</i>.
-To~remove <i>S</i>, simply have the parent of <i>S</i> change its
-pointer to point to the right child of <i>S</i>.
-We know that <i>S</i> has no left child (because if <i>S</i> did have
-a left child, <i>S</i> would not be the node with minimum key value).
+Call this node <var>S</var>.
+To~remove <var>S</var>, simply have the parent of <var>S</var> change
+its pointer to point to the right child of <var>S</var>.
+We know that <var>S</var> has no left child (because if <var>S</var>
+did have a left child, <var>S</var> would not be the node with minimum
+key value).
 Thus, changing the pointer as described will maintain a BST, with
-<i>S</i> removed.
+<var>S</var> removed.
 The code for this method, named <code>deletemin</code>, is as follows:
 </p>
 
@@ -362,21 +363,22 @@ private BSTNode<Key,E> getmin(BSTNode<Key,E> rt) {
 </pre>
 
 <p>
-Removing a node with given key value <i>R</i> from the BST requires
-that we first find <i>R</i> and then remove it from the tree.
+Removing a node with given key value <var>R</var> from the BST
+requires that we first find <var>R</var> and then remove it from the
+tree.
 So, the first part of the remove operation is a search to find
-<i>R</i>.
-Once <i>R</i> is found, there are several possibilities.
-If <i>R</i> has no children, then <i>R</i>'s parent has its pointer
-set to NULL.
-If <i>R</i> has one child, then <i>R</i>'s parent has
-its pointer set to <i>R</i>'s child (similar to <code>deletemin</code>).
-The problem comes if <i>R</i> has two children.
-One simple approach, though expensive, is to set <i>R</i>'s parent to
-point to one of <i>R</i>'s subtrees, and then reinsert the remaining
+<var>R</var>.
+Once <var>R</var> is found, there are several possibilities.
+If <var>R</var> has no children, then <var>R</var>'s parent has its
+pointer set to NULL.
+If <var>R</var> has one child, then <var>R</var>'s parent has
+its pointer set to <var>R</var>'s child (similar to <code>deletemin</code>).
+The problem comes if <var>R</var> has two children.
+One simple approach, though expensive, is to set <var>R</var>'s parent to
+point to one of <var>R</var>'s subtrees, and then reinsert the remaining
 subtree's nodes one at a time.
 A better alternative is to find a value in one of the
-subtrees that can replace the value in <i>R</i>.
+subtrees that can replace the value in <var>R</var>.
 </p>
 
 <p>
@@ -426,11 +428,11 @@ difference whether the replacement is the greatest value from the
 left subtree or the least value from the right subtree.
 If duplicates are stored, then we must select
 the replacement from the <em>right</em> subtree.
-To see why, call the greatest value in the left subtree <i>G</i>.
-If multiple nodes in the left subtree have value <i>G</i>,
-selecting <i>G</i> as the replacement value for the root of the
+To see why, call the greatest value in the left subtree <var>G</var>.
+If multiple nodes in the left subtree have value <var>G</var>,
+selecting <var>G</var> as the replacement value for the root of the
 subtree will result in a tree with equal values to the left of the
-node now containing <i>G</i>.
+node now containing <var>G</var>.
 Precisely this situation occurs if we replace value 120 with the
 greatest value in the left subtree of Figure
 <ODSAref "BSTShape" />(b).

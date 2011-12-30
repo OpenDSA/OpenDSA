@@ -72,34 +72,36 @@ theorem.
 
 <li>
 <b>Induction Hypothesis</b>: Assume that any full binary
-tree <b>T</b> containing <i>n</i>-1 internal nodes has <i>n</i>
-leaves.
+tree <var class="cvar">T</var> containing <i>n</i>-1 internal nodes
+has <i>n</i> leaves.
 </li>
 
 <li>
 <b>Induction Step</b>:
-Given tree <b>T</b> with <i>n</i> internal nodes, select an internal
-node <i>I</i> whose children are both leaf nodes.
-Remove both of <i>I</i>'s children, making <i>I</i> a leaf node.
-Call the new tree <b>T'</b>.
-<b>T'</b> has <i>n</i>-1 internal nodes.
-From the induction hypothesis, <b>T'</b> has <i>n</i> leaves.
-Now, restore <i>I</i>'s two children.
-We once again have tree <b>T</b> with <i>n</i> internal nodes.
-How many leaves does <b>T</b> have?
-Because <b>T'</b> has <i>n</i> leaves, adding the two children yields
-<i>n</i>+2.
-However, node <i>I</i> counted as one of the leaves in <b>T'</b>
-and has now become an internal node.
-Thus, tree <b>T</b> has <i>n</i>+1 leaf nodes and <i>n</i> internal
-nodes.
+Given tree <var class="cvar">T</var> with <i>n</i> internal nodes,
+select an internal node <var>I</var> whose children are both leaf nodes.
+Remove both of <var>I</var>'s children, making <var>I</var> a leaf node.
+Call the new tree <var <class="cvar">T'</var>.
+<var class="cvar">T'</var> has <i>n</i>-1 internal nodes.
+From the induction hypothesis, <var class="cvar">T'</var> has <i>n</i>
+leaves.
+Now, restore <var>I</var>'s two children.
+We once again have tree <var class="cvar">T</var> with <i>n</i>
+internal nodes.
+How many leaves does <var class="cvar">T</var> have?
+Because <var class="cvar">T'</var> has <i>n</i> leaves, adding the two
+children yields <i>n</i>+2.
+However, node <var>I</var> counted as one of the leaves in
+<var class="cvar">T'</var> and has now become an internal node.
+Thus, tree <var class="cvar">T</var> has <i>n</i>+1 leaf nodes and
+<i>n</i> internal nodes.
 </i>
 
 </ul>
 
 <p class="proof">
 By mathematical induction the theorem holds for all values of
-<i>n</i> &#8805; 0.
+<i>n</i> &ge; 0.
 </p>
 
 <p>
@@ -121,30 +123,34 @@ more than the number of nodes in the tree.
 
 <p class="proof">
 <b>Proof 1</b>:
-Take an arbitrary binary tree <b>T</b> and replace every
-empty subtree with a leaf node.
-Call the new tree <b>T'</b>.
-All nodes originally in <b>T</b> will be internal nodes in
-<b>T'</b> (because even the leaf nodes of <b>T</b> have children
-in <b>T'</b>.
-<b>T'</b> is a full binary tree, because every internal node of
-<b>T</b> now must have two children in <b>T'</b>, and each leaf node
-in <b>T</b> must have two children in <b>T'</b>
-(the leaves just added).
+Take an arbitrary binary tree <var class="cvar">T</var> and replace
+every empty subtree with a leaf node.
+Call the new tree <var class="cvar">T'</var>.
+All nodes originally in <var class="cvar">T</var> will be internal
+nodes in <var class="cvar">T'</var> (because even the leaf nodes of
+<var class="cvar">T</var> have children 
+in <var class="cvar">T'</var>.
+<var class="cvar">T'</var> is a full binary tree, because every
+internal node of <var class="cvar">T</var> now must have two children
+in <var class="cvar">T'</var>, and each leaf node 
+in <var class="cvar">T</var> must have two children in
+<var class="cvar">T'</var> (the leaves just added).
 The Full Binary Tree Theorem tells us that the number of leaves
 in a full binary tree is one more than the number of internal nodes.
 Thus, the number of new leaves that were added to create
-<b>T'</b> is one more than the number of nodes in <b>T</b>.
-Each leaf node in <b>T'</b> corresponds to an
-empty subtree in <b>T</b>.
-Thus, the number of empty subtrees in <b>T</b> is one more
-than the number of nodes in <b>T</b>.
+<var class="cvar">T'</var> is one more than the number of nodes in
+<var class="cvar">T</var>.
+Each leaf node in <var class="cvar">T'</var> corresponds to an
+empty subtree in <var class="cvar">T</var>.
+Thus, the number of empty subtrees in <var class="cvar">T</var> is one
+more than the number of nodes in <var class="cvar">T</var>.
 </p>
 
 <p class="proof">
 <b>Proof 2</b>:
-By definition, every node in binary tree <b>T</b> has two children,
-for a total of 2<i>n</i> children in a tree of <i>n</i> nodes.
+By definition, every node in binary tree <var class="cvar">T</var> has
+two children, for a total of 2<i>n</i> children in a tree of <i>n</i>
+nodes.
 Every node except the root node has one parent, for a total of
 <i>n</i>-1 nodes with parents.
 In other words, there are <i>n</i>-1 non-empty children.
