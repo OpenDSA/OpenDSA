@@ -101,7 +101,7 @@ def modTitle(modName, modDir=''):
       fls.close()
       return title
    except IOError:
-      print 'Error no file for module <'+modName +'>!'
+      print 'ERROR: No file for module <'+modName +'>!'
       title = modName
       return title
 
@@ -154,12 +154,48 @@ def parse(filename, modDir, targetDir, col, table):
    title1 =''
    b=1
    modname =os.path.splitext(os.path.basename(filename))[0]
+   start=0
+   end=0
+   cpt=-1
+   line1=''
+   var1=''
    for line in data:
+      cpt=cpt+1
       if '<ODSAsettitle>' in line:
          str =  re.split('ODSAsettitle>', line, re.IGNORECASE)[1]
          title1 = str.partition('<')[0]
          line = line.replace('<ODSAsettitle>','<h1>Module %s: '%(table[modname]))
          line = line.replace('</ODSAsettitle>','</h1>')
+      if '<ODSAif \"' in line:
+         start = cpt #index
+         var1=line
+      if '</ODSAif>' in line:
+         end = cpt 
+         for v in range(start,end+1):
+            line1=line1+data[v]
+         start = newline.index(var1)
+         str =  re.split('ODSAif \"', line1, re.IGNORECASE)[1]
+         title = str.partition('"')[0]
+         text = str.partition('</ODSAif>')[0]
+         default = title
+         ftitle = table.get(title,default) #table[title]
+         if ftitle ==title:
+               line1='' #line1.replace('<ODSAif "','')
+               print 'INFO: Module <'+title+'> not present in collection!'
+         else:
+               line1 = line1.replace('<ODSAif "'+title+'" />','')
+               line1 = line1.replace('</ODSAif>','')
+         line = line1
+         newline[start]=line1
+         for v in range(start,len(newline)-1):
+            #if v==start:
+            #   data[start]=line1
+            #else:
+            newline.pop()
+         line = line1
+         line1=''
+         start=0
+         end=0
       if '<dfn>' in line:
          str =  re.split('<dfn>', line, re.IGNORECASE)[1]
          title = str.partition('<')[0]
@@ -173,7 +209,7 @@ def parse(filename, modDir, targetDir, col, table):
            gfile.writelines(glossary)
            gfile.close
          except IOError:
-           print 'Error when saving temporary glossary file'
+           print 'ERROR: When saving temporary glossary file'
       if '<ODSAfig \"' in line:
          for j in xrange(0,len(re.split('ODSAref "', line, re.IGNORECASE))):
             str =  re.split('<ODSAfig "', line, re.IGNORECASE)[1]
@@ -182,7 +218,7 @@ def parse(filename, modDir, targetDir, col, table):
             ftitle = table.get(title,default) #table[title]
             if ftitle ==title:
                line = line.replace('<ODSAfig "'+title+'" />','Figure 0')
-               print 'Warning: reference missing  <'+title +'>!'
+               print 'WARNING: Reference missing  <'+title +'>!'
             else:
                line = line.replace('<ODSAfig "'+title+'" />','<a name="%s"></a> Figure %s'%(ftitle,ftitle))
       if '<ODSAtable \"' in line:
@@ -193,7 +229,7 @@ def parse(filename, modDir, targetDir, col, table):
             ftitle = table.get(title,default) #table[title]
             if ftitle ==title:
                line = line.replace('<ODSAtable "'+title+'" />','Table 0')
-               print 'Warning: reference missing  <'+title +'>!'
+               print 'WARNING: Reference missing  <'+title +'>!'
             else:
                line = line.replace('<ODSAtable "'+title+'" />','<a name="%s"></a> Table %s'%(ftitle,ftitle))
       if '<ODSAtheorem \"' in line:
@@ -203,7 +239,7 @@ def parse(filename, modDir, targetDir, col, table):
             ftitle = table.get(title,default) #table[title]
             if ftitle ==title:
                line = line.replace('<ODSAtheorem "'+title+'" />','Theorem 0')
-               print 'Warning: reference missing  <'+title +'>!'
+               print 'WARNING: Reference missing  <'+title +'>!'
             else:
                line = line.replace('<ODSAtheorem "'+title+'" />','<a name="%s"></a> Theorem %s'%(ftitle,ftitle))
       if '<ODSAeq \"' in line:
@@ -213,7 +249,7 @@ def parse(filename, modDir, targetDir, col, table):
             ftitle = table.get(title,default) #table[title]
             if ftitle ==title:
                line = line.replace('<ODSAeq "'+title+'" />','Equation 0')
-               print 'Warning: reference missing  <'+title +'>!'
+               print 'WARNING: Reference missing  <'+title +'>!'
             else:
                line = line.replace('<ODSAeq "'+title+'" />','<a name="%s"></a> Equation %s'%(ftitle,ftitle))
       if '<ODSAref \"' in line:
@@ -223,9 +259,8 @@ def parse(filename, modDir, targetDir, col, table):
             default = title
             mtitle = table.get(title,default) #table[title]
             if mtitle ==title: 
-               #mtitle = title
                line = line.replace('<ODSAref "'+title+'" />',mtitle)
-               print 'Warning: reference missing  <'+title +'>!'
+               print 'WARNING: Reference missing  <'+title +'>!'
             else:
                st='%s'%(mtitle)
                val = st.partition('.')[0]
@@ -238,6 +273,7 @@ def parse(filename, modDir, targetDir, col, table):
                else:
                   line = line.replace('<ODSAref "'+title+'" />','<a href="'+key.lower()+'.html#%s">%s'%(mtitle,mtitle)+'</a> ')
       newline.append(line)
+      line1=''
    head = modHeader(modDir,title1, col)
    foot = modFooter(modDir)
    head.extend(newline)
@@ -314,7 +350,7 @@ def main(argv):
            nfile.writelines(content)
            nfile.close
         except IOError:
-           print 'Error when saving html file'
+           print 'ERROR: When saving html file'
 
   print 'Building glossary...'
   gfile = open('glossary.html.tmp','r')
@@ -333,7 +369,7 @@ def main(argv):
      shutil.move('glossary.html.tmp1',modDest+'/glossary.html')
      os.remove('glossary.html.tmp')
   except IOError:
-     print 'Error when saving glossary file'
+     print 'ERROR: When saving glossary file'
 
 
 if __name__ == "__main__":

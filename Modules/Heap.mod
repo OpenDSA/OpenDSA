@@ -512,7 +512,7 @@ applications for a priority queue with priority updating.
 <p id="fn1"><a href="#r1">[1]</a>
 Note that the term "heap" is also sometimes used to refer to a memory
 pool.
-<ODSAif>
+<ODSAif "MemMan">
 (See Module <ODSAref "MemMan" />.)
 </ODSAif>
 </p>
