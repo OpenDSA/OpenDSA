@@ -330,8 +330,10 @@ def main(argv):
      dfile.writelines('<h1>Glossary</h1>\n')
      dfile.writelines(lowerglos)
      dfile.close
-     shutil.move('glossary.html.tmp1',modDest+'/glossary.html')
+     
+     shutil.copyfile('glossary.html.tmp1',modDest+'/glossary.html')
      os.remove('glossary.html.tmp')
+     #os.remove('glossary.html.tmp1')
   except IOError:
      print 'Error when saving glossary file'
 
