@@ -48,7 +48,7 @@ Figure <ODSAref "BSTShape" /> shows two BSTs for a collection of
 values.
 One consequence of the Binary Search Tree Property is that if the BST
 nodes are printed using an inorder traversal
-(see Module <ODSAref "BinTraverse" />)
+(see Module <ODSAref "BinTreeTraversal" />)
 the resulting enumeration will be in
 sorted order from lowest to highest.
 </p>

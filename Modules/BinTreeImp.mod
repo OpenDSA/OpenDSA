@@ -29,7 +29,7 @@ Its type is determined by the first generic parameter, named
 <code>Key</code>.
 Every <code>BSTNode</code> object also has two pointers,
 one to its left child and another to its right child.
-Figure <ODSAref "BinStPic" />
+Figure <ODSAref "BinLink" />
 illustrates the <code>BSTNode</code> implementation.
 </p>
 
@@ -75,7 +75,7 @@ class BSTNode<Key, E> implements BinNode<E> {
 </pre>
 
 <figcaption>
-<ODSAfig "BinStPic" />
+<ODSAfig "BinNodeClass" />
 A binary tree node class implementation.
 </figcaption>
 </figure>
