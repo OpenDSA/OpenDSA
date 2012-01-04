@@ -362,14 +362,12 @@ def main(argv):
   lowerglos = list(set(lowerglos))  #remove duplicates
   lowerglos.sort()
   try:
-     dfile =open('glossary.html.tmp1','a')
+     dfile =open(modDest+'/glossary.html','a')
      dfile.writelines('<h1>Glossary</h1>\n')
      dfile.writelines(lowerglos)
      dfile.close
      
-     shutil.copyfile('glossary.html.tmp1',modDest+'/glossary.html')
      os.remove('glossary.html.tmp')
-     #os.remove('glossary.html.tmp1')
   except IOError:
      print 'ERROR: When saving glossary file'
 
