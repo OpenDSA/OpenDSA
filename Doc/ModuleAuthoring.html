@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenDSA Module Authoring Guidelines</title>
+    <link rel="stylesheet" href="opendsadocs.css" >
+  </head>
+
+<body>
+<h1>OpenDSA Module Authoring Guidelines</h1>
+
+<p>
+If you want to write modules for the
+<a href="http://algoviz.org/OpenDSA">OpenDSA</a> project,
+you should start by examining the current
+<a href="https://github.com/cashaffer/OpenDSA">distribution</a>
+(either by browsing the web source or by
+downloading the repository from GitHub).
+</p>
+
+<p>
+The format for writing a collection of modules is fairly simple.
+An OpenDSA module is made by creating a <code>.odsa</code> file.
+The OpenDSA Module Preprocessor (OMP) will convert a
+<code>.odsa</code> file into a proper HTML file.
+Actually, OMP works on a collection of <code>.odsa</code> files
+contained within a specific directory or folder,
+to support necessary crossreferences and linking between the
+collection.
+</p>
+
+<h2>Organization</h2>
+
+<p>
+OMP works on a directory or folder that contains the <code>.odsa</code>
+files.
+This directory should also contain files named <code>Header.txt</code>
+and <code>Footer.txt</code>.
+File <code>Header.txt</code> will be placed (with appropriate processing)
+at the beginning of each converted HTML file, and
+<code>Footer.txt</code> will be placed at the end of each converted
+HTML file.
+</p>
+
+<p>
+Within the target directory that will receive the converted .html
+files, there will also be an <code>images/</code> directory that will
+receive an images generated from <code>&lt;ODSAeq></code> tags.
+There will also be a page name <code>glossary.html</code> generated
+that contains any definitions created by <code>&lt;dfn></code>
+tags.
+</p>
+
+<h2>External variables</h2>
+
+<p>
+OMP maintains certain information that is accessible from within the
+module.
+These are referred to in this documentation as <dfn>external</dfn>
+variables.
+
+<p>
+A module collection has defined an external variable
+<code>{collection}</code>, which gives the title for
+the collection (i.e., the "book" or "course" title when everything is
+bound together).
+This is given by the collection creater as a parameter to the
+preprocessor.
+It is accessed within a module using the <code>&lt;ODSAcollection></code>
+tag.
+<p>
+
+<p>
+<code>{collectionURL}</code> is the base URL for the collection.
+This is also given by the creator as a parameter to the preprocessor.
+It is accessed within a module using the <code>&lt;ODSAurl></code>
+tag.
+<p>
+
+<p>
+OMP assigns a number to each module, referred to within this manual as
+<code>{modulenumber}</code>.
+It can be accessed within the module using the
+<code>&lt;ODSAmodnum></code> tag.
+Modules in the collection are numbered consecutively starting with 1.
+At some point we will figure out a way for the collection creator to
+control the ordering.
+For now, OMP will generate the module numbers in some legitimate
+topological ordering.
+</p>
+
+
+<h2>ODSA Tags</h2>
+
+<p>
+A number of tags have been defined that control the behavior of the
+preprocessor.
+All such tags are of the form <code>ODSAxxx</code> (and so are
+referred to as "ODSA tags").
+OMP works by going through the collection of <code>.odsa</code> files
+looking for ODSA tags, and replaces each one as appropriate.
+OMP will also attach a header block and a footer block to the file.
+The end result is an HTML file with all ODSA tags replaced.
+</p>
+
+
+<p>
+<code>&lt;ODSAtitle>{title}&lt;/ODSAtitle></code> defines the title of
+the module.
+This will automatically appear at the top of the module within
+<code>&lt;h1>&lt;/h1></code> tags.
+</p>
+
+<p>
+<code>&lt;ODSAgettitle/></code> is replaced by the defined title of
+the current module.
+This is used in <code>Header.txt</code> to help set the page title.
+<code>&lt;ODSAgettitle "{module}"></code> is replaced by the defined
+title of the specified <code>{module}</code>.
+</p>
+
+<p>
+<code>&lt;ODSAcollection/></code> is replaced by the value of
+<code>{collection}</code>.
+This is used in <code>Header.txt</code>.
+</p>
+
+<p>
+<code>&lt;ODSAdate/></code> is replaced by the current date.
+This is used in <code>Footer.txt</code>.
+</p>
+
+<p>
+<code>&lt;ODSAtime/></code> is replaced by the current time.
+This is used in <code>Footer.txt</code>.
+</p>
+
+<p>
+<code>&lt;ODSAmodnum></code> accesses the current module's ID number.
+</p>
+
+<p>
+<code>&lt;ODSAprereq "{module}" /></code> defines
+<code>{module}</code> to be a prerequisite for the
+current module in the Knowledge Map.
+<code>{module}</code> must be a file name for some selected module in
+the collection, otherwise OMP will give a warning.
+</p>
+
+<p>
+<code>&lt;ODSAurl/></code> accesses the <code>{collectionURL}</code>
+external variable.
+</p>
+
+<p>
+<code>&lt;ODSAref "{module}" /></code> defines a link to another
+module.
+<code>{module}</code> must be a file name for some selected module in
+the collection.
+The result will be to place the following text into the HTML file:
+<code>&lt;a href="{collectionURL}/{module}.html">{modulenumber}&lt;/a></code>.
+</p>
+
+<p>
+<code>&lt;dfn>{phrase}&lt;/dfn></code> defines a word or phrase to add
+to the glossary.
+The glossary is a separate file that is created as part of
+processing the <code>.odsa</code> file collection.
+Each word in the glossary appears along with its module title,
+and has a link back to the point in the module
+where the <code>&lt;dfn></code> tag was placed.
+It is OK if the same word or phrase is "defined" multiple times, there
+will simply be multiple appearances of the word in the glossary.
+For example, "edge" can be defined both for trees and for graphs.
+The glossary terms should appear in alphabetical order.
+Note that this tag does not use the "ODSA" prefix naming convention
+since <code><dfn></dfn></code> is part of the HTML5 standard.
+But we list it here since it does affect the preprocessor.
+</p>
+
+<p>
+<code>&lt;ODSAif "{module}">{HTML}&lt;/ODSAif></code>
+defines a block of text that appears only if <code>{module}</code> is
+part of this collection.
+This supports the idea of a large collection of available modules,
+not of all of which are used in a given module collection.
+</p>
+
+<p>
+<code>&lt;ODSAfig "{label}" /></code> defines a label for a figure.
+This label is associated with the figure counter, which starts at 1
+with each module.
+At the place where the <code>&lt;ODSAfig></code> tag appears,
+it is replaced with the text
+<code>Figure {modulenumber}.{figurenumber}</code>.
+The figure can be reference later with a
+<code>&lt;ODSAref "{label}" /></code> tag,
+at which point it will be replaced with
+<code>{modulenumber}.{figurenumber}</code>.
+</p>
+
+<p>
+<code>&lt;ODSAtable "{label}" /></code> defines a label for a table.
+This label is associated with the table counter, which starts at 1
+with each module.
+At the place where the <ODSAtable> tag appears, it is replaced with
+the text <code>Table {modulenumber}.{tablenumber}</code>.
+The table can be reference later with a
+<code>&lt;ODSAref "{label}" /></code> tag,
+at which point it will be replaced with
+<code>{modulenumber}.{tablenumber}</code>.
+</p>
+
+<p>
+<code>&lt;ODSAtheorem "{label}" /></code> defines a label for a
+theorem.
+This label is associated with the figure counter, which starts at 1
+with each module.
+At the place where the <code>&lt;ODSAtheorem></code> tag appears,
+it is replaced with the text
+<code>Theorem {modulenumber}.{theoremnumber}</code>.
+The theorem can be reference later with an
+<code>&lt;ODSAref "{label}" /></code> tag,
+at which point it will be replace with
+<code>{modulenumber}.{theoremnumber}</code>.
+</p>
+
+<p>
+<code>&lt;ODSAeq ["display"|"{label}"]>{LaTeX}&lt;/ODSAeq></code>
+provides support for latex equations.
+The equation will be replaced by an image.
+There are three forms.
+The first form is <code>&lt;ODSAeq>{LaTeX}&lt;/ODSAeq></code>,
+which will put the resulting image inline.
+The second form is
+<code>&lt;ODSAeq "display">{LaTeX}&lt;/ODSAeq></code>,
+which will  put the equation in display mode
+(i.e., on a separate line with a bit of space above and below).
+The third form is 
+<code>&lt;ODSAeq "{label}">{LaTeX}&lt;/ODSAeq></code>
+where <code>{label}</code> is anything other than
+<code>"display"</code>.
+In this case, the equation is presented in display mode with
+<code>({modulenumber}.{equationnumber})</code>
+to the right of the equation.
+In this third form, the equation can be reference later with an
+<code>&lt;ODSAref "{label}" /></code> tag,
+at which point it will be replace with
+"{modulenumber}.{equationnumber}".
+
+<h2>Other OpenDSA Markup Conventions</h2>
+
+<p>
+For consistency across the OpenDSA project, modules should adhere to
+the following markup conventions.
+</p>
+
+<p>
+Definitions should be marked as
+<code>&lt;dfn>{phrase}&lt;/dfn></code>.
+<code>{phrase}</code> will appear in bold font, and it will appear in
+the glossary page.
+</p>
+
+<p>
+There are three types of variable recognized within text.
+Simple objects such as the name of a node in a tree or a graph
+should be marked up with <code>&lt;var>&lt;/var></code> tags.
+This will appear in italic font.
+Complex objects such as a tree
+should be marked up with
+<code>&lt;var class="cvar">&lt;/var></code> tags.
+This will appear in bold font.
+Bits of sourcecode such as the name of a program variable or method
+should be marked up as <code>&lt;code>&lt;\code></code>.
+This will appear in typewriter font.
+</p>
+
+</body>
+</html>
