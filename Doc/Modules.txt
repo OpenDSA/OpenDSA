@@ -108,12 +108,20 @@ The theorem can be reference later with an <ODSAref "{label}" /> tag,
 at which point it will be replace with
 "{modulenumber}.{theoremnumber}".
 
-<ODSAeq "{label}">{LaTeX/MathTeX code}</ODSAeq> defines a label and the Latex code for an equation.
-This label is associated with the equation counter, which starts at 1
-with each module.
-At the place where the <ODSAeq> tag appears, it is replaced with the
-text "Equation {modulenumber}.{equationnumber}".
-The LaTeX code wil be replaced with an image of the mathematical representation of the equation.
-The equation can be reference later with an <ODSAref "{label}" /> tag,
-at which point it will be replace with
+<ODSAeq ["display"|"{label}"]>{LaTeX}</ODSAeq>
+provides support for latex equations.
+The equation will be replaced by an image.
+There are three forms.
+The first looks like <ODSAeq>{LaTeX}</ODSAeq>, which will put the
+resulting image inline.
+The second looks like <ODSAeq "display">{LaTeX}</ODSAeq> which will
+put the equation in display mode (i.e., on a separate line with a bit
+of space above and below).
+The third looks like <ODSAeq "{label}">{LaTeX}</ODSAeq> where {label}
+is anything other than "display".
+In this case, the equation is presented in display mode with "(#.#)"
+to the right of the equation where "#.#" is the module number and the
+(local) equation number.
+In this third form, the equation can be reference later with an
+<ODSAref "{label}" /> tag, at which point it will be replace with
 "{modulenumber}.{equationnumber}".
