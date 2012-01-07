@@ -85,11 +85,7 @@ If a full binary tree needs to store data only
 at the leaf nodes, a better implementation would have
 the internal nodes store two pointers and no data
 field while the leaf nodes store only a pointer to the data field.
-This implementation requires
-<img src="http://www.forkosh.com/mathtex.cgi?
-\frac{n}{2}2P + \frac{n}{2}(p+d)\)"
-   alt="" border=0 align="middle">
-units of space.
+This implementation requires <ODSAeq "space"><img src="http://www.forkosh.com/mathtex.cgi?\frac{n}{2}2P + \frac{n}{2}(p+d)\)" alt="" border=0 align="middle"></ODSAeq> units of space.
 If <i>P</i> = <i>D</i>, then the overhead is
 3<i>P</i>/(3<i>P</i> + <i>D</i>) = 3/4.
 It might seem counter-intuitive that the overhead ratio has gone up

@@ -159,6 +159,8 @@ def parse(filename, modDir, targetDir, col, table):
    cpt=-1
    line1=''
    var1=''
+   eqlabel=''
+   inline='yes'
    for line in data:
       cpt=cpt+1
       if '<ODSAsettitle>' in line:
@@ -242,16 +244,49 @@ def parse(filename, modDir, targetDir, col, table):
                print 'WARNING: Reference missing  <'+title +'>!'
             else:
                line = line.replace('<ODSAtheorem "'+title+'" />','<a name="%s"></a> Theorem %s'%(ftitle,ftitle))
-      if '<ODSAeq \"' in line:
+ 
+      if '<ODSAeq>' in line:
+         print "equation 0"
          for j in xrange(0,len(re.split('ODSAeq "', line, re.IGNORECASE))):
-            str =  re.split('<ODSAeq "', line, re.IGNORECASE)[1]
-            title = str.partition('"')[0]
-            ftitle = table.get(title,default) #table[title]
-            if ftitle ==title:
-               line = line.replace('<ODSAeq "'+title+'" />','Equation 0')
-               print 'WARNING: Reference missing  <'+title +'>!'
+            #str =  re.split('<ODSAeq>', line, re.IGNORECASE)[1]
+            #title = str.partition('"')[0]
+            #ftitle = table.get(title,default) #table[title]
+            #if ftitle ==title:
+            line = line.replace('<ODSAeq>','')
+               #print 'WARNING: Reference missing  <'+title +'>!'
+            #else:
+            #   line = line.replace('<ODSAeq "'+title+'" />','<a name="%s"></a> Equation %s'%(ftitle,ftitle))
+      if '<ODSAeq \"' in line:
+         inline='no'
+         if '<ODSAeq \"display\"' in line:
+            line = line.replace('<ODSAeq \"display\">','<br /><center>')
+            print 'equation inline no disp'
+         else:
+            #for j in xrange(0,len(re.split('ODSAeq "', line, re.IGNORECASE))):
+               str =  re.split('<ODSAeq "', line, re.IGNORECASE)[1]
+               title = str.partition('"')[0]
+               ftitle = table.get(title,default) #table[title]
+               if ftitle ==title:
+                  line = line.replace('<ODSAeq "'+title+'">','<br /><center>')
+                  print 'WARNING: Reference missing  <'+title +'>!'
+               else:
+                  line = line.replace('<ODSAeq "'+title+'">','<a name="%s"></a><br /> <center>')
+                  eqlabel = '%s'%(ftitle)
+
+      if '</ODSAeq>' in line:
+         for j in xrange(0,len(re.split('</ODSAeq>', line, re.IGNORECASE))):
+            #str =  re.split('<ODSAeq "', line, re.IGNORECASE)[1]
+            #title = str.partition('"')[0]
+            #ftitle = table.get(title,default) #table[title]
+            if inline =='yes':
+               line = line.replace('</ODSAeq>','')
             else:
-               line = line.replace('<ODSAeq "'+title+'" />','<a name="%s"></a> Equation %s'%(ftitle,ftitle))
+               if eqlabel=='':
+                  line = line.replace('</ODSAeq>','<br /></center>')
+               else:
+                  line = line.replace('</ODSAeq>',' ('+eqlabel+')<br /></center>')
+                  eqlabel=''
+               inline='no'
       if '<ODSAref \"' in line:
          for j in xrange(1,len(re.split('ODSAref "', line, re.IGNORECASE))):
             str =  re.split('<ODSAref "', line, re.IGNORECASE)[1]
