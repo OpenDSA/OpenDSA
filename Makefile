@@ -5,7 +5,7 @@ all: target
 
 clean:
 	$(RM) *~
-	$(RM) Modules/*
+	$(RM) Modules/*~
 	$(RM) Doc/*~
 	$(RM) Scripts/*~
 
