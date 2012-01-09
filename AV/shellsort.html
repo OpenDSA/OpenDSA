@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shellsort Presentation Slideshow v0.3.0</title>
+  <meta charset="utf-8" />
+  <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" />
+</head>
+
+<body>
+<style>
+  #container {
+    width: 800px;
+    height: 400px;
+    background-color: #efe;
+  }
+  #container .jsavarray {
+     left: -10px;
+  }
+  p.jsavoutput.jsavline {
+    height: 80px;
+    margin: 10px, 0px;
+  }
+</style>
+<div id="container">
+  <table id=tableT style="margin-top:-15px; margin-bottom:-15px">
+    <tr>
+      <td width=100><span class="jsavcounter"></span></td>
+      <td width=650px>
+    	<div class="jsavcontrols"></div>
+      </td>
+      <td>
+    	<input type="button" name="about" value="About"/>
+      <a class="jsavsettings" href="#">Settings</a>
+      </td>
+    </tr>
+  </table>
+  <p class="jsavoutput jsavline"></p>
+</div>
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+    </script>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
+</script>
+<script src="http://algoviz.org/OpenDSA/JSAV/lib/jquery.transform.light.js"></script>
+<script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script>
+
+<script>
+(function($) {
+  var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
+  var DARK = "black";                // Make array elements dark again
+  // Convenience function for setting another type of highlight
+  // (will be used for showing which elements will be compared during sort)
+  var setBlue = function(index) {
+    arr.css(index, {"background-color": "#ddf" });
+  };
+
+  var av = new JSAV("container", {"title": "Shellsort Algorithm Presentation"}); //containing HTML element with id container
+  av.SPEED = 200; // Set the animation speed base
+
+  // Connect action callbacks to the HTML entities
+  $('input[name="about"]').click(about);
+
+  // Process About button: Pop up a message with an Alert
+  function about() {
+    var mystring = "Shellsort Explanation Slideshow\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during June, 2011\nLast update: August 14, 2011\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
+
+  av.umsg("Shellsort provides a huge improvement over O(<i>n</i><sup>2</sup>) sorts like Insertion Sort. It works by taking advantage of the fact that Insertion Sort works very well (in linear time) when the list is nearly sorted. Shellsort works by performing a series of Insertion Sorts on carefully selected sublists, first on small sublists and then on increasingly large sublists.");
+
+  // create a new step to the visualization, a given message
+  av.step().umsg("During each iteration, Shellsort breaks the list into disjoint sublists so that each element in a sublist is a fixed number of positions apart. For example, let us assume for convenience that <i>n</i>, the number of values to be sorted, is a power of two.");
+
+  av.step().umsg("One possible implementation of Shellsort will begin by breaking the list into <i>n</i>/2 sublists of 2 elements each, where the array index of the 2 elements in each sublist differs by <i>n</i>/2. We say that the increment is <i>n</i>/2. If there are 16 elements in the array indexed from 0 to 15, there would initially be 8 sublists of 2 elements each.");
+
+  // Create an array object under control of JSAV library
+  var arr = av.ds.array([20, 30, 12, 54, 55, 11, 78, 14, 13, 79, 44,
+      98, 76, 45, 32, 11], {indexed: true});
+
+  // Make a label before the array, and give it an empty string to
+  // take up the appropriate space since we don't want to see the
+  // label initially.
+  var arrlabel = av.label("&nbsp;", {before: arr});
+
+  // Cloned copy of array for holding the original value positions.
+  // Will be shown later to compare against progress made by the algorithm
+  origarr = arr.clone();
+
+  av.step().umsg(" The first sublist would be the elements in positions 0 and 8...", {preserve: true});
+
+  // set color to LIGHT for the whole array, then highlight indices 0 and 8
+  arr.css(function(index)
+    { return index%8 != 0;}, {"color": LIGHT}).highlight([0, 8]);
+  // another way to specify a message for a step
+  av.step().umsg("... the second in positions 1 and 9...");
+  arr.unhighlight([0, 8]).css([0, 8], {"color": LIGHT}).highlight([1, 9]);
+  
+  av.step().umsg("... and so on ...");
+  for (var i=2; i<8; i++) { // loop through the rest of the array sublists
+    av.step();
+    arr.unhighlight([i-1, i+7]).css([i-1, i+7], {"color": LIGHT}).highlight([i, i+8]);
+  }
+
+  av.step().umsg("Each of these sublists of length two is sorted using Insertion Sort. (The blue elements are being compared and swapped if appropriate)");
+  arr.unhighlight(); // unhighlight seems to have the side effect of
+                     // making the cell dark.
+
+  sweep(arr, 8); // first sweep with increment 8
+
+  av.step().umsg('At the end of the first pass, the resulting array is "a little better sorted".');
+
+  arr.unhighlight();
+
+  arr.css(function(index)
+    { return arr.value(index) !== origarr.value(index); }, {"color": "#0f0"});
+
+  arrlabel.text("Values in <b style='color:#0f0;'>green</b> were swapped during this pass");
+  origarr.show();
+  var origlabel = av.label("Original Array:", {before: origarr});
+
+  av.step().umsg("The second pass of Shellsort looks at fewer, bigger lists. For our example the second pass would have n/4 lists of size 4, with the increment being n/4 = 4. Thus, the second pass would have as its first sublist the 4 elements in positions 0, 4, 8, and 12...");
+
+  arrlabel.text("&nbsp;");
+  origarr.hide();
+  origlabel.hide();
+
+  arr.css(function(index)
+    { return index%4 != 0;}, {"color": LIGHT}).highlight([0, 4, 8, 12]);
+
+  av.step().umsg("... the second sublist would have elements in positions 1, 5, 9, and 13 ...");
+  arr.unhighlight([0, 4, 8, 12]).css([0, 4, 8, 12], {"color": LIGHT}).highlight([1, 5, 9, 13]);
+
+  av.step().umsg("and so on.");
+  arr.unhighlight([1, 5, 9, 13]).css([1, 5, 9, 13], {"color": LIGHT}).highlight([2, 6, 10, 14]);
+
+  av.step();
+  arr.unhighlight([2, 6, 10, 14]).css([2, 6, 10, 14], {"color": LIGHT}).highlight([3, 7, 11, 15]);
+
+  av.step().umsg("Each sublist of four elements would also be sorted using an Insertion Sort.");
+
+  arr.unhighlight();
+
+  sweep(arr, 4); // second sweep with increment 4
+
+  av.step().umsg("At the end of processing sublists with increment 4, the array is \"even more sorted\".");
+
+  arr.css(function(index)
+    { return arr.value(index) !== origarr.value(index); }, {"color": "#0f0"});
+
+  arrlabel.text("Values in <b style='color:#0f0;'>green</b> have been swapped from their original positions.");
+  origarr.show();
+  origlabel.show();
+
+  av.step().umsg("The third pass would be made on sublists with increment 2. This means we process two lists, one consisting of the odd positions and the other consisting of the even positions.");
+
+  arr.css(function(index) {return index}, {"color": DARK});
+
+  arrlabel.text("&nbsp;");
+  origarr.hide();
+  origlabel.hide();
+
+  arr.highlight([0, 2, 4, 6, 8, 10, 12, 14]);
+  av.step();
+  arr.unhighlight([0, 2, 4, 6, 8, 10, 12, 14]).highlight([1, 3, 5, 7, 9, 11, 13, 15]);
+
+  av.step().umsg("As usual, we sort the sublists using Insertion Sort.");
+  arr.unhighlight();
+
+  av.step();
+  arr.unhighlight();
+
+  sweep(arr, 2);
+
+  av.step().umsg("And here is the result of the third pass. The list is getting even more sorted!");
+  arr.unhighlight();
+
+  av.step().umsg("The culminating pass in this example would be a \"normal\" Insertion Sort of all elements.");
+
+  arr.highlight();
+  av.step();
+
+  inssort(arr, 0, 1);
+
+  av.step().umsg("Finally, the array is sorted.");
+  arr.unhighlight();
+  av.recorded();
+
+  // Partial Shellsort. Sweep with the given increment
+  function sweep(myarr, incr) {
+    var j = 0;
+    highlightFunction = function(index) { return index%incr == j;};
+    for (j=0; j<incr; j++) {         // Sort each sublist
+      // Highlight the sublist
+      myarr.highlight(highlightFunction);
+      av.step();
+      inssort(myarr, j, incr);
+      myarr.unhighlight(highlightFunction);
+    }
+  }
+
+  // Insertion sort using increments
+  function inssort(A, start, incr) {
+    var i, j;
+    for (i=start+incr; i<A.size(); i+=incr) {
+      setBlue(i);
+      for (j=i; j>=incr; j-=incr) {
+        setBlue(j-incr);
+	av.step();
+        if (A.value(j) < A.value(j-incr)) {
+          A.swap(j, j-incr); // swap the two indices
+          av.step();
+	}
+        else {
+  	  A.highlight([j-incr, j]);
+          break; // Done pushing element, leave for loop
+        }
+	A.highlight(j);
+      }
+      A.highlight(j);
+    }
+  }
+})(jQuery);
+</script>
+</body>
+</html>

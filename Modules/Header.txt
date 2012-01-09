@@ -3,7 +3,7 @@
 <head>
   <title><ODSAcollection>: <ODSAtitle></title>
   <meta charset="utf-8" />
-  <link href="OpenDSA.css" rel="stylesheet" type="text/css" />
+  <link href="opendsaMOD.css" rel="stylesheet" type="text/css" />
   <link href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />
 </head>
 
