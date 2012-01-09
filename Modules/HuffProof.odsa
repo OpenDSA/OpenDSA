@@ -1,0 +1,119 @@
+<div id="content">
+<ODSAsettitle>Proof of Optimality for Huffman Coding</ODSAsettitle>
+<ODSAprereq "Huffman" />
+<ODSAprereq "Induction" />
+
+<p>
+Huffman tree building is an example of a
+<dfn>greedy algorithm</dfn>.
+At each step, the algorithm makes a "greedy" decision to merge
+the two subtrees with least weight.
+This makes the algorithm simple, but does it give the desired result?
+This section concludes with a proof that the Huffman tree
+indeed gives the most efficient arrangement for the set of letters.
+The proof requires the following lemma.
+</p>
+
+<p class="lemma">
+For any Huffman tree built by function <code>buildHuff</code> containing at
+least two letters, the two letters with least frequency are stored in
+siblings nodes whose depth is at least as deep as any other leaf nodes
+in the tree.
+</p>
+
+<p class="proof">
+Call the two letters with least frequency <var>l<sub>1</sub></var>
+and <var>l<sub>2</sub></var>.
+They must be siblings because <code>buildHuff</code>
+selects them in the first step of the construction process.
+Assume that <var>l<sub>1</sub></var> and <var>l<sub>2</sub></var> are
+not the deepest nodes in the tree.
+In this case, the Huffman tree must either look as shown in
+Figure <ODSAref "HuffProof" />, or in some sense be symmetrical to
+this.
+For this situation to occur, the parent of <var>l<sub>1</sub></var>
+and <var>l<sub>2</sub></var>,
+labeled <var>V</var>, must have greater weight than the node
+labeled <var>X</var>.
+Otherwise, function <code>buildHuff</code> would have selected node
+<var>V</var> in place of node <var>X</var> as the child of node
+<var>U</var>.
+However, this is impossible because <var>l<sub>1</sub></var> and
+<var>l<sub>2</sub></var> are the letters with least frequency.
+</p>
+
+<figure>
+<center>
+<img src="Images/HProof.png" alt="An impossible Huffman tree" />
+</center>
+
+<figcaption>
+<ODSAfig "HuffProof" />
+An impossible Huffman tree, showing the situation where the two nodes 
+with least weight, <var>l<sub>1</sub></var> and
+<var>l<sub>2</sub></var>, are not the deepest nodes in the tree.
+Triangles represent subtrees.
+</figcaption>
+</figure>
+
+<p class="theorem">
+Function <code>buildHuff</code> builds the Huffman tree with the minimum
+external path weight for the given set of letters.
+</p>
+
+<p class = "proof">
+The proof is by induction on <i>n</i>, the number of letters.
+</p>
+
+<ul>
+
+<li>
+<b>Base Case</b>: For <i>n</i> = 2, the Huffman tree must have the
+minimum external path weight because there are only two possible trees,
+each with identical weighted path lengths for the two leaves.
+</li>
+
+<li>
+<b>Induction Hypothesis</b>: Assume that any tree created by
+<code>buildHuff</code> that contains <i>n</i>-1 leaves has minimum
+external path length.
+</li>
+
+<li>
+<p>
+<b>Induction Step</b>: Given a Huffman tree <var class="cvar">T</var>
+built by <code>buildHuff</code> with <i>n</i> leaves,
+<i>n</i> &ge; 2, suppose that
+<i>w</i><sub>1</sub> &le; <i>w</i><sub>2</sub> &le;
+... &le; <i>w</i><sub>n</sub> where
+<i>w</i><sub>1</sub> to <i>w</i><sub>n</sub> are the weights of the
+letters.
+Call <var>V</var> the parent of the letters with frequencies
+<i>w</i><sub>1</sub> and <i>w</i><sub>2</sub>.
+From the lemma, we know that the leaf nodes containing the letters
+with frequencies <i>w</i><sub>1</sub> and <i>w</i><sub>2</sub> are as
+deep as any nodes in <var class="cvar">T</var>.
+If any other leaf nodes in the tree were deeper, we could reduce their 
+weighted path length by swapping them with <i>w</i><sub>1</sub> or
+<i>w</i><sub>2</sub>.
+But the lemma tells us that no such deeper nodes exist.
+Call <var class="cvar">T'</var> the Huffman tree that is identical to
+<var class="cvar">T</var> except 
+that node <var>V</var> is replaced with a leaf node <var>V'</var>
+whose weight is <i>w</i><sub>1</sub> + <i>w</i><sub>2</sub>.
+By the induction hypothesis, <var class="cvar">T'</var> has minimum
+external path length.
+Returning the children to <var>V'</var> restores tree
+<var class="cvar">T</var>, which must also have minimum external path
+length.
+</p>
+
+<p>
+Thus by mathematical induction, function <code>buildHuff</code> creates
+the Huffman tree with minimum external path length.
+</p>
+</li>
+
+</ul>
+
+</div>
