@@ -246,23 +246,16 @@ def parse(filename, modDir, targetDir, col, table):
                line = line.replace('<ODSAtheorem "'+title+'" />','<a name="%s"></a> Theorem %s'%(ftitle,ftitle))
  
       if '<ODSAeq>' in line:
-         print "equation 0"
-         for j in xrange(0,len(re.split('ODSAeq "', line, re.IGNORECASE))):
-            #str =  re.split('<ODSAeq>', line, re.IGNORECASE)[1]
-            #title = str.partition('"')[0]
-            #ftitle = table.get(title,default) #table[title]
-            #if ftitle ==title:
+            
+            code = line.partition('<ODSAeq>')[2]
+            print 'Equation code inline='+code
             line = line.replace('<ODSAeq>','')
-               #print 'WARNING: Reference missing  <'+title +'>!'
-            #else:
-            #   line = line.replace('<ODSAeq "'+title+'" />','<a name="%s"></a> Equation %s'%(ftitle,ftitle))
       if '<ODSAeq \"' in line:
          inline='no'
          if '<ODSAeq \"display\"' in line:
             line = line.replace('<ODSAeq \"display\">','<br /><center>')
             print 'equation inline no disp'
          else:
-            #for j in xrange(0,len(re.split('ODSAeq "', line, re.IGNORECASE))):
                str =  re.split('<ODSAeq "', line, re.IGNORECASE)[1]
                title = str.partition('"')[0]
                ftitle = table.get(title,default) #table[title]
@@ -275,9 +268,6 @@ def parse(filename, modDir, targetDir, col, table):
 
       if '</ODSAeq>' in line:
          for j in xrange(0,len(re.split('</ODSAeq>', line, re.IGNORECASE))):
-            #str =  re.split('<ODSAeq "', line, re.IGNORECASE)[1]
-            #title = str.partition('"')[0]
-            #ftitle = table.get(title,default) #table[title]
             if inline =='yes':
                line = line.replace('</ODSAeq>','')
             else:
@@ -361,7 +351,7 @@ def main(argv):
   modList =[]
   modRost=[]
   for fl in fileLst:
-     if os.path.splitext(fl)[1][1:] == 'mod':
+     if os.path.splitext(fl)[1][1:] == 'odsa': 
         modRost.append(os.path.splitext(os.path.basename(fl))[0])
         x = modPreReq(fl)
         modList.append(x)
