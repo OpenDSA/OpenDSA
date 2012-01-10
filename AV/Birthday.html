@@ -1,0 +1,130 @@
+<!-- Simple activity to calculate the probability of collisions for a
+     given number of values in a table of a given size.
+     Written by Cliff Shaffer, August 2011 as part of the OpenDSA
+     project. For more information, see http://algoviz.org/OpenDSA
+-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Birthday Problem Calculator</title>
+  <link href="opendsAV.css" title="CSS" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" />
+<style>
+
+#container {
+  width: 535px;
+  height: 120px;
+  border: 1px solid black;
+  background-color: #efe;
+  padding: 10px;
+  padding-right: 0px;
+  overflow: hidden;
+}
+
+</style>
+
+
+</head>
+
+<body>
+<div id="container">
+<table id="tableT">
+  <tr>
+    <td>
+      <p align="center" >
+        Calculate the probability of a collision.<br/>
+        Formula Used: 1 - [ t! / ((t-n)! * (t^n)) ]<br/>
+        where t is the table size
+        and n is the number of records inserted.
+      </p>
+    </td>
+    <td>
+      <input type="button" name="about" value="About" style="margin-left: 25px"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <label for="tablesize">&nbsp;Table size:&nbsp;</label>
+        <input size="5" name="tablesize" type="number" value="365"/>
+        <label for="numrecs">&nbsp;# of records&nbsp;</label>
+        <input size="5" name="numrecs" type="number" value="5"/>&nbsp;
+        <input type="button" name="calculate" value="Calculate" />
+      </p>
+    </td>
+    <td>
+      <p name="output" style="margin-left: -40px"></p>
+    </td>
+  </tr>
+</table>
+</div id="container">
+
+<!----------------
+| SCRIPT SECTION |
+----------------->
+
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js">
+</script>
+
+<script src="../JSAV/build/JSAV-min.js"></script>
+
+<script>
+(function($) {
+  // Convenience function for writing output messages
+  var Tell = function(msg) { $('p[name="output"]').text(msg); };
+
+  // Action callbacks for form entities
+  $('input[name="about"]').click(About);
+  $('input[name="tablesize"]').focusout(CheckTable);
+  $('input[name="numrecs"]').focusout(CheckRecs);
+  $('input[name="calculate"]').click(Calculate);
+
+  // Declare and initialize state variables
+  var TSize = Number($('input[name="tablesize"]').val()); // Table size
+  var Recs = Number($('input[name="numrecs"]').val()); // Number of records
+
+  // Process About button: Pop up a message with an Alert
+  function About() {
+    alert("Birthday problem calculator\nWritten by Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during August, 2011\nLast update: August 13, 2011\nJSAV library version " + JSAV.version());
+  }
+
+  // Validate Table size field
+  function CheckTable() {
+    TSize = Number($('input[name="tablesize"]').val());
+    if (isNaN(TSize) || (TSize < 1) || (TSize > 10000)) {
+      alert("Table size has to be a positive number less than 10000");
+    }
+  }
+
+  // Validate number of records field
+  function CheckRecs() {
+    Recs = Number($('input[name="numrecs"]').val());
+    if (isNaN(Recs) || (Recs < 1) || (Recs > TSize)) {
+      alert("Number of records must be a positive number less than the table size");
+    }
+  }
+
+  // Main action: Result of clicking "Calculate" button
+  function Calculate() {
+    var prob,
+        fact;
+    if (TSize <= 0 || Recs < 0) { Tell("Bad input"); }
+    else {
+      if (Recs === 0) { prob = 0.0; }
+      else if (Recs > TSize) { prob = 1.0; }
+      else {
+        fact = 1.0;
+        for (var i = TSize - Recs + 1; i < TSize; i++)
+          fact = fact * i/TSize;
+        prob = 1.0 - fact;
+      }
+      Tell(prob);
+    }
+  }
+})(jQuery);
+</script>
+
+</body>
+</html>
