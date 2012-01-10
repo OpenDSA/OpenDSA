@@ -3,6 +3,7 @@ import sys
 import re
 import datetime
 import shutil
+import subprocess
 
 from operator import itemgetter, attrgetter
 
@@ -161,6 +162,7 @@ def parse(filename, modDir, targetDir, col, table):
    var1=''
    eqlabel=''
    inline='yes'
+   nextline=0
    for line in data:
       cpt=cpt+1
       if '<ODSAsettitle>' in line:
@@ -247,14 +249,34 @@ def parse(filename, modDir, targetDir, col, table):
  
       if '<ODSAeq>' in line:
             
-            code = line.partition('<ODSAeq>')[2]
-            print 'Equation code inline='+code
+            restline= line.partition('<ODSAeq>')[2]
+            code = restline.partition('</ODSAeq>')[0]
+            nextline= data.index(line)
+            if code=='' or code=='\n':
+               print 'LaTeX code missing %s'%nextline
+            else:
+               cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
+               p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+               for ne in p.stdout:
+                   print ne
+                   p.wait()
+               print p.returncode
+               line = line.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
             line = line.replace('<ODSAeq>','')
       if '<ODSAeq \"' in line:
          inline='no'
+         restline = line.partition('\">')[2]
+         code = restline.partition('</ODSAeq>')[0]
+         nextline= data.index(line)
+         cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
+         p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+         for ne in p.stdout:
+             print ne
+             p.wait()
+         print p.returncode
+         line = line.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
          if '<ODSAeq \"display\"' in line:
             line = line.replace('<ODSAeq \"display\">','<br /><center>')
-            print 'equation inline no disp'
          else:
                str =  re.split('<ODSAeq "', line, re.IGNORECASE)[1]
                title = str.partition('"')[0]
@@ -265,6 +287,7 @@ def parse(filename, modDir, targetDir, col, table):
                else:
                   line = line.replace('<ODSAeq "'+title+'">','<a name="%s"></a><br /> <center>')
                   eqlabel = '%s'%(ftitle)
+
 
       if '</ODSAeq>' in line:
          for j in xrange(0,len(re.split('</ODSAeq>', line, re.IGNORECASE))):
@@ -277,6 +300,8 @@ def parse(filename, modDir, targetDir, col, table):
                   line = line.replace('</ODSAeq>',' ('+eqlabel+')<br /></center>')
                   eqlabel=''
                inline='no'
+
+
       if '<ODSAref \"' in line:
          for j in xrange(1,len(re.split('ODSAref "', line, re.IGNORECASE))):
             str =  re.split('<ODSAref "', line, re.IGNORECASE)[1]
