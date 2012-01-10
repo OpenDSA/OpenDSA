@@ -50,6 +50,12 @@ that contains any definitions created by <code>&lt;dfn></code>
 tags.
 </p>
 
+<p class="todo">
+Need to properly document the preprocessor command syntax.
+How are the AV and Exercise directories specified?
+</p>
+
+
 <h2>External variables</h2>
 
 <p>
@@ -246,6 +252,21 @@ In this third form, the equation can be reference later with an
 <code>&lt;ODSAref "{label}" /></code> tag,
 at which point it will be replace with
 "{modulenumber}.{equationnumber}".
+
+<p>
+<code>&lt;ODSAembed ["hide"] {type}>{filename}&lt;/ODSAembed></code>
+allows the module author to conveniently embed AVs and exercises.
+<code>{type}</code> can be <code>"exercise"</code>
+(where <code>{filename}</code> refers to a file in the
+<code>Exercises</code> directory)
+or "av"
+(where <code>{filename}</code> refers to a file in the
+<code>AV</code> directory).
+Optional parameter <code>"hide"</code> determines whether the embedded
+resource appears on the page, or whether it is associated with a
+hide/show button whose initial state is to hide the embedded resource.
+</p>
+
 
 <h2>Other OpenDSA Markup Conventions</h2>
 
