@@ -6,7 +6,7 @@ import shutil
 import subprocess
 
 from operator import itemgetter, attrgetter
-
+from xml.dom.minidom import parse, parseString
 
 class modPreReq:
    
@@ -146,7 +146,7 @@ def parseDict(filename, modDir, targetDir, i):
             table[title]='%s.%s'%(i,eq) 
    return table
 
-def parse(filename, modDir, targetDir, col, table):
+def parseMod(filename, modDir, targetDir, col, table):
    fls = open(modDir+'/'+filename,'r')
    data = fls.readlines()
    fls.close()
@@ -301,6 +301,42 @@ def parse(filename, modDir, targetDir, col, table):
                   eqlabel=''
                inline='no'
 
+      
+      showhide0='<p><a href="#" id="example-show" class="showLink" onclick="showHide(\'example\');return false;">Show</a></p> <div id="example" class="more">'
+
+      showhide1='<p><a href="#" id="example-hide" class="hideLink" onclick="showHide(\'example\');return false;">Hide Exercise.</a></p></div>'
+
+
+
+
+      if '<ODSAembed' in line:
+         if '\"hide\"' in line:
+            tr =  re.split('<ODSAembed "hide">', line, re.IGNORECASE)[1]
+            address = tr.partition('</ODSAembed>')[0]
+            if 'http://' in address:
+               line = line.replace('<ODSAembed "hide">',embedhide()+showhide0+embedcode(address)+showhide1)
+               line = line.replace(address,'')
+               line = line.replace('</ODSAembed>','')
+            else:
+               avfile = os.path.basename(address)
+               shutil.copyfile(address[1:], targetDir+'/'+avfile)
+               line = line.replace('<ODSAembed "hide">',embedhide()+showhide0+embedlocal(address)+showhide1)
+               line = line.replace(address,'')
+               line = line.replace('</ODSAembed>','')
+         else:
+            tr =  re.split('<ODSAembed>', line, re.IGNORECASE)[1]
+            address = tr.partition('</ODSAembed>')[0]
+            if 'http://' in address:
+               line = line.replace('<ODSAembed>',embedcode(address))
+               line = line.replace(address,'')
+               line = line.replace('</ODSAembed>','')
+            else:
+               avfile = os.path.basename(address)
+               shutil.copyfile(address[1:], targetDir+'/'+avfile)
+               line = line.replace('<ODSAembed>',embedlocal(address))
+               line = line.replace(address,'')
+               line = line.replace('</ODSAembed>','')
+
 
       if '<ODSAref \"' in line:
          for j in xrange(1,len(re.split('ODSAref "', line, re.IGNORECASE))):
@@ -334,7 +370,48 @@ def parse(filename, modDir, targetDir, col, table):
 
 
 
+
+def embedcode(address):
+   code ='<center><div id="embedHere"></div><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script><script>$(function() { $.getJSON("http://algoviz.org/oembed/?url='
+   code=code+address+'", function(data) {$("#embedHere").html(data.html); })});</script></center>'
+   return code
          
+
+def embedlocal(address):
+   avfile = os.path.basename(address)
+   avdir =os.path.dirname(address)
+   xmlfile=avdir[1:]+'/xml/'+os.path.splitext(avfile)[0]+'.xml'
+   avwidth=0
+   avheight=0
+   dom = parse(xmlfile)
+   node = dom.documentElement
+   widths = dom.getElementsByTagName("width")
+   for width in widths:
+        nodes = width.childNodes
+        for node in nodes:
+            if node.nodeType == node.TEXT_NODE:
+                avwidth=node.data
+   
+   heights = dom.getElementsByTagName("height")
+   for height in heights:
+        nodes = height.childNodes
+        for node in nodes:
+            if node.nodeType == node.TEXT_NODE:
+                avheight=node.data
+  
+   code = '<center> <iframe src="'+avfile+'" type="text/javascript" width="'+avwidth+'" height="'+avheight+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"> </iframe></center>'
+   return code
+
+
+
+def embedhide():
+   #Hide show content
+   code='<script>function showHide(shID) {if (document.getElementById(shID)) {if (document.getElementById(shID+\'-show\').style.display != \'none\') {document.getElementById(shID+\'-show\').style.display = \'none\';document.getElementById(shID).style.display = \'block\';}else {document.getElementById(shID+\'-show\').style.display = \'inline\';document.getElementById(shID).style.display = \'none\';}}}</script>'
+ 
+   return code
+
+
+
 
 
 def control(argv):
@@ -394,7 +471,7 @@ def main(argv):
         z=z+1
   for fl in finalList:
         print "preprocessing " + os.path.splitext(os.path.basename(fl.name))[0]+'...'
-        content = parse(fl.name, modDir, modDest,col,finalTable)
+        content = parseMod(fl.name, modDir, modDest,col,finalTable)
         try:
            nfile = open(modDest+'/'+os.path.splitext(os.path.basename(fl.name))[0].lower()+'.html','w')
            nfile.writelines(content)

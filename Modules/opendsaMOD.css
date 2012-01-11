@@ -83,6 +83,9 @@ p.footertext {
 p.annotation {
   color:red;
 }
+.more {
+  display:none;
+}
 
 a, a:visited {
   color: #900;
