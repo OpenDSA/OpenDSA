@@ -176,25 +176,25 @@ def parseMod(filename, modDir, targetDir, col, table):
       if '</ODSAif>' in line:
          end = cpt 
          for v in range(start,end+1):
-            line1=line1+data[v]
+            line1=line1+remove_eol(data[v])
+         line1=line1+'\n'
          start = newline.index(var1)
-         str =  re.split('ODSAif \"', line1, re.IGNORECASE)[1]
-         title = str.partition('"')[0]
-         text = str.partition('</ODSAif>')[0]
+         stri =  re.split('ODSAif \"', line1, re.IGNORECASE)[1]
+         title = stri.partition('"')[0]
+         text = stri.partition('</ODSAif>')[0]
          default = title
          ftitle = table.get(title,default) #table[title]
          if ftitle ==title:
                line1='' #line1.replace('<ODSAif "','')
                print 'INFO: Module <'+title+'> not present in collection!'
          else:
-               line1 = line1.replace('<ODSAif "'+title+'" />','')
+               if '<ODSAif "'+title+'">' in line1:
+                  line1 = line1[len('<ODSAif "'+title+'">'):]
+               #line1 = line1.replace('<ODSAif "'+title+'">','')
                line1 = line1.replace('</ODSAif>','')
          line = line1
          newline[start]=line1
-         for v in range(start,len(newline)-1):
-            #if v==start:
-            #   data[start]=line1
-            #else:
+         for v in range(start,len(newline)):
             newline.pop()
          line = line1
          line1=''
@@ -374,6 +374,12 @@ def parseMod(filename, modDir, targetDir, col, table):
    head.extend(foot)
    return  head      
      
+
+def remove_eol (line):
+        if line[-1] == '\n':
+           return line[:-1]
+        else:
+            return line
 
 
 def which(program):
