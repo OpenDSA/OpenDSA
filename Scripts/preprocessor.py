@@ -246,35 +246,43 @@ def parseMod(filename, modDir, targetDir, col, table):
                print 'WARNING: Reference missing  <'+title +'>!'
             else:
                line = line.replace('<ODSAtheorem "'+title+'" />','<a name="%s"></a> Theorem %s'%(ftitle,ftitle))
+
  
       if '<ODSAeq>' in line:
-            
             restline= line.partition('<ODSAeq>')[2]
             code = restline.partition('</ODSAeq>')[0]
+            code1=code
             nextline= data.index(line)
             if code=='' or code=='\n':
                print 'LaTeX code missing %s'%nextline
             else:
-               cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
-               p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-               for ne in p.stdout:
-                   print ne
-                   p.wait()
-               print p.returncode
-               line = line.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
+               if which('mathtex')==None:
+                  line = line.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?c="'+code1+' alt="" border=0 align="middle">.')
+               else:
+                  cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
+                  p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+                  for ne in p.stdout:
+                      print ne
+                      p.wait()
+                  print p.returncode
+                  line = line.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
             line = line.replace('<ODSAeq>','')
       if '<ODSAeq \"' in line:
          inline='no'
          restline = line.partition('\">')[2]
          code = restline.partition('</ODSAeq>')[0]
+         code1=code
          nextline= data.index(line)
-         cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
-         p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-         for ne in p.stdout:
-             print ne
-             p.wait()
-         print p.returncode
-         line = line.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
+         if which('mathtex')==None:
+            line = line.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?c="'+code1+' alt="" border=0 align="middle">.')        
+         else:
+            cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
+            p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+            for ne in p.stdout:
+                print ne
+                p.wait()
+            print p.returncode
+            line = line.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
          if '<ODSAeq \"display\"' in line:
             line = line.replace('<ODSAeq \"display\">','<br /><center>')
          else:
@@ -368,6 +376,27 @@ def parseMod(filename, modDir, targetDir, col, table):
      
 
 
+def which(program):
+    def is_exe(fpath):
+        return os.path.exists(fpath) and os.access(fpath, os.X_OK)
+
+    def ext_candidates(fpath):
+        yield fpath
+        for ext in os.environ.get("PATHEXT", "").split(os.pathsep):
+            yield fpath + ext
+
+    fpath, fname = os.path.split(program)
+    if fpath:
+        if is_exe(program):
+            return program
+    else:
+        for path in os.environ["PATH"].split(os.pathsep):
+            exe_file = os.path.join(path, program)
+            for candidate in ext_candidates(exe_file):
+                if is_exe(candidate):
+                    return candidate
+
+    return None
 
 
 
