@@ -257,7 +257,7 @@ def parseMod(filename, modDir, targetDir, col, table):
                print 'LaTeX code missing %s'%nextline
             else:
                if which('mathtex')==None:
-                  line = line.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?c="'+code1+' alt="" border=0 align="middle">.')
+                  line = line.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?'+code1+'" alt="" border=0 align="middle">.')
                else:
                   cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
                   p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
@@ -274,7 +274,7 @@ def parseMod(filename, modDir, targetDir, col, table):
          code1=code
          nextline= data.index(line)
          if which('mathtex')==None:
-            line = line.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?c="'+code1+' alt="" border=0 align="middle">.')        
+            line = line.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?'+code1+'" alt="" border=0 align="middle">.')        
          else:
             cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
