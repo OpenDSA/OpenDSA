@@ -257,14 +257,18 @@ def parseMod(filename, modDir, targetDir, col, table):
                print 'LaTeX code missing %s'%nextline
             else:
                if which('mathtex')==None:
+                  print 'MathTeX image from http://www.forkosh.com/'
+                  print 'input expression: '+code1
                   line = line.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?'+code1+'" alt="" border=0 align="middle">.')
                else:
                   cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
                   p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+                  print 'mathTeX> input expression: '+code
                   for ne in p.stdout:
-                      print ne
+                      if  ('output image file' in ne):
+                         print ne
                       p.wait()
-                  print p.returncode
+                  #print p.returncode
                   line = line.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
             line = line.replace('<ODSAeq>','')
       if '<ODSAeq \"' in line:
@@ -274,14 +278,18 @@ def parseMod(filename, modDir, targetDir, col, table):
          code1=code
          nextline= data.index(line)
          if which('mathtex')==None:
+            print 'MathTeX image from http://www.forkosh.com/'
+            print 'input expression: '+code1
             line = line.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?'+code1+'" alt="" border=0 align="middle">.')        
          else:
             cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+            print 'mathTeX> input expression: '+code
             for ne in p.stdout:
-                print ne
+                if  ('output image file' in ne):
+                   print ne
                 p.wait()
-            print p.returncode
+           # print p.returncode
             line = line.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
          if '<ODSAeq \"display\"' in line:
             line = line.replace('<ODSAeq \"display\">','<br /><center>')
