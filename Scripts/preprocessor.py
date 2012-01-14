@@ -318,9 +318,11 @@ def parseMod(filename, modDir, targetDir, col, table):
                inline='no'
 
       
-      showhide0='<p><a href="#" id="example-show" class="showLink" onclick="showHide(\'example\');return false;">Show</a></p> <div id="example" class="more">'
+      showhide0='<p><input type="button" name="show" value="Show Exercise" id="example-show" class="showLink" onclick="showHide(\'example\')"\nstyle="background-color:#f00;"/>\n<div id="example" class="more">\n' 
+ #'<p><a href="#" id="example-show" class="showLink" onclick="showHide(\'example\');return false;">Show</a></p> <div id="example" class="more">'
 
-      showhide1='<p><a href="#" id="example-hide" class="hideLink" onclick="showHide(\'example\');return false;">Hide Exercise.</a></p></div>'
+      showhide1='<input type="button" name="show" value="Hide Exercise" id="example-hide" class="hideLink" onclick="showHide(\'example\')"\nstyle="background-color:#f00;"/></p>' 
+ #'<p><a href="#" id="example-hide" class="hideLink" onclick="showHide(\'example\');return false;">Hide Exercise.</a></p></div>'
 
 
 
@@ -336,7 +338,7 @@ def parseMod(filename, modDir, targetDir, col, table):
             else:
                avfile = os.path.basename(address)
                shutil.copyfile(address[1:], targetDir+'/'+avfile)
-               line = line.replace('<ODSAembed "hide">',embedhide()+showhide0+embedlocal(address)+showhide1)
+               line = line.replace('<ODSAembed "hide">',embedhide()+showhide0+showhide1+embedlocal(address))
                line = line.replace(address,'')
                line = line.replace('</ODSAembed>','')
          else:
@@ -415,8 +417,8 @@ def which(program):
 
 
 def embedcode(address):
-   code ='<center><div id="embedHere"></div><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script><script>$(function() { $.getJSON("http://algoviz.org/oembed/?url='
-   code=code+address+'", function(data) {$("#embedHere").html(data.html); })});</script></center>'
+   code ='<center>\n<div id="embedHere"></div>\n<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js">\n</script>\n<script>\n$(function() { \n$.getJSON("http://algoviz.org/oembed/?url='
+   code=code+address+'", function(data) {\n$("#embedHere").html(data.html);\n })\n});\n</script>\n</center>'
    return code
          
 
@@ -442,14 +444,14 @@ def embedlocal(address):
             if node.nodeType == node.TEXT_NODE:
                 avheight=node.data
   
-   code = '<center> <iframe src="'+avfile+'" type="text/javascript" width="'+avwidth+'" height="'+avheight+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"> </iframe></center>'
+   code = '<center>\n <iframe src="'+avfile+'" type="text/javascript" width="'+avwidth+'" height="'+avheight+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>'
    return code
 
 
 
 def embedhide():
    #Hide show content
-   code='<script>function showHide(shID) {if (document.getElementById(shID)) {if (document.getElementById(shID+\'-show\').style.display != \'none\') {document.getElementById(shID+\'-show\').style.display = \'none\';document.getElementById(shID).style.display = \'block\';}else {document.getElementById(shID+\'-show\').style.display = \'inline\';document.getElementById(shID).style.display = \'none\';}}}</script>'
+   code='<script>function showHide(shID) {\nif (document.getElementById(shID)) {\nif (document.getElementById(shID+\'-show\').style.display != \'none\') {\ndocument.getElementById(shID+\'-show\').style.display = \'none\';\ndocument.getElementById(shID).style.display = \'block\';\n}\nelse {document.getElementById(shID+\'-show\').style.display = \'inline\';\ndocument.getElementById(shID).style.display = \'none\';\n}\n}\n}\n</script>'
  
    return code
 
