@@ -337,6 +337,7 @@ def parseMod(filename, modDir, targetDir, col, table):
                line = line.replace('</ODSAembed>','')
             else:
                avfile = os.path.basename(address)
+               shutil.copyfile(os.path.dirname(address)[1:]+'/opendsaAV.css', targetDir+'/opendsaAV.css')
                shutil.copyfile(address[1:], targetDir+'/'+avfile)
                line = line.replace('<ODSAembed "hide">',embedhide()+showhide0+showhide1+embedlocal(address))
                line = line.replace(address,'')
@@ -350,6 +351,7 @@ def parseMod(filename, modDir, targetDir, col, table):
                line = line.replace('</ODSAembed>','')
             else:
                avfile = os.path.basename(address)
+               shutil.copyfile(os.path.dirname(address)[1:]+'/opendsaAV.css', targetDir+'/opendsaAV.css')
                shutil.copyfile(address[1:], targetDir+'/'+avfile)
                line = line.replace('<ODSAembed>',embedlocal(address))
                line = line.replace(address,'')
