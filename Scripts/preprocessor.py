@@ -4,6 +4,7 @@ import re
 import datetime
 import shutil
 import subprocess
+import fnmatch
 
 from operator import itemgetter, attrgetter
 from xml.dom.minidom import parse, parseString
@@ -337,7 +338,7 @@ def parseMod(filename, modDir, targetDir, col, table):
                line = line.replace('</ODSAembed>','')
             else:
                avfile = os.path.basename(address)
-               shutil.copyfile(os.path.dirname(address)[1:]+'/opendsaAV.css', targetDir+'/opendsaAV.css')
+               copyfiles(os.path.dirname(address)[1:]+'/', targetDir+'/','*.css')
                shutil.copyfile(address[1:], targetDir+'/'+avfile)
                line = line.replace('<ODSAembed "hide">',embedhide()+showhide0+showhide1+embedlocal(address))
                line = line.replace(address,'')
@@ -351,7 +352,7 @@ def parseMod(filename, modDir, targetDir, col, table):
                line = line.replace('</ODSAembed>','')
             else:
                avfile = os.path.basename(address)
-               shutil.copyfile(os.path.dirname(address)[1:]+'/opendsaAV.css', targetDir+'/opendsaAV.css')
+               copyfiles(os.path.dirname(address)[1:]+'/', targetDir+'/','*.css')
                shutil.copyfile(address[1:], targetDir+'/'+avfile)
                line = line.replace('<ODSAembed>',embedlocal(address))
                line = line.replace(address,'')
@@ -416,7 +417,14 @@ def which(program):
 
     return None
 
+def copyfiles(srcdir, dstdir, filepattern):
+    def failed(exc):
+        raise exc
 
+    for dirpath, dirs, files in os.walk(srcdir, topdown=True, onerror=failed):
+        for file in fnmatch.filter(files, filepattern):
+            shutil.copy2(os.path.join(dirpath, file), dstdir)
+        break # no recursion
 
 def embedcode(address):
    code ='<center>\n<div id="embedHere"></div>\n<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js">\n</script>\n<script>\n$(function() { \n$.getJSON("http://algoviz.org/oembed/?url='
