@@ -338,10 +338,7 @@ def parseMod(filename, modDir, targetDir, col, table):
                line = line.replace('</ODSAembed>','')
             else:
                avfile = os.path.basename(address)
-               copyfiles(os.path.dirname(address)[1:]+'/', targetDir+'/','*.css')
-               shutil.copyfile(address[1:], targetDir+'/'+avfile)
-               line = line.replace('<ODSAembed "hide">',embedhide()+showhide0+showhide1+embedlocal(address))
-               line = line.replace(address,'')
+               line = line.replace('<ODSAembed "hide">'+address,embedhide()+showhide0+showhide1+embedlocal(address))
                line = line.replace('</ODSAembed>','')
          else:
             tr =  re.split('<ODSAembed>', line, re.IGNORECASE)[1]
@@ -352,10 +349,8 @@ def parseMod(filename, modDir, targetDir, col, table):
                line = line.replace('</ODSAembed>','')
             else:
                avfile = os.path.basename(address)
-               copyfiles(os.path.dirname(address)[1:]+'/', targetDir+'/','*.css')
-               shutil.copyfile(address[1:], targetDir+'/'+avfile)
-               line = line.replace('<ODSAembed>',embedlocal(address))
-               line = line.replace(address,'')
+               line = line.replace('<ODSAembed>'+address,embedlocal(address))
+               #line = line.replace(address,'')
                line = line.replace('</ODSAembed>','')
 
 
@@ -453,8 +448,9 @@ def embedlocal(address):
         for node in nodes:
             if node.nodeType == node.TEXT_NODE:
                 avheight=node.data
-  
-   code = '<center>\n <iframe src="'+avfile+'" type="text/javascript" width="'+avwidth+'" height="'+avheight+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>'
+   link =os.path.abspath(address[1:])
+   code = '<center>\n <iframe src="'+link
+   code = code +'" \ntype="text/javascript" width="'+avwidth+'" height="'+avheight+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>'
    return code
 
 
