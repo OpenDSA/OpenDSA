@@ -371,9 +371,9 @@ def parseMod(filename, modDir, targetDir, col, table):
                   if ('%s'%(item[1])) == val:
                      key=item[0]
                if st.partition('.')[2]=='':
-                  line = line.replace('<ODSAref "'+title+'" />','<a href="'+key.lower()+'.html">%s'%(mtitle)+'</a> ')
+                  line = line.replace('<ODSAref "'+title+'" />','<a href="'+key+'.html">%s'%(mtitle)+'</a> ') 
                else:
-                  line = line.replace('<ODSAref "'+title+'" />','<a href="'+key.lower()+'.html#%s">%s'%(mtitle,mtitle)+'</a> ')
+                  line = line.replace('<ODSAref "'+title+'" />','<a href="'+key+'.html#%s">%s'%(mtitle,mtitle)+'</a> ') 
       newline.append(line)
       line1=''
    head = modHeader(modDir,title1, col)
@@ -524,7 +524,7 @@ def main(argv):
         print "preprocessing " + os.path.splitext(os.path.basename(fl.name))[0]+'...'
         content = parseMod(fl.name, modDir, modDest,col,finalTable)
         try:
-           nfile = open(modDest+'/'+os.path.splitext(os.path.basename(fl.name))[0].lower()+'.html','w')
+           nfile = open(modDest+'/'+os.path.splitext(os.path.basename(fl.name))[0]+'.html','w') 
            nfile.writelines(content)
            nfile.close
         except IOError:
@@ -536,7 +536,12 @@ def main(argv):
   gfile.close()
   lowerglos=[] #lower case all glossary terms-- to ease the alphabetical sorting
   for g in glos:
-     lowerglos.append(g.capitalize())
+     words = g.split(' ')
+     for i in range(len(words)):
+        if i==0:
+           words[i]=words[i].capitalize()
+     g = ' '.join(words)
+     lowerglos.append(g) 
   lowerglos = list(set(lowerglos))  #remove duplicates
   lowerglos.sort()
   try:
