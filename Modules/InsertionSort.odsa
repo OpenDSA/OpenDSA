@@ -1,0 +1,145 @@
+<div id="content">
+<ODSAsettitle>Insertion Sort</ODSAsettitle>
+<ODSAprereq "Sorting" />
+
+<p>
+Imagine that you have a stack of phone bills from the past two years
+and that you wish to organize them by date.
+A fairly natural way to do this might be to look at the first two
+bills and put them in order.
+Then take the third bill and put it into the right order with respect
+to the first two, and so on.
+As you take each bill, you would add it to the sorted pile that you
+have already made.
+This naturally intuitive process is the inspiration for
+our first sorting algorithm, called <dfn>Insertion Sort</dfn>.
+Insertion Sort iterates through a list of records.
+Each record is inserted in turn at the correct position
+within a sorted list composed of those records already processed.
+The following is a Java implementation.
+The input is an array of <var>n</var> records stored in array
+<code>A</code>.
+</p>
+
+<pre>
+static <E extends Comparable<? super E>>
+void Sort(E[] A) {
+  for (int i=1; i<A.length; i++) // Insert i'th record
+    for (int j=i; (j>0) && (A[j].compareTo(A[j-1])<0); j--)
+      DSutil.swap(A, j, j-1);
+}
+</pre>
+
+<p>
+Consider the case where <code>inssort</code> is processing the
+<var>i</var>th
+record, which has key value <var>X</var>.
+The record is moved upward in the array as long as
+<var>X</var> is less
+than the key value immediately above it.
+As soon as a key value less than or equal to <var>X</var> is
+encountered, <code>inssort</code> is done with that record because all
+records above it in the array must have smaller keys.
+Figure <ODSAref "Insertion" /> illustrates how Insertion Sort
+works.
+</p>
+
+<figure>
+<center>
+<img src="Images/InsSort.png" width=600 alt="Insertion Sort" />
+<br/>
+</center>
+
+<figcaption>
+<ODSAfig "Insertion" />
+An illustration of Insertion Sort.
+Each column shows the array after the iteration with the indicated
+value of <code>i</code> in the outer <code>for</code> loop.
+Values above the line in each column have been sorted.
+Arrows indicate the upward motions of records through the array.
+</figcaption>
+</figure>
+
+<p>
+The body of <code>inssort</code> is made up of two nested
+<code>for</code> loops.
+The outer <code>for</code> loop is executed <i>n</i>-1 times.
+The inner <code>for</code> loop is harder to analyze because the
+number of times it executes depends on how many keys in positions 1 to
+<i>i</i>-1 have a value less than that of the key in position <i>i</i>.
+In the worst case, each record must make its way to the top of the
+array.
+This would occur if the keys are initially arranged from highest to
+lowest, in the reverse of sorted order.
+In this case, the number of comparisons will be one the first time
+through the <code>for</code> loop, two the second time, and so on.
+Thus, the total number of comparisons will be
+</p>
+
+<ODSAeq "display">\sum_{i=2}^n i \approx n^2/2 = \Theta(n^2)</ODSAeq>
+
+<p>
+In contrast, consider the best-case cost.
+This occurs when the keys begin in sorted order from lowest to
+highest.
+In this case, every pass through the inner <code>for</code> loop will
+fail immediately, and no values will be moved.
+The total number of comparisons will be \(n-1\), which is the
+number of times the outer <code>for</code> loop executes.
+Thus, the cost for Insertion Sort in the best case is
+&Theta;(<i>n</i>).
+</p>
+
+<p>
+While the best case is significantly faster than the worst case,
+the worst case is usually a more reliable indication of the "typical"
+running time.
+However, there are situations where we can expect the input to be in
+sorted or nearly sorted order.
+One example is when an already sorted list is slightly disordered by a
+small number of additions to the list;
+restoring sorted order using Insertion Sort might be a good idea if we
+know that the disordering is slight.
+Examples of algorithms that take advantage of Insertion Sort's
+near-best-case running time are Shellsort
+(Module <ODSAref "ShellSort" \>)
+and Quicksort (Module <ODSAref "QuickSort" \>).
+</p>
+
+<p>
+What is the average-case cost of Insertion Sort?
+When record <var>i</var> is processed, the number
+of times through the inner <code>for</code> loop depends on how far
+"out of order" the record is.
+In particular, the inner <code>for</code> loop is executed once for
+each key greater than the key of record <var>i</var> that appears in
+array positions 0 through <var>i</var>-1.
+For example, in the leftmost column of Figure <ODSAref "Insertion" \>
+the value 15 is preceded by five values greater than 15.
+Each such occurrence is called an <dfn>inversion</dfn>.
+The number of inversions (i.e., the number of values greater than a
+given value that occur prior to it in the array) will determine the
+number of comparisons and swaps that must take place.
+We need to determine what the average number of inversions will
+be for the record in position <var>i</var>.
+We expect on average that half of the keys in the first
+<var>i</var>-1 array positions will have a value greater than that of
+the key at position <var>i</var>.
+Thus, the average case should be about half the cost of the worst
+case, or around <i>n</i><sup>2</sup>/4, which is still
+&Theta;(<i>n</i><sup>2</sup>).
+So, the average case is no better than the worst case in
+asymptotic complexity.
+</p>
+
+<p>
+Counting comparisons or swaps yields similar results.
+Each time through the inner <code>for</code> loop yields both a
+comparison and a swap, except the last (i.e., the comparison that
+fails the inner <code>for</code> loop's test), which has no swap.
+Thus, the number of swaps for the entire sort operation is
+<i>n</i>-1 less than the number of comparisons.
+This is 0 in the best case, and &Theta;(<i>n</i><sup>2</sup>) in the
+average and worst cases.
+
+</div>
