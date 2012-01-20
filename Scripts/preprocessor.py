@@ -164,6 +164,8 @@ def parseMod(filename, modDir, targetDir, col, table):
    eqlabel=''
    inline='yes'
    nextline=0
+   eq_start=0
+   eq_line=''
    for line in data:
       cpt=cpt+1
       if '<ODSAsettitle>' in line:
@@ -238,7 +240,6 @@ def parseMod(filename, modDir, targetDir, col, table):
             else:
                line = line.replace('<ODSAtable "'+title+'" />','<a name="%s"></a> Table %s'%(ftitle,ftitle))
       if '<ODSAtheorem \"' in line:
-        # for j in xrange(0,len(re.split('ODSAtheorem "', line, re.IGNORECASE))):
             str =  re.split('<ODSAtheorem "', line, re.IGNORECASE)[1]
             title = str.partition('"')[0]
             ftitle = table.get(title,default) #table[title]
@@ -248,19 +249,51 @@ def parseMod(filename, modDir, targetDir, col, table):
             else:
                line = line.replace('<ODSAtheorem "'+title+'" />','<a name="%s"></a> Theorem %s'%(ftitle,ftitle))
 
- 
-      if '<ODSAeq>' in line:
-            restline= line.partition('<ODSAeq>')[2]
-            code = restline.partition('</ODSAeq>')[0]
-            code1=code
-            nextline= data.index(line)
-            if code=='' or code=='\n':
-               print 'LaTeX code missing %s'%nextline
-            else:
+      eq_end=0
+
+      if '<ODSAeq' in line:
+            eq_start = cpt
+            eq_line = line
+      if '</ODSAeq>' in line:
+            eq_end = cpt
+            for v in range(eq_start,eq_end+1):
+               line1=line1+remove_eol(data[v])
+            line1=line1+'\n'
+            if '<ODSAeq'not in line:
+               eq_start = newline.index(eq_line)
+            if '<ODSAeq>' in line1:
+               restline= line1.partition('<ODSAeq>')[2]
+               code = restline.partition('</ODSAeq>')[0]
+               code1=code
+               nextline= data.index(line1)
+               if code=='' or code=='\n':
+                  print 'LaTeX code missing %s'%nextline
+               else:
+                  if which('mathtex')==None:
+                     print 'MathTeX image from http://www.forkosh.com/'
+                     print 'input expression: '+code1
+                     line1 = line1.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?'+code1+'" alt="" border=0 align="middle">.')
+                  else:
+                     cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
+                     p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+                     print 'mathTeX> input expression: '+code
+                     for ne in p.stdout:
+                         if  ('output image file' in ne):
+                            print ne
+                            p.wait()
+                  #print p.returncode
+                     line1 = line1.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
+               line1 = line1.replace('<ODSAeq>','')
+            if '<ODSAeq \"' in line1:
+               inline='no'
+               restline = line1.partition('\">')[2]
+               code = restline.partition('</ODSAeq>')[0]
+               code1=code
+               nextline= data.index(line)
                if which('mathtex')==None:
                   print 'MathTeX image from http://www.forkosh.com/'
                   print 'input expression: '+code1
-                  line = line.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?'+code1+'" alt="" border=0 align="middle">.')
+                  line1 = line1.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?'+code1+'" alt="" border=0 align="middle">.')        
                else:
                   cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
                   p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
@@ -268,62 +301,47 @@ def parseMod(filename, modDir, targetDir, col, table):
                   for ne in p.stdout:
                       if  ('output image file' in ne):
                          print ne
-                      p.wait()
-                  #print p.returncode
-                  line = line.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
-            line = line.replace('<ODSAeq>','')
-      if '<ODSAeq \"' in line:
-         inline='no'
-         restline = line.partition('\">')[2]
-         code = restline.partition('</ODSAeq>')[0]
-         code1=code
-         nextline= data.index(line)
-         if which('mathtex')==None:
-            print 'MathTeX image from http://www.forkosh.com/'
-            print 'input expression: '+code1
-            line = line.replace(code, '<img src="http://www.forkosh.com/mathtex.cgi?'+code1+'" alt="" border=0 align="middle">.')        
-         else:
-            cmd = ['mathtex', code,'-o', targetDir+'/Images/eq%s-%s'%(table[modname],nextline)]
-            p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-            print 'mathTeX> input expression: '+code
-            for ne in p.stdout:
-                if  ('output image file' in ne):
-                   print ne
-                p.wait()
+                         p.wait()
            # print p.returncode
-            line = line.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
-         if '<ODSAeq \"display\"' in line:
-            line = line.replace('<ODSAeq \"display\">','<br /><center>')
-         else:
-               str =  re.split('<ODSAeq "', line, re.IGNORECASE)[1]
+                  line1 = line1.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
+            if '<ODSAeq \"display\"' in line1:
+               line1 = line1.replace('<ODSAeq \"display\">','<br /><center>')
+            else:
+               str =  re.split('<ODSAeq "', line1, re.IGNORECASE)[1]
                title = str.partition('"')[0]
                ftitle = table.get(title,default) #table[title]
                if ftitle ==title:
-                  line = line.replace('<ODSAeq "'+title+'">','<br /><center>')
+                  line = line1.replace('<ODSAeq "'+title+'">','<br /><center>')
                   print 'WARNING: Reference missing  <'+title +'>!'
                else:
-                  line = line.replace('<ODSAeq "'+title+'">','<a name="%s"></a><br /> <center>')
+                  line1 = line1.replace('<ODSAeq "'+title+'">','<a name="%s"></a><br /> <center>')
                   eqlabel = '%s'%(ftitle)
 
 
-      if '</ODSAeq>' in line:
-         for j in xrange(0,len(re.split('</ODSAeq>', line, re.IGNORECASE))):
-            if inline =='yes':
-               line = line.replace('</ODSAeq>','')
-            else:
-               if eqlabel=='':
-                  line = line.replace('</ODSAeq>','<br /></center>')
+         #if '</ODSAeq>' in line:
+            for j in xrange(0,len(re.split('</ODSAeq>', line1, re.IGNORECASE))):
+               if inline =='yes':
+                  line1 = line1.replace('</ODSAeq>','')
                else:
-                  line = line.replace('</ODSAeq>',' ('+eqlabel+')<br /></center>')
-                  eqlabel=''
-               inline='no'
+                  if eqlabel=='':
+                     line1 = line1.replace('</ODSAeq>','<br /></center>')
+                  else:
+                     line1 = line1.replace('</ODSAeq>',' ('+eqlabel+')<br /></center>')
+                     eqlabel=''
+                  inline='no'
+            if '<ODSAeq'not in line:
+               newline[eq_start]=line1
+               for v in range(eq_start,len(newline)):
+                  newline.pop()
+            line = line1
+            line1=''
+            eq_start=0
+            eq_end=0
 
       
       showhide0='<p><input type="button" name="show" value="Show Exercise" id="example-show" class="showLink" onclick="showHide(\'example\')"\nstyle="background-color:#f00;"/>\n<div id="example" class="more">\n' 
- #'<p><a href="#" id="example-show" class="showLink" onclick="showHide(\'example\');return false;">Show</a></p> <div id="example" class="more">'
 
       showhide1='<input type="button" name="show" value="Hide Exercise" id="example-hide" class="hideLink" onclick="showHide(\'example\')"\nstyle="background-color:#f00;"/></p>' 
- #'<p><a href="#" id="example-hide" class="hideLink" onclick="showHide(\'example\');return false;">Hide Exercise.</a></p></div>'
 
 
 
