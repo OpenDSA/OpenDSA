@@ -44,6 +44,14 @@ their final positions.
 </figcaption>
 </figure>
 
+<center>
+ <iframe src="../AV/selectionsort-av.html"
+	 type="text/javascript" width="820" height="520"
+	 frameborder="0" marginwidth="0" marginheight="0"
+	 scrolling="no">
+</iframe>
+</center>
+
 <p>
 Figure <ODSAref "SelSort" \> illustrates Selection Sort.
 Here is a JAVA implementation.
