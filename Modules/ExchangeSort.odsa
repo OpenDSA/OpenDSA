@@ -20,13 +20,11 @@ The running time for each of these sorts is
 \sffamily
 \begin{tabular}{rccc}
 &\textbf{Insertion}&\textbf{Bubble}&\textbf{Selection}\\
-
 \textbf{Comparisons:}\\
 Best Case&\Theta(n)&\Theta(n^2)&\Theta(n^2)\\
 Average Case&\Theta(n^2)&\Theta(n^2)&\Theta(n^2)\\
 \medskip
 Worst Case&\Theta(n^2)&\Theta(n^2)&\Theta(n^2)\\
-
 \textbf{Swaps:}\\
 Best Case&0&0&\Theta(n)\\
 Average Case&\Theta(n^2)&\Theta(n^2)&\Theta(n)\\
