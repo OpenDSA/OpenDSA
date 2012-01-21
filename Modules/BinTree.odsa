@@ -82,7 +82,6 @@ any node that has at least one non-empty child.
 <figure>
 <center>
 <img src="Images/BinExamp.png" alt="An example binary tree" />
-<br/>
 </center>
 
 <figcaption>

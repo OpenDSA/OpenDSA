@@ -11,7 +11,6 @@ Bubble, and Selection Sort in terms of their required number of
 comparisons and swaps <sup><a href="#fn1" id="r1">[1]</a></sup>
 in the best, average, and worst cases.
 The running time for each of these sorts is
-&Theta;(<i>n</i><sup>2</sup>)
 \(\Theta(n^2)\) in the average and worst cases.
 </p>
 
@@ -32,13 +31,14 @@ Average Case&$\Theta(n^2)$&$\Theta(n^2)$&$\Theta(n)$\\
 Worst Case&$\Theta(n^2)$&$\Theta(n^2)$&$\Theta(n)$\\
 \end{tabular}
 </ODSAeq>
-</center>
+<br/>
 
 <figcaption>
-<ODSAfig "SlowSort">
+<ODSAfig "SlowSort" />
 A comparison of the asymptotic complexities for three simple sorting
 algorithms.
 </figcaption>
+</center>
 </figure>
 
 <p>
@@ -62,22 +62,21 @@ steps that the records in the array must move to reach their
 <p>
 What is the average number of inversions?
 Consider a list <var class="cvar">L</var> containing
-<i>n</i> values.
-Define <var class="cvar">L<sub>R</sub></var> to be
-<var class= "cvar">L</var> in reverse.
-<var class="cvar">L</var> has <i>n</i>(<i>n</i>-1)/2 distinct pairs of
+\(n\) values.
+Define <var class="cvar">L</var>\(_R\)
+to be <var class= "cvar">L</var> in reverse.
+<var class="cvar">L</var> has \(n(n-1)/2\) distinct pairs of
 values, each of which could potentially be an inversion.
 Each such pair must either be an inversion in
 <var class="cvar">L</var> or in
-<var class="cvar">L<sub>R</sub></var>.
+<var class="cvar">L</var>\(_R\).
 Thus, the total number of inversions in <var class="cvar">L</var> and
-<var class="cvar">L<sub>R</sub></var> together is exactly
-<i>n</i>(<i>n</i>-1)/2 for an average of
-<i>n</i>(<i>n</i>-1)/4 per list.
+<var class="cvar">L</var>\(_R\) together is exactly
+\(n(n-1)/2\) for an average of
+\(n(n-1)/4\) per list.
 We therefore know with certainty that any sorting algorithm which
 limits comparisons to adjacent items will cost at least
-<i>n</i>(<i>n</i>-1)/4 = &Omega;(<i>n</i><sup>2</sup>) in the average
-case.
+\(n(n-1)/4 = \Omega(n^2)\) in the average case.
 </p>
 
 <section>
@@ -87,8 +86,8 @@ The supposed advantage for Selection Sort is its low number of swaps
 required, yet Selection Sort's best-case number of swaps is worse than
 that for Insertion Sort or Bubble Sort.
 This is because the implementation given for Selection Sort does not
-avoid a swap in the case where record <var>i</var> is already in
-position <var>i</var>.
+avoid a swap in the case where the \(i\)th smallest record is already
+in position \(i\).
 One could put in a test to avoid swapping in this situation.
 But it usually takes more time to do the tests
 than would be saved by avoiding such swaps.
