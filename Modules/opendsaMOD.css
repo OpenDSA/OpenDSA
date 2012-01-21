@@ -103,3 +103,12 @@ dfn {
   font-style: Normal;
   font-weight: bold;
 }
+
+.eq { 
+   width: 100%; 
+}
+.eq th { 
+  text-align: right;
+  vertical-align: bottom;
+  font-weight: normal; 
+}

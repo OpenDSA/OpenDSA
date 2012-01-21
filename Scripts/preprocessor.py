@@ -314,7 +314,7 @@ def parseMod(filename, modDir, targetDir, col, table):
                   line1 = line1.replace('<ODSAeq "'+title+'">','<br /><center>')
                   print 'WARNING: Reference missing  <'+title +'>!'
                else:
-                  line1 = line1.replace('<ODSAeq "'+title+'">','<a name="%s"></a><br /> <center>')
+                  line1 = line1.replace('<ODSAeq "'+title+'">','<a name="%s"></a><table class="eq"><tr><td><center>')
                   eqlabel = '%s'%(ftitle)
 
 
@@ -326,7 +326,7 @@ def parseMod(filename, modDir, targetDir, col, table):
                   if eqlabel=='':
                      line1 = line1.replace('</ODSAeq>','<br /></center>')
                   else:
-                     line1 = line1.replace('</ODSAeq>',' ('+eqlabel+')<br /></center>')
+                     line1 = line1.replace('</ODSAeq>','</center> </td><th>('+eqlabel+')</th></tr></table>')
                      eqlabel=''
                   inline='no'
             if '<ODSAeq'not in line:
