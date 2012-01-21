@@ -48,8 +48,7 @@ class BSTNode<Key, E> implements BinNode<E> {
   public BSTNode() {left = right = null; }
   public BSTNode(Key k, E val)
   { left = right = null; key = k; element = val; }
-  public BSTNode(Key k, E val,
-                 BSTNode<Key,E> l, BSTNode<Key,E> r)
+  public BSTNode(Key k, E val, BSTNode<Key,E> l, BSTNode<Key,E> r)
   { left = l; right = r; key = k; element = val; }
 
   /** Get and set the key value */
@@ -82,7 +81,7 @@ A binary tree node class implementation.
 
 <figure>
 <center>
-<img src="Images/BinLink.png" alt="Binary tree node implementation" />
+<img src="Images/BinLink.png" width=400 alt="Binary tree node implementation" />
 </center>
 
 <figcaption>
@@ -129,7 +128,7 @@ implementations for internal and leaf nodes.
 
 <figure>
 <center>
-<img src="Images/DiffNode.png" alt="Expression Tree" />
+<img src="Images/DiffNode.png" width=300 alt="Expression Tree" />
 </center>
 
 <figcaption>
@@ -203,8 +202,7 @@ class VarIntlNode implements VarBinNode {
   private VarBinNode right;               // Right child
   private Character operator;             // Operator value
 
-  public VarIntlNode(Character op,
-                     VarBinNode l, VarBinNode r)
+  public VarIntlNode(Character op, VarBinNode l, VarBinNode r)
     { operator = op; left = l; right = r; }
   public boolean isLeaf() { return false; }
   public VarBinNode leftchild() { return left; }

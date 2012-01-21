@@ -46,7 +46,7 @@ void Sort(E[] A) {
 
 <figure>
 <center>
-<img src="Images/BubSort.png" height=400 alt="An illustration of Bubble Sort" />
+<img src="Images/BubSort.png" height=300 alt="An illustration of Bubble Sort" />
 <br/>
 </center>
 

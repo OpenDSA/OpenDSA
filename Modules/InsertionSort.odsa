@@ -60,6 +60,14 @@ Arrows indicate the upward motions of records through the array.
 </figcaption>
 </figure>
 
+<center>
+ <iframe src="../AV/insertionsort-av.html"
+	 type="text/javascript" width="820" height="520"
+	 frameborder="0" marginwidth="0" marginheight="0"
+	 scrolling="no">
+</iframe>
+</center>
+
 <p>
 The body of <code>inssort</code> is made up of two nested
 <code>for</code> loops.
