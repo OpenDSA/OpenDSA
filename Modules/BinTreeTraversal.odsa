@@ -25,7 +25,6 @@ This is called a <dfn>preorder traversal</dfn>.
 The preorder enumeration for the tree of
 Figure <ODSAref "BinExample" /> is
 <b>A B D C E G F H I</b>.
-
 <br/>
 The first node printed is the root.
 Then all nodes of the left subtree are printed (in preorder) before
@@ -280,8 +279,7 @@ We can implement this function as follows.
 </p>
 
 <pre>
-boolean checkBST(BinNode<Integer> rt,
-                 int low, int high) {
+boolean checkBST(BinNode<Integer> rt, int low, int high) {
   if (rt == null) return true; // Empty subtree
   int rootkey = rt.element();
   if ((rootkey < low) || (rootkey > high))

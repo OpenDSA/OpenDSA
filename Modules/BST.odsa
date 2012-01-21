@@ -86,8 +86,7 @@ a key separate from the data value at each node of the tree.
 <figure>
 <pre>
 /** Binary Search Tree implementation for Dictionary ADT */
-class BST<Key extends Comparable<? super Key>, E>
-         implements Dictionary<Key, E> {
+class BST<Key extends Comparable<? super Key>, E> implements Dictionary<Key, E> {
   private BSTNode<Key,E> root; // Root of the BST
   private int nodecount;       // Number of nodes in the BST
 
@@ -188,8 +187,7 @@ subroutine and is implemented as follows.
 <pre>
 private E findhelp(BSTNode<Key,E> rt, Key k) {
   if (rt == null) return null;
-  if (rt.key().compareTo(k) > 0)
-    return findhelp(rt.left(), k);
+  if (rt.key().compareTo(k) > 0) return findhelp(rt.left(), k);
   else if (rt.key().compareTo(k) == 0) return rt.element();
   else return findhelp(rt.right(), k);
 }
@@ -237,8 +235,7 @@ Here is the implementation for <code>inserthelp</code>.
 <pre>
 /** @return The current subtree, modified to contain
    the new item */
-private BSTNode<Key,E> inserthelp(BSTNode<Key,E> rt,
-                                  Key k, E e) {
+private BSTNode<Key,E> inserthelp(BSTNode<Key,E> rt, Key k, E e) {
   if (rt == null) return new BSTNode<Key,E>(k, e);
   if (rt.key().compareTo(k) > 0)
     rt.setLeft(inserthelp(rt.left(), k, e));
@@ -500,9 +497,7 @@ enough for this purpose), then each insertion will cost on average
 However, if the records are inserted in order of increasing value,
 then the resulting tree will be a chain of height <i>n</i>.
 The cost of insertion in this case will be
-<img src="http://www.forkosh.com/mathtex.cgi?
-\sum_{i=1}^{n} i = \Theta(n^2)"
-   alt="" border=0 align="middle">.
+<ODSAeq "display">\sum_{i=1}^{n} i = \Theta(n^2)</ODSAeq>
 </p>
 
 <p>
