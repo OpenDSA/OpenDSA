@@ -306,12 +306,12 @@ def parseMod(filename, modDir, targetDir, col, table):
                   line1 = line1.replace(code, '<img src="Images/eq%s-%s.gif" alt="" border=0 align="middle">.'%(table[modname],nextline))
             if '<ODSAeq \"display\"' in line1:
                line1 = line1.replace('<ODSAeq \"display\">','<br /><center>')
-            else:
+            if '<ODSAeq \"' in line1:
                str =  re.split('<ODSAeq "', line1, re.IGNORECASE)[1]
                title = str.partition('"')[0]
                ftitle = table.get(title,default) #table[title]
                if ftitle ==title:
-                  line = line1.replace('<ODSAeq "'+title+'">','<br /><center>')
+                  line1 = line1.replace('<ODSAeq "'+title+'">','<br /><center>')
                   print 'WARNING: Reference missing  <'+title +'>!'
                else:
                   line1 = line1.replace('<ODSAeq "'+title+'">','<a name="%s"></a><br /> <center>')

@@ -5,6 +5,9 @@
   <meta charset="utf-8" />
   <link href="opendsaMOD.css" rel="stylesheet" type="text/css" />
   <link href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
 </head>
 
 <body>
