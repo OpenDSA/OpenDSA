@@ -12,7 +12,7 @@ comparisons and swaps <sup><a href="#fn1" id="r1">[1]</a></sup>
 in the best, average, and worst cases.
 The running time for each of these sorts is
 &Theta;(<i>n</i><sup>2</sup>)
-$$\Theta(n^2)$$ in the average and worst cases.
+\(\Theta(n^2)\) in the average and worst cases.
 </p>
 
 <figure>
