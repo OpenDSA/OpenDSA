@@ -11,7 +11,8 @@ Bubble, and Selection Sort in terms of their required number of
 comparisons and swaps <sup><a href="#fn1" id="r1">[1]</a></sup>
 in the best, average, and worst cases.
 The running time for each of these sorts is
-&Theta;(<i>n</i><sup>2</sup>) in the average and worst cases.
+&Theta;(<i>n</i><sup>2</sup>)
+$$\Theta(n^2)$$ in the average and worst cases.
 </p>
 
 <figure>
@@ -20,15 +21,13 @@ The running time for each of these sorts is
 \sffamily
 \begin{tabular}{rccc}
 &\textbf{Insertion}&\textbf{Bubble}&\textbf{Selection}\\
-
 \textbf{Comparisons:}\\
 Best Case&$\Theta(n)$&$\Theta(n^2)$&$\Theta(n^2)$\\
 Average Case&$\Theta(n^2)$&$\Theta(n^2)$&$\Theta(n^2)$\\
-\medskip
 Worst Case&$\Theta(n^2)$&$\Theta(n^2)$&$\Theta(n^2)$\\
-
+\\
 \textbf{Swaps:}\\
-Best Case&0&0&\Theta(n)\\
+Best Case&0&0&$\Theta(n)$\\
 Average Case&$\Theta(n^2)$&$\Theta(n^2)$&$\Theta(n)$\\
 Worst Case&$\Theta(n^2)$&$\Theta(n^2)$&$\Theta(n)$\\
 \end{tabular}
