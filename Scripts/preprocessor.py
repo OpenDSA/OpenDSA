@@ -464,7 +464,7 @@ def embedlocal(address):
             if node.nodeType == node.TEXT_NODE:
                 avheight=node.data
    link =os.path.abspath(address[1:])
-   code = '<center>\n <iframe src="'+link
+   code = '<center>\n <iframe src="..'+address    #link
    code = code +'" \ntype="text/javascript" width="'+avwidth+'" height="'+avheight+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>'
    return code
 
