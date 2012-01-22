@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAsettitle>Expression Tree Composite Design</ODSAsettitle>
+<ODSAtitle>Expression Tree Composite Design</ODSAtitle>
 <ODSAprereq "DesignPatterns" />
 <ODSAprereq "BinTreeImp" />
 

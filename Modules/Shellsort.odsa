@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAsettitle>Shell Sort</ODSAsettitle>
+<ODSAtitle>Shell Sort</ODSAtitle>
 <ODSAprereq "Sorting" />
 <ODSAprereq "InsertionSort" />
 <ODSAprereq "ExchangeSort" />

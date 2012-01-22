@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAsettitle>Proof of Optimality for Huffman Coding</ODSAsettitle>
+<ODSAtitle>Proof of Optimality for Huffman Coding</ODSAtitle>
 <ODSAprereq "Huffman" />
 <ODSAprereq "Induction" />
 

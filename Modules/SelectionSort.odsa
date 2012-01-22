@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAsettitle>Selection Sort</ODSAsettitle>
+<ODSAtitle>Selection Sort</ODSAtitle>
 <ODSAprereq "Sorting" />
 <ODSAprereq "BubbleSort" />
 

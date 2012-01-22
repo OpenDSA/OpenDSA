@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAsettitle>Binary Tree Node Implementations</ODSAsettitle>
+<ODSAtitle>Binary Tree Node Implementations</ODSAtitle>
 <ODSAprereq "Dictionary" />
 <ODSAprereq "BinTree" />
 <ODSAprereq "BinTreeNodeADT" />

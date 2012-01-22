@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAsettitle>The Cost of Exchange Sorting</ODSAsettitle>
+<ODSAtitle>The Cost of Exchange Sorting</ODSAtitle>
 <ODSAprereq "Sorting" />
 <ODSAprereq "InsertionSort" />
 <ODSAprereq "BubbleSort" />

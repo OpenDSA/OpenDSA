@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAsettitle>Binary Tree Space Requirements</ODSAsettitle>
+<ODSAtitle>Binary Tree Space Requirements</ODSAtitle>
 <ODSAprereq "BinTreeNodeADT" />
 <ODSAFullTheorem" />
 

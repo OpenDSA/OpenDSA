@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAsettitle>Binary Search Trees</ODSAsettitle>
+<ODSAtitle>Binary Search Trees</ODSAtitle>
 <ODSAprereq "BinTreeImp" />
 <ODSAprereq "Dictionary" />
 <ODSAprereq "List" />

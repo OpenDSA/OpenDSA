@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAsettitle>The Full Binary Tree Theorem</ODSAsettitle>
+<ODSAtitle>The Full Binary Tree Theorem</ODSAtitle>
 <ODSAprereq "Induction" />
 <ODSAprereq "BinTree" />
 

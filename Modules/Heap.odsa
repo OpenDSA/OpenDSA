@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAsettitle>Heaps and Priority Queues</ODSAsettitle>
+<ODSAtitle>Heaps and Priority Queues</ODSAtitle>
 <ODSAprereq "CompleteTree" />
 <ODSAprereq "Induction" />
 

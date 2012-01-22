@@ -1,5 +1,5 @@
 <div id="content">
-<ODSAsettitle>Binary Tree Traversals</ODSAsettitle>
+<ODSAtitle>Binary Tree Traversals</ODSAtitle>
 <ODSAprereq "BinTree" />
 <ODSAprereq "BinTreeNodeADT" />
 <ODSAprereq "DesignPatterns" />

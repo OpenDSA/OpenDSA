@@ -21,8 +21,8 @@ class modPreReq:
       fls.close()
       self.name = os.path.basename(filename)
       for line in data:
-         if '<ODSAsettitle>' in line:
-            str =  re.split('ODSAsettitle>', line, re.IGNORECASE)[1]
+         if '<ODSAtitle>' in line:
+            str =  re.split('ODSAtitle>', line, re.IGNORECASE)[1]
             self.description = str.partition('<')[0]
          if '<ODSAprereq \"' in line:
             str =  re.split('ODSAprereq "', line, re.IGNORECASE)[1]
@@ -92,21 +92,6 @@ def modFooter(modDir, title):
    return nfoot
 
 
-def modTitle(modName, modDir=''):
-   try:
-      fls = open(modDir+modName+'.mod', 'r')
-      data = fls.readlines()
-      title = ''
-      for line in data:
-         if '<ODSAsettitle>' in line:
-            str =  re.split('ODSAsettitle>', line, re.IGNORECASE)[1]
-            title = str.partition('<')[0]
-      fls.close()
-      return title
-   except IOError:
-      print 'ERROR: No file for module <'+modName +'>!'
-      title = modName
-      return title
 
 
 def parseDict(filename, modDir, targetDir, i):
@@ -169,11 +154,11 @@ def parseMod(filename, modDir, targetDir, col, table):
    eq_line=''
    for line in data:
       cpt=cpt+1
-      if '<ODSAsettitle>' in line:
-         str =  re.split('ODSAsettitle>', line, re.IGNORECASE)[1]
+      if '<ODSAtitle>' in line:
+         str =  re.split('ODSAtitle>', line, re.IGNORECASE)[1]
          title1 = str.partition('<')[0]
-         line = line.replace('<ODSAsettitle>','<h1>Module %s: '%(table[modname]))
-         line = line.replace('</ODSAsettitle>','</h1>')
+         line = line.replace('<ODSAtitle>','<h1>Module %s: '%(table[modname]))
+         line = line.replace('</ODSAtitle>','</h1>')
       if '<ODSAif \"' in line:
          start = cpt #index
          var1=line
