@@ -54,6 +54,44 @@ tags.
 Need to properly document the preprocessor command syntax.
 How are the AV and Exercise directories specified?
 </p>
+<h3>Repository Organization</h3>
+<p>
+OpenDSA repository contains the following directories:</br>
+<b>Modules:</b> The source directory for <code>.odsa</code> files.</br>
+
+<b>Doc:</b> Contains all Documentation related to OpenDSA.</br>
+
+<b>Images:</b> contains all Images used by the modules.</br>
+
+<b>Scripts:</b> Scripts used to process the content. Now <code>preprocessor.py</code></br>
+<b>Exercises:</b> Khan Academy-style exercises. </br>WARNING: You can run
+everything in the project with just the distribution EXCEPT for the
+exercises. You cannot see the exercises unless you clone the GitHub
+repository of their infrastructure and place it as a sibling to this
+directory. </br>
+<b>AV:</b> The various AVs, that are typically included into modules using
+iframes.</br>
+</p>
+
+<h3>OMP Usage</h3>
+<p>OMP is run by executing <code>make</code> command at the root of the repository. The preprocessor is a python script you need to have Python  2.7 installed.</br>
+The syntax to launch the prepocessor is:</br>
+<code>python preprocessor.py [-c=collection] module-directory  destination-directory</code>
+where:</br>
+<code>c=collection</code> is the name of the collection of module you want to create.</br>
+<code>module-directory</code> is the directory containing the <code>.odsa</code> files and </br>
+<code>destination-directory</code> is the name of the target directory where the HTML files will be stored
+</p>
+<p>
+<b>Error messages:</b></br>
+<code>ERROR: When saving html file</code> or <code>ERROR: When saving glossary file</code> or <code>ERROR: When saving temporary glossary file</code>: This indicate a permission error. You shoud make sure that you have read and write right on the target directory.</br>
+<b>Warning messages:</b></br>
+<code>WARNING: Reference missing</code>: This indicates that you are referencing a resource (module, image, equation, etc.)that does not exist or is not present in the collection. The name of the resource is provided with the warning message. You should make sure to include all the referenced resources in your collection. 
+</p>
+
+
+
+
 
 
 <h2>External variables</h2>
