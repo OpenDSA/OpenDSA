@@ -253,7 +253,7 @@ def parseMod(filename, modDir, targetDir, col, table):
                code1=code
                nextline= data.index(line1)
                if code=='' or code=='\n':
-                  print 'LaTeX code missing %s'%nextline
+                  print 'WARNING: LaTeX code missing %s'%nextline
                else:
                   if which('mathtex')==None:
                      print 'MathTeX image from http://www.forkosh.com/'
@@ -443,9 +443,11 @@ def embedcode(address):
          
 
 def embedlocal(address):
-   avfile = os.path.basename(address)
-   avdir =os.path.dirname(address)
-   xmlfile=avdir[1:]+'/xml/'+os.path.splitext(avfile)[0]+'.xml'
+   abspath=os.path.abspath(__file__)
+   avfull =abspath.partition('Scripts')[0]+address[3:]
+   avdir = os.path.dirname(avfull)
+   avfile = os.path.basename(avfull)
+   xmlfile=avdir+'/xml/'+os.path.splitext(avfile)[0]+'.xml'
    avwidth=0
    avheight=0
    dom = parse(xmlfile)
@@ -464,7 +466,7 @@ def embedlocal(address):
             if node.nodeType == node.TEXT_NODE:
                 avheight=node.data
    link =os.path.abspath(address[1:])
-   code = '<center>\n <iframe src="..'+address    #link
+   code = '<center>\n <iframe src="'+address    #link
    code = code +'" \ntype="text/javascript" width="'+avwidth+'" height="'+avheight+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>'
    return code
 
