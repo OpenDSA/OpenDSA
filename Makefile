@@ -4,6 +4,7 @@ TARGET = build
 all: target
 
 clean:
+	$(RM) -rf build
 	$(RM) *~
 	$(RM) Modules/*~
 	$(RM) Doc/*~
