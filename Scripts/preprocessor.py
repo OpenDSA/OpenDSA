@@ -79,12 +79,13 @@ def modHeader(modDir, title, collection):
       nhead.append(line)
    return nhead
 
-def modFooter(modDir):
+def modFooter(modDir, title):
    nfoot =[]
    ffile = open(modDir+'Footer.txt','r')
    fline = ffile.readlines()
    now = datetime.datetime.now()
    for line in fline:
+      line = line.replace('<ODSAtitle>',title)
       line = line.replace('<ODSAdate>',now.strftime("%Y-%m-%d"))
       line = line.replace('<ODSAtime>',now.strftime("%H:%M"))
       nfoot.append(line)
@@ -339,9 +340,6 @@ def parseMod(filename, modDir, targetDir, col, table):
             eq_end=0
 
       
-      showhide0='<p><input type="button" name="show" value="Show Exercise" id="example-show" class="showLink" onclick="showHide(\'example\')"\nstyle="background-color:#f00;"/>\n<div id="example" class="more">\n' 
-
-      showhide1='<input type="button" name="show" value="Hide Exercise" id="example-hide" class="hideLink" onclick="showHide(\'example\')"\nstyle="background-color:#f00;"/></p>' 
 
 
 
@@ -351,12 +349,12 @@ def parseMod(filename, modDir, targetDir, col, table):
             tr =  re.split('<ODSAembed "hide">', line, re.IGNORECASE)[1]
             address = tr.partition('</ODSAembed>')[0]
             if 'http://' in address:
-               line = line.replace('<ODSAembed "hide">',embedhide()+showhide0+embedcode(address)+showhide1)
+               line = line.replace('<ODSAembed "hide">',show_code('example%s'%cpt)+hide_code('example%s'%cpt)+embedcode(address))
                line = line.replace(address,'')
                line = line.replace('</ODSAembed>','')
             else:
                avfile = os.path.basename(address)
-               line = line.replace('<ODSAembed "hide">'+address,embedhide()+showhide0+showhide1+embedlocal(address))
+               line = line.replace('<ODSAembed "hide">'+address,show_code('example%s'%cpt)+hide_code('example%s'%cpt)+embedlocal(address))
                line = line.replace('</ODSAembed>','')
          else:
             tr =  re.split('<ODSAembed>', line, re.IGNORECASE)[1]
@@ -395,11 +393,25 @@ def parseMod(filename, modDir, targetDir, col, table):
       newline.append(line)
       line1=''
    head = modHeader(modDir,title1, col)
-   foot = modFooter(modDir)
+   foot = modFooter(modDir,title1)
    head.extend(newline)
    head.extend(foot)
    return  head      
      
+
+
+
+def show_code(divID):
+   return '<p><input type="button" name="show" value="Show Exercise" id="'+divID+'-show" class="showLink" style="background-color:#f00;"/>\n<div id="'+divID+'" class="more">\n'
+
+def hide_code(divID):
+   return '<input type="button" name="show" value="Hide Exercise" id="'+divID+'-hide" class="hideLink" style="background-color:#f00;"/></p>'
+
+
+
+
+
+
 
 def remove_eol (line):
         if line[-1] == '\n':
@@ -473,11 +485,6 @@ def embedlocal(address):
 
 
 
-def embedhide():
-   #Hide show content
-   code='<script>function showHide(shID) {\nif (document.getElementById(shID)) {\nif (document.getElementById(shID+\'-show\').style.display != \'none\') {\ndocument.getElementById(shID+\'-show\').style.display = \'none\';\ndocument.getElementById(shID).style.display = \'block\';\n}\nelse {document.getElementById(shID+\'-show\').style.display = \'inline\';\ndocument.getElementById(shID).style.display = \'none\';\n}\n}\n}\n</script>'
- 
-   return code
 
 
 
