@@ -150,27 +150,30 @@ so that a final Insertion Sort can finish the job.
 </p>
 
 <p>
-Shellsort uses a process that forms the basis most good sorts:
-Break the list into sublists, sort them, then recombine the sublists.
-Shellsort does this in an unusual way, breaking its input
-into "virtual" sublists.
-Each sublist is sorted using an Insertion Sort.
+Shellsort does what most good sorts do:
+Break the list into sublists, sort the sublists, then recombine them.
+But Shellsort does this in an unusual way, breaking its input
+into "virtual" sublists of elements that are often not contiguous.
+Each such sublist is sorted using an Insertion Sort.
 Another group of sublists is then chosen and sorted, and so on.
 </p>
 
 <p>
-Shellsort's driving inspiration is to take advantage of the fact that
-Insertion Sort works very well when the list is nearly sorted.
-(When the list is nearly sorted, Insertion sort works in linear time.)
+Shellsort's inspiration is the observation that Insertion Sort works
+incredibly well when the list is nearly sorted.
+(Whenever the list is nearly sorted, Insertion sort works in linear time.)
 Shellsort works by performing a series of Insertion Sorts on carefully
 selected sublists, first on small sublists and then on increasingly
 large sublists.
+At each stage, the Insertion Sort is either working on a small list
+(and so is fast) or is working on a nearly sorted list (and again is
+fast).
 </p>
 
 <p>
 Shellsort breaks the list into disjoint sublists, where a sublist
 is defined by an "increment."
-Each element in a sublist is "increment" positions apart.
+Each element in a given sublist is "increment" positions apart.
 For example, if the increment were 4, then each element in the sublist
 would be 4 positions apart.
 In our examples, we assume for convenience that \(n\),
