@@ -22,10 +22,10 @@ The input is an array of <var>n</var> records stored in array
 </p>
 
 <pre>
-static <E extends Comparable<? super E>>
+static &lt;E extends Comparable&lt;? super E>>
 void Sort(E[] A) {
-  for (int i=1; i<A.length; i++) // Insert i'th record
-    for (int j=i; (j>0) && (A[j].compareTo(A[j-1])<0); j--)
+  for (int i=1; i&lt;A.length; i++) // Insert i'th record
+    for (int j=i; (j>0) && (A[j].compareTo(A[j-1])&lt;0); j--)
       DSutil.swap(A, j, j-1);
 }
 </pre>
@@ -149,5 +149,6 @@ Thus, the number of swaps for the entire sort operation is
 <i>n</i>-1 less than the number of comparisons.
 This is 0 in the best case, and &Theta;(<i>n</i><sup>2</sup>) in the
 average and worst cases.
+</p>
 
 </div>
