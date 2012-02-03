@@ -440,7 +440,7 @@ style="background-color:#f00;"/>
 
 <p>
 At this point, try running Shellsort on an array of your chosen size,
-with either random values or values that you select.
+wth either random values or values that you select.
 You can also set the increment series.
 Use this tool to make sure that you understand how Shellsort works.
 </p>

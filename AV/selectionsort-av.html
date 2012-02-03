@@ -227,6 +227,11 @@ form {
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
       var i, incr;
       // PUT STUFF HERE TO INVOKE YOUR SORT
+	  for (i=0; i<incrs.length; i+=1) {
+        if (incrs[i] < theArray.length) {
+          sweep(incrs[i]); // run the sweep to create the AV
+        }
+      }
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
     }
