@@ -1,5 +1,7 @@
 This is the working directory for the OpenDSA project.
 
+All
+
 Makefile: Typing "make" will generate the target directory (build),
 converting from .odsa files to .html files.
 
