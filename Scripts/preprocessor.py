@@ -79,13 +79,15 @@ def modHeader(modDir, title, collection):
       nhead.append(line)
    return nhead
 
-def modFooter(modDir, title):
+def modFooter(modDir, title,author,year):
    nfoot =[]
    ffile = open(modDir+'Footer.txt','r')
    fline = ffile.readlines()
    now = datetime.datetime.now()
    for line in fline:
       line = line.replace('<ODSAtitle>',title)
+      line = line.replace('<ODSAgetyear/>',str(year))
+      line = line.replace('<ODSAgetauthor/>',author)
       line = line.replace('<ODSAdate>',now.strftime("%Y-%m-%d"))
       line = line.replace('<ODSAtime>',now.strftime("%H:%M"))
       nfoot.append(line)
@@ -140,6 +142,8 @@ def parseMod(filename, modDir, targetDir, col, table):
    newline =[]
    glossary=[]
    title1 =''
+   author=''
+   year= datetime.datetime.now().year
    b=1
    modname =os.path.splitext(os.path.basename(filename))[0]
    start=0
@@ -159,6 +163,15 @@ def parseMod(filename, modDir, targetDir, col, table):
          title1 = str.partition('<')[0]
          line = line.replace('<ODSAtitle>','<h1>Module %s: '%(table[modname]))
          line = line.replace('</ODSAtitle>','</h1>')
+      if '<ODSAauthor>' in line:
+         str =  re.split('ODSAauthor>', line, re.IGNORECASE)[1]
+         author = str.partition('<')[0]
+         line ='<!-- '+ line +' -->'
+         #line = line.replace('</ODSAtitle>','</h1>')
+      if '<ODSAyear>' in line:
+         str =  re.split('ODSAyear>', line, re.IGNORECASE)[1]
+         year = str.partition('<')[0]
+         line ='<!-- '+ line +' -->'
       if '<ODSAif \"' in line:
          start = cpt #index
          var1=line
@@ -378,7 +391,7 @@ def parseMod(filename, modDir, targetDir, col, table):
       newline.append(line)
       line1=''
    head = modHeader(modDir,title1, col)
-   foot = modFooter(modDir,title1)
+   foot = modFooter(modDir,title1,author,year)
    head.extend(newline)
    head.extend(foot)
    return  head      
@@ -387,10 +400,10 @@ def parseMod(filename, modDir, targetDir, col, table):
 
 
 def show_code(divID):
-   return '<p><input type="button" name="show" value="Show Exercise" id="'+divID+'-show" class="showLink" style="background-color:#f00;"/>\n<div id="'+divID+'" class="more">\n'
+   return '<input type="button" name="show" value="Show Exercise" id="'+divID+'-show" class="showLink" style="background-color:#f00;"/>\n<div id="'+divID+'" class="more">\n'
 
 def hide_code(divID):
-   return '<input type="button" name="show" value="Hide Exercise" id="'+divID+'-hide" class="hideLink" style="background-color:#f00;"/></p>'
+   return '<input type="button" name="show" value="Hide Exercise" id="'+divID+'-hide" class="hideLink" style="background-color:#f00;"/>'
 
 
 
