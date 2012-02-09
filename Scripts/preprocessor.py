@@ -352,7 +352,9 @@ def parseMod(filename, modDir, targetDir, col, table):
                line = line.replace('</ODSAembed>','')
             else:
                avfile = os.path.basename(address)
-               line = line.replace('<ODSAembed "hide">'+address,show_code('example%s'%cpt)+hide_code('example%s'%cpt)+embedlocal(address))
+               res = embedlocal(address)
+               name=res[0]+'-'+res[1]+'-'+res[2] 
+               line = line.replace('<ODSAembed "hide">'+address,show_code('example%s'%cpt, name)+hide_code('example%s'%cpt)) 
                line = line.replace('</ODSAembed>','')
          else:
             tr =  re.split('<ODSAembed>', line, re.IGNORECASE)[1]
@@ -363,7 +365,9 @@ def parseMod(filename, modDir, targetDir, col, table):
                line = line.replace('</ODSAembed>','')
             else:
                avfile = os.path.basename(address)
-               line = line.replace('<ODSAembed>'+address,embedlocal(address))
+               res = embedlocal(address)
+               code = '<center>\n <iframe src="'+res[0]+'" \ntype="text/javascript" width="'+res[1]+'" height="'+res[2]+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>'
+               line = line.replace('<ODSAembed>'+address,code)
                #line = line.replace(address,'')
                line = line.replace('</ODSAembed>','')
 
@@ -399,11 +403,11 @@ def parseMod(filename, modDir, targetDir, col, table):
 
 
 
-def show_code(divID):
-   return '<input type="button" name="show" value="Show Exercise" id="'+divID+'-show" class="showLink" style="background-color:#f00;"/>\n<div id="'+divID+'" class="more">\n'
+def show_code(divID, name):
+   return '<input type="button" name="'+name+'" value="Show Exercise" id="'+divID+'-show" class="showLink" style="background-color:#f00;"/>\n<div id="'+divID+'" class="more">\n'
 
 def hide_code(divID):
-   return '<input type="button" name="show" value="Hide Exercise" id="'+divID+'-hide" class="hideLink" style="background-color:#f00;"/>'
+   return '<input type="button" name="hide" value="Hide Exercise" id="'+divID+'-hide" class="hideLink" style="background-color:#f00;"/>\n</div>'
 
 
 
@@ -456,6 +460,7 @@ def embedcode(address):
          
 
 def embedlocal(address):
+   embed=[]
    abspath=os.path.abspath(__file__)
    avfull =abspath.partition('Scripts')[0]+address[3:]
    avdir = os.path.dirname(avfull)
@@ -479,9 +484,10 @@ def embedlocal(address):
             if node.nodeType == node.TEXT_NODE:
                 avheight=node.data
    link =os.path.abspath(address[1:])
-   code = '<center>\n <iframe src="'+address    #link
-   code = code +'" \ntype="text/javascript" width="'+avwidth+'" height="'+avheight+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>'
-   return code
+   embed.append(address)
+   embed.append(avwidth)
+   embed.append(avheight)
+   return embed     # code
 
 
 
