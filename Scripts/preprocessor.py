@@ -343,11 +343,14 @@ def parseMod(filename, modDir, targetDir, col, table):
 
 
       if '<ODSAembed' in line:
-         if '\"hide\"' in line:
+         emval= re.split('\">', line, re.IGNORECASE)[0]
+         emval2 = re.split(' ', emval, re.IGNORECASE)
+
+         if '\"hide\"' in line and len(emval2)==2:
             tr =  re.split('<ODSAembed "hide">', line, re.IGNORECASE)[1]
             address = tr.partition('</ODSAembed>')[0]
             if 'http://' in address:
-               line = line.replace('<ODSAembed "hide">',show_code('example%s'%cpt)+hide_code('example%s'%cpt)+embedcode(address))
+               line = line.replace('<ODSAembed "hide">',show_code('example%s'%cpt,'example%s'%cpt, 'Exercise' )+hide_code('example%s'%cpt, 'example%s'%cpt, 'Exercise')+embedcode(address))
                line = line.replace(address,'')
                line = line.replace('</ODSAembed>','')
             else:
@@ -356,6 +359,22 @@ def parseMod(filename, modDir, targetDir, col, table):
                name=res[0]+'-'+res[1]+'-'+res[2]
                nameh= name+'-hide' 
                line = line.replace('<ODSAembed "hide">'+address,show_code('example%s'%cpt, name)+hide_code('example%s'%cpt, nameh)) 
+               line = line.replace('</ODSAembed>','')
+      #in case the embed has a label
+         elif '\"hide\"' in line and len(emval2)==3:
+            tr =  re.split('\">', line, re.IGNORECASE)[1]
+            address = tr.partition('</ODSAembed>')[0]
+            lab = emval2[2]
+            if 'http://' in address:
+               line = line.replace(emval+'\">',show_code('example%s'%cpt,'example%s'%cpt )+hide_code('example%s'%cpt, 'example%s'%cpt)+embedcode(address))
+               line = line.replace(address,'')
+               line = line.replace('</ODSAembed>','')
+            else:
+               avfile = os.path.basename(address)
+               res = embedlocal(address)
+               name=res[0]+'-'+res[1]+'-'+res[2]
+               nameh= name+'-hide'
+               line = line.replace(emval+'\">'+address,show_code('example%s'%cpt, name, lab)+hide_code('example%s'%cpt, nameh, lab))
                line = line.replace('</ODSAembed>','')
          else:
             tr =  re.split('<ODSAembed>', line, re.IGNORECASE)[1]
@@ -404,11 +423,13 @@ def parseMod(filename, modDir, targetDir, col, table):
 
 
 
-def show_code(divID, name):
-   return '<input type="button" name="'+name+'" value="Show Exercise" id="'+divID+'-show" class="showLink" style="background-color:#f00;"/>\n<div id="'+divID+'" class="more">\n'
+def show_code(divID, name, val):
+   val = 'Show %s'%val[1:]
+   return '<input type="button" name="'+name+'" value="'+val+'" id="'+divID+'-show" class="showLink" style="background-color:#f00;"/>\n<div id="'+divID+'" class="more">\n'
 
-def hide_code(divID, name):
-   return '<input type="button" name="'+name+'" value="Hide Exercise" id="'+divID+'-hide" class="hideLink" style="background-color:#f00;"/>\n</div>'
+def hide_code(divID, name, val):
+   val = 'Hide %s'%val[1:]
+   return '<input type="button" name="'+name+'" value="'+val+'" id="'+divID+'-hide" class="hideLink" style="background-color:#f00;"/>\n</div>'
 
 
 
