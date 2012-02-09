@@ -447,14 +447,14 @@ Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 </p>
 
-<ODSAembed "hide">../AV/ShellsortProficiency.html</ODSAembed>
+<ODSAembed "hide" "prof">../AV/ShellsortProficiency.html</ODSAembed>
 
 <p>
 Now you are ready to try out some different increment series to see
 how they affect the cost of Shellsort.
 </p>
 
-<ODSAembed "hide">../AV/ShellsortPerformance.html</ODSAembed>
+<ODSAembed "hide" "perf">../AV/ShellsortPerformance.html</ODSAembed>
 
 <p>
 A theoretical analysis of Shellsort is difficult, so we must accept
