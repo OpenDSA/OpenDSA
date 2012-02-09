@@ -425,18 +425,7 @@ At the end of this unit is a tool that lets you see how much
 difference in cost results when you change the increment series.
 </p>
 
-<input type="button" name="ex2" value="Exercise 2"
-style="background-color:#f00;"/>
-
-<script>
-  // Support for "Exercise 2" button
-  $('input[name="ex2"]').click(ex2); // Set callback action
-  function ex2() { // This is what we pop up
-    var mystring = "A proposed increment series is generated and displayed. TRUE or FALSE: This is a legal series of increments for Shellsort. The exercise must be solved correctly 10 times in a row to get credit.";
-    alert(mystring);
-    this.style.background='#0f0';
-  }
-</script>
+<ODSAembed "hide">../Exercises/ShellsortSeries.html</ODSAembed>
 
 <p>
 At this point, try running Shellsort on an array of your chosen size,

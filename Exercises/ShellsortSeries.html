@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+   <title>OpenDSA Exercise: Legal Shellsort Series</title>
+<script>urlBaseOverride = "http://algoviz.org/OpenDSA/khan-exercises/";</script>
+<script
+src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+   <script src="http://algoviz.org/OpenDSA/khan-exercises/khan-exercise.js"></script>
+</head>
+<body>
+
+  <script type="text/javascript">
+    function getAnswer(series) {
+      if (series[series.length-1] !== 1) return "False";
+      for (var i = 1; i < series.length; i++) 
+        { if (series[i] > series[i-1]) return "False"; }
+      return "True";
+    }
+
+    function getSeries(count) {
+      var series = [];
+      for (var i = 0; i<count; i++)
+        series[i] = KhanUtil.randRange(1, 10);
+      if (KhanUtil.randRange(0, 1) === 1)
+        series[count] = 1;
+      else
+        series[count] = KhanUtil.randRange(1, 10);
+      return series;
+    }
+  </script>
+
+  <div class="exercise">
+    <div class="vars">
+      <var id="COUNT">randRange(1, 4)</var>
+      <var id="SERIES">getSeries(COUNT)</var>
+      </var>
+      <var id="ANSWER">getAnswer(SERIES)</var>
+    </div>
+    <div class="problems">
+      <div id="problem-type-or-description">
+        <p class="question">
+	  Is the following a legal series of increments when running Shellsort
+	  on an array of 16 values?
+          <var>SERIES</var>
+	</p>
+        <div class="solution"><var>ANSWER</var></div>
+	<ul class="choices" data-category="true">
+	  <li><var>"True"</var></li>
+	  <li><var>"False"</var></li>
+	</ul>
+      </div>
+    </div>
+    <div class="hints">
+      <p>It doesn't matter whether an increment is bigger or smaller
+      than the array size.</p>
+      <p>The values on the series must be decreasing.</p>
+      <p>A legal series always ends in 1.</p>
+    </div>
+  </div>
+</body>
+</html>
