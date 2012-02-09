@@ -3,9 +3,9 @@ $(document).ready(function()    {
             var shID = event.target.id;
             var name = $(this).attr("name");
             var av = name.split('-');
-            if( $("input.hideLink").attr("name")=="hide"){
-               $('input.hideLink').after('<center>\n <iframe src="'+av[0]+'" \ntype="text/javascript" width="'+av[1]+'" height="'+av[2]+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>');
-               $("input.hideLink").attr("name",name);}
+            var target = name+'-hide'
+            $('input[name="'+target+'"]').after('<center>\n <iframe src="'+av[0]+'" \ntype="text/javascript" width="'+av[1]+'" height="'+av[2]+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>');
+            $('input[name="'+target+'"]').attr("name",name);
             showHide(shID);
         });
   $("input.hideLink").click(function(event){
