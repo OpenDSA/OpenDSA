@@ -469,28 +469,30 @@ def embedlocal(address):
    xmlfile=avdir+'/xml/'+os.path.splitext(avfile)[0]+'.xml'
    avwidth=0
    avheight=0
-   dom = parse(xmlfile)
-   node = dom.documentElement
-   widths = dom.getElementsByTagName("width")
-   for width in widths:
-        nodes = width.childNodes
-        for node in nodes:
-            if node.nodeType == node.TEXT_NODE:
-                avwidth=node.data
+   try:
+      dom = parse(xmlfile)
+      node = dom.documentElement
+      widths = dom.getElementsByTagName("width")
+      for width in widths:
+           nodes = width.childNodes
+           for node in nodes:
+               if node.nodeType == node.TEXT_NODE:
+                   avwidth=node.data
    
-   heights = dom.getElementsByTagName("height")
-   for height in heights:
-        nodes = height.childNodes
-        for node in nodes:
-            if node.nodeType == node.TEXT_NODE:
-                avheight=node.data
-   link =os.path.abspath(address[1:])
-   embed.append(address)
-   embed.append(avwidth)
-   embed.append(avheight)
-   return embed     # code
-
-
+      heights = dom.getElementsByTagName("height")
+      for height in heights:
+           nodes = height.childNodes
+           for node in nodes:
+               if node.nodeType == node.TEXT_NODE:
+                   avheight=node.data
+      link =os.path.abspath(address[1:])
+      embed.append(address)
+      embed.append(avwidth)
+      embed.append(avheight)
+      return embed     # code
+   
+   except IOError:
+      print 'ERROR: No description file when embedding' + address
 
 
 
