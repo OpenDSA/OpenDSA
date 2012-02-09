@@ -425,7 +425,7 @@ At the end of this unit is a tool that lets you see how much
 difference in cost results when you change the increment series.
 </p>
 
-<ODSAembed "hide">../Exercises/ShellsortSeries.html</ODSAembed>
+<ODSAembed "hide" "Question 2">../Exercises/ShellsortSeries.html</ODSAembed>
 
 <p>
 At this point, try running Shellsort on an array of your chosen size,
@@ -447,14 +447,14 @@ Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 </p>
 
-<ODSAembed "hide" "prof">../AV/ShellsortProficiency.html</ODSAembed>
+<ODSAembed "hide" "Proficiency Exercise">../AV/ShellsortProficiency.html</ODSAembed>
 
 <p>
 Now you are ready to try out some different increment series to see
 how they affect the cost of Shellsort.
 </p>
 
-<ODSAembed "hide" "perf">../AV/ShellsortPerformance.html</ODSAembed>
+<ODSAembed "hide" "Performance Exercise">../AV/ShellsortPerformance.html</ODSAembed>
 
 <p>
 A theoretical analysis of Shellsort is difficult, so we must accept
