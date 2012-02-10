@@ -202,11 +202,6 @@ form {
   function runIt() {
     var i;
     var newSize = $('#arraysize').val();
-    var incrs = checkIncrements(); // Validate the user's increments
-
-    if (!incrs) {
-      return;
-    }
 
     if (processArrayValues()) { // if it is false, we got junk user
                                 // needs to fix
@@ -227,11 +222,7 @@ form {
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
       var i, incr;
       // PUT STUFF HERE TO INVOKE YOUR SORT
-	  for (i=0; i<incrs.length; i+=1) {
-        if (incrs[i] < theArray.length) {
-          sweep(incrs[i]); // run the sweep to create the AV
-        }
-      }
+
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
     }
