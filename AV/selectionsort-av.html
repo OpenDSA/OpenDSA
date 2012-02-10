@@ -198,6 +198,30 @@ form {
     }
   }
   
+  function sweep(incr) {
+    var j = 0;
+    var numElem = 0;
+    av.umsg("Start the next increment size: " + incr);
+    av.step();
+    highlightFunction = function(index) { return index%incr == j;};
+    for (j=0; j<incr; j++) {         // Sort each sublist
+      // Highlight the sublist
+      arr.highlight(highlightFunction);
+      numElem = Math.ceil(theArray.length/incr);
+      if(j+(incr*(numElem-1))>=theArray.length) numElem = numElem-1;
+      if (numElem == 1) {
+        av.umsg("Since the rest of the subarrays for this increment are of length 1, we will skip them");
+        av.step();
+        arr.unhighlight(highlightFunction);
+        return;
+      }
+      av.umsg("Starting to sort a new subarray with " + numElem + " elements");
+      av.step();
+      inssort(j, incr);
+      arr.unhighlight(highlightFunction);
+    }
+  }
+  
   // Execute the "Run" button function
   function runIt() {
     var i;
@@ -226,12 +250,14 @@ form {
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
       var i, incr;
+	  
       // PUT STUFF HERE TO INVOKE YOUR SORT
 	  for (i=0; i<incrs.length; i+=1) {
         if (incrs[i] < theArray.length) {
           sweep(incrs[i]); // run the sweep to create the AV
         }
       }
+	  // My chages: to be removed
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
     }
