@@ -52,7 +52,7 @@ form {
 <div id="container">
   <input type="button" id="about" name="about" value="About" style="margin-top:10px;"/>
   <a class="jsavsettings" href="#">Settings</a>
-  <h1 style="">Selection Sort Visualization</h1>
+  <h1 style="">Insertion Sort Visualization</h1>
 
   <form id="ssperform">
     <p>
@@ -123,7 +123,7 @@ form {
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    var mystring = "Selection Sort Algorithm Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
+    var mystring = "Insertion Sort Algorithm Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
     alert(mystring);
   }
 
@@ -175,29 +175,6 @@ form {
     arr.css(index, {"background-color": "#ddf" });
   };
 
-  // Insertion sort using increments
-  function inssort(start, incr) {
-    var i, j;
-    av.umsg("Sorting the subarray");
-    for (i=start+incr; i<arr.size(); i+=incr) {
-      setBlue(i);
-      for (j=i; j>=incr; j-=incr) {
-        setBlue(j-incr);
-	av.step();
-        if (arr.value(j) < arr.value(j-incr)) {
-          arr.swap(j, j-incr); // swap the two indices
-          av.step();
-	}
-        else {
-  	  arr.highlight([j-incr, j]);
-          break; // Done pushing element, leave for loop
-        }
-	arr.highlight(j);
-      }
-      arr.highlight(j);
-    }
-  }
-  
   // Execute the "Run" button function
   function runIt() {
     var i;
@@ -222,7 +199,6 @@ form {
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
       var i, incr;
       // PUT STUFF HERE TO INVOKE YOUR SORT
-
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
     }
