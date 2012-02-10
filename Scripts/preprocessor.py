@@ -423,11 +423,11 @@ def parseMod(filename, modDir, targetDir, col, table):
 
 
 
-def show_code(divID, name, val):
+def show_code(divID, name, val='Show Exercise'):
    val = 'Show %s'%val[1:]
    return '<input type="button" name="'+name+'" value="'+val+'" id="'+divID+'-show" class="showLink" style="background-color:#f00;"/>\n<div id="'+divID+'" class="more">\n'
 
-def hide_code(divID, name, val):
+def hide_code(divID, name, val='Hide Exercise'):
    val = 'Hide %s'%val[1:]
    return '<input type="button" name="'+name+'" value="'+val+'" id="'+divID+'-hide" class="hideLink" style="background-color:#f00;"/>\n</div>'
 
@@ -514,7 +514,7 @@ def embedlocal(address):
    
    except IOError:
       print 'ERROR: No description file when embedding' + address
-
+      sys.exit()
 
 
 
