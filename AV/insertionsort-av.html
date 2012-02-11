@@ -202,11 +202,6 @@ form {
   function runIt() {
     var i;
     var newSize = $('#arraysize').val();
-    var incrs = checkIncrements(); // Validate the user's increments
-
-    if (!incrs) {
-      return;
-    }
 
     if (processArrayValues()) { // if it is false, we got junk user
                                 // needs to fix
