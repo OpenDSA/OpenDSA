@@ -1,0 +1,96 @@
+[
+    {
+        "pk": 1,
+        "model": "showfile.exercise",
+        "fields": {
+          "covers": [], 
+          "name": "Addition 1", 
+          "h_position": 0, 
+          "live": true, 
+          "name": "addition_1", 
+          "prerequisites": [], 
+          "seconds_per_fast_problem": 5.0, 
+          "short_display_name": "Add. 1", 
+          "summative": false, 
+          "v_position": 3
+        }
+    },
+    {
+        "pk": 2,
+        "model": "showfile.exercise",
+        "fields": {
+          "covers": [], 
+          "name": "Subtraction 1", 
+          "h_position": 1, 
+          "live": true, 
+          "name": "subtraction_1", 
+          "prerequisites": [
+              "addition_1"
+          ], 
+          "seconds_per_fast_problem": 4.0, 
+          "short_display_name": "Sub. 1", 
+          "summative": false, 
+          "v_position": 5
+        }
+    },
+    {
+        "pk": 3,
+        "model": "showfile.exercise",
+        "fields": {
+          "covers": [
+              "addition_1"
+          ], 
+          "name": "Addition 2", 
+          "h_position": 1, 
+          "live": true, 
+          "name": "addition_2", 
+          "prerequisites": [
+              "addition_1"
+          ], 
+          "seconds_per_fast_problem": 6.0, 
+          "short_display_name": "Add. 2", 
+          "summative": false, 
+          "v_position": 1
+        }
+    },
+    {
+        "pk": 4,
+        "model": "showfile.exercise",
+        "fields": {
+          "covers": [
+              "addition_1"
+          ], 
+          "name": "Multiplication 0.5", 
+          "h_position": 1, 
+          "live": true, 
+          "name": "multiplication_0.5", 
+          "prerequisites": [
+              "addition_1"
+          ], 
+          "seconds_per_fast_problem": 5.0, 
+          "short_display_name": "Mult. 0.5", 
+          "summative": false, 
+          "v_position": 3
+        }
+    },
+    {
+        "pk": 5,
+        "model": "showfile.exercise",
+        "fields": {
+          "covers": [
+              "addition_2"
+          ], 
+          "name": "Addition 3", 
+          "h_position": 2, 
+          "live": true, 
+          "name": "addition_3", 
+          "prerequisites": [
+              "addition_2"
+          ], 
+          "seconds_per_fast_problem": 9.0, 
+          "short_display_name": "Add. 3", 
+          "summative": false, 
+          "v_position": 1
+        }
+    }
+]

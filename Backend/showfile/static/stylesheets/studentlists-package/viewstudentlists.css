@@ -1,0 +1,176 @@
+#students {
+    padding: 18px 23px;
+}
+#students p {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+}
+
+#sidebar {
+    float: left;
+    width: 180px;
+}
+#sidebar > ul a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+.student-list-links {
+    margin-bottom: 1.6em;
+}
+.student-list-links li {
+    font-size: 130%;
+    margin-bottom: .5em;
+}
+.bullet {
+    padding-left: 15px;
+}
+.bullet:hover {
+    background: url('/images/list-item-green.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+}
+.bullet-active {
+    background: url('/images/list-item-black.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+}
+
+#sidebar .simple-button {
+    margin-left: 15px;
+}
+
+#students-container {
+    margin-left:200px;
+    max-width: 640px;
+}
+.students-header {
+    padding-bottom: 0.5em;
+    margin-bottom: 0;
+    border-bottom: 1pt solid #aaaaaa;
+}
+.students-header h2 {
+    display: inline;
+}
+#nstudents {
+    margin-left: .5em;
+}
+#textbox-container {
+    background: #eeeeee;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    padding-left: .5em;
+    padding-right: .5em;
+    margin-bottom: 1.4em;
+}
+
+.student-row {
+    min-height: 3em;
+    padding: 0.7em 0.5em 0.7em 0.5em;
+}
+.student-name {
+    font-size: 160%;
+    margin-bottom: .25em;
+}
+.float-right {
+    float: right;
+}
+.students-header {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.lists-css-menu {
+    margin-right: 6em;
+    position: relative;
+    top: 4px;
+}
+.lists-css-menu > ul > li:after {
+    visibility: hidden;
+    margin-left: 5px;
+}
+.lists-css-menu > ul > li.css-menu-js-hover:after {
+    visibility: visible;
+}
+.student-row:hover .css-menu > ul > li:after {
+    visibility: visible;
+}
+.student-row:hover .lists-css-menu > ul > li {
+    color: #000000;
+}
+.lists-css-menu > ul > li > ul > li > label {
+    display: block;
+    padding: 4px;
+    cursor: pointer;
+}
+.lists-css-menu .list-option-newlist {
+    display: block;
+    padding: 4px;
+    cursor: pointer;
+    border-top: 1pt solid #ddd;
+}
+.lists-css-menu > ul > li > ul > li:hover {
+    background: white;
+}
+.lists-css-menu input {
+    margin-right: .5em;
+}
+.student-row .css-menu {
+    z-index: auto;
+}
+
+#newlist-box {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+a.delete-button[href="#"] {
+    border-bottom: none;
+}
+
+.delete-button > img {
+    position: relative;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    opacity:0.2;filter:alpha(opacity=20);
+}
+.delete-button > img:hover {
+    opacity:0.6;filter:alpha(opacity=60);
+}
+
+.student-email {
+    margin-left: 1em;
+    color: #777;
+}
+
+#requested-students {
+    display: none;
+}
+#requested-student-tmpl {
+    display: none;
+}
+
+.alert {
+    display: none;
+    margin-top: -1.4em;
+    padding: .6em;
+    margin-bottom: 1.4em;
+}
+.alert.error {
+    border: 1pt solid #C00000
+}
+.alert.note {
+    border: 1pt solid #ddd;
+}
+.close-button {
+    margin-left: 1em;
+}
+.note ul, .note li {
+    list-style: circle;
+    margin: .3em;
+    margin-left: .8em;
+}
+
+#page_sub_nav .breadcrumbs_nav a#manage-students.selected:before {left: 58px;}
+#page_sub_nav .breadcrumbs_nav a#manage-students.selected:after {left: 59px;}

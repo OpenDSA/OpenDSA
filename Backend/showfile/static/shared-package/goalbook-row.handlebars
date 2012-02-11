@@ -1,0 +1,24 @@
+{{! This template's HTML is supposed to be exactly the same as that from
+profile-goals.handlebars. If you edit this, please also edit the other file to
+maintain consistency. }}
+<div class="goal pulls {{#active}}active{{/active}} {{#complete}}recently-completed{{/complete}}" data-id="{{id}}">
+    <p class="goal-description">
+        <span class="goal-title">{{title}}</span>
+        <span class="summary-light">
+            {{#if complete}}Complete!{{else}}
+            <span class="objectives-complete">{{objectiveProgress}}/{{objectives.length}}</span>
+            &middot;
+            <span class="percent-complete">{{progressStr}}%</span>
+            {{/if}}
+        </span>
+        <span class="goal-controls">
+            <a class="simple-button action-gradient archive" href="javascript:void(0)">Archive Completed Goal</a>
+        </span>
+    </p>
+    <ul class="inline-list objective-list">
+    {{#each objectives}}
+        {{>goal-objectives}}
+    {{/each}}
+    </ul>
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,163 @@
+.breadcrumbs_nav {
+    font-weight: bold;
+}
+#video_dropdown {
+    text-indent: 0;
+    padding-left: 5px;
+}
+#video_dropdown .ui-button {
+    display: block;
+}
+#video_menu {
+    position: relative;
+}
+#video_menu ol {
+    z-index: 2;
+    position: absolute;
+    right: 3px;
+    top: 5px;
+}
+#video_dropdown ol {
+    max-height: 20em;
+    padding-left: 3em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    list-style: outside decimal;
+}
+#video_dropdown li {
+    white-space: nowrap;
+    font-weight: normal;
+    padding: 3px 0;
+}
+#video_dropdown li[data-selected=selected] a {
+    font-weight: bold;
+}
+#video_dropdown .ui-button-text, #video_dropdown .ui-menu-item a {
+    font-weight: normal;
+    line-height: inherit;
+    padding: 0px 25px 0px 1ex;
+}
+#video_dropdown .ui-menu-item a {
+    padding: 0px 25px 0px 0px;
+}
+#video_dropdown a:visited {
+    color: #DD6900;
+}
+#video_dropdown a:link:hover, #video_dropdown a:link:focus, #video_dropdown a:visited:hover, #video_dropdown a:visited:focus {
+    color: #DD6900;
+}
+.prev_next_nav {
+    display: block;
+    margin-top: 2em;
+}
+.prev_next_nav a {
+    text-decoration: none;
+}
+.prev_next_nav a:hover {
+    text-decoration: underline;
+}
+#prev_video {
+    display: block;
+    float: left;
+    margin-right: 1em;
+    text-align: left;
+    background: url(/images/list-item-black-left.png) no-repeat 0 6px;
+    padding-left: 10px;
+}
+    #prev_video a .vid-progress {
+        margin-left: 5px;
+    }
+#topics {
+    display: block;
+    float: left;
+}
+#next_video {
+    display: block;
+    float: right;
+    margin-left: 1em;
+    text-align: right;
+    background: url(/images/list-item-black.png) no-repeat 100% 6px;
+    padding-right: 10px;
+}
+    #next_video a .vid-progress {
+          margin: 0 3px 0 2px;
+      }
+
+#youtube_blocked {
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+    color: red;
+    font-weight: bold;
+    clear: both;
+    padding-top: 1em;
+}
+.video #description {
+    padding-top: 18px;
+}
+    .video #description .title-header {
+        display: block;
+        font-size: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .video #description .title-header .long-description {
+        color: #555;
+        font-weight: normal;
+        position: relative;
+        top: -1px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+#page_sub_nav .breadcrumbs_nav a {
+    text-decoration: none;
+}
+#page_sub_nav .breadcrumbs_nav #video_menu {
+    text-transform: none;
+}
+#page_sub_nav .breadcrumbs_nav #video_dropdown {
+    position: relative;
+    top: -1px;
+}
+.youtube-video {
+    position: relative;
+}
+.subtitles-warning {
+    display: none;
+    margin-left: 256px;
+    padding-left: 8px;
+    padding-top: 0px;
+    position: absolute;
+    bottom: -33px;
+    right: 0px;
+}
+.extra-link-bar .more-content {
+    display: none;
+
+}
+.extra-link-bar a {
+    color: #069;
+    margin-left: 5px;
+}
+.simple-button.with-icon.download-icon img { top: 5px; }
+
+.extra-link-bar a.share-link {
+    z-index: 101;
+}
+.extra-link-bar .sharepop {
+	position:absolute;
+	float:right;
+	top:30px;
+	left:auto;
+	right:-4px;
+	padding:0px;
+	z-index:30;
+}
+
+.extra-link-bar {
+	float:right;
+	position:relative;
+	top: 1px;
+}
+.video_extra_links {float:right;}

@@ -1,0 +1,18 @@
+#modal-video {
+  position: fixed;
+  /* set the point on which top and left operate to the middle top edge*/
+  width: 830px; /* this is redundant but here for clarity */
+  margin: 0 0 0 -415px;
+  top: 60px;
+  left: 50%;
+}
+.lte7 #modal-video {
+  border: 1px solid #999;
+}
+.video .modal-header #description {
+    padding-top: 0px;
+}
+
+.unisubs-dropdown {
+  z-index: 11001 !important;
+}

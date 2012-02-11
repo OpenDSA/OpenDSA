@@ -1,0 +1,76 @@
+{% extends "page_template.html" %}
+
+{% import 'exercises.html' as exercise_macros %}
+
+{% block meta_page_title %}Exercise Dashboard | {% endblock meta_page_title %}
+{% block pagescript %}
+
+<script src="http://127.0.0.1:8000/OpenDSA/static/all_js.js" type="text/javascript"></script>
+<link rel='stylesheet' type='text/css' href='http://127.0.0.1:8000/OpenDSA/static/khanacademy.css'/>
+<style>
+    /* Temporary styles to fit new dashboard into old template, will be removed when new template is dropped in. */
+    #page_sub_nav {display: none;}
+
+    #container.unregistered .energy-points-badge {
+        visibility: hidden;
+    }
+</style>
+<script type="text/javascript">
+  	function submitForm(value)
+  	{
+  		document.forms['addexercise'].submit();
+  	}
+
+	// Hide rows that a user is proficient in for the given table.
+	function hideProficient(tableId, checkboxId)
+	{
+		// Get the table we are working with.
+		table = document.getElementById(tableId);
+		// Get the checkbox to look at for on/off status.
+		checkbox = document.getElementById(checkboxId);
+		if (checkbox.checked)
+		{
+            $(".proficientTrue").css('display', 'none');
+		}
+		// If the checkbox is not checked then show this row.
+		else
+		{
+            $(".proficientTrue").css('display', 'table-row');
+		}
+	}
+
+    $(function() {
+        var mapParams = {
+            'mapCoords': {{ template_values["map_coords"] }},
+            'admin': false,
+            'container': 'container'
+        };
+
+        new KnowledgeMap(mapParams);
+
+        {% if show_review_drawer %}
+            $( "#dashboard-review-exercises" ).one( "click", function() {
+                gae_bingo.bingo(["review_statement_of_fact",
+                    "review_call_to_action"]);
+            });
+        {% endif %}
+    });
+
+    //var graph_dict_data = jQuery.parseJSON( {{ template_values["graph_dict_data"] }});
+    var graph_dict_data =  {{ template_values["graph_dict_data"] }};
+
+</script>
+{% endblock pagescript %}
+{% block pagetitle %}Exercise Dashboard{% endblock pagetitle %}
+{% block pagecontent %}
+<div id="background">
+  <div id="container" class="dashboard{% if not logged_in %} unregistered{% endif %}">
+    {{ exercise_macros.exercise_legend() }}
+    {{ exercise_macros.exercise_dashboard(show_review_drawer, review_statement, review_call_to_action) }}
+
+    <div class="dashboard-map">
+        {{ exercise_macros.knowledgemap(true) }}
+    </div>
+</div>
+</div>
+{% endblock pagecontent %}

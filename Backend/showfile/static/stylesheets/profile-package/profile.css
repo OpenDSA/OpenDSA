@@ -1,0 +1,1168 @@
+#profile-header {
+    font-family: "MuseoSans300",sans-serif;
+    border-bottom: 1px solid #c6d1ad;
+    padding: 4px 20px;
+    margin: 0 -20px;
+}
+
+#profile-header #user-info,
+#profile-header #high-level-stats {
+    display: inline-block;
+}
+#profile-header {
+    position: relative;
+    display: block;
+}
+    #profile-header img {
+        width: 50px;
+        height: 50px;
+        vertical-align: middle;
+        position: relative;
+        top: -4px;
+    }
+
+#profile-header #user-info {
+    position: relative;
+    top: 1px;
+}
+#profile-header #user-info.has-details {
+    top: -3px;
+}
+#profile-header #user-info #name {
+    font-size: 20px;
+}
+#profile-header #user-info #phantom-login {
+    position: relative;
+    top: 7px;
+}
+#profile-header #user-info #phantom-login a {
+    color: #005987;
+    font-size: 20px;
+}
+#profile-header #user-info img {
+    width: 0px;
+    visibility: hidden;
+}
+#profile-header #user-info #simple-student-info {
+    color: #666;
+    font-size: 11px;
+    width: 480px;
+}
+
+#profile-header #high-level-stats {
+    float: right;
+    position: relative;
+    top: -7px;
+}
+    #profile-header #high-level-stats > span {
+        display: inline-block;
+    }
+    #profile-header #high-level-stats .count {
+        display: inline-block;
+    }
+
+.profile-sheet-title, .profile-graph-title {
+    display: none;
+    background: #EEE;
+    margin: 0 -19px 18px -20px;
+    padding: 5px 20px;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    text-transform: capitalize;
+}
+#profile-header #high-level-stats #videos-watched,
+#profile-header #high-level-stats #exercises-completed,
+#profile-header #high-level-stats #students-coached
+{
+    margin-right: 10px;
+}
+    #profile-header #high-level-stats span > span.count {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 18px;
+        position: relative;
+        top: 10px;
+    }
+    #profile-header #high-level-stats span > span.label {
+        font-size: 11px;
+        font-style: italic;
+        color: #666;
+        font-weight: normal;
+    }
+#profile-header #high-level-stats #energy-points {
+    height: 51px;
+    position: relative;
+    top: 12px;
+}
+    #profile-header #high-level-stats #energy-points .energy-points-badge {
+        display: inline-block;
+        float:none;
+        font-size: 16px;
+        min-width: 90px;
+        padding: 2px 5px 4px;
+    }
+    #profile-header #high-level-stats #energy-points .label {
+        display: inline-block;
+        min-width: 90px;
+        position: relative;
+        top: -1px;
+    }
+
+.legacy-report h2 {
+    color: #444;
+    font-weight: normal;
+    margin: 0;
+    padding: 5px 5px 7px 1px;
+    width: 280px;
+
+    background: transparent url(/images/profile-header-bg.png) no-repeat 0px 100%;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.legacy-report #tab-content-achievements,
+.legacy-report #recent-activity {
+    min-height: 148px;
+}
+
+.legacy .tab-content #vital-statistics {
+    height: 500px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+
+#individual_report .inset-container {
+    border: 1px solid #bbb;
+    background: #f7f7f7;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    -webkit-box-shadow: inset 0 0 2px #ccc;
+    -moz-box-shadow: inset 0 0 2px #ccc;
+    box-shadow: inset 0 0 2px #ccc;
+}
+
+#individual_report #vital-statistics {
+    position: relative;
+    margin-top: 0;
+}
+    /* Only the class profile page uses #stats-nav these days */
+    #individual_report #vital-statistics #stats-nav {
+        width: 280px;
+        float: left;
+        margin: 0px 20px 10px 0;
+    }
+    #individual_report #vital-statistics #stats-nav ul#nav-accordion {
+        padding: 10px 0 0 3px;
+    }
+    #individual_report #vital-statistics #stats-nav ul#nav-accordion .accordion-content {
+        min-width: 250px;
+    }
+    #individual_report #vital-statistics #stats-nav ul#nav-accordion .accordion-content .instructions {
+        font-size: 10px;
+    }
+    #individual_report #vital-statistics #stats-nav ul#nav-accordion .accordion-content .vertical-choice-container {
+        max-height: 300px;
+        margin-top: 5px;
+        padding: 2px 5px 5px 5px;
+        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border: 1px solid #CCCCCC;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+    #individual_report #vital-statistics #stats-nav ul#nav-accordion .accordion-content ul {
+        padding-left: 15px;
+        list-style: disc outside none;
+    }
+    #individual_report #vital-statistics #stats-nav ul#nav-accordion .accordion-content ul li {
+        margin-bottom: 0;
+    }
+    #individual_report #vital-statistics #stats-nav ul#nav-accordion .accordion-content ul li a,
+    #individual_report #vital-statistics #stats-nav ul#nav-accordion .accordion-content a.highlight-section {
+        font-size: 10px;
+        color: #006699;
+        display: inline;
+        padding: 0;
+        text-decoration: underline;
+        border: 0;
+    }
+    #individual_report #vital-statistics #stats-nav ul#nav-accordion .accordion-content ul li a.selected,
+    #individual_report #vital-statistics #stats-nav ul#nav-accordion .accordion-content a.selected {
+        color: #DD6900;
+        text-decoration: none;
+    }
+    #individual_report #vital-statistics #stats-nav ul > li {
+        margin-bottom: 5px;
+    }
+    #individual_report #vital-statistics #stats-nav ul > li > a {
+        display: block;
+        padding: 7px 5px 5px 25px;
+        font-size: 14px;
+    }
+        #individual_report #vital-statistics #stats-nav ul > li > a.ui-state-default {
+            background: transparent;
+            border: 1px solid transparent;
+        }
+        #individual_report #vital-statistics #stats-nav ul > li > a.ui-state-active,
+        #individual_report #vital-statistics #stats-nav ul > li > a.ui-state-hover {
+            color: #DD6900;
+            border: 1px solid #ccc;
+            background: #f7f7f7;
+            background-image: none;
+        }
+        #individual_report #vital-statistics #stats-nav ul > li > a.graph-sub-link-selected {
+            text-decoration: none;
+            color: #DD6900;
+        }
+    #individual_report #vital-statistics #stats-nav ul > li > p,
+    #individual_report #vital-statistics #stats-nav ul > li > div {
+        color: #333;
+        border: 1px solid #ccc;
+        border-top: none;
+        padding: .2em 1em 1em;
+        font-size: 13px;
+        background: #f7f7f7;
+    }
+    #individual_report #vital-statistics #stats-nav ul > li > p .graph-date-picker,
+    #individual_report #vital-statistics #stats-nav ul > li > p .graph-picker,
+    .accordion-content .graph-options,
+    .graph-options {
+        font-size: 10px;
+        display: block;
+        margin-top: 10px;
+    }
+    #individual_report #vital-statistics #stats-nav ul > li > p .graph-date-picker a.graph-sub-link-selected {
+        text-decoration: none;
+        color: #DD6900;
+    }
+    .tab-content .graph-date-picker {
+        display: inline-block;
+        float: right;
+    }
+    .tab-content .vital-statistics-description,
+    .tab-content .graph-picker {
+        margin: 22px 0;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+        font-size: 13px;
+    }
+        .tab-content .graph-picker .new-goal {
+            margin-top: -7px;
+            padding: 0 10px;
+            line-height: 23px;
+        }
+    .tab-content .graph-options {
+        font-size: 10px;
+        display: inline-block;
+        float:right;
+        margin: 0;
+    }
+    .tab-content .graph-options .progress-legend {
+        padding: 0 4px;
+    }
+    .tabrow {
+            text-align: center;
+            list-style: none;
+            padding: 0;
+            line-height: 24px;
+            height: 26px;
+            float: right;
+        }
+        .tabrow li {
+            display: inline-block;
+            position: relative;
+            z-index: 0;
+            padding: 0 10px;
+        }
+        .tabrow li.selected {
+            background: #FFF;
+            color: #333;
+            z-index: 2;
+            border-bottom-color: #FFF;
+            position: relative;
+        }
+        .tabrow li.selected:after {
+            content: " ";
+            position: absolute;
+            z-index: 3;
+            width: 0;
+            height: 15px;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 7px solid #CCC;
+            left: 50%;
+            margin-left: -7px;
+            bottom: -3px;
+            display: block;
+        }
+
+    #individual_report #vital-statistics #stats-nav ul > li > p .graph-picker a.graph-sub-link-selected {
+        text-decoration: none;
+        color: #DD6900;
+    }
+    #individual_report #vital-statistics #stats-nav ul > li > p a {
+        margin-top: 10px;
+        text-align: center;
+    }
+    #individual_report #vital-statistics #stats-nav ul > li > p a.simple-button {
+        display: block;
+    }
+    #individual_report #vital-statistics #stats-nav ul > li > .accordion-content .graph-options .progress-legend,
+    .graph-options .progress-legend {
+        display: inline-block;
+        padding: 4px;
+        color: #333;
+        cursor: default;
+        height: auto;
+        font-size: 11px;
+        font-weight: bold;
+    }
+    #individual_report #vital-statistics #stats-nav ul > li > .accordion-content .graph-options .progress-legend.goal-complete {
+        background-color: #3A4759;
+        color: white !important;
+        border-color: #2C3747;
+        border-bottom-color: #13181F;
+        text-shadow: 0 -1px 0 #13181F;
+    }
+    #individual_report #vital-statistics #stats-charts {
+        position: relative;
+        top:0;
+        min-height: 300px;
+        padding-bottom: 20px;
+    }
+    #individual_report #vital-statistics.coach-view #stats-charts {
+        overflow: hidden;
+        overflow-y: auto;
+        height: 400px;
+    }
+    #individual_report #vital-statistics #stats-charts #module-progress .exercise-progress-block {
+        width: 70px;
+        float: left;
+        overflow: hidden;
+        height: auto;
+        padding-left: 0;
+    }
+    #individual_report #vital-statistics #stats-charts #module-progress .exercise-progress-block.transparent {
+        cursor: pointer;
+    }
+    #individual_report #vital-statistics #stats-charts #module-progress .exercise-progress-block .exercise-display-name {
+        text-align: center;
+        font-size: 11px;
+        margin: 10px 4px;
+        text-overflow: ellipsis;
+        display: block;
+    }
+    #individual_report #vital-statistics #stats-charts #module-progress .exercise-progress-block.transparent .exercise-display-name {
+        color: #aaa;
+    }
+    .coach-view #module-progress #table_div, .coach-view #module-progress #firstcol {
+      /*
+      ~~hv svnt dracones~~ breaks ie8 completely (why?)
+      max-height: 725px;
+      */
+    }
+    .lte8 .coach-view #module-progress #table_div, .lte8 .coach-view #module-progress #firstcol {
+    }
+
+#individual_report #achievements {
+}
+    #individual_report #achievements h2 {
+        margin-bottom: 20px;
+    }
+    #individual_report #achievements #badge-container {
+        margin-top: 15px;
+    }
+        #individual_report #achievements #badge-container > div {
+            padding-top: 20px;
+        }
+        #individual_report #achievements #badge-container .badge-description-container {
+            text-align: center;
+            margin: 10px 0;
+            padding: 5px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+            #individual_report #achievements #badge-container .badge-description-container .badge-description-content {
+                text-align: center;
+                font-size: 16px;
+            }
+
+    #individual_report #achievements #achievement-list {
+        margin: 0 0 30px;
+    }
+    #individual_report #achievements #achievement-list .achievement-badge {
+        float: left;
+        width: 30%;
+    }
+    #individual_report #achievements #achievement-list > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    #individual_report #achievements #achievement-list > ul li {
+        display: block;
+        float: left;
+        padding-top: 10px;
+        opacity: 0.5;
+        width: auto;
+        text-align: center;
+        min-width: 16%;
+        margin-right: 5px;
+    }
+        #individual_report #achievements #achievement-list > ul li img {
+            /* On iOS, disable the Save popup so that holding an image down makes the gray background */
+            -webkit-touch-callout: none;
+        }
+        #individual_report #achievements #achievement-list > ul li.platinum,
+        #individual_report #achievements #achievement-list > ul li.diamond {
+            margin-top: 10px;
+        }
+        #individual_report #achievements #achievement-list > ul li.gold {
+            margin-top: 20px;
+        }
+        #individual_report #achievements #achievement-list > ul li.silver,
+        #individual_report #achievements #achievement-list > ul li.bronze {
+            margin-top: 30px;
+        }
+        #individual_report #achievements #achievement-list > ul li.owned {
+            opacity: 1;
+        }
+         #individual_report #achievements #achievement-list > ul li:hover {
+            cursor: pointer;
+            opacity: 1;
+         }
+    #individual_report #achievements #achievement-list > ul li div.label {
+        border: 1px solid transparent;
+        color: #555;
+        font-weight: bold;
+        padding: 3px 0;
+        text-shadow: 0 1px 0 #fff;
+        width: 95%;
+
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+        #individual_report #achievements #achievement-list > ul li:hover div.label,
+        #individual_report #achievements #achievement-list > ul li.selected div.label {
+            border: 1px solid #bbb;
+            border-bottom: 1px solid #999;
+            cursor: pointer;
+            background: #ddd;
+            background-image: -webkit-gradient(linear, left top, left bottom,  from(#eee), to(#ccc));
+            background-image: -moz-linear-gradient( top, #eee, #ccc );
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc');
+
+            -moz-box-shadow: 0 1px 1px #ccc;
+            -webkit-box-shadow: 0 1px 1px #ccc;
+            box-shadow: 0 1px 1px #ccc;
+
+            white-space: nowrap;
+        }
+        #individual_report #achievements #achievement-list > ul li.selected {
+            opacity: 1;
+            position: relative;
+            top:25px;
+            z-index: 5;
+        }
+
+.activity-list {
+padding-left: 3px;
+}
+.activity-list > ul {
+    margin: 0;
+    padding: 15px 0;
+    list-style: none;
+}
+.activity-list > ul > li {
+    font-size: 18px;
+    color: #555;
+    padding: 10px 0;
+}
+     .activity-list .activity-image {
+        width: 60px;
+        height: 60px;
+        background-color: #ccc;
+        display: inline-block;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+     }
+     .activity-list .activity-badge .activity-image {
+         background: #005987 url(/images/activity-badge-icon.png) no-repeat 50% 50%;
+     }
+     .activity-list .activity-exercise .activity-image {
+         background: #ccc url(/images/activity-exercise-icon-incomplete.png) no-repeat 50% 50%;
+     }
+     .activity-list .activity-exercise.proficient .activity-image {
+         background: #005987 url(/images/activity-exercise-icon-proficient.png) no-repeat 50% 50%;
+     }
+    .activity-list .activity-image img {
+        max-width: 60px;
+        max-height: 60px;
+        vertical-align: middle;
+		position:absolute;
+    }
+    .activity-list .time {
+        font-size: 75%;
+        color: #999;
+        font-style: italic;
+    }
+
+a.graph-link {
+    color: #006699;
+}
+
+div.graph-notification {
+    text-align: center;
+    width: 100%;
+    margin-top: 100px;
+    font-size: 13px;
+    color: #333333;
+    position: absolute;
+    z-index: 2;
+}
+
+div.profile-notification {
+    display: none;
+    padding: 20px 0 0 20px; /* should be the same as padding on tab-content */
+    margin: 0 -19px 0 0; /* should be the same right margin as .profile-sheet-title */
+    position: absolute;
+    top: 55px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    color: #333333;
+    background-color: #FFFFFF;
+    opacity: 0.90;
+    filter:alpha(opacity=90);
+    z-index: 101; /* must overlay the goal name shmedit .simple-input at z-index 100 */
+}
+div.profile-notification.uncover-nav {
+    top: 105px;
+}
+#recent-activity-progress-bar {
+    width: 400px;
+    height: 22px;
+    margin-top: 15px;
+}
+#graph-progress-bar {
+    width: 400px;
+    height: 22px;
+    text-align: center;
+    position: relative;
+    top: 20px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+#highchart-container {
+    width: 100%;
+}
+
+#highchart-container.x-scrollable {
+    height: 395px;
+    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#graph-content {
+    position: relative;
+}
+
+#recent-activity-progress-bar .ui-progressbar-value, #graph-progress-bar .ui-progressbar-value {
+    background-image: url('/images/progress-animated.gif');
+}
+
+#individual_report #students-list {
+    margin-top: 44px;
+}
+#individual_report #students-list > h2 {
+    margin-bottom: 18px;
+}
+
+#student-list table td {
+    padding-right: 10px;
+    margin: 0;
+}
+
+#recent-activity h2 {
+    margin: 0;
+}
+#recent-activity .share-link {
+    display: none;
+    z-index:5;
+    position:absolute;
+    left:-76px;
+    top:20px;
+    font-size:12px;
+}
+#recent-activity .simple-button {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+#recent-activity .simple-button:hover {
+    top: 20px;
+}
+.ach-text {
+    padding-left: 10px;
+	position:relative;
+	top:-20px;
+	display: inline-block;
+}
+
+#recent-activity .sharepop {
+    z-index: 3;
+    position: absolute;
+    left: -75px;
+    font-size: 12px;
+    top: 53px;
+}
+#recent-activity .triangle-isosceles.top:after {
+    right: 61px;
+}
+
+.badge-share-container {position:absolute;bottom:25px;left:5px;width:250px;}
+
+
+.sharebar {z-index:0; position:absolute;padding-left:100px;}
+
+#individual_report #vital-statistics #stats-charts.coach-view {
+  height:auto !important;
+}
+#individual_report #vital-statistics.coach-view {
+  /*used to have a min-height here, now clear the floating accordion*/
+}
+
+#current-goals-list input.goal-title {
+    min-width: 450px;
+}
+
+.coach-option-block {
+    display: block;
+    margin: 3px;
+}
+.coach-filter-block {
+    display: block;
+}
+
+
+
+#stats-filters { position:relative; min-width:680px; z-index:10; margin-top: 18px;}
+#stats-filters .filter{ display:none; }
+
+#stats-filters a.graph-link{ display:none; }
+
+#stats-filters .filter-block{ display:inline-block; vertical-align:top; margin-right:24px; }
+
+#stats-filters .coach-filter-block {display:inline; margin-right:1em;}
+
+#stats-filters p {font-size:10px; margin: 0; display:inline-block; }
+#stats-filters h3 {
+  font-family: "MuseoSans300"; font-size:18px;
+  margin-right:.5em;
+  display:inline-block;
+}
+#stats-filters h3 small{ font-size:14px; }
+#stats-filters #targetDatepicker{
+  display:inline-block;
+}
+
+.user-info-container .user-info {
+  padding: 20px;
+  position: relative;
+  background: #eee; /* same as visibility-toggler */
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.user-info-container .avatar-pic-container {
+  display: inline-block;
+  position: relative;
+}
+
+.user-info-container .avatar-pic-container.editable {
+  cursor: pointer;
+}
+
+.user-info-container .avatar-pic {
+  vertical-align: top;
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.user-info-container .avatar-change-overlay {
+  position: absolute;
+  top: 60%;
+  right: 0;
+  padding: 0 0.5em;
+  background: #fff;
+  opacity: 0.85;
+  filter:alpha(opacity=85);
+}
+
+/**
+ * Edit Profile dropdown
+ * from http://css-tricks.com/examples/SimplejQueryDropdowns/#
+ * Waiting for Monsieur Jason!
+ */
+ .user-profile-controls {
+     margin-top: 5px;
+ }
+.user-profile-controls .dropdown {
+    float: left;
+}
+.user-profile-controls .dropdown:hover .sub_menu {
+    position: absolute;
+    z-index: 10;
+}
+ul.dropdown li {
+    float: left;
+    background: transparent;
+}
+ul.dropdown li a {
+    display: block;
+    padding: 4px 8px;
+    border-right: 1px solid #333;
+    color: black;
+    white-space: nowrap;
+}
+/* Doesn't work in IE */
+ul.dropdown li:last-child a {
+    border-right: none;
+}
+ul.dropdown li {
+    color: black;
+    position: relative;
+}
+ul.dropdown li a {
+    color: black;
+}
+ul.dropdown ul.sub_menu {
+    display: none;
+    background: #ccc;
+    position: absolute;
+    min-width: 120px;
+    border: 2px solid #999;
+    margin-top: 10px;
+
+    box-shadow: 0 2px 5px rgba(0,0,0,.3);
+}
+ul.dropdown ul.sub_menu li:hover{
+    background: #005987;
+}
+ul.dropdown ul.sub_menu li:hover a {
+    color: #fff !important;
+    text-decoration: none;
+}
+ul.dropdown ul.sub_menu:before{
+    content: ' ';
+    position: absolute;
+    z-index: 11;
+
+    width: 0;
+    height: 15px;
+
+    /* simulate a triangle with borders */
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #999; /* must be the same as badge-picker */
+
+    left: 25%;
+    margin-left: -10px;
+    top: -25px;
+    display: block;
+}
+ul.dropdown ul li {
+    font-weight: normal;
+    background: #f6f6f6;
+    color: black;
+    border-bottom: 1px solid #ccc;
+    float: none;
+}
+
+.ie .display-case-cover {
+    /* This is used to work around an IE-bug where click handlers aren't processed on
+     * elements with gradients+transparency. */
+    background-image: url("about:blank");
+}
+
+.display-case-cover {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background: -moz-linear-gradient(top,  rgba(188,188,188,0.2) 0%, rgba(117,117,117,0.2) 50%, rgba(12,12,12,0.2) 51%, rgba(7,7,7,0.2) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(188,188,188,0.2)), color-stop(50%,rgba(117,117,117,0.2)), color-stop(51%,rgba(12,12,12,0.2)), color-stop(100%,rgba(7,7,7,0.2))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(188,188,188,0.2) 0%,rgba(117,117,117,0.2) 50%,rgba(12,12,12,0.2) 51%,rgba(7,7,7,0.2) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(188,188,188,0.2) 0%,rgba(117,117,117,0.2) 50%,rgba(12,12,12,0.2) 51%,rgba(7,7,7,0.2) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(188,188,188,0.2) 0%,rgba(117,117,117,0.2) 50%,rgba(12,12,12,0.2) 51%,rgba(7,7,7,0.2) 100%); /* IE10+ */
+    background: linear-gradient(top,  rgba(188,188,188,0.2) 0%,rgba(117,117,117,0.2) 50%,rgba(12,12,12,0.2) 51%,rgba(7,7,7,0.2) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#55bcbcbc', endColorstr='#55070707',GradientType=0 ); /* IE6-9 */
+
+    cursor: default;
+}
+
+.display-case-cover.editable {
+    cursor: pointer;
+}
+.lte8 .user-card {
+    min-width: 970px;
+}
+.lte8 .sticker-book {
+    width: 540px;
+    float: none;
+    margin-left: 370px;
+}
+.sticker-book {
+    position: relative;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0 5px #bbb;
+    float: right;
+}
+
+.profile-navigation {
+    position: absolute;
+    width: 150px; /* must be the same as left margin of .tab-content */
+}
+.profile-navigation > .vertical-tab-list {
+    /* force a position-context and background color so that it can be
+     * highlighted in the out-of-the-box experience. */
+    background: white;
+    margin-top: 20px;
+    position: relative;
+}
+.vertical-tab-list .inactive {
+    color: #888;
+}
+.vertical-tab-list li {
+    margin-bottom: 1px;
+}
+.vertical-tab-list .link-section-header {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.vertical-tab-list ul.second-tier {
+    padding-left: 5px;
+}
+.profile-navigation .tab-link {
+    display: block;
+    color:#555;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid transparent;
+    border-right: none;
+    
+    -webkit-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+}
+.profile-navigation .tab-link:hover {
+    background-color: #eee;
+    text-decoration: none;
+}
+.profile-navigation .tab-link.active-tab {
+    font-weight: bold;
+    color: #333;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-right: none;
+}
+.profile-navigation .tab-link.has-icon {
+    padding-left: 24px;
+}
+a[rel="vital-statistics activity"] {
+    background: transparent url(/images/profile-icons/chart.png) no-repeat 4px 50%;
+}
+a[rel="vital-statistics focus"] {
+    background: transparent url(/images/profile-icons/chart-pie-separate.png) no-repeat 4px 50%;
+}
+a[rel="vital-statistics exercise-progress"] {
+    background: transparent url(/images/profile-icons/color-swatch.png) no-repeat 4px 50%;
+}
+a[rel="vital-statistics exercise-progress-over-time"] {
+    background: transparent url(/images/profile-icons/chart-up.png) no-repeat 4px 50%;
+}
+a[rel="achievements"] {
+    background: transparent url(/images/profile-icons/shield.png) no-repeat 4px 50%;
+}
+a[rel="goals"] {
+    background: transparent url(/images/profile-icons/tick-circle.png) no-repeat 4px 50%;
+}
+li.profile-tab {
+    margin-bottom: 10px;
+}
+.profile-tab-avatar {
+    width: 24px;
+    height: 24px;
+    margin: 5px;
+    vertical-align: middle;
+}
+.tab-content {
+    margin-left: 150px; /* must be the same as width of profile-navigation */
+    padding: 20px 0 0 20px;
+    min-height: 500px;
+    border-left: 1px solid #ccc;
+    position: relative;
+}
+
+.user-deets {
+    float:left;
+    margin-left: 10px;
+}
+.user-deets .nickname {
+    font-size: 150%;
+    padding: 0;
+    margin: 0;
+    width: 220px;
+}
+.user-deets .add-remove-coach {
+    display: inline;
+}
+.user-deets .basic-stats {
+    margin-top: 14px;
+}
+
+.basic-user-info {
+    /* force a position-context and background color so that it can be
+     * highlighted in the out-of-the-box experience. */
+    background: #eee;
+    position: relative;
+}
+
+.basic-stats .simple-stat {
+    float: left;
+    text-align: left;
+    margin-right: 9px;
+}
+.simple-stat .summary-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 2px 0 1px;
+    background: #005987;
+    border-radius: 5px;
+    padding: 2px 8px;
+}
+
+.simple-stat .summary-icon.star {
+    width: 14px;
+    height: 14px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.simple-stat .stat-divider {
+    font-size: 150%;
+    vertical-align: middle;
+}
+
+#username-picker-container {
+    position: fixed;
+    /* set the point on which top and left operate to the middle top edge*/
+    width: 500px; /* this is redundant but here for clarity */
+    margin: 0 0 0 -250px;
+    top: 60px;
+    left: 50%;
+}
+#username-picker-container .notification {
+    padding: 5px 5px 5px 10px;
+    margin: -10px 0 15px 0;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+#username-picker-container .notification.info {
+    background-color: #DDF4FB;
+    border-color: #C6EDF9;
+}
+#username-picker-container .notification.error {
+    background-color: #FDDFDE;
+    border-color: #FBC7C6;
+}
+
+#username-picker-container .modal-header {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+#username-picker-container .modal-body {
+    margin-bottom: 0;
+}
+.username-picker {
+    margin: 0 auto;
+}
+.username-picker .row:first-child {
+    margin: 0;
+}
+.username-picker .row {
+    position: relative;
+    margin: 20px 0px 0px 0px;
+}
+.username-picker .labels{
+    position: absolute;
+    width: 80px;
+    text-align: right;
+}
+.username-picker .inputs {
+    margin-left: 90px;
+}
+.username-picker input,
+.username-picker label{
+    font-size: 15px;
+    font-family: Helvetica Nueue, Helvetica, sans-serif;
+}
+.username-picker .inputs input {
+    width: 250px;
+    margin: 0 5px 0 0;
+}
+.username-picker .input-description {
+    font-size: 12px;
+    color: #888;
+    margin: 5px 0 0 0;
+    line-height: 15px;
+}
+.username-picker .example-username {
+    color: #678D00;
+}
+.username-picker .sidenote {
+    background-repeat: no-repeat;
+    background-position: 0 30%;
+    padding-left: 13px;
+}
+.username-picker .sidenote.success {
+    background-image:url(/images/video-indicator-complete.png);
+}
+.username-picker .sidenote.error {
+    background-image:url(/images/cross.png);
+}
+
+.avatar-picker.modal {
+    width: 700px;
+    left: 50%;
+    margin: 0 0 0 -300px;
+    position: absolute;
+}
+.avatar-picker .modal-body {
+    margin-bottom: 0;
+}
+.avatar-picker .avatar {
+    display: block;
+    float: left;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    width: 33%;
+    
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.avatar-picker .avatar.hover, .avatar-picker .avatar.selected {
+    border: 1px solid #bbb;
+    background: #eee;
+}
+
+.avatar-picker .avatar.locked {
+    opacity: 0.4;
+    filter:alpha(opacity=40);
+    cursor: auto;
+}
+
+.avatar-picker .avatar.locked.hover {
+    border: 1px solid transparent;
+}
+
+.avatar-picker .category-section {
+    border: 5px solid #BBB;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    -webkit-box-shadow: inset 0 0 3px 1px #ccc;
+    -moz-box-shadow: inset 0 0 3px 1px #ccc;
+    box-shadow: inset 0 0 3px 1px #ccc;
+}
+
+.avatar-picker .category-title {
+    font-size: 150%;
+    line-height: 150%;
+}
+
+.visibility-toggler {
+    padding: 0 10px 0 28px;
+
+    border: 1px solid #ccc;
+    border-top: none;
+    border-bottom-color: #aaa;
+
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+
+    box-shadow: 0 2px 2px #ddd;
+
+    float: right;
+    display: block;
+    width: 87px;
+    margin-right: 34px;
+    position: relative;
+    top: -8px;
+}
+.visibility-toggler.public {
+    background: #eee url(/images/unlocked.png) no-repeat 8px 50%;
+}
+.visibility-toggler.private {
+    background: #eee url(/images/locked.png) no-repeat 8px 50%;
+}
+
+.ka_guider_button {
+    display: inline-block;
+    float: right;
+    font-size: 90%;
+    font-weight: bold;
+    margin-left: 6px;
+    min-width: 40px;
+    padding: 3px 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+@media all and (max-width: 1185px) {
+    .main-case {
+        width: 435px;
+        overflow: hidden;
+    }
+    .main-case.enable-scrolling {
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+}
+@media all and (max-width: 1025px) {
+    .main-case {
+        width: 325px;
+        overflow: hidden;
+    }
+    .main-case.enable-scrolling {
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+}

@@ -1,0 +1,188 @@
+#profile-header {
+    min-height: 50px;
+}
+#user-info {
+    margin-top: 23px;
+}
+#studentlists_dropdown {
+    text-indent: 0;
+    margin-left: -15px;
+}
+#studentlists_dropdown .ui-button {
+    display: block;
+}
+#studentlists_dropdown ol {
+    max-height: 20em;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#studentlists_menu {
+    position: relative;
+}
+#studentlists_menu ol {
+    z-index: 2;
+}
+#studentlists_dropdown li {
+    white-space: nowrap;
+    font-weight: normal;
+}
+#studentlists_dropdown li[data-selected=selected] a {
+    font-weight: bold;
+}
+#studentlists_dropdown .ui-button-text,
+#studentlists_dropdown .ui-menu-item a {
+    font-weight: normal;
+    line-height: inherit;
+    padding: 0px 25px 0px 1ex;
+}
+#studentlists_dropdown .ui-menu-item a {
+    padding: 1px 25px 1px 10px;
+    margin-right: 0px;
+    margin-left: 0px;
+    text-transform: none;
+}
+#studentlists_dropdown a:link:hover,
+#studentlists_dropdown a:link:focus,
+#studentlists_dropdown a:visited:hover,
+#studentlists_dropdown a:visited:focus {
+    color: #DD6900;
+}
+
+#page_sub_nav .breadcrumbs_nav a#class-stats.selected:before {left: 54px;}
+#page_sub_nav .breadcrumbs_nav a#class-stats.selected:after {left: 55px;}
+
+#high-level-class-stats img {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    position: relative;
+    top: -4px;
+}
+
+#high-level-class-stats > span {
+    display: inline-block;
+    margin-left: 10px;
+}
+#high-level-class-stats .count {
+    display: inline-block;
+}
+
+    #high-level-class-stats span > span.count {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 18px;
+        position: relative;
+        top: 10px;
+    }
+    #high-level-class-stats span > span.label {
+        font-size: 11px;
+        font-style: italic;
+        color: #666;
+        font-weight: normal;
+    }
+#high-level-class-stats #energy-points {
+    height: 51px;
+    position: relative;
+    top: 12px;
+}
+    #high-level-class-stats #energy-points .energy-points-badge {
+        display: inline-block;
+        float:none;
+        font-size: 16px;
+        min-width: 90px;
+        padding: 2px 5px 4px;
+    }
+    #high-level-class-stats #energy-points .label {
+        display: inline-block;
+        min-width: 90px;
+        position: relative;
+        top: -1px;
+    }
+
+/* For the progress summary report */
+#legend {
+  padding-left: 145px;
+  padding-bottom: 20px;
+}
+    #legend .segment, .filter-block .segment {
+         float: left;
+         width: 100px;
+    }
+    .filter-block .segment{
+      margin-right:2px;
+    }
+
+.exercise-row {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  min-width: 670px;
+}
+.exercise-row:hover {
+  background-color: #EEE;
+  cursor: ns-resize;
+}
+    .exercise-row .exercise-name {
+      width: 130px;
+      float: left;
+      line-height: 1.2;
+      text-align: right;
+      padding-right: 15px;
+    }
+
+.fake-row .segment {
+  height: 15px;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+    .fake-row .segment span {
+      text-transform: capitalize;
+      padding-left: 9px;
+      padding-bottom: 10px;
+      font-weight: bold;
+    }
+
+#left-column, #right-column {
+  float: left;
+}
+#left-column {
+  width: 200px;
+}
+    #left-column .float-off-spine {
+      float: right;
+    }
+#right-column {
+  width: 300px;
+}
+    #right-column .float-off-spine {
+      float: left;
+    }
+
+.student-lists {
+  display: none;
+}
+.student-list-container {
+  min-height: 1px;
+  width: 100px;
+}
+    .student-list-container td {
+      padding-left: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+.student-list-container.border-only {
+  width: 95px;
+}
+
+/* make goals class view horizontally scroll */
+#individual_report #vital-statistics #class-student-goals {
+    overflow-x: auto;
+}
+#individual_report #vital-statistics #class-student-goals .goal-row {
+    white-space: nowrap;
+}
+
+#class-student-goals .goal .no-goal {
+    color: #aaa;
+    text-align: center;
+}

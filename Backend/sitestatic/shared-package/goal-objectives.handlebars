@@ -1,0 +1,31 @@
+<li class="objective" style="width: {{objectiveWidth}}%">
+    <a data-id="{{objectiveID}}" class="objective {{type}} simple-button seethrough exercise-color {{status}}"
+        href="{{url}}"
+        data-progress="{{progress}}">
+            <span class="objective-description">{{description}}</span>
+            {{#unless complete}}
+            <span class="objective-progress-meter" style="height: {{iconFillHeight}}px"></span>
+            {{/unless}}
+    </a>
+    <div class="hover-data" style="display: none">
+        <div>
+          {{#if isVideo}}Watch video <b>{{description}}</b>{{/if}}
+          {{#if isAnyVideo}}Watch any video{{/if}}
+          {{#if isExercise}}Complete exercise <b>{{description}}</b>{{/if}}
+          {{#if isAnyExercise}}Complete any exercise{{/if}}
+        </div>
+        <div class="goal-tooltip-status">
+          <span>Status:</span>
+          <span>
+            {{#if complete}}
+              Complete
+              {{#if isAnyVideo}} (<b>{{description}}</b>){{/if}}
+              {{#if isAnyExercise}} (<b>{{description}}</b>){{/if}}
+            {{else}}
+              {{#if progress}} In progress ({{progressStr}}%) {{else}} Not started {{/if}}
+            {{/if}}
+            {{#if struggling}} <span class="goal-tooltip-struggling">(Struggling)<span> {{/if}}
+          </span>
+        </div>
+    </div>
+</li>

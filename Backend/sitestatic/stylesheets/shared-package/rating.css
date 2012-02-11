@@ -1,0 +1,173 @@
+/*  styles for the unit rater */
+.ratingblock {
+	width: 50%;
+	display:block;
+	border-bottom:1px solid #999;
+	padding-bottom:8px;
+	margin-bottom:8px;
+	}
+
+.loading {
+	height: 20px;
+	background: url('/images/working.gif') 50% 50% no-repeat;
+	}
+	
+.unit-rating { /* the UL */
+	list-style:none;
+	margin: 0px;
+	padding:0px;
+	height: 30px;
+	position: relative;
+	}
+
+.unit-rating li{
+    text-indent: -90000px;
+	padding:0px;
+	margin:0px;
+	/*\*/
+	float: left;
+	/* */
+	}
+	
+.unit-rating li a {
+	outline: none;
+	display:block;
+	width:20px;
+	height: 20px;
+	text-decoration: none;
+	text-indent: -9000px;
+	z-index: 20;
+	position: absolute;
+	padding: 0px;
+	border:0px ! important;
+	}
+	
+.unit-rating li a:hover{
+	background: url('/images/starrating.gif') left center;
+	z-index: 2;
+	left: 0px;
+	}
+
+.unit-rating a.r1-unit{left: 0px;}
+.unit-rating a.r1-unit:hover{width:20px;}
+.unit-rating a.r2-unit{left:20px;}
+.unit-rating a.r2-unit:hover{width: 40px;}
+.unit-rating a.r3-unit{left: 40px;}
+.unit-rating a.r3-unit:hover{width: 60px;}
+.unit-rating a.r4-unit{left: 60px;}	
+.unit-rating a.r4-unit:hover{width: 80px;}
+.unit-rating a.r5-unit{left: 80px;}
+.unit-rating a.r5-unit:hover{width: 100px;}
+.unit-rating a.r6-unit{left: 100px;}
+.unit-rating a.r6-unit:hover{width: 120px;}
+.unit-rating a.r7-unit{left: 120px;}
+.unit-rating a.r7-unit:hover{width: 140px;}
+.unit-rating a.r8-unit{left: 140px;}
+.unit-rating a.r8-unit:hover{width: 160px;}
+.unit-rating a.r9-unit{left: 160px;}
+.unit-rating a.r9-unit:hover{width: 180px;}
+.unit-rating a.r10-unit{left: 180px;}
+.unit-rating a.r10-unit:hover{width: 200px;}
+
+.unit-rating li.current-rating {
+	background-image: url(/images/non-repeating-sprites.3.png);
+  background-position: -300px -780px;
+	height: 30px;
+	z-index: 1;
+}
+
+.unit-rating li.current-rating, 
+.unit-rating li.best-label, 
+.unit-rating li.streak-icon, 
+.unit-rating li.current-label,
+.unit-rating li.level-label {
+    display: block;
+    position: absolute;
+    text-align: right;
+    cursor: default;
+    }
+
+.unit-rating li.best-label,
+.unit-rating li.streak-icon, 
+.unit-rating li.current-label,
+.unit-rating li.level-label {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    height: 30px;
+    padding-top: 5px;
+    }
+
+.unit-rating li.best-label {
+	background: url('/images/streak-meter-active.png') no-repeat left top;
+  z-index: 3;
+  opacity: 0.2;
+  filter:alpha(opacity=20);
+  background-image: url(/images/non-repeating-sprites.3.png);
+  background-position: -300px -820px;
+  z-index: 3;
+}
+
+.single-exercise .unit-rating li.current-rating{
+  background-image: url(/images/non-repeating-sprites.3.png);
+  background-position: -300px -820px;
+  height: 30px;
+  z-index: 3;
+}
+
+.new .unit-rating li.best-label,  
+.new_partial_reset .unit-rating li.best-label, 
+.new_full_reset .unit-rating li.best-label{
+  opacity: 0.2;
+  filter:alpha(opacity=20);
+}
+
+.unit-rating li.level-label {
+    background: url('/images/streak-meter-separator.png') no-repeat right top;
+    z-index: 4;
+    width:2px;
+    }
+.single-exercise .unit-rating li.level-label {
+    background: url('/images/streak-meter-separator.2.png') no-repeat right top;
+    }
+
+.unit-rating li.current-label {
+    z-index: 5;
+    }
+
+.unit-rating li.streak-icon {
+  background-image: url(/images/non-repeating-sprites.3.png);
+  background-position: -10px -820px;
+  z-index: 2;
+  top: 6px;
+  height:20px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  font-size: 15px;
+  text-indent: 5px;
+  color: #888;
+  text-shadow: 0 1px 0 #EEE;
+  padding: 0;
+  }
+
+.voted {color:#999;}
+.thanks {color:#36AA3D;}
+
+.streak-stats{
+  font-size:smaller;
+  font-style:italic;
+  position:relative;
+  width:100%;
+  height:20px;
+  top:-20px;
+  z-index: 5;
+  padding:0 5px;
+}
+
+.streak-stats div{
+  display:inline-block;
+  width:100px;
+  height:20px;
+  vertical-align:top;
+}

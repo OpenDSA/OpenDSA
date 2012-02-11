@@ -1,0 +1,94 @@
+<div class="goalpicker">
+    <h3>Start a new goal</h3>
+
+        <div class="small newgoal goal five_videos {{#if hasVideo}}disabled{{/if}}">
+            <h4><a href="#five-videos">Five Videos</a></h4>
+            <div class="objective_list">
+                <ul class="inline-list objective-list">
+                {{#repeat 5}}
+                    <li class="objective" style="width: 20%">
+                        <a class="objective simple-button action-gradient video blue" href="#">
+                            <span class="objective-description">Any exercise</span>
+                        </a>
+                    </li>
+                {{/repeat}}
+                </ul>
+            </div>
+            <div class="info pos-right">
+                <p>Watch any five videos to complete this goal!</p>
+                <p>
+                    As you finish more of your
+                    goal, the goal icons will fill
+                    in until it's a solid bar.
+                </p>
+                <button class="simple-button action-gradient green">start it!</button>
+            </div>
+        </div>
+
+        <div class="small newgoal goal five_exercises {{#if hasExercise}}disabled{{/if}}">
+            <h4><a href="#five-exercises">Five Exercises</a></h4>
+            <div class="objective_list">
+                <ul class="inline-list objective-list">
+                {{#repeat 5}}
+                    <li class="objective" style="width: 20%">
+                        <a class="objective simple-button action-gradient GoalObjectiveAnyExerciseProficiency blue" href="#">
+                            <span class="objective-description">Any exercise</span>
+                        </a>
+                    </li>
+                {{/repeat}}
+                </ul>
+            </div>
+            <div class="info pos-left">
+                <p>Complete any five exercises!</p>
+                <p>
+                    As you finish more of your
+                    goal, the goal icons will fill
+                    in until it's a solid bar.
+                </p>
+                <button class="simple-button action-gradient green">start it!</button>
+            </div>
+        </div>
+
+        <div class="big newgoal goal custom">
+            <h4><a href="#custom-goal">Custom Goal</a></h4>
+            <ul class="inline-list objective-list">
+                <li class="objective" style="width: 16.67%;">
+                    <a class="objective simple-button action-gradient blue exercise" href="#">
+                        <span class="objective-description">Adding decimals</span>
+                    </a>
+                </li>
+                <li class="objective" style="width: 16.67%;">
+                    <a class="objective simple-button action-gradient blue exercise" href="#">
+                        <span class="objective-description">Multiplication 2</span>
+                    </a>
+                </li>
+                <li class="objective" style="width: 16.67%;">
+                    <a class="objective simple-button action-gradient blue exercise" href="#">
+                        <span class="objective-description">Arithmetic word problems 2</span>
+                    </a>
+                </li>
+                <li class="objective" style="width: 16.67%;">
+                    <a class="objective simple-button action-gradient blue video" href="#">
+                        <span class="objective-description">Algebra: graphing lines 1</span>
+                    </a>
+                </li>
+                <li class="objective" style="width: 16.67%;">
+                    <a class="objective simple-button action-gradient blue video" href="#">
+                        <span class="objective-description">Quadratic Equation part 2</span>
+                    </a>
+                </li>
+                <li class="objective" style="width: 16.67%;">
+                    <a class="objective simple-button action-gradient blue exercise" href="#" data-progress="0
+                        " style="border-right-style: none; border-right-width: initial; border-right-color: initial;"><span class="objective-description">Reading tables 2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="info pos-top">
+                <p>Custom goals can contain exercises or videos that you pick yourself.</p>
+
+                <button class="simple-button action-gradient green">start it!</button>
+            </div>
+
+        </div>
+</div>

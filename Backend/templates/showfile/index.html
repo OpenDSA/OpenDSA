@@ -1,0 +1,39 @@
+{% include "showfile/header.html" %}
+<script type="text/javascript">
+
+function modObj(title,filename) {
+    this.title = title;
+    this.filename = filename;
+}
+var modObj_list=new Array();
+
+{% for mod in mod_list %}
+   modObj_list.push(new modObj("{{ mod.title}}","{{ mod.filename}}" ));
+{% endfor %}
+//alert("module--"+ modObj_list[3].title);
+{% include "showfile/ODSA-mod.js" %}
+</script>
+</head>
+
+
+<body>
+<style>
+{% include "showfile/style.css" %}
+</style>
+
+
+<div id="content">
+
+  <div id="cardPile"> </div>
+  <div id="cardSlots"> </div>
+
+  <div id="successMessage">
+    <h2>You did it!</h2>
+    <button onclick="init()">Play Again</button>
+  </div>
+
+</div>
+<p>TEST</p>
+
+</body>
+</html>

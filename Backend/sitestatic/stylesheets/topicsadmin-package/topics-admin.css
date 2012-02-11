@@ -1,0 +1,158 @@
+.node-title {
+    font-size: 14px;
+    font-weight: bold;
+    width: 350px;
+    vertical-align: middle;
+    display: inline;
+}
+
+.node-properties td {
+    padding-right: 9px;
+}
+
+ul.dynatree-container {
+    line-height: 16px; /* For Firefox */
+}
+
+.dynatree-node.hidden-topic a {
+    color: #777;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.contextMenu {
+    display: none;
+    width: 220px;
+    position: fixed;
+}
+
+.modal.add-existing-item,
+.modal.create-exercise,
+.modal.create-video,
+.modal.create-url,
+.modal.list-versions {
+  position: fixed;
+  /* set the point on which top and left operate to the middle top edge*/
+  width: 700px; /* this is redundant but here for clarity */
+  margin: 0 0 0 -450px;
+  top: 90px;
+  left: 50%;
+}
+
+.modal.import-export {
+  position: fixed;
+  /* set the point on which top and left operate to the middle top edge*/
+  width: 700px; /* this is redundant but here for clarity */
+  margin: 0 0 0 -450px;
+  top: 90px;
+  left: 50%;
+}
+
+.modal.add-existing-item .search-results {
+    width: 90%;
+    height: 400px;
+}
+
+.modal.create-video .create-video-preview {
+    margin: 50px;
+
+  border: 1px solid #ccc;
+}
+
+#details-view .item-action.left-align {
+    float: left;
+    margin-left: 1px;
+}
+#details-view .item-action.separated {
+    margin-left: 10px;
+}
+
+#details-view .save-button {
+    float: right;
+    width: 100px;
+    margin-right: 10px;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#details-view input[type="text"] {
+    width: 300px;
+}
+
+#details-view input.short {
+    width: 150px;
+}
+
+#details-view .dialog-progress-bar {
+    width: 400px;
+    height: 22px;
+    text-align: center;
+    position: relative;
+    top: 20px;
+    margin-left: -200px;
+    z-index: 1;
+}
+#details-view .dialog-progress-bar .ui-progressbar-value {
+    background-image: url('/images/progress-animated.gif');
+}
+
+#topictree-queue-progress-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 220px;
+    height: 28px;
+    vertical-align: middle;
+}
+
+#topictree-queue-progress-text {
+    position: absolute;
+    width: 220px;
+    left: 0;
+    top: 0;
+    text-align: center;
+    line-height: 26px;
+}
+
+#topictree-queue-progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 220px;
+}
+#topictree-queue-progress-bar .ui-progressbar-value {
+    background-image: url('/images/progress-animated.gif');
+}
+
+.modal.list-versions .version-list {
+    height: 600px;
+    overflow-y: auto;
+}
+
+#topic-search-bar .search-panel {
+    background-color: #fff;
+    float: right;
+    width: 196px;
+    height: 24px; 
+}
+
+#topic-search-bar .search-button {
+    background-color: #fff;
+    float: right;
+    margin: 5px;
+    margin-right: 18px;
+}
+
+.character-count-over {
+    color: #A00;
+    font-weight: bold;
+}
+
+.old-value {
+    background-color: #f88;
+    padding: 5px;
+    display: inline-block;
+    font-weight: bold;
+}
+

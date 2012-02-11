@@ -1,0 +1,702 @@
+ul.inline-list, ul.inline-list li {
+    display: block;
+    float: left;
+}
+
+.goal {
+    clear: both;
+    position: relative;
+}
+.create-goal-page .goal.with-border {
+    border: 1px solid #ccc;
+
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+}
+.goal .objective-list {
+    width: 100%;
+    padding-left: 7px;
+}
+
+.goal li.objective {
+    width: 50%;
+}
+
+.goal a.objective {
+    position: relative;
+    background-image: none;
+    box-shadow: none;
+    line-height: 23px;
+
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+}
+.goal .objective-description {
+    display: block;
+    overflow: hidden;
+    padding: 0 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#goals-nav-container .goal a.objective {
+    line-height: 23px;
+}
+
+.goal a.objective {
+    padding-left: 22px
+}
+
+
+
+.goal a.objective:before {
+    display: block;
+    content: " ";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: -12px;
+    top: -6px;
+    border-radius: 18px;
+    border: 2px solid white;
+}
+
+.goal a.objective.exercise:before,
+.goal a.objective.GoalObjectiveExerciseProficiency:before,
+.goal a.objective.GoalObjectiveAnyExerciseProficiency:before {
+    background: #3A4759 url(/images/generic-exercise-icon-inset-small.png) no-repeat 4px 4px; /*! data-uri(/images/generic-exercise-icon-inset-small.png) */
+}
+
+.goal a.objective.video:before,
+.goal a.objective.GoalObjectiveWatchVideo:before,
+.goal a.objective.GoalObjectiveAnyVideo:before {
+    background: #3A4759 url(/images/video-camera-icon-inset-small.png) no-repeat 50% 50%; /*! data-uri(/images/video-camera-icon-inset-small.png) */
+}
+
+.ie .goal a.objective:before  {
+    border: none;
+    left: -2px;
+    top: -4px;
+    background-color: transparent;
+}
+
+.goal a.objective.exercise-color.not-started:before {
+    background-color: #CCC;
+}
+.goal a.objective.exercise-color.started:before {
+    background-color: #C7E5F7;
+}
+.goal a.objective.exercise-color.proficient:before {
+    background-color: #0080C9;
+}
+.goal a.objective.exercise-color.struggling:before {
+    background-color: #C30202;
+}
+
+.goal a.objective:hover:before {
+    border-color: #89B908;
+}
+.goal a.objective:hover {
+    border-color: #89B908 !important;
+}
+
+.goal a.objective.video .objective-progress-meter,
+.goal a.objective.GoalObjectiveWatchVideo .objective-progress-meter,
+.goal a.objective.GoalObjectiveAnyVideo .objective-progress-meter {
+    display: block;
+    content: " ";
+    width: 20px;
+    height: 20px;
+    background: transparent url(/images/video-camera-icon-full-small.png) no-repeat 0 1px; /*! data-uri(/images/video-camera-icon-full-small.png) */
+    position: absolute;
+    left: -5px;
+    top: 0;
+}
+
+.ie .goal a.objective.video .objective-progress-meter,
+.ie .goal a.objective.GoalObjectiveWatchVideo .objective-progress-meter,
+.ie .goal a.objective.GoalObjectiveAnyVideo .objective-progress-meter {
+    left: 3px;
+}
+
+.goal a.objective.exercise .objective-progress-meter,
+.goal a.objective.GoalObjectiveExerciseProficiency .objective-progress-meter,
+.goal a.objective.GoalObjectiveAnyExerciseProficiency .objective-progress-meter {
+    display: block;
+    content: " ";
+    width: 20px;
+    height: 20px;
+    background: transparent url(/images/generic-exercise-icon-full-small.png) no-repeat 0 0px; /*! data-uri(/images/generic-exercise-icon-full-small.png) */
+    position: absolute;
+    left: -6px;
+    top: 0;
+}
+
+.ie .goal a.objective.exercise .objective-progress-meter,
+.ie .goal a.objective.GoalObjectiveExerciseProficiency .objective-progress-meter,
+.ie .goal a.objective.GoalObjectiveAnyExerciseProficiency .objective-progress-meter {
+    left: 2px;
+}
+
+.goals-class .goal.complete a.objective.exercise-color.proficient:before {
+    background-color: #3A4759;
+}
+.goals-class .goal.complete a.objective.exercise-color.proficient {
+    background-color: #3A4759;
+
+    color: #fff !important;
+    border-color: #2c3747;
+    border-bottom-color: #13181f;
+    text-shadow:  0 -1px 0 #13181f;
+}
+
+/* override goal styles for student view */
+.goals-personal .goal a.objective.exercise-color.not-started:before,
+.goals-personal .goal a.objective.exercise-color.started:before {
+    background-color: #3A4759;
+}
+.goals-personal .exercise-color.not-started,
+.goals-personal .exercise-color.started {
+    background-color: #3A4759;
+
+    color: #fff !important;
+    border-color: #2c3747;
+    border-bottom-color: #13181f;
+    text-shadow:  0 -1px 0 #13181f;
+}
+
+.goals-personal .goal a.objective.exercise-color.proficient:before {
+    background-color: #C7E5F7;
+}
+.goals-personal .exercise-color.proficient {
+    background-color: #C7E5F7;
+    color: #444 !important;
+}
+
+.goals-personal .goal a.objective.exercise-color.proficient:before {
+    content: " ";
+    width: 30px;
+    height: 30px;
+    background: #C7E5F7 url(/images/objective-complete-tick.png) no-repeat 50% 50%; /*! data-uri(/images/objective-complete-tick.png) */
+    position: absolute;
+    left: -12px;
+    top: -5px;
+    border-radius: 18px;
+    border: 1px solid #CCC;
+}
+
+.ie .goals-personal .goal a.objective.proficient:before {
+    border: none;
+    left: -2px;
+    top: -4px;
+    background-color: transparent;
+}
+
+.goals-personal .goal a.objective.proficient {
+    text-decoration: line-through !important;
+    opacity: .7;
+    filter: alpha(opacity=75);
+}
+/* end style overrides */
+
+/* override for create goal page delete hover */
+#create-goal-view .goal a.objective.exercise:hover:before,
+#create-goal-view .goal a.objective.video:hover:before {
+    background: #3A4759 url(/images/delete-icon-inset-small.png) no-repeat 50% 50%; /*! data-uri(/images/delete-icon-inset-small.png) */
+}
+
+#create-goal-view .goal a.objective:hover:before {
+    border-color: #C30202;
+}
+#create-goal-view .goal a.objective:hover {
+    border-color: #C30202 !important;
+}
+/* end create goal page overrides */
+
+#goals-nav-container .goals-area {
+    max-height: 500px;
+    overflow-x: visible;
+    overflow-y: auto;
+    padding: 0px 10px 0 8px;
+    margin: 0 -10px 0 -8px;
+}
+
+.goal-with-progress {
+    margin: 10px;
+}
+
+.progress-bar {
+    position: relative;
+    border: 1px solid #000;
+    padding: 2px;
+}
+
+.bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    background: #c7e5f7;
+    z-index: -1;
+}
+
+#student-goals-sort-block, #student-goals-filter-block, #student-goals-search-block {
+    display: block;
+    margin: 3px;
+}
+.student-goals-filter {
+    display: block;
+}
+.student-goals {
+    width: 95%;
+    margin: 0 auto;
+}
+#profile-goals-content .student-goals {
+    width: auto;
+    margin: auto;
+}
+#goals-nav-container {
+    position: fixed;
+    top: 0;
+    width: 800px;
+    z-index: 200;
+    background: #fff;
+    border: 1px solid #aaa;
+    border-top: none;
+    padding: 10px 25px 20px 20px;
+
+    -webkit-box-shadow: 0 1px 6px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 1px 6px rgba(0,0,0,.3);
+    box-shadow: 0 1px 6px rgba(0,0,0,.3);
+}
+
+#goals-nav-container .close-button {
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    bottom: 17px;
+    display: block;
+}
+
+#class-student-goal .student-name {
+    display: inline-block;
+    width: 180px;
+    font-size: 10pt;
+}
+#class-student-goal .goal-start-time {
+    font-size: 8pt;
+}
+#class-student-goal .goal-update-time {
+    font-size: 8pt;
+}
+#class-student-goal .goal {
+    display: inline-block;
+    width: 650px;
+    vertical-align: top;
+}
+#class-student-goal div {
+    clear: both;
+}
+
+#create-goal-view {
+    margin-top: 3px;
+}
+
+.goal-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input.goal-title {
+    padding: 5px 5px 5px 0;
+    height: auto;
+    min-width: 250px;
+    color: #333;
+    background-color: transparent;
+    border-color: transparent;
+    margin-bottom: 5px; /* to match span.goal-title element */
+}
+input.goal-title::-webkit-input-placeholder {
+    color: #333;
+}
+input.goal-title:-moz-placeholder {
+    color: #333;
+}
+input.goal-title:focus {
+    background-color: #FAFAFA;
+    border-color: #C6D1AD;
+    padding-left: 5px;
+}
+
+.goal .goal-description {
+    line-height: 35px;
+    margin:0;
+}
+.goal-description {
+    font-size: 14px;
+}
+
+.goal-description.pulls {
+    margin: 9px 0;
+}
+.create-goal-page .goal .goal-description {
+    text-align: center;
+}
+
+#goals-nav-container .goal-description.pulls {
+    margin: 0;
+    text-align: left;
+    line-height: 25px;
+}
+
+#goals-nav-container .goal.pulled {
+    margin: 0 0 10px 0;
+    border: none;
+}
+
+
+.goal-description ul, .goal-description ul li {
+    display: inline;
+}
+
+.goal-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.create-goal-page #goal-choose-exercises .dashboard-nav {
+    display: none;
+}
+.create-goal-page #goal-choose-videos .dashboard-header {
+    box-shadow: 0 1px 3px rgba(0,0,0, .1);
+}
+.create-goal-page #goal-choose-videos .dashboard-nav {
+    top: 2px;
+}
+.create-goal-page #goal-choose-videos .dashboard-content-stretch {
+    overflow-y: auto;
+    padding-left: 20px;
+}
+.objective-type-picker {
+    position: absolute;
+    z-index: 100;
+    top: -1px;
+}
+.objective-type-picker .simple-button {
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+.objective-type-picker .simple-button, .objective.simple-button {
+    padding: 0;
+    display: block;
+}
+.objective-type-picker .simple-button {
+    line-height: 33px;
+    width: 174px;
+    float: left;
+    text-align: center;
+}
+
+.create-goal-page .dashboard {
+    margin-top: 18px;
+}
+
+.create-goal-page .dashboard .css-menu > ul > li, .create-goal-page .dashboard #topic-jump > span {
+    font-weight: normal;
+}
+
+#goalbook-controls {
+    margin-top: 20px;
+}
+
+.goal-description .summary-light {
+    color: #888;
+    display: inline-block;
+    float: right;
+}
+
+#class-student-goals .objective.matches-filter,
+#class-student-goals .objective.matches-filter:before {
+    font-weight: bold;
+    z-index: 10;
+
+    -moz-box-shadow: inset 0 0 0 1px #555, 0 0 4px 2px orange;
+    -webkit-box-shadow: inset 0 0 0 1px #555, 0 0 4px 2px orange;
+    box-shadow: inset 0 0 0 1px #555, 0 0 4px 2px orange;
+}
+.lte8 #class-student-goals .objective.matches-filter,
+.lte8 #class-student-goals .objective.matches-filter:before {
+    outline: 2px solid orange;
+}
+
+.recently-completed {
+    position: relative;
+}
+
+.recently-completed .goal-description strong {
+    display: inline-block;
+    text-decoration: line-through;
+    opacity: .7;
+    filter: alpha(opacity=75);
+}
+
+.recently-completed .goal-description .summary-light {
+    color: #111;
+    font-weight: bold;
+}
+
+a.goal-history {
+    background-color: #ddd;
+    text-shadow: 0 1px 0 rgba(255,255,255,.6);
+}
+
+/* here to remind us this needs to be prettied up */
+.goal.active {
+
+}
+
+.goal-response-text {
+    color: white;
+    float: right;
+    background-color: #C00;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+.goalNodeInvalid {
+    text-decoration: line-through;
+    cursor: not-allowed;
+}
+.goalNodeInvalid div {
+    color: #777;
+}
+
+.goalVideoInvalid span {
+    text-decoration: line-through;
+    color: #99a;
+}
+
+.goal-tooltip-status {
+    font-style: italic;
+}
+
+.goal-tooltip-struggling {
+    color: #c00;
+    font-weight: bold;
+}
+
+
+
+
+/* The New Goal ui */
+
+.goalpicker {
+    width:100%;
+    height:auto;
+    min-height:90%;
+    padding-left:3%;
+}
+
+.goalpicker .newgoal {
+    cursor:pointer;
+    width:90%;
+    padding:4em 3% 2em 1%;
+    float:left;
+    clear:none;
+    position:relative;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.goalpicker .newgoal.disabled {
+    opacity: 0.2;
+    cursor: default;
+}
+
+.goalpicker .newgoal.small{
+    width:43%;
+}
+
+.goalpicker h3,
+.goalpicker h4 {
+    font-size:30px;
+    font-family:MuseoSans300;
+    font-weight:normal;
+    line-height:68px;
+    color:#777;
+    margin:0;
+    letter-spacing:4px;
+}
+.goalpicker h3{
+    padding-left:.4em;
+    margin-bottom:12px;
+    width:90%;
+    border-bottom:1px solid #666;
+}
+.goalpicker h4 {
+    text-transform:uppercase;
+    font-family:MuseoSans500;
+    font-weight:bold;
+    font-size:24px;
+    letter-spacing:6px;
+    line-height:38px;
+}
+
+.goalpicker a{
+    color: #777;
+    text-decoration:none;
+}
+
+.goalpicker .newgoal.disabled a {
+    cursor: default !important;
+    color: #777 !important;
+}
+
+/* disable hover effects for title and objectives */
+.goalpicker a:hover {
+    text-decoration: none;
+}
+.goalpicker .goal a.objective:hover:before {
+    border-color: #fff;
+}
+.goalpicker .goal a.objective:hover {
+    border-color: #3A4759 ! important;
+}
+
+.goalpicker .newgoal:hover{
+    z-index:10;
+    -webkit-box-shadow:0 0 6px 1px #678D00;
+    -moz-box-shadow:0 0 6px 1px #678D00;
+    box-shadow:0 0 6px 1px #678D00;
+}
+.goalpicker .newgoal.disabled:hover {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.goalpicker .newgoal .info p{
+    margin:0 0 22px;
+}
+
+.goalpicker .newgoal:hover a,
+.goalpicker .info button {
+    color:#678D00;
+}
+
+.goalpicker .info button {
+    text-transform:capitalize;
+    text-align:center;
+    line-height:16px;
+    width:70%;
+    margin:1em auto 2em;
+    margin-left:15%;
+}
+
+
+.goalpicker .info, .goalpicker .info:hover  {
+    display:none;
+    cursor: default;
+    position:absolute;
+    left:-225px;
+    top:20px;
+    width:175px;
+    height:auto;
+    padding:22px 15px 0;
+    background-color:#eee;
+    border:1px solid #909090;
+    -webkit-box-shadow:0px 0px 10px 5px #ccc;
+    -webkit-border-radius:5px;
+    -moz-box-shadow:0px 0px 10px 5px #ccc;
+    -moz-border-radius:5px;
+}
+
+.goalpicker .info.pos-right {
+    left:auto;
+    right:-225px;
+}
+.goalpicker .info.pos-right:after {
+    left:-20px;
+    border-color:transparent #eee transparent transparent;
+}
+
+.goalpicker .info.pos-top {
+    left:auto;
+    right:25px;
+    top: -40px;
+}
+.goalpicker .info.pos-top:after {
+    left:-20px;
+    border-color:transparent #eee transparent transparent;
+}
+
+.modal.goal-new {
+    position: fixed;
+    /* set the point on which top and left operate to the middle top edge*/
+    width: 700px; /* this is redundant but here for clarity */
+    margin: 0 0 0 -350px;
+    top: 90px;
+    left: 50%;
+}
+
+.student-module-status.notmatching,
+.student-module-status.light.notmatching {
+    background-color: #aaa;
+}
+
+.modal .goalpicker h3{
+    font-size:24px;
+    line-height:36px;
+    margin-left:.5em;
+}
+
+.modal .goalpicker h4 {
+    font-size:18px;
+}
+.modal .goalpicker .newgoal{
+    padding:1em 1em 2em;
+}
+
+.modal.goal-new-custom {
+    position: fixed;
+    top: 90px;
+    right: 90px;
+    bottom: 90px;
+    left: 90px;
+}
+.modal.goal-new-custom .progress-bar-wrapper {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+}
+.modal.goal-new-custom .progress-bar {
+    width: 400px;
+    height: 22px;
+    text-align: center;
+    position: relative;
+    top: 20px;
+    margin-left: -200px;
+    z-index: 1;
+}
+.modal.goal-new-custom .progress-bar .ui-progressbar-value {
+    background-image: url('/images/progress-animated.gif');
+}
+
+#create-goal .section-headline {
+    padding-top: 0;
+}
+
+.modal.goal-new-custom #goal-submit-button,
+.modal.goal-new-custom .goals-close-button {
+    font-size: 16px;
+    float: right;
+    padding: 4px 10px;
+    margin-left: 10px;
+}

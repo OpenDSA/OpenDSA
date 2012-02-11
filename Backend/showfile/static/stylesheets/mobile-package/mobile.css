@@ -1,0 +1,53 @@
+/* Welcome to my madness */
+header, footer, #back-to-top, #thumbnails_container, 
+#main-video, #homepage-text, #browse-fixed, .video #description
+h2.featured-videos, .desktop-only { display: none; }
+
+#library #library-content .ui-page .ui-content ol { 
+    height: auto !important; 
+    list-style: none !important;
+}
+#library #library-content .ui-page .ui-content ol li {
+    height: auto;
+    width: auto;
+    margin-top: auto !important;
+    margin-left: auto !important;
+}
+
+.video #description { text-align: center; }
+
+.youtube-video { margin: 0 auto; text-align: center; }
+
+.min-width-320px .youtube-video object,
+.min-width-480px .youtube-video object { 
+    width: 280px; 
+    height: 210px;
+}
+.min-width-768px .youtube-video object,
+.min-width-1024px .youtube-video object {
+    width: 600px;
+    height: 450px;
+}
+
+#page_visitors {
+    font-weight: normal;
+    font-family: Georgia;
+    display: none; /* hidden until AJAX call to chartbeat gets the number */
+    text-decoration: none;
+}
+
+#mobile-homepage {
+    text-align: center;
+}
+
+#mobile-logo {
+    width: 90%;
+    position: relative;
+    left: -12px;
+}
+
+h2.main-headline { text-align: center; }
+
+.ui-page .mobile-only {
+    display: block;
+}

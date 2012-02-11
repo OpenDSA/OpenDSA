@@ -1,0 +1,192 @@
+{#- import 'macros/user.html' as user -#}
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Organization"
+    xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:og="http://opengraphprotocol.org/schema/"
+    xmlns:fb="http://www.facebook.com/2008/fbml" {{ data_require }}>
+      <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+
+        <!--[if lte IE 6]><script src="/javascript/ie-warning.js"></script><script>window.onload=function(){e("/images/ie-warning/")}</script><![endif]-->
+
+        <script type="text/javascript">
+            var _sf_startpt=(new Date()).getTime(); {# for Chartbeat Analytics #}
+            var KA_VERSION = '2';
+            var FB_APP_ID = '2';
+            var URL_CONTINUE = '{{ continue }}';
+            var USERNAME = '{{ username }}';
+        </script>
+
+        <title>{% block meta_page_title %}{% endblock meta_page_title %}Khan Academy</title>
+        {% if video -%}
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        {%- endif %}
+        <meta name="description" content="{% block meta_description -%}
+        Khan Academy is on a mission to provide a free world-class education to anyone anywhere. With over 2,600 videos covering everything from arithmetic to physics, finance, and history and 200 practice exercises, we're helping students learn whatever they want, whenever they want, at their own pace.
+        {%- endblock %}" />
+        <meta name="keywords" content="{% block meta_keywords %}khan academy, learn, videos, lectures, practice, exercises{% endblock %}" />
+        {# Allows the KA FB Page Admins to see the KA stats for FB Like in FB insights START -#}
+        <meta property="fb:page_id" content="159403248441" />
+        {# Allows the KA FB Page Admins to see the KA stats for FB Like in FB insights END -#}
+        <meta property="og:title" content="The Khan Academy"/>
+        <meta property="og:type" content="non_profit"/>
+        <meta property="og:url" content="http://www.khanacademy.org"/>
+        <meta property="og:image" content="http://www.khanacademy.org/images/handtreehorizontal_facebook.png"/>
+        <meta property="og:site_name" content="khanacademy.org"/>
+        <meta property="fb:admins" content="100000121497109,1305017,100001572496923"/> {# Sal/Ben/Jason #}
+        <meta property="fb:app_id" content="7"/>
+
+        {# Google+ -#}
+        <meta itemprop="name" content="Khan Academy">
+        <meta itemprop="description" content="Watch. Practice. Learn almost anything for free.">
+        <meta itemprop="image" content="http://www.khanacademy.org/images/khan-logo-vertical-transparent.png">
+        {# End Google+ -#}
+
+        <meta property="og:description"
+              content="Khan Academy is on a mission to provide a free world-class education to anyone anywhere. With over 2,600 videos covering everything from arithmetic to physics, finance, and history and 200 practice exercises, we're helping students learn whatever they want, whenever they want, at their own pace."/>
+        <link rel="shortcut icon" href="./favicon.ico?leaf">
+        <link rel="apple-touch-icon" href="./images/apple-touch-icon.png"/>
+
+
+
+
+        {% block pagescript %}
+        {% endblock pagescript %}
+
+    {%- if not hide_analytics -%}
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-6742635-1']);
+      _gaq.push(['_setDomainName', '.khanacademy.org']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['_trackPageLoadTime']);
+
+      {# For OER Analytics #}
+      _gaq.push(['ht._setAccount', 'UA-5033010-1']);
+      _gaq.push(['ht._setDomainName', '.khanacademy.org']);
+      _gaq.push(['ht._trackPageview']);
+    </script>
+    {%- endif -%}
+    </head>
+
+    <body class="light">
+    <div id="outer-wrapper">
+    {# phantom_users.login_notifications(user_data, continue) #}
+    <div id="page-container">
+    <div id="page-container-inner">
+        {# Facebook connect root #}
+        <div id="fb-root"></div>
+
+        {# Make script-requiring elements visible. #}
+        <script>document.writeln('<style scoped type="text/css">a[href="#"], .requires_script { visibility: visible; }</style>');</script>
+
+            <header>
+                <div id="top-header">
+                    <div id="top-header-links">
+                        <span class="page_links" id="page_auth">
+                            {% if logged_in %}
+                                <span id="user-info" class="badge-target">
+                                    {{ user.user_info(username, user_data) }}
+                                </span>
+                                <span class="separator"></span>
+                                <a id="page_logout" href="{{ logout_url|escape }}">Logout</a>
+                            {% else %}
+                                <a class="badge-target" href="{{ login_url|escape }}">Login</a>
+                            {% endif %}
+                            <span class="separator"></span>
+                            <a href="/contribute" id="donate-link">Donate</a>
+                        </span>
+                        <div class="clear"></div>
+                        <div id="nav-and-search">
+                            <div id="sitewide-navigation">
+                                <nav>
+                                  <span class="links">
+                                      <a href="/#browse" {% if selected_nav_link == "watch" %}class="selected watch-link"{% else %}class="watch-link"{% endif %}>Watch</a>
+                                    <a href="/exercisedashboard?k" {% if selected_nav_link == "practice" %}class="selected practice-link"{% endif %}>Practice</a>
+                                    <a href="/class_profile" {% if selected_nav_link == "coach" %}class="selected coach-link"{% endif %}>Coach</a>
+                                    <a href="/contribute" {% if selected_nav_link == "contribute" %}class="selected contribute-link"{% endif %}>Volunteer</a>
+                                    <a href="/about" {% if selected_nav_link == "about" %}class="selected about-link"{% endif %}>About</a>
+                                    </span>
+                                </nav>
+                            </div>
+                            <div id="search-box">
+                                <form id="page_search" action="/search">
+                                    <input id="search-input" type="text" placeholder="Search for a video or playlist" name="page_search_query" value='{{page_search_query|escape}}' class="ui-corner-all placeholder" /><input type="submit" value=" " id="search-submit" />
+                                </form>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                </div>
+                    <div id="logo">
+                        <a id="logo-image" href="/" title="Take me home!"></a>
+                    </div>
+                    <div id="stats">
+                        <span id="page_visitors">
+                                <span id="page_num_visitors">
+                                    <!-- Content will get populated by javacript at end of page -->
+                                </span>&nbsp;lessons delivered
+                        </span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+
+                <nav id="page_sub_nav">
+                    {% block pagesubmenu %}<b>{% block pagetitle %}{% endblock pagetitle %}</b>
+                    {% endblock pagesubmenu %}
+                </nav>
+                {% block pagemessage %}
+
+                {% endblock pagemessage %}
+            </header>
+            {% block pagecontent %}
+            {% endblock pagecontent %}
+            <div id="end-of-page-spacer" style="padding: 10px;">&nbsp;</div>
+
+
+            {# badges.badge_notifications() #}
+            <div id="badge-notification-container" class="badge-award-container" style="display:none;">
+
+    </div>
+    </div>
+    </div>
+    <div class="push"></div>
+    {% block pagefooter %}
+    {# include "page_footer_short.html" #}
+    {% endblock %}
+
+    {% block bottompagescript %}
+    {% endblock bottompagescript %}
+
+    {%- if not hide_analytics -%}
+    <script type="text/javascript">
+        {# Chartbeat #}
+        var _sf_async_config={uid:10894,domain:"khanacademy.org"};
+        (function(){
+            function loadChartbeat() {
+                window._sf_endpt=(new Date()).getTime();
+                var e = document.createElement('script');
+                e.setAttribute('language', 'javascript');
+                e.setAttribute('type', 'text/javascript');
+                e.setAttribute('src',
+                   (("https:" == document.location.protocol) ? "https://s3.amazonaws.com/" : "http://") +
+                   "static.chartbeat.com/js/chartbeat.js");
+                document.body.appendChild(e);
+            }
+            var oldonload = window.onload;
+            window.onload = (typeof window.onload != 'function') ?
+                loadChartbeat : function() { oldonload(); loadChartbeat(); };
+        })();
+
+        {# GA #}
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    {%- endif -%}
+
+    {# gae_mini_profiler.profiler_includes() #}
+    </body>
+</html>

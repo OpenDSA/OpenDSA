@@ -1,0 +1,13 @@
+<div class="goal pulls">
+    <p class="goal-description" class="pulled"></p>
+    <ul class="inline-list objective-list">
+    {{#objectives}}
+        <li class="objective">
+            <a class="objective simple-button action-gradient blue {{css}}" href="{{url}}" data-progress="{{progress}}">
+                <span class="objective-description">{{description}}</span>
+            </a>
+        </li>
+    {{/objectives}}
+    </ul>
+    <div style="clear: both;"></div>
+</div>

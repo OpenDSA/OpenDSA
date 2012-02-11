@@ -1,0 +1,514 @@
+#modal-story {
+    position: fixed;
+    /* set the point on which top and left operate to the middle top edge*/
+    width: 730px; /* this is redundant but here for clarity */
+    margin: 0 0 0 -365px;
+    top: 60px;
+    left: 50%;
+
+    font-size: 16px;
+    line-height: 24px;
+}
+.lte7 #modal-video {
+    border: 1px solid #999;
+}
+
+div.envelopeContainer {
+    padding: 5px;
+}
+
+.share-container {
+    position: relative;
+    top: 4px;
+}
+
+.modal-header .share-container {
+    left: 9px;
+}
+
+body {
+    background-color: #E9EFDD;
+}
+
+.left-header-container {
+    padding-top: 30px;
+}
+.left-header-container h1 a,
+.left-header-container h1 a:hover {
+    color: #DDD;
+}
+
+a.btn:hover,
+a.btn:focus {
+    color: #DDD;
+    text-decoration: none;
+}
+
+.stories-footer {
+    text-align: center;
+    padding: 18px;
+}
+
+.stories-header {
+    background-color: #1A222D;
+    padding: 18px 0 0 0;
+    overflow: hidden;
+}
+
+.stories-header h1 {
+    margin-bottom: 45px;
+    font-size: 62px;
+    line-height: 62px;
+    font-weight: bold;
+}
+
+.stories-header h1, 
+.stories-header h2
+{
+    color: #DDD;
+    font-family: "MuseoSans500", Helvetica Nueue, Helvetica, sans-serif;
+    font-weight: normal;
+}
+.stories-submit {
+    background: #E6E6E6 url('/images/story-submit-bg-tile.png');
+    height: 290px;
+    padding: 18px 0;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+
+    -webkit-box-shadow: inset 0px 3px 5px 2px rgba(204, 204, 204, 0.6);
+    -moz-box-shadow: inset 0px 3px 5px 2px rgba(204, 204, 204, 0.6);
+    -o-box-shadow: inset 0px 3px 5px 2px rgba(204, 204, 204, 0.6);
+    box-shadow: inset 0px 3px 5px 2px rgba(204, 204, 204, 0.6);
+}
+
+.stories-submit div.input {
+    margin-bottom: 18px;
+}
+
+.stories-submit textarea {
+    width: 50%;
+    height: 80px;
+}
+
+.stories-body {
+    padding-top: 72px;
+    border-top: 1px solid #F6FEED;
+
+    -webkit-box-shadow: 0px -8px 8px -8px rgba(204, 204, 204, 0.6)
+    -moz-box-shadow: 0px -8px 8px -8px rgba(204, 204, 204, 0.6)
+    -o-box-shadow: 0px -8px 8px -8px rgba(204, 204, 204, 0.6)
+    box-shadow: 0px -8px 8px -8px rgba(204, 204, 204, 0.6)
+}
+
+.modal {
+    max-height: 580px;
+    overflow: hidden;
+}
+.modal .modal-body {
+    max-height: 400px;
+    padding: 20px 30px;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 0;
+}
+.modal .modal-header h3 {
+    margin-top: 0;
+}
+.modal .modal-header .close-button {
+    color: black;
+}
+.modal .modal-footer .span-middle {
+    margin-left: 0;
+    width: 240px;
+}
+.modal .modal-footer .center {
+    text-align: center;
+}
+.modal .modal-footer .right {
+    text-align: right;
+}
+.modal .modal-footer .prev-btn,
+.modal .modal-footer .next-btn  {
+    float: none;
+}
+
+.modal-backdrop,
+.modal-backdrop.fade.in {
+    opacity: 0.65;
+    -moz-opacity: 0.65;
+    filter:alpha(opacity=65);
+}
+
+h2.stories-header {
+    margin-top: 18px;
+    padding-bottom: 18px;
+}
+
+.big-tree {
+    position: relative;
+    left: -72px;
+    top: 17px;
+    width: 419px;
+    height: 338px;
+    opacity: 0.75;
+    filter:alpha(opacity=75);
+}
+
+.story-container {
+    position: relative;
+}
+
+.story {
+    float: left;
+    padding-bottom: 20px;
+    position: relative;
+    height: 204px;
+
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    -moz-transition: -moz-transform .3s ease-in-out;
+    -o-transition: -o-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+}
+
+.story .envelope {
+    position: absolute;
+    top: 0px;
+}
+
+.slit-overlay {
+    background: transparent url('/images/stories/slit.png') no-repeat top left;
+    position: relative;
+    left: 50%;
+    margin-left: -156px; /* half the width + tiny tweak */
+    top: 140px;
+    width: 320px;
+    height: 6px;
+}
+
+.slit-overlay-background {
+    background: #E9EFDD;
+    position: relative;
+    left: 50%;
+    margin-left: -165px; /* half the width */
+    top: 140px;
+    width: 330px;
+    height: 95px;
+}
+
+.slit-overlay,
+.slit-overlay-background {
+}
+
+.modal-header {
+    background-color: #E9EFDD;
+
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.modal-header .tape {
+    display: inline-block;
+    padding: 0 9px;
+
+    position: relative;
+    top: 10px;
+
+    opacity: 0.8;
+    filter:alpha(opacity=80);
+}
+
+.story-container .envelope-under {
+    position: absolute;
+
+    top: 154px;
+    margin-left: -75px; /* Half the width */
+    left: 50%;
+
+    width: 150px;
+    height: 35px;
+}
+
+.tape {
+    /* http://www.2expertsdesign.com/tutorials/how-to-create-a-paper-sticky-note-using-only-css3 */
+    background-color: white;
+
+    text-align: center;
+
+    opacity:0.7;
+    filter:alpha(opacity=70);
+
+    border-left: 1px dashed rgba(0, 0, 0, 0.1);
+    border-right: 1px dashed rgba(0, 0, 0, 0.1);
+
+    -webkit-box-shadow: 0px 0px 1px 0px #cccccc;
+    -moz-box-shadow: 0px 0px 1px 0px #cccccc;
+    -o-box-shadow: 0px 0px 1px 0px #cccccc;
+    box-shadow: 0px 0px 1px 0px #cccccc;
+}
+
+/* Envelope 1 */
+.story.envelope-1 {
+    width: 300px;
+}
+.story.envelope-1 .content-teaser {
+    background: url('/images/stories/stationary-1.png') no-repeat top right;
+    padding: 20px 9px 9px 9px;
+    width: 259px;
+}
+.story.envelope-1 .envelope {
+    width: 300px;
+    height: 204px;
+}
+.story.envelope-1 .envelope-background {
+    background: url('/images/stories/envelope-1-back-background.png') no-repeat;
+}
+.story.envelope-1 .envelope-foreground {
+    background: url('/images/stories/envelope-1-back-foreground.png') no-repeat;
+}
+/* End envelope 1 */
+
+/* Envelope 2 */
+.story.envelope-2 {
+    width: 300px;
+}
+.story.envelope-2 .content-teaser {
+    padding: 20px 9px 9px 9px;
+    width: 252px;
+
+    background: #C0E3FF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    -webkit-box-shadow: 2px 2px 3px rgba(204, 204, 204, 0.6);
+    -moz-box-shadow: 2px 2px 3px rgba(204, 204, 204, 0.6);
+    -o-box-shadow: 2px 2px 3px rgba(204, 204, 204, 0.6);
+    box-shadow: 2px 2px 3px rgba(204, 204, 204, 0.6);
+}
+.story.envelope-2 .envelope {
+    width: 300px;
+    height: 196px;
+}
+.story.envelope-2 .envelope-background {
+    background: url('/images/stories/envelope-2-back-background.png') no-repeat;
+}
+.story.envelope-2 .envelope-foreground {
+    background: url('/images/stories/envelope-2-back-foreground.png') no-repeat;
+}
+/* End envelope 2 */
+
+/* Envelope 3 */
+.story.envelope-3 {
+    width: 300px;
+}
+.story.envelope-3 .content-teaser {
+    padding: 20px 9px 9px 9px;
+    width: 252px;
+
+    background: url('/images/stories/stationary-2.png') no-repeat top right;
+}
+.story.envelope-3 .envelope {
+    width: 300px;
+    height: 196px;
+}
+.story.envelope-3 .envelope-background {
+    background: url('/images/stories/envelope-3-back-background.png') no-repeat;
+}
+.story.envelope-3 .envelope-foreground {
+    background: url('/images/stories/envelope-3-back-foreground.png') no-repeat;
+}
+/* End envelope 3 */
+
+/* Envelope 4 */
+.story.envelope-4 {
+    width: 300px;
+}
+.story.envelope-4 .content-teaser {
+    padding: 20px 9px 9px 9px;
+    height: 130px;
+    width: 252px;
+
+    background: url('/images/stories/stationary-3.png') no-repeat top right;
+}
+.story.envelope-4 .envelope {
+    width: 300px;
+    height: 196px;
+}
+.story.envelope-4 .envelope-background {
+    background: url('/images/stories/envelope-4-back-background.png') no-repeat;
+}
+.story.envelope-4 .envelope-foreground {
+    background: url('/images/stories/envelope-4-back-foreground.png') no-repeat;
+}
+/* End envelope 4 */
+
+.story.rotate {
+    cursor: pointer;
+}
+
+/* Rotation negative 6 */
+.story.rotate-neg-6:hover {
+    -webkit-transform: rotate(-6deg) translateY(-24px);
+    -moz-transform: rotate(-6deg) translateY(-24px);
+    -o-transform: rotate(-6deg) translateY(-24px);
+    transform: rotate(-6deg) translateY(-24px);
+}
+.story.rotate-neg-6:hover .content-teaser {
+    -webkit-transform: rotate(6deg) translateY(-30px);
+    -moz-transform: rotate(6deg) translateY(-30px);
+    -o-transform: rotate(6deg) translateY(-30px);
+    transform: rotate(6deg) translateY(-30px);
+}
+
+@-webkit-keyframes letter-show-neg-6 {
+    0% { -webkit-transform: rotate(6deg) translateY(-30px); }
+    12% { -webkit-transform: rotate(8deg) translateY(-32px); }
+    24% { -webkit-transform: rotate(6deg) translateY(-36px); }
+    36% { -webkit-transform: rotate(8deg) translateY(-44px); }
+    70% { -webkit-transform: rotate(6deg) translateY(-80px); }
+    100% { opacity: 0; -webkit-transform: rotate(6deg) translateY(-85px); }
+}
+@-moz-keyframes letter-show-neg-6 {
+    0% { -moz-transform: rotate(6deg) translateY(-30px); }
+    12% { -moz-transform: rotate(8deg) translateY(-32px); }
+    24% { -moz-transform: rotate(6deg) translateY(-36px); }
+    36% { -moz-transform: rotate(8deg) translateY(-44px); }
+    70% { -moz-transform: rotate(6deg) translateY(-80px); }
+    100% { opacity: 0; -moz-transform: rotate(6deg) translateY(-85px); }
+}
+
+.story.rotate-neg-6.content-teaser-show .content-teaser,
+.story.rotate-neg-6.content-teaser-show:hover .content-teaser {
+    -webkit-animation: letter-show-neg-6 0.65s ease-in-out 0s 1 normal;
+    -moz-animation: letter-show-neg-6 0.65s ease-in-out 0s 1 normal;
+    -o-animation: letter-show-neg-6 0.65s ease-in-out 0s 1 normal;
+    animation: letter-show-neg-6 0.65s ease-in-out 0s 1 normal;
+}
+
+.story.rotate-neg-6.content-teaser-show,
+.story.rotate-neg-6.content-teaser-hide {
+    -webkit-transform: rotate(-6deg) translateY(-24px);
+    -moz-transform: rotate(-6deg) translateY(-24px);
+    -o-transform: rotate(-6deg) translateY(-24px);
+    transform: rotate(-6deg) translateY(-24px);
+}
+/* End rotation negative 6 */
+
+/* Rotation 6 */
+.story.rotate-6:hover {
+    -webkit-transform: rotate(6deg) translateY(-24px);
+    -moz-transform: rotate(6deg) translateY(-24px);
+    -o-transform: rotate(6deg) translateY(-24px);
+    transform: rotate(6deg) translateY(-24px);
+}
+.story.rotate-6:hover .content-teaser {
+    -webkit-transform: rotate(-6deg) translateY(-30px);
+    -moz-transform: rotate(-6deg) translateY(-30px);
+    -o-transform: rotate(-6deg) translateY(-30px);
+    transform: rotate(-6deg) translateY(-30px);
+}
+
+@-webkit-keyframes letter-show-6 {
+    0% { -webkit-transform: rotate(-6deg) translateY(-30px); }
+    12% { -webkit-transform: rotate(-8deg) translateY(-32px); }
+    24% { -webkit-transform: rotate(-6deg) translateY(-36px); }
+    36% { -webkit-transform: rotate(-8deg) translateY(-44px); }
+    70% { -webkit-transform: rotate(-6deg) translateY(-80px); }
+    100% { opacity: 0; -webkit-transform: rotate(-6deg) translateY(-85px); }
+}
+@-moz-keyframes letter-show-6 {
+    0% { -moz-transform: rotate(-6deg) translateY(-30px); }
+    12% { -moz-transform: rotate(-8deg) translateY(-32px); }
+    24% { -moz-transform: rotate(-6deg) translateY(-36px); }
+    36% { -moz-transform: rotate(-8deg) translateY(-44px); }
+    70% { -moz-transform: rotate(-6deg) translateY(-80px); }
+    100% { opacity: 0; -moz-transform: rotate(-6deg) translateY(-85px); }
+}
+
+.story.rotate-6.content-teaser-show .content-teaser,
+.story.rotate-6.content-teaser-show:hover .content-teaser {
+    -webkit-animation: letter-show-6 0.65s ease-in-out 0s 1 normal;
+    -moz-animation: letter-show-6 0.65s ease-in-out 0s 1 normal;
+    -o-animation: letter-show-6 0.65s ease-in-out 0s 1 normal;
+    animation: letter-show-6 0.65s ease-in-out 0s 1 normal;
+}
+
+.story.rotate-6.content-teaser-show,
+.story.rotate-6.content-teaser-hide {
+    -webkit-transform: rotate(6deg) translateY(-24px);
+    -moz-transform: rotate(6deg) translateY(-24px);
+    -o-transform: rotate(6deg) translateY(-24px);
+    transform: rotate(6deg) translateY(-24px);
+}
+/* End rotation 6 */
+
+.story.content-teaser-hide .content-teaser {
+    opacity: 0;
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    -moz-transition: -moz-transform .3s ease-in-out;
+    -o-transition: -o-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+}
+
+.story .content-teaser {
+    position: relative;
+    top: -20px;
+    overflow: hidden;
+
+    margin: 12px;
+    height: 145px;
+
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    -moz-transition: -moz-transform .3s ease-in-out;
+    -o-transition: -o-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+} 
+
+.story .content-teaser .youtube-thumbnail-container {
+    text-align: center;
+}
+
+.story .content-teaser .youtube-thumbnail {
+    max-width: 210px;
+}
+
+.story .content-teaser .youtube-thumbnail-title {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    padding: 2px 6px;
+    width: 198px;
+    font-size: 14px;
+    color: white;
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(0, 0, 0) transparent;
+    /* RGBa with 0.5 opacity */
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.story .content-teaser .youtube-thumbnail-play {
+    position: absolute;
+    top: 64px;
+    left: 86px;
+}
+
+.stories-footer img {
+    /* 
+     * This crazy little sucker invokes a different rendering path
+     * for the entire page, even though it's only applied to the footer img.
+     *
+     * This hints to webkit that GPU acceleration should be used where
+     * possible, which fixes this annoying bug: http://code.google.com/p/chromium/issues/detail?id=103198
+     *
+     * If another fix for this bug is found, this can be removed.
+     * See "the magic CSS bullet" here: http://www.html5rocks.com/en/tutorials/speed/html5/#toc-hardware-accell
+     *
+     * */
+    -webkit-transform: translateZ(0);
+}

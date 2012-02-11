@@ -1,0 +1,13 @@
+<div class="generic-dialog modal fade hide">
+    <div class="modal-header">
+        <span class="title">{{ title }}</span> <a href="javascript:void(0)" class="close-button close">x</a>
+    </div>
+    <div class="modal-body">
+        <p class="generic-message">{{ message }}</p>
+
+        {{#each buttons}}
+          <a class="generic-button simple-button blue action-gradient" href="javascript:void(0)" data-id="{{ title }}">{{ title }}</a>
+        {{/each}}
+
+    </div>
+</div>
