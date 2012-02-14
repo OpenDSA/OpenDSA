@@ -31,5 +31,8 @@ iframes.
 BinaryTreeChapter.pptx: Quick-and-dirty diagram of the prereq
 relationships for the Binary Tree chapter.
 
+khan-site.html: Our version of the "skin" template for KA-style
+exercises
+
 To check this repository out:
   git clone git://github.com/cashaffer/OpenDSA.git OpenDSA
