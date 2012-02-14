@@ -1,0 +1,341 @@
+<div id="content">
+<ODSAtitle>Binary Search Trees -- Alternate Version</ODSAtitle>
+<ODSAprereq "BinTreeImp" />
+<ODSAprereq "Dictionary" />
+<ODSAprereq "List" />
+<ODSAprereq "LinkedList" />
+<ODSAprereq "ArrayBasedList" />
+
+    <style>
+    #av { width: 98%;}
+    .jsavtree {
+      position: relative;
+      width: 500px;
+      height: 300px;
+    }
+    svg {
+      height: 600px;
+    }
+    path {
+      pointer-events: visible;
+    }
+    </style>
+
+
+<p>
+Module <ODSAref "Dictionary" /> presented the dictionary ADT,
+along with dictionary implementations based on sorted and unsorted
+lists.
+When implementing the dictionary with an unsorted list,
+inserting a new record into the dictionary can be performed quickly by
+putting it at the end of the list.
+However, searching an unsorted list for a particular record
+requires &Theta;(<i>n</i>) time in the average case.
+For a large database, this is probably much too slow.
+Alternatively, the records can be stored in a sorted list.
+If the list is implemented using a linked list, then no speedup to the
+search operation will result from storing the records in sorted order.
+On the other hand, if we use a sorted array-based list to implement
+the dictionary, then binary search can be used to find a record in
+only &Theta;(log <i>n</i>) time.
+However, insertion will now require &Theta;(<i>n</i>) time on average
+because, once the proper location for the new record in the sorted
+list has been found, many records might be shifted to make room for
+the new record.
+</p>
+
+<p>
+Is there some way to organize a collection of records so
+that inserting records and searching for records can both be done
+quickly?
+This module presents the binary search tree (BST),
+which allows an improved solution to this problem.
+</p>
+
+<p>The <dfn> Binary Search Tree Ordering Property </dfn> that underlies  a binary search tree is defined as follows: the key data
+in each node of the tree are greater than all of the keys in that
+node's left subtree and less than or equal to all the keys in the
+right subtree.  Consider, for example, the following
+binary search tree containing the keys 16 8 2 20 30 41 5 10 18.
+</p>
+
+<figure>
+<center>
+<img src="Images/BST1-tn.png" alt="Binary Search Tree with keys 16 8 2 20 30 41 5 10 18" />
+<br/>
+
+<figcaption>
+<ODSAfig "BST1-tn" />
+Binary search tree containing the keys 16 8 2 20 30 41 5 10 18.
+</figcaption>
+</center>
+</figure>
+
+<p>Insertion of new nodes into a BST will always occur at the leaf
+nodes. As with insertion into a linked list, no data are moved; only
+pointers are manipulated. However, unlike the steps required by a
+linked list, we do not have to search the list sequentially to
+determine where the new node belongs.  Instead, we use the insertion
+rule - if less than, go left; otherwise, go right - so that we search
+by subdividing the tree to determine the position for a new node.  A
+class structure for a BST and an insertion method following this rule
+is given by:
+</p>
+
+<pre>
+class BSTNode {
+    BSTNode left;
+    BSTNode right;
+    int data;
+  
+    BSTNode(int d) {
+	left = null;
+	right = null;
+	data = d;
+    }
+}
+
+class BST {
+
+    BSTNode root;
+  
+    BST() {
+	root = null;
+    }
+
+    // Insert d into the BST  
+    void add(int d) {
+        if (root == null)
+            root = new BSTNode(d);
+        else
+	    addAux(d, root);
+    }
+
+    // Recursive helper
+    void addAux(int d, BSTNode node) {
+	if (d <= node.data) {
+	    if (node.left == null)
+		node.left = new BSTNode(d);
+	    else
+		addAux(d, node.left);
+	}
+	else { 
+	    if (node.right == null)
+		node.right = new BSTNode(d);
+	    else
+		addAux(d, node.right);
+	}
+    }
+}
+</pre>
+
+<p>Note that the shape of the binary search tree is dependent on the
+order in which data items are given to the insert operation.  You can
+see this insertion algorithm in action in the following slideshow.
+</p>
+
+
+    <div id="av">
+      <div class="jsavcontrols"></div>
+      <p class="jsavoutput jsavline"></p>
+    </div>
+
+    <script>
+
+    // Plain vanilla insert -- no animation
+    var insert = function(node, insval) {
+	var val = node.value();
+	if (!val || val === "jsavnull") { // no value in node
+            node.value(insval);
+	} else if (val >= insval) { // go left
+            if (node.left()) {
+		insert(node.left(), insval);
+            } else {
+		node.left(insval)
+            }
+	} else { // go right
+            if (node.right()) {
+		insert(node.right(), insval);
+            } else {
+		node.right(insval);
+            }
+	}
+    }
+
+    // Insert with animation
+    var insert_anim = function(node, insval) {
+	var val = node.value();
+	if (!val || val === "jsavnull") { // no value in node
+            node.value(insval);
+	    node.css("background-color","red");
+	    bt.layout();
+	    jsav.step();
+	} else {
+	    node.css("background-color","yellow");
+	    caption_label.text(caption_text + ", comparing to " + node.value());
+	    bt.layout();
+	    jsav.step();
+	    if (val >= insval) { // go left
+		if (node.left()) {
+		    insert_anim(node.left(), insval);
+		} else {
+		    node.left(insval)
+		    node.left().css("background-color","red");
+		    caption_label.text(caption_text + " completed ");
+		    bt.layout();
+		    jsav.step();
+		}
+	    } else { // go right
+		if (node.right()) {
+		    insert_anim(node.right(), insval);
+		} else {
+		    node.right(insval);
+		    node.right().css("background-color","red");
+		    caption_label.text(caption_text + " completed ");
+		    bt.layout();
+		    jsav.step();
+		}
+	    }
+	}
+    }
+
+    // traverse to re-set background color of the entire tree
+    var traverse_color = function(node, col) {
+	var val = node.value();
+	if (!val || val === "jsavnull") { // no value in node
+	    return;
+	} else { 
+	    node.css("background-color", col);
+	    if (node.left())
+		traverse_color(node.left(),col);
+	    if (node.right())
+		traverse_color(node.right(),col);
+	}
+    }
+
+    // Main program inserts 10 random values into the tree
+    var jsav = new JSAV("av");
+    var bt = jsav.ds.bintree();
+    var caption_label = jsav.label("BST insert", {before: bt});
+    var caption_text = "";
+
+    jsav.step();
+    var keyArray = JSAV.utils.rand.numKeys(1,50,10);
+    for (var i=0; i < keyArray.length; i++) {
+	jsav.step();
+	caption_text = "Inserting " + keyArray[i];
+	caption_label.text(caption_text);
+	traverse_color(bt.root(), "white");
+	insert_anim(bt.root(), keyArray[i]);
+	bt.layout();
+    }
+    jsav.recorded(); // done recording changes, will rewind
+    
+    
+    
+    $(".jsavtreenode").live("hover", function() {
+	//console.log($(this).text(), $(this).offset().left, $(this).offset().top);
+    });
+    $("path").live("hover", function() {
+	//console.log($(this).attr("d"));
+    });
+    </script>
+
+
+<p>The deletion algorithm for a
+binary search tree is conceptually more complex than that for
+insertion.  With the preservation of the tree's ordering property as the
+primary goal in processing a deletion, one acceptable way of
+restructuring the tree is to choose the smallest item in the right
+subtree to replace the item being deleted.  Given this general
+motivation for choosing a node to replace the one being deleted,
+we extend our BST class with a <i>delete</i> method that uses a case-by-case
+analysis based on the right subtree of the tree node that
+will be deleted.
+</p>
+
+<pre>
+    // Remove delItem from the tree, return true if successful
+    boolean delete(int delItem)  {
+	if (root == null)
+	    return false;
+	else
+	    return deleteAux(delItem, root, null);
+    }
+
+    // Recursive helper -- given the item to delete, the current node,
+    // and the parent of the current node
+    boolean deleteAux(int delItem, BSTNode node, BSTNode parent) {
+	if (node.data == delItem) { // We've found the node to delete
+	    if (node.right == null) { // If node has no right child,
+				      // it can be replaced by its
+				      // left child
+		if (parent == null) {
+		    root = node.left;
+		    return true;
+		}
+		else if (node == parent.left) {
+		    parent.left = node.left;
+		    return true;
+		}
+		else {
+		    parent.right = node.left;
+		    return true;
+		}
+	    }
+	    else if (node.right.left == null) { // If node has a right
+						// child but the right
+						// child has no left
+						// child, it can be
+						// replaced by its
+						// right child
+		node.right.left = node.left;
+		if (parent == null) {
+		    root = node.right;
+		    return true;
+		}
+		else if (node == parent.left) {
+		    parent.left = node.right;
+		    return true;
+		}
+		else {
+		    parent.right = node.right;
+		    return true;
+		}
+	    }
+	    else {  // Call on recursive deleteMin to get the smallest
+		    // value in the right subtree of node
+		node.data = deleteMin(node.right.left, node.right);
+		return true;
+	    }
+	}
+	else if (delItem <= node.data) { // Haven't yet found the item to delete.
+	    if (node.left == null)
+		return false;
+	    else
+		return deleteAux(delItem, node.left, node);
+	}
+	else {
+	    if (node.right == null)
+		return false;
+	    else
+		return deleteAux(delItem, node.right, node);
+	}
+    }
+
+    // Go left from node p as deep as possible, remove that node from
+    // the tree and return its value to deleteAux
+    int deleteMin(BSTNode p, BSTNode parent) {
+	if (p.left == null) {
+	    int temp = p.data;
+	    parent.left = null;
+	    return temp;
+	}
+	else {
+	    return deleteMin(p.left, p);
+	}
+    }
+</pre>
+
+
+</div>
