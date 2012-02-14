@@ -5,10 +5,10 @@ import datetime
 import shutil
 import subprocess
 import fnmatch
-
+import json
 from operator import itemgetter, attrgetter
 from xml.dom.minidom import parse, parseString
-from django.utils import simplejson as json
+#from django.utils import simplejson as json
 
 
 
