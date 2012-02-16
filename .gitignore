@@ -7,3 +7,6 @@ build
 
 #Ignore the copy we make of khan-site.html
 lib/khan-exercises/exercises/khan-site.html
+
+#ignore compiled Python files
+*pyc
