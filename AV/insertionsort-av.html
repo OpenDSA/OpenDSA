@@ -145,7 +145,7 @@ form {
   function processArrayValues() {
     var i, 
         num, 
-        msg = "Must be 5 to 16 positive integers";
+        msg = "Must be " + arraysize.value + " positive integers";
     // Convert user's values to an array,
     // assuming values are space separated
     theArray = $('input[name="arrayValues"]', context).val().match(/[0-9]+/g) || [];
