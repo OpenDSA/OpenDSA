@@ -145,7 +145,7 @@ form {
   function processArrayValues() {
     var i, 
         num, 
-        msg = "Must be " + arraysize.value + " positive integers";
+        msg = "Must be 5 to 16 positive integers";
     // Convert user's values to an array,
     // assuming values are space separated
     theArray = $('input[name="arrayValues"]', context).val().match(/[0-9]+/g) || [];
@@ -221,7 +221,7 @@ form {
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
       var i, incr;
-      // PUT STUFF HERE TO INVOKE YOUR SORT
+      inssort(0, 1);
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
     }
