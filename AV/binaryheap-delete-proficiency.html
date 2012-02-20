@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Binary Heap Delete</title>
+    <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <style>
+    #av { width: 98%;}
+    .jsavtree {
+      position: relative;
+      width: 500px;
+      height: 400px;
+    }
+    .jsavoutput.jsavline { height: 20px; margin: 0 0 0 20px;}
+    .jsavcontrols a { z-index: 99; margin-left: 0;}
+    #decrement { margin-right: 20px;}
+    .jsavcontainer svg {z-index:0;}
+    </style>
+  </head>
+  <body>
+    <div id="av">
+      <p align="center" class="jsavexercisecontrols"><input id="decrement" type="button" value="Decrement heapsize" /></p>
+    </div>
+    
+    <script
+       src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script src="http://algoviz.org/OpenDSA/JSAV/lib/jquery.transform.light.js"></script>
+    <script src="http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"></script>
+    <script src="http://algoviz.org/OpenDSA/JSAVdev/build/JSAV-min.js"></script>
+    <script src="http://algoviz.org/OpenDSA/JSAVdev/extras/binaryheap.js"></script>
+
+    <script>
+    var initData, bh,
+        jsav = new JSAV("av"),
+        swapIndex;
+
+    jsav.recorded();
+    function init() {
+      var nodeNum = 10;
+      if (bh) {
+        bh.clear();
+        swapIndex.element.remove();
+      }
+      $.fx.off = true;
+      var test = function(data) {
+        var min = 1000,
+            mmax = Math.max;
+        // make sure we get a collision
+        data[1] = data[2];
+        bh = jsav.ds.binheap(data, {size: nodeNum, stats: true, tree: false});
+        bh.stats.swaps = 0;
+        var swapsBefore = 0,
+            maxRecursion = 0;
+        for (var i = 0; i < 3; i++) {
+          bh.swap(0, bh.heapsize() - 1);
+          bh.element.attr("data-jsav-heap-size", bh.heapsize() - 1);
+          bh.heapify(1);
+          maxRecursion = mmax(maxRecursion, bh.stats.swaps - swapsBefore);
+          swapsBefore = bh.stats.swaps;
+        }
+        var swaps = bh.stats.swaps;
+        bh.clear();
+        return !(swaps < 7 || swaps > 10 || !bh.stats.interrupted || maxRecursion < 3);
+      };
+      initData = JSAV.utils.rand.numKeys(10, 100, nodeNum, {test: test, tries: 50});
+      initData = JSAV.utils.rand.numKeys(10, 100, nodeNum);
+      bh = jsav.ds.binheap(initData);
+      swapIndex = jsav.variable(-1);
+      $.fx.off = false;
+      return bh;
+    }
+    
+    function model(modeljsav) {
+      modelbh = modeljsav.ds.binheap(initData, {nodegap: 20});
+      modeljsav._undo = [];
+      var count = 3;
+      while (count > 0) {
+        modelbh.swap(0, modelbh.heapsize() - 1);
+        modelbh.element.attr("data-jsav-heap-size", modelbh.heapsize() - 1);
+        modeljsav.step();
+        modelbh.css(modelbh.heapsize(), {"opacity": "0"})
+        modelbh._treenodes[modelbh.heapsize()].edgeToParent().css("stroke", "white");
+        modeljsav.step();
+        modelbh.heapify(1);
+        modeljsav.stepOption("grade", true);
+        modeljsav.step();
+        count--;
+      }
+      return modelbh;
+    }
+    var exercise = jsav.exercise(model, init, {css: "opacity"}, {grader: "finder"});
+    exercise.reset();
+    
+    function clickHandler(index) {
+      jsav._redo = []; // clear the forward stack, should add a method for this in lib
+      if (bh.value(index) === "") {
+        bh.value(index, insertData.shift());
+        jsav.step();
+        return;
+      }
+      var sIndex = swapIndex.value();
+      if (sIndex === -1) { // if first click
+        bh.css(index, {"font-size": "145%"});
+        swapIndex.value(index);
+      } else { // second click will swap
+        bh.swap(sIndex, index, {});
+        bh.css([sIndex, index], {"font-size": "100%"});
+        swapIndex.value(-1);
+      }
+      jsav.step();
+    }
+    $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
+      var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
+      clickHandler(index);
+    });
+    $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
+      var index = $(this).data("jsav-heap-index") - 1;
+      clickHandler(index);
+    });
+    $("#decrement").click(function() {
+        bh.heapsize(bh.heapsize() - 1);
+        bh.css(bh.heapsize(), {"opacity": "0"});
+        bh._treenodes[bh.heapsize()].edgeToParent().css("stroke", "white");
+        if (swapIndex.value() !== -1) {
+          swapIndex.value(-1);
+        }
+        jsav.step();
+    });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Heapsort</title>
+    <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <style>
+    #av { width: 98%;}
+    .jsavtree {
+      position: relative;
+      width: 500px;
+      height: 400px;
+    }
+    .jsavoutput.jsavline { height: 45px; margin: 0 0 0 20px;}
+    .jsavcontrols a { z-index: 99; margin-left: 0;}
+    #decrement { margin-right: 20px;}
+    .jsavcontainer svg {z-index:0;}
+    </style>
+  </head>
+  <body>
+    <div id="av">
+      <p align="center" class="jsavexercisecontrols"><input id="decrement" type="button" value="Decrement heap size" />
+</p>
+    </div>
+    <script
+       src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
+    <script src="http://algoviz.org/OpenDSA/JSAV/lib/jquery.transform.light.js"></script>
+    <script src="http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"></script>
+    <script src="http://algoviz.org/OpenDSA/JSAVdev/build/JSAV-min.js"></script>
+    <script src="http://algoviz.org/OpenDSA/JSAVdev/extras/binaryheap.js"></script>
+
+    <script>
+    var initData, bh,
+        jsav = new JSAV("av"),
+        swapIndex;
+
+    jsav.recorded();
+    function init() {
+      var nodeNum = 10;
+      if (bh) {
+        bh.clear();
+      }
+      initData = JSAV.utils.rand.numKeys(10, 100, nodeNum);
+      bh = jsav.ds.binheap(initData, {compare: function(a, b) { return b - a;}});
+      swapIndex = jsav.variable(-1);
+      return bh;
+    }
+    
+    function model(modeljsav) {
+      modelbh = modeljsav.ds.binheap(initData, {nodegap: 20, compare: function(a, b) { return b - a;}});
+      modeljsav._undo = [];
+      while (modelbh.heapsize() > 1) {
+        if (modelbh.heapsize() === initData.length) {
+          modeljsav.umsg("We start by swapping largest and last items in heap.");
+          modeljsav.step();
+        } else if (modelbh.heapsize() > initData.length - 3) {
+          modeljsav.umsg("Again, we swap largest and last items in heap.");
+        } else {
+          modeljsav.umsg("...swap largest and last items in heap.");
+        }
+        modelbh.swap(0, modelbh.heapsize() - 1);
+        modelbh.element.attr("data-jsav-heap-size", modelbh.heapsize() - 1);
+        modeljsav.step();
+        modeljsav.umsg("<br/>..decrement the heap size", {preserve: true});
+        modelbh.css(modelbh.heapsize(), {"background-color": "#ddd"})
+        modeljsav.step();
+        modeljsav.umsg("<br/>..and restore the heap property", {preserve: true});
+        modelbh.heapify(1);
+        modeljsav.stepOption("grade", true);
+        modeljsav.umsg("");
+        modeljsav.step();
+      }
+      return modelbh;
+    }
+    
+    function clickHandler(index) {
+      jsav._redo = []; // clear the forward stack, should add a method for this in lib
+      if (bh.value(index) === "") {
+        bh.value(index, insertData.shift());
+        jsav.step();
+        return;
+      }
+      var sIndex = swapIndex.value();
+      if (sIndex === -1) { // if first click
+        bh.css(index, {"font-size": "145%"});
+        swapIndex.value(index);
+      } else { // second click will swap
+        bh.swap(sIndex, index, {});
+        bh.css([sIndex, index], {"font-size": "100%"});
+        swapIndex.value(-1);
+      }
+      jsav.step();
+    }
+
+      var exercise = jsav.exercise(model, init, {css: "background-color"}, {grader: "finder"});
+      exercise.reset();
+    
+      $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
+        var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
+        clickHandler(index);
+      });
+      $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
+        var index = $(this).data("jsav-heap-index") - 1;
+        clickHandler(index);
+      });
+      $("#decrement").click(function() {
+        bh.heapsize(bh.heapsize() - 1);
+        bh.css(bh.heapsize(), {"background-color": "#ddd"});
+        jsav.step();
+      });
+    </script>
+  </body>
+</html>
