@@ -398,7 +398,7 @@ style="background-color:#f00;"/>
   // Support for "Exercise 1" button
   $('input[name="ex1"]').click(ex1); // Set callback action
   function ex1() { // This is what we pop up
-    var mystring = "Given a random array of size n, a random increment size I <= n/2, and a random start location S, 0<=S<I (with an arrow over position S), click to highlight the array elements that should be in this sublist. Solve this exercise 10 times in a row to get credit.";
+    var mystring = "Two forms at random:\n1) Given a random array of size n, a random increment size I <= n/2, and a random start location S, 0<=S<I (with an arrow over position S), click to highlight the array elements that should be in this sublist. Solve this exercise 10 times in a row to get credit.\n 2) Given random array of size n, and a sub array with elements highlighted, sort the indicated sublist.";
     alert(mystring);
     this.style.background='#0f0';
   }
@@ -475,17 +475,6 @@ algorithm is unacceptably slow.
 </p>
 
 
-<input type="button" name="ex3" value="Exercise 3"
-style="background-color:#f00;"/>
-
-<script>
-  // Support for "Exercise 3" button
-  $('input[name="ex3"]').click(ex3); // Set callback action
-  function ex3() { // This is what we pop up
-    var mystring = "Catch-all Summery Exercise: A bank of 20-30 questions is created, varying between multiple choice, T/F, or answer string (number, etc.). On each attempt, one is selected at random. Student must answer 10 in a row correctly to receive credit.";
-    alert(mystring);
-    this.style.background='#0f0';
-  }
-</script>
+<ODSAembed "hide" "Question 3">../Exercises/ShellsortMC.html</ODSAembed>
 
 </div>
