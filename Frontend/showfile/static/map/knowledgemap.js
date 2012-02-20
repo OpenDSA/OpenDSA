@@ -100,7 +100,7 @@ function KnowledgeMapInitGlobals() {
         },
 
         url: function() {
-            return "/exercise/" + this.get("name");
+            return "/OpenDSA/build/" + this.get("name");
         },
 
         adminUrl: function() {
