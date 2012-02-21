@@ -246,6 +246,28 @@ for the left child, right child, and parent of the position passed,
 respectively.
 </p>
 
+<center>
+ <iframe src="../AV/binaryheap-insert-proficiency.html"
+	 type="text/javascript" width="820" height="520"
+	 frameborder="0" marginwidth="0" marginheight="0"
+	 scrolling="no">
+</iframe>
+</center>
+
+<ODSAembed "hide" "Proficiency Exercise">../AV/binaryheap-insert-proficiency.html</ODSAembed>
+
+
+<center>
+ <iframe src="../AV/binaryheap-delete-proficiency.html"
+	 type="text/javascript" width="820" height="520"
+	 frameborder="0" marginwidth="0" marginheight="0"
+	 scrolling="no">
+</iframe>
+</center>
+
+<ODSAembed "hide" "Proficiency Exercise">../AV/binaryheap-delete-proficiency.html</ODSAembed>
+
+
 <p>
 One way to build a heap is to insert the elements one at a time.
 Method <code>insert</code> will insert a new element <var>V</var> into
@@ -272,6 +294,23 @@ the two elements swap positions.
 From here, the process of comparing <var>V</var> to its (current)
 parent continues until <var>V</var> reaches its correct position.
 </p>
+
+<p>
+Now test yourself to see how well you understand the
+<code>buildheap</code> algorithm
+Can you reproduce its behavior?
+</p>
+
+<center>
+ <iframe src="../AV/binaryheap-buildheap-proficiency.html"
+	 type="text/javascript" width="820" height="520"
+	 frameborder="0" marginwidth="0" marginheight="0"
+	 scrolling="no">
+</iframe>
+</center>
+
+<ODSAembed "hide" "Proficiency Exercise">../AV/binaryheap-buildheap-proficiency.html</ODSAembed>
+
 
 <p>
 Since the heap is a complete binary tree, its height is guaranteed to
