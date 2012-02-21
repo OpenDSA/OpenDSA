@@ -19,7 +19,7 @@ and has good performance both in the asymptotic
 sense and in empirical running time.
 Surprisingly, even though it is based on a simple concept,
 it is relatively difficult to implement in practice.
-Figure <ODSAref "MergeFig" \> illustrates Mergesort.
+Figure <ODSAref "MergeFig" /> illustrates Mergesort.
 A pseudocode sketch of Mergesort is as follows:
 <p>
 
@@ -261,7 +261,7 @@ simple to implement, presents another difficulty.
 The merge process ends with the sorted list in the auxiliary array.
 Consider how the recursive nature of Mergesort breaks
 the original array into subarrays, as shown in
-Figure <ODSAref "MergeFig" \>.
+Figure <ODSAref "MergeFig" />.
 Mergesort is recursively called until subarrays of size 1 have been
 created, requiring log <i>n</i> levels of recursion.
 These subarrays are merged into subarrays of size 2, which are in
@@ -272,7 +272,7 @@ With some difficulty, an algorithm can be
 devised that alternates between two arrays.  A much simpler approach
 is to copy the sorted sublists to the auxiliary array first, and then
 merge them back to the original array.
-Figure <ODSAref "Mergesortbasic" \> is a complete implementation for
+Figure <ODSAref "Mergesortbasic" /> is a complete implementation for
 mergesort following this approach.
 
 <figure>
@@ -307,7 +307,7 @@ Standard implementation for Mergesort.
 
 <p>
 An optimized Mergesort implementation is shown in
-Figure <ODSAref "MergsortOpt" \>.
+Figure <ODSAref "MergsortOpt" />.
 It reverses the order of the second subarray during the initial copy.
 Now the current positions of the two subarrays work inwards from the
 ends, allowing the end of each subarray to act as a sentinel for the
