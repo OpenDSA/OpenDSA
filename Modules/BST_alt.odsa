@@ -12,6 +12,7 @@
       position: relative;
       width: 500px;
       height: 300px;
+	  center: true;
     }
     svg {
       height: 600px;

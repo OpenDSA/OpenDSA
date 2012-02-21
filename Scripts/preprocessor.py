@@ -421,8 +421,8 @@ def parseMod(filename, modDir, targetDir, col, table):
             else:
                avfile = os.path.basename(address)
                res = embedlocal(address)
-               name=res[0]+'-'+res[1]+'-'+res[2]
-               nameh= name+'-hide' 
+               name=res[0]+'+'+res[1]+'+'+res[2]
+               nameh= name+'+hide' 
                line = line.replace('<ODSAembed "hide">'+address,show_code('example%s'%cpt, name)+hide_code('example%s'%cpt, nameh)) 
                line = line.replace('</ODSAembed>','')
       #in case the embed has a label
@@ -437,8 +437,8 @@ def parseMod(filename, modDir, targetDir, col, table):
             else:
                avfile = os.path.basename(address)
                res = embedlocal(address)
-               name=res[0]+'-'+res[1]+'-'+res[2]
-               nameh= name+'-hide'
+               name=res[0]+'+'+res[1]+'+'+res[2]
+               nameh= name+'+hide'
                line = line.replace(emval+'\">'+address,show_code('example%s'%cpt, name, lab)+hide_code('example%s'%cpt, nameh, lab))
                line = line.replace('</ODSAembed>','')
          else:
@@ -490,11 +490,11 @@ def parseMod(filename, modDir, targetDir, col, table):
 
 def show_code(divID, name, val='Show Exercise'):
    val = 'Show %s'%val[1:]
-   return '<input type="button" name="'+name+'" value="'+val+'" id="'+divID+'-show" class="showLink" style="background-color:#f00;"/>\n<div id="'+divID+'" class="more">\n'
+   return '<input type="button" name="'+name+'" value="'+val+'" id="'+divID+'+show" class="showLink" style="background-color:#f00;"/>\n<div id="'+divID+'" class="more">\n'
 
 def hide_code(divID, name, val='Hide Exercise'):
    val = 'Hide %s'%val[1:]
-   return '<input type="button" name="'+name+'" value="'+val+'" id="'+divID+'-hide" class="hideLink" style="background-color:#f00;"/>\n</div>'
+   return '<input type="button" name="'+name+'" value="'+val+'" id="'+divID+'+hide" class="hideLink" style="background-color:#f00;"/>\n</div>'
 
 
 
