@@ -1,6 +1,5 @@
 RM = rm
 TARGET = build
-KHAN = ../khan-exercises
 
 all: target
 
