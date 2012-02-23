@@ -8752,7 +8752,7 @@ IEHtml5.init();
 var VideoViews = {
 init: function() {
 var a = 2.4637851937509475e-13 * Math.exp(3.584901929640884e-11 * +(new Date)), b = addCommas("" + Math.round(a));
-$("#page_num_visitors").append(b), $("#page_visitors").css("display", "inline");
+//$("#page_num_visitors").append(b), $("#page_visitors").css("display", "inline");
 }
 };
 
@@ -9637,7 +9637,7 @@ GoalObjectiveAnyVideo: function(a) {
 return "/";
 },
 GoalObjectiveExerciseProficiency: function(a) {
-return "/exercise/" + a.internal_id;
+return "/build/" + a.internal_id;
 },
 GoalObjectiveAnyExerciseProficiency: function(a) {
 return "/exercisedashboard";
@@ -9735,7 +9735,7 @@ return a.type == c;
 },
 findActiveGoal: function() {
 var a = null;
-return window.location.pathname.indexOf("/exercise") === 0 && window.userExerciseName ? a = this.findGoalWithObjective(userExerciseName, "GoalObjectiveExerciseProficiency", "GoalObjectiveAnyExerciseProficiency") : window.location.pathname.indexOf("/video") === 0 && typeof Video.readableId != "undefined" && (a = this.findGoalWithObjective(Video.readableId, "GoalObjectiveWatchVideo", "GoalObjectiveAnyVideo")), a === null && (a = this.at(0)), a;
+return window.location.pathname.indexOf("/build") === 0 && window.userExerciseName ? a = this.findGoalWithObjective(userExerciseName, "GoalObjectiveExerciseProficiency", "GoalObjectiveAnyExerciseProficiency") : window.location.pathname.indexOf("/video") === 0 && typeof Video.readableId != "undefined" && (a = this.findGoalWithObjective(Video.readableId, "GoalObjectiveWatchVideo", "GoalObjectiveAnyVideo")), a === null && (a = this.at(0)), a;
 },
 processGoalContext: function() {
 return {

@@ -8752,7 +8752,7 @@ IEHtml5.init();
 var VideoViews = {
 init: function() {
 var a = 2.4637851937509475e-13 * Math.exp(3.584901929640884e-11 * +(new Date)), b = addCommas("" + Math.round(a));
-$("#page_num_visitors").append(b), $("#page_visitors").css("display", "inline");
+//$("#page_num_visitors").append(b), $("#page_visitors").css("display", "inline");
 }
 };
 
