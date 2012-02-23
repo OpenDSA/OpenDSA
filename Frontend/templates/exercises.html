@@ -14,8 +14,7 @@
 {% macro exercise_dashboard(review_drawer=False, review_statement='', review_call_to_action='') -%}
     <div class="dashboard-header">
         <div class="dashboard-nav">
-            <span class="selected"><a href="#">Knowledge Map{#% if App.offline_mode %#} (<em>not supported in offline mode</em>){#% endif %#}</a></span> |
-            <span class="menu"><a href="/profile">Vital Statistics</a></span>
+            <span class="selected"><a href="#">Knowledge Map</a></span> 
         </div>
         <div class="dashboard-title"><img src="http://127.0.0.1:8000/OpenDSA/static/images/dashboard-icon-active.png" class="dashboard-icon" width=22 height=22 /> Exercises <a href="#" class="collapse-drawer toggle-drawer"><img src="http://127.0.0.1:8000/OpenDSA/static/images/expand-left.png" width="25" height="25"/></a></div>
             <a href="#" class="expand-drawer toggle-drawer"><img src="http://127.0.0.1:8000/OpenDSA/static/images/expand-right.png" width="25" height="25" /></a>
@@ -36,15 +35,15 @@
        </div>
        <div class="exercise-list">
         <span class="exercise-sublist dashboard-suggested-exercises hide-on-dashboard-filter">
-        <h3>Suggested Exercises <span class="exercise-filter-count"></span></h3>
+        <h3>Suggested Modules <span class="exercise-filter-count"></span></h3>
          <div class="exercise-content suggested-exercises-content"></div>
         </span>
         <span class="exercise-sublist dashboard-recent-exercises hide-on-dashboard-filter">
-         <h3>Recent Exercises <span class="exercise-filter-count"></span></h3>
+         <h3>Recent Modules<span class="exercise-filter-count"></span></h3>
          <div class="exercise-content recent-exercises-content"></div>
         </span>
         <span class="exercise-sublist dashboard-all-exercises">
-         <h3>All Exercises <span class="exercise-filter-count"></span>
+         <h3>All Modules <span class="exercise-filter-count"></span>
            <span class="subheader exercise-all-exercises">(<a href="#" class="exercise-all-exercises-text">Show All</a>)</span>
          </h3>
          <div class="exercise-content all-exercises-content"></div>
