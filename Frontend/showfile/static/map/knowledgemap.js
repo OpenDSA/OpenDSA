@@ -100,7 +100,7 @@ function KnowledgeMapInitGlobals() {
         },
 
         url: function() {
-            return "/OpenDSA/build/" + this.get("name");
+            return "/static/" + this.get("name")+".html";  //until we find a way to create a build folder in sitestatic
         },
 
         adminUrl: function() {

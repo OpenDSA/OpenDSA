@@ -2,11 +2,9 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/Organization"
     xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:og="http://opengraphprotocol.org/schema/"
-    xmlns:fb="http://www.facebook.com/2008/fbml" {{ data_require }}>
       <head>
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
 
-        <!--[if lte IE 6]><script src="/javascript/ie-warning.js"></script><script>window.onload=function(){e("/images/ie-warning/")}</script><![endif]-->
 
         <script type="text/javascript">
             var _sf_startpt=(new Date()).getTime(); {# for Chartbeat Analytics #}
@@ -21,7 +19,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         {%- endif %}
         <meta name="description" content="{% block meta_description -%}
-        Khan Academy is on a mission to provide a free world-class education to anyone anywhere. With over 2,600 videos covering everything from arithmetic to physics, finance, and history and 200 practice exercises, we're helping students learn whatever they want, whenever they want, at their own pace.
         {%- endblock %}" />
         <meta name="keywords" content="{% block meta_keywords %}khan academy, learn, videos, lectures, practice, exercises{% endblock %}" />
         {# Allows the KA FB Page Admins to see the KA stats for FB Like in FB insights START -#}
@@ -83,37 +80,8 @@
             <header>
                 <div id="top-header">
                     <div id="top-header-links">
-                        <span class="page_links" id="page_auth">
-                            {% if logged_in %}
-                                <span id="user-info" class="badge-target">
-                                    {{ user.user_info(username, user_data) }}
-                                </span>
-                                <span class="separator"></span>
-                                <a id="page_logout" href="{{ logout_url|escape }}">Logout</a>
-                            {% else %}
-                                <a class="badge-target" href="{{ login_url|escape }}">Login</a>
-                            {% endif %}
-                            <span class="separator"></span>
-                            <a href="/contribute" id="donate-link">Donate</a>
-                        </span>
                         <div class="clear"></div>
                         <div id="nav-and-search">
-                            <div id="sitewide-navigation">
-                                <nav>
-                                  <span class="links">
-                                      <a href="/#browse" {% if selected_nav_link == "watch" %}class="selected watch-link"{% else %}class="watch-link"{% endif %}>Watch</a>
-                                    <a href="/exercisedashboard?k" {% if selected_nav_link == "practice" %}class="selected practice-link"{% endif %}>Practice</a>
-                                    <a href="/class_profile" {% if selected_nav_link == "coach" %}class="selected coach-link"{% endif %}>Coach</a>
-                                    <a href="/contribute" {% if selected_nav_link == "contribute" %}class="selected contribute-link"{% endif %}>Volunteer</a>
-                                    <a href="/about" {% if selected_nav_link == "about" %}class="selected about-link"{% endif %}>About</a>
-                                    </span>
-                                </nav>
-                            </div>
-                            <div id="search-box">
-                                <form id="page_search" action="/search">
-                                    <input id="search-input" type="text" placeholder="Search for a video or playlist" name="page_search_query" value='{{page_search_query|escape}}' class="ui-corner-all placeholder" /><input type="submit" value=" " id="search-submit" />
-                                </form>
-                            </div>
                             <div class="clear"></div>
                         </div>
                 </div>

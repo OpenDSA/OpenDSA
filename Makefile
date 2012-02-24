@@ -1,6 +1,5 @@
 RM = rm
 TARGET = build
-KHAN = ../khan-exercises
 
 all: target
 
@@ -18,5 +17,4 @@ target:
 	cp Modules/MIT-license.html $(TARGET)
 	-mkdir $(TARGET)/Images
 	cp Modules/Images/* $(TARGET)/Images
-	cp khan-site.html lib/khan-exercises/exercises
 	python Scripts/preprocessor.py  -c="OpenDSA Test Textbook" Modules/ $(TARGET)
