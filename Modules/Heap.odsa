@@ -21,7 +21,7 @@ Priority is indicated by a particular value associated with the job
 
 <p>
 When a collection of objects is organized by importance or priority,
-we call this a <OpenDSA "priority queue" />.
+we call this a <ODSAdef "priority queue" />.
 A normal queue data structure will not implement a priority queue
 efficiently because search for the element with highest priority will
 take &Theta;(<i>n</i>) time.

@@ -37,7 +37,7 @@ time into the tree structure.
 
 <p>
 Heapsort is based on the heap data structure presented in
-Module <ODSAref "Heaps" />.
+Module <ODSAref "Heap" />.
 Heapsort has all of the advantages just listed.
 The complete binary tree is balanced, its array representation is
 space efficient, and we can load all values into the tree at once,
@@ -54,7 +54,7 @@ Module <ODSAref "ExternalSort" />.
 <p>
 A sorting algorithm based on max-heaps is quite straightforward.
 First we use the heap building algorithm of Module
-<ODSAref "Heaps" /> to convert the array into max-heap order.
+<ODSAref "Heap" /> to convert the array into max-heap order.
 Then we repeatedly remove the
 maximum value from the heap, restoring the heap property each time
 that we do so, until the heap is empty.
@@ -93,7 +93,7 @@ void heapsort(E[] A) {
 </center>
 
 <figcaption>
-<ODSAfig "Heapsort" />
+<ODSAfig "HeapSortFig" />
 An illustration of Heapsort.
 The top row shows the values in their
 original order.  The second row shows the values after building the
@@ -112,7 +112,7 @@ Heapsort continues in this manner until the entire array is sorted.
 
 <p>
 Because building the heap takes &Theta;(<i>n</i>) time
-(see Module <ODSAref "Heaps" />), and because <i>n</i> deletions
+(see Module <ODSAref "Heap" />), and because <i>n</i> deletions
 of the maximum element each take &Theta;(log <i>n</i>) time,
 we see that the entire Heapsort operation takes
 &Theta;(<i>n</i> log <i>n</i>) time in the worst,
@@ -145,14 +145,6 @@ Thus, only a relatively small fraction of the edges need be sorted.
 Now test yourself to see how well you understand Heapsort.
 Can you reproduce its behavior?
 </p>
-
-<center>
- <iframe src="../AV/heapsort-proficiency.html"
-	 type="text/javascript" width="800" height="520"
-	 frameborder="0" marginwidth="0" marginheight="0"
-	 scrolling="no">
-</iframe>
-</center>
 
 <ODSAembed "hide" "Proficiency Exercise">../AV/heapsort-proficiency.html</ODSAembed>
 
