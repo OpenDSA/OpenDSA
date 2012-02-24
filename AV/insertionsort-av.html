@@ -179,7 +179,7 @@ form {
   function inssort(start, incr) {
     var i, j;
     av.umsg("Sorting the subarray");
-    for (i=start+incr; i<arr.size(); i+=incr) {
+    for (i=start+incr; i<arr.size()-1; i+=incr) {
       setBlue(i);
       for (j=i; j>=incr; j-=incr) {
         setBlue(j-incr);

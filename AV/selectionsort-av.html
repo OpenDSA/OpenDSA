@@ -175,26 +175,46 @@ form {
     arr.css(index, {"background-color": "#ddf" });
   };
   
-  // Insertion sort using increments//my changes
-  function selsort(start, incr) {
-    var i, j;
+  var setGreen = function(index) {
+    arr.css(index, {"background-color": "#00FF00" });
+  };
+  
+  var setPurple = function(index) {
+    arr.css(index, {"background-color": "FF00FF" });
+  };
+
+  
+  // Selection sort
+  function selsort() {
+    var i, j, k, min;
     av.umsg("Sorting the subarray");
-    for (i=start+incr; i<arr.size(); i+=incr) {
-      setBlue(i);
-      for (j=i; j>=incr; j-=incr) {
-        setBlue(j-incr);
-	av.step();
-        if (arr.value(j) < arr.value(j-incr)) {
-          arr.swap(j, j-incr); // swap the two indices
-          av.step();
-	}
+    for (i=0; i<arr.size(); i+=1) {
+      //setBlue(i);
+	  min = i;
+
+      for (j=i; j<arr.size(); j+=1) {
+        setBlue(j);
+	    av.step();
+        if (arr.value(min) > arr.value(j)) {
+		  min = j;	
+          setGreen(min);		  
+	    }
+		
         else {
-  	  arr.highlight([j-incr, j]);
-          break; // Done pushing element, leave for loop
+		  //arr.highlight([j-1, j]);
+          //break; // Done pushing element, leave for loop
+		  setBlue(min);
         }
-	arr.highlight(j);
+	    //arr.highlight(j);
       }
-      arr.highlight(j);
+	  
+	  arr.swap(i, min); // swap the two indices	  
+      av.step();   
+	  for (k = i+1; k < arr.size(); k++){
+      	arr.css(k, {"background-color": "#C0C0C0"});	
+	  }	
+      //arr.highlight(j);
+	  arr.highlight(i);
     }
   }
 
@@ -222,7 +242,7 @@ form {
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
       var i, incr;
       // PUT STUFF HERE TO INVOKE YOUR SORT
-	  selsort(0, 1);
+	  selsort();
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
     }
