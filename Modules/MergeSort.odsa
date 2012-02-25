@@ -19,7 +19,7 @@ and has good performance both in the asymptotic
 sense and in empirical running time.
 Surprisingly, even though it is based on a simple concept,
 it is relatively difficult to implement in practice.
-Figure <ODSAref "MergeFig" /> illustrates Mergesort.
+Figure <ODSAref "MergeFig" \> illustrates Mergesort.
 A pseudocode sketch of Mergesort is as follows:
 <p>
 
@@ -114,9 +114,10 @@ output list until no more input elements remain.
 
   var speed = 100; // Animation default speed
   
-  var theArray = [11, 78, 13, 79, 44, 98, 45, 32]; // 20, 12, 54, 
-  
-  
+  var theArray = [11, 78, 13, 79, 44, 98, 45, 32]; 
+  //var theArray = [11, 78, 13, 79, 44, 98, 45, 32, 5, 17, 20, 100, 64, 39, 92, 10];
+  //var theArray = [11, 78, 13, 79, 44, 98, 45, 32, 5, 17];
+  //var theArray = [11, 78, 13, 79, 44];
   
   var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
   var DARK = "black";                // Make array elements dark again
@@ -133,8 +134,11 @@ output list until no more input elements remain.
    * av - a JSAV container
    * arr - a JSAV array
    * subArray - JavaScript array used to create future JSAV subarrays
+   * origLength - the length of the original array to be split
+   * level - the current depth of the recursion
+   * arrNum - the column number of the current array
    */
-  function split(av, arr, subArray) {
+  function split(av, arr, subArray, origLength, level, arrNum) {
   
 	av.step();
 
@@ -155,21 +159,72 @@ output list until no more input elements remain.
 	// General recursive case
 	if (subArray.length > 1)
 	{
-	  // Find the middle of the array
-	  var midPoint = subArray.length / 2;
+	  // Find the middle of the array, if can't split evenly make the first array larger
+	  var midPoint = Math.ceil(subArray.length / 2);
+	
+	  level += 1;
+	  var childArr1Num = arrNum * 2 - 1;
+	  var childArr2Num = arrNum * 2;
 	
 	  // Create and display sub-arrays
 	  var subArr1 = subArray.slice(0, midPoint);
 	  var avSubArr1 = av.ds.array(subArr1, {indexed: true});
+	  setPosition(avSubArr1, level, childArr1Num, subArr1.length, origLength);
 	  
 	  var subArr2 = subArray.slice(midPoint, subArray.length);
 	  var avSubArr2 = av.ds.array(subArr2, {indexed: true});
+	  setPosition(avSubArr2, level, childArr2Num, subArr2.length, origLength);
 	
 	  // Split both sub-arrays
-	  split(av, avSubArr1, subArr1);
-	  split(av, avSubArr2, subArr2);
+	  split(av, avSubArr1, subArr1, origLength, level, childArr1Num);
+	  split(av, avSubArr2, subArr2, origLength, level, childArr2Num);
 	}
   }
+  
+  function setPosition(arr, level, arrNum, numBlocksInArr, origLength) {
+
+	var blockHeight = 47;
+	var blockWidth = 47;
+	var width = 760;
+	
+	// Calculate the number of arrays in the current row / level
+	var numSubArrInRow = Math.pow(2, level - 1);
+	
+	// Calculate the left value of the current array by dividing 
+	// the width of the canvas by twice the number of arrays that should appear in that row: (width / (2 * numSubArrInRow))
+	// Odd multiples of the resulting value define a line through the center of each array in the row
+	// and are found using the formula (2 * arrNum - 1)
+	// Note: while it is not used, even multiples define the center between two consecutive arrays
+	// Since we want the left value rather than the center value of each array we calculate the length each array (blockWidth *  numBlocksInArr), divide this value in half and subtract it to find the left value
+	
+	var left = (width / (2 * numSubArrInRow)) * (2 * arrNum - 1) - (blockWidth * numBlocksInArr / 2);
+	
+	// Set the left value for all arrays in a row
+	arr.element.css({"left": left});
+	
+	// The last array in each row is a block element (display: block) with top = 0px
+	// However, all other elements should be made inline (display: inline) to
+	// prevent other content from being pushed down the page
+	// Unfortunately, this places arrays on top of each other and must be fixed manually	
+		
+	if (arrNum != 1)
+	{
+		var top = -61;
+		
+		if (level > 2 && arrNum > (numSubArrInRow / (level - 1)))
+		{
+			var vertSeparator = 32;
+			
+			// The depth of the recursion is (1 + log base 2 of the length of the original array)
+			var totalLevels = Math.ceil(Math.log(origLength) / Math.log(2)) + 1;
+		
+			top += (top - vertSeparator) * (totalLevels - level);
+		}
+		
+		arr.element.css({"top": top + "px", "display": "inline"});
+	}
+  }
+  
   
 
 </script>
@@ -190,7 +245,7 @@ output list until no more input elements remain.
   
   var arr = av.ds.array(theArray, {indexed: true});
   
-  split(av, arr, theArray);
+  split(av, arr, theArray, theArray.length, 1, 1);
 
   av.recorded();
 })(jQuery);
@@ -261,7 +316,7 @@ simple to implement, presents another difficulty.
 The merge process ends with the sorted list in the auxiliary array.
 Consider how the recursive nature of Mergesort breaks
 the original array into subarrays, as shown in
-Figure <ODSAref "MergeFig" />.
+Figure <ODSAref "MergeFig" \>.
 Mergesort is recursively called until subarrays of size 1 have been
 created, requiring log <i>n</i> levels of recursion.
 These subarrays are merged into subarrays of size 2, which are in
@@ -272,7 +327,7 @@ With some difficulty, an algorithm can be
 devised that alternates between two arrays.  A much simpler approach
 is to copy the sorted sublists to the auxiliary array first, and then
 merge them back to the original array.
-Figure <ODSAref "Mergesortbasic" /> is a complete implementation for
+Figure <ODSAref "Mergesortbasic" \> is a complete implementation for
 mergesort following this approach.
 
 <figure>
@@ -307,7 +362,7 @@ Standard implementation for Mergesort.
 
 <p>
 An optimized Mergesort implementation is shown in
-Figure <ODSAref "MergsortOpt" />.
+Figure <ODSAref "MergsortOpt" \>.
 It reverses the order of the second subarray during the initial copy.
 Now the current positions of the two subarrays work inwards from the
 ends, allowing the end of each subarray to act as a sentinel for the
