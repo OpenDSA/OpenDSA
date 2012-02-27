@@ -7,13 +7,23 @@
 <style>
 
 #container {
-  width: 770px;
+  width: 385px;
   height: 465px;
   border: 1px solid black;
   background-color: #efe;
   padding: 10px;
   overflow: hidden;
 }
+
+#bottom {
+  width: 790px;
+  height: 48px;
+  border: 1px solid black;
+  background-color: #ddd;
+  padding: 10px;
+  overflow: hidden;
+}
+
 
 div h1 {
   background-color: #efe;
@@ -49,55 +59,63 @@ form {
 </head>
 
 <body>
-<div id="container">
- 
- <!-- <input type="button" id="about" name="about" value="About" style="margin-top:10px;"/>
-  <a class="jsavsettings" href="#">Settings</a>
-  <h1 style="">Insertion Sort Visualization</h1> -->
-  
-  <table cellpadding="2" width="790">
-  		<tr>
-  			<td>
-  				<p> Hi </p>
-  			</td>
-  			<td>
-  				<p> 2nd cell </p>
-  			</td>
-  		</tr>
-  </table>
-  
-<!--
-  <form id="ssperform">
-    <p>
-      <input type="button" name="run" value="Run" />
-      <input type="button" name="reset" value="Reset" />
-      <label for="arraysize">&nbsp;List size:&nbsp;</label>
-      <select id="arraysize">
-        <option value = 5>5</option>
-        <option value = 6>6</option>
-        <option value = 7>7</option>
-        <option selected value = 8>8</option>
-        <option value = 9>9</option>
-        <option value = 10>10</option>
-        <option value = 11>11</option>
-        <option value = 12>12</option>
-        <option value = 13>13</option>
-        <option value = 14>14</option>
-        <option value = 15>15</option>
-        <option value = 16>16</option>
-      </select>
-      <label for="arrayValues">&nbsp;Your values:&nbsp;</label>
-      <input size="60" name="arrayValues" id="arrayValues" type="text" />
-    </p>
-  </form>
-  -->
-  
+
+	<div id="container" style="float:left">
+
+		<p> Hash Table </p>
+	
+	</div>
+
+	<div id="container"> 
+
+		<p> Select a table size </p>
+	
+	</div>
+
+	<div id="bottom">
+	
+		<form id="ssperform">
+			<p align="center">
+				<select id="arraysize">
+					<option selected value = 0>Table Size</option>
+					<option value = 1>1</option>
+					<option value = 2>2</option>
+					<option value = 3>3</option>
+					<option value = 4>4</option>
+					<option value = 5>5</option>
+					<option value = 6>6</option>
+					<option value = 7>7</option>
+					<option value = 8>8</option>
+					<option value = 9>9</option>
+					<option value = 10>10</option>
+					<option value = 11>11</option>
+					<option value = 12>12</option>
+					<option value = 13>13</option>
+					<option value = 14>14</option>
+					<option value = 15>15</option>
+					<option value = 16>16</option>
+				</select>
+				<label for="input">&nbsp;Input:</label>
+				<input size="10" name="input" id="input" type="text" />
+				&nbsp;
+				<input type="button" name="hash" value="Hash" />
+				<input type="button" name="restart" value="Restart" />
+				<input type="button" name="help" value="Help" />
+			</p>
+		</form>
+		
+	</div>
+
+
+<!--  
   <div id="avcontainer">
     <span class="jsavcounter"></span>
     <div class="jsavcontrols"></div>
     <p class="jsavoutput jsavline" readonly="readonly"></p>
-  </div> <!--avcontainer-->
-</div> <!--container-->
+  </div> <!--avcontainer
+</div> <!--container
+-->
+
 
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
