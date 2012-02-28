@@ -9219,7 +9219,7 @@ hash: {}
 hash: {}
 }) : i === o && (i = n.call(b, "badgeIcon", {
 hash: {}
-})), h += p(i) + '" height="80" width="76">\n    <div class="exercise-goal-wrapper"><img class="exercise-goal-icon" style="display: none" src="/static/images/flag.png"></div>\n  </a>\n  <div class="energy-points-badge">', i = c.points || b.points, typeof i === m ? i = i.call(b, {
+})), h += p(i) + '" height="80" width="76">\n    <div class="exercise-goal-wrapper"><img class="exercise-goal-icon" style="display: none" src="/OpenDSA/OpenDSA/Frontend/static/images/flag.png"></div>\n  </a>\n  <div class="energy-points-badge">', i = c.points || b.points, typeof i === m ? i = i.call(b, {
 hash: {}
 }) : i === o && (i = n.call(b, "points", {
 hash: {}
@@ -9231,7 +9231,7 @@ hash: {}
 hash: {}
 }) : i === o && (i = n.call(b, "display_name", {
 hash: {}
-})), h += p(i) + '</a></div>\n  <span class="exercise-show simple-button action-gradient" data-id="name" style="display:none;"><img src="/static/images/map-target.png" title="Show in map" alt="Show in map"></span>\n  ', i = c.streakBar || b.streakBar, j = c["with"], k = l.program(3, g, e), k.hash = {}, k.fn = k, k.inverse = l.noop, i = j.call(b, i, k);
+})), h += p(i) + '</a></div>\n  <span class="exercise-show simple-button action-gradient" data-id="name" style="display:none;"><img src="/OpenDSA/OpenDSA/Frontend/static/images/map-target.png" title="Show in map" alt="Show in map"></span>\n  ', i = c.streakBar || b.streakBar, j = c["with"], k = l.program(3, g, e), k.hash = {}, k.fn = k, k.inverse = l.noop, i = j.call(b, i, k);
 if (i || i === 0) h += i;
 return h += "\n</div>\n", h;
 });
@@ -10136,7 +10136,7 @@ $.each(GoalCreator.objectives, function(a, b) {
 b.type == "GoalObjectiveWatchVideo" && b.id == c && (d = !0);
 });
 var e = $(b).children(".video-goal-icon");
-d ? e.length === 0 && $('<span class="video-goal-icon"><img src="/static/images/flag.png"></span>').insertBefore($(b).children("span")[0]) : e.detach();
+d ? e.length === 0 && $('<span class="video-goal-icon"><img src="/OpenDSA/OpenDSA/Frontend/static/images/flag.png"></span>').insertBefore($(b).children("span")[0]) : e.detach();
 });
 },
 onSelectedObjectiveClicked: function(a, b, c, d) {

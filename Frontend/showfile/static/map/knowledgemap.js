@@ -10,7 +10,7 @@ function KnowledgeMapInitGlobals() {
                 Exercise: {
                         Proficient: "/static/images/node-complete.png?" + KA_VERSION,
                         Review: "/static/images/node-review.png?" + KA_VERSION,
-                        Suggested: "/static/images/node-suggested.png?" + KA_VERSION,
+                        Suggested: "/OpenDSA/OpenDSA/Frontend/static/images/node-suggested.png?" + KA_VERSION,
                         Normal: "/static/images/node-not-started.png?" + KA_VERSION
                           },
                 Summative: {
@@ -31,7 +31,7 @@ function KnowledgeMapInitGlobals() {
                         // http://gmaps-samples-v3.googlecode.com/svn/trunk/planetary-maptypes/planetary-maptypes.html
                         return KnowledgeMapGlobals.getHorizontallyRepeatingTileUrl(coord, zoom,
                                 function(coord, zoom) {
-                                  return "http://127.0.0.1:8000/OpenDSA/static/images/map-tiles/field_" +
+                                  return "http://algoviz-beta.cc.vt.edu/OpenDSA/OpenDSA/Frontend/static/images/map-tiles/field_" +
                                      Math.floor(Math.random() * 4 + 1) + ".jpg";
                                 });
                     },
@@ -69,7 +69,7 @@ function KnowledgeMapInitGlobals() {
             var s_prefix = this.get("summative") ? "node-challenge" : "node";
 
             if (this.get("status") == "Suggested") {
-                this.set({"isSuggested": true, "badgeIcon": "/static/images/" + s_prefix + "-suggested.png?" + KA_VERSION});
+                this.set({"isSuggested": true, "badgeIcon": "/OpenDSA/OpenDSA/Frontend/static/images/" + s_prefix + "-suggested.png?" + KA_VERSION});
             } else if (this.get("status") == "Review") {
                 this.set({"isSuggested": true, "isReview": true, "badgeIcon": "/static/images/node-review.png?" + KA_VERSION});
             } else if (this.get("status") == "Proficient") {
@@ -100,7 +100,7 @@ function KnowledgeMapInitGlobals() {
         },
 
         url: function() {
-            return "/static/" + this.get("name")+".html";  //until we find a way to create a build folder in sitestatic
+            return "http://algoviz-beta.cc.vt.edu/OpenDSA/OpenDSA/build/" + this.get("name")+".html";  //until we find a way to create a build folder in sitestatic
         },
 
         adminUrl: function() {
@@ -997,7 +997,7 @@ function KnowledgeMap(params) {
                 node.latLng,
                 [   "<a data-id='" + node.name + "' class='nodeLabel'>" +
                     "<img class='node-icon' src=''/>" +
-                    "<img class='exercise-goal-icon' style='display: none' src='/static/images/flag.png'/>" +
+                    "<img class='exercise-goal-icon' style='display: none' src='/OpenDSA/OpenDSA/Frontend/static/images/flag.png'/>" +
                     "<div>" + node.display_name + "</div></a>"],
                 "",
                 node.summative ? 2 : 1,

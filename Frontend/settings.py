@@ -2,7 +2,7 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
+BASE_URL = 'http://algoviz-beta.cc.vt.edu/OpenDSA/OpenDSA/Frontend/'
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'opendsa.db',                      # Or path to database file if using sqlite3.
+        'NAME': '/home/algoviz-beta/OpenDSA/OpenDSA/Frontend/opendsa.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -56,11 +56,11 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = 'sitestatic/'
+STATIC_ROOT = '/home/algoviz-beta/OpenDSA/OpenDSA/Frontend/sitestatic/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = 'http://algoviz-beta.cc.vt.edu/OpenDSA/OpenDSA/Frontend/static/'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
@@ -69,8 +69,8 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    "showfile/static/",
-    "../build/",
+    "/home/algoviz-beta/OpenDSA/OpenDSA/Frontend/showfile/static/",
+    "/home/algoviz-beta/OpenDSA/OpenDSA/build/",
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -103,10 +103,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'Frontend.urls'
+ROOT_URLCONF = 'urls' #'Frontend.urls'
 
 TEMPLATE_DIRS = (
-    'templates'
+    '/home/algoviz-beta/OpenDSA/OpenDSA/Frontend/templates'
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

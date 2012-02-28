@@ -26,32 +26,20 @@ def render_to_response(filename, context={},mimetype=default_mimetype, request =
 
 def index(request):
     mod_list = list(ODSAmod.objects.all())
-
-    #output = ', '.join([p.title for p in mod_list])
-    #t = loader.get_template('showfile/index.html')
-    #c = Context({
-    #    'mod_list': mod_list,
-    #})
-    #return HttpResponse(t.render(c))
     return render_to_response('showfile/index.html',{'mod_list': mod_list,})
-    #return HttpResponse("Hello, world. You're at the ODSA Home.")
 
 def home(request):
-    return HttpResponse("Hello, world. You're at the ODSA- Home.")
+     mod_list = list(ODSAmod.objects.all()) 
+     return HttpResponse("Hello World -. You're at the OpenDSA  Home.!")
 
 
 def modules(request,tag):
     mod_list = list(ODSAmod.objects.all())
-    #t = loader.get_template('showfile/build/%s.html'%tag)
-    #c = Context({
-    #    'mod_list': mod_list,
-    #})
-    #return HttpResponse(t.render(c))
     return render_to_response('showfile/build/%s.html'%tag,{'mod_list': mod_list,})
-    #return HttpResponse("Hello, world. You're at the ODSA-Home.")
 
 def viewallexercises(request):
-        user_data = UserData.current() or UserData.pre_phantom()
+        #user_data = UserData.current() or UserData.pre_phantom()
+        user_data = list(UserData.objects.all())[0] 
         user_exercise_graph = UserExerciseGraph.get(user_data)
 
         show_review_drawer =False # (not user_exercise_graph.has_completed_review())
