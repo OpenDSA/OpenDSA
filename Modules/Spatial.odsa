@@ -1,0 +1,93 @@
+<div id="content">
+<ODSAtitle>Spatial Data Structures</ODSAtitle>
+<ODSAauthor>Clifford A. Shaffer</ODSAauthor>
+<ODSAyear>2012</ODSAyear>
+<ODSAprereq "BST" />
+<ODSAprereq "Trie" />
+
+<p>
+Search trees such as BSTs, AVL trees, splay trees, 2-3 Trees, B-trees,
+and tries are designed for searching on a one-dimensional key.
+A typical example is an integer key, whose one-dimensional range
+can be visualized as a number line.
+These various tree structures can be viewed as dividing this
+one-dimensional number line into pieces.
+</p>
+
+<p>
+Some databases require support for multiple keys.
+In other words, records can be searched for using any one of several
+key fields, such as name or ID number.
+Typically, each such key has its own one-dimensional index,
+and any given search query searches one of these independent
+indices as appropriate.
+</p>
+
+<p>
+A multidimensional search key presents a rather different concept.
+Imagine that we have a database of city records, where
+each city has a name and an xy-coordinage.
+A BST or splay tree provides good performance for searches on city
+name, which is a one-dimensional key.
+Separate BSTs could be used to index the <i>x</i>-and
+<i>y</i>-coordinates.
+This would allow us to insert and delete cities, and locate them by
+name or by one coordinate.
+However, search on one of the two coordinates is not a natural way to
+view search in a two-dimensional space.
+Another option is to combine the xy-coordinates into a single
+key, say by concatenating the two coordinates, and
+index cities by the resulting key in a BST.
+That would allow search by coordinate, but would not allow for
+efficient two-dimensional <dfn>range queries<dfn> such as
+searching for all cities within a given distance of a specified
+point.
+The problem is that the BST only works well for one-dimensional keys,
+while a coordinate is a two-dimensional key where neither dimension
+is more important than the other.
+</p>
+
+<p>
+Multidimensional range queries are the defining feature
+of a <dfn>spatial application</dfn>.
+Because a coordinate gives a position in space, it is called
+a <dfn>spatial attribute</dfn>.
+To implement spatial applications efficiently requires the use of
+<dfn>spatial data structures</dfn>.
+Spatial data structures store data objects organized by position and
+are an important class of data structures used in geographic
+information systems, computer graphics, robotics, and many other
+fields.
+</p>
+
+<p>
+This module presents spatial data structures for storing
+point data in two or more dimensions.
+The k-d tree is a natural extension of the BST to
+multiple dimensions.
+It is a binary tree whose splitting decisions alternate among the
+key dimensions.
+Like the BST, the k-d tree uses object space decomposition.
+The PR quadtree uses key space decomposition and so is a form of
+trie.
+It is a binary tree only for one-dimensional keys (in which case it
+is a trie with a binary alphabet).
+For <i>d</i> dimensions it has 2<sup>d</sup> branches.
+Thus, in two dimensions, the PR quadtree has four branches
+(hence the name ``quadtree''), splitting space into four equal-sized
+quadrants at each branch.
+This module also briefly describes two other variations on
+these data structures, the <dfn>bintree</dfn> and the
+<dfn>point quadtree</dfn>.
+These four structures cover all four combinations of object versus key
+space decomposition on the one hand, and multi-level binary versus
+2<sup>d</sup>-way branching on the other.
+</p>
+
+<p>
+There is a brief discussion of spatial data structures
+for storing other types of spatial data at the end.
+</p>
+
+
+</div>
