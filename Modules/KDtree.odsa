@@ -251,9 +251,8 @@ a certain distance <i>d</i> of a given point <var>P</var>.
 We will use Euclidean distance, that is, point <var>P</var> is defined
 to be within distance <i>d</i> of point <var>N</var>
 if<sup><a href="#fn1" id="r1">[1]</a></sup>
+\[\sqrt{(P_x - N_x)^2 + (P_y - N_y)^2} \leq d.\]
 </p>
-
-<ODSAeq "display">\sqrt{(P_x - N_x)^2 + (P_y - N_y)^2} \leq d.</ODSAeq>
 
 <p>
 If the search process reaches a node whose key value for the
@@ -385,7 +384,7 @@ The k-d tree region search method.
 <section>
 <p id="fn1"><a href="#r1">[1]</a>
 A more efficient computation is
-<ODSAeq>(P_x - N_x)^2 + (P_y - N_y)^{2} \leq d^{2}</ODSAeq>.
+\((P_x - N_x)^2 + (P_y - N_y)^{2} \leq d^{2}\).
 This avoids performing a square root function.
 </p>
 </section>
