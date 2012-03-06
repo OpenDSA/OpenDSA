@@ -39,7 +39,7 @@ Another option is to combine the xy-coordinates into a single
 key, say by concatenating the two coordinates, and
 index cities by the resulting key in a BST.
 That would allow search by coordinate, but would not allow for
-efficient two-dimensional <dfn>range queries<dfn> such as
+efficient two-dimensional <dfn>range queries</dfn> such as
 searching for all cities within a given distance of a specified
 point.
 The problem is that the BST only works well for one-dimensional keys,
@@ -61,10 +61,10 @@ fields.
 </p>
 
 <p>
-This module presents spatial data structures for storing
+A number of spatial data structures are used for storing
 point data in two or more dimensions.
-The k-d tree is a natural extension of the BST to
-multiple dimensions.
+The k-d tree (Module <ODSAref "KDtree" />) is a natural extension
+of the BST to multiple dimensions.
 It is a binary tree whose splitting decisions alternate among the
 key dimensions.
 Like the BST, the k-d tree uses object space decomposition.
@@ -73,12 +73,13 @@ trie.
 It is a binary tree only for one-dimensional keys (in which case it
 is a trie with a binary alphabet).
 For <i>d</i> dimensions it has 2<sup>d</sup> branches.
-Thus, in two dimensions, the PR quadtree has four branches
+Thus, in two dimensions, the PR quadtree
+(Module <ODSAref "PRquadtree" />) has four branches
 (hence the name ``quadtree''), splitting space into four equal-sized
 quadrants at each branch.
-This module also briefly describes two other variations on
-these data structures, the <dfn>bintree</dfn> and the
-<dfn>point quadtree</dfn>.
+Two other variations on these data structures are the
+<dfn>bintree</dfn> and the <dfn>point quadtree</dfn>
+(see Module <ODSAref "OtherSpatial" />).
 These four structures cover all four combinations of object versus key
 space decomposition on the one hand, and multi-level binary versus
 2<sup>d</sup>-way branching on the other.

@@ -43,14 +43,14 @@ of two-dimensional points would be stored in a k-d tree.
 
 <figure>
 <center>
-<img src="Images/KDtree.png" alt="Example of a k-d tree" />
+<img src="Images/KDtree.png" height="400" alt="Example of a k-d tree" />
 <br/>
 </center>
 
 <figcaption>
-<ODSAfig "KDtreefig" />
+<ODSAfig "kdExamp" />
 Example of a k-d tree.
-(a) The k-d tree decomposition for a 128 x 128-unit region
+(a) The k-d tree decomposition for a 128 \(\times\) 128-unit region
 containing seven data points.
 (b) The k-d tree for the region of (a).
 </figcaption>
@@ -58,7 +58,7 @@ containing seven data points.
 
 <p>
 In Figure <ODSAref "kdExamp" /> the region containing the points
-is (arbitrarily) restricted to a 128 x 128 square, and
+is (arbitrarily) restricted to a 128 \(\times\) 128 square, and
 each internal node splits the search space.
 Each split is shown by a line, vertical for nodes with
 <i>x</i> discriminators and horizontal for nodes with <i>y</i>
@@ -272,7 +272,7 @@ the query circle.
 
 <figure>
 <center>
-<img src="Images/InCirc.png" alt="Euclidean distance checking" />
+<img src="Images/InCirc.png" height="200" alt="Euclidean distance checking" />
 <br/>
 </center>
 
@@ -334,14 +334,14 @@ the search circle.
 
 <figure>
 <center>
-<img src="Images/KDtree2.png" alt="Example of searching in a k-d tree" />
+<img src="Images/KDtree2.png" height="400" alt="Example of searching in a k-d tree" />
 <br/>
 </center>
 
 <figcaption>
 <ODSAfig "kdSearch" />
 Searching in the k-d tree of Figure <ODSAref "kdExamp" />.
-(a) The k-d tree decomposition for a 128 x 128-unit region
+(a) The k-d tree decomposition for a 128 \(\times\) 128-unit region
 containing seven data points.
 (b) The k-d tree for the region of (a).
 </figcaption>
