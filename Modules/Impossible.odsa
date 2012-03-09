@@ -68,7 +68,7 @@ completely analyze the Collatz function, proving once and for all
 that the code fragment halts for all values of \(n\).
 Doing so may well give us techniques that advance our ability to do
 algorithm analysis in general.
-Unfortunately, proofs from <dfn>computability</dfn &mdash; the branch of
+Unfortunately, proofs from <dfn>computability</dfn> &mdash; the branch of
 computer science that studies what is impossible to do with a computer
 &mdash; compel us to believe that there will always be another
 bit of program code that we cannot analyze.
@@ -276,7 +276,7 @@ Figure <ODSAref "Diag" /> illustrates this argument.
 Illustration for the argument that the number of integer functions
 is uncountable.
 </figcaption>
-<figure>
+</figure>
 
 <h2>The Halting Problem Is Unsolvable</h2>
 
@@ -408,13 +408,13 @@ If <code>Ehalt</code> says that <i>P'</i> will halt, then we know that
 <i>P</i> would halt on input <i>I</i>.
 In other words, we now have a procedure for solving the original
 Halting Problem.
-The only assumption that we made was the existence of \Cref{Ehalt}.
+The only assumption that we made was the existence of <code>Ehalt</code>.
 Thus, the problem of determining if a program will halt on no input
 must be unsolvable.
 </p>
 
 <p class="example">
-For arbitrary program <i>P<i>, does there exist <em>any</em> input for
+For arbitrary program <i>P</i>, does there exist <em>any</em> input for
 which <i>P</i> halts?
 </p>
 

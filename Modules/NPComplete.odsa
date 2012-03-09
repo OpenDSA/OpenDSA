@@ -135,7 +135,7 @@ The idea of "guessing" the right answer to a problem &mdash; or checking
 all possible solutions in parallel to determine which is correct &mdash;
 is called <dfn>non-determinism</dfn>.
 An algorithm that works in this manner is called a
-<dfn>non-deterministic algorithm<dfn>,
+<dfn>non-deterministic algorithm</dfn>,
 and any problem with an algorithm that runs on a non-deterministic
 machine in polynomial time is given a special name:
 It is said to be a problem in NP.
@@ -211,7 +211,7 @@ TRAVELING SALESMAN (2)<br/>
 positive distances assigned to each edge in the graph, and an
 integer \(k\).
 <br/>
-&nbsp;&nbsp;<b>Output<br/>: YES if there is a simple cycle with total
+&nbsp;&nbsp;<b>Output</b>: YES if there is a simple cycle with total
 distance \(\leq k\) containing every vertex in <i>G</i>, and NO
 otherwise.
 </p>
@@ -538,8 +538,8 @@ Let \(C_i = x_1 + x_2 + ... + x_j\) where \(x_1, ..., x_j\) are literals.
 Replace \(C_i\) with \(C_i'\):
 \[(x_1 + y + z) \cdot (x_1 + \overline{y} + z) \cdot
   (x_1 + y + \overline{z}) \cdot (x_1 + \overline{y} + \overline{z})\]
-\noindent where \(y\) and \(z\) are variables not appearing
-in <i>E</e>.
+where \(y\) and \(z\) are variables not appearing
+in <i>E</i>.
 Clearly, \(C_i'\) is satisfiable if and only if
 \((x_1)\) is satisfiable, meaning that \(x_1\) is TRUE.
 </li>
@@ -548,7 +548,7 @@ Clearly, \(C_i'\) is satisfiable if and only if
 \(J = 2\), so \(C_i = (x_1 + x_2)\).
 Replace \(C_i\) with
 \[(x_1 + x_2 + z) \cdot (x_1 + x_2 + \overline{z})\]
-\noindent where \(z\) is a new variable not appearing in \cvar{E}.
+where \(z\) is a new variable not appearing in <i>E</i>.
 This new pair of clauses is satisfiable if and only if \((x_1 + x_2)\)
 is satisfiable, that is, either \(x_1\) or \(x_2\) must be true.
 </li>
@@ -560,7 +560,7 @@ is satisfiable, that is, either \(x_1\) or \(x_2\) must be true.
 \[\cdot (x_{j-2} +
 \overline{z_{j-4}} + z_{j-3}) \cdot (x_{j-1} + x_j +
 \overline{z_{j-3}})\]
-\noindent where \(z_1, ..., z_{j-3}\) are new variables.
+where \(z_1, ..., z_{j-3}\) are new variables.
 </li>
 </ol>
 
@@ -644,7 +644,7 @@ Consider a graph <i>G</i> and a vertex cover <i>S</i> on <i>G</i>.
 Denote by <i>S'</i> the set of vertices in <i>G</i> but not in
 <i>S</i>.
 There can be no edge connecting any two vertices in <i>S'</i>
-because, if there were, then \cvar{S} would not be a vertex cover.
+because, if there were, then <i>S</i> would not be a vertex cover.
 Denote by <i>G'</i> the inverse graph for <i>G</i>, that is, the
 graph formed from the edges not in <i>G</i>.
 If <i>S</i> is of size \(k\), then <i>S'</i> forms a clique of size

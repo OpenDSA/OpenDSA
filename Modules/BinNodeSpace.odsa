@@ -64,10 +64,8 @@ Again assume the tree stores a pointer to the data field.
 Because about half of the nodes are leaves and half internal nodes,
 and because only internal nodes now have child pointers, the
 overhead fraction in this case will be approximately 
-<ODSAeq "space">
-\frac{\frac{n}{2} (2P)}{\frac{n}{2} (2P) + Dn} =
-\frac{P}{P + D}
-</ODSAeq>
+\[\frac{\frac{n}{2} (2P)}{\frac{n}{2} (2P) + Dn} =
+\frac{P}{P + D}\]
 </p>
 
 <p>
@@ -84,7 +82,7 @@ at the leaf nodes, a better implementation would have
 the internal nodes store two pointers and no data
 field while the leaf nodes store only a pointer to the data field.
 This implementation requires
-<ODSAeq "display">\frac{n}{2}2P + \frac{n}{2}(p+d)\)</ODSAeq>
+\[\frac{n}{2}2P + \frac{n}{2}(p+d)\)\]
 units of space.
 If <i>P</i> = <i>D</i>, then the overhead is
 3<i>P</i>/(3<i>P</i> + <i>D</i>) = 3/4.

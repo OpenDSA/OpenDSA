@@ -339,8 +339,8 @@ matrix <i>A</i> as follows:
 \[
 \left[
 \begin{array}{cc}
-0 &\svar{A}\\
-\svar{A}^{\rm T}& 0
+0 &A\\
+A^{\rm T}& 0
 \end{array}
 \right].
 \]
@@ -350,7 +350,7 @@ Here 0 stands for an \(n \times n\) matrix composed of zero values,
 <i>A</i> is the original matrix, and \(A^{\rm T}\) stands for
 the transpose of matrix <i>A</i>. <sup><a href="#fn1" id="r1">[1]</a></sup>
 Note that the resulting matrix is now symmetric.
-We can convert matrix \svar{B} to a symmetric matrix in a similar
+We can convert matrix <i>B</i> to a symmetric matrix in a similar
 manner.
 If symmetric matrices could be multiplied ``quickly'' (in particular,
 if they could be multiplied together in \Thetantwo\ time), then we
@@ -361,20 +361,20 @@ observation:
 \[
 \left[
 \begin{array}{cc}
-0&\svar{A}\\
-\svar{A}^{\rm T}&0
+0&A\\
+A^{\rm T}&0
 \end{array}
 \right]
 \left[
 \begin{array}{cc}
-0&\svar{B}^{\rm T}\\
-\svar{B}&0
+0&B^{\rm T}\\
+B&0
 \end{array}
 \right] =
 \left[
 \begin{array}{cc}
-\svar{AB}&0\\
-0&\svar{A}^{\rm T}\svar{B}^{\rm T}
+AB&0\\
+0&A^{\rm T}B^{\rm T}
 \end{array}
 \right].\]
 
