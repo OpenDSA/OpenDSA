@@ -179,7 +179,7 @@ The best route for this particular graph would be ABEDCA, with cost 9.
 
 <figure>
 <center>
-<img src="Images/Sales.png" alt="Illustration of the TRAVELING SALESMAN problem" />
+<img src="Images/Sales.png" height="200" alt="Illustration of the TRAVELING SALESMAN problem" />
 </center>
 
 <figcaption>
@@ -359,7 +359,7 @@ terms of Figure <ODSAref "Complex" \>.
 
 <figure>
 <center>
-<img src="Images/Complex.png" alt="The world of exponential time problems" />
+<img src="Images/Complex.png" height="400" alt="The world of exponential time problems" />
 </center>
 
 <figcaption>
@@ -694,7 +694,7 @@ Figure <ODSAref "BEgraph" /> shows an example of this transformation.
 
 <figure>
 <center>
-<img src="Images/BEgraph.png" alt="Converting a Boolean expression to a graph" />
+<img src="Images/BEgraph.png" height="300" alt="Converting a Boolean expression to a graph" />
 </center>
 
 <figcaption>

@@ -58,7 +58,7 @@ least value in <i>Y</i>, and so on.
 
 <figure>
 <center>
-<img src="Images/Pairing.png" alt="Illustration of PAIRING" />
+<img src="Images/Pairing.png" height="300" alt="Illustration of PAIRING" />
 </center>
 
 <figcaption>
@@ -217,7 +217,7 @@ for the reduction to be acceptable.
 
 <figure>
 <center>
-<img src="Images/BlackBox.png" alt="General blackbox reduction" />
+<img src="Images/BlackBox.png" height="400" alt="General blackbox reduction" />
 </center>
 
 <figcaption>
@@ -228,7 +228,7 @@ The general process for reduction shown as a "blackbox" diagram.
 
 <figure>
 <center>
-<img src="Images/PairingBox.png" alt="Pairing blackbox reduction" />
+<img src="Images/PairingBox.png" height="400" alt="Pairing blackbox reduction" />
 </center>
 
 <figcaption>

@@ -220,7 +220,7 @@ Figure <ODSAref "FuncAssign" />.
 
 <figure>
 <center>
-<img src="Images/FuncBin.png" alt="An illustration of assigning functions to bins" />
+<img src="Images/FuncBin.png" height="400" alt="An illustration of assigning functions to bins" />
 </center>
 
 <figcaption>
@@ -268,7 +268,7 @@ Figure <ODSAref "Diag" /> illustrates this argument.
 
 <figure>
 <center>
-<img src="Images/FuncDiag.png" alt="Illustration for function uncountability" />
+<img src="Images/FuncDiag.png" height="400" alt="Illustration for function uncountability" />
 </center>
 
 <figcaption>
