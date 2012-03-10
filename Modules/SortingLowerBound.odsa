@@ -137,7 +137,7 @@ that might be the eventual result of the algorithm.
 
 <figure>
 <center>
-<img src="Images/DecTree.png" alt="A decision tree for Insertion Sort" />
+<img src="Images/DecTree.png" height="400" alt="A decision tree for Insertion Sort" />
 </center>
 
 <figcaption>
