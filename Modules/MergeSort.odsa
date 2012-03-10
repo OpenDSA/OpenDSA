@@ -34,7 +34,7 @@ List mergesort(List inlist) {
 
 <figure>
 <center>
-<img src="Images/MrgSort.png" width=600 alt="Mergesort" />
+<img src="Images/MrgSort.png" width="400" alt="Mergesort" />
 <br/>
 </center>
 
@@ -401,7 +401,7 @@ Optimized implementation for Mergesort.
 <p>
 Analysis of Mergesort is straightforward, despite the fact that it is
 a recursive
-The merging part takes time &Theta;(<i>i</i>) where <i>i</i>
+The merging part takes time \(\Theta(i)\) where \(i\)
 is the total length of the two subarrays being merged.
 The array to be sorted is repeatedly split in half until subarrays of
 size 1 are reached, at which time they are merged to be of size 2,
@@ -414,11 +414,11 @@ of size <i>n</i>, the next level working on two arrays of size
 <i>n</i>/2, the next on four arrays of size <i>n</i>/4, and so on.
 The bottom of the recursion has <i>n</i> arrays of size 1.
 Thus, <i>n</i> arrays of size 1 are merged (requiring
-&Theta;(<i>n</i>) total steps), <i>n</i>/2 arrays of size 2
-(again requiring &Theta;(n) total steps), <i>n</i>/4 arrays of size 4,
+\(\Theta(n)\) total steps), \(n/2\) arrays of size 2
+(again requiring \(\Theta(n)\) total steps), \(n/4\) arrays of size 4,
 and so on.
-At each of the log <i>n</i> levels of recursion, &Theta;(<i>n</i>)
-work is done, for a total cost of &Theta;(<i>n</i> log <i>n</i>).
+At each of the \(\log n\) levels of recursion, \(\Theta(n)\)
+work is done, for a total cost of \(\Theta(n \log n)\).
 This cost is unaffected by the relative order of the
 values being sorted, thus this analysis holds for the best, average,
 and worst cases.
