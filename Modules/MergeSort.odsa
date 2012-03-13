@@ -338,8 +338,6 @@ output list until no more input elements remain.
 </script>
 
 
-
-
 <div id="container1">
   <span class="jsavcounter"></span>
   <a class="jsavsettings" href="#">Settings</a>
@@ -359,25 +357,9 @@ output list until no more input elements remain.
 })(jQuery);
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <center>
  <iframe src="../AV/mergesort-av.html"
-	 type="text/javascript" width="820" height="520"
+	 type="text/javascript" width="800" height="950"
 	 frameborder="0" marginwidth="0" marginheight="0"
 	 scrolling="no">
 </iframe>
