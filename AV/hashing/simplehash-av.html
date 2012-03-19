@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Simple Hash</title>
-  <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+  <link href="../opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" />
 <style>
 
 #container {
@@ -24,6 +24,25 @@
   overflow: hidden;
 }
 
+#slot {
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    border: 2px solid black;
+    background-color: #00ffee;
+    padding: 1px;
+    overflow: hidden;
+    min-height: 25px;
+}
+
+#element {
+    text-align: center;
+    margin: 0;
+}
+
+title {
+	text-align: center;
+}
 
 div h1 {
   background-color: #efe;
@@ -60,40 +79,98 @@ form {
 
 <body>
 
-	<div id="container" style="float:left">
+	<!-- Messages / Left side container -->
+	<div id="container" class="jsavoutput jsavscroll" readonly="readonly" style="float:left; width:250px">
 
-		<p> Hash Table </p>
+		<p> Messages Here </p>
+		
+	</div>
 	
+	<!-- Hashing / Right side container -->
+	<div id="container" style="width:520px"> 
+	
+		<!-- Title Div-->
+		<div id="titlediv" style="text-align: center">
+			<p id="title"> Please choose your hashing function from the dropdown box below. </p>
+		</div>
+		
+		<!-- AV Container -->
+		<div id="avcontainer">
+		</div>
+		
+		
+		
+		
+		<!-- Simple Mod Hash Div
+		<div id="simplemod">
+			
+			<div style="margin-bottom:15px">
+				<p style="text-align: center"> Simple Mod Function </p>
+			</div> -->
+			<!--
+			<div id="slot">
+    			<p id="element" name="1">  </p>
+			</div>
+			
+			<div id="slot">
+    			<p id="element">  </p>
+			</div>
+			
+			<div id="slot">
+				<p id="element"> </p>
+			</div>
+			
+			<div id="slot">
+				<p id="element"> </p>
+			</div>
+			
+			<div id="slot">
+				<p id="element"> </p>
+			</div>
+			
+			<div id="slot">
+				<p id="element"> </p>
+			</div>
+			
+			<div id="slot">
+				<p id="element"> </p>
+			</div>
+			-->
+			
+		</div>
+		
 	</div>
 
-	<div id="container"> 
 
-		<p> Select a table size </p>
-	
-	</div>
-
+	<!-- Bottom Container -->
 	<div id="bottom">
 	
 		<form id="ssperform">
 			<p align="center">
+			
+				<select id="function">
+					<option selected value = 0> Choose Hashing Function </option>
+					<option value = 1> Simple Mod Hash </option>
+				</select>
+			
 				<select id="arraysize">
-					<option selected value = 0>Table Size</option>
-					<option value = 1>1</option>
-					<option value = 2>2</option>
-					<option value = 3>3</option>
-					<option value = 4>4</option>
-					<option value = 5>5</option>
-					<option value = 6>6</option>
-					<option value = 7>7</option>
-					<option value = 8>8</option>
-					<option value = 9>9</option>
-					<option value = 10>10</option>
-					<option value = 11>11</option>
-					<option value = 12>12</option>
-					<option value = 13>13</option>
-					<option value = 14>14</option>
-					<option value = 15>15</option>
-					<option value = 16>16</option>
+					<option selected value = 0> Table Size </option>
+					<option value = 1> 1 </option>
+					<option value = 2> 2 </option>
+					<option value = 3> 3 </option>
+					<option value = 4> 4 </option>
+					<option value = 5> 5 </option>
+					<option value = 6> 6 </option>
+					<option value = 7> 7 </option>
+					<option value = 8> 8 </option>
+					<option value = 9> 9 </option>
+					<option value = 10> 10 </option>
+					<option value = 11> 11 </option>
+					<option value = 12> 12 </option>
+					<option value = 13> 13 </option>
+					<option value = 14> 14 </option>
+					<option value = 15> 15 </option>
+					<option value = 16> 16 </option>
 				</select>
 				<label for="input">&nbsp;Input:</label>
 				<input size="10" name="input" id="input" type="text" />
@@ -107,161 +184,134 @@ form {
 	</div>
 
 
-<!--  
-  <div id="avcontainer">
-    <span class="jsavcounter"></span>
-    <div class="jsavcontrols"></div>
-    <p class="jsavoutput jsavline" readonly="readonly"></p>
-  </div> <!--avcontainer
-</div> <!--container
--->
-
-
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 </script>
 <script
   src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
 </script>
-<script src="../JSAV/lib/jquery.transform.light.js"></script>
-<script src="../JSAV/build/JSAV-min.js"></script>
+<script src="../../../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../../../JSAV/build/JSAV-min.js"></script>			/*** NOT WORKING ***/
 
 <script>
-(function($) {
-  // Number of values in the array
-  var ASize = $('#arraysize').val();
-  // The array of numbers.
-  var theArray = [];
 
-  // check query parameters from URL
-  var params = JSAV.utils.getQueryParameter();
-  if ("array" in params) { // set value of array pick if it is a param
-    $('#arrayValues').val(params["array"]).prop("disabled", true);
-  }
-  
-  // create a new settings panel and specify the link to show it
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
-  // add the layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
-  
-  var context = $("#ssperform");
-  var emptyContent = $("#avcontainer").html();
-  var av, // for JSAV av
-    arr;  // for the JSAV array
+	/* Global Variable to hold which mod function we are in
+	 * 0 - No function selected
+	 * 1 - Simple Mod Hash
+	 
+	var tracker = 0;
+	
+	// Global variable for JSAV
+	var av;
+*/
 
-  // Connect action callbacks to the HTML entities
-  $('input[name="about"]').click(about);
-  $('input[name="run"]', context).click(runIt);
-  $('input[name="reset"]', context).click(reset);
+	(function($) {
+	
+		/* Variables */
+		var arraySize;		// Table size
+		var theArray;		// Actual array
+		var av;				// JSAV
+		var arr;			// JSAV Array
+		
+		// Connect action callbacks to the HTML entities
+		$('input[name="about"]').click(about);
+  		$('input[name="hash"]').click(hash);
+  		//$('input[name="reset"]').click(reset);	/** IMPLEMENT RESET **/
+  		
+  		// Initialize JSAV
+  		av = new JSAV("avcontainer");
+		
+		/** DISPLAY SETTINGS **/
+		// create a new settings panel and specify the link to show it
+  		////var settings = new JSAV.utils.Settings($(".jsavsettings"));
+  		// add the layout setting preference
+  		////var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
 
-  // Process About button: Pop up a message with an Alert
-  function about() {
-    var mystring = "Insertion Sort Algorithm Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
-    alert(mystring);
-  }
-
-  // Process Reset button: Reinitialize the output textbox and the AV
-  function reset(flag) {
-    if (av) {
-      av.clearumsg();
-      $("#avcontainer").unbind().html(emptyContent);
-    }
-    // Clear the array values field, when no params given and reset button hit
-    if (flag !== true) {
-      if (!$('#arrayValues').prop("disabled")) {
-        $('#arrayValues').val("");
-      }
-    }
-  }
-
-  // Validate the user-defined array values
-  function processArrayValues() {
-    var i, 
-        num, 
-        msg = "Must be 5 to 16 positive integers";
-    // Convert user's values to an array,
-    // assuming values are space separated
-    theArray = $('input[name="arrayValues"]', context).val().match(/[0-9]+/g) || [];
-    if (theArray.length === 0) { // Empty field
-      theArray.length = 0;
-      return true;
-    }
-    if (theArray.length < 5 || theArray.length > 16) {
-      alert(msg);
-      theArray.length = 0;
-      return false;
-    }
-    for (i=0; i<theArray.length; i++) {
-      theArray[i] = Number(theArray[i]);
-      if (isNaN(theArray[i]) || theArray[i] < 0) { 
-        alert(msg);
-        theArray.length = 0;
-        return false;
-      }
-    }
-    $('#arraysize').val(theArray.length);
-    return true;
-  }
-
-
-  var setBlue = function(index) {
-    arr.css(index, {"background-color": "#ddf" });
-  };
-
-  // Insertion sort using increments
-  function inssort(start, incr) {
-    var i, j;
-    av.umsg("Sorting the subarray");
-    for (i=start+incr; i<arr.size()-1; i+=incr) {
-      setBlue(i);
-      for (j=i; j>=incr; j-=incr) {
-        setBlue(j-incr);
-	av.step();
-        if (arr.value(j) < arr.value(j-incr)) {
-          arr.swap(j, j-incr); // swap the two indices
-          av.step();
-	}
-        else {
-  	  arr.highlight([j-incr, j]);
-          break; // Done pushing element, leave for loop
-        }
-	arr.highlight(j);
-      }
-      arr.highlight(j);
-    }
-  }
-  
-  // Execute the "Run" button function
-  function runIt() {
-    var i;
-    var newSize = $('#arraysize').val();
-
-    if (processArrayValues()) { // if it is false, we got junk user
-                                // needs to fix
-      if (theArray.length === 0) { // Make a random  array
-        ASize = newSize;
-        theArray.length = 0; // Out with the old
-        // Give random numbers in range 0..999
-        for (i=0; i < ASize; i++) {
-          theArray[i] = Math.floor(Math.random()*1000);
-        }
-      }
-      else { // Use the values we got out of the user's list
-        ASize = theArray.length;
-      }
-      reset(true); // Reset any previous visualization
-      av = new JSAV("avcontainer"); // initialize JSAV ..
-      // .. and the array. use the layout the user has selected
-      arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
-      for (i = 0; i < theArray.length; i++)
-      	arr.css(i, {"background-color": "#eee"});
-      var i, incr;
-      inssort(0, 1);
-      av.umsg("Done sorting!");
-      av.recorded(); // mark the end
-    }
-  }
-})(jQuery);
+		// Process About button: Pop up a message with an Alert
+  		function about() {
+    		var mystring = "Hashing  Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
+    		alert(mystring);
+  		}
+  		
+  		// Event trigger change if table size is changed
+		$("#arraysize").change(function() {			
+			arraySize = $(this).val();
+		});	
+	    
+	    // Event trigger change if hashing function option is changed
+	    $("#function").change(function() {
+	    
+	    	//hideAllDivs();
+	    	
+	    	switch ($(this).val()) {
+	    	
+	    	// No function chosen
+        	case '0':
+        		$("#title").text("Please choose your hashing function from the dropdown box below.");
+            	av.clearumsg();
+        		break;
+        		
+        	// Simple Mod
+        	case '1':
+        		$("#title").text("Simple Mod");
+            	av.clearumsg();
+        		break;
+        	}
+	    });
+	    
+	    // Event trigger click if hash is pushed
+	    // Hash button is pushed
+		function hash() {
+	
+			// No hashing function is selected
+			if (tracker == 0) {
+				av.umsg("Please select a hashing function before trying to hash");
+			}
+		
+			else {
+			
+				// Grab is the user's input
+				var inputVal = document.getElementById("input").value;
+			
+				if (inputVal.length == 0) {
+					av.umsg("Please enter a hashing value");
+				}
+			
+				else if (isNaN(inputVal)) {
+					av.umsg("Please enter a valid numeric value to hash");
+				}
+				
+				else {
+				
+					///
+					////
+					////
+					//// HASHING
+					////
+					////
+					///
+				
+				}
+			}
+		}
+	    
+	    // Simple mod function
+	    function simpleMod() {
+	    
+	    	// function
+	    
+	    }
+	    
+	    // Hide all divs function
+	    function hideAllDivs() {
+	    	$("#start").hide();
+	    	$("#simplemod").hide();
+		}
+		
+    })(jQuery);
+    
 </script>
+
+
 </body>
 </html>
