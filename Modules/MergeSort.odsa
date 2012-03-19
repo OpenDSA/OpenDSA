@@ -361,7 +361,7 @@ output list until no more input elements remain.
  <iframe src="../AV/mergesort-av.html"
 	 type="text/javascript" width="800" height="950"
 	 frameborder="0" marginwidth="0" marginheight="0"
-	 scrolling="no">
+	 scrolling="no" style="overflow-y: auto">
 </iframe>
 </center>
 

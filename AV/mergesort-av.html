@@ -8,11 +8,12 @@
 
 #container {
   width: 800px;
-  height: 900px;
+  height: 450px;
   border: 1px solid black;
   background-color: #efe;
   padding: 10px;
-  overflow: visible;
+  overflow-y: visible;
+  overflow-x: hidden;
 }
 
 #avcontainer{
@@ -26,6 +27,7 @@ div h1 {
 .jsavcontainer {
   background-color: #efe;
   border: none;
+  padding: 0px;
 }
 .jsavcounter {
   float: left;
@@ -33,6 +35,7 @@ div h1 {
 }
 .jsavarray {
   padding-left:0;
+  position: absolute;
 }
 p.jsavoutput.jsavline {
   height: 30px;
@@ -99,6 +102,10 @@ form {
 
 <script>
 (function($) {
+  
+  // The space required for each row to be displayed
+  var rowHeight = 80;
+
   // Number of values in the array
   var ASize = $('#arraysize').val();
   // The array of numbers.
@@ -173,8 +180,6 @@ form {
     $('#arraysize').val(theArray.length);
     return true;
   }
-
-
   
   // Execute the "Run" button function
   function runIt() {
@@ -198,28 +203,29 @@ form {
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true});
       
+	  // BEGIN MERGESORT IMPLEMENTATION
 	  
-	  
-	  
+	  // Calculate and set a custom height for the container
+	  var totalDepth = 2 * Math.ceil(Math.log(newSize) / Math.log(2)) + 1;
+	  // 200px for the visualization controls, 15px for a little extra at the bottom 
+	  // (prevents a vertical scroll bar from appearing) and the height of each row 
+	  // times the number of rows in the visualization
+	  var newHeight = 215 + rowHeight * totalDepth;
+	  $('#container').height(newHeight);
 	  
 	  mergesort(av, arr, theArray, 1, 1);
 
+	  // END MERGESORT IMPLEMENTATION
 	  
-      // PUT STUFF HERE TO INVOKE YOUR SORT
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
     }
   }
   
   
-  
-  
-  
-  
   var canvasWidth = 0;
   //var blockHeight = 47;
   var blockWidth = 47;
-  var deepestLevel = 0;
   var treeDepth = 0;
   
   /* 
@@ -372,44 +378,20 @@ form {
 	var numSubArrInRow = Math.pow(2, level - 1);
 	
 	// Calculate the left value of the current array by dividing 
-	// the width of the canvas by twice the number of arrays that should appear in that row: (canvasWidth / (2 * numSubArrInRow))
-	// Odd multiples of the resulting value define a line through the center of each array in the row
-	// and are found using the formula (2 * arrNum - 1)
+	// the width of the canvas by twice the number of arrays that should appear in that 
+	// row: (canvasWidth / (2 * numSubArrInRow))
+	// Odd multiples of the resulting value define a line through the center of each array 
+	// in the row and are found using the formula (2 * arrNum - 1)
 	// Note: while it is not used, even multiples define the center between two consecutive arrays
-	// Since we want the left value rather than the center value of each array we calculate the length each array (blockWidth *  numBlocksInArr), divide this value in half and subtract it to find the left value
+	// Since we want the left value rather than the center value of each array we calculate 
+	// the length each array (blockWidth *  numBlocksInArr), divide this value in half and 
+	// subtract it to find the left value
 	
 	var left = (canvasWidth / (2 * numSubArrInRow)) * (2 * arrNum - 1) - (blockWidth * numBlocksInArr / 2);
+	var top = rowHeight * (row - 1);
 	
-	// Set the left value for all arrays in a row
-	arr.element.css({"left": left});
-	
-	// The first array in each row is a block element (display: block) with top = 0px
-	// which creates move space on the page, allowing other elements on the same line to be seen
-	// The first array must be the block element because if it is not, room will not be made on 
-	// the page and none of the arrays can be seen.  
-	// All other arrays in each row must be displayed 'inline' to prevent other content on the 
-	// page from being pushed down.
-	// Unfortunately, when the top values are 0, inline arrays are placed on top of each other.
-	// Therefore, we must calculate the appropriate top value and set it for each inline array
-	// Since some arrays will be merged before others are split, the deepest level achieved 
-	// by the recusion is an important factor.  In order for it to contain the correct value, it
-	// must be a global variable rather than a parameter to a recursive function
-
-	if (arrNum == 1)
-	{
-		deepestLevel++;
-	}
-	else
-	{
-		var top = -76;
-		var rowHeight = -93;
-		
-		top += rowHeight * (deepestLevel - row + 1);
-
-		
-		arr.element.css({"top": top + "px"});
-		arr.element.css({"display": "inline"}); // This line breaks the visualization in Chrome
-	}
+	// Set the top and left values so that all arrays are spaced properly
+	arr.element.css({"left": left, "top": top + "px"});
 	
 	// Round the corners of individual blocks 
 	// NOTE: Works when you skip to the end but not when you advance step by step
@@ -418,8 +400,6 @@ form {
 	  arr.css(0, {"border-radius": "8px 8px 8px 8px"});
 	}
   }
-  
-  
   
 })(jQuery);
 </script>
