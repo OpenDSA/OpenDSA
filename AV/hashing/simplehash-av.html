@@ -80,10 +80,8 @@ form {
 <body>
 
 	<!-- Messages / Left side container -->
-	<div id="container" class="jsavoutput jsavscroll" readonly="readonly" style="float:left; width:250px">
-
-		<p> Messages Here </p>
-		
+	<div id="container" style="float:left; width:250px">
+		<p class="jsavoutput jsavscroll" readonly="readonly"> </p>
 	</div>
 	
 	<!-- Hashing / Right side container -->
@@ -191,7 +189,7 @@ form {
   src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
 </script>
 <script src="../../../JSAV/lib/jquery.transform.light.js"></script>
-<script src="../../../JSAV/build/JSAV-min.js"></script>			/*** NOT WORKING ***/
+<script src="../../../JSAV/build/JSAV-min.js"></script>
 
 <script>
 
@@ -212,6 +210,7 @@ form {
 		var theArray;		// Actual array
 		var av;				// JSAV
 		var arr;			// JSAV Array
+		var tracker = 0;
 		
 		// Connect action callbacks to the HTML entities
 		$('input[name="about"]').click(about);
@@ -223,20 +222,15 @@ form {
 		
 		/** DISPLAY SETTINGS **/
 		// create a new settings panel and specify the link to show it
-  		////var settings = new JSAV.utils.Settings($(".jsavsettings"));
+  		var settings = new JSAV.utils.Settings($(".jsavsettings"));
   		// add the layout setting preference
-  		////var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
+  		var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
 
 		// Process About button: Pop up a message with an Alert
   		function about() {
     		var mystring = "Hashing  Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
     		alert(mystring);
   		}
-  		
-  		// Event trigger change if table size is changed
-		$("#arraysize").change(function() {			
-			arraySize = $(this).val();
-		});	
 	    
 	    // Event trigger change if hashing function option is changed
 	    $("#function").change(function() {
@@ -249,12 +243,14 @@ form {
         	case '0':
         		$("#title").text("Please choose your hashing function from the dropdown box below.");
             	av.clearumsg();
+            	tracker = 0;
         		break;
         		
         	// Simple Mod
         	case '1':
         		$("#title").text("Simple Mod");
             	av.clearumsg();
+            	tracker = 1;
         		break;
         	}
 	    });
@@ -262,6 +258,8 @@ form {
 	    // Event trigger click if hash is pushed
 	    // Hash button is pushed
 		function hash() {
+		
+			var arraySize = $('#arraysize').val();
 	
 			// No hashing function is selected
 			if (tracker == 0) {
@@ -269,7 +267,7 @@ form {
 			}
 		
 			else {
-			
+							
 				// Grab is the user's input
 				var inputVal = document.getElementById("input").value;
 			
@@ -282,7 +280,7 @@ form {
 				}
 				
 				else {
-				
+					av.umsg("test");
 					///
 					////
 					////
