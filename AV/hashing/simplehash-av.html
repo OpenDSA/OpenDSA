@@ -7,7 +7,7 @@
 <style>
 
 #container {
-  width: 385px;
+  width: 790px;
   height: 465px;
   border: 1px solid black;
   background-color: #efe;
@@ -79,61 +79,80 @@ form {
 
 <body>
 
-	<!-- Messages / Left side container -->
-	<div id="container" style="float:left; width:250px">
-		<p class="jsavoutput jsavscroll" readonly="readonly"> </p>
+
+	<div id="container">
+	
+		<p class="jsavoutput jsavscroll" readonly="readonly" style="width:225px; height:400px"> </p>
+	
+	
 	</div>
+
+<br><br><br>
+
+
+	<!-- Main Container    -- <div id="container" style="float:left; width:250px">-->
+	<div id="avcontainer"> <!--style="width:250px">-->
 	
-	<!-- Hashing / Right side container -->
-	<div id="container" style="width:520px"> 
 	
-		<!-- Title Div-->
-		<div id="titlediv" style="text-align: center">
-			<p id="title"> Please choose your hashing function from the dropdown box below. </p>
+		<!-- Messages / Left side container -->
+
+		<div id="container1" style="float:left; text-align: center">
+			<p class="jsavoutput jsavscroll" readonly="readonly" style="width:225px; height:400px"> </p>
 		</div>
+	
+	
+	
+		<!-- Hashing / Right side container -->
+		<div id="container1" style="float: right"> 
+	
+			<!-- Title Div-->
+			<div id="titlediv" style="text-align: center">
+				<p id="title"> Please choose your hashing function from the dropdown box below. </p>
+			</div>
 		
-		<!-- AV Container -->
-		<div id="avcontainer">
-		</div>
+			<!-- AV Container -->
+			<div id="avcontainer1">
+		
+			</div>
 		
 		
 		
 		
-		<!-- Simple Mod Hash Div
-		<div id="simplemod">
+			<!-- Simple Mod Hash Div
+			<div id="simplemod">
 			
-			<div style="margin-bottom:15px">
-				<p style="text-align: center"> Simple Mod Function </p>
-			</div> -->
-			<!--
-			<div id="slot">
-    			<p id="element" name="1">  </p>
-			</div>
+				<div style="margin-bottom:15px">
+					<p style="text-align: center"> Simple Mod Function </p>
+				</div> -->
+				<!--
+				<div id="slot">
+    				<p id="element" name="1">  </p>
+				</div>
 			
-			<div id="slot">
-    			<p id="element">  </p>
-			</div>
+				<div id="slot">
+    				<p id="element">  </p>
+				</div>
 			
-			<div id="slot">
-				<p id="element"> </p>
-			</div>
+				<div id="slot">
+					<p id="element"> </p>
+				</div>
 			
-			<div id="slot">
-				<p id="element"> </p>
-			</div>
+				<div id="slot">
+					<p id="element"> </p>
+				</div>
 			
-			<div id="slot">
-				<p id="element"> </p>
-			</div>
+				<div id="slot">
+					<p id="element"> </p>
+				</div>
 			
-			<div id="slot">
-				<p id="element"> </p>
-			</div>
+				<div id="slot">
+					<p id="element"> </p>
+				</div>
 			
-			<div id="slot">
-				<p id="element"> </p>
-			</div>
-			-->
+				<div id="slot">
+					<p id="element"> </p>
+				</div>
+				-->
 			
 		</div>
 		
@@ -176,6 +195,7 @@ form {
 				<input type="button" name="hash" value="Hash" />
 				<input type="button" name="restart" value="Restart" />
 				<input type="button" name="help" value="Help" />
+				
 			</p>
 		</form>
 		
@@ -207,7 +227,7 @@ form {
 	
 		/* Variables */
 		var arraySize;		// Table size
-		var theArray;		// Actual array
+		var theArray = [];	// Actual array
 		var av;				// JSAV
 		var arr;			// JSAV Array
 		var tracker = 0;
@@ -218,7 +238,7 @@ form {
   		//$('input[name="reset"]').click(reset);	/** IMPLEMENT RESET **/
   		
   		// Initialize JSAV
-  		av = new JSAV("avcontainer");
+  		av = new JSAV("container");
 		
 		/** DISPLAY SETTINGS **/
 		// create a new settings panel and specify the link to show it
@@ -251,8 +271,17 @@ form {
         		$("#title").text("Simple Mod");
             	av.clearumsg();
             	tracker = 1;
-        		break;
+            	/*** HERE ***/
+            	arr = av.ds.array(theArray, {indexed: true});
+        		alert(arr);
+            	break;
         	}
+	    });
+	    
+	    $("#arraysize").change(function() {
+	    
+	    	
+	    	
 	    });
 	    
 	    // Event trigger click if hash is pushed
@@ -280,23 +309,23 @@ form {
 				}
 				
 				else {
-					av.umsg("test");
-					///
-					////
-					////
-					//// HASHING
-					////
-					////
-					///
-				
+					
+					// Simple Mod Function
+					if (tracker == 1) {
+						simpleMod(inputVal, arraySize);
+					}			
 				}
 			}
 		}
 	    
 	    // Simple mod function
-	    function simpleMod() {
-	    
-	    	// function
+	    function simpleMod(inputVal, arraySize) {
+
+			av.umsg("The value entered is " + arraySize);
+			
+	    	theArray.length = arraySize;
+	    	
+	    	
 	    
 	    }
 	    
