@@ -48,17 +48,21 @@ div h1 {
   background-color: #efe;
   margin: 5px;
 }
+
 .jsavcontainer {
   background-color: #efe;
   border: none;
 }
+
 .jsavcounter {
   float: left;
   width: 100px;
 }
+
 .jsavarray {
   padding-left:0;
 }
+
 p.jsavoutput.jsavline {
   height: 30px;
   margin: 0;
@@ -259,29 +263,23 @@ form {
 	    	
 	    	switch ($(this).val()) {
 	    	
-	    	// No function chosen
-        	case '0':
-        		$("#title").text("Please choose your hashing function from the dropdown box below.");
-            	av.clearumsg();
-            	tracker = 0;
-        		break;
+	    		// No function chosen
+        		case '0':
+        			$("#title").text("Please choose your hashing function from the dropdown box below.");
+            		av.clearumsg();
+            		tracker = 0;
+        			break;
         		
-        	// Simple Mod
-        	case '1':
-        		$("#title").text("Simple Mod");
-            	av.clearumsg();
-            	tracker = 1;
-            	/*** HERE ***/
-            	arr = av.ds.array(theArray, {indexed: true});
-        		alert(arr);
-            	break;
-        	}
-	    });
-	    
-	    $("#arraysize").change(function() {
-	    
-	    	
-	    	
+        		// Simple Mod
+        		case '1':
+        			$("#title").text("Simple Mod");
+            		av.clearumsg();
+            		tracker = 1;
+            		/*** HERE ***/
+            		arr = av.ds.array(theArray, {indexed: true});
+        			alert(arr);
+            		break;
+        		}
 	    });
 	    
 	    // Event trigger click if hash is pushed
@@ -300,6 +298,7 @@ form {
 				// Grab is the user's input
 				var inputVal = document.getElementById("input").value;
 			
+				// Check for input errors
 				if (inputVal.length == 0) {
 					av.umsg("Please enter a hashing value");
 				}
@@ -325,16 +324,9 @@ form {
 			
 	    	theArray.length = arraySize;
 	    	
-	    	
 	    
 	    }
 	    
-	    // Hide all divs function
-	    function hideAllDivs() {
-	    	$("#start").hide();
-	    	$("#simplemod").hide();
-		}
-		
     })(jQuery);
     
 </script>
