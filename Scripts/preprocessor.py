@@ -92,7 +92,33 @@ def generateJSON(modRoster):
     except IOError:
        print 'ERROR: When saving JSON file'
 
+def generateCSV(modRoster):
 
+    csvString='last_sanitized,h_position,name,v_position,author,prerequisites,summative,covers,seconds_per_fast_problem,live,short_display_name,key\n'
+    l=2001
+    try:
+       gfile = open('modules.csv','w')
+       #gfile.writelines('[\n')
+       for k in modRoster :
+          s = datetime.datetime.strptime(k.last_modified, "%Y-%m-%d %H:%M:%S") 
+          csvString = csvString +s.strftime("%Y-%m-%dT%H:%M:%S")+',' 
+          csvString = csvString +'%s,'%k.h_position
+          csvString = csvString +k.description+','  #name 
+          csvString = csvString +'%s,'%k.v_position   #v_position 
+          csvString = csvString +k.author+',' #author
+          pq= (';'.join(map(str,k.prereq)), '')[k.prereqNum==0] #prerequisites 
+          csvString = csvString +pq+','
+          csvString = csvString +'%s,'%k.summative 
+          csvString = csvString +k.covers+','
+          csvString = csvString +'%s,'%k.seconds_per_fast_problem
+          csvString = csvString +'%s,'%k.live
+          csvString = csvString +k.name[:-5]+',' 
+          csvString = csvString +'%s\n'%l
+          l=l+1
+       gfile.writelines(csvString)
+       gfile.close
+    except IOError:
+       print 'ERROR: When saving CSV file'
 
 
 def modOrdering(modRoster):
@@ -635,8 +661,9 @@ def main(argv):
   finalList =modOrdering(modList1)
 
 
-  #create JSOn files with modules information
-  generateJSON(finalList) 
+  #create JSON and CSV files with modules information
+  generateJSON(finalList)
+  generateCSV(finalList) 
   finalTable={}
   z =1
   for fl in finalList:
