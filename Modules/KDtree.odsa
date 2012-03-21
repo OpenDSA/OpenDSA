@@ -1,0 +1,392 @@
+<div id="content">
+<ODSAtitle>The K-D Tree</ODSAtitle>
+<ODSAauthor>Clifford A. Shaffer</ODSAauthor>
+<ODSAyear>2012</ODSAyear>
+<ODSAprereq "Spatial" />
+<ODSAprereq "BST" />
+<ODSAprereq "Trie" />
+
+<p>
+The k-d tree is a modification to the BST that allows for efficient
+processing of multidimensional keys.
+The k-d tree differs from the BST in that each level of the k-d tree
+makes branching decisions based on a particular search key associated
+with that level, called the <dfn>discriminator</dfn>.
+In principle, the k-d tree could be used to unify key searching across
+any arbitrary set of keys such as name and zipcode.
+But in practice, it is nearly always used to support search on
+multidimensional coordinates, such as locations in 2D or 3D space.
+We define the discriminator at level <i>i</i> to be
+<i>i</i> mod <i>k</i> for <i>k</i> dimensions.
+For example, assume that we store data organized by xy-coordinates.
+In this case, <i>k</i> is2 (there are two coordinates), with the
+<i>x</i>-coordinate field arbitrarily designated key 0, and the
+<i>y</i>-coordinate field designated key 1.
+At each level, the discriminator alternates between <i>x</i> and
+<i>y</i>.
+Thus, a node <var>N</var> at level 0 (the root) would have in its left
+subtree only nodes whose <i>x</i> values are less than
+<var>N</var><sub>x</sub>
+(because <i>x</i> is search key 0, and 0 mod 2 = 0).
+The right subtree would contain nodes whose <i>x</i> values are
+greater than <var>N</var><sub>x</sub>.
+A node <var>M</var> at level 1 would have in its left subtree only
+nodes whose <i>y</i> values are less than <var>M</var><sub>y</sub>.
+There is no restriction on the relative values of
+<var>M</var><sub>x</sub> and the 
+<i>x</i> values of <var>M</var>'s descendants, because branching
+decisions made at <var>M</var> are based solely on the <i>y</i>
+coordinate.
+Figure <ODSAref "kdExamp" /> shows an example of how a collection
+of two-dimensional points would be stored in a k-d tree.
+</p>
+
+<figure>
+<center>
+<img src="Images/KDtree.png" height="400" alt="Example of a k-d tree" />
+<br/>
+</center>
+
+<figcaption>
+<ODSAfig "kdExamp" />
+Example of a k-d tree.
+(a) The k-d tree decomposition for a 128 \(\times\) 128-unit region
+containing seven data points.
+(b) The k-d tree for the region of (a).
+</figcaption>
+</figure>
+
+<p>
+In Figure <ODSAref "kdExamp" /> the region containing the points
+is (arbitrarily) restricted to a 128 \(\times\) 128 square, and
+each internal node splits the search space.
+Each split is shown by a line, vertical for nodes with
+<i>x</i> discriminators and horizontal for nodes with <i>y</i>
+discriminators.
+The root node splits the space into two parts;
+its children further subdivide the space into smaller parts.
+The children's split lines do not cross the root's split line.
+Thus, each node in the k-d tree helps to decompose the space into
+rectangles that show the extent of where nodes can fall in the
+various subtrees.
+</p>
+
+<p>
+Searching a k-d tree for the record with a specified xy-coordinate
+is like searching a BST, except that each level of the
+k-d tree is associated with a particular discriminator.
+</p>
+
+<p class="example">
+Consider searching the k-d tree for a
+record located at <var>P</var> = (69, 50).
+First compare <var>P</var> with the point stored at
+the root (record <var>A</var> in Figure <ODSAref "kdExamp" \>).
+If <var>P</var> matches the location
+of <var>A</var>, then the search is successful.
+In this example the positions do not match (<var>A</var>'s location
+(40, 45) is not the same as (69, 50)), so the search must continue.
+The <i>x</i> value of <var>A</var> is compared with that of
+<var>P</var> to determine in which direction to branch.
+Because <var>A</var><sub>x</sub>'s value of 40 is less than
+<var>P</var>'s <i>x</i> value
+of 69, we branch to the right subtree (all cities with <i>x</i> value
+greater than or equal to 40 are in the right subtree).
+<var>A</var><sub>y</sub> does not affect the decision on which way to
+branch at this level.
+At the second level, <var>P</var> does not match record <var>C</var>'s
+position, so another branch must be taken.
+However, at this level we branch based on the relative <i>y</i> values
+of point <var>P</var> and record <var>C</var> (because 1 mod 2 = 1,
+which corresponds to the <i>y</i>-coordinate).
+Because <var>C</var><sub>y</sub>'s value of 10 is less than
+<var>P</var><sub>y</sub>'s value
+of 50, we branch to the right.
+At this point, <var>P</var> is compared against the position
+of <var>D</var>. 
+A match is made and the search is successful.
+</p>
+
+<p>
+If the search process reaches a NULL pointer, then
+that point is not contained in the tree.
+Here is a k-d tree search implementation,
+equivalent to the <code>findhelp</code> function of the BST class.
+<code>KD</code> class private member <code>D</code> stores the key's
+dimension.
+</p>
+
+<pre>
+private E findhelp(KDNode<E> rt, int[] key, int level) {
+  if (rt == null) return null;
+  E it = rt.element();
+  int[] itkey = rt.key();
+  if ((itkey[0] == key[0]) && (itkey[1] == key[1]))
+    return rt.element();
+  if (itkey[level] > key[level])
+    return findhelp(rt.left(), key, (level+1)%D);
+  else
+    return findhelp(rt.right(), key, (level+1)%D);
+}
+</pre>
+
+<p>
+Inserting a new node into the k-d tree is similar to
+BST insertion.
+The k-d tree search procedure is followed until a NULL pointer is
+found, indicating the proper place to insert the new node.
+</p>
+
+<p class="example">
+Inserting a record at location (10, 50) in the
+k-d tree of Figure <ODSAref "kdExamp" /> first requires a search to
+the node containing record <var>B</var>.
+At this point, the new record is inserted into <var>B</var>'s left
+subtree.
+</p>
+
+<p>
+Deleting a node from a k-d tree is similar to deleting from a BST,
+but slightly harder.
+As with deleting from a BST, the first step is to find the node
+(call it <var>N</var>) to be deleted.
+It is then necessary to find a descendant of <var>N</var> which can be
+used to replace <var>N</var> in the tree.
+If <var>N</var> has no children, then <var>N</var> is replaced with a
+NULL pointer.
+Note that if <var>N</var> has one child that in turn has children, we
+cannot simply assign <var>N</var>'s parent to point to <var>N</var>'s
+child as would be done in the BST.
+To do so would change the level of all nodes in the subtree, and thus
+the discriminator used for a search would also change.
+The result is that the subtree would no longer be a k-d tree because a
+node's children might now violate the BST property for that
+discriminator.
+</p>
+
+<p>
+Similar to BST deletion, the record stored in <var>N</var> should
+be replaced either by the record in <var>N</var>'s right subtree with
+the least value of <var>N</var>'s discriminator, or by the record in
+<var>N</var>'s left subtree with the greatest value for this
+discriminator.
+Assume that <var>N</var> was at an odd level and
+therefore <i>y</i> is the discriminator.
+<var>N</var> could then be replaced by the record in its right subtree
+with the least <i>y</i> value (call it <var>Y</var><sub>min</sub>).
+The problem is that <var>Y</var><sub>min</sub> is not necessarily the
+leftmost node, as it would be in the BST.
+A modified search procedure to find the least <i>y</i> value in the left
+subtree must be used to find it instead.
+The implementation for <code>findmin</code> is shown in
+Figure <ODSAref "kdfindmin" \>.
+A recursive call to the delete routine will then remove
+<var>Y</var><sub>min</sub> from the tree.
+Finally, <var>Y</var><sub>min</sub>'s record is substituted for the
+record in node <var>N</var>.
+</p>
+
+<figure>
+<pre>
+private KDNode<E>
+findmin(KDNode<E> rt, int descrim, int level) {
+  KDNode<E> temp1, temp2;
+  int[] key1 = null;
+  int[] key2 = null;
+  if (rt == null) return null;
+  temp1 = findmin(rt.left(), descrim, (level+1)%D);
+  if (temp1 != null) key1 = temp1.key();
+  if (descrim != level) {
+    temp2 = findmin(rt.right(), descrim, (level+1)%D);
+    if (temp2 != null) key2 = temp2.key();
+    if ((temp1 == null) || ((temp2 != null) &&
+                   (key1[descrim] > key2[descrim])))
+    temp1 = temp2;
+    key1 = key2;
+  } // Now, temp1 has the smaller value
+  int[] rtkey = rt.key();
+  if ((temp1 == null) || (key1[descrim] > rtkey[descrim]))
+    return rt;
+  else
+    return temp1;
+}
+</pre>
+
+<figcaption>
+<ODSAfig "kdfindmin" />
+The k-d tree <code>findmin</code> method.
+On levels using the minimum value's discriminator, branching is to the
+left.
+On other levels, both children's subtrees must be visited.
+Helper function <code>min</code> takes two nodes and a discriminator as
+input, and returns the node with the smaller value in that
+discriminator.
+</figcaption>
+</figure>
+
+<p>
+Note that we can replace the node to be deleted with the least-valued
+node from the right subtree only if the right subtree exists.
+If it does not, then a suitable replacement must be found in the left
+subtree.
+Unfortunately, it is not satisfactory to replace <var>N</var>'s record
+with the record having the greatest value for the discriminator in the
+left subtree, because this new value might be duplicated.
+If so, then we would have equal values for the discriminator in
+<var>N</var>'s left subtree, which violates the ordering rules for the
+k-d tree.
+Fortunately, there is a simple solution to the problem.
+We first move the left subtree of node <var>N</var> to become the
+right subtree (i.e., we simply swap the values of <var>N</var>'s left
+and right child pointers).
+At this point, we proceed with the normal deletion process, replacing
+the record of <var>N</var> to be deleted with the record containing
+the <em>least</em> value of the discriminator from what is now
+<var>N</var>'s right subtree.
+</p>
+
+<p>
+Assume that we want to print out a list of all records that are within
+a certain distance <i>d</i> of a given point <var>P</var>.
+We will use Euclidean distance, that is, point <var>P</var> is defined
+to be within distance <i>d</i> of point <var>N</var>
+if<sup><a href="#fn1" id="r1">[1]</a></sup>
+\[\sqrt{(P_x - N_x)^2 + (P_y - N_y)^2} \leq d.\]
+</p>
+
+<p>
+If the search process reaches a node whose key value for the
+discriminator is more than <i>d</i> above the corresponding value in
+the search key, then it is not possible that any record in the right
+subtree can be within distance <i>d</i> of the search key because all
+key values in that dimension are always too great.
+Similarly, if the current node's key value in the discriminator
+is <i>d</i> less than that for the search key value, then no record in
+the left subtree can be within the radius.
+In~such cases, the subtree in question need not be searched,
+potentially saving much time.
+In the average case, the number of nodes that must be visited during a
+range query is linear on the number of data records that fall within
+the query circle.
+</p>
+
+<figure>
+<center>
+<img src="Images/InCirc.png" height="200" alt="Euclidean distance checking" />
+<br/>
+</center>
+
+<figcaption>
+<ODSAfig "InCirc" />
+Function <code>InCircle</code> must check the Euclidean distance
+between a record and the query point.
+It is possible for a record <var>A</var> to have <i>x</i>- and
+<i>y</i>-coordinates each within the query distance of the query
+point <var>C</var>, yet have <var>A</var> itself lie outside the query
+circle.
+</figcaption>
+</figure>
+
+<p class="example">
+We will now find all cities in the k-d tree of
+Figure <ODSAref "kdSearch" \>
+within 25~units of the point (25, 65).
+The search begins with the root node, which contains record <var>A</var>.
+Because (40, 45) is exactly 25 units from the search point, it will be
+reported.
+The search procedure then determines which branches of the tree to
+take.
+The search circle extends to both the left and the right of
+<var>A</var>'s (vertical) dividing line, so both branches of the tree
+must be searched.
+The left subtree is processed first.
+Here, record <var>B</var> is checked and found to fall within the
+search circle.
+Because the node storing <var>B</var> has no children, processing of
+the left subtree is complete.
+Processing of <var>A</var>'s right subtree now begins.
+The coordinates of record <var>C</var> are checked and found not to
+fall within the circle.
+Thus, it should not be reported.
+However, it is possible that cities within <var>C</var>'s subtrees
+could fall within the search circle even if <var>C</var> does not.
+As <var>C</var> is at level 1, the discriminator at this level is the
+<i>y</i>-coordinate.
+Because  65-25 &gt; 10, no record in <var>C</var>'s left subtree
+(i.e., records above <var>C</var>) could possibly be in the search
+circle.
+Thus, <var>C</var>'s left subtree (if it had one) need not be
+searched.
+However, cities in <var>C</var>'s right subtree could fall within the
+circle.
+Thus, search proceeds to the node containing record <var>D</var>.
+Again, <var>D</var> is outside the search circle.
+Because 25+25 &lt; 69, no record in <var>D</var>'s right subtree could
+be within the search circle.
+Thus, only <var>D</var>'s left subtree need be searched.
+This leads to comparing record <var>E</var>'s coordinates against the
+search circle.
+Record <var>E</var> falls outside the search circle, and processing is
+complete.
+So we see that we only search subtrees whose rectangles fall within
+the search circle.
+</p>
+
+<figure>
+<center>
+<img src="Images/KDtree2.png" height="400" alt="Example of searching in a k-d tree" />
+<br/>
+</center>
+
+<figcaption>
+<ODSAfig "kdSearch" />
+Searching in the k-d tree of Figure <ODSAref "kdExamp" />.
+(a) The k-d tree decomposition for a 128 \(\times\) 128-unit region
+containing seven data points.
+(b) The k-d tree for the region of (a).
+</figcaption>
+</figure>
+
+<p>
+Figure <ODSAref "kdregion" /> shows an implementation for the region
+search method.
+When a node is visited, function <code>InCircle</code> is used to
+check the Euclidean distance between the node's record and the query
+point.
+It is not enough to simply check that the differences between the
+<i>x</i>- and <i>y</i>-coordinates are each less than the query
+distances because the the record could still be outside the search
+circle, as illustrated by Figure <ODSAref "InCirc" />.
+</p>
+
+<figure>
+
+<pre>
+private void rshelp(KDNode<E> rt, int[] point,
+                    int radius, int lev) {
+  if (rt == null) return;
+  int[] rtkey = rt.key();
+  if (InCircle(point, radius, rtkey))
+    System.out.println(rt.element());
+  if (rtkey[lev] > (point[lev] - radius))
+    rshelp(rt.left(), point, radius, (lev+1)%D);
+  if (rtkey[lev] < (point[lev] + radius))
+    rshelp(rt.right(), point, radius, (lev+1)%D);
+}
+</pre>
+
+<figcaption>
+<ODSAfig "kdregion" />
+The k-d tree region search method.
+</figcaption>
+</figure>
+
+<section>
+<p id="fn1"><a href="#r1">[1]</a>
+A more efficient computation is
+\((P_x - N_x)^2 + (P_y - N_y)^{2} \leq d^{2}\).
+This avoids performing a square root function.
+</p>
+</section>
+
+</div>

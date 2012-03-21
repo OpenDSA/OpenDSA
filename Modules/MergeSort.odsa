@@ -114,11 +114,6 @@ output list until no more input elements remain.
 
   var speed = 100; // Animation default speed
   
-  var theArray = [11, 78, 13, 79, 44, 98, 45, 32]; 
-  //var theArray = [11, 78, 13, 79, 44, 98, 45, 32, 5, 17, 20, 100, 64, 39, 92, 10];
-  //var theArray = [11, 78, 13, 79, 44, 98, 45, 32, 5, 17];
-  //var theArray = [11, 78, 13, 79, 44];
-  
   var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
   var DARK = "black";                // Make array elements dark again
 
@@ -128,22 +123,51 @@ output list until no more input elements remain.
     arr.css(index, {"background-color": "#ddf" });
   };
   
+  
+  
+  var theArray = [11, 78, 13, 79, 44, 98, 45, 32]; 
+  //var theArray = [11, 78, 13, 79, 44, 98, 45, 32, 5, 17, 20, 100, 64, 39, 92, 10];
+  //var theArray = [11, 78, 13, 79, 44, 98, 45, 32, 5, 17];
+  //var theArray = [11, 78, 13, 79, 44];
+  
+  
+  var canvasWidth = 0;
+  //var blockHeight = 47;
+  var blockWidth = 47;
+  var deepestLevel = 0;
+  var treeDepth = 0;
+  
   /* 
-   * Split function recursively splits an array into single element arrays
+   * Recursively splits input array until single element arrays are achieved, arrays are then merged back together in sorted order
    * 
    * av - a JSAV container
    * arr - a JSAV array
-   * subArray - JavaScript array used to create future JSAV subarrays
-   * origLength - the length of the original array to be split
+   * array - JavaScript array used to create future JSAV subarrays
    * level - the current depth of the recursion
    * arrNum - the column number of the current array
    */
-  function split(av, arr, subArray, origLength, level, arrNum) {
+  function mergesort(av, arr, array, level, arrNum) {
+    
+	var arrLen = array.length;
   
+    // Dynamically determine the canvas width using the centered alignment of the first block
+	if (level == 1)
+	{
+	  var left = parseFloat(arr.element.css("left"));
+	  // Find the center of the canvas by adding half the width of the array to the left value of the array
+	  // Multiply by 2 to find a value close to the width of the canvas
+	  canvasWidth = 2 * (left + (blockWidth * arrLen / 2));
+	  // Adjust the calculated width appropriately (I'm not sure why this is necessary, but it works every time)
+	  canvasWidth = canvasWidth - arrLen + 1;
+	  
+	  // The depth of the recursion is (1 + log base 2 of the length of the original array)
+	  treeDepth = Math.ceil(Math.log(arrLen) / Math.log(2)) + 1;
+	}
+	
 	av.step();
 
 	// Highlight the array (to show that the entire array is about to be operated on)
-	for (var i = 0; i < subArray.length; i++)
+	for (var i = 0; i < arrLen; i++)
 	{
 	  arr.highlight([i]);
 	}
@@ -151,85 +175,167 @@ output list until no more input elements remain.
 	av.step();
 	
 	// Unhighlight the array
-	for (var i = 0; i < subArray.length; i++)
+	for (var i = 0; i < arrLen; i++)
 	{
 	  arr.unhighlight([i]);
 	}
 	
+	var returnArr = array;
+	
 	// General recursive case
-	if (subArray.length > 1)
+	if (arrLen > 1)
 	{
 	  // Find the middle of the array, if can't split evenly make the first array larger
-	  var midPoint = Math.ceil(subArray.length / 2);
+	  var midPoint = Math.ceil(arrLen / 2);
 	
 	  level += 1;
 	  var childArr1Num = arrNum * 2 - 1;
 	  var childArr2Num = arrNum * 2;
 	
 	  // Create and display sub-arrays
-	  var subArr1 = subArray.slice(0, midPoint);
+	  var subArr1 = array.slice(0, midPoint);
 	  var avSubArr1 = av.ds.array(subArr1, {indexed: true});
-	  setPosition(avSubArr1, level, childArr1Num, subArr1.length, origLength);
+	  setPosition(avSubArr1, level, childArr1Num, subArr1.length);
 	  
-	  var subArr2 = subArray.slice(midPoint, subArray.length);
+	  var subArr2 = array.slice(midPoint, arrLen);
 	  var avSubArr2 = av.ds.array(subArr2, {indexed: true});
-	  setPosition(avSubArr2, level, childArr2Num, subArr2.length, origLength);
+	  setPosition(avSubArr2, level, childArr2Num, subArr2.length);
 	
 	  // Split both sub-arrays
-	  split(av, avSubArr1, subArr1, origLength, level, childArr1Num);
-	  split(av, avSubArr2, subArr2, origLength, level, childArr2Num);
+	  var retArr1 = mergesort(av, avSubArr1, subArr1, level, childArr1Num);
+	  var retArr2 = mergesort(av, avSubArr2, subArr2, level, childArr2Num);
+	  
+	  returnArr = merge(av, retArr1, retArr2, level - 1, arrNum);
 	}
+	
+	return returnArr;
   }
   
-  function setPosition(arr, level, arrNum, numBlocksInArr, origLength) {
-
-	var blockHeight = 47;
-	var blockWidth = 47;
-	var width = 760;
+  /* 
+   * Merges two arrays back together in sorted order
+   * 
+   * av - a JSAV container
+   * arr1 - the first array to merge
+   * arr2 - the second array to merge
+   * level - the level of the recusion tree at which merge was called
+   * arrNum - the column number of the merged array
+   */
+  function merge(av, arr1, arr2, level, arrNum)
+  {
+	av.step();
+  
+    var retArr = new Array();
+	var i = 0;
+    var pos1 = 0;
+	var pos2 = 0;
 	
-	// Calculate the number of arrays in the current row / level
+	// Merge the two arrays together, in sorted order 
+	while (pos1 < arr1.length || pos2 < arr2.length)
+	{
+	  if (arr1[pos1] <= arr2[pos2] || pos2 == arr2.length)
+	  {
+	    retArr[i] = arr1[pos1];
+		pos1++;
+	  }
+	  else
+	  {
+	    retArr[i] = arr2[pos2];
+		pos2++;
+	  }
+	  i++;
+	}
+	
+	var row = (2 * treeDepth) - level;
+	
+	var avRetArr = av.ds.array(retArr, {indexed: true});
+	setPosition(avRetArr, row, arrNum, retArr.length);
+	
+	// Highlight the array (to show that the entire array is about to be operated on)
+	for (var i = 0; i < retArr.length; i++)
+	{
+	  avRetArr.highlight([i]);
+	}
+	
+	av.step();
+	
+	// Unhighlight the array
+	for (var i = 0; i < retArr.length; i++)
+	{
+	  avRetArr.unhighlight([i]);
+	}
+	
+	return retArr;
+  }
+  
+  /*
+   * arr - the JSAV array to be positioned
+   * row - indicates the current row of the diagram in which an array is going to be displayed
+   * 	- level - equivalent to the row, normalized to a tree value.  For example, if 'row' is one more than the max depth of the recursion tree set 'level' to be one less than the depth of the recursion tree.  Level is used to calculate the number of arrays per row and therefore must be less than or equal to the max depth of the recursion tree
+   * arrNum - the column in which the current array should be placed in its row
+   * numBlocksInArr - the number of elements in the array being processed
+   */
+  function setPosition(arr, row, arrNum, numBlocksInArr) {	
+	var level = row;
+	
+	// If the row number is greater than the depth of the tree, it is a merge step and set 'level' to be the cooresponding level in an upside down tree
+	if (row > treeDepth)
+	{
+	  level = (2 * treeDepth) - row;
+	}
+	
+	// Calculate the number of arrays in the current row
 	var numSubArrInRow = Math.pow(2, level - 1);
 	
 	// Calculate the left value of the current array by dividing 
-	// the width of the canvas by twice the number of arrays that should appear in that row: (width / (2 * numSubArrInRow))
+	// the width of the canvas by twice the number of arrays that should appear in that row: (canvasWidth / (2 * numSubArrInRow))
 	// Odd multiples of the resulting value define a line through the center of each array in the row
 	// and are found using the formula (2 * arrNum - 1)
 	// Note: while it is not used, even multiples define the center between two consecutive arrays
 	// Since we want the left value rather than the center value of each array we calculate the length each array (blockWidth *  numBlocksInArr), divide this value in half and subtract it to find the left value
 	
-	var left = (width / (2 * numSubArrInRow)) * (2 * arrNum - 1) - (blockWidth * numBlocksInArr / 2);
+	var left = (canvasWidth / (2 * numSubArrInRow)) * (2 * arrNum - 1) - (blockWidth * numBlocksInArr / 2);
 	
 	// Set the left value for all arrays in a row
 	arr.element.css({"left": left});
 	
-	// The last array in each row is a block element (display: block) with top = 0px
-	// However, all other elements should be made inline (display: inline) to
-	// prevent other content from being pushed down the page
-	// Unfortunately, this places arrays on top of each other and must be fixed manually	
-		
-	if (arrNum != 1)
+	// The first array in each row is a block element (display: block) with top = 0px
+	// which creates move space on the page, allowing other elements on the same line to be seen
+	// The first array must be the block element because if it is not, room will not be made on 
+	// the page and none of the arrays can be seen.  
+	// All other arrays in each row must be displayed 'inline' to prevent other content on the 
+	// page from being pushed down.
+	// Unfortunately, when the top values are 0, inline arrays are placed on top of each other.
+	// Therefore, we must calculate the appropriate top value and set it for each inline array
+	// Since some arrays will be merged before others are split, the deepest level achieved 
+	// by the recusion is an important factor.  In order for it to contain the correct value, it
+	// must be a global variable rather than a parameter to a recursive function
+
+	if (arrNum == 1)
 	{
-		var top = -61;
+		deepestLevel++;
+	}
+	else
+	{
+		var top = -61; 
+		// FIREFOX and IE = -61;
+		// CHROME = -76;
+		var rowHeight = -93;
 		
-		if (level > 2 && arrNum > (numSubArrInRow / (level - 1)))
-		{
-			var vertSeparator = 32;
-			
-			// The depth of the recursion is (1 + log base 2 of the length of the original array)
-			var totalLevels = Math.ceil(Math.log(origLength) / Math.log(2)) + 1;
+		top += rowHeight * (deepestLevel - row + 1);
 		
-			top += (top - vertSeparator) * (totalLevels - level);
-		}
-		
-		arr.element.css({"top": top + "px", "display": "inline"});
+		arr.element.css({"top": top + "px"});
+		arr.element.css({"display": "inline"}); // This line breaks the visualization in Chrome
+	}
+	
+	// Round the corners of individual blocks 
+	// NOTE: Works when you skip to the end but not when you advance step by step
+	if (numBlocksInArr == 1)
+	{
+	  arr.css(0, {"border-radius": "8px 8px 8px 8px"});
 	}
   }
-  
-  
 
 </script>
-
-
 
 
 <div id="container1">
@@ -245,33 +351,17 @@ output list until no more input elements remain.
   
   var arr = av.ds.array(theArray, {indexed: true});
   
-  split(av, arr, theArray, theArray.length, 1, 1);
+  mergesort(av, arr, theArray, 1, 1);
 
   av.recorded();
 })(jQuery);
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <center>
  <iframe src="../AV/mergesort-av.html"
-	 type="text/javascript" width="820" height="520"
+	 type="text/javascript" width="800" height="950"
 	 frameborder="0" marginwidth="0" marginheight="0"
-	 scrolling="no">
+	 scrolling="no" style="overflow-y: auto">
 </iframe>
 </center>
 

@@ -15,7 +15,7 @@
   <script src="../JSAV/lib/jquery.transform.light.js"></script>
   <script src="../JSAV/lib/raphael.js"></script>
   <script src="../JSAV/build/JSAV-min.js"></script>
-  <script type="text/javascript" src="../Modules/ODSA.js"></script>
+  <script type="text/javascript" src="../lib/ODSA.js"></script>
 </head>
 
 <body>
