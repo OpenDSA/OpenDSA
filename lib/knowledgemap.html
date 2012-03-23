@@ -74,7 +74,7 @@ $.ajax({
         
         var sug="";
         if( val.fields.prerequisites.length == 0){sug="Suggested";} 
-        console.log("key=" + key + " " + "val size=" + val.fields.prerequisites.length);
+//        console.log("key=" + key + " " + "val size=" + val.fields.prerequisites.length);
         tpl_values=tpl_values+"{\"name\":\""+ val.fields.short_display_name+"\",";
         tpl_values=tpl_values+"\"points\":\"\",";
         tpl_values=tpl_values+"\"display_name\":\""+val.fields.name.replace(/_/gi,' ')+"\",";
