@@ -213,7 +213,7 @@ form {
 	    $("#arraysize").change(function() {
 	    	var arraySize = $('#arraysize').val();
 	    	theArray.length = arraySize;
-	    	arr = av.ds.array(theArray, {indexed: true});
+	    	arr = av.ds.array(theArray, {indexed: true, layout: "vertical"});
 	    });
 	    
 	    // Event trigger click if hash is pushed
