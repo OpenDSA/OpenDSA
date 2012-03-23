@@ -3,7 +3,7 @@
 <head>
   <title>Simple Hash</title>
   <link href="../opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
 <style>
 
 #container {
@@ -61,6 +61,7 @@ div h1 {
 
 .jsavarray {
   padding-left:0;
+  text-align: center;
 }
 
 p.jsavoutput.jsavline {
@@ -83,85 +84,11 @@ form {
 
 <body>
 
-
+	<!-- Main Container -->
 	<div id="container">
-	
-		<p class="jsavoutput jsavscroll" readonly="readonly" style="width:225px; height:400px"> </p>
-	
-	
+		<p class="jsavoutput jsavscroll" readonly="readonly" style="width:225px; height:400px;  float:left"> </p>
+		<p id="title" style="text-align: center; verticle-align:text-top" > Please choose a hashing function. </p>
 	</div>
-
-<br><br><br>
-
-
-	<!-- Main Container    -- <div id="container" style="float:left; width:250px">-->
-	<div id="avcontainer"> <!--style="width:250px">-->
-	
-	
-		<!-- Messages / Left side container -->
-
-		<div id="container1" style="float:left; text-align: center">
-			<p class="jsavoutput jsavscroll" readonly="readonly" style="width:225px; height:400px"> </p>
-		</div>
-	
-	
-	
-		<!-- Hashing / Right side container -->
-		<div id="container1" style="float: right"> 
-	
-			<!-- Title Div-->
-			<div id="titlediv" style="text-align: center">
-				<p id="title"> Please choose your hashing function from the dropdown box below. </p>
-			</div>
-		
-			<!-- AV Container -->
-			<div id="avcontainer1">
-		
-			</div>
-		
-		
-		
-		
-			<!-- Simple Mod Hash Div
-			<div id="simplemod">
-			
-				<div style="margin-bottom:15px">
-					<p style="text-align: center"> Simple Mod Function </p>
-				</div> -->
-				<!--
-				<div id="slot">
-    				<p id="element" name="1">  </p>
-				</div>
-			
-				<div id="slot">
-    				<p id="element">  </p>
-				</div>
-			
-				<div id="slot">
-					<p id="element"> </p>
-				</div>
-			
-				<div id="slot">
-					<p id="element"> </p>
-				</div>
-			
-				<div id="slot">
-					<p id="element"> </p>
-				</div>
-			
-				<div id="slot">
-					<p id="element"> </p>
-				</div>
-			
-				<div id="slot">
-					<p id="element"> </p>
-				</div>
-				-->
-			
-		</div>
-		
-	</div>
-
 
 	<!-- Bottom Container -->
 	<div id="bottom">
@@ -169,11 +96,13 @@ form {
 		<form id="ssperform">
 			<p align="center">
 			
+				<!-- Function Dropdown -->
 				<select id="function">
 					<option selected value = 0> Choose Hashing Function </option>
 					<option value = 1> Simple Mod Hash </option>
 				</select>
 			
+				<!-- Array Size Dropdown -->
 				<select id="arraysize">
 					<option selected value = 0> Table Size </option>
 					<option value = 1> 1 </option>
@@ -193,13 +122,14 @@ form {
 					<option value = 15> 15 </option>
 					<option value = 16> 16 </option>
 				</select>
+				
+				<!-- Buttons --> 
 				<label for="input">&nbsp;Input:</label>
 				<input size="10" name="input" id="input" type="text" />
 				&nbsp;
 				<input type="button" name="hash" value="Hash" />
-				<input type="button" name="restart" value="Restart" />
+				<input type="button" name="reset" value="Restart" />
 				<input type="button" name="help" value="Help" />
-				
 			</p>
 		</form>
 		
@@ -212,21 +142,12 @@ form {
 <script
   src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
 </script>
-<script src="../../../JSAV/lib/jquery.transform.light.js"></script>
-<script src="../../../JSAV/build/JSAV-min.js"></script>
+<script src="../../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
 
 <script>
-
-	/* Global Variable to hold which mod function we are in
-	 * 0 - No function selected
-	 * 1 - Simple Mod Hash
-	 
-	var tracker = 0;
-	
-	// Global variable for JSAV
-	var av;
-*/
-
+ 
+	/* The fun starts here  */
 	(function($) {
 	
 		/* Variables */
@@ -239,7 +160,7 @@ form {
 		// Connect action callbacks to the HTML entities
 		$('input[name="about"]').click(about);
   		$('input[name="hash"]').click(hash);
-  		//$('input[name="reset"]').click(reset);	/** IMPLEMENT RESET **/
+  		$('input[name="reset"]').click(reset);
   		
   		// Initialize JSAV
   		av = new JSAV("container");
@@ -255,12 +176,21 @@ form {
     		var mystring = "Hashing  Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
     		alert(mystring);
   		}
+  		
+  		/*
+  		 * FIX
+  		 */
+  		function reset() {
+    		if (av) {
+      			av.clearumsg();
+      			var content = $("#container").html();
+      			$("#container").unbind().html(content);
+    		}
+    	}
 	    
 	    // Event trigger change if hashing function option is changed
 	    $("#function").change(function() {
 	    
-	    	//hideAllDivs();
-	    	
 	    	switch ($(this).val()) {
 	    	
 	    		// No function chosen
@@ -274,12 +204,16 @@ form {
         		case '1':
         			$("#title").text("Simple Mod");
             		av.clearumsg();
-            		tracker = 1;
-            		/*** HERE ***/
-            		arr = av.ds.array(theArray, {indexed: true});
-        			alert(arr);
+            		tracker = 1;	
             		break;
         		}
+	    });
+	    
+	    // Event trigger change if size of hash changes
+	    $("#arraysize").change(function() {
+	    	var arraySize = $('#arraysize').val();
+	    	theArray.length = arraySize;
+	    	arr = av.ds.array(theArray, {indexed: true});
 	    });
 	    
 	    // Event trigger click if hash is pushed
@@ -318,12 +252,15 @@ form {
 		}
 	    
 	    // Simple mod function
-	    function simpleMod(inputVal, arraySize) {
+	    function simpleMod(inputVal) {
 
-			av.umsg("The value entered is " + arraySize);
-			
-	    	theArray.length = arraySize;
-	    	
+			av.umsg("The value entered is " + inputVal);
+			var pos = inputVal % theArray.length;
+			arr.highlight(pos);
+			/* 
+			 * WAIT FOR USER SIGNAL NEXT BUTTON
+			 */
+			arr.value(pos, inputVal);
 	    
 	    }
 	    

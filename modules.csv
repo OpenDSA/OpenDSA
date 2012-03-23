@@ -1,0 +1,38 @@
+last_sanitized,h_position,name,v_position,author,prerequisites,summative,covers,seconds_per_fast_problem,live,short_display_name,key
+2012-03-21T12:49:34,0,Binary_Trees_Terminology,1,Clifford A. Shaffer,,false,Trees,5.0,true,BinTree,2001
+2012-03-21T12:49:34,0,Limits_to_Computing_Introduction,2,Clifford A. Shaffer,,false,Trees,5.0,true,LimComp,2002
+2012-03-21T12:49:34,0,The_Fast_Fourier_Transform,3,,,false,Trees,5.0,true,FFT,2003
+2012-03-21T12:49:34,1,Final_Exam,1,Clifford A. Shaffer,,false,Trees,5.0,true,FinalExam,2004
+2012-03-21T12:49:34,1,Binary_Tree_Chapter_Exam,2,,BinTree,false,Trees,5.0,true,BinTreeExam,2005
+2012-03-21T12:49:34,1,Impossible_Problems,3,Clifford A. Shaffer,LimComp,false,Trees,5.0,true,Impossible,2006
+2012-03-21T12:49:34,1,NP-Completeness,4,Clifford A. Shaffer,LimComp,false,Trees,5.0,true,NPComplete,2007
+2012-03-21T12:49:34,1,Reductions,5,Clifford A. Shaffer,LimComp,false,Trees,5.0,true,Reduction,2008
+2012-03-21T12:49:34,1,The_Full_Binary_Tree_Theorem,6,,BinTree,false,Trees,5.0,true,FullTheorem,2009
+2012-03-21T12:49:34,2,Sorting,1,,,false,Trees,5.0,true,Sorting,2010
+2012-03-21T12:49:34,2,Binary_Tree_Node_ADT,2,,BinTree,false,Trees,5.0,true,BinTreeNodeADT,2011
+2012-03-21T12:49:34,2,Insertion_Sort,3,,Sorting,false,Trees,5.0,true,InsertionSort,2012
+2012-03-21T12:49:34,2,Binsort_and_Radix_Sort,4,,Sorting,false,Trees,5.0,true,RadixSort,2013
+2012-03-21T12:49:34,2,Binary_Tree_Traversals,5,,BinTree;BinTreeNodeADT,false,Trees,5.0,true,BinTreeTraversal,2014
+2012-03-21T12:49:34,2,Binary_Tree_Node_Implementations,6,,BinTree;BinTreeNodeADT;BinTreeTraversal,false,Trees,5.0,true,BinTreeImp,2015
+2012-03-21T12:49:34,2,Binary_Search_Trees,7,,BinTreeImp,false,Trees,5.0,true,BST,2016
+2012-03-21T12:49:34,2,Heapsort,8,,Sorting;BST,false,Trees,5.0,true,HeapSort,2017
+2012-03-21T12:49:34,3,Binary_Tree_Space_Requirements,1,,BinTreeNodeADT,false,Trees,5.0,true,BinNodeSpace,2018
+2012-03-21T12:49:34,3,Array_Implementation_for_Complete_Binary_Trees,2,,BinTreeImp,false,Trees,5.0,true,CompleteTree,2019
+2012-03-21T12:49:34,3,Expression_Tree_Composite_Design,3,,BinTreeImp,false,Trees,5.0,true,Composite,2020
+2012-03-21T12:49:34,3,Huffman_Coding_Trees,4,,BinTreeImp,false,Trees,5.0,true,Huffman,2021
+2012-03-21T12:49:34,3,Spatial_Data_Structures,5,Clifford A. Shaffer,BST,false,Trees,5.0,true,Spatial,2022
+2012-03-21T12:49:34,3,Binary_Search_Trees_--_Alternate_Version,6,,BinTreeImp,false,Trees,5.0,true,BST_alt,2023
+2012-03-21T12:49:34,4,Bubble_Sort,1,,Sorting,false,Trees,5.0,true,BubbleSort,2024
+2012-03-21T12:49:34,4,Heaps_and_Priority_Queues,2,,CompleteTree,false,Trees,5.0,true,Heap,2025
+2012-03-21T12:49:34,4,The_PR_Quadree,3,Clifford A. Shaffer,Spatial,false,Trees,5.0,true,PRquadtree,2026
+2012-03-21T12:49:34,4,The_K-D_Tree,4,Clifford A. Shaffer,Spatial;BST,false,Trees,5.0,true,KDtree,2027
+2012-03-21T12:49:34,5,Coping_with_NP-Complete_Problems,1,Clifford A. Shaffer,NPComplete,false,Trees,5.0,true,NPCoping,2028
+2012-03-21T12:49:34,5,Selection_Sort,2,,Sorting;BubbleSort,false,Trees,5.0,true,SelectionSort,2029
+2012-03-21T12:49:34,5,The_Cost_of_Exchange_Sorting,3,,Sorting;InsertionSort;BubbleSort;SelectionSort,false,Trees,5.0,true,ExchangeSort,2030
+2012-03-21T12:49:34,6,Proof_of_Optimality_for_Huffman_Coding,1,,Huffman,false,Trees,5.0,true,HuffProof,2031
+2012-03-21T12:49:34,6,Other_Spatial_Data_Structures,2,Clifford A. Shaffer,Spatial;KDtree;PRquadtree,false,Trees,5.0,true,OtherSpatial,2032
+2012-03-21T12:49:34,7,Mergesort,1,,Sorting;ExchangeSort,false,Trees,5.0,true,MergeSort,2033
+2012-03-21T12:49:34,7,Quicksort,2,,Sorting;BST;InsertionSort;MergeSort,false,Trees,5.0,true,QuickSort,2034
+2012-03-21T12:49:34,8,Shell_Sort,1,,Sorting;InsertionSort;ExchangeSort,false,Trees,5.0,true,Shellsort,2035
+2012-03-21T12:49:34,8,Lower_Bounds_for_Sorting,2,,Sorting;ExchangeSort;QuickSort,false,Trees,5.0,true,SortingLowerBound,2036
+2012-03-21T12:49:34,9,An_Empirical_Comparison_of_Sorting_Algorithms,1,,Sorting;QuickSort;RadixSort,false,Trees,5.0,true,SortingEmpirical,2037
