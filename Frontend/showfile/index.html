@@ -1,9 +1,0 @@
-{% if mod_list %}
-    <ul>
-    {% for mod in mod_list %}
-        <li><a href="../../build/{{ mod.path }}/">{{ mod.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No modules are available.</p>
-{% endif %}
