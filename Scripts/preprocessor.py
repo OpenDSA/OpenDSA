@@ -103,7 +103,7 @@ def generateCSV(modRoster):
           s = datetime.datetime.strptime(k.last_modified, "%Y-%m-%d %H:%M:%S") 
           csvString = csvString +s.strftime("%Y-%m-%dT%H:%M:%S")+',' 
           csvString = csvString +'%s,'%k.h_position
-          csvString = csvString +k.description+','  #name 
+          csvString = csvString +k.name[:-5]+','                                              #k.description+','  #name 
           csvString = csvString +'%s,'%k.v_position   #v_position 
           csvString = csvString +k.author+',' #author
           pq= (';'.join(map(str,k.prereq)), '')[k.prereqNum==0] #prerequisites 
@@ -112,7 +112,7 @@ def generateCSV(modRoster):
           csvString = csvString +k.covers+','
           csvString = csvString +'%s,'%k.seconds_per_fast_problem
           csvString = csvString +'%s,'%k.live
-          csvString = csvString +k.name[:-5]+',' 
+          csvString = csvString +k.description+','                                             #k.name[:-5]+',' 
           csvString = csvString +'%s\n'%l
           l=l+1
        gfile.writelines(csvString)

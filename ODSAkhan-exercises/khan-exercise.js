@@ -129,7 +129,7 @@ var Khan = (function() {
 
 	// The main server we're connecting to for saving data
 	server = typeof apiServer !== "undefined" ? apiServer :
-		testMode ? "http://localhost:8080" : "",
+		testMode ? "http://198.82.152.215:8090" : "",
 
 	// The name of the exercise
 	exerciseName = typeof userExercise !== "undefined" ? userExercise.exercise : ((/([^\/.]+)(?:\.html)?$/.exec( window.location.pathname ) || [])[1]),
