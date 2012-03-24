@@ -1,0 +1,9 @@
+#WSGIScriptAlias /OpenDSA/OpenDSA/Frontend /home/algoviz-beta/OpenDSA/OpenDSA/Frontend/wsgi.py
+#WSGIPythonPath /home/algoviz-beta/OpenDSA/OpenDSA/Frontend
+
+#<Directory /home/algoviz-beta/OpenDSA/OpenDSA/Frontend>
+<Files wsgi.wsgi>
+Order deny,allow
+Allow from all
+</Files>
+#</Directory>
