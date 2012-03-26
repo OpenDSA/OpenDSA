@@ -138,7 +138,7 @@ The net result is little or no performance improvement.
 
 <p class="TODO">
 Question:
-Why does preorder 2 make only half as many recursive calls?
+Why does <code>preorder2</code> make only half as many recursive calls?
 Answer: Because half the pointers are null.
 </p>
 
@@ -289,5 +289,19 @@ boolean checkBST(BinNode<Integer> rt, int low, int high) {
   return checkBST(rt.right(), rootkey, high);
 }
 </pre>
+
+<p class="TODO">
+<b>KA-style exercise:</b>
+Given one of the three traversals (randomly selected), and a random
+tree, give the enumeration.
+</p>
+
+<p class="TODO">
+<b>Active Code exercise:</b> Given the three lines of code related to
+doing any of the traversals, arrange them in proper order to get the
+desired traversal. The answer can easily be checked, either by
+examining the resulting code (since it is so constrained) or by
+examining a computed output.
+</p>
 
 </div>

@@ -1,6 +1,7 @@
 #Temp files
 *~
 modules.json
+modules.csv
 
 #build HTML directory
 build
