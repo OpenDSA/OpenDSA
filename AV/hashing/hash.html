@@ -24,17 +24,6 @@
   overflow: hidden;
 }
 
-#slot {
-    width: 70px;
-    height: 25px;
-    line-height: 25px;
-    border: 2px solid black;
-    background-color: #00ffee;
-    padding: 1px;
-    overflow: hidden;
-    min-height: 25px;
-}
-
 #element {
     text-align: center;
     margin: 0;
@@ -157,6 +146,8 @@ form {
 		var av;				// JSAV
 		var arr;			// JSAV Array
 		var tracker = 0;
+		var nextState = 0;
+		var pos;
 		
 		// Connect action callbacks to the HTML entities
 		$('input[name="about"]').click(about);
@@ -233,40 +224,59 @@ form {
 			}
 		
 			else {
-							
+			
 				// Grab is the user's input
 				var inputVal = document.getElementById("input").value;
+					
+				/* Next button will calculate mod and highlight cell */
+				if (nextState == 0) {
+				
+					// Check for input errors
+					if (inputVal.length == 0) {
+						av.umsg("Please enter a hashing value");
+					}
 			
-				// Check for input errors
-				if (inputVal.length == 0) {
-					av.umsg("Please enter a hashing value");
-				}
-			
-				else if (isNaN(inputVal)) {
-					av.umsg("Please enter a valid numeric value to hash");
+					else if (isNaN(inputVal)) {
+						av.umsg("Please enter a valid numeric value to hash");
+					}
+				
+					else {
+					
+						// Simple Mod Function
+						if (tracker == 1)
+							simpleMod(inputVal, arraySize);
+					
+					}
+					
+					// Changes behaviour of next button click
+					nextState = 1;
 				}
 				
-				else {
-					
-					// Simple Mod Function
+				/* Next button will show the value inserted in the cell */
+				else if (nextState == 1) {
+				
+					// Simple mod next step
 					if (tracker == 1) {
-						simpleMod(inputVal, arraySize);
+						simpleModStep(inputVal, pos);
+						nextState = 0;
 					}
 				}
 			}
 		}
 	    
-	    // Simple mod function
+	    // Simple mod function - state 0: highlight
 	    function simpleMod(inputVal) {
 			av.umsg("The value entered is " + inputVal);
-			var pos = inputVal % theArray.length;
-			av.step();
+			pos = inputVal % theArray.length;
 			arr.highlight(pos);
-			av.step();
-			setBlue(pos);
-			av.step();
-			arr.value(pos, inputVal);
 	    }
+	    
+	    // Simple mod function - state 1: insert value
+	    function simpleModStep(inputVal, pos) {
+	    	arr.unhighlight(pos);
+			setBlue(pos);
+			arr.value(pos, inputVal);
+		}
 	    
     })(jQuery);
     
