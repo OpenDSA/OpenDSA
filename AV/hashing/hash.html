@@ -1,4 +1,4 @@
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
   <title>Simple Hash</title>
@@ -22,11 +22,6 @@
   background-color: #ddd;
   padding: 10px;
   overflow: hidden;
-}
-
-#element {
-    text-align: center;
-    margin: 0;
 }
 
 title {
@@ -76,7 +71,6 @@ form {
 	<!-- Main Container -->
 	<div id="container">
 		<p class="jsavoutput jsavscroll" readonly="readonly" style="width:225px; height:400px;  float:left"> </p>
-		<div class="jsavcontrols"></div>
 		<p id="title" style="text-align: center; verticle-align:text-top" > Please choose a hashing function. </p>
 	</div>
 
@@ -153,11 +147,8 @@ form {
 		$('input[name="about"]').click(about);
   		$('input[name="hash"]').click(hash);
   		$('input[name="reset"]').click(reset);
-  		
-  		// Initialize JSAV
-  		av = new JSAV("container");
 		
-		/** DISPLAY SETTINGS **/
+		/* Settings Function */
 		// create a new settings panel and specify the link to show it
   		var settings = new JSAV.utils.Settings($(".jsavsettings"));
   		// add the layout setting preference
@@ -169,14 +160,13 @@ form {
     		alert(mystring);
   		}
   		
-  		/*
-  		 * FIX
-  		 */
+  		/* Reset Function - removes everything from container */
   		function reset() {
     		if (av) {
       			av.clearumsg();
-      			var content = $("#container").html();
-      			$("#container").unbind().html(content);
+      			arr.remove();
+      			//var content = $("#container").html();
+      			//$("#container").unbind().html(content);
     		}
     	}
 	    
@@ -195,16 +185,20 @@ form {
         		// Simple Mod
         		case '1':
         			$("#title").text("Simple Mod");
-            		av.clearumsg();
-            		tracker = 1;	
+        			if (av)
+            			av.clearumsg();
+            		tracker = 1;
             		break;
         		}
 	    });
 	    
 	    // Event trigger change if size of hash changes
 	    $("#arraysize").change(function() {
+	    	reset();
 	    	var arraySize = $('#arraysize').val();
 	    	theArray.length = arraySize;
+	    	// Initialize JSAV
+  			av = new JSAV("container");
 	    	arr = av.ds.array(theArray, {indexed: true, layout: "vertical"});
 	    });
 	    
@@ -217,7 +211,7 @@ form {
 		function hash() {
 		
 			var arraySize = $('#arraysize').val();
-	
+			
 			// No hashing function is selected
 			if (tracker == 0) {
 				av.umsg("Please select a hashing function before trying to hash");

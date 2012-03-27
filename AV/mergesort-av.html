@@ -206,7 +206,7 @@ form {
 	  // BEGIN MERGESORT IMPLEMENTATION
 	  
 	  // Calculate and set a custom height for the container
-	  var totalDepth = 2 * Math.ceil(Math.log(newSize) / Math.log(2)) + 1;
+	  var totalDepth = Math.ceil(Math.log(newSize) / Math.log(2)) + 1;
 	  // 200px for the visualization controls, 15px for a little extra at the bottom 
 	  // (prevents a vertical scroll bar from appearing) and the height of each row 
 	  // times the number of rows in the visualization
@@ -226,7 +226,6 @@ form {
   var canvasWidth = 0;
   //var blockHeight = 47;
   var blockWidth = 47;
-  var treeDepth = 0;
   
   // Extend the JSAV AV array to have the slice functionality of JavaScript arrays
   JSAV._types.ds.AVArray.prototype.slice = function(start, end) {
@@ -249,8 +248,14 @@ form {
   
   // Convenience function for setting another type of highlight
   // (will be used for showing which elements have already been merged back together)
-  var setGray = function(arr, index) {
+  var markMerged = function(arr, index) {
     arr.css(index, {"background-color": "#c0c0c0" });
+  };
+  
+  // Convenience function for setting another type of highlight
+  // (will be used for showing which elements have already been sorted)
+  var highlightSorted = function(arr, index) {
+    arr.css(index, {"background-color": "#ffffcc" });
   };
   
   /* 
@@ -276,16 +281,12 @@ form {
 	  // Adjust the calculated width appropriately (I'm not sure why this is necessary, but it works every time)
 	  canvasWidth = canvasWidth - arrLen + 1;
 	  
-	  // The depth of the recursion is (1 + log base 2 of the length of the original array)
-	  treeDepth = Math.ceil(Math.log(arrLen) / Math.log(2)) + 1;
-	  
 	  setPosition(returnArr, level, arrNum, arrLen);
 	  
 	  av.umsg("Select the entire array");
 	}
 	
 	arr.highlight();
-	
 	
 	if (arrLen == 1)
 	{
@@ -311,11 +312,11 @@ form {
 	
 	  // Create and display sub-arrays
 	  var subArr1 = arr.slice(0, midPoint);
-	  var avSubArr1 = av.ds.array(subArr1, {indexed: true});
+	  var avSubArr1 = av.ds.array(subArr1, {indexed: true, center: false});
 	  setPosition(avSubArr1, level, childArr1Num, subArr1.length);
 	  
 	  var subArr2 = arr.slice(midPoint, arrLen);
-	  var avSubArr2 = av.ds.array(subArr2, {indexed: true});
+	  var avSubArr2 = av.ds.array(subArr2, {indexed: true, center: false});
 	  setPosition(avSubArr2, level, childArr2Num, subArr2.length);
 	
 	  av.step();
@@ -326,7 +327,7 @@ form {
 	  av.umsg("Select the right subarray");
 	  var retArr2 = mergesort(av, avSubArr2, level, childArr2Num);
 	  
-	  returnArr = merge(av, retArr1, retArr2, level - 1, arrNum);
+	  returnArr = merge(av, arr, retArr1, retArr2, level - 1, arrNum);
 	}
 	
 	return returnArr;
@@ -336,35 +337,28 @@ form {
    * Merges two arrays back together in sorted order
    * 
    * av - a JSAV container
+   * origArr - the original array that will be overwritten by the merge
    * arr1 - the first array to merge
    * arr2 - the second array to merge
    * level - the level of the recusion tree at which merge was called
    * arrNum - the column number of the merged array
    */
-  function merge(av, arr1, arr2, level, arrNum)
+  function merge(av, origArr, arr1, arr2, level, arrNum)
   {
 	av.umsg("Merge selected arrays back together, in sorted order");
-	
-	//av.step();
-	
-	var row = (2 * treeDepth) - level;
-	
-	retArrLen = arr1.size() + arr2.size();
-  
-    var retArr = new Array(retArrLen);
-	var avRetArr = av.ds.array(retArr, {indexed: true});
-	setPosition(avRetArr, row, arrNum, retArrLen);
-	
-	var pos1 = 0;
-	var pos2 = 0;
-	var i = 0;
-	
 	arr1.highlight();
 	arr2.highlight();
 	av.step();
 	
-	arr1.unhighlight();
-	arr2.unhighlight();
+	if (arr1.size() > 1)
+	{
+	  arr1.unhighlight();
+	  arr2.unhighlight();
+	}
+	
+	var pos1 = 0;
+	var pos2 = 0;
+	var i = 0;
 	
 	// Merge the two arrays together, in sorted order 
 	while (pos1 < arr1.size() || pos2 < arr2.size())
@@ -375,75 +369,67 @@ form {
 	  }
 	  else
 	  {
-	    av.umsg("Select the smallest value from the front of each list (excluding values already in the sorted array)");
-	  
-	    if (pos1 < arr1.size())
-	    {
-	      arr1.highlight(pos1);
-	    }
-	    if (pos2 < arr2.size())
-	    {
-	      arr2.highlight(pos2);
-	    }
-	  
-	    av.step();
 	    av.umsg("Select the minimum of the two values");
+		
+		// Eliminate one step for single element arrays to reduce tedium 
+	    if (arr1.size() > 1)
+		{
+		  if (pos1 < arr1.size())
+	      {
+	        arr1.highlight(pos1);
+	      }
+	      if (pos2 < arr2.size())
+	      {
+	        arr2.highlight(pos2);
+	      }
+		
+	      av.umsg("Select the smallest value from the front of each list (excluding values already in the sorted array)");
+		  av.step();
+		}
 	  }
 	  
 	  if (pos1 < arr1.size() && (arr1.value(pos1) <= arr2.value(pos2) || pos2 == arr2.size()))
 	  {
 	    setBlue(arr1, pos1);
 		av.step();
-		setGray(arr1, pos1);
-		retArr[i] = arr1.value(pos1);
+		markMerged(arr1, pos1);
+		origArr.value(i, arr1.value(pos1));
 		pos1++;
 	  }
 	  else
 	  {
 	    setBlue(arr2, pos2);
 		av.step();
-		setGray(arr2, pos2);
-		retArr[i] = arr2.value(pos2);
+		markMerged(arr2, pos2);
+		origArr.value(i, arr2.value(pos2));
 		pos2++;
 	  }
-	  i++;
 	  
-	  // Hides the previous merged array before creating a new one with the correct values
-	  avRetArr.hide();
-	  avRetArr = av.ds.array(retArr, {indexed: true});
-	  setPosition(avRetArr, row, arrNum, retArrLen);
-	  //avRetArr.value(i, arr2.value(pos2)); // THIS BREAKS THE POSITIONING
-	  
+	  setBlue(origArr, i);
 	  av.umsg("Add the selected value to the sorted array");
 	  av.step();
+	  
+	  highlightSorted(origArr, i);
+	  i++;
 	}
-	arr1.unhighlight();
-	arr2.unhighlight();
-	av.umsg("Finished merging");
 	
+	av.umsg("Finished merging");
+	arr1.hide();
+	arr2.hide();
 	av.step();
 	
     av.clearumsg();
-	avRetArr.unhighlight();
 	
-	return avRetArr;
+	return origArr;
   }
   
   /*
    * arr - the JSAV array to be positioned
-   * row - indicates the current row of the diagram in which an array is going to be displayed
-   * 	- level - equivalent to the row, normalized to a tree value.  For example, if 'row' is one more than the max depth of the recursion tree set 'level' to be one less than the depth of the recursion tree.  Level is used to calculate the number of arrays per row and therefore must be less than or equal to the max depth of the recursion tree
+   * level - indicates the current row of the diagram in which an array is going to be displayed
    * arrNum - the column in which the current array should be placed in its row
    * numBlocksInArr - the number of elements in the array being processed
    */
-  function setPosition(arr, row, arrNum, numBlocksInArr) {	
-	var level = row;
-	
-	// If the row number is greater than the depth of the tree, it is a merge step and set 'level' to be the cooresponding level in an upside down tree
-	if (row > treeDepth)
-	{
-	  level = (2 * treeDepth) - row;
-	}
+  function setPosition(arr, level, arrNum, numBlocksInArr) {	
 	
 	// Calculate the number of arrays in the current row
 	var numSubArrInRow = Math.pow(2, level - 1);
@@ -459,17 +445,10 @@ form {
 	// subtract it to find the left value
 	
 	var left = (canvasWidth / (2 * numSubArrInRow)) * (2 * arrNum - 1) - (blockWidth * numBlocksInArr / 2);
-	var top = rowHeight * (row - 1);
+	var top = rowHeight * (level - 1); // row
 	
 	// Set the top and left values so that all arrays are spaced properly
 	arr.element.css({"left": left, "top": top});
-	
-	// Round the corners of individual blocks 
-	// NOTE: Works when you skip to the end but not when you advance step by step
-	if (numBlocksInArr == 1)
-	{
-	  arr.css(0, {"border-radius": "8px 8px 8px 8px"});
-	}
   }
   
 })(jQuery);
