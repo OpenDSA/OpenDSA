@@ -164,9 +164,7 @@ form {
   		function reset() {
     		if (av) {
       			av.clearumsg();
-      			arr.remove();
-      			//var content = $("#container").html();
-      			//$("#container").unbind().html(content);
+      			arr.hide();
     		}
     	}
 	    
@@ -178,7 +176,7 @@ form {
 	    		// No function chosen
         		case '0':
         			$("#title").text("Please choose your hashing function from the dropdown box below.");
-            		av.clearumsg();
+            		reset();
             		tracker = 0;
         			break;
         		
@@ -194,7 +192,12 @@ form {
 	    
 	    // Event trigger change if size of hash changes
 	    $("#arraysize").change(function() {
-	    	reset();
+	    
+	    	// Hide previous array if it exists
+	    	if (av)
+	    		arr.hide();
+	    	
+	    	// Draw new array
 	    	var arraySize = $('#arraysize').val();
 	    	theArray.length = arraySize;
 	    	// Initialize JSAV
