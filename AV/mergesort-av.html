@@ -346,6 +346,15 @@ form {
   function merge(av, origArr, arr1, arr2, level, arrNum)
   {
 	av.umsg("Merge selected arrays back together, in sorted order");
+	
+	retArrLen = arr1.size() + arr2.size();
+  
+    // Hides the original array that's getting overwritten
+    origArr.hide();
+    var retArr = new Array(retArrLen);
+	var avRetArr = av.ds.array(retArr, {indexed: true, center: false});
+	setPosition(avRetArr, level, arrNum, retArrLen);
+	
 	arr1.highlight();
 	arr2.highlight();
 	av.step();
@@ -393,7 +402,7 @@ form {
 	    setBlue(arr1, pos1);
 		av.step();
 		markMerged(arr1, pos1);
-		origArr.value(i, arr1.value(pos1));
+		avRetArr.value(i, arr1.value(pos1));
 		pos1++;
 	  }
 	  else
@@ -401,15 +410,15 @@ form {
 	    setBlue(arr2, pos2);
 		av.step();
 		markMerged(arr2, pos2);
-		origArr.value(i, arr2.value(pos2));
+		avRetArr.value(i, arr2.value(pos2));
 		pos2++;
 	  }
 	  
-	  setBlue(origArr, i);
+	  setBlue(avRetArr, i);
 	  av.umsg("Add the selected value to the sorted array");
 	  av.step();
 	  
-	  highlightSorted(origArr, i);
+	  highlightSorted(avRetArr, i);
 	  i++;
 	}
 	
@@ -420,7 +429,7 @@ form {
 	
     av.clearumsg();
 	
-	return origArr;
+	return avRetArr;
   }
   
   /*
