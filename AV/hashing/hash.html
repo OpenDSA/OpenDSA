@@ -79,7 +79,6 @@ form {
 	<!-- Main Container -->
 	<div id="container">
 		<p class="jsavoutput jsavscroll" readonly="readonly" style="width:225px; height:400px;  float:left"> </p>
-		<p id="title" style="text-align: center; verticle-align:text-top" > Please choose a hashing function. </p>
 	</div>
 
 	<!-- Bottom Container -->
@@ -115,10 +114,16 @@ form {
 					<option value = 16> 16 </option>
 				</select>
 				
-				<!-- Buttons --> 
+				<!-- Collision Resolution Dropdown -->
+				<select id="collision">
+					<option selected value = 0> Collision Resolution Policy </option>
+					<option value = 1> Linear Probing </option>
+				</select>
+				
 				<label for="input">&nbsp;Input:</label>
 				<input size="10" name="input" id="input" type="text" />
 				&nbsp;
+				<!-- Buttons --> 				
 				<input type="button" name="hash" value="Next" />
 				<input type="button" name="reset" value="Restart" />
 				<input type="button" name="help" value="Help" />
@@ -136,6 +141,7 @@ form {
 </script>
 <script src="../../JSAV/lib/jquery.transform.light.js"></script>
 <script src="../../JSAV/build/JSAV-min.js"></script>
+<script type="text/javascript" src="Queue.js"></script>
 
 <script>
  
@@ -143,19 +149,25 @@ form {
 	(function($) {
 	
 		/* Variables */
-		var arraySize;		// Table size
-		var theArray = [];	// Actual array
-		var av;				// JSAV
-		var arr;			// JSAV Array
-		var tracker = 0;
-		var nextState = 0;
-		var pos;
+		var arraySize;					// Table size
+		var theArray = [];				// Actual array
+		var av;							// JSAV
+		var arr;						// JSAV Array
+		var nextStep = new Queue();		/* A queue that will contain the "next step". Stores 
+											position and value of next step as an object */
+									
+		//var tracker = 0;
+		//var nextState = 0;
+		//var pos;
 		
 		// Connect action callbacks to the HTML entities
 		$('input[name="about"]').click(about);
   		$('input[name="hash"]').click(hash);
   		$('input[name="reset"]').click(reset);
-		
+  		
+  		// Call reset - the initial state of the vizualization
+  		reset();
+  		
 		/* Settings Function */
 		// create a new settings panel and specify the link to show it
   		var settings = new JSAV.utils.Settings($(".jsavsettings"));
@@ -168,18 +180,86 @@ form {
     		alert(mystring);
   		}
   		
-  		/* Reset Function - removes everything from container */
+  		/* Reset Function */
   		function reset() {
+    		
+    		// Clear messages
     		if (av) {
       			av.clearumsg();
+      			av.umsg("Please select a hashing function");
+      		}
+      		
+      		// Hide array if one exists
+      		if (arr)
       			arr.hide();
-    		}
+      			
+    		// Reset & disable dropdowns
+    		$("#function").val(0);
+    		$("#arraysize").val(0);
+    		$("#collision").val(0);
+    		$('#arraysize').attr("disabled", "disabled");
+    		$('#input').attr("disabled", "disabled");
+    		$('#collision').attr("disabled", "disabled");
+    		
+    		// Disable buttons
+    		$('input[name="hash"]').attr("disabled", "disabled");
+    	}
+    	
+    	/* Keep checking input textbox value to calculate the next step in a slideshow manner */
+  		var inputVal = "";
+    	setInterval(checkInputChanged, 1500);
+
+    	function checkInputChanged() {
+        	var currentValue = $('#input').val();
+        	if (currentValue != inputVal) {
+            	inputVal = currentValue;
+            	inputChanged(inputVal);
+        	}
+    	}
+
+    	function inputChanged(inputVal) {
+    	
+    		// Disable input to process it safely
+        	$("#input").attr("disabled", "disabled");
+        	
+        	var functionValue = $("#function").val();
+        	
+        	switch(functionValue) {
+        		// No function chosen
+        		case '0':
+        			reset();
+        			break;
+        		case '1':
+        			simpleMod(inputVal);
+        			break;
+        	}
     	}
 	    
 	    // Event trigger change if hashing function option is changed
 	    $("#function").change(function() {
 	    
-	    	switch ($(this).val()) {
+	    	if ($(this).val() == 0)
+	    		reset();
+	    		
+	    	else {
+	    	
+	    		// Enable table size & input
+	    		$("#arraysize").removeAttr("disabled");
+	    		$("#input").removeAttr("disabled");
+	    	
+	    		// Initialize JSAV object
+	    		av = new JSAV("container");
+	    		
+	    		// Choose linear probing resolution policy
+	    		switch ($(this).val()) {
+	    			// Linear probing for simple mod
+	    			case '1':
+	    				$("#collision").val(1);
+	    				break;
+	    		}
+	    	}
+	    	
+	    	/*switch ($(this).val()) {
 	    	
 	    		// No function chosen
         		case '0':
@@ -190,26 +270,24 @@ form {
         		
         		// Simple Mod
         		case '1':
-        			$("#title").text("Simple Mod");
         			if (av)
             			av.clearumsg();
             		tracker = 1;
             		break;
-        		}
+        		}*/
 	    });
 	    
 	    // Event trigger change if size of hash changes
 	    $("#arraysize").change(function() {
 	    
 	    	// Hide previous array if it exists
-	    	if (av)
+	    	if (arr)
 	    		arr.hide();
 	    	
 	    	// Draw new array
 	    	var arraySize = $('#arraysize').val();
 	    	theArray.length = arraySize;
 	    	// Initialize JSAV
-  			av = new JSAV("container");
 	    	arr = av.ds.array(theArray, {indexed: true, layout: "vertical"});
 	    });
 	    
@@ -269,18 +347,80 @@ form {
 			}
 		}
 	    
-	    // Simple mod function - state 0: highlight
+	    // Simple mod function
 	    function simpleMod(inputVal) {
-			av.umsg("The value entered is " + inputVal);
-			pos = inputVal % theArray.length;
-			arr.highlight(pos);
+	    		    	
+	    	var posValue = linearProbing(inputVal);
+	    	nextStep.enqueue(posValue);
+	    	
+	    	var pos = inputVal % theArray.length;
+	    	
+	    	var posValue = {
+	    		position: pos,
+	    		value: inputVal
+	    	};
+	    	
+	    	//nextStep.push(posValue);	    	
+	    
+			//av.umsg("The value entered is " + inputVal);
+			//pos = inputVal % theArray.length;
+			//arr.highlight(pos);
 	    }
 	    
 	    // Simple mod function - state 1: insert value
-	    function simpleModStep(inputVal, pos) {
-	    	arr.unhighlight(pos);
-			setBlue(pos);
-			arr.value(pos, inputVal);
+	    //function simpleModStep(inputVal, pos) {
+	    //	arr.unhighlight(pos);
+		//	setBlue(pos);
+		//	arr.value(pos, inputVal);
+		//}
+		
+		/* Collision Resolutions */
+		
+		// Linear Probing
+		function linearProbing(inputVal) {
+		
+			var pos = inputVal % theArray.length;
+			
+			// If pos is full, start resolution
+			if (arr.value(pos)) {
+				
+				// Temp pointer that will point to the correct position at the end of the loop
+				var i = pos;
+				// Counter that counts how many times the array ran
+				var count = 0;
+				
+				// Start at pos, until that pos is occupied
+				for (i = pos; arr.value(pos); i++) {
+				
+					if (count == arr.size)
+						av.umsg("Array is full");
+				
+					// If i is last element of arr, restart to position 0 of the array
+					if (i == arr.size()-1) {
+						i = 0;
+					}
+					
+					count++;
+				}
+				
+				var posValue = {
+					position: i,
+					value: inputVal
+				};
+				
+				return posValue;
+			}
+			
+			// Otherwise, just return next step in posValue object
+			else {
+				var posValue = {
+					position: pos,
+					value: inputVal
+				};
+				
+				return posValue;
+			}
+		
 		}
 	    
     })(jQuery);
