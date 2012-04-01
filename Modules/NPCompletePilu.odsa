@@ -1,0 +1,139 @@
+<div id="content">
+<ODSAtitle>The class NP</ODSAtitle>
+<ODSAauthor>Pilu Crescenzi</ODSAauthor>
+<ODSAyear>2012</ODSAyear>
+<ODSAprereq "LimComp" />
+
+<style>
+  .jsavarray { margin: 0; margin-top: -1px; height: 40px; min-height: 40px; min-width: 40px}
+  .jsavarray li { border-radius: 0 !important; height: 40px; width: 40px; font-size: 12px; line-height: 40px;}
+  .jsavarray:nth-of-type(3n+1) { border-width: 2px;}
+  .jsavarray li:nth-of-type(3n) { border-right: 2px solid black;}
+  .jsavarray li:first-of-type { border-left: 2px solid black;}
+  .jsavarray:nth-of-type(3n-2) li { border-top: 2px solid black;}
+  .jsavarray:nth-of-type(9) li { border-bottom: 2px solid black;}
+</style>
+
+<script>
+  // Various functions and variables that will be used by all of the
+  // following sections of the tutorial.
+  var speed = 100;
+  var BLACK = "rgb(0, 0, 0)";
+  var RED = "rgb(255, 0, 0)";
+  function logic1(avi, a, row, column, n, color, h, k) {
+    var j = 0;
+    for (j=0; j<n; j++) {
+      a[row[j]].css([column[j]], {"color": color});
+    }
+    a[h].highlight([k]);
+    msg = "";
+    if (n>0) msg = " and by the red cells";
+    avi.umsg("The value of the yellow cell is determined by the sub-square it belongs to"+msg);
+    avi.step();
+  }
+  function logic2(avi, a, row, column, n, color, h, k, v) {
+    var j = 0;
+    for (j=0; j<n; j++) {
+      a[row[j]].css([column[j]], {"color": color});
+    }
+    a[h].setvalue(k,v);
+    avi.umsg("The value of the yellow cell has been set equal to " + v);
+    avi.step();
+    a[h].unhighlight([k]);
+    avi.umsg(" ");
+ }
+</script>
+
+<h2>The Sudoku puzzle</h2>
+
+<p>
+<em>Sudoku</em> is a one-player game in which the player receives a table of nine rows and nine columns, partially filled with numbers between 1 e 9. The table is subdvided into nine sub-tables, each one with three rows and three columns. The player has to fill the empty cells of the table with numbers between 1 and 9, so that the following constraints are satisfied.
+
+<ul>
+  <li>Each row contains all numbers between 1 e 9.</li>
+
+  <li>Each column contains all numbers between 1 e 9.</li>
+
+  <li>Each sub-table contains all numbers between 1 e 9.</li>
+</ul>
+</p>
+
+<p>
+Sudoku instances are usually classified as easy, medium, and difficult. An easy instance is an instance for which a solution can be derived by making use of simple logical implications, which are due to the rule of the game. Let us consider the following example (click on the slideshow buttons to see the series of six logical implications that will lead us to complete the leftmost topmost sub-square).
+</p>
+
+<div id="easy">
+  <span class="jsavcounter"></span>
+  <div class="jsavcontrols"></div>
+</div>
+
+<script>
+(function($) {
+  var easyav = new JSAV("easy");
+  easyav.SPEED = speed;
+  var easyarray = [];
+  easyarray[0] = easyav.ds.array([3, 9,  ,  ,  ,  ,  ,  , 8]),
+  easyarray[1] = easyav.ds.array([' ', 7, 1,  ,  , 3,  ,  ,' ']),
+  easyarray[2] = easyav.ds.array([' ', , 8, , 4, 9, , 6, ' ']),
+  easyarray[3] = easyav.ds.array([1, , , 2, 7, , , , 9]),
+  easyarray[4] = easyav.ds.array([6, , , , , , , , 3]),
+  easyarray[5] = easyav.ds.array([5, , , , 3, 6, , , 4]),
+  easyarray[6] = easyav.ds.array([' ', 4, , 1, 5, , 9, , ' ']),
+  easyarray[7] = easyav.ds.array([' ', , , 9, , , 8, 2, ' ']),
+  easyarray[8] = easyav.ds.array([9, , , , , , , 4, 7]);
+  logic1(easyav, easyarray, [0,2,3,6], [1,5,8,6], 4, RED, 1, 7);
+  logic2(easyav, easyarray, [0,2,3,6], [1,5,8,6], 4, BLACK, 1, 7, 9);
+  logic1(easyav, easyarray, [0,1,4], [0,5,8], 3, RED, 2, 6);
+  logic2(easyav, easyarray, [0,1,4], [0,5,8], 3, BLACK, 2, 6, 3);
+  logic1(easyav, easyarray, [2, 4], [7, 0], 2, RED, 0, 2);
+  logic2(easyav, easyarray, [2, 4], [7, 0], 2, BLACK, 0, 2, 6);
+  logic1(easyav, easyarray, [2], [4], 1, RED, 1, 0);
+  logic2(easyav, easyarray, [2], [4], 1, BLACK, 1, 0, 4);
+  logic1(easyav, easyarray, [5], [0], 1, RED, 2, 1);
+  logic2(easyav, easyarray, [5], [0], 1, BLACK, 2, 1, 5);
+  logic1(easyav, easyarray, [], [], 0, RED, 2, 0);
+  logic2(easyav, easyarray, [], [], 0, BLACK, 2, 0, 2);
+  easyav.recorded();
+})(jQuery);
+</script>
+
+<p>
+The current configuration can be completely filled by making use of these logical implications. A difficult Sudoku instance is an instance for which, at a certain point, the player cannot apply any logical implication, as it happens in the following example (click on the slideshow buttons to see all possible digit candidates for each empty cell).
+</p>
+
+<div id="difficult">
+  <span class="jsavcounter"></span>
+  <div class="jsavcontrols"></div>
+</div>
+
+<script>
+(function($) {
+  var difficultav = new JSAV("difficult");
+  difficultav.SPEED = speed;
+  var difficultarray = [];
+  difficultarray[0] = difficultav.ds.array([' ', ,  , 6,  , 2,  , 9, ' ']),
+  difficultarray[1] = difficultav.ds.array([' ', , , 8,  , ,  ,  , 6]),
+  difficultarray[2] = difficultav.ds.array([' ', , , 7, 3, 1, 5, , 8]),
+  difficultarray[3] = difficultav.ds.array([4, 2, 9, 3, 1, 8, 6, 7, 5]),
+  difficultarray[4] = difficultav.ds.array([6, 7, 3, 2, , , 1, 8, 4]),
+  difficultarray[5] = difficultav.ds.array([5, 1, 8, 4, 6, 7, 9, 3, 2]),
+  difficultarray[6] = difficultav.ds.array([' ', , 1, 5, 2, 3, , , ' ']),
+  difficultarray[7] = difficultav.ds.array([7, , , 1, 8, 6, , , ' ']),
+  difficultarray[8] = difficultav.ds.array([' ', 6, 2, 9, 7, 4, , , ' ']);
+  difficultarray[0].setvalue(0,[1,3,8]);
+  difficultav.step();
+  difficultarray[0].setvalue(0," ");
+  difficultarray[0].setvalue(1,[3,4,5,8]);
+  difficultav.step();
+  difficultarray[0].setvalue(1," ");
+  difficultarray[0].setvalue(2,[4,5,7]);
+  difficultav.step();
+  difficultarray[0].setvalue(2," ");
+  difficultarray[0].setvalue(4,[4,5]);
+  difficultav.step();
+  difficultarray[0].setvalue(4," ");
+  difficultarray[0].setvalue(6,[3,4,7]);
+  difficultav.step();
+  difficultav.recorded();
+})(jQuery);
+</script>
