@@ -24,55 +24,47 @@
 	</div>
 	<script>
 
-		// sorting the elements of an array from a assigned postion with Bubble Sort
-		var sortArray = function (anArray, startPos, endPos) {
-			for (var i = startPos; i < endPos; i++) {
-				for (var j = i + 1; j <= endPos; j++) {
-					if (parseInt(anArray[j].value()) < parseInt(anArray[i].value())) {
+		// the structure for huffman treeNode
+		var treeNode = function (aNumber, aChar, left, right) {
+			this.frequency = aNumber;
+			this.value = aNumber + "<br />" + aChar;
+			this.lchild = left;
+			this.rchild = right;
 
-					//	var tmp = parseInt(anArray[j].value());
-					//	anArray[j].value(parseInt(anArray[i].value()));
-					//	anArray[i].value(tmp); 
-						
-					// swap the two nodes
-						tmpNode.value(anArray[j].value());
-						tmpNode.parent(anArray[j].parent());
-						tmpNode.left(anArray[j].left());
-						tmpNode.right(anArray[j].right());
-
-						anArray[j].value(anArray[i].value());
-						anArray[j].parent(anArray[i].parent());
-						anArray[j].left(anArray[i].left());
-						anArray[j].right(anArray[i].right());
-
-						anArray[i].value(tmpNode.value());
-						anArray[i].parent(tmpNode.parent());
-						anArray[i].left(tmpNode.left());
-						anArray[i].right(tmpNode.right()); 
-					}
-				}
+			this.getValue = function() {
+				return this.value;
 			}
-			indexLeft = startPos;		// index for left child
-			indexRight = startPos + 1;	// index for right child
-			s1 = parseInt(anArray[indexLeft].value());		// s1: the left child
-			s2 = parseInt(anArray[indexRight].value());		// s2: the right child
+			this.getlchild = function() {
+				return this.lchild;
+			}
+			this.getrchild = function() {
+				return this.rchild;
+			}
+		}
+
+		// sorting the elements of an array with Insertation Sort
+		var sortArray = function (anArray) {
+			for (var i = 1; i < anArray.length; i++) {
+				var key = anArray[i];
+				var j = i - 1;
+				while(j >= 0 && key < anArray[j]) {
+					anArray[j + 1] = anArray[j];
+					j--;
+				}
+				anArray[j + 1] = key;
+			}	
+		}
+
+		// copy the assigned elements from arrayOne to arrayTwo
+		var arrayCopy = function(arrayOne, arrayTwo) {
+			for (var i = 2, j = 0; i <= arrayOne.length; i++, j++) {
+				arrayTwo[j] = arrayOne[i];
+			}
 		}
 		
 		// Constructing the huffmanCodingTree
-		var HCTree = function (anArray, nNode){
-			var total = 2 * nNode - 1;		// the total node of HuffmanCoding Tree
-			var startPos = 0;
-			var endPos = nNode - 1;
-			for (var i = nNode; i < total; i++){
-				sortArray(anArray, startPos, endPos);
-				anArray[indexLeft].parent(anArray[i]);
-				anArray[indexRight].parent(anArray[i]);
-				anArray[i].left(anArray[indexLeft]);
-				anArray[i].right(anArray[indexRight]);
-				anArray[i].value(s1 + s2);
-				startPos += 2;
-				endPos++;
-			}
+		var huffTree = function (nArray, kArray){
+		
 		}
 
     // traverse to re-set background color of the entire tree
@@ -87,7 +79,7 @@
 			// if the node is an internal node, then display an circle
 			if (node.left()) {
 				node.css("background-color", col);
-				node.edgeToParent();
+				// var pos = node.edgeToParent().position();
 				traverse_color(node.left(),col);
 			}
 			if (node.right()) {
@@ -100,36 +92,14 @@
 		}
     }
     
-		var jsav = new JSAV("av");
-		var bt = jsav.ds.bintree();
-		var caption_label = jsav.label("Huffman Coding Tree Construction", {before: bt});
-		var caption_text = "";
-//		jsav.step();	
-
-		var huffTree = new Array(15);
-
-		huffTree[0] = bt.newNode(2);
-		huffTree[1] = bt.newNode(7);
-		huffTree[2] = bt.newNode(24);
-		huffTree[3] = bt.newNode(32);
-		huffTree[4] = bt.newNode(37);
-		huffTree[5] = bt.newNode(42);
-		huffTree[6] = bt.newNode(42);
-		huffTree[7] = bt.newNode(120);
-		huffTree[8] = bt.newNode(9);
-		huffTree[9] = bt.newNode(33);
-		huffTree[10] = bt.newNode(65);
-		huffTree[11] = bt.newNode(79);
-		huffTree[12] = bt.newNode(107);
-		huffTree[13] = bt.newNode(186);
-		huffTree[14] = bt.newNode(306);
-		
-		//for (var i = 0; i <= 14; i++) {
-		//	huffTree[i].left(0);
-		//}
+	var jsav = new JSAV("av");
+	var bt = jsav.ds.bintree();
+	var caption_label = jsav.label("Huffman Coding Tree Construction", {before: bt});
+	var caption_text = "";
+	jsav.step();	
 
 	bt.root(306);
-	bt.root().left(120 + "<br />" + "E");
+	bt.root().left(120 + "<bd />" + "E");
 	bt.root().right(186);
 
 	bt.root().right().left(79);
@@ -150,40 +120,49 @@
 	bt.root().right().right().right().right().left().left(2 + "<br />" + "Z");
 	bt.root().right().right().right().right().left().right(7 + "<br />" + "K");
 
-		huffTree[14].left(huffTree[12]);
-		huffTree[14].right(huffTree[13]);
+	// userArry: an array to store the user input, number and character
+	var userArray = new Array();
+	userArray[0] = 32;
+	userArray[1] = "C";
+	userArray[2] = 42;
+	userArray[3] = "D";
+	userArray[4] = 120;
+	userArray[5] = "E";
+	userArray[6] = 7;
+	userArray[7] = "K"
+	userArray[8] = 42;
+	userArray[9] = "L"
+	userArray[10] = 24;
+	userArray[11] = "M";
+	userArray[12] = 37;
+	userArray[13] = "U";
+	userArray[14] = 2;
+	userArray[15] = "Z";
 
-		huffTree[13].left(huffTree[11]);
-		huffTree[13].right(huffTree[12]);
-
-		huffTree[12].left(huffTree[6]);
-		huffTree[12].right(huffTree[10]);
-
-		huffTree[11].left(huffTree[4]);
-		huffTree[11].right(huffTree[5]);
-
-		huffTree[10].left(huffTree[3]);
-		huffTree[10].right(huffTree[9]);
-
-		huffTree[9].left(huffTree[8]);
-		huffTree[9].right(huffTree[2]);
-
-		huffTree[8].left(huffTree[0]);
-		huffTree[8].right(huffTree[1]);
+	var tmpArray = new Array();
+	for (var i = 0; i < userArray.length - 1; i += 2) {
+		tmpArray[i] = new treeNode(userArray[i], userArray[i + 1], 0, 0);
+		document.write(tmpArray[i].getValue() + "<br />");
+	}
 
 
-		/* tesing the sorting fuction
-		var st = 0;
-		var ed = 4; 
-		sortArray(huffTree, st, ed);
-		for (var i = 0; i < 7; i++) {
-			document.write(huffTree[i].value() + " ");
-		}
+	// treeArray: an array to store the information of HuffmanCodingTree
+//	var treeArray = new Array(8);
+//	for (var i = 0; i < 8; i++) {
+//		treeArray[i] = bt.newNode(numArray[i] + "<br />" + keyArray[i]);
+//		var index = treeArray[i].value().indexOf("<br />");
+//		testArray[i] = treeArray[i].value().substring(0, index);
+	//	document.write(testArray[i] + "<br />");
+//	}
 
-		document.write(huffTree[0].parent().value()); */
+	/* tesing the sorting fuction
+	sortArray(numArray);
+	for (var i = 0; i < 8; i++) {
+		document.write(numArray[i] + " ");
+	}*/
 
-		traverse_color(bt.root(), "white");
-		bt.layout();
+	traverse_color(bt.root(), "white");
+	bt.layout();
 	
     jsav.recorded(); // done recording changes, will rewind
     
