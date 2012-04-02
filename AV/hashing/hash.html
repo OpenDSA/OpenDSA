@@ -207,7 +207,7 @@ form {
     	
     	/* Keep checking input textbox value to calculate the next step in a slideshow manner */
   		var inputVal = "";
-    	setInterval(checkInputChanged, 1500);
+    	setInterval(checkInputChanged, 1200);
 
     	function checkInputChanged() {
         	var currentValue = $('#input').val();
@@ -298,8 +298,22 @@ form {
 	    // Event trigger click if hash is pushed
 	    // Hash button is pushed
 		function hash() {
+			
+			var next = nextStep.dequeue();
+			if (next.insert) {
+				arr.unhighlight(next.position);
+				arr.value(next.position, next.value);
+			}
+			else
+				arr.highlight(next.position);
+					
+			// Disable Hash Button if queue is empty
+			if (nextStep.isEmpty())
+				$('input[name="hash"]').attr("disabled", "disabled");
+					
+	
 		
-			var arraySize = $('#arraysize').val();
+			/*var arraySize = $('#arraysize').val();
 			
 			// No hashing function is selected
 			if (tracker == 0) {
@@ -311,7 +325,7 @@ form {
 				// Grab is the user's input
 				var inputVal = document.getElementById("input").value;
 					
-				/* Next button will calculate mod and highlight cell */
+				// Next button will calculate mod and highlight cell
 				if (nextState == 0) {
 				
 					// Check for input errors
@@ -335,7 +349,7 @@ form {
 					nextState = 1;
 				}
 				
-				/* Next button will show the value inserted in the cell */
+				// Next button will show the value inserted in the cell
 				else if (nextState == 1) {
 				
 					// Simple mod next step
@@ -344,21 +358,21 @@ form {
 						nextState = 0;
 					}
 				}
-			}
+			}*/
 		}
 	    
 	    // Simple mod function
 	    function simpleMod(inputVal) {
-	    		    	
-	    	var posValue = linearProbing(inputVal);
-	    	nextStep.enqueue(posValue);
 	    	
+	    	// Simple Mod Function
 	    	var pos = inputVal % theArray.length;
 	    	
-	    	var posValue = {
-	    		position: pos,
-	    		value: inputVal
-	    	};
+	    	// Linear Probing Resolution
+	    	linearProbing(inputVal, pos);
+	    	
+	    	// Reactivate Input & Next Button
+	    	$("#input").removeAttr("disabled");
+	    	$('input[name="hash"]').removeAttr("disabled");
 	    	
 	    	//nextStep.push(posValue);	    	
 	    
@@ -377,9 +391,7 @@ form {
 		/* Collision Resolutions */
 		
 		// Linear Probing
-		function linearProbing(inputVal) {
-		
-			var pos = inputVal % theArray.length;
+		function linearProbing(inputVal, pos) {
 			
 			// If pos is full, start resolution
 			if (arr.value(pos)) {
@@ -388,12 +400,17 @@ form {
 				var i = pos;
 				// Counter that counts how many times the array ran
 				var count = 0;
+				// Flag if array is full
+				var fullArray = false;
 				
 				// Start at pos, until that pos is occupied
 				for (i = pos; arr.value(pos); i++) {
 				
-					if (count == arr.size)
-						av.umsg("Array is full");
+					// If array is full
+					if (count == arr.size) {
+						av.umsg("Array is full. Insertion failed.");
+						fullArray = true;
+					}
 				
 					// If i is last element of arr, restart to position 0 of the array
 					if (i == arr.size()-1) {
@@ -401,26 +418,58 @@ form {
 					}
 					
 					count++;
+					
+					// Insert attempt as highlighting activity
+					insertActivity(i, inputVal, false);
 				}
 				
-				var posValue = {
-					position: i,
-					value: inputVal
-				};
-				
-				return posValue;
+				// Empty spot found. Insert element inputVal at i
+				if (!fullArray)
+					insertActivity(i, inputval, true);
 			}
 			
-			// Otherwise, just return next step in posValue object
+			// Otherwise, enqueue insertion activity
 			else {
+				// Hashing position found. Insert activity.
+				insertActivity(pos, inputVal, true);
+			}
+		}
+		
+		/* 
+		 * Inserts activity at position pos, with value val and whether it is insertion or highlight
+		 * into nextStep queue
+		*/
+		function insertActivity(pos, val, insert) {
+		
+			// If activity is insertion
+			if (insert) {
+			
+				// Preceed insertion with highlight
+				var posValueHighlight = {
+					position: pos,
+					value: val,
+					insert: false
+				};
+				nextStep.enqueue(posValueHighlight);
+				
 				var posValue = {
 					position: pos,
-					value: inputVal
+					value: val,
+					insert: true
 				};
-				
-				return posValue;
+				nextStep.enqueue(posValue);
 			}
-		
+			
+			// Activity is highlight only
+			else {
+				
+				var posValue = {
+					position: pos,
+					value: val,
+					insert: false
+				};
+				nextStep.enqueue(posValue);
+			}
 		}
 	    
     })(jQuery);
