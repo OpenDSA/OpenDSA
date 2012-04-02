@@ -203,37 +203,61 @@ form {
     		
     		// Disable buttons
     		$('input[name="hash"]').attr("disabled", "disabled");
+    		
+    		// Enable function change dropdown
+    		$("#function").removeAttr("disabled");
     	}
     	
-    	/* Keep checking input textbox value to calculate the next step in a slideshow manner */
-  		var inputVal = "";
-    	setInterval(checkInputChanged, 1200);
-
-    	function checkInputChanged() {
-        	var currentValue = $('#input').val();
-        	if (currentValue != inputVal) {
-            	inputVal = currentValue;
-            	inputChanged(inputVal);
-        	}
-    	}
-
-    	function inputChanged(inputVal) {
     	
-    		// Disable input to process it safely
-        	$("#input").attr("disabled", "disabled");
-        	
-        	var functionValue = $("#function").val();
-        	
-        	switch(functionValue) {
-        		// No function chosen
-        		case '0':
-        			reset();
-        			break;
-        		case '1':
-        			simpleMod(inputVal);
-        			break;
+    	/* 
+    	 * Creates a handler that will wait until the event hasn't fired for a period
+    	 * before it fires the actual event handler
+    	 */
+    	 function createBuffered(fun, delay) {
+    	 	var timer;
+    	 	return function() {
+    	 		clearTimeout(timer);
+            	var args = arguments;
+            	var me = this;
+            	timer = setTimeout(function() {
+               		fun.apply(me, args);
+            	}, delay);        
         	}
     	}
+    	
+    	// keyUp that will run 300 ms after the user stops typing in input
+    	$('#input').keyup( createBuffered(function() {
+    	
+    		// Input field value
+    		var inputVal = $(this).val();
+    		
+    		// Check if input is a valid number
+    		if (isNaN(inputVal))
+    			av.umsg("Please enter a valid number");
+    		
+    		else {
+    		
+    			// Disable input field to process it safely
+    			$("#input").attr("disabled", "disabled");
+    			
+    			// Disable array size drop down to avoid havoc
+    			$("#arraysize").attr("disabled", "disabled");    			
+    		
+    			// Process input with selected function
+    			var functionValue = $("#function").val();        	
+        		switch(functionValue) {
+        			// No function chosen
+        			case '0':
+        				reset();
+        				break;
+        			case '1':
+        				simpleMod(inputVal);
+        				break;
+        		}
+    		
+    		}
+    		
+    	}, 300));
 	    
 	    // Event trigger change if hashing function option is changed
 	    $("#function").change(function() {
@@ -246,6 +270,9 @@ form {
 	    		// Enable table size & input
 	    		$("#arraysize").removeAttr("disabled");
 	    		$("#input").removeAttr("disabled");
+	    		
+	    		// Disable function change
+	    		$("#function").attr("disabled", "disabled");
 	    	
 	    		// Initialize JSAV object
 	    		av = new JSAV("container");
@@ -258,23 +285,6 @@ form {
 	    				break;
 	    		}
 	    	}
-	    	
-	    	/*switch ($(this).val()) {
-	    	
-	    		// No function chosen
-        		case '0':
-        			$("#title").text("Please choose your hashing function from the dropdown box below.");
-            		reset();
-            		tracker = 0;
-        			break;
-        		
-        		// Simple Mod
-        		case '1':
-        			if (av)
-            			av.clearumsg();
-            		tracker = 1;
-            		break;
-        		}*/
 	    });
 	    
 	    // Event trigger change if size of hash changes
@@ -304,61 +314,15 @@ form {
 				arr.unhighlight(next.position);
 				arr.value(next.position, next.value);
 			}
-			else
+			
+			else {
+				arr.unhighlight(next.position-1);
 				arr.highlight(next.position);
+			}
 					
 			// Disable Hash Button if queue is empty
 			if (nextStep.isEmpty())
 				$('input[name="hash"]').attr("disabled", "disabled");
-					
-	
-		
-			/*var arraySize = $('#arraysize').val();
-			
-			// No hashing function is selected
-			if (tracker == 0) {
-				av.umsg("Please select a hashing function before trying to hash");
-			}
-		
-			else {
-			
-				// Grab is the user's input
-				var inputVal = document.getElementById("input").value;
-					
-				// Next button will calculate mod and highlight cell
-				if (nextState == 0) {
-				
-					// Check for input errors
-					if (inputVal.length == 0) {
-						av.umsg("Please enter a hashing value");
-					}
-			
-					else if (isNaN(inputVal)) {
-						av.umsg("Please enter a valid numeric value to hash");
-					}
-				
-					else {
-					
-						// Simple Mod Function
-						if (tracker == 1)
-							simpleMod(inputVal, arraySize);
-					
-					}
-					
-					// Changes behaviour of next button click
-					nextState = 1;
-				}
-				
-				// Next button will show the value inserted in the cell
-				else if (nextState == 1) {
-				
-					// Simple mod next step
-					if (tracker == 1) {
-						simpleModStep(inputVal, pos);
-						nextState = 0;
-					}
-				}
-			}*/
 		}
 	    
 	    // Simple mod function
@@ -373,29 +337,16 @@ form {
 	    	// Reactivate Input & Next Button
 	    	$("#input").removeAttr("disabled");
 	    	$('input[name="hash"]').removeAttr("disabled");
-	    	
-	    	//nextStep.push(posValue);	    	
-	    
-			//av.umsg("The value entered is " + inputVal);
-			//pos = inputVal % theArray.length;
-			//arr.highlight(pos);
 	    }
-	    
-	    // Simple mod function - state 1: insert value
-	    //function simpleModStep(inputVal, pos) {
-	    //	arr.unhighlight(pos);
-		//	setBlue(pos);
-		//	arr.value(pos, inputVal);
-		//}
 		
 		/* Collision Resolutions */
 		
 		// Linear Probing
 		function linearProbing(inputVal, pos) {
-			
+		
 			// If pos is full, start resolution
-			if (arr.value(pos)) {
-				
+			if (arr.value(pos) != false) {
+						
 				// Temp pointer that will point to the correct position at the end of the loop
 				var i = pos;
 				// Counter that counts how many times the array ran
@@ -403,29 +354,39 @@ form {
 				// Flag if array is full
 				var fullArray = false;
 				
-				// Start at pos, until that pos is occupied
-				for (i = pos; arr.value(pos); i++) {
-				
-					// If array is full
-					if (count == arr.size) {
+				// Loop across the array. "infinite" loop. Breaks if array is full.
+				for (;;) {
+					
+					// If array is full, break out
+					if (count == arr.size()) {
+						/* Display only at right time */
 						av.umsg("Array is full. Insertion failed.");
 						fullArray = true;
-					}
-				
-					// If i is last element of arr, restart to position 0 of the array
-					if (i == arr.size()-1) {
-						i = 0;
+						break;
 					}
 					
-					count++;
+					// If space is available, break
+					if (String(arr.value(i)) == "")
+						break;
 					
 					// Insert attempt as highlighting activity
 					insertActivity(i, inputVal, false);
+					
+					// If i is last element of arr, restart to position 0 of the array
+					if (i == arr.size() - 1)
+						i = 0;
+						
+					// Otherwise just increment i by 1 (to check for next pos of array next iteration)
+					else
+						i++;
+					
+					// Increment count 
+					count++;
 				}
 				
 				// Empty spot found. Insert element inputVal at i
 				if (!fullArray)
-					insertActivity(i, inputval, true);
+					insertActivity(i, inputVal, true);
 			}
 			
 			// Otherwise, enqueue insertion activity
@@ -471,7 +432,6 @@ form {
 				nextStep.enqueue(posValue);
 			}
 		}
-	    
     })(jQuery);
     
 </script>
