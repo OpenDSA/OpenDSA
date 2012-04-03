@@ -23,49 +23,52 @@
 		<p class="jsavoutput jsavline"></p>
 	</div>
 	<script>
-
-		// the structure for huffman treeNode
-		var treeNode = function (aNumber, aChar, left, right) {
-			this.frequency = aNumber;
-			this.value = aNumber + "<br />" + aChar;
-			this.lchild = left;
-			this.rchild = right;
-
-			this.getValue = function() {
-				return this.value;
+	// sorting the elements of an array with Insertation Sort
+	var sortArray = function (anArray, tArray) {
+		for (var i = 1; i < anArray.length; i++) {
+			var key = anArray[i];
+			var tmp = tArray[i];
+			var j = i - 1;
+			while(j >= 0 && key < anArray[j]) {
+				anArray[j + 1] = anArray[j];
+				tArray[j + 1] = tArray[j];
+				j--;
 			}
-			this.getlchild = function() {
-				return this.lchild;
-			}
-			this.getrchild = function() {
-				return this.rchild;
-			}
-		}
+			anArray[j + 1] = key;
+			tArray[j + 1] = tmp
+		}	
+	}
 
-		// sorting the elements of an array with Insertation Sort
-		var sortArray = function (anArray) {
-			for (var i = 1; i < anArray.length; i++) {
-				var key = anArray[i];
-				var j = i - 1;
-				while(j >= 0 && key < anArray[j]) {
-					anArray[j + 1] = anArray[j];
-					j--;
-				}
-				anArray[j + 1] = key;
-			}	
+	// shuffle the array by moving left
+	var shuffle = function (anArray, tArray, key, node) {
+		anArray[1] = key;
+		tArray[1] = node;
+		for (var i = 0; i < anArray.length - 1; i++) {
+			anArray[i] = anArray[i + 1];
+			tArray[i] = tArray[i + 1];
 		}
+		anArray.length -= 1;
+		tArray.length -= 1;
+	}
 
-		// copy the assigned elements from arrayOne to arrayTwo
-		var arrayCopy = function(arrayOne, arrayTwo) {
-			for (var i = 2, j = 0; i <= arrayOne.length; i++, j++) {
-				arrayTwo[j] = arrayOne[i];
+	// Constructing the huffmanCodingTree
+	var huffTree = function (nArray, tArray) {
+		while (nArray.length > 1) {
+			sortArray(nArray, tArray);
+
+			var key = nArray[0] + nArray[1];
+			if (nArray.length == 2) {
+				var node = bt.root(key);
 			}
-		}
-		
-		// Constructing the huffmanCodingTree
-		var huffTree = function (nArray, kArray){
-		
-		}
+			else {
+				var node = bt.newNode(key);
+			}
+			node.left(tArray[0]);
+			node.right(tArray[1]);
+
+			shuffle(nArray, tArray, key, node);
+		}	
+	}
 
     // traverse to re-set background color of the entire tree
     var traverse_color = function(node, col) {
@@ -98,29 +101,7 @@
 	var caption_text = "";
 	jsav.step();	
 
-	bt.root(306);
-	bt.root().left(120 + "<bd />" + "E");
-	bt.root().right(186);
-
-	bt.root().right().left(79);
-	bt.root().right().right(107);
-
-	bt.root().right().left().right(42 + "<br />" + "D");
-	bt.root().right().left().left(37 + "<br />" + "U");
-
-	bt.root().right().right().left(42 + "<br />" + "L");
-	bt.root().right().right().right(65);
-
-	bt.root().right().right().right().left(32 + "<br />" + "C");
-	bt.root().right().right().right().right(33);
-
-	bt.root().right().right().right().right().left(9);
-	bt.root().right().right().right().right().right(24 + "<br />" + "M");
-
-	bt.root().right().right().right().right().left().left(2 + "<br />" + "Z");
-	bt.root().right().right().right().right().left().right(7 + "<br />" + "K");
-
-	// userArry: an array to store the user input, number and character
+	// userArry: an array to store the number and character
 	var userArray = new Array();
 	userArray[0] = 32;
 	userArray[1] = "C";
@@ -139,27 +120,20 @@
 	userArray[14] = 2;
 	userArray[15] = "Z";
 
-	var tmpArray = new Array();
-	for (var i = 0; i < userArray.length - 1; i += 2) {
-		tmpArray[i] = new treeNode(userArray[i], userArray[i + 1], 0, 0);
-		document.write(tmpArray[i].getValue() + "<br />");
+	// treeArray: an array to store the information of HuffmanCodingTree
+	var treeArray = new Array();
+	var numArray = new Array();
+	for (var i = 0, j = 0; i < userArray.length - 1; i += 2, j++) {
+		value = userArray[i] + "<br />" + userArray[i + 1];
+		treeArray[j] = bt.newNode(value);
+		numArray[j] = userArray[i];
+	//	document.write(treeArray[j].value() + "<br />");
 	}
 
+	huffTree(numArray, treeArray);
 
-	// treeArray: an array to store the information of HuffmanCodingTree
-//	var treeArray = new Array(8);
-//	for (var i = 0; i < 8; i++) {
-//		treeArray[i] = bt.newNode(numArray[i] + "<br />" + keyArray[i]);
 //		var index = treeArray[i].value().indexOf("<br />");
 //		testArray[i] = treeArray[i].value().substring(0, index);
-	//	document.write(testArray[i] + "<br />");
-//	}
-
-	/* tesing the sorting fuction
-	sortArray(numArray);
-	for (var i = 0; i < 8; i++) {
-		document.write(numArray[i] + " ");
-	}*/
 
 	traverse_color(bt.root(), "white");
 	bt.layout();
