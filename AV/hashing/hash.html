@@ -145,297 +145,295 @@ form {
 
 <script>
  
-	/* The fun starts here  */
-	(function($) {
-	
-		/* Variables */
-		var arraySize;					// Table size
-		var theArray = [];				// Actual array
-		var av;							// JSAV
-		var arr;						// JSAV Array
-		var nextStep = new Queue();		/* A queue that will contain the "next step". Stores 
-											position and value of next step as an object */
-									
-		//var tracker = 0;
-		//var nextState = 0;
-		//var pos;
-		
-		// Connect action callbacks to the HTML entities
-		$('input[name="about"]').click(about);
-  		$('input[name="hash"]').click(hash);
-  		$('input[name="reset"]').click(reset);
-  		
-  		// Call reset - the initial state of the vizualization
-  		reset();
-  		
-		/* Settings Function */
-		// create a new settings panel and specify the link to show it
-  		var settings = new JSAV.utils.Settings($(".jsavsettings"));
-  		// add the layout setting preference
-  		var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
+/* The fun starts here  */
+(function($) {
 
-		// Process About button: Pop up a message with an Alert
-  		function about() {
-    		var mystring = "Hashing  Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
-    		alert(mystring);
-  		}
+	/* Variables */
+	var arraySize;								// Table size
+	var theArray = [];						// Actual array
+	var av;												// JSAV
+	var arr;											// JSAV Array
+	var nextStep = new Queue();		/* A queue that will contain the "next step". Stores 
+																	position and value of next step as an object */
+		
+	// Connect action callbacks to the HTML entities
+	$('input[name="about"]').click(about);
+  $('input[name="hash"]').click(hash);
+  $('input[name="reset"]').click(reset);
   		
-  		/* Reset Function */
-  		function reset() {
-    		
-    		// Clear messages
-    		if (av) {
-      			av.clearumsg();
-      			av.umsg("Please select a hashing function");
-      		}
+  // Call reset - the initial state of the vizualization
+  reset();
+  		
+	/* Settings Function */
+	// create a new settings panel and specify the link to show it
+	var settings = new JSAV.utils.Settings($(".jsavsettings"));
+ 	// add the layout setting preference
+ 	var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
+
+	// Process About button: Pop up a message with an Alert
+  function about() {
+		var mystring = "Hashing  Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
+    alert(mystring);
+	}
+  		
+  /* Reset Function */
+  function reset() {
+	  		
+  	// Clear messages
+    if (av) {
+    	av.clearumsg();
+      av.umsg("Please select a hashing function");
+    }
       		
-      		// Hide array if one exists
-      		if (arr)
-      			arr.hide();
+    // Hide array if one exists
+    if (arr)
+    	arr.hide();
       			
-    		// Reset & disable dropdowns
-    		$("#function").val(0);
-    		$("#arraysize").val(0);
-    		$("#collision").val(0);
-    		$('#arraysize').attr("disabled", "disabled");
-    		$('#input').attr("disabled", "disabled");
-    		$('#collision').attr("disabled", "disabled");
+   	// Reset & disable dropdowns
+    $("#function").val(0);
+    $("#arraysize").val(0);
+    $("#collision").val(0);
+    $('#arraysize').attr("disabled", "disabled");
+    $('#input').attr("disabled", "disabled");
+    $('#collision').attr("disabled", "disabled");
     		
-    		// Disable buttons
-    		$('input[name="hash"]').attr("disabled", "disabled");
+    // Disable buttons
+    $('input[name="hash"]').attr("disabled", "disabled");
     		
-    		// Enable function change dropdown
-    		$("#function").removeAttr("disabled");
-    	}
+    // Enable function change dropdown
+    $("#function").removeAttr("disabled");
+	}
+	
+	/* 
+   * Creates a handler that will wait until the event hasn't fired for a period
+   * before it fires the actual event handler
+   */
+	function createBuffered(fun, delay) {
+  	var timer;
+    return function() {
+    	clearTimeout(timer);
+      var args = arguments;
+      var me = this;
+      timer = setTimeout(function() {
+      	fun.apply(me, args);
+      }, delay);
+    }
+  }
+
+	// keyUp that will run 300 ms after the user stops typing in input
+  $('#input').keyup( createBuffered(function() {
     	
-    	
-    	/* 
-    	 * Creates a handler that will wait until the event hasn't fired for a period
-    	 * before it fires the actual event handler
-    	 */
-    	 function createBuffered(fun, delay) {
-    	 	var timer;
-    	 	return function() {
-    	 		clearTimeout(timer);
-            	var args = arguments;
-            	var me = this;
-            	timer = setTimeout(function() {
-               		fun.apply(me, args);
-            	}, delay);        
-        	}
-    	}
-    	
-    	// keyUp that will run 300 ms after the user stops typing in input
-    	$('#input').keyup( createBuffered(function() {
-    	
-    		// Input field value
-    		var inputVal = $(this).val();
+  	// Input field value
+  	var inputVal = $(this).val();
     		
-    		// Check if input is a valid number
-    		if (isNaN(inputVal))
-    			av.umsg("Please enter a valid number");
+  	// Check if input is a valid number
+  	if (isNaN(inputVal)) {
+  		av.umsg("Please enter a valid number");
+		}
     		
-    		else {
+		else {
     		
-    			// Disable input field to process it safely
-    			$("#input").attr("disabled", "disabled");
+  		// Disable input field to process it safely
+    	$("#input").attr("disabled", "disabled");
     			
-    			// Disable array size drop down to avoid havoc
-    			$("#arraysize").attr("disabled", "disabled");    			
+    	// Disable array size drop down to avoid havoc
+    	$("#arraysize").attr("disabled", "disabled");    			
     		
-    			// Process input with selected function
-    			var functionValue = $("#function").val();        	
-        		switch(functionValue) {
-        			// No function chosen
-        			case '0':
-        				reset();
-        				break;
-        			case '1':
-        				simpleMod(inputVal);
-        				break;
-        		}
-    		
-    		}
-    		
-    	}, 300));
+    	// Process input with selected function
+    	var functionValue = $("#function").val();        	
+    	switch(functionValue) {
+    		// No function chosen
+      	case '0':
+      		reset();
+        	break;
+				case '1':
+      		simpleMod(inputVal);
+        	break;
+			}  		
+		}
+	}, 300));
+	
+	// Event trigger change if hashing function option is changed
+	$("#function").change(function() {
 	    
-	    // Event trigger change if hashing function option is changed
-	    $("#function").change(function() {
-	    
-	    	if ($(this).val() == 0)
-	    		reset();
+		if ($(this).val() == 0) {
+	  	reset();
+		}
 	    		
-	    	else {
+	  else {
 	    	
-	    		// Enable table size & input
-	    		$("#arraysize").removeAttr("disabled");
-	    		$("#input").removeAttr("disabled");
+	  	// Enable table size & input
+	    $("#arraysize").removeAttr("disabled");
+	    $("#input").removeAttr("disabled");
 	    		
-	    		// Disable function change
-	    		$("#function").attr("disabled", "disabled");
+	    // Disable function change
+	    $("#function").attr("disabled", "disabled");
 	    	
-	    		// Initialize JSAV object
-	    		av = new JSAV("container");
+	    // Initialize JSAV object
+	    av = new JSAV("container");
 	    		
-	    		// Choose linear probing resolution policy
-	    		switch ($(this).val()) {
-	    			// Linear probing for simple mod
-	    			case '1':
-	    				$("#collision").val(1);
-	    				break;
-	    		}
-	    	}
-	    });
+	    // Choose linear probing resolution policy
+	    switch ($(this).val()) {
+	    	// Linear probing for simple mod
+	    	case '1':
+	    		$("#collision").val(1);
+	    		break;
+	    }
+	  }
+	});
+	
+	// Event trigger change if size of hash changes
+	$("#arraysize").change(function() {
 	    
-	    // Event trigger change if size of hash changes
-	    $("#arraysize").change(function() {
+		// Hide previous array if it exists
+	  if (arr) {
+			arr.hide();
+		}
+		
+		// Draw new array
+	  var arraySize = $('#arraysize').val();
+	  theArray.length = arraySize;
+	  // Initialize JSAV
+	  arr = av.ds.array(theArray, {indexed: true, layout: "vertical"});
+	});
 	    
-	    	// Hide previous array if it exists
-	    	if (arr)
-	    		arr.hide();
-	    	
-	    	// Draw new array
-	    	var arraySize = $('#arraysize').val();
-	    	theArray.length = arraySize;
-	    	// Initialize JSAV
-	    	arr = av.ds.array(theArray, {indexed: true, layout: "vertical"});
-	    });
+	function setBlue(index) {
+  	arr.css(index, {"background-color": "#ddf" });
+  };
 	    
-	    function setBlue(index) {
-    		arr.css(index, {"background-color": "#ddf" });
-  		};
-	    
-	    // Event trigger click if hash is pushed
-	    // Hash button is pushed
-		function hash() {
+	// Event trigger click if hash is pushed
+	// Hash button is pushed
+	function hash() {
+		
+		var next = nextStep.dequeue();
+		if (next.insert) {
+			arr.unhighlight(next.position);
+			arr.value(next.position, next.value);
+		}
 			
-			var next = nextStep.dequeue();
-			if (next.insert) {
-				arr.unhighlight(next.position);
-				arr.value(next.position, next.value);
-			}
-			
-			else {
-				arr.unhighlight(next.position-1);
-				arr.highlight(next.position);
-			}
+		else {
+			arr.unhighlight(next.position-1);
+			arr.highlight(next.position);
+		}
 					
 			// Disable Hash Button if queue is empty
 			if (nextStep.isEmpty())
 				$('input[name="hash"]').attr("disabled", "disabled");
-		}
+	}
 	    
-	    // Simple mod function
-	    function simpleMod(inputVal) {
+	// Simple mod function
+	function simpleMod(inputVal) {
 	    	
-	    	// Simple Mod Function
-	    	var pos = inputVal % theArray.length;
+		// Simple Mod Function
+	  var pos = inputVal % theArray.length;
 	    	
-	    	// Linear Probing Resolution
-	    	linearProbing(inputVal, pos);
+	  // Linear Probing Resolution
+	  linearProbing(inputVal, pos);
 	    	
-	    	// Reactivate Input & Next Button
-	    	$("#input").removeAttr("disabled");
-	    	$('input[name="hash"]').removeAttr("disabled");
-	    }
+	  // Reactivate Input & Next Button
+	  $("#input").removeAttr("disabled");
+	  $('input[name="hash"]').removeAttr("disabled");
+	}
+	
+	/* Collision Resolutions */
 		
-		/* Collision Resolutions */
+	// Linear Probing
+	function linearProbing(inputVal, pos) {
 		
-		// Linear Probing
-		function linearProbing(inputVal, pos) {
-		
-			// If pos is full, start resolution
-			if (arr.value(pos) != false) {
+		// If pos is full, start resolution
+		if (arr.value(pos) != false) {
 						
-				// Temp pointer that will point to the correct position at the end of the loop
-				var i = pos;
-				// Counter that counts how many times the array ran
-				var count = 0;
-				// Flag if array is full
-				var fullArray = false;
+			// Temp pointer that will point to the correct position at the end of the loop
+			var i = pos;
+			// Counter that counts how many times the array ran
+			var count = 0;
+			// Flag if array is full
+			var fullArray = false;
 				
-				// Loop across the array. "infinite" loop. Breaks if array is full.
-				for (;;) {
+			// Loop across the array. "infinite" loop. Breaks if array is full.
+			for (;;) {
 					
-					// If array is full, break out
-					if (count == arr.size()) {
-						/* Display only at right time */
-						av.umsg("Array is full. Insertion failed.");
-						fullArray = true;
-						break;
-					}
-					
-					// If space is available, break
-					if (String(arr.value(i)) == "")
-						break;
-					
-					// Insert attempt as highlighting activity
-					insertActivity(i, inputVal, false);
-					
-					// If i is last element of arr, restart to position 0 of the array
-					if (i == arr.size() - 1)
-						i = 0;
-						
-					// Otherwise just increment i by 1 (to check for next pos of array next iteration)
-					else
-						i++;
-					
-					// Increment count 
-					count++;
+				// If array is full, break out
+				if (count == arr.size()) {
+					av.umsg("Array is full. Insertion failed.");
+					fullArray = true;
+					break;
 				}
-				
-				// Empty spot found. Insert element inputVal at i
-				if (!fullArray)
-					insertActivity(i, inputVal, true);
+					
+				// If space is available, break
+				if (String(arr.value(i)) == "") {
+					break;
+				}
+					
+				// Insert attempt as highlighting activity
+				insertActivity(i, inputVal, false);
+					
+				// If i is last element of arr, restart to position 0 of the array
+				if (i == arr.size() - 1) {
+					i = 0;
+				}
+						
+				// Otherwise just increment i by 1 (to check for next pos of array next iteration)
+				else {
+					i++;
+				}
+					
+				// Increment count 
+				count++;
 			}
-			
-			// Otherwise, enqueue insertion activity
-			else {
-				// Hashing position found. Insert activity.
-				insertActivity(pos, inputVal, true);
+				
+			// Empty spot found. Insert element inputVal at i
+			if (!fullArray) {
+				insertActivity(i, inputVal, true);
 			}
 		}
-		
-		/* 
-		 * Inserts activity at position pos, with value val and whether it is insertion or highlight
-		 * into nextStep queue
-		*/
-		function insertActivity(pos, val, insert) {
-		
-			// If activity is insertion
-			if (insert) {
 			
-				// Preceed insertion with highlight
-				var posValueHighlight = {
-					position: pos,
-					value: val,
-					insert: false
-				};
-				nextStep.enqueue(posValueHighlight);
-				
-				var posValue = {
-					position: pos,
-					value: val,
-					insert: true
-				};
-				nextStep.enqueue(posValue);
-			}
-			
-			// Activity is highlight only
-			else {
-				
-				var posValue = {
-					position: pos,
-					value: val,
-					insert: false
-				};
-				nextStep.enqueue(posValue);
-			}
+		// Otherwise, enqueue insertion activity
+		else {
+			// Hashing position found. Insert activity.
+			insertActivity(pos, inputVal, true);
 		}
-    })(jQuery);
+	}
+		
+	/* 
+	 * Inserts activity at position pos, with value val and whether it is insertion or highlight
+	 * into nextStep queue
+	*/
+	function insertActivity(pos, val, insert) {
+		
+		// If activity is insertion
+		if (insert) {
+			
+			// Preceed insertion with highlight
+			var posValueHighlight = {
+				position: pos,
+				value: val,
+				insert: false
+			};
+			nextStep.enqueue(posValueHighlight);
+				
+			var posValue = {
+				position: pos,
+				value: val,
+				insert: true
+			};
+			nextStep.enqueue(posValue);
+		}
+			
+		// Activity is highlight only
+		else {
+				
+			var posValue = {
+				position: pos,
+				value: val,
+				insert: false
+			};
+			nextStep.enqueue(posValue);
+		}
+	}
+})(jQuery);
     
 </script>
-
 
 </body>
 </html>
