@@ -8,7 +8,7 @@
 
 #container {
   width: 800px;
-  height: 450px;
+  height: 615px;
   border: 1px solid black;
   background-color: #efe;
   padding: 10px;
@@ -206,12 +206,12 @@ form {
 	  // BEGIN MERGESORT IMPLEMENTATION
 	  
 	  // Calculate and set a custom height for the container
-	  var totalDepth = Math.ceil(Math.log(newSize) / Math.log(2)) + 1;
+	  // var totalDepth = Math.ceil(Math.log(newSize) / Math.log(2)) + 1;
 	  // 200px for the visualization controls, 15px for a little extra at the bottom 
 	  // (prevents a vertical scroll bar from appearing) and the height of each row 
 	  // times the number of rows in the visualization
-	  var newHeight = 215 + rowHeight * totalDepth;
-	  $('#container').height(newHeight);
+	  // var newHeight = 215 + rowHeight * totalDepth;
+	  //$('#container').height(newHeight);
 	  
 	  mergesort(av, arr, 1, 1);
 
