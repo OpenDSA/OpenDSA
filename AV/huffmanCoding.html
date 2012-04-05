@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>OpenDSA Textbook: Huffman Coding Tree</title>
+	<title>Huffman Coding Tree</title>
 	<meta charset="utf-8" />
+	<link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
 	<link href="../JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript"
 		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -17,13 +18,18 @@
 	<script src="../JSAV/build/JSAV.js"></script>
 
 	<style>
-	#av {
-	  width: 1000px;
-	  height: 800px;
-	  border: 1px solid black;
-	  background-color: #efe;
+	#container {
+	  width: 800px;
+	  height: 450px;
+	  background-color: #EEF3F7;
+	  border:1px solid #A5B6C8;
 	  padding: 10px;
-	  overflow: hidden;
+	  overflow-x: hidden;
+	  overflow-y: visible;
+	}
+
+	#av{
+		overflow: visible;	
 	}
 
 	div h1 {
@@ -33,6 +39,7 @@
 	.jsavcontainer {
 	  background-color: #efe;
 	  border: none;
+	  padding 0px;
 	}
 	.jsavcounter {
 	  float: left;
@@ -40,6 +47,7 @@
 	}
 	.jsavarray {
 	  padding-left:0;
+	  position: absolute;
 	}
 	p.jsavoutput.jsavline {
 	  height: 30px;
@@ -61,11 +69,18 @@
 </head>
 	
 <body>
-	
-	<div id="av">
-		<div class="jsavcontrols"></div>
-		<p class="jsavoutput jsavline"></p>
-	</div>
+
+	<div id="container">
+		<input type="button" id="about" name="about" value="about" style="margin-top:10px;"/>
+		<a class="jsavsettings" href="#">Settings</a>
+		<h1 style="">Huffman Coding Tree Visualization</h1>
+		<div id="av">
+			<span class="jsavcounter"></span>
+			<div class="jsavcontrols"></div>
+			<p class="jsavoutput jsavline" readonly="readonly"></p>
+		</div> <!--av-->
+	</div> <!--container-->
+
 	<script>
 	// sorting the elements of an array with Insertation Sort
 	var sortArray = function (anArray, tArray, dArray) {
@@ -137,6 +152,26 @@
 			bt.hide();
 			jsav.step();	
 
+		/*	caption_label.text(caption_text + "Merge them together, and the result is " + key);
+			tmpBT.root(key);
+			tmpBT.root().left(dArray[0]);
+			tmpBT.root().right(dArray[1]);
+			bt.hide();
+			arr.hide();
+			tmpBT.show();
+			traverse_color(tmpBT.root(), "white");
+			tmpBT.layout();
+			jsav.step(); */
+
+			if (nArray.length == 2) {
+				var node = bt.root(key);
+			}
+			else {
+				var node = bt.newNode(key);
+			}
+			node.left(tArray[0]);
+			node.right(tArray[1]);
+
 			caption_label.text(caption_text + "Merge them together, and the result is " + key);
 			tmpBT.root(key);
 			tmpBT.root().left(dArray[0]);
@@ -148,17 +183,12 @@
 			tmpBT.layout();
 			jsav.step();
 
-
-			if (nArray.length == 2) {
-				var node = bt.root(key);
-			}
-			else {
-				var node = bt.newNode(key);
-			}
-			node.left(tArray[0]);
-			node.right(tArray[1]);
-
+			caption_label.text(caption_text + "Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
 			shuffle(nArray, tArray, dArray, key, node);
+			bt.hide();
+			tmpBT.hide();
+			arr = jsav.ds.array(dArray);
+			jsav.step();
 		}	
 	}
 
@@ -181,8 +211,14 @@
 				traverse_color(node.right(),col);
 			}
 			// if the node is a leaf node, then display an rectangle
-			else 
-				node.css({"height": "90px", "width": "45px", "border-radius":1, "background-color":"YELLOW"});	
+			else { 
+				if (node.value().indexOf("<br />") > 0) {
+					node.css({"height": "90px", "width": "45px", "border-radius":1, "background-color":"YELLOW"});	
+				}
+				else
+				//node.css({"background-color": col, "width": "46px", "height": "46px", "-moz-border-radius": "23px", "-webkit-border-radius": "23px", "border-radius": "23px"});
+				node.css({"height": "90px", "width": "45px", "background-color": col, "border-radius": "23px"});
+			}
 		}
     }
     
@@ -239,6 +275,7 @@
 	huffTree_animation(numArray, treeArray, disArray);
 
 	traverse_color(bt.root(), "white");
+	tmpBT.layout();
 	tmpBT.hide();
 	bt.show();
 	bt.layout();
