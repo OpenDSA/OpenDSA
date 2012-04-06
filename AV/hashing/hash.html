@@ -116,7 +116,7 @@ form {
 				<input size="10" name="input" id="input" type="text" />
 				&nbsp;
 				<!-- Buttons --> 				
-				<input type="button" name="hash" value="Hash" />
+				<input type="button" name="hash" value="Next" />
 				<input type="button" name="reset" value="Restart" />
 				<input type="button" name="help" value="Help" />
 			</p>
@@ -140,37 +140,37 @@ form {
 /* The fun starts here  */
 (function($) {
 
-	/* Variables */
-	var arraySize;								// Table size
-	var theArray = [];						// Actual array
-	var av;												// JSAV
-	var arr;											// JSAV Array
-	var fullArray= false;         // Flag that determines whether array is full or not
-	var nextStep = new Queue();		/* A queue that will contain the "next step". Stores 
+  /* Variables */
+  var arraySize;					// Table size
+  var theArray = [];				// Actual array
+  var av;							// JSAV
+  var arr;						// JSAV Array
+  var fullArray= false;           // Flag that determines whether array is full or not
+  var nextStep = new Queue();		/* A queue that will contain the "next step". Stores 
 																	position and value of next step as an object */
-	// Initialize JSAV object
-	av = new JSAV("container");
-	av.umsg("Please select a hashing function");
+  // Initialize JSAV object
+  av = new JSAV("container");
+  av.umsg("Please select a hashing function");
 		
-	// Connect action callbacks to the HTML entities
-	$('input[name="about"]').click(about);
+  // Connect action callbacks to the HTML entities
+  $('input[name="about"]').click(about);
   $('input[name="hash"]').click(hash);
   $('input[name="reset"]').click(reset);
   		
   // Call reset - the initial state of the vizualization
   reset();
   		
-	/* Settings Function */
-	// create a new settings panel and specify the link to show it
-	var settings = new JSAV.utils.Settings($(".jsavsettings"));
- 	// add the layout setting preference
- 	var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
+  /* Settings Function */
+  // create a new settings panel and specify the link to show it
+  var settings = new JSAV.utils.Settings($(".jsavsettings"));
+  // add the layout setting preference
+  var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
 
-	// Process About button: Pop up a message with an Alert
+  // Process About button: Pop up a message with an Alert
   function about() {
-		var mystring = "Hashing  Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
+	var mystring = "Hashing  Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
     alert(mystring);
-	}
+  }
   
   
   /* Reset Function */
@@ -178,13 +178,13 @@ form {
 	  
   	// Clear messages
     if (av) {
-    	av.clearumsg();
+      av.clearumsg();
       av.umsg("Please select a hashing function");
     }
       		
     // Hide array if one exists
     if (arr) {
-    	arr.hide();
+      arr.hide();
     }
       			
    	// Reset & disable dropdowns
@@ -207,18 +207,18 @@ form {
    * before it fires the actual event handler
    */
 	function createBuffered(fun, delay) {
-  	var timer;
-    return function() {
-    	clearTimeout(timer);
-      var args = arguments;
-      var me = this;
-      timer = setTimeout(function() {
-      	fun.apply(me, args);
-      }, delay);
+  	  var timer;
+      return function() {
+        clearTimeout(timer);
+        var args = arguments;
+        var me = this;
+        timer = setTimeout(function() {
+      	  fun.apply(me, args);
+        }, delay);
+      }
     }
-  }
 
-	// keyUp that will run 300 ms after the user stops typing in input
+  // key that will run 300 ms after the user stops typing in input
   $('#input').keypress( createBuffered(function() {
   
   	// Input field value
@@ -226,29 +226,29 @@ form {
     		
   	// Check if input is a valid number
   	if (isNaN(inputVal)) {
-  		av.umsg("Please enter a valid number");
-		}
+  	  av.umsg("Please enter a valid number");
+	  }
     		
-		else {
+	  else {
     		
-  		// Disable input field to process it safely
-    	$("#input").attr("disabled", "disabled");
+  	  // Disable input field to process it safely
+      $("#input").attr("disabled", "disabled");
     			
-    	// Disable array size drop down to avoid havoc
-    	$("#arraysize").attr("disabled", "disabled");    			
+      // Disable array size drop down to avoid havoc
+      $("#arraysize").attr("disabled", "disabled");    			
     		
-    	// Process input with selected function
-    	var hashFunction = $("#function").val();        	
-    	switch(hashFunction) {
-    		// No function chosen
+      // Process input with selected function
+      var hashFunction = $("#function").val();        	
+      switch(hashFunction) {
+      	// No function chosen
       	case '0':
-      		reset();
-        	break;
-				case '1':
-      		simpleMod(inputVal);
-        	break;
-			}  		
-		}
+          reset();
+          break;
+		  case '1':
+      	  simpleMod(inputVal);
+          break;
+		  }  		
+	  }
 		
 		// Reactivate Next Button
 	  $('input[name="hash"]').removeAttr("disabled");
@@ -258,13 +258,13 @@ form {
 	// Event trigger change if hashing function option is changed
 	$("#function").change(function() {
 	    
-		if ($(this).val() == 0) {
-	  	reset();
-		}
+	  if ($(this).val() == 0) {
+	    reset();
+	  }
 	    		
 	  else {
 	    	
-	  	// Enable table size
+	    // Enable table size
 	    $("#arraysize").removeAttr("disabled");
 	    		
 	    // Disable function change
@@ -272,10 +272,10 @@ form {
 	    		
 	    // Choose linear probing resolution policy
 	    switch ($(this).val()) {
-	    	// Linear probing for simple mod
-	    	case '1':
-	    		$("#collision").val(1);
-	    		break;
+	      // Linear probing for simple mod
+	      case '1':
+	    	$("#collision").val(1);
+	    	break;
 	    }
 	  }
 	});
@@ -285,14 +285,14 @@ form {
 	    
 		// Hide previous array if it exists
 	  if (arr) {
-			arr.hide();
-		}
+		arr.hide();
+	  }
 		
-		/*
-		 * Handle array size change in middle of hashing
-		 */
+	  /*
+	   * Handle array size change in middle of hashing
+	   */
 		
-		// Draw new array
+	  // Draw new array
 	  var arraySize = $('#arraysize').val();
 	  theArray.length = arraySize;
 	  // Initialize JSAV
@@ -309,35 +309,35 @@ form {
 	  // Insert new empty line
 	  av.umsg("\n");
 		
-		var next = nextStep.dequeue();
+	  var next = nextStep.dequeue();
 		
-		// If activity is insertion
-		if (next.insert) {
-		  av.umsg("Inserting " + next.value + " at position " + next.position + ".");
-			arr.unhighlight(next.position);
-			arr.value(next.position, next.value);
-		}
+	  // If activity is insertion
+	  if (next.insert) {
+	    av.umsg("Inserting " + next.value + " at position " + next.position + ".");
+		arr.unhighlight(next.position);
+		arr.value(next.position, next.value);
+	  }
 		
-		// If activity is only highlighting
-		else {
-		  av.umsg("Attempting to insert " + next.value + " at position " + next.position + ".");
-			arr.unhighlight(next.position-1);
-			arr.highlight(next.position);
-		}
+	  // If activity is only highlighting
+	  else {
+	    av.umsg("Attempting to insert " + next.value + " at position " + next.position + ".");
+		arr.unhighlight(next.position-1);
+		arr.highlight(next.position);
+	  }
 					
-		// Disable Hash Button & renable input field if queue is empty
-		if (nextStep.isEmpty()) {
+	  // Disable Hash Button & renable input field if queue is empty
+	  if (nextStep.isEmpty()) {
 		  
-		  // Handle if array is full at the end
-		  if (fullArray) {
-		    av.umsg("Array is full. Insertion failed.");
-		    // Reset flag
-		    fullArray = false;
-		  }
+	  // Handle if array is full at the end
+      if (fullArray) {
+	    av.umsg("Array is full. Insertion failed.");
+		// Reset flag
+		fullArray = false;
+	  }
 		
-		  $('input[name="hash"]').attr("disabled", "disabled");
-		  $("#input").removeAttr("disabled");
-		}
+	  $('input[name="hash"]').attr("disabled", "disabled");
+	  $("#input").removeAttr("disabled");
+	  }
 	}
 	    
 	// Simple mod function
@@ -356,56 +356,56 @@ form {
 	// Linear Probing
 	function linearProbing(inputVal, pos) {
 		
-		// If pos is full, start resolution.
-		// Cast into a number, otherwise '0' will be considered false.
-		if ((Number(arr.value(pos))) != false) {
+	  // If pos is full, start resolution.
+	  // Cast into a number, otherwise '0' will be considered false.
+	  if ((Number(arr.value(pos))) != false) {
 						
-			// Temp pointer that will point to the correct position at the end of the loop
-			var i = pos;
-			// Counter that counts how many times the array ran
-			var count = 0;
+		// Temp pointer that will point to the correct position at the end of the loop
+		var i = pos;
+		// Counter that counts how many times the array ran
+		var count = 0;
 				
-			// Loop across the array. "infinite" loop. Breaks if array is full.
-			for (;;) {
+		// Loop across the array. "infinite" loop. Breaks if array is full.
+		for (;;) {
 					
-				// If array is full, break out
-				if (count == arr.size()) {
-					fullArray = true;
-					break;
-				}
+		  // If array is full, break out
+		  if (count == arr.size()) {
+			fullArray = true;
+			break;
+		  }
 					
-				// If space is available, break
-				if (String(arr.value(i)) == "") {
-					break;
-				}
+		  // If space is available, break
+		  if (String(arr.value(i)) == "") {
+			break;
+		  }
 					
-				// Insert attempt as highlighting activity
-				insertActivity(i, inputVal, false);
+		  // Insert attempt as highlighting activity
+		  insertActivity(i, inputVal, false);
 				
-				// If i is last element of arr, restart to position 0 of the array
-				if (i == arr.size() - 1) {
-					i = 0;
-				}
+		  // If i is last element of arr, restart to position 0 of the array
+		  if (i == arr.size() - 1) {
+			i = 0;
+		  }
 						
-				// Otherwise just increment i by 1 (to check for next pos of array next iteration)
-				else {
-					i++;
-				}
+		  // Otherwise just increment i by 1 (to check for next pos of array next iteration)
+		  else {
+			i++;
+	      }
 					
-				// Increment count 
-				count++;
-			}
+		  // Increment count 
+		  count++;
+		}
 				
-			// Empty spot found. Insert element inputVal at i
-			if (!fullArray) {
-				insertActivity(i, inputVal, true);
-			}
+		// Empty spot found. Insert element inputVal at i
+		if (!fullArray) {
+		  insertActivity(i, inputVal, true);
+		  }
 		}
 			
 		// Otherwise, enqueue insertion activity
 		else {
-			// Hashing position found. Insert activity.
-			insertActivity(pos, inputVal, true);
+		  // Hashing position found. Insert activity.
+		  insertActivity(pos, inputVal, true);
 		}
 	}
 		
@@ -416,34 +416,34 @@ form {
 	function insertActivity(pos, val, insert) {
 		
 		// If activity is insertion
-		if (insert) {
+	  if (insert) {
 			
-			// Preceed insertion with highlight
-			var posValueHighlight = {
-				position: pos,
-				value: val,
-				insert: false
-			};
-			nextStep.enqueue(posValueHighlight);
-				
-			var posValue = {
-				position: pos,
-				value: val,
-				insert: true
-			};
-			nextStep.enqueue(posValue);
-		}
+	    // Preceed insertion with highlight
+	    var posValueHighlight = {
+		  position: pos,
+		  value: val,
+		  insert: false
+	    };
+	    nextStep.enqueue(posValueHighlight);
 			
-		// Activity is highlight only
-		else {
-				
-			var posValue = {
-				position: pos,
-				value: val,
-				insert: false
-			};
-			nextStep.enqueue(posValue);
-		}
+	    var posValue = {
+		  position: pos,
+		  value: val,
+		  insert: true
+	    };
+	    nextStep.enqueue(posValue);
+	  }
+		
+	  // Activity is highlight only
+	  else {
+			
+	    var posValue = {
+		  position: pos,
+		  value: val,
+		  insert: false
+      };
+	  nextStep.enqueue(posValue);
+	  }
 	}
 })(jQuery);
     
