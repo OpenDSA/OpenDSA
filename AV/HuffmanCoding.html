@@ -5,13 +5,9 @@
 	<meta charset="utf-8" />
 	<link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
 	<link href="../JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript"
-		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-	</script>
-	<script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-	</script>
-	<script  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
-	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 	<script src="../JSAV/lib/jquery.transform.light.js"></script>
 	<script src="../JSAV/lib/raphael.js"></script>
 	<script src="../JSAV/build/JSAV-min.js"></script>
@@ -20,8 +16,8 @@
 	<style>
 	#container {
 	  width: 800px;
-	  height: 450px;
-	  background-color: #EEF3F7;
+	  height: 500px;
+	  background-color: #efe;
 	  border:1px solid #A5B6C8;
 	  padding: 10px;
 	  overflow-x: hidden;
@@ -65,11 +61,9 @@
 	  clear: both;
 	}
 </style>
-
 </head>
 	
 <body>
-
 	<div id="container">
 		<input type="button" id="about" name="about" value="about" style="margin-top:10px;"/>
 		<a class="jsavsettings" href="#">Settings</a>
@@ -138,30 +132,21 @@
 	var huffTree_animation = function (nArray, tArray, dArray) {
 		while (nArray.length > 1) {
 			sortArray(nArray, tArray, dArray);
-			caption_label.text(caption_text + "Sorting the data by their frequency.");
+			//caption_label.text(caption_text + "Sorting the data by their frequency.");
+			jsav.umsg("Sorting the data by their frequency.");
 			
 			bt.hide();	
 			arr.hide();
 			tmpBT.hide();
 			arr = jsav.ds.array(dArray);
 			jsav.step();
-			caption_label.text(caption_text + "Choose the two samllest number: " + nArray[0] + " and " + nArray[1]);
-
+			//caption_label.text(caption_text + "Choose the two samllest number: " + nArray[0] + " and " + nArray[1]);
+			jsav.umsg("Choose the two samllest number: " + nArray[0] + " and " + nArray[1])
+			
 			arr.css([0, 1], {"color": "blue", "background-color": "yellow"});
 			var key = nArray[0] + nArray[1];
 			bt.hide();
 			jsav.step();	
-
-		/*	caption_label.text(caption_text + "Merge them together, and the result is " + key);
-			tmpBT.root(key);
-			tmpBT.root().left(dArray[0]);
-			tmpBT.root().right(dArray[1]);
-			bt.hide();
-			arr.hide();
-			tmpBT.show();
-			traverse_color(tmpBT.root(), "white");
-			tmpBT.layout();
-			jsav.step(); */
 
 			if (nArray.length == 2) {
 				var node = bt.root(key);
@@ -172,7 +157,8 @@
 			node.left(tArray[0]);
 			node.right(tArray[1]);
 
-			caption_label.text(caption_text + "Merge them together, and the result is " + key);
+			//caption_label.text(caption_text + "Merge them together, and the result is " + key);
+			jsav.umsg("Merge them together, and the result is " + key);
 			tmpBT.root(key);
 			tmpBT.root().left(dArray[0]);
 			tmpBT.root().right(dArray[1]);
@@ -183,7 +169,8 @@
 			tmpBT.layout();
 			jsav.step();
 
-			caption_label.text(caption_text + "Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
+			//caption_label.text(caption_text + "Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
+			jsav.umsg("Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
 			shuffle(nArray, tArray, dArray, key, node);
 			bt.hide();
 			tmpBT.hide();
@@ -222,10 +209,13 @@
 		}
     }
     
+
 	var jsav = new JSAV("av");
-	var bt = jsav.ds.bintree();	// used to store the HuffmanCoding tree
-	var tmpBT = jsav.ds.bintree();	// used to display the intermediate process for tree construction
-	var caption_label = jsav.label("Huffman Coding Tree Construction", {before: bt});
+	var bt = jsav.ds.bintree().hide();	// used to store the HuffmanCoding tree
+	var tmpBT = jsav.ds.bintree().hide();	// used to display the intermediate process for tree construction
+
+	//var caption_label = jsav.label("Huffman Coding Tree Construction", {before: bt});
+	jsav.umsg("Huffman Coding Tree Construction");
 	var caption_text = "";
 
 	// userArry: an array to store the number and character
@@ -266,7 +256,8 @@
 
 	// an array to control the display
 	arr = jsav.ds.array(disArray);
-	caption_label.text(caption_text + "The initial data are as follows: the first line is frequency and the second line is the chracter");
+	//caption_label.text(caption_text + "The initial data are as follows: the first line is frequency and the second line is the chracter");
+	jsav.umsg("The initial data are as follows: the first line is frequency and the second line is the chracter");
 	bt.hide();
 	tmpBT.hide();
 	jsav.step();
@@ -274,9 +265,11 @@
 	// building the HuffmanCoding tree
 	huffTree_animation(numArray, treeArray, disArray);
 
+	jsav.umsg("The Huffman Coding Tree is as follows: ");
 	traverse_color(bt.root(), "white");
 	tmpBT.layout();
 	tmpBT.hide();
+	arr.hide();
 	bt.show();
 	bt.layout();
     jsav.recorded(); // done recording changes, will rewind
