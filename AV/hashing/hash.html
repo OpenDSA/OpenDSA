@@ -63,6 +63,7 @@ a.jsavsettings {
 form {
   clear: both;
 }
+
 </style>
 </head>
 
@@ -360,45 +361,45 @@ form {
 	  // Cast into a number, otherwise '0' will be considered false.
 	  if ((Number(arr.value(pos))) !== false) {
 						
-		// Temp pointer that will point to the correct position at the end of the loop
-		var i = pos;
-		// Counter that counts how many times the array ran
-		var count = 0;
+			// Temp pointer that will point to the correct position at the end of the loop
+			var i = pos;
+			// Counter that counts how many times the array ran
+			var count = 0;
 				
-		// Loop across the array. "infinite" loop. Breaks if array is full.
-		for (;;) {
+			// Loop across the array. "infinite" loop. Breaks if array is full.
+			for (;;) {
 					
-		  // If array is full, break out
-		  if (count == arr.size()) {
-			fullArray = true;
-			break;
-		  }
+		  	// If array is full, break out
+		  	if (count == arr.size()) {
+				fullArray = true;
+					break;
+		  	}
 					
-		  // If space is available, break
-		  if (String(arr.value(i)) == "") {
-			break;
-		  }
+		  	// If space is available, break
+		  	if (String(arr.value(i)) == "") {
+					break;
+		  	}
 					
-		  // Insert attempt as highlighting activity
-		  insertActivity(i, inputVal, false);
+		  	// Insert attempt as highlighting activity
+		  	insertActivity(i, inputVal, false);
 				
-		  // If i is last element of arr, restart to position 0 of the array
-		  if (i == arr.size() - 1) {
-			i = 0;
-		  }
+		  	// If i is last element of arr, restart to position 0 of the array
+		  	if (i == arr.size() - 1) {
+					i = 0;
+		  	}
 						
-		  // Otherwise just increment i by 1 (to check for next pos of array next iteration)
-		  else {
-			i++;
+		  	// Otherwise just increment i by 1 (to check for next pos of array next iteration)
+		  	else {
+					i++;
 	      }
 					
-		  // Increment count 
-		  count++;
-		}
+		  	// Increment count 
+		  	count++;
+			}
 		
-		// Empty spot found. Insert element inputVal at i
-		if (!fullArray) {
-		  insertActivity(i, inputVal, true);
+			// Empty spot found. Insert element inputVal at i
+			if (!fullArray) {
+		  	insertActivity(i, inputVal, true);
 		  }
 		}
 			
