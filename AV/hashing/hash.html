@@ -358,7 +358,7 @@ form {
 		
 	  // If pos is full, start resolution.
 	  // Cast into a number, otherwise '0' will be considered false.
-	  if ((Number(arr.value(pos))) != false) {
+	  if ((Number(arr.value(pos))) !== false) {
 						
 		// Temp pointer that will point to the correct position at the end of the loop
 		var i = pos;
@@ -395,7 +395,7 @@ form {
 		  // Increment count 
 		  count++;
 		}
-				
+		
 		// Empty spot found. Insert element inputVal at i
 		if (!fullArray) {
 		  insertActivity(i, inputVal, true);
