@@ -76,7 +76,11 @@
 	</div> <!--container-->
 
 	<script>
-	// sorting the elements of an array with Insertation Sort
+		/* sorting the elements of an array with Insertation Sort
+		* anArray: used for logical control
+		* tArray: used for store the information of the HuffmanCoding tree
+		* dArray: used for display control
+		*/
 	var sortArray = function (anArray, tArray, dArray) {
 		for (var i = 1; i < anArray.length; i++) {
 			var key = anArray[i];
@@ -95,7 +99,11 @@
 		}	
 	}
 
-	// shuffle the array by moving left
+	/* Shuffle the array by moving left
+	* anArray: used for logic control
+	* tArray: used for store the information of HuffmanCoding Tree
+	* dArray: used for display control
+	*/
 	var shuffle = function (anArray, tArray, dArray, key, node) {
 		anArray[1] = key;
 		tArray[1] = node;
@@ -110,7 +118,11 @@
 		dArray.length -= 1;
 	}
 
-	// Constructing the huffmanCodingTree
+	/* Constructing the huffmanCodingTree
+	* nArray: used for logic control
+	* tArray: used for store the information of HuffmanCoding Tree
+	* dArray: used for display control
+	*/
 	var huffTree = function (nArray, tArray, dArray) {
 		while (nArray.length > 1) {
 			sortArray(nArray, tArray, dArray);
@@ -128,11 +140,14 @@
 		}	
 	}
 
-	// Constructing the huffmanCodingTree with animation
+	/* Constructing the huffmanCodingTree with animation
+	* nArray: used for logic control
+	* tArray: used for store the information of HuffmanCoding Tree
+	* dArray: used for display control
+	*/
 	var huffTree_animation = function (nArray, tArray, dArray) {
 		while (nArray.length > 1) {
 			sortArray(nArray, tArray, dArray);
-			//caption_label.text(caption_text + "Sorting the data by their frequency.");
 			jsav.umsg("Sorting the data by their frequency.");
 			
 			bt.hide();	
@@ -140,7 +155,6 @@
 			tmpBT.hide();
 			arr = jsav.ds.array(dArray);
 			jsav.step();
-			//caption_label.text(caption_text + "Choose the two samllest number: " + nArray[0] + " and " + nArray[1]);
 			jsav.umsg("Choose the two samllest number: " + nArray[0] + " and " + nArray[1])
 			
 			arr.css([0, 1], {"color": "blue", "background-color": "yellow"});
@@ -154,10 +168,10 @@
 			else {
 				var node = bt.newNode(key);
 			}
+
 			node.left(tArray[0]);
 			node.right(tArray[1]);
 
-			//caption_label.text(caption_text + "Merge them together, and the result is " + key);
 			jsav.umsg("Merge them together, and the result is " + key);
 			tmpBT.root(key);
 			tmpBT.root().left(dArray[0]);
@@ -165,18 +179,33 @@
 			bt.hide();
 			arr.hide();
 			tmpBT.show();
-			traverse_color(tmpBT.root(), "white");
+			parts_color(tmpBT.root(), "white");
 			tmpBT.layout();
-			jsav.step();
+			jsav.step(); 
 
-			//caption_label.text(caption_text + "Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
 			jsav.umsg("Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
 			shuffle(nArray, tArray, dArray, key, node);
+			
+
 			bt.hide();
 			tmpBT.hide();
 			arr = jsav.ds.array(dArray);
 			jsav.step();
 		}	
+	}
+
+	// used for display subtree 
+	var parts_color = function(node, col) {
+		node.css("background-color", col);
+		if (node.left().value().indexOf("<br />") > 0)
+			node.left().css({"height": "90px", "width": "45px", "border-radius":1, "background-color":"YELLOW"});
+		else
+			node.left().css({"height": "45px", "width": "45px", "background-color": col, "border-radius": "23px"});
+		if (node.right().value().indexOf("<br />") > 0)
+			node.right().css({"height": "90px", "width": "45px", "border-radius":1, "background-color":"YELLOW"});
+		else
+			node.right().css("background-color", col);
+			//node.right().css({"height": "45px", "width": "45px", "background-color": col, "border-radius": "23px"});
 	}
 
     // traverse to re-set background color of the entire tree
@@ -203,18 +232,14 @@
 					node.css({"height": "90px", "width": "45px", "border-radius":1, "background-color":"YELLOW"});	
 				}
 				else
-				//node.css({"background-color": col, "width": "46px", "height": "46px", "-moz-border-radius": "23px", "-webkit-border-radius": "23px", "border-radius": "23px"});
-				node.css({"height": "90px", "width": "45px", "background-color": col, "border-radius": "23px"});
+					node.css({"background-color": col, "border-radius": "23px"});
 			}
 		}
     }
-    
 
 	var jsav = new JSAV("av");
 	var bt = jsav.ds.bintree().hide();	// used to store the HuffmanCoding tree
 	var tmpBT = jsav.ds.bintree().hide();	// used to display the intermediate process for tree construction
-
-	//var caption_label = jsav.label("Huffman Coding Tree Construction", {before: bt});
 	jsav.umsg("Huffman Coding Tree Construction");
 	var caption_text = "";
 
@@ -256,8 +281,7 @@
 
 	// an array to control the display
 	arr = jsav.ds.array(disArray);
-	//caption_label.text(caption_text + "The initial data are as follows: the first line is frequency and the second line is the chracter");
-	jsav.umsg("The initial data are as follows: the first line is frequency and the second line is the chracter");
+	jsav.umsg("The initial data are as follows (the first line is frequency and the second line is the chracter): ");
 	bt.hide();
 	tmpBT.hide();
 	jsav.step();
@@ -267,7 +291,6 @@
 
 	jsav.umsg("The Huffman Coding Tree is as follows: ");
 	traverse_color(bt.root(), "white");
-	tmpBT.layout();
 	tmpBT.hide();
 	arr.hide();
 	bt.show();
