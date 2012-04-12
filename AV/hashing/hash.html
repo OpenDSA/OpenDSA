@@ -208,59 +208,6 @@ form {
 		 $('input[name="next"]').removeAttr("disabled")
 	});
 	
-	/* 
-   * Creates a handler that will wait until the event hasn't fired for a period
-   * before it fires the actual event handler
-   */
-	/*function createBuffered(fun, delay) {
-  	  var timer;
-      return function() {
-        clearTimeout(timer);
-        var args = arguments;
-        var me = this;
-        timer = setTimeout(function() {
-      	  fun.apply(me, args);
-        }, delay);
-      }
-    }*/
-
-  // Key that will run 300 ms after the user stops typing in input
-  /*$('#input').keypress( createBuffered(function() {
-  
-  	// Input field value
-  	var inputVal = $(this).val();
-    		
-  	// Check if input is a valid number
-  	if (isNaN(inputVal)) {
-  	  av.umsg("Please enter a valid number");
-	  }
-    		
-	  else {
-    		
-  	  // Disable input field to process it safely
-      $("#input").attr("disabled", "disabled");
-    			
-      // Disable array size drop down to avoid havoc
-      $("#arraysize").attr("disabled", "disabled");    			
-    		
-      // Process input with selected function
-      var hashFunction = $("#function").val();
-      switch(hashFunction) {
-      	// No function chosen
-      	case '0':
-          reset();
-          break;
-		  case '1':
-      	  simpleMod(inputVal);
-          break;
-		  }  		
-	  }
-		
-		// Reactivate Next Button
-	  $('input[name="next"]').removeAttr("disabled");
-	  
-	}, 300));*/
-	
 	// Event trigger change if hashing function option is changed
 	$("#function").change(function() {
 	    
@@ -275,7 +222,12 @@ form {
 	    		
 	    // Disable function change
 	    $("#function").attr("disabled", "disabled");
-	    		
+	    
+	    /*
+	     * THIS IS DETERMINED FROM THE QUERY.
+	     * EITHER QUERY SETS IT, OR IT IS FREE TO CHOOSE
+	     * FOR NOW, USE LINEAR PROBING
+	     */
 	    // Choose linear probing resolution policy
 	    switch ($(this).val()) {
 	      // Linear probing for simple mod
@@ -291,12 +243,8 @@ form {
 	    
 		// Hide previous array if it exists
 	  if (arr) {
-		arr.hide();
+			arr.hide();
 	  }
-		
-	  /*
-	   * Handle array size change in middle of hashing
-	   */
 		
 	  // Draw new array
 	  var arraySize = $('#arraysize').val();
@@ -307,7 +255,6 @@ form {
 	  // Enable input field
 	  $("#input").removeAttr("disabled");
 	});
-	
 	
 	/* Next button pushed. 
 	 * If no slide show exits, make one.
@@ -389,18 +336,35 @@ form {
 	  	$("#input").removeAttr("disabled");
 	  }
 	}
+	
+	/* Hashing Functions */
 	    
 	// Simple mod function
 	function simpleMod(inputVal) {
-	    	
+	
 		// Simple Mod Function
-	  var pos = inputVal % theArray.length;
-	    	
-	  // Linear Probing Resolution
-	  linearProbing(inputVal, pos);
+	  var pos = inputVal % theArray.length;	    	
+	  
+	  // Process function with selected collision resolution
+	  determineResolution(inputVal, pos);
 	}
 	
 	/* Collision Resolutions */
+	
+	// Function that determines which collision resolution to pick
+	function determineResolution(inputVal, pos) {
+	
+		var collisionResolution = $("#collision").val();
+    switch(collisionResolution) {
+    	// No function chosen
+      case '0':
+      	reset();
+        break;
+		  case '1':
+      	linearProbing(inputVal, pos);
+        break;
+		}
+	}
 		
 	// Linear Probing
 	function linearProbing(inputVal, pos) {
