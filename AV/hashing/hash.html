@@ -75,7 +75,7 @@ form {
 
 	<!-- Main Container -->
 	<div id="container">
-		<p class="jsavoutput jsavscroll" readonly="readonly" style="width:225px; height:400px;  float:left"> </p>
+		<p class="jsavoutput jsavscroll" readonly="readonly" style="width:225px; height:400px; font-size:	95%; float:left"> </p>
 	</div>
 
 	<!-- Bottom Container -->
@@ -89,6 +89,7 @@ form {
 					<option selected value = 0> Choose Hashing Function </option>
 					<option value = 1> Simple Mod Hash </option>
 					<option value = 2> Binning Hash </option>
+					<option value = 3> Mid Square Hash </option>
 				</select>
 			
 				<!-- Array Size Dropdown -->
@@ -134,8 +135,8 @@ form {
 			
 			<select id="keyrange">
 					<option selected value = 0> Key Range </option>
-					<option value = 1> 0 - 999 </option>
-					<option value = 2> 1000 - 1999 </option>
+					<option value = 1> 0 - 99 </option>
+					<option value = 2> 0 - 999 </option>
 				</select>
 				</p>
 			 
@@ -333,6 +334,9 @@ form {
           case '2':
           	var ret = binning(inputVal);
           	break;
+          case '3':
+          	var ret = midSquare(inputVal);
+          	break;
 		  	}
 		  	
 		  	// Show first slide if success
@@ -385,6 +389,13 @@ form {
 	// Simple mod function
 	function simpleMod(inputVal) {
 	
+		// Check that the input value is within the correct range
+		if (inputVal < 0 || inputVal > 99999) {
+			av.umsg("Please enter a value in the range of 0-99999");
+			// Return error
+			return 1;
+		}
+	
 		// Simple Mod Function
 	  var pos = inputVal % theArray.length;	    	
 	  
@@ -413,38 +424,66 @@ form {
 			// Determine key range
 			switch(keyrange) {
 				case '1':
-					keyrange = 1000;
+					keyrange = 100;
 					break;
 				case '2':
-					keyrange = 2000;
+					keyrange = 1000;
 					break;
 			}
-		
-			// Binning function Position
-			var binsize = keyrange / $("#arraysize").val()
-			var pos =  Math.floor(inputVal / binsize);
-		
-			// Process function with selected collision resolution
-			determineResolution(inputVal, pos);
+						
+			// Check that the input value is within the correct range
+			if (inputVal >= keyrange || inputVal < 0) {
+				av.umsg("Please enter an input value between 0 and your selected key range.");
+				// Return Error
+				return 1;
+			}
 			
-			// Return success
-			return 0;
+			else {
+				// Binning function Position
+				var binsize = keyrange / $("#arraysize").val()
+				var pos =  Math.floor(inputVal / binsize);
+		
+				// Process function with selected collision resolution
+				determineResolution(inputVal, pos);
+			
+				// Return success
+				return 0;
+			}
 		}
 	}
 	
 	// Mid-Square Method
 	function midSquare(inputVal) {
 	
+		// Check that input is within the correct range
+		if (inputVal > 65536 || inputVal < 0) {
+			av.umsg("Please enter a value in the range of 0-65536");
+			// Return error
+			return 1;
+		}
+		
 		// Square Input Value
-		var squaredInput = inputVal * inputVal;
+		var squaredInput = (inputVal * inputVal) % 65536;
+				
+		// Bitshift squared input to get a 16-bit number
+		var squaredShifted = squaredInput >>> 16 - (Math.log(squaredInput) / Math.log(2));
 		
 		// Convert to binary
-		var squaredBinary = squaredInput.toString(2);
+		var binaryDigit = squaredShifted.toString(2);
 		
-		// Get middle r bits of the digit
+		// Concatenate Middle Bits
+		var middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) 
+											+ binaryDigit.charAt(8) + binaryDigit.charAt(9);
 		
 		
-			
+		/*
+		 * CONVERT MIDDLE BITS TO DECIMAL AND CALL IT POS
+		 * THEN UNCOMMENT BELOW
+		 */
+		 
+		 
+		// Process function with selected collision resolution
+		//determineResolution(inputVal, pos);	
 	}
 	
 	/* Collision Resolutions */
