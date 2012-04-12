@@ -1,0 +1,13 @@
+#Temp files
+*~
+modules.json
+modules.csv
+
+#build HTML directory
+build
+
+#Ignore the copy we make of khan-site.html
+lib/khan-exercises/exercises/khan-site.html
+
+#ignore compiled Python files
+*pyc
