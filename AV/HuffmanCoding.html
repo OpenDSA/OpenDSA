@@ -194,18 +194,20 @@
 		}	
 	}
 
-	// used for display subtree 
-	var parts_color = function(node, col) {
-		node.css("background-color", col);
-		if (node.left().value().indexOf("<br />") > 0)
-			node.left().css({"height": "90px", "width": "45px", "border-radius":1, "background-color":"YELLOW"});
+	// used to display a simple subtree
+	var parts_color = function(node, color) {
+		node.css("background-color", color);
+		if (node.left().value().length > 6) {
+			node.left().css({"height": "45px", "width": "45px", "background-color": "yellow"});
+		}
 		else
-			node.left().css({"height": "45px", "width": "45px", "background-color": col, "border-radius": "23px"});
-		if (node.right().value().indexOf("<br />") > 0)
-			node.right().css({"height": "90px", "width": "45px", "border-radius":1, "background-color":"YELLOW"});
+		node.left().css("background-color", "pink");
+
+		if (node.right().value().length > 6) {
+			node.right().css({"height": "45px", "width": "45px", "background-color": "yellow"});
+		}
 		else
-			node.right().css("background-color", col);
-			//node.right().css({"height": "45px", "width": "45px", "background-color": col, "border-radius": "23px"});
+			node.right().css("background-color", "pink");
 	}
 
     // traverse to re-set background color of the entire tree
@@ -227,13 +229,8 @@
 				traverse_color(node.right(),col);
 			}
 			// if the node is a leaf node, then display an rectangle
-			else { 
-				if (node.value().indexOf("<br />") > 0) {
-					node.css({"height": "90px", "width": "45px", "border-radius":1, "background-color":"YELLOW"});	
-				}
-				else
-					node.css({"background-color": col, "border-radius": "23px"});
-			}
+			else  
+				node.css({"height": "90px", "width": "45px", "border-radius":1, "background-color":"YELLOW"});	
 		}
     }
 
