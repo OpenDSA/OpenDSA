@@ -16,11 +16,11 @@
 }
 
 #bottom {
-  width: 790px;
-  height: 48px;
+  width: 810px;
+  height: 90px;
   border: 1px solid black;
   background-color: #ddd;
-  padding: 10px;
+  
   overflow: hidden;
 }
 
@@ -78,12 +78,13 @@ form {
 	<div id="bottom">
 	
 		<form id="ssperform">
-			<p align="center">
+			<p align="left">
 			
 				<!-- Function Dropdown -->
 				<select id="function">
 					<option selected value = 0> Choose Hashing Function </option>
 					<option value = 1> Simple Mod Hash </option>
+					<option value = 2> Binning Hash </option>
 				</select>
 			
 				<!-- Array Size Dropdown -->
@@ -113,14 +114,27 @@ form {
 					<option value = 1> Linear Probing </option>
 				</select>
 				
+				<!-- Input Text Field -->
 				<label for="input">&nbsp;Input:</label>
 				<input size="10" name="input" id="input" type="text" />
 				&nbsp;
+				
 				<!-- Buttons --> 				
 				<input type="button" name="next" value="Next" />
 				<input type="button" name="reset" value="Restart" />
 				<input type="button" name="help" value="Help" />
 			</p>
+			
+			<!-- Second row of controls -->
+			<p align="left">
+			
+			<select id="keyrange">
+					<option selected value = 0> Key Range </option>
+					<option value = 1> 0 - 999 </option>
+					<option value = 2> 1000 - 1999 </option>
+				</select>
+				</p>
+			 
 		</form>
 		
 	</div>
@@ -192,9 +206,11 @@ form {
     $("#function").val(0);
     $("#arraysize").val(0);
     $("#collision").val(0);
+    $('#keyrange').val(0);
     $('#arraysize').attr("disabled", "disabled");
     $('#input').attr("disabled", "disabled");
     $('#collision').attr("disabled", "disabled");
+    $('#keyrange').attr("disabled", "disabled");
     		
     // Disable buttons
     $('input[name="next"]').attr("disabled", "disabled");
@@ -203,10 +219,17 @@ form {
     $("#function").removeAttr("disabled");
 	}
 	
+	/* Key Presses */
 	// Enable Next as soon as the text field has been changed
 	$('#input').keypress(function() {
-		 $('input[name="next"]').removeAttr("disabled")
+		 $('input[name="next"]').removeAttr("disabled");
 	});
+	
+	// Disable key range as soon as it has been set
+	$('#keyrange').change(function() {
+		$("#keyrange").attr("disabled", "disabled");
+	});
+	
 	
 	// Event trigger change if hashing function option is changed
 	$("#function").change(function() {
@@ -216,25 +239,37 @@ form {
 	  }
 	    		
 	  else {
-	    	
+	  
 	    // Enable table size
 	    $("#arraysize").removeAttr("disabled");
 	    		
 	    // Disable function change
 	    $("#function").attr("disabled", "disabled");
+	     	    
+	    // Enable Appropriate Controls for each function
+	    switch ($(this).val()) {
+	    	    	
+	    	// Binning
+	    	case '2':
+	    		// Enable key range
+          $("#keyrange").removeAttr("disabled");
+          break;
+      }
 	    
 	    /*
 	     * THIS IS DETERMINED FROM THE QUERY.
 	     * EITHER QUERY SETS IT, OR IT IS FREE TO CHOOSE
 	     * FOR NOW, USE LINEAR PROBING
 	     */
-	    // Choose linear probing resolution policy
-	    switch ($(this).val()) {
+	    // Choose linear probing resolution policy for now:
+	    $("#collision").val(1);
+	    
+	    /*switch ($(this).val()) {
 	      // Linear probing for simple mod
 	      case '1':
-	    	$("#collision").val(1);
-	    	break;
-	    }
+	    		$("#collision").val(1);
+	    		break;
+	    }*/
 	  }
 	});
 	
@@ -289,12 +324,16 @@ form {
           	reset();
           	break;
 		  		case '1':
-      	  	simpleMod(inputVal);
+      	  	var ret = simpleMod(inputVal);
+          	break;
+          case '2':
+          	var ret = binning(inputVal);
           	break;
 		  	}
 		  	
-		  	// Show first slide
-		  	loadNextSlide();
+		  	// Show first slide if success
+		  	if (ret === 0)
+		  		loadNextSlide();
 	  	}
 		}
 		
@@ -347,6 +386,46 @@ form {
 	  
 	  // Process function with selected collision resolution
 	  determineResolution(inputVal, pos);
+	  
+	  // Return success
+	  return 0;
+	}
+	
+	// Binning Function
+	function binning(inputVal) {
+		
+		var keyrange = $("#keyrange").val();
+		
+		// Check that a key range has been selected
+		if (keyrange == 0) {
+			av.umsg("Please select a key range");
+			
+			// Return error
+			return 1;
+		}
+		
+		else {
+		
+			// Determine key range
+			switch(keyrange) {
+				case '1':
+					keyrange = 1000;
+					break;
+				case '2':
+					keyrange = 2000;
+					break;
+			}
+		
+			// Binning function Position
+			var binsize = keyrange / $("#arraysize").val()
+			var pos =  Math.floor(inputVal / binsize);
+		
+			// Process function with selected collision resolution
+			determineResolution(inputVal, pos);
+			
+			// Return success
+			return 0;
+		}
 	}
 	
 	/* Collision Resolutions */
