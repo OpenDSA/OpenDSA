@@ -116,7 +116,7 @@ form {
 				<input size="10" name="input" id="input" type="text" />
 				&nbsp;
 				<!-- Buttons --> 				
-				<input type="button" name="next" value="Next" />
+				<input type="button" name="hash" value="Next" />
 				<input type="button" name="reset" value="Restart" />
 				<input type="button" name="help" value="Help" />
 			</p>
@@ -154,7 +154,7 @@ form {
 		
   // Connect action callbacks to the HTML entities
   $('input[name="about"]').click(about);
-  $('input[name="next"]').click(next);
+  $('input[name="hash"]').click(hash);
   $('input[name="reset"]').click(reset);
   		
   // Call reset - the initial state of the vizualization
@@ -196,7 +196,7 @@ form {
     $('#collision').attr("disabled", "disabled");
     		
     // Disable buttons
-    $('input[name="next"]').attr("disabled", "disabled");
+    $('input[name="hash"]').attr("disabled", "disabled");
     		
     // Enable function change dropdown
     $("#function").removeAttr("disabled");
@@ -251,7 +251,7 @@ form {
 	  }
 		
 		// Reactivate Next Button
-	  $('input[name="next"]').removeAttr("disabled");
+	  $('input[name="hash"]').removeAttr("disabled");
 	  
 	}, 300));
 	
@@ -303,8 +303,8 @@ form {
 	});
 	
 	
-	/* Next button pushed - load next slides */
-	function next() {
+	/* Hash button pushed - load next slides */
+	function hash() {
 	
 	  // Insert new empty line
 	  av.umsg("\n");
@@ -325,7 +325,7 @@ form {
 		arr.highlight(next.position);
 	  }
 					
-	  // Disable Next Button & renable input field if queue is empty
+	  // Disable Hash Button & renable input field if queue is empty
 	  if (nextStep.isEmpty()) {
 		  
 	  // Handle if array is full at the end
@@ -335,7 +335,7 @@ form {
 		fullArray = false;
 	  }
 		
-	  $('input[name="next"]').attr("disabled", "disabled");
+	  $('input[name="hash"]').attr("disabled", "disabled");
 	  $("#input").removeAttr("disabled");
 	  }
 	}
