@@ -63,6 +63,7 @@ a.jsavsettings {
 form {
   clear: both;
 }
+
 </style>
 </head>
 
@@ -116,7 +117,7 @@ form {
 				<input size="10" name="input" id="input" type="text" />
 				&nbsp;
 				<!-- Buttons --> 				
-				<input type="button" name="hash" value="Next" />
+				<input type="button" name="next" value="Next" />
 				<input type="button" name="reset" value="Restart" />
 				<input type="button" name="help" value="Help" />
 			</p>
@@ -154,7 +155,7 @@ form {
 		
   // Connect action callbacks to the HTML entities
   $('input[name="about"]').click(about);
-  $('input[name="hash"]').click(hash);
+  $('input[name="next"]').click(next);
   $('input[name="reset"]').click(reset);
   		
   // Call reset - the initial state of the vizualization
@@ -196,7 +197,7 @@ form {
     $('#collision').attr("disabled", "disabled");
     		
     // Disable buttons
-    $('input[name="hash"]').attr("disabled", "disabled");
+    $('input[name="next"]').attr("disabled", "disabled");
     		
     // Enable function change dropdown
     $("#function").removeAttr("disabled");
@@ -251,7 +252,7 @@ form {
 	  }
 		
 		// Reactivate Next Button
-	  $('input[name="hash"]').removeAttr("disabled");
+	  $('input[name="next"]').removeAttr("disabled");
 	  
 	}, 300));
 	
@@ -303,8 +304,8 @@ form {
 	});
 	
 	
-	/* Hash button pushed - load next slides */
-	function hash() {
+	/* Next button pushed - load next slides */
+	function next() {
 	
 	  // Insert new empty line
 	  av.umsg("\n");
@@ -325,7 +326,7 @@ form {
 		arr.highlight(next.position);
 	  }
 					
-	  // Disable Hash Button & renable input field if queue is empty
+	  // Disable Next Button & renable input field if queue is empty
 	  if (nextStep.isEmpty()) {
 		  
 	  // Handle if array is full at the end
@@ -335,7 +336,7 @@ form {
 		fullArray = false;
 	  }
 		
-	  $('input[name="hash"]').attr("disabled", "disabled");
+	  $('input[name="next"]').attr("disabled", "disabled");
 	  $("#input").removeAttr("disabled");
 	  }
 	}
@@ -358,47 +359,47 @@ form {
 		
 	  // If pos is full, start resolution.
 	  // Cast into a number, otherwise '0' will be considered false.
-	  if ((Number(arr.value(pos))) != false) {
+	  if ((Number(arr.value(pos))) !== false) {
 						
-		// Temp pointer that will point to the correct position at the end of the loop
-		var i = pos;
-		// Counter that counts how many times the array ran
-		var count = 0;
+			// Temp pointer that will point to the correct position at the end of the loop
+			var i = pos;
+			// Counter that counts how many times the array ran
+			var count = 0;
 				
-		// Loop across the array. "infinite" loop. Breaks if array is full.
-		for (;;) {
+			// Loop across the array. "infinite" loop. Breaks if array is full.
+			for (;;) {
 					
-		  // If array is full, break out
-		  if (count == arr.size()) {
-			fullArray = true;
-			break;
-		  }
+		  	// If array is full, break out
+		  	if (count == arr.size()) {
+				fullArray = true;
+					break;
+		  	}
 					
-		  // If space is available, break
-		  if (String(arr.value(i)) == "") {
-			break;
-		  }
+		  	// If space is available, break
+		  	if (String(arr.value(i)) == "") {
+					break;
+		  	}
 					
-		  // Insert attempt as highlighting activity
-		  insertActivity(i, inputVal, false);
+		  	// Insert attempt as highlighting activity
+		  	insertActivity(i, inputVal, false);
 				
-		  // If i is last element of arr, restart to position 0 of the array
-		  if (i == arr.size() - 1) {
-			i = 0;
-		  }
+		  	// If i is last element of arr, restart to position 0 of the array
+		  	if (i == arr.size() - 1) {
+					i = 0;
+		  	}
 						
-		  // Otherwise just increment i by 1 (to check for next pos of array next iteration)
-		  else {
-			i++;
+		  	// Otherwise just increment i by 1 (to check for next pos of array next iteration)
+		  	else {
+					i++;
 	      }
 					
-		  // Increment count 
-		  count++;
-		}
-				
-		// Empty spot found. Insert element inputVal at i
-		if (!fullArray) {
-		  insertActivity(i, inputVal, true);
+		  	// Increment count 
+		  	count++;
+			}
+		
+			// Empty spot found. Insert element inputVal at i
+			if (!fullArray) {
+		  	insertActivity(i, inputVal, true);
 		  }
 		}
 			
