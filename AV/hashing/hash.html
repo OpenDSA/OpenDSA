@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <title>Simple Hash</title>
+  <title>Hashing Visualization</title>
   <link href="../opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
 <style>
@@ -43,6 +43,10 @@ div h1 {
    text-align: center;
    position: absolute;
    left: 350px;
+}
+
+.jsavarray .jsavindex {
+	height: 40px;
 }
 
 p.jsavoutput.jsavline {
@@ -426,6 +430,21 @@ form {
 			// Return success
 			return 0;
 		}
+	}
+	
+	// Mid-Square Method
+	function midSquare(inputVal) {
+	
+		// Square Input Value
+		var squaredInput = inputVal * inputVal;
+		
+		// Convert to binary
+		var squaredBinary = squaredInput.toString(2);
+		
+		// Get middle r bits of the digit
+		
+		
+			
 	}
 	
 	/* Collision Resolutions */
