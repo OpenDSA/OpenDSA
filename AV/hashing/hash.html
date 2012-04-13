@@ -342,6 +342,10 @@ form {
 		  	// Show first slide if success
 		  	if (ret === 0)
 		  		loadNextSlide();
+		  	
+		  	// Else, re-enable input textfield if an error has occurred
+		  	else if (ret === 1)
+		  		$("#input").removeAttr("disabled");
 	  	}
 		}
 		
@@ -413,7 +417,7 @@ form {
 		
 		// Check that a key range has been selected
 		if (keyrange == 0) {
-			av.umsg("Please select a key range");
+			av.umsg("Please select a key range.");
 			
 			// Return error
 			return 1;
@@ -433,7 +437,8 @@ form {
 						
 			// Check that the input value is within the correct range
 			if (inputVal >= keyrange || inputVal < 0) {
-				av.umsg("Please enter an input value between 0 and your selected key range.");
+				var errorMessage = "Please enter an input value between 0 and " + keyrange + ".";
+				av.umsg(errorMessage);
 				// Return Error
 				return 1;
 			}
