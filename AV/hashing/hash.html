@@ -171,17 +171,8 @@ form {
   // Initialize JSAV object
   av = new JSAV("container");
   av.umsg("Please select a hashing function");
-		
-  // Connect action callbacks to the HTML entities
-  $('input[name="about"]').click(about);
-  $('input[name="next"]').click(next);
-  $('input[name="reset"]').click(reset);
-  		
-  // Call reset - the initial state of the vizualization
-  reset();
-  		
-  /* Settings Function */
-  // create a new settings panel and specify the link to show it
+  
+  // Create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
   // add the layout setting preference
   var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
@@ -191,7 +182,28 @@ form {
 	var mystring = "Hashing  Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
     alert(mystring);
   }
+		
+  // Connect action callbacks to the HTML entities
+  $('input[name="about"]').click(about);
+  $('input[name="next"]').click(next);
+  $('input[name="reset"]').click(reset);
   
+  // Call reset - the initial state of the vizualization
+  reset();
+  
+  /* 
+   * Function that accesses the Class value. Used to check the type of an object.
+   * `typeof` should be avoided at all costs (unless checking if a var is defined).
+   * To check for typing, use this wrapper class.
+   * Usage: 
+   * is('String, 'testing'); // true
+   * is('String', new String('test')); // true
+   * Credit to: http://bonsaiden.github.com/JavaScript-Garden/
+  */
+  function is(type, obj) {
+  	var clas = Object.prototype.toString.call(obj).slice(8, -1);
+  	return obj !== undefined && obj !== null && clas === type;
+	}
   
   /* Reset Function */
   function reset() {
@@ -234,7 +246,6 @@ form {
 	$('#keyrange').change(function() {
 		$("#keyrange").attr("disabled", "disabled");
 	});
-	
 	
 	// Event trigger change if hashing function option is changed
 	$("#function").change(function() {
@@ -475,21 +486,58 @@ form {
 		
 		// Convert to binary
 		var binaryDigit = squaredShifted.toString(2);
-		
+				
 		// Concatenate Middle Bits
 		var middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) 
 											+ binaryDigit.charAt(8) + binaryDigit.charAt(9);
-		
-		
-		/*
-		 * CONVERT MIDDLE BITS TO DECIMAL AND CALL IT POS
-		 * THEN UNCOMMENT BELOW
-		 */
-		 
-		 
+											
+		// Convert Middle Bits to Decimal
+		var pos = parseInt(middleBits, 2);
+				 
 		// Process function with selected collision resolution
-		//determineResolution(inputVal, pos);	
+		determineResolution(inputVal, pos);	
 	}
+	
+	// Hashing for Strings
+	function strings(inputVal) {
+	
+		// Check input is a string
+		if (!is(inputVal)) { 
+			av.umsg("Please enter a string to hash.");
+			// Return error
+			return 1;
+		}
+		
+	/*
+	 * The following is copied from AlgoViz. Convert substring method from C++ to JS
+	 
+	 	// Array size
+		var arraysize = $("#arraysize").val();  <-- M in the algo below
+		
+		
+		int intLength = inputVal.length();
+		long sum = 0;
+		for (int i = 0; i < intLength; i++) {
+			char c[] = inputVal.substring(i * 4, (i * 4) + 4).toCharArray();
+			long mult = 1;
+			for (int j = 0; j < c.length; j++) 
+				sum += c[j] * mult;
+				mult *= 256;
+			}
+		}
+		
+		char c[] = inputVal.substring(intLength * 4).toCharArray();
+		long mult = 1;
+		for (int i = 0; i < c.length; i++) {
+			sum += c[i] * mult;
+			mult *= 256;
+		}
+		
+		var pos = Math.abs(sum) % M;
+
+		*/
+	}
+	
 	
 	/* Collision Resolutions */
 	
