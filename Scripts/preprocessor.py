@@ -29,7 +29,7 @@ class modPreReq:
       self.raw_html=''
       self.creation_date = ''
       self.last_modified =''
-      self.covers='Trees'
+      self.covers=''
 
       fls = open(filename,'r')
       data = fls.readlines()
@@ -48,7 +48,10 @@ class modPreReq:
          if '<ODSAauthor>' in line:
             str =  re.split('ODSAauthor>', line, re.IGNORECASE)[1]
             self.author = str.partition('<')[0]
-         
+         if '<ODSAtopic \"' in line:
+            str =  re.split('ODSAtopic "', line, re.IGNORECASE)[1]
+            self.covers = str.partition('"')[0]
+ 
       self.prereqNum = len(self.prereq)
 
    def verifPreref(self, modRoster):
