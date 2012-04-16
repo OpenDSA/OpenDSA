@@ -475,20 +475,16 @@ form {
 		
 		// Convert to binary
 		var binaryDigit = squaredShifted.toString(2);
-		
+				
 		// Concatenate Middle Bits
 		var middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) 
 											+ binaryDigit.charAt(8) + binaryDigit.charAt(9);
-		
-		
-		/*
-		 * CONVERT MIDDLE BITS TO DECIMAL AND CALL IT POS
-		 * THEN UNCOMMENT BELOW
-		 */
-		 
-		 
+											
+		// Convert Middle Bits to Decimal
+		var pos = parseInt(middleBits, 2);
+				 
 		// Process function with selected collision resolution
-		//determineResolution(inputVal, pos);	
+		determineResolution(inputVal, pos);	
 	}
 	
 	/* Collision Resolutions */
