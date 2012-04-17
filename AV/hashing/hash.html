@@ -8,10 +8,10 @@
 
 #container {
   width: 790px;
-  height: 465px;
+  height: 530px;
   border: 1px solid black;
   background-color: #efe;
-  padding: 10px;
+  padding: 0px 10px 14px 10px;
   overflow: hidden;
 }
 
@@ -112,6 +112,8 @@ form {
 					<option value = 12> 12 </option>
 					<option value = 13> 13 </option>
 					<option value = 14> 14 </option>
+					<option value = 15> 15 </option>
+					<option value = 16> 16 </option>
 				</select>
 				
 				<!-- Collision Resolution Dropdown -->
@@ -512,17 +514,22 @@ form {
 		
 		// Square Input Value
 		var squaredInput = (inputVal * inputVal) % 65536;
-				
-		// Bitshift squared input to get a 16-bit number
-		var squaredShifted = squaredInput >>> 16 - (Math.log(squaredInput) / Math.log(2));
 		
+		/* old calculations -- keep for now */
+		// Calculate number of bits of squared input, subtract from 16 and perform an unsigned
+		// bitshift by that number to the right.
+		//var bits = Math.floor(Math.log(squaredInput) / Math.log(2)) + 1;
+		//var squaredShifted = (squaredInput >> (16 - bits)) & 0xFFFF;
 		// Convert to binary
-		var binaryDigit = squaredShifted.toString(2);
-				
+		//var binaryDigit = squaredShifted.toString(2);
+		
+		// Return the squared input as a 16-length binary string with leading zeros
+		var binaryDigit = ("0000000000000000"+(squaredInput).toString(2)).substr(-16);
+						
 		// Concatenate Middle Bits
-		var middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) 
-											+ binaryDigit.charAt(8) + binaryDigit.charAt(9);
-											
+		var middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) + binaryDigit.charAt(8)
+											 + binaryDigit.charAt(9);
+																						
 		// Convert Middle Bits to Decimal
 		var pos = parseInt(middleBits, 2);
 				 
