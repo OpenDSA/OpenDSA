@@ -349,51 +349,42 @@ form {
 			// Input field value
   		var inputVal = $("#input").val();
     		
-  		// Check if input is a valid number
-  		//if (isNaN(inputVal)) {
-  	  	//av.umsg("Please enter a valid number.");
-	  	//}
-    		
-	  	//else {
-    		
-  	  	// Disable input field to process it safely
-      	$("#input").attr("disabled", "disabled");
-    			
-      	// Disable array size drop down to avoid havoc
-      	$("#arraysize").attr("disabled", "disabled");    			
-    		
-      	// Process input with selected function
-      	var hashFunction = $("#function").val();
-      	switch(hashFunction) {
-      		// No function chosen
-      		case '0':
-          	reset();
-          	break;
-		  		case '1':
-      	  	var ret = simpleMod(inputVal);
-          	break;
-          case '2':
-          	var ret = binning(inputVal);
-          	break;
-          case '3':
-          	var ret = midSquare(inputVal);
-          	break;
-		  	}
+  	  // Disable input field to process it safely
+      $("#input").attr("disabled", "disabled");
+    	
+      // Disable array size drop down to avoid havoc
+      $("#arraysize").attr("disabled", "disabled");    			
+    	
+      // Process input with selected function
+      var hashFunction = $("#function").val();
+      switch(hashFunction) {
+      	// No function chosen
+      	case '0':
+         	reset();
+         	break;
+		  	case '1':
+        	var ret = simpleMod(inputVal);
+         	break;
+        case '2':
+        	var ret = binning(inputVal);
+         	break;
+        case '3':
+          var ret = midSquare(inputVal);
+          break;
+		  }
 		  	
-		  	// Show first slide if success
-		  	if (ret === 0)
-		  		loadNextSlide();
+		  // Show first slide if success
+		  if (ret === 0)
+		  	loadNextSlide();
 		  	
-		  	// Else, re-enable input textfield if an error has occurred
-		  	else if (ret === 1)
-		  		$("#input").removeAttr("disabled");
-	  	//}
+		  // Else, re-enable input textfield if an error has occurred
+		  else if (ret === 1)
+		  	$("#input").removeAttr("disabled");
 		}
 		
 		// Else, load next slide
-		else {
+		else
 			loadNextSlide();
-		}
 	}
 	
 	function loadNextSlide() {
@@ -537,8 +528,33 @@ form {
 		determineResolution(inputVal, pos);	
 	}
 	
-	// Hashing for Strings
-	function strings(inputVal) {
+	// Simple hashing for strings
+	function simpleStrings(inputVal) {
+	
+		// Check input is a string
+		if (!is(inputVal)) { 
+			var errorMsg = "Please enter a string to hash.";
+			error(errorMsg);
+			// Return error
+			return 1;
+		}
+		
+		/* C++ CODE
+		char ch[];
+		ch = x.toCharArray();
+		int xlenth = x.length();
+		
+		int i, sum;
+		for (sum = 0, i = 0; i < x.length; i++) {
+			sum += ch[i];
+			
+		var pos = sum % tablesize;
+		*/
+	
+	}
+	
+	// Hashing for Strings (Improved)
+	function improvedStrings(inputVal) {
 	
 		// Check input is a string
 		if (!is(inputVal)) { 
