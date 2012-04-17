@@ -93,6 +93,7 @@ form {
 					<option value = 1> Simple Mod Hash </option>
 					<option value = 2> Binning Hash </option>
 					<option value = 3> Mid Square Hash </option>
+					<option value = 4> Simple Hash for Strings </option>
 				</select>
 			
 				<!-- Array Size Dropdown -->
@@ -290,6 +291,11 @@ form {
         case '3':
         	av.umsg("Algorithm Selected: Mid Square Method");
         	break;
+        	
+        // Simple Strings
+        case '4':
+        	av.umsg("Algorithm Selected: Simple Hashing for Strings");
+        	break;
       }
 	    
 	    /*
@@ -371,6 +377,9 @@ form {
         case '3':
           var ret = midSquare(inputVal);
           break;
+        case '4':
+        	var ret = simpleStrings(inputVal);
+        	break;
 		  }
 		  	
 		  // Show first slide if success
@@ -525,31 +534,43 @@ form {
 		var pos = parseInt(middleBits, 2);
 				 
 		// Process function with selected collision resolution
-		determineResolution(inputVal, pos);	
+		determineResolution(inputVal, pos);
+		
+		// Return success
+		return 0;
 	}
 	
 	// Simple hashing for strings
 	function simpleStrings(inputVal) {
 	
 		// Check input is a string
-		if (!is(inputVal)) { 
+		if (!is("String", inputVal)) { 
 			var errorMsg = "Please enter a string to hash.";
 			error(errorMsg);
 			// Return error
 			return 1;
 		}
 		
-		/* C++ CODE
-		char ch[];
-		ch = x.toCharArray();
-		int xlenth = x.length();
+		// Sum of string's ASCII number
+		var sum = 0;
+		for (var i = 0; i < inputVal.length; i++) {
+			sum += inputVal.charCodeAt(i);
+		}
 		
-		int i, sum;
-		for (sum = 0, i = 0; i < x.length; i++) {
-			sum += ch[i];
-			
-		var pos = sum % tablesize;
-		*/
+		// Table Size
+		var size = $("#arraysize").val();
+		
+		// Position is the sum mod the table size
+		var pos = sum % size;
+		
+		av.umsg("The sum is " + sum);
+		av.umsg("Hash value: " + sum + " % " + size + " = " + pos); 
+		
+		// Process function with selected collision resolution
+		determineResolution(inputVal, pos);
+		
+		// Return success
+		return 0;
 	
 	}
 	
@@ -564,6 +585,7 @@ form {
 			return 1;
 		}
 		
+				
 	/*
 	 * The following is copied from AlgoViz. Convert substring method from C++ to JS
 	 
@@ -592,6 +614,9 @@ form {
 		var pos = Math.abs(sum) % M;
 
 		*/
+		
+		// Return success
+		return 0;
 	}
 	
 	
