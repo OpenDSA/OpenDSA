@@ -240,9 +240,9 @@ form {
   // Convenience function for setting another type of highlight
   // (will be used for showing which elements have already been merged back together)
   var markMerged = function(arr, index) {
-	
+	// Clears the value
 	arr.value(index, "");
-	// Clear the value rather than change the color
+	// Change the background color to gray
     arr.css(index, {"background-color": "#c0c0c0" });
   };
   
@@ -399,8 +399,8 @@ form {
 		av.step();
 		// Un-bold outline the selected element
 		arr1.css(pos1, {"border-width": "1px"});
-		markMerged(arr1, pos1);
 		avRetArr.value(i, arr1.value(pos1));
+		markMerged(arr1, pos1);
 		pos1++;
 	  }
 	  else
@@ -411,8 +411,8 @@ form {
 		av.step();
 		// Un-bold outline the selected element
 		arr2.css(pos2, {"border-width": "1px"});
-		markMerged(arr2, pos2);
 		avRetArr.value(i, arr2.value(pos2));
+		markMerged(arr2, pos2);
 		pos2++;
 	  }
 	  
@@ -460,9 +460,10 @@ form {
 	
 	// Set the top and left values so that all arrays are spaced properly
 	arr.element.css({"left": left, "top": top});
-	// arr.arrayCss({"left": left, "top": top});
   }
   
+  /*
+  // Extends the JSAV array class with a function to animate new CSS properties
   JSAV._types.ds.AVArray.prototype.arrayCss = JSAV.anim(function(cssprop, value) {
 	var oldProps = $.extend(true, {}, cssprop), el = this.element, newprops;
 	
@@ -485,6 +486,7 @@ form {
 	
 	return [oldProps];
   });
+  */
 
   
 })(jQuery);
