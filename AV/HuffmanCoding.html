@@ -16,7 +16,7 @@
 	<style>
 	#container {
 	  width: 800px;
-	  height: 900px;
+	  height: 850px;
 	  background-color: #efe;
 	  border:1px solid #A5B6C8;
 	  padding: 10px;
@@ -148,7 +148,7 @@
 	var huffTree_animation = function (nArray, tArray, dArray) {
 		while (nArray.length > 1) {
 			sortArray(nArray, tArray, dArray);
-			jsav.umsg("Sorting the data by their frequency.");
+			jsav.umsg("Sorting the data by their frequency, and the results are as follows: ");
 			
 			arr.hide();
 			arr = jsav.ds.array(dArray);
@@ -168,7 +168,6 @@
 
 			node.left(tArray[0]);
 			node.right(tArray[1]);
-
 			jsav.umsg("Merge them together, and the result is " + key);
 			tmpBT.root(key);
 			tmpBT.root().left(dArray[0]);
@@ -179,10 +178,9 @@
 			tmpBT.layout();
 			jsav.step(); 
 
+			tmpBT.hide();
 			jsav.umsg("Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
 			shuffle(nArray, tArray, dArray, key, node);
-			
-			tmpBT.hide();
 			arr = jsav.ds.array(dArray);
 			jsav.step();
 		}	
@@ -279,7 +277,6 @@
 
 	jsav.umsg("The Huffman Coding Tree is as follows: ");
 	traverse_color(bt.root(), "white");
-	tmpBT.hide();
 	arr.hide();
 	bt.show();
 	bt.layout();
