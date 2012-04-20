@@ -16,7 +16,7 @@
 	<style>
 	#container {
 	  width: 800px;
-	  height: 500px;
+	  height: 900px;
 	  background-color: #efe;
 	  border:1px solid #A5B6C8;
 	  padding: 10px;
@@ -65,7 +65,7 @@
 	
 <body>
 	<div id="container">
-		<input type="button" id="about" name="about" value="about" style="margin-top:10px;"/>
+		<input type="button" id="about" name="about" value="about" style="margin-top:10px; height:24px"/>
 		<a class="jsavsettings" href="#">Settings</a>
 		<h1 style="">Huffman Coding Tree Visualization</h1>
 		<div id="av">
@@ -150,16 +150,13 @@
 			sortArray(nArray, tArray, dArray);
 			jsav.umsg("Sorting the data by their frequency.");
 			
-			bt.hide();	
 			arr.hide();
-			tmpBT.hide();
 			arr = jsav.ds.array(dArray);
 			jsav.step();
 			jsav.umsg("Choose the two samllest number: " + nArray[0] + " and " + nArray[1])
 			
 			arr.css([0, 1], {"color": "blue", "background-color": "yellow"});
 			var key = nArray[0] + nArray[1];
-			bt.hide();
 			jsav.step();	
 
 			if (nArray.length == 2) {
@@ -176,7 +173,6 @@
 			tmpBT.root(key);
 			tmpBT.root().left(dArray[0]);
 			tmpBT.root().right(dArray[1]);
-			bt.hide();
 			arr.hide();
 			tmpBT.show();
 			parts_color(tmpBT.root(), "white");
@@ -186,8 +182,6 @@
 			jsav.umsg("Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
 			shuffle(nArray, tArray, dArray, key, node);
 			
-
-			bt.hide();
 			tmpBT.hide();
 			arr = jsav.ds.array(dArray);
 			jsav.step();
@@ -235,10 +229,9 @@
     }
 
 	var jsav = new JSAV("av");
-	var bt = jsav.ds.bintree().hide();	// used to store the HuffmanCoding tree
-	var tmpBT = jsav.ds.bintree().hide();	// used to display the intermediate process for tree construction
-	jsav.umsg("Huffman Coding Tree Construction");
-	var caption_text = "";
+	var bt = jsav.ds.bintree({visible: false});	// used to store the HuffmanCoding tree
+	var tmpBT = jsav.ds.bintree({visible: false});	// used to display the intermediate process for tree construction
+	//jsav.umsg("Huffman Coding Tree Construction");
 
 	// userArry: an array to store the number and character
 	var userArray = new Array();
@@ -277,10 +270,8 @@
 	}
 
 	// an array to control the display
-	arr = jsav.ds.array(disArray);
 	jsav.umsg("The initial data are as follows (the first line is frequency and the second line is the chracter): ");
-	bt.hide();
-	tmpBT.hide();
+	arr = jsav.ds.array(disArray);
 	jsav.step();
 
 	// building the HuffmanCoding tree
@@ -299,7 +290,22 @@
     });
     $("path").live("hover", function() {
 	//console.log($(this).attr("d"));
-    });
+	});
+
+	(function($) {
+		var context = $("#ssperform");
+
+		// create a new settings panel and specify the link to show it
+		var settings = new JSAV.utils.Settings($(".jsavsettings"));
+		// Connect action callbacks to the HTML entities
+		$('input[name="about"]').click(about);
+
+		// Process About button: Pop up a message with an Alert
+		function about() {
+			var mystring = "HuffmanCoding Tree Visualization\nWritten by Maoyuan Sun\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during April, 2012\nLast update: April 19, 2012\nJSAV library version " + JSAV.version();
+			alert(mystring);
+		}
+		})(jQuery);  
 
 	</script>
 </body>
