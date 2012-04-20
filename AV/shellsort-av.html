@@ -8,7 +8,7 @@
 
 #container {
   width: 770px;
-  height: 465px;
+  height: 470px;
   border: 1px solid black;
   background-color: #efe;
   padding: 10px;
@@ -24,7 +24,7 @@ div h1 {
   border: none;
 }
 .jsavcounter {
-  float: left;
+  position: absolute;
   width: 100px;
 }
 .jsavarray {
@@ -38,31 +38,32 @@ p.jsavoutput.jsavline {
   float: right;
 }
 a.jsavsettings {
-display: block;
-margin-top: 10px;
-margin-left: 10px;
+  display: block;
+  margin-top: -1px;
+  margin-left: 10px;
 }
 form {
   clear: both;
 }
 </style>
 </head>
-
 <body>
 <div id="container">
-  <input type="button" id="about" name="about" value="About" style="margin-top:10px;"/>
+  <input type="button" id="about" name="about" value="About" />
   <a class="jsavsettings" href="#">Settings</a>
-  <h1 style="">Shellsort Visualization</h1>
+  <input type="button" id="help" name="help" value="Help" />
+  <h1 style="margin-top:-25px;">Shellsort Visualization</h1>
 
   <form id="ssperform">
-    <p><label for="increments">Increments: Type your increment
-                               series below.</label></p>
-    <input size="50" name="increments" type="text"
-           placeholder="Space separated values, for example 8 4 2 1" />
+    <p><label for="increments">Type an increment series or
+                               use the given default:</label>
+       <input size="30" name="increments" type="text"
+           value="4 2 1" />
+    </p>
     <p>
       <input type="button" name="run" value="Run" />
       <input type="button" name="reset" value="Reset" />
-      <label for="arraysize">&nbsp;List size:&nbsp;</label>
+      <label for="arraysize">&nbsp;Array size:&nbsp;</label>
       <select id="arraysize">
         <option value = 5>5</option>
         <option value = 6>6</option>
@@ -77,8 +78,9 @@ form {
         <option value = 15>15</option>
         <option value = 16>16</option>
       </select>
-      <label for="arrayValues">&nbsp;Your values:&nbsp;</label>
-      <input size="60" name="arrayValues" id="arrayValues" type="text" />
+      <label for="arrayValues">&nbsp;Array values:&nbsp;</label>
+      <input size="50" name="arrayValues" id="arrayValues" type="text" 
+	     placeholder="Type space-separated values, or just accept ones picked at random" />
     </p>
   </form>
   <div id="avcontainer">
@@ -124,10 +126,17 @@ form {
     arr;  // for the JSAV array
 
   // Connect action callbacks to the HTML entities
+  $('input[name="help"]').click(help);
   $('input[name="about"]').click(about);
   $('input[name="run"]', context).click(runIt);
   $('input[name="reset"]', context).click(reset);
   $('input[name="increments"]', context).focusout(checkIncrements);
+
+  // Process help button: Give a full help page for this activity
+  // We might give them another HTML page to look at.
+  function help() {
+    myRef = window.open("SSavHelp.html", 'helpwindow');
+  }
 
   // Process About button: Pop up a message with an Alert
   function about() {

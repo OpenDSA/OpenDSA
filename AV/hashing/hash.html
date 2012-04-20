@@ -8,10 +8,10 @@
 
 #container {
   width: 790px;
-  height: 465px;
+  height: 530px;
   border: 1px solid black;
   background-color: #efe;
-  padding: 10px;
+  padding: 0px 10px 14px 10px;
   overflow: hidden;
 }
 
@@ -20,7 +20,6 @@
   height: 90px;
   border: 1px solid black;
   background-color: #ddd;
-  
   overflow: hidden;
 }
 
@@ -46,7 +45,11 @@ div h1 {
 }
 
 .jsavarray .jsavindex {
-	height: 40px;
+	height: 30px;
+}
+
+.jsavnode {
+	line-height: 30px;
 }
 
 p.jsavoutput.jsavline {
@@ -75,7 +78,7 @@ form {
 
 	<!-- Main Container -->
 	<div id="container">
-		<p class="jsavoutput jsavscroll" readonly="readonly" style="width:225px; height:400px; font-size:	95%; float:left"> </p>
+		<p class="jsavoutput jsavscroll" readonly="readonly" style="width:270px; height:400px; font-size:	95%; float:left"> </p>
 	</div>
 
 	<!-- Bottom Container -->
@@ -90,6 +93,7 @@ form {
 					<option value = 1> Simple Mod Hash </option>
 					<option value = 2> Binning Hash </option>
 					<option value = 3> Mid Square Hash </option>
+					<option value = 4> Simple Hash for Strings </option>
 				</select>
 			
 				<!-- Array Size Dropdown -->
@@ -179,7 +183,7 @@ form {
 
   // Process About button: Pop up a message with an Alert
   function about() {
-	var mystring = "Hashing  Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
+	var mystring = "Hashing  Visualization\nWritten by Nayef Copty.\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: April, 2012\nJSAV library version " + JSAV.version();
     alert(mystring);
   }
 		
@@ -203,6 +207,12 @@ form {
   function is(type, obj) {
   	var clas = Object.prototype.toString.call(obj).slice(8, -1);
   	return obj !== undefined && obj !== null && clas === type;
+	}
+	
+	/* Wrapper class for error messages */
+	function error(message) {
+		av.umsg(message, {"color" : "red"});
+		av.umsg("<br />");
 	}
   
   /* Reset Function */
@@ -261,15 +271,31 @@ form {
 	    		
 	    // Disable function change
 	    $("#function").attr("disabled", "disabled");
-	     	    
-	    // Enable Appropriate Controls for each function
+	    	     	    
+	    // Display Appropriate Message and Enable Appropriate Controls for each function
 	    switch ($(this).val()) {
-	    	    	
+	    
+	    	// Simple Mod
+	    	case '1':
+	    		av.umsg("Algorithm Selected: Simple Mod");
+	    		break;
+	    		
 	    	// Binning
 	    	case '2':
 	    		// Enable key range
           $("#keyrange").removeAttr("disabled");
+          av.umsg("Algorithm Selected: Binning");
           break;
+          
+        // Mid Square
+        case '3':
+        	av.umsg("Algorithm Selected: Mid Square Method");
+        	break;
+        	
+        // Simple Strings
+        case '4':
+        	av.umsg("Algorithm Selected: Simple Hashing for Strings");
+        	break;
       }
 	    
 	    /*
@@ -279,7 +305,14 @@ form {
 	     */
 	    // Choose linear probing resolution policy for now:
 	    $("#collision").val(1);
+	    av.umsg("Collision Policy Selected: Linear Probing");
+	    av.umsg("<br />");
 	    
+	    if ($(this).val() == 1 || $(this).val() == 3)
+	    	av.umsg("Please select a table size.");
+	    else if ($(this).val() == 2)
+	    	av.umsg("Please a key range and a table size.");
+	    		    
 	    /*switch ($(this).val()) {
 	      // Linear probing for simple mod
 	      case '1':
@@ -305,6 +338,9 @@ form {
 	  
 	  // Enable input field
 	  $("#input").removeAttr("disabled");
+	  
+	  av.umsg("Enter a value and click Next");
+	  av.umsg("<br />");
 	});
 	
 	/* Next button pushed. 
@@ -319,51 +355,45 @@ form {
 			// Input field value
   		var inputVal = $("#input").val();
     		
-  		// Check if input is a valid number
-  		if (isNaN(inputVal)) {
-  	  	av.umsg("Please enter a valid number");
-	  	}
-    		
-	  	else {
-    		
-  	  	// Disable input field to process it safely
-      	$("#input").attr("disabled", "disabled");
-    			
-      	// Disable array size drop down to avoid havoc
-      	$("#arraysize").attr("disabled", "disabled");    			
-    		
-      	// Process input with selected function
-      	var hashFunction = $("#function").val();
-      	switch(hashFunction) {
-      		// No function chosen
-      		case '0':
-          	reset();
-          	break;
-		  		case '1':
-      	  	var ret = simpleMod(inputVal);
-          	break;
-          case '2':
-          	var ret = binning(inputVal);
-          	break;
-          case '3':
-          	var ret = midSquare(inputVal);
-          	break;
-		  	}
+  	  // Disable input field to process it safely
+      $("#input").attr("disabled", "disabled");
+    	
+      // Disable array size drop down to avoid havoc
+      $("#arraysize").attr("disabled", "disabled");    			
+    	
+      // Process input with selected function
+      var hashFunction = $("#function").val();
+      switch(hashFunction) {
+      	// No function chosen
+      	case '0':
+         	reset();
+         	break;
+		  	case '1':
+        	var ret = simpleMod(inputVal);
+         	break;
+        case '2':
+        	var ret = binning(inputVal);
+         	break;
+        case '3':
+          var ret = midSquare(inputVal);
+          break;
+        case '4':
+        	var ret = simpleStrings(inputVal);
+        	break;
+		  }
 		  	
-		  	// Show first slide if success
-		  	if (ret === 0)
-		  		loadNextSlide();
+		  // Show first slide if success
+		  if (ret === 0)
+		  	loadNextSlide();
 		  	
-		  	// Else, re-enable input textfield if an error has occurred
-		  	else if (ret === 1)
-		  		$("#input").removeAttr("disabled");
-	  	}
+		  // Else, re-enable input textfield if an error has occurred
+		  else if (ret === 1)
+		  	$("#input").removeAttr("disabled");
 		}
 		
 		// Else, load next slide
-		else {
+		else
 			loadNextSlide();
-		}
 	}
 	
 	function loadNextSlide() {
@@ -373,6 +403,7 @@ form {
 	  // If activity is insertion
 	  if (next.insert) {
 	    av.umsg("Inserting " + next.value + " at position " + next.position + ".");
+	    av.umsg("<br>");
 			arr.unhighlight(next.position);
 			arr.value(next.position, next.value);
 	  }
@@ -389,7 +420,8 @@ form {
 	  	  		  
 	  	// If array is full at the end of dequeue, display message
       if (fullArray) {
-	    	av.umsg("Array is full. Insertion failed.");
+      	var errorMsg = "Array is full. Insertion failed. Please Restart.";
+      	error(errorMsg);
 				// Reset flag
 				fullArray = false;
 	  	}
@@ -404,9 +436,10 @@ form {
 	// Simple mod function
 	function simpleMod(inputVal) {
 	
-		// Check that the input value is within the correct range
-		if (inputVal < 0 || inputVal > 99999) {
-			av.umsg("Please enter a value in the range of 0-99999");
+		// Check that the input value is a number and within the correct range
+		if (inputVal < 0 || inputVal > 99999 || isNaN(inputVal)) {
+			var errorMsg = "Please enter a number in the range of 0-99999";
+			error(errorMsg);
 			// Return error
 			return 1;
 		}
@@ -428,15 +461,15 @@ form {
 		
 		// Check that a key range has been selected
 		if (keyrange == 0) {
-			av.umsg("Please select a key range.");
-			
+			var errorMsg = "Please select a key range.";
+			error(errorMsg);
 			// Return error
 			return 1;
 		}
 		
+		// Else, get key range selected
 		else {
 		
-			// Determine key range
 			switch(keyrange) {
 				case '1':
 					keyrange = 100;
@@ -446,10 +479,10 @@ form {
 					break;
 			}
 						
-			// Check that the input value is within the correct range
-			if (inputVal >= keyrange || inputVal < 0) {
-				var errorMessage = "Please enter an input value between 0 and " + keyrange + ".";
-				av.umsg(errorMessage);
+			// Check that the input value is a number within the correct range
+			if (inputVal >= keyrange || inputVal < 0 || isNaN(inputVal)) {
+				var errorMsg = "Please enter an input value between 0 and " + keyrange + ".";
+				error(errorMsg);
 				// Return Error
 				return 1;
 			}
@@ -471,43 +504,88 @@ form {
 	// Mid-Square Method
 	function midSquare(inputVal) {
 	
-		// Check that input is within the correct range
-		if (inputVal > 65536 || inputVal < 0) {
-			av.umsg("Please enter a value in the range of 0-65536");
+		// Check that input is a number within the correct range
+		if (inputVal > 65536 || inputVal < 0 || isNaN(inputVal)) {
+			var errorMsg = "Please enter a value in the range of 0-65536";
+			error(errorMsg);
 			// Return error
 			return 1;
 		}
 		
 		// Square Input Value
 		var squaredInput = (inputVal * inputVal) % 65536;
-				
-		// Bitshift squared input to get a 16-bit number
-		var squaredShifted = squaredInput >>> 16 - (Math.log(squaredInput) / Math.log(2));
 		
+		/* old calculations -- keep for now */
+		// Calculate number of bits of squared input, subtract from 16 and perform an unsigned
+		// bitshift by that number to the right.
+		//var bits = Math.floor(Math.log(squaredInput) / Math.log(2)) + 1;
+		//var squaredShifted = (squaredInput >> (16 - bits)) & 0xFFFF;
 		// Convert to binary
-		var binaryDigit = squaredShifted.toString(2);
-				
+		//var binaryDigit = squaredShifted.toString(2);
+		
+		// Return the squared input as a 16-length binary string with leading zeros
+		var binaryDigit = ("0000000000000000"+(squaredInput).toString(2)).substr(-16);
+						
 		// Concatenate Middle Bits
-		var middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) 
-											+ binaryDigit.charAt(8) + binaryDigit.charAt(9);
-											
+		var middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) + binaryDigit.charAt(8)
+											 + binaryDigit.charAt(9);
+																						
 		// Convert Middle Bits to Decimal
 		var pos = parseInt(middleBits, 2);
 				 
 		// Process function with selected collision resolution
-		determineResolution(inputVal, pos);	
+		determineResolution(inputVal, pos);
+		
+		// Return success
+		return 0;
 	}
 	
-	// Hashing for Strings
-	function strings(inputVal) {
+	// Simple hashing for strings
+	function simpleStrings(inputVal) {
 	
 		// Check input is a string
-		if (!is(inputVal)) { 
-			av.umsg("Please enter a string to hash.");
+		if (!is("String", inputVal)) { 
+			var errorMsg = "Please enter a string to hash.";
+			error(errorMsg);
 			// Return error
 			return 1;
 		}
 		
+		// Sum of string's ASCII number
+		var sum = 0;
+		for (var i = 0; i < inputVal.length; i++) {
+			sum += inputVal.charCodeAt(i);
+		}
+		
+		// Table Size
+		var size = $("#arraysize").val();
+		
+		// Position is the sum mod the table size
+		var pos = sum % size;
+		
+		av.umsg("The sum is " + sum);
+		av.umsg("Hash value: " + sum + " % " + size + " = " + pos); 
+		
+		// Process function with selected collision resolution
+		determineResolution(inputVal, pos);
+		
+		// Return success
+		return 0;
+	
+	}
+	
+	// Hashing for Strings (Improved)
+	function improvedStrings(inputVal) {
+	
+		// Check input is a string
+		if (!is(inputVal)) { 
+			var errorMsg = "Please enter a string to hash.";
+			error(errorMsg);
+			// Return error
+			return 1;
+		}
+		
+				
 	/*
 	 * The following is copied from AlgoViz. Convert substring method from C++ to JS
 	 
@@ -536,6 +614,9 @@ form {
 		var pos = Math.abs(sum) % M;
 
 		*/
+		
+		// Return success
+		return 0;
 	}
 	
 	

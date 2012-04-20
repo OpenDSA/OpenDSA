@@ -30,7 +30,7 @@ div h1 {
   padding: 0px;
 }
 .jsavcounter {
-  float: left;
+  position: absolute;
   width: 100px;
 }
 .jsavarray {
@@ -119,8 +119,6 @@ form {
   
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
-  // add the layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
   
   var context = $("#ssperform");
   var emptyContent = $("#avcontainer").html();
@@ -205,13 +203,6 @@ form {
       
 	  // BEGIN MERGESORT IMPLEMENTATION
 	  
-	  // Calculate and set a custom height for the container
-	  // var totalDepth = Math.ceil(Math.log(newSize) / Math.log(2)) + 1;
-	  // 200px for the visualization controls, 15px for a little extra at the bottom 
-	  // (prevents a vertical scroll bar from appearing) and the height of each row 
-	  // times the number of rows in the visualization
-	  // var newHeight = 215 + rowHeight * totalDepth;
-	  //$('#container').height(newHeight);
 	  
 	  mergesort(av, arr, 1, 1);
 
@@ -249,6 +240,9 @@ form {
   // Convenience function for setting another type of highlight
   // (will be used for showing which elements have already been merged back together)
   var markMerged = function(arr, index) {
+	// Clears the value
+	arr.value(index, "");
+	// Change the background color to gray
     arr.css(index, {"background-color": "#c0c0c0" });
   };
   
@@ -378,8 +372,6 @@ form {
 	  }
 	  else
 	  {
-	    av.umsg("Select the minimum of the two values");
-		
 		// Eliminate one step for single element arrays to reduce tedium 
 	    if (arr1.size() > 1)
 		{
@@ -395,22 +387,32 @@ form {
 	      av.umsg("Select the smallest value from the front of each list (excluding values already in the sorted array)");
 		  av.step();
 		}
+		
+		av.umsg("Select the minimum of the two values");
 	  }
 	  
 	  if (pos1 < arr1.size() && (arr1.value(pos1) <= arr2.value(pos2) || pos2 == arr2.size()))
 	  {
 	    setBlue(arr1, pos1);
+		// Bold outline the selected element
+		arr1.css(pos1, {"border-width": "2px"});
 		av.step();
-		markMerged(arr1, pos1);
+		// Un-bold outline the selected element
+		arr1.css(pos1, {"border-width": "1px"});
 		avRetArr.value(i, arr1.value(pos1));
+		markMerged(arr1, pos1);
 		pos1++;
 	  }
 	  else
 	  {
 	    setBlue(arr2, pos2);
+		// Bold outline the selected element
+		arr2.css(pos2, {"border-width": "2px"});
 		av.step();
-		markMerged(arr2, pos2);
+		// Un-bold outline the selected element
+		arr2.css(pos2, {"border-width": "1px"});
 		avRetArr.value(i, arr2.value(pos2));
+		markMerged(arr2, pos2);
 		pos2++;
 	  }
 	  
@@ -459,6 +461,33 @@ form {
 	// Set the top and left values so that all arrays are spaced properly
 	arr.element.css({"left": left, "top": top});
   }
+  
+  /*
+  // Extends the JSAV array class with a function to animate new CSS properties
+  JSAV._types.ds.AVArray.prototype.arrayCss = JSAV.anim(function(cssprop, value) {
+	var oldProps = $.extend(true, {}, cssprop), el = this.element, newprops;
+	
+	if (typeof cssprop === "string" && typeof value !== "undefined") {
+	  oldProps[cssprop] = el.css(cssprop);
+	  newprops = {};
+	  newprops[cssprop] = value;
+	} else {
+	  for (var i in cssprop) {
+	    oldProps[i] = el.css(i);
+	  }
+	  newprops = cssprop;
+	}
+	
+	if (!this.jsav.RECORD || !$.fx.off) { // only animate when playing, not when recording
+	  this.element.animate(newprops, this.jsav.SPEED);
+	} else {
+	  this.element.css(newprops);
+	}
+	
+	return [oldProps];
+  });
+  */
+
   
 })(jQuery);
 </script>

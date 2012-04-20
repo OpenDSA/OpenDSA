@@ -11,12 +11,12 @@
 	<script src="../JSAV/lib/jquery.transform.light.js"></script>
 	<script src="../JSAV/lib/raphael.js"></script>
 	<script src="../JSAV/build/JSAV-min.js"></script>
-	<script src="../JSAV/build/JSAV.js"></script>
+	<script type="text/javascript" src="../lib/ODSA.js"></script>
 
 	<style>
 	#container {
 	  width: 800px;
-	  height: 850px;
+	  height: 950px;
 	  background-color: #efe;
 	  border:1px solid #A5B6C8;
 	  padding: 10px;
@@ -68,6 +68,37 @@
 		<input type="button" id="about" name="about" value="about" style="margin-top:10px; height:24px"/>
 		<a class="jsavsettings" href="#">Settings</a>
 		<h1 style="">Huffman Coding Tree Visualization</h1>
+
+		<form id="ssperform">
+			<p>
+			<label for="arraysize">&nbsp;Please choose the character number:&nbsp;</label>
+			<select id="arraysize">
+				<option value = 5>5</option>
+				<option value = 6>6</option>
+				<option value = 7>7</option>
+				<option selected value = 8>8</option>
+				<option value = 9>9</option>
+				<option value = 10>10</option>
+				<option value = 11>11</option>
+				<option value = 12>12</option>
+				<option value = 13>13</option>
+				<option value = 14>14</option>
+				<option value = 15>15</option>
+				<option value = 16>16</option>
+			</select>
+			<label for="arrayValues">&nbsp;and input the characters:&nbsp;</label>
+			<input size="50" name="arrayValues" type="text" placeholder="Use space to separate characters, for example A B C D">
+			</p>
+			<p>
+			<label for="frequency">&nbsp;Please input the frequency of each character:&nbsp;</label>
+			<input size="50" name="frequency" type="text" placeholder="Use space to separate values, for example 1 2 3 4">
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" style="height:22px; width:60px" name="run" value="Run" />
+			&nbsp;&nbsp;
+			<input type="button" style="height:22px; width:60px" name="reset" value="Reset" />
+			</p>
+		</form>
+
 		<div id="av">
 			<span class="jsavcounter"></span>
 			<div class="jsavcontrols"></div>
@@ -145,18 +176,22 @@
 	* tArray: used for store the information of HuffmanCoding Tree
 	* dArray: used for display control
 	*/
-	var huffTree_animation = function (nArray, tArray, dArray) {
+/*	var huffTree_animation = function (nArray, tArray, dArray) {
 		while (nArray.length > 1) {
 			sortArray(nArray, tArray, dArray);
-			jsav.umsg("Sorting the data by their frequency, and the results are as follows: ");
+			jsav.umsg("Sorting the data by their frequency.");
 			
+			bt.layout();
+			bt.hide();	
 			arr.hide();
+			tmpBT.hide();
 			arr = jsav.ds.array(dArray);
 			jsav.step();
 			jsav.umsg("Choose the two samllest number: " + nArray[0] + " and " + nArray[1])
 			
 			arr.css([0, 1], {"color": "blue", "background-color": "yellow"});
 			var key = nArray[0] + nArray[1];
+			bt.hide();
 			jsav.step();	
 
 			if (nArray.length == 2) {
@@ -168,23 +203,28 @@
 
 			node.left(tArray[0]);
 			node.right(tArray[1]);
+
 			jsav.umsg("Merge them together, and the result is " + key);
 			tmpBT.root(key);
 			tmpBT.root().left(dArray[0]);
 			tmpBT.root().right(dArray[1]);
+			bt.hide();
 			arr.hide();
 			tmpBT.show();
 			parts_color(tmpBT.root(), "white");
 			tmpBT.layout();
 			jsav.step(); 
 
-			tmpBT.hide();
 			jsav.umsg("Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
 			shuffle(nArray, tArray, dArray, key, node);
+			
+
+			bt.hide();
+			tmpBT.hide();
 			arr = jsav.ds.array(dArray);
 			jsav.step();
 		}	
-	}
+	} */
 
 	// used to display a simple subtree
 	var parts_color = function(node, color) {
@@ -224,12 +264,13 @@
 			else  
 				node.css({"height": "90px", "width": "45px", "border-radius":1, "background-color":"YELLOW"});	
 		}
-    }
+    } 
 
-	var jsav = new JSAV("av");
-	var bt = jsav.ds.bintree({visible: false});	// used to store the HuffmanCoding tree
-	var tmpBT = jsav.ds.bintree({visible: false});	// used to display the intermediate process for tree construction
-	//jsav.umsg("Huffman Coding Tree Construction");
+/*	var jsav = new JSAV("av");
+	var bt = jsav.ds.bintree().hide();	// used to store the HuffmanCoding tree
+	var tmpBT = jsav.ds.bintree().hide();	// used to display the intermediate process for tree construction
+	jsav.umsg("Huffman Coding Tree Construction");
+	var caption_text = "";
 
 	// userArry: an array to store the number and character
 	var userArray = new Array();
@@ -268,8 +309,11 @@
 	}
 
 	// an array to control the display
-	jsav.umsg("The initial data are as follows (the first line is frequency and the second line is the chracter): ");
 	arr = jsav.ds.array(disArray);
+	jsav.umsg("The initial data are as follows (the first line is frequency and the second line is the chracter): ");
+	bt.hide();
+	tmpBT.hide();
+	tmpBT.layout();
 	jsav.step();
 
 	// building the HuffmanCoding tree
@@ -277,10 +321,11 @@
 
 	jsav.umsg("The Huffman Coding Tree is as follows: ");
 	traverse_color(bt.root(), "white");
+	tmpBT.hide();
 	arr.hide();
 	bt.show();
 	bt.layout();
-    jsav.recorded(); // done recording changes, will rewind
+    jsav.recorded(); // done recording changes, will rewind */
     
     $(".jsavtreenode").live("hover", function() {
 	//console.log($(this).text(), $(this).offset().left, $(this).offset().top);
@@ -296,13 +341,122 @@
 		var settings = new JSAV.utils.Settings($(".jsavsettings"));
 		// Connect action callbacks to the HTML entities
 		$('input[name="about"]').click(about);
+		$('input[name="run"]', context).click(runIt);
 
 		// Process About button: Pop up a message with an Alert
 		function about() {
 			var mystring = "HuffmanCoding Tree Visualization\nWritten by Maoyuan Sun\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during April, 2012\nLast update: April 19, 2012\nJSAV library version " + JSAV.version();
 			alert(mystring);
 		}
-		})(jQuery);  
+
+
+
+	function runIt() {
+
+	/* Constructing the huffmanCodingTree with animation
+	* nArray: used for logic control
+	* tArray: used for store the information of HuffmanCoding Tree
+	* dArray: used for display control
+	*/
+	var huffTree_animation = function (nArray, tArray, dArray) {
+		while (nArray.length > 1) {
+			sortArray(nArray, tArray, dArray);
+			jsav.umsg("Sorting the data by their frequency.");
+			
+			arr.hide();
+			arr = jsav.ds.array(dArray);
+			jsav.step();
+			jsav.umsg("Choose the two samllest number: " + nArray[0] + " and " + nArray[1])
+			
+			arr.css([0, 1], {"color": "blue", "background-color": "yellow"});
+			var key = nArray[0] + nArray[1];
+			jsav.step();	
+
+			if (nArray.length == 2) {
+				var node = bt.root(key);
+			}
+			else {
+				var node = bt.newNode(key);
+			}
+
+			node.left(tArray[0]);
+			node.right(tArray[1]);
+
+			jsav.umsg("Merge them together, and the result is " + key);
+			tmpBT.root(key);
+			tmpBT.root().left(dArray[0]);
+			tmpBT.root().right(dArray[1]);
+			arr.hide();
+			tmpBT.show();
+			parts_color(tmpBT.root(), "white");
+			tmpBT.layout();
+			jsav.step(); 
+			
+			tmpBT.hide();
+			jsav.umsg("Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
+			shuffle(nArray, tArray, dArray, key, node);			
+			arr = jsav.ds.array(dArray);
+			jsav.step();
+		}	
+	}
+
+	var jsav = new JSAV("av");
+	var bt = jsav.ds.bintree({visible: false});	// used to store the HuffmanCoding tree
+	var tmpBT = jsav.ds.bintree({visible: false});	// used to display the intermediate process for tree construction
+	jsav.umsg("Huffman Coding Tree Construction");
+
+	// userArry: an array to store the number and character
+	var userArray = new Array();
+	userArray[0] = 32;
+	userArray[1] = "C";
+	userArray[2] = 42;
+	userArray[3] = "D";
+	userArray[4] = 120;
+	userArray[5] = "E";
+	userArray[6] = 7;
+	userArray[7] = "K"
+	userArray[8] = 42;
+	userArray[9] = "L"
+	userArray[10] = 24;
+	userArray[11] = "M";
+	userArray[12] = 37;
+	userArray[13] = "U";
+	userArray[14] = 2;
+	userArray[15] = "Z";
+
+	// treeArray: an array to store the information of HuffmanCodingTree
+	var treeArray = new Array();
+
+	// numArray: used for logic control
+	var numArray = new Array();
+
+	// disArray: used for display control
+	var disArray = new Array();
+
+	// initialization for all the arrays
+	for (var i = 0, j = 0; i < userArray.length - 1; i += 2, j++) {
+		value = userArray[i] + "<br />" + userArray[i + 1];
+		treeArray[j] = bt.newNode(value);
+		disArray[j] = value;
+		numArray[j] = userArray[i];
+	}
+
+	// an array to control the display
+	jsav.umsg("The initial data are as follows (the first line is frequency and the second line is the chracter): ");	
+	arr = jsav.ds.array(disArray);
+	jsav.step();
+
+	// building the HuffmanCoding tree
+	huffTree_animation(numArray, treeArray, disArray);
+
+	jsav.umsg("The Huffman Coding Tree is as follows: ");
+	traverse_color(bt.root(), "white");
+	arr.hide();
+	bt.show();
+	bt.layout();
+    jsav.recorded(); // done recording changes, will rewind
+		}
+	})(jQuery);  
 
 	</script>
 </body>
