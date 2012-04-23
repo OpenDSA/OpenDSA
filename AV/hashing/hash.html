@@ -183,8 +183,9 @@ form {
 
   // Process About button: Pop up a message with an Alert
   function about() {
-	var mystring = "Hashing  Visualization\nWritten by Nayef Copty.\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: April, 2012\nJSAV library version " + JSAV.version();
-    alert(mystring);
+    var str1 = "Hashing Visualization\nWritten by Nayef Copty.\nCreated as part of the OpenDSA hypertextbook project.\n";
+    var str2 = "For more information, see http://algoviz.org/OpenDSA\nWritten during Spring 2012\nLast Update: April 2012\nJSAV Library Version: " + JSAV.version();
+    alert(str1 + str2);
   }
 		
   // Connect action callbacks to the HTML entities
@@ -203,33 +204,33 @@ form {
    * is('String, 'testing'); // true
    * is('String', new String('test')); // true
    * Credit to: http://bonsaiden.github.com/JavaScript-Garden/
-  */
+   */
   function is(type, obj) {
-  	var clas = Object.prototype.toString.call(obj).slice(8, -1);
-  	return obj !== undefined && obj !== null && clas === type;
-	}
-	
-	/* Wrapper class for error messages */
-	function error(message) {
-		av.umsg(message, {"color" : "red"});
-		av.umsg("<br />");
-	}
+    var clas = Object.prototype.toString.call(obj).slice(8, -1);
+    return obj !== undefined && obj !== null && clas === type;
+  }
+  
+  /* Wrapper class for error messages */
+  function error(message) {
+    av.umsg(message, {"color" : "red"});
+    av.umsg("<br />");
+  }
   
   /* Reset Function */
   function reset() {
-	  
-  	// Clear messages
+    
+    // Clear messages
     if (av) {
       av.clearumsg();
       av.umsg("Please select a hashing function");
     }
-      		
+    
     // Hide array if one exists
     if (arr) {
       arr.hide();
     }
-      			
-   	// Reset & disable dropdowns
+    
+    // Reset & disable dropdowns
     $("#function").val(0);
     $("#arraysize").val(0);
     $("#collision").val(0);
@@ -244,491 +245,496 @@ form {
     		
     // Enable function change dropdown
     $("#function").removeAttr("disabled");
-	}
+  }
 	
-	/* Key Presses */
-	// Enable Next as soon as the text field has been changed
-	$('#input').keypress(function() {
-		 $('input[name="next"]').removeAttr("disabled");
-	});
+  /* Key Presses */
+  
+  // Enable Next as soon as the text field has been changed
+  $('#input').keypress(function() {
+    $('input[name="next"]').removeAttr("disabled");
+  });
 	
-	// Disable key range as soon as it has been set
-	$('#keyrange').change(function() {
-		$("#keyrange").attr("disabled", "disabled");
-	});
-	
-	// Event trigger change if hashing function option is changed
-	$("#function").change(function() {
-	    
-	  if ($(this).val() == 0) {
-	    reset();
-	  }
-	    		
-	  else {
-	  
-	    // Enable table size
-	    $("#arraysize").removeAttr("disabled");
-	    		
-	    // Disable function change
-	    $("#function").attr("disabled", "disabled");
-	    	     	    
-	    // Display Appropriate Message and Enable Appropriate Controls for each function
-	    switch ($(this).val()) {
-	    
-	    	// Simple Mod
-	    	case '1':
-	    		av.umsg("Algorithm Selected: Simple Mod");
-	    		break;
-	    		
-	    	// Binning
-	    	case '2':
-	    		// Enable key range
+  // Disable key range as soon as it has been set
+  $('#keyrange').change(function() {
+    $("#keyrange").attr("disabled", "disabled");
+  });
+
+
+  /* Event Triggers */
+
+  // Event trigger change if hashing function option is changed
+  $("#function").change(function() {
+    
+    if ($(this).val() == 0) {
+      reset();
+    }
+    
+    else {
+      
+      // Enable table size
+      $("#arraysize").removeAttr("disabled");
+      
+      // Disable function change
+      $("#function").attr("disabled", "disabled");
+      
+      // Display Appropriate Message and Enable Appropriate Controls for each function
+      switch ($(this).val()) {
+
+	// Simple Mod
+        case '1':
+	  av.umsg("Algorithm Selected: Simple Mod");
+	  break;
+
+	// Binning
+        case '2':
+	  // Enable key range
           $("#keyrange").removeAttr("disabled");
           av.umsg("Algorithm Selected: Binning");
           break;
-          
+        
         // Mid Square
         case '3':
-        	av.umsg("Algorithm Selected: Mid Square Method");
-        	break;
-        	
+          av.umsg("Algorithm Selected: Mid Square Method");
+          break;
+        
         // Simple Strings
         case '4':
-        	av.umsg("Algorithm Selected: Simple Hashing for Strings");
-        	break;
+          av.umsg("Algorithm Selected: Simple Hashing for Strings");
+          break;
       }
 	    
-	    /*
-	     * THIS IS DETERMINED FROM THE QUERY.
-	     * EITHER QUERY SETS IT, OR IT IS FREE TO CHOOSE
-	     * FOR NOW, USE LINEAR PROBING
-	     */
-	    // Choose linear probing resolution policy for now:
-	    $("#collision").val(1);
-	    av.umsg("Collision Policy Selected: Linear Probing");
-	    av.umsg("<br />");
-	    
-	    if ($(this).val() == 1 || $(this).val() == 3)
-	    	av.umsg("Please select a table size.");
-	    else if ($(this).val() == 2)
-	    	av.umsg("Please a key range and a table size.");
-	    		    
-	    /*switch ($(this).val()) {
-	      // Linear probing for simple mod
-	      case '1':
-	    		$("#collision").val(1);
-	    		break;
-	    }*/
-	  }
-	});
-	
-	// Event trigger change if size of hash changes
-	$("#arraysize").change(function() {
-	    
-		// Hide previous array if it exists
-	  if (arr) {
-			arr.hide();
-	  }
-		
-	  // Draw new array
-	  var arraySize = $('#arraysize').val();
-	  theArray.length = arraySize;
-	  // Initialize JSAV
-	  arr = av.ds.array(theArray, {indexed: true, layout: "vertical"});
-	  
-	  // Enable input field
-	  $("#input").removeAttr("disabled");
-	  
-	  av.umsg("Enter a value and click Next");
-	  av.umsg("<br />");
-	});
-	
-	/* Next button pushed. 
-	 * If no slide show exits, make one.
-	 * Else, load next slide
-	 */
-	function next() {
-	
-		// If no slide exists, create one
-		if (nextStep.isEmpty()) {
-		
-			// Input field value
-  		var inputVal = $("#input").val();
-    		
-  	  // Disable input field to process it safely
+      /*
+       * THIS IS DETERMINED FROM THE QUERY.
+       * EITHER QUERY SETS IT, OR IT IS FREE TO CHOOSE
+       * FOR NOW, USE LINEAR PROBING
+       */
+      // Choose linear probing resolution policy for now:
+      $("#collision").val(1);
+      av.umsg("Collision Policy Selected: Linear Probing");
+      av.umsg("<br />");
+      
+      if ($(this).val() == 1 || $(this).val() == 3)
+	av.umsg("Please select a table size.");
+      else if ($(this).val() == 2)
+	av.umsg("Please a key range and a table size.");
+      
+      /*switch ($(this).val()) {
+      // Linear probing for simple mod
+      case '1':
+      $("#collision").val(1);
+      break;
+      }*/
+    }
+  });
+  
+  // Event trigger change if size of hash changes
+  $("#arraysize").change(function() {
+    
+    // Hide previous array if it exists
+    if (arr) {
+      arr.hide();
+    }
+    
+    // Draw new array
+    var arraySize = $('#arraysize').val();
+    theArray.length = arraySize;
+    // Initialize JSAV
+    arr = av.ds.array(theArray, {indexed: true, layout: "vertical"});
+    
+    // Enable input field
+    $("#input").removeAttr("disabled");
+    
+    av.umsg("Enter a value and click Next");
+    av.umsg("<br />");
+  });
+  
+  /* Next button pushed. 
+   * If no slide show exits, make one.
+   * Else, load next slide
+   */
+  function next() {
+    
+    // If no slide exists, create one
+    if (nextStep.isEmpty()) {
+      
+      // Input field value
+      var inputVal = $("#input").val();
+      
+      // Disable input field to process it safely
       $("#input").attr("disabled", "disabled");
-    	
+      
       // Disable array size drop down to avoid havoc
       $("#arraysize").attr("disabled", "disabled");    			
-    	
+      
       // Process input with selected function
       var hashFunction = $("#function").val();
       switch(hashFunction) {
       	// No function chosen
-      	case '0':
-         	reset();
-         	break;
-		  	case '1':
-        	var ret = simpleMod(inputVal);
-         	break;
+        case '0':
+          reset();
+          break;
+        case '1':
+          var ret = simpleMod(inputVal);
+          break;
         case '2':
-        	var ret = binning(inputVal);
-         	break;
+          var ret = binning(inputVal);
+          break;
         case '3':
           var ret = midSquare(inputVal);
           break;
         case '4':
-        	var ret = simpleStrings(inputVal);
-        	break;
-		  }
-		  	
-		  // Show first slide if success
-		  if (ret === 0)
-		  	loadNextSlide();
-		  	
-		  // Else, re-enable input textfield if an error has occurred
-		  else if (ret === 1)
-		  	$("#input").removeAttr("disabled");
-		}
-		
-		// Else, load next slide
-		else
-			loadNextSlide();
-	}
-	
-	function loadNextSlide() {
-	
-		var next = nextStep.dequeue();
-		
-	  // If activity is insertion
-	  if (next.insert) {
-	    av.umsg("Inserting " + next.value + " at position " + next.position + ".");
-	    av.umsg("<br>");
-			arr.unhighlight(next.position);
-			arr.value(next.position, next.value);
-	  }
-	  
-	  // If activity is only highlighting
-	  else {
-	    av.umsg("Attempting to insert " + next.value + " at position " + next.position + ".");
-			arr.unhighlight(next.position-1);
-			arr.highlight(next.position);
-	  }
-	  
-	  // Disable Next Button & re-enable input field if queue is empty
-	  if (nextStep.isEmpty()) {
-	  	  		  
-	  	// If array is full at the end of dequeue, display message
+          var ret = simpleStrings(inputVal);
+          break;
+      }
+      
+      // Show first slide if success
+      if (ret === 0)
+	loadNextSlide();
+      
+      // Else, re-enable input textfield if an error has occurred
+      else if (ret === 1)
+	$("#input").removeAttr("disabled");
+    }
+    
+    // Else, load next slide
+    else
+      loadNextSlide();
+  }
+  
+  function loadNextSlide() {
+    
+    var next = nextStep.dequeue();
+    
+    // If activity is insertion
+    if (next.insert) {
+      av.umsg("Inserting " + next.value + " at position " + next.position + ".");
+      av.umsg("<br>");
+      arr.unhighlight(next.position);
+      arr.value(next.position, next.value);
+    }
+    
+    // If activity is only highlighting
+    else {
+      av.umsg("Attempting to insert " + next.value + " at position " + next.position + ".");
+      arr.unhighlight(next.position-1);
+      arr.highlight(next.position);
+    }
+    
+    // Disable Next Button & re-enable input field if queue is empty
+    if (nextStep.isEmpty()) {
+      
+      // If array is full at the end of dequeue, display message
       if (fullArray) {
       	var errorMsg = "Array is full. Insertion failed. Please Restart.";
       	error(errorMsg);
-				// Reset flag
-				fullArray = false;
-	  	}
-	  	
-	  	$('input[name="next"]').attr("disabled", "disabled");
-	  	$("#input").removeAttr("disabled");
-	  }
-	}
+	// Reset flag
+	fullArray = false;
+      }
+      
+      $('input[name="next"]').attr("disabled", "disabled");
+      $("#input").removeAttr("disabled");
+    }
+  }
 	
-	/* Hashing Functions */
-	    
-	// Simple mod function
-	function simpleMod(inputVal) {
+  /* Hashing Functions */
+  
+  // Simple mod function
+  function simpleMod(inputVal) {
+    
+    // Check that the input value is a number and within the correct range
+    if (inputVal < 0 || inputVal > 99999 || isNaN(inputVal)) {
+      var errorMsg = "Please enter a number in the range of 0-99999";
+      error(errorMsg);
+      // Return error
+      return 1;
+    }
+    
+    // Simple Mod Function
+    var pos = inputVal % theArray.length;	    	
+    
+    // Process function with selected collision resolution
+    determineResolution(inputVal, pos);
+    
+    // Return success
+    return 0;
+  }
+  
+  // Binning Function
+  function binning(inputVal) {
+    
+    var keyrange = $("#keyrange").val();
+    
+    // Check that a key range has been selected
+    if (keyrange == 0) {
+      var errorMsg = "Please select a key range.";
+      error(errorMsg);
+      // Return error
+      return 1;
+    }
+    
+    // Else, get key range selected
+    else {
+      
+      switch(keyrange) {
+      case '1':
+	keyrange = 100;
+	break;
+      case '2':
+	keyrange = 1000;
+	break;
+      }
+      
+      // Check that the input value is a number within the correct range
+      if (inputVal >= keyrange || inputVal < 0 || isNaN(inputVal)) {
+	var errorMsg = "Please enter an input value between 0 and " + keyrange + ".";
+	error(errorMsg);
+	// Return Error
+	return 1;
+      }
+      
+      else {
+	// Binning function Position
+	var binsize = keyrange / $("#arraysize").val()
+	var pos =  Math.floor(inputVal / binsize);
 	
-		// Check that the input value is a number and within the correct range
-		if (inputVal < 0 || inputVal > 99999 || isNaN(inputVal)) {
-			var errorMsg = "Please enter a number in the range of 0-99999";
-			error(errorMsg);
-			// Return error
-			return 1;
-		}
+	// Process function with selected collision resolution
+	determineResolution(inputVal, pos);
 	
-		// Simple Mod Function
-	  var pos = inputVal % theArray.length;	    	
-	  
-	  // Process function with selected collision resolution
-	  determineResolution(inputVal, pos);
-	  
-	  // Return success
-	  return 0;
-	}
-	
-	// Binning Function
-	function binning(inputVal) {
-		
-		var keyrange = $("#keyrange").val();
-		
-		// Check that a key range has been selected
-		if (keyrange == 0) {
-			var errorMsg = "Please select a key range.";
-			error(errorMsg);
-			// Return error
-			return 1;
-		}
-		
-		// Else, get key range selected
-		else {
-		
-			switch(keyrange) {
-				case '1':
-					keyrange = 100;
-					break;
-				case '2':
-					keyrange = 1000;
-					break;
-			}
-						
-			// Check that the input value is a number within the correct range
-			if (inputVal >= keyrange || inputVal < 0 || isNaN(inputVal)) {
-				var errorMsg = "Please enter an input value between 0 and " + keyrange + ".";
-				error(errorMsg);
-				// Return Error
-				return 1;
-			}
-			
-			else {
-				// Binning function Position
-				var binsize = keyrange / $("#arraysize").val()
-				var pos =  Math.floor(inputVal / binsize);
-		
-				// Process function with selected collision resolution
-				determineResolution(inputVal, pos);
-			
-				// Return success
-				return 0;
-			}
-		}
-	}
-	
-	// Mid-Square Method
-	function midSquare(inputVal) {
-	
-		// Check that input is a number within the correct range
-		if (inputVal > 65536 || inputVal < 0 || isNaN(inputVal)) {
-			var errorMsg = "Please enter a value in the range of 0-65536";
-			error(errorMsg);
-			// Return error
-			return 1;
-		}
-		
-		// Square Input Value
-		var squaredInput = (inputVal * inputVal) % 65536;
-		
-		/* old calculations -- keep for now */
-		// Calculate number of bits of squared input, subtract from 16 and perform an unsigned
-		// bitshift by that number to the right.
-		//var bits = Math.floor(Math.log(squaredInput) / Math.log(2)) + 1;
-		//var squaredShifted = (squaredInput >> (16 - bits)) & 0xFFFF;
-		// Convert to binary
-		//var binaryDigit = squaredShifted.toString(2);
-		
-		// Return the squared input as a 16-length binary string with leading zeros
-		var binaryDigit = ("0000000000000000"+(squaredInput).toString(2)).substr(-16);
-						
-		// Concatenate Middle Bits
-		var middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) + binaryDigit.charAt(8)
-											 + binaryDigit.charAt(9);
-																						
-		// Convert Middle Bits to Decimal
-		var pos = parseInt(middleBits, 2);
-				 
-		// Process function with selected collision resolution
-		determineResolution(inputVal, pos);
-		
-		// Return success
-		return 0;
-	}
-	
-	// Simple hashing for strings
-	function simpleStrings(inputVal) {
-	
-		// Check input is a string
-		if (!is("String", inputVal)) { 
-			var errorMsg = "Please enter a string to hash.";
-			error(errorMsg);
-			// Return error
-			return 1;
-		}
-		
-		// Sum of string's ASCII number
-		var sum = 0;
-		for (var i = 0; i < inputVal.length; i++) {
-			sum += inputVal.charCodeAt(i);
-		}
-		
-		// Table Size
-		var size = $("#arraysize").val();
-		
-		// Position is the sum mod the table size
-		var pos = sum % size;
-		
-		av.umsg("The sum is " + sum);
-		av.umsg("Hash value: " + sum + " % " + size + " = " + pos); 
-		
-		// Process function with selected collision resolution
-		determineResolution(inputVal, pos);
-		
-		// Return success
-		return 0;
-	
-	}
-	
-	// Hashing for Strings (Improved)
-	function improvedStrings(inputVal) {
-	
-		// Check input is a string
-		if (!is(inputVal)) { 
-			var errorMsg = "Please enter a string to hash.";
-			error(errorMsg);
-			// Return error
-			return 1;
-		}
-		
-				
-	/*
-	 * The following is copied from AlgoViz. Convert substring method from C++ to JS
-	 
-	 	// Array size
-		var arraysize = $("#arraysize").val();  <-- M in the algo below
-		
-		
-		int intLength = inputVal.length();
-		long sum = 0;
-		for (int i = 0; i < intLength; i++) {
-			char c[] = inputVal.substring(i * 4, (i * 4) + 4).toCharArray();
-			long mult = 1;
-			for (int j = 0; j < c.length; j++) 
-				sum += c[j] * mult;
-				mult *= 256;
-			}
-		}
-		
-		char c[] = inputVal.substring(intLength * 4).toCharArray();
-		long mult = 1;
-		for (int i = 0; i < c.length; i++) {
-			sum += c[i] * mult;
-			mult *= 256;
-		}
-		
-		var pos = Math.abs(sum) % M;
+	// Return success
+	return 0;
+      }
+    }
+  }
 
-		*/
-		
-		// Return success
-		return 0;
-	}
-	
-	
-	/* Collision Resolutions */
-	
-	// Function that determines which collision resolution to pick
-	function determineResolution(inputVal, pos) {
-	
-		var collisionResolution = $("#collision").val();
+  
+  // Mid-Square Method
+  function midSquare(inputVal) {
+    
+    // Check that input is a number within the correct range
+    if (inputVal > 65536 || inputVal < 0 || isNaN(inputVal)) {
+      var errorMsg = "Please enter a value in the range of 0-65536";
+      error(errorMsg);
+      // Return error
+      return 1;
+    }
+    
+    // Square Input Value
+    var squaredInput = (inputVal * inputVal) % 65536;
+    
+    /* old calculations -- keep for now */
+    // Calculate number of bits of squared input, subtract from 16 and perform an unsigned
+    // bitshift by that number to the right.
+    //var bits = Math.floor(Math.log(squaredInput) / Math.log(2)) + 1;
+    //var squaredShifted = (squaredInput >> (16 - bits)) & 0xFFFF;
+    // Convert to binary
+    //var binaryDigit = squaredShifted.toString(2);
+    
+    // Return the squared input as a 16-length binary string with leading zeros
+    var binaryDigit = ("0000000000000000"+(squaredInput).toString(2)).substr(-16);
+    
+    // Concatenate Middle Bits
+    var middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) + binaryDigit.charAt(8)
+      + binaryDigit.charAt(9);
+    
+    // Convert Middle Bits to Decimal
+    var pos = parseInt(middleBits, 2);
+    
+    // Process function with selected collision resolution
+    determineResolution(inputVal, pos);
+    
+    // Return success
+    return 0;
+  }
+  
+  // Simple hashing for strings
+  function simpleStrings(inputVal) {
+    
+    // Check input is a string
+    if (!is("String", inputVal)) { 
+      var errorMsg = "Please enter a string to hash.";
+      error(errorMsg);
+      // Return error
+      return 1;
+    }
+    
+    // Sum of string's ASCII number
+    var sum = 0;
+    for (var i = 0; i < inputVal.length; i++) {
+      sum += inputVal.charCodeAt(i);
+    }
+    
+    // Table Size
+    var size = $("#arraysize").val();
+    
+    // Position is the sum mod the table size
+    var pos = sum % size;
+    
+    av.umsg("The sum is " + sum);
+    av.umsg("Hash value: " + sum + " % " + size + " = " + pos); 
+    
+    // Process function with selected collision resolution
+    determineResolution(inputVal, pos);
+    
+    // Return success
+    return 0;
+    
+  }
+  
+  // Hashing for Strings (Improved)
+  function improvedStrings(inputVal) {
+    
+    // Check input is a string
+    if (!is(inputVal)) { 
+      var errorMsg = "Please enter a string to hash.";
+      error(errorMsg);
+      // Return error
+      return 1;
+    }
+    
+    
+    /*
+     * The following is copied from AlgoViz. Convert substring method from C++ to JS
+     
+     // Array size
+     var arraysize = $("#arraysize").val();  <-- M in the algo below
+     
+     
+     int intLength = inputVal.length();
+     long sum = 0;
+     for (int i = 0; i < intLength; i++) {
+     char c[] = inputVal.substring(i * 4, (i * 4) + 4).toCharArray();
+     long mult = 1;
+     for (int j = 0; j < c.length; j++) 
+     sum += c[j] * mult;
+     mult *= 256;
+     }
+     }
+     
+     char c[] = inputVal.substring(intLength * 4).toCharArray();
+     long mult = 1;
+     for (int i = 0; i < c.length; i++) {
+     sum += c[i] * mult;
+     mult *= 256;
+     }
+     
+     var pos = Math.abs(sum) % M;
+     
+    */
+    
+    // Return success
+    return 0;
+  }
+  
+  
+  /* Collision Resolutions */
+  
+  // Function that determines which collision resolution to pick
+  function determineResolution(inputVal, pos) {
+    
+    var collisionResolution = $("#collision").val();
     switch(collisionResolution) {
-    	// No function chosen
-      case '0':
-      	reset();
-        break;
-		  case '1':
-      	linearProbing(inputVal, pos);
-        break;
-		}
+      // No function chosen
+    case '0':
+      reset();
+      break;
+    case '1':
+      linearProbing(inputVal, pos);
+      break;
+    }
+  }
+  
+  // Linear Probing
+  function linearProbing(inputVal, pos) {
+    
+    // If pos is full, start resolution.
+    // Cast into a number, otherwise '0' will be considered false.
+    if ((Number(arr.value(pos))) !== false) {
+      
+      // Temp pointer that will point to the correct position at the end of the loop
+      var i = pos;
+      // Counter that counts how many times the array ran
+      var count = 0;
+      
+      // Loop across the array. "infinite" loop. Breaks if array is full.
+      for (;;) {
+	
+	// If array is full, break out
+	if (count == arr.size()) {
+	  fullArray = true;
+	  break;
 	}
-		
-	// Linear Probing
-	function linearProbing(inputVal, pos) {
-		
-	  // If pos is full, start resolution.
-	  // Cast into a number, otherwise '0' will be considered false.
-	  if ((Number(arr.value(pos))) !== false) {
-						
-			// Temp pointer that will point to the correct position at the end of the loop
-			var i = pos;
-			// Counter that counts how many times the array ran
-			var count = 0;
-				
-			// Loop across the array. "infinite" loop. Breaks if array is full.
-			for (;;) {
-					
-		  	// If array is full, break out
-		  	if (count == arr.size()) {
-				fullArray = true;
-					break;
-		  	}
-					
-		  	// If space is available, break
-		  	if (String(arr.value(i)) == "") {
-					break;
-		  	}
-					
-		  	// Insert attempt as highlighting activity
-		  	insertActivity(i, inputVal, false);
-				
-		  	// If i is last element of arr, restart to position 0 of the array
-		  	if (i == arr.size() - 1) {
-					i = 0;
-		  	}
-						
-		  	// Otherwise just increment i by 1 (to check for next pos of array next iteration)
-		  	else {
-					i++;
-	      }
-					
-		  	// Increment count 
-		  	count++;
-			}
-		
-			// Empty spot found. Insert element inputVal at i
-			if (!fullArray) {
-		  	insertActivity(i, inputVal, true);
-		  }
-		}
-			
-		// Otherwise, enqueue insertion activity
-		else {
-		  // Hashing position found. Insert activity.
-		  insertActivity(pos, inputVal, true);
-		}
+	
+	// If space is available, break
+	if (String(arr.value(i)) == "") {
+	  break;
 	}
-		
-	/* 
-	 * Inserts activity at position pos, with value val and whether it is insertion or highlight
-	 * into nextStep queue
-	*/
-	function insertActivity(pos, val, insert) {
-		
-		// If activity is insertion
-	  if (insert) {
-			
-	    // Preceed insertion with highlight
-	    var posValueHighlight = {
-		  	position: pos,
-		  	value: val,
-		  	insert: false
-	    };
-	    nextStep.enqueue(posValueHighlight);
-			
-	    var posValue = {
-		  	position: pos,
-		  	value: val,
-		  	insert: true
-	    };
-	    nextStep.enqueue(posValue);
-	  }
-		
-	  // Activity is highlight only
-	  else {
-			
-	    var posValue = {
-		  position: pos,
-		  value: val,
-		  insert: false
+	
+	// Insert attempt as highlighting activity
+	insertActivity(i, inputVal, false);
+	
+	// If i is last element of arr, restart to position 0 of the array
+	if (i == arr.size() - 1) {
+	  i = 0;
+	}
+	
+	// Otherwise just increment i by 1 (to check for next pos of array next iteration)
+	else {
+	  i++;
+	}
+	
+	// Increment count 
+	count++;
+      }
+      
+      // Empty spot found. Insert element inputVal at i
+      if (!fullArray) {
+	insertActivity(i, inputVal, true);
+      }
+    }
+    
+    // Otherwise, enqueue insertion activity
+    else {
+      // Hashing position found. Insert activity.
+      insertActivity(pos, inputVal, true);
+    }
+  }
+  
+  /* 
+   * Inserts activity at position pos, with value val and whether it is insertion or highlight
+   * into nextStep queue
+   */
+  function insertActivity(pos, val, insert) {
+    
+    // If activity is insertion
+    if (insert) {
+      
+      // Preceed insertion with highlight
+      var posValueHighlight = {
+	position: pos,
+	value: val,
+	insert: false
       };
-	  nextStep.enqueue(posValue);
-	  }
-	}
+      nextStep.enqueue(posValueHighlight);
+      
+      var posValue = {
+	position: pos,
+	value: val,
+	insert: true
+      };
+      nextStep.enqueue(posValue);
+    }
+    
+    // Activity is highlight only
+    else {
+      
+      var posValue = {
+	position: pos,
+	value: val,
+	insert: false
+      };
+      nextStep.enqueue(posValue);
+    }
+  }
 })(jQuery);
     
 </script>
