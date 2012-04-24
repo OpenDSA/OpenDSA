@@ -535,16 +535,12 @@ form {
     // Square Input Value
     var squaredInput = (inputVal * inputVal) % 65536;
     
-    /* old calculations -- keep for now */
-    // Calculate number of bits of squared input, subtract from 16 and perform an unsigned
-    // bitshift by that number to the right.
-    //var bits = Math.floor(Math.log(squaredInput) / Math.log(2)) + 1;
-    //var squaredShifted = (squaredInput >> (16 - bits)) & 0xFFFF;
-    // Convert to binary
-    //var binaryDigit = squaredShifted.toString(2);
-    
     // Return the squared input as a 16-length binary string with leading zeros
-    var binaryDigit = ("0000000000000000"+(squaredInput).toString(2)).substr(-16);
+    //var size = $("#arraysize").val();
+    //var str = "";
+    //for (var i = 0; i < size; i++)
+    //str = str + "0";
+    var binaryDigit = ("000000000000000" + (squaredInput).toString(2)).substr(-16);
     
     // Concatenate Middle Bits
     var middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) + binaryDigit.charAt(8)
