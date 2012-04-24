@@ -298,7 +298,12 @@ form {
         
         // Mid Square
         case '3':
-          av.umsg("Algorithm Selected: Mid Square Method");
+	  // Change table size options to 8 and 16
+	  // USE:
+	  // $('#sel1').html('<option value="1">New Option 1</option><option value="2">New Option 2</option><option value="3">New Option 3</option>');
+	  // Make sure to revert options to original
+	
+	  av.umsg("Algorithm Selected: Mid Square Method");
           break;
         
         // Simple Strings
@@ -546,26 +551,43 @@ form {
     }
 
     av.umsg("Attempting to insert: " + inputVal);
+
+    var strpadding;
+    var strsubtract;
+    var modded;
+    var size = $("#arraysize").val();
+    if (size == 16) {
+      strpadding = "0000000000000000";
+      strsubtract = -16;
+      modded = 65536;
+    }
+    
+    else if (size == 8) {
+      strpadding = "00000000";
+      strsubtract = -8;
+      modded = 256;
+    }
     
     // Square Input Value
-    var squaredInput = (inputVal * inputVal) % 65536;
-    
-    // Return the squared input as a 16-length binary string with leading zeros
-    //var size = $("#arraysize").val();
-    //var str = "";
-    //for (var i = 0; i < size; i++)
-    //str = str + "0";
-    var binaryDigit = ("000000000000000" + (squaredInput).toString(2)).substr(-16);
+    var squaredInput = (inputVal * inputVal) % modded;
+
+    var binaryDigit = (strpadding + (squaredInput).toString(2)).substr(strsubtract);
     
     // Concatenate Middle Bits
-    var middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) + binaryDigit.charAt(8)
-      + binaryDigit.charAt(9);
+    var middleBits;
+    if (size == 16)
+      middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) + binaryDigit.charAt(8) + binaryDigit.charAt(9);
+    else if (size == 8)
+      middleBits = binaryDigit.charAt(3) + binaryDigit.charAt(4);
     
     // Convert Middle Bits to Decimal
     var pos = parseInt(middleBits, 2);
 
-    av.umsg(inputVal + " * " + inputVal + " % 65536 = " + squaredInput);
-    av.umsg("16-bit binary digit = " + binaryDigit);
+    av.umsg(inputVal + " * " + inputVal + " % " + modded + " = " + squaredInput);
+    if (size == 16)
+      av.umsg("16-bit binary digit = " + binaryDigit);
+    else if (size == 8)
+      av.umsg("8-bit binary digit = " + binaryDigit);
     av.umsg("Middle four bits = " + middleBits);
     av.umsg("Hash position = " + pos);
     
