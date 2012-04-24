@@ -94,6 +94,7 @@ form {
 					<option value = 2> Binning Hash </option>
 					<option value = 3> Mid Square Hash </option>
 					<option value = 4> Simple Hash for Strings </option>
+                                        <option value = 5> Improved Hash for Strings </option>
 				</select>
 			
 				<!-- Array Size Dropdown -->
@@ -245,6 +246,9 @@ form {
     		
     // Enable function change dropdown
     $("#function").removeAttr("disabled");
+
+    // Clear input value textfield
+    $("#input").val("");
   }
 	
   /* Key Presses */
@@ -301,6 +305,11 @@ form {
         case '4':
           av.umsg("Algorithm Selected: Simple Hashing for Strings");
           break;
+	
+	// Improved Strings
+        case '5':
+	  av.umsg("Algorithm Selected: Improved Hashing for Strings");
+	  break;
       }
 	    
       /*
@@ -385,6 +394,9 @@ form {
         case '4':
           var ret = simpleStrings(inputVal);
           break;
+        case '5':
+	  var ret = improvedStrings(inputVal);
+	  break;
       }
       
       // Show first slide if success
@@ -411,6 +423,8 @@ form {
       av.umsg("<br>");
       arr.unhighlight(next.position);
       arr.value(next.position, next.value);
+      // Clear input value box
+      $("#input").val("");
     }
     
     // If activity is only highlighting
@@ -584,13 +598,35 @@ form {
   function improvedStrings(inputVal) {
     
     // Check input is a string
-    if (!is(inputVal)) { 
+    if (!is("String", inputVal)) { 
       var errorMsg = "Please enter a string to hash.";
       error(errorMsg);
       // Return error
       return 1;
     }
+
+    var inputLength = inputVal.length / 4;
+    var sum = 0;
+
+    for (var i = 0; i < inputLength; i++) {
+
+      // Grab the substring of size 4
+      var inputsubstring = inputVal.substring(i * 4, (i * 4) + 4);
+      var mult = 1;
+      for (var j = 0; j < inputsubstring.length; j++) {
+	sum += inputsubstring.charCodeAt(j) * mult;
+	mult *= 256;
+      }
+    }
+
+    var size = $("#arraysize").val();
+    var pos = sum % size;
     
+    av.umsg("The sum is " + sum);
+    av.umsg("Hash value: " + sum + " % " + size + " = " + pos);
+    
+    // Process function with selected collision resolution
+    determineResolution(inputVal, pos);
     
     /*
      * The following is copied from AlgoViz. Convert substring method from C++ to JS
