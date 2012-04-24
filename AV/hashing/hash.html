@@ -464,7 +464,11 @@ form {
     }
     
     // Simple Mod Function
-    var pos = inputVal % theArray.length;	    	
+    var pos = inputVal % theArray.length;
+
+    av.umsg("Hash position = Input Value / Table Size");
+    av.umsg("Hash position = " + inputVal + " / " + theArray.length);
+    av.umsg("= " + pos);
     
     // Process function with selected collision resolution
     determineResolution(inputVal, pos);
@@ -507,9 +511,19 @@ form {
       }
       
       else {
+
+	av.umsg("Attempting to insert: " + inputVal);
+
 	// Binning function Position
 	var binsize = keyrange / $("#arraysize").val()
 	var pos =  Math.floor(inputVal / binsize);
+
+	av.umsg("Bin Size = Key Range / Table Size");
+	av.umsg("Bin Size = " + keyrange + " / " + $("#arraysize").val());
+	av.umsg(" = " + binsize.toFixed(2));
+	av.umsg("Hash Position = Input Value / Bin Size");
+	av.umsg("Hash Position = " + inputVal + " / " + binsize.toFixed(2));
+	av.umsg(" = " + pos);
 	
 	// Process function with selected collision resolution
 	determineResolution(inputVal, pos);
@@ -519,7 +533,6 @@ form {
       }
     }
   }
-
   
   // Mid-Square Method
   function midSquare(inputVal) {
@@ -531,6 +544,8 @@ form {
       // Return error
       return 1;
     }
+
+    av.umsg("Attempting to insert: " + inputVal);
     
     // Square Input Value
     var squaredInput = (inputVal * inputVal) % 65536;
@@ -548,6 +563,11 @@ form {
     
     // Convert Middle Bits to Decimal
     var pos = parseInt(middleBits, 2);
+
+    av.umsg(inputVal + " * " + inputVal + " % 65536 = " + squaredInput);
+    av.umsg("16-bit binary digit = " + binaryDigit);
+    av.umsg("Middle four bits = " + middleBits);
+    av.umsg("Hash position = " + pos);
     
     // Process function with selected collision resolution
     determineResolution(inputVal, pos);
@@ -566,6 +586,8 @@ form {
       // Return error
       return 1;
     }
+
+    av.umsg("Attempting to insert: " + inputVal);
     
     // Sum of string's ASCII number
     var sum = 0;
@@ -601,6 +623,8 @@ form {
       return 1;
     }
 
+    av.umsg("Attempting to insert " + inputVal);
+
     var inputLength = inputVal.length / 4;
     var sum = 0;
 
@@ -623,35 +647,6 @@ form {
     
     // Process function with selected collision resolution
     determineResolution(inputVal, pos);
-    
-    /*
-     * The following is copied from AlgoViz. Convert substring method from C++ to JS
-     
-     // Array size
-     var arraysize = $("#arraysize").val();  <-- M in the algo below
-     
-     
-     int intLength = inputVal.length();
-     long sum = 0;
-     for (int i = 0; i < intLength; i++) {
-     char c[] = inputVal.substring(i * 4, (i * 4) + 4).toCharArray();
-     long mult = 1;
-     for (int j = 0; j < c.length; j++) 
-     sum += c[j] * mult;
-     mult *= 256;
-     }
-     }
-     
-     char c[] = inputVal.substring(intLength * 4).toCharArray();
-     long mult = 1;
-     for (int i = 0; i < c.length; i++) {
-     sum += c[i] * mult;
-     mult *= 256;
-     }
-     
-     var pos = Math.abs(sum) % M;
-     
-    */
     
     // Return success
     return 0;
