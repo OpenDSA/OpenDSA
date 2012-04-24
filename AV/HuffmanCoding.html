@@ -152,6 +152,9 @@
 			
 			arr.hide();
 			arr = jsav.ds.array(dArray);
+			arr.css([0, 1, 2, 3, 4, 5, 6, 7], {"line-height":"22px"});
+
+
 			jsav.step();
 			jsav.umsg("Choose the two samllest number: " + nArray[0] + " and " + nArray[1])
 			
@@ -172,16 +175,17 @@
 			tmpBT.root(key);
 			tmpBT.root().left(dArray[0]);
 			tmpBT.root().right(dArray[1]);
-			arr.hide();
 			tmpBT.show();
 			parts_color(tmpBT.root(), "white");
 			tmpBT.layout();
 			jsav.step(); 
+			arr.hide();
 
 			tmpBT.hide();
 			jsav.umsg("Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
 			shuffle(nArray, tArray, dArray, key, node);
 			arr = jsav.ds.array(dArray);
+			arr.css([0, 1, 2, 3, 4, 5, 6, 7], {"line-height":"22px"});
 			jsav.step();
 		}	
 	}
@@ -222,14 +226,13 @@
 			}
 			// if the node is a leaf node, then display an rectangle
 			else  
-				node.css({"height": "90px", "width": "45px", "border-radius":1, "background-color":"YELLOW"});	
+				node.css({"height": "60px", "width": "40px", "border-radius":1, "background-color":"YELLOW", "line-height":"28px"});	
 		}
     }
 
 	var jsav = new JSAV("av");
 	var bt = jsav.ds.bintree({visible: false});	// used to store the HuffmanCoding tree
 	var tmpBT = jsav.ds.bintree({visible: false});	// used to display the intermediate process for tree construction
-	//jsav.umsg("Huffman Coding Tree Construction");
 
 	// userArry: an array to store the number and character
 	var userArray = new Array();
@@ -270,6 +273,7 @@
 	// an array to control the display
 	jsav.umsg("The initial data are as follows (the first line is frequency and the second line is the chracter): ");
 	arr = jsav.ds.array(disArray);
+	arr.css([0, 1, 2, 3, 4, 5, 6, 7], {"line-height":"22px"});
 	jsav.step();
 
 	// building the HuffmanCoding tree
