@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>Mergesort Proficiency Exercise</title>
+  <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+<style>
+
+#container {
+  width: 800px;
+  height: 620px;
+  border: 1px solid black;
+  background-color: #efe;
+  padding: 10px;
+  overflow: hidden;
+}
+
+#container .jsavarray {
+   left: -10px;
+   height: 80px;
+}
+
+div h1 {
+  background-color: #efe;
+}
+
+.jsavcontainer {
+  background-color: #efe;
+}
+
+p.jsavoutput.jsavline {
+  height: 40px;
+}
+
+a.jsavsettings {
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+</style>
+</head>
+
+<body>
+<div id="container">
+<table id=tableT style="margin-top: -20px">
+  <tr>
+  <td width=125px>&nbsp;</td>
+  <td width=550px align="center">
+    <p align="center" class="jsavexercisecontrols"></p>
+  </td>
+  <td width=125px align="right">
+    <p align="right">
+      <input type="button" name="help" value="Help" />
+      <input type="button" name="about" value="About" />
+      <a class="jsavsettings" href="#">Settings</a>
+    </p>
+  </td>
+  </tr>
+</table>
+<form style="border: 0px" id="mergesort_proficiency">
+  <p style="margin-top:-5px">Instructions:</p>
+  <p style="margin-top: -15px; padding: 10px; 10px; margin-right: 10px; border: 1px solid black">
+	In order to split the array, select the elements on either side of where you want the array to be split.  If the array is of odd length, make the first subarray the larger one.  Once the conditions have been met to stop splitting, click "Done Splitting".  Next select the two elements to compare in the merge operation.  Once these elements have been selected, they will remain highlighted, select the appropriate element to merge.  Repeat merging as necessary.  Once merging is complete, click "Done Merging" to re-enter split mode.  Repeat splitting and merging as necessary to sort the list.
+  </p>
+  
+  <br />
+
+  <ol id="profArray" style="margin-top: -15px; margin-bottom: 40px"></ol>
+
+  <input type="button" name="splitting" value="Done Splitting" />
+  <input type="button" name="merging" value="Done Merging" />
+
+  <p class="jsavoutput jsavline"></p>
+</form>
+</div> <!-- container -->
+
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script src="../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../JSAV/build/JSAV-min.js"></script>
+
+<script>
+//(function($) {
+  /* **************************************************************
+  *  This first section is generic initialization that all AVs    *
+  *  will need, including initialization for the OpenDSA library  *
+  *  The first line you need to set to use your form's name       *
+  ************************************************************** */
+  // Define the local context (from form name)
+  var context = $("#mergesort_proficiency");
+
+  // settings for the AV
+  var settings = new JSAV.utils.Settings($(".jsavsettings"));
+
+  //containing HTML element with id mergesort_proficiency.
+  var av = new JSAV(context, {settings: settings});
+  av.recorded();
+
+  // Create a convenience function named Tell for writing to the
+  // output buffer
+  var Tell = function(msg, color) { av.umsg(msg, {color: color}); };
+
+  var ArraySize = 10; // Size of the exercise array
+
+  /* **************************************************************
+  *        Everything below this is specific to this AV           *
+  ************************************************************** */
+
+  /* **************************************************************
+  *  This section connects the action callbacks to the            *
+  *  form entities.                                               *
+  ************************************************************** */
+  $('input[name="help"]').click(help);
+  $('input[name="about"]').click(about);
+
+  $('input[name="splitting"]', context).click(splitting);
+  $('input[name="merging"]', context).click(merging);
+
+  var $theArray = $("#profArray"),
+      initialArray = [], // needed for model answer
+      theArray,
+      mode;
+  
+  // generates the model answer
+  function modelSolution(jsav) {
+	var modelArr = jsav.ds.array(initialArray, {indexed: true, layout: "array"});
+    var modelmode = jsav.variable("SPLITTING");
+	
+	var temp = [];
+	mergeSort(jsav, modelArr, temp, 0, initialArray.length - 1);
+	
+	return [modelArr, modelmode];
+  }
+  
+  function mergeSort(jsav, array, temp, l, r) {
+	var mid = Math.floor((l + r) / 2);			// Select midpoint
+	if (l == r) return;							// List has one element
+	
+	mergeSort(jsav, array, temp, l, mid);		// Mergesort first half
+	mergeSort(jsav, array, temp, mid + 1, r);	// Mergesort second half
+	for (var i=l; i<=r; i++){					// Copy subarray to temp
+		temp[i] = array.value(i);
+		
+		array.highlight(i);
+	}
+	jsav.step();
+	
+	// Do the merge operation back to the array
+	var i1 = l; 
+	var	i2 = mid + 1;
+	for (var curr=l; curr<=r; curr++) {
+		if (i1 == mid+1){              // Left sublist exhausted
+			array.value(curr, temp[i2++]);
+		}
+		else if (i2 > r){              // Right sublist exhausted
+			array.value(curr, temp[i1++]);
+		}
+		else if (temp[i1] < temp[i2]){ // Get smaller
+			array.value(curr, temp[i1++]);
+		}
+		else {
+			array.value(curr, temp[i2++]);
+		}
+	}
+	
+	jsav.step();
+	
+	array.unhighlight();
+	
+	jsav.stepOption("grade", true);
+	jsav.step();
+	
+	return array;
+  }
+  
+  // Process reset button: Re-initialize everything
+  function initialize() {
+	// Initialize the list with random numbers
+    htmldata = "";
+    for (var i=ArraySize; i>0; i--) {
+      var randomVal = Math.floor(Math.random()*100);
+      htmldata += "<li>" + randomVal + "</li>";
+      initialArray[ArraySize-i] = randomVal;
+    }
+    $theArray.html(htmldata);
+	
+    theArray = av.ds.array($theArray, {indexed: true, layout: "array"});
+    mode = av.variable("SPLITTING");
+	splitIndex = av.variable(-1);
+	mergeIndex1 = av.variable(-1);
+	mergeIndex2 = av.variable(-1);
+
+    Tell("To start the exercise: Click on array elements on either side of the split you wish to create.");
+    //av.forward();
+    av._undo = [];
+    return [theArray, mode];
+  }
+
+  // Process help button: Give a full help page for this activity
+  // We might give them another HTML page to look at.
+  function help() {
+    myRef = window.open("MSprofHelp.html", 'helpwindow');
+  }
+
+  // Process about button: Pop up a message with an Alert
+  function about() {
+    var mystring = "Mergesort Proficiency Exercise\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during August, 2011\nLast update: August 6, 2011\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
+
+  // Process Done Splitting button: change the message, array status
+  function splitting() {
+    // Don't do anything if user not in SPLITTING mode
+    if (mode.value() !== "SPLITTING") {return;}
+    mode.value("MERGING");
+	Tell("Prepare to merge.  Select the elements to compare.");
+    exer.gradeableStep(); // mark this as a gradeable step; also handles continuous feedback
+  }
+
+  // Process Done Merging button: change the message, array status
+  function merging() {
+    // Don't do anything if user not in MERGING mode
+    if (mode.value() !== "MERGING") {return;}
+    mode.value("SPLITTING");
+	Tell("Click on array elements on either side of the split you wish to create.");
+    
+    exer.gradeableStep(); // mark this as a gradeable step; also handles continuous feedback
+  }
+
+  // function that will be called by the exercise if continuous feedback mode
+  // is used and the fix errors mode is on.
+  function fixState(modelState) {
+    var modelArray = modelState[0];
+	var size = modelArray.size();
+	var modelMode = modelState[1];
+    for (var i = 0; i < size; i++) {
+      var val = modelArray.value(i),
+          hl = modelArray.isHighlight(i);
+		  
+      if (theArray.isHighlight(i) !== hl) { // fix highlights
+        hl ? theArray.highlight(i) : theArray.unhighlight(i);
+      }
+      if (val !== theArray.value(i)) { // fix values
+        theArray.value(i, val);
+      }
+    }
+  }
+
+  // Initialize the exercise
+  // Defines the function to call on reset (initialize()), and the
+  //  function to call to generate the model answer (shellsort())
+  var exer = av.exercise(modelSolution, initialize, [{css: "background-color"}, {}],
+	{ controls: $('.jsavexercisecontrols'), fix: fixState, feedback: "continuous",
+	fixmode: "undo"});
+  exer.reset();
+  
+  
+  // register click handlers for the array indices
+  $("#profArray").on("click", ".jsavindex", function() {
+    var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
+	av._redo = []; // clear the forward stack, should add a method for this in lib
+	
+	if (mode.value() === "SPLITTING")
+	{
+		if (splitIndex.value() === -1) // No element is selected yet
+		{
+			// Highlight current element
+			theArray.highlight(index);
+			splitIndex.value(index);
+			av.step(); //forward();
+		}
+		else if (splitIndex.value() === index) // A selected element was clicked again
+		{
+			// Unhightlight current element
+			theArray.unhighlight(index);
+			// Reset the selected 
+			splitIndex.value(-1);
+		}
+		else if (index == splitIndex.value() + 1) // A block adjacent to an already selected block was selected
+		{
+			// Calculate if the value is correct before splitting?
+			
+			// Split the array
+			alert("Subarrays: [" + initialArray.slice(0, index) + "], [" + initialArray.slice(index, initialArray.length) + "]");
+			
+			
+			// Unhightlight first element
+			theArray.unhighlight(index - 1);
+			
+			// Reset the splitIndex for the next split
+			splitIndex.value(-1);
+		}
+		else
+		{
+			// Display error message
+			alert("Incorrect, sir!");
+		}
+	}
+	else if (mode.value() === "MERGING")
+	{
+		/*
+		// First element selected
+		if (selectedIndex.value() === -1)
+		{
+			// Highlight current element
+			// Make current element bigger
+		}
+		else 
+		{
+			if (selectedIndex == index)
+			{
+				// Unhightlight current element
+				// Make current element normal size
+				selectedIndex = -1;
+			}
+			else if (index == selectedIndex + 1) // An adjacent block was selected
+			{
+				// Calculate if the value is correct?
+				split the array 
+				
+				
+				// Unhightlight first element
+				// Make first element normal size
+				
+				// Reset the selectedIndex for the next split
+				selectedIndex.value(-1);
+			}
+			else
+			{
+				// Display error message
+			}
+		}
+		*/
+	}
+  });
+//})(jQuery);
+</script>
+</body>
+</html>
