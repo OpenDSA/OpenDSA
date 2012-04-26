@@ -7,25 +7,35 @@
     <style>
     .jsavtree {
       position: relative;
-      width: 500px;
-      height: 600px;
+      left:100px;
+      width: 300px;
+      height: 900px;
     }
     svg {
-      height: 500px;
-    }
-    .jsavcontrols
-    {
-    	height: 40px;
+      height: 900px;
     }
     path {
       pointer-events: visible;
     }
+    p.jsavoutput.jsavline
+    {
+    	visibility:visible;
+    	height: 40px;
+    }
+    .jsavlabel
+    {
+    	position:absolute;
+    }
+    .jsavnode {
+     line-height : 22px;
+     height :50px;
+     width :50px;
+     }
     </style>
   </head>
   <body>
     
-    <div style="float:left; width:95%; height:800px;" id="av">
-      <div  class="jsavcontrols"></div>
+    <div style="float:left; width:95%; height:500px;" id="av">
       <p class="jsavoutput jsavline"></p> 
     </div>
     
@@ -41,7 +51,7 @@
    <script>
       
    function setKdValues(node, x, y){
-   node.value("x: <span class='xvalue'>" + x + "</span><br/>y: <span class='yvalue'>" + y + "</span>");
+   node.value("x: <span style=\"font-weight:bold;\" class='xvalue'>" + x + "</span><br/>y: <span class='yvalue'>" + y + "</span>");
                      }             
     function getKdValues(node) {
     var $valelem = $('<span/>').html(node.value()), // create new DOM element and set content as the value HTML
@@ -65,22 +75,23 @@
         setKdValues(node, x, y);
 	    node.css("background-color","red");
 	    bt.layout();
-	    //jsav.step();
+	    jsav.step();
 	    caption_label.text(caption_text + " completed .. Insert another point: ");
 	    
 	} else {
 	  node.css("background-color","yellow");
 	  if(node.parent()){ node.parent().css("background-color","white");}
-	  if(j >=0) points[pcount].css({"fill":"yellow", "fill-opacity": 1});
+	  if(j >=0) points[j].css({"fill":"yellow", "fill-opacity": 1});
 	  if(j > 0){
-	      k = j-1;
+	   for( var k = 0; k < j; k++)
 	      points[k].css({"fill":"black", "fill-opacity": 1});}
 	  var el = getKdValues(node);
       if (level % 2 === 0)
 	  {
-	    caption_label.text(caption_text + ", comparing X: "+ x +" to X: " + el.x);
+	    //caption_label.text(caption_text + ", comparing X: "+ x +" to X: " + el.x);
 	    bt.layout();
-	    //jsav.step();
+	    
+	    jsav.step();
 	    
 	    if (el.x >= x)  // go left
 		{
@@ -93,11 +104,14 @@
 		 else {  // Split and insert left child
 		     var lin = jsav.g.line(xcanvas + bounds[2], ycanvas + bounds[1], xcanvas + bounds[2], ycanvas + bounds[3], {opacity:0});
 		     lin.show();
-		    node.left("y: <span class='yvalue'>" + y + "</span><br/>x: <span class='xvalue'>" + x + "</span>");
+		    node.left("x: <span class='xvalue'>" + x + "</span><br/>y: <span class='yvalue' style=\"font-weight:bold;\">" + y + "</span>");
 		    node.left().css("background-color","red");
 		    bt.layout();
-		    //jsav.step();  
-		    caption_label.text(caption_text + " completed");
+		    jsav.step();  
+		    if(pcount<10)
+		    caption_label.text(caption_text + " completed.. Insert new point");
+		    else
+		    caption_label.text(caption_text + " completed.. Done.");
 		       }
 	     } 
 	    else { // go right
@@ -110,11 +124,15 @@
 		 } else {
 		    var lin = jsav.g.line(xcanvas + el.x, ycanvas + bounds[1], xcanvas + el.x, ycanvas + bounds[3], {opacity:0});
 		    lin.show();
-		    node.right("y: <span class='yvalue'>" + y + "</span><br/>x: <span class='xvalue'>" + x + "</span>");
+		    node.right("x: <span class='xvalue'>" + x + "</span><br/>y: <span class='yvalue' style=\"font-weight:bold;\">" + y + "</span>");
 		    node.right().css("background-color","red");   
 		    bt.layout();
-		    //jsav.step();	    
-		    caption_label.text(caption_text + " completed ");
+		    jsav.step();	    
+		    if(pcount<10)
+		    caption_label.text(caption_text + " completed.. Insert new point");
+		    else
+		    caption_label.text(caption_text + " completed.. Done.");
+		    
 		      }
 	       } //end go right
 	  } // end if (level % 2 === 0)
@@ -135,11 +153,15 @@
 		 else {
 		    var lin = jsav.g.line(xcanvas + bounds[0], ycanvas + el.y, xcanvas + bounds[2], ycanvas + el.y, {opacity:0});
 		    lin.show();  
-		    node.left("x: <span class='xvalue'>" + x + "</span><br/>y: <span class='yvalue'>" + y + "</span>");  
+		    node.left("x: <span style=\"font-weight:bold;\" class='xvalue'>" + x + "</span><br/>y: <span class='yvalue'>" + y + "</span>");  
 		    node.left().css("background-color","red");
 		    bt.layout();
-		    //jsav.step();
-		    caption_label.text(caption_text + " completed ");
+		    jsav.step();
+		    if(pcount<10)
+		    caption_label.text(caption_text + " completed.. Insert new point");
+		    else
+		    caption_label.text(caption_text + " completed.. Done.");
+		    
 		    }
 	     } 
 	    else { // go right
@@ -151,11 +173,15 @@
 		} else {
 		    var lin = jsav.g.line(xcanvas + bounds[0], ycanvas + el.y, xcanvas + bounds[2], ycanvas + el.y, {opacity:0});
 		    lin.show();
-		    node.right("x: <span class='xvalue'>" + x + "</span><br/>y: <span class='yvalue'>" + y + "</span>");
+		    node.right("x: <span style=\"font-weight:bold;\" class='xvalue'>" + x + "</span><br/>y: <span class='yvalue'>" + y + "</span>");
 		    node.right().css("background-color","red");
 		    bt.layout();
-		   // jsav.step();
-		    caption_label.text(caption_text + " completed ");
+		    jsav.step();
+		   if(pcount<10)
+		    caption_label.text(caption_text + " completed.. Insert new point");
+		    else
+		    caption_label.text(caption_text + " completed.. Done.");
+		    
 		      }
 	       } //end go right
 	  } // end if (level % 2 === 1)
@@ -184,18 +210,19 @@
 
   var draw_point = function(xcoord, ycoord){
       var point = jsav.g.circle( xcoord, ycoord, 4, {opacity:1});
-      point.css("background-color", "red");
+      point.css({"fill":"red", "fill-opacity": 1});
   return point;
   } 
   
     // Main program 
     var jsav = new JSAV("av");
     var bt = jsav.ds.bintree({center:false});
-    var caption_label = jsav.label("kd-tree insert: click on the map area to insert points...", {before: bt});
+    
+    var caption_label = jsav.label("K-D tree insert: Click on the map area to insert points...",{before:bt});
     var caption_text = "";
     var xcanvas, ycanvas, canW, canH;
     var winwidth, winheight;
-    var k,j = 0; 
+    var j = 0; 
     
     // Get Viewport width and height:
     if (typeof window.innerWidth != 'undefined') {
@@ -213,39 +240,44 @@
    xcanvas = winwidth/2;
    ycanvas = 0;
    canH =  winheight*2/3 ; 
-    var rect = jsav.g.rect(xcanvas, ycanvas, 500, canH);
+   canW = winwidth/3;
+    var rect = jsav.g.rect(xcanvas, ycanvas, canW, canH);
     // Initialize points without displaying them:
     var keyX = new Array(10);
     var keyY = new Array(10);
     var points = [];   
     var pcount =0; 
-    
-    var msg = 'Hello';
   
 jQuery(document).ready(function(){
-      $("#av").click(function(e){
+      bt.css({left: "100px", top: "40px"});
+      caption_label.show();
       
+      $("#av").click(function(e){
       var x = e.pageX - this.offsetLeft -14; // - window.scrollMaxX ;
-      var y = e.pageY - this.offsetTop - 124; // - window.scrollMaxY;
+      var y = e.pageY - this.offsetTop -66; // - window.scrollMaxY;
       if(pcount >= 10)
       { alert("Congratulations: \n You have successfully inserted 10 Points!");}
       else{
        //if clicked inside the map area
-       if( x > xcanvas && x < xcanvas + 500)
+       if( x > xcanvas && x < xcanvas + canH)
          {if( y > ycanvas && y < ycanvas + canH)
           {
-          //jsav.step();
-           points[pcount] = draw_point(x,y);
+          jsav.step();
+          bt.css({height:"600px"});
+          caption_label.show();
+          
+           if(pcount>0){
+           for(var n =0; n<pcount; n++)
+            points[n].css({"fill":"black", "fill-opacity": 1});
+             traverse_color(bt.root(), "white");
+	       }
+	       points[pcount] = draw_point(x,y);
            keyX[pcount] = x - xcanvas;
            keyY[pcount] = y - ycanvas;
            caption_text = "Inserting ( " + keyX[pcount] + " , "+ keyY[pcount] + " )";
            caption_label.text(caption_text);
-            points[pcount].css({"fill":"red", "fill-opacity": 1});
-           insert_anim(bt.root(), keyX[pcount], keyY[pcount], 0, [0,0,500,canH], pcount, points);
-           for( var k = 0; k < j+1; k++){
-	           points[k].css({"fill":"black", "fill-opacity": 1});}
-	        j=0;
-	      traverse_color(bt.root(), "white");
+           insert_anim(bt.root(), keyX[pcount], keyY[pcount], 0, [0,0,canW,canH], pcount, points);
+            j=0;
 	      bt.layout();
           pcount++;
           }}
