@@ -4,55 +4,62 @@
   <title>Mergesort AV</title>
   <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
-<style>
+  <style>
 
-#container {
-  width: 800px;
-  height: 620px;
-  border: 1px solid black;
-  background-color: #efe;
-  padding: 10px;
-  overflow-y: visible;
-  overflow-x: hidden;
-}
+  #container {
+    width: 800px;
+    height: 620px;
+    border: 1px solid black;
+    background-color: #efe;
+    padding: 10px;
+    overflow-y: visible;
+    overflow-x: hidden;
+  }
 
-#avcontainer{
-  overflow: visible;
-}
+  #avcontainer{
+    overflow: visible;
+  }
 
-div h1 {
-  background-color: #efe;
-  margin: 5px;
-}
-.jsavcontainer {
-  background-color: #efe;
-  border: none;
-  padding: 0px;
-}
-.jsavcounter {
-  position: absolute;
-  width: 100px;
-}
-.jsavarray {
-  padding-left:0;
-  position: absolute;
-}
-p.jsavoutput.jsavline {
-  height: 30px;
-  margin: 0;
-}
-#about {
-  float: right;
-}
-a.jsavsettings {
-display: block;
-margin-top: 10px;
-margin-left: 10px;
-}
-form {
-  clear: both;
-}
-</style>
+  div h1 {
+    background-color: #efe;
+    margin: 5px;
+  }
+  
+  .jsavcontainer {
+    background-color: #efe;
+    border: none;
+    padding: 0px;
+  }
+  
+  .jsavcounter {
+    position: absolute;
+    width: 100px;
+  }
+  
+  .jsavarray {
+    padding-left:0;
+    position: absolute;
+  }
+  
+  p.jsavoutput.jsavline {
+    height: 30px;
+    margin: 0;
+  }
+  
+  #about {
+    float: right;
+  }
+  
+  a.jsavsettings {
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  form {
+    clear: both;
+  }
+  </style>
 </head>
 
 <body>
@@ -91,12 +98,8 @@ form {
   </div> <!--avcontainer-->
 </div> <!--container-->
 
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-</script>
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script src="../JSAV/lib/jquery.transform.light.js"></script>
 <script src="../JSAV/build/JSAV-min.js"></script>
 
@@ -201,12 +204,12 @@ form {
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true});
       
-	  // BEGIN MERGESORT IMPLEMENTATION
-	  
-	  
-	  mergesort(av, arr, 1, 1);
+      // BEGIN MERGESORT IMPLEMENTATION
 
-	  // END MERGESORT IMPLEMENTATION
+
+      mergesort(av, arr, 1, 1);
+
+      // END MERGESORT IMPLEMENTATION
 	  
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
@@ -215,44 +218,50 @@ form {
   
   
   var canvasWidth = 0;
-  //var blockHeight = 47;
   var blockWidth = 47;
   
-  // Extend the JSAV AV array to have the slice functionality of JavaScript arrays
+  /**
+   * Extends the JSAV AV array to have the slice functionality of JavaScript arrays
+   */
   JSAV._types.ds.AVArray.prototype.slice = function(start, end) {
-	
-	var array = new Array();
-	
-	for (var i = 0; i < (end - start); i++)
-	{
-	  array[i] = this.value(start + i);
-	}
-	
-	return array;
+    var array = new Array();
+    
+    for (var i = 0; i < (end - start); i++)
+    {
+      array[i] = this.value(start + i);
+    }
+    
+    return array;
   }
   
-  // Convenience function for setting another type of highlight
-  // (will be used for showing which elements will be compared during sort)
+  /**
+   * Convenience function for setting another type of highlight
+   * (will be used for showing which elements will be compared during sort)
+   */ 
   var setBlue = function(arr, index) {
     arr.css(index, {"background-color": "#ddf" });
   };
   
-  // Convenience function for setting another type of highlight
-  // (will be used for showing which elements have already been merged back together)
+  /**
+   * Convenience function for setting another type of highlight
+   * (will be used for showing which elements have already been merged back together)
+   */
   var markMerged = function(arr, index) {
-	// Clears the value
-	arr.value(index, "");
-	// Change the background color to gray
+    // Clears the value
+    arr.value(index, "");
+    // Change the background color to gray
     arr.css(index, {"background-color": "#c0c0c0" });
   };
   
-  // Convenience function for setting another type of highlight
-  // (will be used for showing which elements have already been sorted)
+  /**
+   * Convenience function for setting another type of highlight
+   * (will be used for showing which elements are already sorted)
+   */
   var highlightSorted = function(arr, index) {
     arr.css(index, {"background-color": "#ffffcc" });
   };
   
-  /* 
+  /**
    * Recursively splits input array until single element arrays are achieved, arrays are then merged back together in sorted order
    * 
    * av - a JSAV container
@@ -262,72 +271,72 @@ form {
    */
   function mergesort(av, arr, level, arrNum) {
     
-	var arrLen = arr.size();
-	var returnArr = arr;
-  
+    var arrLen = arr.size();
+    var returnArr = arr;
+    
     // Dynamically determine the canvas width using the centered alignment of the first block
-	if (level == 1)
-	{
-	  var left = parseFloat(arr.element.css("left"));
-	  // Find the center of the canvas by adding half the width of the array to the left value of the array
-	  // Multiply by 2 to find a value close to the width of the canvas
-	  canvasWidth = 2 * (left + (blockWidth * arrLen / 2));
-	  // Adjust the calculated width appropriately (I'm not sure why this is necessary, but it works every time)
-	  canvasWidth = canvasWidth - arrLen + 1;
-	  
-	  setPosition(returnArr, level, arrNum, arrLen);
-	  
-	  av.umsg("Select the entire array");
-	}
-	
-	arr.highlight();
-	
-	if (arrLen == 1)
-	{
-	  // Base case
-	  av.umsg("An array of length 1 cannot be split, ready for merge");
-	  av.step();
-	  arr.unhighlight();
-	}
-	else if (arrLen > 1)
-	{
-	  // General recursive case
-	  av.step();
-	
-	  av.umsg("Split the selected array (as evenly as possible)");
-	  arr.unhighlight();
-	
-	  // Find the middle of the array, if can't split evenly make the first array larger
-	  var midPoint = Math.ceil(arrLen / 2);
-	
-	  level += 1;
-	  var childArr1Num = arrNum * 2 - 1;
-	  var childArr2Num = arrNum * 2;
-	
-	  // Create and display sub-arrays
-	  var subArr1 = arr.slice(0, midPoint);
-	  var avSubArr1 = av.ds.array(subArr1, {indexed: true, center: false});
-	  setPosition(avSubArr1, level, childArr1Num, subArr1.length);
-	  
-	  var subArr2 = arr.slice(midPoint, arrLen);
-	  var avSubArr2 = av.ds.array(subArr2, {indexed: true, center: false});
-	  setPosition(avSubArr2, level, childArr2Num, subArr2.length);
-	
-	  av.step();
-	
-	  // Split both sub-arrays
-	  av.umsg("Select the left subarray");
-	  var retArr1 = mergesort(av, avSubArr1, level, childArr1Num);
-	  av.umsg("Select the right subarray");
-	  var retArr2 = mergesort(av, avSubArr2, level, childArr2Num);
-	  
-	  returnArr = merge(av, arr, retArr1, retArr2, level - 1, arrNum);
-	}
-	
-	return returnArr;
+    if (level == 1)
+    {
+      var left = parseFloat(arr.element.css("left"));
+      // Find the center of the canvas by adding half the width of the array to the left value of the array
+      // Multiply by 2 to find a value close to the width of the canvas
+      canvasWidth = 2 * (left + (blockWidth * arrLen / 2));
+      // Adjust the calculated width appropriately (I'm not sure why this is necessary, but it works every time)
+      canvasWidth = canvasWidth - arrLen + 1;
+      
+      setPosition(returnArr, level, arrNum, arrLen);
+      
+      av.umsg("Select the entire array");
+    }
+    
+    arr.highlight();
+    
+    if (arrLen == 1)
+    {
+      // Base case
+      av.umsg("An array of length 1 cannot be split, ready for merge");
+      av.step();
+      arr.unhighlight();
+    }
+    else if (arrLen > 1)
+    {
+      // General recursive case
+      av.step();
+    
+      av.umsg("Split the selected array (as evenly as possible)");
+      arr.unhighlight();
+    
+      // Find the middle of the array, if can't split evenly make the first array larger
+      var midPoint = Math.ceil(arrLen / 2);
+    
+      level += 1;
+      var childArr1Num = arrNum * 2 - 1;
+      var childArr2Num = arrNum * 2;
+    
+      // Create and display sub-arrays
+      var subArr1 = arr.slice(0, midPoint);
+      var avSubArr1 = av.ds.array(subArr1, {indexed: true, center: false});
+      setPosition(avSubArr1, level, childArr1Num);
+      
+      var subArr2 = arr.slice(midPoint, arrLen);
+      var avSubArr2 = av.ds.array(subArr2, {indexed: true, center: false});
+      setPosition(avSubArr2, level, childArr2Num);
+    
+      av.step();
+    
+      // Split both sub-arrays
+      av.umsg("Select the left subarray");
+      var retArr1 = mergesort(av, avSubArr1, level, childArr1Num);
+      av.umsg("Select the right subarray");
+      var retArr2 = mergesort(av, avSubArr2, level, childArr2Num);
+      
+      returnArr = merge(av, arr, retArr1, retArr2, level - 1, arrNum);
+    }
+    
+    return returnArr;
   }
   
-  /* 
+  /**
    * Merges two arrays back together in sorted order
    * 
    * av - a JSAV container
@@ -339,156 +348,134 @@ form {
    */
   function merge(av, origArr, arr1, arr2, level, arrNum)
   {
-	av.umsg("Merge selected arrays back together, in sorted order");
-	
-	retArrLen = arr1.size() + arr2.size();
+    av.umsg("Merge selected arrays back together, in sorted order");
+    
+    retArrLen = arr1.size() + arr2.size();
   
     // Hides the original array that's getting overwritten
     origArr.hide();
     var retArr = new Array(retArrLen);
-	var avRetArr = av.ds.array(retArr, {indexed: true, center: false});
-	setPosition(avRetArr, level, arrNum, retArrLen);
+    var avRetArr = av.ds.array(retArr, {indexed: true, center: false});
+    setPosition(avRetArr, level, arrNum);
 	
-	arr1.highlight();
-	arr2.highlight();
-	av.step();
-	
-	if (arr1.size() > 1)
-	{
-	  arr1.unhighlight();
-	  arr2.unhighlight();
-	}
-	
-	var pos1 = 0;
-	var pos2 = 0;
-	var i = 0;
-	
-	// Merge the two arrays together, in sorted order 
-	while (pos1 < arr1.size() || pos2 < arr2.size())
-	{
-	  if (pos1 == arr1.size() || pos2 == arr2.size())
-	  {
-	    av.umsg("When one list becomes empty, copy all values from the remaining array into the sorted array");
-	  }
-	  else
-	  {
-		// Eliminate one step for single element arrays to reduce tedium 
-	    if (arr1.size() > 1)
-		{
-		  if (pos1 < arr1.size())
-	      {
-	        arr1.highlight(pos1);
-	      }
-	      if (pos2 < arr2.size())
-	      {
-	        arr2.highlight(pos2);
-	      }
-		
-	      av.umsg("Select the smallest value from the front of each list (excluding values already in the sorted array)");
-		  av.step();
-		}
-		
-		av.umsg("Select the minimum of the two values");
-	  }
-	  
-	  if (pos1 < arr1.size() && (arr1.value(pos1) <= arr2.value(pos2) || pos2 == arr2.size()))
-	  {
-	    setBlue(arr1, pos1);
-		// Bold outline the selected element
-		arr1.css(pos1, {"border-width": "2px"});
-		av.step();
-		// Un-bold outline the selected element
-		arr1.css(pos1, {"border-width": "1px"});
-		avRetArr.value(i, arr1.value(pos1));
-		markMerged(arr1, pos1);
-		pos1++;
-	  }
-	  else
-	  {
-	    setBlue(arr2, pos2);
-		// Bold outline the selected element
-		arr2.css(pos2, {"border-width": "2px"});
-		av.step();
-		// Un-bold outline the selected element
-		arr2.css(pos2, {"border-width": "1px"});
-		avRetArr.value(i, arr2.value(pos2));
-		markMerged(arr2, pos2);
-		pos2++;
-	  }
-	  
-	  setBlue(avRetArr, i);
-	  av.umsg("Add the selected value to the sorted array");
-	  av.step();
-	  
-	  highlightSorted(avRetArr, i);
-	  i++;
-	}
-	
-	av.umsg("Finished merging");
-	arr1.hide();
-	arr2.hide();
-	av.step();
-	
+    arr1.highlight();
+    arr2.highlight();
+    av.step();
+    
+    if (arr1.size() > 1)
+    {
+      arr1.unhighlight();
+      arr2.unhighlight();
+    }
+    
+    var pos1 = 0;
+    var pos2 = 0;
+    var i = 0;
+    
+    // Merge the two arrays together, in sorted order 
+    while (pos1 < arr1.size() || pos2 < arr2.size())
+    {
+      if (pos1 == arr1.size() || pos2 == arr2.size())
+      {
+        av.umsg("When one list becomes empty, copy all values from the remaining array into the sorted array");
+      }
+      else
+      {
+        // Eliminate one step for single element arrays to reduce tedium 
+        if (arr1.size() > 1)
+        {
+          if (pos1 < arr1.size())
+          {
+            arr1.highlight(pos1);
+          }
+          
+          if (pos2 < arr2.size())
+          {
+            arr2.highlight(pos2);
+          }
+      
+          av.umsg("Select the smallest value from the front of each list (excluding values already in the sorted array)");
+          av.step();
+        }
+        
+        av.umsg("Select the minimum of the two values");
+      }
+      
+      if (pos1 < arr1.size() && (arr1.value(pos1) <= arr2.value(pos2) || pos2 == arr2.size()))
+      {
+        setBlue(arr1, pos1);
+        // Bold outline the selected element
+        arr1.css(pos1, {"border-width": "2px"});
+        av.step();
+        // Un-bold outline the selected element
+        arr1.css(pos1, {"border-width": "1px"});
+        avRetArr.value(i, arr1.value(pos1));
+        markMerged(arr1, pos1);
+        pos1++;
+      }
+      else
+      {
+        setBlue(arr2, pos2);
+        // Bold outline the selected element
+        arr2.css(pos2, {"border-width": "2px"});
+        av.step();
+        
+        // Un-bold outline the selected element
+        arr2.css(pos2, {"border-width": "1px"});
+        avRetArr.value(i, arr2.value(pos2));
+        markMerged(arr2, pos2);
+        pos2++;
+      }
+      
+      setBlue(avRetArr, i);
+      av.umsg("Add the selected value to the sorted array");
+      av.step();
+      
+      highlightSorted(avRetArr, i);
+      i++;
+    }
+    
+    av.umsg("Finished merging");
+    arr1.hide();
+    arr2.hide();
+    av.step();
+    
     av.clearumsg();
-	
-	return avRetArr;
+    
+    return avRetArr;
   }
   
-  /*
-   * arr - the JSAV array to be positioned
-   * level - indicates the current row of the diagram in which an array is going to be displayed
-   * arrNum - the column in which the current array should be placed in its row
-   * numBlocksInArr - the number of elements in the array being processed
+  
+  
+  /**
+   * Calculates and sets the appropriate 'top' and 'left' CSS values based 
+   * on the specified array's level of recursion, column number and the 
+   * number of elements in the array
+   *
+   * arr - the JSAV array to set the 'top' and 'left' values for
+   * level - the level of recursion, the full-size array is level 1
+   * column - the array's column number in the current row
    */
-  function setPosition(arr, level, arrNum, numBlocksInArr) {	
-	
-	// Calculate the number of arrays in the current row
-	var numSubArrInRow = Math.pow(2, level - 1);
-	
-	// Calculate the left value of the current array by dividing 
-	// the width of the canvas by twice the number of arrays that should appear in that 
-	// row: (canvasWidth / (2 * numSubArrInRow))
-	// Odd multiples of the resulting value define a line through the center of each array 
-	// in the row and are found using the formula (2 * arrNum - 1)
-	// Note: while it is not used, even multiples define the center between two consecutive arrays
-	// Since we want the left value rather than the center value of each array we calculate 
-	// the length each array (blockWidth *  numBlocksInArr), divide this value in half and 
-	// subtract it to find the left value
-	
-	var left = (canvasWidth / (2 * numSubArrInRow)) * (2 * arrNum - 1) - (blockWidth * numBlocksInArr / 2);
-	var top = rowHeight * (level - 1); // row
-	
-	// Set the top and left values so that all arrays are spaced properly
-	arr.element.css({"left": left, "top": top});
-  }
-  
-  /*
-  // Extends the JSAV array class with a function to animate new CSS properties
-  JSAV._types.ds.AVArray.prototype.arrayCss = JSAV.anim(function(cssprop, value) {
-	var oldProps = $.extend(true, {}, cssprop), el = this.element, newprops;
-	
-	if (typeof cssprop === "string" && typeof value !== "undefined") {
-	  oldProps[cssprop] = el.css(cssprop);
-	  newprops = {};
-	  newprops[cssprop] = value;
-	} else {
-	  for (var i in cssprop) {
-	    oldProps[i] = el.css(i);
-	  }
-	  newprops = cssprop;
-	}
-	
-	if (!this.jsav.RECORD || !$.fx.off) { // only animate when playing, not when recording
-	  this.element.animate(newprops, this.jsav.SPEED);
-	} else {
-	  this.element.css(newprops);
-	}
-	
-	return [oldProps];
-  });
-  */
+  function setPosition(arr, level, column) {
+    // Calculate the number of arrays in the current row
+    var numArrInRow = Math.pow(2, level - 1);
 
-  
+    // Calculate the left value of the current array by dividing 
+    // the width of the canvas by twice the number of arrays that should appear in that 
+    // row: (canvasWidth / (2 * numArrInRow))
+    // Odd multiples of the resulting value define a line through the center of each array 
+    // in the row and are found using the formula (2 * column - 1)
+    // Note: while it is not used, even multiples define the center between two consecutive arrays
+    // Since we want the left value rather than the center value of each array we calculate 
+    // the length each array (blockWidth *  arr.size()), divide this value in half and 
+    // subtract it from the center line to find the left value
+
+    var left = (canvasWidth / (2 * numArrInRow)) * (2 * column - 1) - (blockWidth * arr.size() / 2);
+    var top = rowHeight * (level - 1);
+
+    // Set the top and left values so that all arrays are spaced properly
+    arr.element.css({"left": left, "top": top});
+  }
 })(jQuery);
 </script>
 </body>
