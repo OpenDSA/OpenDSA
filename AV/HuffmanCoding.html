@@ -77,9 +77,9 @@
 
 	<script>
 		/* sorting the elements of an array with Insertation Sort
-		* anArray: used for logical control
-		* tArray: used for store the information of the HuffmanCoding tree
-		* dArray: used for display control
+		*  anArray: used for logical control
+		*  tArray: used for store the information of the HuffmanCoding tree
+		*  dArray: used for display control
 		*/
 	var sortArray = function (anArray, tArray, dArray) {
 		for (var i = 1; i < anArray.length; i++) {
@@ -154,7 +154,6 @@
 			arr = jsav.ds.array(dArray);
 			arr.css([0, 1, 2, 3, 4, 5, 6, 7], {"line-height":"22px"});
 
-
 			jsav.step();
 			jsav.umsg("Choose the two samllest number: " + nArray[0] + " and " + nArray[1])
 			
@@ -171,18 +170,20 @@
 
 			node.left(tArray[0]);
 			node.right(tArray[1]);
+
 			jsav.umsg("Merge them together, and the result is " + key);
 			tmpBT.root(key);
 			tmpBT.root().left(dArray[0]);
 			tmpBT.root().right(dArray[1]);
-			tmpBT.show();
-			parts_color(tmpBT.root(), "white");
+			tmpBT.show(); 
+			traverse_color(tmpBT.root(), "white");
+			//parts_color(tmpBT.root(), "white");
 			tmpBT.layout();
 			jsav.step(); 
 			arr.hide();
 
 			tmpBT.hide();
-			jsav.umsg("Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ": ");
+			jsav.umsg("Use " + key + " to replace " + nArray[0] + " and " + nArray[1] + ", and update the data as follows: ");
 			shuffle(nArray, tArray, dArray, key, node);
 			arr = jsav.ds.array(dArray);
 			arr.css([0, 1, 2, 3, 4, 5, 6, 7], {"line-height":"22px"});
@@ -225,8 +226,19 @@
 				traverse_color(node.right(),col);
 			}
 			// if the node is a leaf node, then display an rectangle
-			else  
-				node.css({"height": "60px", "width": "40px", "border-radius":1, "background-color":"YELLOW", "line-height":"28px"});	
+			else 
+			//	node.css({"height": "60px", "width": "40px", "border-radius":1, "background-color":"YELLOW", "line-height":"28px"});
+			{  
+				if (typeof(node.value().length) == 'undefined') {
+					//node.css({"height": "45px", "width": "40px", "background-color": "yellow"});
+					node.css("background-color", "pink");
+					document.write("run" + "<br>" + "<br>");
+					}
+				else {					
+					node.css({"height": "60px", "width": "40px", "border-radius":1, "background-color":"YELLOW", "line-height":"28px"});
+					document.write(node.value()+ "<br>" + node.value().length + "<br>" + "<br>");
+					}
+			}
 		}
     }
 
@@ -303,7 +315,7 @@
 
 		// Process About button: Pop up a message with an Alert
 		function about() {
-			var mystring = "HuffmanCoding Tree Visualization\nWritten by Maoyuan Sun\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during April, 2012\nLast update: April 19, 2012\nJSAV library version " + JSAV.version();
+			var mystring = "HuffmanCoding Tree Visualization\nWritten by Maoyuan Sun\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during April, 2012\nLast update: April 26, 2012\nJSAV library version " + JSAV.version();
 			alert(mystring);
 		}
 		})(jQuery);  
