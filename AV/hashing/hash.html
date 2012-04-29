@@ -78,7 +78,8 @@ form {
 
 	<!-- Main Container -->
 	<div id="container">
-		<p class="jsavoutput jsavscroll" readonly="readonly" style="width:270px; height:400px; font-size:	95%; float:left"> </p>
+		<p class="jsavoutput jsavscroll" readonly="readonly" style="width:270px; height:400px; font-size: 95%; float:left"> </p>
+                <input type="button" id="about" name="about" value="About" style="margin-top:10px;"/>
 	</div>
 
 	<!-- Bottom Container -->
@@ -94,7 +95,7 @@ form {
 					<option value = 2> Binning Hash </option>
 					<option value = 3> Mid Square Hash </option>
 					<option value = 4> Simple Hash for Strings </option>
-                    <option value = 5> Improved Hash for Strings </option>
+                                        <option value = 5> Improved Hash for Strings </option>
 				</select>
 			
 				<!-- Array Size Dropdown -->
@@ -122,9 +123,9 @@ form {
 				<select id="collision">
 					<option selected value = 0> Collision Resolution Policy </option>
 					<option value = 1> Linear Probing </option>
-					<option value = 2> Quadratic Probing </option>
+					<option value = 2> Linear Probing by Steps </option>
 					<option value = 3> Pseudo-random Probing </option>
-					<option value = 4> Double Hashing </option>
+					<option value = 4> Quadratic Probing </option>
 
 				</select>
 				
@@ -146,7 +147,7 @@ form {
 					<option selected value = 0> Key Range </option>
 					<option value = 1> 0 - 99 </option>
 					<option value = 2> 0 - 999 </option>
-				</select>
+			</select>
 				</p>
 			 
 		</form>
@@ -165,31 +166,46 @@ form {
 <script type="text/javascript" src="Queue.js"></script>
 
 <script>
+
+/*
+ * For queries & switch cases, follow the hashing methods & collision resolutions numbering below:
+ * Methods:
+ * 1. Simple Mod Hash
+ * 2. Binning Hash
+ * 3. Mid-Square Hash
+ * 4. Simple Hash for Strings
+ * 5. Improved Hash for Strings
+ *
+ * Coliision Resolutions:
+ * 1. Linear Probing
+ * 2. Linear Probing by Steps
+ * 3. Pseudo-Random Probing
+ * 4. Quadratic Probing
+ *
+ * To handle queries:
+ * Set the method parameter and collision parameter according to reference above.
+ * For example, to choose Mid-Square Hash with pseudo-random probing, you would use:
+ * hash.html?method=3&collision=3
+ */
  
 /* The fun starts here  */
 (function($) {
 
   /* Variables */
-  var arraySize;					// Table size
-  var theArray = [];				// Actual array
-  var av;							// JSAV
-  var arr;						    // JSAV Array
-  var fullArray= false;             // Flag that determines whether array is full or not
-  var nextStep = new Queue();		/* A queue that will contain the "next step". Stores position and value of next step as an object */
+  var arraySize;		// Table size
+  var theArray = [];		// Actual array
+  var av;			// JSAV
+  var arr;		        // JSAV Array
+  var fullArray= false;         // Flag that determines whether array is full or not
+  var nextStep = new Queue();	// A queue that will contain the "next step". Stores position and value of next step as an object
   
   // Initialize JSAV object
   av = new JSAV("container");
   av.umsg("Please select a hashing function");
   
-  // Create a new settings panel and specify the link to show it
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
-  
-  // add the layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
-
   // Process About button: Pop up a message with an Alert
   function about() {
-    var str1 = "Hashing Visualization\nWritten by Nayef Copty.\nCreated as part of the OpenDSA hypertextbook project.\n";
+    var str1 = "Hashing Visualization\nWritten by Nayef Copty & Mauricio del la Bara.\nCreated as part of the OpenDSA hypertextbook project.\n";
     var str2 = "For more information, see http://algoviz.org/OpenDSA\nWritten during Spring 2012\nLast Update: April 2012\nJSAV Library Version: " + JSAV.version();
     alert(str1 + str2);
   }
@@ -198,10 +214,57 @@ form {
   $('input[name="about"]').click(about);
   $('input[name="next"]').click(next);
   $('input[name="reset"]').click(reset);
+
+  /* Query Parameters */
+  // Query flag. 1 if a query is set, 0 if not.
+  var paramFlag = 0;
+  var params = JSAV.utils.getQueryParameter();
+
+  // Check that the query has correct format to prevent injections
+  if (params) {
+
+    // Set method according to query parameter
+    if ("method" in params) {
+      $("#function").val(params.method);
+      paramFlag = 1;
+    }
+    
+    else {
+      params.method = 0;
+      paramFlag = 0;
+    }
+    
+    // Set collision resolution policy according to query parameter
+    if ("collision" in params) {
+      $("#collision").val(params.collision);
+      paramFlag = 1;
+    }
+    
+    else {
+      params.collision = 0;
+      paramFlag = 0;
+    }
+    
+    // Check that the query paramter has proper format
+    if (paramFlag === 1 && Object.keys(params).length !== 2)
+      alert("Error! Incorrect URL parameters");
+
+    // Check that the parameters have an acceptable number
+    if (params.method < 0 || params.method > 4 || params.collision < 0 || params.collision > 4)
+      alert("Error! Incorrect URL parameters");
+  }
+
+
+  // If a query parameter has been set, disable method and collision resolution selection, and enable table isize
+  if (paramFlag === 1) {
+    $('#function').attr("disabled", "disabled");
+    $('#collision').attr("disabled", "disabled");
+    $("#arraysize").removeAttr("disabled");
+  }
   
   // Call reset - the initial state of the vizualization
   reset();
-  
+
   /* 
    * Function that accesses the Class value. Used to check the type of an object.
    * `typeof` should be avoided at all costs (unless checking if a var is defined).
@@ -228,7 +291,8 @@ form {
     // Clear messages
     if (av) {
       av.clearumsg();
-      av.umsg("Please select a hashing function");
+      if (paramFlag === 0)
+	av.umsg("Please select a hashing function");
     }
     
     // Hide array if one exists
@@ -237,11 +301,10 @@ form {
     }
     
     // Reset & disable dropdowns
-    $("#function").val(0);
+    $("#function").val(params.method);
+    $("#collision").val(params.collision);
     $("#arraysize").val(0);
-    $("#collision").val(0);
     $('#keyrange').val(0);
-    $('#arraysize').attr("disabled", "disabled");
     $('#input').attr("disabled", "disabled");
     $('#collision').attr("disabled", "disabled");
     $('#keyrange').attr("disabled", "disabled");
@@ -249,9 +312,16 @@ form {
     // Disable buttons
     $('input[name="next"]').attr("disabled", "disabled");
     		
-    // Enable function change dropdown
-    $("#function").removeAttr("disabled");
+    // Enable function change dropdown and disable array size dropdown if a query paramter has not been set
+    if (paramFlag === 0) {
+      $("#function").removeAttr("disabled");
+      $('#arraysize').attr("disabled", "disabled");
+    }
 
+    // Otherwise, ask user to enter a table size
+    else
+      av.umsg("Please select a table size");
+    
     // Clear input value textfield
     $("#input").val("");
   }
@@ -289,39 +359,44 @@ form {
       // Display Appropriate Message and Enable Appropriate Controls for each function
       switch ($(this).val()) {
 
-	  // Simple Mod
-      case '1':
-	    av.umsg("Algorithm Selected: Simple Mod");
-		break;
+	// Simple Mod
+        case '1':
+	  av.umsg("Algorithm Selected: Simple Mod");
+	  av.umsg("Please select a table size");
+	  break;
 
-	  // Binning
-      case '2':
-	    // Enable key range
-        $("#keyrange").removeAttr("disabled");
-        av.umsg("Algorithm Selected: Binning");
-        break;
+	// Binning
+        case '2':
+	  // Enable key range
+          $("#keyrange").removeAttr("disabled");
+          av.umsg("Algorithm Selected: Binning");
+	  av.umsg("Please select a table size and a key range.");
+	  break;
         
-      // Mid Square
-      case '3':
-		// Change table size options to 8 and 16
-		// USE:
-		// $('#sel1').html('<option value="1">New Option 1</option><option value="2">New Option 2</option><option value="3">New Option 3</option>');
-		// Make sure to revert options to original
+	// Mid Square
+        case '3':
+	  // Change table size options to 8 and 16
+	  // USE:
+	  // $('#sel1').html('<option value="1">New Option 1</option><option value="2">New Option 2</option><option value="3">New Option 3</option>');
+	  // Make sure to revert options to original
 	
 	  av.umsg("Algorithm Selected: Mid Square Method");
+	  av.umsg("Please select a table size");
           break;
         
-      // Simple Strings
-      case '4':
-        av.umsg("Algorithm Selected: Simple Hashing for Strings");
-        break;
+	// Simple Strings
+        case '4':
+          av.umsg("Algorithm Selected: Simple Hashing for Strings");
+	  av.umsg("Please select a table size");
+          break;
 	
-	  // Improved Strings
-      case '5':
-	    av.umsg("Algorithm Selected: Improved Hashing for Strings");
-	    break;
+	// Improved Strings
+        case '5':
+ 	  av.umsg("Algorithm Selected: Improved Hashing for Strings");
+	  av.umsg("Please select a table size");
+ 	  break;
       }
-	    
+
       /*
        * THIS IS DETERMINED FROM THE QUERY.
        * EITHER QUERY SETS IT, OR IT IS FREE TO CHOOSE
@@ -351,9 +426,10 @@ form {
 		  av.umsg("<br />");		  	  
 	    */
 		
-      
+/*      
       if ($(this).val() == 1 || $(this).val() == 3)
 		av.umsg("Please select a table size.");
+
       else if ($(this).val() == 2)
 		av.umsg("Please a key range and a table size.");
 	
@@ -386,9 +462,11 @@ form {
 		av.umsg("Collision Policy Selected: Double Hashing");
 		av.umsg("<br />");
 		break;  
-      }
+      }*/
     }
   });
+
+  
   
   // Event trigger change if size of hash changes
   $("#arraysize").change(function() {
@@ -404,20 +482,46 @@ form {
 	
     // Initialize JSAV
     arr = av.ds.array(theArray, {indexed: true, layout: "vertical"});
+
+    // If query parameters are set, ask user to input a value to hash
+    if (paramFlag) {
     
-    // Enable input field
-    $("#input").removeAttr("disabled");
+      // Enable collision resolution selection
+      $("#input").removeAttr("disabled");
     
-    av.umsg("Enter a value and click Next");
-    av.umsg("<br />");
+      av.umsg("Enter a value and click Next");
+      av.umsg("<br />");
+    }
+
+    // Else, user must select a collision resolution policy
+    else {
+      $("#collision").removeAttr("disabled");
+      av.umsg("Please select a collision resolution policy.");
+    }
   });
-  
+
+  // Event trigger if collision resolution policy changed
+  $("#collision").change(function() {
+
+    if ($("#collision").val() !== 0) {
+      // Enable collision resolution selection
+      $("#input").removeAttr("disabled");
+      
+      av.umsg("Enter a value and click Next");
+      av.umsg("<br />");
+    }
+
+    else {
+      av.umsg("Please select a collision resolution method");
+    }
+  });
+
   /* Next button pushed. 
    * If no slide show exits, make one.
    * Else, load next slide
    */
   function next() {
-    
+
     // If no slide exists, create one
     if (nextStep.isEmpty()) {
       
@@ -550,40 +654,40 @@ form {
       
       switch(keyrange) {
       case '1':
-		keyrange = 100;
-		break;
+	keyrange = 100;
+	break;
       case '2':
-		keyrange = 1000;
-		break;
+	keyrange = 1000;
+	break;
       }
       
       // Check that the input value is a number within the correct range
       if (inputVal >= keyrange || inputVal < 0 || isNaN(inputVal)) {
-		var errorMsg = "Please enter an input value between 0 and " + keyrange + ".";
-		error(errorMsg);
-		// Return Error
-		return 1;
+	var errorMsg = "Please enter an input value between 0 and " + keyrange-1 + ".";
+	error(errorMsg);
+	// Return Error
+	return 1;
       }
       
       else {
-		av.umsg("Attempting to insert: " + inputVal);
-
-		// Binning function Position
-		var binsize = keyrange / $("#arraysize").val()
-		var pos =  Math.floor(inputVal / binsize);
-
-		av.umsg("Bin Size = Key Range / Table Size");
-		av.umsg("Bin Size = " + keyrange + " / " + $("#arraysize").val());
-		av.umsg(" = " + binsize.toFixed(2));
-		av.umsg("Hash Position = Input Value / Bin Size");
-		av.umsg("Hash Position = " + inputVal + " / " + binsize.toFixed(2));
-		av.umsg(" = " + pos);
+	av.umsg("Attempting to insert: " + inputVal);
 	
-		// Process function with selected collision resolution
-		determineResolution(inputVal, pos);
+	// Binning function Position
+	var binsize = keyrange / $("#arraysize").val()
+	var pos =  Math.floor(inputVal / binsize);
+	
+	av.umsg("Bin Size = Key Range / Table Size");
+	av.umsg("Bin Size = " + keyrange + " / " + $("#arraysize").val());
+	av.umsg(" = " + binsize.toFixed(2));
+	av.umsg("Hash Position = Input Value / Bin Size");
+	av.umsg("Hash Position = " + inputVal + " / " + binsize.toFixed(2));
+	av.umsg(" = " + pos);
+	
+	// Process function with selected collision resolution
+	determineResolution(inputVal, pos);
 		
-		// Return success
-		return 0;
+	// Return success
+	return 0;
       }
     }  
   }
@@ -699,18 +803,18 @@ form {
 
     var inputLength = inputVal.length / 4;
     var sum = 0;
-
+    
     for (var i = 0; i < inputLength; i++) {
-
+      
       // Grab the substring of size 4
       var inputsubstring = inputVal.substring(i * 4, (i * 4) + 4);
       var mult = 1;
       for (var j = 0; j < inputsubstring.length; j++) {
-	  sum += inputsubstring.charCodeAt(j) * mult;
-	  mult *= 256;
+	sum += inputsubstring.charCodeAt(j) * mult;
+	mult *= 256;
       }
     }
-
+    
     var size = $("#arraysize").val();
     var pos = sum % size;
     
@@ -739,15 +843,15 @@ form {
       break;
     case '1':
       linearProbing(inputVal, pos);
-      break;	  
-	case '2':
-      quadraticProbing(inputVal, pos);
-      break; 
-	case '3':
-      pseudorandomProbing(inputVal, pos);
       break;
-	case '4':
-      doubleHashing(inputVal, pos);
+    case '2':
+      linearProbingSteps(inputVal, pos);
+      break;
+    case '3':
+      pseudoRandom(inputVal, pos);
+      break;
+    case '4':
+      quadraticProbing(inputVal, pos);
       break;
     }
   }
@@ -761,44 +865,44 @@ form {
       
       // Temp pointer that will point to the correct position at the end of the loop
       var i = pos;
-	  
+      
       // Counter that counts how many times the array ran
       var count = 0;
       
       // Loop across the array. "infinite" loop. Breaks if array is full.
-      for (;;){
+      for (;;) {
 	
-		// If array is full, break out
-		if (count == arr.size()) {
-		  fullArray = true;
-		  break;
-	    }
+	// If array is full, break out
+	if (count == arr.size()) {
+	  fullArray = true;
+	  break;
+	}
 	
-		// If space is available, break
-		if (String(arr.value(i)) == "") {
-		  break;
-	    }
+	// If space is available, break
+	if (String(arr.value(i)) == "") {
+	  break;
+	}
 	
-	    // Insert attempt as highlighting activity
-		insertActivity(i, inputVal, false);
+	// Insert attempt as highlighting activity
+	insertActivity(i, inputVal, false);
 	
-		// If i is last element of arr, restart to position 0 of the array
-		if (i == arr.size() - 1) {
-		  i = 0;
-		}
+	// If i is last element of arr, restart to position 0 of the array
+	if (i == arr.size() - 1) {
+	  i = 0;
+	}
 	
-		// Otherwise just increment i by 1 (to check for next pos of array next iteration)
-		else {
-		  i++;
-		}
+	// Otherwise just increment i by 1 (to check for next pos of array next iteration)
+	else {
+	  i++;
+	}
 	
-		// Increment count 
-		count++;
+	// Increment count 
+	count++;
       }
       
       // Empty spot found. Insert element inputVal at i
       if (!fullArray) {
-		insertActivity(i, inputVal, true);
+	insertActivity(i, inputVal, true);
       }
     }
     
@@ -808,10 +912,17 @@ form {
       insertActivity(pos, inputVal, true);
     }
   }
-  
-  
-  
-  
+
+  // Linear Probing By Steps
+  function linearProbingSteps(inpuVal, pos) {
+    //
+  }
+
+  // Pseudo-Random Probing
+  function pseudoRandom(inputVal, pos) {
+    //
+  }
+
   // Quadratic Probing
   function quadraticProbing(inputVal, pos) {
     
@@ -826,39 +937,39 @@ form {
       var count = 0;
       
       // Loop across the array. "infinite" loop. Breaks if array is full.
-      for (;;){
+      for (;;) {
 	
-		// If array is full, break out
-		if (count == arr.size()) {
-		  fullArray = true;
-		  break;
-	    }
+	// If array is full, break out
+	if (count == arr.size()) {
+	  fullArray = true;
+	  break;
+	}
 	
-		// If space is available, break
-		if (String(arr.value(i)) == "") {
-		  break;
-	    }
+	// If space is available, break
+	if (String(arr.value(i)) == "") {
+	  break;
+	}
 	
-	    // Insert attempt as highlighting activity
-		insertActivity(i, inputVal, false);
+	// Insert attempt as highlighting activity
+	insertActivity(i, inputVal, false);
 	
-		// If i is last element of arr, restart to position 0 of the array
-		if (i == arr.size() - 1) {
-		  i = 0;
-		}
+	// If i is last element of arr, restart to position 0 of the array
+	if (i == arr.size() - 1) {
+	  i = 0;
+	}
 	
-		// Otherwise the step size i become i squared.
-		else {
-		  i = i*i;
-		}
+	// Otherwise the step size i become i squared.
+	else {
+	  i = i*i;
+	}
 	
-		// Increment count 
-		count++;
+	// Increment count 
+	count++;
       }
       
       // Empty spot found. Insert element inputVal at i
       if (!fullArray) {
-		insertActivity(i, inputVal, true);
+	insertActivity(i, inputVal, true);
       }
     }
     
@@ -868,12 +979,7 @@ form {
       insertActivity(pos, inputVal, true);
     }
   }
-  
-  
-  
-  
-  
-  
+    
   /* 
    * Inserts activity at position pos, with value val and whether it is insertion or highlight
    * into nextStep queue
