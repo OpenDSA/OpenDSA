@@ -396,77 +396,8 @@ form {
 	  av.umsg("Please select a table size");
  	  break;
       }
-
-      /*
-       * THIS IS DETERMINED FROM THE QUERY.
-       * EITHER QUERY SETS IT, OR IT IS FREE TO CHOOSE
-       * FOR NOW, USE LINEAR PROBING
-       */
-      // Choose linear probing resolution policy for now:
-      /*$("#collision").val(1);
-      av.umsg("Collision Policy Selected: Linear Probing");
-      av.umsg("<br />");*/
-	  
-	  
-		/* Other collision resolutions
-		
-		  // Quadratic probing resolution:
-		  $("#collision").val(2);
-		  av.umsg("Collision Policy Selected: Quadratic Probing");
-		  av.umsg("<br />");
-		
-		  // Pseudo-Random probing resolution:
-		  $("#collision").val(3);
-		  av.umsg("Collision Policy Selected: Pseudo-Random Probing");
-		  av.umsg("<br />");				  	  
-		  
-		  // Double Hashing resolution:
-		  $("#collision").val(4);
-		  av.umsg("Collision Policy Selected: Double Hashing");
-		  av.umsg("<br />");		  	  
-	    */
-		
-/*      
-      if ($(this).val() == 1 || $(this).val() == 3)
-		av.umsg("Please select a table size.");
-
-      else if ($(this).val() == 2)
-		av.umsg("Please a key range and a table size.");
-	
-      
-      switch ($(this).val()) {
-      // Linear probing for simple mod
-      case '1':
-        $("#collision").val(1);
-	    av.umsg("Collision Policy Selected: Linear Probing");
-        av.umsg("<br />");
-        break;
-	
-      // Pseudo-Random probing resolution:	
-	  case '2':
-	    $("#collision").val(2);
-		av.umsg("Collision Policy Selected: Quadratic Probing");
-		av.umsg("<br />");
-		break;
-		  
-	  // Quadratic probing resolution:	  
-	  case '3':	 
-		$("#collision").val(3);
-		av.umsg("Collision Policy Selected: Pseudo-Random Probing");
-		av.umsg("<br />");
-		break;
-		
-	  // Double Hashing resolution:	
-	  case '4':	
-	    $("#collision").val(4);
-		av.umsg("Collision Policy Selected: Double Hashing");
-		av.umsg("<br />");
-		break;  
-      }*/
     }
   });
-
-  
   
   // Event trigger change if size of hash changes
   $("#arraysize").change(function() {
