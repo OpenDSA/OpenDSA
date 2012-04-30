@@ -8,7 +8,7 @@
 
   #container {
     width: 800px;
-    height: 620px;
+    height: 645px;
     border: 1px solid black;
     background-color: #efe;
     padding: 10px;
@@ -70,8 +70,6 @@
 
   <form id="ssperform">
     <p>
-      <input type="button" name="run" value="Run" />
-      <input type="button" name="reset" value="Reset" />
       <label for="arraysize">&nbsp;List size:&nbsp;</label>
       <select id="arraysize">
         <option value = 5>5</option>
@@ -87,8 +85,11 @@
         <option value = 15>15</option>
         <option value = 16>16</option>
       </select>
-      <label for="arrayValues">&nbsp;Your values:&nbsp;</label>
+      <label for="arrayValues">&nbsp;Your values (optional):&nbsp;</label>
       <input size="60" name="arrayValues" id="arrayValues" type="text" />
+	  <br />
+      <input type="button" name="run" value="Run" />
+      <input type="button" name="reset" value="Reset" />
     </p>
   </form>
   <div id="avcontainer">
@@ -105,10 +106,6 @@
 
 <script>
 (function($) {
-  
-  // The space required for each row to be displayed
-  var rowHeight = 80;
-
   // Number of values in the array
   var ASize = $('#arraysize').val();
   // The array of numbers.
@@ -206,8 +203,21 @@
       
       // BEGIN MERGESORT IMPLEMENTATION
 
-
-      mergesort(av, arr, 1, 1);
+	  var level = 1;
+	  var column = 1;
+	  var arrLen = arr.size();
+	  
+      // Dynamically determine the canvas width using the centered alignment of the first block
+      var left = parseFloat(arr.element.css("left"));
+      // Find the center of the canvas by adding half the width of the array to the left value of the array
+      // Multiply by 2 to find a value close to the width of the canvas
+      canvasWidth = 2 * (left + (blockWidth * arrLen / 2));
+      // Adjust the calculated width appropriately (I'm not sure why this is necessary, but it works every time)
+      canvasWidth = canvasWidth - arrLen + 1;
+      
+      av.umsg("Select the entire array");
+	  
+      mergesort(arr, level, column);
 
       // END MERGESORT IMPLEMENTATION
 	  
@@ -217,6 +227,8 @@
   }
   
   
+  // The space required for each row to be displayed
+  var rowHeight = 80;
   var canvasWidth = 0;
   var blockWidth = 47;
   
@@ -264,43 +276,27 @@
   /**
    * Recursively splits input array until single element arrays are achieved, arrays are then merged back together in sorted order
    * 
-   * av - a JSAV container
    * arr - a JSAV array
    * level - the current depth of the recursion
-   * arrNum - the column number of the current array
+   * column - the column number of the current array
    */
-  function mergesort(av, arr, level, arrNum) {
+  function mergesort(arr, level, column) {
+    // Correctly position the array
+    setPosition(arr, level, column);
     
     var arrLen = arr.size();
     var returnArr = arr;
     
-    // Dynamically determine the canvas width using the centered alignment of the first block
-    if (level == 1)
-    {
-      var left = parseFloat(arr.element.css("left"));
-      // Find the center of the canvas by adding half the width of the array to the left value of the array
-      // Multiply by 2 to find a value close to the width of the canvas
-      canvasWidth = 2 * (left + (blockWidth * arrLen / 2));
-      // Adjust the calculated width appropriately (I'm not sure why this is necessary, but it works every time)
-      canvasWidth = canvasWidth - arrLen + 1;
-      
-      setPosition(returnArr, level, arrNum, arrLen);
-      
-      av.umsg("Select the entire array");
-    }
-    
     arr.highlight();
     
-    if (arrLen == 1)
+    if (arrLen == 1)				// Base case
     {
-      // Base case
       av.umsg("An array of length 1 cannot be split, ready for merge");
       av.step();
       arr.unhighlight();
     }
-    else if (arrLen > 1)
+    else if (arrLen > 1)			// General recursive case
     {
-      // General recursive case
       av.step();
     
       av.umsg("Split the selected array (as evenly as possible)");
@@ -308,29 +304,26 @@
     
       // Find the middle of the array, if can't split evenly make the first array larger
       var midPoint = Math.ceil(arrLen / 2);
-    
-      level += 1;
-      var childArr1Num = arrNum * 2 - 1;
-      var childArr2Num = arrNum * 2;
-    
+	  
       // Create and display sub-arrays
       var subArr1 = arr.slice(0, midPoint);
       var avSubArr1 = av.ds.array(subArr1, {indexed: true, center: false});
-      setPosition(avSubArr1, level, childArr1Num);
       
       var subArr2 = arr.slice(midPoint, arrLen);
       var avSubArr2 = av.ds.array(subArr2, {indexed: true, center: false});
-      setPosition(avSubArr2, level, childArr2Num);
     
       av.step();
     
-      // Split both sub-arrays
+      // Recurse on both sub-arrays
       av.umsg("Select the left subarray");
-      var retArr1 = mergesort(av, avSubArr1, level, childArr1Num);
+	  var childArr1Col = column * 2 - 1;
+      var retArr1 = mergesort(avSubArr1, level + 1, childArr1Col);
+	  
       av.umsg("Select the right subarray");
-      var retArr2 = mergesort(av, avSubArr2, level, childArr2Num);
+	  var childArr2Col = column * 2;
+      var retArr2 = mergesort(avSubArr2, level + 1, childArr2Col);
       
-      returnArr = merge(av, arr, retArr1, retArr2, level - 1, arrNum);
+      returnArr = merge(arr, retArr1, retArr2);
     }
     
     return returnArr;
@@ -339,24 +332,19 @@
   /**
    * Merges two arrays back together in sorted order
    * 
-   * av - a JSAV container
    * origArr - the original array that will be overwritten by the merge
    * arr1 - the first array to merge
    * arr2 - the second array to merge
-   * level - the level of the recusion tree at which merge was called
-   * arrNum - the column number of the merged array
    */
-  function merge(av, origArr, arr1, arr2, level, arrNum)
+  function merge(origArr, arr1, arr2)
   {
     av.umsg("Merge selected arrays back together, in sorted order");
     
-    retArrLen = arr1.size() + arr2.size();
-  
-    // Hides the original array that's getting overwritten
-    origArr.hide();
-    var retArr = new Array(retArrLen);
-    var avRetArr = av.ds.array(retArr, {indexed: true, center: false});
-    setPosition(avRetArr, level, arrNum);
+    // Clear the values from the original array
+	for (var i = 0; i < origArr.size(); i++)
+	{
+	  origArr.value(i, "");
+	}
 	
     arr1.highlight();
     arr2.highlight();
@@ -409,7 +397,7 @@
         av.step();
         // Un-bold outline the selected element
         arr1.css(pos1, {"border-width": "1px"});
-        avRetArr.value(i, arr1.value(pos1));
+        origArr.value(i, arr1.value(pos1));
         markMerged(arr1, pos1);
         pos1++;
       }
@@ -422,16 +410,16 @@
         
         // Un-bold outline the selected element
         arr2.css(pos2, {"border-width": "1px"});
-        avRetArr.value(i, arr2.value(pos2));
+        origArr.value(i, arr2.value(pos2));
         markMerged(arr2, pos2);
         pos2++;
       }
       
-      setBlue(avRetArr, i);
+      setBlue(origArr, i);
       av.umsg("Add the selected value to the sorted array");
       av.step();
       
-      highlightSorted(avRetArr, i);
+      highlightSorted(origArr, i);
       i++;
     }
     
@@ -442,7 +430,7 @@
     
     av.clearumsg();
     
-    return avRetArr;
+    return origArr;
   }
   
   
