@@ -162,7 +162,6 @@ form {
 </script>
 <script src="../../JSAV/lib/jquery.transform.light.js"></script>
 <script src="../../JSAV/build/JSAV-min.js"></script>
-<script type="text/javascript" src="Queue.js"></script>
 
 <script>
 
@@ -466,6 +465,7 @@ form {
       
       // Process input with selected function
       var hashFunction = $("#function").val();
+
       switch(hashFunction) {
       	// No function chosen
         case '0':
@@ -484,17 +484,17 @@ form {
           var ret = simpleStrings(inputVal);
           break;
         case '5':
-		  var ret = improvedStrings(inputVal);
-		  break;
+	  var ret = improvedStrings(inputVal);
+	  break;
       }
       
       // Show first slide if success
       if (ret === 0)
-		loadNextSlide();
+	loadNextSlide();
       
       // Else, re-enable input textfield if an error has occurred
       else if (ret === 1)
-		$("#input").removeAttr("disabled");
+	$("#input").removeAttr("disabled");
     }
     
     // Else, load next slide
@@ -530,15 +530,15 @@ form {
       if (fullArray) {
       	var errorMsg = "Array is full. Insertion failed. Please Restart.";
       	error(errorMsg);
-	    // Reset flag
-		fullArray = false;
+	// Reset flag
+	fullArray = false;
       }
       
       $('input[name="next"]').attr("disabled", "disabled");
       $("#input").removeAttr("disabled");
     }
   }
-	
+  
   /* Hashing Functions */
   
   // Simple mod function
@@ -946,6 +946,61 @@ form {
       nextStep.enqueue(posValue);
     }
   }
+
+  /*
+   * Queue Data Structure
+   * Created by Stephen Morley - http://code.stephenmorley.org
+   * Released under the terms of Creative Commons
+   */
+  function Queue() {
+
+    // initialise the queue and offset
+    var queue  = [];
+    var offset = 0;
+
+    /* Returns true if the queue is empty, and false otherwise.
+     */
+    this.isEmpty = function(){
+
+      // return whether the queue is empty
+      return (queue.length == 0);
+
+    }
+
+    /* Enqueues the specified item. The parameter is:
+     * item - the item to enqueue
+     */
+    this.enqueue = function(item){
+
+      // enqueue the item
+      queue.push(item);
+
+    }
+
+    /* Dequeues an item and returns it. If the queue is empty then undefined is
+     * returned.
+     */
+    this.dequeue = function(){
+
+      // if the queue is empty, return undefined
+      if (queue.length == 0) return undefined;
+
+      // store the item at the front of the queue
+      var item = queue[offset];
+
+      // increment the offset and remove the free space if necessary
+      if (++ offset * 2 >= queue.length){
+	queue  = queue.slice(offset);
+	offset = 0;
+      }
+
+      // return the dequeued item
+      return item;
+
+    }
+  }
+  /* End Queue */
+  
 })(jQuery);
     
 </script>
