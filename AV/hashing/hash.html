@@ -960,21 +960,14 @@ form {
 
     /* Returns true if the queue is empty, and false otherwise.
      */
-    this.isEmpty = function(){
-
-      // return whether the queue is empty
+    this.isEmpty = function() {
       return (queue.length == 0);
-
     }
 
-    /* Enqueues the specified item. The parameter is:
-     * item - the item to enqueue
+    /* Enqueues the specified item.
      */
     this.enqueue = function(item){
-
-      // enqueue the item
       queue.push(item);
-
     }
 
     /* Dequeues an item and returns it. If the queue is empty then undefined is
@@ -996,7 +989,6 @@ form {
 
       // return the dequeued item
       return item;
-
     }
   }
   /* End Queue */
