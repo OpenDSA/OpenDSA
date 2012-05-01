@@ -286,7 +286,7 @@ form {
   
   /* Reset Function */
   function reset() {
-    
+
     // Clear messages
     if (av) {
       av.clearumsg();
@@ -473,6 +473,8 @@ form {
    * Else, load next slide
    */
   function next() {
+
+    av.label("hi", {display: true});
 
     // If no slide exists, create one
     if (nextStep.isEmpty()) {
