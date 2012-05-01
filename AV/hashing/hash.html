@@ -196,6 +196,7 @@ form {
   var arr;		        // JSAV Array
   var fullArray= false;         // Flag that determines whether array is full or not
   var nextStep = new Queue();	// A queue that will contain the "next step". Stores position and value of next step as an object
+  var midSquareFlag = 0;            // Flag if midsquare has been chosen to restart array size values to normal
   
   // Initialize JSAV object
   av = new JSAV("container");
@@ -297,6 +298,30 @@ form {
     if (arr) {
       arr.hide();
     }
+
+    // If mid-square has been selected, change the array size options to regular ones and reset flag to 0
+    if (midSquareFlag) {
+
+      $("#arraysize").html('<option selected value = 0> Table Size </option> \
+          <option value = 1> 1 </option> \
+          <option value = 2> 2 </option> \
+	  <option value = 3> 3 </option> \
+	  <option value = 4> 4 </option> \
+	  <option value = 5> 5 </option> \
+	  <option value = 6> 6 </option> \
+	  <option value = 7> 7 </option> \
+	  <option value = 8> 8 </option> \
+	  <option value = 9> 9 </option> \
+	  <option value = 10> 10 </option> \
+	  <option value = 11> 11 </option> \
+	  <option value = 12> 12 </option> \
+	  <option value = 13> 13 </option> \
+	  <option value = 14> 14 </option> \
+	  <option value = 15> 15 </option> \
+          <option value = 16> 16 </option>');
+      
+      midSquareFlag = 0;
+    }
     
     // Reset & disable dropdowns
     $("#function").val(params.method);
@@ -373,13 +398,11 @@ form {
         
 	// Mid Square
         case '3':
-	  // Change table size options to 8 and 16
-	  // USE:
-	  // $('#sel1').html('<option value="1">New Option 1</option><option value="2">New Option 2</option><option value="3">New Option 3</option>');
-	  // Make sure to revert options to original
-	
+	  // Change arra size options to only 8 and 16
+	  $("#arraysize").html('<option value="0"> Table Size </option> <option value="8"> 8 </option> <option value="16"> 16 </option>');	
 	  av.umsg("Algorithm Selected: Mid Square Method");
 	  av.umsg("Please select a table size");
+	  midSquareFlag = 1;
           break;
         
 	// Simple Strings
@@ -495,6 +518,10 @@ form {
       // Else, re-enable input textfield if an error has occurred
       else if (ret === 1)
 	$("#input").removeAttr("disabled");
+
+//      showcounts();
+      console.log(nextStep.getLength());
+      
     }
     
     // Else, load next slide
@@ -538,6 +565,25 @@ form {
       $("#input").removeAttr("disabled");
     }
   }
+
+  /* Show Counts Function */
+  function showcounts() {
+
+    var tableSize = $("#arraysize").val();
+
+    for (var i = 0; i < tableSize; i++) {
+
+      var ret = determineResolution(0, i, true);
+      
+      console.log("at i: " + ret);
+      
+    }
+
+    console.log(nextStep.getLength());
+
+    while (nextStep.getLength() > 0)
+      nextStep.dequeue();
+  }
   
   /* Hashing Functions */
   
@@ -560,7 +606,7 @@ form {
     av.umsg("= " + pos);
     
     // Process function with selected collision resolution
-    determineResolution(inputVal, pos);
+    determineResolution(inputVal, pos, false);
     
     // Return success
     return 0;
@@ -614,7 +660,7 @@ form {
 	av.umsg(" = " + pos);
 	
 	// Process function with selected collision resolution
-	determineResolution(inputVal, pos);
+	determineResolution(inputVal, pos, false);
 		
 	// Return success
 	return 0;
@@ -676,7 +722,7 @@ form {
     av.umsg("Hash position = " + pos);
     
     // Process function with selected collision resolution
-    determineResolution(inputVal, pos);
+    determineResolution(inputVal, pos, false);
     
     // Return success
     return 0;
@@ -711,7 +757,7 @@ form {
     av.umsg("Hash value: " + sum + " % " + size + " = " + pos); 
     
     // Process function with selected collision resolution
-    determineResolution(inputVal, pos);
+    determineResolution(inputVal, pos, false);
     
     // Return success
     return 0;
@@ -752,7 +798,7 @@ form {
     av.umsg("Hash value: " + sum + " % " + size + " = " + pos);
     
     // Process function with selected collision resolution
-    determineResolution(inputVal, pos);
+    determineResolution(inputVal, pos, false);
     
     // Return success
     return 0;
@@ -762,9 +808,10 @@ form {
   /* Collision Resolutions */
   
   // Function that determines which collision resolution to pick
-  function determineResolution(inputVal, pos) {
+  function determineResolution(inputVal, pos, showCounts) {
     
     var collisionResolution = $("#collision").val();
+    var ret = 0;
 	
     switch(collisionResolution) {
       // No function chosen
@@ -772,22 +819,26 @@ form {
       reset();
       break;
     case '1':
-      linearProbing(inputVal, pos);
+      ret = linearProbing(inputVal, pos, showCounts);
+      return
+      
       break;
     case '2':
-      linearProbingSteps(inputVal, pos);
+      ret = linearProbingSteps(inputVal, pos, showCounts);
       break;
     case '3':
-      pseudoRandom(inputVal, pos);
+      ret = pseudoRandom(inputVal, pos, showCounts);
       break;
     case '4':
-      quadraticProbing(inputVal, pos);
+      ret = quadraticProbing(inputVal, pos, showCounts);
       break;
     }
+
+    return ret;
   }
   
   // Linear Probing
-  function linearProbing(inputVal, pos) {
+  function linearProbing(inputVal, pos, showCounts) {
     
     // If pos is full, start resolution.
     // Cast into a number, otherwise '0' will be considered false.
@@ -814,7 +865,8 @@ form {
 	}
 	
 	// Insert attempt as highlighting activity
-	insertActivity(i, inputVal, false);
+	if (!showCounts)
+	  insertActivity(i, inputVal, false);
 	
 	// If i is last element of arr, restart to position 0 of the array
 	if (i == arr.size() - 1) {
@@ -832,14 +884,20 @@ form {
       
       // Empty spot found. Insert element inputVal at i
       if (!fullArray) {
-	insertActivity(i, inputVal, true);
+	if (!showCounts)
+	  insertActivity(i, inputVal, true);
+	else
+	  return i;
       }
     }
     
     // Otherwise, enqueue insertion activity
     else {
       // Hashing position found. Insert activity.
-      insertActivity(pos, inputVal, true);
+      if (!showCounts)
+	insertActivity(pos, inputVal, true);
+      else
+	return i;
     }
   }
 
@@ -964,6 +1022,12 @@ form {
       return (queue.length == 0);
     }
 
+    /* Returns the length of the queue
+     */
+    this.getLength = function() {
+      return (queue.length - offset);
+    }
+
     /* Enqueues the specified item.
      */
     this.enqueue = function(item){
@@ -982,7 +1046,7 @@ form {
       var item = queue[offset];
 
       // increment the offset and remove the free space if necessary
-      if (++ offset * 2 >= queue.length){
+      if (++ offset * 2 >= queue.length) {
 	queue  = queue.slice(offset);
 	offset = 0;
       }
