@@ -286,7 +286,7 @@ form {
   
   /* Reset Function */
   function reset() {
-    
+
     // Clear messages
     if (av) {
       av.clearumsg();
@@ -474,6 +474,8 @@ form {
    */
   function next() {
 
+    av.label("hi", {display: true});
+
     // If no slide exists, create one
     if (nextStep.isEmpty()) {
       
@@ -518,15 +520,13 @@ form {
       // Else, re-enable input textfield if an error has occurred
       else if (ret === 1)
 	$("#input").removeAttr("disabled");
-
-//      showcounts();
-      console.log(nextStep.getLength());
-      
     }
     
     // Else, load next slide
-    else
+    else {
       loadNextSlide();
+      showcounts();
+    }
   }
   
   function loadNextSlide() {
@@ -570,19 +570,15 @@ form {
   function showcounts() {
 
     var tableSize = $("#arraysize").val();
+    var tableCount = new Array(tableSize);
+
+    for (var i = 0; i < tableSize; i++)
+      tableCount[i] = 0;
 
     for (var i = 0; i < tableSize; i++) {
-
       var ret = determineResolution(0, i, true);
-      
-      console.log("at i: " + ret);
-      
+      tableCount[ret]++;      
     }
-
-    console.log(nextStep.getLength());
-
-    while (nextStep.getLength() > 0)
-      nextStep.dequeue();
   }
   
   /* Hashing Functions */
@@ -820,8 +816,6 @@ form {
       break;
     case '1':
       ret = linearProbing(inputVal, pos, showCounts);
-      return
-      
       break;
     case '2':
       ret = linearProbingSteps(inputVal, pos, showCounts);
