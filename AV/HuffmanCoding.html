@@ -27,6 +27,17 @@
 	#av{
 		overflow: visible;	
 	}
+    .jsavtree { position: absolute; } /* position trees absolutely */
+	.jsavtree:nth-of-type(1) { left:50px;} /* move 2nd tree to the right */
+	.jsavtree:nth-of-type(2) { left:150px;} /* move 3rd tree to the right */
+	.jsavtree:nth-of-type(3) { left:250px;} /* move 4th tree to the right */
+	.jsavtree:nth-of-type(4) { left:350px;} /* move 5th tree to the right */
+	.jsavtree:nth-of-type(5) { left:450px;} /* move 6th tree to the right */
+	.jsavtree:nth-of-type(6) { left:550px;} /* move 7th tree to the right */
+	.jsavtree:nth-of-type(7) { left:650px;} /* move 8th tree to the right */
+	.jsavtree:nth-of-type(8) { left:750px;} /* move 9th tree to the right */
+	.jsavtree:nth-of-type(9) { left:350px;} /* move 9th tree to the right */
+    .jsavcanvas { height: 500px;} /* set the height of the container */
 	
 	div h1 {
 	  background-color: #efe;
@@ -60,7 +71,7 @@
 	form {
 	  clear: both;
 	}
-</style>
+	</style>
 </head>
 	
 <body>
@@ -75,32 +86,7 @@
 		</div> <!--av-->
 	</div> <!--container-->
 
-	<script>
-	
-	// extend BinaryTree by adding a function to swap two trees in DOM
-    JSAV._types.ds.BinaryTree.prototype.swapWithTree = JSAV.anim(function(otherTree) { // wrap in JSAV.anim to make animatable
-      // calculate position differences before swap
-      var posdiffX = JSAV.position(this.element).left - JSAV.position(otherTree.element).left,
-          posdiffY = JSAV.position(this.element).top - JSAV.position(otherTree.element).top;
-
-      // swap the elements in the DOM tree
-      var el1 = this.element[0], // the DOM element for this tree
-          el2 = otherTree.element[0], // the DOM element for the other tree
-          aparent = el1.parentNode, // their parent node
-          asibling = el1.nextSibling===el2 ? el1 : el1.nextSibling; // get the sibling node of el1
-      el2.parentNode.insertBefore(el1, el2); // add el1 before el2 in DOM
-      aparent.insertBefore(el2, asibling); // add el2 before el1's sibling
-      
-      // .. then set the position of the trees so that the order appears unchanged..
-      this.element.css({"transform": "translate(" + (posdiffX) + "px, " + (posdiffY) + "px)"});
-      otherTree.element.css({"transform": "translate(" + (-posdiffX) + "px, " + (-posdiffY) + "px)"});
-      // ..animate the translation to 0, so they'll be in their final positions..
-      this.element.animate({"transform": "translate(0, 0)"}, JSAV.speed, 'linear');
-      otherTree.element.animate({"transform": "translate(0, 0)"}, JSAV.speed, 'linear');
-
-      return [otherTree]; // return otherTree to get animation working
-    });
-	
+	<script>	
 	// sorting the elements of an array with Insertation Sort
 	var sortArray = function (anArray, hfArray) {
 		for (var i = 1; i < anArray.length; i++) {
@@ -114,7 +100,6 @@
 			}
 			anArray[j + 1] = key;
 			hfArray[j + 1] = tmpTree;
-			//hfArray[j + 1].swapWithTree(hfArray[j]);
 		}
 	}
 
@@ -127,87 +112,36 @@
 		anArray.length -= 2;
 		hfArray.length -= 2;
 	}
+	
+	// traverse one tree and copy all its nodes to another tree
+    var traverse_copy = function(startNode, treeOne, treeTwoRoot) {
+		var val = treeTwoRoot.value();
 
-	// Constructing the huffmanCodingTree
-	var huffTree = function (anArray, hfArray) {
-		while (anArray.length > 1) {
+		// the node is an empty node	
+		if (!val || val === "jsavnull") {	
+			return;
+		} 
+		else {		
+				startNode.value(treeTwoRoot.value());
+				// Traverse the left subtree
+				if (treeTwoRoot.left()) {
+					var lchild = treeOne.newNode();
+					lchild.value(treeTwoRoot.left().value());
+					startNode.left(lchild);
+					traverse_copy(lchild, treeOne, treeTwoRoot.left());
+				}
+				// Traverse the right subtree
+				if (treeTwoRoot.right()) {
+					var rchild = treeOne.newNode();
+					rchild.value(treeTwoRoot.right().value());
+					startNode.right(rchild);
+					traverse_copy(rchild, treeOne, treeTwoRoot.right());
+				}
+		}
+    }
 
-			sortArray(anArray, hfArray);
-			var key = anArray[0] + anArray[1];
-			
-			// Extend the numArray
-			var newIndex = anArray.length;
-			anArray.length += 1;
-			anArray[newIndex] = key;
-			
-			// construct a new tree
-			hfArray.length += 1;
-			hfArray[newIndex] = jsav.ds.bintree({visible: false, center: false});
-			hfArray[newIndex].root(key);
-			hfArray[newIndex].root().left(hfArray[0].root());
-			hfArray[newIndex].root().right(hfArray[1].root());
-
-			shuffle(anArray, hfArray);
-		}	
-	}
-
-	// Constructing the huffmanCodingTree with animation
-	var huffTree_animation = function (anArray, hfArray) {
-		while (anArray.length > 1) {
-			sortArray(anArray, hfArray);
-			jsav.umsg("Sorting the data by their frequency, and the results are as follows: ");
-			// Display all the trees
-			for(var i = 0; i < hfArray.length; i++) {
-				var cor = 40 + 75 * i;
-				hfArray[i].css({"left":cor, "top": "5px"});
-			}
-			jsav.step();	
-			
-			jsav.umsg("Choose the two samllest number: " + anArray[0] + " and " + anArray[1]);
-			// Hightlight two elements that will be chosen
-			hfArray[0].root().highlight();
-			hfArray[1].root().highlight();
-			jsav.step();
-			var key = anArray[0] + anArray[1];
-			
-			// Extend the numArray
-			var newIndex = anArray.length;
-			anArray.length += 1;
-			anArray[newIndex] = key;
-			
-			// construct a new tree
-			hfArray.length += 1;
-			hfArray[newIndex] = jsav.ds.bintree({visible: false, center: false});
-			hfArray[newIndex].root(key);
-			hfArray[newIndex].root().left(hfArray[0].root());
-			hfArray[newIndex].root().right(hfArray[1].root());
-
-			jsav.umsg("Merge them together, and the result is " + key);
-		
-			// Hide all the trees display before.
-			for (var i = 0; i < hfArray.length; i++) {
-				hfArray[i].hide();
-			}
-			
-			// Dispay the procedure for merging two trees.
-			hfArray[newIndex].css({"left":"300px", "top": "5px"});
-			hfArray[newIndex].show();
-			jsav.step();
-			
-			jsav.umsg("Use " + key + " to replace " + anArray[0] + " and " + anArray[1] + ", and update the data as follows: ");
-			shuffle(anArray, hfArray);
-			// Display all the trees
-			for(var i = 0; i < hfArray.length; i++) {
-				var cor = 40 + 75 * i;
-				hfArray[i].css({"left":cor, "top": "5px"});
-				hfArray[i].show();
-			}
-			jsav.step();		
-		}	
-	}						
-
-    // traverse to re-set background color of the entire tree
-    var traverse_color = function(node, col, col2) {
+	    // traverse to reset background color of the entire tree
+    var traverse_color = function(node, col) {
 		var val = node.value();
 
 		// the node is an empty node	
@@ -238,6 +172,111 @@
 			}
 		}
     }
+	
+	// Layout all the trees
+	var layAll = function(trees) {
+		var leftSoFar = 30;
+		for (var i = 0; i < trees.length; i++) {
+			trees[i].css({"left": leftSoFar, "top":"6px"});
+			traverse_color(trees[i].root(), "white");
+			trees[i].layout();
+			leftSoFar += trees[i].element.width() + 50;
+		}
+    }
+	
+	// Hide all the trees
+	var hideAll = function(trees) {
+		for (var i = 0; i < trees.length; i++) {
+			trees[i].hide();
+		}
+	}
+	
+	// Show all the trees
+	var showAll = function(trees) {
+		for (var i = 0; i < trees.length; i++) {
+			trees[i].show();
+		}
+	}
+	
+	// Constructing the huffmanCodingTree
+	var huffTree = function (anArray, hfArray) {
+		while (anArray.length > 1) {
+
+			sortArray(anArray, hfArray);	
+			var key = anArray[0] + anArray[1];
+			
+			// Extend the numArray
+			var newIndex = anArray.length;
+			anArray.length += 1;
+			anArray[newIndex] = key;
+			
+			// construct a new tree
+			hfArray.length += 1;
+			hfArray[newIndex] = jsav.ds.bintree({visible: false, center: false});
+			hfArray[newIndex].root(key);
+			
+			// Construct the left subtree by copying the 1st tree
+			var lsub = hfArray[newIndex].newNode();
+			hfArray[newIndex].root().left(lsub);
+			traverse_copy(lsub, hfArray[newIndex], hfArray[0].root());
+			
+			// Construct the right subtree by copying the 2nd tree
+			var rsub = hfArray[newIndex].newNode();
+			hfArray[newIndex].root().right(rsub);
+			traverse_copy(rsub, hfArray[newIndex], hfArray[1].root());
+
+			// Restruct the tree array
+			shuffle(anArray, hfArray);
+		}	
+	}
+
+	// Constructing the huffmanCodingTree with animation
+	var huffTree_animation = function (anArray, hfArray) {
+		while (anArray.length > 1) {
+			sortArray(anArray, hfArray);
+			jsav.umsg("Sorting the data by their frequency, and the results are as follows: ");
+			layAll(hfArray);
+			jsav.step();
+			
+			jsav.umsg("Choose the two samllest number: " + anArray[0] + " and " + anArray[1] + ".");
+			// Hightlight two elements that will be chosen
+			hfArray[0].root().highlight();
+			hfArray[1].root().highlight();
+			jsav.step();
+			
+			hideAll(hfArray);
+			
+			var key = anArray[0] + anArray[1];						
+			// Extend the numArray
+			var newIndex = anArray.length;
+			anArray.length += 1;
+			anArray[newIndex] = key;
+			
+			// construct a new tree
+			hfArray.length += 1;
+			hfArray[newIndex] = jsav.ds.bintree({visible: false, center: false});
+			hfArray[newIndex].root(key);
+			
+			// Construct the left subtree by copying the 1st tree
+			var lsub = hfArray[newIndex].newNode();
+			hfArray[newIndex].root().left(lsub);
+			traverse_copy(lsub, hfArray[newIndex], hfArray[0].root());
+			
+			// Construct the right subtree by copying the 2nd tree
+			var rsub = hfArray[newIndex].newNode();
+			hfArray[newIndex].root().right(rsub);
+			traverse_copy(rsub, hfArray[newIndex], hfArray[1].root());
+			
+			hfArray[newIndex].hide();
+			jsav.umsg("Merge them together with the sum of them " + "\"" + key + "\"" +", and update the data as follows: ");
+			// Restruct the tree array
+			shuffle(anArray, hfArray);
+			
+			showAll(hfArray);
+			layAll(hfArray);
+			jsav.step();
+		}	
+	}	
 
 	var jsav = new JSAV("av");
 	
@@ -275,23 +314,13 @@
 	}
 
 	jsav.umsg("The initial data are as follows (the first line is frequency and the second line is the chracter): ");
-	// Display the initial data
-	for (var i = 0; i < hfArray.length; i++) {
-		traverse_color(hfArray[i].root(), "white");
-		var cor = 40 + 75 * i;
-		hfArray[i].css({"left":cor, "top": "5px"});
-	}	
+	layAll(hfArray);	
 	jsav.step();
 	
 	// Constructing Huffman Coding Tree with animation.
 	huffTree_animation(numArray, hfArray);
-
 	jsav.umsg("The Huffman Coding Tree is as follows: ");
-	var final = hfArray.length - 1;
-	traverse_color(hfArray[final].root(), "white");
-	hfArray[final].css({"center":"yes"});
-//	hfArray[final].layout();
-	jsav.step();
+	layAll(hfArray);
     jsav.recorded(); // done recording changes, will rewind
     
     $(".jsavtreenode").live("hover", function() {
@@ -311,10 +340,10 @@
 
 		// Process About button: Pop up a message with an Alert
 		function about() {
-			var mystring = "HuffmanCoding Tree Visualization\nWritten by Maoyuan Sun\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during April, 2012\nLast update: April 29, 2012\nJSAV library version " + JSAV.version();
+			var mystring = "HuffmanCoding Tree Visualization\nWritten by Maoyuan Sun\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during May, 2012\nLast update: May 3, 2012\nJSAV library version " + JSAV.version();
 			alert(mystring);
 		}
-		})(jQuery);  
+	})(jQuery);  
 
 	</script>
 </body>
