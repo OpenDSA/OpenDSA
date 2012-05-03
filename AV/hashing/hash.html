@@ -474,8 +474,6 @@ form {
    */
   function next() {
 
-    av.label("hi", {display: true});
-
     // If no slide exists, create one
     if (nextStep.isEmpty()) {
       
@@ -569,6 +567,10 @@ form {
   /* Show Counts Function */
   function showcounts() {
 
+    /*
+     * Show Counts: av.label("hi", {display: true});
+     */
+
     var tableSize = $("#arraysize").val();
     var tableCount = new Array(tableSize);
 
@@ -661,7 +663,7 @@ form {
 	// Return success
 	return 0;
       }
-    }  
+v    }  
   }
   
   // Mid-Square Method
