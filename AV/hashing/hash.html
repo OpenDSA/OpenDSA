@@ -80,6 +80,7 @@ form {
   <div id="container">
     <p class="jsavoutput jsavscroll" readonly="readonly" style="width:270px; height:400px; font-size: 95%; float:left"> </p>
     <input type="button" id="about" name="about" value="About" style="margin-top:10px;"/>
+    <input type="button" id="showcounts" name="showcounts" value="Show Counts" style="margin-top:10px; float:right" />
   </div>
   
   <!-- Bottom Container -->
@@ -196,7 +197,9 @@ form {
   var arr;		        // JSAV Array
   var fullArray= false;         // Flag that determines whether array is full or not
   var nextStep = new Queue();	// A queue that will contain the "next step". Stores position and value of next step as an object
-  var midSquareFlag = 0;            // Flag if midsquare has been chosen to restart array size values to normal
+  var midSquareFlag = 0;        // Flag if midsquare has been chosen to restart array size values to normal
+  var tableCount;               // Array that will hold an object that contains the show counts value and the label
+  var showCountFlag;            // Flag that determines of showcount is showing or not
   
   // Initialize JSAV object
   av = new JSAV("container");
@@ -213,6 +216,7 @@ form {
   $('input[name="about"]').click(about);
   $('input[name="next"]').click(next);
   $('input[name="reset"]').click(reset);
+  $('input[name="showcounts"]').click(showcounts);
 
   /* Query Parameters */
   // Query flag. 1 if a query is set, 0 if not.
@@ -450,6 +454,30 @@ form {
       $("#collision").removeAttr("disabled");
       av.umsg("Please select a collision resolution policy.");
     }
+
+    // Initialize show counts array and set labels to hide as default
+    tableCount = new Array(arraySize);
+    var height = 25;
+    for (var i = 0; i < arraySize; i++) {
+
+      var poscount = 1;
+      var poslabel = av.label(poscount, {"top": height+"px", "left": "435px"});
+      poslabel.hide();
+
+      // Object in the array that holds the count of that position and the actual label
+      // Do not forget to update both! A count var exists to be able to retrieve current count
+      var obj = {
+	count: poscount,
+	label: poslabel,
+	visited: false
+      };
+
+      tableCount[i] = obj;
+      height += 30;
+    }
+
+    showCountFlag = false;
+    
   });
 
   // Event trigger if collision resolution policy changed
@@ -510,6 +538,8 @@ form {
 	  var ret = improvedStrings(inputVal);
 	  break;
       }
+
+      
       
       // Show first slide if success
       if (ret === 0)
@@ -523,7 +553,28 @@ form {
     // Else, load next slide
     else {
       loadNextSlide();
-      showcounts();
+      var tableSize = $("#arraysize").val();
+
+      // Restart counts to 0 to be able to recalculate the counts
+      // The label stays the same - so this won't affect what the user sees
+      for (var i = 0; i < tableSize; i++)
+	tableCount[i].count = 0;
+      
+      for (var i = 0; i < tableSize; i++) {
+	var ret = determineResolution(0, i, true);
+	var count = tableCount[ret].count;
+	count++;
+	tableCount[ret].count = count;
+	tableCount[ret].visited = true;
+	tableCount[ret].label.text(tableCount[ret].count);
+      }
+      
+      for (var i = 0; i < tableSize; i++) {
+	if (tableCount[i].visited === false) {
+	  tableCount[i].count = 0;
+	  tableCount[i].label.text(tableCount[i].count);
+	}
+      }
     }
   }
   
@@ -566,21 +617,35 @@ form {
 
   /* Show Counts Function */
   function showcounts() {
+    
+    var tableSize = $("#arraysize").val();
 
-    /*
-     * Show Counts: av.label("hi", {display: true});
-     */
+    if (showCountFlag) {
+      for (var i = 0; i < tableSize; i++)
+	tableCount[i].label.hide();
+      showCountFlag = false;
+    }
+
+    else {
+      for (var i = 0; i < tableSize; i++)
+	tableCount[i].label.show();
+      showCountFlag = true;
+    }
+/*    
 
     var tableSize = $("#arraysize").val();
     var tableCount = new Array(tableSize);
-
+    
     for (var i = 0; i < tableSize; i++)
       tableCount[i] = 0;
-
+    
+    var height = 25;
     for (var i = 0; i < tableSize; i++) {
       var ret = determineResolution(0, i, true);
-      tableCount[ret]++;      
-    }
+      tableCount[ret]++;
+      var lll = av.label(tableCount[ret], {"top": height+"px", "left": "435px"});
+      height += 30;
+    }*/
   }
   
   /* Hashing Functions */
@@ -663,7 +728,7 @@ form {
 	// Return success
 	return 0;
       }
-v    }  
+    }  
   }
   
   // Mid-Square Method
