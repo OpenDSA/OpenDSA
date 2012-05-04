@@ -557,8 +557,10 @@ form {
 
       // Restart counts to 0 to be able to recalculate the counts
       // The label stays the same - so this won't affect what the user sees
-      for (var i = 0; i < tableSize; i++)
+      for (var i = 0; i < tableSize; i++) {
 	tableCount[i].count = 0;
+	tableCount[i].visited = false;
+      }
       
       for (var i = 0; i < tableSize; i++) {
 	var ret = determineResolution(0, i, true);
