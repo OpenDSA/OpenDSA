@@ -304,4 +304,9 @@ examining the resulting code (since it is so constrained) or by
 examining a computed output.
 </p>
 
+<p class="TODO">
+Given an enumeration from a tree, determine if it is pre-order,
+post-order, in-order, or none of the above.
+</p>
+
 </div>

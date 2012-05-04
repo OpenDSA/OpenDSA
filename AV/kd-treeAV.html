@@ -8,11 +8,12 @@
     <style>
     .jsavtree {
       position: relative;
+      left:100px;
       width: 500px;
-      height: 300px;
+      height: 1000px;
     }
     svg {
-      height: 500px;
+      height: 1500px;
     }
     p.jsavoutput.jsavline
     {
@@ -25,11 +26,27 @@
     path {
       pointer-events: visible;
     }
+    .jsavnode {
+     line-height : 22px;
+     height :50px;
+     width :50px;
+     }
+    .jsavlabel
+    {
+    	position:absolute;
+    }
+    .jsavcounter {
+  position: absolute;
+  width: 60px;  
+  height:40px;
+}
+
     </style>
   </head>
   <body>
     
     <div style="float:left; width:95%;" id="av">
+      <span class="jsavcounter"></span>
       <div  class="jsavcontrols"></div>
       <p class="jsavoutput jsavline"></p> 
     </div>
@@ -189,6 +206,7 @@
 
     // Main program inserts 10 random values into the tree
    // var jcan = document.getElementById("can");
+    
     var jsav = new JSAV("av");
     var bt = jsav.ds.bintree({center:false});
     var caption_label = jsav.label("kd-tree insert", {before: bt});
@@ -215,13 +233,21 @@
     else {   
        width = document.getElementsByTagName('body')[0].clientWidth,      
        height = document.getElementsByTagName('body')[0].clientHeight }  
-      
+    
+   $('#av').css({'width': width});   
+   
    xcanvas = width/2;
    ycanvas = 0;
-   canH = (height <= 800)? height*2/3 : 500; 
-    var rect = jsav.g.rect(xcanvas, ycanvas, 500, canH);
+   canH =  height*2/3 ; 
+   canW = width/3;
+    var rect = jsav.g.rect(xcanvas, ycanvas, canW, canH);
+   
+    var wtext = Math.ceil(canW);
+    wtext += '';
+    //var wlabel = jsav.label(wtext,{before: bt});
+     //  wlabel.css({left:"400px", top:"200px"});
     // Initialize points without displaying them:
-    var keyX = JSAV.utils.rand.numKeys(5,495,10);
+    var keyX = JSAV.utils.rand.numKeys(5,canW-5,10);
     var keyY = JSAV.utils.rand.numKeys(5,canH-5,10);
     var points = [];   
     for(var i = 0; i < keyX.length; i++)
@@ -239,7 +265,7 @@
 	   point_label[i].show();      // Not working: I'd like to show an alphabetical label next to each dot
 	   points[i].css({"fill":"red", "fill-opacity": 1});
 	   caption_label.text(caption_text);
-	   insert_anim(bt.root(), keyX[i], keyY[i], 0, [0,0,500,canH], i, points);
+	   insert_anim(bt.root(), keyX[i], keyY[i], 0, [0,0,canW,canH], i, points);
 	   points[i].css({"fill":"black", "fill-opacity": 1});
 	   for( var k = 0; k < j+1; k++){
 	   points[k].css({"fill":"black", "fill-opacity": 1});}
@@ -247,8 +273,9 @@
 	   traverse_color(bt.root(), "white");
 	   bt.layout();
     }
-   
-   
+   jsav.step();
+   caption_text = "Done inserting 10 points";
+   caption_label.text(caption_text);
     jsav.recorded(); // done recording changes, will rewind
     
    
@@ -260,48 +287,7 @@
     });
   
 
- // Plain vanilla insert -- no animation
-/*    var insert = function(node, x, y, level) {
-	var val = getKdValues(node);
-	if (!val || val === "jsavnull" || val.x === NaN) { // no value in node
-            setKdValues(node, x, y);
-	} else 
-	   if (level%2 === 0)
-	   {
-	     if (val.x >= x)   // go left
-	      { 
-            if (node.left()) {
-		        insert(node.left(), x, y, ++level);} 
-            else {
-		       node.left("x: <span class='xvalue'>" + x + "</span><br/>y: <span class='yvalue'>" + y + "</span>");}
-	       } 
-	     else  // go right
-           {
-             if (node.right()) {
-		        insert(node.right(), x, y, ++level);}
-             else {
-		       node.right("x: <span class='xvalue'>" + x + "</span><br/>y: <span class='yvalue'>" + y + "</span>"); }
-            }
-         }
-        else if (level%2 === 1) 
-        {
-         if (val.y >= y)   // go left
-	      { 
-            if (node.left()) {
-		        insert(node.left(), x, y, ++level);} 
-            else {
-		       node.left("y: <span class='yvalue'>" + y + "</span><br/>y: <span class='xvalue'>" + x + "</span>");}
-	       } 
-	     else  // go right
-           {
-             if (node.right()) {
-		        insert(node.right(), x, y, ++level);}
-             else {
-		       node.right("y: <span class='yvalue'>" + y + "</span><br/>x: <span class='xvalue'>" + x + "</span>"); }
-            }
-        } 
-    }
-*/
+ 
 
   </script>
   </body>
