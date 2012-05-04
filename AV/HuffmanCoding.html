@@ -10,7 +10,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 	<script src="../JSAV/lib/jquery.transform.light.js"></script>
 	<script src="../JSAV/lib/raphael.js"></script>
-	<script src="../JSAV/build/JSAV-min.js"></script>
 	<script src="../JSAV/build/JSAV.js"></script>
 
 	<style>
@@ -105,12 +104,24 @@
 
 	// Shuffle the array by moving left
 	var shuffle = function (anArray, hfArray) {
-		for (var i = 0; i < anArray.length - 1; i++) {
+		for (var i = 0; i < anArray.length - 2; i++) {
 			anArray[i] = anArray[i + 2];
 			hfArray[i] = hfArray[i + 2];
 		}
 		anArray.length -= 2;
 		hfArray.length -= 2;
+	}
+	
+	// shift the merged tree to the 1st place
+	var shift = function (anArray, hfArray) {
+		var key = anArray[anArray.length - 1];
+		var tmp = hfArray[hfArray.length -1];
+		for (var i = anArray.length - 1; i > 0; i--) {
+			anArray[i] = anArray[i - 1];
+			hfArray[i] = hfArray[i - 1];
+		}
+		anArray[0] = key;
+		hfArray[0] = tmp;
 	}
 	
 	// traverse one tree and copy all its nodes to another tree
@@ -207,8 +218,9 @@
 			
 			// Extend the numArray
 			var newIndex = anArray.length;
-			anArray.length += 1;
-			anArray[newIndex] = key;
+			//anArray.length += 1;
+			//anArray[newIndex] = key;
+			anArray[1] = key;
 			
 			// construct a new tree
 			hfArray.length += 1;
@@ -271,6 +283,8 @@
 			jsav.umsg("Merge them together with the sum of them " + "\"" + key + "\"" +", and update the data as follows: ");
 			// Restruct the tree array
 			shuffle(anArray, hfArray);
+			// Shif the merged tree to the 1st place
+			shift(anArray, hfArray);
 			
 			showAll(hfArray);
 			layAll(hfArray);
@@ -308,7 +322,8 @@
 	// initialization for all the arrays
 	for (var i = 0, j = 0; i < userArray.length - 1; i += 2, j++) {
 		value = userArray[i] + "<br>" + userArray[i + 1];
-		hfArray[j] = jsav.ds.bintree({visible: false, center: false});	
+		// hfArray[j] = jsav.ds.bintree({visible: false, center: false});
+		hfArray[j] = jsav.ds.bintree({center: false});	
 		hfArray[j].root(value);
 		numArray[j] = userArray[i];
 	}
