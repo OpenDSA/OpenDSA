@@ -288,14 +288,21 @@ form {
     av.umsg("<br />");
   }
   
-  /* Reset Function */
+  /*
+   * Reset Function
+   * There are a few things that must be restarted - please examine code.
+   */
   function reset() {
 
-    // Clear messages
+    // If an av already exists
+    // In other words, reset has been hit after some visualization has already been displayed
     if (av) {
+      // clear messages
       av.clearumsg();
+      // Toggle showcounts to off
+      showcounts("no");
       if (paramFlag === 0)
-	av.umsg("Please select a hashing function");
+	av.umsg("Please select a hashing function")
     }
     
     // Hide array if one exists
@@ -538,8 +545,6 @@ form {
 	  var ret = improvedStrings(inputVal);
 	  break;
       }
-
-      
       
       // Show first slide if success
       if (ret === 0)
@@ -617,12 +622,67 @@ form {
     }
   }
 
-  /* Show Counts Function */
+  /*
+   * Show Counts Button Function
+   * This function can either take an argument or not
+   * It tries to mimic C's "va_list" feature.
+   * If toggleState is given as "yes" or "no", then it will toggle accordingly
+   * Otherwise, it will just toggle to the opposite state
+   * Can ONLY take either no arguments or just one argument ("yes" or "no")
+   * Undefined behavior if more/incorrect arguments are passed - be warned!
+   */
   function showcounts() {
-    
+
     var tableSize = $("#arraysize").val();
 
-    if (showCountFlag) {
+    var toggleState;
+    if (arguments.length == 1) {
+      if (is("String", arguments[0]))
+	  toggleState = arguments[0];
+    }
+
+    // If a variable toggle is given
+    if (toggleState) {
+
+      // Show
+      if (toggleState === "yes") {
+	for (var i = 0; i < tableSize; i++)
+	  tableCount[i].label.show();
+	showCountFlag = true;
+      }
+
+      // Don't show
+      else if (toggleState === "no") {
+	for (var i = 0; i < tableSize; i++)
+	  tableCount[i].label.hide();
+	showCountFlag = false;
+      }
+
+    }
+
+    // Otherwise, toggle to opposite state
+    else {
+      
+      if (showCountFlag) {
+	for (var i = 0; i < tableSize; i++)
+	  tableCount[i].label.hide();
+	showCountFlag = false;
+      }
+      
+      else {
+	for (var i = 0; i < tableSize; i++)
+	  tableCount[i].label.show();
+	showCountFlag = true;
+      }
+    }
+  }
+
+  // Show Counts toggle function
+  function toggleShowCounts(toggle) {
+
+    var tableSize = $("#arraysize").val();
+
+     if (showCountFlag) {
       for (var i = 0; i < tableSize; i++)
 	tableCount[i].label.hide();
       showCountFlag = false;
@@ -633,21 +693,9 @@ form {
 	tableCount[i].label.show();
       showCountFlag = true;
     }
-/*    
 
-    var tableSize = $("#arraysize").val();
-    var tableCount = new Array(tableSize);
-    
-    for (var i = 0; i < tableSize; i++)
-      tableCount[i] = 0;
-    
-    var height = 25;
-    for (var i = 0; i < tableSize; i++) {
-      var ret = determineResolution(0, i, true);
-      tableCount[ret]++;
-      var lll = av.label(tableCount[ret], {"top": height+"px", "left": "435px"});
-      height += 30;
-    }*/
+
+
   }
   
   /* Hashing Functions */
