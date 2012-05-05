@@ -624,21 +624,34 @@ form {
 
   /*
    * Show Counts Button Function
-   * This function can either take an argument or not
+   *
+   * This function can either take one argument or not
    * It tries to mimic C's "va_list" feature.
    * If toggleState is given as "yes" or "no", then it will toggle accordingly
    * Otherwise, it will just toggle to the opposite state
-   * Can ONLY take either no arguments or just one argument ("yes" or "no")
-   * Undefined behavior if more/incorrect arguments are passed - be warned!
+   * This can ONLY take either no arguments or just one argument ("yes" or "no")
+   * Error alert box will appear if usage is incorrect in somecases. Incorrect usage MAY cause undefined behavior - be warned!!
    */
   function showcounts() {
+
+    if (arguments.length > 1)
+      alert("Runtime Error in showcounts() function usage.");
 
     var tableSize = $("#arraysize").val();
 
     var toggleState;
     if (arguments.length == 1) {
-      if (is("String", arguments[0]))
+
+      if (is("String", arguments[0])) {
+
+	// Set toggleState if correct argument passed
+	if (arguments[0] === "yes" || arguments[0] === "no")
 	  toggleState = arguments[0];
+	
+	// Else, display an error
+	else
+	  alert("Runtime error. Wrong arguments passed into showcounts(). Arg: " + arguments[0]);
+      }
     }
 
     // If a variable toggle is given
