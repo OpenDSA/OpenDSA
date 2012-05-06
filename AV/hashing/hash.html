@@ -124,9 +124,10 @@ form {
 	<select id="collision">
 	  <option selected value = 0> Collision Resolution Policy </option>
 	  <option value = 1> Linear Probing </option>
-	  <option value = 2> Linear Probing by Steps </option>
-	  <option value = 3> Pseudo-random Probing </option>
-	  <option value = 4> Quadratic Probing </option>
+	  <option value = 2> Linear Probing by Stepsize of 2 </option>
+		<option value = 3> Linear Probing by Stepsize of 3 </option>
+	  <option value = 4> Pseudo-random Probing </option>
+	  <option value = 5> Quadratic Probing </option>
 	  
 	</select>
 	
@@ -177,14 +178,15 @@ form {
  *
  * Coliision Resolutions:
  * 1. Linear Probing
- * 2. Linear Probing by Steps
- * 3. Pseudo-Random Probing
- * 4. Quadratic Probing
+ * 2. Linear Probing by Stepsize of 2
+ * 3. Linear Probing by Stepsize of 3
+ * 4. Pseudo-Random Probing
+ * 5. Quadratic Probing
  *
  * To handle queries:
  * Set the method parameter and collision parameter according to reference above.
  * For example, to choose Mid-Square Hash with pseudo-random probing, you would use:
- * hash.html?method=3&collision=3
+ * hash.html?method=3&collision=4
  */
  
 /* The fun starts here  */
@@ -601,8 +603,24 @@ form {
     
     // If activity is only highlighting
     else {
-      av.umsg("Attempting to insert " + next.value + " at position " + next.position + ".");
-      arr.unhighlight(next.position-1);
+		
+      //Check to see if the position to be considered for insertion is outside the range of the array size
+			if (next.position >= arr.size()){
+				var temp = next.position - arr.size();
+				av.umsg("Attempting to insert " + next.value + " at position " + temp + ".");
+			}
+			
+			else if (next.position < 0){
+				var temp1 = next.position + 1; 
+				av.umsg("Attempting to insert " + next.value + " at position " + temp1 + ".");
+			}
+			
+			else{
+				av.umsg("Attempting to insert " + next.value + " at position " + next.position + ".");
+			}
+			
+      //arr.unhighlight(next.position-1);
+			arr.unhighlight();
       arr.highlight(next.position);
     }
     
@@ -948,23 +966,29 @@ form {
       ret = linearProbing(inputVal, pos, showCounts);
       break;
     case '2':
-      ret = linearProbingSteps(inputVal, pos, showCounts);
+      ret = linearProbingStepsTwo(inputVal, pos, showCounts);
       break;
-    case '3':
+		case '3':
+      ret = linearProbingStepsThree(inputVal, pos, showCounts);
+      break;	
+    case '4':
       ret = pseudoRandom(inputVal, pos, showCounts);
       break;
-    case '4':
+    case '5':
       ret = quadraticProbing(inputVal, pos, showCounts);
       break;
     }
 
+		
     return ret;
   }
   
   // Linear Probing
   function linearProbing(inputVal, pos, showCounts) {
     
-    // If pos is full, start resolution.
+    //
+		
+		// If pos is full, start resolution.
     // Cast into a number, otherwise '0' will be considered false.
     if ((Number(arr.value(pos))) !== false) {
       
@@ -977,66 +1001,296 @@ form {
       // Loop across the array. "infinite" loop. Breaks if array is full.
       for (;;) {
 	
-	// If array is full, break out
-	if (count == arr.size()) {
-	  fullArray = true;
-	  break;
-	}
+				// If array is full, break out
+				if (count == arr.size()) {
+					fullArray = true;
+					break;
+				}
 	
-	// If space is available, break
-	if (String(arr.value(i)) == "") {
-	  break;
-	}
+				// If space is available, break
+				if (String(arr.value(i)) == "") {
+					break;
+				}
 	
-	// Insert attempt as highlighting activity
-	if (!showCounts)
-	  insertActivity(i, inputVal, false);
+				// Insert attempt as highlighting activity
+				if (!showCounts)
+					insertActivity(i, inputVal, false);
+				
+				// If i is last element of arr, restart to position 0 of the array
+				if (i == arr.size() - 1) {
+					i = 0;
+				}
 	
-	// If i is last element of arr, restart to position 0 of the array
-	if (i == arr.size() - 1) {
-	  i = 0;
-	}
+				// Otherwise just increment i by 1 (to check for next pos of array next iteration)
+				else {
+					i++;
+				}
 	
-	// Otherwise just increment i by 1 (to check for next pos of array next iteration)
-	else {
-	  i++;
-	}
-	
-	// Increment count 
-	count++;
+				// Increment count 
+				count++;
       }
       
       // Empty spot found. Insert element inputVal at i
       if (!fullArray) {
-	if (!showCounts)
-	  insertActivity(i, inputVal, true);
-	else
-	  return i;
+	      if (!showCounts)
+	        insertActivity(i, inputVal, true);
+	      else
+	        return i;
       }
-    }
+    }  
     
     // Otherwise, enqueue insertion activity
     else {
       // Hashing position found. Insert activity.
       if (!showCounts)
-	insertActivity(pos, inputVal, true);
+	      insertActivity(pos, inputVal, true);
       else
-	return i;
+	      return i;
+    }
+  }
+	
+
+  // Linear Probing By Stepsize of Two
+  function linearProbingStepsTwo(inputVal, pos, showCounts) {
+	
+		// If pos is full, start resolution.
+    // Cast into a number, otherwise '0' will be considered false.
+    if ((Number(arr.value(pos))) !== false) {
+      
+      // Temp pointer that will point to the correct position at the end of the loop
+      var i = pos;
+      
+      // Counter that counts how many times the array ran
+      var count = 0;
+      
+      // Loop across the array. "infinite" loop. Breaks if array is full.
+      for (;;) {
+	
+				// If array is full, break out
+				if (count == arr.size()) {
+					fullArray = true;
+					break;
+				}
+	
+				// If space is available, break
+				if (String(arr.value(i)) == "") {
+					break;
+				}
+	
+				// Insert attempt as highlighting activity
+				if (!showCounts)
+					insertActivity(i, inputVal, false);
+				
+				// If i is last element of arr, restart to position 0 of the array
+				if (i == arr.size() - 1) {
+					i -= arr.size();
+				}
+	
+				// Otherwise just increment i by the stepsize of 2
+				else {
+					i = i + 2;
+				}
+	
+				// Increment count 
+				count++;
+      }
+      
+      // Empty spot found. Insert element inputVal at i
+      if (!fullArray) {
+	      if (!showCounts)
+	        insertActivity(i, inputVal, true);
+	      else
+	        return i;
+      }
+    }  
+    
+    // Otherwise, enqueue insertion activity
+    else {
+      // Hashing position found. Insert activity.
+      if (!showCounts)
+	      insertActivity(pos, inputVal, true);
+      else
+	      return i;
+    }
+  }
+	
+	
+	
+	
+	// Linear Probing By Stepsize of Three
+  function linearProbingStepsThree(inputVal, pos, showCounts) {
+	
+		// If pos is full, start resolution.
+    // Cast into a number, otherwise '0' will be considered false.
+    if ((Number(arr.value(pos))) !== false) {
+      
+      // Temp pointer that will point to the correct position at the end of the loop
+      var i = pos;
+      
+      // Counter that counts how many times the array ran
+      var count = 0;
+      
+      // Loop across the array. "infinite" loop. Breaks if array is full.
+      for (;;) {
+	
+				// If array is full, break out
+				if (count == arr.size()) {
+					fullArray = true;
+					break;
+				}
+	
+				// If space is available, break
+				if (String(arr.value(i)) == "") {
+					break;
+				}
+	
+				// Insert attempt as highlighting activity
+				if (!showCounts)
+					insertActivity(i, inputVal, false);
+				
+				// If i is last element of arr, restart to position 0 of the array
+				if (i == arr.size() - 1) {
+					i -= arr.size();
+				}
+	
+				// Otherwise just increment i by the step size of 3.
+				else {
+					i = i + 3;
+				}
+	
+				// Increment count 
+				count++;
+      }
+      
+      // Empty spot found. Insert element inputVal at i
+      if (!fullArray) {
+	      if (!showCounts)
+	        insertActivity(i, inputVal, true);
+	      else
+	        return i;
+      }
+    }  
+    
+    // Otherwise, enqueue insertion activity
+    else {
+      // Hashing position found. Insert activity.
+      if (!showCounts)
+	      insertActivity(pos, inputVal, true);
+      else
+	      return i;
     }
   }
 
-  // Linear Probing By Steps
-  function linearProbingSteps(inpuVal, pos) {
-    //
-  }
-
+	
+	
+  // Array of permutations
+	var perm = new Array();
+	perm[0] = 0;
+	
+	
   // Pseudo-Random Probing
-  function pseudoRandom(inputVal, pos) {
-    //
+  function pseudoRandom(inputVal, pos, showCounts) {	
+	
+		var j;
+		
+		// Filling the array with a random permutation
+		while (perm.length < arr.size()){
+		
+			var randomnumber = Math.ceil(Math.random()*(arr.size()-1));
+			var found = false;
+			
+			for(j = 0; j < arr.size(); j++){
+				if(perm[j] == randomnumber){
+					found = true;
+					break;
+				}
+			}
+			
+			if(!found)
+				perm.push(randomnumber);//perm[perm.length] = randomnumber;
+		}
+		
+		var k;
+		var string = "";
+		for (k = 0; k < perm.length; k++){
+			 string += perm[k] + " ";
+		}
+		
+		//av.umsg("Perm: " + string);	
+	
+		// If pos is full, start resolution.
+    // Cast into a number, otherwise '0' will be considered false.
+    if ((Number(arr.value(pos))) !== false) {
+      
+      // Temp pointer that will point to the correct position at the end of the loop
+      var i = pos;
+      
+      // Counter that counts how many times the array ran
+      var count = 0;
+      
+      // Loop across the array. "infinite" loop. Breaks if array is full.
+      for (;;){	
+			
+			  // Current index of array of permutations
+				var curr = 1;
+			  
+	      //av.umsg("Perm: " + string);
+				
+				// If array is full, break out
+				if (count == arr.size()) {
+					fullArray = true;
+					break;
+				}
+	
+				// If space is available, break
+				if (String(arr.value(i)) == "") {
+					break;
+				}
+	
+				// Insert attempt as highlighting activity
+				if (!showCounts)
+					insertActivity(i, inputVal, false);
+				
+				// If i is last element of arr, restart at the beginning of the array
+			  if (i >= arr.size() - 1) {
+				  i -= arr.size();
+			  }
+	
+				// Otherwise continue the iteration using the corresponding step size in the prem array.
+				else {
+					i = i + perm[curr];							
+				}
+				curr++;
+				// Increment count 
+				count++;
+      }
+			
+			
+      
+      // Empty spot found. Insert element inputVal at i
+      if (!fullArray) {
+	      if (!showCounts)
+	        insertActivity(i, inputVal, true);
+	      else
+	        return i;
+      }
+    }  
+    
+    // Otherwise, enqueue insertion activity
+    else {
+      // Hashing position found. Insert activity.
+      if (!showCounts)
+	      insertActivity(pos, inputVal, true);
+      else
+	      return i;
+    }
   }
 
+
+	
+	
   // Quadratic Probing
-  function quadraticProbing(inputVal, pos) {
+  function quadraticProbing(inputVal, pos, showCounts) {
     
     // If pos is full, start resolution.
     // Cast into a number, otherwise '0' will be considered false.
@@ -1044,53 +1298,67 @@ form {
       
       // Temp pointer that will point to the correct position at the end of the loop
       var i = pos;
-	  
+      
       // Counter that counts how many times the array ran
       var count = 0;
+			
+			// Stepsize for the quadratic probing
+			var stepsize = 1;
       
       // Loop across the array. "infinite" loop. Breaks if array is full.
       for (;;) {
 	
-	// If array is full, break out
-	if (count == arr.size()) {
-	  fullArray = true;
-	  break;
-	}
+				// If array is full, break out
+				if (count == arr.size()) {
+					fullArray = true;
+					break;
+				}
 	
-	// If space is available, break
-	if (String(arr.value(i)) == "") {
-	  break;
-	}
+				// If space is available, break
+				if (String(arr.value(i)) == "") {
+					break;
+				}
 	
-	// Insert attempt as highlighting activity
-	insertActivity(i, inputVal, false);
+				// Insert attempt as highlighting activity
+				if (!showCounts)
+					insertActivity(i, inputVal, false);
+				
+				// If i is last element of arr, restart at the beginning of the array
+			  if (i >= arr.size() - 1) {
+				  i -= arr.size();
+			  }
 	
-	// If i is last element of arr, restart to position 0 of the array
-	if (i == arr.size() - 1) {
-	  i = 0;
-	}
+				// Otherwise the step size i become i squared.
+				else {
+					i += stepsize
+					stepsize += 2;
+				}
 	
-	// Otherwise the step size i become i squared.
-	else {
-	  i = i*i;
-	}
-	
-	// Increment count 
-	count++;
+				// Increment count 
+				count++;
       }
       
       // Empty spot found. Insert element inputVal at i
       if (!fullArray) {
-	insertActivity(i, inputVal, true);
+	      if (!showCounts)
+	        insertActivity(i, inputVal, true);
+	      else
+	        return i;
       }
-    }
+    }  
     
     // Otherwise, enqueue insertion activity
     else {
       // Hashing position found. Insert activity.
-      insertActivity(pos, inputVal, true);
+      if (!showCounts)
+	      insertActivity(pos, inputVal, true);
+      else
+	      return i;
     }
+		
   }
+	
+	
     
   /* 
    * Inserts activity at position pos, with value val and whether it is insertion or highlight
