@@ -433,6 +433,51 @@ form {
       }
     }
   });
+	
+	
+	
+	// Event trigger change if collision function option is changed
+  $("#collision").change(function() {
+    
+    if ($(this).val() == 0) {
+      reset();
+    }
+    
+    else {
+            
+      // Display Appropriate Message and Enable Appropriate Controls for each function
+      switch ($(this).val()) {
+
+				// Linear Probing
+        case '1':
+					av.umsg("Collision Resolution Selected: Linear Probing");
+					break;
+
+				// Linear Probing by Stepsize of 2
+        case '2':
+          av.umsg("Collsion Resolution Selected: Linear Probing by Stepsize of 2");
+					break;
+        
+				// Linear Probing by Stepsize of 3
+        case '3':
+					av.umsg("Algorithm Selected: Linear Probing by Stepsize of 3");
+					break;
+        
+				// Pseudo-random Probing
+        case '4':
+          av.umsg("Collision Resolution Selected: Pseudo-random Probing");
+          break;
+	
+				// Quadratic Probing
+        case '5':
+					av.umsg("Collsion Resolution Selected: Quadratic Probing");
+					break;
+      }
+    }
+  });
+	
+	
+	
   
   // Event trigger change if size of hash changes
   $("#arraysize").change(function() {
@@ -1339,7 +1384,7 @@ form {
       for (;;) {
 	
 				// If array is full, break out
-				if (count == arr.size()) {
+				if (count1 == arr.size()) {
 					var b;
 					
 					// Checking if there are still empty slots, even when count == arr.size()
