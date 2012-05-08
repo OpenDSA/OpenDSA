@@ -35,7 +35,7 @@
   </head>
   <body>
     
-    <div style="float:left; width:95%; height:500px;" id="av">
+    <div style="float:left; width:95%; height:1500px;" id="av">
       <p class="jsavoutput jsavline"></p> 
     </div>
     
@@ -236,25 +236,35 @@
     else {   
           winwidth = document.getElementsByTagName('body')[0].clientWidth,      
           winheight = document.getElementsByTagName('body')[0].clientHeight }  
-   
+    
+    $('#av').css({'width': winwidth});   
    xcanvas = winwidth/2;
    ycanvas = 0;
    canH =  winheight*2/3 ; 
    canW = winwidth/3;
     var rect = jsav.g.rect(xcanvas, ycanvas, canW, canH);
-    // Initialize points without displaying them:
+    // Initialize arrays to hold points
     var keyX = new Array(10);
     var keyY = new Array(10);
     var points = [];   
     var pcount =0; 
-  
+  function findPos(obj) {
+	var curleft = curtop = 0;
+	if (obj.offsetParent) {
+    do {
+			curleft += obj.offsetLeft;
+			curtop += obj.offsetTop;
+       } while (obj = obj.offsetParent);
+       return [curleft,curtop];
+   }}
 jQuery(document).ready(function(){
       bt.css({left: "100px", top: "40px"});
       caption_label.show();
       
       $("#av").click(function(e){
-      var x = e.pageX - this.offsetLeft -14; // - window.scrollMaxX ;
-      var y = e.pageY - this.offsetTop -66; // - window.scrollMaxY;
+      var objPos = findPos(this);
+      var x = e.pageX - objPos[0]-10;                                //this.offsetLeft; // - window.scrollMaxX ;
+      var y = e.pageY - objPos[1]-80;                                //this.offsetTop; //window.scrollMaxY;
       if(pcount >= 10)
       { alert("Congratulations: \n You have successfully inserted 10 Points!");}
       else{
@@ -263,7 +273,7 @@ jQuery(document).ready(function(){
          {if( y > ycanvas && y < ycanvas + canH)
           {
           jsav.step();
-          bt.css({height:"600px"});
+          bt.css({height:"2000px"});
           caption_label.show();
           
            if(pcount>0){
