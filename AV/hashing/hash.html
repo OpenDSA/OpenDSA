@@ -197,11 +197,12 @@ form {
   var theArray = [];		// Actual array
   var av;			// JSAV
   var arr;		        // JSAV Array
-  var fullArray= false;         // Flag that determines whether array is full or not
+  var fullArray = false;         // Flag that determines whether array is full or not
   var nextStep = new Queue();	// A queue that will contain the "next step". Stores position and value of next step as an object
   var midSquareFlag = 0;        // Flag if midsquare has been chosen to restart array size values to normal
   var tableCount;               // Array that will hold an object that contains the show counts value and the label
   var showCountFlag;            // Flag that determines of showcount is showing or not
+	var cannotInsert = false;
   
   // Initialize JSAV object
   av = new JSAV("container");
@@ -304,7 +305,7 @@ form {
       // Toggle showcounts to off
       showcounts("no");
       if (paramFlag === 0)
-	av.umsg("Please select a hashing function")
+			av.umsg("Please select a hashing function")
     }
     
     // Hide array if one exists
@@ -395,40 +396,40 @@ form {
       // Display Appropriate Message and Enable Appropriate Controls for each function
       switch ($(this).val()) {
 
-	// Simple Mod
+				// Simple Mod
         case '1':
-	  av.umsg("Algorithm Selected: Simple Mod");
-	  av.umsg("Please select a table size");
-	  break;
+					av.umsg("Algorithm Selected: Simple Mod");
+					av.umsg("Please select a table size");
+					break;
 
-	// Binning
+				// Binning
         case '2':
-	  // Enable key range
+					// Enable key range
           $("#keyrange").removeAttr("disabled");
           av.umsg("Algorithm Selected: Binning");
-	  av.umsg("Please select a table size and a key range.");
-	  break;
+					av.umsg("Please select a table size and a key range.");
+					break;
         
-	// Mid Square
+				// Mid Square
         case '3':
-	  // Change arra size options to only 8 and 16
-	  $("#arraysize").html('<option value="0"> Table Size </option> <option value="8"> 8 </option> <option value="16"> 16 </option>');	
-	  av.umsg("Algorithm Selected: Mid Square Method");
-	  av.umsg("Please select a table size");
-	  midSquareFlag = 1;
-          break;
+					// Change array size options to only 8 and 16
+					$("#arraysize").html('<option value="0"> Table Size </option> <option value="8"> 8 </option> <option value="16"> 16 </option>');	
+					av.umsg("Algorithm Selected: Mid Square Method");
+					av.umsg("Please select a table size");
+					midSquareFlag = 1;
+					break;
         
-	// Simple Strings
+				// Simple Strings
         case '4':
           av.umsg("Algorithm Selected: Simple Hashing for Strings");
-	  av.umsg("Please select a table size");
+					av.umsg("Please select a table size");
           break;
 	
-	// Improved Strings
+				// Improved Strings
         case '5':
- 	  av.umsg("Algorithm Selected: Improved Hashing for Strings");
-	  av.umsg("Please select a table size");
- 	  break;
+					av.umsg("Algorithm Selected: Improved Hashing for Strings");
+					av.umsg("Please select a table size");
+					break;
       }
     }
   });
@@ -476,9 +477,9 @@ form {
       // Object in the array that holds the count of that position and the actual label
       // Do not forget to update both! A count var exists to be able to retrieve current count
       var obj = {
-	count: poscount,
-	label: poslabel,
-	visited: false
+				count: poscount,
+				label: poslabel,
+				visited: false
       };
 
       tableCount[i] = obj;
@@ -544,17 +545,17 @@ form {
           var ret = simpleStrings(inputVal);
           break;
         case '5':
-	  var ret = improvedStrings(inputVal);
-	  break;
+					var ret = improvedStrings(inputVal);
+					break;
       }
       
       // Show first slide if success
       if (ret === 0)
-	loadNextSlide();
+			loadNextSlide();
       
       // Else, re-enable input textfield if an error has occurred
       else if (ret === 1)
-	$("#input").removeAttr("disabled");
+				$("#input").removeAttr("disabled");
     }
     
     // Else, load next slide
@@ -565,24 +566,24 @@ form {
       // Restart counts to 0 to be able to recalculate the counts
       // The label stays the same - so this won't affect what the user sees
       for (var i = 0; i < tableSize; i++) {
-	tableCount[i].count = 0;
-	tableCount[i].visited = false;
+				tableCount[i].count = 0;
+				tableCount[i].visited = false;
       }
       
       for (var i = 0; i < tableSize; i++) {
-	var ret = determineResolution(0, i, true);
-	var count = tableCount[ret].count;
-	count++;
-	tableCount[ret].count = count;
-	tableCount[ret].visited = true;
-	tableCount[ret].label.text(tableCount[ret].count);
+				var ret = determineResolution(0, i, true, false);
+				var count = tableCount[ret].count;
+				count++;
+				tableCount[ret].count = count;
+				tableCount[ret].visited = true;
+				tableCount[ret].label.text(tableCount[ret].count);
       }
       
       for (var i = 0; i < tableSize; i++) {
-	if (tableCount[i].visited === false) {
-	  tableCount[i].count = 0;
-	  tableCount[i].label.text(tableCount[i].count);
-	}
+				if (tableCount[i].visited === false) {
+					tableCount[i].count = 0;
+					tableCount[i].label.text(tableCount[i].count);
+				}
       }
     }
   }
@@ -604,7 +605,7 @@ form {
     // If activity is only highlighting
     else {
 		
-      //Check to see if the position to be considered for insertion is outside the range of the array size
+     /*  //Check to see if the position to be considered for insertion is outside the range of the array size
 			if (next.position >= arr.size()){
 				var temp = next.position - arr.size();
 				av.umsg("Attempting to insert " + next.value + " at position " + temp + ".");
@@ -615,25 +616,34 @@ form {
 				av.umsg("Attempting to insert " + next.value + " at position " + temp1 + ".");
 			}
 			
-			else{
-				av.umsg("Attempting to insert " + next.value + " at position " + next.position + ".");
-			}
+			else{ */
+			av.umsg("Attempting to insert " + next.value + " at position " + next.position + ".");
+			//}
 			
       //arr.unhighlight(next.position-1);
-			arr.unhighlight();
+			arr.unhighlight();			
       arr.highlight(next.position);
     }
     
+		
     // Disable Next Button & re-enable input field if queue is empty
     if (nextStep.isEmpty()) {
       
       // If array is full at the end of dequeue, display message
-      if (fullArray) {
+      if (fullArray && !cannotInsert) {
       	var errorMsg = "Array is full. Insertion failed. Please Restart.";
       	error(errorMsg);
-	// Reset flag
-	fullArray = false;
-      }
+	      // Reset flag
+				fullArray = false;
+      }			
+			
+			if (fullArray && cannotInsert) {
+      	var errorMsg1 = "Array is not full, but number of insertion attempts is greater than array size. Insertion failed. Please Restart.";
+      	error(errorMsg1);
+	      // Reset flag
+				fullArray = false;
+				cannotInsert = false;
+      }	
       
       $('input[name="next"]').attr("disabled", "disabled");
       $("#input").removeAttr("disabled");
@@ -662,13 +672,13 @@ form {
 
       if (is("String", arguments[0])) {
 
-	// Set toggleState if correct argument passed
-	if (arguments[0] === "yes" || arguments[0] === "no")
-	  toggleState = arguments[0];
+				// Set toggleState if correct argument passed
+				if (arguments[0] === "yes" || arguments[0] === "no")
+					toggleState = arguments[0];
 	
-	// Else, display an error
-	else
-	  alert("Runtime error. Wrong arguments passed into showcounts(). Arg: " + arguments[0]);
+				// Else, display an error
+				else
+					alert("Runtime error. Wrong arguments passed into showcounts(). Arg: " + arguments[0]);
       }
     }
 
@@ -677,16 +687,16 @@ form {
 
       // Show
       if (toggleState === "yes") {
-	for (var i = 0; i < tableSize; i++)
-	  tableCount[i].label.show();
-	showCountFlag = true;
+				for (var i = 0; i < tableSize; i++)
+					tableCount[i].label.show();
+				showCountFlag = true;
       }
 
       // Don't show
       else if (toggleState === "no") {
-	for (var i = 0; i < tableSize; i++)
-	  tableCount[i].label.hide();
-	showCountFlag = false;
+				for (var i = 0; i < tableSize; i++)
+					tableCount[i].label.hide();
+				showCountFlag = false;
       }
 
     }
@@ -695,15 +705,15 @@ form {
     else {
       
       if (showCountFlag) {
-	for (var i = 0; i < tableSize; i++)
-	  tableCount[i].label.hide();
-	showCountFlag = false;
+				for (var i = 0; i < tableSize; i++)
+					tableCount[i].label.hide();
+				showCountFlag = false;
       }
       
       else {
-	for (var i = 0; i < tableSize; i++)
-	  tableCount[i].label.show();
-	showCountFlag = true;
+				for (var i = 0; i < tableSize; i++)
+					tableCount[i].label.show();
+				showCountFlag = true;
       }
     }
   }
@@ -714,18 +724,16 @@ form {
     var tableSize = $("#arraysize").val();
 
      if (showCountFlag) {
-      for (var i = 0; i < tableSize; i++)
-	tableCount[i].label.hide();
-      showCountFlag = false;
+		  for (var i = 0; i < tableSize; i++)
+					tableCount[i].label.hide();
+			showCountFlag = false;
     }
 
     else {
       for (var i = 0; i < tableSize; i++)
-	tableCount[i].label.show();
+				tableCount[i].label.show();
       showCountFlag = true;
     }
-
-
 
   }
   
@@ -750,7 +758,7 @@ form {
     av.umsg("= " + pos);
     
     // Process function with selected collision resolution
-    determineResolution(inputVal, pos, false);
+    determineResolution(inputVal, pos, false, true);
     
     // Return success
     return 0;
@@ -774,40 +782,41 @@ form {
       
       switch(keyrange) {
       case '1':
-	keyrange = 100;
-	break;
-      case '2':
-	keyrange = 1000;
-	break;
+				keyrange = 100;
+				break;
+				
+			case '2':
+				keyrange = 1000;
+				break;
       }
       
       // Check that the input value is a number within the correct range
       if (inputVal >= keyrange || inputVal < 0 || isNaN(inputVal)) {
-	var errorMsg = "Please enter an input value between 0 and " + keyrange-1 + ".";
-	error(errorMsg);
-	// Return Error
-	return 1;
+				var errorMsg = "Please enter an input value between 0 and " + keyrange-1 + ".";
+				error(errorMsg);
+				// Return Error
+				return 1;
       }
       
       else {
-	av.umsg("Attempting to insert: " + inputVal);
-	
-	// Binning function Position
-	var binsize = keyrange / $("#arraysize").val()
-	var pos =  Math.floor(inputVal / binsize);
-	
-	av.umsg("Bin Size = Key Range / Table Size");
-	av.umsg("Bin Size = " + keyrange + " / " + $("#arraysize").val());
-	av.umsg(" = " + binsize.toFixed(2));
-	av.umsg("Hash Position = Input Value / Bin Size");
-	av.umsg("Hash Position = " + inputVal + " / " + binsize.toFixed(2));
-	av.umsg(" = " + pos);
-	
-	// Process function with selected collision resolution
-	determineResolution(inputVal, pos, false);
-		
-	// Return success
-	return 0;
+				av.umsg("Attempting to insert: " + inputVal);
+				
+				// Binning function Position
+				var binsize = keyrange / $("#arraysize").val()
+				var pos =  Math.floor(inputVal / binsize);
+				
+				av.umsg("Bin Size = Key Range / Table Size");
+				av.umsg("Bin Size = " + keyrange + " / " + $("#arraysize").val());
+				av.umsg(" = " + binsize.toFixed(2));
+				av.umsg("Hash Position = Input Value / Bin Size");
+				av.umsg("Hash Position = " + inputVal + " / " + binsize.toFixed(2));
+				av.umsg(" = " + pos);
+				
+				// Process function with selected collision resolution
+				determineResolution(inputVal, pos, false, true);
+					
+				// Return success
+				return 0;
       }
     }  
   }
@@ -866,7 +875,7 @@ form {
     av.umsg("Hash position = " + pos);
     
     // Process function with selected collision resolution
-    determineResolution(inputVal, pos, false);
+    determineResolution(inputVal, pos, false, true);
     
     // Return success
     return 0;
@@ -901,7 +910,7 @@ form {
     av.umsg("Hash value: " + sum + " % " + size + " = " + pos); 
     
     // Process function with selected collision resolution
-    determineResolution(inputVal, pos, false);
+    determineResolution(inputVal, pos, false, true);
     
     // Return success
     return 0;
@@ -930,8 +939,8 @@ form {
       var inputsubstring = inputVal.substring(i * 4, (i * 4) + 4);
       var mult = 1;
       for (var j = 0; j < inputsubstring.length; j++) {
-	sum += inputsubstring.charCodeAt(j) * mult;
-	mult *= 256;
+			sum += inputsubstring.charCodeAt(j) * mult;
+			mult *= 256;
       }
     }
     
@@ -942,7 +951,7 @@ form {
     av.umsg("Hash value: " + sum + " % " + size + " = " + pos);
     
     // Process function with selected collision resolution
-    determineResolution(inputVal, pos, false);
+    determineResolution(inputVal, pos, false, true);
     
     // Return success
     return 0;
@@ -952,7 +961,7 @@ form {
   /* Collision Resolutions */
   
   // Function that determines which collision resolution to pick
-  function determineResolution(inputVal, pos, showCounts) {
+  function determineResolution(inputVal, pos, showCounts, printPerm) {
     
     var collisionResolution = $("#collision").val();
     var ret = 0;
@@ -972,21 +981,19 @@ form {
       ret = linearProbingStepsThree(inputVal, pos, showCounts);
       break;	
     case '4':
-      ret = pseudoRandom(inputVal, pos, showCounts);
+      ret = pseudoRandom(inputVal, pos, showCounts, printPerm);
       break;
     case '5':
       ret = quadraticProbing(inputVal, pos, showCounts);
       break;
     }
-
 		
     return ret;
   }
   
   // Linear Probing
   function linearProbing(inputVal, pos, showCounts) {
-    
-    //
+  
 		
 		// If pos is full, start resolution.
     // Cast into a number, otherwise '0' will be considered false.
@@ -1065,15 +1072,24 @@ form {
       
       // Loop across the array. "infinite" loop. Breaks if array is full.
       for (;;) {
-	
+
 				// If array is full, break out
 				if (count == arr.size()) {
+					var b;
+					
+					// Checking if there are still empty slots, even when count == arr.size()
+					for (b = 0; b < arr.size(); b++){
+						if (String(arr.value(b%arr.size())) == ""){
+							cannotInsert = true; 
+						}
+					}					
+					
 					fullArray = true;
 					break;
 				}
 	
 				// If space is available, break
-				if (String(arr.value(i)) == "") {
+				if (String(arr.value(i%arr.size())) == "") {
 					break;
 				}
 	
@@ -1081,14 +1097,12 @@ form {
 				if (!showCounts)
 					insertActivity(i, inputVal, false);
 				
-				// If i is last element of arr, restart to position 0 of the array
-				if (i == arr.size() - 1) {
-					i -= arr.size();
-				}
-	
-				// Otherwise just increment i by the stepsize of 2
-				else {
-					i = i + 2;
+				// Increment i by the stepsize of 2
+				i = i + 2;
+				
+				// If i is last element of arr, restart to the beginning of the array
+				if (i >= arr.size()) {
+					i %= arr.size();
 				}
 	
 				// Increment count 
@@ -1098,7 +1112,7 @@ form {
       // Empty spot found. Insert element inputVal at i
       if (!fullArray) {
 	      if (!showCounts)
-	        insertActivity(i, inputVal, true);
+	        insertActivity(i%arr.size(), inputVal, true);
 	      else
 	        return i;
       }
@@ -1135,27 +1149,34 @@ form {
 	
 				// If array is full, break out
 				if (count == arr.size()) {
+					var b;
+					
+					// Checking if there are still empty slots, even when count == arr.size()
+					for (b = 0; b < arr.size(); b++){
+						if (String(arr.value(b%arr.size())) == ""){
+							cannotInsert = true; 
+						}
+					}					
+					
 					fullArray = true;
 					break;
 				}
 	
 				// If space is available, break
-				if (String(arr.value(i)) == "") {
+				if (String(arr.value(i%arr.size())) == "") {
 					break;
 				}
 	
 				// Insert attempt as highlighting activity
 				if (!showCounts)
 					insertActivity(i, inputVal, false);
+					
+				// Increment i by the stepsize of 3
+				i = i + 3;	
 				
-				// If i is last element of arr, restart to position 0 of the array
-				if (i == arr.size() - 1) {
-					i -= arr.size();
-				}
-	
-				// Otherwise just increment i by the step size of 3.
-				else {
-					i = i + 3;
+				// If i is last element of arr, restart to the beginning of the array
+				if (i >= arr.size()) {
+					i %= arr.size();
 				}
 	
 				// Increment count 
@@ -1165,7 +1186,7 @@ form {
       // Empty spot found. Insert element inputVal at i
       if (!fullArray) {
 	      if (!showCounts)
-	        insertActivity(i, inputVal, true);
+	        insertActivity(i%arr.size(), inputVal, true);
 	      else
 	        return i;
       }
@@ -1189,7 +1210,7 @@ form {
 	
 	
   // Pseudo-Random Probing
-  function pseudoRandom(inputVal, pos, showCounts) {	
+  function pseudoRandom(inputVal, pos, showCounts, printPerm) {	
 	
 		var j;
 		
@@ -1207,7 +1228,7 @@ form {
 			}
 			
 			if(!found)
-				perm.push(randomnumber);//perm[perm.length] = randomnumber;
+				perm.push(randomnumber);
 		}
 		
 		var k;
@@ -1216,8 +1237,10 @@ form {
 			 string += perm[k] + " ";
 		}
 		
-		//av.umsg("Perm: " + string);	
-	
+		if (printPerm) {
+			av.umsg("Permutation: " + string);	
+		}
+		
 		// If pos is full, start resolution.
     // Cast into a number, otherwise '0' will be considered false.
     if ((Number(arr.value(pos))) !== false) {
@@ -1227,50 +1250,59 @@ form {
       
       // Counter that counts how many times the array ran
       var count = 0;
-      
-      // Loop across the array. "infinite" loop. Breaks if array is full.
-      for (;;){	
 			
-			  // Current index of array of permutations
-				var curr = 1;
-			  
-	      //av.umsg("Perm: " + string);
+			// Current index of array of permutations
+			var curr = 1;
+			
+			// Temporal to hold the position
+      var temp = pos;
+			
+      // Loop across the array. "infinite" loop. Breaks if array is full.
+      for (;;){					
 				
 				// If array is full, break out
 				if (count == arr.size()) {
+					var b;
+					
+					// Checking if there are still empty slots, even when count == arr.size()
+					for (b = 0; b < arr.size(); b++){
+						if (String(arr.value(b%arr.size())) == ""){
+							cannotInsert = true; 
+						}
+					}					
+					
 					fullArray = true;
 					break;
 				}
 	
 				// If space is available, break
-				if (String(arr.value(i)) == "") {
+				if (String(arr.value(temp%arr.size())) == "") {
 					break;
 				}
 	
 				// Insert attempt as highlighting activity
 				if (!showCounts)
-					insertActivity(i, inputVal, false);
+					insertActivity(temp, inputVal, false);
+				
+				// Incrementing probing by the next indes index in the permutation array.
+				temp  = i + perm[curr];		
+
+				// Increment current
+				curr++;					
 				
 				// If i is last element of arr, restart at the beginning of the array
-			  if (i >= arr.size() - 1) {
-				  i -= arr.size();
+			  if (temp >= arr.size() ) {
+				  temp %= arr.size();
 			  }
-	
-				// Otherwise continue the iteration using the corresponding step size in the prem array.
-				else {
-					i = i + perm[curr];							
-				}
-				curr++;
+				
 				// Increment count 
 				count++;
       }
-			
-			
-      
+	
       // Empty spot found. Insert element inputVal at i
       if (!fullArray) {
 	      if (!showCounts)
-	        insertActivity(i, inputVal, true);
+	        insertActivity(temp%arr.size(), inputVal, true);
 	      else
 	        return i;
       }
@@ -1285,8 +1317,6 @@ form {
 	      return i;
     }
   }
-
-
 	
 	
   // Quadratic Probing
@@ -1300,7 +1330,7 @@ form {
       var i = pos;
       
       // Counter that counts how many times the array ran
-      var count = 0;
+      var count1 = 0;
 			
 			// Stepsize for the quadratic probing
 			var stepsize = 1;
@@ -1310,38 +1340,45 @@ form {
 	
 				// If array is full, break out
 				if (count == arr.size()) {
+					var b;
+					
+					// Checking if there are still empty slots, even when count == arr.size()
+					for (b = 0; b < arr.size(); b++){
+						if (String(arr.value(b%arr.size())) == ""){
+							cannotInsert = true; 
+						}
+					}					
+					
 					fullArray = true;
 					break;
 				}
-	
+
 				// If space is available, break
-				if (String(arr.value(i)) == "") {
-					break;
+				if (String(arr.value(i%arr.size())) == "") {						
+						break;
 				}
 	
 				// Insert attempt as highlighting activity
 				if (!showCounts)
 					insertActivity(i, inputVal, false);
 				
+				// Increment the probing size by i squared. Update the stepsize.
+				i += stepsize;
+				stepsize += 2;
+				
 				// If i is last element of arr, restart at the beginning of the array
-			  if (i >= arr.size() - 1) {
-				  i -= arr.size();
+			  if (i >= arr.size()) {			
+				  i %= arr.size();
 			  }
-	
-				// Otherwise the step size i become i squared.
-				else {
-					i += stepsize
-					stepsize += 2;
-				}
-	
-				// Increment count 
-				count++;
+		
+				// Increment count 					
+				 count1++;
       }
       
       // Empty spot found. Insert element inputVal at i
       if (!fullArray) {
-	      if (!showCounts)
-	        insertActivity(i, inputVal, true);
+	      if (!showCounts)					
+	        insertActivity(i%arr.size(), inputVal, true);
 	      else
 	        return i;
       }
@@ -1354,8 +1391,7 @@ form {
 	      insertActivity(pos, inputVal, true);
       else
 	      return i;
-    }
-		
+    }		
   }
 	
 	
@@ -1371,16 +1407,16 @@ form {
       
       // Preceed insertion with highlight
       var posValueHighlight = {
-	    position: pos,
-	    value: val,
-	    insert: false
+				position: pos,
+				value: val,
+				insert: false
       };
       nextStep.enqueue(posValueHighlight);
       
       var posValue = {
-		position: pos,
-		value: val,
-		insert: true
+				position: pos,
+				value: val,
+				insert: true
       };
       nextStep.enqueue(posValue);
     }
@@ -1389,9 +1425,9 @@ form {
     else {
       
       var posValue = {
-		position: pos,
-		value: val,
-		insert: false
+				position: pos,
+				value: val,
+				insert: false
       };
       nextStep.enqueue(posValue);
     }
@@ -1439,8 +1475,8 @@ form {
 
       // increment the offset and remove the free space if necessary
       if (++ offset * 2 >= queue.length) {
-	queue  = queue.slice(offset);
-	offset = 0;
+				queue  = queue.slice(offset);
+				offset = 0;
       }
 
       // return the dequeued item
