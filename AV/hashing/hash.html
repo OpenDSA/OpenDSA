@@ -202,7 +202,8 @@ form {
   var midSquareFlag = 0;        // Flag if midsquare has been chosen to restart array size values to normal
   var tableCount;               // Array that will hold an object that contains the show counts value and the label
   var showCountFlag;            // Flag that determines of showcount is showing or not
-	var cannotInsert = false;
+	var canStillInsert = false;   // Flag that determines that even though the number of insertion attempts is greater than the array size, there are still
+																// slots available in the array.
   
   // Initialize JSAV object
   av = new JSAV("container");
@@ -675,19 +676,19 @@ form {
     if (nextStep.isEmpty()) {
       
       // If array is full at the end of dequeue, display message
-      if (fullArray && !cannotInsert) {
+      if (fullArray && !canStillInsert) {
       	var errorMsg = "Array is full. Insertion failed. Please Restart.";
       	error(errorMsg);
 	      // Reset flag
 				fullArray = false;
       }			
 			
-			if (fullArray && cannotInsert) {
+			if (fullArray && canStillInsert) {
       	var errorMsg1 = "Array is not full, but number of insertion attempts is greater than array size. Insertion failed.";
       	error(errorMsg1);
 	      // Reset flag
 				fullArray = false;
-				cannotInsert = false;
+				canStillInsert = false;
       }	
       
       $('input[name="next"]').attr("disabled", "disabled");
@@ -1125,7 +1126,7 @@ form {
 					// Checking if there are still empty slots, even when count == arr.size()
 					for (b = 0; b < arr.size(); b++){
 						if (String(arr.value(b%arr.size())) == ""){
-							cannotInsert = true; 
+							canStillInsert = true; 
 						}
 					}					
 					
@@ -1199,7 +1200,7 @@ form {
 					// Checking if there are still empty slots, even when count == arr.size()
 					for (b = 0; b < arr.size(); b++){
 						if (String(arr.value(b%arr.size())) == ""){
-							cannotInsert = true; 
+							canStillInsert = true; 
 						}
 					}					
 					
@@ -1312,7 +1313,7 @@ form {
 					// Checking if there are still empty slots, even when count == arr.size()
 					for (b = 0; b < arr.size(); b++){
 						if (String(arr.value(b%arr.size())) == ""){
-							cannotInsert = true; 
+							canStillInsert = true; 
 						}
 					}					
 					
@@ -1390,14 +1391,14 @@ form {
 					// Checking if there are still empty slots, even when count == arr.size()
 					for (b = 0; b < arr.size(); b++){
 						if (String(arr.value(b%arr.size())) == ""){
-							cannotInsert = true; 
+							canStillInsert = true; 
 						}
 					}					
 					
 					fullArray = true;
 					break;
 				}
-
+		
 				// If space is available, break
 				if (String(arr.value(i%arr.size())) == "") {						
 						break;
