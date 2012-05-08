@@ -202,7 +202,8 @@ form {
   var midSquareFlag = 0;        // Flag if midsquare has been chosen to restart array size values to normal
   var tableCount;               // Array that will hold an object that contains the show counts value and the label
   var showCountFlag;            // Flag that determines of showcount is showing or not
-	var cannotInsert = false;
+	var canStillInsert = false;   // Flag that determines that even though the number of insertion attempts is greater than the array size, there are still
+																// slots available in the array.
   
   // Initialize JSAV object
   av = new JSAV("container");
@@ -433,6 +434,51 @@ form {
       }
     }
   });
+	
+	
+	
+	// Event trigger change if collision function option is changed
+  $("#collision").change(function() {
+    
+    if ($(this).val() == 0) {
+      reset();
+    }
+    
+    else {
+            
+      // Display Appropriate Message and Enable Appropriate Controls for each function
+      switch ($(this).val()) {
+
+				// Linear Probing
+        case '1':
+					av.umsg("Collision Resolution Selected: Linear Probing");
+					break;
+
+				// Linear Probing by Stepsize of 2
+        case '2':
+          av.umsg("Collsion Resolution Selected: Linear Probing by Stepsize of 2");
+					break;
+        
+				// Linear Probing by Stepsize of 3
+        case '3':
+					av.umsg("Algorithm Selected: Linear Probing by Stepsize of 3");
+					break;
+        
+				// Pseudo-random Probing
+        case '4':
+          av.umsg("Collision Resolution Selected: Pseudo-random Probing");
+          break;
+	
+				// Quadratic Probing
+        case '5':
+					av.umsg("Collsion Resolution Selected: Quadratic Probing");
+					break;
+      }
+    }
+  });
+	
+	
+	
   
   // Event trigger change if size of hash changes
   $("#arraysize").change(function() {
@@ -630,19 +676,19 @@ form {
     if (nextStep.isEmpty()) {
       
       // If array is full at the end of dequeue, display message
-      if (fullArray && !cannotInsert) {
+      if (fullArray && !canStillInsert) {
       	var errorMsg = "Array is full. Insertion failed. Please Restart.";
       	error(errorMsg);
 	      // Reset flag
 				fullArray = false;
       }			
 			
-			if (fullArray && cannotInsert) {
+			if (fullArray && canStillInsert) {
       	var errorMsg1 = "Array is not full, but number of insertion attempts is greater than array size. Insertion failed.";
       	error(errorMsg1);
 	      // Reset flag
 				fullArray = false;
-				cannotInsert = false;
+				canStillInsert = false;
       }	
       
       $('input[name="next"]').attr("disabled", "disabled");
@@ -1080,7 +1126,7 @@ form {
 					// Checking if there are still empty slots, even when count == arr.size()
 					for (b = 0; b < arr.size(); b++){
 						if (String(arr.value(b%arr.size())) == ""){
-							cannotInsert = true; 
+							canStillInsert = true; 
 						}
 					}					
 					
@@ -1154,7 +1200,7 @@ form {
 					// Checking if there are still empty slots, even when count == arr.size()
 					for (b = 0; b < arr.size(); b++){
 						if (String(arr.value(b%arr.size())) == ""){
-							cannotInsert = true; 
+							canStillInsert = true; 
 						}
 					}					
 					
@@ -1267,7 +1313,7 @@ form {
 					// Checking if there are still empty slots, even when count == arr.size()
 					for (b = 0; b < arr.size(); b++){
 						if (String(arr.value(b%arr.size())) == ""){
-							cannotInsert = true; 
+							canStillInsert = true; 
 						}
 					}					
 					
@@ -1339,20 +1385,20 @@ form {
       for (;;) {
 	
 				// If array is full, break out
-				if (count == arr.size()) {
+				if (count1 == arr.size()) {
 					var b;
 					
 					// Checking if there are still empty slots, even when count == arr.size()
 					for (b = 0; b < arr.size(); b++){
 						if (String(arr.value(b%arr.size())) == ""){
-							cannotInsert = true; 
+							canStillInsert = true; 
 						}
 					}					
 					
 					fullArray = true;
 					break;
 				}
-
+		
 				// If space is available, break
 				if (String(arr.value(i%arr.size())) == "") {						
 						break;
