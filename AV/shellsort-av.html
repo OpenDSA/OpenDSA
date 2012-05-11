@@ -80,7 +80,7 @@ form {
       </select>
       <label for="arrayValues">&nbsp;Array values:&nbsp;</label>
       <input size="50" name="arrayValues" id="arrayValues" type="text" 
-	     placeholder="Type space-separated values, or just accept ones picked at random" />
+	     placeholder="Type space-separated values, or just hit 'run' to use random values" />
     </p>
   </form>
   <div id="avcontainer">
@@ -293,6 +293,7 @@ form {
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
       var i, incr;
+      av.displayInit();
       for (i=0; i<incrs.length; i+=1) {
         if (incrs[i] < theArray.length) {
           sweep(incrs[i]); // run the sweep to create the AV

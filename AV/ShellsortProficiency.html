@@ -8,7 +8,7 @@
 
 #container {
   width: 800px;
-  height: 435px;
+  height: 480px;
   border: 1px solid black;
   background-color: #efe;
   padding: 10px;
@@ -88,6 +88,7 @@ a.jsavsettings {
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script src="../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../JSAV/lib/raphael.js"></script>
 <script src="../JSAV/build/JSAV-min.js"></script>
 
 <script>
@@ -183,6 +184,7 @@ a.jsavsettings {
     var modelarr = jsav.ds.array(initialArray, {indexed: true, layout: arrayLayout.val()}),
       modelmode = jsav.variable("SORTING");
     var i;
+    jsav.displayInit();
     for (i=0; i<incrs.length; i+=1) {
       if (incrs[i] < modelarr.size()) {
         sweep(incrs[i], modelarr, jsav, modelmode); // run the sweep to create the AV

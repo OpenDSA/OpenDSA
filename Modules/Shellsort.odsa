@@ -105,7 +105,7 @@
     av.SPEED = speed; // Set the animation speed base
     // Create an array object under control of JSAV library
     var arr = av.ds.array(inArr, {indexed: true});
-    av.step();
+    av.displayInit();
     arr.unhighlight(); // unhighlight seems to have the side effect of
                        // making the cell dark.
     sweep(av, arr, increment); // first sweep with increment 8
@@ -210,11 +210,8 @@ two.
   // set color to LIGHT for the whole array, then highlight indices 0 and 8
   arr.css(function(index)
     { return index%8 != 0;}, {"color": LIGHT}).highlight([0, 8]);
-  // another way to specify a message for a step
-  av.step();
+  av.displayInit();
   arr.unhighlight([0, 8]).css([0, 8], {"color": LIGHT}).highlight([1, 9]);
-  
-  av.step();
   for (var i=2; i<8; i++) { // loop through the rest of the array sublists
     av.step();
     arr.unhighlight([i-1, i+7]).css([i-1, i+7], {"color": LIGHT}).highlight([i, i+8]);
@@ -289,7 +286,7 @@ increment 4.
   arr.css(function(index)
     { return index%4 != 0;}, {"color": LIGHT}).highlight([0, 4, 8, 12]);
 
-  av.step();
+  av.displayInit();
   arr.unhighlight([0, 4, 8, 12]).css([0, 4, 8, 12], {"color": LIGHT}).highlight([1, 5, 9, 13]);
 
   av.step();
