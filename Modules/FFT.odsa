@@ -4,6 +4,10 @@
 <ODSAprereq "Logarithms" />
 
 <p>
+See the
+<a href="../Storyboard/FFT.pptx">Visualization Mockup Powerpoint</a>.
+
+<p>
 As discussed in Module <ODSAref "Arithmetic" />,
 multiplication is considerably more difficult than addition.
 The cost to multiply two \(n\)-bit numbers directly is \(O(n^2)\),

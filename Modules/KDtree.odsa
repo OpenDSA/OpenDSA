@@ -381,6 +381,35 @@ The k-d tree region search method.
 </figcaption>
 </figure>
 
+<p>
+Here is a visualization of building a kd-tree.
+</p>
+
+<center>
+ <iframe src="../AV/kd-treeAV.html"
+	 type="text/javascript" width="820" height="720"
+	 frameborder="0" marginwidth="0" marginheight="0"
+	 scrolling="no">
+</iframe>
+</center>
+
+<p>
+Here is a version where you can click to get the node inserted. This
+can probably replace the static visualization.
+</p>
+
+<center>
+ <iframe src="../AV/kd-interact.html"
+	 type="text/javascript" width="820" height="720"
+	 frameborder="0" marginwidth="0" marginheight="0"
+	 scrolling="no">
+</iframe>
+</center>
+
+<p class="TODO">
+We need a proficiency exercise.
+</p>
+
 <section>
 <p id="fn1"><a href="#r1">[1]</a>
 A more efficient computation is

@@ -215,6 +215,20 @@ built.
 This tree is shown in Figure <ODSAref "HuffCode" />.
 </p>
 
+<p>
+Here is a visualization of building a random huffman tree.
+</p>
+
+<center>
+ <iframe src="../AV/HuffmanCoding.html"
+	 type="text/javascript" width="840" height="850"
+	 frameborder="0" marginwidth="0" marginheight="0"
+	 scrolling="no">
+</iframe>
+</center>
+
+
+
 <figure>
 <center>
 <img src="Images/HuffCode.png" alt="A Huffman tree" />
