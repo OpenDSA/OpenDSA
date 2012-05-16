@@ -1,0 +1,416 @@
+<html lang="en">
+<head>
+
+<title>OpenDSA Module Selection Page</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript" src="jquery.jsPlumb-1.3.8-all-min.js"></script>
+<script type="text/javascript" src="jquery.stickyPanel.min.js"></script>
+<script type="text/javascript" src="odsa_frontend.js"></script>                           
+<script type="text/javascript">
+
+function format_Text(name){
+
+var f_text='';
+f_text =  f_text + '<span id="sname">'+name+'</span>';
+return f_text; 
+
+}
+
+var modlist = new Array();
+var modlist_Final = new Array();
+
+
+var endpointOptions = {
+isSource:true,
+isTarget:true,
+endpoint: [ "Dot", {radius:0.5} ],
+style:{ fillStyle:'blue' },
+maxConnections:-1,
+connector : "Straight",
+connectorStyle: { lineWidth:1, strokeStyle:'cyan' },
+dragOptions:{ scope:"dragScope" },
+dropOptions:{ scope:"dropScope" }
+};
+
+
+function handleModDrop( event, ui ) {
+$(this).css('color','#8215ef');
+
+if( $('#modBox').text().indexOf(ui.draggable.attr('name'))<0) {     
+if($('#sortable').text().indexOf('Drag here')>=0){$('#modBox').html('');}
+//$(this).append( ui.draggable.attr('name')+'</br>');
+//$('#modBox').append('<div id="section"><span>'+ui.draggable.attr('name') +'</span></div>');
+$('ul#sortable').append('<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'+ui.draggable.attr('name') +'</li>');
+
+modlist.push(ui.draggable.attr('name'));
+
+//console.log('add to list 1=' + modlist);
+
+$(event.target).css('background','#dcd');
+$(event.target).find("span").css('background','#dcd');
+if($(event.target).attr('id')=="sname"){ 
+ $(event.target).parent().parent().css('background','#dcd');
+}  
+}
+}
+
+
+$(document).ready(function() {
+
+
+
+$('#cardPile').html( '' );
+$('#sortable').html( 'Drag here or click on modules to add them to your book.');
+    
+    var stickyPanelOptions = {
+	topPadding: 20,
+	afterDetachCSSClass: "BoxGlow_Grey2",
+	savePanelSpace: true
+    };
+    $("#left-Bar,#right-Bar").stickyPanel(stickyPanelOptions);
+
+
+
+var color = "gray";
+
+		jsPlumb.importDefaults({
+			// notice the 'curviness' argument to this Bezier curve.  the curves on this page are far smoother
+			// than the curves on the first demo, which use the default curviness value.			
+			Connector : [ "Bezier", { curviness:50 } ],
+			DragOptions : { cursor: "pointer", zIndex:2000 },
+			PaintStyle : { strokeStyle:color, lineWidth:2 },
+			EndpointStyle : { radius:5, fillStyle:color },
+			HoverPaintStyle : {strokeStyle:"#ec9f2e" },
+			EndpointHoverStyle : {fillStyle:"#ec9f2e" },			
+			Anchors :  [ "BottomCenter", "TopCenter" ]
+		});
+		
+			
+		// declare some common values:
+		var arrowCommon = { foldback:0.2, fillStyle:color, width:14 },
+			// use three-arg spec to create two different arrows with the common values:
+			overlays = [
+				[ "Arrow", { location:0.7 }, arrowCommon ],
+			];
+
+var topicList = new Array();
+topicList[0]="all"; 
+$('<div><span  class="topic" id="all">All</span><br/></div>').appendTo( '#topicBox' );
+var i=0;
+$.ajax({
+url: 'modules.json',
+async: false,
+dataType: 'json',
+success: function (data) {
+$.each(data, function(key, val) {
+if(val.fields.covers!='' && topicList.indexOf(val.fields.covers)<0){
+  topicList[topicList.length]=val.fields.covers;            
+  $('<div><span class="topic" id="'+val.fields.covers+'">'+val.fields.covers+'</span><br/></div>').appendTo( '#topicBox' );     
+
+}                                              
+
+  var topic='';
+  if(val.fields.covers==''){topic="Others";}else{topic=val.fields.covers;}   
+  $('<div id="modGrid'+i+'"></div>').css('margin','10 auto').css('height','150px').css('width','150.4px').appendTo( '#cardPile' );   
+  //i=i+1; 
+  $('<div class="circle"><span>' +  format_Text(val.fields.short_display_name) + '</span></div><br/>').attr('id',  val.fields.short_display_name).attr('name',  val.fields.short_display_name).attr("desc",val.fields.name.replace(/_/gi,' ')).attr("title",val.fields.name.replace(/_/gi,' ')).attr("topic",val.fields.covers).attr("prereq",val.fields.prerequisites).appendTo( '#modGrid'+i+'' ).draggable( {
+  containment: '#body',
+  stack: '#modBox',
+  cursor: 'move',
+  revert: false,   //true,
+  helper:'clone',
+  connectToSortable:'#sortable' 
+  } ); 
+i=i+1;     
+});
+}
+});
+
+/*
+$('#modBox').droppable( {
+accept: '#cardPile div',
+hoverClass: 'hovered',
+drop: handleModDrop
+} );
+*/
+
+$( "#sortable" ).sortable({    
+  receive: function(event, ui) {
+   if($('#sortable').text().indexOf('Drag here')>=0){//$('#sortable').html('');
+      //console.log("jjj"+$('#sortable').text())
+   }
+   if(jQuery.inArray( $(ui.item).attr("name"),modlist) < 0){
+ 
+      modlist.push($(ui.item).attr("name"));
+      $(ui.item).draggable("disable"); 
+      //console.log('add to list 1=' + modlist);   
+   } 
+
+
+  // console.log('hey=='+ $(ui.item).attr("name") ); 
+  }
+
+});
+$( "#sortable" ).disableSelection();
+
+
+var desc ='';
+var preq='';
+$('body').mouseover(function(event) {
+if ($(event.target).attr('class')=="circle ui-draggable" ){ 
+desc=$(event.target).attr('desc');
+preq=$(event.target).attr('prereq'); 
+$('#infoBox').text( $(event.target).attr('desc'));
+
+$('.circle').each(function(){
+if($(event.target).attr('prereq').indexOf($(this).attr('name'))>=0){
+//console.log($(event.target).css('background'));
+$(this).css('background','#FF0000');
+}
+
+}); 
+}
+if($(event.target).attr('id')=="sname"){ 
+var myparent = $(event.target).parent(); 
+$('#infoBox').text(desc);
+$('.circle').each(function(){
+if(preq.indexOf($(this).attr('name'))>=0){
+$(this).css('background','#FF0000');
+}
+
+});
+
+}
+
+});
+
+$('body').mouseout(function(event) {
+$('#infoBox').text("");
+$('.circle').each(function(){
+$(this).css('background','#FFFFFF');
+}); 
+});
+
+$('#indexBox').click(function(){ 
+
+if($('#sortable').text().indexOf('Drag here')<0 || $('#modBox').text()==''){
+
+   $.ajax({
+         type: "POST",
+         url: "odsa_io.php",
+         data:{"userdata":modlist},                           
+         async:false   //true
+   }); 
+}
+
+//sort modlist array according to the selected modules list order!!!
+
+var modlist1 = new Array();
+//var rem ='';
+for (var i=1; i<=$("#sortable").children().size(); i++)
+{
+     modlist1.push($("ul :nth-child("+i+")").text());
+}
+
+//if($("ul :nth-child(1)").attr("class") =="circle ui-draggable"){
+   var diff='';
+   for(var j=0; j<modlist.length;j++) {
+	if(modlist1.indexOf(modlist[j])<0) {
+		diff=modlist[j];
+ 	} 
+   }
+
+//   var g = modlist1[0];
+//   var h = g.replace(rem,''); 
+   modlist1[0]=diff;    
+//}          
+
+
+//load the content of modlist1 into the textarea   
+ $("#textarea").html('');
+jQuery.each(modlist1, function(i, val) {
+      $("#textarea").append(val + "\n");
+    });
+modlist_Final =modlist1.slice();
+
+centerPopup();  
+loadPopup();  
+
+
+});
+
+
+//CLOSING POPUP  
+//Click the x event!  
+$("#popupContactClose").click(function(){  
+disablePopup();  
+});  
+//Click out event!  
+$("#backgroundPopup").click(function(){  
+disablePopup();  
+});  
+//Press Escape event!  
+$(document).keypress(function(e){  
+   if(e.keyCode==27 & popupStatus==1){  
+   disablePopup();  
+}  
+});
+  
+$("#popupCtrl").click(function(e){   
+   
+   if($(e.target).attr("name")=='cancel'){disablePopup();}
+
+   if($(e.target).attr("name")=='save'){
+        $.ajax({
+         type: "POST",
+         url: "odsa_io.php",
+         data:{"userdata":modlist_Final},
+         async:false   //true
+         });
+
+/*        $( "#dialog:ui-dialog" ).dialog( "destroy" );
+        $( "#dialog-confirm" ).dialog({
+			resizable: false,
+			height:140,
+			modal: true,
+			buttons: {
+				"Ok": function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+        $("#popupCtrl").before('<div id="dialog-confirm" title="Info"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>"index.rst" file has been saved. You can now build your eBook.</p></div>');     
+*/
+
+        disablePopup(); 
+        console.log("lolo");
+   }
+
+
+});
+
+
+
+$('body').click(function(event) {
+
+if ($(event.target).attr('class')=="circle ui-draggable"){     
+$('.circle').each(function(){
+if($(event.target).attr('prereq').indexOf($(this).attr('name'))>=0){
+$(this).css('background','#FF0000');             
+} 
+
+});   
+}
+if ($(event.target).attr('class')=="circle ui-draggable" &&  $('#modBox').text().indexOf($(event.target).attr('name'))<0){
+//if($('#sortable').text().indexOf('Drag here')>=0){$('#modBox').html('');}
+
+$(event.target).css('background','#dcd');
+$(event.target).find("span").css('background','#dcd');
+
+}
+if($(event.target).attr('id')=="sname"   &&  $('#modBox').text().indexOf($(event.target).parent().text())< 0){
+var myparent = $(event.target).parent();
+//if($('#sortable').text().indexOf('Drag here')>=0){$('#modBox').html('');}
+//$('#modBox').append('<div id="section"><span>'+myparent.text() +'</span></div>');
+$('ul#sortable').append('<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'+myparent.text() +'</li>');
+
+modlist.push(myparent.text());
+//console.log('add to list 3=' + modlist);
+
+$(event.target).parent().parent().css('background','#dcd');
+$(event.target).css('background','#dcd');
+}
+if ($(event.target).attr('class')=="topic"){
+//$(event.target).css('background','#dcd');
+$('#topicBox').children().each(function(){$(this).css('background','#fff');});    
+$('#cardPile').children().children().each(function(){$(this).css('font-size','9px');$(this).css('color', '#ff9');});
+$(event.target).parent().css('background','#dcd');
+$('.circle').each(function(){
+if(($(event.target).attr('id').indexOf($(this).attr('topic'))>=0 && $(this).attr('topic')!='')&&($(event.target).attr('id')!='all')){
+var currentFontSize = $(this).css('font-size');
+var currentFontSizeNum = parseFloat(currentFontSize, 10);
+var newFontSize = currentFontSizeNum*1.5;
+$(this).css('font-size', newFontSize); 
+$(this).css('color', 'navy'); 
+}
+
+});
+
+}       
+
+
+});
+
+
+var endpointOptions = { 
+isSource:true, 
+isTarget:true,
+endpoint: [ "Dot", {radius:0.5} ],
+style:{ fillStyle:'blue' },
+maxConnections:-1,
+connector : "Straight",
+connectorStyle: { lineWidth:1, strokeStyle:'cyan' },
+dragOptions:{ scope:"dragScope" },
+dropOptions:{ scope:"dropScope" }
+}; 
+
+$('.circle').each(function(){
+jsPlumb.draggable($(this)); 
+var pr = $(this).attr("prereq");
+var e0 = jsPlumb.addEndpoint($(this), endpointOptions);    
+$('.circle').each(function(){
+if(pr.indexOf($(this).attr('name'))>=0){
+   //console.log($(event.target).css('background'));
+   var e1 = jsPlumb.addEndpoint($(this), endpointOptions);  
+   jsPlumb.connect({ source:e1, target:e0,  overlays:overlays, detachable:true, reattach:true 
+ });
+   jsPlumb.draggable(jsPlumb.getSelector('.circle'));    
+}
+
+});
+
+
+
+});
+
+});
+</script>
+
+</head>
+<body>
+   <div id="content">
+      <div id="headBanner"></div> 
+      <div id="contentBox"> 
+         <div id="left-Bar">
+            <!-- <div id="infoBox"></div> -->
+            <div id="modHead">Selected Modules</div>  
+            <div id="modBox">
+                 <ul id="sortable">
+ 
+                 </ul>
+	    </div>
+            <div id="cardSlot"> </div>
+            <div id="indexBox"><span>View/Edit Index File</span></div>
+            <div id="buildBox"><span>Build Book</span></div> 
+         </div>
+         <div id="cardPile"></div>
+         <div id="right-Bar">
+            <div id="topicHead">Topics</div>  
+            <div id="topicBox"></div>
+         </div> 
+      </div>
+      <div id="popupContact"><a id="popupContactClose">x</a>
+      <textarea name="textarea" id="textarea"></textarea>
+      <div id="popupCtrl">
+          <div id="command" name="save">Save</div>
+          <div id="command" name="cancel">Cancel</div>
+      </div>
+      </div> 
+      <div id="backgroundPopup"></div>
+   </div>
+</body>
+</html>

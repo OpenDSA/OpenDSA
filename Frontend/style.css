@@ -1,0 +1,372 @@
+/* Add some margin to the page and set a default font and colour */
+ 
+body {
+  margin: 30px;
+  font-family: "Lucida Sans Unicode", sans-serif;   /*"Georgia", serif;*/   
+  line-height: 1.8em;
+  color: #333;
+}
+ 
+/* Give headings their own font */
+ 
+h1, h2, h3, h4 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+ 
+/* Main content area */
+ 
+#content {
+  margin: 0px ;               
+  text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+ 
+/* Header/footer boxes */
+ 
+.wideBox {
+  clear: both;
+  text-align: center;
+  margin: 70px;
+  padding: 10px;
+  /*background: #ebedf2;*/    
+  border: 1px solid #333;
+}
+ 
+.wideBox h1 {
+  font-weight: bold;
+  margin: 20px;
+  color: #666;
+  font-size: 1.5em;
+}
+ 
+/* Slots for final card positions */
+/* 
+#cardSlots {
+  margin: 20px auto 0 auto;
+  background: #ddf;
+}
+*/
+/* header banner */
+#headBanner {
+   margin:0 auto;
+   height: 100px; 
+} 
+
+
+#contentBox {
+  margin: 0 auto;     
+}
+
+#buttonBox {
+  margin-left: 200px; 
+  /*margin: 0px auto;*/    
+  width: 967px;
+  background: #fdd;
+  float: left;
+}
+
+/* The initial pile of unsorted cards */
+ 
+#cardPile {
+  margin: 0px auto;
+  width: 750px;      
+  border: 1px solid #333;        
+  background: white;  /*#ffd;*/              
+  float: left;
+}
+
+/*
+#cardSlots {
+  margin: 0px auto;
+  width: 767px;
+  background: #fdd;
+  float: left;
+
+
+}
+*/
+
+#left-Bar {
+   width: 200px;
+   margin: 0px auto; 
+   float: left;
+}
+
+#right-Bar {
+   width: 200px;
+   margin: 0px auto;
+   float: left; 
+}
+
+#topicHead {
+  width: 180px;
+  margin: 0px auto;
+  border: 1px solid #333;
+  background-color: #0ff; 
+}
+
+
+#topicBox {
+  width: 180px;
+  margin: 0px auto; 
+  border: 1px solid #333;
+  /*-moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+*/
+}
+
+
+#indexBox {
+  width: 180px;
+  height: 25px;
+  margin: 10px auto;
+  cursor:pointer;    
+  /*border: 1px solid #333;*/
+  /*background-color: #00ffff;*/
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}
+
+#buildBox {
+  width: 180px;
+  height: 35px; 
+  margin: 10px auto;
+  cursor:pointer;
+  /*border: 1px solid #333;*/            
+  /*background-color: #00ffff;*/               
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}
+
+
+
+#infoBox {
+  width: 180px;
+  margin: 0px auto;
+  /*border: 1px solid #333;         
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .3em rgba(0, 0, 0, .8);*/             
+}
+
+
+#modHead {
+   margin:10px auto;            
+   width: 180px;
+   margin: 0px auto;
+   border: 1px solid #333;
+   background-color: #0ff;
+}
+
+#modBox {
+   /*margin:0px 0px;*/              
+   width: 180px;
+   margin: 0px auto;  
+   border: 1px solid #333;
+/*   -moz-border-radius: 10px;
+   -webkit-border-radius: 10px;
+   border-radius: 10px;
+   -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+   -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+   box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+*/
+} 
+ 
+#cardSlots div, #cardPile div {
+  float: left;
+  /*margin: 1px 1px 0.5px 5px;
+  background: #fff; */         
+  opacity:0.7; 
+
+}
+ 
+#cardSlots div:first-child, #cardPile div:first-child {
+  margin-left: 0;
+  margin-top: 0; 
+}
+ 
+#cardSlots div.hovered {
+  /*background: #aaa;*/   
+}
+ 
+#cardSlots div {
+  border-style: dashed;
+}
+ 
+#cardPile div {
+  /*background: #666;*/   
+  color: #ff9;
+  font-size: 12px;
+  text-shadow: 0 0 3px #000;
+}
+
+
+ 
+ 
+
+.circle {
+        border:0.5em; /* solid #000000;*/ 
+	opacity:0.7; 
+	filter:alpha(opacity=80); 
+	width:12.1em; height:2.3em;          
+	z-index:20; 
+	position:relative;
+        cursor:move;   
+	color:black;
+	/*font-family:helvetica, sans; */     
+	padding-top:0.9em; 
+	font-size:9em;
+	text-align:center;
+	/*background-color:#666;*/   
+        margin-top:0.9em;
+        -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+        -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+        box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}
+.circle > div{
+    position:absolute;
+    top:50%;
+    left:50%;
+}
+.circle span {
+    display:block;
+    white-space:nowrap;
+    text-align:center;
+}
+
+#backgroundPopup{  
+display:none;  
+position:fixed;  
+_position:absolute; /* hack for internet explorer 6*/  
+height:100%;  
+width:100%;  
+top:0;  
+left:0;  
+background:#000000;  
+border:1px solid #cecece;  
+z-index:1;  
+}  
+#popupContact{  
+display:none;  
+position:fixed;  
+_position:absolute; /* hack for internet explorer 6*/  
+height:384px;  
+width:408px;  
+background:#FFFFFF;  
+border:2px solid #cecece;  
+z-index:2;  
+padding:1px;  
+font-size:13px;  
+}  
+#popupContact h1{  
+text-align:left;  
+color:#6FA5FD;  
+font-size:22px;  
+font-weight:700;  
+border-bottom:1px dotted #D3D3D3;  
+padding-bottom:2px;  
+margin-bottom:20px;  
+}  
+#popupContactClose{  
+font-size:14px;  
+line-height:14px;  
+right:6px;  
+top:4px;  
+position:absolute;  
+color:#6fa5fd;  
+font-weight:700;  
+display:block;  
+}
+
+
+textarea {
+  padding: 1em;
+  margin: 1em;
+  width: 85%;
+  max-width: 90%; 
+  min-height: 20em;
+  max-height: 25em; 
+  border:2px solid #cecece;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+}
+
+popupCtrl {   
+  /*  margin: 1px auto;*/            
+  margin-left:auto;
+  margin-right:auto;
+  width: 200px;     
+  height: 80px;               
+}
+
+#command {
+  width: 70px;         
+  height: 25px;
+  margin-left:auto;
+  margin-right:auto; 
+
+  padding: auto;
+  cursor:pointer;
+  position: relative;
+  float: left;
+  /*border: 1px solid #333;*/
+  /*background-color: #00ffff;*/
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}
+
+#sortable { 
+   list-style-type: none; 
+   padding: 0; 
+  
+   width: 180px;
+   margin: 0px auto;
+   border: 1px solid #333; 
+}
+#sortable li { 
+   margin: 0 3px 3px 3px; 
+   padding: 0.4em; 
+   padding-left: 1.5em; 
+   font-size: 1em; 
+   height: 18px; 
+}
+#sortable li span { 
+   position: absolute; 
+   margin-left: -1.3em; 
+}
+
+
+
+
+
+
+
+
+
+
+             
+
+ 
