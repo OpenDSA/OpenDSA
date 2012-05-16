@@ -11,6 +11,7 @@ Modules
    :maxdepth: 2
 
    Sorting
+   InsertionSort
    Shellsort
    Mergesort
    TODO

@@ -1,5 +1,11 @@
+.. index:: ! Sorting
+
+*******
 Sorting
-=======
+*******
+
+Introduction
+============
 
 We sort many things in our everyday lives:
 A handful of cards when playing Bridge;
