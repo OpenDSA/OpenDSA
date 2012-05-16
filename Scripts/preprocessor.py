@@ -65,12 +65,12 @@ class modPreReq:
       self.prereqNum = len(self.prereq) 
       
 
-def generateJSON(modRoster):
+def generateJSON(modRoster, modDest):
 
     jsonString='['
     l=1
     try:
-       gfile = open('modules.json','w')
+       gfile = open(modDest+'/modules.json','w')
        #gfile.writelines('[\n')
        for k in modRoster :
           jsonString = jsonString +'{"pk": %s,"model": "showfile.exercise",'%l
@@ -95,12 +95,12 @@ def generateJSON(modRoster):
     except IOError:
        print 'ERROR: When saving JSON file'
 
-def generateCSV(modRoster):
+def generateCSV(modRoster, modDest):
 
     csvString='last_sanitized,h_position,name,v_position,author,prerequisites,summative,covers,seconds_per_fast_problem,live,short_display_name,key\n'
     l=2001
     try:
-       gfile = open('modules.csv','w')
+       gfile = open(modDest+'/modules.csv','w')
        #gfile.writelines('[\n')
        for k in modRoster :
           s = datetime.datetime.strptime(k.last_modified, "%Y-%m-%d %H:%M:%S") 
@@ -665,8 +665,8 @@ def main(argv):
 
 
   #create JSON and CSV files with modules information
-  generateJSON(finalList)
-  generateCSV(finalList) 
+  generateJSON(finalList,modDest)
+  generateCSV(finalList,modDest) 
   finalTable={}
   z =1
   for fl in finalList:
