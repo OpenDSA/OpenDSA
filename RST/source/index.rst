@@ -8,12 +8,17 @@ Modules
 
 .. toctree::
    :numbered:
-   :maxdepth: 2
+   :maxdepth: 3
 
    Sorting
    InsertionSort
+   BubbleSort
+   SelectionSort
+   ExchangeSort
    Shellsort
    Mergesort
+   MergesortImpl
+   Quicksort
    TODO
    Glossary
    Bibliography

@@ -12,7 +12,7 @@ to the first two, and so on.
 As you take each bill, you would add it to the sorted pile that you
 have already made.
 This naturally intuitive process is the inspiration for
-our first sorting algorithm, called Insertion Sort.
+our first sorting algorithm, called ..dfn`Insertion Sort`.
 Insertion Sort iterates through a list of records.
 Each record is inserted in turn at the correct position
 within a sorted list composed of those records already processed.
@@ -20,7 +20,7 @@ The following is a Java implementation.
 The input is an array of :math:`n` records stored in array
 ``A``.::
 
-    static <E extends Comparable>? super E>>
+    static <E extends Comparable<? super E>>
     void inssort(E[] A) {
       for (int i=1; i<A.length; i++) // Insert i'th record
         for (int j=i; (j>0) && (A[j].compareTo(A[j-1])<0); j--)
@@ -36,14 +36,14 @@ The record is moved upward in the array as long as
 As soon as a key value less than or equal to :math:`X` is
 encountered, ``inssort`` is done with that record because all
 records above it in the array must have smaller keys.
-Figure <ODSAref "Insertion" /> illustrates how Insertion Sort
+Figure <ODSAref "Insertion" \> illustrates how Insertion Sort
 works.
 
 .. figure:: http://algoviz.org/OpenDSA/build/Images/InsSort.png
    :width: 400
-   :alt: Mergesort
+   :alt: Illustration of Insertion Sort
 
-   <ODSAfig "Insertion" />
+   <ODSAfig "Insertion" \>
    An illustration of Insertion Sort.
    Each column shows the array after the iteration with the indicated
    value of ``i`` in the outer ``for`` loop.

@@ -20,7 +20,7 @@ We might sort the records by zip code so that we can print and mail
 them more cheaply.
 We might use sorting as an intrinsic part of an algorithm to solve
 some other problem, such as when computing the minimum-cost spanning
-tree (see Module <ODSAref "MCST" />).
+tree (see Module <ODSAref "MCST" \>).
 
 Because sorting is so important, naturally it has been studied
 intensively and many algorithms have been devised.
@@ -128,7 +128,7 @@ When comparing two sorting algorithms, the most straightforward
 approach would seem to be simply program both and measure their
 running times.
 An example of such timings is presented in
-Figure <ODSAref "SortComp" />.
+Figure <ODSAref "SortComp" \>.
 However, such a comparison can be misleading because the running time
 for many sorting algorithms depends on specifics of the input values.
 In particular, the number of records, the size of the keys
