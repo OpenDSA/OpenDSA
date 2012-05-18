@@ -19,6 +19,10 @@ Modules
    Mergesort
    MergesortImpl
    Quicksort
+   Heapsort
+   RadixSort
+   SortingEmpirical
+   SortingLowerBound
    TODO
    Glossary
    Bibliography
