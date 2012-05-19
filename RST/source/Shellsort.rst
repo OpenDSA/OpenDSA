@@ -121,9 +121,10 @@
        var origarr = av.ds.array(theArray, {indexed: true});
        var origlabel = av.label("Original Array", {before: origarr});
        var arr = av.ds.array(a, {indexed: true});
-       var arrlabel = av.label("Values in <b style='color:#0f0;'>green</b> have changed from their original positions", {before: arr});
+       var arrlabel = av.label("Values in <b style='color:#0b0;'>green</b> have changed from their original positions", {before: arr});
        arr.css(function(index)
-         { return arr.value(index) !== origarr.value(index); }, {"color": "#0f0"});
+         { return arr.value(index) !== origarr.value(index); },
+         {"color": "#0b0", "font-weight": "bold"});
      }
    </script>
 
@@ -191,8 +192,8 @@ each element in the sublist being 8 positions apart.
 The first sublist would be the elements in positions 0 and 8.
 The second is in positions 1 and 9, and so on.
 
-Click on the slideshow buttons to see the series of sublists of size
-two.
+As you click through the following slideshow, you will see each of the
+sublists of length 2.
 
 .. raw:: html
 
@@ -222,12 +223,14 @@ two.
    })(jQuery);
    </script>
 
-Now, each of these sublists of length two gets sorted using Insertion
-Sort.
+In the actual Shellsort, each of these sublists of length two gets
+sorted using Insertion Sort.
 As you click through the next slideshow, you will first see the current
 sublist highlighted in yellow.
 Then a pair of elements to be compared will be shown in blue.
 They are swapped if necessary to put them in sort order.
+(Of course, since these first sublists are each of length two, when
+the two items are being compared you won't see anything yellow anymore!)
 
 .. raw:: html
 
@@ -420,7 +423,7 @@ Here is a code implementation for Shellsort.::
      function ex1() { // This is what we pop up
        var mystring = "Two forms at random:\n1) Given a random array of size n, a random increment size I <= n/2, and a random start location S, 0<=S<I (with an arrow over position S), click to highlight the array elements that should be in this sublist. Solve this exercise 10 times in a row to get credit.\n 2) Given random array of size n, and a sub array with elements highlighted, sort the indicated sublist.";
        alert(mystring);
-       this.style.background='#0f0';
+       this.style.background='#0b0';
      }
    </script>
 

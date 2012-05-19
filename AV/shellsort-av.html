@@ -214,7 +214,7 @@ form {
 
 
   var setBlue = function(index) {
-    arr.css(index, {"background-color": "#ddf" });
+    arr.css(index, {"background-color": "#bbf" });
   };
 
   // Partial Shellsort. Sweep with the given increment
@@ -245,7 +245,7 @@ form {
   // Insertion sort using increments
   function inssort(start, incr) {
     var i, j;
-    av.umsg("Sorting the subarray");
+    av.umsg("Sorting the subarray: Blue elements are being compared");
     for (i=start+incr; i<arr.size(); i+=incr) {
       setBlue(i);
       for (j=i; j>=incr; j-=incr) {
