@@ -349,7 +349,7 @@ a.jsavsettings {
         swapIndex.value(index);
         av.forward();
       } else { // second click will swap
-        theArray.swap(sIndex, index, {});
+        theArray.swap(sIndex, index);
         theArray.css([sIndex, index], {"font-size": "100%"});
         swapIndex.value(-1);
         av.forward();
