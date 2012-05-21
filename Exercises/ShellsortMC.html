@@ -18,7 +18,7 @@
     <div class="problems">
       <div id="problem-type-or-description">
         <p class="question">
-	  How should sublists be sorted?
+	  How should Shellsort's sublists be sorted?
 	</p>
         <div class="solution"><var>"Using Insertion sort because Shellsort generally makes each subarray reasonably close to sorted."</var></div>
 	<ul class="choices" data-show="4">
@@ -26,19 +26,36 @@
 	  <li><var>"Using Quicksort, because this is generally the fastest sort."</var></li>
 	  <li><var>"Using Insertion sort because Shellsort generally makes each subarray reasonably close to sorted."</var></li>
 	  <li><var>"Using bubble sort since that is the most appropriate sort in this situation."</var>
+	   <li><var>"Using Shellsort since this is a recursive algorithm."</var>
 	</ul>
+	<div class="hints">
+	  <p>Shellsort isn't really recursive, is it?</p>
+	  <p>The sort that you use on sublists really does matter.</p>
+	  <p>Do you remember why Shellsort sorts sublists?</p>
+	  <p>Recall that the main purpose for sorting sublists in the
+	  first place is to make the list closer to sorted.</p>
+	</div>
       </div>
       <div id="problem-type-or-description">
         <p class="question">
 	  What is the best case input for Shellsort?
 	</p>
         <div class="solution"><var>"A sorted array because each sublist is sorted in linear time."</var></div>
-	<ul class="choices" data-show="4">
+	<ul class="choices" data-show="4" data-none="true">
 	  <li><var>"A sorted array because each sublist is sorted in linear time."</var></li>
 	  <li><var>"A reverse sorted array because because all the sublists are sorted in linear time."</var></li>
 	  <li><var>"A random array, without too much order or dis-order, which will keep things balanced."</var></li>
 	  <li><var>"It doesn't matter, all inputs of a given size will cost the same."</var></li>
 	</ul>
+	<div class="hints">
+	  <p>The order of the input does affect the cost.</p>
+	  <p>Remember what sort is used for sorting the sublists.</p>
+	  <p>Insertion sort is used to sort the sublists.</p>
+	  <p>Insertion sort's best case is when the input is ordered</p>
+	  <p>If the input to Shellsort is ordered, than the input to
+	  each call to Insertion sort on the sublists will also be
+	  ordered.</p>
+	</div>
       </div>
       <div id="problem-type-or-description">
         <p class="question">
@@ -61,9 +78,9 @@
       </div>
       <div id="problem-type-or-description">
         <p class="question">
-	  Which of these inputs will cost the most to Shellsort using
-	  divide-by-twos increments on an array with a size where n
-	  is a power of 2?
+	  Which of these inputs will cost the most for Shellsort when
+	  using divide-by-twos increments on an array with a size
+	  where n is a power of 2?
 	</p>
         <div class="solution"><var>"An array where even positions store values 1 to n/2 and odd positions store values n/2+1 to n."</var></div>
 	<ul class="choices" data-show="4">
@@ -75,16 +92,17 @@
       </div>
       <div id="problem-type-or-description" >
 	<p class="question">
-	  What is the average case cost of Shellsort?
+	  What is the average case cost of Shellsort for a good
+	  increment series?
 	</p>
-	<div class="solution"><var><code>O(n \sqrt{n})</code></var></div>
+	<div class="solution"><var><code>\Theta(n \sqrt{n})</code></var></div>
 	<ul class="choices" data-show="4" data-none="true">
-	  <li><var><code>O(n^2)</code></var></li>
-	  <li><var><code>O(n)</code></var></li>
-	  <li><var><code>O(n \log n)</code></var></li>
-	  <li><var><code>O(2^n)</code></var></li>
-	  <li><var><code>O(\log n)</code></var></li>
-	  <li><var><code>O(n \sqrt{n})</code></var></li>
+	  <li><var><code>\Theta(n^2)</code></var></li>
+	  <li><var><code>\Theta(n)</code></var></li>
+	  <li><var><code>\Theta(n \log n)</code></var></li>
+	  <li><var><code>\Theta(2^n)</code></var></li>
+	  <li><var><code>\Theta(\log n)</code></var></li>
+	  <li><var><code>\Theta(n \sqrt{n})</code></var></li>
 	</ul>
 	<div class="hints">
 	  <p>Shellsort does not have the same runtime as most typical sorts.</p>
@@ -92,24 +110,22 @@
 	  Insertion Sort</p>
 	  <p>Shellsort is slower than sorts like Quicksort or
 	  Mergesort.</p>
-	  <p>Shellsort is not <code>O(n \log n)</code> or <code>O(n^2)</code></p>
+	  <p>Shellsort is not <code>\Theta(n \log n)</code> or <code>\Theta(n^2)</code></p>
 	</div>
       </div>
       <div id="problem-type-or-description">
-	<p class="question spin">
-	    What is the
-	    {best-case cost of Shellsort for an aray whose size n is a
-	     power of 2 |
-	     cost of Shellsort on an array of size n}
-	    when using divide-by-twos increments?
+	<p class="question">
+	    What is the best-case cost of Shellsort for an aray whose
+	     size n is a power of 2 when using divide-by-twos
+	     increments?
 	</p>
-	<div class="solution"><var><code>O(n \log n)</code></var></div>
+	<div class="solution"><var><code>\Theta(n \log n)</code></var></div>
 	<ul class="choices" data-show="4" data-none="true">
-	  <li><var><code>O(n^2)</code></var></li>
-	  <li><var><code>O(n)</code></var></li>
-	  <li><var><code>O(n \log n)</code></var></li>
-	  <li><var><code>O(2^n)</code></var></li>
-	  <li><var><code>O(\log n)</code></var></li>
+	  <li><var><code>\Theta(n^2)</code></var></li>
+	  <li><var><code>\Theta(n)</code></var></li>
+	  <li><var><code>\Theta(n \log n)</code></var></li>
+	  <li><var><code>\Theta(2^n)</code></var></li>
+	  <li><var><code>\Theta(\log n)</code></var></li>
 	</ul>
 	<div class="hints">
 	  <p>Think about whether the sorted list is a best-case input
