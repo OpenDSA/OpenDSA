@@ -1,0 +1,530 @@
+<html>
+<head>
+    <title>Question Editing - QBank</title>  
+  
+  <meta name="Description" content="A bank of community-written homework and test questions where authors get credit and access is completely free.">
+  
+  <img src="QBank.gif" />
+
+ 
+  
+  <link href="new.css" rel="stylesheet" type="text/css" />
+ 
+  
+
+  
+  <script type="text/javascript">
+  var range_var_num = 1; //variable to count number of range type variables.
+  var list_var_num = 1; //variable to count number of list type variables.
+  var A = new Array();
+
+// Generates a radio button to select type of variable (list or range)
+function createRadioElement(place, variable, variable1) {
+
+	var e = document.getElementById(variable);
+	var f = document.getElementById(variable1);
+	if(e.style.display == 'inline') {
+		e.style.display = 'none';
+		f.style.display = 'inline';
+	}
+	else {
+		e.style.display = 'inline';
+		f.style.display = 'none';
+	}
+
+    var radioHtml = '<div id="list_var" style="display:inline"> <input type="radio" name="radio" value="list" onClick="generateListOption()"';
+    radioHtml += '/>';
+	radioHtml += "List";
+	radioHtml += '</div>';
+	var radioHtml2 = '<div id="list_var2" style="display:none">';
+	radioHtml2 += "List";
+	radioHtml2 += '</div>';
+
+	var radioHtml1 = '<div id="range_var" style="display:inline"> <input type="radio" name="radio" value="range" onClick="generateRangeOption()"';
+    radioHtml1 += '/> ';
+	radioHtml1 += "Range ";
+	radioHtml1 += '</div>';
+	var radioHtml3 = '<div id="range_var2" style="display:none">';
+	radioHtml3 += "Range";
+	radioHtml3 += '</div>';
+	
+    var radioFragment = document.createElement('div');
+    radioFragment.innerHTML = radioHtml;
+	var radioFragment1 = document.createElement('div');
+    radioFragment1.innerHTML = radioHtml1;
+	var radioFragment2 = document.createElement('div');
+    radioFragment2.innerHTML = radioHtml2;
+	var radioFragment3 = document.createElement('div');
+    radioFragment3.innerHTML = radioHtml3;
+    document.getElementById(place).appendChild(radioFragment);
+	document.getElementById(place).appendChild(radioFragment1);
+	document.getElementById(place).appendChild(radioFragment2);
+	document.getElementById(place).appendChild(radioFragment3);
+}
+
+//If list option is selected, creates a link to add a variable.
+function generateListOption() {
+
+	var e = document.getElementById('range_var');
+	var f = document.getElementById('list_var');
+	var f1 = document.getElementById('list_var2');
+	if(e.style.display == 'inline') {
+		e.style.display = 'none';		
+		f.style.display = 'none';
+		f1.style.display = 'inline';
+	}
+	
+			var new_link = document.createElement("a");
+			new_link.setAttribute("href",'#');
+			new_link.setAttribute("onClick", 'addListVariable()');
+			var text4 = document.createElement("div");
+			text4.setAttribute("id", 'listLink');
+			text4.setAttribute("style",'display:inline');
+			text4.innerHTML= "Add a variable";
+			new_link.appendChild(text4);
+			document.getElementById('var1').appendChild(new_link);
+			
+}
+
+//When clicked on "add a variable" link of list type, generates textboxes to add a variable name and its values. 
+function addListVariable(){
+
+	    // creates a <table> element and a <tbody> element
+        var tbl     = document.createElement("table");
+		tbl.setAttribute("border",'2');
+		
+				// creates a table row
+		    var row1 = document.createElement("tr");
+			var r1c1 = document.createElement("td");
+			var text1 = document.createElement("div");
+			text1.innerHTML= "Variable Name";
+			r1c1.appendChild(text1);
+			row1.appendChild(r1c1);
+			var r1c2 = document.createElement("td");
+			var text2 = document.createElement("div");
+			text2.innerHTML= "Values separated by commas";
+			r1c2.appendChild(text2);
+			row1.appendChild(r1c2);
+			tbl.appendChild(row1);
+
+			var var_name = "list"+list_var_num+"_name";
+			var var_val = "list"+list_var_num+"_val";
+			var div_name = "div"+list_var_num;
+			
+            var row2 = document.createElement("tr");
+			var r2c1 = document.createElement("td");
+			var cellText = document.createElement("input");
+			cellText.setAttribute("type",'text');
+			cellText.setAttribute("name",var_name);
+			r2c1.appendChild(cellText);
+            row2.appendChild(r2c1);
+			var r2c2 = document.createElement("td");
+			var cellText2 = document.createElement("input");
+			cellText2.setAttribute("type",'text');
+			cellText2.setAttribute("name",var_val);
+
+			r2c2.appendChild(cellText2);			
+            row2.appendChild(r2c2);
+			tbl.appendChild(row2);
+			
+			list_var_num++;
+		
+			document.getElementById('var1').appendChild(tbl);
+		
+
+}
+
+//If range option is selected, creates a link to add a variable.
+function generateRangeOption() {
+
+	var e = document.getElementById('list_var');
+	var f = document.getElementById('range_var');
+	var f1 = document.getElementById('range_var2');
+	if(e.style.display == 'inline') {
+		e.style.display = 'none';
+		f.style.display = 'none';
+		f1.style.display = 'inline';
+	}
+			var new_link = document.createElement("a");
+			new_link.setAttribute("href",'#');
+			new_link.setAttribute("onClick", 'addRangeVariable()');
+			var text4 = document.createElement("div");
+			text4.setAttribute("id", 'rangeLink');
+			text4.setAttribute("style",'display:inline');
+			text4.innerHTML= "Add a variable";
+			new_link.appendChild(text4);
+			document.getElementById('var1').appendChild(new_link);
+}
+
+//For range type of variable, checks if a min value entered is an integer else shows an error message.
+function minValidation(obj){
+	/*if(isNaN(obj.value)){
+		alert("Error: Enter a number!");
+		//var a = obj.value;
+		//alert("Hi"+a);
+	}*/
+	if((parseFloat(obj.value) == parseInt(obj.value)) && !isNaN(obj.value)){
+      return true;
+	} else { 
+	  alert("Error: Enter an integer!");
+      return false;
+	} 
+}
+
+//For range type of variable, checks if a max value entered is an integer else shows an error message.
+function maxValidation(obj){
+	if(minValidation(obj)){
+		var a_max = obj.name;
+		var a_min = a_max.substring(0,a_max.indexof("_"))+"min";
+		alert("hi"+a_min);
+	}
+}
+
+//When clicked on "add a variable" link of rage type, generates textboxes to add a variable name and its min and max values. 
+function addRangeVariable(){
+
+	    // creates a <table> element and a <tbody> element
+        var tbl     = document.createElement("table");
+		tbl.setAttribute("border",'2');
+		// creates a table row
+		    var row1 = document.createElement("tr");
+			var r1c1 = document.createElement("td");
+			var text1 = document.createElement("div");
+			text1.innerHTML= "Variable Name";
+			r1c1.appendChild(text1);
+			row1.appendChild(r1c1);
+			var r1c2 = document.createElement("td");
+			var text2 = document.createElement("div");
+			text2.innerHTML= "Min Value";
+			r1c2.appendChild(text2);
+			row1.appendChild(r1c2);
+			var r1c3 = document.createElement("td");
+			var text3 = document.createElement("div");
+			text3.innerHTML= "Max Value";
+			r1c3.appendChild(text3);
+			row1.appendChild(r1c3);			
+			tbl.appendChild(row1);
+
+			var var_name = "range"+range_var_num+"_name";
+			var var_min = "range"+range_var_num+"_min";
+			var var_max = "range"+range_var_num+"_max";
+			
+            var row2 = document.createElement("tr");
+			var r2c1 = document.createElement("td");			
+			var cellText = document.createElement("input");
+			cellText.setAttribute("type",'text');
+			cellText.setAttribute("name",var_name);
+			r2c1.appendChild(cellText);
+            row2.appendChild(r2c1);
+			var r2c2 = document.createElement("td");
+			var cellText2 = document.createElement("input");
+			cellText2.setAttribute("type",'text');
+			cellText2.setAttribute("name",var_min);
+			cellText2.setAttribute("onchange", "minValidation(this)");
+			r2c2.appendChild(cellText2);
+            row2.appendChild(r2c2);
+			var r2c3 = document.createElement("td");
+			var cellText3 = document.createElement("input");
+			cellText3.setAttribute("type",'text');
+			cellText3.setAttribute("name",var_max);
+			cellText3.setAttribute("onchange", "maxValidation(this)");
+			r2c3.appendChild(cellText3);
+            row2.appendChild(r2c3);			
+			tbl.appendChild(row2);
+			
+			range_var_num++;
+						
+			document.getElementById('var1').appendChild(tbl);
+
+}
+
+//Based on the variable type selected, generated textboxes to add an answer: for range type a textbox to write answer function and for list type a table to enter answer for each combination.
+function generateAnswer(ans){
+
+	var e1 = document.getElementById('variable2');
+	var f1 = document.getElementById('variable3');
+	if(e1.style.display == 'inline') {
+		e1.style.display = 'none';
+		f1.style.display = 'inline';
+	}
+	else {
+		e1.style.display = 'inline';
+		f1.style.display = 'none';
+	}
+
+	var e = document.getElementById('range_var2');
+	var f = document.getElementById('list_var2');
+	if(e.style.display == 'inline') {
+		var e2 = document.getElementById('rangeLink');
+		e2.style.display = 'none';
+		var cellText = document.createElement("input");
+		cellText.setAttribute("type",'text');
+		cellText.setAttribute("name",'range_ans');
+		document.getElementById('var2').appendChild(cellText);
+	}	
+	
+	else if(f.style.display == 'inline') {
+		var e2 = document.getElementById('listLink');
+		e2.style.display = 'none';
+		
+		var names = new Array();
+		var values = new Array();
+		var num_rows = 1;
+		for(var i = 1; i<list_var_num ; i++){
+			var var_name = "list"+i+"_name";
+			var curr_name = document.getElementsByName(var_name);
+			names[i-1] = curr_name.item(0).value;
+			var var_val = "list"+i+"_val";
+			var curr_var = document.getElementsByName(var_val);	
+			var new_val = curr_var.item(0).value;
+			values[i-1] = new Array();
+			values[i-1] = new_val.split(",");
+			//if(i < (list_var_num-1)){
+				num_rows = num_rows*(values[i-1].length);
+			//}			
+		}	
+		var num_cols = values[list_var_num-2].length;
+		var row_col = "(" + num_rows + ", " + num_cols + ")";
+
+		
+		for(var i=0; i<num_rows; i++){
+			A[i] = new Array();
+		}
+		var combination = new Array();
+		var comb = new Array();
+		for(var i=0; i< list_var_num-1; i++){
+			combination[i]=0;
+			comb[i]=0;
+		}
+		
+		combination[list_var_num-2] = 1;
+		comb[0]=1;
+		for(var i=list_var_num-3; i>=0 ; i--){
+			combination[i]=values[i+1].length*combination[i+1];
+		}		
+		for(var i=1; i<list_var_num-1; i++){
+			comb[i] = comb[i-1]*values[i-1].length;
+		}
+			
+		for(var i=1; i<list_var_num; i++){
+			for(var l=1; l<=comb[i-1] ; l++){
+				for(var j=1; j<=values[i-1].length ;j++){
+					for(var k=1; k<=combination[i-1]; k++){
+						var temp3 = (l-1)*values[i-1].length*combination[i-1];
+						var temp = (j-1)*combination[i-1];
+						var temp2 = temp3+temp+(k-1);
+						A[temp2][i-1] = values[i-1][j-1];
+					}
+				}
+			}
+		}
+		
+		// creates a <table> element and a <tbody> element
+        var tbl     = document.createElement("table");
+		tbl.setAttribute("border",'2');
+		// creates a table row
+		var row1 = document.createElement("tr");
+		for(var i=1; i<list_var_num; i++){		    
+			var r1c1 = document.createElement("td");
+			var text1 = document.createElement("div");
+			text1.innerHTML= names[i-1];
+			r1c1.appendChild(text1);
+			row1.appendChild(r1c1);
+		}
+		var r1c1 = document.createElement("td");
+		var text1 = document.createElement("div");
+		text1.innerHTML= "Answer";
+		r1c1.appendChild(text1);
+		row1.appendChild(r1c1);
+		tbl.appendChild(row1);
+		
+		for(var i=0; i<A.length ; i++){
+			var row1 = document.createElement("tr");
+			for(var j=0; j<A[0].length; j++){
+				var r1c1 = document.createElement("td");
+				var text1 = document.createElement("div");
+				text1.innerHTML= A[i][j];
+				r1c1.appendChild(text1);
+				row1.appendChild(r1c1);
+			}
+			var var_name = "ans"+i;
+			var r2c1 = document.createElement("td");			
+			var cellText = document.createElement("input");
+			cellText.setAttribute("type",'text');
+			cellText.setAttribute("name",var_name);
+			r2c1.appendChild(cellText);
+            row1.appendChild(r2c1);
+			tbl.appendChild(row1);
+		}
+		
+		document.getElementById('var2').appendChild(tbl);
+	
+		/*var var_val = "list1_val";
+		var curr_var = document.getElementsByName('list1_val');
+		var cellText = document.createElement("input");
+		cellText.setAttribute("type",'text');
+		cellText.setAttribute("name",'range_ans');
+		cellText.setAttribute("value",A[22][2]);
+		document.getElementById('var2').appendChild(cellText);*/
+	}
+
+}
+
+//Creates an answer table string written to the intermediate file and used later while displaying question for editting.
+function getAnsTable(){
+		var ans_tab = "";
+		for(var i=0; i<A.length; i++){
+			ans_tab += A[i][0];
+			for(var j=1; j<A[i].length; j++){
+				ans_tab += "##"+A[i][j];
+			}
+			if(i<(A.length-1)){
+				ans_tab += "&&";
+			}
+		}
+		document.getElementsByName('answerTable').item(0).setAttribute("value",ans_tab);
+}
+
+
+</script>
+
+  <script type="text/javascript">
+
+
+</script>
+
+
+  
+     <script type="text/x-mathjax-config">
+       MathJax.Hub.Config({
+         tex2jax: {
+           inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+           processEscapes: true
+         }
+       });
+     </script>
+     
+         
+</head>
+<body>
+   
+   
+      
+<form accept-charset="UTF-8" action="formsave.php" autocomplete="off" class="question_edit" id="question_edit" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /> 
+    
+ <input id="question_type" name="question[type]" type="hidden" value="SimpleQuestion" />
+
+ <p id="5">You are writing a simple question
+ </p>
+
+
+ <table class="target question_form">
+	 <tr id="setup_row" >
+       <td valign="top"><i>Save Question As (FileName): </i></td>
+       <td>
+          <div class="field">
+             
+                <input type= "text" name="file_name"  maxlength="10"/>
+				
+     </div>
+       </td>
+       <td></td>
+    </tr>
+ 
+    <tr id="setup_row" >
+       <td valign="top"><i>Introduction text:</i></td>
+       <td>
+          <div class="field">
+             
+                <textarea class="mark_it_up" cols="80" id="question_question_setup_attributes_content" name="intro_text" rows="4"></textarea>
+				
+     </div>
+       </td>
+       <td></td>
+    </tr>
+          
+    <tr>
+       <td valign="top"><i>Question text: (Prefix variables with @)</i></td>
+       <td>
+          <div class="field">
+             <textarea class="mark_it_up" cols="80" id="question_content" name="q_text" rows="4"></textarea>
+          </div>
+       </td>
+       <td></td>
+    </tr>
+	
+	<tr>
+       <td valign="top">
+			<div id="variable" style="display:inline">
+				<a href="#" style="cursor:pointer" onClick="createRadioElement('var1', 'variable', 'variable1')" > Add a parameter name and value</a>
+			</div>
+			<div id="variable1" style="display:none">
+				 Select variable Type for all variables: 
+			</div>
+		</td>
+		<td>
+			<div id="var1" name="var1">
+			</div>
+		</td>	
+	</tr>
+    <tr>	
+	       <td valign="top">
+			<div id="variable2" style="display:inline">
+				<a href="#" style="cursor:pointer" onClick="generateAnswer('var2')" > Add an answer</a>
+			</div>
+			<div id="variable3" style="display:none">
+				 Answer: 
+			</div>
+		</td>
+	   
+       <td>
+			<div id="var2" name="var2">
+			</div>
+	   </td>
+    </tr>
+	 
+	</table>
+	
+	 <div>
+		<input type="hidden" name="answerTable">
+	</div>
+
+ <p>   
+ 
+ 
+  <br/>
+  <br/>
+  
+<span id="newText">
+  
+  <div class="actions">
+    <center>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;
+
+	  
+      <input class="ui-state-default ui-corner-all submitButton" data-disable-with="Saving..." id="save_button" name="commit" type="submit" value="Save" onClick="getAnsTable()"/>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;
+	  
+      
+    </center>
+  </div>
+
+  </span>
+  
+</form>
+
+  
+
+<script type="text/javascript">
+//<![CDATA[
+window._token = '2DCPM7gQb7X5+rLQ7rcOxaeiN3uP9gYZ4QhLSScv5sk='
+//]]>
+</script>
+
+
+
+
+ 
+</html>
