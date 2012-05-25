@@ -135,7 +135,7 @@ order in which data items are given to the insert operation.  You can
 see this insertion algorithm in action in the following slideshow.
 </p>
 
-
+<!-- 
     <div id="av">
       <div class="jsavcontrols"></div>
       <p class="jsavoutput jsavline"></p>
@@ -241,6 +241,20 @@ see this insertion algorithm in action in the following slideshow.
 	//console.log($(this).attr("d"));
     });
     </script>
+ -->
+
+
+
+<center>
+ <iframe src="../AV/BST-insert.html"
+	 type="text/javascript" width="900" height="900"
+	 frameborder="0" marginwidth="0" marginheight="0"
+	 scrolling="no">
+</iframe>
+</center>
+
+
+
 
 
 <p>The deletion algorithm for a
@@ -337,6 +351,16 @@ will be deleted.
 	}
     }
 </pre>
+
+<center>
+ <iframe src="../AV/BST-delete.html"
+	 type="text/javascript" width="900" height="900"
+	 frameborder="0" marginwidth="0" marginheight="0"
+	 scrolling="no">
+</iframe>
+</center>
+
+
 
 
 </div>
