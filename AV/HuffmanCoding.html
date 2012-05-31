@@ -176,6 +176,18 @@
 		}
 	    }
 
+	    // adding "0" or "1" to the label of edges in Huffman Coding tree
+	    var traverse_code = function(node) {
+		if (node.left()) {
+		    node.left().edgeToParent().label(1); 
+		    traverse_code(node.left());
+		}	
+		if (node.right()) {
+		    node.right().edgeToParent().label(0);
+		    traverse_code(node.right());
+		}
+	    }
+
 	    // Layout all the trees
 	    var layAll = function(trees) {
 		var leftSoFar = 30;
@@ -328,6 +340,12 @@
 	    huffTree_animation(numArray, hfArray);
 	    jsav.umsg("The Huffman Coding Tree is as follows: ");
 	    layAll(hfArray);
+	    jsav.step();
+
+	    jsav.umsg("The codes for each node are as follows: ");
+	    traverse_code(hfArray[0].root());
+	    hfArray[0].layout();
+	    
 	    jsav.recorded(); // done recording changes, will rewind
 
 	    $(".jsavtreenode").live("hover", function() {
