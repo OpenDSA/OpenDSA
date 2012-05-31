@@ -176,15 +176,31 @@
 		}
 	    }
 
-	    // adding "0" or "1" to the label of edges in Huffman Coding tree
+	    // adding "0" or "1" to the label of edges in Huffman Coding tree without animation
 	    var traverse_code = function(node) {
 		if (node.left()) {
-		    node.left().edgeToParent().label(1); 
+		    node.left().edgeToParent().label(0); 
 		    traverse_code(node.left());
 		}	
 		if (node.right()) {
-		    node.right().edgeToParent().label(0);
+		    node.right().edgeToParent().label(1);
 		    traverse_code(node.right());
+		}
+	    }
+
+	    
+	    // adding "0" or "1" to the label of edges in Huffman Coding tree with animation
+	    var traverse_code_animation = function(node) {
+		if (node.left()) {
+//		    jsav.umsg("Since the node " + node.left().value() + "is the left child of " + node.value() + "value 0 is set");
+		    node.left().edgeToParent().label(0); 
+		    jsav.step();
+		    traverse_code_animation(node.left());
+		}	
+		if (node.right()) {
+		    node.right().edgeToParent().label(1);
+		    jsav.step();
+		    traverse_code_animation(node.right());
 		}
 	    }
 
@@ -343,9 +359,9 @@
 	    jsav.step();
 
 	    jsav.umsg("The codes for each node are as follows: ");
-	    traverse_code(hfArray[0].root());
+	    traverse_code_animation(hfArray[0].root());
 	    hfArray[0].layout();
-	    
+
 	    jsav.recorded(); // done recording changes, will rewind
 
 	    $(".jsavtreenode").live("hover", function() {
