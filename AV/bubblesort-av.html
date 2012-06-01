@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Selection Sort AV</title>
+  <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+<style>
+
+#container {
+  width: 770px;
+  height: 465px;
+  border: 1px solid black;
+  background-color: #efe;
+  padding: 10px;
+  overflow: hidden;
+}
+
+div h1 {
+  background-color: #efe;
+  margin: 5px;
+}
+.jsavcontainer {
+  background-color: #efe;
+  border: none;
+}
+.jsavcounter {
+  float: left;
+  width: 100px;
+}
+.jsavarray {
+  padding-left:0;
+}
+p.jsavoutput.jsavline {
+  height: 30px;
+  margin: 0;
+}
+#about {
+  float: right;
+}
+a.jsavsettings {
+display: block;
+margin-top: 10px;
+margin-left: 10px;
+}
+form {
+  clear: both;
+}
+</style>
+</head>
+
+<body>
+<div id="container">
+  <input type="button" id="about" name="about" value="About" style="margin-top:10px;"/>
+  <a class="jsavsettings" href="#">Settings</a>
+  <h1 style="">Selection Sort Visualization</h1>
+
+  <form id="ssperform">
+    <p>
+      <input type="button" name="run" value="Run" />
+      <input type="button" name="reset" value="Reset" />
+      <label for="arraysize">&nbsp;List size:&nbsp;</label>
+      <select id="arraysize">
+        <option value = 5>5</option>
+        <option value = 6>6</option>
+        <option value = 7>7</option>
+        <option selected value = 8>8</option>
+        <option value = 9>9</option>
+        <option value = 10>10</option>
+        <option value = 11>11</option>
+        <option value = 12>12</option>
+        <option value = 13>13</option>
+        <option value = 14>14</option>
+        <option value = 15>15</option>
+        <option value = 16>16</option>
+      </select>
+      <label for="arrayValues">&nbsp;Your values:&nbsp;</label>
+      <input size="60" name="arrayValues" id="arrayValues" type="text" />
+    </p>
+  </form>
+  <div id="avcontainer">
+    <span class="jsavcounter"></span>
+    <div class="jsavcontrols"></div>
+    <p class="jsavoutput jsavline" readonly="readonly"></p>
+  </div> <!--avcontainer-->
+</div> <!--container-->
+
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
+</script>
+<script src="../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../JSAV/build/JSAV-min.js"></script>
+
+<script>
+(function($) {
+  // Number of values in the array
+  var ASize = $('#arraysize').val();
+  // The array of numbers.
+  var theArray = [];
+
+  // check query parameters from URL
+  var params = JSAV.utils.getQueryParameter();
+  if ("array" in params) { // set value of array pick if it is a param
+    $('#arrayValues').val(params["array"]).prop("disabled", true);
+  }
+  
+  // create a new settings panel and specify the link to show it
+  var settings = new JSAV.utils.Settings($(".jsavsettings"));
+  // add the layout setting preference
+  var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
+  
+  var context = $("#ssperform");
+  var emptyContent = $("#avcontainer").html();
+  var av, // for JSAV av
+    arr;  // for the JSAV array
+
+  // Connect action callbacks to the HTML entities
+  $('input[name="about"]').click(about);
+  $('input[name="run"]', context).click(runIt);
+  $('input[name="reset"]', context).click(reset);
+
+  // Process About button: Pop up a message with an Alert
+  function about() {
+    var mystring = "Selection Sort Algorithm Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
+
+  // Process Reset button: Reinitialize the output textbox and the AV
+  function reset(flag) {
+    if (av) {
+      av.clearumsg();
+      $("#avcontainer").unbind().html(emptyContent);
+    }
+    // Clear the array values field, when no params given and reset button hit
+    if (flag !== true) {
+      if (!$('#arrayValues').prop("disabled")) {
+        $('#arrayValues').val("");
+      }
+    }
+  }
+
+  // Validate the user-defined array values
+  function processArrayValues() {
+    var i, 
+        num, 
+        msg = "Must be 5 to 16 positive integers";
+    // Convert user's values to an array,
+    // assuming values are space separated
+    theArray = $('input[name="arrayValues"]', context).val().match(/[0-9]+/g) || [];
+    if (theArray.length === 0) { // Empty field
+      theArray.length = 0;
+      return true;
+    }
+    if (theArray.length < 5 || theArray.length > 16) {
+      alert(msg);
+      theArray.length = 0;
+      return false;
+    }
+    for (i=0; i<theArray.length; i++) {
+      theArray[i] = Number(theArray[i]);
+      if (isNaN(theArray[i]) || theArray[i] < 0) { 
+        alert(msg);
+        theArray.length = 0;
+        return false;
+      }
+    }
+    $('#arraysize').val(theArray.length);
+    return true;
+  }
+
+
+  var setBlue = function(index) {
+    arr.css(index, {"background-color": "#ddf" });
+  };
+  
+  var setGreen = function(index) {
+    arr.css(index, {"background-color": "#00FF00" });
+  };
+  
+  var setPurple = function(index) {
+    arr.css(index, {"background-color": "FF00FF" });
+  };
+
+  
+  // Selection sort
+  function selsort() {
+    var i, j, k, min;
+    av.umsg("Sorting the subarray");
+    for (i=0; i<arr.size(); i+=1) {
+      //setBlue(i);
+	  min = i;
+
+      for (j=i; j<arr.size(); j+=1) {
+        setBlue(j);
+	    av.step();
+        if (arr.value(min) > arr.value(j)) {
+		  min = j;	
+          setGreen(min);		  
+	    }
+		
+        else {
+		  //arr.highlight([j-1, j]);
+          //break; // Done pushing element, leave for loop
+		  setBlue(min);
+        }
+	    //arr.highlight(j);
+      }
+	  
+	  arr.swap(i, min); // swap the two indices	  
+      av.step();   
+	  for (k = i+1; k < arr.size(); k++){
+      	arr.css(k, {"background-color": "#C0C0C0"});	
+	  }	
+      //arr.highlight(j);
+	  arr.highlight(i);
+    }
+  }
+
+  // Execute the "Run" button function
+  function runIt() {
+    var i;
+    var newSize = $('#arraysize').val();
+
+    if (processArrayValues()) { // if it is false, we got junk user
+                                // needs to fix
+      if (theArray.length === 0) { // Make a random  array
+        ASize = newSize;
+        theArray.length = 0; // Out with the old
+        // Give random numbers in range 0..999
+        for (i=0; i < ASize; i++) {
+          theArray[i] = Math.floor(Math.random()*1000);
+        }
+      }
+      else { // Use the values we got out of the user's list
+        ASize = theArray.length;
+      }
+      reset(true); // Reset any previous visualization
+      av = new JSAV("avcontainer"); // initialize JSAV ..
+      // .. and the array. use the layout the user has selected
+      arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
+      var i, incr;
+      // PUT STUFF HERE TO INVOKE YOUR SORT
+	  selsort();
+      av.umsg("Done sorting!");
+      av.recorded(); // mark the end
+    }
+  }
+})(jQuery);
+</script>
+</body>
+</html>
