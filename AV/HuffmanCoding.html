@@ -247,6 +247,16 @@
 		}
 	    }
 
+	    // find the Huffman codes for all leaf nodes
+	    var hfCode = function(valArr, codeArr, aTree) {
+		for (var i = 0; i < valArr.length; i++) {
+		    findNode(aTree.root(), valArr[i]);
+		    leafCode(anLeaf);
+		    codeArr[i] = code;
+		    code = "";
+		}	
+	    }
+
 	    // Layout all the trees
 	    var layAll = function(trees) {
 		var leftSoFar = 30;
@@ -360,8 +370,17 @@
 	    // numArray: used for logic control
 	    var numArray = new Array();
 
+	    // chaArray: used for storing characters
+	    var chaArray = new Array();
+
 	    // hfArray: used for holding the root of several binary trees
 	    var hfArray = new Array();
+
+	    // valArray: used for finding the Huffman Codes
+	    var valArray = new Array();
+
+	    // codeArray: used for storing the Huffman codes
+	    var codeArray = new Array();
 
 	    // userArry: an array to store the number and character
 	    var userArray = new Array();
@@ -385,10 +404,12 @@
 	    // initialization for all the arrays
 	    for (var i = 0, j = 0; i < userArray.length - 1; i += 2, j++) {
 		value = userArray[i] + "<br>" + userArray[i + 1];
+		valArray[j] = value;
 		// hfArray[j] = jsav.ds.bintree({visible: false, center: false});
 		hfArray[j] = jsav.ds.bintree({center: false});	
 		hfArray[j].root(value);
 		numArray[j] = userArray[i];
+		chaArray[j] = userArray[i+1];
 	    }
 
 	    jsav.umsg("The initial data are as follows (the first line is frequency and the second line is the chracter): ");
@@ -405,13 +426,12 @@
 	    traverse_code_animation(hfArray[0].root());
 	    //	    hfArray[0].layout();
 
-	    var temValue = 32 + "<br>" + "C";
 	    var anLeaf;
 	    var code = "";
-	    findNode(hfArray[0].root(), temValue);
-	    leafCode(anLeaf);
-	    document.write(anLeaf.value() + "\n");
-	    document.write("\n" + code);
+	    hfCode(valArray, codeArray, hfArray[0]);
+	    for (var i = 0; i < valArray.length; i++) {
+		document.write(chaArray[i] + ": " + codeArray[i] + "<br>");
+	    }
 
 	    jsav.recorded(); // done recording changes, will rewind
 
