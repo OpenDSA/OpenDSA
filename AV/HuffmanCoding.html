@@ -234,6 +234,9 @@
 		else {
 		    if (aLeafNode.parent()) {
 			code += aLeafNode.edgeToParent().label();
+			aLeafNode.parent().highlight();
+			jsav.step();
+			aLeafNode.parent().css("background-color", "white");
 			leafCode(aLeafNode.parent());
 		    }
 		    else {
@@ -251,7 +254,10 @@
 	    var hfCode = function(valArr, codeArr, aTree) {
 		for (var i = 0; i < valArr.length; i++) {
 		    findNode(aTree.root(), valArr[i]);
+		    anLeaf.highlight();
+		    jsav.step();
 		    leafCode(anLeaf);
+		    anLeaf.css("background-color", "orange");
 		    codeArr[i] = code;
 		    code = "";
 		}	
