@@ -175,21 +175,21 @@ form {
     arr.css(index, {"background-color": "#ddf" });
   };
 
-  // Insertion sort using increments
-  function inssort(start, incr) {
+  // Insertion sort
+  function inssort() {
     var i, j;
     av.umsg("Sorting the subarray");
-    for (i=start+incr; i<arr.size()-1; i+=incr) {
+    for (i=1; i<arr.size(); i++) {
       setBlue(i);
-      for (j=i; j>=incr; j-=incr) {
-        setBlue(j-incr);
+      for (j=i; j>=0; j--) {
+        setBlue(j);
 	av.step();
-        if (arr.value(j) < arr.value(j-incr)) {
-          arr.swap(j, j-incr); // swap the two indices
+        if (arr.value(j) < arr.value(j-1)) {
+          arr.swap(j, j-1); // swap the two indices
           av.step();
 	}
         else {
-  	  arr.highlight([j-incr, j]);
+  	  arr.highlight([j-1, j]);
           break; // Done pushing element, leave for loop
         }
 	arr.highlight(j);
