@@ -188,7 +188,6 @@
 		}
 	    }
 
-
 	    // adding "0" or "1" to the label of edges in Huffman Coding tree with animation
 	    var traverse_code_animation = function(node) {
 		if (node.left()) {
@@ -226,7 +225,7 @@
 		}
 	    }
 
-	    // find the Huffman Code for a specific leaf node
+	    // find the Huffman Code for a specific leaf node without animation
 	    var leafCode = function(aLeafNode) {
 		var leafVal = aLeafNode.value();
 		if (!leafVal || leafVal === "jsavnull")
@@ -234,9 +233,6 @@
 		else {
 		    if (aLeafNode.parent()) {
 			code += aLeafNode.edgeToParent().label();
-			aLeafNode.parent().highlight();
-			jsav.step();
-			aLeafNode.parent().css("background-color", "white");
 			leafCode(aLeafNode.parent());
 		    }
 		    else {
@@ -250,13 +246,47 @@
 		}
 	    }
 
-	    // find the Huffman codes for all leaf nodes
+		// find the Huffman Code for a specific leaf node with animation
+	    var leafCode_animation = function(aLeafNode) {
+		var leafVal = aLeafNode.value();
+		if (!leafVal || leafVal === "jsavnull")
+		    return
+		else {
+		    if (aLeafNode.parent()) {
+			code += aLeafNode.edgeToParent().label();
+			aLeafNode.parent().highlight();
+			jsav.step();
+			aLeafNode.parent().css("background-color", "white");
+			leafCode_animation(aLeafNode.parent());
+		    }
+		    else {
+			var tmpCode = "";
+			for (var i = code.length - 1; i >= 0; i--) {
+			    tmpCode += code.substr(i, 1); 
+			}
+			code = tmpCode;
+			return;	
+		    }
+		}
+	    }
+		
+	    // find the Huffman codes for all leaf nodes without animation
 	    var hfCode = function(valArr, codeArr, aTree) {
+		for (var i = 0; i < valArr.length; i++) {
+		    findNode(aTree.root(), valArr[i]);
+		    leafCode(anLeaf);
+		    codeArr[i] = code;
+		    code = "";
+		}	
+	    }
+		
+		// find the Huffman codes for all leaf nodes with animation
+	    var hfCode_animation = function(valArr, codeArr, aTree) {
 		for (var i = 0; i < valArr.length; i++) {
 		    findNode(aTree.root(), valArr[i]);
 		    anLeaf.highlight();
 		    jsav.step();
-		    leafCode(anLeaf);
+		    leafCode_animation(anLeaf);
 		    anLeaf.css("background-color", "orange");
 		    codeArr[i] = code;
 		    code = "";
@@ -434,7 +464,7 @@
 
 	    var anLeaf;
 	    var code = "";
-	    hfCode(valArray, codeArray, hfArray[0]);
+	    hfCode_animation(valArray, codeArray, hfArray[0]);
 	    for (var i = 0; i < valArray.length; i++) {
 		document.write(chaArray[i] + ": " + codeArray[i] + "<br>");
 	    }
