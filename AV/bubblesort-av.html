@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <title>Selection Sort AV</title>
+  <title>Bubblesort AV</title>
   <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
 <style>
@@ -184,37 +184,38 @@ form {
   };
 
   
-  // Selection sort
+  // Bubblesort
   function selsort() {
     var i, j, k, min;
     av.umsg("Sorting the subarray");
-    for (i=0; i<arr.size(); i+=1) {
+    for (i=0; i<arr.size(); i++) {
       //setBlue(i);
-	  min = i;
-
-      for (j=i; j<arr.size(); j+=1) {
+	  min = i; // do not need min variable in this sort
+		for (j=1; j<arr.size()-i; j++) {
         setBlue(j);
 	    av.step();
-        if (arr.value(min) > arr.value(j)) {
-		  min = j;	
-          setGreen(min);		  
+        if (arr.value(j-1) > arr.value(j)) {
+			arr.swap(j-1,j);
+			min = j;	
+			setGreen(min);		  
 	    }
 		
         else {
 		  //arr.highlight([j-1, j]);
           //break; // Done pushing element, leave for loop
 		  setBlue(min);
+		  
         }
 	    //arr.highlight(j);
       }
 	  
-	  arr.swap(i, min); // swap the two indices	  
+	  //arr.swap(i, min); // swap the two indices	  
       av.step();   
 	  for (k = i+1; k < arr.size(); k++){
       	arr.css(k, {"background-color": "#C0C0C0"});	
 	  }	
       //arr.highlight(j);
-	  arr.highlight(i);
+	  //arr.highlight(i);
     }
   }
 
