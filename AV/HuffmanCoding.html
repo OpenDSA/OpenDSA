@@ -186,6 +186,8 @@
 		    node.right().edgeToParent().label(1);
 		    traverse_code(node.right());
 		}
+		else
+		    return;
 	    }
 
 	    // adding "0" or "1" to the label of edges in Huffman Coding tree with animation
@@ -202,25 +204,27 @@
 		    jsav.step();
 		    traverse_code_animation(node.right());
 		}
+		else
+		    return;
 	    }
 
 	    // find a leaf node in Huffman Tree with a specific value
 	    var findNode = function(node, anValue) {
 		var val = node.value();
 		if (!val || val === "jasvnull")
-		    return
+		return
 		else {
 		    if (node.left()) {
 			if (node.left().value() == anValue)
-			    anLeaf = node.left();
+			anLeaf = node.left();
 			else
-			    findNode(node.left(), anValue);
+			findNode(node.left(), anValue);
 		    }   
 		    if (node.right()) {
 			if (node.right().value() == anValue)
-			    anLeaf = node.right();
+			anLeaf = node.right();
 			else
-			    findNode(node.right(), anValue);
+			findNode(node.right(), anValue);
 		    }
 		}
 	    }
@@ -229,7 +233,7 @@
 	    var leafCode = function(aLeafNode) {
 		var leafVal = aLeafNode.value();
 		if (!leafVal || leafVal === "jsavnull")
-		    return
+		    return;
 		else {
 		    if (aLeafNode.parent()) {
 			code += aLeafNode.edgeToParent().label();
@@ -246,17 +250,16 @@
 		}
 	    }
 
-		// find the Huffman Code for a specific leaf node with animation
+	    // find the Huffman Code for a specific leaf node with animation
 	    var leafCode_animation = function(aLeafNode) {
 		var leafVal = aLeafNode.value();
 		if (!leafVal || leafVal === "jsavnull")
-		    return
+		    return;
 		else {
 		    if (aLeafNode.parent()) {
 			code += aLeafNode.edgeToParent().label();
 			aLeafNode.parent().highlight();
-			jsav.step();
-			aLeafNode.parent().css("background-color", "white");
+			//jsav.step();
 			leafCode_animation(aLeafNode.parent());
 		    }
 		    else {
@@ -269,7 +272,22 @@
 		    }
 		}
 	    }
-		
+
+	    // Clear the highlight node from a specific leaf node to the root
+	    var path_clear = function(aLeafNode) {
+		var leafVal = aLeafNode.value();
+		if (!leafVal || leafVal === "jsavnull")
+		    return;
+		else {
+		    if (aLeafNode.parent()) {
+			aLeafNode.parent().css("background-color", "white");
+			path_clear(aLeafNode.parent());
+		    }
+		    else
+			return;	
+		}
+	    }
+
 	    // find the Huffman codes for all leaf nodes without animation
 	    var hfCode = function(valArr, codeArr, aTree) {
 		for (var i = 0; i < valArr.length; i++) {
@@ -279,17 +297,23 @@
 		    code = "";
 		}	
 	    }
-		
-		// find the Huffman codes for all leaf nodes with animation
+
+	    // find the Huffman codes for all leaf nodes with animation
 	    var hfCode_animation = function(valArr, codeArr, aTree) {
 		for (var i = 0; i < valArr.length; i++) {
 		    findNode(aTree.root(), valArr[i]);
+		    var tmpArray = new Array();
+		    tmpArray = valArr[i].split("<br>");
+		    jsav.umsg("Now we will show the path from the leaf node \"" + tmpArray[1] + "\" to the root \"" + aTree.root().value() + "\".");
 		    anLeaf.highlight();
 		    jsav.step();
 		    leafCode_animation(anLeaf);
-		    anLeaf.css("background-color", "orange");
 		    codeArr[i] = code;
 		    code = "";
+		    jsav.umsg("Huffman code for character \"" + tmpArray[1] + "\" is: \"" + codeArr[i] + "\", which is the value along the path from the root \"" + aTree.root().value() + "\" to this node.");
+		    jsav.step();
+		    path_clear(anLeaf);
+		    anLeaf.css("background-color", "orange");
 		}	
 	    }
 
@@ -321,7 +345,6 @@
 	    // Constructing the huffmanCodingTree
 	    var huffTree = function (anArray, hfArray) {
 		while (anArray.length > 1) {
-
 		    sortArray(anArray, hfArray);	
 		    var key = anArray[0] + anArray[1];
 
@@ -412,7 +435,7 @@
 	    // hfArray: used for holding the root of several binary trees
 	    var hfArray = new Array();
 
-	    // valArray: used for finding the Huffman Codes
+	    // valArray: used for finding the Huffman Codes, which store the value with both the character and its frequency
 	    var valArray = new Array();
 
 	    // codeArray: used for storing the Huffman codes
@@ -465,9 +488,6 @@
 	    var anLeaf;
 	    var code = "";
 	    hfCode_animation(valArray, codeArray, hfArray[0]);
-	    for (var i = 0; i < valArray.length; i++) {
-		document.write(chaArray[i] + ": " + codeArray[i] + "<br>");
-	    }
 
 	    jsav.recorded(); // done recording changes, will rewind
 
@@ -494,3 +514,4 @@
 	    })(jQuery);  
 	</script>
     </body>
+</html>
