@@ -1,9 +1,5 @@
 .. index:: ! Sorting
 
-*******
-Sorting
-*******
-
 Introduction
 ============
 

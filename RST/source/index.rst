@@ -6,9 +6,13 @@
 Modules
 =======
 
+Sorting
+-------
+
 .. toctree::
    :numbered:
    :maxdepth: 3
+
 
    Sorting
    InsertionSort
@@ -23,6 +27,23 @@ Modules
    RadixSort
    SortingEmpirical
    SortingLowerBound
+
+Priority Queues
+---------------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   BinaryHeap
+
+Other modules
+-------------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
    TODO
    Glossary
    Bibliography
