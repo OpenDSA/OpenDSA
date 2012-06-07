@@ -241,8 +241,8 @@ form {
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
       var i, incr;
-      // PUT STUFF HERE TO INVOKE YOUR SORT
-	  selsort();
+      av.displayInit();
+      selsort();
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
     }
