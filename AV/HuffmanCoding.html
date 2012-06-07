@@ -193,13 +193,13 @@
 	    // adding "0" or "1" to the label of edges in Huffman Coding tree with animation
 	    var traverse_code_animation = function(node) {
 		if (node.left()) {
-		    jsav.umsg("\"0\" is set to the edge connecting the left child of the node " + "\"" + node.value() + "\"");
+		    jsav.umsg("\"0\" is set to the edge connecting the left child of the node " + "\"" + node.value() + "\".");
 		    node.left().edgeToParent().label(0); 
 		    jsav.step();
 		    traverse_code_animation(node.left());
 		}	
 		if (node.right()) {
-		    jsav.umsg("\"1\" is set to the edge connecting the right child of the node " + "\"" + node.value() + "\"");
+		    jsav.umsg("\"1\" is set to the edge connecting the right child of the node " + "\"" + node.value() + "\".");
 		    node.right().edgeToParent().label(1);
 		    jsav.step();
 		    traverse_code_animation(node.right());
@@ -259,7 +259,6 @@
 		    if (aLeafNode.parent()) {
 			code += aLeafNode.edgeToParent().label();
 			aLeafNode.parent().highlight();
-			//jsav.step();
 			leafCode_animation(aLeafNode.parent());
 		    }
 		    else {
@@ -304,13 +303,14 @@
 		    findNode(aTree.root(), valArr[i]);
 		    var tmpArray = new Array();
 		    tmpArray = valArr[i].split("<br>");
-		    jsav.umsg("Now we will show the path from the leaf node \"" + tmpArray[1] + "\" to the root \"" + aTree.root().value() + "\".");
+		    jsav.umsg("Next we will show the path from the leaf node \"" + tmpArray[1] + "\" to the root \"" + aTree.root().value() + "\", and get the Huffman code of \"" + tmpArray[1]+ "\".");
+		    aTree.root().highlight();
 		    anLeaf.highlight();
 		    jsav.step();
 		    leafCode_animation(anLeaf);
 		    codeArr[i] = code;
 		    code = "";
-		    jsav.umsg("Huffman code for character \"" + tmpArray[1] + "\" is: \"" + codeArr[i] + "\", which is the value along the path from the root \"" + aTree.root().value() + "\" to this node.");
+		    jsav.umsg("Huffman code for character \"" + tmpArray[1] + "\" is: \"" + codeArr[i] + "\", which is the value along the path from the root \"" + aTree.root().value() + "\" to \"" + tmpArray[1] + "\"");
 		    jsav.step();
 		    path_clear(anLeaf);
 		    anLeaf.css("background-color", "orange");
@@ -483,11 +483,12 @@
 
 	    jsav.umsg("The codes for each node are as follows: ");
 	    traverse_code_animation(hfArray[0].root());
-	    //	    hfArray[0].layout();
 
-	    var anLeaf;
-	    var code = "";
+	    var anLeaf;	     
+	    var code = "";  // used for record Huffman code
 	    hfCode_animation(valArray, codeArray, hfArray[0]);
+	    jsav.umsg("Huffman codes for all characters are as follows:"); 
+	    hfArray[0].hide();
 
 	    jsav.recorded(); // done recording changes, will rewind
 
@@ -508,7 +509,7 @@
 
 		// Process About button: Pop up a message with an Alert
 		function about() {
-		    var mystring = "HuffmanCoding Tree Visualization\nWritten by Maoyuan Sun\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during May, 2012\nLast update: May 31, 2012\nJSAV library version " + JSAV.version();
+		    var mystring = "HuffmanCoding Tree Visualization\nWritten by Maoyuan Sun\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during June, 2012\nLast update: June 4, 2012\nJSAV library version " + JSAV.version();
 		    alert(mystring);
 		}
 	    })(jQuery);  
