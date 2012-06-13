@@ -70,6 +70,35 @@
 			form {
 				clear: both;
 			}
+			#hfTable {
+				font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+				width: 550px;
+				margin-left: 100px;
+				margin-top: -450px;
+				text-align: center;
+				border-collapse:collapse;
+			}
+
+			#hfTable td, #hfTable th 
+			{
+				font-size:1.2em;
+				border:1px solid #98bf21;
+				padding:3px 7px 2px 7px;
+			}
+			#hfTable th 
+			{
+				font-size: 1.4em;
+				text-align: center;
+				padding-top: 5px;
+				padding-bottom: 4px;
+				background-color: #A7C942;
+				color: #fff;
+			}
+			#hfTable tr.alt td 
+			{
+				color:#000;
+				background-color:#EAF2D3;
+			}
 		</style>
 	</head>
 
@@ -350,8 +379,6 @@
 
 					// Extend the numArray
 					var newIndex = anArray.length;
-					//anArray.length += 1;
-					//anArray[newIndex] = key;
 					anArray[1] = key;
 
 					// construct a new tree
@@ -427,12 +454,36 @@
 			// Create a table with all information about the character	
 			var createTable = function(valArr, codeArr) {
 				var table = document.createElement("table");
+				table.id = "hfTable";
 				table.setAttribute("border","1");
 				var line = valArr.length;
 				var list = 3;
+
+				// create the table head
+				var tr = document.createElement("tr");
+				for(var i = 0; i <= list; i++) {
+					var th = document.createElement("th");
+					switch(i) {
+						case 0:
+						th.innerHTML = "<b>Character</b>";
+						break;
+						case 1:
+						th.innerHTML = "<b>Frequency</b>";
+						break;
+						case 2:
+						th.innerHTML = "<b>Huffman Code</b>";
+						break;
+						default:
+						th.innerHTML = "<b>Bit</b>";
+					}
+					tr.appendChild(th);
+				}
+				table.appendChild(tr);
+
+				// create the table content
 				for(var i = 0; i < line; i++) {
 					var tr = document.createElement("tr");
-					for(var j = 0; j < list; j++) {
+					for(var j = 0; j <= list; j++) {
 						var td = document.createElement("td");
 						switch(j) {
 							case 0: 
@@ -441,8 +492,11 @@
 							case 1:
 							td.innerHTML = valArr[i].split("<br>")[0];
 							break;
-							default:
+							case 2:
 							td.innerHTML = codeArr[i];
+							break;
+							default:
+							td.innerHTML = codeArr[i].length;
 						}
 						tr.appendChild(td);
 					}
