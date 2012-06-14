@@ -9,7 +9,7 @@
 #container {
   width: 790px;
   height: 530px;
-  border: 1px solid black;
+  border: none;
   background-color: #efe;
   padding: 0px 10px 14px 10px;
   overflow: hidden;
@@ -18,7 +18,7 @@
 #bottom {
   width: 810px;
   height: 90px;
-  border: 1px solid black;
+  border: none;
   background-color: #ddd;
   overflow: hidden;
 }
@@ -70,6 +70,7 @@ a.jsavsettings {
 form {
   clear: both;
 }
+
 </style>
 </head>
 
@@ -79,27 +80,20 @@ form {
   <div id="container">
    <p class="jsavoutput jsavscroll" readonly="readonly" style="width:270px; height:400px; font-size: 75%; float:left"> </p>
     <input type="button" id="about" name="about" value="About" style="margin-top:10px;"/>
-    <h1 style="">Radix Sort Visualization</h1>
-	 
-	 
-	
-	
-	   <!-- HTML Codes by Quackit.com 
+     <h1 style="">Radix Sort Visualization</h1>
+	 </div>
+ <!-- HTML Codes by Quackit.com 
  <div id="avcontainer">
     <span class="jsavcounter"></span>
     <div class="jsavcontrols"></div>
     <p class="jsavoutput jsavline" readonly="readonly"></p>
-
-
   </div>
   -->
+  
   <!-- Bottom Container -->
   <div id="bottom">
-    
     <form id="ssperform">
       <p align="left">
-	
-
 	
 	<!-- Array Size Dropdown -->
 	<label for="arraysize">&nbsp;Array size:&nbsp;</label>
@@ -107,7 +101,6 @@ form {
 	</select>
 	
 		<!-- Number of Digits -->
-		 
 	<select id="digitsize">
 	  <option selected value = 0> Digits </option>
 	  <option value = 1> 1 </option>
@@ -115,8 +108,6 @@ form {
 	  <option value = 3> 3 </option>
 	  <option value = 4> 4 </option>
 	  <option value = 5> 5 </option>
-
-
 	</select>
 	
 	
@@ -167,4 +158,8 @@ form {
   
   // Initialize JSAV object
   av = new JSAV("container");
-  av.umsg("Please select a hashing function");;
+  av.umsg("Please select an array size");
+  
+
+          
+  
