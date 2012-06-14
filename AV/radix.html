@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Radix Sort Visualization</title>
+  <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+<style>
+
+#container {
+  width: 790px;
+  height: 530px;
+  border: 1px solid black;
+  background-color: #efe;
+  padding: 0px 10px 14px 10px;
+  overflow: hidden;
+}
+
+#bottom {
+  width: 810px;
+  height: 90px;
+  border: 1px solid black;
+  background-color: #ddd;
+  overflow: hidden;
+}
+
+title {
+	text-align: center;
+}
+
+div h1 {
+  background-color: #efe;
+  margin: 5px;
+}
+
+.jsavcontainer {
+  background-color: #efe;
+  border: none;
+}
+
+.jsavarray {
+   padding-left:0;
+   text-align: center;
+   position: absolute;
+   left: 350px;
+}
+
+.jsavarray .jsavindex {
+	height: 30px;
+}
+
+.jsavnode {
+	line-height: 30px;
+}
+
+p.jsavoutput.jsavline {
+  height: 30px;
+  margin: 0;
+}
+
+#about {
+  float: right;
+}
+
+a.jsavsettings {
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+form {
+  clear: both;
+}
+</style>
+</head>
+
+<body>
+ 
+  <!-- Main Container -->
+  <div id="container">
+   <p class="jsavoutput jsavscroll" readonly="readonly" style="width:270px; height:400px; font-size: 75%; float:left"> </p>
+    <input type="button" id="about" name="about" value="About" style="margin-top:10px;"/>
+    <h1 style="">Radix Sort Visualization</h1>
+	 
+	 
+	
+	
+	   <!-- HTML Codes by Quackit.com 
+ <div id="avcontainer">
+    <span class="jsavcounter"></span>
+    <div class="jsavcontrols"></div>
+    <p class="jsavoutput jsavline" readonly="readonly"></p>
+
+
+  </div>
+  -->
+  <!-- Bottom Container -->
+  <div id="bottom">
+    
+    <form id="ssperform">
+      <p align="left">
+	
+
+	
+	<!-- Array Size Dropdown -->
+	<label for="arraysize">&nbsp;Array size:&nbsp;</label>
+        <input size="5" name="arraysize" type="number" value="10"/>
+	</select>
+	
+		<!-- Number of Digits -->
+		 
+	<select id="digitsize">
+	  <option selected value = 0> Digits </option>
+	  <option value = 1> 1 </option>
+	  <option value = 2> 2 </option>
+	  <option value = 3> 3 </option>
+	  <option value = 4> 4 </option>
+	  <option value = 5> 5 </option>
+
+
+	</select>
+	
+	
+	<!-- Buttons --> 				
+	<input type="button" name="next" value="Next" />
+	<input type="button" name="reset" value="Restart" />
+	<input type="button" name="help" value="Help" />
+	 <input type="button" name="run" value="Run" />
+      <input type="button" name="reset" value="Reset" />
+      </p>
+      
+      <!-- Second row of controls -->
+      <p align="left">
+	 <label for="arrayValues">&nbsp;Your values (optional):&nbsp;</label>
+	<input size="60" name="arrayValues" id="arrayValues" type="text" />
+	  <br />
+      </p>
+      
+    </form>
+    
+  </div>
+ 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
+</script>
+<script src="../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../JSAV/build/JSAV-min.js"></script>
+
+<script>
+
+(function($) {
+
+  /* Variables */
+  var arraySize;		// Table size
+  var theArray = [];		// Actual array
+  var av;			// JSAV
+  var arr;		        // JSAV Array
+  var fullArray = false;         // Flag that determines whether array is full or not
+  var nextStep = new Queue();	// A queue that will contain the "next step". Stores position and value of next step as an object
+  var midSquareFlag = 0;        // Flag if midsquare has been chosen to restart array size values to normal
+  var tableCount;               // Array that will hold an object that contains the show counts value and the label
+  var showCountFlag;            // Flag that determines of showcount is showing or not
+	var canStillInsert = false;   // Flag that determines that even though the number of insertion attempts is greater than the array size, there are still
+																// slots available in the array.
+  
+  // Initialize JSAV object
+  av = new JSAV("container");
+  av.umsg("Please select a hashing function");;
