@@ -15,16 +15,17 @@
 
 <style type="text/css">
 #container {
-  width: 520px;
-  height: 150px;
   border: 1px solid black;
   background-color: #efe;
   overflow: hidden;
+  width: 520px;
+  height: 150px;
 }
 
 p.instructions {
   text-align:center;
   margin: 0px;
+  margin-top: -20px;
 }
 
 p.output {
@@ -37,37 +38,22 @@ p.output {
 
 <body>
 <div id="container">
-<table id="tableT">
-  <tr>
-    <td>
+      <input type="button" name="about" value="About"
+	style="margin-left:5px; margin-top:5px;"/>
       <p class="instructions">
         Calculate the probability of a collision.<br/>
         Formula Used: \(1 - \frac{t!}{(t-n)! * (t^n)}\)<br/>
         where t is the table size
         and n is the number of records inserted.
       </p>
-    </td>
-    <td style="text-align: right; vertical-align: top">
-      <input type="button" name="about" value="About" >
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <p>
+<p>
         <label>&nbsp;Table size:&nbsp;</label>
         <input name="tablesize" type="number" value="365"/>
         <label>&nbsp;# of records&nbsp;</label>
         <input name="numrecs" type="number" value="5"/>&nbsp;
         <input type="button" name="calculate" value="Calculate" />
       </p>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2">
       <p class="output" ></p>
-    </td>
-  </tr>
-</table>
 </div>
 
 <!-- SCRIPT SECTION -->

@@ -1,12 +1,12 @@
-/*global JSAV alert $ document window*/
-(function($) {
+/*global jQuery JSAV alert $ document window*/
+(function ($) {
   "use strict";
   // Declare and initialize state variables
-  var TSize = Number($('input[name="tablesize"]').val()); // Table size
-  var Recs = Number($('input[name="numrecs"]').val()); // Number of records
-
-  // Convenience function for writing output messages
-  var Tell = function(msg) { $('p[class="output"]').text(msg); };
+  var
+    TSize = Number($('input[name="tablesize"]').val()), // Table size
+    Recs = Number($('input[name="numrecs"]').val()), // Number of records
+    // Convenience function for writing output messages
+    Tell = function (msg) { $('p[class="output"]').text(msg); };
 
   // Process About button: Pop up a message with an Alert
   function About() {
@@ -29,16 +29,10 @@
     }
   }
 
-  // Action callbacks for form entities
-  $('input[name="about"]').click(About);
-  $('input[name="tablesize"]').focusout(CheckTable);
-  $('input[name="numrecs"]').focusout(CheckRecs);
-  $('input[name="calculate"]').click(Calculate);
-
   // Main action: Result of clicking "Calculate" button
   function Calculate() {
     var prob, fact;
-    if (TSize <= 0 || Recs < 0) { new Tell("Bad input"); }
+    if (TSize <= 0 || Recs < 0) { Tell("Bad input"); }
     else {
       if (Recs === 0) { prob = 0.0; }
       else if (Recs > TSize) { prob = 1.0; }
@@ -48,7 +42,13 @@
           fact = fact * i/TSize;
         prob = 1.0 - fact;
       }
-      new Tell(prob*100 + "%");
+      Tell(prob*100 + "%");
     }
   }
+
+  // Action callbacks for form entities
+  $('input[name="about"]').click(About);
+  $('input[name="tablesize"]').focusout(CheckTable);
+  $('input[name="numrecs"]').focusout(CheckRecs);
+  $('input[name="calculate"]').click(Calculate);
 })(jQuery);
