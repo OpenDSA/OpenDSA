@@ -91,6 +91,7 @@ form {
   src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
 </script>
 <script src="../JSAV/lib/jquery.transform.light.js"></script>
+<script src="http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"></script>
 <script src="../JSAV/build/JSAV-min.js"></script>
 
 <script>
@@ -178,12 +179,17 @@ form {
   // Insertion sort
   function inssort() {
     var i, j;
-    av.umsg("Sorting the subarray");
+    av.umsg("Highlighted yellow elements to the left are always sorted. We begin with the element in position 0 in the sorted portion, and we will be moving the element in position 1 (in blue) to the left until it is sorted");
+    arr.highlight([0]);
+    setBlue(1);
+    av.step();
     for (i=1; i<arr.size(); i++) {
       setBlue(i);
+      av.umsg("Processing the next element")
+      av.step();
+      av.umsg("Move the blue element to the left until it reaches the correct position")
       for (j=i; j>=0; j--) {
         setBlue(j);
-	av.step();
         if (arr.value(j) < arr.value(j-1)) {
           arr.swap(j, j-1); // swap the two indices
           av.step();

@@ -514,10 +514,8 @@ how they affect the cost of Shellsort.
 
 A theoretical analysis of Shellsort is difficult, so we must accept
 without proof that the average-case performance of Shellsort
-(for the ":math:`3n+1`" increment series such as ..., 13, 4, 1)
-is :math:`O(n\sqrt{n})`.
-Other choices for the increment
-series can reduce this upper bound somewhat.
+(for a reasonable increment series)
+is :math:`\Theta(n\sqrt{n}) = \Theta(n^{1.5})`.
 Thus, Shellsort is substantially better than Insertion Sort,
 or any of the other :math:`\theta(n^2)` sorts presented earlier.
 In fact, Shellsort is not so much worse than the
