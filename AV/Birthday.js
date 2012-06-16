@@ -38,11 +38,12 @@
       else if (Recs > TSize) { prob = 1.0; }
       else {
         fact = 1.0;
-        for (var i = TSize - Recs + 1; i < TSize; i++)
-          fact = fact * i/TSize;
+        for (var i = TSize - Recs + 1; i < TSize; i++) {
+          fact = fact * i / TSize;
+        }
         prob = 1.0 - fact;
       }
-      tell(prob*100 + "%");
+      tell(prob * 100 + "%");
     }
   }
 
@@ -51,4 +52,4 @@
   $('input[name="tablesize"]').focusout(CheckTable);
   $('input[name="numrecs"]').focusout(CheckRecs);
   $('input[name="calculate"]').click(Calculate);
-})(jQuery);
+}(jQuery));
