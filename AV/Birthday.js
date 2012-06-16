@@ -1,4 +1,4 @@
-/*global jQuery JSAV alert $ document window*/
+/*global alert*/
 (function ($) {
   "use strict";
   // Declare and initialize state variables
