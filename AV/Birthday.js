@@ -6,7 +6,7 @@
     TSize = Number($('input[name="tablesize"]').val()), // Table size
     Recs = Number($('input[name="numrecs"]').val()), // Number of records
     // Convenience function for writing output messages
-    Tell = function (msg) { $('p[class="output"]').text(msg); };
+    tell = function (msg) { $('p[class="output"]').text(msg); };
 
   // Process About button: Pop up a message with an Alert
   function About() {
@@ -32,7 +32,7 @@
   // Main action: Result of clicking "Calculate" button
   function Calculate() {
     var prob, fact;
-    if (TSize <= 0 || Recs < 0) { Tell("Bad input"); }
+    if (TSize <= 0 || Recs < 0) { tell("Bad input"); }
     else {
       if (Recs === 0) { prob = 0.0; }
       else if (Recs > TSize) { prob = 1.0; }
@@ -42,7 +42,7 @@
           fact = fact * i/TSize;
         prob = 1.0 - fact;
       }
-      Tell(prob*100 + "%");
+      tell(prob*100 + "%");
     }
   }
 
