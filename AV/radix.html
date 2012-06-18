@@ -96,8 +96,24 @@ form {
       <p align="left">
 	
 	<!-- Array Size Dropdown -->
-	<label for="arraysize">&nbsp;Array size:&nbsp;</label>
-        <input size="5" name="arraysize" type="number" value="10"/>
+		<select id="arraysize">
+	  <option selected value = 0> Array Size </option>
+	  <option value = 1> 1 </option>
+	  <option value = 2> 2 </option>
+	  <option value = 3> 3 </option>
+	  <option value = 4> 4 </option>
+	  <option value = 5> 5 </option>
+	  <option value = 6> 6 </option>
+	  <option value = 7> 7 </option>
+	  <option value = 8> 8 </option>
+	  <option value = 9> 9 </option>
+	  <option value = 10> 10 </option>
+	  <option value = 11> 11 </option>
+	  <option value = 12> 12 </option>
+	  <option value = 13> 13 </option>
+	  <option value = 14> 14 </option>
+	  <option value = 15> 15 </option>
+	  <option value = 16> 16 </option>
 	</select>
 	
 		<!-- Number of Digits -->
@@ -159,6 +175,35 @@ form {
   // Initialize JSAV object
   av = new JSAV("container");
   av.umsg("Please select an array size");
+  
+  // Hide array if one exists
+    if (arr) {
+      arr.hide();
+    }
+
+    // If mid-square has been selected, change the array size options to regular ones and reset flag to 0
+    if (midSquareFlag) {
+
+      $("#arraysize").html('<option selected value = 0> Table Size </option> \
+          <option value = 1> 1 </option> \
+          <option value = 2> 2 </option> \
+	  <option value = 3> 3 </option> \
+	  <option value = 4> 4 </option> \
+	  <option value = 5> 5 </option> \
+	  <option value = 6> 6 </option> \
+	  <option value = 7> 7 </option> \
+	  <option value = 8> 8 </option> \
+	  <option value = 9> 9 </option> \
+	  <option value = 10> 10 </option> \
+	  <option value = 11> 11 </option> \
+	  <option value = 12> 12 </option> \
+	  <option value = 13> 13 </option> \
+	  <option value = 14> 14 </option> \
+	  <option value = 15> 15 </option> \
+          <option value = 16> 16 </option>');
+      
+      midSquareFlag = 0;
+    }
   
 
           
