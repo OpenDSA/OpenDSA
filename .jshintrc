@@ -112,7 +112,8 @@
 
     "maxerr"        : 100,      // Maximum errors before stopping.
     "predef"        : [         // Extra globals.
-        "JSAV"
+        "JSAV", 
+        "Raphael"
     ],
     "indent"        : 2         // Specify indentation spacing
 }

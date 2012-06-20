@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-require="math graphie graphie-helpers-arithmetic word-problems">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Addition 1</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+</script>
+  <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+  <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" />
+
+<body>
+<script>
+  var jsav, arr,
+  theArray = [],
+  initJSAV = function(a) {
+    var i;
+    jsav = new JSAV("jsav");
+    for (i=0; i < a; i++) {
+      theArray[i] = Math.floor(Math.random()*10 + 1);
+    }
+    arr = jsav.ds.array(theArray, {indexed: true});
+  }
+  genAnswer = function(a) {
+    var pos = 0, i;
+    for (i=0; i < a; i++) {
+      if ( theArray[i] > theArray[pos] ) {
+        pos = i;
+      }
+    }
+    return theArray[pos];
+  }
+</script>
+<div class="exercise">
+  <div class="vars">
+    <var id="A">randRange( 6, 10 )</var>
+    <var id="JSAV">initJSAV(A)</var>
+    <var id="Answer">genAnswer(A)</var>
+  </div>
+
+  <div class="problems">
+    <div>
+      <div class="question">
+	Click on the array element with the largest value.
+	<div id="jsav"></div>
+      </div>
+      <div class="solution" data-forms="integer">
+	<var>Answer</var>
+      </div>
+      <div class="hints">
+	<p><var>Answer</var></p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
