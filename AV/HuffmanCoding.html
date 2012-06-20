@@ -15,7 +15,7 @@
 		<style>
 			#container {
 				width: 800px;
-				height: 760px;
+				height: 685px;
 				background-color: #efe;
 				border:1px solid #A5B6C8;
 				padding: 10px;
@@ -410,7 +410,7 @@
 
 					// construct a new tree
 					hfArray.length += 1;
-					hfArray[newIndex] = jsav.ds.bintree({visible: false, center: false});
+					hfArray[newIndex] = jsav.ds.bintree({visible: false, center: false, nodegap: 22});
 					hfArray[newIndex].root(key);
 
 					// Construct the left subtree by copying the 1st tree
@@ -466,7 +466,7 @@
 					}
 				}			
 
-				// Create 9 jsav array to construct a table
+				// Create 9 jsav arrays to construct a table
 				var tableDisplay = new Array();	// an array used for display the table
 				for(var i = 0, j = 0; i < tableArray.length; i += 4, j++) {
 					var tmpArr = new Array();
@@ -548,6 +548,8 @@
 			hfCode_animation(valArray, codeArray, hfArray[0]);
 			jsav.umsg("Huffman codes for all characters are as follows:"); 
 			hfArray[0].hide();
+
+			// Display a tabel which contains information of each character.
 			createTable(valArray, codeArray);		
 			jsav.recorded(); // done recording changes, will rewind
 
