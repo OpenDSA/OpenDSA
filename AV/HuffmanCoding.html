@@ -36,9 +36,22 @@
 			.jsavtree:nth-of-type(7) { left:650px;} /* move 8th tree to the right */
 			.jsavtree:nth-of-type(8) { left:750px;} /* move 9th tree to the right */
 			.jsavtree:nth-of-type(9) { left:350px;} /* move 9th tree to the right */
-			.jsavcanvas { height: 500px;} /* set the height of the container */
+			.jsavcanvas { height: 500px;} /* set the height of the container */			
 
-			div h1 {
+			// change size and margins of arrays
+			.jsavarray { margin: 0; height: 40px; min-height: 40px; position: absolute}
+			.jsavarray li { border-radius: 0 !important; height: 35px; width: 145px; font-size: 15px; line-height: 40px;}
+			.jsavarray:nth-of-type(1) {top: 0px;}
+			.jsavarray:nth-of-type(2) {top: 35px;}
+			.jsavarray:nth-of-type(3) {top: 70px;}
+			.jsavarray:nth-of-type(4) {top: 105px;}
+			.jsavarray:nth-of-type(5) {top: 140px;}
+			.jsavarray:nth-of-type(6) {top: 175px;}
+			.jsavarray:nth-of-type(7) {top: 210px;}
+			.jsavarray:nth-of-type(8) {top: 245px;}
+			.jsavarray:nth-of-type(9) {top: 280px;}
+			
+  			div h1 {
 				background-color: #efe;
 				margin: 5px;
 			}
@@ -70,35 +83,7 @@
 			form {
 				clear: both;
 			}
-			#hfTable {
-				font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-				width: 550px;
-				margin-left: 100px;
-				margin-top: -450px;
-				text-align: center;
-				border-collapse:collapse;
-			}
 
-			#hfTable td, #hfTable th 
-			{
-				font-size:1.2em;
-				border:1px solid #98bf21;
-				padding:3px 7px 2px 7px;
-			}
-			#hfTable th 
-			{
-				font-size: 1.4em;
-				text-align: center;
-				padding-top: 5px;
-				padding-bottom: 4px;
-				background-color: #A7C942;
-				color: #fff;
-			}
-			#hfTable tr.alt td 
-			{
-				color:#000;
-				background-color:#EAF2D3;
-			}
 		</style>
 	</head>
 
@@ -450,59 +435,53 @@
 					jsav.step();
 				}	
 			}	
-
+			
 			// Create a table with all information about the character	
 			var createTable = function(valArr, codeArr) {
-				var table = document.createElement("table");
-				table.id = "hfTable";
-				table.setAttribute("border","1");
+		
+				// Create the title of the table by using jsav array
+				var tableArray = new Array("<b>Character</b>", "<b>Frequency</b>", "<b>Huffman Code</b>", "<b>Bit</b>");
+				var index = 4; // used to add value in jsav array.
 				var line = valArr.length;
 				var list = 3;
-
-				// create the table head
-				var tr = document.createElement("tr");
-				for(var i = 0; i <= list; i++) {
-					var th = document.createElement("th");
-					switch(i) {
-						case 0:
-						th.innerHTML = "<b>Character</b>";
-						break;
-						case 1:
-						th.innerHTML = "<b>Frequency</b>";
-						break;
-						case 2:
-						th.innerHTML = "<b>Huffman Code</b>";
-						break;
-						default:
-						th.innerHTML = "<b>Bit</b>";
-					}
-					tr.appendChild(th);
-				}
-				table.appendChild(tr);
-
-				// create the table content
-				for(var i = 0; i < line; i++) {
-					var tr = document.createElement("tr");
+				for(var i = 1; i <= line; i++) {
 					for(var j = 0; j <= list; j++) {
-						var td = document.createElement("td");
 						switch(j) {
 							case 0: 
-							td.innerHTML = valArr[i].split("<br>")[1];
+							tableArray[index] = valArr[i - 1].split("<br>")[1];
+							index++;
 							break;
 							case 1:
-							td.innerHTML = valArr[i].split("<br>")[0];
+							tableArray[index] = valArr[i - 1].split("<br>")[0];
+							index++;
 							break;
 							case 2:
-							td.innerHTML = codeArr[i];
+							tableArray[index] = codeArr[i - 1];
+							index++;
 							break;
 							default:
-							td.innerHTML = codeArr[i].length;
+							tableArray[index] = codeArr[i - 1].length;
+							index++;
 						}
-						tr.appendChild(td);
 					}
-					table.appendChild(tr);
+				}			
+
+				// Create 9 jsav array to construct a table
+				var tableDisplay = new Array();	// an array used for display the table
+				for(var i = 0, j = 0; i < tableArray.length; i += 4, j++) {
+					var tmpArr = new Array();
+
+					if (i % 4 == 0) {
+						tmpArr[j] = new Array(tableArray[i], tableArray[i + 1], tableArray[i + 2], tableArray[i + 3]);
+					}
+					tableDisplay[j] = jsav.ds.array(tmpArr[j]);
 				}
-				document.getElementsByTagName("div")[0].appendChild(table);
+				
+				// Set css properties for the table
+				tableDisplay[0].css([0, 1, 2, 3], {"font-family":"Trebuchet MS, Arial, Helvetica, sans-serif", "font-size":"1.2em", "border":"1px #98bf21", "background-color":"#9ACD32", "color":"#fff"});
+				for (var i = 1; i < tableDisplay.length; i++) {
+					tableDisplay[i].css([0, 1, 2, 3], {"font-family":"Trebuchet MS, Arial, Helvetica, sans-serif", "font-size":"1.1em", "border":"1px #98bf21", "color":"#000"});
+				}
 			}
 
 			var jsav = new JSAV("av");
@@ -545,7 +524,6 @@
 			for (var i = 0, j = 0; i < userArray.length - 1; i += 2, j++) {
 				value = userArray[i] + "<br>" + userArray[i + 1];
 				valArray[j] = value;
-				// hfArray[j] = jsav.ds.bintree({visible: false, center: false});
 				hfArray[j] = jsav.ds.bintree({center: false});	
 				hfArray[j].root(value);
 				numArray[j] = userArray[i];
@@ -570,7 +548,7 @@
 			hfCode_animation(valArray, codeArray, hfArray[0]);
 			jsav.umsg("Huffman codes for all characters are as follows:"); 
 			hfArray[0].hide();
-			createTable(valArray, codeArray);
+			createTable(valArray, codeArray);		
 			jsav.recorded(); // done recording changes, will rewind
 
 			$(".jsavtreenode").live("hover", function() {
@@ -590,7 +568,7 @@
 
 				// Process About button: Pop up a message with an Alert
 				function about() {
-					var mystring = "HuffmanCoding Tree Visualization\nWritten by Maoyuan Sun\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during June, 2012\nLast update: June 4, 2012\nJSAV library version " + JSAV.version();
+					var mystring = "HuffmanCoding Tree Visualization\nWritten by Maoyuan Sun\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during June, 2012\nLast update: June 19, 2012\nJSAV library version " + JSAV.version();
 					alert(mystring);
 				}
 			})(jQuery);  
