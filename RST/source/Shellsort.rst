@@ -468,6 +468,12 @@ Next, let's review what makes for a legal increment series.
 Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
+.. avembed:: http://algoviz.org/OpenDSA/dev/OpenDSA/AV/ShellsortProficiency.html
+   :showbutton: hide  
+   :title: Proficiency_Exercise
+
++ukToTO9
+
 .. raw:: html
 
    <input type="button" name="http://algoviz.org/OpenDSA/dev/OpenDSA/AV/ShellsortProficiency.html+822+502"

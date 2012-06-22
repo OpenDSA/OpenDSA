@@ -17,6 +17,12 @@ __author__ = 'efouh'
 from docutils import nodes
 from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
+import random
+
+
+def setup(app):
+    app.add_directive('avembed',avembed)
+
 
 CODE = """\
 <center>
@@ -31,8 +37,8 @@ CODE = """\
 
 SHOW = """\
 <input type="button" 
-    name="%(name)s" 
-    value="Show %(name)s" 
+    name="%(title)s" 
+    value="Show %(title)s" 
     id="%(divID)s+show"
     class="showLink" 
     style="background-color:#f00;"/>
@@ -42,8 +48,8 @@ SHOW = """\
 
 HIDE = """\
 <input type="button"
-    name="%(name)s"
-    value="Hide %(name)s"
+    name="%(title)s"
+    value="Hide %(title)s"
     id="%(divID)s+hide"
     class="hideLink"
     style="background-color:#f00;"/>
@@ -60,7 +66,7 @@ class avembed(Directive):
     final_argument_whitespace = True
     has_content = True
     option_spec = {'showbutton':showbutton,
-                   'name': directives.uri
+                   'title': title 
                    }
 
     def run(self):
@@ -70,12 +76,13 @@ class avembed(Directive):
 
         if 'showbutton' in self.options:
 
-            if 'name' in self.options:
-                self.options['name'] = 'name'
+            if 'title' in self.options:
+                self.options['title'] = 'title' 
            
-            divID = "Example"+random.randint() 
-            res = SHOW % (self.options, divID) 
-            res += HIDE % (self.options, divID)
+            divID = "Example%s"%random.randint(1,1000) 
+            self.options['divID'] = divID 
+            res = SHOW % (self.options) 
+            res += HIDE % (self.options)
             res += CODE % self.options      
             return [nodes.raw('', res, format='html')]
 
@@ -90,7 +97,7 @@ This is some text.
 
 .. avembed:: address 
    :showbutton:
-   :name: 
+   :title: 
 
 
 This is some more text.
