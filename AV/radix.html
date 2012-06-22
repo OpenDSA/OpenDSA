@@ -134,7 +134,7 @@ form {
   var context = $("#ssperform");
   var emptyContent = $("#avcontainer").html();
   var av, // for JSAV av
-    arr, arr2, arr3;  // for the JSAV array
+    arr, arrC, arrO;  // for the JSAV array
 	
  
 	
@@ -197,48 +197,78 @@ form {
     return true;
   }
   
-   var setBlue = function(index) {
-    arr2.css(index, {"background-color": "#ddf" });
+    var setBlue = function(index) {
+    //arr.css(index, {"background-color": "#bbf" });
+	arrC.css(index, {"background-color": "#bbf" });
+  };
+  
+   var setGreen = function(index) {
+	arrC.css(index, {"background-color": "#00FF00" });
+  };
+  var setGreen2 = function(index) {
+	arrO.css(index, {"background-color": "#00FF00" });
+  };
+  var setGreen3 = function(index) {
+	arr.css(index, {"background-color": "#00FF00" });
   };
 
-
-  var setWhite = function(index) {
-    arr.css(index, {"background-color": "#F5FFF9" });
-  };
-
-   // Radixsort
+    // Radixsort
   function radsort() {
-    var i,k;
+    var i,k,j;
     av.umsg("Counting occurances of values in original array");
     for (i=0; i<theArray.length; i++) {
 		arr.highlight([i]);
-		arr2.highlight([theArray[i]%10])
+		arrC.highlight([theArray[i]%10])
 		av.step();
 		arr.unhighlight([i]);
-		arr2.unhighlight([theArray[i]%10])
+		arrC.unhighlight([theArray[i]%10])
 		if(countArray[theArray[i]%10]=== 0){
 			countArray[theArray[i]%10]= 1;
-			arr2.value(theArray[i]%10,1);
+			arrC.value(theArray[i]%10,1);
+			
+			
 			}
 		else{
 			countArray[theArray[i]%10]= countArray[theArray[i]%10]+1;
-			arr2.value(theArray[i]%10,countArray[theArray[i]%10]);
+			arrC.value(theArray[i]%10,countArray[theArray[i]%10]);
 		}
+		
+		
   }
-  av.umsg("Adding values in count Array");
-   for (k=0; k<10; k++) {
+ av.umsg("Adding values in count Array");
+ for (k=0; k<10; k++) {
 		if(k!= 10){
 		countArray[k+1]= countArray[k]+countArray[k+1];
-		arr2.value(k,countArray[k]);
+		arrC.value(k,countArray[k]);
 		setBlue(k);
 		setBlue(k+1);
 		av.step();
-		arr2.unhighlight(k);
+		arrC.unhighlight(k);
 		
 	}	
   }
-  }
+  for (j=0; j<theArray.length; j++) {
+    setGreen2(countArray[theArray[j]%10]);
+	setGreen(theArray[j]%10);
+	setGreen3(j);
+	outArray[countArray[theArray[j]%10]]=theArray[j];
+	arrO.value(countArray[theArray[j]%10],theArray[j]);
+	countArray[theArray[j]%10]= countArray[theArray[j]%10]-1;
+	arrC.value(theArray[j]%10,countArray[theArray[j]%10]);
+	
+	av.step();
+	arrO.unhighlight([countArray[theArray[j]%10]+1]);
+	arrC.unhighlight([theArray[j]%10]);
+	arr.unhighlight([j]);
+	}
+  
+    
+    
+	
+}
+  
 
+  
   
   // Execute the "Run" button function
   function runIt() {
@@ -272,8 +302,8 @@ form {
       // .. and the array. use the layout the user has selected
 	  
 	  arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
-	  arr2 = av.ds.array(countArray, {indexed: true, layout: arrayLayout.val()});
-	  arr3 = av.ds.array(outArray, {indexed: true, layout: arrayLayout.val()});
+	  arrC = av.ds.array(countArray, {indexed: true, layout: arrayLayout.val()});
+	  arrO = av.ds.array(outArray, {indexed: true, layout: arrayLayout.val()});
 	  radsort(j);
 		
       
