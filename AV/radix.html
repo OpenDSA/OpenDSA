@@ -198,7 +198,7 @@ form {
   }
   
    var setBlue = function(index) {
-    arr.css(index, {"background-color": "#ddf" });
+    arr2.css(index, {"background-color": "#ddf" });
   };
 
 
@@ -206,26 +206,41 @@ form {
     arr.css(index, {"background-color": "#F5FFF9" });
   };
 
-  // Radixsort
+   // Radixsort
   function radsort() {
     var i,k;
-    av.umsg("Sorting the subarray");
+    av.umsg("Counting occurances of values in original array");
     for (i=0; i<theArray.length; i++) {
-	arr.highlight([i]);
-	arr2.highlight([theArray[i]%10])
-	countArray[i]= 1;
-	av.step();
-	arr.unhighlight([i]);
-	arr2.unhighlight([theArray[i]%10])
-	
-	
-	
+		arr.highlight([i]);
+		arr2.highlight([theArray[i]%10])
+		av.step();
+		arr.unhighlight([i]);
+		arr2.unhighlight([theArray[i]%10])
+		if(countArray[theArray[i]%10]=== 0){
+			countArray[theArray[i]%10]= 1;
+			arr2.value(theArray[i]%10,1);
+			}
+		else{
+			countArray[theArray[i]%10]= countArray[theArray[i]%10]+1;
+			arr2.value(theArray[i]%10,countArray[theArray[i]%10]);
 		}
   }
-
+  av.umsg("Adding values in count Array");
+   for (k=0; k<10; k++) {
+		if(k!= 10){
+		countArray[k+1]= countArray[k]+countArray[k+1];
+		arr2.value(k,countArray[k]);
+		setBlue(k);
+		setBlue(k+1);
+		av.step();
+		arr2.unhighlight(k);
+		
+	}	
+  }
+  }
 
   
-// Execute the "Run" button function
+  // Execute the "Run" button function
   function runIt() {
     var i,j,k;
     var newSize = $('#arraysize').val();
@@ -256,13 +271,13 @@ form {
       av = new JSAV("avcontainer"); // initialize JSAV ..
       // .. and the array. use the layout the user has selected
 	  
-		
+	  arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
 	  arr2 = av.ds.array(countArray, {indexed: true, layout: arrayLayout.val()});
 	  arr3 = av.ds.array(outArray, {indexed: true, layout: arrayLayout.val()});
-      arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
-	  for (j=0; j < ASize; j++) {
-		radsort(j);
-		}
+	  radsort(j);
+		
+      
+	  
       
 	  
 	  

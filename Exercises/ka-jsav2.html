@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="math graphie graphie-helpers-arithmetic word-problems">
+<html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Addition 1</title>
@@ -17,42 +17,71 @@
 <script>
   var jsav, arr,
   theArray = [],
+  max = 0;
+  
+  // function to handle a click event on an array
+  var clickHandler = function(index, e) {
+    var HLcount = 0, HLpos = 0;
+    if (!arr.isHighlight(index)) {
+      arr.highlight(index);
+    } else {
+      arr.unhighlight(index);
+    }
+    // Figure out what the user has done, and report on it
+    for (i=0; i<10; i++) {
+      if (arr.isHighlight(i)) {
+        HLcount++;
+        HLpos = i;
+      }
+    }
+    if ((HLcount === 1) && (arr.isHighlight(HLpos)) &&
+        (theArray[HLpos] === max)) {
+      av.umsg("Clicked on " + index + ", max is " + max +
+              ", HLpos is " + HLpos + ": Now you have it!");
+    } else {
+      av.umsg("Clicked on " + index + ", max is " + max +
+              ", HLpos is " + HLpos + ": Not there yet.");
+    }
+  }
+
   initJSAV = function(a) {
     var i;
     jsav = new JSAV("jsav");
     for (i=0; i < a; i++) {
-      theArray[i] = Math.floor(Math.random()*10 + 1);
+      theArray[i] = Math.floor(Math.random()*1000);
+      if (theArray[i] > max) max = theArray[i];
     }
     arr = jsav.ds.array(theArray, {indexed: true});
+    // bind the clickHandler to handle click events on the array
+    arr.click(clickHandler);
   }
-  genAnswer = function(a) {
-    var pos = 0, i;
-    for (i=0; i < a; i++) {
-      if ( theArray[i] > theArray[pos] ) {
-        pos = i;
-      }
-    }
-    return theArray[pos];
+
+  genAnswer = function() {
+    return max;
   }
 </script>
+
 <div class="exercise">
   <div class="vars">
     <var id="A">randRange( 6, 10 )</var>
     <var id="JSAV">initJSAV(A)</var>
-    <var id="Answer">genAnswer(A)</var>
+    <var id="CorrectAnswer">genAnswer()</var>
   </div>
 
   <div class="problems">
     <div>
       <div class="question">
 	Click on the array element with the largest value.
-	<div id="jsav"></div>
+	<div id="jsav">
+	  <div class="jsavcanvas"></div>
+	  <p class="jsavoutput jsavline"></p>
+	</div>
       </div>
       <div class="solution" data-forms="integer">
-	<var>Answer</var>
+	<var>CorrectAnswer</var>
       </div>
       <div class="hints">
-	<p><var>Answer</var></p>
+	<p><var>CorrectAnswer</var></p>
       </div>
     </div>
   </div>
