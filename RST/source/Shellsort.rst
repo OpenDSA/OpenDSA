@@ -469,10 +469,9 @@ Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
 .. avembed:: http://algoviz.org/OpenDSA/dev/OpenDSA/AV/ShellsortProficiency.html
-   :showbutton: hide  
-   :title: Proficiency_Exercise
+   :showbutton: show  
+   :title: Proficiency Exercise1
 
-+ukToTO9
 
 .. raw:: html
 

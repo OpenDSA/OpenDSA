@@ -28,7 +28,7 @@ CODE = """\
 <center>
    <div id="embedHere"></div>
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-   <script>$(function() { $.getJSON("http://algoviz.org/oembed/?url="%(address)s"    
+   <script>$(function() { $.getJSON("http://algoviz.org/oembed/?url=%(address)s"    
       , function(data) {
       $("#embedHere").html(data.html); })});
    </script>
@@ -45,6 +45,15 @@ SHOW = """\
 <div id="%(divID)s" 
     class="more">
 """
+SHOW1 = """\
+<input type="button" 
+    name="%(title)s" 
+    value="Show %(title)s" 
+    id="%(divID)s+show"
+    class="showLink" 
+    style="background-color:#f00;"/>
+</div> 
+"""
 
 HIDE = """\
 <input type="button"
@@ -56,9 +65,22 @@ HIDE = """\
 </div> 
 """
 
+HIDE1 = """\
+<input type="button"
+    name="%(title)s"
+    value="Hide %(title)s"
+    id="%(divID)s+hide"
+    class="hideLink"
+    style="background-color:#f00;"/>
+<div id="%(divID)s" 
+    class="more"> 
+"""
+
+
 def showbutton(argument):
     """Conversion function for the "showbutton" option."""
     return directives.choice(argument, ('show', 'hide'))
+
 
 class avembed(Directive):
     required_arguments = 1
@@ -66,7 +88,7 @@ class avembed(Directive):
     final_argument_whitespace = True
     has_content = True
     option_spec = {'showbutton':showbutton,
-                   'title': title 
+                   'title': directives.unchanged, 
                    }
 
     def run(self):
@@ -75,16 +97,19 @@ class avembed(Directive):
         self.options['address'] = self.arguments[0] 
 
         if 'showbutton' in self.options:
+            divID = "Example%s"%random.randint(1,1000)
+            self.options['divID'] = divID
 
-            if 'title' in self.options:
-                self.options['title'] = 'title' 
-           
-            divID = "Example%s"%random.randint(1,1000) 
-            self.options['divID'] = divID 
-            res = SHOW % (self.options) 
-            res += HIDE % (self.options)
-            res += CODE % self.options      
-            return [nodes.raw('', res, format='html')]
+            if self.options['showbutton'] == "show":
+                res = SHOW % (self.options)
+                res += HIDE % (self.options)
+                res += CODE % self.options
+                return [nodes.raw('', res, format='html')]
+            else:
+                res = SHOW % (self.options) 
+                res += HIDE % (self.options)
+                res += CODE % self.options      
+                return [nodes.raw('', res, format='html')]
 
         else:
             res = CODE % self.options 
