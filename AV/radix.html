@@ -212,10 +212,13 @@ form {
 	arr.css(index, {"background-color": "#00FF00" });
   };
 
-    // Radixsort
+  // Radixsort
   function radsort() {
-    var i,k,j;
+    var i,k,j,p,y;
+	var DSize = $('#digitsize').val();
+	var size = DSize;
     av.umsg("Counting occurances of values in original array");
+	while (size > 0){
     for (i=0; i<theArray.length; i++) {
 		arr.highlight([i]);
 		arrC.highlight([theArray[i]%10])
@@ -235,7 +238,9 @@ form {
 		
 		
   }
- av.umsg("Adding values in count Array");
+  size = size -1;
+   av.umsg("Adding values in count Array");
+  console.log("size = "+ size);
  for (k=0; k<10; k++) {
 		if(k!= 10){
 		countArray[k+1]= countArray[k]+countArray[k+1];
@@ -247,6 +252,7 @@ form {
 		
 	}	
   }
+  av.umsg("Using Count Array to create Output Array");
   for (j=0; j<theArray.length; j++) {
     setGreen2(countArray[theArray[j]%10]);
 	setGreen(theArray[j]%10);
@@ -261,10 +267,17 @@ form {
 	arrC.unhighlight([theArray[j]%10]);
 	arr.unhighlight([j]);
 	}
-  
-    
-    
 	
+	av.umsg("Clear Count Array");
+	for (p=0; p < 10; p++) {
+		countArray[p] = 0; // need to change in order to represent count array
+		arrC.value(p,0);
+		}
+    av.umsg("Set Original Array equal to Output Array and start process over on next digit"); 
+    for (y=0; y<theArray.length; y++) {
+	arr.value(y,outArray[y+1]);
+	}
+}	
 }
   
 
