@@ -8,7 +8,7 @@
 
 #container {
   width: 800px;
-  height: 550px;
+  height: 600px;
   border: 1px solid black;
   background-color: #efe;
   padding: 10px;
@@ -314,9 +314,12 @@ form {
       av = new JSAV("avcontainer"); // initialize JSAV ..
       // .. and the array. use the layout the user has selected
 	  
-	  arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
+	   arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()}); 
+	  av.label("Original Array");
 	  arrC = av.ds.array(countArray, {indexed: true, layout: arrayLayout.val()});
+	  av.label("Count Array");
 	  arrO = av.ds.array(outArray, {indexed: true, layout: arrayLayout.val()});
+	  av.label("Output Array");
 	  radsort(j);
 		
       
