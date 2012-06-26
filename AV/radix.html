@@ -212,35 +212,52 @@ form {
 	arr.css(index, {"background-color": "#00FF00" });
   };
 
-  // Radixsort
+   // Radixsort
   function radsort() {
     var i,k,j,p,y;
 	var DSize = $('#digitsize').val();
 	var size = DSize;
+	var count = 1;
+	var ten= 10;
     av.umsg("Counting occurances of values in original array");
 	while (size > 0){
+	av.umsg("Counting occurances of values in original array "+ size);
     for (i=0; i<theArray.length; i++) {
+		if(theArray[i] < 10){
+			var stringNum = "" + theArray[i];
+			var answer = stringNum.substring(0,1);
+			}
+		else{
+			
+		var num = theArray[i]%Math.pow(10,count);
+		
+		var stringNum = ""+num;
+		var answer = stringNum.substring(0,1);
+		}
+	
 		arr.highlight([i]);
-		arrC.highlight([theArray[i]%10])
+		arrC.highlight([answer])
 		av.step();
 		arr.unhighlight([i]);
-		arrC.unhighlight([theArray[i]%10])
-		if(countArray[theArray[i]%10]=== 0){
-			countArray[theArray[i]%10]= 1;
-			arrC.value(theArray[i]%10,1);
+		arrC.unhighlight([answer])
+		if(countArray[answer]=== 0){
+			countArray[answer]= 1;
+			arrC.value(answer,1);
 			
 			
 			}
 		else{
-			countArray[theArray[i]%10]= countArray[theArray[i]%10]+1;
-			arrC.value(theArray[i]%10,countArray[theArray[i]%10]);
+			countArray[answer]= countArray[answer]+1;
+			arrC.value(answer,countArray[answer]);
 		}
 		
 		
   }
-  size = size -1;
+ 
    av.umsg("Adding values in count Array");
-  console.log("size = "+ size);
+  console.log("size = "+ 256 % Math.pow(10,2));
+  console.log("c" + count);
+  
  for (k=0; k<10; k++) {
 		if(k!= 10){
 		countArray[k+1]= countArray[k]+countArray[k+1];
@@ -254,17 +271,27 @@ form {
   }
   av.umsg("Using Count Array to create Output Array");
   for (j=0; j<theArray.length; j++) {
-    setGreen2(countArray[theArray[j]%10]);
-	setGreen(theArray[j]%10);
+		if(theArray[j] < 10){
+			var answer = 0;
+			}
+		else{
+			
+		var num = theArray[j]%Math.pow(10,count);
+		
+		var stringNum = ""+num;
+		var answer = stringNum.substring(0,1);
+		}
+    setGreen2(countArray[answer]);
+	setGreen(answer);
 	setGreen3(j);
-	outArray[countArray[theArray[j]%10]]=theArray[j];
-	arrO.value(countArray[theArray[j]%10],theArray[j]);
-	countArray[theArray[j]%10]= countArray[theArray[j]%10]-1;
-	arrC.value(theArray[j]%10,countArray[theArray[j]%10]);
+	outArray[countArray[answer]]=theArray[j];
+	arrO.value(countArray[answer],theArray[j]);
+	countArray[answer]= countArray[answer]-1;
+	arrC.value(answer,countArray[answer]);
 	
 	av.step();
-	arrO.unhighlight([countArray[theArray[j]%10]+1]);
-	arrC.unhighlight([theArray[j]%10]);
+	arrO.unhighlight([countArray[answer]+1]);
+	arrC.unhighlight([answer]);
 	arr.unhighlight([j]);
 	}
 	
@@ -276,8 +303,15 @@ form {
     av.umsg("Set Original Array equal to Output Array and start process over on next digit"); 
     for (y=0; y<theArray.length; y++) {
 	arr.value(y,outArray[y+1]);
+	theArray[y] = outArray[y+1];
 	}
-}	
+	 size = size -1;
+  count= count + 1;
+}
+var num = 256;
+var stringNum = ""+num;
+var answer = stringNum.substring(0,1);
+console.log("test = "+ answer);
 }
   
 
