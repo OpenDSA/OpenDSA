@@ -1,6 +1,6 @@
 /******* GENERAL DEFAULTS *****/
 h1 { font-size: 2em; }
-h2 { font-size: 1.5em; margin: 0.83em 0;}
+h2 { font-size: 1.5em; margin: 0.83em 0; }
 h3 { font-size: 1.17em; margin: 1em 0;}
 h1, h2, h3, h4, h5, h6 { font-weight: bold;}
 p { font-size: 1em; }
@@ -21,7 +21,7 @@ div h1 {
   padding: 8px 8px 2px 8px;
 }
 
-p.annotation {
+.annotation {
   color:red;
 }
 
