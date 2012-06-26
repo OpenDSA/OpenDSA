@@ -26,8 +26,8 @@ import sys, os
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 
-sys.path.append(os.path.abspath('ODSAextensions/odsa/avembed'))
-sys.path.append(os.path.abspath('ODSAextensions/odsa/avmetadata'))
+sys.path.append(os.path.abspath('../SAextensions/odsa/avembed'))
+sys.path.append(os.path.abspath('../ODSAextensions/odsa/avmetadata'))
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata']
 
 # Add any paths that contain templates here, relative to this directory.
