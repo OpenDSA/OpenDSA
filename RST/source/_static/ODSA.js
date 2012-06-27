@@ -2,9 +2,8 @@ $(document).ready(function()    {
   $("input.showLink").click(function(event){
             var shID = event.target.id;
             var name = $(this).attr("name");
-            var av = name.split('+');
             var target = name+'+hide'
-            $('input[name="'+target+'"]').after('<p><center> <iframe src="'+av[0]+'" \ntype="text/javascript" width="'+av[1]+'" height="'+av[2]+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></p></div>');
+            $('input[name="'+target+'"]').after('<center><div="embedHere"></div><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script><script type="text/javascript">$(function() { $.getJSON("http://algoviz.org/oembed/?url='+name+'&callback=?", function(data) {$("#embedHere").html(data.html); })});</script></center>');
             $('input[name="'+target+'"]').attr("name",name);
             showHide(shID);
         });

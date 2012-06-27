@@ -37,43 +37,43 @@ CODE = """\
 
 SHOW = """\
 <input type="button" 
-    name="%(title)s" 
+    name="%(address)s" 
     value="Show %(title)s" 
     id="%(divID)s+show"
     class="showLink" 
     style="background-color:#f00;"/>
 <div id="%(divID)s" 
-    class="more">
+    class="more"></br>
 """
 SHOW1 = """\
 <input type="button" 
-    name="%(title)s" 
+    name="%(address)s" 
     value="Show %(title)s" 
     id="%(divID)s+show"
     class="showLink" 
     style="background-color:#f00;"/>
-</div> 
+</div></br> 
 """
 
 HIDE = """\
 <input type="button"
-    name="%(title)s"
+    name="%(address)s+hide"
     value="Hide %(title)s"
     id="%(divID)s+hide"
     class="hideLink"
     style="background-color:#f00;"/>
-</div> 
+</div></br>
 """
 
 HIDE1 = """\
 <input type="button"
-    name="%(title)s"
+    name="%(address)s+hide"
     value="Hide %(title)s"
     id="%(divID)s+hide"
     class="hideLink"
     style="background-color:#f00;"/>
 <div id="%(divID)s" 
-    class="more"> 
+    class="more"></br>
 """
 
 
@@ -103,12 +103,12 @@ class avembed(Directive):
             if self.options['showbutton'] == "show":
                 res = SHOW % (self.options)
                 res += HIDE % (self.options)
-                res += CODE % self.options
+                #res += CODE % self.options
                 return [nodes.raw('', res, format='html')]
             else:
                 res = SHOW % (self.options) 
                 res += HIDE % (self.options)
-                res += CODE % self.options      
+                #res += CODE % self.options      
                 return [nodes.raw('', res, format='html')]
 
         else:
