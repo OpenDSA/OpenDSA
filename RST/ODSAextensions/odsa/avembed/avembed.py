@@ -26,9 +26,10 @@ def setup(app):
 
 CODE = """\
 <center>
+   <p></p>
    <div id="embedHere"></div>
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-   <script>$(function() { $.getJSON("http://algoviz.org/oembed/?url=%(address)s"    
+   <script>$(function() { $.getJSON("http://algoviz.org/oembed/?url=%(address)s&callback=?"    
       , function(data) {
       $("#embedHere").html(data.html); })});
    </script>
@@ -43,16 +44,7 @@ SHOW = """\
     class="showLink" 
     style="background-color:#f00;"/>
 <div id="%(divID)s" 
-    class="more"></br>
-"""
-SHOW1 = """\
-<input type="button" 
-    name="%(address)s" 
-    value="Show %(title)s" 
-    id="%(divID)s+show"
-    class="showLink" 
-    style="background-color:#f00;"/>
-</div></br> 
+    class="more">
 """
 
 HIDE = """\
@@ -62,19 +54,9 @@ HIDE = """\
     id="%(divID)s+hide"
     class="hideLink"
     style="background-color:#f00;"/>
-</div></br>
+</div><p></p>
 """
 
-HIDE1 = """\
-<input type="button"
-    name="%(address)s+hide"
-    value="Hide %(title)s"
-    id="%(divID)s+hide"
-    class="hideLink"
-    style="background-color:#f00;"/>
-<div id="%(divID)s" 
-    class="more"></br>
-"""
 
 
 def showbutton(argument):
@@ -108,7 +90,6 @@ class avembed(Directive):
             else:
                 res = SHOW % (self.options) 
                 res += HIDE % (self.options)
-                #res += CODE % self.options      
                 return [nodes.raw('', res, format='html')]
 
         else:

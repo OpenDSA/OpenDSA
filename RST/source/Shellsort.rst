@@ -469,7 +469,7 @@ Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
 .. avembed:: http://algoviz.org/OpenDSA/AV/ShellsortProficiency.html
-   :showbutton: show  
+   :showbutton: hide  
    :title: Proficiency Exercise0.1
 
 .. avmetadata:: Shell Sort Tutorial 
