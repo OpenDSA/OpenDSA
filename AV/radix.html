@@ -219,22 +219,13 @@ form {
 	var size = DSize;
 	var count = 1;
 	var ten= 10;
+	var counter =0;
     av.umsg("Counting occurances of values in original array");
 	while (size > 0){
 	av.umsg("Counting occurances of values in original array "+ size);
     for (i=0; i<theArray.length; i++) {
-		if(theArray[i] < 10){
-			var stringNum = "" + theArray[i];
-			var answer = stringNum.substring(0,1);
-			}
-		else{
-			
-		var num = theArray[i]%Math.pow(10,count);
 		
-		var stringNum = ""+num;
-		var answer = stringNum.substring(0,1);
-		}
-	
+		var answer = Math.floor((theArray[i]/count)%10);
 		arr.highlight([i]);
 		arrC.highlight([answer])
 		av.step();
@@ -253,11 +244,12 @@ form {
 		
 		
   }
- 
+
    av.umsg("Adding values in count Array");
-  console.log("size = "+ 256 % Math.pow(10,2));
-  console.log("c" + count);
-  
+  console.log("floor = "+  Math.floor((365/10)%10));
+  console.log("floor = "+  Math.floor((365/100)%10));
+  console.log("counter = "+ counter);
+  console.log("count = "+ count)
  for (k=0; k<10; k++) {
 		if(k!= 10){
 		countArray[k+1]= countArray[k]+countArray[k+1];
@@ -270,17 +262,9 @@ form {
 	}	
   }
   av.umsg("Using Count Array to create Output Array");
-  for (j=0; j<theArray.length; j++) {
-		if(theArray[j] < 10){
-			var answer = 0;
-			}
-		else{
-			
-		var num = theArray[j]%Math.pow(10,count);
+  for (j=theArray.length; j>=0; j--) {
 		
-		var stringNum = ""+num;
-		var answer = stringNum.substring(0,1);
-		}
+	var answer = Math.floor((theArray[j]/count)%10);	
     setGreen2(countArray[answer]);
 	setGreen(answer);
 	setGreen3(j);
@@ -306,7 +290,8 @@ form {
 	theArray[y] = outArray[y+1];
 	}
 	 size = size -1;
-  count= count + 1;
+  counter = counter +1;
+  count= Math.pow(10,counter);
 }
 var num = 256;
 var stringNum = ""+num;
