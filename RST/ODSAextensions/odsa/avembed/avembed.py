@@ -25,6 +25,7 @@ def setup(app):
 
 
 CODE = """\
+<div id="start">
 <center>
    <p></p>
    <div id="embedHere"></div>
@@ -34,7 +35,15 @@ CODE = """\
       $("#embedHere").html(data.html); })});
    </script>
 </center>
+</div>
 """
+
+CODE1= """\
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>document.getElementById("%(divID)s+show").style.display ="none"; document.getElementById("%(divID)s").style.display ="block";</script>
+"""
+
+
 
 SHOW = """\
 <input type="button" 
@@ -46,6 +55,7 @@ SHOW = """\
 <div id="%(divID)s" 
     class="more">
 """
+
 
 HIDE = """\
 <input type="button"
@@ -85,7 +95,8 @@ class avembed(Directive):
             if self.options['showbutton'] == "show":
                 res = SHOW % (self.options)
                 res += HIDE % (self.options)
-                #res += CODE % self.options
+                res += CODE1 % (self.options)     
+                res += CODE % (self.options)
                 return [nodes.raw('', res, format='html')]
             else:
                 res = SHOW % (self.options) 
