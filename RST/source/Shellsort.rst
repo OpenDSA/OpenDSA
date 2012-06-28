@@ -470,7 +470,7 @@ Can you reproduce its behavior?
 
 .. avembed:: http://algoviz.org/OpenDSA/AV/ShellsortProficiency.html
    :showbutton: hide 
-   :title: Proficiency Exercise 1.10
+   :title: Proficiency Exercise 1.20
 
 .. avmetadata:: Shell Sort Tutorial 
    :author: Clifford Shaffer
