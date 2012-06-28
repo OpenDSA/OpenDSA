@@ -212,17 +212,16 @@ form {
 	arr.css(index, {"background-color": "#00FF00" });
   };
 
-   // Radixsort
+  // Radixsort
   function radsort() {
     var i,k,j,p,y;
 	var DSize = $('#digitsize').val();
 	var size = DSize;
 	var count = 1;
-	var ten= 10;
 	var counter =0;
     av.umsg("Counting occurances of values in original array");
 	while (size > 0){
-	av.umsg("Counting occurances of values in original array "+ size);
+	av.umsg("Counting occurances of values in original array ");
     for (i=0; i<theArray.length; i++) {
 		
 		var answer = Math.floor((theArray[i]/count)%10);
@@ -246,10 +245,6 @@ form {
   }
 
    av.umsg("Adding values in count Array");
-  console.log("floor = "+  Math.floor((365/10)%10));
-  console.log("floor = "+  Math.floor((365/100)%10));
-  console.log("counter = "+ counter);
-  console.log("count = "+ count)
  for (k=0; k<10; k++) {
 		if(k!= 10){
 		countArray[k+1]= countArray[k]+countArray[k+1];
@@ -259,22 +254,26 @@ form {
 		av.step();
 		arrC.unhighlight(k);
 		
-	}	
+	}
+	else{
+		arrC.unhighlight(k);
+	}
+	
   }
   av.umsg("Using Count Array to create Output Array");
   for (j=theArray.length; j>=0; j--) {
 		
 	var answer = Math.floor((theArray[j]/count)%10);	
-    setGreen2(countArray[answer]);
+    setGreen2(countArray[answer]-1);
 	setGreen(answer);
 	setGreen3(j);
 	outArray[countArray[answer]]=theArray[j];
-	arrO.value(countArray[answer],theArray[j]);
+	arrO.value(countArray[answer]-1,theArray[j]);
 	countArray[answer]= countArray[answer]-1;
 	arrC.value(answer,countArray[answer]);
 	
 	av.step();
-	arrO.unhighlight([countArray[answer]+1]);
+	arrO.unhighlight([countArray[answer]]);
 	arrC.unhighlight([answer]);
 	arr.unhighlight([j]);
 	}
@@ -293,13 +292,10 @@ form {
   counter = counter +1;
   count= Math.pow(10,counter);
 }
-var num = 256;
-var stringNum = ""+num;
-var answer = stringNum.substring(0,1);
-console.log("test = "+ answer);
+
 }
   
-
+ 
   
   
   // Execute the "Run" button function
@@ -318,9 +314,10 @@ console.log("test = "+ answer);
 		
         for (i=0; i < ASize; i++) {
           theArray[i] = Math.floor(Math.random()*(Math.pow(10,DSize)));
-		  
-		  outArray[i] = 0; // need to change in order to represent output array
-        }
+		  }
+		for (i=0; i < ASize; i++) {
+			outArray[i] = 0; // need to change in order to represent output array
+		}
 		
 		for (k=0; k < 10; k++) {
 		countArray[k] = 0; // need to change in order to represent count array
@@ -333,7 +330,7 @@ console.log("test = "+ answer);
       av = new JSAV("avcontainer"); // initialize JSAV ..
       // .. and the array. use the layout the user has selected
 	  
-	   arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()}); 
+	  arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()}); 
 	  av.label("Original Array");
 	  arrC = av.ds.array(countArray, {indexed: true, layout: arrayLayout.val()});
 	  av.label("Count Array");
