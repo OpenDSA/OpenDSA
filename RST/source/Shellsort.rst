@@ -469,8 +469,8 @@ Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
 .. avembed:: http://algoviz.org/OpenDSA/AV/ShellsortProficiency.html
-   :showbutton: hide  
-   :title: Proficiency Exercise0.1
+   :showbutton: hide 
+   :title: Proficiency Exercise 1.10
 
 .. avmetadata:: Shell Sort Tutorial 
    :author: Clifford Shaffer
