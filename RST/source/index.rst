@@ -15,6 +15,7 @@ Sorting
 
 
    Sorting
+   SortCompare
    InsertionSort
    BubbleSort
    SelectionSort
@@ -28,6 +29,15 @@ Sorting
    SortingEmpirical
    SortingLowerBound
 
+File Processing
+---------------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   FileProc
+
 Priority Queues
 ---------------
 
@@ -37,7 +47,16 @@ Priority Queues
 
    BinaryHeap
 
-Other modules
+Graphs
+------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   MCST
+
+Other stuff
 -------------
 
 .. toctree::

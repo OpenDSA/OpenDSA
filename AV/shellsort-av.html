@@ -107,6 +107,9 @@ form {
   // The array of numbers.
   var theArray = [];
 
+  // This sets the default value of the speed setting to "7"
+  JSAV.ext.SPEED = 300;
+
   // check query parameters from URL
   var params = JSAV.utils.getQueryParameter();
   if ("increments" in params) { // set value of increments if it is a param
@@ -119,8 +122,10 @@ form {
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
   // add the layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
-  
+  var arrayLayout = settings.add("layout",
+    {"type": "select", "options": {"bar": "Bar", "array": "Array"},
+     "label":"Array layout: ", "value": "bar"}); 
+
   var context = $("#ssperform");
   var emptyContent = $("#avcontainer").html();
   var av, // for JSAV av
