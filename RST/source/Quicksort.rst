@@ -1,3 +1,5 @@
+.. _Quicksort:
+
 .. index:: ! Quicksort
 
 Quicksort

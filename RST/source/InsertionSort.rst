@@ -1,3 +1,5 @@
+.. _InsertionSort:
+
 .. index:: ! Insertion Sort
 
 Insertion Sort

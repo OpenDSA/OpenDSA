@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Example of Binary Tree</title>
-    <link rel="stylesheet" href="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
     <style>
     .jsavnode { width: auto; min-width:45px; }
     .jsavvalue { display: inline-block; margin: 0 5px;}
@@ -17,13 +17,13 @@
        src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV//lib/jquery.transform.light.js"></script>
-    <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV//lib/raphael.js"></script>
-    <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV//build/JSAV.js"></script>
+    <script src="../JSAV/lib/jquery.transform.light.js"></script>
+    <script src="../JSAV/lib/raphael.js"></script>
+    <script src="../JSAV/build/JSAV-min.js"></script>
     <script>
     var jsav = new JSAV("av");
     var bt = jsav.ds.bintree();
-    bt.root("ki"); // set the value of the root
+    bt.root("internallongvalueki"); // set the value of the root
     
     bt.root().highlight(); //highlight root
     bt.root().left("3"); // set left child

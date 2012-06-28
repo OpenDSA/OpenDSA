@@ -1,3 +1,5 @@
+.. _SortingEmpirical:
+
 .. index:: ! Sorting, Empirical Analysis
 
 An Empirical Comparison of Sorting Algorithms
@@ -33,6 +35,8 @@ For answers to these questions, we can turn to empirical testing.
    \textrm{Radix/8}   & .00799 & .044 & 0.40 &   3.99 &    40.0 &     404 &   4.00 &   3.99\\
    \hline
    \end{array}
+
+.. _SortCompTable:
 
 <ODSAfig "SortComp" />
 Empirical comparison of sorting algorithms run on a 3.4 GHz Intel
