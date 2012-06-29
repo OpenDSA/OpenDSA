@@ -468,9 +468,9 @@ Next, let's review what makes for a legal increment series.
 Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
-.. avembed:: http://algoviz.org/OpenDSA/AV/ShellsortProficiency.html
-   :showbutton: hide 
-   :title: Proficiency Exercise 1.20
+.. avembed:: AV/ShellsortProficiency.html
+   :showbutton: show 
+   :title: Proficiency Exercise(test) 
 
 .. avmetadata:: Shell Sort Tutorial 
    :author: Clifford Shaffer

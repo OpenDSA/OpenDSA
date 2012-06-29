@@ -18,7 +18,9 @@ from docutils import nodes
 from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
 import random
-
+import os, sys 
+import re
+from xml.dom.minidom import parse, parseString
 
 def setup(app):
     app.add_directive('avembed',avembed)
@@ -26,14 +28,9 @@ def setup(app):
 
 CODE = """\
 <div id="start">
-<center>
-   <p></p>
-   <div id="embedHere"></div>
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-   <script>$(function() { $.getJSON("http://algoviz.org/oembed/?url=%(address)s&callback=?"    
-      , function(data) {
-      $("#embedHere").html(data.html); })});
-   </script>
+<center> 
+<iframe src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
+</iframe>
 </center>
 </div>
 """
@@ -47,7 +44,7 @@ CODE1= """\
 
 SHOW = """\
 <input type="button" 
-    name="%(address)s" 
+    name="%(av_address)s+%(width)s+%(height)s" 
     value="Show %(title)s" 
     id="%(divID)s+show"
     class="showLink" 
@@ -59,13 +56,50 @@ SHOW = """\
 
 HIDE = """\
 <input type="button"
-    name="%(address)s+hide"
+    name="%(av_address)s+%(width)s+%(height)s+hide"
     value="Hide %(title)s"
     id="%(divID)s+hide"
     class="hideLink"
     style="background-color:#f00;"/>
 </div><p></p>
 """
+
+
+
+def embedlocal(av_path):
+   embed=[]
+   av_fullname = av_path.partition('/')[2]  
+   av_name = av_fullname.partition('.')[0]  
+   xmlfile = os.path.abspath('../'+ av_path.partition('/')[0]+'/') + '/xml/' + av_name + '.xml'    
+   av_fullpath = os.path.abspath('../'+av_path) 
+   avwidth=0
+   avheight=0
+   try:
+      dom = parse(xmlfile)
+      node = dom.documentElement
+      widths = dom.getElementsByTagName("width")
+      for width in widths:
+           nodes = width.childNodes
+           for node in nodes:
+               if node.nodeType == node.TEXT_NODE:
+                   avwidth=node.data
+
+      heights = dom.getElementsByTagName("height")
+      for height in heights:
+           nodes = height.childNodes
+           for node in nodes:
+               if node.nodeType == node.TEXT_NODE:
+                   avheight=node.data
+      #link =os.path.abspath(address[1:])
+      embed.append('../../../'+av_path)
+      embed.append(avwidth)
+      embed.append(avheight)
+      return embed     
+
+   except IOError:
+      print 'ERROR: No description file when embedding: ' + xmlfile 
+      sys.exit()
+
 
 
 
@@ -80,13 +114,18 @@ class avembed(Directive):
     final_argument_whitespace = True
     has_content = True
     option_spec = {'showbutton':showbutton,
-                   'title': directives.unchanged, 
+                   'title': directives.unchanged,
                    }
 
     def run(self):
                 
         """ Restructured text extension for inserting embedded AVs with show/hide button """
         self.options['address'] = self.arguments[0] 
+
+        embed = embedlocal(self.arguments[0])   
+        self.options['av_address'] = embed[0]
+        self.options['width'] = embed[1]
+        self.options['height'] = embed[2]
 
         if 'showbutton' in self.options:
             divID = "Example%s"%random.randint(1,1000)
