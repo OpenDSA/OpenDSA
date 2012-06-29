@@ -1,14 +1,15 @@
+.. avmetadata:: Shell Sort Tutorial 
+   :author: Cliff Shaffer
+   :prerequisites: Sorting, Insertion_sort
+   :topic: sorting
+   :short_name: Shellsort
+
 .. _Shellsort:
 
-.. raw:: html
+.. include:: JSAVheader.rst
 
-   <link href="_static/opendsaMOD.css" rel="stylesheet" type="text/css" />
-   <link href="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-   <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/lib/jquery.transform.light.js"></script>
-   <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/lib/raphael.js"></script>
-   <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/build/JSAV-min.js"></script>
+.. raw:: html
+   
    <script type="text/javascript" src="_static/ODSA.js"></script>
 
    <style>
@@ -442,56 +443,20 @@ You can also set the increment series.
 Use this visualization to make sure that you understand how Shellsort
 works.
 
-.. raw:: html
-
-   <center>
-     <iframe src="http://algoviz.org:/OpenDSA/dev/OpenDSA/AV/shellsort-av.html"
-       type="text/javascript" width="792" height="492"
-       frameborder="0" marginwidth="0" marginheight="0"
-       scrolling="no">
-     </iframe>
-   </center>
+.. avembed:: AV/shellsort-av.html
 
 Next, let's review what makes for a legal increment series.
 
-.. raw:: html
-
-   <input type="button"
-     name="http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/ShellsortSeries.html+1000+700"
-     value="Show Question 2" id="example427+show" class="showLink"
-     style="background-color:#f00;"/> 
-   <div id="example427" class="more">
-   <input type="button"
-     name="http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/ShellsortSeries.html+1000+700+hide"
-     value="Hide Question 2" id="example427+hide"
-     class="hideLink" style="background-color:#f00;"/>
-   </div>
+.. avembed:: Exercises/ShellsortSeries.html
+   :showbutton: hide
+   :title: Question 2
 
 Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
 .. avembed:: AV/ShellsortProficiency.html
-   :showbutton: show 
-   :title: Proficiency Exercise(test) 
-
-.. avmetadata:: Shell Sort Tutorial 
-   :author: Clifford Shaffer
-   :prerequisites: sorting, insertion_sort
-   :topic: sorting
-   :short_name: shellsort
-
-
-.. raw:: html
-
-   <input type="button" name="http://algoviz.org/OpenDSA/dev/OpenDSA/AV/ShellsortProficiency.html+822+502"
-     value="Show Proficiency Exercise" id="example449+show"
-     class="showLink" style="background-color:#f00;"/>
-   <div id="example449" class="more">
-   <input type="button"
-     name="http://algoviz.org/OpenDSA/dev/OpenDSA/AV/ShellsortProficiency.html+822+502+hide"
-     value="Hide Proficiency Exercise" id="example449+hide"
-     class="hideLink" style="background-color:#f00;"/>
-   </div>
+   :showbutton: hide
+   :title: Proficiency Exercise
 
 Some choices for the series of increments will make Shellsort
 run more efficiently than others.
@@ -513,17 +478,9 @@ various increment sizes.
 Now you are ready to try out some different increment series to see
 how they affect the cost of Shellsort.
 
-.. raw:: html
-
-   <input type="button" name="http://algoviz.org/OpenDSA/AV/ShellsortPerformance.html+822+388"
-     value="Show Performance Exercise" id="example456+show"
-     class="showLink" style="background-color:#f00;"/>
-   <div id="example456" class="more">
-   <input type="button"
-     name="http://algoviz.org/OpenDSA/AV/ShellsortPerformance.html+822+388+hide"
-     value="Hide Performance Exercise" id="example456+hide"
-     class="hideLink" style="background-color:#f00;"/> 
-   </div>
+.. avembed:: AV/ShellsortPerformance.html
+   :showbutton: hide
+   :title: Performance Simulator
 
 A theoretical analysis of Shellsort is difficult, so we must accept
 without proof that the average-case performance of Shellsort
@@ -542,17 +499,9 @@ algorithm is unacceptably slow.
 Here are some questions to check whether you understand the basics of
 Shellsort's runtime cost.
 
-.. raw:: html
-
-   <input type="button" name="http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/ShellsortMC.html+1000+700"
-          value="Show Question 3" id="example477+show" class="showLink"
-	  style="background-color:#f00;"/> 
-   <div id="example477" class="more">
-   <input type="button"
-          name="http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/ShellsortMC.html+1000+700+hide"
-          value="Hide Question 3" id="example477+hide"
-          class="hideLink" style="background-color:#f00;"/>
-   </div>
+.. avembed:: Exercises/ShellsortMC.html
+   :showbutton: hide
+   :title: Question 3
 
 Notes
 -----

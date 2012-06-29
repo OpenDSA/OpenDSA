@@ -1,0 +1,9 @@
+.. raw:: html
+
+   <link href="_static/opendsaMOD.css" rel="stylesheet" type="text/css" />
+   <link href="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+   <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/lib/jquery.transform.light.js"></script>
+   <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/lib/raphael.js"></script>
+   <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/build/JSAV-min.js"></script>
