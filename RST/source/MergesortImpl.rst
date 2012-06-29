@@ -1,3 +1,5 @@
+.. _MergesortImpl:
+
 Implementing Mergesort
 ======================
 

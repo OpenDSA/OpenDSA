@@ -1,3 +1,5 @@
+.. _BubbleSort:
+
 .. index:: ! Bubble Sort
 
 Bubble Sort

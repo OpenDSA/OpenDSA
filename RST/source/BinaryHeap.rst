@@ -1,3 +1,5 @@
+.. _BinaryHeap:
+
 .. raw:: html
 
    <link href="_static/opendsaMOD.css" rel="stylesheet" type="text/css" />

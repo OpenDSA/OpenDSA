@@ -56,19 +56,15 @@ Graphs
 
    MCST
 
-Other stuff
--------------
+Appendix
+========
 
 .. toctree::
    :numbered:
    :maxdepth: 3
 
-   TODO
    Glossary
    Bibliography
-
-Indices and Appendicies
-=======================
 
 * :ref:`genindex`
 * :ref:`search`

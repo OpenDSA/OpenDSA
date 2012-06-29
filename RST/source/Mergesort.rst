@@ -1,3 +1,5 @@
+.. _Mergesort:
+
 .. raw:: html
 
    <link href="_static/opendsaMOD.css" rel="stylesheet" type="text/css" />
@@ -66,7 +68,7 @@ Here is a visualization that illustrates how Mergesort works.
 
    <center>
      <iframe src="http://algoviz.org/OpenDSA/dev/OpenDSA/AV/mergesort-av.html"
-       type="text/javascript" width="823" height="672"
+       type="text/javascript" width="823" height="587"
        frameborder="0" marginwidth="0" marginheight="0"
         scrolling="no">
      </iframe>
@@ -78,7 +80,7 @@ Proficiency Exercise:
 
    <center>
      <iframe src="http://algoviz.org/OpenDSA/dev/OpenDSA/AV/mergesort-proficiency.html"
-       type="text/javascript" width="823" height="802"
+       type="text/javascript" width="806" height="680"
        frameborder="0" marginwidth="0" marginheight="0"
         scrolling="no">
      </iframe>

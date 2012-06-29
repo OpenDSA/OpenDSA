@@ -1,3 +1,5 @@
+.. _SortCompare:
+
 .. index::
    pair: sorting; comparison
 
