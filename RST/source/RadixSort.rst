@@ -1,3 +1,5 @@
+.. _RadixSort:
+
 .. index:: ! Binsort
 .. index:: ! Radix Sort
 

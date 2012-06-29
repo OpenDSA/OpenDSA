@@ -1,3 +1,5 @@
+.. _SelectionSort:
+
 .. index:: ! Selection Sort
 
 Selection Sort

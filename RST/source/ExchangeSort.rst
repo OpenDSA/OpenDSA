@@ -1,3 +1,5 @@
+.. _ExchangeSort:
+
 .. index:: ! Exchange Sorting
 
 The Cost of Exchange Sorting
