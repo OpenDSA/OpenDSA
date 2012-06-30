@@ -1,7 +1,7 @@
 .. avmetadata:: Shell Sort Tutorial 
    :author: Cliff Shaffer
-   :prerequisites: Sorting, Insertion_sort
-   :topic: sorting
+   :prerequisites: Sorting, InsertionSort
+   :topic: Sorting
    :short_name: Shellsort
 
 .. _Shellsort:
@@ -398,7 +398,7 @@ Finally, the array is sorted.
 
 Here is a code implementation for Shellsort.
 
-.. literalinclude:: ../../SourceCode/Processing/Shellsort.pde
+.. literalinclude:: ../../SourceCode/Processing/Sorting/Shellsort/Shellsort.pde
    :start-after: /* *** ODSATag: Shellsort *** */
    :end-before: /* *** ODSAendTag: Shellsort *** */
 
@@ -441,7 +441,7 @@ Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
 .. avembed:: AV/ShellsortProficiency.html
-   :showbutton: hide
+   :showbutton: show
    :title: Proficiency Exercise
 
 Some choices for the series of increments will make Shellsort

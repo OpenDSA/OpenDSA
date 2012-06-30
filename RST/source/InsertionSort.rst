@@ -14,21 +14,18 @@ to the first two, and so on.
 As you take each bill, you would add it to the sorted pile that you
 have already made.
 This naturally intuitive process is the inspiration for
-our first sorting algorithm, called ..dfn`Insertion Sort`.
+our first sorting algorithm, called ..dfn:`Insertion Sort`.
+
 Insertion Sort iterates through a list of records.
-Each record is inserted in turn at the correct position
-within a sorted list composed of those records already processed.
-The following is a Java implementation.
-The input is an array of :math:`n` records stored in array
-``A``.::
+For each iteration, the current record is inserted in turn at the
+correct position within a sorted list composed of those records
+already processed.
+Here is an implementation.
+The input is an array of :math:`n` records stored in array ``A``.
 
-    static <E extends Comparable<? super E>>
-    void inssort(E[] A) {
-      for (int i=1; i<A.length; i++) // Insert i'th record
-        for (int j=i; (j>0) && (A[j].compareTo(A[j-1])<0); j--)
-          DSutil.swap(A, j, j-1);
-    }
-
+.. literalinclude:: ../../SourceCode/Processing/Sorting/Insertionsort/Insertionsort.pde
+   :start-after: /* *** ODSATag: Insertionsort *** */
+   :end-before: /* *** ODSAendTag: Insertionsort *** */
 
 Consider the case where ``inssort`` is processing the
 :math:`i`'th
@@ -52,15 +49,7 @@ works.
    Values above the line in each column have been sorted.
    Arrows indicate the upward motions of records through the array.
 
-.. raw:: html
-
-   <center>
-     <iframe src="http://algoviz.org:/OpenDSA/dev/OpenDSA/AV/insertionsort-av.html"
-       type="text/javascript" width="792" height="489"
-       frameborder="0" marginwidth="0" marginheight="0"
-       scrolling="no">
-     </iframe>
-   </center>
+.. avembed:: AV/insertionsort-av.html
 
 The body of ``inssort`` is made up of two nested
 ``for`` loops.
