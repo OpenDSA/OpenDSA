@@ -29,6 +29,8 @@ The input is an array of :math:`n` records stored in array
           DSutil.swap(A, j, j-1);
     }
 
+.. codeinclude:: Sorting/Insertionsort/Insertionsort.pde 
+   :tag: Insertionsort  
 
 Consider the case where ``inssort`` is processing the
 :math:`i`'th

@@ -89,6 +89,8 @@ pygments_style = 'sphinx'
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
+#path (from the OpenDSA home) to the sourcecode directory that I want to use
+sourcecode_path = '../SourceCode/Processing/'          
 
 # -- Options for HTML output ---------------------------------------------------
 
