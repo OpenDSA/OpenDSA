@@ -26,13 +26,16 @@ div h1 {
   height: 30px;
   margin: 0;
 }
+.jsavcode {
+  display: inline-block;
+}
 #about {
   float: right;
 }
 .jsavsettings {
-display: block;
-margin-top: 10px;
-margin-left: 10px;
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 form {
   clear: both;

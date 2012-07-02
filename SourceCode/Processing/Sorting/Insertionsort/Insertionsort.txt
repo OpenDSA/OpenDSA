@@ -3,3 +3,4 @@ void inssort(int[] A) {
     for (int j=i; (j>0) && (A[j] < A[j-1]); j--)
       swap(A, j, j-1);
 }
+
