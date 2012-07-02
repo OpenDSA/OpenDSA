@@ -28,7 +28,8 @@ import sys, os
 
 sys.path.append(os.path.abspath('../ODSAextensions/odsa/avembed'))
 sys.path.append(os.path.abspath('../ODSAextensions/odsa/avmetadata'))
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata']
+sys.path.append(os.path.abspath('../ODSAextensions/odsa/codeinclude'))
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

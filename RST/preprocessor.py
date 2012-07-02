@@ -13,7 +13,7 @@ from string import whitespace as ws
 
 class modPreReq:
    
-   def __init__(self,filename,sc):
+   def __init__(self,filename):
       self.name =''  #field short_display_name in the database
       self.description=''   #field name in the database
       self.prereq=[]    # field prerequisites in the database
@@ -32,7 +32,6 @@ class modPreReq:
       p = re.compile('(%s)' % ('|'.join([c for c in ws])))
       flag = 0
       fls = open(filename,'r')
-      ofile = open(filename+'1','w')
       data = fls.readlines()
       fls.close()
       self.name = os.path.basename(filename)
@@ -52,24 +51,8 @@ class modPreReq:
          if ':topic:' in line:
             str =  re.split('topic:', line, re.IGNORECASE)[1]
             self.covers =  p.sub('',str).split(',')         #str 
-         if '.. codeinclude::' in line:
-            str = re.split('codeinclude::',line, re.IGNORECASE)[1]
-            line=''
-            line=' .. literalinclude:: %s%s\n'%(p.sub('',sc)[1:-1],p.sub('',str))
-         if ':tag:' in line:
-            flag = 1
-            str = re.split(':tag:',line, re.IGNORECASE)[1]      
-            line=''
-            line='\t:start-after: /* *** ODSATag: %s *** */\n\t:end-before: /* *** ODSAendTag: %s *** */\n'%(p.sub('',str),p.sub('',str))
-         ofile.writelines(line)
-      ofile.close  
       self.prereqNum = len(self.prereq)
 
-      try:
-         if (flag==0):
-            os.remove(filename+'1')           
-      except IOError:
-         print 'ERROR: When deleting temporary file'
 
    def verifPreref(self, modRoster):
       modRosterl = [x.lower() for x in modRoster]
@@ -253,18 +236,6 @@ def enumFile(folder):
    return filelist
 
 
-def getConf(folder):
-
-   cFile = open(folder+'conf.py','r')   
-   cLine = cFile.readlines()
-   cFile.close()
-   t=''
-   for c in cLine:
-      if 'sourcecode_path' in c:
-         t=c.partition('=')[2][1:-1]
-         #return c.partition('=')[1][1:-1]    
-   return t 
-
 
 def main(argv):
   control(argv)
@@ -275,14 +246,13 @@ def main(argv):
      modDir=argv[1]
      modDest=argv[2]
 
-  sc = getConf(modDir)
   fileLst =  enumFile(modDir)
   modList =[]
   modRost=[]
   for fl in fileLst:
      if os.path.splitext(fl)[1][1:] == 'rst': 
         modRost.append(os.path.splitext(os.path.basename(fl))[0])
-        x = modPreReq(fl,sc)
+        x = modPreReq(fl)
         modList.append(x)
 
   modList1 = sorted(modList,key = attrgetter('prereqNum'))

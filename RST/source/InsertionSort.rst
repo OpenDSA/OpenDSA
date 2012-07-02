@@ -30,7 +30,7 @@ The input is an array of :math:`n` records stored in array
     }
 
 .. codeinclude:: Sorting/Insertionsort/Insertionsort.pde 
-   :tag: Insertionsort  
+   :tag: Insertionsort        
 
 Consider the case where ``inssort`` is processing the
 :math:`i`'th
