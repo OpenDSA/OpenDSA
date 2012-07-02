@@ -23,9 +23,8 @@ already processed.
 Here is an implementation.
 The input is an array of :math:`n` records stored in array ``A``.
 
-.. literalinclude:: ../../SourceCode/Processing/Sorting/Insertionsort/Insertionsort.pde
-   :start-after: /* *** ODSATag: Insertionsort *** */
-   :end-before: /* *** ODSAendTag: Insertionsort *** */
+.. codeinclude:: Sorting/Insertionsort/Insertionsort.pde 
+   :tag: Insertionsort  
 
 Consider the case where ``inssort`` is processing the
 :math:`i`'th
