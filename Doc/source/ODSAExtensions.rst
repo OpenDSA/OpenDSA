@@ -23,7 +23,8 @@ DESCRIPTION
 	``[:title: ]``
 	     Specify the text that will appear in the *show|hide* button. Alphanumeric characters plus space and special characters are allowed.  
                
-
+NOTES
+	``.. avembed::`` directive fetches AVs information (width and height, etc.) from the AV/Exercise descriptive (XML) file located in the AV/Exercise directory (inside the xml subdirectory).
  
 avmetadata
 ----------
