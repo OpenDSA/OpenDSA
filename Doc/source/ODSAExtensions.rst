@@ -51,4 +51,32 @@ DESCRIPTION
 	``:short_name:``
 	     The name that will be displayed to the user (in the knowledge map). Space and special characters are allowed here.  	
 
-	
+codeinclude
+-----------
+NAME
+	codeinclude - displays code snippets within the eTextbook.
+
+SYNOPSIS::
+
+	.. codeinclude:: <relative path>
+	   [:tag: <my tag>]    
+
+DESCRIPTION
+	``codeinclude:: <relative path>``
+	    Include the code present inside the file located at the <relative path>.
+	``:tag: <my tag>``
+	    A tag inside the source code file that delimits the block of code that will be include in the module.
+
+NOTES
+	The ``codeinclude`` directive simply match to ReST directive ``literalinclude``.::
+
+		.. codeinclude:: <relative path>
+		   [:tag: <my tag>]  
+
+	Will map to: ::
+
+		.. literalinclude:: <relative path>
+		   :start-after: /* *** ODSATag: <my tag> *** */
+		   :end-before: /* *** ODSAendTag: <my tag> *** */   
+
+ 
