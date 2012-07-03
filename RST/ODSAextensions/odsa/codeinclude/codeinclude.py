@@ -46,9 +46,7 @@ def getConf():
 
 class codeinclude(Directive):
     """
-    Like ``.. include:: :literal:``, but only warns if the include file is
-    not found, and does not raise errors.  Also has several options for
-    selecting what to include.
+    The codeinclude directive simply match to ReST directive ``.. literalinclude``.
     """
 
     has_content = False
@@ -57,17 +55,6 @@ class codeinclude(Directive):
     final_argument_whitespace = False
     option_spec = {
         'tag': directives.unchanged_required,
-        'linenos': directives.flag,
-        'tab-width': int,
-        'language': directives.unchanged_required,
-        'encoding': directives.encoding,
-        'pyobject': directives.unchanged_required,
-        'lines': directives.unchanged_required,
-        'start-after': directives.unchanged_required,
-        'end-before': directives.unchanged_required,
-        'prepend': directives.unchanged_required,
-        'append': directives.unchanged_required,
-        'emphasize-lines': directives.unchanged_required,
     }
 
     def run(self):
