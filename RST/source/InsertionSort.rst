@@ -37,7 +37,7 @@ records above it in the array must have smaller keys.
 Figure <ODSAref "Insertion" \> illustrates how Insertion Sort
 works.
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/InsSort.png
+.. figure:: Images/InsSort.png
    :width: 400
    :alt: Illustration of Insertion Sort
 
