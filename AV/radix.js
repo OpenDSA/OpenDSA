@@ -122,6 +122,10 @@ function about() {
   av.umsg("Now we will do a rolling summation of the count array, to be used next as positions");
   av.step();
 setBlue(0);
+av.umsg("But first we subtract 1 from the 0 position so that the resulting sums are correct as positions in the output array.");
+countArray[0] = countArray[0] - 1;
+arrC.value(0, countArray[0]);
+av.step();
   for (k=1; k<10; k++) {
     av.umsg(countArray[k-1] + " + " + countArray[k] + " is " + (countArray[k-1]+countArray[k]) + ". Put that in position " + (k));
     setBlue(k);
@@ -137,18 +141,18 @@ setBlue(0);
   av.step();
   for (j=theArray.length-1; j>=0; j--) {
 	var answer = Math.floor((theArray[j]/count)%10);	
-        av.umsg(theArray[j] + " has digit " + answer + ". So we look in position " + answer + " of the Count array, to see that we put it in position " + (countArray[answer]-1) + " of the output array.");
-        setGreen2(countArray[answer]-1);
+        av.umsg(theArray[j] + " has digit " + answer + ". So we look in position " + answer + " of the Count array, to see that we put it in position " + countArray[answer] + " of the output array.");
+        setGreen2(countArray[answer]);
 	setGreen(answer);
 	setGreen3(j);
-	outArray[countArray[answer]-1]=theArray[j];
-	arrO.value(countArray[answer]-1,theArray[j]);
+	outArray[countArray[answer]]=theArray[j];
+	arrO.value(countArray[answer],theArray[j]);
 	countArray[answer]= countArray[answer]-1;
 	av.step();
 	arrC.value(answer,countArray[answer]);
         av.umsg("And we decrement the value of Count array position " + answer);
         av.step();
-	arrO.unhighlight([countArray[answer]]);
+	arrO.unhighlight([countArray[answer]+1]);
 	arrC.unhighlight([answer]);
 	arr.unhighlight([j]);
 	}
@@ -158,13 +162,15 @@ setBlue(0);
 		countArray[p] = 0; // need to change in order to represent count array
 		arrC.value(p,0);
 		}
-    av.umsg("Set Original Array equal to Output Array and start process over on next digit"); 
+	av.umsg("Done with this pass.");
     av.step();
     for (y=0; y<theArray.length; y++) {
 	arr.value(y,outArray[y]);
 	theArray[y] = outArray[y];
 	}
 	 size = size -1;
+    av.umsg("Now we set the Original Array equal to Output Array"); 
+    av.step();
   counter = counter +1;
   count= Math.pow(10,counter);
 }
