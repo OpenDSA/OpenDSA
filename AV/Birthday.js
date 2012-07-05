@@ -1,6 +1,6 @@
+"use strict";
 /*global alert*/
 (function ($) {
-  "use strict";
   // Declare and initialize state variables
   var
     TSize = Number($('input[name="tablesize"]').val()), // Table size

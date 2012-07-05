@@ -1,6 +1,6 @@
+"use strict";
 /*global alert*/
 (function ($) {
-  "use strict";
   // Number of values in the array
   var ASize = $('#arraysize').val();
   // The array of numbers.

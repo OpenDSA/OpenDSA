@@ -22,14 +22,14 @@ div h1 {
 .jsavarray {
   padding-left:0;
 }
-p.jsavoutput.jsavline {
+.jsavline {
   height: 30px;
   margin: 0;
 }
 #about {
   float: right;
 }
-a.jsavsettings {
+.jsavsettings {
   display: block;
   margin-top: -1px;
   margin-left: 10px;
