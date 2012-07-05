@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
+<head>
+  <title>OpenDSA Insertion Sort: Multiple Choice Summary</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+</script>
+  <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+  <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+</head>
+<body>
+
+<div class="exercise">
+  <div class="vars"></div>
+  <div class="problems">
+     
+    <!-- Question MCQ -->
+    <div id="problem-type-or-description">
+      <p class="question"> When is insertion sort a good choice for sorting an array?</p>
+      <div class="solution"><var>"The array has only a few items out of place."</var></div>
+      <ul class="choices" data-show="4">
+	<li><var>"Each component of the array requires a large amount of memory."</var></li>
+	<li><var>"Each component of the array requires a small amount of memory."</var></li>
+	<li><var>"The array has only a few items out of place."</var></li>
+	<li><var>"The processor speed is fast."</var></li>	  	 
+      </ul>
+    </div>
+
+    <div id="problem-type-or-description">
+      <p class="question"> What is the worst-case time for Insertionsort to sort an array of n elements? </p>
+      <div class="solution"><var><code>O(n^2)</code></var></div>
+      <ul class="choices" data-show="4">
+	<li><var><code>O(n^2)</code></var></li>
+	<li><var><code>O(n)</code></var></li>
+	<li><var><code>O(\log n)</code></var></li>
+	<li><var><code>O(n \log n)</code></var></li>	  	 
+      </ul>
+    </div> 
+
+    <div id="problem-type-or-description">
+      <p class="question"> What is the best-case time for Insertionsort to sort an array of n elements?</p>
+      <div class="solution"><var><code>O(n)</code></var></div>
+      <ul class="choices" data-show="4">
+	<li><var><code>O(n^2)</code></var></li>
+	<li><var><code>O(n)</code></var></li>
+	<li><var><code>O(\log n)</code></var></li>
+	<li><var><code>O(n \log n)</code></var></li>	  	 
+      </ul>
+    </div> 
+
+    <div id="problem-type-or-description">
+      <p class="question"> When implementing Insertion Sort, a binary
+	search could be used to locate the position within the first i-1
+	elements of the array into which element i should be inserted.
+	Using binary search will:</p>
+      <div class="solution"><var>"Not speed up the asymptotic running
+	  time for Insertion Sort becasue shifting the elements to make
+	  room for the insert will require O(i)."</var></div>
+      <ul class="choices" data-show="4">
+	<li><var> "Speed up the asymptotic running time for Insertion
+	    Sort because the position to insert could be found in O(log
+	    i)."</var></li> 
+	<li><var> "Speed up the asymptotic running time for Insertion
+	    Sort becasue shifting the elements to make room for the insert
+	    will require O(i)." </var></li> 
+	<li><var> "Not speed up the asymptotic running time for
+	    Insertion Sort becasue shifting the elements to make room for
+	    the insert will require O(i)." </var></li> 
+	<li><var> "None of the above."</var></li>	  	 
+      </ul>
+    </div>
+	  
+    <div id="problem-type-or-description">
+      <p class="question"> When implementing Insertion Sort, a binary
+	search could be used to locate the position within the first i-1
+	elements of the array into which element i should be
+	inserted. In this case, the worst case time will be: </p> 
+      <div class="solution"><var><code>O(n^2)</code></var></div>
+      <ul class="choices" data-show="4">
+	<li><var><code>O(n \log n)</code></var></li>
+	<li><var><code>O(n)</code></var></li>
+	<li><var><code>O(\log n)</code></var></li>
+	<li><var><code>O(n \log n)</code></var></li>	 	 
+      </ul>
+    </div> 
+	  
+    <div id="problem-type-or-description">
+      <p class="question"> If I is the number of inversions in the
+	array A and n is the number of elemets in the array then
+	Insertion Sort on A will run in what time in the worst
+	case? </p>
+      <div class="solution"><var><code>O(n+I)</code></var></div>
+      <ul class="choices" data-show="4">
+	<li><var><code>O(n+I)</code></var></li>
+	<li><var><code>O(n-I)</code></var></li>
+	<li><var><code>O(n)</code></var></li>
+	<li><var><code>O(n^2)</code></var></li>	 	 
+      </ul>
+    </div>
+	  
+    <div id="problem-type-or-description">
+      <p class="question"> What is the running time of Insertion Sort
+	for the input where all keys are equal? </p> 
+      <div class="solution"><var><code>O(n)</code></var></div>
+      <ul class="choices" data-show="4">
+	<li><var><code>O(n^2)</code></var></li>
+	<li><var><code>O(n)</code></var></li>
+	<li><var><code>O(\log n)</code></var></li>
+	<li><var><code>O(n \log n)</code></var></li>	 	 
+      </ul>
+    </div> 	  
+	  
+    <div id="problem-type-or-description">
+      <p class="question"> What is the running time of Insertion Sort
+	for the input where input has been sorted? </p>
+      <div class="solution"><var><code>O(n)</code></var></div>
+      <ul class="choices" data-show="4">
+	<li><var><code>O(n^2)</code></var></li>
+	<li><var><code>O(n)</code></var></li>
+	<li><var><code>O(\log n)</code></var></li>
+	<li><var><code>O(n \log n)</code></var></li>	 	 
+      </ul>
+    </div> 
+	
+    <div id="problem-type-or-description">
+      <p class="question"> What is the running time of Insertion Sort
+	for the input where input has been sorted in reverse order? </p>
+      <div class="solution"><var><code>O(n^2)</code></var></div>
+      <ul class="choices" data-show="4">
+	<li><var><code>O(n^2)</code></var></li>
+	<li><var><code>O(n)</code></var></li>
+	<li><var><code>O(\log n)</code></var></li>
+	<li><var><code>O(n \log n)</code></var></li>	 	 
+      </ul>
+    </div> 
+		
+    <div id="problem-type-or-description">
+      <p class="question">  Insertion Sort is a bad choice when sorting input that is "almost sorted".</p>
+      <div class="solution"><var>"False"</var></div>
+      <ul class="choices" data-show="2">
+	<li><var>"True"</var></li>
+	<li><var>"False"</var></li>			  	  	 
+      </ul>
+    </div> 
+
+    <!-- Reverse the previous question - might be a better way to do this.-->
+    <div id="problem-type-or-description">
+      <p class="question">  Insertion Sort is a good choice when sorting input that is "almost sorted".</p>
+      <div class="solution"><var>"True"</var></div>
+      <ul class="choices" data-show="2">
+	<li><var>"True"</var></li>
+	<li><var>"False"</var></li>			  	  	 
+      </ul>
+    </div> 
+
+    <div id="problem-type-or-description">
+      <p class="question">  Insertion Sort is a stable sorting
+	algorithm. (A stable sorting algorithm maintains the
+	relative order of records with equal keys.)</p>
+      <div class="solution"><var>"True"</var></div>
+      <ul class="choices" data-show="2">
+	<li><var>"True"</var></li>
+	<li><var>"False"</var></li>			  	  	 
+      </ul>
+    </div> 
+
+  </div>
+</div>
+</body>
+</html>
