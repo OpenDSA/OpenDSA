@@ -2,6 +2,8 @@
 
 .. index:: ! Exchange Sorting
 
+.. include:: JSAVheader.rinc
+
 The Cost of Exchange Sorting
 ============================
 
@@ -77,3 +79,7 @@ But it usually takes more time to do the tests
 than would be saved by avoiding such swaps.
 This would be an example of an "optimization" that does not improve
 performance. <ODSAref "CodeTuning" \>
+
+.. avembed:: Exercises/ExchangeMC.html
+   :showbutton: hide
+   :title: Question 1

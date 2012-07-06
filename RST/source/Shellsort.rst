@@ -10,10 +10,7 @@
 
 .. raw:: html
    
-   <script type="text/javascript" src="_static/ODSA.js"></script>
-
    <link href="_static/Shellsort.css" rel="stylesheet" type="text/css" />
-
    <input type="button" float="right" name="about" value="About"/>
 
 .. index:: ! Shellsort
@@ -259,8 +256,8 @@ Shellsort illustrates how we can sometimes exploit the special properties
 of an algorithm (in this case Insertion Sort) even if in general that
 algorithm is unacceptably slow.
 
-Here are some questions to check whether you understand the basics of
-Shellsort's runtime cost.
+Here are some questions review questions to check that you understand
+Shellsort.
 
 .. avembed:: Exercises/ShellsortMC.html
    :showbutton: hide

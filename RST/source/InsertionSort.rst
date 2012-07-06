@@ -2,6 +2,8 @@
 
 .. index:: ! Insertion Sort
 
+.. include:: JSAVheader.rinc
+
 Insertion Sort
 ==============
 
@@ -123,3 +125,10 @@ Thus, the number of swaps for the entire sort operation is
 :math:`n-1` less than the number of comparisons.
 This is 0 in the best case, and :math:`\Theta(n^2)` in the
 average and worst cases.
+
+Here are some questions review questions to check that you understand
+Insertion Sort.
+
+.. avembed:: Exercises/InsertionSortMC.html
+   :showbutton: hide
+   :title: Question 1
