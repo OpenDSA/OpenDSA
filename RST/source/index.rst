@@ -55,6 +55,7 @@ Graphs
    :maxdepth: 3
 
    MCST
+   Huffman
 
 Appendix
 ========
