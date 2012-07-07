@@ -31,6 +31,10 @@
 	<li><var>"Each component of the array requires a small amount of memory."</var></li>
 	<li><var>"The processor speed is fast."</var></li>	  	 
       </ul>
+	  <div class="hints">
+	   <p>Remember that insertion sort implementation is made up of two nested for loops.</p>
+	   <p>The outer for loop is executed n-1 times. While the number of times the inner for loop executes depends on how many keys in positions 1 to i-1 have a value less than that of the key in position i.</p>
+	  </div>
     </div>
 
     <div id="problem-type-or-description">
@@ -42,6 +46,10 @@
 	<li><var><code>O(\log n)</code></var></li>
 	<li><var><code>O(n \log n)</code></var></li>	  	 
       </ul>
+	  <div class="hints">
+	   <p>In the worst case, each record must make its way to the top of the array. This would occur if the keys are initially arranged from highest to lowest, in the reverse of sorted order.</p>
+	   <p>In this case, the number of comparisons will be one the first time through the for loop, two the second time, and so on.</p>
+	  </div>
     </div> 
 
     <div id="problem-type-or-description">
@@ -53,6 +61,10 @@
 	<li><var><code>O(\log n)</code></var></li>
 	<li><var><code>O(n \log n)</code></var></li>	  	 
       </ul>
+	  <div class="hints">
+	   <p>The best-case cost occurs when the keys begin in sorted order from lowest to highest.</p>
+	   <p>In this case, every pass through the inner for loop will fail immediately, and no values will be moved.</p>
+	  </div>
     </div> 
 
     <div id="problem-type-or-description">
@@ -62,18 +74,22 @@
 	Using binary search will:</p>
       <div class="solution"><var>"Not speed up the asymptotic running
 	  time for Insertion Sort becasue shifting the elements to make
-	  room for the insert will require O(i)."</var></div>
+	  room for the insert will require <code>O(i)</code>."</var></div>
       <ul class="choices">
 	<li><var> "Speed up the asymptotic running time for Insertion
 	    Sort because the position to insert could be found in O(log
 	    i)."</var></li> 
 	<li><var> "Speed up the asymptotic running time for Insertion
 	    Sort becasue shifting the elements to make room for the insert
-	    will require O(i)." </var></li> 
+	    will require <code>O(i)</code>." </var></li> 
 	<li><var> "None of the above."</var></li>	  	 
       </ul>
+	  <div class="hints">
+	   <p>The position to insert could be found in <code>O(\log(i))</code> and shifting the elements to make room for the insert will require <code>O(i)</code>.</p>
+	   <p>In this case, every pass through the inner for loop will fail immediately, and no values will be moved.</p>
+	  </div>
     </div>
-	  
+
     <div id="problem-type-or-description">
       <p class="question"> When implementing Insertion Sort, a binary
 	search could be used to locate the position within the first i-1
@@ -85,8 +101,11 @@
 	<li><var><code>O(n)</code></var></li>
 	<li><var><code>O(\log n)</code></var></li>
       </ul>
+	   <div class="hints">
+	   <p>The position to insert could be found in <code>O(\log i)</code>and shifting the elements to makeroom for the insert will require code>O(i)</code>.</p>
+	   </div>
     </div> 
-	  
+
     <div id="problem-type-or-description">
       <p class="question"> What is the running time of Insertion Sort
 	for the input where all keys are equal? </p> 
@@ -96,8 +115,11 @@
 	<li><var><code>O(\log n)</code></var></li>
 	<li><var><code>O(n \log n)</code></var></li>	 	 
       </ul>
+	  <div class="hints">
+	   <p> Note that each insertion will be looking at the last element of the sorted portion, noticing it's the same as the key to be inserted so it will be moving on.</p>
+	   </div>
     </div> 	  
-	  
+
     <div id="problem-type-or-description">
       <p class="question"> What is the running time of Insertion Sort
 	for the input where input has been sorted? </p>
@@ -107,8 +129,11 @@
 	<li><var><code>O(\log n)</code></var></li>
 	<li><var><code>O(n \log n)</code></var></li>	 	 
       </ul>
+	   <div class="hints">
+	   <p>Remember that during each iteration, the first remaining element of the input is only compared with the right-most element of the sorted portion of the array.</p>
+	   </div>
     </div> 
-	
+
     <div id="problem-type-or-description">
       <p class="question"> What is the running time of Insertion Sort
 	for the input where input has been sorted in reverse order? </p>
@@ -118,8 +143,35 @@
 	<li><var><code>O(\log n)</code></var></li>
 	<li><var><code>O(n \log n)</code></var></li>	 	 
       </ul>
+	  <div class="hints">
+	   <p>Note that every iteration of the insertion's sort inner loop will scan and shift the entire sorted portion of the array before inserting the next element.</p>
+	   </div>
     </div> 
-		
+    
+	<div id="problem-type-or-description">
+      <p class="question"> In the worst case, the total number of comparisons for insertion sort is: </p>
+      <div class="solution"><var><code>n(n-1)/2</code></var></div>
+      <ul class="choices">
+	<li><var><code>n(n+1)/2</code></var></li>
+	<li><var><code>n</code></var></li>	 	 
+	<li><var><code>n*n</code></var></li>	 	 
+      </ul>
+	    <div class="hints">
+	    <p>Remember that insertion sort implementation is made up of two nested for loops.</p>
+	    <p>The outer for loop is executed n-1 times. While the number of times the inner for loop executes depends on how many keys in positions 1 to i-1 have a value less than that of the key in position i.</p>
+	   </div>
+    </div> 
+	
+	 <div id="problem-type-or-description">
+      <p class="question"> In which cases are the time complexities same in insertion sort?</p>
+      <div class="solution"><var>"Worst and Average."</var></div>
+      <ul class="choices">
+	<li><var>"Worst and Best."</var></li>
+	<li><var>"Best and Average."</var></li>
+	<li><var>"Worst, average and Best."</var></li>	  	 
+      </ul>
+	  
+    </div>
     <div id="problem-type-or-description">
       <p class="question">  Insertion Sort is a <var>GB</var> choice when
 	sorting input that is "almost sorted".</p> 
@@ -127,6 +179,9 @@
       <ul class="choices" data-category="true">
         <li data-each="TYPES as t"><var>t</var></li>
       </ul>
+	  <div class="hints">
+	   <p>Remember that during each iteration, the first remaining element of the input is only compared with the right-most element of the sorted portion of the array.</p>
+	   </div>
     </div> 
 
     <div id="problem-type-or-description">
@@ -138,6 +193,9 @@
 	<li><var>"True"</var></li>
 	<li><var>"False"</var></li>			  	  	 
       </ul>
+	  <div class="hints">
+	   <p>Think of the behaviour of every pass through the inner for loop of the insertion sort if keys are equal.</p>
+	   </div>
     </div> 
 
   </div>

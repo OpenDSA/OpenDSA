@@ -64,6 +64,14 @@ We therefore know with certainty that any sorting algorithm which
 limits comparisons to adjacent items will cost at least
 :math:`n(n-1)/4 = \Omega(n^2)` in the average case.
 
+.. todo::
+
+   KA Exercise to implement:
+
+   Generate and show an array with 4-6 random elements.
+
+   Question: How many inversions does it have?
+
 Notes
 -----
 
