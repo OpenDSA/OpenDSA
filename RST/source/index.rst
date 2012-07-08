@@ -6,13 +6,21 @@
 Modules
 =======
 
+Background
+----------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   SetDef
+
 Sorting
 -------
 
 .. toctree::
    :numbered:
    :maxdepth: 3
-
 
    Sorting
    SortCompare

@@ -1,3 +1,9 @@
+.. avmetadata:: Insertion Sort
+   :author: Cliff Shaffer
+   :prerequisites: Sorting
+   :topic: Sorting
+   :short_name: InsertionSort
+
 .. _InsertionSort:
 
 .. index:: ! Insertion Sort
@@ -90,8 +96,8 @@ restoring sorted order using Insertion Sort might be a good idea if we
 know that the disordering is slight.
 Examples of algorithms that take advantage of Insertion Sort's
 near-best-case running time are Shellsort
-(Module <ODSAref "ShellSort" \>)
-and Quicksort (Module <ODSAref "QuickSort" \>).
+(Module :ref:`ShellSort <Shellsort>`)
+and Quicksort (Module :ref:`Quicksort <Quicksort>`).
 
 What is the average-case cost of Insertion Sort?
 When record :math:`i` is processed, the number
