@@ -44,7 +44,7 @@ function inssort(av, arr, start, incr) {
 // Partial Shellsort. Sweep with the given increment
 function sweep(av, myarr, incr) {
   var j = 0;
-  highlightFunction = function (index) { return index % incr === j; };
+  var highlightFunction = function (index) { return index % incr === j; };
   for (j = 0; j < incr; j++) {         // Sort each sublist
     // Highlight the sublist
     myarr.highlight(highlightFunction);
