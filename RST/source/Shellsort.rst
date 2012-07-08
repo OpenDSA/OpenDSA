@@ -1,4 +1,4 @@
-.. avmetadata:: Shell Sort Tutorial 
+.. avmetadata:: Shellsort
    :author: Cliff Shaffer
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
