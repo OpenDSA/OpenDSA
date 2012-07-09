@@ -52,7 +52,7 @@ form {
   <input type="button" id="about" name="about" value="About" />
   <a class="jsavsettings" href="#">Settings</a>
   <input type="button" id="help" name="help" value="Help" />
-  <h1 style="margin-top:-25px;">Radix Sort Linked Lists Visualization</h1>
+  <h1 style="margin-top:-25px;">Radix Sort Linked List Visualization</h1>
 
   <form id="ssperform">
    
@@ -147,7 +147,10 @@ form {
   $('input[name="run"]', context).click(runIt);
   $('input[name="reset"]', context).click(reset);
   
-
+  function about() {
+    var mystring = "Radix Sort Linked List Algorithm Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Summer, 2012\nLast update: July, 2012\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
 
 
   // Process Reset button: Reinitialize the output textbox and the AV
@@ -164,7 +167,7 @@ form {
     }
   }
 
-
+  
 
   // Validate the user-defined array values
   function processArrayValues() {
@@ -213,7 +216,7 @@ form {
   
   //Radix linked list sort
   function radsort(){
-	var i,k,j,p,y;
+    var i,k,j,p,y;
 	var DSize = $('#digitsize').val();
 	var size = DSize;
 	var count = 1;
@@ -222,7 +225,15 @@ form {
 	for (i=0; i<countArray.length; i++) {
 		//arrC.value(i,link));
 		
+    var l = av.ds.list();
+    av.umsg("We start by creating a list and adding some elements..");
+    l.addFirst(i)
+      .addLast(2)
+      .addLast(4);
+    l.layout();
+    av.displayInit();
 	}
+	
   
   
   
@@ -265,9 +276,9 @@ form {
 	  arrC = av.ds.array(countArray, {indexed: true, layout:"vertical"});
 	  av.label("Count Array");
 	 var LL = av.ds.list([2, 3, 5], {visible: true, center: true});
-	 
 	 // arrO = av.ds.array(outArray, {indexed: true, layout: arrayLayout.val()});
 	 // av.label("Output Array");
+	
 	  radsort(j);
 		
       
