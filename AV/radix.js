@@ -102,36 +102,33 @@ function about() {
 	var counter =0;
 	while (size > 0){
         for (i=0; i<theArray.length; i++) {
-		var answer = Math.floor((theArray[i]/count)%10);
-	        av.umsg(theArray[i] + " has current digit " + answer + ". Add one to the " + answer + " bin");
+		var answer = Math.floor((arr.value(i)/count)%10);
+	        av.umsg(arr.value(i) + " has current digit " + answer + ". Add one to the " + answer + " bin");
 		arr.highlight([i]);
 		arrC.highlight([answer])
 		av.step();
 		arr.unhighlight([i]);
 		arrC.unhighlight([answer])
-		if(countArray[answer]=== 0){
-			countArray[answer]= 1;
+		if(arrC.value(answer)=== 0){
 			arrC.value(answer,1);
 			}
 		else{
-			countArray[answer]= countArray[answer]+1;
-			arrC.value(answer,countArray[answer]);
+			arrC.value(answer,arrC.value(answer)+1);
 		}
+		console.log("log"+ (arrC.value(answer)+1));
   }
 
   av.umsg("Now we will do a rolling summation of the count array, to be used next as positions");
   av.step();
 setBlue(0);
 av.umsg("But first we subtract 1 from the 0 position so that the resulting sums are correct as positions in the output array.");
-countArray[0] = countArray[0] - 1;
-arrC.value(0, countArray[0]);
+arrC.value(0, arrC.value(0) - 1);
 av.step();
   for (k=1; k<10; k++) {
-    av.umsg(countArray[k-1] + " + " + countArray[k] + " is " + (countArray[k-1]+countArray[k]) + ". Put that in position " + (k));
+    av.umsg(arrC.value(k-1) + " + " + arrC.value(k) + " is " + (arrC.value(k-1)+arrC.value(k)) + ". Put that in position " + (k));
     setBlue(k);
     av.step();
-    countArray[k]= countArray[k]+countArray[k-1];
-    arrC.value(k,countArray[k]);
+    arrC.value(k,arrC.value(k)+arrC.value(k-1));
     av.step();
     arrC.unhighlight(k-1);
   }
@@ -140,33 +137,29 @@ av.step();
   av.umsg("Now use the Count array to create the Output array");
   av.step();
   for (j=theArray.length-1; j>=0; j--) {
-	var answer = Math.floor((theArray[j]/count)%10);	
-        av.umsg(theArray[j] + " has digit " + answer + ". So we look in position " + answer + " of the Count array, to see that we put it in position " + countArray[answer] + " of the output array.");
-        setGreen2(countArray[answer]);
+	var answer = Math.floor((arr.value(j)/count)%10);	
+        av.umsg(arr.value(j) + " has digit " + answer + ". So we look in position " + answer + " of the Count array, to see that we put it in position " + arrC.value(answer) + " of the output array.");
+    setGreen2(arrC.value(answer));
 	setGreen(answer);
 	setGreen3(j);
-	outArray[countArray[answer]]=theArray[j];
-	arrO.value(countArray[answer],theArray[j]);
-	countArray[answer]= countArray[answer]-1;
+	arrO.value(arrC.value(answer),arr.value(j));
 	av.step();
-	arrC.value(answer,countArray[answer]);
+	arrC.value(answer,arrC.value(answer)-1);
         av.umsg("And we decrement the value of Count array position " + answer);
         av.step();
-	arrO.unhighlight([countArray[answer]+1]);
+	arrO.unhighlight([arrC.value(answer)+1]);
 	arrC.unhighlight([answer]);
 	arr.unhighlight([j]);
 	}
 	
 	av.umsg("Clear Count Array");
 	for (p=0; p < 10; p++) {
-		countArray[p] = 0; // need to change in order to represent count array
 		arrC.value(p,0);
 		}
 	av.umsg("Done with this pass.");
     av.step();
     for (y=0; y<theArray.length; y++) {
-	arr.value(y,outArray[y]);
-	theArray[y] = outArray[y];
+	arr.value(y,arrO.value(y));
 	}
 	 size = size -1;
     av.umsg("Now we set the Original Array equal to Output Array"); 
