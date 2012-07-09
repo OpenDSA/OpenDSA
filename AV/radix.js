@@ -30,7 +30,7 @@
   $('input[name="run"]', context).click(runIt);
   $('input[name="reset"]', context).click(reset);
   
-function about() {
+  function about() {
     var mystring = "Radix Sort Algorithm Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Summer, 2012\nLast update: June, 2012\nJSAV library version " + JSAV.version();
     alert(mystring);
   }
@@ -78,12 +78,12 @@ function about() {
     return true;
   }
   
-    var setBlue = function(index) {
+  var setBlue = function(index) {
     //arr.css(index, {"background-color": "#bbf" });
 	arrC.css(index, {"background-color": "#bbf" });
   };
   
-   var setGreen = function(index) {
+  var setGreen = function(index) {
 	arrC.css(index, {"background-color": "#00FF00" });
   };
   var setGreen2 = function(index) {
@@ -95,80 +95,80 @@ function about() {
 
   // Radixsort
   function radsort() {
-	var i,k,j,p,y;
-	var DSize = $('#digitsize').val();
-	var size = DSize;
-	var count = 1;
-	var counter =0;
-	while (size > 0){
-        for (i=0; i<theArray.length; i++) {
-		var answer = Math.floor((arr.value(i)/count)%10);
-	        av.umsg(arr.value(i) + " has current digit " + answer + ". Add one to the " + answer + " bin");
+    var i,k,j,p,y;
+    var DSize = $('#digitsize').val();
+    var size = DSize;
+    var count = 1;
+    var counter =0;
+    while (size > 0){
+      for (i=0; i<theArray.length; i++) {
+        var answer = Math.floor((arr.value(i)/count)%10);
+	    av.umsg(arr.value(i) + " has current digit " + answer + ". Add one to the " + answer + " bin");
 		arr.highlight([i]);
 		arrC.highlight([answer])
 		av.step();
 		arr.unhighlight([i]);
 		arrC.unhighlight([answer])
 		if(arrC.value(answer)=== 0){
-			arrC.value(answer,1);
-			}
+		  arrC.value(answer,1);
+		}
 		else{
-			arrC.value(answer,arrC.value(answer)+1);
+		  arrC.value(answer,arrC.value(answer)+1);
 		}
 		console.log("log"+ (arrC.value(answer)+1));
-  }
+      }
 
-  av.umsg("Now we will do a rolling summation of the count array, to be used next as positions");
-  av.step();
-setBlue(0);
-av.umsg("But first we subtract 1 from the 0 position so that the resulting sums are correct as positions in the output array.");
-arrC.value(0, arrC.value(0) - 1);
-av.step();
-  for (k=1; k<10; k++) {
-    av.umsg(arrC.value(k-1) + " + " + arrC.value(k) + " is " + (arrC.value(k-1)+arrC.value(k)) + ". Put that in position " + (k));
-    setBlue(k);
-    av.step();
-    arrC.value(k,arrC.value(k)+arrC.value(k-1));
-    av.step();
-    arrC.unhighlight(k-1);
-  }
-  arrC.unhighlight(9);
+      av.umsg("Now we will do a rolling summation of the count array, to be used next as positions");
+      av.step();
+      setBlue(0);
+      av.umsg("But first we subtract 1 from the 0 position so that the resulting sums are correct as positions in the output array.");
+      arrC.value(0, arrC.value(0) - 1);
+      av.step();
+      for (k=1; k<10; k++) {
+        av.umsg(arrC.value(k-1) + " + " + arrC.value(k) + " is " + (arrC.value(k-1)+arrC.value(k)) + ". Put that in position " + (k));
+        setBlue(k);
+        av.step();
+        arrC.value(k,arrC.value(k)+arrC.value(k-1));
+        av.step();
+        arrC.unhighlight(k-1);
+      }
+      arrC.unhighlight(9);
   
-  av.umsg("Now use the Count array to create the Output array");
-  av.step();
-  for (j=theArray.length-1; j>=0; j--) {
-	var answer = Math.floor((arr.value(j)/count)%10);	
+      av.umsg("Now use the Count array to create the Output array");
+      av.step();
+      for (j=theArray.length-1; j>=0; j--) {
+	    var answer = Math.floor((arr.value(j)/count)%10);	
         av.umsg(arr.value(j) + " has digit " + answer + ". So we look in position " + answer + " of the Count array, to see that we put it in position " + arrC.value(answer) + " of the output array.");
-    setGreen2(arrC.value(answer));
-	setGreen(answer);
-	setGreen3(j);
-	arrO.value(arrC.value(answer),arr.value(j));
-	av.step();
-	arrC.value(answer,arrC.value(answer)-1);
+        setGreen2(arrC.value(answer));
+        setGreen(answer);
+        setGreen3(j);
+        arrO.value(arrC.value(answer),arr.value(j));
+        av.step();
+	    arrC.value(answer,arrC.value(answer)-1);
         av.umsg("And we decrement the value of Count array position " + answer);
         av.step();
-	arrO.unhighlight([arrC.value(answer)+1]);
-	arrC.unhighlight([answer]);
-	arr.unhighlight([j]);
-	}
+        arrO.unhighlight([arrC.value(answer)+1]);
+        arrC.unhighlight([answer]);
+        arr.unhighlight([j]);
+      }
 	
-	av.umsg("Clear Count Array");
-	for (p=0; p < 10; p++) {
-		arrC.value(p,0);
-		}
-	av.umsg("Done with this pass.");
-    av.step();
-    for (y=0; y<theArray.length; y++) {
-	arr.value(y,arrO.value(y));
-	}
-	 size = size -1;
-    av.umsg("Now we set the Original Array equal to Output Array"); 
-    av.step();
-  counter = counter +1;
-  count= Math.pow(10,counter);
-}
+      av.umsg("Clear Count Array");
+      for (p=0; p < 10; p++) {
+        arrC.value(p,0);
+      }
+      av.umsg("Done with this pass.");
+      av.step();
+      for (y=0; y<theArray.length; y++) {
+        arr.value(y,arrO.value(y));
+      }
+      size = size -1;
+      av.umsg("Now we set the Original Array equal to Output Array"); 
+      av.step();
+      counter = counter +1;
+      count= Math.pow(10,counter);
+    }
 
-}
+  }
   
   // Execute the "Run" button function
   function runIt() {
