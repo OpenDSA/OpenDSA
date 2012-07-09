@@ -27,7 +27,7 @@ def setup(app):
 
 
 CODE = """\
-<div id="start">
+<div class="start">
 <center> 
 <iframe src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 </iframe>
