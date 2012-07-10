@@ -3,7 +3,9 @@
 // Various functions and variables that will be used by all of the
 // following sections of the tutorial.
 
-var speed = 100; // Animation default speed
+// This sets the default value of the speed setting to "7"
+JSAV.ext.SPEED = 300;
+
 // The various arrays to start sweeps with or display
 var theArray = [20, 30, 12, 54, 55, 11, 78, 14, 13, 79, 44, 98, 76, 45, 32, 11];
 var theArray2 = [13, 30, 12, 54, 55, 11, 32, 11, 20, 79, 44, 98, 76, 45, 78, 14];
@@ -57,7 +59,6 @@ function sweep(av, myarr, incr) {
 // Display a slideshow for a sweep of "increment" steps on array "inArr"
 function doSweep(container, inArr, increment) {
   var av = new JSAV(container);
-  av.SPEED = speed; // Set the animation speed base
   // Create an array object under control of JSAV library
   var arr = av.ds.array(inArr, {indexed: true});
   av.displayInit();
@@ -88,7 +89,6 @@ $('input[name="about"]').click(about); // Set callback action
 
 (function ($) {
   var av = new JSAV("container1");
-  av.SPEED = speed; // Set the animation speed base
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray, {indexed: true});
 
@@ -117,7 +117,6 @@ $('input[name="about"]').click(about); // Set callback action
 
 (function ($) {
   var av = new JSAV("container4");
-  av.SPEED = speed; // Set the animation speed base
   var arr = av.ds.array(theArray2, {indexed: true});
   arr.css(function (index)
           { return index % 4 !== 0; }, {"color": LIGHT}).highlight([0, 4, 8, 12]);
