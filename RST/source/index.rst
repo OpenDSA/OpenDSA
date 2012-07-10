@@ -46,14 +46,15 @@ File Processing
 
    FileProc
 
-Priority Queues
----------------
+Trees
+-----
 
 .. toctree::
    :numbered:
    :maxdepth: 3
 
    BinaryHeap
+   TreeExer
 
 Graphs
 ------

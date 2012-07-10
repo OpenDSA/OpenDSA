@@ -10,6 +10,11 @@
 
 .. include:: JSAVheader.rinc
 
+.. raw:: html
+   
+   <link href="_static/Inssort.css" rel="stylesheet" type="text/css" />
+
+
 Insertion Sort
 ==============
 
@@ -34,27 +39,49 @@ The input is an array of :math:`n` records stored in array ``A``.
 .. codeinclude:: Sorting/Insertionsort/Insertionsort.pde 
    :tag: Insertionsort        
 
-Consider the case where ``inssort`` is processing the
-:math:`i`'th
-record, which has key value :math:`X`.
-The record is moved upward in the array as long as
-:math:`X` is less than the key value immediately above it.
+Consider the example of the following array.
+
+.. raw:: html
+
+   <div id="container1">
+     <span class="jsavcounter"></span>
+     <a class="jsavsettings" href="#">Settings</a>
+     <div class="jsavcontrols"></div>
+     <p class="jsavoutput jsavline" readonly="readonly"></p>
+   </div>
+
+Next, process the element in position 2.
+Swap it to the left until it reaches a value smaller than it is.
+
+.. raw:: html
+
+   <div id="container2">
+     <span class="jsavcounter"></span>
+     <a class="jsavsettings" href="#">Settings</a>
+     <div class="jsavcontrols"></div>
+     <p class="jsavoutput jsavline" readonly="readonly"></p>
+   </div>
+
+And now the record in position 3.
+
+.. raw:: html
+
+   <div id="container3">
+     <span class="jsavcounter"></span>
+     <a class="jsavsettings" href="#">Settings</a>
+     <div class="jsavcontrols"></div>
+     <p class="jsavoutput jsavline" readonly="readonly"></p>
+   </div>
+
+
+This continues on with each record in turn.
+Call the current record :math:`X`.
+Insertion Sort will move it to the left so
+long as it is less than the value immediately preceding it.
 As soon as a key value less than or equal to :math:`X` is
 encountered, ``inssort`` is done with that record because all
-records above it in the array must have smaller keys.
-Figure <ODSAref "Insertion" \> illustrates how Insertion Sort
-works.
-
-.. figure:: Images/InsSort.png
-   :width: 400
-   :alt: Illustration of Insertion Sort
-
-   <ODSAfig "Insertion" \>
-   An illustration of Insertion Sort.
-   Each column shows the array after the iteration with the indicated
-   value of ``i`` in the outer ``for`` loop.
-   Values above the line in each column have been sorted.
-   Arrows indicate the upward motions of records through the array.
+records to its left in the array must have smaller keys.
+The following visualization puts it all together.
 
 .. avembed:: AV/insertionsort-av.html
 
@@ -138,3 +165,7 @@ Insertion Sort.
 .. avembed:: Exercises/InsertionSortMC.html
    :showbutton: hide
    :title: Question 1
+
+.. raw:: html
+
+   <script src="_static/Inssort.js"></script>
