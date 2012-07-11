@@ -1,3 +1,6 @@
+final int numtests = 10;
+final int testsize = 100;
+
 void swap(int[] A, int i, int j) {
   int temp = A[i];
   A[i] = A[j];
@@ -14,11 +17,20 @@ void inssort(int[] A) {
 
 void setup() {
   println("begin");
-  int[] A = {92, 91, 92, 51, 22, 13, 64, 55, 83, 76};
-  inssort(A);
-  println("Done inssort");
-  for (int i=0; i<A.length; i++)
-    print(A[i] + " ");
-  println();
-  println("Done!");
+  int[testsize] A;
+  int i;
+
+  // Perform numtests trials to test this
+  for (int tests=0; tests<numtests; test++) {
+    for (i=0; i<A.length; i++)
+      A[i] = int(random(1000))+1;
+    inssort(A);
+    for (i=1; i<A.length; i++)
+      if (A[i] < A[i-1]) {
+        println("Error! Value " + A[i] + " at position " i +
+                " was less than " + A[i-1] + " at position " + (i-1));
+        exit();
+      }
+  }
+  println("Testing successful!");
 }
