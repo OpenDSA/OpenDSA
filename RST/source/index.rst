@@ -25,6 +25,7 @@ Sorting
    Sorting
    SortCompare
    InsertionSort
+   InsertOpt
    BubbleSort
    SelectionSort
    ExchangeSort

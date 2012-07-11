@@ -55,14 +55,13 @@ class modPreReq:
 
 
    def verifPreref(self, modRoster):
-      modRosterl = [x.lower() for x in modRoster]
       set1 = set(self.prereq)
-      set2 = set(modRosterl)
+      set2 = set(modRoster)
       for i in self.prereq:
-         if i not in modRosterl:
+         if i not in modRoster:
             self.prereq.remove(i)
       if not (set1.issubset(set2)):
-         self.verifPreref(modRosterl)
+         self.verifPreref(modRoster)
       self.prereqNum = len(self.prereq) 
       
 

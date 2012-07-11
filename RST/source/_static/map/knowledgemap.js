@@ -31,7 +31,7 @@ function KnowledgeMapInitGlobals() {
                         // http://gmaps-samples-v3.googlecode.com/svn/trunk/planetary-maptypes/planetary-maptypes.html
                         return KnowledgeMapGlobals.getHorizontallyRepeatingTileUrl(coord, zoom,
                                 function(coord, zoom) {
-                                  return "Images/field_" +
+                                  return "_static/Images/field_" +
                                      Math.floor(Math.random() * 4 + 1) + ".jpg";
                                 });
                     },
