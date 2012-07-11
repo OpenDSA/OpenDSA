@@ -1,3 +1,9 @@
+.. avmetadata:: Bubble Sort
+   :author: Cliff Shaffer
+   :prerequisites: Sorting, InsertionSort
+   :topic: Sorting
+   :short_name: BubbleSort
+
 .. _BubbleSort:
 
 .. index:: ! Bubble Sort
@@ -15,7 +21,7 @@ Insertion Sort, it does not correspond to any intuitive counterpart in
 "everyday" use, and it has a poor best-case running time.
 However, Bubble Sort can serve as the inspiration for a better sorting
 algorithm that will be presented in
-Module <ODSAref "SelectionSort" \>.
+Module :ref:`Selection Sort <SelectionSort>`.
 
 Bubble Sort consists of a simple double ``for`` loop.
 The first iteration of the inner ``for`` loop moves
@@ -30,18 +36,12 @@ of the array on the first pass, there is no need to compare the top
 two elements on the second pass.
 Likewise, each succeeding pass through the array compares adjacent
 elements, looking at one less value than the preceding pass.
-Figure <ODSAref "BubbSort" \> illustrates Bubble Sort.
-A Java implementation is as follows.::
+An implementation is as follows.
 
-   static <E extends Comparable<? super E>>
-   void Sort(E[] A) {
-     for (int i=0; i<A.length-1; i++) // Bubble up i'th record
-       for (int j=A.length-1; j>i; j--)
-         if ((A[j].compareTo(A[j-1]) < 0))
-           DSutil.swap(A, j, j-1);
-   }
+.. codeinclude:: Sorting/Bubblesort/Bubblesort.pde 
+   :tag: Bubblesort        
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/BubSort.png
+.. figure:: Images/BubSort.png
    :width: 400
    :alt: An illustration of Bubble Sort
 
