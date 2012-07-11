@@ -25,7 +25,7 @@ div h1 {
 }
 .jsavcounter {
   position: absolute;
-  width: 100px;
+  width: 300px;
 }
 .jsavarray {
   padding-left:0;
@@ -52,7 +52,7 @@ form {
   <input type="button" id="about" name="about" value="About" />
   <a class="jsavsettings" href="#">Settings</a>
   <input type="button" id="help" name="help" value="Help" />
-  <h1 style="margin-top:-25px;">Radix Sort Linked Lists Visualization</h1>
+  <h1 style="margin-top:-25px;">Radix Sort Linked List Visualization</h1>
 
   <form id="ssperform">
    
@@ -147,7 +147,10 @@ form {
   $('input[name="run"]', context).click(runIt);
   $('input[name="reset"]', context).click(reset);
   
-
+  function about() {
+    var mystring = "Radix Sort Linked List Algorithm Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Summer, 2012\nLast update: July, 2012\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
 
 
   // Process Reset button: Reinitialize the output textbox and the AV
@@ -164,7 +167,7 @@ form {
     }
   }
 
-
+  
 
   // Validate the user-defined array values
   function processArrayValues() {
@@ -212,16 +215,106 @@ form {
   };
   
   //Radix linked list sort
+	
   function radsort(){
-	var i,k,j,p,y;
+    var i,k,j,p,y;
 	var DSize = $('#digitsize').val();
 	var size = DSize;
-	var count = 1;
-	var counter =0;
-	//var Listnode link = new Listnode(5);
-	for (i=0; i<countArray.length; i++) {
-		//arrC.value(i,link));
-		
+    var count = 1;
+    var counter =0;
+    while (size > 0){
+	  var L0 = av.ds.list();
+	  L0.addFirst(0);
+	  L0.layout();
+	  var L1 = av.ds.list();
+	  L1.addFirst(1);
+	  L1.layout();
+	  var L2 = av.ds.list();
+	  L2.addFirst(2);
+	  L2.layout();
+	  var L3 = av.ds.list();
+	  L3.addFirst(3);
+	  L3.layout();
+	  var L4 = av.ds.list();
+	  L4.addFirst(4);
+	  L4.layout();
+	  var L5 = av.ds.list();
+	  L5.addFirst(5);
+	  L5.layout();
+	  var L6 = av.ds.list();
+	  L6.addFirst(6);
+	  L6.layout();
+	  var L7 = av.ds.list();
+	  L7.addFirst(7);
+	  L7.layout();
+	  var L8 = av.ds.list();
+	  L8.addFirst(8);
+	  L8.layout();
+	  var L9 = av.ds.list();
+	  L9.addFirst(9);
+	  L9.layout();
+	  
+	  av.step();
+	  av.displayInit();
+	for (i=0; i<theArray.length; i++) {
+	  var answer = Math.floor(((theArray[i])/count)%10);
+	  var valu = theArray[i];
+	  if(answer=== 0){
+		L0.addLast(theArray[i]);
+		L0.layout();
+		}
+	  if(answer=== 1){
+		L1.addLast(theArray[i]);
+		L1.layout();
+		}
+	   if(answer=== 2){
+		L2.addLast(theArray[i]);
+		L2.layout();
+		}
+	  if(answer=== 3){
+		L3.addLast(theArray[i]);
+		L3.layout();
+		}
+	  if(answer=== 4){
+		L4.addLast(theArray[i]);
+		L4.layout();
+		}
+	  if(answer=== 5){
+		L5.addLast(theArray[i]);
+		L5.layout();
+		}
+	   if(answer=== 6){
+		L6.addLast(theArray[i]);
+		L6.layout();
+		}
+	  if(answer=== 7){
+		L7.addLast(theArray[i]);
+		L7.layout();
+		}
+	  if(answer=== 8){
+		L8.addLast(theArray[i]);
+		L8.layout();
+		}
+	  if(answer=== 9){
+		L9.addLast(theArray[i]);
+		L9.layout();
+		}
+	   
+	  av.step();
+	  av.displayInit();
+	//var ListNode node = new ListNode();
+	//var LL = new ListNode(i,null);
+    av.umsg("We start by creating a list and adding some elements..");
+   console.log("answer = " + answer);
+    
+	
+	}
+	size = size -1;
+      av.umsg("Now we set the Original Array equal to Output Array"); 
+      av.step();
+      counter = counter +1;
+      count= Math.pow(10,counter);
+	  
 	}
   
   
@@ -262,12 +355,12 @@ form {
 	  
 	  arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()}); 
 	  av.label("Original Array");
-	  arrC = av.ds.array(countArray, {indexed: true, layout:"vertical"});
-	  av.label("Count Array");
+	  arrC = av.ds.array(countArray, {indexed: true, layout: arrayLayout.val()});
+	  av.label("Output Array");
 	 var LL = av.ds.list([2, 3, 5], {visible: true, center: true});
-	 
 	 // arrO = av.ds.array(outArray, {indexed: true, layout: arrayLayout.val()});
 	 // av.label("Output Array");
+	
 	  radsort(j);
 		
       
