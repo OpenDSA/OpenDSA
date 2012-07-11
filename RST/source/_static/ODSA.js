@@ -28,16 +28,12 @@ $(document).ready(function()    {
             if (document.getElementById(shID).style.display != 'none' && s[1]=='show'){
               document.getElementById(shID).style.display = 'none';
               document.getElementById(ID).style.display = 'block';
-              if (document.getElementById('start')){ 
-                 document.getElementById('start').style.display = 'none';
-              } 
+              $("div.start").hide();
             }
             else {
              document.getElementById(s[0]+'+show').style.display = 'inline';
              document.getElementById(ID).style.display = 'none';
-             if (document.getElementById('start')){
-                 document.getElementById('start').style.display = 'none';
-              } 
+             $("div.start").hide();
             }
            }
   }
