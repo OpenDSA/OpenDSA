@@ -13,6 +13,12 @@ $(document).ready(function()    {
             var shID = event.target.id;
             showHide(shID);
         });
+
+  $("a.abt").click(function(event){
+	    console.log('test+=' + window.location.pathname);
+	    info();
+        });
+
 });
  function showHide(shID) { 
      var s=shID.split('+');
@@ -22,13 +28,40 @@ $(document).ready(function()    {
             if (document.getElementById(shID).style.display != 'none' && s[1]=='show'){
               document.getElementById(shID).style.display = 'none';
               document.getElementById(ID).style.display = 'block';
-              $("div.start").hide();
+              if (document.getElementById('start')){ 
+                 document.getElementById('start').style.display = 'none';
+              } 
             }
             else {
              document.getElementById(s[0]+'+show').style.display = 'inline';
              document.getElementById(ID).style.display = 'none';
-             $("div.start").hide();
+             if (document.getElementById('start')){
+                 document.getElementById('start').style.display = 'none';
+              } 
             }
            }
   }
+
+function info() { // This is what we pop up
+
+ var loc = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1);
+ var mod = loc.split('.');
+  
+ $.ajax({
+  url: 'modules.json',
+  async: false,
+  dataType: 'json',
+  success: function (data) {
+    $.each(data, function(key, val) {
+        if(val.fields.short_display_name.toLowerCase()==mod[0].toLowerCase()){
+            var mystring = mod[0] +" Explanation Slideshow\nWritten by "+val.fields.author +" \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during "+val.fields.creation_date +"\nLast update: "+val.fields.last_modified +"\nJSAV library version " + JSAV.version();
+            alert(mystring);
+
+        }
+      });
+    }
+   });
+//  var mystring = mod[0] +" Explanation Slideshow\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during June, 2011\nLast update: August 14, 2011\nJSAV library version " + JSAV.version();
+//  alert(mystring);
+}
 
