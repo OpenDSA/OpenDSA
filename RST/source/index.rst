@@ -6,13 +6,21 @@
 Modules
 =======
 
+Background
+----------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   SetDef
+
 Sorting
 -------
 
 .. toctree::
    :numbered:
    :maxdepth: 3
-
 
    Sorting
    SortCompare
@@ -38,14 +46,15 @@ File Processing
 
    FileProc
 
-Priority Queues
----------------
+Trees
+-----
 
 .. toctree::
    :numbered:
    :maxdepth: 3
 
    BinaryHeap
+   TreeExer
 
 Graphs
 ------

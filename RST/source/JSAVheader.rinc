@@ -7,3 +7,4 @@
    <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/lib/jquery.transform.light.js"></script>
    <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/lib/raphael.js"></script>
    <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/build/JSAV-min.js"></script>
+   <script type="text/javascript" src="_static/ODSA.js"></script>

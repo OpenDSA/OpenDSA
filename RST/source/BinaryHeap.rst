@@ -142,8 +142,8 @@
 .. index:: ! Binary Heap
 .. index:: ! Priority Queue
 
-Introduction
-============
+Priority Queue Introduction
+===========================
 
 Priority Queue (PQ) is an Abstract Data Type (ADT) that has the following operations 1) insert and 2) find and remove the largest (or smallest) item (DeleteMax or DeleteMin).
 
@@ -170,6 +170,6 @@ Heap order property (MaxHeap): Father greater than its children
 
 Heap order property (MinHeap): Father less than its children
 
-Array
-===========
+Array Representation
+====================
 
