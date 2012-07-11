@@ -8,15 +8,15 @@ function KnowledgeMapInitGlobals() {
         },
         icons: {
                 Exercise: {
-                        Proficient: "Images/node-complete.png?" ,
-                        Review: "Images/node-review.png?" + 2,
-                        Suggested: "Images/node-suggested.png?" + 2,
-                        Normal: "Images/node-not-started.png?" 
+                        Proficient: "_static/Images/node-complete.png?" ,
+                        Review: "_static/Images/node-review.png?" + 2,
+                        Suggested: "_static/Images/node-suggested.png?" + 2,
+                        Normal: "_static/Images/node-not-started.png?" 
                           },
                 Summative: {
-                        Normal: "Images/node-challenge-not-started.png?" + 2,
-                        Proficient: "Images/node-challenge-complete.png?" + 2,
-                        Suggested: "Images/node-challenge-suggested.png?" + 2
+                        Normal: "_static/Images/node-challenge-not-started.png?" + 2,
+                        Proficient: "_static/Images/node-challenge-complete.png?" + 2,
+                        Suggested: "_static/Images/node-challenge-suggested.png?" + 2
                            }
         },
         coordsHome: { lat: -0.064844, lng: 0.736268, zoom: 9, when: 0 },
@@ -69,13 +69,13 @@ function KnowledgeMapInitGlobals() {
             var s_prefix = this.get("summative") ? "node-challenge" : "node";
 
             if (this.get("status") == "Suggested") {
-                this.set({"isSuggested": true, "badgeIcon": "Images/" + s_prefix + "-suggested.png?" + KA_VERSION});
+                this.set({"isSuggested": true, "badgeIcon": "_static/Images/" + s_prefix + "-suggested.png?" + KA_VERSION});
             } else if (this.get("status") == "Review") {
-                this.set({"isSuggested": true, "isReview": true, "badgeIcon": "Images/node-review.png?" + KA_VERSION});
+                this.set({"isSuggested": true, "isReview": true, "badgeIcon": "_static/Images/node-review.png?" + KA_VERSION});
             } else if (this.get("status") == "Proficient") {
-                this.set({"isSuggested": false, "badgeIcon": "Images/" + s_prefix + "-complete.png?" + KA_VERSION});
+                this.set({"isSuggested": false, "badgeIcon": "_static/Images/" + s_prefix + "-complete.png?" + KA_VERSION});
             } else {
-                this.set({"isSuggested": false, "badgeIcon": "Images/" + s_prefix + "-not-started.png?" });
+                this.set({"isSuggested": false, "badgeIcon": "_static/Images/" + s_prefix + "-not-started.png?" });
             }
 
             this.set({
@@ -997,7 +997,7 @@ function KnowledgeMap(params) {
                 node.latLng,
                 [   "<a data-id='" + node.name + "' class='nodeLabel'>" +
                     "<img class='node-icon' src=''/>" +
-                    "<img class='exercise-goal-icon' style='display: none' src='Images/flag.png'/>" +
+                    "<img class='exercise-goal-icon' style='display: none' src='_static/Images/flag.png'/>" +
                     "<div>" + node.display_name + "</div></a>"],
                 "",
                 node.summative ? 2 : 1,

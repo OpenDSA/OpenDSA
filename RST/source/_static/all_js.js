@@ -9219,7 +9219,7 @@ hash: {}
 hash: {}
 }) : i === o && (i = n.call(b, "badgeIcon", {
 hash: {}
-})), h += p(i) + '" height="80" width="76">\n    <div class="exercise-goal-wrapper"><img class="exercise-goal-icon" style="display: none" src="Images/flag.png"></div>\n  </a>\n  <div class="energy-points-badge">', i = c.points || b.points, typeof i === m ? i = i.call(b, {
+})), h += p(i) + '" height="80" width="76">\n    <div class="exercise-goal-wrapper"><img class="exercise-goal-icon" style="display: none" src="_static/Images/flag.png"></div>\n  </a>\n  <div class="energy-points-badge">', i = c.points || b.points, typeof i === m ? i = i.call(b, {
 hash: {}
 }) : i === o && (i = n.call(b, "points", {
 hash: {}
@@ -10136,7 +10136,7 @@ $.each(GoalCreator.objectives, function(a, b) {
 b.type == "GoalObjectiveWatchVideo" && b.id == c && (d = !0);
 });
 var e = $(b).children(".video-goal-icon");
-d ? e.length === 0 && $('<span class="video-goal-icon"><img src="Images/flag.png"></span>').insertBefore($(b).children("span")[0]) : e.detach();
+d ? e.length === 0 && $('<span class="video-goal-icon"><img src="_static/Images/flag.png"></span>').insertBefore($(b).children("span")[0]) : e.detach();
 });
 },
 onSelectedObjectiveClicked: function(a, b, c, d) {
