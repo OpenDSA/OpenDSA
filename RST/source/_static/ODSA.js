@@ -54,7 +54,7 @@ function info() { // This is what we pop up
   success: function (data) {
     $.each(data, function(key, val) {
         if(val.fields.short_display_name.toLowerCase()==mod[0].toLowerCase()){
-            var mystring = mod[0] +" Explanation Slideshow\nWritten by "+val.fields.author +" \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during "+val.fields.creation_date +"\nLast update: "+val.fields.last_modified +"\nJSAV library version " + JSAV.version();
+            var mystring = mod[0] +"\nWritten by "+val.fields.author +" \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nFile created: "+val.fields.last_modified +"\nJSAV library version " + JSAV.version();
             alert(mystring);
 
         }
