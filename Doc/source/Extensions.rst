@@ -1,8 +1,8 @@
 .. _ODSAExtensions:
 
 
-ODSA ReST Extensions Documentation
-==================================
+OpenDSA ReST Extensions
+=======================
 
 avembed
 -------
