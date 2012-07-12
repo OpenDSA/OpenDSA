@@ -12,7 +12,7 @@
 
 .. raw:: html
    
-   <link href="_static/Inssort.css" rel="stylesheet" type="text/css" />
+   <link href="_static/Code/Inssort.css" rel="stylesheet" type="text/css" />
 
 
 Insertion Sort
@@ -83,7 +83,7 @@ encountered, ``inssort`` is done with that record because all
 records to its left in the array must have smaller keys.
 The following visualization puts it all together.
 
-.. avembed:: AV/insertionsort-av.html
+.. avembed:: AV/Sorting/insertionsort-av.html
 
 .. TODO::
 
@@ -183,4 +183,4 @@ Insertion Sort.
 
 .. raw:: html
 
-   <script src="_static/Inssort.js"></script>
+   <script src="_static/Code/Inssort.js"></script>

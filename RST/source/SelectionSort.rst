@@ -94,7 +94,7 @@ Selection Sort is more efficient than Bubble Sort (by a constant
 factor) in most other situations as well.
 
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/PtrSwap.png
+.. figure:: Images/PtrSwap.png
    :width: 400
    :alt: Swapping pointers to records
 
