@@ -52,6 +52,28 @@ An implementation is as follows.
    Values above the line in each column have been sorted.
    Arrows indicate the swaps that take place during a given iteration.
 
+The following visualization puts it all together.
+
+.. avembed:: AV/bubblesort-av.html
+
+.. TODO::
+
+   Exercise:
+
+   Given: An array where some element X is highlighted. Everthing to the
+   right of X is sorted (and bigger), and everything to the left is
+   constrained random (must be a legal state for this position in
+   bubble sort processing).
+
+   Question: In this array, the highlighted element is the current
+   element to be processed in the next pass of Bubble Sort. Show the
+   array after the element has been placed in its proper position (and
+   other elements moved as necessary).
+
+.. TODO::
+
+   Create proficiency exercise for Bubble Sort.
+
 Determining Bubble Sort's number of comparisons is easy.
 Regardless of the arrangement of the values in the array, the number
 of comparisons made by the inner ``for`` loop is always

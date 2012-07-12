@@ -85,6 +85,21 @@ The following visualization puts it all together.
 
 .. avembed:: AV/insertionsort-av.html
 
+.. TODO::
+
+   Exercise:
+
+   Given: An array where some element X is highlighted. Everthing to the
+   left of X is sorted, and everything to the right is random.
+
+   Question: In this array, the highlighted element is now to be
+   processed by Insertion Sort. Show the array after the element has been
+   placed in its proper position (and other elements moved as necessary).
+
+.. TODO::
+
+   Create proficiency exercise for Insertion Sort.
+
 The body of ``inssort`` is made up of two nested
 ``for`` loops.
 The outer ``for`` loop is executed :math:`n-1` times.

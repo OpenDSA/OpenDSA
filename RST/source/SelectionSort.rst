@@ -28,7 +28,7 @@ required to put the record in place.
 Thus, the total number of swaps required will be :math:`n-1`
 (we get the last record in place "for free").
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/SelSort.png
+.. figure:: Images/SelSort.png
    :width: 400
    :alt: An illustration of Selection Sort
 
@@ -62,6 +62,23 @@ Here is a JAVA implementation.::
        DSutil.swap(A, i, lowindex);
      }
    }
+
+.. TODO::
+
+   Exercise:
+
+   Given: An array where some element X is highlighted. Everthing to the
+   left of X is sorted (the i smallest elements in the array, and
+   everything to the right is 
+   constrained random (must be bigger than the elements to the left).
+
+   Question: In this array, the highlighted element shows the current
+   position to start from to do the next pass of selection sort. Show
+   the    array after this pass has been completed.
+
+.. TODO::
+
+   Create proficiency exercise for Selection Sort.
 
 Selection Sort (as written here) is essentially a Bubble Sort,
 except that rather than repeatedly swapping adjacent values to get
