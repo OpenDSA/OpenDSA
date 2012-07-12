@@ -39,29 +39,16 @@ Thus, the total number of swaps required will be :math:`n-1`
    Numbers above the line in each column have been sorted and are in
    their final positions.
 
-.. raw:: html
-
-   <center>
-     <iframe src="http://algoviz.org:/OpenDSA/dev/OpenDSA/AV/selectionsort-av.html"
-	 type="text/javascript" width="820" height="520"
-	 frameborder="0" marginwidth="0" marginheight="0"
-	 scrolling="no">
-     </iframe>
-   </center>
-
 Figure <ODSAref "SelSort" \> illustrates Selection Sort.
-Here is a JAVA implementation.::
 
-   static <E extends Comparable<? super E>>
-   void Sort(E[] A) {
-     for (int i=0; i<A.length-1; i++) { // Select i'th record
-       int lowindex = i;                // Remember its index
-       for (int j=A.length-1; j>i; j--) // Find the least value
-         if (A[j].compareTo(A[lowindex]) < 0)
-	   lowindex = j;                // Put it in place
-       DSutil.swap(A, i, lowindex);
-     }
-   }
+Here is an implementation for Selection Sort.
+
+.. codeinclude:: Sorting/Selectionsort/Selectionsort.pde 
+   :tag: Selectionsort
+
+The following visualization puts it all together.
+
+.. avembed:: AV/selectionsort-av.html
 
 .. TODO::
 
