@@ -1,6 +1,6 @@
 .. _SortingLowerBound:
 
-.. index:: ! Sorting, Lower Bounds Proof
+.. index:: ! sorting; lower bounds proof
 
 Lower Bounds for Sorting
 ========================

@@ -6,8 +6,7 @@
 
 .. _InsertOpt:
 
-.. index::
-   single: Insertion Sort; Optimizing
+.. index:: Insertion Sort; optimizing
 
 Optimizing Insertion Sort
 =========================
