@@ -2865,7 +2865,7 @@ var Khan = (function() {
 		remoteCount++;
 
 		// Packing occurs on the server but at the same "exercises/" URL
-		jQuery.get( urlBase + "exercises/" + name + ".html", function( data, status, xhr ) {
+		jQuery.get( name + ".html", function( data, status, xhr ) {
 			var match, newContents;
 
 			if ( !( /success|notmodified/ ).test( status ) ) {
