@@ -369,3 +369,9 @@ div.viewcode-block:target {
     margin: -1px -12px;
     padding: 0 12px;
 }
+.more {
+  display:none;
+}
+.admonition-todo {
+  background-color:#FFC0CB;
+}
