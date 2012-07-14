@@ -54,7 +54,7 @@ An implementation is as follows.
 
 The following visualization puts it all together.
 
-.. avembed:: AV/bubblesort-av.html
+.. avembed:: AV/Sorting/bubblesort-av.html
 
 .. TODO::
 

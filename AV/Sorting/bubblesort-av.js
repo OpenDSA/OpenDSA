@@ -25,7 +25,7 @@
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    alert("Insertion Sort Algorithm Visualization\nWritten by Cliff Shaffer and Nayef Copty\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+    alert("Bubble Sort Algorithm Visualization\nWritten by Cliff Shaffer and Mauricio De La Barra\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
 
   // Process Reset button: Reinitialize the output textbox and the AV
@@ -71,37 +71,56 @@
     return true;
   }
 
+
   var setBlue = function (index) {
     arr.css(index, {"background-color": "#ddf" });
   };
+  
+  var setGreen = function(index) {
+    arr.css(index, {"background-color": "#00FF00" });
+  };
+  
+  var setPurple = function(index) {
+    arr.css(index, {"background-color": "FF00FF" });
+  };
 
-  // Insertion Sort
-  function inssort() {
-    var i, j;
-    av.umsg("Highlighted yellow elements to the left are always sorted. We begin with the element in position 0 in the sorted portion, and we will be moving the element in position 1 (in blue) to the left until it is sorted");
-    arr.highlight([0]);
-    setBlue(1);
-    pseudo.setCurrentLine(1);
-    av.step();
-    for (i = 1; i < arr.size(); i++) { // Insert i'th record
-      setBlue(i);
-      av.umsg("Processing element in position " + i);
-      pseudo.setCurrentLine(1);
-      av.step();
-      av.umsg("Move the blue element to the left until it reaches the correct position");
-      pseudo.setCurrentLine(2);
-      av.step();
-      for (j = i; (j > 0) && (arr.value(j) < arr.value(j - 1)); j--) {
+  
+  // Bubble Sort
+  function bubblesort() {
+    var i, j, k, min;
+    av.umsg("Sorting the subarray");
+    for (i=0; i<arr.size(); i++) {
+      //setBlue(i);
+	  min = i; // do not need min variable in this sort
+		for (j=1; j<arr.size()-i; j++) {
         setBlue(j);
-        arr.swap(j, j - 1); // swap the two indices
-        av.umsg("Swap");
-        pseudo.setCurrentLine(3);
-        av.step();
+	    av.step();
+        if (arr.value(j-1) > arr.value(j)) {
+			arr.swap(j-1,j);
+			min = j;	
+			setGreen(min);		  
+	    }
+		
+        else {
+		  //arr.highlight([j-1, j]);
+          //break; // Done pushing element, leave for loop
+		  setBlue(min);
+		  
+        }
+	    //arr.highlight(j);
       }
-      arr.highlight(j);
+	  
+	  //arr.swap(i, min); // swap the two indices	  
+      av.step();   
+	  for (k = i+1; k < arr.size(); k++){
+      	arr.css(k, {"background-color": "#C0C0C0"});	
+	  }	
+      //arr.highlight(j);
+	  //arr.highlight(i);  
+	  
     }
   }
-  
+
   // Execute the "Run" button function
   function runIt() {
     var i;
@@ -125,18 +144,17 @@
 
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
-      arr.css(function(index) { return index; }, {"background-color": "#eee"});
-      //      for (i = 0; i < theArray.length; i++) {
-      //        arr.css(i, {"background-color": "#eee"});
-      //      }
-      pseudo = av.code({url: "../../SourceCode/Processing/Sorting/Insertionsort/Insertionsort.pde",
-			startAfter: "/* *** ODSATag: Insertionsort *** */",
-		        endBefore: "/* *** ODSAendTag: Insertionsort *** */"});
+      for (i = 0; i < theArray.length; i++) {
+        arr.css(i, {"background-color": "#eee"});
+      }
+      pseudo = av.code({url: "../../SourceCode/Processing/Sorting/Bubblesort/Bubblesort.pde",
+			startAfter: "/* *** ODSATag: Bubblesort *** */",
+		        endBefore: "/* *** ODSAendTag: Bubblesort *** */"});
       pseudo.setCurrentLine(0);
-      av.umsg("Starting Insertion Sort");
+      av.umsg("Starting Bubble Sort");
       av.displayInit();
-      inssort();
-      pseudo.setCurrentLine(4);
+      bubblesort();
+      pseudo.setCurrentLine(5);
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
     }
