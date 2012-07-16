@@ -7,8 +7,8 @@
 .. _SortCompare:
 
 .. index::
-   pair: sorting; comparison
-   pair: searching; comparison
+   pair: sorting; record comparison
+   pair: searching; record comparison
 
 Comparing Records
 ==================

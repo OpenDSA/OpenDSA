@@ -118,7 +118,7 @@ If we now gather the values from
 the bins in order, the result is a sorted list.
 Figure <ODSAref "RadixSort" /> illustrates this process.
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/RadSort.png
+.. figure:: Images/RadSort.png
    :width: 400
    :alt: An example of Radix Sort
 
@@ -203,7 +203,7 @@ on the :math:`i`'th iteration.
 Figure <ODSAref "RadExamp" /> shows how this algorithm processes the
 input shown in Figure <ODSAref "RadixSort" />.
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/RadExamp.png
+.. figure:: Images/RadExamp.png
    :width: 400
    :alt: An example of function ``radix``
 

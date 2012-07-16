@@ -1,3 +1,9 @@
+.. avmetadata:: Bubble Sort
+   :author: Cliff Shaffer
+   :prerequisites: Sorting, InsertionSort
+   :topic: Sorting
+   :short_name: BubbleSort
+
 .. _BubbleSort:
 
 .. index:: ! Bubble Sort
@@ -15,7 +21,7 @@ Insertion Sort, it does not correspond to any intuitive counterpart in
 "everyday" use, and it has a poor best-case running time.
 However, Bubble Sort can serve as the inspiration for a better sorting
 algorithm that will be presented in
-Module <ODSAref "SelectionSort" \>.
+Module :ref:`Selection Sort <SelectionSort>`.
 
 Bubble Sort consists of a simple double ``for`` loop.
 The first iteration of the inner ``for`` loop moves
@@ -30,18 +36,12 @@ of the array on the first pass, there is no need to compare the top
 two elements on the second pass.
 Likewise, each succeeding pass through the array compares adjacent
 elements, looking at one less value than the preceding pass.
-Figure <ODSAref "BubbSort" \> illustrates Bubble Sort.
-A Java implementation is as follows.::
+An implementation is as follows.
 
-   static <E extends Comparable<? super E>>
-   void Sort(E[] A) {
-     for (int i=0; i<A.length-1; i++) // Bubble up i'th record
-       for (int j=A.length-1; j>i; j--)
-         if ((A[j].compareTo(A[j-1]) < 0))
-           DSutil.swap(A, j, j-1);
-   }
+.. codeinclude:: Sorting/Bubblesort/Bubblesort.pde 
+   :tag: Bubblesort        
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/BubSort.png
+.. figure:: Images/BubSort.png
    :width: 400
    :alt: An illustration of Bubble Sort
 
@@ -51,6 +51,28 @@ A Java implementation is as follows.::
    value of ``i`` in the outer ``for`` loop.
    Values above the line in each column have been sorted.
    Arrows indicate the swaps that take place during a given iteration.
+
+The following visualization puts it all together.
+
+.. avembed:: AV/Sorting/bubblesort-av.html
+
+.. TODO::
+
+   Exercise:
+
+   Given: An array where some element X is highlighted. Everthing to the
+   right of X is sorted (and bigger), and everything to the left is
+   constrained random (must be a legal state for this position in
+   bubble sort processing).
+
+   Question: In this array, the highlighted element is the current
+   element to be processed in the next pass of Bubble Sort. Show the
+   array after the element has been placed in its proper position (and
+   other elements moved as necessary).
+
+.. TODO::
+
+   Create proficiency exercise for Bubble Sort.
 
 Determining Bubble Sort's number of comparisons is easy.
 Regardless of the arrangement of the values in the array, the number

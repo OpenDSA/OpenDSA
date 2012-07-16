@@ -44,7 +44,10 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 
 html:
+	-mkdir -p $(BUILDDIR)
+	python preprocessor.py source/ $(BUILDDIR)/html
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	cp source/knowledgemap.html $(BUILDDIR)/html 
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
@@ -153,6 +156,3 @@ doctest:
 	$(SPHINXBUILD) -b doctest $(ALLSPHINXOPTS) $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
-
-csslint:
-	@csslint --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units source/_static/*.css

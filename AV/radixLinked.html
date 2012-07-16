@@ -25,7 +25,7 @@ div h1 {
 }
 .jsavcounter {
   position: absolute;
-  width: 100px;
+  width: 300px;
 }
 .jsavarray {
   padding-left:0;
@@ -134,7 +134,7 @@ form {
   var context = $("#ssperform");
   var emptyContent = $("#avcontainer").html();
   var av, // for JSAV av
-    arr, arrC, arrO, LL;  // for the JSAV array
+    arr, arrC, arrO;  // for the JSAV array
 	
  
 	
@@ -215,27 +215,155 @@ form {
   };
   
   //Radix linked list sort
+	
   function radsort(){
-    var i,k,j,p,y;
+    var i, k, j, p, y;
 	var DSize = $('#digitsize').val();
 	var size = DSize;
-	var count = 1;
-	var counter =0;
-	//var Listnode link = new Listnode(5);
-	for (i=0; i<countArray.length; i++) {
-		//arrC.value(i,link));
-		
-    var l = av.ds.list();
-    av.umsg("We start by creating a list and adding some elements..");
-    l.addFirst(i)
-      .addLast(2)
-      .addLast(4);
-    l.layout();
-    av.displayInit();
-	}
-	
-  
-  
+    var count = 1;
+    var counter = 0;
+    while (size > 0){
+	  var L0 = av.ds.list();
+	  L0.addFirst(0);
+	  L0.layout();
+	  var L1 = av.ds.list();
+	  L1.addFirst(1); 
+	  L1.layout();
+	  var L2 = av.ds.list();
+	  L2.addFirst(2);
+	  L2.layout();
+	  var L3 = av.ds.list();
+	  L3.addFirst(3);
+	  L3.layout();
+	  var L4 = av.ds.list();
+	  L4.addFirst(4);
+	  L4.layout();
+	  var L5 = av.ds.list();
+	  L5.addFirst(5);
+	  L5.layout();
+	  var L6 = av.ds.list();
+	  L6.addFirst(6);
+	  L6.layout();
+	  var L7 = av.ds.list();
+	  L7.addFirst(7);
+	  L7.layout();
+	  var L8 = av.ds.list();
+	  L8.addFirst(8);
+	  L8.layout();
+	  var L9 = av.ds.list();
+	  L9.addFirst(9);
+	  L9.layout();
+	  
+	  av.step();
+	  av.displayInit();
+	  for (i = 0; i < theArray.length; i++) {
+	    var answer = Math.floor(((theArray[i]) / count) % 10);
+	    var valu = theArray[i];
+	    if(answer === 0){
+		  L0.addLast(theArray[i]);
+		  L0.layout();
+		  }
+	    if(answer === 1){
+		  L1.addLast(theArray[i]);
+		  L1.layout();
+		  }
+	    if(answer === 2){
+		  L2.addLast(theArray[i]);
+		  L2.layout();
+		  }
+	    if(answer=== 3){
+		  L3.addLast(theArray[i]);
+		  L3.layout();
+		  }
+	    if(answer === 4){
+		  L4.addLast(theArray[i]);
+		  L4.layout();
+		  }
+	    if(answer === 5){
+		  L5.addLast(theArray[i]);
+		  L5.layout();
+		  }
+	     if(answer === 6){
+		  L6.addLast(theArray[i]);
+		  L6.layout();
+		  }
+	    if(answer === 7){
+		  L7.addLast(theArray[i]);
+		  L7.layout();
+		  }
+	    if(answer === 8){
+		  L8.addLast(theArray[i]);
+		  L8.layout();
+		  }
+	    if(answer === 9){
+		  L9.addLast(theArray[i]);
+		  L9.layout();
+		  }
+	   
+	    av.step();
+	    av.displayInit();
+	    //var ListNode node = new ListNode();
+	    //var LL = new ListNode(i,null);
+        av.umsg("We start by creating a list and adding some elements..");
+       
+	   
+	  }
+	  for (j = theArray.length - 1; j >= 0; j--) {
+	    var answer = Math.floor(((theArray[j]) / count) % 10);
+		if(L0.size() > 1){
+		  arrO.value(0,L0.get(L0.size()-1));
+		  L0.removeLast();
+			
+		}
+		if(L1.size() > 1){
+		  arrO.value(0,L1.get(L1.size() - 1));
+		  L1.removeLast();
+			
+		 }
+		if(L2.size() > 1){
+		  arrO.value(0,L2.get(L2.size() - 1));
+		  L2.removeLast();
+	     }
+	    if(L3.size() > 1){
+		  arrO.value(0,L3.get(L3.size() - 1));
+		  L3.removeLast();
+			
+		 }
+		if(L1.size() > 1) {
+		  arrO.value(0,L1.get(L1.size() - 1));
+		  L1.removeLast();
+	     }
+	    if(L4.size() > 1) {
+		  arrO.value(0,L4.get(L4.size() - 1));
+		  L4.removeLast();
+			
+		 }
+		if(L5.size() > 1) {
+		  arrO.value(0,L5.get(L5.size() - 1));
+		  L5.removeLast();
+	     }
+		if(L6.size() > 1) {
+		  arrO.value(0,L6.get(L6.size() - 1));
+		  L6.removeLast();
+	     }
+		if(L7.size() > 1) {
+		  arrO.value(0,L7.get(L7.size() - 1));
+		  L7.removeLast();
+	     }
+	    
+	  size = size - 1;
+      av.umsg("Now we set the Original Array equal to Output Array"); 
+      av.step();
+      counter = counter + 1;
+      count= Math.pow(10, counter);
+	  
+	  
+	  }
+	    
+        //console.log("get = " + L9.get(1));
+       // console.log("size = " + L9.size());
+	    //console.log("value = " + arrO.size(0));
+  }
   
   }
   
@@ -258,6 +386,7 @@ form {
 		  }
 		for (i=0; i < ASize; i++) {
 			outArray[i] = 0; // need to change in order to represent output array
+			
 		}
 		
 		for (k=0; k < 10; k++) {
@@ -273,18 +402,13 @@ form {
 	  
 	  arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()}); 
 	  av.label("Original Array");
-	  arrC = av.ds.array(countArray, {indexed: true, layout:"vertical"});
-	  av.label("Count Array");
-	 var LL = av.ds.list([2, 3, 5], {visible: true, center: true});
-	 // arrO = av.ds.array(outArray, {indexed: true, layout: arrayLayout.val()});
+	  arrC = av.ds.array(countArray, {indexed: true, layout: arrayLayout.val()});
+	  av.label("Output Array");
+	 //var LL = av.ds.list([2, 3, 5], {visible: true, center: true});
+	  //arrO = av.ds.array(outArray, {indexed: true, layout: arrayLayout.val()});
 	 // av.label("Output Array");
 	
 	  radsort(j);
-		
-      
-	  
-      
-	  
 	  
 	  
       av.umsg("Done sorting!");

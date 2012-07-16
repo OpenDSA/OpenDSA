@@ -85,7 +85,7 @@ The complete JAVA implementation is as follows.::
        H.removemax(); // Removemax places max at end of heap
    }
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/Heapsort.png
+.. figure:: Images/Heapsort.png
    :width: 400
    :alt: Illustration of Heapsort
 

@@ -1,6 +1,6 @@
 .. _SortingLowerBound:
 
-.. index:: ! Sorting, Lower Bounds Proof
+.. index:: ! sorting; lower bounds proof
 
 Lower Bounds for Sorting
 ========================
@@ -125,7 +125,7 @@ For three values, there are :math:`n! = 6` permutations.
 Thus, the root node of the decision tree lists all six permutations
 that might be the eventual result of the algorithm.
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/DecTree.png
+.. figure:: Images/DecTree.png
    :width: 400
    :alt: A decision tree for Insertion Sort
 

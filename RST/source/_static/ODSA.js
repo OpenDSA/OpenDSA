@@ -13,6 +13,12 @@ $(document).ready(function()    {
             var shID = event.target.id;
             showHide(shID);
         });
+
+  $("a.abt").click(function(event){
+	    console.log('test+=' + window.location.pathname);
+	    info();
+        });
+
 });
  function showHide(shID) { 
      var s=shID.split('+');
@@ -31,4 +37,25 @@ $(document).ready(function()    {
             }
            }
   }
+
+function info() { // This is what we pop up
+
+ var loc = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1);
+ var mod = loc.split('.');
+  
+ $.ajax({
+  url: 'modules.json',
+  async: false,
+  dataType: 'json',
+  success: function (data) {
+    $.each(data, function(key, val) {
+        if(val.fields.short_display_name.toLowerCase()==mod[0].toLowerCase()){
+            var mystring = mod[0] +"\nWritten by "+val.fields.author +" \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nFile created: "+val.fields.last_modified +"\nJSAV library version " + JSAV.version();
+            alert(mystring);
+
+        }
+      });
+    }
+   });
+}
 
