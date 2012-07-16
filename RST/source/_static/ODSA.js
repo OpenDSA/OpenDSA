@@ -13,6 +13,12 @@ $(document).ready(function()    {
             var shID = event.target.id;
             showHide(shID);
         });
+
+  $("a.abt").click(function(event){
+	    console.log('test+=' + window.location.pathname);
+	    info();
+        });
+
 });
  function showHide(shID) { 
      var s=shID.split('+');
@@ -22,17 +28,34 @@ $(document).ready(function()    {
             if (document.getElementById(shID).style.display != 'none' && s[1]=='show'){
               document.getElementById(shID).style.display = 'none';
               document.getElementById(ID).style.display = 'block';
-              if (document.getElementById('start')){ 
-                 document.getElementById('start').style.display = 'none';
-              } 
+              $("div.start").hide();
             }
             else {
              document.getElementById(s[0]+'+show').style.display = 'inline';
              document.getElementById(ID).style.display = 'none';
-             if (document.getElementById('start')){
-                 document.getElementById('start').style.display = 'none';
-              } 
+             $("div.start").hide();
             }
            }
   }
+
+function info() { // This is what we pop up
+
+ var loc = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1);
+ var mod = loc.split('.');
+  
+ $.ajax({
+  url: 'modules.json',
+  async: false,
+  dataType: 'json',
+  success: function (data) {
+    $.each(data, function(key, val) {
+        if(val.fields.short_display_name.toLowerCase()==mod[0].toLowerCase()){
+            var mystring = mod[0] +"\nWritten by "+val.fields.author +" \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nFile created: "+val.fields.last_modified +"\nJSAV library version " + JSAV.version();
+            alert(mystring);
+
+        }
+      });
+    }
+   });
+}
 

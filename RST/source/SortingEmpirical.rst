@@ -1,6 +1,6 @@
 .. _SortingEmpirical:
 
-.. index:: ! Sorting, Empirical Analysis
+.. index:: ! sorting; empirical comparison
 
 An Empirical Comparison of Sorting Algorithms
 =============================================

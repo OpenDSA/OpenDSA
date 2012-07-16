@@ -44,7 +44,10 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 
 html:
+
+	python preprocessor.py source/ $(BUILDDIR)/html
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	cp source/knowledgemap.html $(BUILDDIR)/html 
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 

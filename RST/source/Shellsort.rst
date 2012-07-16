@@ -1,4 +1,4 @@
-.. avmetadata:: Shell Sort Tutorial 
+.. avmetadata:: Shellsort
    :author: Cliff Shaffer
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
@@ -10,10 +10,7 @@
 
 .. raw:: html
    
-   <script type="text/javascript" src="_static/ODSA.js"></script>
-
-   <link href="_static/Shellsort.css" rel="stylesheet" type="text/css" />
-
+   <link href="_static/Code/Shellsort.css" rel="stylesheet" type="text/css" />
    <input type="button" float="right" name="about" value="About"/>
 
 .. index:: ! Shellsort
@@ -186,12 +183,18 @@ Here is a code implementation for Shellsort.
    :start-after: /* *** ODSATag: Shellsort *** */
    :end-before: /* *** ODSAendTag: Shellsort *** */
 
-.. raw:: html
+.. todo::
 
-   <input type="button" name="ex1" value="Exercise 1"
-          style="background-color:#f00;"/>
+   Exercise: Two parts, joined together be selected at random.
+   Solve this exercise 10 times in a row to get credit.
 
-   <script src="_static/Shellsort.js"></script>
+   (1) Given a random array of size n, a random increment size I <=
+   n/2, and a random start location S, 0<=S<I (with an arrow over
+   position S), click to highlight the array elements that should be
+   in this sublist.
+
+   (2) Given random array of size n, and a sub array with elements
+   highlighted, sort the indicated sublist. 
 
 There is a lot of flexibility to picking the increment series.
 It does not need to start with :math:`n/2` and cut in half each time.
@@ -259,8 +262,8 @@ Shellsort illustrates how we can sometimes exploit the special properties
 of an algorithm (in this case Insertion Sort) even if in general that
 algorithm is unacceptably slow.
 
-Here are some questions to check whether you understand the basics of
-Shellsort's runtime cost.
+Here are some questions review questions to check that you understand
+Shellsort.
 
 .. avembed:: Exercises/ShellsortMC.html
    :showbutton: hide
@@ -277,3 +280,7 @@ It is also sometimes called the :dfn:`diminishing increment sort`.
 If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good
 increment series in [KnuthV3]_.
+
+.. raw:: html
+
+   <script src="_static/Code/Shellsort.js"></script>

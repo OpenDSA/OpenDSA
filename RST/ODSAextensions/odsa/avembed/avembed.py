@@ -27,7 +27,7 @@ def setup(app):
 
 
 CODE = """\
-<div id="start">
+<div class="start">
 <center> 
 <iframe src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 </iframe>
@@ -68,9 +68,10 @@ HIDE = """\
 
 def embedlocal(av_path):
    embed=[]
-   av_fullname = av_path.partition('/')[2]  
+   av_fullname = os.path.basename(av_path)  #av_fullname = av_path.partition('/')[2]  
    av_name = av_fullname.partition('.')[0]  
-   xmlfile = os.path.abspath('../'+ av_path.partition('/')[0]+'/') + '/xml/' + av_name + '.xml'    
+   xmlfile = os.path.abspath('../'+ os.path.dirname(av_path)+'/') + '/xml/' + av_name + '.xml'    
+   #xmlfile = os.path.abspath('../'+ av_path.partition('/')[0]+'/') + '/xml/' + av_name + '.xml'
    av_fullpath = os.path.abspath('../'+av_path) 
    avwidth=0
    avheight=0

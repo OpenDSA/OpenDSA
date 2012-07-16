@@ -6,6 +6,15 @@
 Modules
 =======
 
+Background
+----------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   SetDef
+
 Sorting
 -------
 
@@ -13,10 +22,10 @@ Sorting
    :numbered:
    :maxdepth: 3
 
-
    Sorting
    SortCompare
    InsertionSort
+   InsertOpt
    BubbleSort
    SelectionSort
    ExchangeSort
@@ -38,14 +47,15 @@ File Processing
 
    FileProc
 
-Priority Queues
----------------
+Trees
+-----
 
 .. toctree::
    :numbered:
    :maxdepth: 3
 
    BinaryHeap
+   TreeExer
 
 Graphs
 ------
@@ -55,6 +65,7 @@ Graphs
    :maxdepth: 3
 
    MCST
+   Huffman
 
 Appendix
 ========

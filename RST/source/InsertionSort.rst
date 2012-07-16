@@ -1,6 +1,19 @@
+.. avmetadata:: Insertion Sort
+   :author: Cliff Shaffer
+   :prerequisites: Sorting
+   :topic: Sorting
+   :short_name: InsertionSort
+
 .. _InsertionSort:
 
 .. index:: ! Insertion Sort
+
+.. include:: JSAVheader.rinc
+
+.. raw:: html
+   
+   <link href="_static/Code/Inssort.css" rel="stylesheet" type="text/css" />
+
 
 Insertion Sort
 ==============
@@ -26,29 +39,66 @@ The input is an array of :math:`n` records stored in array ``A``.
 .. codeinclude:: Sorting/Insertionsort/Insertionsort.pde 
    :tag: Insertionsort        
 
-Consider the case where ``inssort`` is processing the
-:math:`i`'th
-record, which has key value :math:`X`.
-The record is moved upward in the array as long as
-:math:`X` is less than the key value immediately above it.
+Consider the example of the following array.
+
+.. raw:: html
+
+   <div id="container1">
+     <span class="jsavcounter"></span>
+     <a class="jsavsettings" href="#">Settings</a>
+     <div class="jsavcontrols"></div>
+     <p class="jsavoutput jsavline" readonly="readonly"></p>
+   </div>
+
+Next, process the element in position 2.
+Swap it to the left until it reaches a value smaller than it is.
+
+.. raw:: html
+
+   <div id="container2">
+     <span class="jsavcounter"></span>
+     <a class="jsavsettings" href="#">Settings</a>
+     <div class="jsavcontrols"></div>
+     <p class="jsavoutput jsavline" readonly="readonly"></p>
+   </div>
+
+And now the record in position 3.
+
+.. raw:: html
+
+   <div id="container3">
+     <span class="jsavcounter"></span>
+     <a class="jsavsettings" href="#">Settings</a>
+     <div class="jsavcontrols"></div>
+     <p class="jsavoutput jsavline" readonly="readonly"></p>
+   </div>
+
+
+This continues on with each record in turn.
+Call the current record :math:`X`.
+Insertion Sort will move it to the left so
+long as it is less than the value immediately preceding it.
 As soon as a key value less than or equal to :math:`X` is
 encountered, ``inssort`` is done with that record because all
-records above it in the array must have smaller keys.
-Figure <ODSAref "Insertion" \> illustrates how Insertion Sort
-works.
+records to its left in the array must have smaller keys.
+The following visualization puts it all together.
 
-.. figure:: Images/InsSort.png
-   :width: 400
-   :alt: Illustration of Insertion Sort
+.. avembed:: AV/Sorting/insertionsort-av.html
 
-   <ODSAfig "Insertion" \>
-   An illustration of Insertion Sort.
-   Each column shows the array after the iteration with the indicated
-   value of ``i`` in the outer ``for`` loop.
-   Values above the line in each column have been sorted.
-   Arrows indicate the upward motions of records through the array.
+.. TODO::
 
-.. avembed:: AV/insertionsort-av.html
+   Exercise:
+
+   Given: An array where some element X is highlighted. Everthing to the
+   left of X is sorted, and everything to the right is random.
+
+   Question: In this array, the highlighted element is now to be
+   processed by Insertion Sort. Show the array after the element has been
+   placed in its proper position (and other elements moved as necessary).
+
+.. TODO::
+
+   Create proficiency exercise for Insertion Sort.
 
 The body of ``inssort`` is made up of two nested
 ``for`` loops.
@@ -73,7 +123,7 @@ highest.
 In this case, every pass through the inner ``for`` loop will
 fail immediately, and no values will be moved.
 The total number of comparisons will be :math:`n-1`, which is the
-number of times the outer <code>for</code> loop executes.
+number of times the outer ``for`` loop executes.
 Thus, the cost for Insertion Sort in the best case is
 :math:`\Theta(n)`.
 
@@ -88,8 +138,10 @@ restoring sorted order using Insertion Sort might be a good idea if we
 know that the disordering is slight.
 Examples of algorithms that take advantage of Insertion Sort's
 near-best-case running time are Shellsort
-(Module <ODSAref "ShellSort" \>)
-and Quicksort (Module <ODSAref "QuickSort" \>).
+(Module :ref:`ShellSort <Shellsort>`)
+and Quicksort (Module :ref:`Quicksort <Quicksort>`).
+
+.. index:: ! inversion
 
 What is the average-case cost of Insertion Sort?
 When record :math:`i` is processed, the number
@@ -97,15 +149,18 @@ of times through the inner ``for`` loop depends on how far
 "out of order" the record is.
 In particular, the inner ``for`` loop is executed once for
 each key greater than the key of record :math:`i` that appears in
-array positions 0 through :math`i-1`.
-For example, in the leftmost column of Figure <ODSAref "Insertion" \>
-the value 15 is preceded by five values greater than 15.
+array positions 0 through :math:`i-1`.
+For example, in the slideshows above the value 14 is
+preceded by five values greater than it.
 Each such occurrence is called an :dfn:`inversion`.
 The number of inversions (i.e., the number of values greater than a
 given value that occur prior to it in the array) will determine the
 number of comparisons and swaps that must take place.
-We need to determine what the average number of inversions will
-be for the record in position :math:`i`.
+So long as all swaps are to adjacent elements, 14 will have to swap at
+least five times to get to the right position.
+
+To calculate the average cost, We want to determine what the average
+number of inversions will be for the record in position :math:`i`.
 We expect on average that half of the keys in the first
 :math:`i-1` array positions will have a value greater than that of
 the key at position :math:`i`.
@@ -123,3 +178,14 @@ Thus, the number of swaps for the entire sort operation is
 :math:`n-1` less than the number of comparisons.
 This is 0 in the best case, and :math:`\Theta(n^2)` in the
 average and worst cases.
+
+Here are some questions review questions to check that you understand
+Insertion Sort.
+
+.. avembed:: Exercises/InsertionSortMC.html
+   :showbutton: hide
+   :title: Question 1
+
+.. raw:: html
+
+   <script src="_static/Code/Inssort.js"></script>

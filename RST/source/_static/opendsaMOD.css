@@ -1,3 +1,6 @@
 .more {
   display:none;
 }
+.admonition-todo {
+  background-color:#FFC0CB;
+}
