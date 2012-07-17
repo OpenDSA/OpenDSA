@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
 <head>
-  <title>OpenDSA Bubble Sort: Multiple Choice Summary</title>
+  <title>Bubble Sort: Multiple Choice Summary</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript"
@@ -15,99 +15,103 @@
 <body>
 
 <div class="exercise">
-    <div class = "vars">
-      <var id="TYPES">[ "True", "False" ]</var>
-      <var id="GBAns">randFromArray( TYPES )</var>
-      <var id="GB">(GBAns === "True") ? "good" : "bad"</var>
-    </div>
+  <div class = "vars">
+    <var id="TYPES">[ "True", "False" ]</var>
+    <var id="GBAns">randFromArray( TYPES )</var>
+    <var id="GB">(GBAns === "True") ? "good" : "bad"</var>
+  </div>
   <div class="problems">
-     
+    
     <!-- Question MCQ -->
     <div id="problem-type-or-description">
-      <p class="question"> When is Bubblesort a good choice for sorting an array? </p>
+      <p class="question"> When is Bubble Sort a good choice for
+	sorting an array? </p>
       <div class="solution"><var>"None of the above."</var></div>
       <ul class="choices">
-	<li><var>"Each component of the array requires a large amount of memory."</var></li>
-	<li><var>"Each component of the array requires a small amount of memory."</var></li>
-	<li><var>"The array has only a few items out of place."</var></li>	  	 
+	<li><var>"Each component of the array requires a large amount
+	    of memory."</var></li>
+	<li><var>"Each component of the array requires a small amount
+	    of memory."</var></li>
+	<li><var>"The array has only a few items out of
+	    place."</var></li>
       </ul>
-	  <div class="hints">
-	   <p>Is the bubble sort complexity varies according to the input?</p>
-	  </div>
+      <div class="hints">
+	<p>Does Bubble Sort's big-oh cost vary according to the
+	  input?</p>
+      </div>
     </div>
 
-	<div id="problem-type-or-description">
-      <p class="question"> What is the worst-case time for Bubblesort to sort an array of n elements? </p>
+    <div id="problem-type-or-description">
+      <p class="question"> What is the worst-case time for Bubble Sort
+      to sort an array of n elements? </p>
       <div class="solution"><var><code>O(n^2)</code></var></div>
       <ul class="choices">
 	<li><var><code>O(n)</code></var></li>
 	<li><var><code>O(\log n)</code></var></li>
-	<li><var><code>O(n \log n)</code></var></li>	  	 
+	<li><var><code>O(n \log n)</code></var></li>
       </ul>
-	  <div class="hints">
-	   <p>Is the bubble sort complexity varies according to the input?</p>
-	  </div>
+      <div class="hints">
+	<p> Does Bubble Sort's big-oh cost vary according to the
+ 	    input?</p>
+      </div>
     </div>
 	
-	<div id="problem-type-or-description">
-      <p class="question"> The number of swapping needed to sort the numbers 8,22,7,9,31,19,5,13 in ascending order, using bubble sort is</p>
+    <div id="problem-type-or-description">
+      <p class="question"> The number of swaps needed to sort the
+	numbers 8,22,7,9,31,19,5,13 into ascending order using Bubble
+	Sort is</p> 
       <div class="solution"><var>"14"</var></div>
       <ul class="choices">
 	<li><var>"11"</var></li>
 	<li><var>"12"</var></li>
 	<li><var>"13"</var></li>	  	 
       </ul>
-	  <div class="hints">
-	   <p>The number of swaps required depends on how often a value is less than the one immediately preceding it in the array.</p>
-	  </div>
+      <div class="hints">
+	<p> The number of swaps required depends on how often a
+	    value is less than values preceeding it in the array.</p>
+      </div>
     </div>
-	<div id="problem-type-or-description">
-      <p class="question"> In which cases are the time complexities same in bubble sort?</p>
+    <div id="problem-type-or-description">
+      <p class="question"> In which cases are the time complexities
+      the same in Bubble Sort?</p>
       <div class="solution"><var>"Worst, average and Best"</var></div>
       <ul class="choices">
 	<li><var>"Worst and Best"</var></li>
 	<li><var>"Best and Average"</var></li>
 	<li><var>"Worst and Average"</var></li>	  	 
       </ul>
-	  <div class="hints">
-	   <p>Is the bubble sort complexity varies according to the input?</p>
-	  </div>
+      <div class="hints">
+	<p>Does Bubble Sort's big-oh cost vary according to the input?</p>
+      </div>
     </div>
 	
-	<div id="problem-type-or-description">
-      <p class="question"> Using a bubble sort, the maximum number of passes required to sort an array of 300 elements is:</p>
-      <div class="solution"><var>"600"</var></div>
+    <div id="problem-type-or-description">
+      <p class="question"> Using a Bubble Sort, the maximum number of
+      iterations required to sort an array of 300 elements is:</p>
+      <div class="solution"><var>"299"</var></div>
       <ul class="choices">
+	<li><var>"600"</var></li>
 	<li><var>"300"</var></li>
 	<li><var>"150"</var></li>
 	<li><var>"75"</var></li>	  	 
       </ul>
-	  
     </div>
 	
     <div id="problem-type-or-description">
-      <p class="question">A variant of the bubble sorting algorithm is the so-called odd-even transposition sort . Like bubble sort, this algorithm a total of n-1 passes through the array. Each pass consists of two phases: The first phase compares   with   and swaps them if necessary for all the odd values of of i. The second phase does the same for the even values of i.
- This algorithm is guaranteed to sort  the input after n-1 passes.</p>
-      <div class="solution"><var>"True"</var></div>
-      <ul class="choices" data-category="true">
-	<li><var>"True"</var></li>
-	<li><var>"False"</var></li>			  	  	 
-      </ul>
-    </div> 
-	
-	
-    <div id="problem-type-or-description">
-      <p class="question"> Bubble sort changes the order of two equal elements in its input? </p>
+      <p class="question"> Bubble Sort never changes the order of two equal
+	 elements in its input? </p> 
       <div class="solution"><var>"False"</var></div>
       <ul class="choices" data-category="true">
 	<li><var>"True"</var></li>
 	<li><var>"False"</var></li>			  	  	 
       </ul>
-	  <div class="hints">
-	    <p>Remember that: Bubble Sort consists of a simple double for loop.</p> 
-		<p>The first iteration of the inner for loop moves through the record array from bottom to top, comparing adjacent keys.</p>
-		<p>If the lower-indexed key’s value is greater than its higher-indexed neighbor, then the two values are swapped. </p>
-	   </div>
+      <div class="hints">
+	<p>Bubble Sort consists of a simple double for loop.</p> 
+	<p>The first iteration of the inner for loop moves through the
+	record array from bottom to top, comparing adjacent keys.</p>
+	<p>If the lower-indexed key's value is greater than its
+	higher-indexed neighbor, then the two values are swapped. </p>
+      </div>
     </div> 
 
   </div>

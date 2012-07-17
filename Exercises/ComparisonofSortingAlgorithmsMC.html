@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
 <head>
-  <title>OpenDSA Compariosn of Sorting Algorithms: Multiple Choice Summary</title>
+  <title>Comparison of Sorting Algorithms: Multiple Choice Summary</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript"
@@ -24,20 +24,30 @@
      
     <!-- Question MCQ -->
     <div id="problem-type-or-description">
-      <p class="question">Selectionsort and Quick Sort both fall into the same category of sorting algorithms. What is this category? </p>
-      <div class="solution"><var>"Interchange sorts"</var></div>
+      <p class="question">How are Selection Sort and Quicksort similar?</p>
+      <div class="solution"><var>"They both can make swaps of
+      non-adjacent elements"</var></div>
       <ul class="choices">
-	<li><var><code>O(n \log n) sorts </code></var></li>
-	<li><var>" Divide-and-conquer sorts "</var></li>
-	<li><var>"Average time is quadratic."</var></li>	  	 
+	<li><var>They are both <code>O(n \log n)</code> sorts</var></li>
+	<li><var>They both use divide-and-conquer</var></li>
+	<li><var>Both have quadratic average case time</var></li>	  	 
       </ul>
-	  <div class="hints">
-	   <p>Think: Is the Selection sort's complexity is O(n log n) or is it a Divide-conquer sort ..is the average time of quicksort is quadratic? </p>
-	  </div>
+      <div class="hints">
+	<p> Does Selection Sort use divide-and-conquer?</p>
+	<p> No</p>
+	<p> Can Selection Sort run in <code>O(n \log n)</code>
+	time?</p>
+	<p> No</p>
+	<p> How long does Quicksort need in the average case?</p>
+	<p> <code>O(n \log n)</code> </p>
+      </div>
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> Suppose we are sorting an array of ten integers using a some quadratic sorting algorithm. After four iterations of the algorithm's main loop, the array elements are ordered as shown here: 
+      <p class="question"> Suppose we are sorting an array of ten
+       integers using a some quadratic sorting algorithm. After four
+       iterations of the algorithm's main loop, the array elements are
+       ordered as shown here:
        1  2  3  4  5  0  6  7  8  9
        Which statement is correct? (Note: Our selectionsort picks largest items first.) </p>
       <div class="solution"><var>"The algorithm might be insertion sort, but could not be selection sort."</var></div>

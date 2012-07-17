@@ -11,7 +11,6 @@
 .. raw:: html
    
    <link href="_static/Code/Shellsort.css" rel="stylesheet" type="text/css" />
-   <input type="button" float="right" name="about" value="About"/>
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
@@ -183,7 +182,7 @@ Here is a code implementation for Shellsort.
    :start-after: /* *** ODSATag: Shellsort *** */
    :end-before: /* *** ODSAendTag: Shellsort *** */
 
-.. todo::
+.. TODO::
 
    Exercise: Two parts, joined together be selected at random.
    Solve this exercise 10 times in a row to get credit.

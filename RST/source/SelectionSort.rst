@@ -50,7 +50,7 @@ The following visualization puts it all together.
 
 .. avembed:: AV/selectionsort-av.html
 
-.. todo::
+.. TODO::
 
    Exercise:
 
@@ -63,7 +63,7 @@ The following visualization puts it all together.
    position to start from to do the next pass of selection sort. Show
    the    array after this pass has been completed.
 
-.. todo::
+.. TODO::
 
    Create proficiency exercise for Selection Sort.
 

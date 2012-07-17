@@ -55,7 +55,7 @@ occur.
 Changing from the swap to the shift will make a further improvmement,
 but not nearly as much.
 
-.. todo::
+.. TODO::
 
    Write a "live code" style exercise for students to take the
    original code for Insertion Sort, with a (hidden?) harness to do
