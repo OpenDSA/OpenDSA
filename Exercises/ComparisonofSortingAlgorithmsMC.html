@@ -15,28 +15,26 @@
 <body>
 
 <div class="exercise">
-    <div class = "vars">
-      <var id="TYPES">[ "True", "False" ]</var>
-      <var id="GBAns">randFromArray( TYPES )</var>
-      <var id="GB">(GBAns === "True") ? "good" : "bad"</var>
-    </div>
+  <div class = "vars">
+    <var id="TYPES">[ "True", "False" ]</var>
+    <var id="GBAns">randFromArray( TYPES )</var>
+    <var id="GB">(GBAns === "True") ? "good" : "bad"</var>
+  </div>
   <div class="problems">
      
     <!-- Question MCQ -->
     <div id="problem-type-or-description">
       <p class="question">How are Selection Sort and Quicksort similar?</p>
-      <div class="solution"><var>"They both can make swaps of
-      non-adjacent elements"</var></div>
+      <div class="solution"><var>"They both can swap non-adjacent elements"</var></div>
       <ul class="choices">
 	<li><var>They are both <code>O(n \log n)</code> sorts</var></li>
-	<li><var>They both use divide-and-conquer</var></li>
-	<li><var>Both have quadratic average case time</var></li>	  	 
+	<li><var>"They both use divide-and-conquer"</var></li>
+	<li><var>"Both have quadratic average case time"</var></li>	  	 
       </ul>
       <div class="hints">
-	<p> Does Selection Sort use divide-and-conquer?</p>
-	<p> No</p>
-	<p> Can Selection Sort run in <code>O(n \log n)</code>
-	time?</p>
+	<p>Does Selection Sort use divide-and-conquer?</p>
+	<p>No</p>
+	<p>Can Selection Sort run in <code>O(n \log n)</code> time?</p>
 	<p> No</p>
 	<p> How long does Quicksort need in the average case?</p>
 	<p> <code>O(n \log n)</code> </p>
@@ -45,61 +43,70 @@
 
     <div id="problem-type-or-description">
       <p class="question"> Suppose we are sorting an array of ten
-       integers using a some quadratic sorting algorithm. After four
-       iterations of the algorithm's main loop, the array elements are
-       ordered as shown here:
-       1  2  3  4  5  0  6  7  8  9
-       Which statement is correct? (Note: Our selectionsort picks largest items first.) </p>
+	integers using a some quadratic sorting algorithm. After four
+	iterations of the algorithm's main loop, the array elements are
+	ordered as shown here:
+	1  2  3  5  4  0  6  7  8  9
+	Which statement is correct? (Note: Our Selection Sort sorts
+	from smallest to largest)</p>
       <div class="solution"><var>"The algorithm might be insertion sort, but could not be selection sort."</var></div>
       <ul class="choices">
 	<li><var>"The algorithm might be either selection sort or insertion sort."</var></li>
 	<li><var>"The algorithm might be selection sort, but could not be insertion sort."</var></li>
-	<li><var>"The algorithm is neither selection sort nor insertion sort."</var></li>	  	 
+	<li><var>"The algorithm is neither selection sort nor insertion sort."</var></li>
       </ul>
-
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> Suppose we are sorting an array of eight integers using a some quadratic sorting algorithm. After four iterations of the algorithm's main loop, the array elements are ordered as shown here: 
-       2  4  5  7  8  1  3  6
-       Which statement is correct? (Note: Our selectionsort picks largest items first.) </p>
+      <p class="question"> Suppose we are sorting an array of eight
+	integers using a some quadratic sorting algorithm. After four
+	iterations of the algorithm's main loop, the array elements are
+	ordered as shown here:
+	2  4  5  7  8  1  3  6
+	Which statement is correct? (Note: Our Selection Sort sorts
+	from lowest to highest.) </p>
       <div class="solution"><var>"The algorithm is not selection sort, but it might be insertion sort."</var></div>
       <ul class="choices">
 	<li><var>"The algorithm might be selection sort, but it is not insertion sort."</var></li>
-	<li><var>"The algorithm is not selection sort, but it might be insertion sort."</var></li>
-	<li><var>"The algorithm is neither selection sort nor insertion sort."</var></li>	  	 
+	<li><var>"The algorithm is not selection sort, but it might be insertion sort."</var></li> 
+	<li><var>"The algorithm is neither selection sort nor insertion sort."</var></li>
       </ul>
-	  
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> Which of the following sorts is not always stable?</p>
-      <div class="solution"><var>"Quick Sort"</var></div>
+      <p class="question"> Which of the following sorts is not always
+	stable?</p>
+      <div class="solution"><var>"Quicksort"</var></div>
       <ul class="choices">
 	<li><var>"Insertion Sort"</var></li>
 	<li><var>"Radix Sort"</var></li>
-	<li><var>"Merge Sort"</var></li>	  	 
+	<li><var>"Mergesort"</var></li>
       </ul>
-	  <div class="hints">
-	   <p>	Which of the mentioned algorithms will not maintain the relative order of records with equal keys</p>
-	  </div>
+      <div class="hints">
+	<p>Which of the mentioned algorithms will not maintain the
+	relative order of records with equal keys</p>
+      </div>
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> Which sort may be viewed as being an improvement on insertion sort?</p>
+      <p class="question"> Which sort makes uses of Insertion Sort's
+      best case behavior?</p>
       <div class="solution"><var>"Shell Sort"</var></div>
       <ul class="choices">
 	<li><var>"Heap Sort"</var></li>
 	<li><var>"Radix Sort"</var></li>
-	<li><var>"Quick Sort"</var></li>	  	 
+	<li><var>"Mergeort"</var></li>	  	 
       </ul>
-	  <div class="hints">
-	   <p> Which of the mentioned algorithms works by performing its Insertion Sorts on carefully selected sublists, first on small sublists and then on increasingly large sublists. </p>
-	  </div>
+      <div class="hints">
+	<p> Which algorithm works by performing a series of Insertion
+	  Sorts on carefully selected sublists?</p>
+      </div>
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> A sorting technique that gaurantees that records with the same primary key occurs in the same order in th sorted list as in the original unsorted list is called:</p>
+      <p class="question"> A sorting technique that gaurantees that
+	records with the same key value occurs in the same order in the
+	sorted list as in the original unsorted list is called:</p>
       <div class="solution"><var>"Stable"</var></div>
       <ul class="choices">
 	<li><var>"Consistent"</var></li>
@@ -109,119 +116,111 @@
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> The way a card game player arranges his cards as he picks them up one by one, is an example of</p>
+      <p class="question"> A person sorting a hand of cards might
+	reasonably use which sorting algorithm?</p>
       <div class="solution"><var>"Insertion Sort"</var></div>
       <ul class="choices">
 	<li><var>"Bubble Sort"</var></li>
 	<li><var>"Selection Sort"</var></li>
-	<li><var>"Merge Sort"</var></li>	  	 
+	<li><var>"Mergesort"</var></li>	  	 
       </ul>
-	  <div class="hints">
-	   <p>The player will look at the first two cards and put them in order. Then take the third card and put it into the right order with respect to the first two, and so on. </p>
-	   <p>What is the sorting algorithm that resembels this procedure?</p>
-	  </div>
+      <div class="hints">
+	<p>Think about each algorithm in turn, and imagine yourself
+	  trying to use it for sorting a hand of cards.</p>
+	<p>If you pick up the first two cards you might put them in
+	  order, then pick up the next card, and so on.</p>
+	<p>Or you might pick up all the cards to start, but then still
+	  sorting them from left to right.</p>
+	<p>What sorting algorithm resembles this procedure?</p>
+      </div>
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> If you want to check whether given set of items is sorted or not. Which of the following sorting methods will be the most effecient if it is already in sorted order</p>
+      <p class="question"> It is not uncommon for someone to
+	accidently call sort on a file that is already sorted.
+	Which of the following sorting methods will be the most
+	effecient if the input is already in sorted order</p>
      <div class="solution"><var>"Insertion Sort"</var></div>
       <ul class="choices">
 	<li><var>"Bubble Sort"</var></li>
 	<li><var>"Selection Sort"</var></li>
-	<li><var>"Merge Sort"</var></li>	  	 
+	<li><var>"Mergesort"</var></li>	  	 
       </ul>
-	  <div class="hints">
-	   <p>The implementation of this  sorting algorithm is made up of two nested for loops.</p>
-	   <p>The outer for loop is executed n-1 times. </p>
-	   <p>The the number of times the inner for loop executes depends on how many keys in positions 1 to i-1 have a value less than that of the key in position i.</p>
-	  </div>
+      <div class="hints">
+	<p>Which algorithm will make an iteration "quit early"
+	  depending on the values seen during comparisons?</p>
+      </div>
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question">Which of the following sorting methods will be the best if the number of swappings done is the only measure of effeciency?</p>
+      <p class="question">Which of the following sorting methods will
+      be the best if the number of swaps done is the only measure
+      of effeciency?</p>
        <div class="solution"><var>"Selection Sort"</var></div>
       <ul class="choices">
 	<li><var>"Bubble Sort"</var></li>
 	<li><var>"Insertion Sort"</var></li>
-	<li><var>"Merge Sort"</var></li>	  	 
+	<li><var>"Mergesort"</var></li>
+	<li><var>"Quicksort"></var><li>
       </ul>
-	  <div class="hints">
-	   <p>This sorting algorithms finds the minimum value, swaps it with the value in the first position, and repeats these steps for the remainder of the list.</p> 
-	   <p>It does no more than n swaps.</p>
-	  </div>
+      <div class="hints">
+	<p>This sorting algorithms finds the minimum value, swaps it
+	  with the value in the first position, and repeats these steps
+	  for the remainder of the list.</p>  
+	<p>It does no more than n swaps.</p>
+      </div>
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> As part of mantienance work, you are entrusted with the work of rearranging the library books in a shelf in a proper order, at the end of the day. The ideal choice will be :</p>
-       <div class="solution"><var>"Insertion Sort"</var></div>
-      <ul class="choices">
-	<li><var>"Bubble Sort"</var></li>
-	<li><var>"Selection Sort"</var></li>
-	<li><var>"Merge Sort"</var></li>	  	 
-      </ul>
-	  
-    </div>
-
-    <div id="problem-type-or-description">
-      <p class="question"> Which of the following sorting algorithm has the worst time complexity of <code>O(n \log n)</code>:</p>
+      <p class="question"> Which of the following sorting algorithms
+	has a worst case complexity of <code>O(n \log n)</code>?</p>
       <div class="solution"><var>"Heap Sort"</var></div>
       <ul class="choices">
 	<li><var>"Bubble Sort"</var></li>
 	<li><var>"Selection Sort"</var></li>
-	<li><var>"Merge Sort"</var></li>	  	 
+	<li><var>"Insertion Sort"</var></li>
       </ul>
 	 
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> Which of the following sorting algorithm sorts a given set of items that is already in order or in revese order with equal speed:</p>
-      <div class="solution"><var>"Quick Sort"</var></div>
+      <p class="question"> When Mergsort merges two sorted lists of
+      sizes m and n into a sorted list of size m+n, we require how many
+      comparisons?</p>
+      <div class="solution"><var><code>m+n-1</code></var></div>
       <ul class="choices">
-	<li><var>"Bubble Sort"</var></li>
-	<li><var>"Selection Sort"</var></li>
-	<li><var>"Merge Sort"</var></li>	  	 
+	<li><var><code>m+n</code></var></li>
+	<li><var><code>m</code></var></li>
+	<li><var><code>n</code></var></li>
+	<li><var><code>O(\log m + \log n)</code></var></li>	  	 
       </ul>
-	  
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> For merging two sorted lists of sizes m and n into sorted list of size m+n, we require comparisons of:</p>
-      <div class="solution"><var><code>O(m+n)</code></var></div>
+      <p class="question"> Quicksort is run on two inputs: one is an
+	array already sorted in ascending order, the other is an array
+	already sorted in decending order.
+	Let C1 and C2 be the number of comparisons made for the inputs,
+	respectively. Then</p>
+      <div class="solution"><var>"C1 &lt; C2"</var></div>
       <ul class="choices">
-	<li><var><code>O(m)</code></var></li>
-	<li><var><code>O(m)</code></var></li>
-	<li><var><code>O( \log m + \log n)</code></var></li>	  	 
-      </ul>
-	  
-    </div>
-
-    <div id="problem-type-or-description">
-      <p class="question">Quick sort is run on two inputs shown below to sort in ascending order</p> 
-      <p>1,2,3,..,n </p>
-      <p>n,n-1,n-2,..,2,1</p>
-      <p>Let C1 and C2 be the number of comparisons made for the inputs (i) and (ii) respectively. Then</p>
-      <div class="solution"><var>"C1 > C2"</var></div>
-      <ul class="choices">
-	<li><var>"C1 \< C2"</var></li>
+	<li><var>"C1 > C2"</var></li>
 	<li><var>"C1 = C2"</var></li>
-	<li><var>"We can not anything for arbitary n"</var></li>	  	 
+	<li><var>"We cannot tell for arbitary n"</var></li>	  	 
       </ul>
-	  <div class="hints">
-	   <p><<ANY HINTS YOU HAVE>></p>
-	  </div>
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> How does the Selection Sort compare to the Bubble Sort in execution efficiency?</p>
-      <div class="solution"><var>"The Selection Sort is always faster than the Bubble Sort."</var></div>
+      <p class="question"> How does Selection Sort compare to Bubble
+      Sort in execution efficiency?</p>
+      <div class="solution"><var>"Selection Sort is always faster than
+	  the Bubble Sort on the same input"</var></div>
       <ul class="choices">
-	<li><var>"The Bubble Sort is always faster than the Selection Sort."</var></li>
-	<li><var>"The Selection Sort is usually faster than the Bubble Sort with random data."</var></li>
-	<li><var>"The Selection Sort is only faster than the Bubble Sort with sorted data."</var></li>	  	 
+	<li><var>"Bubble Sort is always faster than Selection Sort on the same input"</var></li>
+	<li><var>"Selection Sort is usually faster than Bubble Sort with random data."</var></li>
+	<li><var>"Selection Sort is only faster than Bubble Sort with sorted data."</var></li>
       </ul>
-	  
     </div>
-
  
   </div>
 </div>

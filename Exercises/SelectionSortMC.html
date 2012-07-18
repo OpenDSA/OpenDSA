@@ -15,98 +15,130 @@
 <body>
 
 <div class="exercise">
-    <div class = "vars">
-      <var id="TYPES">[ "True", "False" ]</var>
-      <var id="GBAns">randFromArray( TYPES )</var>
-      <var id="GB">(GBAns === "True") ? "good" : "bad"</var>
-    </div>
+  <div class = "vars">
+    <var id="TYPES">[ "True", "False" ]</var>
+    <var id="GBAns">randFromArray( TYPES )</var>
+    <var id="GB">(GBAns === "True") ? "good" : "bad"</var>
+  </div>
+
   <div class="problems">
      
     <!-- Question MCQ -->
     <div id="problem-type-or-description">
-      <p class="question"> In a selection sort of n elements, how many times is the swap function called in the complete execution of the algorithm?</p>
-      <div class="solution"><var>"<code>n-1</code></var></div>
+      <p class="question"> How many times does Selection Sort call the
+      swap function on an array of <code>n</code> elements?</p>
+      <div class="solution"><var><code>n-1</code></var></div>
       <ul class="choices">
 	<li><var><code>1</code></var></li>
 	<li><var><code>n \log n</code></var></li>
 	<li><var><code>n^2</code></var></li>	  	 
       </ul>
-	  <div class="hints">
-	   <p> Selection Sort first finds the smallest key in an unsorted list, then the second smallest, and so on. </p>
-	   <p> To find the next smallest key value requires searching through the entire unsorted portion of the array and one swap is required to put the record in place.</p>
-	  </div>
+      <div class="hints">
+	<p> Selection Sort first finds the smallest key in an
+	  unsorted list, then the second smallest, and so on. </p>
+	<p> To find the next smallest key value requires searching
+	  through the entire unsorted portion of the array, but the
+	  search itself needs no swaps.</p>
+	<p> Once the next smallest element is found, one swap is
+	  required to put the record in place.</p>
+	<p>We don't need to check the very last element, since it
+	  must already be in place.</p>
+      </div>
     </div>
 	
-	<div id="problem-type-or-description">
-      <p class="question"> Suppose that a selectionsort of 100 items has completed 42 iterations of the main loop. How many items are now guaranteed to be in their final spot (never to be moved again)? </p>
+    <div id="problem-type-or-description">
+      <p class="question"> Suppose that a selectionsort of 100 items
+	has completed 42 iterations of the main loop. How many items are
+	now guaranteed to be in their final spot (never to be moved
+	again)? </p>
       <div class="solution"><var>"42"</var></div>
       <ul class="choices">
 	<li><var>"21"</var></li>
 	<li><var>"41"</var></li>
 	<li><var>"43"</var></li>	  	 
       </ul>
-	  
-    </div>
-	<div id="problem-type-or-description">
-      <p class="question">How does the Selection Sort behave after all the data is sorted in an array?</p>
-      <div class="solution"><var>"Continues sorting."</var></div>
-      <ul class="choices">
-	<li><var>"It stops making comparisons."</var></li>
-	<li><var>"The Selection Sort continues to make comparisons until every comparison pass is finished."</var></li>
-	<li><var>"If the data is sorted already, the Selection Sort never starts, otherwise it executes every loop."</var></li>	  	 
-      </ul>
-	  <div class="hints">
-	   <p><<ANY HINTS YOU HAVE>></p>
-	  </div>
-    </div>
-	<div id="problem-type-or-description">
-      <p class="question">When is Selection sort is a good choice for sorting an array? </p>
-      <div class="solution"><var>"The elements are long strings or other large records"</var></div>
-      <ul class="choices">
-	<li><var>"Each component of the array requires a small amount of memory."</var></li>
-	<li><var>"The array has only a few elements out of place."</var></li>
-	<li><var>"None of the above."</var></li>	  	 
-      </ul>
-	  <div class="hints">
-	   <p> Selection Sort first finds the smallest key in an unsorted list, then the second smallest, and so on. </p>
-	   <p> To find the next smallest key value requires searching through the entire unsorted portion of the array and one swap is required to put the record in place.</p>
-	  </div>
-    </div>
-	<div id="problem-type-or-description">
-      <p class="question">In which cases are the time complexities same in selection sort?</p>
-      <div class="solution"><var>"Worst, average and Best"</var></div>
-      <ul class="choices">
-	<li><var>"Worst and Best"</var></li>
-	<li><var>"Best and Average"</var></li>
-	<li><var>"Worst and Average"</var></li>	  	 
-      </ul>
-	  <div class="hints">
-	   <p>Think of the number of comparisons required ..is it dependent on the input?</p>
-	  </div>
     </div>
 
     <div id="problem-type-or-description">
-      <p class="question"> Selection sort is simple, but inefficient, sorting algorithm.</p>
+      <p class="question">If the input to Selection Sort is already
+	sorted, what happens?</p>
+      <div class="solution"><var>"Selection Sort sorts in the usual way."</var></div>
+      <ul class="choices">
+	<li><var>"Selection Sort makes no comparisons."</var></li>
+	<li><var>"If the data is sorted already, the Selection Sort
+	    never starts, otherwise it executes every loop."</var></li>
+      </ul>
+      <div class="hints">
+	<p>Does the number of iterations in the outer loop depend
+	  on the input data?</p>
+	<p>On the first iteration, can Selection Sort know that the
+	  first element is already the smallest without looking at
+	  all of the elements?
+      </div>
+    </div>
+
+    <div id="problem-type-or-description">
+      <p class="question">When is Selection sort is a good choice for
+	sorting an array? </p>
+      <div class="solution"><var>"The cost of a swap it large, such as
+	  when the elements are long strings or other large records"</var></div> 
+      <ul class="choices">
+	<li><var>"Each component of the array requires a small amount
+	    of memory."</var></li>
+	<li><var>"The array has only a few elements out of place."</var></li>
+	<li><var>"None of the above."</var></li>	  	 
+      </ul>
+      <div class="hints">
+	<p> On the first iteration, Selection Sort finds the
+	  smallest key in an unsorted list and then puts it in place
+	  with one swap.</p>
+	<p> To find the next smallest key value requires searching
+	  through the entire unsorted portion of the array, but then one
+	  swap is required to put the record in place.</p>
+	<p>The total number of swaps is <code>n-1</code></p>
+      </div>
+    </div>
+
+    <div id="problem-type-or-description">
+      <p class="question">When are the time complexities the
+	same for Selection Sort?</p>
+      <div class="solution"><var>"Worst, average and best cases"</var></div>
+      <ul class="choices">
+	<li><var>"Worst and best cases only"</var></li>
+	<li><var>"Best and average cases only"</var></li>
+	<li><var>"Worst and average cases only"</var></li>	  	 
+      </ul>
+      <div class="hints">
+	<p>Think of the number of comparisons required. Is it
+	  dependent on the input?</p>
+      </div>
+    </div>
+
+    <div id="problem-type-or-description">
+      <p class="question"> Selection sort is simple, but less
+	efficient than the best sorting algorithms.</p>
       <div class="solution"><var>"True"</var></div>
       <ul class="choices" data-category="true">
 	<li><var>"True"</var></li>
 	<li><var>"False"</var></li>			  	  	 
       </ul>
-	  <div class="hints">
-	    <p>Think about the complexity in the case of large lists.</p>
-	   </div>
+      <div class="hints">
+	<p>Think about the asymptotic complexity.</p>
+      </div>
     </div> 
 
-	<div id="problem-type-or-description">
-      <p class="question"> Selection sort changes the order of two equal elements in its input?</p>
+    <div id="problem-type-or-description">
+      <p class="question"> Selection sort never reverses the relative order for two
+	equal elements.</p> 
       <div class="solution"><var>"True"</var></div>
       <ul class="choices" data-category="true">
 	<li><var>"True"</var></li>
 	<li><var>"False"</var></li>			  	  	 
       </ul>
-	  <div class="hints">
-	    <p>Will Selection sort  maintain the relative order of records with equal keys?</p>
-	   </div>
+      <div class="hints">
+	<p>If there are two elements in the array that are
+	  smallest, which one will get picked?</p>
+      </div>
     </div> 
   </div>
 </div>
