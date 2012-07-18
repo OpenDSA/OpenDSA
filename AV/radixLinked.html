@@ -214,15 +214,66 @@ form {
 	arr.css(index, {"background-color": "#00FF00" });
   };
   
+    function runIt() {
+    var i,j,k;
+    var newSize = $('#arraysize').val();
+    var DSize = $('#digitsize').val();
+	var ASize = $('#arraysize').val();
+    if (processArrayValues()) { // if it is false, we got junk user
+                                // needs to fix
+      if (theArray.length === 0) { // Make a random  array
+        ASize = newSize;
+	
+        theArray.length = 0; // Out with the old
+        // Give random numbers in range 0..999
+		
+        for (i=0; i < ASize; i++) {
+          theArray[i] = Math.floor(Math.random()*(Math.pow(10,DSize)));
+		  }
+		for (i=0; i < 10; i++) {
+			outArray[i] = i; // need to change in order to represent output array
+			
+		}
+		
+		for (k=0; k < ASize; k++) {
+		countArray[k] = 0; // need to change in order to represent count array
+		}
+      }
+      else { // Use the values we got out of the user's list
+        ASize = theArray.length;
+      }
+      reset(true); // Reset any previous visualization
+      av = new JSAV("avcontainer"); // initialize JSAV ..
+      // .. and the array. use the layout the user has selected
+	  
+	  arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()}); 
+	  av.label("Original Array");
+	  arrC = av.ds.array(countArray, {indexed: true, layout: arrayLayout.val()});
+	  av.label("Output Array");
+	  
+	  av.step();
+	 
+	
+	  radsort(j);
+	  
+	  
+      av.umsg("Done sorting!");
+      av.recorded(); // mark the end
+    }
+  }
+  
   //Radix linked list sort
 	
   function radsort(){
-    var i, k, j, p, y;
+    var i, k, j, p, y, z, a, b, c, d, e, f, g, h, i;
 	var DSize = $('#digitsize').val();
 	var size = DSize;
     var count = 1;
     var counter = 0;
+	var counting = 0;
     while (size > 0){
+	  arrO = av.ds.array(outArray, {indexed: false, layout: "vertical", center: false});
+	 //var L0 = av.ds.list({top: 50, left: 200});
 	  var L0 = av.ds.list();
 	  L0.addFirst(0);
 	  L0.layout();
@@ -254,169 +305,267 @@ form {
 	  L9.addFirst(9);
 	  L9.layout();
 	  
+	  
+	  L0.css({"left": "+60px"});
+      L0.element.css({"left": 0, "top": -486});
+	  L1.css({"left": "+60px"});
+	  L1.element.css({"left": 0, "top": -486});
+	  L2.css({"left": "+60px"});
+	  L2.element.css({"left": 0, "top": -486});
+	  L3.css({"left": "+60px"});
+	  L3.element.css({"left": 0, "top": -486});
+	  L4.css({"left": "+60px"});
+	  L4.element.css({"left": 0, "top": -486});
+	  L5.css({"left": "+60px"});
+	  L5.element.css({"left": 0, "top": -486});
+	  L6.css({"left": "+60px"});
+	  L6.element.css({"left": 0, "top": -486});
+	  L7.css({"left": "+60px"});
+	  L7.element.css({"left": 0, "top": -486});
+	  L8.css({"left": "+60px"});
+	  L8.element.css({"left": 0, "top": -486});
+	  L9.css({"left": "+60px"});
+	  L9.element.css({"left": 0, "top": -486});
+	  
+	  av.label("Count Array");
+	 
+	  
+	  av.umsg("Creating a linked list by taking the rightmost digit and placing the value accordingly into the linked list");
 	  av.step();
-	  av.displayInit();
 	  for (i = 0; i < theArray.length; i++) {
 	    var answer = Math.floor(((theArray[i]) / count) % 10);
-	    var valu = theArray[i];
-	    if(answer === 0){
+        if(answer === 0){
 		  L0.addLast(theArray[i]);
 		  L0.layout();
-		  }
+		  L0.css({"left": "+60px"});
+		  av.step();
+          }
 	    if(answer === 1){
 		  L1.addLast(theArray[i]);
 		  L1.layout();
+		  L1.css({"left": "+60px"});
+		  av.step();
 		  }
 	    if(answer === 2){
 		  L2.addLast(theArray[i]);
 		  L2.layout();
+		  L2.css({"left": "+60px"});
+		  av.step();
 		  }
 	    if(answer=== 3){
 		  L3.addLast(theArray[i]);
 		  L3.layout();
+		  L3.css({"left": "+60px"});
+		  av.step();
 		  }
 	    if(answer === 4){
 		  L4.addLast(theArray[i]);
 		  L4.layout();
+		  L4.css({"left": "+60px"});
+		  av.step();
 		  }
 	    if(answer === 5){
 		  L5.addLast(theArray[i]);
 		  L5.layout();
+		  L5.css({"left": "+60px"});
+		  av.step();
 		  }
 	     if(answer === 6){
 		  L6.addLast(theArray[i]);
 		  L6.layout();
+		  L6.css({"left": "+60px"});
+		  av.step();
 		  }
 	    if(answer === 7){
 		  L7.addLast(theArray[i]);
 		  L7.layout();
+		  L7.css({"left": "+60px"});
+		  av.step();
 		  }
 	    if(answer === 8){
 		  L8.addLast(theArray[i]);
 		  L8.layout();
+		  L8.css({"left": "+60px"});
+		  av.step();
 		  }
 	    if(answer === 9){
 		  L9.addLast(theArray[i]);
 		  L9.layout();
+		  L9.css({"left": "+60px"});
+		   av.step();
 		  }
-	   
-	    av.step();
-	    av.displayInit();
-	    //var ListNode node = new ListNode();
-	    //var LL = new ListNode(i,null);
-        av.umsg("We start by creating a list and adding some elements..");
        
 	   
-	  }
-	  for (j = theArray.length - 1; j >= 0; j--) {
-	    var answer = Math.floor(((theArray[j]) / count) % 10);
-		if(L0.size() > 1){
-		  arrO.value(0,L0.get(L0.size()-1));
-		  L0.removeLast();
-			
-		}
+	      }
+	  av.umsg("Now we use the linked list to add values into the output array in sorted order according to their rightmost digit");
+	  av.step();
+      if(L0.size() > 1){		
+        for (j = 1; j < L0.size(); j++){
+		  arrC.value(counting,L0.get(j).value());
+		  arrC.highlight([counting]);
+		  counting = counting + 1;
+		  av.step();
+		  arrC.unhighlight([counting-1]);
+			}
+		 }
 		if(L1.size() > 1){
-		  arrO.value(0,L1.get(L1.size() - 1));
-		  L1.removeLast();
-			
+		for (a = 1; a < L1.size(); a++){
+		  arrC.value(counting,L1.get(a).value());
+		  arrC.highlight([counting]);
+		  counting = counting + 1;
+		  av.step();
+		  arrC.unhighlight([counting-1]);
+			}
 		 }
 		if(L2.size() > 1){
-		  arrO.value(0,L2.get(L2.size() - 1));
-		  L2.removeLast();
+		  for (b = 1; b < L2.size(); b++){
+		  arrC.value(counting,L2.get(b).value());
+		  arrC.highlight([counting]);
+		  counting = counting + 1;
+		  av.step();
+		  arrC.unhighlight([counting-1]);
+			}
 	     }
 	    if(L3.size() > 1){
-		  arrO.value(0,L3.get(L3.size() - 1));
-		  L3.removeLast();
+		  for (c = 1; c < L3.size(); c++){
+		  arrC.value(counting,L3.get(c).value());
+		  arrC.highlight([counting]);
+		  counting = counting + 1;
+		  av.step();
+		  arrC.unhighlight([counting-1]);
+			}
 			
-		 }
-		if(L1.size() > 1) {
-		  arrO.value(0,L1.get(L1.size() - 1));
-		  L1.removeLast();
-	     }
-	    if(L4.size() > 1) {
-		  arrO.value(0,L4.get(L4.size() - 1));
-		  L4.removeLast();
+		}
+		if(L4.size() > 1) {
+		 for (d = 1; d < L4.size(); d++){
+		  arrC.value(counting,L4.get(d).value());
+		  arrC.highlight([counting]);
+		  counting = counting + 1;
+		  av.step();
+		  arrC.unhighlight([counting-1]);
+			}
 			
-		 }
-		if(L5.size() > 1) {
-		  arrO.value(0,L5.get(L5.size() - 1));
-		  L5.removeLast();
-	     }
+		}
+	    if(L5.size() > 1) {
+		  for (e = 1; e < L5.size(); e++){
+		  arrC.value(counting,L5.get(e).value());
+		  arrC.highlight([counting]);
+		  counting = counting + 1;
+		  
+		 av.step();
+		 arrC.unhighlight([counting-1]);
+			}
+			
+		}
 		if(L6.size() > 1) {
-		  arrO.value(0,L6.get(L6.size() - 1));
-		  L6.removeLast();
-	     }
+		  for (f = 1; f < L6.size(); f++){
+		  arrC.value(counting,L6.get(f).value());
+		  arrC.highlight([counting]);
+		  counting = counting + 1;
+		  av.step();
+		  arrC.unhighlight([counting-1]);
+			}
+			
+		}
 		if(L7.size() > 1) {
-		  arrO.value(0,L7.get(L7.size() - 1));
-		  L7.removeLast();
+		  for (g = 1; g < L7.size(); g++){
+		  arrC.value(counting,L7.get(g).value());
+		  arrC.highlight([counting]);
+		  counting = counting + 1;
+		  av.step();
+		  arrC.unhighlight([counting-1]);
+			}
+			
+		}
+		if(L8.size() > 1) {
+		for (h = 1; h < L8.size(); h++){
+		  arrC.value(counting,L8.get(h).value());
+		  arrC.highlight([counting]);
+		  counting = counting + 1;
+		  av.step();
+		  arrC.unhighlight([counting-1]);
+			}
+			
+		}
+		 if(L9.size() > 1) {
+		  for (i = 1; i < L9.size(); i++){
+		  arrC.value(counting,L9.get(i).value());
+		  arrC.highlight([counting]);
+		  counting = counting + 1;
+		  av.step();
+		  arrC.unhighlight([counting-1]);
+			}
+			
+		}
+		
+		av.umsg("Now we set the Original Array equal to Output Array"); 
+		av.step();
+		for (y=0; y<theArray.length; y++) {
+	      arr.value(y,arrC.value(y));
+		  theArray[y] = arrC.value(y);
+		  arr.highlight([y]);
 	     }
-	    
+		 
+	    av.step();
+		
+		for (z=0; z<theArray.length; z++) {
+		  arr.unhighlight([z]);
+	     }
+		
+	  counting = 0;
 	  size = size - 1;
-      av.umsg("Now we set the Original Array equal to Output Array"); 
-      av.step();
       counter = counter + 1;
       count= Math.pow(10, counter);
+      av.step();
 	  
-	  
-	  }
-	    
-        //console.log("get = " + L9.get(1));
-       // console.log("size = " + L9.size());
-	    //console.log("value = " + arrO.size(0));
-  }
+		  /*for (j = 1; j < L0.size(); j++){
+		    L0.removeLast();
+			}
+		  L0.layout();
+	 
+		for (a = 1; a < L1.size(); a++){
+		 L1.removeLast();
+			}
+		 L1.layout();
+		  for (b = 1; b < L2.size(); b++){	
+		   L2.removeLast();
+			}
+	     L2.layout();
+		  for (c = 1; c < L3.size(); c++){	
+		   L3.removeLast();
+			}
+			L3.layout();
+		 
+		 for (d = 1; d < L4.size(); d++){	
+		  L4.removeLast();
+			}
+			 L4.layout();	    
+		  for (e = 1; e < L5.size(); e++){	
+		   L5.removeLast();
+			}
+			L5.layout();
+		  for (f = 1; f < L6.size(); f++){
+		 L6.removeLast();
+			}
+			 L6.layout();
+		  for (g = 1; g < L7.size(); g++){
+		  L7.removeLast();
+			}
+			 L7.layout();
+		for (h = 1; h < L8.size(); h++){
+		  L8.removeLast();
+			}
+			L8.layout();
+		  for (i = 1; i < L9.size(); i++){
+		 L9.removeLast();
+			}
+           L9.layout();*/
   
   }
-  
+  }
   // Execute the "Run" button function
-  function runIt() {
-    var i,j,k;
-    var newSize = $('#arraysize').val();
-    var DSize = $('#digitsize').val();
-	var ASize = $('#arraysize').val();
-    if (processArrayValues()) { // if it is false, we got junk user
-                                // needs to fix
-      if (theArray.length === 0) { // Make a random  array
-        ASize = newSize;
-	
-        theArray.length = 0; // Out with the old
-        // Give random numbers in range 0..999
-		
-        for (i=0; i < ASize; i++) {
-          theArray[i] = Math.floor(Math.random()*(Math.pow(10,DSize)));
-		  }
-		for (i=0; i < ASize; i++) {
-			outArray[i] = 0; // need to change in order to represent output array
-			
-		}
-		
-		for (k=0; k < 10; k++) {
-		countArray[k] = 0; // need to change in order to represent count array
-		}
-      }
-      else { // Use the values we got out of the user's list
-        ASize = theArray.length;
-      }
-      reset(true); // Reset any previous visualization
-      av = new JSAV("avcontainer"); // initialize JSAV ..
-      // .. and the array. use the layout the user has selected
-	  
-	  arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()}); 
-	  av.label("Original Array");
-	  arrC = av.ds.array(countArray, {indexed: true, layout: arrayLayout.val()});
-	  av.label("Output Array");
-	 //var LL = av.ds.list([2, 3, 5], {visible: true, center: true});
-	  //arrO = av.ds.array(outArray, {indexed: true, layout: arrayLayout.val()});
-	 // av.label("Output Array");
-	
-	  radsort(j);
-	  
-	  
-      av.umsg("Done sorting!");
-      av.recorded(); // mark the end
-    }
-  }
+
 })(jQuery);
 </script>
 </body>
 </html>
-
