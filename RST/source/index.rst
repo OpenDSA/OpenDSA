@@ -37,6 +37,7 @@ Sorting
    RadixSort
    SortingEmpirical
    SortingLowerBound
+   SortSumm
 
 File Processing
 ---------------

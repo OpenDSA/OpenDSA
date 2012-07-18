@@ -103,3 +103,7 @@ pointer values; the records themselves do not move.
 This technique is illustrated by Figure <ODSAref "PtrSwap" \>.
 Additional space is needed to store the pointers, but the
 return is a faster swap operation.
+
+.. avembed:: Exercises/SelectionSortMC.html
+   :showbutton: hide
+   :title: Question 1
