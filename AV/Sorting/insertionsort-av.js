@@ -1,10 +1,9 @@
 "use strict";
 /*global alert*/
 (function ($) {
-  // Number of values in the array
-  var ASize = $('#arraysize').val();
-  // The array of numbers.
-  var theArray = [];
+  var
+    ASize = $('#arraysize').val(), // Number of values in the array
+    theArray = []; // The array of numbers
 
   // check query parameters from URL
   var params = JSAV.utils.getQueryParameter();
@@ -79,9 +78,9 @@
   function inssort() {
     var i, j;
     av.umsg("Highlighted yellow elements to the left are always sorted. We begin with the element in position 0 in the sorted portion, and we will be moving the element in position 1 (in blue) to the left until it is sorted");
+    pseudo.setCurrentLine(0);
     arr.highlight([0]);
     setBlue(1);
-    pseudo.setCurrentLine(1);
     av.step();
     for (i = 1; i < arr.size(); i++) { // Insert i'th record
       setBlue(i);
@@ -100,6 +99,9 @@
       }
       arr.highlight(j);
     }
+    pseudo.setCurrentLine(4);
+    av.umsg("Done sorting!");
+    av.step();
   }
   
   // Execute the "Run" button function
@@ -109,7 +111,7 @@
 
     if (processArrayValues()) { // if it is false, then we got junk that
                                 // the user needs to fix
-      if (theArray.length === 0) { // Make a random  array
+      if (theArray.length === 0) { // No user-given array. Make a random array
         ASize = newSize;
         theArray.length = 0; // Out with the old
         // Give random numbers in range 0..999
@@ -125,19 +127,13 @@
 
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
-      arr.css(function(index) { return index; }, {"background-color": "#eee"});
-      //      for (i = 0; i < theArray.length; i++) {
-      //        arr.css(i, {"background-color": "#eee"});
-      //      }
       pseudo = av.code({url: "../../SourceCode/Processing/Sorting/Insertionsort/Insertionsort.pde",
-			startAfter: "/* *** ODSATag: Insertionsort *** */",
-		        endBefore: "/* *** ODSAendTag: Insertionsort *** */"});
-      pseudo.setCurrentLine(0);
+                        startAfter: "/* *** ODSATag: Insertionsort *** */",
+                        endBefore: "/* *** ODSAendTag: Insertionsort *** */"});
       av.umsg("Starting Insertion Sort");
       av.displayInit();
       inssort();
-      pseudo.setCurrentLine(4);
-      av.umsg("Done sorting!");
+      arr.unhighlight(function (index) { return true; });
       av.recorded(); // mark the end
     }
   }

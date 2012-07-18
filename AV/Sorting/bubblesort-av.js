@@ -1,10 +1,9 @@
 "use strict";
 /*global alert*/
 (function ($) {
-  // Number of values in the array
-  var ASize = $('#arraysize').val();
-  // The array of numbers.
-  var theArray = [];
+  var
+    ASize = $('#arraysize').val(), // Number of values in the array
+    theArray = []; // The array of numbers
 
   // check query parameters from URL
   var params = JSAV.utils.getQueryParameter();
@@ -76,49 +75,41 @@
     arr.css(index, {"background-color": "#ddf" });
   };
   
-  var setGreen = function(index) {
-    arr.css(index, {"background-color": "#00FF00" });
-  };
-  
-  var setPurple = function(index) {
-    arr.css(index, {"background-color": "FF00FF" });
-  };
-
-  
   // Bubble Sort
   function bubblesort() {
-    var i, j, k, min;
-    av.umsg("Sorting the subarray");
-    for (i=0; i<arr.size(); i++) {
-      //setBlue(i);
-	  min = i; // do not need min variable in this sort
-		for (j=1; j<arr.size()-i; j++) {
-        setBlue(j);
-	    av.step();
-        if (arr.value(j-1) > arr.value(j)) {
-			arr.swap(j-1,j);
-			min = j;	
-			setGreen(min);		  
-	    }
-		
-        else {
-		  //arr.highlight([j-1, j]);
-          //break; // Done pushing element, leave for loop
-		  setBlue(min);
-		  
+    var i, j;
+    av.umsg("For each pass, we will move right to left swapping adjacent elements as needed. Each pass moves the next smallest element into position (these will be shown in lighter color).");
+    pseudo.setCurrentLine(0);
+    av.step();
+    for (i = 0; i < arr.size() - 1; i++) {
+      av.umsg("Starting pass " + i);
+      pseudo.setCurrentLine(1);
+      av.step();
+      av.umsg("For each element moving through the list");
+      pseudo.setCurrentLine(2);
+      av.step();
+      setBlue(arr.size() - 1);
+      for (j = arr.size() - 1; j > i; j--) {
+        setBlue(j - 1);
+        av.umsg("Compare elements");
+        pseudo.setCurrentLine(3);
+        av.step();
+        if (arr.value(j - 1) > arr.value(j)) {
+          av.umsg("Swap");
+          pseudo.setCurrentLine(4);
+          arr.swap(j - 1, j);
+          av.step();
         }
-	    //arr.highlight(j);
+        arr.unhighlight(j);
       }
-	  
-	  //arr.swap(i, min); // swap the two indices	  
-      av.step();   
-	  for (k = i+1; k < arr.size(); k++){
-      	arr.css(k, {"background-color": "#C0C0C0"});	
-	  }	
-      //arr.highlight(j);
-	  //arr.highlight(i);  
-	  
+      arr.highlight(j);
+      av.umsg("Done this pass");
+      av.step();
     }
+    av.umsg("Done sorting!");
+    pseudo.setCurrentLine(5);
+    arr.highlight(arr.size() - 1);
+    av.step();
   }
 
   // Execute the "Run" button function
@@ -128,7 +119,7 @@
 
     if (processArrayValues()) { // if it is false, then we got junk that
                                 // the user needs to fix
-      if (theArray.length === 0) { // Make a random  array
+      if (theArray.length === 0) { // No user-given array. Make a random array
         ASize = newSize;
         theArray.length = 0; // Out with the old
         // Give random numbers in range 0..999
@@ -144,18 +135,13 @@
 
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
-      for (i = 0; i < theArray.length; i++) {
-        arr.css(i, {"background-color": "#eee"});
-      }
       pseudo = av.code({url: "../../SourceCode/Processing/Sorting/Bubblesort/Bubblesort.pde",
 			startAfter: "/* *** ODSATag: Bubblesort *** */",
-		        endBefore: "/* *** ODSAendTag: Bubblesort *** */"});
-      pseudo.setCurrentLine(0);
+                        endBefore: "/* *** ODSAendTag: Bubblesort *** */"});
       av.umsg("Starting Bubble Sort");
       av.displayInit();
       bubblesort();
-      pseudo.setCurrentLine(5);
-      av.umsg("Done sorting!");
+      arr.unhighlight(function (index) { return true; });
       av.recorded(); // mark the end
     }
   }
