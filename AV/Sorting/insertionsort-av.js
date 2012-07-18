@@ -133,7 +133,7 @@
       av.umsg("Starting Insertion Sort");
       av.displayInit();
       inssort();
-      arr.unhighlight(function (index) { return true; });
+      arr.unhighlight();
       av.recorded(); // mark the end
     }
   }

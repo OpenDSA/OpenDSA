@@ -141,7 +141,7 @@
       av.umsg("Starting Bubble Sort");
       av.displayInit();
       bubblesort();
-      arr.unhighlight(function (index) { return true; });
+      arr.unhighlight();
       av.recorded(); // mark the end
     }
   }
