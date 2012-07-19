@@ -2,15 +2,12 @@
 ####################################### Sort SubList ##################################################
 #  Question     : Given a random array of size arr_size , SubList with elements highlighted
 #                 Sort the highlighted sublist
-#  Variables    : arr_size 0 - 16
+#  Variables    : arr_size 0 - 12
 #                 inc_size 1 - (arr_size/2)
 #                 start_pos 0 - (inc_size - 1)
 #  Chapter      : ShellSort
 #  Author       : Gayathri
 #  Date         : July 13, 2012
-#  Doubts       : clone works on firefox , not on safari .
-#                 What should be the Hint ?
-#                 Is arr_size from 1 to 16 ok ?
 #######################################################################################################
 -->
 
@@ -18,17 +15,20 @@
 <html data-require="math">
 
 	<head>
-	  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  		<title>Sort SubList</title>
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-		<script type="text/javascript"
-   	src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
-		</script>
-  		<script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
-  		<script src="../ODSAkhan-exercises/khan-exercise.js"></script>
-  		<script src="../JSAV/build/JSAV-min.js"></script>
-  		<link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <title>FindSubList</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+                <script src="../JSAV/lib/jquery.transform.light.js"></script>
+                <script src="../JSAV/lib/raphael.js"></script>
+                <script type="text/javascript"
+       src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+                </script>
+                <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+                <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+                <script src="../JSAV/build/JSAV-min.js"></script>
+                <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+
 		<style>
 			.jsavcontainer {
   			border: 0px;
@@ -52,26 +52,20 @@
 					sublist = 1;
 			if ( sublist == 1 )
 			{
-    				if ( arr.isHighlight(index) )
-				{	 
-					arr.css([index], {"color": "#eee", "background-color": "green"});
-					nsel = nsel - 1;
- 				}
+				if (nsel === 0) 
+				{ // if first click
+        				arr.css(index, {"font-size": "130%"});
+					nsel = nsel + 1;
+					sel1 = index;
+				}
     				else {
-    					arr.highlight(index);
-					nsel = nsel+1;
-					if (nsel == 1)
-						sel1 = index;
-					if (nsel == 2) 
-					{
-						arr.swap(sel1,index);
-						nsel = 0;
-						arr.css([index], {"color": "#eee", "background-color": "green"});
-						arr.css([sel1], {"color": "#eee", "background-color": "green"});
-					}
+					arr.swap(sel1,index);
+					arr.css(index, {"font-size": "100%"});
+					arr.css(sel1, {"font-size": "100%"});
+					nsel = 0;
+				}
 					
-    				}
-			}
+    			}
 			myGuess = 1;
   		}
 
@@ -83,7 +77,7 @@
 			spos = start_pos;
 			nsel = 0;
     			jsav = new JSAV("jsav", {"animationMode": "none"});
-    			arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
+    			arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a),{indexed: true, center: false});
 			arr_clone = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
 			arr_clone.hide();
 			for (i=0; i<a; i++)
@@ -92,7 +86,7 @@
 			}
 			for (i=start_pos; i < a; i++) {
 				if ( ((i-start_pos)%inc_size) === 0 ) {
-					arr.css([i], {"color": "#eee", "background-color": "green"});
+					arr.highlight(i);
 				}
 			}
 			// bind the clickHandler to handle click events on the array
@@ -126,8 +120,8 @@
 
 	<div class="exercise">
   		<div class="vars">
-    			<var id="arr_size">randRange( 6, 16 )</var>
-			<var id="inc_size">randRange( 1, arr_size/2)</var>
+    			<var id="arr_size">randRange( 6, 12 )</var>
+			<var id="inc_size">randRange( 2, arr_size/2)</var>
 			<<var id="start_pos">randRange(0,inc_size-1)</var>
     			<var id="JSAV">initJSAV(arr_size,inc_size,start_pos)</var>
 			<var id="sec_pos">start_pos+inc_size</var>
@@ -137,7 +131,6 @@
     			<div>
       				<div class="question">
 					<p> The sublist with increment <var> inc_size </var> starting at index <var> start_pos </var> is Highlighted.Sort the highlighted Sublist.
-					Highlight any two elements of the array to swap the elements.</p>
 				<div id="jsav"></div>
       			</div>
       			<div class="solution" data-type="custom">
