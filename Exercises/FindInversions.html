@@ -6,7 +6,7 @@
 #  Variables    : arr_size 4 -6
 #  Author	: Gayathri
 #  Date		: July 13, 2012
-#  Doubts       : Is inversion calculation correct ?
+#  Doubts       : 
 #		  How should array click be handled ?
 #######################################################################################################
 -->
@@ -14,23 +14,25 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  	<title>FindInversions</title>
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-	<script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
-	</script>
-  	<script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
-  	<script src="../ODSAkhan-exercises/khan-exercise.js"></script>
-  	<script src="../JSAV/build/JSAV-min.js"></script>
-  	<link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <title>FindSubList</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+                <script src="../JSAV/lib/jquery.transform.light.js"></script>
+                <script src="../JSAV/lib/raphael.js"></script>
+                <script type="text/javascript"
+       src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+                </script>
+                <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+                <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+                <script src="../JSAV/build/JSAV-min.js"></script>
+                <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
 
-	<style>
-	.jsavcontainer {
-  	border: 0px;
-	}
-	</style>
+		<style>
+		.jsavcontainer {
+  		border: 0px;
+		}
+		</style>
 </head>
 
 <body>
@@ -64,7 +66,7 @@
     		var i , j;
     		temp =0;
     		jsav = new JSAV("jsav", {"animationMode": "none"});
-    		arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
+    		arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a), {indexed:true, center:false});
   
 		// Compute the answer
 		arr_clone = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
@@ -80,19 +82,12 @@
 
 		for (i=0; i < a-1; i=i+1) {
                 	for (j=i+1; j<a; j=j+1){
-                        	if (arr_clone.value(i) > arr_clone.value(j) ) {
-                                	arr_clone.swap(i,j);
-                                       	arr_clone_2.swap(i,j);
+                        	if (arr_clone.value(j) < arr_clone.value(i) ) {
+                                	temp = temp + 1;
                                 }
                          }
                  }
 
-		for (i=0; i < a; i=i+1) {
-			if ( arr_clone_2.value(i) > i)
-                                temp = temp + ( arr_clone_2.value(i) - i );
-			else
-				temp = temp + ( i - arr_clone_2.value(i) ); 
-		}
   
     		// bind the clickHandler to handle click events on the array
     		arr.click(clickHandler);
