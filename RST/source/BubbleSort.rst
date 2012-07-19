@@ -56,9 +56,8 @@ The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/bubblesort-av.html
 
-.. TODO::
-
-   Exercise:
+.. todo::
+   :type: Exercise
 
    Given: An array where some element X is highlighted. Everthing to the
    right of X is sorted (and bigger), and everything to the left is
@@ -70,7 +69,8 @@ The following visualization puts it all together.
    array after the element has been placed in its proper position (and
    other elements moved as necessary).
 
-.. TODO::
+.. todo::
+   :type: Proficiency Exercise
 
    Create proficiency exercise for Bubble Sort.
 
@@ -96,4 +96,4 @@ Insertion Sort.
 
 .. avembed:: Exercises/BubbleSortMC.html
    :showbutton: hide
-   :title: Question 1
+   :title: Review Questions
