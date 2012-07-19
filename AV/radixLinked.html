@@ -8,7 +8,7 @@
 
 #container {
   width: 900px;
-  height:950px;
+  height:1100px;
   border: 1px solid black;
   background-color: #efe;
   padding: 10px;
@@ -19,9 +19,20 @@ div h1 {
   background-color: #efe;
   margin: 5px;
 }
+.jsavlistnode {
+  width: 30px;
+  height: 40px;
+}
+.jsavlist .jsavedge {
+  stroke-width: 2;
+
+}
+
 .jsavcontainer {
   background-color: #efe;
   border: none;
+  width: 850px;
+  height:900px;
 }
 .jsavcounter {
   position: absolute;
@@ -29,6 +40,7 @@ div h1 {
 }
 .jsavarray {
   padding-left:0;
+  
 }
 p.jsavoutput.jsavline {
   height: 30px;
@@ -110,6 +122,9 @@ form {
 <script src="../JSAV/build/JSAV-min.js"></script>
 
 <script>
+
+"use strict";
+/*global alert*/
 (function($) {
   // Number of values in the array
   var ASize = $('#arraysize').val();
@@ -271,42 +286,44 @@ form {
     var count = 1;
     var counter = 0;
 	var counting = 0;
+	var left = 50;
+	var left2 = 0;
     while (size > 0){
-	  arrO = av.ds.array(outArray, {indexed: false, layout: "vertical", center: false});
-	 //var L0 = av.ds.list({top: 50, left: 200});
-	  var L0 = av.ds.list();
-	  L0.addFirst(0);
-	  L0.layout();
-	  var L1 = av.ds.list();
-	  L1.addFirst(1); 
-	  L1.layout();
-	  var L2 = av.ds.list();
-	  L2.addFirst(2);
-	  L2.layout();
-	  var L3 = av.ds.list();
-	  L3.addFirst(3);
-	  L3.layout();
-	  var L4 = av.ds.list();
-	  L4.addFirst(4);
-	  L4.layout();
-	  var L5 = av.ds.list();
-	  L5.addFirst(5);
-	  L5.layout();
-	  var L6 = av.ds.list();
-	  L6.addFirst(6);
-	  L6.layout();
-	  var L7 = av.ds.list();
-	  L7.addFirst(7);
-	  L7.layout();
-	  var L8 = av.ds.list();
-	  L8.addFirst(8);
-	  L8.layout();
-	  var L9 = av.ds.list();
-	  L9.addFirst(9);
-	  L9.layout();
+	  arrO = av.ds.array(outArray, {indexed: false, layout: "vertical", center: false, top: 210, left: left2});
+	 
+	  var L0 = av.ds.list({top: 230, left: left});
+	  //L0.addFirst(0);
+	  L0.layout({center: false});
+	  var L1 = av.ds.list({top: 277, left: left});
+	 // L1.addFirst(1); 
+	  L1.layout({center: false});
+	  var L2 = av.ds.list({top: 323, left: left});
+	  //L2.addFirst(2);
+	  L2.layout({center: false});
+	  var L3 = av.ds.list({top: 368, left: left});
+	 //L3.addFirst(3);
+	  L3.layout({center: false});
+	  var L4 = av.ds.list({top: 415, left: left});
+	  //L4.addFirst(4);
+	  L4.layout({center: false});
+	  var L5 = av.ds.list({top: 462, left: left});
+	 // L5.addFirst(5);
+	  L5.layout({center: false});
+	  var L6 = av.ds.list({top: 509, left: left});
+	 // L6.addFirst(6);
+	  L6.layout({center: false});
+	  var L7 = av.ds.list({top: 556, left: left});
+	 // L7.addFirst(7);
+	  L7.layout({center: false});
+	  var L8 = av.ds.list({top: 603, left: left});
+	 // L8.addFirst(8);
+	  L8.layout({center: false});
+	  var L9 = av.ds.list({top: 650, left: left});
+	 // L9.addFirst(9);
+	  L9.layout({center: false});
 	  
 	  
-	  L0.css({"left": "+60px"});
+	  /*L0.css({"left": "+60px"});
       L0.element.css({"left": 0, "top": -486});
 	  L1.css({"left": "+60px"});
 	  L1.element.css({"left": 0, "top": -486});
@@ -328,174 +345,235 @@ form {
 	  L9.element.css({"left": 0, "top": -486});
 	  
 	  av.label("Count Array");
-	 
-	  
+	 */
+	  console.log("size =  " + L0.size());
 	  av.umsg("Creating a linked list by taking the rightmost digit and placing the value accordingly into the linked list");
 	  av.step();
 	  for (i = 0; i < theArray.length; i++) {
 	    var answer = Math.floor(((theArray[i]) / count) % 10);
         if(answer === 0){
-		  L0.addLast(theArray[i]);
-		  L0.layout();
-		  L0.css({"left": "+60px"});
+		  if(L0.size() == 0){
+		    L0.addFirst(theArray[i]);
+		  }
+		  else{
+		    L0.addLast(theArray[i]); 
+		  }
+		  L0.layout({center: false});
 		  av.step();
           }
+		  
 	    if(answer === 1){
-		  L1.addLast(theArray[i]);
-		  L1.layout();
-		  L1.css({"left": "+60px"});
-		  av.step();
+		  if(L1.size() == 0){
+		    L1.addFirst(theArray[i]);
 		  }
+		  else{
+		    L1.addLast(theArray[i]);
+		  }
+		  L1.layout({center: false});
+		  av.step();
+          }
+		  
 	    if(answer === 2){
-		  L2.addLast(theArray[i]);
-		  L2.layout();
-		  L2.css({"left": "+60px"});
-		  av.step();
+		 if(L2.size() == 0){
+		    L2.addFirst(theArray[i]);
 		  }
+		  else{
+		    L2.addLast(theArray[i]); 
+		  }
+		  L2.layout({center: false});
+		  av.step();
+          }
 	    if(answer=== 3){
-		  L3.addLast(theArray[i]);
-		  L3.layout();
-		  L3.css({"left": "+60px"});
-		  av.step();
+		  if(L3.size() == 0){
+		    L3.addFirst(theArray[i]);
 		  }
+		  else{
+		    L3.addLast(theArray[i]); 
+		  }
+		  L3.layout({center: false});
+		  av.step();
+          }
 	    if(answer === 4){
-		  L4.addLast(theArray[i]);
-		  L4.layout();
-		  L4.css({"left": "+60px"});
-		  av.step();
+		  if(L4.size() == 0){
+		    L4.addFirst(theArray[i]);
 		  }
+		  else{
+		    L4.addLast(theArray[i]); 
+		  }
+		  L4.layout({center: false});
+		  av.step();
+          }
 	    if(answer === 5){
-		  L5.addLast(theArray[i]);
-		  L5.layout();
-		  L5.css({"left": "+60px"});
-		  av.step();
+		  if(L5.size() == 0){
+		    L5.addFirst(theArray[i]);
 		  }
+		  else{
+		    L5.addLast(theArray[i]); 
+		  }
+		  L5.layout({center: false});
+		  av.step();
+          }
 	     if(answer === 6){
-		  L6.addLast(theArray[i]);
-		  L6.layout();
-		  L6.css({"left": "+60px"});
-		  av.step();
+		  if(L6.size() == 0){
+		    L6.addFirst(theArray[i]);
 		  }
+		  else{
+		    L6.addLast(theArray[i]); 
+		  }
+		  L6.layout({center: false});
+		  av.step();
+          }
 	    if(answer === 7){
-		  L7.addLast(theArray[i]);
-		  L7.layout();
-		  L7.css({"left": "+60px"});
-		  av.step();
+		  if(L7.size() == 0){
+		    L7.addFirst(theArray[i]);
 		  }
+		  else{
+		    L7.addLast(theArray[i]); 
+		  }
+		  L7.layout({center: false});
+		  av.step();
+          }
 	    if(answer === 8){
-		  L8.addLast(theArray[i]);
-		  L8.layout();
-		  L8.css({"left": "+60px"});
+		  if(L8.size() == 0){
+		    L8.addFirst(theArray[i]);
+		  }
+		  else{
+		    L8.addLast(theArray[i]); 
+		  }
+		  L8.layout({center: false});
 		  av.step();
-		  }
+          }
 	    if(answer === 9){
-		  L9.addLast(theArray[i]);
-		  L9.layout();
-		  L9.css({"left": "+60px"});
-		   av.step();
+		  if(L9.size() == 0){
+		    L9.addFirst(theArray[i]);
 		  }
+		  else{
+		    L9.addLast(theArray[i]); 
+		  }
+		  L9.layout({center: false});
+		  av.step();
+          }
        
 	   
 	      }
 	  av.umsg("Now we use the linked list to add values into the output array in sorted order according to their rightmost digit");
 	  av.step();
-      if(L0.size() > 1){		
-        for (j = 1; j < L0.size(); j++){
+      if(L0.size() > 0){		
+        for (j = 0; j < L0.size(); j++){
 		  arrC.value(counting,L0.get(j).value());
 		  arrC.highlight([counting]);
+		  //L0.highlight([0]);
+		  arrO.highlight([0]);
 		  counting = counting + 1;
 		  av.step();
 		  arrC.unhighlight([counting-1]);
+		  
 			}
+			arrO.unhighlight([0]);
 		 }
-		if(L1.size() > 1){
-		for (a = 1; a < L1.size(); a++){
+		if(L1.size() > 0){
+		for (a = 0; a < L1.size(); a++){
 		  arrC.value(counting,L1.get(a).value());
 		  arrC.highlight([counting]);
+		  arrO.highlight([1]);
 		  counting = counting + 1;
 		  av.step();
 		  arrC.unhighlight([counting-1]);
+		  
 			}
+			arrO.unhighlight([1]);
 		 }
-		if(L2.size() > 1){
-		  for (b = 1; b < L2.size(); b++){
+		if(L2.size() > 0){
+		  for (b = 0; b < L2.size(); b++){
 		  arrC.value(counting,L2.get(b).value());
 		  arrC.highlight([counting]);
+		  arrO.highlight([2]);
 		  counting = counting + 1;
 		  av.step();
 		  arrC.unhighlight([counting-1]);
+		  
 			}
+			arrO.unhighlight([2]);
 	     }
-	    if(L3.size() > 1){
-		  for (c = 1; c < L3.size(); c++){
+	    if(L3.size() > 0){
+		  for (c = 0; c < L3.size(); c++){
 		  arrC.value(counting,L3.get(c).value());
 		  arrC.highlight([counting]);
+		  arrO.highlight([3]);
 		  counting = counting + 1;
 		  av.step();
 		  arrC.unhighlight([counting-1]);
+		  
 			}
+			arrO.unhighlight([3]);
 			
 		}
-		if(L4.size() > 1) {
-		 for (d = 1; d < L4.size(); d++){
+		if(L4.size() > 0) {
+		 for (d = 0; d < L4.size(); d++){
 		  arrC.value(counting,L4.get(d).value());
 		  arrC.highlight([counting]);
+		  arrO.highlight([4]);
 		  counting = counting + 1;
 		  av.step();
 		  arrC.unhighlight([counting-1]);
 			}
-			
+			arrO.unhighlight([4]);
 		}
-	    if(L5.size() > 1) {
-		  for (e = 1; e < L5.size(); e++){
+	    if(L5.size() > 0) {
+		  for (e = 0; e < L5.size(); e++){
 		  arrC.value(counting,L5.get(e).value());
 		  arrC.highlight([counting]);
+		  arrO.highlight([5]);
 		  counting = counting + 1;
 		  
 		 av.step();
 		 arrC.unhighlight([counting-1]);
 			}
-			
+			arrO.unhighlight([5]);
 		}
-		if(L6.size() > 1) {
-		  for (f = 1; f < L6.size(); f++){
+		if(L6.size() > 0) {
+		  for (f = 0; f < L6.size(); f++){
 		  arrC.value(counting,L6.get(f).value());
 		  arrC.highlight([counting]);
+		  arrO.highlight([6]);
 		  counting = counting + 1;
 		  av.step();
 		  arrC.unhighlight([counting-1]);
 			}
-			
+			arrO.unhighlight([6]);
 		}
-		if(L7.size() > 1) {
-		  for (g = 1; g < L7.size(); g++){
+		if(L7.size() > 0) {
+		  for (g = 0; g < L7.size(); g++){
 		  arrC.value(counting,L7.get(g).value());
 		  arrC.highlight([counting]);
+		  arrO.highlight([7]);
 		  counting = counting + 1;
 		  av.step();
 		  arrC.unhighlight([counting-1]);
 			}
-			
+			arrO.unhighlight([7]);
 		}
-		if(L8.size() > 1) {
-		for (h = 1; h < L8.size(); h++){
+		if(L8.size() > 0) {
+		for (h = 0; h < L8.size(); h++){
 		  arrC.value(counting,L8.get(h).value());
 		  arrC.highlight([counting]);
+		  arrO.highlight([8]);
 		  counting = counting + 1;
 		  av.step();
 		  arrC.unhighlight([counting-1]);
 			}
-			
+			arrO.unhighlight([8]);
 		}
-		 if(L9.size() > 1) {
-		  for (i = 1; i < L9.size(); i++){
+		 if(L9.size() > 0) {
+		  for (i = 0; i < L9.size(); i++){
 		  arrC.value(counting,L9.get(i).value());
+		  arrO.highlight([9]);
 		  arrC.highlight([counting]);
 		  counting = counting + 1;
 		  av.step();
 		  arrC.unhighlight([counting-1]);
 			}
-			
+			arrO.unhighlight([9]);
 		}
 		
 		av.umsg("Now we set the Original Array equal to Output Array"); 
@@ -515,6 +593,8 @@ form {
 	  counting = 0;
 	  size = size - 1;
       counter = counter + 1;
+	  left = left + 320;
+	  left2 = left2 + 320;
       count= Math.pow(10, counter);
       av.step();
 	  
