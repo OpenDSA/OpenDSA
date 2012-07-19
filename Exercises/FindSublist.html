@@ -3,15 +3,12 @@
 #  Question	: Given a random array of size arr_size , random increment size inc_size <= arr_size/2 
 #		  random start location 'start_pos' from [0,inc_size] , Select the Sublist. 
 #		  Solve this exercise 10 times in a row to get credit.
-#  Variables 	: arr_size 0 - 16
+#  Variables 	: arr_size 0 - 12
 #		  inc_size 1 - (arr_size/2)
 #		  start_pos 0 - (inc_size - 1) 
 #  Chapter	: ShellSort
 #  Author	: Gayathri
 #  Date		: July 13, 2012
-#  Doubts	: 
-#		  Is arr_size from 1 to 16 ok ?
-#		  Solve this exercise 10 times in a row to get credit ? -- How to do it ?
 #######################################################################################################
 -->
 
@@ -20,15 +17,18 @@
 	<head>
 	  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   		<title>FindSubList</title>
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script src="../JSAV/lib/jquery.transform.light.js"></script>
+		<script src="../JSAV/lib/raphael.js"></script>
 		<script type="text/javascript"
-   	src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+       src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
 		</script>
   		<script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
   		<script src="../ODSAkhan-exercises/khan-exercise.js"></script>
   		<script src="../JSAV/build/JSAV-min.js"></script>
   		<link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+
 		<style>
 			.jsavcontainer {
   			border: 0px;
@@ -57,7 +57,7 @@
   		initJSAV = function(a) {
 			myGuess = -1;
     			jsav = new JSAV("jsav", {"animationMode": "none"});
-    			arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a),{indexed: true});
+    			arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a),{indexed: true, center: false});
 			// bind the clickHandler to handle click events on the array
     			arr.click(clickHandler);
   		}
@@ -91,7 +91,7 @@
 
 	<div class="exercise">
   		<div class="vars">
-    			<var id="arr_size">randRange( 6, 16 )</var>
+    			<var id="arr_size">randRange(4,12)</var>
 			<var id="inc_size">randRange( 1, arr_size/2)</var>
 			<<var id="start_pos">randRange(0,inc_size-1)</var>
     			<var id="JSAV">initJSAV(arr_size)</var>
@@ -101,7 +101,7 @@
   		<div class="problems">
     			<div>
       				<div class="question">
-					Find the sublist with increment <var> inc_size </var> starting at index <var> start_pos </var>.Note that the array index starts with 0.   
+					Highlight the sublist with increment <var> inc_size </var> starting at index <var> start_pos </var>.   
 				<div id="jsav"></div>
       			</div>
       			<div class="solution" data-type="custom">
@@ -114,7 +114,9 @@
       			</div>
      
 		 	<div class="hints">
-				<p>The First element of the sublist is element at index <var>start_pos</var>. The subsequent elements of sublist are spaced <var>inc_size</var> elements from each other.In this case second element of sublist would be at Index  <var>sec_pos</var>  and so on. </p>
+				<p>The First element of the sublist is element at index <var>start_pos</var></p>
+				<p>The subsequent elements of sublist are spaced <var>inc_size</var> elements from each other.</p>
+				<p>In this case second element of sublist would be at Index  <var>sec_pos</var>  and so on. </p>
       			</div>
     		</div>
   	</div>
