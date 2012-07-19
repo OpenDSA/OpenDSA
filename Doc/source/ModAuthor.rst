@@ -13,3 +13,6 @@ The "book" is created by running ``make`` from ``OpenDSA/RST``.
 A number of special directives have been created, which are documented
 in :ref:`OpenDSA ReST Extensions <ODSAExtensions>`.
 
+Documentation for writing OpenDSA exercises using the Khan Academy
+infrastructure is in
+:ref:`OpenDSA and Khan Academy infrastructure <Exercise>`.
