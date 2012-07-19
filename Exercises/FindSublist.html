@@ -4,7 +4,7 @@
 #		  random start location 'start_pos' from [0,inc_size] , Select the Sublist. 
 #		  Solve this exercise 10 times in a row to get credit.
 #  Variables 	: arr_size 0 - 12
-#		  inc_size 1 - (arr_size/2)
+#		  inc_size 2 - (arr_size/2)
 #		  start_pos 0 - (inc_size - 1) 
 #  Chapter	: ShellSort
 #  Author	: Gayathri
@@ -92,7 +92,7 @@
 	<div class="exercise">
   		<div class="vars">
     			<var id="arr_size">randRange(4,12)</var>
-			<var id="inc_size">randRange( 1, arr_size/2)</var>
+			<var id="inc_size">randRange( 2, arr_size/2)</var>
 			<<var id="start_pos">randRange(0,inc_size-1)</var>
     			<var id="JSAV">initJSAV(arr_size)</var>
 			<var id="sec_pos">start_pos+inc_size</var>
@@ -101,7 +101,7 @@
   		<div class="problems">
     			<div>
       				<div class="question">
-					Highlight the sublist with increment <var> inc_size </var> starting at index <var> start_pos </var>.   
+					<p> Highlight the sublist with increment <var> inc_size </var> starting at index <var> start_pos </var>.</p>   
 				<div id="jsav"></div>
       			</div>
       			<div class="solution" data-type="custom">
