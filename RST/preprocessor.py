@@ -276,12 +276,12 @@ def todoHTML(todolst):
 
    tp =''
    mn=0
-   rst='.. _Todo\n\n.. index:: ! todo\n\nTODO List\n=========\n\n.. raw:: html\n\n  '   
+   rst='.. _Todo\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'   
    #for td in todolst:
    for i, (k,v,s) in enumerate(todolst):
          if tp=='' and v=='':
             if mn==0:
-               rst+=' <hr /><h1>No Category</h1><hr />\n   <p></p><h2>%s</h2>\n\n.. TODO::\n%s\n'%(k.replace('/',': ')[:-4],s[:-1])
+               rst+='.. raw:: html\n\n   <hr /><h1>No Category</h1><hr />\n   <p></p><h2>%s</h2>\n\n.. TODO::\n%s\n'%(k.replace('/',': ')[:-4],s[:-1])
                mn=-1
             else:
                rst+='.. raw:: html\n\n   <h2>%s</h2>\n\n.. TODO::\n%s\n'%(k.replace('/',': ')[:-4],s)
