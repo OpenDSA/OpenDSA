@@ -99,4 +99,30 @@ NOTES
 		   :start-after: /* *** ODSATag: <my tag> *** */
 		   :end-before: /* *** ODSAendTag: <my tag> *** */   
 
- 
+
+TODO
+----
+NAME
+	TODO or todo - adda a todo box in the output HTML file and is use 
+	by ODSA preprocessor script to create a HTML page containing 
+	the full list of desired AVs and Exercises.   
+
+SYNOPSIS::
+
+	.. TODO::
+	   [:type: <type of the desired artifact>]  
+
+DESCRIPTION
+	``TODO::``
+	   The Sphinx TODO (or todo) directive. The ODSA version adds a tinted red
+	   rounded box containing the description of what is to do.
+	``:type:  <type of the desired artifact>``    
+	   The type of the desired artifact (AVs, Profieciency Exercise, etc).
+
+NOTES
+	The ODSA preprocessor collects the description of the TODO directive (inside rst files)
+	to create a TODO.rst file that list all the desired AVs and Exercises grouped by type. 
+	The TODO.rst file should be included in the index.rst file to be part of the table of content of the
+        eBook.  
+
+   
