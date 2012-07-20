@@ -42,6 +42,7 @@ help:
 
 clean:
 	-rm -rf $(BUILDDIR)/*
+	-rm source/ToDo.rst
 
 html:
 	-mkdir -p $(BUILDDIR)
