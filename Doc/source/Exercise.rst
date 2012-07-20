@@ -77,4 +77,4 @@ Using the Multiple Choice Question Template
    * Replace ``<<ANY HINTS YOU HAVE>>`` with any hints you may think will
      be useful to the student. If you don't have any just delete this
      code from this question. If you have multiple hints, you can add
-     as many a syou like, each in its own ``<p></p>`` tags.
+     as many as you like, each in its own ``<p></p>`` tags.
