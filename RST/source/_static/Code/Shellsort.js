@@ -79,14 +79,6 @@ function showDifference(container, a) {
                            {"color": "#0b0", "font-weight": "bold"});
 }
 
-// Support for "About" button
-function about() { // This is what we pop up
-  var mystring = "Shellsort Explanation Slideshow\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during June, 2011\nLast update: August 14, 2011\nJSAV library version " + JSAV.version();
-  alert(mystring);
-}
-
-$('input[name="about"]').click(about); // Set callback action
-
 (function ($) {
   var av = new JSAV("container1");
   // Create an array object under control of JSAV library

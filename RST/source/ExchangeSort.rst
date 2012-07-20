@@ -52,6 +52,10 @@ inversions for the record, where an :index:`inversion` occurs when a
 record with key value greater than the current record's key value
 appears before it.
 
+.. avembed:: Exercises/FindInversions.html
+   :showbutton: hide
+   :title: Question 1
+
 What is the average number of inversions?
 Consider a list **L** containing
 :math:`n` values.
@@ -68,14 +72,6 @@ Thus, the total number of inversions in **L** and
 We therefore know with certainty that any sorting algorithm which
 limits comparisons to adjacent items will cost at least
 :math:`n(n-1)/4 = \Omega(n^2)` in the average case.
-
-.. todo::
-
-   KA Exercise to implement:
-
-   Generate and show an array with 4-6 random elements.
-
-   Question: How many inversions does it have?
 
 Notes
 -----

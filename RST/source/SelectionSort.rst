@@ -51,8 +51,7 @@ The following visualization puts it all together.
 .. avembed:: AV/selectionsort-av.html
 
 .. todo::
-
-   Exercise:
+   :type: Exercise
 
    Given: An array where some element X is highlighted. Everthing to the
    left of X is sorted (the i smallest elements in the array, and
@@ -64,6 +63,7 @@ The following visualization puts it all together.
    the    array after this pass has been completed.
 
 .. todo::
+   :type: Proficiency Exercise
 
    Create proficiency exercise for Selection Sort.
 
@@ -103,3 +103,7 @@ pointer values; the records themselves do not move.
 This technique is illustrated by Figure <ODSAref "PtrSwap" \>.
 Additional space is needed to store the pointers, but the
 return is a faster swap operation.
+
+.. avembed:: Exercises/SelectionSortMC.html
+   :showbutton: hide
+   :title: Review Questions

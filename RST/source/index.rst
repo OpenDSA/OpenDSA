@@ -37,6 +37,7 @@ Sorting
    RadixSort
    SortingEmpirical
    SortingLowerBound
+   SortSumm
 
 File Processing
 ---------------
@@ -76,6 +77,7 @@ Appendix
 
    Glossary
    Bibliography
+   ToDo
 
 * :ref:`genindex`
 * :ref:`search`

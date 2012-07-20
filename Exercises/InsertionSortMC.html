@@ -24,110 +24,122 @@
      
     <!-- Question MCQ -->
     <div id="problem-type-or-description">
-      <p class="question"> When is insertion sort a good choice for sorting an array?</p>
-      <div class="solution"><var>"The array has only a few items out of place."</var></div>
+      <p class="question"> When is Insertion Sort a good choice for sorting an array?</p>
+      <div class="solution"><var>"The array has only a few items out of place"</var></div>
       <ul class="choices">
-	<li><var>"Each component of the array requires a large amount of memory."</var></li>
-	<li><var>"Each component of the array requires a small amount of memory."</var></li>
-	<li><var>"The processor speed is fast."</var></li>	  	 
+	<li><var>"Each component of the array requires a large amount of memory"</var></li>
+	<li><var>"Each component of the array requires a small amount of memory"</var></li>
+	<li><var>"The processor speed is fast"</var></li>	  	 
       </ul>
 	  <div class="hints">
-	   <p>Remember that insertion sort implementation is made up of two nested for loops.</p>
-	   <p>The outer for loop is executed n-1 times. While the number of times the inner for loop executes depends on how many keys in positions 1 to i-1 have a value less than that of the key in position i.</p>
+	   <p>Remember that insertion sort implementation is made up
+	     of two nested for loops.</p> 
+	   <p>The outer for loop is executed <code>n-1</code>
+	     times. While the number of times the inner for loop
+	     executes depends on how many keys in positions 1 to <code>i-1</code>
+	     have a value less than that of the key in position i.</p>
 	  </div>
     </div>
 
     <div id="problem-type-or-description">
       <p class="question"> What is the worst-case time for
 	Insertionsort to sort an array of n elements? </p> 
-      <div class="solution"><var><code>O(n^2)</code></var></div>
+      <div class="solution"><var><code>\Theta(n^2)</code></var></div>
       <ul class="choices">
-	<li><var><code>O(n)</code></var></li>
-	<li><var><code>O(\log n)</code></var></li>
-	<li><var><code>O(n \log n)</code></var></li>	  	 
+	<li><var><code>\Theta(n)</code></var></li>
+	<li><var><code>\Theta(\log n)</code></var></li>
+	<li><var><code>\Theta(n \log n)</code></var></li>	  	 
       </ul>
 	  <div class="hints">
-	   <p>In the worst case, each record must make its way to the top of the array. This would occur if the keys are initially arranged from highest to lowest, in the reverse of sorted order.</p>
-	   <p>In this case, the number of comparisons will be one the first time through the for loop, two the second time, and so on.</p>
+	   <p>In the worst case, each record must make its way to the
+	   top of the array. This would occur if the keys are
+	   initially arranged from highest to lowest, in the reverse
+	   of sorted order.</p>
+	   <p>In this case, the number of comparisons will be one the
+	   first time through the for loop, two the second time, and
+	   so on.</p>
 	  </div>
     </div> 
 
     <div id="problem-type-or-description">
       <p class="question"> What is the best-case time for
 	Insertionsort to sort an array of n elements?</p>
-      <div class="solution"><var><code>O(n)</code></var></div>
+      <div class="solution"><var><code>\Theta(n)</code></var></div>
       <ul class="choices">
-	<li><var><code>O(n^2)</code></var></li>
-	<li><var><code>O(\log n)</code></var></li>
-	<li><var><code>O(n \log n)</code></var></li>	  	 
+	<li><var><code>\Theta(n^2)</code></var></li>
+	<li><var><code>\Theta(\log n)</code></var></li>
+	<li><var><code>\Theta(n \log n)</code></var></li>	  	 
       </ul>
 	  <div class="hints">
-	   <p>The best-case cost occurs when the keys begin in sorted order from lowest to highest.</p>
-	   <p>In this case, every pass through the inner for loop will fail immediately, and no values will be moved.</p>
+	   <p>The best-case cost occurs when the keys begin in sorted
+	     order from lowest to highest.</p>
+	   <p>In this case, every pass through the inner for loop will
+	     fail immediately, and no values will be moved.</p> 
 	  </div>
     </div> 
 
     <div id="problem-type-or-description">
       <p class="question"> When implementing Insertion Sort, a binary
-	search could be used to locate the position within the first i-1
-	elements of the array into which element i should be inserted.
+	search could be used to locate the position within the first <code>i-1</code>
+	elements of the array into which element <code>i</code> should be inserted.
 	Using binary search will:</p>
-      <div class="solution"><var>"Not speed up the asymptotic running
-	  time for Insertion Sort becasue shifting the elements to make
-	  room for the insert will require <code>O(i)</code>."</var></div>
+      <div class="solution"><var>"Not speed up the asymptotic running time for Insertion Sort becasue shifting the elements to make room for the insert will require " +  <code>\Theta(i)</code></var></div>
       <ul class="choices">
-	<li><var> "Speed up the asymptotic running time for Insertion
-	    Sort because the position to insert could be found in O(log
-	    i)."</var></li> 
-	<li><var> "Speed up the asymptotic running time for Insertion
-	    Sort becasue shifting the elements to make room for the insert
-	    will require <code>O(i)</code>." </var></li> 
-	<li><var> "None of the above."</var></li>	  	 
+	<li><var>"Speed up the asymptotic running time for Insertion Sort because the position to insert could be found in " + <code>\Theta(log i)</code></var></li> 
+	<li><var>"Speed up the asymptotic running time for Insertion Sort because shifting the elements to make room for the insert will require " + <code>\Theta(i)</code> </var></li> 
+	<li><var> "None of the above"</var></li>	  	 
       </ul>
 	  <div class="hints">
-	   <p>The position to insert could be found in <code>O(\log(i))</code> and shifting the elements to make room for the insert will require <code>O(i)</code>.</p>
-	   <p>In this case, every pass through the inner for loop will fail immediately, and no values will be moved.</p>
+	   <p>The position at which to insert could be found in
+	     <code>\Theta(\log(i))</code> steps, but shifting the elements to make
+	     room for the this element will require <code>\Theta(i)</code> time.</p> 
+	   <p>In this case, every pass through the inner for loop will
+	     fail immediately, and no values will be moved.</p>
 	  </div>
     </div>
 
     <div id="problem-type-or-description">
       <p class="question"> When implementing Insertion Sort, a binary
-	search could be used to locate the position within the first i-1
-	elements of the array into which element i should be
+	search could be used to locate the position within the first <code>i-1</code>
+	elements of the array into which element <code>i</code> should be
 	inserted. In this implementation, the worst case time will be:</p> 
-      <div class="solution"><var><code>O(n^2)</code></var></div>
+      <div class="solution"><var><code>\Theta(n^2)</code></var></div>
       <ul class="choices">
-	<li><var><code>O(n \log n)</code></var></li>
-	<li><var><code>O(n)</code></var></li>
-	<li><var><code>O(\log n)</code></var></li>
+	<li><var><code>\Theta(n \log n)</code></var></li>
+	<li><var><code>\Theta(n)</code></var></li>
+	<li><var><code>\Theta(\log n)</code></var></li>
       </ul>
 	   <div class="hints">
-	   <p>The position to insert could be found in <code>O(\log i)</code>and shifting the elements to makeroom for the insert will require code>O(i)</code>.</p>
+	   <p>The position to insert could be found in
+	     <code>\Theta (\log i)</code>and shifting the elements to
+	     makeroom for the insert will require code>\Theta(i)</code></p>
 	   </div>
     </div> 
 
     <div id="problem-type-or-description">
       <p class="question"> What is the running time of Insertion Sort
-	for the input where all keys are equal? </p> 
-      <div class="solution"><var><code>O(n)</code></var></div>
+	when the input is an array where all keys are equal? </p> 
+      <div class="solution"><var><code>\Theta(n)</code></var></div>
       <ul class="choices">
-	<li><var><code>O(n^2)</code></var></li>
-	<li><var><code>O(\log n)</code></var></li>
-	<li><var><code>O(n \log n)</code></var></li>	 	 
+	<li><var><code>\Theta(n^2)</code></var></li>
+	<li><var><code>\Theta(\log n)</code></var></li>
+	<li><var><code>\Theta(n \log n)</code></var></li>	 	 
       </ul>
 	  <div class="hints">
-	   <p> Note that each insertion will be looking at the last element of the sorted portion, noticing it's the same as the key to be inserted so it will be moving on.</p>
+	   <p> Note that each insertion will be looking at the last
+	   element of the sorted portion, noticing it's the same as
+	   the key to be inserted so it will be moving on.</p>
 	   </div>
     </div> 	  
 
     <div id="problem-type-or-description">
       <p class="question"> What is the running time of Insertion Sort
-	for the input where input has been sorted? </p>
-      <div class="solution"><var><code>O(n)</code></var></div>
+	when the input is an array that has already been sorted? </p>
+      <div class="solution"><var><code>\Theta(n)</code></var></div>
       <ul class="choices">
-	<li><var><code>O(n^2)</code></var></li>
-	<li><var><code>O(\log n)</code></var></li>
-	<li><var><code>O(n \log n)</code></var></li>	 	 
+	<li><var><code>\Theta(n^2)</code></var></li>
+	<li><var><code>\Theta(\log n)</code></var></li>
+	<li><var><code>\Theta(n \log n)</code></var></li>	 	 
       </ul>
 	   <div class="hints">
 	   <p>Remember that during each iteration, the first remaining element of the input is only compared with the right-most element of the sorted portion of the array.</p>
@@ -136,15 +148,17 @@
 
     <div id="problem-type-or-description">
       <p class="question"> What is the running time of Insertion Sort
-	for the input where input has been sorted in reverse order? </p>
-      <div class="solution"><var><code>O(n^2)</code></var></div>
+	for the array that has already been sorted into reverse order? </p>
+      <div class="solution"><var><code>\Theta(n^2)</code></var></div>
       <ul class="choices">
-	<li><var><code>O(n)</code></var></li>
-	<li><var><code>O(\log n)</code></var></li>
-	<li><var><code>O(n \log n)</code></var></li>	 	 
+	<li><var><code>\Theta(n)</code></var></li>
+	<li><var><code>\Theta(\log n)</code></var></li>
+	<li><var><code>\Theta(n \log n)</code></var></li>	 	 
       </ul>
 	  <div class="hints">
-	   <p>Note that every iteration of the insertion's sort inner loop will scan and shift the entire sorted portion of the array before inserting the next element.</p>
+	   <p>Note that every iteration of the insertion's sort inner
+	     loop will scan and shift the entire sorted portion of the
+	     array before inserting the next element.</p>
 	   </div>
     </div> 
     
@@ -158,34 +172,40 @@
       </ul>
 	    <div class="hints">
 	    <p>Remember that insertion sort implementation is made up of two nested for loops.</p>
-	    <p>The outer for loop is executed n-1 times. While the number of times the inner for loop executes depends on how many keys in positions 1 to i-1 have a value less than that of the key in position i.</p>
+	    <p>The outer for loop is executed <code>n-1</code> times. While the
+	    number of times the inner for loop executes depends on how
+	    many keys in positions 1 to <code>i-1</code> have a value less than
+	    that of the key in position <code>i</code>.</p>
 	   </div>
     </div> 
 	
 	 <div id="problem-type-or-description">
-      <p class="question"> In which cases are the time complexities same in insertion sort?</p>
-      <div class="solution"><var>"Worst and Average."</var></div>
+      <p class="question"> In which cases are the time complexities
+	the same for Insertion Sort?</p>
+      <div class="solution"><var>"Worst and Average only"</var></div>
       <ul class="choices">
-	<li><var>"Worst and Best."</var></li>
-	<li><var>"Best and Average."</var></li>
-	<li><var>"Worst, average and Best."</var></li>	  	 
+	<li><var>"Worst and Best only"</var></li>
+	<li><var>"Best and Average only"</var></li>
+	<li><var>"Worst, average and Best"</var></li>	  	 
       </ul>
 	  
     </div>
     <div id="problem-type-or-description">
-      <p class="question">  Insertion Sort is a <var>GB</var> choice when
+      <p class="question">Insertion Sort is a <var>GB</var> choice when
 	sorting input that is "almost sorted".</p> 
       <div class="solution"><var>GBAns</var></div>
       <ul class="choices" data-category="true">
         <li data-each="TYPES as t"><var>t</var></li>
       </ul>
 	  <div class="hints">
-	   <p>Remember that during each iteration, the first remaining element of the input is only compared with the right-most element of the sorted portion of the array.</p>
+	   <p>During most iterations, the first remaining
+	   element of the input is only compared with the right-most
+	   element of the sorted portion of the array.</p>
 	   </div>
     </div> 
 
     <div id="problem-type-or-description">
-      <p class="question">  Insertion Sort is a stable sorting
+      <p class="question">Insertion Sort is a stable sorting
 	algorithm. (A stable sorting algorithm maintains the
 	relative order of records with equal keys.)</p>
       <div class="solution"><var>"True"</var></div>
@@ -194,7 +214,8 @@
 	<li><var>"False"</var></li>			  	  	 
       </ul>
 	  <div class="hints">
-	   <p>Think of the behaviour of every pass through the inner for loop of the insertion sort if keys are equal.</p>
+	   <p>Think of the behaviour of every pass through the inner
+	   for loop of the insertion sort if keys are equal.</p>
 	   </div>
     </div> 
 

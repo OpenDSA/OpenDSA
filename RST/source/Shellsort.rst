@@ -11,7 +11,6 @@
 .. raw:: html
    
    <link href="_static/Code/Shellsort.css" rel="stylesheet" type="text/css" />
-   <input type="button" float="right" name="about" value="About"/>
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
@@ -183,18 +182,9 @@ Here is a code implementation for Shellsort.
    :start-after: /* *** ODSATag: Shellsort *** */
    :end-before: /* *** ODSAendTag: Shellsort *** */
 
-.. todo::
-
-   Exercise: Two parts, joined together be selected at random.
-   Solve this exercise 10 times in a row to get credit.
-
-   (1) Given a random array of size n, a random increment size I <=
-   n/2, and a random start location S, 0<=S<I (with an arrow over
-   position S), click to highlight the array elements that should be
-   in this sublist.
-
-   (2) Given random array of size n, and a sub array with elements
-   highlighted, sort the indicated sublist. 
+.. avembed:: Exercises/ShellSortSublist.html
+   :showbutton: hide
+   :title: Question 1
 
 There is a lot of flexibility to picking the increment series.
 It does not need to start with :math:`n/2` and cut in half each time.
