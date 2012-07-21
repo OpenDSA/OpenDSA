@@ -11,3 +11,4 @@ Table of Contents
 
    ModAuthor
    Extensions
+   Exercise

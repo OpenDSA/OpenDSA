@@ -50,9 +50,8 @@ The following visualization puts it all together.
 
 .. avembed:: AV/selectionsort-av.html
 
-.. TODO::
-
-   Exercise:
+.. todo::
+   :type: Exercise
 
    Given: An array where some element X is highlighted. Everthing to the
    left of X is sorted (the i smallest elements in the array, and
@@ -63,7 +62,8 @@ The following visualization puts it all together.
    position to start from to do the next pass of selection sort. Show
    the    array after this pass has been completed.
 
-.. TODO::
+.. todo::
+   :type: Proficiency Exercise
 
    Create proficiency exercise for Selection Sort.
 
@@ -106,4 +106,4 @@ return is a faster swap operation.
 
 .. avembed:: Exercises/SelectionSortMC.html
    :showbutton: hide
-   :title: Question 1
+   :title: Review Questions

@@ -7,8 +7,8 @@
 .. _SortSumm:
 
 
-Tree Exercises
-==============
+Sorting Chapter Summary Exercises
+=================================
 
 Chapter summary exercises for Sorting.
 

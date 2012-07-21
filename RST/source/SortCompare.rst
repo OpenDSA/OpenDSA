@@ -104,5 +104,6 @@ To illustrate, here is an example of Insertion Sort implemented to
 work on an array that stores key-record pairs.
 
 .. TODO::
+   :type: Pseudocode
 
    Show an implementation of Insertion Sort using key-record pairs.

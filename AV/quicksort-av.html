@@ -1,63 +1,75 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <title>Selection Sort AV</title>
+  <title>Quicksort AV</title>
   <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
-<style>
+  <style>
 
-#container {
-  width: 770px;
-  height: 465px;
-  border: 1px solid black;
-  background-color: #efe;
-  padding: 10px;
-  overflow: hidden;
-}
+  #container {
+    width: 800px;
+    height: 400px;
+    border: 1px solid black;
+    background-color: #efe;
+    padding: 10px;
+    overflow-y: visible;
+    overflow-x: hidden;
+  }
 
-div h1 {
-  background-color: #efe;
-  margin: 5px;
-}
-.jsavcontainer {
-  background-color: #efe;
-  border: none;
-}
-.jsavcounter {
-  float: left;
-  width: 100px;
-}
-.jsavarray {
-  padding-left:0;
-}
-p.jsavoutput.jsavline {
-  height: 30px;
-  margin: 0;
-}
-#about {
-  float: right;
-}
-a.jsavsettings {
-display: block;
-margin-top: 10px;
-margin-left: 10px;
-}
-form {
-  clear: both;
-}
-</style>
+  #avcontainer{
+    overflow: visible;
+  }
+
+  div h1 {
+    background-color: #efe;
+    margin: 5px;
+  }
+  
+  .jsavcontainer {
+    background-color: #efe;
+    border: none;
+    padding: 0px;
+  }
+  
+  .jsavcounter {
+    position: absolute;
+    width: 100px;
+  }
+  
+  .jsavarray {
+    padding-left:0;
+    position: absolute;
+  }
+  
+  p.jsavoutput.jsavline {
+    height: 30px;
+    margin: 0;
+  }
+  
+  #about {
+    float: right;
+  }
+  
+  a.jsavsettings {
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  form {
+    clear: both;
+  }
+  </style>
 </head>
 
 <body>
 <div id="container">
   <input type="button" id="about" name="about" value="About" style="margin-top:10px;"/>
   <a class="jsavsettings" href="#">Settings</a>
-  <h1 style="">Selection Sort Visualization</h1>
+  <h1 style="">Quicksort Visualization</h1>
 
   <form id="ssperform">
     <p>
-      <input type="button" name="run" value="Run" />
-      <input type="button" name="reset" value="Reset" />
       <label for="arraysize">&nbsp;List size:&nbsp;</label>
       <select id="arraysize">
         <option value = 5>5</option>
@@ -73,8 +85,11 @@ form {
         <option value = 15>15</option>
         <option value = 16>16</option>
       </select>
-      <label for="arrayValues">&nbsp;Your values:&nbsp;</label>
+      <label for="arrayValues">&nbsp;Your values (optional):&nbsp;</label>
       <input size="60" name="arrayValues" id="arrayValues" type="text" />
+	  <br />
+      <input type="button" name="run" value="Run" />
+      <input type="button" name="reset" value="Reset" />
     </p>
   </form>
   <div id="avcontainer">
@@ -84,12 +99,8 @@ form {
   </div> <!--avcontainer-->
 </div> <!--container-->
 
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-</script>
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script src="../JSAV/lib/jquery.transform.light.js"></script>
 <script src="../JSAV/build/JSAV-min.js"></script>
 
@@ -109,7 +120,9 @@ form {
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
   // add the layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
+  var arrayLayout = settings.add("layout",
+    {"type": "select", "options": {"bar": "Bar", "array": "Array"},
+     "label":"Array layout: ", "value": "array"}); 
   
   var context = $("#ssperform");
   var emptyContent = $("#avcontainer").html();
@@ -123,7 +136,8 @@ form {
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    alert("Selection Sort Algorithm Visualization\nWritten by Cliff Shaffer and Mauricio De La Barra\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+    var mystring = "Quicksort Algorithm Visualization\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Summer, 2012\nLast update: July, 2012\nJSAV library version " + JSAV.version();
+    alert(mystring);
   }
 
   // Process Reset button: Reinitialize the output textbox and the AV
@@ -168,58 +182,9 @@ form {
     $('#arraysize').val(theArray.length);
     return true;
   }
-
-
-  var setBlue = function(index) {
-    arr.css(index, {"background-color": "#ddf" });
-  };
   
-  var setGreen = function(index) {
-    arr.css(index, {"background-color": "#00FF00" });
-  };
-  
-  var setPurple = function(index) {
-    arr.css(index, {"background-color": "FF00FF" });
-  };
-
-  
-  // Selection sort
-  function selsort() {
-    var i, j, k, min;
-    av.umsg("Sorting the subarray");
-    for (i=0; i<arr.size(); i+=1) {
-      //setBlue(i);
-	  min = i;
-
-      for (j=i; j<arr.size(); j+=1) {
-        setBlue(j);
-	    av.step();
-        if (arr.value(min) > arr.value(j)) {
-		  min = j;	
-          setGreen(min);		  
-	    }
-		
-        else {
-		  //arr.highlight([j-1, j]);
-          //break; // Done pushing element, leave for loop
-		  setBlue(min);
-        }
-	    //arr.highlight(j);
-      }
-	  
-	  arr.swap(i, min); // swap the two indices	  
-      av.step();   
-	  for (k = i+1; k < arr.size(); k++){
-      	arr.css(k, {"background-color": "#C0C0C0"});	
-	  }	
-      //arr.highlight(j);
-	  arr.highlight(i);
-    }
-  }
-
   // Execute the "Run" button function
   function runIt() {
-    var i;
     var newSize = $('#arraysize').val();
 
     if (processArrayValues()) { // if it is false, we got junk user
@@ -235,17 +200,90 @@ form {
       else { // Use the values we got out of the user's list
         ASize = theArray.length;
       }
+	  
+	  
+	  //theArray = [72, 6, 57, 88, 60, 42, 83, 73, 48, 85];
+	  
+	  
       reset(true); // Reset any previous visualization
       av = new JSAV("avcontainer"); // initialize JSAV ..
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
-      var i, incr;
+	  
+      
+      // BEGIN QUICKSORT IMPLEMENTATION
+
       av.displayInit();
-      selsort();
+      quicksort(arr, 0, arr.size() - 1);
+
+      // END QUICKSORT IMPLEMENTATION
+	  
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
     }
   }
+  
+  
+  function quicksort(arr, i, j)
+  {
+	//arr.highlight(function(index) { return index >= i && index <= j; });
+	//av.step();
+	//arr.unhighlight(function(index) { return index >= i && index <= j; });
+  
+	av.umsg("Select the pivot");
+	var pivotIndex = Math.floor((i + j) / 2);
+	arr.highlightPivot(pivotIndex);
+	av.step();
+	
+	av.umsg("Move the pivot to the end");
+	arr.toggleArrow(j)
+	av.step();
+	arr.swap(pivotIndex, j);
+	av.step();
+	arr.toggleArrow(j)
+	
+	av.umsg("Partition the array");
+	// k will be the first position in the right subarray
+	var k = partition(arr, i - 1, j, arr.value(j));
+	
+	av.umsg("Move the pivot to its final location");
+	//av.step();
+	arr.swap(k, j);
+	av.step();	
+	arr.unhighlight(k);
+	
+	// Sort left partition
+	if ((k - i) > 1) quicksort(arr, i, k - 1);
+	// Sort right partition
+	if ((j - k) > 1) quicksort(arr, k + 1, j);
+  }
+  
+  function partition(arr, l, r, pivot)
+  {
+	while (l < r)
+	{
+	  // Move bounds inward until they meet
+	  while (arr.value(++l) < pivot);
+	  while ((r != 0) && (arr.value(--r) > pivot));
+	  
+	  // Stop when all elements have been appropriately swapped
+	  if (l >= r) break;
+	  
+	  //Highlight elements to swap
+	  arr.highlight([l, r]);
+	  av.step();
+	  arr.swap(l, r);
+	  arr.unhighlight([l, r]);
+	  av.step();
+	}
+	
+	// Return first position in right partition
+	return l; 
+  }
+  
+  JSAV._types.ds.AVArray.prototype.highlightPivot = function(index) {
+    this.css(index, {"background-color": "#ddf" });
+  };
 })(jQuery);
 </script>
 </body>
