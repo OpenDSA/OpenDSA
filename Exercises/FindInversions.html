@@ -6,8 +6,6 @@
 #  Variables    : arr_size 4 -6
 #  Author	: Gayathri
 #  Date		: July 13, 2012
-#  Doubts       : 
-#		  How should array click be handled ?
 #######################################################################################################
 -->
 
@@ -41,25 +39,6 @@
 
   	// function to handle a click event on an array
   	var clickHandler = function(index, e) {
-         	if ( arr.isHighlight(index) )
-         		{
-         			arr.unhighlight(index);
-                		nsel = nsel - 1;
-         		}
-         	else {
-                	 arr.highlight(index);
-                 	nsel = nsel+1;
-                 	if (nsel == 1)
-                 		sel1 = index;
-                 	if (nsel == 2)
-                 	{
-                 		arr.swap(sel1,index);
-                        	nsel = 0;
-                        	arr.unhighlight(index);
-                        	arr.unhighlight(sel1);
-                 	}
-
-         	}
   	}
 
   	initJSAV = function(a) {
@@ -89,8 +68,6 @@
                  }
 
   
-    		// bind the clickHandler to handle click events on the array
-    		arr.click(clickHandler);
   	}
 
 	// Return the computed Answer

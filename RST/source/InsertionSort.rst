@@ -12,21 +12,21 @@
 
 .. raw:: html
    
-   <link href="_static/Code/Inssort.css" rel="stylesheet" type="text/css" />
+   <link href="_static/Code/quadraticsort.css" rel="stylesheet" type="text/css" />
 
 
 Insertion Sort
 ==============
 
 What if you have a stack of phone bills from the past two years
-and that you need to organize them by date?
+and you want to organize them by date?
 A fairly natural way to do this might be to look at the first two
 bills and put them in order.
 Then take the third bill and put it into the right order with respect
 to the first two, and so on.
 As you take each bill, you would add it to the sorted pile that you
 have already made.
-This naturally intuitive process is the inspiration for
+This natural approach to sorting is the inspiration for
 our first sorting algorithm, called ..dfn:`Insertion Sort`.
 
 Insertion Sort iterates through a list of records.
@@ -85,9 +85,8 @@ The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/insertionsort-av.html
 
-.. TODO::
-
-   Exercise:
+.. todo::
+   :type: Exercise
 
    Given: An array where some element X is highlighted. Everthing to the
    left of X is sorted, and everything to the right is random.
@@ -96,7 +95,8 @@ The following visualization puts it all together.
    processed by Insertion Sort. Show the array after the element has been
    placed in its proper position (and other elements moved as necessary).
 
-.. TODO::
+.. todo::
+   :type: Proficiency Exercise
 
    Create proficiency exercise for Insertion Sort.
 
@@ -184,7 +184,7 @@ Insertion Sort.
 
 .. avembed:: Exercises/InsertionSortMC.html
    :showbutton: hide
-   :title: Question 1
+   :title: Review Questions
 
 .. raw:: html
 
