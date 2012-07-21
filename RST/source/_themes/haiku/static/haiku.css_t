@@ -67,22 +67,22 @@ a:hover, a:active {
 
 /* Some headers act as anchors, don't give them a hover effect */
 
-h1 a:hover, a:active {
+h1 a:hover, h1 a:active {
     text-decoration: none;
     color: {{ theme_headingcolor }};
 }
 
-h2 a:hover, a:active {
+h2 a:hover, h2 a:active {
     text-decoration: none;
     color: {{ theme_headingcolor }};
 }
 
-h3 a:hover, a:active {
+h3 a:hover, h3 a:active {
     text-decoration: none;
     color: {{ theme_headingcolor }};
 }
 
-h4 a:hover, a:active {
+h4 a:hover, h4 a:active {
     text-decoration: none;
     color: {{ theme_headingcolor }};
 }
@@ -290,9 +290,6 @@ ul {
 
 li {
     line-height: 1.3;
-}
-
-div.content li {
     -moz-background-clip:border;
     -moz-background-inline-policy:continuous;
     -moz-background-origin:padding;
