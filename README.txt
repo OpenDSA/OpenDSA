@@ -48,5 +48,8 @@ OpenDSA, you must get the JSAV submodule by doing the following:
   git submodule init
   git submodule update
 
-To check this repository out:
+To check out a read-only copy of this repository:
   git clone git://github.com/cashaffer/OpenDSA.git OpenDSA
+
+To check out a read-write copy of this repository (requires permission to commit to the repo):
+  git clone https://YOURGITHUBID@github.com/cashaffer/OpenDSA.git OpenDSA

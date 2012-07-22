@@ -1,115 +1,138 @@
 //init for the exercise
 var init = function()
 {
-    //try to clean everything
-    if(dynTable !== undefined)
-    {
+    //var good = false;
+    //while(good === false)
+    //{
+        //try to clean everything
+        if(dynTable !== undefined)
+        {
+            for(i = 0; i < dynTable.length; i++)
+            {
+                dynTable[i].hide();
+                dynTable[i].clear();
+            }
+        }
+        if(itemTable !== undefined)
+        {
+            for(i = 0; i < itemTable.length; i++)
+            {
+                itemTable[i].hide();
+                itemTable[i].clear();
+            }
+        }
+        if(valueList !== undefined)
+        {
+            valueList.hide();
+            valueList.clear();
+        }
+        if(tableSel !== undefined)
+        {
+            tableSel.value(null);
+        }
+        if(tableSelRow !== undefined)
+        {
+            tableSel.value(-1);
+        }
+        if(tableSelCol !== undefined)
+        {
+            tableSel.value(-1);
+        }
+        if(listSel !== undefined)
+        {
+            listSel.value(null);
+        }
+        if(itemLabel !== undefined)
+        {
+            itemLabel.hide();// = jsav.label("item");
+            weightLabel.hide();// = jsav.label("weight");
+            valueLabel.hide();// = jsav.label("value");
+            choiceLabel.hide();
+        }
+        dynTable = [];
+        itemTable = [];
+        startDynTable = [];
+        startValueList = [];
+        curValue = 0;
+        weight = [];
+        number = [];
+        value = [];
+        numItems = randomInt(3, 4);
+        tableSel = jsav.variable(null);
+        tableSelRow = jsav.variable(-1);
+        tableSelCol = jsav.variable(-1);
+        listSel = jsav.variable(-1);
+        //generate items
+        capacity = randomInt(5, 8);        
+        for(i = 0; i < numItems; i++)
+        {
+            if(i >= Math.floor(numItems/2))
+            {
+                weight[i] = Math.floor(Math.random()*(Math.floor(capacity/1.5)))+1;
+            }
+            else
+            {
+                weight[i] = Math.floor(Math.random()*6)+1;
+            }
+            number[i] = i+1;
+            value[i] = Math.floor(Math.random()*5)+1;
+        }
+        itemTable[0] = jsav.ds.array(number, {centered:false, left:50, top:0});
+        itemTable[1] = jsav.ds.array(weight, {centered:false, left:50, top:40});
+        itemTable[2] = jsav.ds.array(value, {centered:false, left:50, top:80});
+        itemLabel = jsav.label("item", {left:(60 + 40 * itemTable[0].size()), top:10});
+        weightLabel = jsav.label("weight", {left:(60 + 40 * itemTable[0].size()), top:50});
+        valueLabel = jsav.label("value", {left:(60 + 40 * itemTable[0].size()), top:90});
+        
+        //initalize dynTable
+        var row = [];
+        for(i = 0; i <= numItems; i++)
+        {
+            row = [];
+            if(i == 0)
+            {
+                for(j = 0; j <= capacity; j++)
+                {
+                    row[j] = 0; 
+                }
+            }
+            else
+            {
+                for(j = 0; j <= capacity; j++)
+                {
+                    if(j == 0)
+                        row[j] = 0;
+                    else
+                        row[j] = "";
+                }
+            }
+            dynTable[i] = jsav.ds.array(row);
+            dynTable[i].click(genDynClickFunction(i));
+            //dynTable[i].click(clickDynTable);
+        }
+        fillTableComplete(dynTable, itemTable);
+        clearCells(dynTable, itemTable, numItems, capacity);
+
+        //store the starting table for later use by model answer
+        startDynTable = [];
         for(i = 0; i < dynTable.length; i++)
         {
-            dynTable[i].hide();
-            dynTable[i].clear();
-        }
-    }
-    if(itemTable !== undefined)
-    {
-        for(i = 0; i < itemTable.length; i++)
-        {
-            itemTable[i].hide();
-            itemTable[i].clear();
-        }
-    }
-    if(valueList !== undefined)
-    {
-        valueList.hide();
-        valueList.clear();
-    }
-    if(tableSel !== undefined)
-    {
-        tableSel.value(null);
-    }
-    if(listSel !== undefined)
-    {
-        listSel.value(null);
-    }
-    if(itemLabel !== undefined)
-    {
-        itemLabel.hide();// = jsav.label("item");
-        weightLabel.hide();// = jsav.label("weight");
-        valueLabel.hide();// = jsav.label("value");
-        choiceLabel.hide();
-    }
-    dynTable = [];
-    itemTable = [];
-    startDynTable = [];
-    startValueList = [];
-    curValue = 0;
-    weight = [];
-    number = [];
-    value = [];
-    numItems = Math.floor(Math.random()*3) + 3;
-    tableSel = jsav.variable(null);
-    listSel = jsav.variable(null);
-    //generate items
-    for(i = 0; i < numItems; i++)
-    {
-        weight[i] = Math.floor(Math.random()*5)+1;
-        number[i] = i+1;
-        value[i] = Math.floor(Math.random()*5)+1;
-    }
-    itemTable[0] = jsav.ds.array(number, {centered:false, left:50, top:0});
-    itemTable[1] = jsav.ds.array(weight, {centered:false, left:50, top:40});
-    itemTable[2] = jsav.ds.array(value, {centered:false, left:50, top:80});
-    itemLabel = jsav.label("item", {left:(60 + 40 * itemTable[0].size()), top:10});
-    weightLabel = jsav.label("weight", {left:(60 + 40 * itemTable[0].size()), top:50});
-    valueLabel = jsav.label("value", {left:(60 + 40 * itemTable[0].size()), top:90});
-    
-    //initalize dynTable
-    capacity = Math.floor(Math.random()*6) + 3; //from 5 to 10;
-    var row = [];
-    for(i = 0; i <= numItems; i++)
-    {
-        row = [];
-        if(i == 0)
-        {
-            for(j = 0; j <= capacity; j++)
+            var row;
+            row = [];
+            for(j = 0; j < dynTable[i].size(); j++)
             {
-                row[j] = 0; 
+                row[j] = dynTable[i].value(j);
             }
+            startDynTable[i] =row;
         }
-        else
-        {
-            for(j = 0; j <= capacity; j++)
-            {
-                if(j == 0)
-                    row[j] = 0;
-                else
-                    row[j] = "";
-            }
-        }
-        dynTable[i] = jsav.ds.array(row);
-        dynTable[i].click(clickDynTable);
-    }
-    fillTableComplete(dynTable, itemTable);
-    clearCells(dynTable, itemTable, numItems, capacity);
 
-    //store the starting table for later use by model answer
-    startDynTable = [];
-    for(i = 0; i < dynTable.length; i++)
-    {
-        var row;
-        row = [];
-        for(j = 0; j < dynTable[i].size(); j++)
-        {
-            row[j] = dynTable[i].value(j);
-        }
-        startDynTable[i] =row;
-    }
-
-    valueList = jsav.ds.array(startValueList, {top: (-50)});
-    console.log(parseInt(valueList.css("left")));
-    choiceLabel = jsav.label("choices", {top:-40, left:(parseInt(valueList.css("left")) - 60)});
-    valueList.click(clickValueList);
-    
+        valueList = jsav.ds.array(startValueList, {top: (-50)});
+        //console.log(parseInt(valueList.css("left")));
+        choiceLabel = jsav.label("choices", {top:-40, left:(parseInt(valueList.css("left")) - 60)});
+        valueList.click(clickValueList);
+        //if(valueList.size() <= 12 && valueList.size() >= 8)
+        //    good = true; 
+    //}
     return dynTable;
 }
 
@@ -201,63 +224,88 @@ var clearCells = function(dynTable, itemTable, n, w)
     }
 }
 
-//removes a value from a jsav array and shifts later elements left
-//is too ineffecent to use...
-var delShiftLeft = function(list, index)
-{
-    //strange things happen if index is a string...
-    if(typeof index == "string")
-    {
-        index = parseInt(index);
-    }
-    for(; index < list.size(); index++)
-    {
-        if(index === list.size()-1)
-        {
-            console.log("setting " + index + " to \" \"");
-            list.value(index, " ");
-        }
-        else
-        {
-            console.log("setting " + index + " to " + (index+1));
-            list.value(index, list.value(index+1));
-        }
-    }
-}
-
-var clickDynTable = function(index)
-{
-    //highlight and set case
-    console.log("clickDynTable typeof index: " + (typeof index));
-    if(listSel.value() != -1 && this.value(index) === "-")
-    {
-        this.value(index, valueList.value(listSel.value()));
-        console.log("valList type: " + typeof listSel.value())
-        valueList.css(parseInt(listSel.value()), {"background-color":"white"});        
-        //delShiftLeft(valueList, listSel.value());
-        valueList.value(listSel.value(), "-");
-        listSel.value(-1);
-        exercise.gradeableStep();
-    }
-}
-
 var clickValueList = function(index)
 {
-    console.log("clickValueList typeof index: " + (typeof index));
-    if(this.value(index) !== "-")
+    if(listSel.value() === index)//deselect case
     {
-        console.log("not empty");
-        if(listSel.value() === -1 || listSel.value() === undefined)
+        valueList.css(index, {"background-color":"white"});
+        listSel.value(-1);
+    }
+    else if(valueList.value(index) !== "-")//if the cell is selectable
+    {
+        if(tableSelRow.value() === -1)//no value from dyntable selected yet
         {
-            listSel.value(index)
-            valueList.css(index, {"background-color":"yellow"});
+            if(listSel.value() === -1)//no other selected row in dynTable
+            {
+                valueList.css(index, {"background-color":"yellow"});
+                listSel.value(index);
+            }
+            else//there is another selected value in valueList
+            {
+                valueList.css(listSel.value(), {"background-color":"white"});
+                listSel.value(index);
+                valueList.css(index, {"background-color":"yellow"});
+            }
         }
-        else
+        else//value from dynTable already selected
         {
-            console.log("unhighlight valList: " + listSel.value());
-            valueList.css(undefined, {"background-color":"white"});
-            listSel.value(index);
-            valueList.css(index, {"background-color":"yellow"});
+            //copy value over and clear selected values
+            dynTable[tableSelRow.value()].value(tableSelCol.value(), valueList.value(index));
+            valueList.value(index, "-");
+            dynTable[tableSelRow.value()].css(tableSelCol.value(), {"background-color":"white"});
+            listSel.value(-1);
+            tableSelRow.value(-1);
+            tableSelCol.value(-1);
+            exercise.gradeableStep();
         }
     }
+}
+
+var genDynClickFunction = function(offset)
+{
+    return function(index)
+    {
+        if(tableSelRow.value() === offset &&
+           tableSelCol.value() === index)//deselect case
+        {
+            dynTable[offset].css(index, {"background-color":"white"});
+            tableSelRow.value(-1);
+            tableSelCol.value(-1);
+        }
+        else if(dynTable[offset].value(index) === "-")//if the cell is selectable
+        {
+            if(listSel.value() === -1)//no value from valulist selected yet
+            {
+                if(tableSelRow.value() === -1)//no other selected row in dynTable
+                {
+                    tableSelRow.value(offset);
+                    tableSelCol.value(index);
+                    dynTable[offset].css(index, {"background-color":"yellow"});
+                }
+                else//there is another selected row in dyntable
+                {
+                    dynTable[tableSelRow.value()].css(tableSelCol.value(), {"background-color":"white"});
+                    tableSelRow.value(offset);
+                    tableSelCol.value(index);
+                    dynTable[offset].css(index, {"background-color":"yellow"});
+                }
+            }
+            else//value from valuelist already selected
+            {
+                //copy value over and clear selected values
+                dynTable[offset].value(index, valueList.value(listSel.value()));
+                valueList.value(listSel.value(), "-");
+                valueList.css(parseInt(listSel.value()), {"background-color":"white"});
+                listSel.value(-1);
+                tableSelRow.value(-1);
+                tableSelCol.value(-1);
+                exercise.gradeableStep();
+            }
+        }
+    }
+}
+
+var randomInt = function(a, b)
+{
+    return Math.floor(Math.random()*(b-a+1)) + a;
 }

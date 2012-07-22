@@ -129,7 +129,7 @@ var Khan = (function() {
 
 	// The main server we're connecting to for saving data
 	server = typeof apiServer !== "undefined" ? apiServer :
-		testMode ? "http://198.82.152.215:8090" : "",
+		testMode ? "http://0.0.0.0:8000" : "",
 
 	// The name of the exercise
 	exerciseName = typeof userExercise !== "undefined" ? userExercise.exercise : ((/([^\/.]+)(?:\.html)?$/.exec( window.location.pathname ) || [])[1]),
@@ -313,6 +313,9 @@ var Khan = (function() {
 					if ( testMode && Khan.query.nocache != null ) {
 						cachebust = "?" + Math.random();
 					}
+					if (mod === "raphael")
+						src = "../JSAV/lib/" + mod + ".js" + cachebust;
+					else 
 					src = urlBase + "utils/" + mod + ".js" + cachebust;
 					deps = Khan.moduleDependencies[ mod ];
 					mod = {
