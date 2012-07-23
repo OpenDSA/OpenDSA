@@ -42,9 +42,10 @@ help:
 
 clean:
 	-rm -rf $(BUILDDIR)/*
+	-rm source/ToDo.rst
 
 html:
-
+	-mkdir -p $(BUILDDIR)
 	python preprocessor.py source/ $(BUILDDIR)/html
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	cp source/knowledgemap.html $(BUILDDIR)/html 

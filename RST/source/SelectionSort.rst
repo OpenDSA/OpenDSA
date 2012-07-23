@@ -28,7 +28,7 @@ required to put the record in place.
 Thus, the total number of swaps required will be :math:`n-1`
 (we get the last record in place "for free").
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/SelSort.png
+.. figure:: Images/SelSort.png
    :width: 400
    :alt: An illustration of Selection Sort
 
@@ -39,29 +39,33 @@ Thus, the total number of swaps required will be :math:`n-1`
    Numbers above the line in each column have been sorted and are in
    their final positions.
 
-.. raw:: html
-
-   <center>
-     <iframe src="http://algoviz.org:/OpenDSA/dev/OpenDSA/AV/selectionsort-av.html"
-	 type="text/javascript" width="820" height="520"
-	 frameborder="0" marginwidth="0" marginheight="0"
-	 scrolling="no">
-     </iframe>
-   </center>
-
 Figure <ODSAref "SelSort" \> illustrates Selection Sort.
-Here is a JAVA implementation.::
 
-   static <E extends Comparable<? super E>>
-   void Sort(E[] A) {
-     for (int i=0; i<A.length-1; i++) { // Select i'th record
-       int lowindex = i;                // Remember its index
-       for (int j=A.length-1; j>i; j--) // Find the least value
-         if (A[j].compareTo(A[lowindex]) < 0)
-	   lowindex = j;                // Put it in place
-       DSutil.swap(A, i, lowindex);
-     }
-   }
+Here is an implementation for Selection Sort.
+
+.. codeinclude:: Sorting/Selectionsort/Selectionsort.pde 
+   :tag: Selectionsort
+
+The following visualization puts it all together.
+
+.. avembed:: AV/selectionsort-av.html
+
+.. todo::
+   :type: Exercise
+
+   Given: An array where some element X is highlighted. Everthing to the
+   left of X is sorted (the i smallest elements in the array, and
+   everything to the right is 
+   constrained random (must be bigger than the elements to the left).
+
+   Question: In this array, the highlighted element shows the current
+   position to start from to do the next pass of selection sort. Show
+   the    array after this pass has been completed.
+
+.. todo::
+   :type: Proficiency Exercise
+
+   Create proficiency exercise for Selection Sort.
 
 Selection Sort (as written here) is essentially a Bubble Sort,
 except that rather than repeatedly swapping adjacent values to get
@@ -77,7 +81,7 @@ Selection Sort is more efficient than Bubble Sort (by a constant
 factor) in most other situations as well.
 
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/PtrSwap.png
+.. figure:: Images/PtrSwap.png
    :width: 400
    :alt: Swapping pointers to records
 
@@ -99,3 +103,7 @@ pointer values; the records themselves do not move.
 This technique is illustrated by Figure <ODSAref "PtrSwap" \>.
 Additional space is needed to store the pointers, but the
 return is a faster swap operation.
+
+.. avembed:: Exercises/SelectionSortMC.html
+   :showbutton: hide
+   :title: Review Questions

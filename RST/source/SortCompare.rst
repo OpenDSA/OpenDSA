@@ -7,8 +7,8 @@
 .. _SortCompare:
 
 .. index::
-   pair: sorting; comparison
-   pair: searching; comparison
+   pair: sorting; record comparison
+   pair: searching; record comparison
 
 Comparing Records
 ==================
@@ -103,6 +103,7 @@ problem.
 To illustrate, here is an example of Insertion Sort implemented to
 work on an array that stores key-record pairs.
 
-.. todo::
+.. TODO::
+   :type: Pseudocode
 
    Show an implementation of Insertion Sort using key-record pairs.

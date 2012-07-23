@@ -1,10 +1,9 @@
 "use strict";
 /*global alert*/
 (function ($) {
-  // Number of values in the array
-  var ASize = $('#arraysize').val();
-  // The array of numbers.
-  var theArray = [];
+  var
+    ASize = $('#arraysize').val(), // Number of values in the array
+    theArray = []; // The array of numbers
 
   // check query parameters from URL
   var params = JSAV.utils.getQueryParameter();
@@ -25,8 +24,7 @@
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    var mystring = "Insertion Sort Algorithm Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2012\nLast update: January, 2012\nJSAV library version " + JSAV.version();
-    alert(mystring);
+    alert("Insertion Sort Algorithm Visualization\nWritten by Cliff Shaffer and Nayef Copty\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
 
   // Process Reset button: Reinitialize the output textbox and the AV
@@ -72,18 +70,17 @@
     return true;
   }
 
-
   var setBlue = function (index) {
     arr.css(index, {"background-color": "#ddf" });
   };
 
-  // Insertion sort
+  // Insertion Sort
   function inssort() {
     var i, j;
     av.umsg("Highlighted yellow elements to the left are always sorted. We begin with the element in position 0 in the sorted portion, and we will be moving the element in position 1 (in blue) to the left until it is sorted");
+    pseudo.setCurrentLine(0);
     arr.highlight([0]);
     setBlue(1);
-    pseudo.setCurrentLine(1);
     av.step();
     for (i = 1; i < arr.size(); i++) { // Insert i'th record
       setBlue(i);
@@ -102,6 +99,9 @@
       }
       arr.highlight(j);
     }
+    pseudo.setCurrentLine(4);
+    av.umsg("Done sorting!");
+    av.step();
   }
   
   // Execute the "Run" button function
@@ -109,9 +109,9 @@
     var i;
     var newSize = $('#arraysize').val();
 
-    if (processArrayValues()) { // if it is false, we got junk user
-                                // needs to fix
-      if (theArray.length === 0) { // Make a random  array
+    if (processArrayValues()) { // if it is false, then we got junk that
+                                // the user needs to fix
+      if (theArray.length === 0) { // No user-given array. Make a random array
         ASize = newSize;
         theArray.length = 0; // Out with the old
         // Give random numbers in range 0..999
@@ -127,18 +127,13 @@
 
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
-      for (i = 0; i < theArray.length; i++) {
-        arr.css(i, {"background-color": "#eee"});
-      }
-      pseudo = av.code({url: "../SourceCode/Processing/Sorting/Insertionsort/Insertionsort.pde"},
-                       {after: "/* *** ODSATag: Insertionsort *** */"},
-                       {before: "/* *** ODSAendTag: Insertionsort *** */"});
-      pseudo.setCurrentLine(0);
+      pseudo = av.code({url: "../../SourceCode/Processing/Sorting/Insertionsort/Insertionsort.pde",
+                        startAfter: "/* *** ODSATag: Insertionsort *** */",
+                        endBefore: "/* *** ODSAendTag: Insertionsort *** */"});
       av.umsg("Starting Insertion Sort");
       av.displayInit();
-      inssort(0, 1);
-      pseudo.setCurrentLine(4);
-      av.umsg("Done sorting!");
+      inssort();
+      arr.unhighlight();
       av.recorded(); // mark the end
     }
   }

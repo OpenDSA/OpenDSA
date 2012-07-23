@@ -6,7 +6,7 @@
 
 .. _Sorting:
 
-.. index:: ! Sorting
+.. index:: ! sorting
 
 Introduction
 ============

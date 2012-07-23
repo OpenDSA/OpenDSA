@@ -79,14 +79,6 @@ function showDifference(container, a) {
                            {"color": "#0b0", "font-weight": "bold"});
 }
 
-// Support for "About" button
-function about() { // This is what we pop up
-  var mystring = "Shellsort Explanation Slideshow\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during June, 2011\nLast update: August 14, 2011\nJSAV library version " + JSAV.version();
-  alert(mystring);
-}
-
-$('input[name="about"]').click(about); // Set callback action
-
 (function ($) {
   var av = new JSAV("container1");
   // Create an array object under control of JSAV library
@@ -156,11 +148,3 @@ $('input[name="about"]').click(about); // Set callback action
   var arr = theArray4;
   doSweep("container9", arr, 1);
 }(jQuery));
-
-// Support for "Exercise 1" button
-function ex1() { // This is what we pop up
-  var mystring = "Two forms at random:\n1) Given a random array of size n, a random increment size I <= n/2, and a random start location S, 0<=S<I (with an arrow over position S), click to highlight the array elements that should be in this sublist. Solve this exercise 10 times in a row to get credit.\n 2) Given random array of size n, and a sub array with elements highlighted, sort the indicated sublist.";
-  alert(mystring);
-  this.style.background = '#0b0';
-}
-$('input[name="ex1"]').click(ex1); // Set callback action

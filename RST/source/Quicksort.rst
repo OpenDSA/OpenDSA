@@ -163,7 +163,7 @@ partition so that the subarray bound for the recursive calls to
 Figure <ODSAref "QuickSortPic" /> illustrates the complete Quicksort
 algorithm.
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/Partit.png
+.. figure:: Images/Partit.png
    :width: 400
    :alt: The Quicksort partition step
 
@@ -181,7 +181,7 @@ algorithm.
    Function ``qsort`` will place the pivot value into
    position 4.
 
-.. figure:: http://algoviz.org/OpenDSA/build/Images/Qsort.png
+.. figure:: Images/Qsort.png
    :width: 400
    :alt: An illustration of Quicksort
 

@@ -10,6 +10,25 @@ from operator import itemgetter, attrgetter
 from xml.dom.minidom import parse, parseString
 from string import whitespace as ws
 
+todolist = []
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+
+    def disable(self):
+        self.HEADER = ''
+        self.OKBLUE = ''
+        self.OKGREEN = ''
+        self.WARNING = ''
+        self.FAIL = ''
+        self.ENDC = ''
+
+
 
 class modPreReq:
    
@@ -31,6 +50,12 @@ class modPreReq:
       self.covers=''
       p = re.compile('(%s)' % ('|'.join([c for c in ws])))
       flag = 0
+      cpt=0   
+      start=-1   
+      end=-1 
+      len_wthsp=-1   
+      type=''
+      desc='' 
       fls = open(filename,'r')
       data = fls.readlines()
       fls.close()
@@ -39,6 +64,7 @@ class modPreReq:
       self.creation_date = now.strftime("%Y-%m-%d %H:%M:%S")
       self.last_modified = now.strftime("%Y-%m-%d %H:%M:%S")
       for line in data:
+         cpt=cpt+1
          if ':short_name:' in line:
             str =  re.split('short_name:', line, re.IGNORECASE)[1]
             self.description = p.sub('',str.replace(' ',''))
@@ -50,7 +76,48 @@ class modPreReq:
             self.author = p.sub('',str.replace(' ','_')).replace('_',' ')     
          if ':topic:' in line:
             str =  re.split('topic:', line, re.IGNORECASE)[1]
-            self.covers =  p.sub('',str).split(',')         #str 
+            self.covers =  p.sub('',str).split(',')         #str
+         if ('.. TODO::' in line  or '.. todo::' in line) and len_wthsp==-1 and start==-1 and end==-1:
+            start = cpt+1 
+         if start==cpt:
+            if line.isspace():
+               start = cpt+1
+            else:
+               expr = re.match(r"^:\w+",line.replace(' ',''))  
+               if expr is not None:
+                  if  ':type:' not in line:
+                     print bcolors.FAIL + 'Error: in %s line %s... unknown Option %s for TODO directive'%(filename,cpt,expr.group()[1:]) + bcolors.ENDC   
+                     sys.exit(0) 
+               if ':type:' in line:
+                  type =  re.split('type:', line, re.IGNORECASE)[1]
+               len_wthsp = len(re.match(r'\s*',line).group())      
+               end =cpt+1
+         if len_wthsp !=-1 and start!=end and start!=-1 and end!=-1 and not  line.isspace():
+            if  len(re.match(r'\s*',line).group())== len_wthsp:
+               end = cpt+1 
+               if cpt==len(data):
+                  for i in range(start-1,end-1):
+                     desc+=data[i]
+                  todolist.append((filename,type,desc))
+                  type=''
+                  desc=''
+                  start=-1
+                  end=0 #-1
+                  len_wthsp=-1
+            else:
+               end=cpt-1
+               for i in range(start-1,end):
+                  desc+=data[i]
+               todolist.append((filename,type,desc))
+               type=''
+               desc=''
+               start=-1
+               end=0 #-1
+               len_wthsp=-1    
+         if ('.. TODO::' in line  or '.. todo::' in line) and len_wthsp==-1 and start==-1 and end==0:
+            start = cpt+1 
+            end = -1
+ 
       self.prereqNum = len(self.prereq)
 
 
@@ -205,6 +272,30 @@ def copyfiles(srcdir, dstdir, filepattern):
         break # no recursion
 
 
+def todoHTML(todolst):
+
+   tp =''
+   mn=0
+   rst='.. _Todo\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'   
+   #for td in todolst:
+   for i, (k,v,s) in enumerate(todolst):
+         if tp=='' and v=='':
+            if mn==0:
+               rst+='.. raw:: html\n\n   <hr /><h1>No Category</h1><hr />\n   <p></p><h2>%s</h2>\n\n.. TODO::\n%s\n'%(k.replace('/',': ')[:-4],s[:-1])
+               mn=-1
+            else:
+               rst+='.. raw:: html\n\n   <h2>%s</h2>\n\n.. TODO::\n%s\n'%(k.replace('/',': ')[:-4],s)
+         if tp==v and v!='' and tp!='':
+            rst+='.. raw:: html\n\n   <h2>%s</h2>\n\n.. TODO::\n%s\n'%(k.replace('/',': ')[:-4],s)
+         if tp=='' and v!='':
+            tp=v   
+            rst+='.. raw:: html\n\n   <hr /><h1>%s</h1>\n   <hr />\n\n.. raw:: html\n\n   <h2>%s</h2>\n\n.. TODO::\n%s\n'%(v.capitalize()[:-1],k.replace('/',': ')[:-4],s[:-1])      
+         if tp!=v and  v!='' and tp!='':
+            tp=v
+            rst+='.. raw:: html\n\n   <hr /><h1>%s</h1>\n   <hr />\n\n.. raw:: html\n\n   <h2>%s</h2>\n\n.. TODO::\n%s\n'%(v.capitalize()[1:-1],k.replace('/',': ')[:-4],s[:-1])
+   otfile = open('source/ToDo.rst','w')
+   otfile.writelines(rst)
+   return rst
 
 def control(argv):
    if (len(argv) < 3 or len(argv) > 3):
@@ -249,7 +340,7 @@ def main(argv):
   modList =[]
   modRost=[]
   for fl in fileLst:
-     if os.path.splitext(fl)[1][1:] == 'rst': 
+     if os.path.splitext(fl)[1][1:] == 'rst' and 'ToDo.rst' not in fl: 
         modRost.append(os.path.splitext(os.path.basename(fl))[0])
         x = modPreReq(fl)
         modList.append(x)
@@ -262,6 +353,10 @@ def main(argv):
   #create JSON and CSV files with modules information
   generateJSON(finalList, modDest)
   generateCSV(finalList, modDest) 
+
+  #ToDO list page
+  todolist1 = sorted(todolist, key=lambda todo: todo[1])
+  todoHTML(todolist1) 
 
 if __name__ == "__main__":
    sys.exit(main(sys.argv))

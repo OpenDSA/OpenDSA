@@ -1,0 +1,104 @@
+<!--
+####################################### Find Number of Inversions  ##################################################
+#  Question     : How many inversions does the given array have ?
+#                 the total number of steps that the records in the array must move to reach their “correct” location is the number of inversions
+#  Chapter	: Chapter 5 . The Cost of Exchange Sorting
+#  Variables    : arr_size 4 -6
+#  Author	: Gayathri
+#  Date		: July 13, 2012
+#######################################################################################################
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <title>Caculate Inversions</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+                <script src="../JSAV/lib/jquery.transform.light.js"></script>
+                <script src="../JSAV/lib/raphael.js"></script>
+                <script type="text/javascript"
+       src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+                </script>
+                <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+                <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+                <script src="../JSAV/build/JSAV-min.js"></script>
+                <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+
+		<style>
+		.jsavcontainer {
+  		border: 0px;
+		}
+		</style>
+</head>
+
+<body>
+<script>
+  	var jsav, arr, arr_clone, arr_clone_2 , temp,nsel,sel1;
+
+  	// function to handle a click event on an array
+  	var clickHandler = function(index, e) {
+  	}
+
+  	initJSAV = function(a) {
+    		var i , j;
+    		temp =0;
+    		jsav = new JSAV("jsav", {"animationMode": "none"});
+    		arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a), {indexed:true, center:false});
+  
+		// Compute the answer
+		arr_clone = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
+		arr_clone_2 = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
+		arr_clone.hide();
+		arr_clone_2.hide();
+
+		for (i=0; i<a; i++)
+                {
+                	arr_clone.value(i,arr.value(i));
+			arr_clone_2.value(i,i);       
+              	}
+
+		for (i=0; i < a-1; i=i+1) {
+                	for (j=i+1; j<a; j=j+1){
+                        	if (arr_clone.value(j) < arr_clone.value(i) ) {
+                                	temp = temp + 1;
+                                }
+                         }
+                 }
+
+  
+  	}
+
+	// Return the computed Answer
+  	genAnswer = function() {
+    		return temp;
+  	}
+</script>
+
+
+<div class="exercise">
+  	<div class="vars">
+    		<var id="A">randRange( 4, 6 )</var>
+    		<var id="JSAV">initJSAV(A)</var>
+    		<var id="CorrectAnswer">genAnswer()</var>
+  	</div>
+
+  	<div class="problems">
+    		<div>
+      			<div class="question">
+				Find the number of 'Inversions' in the following array.
+				<div id="jsav"></div>
+      			</div>
+
+			<p class="solution" data-type="text"><var>CorrectAnswer</var></p>
+      
+			<div class="hints"> 
+				<p> The total number of steps that the records in the array must move to reach their “correct” location is the number of inversions </p>
+				<p> The total number of inversions is <var>CorrectAnswer</var></p>
+      			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

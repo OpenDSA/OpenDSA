@@ -10,8 +10,7 @@
 
 .. raw:: html
    
-   <link href="_static/Shellsort.css" rel="stylesheet" type="text/css" />
-   <input type="button" float="right" name="about" value="About"/>
+   <link href="_static/Code/Shellsort.css" rel="stylesheet" type="text/css" />
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
@@ -183,12 +182,9 @@ Here is a code implementation for Shellsort.
    :start-after: /* *** ODSATag: Shellsort *** */
    :end-before: /* *** ODSAendTag: Shellsort *** */
 
-.. raw:: html
-
-   <input type="button" name="ex1" value="Exercise 1"
-          style="background-color:#f00;"/>
-
-   <script src="_static/Shellsort.js"></script>
+.. avembed:: Exercises/ShellSortSublist.html
+   :showbutton: hide
+   :title: Question 1
 
 There is a lot of flexibility to picking the increment series.
 It does not need to start with :math:`n/2` and cut in half each time.
@@ -274,3 +270,7 @@ It is also sometimes called the :dfn:`diminishing increment sort`.
 If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good
 increment series in [KnuthV3]_.
+
+.. raw:: html
+
+   <script src="_static/Code/Shellsort.js"></script>

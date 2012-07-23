@@ -1,6 +1,8 @@
 .. _ExchangeSort:
 
-.. index:: ! Exchange Sorting
+.. index:: ! exchange sorting
+
+.. index:: sorting; exchange
 
 .. include:: JSAVheader.rinc
 
@@ -44,8 +46,15 @@ Thus, these sorts are sometimes referred to as
 :dfn:`exchange sorts`.
 The cost of any exchange sort can be at best the total number of
 steps that the records in the array must move to reach their
-"correct" location
-(i.e., the number of inversions for each record).
+"correct" location.
+Recall that this is at least the number of
+inversions for the record, where an :index:`inversion` occurs when a
+record with key value greater than the current record's key value
+appears before it.
+
+.. avembed:: Exercises/FindInversions.html
+   :showbutton: hide
+   :title: Question 1
 
 What is the average number of inversions?
 Consider a list **L** containing
@@ -63,14 +72,6 @@ Thus, the total number of inversions in **L** and
 We therefore know with certainty that any sorting algorithm which
 limits comparisons to adjacent items will cost at least
 :math:`n(n-1)/4 = \Omega(n^2)` in the average case.
-
-.. todo::
-
-   KA Exercise to implement:
-
-   Generate and show an array with 4-6 random elements.
-
-   Question: How many inversions does it have?
 
 Notes
 -----

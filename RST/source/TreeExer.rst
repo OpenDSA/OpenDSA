@@ -13,9 +13,8 @@ Tree Exercises
 
 A place to put exercises that don't have anywhere better for now.
 
-.. TODO::
-
-   Exercise:
+.. todo::
+   :type: Exercise
 
    Given: A tree generated at random (constrained so that the
    probabilities work out reasonably).
@@ -23,7 +22,8 @@ A place to put exercises that don't have anywhere better for now.
    Question: Does this tree meet the BST property? Does it meet the
    min-heap property? Neither? Both? (show these as four choices.)
 
-.. TODO::
+.. todo::
+   :type: Exercise
 
    More questions (short/MC):
 
@@ -34,9 +34,10 @@ A place to put exercises that don't have anywhere better for now.
    Is a binary tree a search tree? (No. Binary tree is just a
    structural property)
 
-.. TODO::
+.. todo::
+   :type: Proficiency Exercise
 
-   Proficiency exercise: Insert a value into a heap. This is a bit
+   Insert a value into a heap. This is a bit
    different from the current binaryheap-insert-proficiency.html in
    that it should be possible to insert it in a way that violates the
    shape property. In the current version, the shape is given. The

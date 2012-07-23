@@ -49,7 +49,7 @@ merging pass on the sublists of row 2.
 The last row shows the final sorted list created by merging the two
 sublists of row 3.
 
-.. image:: http://algoviz.org/OpenDSA/build/Images/MrgSort.png
+.. image:: Images/MrgSort.png
    :width: 400
    :alt: Mergesort
 
