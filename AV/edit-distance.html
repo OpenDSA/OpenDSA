@@ -44,47 +44,92 @@
     <script src="../JSAV/build/JSAV.js"></script>
 	<script src="edit.js"></script>
     <script language="JavaScript">
-    var av = new JSAV("container");
+    var av;
 
-function compute(form) {
-    var s1 = form.txtWord1.value;
-    var s2 = form.txtWord2.value;
-	var tree, grid;
+	function compute(form) {
+		av = new JSAV("container")
+		var s1 = form.txtWord1.value;
+		var s2 = form.txtWord2.value;
+		var max = 3;
+		var tree, grid;
 
-	if (form.tree.checked) {
-		tree = 1;
-	} else {
-		tree = 0;
-	}
-	if (form.grid.checked) {
-		grid = 1;
-	} else {
-		grid = 0;
-	}
-	
-    if (tree == 1 && grid == 0) {
-	
-		var tr = av.ds.tree();
-		av.displayInit();
-	
-		tr.root([s1.length, s2.length]);
-		recDist(tr,tr.root(), s1, s2);
-		av.recorded();
-	} 
-	if (grid == 1 && tree == 0){
-		eDist(s1, s2, 1);
-    }
-	/* want to represent both tree & grid simultaneously, need to figure out how to
-		do the vertical av array to hold all av arrays, so I can manip. the left & top
-	if (tree == 1 && grid == 1) {
-		var tr = av.ds.tree({center: false, left: 50, top: 120});
-		av.displayInit();
-	
-		tr.root([s1.length, s2.length]);
-		recDist(tr,tr.root(), s1, s2);
-		av.recorded();	
-	} */
-}
+		if (form.tree.checked) {
+			tree = 1;
+		} else {
+			tree = 0;
+		}
+		if (form.grid.checked) {
+			grid = 1;
+		} else {
+			grid = 0;
+		}
+		
+		if (tree == 1 && grid == 0) {
+			if (s1.length > max) {
+				alert("First word is too long.  Enter a word " + max + " or less characters long to keep the tree at a decent size.");
+			} else if (s2.length > max) {
+				alert("Second word is too long.  Enter a word " + max + " or less characters long to keep the tree at a decent size.");
+			} else {
+				var tr = av.ds.tree();
+				tr.root([s1.length, s2.length]);
+				av.displayInit();
+				
+				recDistAnim(tr,tr.root(), s1, s2);
+				av.recorded();
+			}
+		} 
+		if (grid == 1 && tree == 0){
+			//eDistAnim(s1, s2);
+			s1 = randString(3,5);
+			s2 = randString(3,5);
+			initKA(s1, s2);
+			//testMaker(s1, s2);
+			//eDist(s1, s2);
+		}
+			for (var j = 0; j < 10000; j++) {
+				console.log("Run " + j);
+				s1 = randString(3,5);
+				s2 = randString(3,5);
+				var arr = initKA(s1, s2);
+				
+				for (var i = 0; i < 4; i++) {
+					var a = (i + 1) % 4;
+					var b = (i + 2) % 4;
+					var c = (i + 3) % 4;
+					if (arr[i] === arr[a] || arr[i] === arr[b] || arr[i] === arr[c]) {
+						console.log("Zoinks yo:");
+						for (var h = 0; h < 5; i++) {
+							console.log("" + h + ": " + arr[h]);
+						}
+					}
+				}
+			
+			
+			}
+		/* want to represent both tree & grid simultaneously, need to figure out how to
+			do the vertical av array to hold all av arrays, so I can manip. the left & top
+		if (tree == 1 && grid == 1) {
+			var tr = av.ds.tree({center: false, left: 50, top: 120});
+			av.displayInit();
+		
+			tr.root([s1.length, s2.length]);
+			recDist(tr,tr.root(), s1, s2);
+			av.recorded();	
+		} */
+	} //end compute func
+
+	/**
+	randString
+	Creates random string for use in proficiency testing.
+	*/
+	var randString = function(base, max) {
+		var count = Math.floor((max - base + 1) * Math.random() + base);
+		var str = "";
+		for (var i = 0; i < count; i++) {
+			str += String.fromCharCode(26 * Math.random() + 97);
+		}
+		return str;
+	} //end randString func
 </script>
 
 </body>
