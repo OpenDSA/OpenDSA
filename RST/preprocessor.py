@@ -276,7 +276,7 @@ def todoHTML(todolst):
 
    tp =''
    mn=0
-   rst='.. _Todo\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'   
+   rst='.. _Todo:\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'   
    #for td in todolst:
    for i, (k,v,s) in enumerate(todolst):
          if tp=='' and v=='':
