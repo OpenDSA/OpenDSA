@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
+<head>
+  <title>OpenDSA Insertion Sort: Multiple Choice Summary</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+</script>
+  <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+  <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+</head>
+<body>
+
+<div class="exercise">
+    <div class = "vars">
+      <var id="TYPES">[ "True", "False" ]</var>
+      <var id="GBAns">randFromArray( TYPES )</var>
+      <var id="GB">(GBAns === "True") ? "good" : "bad"</var>
+    </div>
+  <div class="problems">
+     
+    <!-- Question MCQ -->
+
+    <div id="problem-type-or-description">
+      <p class="question"> When implementing Insertion Sort, a binary
+	search could be used to locate the position within the first <code>i-1</code>
+	elements of the array into which element <code>i</code> should be inserted.
+	Using binary search will:</p>
+      <div class="solution"><var>"Not speed up the asymptotic running time for Insertion Sort becasue shifting the elements to make room for the insert will require " +  <code>\Theta(i)</code></var></div>
+      <ul class="choices">
+	<li><var>"Speed up the asymptotic running time for Insertion Sort because the position to insert could be found in " + <code>\Theta(log i)</code></var></li> 
+	<li><var>"Speed up the asymptotic running time for Insertion Sort because shifting the elements to make room for the insert will require " + <code>\Theta(i)</code> </var></li> 
+	<li><var> "None of the above"</var></li>	  	 
+      </ul>
+	  <div class="hints">
+	   <p>The position at which to insert could be found in
+	     <code>\Theta(\log(i))</code> steps, but shifting the elements to make
+	     room for the this element will require <code>\Theta(i)</code> time.</p> 
+	   <p>In this case, every pass through the inner for loop will
+	     fail immediately, and no values will be moved.</p>
+	  </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
