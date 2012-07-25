@@ -11,7 +11,7 @@
 .. index:: ! Huffman
 
 Huffman Coding Trees
-=========
+====================
 
 The space/time tradeoff principle presented in
 Module <OpenDSA "SpaceBounds" /> states that one can often gain an
@@ -191,5 +191,26 @@ This tree is shown in Figure <ODSAref "HuffCode" />.
 Here is a visualization of building a random huffman tree.
 
 .. avembed:: AV/HuffmanCoding.html
+
+Here is the implementation for Huffman tree nodes.
+
+.. codeinclude:: Graphs/Huffman/Huffman.pde
+   :tag: Huffman 
+
+<ODSAfig "HuffNode" />
+Implementation for Huffman tree nodes.
+Internal nodes and leaf nodes are represented by separate classes,
+each derived from an abstract base class.
+
+Figure <ODSAref "HuffNode" /> shows an implementation for Huffman tree
+nodes.
+This implementation is similar to the ``VarBinNode``
+implementation of Figure <ODSAref "VarNodeI" />.
+There is an abstract base class, named ``HuffNode``, and two
+subclasses, named ``LeafNode`` and ``IntlNode``.
+This implementation reflects the fact that leaf and internal nodes
+contain distinctly different information.
+
+
 
 
