@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
+<head>
+  <title>OpenDSA Selection Sort Exercise: Multiple Choice Question 1</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+</script>
+  <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+  <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+</head>
+<body>
+
+<div class="exercise">
+  <div class = "vars">
+    <var id="TYPES">[ "True", "False" ]</var>
+    <var id="GBAns">randFromArray( TYPES )</var>
+    <var id="GB">(GBAns === "True") ? "good" : "bad"</var>
+  </div>
+
+  <div class="problems">
+     
+    <!-- Question MCQ -->
+    <div id="problem-type-or-description">
+      <p class="question"> How many times does Selection Sort call the
+      swap function on an array of <code>n</code> elements?</p>
+      <div class="solution"><var><code>n-1</code></var></div>
+      <ul class="choices">
+	<li><var><code>1</code></var></li>
+	<li><var><code>n \log n</code></var></li>
+	<li><var><code>n^2</code></var></li>	  	 
+      </ul>
+      <div class="hints">
+	<p> Selection Sort first finds the smallest key in an
+	  unsorted list, then the second smallest, and so on. </p>
+	<p> To find the next smallest key value requires searching
+	  through the entire unsorted portion of the array, but the
+	  search itself needs no swaps.</p>
+	<p> Once the next smallest element is found, one swap is
+	  required to put the record in place.</p>
+	<p>We don't need to check the very last element, since it
+	  must already be in place.</p>
+      </div>
+    </div>
+	
+ </div>
+</body>
+</html>

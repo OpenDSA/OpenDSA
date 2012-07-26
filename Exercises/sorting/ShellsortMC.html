@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html data-require="math spin">
+<head>
+  <title>OpenDSA Exercise: Multiple Choice Summary</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+</script>
+  <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+  <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+<body>
+
+  <div class="exercise">
+    <div class="vars">
+    </div>
+    <div class="problems">
+      <div id="problem-type-or-description">
+        <p class="question">
+	  How should Shellsort's sublists be sorted?
+	</p>
+        <div class="solution"><var>"Using Insertion sort because Shellsort generally makes each subarray reasonably close to sorted."</var></div>
+	<ul class="choices" data-show="4">
+	  <li><var>"Using any sort that you like, it doesn't matter so long as they are sorted."</var></li>
+	  <li><var>"Using Quicksort, because this is generally the fastest sort."</var></li>
+	  <li><var>"Using Insertion sort because Shellsort generally makes each subarray reasonably close to sorted."</var></li>
+	  <li><var>"Using bubble sort since that is the most appropriate sort in this situation."</var>
+	   <li><var>"Using Shellsort since this is a recursive algorithm."</var>
+	</ul>
+	<div class="hints">
+	  <p>Shellsort isn't really recursive, is it?</p>
+	  <p>The sort that you use on sublists really does matter.</p>
+	  <p>Do you remember why Shellsort sorts sublists?</p>
+	  <p>Recall that the main purpose for sorting sublists in the
+	  first place is to make the list closer to sorted.</p>
+	</div>
+      </div>
+      <div id="problem-type-or-description">
+        <p class="question">
+	  What is the best case input for Shellsort?
+	</p>
+        <div class="solution"><var>"A sorted array because each sublist is sorted in linear time."</var></div>
+	<ul class="choices" data-show="4" data-none="true">
+	  <li><var>"A sorted array because each sublist is sorted in linear time."</var></li>
+	  <li><var>"A reverse sorted array because because all the sublists are sorted in linear time."</var></li>
+	  <li><var>"A random array, without too much order or dis-order, which will keep things balanced."</var></li>
+	  <li><var>"It doesn't matter, all inputs of a given size will cost the same."</var></li>
+	</ul>
+	<div class="hints">
+	  <p>The order of the input does affect the cost.</p>
+	  <p>Remember what sort is used for sorting the sublists.</p>
+	  <p>Insertion sort is used to sort the sublists.</p>
+	  <p>Insertion sort's best case is when the input is ordered</p>
+	  <p>If the input to Shellsort is ordered, than the input to
+	  each call to Insertion sort on the sublists will also be
+	  ordered.</p>
+	</div>
+      </div>
+      <div id="problem-type-or-description">
+        <p class="question">
+	  Which is the divide-by-twos increment series for an array of 32 elements?
+	</p>
+        <div class="solution"><var>"16, 8, 4, 2, 1"</var></div>
+	<ul class="choices" data-show="4" data-none="true">
+	  <li><var>"8, 4, 2, 1"</var></li>
+	  <li><var>"16, 8, 4, 2, 1"</var></li>
+	  <li><var>"32, 4, 1"</var></li>
+	  <li><var>"16, 4, 1"</var></li>
+	  <li><var>"More than one of these."</var></li>
+	</ul>
+	<div class="hints">
+	  <p>The first increment must be a power of 2 that generates
+	  sublists with two elements.</p>
+	  <p>Each succeeding increment must be half the size of the
+	  previous one.</p>
+	</div>
+      </div>
+      <div id="problem-type-or-description">
+        <p class="question">
+	  Which of these inputs will cost the most for Shellsort when
+	  using divide-by-twos increments on an array with a size
+	  where n is a power of 2?
+	</p>
+        <div class="solution"><var>"An array where even positions store values 1 to n/2 and odd positions store values n/2+1 to n."</var></div>
+	<ul class="choices" data-show="4">
+	  <li><var>"A sorted array."</var></li>
+	  <li><var>"A reverse sorted array."</var></li>
+	  <li><var>"An array where even positions store values 1 to n/2 and odd positions store values n/2+1 to n."</var></li>
+	  <li><var>"An array with random input."</var></li>
+	</ul>
+      </div>
+      <div id="problem-type-or-description" >
+	<p class="question">
+	  What is the average case cost of Shellsort for a good
+	  increment series?
+	</p>
+	<div class="solution"><var><code>\Theta(n \sqrt{n})</code></var></div>
+	<ul class="choices" data-show="4" data-none="true">
+	  <li><var><code>\Theta(n^2)</code></var></li>
+	  <li><var><code>\Theta(n)</code></var></li>
+	  <li><var><code>\Theta(n \log n)</code></var></li>
+	  <li><var><code>\Theta(2^n)</code></var></li>
+	  <li><var><code>\Theta(\log n)</code></var></li>
+	  <li><var><code>\Theta(n \sqrt{n})</code></var></li>
+	</ul>
+	<div class="hints">
+	  <p>Shellsort does not have the same runtime as most typical sorts.</p>
+	  <p>Shellsort is better than quadratic time sorts like
+	  Insertion Sort</p>
+	  <p>Shellsort is slower than sorts like Quicksort or
+	  Mergesort.</p>
+	  <p>Shellsort is not <code>\Theta(n \log n)</code> or <code>\Theta(n^2)</code></p>
+	</div>
+      </div>
+      <div id="problem-type-or-description">
+	<p class="question">
+	    What is the best-case cost of Shellsort for an aray whose
+	     size n is a power of 2 when using divide-by-twos
+	     increments?
+	</p>
+	<div class="solution"><var><code>\Theta(n \log n)</code></var></div>
+	<ul class="choices" data-show="4" data-none="true">
+	  <li><var><code>\Theta(n^2)</code></var></li>
+	  <li><var><code>\Theta(n)</code></var></li>
+	  <li><var><code>\Theta(n \log n)</code></var></li>
+	  <li><var><code>\Theta(2^n)</code></var></li>
+	  <li><var><code>\Theta(\log n)</code></var></li>
+	</ul>
+	<div class="hints">
+	  <p>Think about whether the sorted list is a best-case input
+	  or not.</p>
+	  <p>Sorted input is the best case.</p>
+	  <p>How many increments are there for the divide-by-two
+	  increment series?</p>
+	  <p>With divide-by-two increments, there are <code>\log
+	  n</code> increments.</p>
+	  <p><code>\log n</code> passes over an array of
+	  length <code>n</code> must cost <code>n \log n</code>.</p>
+	</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
