@@ -34,6 +34,7 @@ Sorting
    MergesortImpl
    Quicksort
    Heapsort
+   BinSort
    RadixSort
    SortingEmpirical
    SortingLowerBound
