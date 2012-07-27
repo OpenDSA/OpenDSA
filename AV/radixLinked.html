@@ -20,7 +20,7 @@ div h1 {
   margin: 5px;
 }
 .jsavlistnode {
-  width: 35px;
+  width: 53px;
   height: 40px;
 }
 .jsavlist .jsavedge {
@@ -89,7 +89,8 @@ form {
 	  <option value = 1> 1 </option>
 	  <option value = 2> 2 </option>
 	  <option value = 3> 3 </option>
-	  
+	  <option value = 4> 4 </option>
+	  <option value = 5> 5 </option>
 	</select>
     <p>
       <input type="button" name="run" value="Run" />
@@ -263,10 +264,10 @@ form {
       av = new JSAV("avcontainer"); // initialize JSAV ..
       // .. and the array. use the layout the user has selected
 	  
-	  arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()}); 
-	  av.label("Original Array");
-	  arrC = av.ds.array(countArray, {indexed: true, layout: arrayLayout.val()});
-	  av.label("Output Array");
+	  arr = av.ds.array(theArray, {indexed: true, layout: "vertical", center: false, top: 20, left: 0}); 
+	  //av.label("Original Array");
+	  arrC = av.ds.array(countArray, {indexed: true, layout: "vertical", center: false, top: 20, left: 900});
+	 // av.label("Output Array");
 	  
 	  av.step();
 	 
@@ -291,42 +292,32 @@ form {
 	var left2 = 0;
 	
     while (size > 0){
-	  arrO = av.ds.array(outArray, {indexed: false, layout: "vertical", center: false, top: 210, left: left2});
-	  //av.label("Count Array");
-	  var L0 = av.ds.list({top: 230, left: left});
-	  //L0.addFirst(0);
+	  arrO = av.ds.array(outArray, {indexed: false, layout: "vertical", center: false, top: 20, left: 200});
+	 // av.label("Count Array");
+	  var L0 = av.ds.list({top: 40, left: 250});
 	  L0.layout({center: false});
-	  var L1 = av.ds.list({top: 277, left: left});
-	 // L1.addFirst(1); 
+	  var L1 = av.ds.list({top: 86, left: 250});
 	  L1.layout({center: false});
-	  var L2 = av.ds.list({top: 323, left: left});
-	  //L2.addFirst(2);
+	  var L2 = av.ds.list({top: 132, left: 250});
 	  L2.layout({center: false});
-	  var L3 = av.ds.list({top: 368, left: left});
-	 //L3.addFirst(3);
+	  var L3 = av.ds.list({top: 178, left: 250});
 	  L3.layout({center: false});
-	  var L4 = av.ds.list({top: 415, left: left});
-	  //L4.addFirst(4);
+	  var L4 = av.ds.list({top: 224, left: 250});
 	  L4.layout({center: false});
-	  var L5 = av.ds.list({top: 462, left: left});
-	 // L5.addFirst(5);
+	  var L5 = av.ds.list({top: 270, left: 250});
 	  L5.layout({center: false});
-	  var L6 = av.ds.list({top: 509, left: left});
-	 // L6.addFirst(6);
+	  var L6 = av.ds.list({top: 316, left: 250});
 	  L6.layout({center: false});
-	  var L7 = av.ds.list({top: 556, left: left});
-	 // L7.addFirst(7);
+	  var L7 = av.ds.list({top: 362, left: 250});
 	  L7.layout({center: false});
-	  var L8 = av.ds.list({top: 603, left: left});
-	 // L8.addFirst(8);
+	  var L8 = av.ds.list({top: 408, left: 250});
 	  L8.layout({center: false});
-	  var L9 = av.ds.list({top: 650, left: left});
-	 // L9.addFirst(9);
+	  var L9 = av.ds.list({top: 458, left: 250});
 	  L9.layout({center: false});
 	  
 	  
-	  console.log("size =  " + L0.size());
-	 // av.umsg("Sorting Original Array");
+	 console.log(Math.floor(739/10));
+	 
 	  av.umsg("Creating a linked list by using the rightmost to leftmost digits of the elements in the Original Array and placing them into separate bins according to their digits");
 	  av.step();
 	  for (i = 0; i < theArray.length; i++) {
@@ -446,7 +437,7 @@ form {
        
 	   
 	      }
-		  
+		 console.log("size =  " + L0.size()); 
 	  av.umsg("Now we use the linked list to add values into the Output Array in sorted order according to their digit");
 	  av.step();
       if(L0.size() > 0){		
@@ -531,7 +522,7 @@ form {
 		    av.umsg("Add "+ L5.get(e).value() + " to the Output Array");
 		  arrC.value(counting,L5.get(e).value());
 		  arrC.highlight([counting]);
-		  //arrO.highlight([5]);
+		  
 		  setBlue2(5);
 		  L5.get(e).highlight();
 		  counting = counting + 1;
@@ -547,7 +538,7 @@ form {
 		    av.umsg("Add "+ L6.get(f).value() + " to the Output Array");
 		  arrC.value(counting,L6.get(f).value());
 		  arrC.highlight([counting]);
-		  //arrO.highlight([6]);
+		  
 		  setBlue2(6);
 		  L6.get(f).highlight();
 		  counting = counting + 1;
@@ -562,7 +553,7 @@ form {
 		    av.umsg("Add "+ L7.get(g).value() + " to the Output Array");
 		  arrC.value(counting,L7.get(g).value());
 		  arrC.highlight([counting]);
-		  //arrO.highlight([7]);
+		  
 		  setBlue2(7);
 		  L7.get(g).highlight();
 		  counting = counting + 1;
@@ -631,49 +622,75 @@ form {
       count= Math.pow(10, counter);
       av.step();
 	  
-		  /*for (j = 1; j < L0.size(); j++){
-		    L0.removeLast();
+		  for (j = L0.size()-1; j >= 0; j--) {
+		    L0.hide(j);
+		    //L0.remove(j);
+            L0.layout();
+			
 			}
-		  L0.layout();
+		  
 	 
-		for (a = 1; a < L1.size(); a++){
-		 L1.removeLast();
+		for (a = 0; a < L1.size()-1; a++){
+		  L1.hide(a);
+		  //L1.remove(a);
+          L1.layout();
+		  
 			}
-		 L1.layout();
-		  for (b = 1; b < L2.size(); b++){	
-		   L2.removeLast();
+		
+		  for (b = 0; b < L2.size()-1; b++){	
+		    L2.hide(b);
+		    //L2.remove(b);
+            L2.layout();
+		   
 			}
-	     L2.layout();
-		  for (c = 1; c < L3.size(); c++){	
-		   L3.removeLast();
+	     
+		  for (c = 0; c < L3.size()-1; c++){	
+		    L3.hide(c);
+		    L3.remove(c);
+		    L3.layout();
 			}
-			L3.layout();
+			
 		 
-		 for (d = 1; d < L4.size(); d++){	
-		  L4.removeLast();
+		 for (d = 0; d < L4.size()-1; d++){	
+		   L4.hide(d);
+		   //L4.remove(d);
+		   L4.layout();	
 			}
-			 L4.layout();	    
-		  for (e = 1; e < L5.size(); e++){	
-		   L5.removeLast();
+			     
+		 for (e = 0; e < L5.size()-1; e++){	
+		   L5.hide(e);
+		   //L5.remove(e);
+		   L5.layout();
 			}
-			L5.layout();
-		  for (f = 1; f < L6.size(); f++){
-		 L6.removeLast();
+			
+		  for (f = 0; f < L6.size()-1; f++){
+		    L6.hide(f);
+			//L6.remove(f);
+			L6.layout();
 			}
-			 L6.layout();
+			
 		  for (g = 1; g < L7.size(); g++){
-		  L7.removeLast();
+		    L7.hide(g-1);
+			//L7.remove(g);
+		    L7.layout();
 			}
-			 L7.layout();
-		for (h = 1; h < L8.size(); h++){
-		  L8.removeLast();
+			 
+		  for (h = 1; h < L8.size(); h++){
+		    L8.hide(h-1);
+		    //L8.remove(h);
+		    L8.layout();
 			}
-			L8.layout();
+			
 		  for (i = 1; i < L9.size(); i++){
-		 L9.removeLast();
+		     L9.hide(i-1);
+			 //L9.remove(i);
+		     L9.layout();
 			}
-           L9.layout();*/
+          
   
+          //av.step();
+		  console.log("size2 = "+ L0.size());
+		  
   }
   }
   
