@@ -1,28 +1,14 @@
-.jsavarray {
-  left: -10px;
-}
 .jsavcontainer {
   width: 660px;
   background-color: #eed;
   margin: 0 auto;
   border: 0;
 }
-.jsavcounter {
-  float: left;
-  width: 100px;
-  margin-top: 15px;
-}
-.jsavsettings {
-  float: right;
-}
-.jsavsettings:after {
-  clear: both;
-  display: block;
-  content: "";
-}
 .jsavcontrols {
-  width: 650px;
+  margin-top: -35px;
 }
-.jsavcontrols a {
-  margin: 0 40px;
+.jsavoutput.jsavline{
+  margin-top: -5px;
+  height: 40px;
 }
+

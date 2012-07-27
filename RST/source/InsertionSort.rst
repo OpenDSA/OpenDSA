@@ -85,15 +85,11 @@ The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/insertionsort-av.html
 
-.. todo::
-   :type: Exercise
+Now try for yourself to see if you understand how Insertion Sort works.
 
-   Given: An array where some element X is highlighted. Everthing to the
-   left of X is sorted, and everything to the right is random.
-
-   Question: In this array, the highlighted element is now to be
-   processed by Insertion Sort. Show the array after the element has been
-   placed in its proper position (and other elements moved as necessary).
+.. avembed:: Exercises/InsertionInsertElement.html
+   :showbutton: hide
+   :title: Question 1
 
 .. todo::
    :type: Proficiency Exercise
