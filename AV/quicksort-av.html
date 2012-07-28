@@ -8,7 +8,7 @@
 
   #container {
     width: 800px;
-    height: 565px;
+    height: 765px;
     border: 1px solid black;
     background-color: #efe;
     padding: 10px;
@@ -204,20 +204,22 @@
 	  
       reset(true); // Reset any previous visualization
       av = new JSAV("avcontainer"); // initialize JSAV ..
-      // .. and the array. use the layout the user has selected
-      arr = av.ds.array(theArray, {indexed: true});
+      
+	  // Initialize the list of sorted elements to be empty
+	  sortedArr = av.ds.array(new Array(theArray.length), {indexed: true});
 	  
+	  // Initialize the original array
+      arr = av.ds.array(theArray, {indexed: true});
       
       // BEGIN QUICKSORT IMPLEMENTATION
 	  
-      // Dynamically determine the canvas width using the centered alignment of the first block
+      // Save the left edge of the original array so sublists can be positioned relative to it
       leftEdge = parseFloat(arr.element.css("left"));
 
-	  var level = 1;
+	  var level = 2;
 	  var leftOffset = 0;
 	  
       av.displayInit();
-	  
       quicksort(arr, level, leftOffset);
 
       // END QUICKSORT IMPLEMENTATION
@@ -228,9 +230,8 @@
   }
   
   // The space required for each row to be displayed
-  var canvasWidth = 0;
   var leftEdge = 0;
-  var blockWidth = 47;
+  var sortedArr = [];
   
   function quicksort(arr, level, leftOffset)
   {
@@ -248,14 +249,13 @@
 	av.umsg("Move the pivot to the end");
 	arr.toggleArrow(j);
 	av.step();
-	
 	arr.swap(pivotIndex, j);
 	av.step();
 	arr.toggleArrow(j)
 	
 	av.umsg("Partition the array");
 	av.step();
-	// k will be the first position in the right subarray
+	// k will be the final position of the pivot
 	var k = partition(arr, i, j, arr.value(j));
 	
 	arr.toggleArrow(k);
@@ -265,7 +265,7 @@
 	
 	av.umsg("Move the pivot to its final location");
 	arr.swap(k, j);
-	arr.highlightSorted(k);
+	arr.markSorted(k, leftOffset);
 	av.step();
 	
 	// Create and display sub-arrays
@@ -273,7 +273,7 @@
 	if (subArr1.length == 1) {
 		av.umsg("Left sublist contains a single element which means it is sorted");
 		av.step();
-		arr.highlightSorted(i);
+		arr.markSorted(i, leftOffset);
 	}
 	else {
 		var avSubArr1 = av.ds.array(subArr1, {indexed: true, center: false});
@@ -283,7 +283,7 @@
 	if (subArr2.length == 1) {
 		av.umsg("Right sublist contains a single element which means it is sorted");
 		av.step();
-		arr.highlightSorted(k + 1);
+		arr.markSorted(k + 1, leftOffset);
 	}
 	else {
 		var avSubArr2 = av.ds.array(subArr2, {indexed: true, center: false});
@@ -324,9 +324,8 @@
 	  arr.highlight(l);
 	  av.step();
 	  
-	  
 	  av.umsg("Select a value smaller than the pivot to swap to the left");
-	  while ((r != 0) && (arr.value(--r) > pivot) && (r > l)) //((r != 0) && (arr.value(r) > pivot))
+	  while ((r != 0) && (arr.value(--r) > pivot) && (r > l))
 	  {
 		arr.highlight(r);
 		av.step();
@@ -346,97 +345,8 @@
 	  //Highlight elements to swap
 	  av.umsg("Swap the selected values");
 	  arr.swap(l, r);
-	  //arr.unhighlight([l, r]);
 	  av.step();
 	  arr.unhighlight([l, r]);
-	}
-	
-	// Return first position in right partition
-	return l; 
-  }
-  
-  function partition_broken(arr, l, r, pivot)
-  {
-    r -= 1;
-	
-	//alert("partition");
-  
-	while (l < r)
-	{
-	  /*
-	  while ((arr.value(l) < pivot) && (arr.value(r) > pivot) && (r != 0) && (l < r))
-	  {
-	    arr.highlight(l);
-		arr.highlight(r);
-	    alert("l: " + l + ", r: " + r);
-		av.step();
-	    arr.unhighlight(l++);
-		arr.unhighlight(r--);
-	  }
-	  */
-	  
-	  
-	  //alert("1 l: " + l + ", r: " + r);
-	  
-	  av.umsg("Select a value larger than the pivot to swap to the right");
-	  while ((arr.value(l) < pivot))
-	  {
-		arr.highlight(l);
-		av.step();
-		arr.unhighlight(l++);
-	  }
-	  
-	  arr.highlight(l);
-	  av.step();
-	  
-	  
-	  av.umsg("Select a value smaller than the pivot to swap to the left");
-	  while ((r > l) && (arr.value(r) > pivot)) //((r != 0) && (arr.value(r) > pivot))
-	  {
-		arr.highlight(r);
-		av.step();
-		arr.unhighlight(r--);
-	  }
-	  
-	  arr.highlight(r);
-	  av.step();
-	  
-	  // Stop when all elements have been appropriately swapped
-	  if (l >= r)
-	  {
-	    arr.unhighlight([l, r]);
-		break;
-	  }
-	  
-	  //Highlight elements to swap
-	  av.umsg("Swap the selected values");
-	  arr.swap(l, r);
-	  //arr.unhighlight([l, r]);
-	  av.step();
-	}
-	
-	// Return first position in right partition
-	return l; 
-  }
-  
-  // var k = partition_working(arr, i - 1, j, arr.value(j));
-  function partition_working(arr, l, r, pivot)
-  {
-	while (l < r)
-	{
-	  // Move bounds inward until they meet
-	  while (arr.value(++l) < pivot);
-	  while ((r != 0) && (arr.value(--r) > pivot));
-	  
-	  // Stop when all elements have been appropriately swapped
-	  if (l >= r) break;
-	  
-	  //Highlight elements to swap
-	  arr.highlight([l, r]);
-	  av.step();
-	  arr.swap(l, r);
-	  arr.unhighlight([l, r]);
-	  av.step();
 	}
 	
 	// Return first position in right partition
@@ -453,8 +363,9 @@
    * leftOffset - the number of blocks from the left the array should be positioned
    */
   function setPosition(arr, level, leftOffset) {
-	var left = leftEdge + leftOffset * blockWidth;
+	var blockWidth = 46;
 	var rowHeight = 80;
+	var left = leftEdge + leftOffset * blockWidth;
     var top = rowHeight * (level - 1);
 
     // Set the top and left values so that all arrays are spaced properly
@@ -485,8 +396,13 @@
   /**
    * Convenience function for highlighting sorted values
    */
-  JSAV._types.ds.AVArray.prototype.highlightSorted = function(index) {
+  JSAV._types.ds.AVArray.prototype.markSorted = function(index, leftOffset) {
     this.css(index, {"background-color": "#ffffcc" });
+	
+	// Add the value to the sorted array
+	var sortedIndex = index + leftOffset;
+	sortedArr.value(sortedIndex, this.value(index));
+	sortedArr.css(sortedIndex, {"background-color": "#ffffcc" });
   };
 })(jQuery);
 </script>
