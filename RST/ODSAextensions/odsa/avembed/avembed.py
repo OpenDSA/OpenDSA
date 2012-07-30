@@ -27,7 +27,7 @@ def setup(app):
 
 
 CODE = """\
-<div class="start">
+<div class="start%(div_id)s">
 <center> 
 <iframe src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 </iframe>
@@ -127,9 +127,10 @@ class avembed(Directive):
         self.options['av_address'] = embed[0]
         self.options['width'] = embed[1]
         self.options['height'] = embed[2]
-
+        self.options['div_id'] = random.randint(1,1000)   
+ 
         if 'showbutton' in self.options:
-            divID = "Example%s"%random.randint(1,1000)
+            divID = "Example%s"%self.options['div_id']     #random.randint(1,1000)
             self.options['divID'] = divID
 
             if self.options['showbutton'] == "show":

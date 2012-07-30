@@ -15,25 +15,26 @@ $(document).ready(function()    {
         });
 
   $("a.abt").click(function(event){
-	    console.log('test+=' + window.location.pathname);
 	    info();
         });
 
 });
  function showHide(shID) { 
-     var s=shID.split('+');
+         var s=shID.split('+');
          var ID=s[0];    
-
+         var div_numb = s[0].split('Example').slice(1);
          if (document.getElementById(ID)) { 
             if (document.getElementById(shID).style.display != 'none' && s[1]=='show'){
               document.getElementById(shID).style.display = 'none';
               document.getElementById(ID).style.display = 'block';
-              $("div.start").hide();
+              var strt = "div.start"+ div_numb;
+              $(strt).hide();
             }
             else {
              document.getElementById(s[0]+'+show').style.display = 'inline';
              document.getElementById(ID).style.display = 'none';
-             $("div.start").hide();
+             var strt = "div.start"+ div_numb;
+             $(strt).hide();   // $('div.start'+div_numb).hide();
             }
            }
   }
