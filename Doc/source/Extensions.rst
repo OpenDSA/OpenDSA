@@ -103,7 +103,7 @@ NOTES
 TODO
 ----
 NAME
-	TODO or todo - adda a todo box in the output HTML file and is use 
+	TODO or todo - adds a todo box in the output HTML file and is use 
 	by ODSA preprocessor script to create a HTML page containing 
 	the full list of desired AVs and Exercises.   
 
@@ -124,5 +124,29 @@ NOTES
 	to create a TODO.rst file that list all the desired AVs and Exercises grouped by type. 
 	The TODO.rst file should be included in the index.rst file to be part of the table of content of the
         eBook.  
+
+
+odsaref
+-------
+NAME
+	odsaref - adds numbered cross referenced to ODSA HTML documents.
+
+SYNOPSIS::
+
+	:odsaref:`reference_label`
+
+DESCRIPTION
+	``:odsaref:``               
+	   Custom Interpreted Text Role, it adds numbered cross references in ODSA documents.
+	``reference_label``
+	   Reference name (unique) of the referenced object. It is specivied via the standards ReST referencing mechanisms.
+
+NOTES
+	The ODSA preprocessor creates a table of all referenced object with numbers and writes it into a file that is read 
+	by ``odsaref`` role.  
+
+
+
+
 
    

@@ -25,7 +25,7 @@ them more cheaply.
 We might use sorting to help an algorithm to solve
 some other problem.
 For example, Kruskal's algorthm to solve the minimum-cost spanning
-tree problem (see Module :ref:`MCST <MCST>`) must sort the edges of
+tree problem (see Module :ref:`MCST <MCST>` :odsaref:`MCST`) must sort the edges of
 a graph by length before it can process them.
 
 Because sorting is so important, naturally it has been studied
@@ -40,7 +40,7 @@ Other sorting algorithms are totally alien to how humans do things,
 having been invented to sort thousands or even millions of records
 stored on the computer.
 For example, no normal person would use Quicksort to order a pile of
-bills by date, even though :ref:`Quicksort <Quicksort>` is the
+bills by date, even though :ref:`Quicksort <Quicksort>` :odsaref:`Quicksort` is the
 standard sorting algorithm of choice that you would find in a
 programming environment's utility library.
 After years of study, there are still unsolved problems related to
@@ -62,7 +62,7 @@ Sorting algorithms can also illustrate a wide variety of
 analysis techniques.
 We'll find that it is possible for an algorithm to have an average
 case whose growth rate is significantly smaller than its worse case
-(:ref:`Quicksort <Quicksort>`).
+(:ref:`Quicksort <Quicksort>`  :odsaref:`Quicksort`).
 We'll see how it is possible to speed up sorting algorithms
 (both :ref:`Shellsort <Shellsort>` and :ref:`Quicksort <Quicksort>`)
 by taking advantage of the best case behavior of another algorithm

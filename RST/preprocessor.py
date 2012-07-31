@@ -6,11 +6,11 @@ import shutil
 import subprocess
 import fnmatch
 import json
+import config
 from operator import itemgetter, attrgetter
 from xml.dom.minidom import parse, parseString
 from string import whitespace as ws
 
-todolist = []
 
 class bcolors:
     HEADER = '\033[95m'
@@ -56,6 +56,7 @@ class modPreReq:
       len_wthsp=-1   
       type=''
       desc='' 
+      #config.mod_numb+=1
       fls = open(filename,'r')
       data = fls.readlines()
       fls.close()
@@ -77,6 +78,11 @@ class modPreReq:
          if ':topic:' in line:
             str =  re.split('topic:', line, re.IGNORECASE)[1]
             self.covers =  p.sub('',str).split(',')         #str
+#         if '.. _' in line:
+#            str =  re.split('. _', line, re.IGNORECASE)[1]
+#            if os.path.splitext(os.path.basename(filename))[0] not in config.table:
+#               config.mod_numb+=1  
+#               config.table[os.path.splitext(os.path.basename(filename))[0]]=config.mod_numb                            
          if ('.. TODO::' in line  or '.. todo::' in line) and len_wthsp==-1 and start==-1 and end==-1:
             start = cpt+1 
          if start==cpt:
@@ -98,7 +104,7 @@ class modPreReq:
                if cpt==len(data):
                   for i in range(start-1,end-1):
                      desc+=data[i]
-                  todolist.append((filename,type,desc))
+                  config.todolist.append((filename,type,desc))
                   type=''
                   desc=''
                   start=-1
@@ -108,7 +114,7 @@ class modPreReq:
                end=cpt-1
                for i in range(start-1,end):
                   desc+=data[i]
-               todolist.append((filename,type,desc))
+               config.todolist.append((filename,type,desc))
                type=''
                desc=''
                start=-1
@@ -232,7 +238,6 @@ def modOrdering(modRoster):
 
 
 
-
 def remove_eol (line):
         if line[-1] == '\n':
            return line[:-1]
@@ -312,17 +317,36 @@ def control(argv):
 def enumFile(folder):
 
    filelist = []
+   dirlist=[]
    iFile = open(folder+'index.rst','r')
    iLine = iFile.readlines()
    iFile.close()
    iLine1 = [] 
+   t = 0
+   section = 0     
+   chapter = 1    
+   flag = -1   
+
    p = re.compile('(%s)' % ('|'.join([c for c in ws])))
+   
+   for filename in os.listdir(folder):
+      dirlist.append(os.path.splitext(filename)[0])    
    for e in iLine:
       iLine1.append(p.sub('',e))
 
-   for filename in os.listdir(folder):
-     if os.path.splitext(filename)[0] in iLine1:
-        filelist.append(folder+filename)
+   for flnm in iLine1:
+     if t < len(iLine1)-1: 
+        if iLine1[t+1].startswith('-'):   
+           flag = 1      
+        if flnm in dirlist and not iLine1[t+1].startswith('-'):
+           filelist.append(folder+flnm+'.rst')
+           config.table[flnm]='%s.%s'%(section,chapter)  
+           chapter+=1
+     if flnm.startswith('-'):    #        else:
+           section +=1
+           chapter = 1
+           flag=-1
+     t=t+1  
    return filelist
 
 
@@ -339,6 +363,8 @@ def main(argv):
   fileLst =  enumFile(modDir)
   modList =[]
   modRost=[]
+
+
   for fl in fileLst:
      if os.path.splitext(fl)[1][1:] == 'rst' and 'ToDo.rst' not in fl: 
         modRost.append(os.path.splitext(os.path.basename(fl))[0])
@@ -355,8 +381,20 @@ def main(argv):
   generateCSV(finalList, modDest) 
 
   #ToDO list page
-  todolist1 = sorted(todolist, key=lambda todo: todo[1])
+  todolist1 = sorted(config.todolist, key=lambda todo: todo[1])
   todoHTML(todolist1) 
+
+  #Write table to a file
+  try:
+     otfile = open('table.json','wb') 
+     json.dump(config.table,otfile)
+  except IOError:
+     print 'ERROR: When saving JSON file' 
+
+
+#  with open(modDir + 'table.json','wb') as outfile:
+#     print 'dumping json data \n%s' %config.table    
+#     json.dump(config.table,outfile)
 
 if __name__ == "__main__":
    sys.exit(main(sys.argv))
