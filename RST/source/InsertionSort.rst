@@ -178,7 +178,7 @@ average and worst cases.
 Here are some questions review questions to check that you understand
 Insertion Sort.
 
-.. avembed:: Exercises/InsertionSortMC.html
+.. avembed:: Exercises/Sorting/InsertionSortSumm.html
    :showbutton: hide
    :title: Review Questions
 
