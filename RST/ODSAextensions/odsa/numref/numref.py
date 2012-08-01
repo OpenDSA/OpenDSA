@@ -109,7 +109,7 @@ def numref_role(typ, rawtext, etext, lineno, inliner,
            ref = '%s.html#%s' %(parent, lab)          
         else:
            ref = '%s.html' % lab 
-        if not desc.isspace():            
+        if not desc.isspace() and len(desc) > 1:            
            sn = nodes.strong(' '+xrefs+' '+desc, ' '+xrefs+' '+desc)
         else:
            sn = nodes.strong(' '+xrefs, ' '+xrefs)  
