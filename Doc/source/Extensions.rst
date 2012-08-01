@@ -4,6 +4,10 @@
 OpenDSA ReST Extensions
 =======================
 
+A number of custom ReST extensions have been created for the OpenDSA
+project.
+They are documented here.
+
 avembed
 -------
 NAME

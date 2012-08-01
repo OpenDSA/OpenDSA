@@ -6,6 +6,8 @@
 
 .. _Sorting:
 
+.. include:: JSAVheader.rinc
+
 .. index:: ! sorting
 
 Introduction
@@ -25,7 +27,7 @@ them more cheaply.
 We might use sorting to help an algorithm to solve
 some other problem.
 For example, Kruskal's algorthm to solve the minimum-cost spanning
-tree problem (see Module  :numref:`MCST <MCST>`) must sort the edges of
+tree problem (see Module  :numref:`<MCST>`) must sort the edges of
 a graph by length before it can process them.
 
 Because sorting is so important, naturally it has been studied
@@ -35,12 +37,12 @@ use in everyday life.
 For example, a natural way to sort your cards in a bridge hand is to
 go from left to right, and place each card in turn in its correct
 position relative to the other cards that you have already sorted.
-This is the idea behind :numref:`Insertion Sort <InsertionSort>`.
+This is the idea behind :ref:`Insertion Sort <InsertionSort>`.
 Other sorting algorithms are totally alien to how humans do things,
 having been invented to sort thousands or even millions of records
 stored on the computer.
 For example, no normal person would use Quicksort to order a pile of
-bills by date, even though :numref:`Quicksort <Quicksort>` is the
+bills by date, even though :ref:`Quicksort <Quicksort>` is the
 standard sorting algorithm of choice that you would find in a
 programming environment's utility library.
 After years of study, there are still unsolved problems related to
@@ -75,7 +77,7 @@ Sorting provides an example of a significant technique for
 analyzing the lower bound for a problem.
 Sorting will also be used to motivate the introduction to file
 processing presented in
-Module :ref:`File Processing <FileProc>`.
+Module :numref:`<FileProc>`.
 
 This chapter covers several standard algorithms appropriate
 for sorting a collection of records that fit in the computer's
@@ -90,7 +92,7 @@ The final sorting method presented requires only
 :math:`\Theta(n)` worst-case time under special conditions.
 The chapter concludes with a proof that sorting in general
 requires :math:`\Omega(n \log n)` time in the worst case
-(see Module :ref:`Sorting Lower Bounds <SortingLowerBound>`).
+(see Module :numref:`<SortingLowerBound>`).
 
 Sorting Terminology and Notation
 --------------------------------
