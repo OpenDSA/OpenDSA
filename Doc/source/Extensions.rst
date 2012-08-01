@@ -126,24 +126,27 @@ NOTES
         eBook.  
 
 
-odsaref
--------
+numref
+------
 NAME
-	odsaref - adds numbered cross referenced to ODSA HTML documents.
+	numref - adds numbered cross referenced to ODSA HTML documents.
 
 SYNOPSIS::
 
-	:odsaref:`reference_label`
+	:numref:`[caption] <reference_label>`
+	:numref:`reference_label`
 
 DESCRIPTION
-	``:odsaref:``               
+	``:numref:``               
 	   Custom Interpreted Text Role, it adds numbered cross references in ODSA documents.
+	``caption``      
+	   Text that will be display next to the numbered reference.    
 	``reference_label``
-	   Reference name (unique) of the referenced object. It is specivied via the standards ReST referencing mechanisms.
+	   Reference name (unique) of the referenced object. Should be  enclose in brackets ('<>') when a caption is provided. It is specivied via the standards ReST referencing mechanisms.
 
 NOTES
 	The ODSA preprocessor creates a table of all referenced object with numbers and writes it into a file that is read 
-	by ``odsaref`` role.  
+	by ``numref`` role.  
 
 
 
