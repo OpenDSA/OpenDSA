@@ -33,7 +33,8 @@ from sphinx.util import ws_re
 from sphinx.util.nodes import split_explicit_title
 
 
-
+def setup(app):
+    roles.register_canonical_role('odsaref', odsaref_role)
 
 def loadTable():
    try:
