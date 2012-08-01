@@ -34,7 +34,7 @@ from sphinx.util.nodes import split_explicit_title
 
 
 def setup(app):
-    roles.register_canonical_role('odsaref', odsaref_role)
+    roles.register_canonical_role('numref', numref_role)
 
 def loadTable():
    try:
@@ -47,7 +47,7 @@ def loadTable():
 
 
 
-def odsaref_role(typ, rawtext, etext, lineno, inliner,
+def numref_role(typ, rawtext, etext, lineno, inliner,
                      options={}, content=[]):
     """Role for numbered cross references"""
     env = inliner.document.settings.env
@@ -60,19 +60,42 @@ def odsaref_role(typ, rawtext, etext, lineno, inliner,
     indexnode = addnodes.index()
     targetnode = nodes.target('', '', ids=[targetid])
     inliner.document.note_explicit_target(targetnode)
-    if typ == 'odsaref':
+    syn = 0 
+    if '<' in text:
+       syn = 1
+    if '>' in text:   
+       syn +=1   
+    if syn != 0 and syn != 2 :
+       msg = inliner.reporter.error('Syntax error label %s' % text,
+                                         line=lineno)
+       prb = inliner.problematic(rawtext, rawtext, msg)
+       return [prb], [msg]
+    if syn == 2: 
+       desc = re.split('<', text, re.IGNORECASE)[0]          
+       lab = re.split('>',re.split('<', text, re.IGNORECASE)[1], re.IGNORECASE)[0]  
+    if syn == 0:
+       desc=''
+       lab = text
+    if typ == 'numref':
         indexnode['entries'] = [('single', 'ref %s' % text,
                                  targetid, 'ref %s' % text)]
-        #anchor = ''
-        #anchorindex = text.find('#')
-        #if anchorindex > 0:
-        #    text, anchor = text[:anchorindex], text[anchorindex:]
+        level = 0 
         try:
             json_data = loadTable()
-            if text in json_data:
-                xrefs = json_data[text]
+            if lab in json_data:
+                xrefs = json_data[lab]
+                if '#' in xrefs:
+                   level = 2
+                   xrefs = xrefs[:-1]
+                   v = xrefs.split('.')                    
+                   if len(v) > 2:
+                      pr = '%s.%s' %(v[0],v[1])   
+                      for obj, val in json_data.items():
+                         if val == pr:      
+                            parent = obj      
+
             else:
-                msg = inliner.reporter.error('invalid reference label %s' % text,
+                msg = inliner.reporter.error('invalid reference label %s' % lab,
                                          line=lineno)
                 prb = inliner.problematic(rawtext, rawtext, msg)
                 return [prb], [msg] 
@@ -81,14 +104,21 @@ def odsaref_role(typ, rawtext, etext, lineno, inliner,
                                          line=lineno)
             prb = inliner.problematic(rawtext, rawtext, msg)
             return [prb], [msg]
-        ref = '%s.html' % text          
-        sn = nodes.strong(' '+xrefs, ' '+xrefs)
+
+        if level == 2:
+           ref = '%s.html#%s' %(parent, lab)          
+        else:
+           ref = '%s.html' % lab 
+        if not desc.isspace():            
+           sn = nodes.strong(' '+xrefs+' '+desc, ' '+xrefs+' '+desc)
+        else:
+           sn = nodes.strong(' '+xrefs, ' '+xrefs)  
         rn = nodes.reference('', '', internal=False, refuri=ref,
                              classes=[typ])
         rn += sn
         return [indexnode, targetnode, rn], []
 
-roles.register_canonical_role('odsaref', odsaref_role)
+roles.register_canonical_role('numref', numref_role)
 
 
 
@@ -96,7 +126,7 @@ roles.register_canonical_role('odsaref', odsaref_role)
 
 if __name__ == '__main__':
 
-    roles.register_canonical_role('odsaref', odsaref_role)
+    roles.register_canonical_role('numref', numref_role)
 
 
 

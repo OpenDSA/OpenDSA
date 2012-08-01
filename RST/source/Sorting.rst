@@ -25,7 +25,7 @@ them more cheaply.
 We might use sorting to help an algorithm to solve
 some other problem.
 For example, Kruskal's algorthm to solve the minimum-cost spanning
-tree problem (see Module :ref:`MCST <MCST>` :odsaref:`MCST`) must sort the edges of
+tree problem (see Module  :numref:`MCST <MCST>`) must sort the edges of
 a graph by length before it can process them.
 
 Because sorting is so important, naturally it has been studied
@@ -35,12 +35,12 @@ use in everyday life.
 For example, a natural way to sort your cards in a bridge hand is to
 go from left to right, and place each card in turn in its correct
 position relative to the other cards that you have already sorted.
-This is the idea behind :ref:`Insertion Sort <InsertionSort>`.
+This is the idea behind :numref:`Insertion Sort <InsertionSort>`.
 Other sorting algorithms are totally alien to how humans do things,
 having been invented to sort thousands or even millions of records
 stored on the computer.
 For example, no normal person would use Quicksort to order a pile of
-bills by date, even though :ref:`Quicksort <Quicksort>` :odsaref:`Quicksort` is the
+bills by date, even though :numref:`Quicksort <Quicksort>` is the
 standard sorting algorithm of choice that you would find in a
 programming environment's utility library.
 After years of study, there are still unsolved problems related to
@@ -62,7 +62,7 @@ Sorting algorithms can also illustrate a wide variety of
 analysis techniques.
 We'll find that it is possible for an algorithm to have an average
 case whose growth rate is significantly smaller than its worse case
-(:ref:`Quicksort <Quicksort>`  :odsaref:`Quicksort`).
+(:ref:`Quicksort <Quicksort>`).
 We'll see how it is possible to speed up sorting algorithms
 (both :ref:`Shellsort <Shellsort>` and :ref:`Quicksort <Quicksort>`)
 by taking advantage of the best case behavior of another algorithm
@@ -95,6 +95,8 @@ requires :math:`\Omega(n \log n)` time in the worst case
 Sorting Terminology and Notation
 --------------------------------
 
+.. _test-link: 
+
 Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`
 with key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
 the :dfn:`Sorting Problem` is to
@@ -110,7 +112,7 @@ records that have the same key value.
 Certain applications require that input not contain
 duplicate key values.
 Typically, sorting algorithms can handle duplicate key values unless
-noted otherwise.
+noted otherwise.  See the test-link_ for details.
 
 When duplicate key values are allowed, there might be an implicit
 ordering to the duplicates, typically based on their order of
