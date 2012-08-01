@@ -55,7 +55,9 @@ class modPreReq:
       end=-1 
       len_wthsp=-1   
       type=''
-      desc='' 
+      desc=''
+      fig = 1       
+      tab = 1    
       #config.mod_numb+=1
       fls = open(filename,'r')
       data = fls.readlines()
@@ -71,18 +73,26 @@ class modPreReq:
             self.description = p.sub('',str.replace(' ',''))
          if ':prerequisites:' in line:
             str =  re.split('prerequisites:', line, re.IGNORECASE)[1]
-            self.prereq = p.sub('',str).split(',')   #.append(str.partition('"')[0])
+            self.prereq = p.sub('',str).split(',')   
          if ':author:' in line:
             str =  re.split('author:', line, re.IGNORECASE)[1]
             self.author = p.sub('',str.replace(' ','_')).replace('_',' ')     
          if ':topic:' in line:
             str =  re.split('topic:', line, re.IGNORECASE)[1]
-            self.covers =  p.sub('',str).split(',')         #str
-#         if '.. _' in line:
-#            str =  re.split('. _', line, re.IGNORECASE)[1]
-#            if os.path.splitext(os.path.basename(filename))[0] not in config.table:
-#               config.mod_numb+=1  
-#               config.table[os.path.splitext(os.path.basename(filename))[0]]=config.mod_numb                            
+            self.covers =  p.sub('',str).split(',')        
+	 if line.startswith('.. _'):
+            label =  re.split(':', re.split('.. _', line, re.IGNORECASE)[1], re.IGNORECASE)[0]                                
+            if data[cpt+1].startswith('.. figure::'):                    
+               if os.path.splitext(os.path.basename(filename))[0] in config.table:       
+	         tb = config.table[os.path.splitext(os.path.basename(filename))[0]]           
+                 config.table[label] = tb + '.%s#' %fig
+                 fig+=1                  
+            if data[cpt+1].startswith('.. table::'):
+                if os.path.splitext(os.path.basename(filename))[0] in config.table:
+                  tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
+                  config.table[label] = tb + '.%s#' %tab   
+                  tab+=1                                                                
+ 
          if ('.. TODO::' in line  or '.. todo::' in line) and len_wthsp==-1 and start==-1 and end==-1:
             start = cpt+1 
          if start==cpt:
@@ -392,9 +402,7 @@ def main(argv):
      print 'ERROR: When saving JSON file' 
 
 
-#  with open(modDir + 'table.json','wb') as outfile:
-#     print 'dumping json data \n%s' %config.table    
-#     json.dump(config.table,outfile)
+#  print 'dumping json data \n%s' %config.table    
 
 if __name__ == "__main__":
    sys.exit(main(sys.argv))

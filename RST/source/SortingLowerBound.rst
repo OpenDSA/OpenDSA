@@ -125,6 +125,8 @@ For three values, there are :math:`n! = 6` permutations.
 Thus, the root node of the decision tree lists all six permutations
 that might be the eventual result of the algorithm.
 
+.. _dectree:
+
 .. figure:: Images/DecTree.png
    :width: 400
    :alt: A decision tree for Insertion Sort
@@ -255,3 +257,13 @@ time, so we can conclude that the problem of sorting requires
 As a corollary, we know that no comparison-based sorting algorithm can
 improve on existing :math:`\Theta(n \log n)` time sorting algorithms by
 more than  a constant factor.
+
+
+.. _dectree1:
+
+.. figure:: Images/DecTree.png
+   :width: 400
+   :alt: A decision tree for Insertion Sort
+
+   Very similar to Fig :numref:`Decision Tree <dectree>`
+

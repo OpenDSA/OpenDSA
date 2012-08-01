@@ -14,7 +14,7 @@
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
-
+                                          
 Shellsort
 =========
 
@@ -67,8 +67,11 @@ each element in the sublist being 8 positions apart.
 The first sublist would be the elements in positions 0 and 8.
 The second is in positions 1 and 9, and so on.
 
+
 As you click through the following slideshow, you will see each of the
-sublists of length 2.
+sublists of length 2 :odsaref:`InsertionSort`.    
+
+
 
 .. raw:: html
 
