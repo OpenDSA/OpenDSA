@@ -48,7 +48,8 @@ html:
 	-mkdir -p $(BUILDDIR)
 	python preprocessor.py source/ $(BUILDDIR)/html
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	cp source/knowledgemap.html $(BUILDDIR)/html 
+	cp source/knowledgemap.html $(BUILDDIR)/html
+	rm table.json 
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
