@@ -357,6 +357,7 @@ def enumFile(folder):
            chapter = 1
            flag=-1
      t=t+1  
+   filelist.append(folder+'index.rst')     
    return filelist
 
 
