@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
+<head>
+  <title>OpenDSA Merge Sort Exercise: Multiple Choice Question 1</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+</script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+</head>
+<body>
+
+<div class="exercise">
+    <div class = "vars">
+      <var id="TYPES">[ "True", "False" ]</var>
+      <var id="GBAns">randFromArray( TYPES )</var>
+      <var id="GB">(GBAns === "True") ? "good" : "bad"</var>
+    </div>
+  <div class="problems">
+     
+    <!-- Question MCQ -->
+    	
+	<div id="problem-type-or-description">
+      <p class="question"> The average number of comparisons performed by the merge sort , in merging two sorted lists of length 2 is:</p>
+      <div class="solution"><var><code> \sfrac{8}{3} </code></var></div>
+      <ul class="choices">
+	<li><var><code> \sfrac{11}{6} </code></var></li>
+	<li><var><code> \sfrac{8}{5} </code></var></li>
+	<li><var> <code> \sfrac{11}{7} </code></var></li>	  	 
+      </ul>
+	  <div class="hints">
+	   <p>If the final sorted list is a, b,c,d then 2 lists may be : a,b and c,d or a,c and b,d or a,d and b,c </p>
+	   <p>So The number of comparsions in each case will be 2,3,3</p>
+	   <p>So the averge number of comparisons will be \sfrac{(2+3+3)}{3}</p>
+	  </div>
+    </div>
+	
+  </div>
+</div>
+</body>
+</html>
