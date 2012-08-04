@@ -7,6 +7,7 @@ import subprocess
 import fnmatch
 import json
 import config
+from optparse import OptionParser
 from operator import itemgetter, attrgetter
 from xml.dom.minidom import parse, parseString
 from string import whitespace as ws
@@ -154,7 +155,6 @@ def generateJSON(modRoster, modDest):
     l=1
     try:
        gfile = open(modDest+'/modules.json','w')
-       #gfile.writelines('[\n')
        for k in modRoster :
           jsonString = jsonString +'{"pk": %s,"model": "showfile.exercise",'%l
           jsonString = jsonString +'"fields": {"summative": %s,'%k.summative
@@ -184,7 +184,6 @@ def generateCSV(modRoster, modDest):
     l=2001
     try:
        gfile = open(modDest+'/modules.csv','w')
-       #gfile.writelines('[\n')
        for k in modRoster :
           s = datetime.datetime.strptime(k.last_modified, "%Y-%m-%d %H:%M:%S") 
           csvString = csvString +s.strftime("%Y-%m-%dT%H:%M:%S")+',' 
@@ -287,6 +286,37 @@ def copyfiles(srcdir, dstdir, filepattern):
         break # no recursion
 
 
+def updateTOC(args):                               
+    iFile = open(args[0]+'index.rst','r')
+    iLine = iFile.readlines()
+    iFile.close()
+    directive=0
+    sectnum = 0 
+    for lins in iLine:
+      if '.. sectnum::' or '.. chapnum::' in lins:
+         directive=1
+         break
+    if directive==0:
+       print bcolors.FAIL + 'Error: No .. sectnum:: directive in index.rst. Please include the directive and try again.'+bcolors.ENDC
+       sys.exit(0) 
+    idx  = open(args[1]+'/index.html','r')   
+    idxL = idx.readlines()   
+    idx.close()           
+    modIndex =[]
+    for idxLine in idxL:
+       if 'class="section"' in idxLine:   
+          sectnum+=1   
+       if 'class="toctree-l' in idxLine:              
+           str1 = re.split('>', re.split('</a>', idxLine, re.IGNORECASE)[0], re.IGNORECASE)               
+           str = str1[len(str1)-1]   
+           str2 ='%s.' % sectnum + str   
+           idxLine = idxLine.replace(str,str2) 
+       modIndex.append(idxLine)  
+    otfile = open(args[1]+'/index.html','wb')
+    otfile.writelines(modIndex)
+    otfile.close()
+
+
 def todoHTML(todolst):
 
    tp =''
@@ -310,19 +340,20 @@ def todoHTML(todolst):
             rst+='.. raw:: html\n\n   <hr /><h1>%s</h1>\n   <hr />\n\n.. raw:: html\n\n   <h2>%s</h2>\n\n.. TODO::\n%s\n'%(v.capitalize()[1:-1],k.replace('/',': ')[:-4],s[:-1])
    otfile = open('source/ToDo.rst','w')
    otfile.writelines(rst)
+   otfile.close()
    return rst
 
-def control(argv):
-   if (len(argv) < 3 or len(argv) > 3):
-      sys.stderr.write("Usage: %s <source directory>  <destination directory>\n" % (argv[0],))
-      sys.exit(0)
-      #return 1
-   if len(argv)==3:
-      if not os.path.exists(argv[1]):
-         sys.stderr.write("ERROR: <module directory> %s does not exist! \n" % (argv[1],))
+def control(argv, args):
+   if len(args)==2:
+      if not os.path.exists(args[0]):
+         sys.stderr.write("ERROR: <module directory> %s does not exist! \n" % (args[0],))
          sys.exit(0)
-      if not os.path.exists(argv[2]):
-         os.mkdir(argv[2])
+      if not os.path.exists(args[1]):
+         os.mkdir(args[1])
+   else:   
+      print bcolors.FAIL +"ERROR. Usage: %s [-p]  <source directory>  <destination directory>\n" % (argv[0],)  + bcolors.ENDC  
+      sys.exit(0)
+
    
 def enumFile(folder):
 
@@ -363,47 +394,53 @@ def enumFile(folder):
 
 
 def main(argv):
-  control(argv)
-  modDir=''
-  modDest=''
-  sc='' 
-  if len(argv)==3:
-     modDir=argv[1]
-     modDest=argv[2]
+  parser = OptionParser()
+  parser.add_option("-p", "--postprocess", help="updates the table of content after the book is built", dest="postp", action="store_true")    
+                  #default="False")
+  (options, args) = parser.parse_args()
+  control(argv,args)
+  
+  if not options.postp is None:
+     updateTOC(args) 
+  else: 
+     modDir=''
+     modDest=''
+     sc='' 
+     modDir=args[0]
+     modDest=args[1]
 
-  fileLst =  enumFile(modDir)
-  modList =[]
-  modRost=[]
-
-
-  for fl in fileLst:
-     if os.path.splitext(fl)[1][1:] == 'rst' and 'ToDo.rst' not in fl: 
-        modRost.append(os.path.splitext(os.path.basename(fl))[0])
-        x = modPreReq(fl)
-        modList.append(x)
-
-  modList1 = sorted(modList,key = attrgetter('prereqNum'))
-  for ml in modList1:
-     ml.verifPreref(modRost)
-  finalList =modOrdering(modList1)
-
-  #create JSON and CSV files with modules information
-  generateJSON(finalList, modDest)
-  generateCSV(finalList, modDest) 
-
-  #ToDO list page
-  todolist1 = sorted(config.todolist, key=lambda todo: todo[1])
-  todoHTML(todolist1) 
-
-  #Write table to a file
-  try:
-     otfile = open('table.json','wb') 
-     json.dump(config.table,otfile)
-  except IOError:
-     print 'ERROR: When saving JSON file' 
+     fileLst =  enumFile(modDir)
+     modList =[]
+     modRost=[]
 
 
-#  print 'dumping json data \n%s' %config.table    
+     for fl in fileLst:
+        if os.path.splitext(fl)[1][1:] == 'rst' and 'ToDo.rst' not in fl: 
+           modRost.append(os.path.splitext(os.path.basename(fl))[0])
+           x = modPreReq(fl)
+           modList.append(x)
+
+     modList1 = sorted(modList,key = attrgetter('prereqNum'))
+     for ml in modList1:
+        ml.verifPreref(modRost)
+     finalList =modOrdering(modList1)
+
+     #create JSON and CSV files with modules information
+     generateJSON(finalList, modDest)
+     generateCSV(finalList, modDest) 
+
+     #ToDO list page
+     todolist1 = sorted(config.todolist, key=lambda todo: todo[1])
+     todoHTML(todolist1) 
+
+     #Write table to a file
+     try:
+        otfile = open('table.json','wb') 
+        json.dump(config.table,otfile)
+     except IOError:
+        print 'ERROR: When saving JSON file' 
+
+
 
 if __name__ == "__main__":
    sys.exit(main(sys.argv))
