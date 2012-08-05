@@ -13,8 +13,10 @@
 
 .. include:: JSAVheader.rinc
 
-Modules
-=======
+.. chapnum::
+   :start: 1
+   :prefix: Chapter    
+
 
 Background
 ----------
@@ -23,7 +25,7 @@ Background
    :numbered:
    :maxdepth: 3
 
-   SetDef
+   SetDef  
 
 Sorting
 -------
@@ -80,7 +82,7 @@ Graphs
    Huffman
 
 Appendix
-========
+--------
 
 .. toctree::
    :numbered:
