@@ -1,0 +1,172 @@
+<!--
+####################################### Radix Sort ##################################################
+#  Question     : Given a random array of size arr_size, assign the elements to its appropriate bins 
+#  Variables    : arr_size 6 - 12
+#  Chapter      : RadixSort
+#  Author       : Gayathri
+#  Date         : August 6, 2012
+#######################################################################################################
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+
+	<head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <title>Organise into Bins</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+                <script src="../JSAV/lib/jquery.transform.light.js"></script>
+                <script type="text/javascript"
+       src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+                </script>
+                <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+                <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+                <script src="../JSAV/build/JSAV-min.js"></script>
+                <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+
+		<style>
+			.jsavcontainer {
+  				border: 0px;
+			}
+			.jsavsettings {
+  				display: block;
+  				margin-top: -1px;
+  				margin-left: 10px;
+			}
+		</style>
+
+
+	<body>
+
+	<script>
+  		var jsav, arr , arr_clone,bin,myGuess,nsel,ll0,ll1;
+  
+		// Variables used to keep track of the index and the array of the currently selected element
+                var ArrIndex = -1;
+                var ArrName = null;
+	
+		// function to handle a click event on an array
+		function clickHandler(arr, index,arrnum) {
+			if (nsel == 0)    // No element is currently selected, select the current element
+                        {
+				// Don't let the user select bin array
+				var arn = array2;
+				if (arrnum == 2)
+					return;
+				arr.highlight(index);
+                                nsel = nsel+1;
+                                ArrName = arr;
+                                ArrIndex = index;
+                        } else {
+				if (arrnum == 1)
+				{
+					if (index == ArrIndex) {
+						arr.unhighlight(index);
+						nsel=0;
+					} else {
+						arr.unhighlight(ArrIndex);
+						arr.highlight(index);
+						ArrName = arr;
+                                		ArrIndex = index;
+					}
+				} else {
+					
+				}
+			}		
+                }
+
+                // function that initialise JSAV library
+                initJSAV = function(a) {
+                        var i;
+                        myGuess = -1;
+                        nsel = 0;
+                        jsav = new JSAV("jsav");
+			// create a new settings panel and specify the link to show it
+  			// var settings = new JSAV.utils.Settings($(".jsavsettings"));
+  			// add the layout setting preference
+			// var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "array"});
+                        arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a),{indexed: true, center: false, layout: "vertical"});
+			// arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a),{indexed: true, center: false});
+			arr.element.attr("id","array1");
+			arr.click(function(index){clickHandler(this, index,1)});
+                        arr_clone = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
+                        arr_clone.hide();
+                        for (i=0; i<a; i++)
+                        {
+                                arr_clone.value(i,arr.value(i));
+                        }
+                        var bins = [0,1,2,3,4,5,6,7,8,9];
+			bin = jsav.ds.array(bins,{indexed: false, center: false, layout: "vertical"});       
+                        bin.element.attr("id","array2");
+			var left = 120;
+			var top=-(47*a);
+			bin.element.css({"left": left, "top": top});
+			bin.click(function(index){clickHandler(this, index,2)});
+			ll0 = jsav.ds.list([2, 3, 5], {visible: true, center: true});
+			ll1 = jsav.ds.array([2, 3, 5], {visible: true, center: true});
+			ll0 = jsav.ds.list([2, 3, 5], {visible: true, center: true});
+			// ll0 = jsav.ds.list(bins,{visible: true, center: false});
+			var i;	
+			for (i=0;i<1;i++){
+			//	ll0 = jsav.ds.list([1],{center: false});
+			}
+  		}
+	
+
+ 		// function that validates student's answer 
+ 		function checkAnswer (a) {
+			var i;
+			var left =0;
+			var right = a-1;
+			var pi = arr_clone.value(pivot);
+			arr_clone.swap(pivot,0);
+			while (left<right) {
+				while (arr_clone.value(left) <= pi )
+					left = left+1;
+				while (arr_clone.value(right) > pi)
+					right = right -1;
+				if (left < right)
+					arr_clone.swap(left,right);
+			}
+			arr_clone.swap(0,right);
+			for (i=0; i<a; i++){
+				var a = arr.value(i);
+				var b = arr_clone.value(i); 
+				if (a != b) return (2 === 1);
+			}
+			return (1 === 1);
+  		} 
+
+
+	</script>
+
+
+	<div class="exercise">
+  		<div class="vars">
+    			<var id="arr_size">randRange( 6, 12 )</var>
+    			<var id="JSAV">initJSAV(arr_size)</var>
+		</div>
+
+  		<div class="problems">
+    			<div>
+      				<div class="question">
+				<p> Select appropriate bins for each element using its MSB </p>
+				<div id="jsav"></div>
+      			</div>
+      			<div class="solution" data-type="custom">
+				<div class="guess">
+          				[myGuess]
+        			</div>
+				<div class="validator-function">
+	  				return checkAnswer (arr_size);
+				</div>
+      			</div>
+     
+		 	<div class="hints">
+				<p> Given elements belong to bin with id same as its MSB </p>
+      			</div>
+    		</div>
+  	</div>
+</body>
+</html>
