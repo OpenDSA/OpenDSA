@@ -1,0 +1,142 @@
+<!--
+####################################### Quick Sort Partition ##################################################
+#  Question     : Given a random array of size arr_size and the pivot element highlighted partition the array using quciksort 
+#  Variables    : arr_size 6 - 12
+#  Chapter      : QuickSort
+#  Author       : Gayathri
+#  Date         : July 31, 2012
+#######################################################################################################
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+
+	<head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <title>Partition Array</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+                <script src="../JSAV/lib/jquery.transform.light.js"></script>
+                <script type="text/javascript"
+       src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+                </script>
+                <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+                <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+                <script src="../JSAV/build/JSAV-min.js"></script>
+                <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+
+		<style>
+			.jsavcontainer {
+  			border: 0px;
+			}
+		</style>
+
+
+	<body>
+
+	<script>
+  		var jsav, arr , myGuess,nsel,sel1,pivot;
+  	
+		// function to handle a click event on an array
+  		var clickHandler = function(index, e) {
+                        var sublist;
+                        sublist =0;
+                                if (nsel === 0)
+                                { // if first click
+                                        arr.css(index, {"font-size": "130%"});
+                                        nsel = nsel + 1;
+                                        sel1 = index;
+                                }
+                                else {
+                                        arr.swap(sel1,index);
+                                        arr.css(index, {"font-size": "100%"});
+                                        arr.css(sel1, {"font-size": "100%"});
+                                        nsel = 0;
+                                }
+
+                        myGuess = 1;
+                }
+
+                // function that initialise JSAV library
+                initJSAV = function(a) {
+                        var i;
+                        myGuess = -1;
+                        nsel = 0;
+			if (((a-1) % 2) == 0)
+				pivot = (a-1)/2;
+			else
+				pivot = (a-2)/2;
+                        jsav = new JSAV("jsav");
+                        jsav.recorded();
+                        arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a),{indexed: true, center: false});
+                        arr_clone = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
+                        arr_clone.hide();
+                        for (i=0; i<a; i++)
+                        {
+                                arr_clone.value(i,arr.value(i));
+                        }
+                                        arr.highlight(pivot);
+                                
+                        
+
+			// bind the clickHandler to handle click events on the array
+			arr.click(clickHandler);
+  		}
+	
+
+ 		// function that validates student's answer 
+ 		function checkAnswer (a) {
+			var i;
+			var left =0;
+			var right = a-1;
+			var pi = arr_clone.value(pivot);
+			arr_clone.swap(pivot,0);
+			while (left<right) {
+				while (arr_clone.value(left) <= pi )
+					left = left+1;
+				while (arr_clone.value(right) > pi)
+					right = right -1;
+				if (left < right)
+					arr_clone.swap(left,right);
+			}
+			arr_clone.swap(0,right);
+			for (i=0; i<a; i++){
+				var a = arr.value(i);
+				var b = arr_clone.value(i); 
+				if (a != b) return (2 === 1);
+			}
+			return (1 === 1);
+  		} 
+
+
+	</script>
+
+
+	<div class="exercise">
+  		<div class="vars">
+    			<var id="arr_size">randRange( 6, 12 )</var>
+    			<var id="JSAV">initJSAV(arr_size)</var>
+		</div>
+
+  		<div class="problems">
+    			<div>
+      				<div class="question">
+				<p> The pivot element for quicksort is highlighted in the array below. Partition the array using quicksort.
+				<div id="jsav"></div>
+      			</div>
+      			<div class="solution" data-type="custom">
+				<div class="guess">
+          				[myGuess]
+        			</div>
+				<div class="validator-function">
+	  				return checkAnswer (arr_size);
+				</div>
+      			</div>
+     
+		 	<div class="hints">
+				<p> Partition step moves pivot element to its index at the sorted array </p>
+      			</div>
+    		</div>
+  	</div>
+</body>
+</html>
