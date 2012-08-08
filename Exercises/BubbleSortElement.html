@@ -3,7 +3,7 @@
 #  Question     : Given a random array of size arr_size , and some element X highlighted
 #                 Everthing to the right of X is sorted(and bigger), and everything to the right is constrained random.
 #		  Highlighted element needs to be placed in right place by Bubble Sort
-#  Variables    : arr_size 0 - 12
+#  Variables    : arr_size 6 - 10
 #  Chapter      : InsetionSort
 #  Author       : Gayathri
 #  Date         : July 20, 2012
@@ -68,6 +68,30 @@
 			myGuess = 1;
   		}
 
+		var getXCumulativeOffset = function (obj) {
+		    var left, top;
+  		  left = top = 0;
+		    if (obj.offsetParent) {
+        		do {
+           			 left += obj.offsetLeft;
+           			 top  += obj.offsetTop;
+        		} while (obj = obj.offsetParent);
+    		}
+   		 return left;
+		};
+
+		var getYCumulativeOffset = function (obj) {
+                    var left, top;
+                  left = top = 0;
+                    if (obj.offsetParent) {
+                        do {
+                                 left += obj.offsetLeft;
+                                 top  += obj.offsetTop;
+                        } while (obj = obj.offsetParent);
+                }       
+                 return top;
+                };
+
 		// function that initialise JSAV library 
   		initJSAV = function(a, sort_pos) {
 			var i;
@@ -76,23 +100,35 @@
 			spos = sort_pos;
 			nsel = 0;
     			jsav = new JSAV("jsav");
+			jsav.recorded();
     			arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a),{indexed: true, center: false});
-			arr.show();
-			arr.hide();
-			for (i=0; i<(a-sort_pos-1); i++) {
-				for (j=0; j<=(a-i-2);j++) {
-					if (arr.value(j) > arr.value(j+1) ) 
-						arr.swap(j,j+1);
-				}
-			}
-			arr.highlight(sort_pos);
-			arr.show();
+			var x = getXCumulativeOffset(arr);
+                        var y = getYCumulativeOffset(arr);
+			var left = x;
+                        var top = y +13;
+			arr.element.css({"left": left, "top": top});
 			arr_clone = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
                         arr_clone.hide();
-                        for (i=0; i<a; i++)
+			for (i=0; i<a; i++)
                         {
                                 arr_clone.value(i,arr.value(i));
                         }
+			for (i=0; i<(a-sort_pos-1); i++) {
+				for (j=0; j<=(a-i-2);j++) {
+					if (arr_clone.value(j) > arr_clone.value(j+1) ) 
+						arr_clone.swap(j,j+1);
+				}
+			}
+			for (i=0; i<a; i++)
+                        {
+                                arr.value(i,arr_clone.value(i));
+                        }	
+			arr.highlight(sort_pos);
+
+			x = x + (46.5*sort_pos);
+                        var lin= jsav.g.line(x, y,x, (110 + y), {"stroke-opacity":20, "stroke-width": 4, "stroke":"black", "height":220, "fill-opacity":"yellow"});
+			lin.show();
+			arr_clone.show();
 			// bind the clickHandler to handle click events on the array
 			arr.click(clickHandler);
   		}
@@ -122,7 +158,7 @@
 
 	<div class="exercise">
   		<div class="vars">
-    			<var id="arr_size">randRange( 6, 12 )</var>
+    			<var id="arr_size">randRange( 6, 10 )</var>
 			<var id="sort_pos">randRange(1,arr_size-1)</var>
     			<var id="JSAV">initJSAV(arr_size,sort_pos)</var>
 		</div>
