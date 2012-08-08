@@ -131,9 +131,9 @@
       			}
 			
 			arraydata = JSAV.utils.rand.numKeys(10, 100,a);
-			initArrays(0,a-1, 2, 1,0);
-			initArrays(0,left_size-1,3,1,1);
-			initArrays(left_size,a-1,3,2,2);
+			initArrays(a,0,a-1, 2, 1,0);
+			initArrays(a,0,left_size-1,3,1,1);
+			initArrays(a,left_size,a-1,3,2,2);
 			arraydata.sort(function(a,b){return a-b});
 			arr_clone = jsav.ds.array(arraydata, {indexed: true, center: false, layout: "array"});
 			arr_clone.hide();
@@ -143,10 +143,11 @@
   		}
 	
 		// function that creates and initialises the arrays for mergesort
-		function initArrays(l, r, level, column,data_type) {
+		function initArrays(a,l, r, level, column,data_type) {
 			var i;
         		var numElements = r - l + 1;
         		var contents = new Array(numElements);
+			var top = rowHeight * (level - 1);			
 			if (data_type == 1)
 			{
 				for (i=0; i<numElements; i++) {
@@ -160,31 +161,25 @@
 					contents[i]=arraydata[i+left_size];
 				}
 				 contents.sort(function(a,b){return a-b});
+				
+				 var left = (( a - numElements) *blockWidth ) + blockWidth;
 			}
                 
 			// Dynamically create and position arrays
         		var arr = jsav.ds.array(contents, {indexed: true, center: false, layout: "array"});
         		// Set the ID for the array
         		arr.element.attr("id", "array_" + level + "_" + column + "_" + l);
-        		setPosition(arr, level, column);
+			if (data_type == 2) {
+				arr.element.css({"left": left, "top": top});
+			} else 
+				arr.element.css({"top": top});
+        		// setPosition(arr, level, column);
         		// Attach the click handler to the array
         		arr.click(function(index){clickHandler(this, index)});
 		}
 
 		// function to position each array
 		function setPosition(arr, level, column) {
-                	// Calculate the number of arrays in the current row
-                	var numArrInRow = Math.pow(2, level - 1);
-
-                	// Calculate the left value of the current array by dividing
-                	// the width of the canvas by twice the number of arrays that should appear in that
-                	// row: (canvasWidth / (2 * numArrInRow))
-                	// Odd multiples of the resulting value define a line through the center of each array
-                	// in the row and are found using the formula (2 * column - 1)
-                	// Note: while it is not used, even multiples define the center between two consecutive arrays
-                	// Since we want the left value rather than the center value of each array we calculate
-                	// the length each array (blockWidth *  arr.size()), divide this value in half and
-                	// subtract it from the center line to find the left value
 
                 	var left = (canvasWidth / (2 * numArrInRow)) * (2 * column - 1) - (blockWidth * arr.size() / 2);
                 	var top = rowHeight * (level - 1);
