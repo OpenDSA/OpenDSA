@@ -13,14 +13,22 @@
   
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
+
   // add the layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label": "Array layout: ", "value": "bar"});
-  
+  var arrayLayout = settings.add("layout", {"type": "select",
+                      "options": {"bar": "Bar", "array": "Array"},
+                      "label": "Array layout: ", "value": "bar"});
+
   var context = $("#ssperform");
   var emptyContent = $("#avcontainer").html();
   var av, // for JSAV av
     arr,  // for the JSAV array
     pseudo; // for the pseudocode display
+
+  // Connect action callbacks to the HTML entities
+  $('input[name="about"]').click(about);
+  $('input[name="run"]', context).click(runIt);
+  $('input[name="reset"]', context).click(reset);
 
   // Process About button: Pop up a message with an Alert
   function about() {
@@ -137,9 +145,4 @@
       av.recorded(); // mark the end
     }
   }
-
-  // Connect action callbacks to the HTML entities
-  $('input[name="about"]').click(about);
-  $('input[name="run"]', context).click(runIt);
-  $('input[name="reset"]', context).click(reset);
 }(jQuery));

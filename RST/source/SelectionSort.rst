@@ -1,6 +1,19 @@
+.. avmetadata:: Selection Sort
+   :author: Cliff Shaffer
+   :prerequisites: Sorting, Bubble Sort
+   :topic: Sorting
+   :short_name: SelectionSort
+
 .. _SelectionSort:
 
 .. index:: ! Selection Sort
+
+.. include:: JSAVheader.rinc
+
+.. raw:: html
+   
+   <link href="_static/Code/quadraticsort.css" rel="stylesheet" type="text/css" />
+
 
 Selection Sort
 ==============
@@ -28,39 +41,31 @@ required to put the record in place.
 Thus, the total number of swaps required will be :math:`n-1`
 (we get the last record in place "for free").
 
-.. figure:: Images/SelSort.png
-   :width: 400
-   :alt: An illustration of Selection Sort
-
-   <ODSAfig "SelSort" />
-   An example of Selection Sort.
-   Each column shows the array after the iteration with the indicated
-   value of <code>i</code> in the outer ``for`` loop.
-   Numbers above the line in each column have been sorted and are in
-   their final positions.
-
-Figure <ODSAref "SelSort" \> illustrates Selection Sort.
-
 Here is an implementation for Selection Sort.
 
 .. codeinclude:: Sorting/Selectionsort/Selectionsort.pde 
    :tag: Selectionsort
 
+Consider the example of the following array.
+
+.. raw:: html
+
+   <div id="container1">
+     <span class="jsavcounter"></span>
+     <a class="jsavsettings" href="#">Settings</a>
+     <div class="jsavcontrols"></div>
+     <p class="jsavoutput jsavline" readonly="readonly"></p>
+   </div>
+
 The following visualization puts it all together.
 
 .. avembed:: AV/selectionsort-av.html
 
-.. todo::
-   :type: Exercise
+Now try for yourself to see if you understand how Bubble Sort works.
 
-   Given: An array where some element X is highlighted. Everthing to the
-   left of X is sorted (the i smallest elements in the array, and
-   everything to the right is 
-   constrained random (must be bigger than the elements to the left).
-
-   Question: In this array, the highlighted element shows the current
-   position to start from to do the next pass of selection sort. Show
-   the    array after this pass has been completed.
+.. avembed:: Exercises/SelectionSortElement.html
+   :showbutton: hide
+   :title: Question 1
 
 .. todo::
    :type: Proficiency Exercise
@@ -107,3 +112,7 @@ return is a faster swap operation.
 .. avembed:: Exercises/Sorting/SelectionSortSumm.html
    :showbutton: hide
    :title: Review Questions
+
+.. raw:: html
+
+   <script src="_static/Code/Selectionsort.js"></script>

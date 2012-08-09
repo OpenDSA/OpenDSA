@@ -26,7 +26,7 @@ var setBlue = function (arr, index) {
 
   av.umsg("Moving from right to left, compare adjacent elements and swap if the left one is bigger than the right one.");
   av.displayInit();
-  setBlue(arr, arr.size() - 1);
+  setBlue(arr, arr.size()-1);
   for (j = arr.size() - 1; j > 0; j--) {
     setBlue(arr, j - 1);
     av.umsg("Compare elements");
@@ -53,7 +53,7 @@ var setBlue = function (arr, index) {
   av.umsg("Moving from right to left, compare adjacent elements and swap if the left one is bigger than the right one.");
   arr.css([0], {"color": LIGHT});
   av.displayInit();
-  setBlue(arr, arr.size() - 1);
+  setBlue(arr, arr.size()-1);
   for (j = arr.size() - 1; j > 1; j--) {
     setBlue(arr, j - 1);
     av.umsg("Compare elements");
