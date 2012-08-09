@@ -100,6 +100,14 @@
                                 arr.value(i,arr_clone.value(i));
                         }
 			arr.highlight(sort_pos);
+			// Compute the correct answer
+			small=sort_pos;
+                        for (j=sort_pos+1; j < a;j++) {
+                        	if (arr_clone.value(j) < arr_clone.value(small)) {
+                                	small=j;
+                                }
+                        }
+                        arr_clone.swap(small,sort_pos);
 			// bind the clickHandler to handle click events on the array
 			arr.click(clickHandler);
   		}
@@ -108,16 +116,6 @@
  		// function that validates student's answer 
  		function checkAnswer (a, sort_pos) {
   			var i;
-			var j=0;
-			var temp;
-			var small;
-			small=sort_pos;
-                                for (j=sort_pos+1; j < a;j++) {
-                                        if (arr_clone.value(j) < arr_clone.value(small)) {
-                                                small=j;
-                                }
-                        }
-			arr_clone.swap(small,sort_pos);
 			// Return false if user has highlighted any position before start_pos
 			for (i=0; i < a; i++) {
 				if ( arr.value(i) != arr_clone.value(i)) return (2 === 1);
