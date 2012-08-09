@@ -119,7 +119,7 @@ class modPreReq:
                   type=''
                   desc=''
                   start=-1
-                  end=0 #-1
+                  end=0 
                   len_wthsp=-1
             else:
                end=cpt-1
@@ -129,7 +129,7 @@ class modPreReq:
                type=''
                desc=''
                start=-1
-               end=0 #-1
+               end=0 
                len_wthsp=-1    
          if ('.. TODO::' in line  or '.. todo::' in line) and len_wthsp==-1 and start==-1 and end==0:
             start = cpt+1 
@@ -188,7 +188,7 @@ def generateCSV(modRoster, modDest):
           s = datetime.datetime.strptime(k.last_modified, "%Y-%m-%d %H:%M:%S") 
           csvString = csvString +s.strftime("%Y-%m-%dT%H:%M:%S")+',' 
           csvString = csvString +'%s,'%k.h_position
-          csvString = csvString +k.name[:-5]+','                                              #k.description+','  #name 
+          csvString = csvString +k.name[:-5]+','                                               
           csvString = csvString +'%s,'%k.v_position   #v_position 
           csvString = csvString +k.author+',' #author
           pq= (';'.join(map(str,k.prereq)), '')[k.prereqNum==0] #prerequisites 
@@ -240,8 +240,6 @@ def modOrdering(modRoster):
          m.v_position = v
          m.h_position = h
          finalMod.append(m)
-         #tmpMod.append(os.path.splitext(os.path.basename(modRoster.pop().name))[0])
-            #modRoster.remove(l)
          return finalMod
    return finalMod
 
@@ -292,37 +290,101 @@ def updateTOC(args):
     iFile.close()
     directive=0
     sectnum = 0 
+    chapter = '' 
     for lins in iLine:
       if '.. sectnum::' or '.. chapnum::' in lins:
          directive=1
          break
     if directive==0:
-       print bcolors.FAIL + 'Error: No .. sectnum:: directive in index.rst. Please include the directive and try again.'+bcolors.ENDC
-       sys.exit(0) 
-    idx  = open(args[1]+'/index.html','r')   
-    idxL = idx.readlines()   
-    idx.close()           
-    modIndex =[]
-    for idxLine in idxL:
-       if 'class="section"' in idxLine:   
-          sectnum+=1   
-       if 'class="toctree-l' in idxLine:              
-           str1 = re.split('>', re.split('</a>', idxLine, re.IGNORECASE)[0], re.IGNORECASE)               
-           str = str1[len(str1)-1]   
-           str2 ='%s.' % sectnum + str   
-           idxLine = idxLine.replace(str,str2) 
-       modIndex.append(idxLine)  
-    otfile = open(args[1]+'/index.html','wb')
-    otfile.writelines(modIndex)
-    otfile.close()
+       print bcolors.FAIL + 'Error: No .. sectnum:: or .. chapnum:: directive in index.rst. Please include the directive and try again.'+bcolors.ENDC
+       sys.exit(0)
 
+
+    try:
+       table=open('page_chapter.json')
+       data = json.load(table)
+       table.close()
+    except IOError:
+       print 'ERROR: No table.json file.'   
+
+    
+    for pagename in os.listdir(args[1]):           
+       if pagename=='index.html':
+          idx  = open(args[1]+'/index.html','r')   
+          idxL = idx.readlines()   
+          idx.close()           
+          modIndex =[]
+          for idxLine in idxL:
+             if 'class="section"' in idxLine:   
+                sectnum+=1  
+             if 'class="headerlink"' in idxLine: 
+                chapter = re.split('>',re.split('<a class="headerlink"', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]  
+             if 'class="toctree-l' in idxLine:              
+                 str1 = re.split('>', re.split('</a>', idxLine, re.IGNORECASE)[0], re.IGNORECASE)               
+                 str = str1[len(str1)-1]   
+                 str2 ='%s.' % sectnum + str   
+                 idxLine = idxLine.replace(str,str2) 
+             modIndex.append(idxLine)  
+          otfile = open(args[1]+'/index.html','wb')
+          otfile.writelines(modIndex)
+          otfile.close()
+       processedFiles=[]  
+       if pagename[:-5] not in processedFiles:
+          processedFiles.append(pagename[:-5])   
+          if os.path.splitext(pagename)[1][1:] =='html':
+             idx  = open(args[1]+'/'+pagename,'r')
+             idxL = idx.readlines()
+             idx.close()
+             modIndex =[]
+             pagename = pagename[:-5] 
+             header ='' 
+             td = 0  
+             if pagename in data:     
+                chap = data[pagename]  
+                header = 'Chapter %s %s' %(chap[1],chap[0])        
+             else: #special case ToDo.html, we put all the other files in the Appendix chapter    
+                chap = data['Bibliography']
+                header = 'Chapter %s %s' %(chap[1],chap[0])
+                td = 1 
+             for idxLine in idxL:
+                if 'id="prevmod"' in idxLine or 'id="nextmod"' in idxLine: 
+                   prev = re.split('">',re.split('</a>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]    
+                   href = re.split('href="',re.split('">', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
+                   if href[:-5] in data:
+                      chap = data[href[:-5]]  
+                      str = '%s.' %chap[1] + prev 
+                      idxLine = idxLine.replace(prev,str)   
+                   else:           #ToDo case     
+                       chap = data['Bibliography']
+                       str = '%s.' %chap[1] + prev
+                       idxLine = idxLine.replace(prev,str)   
+                   if  href[:-5]=='ToDO':   #special case ToDo.html 
+                      chap = data['Bibliography']
+                      str = '%s.' %chap[1] + prev
+                      idxLine = idxLine.replace(prev,str)   
+                if '<h2 class="heading"><span>'  in idxLine:  
+                   heading = re.split('<span>',re.split('</span>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]        
+                   idxLine = idxLine.replace(heading,header)
+                for i in range(1,7):      
+                   if '<h%s>' %i in idxLine and td==0:    
+                      par  = re.split('<h%s>'%i,re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1] 
+                      par1 = '%s.' %chap[1] + par  
+                      idxLine = idxLine.replace(par,par1)  
+                if td == 1:
+                    if 'a class="headerlink"' in idxLine:
+                      par  = re.split('<h1>',re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
+                      par1 = '%s.' %chap[1] + par
+                      idxLine = idxLine.replace(par,par1) 
+                modIndex.append(idxLine)   
+             otfile = open(args[1]+'/'+pagename+'.html','wb')
+             otfile.writelines(modIndex)
+             otfile.close()   
 
 def todoHTML(todolst):
 
    tp =''
    mn=0
    rst='.. _Todo:\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'   
-   #for td in todolst:
    for i, (k,v,s) in enumerate(todolst):
          if tp=='' and v=='':
             if mn==0:
@@ -354,15 +416,23 @@ def control(argv, args):
       print bcolors.FAIL +"ERROR. Usage: %s [-p]  <source directory>  <destination directory>\n" % (argv[0],)  + bcolors.ENDC  
       sys.exit(0)
 
-   
-def enumFile(folder):
+
+def isSection(txt):
+   if txt.startswith('-') or txt.startswith('+') or txt.startswith('=') or txt.startswith('*'): 
+      return True
+   else:
+      return False  
+ 
+def enumFile(folder, folder1):
 
    filelist = []
    dirlist=[]
    iFile = open(folder+'index.rst','r')
    iLine = iFile.readlines()
    iFile.close()
-   iLine1 = [] 
+   iLine1 = []
+   chap = ''  
+   chap_mod = {} 
    t = 0
    section = 0     
    chapter = 1    
@@ -372,23 +442,36 @@ def enumFile(folder):
    
    for filename in os.listdir(folder):
       dirlist.append(os.path.splitext(filename)[0])    
+   j = 0
    for e in iLine:
       iLine1.append(p.sub('',e))
-
+      j+=1
+   chap = ''   
    for flnm in iLine1:
      if t < len(iLine1)-1: 
-        if iLine1[t+1].startswith('-'):   
-           flag = 1      
-        if flnm in dirlist and not iLine1[t+1].startswith('-'):
+        if isSection(iLine1[t+1]):   
+           flag = 1     
+           chap = iLine[t]   
+        if flnm in dirlist and not isSection(iLine1[t+1]):            
+           chaplist =[] 
            filelist.append(folder+flnm+'.rst')
-           config.table[flnm]='%s.%s'%(section,chapter)  
+           config.table[flnm]='%s.%s'%(section,chapter) 
+           chaplist.append(chap.rstrip('\n'))  
+           chaplist.append(section)  
+           chap_mod[flnm]= chaplist         
            chapter+=1
-     if flnm.startswith('-'):    #        else:
+     if isSection(flnm):          
            section +=1
            chapter = 1
            flag=-1
      t=t+1  
    filelist.append(folder+'index.rst')     
+   try:
+        otfile = open('page_chapter.json','w')
+        json.dump(chap_mod,otfile)
+        otfile.close()
+   except IOError:
+        print 'ERROR: When saving JSON file'
    return filelist
 
 
@@ -396,7 +479,6 @@ def enumFile(folder):
 def main(argv):
   parser = OptionParser()
   parser.add_option("-p", "--postprocess", help="updates the table of content after the book is built", dest="postp", action="store_true")    
-                  #default="False")
   (options, args) = parser.parse_args()
   control(argv,args)
   
@@ -409,7 +491,7 @@ def main(argv):
      modDir=args[0]
      modDest=args[1]
 
-     fileLst =  enumFile(modDir)
+     fileLst =  enumFile(modDir,modDest)
      modList =[]
      modRost=[]
 
