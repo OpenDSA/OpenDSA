@@ -49,8 +49,8 @@ html:
 	python preprocessor.py source/ $(BUILDDIR)/html
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	cp source/knowledgemap.html $(BUILDDIR)/html
-	rm table.json
-	python preprocessor.py -p   source/ build/html 
+	python preprocessor.py -p   source/ $(BUILDDIR)/html 
+	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
