@@ -69,9 +69,7 @@ The second is in positions 1 and 9, and so on.
 
 
 As you click through the following slideshow, you will see each of the
-sublists of length 2 :odsaref:`InsertionSort`.    
-
-
+sublists of length 2.
 
 .. raw:: html
 

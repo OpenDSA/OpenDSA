@@ -8,6 +8,13 @@
 
 .. index:: ! Bubble Sort
 
+.. include:: JSAVheader.rinc
+
+.. raw:: html
+   
+   <link href="_static/Code/quadraticsort.css" rel="stylesheet" type="text/css" />
+
+
 Bubble Sort
 ===========
 
@@ -41,33 +48,39 @@ An implementation is as follows.
 .. codeinclude:: Sorting/Bubblesort/Bubblesort.pde 
    :tag: Bubblesort        
 
-.. figure:: Images/BubSort.png
-   :width: 400
-   :alt: An illustration of Bubble Sort
+Consider the example of the following array.
 
-   <ODSAfig "BubbSort" />
-   An illustration of Bubble Sort.
-   Each column shows the array after the iteration with the indicated
-   value of ``i`` in the outer ``for`` loop.
-   Values above the line in each column have been sorted.
-   Arrows indicate the swaps that take place during a given iteration.
+.. raw:: html
 
+   <div id="container1">
+     <span class="jsavcounter"></span>
+     <a class="jsavsettings" href="#">Settings</a>
+     <div class="jsavcontrols"></div>
+     <p class="jsavoutput jsavline" readonly="readonly"></p>
+   </div>
+
+Now we continue with the second pass. However, since the smallest
+element has "bubbled" to the very left, we will not need to look at it again.
+
+.. raw:: html
+
+   <div id="container2">
+     <span class="jsavcounter"></span>
+     <a class="jsavsettings" href="#">Settings</a>
+     <div class="jsavcontrols"></div>
+     <p class="jsavoutput jsavline" readonly="readonly"></p>
+   </div>
+
+Bubblesort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/bubblesort-av.html
 
-.. todo::
-   :type: Exercise
+Now try for yourself to see if you understand how Bubble Sort works.
 
-   Given: An array where some element X is highlighted. Everthing to the
-   right of X is sorted (and bigger), and everything to the left is
-   constrained random (must be a legal state for this position in
-   bubble sort processing).
-
-   Question: In this array, the highlighted element is the current
-   element to be processed in the next pass of Bubble Sort. Show the
-   array after the element has been placed in its proper position (and
-   other elements moved as necessary).
+.. avembed:: Exercises/BubbleSortElement.html
+   :showbutton: hide
+   :title: Question 1
 
 .. todo::
    :type: Proficiency Exercise
@@ -94,6 +107,10 @@ The actual number of swaps performed by Bubble Sort will be identical
 to that performed by
 Insertion Sort.
 
-.. avembed:: Exercises/BubbleSortMC.html
+.. avembed:: Exercises/Sorting/BubbleSortSumm.html
    :showbutton: hide
    :title: Review Questions
+
+.. raw:: html
+
+   <script src="_static/Code/Bubblesort.js"></script>
