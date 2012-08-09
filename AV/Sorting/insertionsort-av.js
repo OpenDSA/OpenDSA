@@ -25,11 +25,6 @@
     arr,  // for the JSAV array
     pseudo; // for the pseudocode display
 
-  // Connect action callbacks to the HTML entities
-  $('input[name="about"]').click(about);
-  $('input[name="run"]', context).click(runIt);
-  $('input[name="reset"]', context).click(reset);
-
   // Process About button: Pop up a message with an Alert
   function about() {
     alert("Insertion Sort Algorithm Visualization\nWritten by Cliff Shaffer and Nayef Copty\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
@@ -145,4 +140,10 @@
       av.recorded(); // mark the end
     }
   }
+
+  // Connect action callbacks to the HTML entities
+  $('input[name="about"]').click(about);
+  $('input[name="run"]', context).click(runIt);
+  $('input[name="reset"]', context).click(reset);
+
 }(jQuery));

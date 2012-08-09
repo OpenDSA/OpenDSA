@@ -32,17 +32,19 @@ Module :ref:`Selection Sort <SelectionSort>`.
 
 Bubble Sort consists of a simple double ``for`` loop.
 The first iteration of the inner ``for`` loop moves
-through the record array from bottom to top, comparing adjacent keys.
-If the lower-indexed key's value is greater than its higher-indexed
-neighbor, then the two values are swapped.
-Once the smallest value is encountered, this process will cause it
-to "bubble" up to the top of the array.
+through the record array from left to right, comparing adjacent keys.
+If the a record's key value is greater than the key of its right
+neighbor, then the two records are swapped.
+Once the largest value is encountered, this process will cause it
+to "bubble" up to the right of the array
+(which is where Bubble Sort gets its name)
 The second pass through the array repeats this process.
-However, because we know that the smallest value reached the top
-of the array on the first pass, there is no need to compare the top
-two elements on the second pass.
+However, because we know that the largest value already reached the
+right of the array on the first pass, there is no need to compare the
+rightmost two records on the second pass.
 Likewise, each succeeding pass through the array compares adjacent
-elements, looking at one less value than the preceding pass.
+records, looking at one less value toward the end than did the
+preceding pass.
 An implementation is as follows.
 
 .. codeinclude:: Sorting/Bubblesort/Bubblesort.pde 
@@ -59,8 +61,9 @@ Consider the example of the following array.
      <p class="jsavoutput jsavline" readonly="readonly"></p>
    </div>
 
-Now we continue with the second pass. However, since the smallest
-element has "bubbled" to the very left, we will not need to look at it again.
+Now we continue with the second pass. However, since the largest
+element has "bubbled" to the very right, we will not need to look at
+it again.
 
 .. raw:: html
 
