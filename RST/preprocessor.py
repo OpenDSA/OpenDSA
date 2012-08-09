@@ -290,10 +290,13 @@ def updateTOC(args):
     iFile.close()
     directive=0
     sectnum = 0 
-    chapter = '' 
+    chapter = ''
+    prefix = ''    
     for lins in iLine:
       if '.. sectnum::' or '.. chapnum::' in lins:
          directive=1
+      if ':prefix:' in lins:   
+         prefix = re.split('prefix:', lins, re.IGNORECASE)[1]     
          break
     if directive==0:
        print bcolors.FAIL + 'Error: No .. sectnum:: or .. chapnum:: directive in index.rst. Please include the directive and try again.'+bcolors.ENDC
@@ -341,10 +344,10 @@ def updateTOC(args):
              td = 0  
              if pagename in data:     
                 chap = data[pagename]  
-                header = 'Chapter %s %s' %(chap[1],chap[0])        
+                header = '%s %s %s' %(prefix,chap[1],chap[0])        
              else: #special case ToDo.html, we put all the other files in the Appendix chapter    
                 chap = data['Bibliography']
-                header = 'Chapter %s %s' %(chap[1],chap[0])
+                header = '%s %s %s' %(prefix,chap[1],chap[0])
                 td = 1 
              for idxLine in idxL:
                 if 'id="prevmod"' in idxLine or 'id="nextmod"' in idxLine: 
