@@ -104,6 +104,6 @@ This technique is illustrated by Figure <ODSAref "PtrSwap" \>.
 Additional space is needed to store the pointers, but the
 return is a faster swap operation.
 
-.. avembed:: Exercises/SelectionSortMC.html
+.. avembed:: Exercises/Sorting/SelectionSortSumm.html
    :showbutton: hide
    :title: Review Questions
