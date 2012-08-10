@@ -1,6 +1,6 @@
 <!--
 ####################################### Heap Sort ##################################################
-#  Question     : Given a random array of size arr_size and the pivot element highlighted partition the array using quciksort 
+#  Question     : Given a random array of size arr_size , perform one iteration of heap sort
 #  Variables    : arr_size 6 - 12
 #  Chapter      : HeapSort
 #  Author       : Gayathri
@@ -17,6 +17,7 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
                 <script src="../JSAV/lib/jquery.transform.light.js"></script>
+		<script src="../JSAV/lib/raphael.js"></script>
                 <script type="text/javascript"
        src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
                 </script>
@@ -42,27 +43,25 @@
 	<body>
 
 	<script>
-  		var jsav, arr , myGuess,nsel,sel1,pivot;
+  		var jsav, bh, bh_clone, heap_size, myGuess,nsel,sel1;
 		var bh,initData,r;
   	
 		// function to handle a click event on an array
-  		var clickHandler = function(index, e) {
-                        var sublist;
-                        sublist =0;
-                                if (nsel === 0)
-                                { // if first click
-                                        arr.css(index, {"font-size": "130%"});
-                                        nsel = nsel + 1;
-                                        sel1 = index;
-                                }
-                                else {
-                                        arr.swap(sel1,index);
-                                        arr.css(index, {"font-size": "100%"});
-                                        arr.css(sel1, {"font-size": "100%"});
-                                        nsel = 0;
-                                }
-
-                        myGuess = 1;
+		function clickHandler(index) {
+                	if (nsel === 0)
+                	{ // if first click
+                		bh.css(index, {"font-size": "130%"});
+                        	nsel = nsel + 1;
+                        	sel1 = index;
+                 	}
+                 	else {
+				bh.swap(sel1,index,{});
+				bh.css(index, {"font-size": "100%"});
+				bh.css(sel1, {"font-size": "100%"});
+                       		nsel = 0;
+                 	}
+			jsav.step();
+                 	myGuess = 1;
                 }
 
                 // function that initialise JSAV library
@@ -70,58 +69,49 @@
                         var i;
                         myGuess = -1;
                         nsel = 0;
-			if (((a-1) % 2) == 0)
-				pivot = (a-1)/2;
-			else
-				pivot = (a-2)/2;
                         jsav = new JSAV("jsav");
                         jsav.recorded();
 			if (bh) {
         			bh.clear();
-      			}	
+      			}
       			initData = JSAV.utils.rand.numKeys(10, 100,a);
-                       arr = jsav.ds.array(initData,{indexed: true, center: false});
-			r = jsav.ds.tree(initData);
-			bh = jsav.ds.binheap(initData, {compare: function(a, b) { return b - a;}});
-                        arr_clone = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
-                        arr_clone.hide();
-                        for (i=0; i<a; i++)
-                        {
-                                arr_clone.value(i,arr.value(i));
-                        }
-                                        arr.highlight(pivot);
+      			bh = jsav.ds.binheap(initData, {compare: function(a, b) { return b - a;}});
+                        bh_clone = jsav.ds.binheap(initData, {visible: false, compare: function(a, b) { return b - a;}});
+                        heap_size = bh.heapsize();
                                 
-                        
+                        // compute the answer
+			bh_clone.swap(0,bh_clone.heapsize() - 1);
+			bh_clone.css(bh_clone.heapsize()-1, {"background-color": "#ddd"});
+			bh_clone.heapify(1);
 
 			// bind the clickHandler to handle click events on the array
-			arr.click(clickHandler);
+			$(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
+		        	var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
+       			 	clickHandler(index);
+      			});
+      			$(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
+        			var index = $(this).data("jsav-heap-index") - 1;
+        			clickHandler(index);
+      			});
+
+			$("#decrement").click(function() {
+        			bh.css(bh.heapsize()-1, {"background-color": "#ddd"});
+      			});
   		}
 	
 
  		// function that validates student's answer 
  		function checkAnswer (a) {
+			
 			var i;
-			var left =0;
-			var right = a-1;
-			var pi = arr_clone.value(pivot);
-			arr_clone.swap(pivot,0);
-			while (left<right) {
-				while (arr_clone.value(left) <= pi )
-					left = left+1;
-				while (arr_clone.value(right) > pi)
-					right = right -1;
-				if (left < right)
-					arr_clone.swap(left,right);
+			for (i=0; i<heap_size; i++)
+			{
+				if (bh.value(i) != bh_clone.value(i) ) return (2===1);
 			}
-			arr_clone.swap(0,right);
-			for (i=0; i<a; i++){
-				var a = arr.value(i);
-				var b = arr_clone.value(i); 
-				if (a != b) return (2 === 1);
-			}
+
 			return (1 === 1);
   		} 
-
+		
 
 	</script>
 
@@ -135,7 +125,8 @@
   		<div class="problems">
     			<div>
       				<div class="question">
-				<p> Perform one iteration of heap sort. This invloves selecting the  Maximum element and restoring the heap in the array/tree shown below. </p>
+				<p> Perform one iteration of heap sort. Swap the last key with the largest key and restore the heap in the array/tree shown below. </p>
+				<p align="center" class="jsavexercisecontrols"><input id="decrement" type="button" value="Decrement heap size" />
 				<div id="jsav"></div>
       			</div>
       			<div class="solution" data-type="custom">
