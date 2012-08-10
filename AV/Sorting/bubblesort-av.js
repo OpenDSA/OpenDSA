@@ -22,6 +22,8 @@
     arr,  // for the JSAV array
     pseudo; // for the pseudocode display
 
+  var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
+
   // Process About button: Pop up a message with an Alert
   function about() {
     alert("Bubble Sort Algorithm Visualization\nWritten by Cliff Shaffer and Brandon Watkins\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
@@ -78,7 +80,7 @@
   // Bubble Sort
   function bubblesort() {
     var i, j;
-    av.umsg("For each pass, we will move right to left swapping adjacent elements as needed. Each pass moves the next smallest element into position (these will be shown in lighter color).");
+    av.umsg("For each pass, we will move left to right swapping adjacent elements as needed. Each pass moves the next largest element into its final position (these will be shown in lighter color).");
     pseudo.setCurrentLine(0);
     av.step();
     for (i = 0; i < arr.size() - 1; i++) {
@@ -88,9 +90,9 @@
       av.umsg("For each element moving through the list");
       pseudo.setCurrentLine(2);
       av.step();
-      setBlue(arr.size() - 1);
-      for (j = arr.size() - 1; j > i; j--) {
-        setBlue(j - 1);
+      setBlue(0);
+      for (j = 1; j < arr.size() - i; j++) {
+        setBlue(j);
         av.umsg("Compare elements");
         pseudo.setCurrentLine(3);
         av.step();
@@ -100,15 +102,16 @@
           arr.swap(j - 1, j);
           av.step();
         }
-        arr.unhighlight(j);
+        arr.unhighlight(j - 1);
       }
-      arr.highlight(j);
+      arr.unhighlight(j - 1);
+      arr.css([j - 1], {"color": LIGHT});
       av.umsg("Done this pass");
       av.step();
     }
+    arr.css([0], {"color": LIGHT});
     av.umsg("Done sorting!");
     pseudo.setCurrentLine(5);
-    arr.highlight(arr.size() - 1);
     av.step();
   }
 

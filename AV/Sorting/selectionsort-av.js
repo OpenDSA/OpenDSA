@@ -1,104 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-  <title>Selection Sort AV</title>
-  <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
-<style>
-
-#container {
-  width: 770px;
-  height: 465px;
-  border: 1px solid black;
-  background-color: #efe;
-  padding: 10px;
-  overflow: hidden;
-}
-
-div h1 {
-  background-color: #efe;
-  margin: 5px;
-}
-.jsavcontainer {
-  background-color: #efe;
-  border: none;
-}
-.jsavcounter {
-  float: left;
-  width: 100px;
-}
-.jsavarray {
-  padding-left:0;
-}
-p.jsavoutput.jsavline {
-  height: 30px;
-  margin: 0;
-}
-#about {
-  float: right;
-}
-a.jsavsettings {
-display: block;
-margin-top: 10px;
-margin-left: 10px;
-}
-form {
-  clear: both;
-}
-</style>
-</head>
-
-<body>
-<div id="container">
-  <input type="button" id="about" name="about" value="About" style="margin-top:10px;"/>
-  <a class="jsavsettings" href="#">Settings</a>
-  <h1 style="">Selection Sort Visualization</h1>
-
-  <form id="ssperform">
-    <p>
-      <input type="button" name="run" value="Run" />
-      <input type="button" name="reset" value="Reset" />
-      <label for="arraysize">&nbsp;List size:&nbsp;</label>
-      <select id="arraysize">
-        <option value = 5>5</option>
-        <option value = 6>6</option>
-        <option value = 7>7</option>
-        <option selected value = 8>8</option>
-        <option value = 9>9</option>
-        <option value = 10>10</option>
-        <option value = 11>11</option>
-        <option value = 12>12</option>
-        <option value = 13>13</option>
-        <option value = 14>14</option>
-        <option value = 15>15</option>
-        <option value = 16>16</option>
-      </select>
-      <label for="arrayValues">&nbsp;Your values:&nbsp;</label>
-      <input size="60" name="arrayValues" id="arrayValues" type="text" />
-    </p>
-  </form>
-  <div id="avcontainer">
-    <span class="jsavcounter"></span>
-    <div class="jsavcontrols"></div>
-    <p class="jsavoutput jsavline" readonly="readonly"></p>
-  </div> <!--avcontainer-->
-</div> <!--container-->
-
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-</script>
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
-</script>
-<script src="../JSAV/lib/jquery.transform.light.js"></script>
-<script src="../JSAV/build/JSAV-min.js"></script>
-
-<script>
+"use strict";
+/*global alert*/
 (function($) {
-  // Number of values in the array
-  var ASize = $('#arraysize').val();
-  // The array of numbers.
-  var theArray = [];
+  var
+    ASize = $('#arraysize').val(), // Number of values in the array
+    theArray = [];  // The array of numbers
 
   // check query parameters from URL
   var params = JSAV.utils.getQueryParameter();
@@ -108,13 +13,17 @@ form {
   
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
+
   // add the layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "bar"});
+  var arrayLayout = settings.add("layout", {"type": "select",
+                      "options": {"bar": "Bar", "array": "Array"},
+                      "label":"Array layout: ", "value": "bar"});
   
   var context = $("#ssperform");
   var emptyContent = $("#avcontainer").html();
   var av, // for JSAV av
-    arr;  // for the JSAV array
+    arr,  // for the JSAV array
+    pseudo; // for the pseudocode display
 
   // Connect action callbacks to the HTML entities
   $('input[name="about"]').click(about);
@@ -168,7 +77,6 @@ form {
     $('#arraysize').val(theArray.length);
     return true;
   }
-
 
   var setBlue = function(index) {
     arr.css(index, {"background-color": "#ddf" });
@@ -247,6 +155,3 @@ form {
     }
   }
 })(jQuery);
-</script>
-</body>
-</html>
