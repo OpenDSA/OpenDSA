@@ -23,9 +23,10 @@ Bubble Sort is often taught to novice programmers in
 introductory computer science courses.
 This is unfortunate, because Bubble Sort has no redeeming features
 whatsoever.
-It is a relatively slow sort, it is no easier to understand than
-Insertion Sort, it does not correspond to any intuitive counterpart in
-"everyday" use, and it has a poor best-case running time.
+It is a relatively slow sort, it is no
+easier to understand than Insertion Sort,
+it has no intuitive counterpart in "everyday" use,
+and it has a poor best-case running time.
 However, Bubble Sort can serve as the inspiration for a better sorting
 algorithm that will be presented in
 Module :numref:`Selection Sort <SelectionSort>`.
@@ -74,7 +75,7 @@ it again.
      <p class="jsavoutput jsavline" readonly="readonly"></p>
    </div>
 
-Bubblesort continues in this way until the entire array is sorted.
+Bubble Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/bubblesort-av.html

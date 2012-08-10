@@ -13,8 +13,11 @@
   
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
+
   // add the layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label": "Array layout: ", "value": "bar"});
+  var arrayLayout = settings.add("layout", {"type": "select",
+                      "options": {"bar": "Bar", "array": "Array"},
+                      "label": "Array layout: ", "value": "bar"});
   
   var context = $("#ssperform");
   var emptyContent = $("#avcontainer").html();
@@ -71,7 +74,6 @@
     $('#arraysize').val(theArray.length);
     return true;
   }
-
 
   var setBlue = function (index) {
     arr.css(index, {"background-color": "#ddf" });
@@ -135,7 +137,6 @@
       }
       reset(true); // Reset any previous visualization
       av = new JSAV("avcontainer"); // initialize JSAV ..
-
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
       pseudo = av.code({url: "../../SourceCode/Processing/Sorting/Bubblesort/Bubblesort.pde",

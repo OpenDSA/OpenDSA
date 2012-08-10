@@ -8,7 +8,7 @@ JSAV.ext.SPEED = 300;
 
 // The various arrays to start sweeps with or display
 var theArray = [20, 10, 15, 54, 55, 11, 78, 14];
-var theArray2 =  [10, 20, 11, 15, 54, 55, 14, 78];
+var theArray2 = [20, 10, 15, 54, 55, 11, 14, 78];
  
 var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
 
@@ -18,29 +18,44 @@ var setBlue = function (arr, index) {
   arr.css(index, {"background-color": "#ddf" });
 };
 
+var setGreen = function (arr, index) {
+  arr.css(index, {"background-color": "#00FF00" });
+};
+
 (function ($) {
   var av = new JSAV("container1");
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray, {indexed: true});
   var j;
+  var bigindex = 0;
 
-  av.umsg("Moving from right to left, compare adjacent elements and swap if the left one is bigger than the right one.");
+  av.umsg("Moving from left to right, find the element with the greatest value.");
   av.displayInit();
-  setBlue(arr, arr.size()-1);
-  for (j = arr.size() - 1; j > 0; j--) {
-    setBlue(arr, j - 1);
-    av.umsg("Compare elements");
+  av.umsg("For each element moving through the list: the biggest seen so far is always green");
+  setGreen(arr, 0);
+  av.step();
+  for (j = 1; j < arr.size(); j++) {
+    setBlue(arr, j);
+    av.umsg("Compare to biggest seen so far");
     av.step();
-    if (arr.value(j - 1) > arr.value(j)) {
-      av.umsg("Swap");
-      arr.swap(j - 1, j);
+    if (arr.value(j) > arr.value(bigindex)) {
+      av.umsg("Found something bigger, so switch value of bigindex");
+      arr.unhighlight(bigindex);
+      bigindex = j;
+      setGreen(arr, bigindex);
       av.step();
     }
-    arr.unhighlight(j);
+    else {
+      arr.unhighlight(j);
+    }
   }
-
-  arr.unhighlight(0);
+  av.umsg("Now swap the next biggest element into place");
+  av.step();
+  arr.swap(bigindex, arr.size() - 1); // swap the two indices
+  av.step();
   av.umsg("Done this pass");
+  arr.unhighlight(arr.size() - 1);
+  arr.css([arr.size() - 1], {"color": LIGHT});
   av.recorded();
 }(jQuery));
 
@@ -49,25 +64,35 @@ var setBlue = function (arr, index) {
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray2, {indexed: true});
   var j;
+  var bigindex = 0;
 
-  av.umsg("Moving from right to left, compare adjacent elements and swap if the left one is bigger than the right one.");
-  arr.css([0], {"color": LIGHT});
+  arr.css([arr.size() - 1], {"color": LIGHT});
+  av.umsg("Second pass: moving from left to right, find the element with the second greatest value.");
   av.displayInit();
-  setBlue(arr, arr.size()-1);
-  for (j = arr.size() - 1; j > 1; j--) {
-    setBlue(arr, j - 1);
-    av.umsg("Compare elements");
+  av.umsg("For each element moving through the list: the biggest seen so far is always green");
+  setGreen(arr, 0);
+  av.step();
+  for (j = 1; j < arr.size() - 1; j++) {
+    setBlue(arr, j);
+    av.umsg("Compare to biggest seen so far");
     av.step();
-    if (arr.value(j - 1) > arr.value(j)) {
-      av.umsg("Swap");
-      arr.swap(j - 1, j);
+    if (arr.value(j) > arr.value(bigindex)) {
+      av.umsg("Found something bigger, so switch value of bigindex");
+      arr.unhighlight(bigindex);
+      bigindex = j;
+      setGreen(arr, bigindex);
       av.step();
     }
-    arr.unhighlight(j);
+    else {
+      arr.unhighlight(j);
+    }
   }
-  arr.unhighlight(1);
-  arr.css([1], {"color": LIGHT});
+  av.umsg("Now swap the next biggest element into place");
+  av.step();
+  arr.swap(bigindex, arr.size() - 2); // swap the two indices
+  av.step();
   av.umsg("Done this pass");
+  arr.unhighlight(arr.size() - 2);
+  arr.css([arr.size() - 2], {"color": LIGHT});
   av.recorded();
-
 }(jQuery));
