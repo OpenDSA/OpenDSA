@@ -28,7 +28,7 @@ Insertion Sort, it does not correspond to any intuitive counterpart in
 "everyday" use, and it has a poor best-case running time.
 However, Bubble Sort can serve as the inspiration for a better sorting
 algorithm that will be presented in
-Module :ref:`Selection Sort <SelectionSort>`.
+Module :numref:`Selection Sort <SelectionSort>`.
 
 Bubble Sort consists of a simple double ``for`` loop.
 The first iteration of the inner ``for`` loop moves

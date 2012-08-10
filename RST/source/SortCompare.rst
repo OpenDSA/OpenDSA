@@ -82,7 +82,7 @@ property within the record, but rather depends on the context.
 Some languages like Java and C++ have special infrastructure for
 supporting this (such as the ``Comparable`` interface and the
 ``.compareTo()`` method in Java).
-But many language like Processing and JavaScript do not.
+But many languages like Processing and JavaScript do not.
 One good general-purpose solution is to explicitly store "key-record"
 pairs in the data structure.
 For example, if we want to sort a bunch of records, we can store them
