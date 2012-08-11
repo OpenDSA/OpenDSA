@@ -8,6 +8,10 @@
 
 .. include:: JSAVheader.rinc
 
+.. raw:: html
+   
+   <link href="_static/Code/HuffmanCoding.css" rel="stylesheet" type="text/css" />
+
 .. index:: ! Huffman
 
 Huffman Coding Trees
@@ -63,9 +67,16 @@ The process of building the Huffman tree for :math:`n` letters is quite simple. 
 <ODSAfig "FreqExamp" />
 The relative frequencies for eight selected letters.
 
-.. figure:: Images/HuffTree.png
-   :width: 500
-   :alt: Building a Huffman tree
+.. raw:: html
+
+   <div id="container">
+     <a class="jsavsettings" href="#">Settings</a>
+       <div id="av">
+         <span class="jsavcounter"></span>
+         <div class="jsavcontrols"></div>
+         <p class="jsavoutput jsavline" readonly="readonly"></p>
+       </div> <!--av-->
+   </div> <!--container-->
 
 Figure <ODSAref "HuffTree" /> illustrates part of the Huffman tree construction process for the eight letters of Figure <ODSEref "FreqExamp" />. Ranking D and L arbitrarily by alphabetical order, the letters are ordered by frequency as
 
@@ -159,4 +170,7 @@ When we decode a character using the Huffman coding tree, we follow a path throu
 
 If we view all records stored in either of these structures as appearing at some point on a number line representing the key space, we can see that the splitting behavior of these two structures is very different. The BST splits the space based on the key values as they are encountered when going down the tree. But the splits in the key space are predetermined for the Huffman tree. Search tree structures whose splitting points in the key space are predetermined are given the special name :strong:`trie` to distinguish them from the type of search tree (like the BST) whose splitting points are determined by the data.
 
+.. raw:: html
+
+   <script src="_static/Code/HuffmanCoding.js"></script>
 

@@ -90,6 +90,13 @@
 					arr.highlight(i);
 				}
 			}
+			// compute the correct answer
+			for (i=start_pos; i < a-1; i=i+inc_size) {
+                                for (j=i+inc_size; j<a; j=j+inc_size){
+                                        if (arr_clone.value(i) > arr_clone.value(j) )
+                                        arr_clone.swap(i,j);
+                                }
+                        }
 			// bind the clickHandler to handle click events on the array
 			arr.click(clickHandler);
   		}
@@ -98,15 +105,6 @@
  		// function that validates student's answer 
  		function checkAnswer (a, start_pos, inc_size) {
   			var i;
-			var j=0;
-			var temp;
-			for (i=start_pos; i < a-1; i=i+inc_size) {
-				for (j=i+inc_size; j<a; j=j+inc_size){
-					if (arr_clone.value(i) > arr_clone.value(j) )
-					arr_clone.swap(i,j);						
-				}
-			}
-		//	arr_clone.show();
 			// Return false if user has highlighted any position before start_pos
 			for (i=0; i < a; i++) {
 				if ( arr.value(i) != arr_clone.value(i)) return (2 === 1);
