@@ -357,23 +357,24 @@ def updateTOC(args):
                       chap = data[href[:-5]]  
                       str = '%s.' %chap[1] + prev 
                       idxLine = idxLine.replace(prev,str)   
-                   else:           #ToDo case     
-                       chap = data['Bibliography']
-                       str = '%s.' %chap[1] + prev
-                       idxLine = idxLine.replace(prev,str)   
+                   else:
+                       if pagename=='ToDO':           #ToDo case     
+                          chap = data['Bibliography']
+                          str = '%s.' %chap[1] + prev
+                          idxLine = idxLine.replace(prev,str)   
                    if  href[:-5]=='ToDO':   #special case ToDo.html 
                       chap = data['Bibliography']
                       str = '%s.' %chap[1] + prev
                       idxLine = idxLine.replace(prev,str)   
-                if '<h2 class="heading"><span>'  in idxLine:  
+                if '<h2 class="heading"><span>'  in idxLine and pagename != 'index':  
                    heading = re.split('<span>',re.split('</span>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]        
                    idxLine = idxLine.replace(heading,header)
                 for i in range(1,7):      
-                   if '<h%s>' %i in idxLine and td==0:    
+                   if '<h%s>' %i in idxLine and td==0 and pagename != 'index':    
                       par  = re.split('<h%s>'%i,re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1] 
                       par1 = '%s.' %chap[1] + par  
                       idxLine = idxLine.replace(par,par1)  
-                if td == 1:
+                if td == 1 and pagename != 'index':
                     if 'a class="headerlink"' in idxLine:
                       par  = re.split('<h1>',re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                       par1 = '%s.' %chap[1] + par
