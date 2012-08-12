@@ -83,6 +83,7 @@
 					arr.unhighlight(sel1);
 					uarr0[ii0] = arr.value(sel1) ;
 					ii0 = ii0 +1;
+					L0.first().edgeToNext().show();
 				}	
 				if (arrnum == 1) 
                                 {
@@ -92,6 +93,7 @@
                                 	arr.unhighlight(sel1);
 					uarr1[ii1] = arr.value(sel1) ;
                                         ii1 = ii1 +1;
+					L1.first().edgeToNext().show();
                                 }
 				if (arrnum == 2) 
                                 {
@@ -101,6 +103,7 @@
                                 	arr.unhighlight(sel1);
 					uarr2[ii2] = arr.value(sel1) ;
                                         ii2 = ii2 +1;
+					L2.first().edgeToNext().show();
                                  }
                                  if (arrnum == 3)
                                  {
@@ -110,6 +113,7 @@
                                         arr.unhighlight(sel1);
 					uarr3[ii3] = arr.value(sel1) ;
                                         ii3 = ii3 +1;
+					L3.first().edgeToNext().show();
                                   }
                                   if (arrnum == 4)
                                   {
@@ -119,6 +123,7 @@
                                    	arr.unhighlight(sel1);
 					uarr4[ii4] = arr.value(sel1) ;
                                         ii4 = ii4 +1;
+					L4.first().edgeToNext().show();
                                    }
                                    if (arrnum == 5)
                                    {
@@ -128,6 +133,7 @@
                                         arr.unhighlight(sel1);
 					uarr5[ii5] = arr.value(sel1) ;
                                         ii5 = ii5 +1;
+					L5.first().edgeToNext().show();
                                     }
                                     if (arrnum == 6)
                                     {
@@ -137,6 +143,7 @@
                                     	arr.unhighlight(sel1);
 					uarr6[ii6] = arr.value(sel1) ;
                                         ii6 = ii6 +1;
+					L6.first().edgeToNext().show();
                                     }
                                     if (arrnum == 7)
                                     {
@@ -146,6 +153,7 @@
                                     	arr.unhighlight(sel1);
 					uarr7[ii7] = arr.value(sel1) ;
                                         ii7 = ii7 +1;
+					L7.first().edgeToNext().show();
                                     }
                                     if (arrnum == 8)
                                     {
@@ -155,6 +163,7 @@
                                      	arr.unhighlight(sel1);
 					uarr8[ii8] = arr.value(sel1) ;
                                         ii8 = ii8 +1;
+					L8.first().edgeToNext().show();
                                     }
                                     if (arrnum == 9)
                                     {
@@ -164,6 +173,7 @@
                                     	arr.unhighlight(sel1);
 					uarr9[ii9] = arr.value(sel1) ;
                                         ii9 = ii9 +1;
+					L9.first().edgeToNext().show();
                                      }
 			}
 			
@@ -522,51 +532,61 @@
                                 var n = L0.removeLast();
                                 n.hide();
                                 L0.layout({center: false});
+				L0.last().edgeToNext().hide();
                         }
                         while (L1.size() > 1 ) {
                                 var n = L1.removeLast();
                                 n.hide();
                                 L1.layout({center: false});
+				L1.last().edgeToNext().hide();
                         }
                         while (L2.size() > 1 ) {
                                 var n = L2.removeLast();
                                 n.hide();
                                 L2.layout({center: false});
+				L2.last().edgeToNext().hide();
                         }
                         while (L3.size() > 1 ) {
                                 var n = L3.removeLast();
                                 n.hide();
                                 L3.layout({center: false});
+				L3.last().edgeToNext().hide();
                         }
                         while (L4.size() > 1 ) {
                                 var n = L4.removeLast();
                                 n.hide();
                                 L4.layout({center: false});
+				L4.last().edgeToNext().hide();
                         }
                         while (L5.size() > 1 ) {
                                 var n = L5.removeLast();
                                 n.hide();
                                 L5.layout({center: false});
+				L5.last().edgeToNext().hide();
                         }
                         while (L6.size() > 1 ) {
                                 var n = L6.removeLast();
                                 n.hide();
                                 L6.layout({center: false});
+				L6.last().edgeToNext().hide();
                         }
                         while (L7.size() > 1 ) {
                                 var n = L7.removeLast();
                                 n.hide();
                                 L7.layout({center: false});
+				L7.last().edgeToNext().hide();
                         }
                         while (L8.size() > 1 ) {
                                 var n = L8.removeLast();
                                 n.hide();
                                 L8.layout({center: false});
+				L8.last().edgeToNext().hide();
                         }
                         while (L9.size() > 1 ) {
                                 var n = L9.removeLast();
                                 n.hide();
                                 L9.layout({center: false});
+				L9.last().edgeToNext().hide();
                         }      
                 }
 
