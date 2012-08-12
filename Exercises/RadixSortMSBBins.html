@@ -74,7 +74,16 @@
 						arr.highlight(index);
 						sel1 = index;
 					}
-				} 
+				}
+				if (arrnum == 0)
+                                {
+                                        L0.addLast(arr.value(sel1));
+                                        L0.layout({center: false});
+                                        nsel = 0;
+                                        arr.unhighlight(sel1);
+                                        uarr0[ii0] = arr.value(sel1) ;
+                                        ii0 = ii0 +1;
+                                } 
 				if (arrnum == 1) 
                                 {
                                 	L1.addLast(arr.value(sel1));
@@ -225,6 +234,11 @@
                         }
 			var left_offset = getXCumulativeOffset(arr);
 			var top_offset = getYCumulativeOffset(arr);
+			L0 = jsav.ds.list({top: top_offset, left: 170});
+                        L0.layout({center: false});
+                        L0.addFirst(0);
+                        L0.layout({center: false});
+                        top_offset = top_offset + 46;
           		L1 = jsav.ds.list({top: top_offset, left: 170});
           		L1.layout({center: false});
 			L1.addFirst(1);
@@ -318,7 +332,11 @@
 			// compute the correct answer
 			
 			top_offset = getYCumulativeOffset(arr);
-			
+			L0_clone = jsav.ds.list({visible: false, top: top_offset, left: 290});
+                        L0_clone.layout({center: false});
+                        L0_clone.addFirst(0);
+                        L0_clone.layout({center: false});
+                        top_offset = top_offset + 46;	
                         L1_clone = jsav.ds.list({visible: false, top: top_offset, left: 290});
                         L1_clone.layout({center: false});
                         L1_clone.addFirst(1);
@@ -369,10 +387,17 @@
 			for (i=0; i<a; i++)
 			{
         			var temp = arr_clone.value(i);
-        			if ( temp < 10 ) msb = temp;
-        			else if (temp < 100) msb = temp / 10;
+        			if ( temp < 10 ) msb = 0;
+        			else if (temp < 100) msb = 0;
         			else msb = temp/100;
 				msb = Math.floor(msb);
+				if (msb == 0)
+                                {
+                                        L0_clone.addLast(temp);
+                                        L0_clone.layout({center: false});
+                                        arr0[i0] = temp;
+                                        i0 = i0+1;
+                                }
         			if (msb == 1)
         			{
               				L1_clone.addLast(temp);
@@ -453,6 +478,7 @@
 			
 			// bind the array and linked lists to click handler
 			arr.click(function(index){clickHandler(this, index, 10)});
+			L0.click (function(index) {clickHandler(this, index, 0)});
 			L1.click (function(index) {clickHandler(this, index, 1)});
 			L2.click (function(index) {clickHandler(this, index, 2)});
 			L3.click (function(index) {clickHandler(this, index, 3)});
@@ -494,6 +520,11 @@
                         ii7 = 0;
                         ii8 = 0;
                         ii9 = 0;
+			while (L0.size() > 1 ) {
+                                var n = L0.removeLast();
+                                n.hide();
+                                L0.layout({center: false});
+                        }
 			while (L1.size() > 1 ) {
 				var n = L1.removeLast();
 				n.hide();
@@ -544,6 +575,7 @@
  		// function that validates student's answer 
  		function checkAnswer (a) {
 			var i;
+			if (L0.size() != L0_clone.size() ) return (2 === 1);
 			if (L1.size() != L1_clone.size() ) return (2 === 1);
                         if (L2.size() != L2_clone.size() ) return (2 === 1);
                         if (L3.size() != L3_clone.size() ) return (2 === 1);
