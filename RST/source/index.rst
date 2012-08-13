@@ -81,6 +81,15 @@ Graphs
    MCST
    Huffman
 
+Algorithms
+----------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   Knapsack
+
 Appendix
 --------
 

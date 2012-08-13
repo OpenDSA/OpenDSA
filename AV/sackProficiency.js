@@ -1,142 +1,131 @@
 //init for the exercise
 var init = function()
 {
-    //var good = false;
-    //while(good === false)
-    //{
-        //try to clean everything
-        if(dynTable !== undefined)
+    //try to clean everything
+    if(dynTable !== undefined)
+    {
+        for(var i = 0; i < dynTable.length; i++)
         {
-            for(i = 0; i < dynTable.length; i++)
-            {
-                dynTable[i].hide();
-                dynTable[i].clear();
-            }
+            dynTable[i].hide();
+            dynTable[i].clear();
         }
-        if(itemTable !== undefined)
+        for(var i = 0; i < itemTable.length; i++)
         {
-            for(i = 0; i < itemTable.length; i++)
-            {
-                itemTable[i].hide();
-                itemTable[i].clear();
-            }
+            itemTable[i].hide();
+            itemTable[i].clear();
         }
-        if(valueList !== undefined)
+        valueList.hide();
+        valueList.clear();
+        tableSel.value(null);
+        tableSel.value(-1);
+        tableSel.value(-1);
+        listSel.value(null);
+        itemLabel.hide();
+        weightLabel.hide();
+        valueLabel.hide();
+        choiceLabel.hide();
+        dynItemLabel.hide();
+        for(var i = 0; i < dynTableLabel.length; i++)
         {
-            valueList.hide();
-            valueList.clear();
+            dynTableLabel[i].hide();
         }
-        if(tableSel !== undefined)
-        {
-            tableSel.value(null);
-        }
-        if(tableSelRow !== undefined)
-        {
-            tableSel.value(-1);
-        }
-        if(tableSelCol !== undefined)
-        {
-            tableSel.value(-1);
-        }
-        if(listSel !== undefined)
-        {
-            listSel.value(null);
-        }
-        if(itemLabel !== undefined)
-        {
-            itemLabel.hide();// = jsav.label("item");
-            weightLabel.hide();// = jsav.label("weight");
-            valueLabel.hide();// = jsav.label("value");
-            choiceLabel.hide();
-        }
-        dynTable = [];
-        itemTable = [];
-        startDynTable = [];
-        startValueList = [];
-        curValue = 0;
-        weight = [];
-        number = [];
-        value = [];
-        numItems = randomInt(3, 4);
-        tableSel = jsav.variable(null);
-        tableSelRow = jsav.variable(-1);
-        tableSelCol = jsav.variable(-1);
-        listSel = jsav.variable(-1);
-        //generate items
-        capacity = randomInt(5, 8);        
-        for(i = 0; i < numItems; i++)
-        {
-            if(i >= Math.floor(numItems/2))
-            {
-                weight[i] = Math.floor(Math.random()*(Math.floor(capacity/1.5)))+1;
-            }
-            else
-            {
-                weight[i] = Math.floor(Math.random()*6)+1;
-            }
-            number[i] = i+1;
-            value[i] = Math.floor(Math.random()*5)+1;
-        }
-        itemTable[0] = jsav.ds.array(number, {centered:false, left:50, top:0});
-        itemTable[1] = jsav.ds.array(weight, {centered:false, left:50, top:40});
-        itemTable[2] = jsav.ds.array(value, {centered:false, left:50, top:80});
-        itemLabel = jsav.label("item", {left:(60 + 40 * itemTable[0].size()), top:10});
-        weightLabel = jsav.label("weight", {left:(60 + 40 * itemTable[0].size()), top:50});
-        valueLabel = jsav.label("value", {left:(60 + 40 * itemTable[0].size()), top:90});
         
-        //initalize dynTable
-        var row = [];
-        for(i = 0; i <= numItems; i++)
+    }
+    dynTable = [];
+    itemTable = [];
+    startDynTable = [];
+    startValueList = [];
+    curValue = 0;
+    weight = [];
+    number = [];
+    value = [];
+    numItems = randomInt(3, 4);
+    tableSel = jsav.variable(null);
+    tableSelRow = jsav.variable(-1);
+    tableSelCol = jsav.variable(-1);
+    listSel = jsav.variable(-1);
+    //generate items
+    capacity = randomInt(5, 8);        
+    for(var i = 0; i < numItems; i++)
+    {
+        if(i >= Math.floor(numItems/2))
         {
-            row = [];
-            if(i == 0)
-            {
-                for(j = 0; j <= capacity; j++)
-                {
-                    row[j] = 0; 
-                }
-            }
-            else
-            {
-                for(j = 0; j <= capacity; j++)
-                {
-                    if(j == 0)
-                        row[j] = 0;
-                    else
-                        row[j] = "";
-                }
-            }
-            dynTable[i] = jsav.ds.array(row);
-            dynTable[i].click(genDynClickFunction(i));
-            //dynTable[i].click(clickDynTable);
+            weight[i] = Math.floor(Math.random()*(Math.floor(capacity/1.5)))+1;
         }
-        fillTableComplete(dynTable, itemTable);
-        clearCells(dynTable, itemTable, numItems, capacity);
-
-        //store the starting table for later use by model answer
-        startDynTable = [];
-        for(i = 0; i < dynTable.length; i++)
+        else
         {
-            var row;
-            row = [];
-            for(j = 0; j < dynTable[i].size(); j++)
-            {
-                row[j] = dynTable[i].value(j);
-            }
-            startDynTable[i] =row;
+            weight[i] = Math.floor(Math.random()*6)+1;
         }
+        number[i] = i+1;
+        value[i] = Math.floor(Math.random()*5)+1;
+    }
+    itemTable[0] = jsav.ds.array(number, {centered:false, left:50, top:0});
+    itemTable[1] = jsav.ds.array(weight, {centered:false, left:50, top:40});
+    itemTable[2] = jsav.ds.array(value, {centered:false, left:50, top:80});
+    itemLabel = jsav.label("Item", {left:(60 + 40 * itemTable[0].size()), top:10});
+    weightLabel = jsav.label("Weight", {left:(60 + 40 * itemTable[0].size()), top:50});
+    valueLabel = jsav.label("Value", {left:(60 + 40 * itemTable[0].size()), top:90});
+    
+    //initalize dynTable
+    var row = [];
+    for(var i = 0; i <= numItems; i++)
+    {
+        row = [];
+        if(i == 0)
+        {
+            for(j = 0; j <= capacity; j++)
+            {
+                row[j] = 0; 
+            }
+        }
+        else
+        {
+            for(j = 0; j <= capacity; j++)
+            {
+                if(j == 0)
+                    row[j] = 0;
+                else
+                    row[j] = "";
+            }
+        }
+        dynTable[i] = jsav.ds.array(row);
+        dynTable[i].click(genDynClickFunction(i));
+        //dynTable[i].click(clickDynTable);
+    }
+    fillTableComplete(dynTable, itemTable);
+    clearCells(dynTable, itemTable, numItems, capacity);
 
-        valueList = jsav.ds.array(startValueList, {top: (-50)});
-        //console.log(parseInt(valueList.css("left")));
-        choiceLabel = jsav.label("choices", {top:-40, left:(parseInt(valueList.css("left")) - 60)});
-        valueList.click(clickValueList);
-        //if(valueList.size() <= 12 && valueList.size() >= 8)
-        //    good = true; 
-    //}
+    //label the dynTable
+    dynItemLabel = jsav.label("Item", {top:(parseInt(dynTable[0].css("top")) + 10),
+                                       left:(parseInt(dynTable[0].css("left")) - 70)});
+    dynTableLabel = [];
+    for(var i = 0; i < dynTable.length; i++)
+    {
+        dynTableLabel[i] = jsav.label(("" + i), {left:(parseInt(dynTable[0].css("left")) - 20),
+                                                 top:(parseInt(dynTable[0].css("top")) + 10 + i * 42)});
+    }
+
+    //store the starting table for later use by model answer
+    startDynTable = [];
+    for(var i = 0; i < dynTable.length; i++)
+    {
+        var row;
+        row = [];
+        for(j = 0; j < dynTable[i].size(); j++)
+        {
+            row[j] = dynTable[i].value(j);
+        }
+        startDynTable[i] =row;
+    }
+
+    valueList = jsav.ds.array(startValueList, {top: (-50)});
+    //console.log(parseInt(valueList.css("left")));
+    choiceLabel = jsav.label("Choices", {top:-40, left:(parseInt(valueList.css("left")) - 60)});
+    valueList.click(clickValueList);
     return dynTable;
 }
 
-//lets model the answer for the students
+//model answer function for the exercise
 var modelAnswer = function(jsav)
 {
     //build the structures needed the visualization
@@ -201,8 +190,8 @@ var solveTable = function(jsav, dynTable, itemTable, valueList, n, w)
     jsav.step();
 }
 
-//give parameters for a call to knapsack, and blank out
-//cells that the call would use.
+//clear all the cells that would be used by a call
+//to knapsack n,w.
 var clearCells = function(dynTable, itemTable, n, w)
 {
     if(n > 0 && w > 0 && dynTable[n].value(w) != "-")
@@ -224,6 +213,7 @@ var clearCells = function(dynTable, itemTable, n, w)
     }
 }
 
+//click handler for a click in the value list(the one above the dynTable)
 var clickValueList = function(index)
 {
     if(listSel.value() === index)//deselect case
@@ -261,6 +251,7 @@ var clickValueList = function(index)
     }
 }
 
+//this returns a click handler for a specific array in the dynTable.
 var genDynClickFunction = function(offset)
 {
     return function(index)
@@ -305,7 +296,33 @@ var genDynClickFunction = function(offset)
     }
 }
 
+//returns an integer in [a,b]
 var randomInt = function(a, b)
 {
     return Math.floor(Math.random()*(b-a+1)) + a;
 }
+
+var jsav = new JSAV("av");
+var dynTable;       //array of jsav arrays
+var itemTable;      //array of jsav arrays
+var valueList;      //jsav array
+var curValue;       //end of startValueList
+var startDynTable;  //array of array of integers
+var startValueList; //array of integers
+var numItems;       //the number of items
+var weight, number, value; //integer arrays
+var capacity;       //capacity of knapsack
+var tableSel;       //selected element of the dynamic table
+var tableSelRow;    //selected row of the dynamic table
+var tableSelCol;    //selected column of the dynamic table
+var listSel;        //selected element of the choice list
+var itemLabel;      //item table item label
+var weightLabel;    //item table weight label
+var valueLabel;     //item table value label
+var choiceLabel;    //valueList label
+var dynItemLabel;   //label for item rows on dyn table
+var dynTableLabel;  //labels for item row indicies
+
+jsav.recorded(); //only here because I saw it in an example...
+var exercise = jsav.exercise(modelAnswer, init, {css: "background-color"});
+exercise.reset();

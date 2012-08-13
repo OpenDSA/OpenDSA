@@ -1,8 +1,13 @@
 <!DOCTYPE html>
+
+<!--
+	Edit Distance, Khan Academy Page
+	Erich Brungraber
+-->
 <html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Edit Distance</title>
+  <title>Edit Distance - Khan Academy</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript"
@@ -28,11 +33,16 @@
 	var av, arr, myGuess;
 	var c1, c2, c3, c4;
 	
+	//debugging function
 	var select = function(choice) {
 		alert("Hey y'all, this is your choice: " + arr[choice]);
 		myGuess = arr[choice];
 	}
 	
+	/**
+	initJSAV
+	Initializes the JSAV.
+	*/
 	initJSAV = function() {
 		myGuess = -1;
 		av = new JSAV("jsav", {"animationMode": "none"});
@@ -40,34 +50,27 @@
 		var s2 = randString(3,5);
 		arr = initKA(s1, s2);
 		
-		
-		
 		for (var i = 0; i < arr.length; i++) {
 			console.log("" + i + ": " + arr[i]);
 		}
-		
 		
 		//set the labels
 		document.getElementById('a').innerHTML = arr[0];
 		document.getElementById('b').innerHTML = arr[1];
 		document.getElementById('c').innerHTML = arr[2];
 		document.getElementById('d').innerHTML = arr[3];
-		
-		/*set the values
-		document.getElementById('a1').value = arr[0];
-		document.getElementById('b1').value = arr[1];
-		document.getElementById('c1').value = arr[2];
-		document.getElementById('d1').value = arr[3];
-		*/
 	}
 	
 	getAns = function(num) {
 		return arr[num];
-	}
+	} //end initJSAV func
 
 	/**
 	randString
 	Creates random string for use in proficiency testing.
+	@params:
+	base = minimum char count
+	max = max char count
 	*/
 	var randString = function(base, max) {
 		var count = Math.floor((max - base + 1) * Math.random() + base);
@@ -87,38 +90,28 @@
   <div class="vars">
     <var id="JSAV">initJSAV()</var>
     <var id="CorrectAnswer">genAnswer()</var>
-	<var id="c1">getAns(0)</var>
-	<var id="c2">getAns(1)</var>
-	<var id="c3">getAns(2)</var>
-	<var id="c4">getAns(3)</var>
 	
-  </div>
+  </div> <!-- vars -->
 
 	<div class="problems">
 		<div>
 			<div class="question">
 				Select the correct cell value from the list.
 				<div id="jsav"></div>
-			</div>
-		<div class="solution"><var>genAnswer()</var></div>
-		<ul class="choices" data-category="true">
-			<li><var id="a"></var></li>
-			<li><var id="b"></var></li>
-			<li><var id="c"></var></li>
-			<li><var id="d"></var></li>
-		</ul>
+			</div> <!-- question -->
+			<div class="solution"><var>genAnswer()</var></div>
+			<ul class="choices" data-category="true">
+				<li><var id="a"></var></li>
+				<li><var id="b"></var></li>
+				<li><var id="c"></var></li>
+				<li><var id="d"></var></li>
+			</ul>
+		</div>
+	</div> <!-- problems -->
 
-	</div>
-
-	<!-- Things to do
-		-why the hell is that text box coming up?
-		-where is it in here?
-		-why is it random?
-	-->
 	<div class="hints">
 		<p><var>CorrectAnswer</var></p>
     </div>
-</div>
 </div> <!--exercises-->
 </body>
 </html>

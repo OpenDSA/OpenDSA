@@ -74,17 +74,17 @@
 						arr.highlight(index);
 						sel1 = index;
 					}
-				}
-				if (arrnum == 0)
-                                {
-                                        L0.addLast(arr.value(sel1));
-                                        L0.layout({center: false});
-                                        nsel = 0;
-                                        arr.unhighlight(sel1);
-                                        uarr0[ii0] = arr.value(sel1) ;
-                                        ii0 = ii0 +1;
+				} 
+				if (arrnum == 0) 
+				{
+					L0.addLast(arr.value(sel1));
+					L0.layout({center: false});
+					nsel = 0;
+					arr.unhighlight(sel1);
+					uarr0[ii0] = arr.value(sel1) ;
+					ii0 = ii0 +1;
 					L0.first().edgeToNext().show();
-                                } 
+				}	
 				if (arrnum == 1) 
                                 {
                                 	L1.addLast(arr.value(sel1));
@@ -245,10 +245,10 @@
 			var left_offset = getXCumulativeOffset(arr);
 			var top_offset = getYCumulativeOffset(arr);
 			L0 = jsav.ds.list({top: top_offset, left: 170});
-                        L0.layout({center: false});
-                        L0.addFirst(0);
-                        L0.layout({center: false});
-                        top_offset = top_offset + 46;
+          		L0.layout({center: false});
+			L0.addFirst(0);
+			L0.layout({center: false});
+			top_offset = top_offset + 46;
           		L1 = jsav.ds.list({top: top_offset, left: 170});
           		L1.layout({center: false});
 			L1.addFirst(1);
@@ -342,11 +342,12 @@
 			// compute the correct answer
 			
 			top_offset = getYCumulativeOffset(arr);
+			
 			L0_clone = jsav.ds.list({visible: false, top: top_offset, left: 290});
                         L0_clone.layout({center: false});
                         L0_clone.addFirst(0);
                         L0_clone.layout({center: false});
-                        top_offset = top_offset + 46;	
+                        top_offset = top_offset + 46;
                         L1_clone = jsav.ds.list({visible: false, top: top_offset, left: 290});
                         L1_clone.layout({center: false});
                         L1_clone.addFirst(1);
@@ -397,17 +398,14 @@
 			for (i=0; i<a; i++)
 			{
         			var temp = arr_clone.value(i);
-        			if ( temp < 10 ) msb = 0;
-        			else if (temp < 100) msb = 0;
-        			else msb = temp/100;
-				msb = Math.floor(msb);
-				if (msb == 0)
-                                {
-                                        L0_clone.addLast(temp);
-                                        L0_clone.layout({center: false});
-                                        arr0[i0] = temp;
-                                        i0 = i0+1;
-                                }
+        			msb = temp % 10;
+        			if (msb == 0)
+        			{
+                			L0_clone.addLast(temp);
+                			L0_clone.layout({center: false});
+					arr0[i0] = temp;
+					i0 = i0+1;
+        			}
         			if (msb == 1)
         			{
               				L1_clone.addLast(temp);
@@ -498,17 +496,17 @@
 			L7.click (function(index) {clickHandler(this, index, 7)});
 			L8.click (function(index) {clickHandler(this, index, 8)});
 			L9.click (function(index) {clickHandler(this, index, 9)});
-  			
+	
 			$("#reset").click(function() {
                                f_reset(a);
                         });
-		}
+  		}
 	
 
-		// reset function definition
-		function f_reset(a) {
-			var i;
-			for (i=0; i<a; i++) {
+		                // reset function definition
+                function f_reset(a) {
+                        var i;
+                        for (i=0; i<a; i++) {
                                 uarr0[i]=2000;
                                 uarr1[i]=2000;
                                 uarr2[i]=2000;
@@ -520,7 +518,7 @@
                                 uarr8[i]=2000;
                                 uarr9[i]=2000;
                         }
-			ii0 = 0;
+                        ii0 = 0;
                         ii1 = 0;
                         ii2 = 0;
                         ii3 = 0;
@@ -536,61 +534,61 @@
                                 L0.layout({center: false});
 				L0.last().edgeToNext().hide();
                         }
-			while (L1.size() > 1 ) {
-				var n = L1.removeLast();
-				n.hide();
-				L1.layout({center: false});
+                        while (L1.size() > 1 ) {
+                                var n = L1.removeLast();
+                                n.hide();
+                                L1.layout({center: false});
 				L1.last().edgeToNext().hide();
-			}
-			while (L2.size() > 1 ) {
+                        }
+                        while (L2.size() > 1 ) {
                                 var n = L2.removeLast();
-				n.hide();
+                                n.hide();
                                 L2.layout({center: false});
 				L2.last().edgeToNext().hide();
                         }
-			while (L3.size() > 1 ) {
+                        while (L3.size() > 1 ) {
                                 var n = L3.removeLast();
-				n.hide();
+                                n.hide();
                                 L3.layout({center: false});
 				L3.last().edgeToNext().hide();
                         }
-			while (L4.size() > 1 ) {
+                        while (L4.size() > 1 ) {
                                 var n = L4.removeLast();
-				n.hide();
+                                n.hide();
                                 L4.layout({center: false});
 				L4.last().edgeToNext().hide();
                         }
-			while (L5.size() > 1 ) {
+                        while (L5.size() > 1 ) {
                                 var n = L5.removeLast();
-				n.hide();
+                                n.hide();
                                 L5.layout({center: false});
 				L5.last().edgeToNext().hide();
                         }
-			while (L6.size() > 1 ) {
+                        while (L6.size() > 1 ) {
                                 var n = L6.removeLast();
-				n.hide();
+                                n.hide();
                                 L6.layout({center: false});
 				L6.last().edgeToNext().hide();
                         }
                         while (L7.size() > 1 ) {
                                 var n = L7.removeLast();
-				n.hide();
+                                n.hide();
                                 L7.layout({center: false});
 				L7.last().edgeToNext().hide();
                         }
                         while (L8.size() > 1 ) {
                                 var n = L8.removeLast();
-				n.hide();
+                                n.hide();
                                 L8.layout({center: false});
 				L8.last().edgeToNext().hide();
                         }
                         while (L9.size() > 1 ) {
                                 var n = L9.removeLast();
-				n.hide();
+                                n.hide();
                                 L9.layout({center: false});
 				L9.last().edgeToNext().hide();
-                        }	
-		}
+                        }      
+                }
 
  		// function that validates student's answer 
  		function checkAnswer (a) {
@@ -635,8 +633,8 @@
   		<div class="problems">
     			<div>
       				<div class="question">
-				<p> Select appropriate bins for each element using its MSB </p>
-				<p align="left" class="jsavexercisecontrols"><input id="reset" type="button" value="Reset" />
+				<p> Select appropriate bins for each element using its LSB (least significant bit) </p>
+				<p align="left" class="jsavexercisecontrols"><input id="reset" type="button" value="Reset" />	
 				<div id="jsav"></div>
       			</div>
       			<div class="solution" data-type="custom">
@@ -649,7 +647,7 @@
       			</div>
      
 		 	<div class="hints">
-				<p> Given elements belong to bin with id same as its MSB </p>
+				<p> Given elements belong to bin with id same as its LSB </p>
       			</div>
     		</div>
   	</div>
