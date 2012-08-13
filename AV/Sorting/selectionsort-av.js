@@ -3,7 +3,7 @@
 (function ($) {
   var
     ASize = $('#arraysize').val(), // Number of values in the array
-    theArray = []; // The array of numbers
+    theArray = [];  // The array of numbers
 
   // check query parameters from URL
   var params = JSAV.utils.getQueryParameter();
@@ -18,16 +18,18 @@
   var arrayLayout = settings.add("layout", {"type": "select",
                       "options": {"bar": "Bar", "array": "Array"},
                       "label": "Array layout: ", "value": "bar"});
-
+  
   var context = $("#ssperform");
   var emptyContent = $("#avcontainer").html();
   var av, // for JSAV av
     arr,  // for the JSAV array
     pseudo; // for the pseudocode display
 
+  var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
+
   // Process About button: Pop up a message with an Alert
   function about() {
-    alert("Insertion Sort Algorithm Visualization\nWritten by Cliff Shaffer and Nayef Copty\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+    alert("Selection Sort Algorithm Visualization\nWritten by Cliff Shaffer and Mauricio De La Barra\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
 
   // Process Reset button: Reinitialize the output textbox and the AV
@@ -76,45 +78,71 @@
   var setBlue = function (index) {
     arr.css(index, {"background-color": "#ddf" });
   };
-
-  // Insertion Sort
-  function inssort() {
-    var i, j;
-    av.umsg("Highlighted yellow elements to the left are always sorted. We begin with the element in position 0 in the sorted portion, and we will be moving the element in position 1 (in blue) to the left until it is sorted");
+  
+  var setGreen = function (index) {
+    arr.css(index, {"background-color": "#00FF00" });
+  };
+  
+  // Selection sort
+  function selsort() {
+    var i, j, bigindex;
+    av.umsg("For each pass, we will move left to right looking for the next largest value. Once that is found, it will be swapped into its final position (these will be shown in lighter color).");
     pseudo.setCurrentLine(0);
-    arr.highlight([0]);
-    setBlue(1);
     av.step();
-    for (i = 1; i < arr.size(); i++) { // Insert i'th record
-      setBlue(i);
-      av.umsg("Processing element in position " + i);
+    for (i = 0; i < arr.size() - 1; i++) {
+      av.umsg("Starting pass " + i);
       pseudo.setCurrentLine(1);
       av.step();
-      av.umsg("Move the blue element to the left until it reaches the correct position");
+      av.umsg("Initialize bigindex");
       pseudo.setCurrentLine(2);
+      bigindex = 0;
+      setGreen(0);
       av.step();
-      for (j = i; (j > 0) && (arr.value(j) < arr.value(j - 1)); j--) {
+      av.umsg("For each element moving through the list: the biggest seen so far is always green");
+      pseudo.setCurrentLine(3);
+      av.step();
+      for (j = 1; j < arr.size() - i; j++) {
         setBlue(j);
-        arr.swap(j, j - 1); // swap the two indices
-        av.umsg("Swap");
-        pseudo.setCurrentLine(3);
+        av.umsg("Compare to biggest seen so far");
+        pseudo.setCurrentLine(4);
         av.step();
+        if (arr.value(j) > arr.value(bigindex)) {
+          av.umsg("Found something bigger, so switch value of bigindex");
+          arr.unhighlight(bigindex);
+          pseudo.setCurrentLine(5);
+          bigindex = j;
+          setGreen(j);
+          av.step();
+        }
+        else {
+          arr.unhighlight(j);
+        }
       }
-      arr.highlight(j);
+      av.umsg("Now swap the next biggest element into place");
+      pseudo.setCurrentLine(6);
+      av.step();
+      if (bigindex !== (arr.size() - i - 1)) {
+        arr.swap(bigindex, arr.size() - i - 1); // swap the two indices
+      }
+      av.step();
+      av.umsg("Done this pass");
+      arr.unhighlight(arr.size() - i - 1);
+      arr.css([arr.size() - i - 1], {"color": LIGHT});
+      av.step();
     }
-    pseudo.setCurrentLine(4);
-    av.umsg("Done sorting!");
+    av.umsg("Done Sorting!");
+    pseudo.setCurrentLine(8);
     av.step();
   }
-  
+
   // Execute the "Run" button function
   function runIt() {
     var i;
     var newSize = $('#arraysize').val();
 
-    if (processArrayValues()) { // if it is false, then we got junk that
-                                // the user needs to fix
-      if (theArray.length === 0) { // No user-given array. Make a random array
+    if (processArrayValues()) { // if it is false, we got junk user
+                                // needs to fix
+      if (theArray.length === 0) { // Make a random  array
         ASize = newSize;
         theArray.length = 0; // Out with the old
         // Give random numbers in range 0..999
@@ -127,15 +155,13 @@
       }
       reset(true); // Reset any previous visualization
       av = new JSAV("avcontainer"); // initialize JSAV ..
-
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
-      pseudo = av.code({url: "../../SourceCode/Processing/Sorting/Insertionsort/Insertionsort.pde",
-                        startAfter: "/* *** ODSATag: Insertionsort *** */",
-                        endBefore: "/* *** ODSAendTag: Insertionsort *** */"});
-      av.umsg("Starting Insertion Sort");
+      pseudo = av.code({url: "../../SourceCode/Processing/Sorting/Selectionsort/Selectionsort.pde",
+			startAfter: "/* *** ODSATag: Selectionsort *** */",
+                        endBefore: "/* *** ODSAendTag: Selectionsort *** */"});
       av.displayInit();
-      inssort();
+      selsort();
       arr.unhighlight();
       av.recorded(); // mark the end
     }
@@ -145,5 +171,4 @@
   $('input[name="about"]').click(about);
   $('input[name="run"]', context).click(runIt);
   $('input[name="reset"]', context).click(reset);
-
 }(jQuery));

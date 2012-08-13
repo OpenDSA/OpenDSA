@@ -2,7 +2,7 @@
 <html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Knapsack Item Select</title>
+  <title>Knapsack Row Completion</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript"
@@ -29,7 +29,7 @@
     {
         return Math.floor(Math.random()*(b-a+1)) + a;
     }
-      
+    
     // function to handle a click event on an array
     var clickHandler = function(index) 
     {
@@ -45,24 +45,6 @@
         }
     }
 
-    var itemClickHandler = function(index)
-    {
-        if(myGuess[index] == 0)
-        {
-            myGuess[index] = 1;
-            jsavItems[0].css(index, {"background-color":"#00FF00"});
-            jsavItems[1].css(index, {"background-color":"#00FF00"});
-            jsavItems[2].css(index, {"background-color":"#00FF00"});
-        }
-        else
-        {
-            myGuess[index] = 0;
-            jsavItems[0].css(index, {"background-color":"#FFFFFF"});
-            jsavItems[1].css(index, {"background-color":"#FFFFFF"});
-            jsavItems[2].css(index, {"background-color":"#FFFFFF"});
-        }
-    }
-    
     //works on jsav arrays...
     var fillTableComplete = function(table, itemTable)
     {
@@ -91,7 +73,7 @@
         jsav = new JSAV("jsav", {"animationMode": "none"});
 
         //generate items
-        numItems = randomInt(4, 5);
+        numItems = randomInt(3, 5);
         myGuess = [];
         var weights = [];
         var values = [];
@@ -115,14 +97,9 @@
         jsav.label("weight", {left:(30 + 40 * jsavItems[0].size()), top:90});
         jsav.label("value", {left:(30 + 40 * jsavItems[0].size()), top:130});
 
-        //register click handlers
-        jsavItems[0].click(itemClickHandler);
-        jsavItems[1].click(itemClickHandler);
-        jsavItems[2].click(itemClickHandler);
-
         //build the dynamic table for the provided items
         //initalize dynTable
-        capacity = randomInt(6, 8);
+        capacity = randomInt(5, 7);
         var row;
         jsavDynTable = [];
         for(var i = 0; i <= numItems; i++)
@@ -149,16 +126,21 @@
             jsavDynTable[i].click(clickHandler);
         }
         
+        fillTableComplete(jsavDynTable, jsavItems);
+        //black out the bottom row, but store the values in an array for later
+        arr = [];        
+        for(var i = 0; i < jsavDynTable[jsavDynTable.length-1].size(); i++)
+        {
+            arr[i] = jsavDynTable[jsavDynTable.length-1].value(i);
+            jsavDynTable[jsavDynTable.length-1].value(i, "-");
+        }
         //only way I found to move the thing down... sucky...
         for(var i = 0; i < jsavDynTable.length; i++)
         {
+            jsavDynTable[i].css({center:false});
+            jsavDynTable[i].css({left: "400px"});
             jsavDynTable[i].css({top:(parseInt(jsavDynTable[i].css("top")) + 30)});
         }
-		fillTableComplete(jsavDynTable, jsavItems);
-		for(var i = 0; i < jsavDynTable.length; i++)
-		{
-			jsavDynTable[i].css({centered:false, left:"360px"});
-		}
         //create nice item labels for the dynamic array
         jsav.label("Item", {top:(parseInt(jsavDynTable[0].css("top")) + 10), left:(parseInt(jsavDynTable[0].css("left")) - 60)});
         for(var i = 0; i <= numItems; i++)
@@ -169,12 +151,30 @@
         for(var i = 0; i <= capacity; i++)
         {
             jsav.label(i, {top:5, left:(parseInt(jsavDynTable[0].css("left")) + 17 + 41*i)});
-        }
+        } 
         jsav.forward();
     }
 
     genAnswer = function() 
     {
+        //attempt at generating a regex answer for kahn in a string...
+        var retStr = "[\s]*";
+        var skip = "[\\s,]+";
+        for(var i = 0; i < arr.length; i++)
+        {
+            if(i === arr.length-1)
+            {
+                retStr = retStr + arr[i] + "[\\s,]*";
+            }
+            else
+            {
+                retStr = retStr + arr[i] + skip;
+            }
+        }
+        console.log("answer experession: \"" + retStr + "\"");
+        return retStr;       
+
+        /*
         //compute the answer from the bottom right
         var item = jsavDynTable.length - 1;
         var weight = jsavDynTable[0].size() - 1;
@@ -215,6 +215,7 @@
         }
         //console.log("answer: " + arrayString);
         return answer;
+        */
 }
 
 var hintHighlight = function()
@@ -255,15 +256,18 @@ var gradeFunction = function(userGuess)
   <div class="problems">
     <div>
       <div class="question">
-	    Click the items that will be taken from a call to knapsack(<var>NumItems</var>, <var>Weight</var>)
+	    Enter the values that would go into the bottom row of the dynamic table. Separate each value with a space or comma.
 	    <div id="jsav"></div>
       </div>
+      <p class="solution" data-type="regex">^<var>CorrectAnswer</var>$</p>
+      <!--         
       <div class="solution" data-type="custom">
         <div class="guess"> [myGuess] </div>
         <div class="validator-function">
           return gradeFunction(guess[0]);
         </div>
       </div>
+      -->
     </div>
   </div>
   <!--

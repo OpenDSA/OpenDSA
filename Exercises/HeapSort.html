@@ -1,0 +1,147 @@
+<!--
+####################################### Heap Sort ##################################################
+#  Question     : Given a random array of size arr_size , perform one iteration of heap sort
+#  Variables    : arr_size 6 - 12
+#  Chapter      : HeapSort
+#  Author       : Gayathri
+#  Date         : August 6, 2012
+#######################################################################################################
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+
+	<head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <title>Heap Sort</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+                <script src="../JSAV/lib/jquery.transform.light.js"></script>
+		<script src="../JSAV/lib/raphael.js"></script>
+                <script type="text/javascript"
+       src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+                </script>
+                <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+                <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+                <script src="../JSAV/build/JSAV-min.js"></script>
+		<script src="../JSAV/extras/binaryheap.js"></script>
+                <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+		<link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		<style>
+			.jsavcontainer {
+  			border: 0px;
+			}
+		</style>
+		<style>
+   			 #av { width: auto;}
+    			.jsavoutput.jsavline { height: 45px; margin: 0 0 0 20px;}
+    			.jsavcontrols a { margin-left: 0;}
+    			#decrement { margin-right: 20px;}
+    		</style>
+	</head>
+
+	<body>
+
+	<script>
+  		var jsav, bh, bh_clone, heap_size, myGuess,nsel,sel1;
+		var bh,initData,r;
+  	
+		// function to handle a click event on an array
+		function clickHandler(index) {
+                	if (nsel === 0)
+                	{ // if first click
+                		bh.css(index, {"font-size": "130%"});
+                        	nsel = nsel + 1;
+                        	sel1 = index;
+                 	}
+                 	else {
+				bh.swap(sel1,index,{});
+				bh.css(index, {"font-size": "100%"});
+				bh.css(sel1, {"font-size": "100%"});
+                       		nsel = 0;
+                 	}
+			jsav.step();
+                 	myGuess = 1;
+                }
+
+                // function that initialise JSAV library
+                initJSAV = function(a) {
+                        var i;
+                        myGuess = -1;
+                        nsel = 0;
+                        jsav = new JSAV("jsav");
+                        jsav.recorded();
+			if (bh) {
+        			bh.clear();
+      			}
+      			initData = JSAV.utils.rand.numKeys(10, 100,a);
+      			bh = jsav.ds.binheap(initData, {compare: function(a, b) { return b - a;}});
+                        bh_clone = jsav.ds.binheap(initData, {visible: false, compare: function(a, b) { return b - a;}});
+                        heap_size = bh.heapsize();
+                                
+                        // compute the answer
+			bh_clone.swap(0,bh_clone.heapsize() - 1);
+			bh_clone.css(bh_clone.heapsize()-1, {"background-color": "#ddd"});
+			bh_clone.heapify(1);
+
+			// bind the clickHandler to handle click events on the array
+			$(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
+		        	var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
+       			 	clickHandler(index);
+      			});
+      			$(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
+        			var index = $(this).data("jsav-heap-index") - 1;
+        			clickHandler(index);
+      			});
+
+			$("#decrement").click(function() {
+        			bh.css(bh.heapsize()-1, {"background-color": "#ddd"});
+      			});
+  		}
+	
+
+ 		// function that validates student's answer 
+ 		function checkAnswer (a) {
+			
+			var i;
+			for (i=0; i<heap_size; i++)
+			{
+				if (bh.value(i) != bh_clone.value(i) ) return (2===1);
+			}
+
+			return (1 === 1);
+  		} 
+		
+
+	</script>
+
+
+	<div class="exercise">
+  		<div class="vars">
+    			<var id="arr_size">randRange( 6, 12 )</var>
+    			<var id="JSAV">initJSAV(arr_size)</var>
+		</div>
+
+  		<div class="problems">
+    			<div>
+      				<div class="question">
+				<p> Perform one iteration of heap sort. Swap the last key with the largest key and restore the heap in the array/tree shown below. </p>
+				<p align="center" class="jsavexercisecontrols"><input id="decrement" type="button" value="Decrement heap size" />
+				<div id="jsav"></div>
+      			</div>
+      			<div class="solution" data-type="custom">
+				<div class="guess">
+          				[myGuess]
+        			</div>
+				<div class="validator-function">
+	  				return checkAnswer (arr_size);
+				</div>
+      			</div>
+     
+		 	<div class="hints">
+				<p> Select the maximum element and restore the heap</p>
+      			</div>
+    		</div>
+  	</div>
+</body>
+</html>

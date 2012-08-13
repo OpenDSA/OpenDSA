@@ -1,3 +1,4 @@
+//fills in a jsav table with all the values for a particular item set
 var fillTableComplete = function(table, itemTable)
 {
     for(var i = 1; i < table.length; i++)
@@ -20,6 +21,7 @@ var fillTableComplete = function(table, itemTable)
     }
 }
 
+//recovers the solution and animates it nicely.
 var findSolSet = function(sol, table, items)
 {
     var i = table.length -1;
@@ -119,3 +121,62 @@ var findSolSet = function(sol, table, items)
         i--;
     }
 }
+
+var jsav = new JSAV("av");
+var itemArray = [];
+var dynTable = [];
+var solSet = jsav.ds.array(["", "", ""], {centered: false, right:50, top:0});    
+
+//init the arrays with values for items
+itemArray[0] = jsav.ds.array([1, 2, 3], {centered: false, left:50, top:0}); //item
+itemArray[1] = jsav.ds.array([3, 2, 2], {centered: false, left:50, top:40});//weight
+itemArray[2] = jsav.ds.array([3, 8, 4], {centered: false, left:50, top:80});//value
+
+//this was what I was going to label the arrays with.
+jsav.label("Item", {left: 175, top: 12});
+jsav.label("Weight", {left: 175, top: 52});
+jsav.label("Value", {left: 175, top: 92});
+jsav.label("Item Table", {left: 70, top: -20})
+
+jsav.label("Knapsack", {right: 75, top:-20})
+
+//set up the table with the base cases and blank other spaces
+dynTable[0] = jsav.ds.array([0, 0, 0, 0, 0, 0, 0]);
+dynTable[1] = jsav.ds.array([0, "", "", "", "", "", ""]);
+dynTable[2] = jsav.ds.array([0, "", "", "", "", "", ""]);
+dynTable[3] = jsav.ds.array([0, "", "", "", "", "", ""]);
+
+//labels for the arrays
+jsav.label("Item", {left:(parseInt(dynTable[0].css("left")) - 65), top:(parseInt(dynTable[0].css("top")) + 10)});
+jsav.label("Weight", {top:(parseInt(dynTable[0].css("top")) - 40), left:(parseInt(dynTable[0].css("left")) + 0 )});
+
+//item labels
+for(var i = 0; i < dynTable.length; i++)
+{
+    jsav.label(i, {top:(parseInt(dynTable[0].css("top")) + 42 * i + 10), left:(parseInt(dynTable[0].css("left")) - 20)});
+}
+//weight labels
+for(var i = 0; i < dynTable[0].size(); i++)
+{
+    jsav.label(i, {top:(parseInt(dynTable[0].css("top")) - 20), left:(parseInt(dynTable[0].css("left")) + 17 + 41*i)});
+}
+
+
+//make sure that we can see the arrays
+for(i = 0; i < itemArray.length; i++)
+{
+    itemArray[i].show();
+}
+for(i = 0; i < itemArray.length; i++)
+{
+    dynTable[i].show();
+}
+
+//fills in every cell in the dp lookup table
+//using the data form the item array
+fillTableComplete(dynTable, itemArray);
+
+//animate through the recovery of the answer
+findSolSet(solSet, dynTable, itemArray);
+jsav.step();
+jsav.recorded();

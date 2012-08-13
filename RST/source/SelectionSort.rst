@@ -1,6 +1,19 @@
+.. avmetadata:: Selection Sort
+   :author: Cliff Shaffer
+   :prerequisites: Sorting, Bubble Sort
+   :topic: Sorting
+   :short_name: SelectionSort
+
 .. _SelectionSort:
 
 .. index:: ! Selection Sort
+
+.. include:: JSAVheader.rinc
+
+.. raw:: html
+   
+   <link href="_static/Code/quadraticsort.css" rel="stylesheet" type="text/css" />
+
 
 Selection Sort
 ==============
@@ -17,69 +30,78 @@ This is the inspiration for
 our last :math:`\Theta(n^2)` sort,
 called :dfn:`Selection Sort`.
 The :math:`i`'th pass of Selection Sort "selects" the :math:`i`'th
-smallest key in the array, placing that record into position
-:math:`i`.
-In other words, Selection Sort first finds the smallest key in an
-unsorted list, then the second smallest, and so on.
+largest key in the array, placing that record at the end of the array.
+In other words, Selection Sort first finds the largest key in an
+unsorted list, then the next largest, and so on.
 Its unique feature is that there are few record swaps.
-To find the next smallest key value requires searching through
+To find the next largest key value requires searching through
 the entire unsorted portion of the array, but only one swap is
 required to put the record in place.
 Thus, the total number of swaps required will be :math:`n-1`
 (we get the last record in place "for free").
-
-.. figure:: Images/SelSort.png
-   :width: 400
-   :alt: An illustration of Selection Sort
-
-   <ODSAfig "SelSort" />
-   An example of Selection Sort.
-   Each column shows the array after the iteration with the indicated
-   value of <code>i</code> in the outer ``for`` loop.
-   Numbers above the line in each column have been sorted and are in
-   their final positions.
-
-Figure <ODSAref "SelSort" \> illustrates Selection Sort.
 
 Here is an implementation for Selection Sort.
 
 .. codeinclude:: Sorting/Selectionsort/Selectionsort.pde 
    :tag: Selectionsort
 
+Consider the example of the following array.
+
+.. raw:: html
+
+   <div id="container1">
+     <span class="jsavcounter"></span>
+     <a class="jsavsettings" href="#">Settings</a>
+     <div class="jsavcontrols"></div>
+     <p class="jsavoutput jsavline" readonly="readonly"></p>
+   </div>
+
+Now we continue with the second pass. However, since the largest
+element already at the very right, we will not need to look at
+it again.
+
+.. raw:: html
+
+   <div id="container2">
+     <span class="jsavcounter"></span>
+     <a class="jsavsettings" href="#">Settings</a>
+     <div class="jsavcontrols"></div>
+     <p class="jsavoutput jsavline" readonly="readonly"></p>
+   </div>
+
+Selection Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
-.. avembed:: AV/selectionsort-av.html
+.. avembed:: AV/Sorting/selectionsort-av.html
 
-.. todo::
-   :type: Exercise
+Now try for yourself to see if you understand how Selection Sort works.
 
-   Given: An array where some element X is highlighted. Everthing to the
-   left of X is sorted (the i smallest elements in the array, and
-   everything to the right is 
-   constrained random (must be bigger than the elements to the left).
-
-   Question: In this array, the highlighted element shows the current
-   position to start from to do the next pass of selection sort. Show
-   the    array after this pass has been completed.
+.. avembed:: Exercises/SelectionSortElement.html
+   :showbutton: hide
+   :title: Question 1
 
 .. todo::
    :type: Proficiency Exercise
 
    Create proficiency exercise for Selection Sort.
 
-Selection Sort (as written here) is essentially a Bubble Sort,
+Any algorithm can be written in slightly different ways.
+For example, we could have written Selection Sort to find the smallest
+element, the next smallest, and so on.
+We wrote this version of Selection Sort to mimic the behavior of our
+Bubble Sort implementation as closely as possible.
+This shows that Selection Sort is essentially a Bubble Sort
 except that rather than repeatedly swapping adjacent values to get
-the next smallest record into place, we instead remember the position
+the next largest record into place, we instead remember the position
 of the element to be selected and do one swap at the end.
 Thus, the number of comparisons is still
 :math:`\Theta(n^2)`,
-but the number of swaps is much less than that required by bubble sort.
+but the number of swaps is much less than that required by Bubble Sort.
 Selection Sort is particularly advantageous when the cost to do a swap
 is high, for example, when the elements are long strings or other
 large records.
 Selection Sort is more efficient than Bubble Sort (by a constant
 factor) in most other situations as well.
-
 
 .. figure:: Images/PtrSwap.png
    :width: 400
@@ -104,6 +126,10 @@ This technique is illustrated by Figure <ODSAref "PtrSwap" \>.
 Additional space is needed to store the pointers, but the
 return is a faster swap operation.
 
-.. avembed:: Exercises/SelectionSortMC.html
+.. avembed:: Exercises/Sorting/SelectionSortSumm.html
    :showbutton: hide
    :title: Review Questions
+
+.. raw:: html
+
+   <script src="_static/Code/Selectionsort.js"></script>

@@ -42,8 +42,10 @@ $(document).ready(function()    {
 function info() { // This is what we pop up
 
  var loc = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1);
+ if (loc==""){
+   loc="index.html";
+ } 
  var mod = loc.split('.');
-  
  $.ajax({
   url: 'modules.json',
   async: false,

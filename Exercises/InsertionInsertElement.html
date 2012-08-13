@@ -3,7 +3,7 @@
 #  Question     : Given a random array of size arr_size , and some element X highlighted
 #                 Everthing to the left of X is sorted, and everything to the right is random.
 #		  Highlighted element needs to be placed in right place by Insertion Sort
-#  Variables    : arr_size 0 - 12
+#  Variables    : arr_size 6 - 10
 #  Chapter      : InsetionSort
 #  Author       : Gayathri
 #  Date         : July 20, 2012
@@ -73,21 +73,31 @@
 			spos = sort_pos;
 			nsel = 0;
     			jsav = new JSAV("jsav");
+			jsav.recorded();
     			arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a),{indexed: true, center: false});
-			arr.hide();
-			for (i=0; i<sort_pos; i++) {
-				for (j=i+1; j<sort_pos;j++) {
-					if (arr.value(i) > arr.value(j) )
-						arr.swap(i,j);
-				}
-			}
-			arr.highlight(sort_pos);
-			arr.show();
 			arr_clone = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
                         arr_clone.hide();
                         for (i=0; i<a; i++)
                         {
                                 arr_clone.value(i,arr.value(i));
+                        }
+			for (i=0; i<sort_pos; i++) {
+				for (j=i+1; j<sort_pos;j++) {
+					if (arr_clone.value(i) > arr_clone.value(j) )
+						arr_clone.swap(i,j);
+				}
+			}
+                        for (i=0; i<a; i++)
+                        {
+                                arr.value(i,arr_clone.value(i));
+                        }
+			arr.highlight(sort_pos);
+			// Compute the correct Answer
+			for (i=0; i<= sort_pos; i++) {
+                                for (j=i+1; j<=sort_pos;j++) {
+                                        if (arr_clone.value(i) > arr_clone.value(j) )
+                                                arr_clone.swap(i,j);
+                                }
                         }
 			// bind the clickHandler to handle click events on the array
 			arr.click(clickHandler);
@@ -97,14 +107,6 @@
  		// function that validates student's answer 
  		function checkAnswer (a, sort_pos) {
   			var i;
-			var j=0;
-			var temp;
-			for (i=0; i<= sort_pos; i++) {
-                                for (j=i+1; j<=sort_pos;j++) {
-                                        if (arr_clone.value(i) > arr_clone.value(j) )
-                                                arr_clone.swap(i,j);
-                                }
-                        }
 			// Return false if user has highlighted any position before start_pos
 			for (i=0; i < a; i++) {
 				if ( arr.value(i) != arr_clone.value(i)) return (2 === 1);
@@ -119,7 +121,7 @@
 
 	<div class="exercise">
   		<div class="vars">
-    			<var id="arr_size">randRange( 6, 11 )</var>
+    			<var id="arr_size">randRange( 6, 10 )</var>
 			<var id="sort_pos">randRange(1,arr_size-1)</var>
     			<var id="JSAV">initJSAV(arr_size,sort_pos)</var>
 		</div>
