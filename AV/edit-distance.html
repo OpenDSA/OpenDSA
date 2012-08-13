@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+	Edit Distance Demoing Page
+	Erich Brungraber
+-->
 <html>
 <head>
     <title>Edit Distance Demo</title>
@@ -12,9 +16,12 @@
 			Enter two words to compare: <BR>
 			<INPUT TYPE="text" NAME="txtWord1" VALUE="">	
 			<INPUT TYPE="text" NAME="txtWord2" VALUE=""><P>
-			<input type="checkbox" name="grid" /> Matrix Rep?	
-			<input type="checkbox" name="tree" /> Rec Call Tree?<p>
+			<!--<input type="text" name="rowz" value="">-->
+			<!--<input type="text" name="colz" value=""><p>-->
+			<input type="checkbox" name="grid" /> Grid Form	
+			<input type="checkbox" name="tree" /> Tree Form<p>
 			<INPUT TYPE="button" NAME="btnComp" Value="Compare" onClick="compute(this.form)">
+			<input type="button" name="btnAbout" value="About" onClick="about()">
 			</FORM>
 			<div class="jsavcontrols"></div>
 			<span class="jsavcounter"></span>
@@ -24,33 +31,38 @@
 		</div>
 <style>
   /** change size and margins of arrays */
-  .jsavarray { margin: 0; height: 20px; min-height: 20px; }
-  .jsavarray li { border-radius: 0 !important; height: 20px; width: 20px; font-size: 8px; line-height: 20px;}
-  
-  .jsavtree {
-	position: relative;
-	width: 500px;
-	height: 300px;
-	center: true;
-	}
-  
+  .jsavarray { margin: 0; height: 40px; min-height: 40px; center: false;}
+  .jsavarray li { border-radius: 0 !important; height: 40px; width: 40px; font-size: 14px; line-height: 40px;}
   
   </style>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <script src="../JSAV/lib/jquery.transform.light.js"></script>
-    <script src="../JSAV/lib/raphael.js"></script>
-    <script src="../JSAV/build/JSAV.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+	<script src="../JSAV/lib/jquery.transform.light.js"></script>
+	<script src="../JSAV/lib/raphael.js"></script>
+	<script src="../JSAV/build/JSAV.js"></script>
 	<script src="edit.js"></script>
-    <script language="JavaScript">
-    var av;
+	<script src="generalDynamicForm.js"></script>
+	<script language="JavaScript">
+	var av;
 
+	/**
+	about
+	Nothing major, just description of functionality.
+	*/
+	function about() {
+		alert("This HTML displays all animations for Edit Distance AV.\nOperation:\nCheck the grid form checkbox to display the animation of the grid.\nCheck the tree form for creation of the recursive call tree.\nCheck both to show generalized function pruning the recursive call tree, and filling the grid.\nReload page to reset.","Edit Distance Demo Page");
+	} //end about func
+
+
+	/**
+	compute
+	Main function for running the various selections & animations.
+	*/
 	function compute(form) {
 		av = new JSAV("container")
 		var s1 = form.txtWord1.value;
 		var s2 = form.txtWord2.value;
-		var max = 3;
+		var max = 5;
 		var tree, grid;
 
 		if (form.tree.checked) {
@@ -63,7 +75,8 @@
 		} else {
 			grid = 0;
 		}
-		
+
+		//animates recursive call tree
 		if (tree == 1 && grid == 0) {
 			if (s1.length > max) {
 				alert("First word is too long.  Enter a word " + max + " or less characters long to keep the tree at a decent size.");
@@ -72,55 +85,63 @@
 			} else {
 				var tr = av.ds.tree();
 				tr.root([s1.length, s2.length]);
-				av.displayInit();
-				
-				recDistAnim(tr,tr.root(), s1, s2);
+				av.displayInit();				
+				recDistAnim(tr, tr.root(), s1, s2);
 				av.recorded();
 			}
 		} 
+
+		//grid rep, shows filling grid;
+		/*
+		PROBLEM:
+			The appearance/alignment of the cells are not as desired.
+			Specifically, the first two rows are fine, centered and where they should be;
+			however, the remaining rows are misaligned.  It seems that as soon as one of these 				arrays is modified, it loses its alignment.
+		*/
 		if (grid == 1 && tree == 0){
-			//eDistAnim(s1, s2);
-			s1 = randString(3,5);
-			s2 = randString(3,5);
-			initKA(s1, s2);
-			//testMaker(s1, s2);
-			//eDist(s1, s2);
+			var done = eDistAnim(s1, s2);
+			//I would have assumed that post-modifying the values of the cells, changing the css would have forced it to have an effect.
+			for(var i = 0; i < s2.length+2; i++)
+			{
+				done[i].css({centered: true});
+			} //this makes no difference.
 		}
-			for (var j = 0; j < 10000; j++) {
-				console.log("Run " + j);
-				s1 = randString(3,5);
-				s2 = randString(3,5);
-				var arr = initKA(s1, s2);
-				
-				for (var i = 0; i < 4; i++) {
-					var a = (i + 1) % 4;
-					var b = (i + 2) % 4;
-					var c = (i + 3) % 4;
-					if (arr[i] === arr[a] || arr[i] === arr[b] || arr[i] === arr[c]) {
-						console.log("Zoinks yo:");
-						for (var h = 0; h < 5; i++) {
-							console.log("" + h + ": " + arr[h]);
-						}
-					}
-				}
-			
-			
-			}
-		/* want to represent both tree & grid simultaneously, need to figure out how to
-			do the vertical av array to hold all av arrays, so I can manip. the left & top
+		// tree & grid representation: plucking tree to fill grid
 		if (tree == 1 && grid == 1) {
-			var tr = av.ds.tree({center: false, left: 50, top: 120});
-			av.displayInit();
+
+			//create the tree (non-animated)
+			var tr = av.ds.tree({centered: true}); //false, top:"-75px", left:"20px"});
+			tr.root([s1.length, s2.length]);			
+			recDist(tr, tr.root(), s1, s2);
+			tr.layout();
 		
-			tr.root([s1.length, s2.length]);
-			recDist(tr,tr.root(), s1, s2);
+			//create the empty table (non-animated)
+			var table = emptyEDist(s1, s2);
+			var topCount = 50;
+			for (var i = 0; i < table.length; i++)
+			{
+				table[i].css({centered:true});
+				topCount += 10;
+				table[i].show();
+			}						
+			
+			av.displayInit();
+			
+			//start the show
+			fillTable(av, tr, tr.root(), table, [s1, s2], editBase, editHighlight, editFill, 1);
+			
+			av.umsg("Complete; answer can be found in the lower-right most cell.");
+			
 			av.recorded();	
-		} */
+		} 
 	} //end compute func
 
 	/**
 	randString
-	Creates random string for use in proficiency testing.
+	Creates random string for use in proficiency testing (and animations).
+	@params:
+	base: minimum character count
+	max: max char count
 	*/
 	var randString = function(base, max) {
 		var count = Math.floor((max - base + 1) * Math.random() + base);
