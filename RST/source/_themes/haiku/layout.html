@@ -59,8 +59,13 @@
            <p> <a style="float:left;color:blue;" href="{{ pathto('_sources/' + sourcename, true)|e }}"
                rel="nofollow">{{ _('Show Source') }} | </a>&#160;&#160;
         {%- endif %}
+        {%- if pagename=="ToDo" -%}
+        &#160;&#160;
+       {{ nav() }}</p>
+        {%- else %}   
          <a class="abt" style="float:left;color:blue;" href="#" rel="nofollow">| About</a>&#160;&#160;
-       {{ nav() }}</p> 
+       {{ nav() }}</p>
+        {%- endif %} 
       </div>
        {{ linktags }}
       <div class="content">
