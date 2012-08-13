@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Fib Proficiency</title>
     <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" media="screen" title="NOT kd-tree" charset="utf-8" />
      <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
@@ -30,38 +31,6 @@
     <script src="../JSAV/build/JSAV.js"></script>
     <script src="sackTraceBack.js"></script>
     <script src="sackProficiency.js"></script>
-
-<!--
-    <div id="av">
-      <div class="jsavexercisecontrols"></div>
-      <p class="jsavoutput jsavline"></p>
-    </div>
--->
-    <script>
-
-    var jsav = new JSAV("av");
-    var dynTable;       //array of jsav arrays
-    var itemTable;      //array of jsav arrays
-    var valueList;      //jsav array
-    var curValue;       //end of startValueList
-    var startDynTable;  //array of array of integers
-    var startValueList; //array of integers
-    var numItems;       //the number of items
-    var weight, number, value; //integer arrays
-    var capacity;       //capacity of knapsack
-    var tableSel;       //selected element of the dynamic table
-    var tableSelRow;    //selected row of the dynamic table
-    var tableSelCol;    //selected column of the dynamic table
-    var listSel;        //selected element of the choice list
-    var itemLabel;      //item table item label
-    var weightLabel;    //item table weight label
-    var valueLabel;     //item table value label
-    var choiceLabel;    //valueList label
-    
-    jsav.recorded(); //only here because I saw it in an example...
-    var exercise = jsav.exercise(modelAnswer, init, {css: "background-color"});
-    exercise.reset();
-    </script>
 
   </body>
 </html>
