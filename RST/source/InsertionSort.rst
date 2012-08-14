@@ -146,14 +146,14 @@ of times through the inner ``for`` loop depends on how far
 In particular, the inner ``for`` loop is executed once for
 each key greater than the key of record :math:`i` that appears in
 array positions 0 through :math:`i-1`.
-For example, in the slideshows above the value 14 is
-preceded by five values greater than it.
+For example, in the slideshows above the value 14 is initially
+preceded by six values greater than it.
 Each such occurrence is called an :dfn:`inversion`.
 The number of inversions (i.e., the number of values greater than a
 given value that occur prior to it in the array) will determine the
 number of comparisons and swaps that must take place.
 So long as all swaps are to adjacent elements, 14 will have to swap at
-least five times to get to the right position.
+least six times to get to the right position.
 
 To calculate the average cost, We want to determine what the average
 number of inversions will be for the record in position :math:`i`.
@@ -174,6 +174,26 @@ Thus, the number of swaps for the entire sort operation is
 :math:`n-1` less than the number of comparisons.
 This is 0 in the best case, and :math:`\Theta(n^2)` in the
 average and worst cases.
+
+We will study algorithms whose asympotitic growth rate is much better
+than :math:`\Theta(n^2)`.
+So for larger array, Insertion Sort will not be a good performer.
+However, it does have two situations in which it works well.
+The first is when the array is already sorted (or nearly so) as we
+have seen its best case cost is only :math:`\Theta(n)`.
+The other comes when the array is very small, since Insertion Sort is
+so simple.
+The other algorithms that have better asympotic growth rates are a bit
+more complicated, which leads to larger constant factors in their
+running time (so fewer comparisons, for example, but more cost per
+comparison).
+It might seem that neither of these special situations are all that
+helpful.
+But we will see later that there are times when we can count on an
+array to be nearly sorted.
+And there are times when we might need to do many, many sorts on very
+small arrays.
+You should spend some time now trying to think of such a situation.
 
 Here are some questions review questions to check that you understand
 Insertion Sort.

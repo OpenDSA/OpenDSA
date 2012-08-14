@@ -7,10 +7,10 @@
 JSAV.ext.SPEED = 300;
 
 // The various arrays to start sweeps with or display
-var theArray = [20, 30, 12, 54, 55, 11, 78, 14, 13, 79, 44, 98, 76, 45, 32, 11];
-var theArray2 = [13, 30, 12, 54, 55, 11, 32, 11, 20, 79, 44, 98, 76, 45, 78, 14];
-var theArray3 = [13, 11, 12, 11, 20, 30, 32, 14, 55, 45, 44, 54, 76, 79, 78, 98];
-var theArray4 = [12, 11, 13, 11, 20, 14, 32, 30, 44, 45, 55, 54, 76, 79, 78, 98];
+var theArray = [20, 30, 44, 54, 55, 11, 78, 14, 13, 79, 12, 98];
+var theArray2 = [13, 30, 12, 54, 55, 11, 78, 14, 20, 79, 44, 98];
+var theArray3 = [13, 11, 12, 14, 20, 30, 44, 54, 55, 79, 78, 98];
+var theArray4 = [12, 11, 13, 14, 20, 30, 44, 54, 55, 79, 78, 98];
  
 var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
 var DARK = "black";                // Make array elements dark again
@@ -48,6 +48,9 @@ function sweep(av, myarr, incr) {
   var j = 0;
   var highlightFunction = function (index) { return index % incr === j; };
   for (j = 0; j < incr; j++) {         // Sort each sublist
+    if((j+incr) == myarr.size()) { // Only one element, don't process
+      return;
+    }
     // Highlight the sublist
     myarr.highlight(highlightFunction);
     av.step();
@@ -89,7 +92,7 @@ function showDifference(container, a) {
           { return index % 8 !== 0; }, {"color": LIGHT}).highlight([0, 8]);
   av.displayInit();
   arr.unhighlight([0, 8]).css([0, 8], {"color": LIGHT}).highlight([1, 9]);
-  for (var i = 2; i < 8; i++) { // loop through the rest of the array sublists
+  for (var i = 2; i < 4; i++) { // loop through the rest of the array sublists
     av.step();
     arr.unhighlight([i - 1, i + 7])
        .css([i - 1, i + 7], {"color": LIGHT}).highlight([i, i + 8]);
