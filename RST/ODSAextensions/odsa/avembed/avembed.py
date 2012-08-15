@@ -74,9 +74,7 @@ def embedlocal(av_path):
    av_name = av_fullname.partition('.')[0]  
    the_path = conf.odsa_path + av_path
 
-#   xmlfile = os.path.abspath('../'+ os.path.dirname(av_path)+'/') + '/xml/' + av_name + '.xml'    
    xmlfile = conf.odsa_path + os.path.dirname(av_path)+ '/' + '/xml/' + av_name + '.xml' 
-#   av_fullpath = os.path.abspath('../'+av_path) 
    av_fullpath =  conf.odsa_path + av_path  
    avwidth=0
    avheight=0
@@ -97,8 +95,7 @@ def embedlocal(av_path):
                if node.nodeType == node.TEXT_NODE:
                    avheight=node.data
       #link =os.path.abspath(address[1:])
-#      embed.append('../../../'+av_path)
-      embed.append(conf.odsa_relpath + av_path)
+      embed.append( os.path.relpath(conf.odsa_path,conf.ebook_path)+'/' + av_path)
       embed.append(avwidth)
       embed.append(avheight)
       return embed     

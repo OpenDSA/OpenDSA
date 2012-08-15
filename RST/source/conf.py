@@ -257,8 +257,8 @@ todo_include_todos = True
 
 #Absolute path to OpenDSA directory  
 odsa_path = '/home/algoviz-beta/OpenDSA/OpenDSA/'  
-#Relative path from final book (build) directory to OpenDSA directory  
-odsa_relpath = '../../../'         
+#Absolute path of eTextbook (build) directory   
+ebook_path = '/home/algoviz-beta/OpenDSA/OpenDSA/RST/build/html/'         
 
 #path (from the RST home) to the sourcecode directory that I want to use
 sourcecode_path = '../SourceCode/Processing/'                              
