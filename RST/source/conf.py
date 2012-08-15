@@ -92,9 +92,6 @@ pygments_style = 'sphinx'
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
-#path (from the OpenDSA home) to the sourcecode directory that I want to use
-sourcecode_path = '../SourceCode/Processing/'          
-
 # -- Options for HTML output ---------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -254,3 +251,14 @@ texinfo_documents = [
 # -- My stuff ------------------------------------------------
 
 todo_include_todos = True
+
+
+#---- OpenDSA variables ---------------------------------------  
+
+#Absolute path to OpenDSA directory  
+odsa_path = '/home/algoviz-beta/OpenDSA/OpenDSA/'  
+#Relative path from final book (build) directory to OpenDSA directory  
+odsa_relpath = '../../../'         
+
+#path (from the RST home) to the sourcecode directory that I want to use
+sourcecode_path = '../SourceCode/Processing/'                              

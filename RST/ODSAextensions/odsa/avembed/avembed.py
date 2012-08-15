@@ -20,6 +20,8 @@ from docutils.parsers.rst import Directive
 import random
 import os, sys 
 import re
+sys.path.append(os.path.abspath('./source'))
+import conf 
 from xml.dom.minidom import parse, parseString
 
 def setup(app):
@@ -70,8 +72,12 @@ def embedlocal(av_path):
    embed=[]
    av_fullname = os.path.basename(av_path)    
    av_name = av_fullname.partition('.')[0]  
-   xmlfile = os.path.abspath('../'+ os.path.dirname(av_path)+'/') + '/xml/' + av_name + '.xml'    
-   av_fullpath = os.path.abspath('../'+av_path) 
+   the_path = conf.odsa_path + av_path
+
+#   xmlfile = os.path.abspath('../'+ os.path.dirname(av_path)+'/') + '/xml/' + av_name + '.xml'    
+   xmlfile = conf.odsa_path + os.path.dirname(av_path)+ '/' + '/xml/' + av_name + '.xml' 
+#   av_fullpath = os.path.abspath('../'+av_path) 
+   av_fullpath =  conf.odsa_path + av_path  
    avwidth=0
    avheight=0
    try:
@@ -91,7 +97,8 @@ def embedlocal(av_path):
                if node.nodeType == node.TEXT_NODE:
                    avheight=node.data
       #link =os.path.abspath(address[1:])
-      embed.append('../../../'+av_path)
+#      embed.append('../../../'+av_path)
+      embed.append(conf.odsa_relpath + av_path)
       embed.append(avwidth)
       embed.append(avheight)
       return embed     
