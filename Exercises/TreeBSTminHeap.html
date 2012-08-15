@@ -102,6 +102,54 @@
 					}
 				}
 			}
+			// make sure left sub tree is smaller than root
+			if ( a == 7) 
+				emptycontent[0] = emptycontent[4] + (Math.floor((Math.random()*5)+1));
+			if ( a == 9) {
+				if ( emptycontent[8] > emptycontent[1] ) {
+					var temp = emptycontent[8];
+					emptycontent[8] = emptycontent[1];
+					emptycontent[1] = temp;
+				}
+				emptycontent[4] = emptycontent[1] + (Math.floor((Math.random()*5)+1));
+				if ( emptycontent[4] > emptycontent[8] )
+					var max = emptycontent[4];
+				else
+					var max = emptycontent[8];
+                                emptycontent[0] = max + (Math.floor((Math.random()*5)+1));
+			}
+			if ( a >= 11) {
+				if ( emptycontent[8] > emptycontent[1] ) {
+                                        var temp = emptycontent[8];
+                                        emptycontent[8] = emptycontent[1];
+                                        emptycontent[1] = temp;
+                                }
+				emptycontent[4] = emptycontent[1] + (Math.floor((Math.random()*5)+10));
+				emptycontent[9] = emptycontent[4] - (Math.floor((Math.random()*5)+1));
+				emptycontent[10] = emptycontent[4] + (Math.floor((Math.random()*5)+1));
+				if ( emptycontent[10] > emptycontent[8] )
+                                        var max = emptycontent[10];
+                                else
+                                        var max = emptycontent[8];
+                                emptycontent[0] = max + (Math.floor((Math.random()*5)+1));
+			}
+
+			// make sure right sub tree is bigger than root.
+                        emptycontent[2] = emptycontent[0] + (Math.floor((Math.random()*5)+15));
+			emptycontent[6] = emptycontent[2] + (Math.floor((Math.random()*5)+1));
+			emptycontent[5] = emptycontent[2] - (Math.floor((Math.random()*5)+1));
+			if ( a == 13) {
+				emptycontent[12] = emptycontent[5] + (Math.floor((Math.random()*5)+1)); 
+				emptycontent[11] = emptycontent[5] - (Math.floor((Math.random()*5)+1));	
+				if ( emptycontent[12] > emptycontent[2] ) {
+                                        var temp = emptycontent[12];
+                                        emptycontent[12] = emptycontent[2];
+                                        emptycontent[2] = temp;
+                                }
+				emptycontent[6] = emptycontent[2] + (Math.floor((Math.random()*5)+1));
+			}
+			
+
 
 			// generate data as per 'sel'
       			initData = JSAV.utils.rand.numKeys(10, 100,a);
@@ -159,8 +207,8 @@
 
 	<div class="exercise">
   		<div class="vars">
-    			<var id="arr_size">randRange( 6, 12 )</var>
-			<var id="asel">randRange( 1, 3)</var>
+    			<var id="arr_size">randRange(6,12)</var>
+			<var id="asel">randRange(1,3)</var>
     			<var id="JSAV">initJSAV(arr_size,asel)</var>
 			<var id="OPT1">"Binary Search Tree"</var>
 			<var id="OPT2">"Min Heap"</var>
@@ -188,7 +236,10 @@
 		</div>
 				
     		 <div class="hints">
-			<p> Select the maximum element and restore the heap</p>
+			<p> In a Binary Search tree , the left subtree of a node contains only nodes with keys less than the node's key</p>
+			<p> In a Binary Search tree , the right subtree of a node contains only nodes with keys greater than or equal to the node's key.</p>
+			<p> In a Binary Search tree , Both the left and right subtrees must also be binary search trees.</p>
+			<p> In a min heap the parent node is always lesser than child nodes.</p>
       		</div>
 
     	</div>

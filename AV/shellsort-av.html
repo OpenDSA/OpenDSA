@@ -224,16 +224,15 @@ form {
   // Partial Shellsort. Sweep with the given increment
   function sweep(incr) {
     var j = 0;
-    var numElem = 0;
+    var numElem = Math.ceil(theArray.length/incr);
     av.umsg("Start the next increment size: " + incr);
     av.step();
     highlightFunction = function(index) { return index%incr == j;};
     for (j=0; j<incr; j++) {         // Sort each sublist
       // Highlight the sublist
       arr.highlight(highlightFunction);
-      numElem = Math.ceil(theArray.length/incr);
       if(j+(incr*(numElem-1))>=theArray.length) numElem = numElem-1;
-      if (numElem == 1) {
+      if ((j+incr) == theArray.length) {
         av.umsg("Since the rest of the subarrays for this increment are of length 1, we will skip them");
         av.step();
         arr.unhighlight(highlightFunction);
