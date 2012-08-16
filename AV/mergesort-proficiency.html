@@ -136,7 +136,10 @@
         av = new JSAV($("#container"));
 
     av.recorded(); 		// we are not recording an AV with an algorithm
-
+	
+	var exercise = av.exercise(modelSolution, initialize, [{css: "background-color"}, {}]);
+    exercise.reset();
+	
 	/**
 	 * Processes the reset button
 	 * 		- Clears existing arrays
@@ -332,12 +335,7 @@
 		
 		return array;
 	}
-    
-    
-    var exercise = av.exercise(modelSolution, initialize, [{css: "background-color"}, {}]);
-    exercise.reset();
-    
-		
+	
 	/**
 	 * Click handler for all array elements
 	 */
@@ -390,9 +388,8 @@
 				// Reset the merge variables so we have a clean state for an undo
 				resetMergeVars();
 				
-				av.step();
-				// Mark this as a step to be graded and a step that can be undone
-				exercise.gradeableStep(); // mark this as a gradeable step; also handles continuous feedback
+				// Mark this as a step to be graded and a step that can be undone (continuous feedback)
+				exercise.gradeableStep();
 			}
 			else
 			{

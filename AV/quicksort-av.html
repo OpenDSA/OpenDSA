@@ -68,6 +68,41 @@
   <a class="jsavsettings" href="#">Settings</a>
   <h1 style="">Quicksort Visualization</h1>
 
+  
+  
+  <form id="ssperform" style="margin-top:-5px;">
+    <p>
+      <input type="button" name="run" value="Run"
+             style="margin-bottom:5px;">
+      <input type="button" name="reset" value="Reset" />
+      <label for="arraysize">&nbsp;List size:&nbsp;</label>
+      <select id="arraysize">
+        <option value = 5>5</option>
+        <option value = 6>6</option>
+        <option value = 7>7</option>
+        <option selected value = 8>8</option>
+        <option value = 9>9</option>
+        <option value = 10>10</option>
+        <option value = 11>11</option>
+        <option value = 12>12</option>
+        <option value = 13>13</option>
+        <option value = 14>14</option>
+        <option value = 15>15</option>
+        <option value = 16>16</option>
+      </select>
+      <label for="arrayValues">&nbsp;Your values:&nbsp;</label>
+      <input size="60" name="arrayValues" id="arrayValues" type="text" />
+    </p>
+  </form>
+  <div id="avcontainer" style="margin-top:-20px;">
+    <span class="jsavcounter"></span>
+    <div class="jsavcontrols"></div>
+    <p class="jsavoutput jsavline" readonly="readonly"></p>
+  </div>
+  
+  <!--
+  
+  
   <form id="ssperform">
     <p>
       <label for="arraysize">&nbsp;List size:&nbsp;</label>
@@ -96,7 +131,7 @@
     <span class="jsavcounter"></span>
     <div class="jsavcontrols"></div>
     <p class="jsavoutput jsavline" readonly="readonly"></p>
-  </div> <!--avcontainer-->
+  </div> < !--avcontainer-->
 </div> <!--container-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -269,37 +304,30 @@
 	av.step();
 	
 	// Create and display sub-arrays
+	
+	// Sort left partition
 	var subArr1 = arr.slice(i, k);
 	if (subArr1.length == 1) {
 		av.umsg("Left sublist contains a single element which means it is sorted");
 		av.step();
 		arr.markSorted(i, leftOffset);
 	}
-	else {
+	else if (subArr1.length > 1) {
 		var avSubArr1 = av.ds.array(subArr1, {indexed: true, center: false});
-	}
-	
-	var subArr2 = arr.slice(k + 1, j + 1);
-	if (subArr2.length == 1) {
-		av.umsg("Right sublist contains a single element which means it is sorted");
-		av.step();
-		arr.markSorted(k + 1, leftOffset);
-	}
-	else {
-		var avSubArr2 = av.ds.array(subArr2, {indexed: true, center: false});
-	}
-	
-	// Sort left partition
-	if (subArr1.length > 1)
-	{
 		av.umsg("Call quicksort on the left sublist");
 		av.step();
 		quicksort(avSubArr1, level + 1, leftOffset);
 	}
 	
 	// Sort right partition
-	if (subArr2.length > 1)
-	{
+	var subArr2 = arr.slice(k + 1, j + 1);
+	if (subArr2.length == 1) {
+		av.umsg("Right sublist contains a single element which means it is sorted");
+		av.step();
+		arr.markSorted(k + 1, leftOffset);
+	}
+	else if (subArr2.length > 1) {
+		var avSubArr2 = av.ds.array(subArr2, {indexed: true, center: false});
 		av.umsg("Call quicksort on the right sublist");
 		av.step();
 		quicksort(avSubArr2, level + 1, leftOffset + k + 1);
@@ -355,8 +383,7 @@
   
   /**
    * Calculates and sets the appropriate 'top' and 'left' CSS values based 
-   * on the specified array's level of recursion, column number and the 
-   * number of elements in the array
+   * on the specified array's level of recursion and number of blocks the array should be offset from the left
    *
    * arr - the JSAV array to set the 'top' and 'left' values for
    * level - the level of recursion, the full-size array is level 1
