@@ -180,8 +180,8 @@ NOTES
 odsalink  
 --------
 NAME  
-    ODSALINK - adds the code to include an OpenDSA CSS file in the final HTML
-    eTextBook.
+    ODSALINK - adds the code to include an OpenDSA CSS file in the
+    final HTML eTextBook.
       
 SYNOPSIS::   
 
@@ -189,24 +189,35 @@ SYNOPSIS::
 
 DESCRIPTION 
     ``.. odsalink::``  
-    The directive injects the code to include a file in the outputted html files.
-    It gets the path to ODSA directory from ``conf.py`` file.
+    The directive injects the code to include a file in the outputted
+    html files.
+    It gets the path to ODSA directory from the ``odsa_path`` variable
+    in the ``conf.py`` file.
 
     ``<path to file>``  
-    The path (relative to ODSA directory root) to the file to be include.    
+    The path (relative to ODSA directory root as defined by the
+    ``odsa_path`` variable in the ``conf.py`` file) to the script file
+    to be include.
 
 NOTES
-    The directory containing the file to be included should be hosted within ODSA folder.
-    Example: ``.. odsalink:: JSAV/css/JSAV.css``  will produce 
-             ``<link href="../../../JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />``
-             in html files.    
+    The directory containing the file to be included should be hosted
+    within ODSA folder.
+    Example:
+
+    ``.. odsalink:: JSAV/css/JSAV.css``
+
+    will produce something like
+
+    ``<link href="../../../JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />``
+
+    in html files.    
 
 
 odsascript  
 ----------
 NAME
-    ODSASCRIPT - adds the code to include an OpenDSA script file in the final HTML
-    eTextBook.
+    ODSASCRIPT - adds the code to include an OpenDSA script file in
+    the final HTML eTextBook.
 
 SYNOPSIS::
 
@@ -214,18 +225,25 @@ SYNOPSIS::
 
 DESCRIPTION
     ``.. odsascript::``
-    The directive injects the code to include a file in the outputted html files.
-    It gets the path to ODSA directory from ``conf.py`` file.
+    The directive injects the code to include a file in the outputted
+    html files.
+    It gets the path to ODSA directory from the ``odsa_path`` variable
+    in the ``conf.py`` file.
 
     ``<path to file>``
-    The path (relative to ODSA directory root) to the script file to be include.
+    The path (relative to ODSA directory root as defined by the
+    ``odsa_path`` variable in the ``conf.py`` file) to the script file
+    to be include.
 
 NOTES
-    The directory containing the file to be included should be hosted within ODSA folder.
-    Example: ``.. odsascript:: JSAV/build/JSAV-min.js``  will produce
-             ``<script type="text/javascript" src="../../../JSAV/build/JSAV-min.js"></script>``
-             in html files.
+    The directory containing the file to be included should be hosted
+    within the ODSA folder.
+    Example:
+    
+    ``.. odsascript:: JSAV/build/JSAV-min.js``
 
+    will produce something like
 
+    ``<script type="text/javascript" src="../../../JSAV/build/JSAV-min.js"></script>``
 
- 
+    in html files.
