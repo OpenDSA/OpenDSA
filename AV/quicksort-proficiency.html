@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Quicksort Proficiency Exercise</title>
+	<link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+	<style>
+
+	#container {
+		width: 780px;
+		height: 640px;
+		border: 1px solid black;
+		background-color: #efe;
+		padding: 10px;
+		overflow: hidden;
+	}
+
+	.jsavarray {
+		position: absolute;
+	}
+
+	#container .jsavarray {
+		left: -10px;
+		height: 80px;
+	}
+
+	div h1 {
+		background-color: #efe;
+	}
+
+	.jsavcontainer {
+		background-color: #efe;
+	}
+
+	p.jsavoutput.jsavline {
+		height: 40px;
+		margin: 0px;
+	}
+
+	a.jsavsettings {
+		display: block;
+		margin-top: 0px;
+		margin-left: 10px;
+	}
+
+	.mergesortArray {
+		margin-top: -15px;
+		margin-bottom: 40px
+	}
+
+	.jsavmodelanswer {
+		height: 275px;
+	}
+
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+	<script src="../JSAV/lib/jquery.transform.light.js"></script>
+	<script src="../JSAV/build/JSAV.js"></script>
+</head>
+
+<body>  
+	<div id="container">
+		<table id=tableT style="margin-top: -20px">
+			<tr>
+				<td style="width: 125px">&nbsp;</td>
+				<td style="width: 550px" align="center">
+					<p align="center" class="jsavexercisecontrols"></p>
+				</td>
+				<td style="width: 185px" align="right">
+					<p align="right">
+						<input type="button" name="help" value="Help" />
+						<input type="button" name="about" value="About" />
+						<a class="jsavsettings" href="#">Settings</a>
+					</p>
+				</td>
+			</tr>
+		</table>
+		<form style="border: 0px" id="mergesort_proficiency">
+			<p style="margin-top:-5px">Instructions:</p>
+			<p style="margin-top: -15px; padding: 10px; 10px; margin-right: 10px; border: 1px solid black">
+			Select the pivot element, move it to the appropriate location, then select the left and right endpoints of the range you wish to partition and click "Partition".  Once the partition operation is complete, click the location where the pivot point should be moved.  When a selected element has been moved to its final sorted location, click "Mark as Sorted".  If a sublist contains a single element, you must still mark it as sorted.
+			</p>
+			
+			<p class="jsavoutput jsavline"></p>
+			<div>
+				<input type="button" name="partition" value="Partition" />
+				<input type="button" name="markSorted" value="Mark as Sorted" />
+			</div>
+		</form>
+		<div id="arrays" class="jsavcanvas">
+		</div>
+	</div> <!-- container -->
+  
+	
+
+	<script>
+	$('input[name="help"]').click(help);
+	$('input[name="about"]').click(about);
+	$('input[name="partition"]').click(partitionButton);
+	$('input[name="markSorted"]').click(markSorted);
+	
+	// Process help button: Give a full help page for this activity
+	// We might give them another HTML page to look at.
+	function help() {
+		myRef = window.open("MSprofHelp.html", 'helpwindow');
+	}
+
+	// Process about button: Pop up a message with an Alert
+	function about() {
+		var mystring = "Mergesort Proficiency Exercise\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten August, 2012\nLast update: July 30, 2012\nJSAV library version " + JSAV.version();
+		alert(mystring);
+	}
+
+	/* **************************************************************
+	*        		QUICKSORT PROFICIENCY EXERCISE CODE				*
+	************************************************************** */
+	
+    var arraySize = 10,
+        initialArray = [],
+        av = new JSAV($("#container"));
+		
+	var userArr = [];
+	var pivotIndex = -1;
+	var pivotMoved = false;
+	var partitioned = false;
+	var left = 0; 
+	var right = 0;
+
+    av.recorded(); 		// we are not recording an AV with an algorithm
+	
+	var exercise = av.exercise(modelSolution, initialize, [{css: "background-color"}, {}]);
+    exercise.reset();
+
+	/**
+	 * Processes the reset button
+	 * 		- Clears existing arrays
+	 * 		- Generates a new set of random numbers to sort
+	 * 		- Initializes the arrays the user will use to merge
+	 */
+    function initialize() {
+		// Clear all existing arrays
+		$("#arrays").html("");
+
+		// Generate random numbers for the exercise
+		initialArray = [];
+		for (var i = 0; i < arraySize; i++)
+		{
+			initialArray[i] = Math.floor(Math.random()*100);
+		}
+		
+		userArr = av.ds.array(initialArray, {indexed: true, layout: "array"});
+		userArr.click(function(index){clickHandler(this, index)});
+		
+		pivotIndex = -1;
+		pivotMoved = false;
+		partitioned = false;
+		left = -1;
+		right = -1;
+
+		//av.umsg("Directions: Click on a numbered block to select it.  Then click on an empty block where it should be placed."); 
+		av.forward();
+		av._undo = [];
+		return initialArray;
+    }
+	
+	/**
+     * Creates the model solution which is used for grading the exercise
+     */
+    function modelSolution(jsav) {
+		var modelArr = jsav.ds.array(initialArray, {indexed: true, layout: "array"});
+		
+		quicksort(jsav, modelArr, 0, modelArr.size() - 1)
+		
+		return modelArr;
+	}
+	
+	function quicksort(jsav, arr, i, j)
+	{
+		//alert("beginning of quicksort");
+		
+		var pivotIndex = Math.floor((i + j) / 2);
+		arr.highlightPivot(pivotIndex);
+		
+		//alert("i: " + i + ", j: " + j + ", pIndex: " + pivotIndex);
+		
+		//jsav.stepOption("grade", true);
+		jsav.step();
+		
+		arr.swap(pivotIndex, j);
+		jsav.stepOption("grade", true);
+		jsav.step();
+		
+		//alert("after swap");
+
+		// k will be the first position in the right subarray
+		var k = partition(arr, i, j, arr.value(j));
+		jsav.stepOption("grade", true);
+		jsav.step();
+		
+		arr.swap(k, j);
+		jsav.stepOption("grade", true);
+		jsav.step();
+		
+		arr.markSorted(k);
+		jsav.stepOption("grade", true);
+		jsav.step();
+
+		// Sort left partition
+		if ((k - i) > 1)
+		{
+			quicksort(jsav, arr, i, k - 1);
+		}
+		else
+		{
+			// If the sublist is a single element, mark it as sorted
+			arr.markSorted(i);
+			jsav.stepOption("grade", true);
+			jsav.step();
+		}
+		
+		// Sort right partition
+		if ((j - k) > 1) 
+		{
+			quicksort(jsav, arr, k + 1, j);
+		}
+		else
+		{
+			// If the sublist is a single element, mark it as sorted
+			arr.markSorted(j);
+			jsav.stepOption("grade", true);
+			jsav.step();
+		}
+	}
+	
+	function partition(arr, l, r, pivot)
+	{
+		l -= 1;
+		
+		while (l < r)
+		{
+		  // Move bounds inward until they meet
+		  while (arr.value(++l) < pivot);
+		  while ((r != 0) && (arr.value(--r) > pivot));
+		  
+		  // Stop when all elements have been appropriately swapped
+		  if (l >= r) break;
+		  
+		  //Highlight elements to swap
+		  arr.swap(l, r);
+		}
+		
+		// Return first position in right partition
+		return l; 
+	}
+	
+	/**
+	 * Click handler for all array elements
+	 */
+	function clickHandler(arr, index) {
+		
+		if (!partitioned)
+		{
+			if (pivotIndex == -1)
+			{
+				// Select the pivot
+				pivotIndex = index;
+				arr.highlightPivot(index);
+			}
+			else if (pivotIndex == index)
+			{
+				// Deselect the pivot
+				pivotIndex = -1;
+				arr.unhighlight(index);
+			}
+			else if (!pivotMoved)
+			{
+				// Move the selected pivot to the specified index
+				arr.swap(pivotIndex, index);
+				pivotIndex = index;
+				pivotMoved = true;
+				
+				// Mark this as a step to be graded and a step that can be undone (continuous feedback)
+				exercise.gradeableStep();
+			}
+			else if (left == -1)
+			{
+				// Select the left end of the range to partition
+				left = index;
+				arr.toggleArrow(index);
+			}
+			else if (left == index && index != pivotIndex - 1)
+			{
+				// Deselect the left end of the range to partition
+				left = -1;
+				arr.toggleArrow(index);
+			}
+			else if (right == -1)
+			{
+				// Select the right end of the range to partition
+				right = index;
+				if (left != right)
+				{
+					arr.toggleArrow(index);
+				}
+			}
+			else if (right == index)
+			{
+				// Deselect the right end of the range to partition
+				right = -1;
+				arr.toggleArrow(index);
+			}
+		}
+		else 
+		{
+			if (pivotIndex == -1)
+			{
+				// Select the pivot
+				pivotIndex = index;
+				arr.highlightPivot(index);
+			}
+			else if (pivotIndex == index)
+			{
+				// Deselect the pivot
+				pivotIndex = -1;
+				arr.unhighlight(index);
+			}
+			else
+			{
+				// Move the pivot to its final location
+				arr.swap(pivotIndex, index);
+				pivotIndex = index;
+				
+				// Mark this as a step to be graded and a step that can be undone (continuous feedback)
+				exercise.gradeableStep();
+			}
+		}
+	}
+	
+	function partitionButton()
+	{
+		// Input validation
+		if (pivotIndex == -1)
+		{
+			alert("Select a pivot element");
+			return;
+		}
+		
+		if (left == -1 || right == -1)
+		{
+			alert("You must select the range to partition");
+			return;
+		}
+		
+		partition(userArr, left, right + 1, userArr.value(pivotIndex));
+		
+		partitioned = true;
+		pivotMoved = false;		
+		userArr.toggleArrow(left);
+		if (left != right)
+		{
+			userArr.toggleArrow(right);
+		}
+		
+		// Mark this as a step to be graded and a step that can be undone (continuous feedback)
+		exercise.gradeableStep();
+	}
+	
+	function markSorted()
+	{
+		// Input validation
+		if (pivotIndex == -1)
+		{
+			alert("Select an element to mark as sorted");
+			return;
+		}
+	
+		userArr.markSorted(pivotIndex);
+	
+		// Reset everything for next pivot selection
+		pivotIndex = -1;
+		pivotMoved = false;
+		partitioned = false;
+		left = -1;
+		right = -1;
+		
+		// Mark this as a step to be graded and a step that can be undone (continuous feedback)
+		exercise.gradeableStep();
+	}
+	
+	
+	/**
+	 * Convenience function for highlighting the pivot value in blue
+	 */ 
+	JSAV._types.ds.AVArray.prototype.highlightPivot = function(index) {
+		this.css(index, {"background-color": "#ddf" });
+	};
+	
+	/**
+   * Convenience function for highlighting sorted values
+   */
+	JSAV._types.ds.AVArray.prototype.markSorted = function(index, leftOffset) {
+		this.css(index, {"background-color": "#ffffcc" });
+	};
+	
+	</script>
+</body>
+</html>
