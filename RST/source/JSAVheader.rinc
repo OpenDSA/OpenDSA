@@ -1,10 +1,14 @@
+.. odsalink:: JSAV/css/JSAV.css
+
+.. odsascript:: JSAV/lib/raphael.js
+ 
+.. odsascript:: JSAV/build/JSAV-min.js
+
+.. odsascript:: JSAV/lib/jquery.transform.light.js 
+
 .. raw:: html
 
    <link href="_static/opendsaMOD.css" rel="stylesheet" type="text/css" />
-   <link href="../../../JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-   <script src="../../../JSAV/lib/jquery.transform.light.js"></script>
-   <script src="../../../JSAV/lib/raphael.js"></script>
-   <script src="../../../JSAV/build/JSAV-min.js"></script>
    <script type="text/javascript" src="_static/ODSA.js"></script>

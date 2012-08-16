@@ -37,7 +37,9 @@ NOTES
     This XML file is located in the directory ``xml`` contained
     within the same directory as the AV. If the AV is named
     ``fooAV.html`` then the XML file must be ``xml/fooAV.xml``.
- 
+    The path to OpenDSA directory should be set in ``conf.py`` file in
+    source directory. 
+
 avmetadata
 ----------
 NAME                   
@@ -137,6 +139,7 @@ NOTES
     with numbers and writes it into a file that is read by the ``numref``
     role.
 
+
 TODO
 ----
 NAME
@@ -171,4 +174,58 @@ NOTES
     directive (inside rst files) to create a TODO.rst file that lists
     all the desired AVs and Exercises grouped by type.
     The TODO.rst file should be included in the index.rst file to be
-    part of the table of contents for the eBook.  
+    part of the table of contents for the eBook. 
+
+   
+odsalink  
+--------
+NAME  
+    ODSALINK - adds the code to include an OpenDSA CSS file in the final HTML
+    eTextBook.
+      
+SYNOPSIS::   
+
+   .. odsalink:: <path to file>      
+
+DESCRIPTION 
+    ``.. odsalink::``  
+    The directive injects the code to include a file in the outputted html files.
+    It gets the path to ODSA directory from ``conf.py`` file.
+
+    ``<path to file>``  
+    The path (relative to ODSA directory root) to the file to be include.    
+
+NOTES
+    The directory containing the file to be included should be hosted within ODSA folder.
+    Example: ``.. odsalink:: JSAV/css/JSAV.css``  will produce 
+             ``<link href="../../../JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />``
+             in html files.    
+
+
+odsascript  
+----------
+NAME
+    ODSASCRIPT - adds the code to include an OpenDSA script file in the final HTML
+    eTextBook.
+
+SYNOPSIS::
+
+   .. odsascript:: <path to file>
+
+DESCRIPTION
+    ``.. odsascript::``
+    The directive injects the code to include a file in the outputted html files.
+    It gets the path to ODSA directory from ``conf.py`` file.
+
+    ``<path to file>``
+    The path (relative to ODSA directory root) to the script file to be include.
+
+NOTES
+    The directory containing the file to be included should be hosted within ODSA folder.
+    Example: ``.. odsascript:: JSAV/build/JSAV-min.js``  will produce
+             ``<script type="text/javascript" src="../../../JSAV/build/JSAV-min.js"></script>``
+             in html files.
+
+
+
+ 
