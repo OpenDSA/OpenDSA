@@ -51,6 +51,7 @@ Sorting
    SortingEmpirical
    SortingLowerBound
    SortSumm
+   SortProgExer
 
 File Processing
 ---------------
@@ -69,6 +70,7 @@ Trees
    :maxdepth: 3
 
    BinaryHeap
+   Huffman
    TreeExer
 
 Graphs
@@ -79,7 +81,6 @@ Graphs
    :maxdepth: 3
 
    MCST
-   Huffman
 
 Algorithms
 ----------

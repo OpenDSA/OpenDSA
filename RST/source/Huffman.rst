@@ -8,9 +8,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. raw:: html
-   
-   <link href="_static/Code/HuffmanCoding.css" rel="stylesheet" type="text/css" />
+.. odsalink:: AV/HuffmanCodingExamp.css
 
 .. index:: ! Huffman
 
@@ -170,7 +168,4 @@ When we decode a character using the Huffman coding tree, we follow a path throu
 
 If we view all records stored in either of these structures as appearing at some point on a number line representing the key space, we can see that the splitting behavior of these two structures is very different. The BST splits the space based on the key values as they are encountered when going down the tree. But the splits in the key space are predetermined for the Huffman tree. Search tree structures whose splitting points in the key space are predetermined are given the special name :strong:`trie` to distinguish them from the type of search tree (like the BST) whose splitting points are determined by the data.
 
-.. raw:: html
-
-   <script src="_static/Code/HuffmanCoding.js"></script>
-
+.. odsascript:: AV/HuffmanCodingExamp.js

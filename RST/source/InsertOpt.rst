@@ -56,13 +56,3 @@ function call with the actual swap steps, a big speed improvement will
 occur.
 Changing from the swap to the shift will make a further improvmement,
 but not nearly as much.
-
-.. todo::
-   :type: Coding Exercise
-
-   Write a "live code" style exercise for students to take the
-   original code for Insertion Sort, with a (hidden?) harness to do
-   the timing on an array of a given size. First they should see what
-   the basic algorithm costs. Then they should modify it to in-line
-   the swap. Then, finally, they should modify it to do the shift
-   instead of swap.
