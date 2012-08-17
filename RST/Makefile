@@ -44,8 +44,10 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 	-rm source/ToDo.rst
 
-makeconf: source/conf.py
+source/conf.py:
 	python cmake.py
+
+makeconf: source/conf.py
 
 html: makeconf
 	-mkdir -p $(BUILDDIR)
