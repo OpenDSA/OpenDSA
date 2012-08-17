@@ -8,7 +8,7 @@
 
 	#container {
 		width: 780px;
-		height: 340px;
+		height: 360px;
 		border: 1px solid black;
 		background-color: #efe;
 		padding: 10px;
@@ -80,7 +80,7 @@
 		<form style="border: 0px" id="mergesort_proficiency">
 			<p style="margin-top:-5px">Instructions:</p>
 			<p style="margin-top: -15px; padding: 10px; 10px; margin-right: 10px; border: 1px solid black">
-			Select the pivot element, move it to the appropriate location, then select the left and right endpoints of the range you wish to partition and click "Partition".  Once the partition operation is complete, click the location where the pivot point should be moved.  When a selected element has been moved to its final sorted location, click "Mark Selected as Sorted".  If a sublist contains a single element, you must still mark it as sorted.
+			Select the pivot element, move it to the appropriate location, then select the left and right endpoints of the range you wish to partition and click "Partition".  Once the partition operation is complete, click the location where the pivot point should be moved.  When a selected element has been moved to its final sorted location, click "Mark Selected as Sorted".  If a sublist contains a single element, you must still mark it as sorted.  When determining the final location for the pivot, treat any elements that match the pivot as if they were larger than the pivot.
 			</p>
 			
 			<p class="jsavoutput jsavline"></p>
@@ -132,7 +132,7 @@
 
     av.recorded(); 		// we are not recording an AV with an algorithm
 	
-	var exercise = av.exercise(modelSolution, initialize, [{css: "background-color"}, {}]);
+	var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "continuous", fixmode: "undo"});
     exercise.reset();
 
 	/**
@@ -426,8 +426,8 @@
 	};
 	
 	/**
-   * Convenience function for highlighting sorted values
-   */
+     * Convenience function for highlighting sorted values
+     */
 	JSAV._types.ds.AVArray.prototype.markSorted = function(index, leftOffset) {
 		this.css(index, {"background-color": "#ffffcc" });
 	};
