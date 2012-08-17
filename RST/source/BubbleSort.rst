@@ -10,10 +10,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. raw:: html
-   
-   <link href="_static/Code/quadraticsort.css" rel="stylesheet" type="text/css" />
-
+.. odsalink:: AV/Sorting/quadraticsortCON.css
 
 Bubble Sort
 ===========
@@ -78,7 +75,7 @@ it again.
 Bubble Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
-.. avembed:: AV/Sorting/bubblesort-av.html
+.. avembed:: AV/Sorting/bubblesortAV.html
 
 Now try for yourself to see if you understand how Bubble Sort works.
 
@@ -115,6 +112,4 @@ Insertion Sort.
    :showbutton: hide
    :title: Review Questions
 
-.. raw:: html
-
-   <script src="_static/Code/Bubblesort.js"></script>
+.. odsascript:: AV/Sorting/bubblesortCON.js

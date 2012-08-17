@@ -8,9 +8,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. raw:: html
-   
-   <link href="_static/Code/Shellsort.css" rel="stylesheet" type="text/css" />
+.. odsalink:: AV/shellsortCON.css
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
@@ -277,6 +275,4 @@ If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good
 increment series in [KnuthV3]_.
 
-.. raw:: html
-
-   <script src="_static/Code/Shellsort.js"></script>
+.. odsascript:: AV/shellsortCON.js
