@@ -1,4 +1,12 @@
+.. avmetadata:: SortingLowerBound
+   :author: Cliff Shaffer
+   :prerequisites: Sorting
+   :topic: Sorting
+   :short_name: SortingLowerBound
+
 .. _SortingLowerBound:
+
+.. include:: JSAVheader.rinc
 
 .. index:: ! sorting; lower bounds proof
 
@@ -257,13 +265,3 @@ time, so we can conclude that the problem of sorting requires
 As a corollary, we know that no comparison-based sorting algorithm can
 improve on existing :math:`\Theta(n \log n)` time sorting algorithms by
 more than  a constant factor.
-
-
-.. _dectree1:
-
-.. figure:: Images/DecTree.png
-   :width: 400
-   :alt: A decision tree for Insertion Sort
-
-   Very similar to Fig :numref:`Decision Tree <dectree>`
-

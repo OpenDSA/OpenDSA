@@ -1,4 +1,12 @@
+.. avmetadata:: SortingEmprical
+   :author: Cliff Shaffer
+   :prerequisites: Sorting
+   :topic: Sorting
+   :short_name: SortingEmpirical
+
 .. _SortingEmpirical:
+
+.. include:: JSAVheader.rinc
 
 .. index:: ! sorting; empirical comparison
 

@@ -8,7 +8,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/HuffmanCodingExamp.css
+.. odsalink:: AV/Development/HuffmanCodingExamp.css
 
 .. index:: ! Huffman
 
@@ -91,11 +91,11 @@ Because the first two letters on the list are Z and K, they are selected to be t
 
 Here is a visualization of building a random huffman tree.
 
-.. avembed:: AV/HuffmanCoding.html
+.. avembed:: AV/Development/HuffmanCoding.html
 
 Here is the implementation for Huffman tree nodes.
 
-.. codeinclude:: Graphs/Huffman/Huffman.pde
+.. codeinclude:: Trees/Huffman/Huffman.pde
    :tag: HuffmanNode 
 
 <ODSAfig "HuffNode" /> Implementation for Huffman tree nodes. Internal nodes and leaf nodes are represented by separate classes, each derived from an abstract base class.
@@ -104,12 +104,12 @@ Figure <ODSAref "HuffNode" /> shows an implementation for Huffman tree nodes. Th
 
 Figure <ODSAref "HuffClass" /> shows the Huffman tree class. Figure <ODSAref "HuffBuild" /> shows the Java code for the tree-building process.
 
-.. codeinclude:: Graphs/Huffman/Huffman.pde
+.. codeinclude:: Trees/Huffman/Huffman.pde
    :tag: HuffmanTree
 
 <ODSAfig "HuffClass" /> Class declarations for the Huffman tree.
 
-.. codeinclude:: Graphs/Huffman/Huffman.pde
+.. codeinclude:: Trees/Huffman/Huffman.pde
    :tag: HuffmanTreeBuild
 
 <ODSAfig "HuffBuild" />
@@ -168,4 +168,4 @@ When we decode a character using the Huffman coding tree, we follow a path throu
 
 If we view all records stored in either of these structures as appearing at some point on a number line representing the key space, we can see that the splitting behavior of these two structures is very different. The BST splits the space based on the key values as they are encountered when going down the tree. But the splits in the key space are predetermined for the Huffman tree. Search tree structures whose splitting points in the key space are predetermined are given the special name :strong:`trie` to distinguish them from the type of search tree (like the BST) whose splitting points are determined by the data.
 
-.. odsascript:: AV/HuffmanCodingExamp.js
+.. odsascript:: AV/Development/HuffmanCodingExamp.js

@@ -97,8 +97,6 @@ requires :math:`\Omega(n \log n)` time in the worst case
 Sorting Terminology and Notation
 --------------------------------
 
-.. _test-link: 
-
 Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`
 with key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
 the :dfn:`Sorting Problem` is to
@@ -114,7 +112,7 @@ records that have the same key value.
 Certain applications require that input not contain
 duplicate key values.
 Typically, sorting algorithms can handle duplicate key values unless
-noted otherwise.  See the test-link_ for details.
+noted otherwise.
 
 When duplicate key values are allowed, there might be an implicit
 ordering to the duplicates, typically based on their order of

@@ -6,6 +6,8 @@
 
 .. _BinSort:
 
+.. include:: JSAVheader.rinc
+
 .. index:: ! Binsort
 
 Binsort

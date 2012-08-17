@@ -1,4 +1,12 @@
+.. avmetadata:: Quicksort
+   :author: Cliff Shaffer
+   :prerequisites: Sorting
+   :topic: Sorting
+   :short_name: Quicksort
+
 .. _Quicksort:
+
+.. include:: JSAVheader.rinc
 
 .. index:: ! Quicksort
 

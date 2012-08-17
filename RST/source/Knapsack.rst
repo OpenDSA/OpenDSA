@@ -1,5 +1,8 @@
 .. avmetadata:: Knapsack
    :author: Jeremy Rodencal
+   :prerequisites: 
+   :topic: Dynamic Programming
+   :short_name: Knapsack
 
 .. _Knapsack:
 
@@ -8,8 +11,8 @@
 Knapsack
 ========
 
-Why is it still shell sort!
+We're not in shell sort anymore...
 
-.. avembed:: AV/sackTraceBack.html
+.. avembed:: AV/Development/sackTraceBack.html
 
 OH MAN...
