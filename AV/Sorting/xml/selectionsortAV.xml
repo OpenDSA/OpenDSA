@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <entry>
-<id>http://algoviz.org/OpenDSA/AV/Sorting/insertionsort-av.html</id>
-<title type='text'>Insertion Sort Visualization</title>
+<id>http://algoviz.org/OpenDSA/AV/Sorting/selectionsortAV.html</id>
+<title type='text'>Selection Sort Visualization</title>
 <width>787</width>
-<height>572</height>
+<height>632</height>
 <author>
 <name>OpenDSA</name>
 <uri>http://algoviz.org/OpenDSA/</uri>
