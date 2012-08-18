@@ -129,10 +129,18 @@
 	var partitioned = av.variable(false);
 	var left = av.variable(-1);
 	var right = av.variable(-1);
+	
+	// ModelSolution vars used for fixing the state 
+	var msPivotIndex = av.variable(-1);
+	var msPivotMoved = av.variable(false);
+	var msPartitioned = av.variable(false);
+	var msLeft = av.variable(-1);
+	var msRight = av.variable(-1);
 
     av.recorded(); 		// we are not recording an AV with an algorithm
 	
-	var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "continuous", fixmode: "undo"});
+	//var exercise = av.exercise(modelSolution, initialize, [{css: "background-color"}, {}], {fix: fixState, feedback: "continuous", fixmode: "undo"});
+	var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {fix: fixState, feedback: "continuous", fixmode: "fix"}); // fixmode: "undo"
     exercise.reset();
 
 	/**
@@ -160,7 +168,7 @@
 		//av.umsg("Directions: Click on a numbered block to select it.  Then click on an empty block where it should be placed."); 
 		av.forward();
 		av._undo = [];
-		return userArr;
+		return [userArr, pivotIndex, pivotMoved, partitioned, left, right];
     }
 	
 	/**
@@ -169,9 +177,13 @@
     function modelSolution(jsav) {
 		var modelArr = jsav.ds.array(initialArray, {indexed: true, layout: "array"});
 		
+		resetMSStateVars();
+		
+		jsav.displayInit();
+		
 		quicksort(jsav, modelArr, 0, modelArr.size() - 1)
 		
-		return modelArr;
+		return [modelArr, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight];
 	}
 	
 	/**
@@ -184,16 +196,23 @@
 		// Select the pivot
 		var pivotIndex = Math.floor((i + j) / 2);
 		arr.highlightPivot(pivotIndex);
+		msPivotIndex.value(pivotIndex);
 		jsav.step();
 		
 		// Move the pivot to the end of the list being sorted
 		arr.swap(pivotIndex, j);
+		msPivotIndex.value(j);
+		msPivotMoved.value(true);
 		jsav.stepOption("grade", true);
 		jsav.step();
 
 		// Partition the array
 		// k will be the first position in the right subarray
 		var k = partition(arr, i, j, arr.value(j));
+		msLeft.value(i);
+		msRight.value(j);
+		msPartitioned.value(true);
+		msPivotMoved.value(false);
 		jsav.stepOption("grade", true);
 		jsav.step();
 		
@@ -201,11 +220,14 @@
 		if (k != j)
 		{
 			arr.swap(k, j);
+			msPivotMoved.value(true);
+			msPivotIndex.value(k);
 			jsav.stepOption("grade", true);
 			jsav.step();
 		}
 		
 		arr.markSorted(k);
+		resetMSStateVars();
 		jsav.stepOption("grade", true);
 		jsav.step();
 
@@ -218,6 +240,7 @@
 		{
 			// If the sublist is a single element, mark it as sorted
 			arr.markSorted(i);
+			resetMSStateVars();
 			jsav.stepOption("grade", true);
 			jsav.step();
 		}
@@ -231,6 +254,7 @@
 		{
 			// If the sublist is a single element, mark it as sorted
 			arr.markSorted(j);
+			resetMSStateVars();
 			jsav.stepOption("grade", true);
 			jsav.step();
 		}
@@ -265,6 +289,61 @@
 		
 		// Return first position in right partition
 		return l; 
+	}
+	
+	/**
+	 * Function that will be called by the exercise if continuous feedback mode
+	 * is used and the "fix incorrect step" mode is on.
+	 */
+	function fixState(modelState) {		
+		var modelArray = modelState[0];
+		var pIndex = modelState[1];
+		var pMoved = modelState[2];
+		var part = modelState[3];
+		var l = modelState[4];
+		var r = modelState[5];
+		
+		alert(modelArray.toString());
+		alert("pivotIndex: " + pivotIndex.value() + ", pIndex: " + pIndex.value() + ", msPivotIndex: " + msPivotIndex.value() );
+		alert("pivotMoved: " + pivotMoved.value() + ", pMoved: " + pMoved.value() + ", msPivotMoved: " + msPivotMoved.value() );
+		alert("partitioned: " + partitioned.value() + ", part: " + part.value() + ", msPartitioned: " + msPartitioned.value() );
+		alert("left: " + left.value() + ", l: " + l.value() + ", msLeft: " + msLeft.value() );
+		alert("right: " + right.value() + ", r: " + r.value() + ", msRight: " + msRight.value() );
+		
+		for (var i = 0; i < modelArray.size(); i++) {
+			//alert(userArr.value(i));
+			//alert(userArr.element.css(i, "background-color"));
+			
+		
+			// Fix the values
+			var val = modelArray.value(i);
+			if (val !== userArr.value(i)) {
+				userArr.value(i, val);
+			}
+			
+			// Make the CSS background-color property of each element in the model array match the background-color of each element in the user array
+			userArr.css(i, {"background-color": modelArray.css(i, "background-color")});
+
+			
+			
+			/*
+			if (left != -1 && !partitioned)
+			{
+				userArr.toggleArrow(left);
+			}
+			*/
+			
+			
+		}
+		
+		pivotIndex = pIndex;
+		pivotMoved = pMoved;
+		partitioned = part;
+		left = l;
+		right = r;
+		
+		// Is there a way to untoggle all arrows? - just in case the user has any arrows
+		
 	}
 	
 	/**
@@ -418,6 +497,15 @@
 		right.value(-1);
 	}
 	
+	function resetMSStateVars()
+	{
+		msPivotIndex.value(-1);
+		msPivotMoved.value(false);
+		msPartitioned.value(false);
+		msLeft.value(-1);
+		msRight.value(-1);
+	}
+	
 	/**
 	 * Convenience function for highlighting the pivot value in blue
 	 */ 
@@ -428,8 +516,26 @@
 	/**
      * Convenience function for highlighting sorted values
      */
-	JSAV._types.ds.AVArray.prototype.markSorted = function(index, leftOffset) {
+	JSAV._types.ds.AVArray.prototype.markSorted = function(index) {
 		this.css(index, {"background-color": "#ffffcc" });
+	};
+	
+	JSAV._types.ds.AVArray.prototype.toString = function() {
+	
+		var size = this.size();
+		var str = '[';
+		for (var i = 0; i < size; i++)
+		{
+			str += this.value(i);
+			
+			if (i < size - 1)
+			{
+				str += ', ';
+			}
+		}
+		str += ']';
+	
+		return str;
 	};
 	
 	</script>

@@ -137,7 +137,8 @@
 
     av.recorded(); 		// we are not recording an AV with an algorithm
 	
-	var exercise = av.exercise(modelSolution, initialize, [{css: "background-color"}, {}]);
+	// Using continuous mode slows the exercise down considerably (probably because it has to check that all the arrays are correct)
+	var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}); //{feedback: "continuous", fixmode: "undo"}
     exercise.reset();
 	
 	/**
@@ -264,7 +265,8 @@
 		mergeSort(jsav, modelArr, temp, modelDepthArr, 0, initialArray.length - 1, depth);
 		
 		// Not sure why the array shows up invisible by default, but this makes it visible
-		modelArr.element.css({"display": "block"});
+		//modelArr.element.css({"display": "block"});
+		jsav.displayInit();
 		modelDepthArr.element.css({"top": rowHeight + "px"});
 		
 		return [modelArr, modelDepthArr];
