@@ -1,10 +1,12 @@
 .. avmetadata:: SortProgExer
    :author: Sally Hamouda and Cliff Shaffer
-   :prerequisites: Sorting, InsertionSort, BubbleSort, SelectionSort,  MergeSort
+   :prerequisites: Sorting, InsertionSort, BubbleSort, SelectionSort, MergeSort
    :topic: Sorting
    :short_name: SortProgExer
 
 .. _SortProgExer:
+
+.. include:: JSAVheader.rinc
 
 Sorting Chapter Programming Exercises
 =====================================

@@ -1,4 +1,12 @@
+.. avmetadata:: MergesortImpl
+   :author: Cliff Shaffer
+   :prerequisites: Sorting, Mergesort
+   :topic: Sorting
+   :short_name: MergesortImpl
+
 .. _MergesortImpl:
+
+.. include:: JSAVheader.rinc
 
 Implementing Mergesort
 ======================

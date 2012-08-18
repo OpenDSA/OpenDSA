@@ -10,10 +10,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. raw:: html
-   
-   <link href="_static/Code/quadraticsort.css" rel="stylesheet" type="text/css" />
-
+.. odsalink:: AV/Sorting/quadraticsortCON.css
 
 Selection Sort
 ==============
@@ -72,11 +69,11 @@ it again.
 Selection Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
-.. avembed:: AV/Sorting/selectionsort-av.html
+.. avembed:: AV/Sorting/selectionsortAV.html
 
 Now try for yourself to see if you understand how Selection Sort works.
 
-.. avembed:: Exercises/SelectionSortElement.html
+.. avembed:: Exercises/Development/SelectionSortElement.html
    :showbutton: hide
    :title: Question 1
 
@@ -126,10 +123,8 @@ This technique is illustrated by Figure <ODSAref "PtrSwap" \>.
 Additional space is needed to store the pointers, but the
 return is a faster swap operation.
 
-.. avembed:: Exercises/Sorting/SelectionSortSumm.html
+.. avembed:: Exercises/Development/SelectionSortSumm.html
    :showbutton: hide
    :title: Review Questions
 
-.. raw:: html
-
-   <script src="_static/Code/Selectionsort.js"></script>
+.. odsascript:: AV/Sorting/selectionsortCON.js

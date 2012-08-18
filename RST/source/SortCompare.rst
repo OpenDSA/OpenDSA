@@ -6,6 +6,8 @@
 
 .. _SortCompare:
 
+.. include:: JSAVheader.rinc
+
 .. index::
    pair: sorting; record comparison
    pair: searching; record comparison

@@ -28,10 +28,8 @@ csslint:
 	@csslint $(CSSLINTFLAGS) AV/*.css
 	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
 	@csslint $(CSSLINTFLAGS) Doc/*.css
-	@csslint $(CSSLINTFLAGS) RST/source/_static/Code/*.css
 	@csslint $(CSSLINTFLAGS) QBank/*.css
 
 jshint:
 	@echo 'running jshint'
-	@jshint RST/source/_static/Code/*.js
 	@jshint AV/Sorting/*.js

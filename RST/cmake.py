@@ -1,3 +1,19 @@
+import os
+import sys
+import re
+import datetime
+import shutil
+import subprocess
+import fnmatch
+import json
+import config
+from optparse import OptionParser
+from operator import itemgetter, attrgetter
+from xml.dom.minidom import parse, parseString
+from string import whitespace as ws
+
+
+conf= """\
 # -*- coding: utf-8 -*-
 #
 # OpenDSA documentation build configuration file, created by
@@ -32,7 +48,7 @@ sys.path.append(os.path.abspath('../ODSAextensions/odsa/codeinclude'))
 sys.path.append(os.path.abspath('../ODSAextensions/odsa/numref'))
 sys.path.append(os.path.abspath('../ODSAextensions/odsa/chapnum'))
 sys.path.append(os.path.abspath('../ODSAextensions/odsa/odsalink'))
-sys.path.append(os.path.abspath('../ODSAextensions/odsa/odsascript')) 
+sys.path.append(os.path.abspath('../ODSAextensions/odsa/odsascript'))
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -68,7 +84,7 @@ release = '0.4.1'
 # non-false value, then it is used:
 #today = ''
 # Else, today_fmt is used as the format for a strftime call.
-#today_fmt = '%B %d, %Y'
+#today_fmt = '%%B %%d, %%Y'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -119,7 +135,7 @@ html_title = "OpenDSA Sample eTextbook"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo =  "_static/AlgoVizLogo.gif" 
+html_logo =  "_static/AlgoVizLogo.gif"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -133,7 +149,7 @@ html_static_path = ['_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
-html_last_updated_fmt = '%b %d, %Y'
+html_last_updated_fmt = '%%b %%d, %%Y'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
@@ -216,7 +232,6 @@ latex_documents = [
 # If false, no module index is generated.
 #latex_domain_indices = True
 
-
 # -- Options for manual page output --------------------------------------------
 
 # One entry per manual page. List of tuples
@@ -254,13 +269,69 @@ texinfo_documents = [
 
 todo_include_todos = True
 
+#---- OpenDSA variables ---------------------------------------
 
-#---- OpenDSA variables ---------------------------------------  
-
-#Absolute path to OpenDSA directory  
-odsa_path = '/home/algoviz-beta/OpenDSA/OpenDSA/'  
-#Absolute path of eTextbook (build) directory   
-ebook_path = '/home/algoviz-beta/OpenDSA/OpenDSA/RST/build/html/'         
+#Absolute path to OpenDSA directory
+odsa_path = '%(odsa_dir)s' 
+#Absolute path of eTextbook (build) directory
+ebook_path = '%(ebook_dir)s' 
 
 #path (from the RST home) to the sourcecode directory that I want to use
-sourcecode_path = '../SourceCode/Processing/'                              
+sourcecode_path = '%(code_dir)s'  
+
+
+"""
+
+
+def main(argv):
+
+   options ={}  
+
+   attempt = 1 
+   options['odsa_dir'] = raw_input('Enter OpenDSA directory absolute path:  ')
+   while (attempt < 4) and not os.path.isdir(options['odsa_dir']):  
+      print 'Error: Invalid directory.' 
+      options['odsa_dir'] = raw_input('Enter OpenDSA directory absolute path:  ') 
+      attempt += 1
+   if attempt==4:
+      print 'You did not provided a valid directory three times. OpenDSA directory variable will remain empty!!!' 
+      options['odsa_dir'] = ''  
+   if options['odsa_dir'][-1]!='/' and not options['odsa_dir'].isspace(): 
+      options['odsa_dir'] = options['odsa_dir'] + '/'    
+
+   attempt = 1
+   options['ebook_dir'] = raw_input('Enter eTextbook directory absolute path: ')
+   while (attempt < 4) and not os.path.isdir(options['ebook_dir']):
+      print 'Error: Invalid directory.'
+      options['ebook_dir'] = raw_input('Enter eTextbook directory absolute path: ')
+      attempt += 1   
+   if attempt==4:
+      print 'You did not provided a valid directory three times. The eTextbook location will remain empty!!!'
+      options['ebook_dir'] = ''
+   if options['ebook_dir'][-1]!='/' and not options['ebook_dir'].isspace():
+      options['ebook_dir'] = options['ebook_dir'] + '/'
+
+   attempt = 1
+   options['code_dir'] = raw_input('Enter sample code directory absolute path: ')  
+   while (attempt < 4) and not os.path.isdir(options['ebook_dir']): 
+      print 'Error: Invalid directory.'
+      options['code_dir'] = raw_input('Enter sample code directory absolute path: ')
+      attempt += 1
+   if attempt==4:
+      print 'You did not provided a valid directory three times. The sample code location will remain empty!!!'
+      options['code_dir'] = ''  
+   if options['code_dir'][-1]!='/' and not options['code_dir'].isspace():
+      options['code_dir'] = options['code_dir'] + '/'
+
+
+   configuration = conf %options
+
+   try:
+      cfile = open('source/conf.py','w')  
+      cfile.writelines(configuration)  
+      cfile.close()  
+   except IOError:
+      print 'ERROR: Could not save configuration file' 
+
+if __name__ == "__main__":
+   sys.exit(main(sys.argv)) 

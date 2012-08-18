@@ -1,15 +1,12 @@
+.. avmetadata:: Mergesort
+   :author: Cliff Shaffer
+   :prerequisites: Sorting
+   :topic: Sorting
+   :short_name: Mergesort
+
 .. _Mergesort:
 
-.. raw:: html
-
-   <link href="_static/opendsaMOD.css" rel="stylesheet" type="text/css" />
-   <link href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-   <script src="http://algoviz.org/OpenDSA/JSAV/lib/jquery.transform.light.js"></script>
-   <script src="http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"></script>
-   <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script>
-   <script type="text/javascript" src="_static/ODSA.js"></script>
+.. include:: JSAVheader.rinc
 
 .. index:: ! Mergesort
 
@@ -64,27 +61,11 @@ output list until no more input elements remain.
 
 Here is a visualization that illustrates how Mergesort works.
 
-.. raw:: html
-
-   <center>
-     <iframe src="http://algoviz.org/OpenDSA/dev/OpenDSA/AV/mergesort-av.html"
-       type="text/javascript" width="823" height="587"
-       frameborder="0" marginwidth="0" marginheight="0"
-        scrolling="no">
-     </iframe>
-   </center>
+.. avembed:: AV/Development/mergesort-av.html
 
 Proficiency Exercise:
 
-.. raw:: html
-
-   <center>
-     <iframe src="http://algoviz.org/OpenDSA/dev/OpenDSA/AV/mergesort-proficiency.html"
-       type="text/javascript" width="806" height="680"
-       frameborder="0" marginwidth="0" marginheight="0"
-        scrolling="no">
-     </iframe>
-   </center>
+.. avembed:: AV/Development/mergesort-proficiency.html
 
 Analysis of Mergesort is straightforward, despite the fact that it is
 a recursive

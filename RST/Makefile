@@ -44,7 +44,12 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 	-rm source/ToDo.rst
 
-html:
+source/conf.py:
+	python cmake.py
+
+makeconf: source/conf.py
+
+html: makeconf
 	-mkdir -p $(BUILDDIR)
 	python preprocessor.py source/ $(BUILDDIR)/html
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html

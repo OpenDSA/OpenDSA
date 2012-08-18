@@ -10,10 +10,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. raw:: html
-   
-   <link href="_static/Code/quadraticsort.css" rel="stylesheet" type="text/css" />
-
+.. odsalink:: AV/Sorting/quadraticsortCON.css
 
 Insertion Sort
 ==============
@@ -83,11 +80,11 @@ encountered, ``inssort`` is done with that record because all
 records to its left in the array must have smaller keys.
 The following visualization puts it all together.
 
-.. avembed:: AV/Sorting/insertionsort-av.html
+.. avembed:: AV/Sorting/insertionsortAV.html
 
 Now try for yourself to see if you understand how Insertion Sort works.
 
-.. avembed:: Exercises/InsertionInsertElement.html
+.. avembed:: Exercises/Development/InsertionInsertElement.html
    :showbutton: hide
    :title: Question 1
 
@@ -198,10 +195,8 @@ You should spend some time now trying to think of such a situation.
 Here are some questions review questions to check that you understand
 Insertion Sort.
 
-.. avembed:: Exercises/Sorting/InsertionSortSumm.html
+.. avembed:: Exercises/Development/InsertionSortSumm.html
    :showbutton: hide
    :title: Review Questions
 
-.. raw:: html
-
-   <script src="_static/Code/Inssort.js"></script>
+.. odsascript:: AV/Sorting/insertionsortCON.js

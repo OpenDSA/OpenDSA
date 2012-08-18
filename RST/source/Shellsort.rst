@@ -8,9 +8,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. raw:: html
-   
-   <link href="_static/Code/Shellsort.css" rel="stylesheet" type="text/css" />
+.. odsalink:: AV/Development/shellsortCON.css
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
@@ -188,7 +186,7 @@ Here is a code implementation for Shellsort.
    :start-after: /* *** ODSATag: Shellsort *** */
    :end-before: /* *** ODSAendTag: Shellsort *** */
 
-.. avembed:: Exercises/ShellSortSublist.html
+.. avembed:: Exercises/Development/ShellSortSublist.html
    :showbutton: hide
    :title: Question 1
 
@@ -205,18 +203,18 @@ You can also set the increment series.
 Use this visualization to make sure that you understand how Shellsort
 works.
 
-.. avembed:: AV/shellsort-av.html
+.. avembed:: AV/Development/shellsort-av.html
 
 Next, let's review what makes for a legal increment series.
 
-.. avembed:: Exercises/ShellsortSeries.html
+.. avembed:: Exercises/Development/ShellsortSeries.html
    :showbutton: hide
    :title: Question 2
 
 Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
-.. avembed:: AV/ShellsortProficiency.html
+.. avembed:: AV/Development/ShellsortProficiency.html
    :showbutton: show
    :title: Proficiency Exercise
 
@@ -240,7 +238,7 @@ various increment sizes.
 Now you are ready to try out some different increment series to see
 how they affect the cost of Shellsort.
 
-.. avembed:: AV/ShellsortPerformance.html
+.. avembed:: AV/Development/ShellsortPerformance.html
    :showbutton: hide
    :title: Performance Simulator
 
@@ -261,7 +259,7 @@ algorithm is unacceptably slow.
 Here are some questions review questions to check that you understand
 Shellsort.
 
-.. avembed:: Exercises/ShellsortMC.html
+.. avembed:: Exercises/Development/ShellsortMC.html
    :showbutton: hide
    :title: Question 3
 
@@ -277,6 +275,4 @@ If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good
 increment series in [KnuthV3]_.
 
-.. raw:: html
-
-   <script src="_static/Code/Shellsort.js"></script>
+.. odsascript:: AV/Development/shellsortCON.js
