@@ -3,7 +3,7 @@
 <head>
 	<title>Quicksort Proficiency Exercise</title>
 	<link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
 	<style>
 
 	#container {
@@ -56,8 +56,8 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-	<script src="../JSAV/lib/jquery.transform.light.js"></script>
-	<script src="../JSAV/build/JSAV.js"></script>
+	<script src="../../JSAV/lib/jquery.transform.light.js"></script>
+	<script src="../../JSAV/build/JSAV.js"></script>
 </head>
 
 <body>  
@@ -168,7 +168,7 @@
 		//av.umsg("Directions: Click on a numbered block to select it.  Then click on an empty block where it should be placed."); 
 		av.forward();
 		av._undo = [];
-		return [userArr, pivotIndex, pivotMoved, partitioned, left, right];
+		return userArr; //[userArr, pivotIndex, pivotMoved, partitioned, left, right];
     }
 	
 	/**
@@ -183,7 +183,7 @@
 		
 		quicksort(jsav, modelArr, 0, modelArr.size() - 1)
 		
-		return [modelArr, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight];
+		return modelArr; //[modelArr, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight];
 	}
 	
 	/**
@@ -196,7 +196,6 @@
 		// Select the pivot
 		var pivotIndex = Math.floor((i + j) / 2);
 		arr.highlightPivot(pivotIndex);
-		msPivotIndex.value(pivotIndex);
 		jsav.step();
 		
 		// Move the pivot to the end of the list being sorted
@@ -210,7 +209,7 @@
 		// k will be the first position in the right subarray
 		var k = partition(arr, i, j, arr.value(j));
 		msLeft.value(i);
-		msRight.value(j);
+		msRight.value(j - 1);
 		msPartitioned.value(true);
 		msPivotMoved.value(false);
 		jsav.stepOption("grade", true);
@@ -426,6 +425,7 @@
 				// Move the pivot to its final location
 				arr.swap(pivotIndex.value(), index);
 				pivotIndex.value(index);
+				pivotMoved.value(true);
 				
 				// Mark this as a step to be graded and a step that can be undone (continuous feedback)
 				exercise.gradeableStep();

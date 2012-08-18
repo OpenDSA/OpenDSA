@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Mergesort Proficiency Exercise</title>
-	<link href="AeBookAV.css" rel="stylesheet" type="text/css" />
+	<!--<link href="AeBookAV.css" rel="stylesheet" type="text/css" />-->
 	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
 	<style>
 
@@ -255,18 +255,15 @@
      */
     function modelSolution(jsav) {
 		var modelArr = jsav.ds.array(initialArray, {indexed: true, layout: "array"});
-		
 		var depth = 1;
 		var modelDepthArr = [];
 		initDepth(0, initialArray.length - 1, depth, modelDepthArr);
 		modelDepthArr = jsav.ds.array(modelDepthArr, {indexed: true, layout: "array"});
+		jsav.displayInit();
 		
 		var temp = [];
 		mergeSort(jsav, modelArr, temp, modelDepthArr, 0, initialArray.length - 1, depth);
 		
-		// Not sure why the array shows up invisible by default, but this makes it visible
-		//modelArr.element.css({"display": "block"});
-		jsav.displayInit();
 		modelDepthArr.element.css({"top": rowHeight + "px"});
 		
 		return [modelArr, modelDepthArr];
