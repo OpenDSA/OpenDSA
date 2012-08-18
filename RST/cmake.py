@@ -296,6 +296,8 @@ def main(argv):
    if attempt==4:
       print 'You did not provided a valid directory three times. OpenDSA directory variable will remain empty!!!' 
       options['odsa_dir'] = ''  
+   if options['odsa_dir'][-1]!='/' and not options['odsa_dir'].isspace(): 
+      options['odsa_dir'] = options['odsa_dir'] + '/'    
 
    attempt = 1
    options['ebook_dir'] = raw_input('Enter eTextbook directory absolute path: ')
@@ -306,6 +308,8 @@ def main(argv):
    if attempt==4:
       print 'You did not provided a valid directory three times. The eTextbook location will remain empty!!!'
       options['ebook_dir'] = ''
+   if options['ebook_dir'][-1]!='/' and not options['ebook_dir'].isspace():
+      options['ebook_dir'] = options['ebook_dir'] + '/'
 
    attempt = 1
    options['code_dir'] = raw_input('Enter sample code directory absolute path: ')  
@@ -316,6 +320,8 @@ def main(argv):
    if attempt==4:
       print 'You did not provided a valid directory three times. The sample code location will remain empty!!!'
       options['code_dir'] = ''  
+   if options['code_dir'][-1]!='/' and not options['code_dir'].isspace():
+      options['code_dir'] = options['code_dir'] + '/'
 
 
    configuration = conf %options
