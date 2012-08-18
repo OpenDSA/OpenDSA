@@ -6,12 +6,13 @@
 
 .. _SortSumm:
 
+.. include:: JSAVheader.rinc
 
 Sorting Chapter Summary Exercises
 =================================
 
 Chapter summary exercises for Sorting.
 
-.. avembed:: Exercises/SortAlgCompMC.html
+.. avembed:: Exercises/Development/SortAlgCompMC.html
    :showbutton: hide
    :title: Question 1

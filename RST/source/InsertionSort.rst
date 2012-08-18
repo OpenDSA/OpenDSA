@@ -84,7 +84,7 @@ The following visualization puts it all together.
 
 Now try for yourself to see if you understand how Insertion Sort works.
 
-.. avembed:: Exercises/InsertionInsertElement.html
+.. avembed:: Exercises/Development/InsertionInsertElement.html
    :showbutton: hide
    :title: Question 1
 
@@ -195,7 +195,7 @@ You should spend some time now trying to think of such a situation.
 Here are some questions review questions to check that you understand
 Insertion Sort.
 
-.. avembed:: Exercises/Sorting/InsertionSortSumm.html
+.. avembed:: Exercises/Development/InsertionSortSumm.html
    :showbutton: hide
    :title: Review Questions
 

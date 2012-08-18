@@ -73,7 +73,7 @@ The following visualization puts it all together.
 
 Now try for yourself to see if you understand how Selection Sort works.
 
-.. avembed:: Exercises/SelectionSortElement.html
+.. avembed:: Exercises/Development/SelectionSortElement.html
    :showbutton: hide
    :title: Question 1
 
@@ -123,7 +123,7 @@ This technique is illustrated by Figure <ODSAref "PtrSwap" \>.
 Additional space is needed to store the pointers, but the
 return is a faster swap operation.
 
-.. avembed:: Exercises/Sorting/SelectionSortSumm.html
+.. avembed:: Exercises/Development/SelectionSortSumm.html
    :showbutton: hide
    :title: Review Questions
 
