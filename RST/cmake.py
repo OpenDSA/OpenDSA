@@ -300,7 +300,7 @@ def main(argv):
       options['odsa_dir'] = options['odsa_dir'] + '/'    
 
    attempt = 1
-   options['ebook_dir'] = raw_input('Enter eTextbook directory absolute path: ')
+   options['ebook_dir'] = raw_input('Enter eTextbook html output directory absolute path: ')
    while (attempt < 4) and not os.path.isdir(options['ebook_dir']):
       print 'Error: Invalid directory.'
       options['ebook_dir'] = raw_input('Enter eTextbook directory absolute path: ')
