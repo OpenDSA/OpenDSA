@@ -52,7 +52,7 @@ inversions for the record, where an :index:`inversion` occurs when a
 record with key value greater than the current record's key value
 appears before it.
 
-.. avembed:: Exercises/FindInversions.html
+.. avembed:: Exercises/Development/FindInversions.html
    :showbutton: hide
    :title: Question 1
 
@@ -89,6 +89,6 @@ than would be saved by avoiding such swaps.
 This would be an example of an "optimization" that does not improve
 performance. <ODSAref "CodeTuning" \>
 
-.. avembed:: Exercises/ExchangeMC.html
+.. avembed:: Exercises/Development/ExchangeMC.html
    :showbutton: hide
    :title: Question 1

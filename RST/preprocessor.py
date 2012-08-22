@@ -6,11 +6,12 @@ import shutil
 import subprocess
 import fnmatch
 import json
+import config
+from optparse import OptionParser
 from operator import itemgetter, attrgetter
 from xml.dom.minidom import parse, parseString
 from string import whitespace as ws
 
-todolist = []
 
 class bcolors:
     HEADER = '\033[95m'
@@ -55,7 +56,10 @@ class modPreReq:
       end=-1 
       len_wthsp=-1   
       type=''
-      desc='' 
+      desc=''
+      fig = 1       
+      tab = 1    
+      #config.mod_numb+=1
       fls = open(filename,'r')
       data = fls.readlines()
       fls.close()
@@ -70,13 +74,26 @@ class modPreReq:
             self.description = p.sub('',str.replace(' ',''))
          if ':prerequisites:' in line:
             str =  re.split('prerequisites:', line, re.IGNORECASE)[1]
-            self.prereq = p.sub('',str).split(',')   #.append(str.partition('"')[0])
+            self.prereq = p.sub('',str).split(',')   
          if ':author:' in line:
             str =  re.split('author:', line, re.IGNORECASE)[1]
             self.author = p.sub('',str.replace(' ','_')).replace('_',' ')     
          if ':topic:' in line:
             str =  re.split('topic:', line, re.IGNORECASE)[1]
-            self.covers =  p.sub('',str).split(',')         #str
+            self.covers =  p.sub('',str).split(',')        
+	 if line.startswith('.. _'):
+            label =  re.split(':', re.split('.. _', line, re.IGNORECASE)[1], re.IGNORECASE)[0]                                
+            if data[cpt+1].startswith('.. figure::'):                    
+               if os.path.splitext(os.path.basename(filename))[0] in config.table:       
+	         tb = config.table[os.path.splitext(os.path.basename(filename))[0]]           
+                 config.table[label] = tb + '.%s#' %fig
+                 fig+=1                  
+            if data[cpt+1].startswith('.. table::'):
+                if os.path.splitext(os.path.basename(filename))[0] in config.table:
+                  tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
+                  config.table[label] = tb + '.%s#' %tab   
+                  tab+=1                                                                
+ 
          if ('.. TODO::' in line  or '.. todo::' in line) and len_wthsp==-1 and start==-1 and end==-1:
             start = cpt+1 
          if start==cpt:
@@ -98,21 +115,21 @@ class modPreReq:
                if cpt==len(data):
                   for i in range(start-1,end-1):
                      desc+=data[i]
-                  todolist.append((filename,type,desc))
+                  config.todolist.append((filename,type,desc))
                   type=''
                   desc=''
                   start=-1
-                  end=0 #-1
+                  end=0 
                   len_wthsp=-1
             else:
                end=cpt-1
                for i in range(start-1,end):
                   desc+=data[i]
-               todolist.append((filename,type,desc))
+               config.todolist.append((filename,type,desc))
                type=''
                desc=''
                start=-1
-               end=0 #-1
+               end=0 
                len_wthsp=-1    
          if ('.. TODO::' in line  or '.. todo::' in line) and len_wthsp==-1 and start==-1 and end==0:
             start = cpt+1 
@@ -138,7 +155,6 @@ def generateJSON(modRoster, modDest):
     l=1
     try:
        gfile = open(modDest+'/modules.json','w')
-       #gfile.writelines('[\n')
        for k in modRoster :
           jsonString = jsonString +'{"pk": %s,"model": "showfile.exercise",'%l
           jsonString = jsonString +'"fields": {"summative": %s,'%k.summative
@@ -168,12 +184,11 @@ def generateCSV(modRoster, modDest):
     l=2001
     try:
        gfile = open(modDest+'/modules.csv','w')
-       #gfile.writelines('[\n')
        for k in modRoster :
           s = datetime.datetime.strptime(k.last_modified, "%Y-%m-%d %H:%M:%S") 
           csvString = csvString +s.strftime("%Y-%m-%dT%H:%M:%S")+',' 
           csvString = csvString +'%s,'%k.h_position
-          csvString = csvString +k.name[:-5]+','                                              #k.description+','  #name 
+          csvString = csvString +k.name[:-5]+','                                               
           csvString = csvString +'%s,'%k.v_position   #v_position 
           csvString = csvString +k.author+',' #author
           pq= (';'.join(map(str,k.prereq)), '')[k.prereqNum==0] #prerequisites 
@@ -225,11 +240,8 @@ def modOrdering(modRoster):
          m.v_position = v
          m.h_position = h
          finalMod.append(m)
-         #tmpMod.append(os.path.splitext(os.path.basename(modRoster.pop().name))[0])
-            #modRoster.remove(l)
          return finalMod
    return finalMod
-
 
 
 
@@ -272,12 +284,111 @@ def copyfiles(srcdir, dstdir, filepattern):
         break # no recursion
 
 
+def updateTOC(args):                               
+    iFile = open(args[0]+'index.rst','r')
+    iLine = iFile.readlines()
+    iFile.close()
+    directive=0
+    sectnum = 0 
+    chapter = ''
+    prefix = ''    
+    for lins in iLine:
+      if '.. sectnum::' or '.. chapnum::' in lins:
+         directive=1
+      if ':prefix:' in lins:   
+         prefix = re.split('prefix:', lins, re.IGNORECASE)[1]     
+         break
+    if directive==0:
+       print bcolors.FAIL + 'Error: No .. sectnum:: or .. chapnum:: directive in index.rst. Please include the directive and try again.'+bcolors.ENDC
+       sys.exit(0)
+
+
+    try:
+       table=open('page_chapter.json')
+       data = json.load(table)
+       table.close()
+    except IOError:
+       print 'ERROR: No table.json file.'   
+
+    
+    for pagename in os.listdir(args[1]):           
+       if pagename=='index.html':
+          idx  = open(args[1]+'/index.html','r')   
+          idxL = idx.readlines()   
+          idx.close()           
+          modIndex =[]
+          for idxLine in idxL:
+             if 'class="section"' in idxLine:   
+                sectnum+=1  
+             if 'class="headerlink"' in idxLine: 
+                chapter = re.split('>',re.split('<a class="headerlink"', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]  
+             if 'class="toctree-l' in idxLine:              
+                 str1 = re.split('>', re.split('</a>', idxLine, re.IGNORECASE)[0], re.IGNORECASE)               
+                 str = str1[len(str1)-1]   
+                 str2 ='%s.' % sectnum + str   
+                 idxLine = idxLine.replace(str,str2) 
+             modIndex.append(idxLine)  
+          otfile = open(args[1]+'/index.html','wb')
+          otfile.writelines(modIndex)
+          otfile.close()
+       processedFiles=[]  
+       if pagename[:-5] not in processedFiles:
+          processedFiles.append(pagename[:-5])   
+          if os.path.splitext(pagename)[1][1:] =='html':
+             idx  = open(args[1]+'/'+pagename,'r')
+             idxL = idx.readlines()
+             idx.close()
+             modIndex =[]
+             pagename = pagename[:-5] 
+             header ='' 
+             td = 0  
+             if pagename in data:     
+                chap = data[pagename]  
+                header = '%s %s %s' %(prefix,chap[1],chap[0])        
+             else: #special case ToDo.html, we put all the other files in the Appendix chapter    
+                chap = data['Bibliography']
+                header = '%s %s %s' %(prefix,chap[1],chap[0])
+                td = 1 
+             for idxLine in idxL:
+                if 'id="prevmod"' in idxLine or 'id="nextmod"' in idxLine: 
+                   prev = re.split('">',re.split('</a>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]    
+                   href = re.split('href="',re.split('">', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
+                   if href[:-5] in data:
+                      chap = data[href[:-5]]  
+                      str = '%s.' %chap[1] + prev 
+                      idxLine = idxLine.replace(prev,str)   
+                   else:
+                       if pagename=='ToDO':           #ToDo case     
+                          chap = data['Bibliography']
+                          str = '%s.' %chap[1] + prev
+                          idxLine = idxLine.replace(prev,str)   
+                   if  href[:-5]=='ToDO':   #special case ToDo.html 
+                      chap = data['Bibliography']
+                      str = '%s.' %chap[1] + prev
+                      idxLine = idxLine.replace(prev,str)   
+                if '<h2 class="heading"><span>'  in idxLine and pagename != 'index':  
+                   heading = re.split('<span>',re.split('</span>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]        
+                   idxLine = idxLine.replace(heading,header)
+                for i in range(1,7):      
+                   if '<h%s>' %i in idxLine and td==0 and pagename != 'index':    
+                      par  = re.split('<h%s>'%i,re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1] 
+                      par1 = '%s.' %chap[1] + par  
+                      idxLine = idxLine.replace(par,par1)  
+                if td == 1 and pagename != 'index':
+                    if 'a class="headerlink"' in idxLine:
+                      par  = re.split('<h1>',re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
+                      par1 = '%s.' %chap[1] + par
+                      idxLine = idxLine.replace(par,par1) 
+                modIndex.append(idxLine)   
+             otfile = open(args[1]+'/'+pagename+'.html','wb')
+             otfile.writelines(modIndex)
+             otfile.close()   
+
 def todoHTML(todolst):
 
    tp =''
    mn=0
-   rst='.. _Todo\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'   
-   #for td in todolst:
+   rst='.. _Todo:\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'   
    for i, (k,v,s) in enumerate(todolst):
          if tp=='' and v=='':
             if mn==0:
@@ -295,68 +406,127 @@ def todoHTML(todolst):
             rst+='.. raw:: html\n\n   <hr /><h1>%s</h1>\n   <hr />\n\n.. raw:: html\n\n   <h2>%s</h2>\n\n.. TODO::\n%s\n'%(v.capitalize()[1:-1],k.replace('/',': ')[:-4],s[:-1])
    otfile = open('source/ToDo.rst','w')
    otfile.writelines(rst)
+   otfile.close()
    return rst
 
-def control(argv):
-   if (len(argv) < 3 or len(argv) > 3):
-      sys.stderr.write("Usage: %s <source directory>  <destination directory>\n" % (argv[0],))
-      sys.exit(0)
-      #return 1
-   if len(argv)==3:
-      if not os.path.exists(argv[1]):
-         sys.stderr.write("ERROR: <module directory> %s does not exist! \n" % (argv[1],))
+def control(argv, args):
+   if len(args)==2:
+      if not os.path.exists(args[0]):
+         sys.stderr.write("ERROR: <module directory> %s does not exist! \n" % (args[0],))
          sys.exit(0)
-      if not os.path.exists(argv[2]):
-         os.mkdir(argv[2])
-   
-def enumFile(folder):
+      if not os.path.exists(args[1]):
+         os.mkdir(args[1])
+   else:   
+      print bcolors.FAIL +"ERROR. Usage: %s [-p]  <source directory>  <destination directory>\n" % (argv[0],)  + bcolors.ENDC  
+      sys.exit(0)
+
+
+def isSection(txt):
+   if txt.startswith('-') or txt.startswith('+') or txt.startswith('=') or txt.startswith('*'): 
+      return True
+   else:
+      return False  
+ 
+def enumFile(folder, folder1):
 
    filelist = []
+   dirlist=[]
    iFile = open(folder+'index.rst','r')
    iLine = iFile.readlines()
    iFile.close()
-   iLine1 = [] 
+   iLine1 = []
+   chap = ''  
+   chap_mod = {} 
+   t = 0
+   section = 0     
+   chapter = 1    
+   flag = -1   
+
    p = re.compile('(%s)' % ('|'.join([c for c in ws])))
+   
+   for filename in os.listdir(folder):
+      dirlist.append(os.path.splitext(filename)[0])    
+   j = 0
    for e in iLine:
       iLine1.append(p.sub('',e))
-
-   for filename in os.listdir(folder):
-     if os.path.splitext(filename)[0] in iLine1:
-        filelist.append(folder+filename)
+      j+=1
+   chap = ''   
+   for flnm in iLine1:
+     if t < len(iLine1)-1: 
+        if isSection(iLine1[t+1]):   
+           flag = 1     
+           chap = iLine[t]   
+        if flnm in dirlist and not isSection(iLine1[t+1]):            
+           chaplist =[] 
+           filelist.append(folder+flnm+'.rst')
+           config.table[flnm]='%s.%s'%(section,chapter) 
+           chaplist.append(chap.rstrip('\n'))  
+           chaplist.append(section)  
+           chap_mod[flnm]= chaplist         
+           chapter+=1
+     if isSection(flnm):          
+           section +=1
+           chapter = 1
+           flag=-1
+     t=t+1  
+   filelist.append(folder+'index.rst')     
+   try:
+        otfile = open('page_chapter.json','w')
+        json.dump(chap_mod,otfile)
+        otfile.close()
+   except IOError:
+        print 'ERROR: When saving JSON file'
    return filelist
 
 
 
 def main(argv):
-  control(argv)
-  modDir=''
-  modDest=''
-  sc='' 
-  if len(argv)==3:
-     modDir=argv[1]
-     modDest=argv[2]
+  parser = OptionParser()
+  parser.add_option("-p", "--postprocess", help="updates the table of content after the book is built", dest="postp", action="store_true")    
+  (options, args) = parser.parse_args()
+  control(argv,args)
+  
+  if not options.postp is None:
+     updateTOC(args) 
+  else: 
+     modDir=''
+     modDest=''
+     sc='' 
+     modDir=args[0]
+     modDest=args[1]
 
-  fileLst =  enumFile(modDir)
-  modList =[]
-  modRost=[]
-  for fl in fileLst:
-     if os.path.splitext(fl)[1][1:] == 'rst' and 'ToDo.rst' not in fl: 
-        modRost.append(os.path.splitext(os.path.basename(fl))[0])
-        x = modPreReq(fl)
-        modList.append(x)
+     fileLst =  enumFile(modDir,modDest)
+     modList =[]
+     modRost=[]
 
-  modList1 = sorted(modList,key = attrgetter('prereqNum'))
-  for ml in modList1:
-     ml.verifPreref(modRost)
-  finalList =modOrdering(modList1)
 
-  #create JSON and CSV files with modules information
-  generateJSON(finalList, modDest)
-  generateCSV(finalList, modDest) 
+     for fl in fileLst:
+        if os.path.splitext(fl)[1][1:] == 'rst' and 'ToDo.rst' not in fl: 
+           modRost.append(os.path.splitext(os.path.basename(fl))[0])
+           x = modPreReq(fl)
+           modList.append(x)
 
-  #ToDO list page
-  todolist1 = sorted(todolist, key=lambda todo: todo[1])
-  todoHTML(todolist1) 
+     modList1 = sorted(modList,key = attrgetter('prereqNum'))
+     for ml in modList1:
+        ml.verifPreref(modRost)
+     finalList =modOrdering(modList1)
+
+     #create JSON and CSV files with modules information
+     generateJSON(finalList, modDest)
+     generateCSV(finalList, modDest) 
+
+     #ToDO list page
+     todolist1 = sorted(config.todolist, key=lambda todo: todo[1])
+     todoHTML(todolist1) 
+
+     #Write table to a file
+     try:
+        otfile = open('table.json','wb') 
+        json.dump(config.table,otfile)
+     except IOError:
+        print 'ERROR: When saving JSON file' 
+
+
 
 if __name__ == "__main__":
    sys.exit(main(sys.argv))

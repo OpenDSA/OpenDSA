@@ -20,6 +20,8 @@ from docutils.parsers.rst import Directive
 import random
 import os, sys 
 import re
+sys.path.append(os.path.abspath('./source'))
+import conf 
 from xml.dom.minidom import parse, parseString
 
 def setup(app):
@@ -27,7 +29,7 @@ def setup(app):
 
 
 CODE = """\
-<div class="start">
+<div class="start%(div_id)s">
 <center> 
 <iframe src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 </iframe>
@@ -68,11 +70,12 @@ HIDE = """\
 
 def embedlocal(av_path):
    embed=[]
-   av_fullname = os.path.basename(av_path)  #av_fullname = av_path.partition('/')[2]  
+   av_fullname = os.path.basename(av_path)    
    av_name = av_fullname.partition('.')[0]  
-   xmlfile = os.path.abspath('../'+ os.path.dirname(av_path)+'/') + '/xml/' + av_name + '.xml'    
-   #xmlfile = os.path.abspath('../'+ av_path.partition('/')[0]+'/') + '/xml/' + av_name + '.xml'
-   av_fullpath = os.path.abspath('../'+av_path) 
+   the_path = conf.odsa_path + av_path
+
+   xmlfile = conf.odsa_path + os.path.dirname(av_path)+ '/' + '/xml/' + av_name + '.xml' 
+   av_fullpath =  conf.odsa_path + av_path  
    avwidth=0
    avheight=0
    try:
@@ -92,7 +95,7 @@ def embedlocal(av_path):
                if node.nodeType == node.TEXT_NODE:
                    avheight=node.data
       #link =os.path.abspath(address[1:])
-      embed.append('../../../'+av_path)
+      embed.append( os.path.relpath(conf.odsa_path,conf.ebook_path)+'/' + av_path)
       embed.append(avwidth)
       embed.append(avheight)
       return embed     
@@ -127,9 +130,10 @@ class avembed(Directive):
         self.options['av_address'] = embed[0]
         self.options['width'] = embed[1]
         self.options['height'] = embed[2]
-
+        self.options['div_id'] = random.randint(1,1000)   
+ 
         if 'showbutton' in self.options:
-            divID = "Example%s"%random.randint(1,1000)
+            divID = "Example%s"%self.options['div_id']     #random.randint(1,1000)
             self.options['divID'] = divID
 
             if self.options['showbutton'] == "show":

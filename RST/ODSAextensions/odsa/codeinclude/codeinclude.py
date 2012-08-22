@@ -24,6 +24,8 @@ import random
 import os, sys 
 import re
 import codecs
+sys.path.append(os.path.abspath('./source'))
+import conf  
 from xml.dom.minidom import parse, parseString
 from string import whitespace as ws
 
@@ -32,17 +34,6 @@ def setup(app):
     app.add_directive('codeinclude',codeinclude)
 
 
-def getConf():
-
-   cFile = open('source/conf.py','r')
-   cLine = cFile.readlines()
-   cFile.close()
-   t=''
-   for c in cLine:
-      if 'sourcecode_path' in c:
-         t=c.partition('=')[2][1:-1]
-         #return c.partition('=')[1][1:-1]
-   return t
 
 class codeinclude(Directive):
     """
@@ -64,10 +55,8 @@ class codeinclude(Directive):
                                               line=self.lineno)]
         p = re.compile('(%s)' % ('|'.join([c for c in ws]))) 
         env = document.settings.env
-        codepath = getConf() 
         rel_filename = self.arguments[0]
-        filename = p.sub('',codepath)[1:-1]+'%s'% self.arguments[0]
-
+	filename = conf.sourcecode_path + self.arguments[0]
         if 'pyobject' in self.options and 'lines' in self.options:
             return [document.reporter.warning(
                 'Cannot use both "pyobject" and "lines" options',

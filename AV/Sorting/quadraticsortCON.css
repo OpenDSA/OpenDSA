@@ -1,0 +1,14 @@
+.jsavcontainer {
+  width: 660px;
+  background-color: #eed;
+  margin: 0 auto;
+  border: 0;
+}
+.jsavcontrols {
+  margin-top: -35px;
+}
+.jsavoutput.jsavline{
+  margin-top: -5px;
+  height: 40px;
+}
+

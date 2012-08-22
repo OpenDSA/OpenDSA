@@ -314,7 +314,8 @@ var Khan = (function() {
 						cachebust = "?" + Math.random();
 					}
 					if (mod === "raphael")
-						src = "../JSAV/lib/" + mod + ".js" + cachebust;
+						src = "http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"
+
 					else 
 					src = urlBase + "utils/" + mod + ".js" + cachebust;
 					deps = Khan.moduleDependencies[ mod ];

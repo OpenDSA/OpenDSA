@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html data-require="math spin">
+<head>
+  <title>OpenDSA Shell Sort Exercise: Multiple Choice Question 2</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+</script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+</head>
+<body>
+
+  <div class="exercise">
+    <div class="vars">
+    </div>
+    <div class="problems">
+     
+      <div id="problem-type-or-description">
+        <p class="question">
+	  What is the best case input for Shellsort?
+	</p>
+        <div class="solution"><var>"A sorted array because each sublist is sorted in linear time."</var></div>
+	<ul class="choices" data-show="4" data-none="true">
+	  <li><var>"A sorted array because each sublist is sorted in linear time."</var></li>
+	  <li><var>"A reverse sorted array because because all the sublists are sorted in linear time."</var></li>
+	  <li><var>"A random array, without too much order or dis-order, which will keep things balanced."</var></li>
+	  <li><var>"It doesn't matter, all inputs of a given size will cost the same."</var></li>
+	</ul>
+	<div class="hints">
+	  <p>The order of the input does affect the cost.</p>
+	  <p>Remember what sort is used for sorting the sublists.</p>
+	  <p>Insertion sort is used to sort the sublists.</p>
+	  <p>Insertion sort's best case is when the input is ordered</p>
+	  <p>If the input to Shellsort is ordered, than the input to
+	  each call to Insertion sort on the sublists will also be
+	  ordered.</p>
+	</div>
+      </div>
+     
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,543 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Quicksort Proficiency Exercise</title>
+	<link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+	<style>
+
+	#container {
+		width: 780px;
+		height: 360px;
+		border: 1px solid black;
+		background-color: #efe;
+		padding: 10px;
+		overflow: hidden;
+	}
+
+	.jsavarray {
+		position: absolute;
+	}
+
+	#container .jsavarray {
+		left: -10px;
+		height: 80px;
+	}
+
+	div h1 {
+		background-color: #efe;
+	}
+
+	.jsavcontainer {
+		background-color: #efe;
+	}
+
+	p.jsavoutput.jsavline {
+		height: 40px;
+		margin: 0px;
+	}
+
+	a.jsavsettings {
+		display: block;
+		margin-top: 0px;
+		margin-left: 10px;
+	}
+
+	.mergesortArray {
+		margin-top: -15px;
+		margin-bottom: 40px
+	}
+
+	.jsavmodelanswer {
+		height: 275px;
+	}
+
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+	<script src="../../JSAV/lib/jquery.transform.light.js"></script>
+	<script src="../../JSAV/build/JSAV.js"></script>
+</head>
+
+<body>  
+	<div id="container">
+		<table id=tableT style="margin-top: -20px">
+			<tr>
+				<td style="width: 125px">&nbsp;</td>
+				<td style="width: 550px" align="center">
+					<p align="center" class="jsavexercisecontrols"></p>
+				</td>
+				<td style="width: 185px" align="right">
+					<p align="right">
+						<input type="button" name="help" value="Help" />
+						<input type="button" name="about" value="About" />
+						<a class="jsavsettings" href="#">Settings</a>
+					</p>
+				</td>
+			</tr>
+		</table>
+		<form style="border: 0px" id="mergesort_proficiency">
+			<p style="margin-top:-5px">Instructions:</p>
+			<p style="margin-top: -15px; padding: 10px; 10px; margin-right: 10px; border: 1px solid black">
+			Select the pivot element, move it to the appropriate location, then select the left and right endpoints of the range you wish to partition and click "Partition".  Once the partition operation is complete, click the location where the pivot point should be moved.  When a selected element has been moved to its final sorted location, click "Mark Selected as Sorted".  If a sublist contains a single element, you must still mark it as sorted.  When determining the final location for the pivot, treat any elements that match the pivot as if they were larger than the pivot.
+			</p>
+			
+			<p class="jsavoutput jsavline"></p>
+			<div>
+				<input type="button" name="partition" value="Partition" />
+				<input type="button" name="markSorted" value="Mark Selected as Sorted" />
+			</div>
+		</form>
+		<div id="arrays" class="jsavcanvas">
+		</div>
+	</div> <!-- container -->
+  
+	
+
+	<script>
+	$('input[name="help"]').click(help);
+	$('input[name="about"]').click(about);
+	$('input[name="partition"]').click(partitionButton);
+	$('input[name="markSorted"]').click(markSortedButton);
+	
+	// Process help button: Give a full help page for this activity
+	// We might give them another HTML page to look at.
+	function help() {
+		myRef = window.open("MSprofHelp.html", 'helpwindow');
+	}
+
+	// Process about button: Pop up a message with an Alert
+	function about() {
+		var mystring = "Mergesort Proficiency Exercise\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten August, 2012\nLast update: July 30, 2012\nJSAV library version " + JSAV.version();
+		alert(mystring);
+	}
+
+	/* **************************************************************
+	*        		QUICKSORT PROFICIENCY EXERCISE CODE				*
+	************************************************************** */
+	
+    var arraySize = 10,
+        initialArray = [],
+        av = new JSAV($("#container"));
+		
+	var userArr = [];
+	
+	// Initialize the variables
+	var pivotIndex = av.variable(-1);
+	var pivotMoved = av.variable(false);
+	var partitioned = av.variable(false);
+	var left = av.variable(-1);
+	var right = av.variable(-1);
+	
+	// ModelSolution vars used for fixing the state 
+	var msPivotIndex = av.variable(-1);
+	var msPivotMoved = av.variable(false);
+	var msPartitioned = av.variable(false);
+	var msLeft = av.variable(-1);
+	var msRight = av.variable(-1);
+
+    av.recorded(); 		// we are not recording an AV with an algorithm
+	
+	//var exercise = av.exercise(modelSolution, initialize, [{css: "background-color"}, {}], {fix: fixState, feedback: "continuous", fixmode: "undo"});
+	var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {fix: fixState, feedback: "continuous", fixmode: "fix"}); // fixmode: "undo"
+    exercise.reset();
+
+	/**
+	 * Processes the reset button
+	 * 		- Clears existing arrays
+	 * 		- Generates a new set of random numbers to sort
+	 * 		- Initializes the array the user will sort
+	 */
+    function initialize() {
+		// Clear all existing arrays
+		$("#arrays").html("");
+
+		// Generate random numbers for the exercise
+		initialArray = [];
+		for (var i = 0; i < arraySize; i++)
+		{
+			initialArray[i] = Math.floor(Math.random()*100);
+		}
+		
+		userArr = av.ds.array(initialArray, {indexed: true, layout: "array"});
+		userArr.click(function(index){clickHandler(this, index)});
+		
+		resetStateVars();
+		
+		//av.umsg("Directions: Click on a numbered block to select it.  Then click on an empty block where it should be placed."); 
+		av.forward();
+		av._undo = [];
+		return userArr; //[userArr, pivotIndex, pivotMoved, partitioned, left, right];
+    }
+	
+	/**
+     * Creates the model solution which is used for grading the exercise
+     */
+    function modelSolution(jsav) {
+		var modelArr = jsav.ds.array(initialArray, {indexed: true, layout: "array"});
+		
+		resetMSStateVars();
+		
+		jsav.displayInit();
+		
+		quicksort(jsav, modelArr, 0, modelArr.size() - 1)
+		
+		return modelArr; //[modelArr, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight];
+	}
+	
+	/**
+	 * Sorts the specified array using quicksort while marking various 
+	 * steps where the model answer will be compared against the user's 
+	 * solution for grading purposes
+	 */
+	function quicksort(jsav, arr, i, j)
+	{
+		// Select the pivot
+		var pivotIndex = Math.floor((i + j) / 2);
+		arr.highlightPivot(pivotIndex);
+		jsav.step();
+		
+		// Move the pivot to the end of the list being sorted
+		arr.swap(pivotIndex, j);
+		msPivotIndex.value(j);
+		msPivotMoved.value(true);
+		jsav.stepOption("grade", true);
+		jsav.step();
+
+		// Partition the array
+		// k will be the first position in the right subarray
+		var k = partition(arr, i, j, arr.value(j));
+		msLeft.value(i);
+		msRight.value(j - 1);
+		msPartitioned.value(true);
+		msPivotMoved.value(false);
+		jsav.stepOption("grade", true);
+		jsav.step();
+		
+		// If the pivot is already in its final location, don't need to swap it
+		if (k != j)
+		{
+			arr.swap(k, j);
+			msPivotMoved.value(true);
+			msPivotIndex.value(k);
+			jsav.stepOption("grade", true);
+			jsav.step();
+		}
+		
+		arr.markSorted(k);
+		resetMSStateVars();
+		jsav.stepOption("grade", true);
+		jsav.step();
+
+		// Sort left partition
+		if ((k - i) > 1)
+		{
+			quicksort(jsav, arr, i, k - 1);
+		}
+		else if ((k - i) == 1)
+		{
+			// If the sublist is a single element, mark it as sorted
+			arr.markSorted(i);
+			resetMSStateVars();
+			jsav.stepOption("grade", true);
+			jsav.step();
+		}
+		
+		// Sort right partition
+		if ((j - k) > 1) 
+		{
+			quicksort(jsav, arr, k + 1, j);
+		}
+		else if ((j - k) == 1) 
+		{
+			// If the sublist is a single element, mark it as sorted
+			arr.markSorted(j);
+			resetMSStateVars();
+			jsav.stepOption("grade", true);
+			jsav.step();
+		}
+	}
+	
+	/**
+	 * Partitions the elements of an array within the specified range 
+	 * so that all values less than the pivot value are farthest to 
+	 * the left and values larger than the pivot are farthest to the right
+	 *
+	 * arr - the array containing the elements to partition
+	 * l - the left endpoint of the range to partition
+	 * r - the right endpoint of the range to partition
+	 * pivot - the value to compare all the elements against
+	 */
+	function partition(arr, l, r, pivot)
+	{
+		l -= 1;
+		
+		while (l < r)
+		{
+		  // Move bounds inward until they meet
+		  while (arr.value(++l) < pivot);
+		  while ((r != 0) && (arr.value(--r) > pivot));
+		  
+		  // Stop when all elements have been appropriately swapped
+		  if (l >= r) break;
+		  
+		  //Highlight elements to swap
+		  arr.swap(l, r);
+		}
+		
+		// Return first position in right partition
+		return l; 
+	}
+	
+	/**
+	 * Function that will be called by the exercise if continuous feedback mode
+	 * is used and the "fix incorrect step" mode is on.
+	 */
+	function fixState(modelState) {		
+		var modelArray = modelState[0];
+		var pIndex = modelState[1];
+		var pMoved = modelState[2];
+		var part = modelState[3];
+		var l = modelState[4];
+		var r = modelState[5];
+		
+		alert(modelArray.toString());
+		alert("pivotIndex: " + pivotIndex.value() + ", pIndex: " + pIndex.value() + ", msPivotIndex: " + msPivotIndex.value() );
+		alert("pivotMoved: " + pivotMoved.value() + ", pMoved: " + pMoved.value() + ", msPivotMoved: " + msPivotMoved.value() );
+		alert("partitioned: " + partitioned.value() + ", part: " + part.value() + ", msPartitioned: " + msPartitioned.value() );
+		alert("left: " + left.value() + ", l: " + l.value() + ", msLeft: " + msLeft.value() );
+		alert("right: " + right.value() + ", r: " + r.value() + ", msRight: " + msRight.value() );
+		
+		for (var i = 0; i < modelArray.size(); i++) {
+			//alert(userArr.value(i));
+			//alert(userArr.element.css(i, "background-color"));
+			
+		
+			// Fix the values
+			var val = modelArray.value(i);
+			if (val !== userArr.value(i)) {
+				userArr.value(i, val);
+			}
+			
+			// Make the CSS background-color property of each element in the model array match the background-color of each element in the user array
+			userArr.css(i, {"background-color": modelArray.css(i, "background-color")});
+
+			
+			
+			/*
+			if (left != -1 && !partitioned)
+			{
+				userArr.toggleArrow(left);
+			}
+			*/
+			
+			
+		}
+		
+		pivotIndex = pIndex;
+		pivotMoved = pMoved;
+		partitioned = part;
+		left = l;
+		right = r;
+		
+		// Is there a way to untoggle all arrows? - just in case the user has any arrows
+		
+	}
+	
+	/**
+	 * Click handler for all array elements
+	 */
+	function clickHandler(arr, index) {
+	
+		if (!partitioned.value())
+		{		
+			if (pivotIndex.value() == -1)
+			{
+				// Select the pivot
+				pivotIndex.value(index);
+				arr.highlightPivot(index);
+			}
+			else if (pivotIndex.value() == index)
+			{
+				// Deselect the pivot
+				pivotIndex.value(-1);
+				arr.unhighlight(index);
+			}
+			else if (!pivotMoved.value())
+			{
+				// Move the selected pivot to the specified index
+				arr.swap(pivotIndex.value(), index);
+				pivotIndex.value(index);
+				pivotMoved.value(true);
+				
+				// Mark this as a step to be graded and a step that can be undone (continuous feedback)
+				exercise.gradeableStep();
+			}
+			else if (left.value() == -1)
+			{
+				// Select the left end of the range to partition
+				left.value(index);
+				arr.toggleArrow(index);
+			}
+			else if (left.value() == index && index != pivotIndex.value() - 1)
+			{
+				// In the case of a two element sublist, the left and right end points 
+				// will be the same element: "index != pivotIndex.value() - 1" allows the 
+				// user to select the right endpoint rather than deselecting the left endpoint
+			
+				// Deselect the left end of the range to partition
+				left.value(-1);
+				arr.toggleArrow(index);
+			}
+			else if (right.value() == -1)
+			{
+				// Select the right end of the range to partition
+				right.value(index);
+				if (left.value() != right.value())
+				{
+					arr.toggleArrow(index);
+				}
+			}
+			else if (right.value() == index)
+			{
+				// Deselect the right end of the range to partition
+				right.value(-1);
+				arr.toggleArrow(index);
+			}
+		}
+		else 
+		{
+			if (pivotIndex.value() == -1)
+			{
+				// Select the pivot
+				pivotIndex.value(index);
+				arr.highlightPivot(index);
+			}
+			else if (pivotIndex.value() == index)
+			{
+				// Deselect the pivot
+				pivotIndex.value(-1);
+				arr.unhighlight(index);
+			}
+			else
+			{
+				// Move the pivot to its final location
+				arr.swap(pivotIndex.value(), index);
+				pivotIndex.value(index);
+				pivotMoved.value(true);
+				
+				// Mark this as a step to be graded and a step that can be undone (continuous feedback)
+				exercise.gradeableStep();
+			}
+		}
+	}
+	
+	/**
+	 * Performs the partition operation on the user array 
+	 * using the pivot value and range specified by the user
+	 */
+	function partitionButton()
+	{
+		// Input validation
+		if (pivotIndex.value() == -1)
+		{
+			alert("Select a pivot element");
+			return;
+		}
+		
+		if (left.value() == -1 || right.value() == -1)
+		{
+			alert("You must select the range to partition");
+			return;
+		}
+		
+		partition(userArr, left.value(), right.value() + 1, userArr.value(pivotIndex.value()));
+		
+		partitioned.value(true);
+		pivotMoved.value(false);
+		userArr.toggleArrow(left.value());
+		if (left.value() != right.value())
+		{
+			userArr.toggleArrow(right.value());
+		}
+		
+		// Mark this as a step to be graded and a step that can be undone (continuous feedback)
+		exercise.gradeableStep();
+	}
+	
+	/**
+	 * Marks the currently selected element as sorted
+	 */
+	function markSortedButton()
+	{
+		// Input validation
+		if (pivotIndex.value() == -1)
+		{
+			alert("Select an element to mark as sorted");
+			return;
+		}
+	
+		userArr.markSorted(pivotIndex.value());
+		resetStateVars();
+		
+		// Mark this as a step to be graded and a step that can be undone (continuous feedback)
+		exercise.gradeableStep();
+	}
+	
+	/**
+	 * Reset the variables used for each iteration of the algorithm
+	 */
+	function resetStateVars()
+	{
+		pivotIndex.value(-1);
+		pivotMoved.value(false);
+		partitioned.value(false);
+		left.value(-1);
+		right.value(-1);
+	}
+	
+	function resetMSStateVars()
+	{
+		msPivotIndex.value(-1);
+		msPivotMoved.value(false);
+		msPartitioned.value(false);
+		msLeft.value(-1);
+		msRight.value(-1);
+	}
+	
+	/**
+	 * Convenience function for highlighting the pivot value in blue
+	 */ 
+	JSAV._types.ds.AVArray.prototype.highlightPivot = function(index) {
+		this.css(index, {"background-color": "#ddf" });
+	};
+	
+	/**
+     * Convenience function for highlighting sorted values
+     */
+	JSAV._types.ds.AVArray.prototype.markSorted = function(index) {
+		this.css(index, {"background-color": "#ffffcc" });
+	};
+	
+	JSAV._types.ds.AVArray.prototype.toString = function() {
+	
+		var size = this.size();
+		var str = '[';
+		for (var i = 0; i < size; i++)
+		{
+			str += this.value(i);
+			
+			if (i < size - 1)
+			{
+				str += ', ';
+			}
+		}
+		str += ']';
+	
+		return str;
+	};
+	
+	</script>
+</body>
+</html>

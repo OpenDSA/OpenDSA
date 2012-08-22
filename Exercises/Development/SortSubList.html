@@ -1,0 +1,150 @@
+<!--
+####################################### Sort SubList ##################################################
+#  Question     : Given a random array of size arr_size , SubList with elements highlighted
+#                 Sort the highlighted sublist
+#  Variables    : arr_size 0 - 12
+#                 inc_size 1 - (arr_size/2)
+#                 start_pos 0 - (inc_size - 1)
+#  Chapter      : ShellSort
+#  Author       : Gayathri
+#  Date         : July 13, 2012
+#######################################################################################################
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+
+	<head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <title>Sort SubList</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+                <script src="../JSAV/lib/jquery.transform.light.js"></script>
+                <script src="../JSAV/lib/raphael.js"></script>
+                <script type="text/javascript"
+       src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+                </script>
+                <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
+                <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
+                <script src="../JSAV/build/JSAV-min.js"></script>
+                <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+
+		<style>
+			.jsavcontainer {
+  			border: 0px;
+			}
+		</style>
+
+
+	<body>
+
+	<script>
+  		var jsav, arr , arr_clone, myGuess, isize, spos, nsel, sel1 ;
+  	
+		// function to handle a click event on an array
+  		var clickHandler = function(index, e) {
+			var sublist;
+			sublist =0;
+			if ( index === spos)
+				sublist = 1;
+			if ( index > spos ) 
+				if (((index-spos)%isize) === 0)
+					sublist = 1;
+			if ( sublist == 1 )
+			{
+				if (nsel === 0) 
+				{ // if first click
+        				arr.css(index, {"font-size": "130%"});
+					nsel = nsel + 1;
+					sel1 = index;
+				}
+    				else {
+					arr.swap(sel1,index);
+					arr.css(index, {"font-size": "100%"});
+					arr.css(sel1, {"font-size": "100%"});
+					nsel = 0;
+				}
+					
+    			}
+			myGuess = 1;
+  		}
+
+		// function that initialise JSAV library 
+  		initJSAV = function(a, inc_size, start_pos) {
+			var i;
+			myGuess = -1;
+			isize = inc_size;
+			spos = start_pos;
+			nsel = 0;
+    			jsav = new JSAV("jsav");
+			jsav.recorded();
+    			arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a),{indexed: true, center: false});
+			arr_clone = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, a));
+			arr_clone.hide();
+			for (i=0; i<a; i++)
+			{
+				arr_clone.value(i,arr.value(i));
+			}
+			for (i=start_pos; i < a; i++) {
+				if ( ((i-start_pos)%inc_size) === 0 ) {
+					arr.highlight(i);
+				}
+			}
+			// compute the correct answer
+			for (i=start_pos; i < a-1; i=i+inc_size) {
+                                for (j=i+inc_size; j<a; j=j+inc_size){
+                                        if (arr_clone.value(i) > arr_clone.value(j) )
+                                        arr_clone.swap(i,j);
+                                }
+                        }
+			// bind the clickHandler to handle click events on the array
+			arr.click(clickHandler);
+  		}
+	
+
+ 		// function that validates student's answer 
+ 		function checkAnswer (a, start_pos, inc_size) {
+  			var i;
+			// Return false if user has highlighted any position before start_pos
+			for (i=0; i < a; i++) {
+				if ( arr.value(i) != arr_clone.value(i)) return (2 === 1);
+			}
+			// All conditions passed, return true
+  			return ( 1 === 1);
+  		} 
+
+
+	</script>
+
+
+	<div class="exercise">
+  		<div class="vars">
+    			<var id="arr_size">randRange( 6, 12 )</var>
+			<var id="inc_size">randRange( 2, arr_size/2)</var>
+			<<var id="start_pos">randRange(0,inc_size-1)</var>
+    			<var id="JSAV">initJSAV(arr_size,inc_size,start_pos)</var>
+			<var id="sec_pos">start_pos+inc_size</var>
+		</div>
+
+  		<div class="problems">
+    			<div>
+      				<div class="question">
+				<p> The sublist with increment <var> inc_size </var> starting at index <var> start_pos </var> is Highlighted.Sort the highlighted Sublist.</p>
+				<div id="jsav"></div>
+      			</div>
+      			<div class="solution" data-type="custom">
+				<div class="guess">
+          				[myGuess]
+        			</div>
+				<div class="validator-function">
+	  				return checkAnswer (arr_size,start_pos,inc_size);
+				</div>
+      			</div>
+     
+		 	<div class="hints">
+				<p> Rearrange the highlighted elements in ascending order </p>
+      			</div>
+    		</div>
+  	</div>
+</body>
+</html>

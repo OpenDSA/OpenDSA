@@ -1,15 +1,12 @@
+.. avmetadata:: Heapsort
+   :author: Cliff Shaffer
+   :prerequisites: Sorting
+   :topic: Sorting
+   :short_name: Heapsort
+
 .. _Heapsort:
 
-.. raw:: html
-
-   <link href="_static/opendsaMOD.css" rel="stylesheet" type="text/css" />
-   <link href="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-   <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/lib/jquery.transform.light.js"></script>
-   <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/lib/raphael.js"></script>
-   <script src="http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV/build/JSAV-min.js"></script>
-   <script type="text/javascript" src="_static/ODSA.js"></script>
+.. include:: JSAVheader.rinc
 
 .. index:: ! Heapsort
 
@@ -133,15 +130,6 @@ Thus, only a relatively small fraction of the edges need be sorted.
 Now test yourself to see how well you understand Heapsort.
 Can you reproduce its behavior?
 
-.. raw:: html
-
-   <input type="button"
-     name="http://algoviz.org/OpenDSA/dev/OpenDSA/AV/heapsort-proficiency.html+1000+700"
-     value="Show Proficiency Exercise" id="example430+show" class="showLink"
-     style="background-color:#f00;"/> 
-   <div id="example430" class="more">
-   <input type="button"
-     name="http://algoviz.org/OpenDSA/dev/OpenDSA/AV/heapsort-proficiency.html+1000+700+hide"
-     value="Hide Proficiency Exercise" id="example430+hide"
-     class="hideLink" style="background-color:#f00;"/>
-   </div>
+.. avembed:: AV/Development/heapsort-proficiency.html
+   :showbutton: show
+   :title: Heapsort Proficiency Exercise

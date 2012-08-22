@@ -44,11 +44,18 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 	-rm source/ToDo.rst
 
-html:
+source/conf.py:
+	python cmake.py
+
+makeconf: source/conf.py
+
+html: makeconf
 	-mkdir -p $(BUILDDIR)
 	python preprocessor.py source/ $(BUILDDIR)/html
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	cp source/knowledgemap.html $(BUILDDIR)/html 
+	cp source/knowledgemap.html $(BUILDDIR)/html
+	python preprocessor.py -p   source/ $(BUILDDIR)/html 
+	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 

@@ -10,5 +10,6 @@ Table of Contents
    :maxdepth: 3
 
    ModAuthor
+   Structure
    Extensions
    Exercise

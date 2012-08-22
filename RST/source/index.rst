@@ -3,8 +3,20 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Modules
-=======
+.. avmetadata:: OpenDSA Sample eTextbook
+   :author: Cliff Shaffer
+   :prerequisites:
+   :topic: Data Structures
+   :short_name: index
+
+.. _index:
+
+.. include:: JSAVheader.rinc
+
+.. chapnum::
+   :start: 1
+   :prefix: Chapter    
+
 
 Background
 ----------
@@ -13,7 +25,7 @@ Background
    :numbered:
    :maxdepth: 3
 
-   SetDef
+   SetDef  
 
 Sorting
 -------
@@ -34,10 +46,12 @@ Sorting
    MergesortImpl
    Quicksort
    Heapsort
+   BinSort
    RadixSort
    SortingEmpirical
    SortingLowerBound
    SortSumm
+   SortProgExer
 
 File Processing
 ---------------
@@ -56,6 +70,7 @@ Trees
    :maxdepth: 3
 
    BinaryHeap
+   Huffman
    TreeExer
 
 Graphs
@@ -66,10 +81,18 @@ Graphs
    :maxdepth: 3
 
    MCST
-   Huffman
+
+Algorithms
+----------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   Knapsack
 
 Appendix
-========
+--------
 
 .. toctree::
    :numbered:

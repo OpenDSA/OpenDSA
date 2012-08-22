@@ -1,4 +1,12 @@
+.. avmetadata:: SortingLowerBound
+   :author: Cliff Shaffer
+   :prerequisites: Sorting
+   :topic: Sorting
+   :short_name: SortingLowerBound
+
 .. _SortingLowerBound:
+
+.. include:: JSAVheader.rinc
 
 .. index:: ! sorting; lower bounds proof
 
@@ -124,6 +132,8 @@ The correct output could be any permutation of the input values.
 For three values, there are :math:`n! = 6` permutations.
 Thus, the root node of the decision tree lists all six permutations
 that might be the eventual result of the algorithm.
+
+.. _dectree:
 
 .. figure:: Images/DecTree.png
    :width: 400

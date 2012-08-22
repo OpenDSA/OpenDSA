@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>ShellSort Performance</title>
+  <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+<style>
+
+#container {
+  width: 800px;
+  height: 365px;
+  border: 1px solid black;
+  background-color: #efe;
+  padding: 10px;
+  overflow: hidden;
+}
+
+#left {
+  float: left;
+  width: 60%;
+  margin: 7px 0px 0px 0px;
+}
+
+#right {
+  float: right;
+  width: 35%;
+}
+
+div h1 {
+  background-color: #efe;
+}
+
+.jsavcontainer {
+  background-color: #efe;
+}
+
+p.jsavoutput.jsavscroll {
+  height: 150px;
+}
+
+</style>
+</head>
+
+<body>
+<div id="container">
+  <table id="Table1">
+    <td width="800px" align="right">
+      <input type="button" name="about" value="About" />
+    </td>
+  </table>
+  <h1 style="margin-top:-25px">Shellsort Performance</h1>
+
+  <div id="left">
+    <form id="ssperform">
+      <p><label for="increments">Increments: Type your increment
+                                 series below.</label></p>
+      <input size="50" name="increments" type="text"
+             placeholder="Space separated values, for example 8 4 2 1" />
+      <p>
+        <input type="button" name="run" value="Run" />
+        <input type="button" name="clear" value="Clear" />
+        <label for="arraysize">&nbsp;List size:&nbsp;</label>
+        <input size="5" name="arraysize" type="number" value="64"/>
+      </p>
+      <p class="jsavoutput jsavscroll" readonly="readonly"
+         style=""></p>
+    </form>
+  </div> <!--left-->
+
+  <div id="right">
+    <h2>Directions</h2>
+    <div id="directions">
+      <p>Type in your desired series of increments, then press
+         "Run". You will then see the cost for Shellsort on your
+         set of increments, and also the cost for a regular
+	 Insertion Sort and the cost for the "divide by 2" increments.</p>
+      <p>Remember that your series should always end in 1.</p>
+      <p>You can set the list size. Run this on some bigger lists
+         to get a more realistic idea of the costs.</p>
+    </div> <!--directions-->
+  </div> <!--right-->
+</div> <!--container-->
+
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+
+<script>
+(function($) {
+  // Create the AV object. We turn off slideshow mode, since this is a
+  // "static" form-based activity
+  var av = new JSAV("ssperform", {'animationMode': 'none'});
+
+  // Define the local context (from form name)
+  //containing HTML elements within id ssperform.
+  var context = $("#ssperform");
+
+  // Create a convenience function named Tell for writing to output
+  var Tell = function(msg, color) { av.umsg(msg, {color: color}); };
+
+  // Action callbacks to the various HTML entities.
+  $('input[name="about"]').click(About);
+  $('input[name="run"]', context).click(RunIt);
+  $('input[name="clear"]', context).click(Clear);
+  $('input[name="arraysize"]', context).focusout(Change);
+  $('input[name="increments"]', context).focusout(CheckIncrements);
+
+  // The permanent array of numbers.
+  // This is "permanent" in that we want to use the same values
+  // each time that we sort, so that we can compare costs.
+  // It only changes when the user re-sets the array size, at which
+  // time a new set of random numbers is drawn.
+  var theArray = [];
+
+  var ASize = $('input[name="arraysize"]', context).val(); // Array size
+
+  var Comps; // Count for comparisions
+  var Swaps; // Count for swaps
+
+  // True if we already printed baseline info;
+  // False means to print it out again and toggle
+  var InitFlag = false;
+
+  // Process About button: Pop up a message with an Alert
+  function About() {
+    var mystring = "Shellsort Performance Activity\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during June, 2011\nLast update: August 14, 2011\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
+
+  // Process clear button: Clear the output textbox
+  function Clear() {
+    av.clearumsg();
+    InitFlag = false;
+  }
+
+  // Initialize theArray to be size random numbers
+  function InitArray(size) {
+    var i;
+    theArray.length = 0; // Out with the old
+    // Give random numbers in range 0..9999
+    for (i=0; i < size; i++) {
+      theArray[i] = Math.floor(Math.random()*10000);
+    }
+    ASize = size;
+  }    
+
+  // Change the array size
+  function Change() {
+    // Validate arraysize
+    var newVal = Number($('input[name="arraysize"]', context).val());
+    if (isNaN(newVal) || (newVal < 1) || (newVal > 10000)) {
+      alert("List size has to be a positive number less than 10000");
+      return;
+    }
+    if (newVal !== ASize) {
+      ASize = newVal;
+      InitFlag = false;
+      InitArray(ASize);
+    }
+  }
+
+  // Swap two elements of an array
+  function Swap(A, i, j) {
+    var temp = A[i];
+    A[i] = A[j];
+    A[j] = temp;
+  }
+
+  // Do an incremental insertion sort
+  function InsertionSort(A, start, incr) {
+    var i, j;
+    for (i=start+incr; i<A.length; i+=incr) {
+      for (j=i; (j>=incr) && (A[j]<A[j-incr]); j-=incr) {
+        Comps += 1;
+        Swaps += 1;
+        Swap(A, j, j-incr);
+       }
+      if (j>=incr) Comps += 1;
+    }
+  }
+
+  // Verify that the array really is sorted
+  function CheckArray(A) {
+    var i;
+    for (i=1; i<A.length; i++) {
+      if (A[i] < A[i-1]) {
+        alert("Sort algorithm failed!");
+        return;
+      }
+    }
+  }
+    
+  // Validate the increment series
+  function CheckIncrements() {
+    var i, 
+      num, 
+      prev = Number.MAX_VALUE, 
+      msg = "Increments sequence must be decreasing positive values ending with 1";
+    // Convert user's increments to an array,
+    var incrs = $('input[name="increments"]', context).val().match(/[0-9]+/g) || [];
+    for (i=0; i<incrs.length; i++) {
+      incrs[i] = Number(incrs[i]);
+      if (isNaN(incrs[i]) || incrs[i] < 0 || incrs[i] > prev) { 
+        alert(msg);
+        return null; 
+      }
+      prev = incrs[i];
+    }
+    if (incrs[incrs.length - 1] !== 1) { 
+      alert(msg);
+      return null; 
+    }
+    return incrs;
+  }
+
+  // Main action: Result of clicking "Run" button
+  function RunIt() {
+    var i, j;
+    var incr, curr;
+    var tempArray = []; // This is the working copy of the array
+
+    // Validate the user's increments
+    var incrs = CheckIncrements();
+    if (!incrs) { return; }
+
+    // This should only happen the very first time we run
+    if (theArray.length != ASize) { InitArray(ASize); }
+
+    if (!InitFlag) {
+      Tell("For list size of: " + ASize + "\n", "blue");
+      // First we run a standard insertion sort
+      // Copy to the working array
+      tempArray = theArray.slice(0);
+      Comps = 0; Swaps = 0;
+      InsertionSort(tempArray, 0, 1);
+      CheckArray(tempArray);      
+      Tell("\nStraight Insertion Sort needs " + Comps +
+           " comparisons and " + Swaps + " swaps\n");
+
+      // Next we do the "divide by twos" series
+      // Copy to the working array
+      tempArray = theArray.slice(0);
+      Comps = 0; Swaps = 0;
+      j = 1;
+      while (j*2 < ASize) { j = j*2; }
+      for (incr=j; incr>=1; incr = incr/2) {
+        for (curr=0; curr<incr; curr++) {
+          InsertionSort(tempArray, curr, incr);
+        }
+      }
+      CheckArray(tempArray);      
+      Tell("Divide by twos sequence needs " + Comps +
+           " comparisons and " + Swaps + " swaps\n");
+      InitFlag = true;
+    }
+
+    // Now we are ready to run the user's series
+    // Copy to the working array
+    tempArray = theArray.slice(0);
+    Comps = 0; Swaps = 0;
+    for (i=0; i<incrs.length; i+=1) {
+      for (curr=0; curr<incrs[i]; curr++) {
+        InsertionSort(tempArray, curr, incrs[i]);
+      }
+    }
+    CheckArray(tempArray);      
+    Tell("The sequence "+ $('input[name="increments"]', context).val() +
+         " needs " + Comps +
+         " comparisons and " + Swaps + " swaps\n");
+  }
+
+})(jQuery);
+</script>
+</body>
+</html>

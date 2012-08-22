@@ -6,6 +6,8 @@
 
 .. _Sorting:
 
+.. include:: JSAVheader.rinc
+
 .. index:: ! sorting
 
 Introduction
@@ -25,7 +27,7 @@ them more cheaply.
 We might use sorting to help an algorithm to solve
 some other problem.
 For example, Kruskal's algorthm to solve the minimum-cost spanning
-tree problem (see Module :ref:`MCST <MCST>`) must sort the edges of
+tree problem (see Module  :numref:`<MCST>`) must sort the edges of
 a graph by length before it can process them.
 
 Because sorting is so important, naturally it has been studied
@@ -75,7 +77,7 @@ Sorting provides an example of a significant technique for
 analyzing the lower bound for a problem.
 Sorting will also be used to motivate the introduction to file
 processing presented in
-Module :ref:`File Processing <FileProc>`.
+Module :numref:`<FileProc>`.
 
 This chapter covers several standard algorithms appropriate
 for sorting a collection of records that fit in the computer's
@@ -90,7 +92,7 @@ The final sorting method presented requires only
 :math:`\Theta(n)` worst-case time under special conditions.
 The chapter concludes with a proof that sorting in general
 requires :math:`\Omega(n \log n)` time in the worst case
-(see Module :ref:`Sorting Lower Bounds <SortingLowerBound>`).
+(see Module :numref:`<SortingLowerBound>`).
 
 Sorting Terminology and Notation
 --------------------------------
