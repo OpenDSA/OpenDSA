@@ -129,7 +129,7 @@ var Khan = (function() {
 
 	// The main server we're connecting to for saving data
 	server = typeof apiServer !== "undefined" ? apiServer :
-		testMode ? "http://0.0.0.0:8000" : "",
+		testMode ? "http://128.173.55.223:8080" : "",
 
 	// The name of the exercise
 	exerciseName = typeof userExercise !== "undefined" ? userExercise.exercise : ((/([^\/.]+)(?:\.html)?$/.exec( window.location.pathname ) || [])[1]),
@@ -701,9 +701,11 @@ var Khan = (function() {
 
 		} else {
 			// Load in the exercise data from the server
+                        console.log("sending request");  
 			jQuery.ajax({
 				// Do a request to the server API
-				url: server + "/api/v1/user/exercises/" + exerciseName,
+				//url: server + "/api/v1/user/exercises/" + exerciseName,
+				url: server + "/api/v1/exercises/?name=" + exerciseName,  
 				type: "GET",
 				dataType: "json",
 
@@ -716,7 +718,7 @@ var Khan = (function() {
 
 		jQuery(function() {
 			var remoteExercises = jQuery( ".exercise[data-name]" );
-
+ 			 
 			if ( remoteExercises.length ) {
 				isSummative = true;
 
@@ -860,6 +862,7 @@ var Khan = (function() {
 	}
 
 	function cacheUserExerciseDataLocally( exerciseName, data ) {
+		console.log('in the belly'); 
 		if ( user == null ) return;
 
 		var key = "exercise:" + user + ":" + exerciseName;
@@ -920,7 +923,8 @@ var Khan = (function() {
 					// we do this is to update the states (for correct icon display),
 					// which may have changed since the user last did the exercise.
 					jQuery.ajax({
-						url: server + "/api/v1/user/exercises/" + exid,
+						//url: server + "/api/v1/user/exercises/" + exid, 	
+						url: server + "/api/v1/exercises/?name=" + exid,
 						type: "GET",
 						dataType: "json",
 						xhrFields: { withCredentials: true },
@@ -1836,8 +1840,15 @@ var Khan = (function() {
 			} else {
 				userActivityLog.push([ "hint-activity", "0", timeTaken ]);
 			}
+                         var usernme = '';
+                         if ( typeof localStorage["opendsa"] !== "undefined" ) {
+                                    var obj = JSON.parse(localStorage["opendsa"]);
+                                        usernme =  obj.username;
+                          }
 
 			return {
+
+                                user: usernme,   
 				// The user answered correctly
 				complete: pass === true ? 1 : 0,
 
@@ -1942,8 +1953,9 @@ var Khan = (function() {
 			// Save the problem results to the server
 			var curTime = new Date().getTime();
 			var data = buildAttemptData(pass, ++attempts, JSON.stringify(validator.guess), curTime);
+			console.log('attempt data: '+ data); 
 			request( "problems/" + problemNum + "/attempt", data, function() {
-
+                                console.log("we about to save the answer");  
 				// TODO: Save locally if offline
 				jQuery(Khan).trigger( "answerSaved" );
 
@@ -2658,9 +2670,10 @@ var Khan = (function() {
 	function prepareUserExercise( data ) {
 		// Update the local data store
 		updateData( data );
-
-		if ( data && data.exercise ) {
-			exerciseName = data.exercise;
+                
+		if ( data && data.objects[0].name ) {             //data.exercise ) {
+			exerciseName = data.objects[0].name;      //data.exercise;
+                        console.log(" exerciseName =" + exerciseName);
 		}
 
 		if ( user != null ) {
@@ -2676,14 +2689,18 @@ var Khan = (function() {
 	}
 
 	function request( method, data, fn, fnError, queue ) {
+		console.log("request");   
 		if ( testMode ) {
 			// Pretend we have success
+			 console.log("request1"); 
 			if ( jQuery.isFunction( fn ) ) {
+				 console.log("request2"); 
 				fn();
 			}
-
-			return;
+			console.log("request3");
+			//return; temporary efouh;
 		}
+		console.log("request++"); 
 
 		var xhrFields = {};
 		if ( typeof XMLHTTPRequest !== "undefined" ) {
@@ -2691,10 +2708,10 @@ var Khan = (function() {
 			// make sure cookies are passed along.
 			xhrFields["withCredentials"] = true;
 		}
-
+		console.log("method=" + method);
 		var request = {
 			// Do a request to the server API
-			url: server + "/api/v1/user/exercises/" + exerciseName + "/" + method,
+			url: server + "/api/v1/user/exercise/attempt/",   //s/?name=" + exerciseName + "/" + method,
 			type: "POST",
 			data: data,
 			dataType: "json",
