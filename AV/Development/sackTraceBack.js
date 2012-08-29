@@ -141,19 +141,25 @@ jsav.label("Item Table", {left: 70, top: -20})
 jsav.label("Knapsack", {right: 75, top:-20})
 
 //set up the table with the base cases and blank other spaces
-dynTable[0] = jsav.ds.array([0, 0, 0, 0, 0, 0, 0]);
-dynTable[1] = jsav.ds.array([0, "", "", "", "", "", ""]);
-dynTable[2] = jsav.ds.array([0, "", "", "", "", "", ""]);
-dynTable[3] = jsav.ds.array([0, "", "", "", "", "", ""]);
+dynTable[0] = jsav.ds.array([0, 0, 0, 0, 0, 0, 0], {top: "0px"});
+dynTable[1] = jsav.ds.array([0, "", "", "", "", "", ""], {top: "40px"});
+dynTable[2] = jsav.ds.array([0, "", "", "", "", "", ""], {top: "80px"});
+dynTable[3] = jsav.ds.array([0, "", "", "", "", "", ""], {top: "120px"});
 
 //labels for the arrays
 jsav.label("Item", {left:(parseInt(dynTable[0].css("left")) - 65), top:(parseInt(dynTable[0].css("top")) + 10)});
-jsav.label("Weight", {top:(parseInt(dynTable[0].css("top")) - 40), left:(parseInt(dynTable[0].css("left")) + 0 )});
+jsav.label("Capacity", {top:(parseInt(dynTable[0].css("top")) - 40), left:(parseInt(dynTable[0].css("left")) + 0 )});
 
 //item labels
+//console.log("items labels:");
 for(var i = 0; i < dynTable.length; i++)
 {
-    jsav.label(i, {top:(parseInt(dynTable[0].css("top")) + 42 * i + 10), left:(parseInt(dynTable[0].css("left")) - 20)});
+    
+//    console.log("parse: \"" + dynTable[0].css("top"));
+//    console.log("top" + (parseInt(dynTable[0].css("top")) + 42 * i + 10));
+//    console.log("left" + (parseInt(dynTable[0].css("left")) - 20));
+    jsav.label(i, {top:(parseInt(dynTable[0].css("top")) + 42 * i + 10),
+                   left:(parseInt(dynTable[0].css("left")) - 20)});
 }
 //weight labels
 for(var i = 0; i < dynTable[0].size(); i++)

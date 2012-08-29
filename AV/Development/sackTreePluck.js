@@ -68,6 +68,54 @@ var isBase = function(data, row, column)
     return (row == 0 || column == 0);
 }
 
+
+
+//builds a calltree for the knapsack function.
+var buildTree = function(tree, i, w, animate)
+{
+    
+    tree.root("" + (i+1) + "," + w);
+    if(animate != false)
+    {
+        tree.layout();
+        jsav.step();
+    }
+    buildNode(tree.root(), i, w, animate);
+    return;
+}
+
+//helper for buildTree
+var buildNode = function(node, i, w, animate)
+{
+    if(i < 0 || w == 0)
+    {
+        return;
+    }
+    if(itemArray[1].value(i) > w)
+    {
+        node.addChild("" + i + "," + w);
+        if(animate != false)
+        {
+            callTree.layout();
+            jsav.step();
+        }
+        buildNode(node.child(0), i-1, w, animate);
+    }
+    else
+    {
+        node.addChild("" + i + "," + w);
+        node.addChild("" + i + "," + (w - itemArray[1].value(i)));
+        if(animate != false)
+        {
+            callTree.layout();
+            jsav.step();
+        }
+        buildNode(node.child(0), i-1, w, animate);
+        buildNode(node.child(1), i-1, (w - itemArray[1].value(i)), animate);
+    }
+    return;
+}
+
 //////////////////////////////////////////////////////////////////////
 //below is the code to setup jsav and get the animation off the ground
 //////////////////////////////////////////////////////////////////////
@@ -92,7 +140,7 @@ jsav.label("Item", {left:"140px", top:"12px"});
 jsav.label("Weight", {left:"140px", top:"52px"});
 jsav.label("Value", {left: "140px", top: "92px"});
 jsav.label("i", {left: "880px", top:"12px"});
-jsav.label("w", {left: "915px", top:"-25px"});
+jsav.label("c", {left: "915px", top:"-25px"});
 
 //set up the dynamic table with the base cases and blank other spaces
 dynTable[0] = jsav.ds.array([0, 0, 0, 0, 0, 0, 0],{centered:false, left:900, top:0});
