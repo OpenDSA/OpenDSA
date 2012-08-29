@@ -12,4 +12,8 @@ Table of Contents
    ModAuthor
    Structure
    Extensions
-   Exercise
+   Exercise 
+   BackendSpecs            
+   FrontendJSSpecs
+
+ 
