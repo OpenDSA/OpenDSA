@@ -129,18 +129,10 @@
 	var partitioned = av.variable(false);
 	var left = av.variable(-1);
 	var right = av.variable(-1);
-	
-	// ModelSolution vars used for fixing the state 
-	var msPivotIndex = av.variable(-1);
-	var msPivotMoved = av.variable(false);
-	var msPartitioned = av.variable(false);
-	var msLeft = av.variable(-1);
-	var msRight = av.variable(-1);
 
     av.recorded(); 		// we are not recording an AV with an algorithm
 	
-	//var exercise = av.exercise(modelSolution, initialize, [{css: "background-color"}, {}], {fix: fixState, feedback: "continuous", fixmode: "undo"});
-	var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {fix: fixState, feedback: "continuous", fixmode: "fix"}); // fixmode: "undo"
+	var exercise = av.exercise(modelSolution, initialize, [{css: "background-color"}, {}, {}, {}, {}, {}], {fix: fixState, feedback: "continuous", fixmode: "undo"}); // fixmode: "fix"
     exercise.reset();
 
 	/**
@@ -157,7 +149,7 @@
 		initialArray = [];
 		for (var i = 0; i < arraySize; i++)
 		{
-			initialArray[i] = Math.floor(Math.random()*100);
+			initialArray[i] = Math.floor(Math.random() * 100);
 		}
 		
 		userArr = av.ds.array(initialArray, {indexed: true, layout: "array"});
@@ -168,7 +160,7 @@
 		//av.umsg("Directions: Click on a numbered block to select it.  Then click on an empty block where it should be placed."); 
 		av.forward();
 		av._undo = [];
-		return userArr; //[userArr, pivotIndex, pivotMoved, partitioned, left, right];
+		return [userArr, pivotIndex, pivotMoved, partitioned, left, right];
     }
 	
 	/**
@@ -176,14 +168,19 @@
      */
     function modelSolution(jsav) {
 		var modelArr = jsav.ds.array(initialArray, {indexed: true, layout: "array"});
-		
-		resetMSStateVars();
+
+		// ModelSolution vars used for fixing the state 
+		var msPivotIndex = jsav.variable(-1);
+		var msPivotMoved = jsav.variable(false);
+		var msPartitioned = jsav.variable(false);
+		var msLeft = jsav.variable(-1);
+		var msRight = jsav.variable(-1);
 		
 		jsav.displayInit();
 		
-		quicksort(jsav, modelArr, 0, modelArr.size() - 1)
+		quicksort(jsav, modelArr, 0, modelArr.size() - 1, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight)
 		
-		return modelArr; //[modelArr, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight];
+		return [modelArr, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight];
 	}
 	
 	/**
@@ -191,7 +188,7 @@
 	 * steps where the model answer will be compared against the user's 
 	 * solution for grading purposes
 	 */
-	function quicksort(jsav, arr, i, j)
+	function quicksort(jsav, arr, i, j, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight)
 	{
 		// Select the pivot
 		var pivotIndex = Math.floor((i + j) / 2);
@@ -226,20 +223,20 @@
 		}
 		
 		arr.markSorted(k);
-		resetMSStateVars();
+		resetMSStateVars(msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight);
 		jsav.stepOption("grade", true);
 		jsav.step();
 
 		// Sort left partition
 		if ((k - i) > 1)
 		{
-			quicksort(jsav, arr, i, k - 1);
+			quicksort(jsav, arr, i, k - 1, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight);
 		}
 		else if ((k - i) == 1)
 		{
 			// If the sublist is a single element, mark it as sorted
 			arr.markSorted(i);
-			resetMSStateVars();
+			resetMSStateVars(msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight); // TODO: unnecessary??
 			jsav.stepOption("grade", true);
 			jsav.step();
 		}
@@ -247,13 +244,13 @@
 		// Sort right partition
 		if ((j - k) > 1) 
 		{
-			quicksort(jsav, arr, k + 1, j);
+			quicksort(jsav, arr, k + 1, j, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight);
 		}
 		else if ((j - k) == 1) 
 		{
 			// If the sublist is a single element, mark it as sorted
 			arr.markSorted(j);
-			resetMSStateVars();
+			resetMSStateVars(msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight); // TODO: unnecessary??
 			jsav.stepOption("grade", true);
 			jsav.step();
 		}
@@ -302,16 +299,21 @@
 		var l = modelState[4];
 		var r = modelState[5];
 		
-		alert(modelArray.toString());
-		alert("pivotIndex: " + pivotIndex.value() + ", pIndex: " + pIndex.value() + ", msPivotIndex: " + msPivotIndex.value() );
-		alert("pivotMoved: " + pivotMoved.value() + ", pMoved: " + pMoved.value() + ", msPivotMoved: " + msPivotMoved.value() );
-		alert("partitioned: " + partitioned.value() + ", part: " + part.value() + ", msPartitioned: " + msPartitioned.value() );
-		alert("left: " + left.value() + ", l: " + l.value() + ", msLeft: " + msLeft.value() );
-		alert("right: " + right.value() + ", r: " + r.value() + ", msRight: " + msRight.value() );
+		/*
+		alert("modelArray: " + modelArray.toString());
+		alert("pivotIndex: " + pivotIndex.value() + ", pIndex: " + pIndex.value() );
+		alert("pivotMoved: " + pivotMoved.value() + ", pMoved: " + pMoved.value() );
+		alert("partitioned: " + partitioned.value() + ", part: " + part.value() );
+		alert("left: " + left.value() + ", l: " + l.value() );
+		alert("right: " + right.value() + ", r: " + r.value() );
+		*/
+		
+		//modelArray.css(0, {"background-color": "#ffffcc" })
 		
 		for (var i = 0; i < modelArray.size(); i++) {
 			//alert(userArr.value(i));
-			//alert(userArr.element.css(i, "background-color"));
+			//alert(userArr.css(i, "background-color"));
+			//alert(modelArray.css(i, "background-color"));
 			
 		
 			// Fix the values
@@ -323,16 +325,8 @@
 			// Make the CSS background-color property of each element in the model array match the background-color of each element in the user array
 			userArr.css(i, {"background-color": modelArray.css(i, "background-color")});
 
-			
-			
-			/*
-			if (left != -1 && !partitioned)
-			{
-				userArr.toggleArrow(left);
-			}
-			*/
-			
-			
+			// Clear any arrows the user put in the wrong place
+			userArr.clearArrow(i);
 		}
 		
 		pivotIndex = pIndex;
@@ -340,9 +334,6 @@
 		partitioned = part;
 		left = l;
 		right = r;
-		
-		// Is there a way to untoggle all arrows? - just in case the user has any arrows
-		
 	}
 	
 	/**
@@ -497,7 +488,7 @@
 		right.value(-1);
 	}
 	
-	function resetMSStateVars()
+	function resetMSStateVars(msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight)
 	{
 		msPivotIndex.value(-1);
 		msPivotMoved.value(false);
@@ -537,6 +528,14 @@
 	
 		return str;
 	};
+	
+	JSAV._types.ds.AVArray.prototype.clearArrow = JSAV.anim(function(indices) {
+		var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
+		
+		if ($elems.hasClass("jsavarrow")) {
+			$elems.toggleClass("jsavarrow");
+		}
+	});
 	
 	</script>
 </body>

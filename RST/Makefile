@@ -20,7 +20,10 @@ all: html
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
+	@echo "  clean      to clear out the generated files for the HTML build"
+	@echo "  cleanbuild to do a clean, remove conf.py, and re-do HTML build"
 	@echo "  html       to make standalone HTML files"
+	@echo "  WARNING: THE REST OF THESE ARE LEGACY, AND NOT SUPPORTED"
 	@echo "  dirhtml    to make HTML files named index.html in directories"
 	@echo "  singlehtml to make a single large HTML file"
 	@echo "  pickle     to make pickle files"
@@ -43,6 +46,11 @@ help:
 clean:
 	-rm -rf $(BUILDDIR)/*
 	-rm source/ToDo.rst
+
+killconf:
+	-rm source/conf.py
+
+cleanbuild: killconf clean html
 
 source/conf.py:
 	python cmake.py
