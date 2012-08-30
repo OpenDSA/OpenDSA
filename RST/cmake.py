@@ -301,13 +301,13 @@ def main(argv):
 
    attempt = 1
    options['ebook_dir'] = raw_input('Enter eTextbook html output directory absolute path: ')
-   while (attempt < 4) and not os.path.isdir(options['ebook_dir']):
-      print 'Error: Invalid directory.'
-      options['ebook_dir'] = raw_input('Enter eTextbook directory absolute path: ')
-      attempt += 1   
-   if attempt==4:
-      print 'You did not provided a valid directory three times. The eTextbook location will remain empty!!!'
-      options['ebook_dir'] = ''
+#   while (attempt < 4) and not os.path.isdir(options['ebook_dir']):
+#      print 'Error: Invalid directory.'
+#      options['ebook_dir'] = raw_input('Enter eTextbook directory absolute path: ')
+#      attempt += 1   
+#   if attempt==4:
+#      print 'You did not provided a valid directory three times. The eTextbook location will remain empty!!!'
+#      options['ebook_dir'] = ''
    if options['ebook_dir'][-1]!='/' and not options['ebook_dir'].isspace():
       options['ebook_dir'] = options['ebook_dir'] + '/'
 
