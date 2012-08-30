@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <entry>
-<id>http://algoviz.org/OpenDSA/AV/sackTraceBack.html</id>
-<title type='text'>Knapsack TraceBack</title>
-<width>950</width>
+<id>http://algoviz.org/OpenDSA/AV/sackProficiency.html</id>
+<title type='text'>Knapsack Proficency</title>
+<width>800</width>
 <height>450</height>
 <author>
 <name>OpenDSA</name>
