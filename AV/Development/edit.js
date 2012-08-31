@@ -372,7 +372,7 @@ var eDistOptimal = function(av, start, end)
 			grid[row].css(0, {"background-color": "white", "color": "black"});
 			grid[0].css(col, {"background-color": "white", "color": "black"});
 			//gray out current cell to prepare next cell movement
-			grid[row].css(col, {"background-color": "#eee"});
+			grid[row].css(col, {"background-color": "#ccc"});
 			
 			//update coordinates
 			row--;
@@ -383,7 +383,7 @@ var eDistOptimal = function(av, start, end)
 			av.step();
 			
 			//gray out current cell to prepare next cell movement
-			grid[row].css(col, {"background-color": "#eee"});
+			grid[row].css(col, {"background-color": "#ccc"});
 
 			//determine next cell in path
 			var dir = editFuncCall(grid, row, col);
