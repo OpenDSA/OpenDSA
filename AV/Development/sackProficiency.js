@@ -1,3 +1,26 @@
+//fills in a jsav table with all the values for a particular item set
+var fillTableComplete = function(table, itemTable)
+{
+    for(var i = 1; i < table.length; i++)
+    {
+        for(var w = 1; w < table[i].size(); w++)
+        {
+            var itemWeight, itemValue;
+            itemWeight = itemTable[1].value(i-1);
+            itemValue = itemTable[2].value(i-1);
+            if(itemWeight > w) //item won't fit in the knapsack
+            {
+                table[i].value(w, table[i-1].value(w));
+            }
+            else
+            {
+                table[i].value(w, Math.max(table[i-1].value(w), 
+                                           table[i-1].value(w-itemWeight) + itemValue));
+            }
+        }
+    }
+}
+
 //init for the exercise
 var init = function()
 {
@@ -88,7 +111,10 @@ var init = function()
                     row[j] = "";
             }
         }
-        dynTable[i] = jsav.ds.array(row);
+        dynTable[i] = jsav.ds.array(row, 
+                                        {centered:false, 
+                                         top: ((i*40) + 30) + "px",
+                                         right: "0px"});
         dynTable[i].click(genDynClickFunction(i));
         //dynTable[i].click(clickDynTable);
     }
@@ -97,12 +123,12 @@ var init = function()
 
     //label the dynTable
     dynItemLabel = jsav.label("Item", {top:(parseInt(dynTable[0].css("top")) + 10),
-                                       left:(parseInt(dynTable[0].css("left")) - 70)});
+                                       right:(parseInt(dynTable[0].css("right")) + 40 * capacity + 80)});
     dynTableLabel = [];
     for(var i = 0; i < dynTable.length; i++)
     {
-        dynTableLabel[i] = jsav.label(("" + i), {left:(parseInt(dynTable[0].css("left")) - 20),
-                                                 top:(parseInt(dynTable[0].css("top")) + 10 + i * 42)});
+        dynTableLabel[i] = jsav.label(("" + i), {right:(parseInt(dynTable[0].css("right")) + 40 * capacity + 60),
+                                                 top:(parseInt(dynTable[0].css("top")) + 10 + i * 41)});
     }
 
     //store the starting table for later use by model answer
@@ -118,9 +144,10 @@ var init = function()
         startDynTable[i] =row;
     }
 
-    valueList = jsav.ds.array(startValueList, {top: (-50)});
+    valueList = jsav.ds.array(startValueList, {top: (-50), right:"0px"});
     //console.log(parseInt(valueList.css("left")));
-    choiceLabel = jsav.label("Choices", {top:-40, left:(parseInt(valueList.css("left")) - 60)});
+    choiceLabel = jsav.label("Choices", {top:-40, 
+        right:(parseInt(valueList.css("right")) + 40*valueList.size() + 20)});
     valueList.click(clickValueList);
     return dynTable;
 }

@@ -7,7 +7,7 @@
 <html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Edit Distance - Khan Academy</title>
+  <title>Edit Distance - Khan Academy 1</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript"
@@ -17,7 +17,7 @@
   <script src="http://algoviz.org/OpenDSA/ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script>
   <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" />  
-  <script src="../../AV/edit.js"></script>
+  <script src="../../AV/Development/edit.js"></script>
 
 <style>
 .jsavcontainer {
@@ -30,14 +30,9 @@
 
 <body>
 <script>
-	var av, arr, myGuess;
+	var av, ans, myGuess;
 	var c1, c2, c3, c4;
-	
-	//debugging function
-	var select = function(choice) {
-		alert("Hey y'all, this is your choice: " + arr[choice]);
-		myGuess = arr[choice];
-	}
+	var pOp = -1;
 	
 	/**
 	initJSAV
@@ -46,23 +41,48 @@
 	initJSAV = function() {
 		myGuess = -1;
 		av = new JSAV("jsav", {"animationMode": "none"});
-		var s1 = randString(3,5);
-		var s2 = randString(3,5);
-		arr = initKA(s1, s2);
-		
-		for (var i = 0; i < arr.length; i++) {
-			console.log("" + i + ": " + arr[i]);
+		var s1, s2, r, c;
+
+		//randomize op
+		var op = Math.floor(Math.random() * 4);
+		//eliminate potential same op runs.
+		while(op == pOp)
+		{
+			op = Math.floor(Math.random() * 4);
 		}
+		pOp = op;
+
+		switch(op) //sets up params of KA to work for op
+		{
+			//sub
+			case 0:	s1 = randString(3, 5);
+					s2 = randString(3, 5);
+					r = Math.floor(Math.random() * (s1.length - 2) + 3);
+					c = Math.floor(Math.random() * (s2.length - 2) + 3);
+					break;
+			//ins
+			case 1:	s1 = randString(3, 3);
+					s2 = randString(4, 5);
+					c = Math.floor(Math.random() * (s2.length - s1.length) + 2);
+					r = 1;
+					break;
+			//del
+			case 2:	s1 = randString(4, 5);
+					s2 = randString(3, 3);
+					c = 1;
+					r = Math.floor(Math.random() * (s1.length - s2.length) + 2);
+					break;
+			//match
+			case 3:	s1 = randString(3, 5);
+					s2 = randString(3, 5);
+					r = Math.floor(Math.random() * (s1.length) + 2);
+					c = Math.floor(Math.random() * (s2.length) + 2);
+					s2 = s2.substring(0, c-2) + s1.charAt(r-2) + s2.substring(c-1);
+					break;
+		}
+
+		ans = initKA1(av, s1, s2, r, c);
 		
-		//set the labels
-		document.getElementById('a').innerHTML = arr[0];
-		document.getElementById('b').innerHTML = arr[1];
-		document.getElementById('c').innerHTML = arr[2];
-		document.getElementById('d').innerHTML = arr[3];
-	}
-	
-	getAns = function(num) {
-		return arr[num];
 	} //end initJSAV func
 
 	/**
@@ -82,7 +102,13 @@
 	} //end randString func  
   
 	genAnswer = function() {
-		return arr[4];
+		switch(ans)
+		{
+			case 0: return "Substitution";
+			case 1: return "Insertion";
+			case 2: return "Deletion";
+			case 3: return "Match";
+		}
 	}
 </script>
 
@@ -96,22 +122,18 @@
 	<div class="problems">
 		<div>
 			<div class="question">
-				Select the correct cell value from the list.
+				Select the operation that yields the highlighted result.
 				<div id="jsav"></div>
 			</div> <!-- question -->
 			<div class="solution"><var>genAnswer()</var></div>
 			<ul class="choices" data-category="true">
-				<li><var id="a"></var></li>
-				<li><var id="b"></var></li>
-				<li><var id="c"></var></li>
-				<li><var id="d"></var></li>
+				<li><var>"Substitution"</var></li>
+				<li><var>"Insertion"</var></li>
+				<li><var>"Deletion"</var></li>
+				<li><var>"Match"</var></li>
 			</ul>
 		</div>
 	</div> <!-- problems -->
-
-	<div class="hints">
-		<p><var>CorrectAnswer</var></p>
-    </div>
 </div> <!--exercises-->
 </body>
 </html>

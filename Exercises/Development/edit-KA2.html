@@ -7,7 +7,7 @@
 <html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Edit Distance - Khan Academy</title>
+  <title>Edit Distance - Khan Academy 2</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript"
@@ -17,7 +17,7 @@
   <script src="http://algoviz.org/OpenDSA/ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script>
   <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" />  
-  <script src="../../AV/edit.js"></script>
+  <script src="../../AV/Development/edit.js"></script>
 
 <style>
 .jsavcontainer {
@@ -33,12 +33,6 @@
 	var av, arr, myGuess;
 	var c1, c2, c3, c4;
 	
-	//debugging function
-	var select = function(choice) {
-		alert("Hey y'all, this is your choice: " + arr[choice]);
-		myGuess = arr[choice];
-	}
-	
 	/**
 	initJSAV
 	Initializes the JSAV.
@@ -48,7 +42,7 @@
 		av = new JSAV("jsav", {"animationMode": "none"});
 		var s1 = randString(3,5);
 		var s2 = randString(3,5);
-		arr = initKA(s1, s2);
+		arr = initKA2(av, s1, s2);
 		
 		for (var i = 0; i < arr.length; i++) {
 			console.log("" + i + ": " + arr[i]);
@@ -59,11 +53,11 @@
 		document.getElementById('b').innerHTML = arr[1];
 		document.getElementById('c').innerHTML = arr[2];
 		document.getElementById('d').innerHTML = arr[3];
-	}
+	} //end initJSAV func
 	
 	getAns = function(num) {
 		return arr[num];
-	} //end initJSAV func
+	}
 
 	/**
 	randString
@@ -87,11 +81,10 @@
 </script>
 
 <div class="exercise">
-  <div class="vars">
-    <var id="JSAV">initJSAV()</var>
-    <var id="CorrectAnswer">genAnswer()</var>
-	
-  </div> <!-- vars -->
+	<div class="vars">
+		<var id="JSAV">initJSAV()</var>
+		<var id="CorrectAnswer">genAnswer()</var>	
+	</div> <!-- vars -->
 
 	<div class="problems">
 		<div>
@@ -108,10 +101,6 @@
 			</ul>
 		</div>
 	</div> <!-- problems -->
-
-	<div class="hints">
-		<p><var>CorrectAnswer</var></p>
-    </div>
 </div> <!--exercises-->
 </body>
 </html>

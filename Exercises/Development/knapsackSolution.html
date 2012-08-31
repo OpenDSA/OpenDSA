@@ -8,10 +8,10 @@
 <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
 </script>
-  <script>urlBaseOverride = "../ODSAkhan-exercises/";</script>
-  <script src="../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" />
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
 
 <style>
 .jsavcontainer {
@@ -145,32 +145,44 @@
                         row[j] = "";
                 }
             }
-            jsavDynTable[i] = jsav.ds.array(row);
+            jsavDynTable[i] = jsav.ds.array(row, 
+                                        {centered:false, 
+                                         top: ((i*40) + 30) + "px",
+                                         right: "0px"});
             jsavDynTable[i].click(clickHandler);
         }
         
         //only way I found to move the thing down... sucky...
-        for(var i = 0; i < jsavDynTable.length; i++)
-        {
-            jsavDynTable[i].css({top:(parseInt(jsavDynTable[i].css("top")) + 30)});
-        }
+        //for(var i = 0; i < jsavDynTable.length; i++)
+        //{
+            //jsavDynTable[i].css({top:(parseInt(jsavDynTable[i].css("top")) + 30)});
+        //}
 		fillTableComplete(jsavDynTable, jsavItems);
-		for(var i = 0; i < jsavDynTable.length; i++)
-		{
-			jsavDynTable[i].css({centered:false, left:"360px"});
-		}
+		//for(var i = 0; i < jsavDynTable.length; i++)
+		//{
+		//	jsavDynTable[i].css({centered:false, left:"360px"});
+		//}
         //create nice item labels for the dynamic array
-        jsav.label("Item", {top:(parseInt(jsavDynTable[0].css("top")) + 10), left:(parseInt(jsavDynTable[0].css("left")) - 60)});
+        //console.log("parse: \"" + jsavDynTable[0].css("right") + "\"");
+        //console.log("right: " + (parseInt(jsavDynTable[0].css("right")) + (40 * capacity + 60)));
+
+
+        jsav.label("Item", {top:(parseInt(jsavDynTable[0].css("top")) + 10),
+                            right:(parseInt(jsavDynTable[0].css("right")) + (40 * capacity + 90))});
         for(var i = 0; i <= numItems; i++)
         {
-            jsav.label(i, {top:(parseInt(jsavDynTable[0].css("top")) + 42 * i + 10), left:(parseInt(jsavDynTable[0].css("left")) - 20)});
+            jsav.label(i, {top:(parseInt(jsavDynTable[0].css("top")) + 42 * i + 10),
+                           right:(parseInt(jsavDynTable[0].css("right")) + (40 * capacity + 60))});
         }
-        jsav.label("Weight", {top:-12, left:(parseInt(jsavDynTable[0].css("left")))});
+        jsav.label("Capacity", {top:-12, right:(parseInt(jsavDynTable[0].css("right")) + (capacity*40))});
         for(var i = 0; i <= capacity; i++)
         {
-            jsav.label(i, {top:5, left:(parseInt(jsavDynTable[0].css("left")) + 17 + 41*i)});
+            jsav.label(capacity - i, {top:5, 
+                           right:(parseInt(jsavDynTable[0].css("right")) + 17 + 41*i)});
         }
         jsav.forward();
+
+
     }
 
     genAnswer = function() 
