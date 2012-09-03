@@ -313,7 +313,7 @@ def main(argv):
 
    attempt = 1
    options['code_dir'] = raw_input('Enter sample code directory absolute path: ')  
-   while (attempt < 4) and not os.path.isdir(options['ebook_dir']): 
+   while (attempt < 4) and not os.path.isdir(options['code_dir']): 
       print 'Error: Invalid directory.'
       options['code_dir'] = raw_input('Enter sample code directory absolute path: ')
       attempt += 1
