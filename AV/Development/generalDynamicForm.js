@@ -51,7 +51,7 @@ var fillTable = function(jsav, tree, node, table, tdata, isBaseCase, highFunc, f
 	//base case check, no trimming yet.
 	if (isBaseCase(tdata, i, w))
 	{
-		jsav.umsg("this is a base case, it's value is known.");
+		jsav.umsg("This is a base case; its value is known.");
 		table[i].css(w, {"background-color": "yellow"});
         jsav.step();
         table[i].css(w, {"background-color": "white"});
@@ -61,7 +61,7 @@ var fillTable = function(jsav, tree, node, table, tdata, isBaseCase, highFunc, f
 		//highlight & fill active cell
 		table[i].css(w, {"background-color": "green"});
 		table[i].value(w, fillFunc(tdata, i, w));
-		jsav.umsg("the value can be found from the yellow cells");
+		jsav.umsg("The value can be found from the yellow cells.");
 		jsav.step();
 
 		//unhighlight the dependent cells
@@ -71,7 +71,7 @@ var fillTable = function(jsav, tree, node, table, tdata, isBaseCase, highFunc, f
 		}		
 		//trim tree
 		trimTree(tree.root(), (i-offset), (w-offset));
-		jsav.umsg("all future calls to (" + (i - offset) + ", " + (w - offset) + ") can now be looked up in constant time.");
+		jsav.umsg("All future calls to (" + (i - offset) + ", " + (w - offset) + ") can now be looked up in constant time.");
 		jsav.step();
 	}
 	
