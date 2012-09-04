@@ -288,7 +288,19 @@ def main(argv):
    options ={}  
 
    attempt = 1 
-   options['odsa_dir'] = raw_input('Enter OpenDSA directory absolute path:  ')
+   
+   cmake_path = os.path.abspath( __file__ )
+   odsa_path = cmake_path[:-13]
+   
+   print ""
+   print "Default path: " + odsa_path
+   print ""
+   
+   options['odsa_dir'] = raw_input('Enter OpenDSA directory absolute path (press Enter to accept default):  ')
+   
+   if options['odsa_dir'] == "":
+      options['odsa_dir'] = odsa_path
+     
    while (attempt < 4) and not os.path.isdir(options['odsa_dir']):  
       print 'Error: Invalid directory.' 
       options['odsa_dir'] = raw_input('Enter OpenDSA directory absolute path:  ') 
@@ -298,9 +310,24 @@ def main(argv):
       options['odsa_dir'] = ''  
    if options['odsa_dir'][-1]!='/' and not options['odsa_dir'].isspace(): 
       options['odsa_dir'] = options['odsa_dir'] + '/'
-	  
+   
    attempt = 1
-   options['ebook_dir'] = raw_input('Enter eTextbook html output directory absolute path: ')
+   
+   # Recommend an ebook html output path
+   ebook_path = options['odsa_dir'] + "RST/build/html"
+   
+   # Make path delimiter consistent on Windows to avoid confusion when displayed to user
+   if os.name == "nt":
+      ebook_path = ebook_path.replace("/", "\\")
+   
+   print ""
+   print "Default path: " + ebook_path
+   print ""
+   
+   options['ebook_dir'] = raw_input('Enter eTextbook html output directory absolute path (press Enter to accept default): ')
+   
+   if options['ebook_dir'] == "":
+      options['ebook_dir'] = ebook_path
 #   while (attempt < 4) and not os.path.isdir(options['ebook_dir']):
 #      print 'Error: Invalid directory.'
 #      options['ebook_dir'] = raw_input('Enter eTextbook directory absolute path: ')
@@ -312,7 +339,42 @@ def main(argv):
       options['ebook_dir'] = options['ebook_dir'] + '/'
    
    attempt = 1
-   options['code_dir'] = raw_input('Enter sample code directory absolute path: ')  
+   
+   # Recommend a source code path
+   code_path = odsa_path + "/SourceCode/"
+
+   # Make path delimiter consistent on Windows to avoid confusion when displayed to user
+   if os.name == "nt":
+      code_path = code_path.replace("/", "\\")
+
+   print ""
+
+   # Warn user if the default directory we recommend doesn't exist (OpenDSA structure changed)
+   if not os.path.isdir(code_path):
+      print "Default path: " + code_path + " does not exist"
+   
+   else:
+      if len(os.listdir(code_path)) == 0:
+         print "Default path: " + code_path
+      elif len(os.listdir(code_path)) == 1:
+         code_path = code_path + os.listdir(code_path)[0]
+         print "Default path: " + code_path
+   
+      else:
+         print "Recommended paths: "
+         for dir_name in os.listdir(code_path):
+            if os.path.isdir(code_path + dir_name):
+               print "\t" + code_path + dir_name
+         
+         code_path = code_path + os.listdir(code_path)[0]
+   
+   print ""
+   
+   options['code_dir'] = raw_input('Enter sample code directory absolute path (press Enter to accept default): ')
+
+   if options['code_dir'] == "":
+      options['code_dir'] = code_path
+   
    while (attempt < 4) and not os.path.isdir(options['code_dir']): 
       print 'Error: Invalid directory.'
       options['code_dir'] = raw_input('Enter sample code directory absolute path: ')
@@ -324,9 +386,10 @@ def main(argv):
       options['code_dir'] = options['code_dir'] + '/'
 
    # Replace DOS directory delimiters with Unix ones so the relpath will be computed correctly
-   options['odsa_dir'] = options['odsa_dir'].replace("\\", "/")
-   options['ebook_dir'] = options['ebook_dir'].replace("\\", "/")
-   options['code_dir'] = options['code_dir'].replace("\\", "/")
+   if os.name == "nt":
+      options['odsa_dir'] = options['odsa_dir'].replace("\\", "/")
+      options['ebook_dir'] = options['ebook_dir'].replace("\\", "/")
+      options['code_dir'] = options['code_dir'].replace("\\", "/")
 
 
    configuration = conf %options
