@@ -297,8 +297,8 @@ def main(argv):
       print 'You did not provided a valid directory three times. OpenDSA directory variable will remain empty!!!' 
       options['odsa_dir'] = ''  
    if options['odsa_dir'][-1]!='/' and not options['odsa_dir'].isspace(): 
-      options['odsa_dir'] = options['odsa_dir'] + '/'    
-
+      options['odsa_dir'] = options['odsa_dir'] + '/'
+	  
    attempt = 1
    options['ebook_dir'] = raw_input('Enter eTextbook html output directory absolute path: ')
 #   while (attempt < 4) and not os.path.isdir(options['ebook_dir']):
@@ -310,7 +310,7 @@ def main(argv):
 #      options['ebook_dir'] = ''
    if options['ebook_dir'][-1]!='/' and not options['ebook_dir'].isspace():
       options['ebook_dir'] = options['ebook_dir'] + '/'
-
+   
    attempt = 1
    options['code_dir'] = raw_input('Enter sample code directory absolute path: ')  
    while (attempt < 4) and not os.path.isdir(options['code_dir']): 
@@ -322,6 +322,11 @@ def main(argv):
       options['code_dir'] = ''  
    if options['code_dir'][-1]!='/' and not options['code_dir'].isspace():
       options['code_dir'] = options['code_dir'] + '/'
+
+   # Replace DOS directory delimiters with Unix ones so the relpath will be computed correctly
+   options['odsa_dir'] = options['odsa_dir'].replace("\\", "/")
+   options['ebook_dir'] = options['ebook_dir'].replace("\\", "/")
+   options['code_dir'] = options['code_dir'].replace("\\", "/")
 
 
    configuration = conf %options
