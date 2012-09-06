@@ -156,8 +156,8 @@ def generateJSON(modRoster, modDest):
     try:
        gfile = open(modDest+'/modules.json','w')
        for k in modRoster :
-          jsonString = jsonString +'{"pk": %s,"model": "showfile.exercise",'%l
-          jsonString = jsonString +'"fields": {"summative": %s,'%k.summative
+          jsonString = jsonString +'{"pk": %s,"model": "opendsa.module",'%l
+          jsonString = jsonString +'"fields": {'    # "summative": %s,'%k.summative
 	  jsonString = jsonString +'"h_position": %s,'%k.h_position
           jsonString = jsonString +'"name": "'+k.description+'",'
           jsonString = jsonString +'"last_modified": "'+k.last_modified+'",'
@@ -166,8 +166,8 @@ def generateJSON(modRoster, modDest):
           jsonString = jsonString +'"prerequisites": "'+ pq+'",'
           jsonString = jsonString +'"covers": "'+",".join(k.covers)+'",'
           jsonString = jsonString +'"creation_date": "'+k.creation_date+'",'
-          jsonString = jsonString +'"seconds_per_fast_problem": %s,'%k.seconds_per_fast_problem
-          jsonString = jsonString +'"live": %s,'%k.live
+          #jsonString = jsonString +'"seconds_per_fast_problem": %s,'%k.seconds_per_fast_problem
+          #jsonString = jsonString +'"live": %s,'%k.live
           jsonString = jsonString +'"short_display_name": "'+k.name[:-4]+'",'
           jsonString = jsonString +'"v_position": %s,'%k.v_position
           jsonString = jsonString +'"raw_html": "'+k.raw_html+'"}},'

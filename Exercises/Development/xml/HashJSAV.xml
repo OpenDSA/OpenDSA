@@ -2,10 +2,14 @@
 <entry>
 <id>http://algoviz.org/OpenDSA/Exercises/HashingMC.html</id>
 <title type='text'>Hashing JSAV demo: inside</title>
+<description type='text'>Hashing JSAV demo: inside</description>
+<type>ka</type>
 <width>1000</width>
 <height>1200</height>
 <author>
 <name>OpenDSA</name>
 <uri>http://algoviz.org/OpenDSA/</uri>
 </author>
+<covers>hashing</covers>
+<streak>4</streak>
 </entry>

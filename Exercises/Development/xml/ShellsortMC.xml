@@ -2,10 +2,16 @@
 <entry>
 <id>http://algoviz.org/OpenDSA/Exercises/ShellsortMC.html</id>
 <title type='text'>Shellsort Multiple Choice Questions</title>
+<description type='text'>Shellsort  Multiple Choice Questions Summary</description>  
+<type>ka</type>  
 <width>950</width>
 <height>650</height>
 <author>
 <name>OpenDSA</name>
 <uri>http://algoviz.org/OpenDSA/</uri>
 </author>
+<covers>sorting</covers>
+<streak>4</streak>
 </entry>
+
+

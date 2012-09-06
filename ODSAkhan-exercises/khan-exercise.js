@@ -1954,7 +1954,8 @@ var Khan = (function() {
 			var curTime = new Date().getTime();
 			var data = buildAttemptData(pass, ++attempts, JSON.stringify(validator.guess), curTime);
 			console.log('attempt data: '+ data); 
-			request( "problems/" + problemNum + "/attempt", data, function() {
+			//request( "problems/" + problemNum + "/attempt", data, function() {
+                        request( "/attempt", data, function() {  
                                 console.log("we about to save the answer");  
 				// TODO: Save locally if offline
 				jQuery(Khan).trigger( "answerSaved" );
@@ -2165,8 +2166,9 @@ var Khan = (function() {
 			var fAnsweredCorrectly = jQuery( "#next-question-button" ).is( ":visible" );
 			if ( !fProdReadOnly && !fAnsweredCorrectly ) {
 				// Resets the streak and logs history for exercise viewer
+                                console.log('hints??');
 				request(
-					"problems/" + problemNum + "/hint",
+					"/hint",   //"problems/" + problemNum + "/hint",
 					buildAttemptData(false, attempts, "hint", new Date().getTime()),
 					// Don't do anything on success or failure, silently failing is ok here
 					function() {},
@@ -2698,7 +2700,7 @@ var Khan = (function() {
 				fn();
 			}
 			console.log("request3");
-			//return; temporary efouh;
+			//return; //temporary efouh;
 		}
 		console.log("request++"); 
 
@@ -2711,7 +2713,8 @@ var Khan = (function() {
 		console.log("method=" + method);
 		var request = {
 			// Do a request to the server API
-			url: server + "/api/v1/user/exercise/attempt/",   //s/?name=" + exerciseName + "/" + method,
+			//url: server + "/api/v1/user/exercise/attempt/",   //s/?name=" + exerciseName + "/" + method,
+                        url: server + "/api/v1/user/exercise" + method + "/", 
 			type: "POST",
 			data: data,
 			dataType: "json",
