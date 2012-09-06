@@ -1,3 +1,5 @@
+var server = "128.173.55.223:8080"
+
 $(document).ready(function()    {
 //Make sure localStorage is enabled 
  var localStorageEnabled = function() {
@@ -50,12 +52,11 @@ $(document).ready(function()    {
 
   $('button.submit-button').click(function(event){
 
-     //authenticate user  
-     var dataObj = new Object();  
+     //authenticate user
      username = document.forms["signin"]["username"].value; 
      password = document.forms["signin"]["password"].value; 
      jQuery.ajax({
-              url:   "http://128.173.55.223:8080/api/v1/users/login/",
+              url:   "http://" + server + "/api/v1/users/login/",
               type:  "POST",
               data: {"username":  username , "password": password  },  
 	      contentType: "application/json; charset=utf-8",
@@ -63,14 +64,14 @@ $(document).ready(function()    {
               xhrFields: {
                           withCredentials: true
                          },  
-              success: function(data){ var obj = jQuery.parseJSON(data);     
+              success: function(data){ var obj = jQuery.parseJSON(JSON.stringify( data));     
                                        if(obj.success){    
                                           updateLocalStorage(username );    
                                           $('a.login-window').text(username);
                                        }
                                       },
                                   
-              error: function(data){ alert("ERROR " +  JSON.stringify( dataObj ));}   
+              error: function(data){ alert("ERROR " +  JSON.stringify( data ));}   
               });  
 
 
@@ -107,7 +108,7 @@ $(document).ready(function()    {
                 return false;
     } else {
                  jQuery.ajax({
-              url:   "http://128.173.55.223:8080/api/v1/users/logout/",
+              url:   "http://" + server + "/api/v1/users/logout/",
               type:  "GET",
               data: {"username":  get_user_fromDS() },
               contentType: "application/json; charset=utf-8",
@@ -115,14 +116,14 @@ $(document).ready(function()    {
               xhrFields: {
                           withCredentials: true
                          },
-              success: function(data){ var obj = jQuery.parseJSON(data);
+              success: function(data){ var obj = jQuery.parseJSON(JSON.stringify( data ));
                                        if(obj.success){
                                          // updateLocalStorage(username );
                                           $('a.login-window').text("Login");
                                        }
                                       },
 
-              error: function(data){ alert("ERROR " +  JSON.stringify( dataObj ));}
+              error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
               });
 
 
