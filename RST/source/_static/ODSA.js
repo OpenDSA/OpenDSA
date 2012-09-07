@@ -28,6 +28,8 @@ $(document).ready(function() {
 	else{
 		var uname = get_user_fromDS();
 		$('a.login-window').text(uname);
+                update_show_hide_button(uname);   
+
 	}
 
 	$("input.showLink").click(function(event){
@@ -71,6 +73,7 @@ $(document).ready(function() {
 				if(obj.success){
 					updateLocalStorage(username );
 					$('a.login-window').text(username);
+                                        update_show_hide_button(username);   
 				}
 			},
 
@@ -213,12 +216,40 @@ function get_user_fromDS(){
 	return "";
 }
 
+//change button color from red to light green when user is proficient  
+function update_show_hide_button(username){    
+    $('.showLink').each(function(index, item){
+        av_url = $(item).attr("name").split("+")[0].split("/");    
+        av_name = av_url[av_url.length -1].split(".")[0];
+        jQuery.ajax({
+                                url:   "http://" + server + "/api/v1/userdata/isproficient/",
+                                type:  "POST",
+                                data: {"user":  get_user_fromDS(),"exercise": av_name },
+                                contentType: "application/json; charset=utf-8",
+                                datatype: "json",
+                                xhrFields: {withCredentials: true},
+                                success: function(data){
+                                        var obj = jQuery.parseJSON( data );
+
+                                        if (obj == null) {
+                                                obj = jQuery.parseJSON(JSON.stringify( data ));
+                                        }
+                                        console.log("is proficient=" + obj.proficient);    
+                                        if(obj.proficient){
+                                                $(item).css("background-color","lime");      
+                                        }
+                                },
+                                error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
+                        });
+
+
+
+    });           
 
 
 
 
-
-
+}   
 
 
 
