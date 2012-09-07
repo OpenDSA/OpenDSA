@@ -234,19 +234,37 @@ function update_show_hide_button(username){
                                         if (obj == null) {
                                                 obj = jQuery.parseJSON(JSON.stringify( data ));
                                         }
-                                        console.log("is proficient=" + obj.proficient);    
                                         if(obj.proficient){
                                                 $(item).css("background-color","lime");      
                                         }
                                 },
                                 error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
                         });
-
-
-
     });           
 
+        $('.hideLink').each(function(index, item){
+        av_url = $(item).attr("name").split("+")[0].split("/");
+        av_name = av_url[av_url.length -1].split(".")[0];
+        jQuery.ajax({
+                                url:   "http://" + server + "/api/v1/userdata/isproficient/",
+                                type:  "POST",
+                                data: {"user":  get_user_fromDS(),"exercise": av_name },
+                                contentType: "application/json; charset=utf-8",
+                                datatype: "json",
+                                xhrFields: {withCredentials: true},
+                                success: function(data){
+                                        var obj = jQuery.parseJSON( data );
 
+                                        if (obj == null) {
+                                                obj = jQuery.parseJSON(JSON.stringify( data ));
+                                        }
+                                        if(obj.proficient){
+                                                $(item).css("background-color","lime");
+                                        }
+                                },
+                                error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
+                        });
+    });   
 
 
 }   
