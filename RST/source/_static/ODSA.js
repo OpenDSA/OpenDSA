@@ -238,7 +238,7 @@ function update_show_hide_button(username){
                                                 $(item).css("background-color","lime");      
                                         }
                                 },
-                                error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
+                                error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
                         });
     });           
 
@@ -262,7 +262,7 @@ function update_show_hide_button(username){
                                                 $(item).css("background-color","lime");
                                         }
                                 },
-                                error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
+                                error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
                         });
     });   
 
