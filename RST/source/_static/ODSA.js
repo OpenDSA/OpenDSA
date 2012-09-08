@@ -1,4 +1,4 @@
-var server = "128.173.55.223:8080"
+var server = "128.173.55.223:8080";
 
 $(document).ready(function() {
 	//Make sure localStorage is enabled
@@ -50,6 +50,7 @@ $(document).ready(function() {
 		info();
 	});
 
+	// Attempts to log the user in when they click submit on the login window
 	$('button.submit-button').click(function(event){
 		//authenticate user
 		username = document.forms["signin"]["username"].value;
@@ -64,26 +65,29 @@ $(document).ready(function() {
 			success: function(data) {
 				var obj = jQuery.parseJSON( data );
 				
+				// Chrome doesn't read 'data' correctly so we have to stringify it
 				if (obj == null) {
 					obj = jQuery.parseJSON(JSON.stringify( data ));
 				}
 				
 				if(obj.success){
 					updateLocalStorage(username );
+					
+					localStorage.name=document.forms["signin"]["username"].value; //$('username').attr('value');
 					$('a.login-window').text(username);
 				}
 			},
 
-				error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
-			});
-
-		localStorage.name=document.forms["signin"]["username"].value;            //$('username').attr('value');
+			error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
+		});
 
 		$('#mask , .login-popup').fadeOut(300 , function() {
 			$('#mask').remove();
 		});
 	});
 
+	// Brings up the login box if the user clicks 'Login' and 
+	// logs the user out if they click their username
 	$('a.login-window').click(function() {
 		if ($('a.login-window').text() !== get_user_fromDS()){
 			//Getting the variable's value from a link
@@ -122,7 +126,8 @@ $(document).ready(function() {
 					}
 					
 					if(obj.success){
-						clearLocalStorage();
+						localStorage.removeItem('opendsa');
+						//clearLocalStorage();
 						$('a.login-window').text("Login");
 					}
 				},
@@ -182,6 +187,7 @@ function info() { // This is what we pop up
 	});
 }
 
+// Clears the values we store in localstorage
 function clearLocalStorage() {
 	localStorage.removeItem('name');
 	localStorage.removeItem('opendsa');
