@@ -96,6 +96,13 @@ $(document).ready(function() {
 			//Getting the variable's value from a link
 			var loginBox = $(this).attr('name');
 
+			// Preload the last saved username in the login form
+			var username = localStorage.name;
+			if (username != "undefined" && username != null)
+			{
+				document.forms["signin"]["username"].value = username;
+			}
+
 			//Fade in the Popup
 			$(loginBox).fadeIn(300);
 
