@@ -1,4 +1,5 @@
-var server = "128.173.55.223:8080";
+var server = "128.173.55.223:8080"; //"128.173.54.186:8000";
+var base_url = "http://" + server;
 
 $(document).ready(function() {
 	//Make sure localStorage is enabled
@@ -24,12 +25,10 @@ $(document).ready(function() {
 
 	if (is_SessionExpired()){
 		localStorage.removeItem("opendsa");
-	}
-	else{
+	} else {
 		var uname = get_user_fromDS();
 		$('a.login-window').text(uname);
-                update_show_hide_button(uname);   
-
+		update_show_hide_button(uname);
 	}
 
 	$("input.showLink").click(function(event){
@@ -58,7 +57,7 @@ $(document).ready(function() {
 		username = document.forms["signin"]["username"].value;
 		password = document.forms["signin"]["password"].value;
 		jQuery.ajax({
-			url:   "http://" + server + "/api/v1/users/login/",
+			url:   base_url + "/api/v1/users/login/",
 			type:  "POST",
 			data: {"username":  username , "password": password  },
 			contentType: "application/json; charset=utf-8",
@@ -77,7 +76,7 @@ $(document).ready(function() {
 					
 					localStorage.name=document.forms["signin"]["username"].value; //$('username').attr('value');
 					$('a.login-window').text(username);
-                                        update_show_hide_button(username);   
+                                        update_show_hide_button(username);
 				}
 			},
 
@@ -89,7 +88,7 @@ $(document).ready(function() {
 		});
 	});
 
-	// Brings up the login box if the user clicks 'Login' and 
+	// Brings up the login box if the user clicks 'Login' and
 	// logs the user out if they click their username
 	$('a.login-window').click(function() {
 		if ($('a.login-window').text() !== get_user_fromDS()){
@@ -98,7 +97,7 @@ $(document).ready(function() {
 
 			// Preload the last saved username in the login form
 			var username = localStorage.name;
-			if (username != "undefined" && username != null)
+			if (typeof username !== "undefined")
 			{
 				document.forms["signin"]["username"].value = username;
 			}
@@ -122,13 +121,13 @@ $(document).ready(function() {
 			return false;
 		} else {
 			jQuery.ajax({
-				url:   "http://" + server + "/api/v1/users/logout/",
+				url:   base_url + "/api/v1/users/logout/",
 				type:  "GET",
 				data: {"username":  get_user_fromDS() },
 				contentType: "application/json; charset=utf-8",
 				datatype: "json",
 				xhrFields: {withCredentials: true},
-				success: function(data){ 
+				success: function(data){
 					var obj = jQuery.parseJSON( data );
 					
 					if (obj == null) {
@@ -229,61 +228,202 @@ function get_user_fromDS(){
 	return "";
 }
 
-//change button color from red to light green when user is proficient  
-function update_show_hide_button(username){    
-    $('.showLink').each(function(index, item){
-        av_url = $(item).attr("name").split("+")[0].split("/");    
-        av_name = av_url[av_url.length -1].split(".")[0];
-        jQuery.ajax({
-                                url:   "http://" + server + "/api/v1/userdata/isproficient/",
-                                type:  "POST",
-                                data: {"user":  get_user_fromDS(),"exercise": av_name },
-                                contentType: "application/json; charset=utf-8",
-                                datatype: "json",
-                                xhrFields: {withCredentials: true},
-                                success: function(data){
-                                        var obj = jQuery.parseJSON( data );
+//change button color from red to light green when user is proficient
+function update_show_hide_button(username){
+	$('.showLink').each(function(index, item){
+		av_url = $(item).attr("name").split("+")[0].split("/");
+		av_name = av_url[av_url.length -1].split(".")[0];
+		jQuery.ajax({
+			url:   base_url + "/api/v1/userdata/isproficient/",
+			type:  "POST",
+			data: {"user":  get_user_fromDS(),"exercise": av_name },
+			contentType: "application/json; charset=utf-8",
+			datatype: "json",
+			xhrFields: {withCredentials: true},
+			success: function(data){
+				var obj = jQuery.parseJSON( data );
 
-                                        if (obj == null) {
-                                                obj = jQuery.parseJSON(JSON.stringify( data ));
-                                        }
-                                        if(obj.proficient){
-                                                $(item).css("background-color","lime");      
-                                        }
-                                },
-                                error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
-                        });
-    });           
+				if (obj == null) {
+						obj = jQuery.parseJSON(JSON.stringify( data ));
+				}
+				if(obj.proficient){
+						$(item).css("background-color","lime");
+				}
+			},
+			error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
+		});
+	});
 
-        $('.hideLink').each(function(index, item){
-        av_url = $(item).attr("name").split("+")[0].split("/");
-        av_name = av_url[av_url.length -1].split(".")[0];
-        jQuery.ajax({
-                                url:   "http://" + server + "/api/v1/userdata/isproficient/",
-                                type:  "POST",
-                                data: {"user":  get_user_fromDS(),"exercise": av_name },
-                                contentType: "application/json; charset=utf-8",
-                                datatype: "json",
-                                xhrFields: {withCredentials: true},
-                                success: function(data){
-                                        var obj = jQuery.parseJSON( data );
+		$('.hideLink').each(function(index, item){
+		av_url = $(item).attr("name").split("+")[0].split("/");
+		av_name = av_url[av_url.length -1].split(".")[0];
+		jQuery.ajax({
+			url:   base_url + "/api/v1/userdata/isproficient/",
+			type:  "POST",
+			data: {"user":  get_user_fromDS(),"exercise": av_name },
+			contentType: "application/json; charset=utf-8",
+			datatype: "json",
+			xhrFields: {withCredentials: true},
+			success: function(data){
+				var obj = jQuery.parseJSON( data );
 
-                                        if (obj == null) {
-                                                obj = jQuery.parseJSON(JSON.stringify( data ));
-                                        }
-                                        if(obj.proficient){
-                                                $(item).css("background-color","lime");
-                                        }
-                                },
-                                error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
-                        });
-    });   
+				if (obj == null) {
+						obj = jQuery.parseJSON(JSON.stringify( data ));
+				}
+				if(obj.proficient){
+						$(item).css("background-color","lime");
+				}
+			},
+			error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
+		});
+	});
+}
+
+// Posts the given JSON data to the specified URL
+function send_data(url_suffix, json_data) {
+	if (typeof json_data === "string")
+	{
+		json_data = $.parseJSON(json_data);
+	}
+
+	jQuery.ajax({
+		url:   base_url + url_suffix,
+		type:  "POST",
+		data: json_data,
+		contentType: "application/json; charset=utf-8",
+		datatype: "json",
+		xhrFields: {withCredentials: true},
+		success: function(data){
+			var obj = jQuery.parseJSON( data );
+			if (obj == null) {
+				obj = jQuery.parseJSON(JSON.stringify( data ));
+			}
+			
+			if(obj.success) {
+				return true;
+			}
+		},
+		error: function(data){
+			console.log("ERROR " +  JSON.stringify( data ));
+		}
+	});
+	
+	return false;
+}
+
+// Sends the user action data logged in localStorage to the server
+function send_stored_data() {
+	var action_list = $.parseJSON(localStorage["user_action_data"]);
+
+	var json_data = {};
+	json_data.username = get_user_fromDS();
+	json_data.actions = action_list;
+	
+	var success = send_data("/api/v1/user/exercise", json_data); // TODO: Need URL to send the data to
+	
+	// Clear the saved data once it has been
+	if (success) {
+		localStorage.removeItem('user_action_data');
+		return true;
+	}
+	
+	return false;
+}
+
+// Appends given JSON data to a list of user actions stored in localStorage
+function log_to_LS(data) {
+	if (typeof data === "string")
+	{
+		data = $.parseJSON(data);
+	}
+	
+	// Add a timestamp to the data
+	data.timestamp = (new Date()).getTime();
+	
+	var actions_list = new Array();
+
+	// Retrieve existing data from localStorage if it exists
+	if ( typeof localStorage["user_action_data"] !== "undefined" ) {
+		actions_list = $.parseJSON(localStorage["user_action_data"]);
+
+		if (typeof stored_data === "undefined")
+		{
+			actions_list = $.parseJSON(JSON.stringify(localStorage["user_action_data"]));
+		}
+	}
+	
+	actions_list.push(data);
+	
+	localStorage["user_action_data"] = JSON.stringify(actions_list);
+}
+
+// The function OpenDSA developers will call to log a user action
+function log_user_action(exercise_name, button_class) {
+	var json_data = {};
+	// TODO: What data fields do we need???
+	json_data["exercise-name"] = exercise_name;
+	json_data["button-class"] = button_class;
+	log_to_LS(json_data);
+}
+
+// Attempt to send data before the user leaves the page
+$(window).on('beforeunload', function() {
+	send_stored_data();
+	//if (localStorage["user_action_data"] != null)
+	//{
+	//	return "Page contains unsubmitted data";
+	//}
+});
 
 
-}   
+// FOR TESTING
+function test_log()
+{
+	log_user_action("quicksort-proficiency", "reset");
+}
 
+// FOR TESTING
+function submit_score()
+{
+	var success = send_stored_data();
+	
+	if (success)
+	{
+		alert("Data submitted successfully");
+	} else {
+		alert("Data submission failure");
+	}
+}
 
+/*
+// Original attempt to log user actions to localStorage
+function log_to_LS_old(data) {
 
+	if (typeof data === "string")
+	{
+		data = $.parseJSON(data);
+	}
+
+	if ( typeof localStorage["user_action_data"] !== "undefined" ) {
+		var stored_data = $.parseJSON(localStorage["user_action_data"]);
+
+		if (typeof stored_data === "undefined")
+		{
+			$.parseJSON(JSON.stringify(localStorage["user_action_data"]));
+		}
+
+		var tmp_data = stored_data.actions.push(data);
+		
+		localStorage["user_action_data"] = JSON.stringify(stored_data); // user_data.actions.push(data);
+	} else {
+		var json = {"username": get_user_fromDS(), "actions":[data]};
+		localStorage["user_action_data"] = JSON.stringify(json);
+	}
+	
+	//alert(localStorage["user_action_data"]);
+	//alert("str: " + JSON.stringify(($.parseJSON(localStorage["user_action_data"])).actions[0]));
+}
+*/
 
 
 
