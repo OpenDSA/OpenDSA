@@ -52,7 +52,7 @@ Consider the example of the following array.
 
 .. raw:: html
 
-   <div id="container1">
+   <div id="BubsortCON1">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>
@@ -65,7 +65,7 @@ it again.
 
 .. raw:: html
 
-   <div id="container2">
+   <div id="BubsortCON2">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>

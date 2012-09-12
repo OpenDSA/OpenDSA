@@ -40,7 +40,7 @@ Consider the example of the following array.
 
 .. raw:: html
 
-   <div id="container1">
+   <div id="InssortCON1">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>
@@ -52,7 +52,7 @@ Swap it to the left until it reaches a value smaller than it is.
 
 .. raw:: html
 
-   <div id="container2">
+   <div id="InssortCON2">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>
@@ -63,7 +63,7 @@ And now the record in position 3.
 
 .. raw:: html
 
-   <div id="container3">
+   <div id="InssortCON3">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>

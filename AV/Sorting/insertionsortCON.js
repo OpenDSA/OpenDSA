@@ -20,7 +20,7 @@ var setBlue = function (arr, index) {
 };
 
 (function ($) {
-  var av = new JSAV("container1");
+  var av = new JSAV("InssortCON1");
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray, {indexed: true});
 
@@ -39,7 +39,7 @@ var setBlue = function (arr, index) {
 }(jQuery));
 
 (function ($) {
-  var av = new JSAV("container2");
+  var av = new JSAV("InssortCON2");
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray2, {indexed: true});
 
@@ -68,7 +68,7 @@ var setBlue = function (arr, index) {
 }(jQuery));
 
 (function ($) {
-  var av = new JSAV("container3");
+  var av = new JSAV("InssortCON3");
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray3, {indexed: true});
 

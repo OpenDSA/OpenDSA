@@ -23,7 +23,7 @@ var setGreen = function (arr, index) {
 };
 
 (function ($) {
-  var av = new JSAV("container1");
+  var av = new JSAV("SelsortCON1");
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray, {indexed: true});
   var j;
@@ -60,7 +60,7 @@ var setGreen = function (arr, index) {
 }(jQuery));
 
 (function ($) {
-  var av = new JSAV("container2");
+  var av = new JSAV("SelsortCON2");
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray2, {indexed: true});
   var j;
