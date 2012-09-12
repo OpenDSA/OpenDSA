@@ -88,11 +88,6 @@ Now try for yourself to see if you understand how Insertion Sort works.
    :showbutton: hide
    :title: Question 1
 
-.. todo::
-   :type: Proficiency Exercise
-
-   Create proficiency exercise for Insertion Sort.
-
 The body of ``inssort`` is made up of two nested
 ``for`` loops.
 The outer ``for`` loop is executed :math:`n-1` times.

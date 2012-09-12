@@ -77,11 +77,6 @@ Now try for yourself to see if you understand how Selection Sort works.
    :showbutton: hide
    :title: Question 1
 
-.. todo::
-   :type: Proficiency Exercise
-
-   Create proficiency exercise for Selection Sort.
-
 Any algorithm can be written in slightly different ways.
 For example, we could have written Selection Sort to find the smallest
 element, the next smallest, and so on.

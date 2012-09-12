@@ -77,16 +77,11 @@ The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/bubblesortAV.html
 
+Now try for yourself to see if you understand how Bubble Sort works.
+
 .. avembed:: Exercises/Development/BubbleSortElement.html
    :showbutton: hide
    :title: Question 1
-
-Now try for yourself to see if you understand how Bubble Sort works.
-
-.. todo::
-   :type: Proficiency Exercise
-
-   Create proficiency exercise for Bubble Sort.
 
 Determining Bubble Sort's number of comparisons is easy.
 Regardless of the arrangement of the values in the array, the number
