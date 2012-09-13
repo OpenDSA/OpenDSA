@@ -127,9 +127,21 @@ order (so, use a min-heap), but this process stops as soon as the MST
 is complete.
 Thus, only a relatively small fraction of the edges need be sorted.
 
+Here is a warmup practice exercise for Heapsort.
+
+.. avembed:: Exercises/Development/Heapsort.html
+   :showbutton: hide
+   :title: Heapsort Practice
+
 Now test yourself to see how well you understand Heapsort.
 Can you reproduce its behavior?
 
 .. avembed:: AV/Development/heapsort-proficiency.html
    :showbutton: show
    :title: Heapsort Proficiency Exercise
+
+Now here are summary questions.
+
+.. avembed:: Exercises/Development/HeapSortSumm.html
+   :showbutton: hide
+   :title: Heapsort Review

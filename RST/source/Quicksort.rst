@@ -127,6 +127,12 @@ Here is a simple ``findpivot`` function.::
    int findpivot(E[] A, int i, int j)
      { return (i+j)/2; }
 
+Now you can have some practice.
+
+.. avembed:: Exercises/Development/QuickSortFindPivot.html
+   :showbutton: hide
+   :title: Quicksort Find Pivot Exercise
+
 We now turn to function ``partition``.
 If we knew in advance how many keys are less than the pivot,
 ``partition`` could simply copy elements with key values less
@@ -195,6 +201,20 @@ algorithm.
 
    <ODSAfig "QuickSortPic" />
    An illustration of Quicksort.
+
+Quicksort visualization:
+
+.. avembed:: AV/Development/quicksort-av.html
+
+Now for some partition practice.
+
+.. avembed:: Exercises/Development/QuickSortPartitionElement.html
+   :showbutton: hide
+   :title: Quicksort Partition Exercise
+
+Quicksort proficency:
+
+.. avembed:: AV/Development/quicksort-proficiency.html
 
 To analyze Quicksort, we first analyze the ``findpivot`` and
 ``partition`` functions operating on a subarray of length
@@ -398,3 +418,9 @@ less as suggested above, about three quarters of the function calls
 will already have been eliminated.
 Thus, eliminating the remaining function calls will yield only a
 modest speedup.
+
+Now for review questions.
+
+.. avembed:: Exercises/Development/QuickSortSumm.html
+   :showbutton: hide
+   :title: Quicksort Review Questions

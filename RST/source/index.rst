@@ -53,6 +53,15 @@ Sorting
    SortSumm
    SortProgExer
 
+Hashing
+-------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+   
+   Hashing
+
 File Processing
 ---------------
 

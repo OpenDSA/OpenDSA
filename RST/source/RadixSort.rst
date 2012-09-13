@@ -57,6 +57,16 @@ keys' digit values working from the rightmost digit to the leftmost.
 If there are :math:`k` digits, then this requires that we assign keys to
 bins :math:`k` times.
 
+Here are some practice exercises.
+
+.. avembed:: Exercises/Development/RadixSortLSBBins.html
+   :showbutton: hide
+   :title: Radix Sort Practice 1
+
+.. avembed:: Exercises/Development/RadixSortMSBBins.html
+   :showbutton: hide
+   :title: Radix Sort Practice 2
+
 As with Mergesort, an efficient implementation of Radix Sort is
 somewhat difficult to achieve.
 In particular, we would prefer to sort
@@ -228,3 +238,9 @@ calculations on key values (each requiring constant time), where the
 number of such calculations is proportional to the key length.
 Thus, Radix Sort truly does :math:`\Omega(n \log n)` work to process
 :math:`n` distinct key values.
+
+Now for some review questions.
+
+.. avembed:: Exercises/Development/RadixSortSumm.html
+   :showbutton: hide
+   :title: Radix Sort Review Questions

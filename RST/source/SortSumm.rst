@@ -13,6 +13,6 @@ Sorting Chapter Summary Exercises
 
 Chapter summary exercises for Sorting.
 
-.. avembed:: Exercises/Development/SortAlgCompMC.html
+.. avembed:: Exercises/Development/SortAlgCompMCSummary.html
    :showbutton: hide
    :title: Question 1

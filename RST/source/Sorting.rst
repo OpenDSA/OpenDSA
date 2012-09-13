@@ -127,7 +127,7 @@ are stable, or can be made stable with minor changes.
 When comparing two sorting algorithms, the simplest approach would be to
 program both and measure their running times.
 An example of such timings is presented in
-Module :ref:`Empirical Comparsion of Sorting Algorithms <SortingEmpirical>`.
+Module :numref:`Empirical Comparsion of Sorting Algorithms<SortingEmpirical>`.
 However, you must be careful when doing empirical comparisons because
 the running time for many sorting algorithms depends on specifics of
 the input values.

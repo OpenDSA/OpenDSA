@@ -90,3 +90,16 @@ work is done, for a total cost of :math:\Theta(n \log n)`.
 This cost is unaffected by the relative order of the
 values being sorted, thus this analysis holds for the best, average,
 and worst cases.
+
+Mergesort warmup practice exercise
+
+.. avembed:: Exercises/Development/MergeSortMergeSublist.html
+   :showbutton: hide
+   :title: Mergesort Practice
+
+
+Now here are summary questions.
+
+.. avembed:: Exercises/Development/MergeSortSumm.html
+   :showbutton: hide
+   :title: Mergesort Review

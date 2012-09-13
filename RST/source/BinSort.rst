@@ -107,3 +107,7 @@ other sorting technique to sort the records within each bucket.
 The hope is that the relatively inexpensive bucketing process will put
 only a small number of records in each bucket, and that a
 "cleanup sort" within the buckets will then be relatively cheap.
+
+.. avembed:: Exercises/Development/BinSortSumm.html
+   :showbutton: hide
+   :title: Binsort Summary Questions
