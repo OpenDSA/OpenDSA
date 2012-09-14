@@ -71,7 +71,7 @@ def numref_role(typ, rawtext, etext, lineno, inliner,
        prb = inliner.problematic(rawtext, rawtext, msg)
        return [prb], [msg]
     if syn == 2: 
-       desc = re.split('<', text, re.IGNORECASE)[0]          
+       desc = re.split('<', text, re.IGNORECASE)[0].rstrip()            
        lab = re.split('>',re.split('<', text, re.IGNORECASE)[1], re.IGNORECASE)[0]  
     if syn == 0:
        desc=''
