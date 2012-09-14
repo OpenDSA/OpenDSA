@@ -284,6 +284,16 @@ def copyfiles(srcdir, dstdir, filepattern):
         break # no recursion
 
 
+def is_file_modified(dict, dir, file, run_number):  
+
+     if run_number == 0:
+          return True
+     if file in dict: 
+         return str(os.path.getmtime(dir+'/'+file)).strip() != str(dict[file]).strip()   
+     else:  
+         return False   
+
+
 def updateTOC(args):                               
     iFile = open(args[0]+'index.rst','r')
     iLine = iFile.readlines()
@@ -310,7 +320,17 @@ def updateTOC(args):
     except IOError:
        print 'ERROR: No table.json file.'   
 
-    
+   
+    cFile = open(args[1]+'/count.txt','r')
+    cLine = cFile.readlines()
+    cFile.close()
+    num = int(cLine[0])
+    f_dict ={}
+    if len(cLine)>1:    
+        for cln in cLine:  
+           if ':' in cln:    
+               f_dict[cln.split(':')[0]] = cln.split(':')[1]   
+
     for pagename in os.listdir(args[1]):           
        if pagename=='index.html':
           idx  = open(args[1]+'/index.html','r')   
@@ -333,8 +353,8 @@ def updateTOC(args):
           otfile.close()
        processedFiles=[]  
        if pagename[:-5] not in processedFiles:
-          processedFiles.append(pagename[:-5])   
-          if os.path.splitext(pagename)[1][1:] =='html':
+          processedFiles.append(pagename[:-5])  
+          if os.path.splitext(pagename)[1][1:] =='html' and is_file_modified(f_dict, args[1], pagename, num):
              idx  = open(args[1]+'/'+pagename,'r')
              idxL = idx.readlines()
              idx.close()
@@ -383,6 +403,11 @@ def updateTOC(args):
              otfile = open(args[1]+'/'+pagename+'.html','wb')
              otfile.writelines(modIndex)
              otfile.close()   
+             otfile = open(args[1]+'/count.txt','a')
+             tsize = os.path.getmtime(args[1]+'/'+pagename+'.html')  
+             otfile.writelines('%s.html:%s\n'%(pagename,tsize))
+             otfile.close()  
+
 
 def todoHTML(todolst):
 
@@ -524,8 +549,27 @@ def main(argv):
         otfile = open('table.json','wb') 
         json.dump(config.table,otfile)
      except IOError:
-        print 'ERROR: When saving JSON file' 
+        print 'ERROR: When saving JSON file'
 
+     num = -1 
+     cLine = [0] 
+     if (os.path.exists(modDest+'/count.txt')):   
+        cFile = open(modDest+'/count.txt','r')     
+        cLine = cFile.readlines()
+        cFile.close()  
+        num = int(cLine[0])  
+     if num == -1 :
+        num = 0  
+     else:
+        num += 1  
+ 
+     try:
+        gfile = open(modDest+'/count.txt','wb') 
+        cLine[0] = '%s\n'%num   
+        gfile.writelines(cLine)
+        gfile.close  
+     except IOError:
+        print 'ERROR: When saving file'  
 
 
 if __name__ == "__main__":
