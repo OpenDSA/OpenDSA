@@ -3,30 +3,20 @@
 <head>
   <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 6</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
-</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script type="text/javascript"
+     src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
   <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
 </head>
 <body>
 
 <div class="exercise">
-    <div class = "vars">
-      <var id="TYPES">[ "True", "False" ]</var>
-      <var id="GBAns">randFromArray( TYPES )</var>
-      <var id="GB">(GBAns === "True") ? "good" : "bad"</var>
-    </div>
   <div class="problems">
-     
-    <!-- Question MCQ -->
-   
     <div id="problem-type-or-description">
       <p class="question"> What is the running time of Insertion Sort
-	when the input is an array where all keys are equal? </p> 
+	when the input is an array where all record values are equal? </p> 
       <div class="solution"><var><code>\Theta(n)</code></var></div>
       <ul class="choices">
 	<li><var><code>\Theta(n^2)</code></var></li>
@@ -34,9 +24,9 @@
 	<li><var><code>\Theta(n \log n)</code></var></li>	 	 
       </ul>
 	  <div class="hints">
-	   <p> Note that each insertion will be looking at the last
-	   element of the sorted portion, noticing it's the same as
-	   the key to be inserted so it will be moving on.</p>
+	   <p>Each test in the inner for loop will fail because the
+	   value at position <code>i</code> is never less than the
+	   value at position <code>i-1</code>.</p>
 	   </div>
     </div> 	  
 

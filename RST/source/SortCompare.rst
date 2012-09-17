@@ -1,6 +1,11 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
 .. avmetadata:: Comparisons
    :author: Cliff Shaffer
-   :prerequisites: Sorting
+   :prerequisites: Sorting, InsertionSort
    :topic: Sorting
    :short_name: RecCompare
 
@@ -31,7 +36,8 @@ In that case, how can we "compare" records to decide which one is
 "smaller"?
 We cannot just use "<" to compare the records!
 Nearly always in this situation, we actually are interested in sorting
-the records based on the values of one particular field,
+the records based on the values of one particular field used to
+represent the record,
 which itself is something simple like an integer.
 This field is referred to as the :dfn:`key` for the record.
 
@@ -50,14 +56,14 @@ For example, if searching for payroll records, we might wish to
 search for the record that matches a particular ID number.
 In this example the ID number is the :dfn:`search key`.
 
-To implement sorting or searching, we require that keys be comparable.
+To implement sorting or searching, we require that keys be :dfn:`comparable`.
 At a minimum, we must be able to take two keys and reliably determine
 whether they are equal or not.
 That is enough to enable a sequential search through a database of
 records and find one that matches a given key.
 However, we typically would like for the keys to define a
-total order (see Module :ref:`Set Definitions <SetDef>`, which means
-that we can tell which of two keys is greater than the other.
+:dfn:`total order` (see Module :ref:`Set Definitions <SetDef>`), which means
+that we can always tell which of two keys is greater than the other.
 Using key types with total orderings gives the database
 implementor the opportunity to organize a collection of records in
 a way that makes searching more efficient.
@@ -76,7 +82,7 @@ That seems like a good name for it!
 But what if the programmer had already used that method name for
 another purpose?
 An even bigger problem is, what if the programmer wants to sort the
-record now using field as the key, and later using another field?
+record now using one field as the key, and later using another field?
 Or search sometimes on one key, and at other times on another?
 The problem is that the "keyness" of a given field is not an inherent
 property within the record, but rather depends on the context.
@@ -95,13 +101,13 @@ we can then store pointers to the records in another array with
 another field as the key for another purpose.
 The records themselves do not need to be duplicated.
 
-To keep them clear and simple, we present the sorting algorithms
+To keep them clear and simple, this tutorial presents sorting algorithms
 as operating on integer values stored in an array.
-But a real sorting algorithm would have to deal with the fact that it
-is sorting a collection of records.
+But to be generally useful, a real sorting algorithm typically has to
+deal with the fact that it is sorting a collection of records.
 A general-purpose sorting routine meant to operate on multiple record
-types would have to be written in a way to deal with the comparison
-problem.
+types would have to be written in a way to deal with the generic
+comparison problem.
 To illustrate, here is an example of Insertion Sort implemented to
 work on an array that stores key-record pairs.
 
@@ -109,3 +115,9 @@ work on an array that stores key-record pairs.
    :type: Pseudocode
 
    Show an implementation of Insertion Sort using key-record pairs.
+
+.. TODO::
+   :type: Multiple Choice Questions
+
+   Write questions to test understanding of the contents for this
+   module.
