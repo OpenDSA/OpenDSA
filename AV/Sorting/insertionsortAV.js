@@ -80,17 +80,17 @@
   // Insertion Sort
   function inssort() {
     var i, j;
-    av.umsg("Highlighted yellow elements to the left are always sorted. We begin with the element in position 0 in the sorted portion, and we will be moving the element in position 1 (in blue) to the left until it is sorted");
+    av.umsg("Highlighted yellow records to the left are always sorted. We begin with the record in position 0 in the sorted portion, and we will be moving the record in position 1 (in blue) to the left until it is sorted");
     pseudo.setCurrentLine(0);
     arr.highlight([0]);
     setBlue(1);
     av.step();
     for (i = 1; i < arr.size(); i++) { // Insert i'th record
       setBlue(i);
-      av.umsg("Processing element in position " + i);
+      av.umsg("Processing record in position " + i);
       pseudo.setCurrentLine(1);
       av.step();
-      av.umsg("Move the blue element to the left until it reaches the correct position");
+      av.umsg("Move the blue record to the left until it reaches the correct position");
       pseudo.setCurrentLine(2);
       av.step();
       for (j = i; (j > 0) && (arr.value(j) < arr.value(j - 1)); j--) {

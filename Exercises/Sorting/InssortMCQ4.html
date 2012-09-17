@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
+<head>
+  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 4</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script type="text/javascript"
+     src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+<body>
+
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">When implementing Insertion Sort, a binary
+	search could be used to locate the position within the first <code>i-1</code>
+	records of the array into which record <code>i</code> should be inserted.
+	Using binary search will:</p>
+      <!-- The spacing is really picky because we are mixing equations --
+	-- and text in the answers. -->
+      <div class="solution">
+        <var>Not speed up the asymptotic running time
+becasue shifting the records to make room
+for the insert will require <code>\Theta(i)</code> time</var></div>
+      <ul class="choices">
+	<li><var>Speed up the asymptotic running time
+because the position to insert will be found
+in <code>\Theta(\log i)</code> time</var></li>
+	<li><var>Speed up the asymptotic running time
+because shifting the records to make room
+for the insert will require <code>\Theta(i)</code> time</var></li>
+	<li><var> "None of the above"</var></li>	  	 
+      </ul>
+	  <div class="hints">
+	   <p>The position at which to insert could be found in
+	     <code>\Theta(\log(i))</code> steps, but shifting the records to make
+	     room for the this record will require <code>\Theta(i)</code> time.</p> 
+	  </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

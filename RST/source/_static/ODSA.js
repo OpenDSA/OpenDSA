@@ -148,14 +148,25 @@ $(document).ready(function() {
 	$("a.abt").click(function(event){
 		info();
 	});
+	
+	$('.slide-out-div').tabSlideOut({
+		tabHandle: '.handle',                              //class of the element that will be your tab
+		pathToTabImage: '_static/Images/contact_tab.gif',          //path to the image for the tab *required*
+		imageHeight: '122px',                               //height of tab image *required*
+		imageWidth: '40px',                               //width of tab image *required*    
+		tabLocation: 'left',                               //side of screen where tab lives, top, right, bottom, or left
+		speed: 300,                                        //speed of animation
+		action: 'click',                                   //options: 'click' or 'hover', action to trigger animation
+		topPos: '200px',                                   //position from the top
+		fixedPosition: false                               //options: true makes it stick(fixed position) on scroll
+	});   
 });
-
 
 function showLoginBox() {
 	log_user_action('', 'login-box-open', 'Login box was opened');
 	
 	var loginBox = '#login-box';
-
+	
 	// Preload the last saved username in the login form
 	var username = localStorage.name;
 	if (typeof username !== "undefined") {
@@ -268,6 +279,7 @@ function info() { // This is what we pop up
 		loc="index.html";
 	}
 	var mod = loc.split('.');
+	outcome = -1 
 	$.ajax({
 		url: 'modules.json',
 		async: false,
@@ -276,11 +288,17 @@ function info() { // This is what we pop up
 			$.each(data, function(key, val) {
 				if(val.fields.short_display_name.toLowerCase()==mod[0].toLowerCase()){
 					var mystring = mod[0] +"\nWritten by "+val.fields.author +" \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nFile created: "+val.fields.last_modified +"\nJSAV library version " + JSAV.version();
+					outcome = 1  
 					alert(mystring);
 				}
 			});
 		}
 	});
+	
+	if (outcome == -1) {  
+		var mystring = mod[0] +" \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nJSAV library version " + JSAV.version();
+		alert(mystring);  
+	} 
 }
 
 function updateLocalStorage(username ) {

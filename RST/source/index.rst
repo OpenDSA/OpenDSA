@@ -1,3 +1,8 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
 .. OpenDSA documentation master file, created by
    sphinx-quickstart on Sat Mar 17 18:07:39 2012.
    You can adapt this file completely to your liking, but it should at least
@@ -35,11 +40,11 @@ Sorting
    :maxdepth: 3
 
    Sorting
-   SortCompare
    InsertionSort
    InsertOpt
    BubbleSort
    SelectionSort
+   SortCompare
    ExchangeSort
    Shellsort
    Mergesort

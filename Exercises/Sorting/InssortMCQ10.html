@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
 <head>
-  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 8</title>
+  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 10</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript"
@@ -15,30 +15,17 @@
 <body>
 
 <div class="exercise">
-    <div class = "vars">
-      <var id="TYPES">[ "True", "False" ]</var>
-      <var id="GBAns">randFromArray( TYPES )</var>
-      <var id="GB">(GBAns === "True") ? "good" : "bad"</var>
-    </div>
   <div class="problems">
-     
-    <!-- Question MCQ -->
     <div id="problem-type-or-description">
-      <p class="question"> What is the running time of Insertion Sort
-	for the array that has already been sorted into reverse order? </p>
-      <div class="solution"><var><code>\Theta(n^2)</code></var></div>
+      <p class="question"> In which cases are the time complexities
+	the same for Insertion Sort?</p>
+      <div class="solution"><var>"Worst and Average only"</var></div>
       <ul class="choices">
-	<li><var><code>\Theta(n)</code></var></li>
-	<li><var><code>\Theta(\log n)</code></var></li>
-	<li><var><code>\Theta(n \log n)</code></var></li>	 	 
+	<li><var>"Worst and Best only"</var></li>
+	<li><var>"Best and Average only"</var></li>
+	<li><var>"Worst, average and Best"</var></li>	  	 
       </ul>
-	  <div class="hints">
-	   <p>Note that every iteration of the insertion's sort inner
-	     loop will scan and shift the entire sorted portion of the
-	     array before inserting the next element.</p>
-	   </div>
-    </div> 
-    
+    </div>
   </div>
 </div>
 </body>

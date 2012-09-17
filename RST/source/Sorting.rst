@@ -1,3 +1,8 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
 .. avmetadata:: Sorting Introduction
    :author: Cliff Shaffer
    :prerequisites:
@@ -22,12 +27,12 @@ they are to move around.
 Sorting is also one of the most frequently performed computing tasks.
 We might sort the records in a database so that we can search the
 collection efficiently.
-We might sort the records by zip code so that we can print and mail
-them more cheaply.
+We might sort customer records by zip code so that we can print an
+advertisement and mail them more cheaply.
 We might use sorting to help an algorithm to solve
 some other problem.
 For example, Kruskal's algorthm to solve the minimum-cost spanning
-tree problem (see Module  :numref:`<MCST>`) must sort the edges of
+tree problem (see Module :numref:`<MCST>`) must sort the edges of
 a graph by length before it can process them.
 
 Because sorting is so important, naturally it has been studied
@@ -44,16 +49,16 @@ stored on the computer.
 For example, no normal person would use Quicksort to order a pile of
 bills by date, even though :ref:`Quicksort <Quicksort>` is the
 standard sorting algorithm of choice that you would find in a
-programming environment's utility library.
+software utility library.
 After years of study, there are still unsolved problems related to
 sorting.
 New algorithms are still being developed and refined for
 special-purpose applications.
 
 Along with introducing this central problem in computer science,
-studying sorting algorithms has a secondary purpose of illustrating
+studying sorting algorithms helps us to understand
 issues in algorithm design and analysis.
-For example, the sorting algorithms in this chapter show multiple
+For example, the sorting algorithms in this tutorial show multiple
 approaches to using divide-and-conquer.
 In particular, there are multiple ways to do the dividing:
 Mergesort divides a list in half;
@@ -65,7 +70,7 @@ analysis techniques.
 We'll find that it is possible for an algorithm to have an average
 case whose growth rate is significantly smaller than its worse case
 (:ref:`Quicksort <Quicksort>`).
-We'll see how it is possible to speed up sorting algorithms
+We will see how it is possible to speed up sorting algorithms
 (both :ref:`Shellsort <Shellsort>` and :ref:`Quicksort <Quicksort>`)
 by taking advantage of the best case behavior of another algorithm
 (:ref:`Insertion Sort <InsertionSort>`).
@@ -79,7 +84,7 @@ Sorting will also be used to motivate the introduction to file
 processing presented in
 Module :numref:`<FileProc>`.
 
-This chapter covers several standard algorithms appropriate
+This tutorial covers several standard algorithms appropriate
 for sorting a collection of records that fit in the computer's
 main memory.
 It begins with a discussion of three simple, but relatively slow,
@@ -162,5 +167,11 @@ In such cases, the constants in the runtime equations that are usually
 ignored in an asymptotic analysis now become crucial.
 Finally, some situations require that a sorting algorithm use as
 little memory as possible.
-We will note which sorting algorithms require significant extra memory
-beyond the input array.
+We will call attention to sorting algorithms that require significant
+extra memory beyond the input array.
+
+.. todo::
+   :type: Multiple choice exercise
+
+   Add a battery of questions to test understanding of the contents
+   for this module. Such as questions on terminology.

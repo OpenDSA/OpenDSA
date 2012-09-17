@@ -1,0 +1,80 @@
+<!--
+####################################### Insertion Insert_Element ##################################################
+#  Question     : Given a random array of size arr_size , and some element X highlighted
+#                 Everthing to the left of X is sorted, and everything to the right is random.
+#		  Highlighted element needs to be placed in right place by Insertion Sort
+#  Variables    : arr_size 6 - 10
+#  Chapter      : InsetionSort
+#  Author       : Gayathri
+#  Date         : July 20, 2012
+#######################################################################################################
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Insertion Sort Proficiency Exercise</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+
+  <style>
+    .jsavcontainer {
+      border: 0px;
+    }
+  </style>
+</head>
+<body>
+
+<script src="InssortPRO.js"></script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="arr_size">randRange( 6, 10 )</var>
+    <var id="sort_pos">randRange(1,arr_size-1)</var>
+    <var id="JSAV">initJSAV(arr_size,sort_pos)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem">Your task in this exercise is to show the
+	behavior for one iteration of the outter for loop of Insertion Sort.
+        In the array displayed below, the record at
+        position <var>sort_pos</var> is highlighted. Insertion Sort has
+        already processed the values to the left of
+        position <var>sort_pos</var>, so those elements are sorted.</p>
+      <div class="question">
+        <p> Perform the next part of Insertion Sort to move the
+            highlighted record to its proper place in the array.</p>
+        <div id="jsav"></div>
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [userInput]
+        </div>
+        <div class="validator-function">
+          if (!checkAnswer(arr_size, sort_pos) && !guess[0])
+            return ""; // User did not click, and correct answer is not
+	               // initial array state
+          else return checkAnswer(arr_size);
+        </div>
+      </div>
+      <div class="hints">
+        <p>Insert the highlighted element into its proper position in the array using Insertion Sort.</p> 
+	<p>Nothing to the right of position <var>sort_pos</var> should be changed.</p>
+        <p>All elements from position 0 to position <var>sort_pos</var> should be in ascending order.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
