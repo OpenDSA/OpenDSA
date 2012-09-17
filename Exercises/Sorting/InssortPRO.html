@@ -1,10 +1,3 @@
-<!-- TODO:
-* Try to get rid of so many global variables
-* Don't use JSAV array to compute the answer, since this blinks the
-     display.
-* Split out JS code to a separate file, and validate it.
--->
-
 <!--
 ####################################### Insertion Insert_Element ##################################################
 #  Question     : Given a random array of size arr_size , and some element X highlighted
@@ -42,7 +35,7 @@
 </head>
 <body>
 
-<script src="InsertionInsertElement.js"></script>
+<script src="InssortPRO.js"></script>
 
 <div class="exercise">
   <div class="vars">
@@ -66,15 +59,19 @@
       </div>
       <div class="solution" data-type="custom">
         <div class="guess">
-          [myGuess]
+          [userInput]
         </div>
         <div class="validator-function">
-          return checkAnswer (arr_size,sort_pos);
+          if (!checkAnswer(arr_size, sort_pos) && !guess[0])
+            return ""; // User did not click, and correct answer is not
+	               // initial array state
+          else return checkAnswer(arr_size);
         </div>
       </div>
       <div class="hints">
-        <p> Insert the highlighted element in its proper position in the array using Insertion Sort </p> 
-        <p> All elements from index 0 to index <var>sort_pos</var> should be in ascending order </p>
+        <p>Insert the highlighted element into its proper position in the array using Insertion Sort.</p> 
+	<p>Nothing to the right of position <var>sort_pos</var> should be changed.</p>
+        <p>All elements from position 0 to position <var>sort_pos</var> should be in ascending order.</p>
       </div>
     </div>
   </div>
