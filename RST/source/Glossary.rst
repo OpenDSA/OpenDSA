@@ -9,6 +9,9 @@
    :topic:
    :short_name: Glossary
 
+.. include:: JSAVheader.rinc   
+
+
 Glossary
 ========
 

@@ -9,6 +9,9 @@
    :topic:
    :short_name: Bibliography
 
+.. include:: JSAVheader.rinc  
+
+
 Bibliography
 ============
 
