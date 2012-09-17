@@ -1,6 +1,8 @@
 var server = "128.173.55.223:8080"; //"128.173.54.186:8000";
 var base_url = "http://" + server;
 
+var avName = "";
+
 $(document).ready(function() {
 	//Make sure localStorage is enabled
 	var localStorageEnabled = function() {
@@ -22,16 +24,112 @@ $(document).ready(function() {
 		}
 		return;
 	}
+	
+	if (serverEnabled) {
+		// Get the module or AV name as soon as possible
+		if (document.title.match(".+OpenDSA Sample eTextbook") != null) {
+			// Save the module name in localStorage
+			localStorage["module_name"] = getNameFromURL();
+		} else {
+			// Save the AV name as a global variable
+			avName = getNameFromURL();
+		}
+		
+		// Suggest the user login if they don't have a valid session,
+		// update the login link with their name if they do
+		if (is_SessionExpired()){
+			localStorage.removeItem("opendsa");
+			showLoginBox();
+		} else {
+			var uname = get_user_fromDS();
+			$('a.login-window').text(uname);
+			update_show_hide_button(uname);
+		}
+		
+		// Add button_logger to all buttons on the page with a data-desc attribute
+		$('input[data-desc]').each(function(index, item){
+			$(item).click(button_logger);
+		});
 
-	if (is_SessionExpired()){
-		localStorage.removeItem("opendsa");
-	} else {
-		var uname = get_user_fromDS();
-		$('a.login-window').text(uname);
-		update_show_hide_button(uname);
+		// Attempts to log the user in when they click submit on the login window
+		$('button.submit-button').click(function(event){
+			//authenticate user
+			username = document.forms["signin"]["username"].value;
+			password = document.forms["signin"]["password"].value;
+			jQuery.ajax({
+				url:   base_url + "/api/v1/users/login/",
+				type:  "POST",
+				data: {"username":  username , "password": password  },
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				xhrFields: {withCredentials: true},
+				success: function(data) {
+					var obj = getJSON(data);
+				
+					if(obj.success){
+						updateLocalStorage(username );
+					
+						localStorage.name=document.forms["signin"]["username"].value; //$('username').attr('value');
+						$('a.login-window').text(username);
+						update_show_hide_button(username);
+					}
+				},
+				error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
+			});
+			log_user_action('', 'user-login', 'User logged in');
+
+			hideLoginBox();
+			
+			// Submit any stored event data
+			send_event_data();
+		});
+
+		// Brings up the login box if the user clicks 'Login' and
+		// logs the user out if they click their username
+		$('a.login-window').click(function() {
+			if ($('a.login-window').text() !== get_user_fromDS()){
+				showLoginBox();
+				return false;
+			} else {
+				// Submit whatever event data we have collected before the user logs out
+				send_event_data();
+				jQuery.ajax({
+					url:   base_url + "/api/v1/users/logout/",
+					type:  "GET",
+					data: {"username":  get_user_fromDS() },
+					contentType: "application/json; charset=utf-8",
+					datatype: "json",
+					xhrFields: {withCredentials: true},
+					success: function(data){
+						var obj = getJSON(data)
+					
+						if(obj.success){
+							localStorage.removeItem('opendsa');
+							$('a.login-window').text("Login");
+						}
+					},
+					error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
+				});
+				
+				log_user_action('', 'user-logout', 'User logged out');
+			}
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() {
+			hideLoginBox();
+		});
 	}
 
 	$("input.showLink").click(function(event){
+		// If the server is enabled and no user is logged in, prompt them to login
+		if (serverEnabled && !userLoggedIn())
+		{
+			alert('You must login to complete exercises');
+			showLoginBox();
+			return;
+		}
+
 		var shID = event.target.id;
 		var name = $(this).attr("name");
 		var av = name.split('+');
@@ -50,110 +148,45 @@ $(document).ready(function() {
 	$("a.abt").click(function(event){
 		info();
 	});
-
-	// Attempts to log the user in when they click submit on the login window
-	$('button.submit-button').click(function(event){
-		//authenticate user
-		username = document.forms["signin"]["username"].value;
-		password = document.forms["signin"]["password"].value;
-		jQuery.ajax({
-			url:   base_url + "/api/v1/users/login/",
-			type:  "POST",
-			data: {"username":  username , "password": password  },
-			contentType: "application/json; charset=utf-8",
-			datatype: "json",
-			xhrFields: {withCredentials: true},
-			success: function(data) {
-				var obj = jQuery.parseJSON( data );
-				
-				// Chrome doesn't read 'data' correctly so we have to stringify it
-				if (obj == null) {
-					obj = jQuery.parseJSON(JSON.stringify( data ));
-				}
-				
-				if(obj.success){
-					updateLocalStorage(username );
-					
-					localStorage.name=document.forms["signin"]["username"].value; //$('username').attr('value');
-					$('a.login-window').text(username);
-                                        update_show_hide_button(username);
-				}
-			},
-
-			error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
-		});
-
-		$('#mask , .login-popup').fadeOut(300 , function() {
-			$('#mask').remove();
-		});
-	});
-
-	// Brings up the login box if the user clicks 'Login' and
-	// logs the user out if they click their username
-	$('a.login-window').click(function() {
-		if ($('a.login-window').text() !== get_user_fromDS()){
-			//Getting the variable's value from a link
-			var loginBox = $(this).attr('name');
-
-			// Preload the last saved username in the login form
-			var username = localStorage.name;
-			if (typeof username !== "undefined")
-			{
-				document.forms["signin"]["username"].value = username;
-			}
-
-			//Fade in the Popup
-			$(loginBox).fadeIn(300);
-
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(loginBox).height() + 24) / 2;
-			var popMargLeft = ($(loginBox).width() + 24) / 2;
-
-			$(loginBox).css({
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
-
-			// Add the mask to body
-			$('body').append('<div id="mask"></div>');
-			$('#mask').fadeIn(300);
-
-			return false;
-		} else {
-			jQuery.ajax({
-				url:   base_url + "/api/v1/users/logout/",
-				type:  "GET",
-				data: {"username":  get_user_fromDS() },
-				contentType: "application/json; charset=utf-8",
-				datatype: "json",
-				xhrFields: {withCredentials: true},
-				success: function(data){
-					var obj = jQuery.parseJSON( data );
-					
-					if (obj == null) {
-						obj = jQuery.parseJSON(JSON.stringify( data ));
-					}
-					
-					if(obj.success){
-						localStorage.removeItem('opendsa');
-						//clearLocalStorage();
-						$('a.login-window').text("Login");
-					}
-				},
-				error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
-			});
-		}
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() {
-		$('#mask , .login-popup').fadeOut(300 , function() {
-			$('#mask').remove();
-		});
-		return false;
-	});
 });
 
+
+function showLoginBox() {
+	log_user_action('', 'login-box-open', 'Login box was opened');
+	
+	var loginBox = '#login-box';
+
+	// Preload the last saved username in the login form
+	var username = localStorage.name;
+	if (typeof username !== "undefined") {
+		document.forms["signin"]["username"].value = username;
+	}
+
+	//Fade in the Popup
+	$(loginBox).fadeIn(300);
+
+	//Set the center alignment padding + border see css style
+	var popMargTop = ($(loginBox).height() + 24) / 2;
+	var popMargLeft = ($(loginBox).width() + 24) / 2;
+
+	$(loginBox).css({
+		'margin-top' : -popMargTop,
+		'margin-left' : -popMargLeft
+	});
+
+	// Add the mask to body
+	$('body').append('<div id="mask"></div>');
+	$('#mask').fadeIn(300);
+}
+
+function hideLoginBox() {
+	log_user_action('', 'login-box-close', 'Login box was closed');
+	
+	$('#mask , .login-popup').fadeOut(300 , function() {
+		$('#mask').remove();
+	});
+	return false;
+}
 
 function showHide(shID) {
 	var s=shID.split('+');
@@ -172,6 +205,60 @@ function showHide(shID) {
 			var strt = "div.start"+ div_numb;
 			$(strt).hide();   // $('div.start'+div_numb).hide();
 		}
+	}
+}
+
+//change button color from red to light green when user is proficient
+function update_show_hide_button(username){
+	// Don't bother trying to contact the server if one isn't setup
+	if (serverEnabled) {
+		$('.showLink').each(function(index, item){
+			av_url = $(item).attr("name").split("+")[0].split("/");
+			av_name = av_url[av_url.length -1].split(".")[0];
+			jQuery.ajax({
+				url:   base_url + "/api/v1/userdata/isproficient/",
+				type:  "POST",
+				data: {"user":  get_user_fromDS(),"exercise": av_name },
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				xhrFields: {withCredentials: true},
+				success: function(data){
+					var obj = jQuery.parseJSON( data );
+
+					if (obj == null) {
+							obj = jQuery.parseJSON(JSON.stringify( data ));
+					}
+					if(obj.proficient){
+							$(item).css("background-color","lime");
+					}
+				},
+				error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
+			});
+		});
+
+		$('.hideLink').each(function(index, item){
+			av_url = $(item).attr("name").split("+")[0].split("/");
+			av_name = av_url[av_url.length -1].split(".")[0];
+			jQuery.ajax({
+				url:   base_url + "/api/v1/userdata/isproficient/",
+				type:  "POST",
+				data: {"user":  get_user_fromDS(),"exercise": av_name },
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				xhrFields: {withCredentials: true},
+				success: function(data){
+					var obj = jQuery.parseJSON( data );
+
+					if (obj == null) {
+							obj = jQuery.parseJSON(JSON.stringify( data ));
+					}
+					if(obj.proficient){
+							$(item).css("background-color","lime");
+					}
+				},
+				error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
+			});
+		});
 	}
 }
 
@@ -196,20 +283,14 @@ function info() { // This is what we pop up
 	});
 }
 
-// Clears the values we store in localstorage
-function clearLocalStorage() {
-	localStorage.removeItem('name');
-	localStorage.removeItem('opendsa');
-}
-
-function updateLocalStorage(username ){
+function updateLocalStorage(username ) {
 	var myDate=new Date();
 	myDate.setDate(myDate.getDate()+5);  //the session is valid 5 days
 	var strSession = '{"username" :"'+ username + '", "expires" :"'+ myDate + '"}';
 	localStorage["opendsa"] = strSession;
 }
 
-function is_SessionExpired(){
+function is_SessionExpired() {
 	if ( typeof localStorage["opendsa"] !== "undefined" ) {
 		var  bj = JSON.parse( localStorage["opendsa"]);
 		sDate = bj.expires;
@@ -219,8 +300,7 @@ function is_SessionExpired(){
 	return true;
 }
 
-
-function get_user_fromDS(){
+function get_user_fromDS() {
 	if ( typeof localStorage["opendsa"] !== "undefined" ) {
 		var obj = JSON.parse(localStorage["opendsa"]);
 		return obj.username;
@@ -228,200 +308,298 @@ function get_user_fromDS(){
 	return "";
 }
 
-//change button color from red to light green when user is proficient
-function update_show_hide_button(username){
-	$('.showLink').each(function(index, item){
-		av_url = $(item).attr("name").split("+")[0].split("/");
-		av_name = av_url[av_url.length -1].split(".")[0];
-		jQuery.ajax({
-			url:   base_url + "/api/v1/userdata/isproficient/",
-			type:  "POST",
-			data: {"user":  get_user_fromDS(),"exercise": av_name },
-			contentType: "application/json; charset=utf-8",
-			datatype: "json",
-			xhrFields: {withCredentials: true},
-			success: function(data){
-				var obj = jQuery.parseJSON( data );
+var serverEnabled = function() {
+	if (server === "")
+	{
+		return false;
+	}
 
-				if (obj == null) {
-						obj = jQuery.parseJSON(JSON.stringify( data ));
-				}
-				if(obj.proficient){
-						$(item).css("background-color","lime");
-				}
-			},
-			error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
-		});
+	return true;
+}
+
+function userLoggedIn() {
+	return get_user_fromDS() !== "";
+}
+
+// Reads the module name from localStorage
+function get_module_name() {
+	if ( typeof localStorage["module_name"] !== "undefined" ) {
+		return localStorage.module_name;
+	}
+	return "";
+}
+
+// Parses the name of the AV or module from the page URL
+function getNameFromURL()
+{
+	var path = location.pathname;
+	var start = path.lastIndexOf("/") + 1;
+	var end = path.lastIndexOf(".html");
+	return path.slice(start, end);
+}
+
+// Returns the given data as a JSON object
+// If given a string, converts it to JSON
+// If given a JSON object, does nothing
+function getJSON(data) {
+	var obj = data;
+	if (typeof obj === "string") {
+		obj = jQuery.parseJSON( data );
+	}
+
+	if (obj == null) {
+		alert("Error parsing JSON data: " + JSON.stringify(obj));
+	}
+
+	return obj;
+}
+
+//*****************************************************************************
+//****************       Logging and Metrics Collection        ****************
+//*****************************************************************************
+
+if (serverEnabled) {
+	$(window).on('beforeunload', function() {
+		// Log the browser unload event
+		log_user_action('', 'browser-unload', 'User closed or refreshed the page');
+
+		// Remove the module name when they leave the module page
+		if ( get_module_name() !== "" ) {
+			localStorage.removeItem('module_name');
+		}
 	});
 
-		$('.hideLink').each(function(index, item){
-		av_url = $(item).attr("name").split("+")[0].split("/");
-		av_name = av_url[av_url.length -1].split(".")[0];
-		jQuery.ajax({
-			url:   base_url + "/api/v1/userdata/isproficient/",
-			type:  "POST",
-			data: {"user":  get_user_fromDS(),"exercise": av_name },
-			contentType: "application/json; charset=utf-8",
-			datatype: "json",
-			xhrFields: {withCredentials: true},
-			success: function(data){
-				var obj = jQuery.parseJSON( data );
+	// Listen for JSAV events
+	$("body").on("jsav-log-event", function(e, data) { 
+		// FOR DEBUGGING
+		console.log(data);
+		
+		data.desc = data.type;
 
-				if (obj == null) {
-						obj = jQuery.parseJSON(JSON.stringify( data ));
-				}
-				if(obj.proficient){
-						$(item).css("background-color","lime");
-				}
-			},
-			error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
-		});
+		// Save the event in localStorage
+		log_event(data);
+		
+		// On grade change events, log the user's score and submit it
+		if (data.type === "jsav-exercise-grade-change") {
+			store_av_score(data.av, data.score);
+			send_av_score(data.av);
+		}
 	});
+}
+
+// Default function to handle logging button clicks
+function button_logger() {
+	// If the backend is enabled log the button click
+	if (serverEnabled) {
+		log_user_action(this.form.id, this.type + "-" + this.name, this.getAttribute('data-desc'));
+	}
+}
+
+// The function OpenDSA developers will call to log a user action
+function log_user_action(av_name, type, desc) {
+	// If the backend is enabled log the action
+	if (serverEnabled) {
+		var json_data = {};
+		json_data.av = av_name;
+		json_data.type = type;
+		json_data.desc = desc;
+		log_event(json_data);
+	}
+}
+
+// Appends given JSON data to a list of events stored in localStorage
+function log_event(data) {
+	// If the backend is enabled log the event
+	if (serverEnabled) {
+		//data = getJSON(data); // TODO: Figure out why it doesn't like this
+		if (typeof data === "string") {
+			data = $.parseJSON(data);
+		}
+		
+		var modName = get_module_name();
+		
+		// Don't log events without either an AV name or a module name
+		// Getting duplicates of some events where one is missing both
+		// There is no legitimate event that doesn't have one or the other
+		if (data.av === "" && modName === "") {
+			return;
+		}
+		
+		data.modname = modName;
+		
+		// Add a timestamp to the data
+		if (typeof data.tstamp !== "undefined") {
+			// Convert existing JSAV timestamp from ISO format to milliseconds
+			data.tstamp = new Date(data.tstamp).getTime();
+		} else {
+			data.tstamp = (new Date()).getTime();
+		}
+		
+		var actions_list = new Array();
+
+		// Retrieve existing data from localStorage if it exists
+		if ( typeof localStorage["event_data"] !== "undefined" ) {
+			actions_list = getJSON(localStorage["event_data"]);
+		}
+
+		actions_list.push(data);
+
+		localStorage["event_data"] = JSON.stringify(actions_list);  //TODO: Fix the cyclic object error
+	}
+}
+
+// Sends the event data logged in localStorage to the server
+function send_event_data() {
+	var resp = {};
+	
+	if (serverEnabled && userLoggedIn()) {
+		var event_list = getJSON(localStorage["event_data"]);
+
+		// Return if there is no data to send
+		if (event_list.length == 0) {
+			return true;
+		}
+
+		var json_data = {};
+		json_data.username = get_user_fromDS();
+		// Timestamp the submission so we can calculate offset from server time
+		json_data.submit_time = (new Date()).getTime();
+		json_data.actions = JSON.stringify(event_list);
+		
+		resp = send_data("/api/v1/user/exercise/avbutton/", json_data);
+		
+		// Clear the saved data once it has been successfully transmitted
+		if (resp.success) {
+			localStorage.removeItem('event_data');
+		}
+	}
+	
+	return resp;
+}
+
+function store_av_score(av_name, score) {
+	// If the backend is enabled store the score
+	if (serverEnabled) {
+		var score_data = {};
+		
+		// Get stored score_data if it exists
+		if ( typeof localStorage["score_data"] !== "undefined" ) {
+			score_data = getJSON(localStorage["score_data"]);
+		}
+		
+		// Store data if no data for the current AV is already stored or
+		// update the score data if the given score data is >= what is stored
+		if (typeof score_data[av_name] === "undefined" || score.correct >= score_data[av_name].correct) {
+			score_data[av_name] = score;
+		}
+		
+		localStorage["score_data"] = JSON.stringify(score_data);
+	}
+}
+
+function send_av_score(av_name) {
+	// If the backend is enabled attempt to submit the user's score
+	if (serverEnabled) {
+		if (userLoggedIn()) {
+			// Send all the action log data to the server
+			var resp = send_event_data();
+	
+			if (resp.success) {
+				alert("Data submitted successfully");
+			} else {
+				alert("Data submission failure");
+			}
+			
+			var score_data = {};
+			if ( typeof localStorage["score_data"] !== "undefined" ) {
+				score_data = getJSON(localStorage["score_data"]);
+			}
+			
+			// Return if there is no score for the exercise being submitted
+			if (typeof score_data[av_name] === "undefined") {
+				return;
+			}
+
+			var json_data = {};
+			json_data.username = get_user_fromDS();
+			json_data.submit_time = (new Date()).getTime();
+			json_data.module_name = get_module_name();
+			json_data.exercise = av_name;
+			json_data.score = score_data[av_name];
+			json_data.attempt = 0;
+			json_data.total_time = "";
+
+			resp = send_data("/api/v1/user/exercise/attemptpe/", json_data);
+
+			// Clear the saved data once it has been successfully transmitted
+			if (resp.success) {
+				//localStorage.removeItem('score_data');
+			}
+			
+			// Check whether the user is proficient
+			if (resp.proficient) {
+				update_show_hide_button(get_user_fromDS());
+			}
+		} else {
+			alert('You must be logged in to receive credit');
+		}
+	}
 }
 
 // Posts the given JSON data to the specified URL
 function send_data(url_suffix, json_data) {
-	if (typeof json_data === "string")
-	{
-		json_data = $.parseJSON(json_data);
-	}
+	var jsonResp = {};
+	
+	if (serverEnabled) {
+		json_data = getJSON(json_data);
 
-	jQuery.ajax({
-		url:   base_url + url_suffix,
-		type:  "POST",
-		data: json_data,
-		contentType: "application/json; charset=utf-8",
-		datatype: "json",
-		xhrFields: {withCredentials: true},
-		success: function(data){
-			var obj = jQuery.parseJSON( data );
-			if (obj == null) {
-				obj = jQuery.parseJSON(JSON.stringify( data ));
+		jQuery.ajax({
+			url:   base_url + url_suffix,
+			type:  "POST",
+			data: json_data,
+			contentType: "application/json; charset=utf-8",
+			datatype: "json",
+			xhrFields: {withCredentials: true},
+			success: function(data){
+				jsonResp = getJSON(data);
+			},
+			error: function(data) {
+				jsonResp = getJSON(data);
+				console.log("ERROR " +  JSON.stringify( jsonResp ));
 			}
-			
-			if(obj.success) {
-				return true;
-			}
-		},
-		error: function(data){
-			console.log("ERROR " +  JSON.stringify( data ));
-		}
-	});
-	
-	return false;
-}
-
-// Sends the user action data logged in localStorage to the server
-function send_stored_data() {
-	var action_list = $.parseJSON(localStorage["user_action_data"]);
-
-	var json_data = {};
-	json_data.username = get_user_fromDS();
-	json_data.actions = action_list;
-	
-	var success = send_data("/api/v1/user/exercise", json_data); // TODO: Need URL to send the data to
-	
-	// Clear the saved data once it has been
-	if (success) {
-		localStorage.removeItem('user_action_data');
-		return true;
+		});
 	}
 	
-	return false;
-}
-
-// Appends given JSON data to a list of user actions stored in localStorage
-function log_to_LS(data) {
-	if (typeof data === "string")
-	{
-		data = $.parseJSON(data);
-	}
-	
-	// Add a timestamp to the data
-	data.timestamp = (new Date()).getTime();
-	
-	var actions_list = new Array();
-
-	// Retrieve existing data from localStorage if it exists
-	if ( typeof localStorage["user_action_data"] !== "undefined" ) {
-		actions_list = $.parseJSON(localStorage["user_action_data"]);
-
-		if (typeof stored_data === "undefined")
-		{
-			actions_list = $.parseJSON(JSON.stringify(localStorage["user_action_data"]));
-		}
-	}
-	
-	actions_list.push(data);
-	
-	localStorage["user_action_data"] = JSON.stringify(actions_list);
-}
-
-// The function OpenDSA developers will call to log a user action
-function log_user_action(exercise_name, button_class) {
-	var json_data = {};
-	// TODO: What data fields do we need???
-	json_data["exercise-name"] = exercise_name;
-	json_data["button-class"] = button_class;
-	log_to_LS(json_data);
-}
-
-// Attempt to send data before the user leaves the page
-$(window).on('beforeunload', function() {
-	send_stored_data();
-	//if (localStorage["user_action_data"] != null)
-	//{
-	//	return "Page contains unsubmitted data";
-	//}
-});
-
-
-// FOR TESTING
-function test_log()
-{
-	log_user_action("quicksort-proficiency", "reset");
-}
-
-// FOR TESTING
-function submit_score()
-{
-	var success = send_stored_data();
-	
-	if (success)
-	{
-		alert("Data submitted successfully");
-	} else {
-		alert("Data submission failure");
-	}
+	return jsonResp;
 }
 
 /*
 // Original attempt to log user actions to localStorage
-function log_to_LS_old(data) {
+function log_event_old(data) {
 
 	if (typeof data === "string")
 	{
 		data = $.parseJSON(data);
 	}
 
-	if ( typeof localStorage["user_action_data"] !== "undefined" ) {
-		var stored_data = $.parseJSON(localStorage["user_action_data"]);
+	if ( typeof localStorage["event_data"] !== "undefined" ) {
+		var stored_data = $.parseJSON(localStorage["event_data"]);
 
 		if (typeof stored_data === "undefined")
 		{
-			$.parseJSON(JSON.stringify(localStorage["user_action_data"]));
+			$.parseJSON(JSON.stringify(localStorage["event_data"]));
 		}
 
 		var tmp_data = stored_data.actions.push(data);
 		
-		localStorage["user_action_data"] = JSON.stringify(stored_data); // user_data.actions.push(data);
+		localStorage["event_data"] = JSON.stringify(stored_data); // user_data.actions.push(data);
 	} else {
 		var json = {"username": get_user_fromDS(), "actions":[data]};
-		localStorage["user_action_data"] = JSON.stringify(json);
+		localStorage["event_data"] = JSON.stringify(json);
 	}
 	
-	//alert(localStorage["user_action_data"]);
-	//alert("str: " + JSON.stringify(($.parseJSON(localStorage["user_action_data"])).actions[0]));
+	//alert(localStorage["event_data"]);
+	//alert("str: " + JSON.stringify(($.parseJSON(localStorage["event_data"])).actions[0]));
 }
 */
 
