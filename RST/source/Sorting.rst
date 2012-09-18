@@ -94,7 +94,8 @@ Several algorithms with considerably better performance are then
 presented, some with :math:`\Theta(n \log n)` worst-case running
 time.
 The final sorting method presented requires only
-:math:`\Theta(n)` worst-case time under special conditions.
+:math:`\Theta(n)` worst-case time under special conditions
+(but it cannot run that fast in the general case).
 The chapter concludes with a proof that sorting in general
 requires :math:`\Omega(n \log n)` time in the worst case
 (see Module :numref:`<SortingLowerBound>`).
@@ -170,8 +171,6 @@ little memory as possible.
 We will call attention to sorting algorithms that require significant
 extra memory beyond the input array.
 
-.. todo::
-   :type: Multiple choice exercise
-
-   Add a battery of questions to test understanding of the contents
-   for this module. Such as questions on terminology.
+.. avembed:: Exercises/Sorting/SortIntroSumm.html
+   :showbutton: hide
+   :title: Review Questions
