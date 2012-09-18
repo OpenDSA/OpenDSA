@@ -38,7 +38,6 @@ CODE = """\
 """
 
 CODE1= """\
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script>document.getElementById("%(divID)s+show").style.display ="none"; document.getElementById("%(divID)s").style.display ="block";</script>
 """
 
