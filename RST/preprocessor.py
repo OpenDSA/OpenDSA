@@ -413,7 +413,7 @@ def todoHTML(todolst):
 
    tp =''
    mn=0
-   rst='.. _Todo:\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'   
+   rst='.. _Todo:\n\n.. include:: JSAVheader.rinc\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'   
    for i, (k,v,s) in enumerate(todolst):
          if tp=='' and v=='':
             if mn==0:
