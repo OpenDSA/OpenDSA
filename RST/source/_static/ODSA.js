@@ -25,7 +25,7 @@ $(document).ready(function() {
 		return;
 	}
 	
-	if (serverEnabled) {
+	if (serverEnabled()) {
 		// Get the module or AV name as soon as possible
 		if (document.title.match(".+OpenDSA Sample eTextbook") != null) {
 			// Save the module name in localStorage
@@ -74,7 +74,7 @@ $(document).ready(function() {
 						update_show_hide_button(username);
 					}
 				},
-				error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
+				error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
 			});
 			log_user_action('', 'user-login', 'User logged in');
 
@@ -108,7 +108,7 @@ $(document).ready(function() {
 							$('a.login-window').text("Login");
 						}
 					},
-					error: function(data){ alert("ERROR " +  JSON.stringify( data ));}
+					error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
 				});
 				
 				log_user_action('', 'user-logout', 'User logged out');
@@ -123,7 +123,7 @@ $(document).ready(function() {
 
 	$("input.showLink").click(function(event){
 		// If the server is enabled and no user is logged in, prompt them to login
-		if (serverEnabled && !userLoggedIn())
+		if (serverEnabled() && !userLoggedIn())
 		{
 			alert('You must login to complete exercises');
 			showLoginBox();
@@ -149,7 +149,7 @@ $(document).ready(function() {
 		info();
 	});
 	
-	$('.slide-out-div').tabSlideOut({
+	$(".slide-out-div").tabSlideOut({
 		tabHandle: '.handle',                              //class of the element that will be your tab
 		pathToTabImage: '_static/Images/contact_tab.gif',          //path to the image for the tab *required*
 		imageHeight: '122px',                               //height of tab image *required*
@@ -159,7 +159,7 @@ $(document).ready(function() {
 		action: 'click',                                   //options: 'click' or 'hover', action to trigger animation
 		topPos: '200px',                                   //position from the top
 		fixedPosition: false                               //options: true makes it stick(fixed position) on scroll
-	});   
+	});
 });
 
 function showLoginBox() {
@@ -222,7 +222,9 @@ function showHide(shID) {
 //change button color from red to light green when user is proficient
 function update_show_hide_button(username){
 	// Don't bother trying to contact the server if one isn't setup
-	if (serverEnabled) {
+	if (serverEnabled()) {
+		var av_url, av_name, resp;
+		
 		$('.showLink').each(function(index, item){
 			av_url = $(item).attr("name").split("+")[0].split("/");
 			av_name = av_url[av_url.length -1].split(".")[0];
@@ -243,7 +245,7 @@ function update_show_hide_button(username){
 							$(item).css("background-color","lime");
 					}
 				},
-				error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
+				error: function(data){ console.log("ERROR " + "isProficient" /*JSON.stringify( data )*/);}
 			});
 		});
 
@@ -267,7 +269,7 @@ function update_show_hide_button(username){
 							$(item).css("background-color","lime");
 					}
 				},
-				error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
+				error: function(data){ console.log("ERROR " + "isProficient" /*JSON.stringify( data )*/);}
 			});
 		});
 	}
@@ -326,17 +328,12 @@ function get_user_fromDS() {
 	return "";
 }
 
-var serverEnabled = function() {
-	if (server === "")
-	{
-		return false;
-	}
-
-	return true;
+function serverEnabled() {
+	return (server !== "");
 }
 
 function userLoggedIn() {
-	return get_user_fromDS() !== "";
+	return (get_user_fromDS() !== "");
 }
 
 // Reads the module name from localStorage
@@ -360,23 +357,22 @@ function getNameFromURL()
 // If given a string, converts it to JSON
 // If given a JSON object, does nothing
 function getJSON(data) {
-	var obj = data;
-	if (typeof obj === "string") {
-		obj = jQuery.parseJSON( data );
+	if (typeof data === "string") {
+		data = jQuery.parseJSON( data );
 	}
 
-	if (obj == null) {
-		alert("Error parsing JSON data: " + JSON.stringify(obj));
+	if (data == null) {
+		console.log("Error parsing JSON data: " + JSON.stringify(data));
 	}
 
-	return obj;
+	return data;
 }
 
 //*****************************************************************************
 //****************       Logging and Metrics Collection        ****************
 //*****************************************************************************
 
-if (serverEnabled) {
+if (serverEnabled()) {
 	$(window).on('beforeunload', function() {
 		// Log the browser unload event
 		log_user_action('', 'browser-unload', 'User closed or refreshed the page');
@@ -389,34 +385,52 @@ if (serverEnabled) {
 
 	// Listen for JSAV events
 	$("body").on("jsav-log-event", function(e, data) { 
-		// FOR DEBUGGING
-		console.log(data);
+		console.log(data);    // TODO: FOR DEBUGGING
 		
 		data.desc = data.type;
 
 		// Save the event in localStorage
 		log_event(data);
 		
-		// On grade change events, log the user's score and submit it
 		if (data.type === "jsav-exercise-grade-change") {
+			// On grade change events, log the user's score and submit it
 			store_av_score(data.av, data.score);
+			send_av_score(data.av);
+		} else if (data.type === "jsav-forward" && data.currentStep == data.totalSteps) {
+			// When a user reaches the end of an AV, store and submit a completion score
+			var score = {};
+			score.student = data.currentStep;
+			score.correct = data.currentStep;
+			score.total = data.totalSteps;
+			score.fix = 0;
+			score.undo = 0;
+			
+			store_av_score(data.av, score);
 			send_av_score(data.av);
 		}
 	});
 }
 
+// The function OpenDSA developers will call to log the initialization of an array
+function log_exercise_init_array(av_name, arr) {
+	// If the backend is enabled log the event
+	if (serverEnabled()) {
+		log_user_action(av_name, 'exercise_initialization', '[' + initialArray.toString() + ']');
+	}
+}
+
 // Default function to handle logging button clicks
 function button_logger() {
 	// If the backend is enabled log the button click
-	if (serverEnabled) {
+	if (serverEnabled()) {
 		log_user_action(this.form.id, this.type + "-" + this.name, this.getAttribute('data-desc'));
 	}
 }
 
 // The function OpenDSA developers will call to log a user action
 function log_user_action(av_name, type, desc) {
-	// If the backend is enabled log the action
-	if (serverEnabled) {
+	// If the backend is enabled log the event
+	if (serverEnabled()) {
 		var json_data = {};
 		json_data.av = av_name;
 		json_data.type = type;
@@ -428,17 +442,14 @@ function log_user_action(av_name, type, desc) {
 // Appends given JSON data to a list of events stored in localStorage
 function log_event(data) {
 	// If the backend is enabled log the event
-	if (serverEnabled) {
-		//data = getJSON(data); // TODO: Figure out why it doesn't like this
-		if (typeof data === "string") {
-			data = $.parseJSON(data);
-		}
+	if (serverEnabled()) {
+		data = getJSON(data);
 		
 		var modName = get_module_name();
 		
 		// Don't log events without either an AV name or a module name
 		// Getting duplicates of some events where one is missing both
-		// There is no legitimate event that doesn't have one or the other
+		// Currently all legitimate events should have one or the other
 		if (data.av === "" && modName === "") {
 			return;
 		}
@@ -462,42 +473,13 @@ function log_event(data) {
 
 		actions_list.push(data);
 
-		localStorage["event_data"] = JSON.stringify(actions_list);  //TODO: Fix the cyclic object error
+		localStorage["event_data"] = JSON.stringify(actions_list);
 	}
-}
-
-// Sends the event data logged in localStorage to the server
-function send_event_data() {
-	var resp = {};
-	
-	if (serverEnabled && userLoggedIn()) {
-		var event_list = getJSON(localStorage["event_data"]);
-
-		// Return if there is no data to send
-		if (event_list.length == 0) {
-			return true;
-		}
-
-		var json_data = {};
-		json_data.username = get_user_fromDS();
-		// Timestamp the submission so we can calculate offset from server time
-		json_data.submit_time = (new Date()).getTime();
-		json_data.actions = JSON.stringify(event_list);
-		
-		resp = send_data("/api/v1/user/exercise/avbutton/", json_data);
-		
-		// Clear the saved data once it has been successfully transmitted
-		if (resp.success) {
-			localStorage.removeItem('event_data');
-		}
-	}
-	
-	return resp;
 }
 
 function store_av_score(av_name, score) {
 	// If the backend is enabled store the score
-	if (serverEnabled) {
+	if (serverEnabled()) {
 		var score_data = {};
 		
 		// Get stored score_data if it exists
@@ -515,18 +497,50 @@ function store_av_score(av_name, score) {
 	}
 }
 
+// Sends the event data logged in localStorage to the server
+function send_event_data() {
+	if (serverEnabled() && userLoggedIn()) {
+		var event_list = getJSON(localStorage["event_data"]);
+
+		// Return if there is no data to send
+		if (event_list.length == 0) {
+			return true;
+		}
+
+		var json_data = {};
+		json_data.username = get_user_fromDS();
+		// Timestamp the submission so we can calculate offset from server time
+		json_data.submit_time = (new Date()).getTime();
+		json_data.actions = JSON.stringify(event_list);
+		
+		// Send the data to the server
+		jQuery.ajax({
+			url:   base_url + "/api/v1/user/exercise/avbutton/",
+			type:  "POST",
+			data: json_data,
+			contentType: "application/json; charset=utf-8",
+			datatype: "json",
+			xhrFields: {withCredentials: true},
+			success: function(data){
+				data = getJSON(data);
+				// Clear the saved data once it has been successfully transmitted
+				if (data.success) {
+					localStorage.removeItem('event_data');
+				}
+			},
+			error: function(data) {
+				console.log("ERROR " +  JSON.stringify( data ));
+			}
+		});
+	}
+}
+
 function send_av_score(av_name) {
 	// If the backend is enabled attempt to submit the user's score
-	if (serverEnabled) {
+	if (serverEnabled()) {
 		if (userLoggedIn()) {
 			// Send all the action log data to the server
-			var resp = send_event_data();
-	
-			if (resp.success) {
-				alert("Data submitted successfully");
-			} else {
-				alert("Data submission failure");
-			}
+			send_event_data();
 			
 			var score_data = {};
 			if ( typeof localStorage["score_data"] !== "undefined" ) {
@@ -546,49 +560,35 @@ function send_av_score(av_name) {
 			json_data.score = score_data[av_name];
 			json_data.attempt = 0;
 			json_data.total_time = "";
-
-			resp = send_data("/api/v1/user/exercise/attemptpe/", json_data);
-
-			// Clear the saved data once it has been successfully transmitted
-			if (resp.success) {
-				//localStorage.removeItem('score_data');
-			}
 			
-			// Check whether the user is proficient
-			if (resp.proficient) {
-				update_show_hide_button(get_user_fromDS());
-			}
+			jQuery.ajax({
+				url:   base_url + "/api/v1/user/exercise/attemptpe/",
+				type:  "POST",
+				data: json_data,
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				xhrFields: {withCredentials: true},
+				success: function(data){
+					data = getJSON(data);
+					
+					// Clear the saved data once it has been successfully transmitted
+					if (data.success) {
+						//localStorage.removeItem('score_data');
+					}
+					
+					// Check whether the user is proficient
+					if (data.proficient) {
+						update_show_hide_button(get_user_fromDS());
+					}
+				},
+				error: function(data) {
+					//console.log("ERROR " +  JSON.stringify( data ));
+				}
+			});
 		} else {
 			alert('You must be logged in to receive credit');
 		}
 	}
-}
-
-// Posts the given JSON data to the specified URL
-function send_data(url_suffix, json_data) {
-	var jsonResp = {};
-	
-	if (serverEnabled) {
-		json_data = getJSON(json_data);
-
-		jQuery.ajax({
-			url:   base_url + url_suffix,
-			type:  "POST",
-			data: json_data,
-			contentType: "application/json; charset=utf-8",
-			datatype: "json",
-			xhrFields: {withCredentials: true},
-			success: function(data){
-				jsonResp = getJSON(data);
-			},
-			error: function(data) {
-				jsonResp = getJSON(data);
-				console.log("ERROR " +  JSON.stringify( jsonResp ));
-			}
-		});
-	}
-	
-	return jsonResp;
 }
 
 /*

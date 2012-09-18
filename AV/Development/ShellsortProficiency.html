@@ -41,6 +41,14 @@ a.jsavsettings {
 </head>
 
 <body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script src="../../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../../JSAV/lib/raphael.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../RST/source/_static/ODSA.js"></script>
+
 <div id="container">
 <table id=tableT style="margin-top: -20px">
   <tr>
@@ -76,22 +84,14 @@ a.jsavsettings {
 
   <ol id="profArray" style="margin-top: -15px; margin-bottom: 40px"></ol>
 
-  <input type="button" name="selecting" value="Done Selecting" />
-  <input type="button" name="sorting" value="Done Sorting Sublist" />
-  <input type="button" name="incrementing" value="Done Increment" />
+  <input type="button" name="selecting" data-desc="Indicates user is done selecting" value="Done Selecting" />
+  <input type="button" name="sorting" data-desc="Indicates user is done sorting the sublist" value="Done Sorting Sublist" />
+  <input type="button" name="incrementing" data-desc="Indicates user is done with the current increment" value="Done Increment" />
 
   <p class="jsavoutput jsavline"></p>
   </div>
 </form>
 </div> <!-- container -->
-
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<script src="../../JSAV/lib/jquery.transform.light.js"></script>
-<script src="../../JSAV/lib/raphael.js"></script>
-<script src="../../JSAV/build/JSAV-min.js"></script>
 
 <script>
 //(function($) {
@@ -222,6 +222,9 @@ a.jsavsettings {
     }
     $theArray.html(htmldata);
 
+    // Log the exercise initialization
+    log_exercise_init_array(avName, initialArray);
+
     theArray = av.ds.array($theArray, {indexed: true, layout: arrayLayout.val()});
     currIncrIndex = av.variable(0);
     currSublist = av.variable(0);
@@ -317,17 +320,16 @@ a.jsavsettings {
     } else if (modelModeVal === "FIRSTSELECTING") {
       incrementing();
     }
-    
   }
 
   // Initialize the exercise
   // Defines the function to call on reset (initialize()), and the
   //  function to call to generate the model answer (shellsort())
   var exer = av.exercise(shellsort, initialize, [{css: "background-color"}, {}],
-                          { controls: $('.jsavexercisecontrols'),
-                            fix: fixState,
-			    feedback: "continuous",
-			    fixmode: "undo"});
+      { controls: $('.jsavexercisecontrols'),
+      fix: fixState,
+      feedback: "continuous",
+      fixmode: "undo"});
   exer.reset();
   
   var swapIndex;
