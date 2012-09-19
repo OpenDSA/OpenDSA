@@ -6,6 +6,7 @@
   background-color: #eed;
   margin: 0 auto;
   border: 0;
+  position: relative;
 }
 .jsavcounter {
   float: left;
@@ -25,4 +26,10 @@
 }
 .jsavcontrols a {
   margin: 0 40px;
+}
+.prof_check_mark {
+  position: absolute;
+  top: 65px;
+  right: 10px;
+  display: none;
 }

@@ -85,6 +85,7 @@ elements 4 through 7), then we can skip processing them.
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>
+     <img id="container1_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 In the actual Shellsort, each of these sublists of length 2 gets
@@ -102,6 +103,7 @@ the two items are being compared you won't see anything yellow anymore!)
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>
+     <img id="container2_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 At the end of the first pass, the resulting array is "a little better
@@ -130,7 +132,8 @@ increment size 4.
    <div id="container4">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
-   	<div class="jsavcontrols"></div>
+     <div class="jsavcontrols"></div>
+     <img id="container4_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 Each sublist of 3 elements would also be sorted using an Insertion
@@ -141,7 +144,8 @@ Sort, as shown next.
    <div id="container5">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
-  	<div class="jsavcontrols"></div>
+     <div class="jsavcontrols"></div>
+     <img id="container5_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 At the end of processing sublists with increment 4, the array is
@@ -162,7 +166,8 @@ As usual, we sort the sublists using Insertion Sort.
    <div id="container7">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
-	<div class="jsavcontrols"></div>
+     <div class="jsavcontrols"></div>
+     <img id="container7_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 At this point, we are getting close to sorted.
@@ -180,7 +185,8 @@ which means a "regular" Insertion Sort of all elements.
    <div id="container9">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
-	<div class="jsavcontrols"></div>
+     <div class="jsavcontrols"></div>
+     <img id="container9_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 Finally, the array is sorted.
