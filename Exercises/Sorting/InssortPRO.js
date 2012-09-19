@@ -14,8 +14,10 @@ var
 
 // reset function definition
   function f_reset(sort_pos) {
+    jsavArr.clear();             // Re-initialize the displayed array object
     jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
     jsavArr.highlight(sort_pos);
+    jsavArr.click(clickHandler); // Rebind click handler after reset
     userInput = false;
   }
 
