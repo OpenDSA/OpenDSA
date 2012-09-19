@@ -13,9 +13,10 @@ var
 
 
 // reset function definition
-  function f_reset(arr_size, sort_pos) {
+  function f_reset(sort_pos) {
     jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
     jsavArr.highlight(sort_pos);
+    userInput = false;
   }
 
 // Click event handler on the array
@@ -75,7 +76,7 @@ var initJSAV = function (arr_size, sort_pos) {
   jsavArr.click(clickHandler);
   // Set up handler for reset button
   $("#reset").click(function() {
-    f_reset(arr_size, sort_pos);
+    f_reset(sort_pos);
   });
 };
 
