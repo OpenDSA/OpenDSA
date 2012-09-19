@@ -31,6 +31,7 @@
     .jsavcontainer {
       border: 0px;
     }
+    #reset { margin-right: 20px;}
   </style>
 </head>
 <body>
@@ -39,9 +40,9 @@
 
 <div class="exercise">
   <div class="vars">
-    <var id="arr_size">randRange( 6, 10 )</var>
-    <var id="sort_pos">randRange(1,arr_size-1)</var>
-    <var id="JSAV">initJSAV(arr_size,sort_pos)</var>
+    <var id="arr_size">randRange(6, 10)</var>
+    <var id="sort_pos">randRange(1, arr_size-1)</var>
+    <var id="JSAV">initJSAV(arr_size, sort_pos)</var>
   </div>
 
   <div class="problems">
@@ -55,6 +56,7 @@
       <div class="question">
         <p> Perform the next part of Insertion Sort to move the
             highlighted record to its proper place in the array.</p>
+        <input id="reset" type="button" value="Reset" />	
         <div id="jsav"></div>
       </div>
       <div class="solution" data-type="custom">

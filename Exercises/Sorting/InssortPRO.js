@@ -5,10 +5,18 @@
 var
   jsav,           // The JSAV object
   answerArr = [], // The (internal) array that stores the correct answer
+  cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
   jsavArr,        // The array that the user manipulates (JSAV object)
   userInput,      // Boolean: Tells us if user ever did anything
   isSelected,     // Boolean: True iff user has already clicked an array element
   selected_index; // Position that has been selected by user for swap
+
+
+// reset function definition
+  function f_reset(arr_size, sort_pos) {
+    jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
+    jsavArr.highlight(sort_pos);
+  }
 
 // Click event handler on the array
 var clickHandler = function (index, e) {
@@ -45,12 +53,13 @@ var initJSAV = function (arr_size, sort_pos) {
   }
 
   // Do a partial insertion sort to set things up
-
   for (i = 0; i < sort_pos; i++) {
     for (j = i; (j > 0) && (answerArr[j] < answerArr[j - 1]); j--) {
       swap(answerArr, j, j - 1);
     }
   }
+  // Now make a copy
+  cloneArr = answerArr.slice(0);
 
   jsav = new JSAV("jsav");
   jsav.recorded();
@@ -62,8 +71,12 @@ var initJSAV = function (arr_size, sort_pos) {
     swap(answerArr, j, j - 1);
   }
 
-  // bind the clickHandler to handle click events on the array
+  // Bind the clickHandler to handle click events on the array
   jsavArr.click(clickHandler);
+  // Set up handler for reset button
+  $("#reset").click(function() {
+    f_reset(arr_size, sort_pos);
+  });
 };
 
 // Check student's answer for correctness: User's array must match answer
