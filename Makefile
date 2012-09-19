@@ -25,7 +25,6 @@ lint: csslint jshint
 
 csslint:
 	@echo 'running csslint'
-	@csslint $(CSSLINTFLAGS) AV/*.css
 	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
 	@csslint $(CSSLINTFLAGS) Doc/*.css
 	@csslint $(CSSLINTFLAGS) QBank/*.css
@@ -33,3 +32,4 @@ csslint:
 jshint:
 	@echo 'running jshint'
 	@jshint AV/Sorting/*.js
+	@jshint Exercises/Sorting/*.js

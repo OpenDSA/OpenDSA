@@ -1,7 +1,4 @@
 "use strict";
-// Code to support InsertionInsertElement exercise
-// TODO:
-// * Need a RESET ability
 var
   jsav,           // The JSAV object
   answerArr = [], // The (internal) array that stores the correct answer
@@ -10,16 +7,6 @@ var
   userInput,      // Boolean: Tells us if user ever did anything
   isSelected,     // Boolean: True iff user has already clicked an array element
   selected_index; // Position that has been selected by user for swap
-
-
-// reset function definition
-  function f_reset(sort_pos) {
-    jsavArr.clear();             // Re-initialize the displayed array object
-    jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
-    jsavArr.highlight(sort_pos);
-    jsavArr.click(clickHandler); // Rebind click handler after reset
-    userInput = false;
-  }
 
 // Click event handler on the array
 var clickHandler = function (index, e) {
@@ -36,6 +23,15 @@ var clickHandler = function (index, e) {
   userInput = true;
 };
 
+// reset function definition
+function f_reset(sort_pos) {
+  jsavArr.clear();             // Re-initialize the displayed array object
+  jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
+  jsavArr.highlight(sort_pos);
+  jsavArr.click(clickHandler); // Rebind click handler after reset
+  userInput = false;
+}
+
 // swap two values in array
 var swap = function (arr, i, j) {
   var temp = arr[i];
@@ -43,7 +39,7 @@ var swap = function (arr, i, j) {
   arr[j] = temp;
 };
 
-// Initialise JSAV library
+// Initialise the exercise
 var initJSAV = function (arr_size, sort_pos) {
   var i, j;
   userInput = false;
@@ -77,9 +73,7 @@ var initJSAV = function (arr_size, sort_pos) {
   // Bind the clickHandler to handle click events on the array
   jsavArr.click(clickHandler);
   // Set up handler for reset button
-  $("#reset").click(function() {
-    f_reset(sort_pos);
-  });
+  $("#reset").click(function () { f_reset(sort_pos); });
 };
 
 // Check student's answer for correctness: User's array must match answer
