@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
+<html data-require="math spin">
 <head>
-  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 3</title>
+  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 2</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -10,27 +10,31 @@
   <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 </head>
-
 <body>
+
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question">What is the best-case time for
-	Insertionsort to sort an array of <var><code>n</code></var> records?</p>
-      <div class="solution"><var><code>\Theta(n)</code></var></div>
+      <div class="spin">
+        <p class="question"> What is the {average|worst}-case time for
+	  Insertion Sort to sort an array of <var><code>n</code></var> records? </p> 
+      </div>
+      <div class="solution"><var><code>\Theta(n^2)</code></var></div>
       <ul class="choices">
-	<li><var><code>\Theta(n^2)</code></var></li>
+	<li><var><code>\Theta(n)</code></var></li>
 	<li><var><code>\Theta(\log n)</code></var></li>
 	<li><var><code>\Theta(n \log n)</code></var></li>	  	 
       </ul>
-	  <div class="hints">
-	   <p>The best-case cost occurs when the records are already in sorted
-	     order from lowest to highest.</p>
-	   <p>In this case, every test on the inner for loop will
-	     fail immediately, and no records will be moved.</p> 
-	  </div>
+      <div class="hints">
+        <p>In the worst case, each record must make its way to the
+           start of the array. This would occur if the record values are
+	   initially arranged from highest to lowest, in the reverse
+	   of sorted order.</p>
+        <p>In this case, the number of comparisons will be one the
+	   first time through the for loop, two the second time, and
+	   so on.</p>
+      </div>
     </div> 
-
   </div>
 </div>
 </body>

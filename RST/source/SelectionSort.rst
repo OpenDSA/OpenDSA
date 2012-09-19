@@ -78,9 +78,9 @@ The following visualization puts it all together.
 
 Now try for yourself to see if you understand how Selection Sort works.
 
-.. avembed:: Exercises/Development/SelectionSortElement.html
+.. avembed:: Exercises/Sorting/SelsortPRO.html
    :showbutton: hide
-   :title: Question 1
+   :title: Proficiency Exercise
 
 Any algorithm can be written in slightly different ways.
 For example, we could have written Selection Sort to find the smallest

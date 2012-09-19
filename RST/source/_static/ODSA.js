@@ -1,4 +1,4 @@
-var server = "128.173.55.223:8080"; //"128.173.54.186:8000";
+var server = "opendsa.cc.vt.edu:8080"; //"128.173.54.186:8000";
 var base_url = "http://" + server;
 
 $(document).ready(function() {

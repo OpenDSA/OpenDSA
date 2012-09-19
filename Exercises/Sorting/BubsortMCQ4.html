@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Sorting Intro: Multiple Choice Question 4</title>
+  <title>OpenDSA Bubble Sort Exercise: Multiple Choice Question 4</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -10,21 +10,23 @@
   <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 </head>
-<body>
 
+<body>
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question">In which case might the number of
-	comparisions NOT be a good representation of the cost for a sorting algorithm?</p>
-      <div class="solution">
-         <var>"When we are comparing strings of widely varying length"</var>
-      </div>
-        <ul class="choices">
-          <li><var>"When there are lots of records"</var></li>
-          <li><var>"When the CPU is really fast"</var></li>
-          <li><var>"When the amount of available space is small"</var></li>
-        </ul>
+      <p class="question">In which cases are the time complexities the
+        same for Bubble Sort?</p>
+      <div class="solution"><var>"Worst, average and Best"</var></div>
+      <ul class="choices">
+	<li><var>"Worst and Best"</var></li>
+	<li><var>"Best and Average"</var></li>
+	<li><var>"Worst and Average"</var></li>	  	 
+      </ul>
+      <div class="hints">
+        <p>Does Bubble Sort's cost vary according to the order of the
+           array input values?</p>
+        <p>No, it does not matter what order the input values have.</p>
       </div>
     </div>
   </div>
