@@ -85,9 +85,9 @@ The following visualization puts it all together.
 
 Now try for yourself to see if you understand how Bubble Sort works.
 
-.. avembed:: Exercises/Development/BubbleSortElement.html
+.. avembed:: Exercises/Sorting/BubsortPRO.html
    :showbutton: hide
-   :title: Question 1
+   :title: Proficiency Exercise
 
 Determining Bubble Sort's number of comparisons is easy.
 Regardless of the arrangement of the values in the array, the number

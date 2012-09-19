@@ -92,7 +92,7 @@ Now try for yourself to see if you understand how Insertion Sort works.
 
 .. avembed:: Exercises/Sorting/InssortPRO.html
    :showbutton: hide
-   :title: Question 1
+   :title: Proficency Exercise
 
 Insertion Sort Analysis
 -----------------------

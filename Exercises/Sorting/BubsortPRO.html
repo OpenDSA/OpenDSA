@@ -1,5 +1,5 @@
 <!--
-Insertion Sort mini-proficiency exercise.
+Bubble Sort mini-proficiency exercise.
 Written by Gayathri Subramanian and Cliff Shaffer
 -->
 
@@ -7,7 +7,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
 <html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Insertion Sort Proficiency Exercise</title>
+  <title>Bubble Sort Proficiency Exercise</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transform.light.js"></script>
@@ -29,26 +29,21 @@ Written by Gayathri Subramanian and Cliff Shaffer
 </head>
 <body>
 
-<script src="InssortPRO.js"></script>
+<script src="BubsortPRO.js"></script>
 
 <div class="exercise">
   <div class="vars">
-    <var id="arr_size">randRange(6, 10)</var>
-    <var id="sort_pos">randRange(2, arr_size-1)</var>
-    <var id="JSAV">initJSAV(arr_size, sort_pos)</var>
+    <var id="arr_size">randRange(7, 9)</var>
+    <var id="JSAV">initJSAV(arr_size)</var>
   </div>
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem">Your task in this exercise is to show the
-	behavior for one iteration of the outer for loop of Insertion Sort.
-        In the array displayed below, the record at
-        position <var>sort_pos</var> is highlighted. Insertion Sort has
-        already processed the values to the left of
-        position <var>sort_pos</var>, so those elements are sorted.</p>
       <div class="question">
-        <p> Perform the next part of Insertion Sort to move the
-            highlighted record to its proper place in the array.</p>
+        <p>Your task in this exercise is to show the
+           behavior for one iteration of the outer for loop of Bubble Sort.
+           Simply click on entries in the array to swap them in the way
+           that Bubble Sort would during its first pass.</p>
         <input id="reset" type="button" value="Reset" />	
         <div id="jsav"></div>
       </div>
@@ -64,9 +59,10 @@ Written by Gayathri Subramanian and Cliff Shaffer
         </div>
       </div>
       <div class="hints">
-        <p>Insert the highlighted element into its proper position in the array using Insertion Sort.</p> 
-	<p>Nothing to the right of position <var>sort_pos</var> should be changed.</p>
-        <p>All elements from position 0 to position <var>sort_pos</var> should be in ascending order.</p>
+        <p>What does Bubble Sort do?</p>
+	<p>Move from left to right through the array.</p>
+        <p>At each position, if the value is greater than the value to
+           its right, then swap them.</p>
       </div>
     </div>
   </div>
