@@ -41,7 +41,7 @@
 <div class="exercise">
   <div class="vars">
     <var id="arr_size">randRange(6, 10)</var>
-    <var id="sort_pos">randRange(1, arr_size-1)</var>
+    <var id="sort_pos">randRange(2, arr_size-1)</var>
     <var id="JSAV">initJSAV(arr_size, sort_pos)</var>
   </div>
 
@@ -64,7 +64,7 @@
           [userInput]
         </div>
         <div class="validator-function">
-          if (!checkAnswer(arr_size, sort_pos) && !guess[0])
+          if (!checkAnswer(arr_size) && !guess[0])
             return ""; // User did not click, and correct answer is not
 	               // initial array state
           else return checkAnswer(arr_size);
