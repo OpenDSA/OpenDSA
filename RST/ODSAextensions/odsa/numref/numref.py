@@ -57,7 +57,7 @@ def numref_role(typ, rawtext, etext, lineno, inliner,
         typ = typ.lower()
     text = utils.unescape(etext)
     targetid = 'index-%s' % env.new_serialno('index')
-    indexnode = addnodes.index()
+#    indexnode = addnodes.index()
     targetnode = nodes.target('', '', ids=[targetid])
     inliner.document.note_explicit_target(targetnode)
     syn = 0 
@@ -77,8 +77,8 @@ def numref_role(typ, rawtext, etext, lineno, inliner,
        desc=''
        lab = text
     if typ == 'numref':
-        indexnode['entries'] = [('single', 'ref %s' % text,
-                                 targetid, 'ref %s' % text)]
+#        indexnode['entries'] = [('single', 'ref %s' % text,
+#                                 targetid, 'ref %s' % text)]
         level = 0 
         try:
             json_data = loadTable()
@@ -116,7 +116,7 @@ def numref_role(typ, rawtext, etext, lineno, inliner,
         rn = nodes.reference('', '', internal=False, refuri=ref,
                              classes=[typ])
         rn += sn
-        return [indexnode, targetnode, rn], []
+        return [rn], []
 
 roles.register_canonical_role('numref', numref_role)
 
