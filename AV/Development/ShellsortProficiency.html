@@ -334,8 +334,7 @@ a.jsavsettings {
   
   var swapIndex;
   // register click handlers for the array indices
-  $("#profArray").on("click", ".jsavindex", function() {
-    var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
+  theArray.click(function(index) {
     av._redo = []; // clear the forward stack, should add a method for this in lib
     if (mode.value() === "SELECTING" || mode.value() === "FIRSTSELECTING") { // in selecting mode, highlight index
       if (!theArray.isHighlight(index)) {
