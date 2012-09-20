@@ -31,7 +31,7 @@ var setGreen = function (arr, index) {
 
   av.umsg("Moving from left to right, find the element with the greatest value.");
   av.displayInit();
-  av.umsg("For each element moving through the list: the biggest seen so far is always green");
+  av.umsg("For each element moving through the list: the biggest seen so far is shown in green");
   setGreen(arr, 0);
   av.step();
   for (j = 1; j < arr.size(); j++) {
@@ -69,7 +69,7 @@ var setGreen = function (arr, index) {
   arr.css([arr.size() - 1], {"color": LIGHT});
   av.umsg("Second pass: moving from left to right, find the element with the second greatest value.");
   av.displayInit();
-  av.umsg("For each element moving through the list: the biggest seen so far is always green");
+  av.umsg("For each element moving through the list: the biggest seen so far is shown in green");
   setGreen(arr, 0);
   av.step();
   for (j = 1; j < arr.size() - 1; j++) {
