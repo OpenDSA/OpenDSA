@@ -83,7 +83,7 @@ function showDifference(container, a) {
 }
 
 (function ($) {
-  var av = new JSAV("container1");
+  var av = new JSAV("shellsort_av1");
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray, {indexed: true});
 
@@ -102,16 +102,16 @@ function showDifference(container, a) {
 
 (function ($) {
   var arr = theArray;
-  doSweep("container2", arr, 8);
+  doSweep("shellsort_av2", arr, 8);
 }(jQuery));
 
 (function ($) {
   var arr = theArray2;
-  showDifference("container3", arr);
+  showDifference("shellsort_av3", arr);
 }(jQuery));
 
 (function ($) {
-  var av = new JSAV("container4");
+  var av = new JSAV("shellsort_av4");
   var arr = av.ds.array(theArray2, {indexed: true});
   arr.css(function (index)
           { return index % 4 !== 0; }, {"color": LIGHT}).highlight([0, 4, 8, 12]);
@@ -129,25 +129,25 @@ function showDifference(container, a) {
 
 (function ($) {
   var arr = theArray2;
-  doSweep("container5", arr, 4);
+  doSweep("shellsort_av5", arr, 4);
 }(jQuery));
 
 (function ($) {
   var arr = theArray3;
-  showDifference("container6", arr);
+  showDifference("shellsort_av6", arr);
 }(jQuery));
 
 (function ($) {
   var arr = theArray3;
-  doSweep("container7", arr, 2);
+  doSweep("shellsort_av7", arr, 2);
 }(jQuery));
 
 (function ($) {
   var arr = theArray4;
-  showDifference("container8", arr);
+  showDifference("shellsort_av8", arr);
 }(jQuery));
 
 (function ($) {
   var arr = theArray4;
-  doSweep("container9", arr, 1);
+  doSweep("shellsort_av9", arr, 1);
 }(jQuery));
