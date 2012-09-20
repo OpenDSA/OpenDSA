@@ -1,5 +1,5 @@
-var server = "128.173.55.223:8080"; //"128.173.54.186:8000";
-var base_url = "http://" + server;
+// Set server_url = "" in order to disable server communication and most logging
+var server_url = "http://128.173.55.223:8080"; //128.173.54.186:8000
 
 $(document).ready(function() {
 	//Make sure localStorage is enabled
@@ -37,9 +37,13 @@ $(document).ready(function() {
 			log_user_action(getNameFromURL(), 'document-ready', 'User loaded the page');
 		}
 		
+		// Submit any stored data when the page loads
+		flush_stored_data();
+		
 		// Suggest the user login if they don't have a valid session,
 		// update the login link with their name if they do
 		if (is_SessionExpired()){
+			localStorage.removeItem("login_prompt");
 			localStorage.removeItem("opendsa");
 			showLoginBox();
 		} else {
@@ -53,12 +57,18 @@ $(document).ready(function() {
 		//$('input[data-desc]').each(function(index, item){
 		// Add button_logger to all buttons on the page
 		$(':button').each(function(index, item){
-			$(item).click(button_logger);
+			// Don't attach handler to JSAV managed controls
+			if (!isJSAVControl(item)) {
+				$(item).click(button_logger);
+			}
 		});
 		
 		// Add link_logger to all links on the page
 		$('a').each(function(index, item){
-			$(item).click(link_logger);
+			// Don't attach handler to JSAV managed controls
+			if (!isJSAVControl(item)) {
+				$(item).click(link_logger);
+			}
 		});
 
 		// Attempts to log the user in when they click submit on the login window
@@ -66,21 +76,23 @@ $(document).ready(function() {
 			//authenticate user
 			username = document.forms["signin"]["username"].value;
 			password = document.forms["signin"]["password"].value;
+			//password = SHA1(password);
 			jQuery.ajax({
-				url:   base_url + "/api/v1/users/login/",
+				url:   server_url + "/api/v1/users/login/",
 				type:  "POST",
 				data: {"username":  username , "password": password  },
 				contentType: "application/json; charset=utf-8",
 				datatype: "json",
 				xhrFields: {withCredentials: true},
 				success: function(data) {
-					var obj = getJSON(data);
+					data = getJSON(data);
 				
-					if(obj.success){
+					if(data.success){
 						updateLocalStorage(username );
 					
 						localStorage.name=document.forms["signin"]["username"].value; //$('username').attr('value');
 						$('a.login-window').text(username);
+						hideLoginBox();
 
 						log_user_action('', 'user-login', 'User logged in');
 						// Submit any stored data
@@ -89,10 +101,17 @@ $(document).ready(function() {
 						update_proficiency_display(username);
 					}
 				},
-				error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
+				error: function(data){ 
+					data = getJSON(data);
+					console.log("ERROR " +  JSON.stringify( data ));
+					
+					if (data.status == 401) {
+						alert("Incorrect username / password combination");
+					} else {
+						hideLoginBox();
+					}
+				}
 			});
-			
-			hideLoginBox();
 		});
 
 		// Brings up the login box if the user clicks 'Login' and
@@ -105,7 +124,7 @@ $(document).ready(function() {
 				// Submit whatever data we have collected before the user logs out
 				flush_stored_data();
 				jQuery.ajax({
-					url:   base_url + "/api/v1/users/logout/",
+					url:   server_url + "/api/v1/users/logout/",
 					type:  "GET",
 					data: {"username":  get_user_fromDS() },
 					contentType: "application/json; charset=utf-8",
@@ -116,6 +135,7 @@ $(document).ready(function() {
 					
 						if(obj.success){
 							log_user_action('', 'user-logout', 'User logged out');
+							localStorage.removeItem('login-prompt');
 							localStorage.removeItem('opendsa');
 							$('a.login-window').text("Login");
 						}
@@ -235,14 +255,17 @@ function update_proficiency_display(username){
 	// Don't bother trying to contact the server if one isn't setup
 	if (serverEnabled()) {
 		var av_url, av_name, resp;
+		var username = get_user_fromDS();
+		
+		// TODO: Store whether or not user is proficient with certain things in localStorage so we don't have to hit the server every time, allow users to store their proficiency without logging in?
 		
 		$('.showLink').each(function(index, item){
 			av_url = $(item).attr("name").split("+")[0].split("/");
 			av_name = av_url[av_url.length -1].split(".")[0];
 			jQuery.ajax({
-				url:   base_url + "/api/v1/userdata/isproficient/",
+				url:   server_url + "/api/v1/userdata/isproficient/",
 				type:  "POST",
-				data: {"user":  get_user_fromDS(),"exercise": av_name },
+				data: {"user": username,"exercise": av_name },
 				contentType: "application/json; charset=utf-8",
 				datatype: "json",
 				xhrFields: {withCredentials: true},
@@ -261,9 +284,9 @@ function update_proficiency_display(username){
 			av_url = $(item).attr("name").split("+")[0].split("/");
 			av_name = av_url[av_url.length -1].split(".")[0];
 			jQuery.ajax({
-				url:   base_url + "/api/v1/userdata/isproficient/",
+				url:   server_url + "/api/v1/userdata/isproficient/",
 				type:  "POST",
-				data: {"user":  get_user_fromDS(),"exercise": av_name },
+				data: {"user": username,"exercise": av_name },
 				contentType: "application/json; charset=utf-8",
 				datatype: "json",
 				xhrFields: {withCredentials: true},
@@ -284,9 +307,9 @@ function update_proficiency_display(username){
 			console.log("checking for proficiency of: " + av_name);
 		
 			jQuery.ajax({
-				url:   base_url + "/api/v1/userdata/isproficient/",
+				url:   server_url + "/api/v1/userdata/isproficient/",
 				type:  "POST",
-				data: {"user":  get_user_fromDS(),"exercise": av_name },
+				data: {"user": username,"exercise": av_name },
 				contentType: "application/json; charset=utf-8",
 				datatype: "json",
 				xhrFields: {withCredentials: true},
@@ -358,7 +381,7 @@ function get_user_fromDS() {
 
 // Determine if the backend metrics collection server is enabled
 function serverEnabled() {
-	return (server !== "");
+	return (server_url !== "");
 }
 
 function userLoggedIn() {
@@ -378,10 +401,22 @@ function getNameFromURL()
 {
 	var path = location.pathname;
 	var start = path.lastIndexOf("/") + 1;
-	var end = path.lastIndexOf(".html");
+	var end = path.lastIndexOf(".htm");
 	return path.slice(start, end);
 }
 
+/**
+ * Returns true if the given element is a JSAV managed control
+ * Relies on JSAV controls being in a container with a class that matches '.*jsav\w*control.*'
+ * include "jsavexercisecontrols" and "jsavcontrols"
+ */
+function isJSAVControl(item) {
+	return (item !== "undefined" && item.parentElement !== "undefined" && item.parentElement.className.match(/.*jsav\w*control.*/) !== null);
+}
+
+/**
+ * Returns the name of the AV or exercise if called from an AV page, returns "" otherwise
+ */
 function getAVName() {
 	// TODO: Find a better way to determine whether the page is a module or not
 	if (document.title.match(".+OpenDSA Sample eTextbook") != null) {
@@ -432,9 +467,11 @@ if (serverEnabled()) {
 		
 		if (data.type === "jsav-exercise-grade-change") {
 			// On grade change events, log the user's score and submit it
-			store_av_score(data.av, data.score);
+			store_av_score(data.av, "pe", data.score);
 			flush_stored_data();
 		} else if (data.type === "jsav-forward" && data.currentStep == data.totalSteps) {
+			// TODO: If user is already proficient don't need to send grade data again?
+			
 			// When a user reaches the end of an AV, store and submit a completion score
 			var score = {};
 			score.student = data.currentStep;
@@ -444,7 +481,7 @@ if (serverEnabled()) {
 			score.undo = 0;
 			
 			// Store and submit the score
-			store_av_score(data.av, score);
+			store_av_score(data.av, "ss", score);
 			flush_stored_data();
 			
 			// Mark the AV as completed
@@ -463,7 +500,11 @@ function mark_inline_av_completed(av_name)
 	}
 }
 
-// The function OpenDSA developers will call to log the initialization of an array
+/**
+ * Logs the initial state of an array generated for an AV or exercise
+ *     av_name - Name of the AV with which the array is associated
+ *     js_array - Raw JavaScript array containing the initial data
+ */
 function log_exercise_init_array(av_name, arr) {
 	if (serverEnabled()) {
 		log_user_action(av_name, 'exercise_initialization', '[' + initialArray.toString() + ']');
@@ -483,7 +524,7 @@ function button_logger() {
 		var desc = "";
 		
 		// TODO: Find a better way to get the description for a button
-		if (this.getAttribute('data-desc') !== null) {
+		if (this.hasAttribute('data-desc')) {
 			desc = this.getAttribute('data-desc');
 		} else if (this.id !== "") {
 			desc = this.id;
@@ -503,11 +544,14 @@ function link_logger() {
 	}
 }
 
-// The function OpenDSA developers will call to log a user action
+/**
+ * Logs a custom user interaction
+ *     av_name - Name of the AV with which the action is associated
+ *     type - String identifying the type of action
+ *     desc - Human-readable string describing the action
+ */
 function log_user_action(av_name, type, desc) {
 	if (serverEnabled()) {
-		
-		console.log("log_user_action(" + av_name + ", " + type + ", " + desc +");"); 	// TODO: FOR TESTING
 		
 		var json_data = {};
 		json_data.av = av_name;
@@ -517,12 +561,20 @@ function log_user_action(av_name, type, desc) {
 	}
 }
 
-// Appends given JSON data to a list of events stored in localStorage
+/**
+ * Appends the given data to the event log
+ *     data - A JSON string or object containing event data, must contain the following fields: 'av', 'type', 'desc'
+ */
 function log_event(data) {
 	if (serverEnabled()) {
 		data = getJSON(data);
 		
-		console.log("logging: " + data.desc);		//TODO: FOR TESTING
+		// Ensure given JSON data is a valid event
+		if (!isValidEvent(data)) {
+			return;
+		}
+
+		console.log("av: " + data.av + ", type: " + data.type + ", desc: " + data.desc);		//TODO: FOR TESTING
 		
 		var modName = getModuleName();
 		
@@ -556,8 +608,37 @@ function log_event(data) {
 	}
 }
 
+/**
+ * Checks the given JSON object to ensure it has the correct fields
+ *     data - a JSON object representing an event
+ */
+function isValidEvent(data) {
+	var missingFields = [];
+	
+	if (typeof data.av === "undefined") {
+		missingFields.push('av');
+	}
+	if (typeof data.type === "undefined") {
+		missingFields.push('type');
+	}
+	if (typeof data.desc === "undefined") {
+		missingFields.push('desc');
+	}
+	
+	if (missingFields.length == 1) {
+		console.log("ERROR: invalid event, '" + missingFields[0] + "' is undefined");
+		return false;
+	} else if (missingFields.length > 1) {
+		var fields = missingFields.toString().replace(",", "', '");
+		console.log("ERROR: invalid event, '" + fields + "' are undefined");
+		return false;
+	}
+	
+	return true;
+}
+
 // Stores the user's score for an AV / exercise
-function store_av_score(av_name, score) {
+function store_av_score(av_name, type, score) {
 	if (serverEnabled()) {
 		var score_data = {};
 		
@@ -573,6 +654,7 @@ function store_av_score(av_name, score) {
 			data.submit_time = (new Date).getTime();
 			data.module_name = getModuleName();
 			data.score = score;
+			data.type = type;
 			data.attempt = 0;		// TODO: Figure out how to record attempts
 			data.total_time = 0;	// TODO: Figure out how to record total time
 			score_data[av_name] = data;
@@ -582,7 +664,9 @@ function store_av_score(av_name, score) {
 	}
 }
 
-// Sends stored event data and any stored AV scores
+/**
+ * Sends all stored event and AV score data to the server
+ */
 function flush_stored_data() {
 	if (serverEnabled()) {
 		send_event_data();
@@ -592,23 +676,29 @@ function flush_stored_data() {
 
 // Sends the event data logged in localStorage to the server
 function send_event_data() {
-	if (serverEnabled() && userLoggedIn()) {
+	if (serverEnabled()) {
 		var event_list = getJSON(localStorage["event_data"]);
 
 		// Return if there is no data to send
-		if (event_list.length == 0) {
+		if (typeof event_list === "undefined" || event_list.length == 0) {
 			return true;
+		}
+		
+		var username = get_user_fromDS();
+		
+		if (!userLoggedIn()) {
+			username = "phantom";
 		}
 
 		var json_data = {};
-		json_data.username = get_user_fromDS();
+		json_data.username = username;
 		// Timestamp the submission so we can calculate offset from server time
 		json_data.submit_time = (new Date()).getTime();
 		json_data.actions = JSON.stringify(event_list);		// TODO: Find a better way to send this list so that Django can still interpret it
 		
 		// Send the data to the server
 		jQuery.ajax({
-			url:   base_url + "/api/v1/user/exercise/avbutton/",
+			url:   server_url + "/api/v1/user/exercise/avbutton/",
 			type:  "POST",
 			data: json_data,
 			contentType: "application/json; charset=utf-8",
@@ -671,7 +761,7 @@ function send_av_score(av_name) {
 			json_data.username = username;
 			
 			jQuery.ajax({
-				url:   base_url + "/api/v1/user/exercise/attemptpe/",
+				url:   server_url + "/api/v1/user/exercise/attemptpe/",
 				type:  "POST",
 				data: json_data,
 				contentType: "application/json; charset=utf-8",
@@ -695,8 +785,17 @@ function send_av_score(av_name) {
 				}
 			});
 		} else {
-			alert('You must be logged in to receive credit');
+			prompt_user_login();
 		}
+	}
+}
+
+function prompt_user_login()
+{
+	// Only prompt the user once per session
+	if (serverEnabled() && typeof localStorage["login_prompt"] === "undefined") {
+		alert('You must be logged in to receive credit');
+		localStorage["login_prompt"] = true;
 	}
 }
 
@@ -726,7 +825,7 @@ function send_av_scores() {
 			json_data.avs = score_data;
 			
 			jQuery.ajax({
-				url:   base_url + "/api/v1/user/exercise/attemptpe/",
+				url:   server_url + "/api/v1/user/exercise/attemptpe/",
 				type:  "POST",
 				data: json_data,
 				contentType: "application/json; charset=utf-8",
@@ -965,5 +1064,4 @@ function SHA1 (msg) {
 	var temp = cvt_hex(H0) + cvt_hex(H1) + cvt_hex(H2) + cvt_hex(H3) + cvt_hex(H4);
 
 	return temp.toLowerCase();
-
 }

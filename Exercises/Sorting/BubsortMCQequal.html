@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
+<html data-require="math">
 <head>
-  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 2</title>
+  <title>OpenDSA Bubble Sort Question</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -15,24 +15,22 @@
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question"> What is the worst-case time for
-	Insertionsort to sort an array of <var><code>n</code></var> records? </p> 
+      <p class="question"> What is the running time of Bubble Sort
+	when the input is an array where all record values are equal? </p> 
       <div class="solution"><var><code>\Theta(n^2)</code></var></div>
       <ul class="choices">
 	<li><var><code>\Theta(n)</code></var></li>
 	<li><var><code>\Theta(\log n)</code></var></li>
-	<li><var><code>\Theta(n \log n)</code></var></li>	  	 
+	<li><var><code>\Theta(n \log n)</code></var></li>	 	 
       </ul>
-      <div class="hints">
-        <p>In the worst case, each record must make its way to the
-           start of the array. This would occur if the record values are
-	   initially arranged from highest to lowest, in the reverse
-	   of sorted order.</p>
-        <p>In this case, the number of comparisons will be one the
-	   first time through the for loop, two the second time, and
-	   so on.</p>
-      </div>
-    </div> 
+	  <div class="hints">
+	   <p>Each test in the inner for loop will fail because the
+	   value at position <code>i</code> is never less than the
+	   value at position <code>i-1</code>.</p>
+	   </div>
+    </div> 	  
+
+   
   </div>
 </div>
 </body>

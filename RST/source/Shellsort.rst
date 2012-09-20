@@ -81,11 +81,11 @@ elements 4 through 7), then we can skip processing them.
 
 .. raw:: html
 
-   <div id="container1">
+   <div id="shellsort_av1">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>
-     <img id="container1_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
+     <img id="shellsort_av1_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 In the actual Shellsort, each of these sublists of length 2 gets
@@ -99,11 +99,11 @@ the two items are being compared you won't see anything yellow anymore!)
 
 .. raw:: html
 
-   <div id="container2">
+   <div id="shellsort_av2">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>
-     <img id="container2_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
+     <img id="shellsort_av2_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 At the end of the first pass, the resulting array is "a little better
@@ -111,7 +111,7 @@ sorted".
 
 .. raw:: html
 
-   <div id="container3">
+   <div id="shellsort_av3">
    </div>
 
 The second pass of Shellsort looks at fewer, bigger sublists.
@@ -129,11 +129,11 @@ increment size 4.
 
 .. raw:: html
 
-   <div id="container4">
+   <div id="shellsort_av4">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>
-     <img id="container4_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
+     <img id="shellsort_av4_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 Each sublist of 3 elements would also be sorted using an Insertion
@@ -141,11 +141,11 @@ Sort, as shown next.
 
 .. raw:: html
 
-   <div id="container5">
+   <div id="shellsort_av5">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>
-     <img id="container5_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
+     <img id="shellsort_av5_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 At the end of processing sublists with increment 4, the array is
@@ -153,7 +153,7 @@ At the end of processing sublists with increment 4, the array is
 
 .. raw:: html
 
-   <div id="container6">
+   <div id="shellsort_av6">
    </div>
 
 The third pass will be made on sublists with increment 2.
@@ -163,18 +163,18 @@ As usual, we sort the sublists using Insertion Sort.
 
 .. raw:: html
 
-   <div id="container7">
+   <div id="shellsort_av7">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>
-     <img id="container7_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
+     <img id="shellsort_av7_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 At this point, we are getting close to sorted.
 
 .. raw:: html
 
-   <div id="container8">
+   <div id="shellsort_av8">
    </div>
 
 Shellsort's final pass will always use an increment of 1,
@@ -182,11 +182,11 @@ which means a "regular" Insertion Sort of all elements.
 
 .. raw:: html
 
-   <div id="container9">
+   <div id="shellsort_av9">
      <span class="jsavcounter"></span>
      <a class="jsavsettings" href="#">Settings</a>
      <div class="jsavcontrols"></div>
-     <img id="container9_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
+     <img id="shellsort_av9_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
 Finally, the array is sorted.

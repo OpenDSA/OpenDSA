@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="math spin">
 <head>
-  <title>Sorting Intro: Multiple Choice Question 4</title>
+  <title>Bubble Sort Question</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -10,23 +10,28 @@
   <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 </head>
-<body>
 
+<body>
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question">In which case might the number of
-	comparisions NOT be a good representation of the cost for a sorting algorithm?</p>
-      <div class="solution">
-         <var>"When we are comparing strings of widely varying length"</var>
+      <div class="spin">
+        <p class="question"> What is the {best|average|worst}-case time for
+	  Bubble Sort to sort an array of <var><code>n</code></var> records? </p> 
       </div>
-        <ul class="choices">
-          <li><var>"When there are lots of records"</var></li>
-          <li><var>"When the CPU is really fast"</var></li>
-          <li><var>"When the amount of available space is small"</var></li>
-        </ul>
-      </div>
+      <div class="solution"><var><code>\Theta(n^2)</code></var></div>
+      <ul class="choices">
+	<li><var><code>\Theta(n)</code></var></li>
+	<li><var><code>\Theta(\log n)</code></var></li>
+	<li><var><code>\Theta(n \log n)</code></var></li>	  	 
+      </ul>
+	  <div class="hints">
+	   <p>Does Bubble Sort's number of comparisons depend on the
+	      particular order of the input array?</p>
+	   <p>No, it does not.</p>
+	  </div>
     </div>
+		
   </div>
 </div>
 </body>

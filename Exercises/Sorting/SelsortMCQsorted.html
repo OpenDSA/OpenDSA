@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
+<html data-require="math spin">
 <head>
-  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 6</title>
+  <title>Selection Sort Question: Sorted Input</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -15,22 +15,22 @@
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question"> What is the running time of Insertion Sort
-	when the input is an array where all record values are equal? </p> 
+      <div class="spin">
+        <p class="question"> What is the running time of Insertion Sort
+          when the input is an array that
+          {has already been sorted|is reverse sorted|has all equal values}? </p>
+      </div>
       <div class="solution"><var><code>\Theta(n)</code></var></div>
       <ul class="choices">
 	<li><var><code>\Theta(n^2)</code></var></li>
 	<li><var><code>\Theta(\log n)</code></var></li>
 	<li><var><code>\Theta(n \log n)</code></var></li>	 	 
       </ul>
-	  <div class="hints">
-	   <p>Each test in the inner for loop will fail because the
-	   value at position <code>i</code> is never less than the
-	   value at position <code>i-1</code>.</p>
-	   </div>
-    </div> 	  
-
-   
+      <div class="hints">
+        <p>Each test in the inner for loop will be the same no
+           matter what the order of the input array.</p>
+      </div>
+    </div> 
   </div>
 </div>
 </body>

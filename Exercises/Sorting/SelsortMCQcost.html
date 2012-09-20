@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html data-require="math spin">
+<head>
+  <title>Selection Sort Question</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <div class="spin">
+        <p class="question"> What is the {best|average|worst}-case time for
+	  Selection Sort to sort an array of <var><code>n</code></var> records? </p> 
+      </div>
+      <div class="solution"><var><code>\Theta(n^2)</code></var></div>
+      <ul class="choices">
+	<li><var><code>\Theta(n)</code></var></li>
+	<li><var><code>\Theta(\log n)</code></var></li>
+	<li><var><code>\Theta(n \log n)</code></var></li>	  	 
+      </ul>
+	  <div class="hints">
+	   <p>Does Selection Sort's order and number of comparisons
+	      depend on the particular order of the input array?</p>
+	   <p>No, it does not.</p>
+	   <p>Recall that our implementation for Selection Sort will
+              try to swap even if the current element is in its correct
+              location.
+	  </div>
+    </div>
+		
+  </div>
+</div>
+</body>
+</html>

@@ -109,7 +109,7 @@ expected number of swaps.
 The actual number of swaps performed by Bubble Sort will be identical
 to that performed by Insertion Sort.
 
-.. avembed:: Exercises/Development/BubbleSortSumm.html
+.. avembed:: Exercises/Sorting/BubsortSumm.html
    :showbutton: hide
    :title: Review Questions
 
