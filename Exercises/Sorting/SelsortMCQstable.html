@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Bubble Sort Question</title>
+  <title>Selection Sort Question</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
      src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
-  </script>
+</script>
   <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 </head>
@@ -15,19 +15,22 @@
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question"> In the worst case, the total number of
-        comparisons for Bubble Sort is closest to: </p>
-      <div class="solution"><var><code>n^2/2</code></var></div>
-        <ul class="choices">
-          <li><var><code>n</code></var></li>	 	 
-          <li><var><code>n^2</code></var></li>	 	 
+      <p class="question">Selection Sort (as the code is written in this
+	module) is a stable sorting algorithm. Recall that a stable sorting
+	algorithm maintains the relative order of records with equal keys.</p>
+      <div class="solution"><var>"False"</var></div>
+      <ul class="choices" data-category="true">
+	<li><var>"True"</var></li>
+	<li><var>"False"</var></li>			  	  	 
       </ul>
       <div class="hints">
-        <p>Insertion Sort's implementation is made up of two nested for loops.</p>
-        <p>The outer for loop is executed <code>n-1</code> times.</p>
-        <p>The inner for loop is executed <code>i</code> times.</p>
-        <p>The total cost is the sum of <code>i</code>'s
-           for <code>i</code> goes from 1 to <code>n</code>.</p>
+        <p>Think of the behaviour of every pass through the inner
+	   for loop of Selection Sort if two records are equal, with
+	   the greatest value in the array.</p>
+        <p>Which record will be selected?</p>
+	<p>The first such record.</p>
+	<p>Where will it be moved to?</p>
+	<p>The last position in the array.</p>
       </div>
     </div> 
   </div>

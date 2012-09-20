@@ -100,6 +100,26 @@ large records.
 Selection Sort is more efficient than Bubble Sort (by a constant
 factor) in most other situations as well.
 
+You should note that the way our Selection Sort code is written,
+a call to ``swap`` will be made even if the current
+record is already in its correct location.
+For example, if the record with the largest value is alread in the
+rightmost array position, ``selsort`` will still call ``swap`` with
+both position parameters being the same.
+The net effect is that the work done by ``swap`` will not change
+anything in the array, and this is a waste of time.
+Thus, the total number of swaps done by Selection sort is always
+:math:`n-1` in the best, average and worst cases.
+It might seem like a good idea to test if the positions are the same
+before calling ``swap``, especially since Selection Sort's claim to
+fame is its low number of swaps.
+Whether this is really a good idea depends on how often the
+unnecessary swap takes place.
+For randomly ordered input, it is more expensive to test this
+condition before every swap than to just do the swap.
+If the input records are already sorted, then all of the swaps are
+unnecessary and it would have been faster to test.
+
 There is another approach to keeping the cost of swapping records low
 that can be used by any sorting algorithm, even when the records are
 large.
@@ -130,7 +150,7 @@ return is a faster swap operation.
 Here are some review questions to check that you understand
 Selection Sort.
 
-.. avembed:: Exercises/Development/SelectionSortSumm.html
+.. avembed:: Exercises/Sorting/SelsortSumm.html
    :showbutton: hide
    :title: Review Questions
 

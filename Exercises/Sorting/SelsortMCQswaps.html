@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="math spin">
 <head>
-  <title>Bubble Sort Question</title>
+  <title>Selection Sort Question</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -15,19 +15,23 @@
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question"> In the worst case, the total number of
-        comparisons for Bubble Sort is closest to: </p>
-      <div class="solution"><var><code>n^2/2</code></var></div>
+      <div class="spin">
+        <p class="question"> In the {best|average|worst} case, the
+          total number of swaps done by Selection Sort is closest to: </p>
+      </div>
+      <div class="solution"><var><code>n</code></var></div>
         <ul class="choices">
-          <li><var><code>n</code></var></li>	 	 
+          <li><var><code>n^2/2</code></var></li>	 	 
           <li><var><code>n^2</code></var></li>	 	 
+          <li><var><code>n \log n</code></var></li>	 	 
       </ul>
       <div class="hints">
-        <p>Insertion Sort's implementation is made up of two nested for loops.</p>
-        <p>The outer for loop is executed <code>n-1</code> times.</p>
-        <p>The inner for loop is executed <code>i</code> times.</p>
-        <p>The total cost is the sum of <code>i</code>'s
-           for <code>i</code> goes from 1 to <code>n</code>.</p>
+       <p>Does Selection Sort's number of swaps
+          depend on the particular order of the input array?</p>
+       <p>No, it does not.</p>
+       <p>Recall that our implementation for Selection Sort will
+          try to swap even if the current element is in its correct
+          location.</p>
       </div>
     </div> 
   </div>
