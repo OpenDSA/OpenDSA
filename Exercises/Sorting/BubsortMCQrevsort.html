@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 5</title>
+  <title>OpenDSA Bubble Sort Question</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -15,25 +15,20 @@
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question"> When implementing Insertion Sort, a binary
-	search could be used to locate the position within the first <code>i-1</code>
-	records of the array into which record <code>i</code> should be
-	inserted. In this implementation, the worst case time will be:</p> 
+      <p class="question"> What is the running time for Bubble Sort
+	when the input array has values that are in reverse sort order?</p>
       <div class="solution"><var><code>\Theta(n^2)</code></var></div>
       <ul class="choices">
-	<li><var><code>\Theta(n \log n)</code></var></li>
 	<li><var><code>\Theta(n)</code></var></li>
 	<li><var><code>\Theta(\log n)</code></var></li>
+	<li><var><code>\Theta(n \log n)</code></var></li>	 	 
       </ul>
-	   <div class="hints">
-	   <p>The position to insert could be found in
-	     <code>\Theta (\log i)</code>, but shifting the records to
-	     makeroom for the insert will still require
-	     <code>\Theta(i)</code> time</p>
-	   </div>
+      <div class="hints">
+        <p>On each iteration, the <code>i</code>th record will have
+           to move to the start of the array.</p>
+	<p>This is the worst case.</p>
+      </div>
     </div> 
-
-  
   </div>
 </div>
 </body>

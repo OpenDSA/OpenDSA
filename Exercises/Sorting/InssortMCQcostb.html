@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 5</title>
+  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 3</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -10,30 +10,27 @@
   <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 </head>
-<body>
 
+<body>
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question"> When implementing Insertion Sort, a binary
-	search could be used to locate the position within the first <code>i-1</code>
-	records of the array into which record <code>i</code> should be
-	inserted. In this implementation, the worst case time will be:</p> 
-      <div class="solution"><var><code>\Theta(n^2)</code></var></div>
+      <p class="question">What is the best-case time for
+	Insertionsort to sort an array of <var><code>n</code></var> records?</p>
+      <div class="solution"><var><code>\Theta(n)</code></var></div>
       <ul class="choices">
-	<li><var><code>\Theta(n \log n)</code></var></li>
-	<li><var><code>\Theta(n)</code></var></li>
+	<li><var><code>\Theta(n^2)</code></var></li>
 	<li><var><code>\Theta(\log n)</code></var></li>
+	<li><var><code>\Theta(n \log n)</code></var></li>	  	 
       </ul>
-	   <div class="hints">
-	   <p>The position to insert could be found in
-	     <code>\Theta (\log i)</code>, but shifting the records to
-	     makeroom for the insert will still require
-	     <code>\Theta(i)</code> time</p>
-	   </div>
+	  <div class="hints">
+	   <p>The best-case cost occurs when the records are already in sorted
+	     order from lowest to highest.</p>
+	   <p>In this case, every test on the inner for loop will
+	     fail immediately, and no records will be moved.</p> 
+	  </div>
     </div> 
 
-  
   </div>
 </div>
 </body>

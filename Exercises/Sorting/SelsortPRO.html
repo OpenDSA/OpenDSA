@@ -1,5 +1,5 @@
 <!--
-Insertion Sort mini-proficiency exercise.
+Selection Sort mini-proficiency exercise.
 Written by Gayathri Subramanian and Cliff Shaffer
 -->
 
@@ -7,7 +7,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
 <html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Insertion Sort Proficiency Exercise</title>
+  <title>Selection Sort Proficiency Exercise</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transform.light.js"></script>
@@ -29,26 +29,25 @@ Written by Gayathri Subramanian and Cliff Shaffer
 </head>
 <body>
 
-<script src="InssortPRO.js"></script>
+<script src="SelsortPRO.js"></script>
 
 <div class="exercise">
   <div class="vars">
-    <var id="arr_size">randRange(6, 10)</var>
-    <var id="sort_pos">randRange(2, arr_size-1)</var>
+    <var id="arr_size">randRange(7, 9)</var>
+    <var id="sort_pos">randRange(4, arr_size-1)</var>
     <var id="JSAV">initJSAV(arr_size, sort_pos)</var>
   </div>
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem">Your task in this exercise is to show the
-	behavior for one iteration of the outer for loop of Insertion Sort.
-        In the array displayed below, the record at
-        position <var>sort_pos</var> is highlighted. Insertion Sort has
-        already processed the values to the left of
-        position <var>sort_pos</var>, so those elements are sorted.</p>
+      <p class="problem">In the array of size <var>arr_size</var>
+	displayed below, the element at position <var>sort_pos</var> is
+	highlighted. The array represents an intermediate state in
+	Selection Sort, with all elements to the right of the
+	highlighted element holding the biggest values in the array.</p> 
       <div class="question">
-        <p> Perform the next part of Insertion Sort to move the
-            highlighted record to its proper place in the array.</p>
+        <p>Perform the next iteration of Selection Sort, to put the
+           proper array element into the highlighted position.</p>
         <input id="reset" type="button" value="Reset" />	
         <div id="jsav"></div>
       </div>
@@ -64,9 +63,11 @@ Written by Gayathri Subramanian and Cliff Shaffer
         </div>
       </div>
       <div class="hints">
-        <p>Insert the highlighted element into its proper position in the array using Insertion Sort.</p> 
-	<p>Nothing to the right of position <var>sort_pos</var> should be changed.</p>
-        <p>All elements from position 0 to position <var>sort_pos</var> should be in ascending order.</p>
+        <p>Determine the element which should appear at
+        index <var>sort_pos</var> using Selection Sort.</p>
+        <p>Selection sort will place the largest element from
+        index 0 to index <var>sort_pos</var> at
+        index <var>sort_pos</var>.</p>
       </div>
     </div>
   </div>

@@ -1,4 +1,3 @@
-"use strict";
 var
   jsav,           // The JSAV object
   answerArr = [], // The (internal) array that stores the correct answer
@@ -41,7 +40,7 @@ var swap = function (arr, i, j) {
 
 // Initialise the exercise
 var initJSAV = function (arr_size, sort_pos) {
-  var i, j;
+  var i, j, bigindex;
   userInput = false;
   selected_index = -1;
 
@@ -51,11 +50,14 @@ var initJSAV = function (arr_size, sort_pos) {
     answerArr[i] = Math.floor(Math.random() * 1000);
   }
 
-  // Do a partial insertion sort to set things up
-  for (i = 0; i < sort_pos; i++) {
-    for (j = i; (j > 0) && (answerArr[j] < answerArr[j - 1]); j--) {
-      swap(answerArr, j, j - 1);
+  // Do a partial selection sort to set things up
+  for (i = arr_size-1; i > sort_pos; i--) {
+    bigindex = 0;
+    for (j = 1; j <= i; j++) {
+      if (answerArr[j] > answerArr[bigindex])
+        bigindex = j;
     }
+    swap(answerArr, bigindex, i);
   }
   // Now make a copy
   cloneArr = answerArr.slice(0);
@@ -66,9 +68,12 @@ var initJSAV = function (arr_size, sort_pos) {
   jsavArr.highlight(sort_pos);
 
   // Compute the correct Answer
-  for (j = sort_pos; (j > 0) && (answerArr[j] < answerArr[j - 1]); j--) {
-    swap(answerArr, j, j - 1);
+  bigindex = 0;
+  for (j = 1; j <= sort_pos; j++) {
+    if (answerArr[j] > answerArr[bigindex])
+      bigindex = j;
   }
+  swap(answerArr, bigindex, sort_pos);
 
   // Bind the clickHandler to handle click events on the array
   jsavArr.click(clickHandler);

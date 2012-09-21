@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html data-require="math spin graphie graphie-helpers-arithmetic word-problems">
+<html data-require="math">
 <head>
-  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 8</title>
+  <title>OpenDSA Insertion Sort Question</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -15,18 +15,19 @@
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question"> What is the running time for Insertion Sort
-	when the input array has values that are in reverse sort order?</p>
-      <div class="solution"><var><code>\Theta(n^2)</code></var></div>
-      <ul class="choices">
-	<li><var><code>\Theta(n)</code></var></li>
-	<li><var><code>\Theta(\log n)</code></var></li>
-	<li><var><code>\Theta(n \log n)</code></var></li>	 	 
+      <p class="question"> In the worst case, the total number of
+        comparisons for Insertion Sort is closest to: </p> 
+      <div class="solution"><var><code>n^2/2</code></var></div>
+        <ul class="choices">
+          <li><var><code>n</code></var></li>	 	 
+          <li><var><code>n^2</code></var></li>	 	 
       </ul>
       <div class="hints">
-        <p>On each iteration, the <code>i</code>th record will have
-           to move to the start of the array.</p>
-	<p>This is the worst case.</p>
+        <p>Insertion Sort's implementation is made up of two nested for loops.</p>
+        <p>The outer for loop is executed <code>n-1</code> times.</p>
+        <p>The inner for loop is executed <code>i</code> times.</p>
+        <p>The total cost is the sum of <code>i</code>'s
+           for <code>i</code> goes from 1 to <code>n</code>.</p>
       </div>
     </div> 
   </div>

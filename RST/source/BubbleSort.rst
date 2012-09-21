@@ -33,14 +33,15 @@ However, Bubble Sort can serve as the inspiration for a better sorting
 algorithm that will be presented in
 Module :numref:`Selection Sort <SelectionSort>`.
 
-Bubble Sort consists of a simple double ``for`` loop.
-The first iteration of the inner ``for`` loop moves
-through the record array from left to right, comparing adjacent keys.
+Like Insetion Sort, Bubble Sort consists of a simple double ``for``
+loop.
+The inner ``for`` loop moves through the record array from left to
+right, comparing adjacent keys.
 If the a record's key value is greater than the key of its right
 neighbor, then the two records are swapped.
 Once the largest value is encountered, this process will cause it
 to "bubble" up to the right of the array
-(which is where Bubble Sort gets its name)
+(which is where Bubble Sort gets its name).
 The second pass through the array repeats this process.
 However, because we know that the largest value already reached the
 right of the array on the first pass, there is no need to compare the
@@ -65,7 +66,7 @@ Consider the example of the following array.
    </div>
 
 Now we continue with the second pass. However, since the largest
-element has "bubbled" to the very right, we will not need to look at
+record has "bubbled" to the very right, we will not need to look at
 it again.
 
 .. raw:: html
@@ -84,9 +85,9 @@ The following visualization puts it all together.
 
 Now try for yourself to see if you understand how Bubble Sort works.
 
-.. avembed:: Exercises/Development/BubbleSortElement.html
+.. avembed:: Exercises/Sorting/BubsortPRO.html
    :showbutton: hide
-   :title: Question 1
+   :title: Proficiency Exercise
 
 Determining Bubble Sort's number of comparisons is easy.
 Regardless of the arrangement of the values in the array, the number
@@ -96,19 +97,19 @@ of comparisons made by the inner ``for`` loop is always
 .. math::
    \sum_{i=1}^n i \approx n^2/2 = \Theta(n^2).
 
-Bubble Sort's running time is roughly the same
+Thus, Bubble Sort's running time is roughly the same
 in the best, average, and worst cases.
 
 The number of swaps required depends on how often a
-value is less than the one immediately preceding it in the array.
+record's value is less than that of the record immediately preceding
+it in the array.
 We can expect this to occur for about half the comparisons in the
 average case, leading to :math:`\Theta(n^2)` for the
 expected number of swaps.
 The actual number of swaps performed by Bubble Sort will be identical
-to that performed by
-Insertion Sort.
+to that performed by Insertion Sort.
 
-.. avembed:: Exercises/Development/BubbleSortSumm.html
+.. avembed:: Exercises/Sorting/BubsortSumm.html
    :showbutton: hide
    :title: Review Questions
 

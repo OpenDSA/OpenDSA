@@ -24,10 +24,9 @@ var clickHandler = function (index, e) {
 };
 
 // reset function definition
-function f_reset(sort_pos) {
+function f_reset() {
   jsavArr.clear();             // Re-initialize the displayed array object
   jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
-  jsavArr.highlight(sort_pos);
   jsavArr.click(clickHandler); // Rebind click handler after reset
   userInput = false;
 }
@@ -40,7 +39,7 @@ var swap = function (arr, i, j) {
 };
 
 // Initialise the exercise
-var initJSAV = function (arr_size, sort_pos) {
+var initJSAV = function (arr_size) {
   var i, j;
   userInput = false;
   selected_index = -1;
@@ -51,29 +50,24 @@ var initJSAV = function (arr_size, sort_pos) {
     answerArr[i] = Math.floor(Math.random() * 1000);
   }
 
-  // Do a partial insertion sort to set things up
-  for (i = 0; i < sort_pos; i++) {
-    for (j = i; (j > 0) && (answerArr[j] < answerArr[j - 1]); j--) {
-      swap(answerArr, j, j - 1);
-    }
-  }
   // Now make a copy
   cloneArr = answerArr.slice(0);
 
   jsav = new JSAV("jsav");
   jsav.recorded();
   jsavArr = jsav.ds.array(answerArr, {indexed: true, center: false});
-  jsavArr.highlight(sort_pos);
 
   // Compute the correct Answer
-  for (j = sort_pos; (j > 0) && (answerArr[j] < answerArr[j - 1]); j--) {
-    swap(answerArr, j, j - 1);
+  for (i = 0; i < arr_size - 1; i++) {
+    if (answerArr[i] > answerArr[i + 1]) {
+      swap(answerArr, i, i + 1);
+    }
   }
 
   // Bind the clickHandler to handle click events on the array
   jsavArr.click(clickHandler);
   // Set up handler for reset button
-  $("#reset").click(function () { f_reset(sort_pos); });
+  $("#reset").click(function () { f_reset(); });
 };
 
 // Check student's answer for correctness: User's array must match answer
