@@ -1,0 +1,56 @@
+<!--
+Inversion count mini-proficiency exercise.
+Written by Gayathri Subramanian and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Count Inversions</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+
+  <style>
+    .jsavcontainer {
+      border: 0;
+    }
+  </style>
+</head>
+
+<body>
+<script src="FindInversionsPRO.js"></script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="A">randRange(4, 6)</var>
+    <var id="JSAV">initJSAV(A)</var>
+    <var id="CorrectAnswer">genAnswer()</var>
+  </div>
+  <div class="problems">
+    <div>
+      <div class="question">
+	How many inversions are in the following array?
+	<div id="jsav"></div>
+      </div>
+      <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
+      <div class="hints"> 
+	<p>To count the number of inversions look at each value and
+	  count the number of times that a bigger value is to its
+	  left.</p>
+	<p> The total number of inversions is <var>CorrectAnswer</var></p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

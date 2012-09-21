@@ -117,7 +117,9 @@ Whether this is really a good idea depends on how often the
 unnecessary swap takes place.
 For randomly ordered input, it is more expensive to test this
 condition before every swap than to just do the swap.
-If the input records are already sorted, then all of the swaps are
+So this would be an example of an "optimization" that does not improve
+performance.
+But if the input records are already sorted, then all of the swaps are
 unnecessary and it would have been faster to test.
 
 There is another approach to keeping the cost of swapping records low
@@ -135,7 +137,7 @@ return is a faster swap operation.
 .. _PointerSwap:
 
 .. figure:: Images/PtrSwap.png
-   :width: 400
+   :width: 300
    :align: center
    :figwidth: 90%
    :alt: Swapping pointers to records

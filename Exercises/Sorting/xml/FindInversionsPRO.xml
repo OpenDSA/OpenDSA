@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <entry>
-<id>http://algoviz.org/OpenDSA/Exercises/FindInversions.html</id>
+<id>http://algoviz.org/OpenDSA/Exercises/Sorting/FindInversionsPRO.html</id>
 <title type='text'>Inversions Count Exercise</title>
-<description type='text'>Inversions Count Multiple Choice Questions</description>
+<description type='text'>Inversions Count Exercise</description>
 <type>ka</type>
-<width>1000</width>
-<height>700</height>
+<width>950</width>
+<height>400</height>
 <author>
 <name>OpenDSA</name>
 <uri>http://algoviz.org/OpenDSA/</uri>
