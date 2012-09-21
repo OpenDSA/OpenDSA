@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: Glossary
-   :author: Cliff Shaffer
+   :author: OpenDSA Contributors
    :prerequisites: 
    :topic:
    :short_name: Glossary
@@ -27,12 +27,35 @@ Glossary
       and ``.compareTo()`` is the ``Comparable`` interface method that
       implements the actual comparison between two objects of the class.
 
+   comparator (or comparator function)
+      A function given as a parameter to a method of a library
+      (or alternatively, a parameter for a C++ template or a Java
+      generic).
+      The comparator function concept provides a generic way
+      encapulates the process of performing a comparison between two
+      objects of a specific type.
+      For example, if we want to write a generic sorting routine, that
+      can handle any record type, we can require that the user of the
+      sorting routine pass in a comparator function
+      to define how records in the collection are to be compared.
+
    diminishing increment sort
       Another name for Shellsort.
 
    key
       A field or part of a larger record used to represent that record
       for the purpose of searching or comparing.
+
+   key-record pair
+      A standard solution for solving the problem of how to relate a
+      key value to a record (or how to find the key for a given
+      record) within the context of a particular index.
+      The idea is to simply stores as records in the index pairs of
+      keys and records.
+      Specifically, the index will typically store a copy of the key
+      along with a reference to the record.
+      The other standard solution to this problem is to pass a
+      comparator function to the index methods.
 
    sorting problem
       Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`

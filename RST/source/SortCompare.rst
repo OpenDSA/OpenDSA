@@ -23,8 +23,8 @@ Comparing Records
 If we want to sort some things, we have to be able to compare them, to
 decide which one is bigger.
 How do we compare two things?
-If all that we wanted to sort was simple integer values, this would
-not be an interesting question.
+If all that we wanted to sort or search for was simple integer values,
+this would not be an interesting question.
 We can just use standard comparison operators like "<" or ">".
 Even if we wanted to store strings, most programming languages give us
 built-in functions for comparing strings alphabetically.
@@ -41,6 +41,8 @@ represent the record,
 which itself is something simple like an integer.
 This field is referred to as the :dfn:`key` for the record.
 
+.. index:: ! key
+
 Likewise, if we want to search for a given record in a database, how
 should we describe what we are looking for?
 A database record could simply be a number, or it could be quite
@@ -55,6 +57,10 @@ key value.
 For example, if searching for payroll records, we might wish to
 search for the record that matches a particular ID number.
 In this example the ID number is the :dfn:`search key`.
+
+.. index:: ! search key
+
+.. index:: ! comparable
 
 To implement sorting or searching, we require that keys be :dfn:`comparable`.
 At a minimum, we must be able to take two keys and reliably determine
@@ -88,11 +94,12 @@ The problem is that the "keyness" of a given field is not an inherent
 property within the record, but rather depends on the context.
 
 Some languages like Java and C++ have special infrastructure for
-supporting this (such as the ``Comparable`` interface and the
-``.compareTo()`` method in Java).
+supporting this (such as the ``Comparable`` interface in Java,
+which has the ``.compareTo()`` method for defining the exact process
+by which two objects are compared).
 But many languages like Processing and JavaScript do not.
-One good general-purpose solution is to explicitly store "key-record"
-pairs in the data structure.
+One good general-purpose solution is to explicitly store
+:index:`key-record pairs` in the data structure.
 For example, if we want to sort a bunch of records, we can store them
 in an array where every array entry contains both a key value for the
 record and a pointer to the record itself.

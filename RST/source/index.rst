@@ -9,7 +9,7 @@
    contain the root `toctree` directive.
 
 .. avmetadata:: OpenDSA Sample eTextbook
-   :author: Cliff Shaffer
+   :author: OpenDSA Contributors
    :prerequisites:
    :topic: Data Structures
    :short_name: index

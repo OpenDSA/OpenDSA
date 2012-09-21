@@ -17,3 +17,11 @@ Set Definitions [STUB]
 ======================
 
 Placeholder for Crossreference
+
+.. index:: ! Total Order
+
+.. TODO::
+   :type: Definition
+
+   Definition for "Total Order"
+
