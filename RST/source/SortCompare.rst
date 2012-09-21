@@ -118,13 +118,16 @@ comparison problem.
 To illustrate, here is an example of Insertion Sort implemented to
 work on an array that stores key-record pairs.
 
-.. TODO::
-   :type: Pseudocode
+.. codeinclude:: Sorting/InssortKV/InssortKV.pde 
+   :tag: InssortKV
 
-   Show an implementation of Insertion Sort using key-record pairs.
+You can see a complete implementation supporting this version of
+Insertion Sort here_.
 
-.. TODO::
-   :type: Multiple Choice Questions
+.. _here: ../../../SourceCode/Processing/Sorting/InssortKV/InssortKV.pde
 
-   Write questions to test understanding of the contents for this
-   module.
+Here are some review questions to test your knowledge from this module.
+
+.. avembed:: Exercises/Sorting/SortCompareSumm.html
+   :showbutton: hide
+   :title: Review Questions

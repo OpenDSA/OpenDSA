@@ -140,7 +140,7 @@ return is a faster swap operation.
    :figwidth: 90%
    :alt: Swapping pointers to records
 
-   Figure: An example of swapping pointers to records.
+   An example of swapping pointers to records.
    (a) A series of four records.
    The record with key value 42 comes before the record with key value 5.
    (b) The four records after the top two pointers have been swapped.
