@@ -48,7 +48,7 @@ function sweep(av, myarr, incr) {
   var j = 0;
   var highlightFunction = function (index) { return index % incr === j; };
   for (j = 0; j < incr; j++) {         // Sort each sublist
-    if((j+incr) == myarr.size()) { // Only one element, don't process
+    if ((j + incr) === myarr.size()) { // Only one element, don't process
       return;
     }
     // Highlight the sublist
