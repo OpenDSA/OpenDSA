@@ -19,9 +19,18 @@
 .. include:: JSAVheader.rinc
 
 .. chapnum::
-   :start: 1
+   :start: 0
    :prefix: Chapter    
 
+
+Preface
+-------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   Intro
 
 Background
 ----------
