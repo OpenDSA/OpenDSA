@@ -162,8 +162,7 @@ $(document).ready(function() {
 
 	$("input.showLink").click(function(event){
 		// If the server is enabled and no user is logged in, prompt them to login
-		if (serverEnabled() && !userLoggedIn())
-		{
+		if (serverEnabled() && !userLoggedIn() && !inLocalStorage("login_prompt")) {
 			alert('You must login to complete exercises');
 			showLoginBox();
 			return;
