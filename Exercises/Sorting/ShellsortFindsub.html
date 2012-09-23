@@ -1,5 +1,5 @@
 <!--
-Bubble Sort mini-proficiency exercise.
+Shellsort "find sublist" mini-proficiency exercise.
 Written by Gayathri Subramanian and Cliff Shaffer
 -->
 
@@ -7,7 +7,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
 <html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Bubble Sort Proficiency Exercise</title>
+  <title>FindSubList</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transform.light.js"></script>
@@ -24,45 +24,43 @@ Written by Gayathri Subramanian and Cliff Shaffer
     .jsavcontainer {
       border: 0px;
     }
-    #reset { margin-right: 20px;}
   </style>
 </head>
 
 <body>
-<script src="BubsortPRO.js"></script>
+<script src="ShellsortFindsub.js"></script>
 
 <div class="exercise">
   <div class="vars">
-    <var id="arr_size">randRange(7, 9)</var>
+    <var id="arr_size">randRange(4,12)</var>
+    <var id="inc_size">randRange( 2, arr_size/2)</var>
+    <var id="start_pos">randRange(0,inc_size-1)</var>
     <var id="JSAV">initJSAV(arr_size)</var>
+    <var id="sec_pos">start_pos+inc_size</var>
   </div>
-
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <div class="question">
-        <p>Your task in this exercise is to show the
-           behavior for one iteration of the outer for loop of Bubble Sort.
-           Simply click on entries in the array to swap them in the way
-           that Bubble Sort would during its first pass.</p>
-        <input id="reset" type="button" value="Reset" />	
-        <div id="jsav"></div>
+	<p>Highlight all records contained in the sublist with
+          increment <var>inc_size</var> starting at
+          index <var>start_pos</var></p>
+	<div id="jsav"></div>
       </div>
       <div class="solution" data-type="custom">
-        <div class="guess">
-          [userInput]
-        </div>
-        <div class="validator-function">
-          if (!checkAnswer(arr_size) && !guess[0])
-            return ""; // User did not click, and correct answer is not
-	               // initial array state
-          else return checkAnswer(arr_size);
-        </div>
+	<div class="guess">
+      	  [userInput]
+	</div>
+	<div class="validator-function">
+	  if (!guess[0])
+            return ""; // User did not click anything
+          else
+            return checkAnswer (arr_size,start_pos,inc_size);
+	</div>
       </div>
       <div class="hints">
-        <p>What does Bubble Sort do?</p>
-	<p>Move from left to right through the array.</p>
-        <p>At each position, if the value is greater than the value to
-           its right, then swap them.</p>
+	<p>The first record of the sublist is at position <var>start_pos</var></p>
+	<p>The subsequent records of the sublist are spaced <var>inc_size</var> positions apart from each other.</p>
+	<p>In this instance, the second records would be at position <var>sec_pos</var>, and so on.</p>
       </div>
     </div>
   </div>

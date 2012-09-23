@@ -24,7 +24,7 @@ var clickHandler = function (index, e) {
 };
 
 // reset function definition
-function f_reset() {
+var f_reset = function () {
   jsavArr.clear();             // Re-initialize the displayed array object
   jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
   jsavArr.click(clickHandler); // Rebind click handler after reset
