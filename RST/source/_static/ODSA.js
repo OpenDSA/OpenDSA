@@ -108,7 +108,11 @@ $(document).ready(function() {
 					
 					if (data.status == 401) {
 						alert("Incorrect username / password combination");
+					} else if (data.status == 0) {
+						alert("Login failed because the server is not responding or is not reachable.\nFor help, please contact the OpenDSA team.");
+						hideLoginBox();
 					} else {
+						alert("Login failed");
 						hideLoginBox();
 					}
 				}
