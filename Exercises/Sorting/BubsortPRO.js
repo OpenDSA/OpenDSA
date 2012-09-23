@@ -29,7 +29,7 @@ var f_reset = function () {
   jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
   jsavArr.click(clickHandler); // Rebind click handler after reset
   userInput = false;
-}
+};
 
 // swap two values in array
 var swap = function (arr, i, j) {

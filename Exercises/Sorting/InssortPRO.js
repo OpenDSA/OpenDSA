@@ -30,7 +30,7 @@ var f_reset = function (sort_pos) {
   jsavArr.highlight(sort_pos);
   jsavArr.click(clickHandler); // Rebind click handler after reset
   userInput = false;
-}
+};
 
 // swap two values in array
 var swap = function (arr, i, j) {
