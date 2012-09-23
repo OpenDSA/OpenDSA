@@ -156,6 +156,8 @@ $(document).ready(function() {
 
 		// When clicking on the button close or the mask layer the popup closed
 		$('a.close, #mask').live('click', function() {
+			// If the user tries to close the login box without logging 
+			// in, warn them they will not receive credit without logging in
 			prompt_user_login();
 			hideLoginBox();
 		});
@@ -165,11 +167,11 @@ $(document).ready(function() {
 	update_all_proficiency_displays();
 
 	$("input.showLink").click(function(event){
-		// If the server is enabled and no user is logged in, prompt them to login
-		if (serverEnabled() && !userLoggedIn() && !inLocalStorage("login_prompt")) {
-			alert('You must login to complete exercises');
-			showLoginBox();
-			return;
+		// If the server is enabled and no user is logged in, warn them 
+		// they will not receive credit for the exercise they are attempting 
+		// to view without logging in
+		if (serverEnabled() && !userLoggedIn()) {
+			prompt_user_login();
 		}
 
 		var shID = event.target.id;
@@ -952,11 +954,18 @@ function send_av_score(av_name) {
 				}
 			});
 		} else {
+			// If a user performs an action that submits an AV score, 
+			// but they are not logged in, warn them they will not 
+			// receive credit without logging in
 			prompt_user_login();
 		}
 	}
 }
 
+/** 
+ * Warn the user they will not receive credit unless they log in, 
+ * but only if a login server is enabled and they have not been prompted before
+ */
 function prompt_user_login()
 {
 	// Only prompt the user once per session
