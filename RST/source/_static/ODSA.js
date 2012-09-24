@@ -1,5 +1,7 @@
 // Set server_url = "" in order to disable server communication and most logging
-var server_url = "http://128.173.55.223:8080"; // 128.173.54.186:8000
+var server_url = "http://opendsa.cc.vt.edu:8080"; 
+// Dan's desktop: 128.173.54.186:8000
+// Eric's desktop: 128.173.55.223:8080
 
 $(document).ready(function() {
 	//Make sure localStorage is enabled
