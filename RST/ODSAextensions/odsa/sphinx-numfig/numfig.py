@@ -10,7 +10,7 @@ class page_ref(reference):
 class num_ref(reference):
     pass
 
-
+figids_1={}  
 
 def loadTable():
    try:
@@ -33,6 +33,7 @@ def latex_visit_page_ref(self, node):
 
 def latex_visit_num_ref(self, node):
     fields = node['reftarget'].split('#')
+
     if len(fields) > 1:
         label, target = fields
         ref_link = '%s:%s' % (node['refdoc'], target)
@@ -42,6 +43,23 @@ def latex_visit_num_ref(self, node):
         self.body.append('\\ref{%s:%s}' % (node['refdoc'], fields[0]))
         
     raise SkipNode
+
+
+def html_visit_num_ref(self, node):
+    fields = node['reftarget'].split('#')
+    json_data = loadTable()  
+    print 'Fields = %s' %figids_1[node['refdoc']]    
+    if len(fields) > 1:
+        label, target = fields
+        link = "%s.html#%s" %(node['refdoc'], target.lower())   
+
+        html = '<a href="%s">%s</a>' % (link, figids_1[node['refdoc']])
+        self.body.append(html)
+    else:
+        self.body.append('<a href="%s.html">%s</a>' % (node['refdoc'], fields[0]))
+
+    raise SkipNode
+
 
 
 def doctree_read(app, doctree):
@@ -63,7 +81,7 @@ def doctree_read(app, doctree):
                 num_module = json_data[env.docname]  
             for cap in figure_info.traverse(caption):
                 cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
-
+                figids_1[env.docname]= '%s.%d' %(num_module, i) 
         for id in figure_info['ids']:
             figids[id] = i
             figid_docname_map[id] = env.docname
@@ -108,13 +126,15 @@ def setup(app):
                  text=(skip_page_ref, None),
                  html=(skip_page_ref, None),
                  latex=(latex_visit_page_ref, None))
+    app.connect('doctree-read', doctree_read)
+    app.connect('doctree-resolved', doctree_resolved)
 
     app.add_role('page', XRefRole(nodeclass=page_ref))
 
-    app.add_node(num_ref,
-                 latex=(latex_visit_num_ref, None))
+    app.add_node(num_ref,   
+                  html=(html_visit_num_ref, None))
 
     app.add_role('num', XRefRole(nodeclass=num_ref))
 
-    app.connect('doctree-read', doctree_read)
-    app.connect('doctree-resolved', doctree_resolved)
+#    app.connect('doctree-read', doctree_read)
+#    app.connect('doctree-resolved', doctree_resolved)
