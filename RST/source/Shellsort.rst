@@ -203,7 +203,7 @@ Here is a code implementation for Shellsort.
 
 Now, test your understanding of the sublist concept.
 
-.. avembed:: Exercises/Development/ShellSortSublist.html
+.. avembed:: Exercises/Sorting/ShellsortSublist.html
    :showbutton: hide
    :title: Sublist Exercise
 

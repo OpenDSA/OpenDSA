@@ -1,5 +1,5 @@
 // Set server_url = "" in order to disable server communication and most logging
-var server_url = "http://opendsa.cc.vt.edu:8080"; 
+var server_url = "http://opendsa.cc.vt.edu:8080"; // opendsa.cc.vt.edu:8080
 // Dan's desktop: 128.173.54.186:8000
 // Eric's desktop: 128.173.55.223:8080
 
@@ -35,8 +35,9 @@ $(document).ready(function() {
 			// Log the browser ready event
 			log_user_action('', 'document-ready', 'User loaded the ' + modName + ' module page');
 		} else {
+			var av_name = getNameFromURL();
 			// Log the browser ready event
-			log_user_action(getNameFromURL(), 'document-ready', 'User loaded the page');
+			log_user_action(av_name, 'document-ready', 'User loaded the ' + av_name + ' AV');
 		}
 		
 		// Submit any stored event data when the page loads
@@ -194,19 +195,27 @@ $(document).ready(function() {
 	$("a.abt").click(function(event){
 		info();
 	});
-	
-	$(".slide-out-div").tabSlideOut({
-		tabHandle: '.handle',                              //class of the element that will be your tab
-		pathToTabImage: '_static/Images/contact_tab.gif',          //path to the image for the tab *required*
-		imageHeight: '122px',                               //height of tab image *required*
-		imageWidth: '40px',                               //width of tab image *required*    
-		tabLocation: 'left',                               //side of screen where tab lives, top, right, bottom, or left
-		speed: 300,                                        //speed of animation
-		action: 'click',                                   //options: 'click' or 'hover', action to trigger animation
-		topPos: '200px',                                   //position from the top
-		fixedPosition: false                               //options: true makes it stick(fixed position) on scroll
-	});
 });
+
+function showHide(shID) {
+	var s=shID.split('+');
+	var ID=s[0];
+	var div_numb = s[0].split('Example').slice(1);
+	if (document.getElementById(ID)) {
+		if (document.getElementById(shID).style.display != 'none' && s[1]=='show'){
+			document.getElementById(shID).style.display = 'none';
+			document.getElementById(ID).style.display = 'block';
+			var strt = "div.start"+ div_numb;
+			$(strt).hide();
+		}
+		else {
+			document.getElementById(s[0]+'+show').style.display = 'inline';
+			document.getElementById(ID).style.display = 'none';
+			var strt = "div.start"+ div_numb;
+			$(strt).hide();   // $('div.start'+div_numb).hide();
+		}
+	}
+}
 
 function showLoginBox() {
 	log_user_action('', 'login-box-open', 'Login box was opened');
@@ -243,26 +252,6 @@ function hideLoginBox() {
 		$('#mask').remove();
 	});
 	return false;
-}
-
-function showHide(shID) {
-	var s=shID.split('+');
-	var ID=s[0];
-	var div_numb = s[0].split('Example').slice(1);
-	if (document.getElementById(ID)) {
-		if (document.getElementById(shID).style.display != 'none' && s[1]=='show'){
-			document.getElementById(shID).style.display = 'none';
-			document.getElementById(ID).style.display = 'block';
-			var strt = "div.start"+ div_numb;
-			$(strt).hide();
-		}
-		else {
-			document.getElementById(s[0]+'+show').style.display = 'inline';
-			document.getElementById(ID).style.display = 'none';
-			var strt = "div.start"+ div_numb;
-			$(strt).hide();   // $('div.start'+div_numb).hide();
-		}
-	}
 }
 
 function info() { // This is what we pop up
@@ -462,9 +451,9 @@ function update_all_proficiency_displays(username){
 */
 
 function checkProficiency(av_name, objId) {
-	console.log("checkProficiency: " + av_name);
-	
 	var username = get_user_fromDS();
+
+	console.log("checkProficiency of " + av_name + " for " + username);
 	
 	// Check localStorage
 	if (inLocalStorage("proficiency_data")) {
@@ -476,18 +465,21 @@ function checkProficiency(av_name, objId) {
 			
 			// Check to see if the AV exists in the user's proficiency list
 			if (av_list.indexOf(av_name) > -1) {
-				console.log("checkProficiency: " + av_name + " found in localStorage");
+				console.log("checkProficiency found " + av_name + " for user: " + username);
 				updateProfDispStat(objId, true);
 				return;
 			}
 		}
 	}
+
+	// Clear the proficiency display if the current user is not listed as proficient
+	updateProfDispStat(objId, false);
 	
-	console.log("checkProficiency: " + av_name + " not found in localStorage");
+	console.log("checkProficiency: " + av_name + " not found in localStorage for user: " + username);
 	
 	// Check server for proficiency status
 	if (serverEnabled() && userLoggedIn()) {
-		console.log("checkProficiency: checking server");
+		console.log("checkProficiency: checking server for " + username + "'s proficiency");
 
 		jQuery.ajax({
 			url:   server_url + "/api/v1/userdata/isproficient/",
@@ -498,8 +490,8 @@ function checkProficiency(av_name, objId) {
 			xhrFields: {withCredentials: true},
 			success: function(data){
 				data = getJSON(data);
-				
-				console.log("checkProficiency: server says " + JSON.stringify(data));
+
+				console.log("checkProficiency: server says: " + JSON.stringify(data));
 				
 				storeProficiencyStatus(av_name, objId, data.proficient);
 			},
@@ -563,13 +555,17 @@ function updateProfDispStat(objId, status) {
 		if (objId.indexOf("_check_mark") > -1) {
 			$("#" + objId).css('display', 'block');
 		} else {
-			$("#" + objId).css("background-color","lime");
+			// Currently broken, can't find object by ID containing + symbol
+			//$("#" + objId).css("background-color","lime");
+			document.getElementById(objId).style.backgroundColor = 'lime';		// TODO: Temporary fix until Sphinx file is fixed and the button gets a new ID
 		}
 	} else {
 		if (objId.indexOf("_check_mark") > -1) {
 			$("#" + objId).css('display', 'none');
 		} else {
-			$("#" + objId).css("background-color","#FF0000");
+			// Currently broken, can't find object by ID containing + symbol
+			// $("#" + objId).css("background-color","#FF0000");
+			document.getElementById(objId).style.backgroundColor = '#FF0000';	// TODO: Temporary fix until Sphinx file is fixed and the button gets a new ID
 		}
 	}
 }
@@ -972,6 +968,7 @@ function prompt_user_login()
 {
 	// Only prompt the user once per session
 	if (serverEnabled() && !inLocalStorage("login_prompt")) {
+		log_user_action('', 'login-warn-message', 'User warned they must login to receive credit');
 		alert('You must be logged in to receive credit');
 		localStorage["login_prompt"] = true;
 	}
