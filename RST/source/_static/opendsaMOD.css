@@ -1,18 +1,14 @@
 .more {
-  display:none;
+  display: none;
 }
 .admonition-todo {
-  background-color:#FFC0CB;
+  background-color: #FFC0CB;
 }
-.slide-out-div {
-    padding: 10px;
-    width: 275px;
-    background: #FAFAFA;
-    opacity:0.8; 
-    border: 1px solid #29216d;
+.showHideLink {
+  background-color: #FF0000;
 }
 label {  
-   display: block;  
+  display: block;  
 }
 
 

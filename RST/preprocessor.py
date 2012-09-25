@@ -301,13 +301,17 @@ def updateTOC(args):
     directive=0
     sectnum = 0 
     chapter = ''
-    prefix = ''    
+    prefix = ''
+    start = False           
     for lins in iLine:
       if '.. sectnum::' or '.. chapnum::' in lins:
          directive=1
       if ':prefix:' in lins:   
          prefix = re.split('prefix:', lins, re.IGNORECASE)[1]     
-         break
+         #break
+      if ':start:' in lins:  
+         sectnum = int(re.split('start:', lins, re.IGNORECASE)[1])   
+         start = True  
     if directive==0:
        print bcolors.FAIL + 'Error: No .. sectnum:: or .. chapnum:: directive in index.rst. Please include the directive and try again.'+bcolors.ENDC
        sys.exit(0)
@@ -338,8 +342,11 @@ def updateTOC(args):
           idx.close()           
           modIndex =[]
           for idxLine in idxL:
-             if 'class="section"' in idxLine:   
-                sectnum+=1  
+             if 'class="section"' in idxLine:  
+                if not start:   
+                    sectnum+=1 
+                else:  
+                    start = False   
              if 'class="headerlink"' in idxLine: 
                 chapter = re.split('>',re.split('<a class="headerlink"', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]  
              if 'class="toctree-l' in idxLine:              
