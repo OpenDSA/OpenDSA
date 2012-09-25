@@ -13,7 +13,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Development/shellsortCON.css
+.. odsalink:: AV/Sorting/shellsortCON.css
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
@@ -203,7 +203,7 @@ Here is a code implementation for Shellsort.
 
 Now, test your understanding of the sublist concept.
 
-.. avembed:: Exercises/Development/ShellSortSublist.html
+.. avembed:: Exercises/Sorting/ShellsortSublist.html
    :showbutton: hide
    :title: Sublist Exercise
 
@@ -221,7 +221,7 @@ You can also set the increment series.
 Use this visualization to make sure that you understand how Shellsort
 works.
 
-.. avembed:: AV/Development/shellsort-av.html
+.. avembed:: AV/Sorting/shellsortAV.html
 
 Next, let's review what makes for a legal increment series.
 
@@ -256,7 +256,7 @@ various increment sizes.
 Now you are ready to try out some different increment series to see
 how they affect the cost of Shellsort.
 
-.. avembed:: AV/Development/ShellsortPerformance.html
+.. avembed:: AV/Sorting/ShellsortPerformance.html
    :showbutton: hide
    :title: Performance Simulator
 
@@ -292,4 +292,5 @@ If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good
 increment series in [KnuthV3]_.
 
-.. odsascript:: AV/Development/shellsortCON.js
+.. odsascript:: AV/Sorting/shellsortCODE.js
+.. odsascript:: AV/Sorting/shellsortCON.js

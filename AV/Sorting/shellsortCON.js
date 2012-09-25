@@ -1,5 +1,6 @@
 "use strict";
 /*global alert*/
+/*global sweep*/
 // Various functions and variables that will be used by all of the
 // following sections of the tutorial.
 
@@ -14,50 +15,6 @@ var theArray4 = [12, 11, 13, 14, 20, 30, 44, 54, 55, 79, 78, 98];
  
 var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
 var DARK = "black";                // Make array elements dark again
-
-// Convenience function for setting another type of highlight
-// (will be used for showing which elements will be compared during sort)
-var setBlue = function (arr, index) {
-  arr.css(index, {"background-color": "#ddf" });
-};
-
-// Insertion sort using increments
-function inssort(av, arr, start, incr) {
-  var i, j;
-  for (i = start + incr; i < arr.size(); i += incr) {
-    setBlue(arr, i);
-    for (j = i; j >= incr; j -= incr) {
-      setBlue(arr, j - incr);
-      av.step();
-      if (arr.value(j) < arr.value(j - incr)) {
-        arr.swap(j, j - incr); // swap the two indices
-        av.step();
-      }
-      else {
-        arr.highlight([j - incr, j]);
-        break; // Done pushing element, leave for loop
-      }
-      arr.highlight(j);
-    }
-    arr.highlight(j);
-  }
-}
-
-// Partial Shellsort. Sweep with the given increment
-function sweep(av, myarr, incr) {
-  var j = 0;
-  var highlightFunction = function (index) { return index % incr === j; };
-  for (j = 0; j < incr; j++) {         // Sort each sublist
-    if ((j + incr) === myarr.size()) { // Only one element, don't process
-      return;
-    }
-    // Highlight the sublist
-    myarr.highlight(highlightFunction);
-    av.step();
-    inssort(av, myarr, j, incr);
-    myarr.unhighlight(highlightFunction);
-  }
-}
 
 // Display a slideshow for a sweep of "increment" steps on array "inArr"
 function doSweep(container, inArr, increment) {

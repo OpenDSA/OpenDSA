@@ -130,7 +130,7 @@ rather than store the record itself.
 In this implementation, a swap operation need only exchange the
 pointer values.
 The large records do not need to move.
-This technique is illustrated by Figure :ref:`PointerSwap`.
+This technique is illustrated by Figure :num:`Figure #PointerSwap`.
 Additional space is needed to store the pointers, but the
 return is a faster swap operation.
 
