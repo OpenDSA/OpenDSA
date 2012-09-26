@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Shellsort Multiple Choice Question 6</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">What is the best-case cost of Shellsort for an aray whose
+        size n is a power of 2 when using divide-by-twos increments?</p>
+      <div class="solution"><var><code>\Theta(n \log n)</code></var></div>
+      <ul class="choices" data-show="4" data-none="true">
+        <li><var><code>\Theta(n^2)</code></var></li>
+        <li><var><code>\Theta(n)</code></var></li>
+        <li><var><code>\Theta(n \log n)</code></var></li>
+        <li><var><code>\Theta(2^n)</code></var></li>
+        <li><var><code>\Theta(\log n)</code></var></li>
+      </ul>
+      <div class="hints">
+        <p>Think about whether the sorted list is a best-case input or not.</p>
+        <p>Sorted input is the best case.</p>
+        <p>How many increments are there for the divide-by-two increment series?</p>
+        <p>With divide-by-two increments, there are <code>\log n</code> increments.</p>
+        <p><code>\log n</code> passes over an array of
+           length <code>n</code> must cost <code>n \log n</code>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

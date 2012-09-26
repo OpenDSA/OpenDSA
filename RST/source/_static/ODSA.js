@@ -1,5 +1,10 @@
 // Set server_url = "" in order to disable server communication and most logging
-var server_url = "http://128.173.55.223:8080"; //128.173.54.186:8000
+var server_url = "http://opendsa.cc.vt.edu:8080"; // opendsa.cc.vt.edu:8080
+// Dan's desktop: 128.173.54.186:8000
+// Eric's desktop: 128.173.55.223:8080
+
+// Contains a list of all AVs on the page
+var avList = [];
 
 $(document).ready(function() {
 	//Make sure localStorage is enabled
@@ -23,6 +28,23 @@ $(document).ready(function() {
 		return;
 	}
 	
+	// Populate the list of AVs on the page
+	// Add all AVs that have a showhide button
+	$('.showHideLink').each(function(index, item){
+		var av_name = $(item).attr('id').replace('_showhide_btn', '');
+		
+		avList.push(av_name);
+	});
+	
+	// Add all AVs that have a proficiency check mark that are not already in the list
+	$('img.prof_check_mark').each(function(index, item){
+		var av_name = $(item).attr('id').replace("_check_mark", '');
+		
+		if (avList.indexOf(av_name) == -1) {
+			avList.push(av_name);
+		}
+	});
+	
 	if (serverEnabled()) {
 		// TODO: Figure out a more robust way to determine if this is a module
 		// Get the module or AV name as soon as possible
@@ -33,28 +55,30 @@ $(document).ready(function() {
 			// Log the browser ready event
 			log_user_action('', 'document-ready', 'User loaded the ' + modName + ' module page');
 		} else {
+			var av_name = getNameFromURL();
 			// Log the browser ready event
-			log_user_action(getNameFromURL(), 'document-ready', 'User loaded the page');
+			log_user_action(av_name, 'document-ready', 'User loaded the ' + av_name + ' AV');
 		}
 		
-		// Submit any stored data when the page loads
-		flush_stored_data();
+		// Send any stored event data when the page loads
+		if (userLoggedIn()) {
+			flush_stored_data();
+		} else {
+			send_event_data();
+		}
 		
 		// Suggest the user login if they don't have a valid session,
 		// update the login link with their name if they do
 		if (is_SessionExpired()){
-			localStorage.removeItem("login_prompt");
 			localStorage.removeItem("opendsa");
-			showLoginBox();
+			if (!inLocalStorage("warn_login")) {
+				showLoginBox();
+			}
 		} else {
 			var uname = get_user_fromDS();
-			$('a.login-window').text(uname);
-			update_proficiency_display(uname);
+			$('a.login-window').text('Logout ' + uname);
 		}
 		
-		// TODO: Test that this works
-		// Add button_logger to all buttons on the page with a data-desc attribute
-		//$('input[data-desc]').each(function(index, item){
 		// Add button_logger to all buttons on the page
 		$(':button').each(function(index, item){
 			// Don't attach handler to JSAV managed controls
@@ -66,7 +90,7 @@ $(document).ready(function() {
 		// Add link_logger to all links on the page
 		$('a').each(function(index, item){
 			// Don't attach handler to JSAV managed controls
-			if (!isJSAVControl(item)) {
+			if (!isJSAVControl(item) && $(item).attr("id") !== "logon" && $(item).attr("class") !== "close") {
 				$(item).click(link_logger);
 			}
 		});
@@ -74,8 +98,8 @@ $(document).ready(function() {
 		// Attempts to log the user in when they click submit on the login window
 		$('button.submit-button').click(function(event){
 			//authenticate user
-			username = document.forms["signin"]["username"].value;
-			password = document.forms["signin"]["password"].value;
+			username = $('#username').attr('value');
+			password = $('#password').attr('value');
 			//password = SHA1(password);
 			jQuery.ajax({
 				url:   server_url + "/api/v1/users/login/",
@@ -89,16 +113,14 @@ $(document).ready(function() {
 				
 					if(data.success){
 						updateLocalStorage(username );
-					
-						localStorage.name=document.forms["signin"]["username"].value; //$('username').attr('value');
-						$('a.login-window').text(username);
-						hideLoginBox();
-
+						localStorage.name = username;
+						$('a.login-window').text('Logout ' + username);
 						log_user_action('', 'user-login', 'User logged in');
+						hideLoginBox();
+						
 						// Submit any stored data
 						flush_stored_data();
-						
-						update_proficiency_display(username);
+						update_all_proficiency_displays();
 					}
 				},
 				error: function(data){ 
@@ -107,7 +129,13 @@ $(document).ready(function() {
 					
 					if (data.status == 401) {
 						alert("Incorrect username / password combination");
+					} else if (data.status == 0) {
+						alert("Login failed because the server is not responding or is not reachable.\nFor help, please contact the OpenDSA team.");
+						localStorage["warn_login"] = true;
+						hideLoginBox();
 					} else {
+						alert("Login failed");
+						localStorage["warn_login"] = true;
 						hideLoginBox();
 					}
 				}
@@ -117,7 +145,8 @@ $(document).ready(function() {
 		// Brings up the login box if the user clicks 'Login' and
 		// logs the user out if they click their username
 		$('a.login-window').click(function() {
-			if ($('a.login-window').text() !== get_user_fromDS()){
+			var username = get_user_fromDS();
+			if ($('a.login-window').text() === 'Login'){
 				showLoginBox();
 				return false;
 			} else {
@@ -126,18 +155,21 @@ $(document).ready(function() {
 				jQuery.ajax({
 					url:   server_url + "/api/v1/users/logout/",
 					type:  "GET",
-					data: {"username":  get_user_fromDS() },
+					data: {"username":  username },
 					contentType: "application/json; charset=utf-8",
 					datatype: "json",
 					xhrFields: {withCredentials: true},
 					success: function(data){
-						var obj = getJSON(data)
+						data = getJSON(data)
 					
-						if(obj.success){
+						if(data.success){
 							log_user_action('', 'user-logout', 'User logged out');
-							localStorage.removeItem('login-prompt');
+							localStorage.removeItem('warn_login');
 							localStorage.removeItem('opendsa');
 							$('a.login-window').text("Login");
+							
+							// Clear the proficiency displays for the user who just logged out
+							update_all_proficiency_displays();
 						}
 					},
 					error: function(data){ console.log("ERROR " +  JSON.stringify( data ));}
@@ -147,50 +179,62 @@ $(document).ready(function() {
 
 		// When clicking on the button close or the mask layer the popup closed
 		$('a.close, #mask').live('click', function() {
+			// If the user tries to close the login box without logging 
+			// in, warn them they will not receive credit without logging in
+			warn_user_login();
 			hideLoginBox();
 		});
 	}
+	
+	// Load proficiency data for current user
+	update_all_proficiency_displays();
 
-	$("input.showLink").click(function(event){
-		// If the server is enabled and no user is logged in, prompt them to login
-		if (serverEnabled() && !userLoggedIn())
-		{
-			alert('You must login to complete exercises');
-			showLoginBox();
-			return;
-		}
-
-		var shID = event.target.id;
-		var name = $(this).attr("name");
-		var av = name.split('+');
-		var target = name+'+hide'
-
-		$('input[name="'+target+'"]').after('<p><center> <iframe src="'+av[0]+'" \ntype="text/javascript" width="'+av[1]+'" height="'+av[2]+'" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></p></div>');
-		$('input[name="'+target+'"]').attr("name",name);
-		showHide(shID);
-	});
+	$("input.showHideLink").click(function(event){
+		var btnID = event.target.id;
 		
-	$("input.hideLink").click(function(event){
-		var shID = event.target.id;
-		showHide(shID);
+		showHide(btnID);
 	});
 
 	$("a.abt").click(function(event){
 		info();
 	});
-	
-	$(".slide-out-div").tabSlideOut({
-		tabHandle: '.handle',                              //class of the element that will be your tab
-		pathToTabImage: '_static/Images/contact_tab.gif',          //path to the image for the tab *required*
-		imageHeight: '122px',                               //height of tab image *required*
-		imageWidth: '40px',                               //width of tab image *required*    
-		tabLocation: 'left',                               //side of screen where tab lives, top, right, bottom, or left
-		speed: 300,                                        //speed of animation
-		action: 'click',                                   //options: 'click' or 'hover', action to trigger animation
-		topPos: '200px',                                   //position from the top
-		fixedPosition: false                               //options: true makes it stick(fixed position) on scroll
-	});
 });
+
+function showHide(btnID) {
+	var divID = btnID.replace('_showhide_btn', '');
+	
+	var btnText = $('#' + btnID).attr('value');		// If $('#' + btnID) doesn't work use: $('input[id="' + btnID + '"]')
+	
+	if (document.getElementById(divID)) {
+		if ($('#' + divID).css('display') !== "none") {
+			// AV is visible, hide it
+			$('#' + divID).css('display', 'none');
+			// Update the button text
+			$('#' + btnID).attr('value', btnText.replace('Hide', 'Show'));
+			return;
+		} else {
+			// AV is hidden, show it
+			$('#' + divID).css('display', 'block');
+		}
+	} else {
+		// If the AV isn't loaded, load it
+		var src = $('#' + btnID).attr("data-frame-src");
+		var width = $('#' + btnID).attr("data-frame-width");
+		var height = $('#' + btnID).attr("data-frame-height");
+		
+		$('#' + btnID).after('<div id="' + divID + '"><p></p><center> <iframe src="' + src + '" type="text/javascript" width="' + width + '" height="' + height + '" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>'); 
+	}
+	
+	// Update the button text
+	$('#' + btnID).attr('value', btnText.replace('Show', 'Hide'));
+	
+	// If the server is enabled and no user is logged in, warn them 
+	// they will not receive credit for the exercise they are attempting 
+	// to view without logging in
+	if (serverEnabled() && !userLoggedIn()) {
+		warn_user_login();
+	}
+}
 
 function showLoginBox() {
 	log_user_action('', 'login-box-open', 'Login box was opened');
@@ -199,8 +243,8 @@ function showLoginBox() {
 	
 	// Preload the last saved username in the login form
 	var username = localStorage.name;
-	if (typeof username !== "undefined") {
-		document.forms["signin"]["username"].value = username;
+	if (username) {
+		$('#username').attr('value', username);
 	}
 
 	//Fade in the Popup
@@ -227,103 +271,6 @@ function hideLoginBox() {
 		$('#mask').remove();
 	});
 	return false;
-}
-
-function showHide(shID) {
-	var s=shID.split('+');
-	var ID=s[0];
-	var div_numb = s[0].split('Example').slice(1);
-	if (document.getElementById(ID)) {
-		if (document.getElementById(shID).style.display != 'none' && s[1]=='show'){
-			document.getElementById(shID).style.display = 'none';
-			document.getElementById(ID).style.display = 'block';
-			var strt = "div.start"+ div_numb;
-			$(strt).hide();
-		}
-		else {
-			document.getElementById(s[0]+'+show').style.display = 'inline';
-			document.getElementById(ID).style.display = 'none';
-			var strt = "div.start"+ div_numb;
-			$(strt).hide();   // $('div.start'+div_numb).hide();
-		}
-	}
-}
-
-// Change button color from red to light green when user is proficient
-// Displays check marks next to inline AVs the user has completed
-function update_proficiency_display(username){
-	// Don't bother trying to contact the server if one isn't setup
-	if (serverEnabled()) {
-		var av_url, av_name, resp;
-		var username = get_user_fromDS();
-		
-		// TODO: Store whether or not user is proficient with certain things in localStorage so we don't have to hit the server every time, allow users to store their proficiency without logging in?
-		
-		$('.showLink').each(function(index, item){
-			av_url = $(item).attr("name").split("+")[0].split("/");
-			av_name = av_url[av_url.length -1].split(".")[0];
-			jQuery.ajax({
-				url:   server_url + "/api/v1/userdata/isproficient/",
-				type:  "POST",
-				data: {"user": username,"exercise": av_name },
-				contentType: "application/json; charset=utf-8",
-				datatype: "json",
-				xhrFields: {withCredentials: true},
-				success: function(data){
-					var obj = getJSON(data);
-					
-					if(obj.proficient){
-						$(item).css("background-color","lime");
-					}
-				},
-				error: function(data){ console.log("ERROR " + "isProficient" /*JSON.stringify( data )*/);}
-			});
-		});
-
-		$('.hideLink').each(function(index, item){
-			av_url = $(item).attr("name").split("+")[0].split("/");
-			av_name = av_url[av_url.length -1].split(".")[0];
-			jQuery.ajax({
-				url:   server_url + "/api/v1/userdata/isproficient/",
-				type:  "POST",
-				data: {"user": username,"exercise": av_name },
-				contentType: "application/json; charset=utf-8",
-				datatype: "json",
-				xhrFields: {withCredentials: true},
-				success: function(data){
-					var obj = getJSON(data);
-					
-					if(obj.proficient){
-						$(item).css("background-color","lime");
-					}
-				},
-				error: function(data){ console.log("ERROR " + "isProficient" /*JSON.stringify( data )*/);}
-			});
-		});
-		
-		// Check proficiency of all inline AVs
-		$('img.prof_check_mark').each(function(index, item){
-			av_name = $(item).attr('id').replace("_check_mark", '');
-			console.log("checking for proficiency of: " + av_name);
-		
-			jQuery.ajax({
-				url:   server_url + "/api/v1/userdata/isproficient/",
-				type:  "POST",
-				data: {"user": username,"exercise": av_name },
-				contentType: "application/json; charset=utf-8",
-				datatype: "json",
-				xhrFields: {withCredentials: true},
-				success: function(data){
-					var obj = getJSON(data);
-					
-					if(obj.proficient){
-						mark_inline_av_completed(av_name);
-					}
-				},
-				error: function(data){ console.log("ERROR " + "isProficient" /*JSON.stringify( data )*/);}
-			});
-		});
-	}
 }
 
 function info() { // This is what we pop up
@@ -362,7 +309,7 @@ function updateLocalStorage(username ) {
 }
 
 function is_SessionExpired() {
-	if ( typeof localStorage["opendsa"] !== "undefined" ) {
+	if (inLocalStorage("opendsa")) {
 		var  bj = JSON.parse( localStorage["opendsa"]);
 		sDate = bj.expires;
 		var cDate=new Date();
@@ -372,7 +319,7 @@ function is_SessionExpired() {
 }
 
 function get_user_fromDS() {
-	if ( typeof localStorage["opendsa"] !== "undefined" ) {
+	if (inLocalStorage("opendsa")) {
 		var obj = JSON.parse(localStorage["opendsa"]);
 		return obj.username;
 	}
@@ -390,10 +337,7 @@ function userLoggedIn() {
 
 // Reads the module name from localStorage
 function getModuleName() {
-	if ( typeof localStorage["module_name"] !== "undefined" ) {
-		return localStorage.module_name;
-	}
-	return "";
+	return (inLocalStorage("module_name") ? localStorage.module_name : "");
 }
 
 // Parses the name of the AV or module from the page URL
@@ -411,7 +355,159 @@ function getNameFromURL()
  * include "jsavexercisecontrols" and "jsavcontrols"
  */
 function isJSAVControl(item) {
-	return (item !== "undefined" && item.parentElement !== "undefined" && item.parentElement.className.match(/.*jsav\w*control.*/) !== null);
+	return (item && item.parentElement && item.parentElement.className.match(/.*jsav\w*control.*/));
+	//return (item !== "undefined" && item.parentElement !== "undefined" && item.parentElement.className.match(/.*jsav\w*control.*/) !== null);
+}
+
+// Change button color from red to light green when user is proficient
+// Displays check marks next to inline AVs the user has completed
+/**
+ * Loop through all showhide buttons and all 
+ */
+function update_all_proficiency_displays(){
+	// Check and update proficiency of all AVs
+	for (i in avList) {
+		checkProficiency(avList[i]);
+	}
+}
+
+/**
+ * Given an AV name, checks localStorage to see if we have a 
+ * record of the current user being proficient.  If no entry 
+ * is found in localStorage, the backend server is enabled and 
+ * a user is logged in, queries the server to obtain user's 
+ * proficiency status
+ */
+function checkProficiency(av_name) {
+	var username = get_user_fromDS();
+
+	console.log("checkProficiency of " + av_name + " for " + username);
+	
+	// Check for proficiency status in localStorage
+	if (inLocalStorage("proficiency_data")) {
+		var profData = getJSON(localStorage["proficiency_data"]);
+		
+		// Check whether user has an entry 
+		if (profData[username]) {
+			var av_list = profData[username];
+			
+			// Check to see if the AV exists in the user's proficiency list
+			if (av_list.indexOf(av_name) > -1) {
+				console.log("checkProficiency found " + av_name + " for user: " + username);
+				updateProfDispStat(av_name, true);
+				return;
+			}
+		}
+	}
+
+	// Clear the proficiency display if the current user is not listed as proficient
+	updateProfDispStat(av_name, false);
+	
+	console.log("checkProficiency: " + av_name + " not found in localStorage for user: " + username);
+	
+	// Check server for proficiency status
+	if (serverEnabled() && userLoggedIn()) {
+		console.log("checkProficiency: checking server for " + username + "'s proficiency");
+
+		jQuery.ajax({
+			url:   server_url + "/api/v1/userdata/isproficient/",
+			type:  "POST",
+			data: {"username": username,"exercise": av_name },
+			contentType: "application/json; charset=utf-8",
+			datatype: "json",
+			xhrFields: {withCredentials: true},
+			success: function(data){
+				data = getJSON(data);
+
+				console.log("checkProficiency: server says: " + JSON.stringify(data));
+				
+				storeProficiencyStatus(av_name, data.proficient);
+			},
+			error: function(data){ console.log("ERROR " + "isProficient" /*JSON.stringify( data )*/);}
+		});
+	}
+}
+
+/**
+ * If status is true, saves the given AV name in localStorage, tied to the current user
+ * If status is false, clears the proficiency indicator for the given AV
+ * 
+ * Should be called:
+ *     - When the client determines a user is proficient if no user is logged in
+ *     - if the server says the logged in user is proficient
+ */
+function storeProficiencyStatus(av_name, status) {
+	console.log("storeProficiencyStatus(" + av_name + ", " + status + ")");
+
+	// Update the proficiency display for the specified AV
+	updateProfDispStat(av_name, status);
+	
+	if (!status) {
+		return;
+	}
+	
+	var username = get_user_fromDS();
+	var data = {};
+
+	if (inLocalStorage("proficiency_data")) {
+		data = getJSON(localStorage["proficiency_data"]);
+		
+		// Check whether user has an entry 
+		if (data[username]) {
+			var av_list = data[username];
+			
+			// Check to see if the AV already exists in the user's proficiency list
+			if (av_list.indexOf(av_name) == -1) {
+				av_list.push(av_name);
+			}
+		} else {
+			// Add a new entry for the user
+			data[username] = [av_name];
+		}
+	} else {
+		// Check a new object to store proficiency data and add a new entry for the user
+		data[username] = [av_name];
+	}
+	
+	localStorage["proficiency_data"] = JSON.stringify(data);
+}
+
+/**
+ * Update the proficiency indicator(s) for the specified AV
+ */
+function updateProfDispStat(av_name, status) {
+	
+	console.log("updateProfDispStat(" + av_name + ", " + status + ")");  //TODO: FOR TESTING
+	
+	var objId = av_name + '_check_mark';
+	
+	// Hide or display proficiency check mark, if it exists
+	if ($('#' + objId).length > 0) {
+		if (status) {
+			// Display the proficiency check mark
+			$("#" + objId).css('display', 'block');
+		} else {
+			// Hide the proficiency check mark
+			$("#" + objId).css('display', 'none');
+		}
+	}
+	
+	objId = av_name + '_showhide_btn';
+	
+	// Change AV showhide button to red or green to indicate proficiency, if it exists
+	if ($('#' + objId).length > 0) {
+		if (status) {
+			// Turn the button green
+			$("#" + objId).css("background-color", "lime");
+		} else {
+			// Turn the button red
+			$("#" + objId).css("background-color", "#FF0000");
+		}
+	}
+}
+
+function inLocalStorage(varName) {
+	return localStorage[varName];
 }
 
 /**
@@ -484,8 +580,14 @@ if (serverEnabled()) {
 			store_av_score(data.av, "ss", score);
 			flush_stored_data();
 			
-			// Mark the AV as completed
-			mark_inline_av_completed(data.av);
+			if (serverEnabled() && userLoggedIn()) {
+				// Check the server for an authoritative decision about whether the user is proficient
+				checkProficiency(data.av);
+			} else {
+				// If no user is logged in (whether or not the server is 
+				// enabled), allow the client to determine user proficiency
+				storeProficiencyStatus(data.av, true);
+			}
 		}
 	});
 }
@@ -494,8 +596,7 @@ if (serverEnabled()) {
 function mark_inline_av_completed(av_name)
 {
 	var profMark = $("img#" + av_name + "_check_mark");
-	if (profMark !== "undefined")
-	{
+	if (profMark) {
 		profMark.css('display', 'block');
 	}
 }
@@ -585,10 +686,10 @@ function log_event(data) {
 			return;
 		}
 		
-		data.modname = modName;
+		data.module_name = modName;
 		
 		// Add a timestamp to the data
-		if (typeof data.tstamp !== "undefined") {
+		if (data.tstamp) {
 			// Convert existing JSAV timestamp from ISO format to milliseconds
 			data.tstamp = new Date(data.tstamp).getTime();
 		} else {
@@ -598,7 +699,7 @@ function log_event(data) {
 		var actions_list = new Array();
 
 		// Retrieve existing data from localStorage if it exists
-		if ( typeof localStorage["event_data"] !== "undefined" ) {
+		if (inLocalStorage("event_data")) {
 			actions_list = getJSON(localStorage["event_data"]);
 		}
 
@@ -643,13 +744,13 @@ function store_av_score(av_name, type, score) {
 		var score_data = {};
 		
 		// Get stored score_data if it exists
-		if ( typeof localStorage["score_data"] !== "undefined" ) {
+		if ( inLocalStorage("score_data") ) {
 			score_data = getJSON(localStorage["score_data"]);
 		}
 		
 		// Store data if no data for the current AV is already stored or
 		// update the score data if the given score data is >= what is stored
-		if (typeof score_data[av_name] === "undefined" || (typeof score_data[av_name] !== "undefined" && score.correct >= score_data[av_name].score.correct)) {
+		if (!score_data[av_name] || score.correct >= score_data[av_name].score.correct) {
 			var data = {};
 			data.submit_time = (new Date).getTime();
 			data.module_name = getModuleName();
@@ -680,7 +781,7 @@ function send_event_data() {
 		var event_list = getJSON(localStorage["event_data"]);
 
 		// Return if there is no data to send
-		if (typeof event_list === "undefined" || event_list.length == 0) {
+		if (!event_list || event_list.length == 0) {
 			return true;
 		}
 		
@@ -724,7 +825,7 @@ function send_av_scores() {
 		var score_data = {};
 		
 		// Get stored score_data if it exists
-		if ( typeof localStorage["score_data"] !== "undefined" ) {
+		if (inLocalStorage("score_data")) {
 			score_data = getJSON(localStorage["score_data"]);
 		}
 		
@@ -744,7 +845,7 @@ function send_av_score(av_name) {
 	if (serverEnabled()) {
 		// Load stored score data from localStorage
 		var score_data = {};
-		if ( typeof localStorage["score_data"] !== "undefined" ) {
+		if ( inLocalStorage("score_data") ) {
 			score_data = getJSON(localStorage["score_data"]);
 		}
 		
@@ -773,11 +874,12 @@ function send_av_score(av_name) {
 					// Clear the saved data once it has been successfully transmitted
 					if (data.success) {
 						delete score_data[av_name];
+						localStorage["score_data"] = JSON.stringify(score_data);
 					}
 					
 					// Check whether the user is proficient
 					if (data.proficient) {
-						update_proficiency_display(username);
+						storeProficiencyStatus(av_name, true);
 					}
 				},
 				error: function(data) {
@@ -785,17 +887,25 @@ function send_av_score(av_name) {
 				}
 			});
 		} else {
-			prompt_user_login();
+			// If a user performs an action that submits an AV score, 
+			// but they are not logged in, warn them they will not 
+			// receive credit without logging in
+			warn_user_login();
 		}
 	}
 }
 
-function prompt_user_login()
+/** 
+ * Warn the user they will not receive credit unless they log in, 
+ * but only if a login server is enabled and they have not been prompted before
+ */
+function warn_user_login()
 {
 	// Only prompt the user once per session
-	if (serverEnabled() && typeof localStorage["login_prompt"] === "undefined") {
+	if (serverEnabled() && (!inLocalStorage("warn_login") || localStorage["warn_login"] !== "false") ) {
+		log_user_action('', 'login-warn-message', 'User warned they must login to receive credit');
 		alert('You must be logged in to receive credit');
-		localStorage["login_prompt"] = true;
+		localStorage["warn_login"] = "false";
 	}
 }
 
@@ -806,7 +916,7 @@ function send_av_scores() {
 	if (serverEnabled()) {
 		// Load stored score data from localStorage
 		var score_data = {};
-		if ( typeof localStorage["score_data"] !== "undefined" ) {
+		if (inLocalStorage("score_data")) {
 			score_data = getJSON(localStorage["score_data"]);
 		}
 		
@@ -840,9 +950,7 @@ function send_av_scores() {
 					}
 					
 					// Check whether the user is proficient
-					if (data.proficient) {
-						update_proficiency_display(username);
-					}
+					update_all_proficiency_displays();
 				},
 				error: function(data) {
 					//console.log("ERROR " +  JSON.stringify( data ));
@@ -863,7 +971,7 @@ function log_event_old(data) {
 		data = $.parseJSON(data);
 	}
 
-	if ( typeof localStorage["event_data"] !== "undefined" ) {
+	if (inLocalStorage("event_data")) {
 		var stored_data = $.parseJSON(localStorage["event_data"]);
 
 		if (typeof stored_data === "undefined")

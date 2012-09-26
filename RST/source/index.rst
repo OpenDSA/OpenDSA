@@ -9,7 +9,7 @@
    contain the root `toctree` directive.
 
 .. avmetadata:: OpenDSA Sample eTextbook
-   :author: Cliff Shaffer
+   :author: OpenDSA Contributors
    :prerequisites:
    :topic: Data Structures
    :short_name: index
@@ -19,9 +19,18 @@
 .. include:: JSAVheader.rinc
 
 .. chapnum::
-   :start: 1
+   :start: 0
    :prefix: Chapter    
 
+
+Preface
+-------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   Intro
 
 Background
 ----------

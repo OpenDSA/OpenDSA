@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<entry>
+<id>http://algoviz.org/OpenDSA/Exercises/Sorting/ShellsortSublist.html</id>
+<title type='text'>Shellsort Sublist Exercises</title>
+<description type='text'>Shellsort Sublist Exercises</description>
+<type>ka</type>
+<width>1000</width>
+<height>500</height>
+<author>
+<name>OpenDSA</name>
+<uri>http://algoviz.org/OpenDSA/</uri>
+</author>
+<covers>sorting</covers>
+<streak>4</streak>
+</entry>

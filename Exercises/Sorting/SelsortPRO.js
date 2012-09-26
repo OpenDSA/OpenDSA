@@ -1,3 +1,4 @@
+"use strict";
 var
   jsav,           // The JSAV object
   answerArr = [], // The (internal) array that stores the correct answer
@@ -51,11 +52,12 @@ var initJSAV = function (arr_size, sort_pos) {
   }
 
   // Do a partial selection sort to set things up
-  for (i = arr_size-1; i > sort_pos; i--) {
+  for (i = arr_size - 1; i > sort_pos; i--) {
     bigindex = 0;
     for (j = 1; j <= i; j++) {
-      if (answerArr[j] > answerArr[bigindex])
+      if (answerArr[j] > answerArr[bigindex]) {
         bigindex = j;
+      }
     }
     swap(answerArr, bigindex, i);
   }
@@ -70,8 +72,9 @@ var initJSAV = function (arr_size, sort_pos) {
   // Compute the correct Answer
   bigindex = 0;
   for (j = 1; j <= sort_pos; j++) {
-    if (answerArr[j] > answerArr[bigindex])
+    if (answerArr[j] > answerArr[bigindex]) {
       bigindex = j;
+    }
   }
   swap(answerArr, bigindex, sort_pos);
 

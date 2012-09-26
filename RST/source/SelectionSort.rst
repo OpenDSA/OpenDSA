@@ -117,7 +117,9 @@ Whether this is really a good idea depends on how often the
 unnecessary swap takes place.
 For randomly ordered input, it is more expensive to test this
 condition before every swap than to just do the swap.
-If the input records are already sorted, then all of the swaps are
+So this would be an example of an "optimization" that does not improve
+performance.
+But if the input records are already sorted, then all of the swaps are
 unnecessary and it would have been faster to test.
 
 There is another approach to keeping the cost of swapping records low
@@ -128,19 +130,19 @@ rather than store the record itself.
 In this implementation, a swap operation need only exchange the
 pointer values.
 The large records do not need to move.
-This technique is illustrated by the figure below.
+This technique is illustrated by Figure :num:`Figure #PointerSwap`.
 Additional space is needed to store the pointers, but the
 return is a faster swap operation.
 
 .. _PointerSwap:
 
 .. figure:: Images/PtrSwap.png
-   :width: 400
+   :width: 300
    :align: center
    :figwidth: 90%
    :alt: Swapping pointers to records
 
-   Figure: An example of swapping pointers to records.
+   An example of swapping pointers to records.
    (a) A series of four records.
    The record with key value 42 comes before the record with key value 5.
    (b) The four records after the top two pointers have been swapped.

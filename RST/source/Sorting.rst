@@ -103,6 +103,8 @@ requires :math:`\Omega(n \log n)` time in the worst case
 Sorting Terminology and Notation
 --------------------------------
 
+.. index:: key, search key
+
 Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`
 with key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
 the :dfn:`Sorting Problem` is to
@@ -133,7 +135,7 @@ are stable, or can be made stable with minor changes.
 When comparing two sorting algorithms, the simplest approach would be to
 program both and measure their running times.
 An example of such timings is presented in
-Module :numref:`Empirical Comparsion of Sorting Algorithms<SortingEmpirical>`.
+Module :numref:`Empirical Comparsion of Sorting Algorithms <SortingEmpirical>`. 
 However, you must be careful when doing empirical comparisons because
 the running time for many sorting algorithms depends on specifics of
 the input values.

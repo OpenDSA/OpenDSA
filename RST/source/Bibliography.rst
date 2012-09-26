@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: Bibliography
-   :author: Cliff Shaffer
+   :author: OpenDSA Contributors
    :prerequisites: 
    :topic:
    :short_name: Bibliography

@@ -65,7 +65,7 @@ a.jsavsettings {
   </td>
   </tr>
 </table>
-<form style="border: 0px" id="ssproficiency">
+<form style="border: 0px" id="ShellsortProficiency">
   <div class="jsavcanvas">
   <p style="margin-top:-5px">Instructions:</p>
   <p style="margin-top: -15px; padding: 10px; 10px; margin-right: 10px; border: 1px solid black">
@@ -101,14 +101,14 @@ a.jsavsettings {
   *  The first line you need to set to use your form's name       *
   ************************************************************** */
   // Define the local context (from form name)
-  var context = $("#ssproficiency");
+  var context = $("#ShellsortProficiency");
 
   // settings for the AV
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
   // add the layout setting preference
   var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label":"Array layout: ", "value": "array"});
 
-  //containing HTML element with id ssproficiency.
+  //containing HTML element with id ShellsortProficiency.
   var av = new JSAV(context, {settings: settings});
   av.recorded();
 
@@ -212,7 +212,7 @@ a.jsavsettings {
   // Process reset button: Re-initialize everything, including the increments
   function initialize() {
     generateIncrements();
-    document.forms['ssproficiency'].elements['incrField'].value = incrs;
+    $('#incrField').val(incrs);
   
     htmldata = "";
     for (var i=ArraySize; i>0; i--) {

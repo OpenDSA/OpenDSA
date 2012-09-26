@@ -13,7 +13,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Development/shellsortCON.css
+.. odsalink:: AV/Sorting/shellsortCON.css
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
@@ -37,9 +37,9 @@ So Shellsort's strategy is to quickly make the list "mostly sorted",
 so that a final Insertion Sort can finish the job.
 
 Shellsort does what most good sorts do:
-Break the list into sublists, sort the sublists, then recombine them.
+Break the input into pieces, sort the pieces, then recombine them.
 But Shellsort does this in an unusual way, breaking its input
-into "virtual" sublists of elements that are often not contiguous.
+into "virtual" sublists that are often not contiguous.
 Each such sublist is sorted using an Insertion Sort.
 Another group of sublists is then chosen and sorted, and so on.
 
@@ -54,30 +54,31 @@ fast).
 
 Shellsort breaks the list into disjoint sublists, where a sublist
 is defined by an "increment", :math:`I`.
-Each element in a given sublist is :math:`I` positions apart.
-For example, if the increment were 4, then each element in the sublist
+Each record in a given sublist is :math:`I` positions apart.
+For example, if the increment were 4, then each record in the sublist
 would be 4 positions apart.
 
-One possible implementation of Shellsort is to use increments that are
-all powers of two.
-We start by picking the largest power of two that will break the
-list into :math:`n/2` sublists of 2 elements each.
-If there were 16 elements in the array indexed from 0
-to 15, there would initially be 8 sublists of 2 elements each, with
-each element in the sublist being 8 positions apart.
-The first sublist would be the elements in positions 0 and 8.
+One possible implementation for Shellsort is to use increments that
+are all powers of two.
+We start by picking as :math:`I` the largest power of two less than
+:math:`n`.
+This will generate :math:`I` sublists of 2 records each.
+If there were 16 records in the array indexed from 0
+to 15, there would initially be 8 sublists of 2 recordss each,
+with each record in the sublist being 8 positions apart.
+The first sublist would be the records in positions 0 and 8.
 The second is in positions 1 and 9, and so on.
 
 Actually, the increment size does not need to start at exactly
-:math`n/2`.
-In the following example, we will use an array of 12 elements (since
-16 elements makes the example a bit long).
+:math:`n/2`.
+In the following example, we will use an array of 12 records
+(since 16 records makes the example a bit long).
 We will still begin with an increment size of 8.
 As you click through the following slideshow, you will see each of the
 sublists of length 2.
 If we reach a point where the remaining sublists have only one
-element (as will be the case for each of the sublists beginning with
-elements 4 through 7), then we can skip processing them.
+record (as will be the case for each of the sublists beginning with
+records 4 through 7), then we can skip processing them.
 
 .. raw:: html
 
@@ -88,11 +89,11 @@ elements 4 through 7), then we can skip processing them.
      <img id="shellsort_av1_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
-In the actual Shellsort, each of these sublists of length 2 gets
-sorted using Insertion Sort.
+Shellsort will sort each of these sublists of length 2 using Insertion
+Sort.
 As you click through the next slideshow, you will first see the current
 sublist highlighted in yellow.
-Then a pair of elements to be compared will be shown in blue.
+Then a pair of records to be compared will be shown in blue.
 They are swapped if necessary to put them in sort order.
 (Of course, since these first sublists are each of length 2 when
 the two items are being compared you won't see anything yellow anymore!)
@@ -116,12 +117,12 @@ sorted".
 
 The second pass of Shellsort looks at fewer, bigger sublists.
 In our example, the second pass will have an increment of size 4,
-resulting in :math:`n/4` sublists 
-Since the array in our example has :math:`n=12` elements, we have 
-4 sublists that each have :math:`12/4 = 3` elements.
+resulting in :math:`n/4` sublists.
+Since the array in our example has :math:`n=12` records, we have 
+4 sublists that each have :math:`12/4 = 3` records.
 Thus, the second pass would have as its first
-sublist the 3 elements in positions 0, 4, and 8.
-The second sublist would have elements in positions 1, 5, and 9,
+sublist the 3 records in positions 0, 4, and 8.
+The second sublist would have records in positions 1, 5, and 9,
 and so on.
 
 As you click through the slides, you will see the sublists for
@@ -136,7 +137,7 @@ increment size 4.
      <img id="shellsort_av4_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
    </div>
 
-Each sublist of 3 elements would also be sorted using an Insertion
+Each sublist of 3 records would also be sorted using an Insertion
 Sort, as shown next.
 
 .. raw:: html
@@ -178,7 +179,10 @@ At this point, we are getting close to sorted.
    </div>
 
 Shellsort's final pass will always use an increment of 1,
-which means a "regular" Insertion Sort of all elements.
+which means a "regular" Insertion Sort of all records.
+But the list is far closer to sorted than it was at the start,
+so this final call to Insertion Sort runs far faster than if we had
+run Insertion Sort on the original array.
 
 .. raw:: html
 
@@ -197,12 +201,15 @@ Here is a code implementation for Shellsort.
    :start-after: /* *** ODSATag: Shellsort *** */
    :end-before: /* *** ODSAendTag: Shellsort *** */
 
-.. avembed:: Exercises/Development/ShellSortSublist.html
+Now, test your understanding of the sublist concept.
+
+.. avembed:: Exercises/Sorting/ShellsortSublist.html
    :showbutton: hide
-   :title: Question 1
+   :title: Sublist Exercise
 
 There is a lot of flexibility to picking the increment series.
-It does not need to start with :math:`n/2` and cut in half each time.
+It does not need to start with the greatest power of less than
+:math`n` and cut in half each time.
 In fact that is not even a good choice for the increment series.
 We will come back to this later.
 For now, just realize that so long as each increment is smaller than the
@@ -214,13 +221,13 @@ You can also set the increment series.
 Use this visualization to make sure that you understand how Shellsort
 works.
 
-.. avembed:: AV/Development/shellsort-av.html
+.. avembed:: AV/Sorting/shellsortAV.html
 
 Next, let's review what makes for a legal increment series.
 
-.. avembed:: Exercises/Development/ShellsortSeries.html
+.. avembed:: Exercises/Sorting/ShellsortSeries.html
    :showbutton: hide
-   :title: Question 2
+   :title: Series Exercise
 
 Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
@@ -233,9 +240,9 @@ Some choices for the series of increments will make Shellsort
 run more efficiently than others.
 In particular, the choice of increments described above
 :math:`(2^k, 2^{k-1}, \ldots, 4, 2, 1)` turns out to be relatively inefficient.
-You should notice for example that all elements in a given 8 increment
+You should notice for example that all records in a given 8 increment
 sublist are also part of some 4 increment sublist, which are all in turn
-elements of the same 2 increment sublist.
+records of the same 2 increment sublist.
 So there is no "crossover" between sublists as the increments
 reduce.
 A better choice is the following series based on ":math:`3n+1`":
@@ -249,7 +256,7 @@ various increment sizes.
 Now you are ready to try out some different increment series to see
 how they affect the cost of Shellsort.
 
-.. avembed:: AV/Development/ShellsortPerformance.html
+.. avembed:: AV/Sorting/ShellsortPerformance.html
    :showbutton: hide
    :title: Performance Simulator
 
@@ -267,12 +274,11 @@ Shellsort illustrates how we can sometimes exploit the special properties
 of an algorithm (in this case Insertion Sort) even if in general that
 algorithm is unacceptably slow.
 
-Here are some questions review questions to check that you understand
-Shellsort.
+Here are some review questions to check that you understand Shellsort.
 
-.. avembed:: Exercises/Development/ShellsortMC.html
+.. avembed:: Exercises/Sorting/ShellsortSumm.html
    :showbutton: hide
-   :title: Question 3
+   :title: Review Questions
 
 Notes
 -----
@@ -286,4 +292,5 @@ If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good
 increment series in [KnuthV3]_.
 
-.. odsascript:: AV/Development/shellsortCON.js
+.. odsascript:: AV/Sorting/shellsortCODE.js
+.. odsascript:: AV/Sorting/shellsortCON.js

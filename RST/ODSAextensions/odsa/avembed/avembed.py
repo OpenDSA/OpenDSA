@@ -29,7 +29,8 @@ def setup(app):
 
 
 CODE = """\
-<div class="start%(div_id)s">
+<div id="%(div_id)s">
+<p></p>
 <center> 
 <iframe src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 </iframe>
@@ -37,34 +38,16 @@ CODE = """\
 </div>
 """
 
-CODE1= """\
-<script>document.getElementById("%(divID)s+show").style.display ="none"; document.getElementById("%(divID)s").style.display ="block";</script>
-"""
 
-
-
-SHOW = """\
+SHOWHIDE = """\
 <input type="button" 
-    name="%(av_address)s+%(width)s+%(height)s" 
-    value="Show %(title)s" 
-    id="%(divID)s+show"
-    class="showLink" 
-    style="background-color:#f00;"/>
-<div id="%(divID)s" 
-    class="more">
+    id="%(div_id)s_showhide_btn"
+    class="showHideLink"
+    data-frame-src="%(av_address)s"
+    data-frame-width="%(width)s"
+    data-frame-height="%(height)s"
+    value="%(show_hide_text)s %(title)s"/>
 """
-
-
-HIDE = """\
-<input type="button"
-    name="%(av_address)s+%(width)s+%(height)s+hide"
-    value="Hide %(title)s"
-    id="%(divID)s+hide"
-    class="hideLink"
-    style="background-color:#f00;"/>
-</div><p></p>
-"""
-
 
 
 def embedlocal(av_path):
@@ -94,6 +77,7 @@ def embedlocal(av_path):
                if node.nodeType == node.TEXT_NODE:
                    avheight=node.data
       #link =os.path.abspath(address[1:])
+      embed.append(av_name)
       embed.append( os.path.relpath(conf.odsa_path,conf.ebook_path)+'/' + av_path)
       embed.append(avwidth)
       embed.append(avheight)
@@ -126,24 +110,20 @@ class avembed(Directive):
         self.options['address'] = self.arguments[0] 
 
         embed = embedlocal(self.arguments[0])   
-        self.options['av_address'] = embed[0]
-        self.options['width'] = embed[1]
-        self.options['height'] = embed[2]
-        self.options['div_id'] = random.randint(1,1000)   
+        self.options['div_id'] = embed[0]
+        self.options['av_address'] = embed[1]
+        self.options['width'] = embed[2]
+        self.options['height'] = embed[3]
  
         if 'showbutton' in self.options:
-            divID = "Example%s"%self.options['div_id']     #random.randint(1,1000)
-            self.options['divID'] = divID
-
             if self.options['showbutton'] == "show":
-                res = SHOW % (self.options)
-                res += HIDE % (self.options)
-                res += CODE1 % (self.options)     
+                self.options['show_hide_text'] = "Hide"
+                res = SHOWHIDE % (self.options)
                 res += CODE % (self.options)
                 return [nodes.raw('', res, format='html')]
             else:
-                res = SHOW % (self.options) 
-                res += HIDE % (self.options)
+                self.options['show_hide_text'] = "Show"
+                res = SHOWHIDE % (self.options)
                 return [nodes.raw('', res, format='html')]
 
         else:

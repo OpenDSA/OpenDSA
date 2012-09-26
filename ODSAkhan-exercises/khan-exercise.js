@@ -1970,19 +1970,19 @@ var Khan = (function() {
 				// Error during submit. Cheat, for now, and reload the page in
 				// an attempt to get updated data.
 
-				if ( typeof userExercise === "undefined" || !userExercise.tablet ) {
-					if ( user != null && exerciseName != null ) {
+				//if ( typeof userExercise === "undefined" || !userExercise.tablet ) {
+				//	if ( user != null && exerciseName != null ) {
 						// Before we reload, clear out sessionStorage's UserExercise.
 						// If there' a discrepancy between server and sessionStorage such that
 						// problem numbers are out of order or anything else, we want
 						// to restart with whatever the server sends back on reload.
-						delete window.sessionStorage[ "exercise:" + user + ":" + exerciseName ];
-					}
+				//		delete window.sessionStorage[ "exercise:" + user + ":" + exerciseName ];
+				//	}
 
-					window.location.reload();
-				} else {
+				//	window.location.reload();
+				//} else {
 					// TODO: Implement alternative error handling
-				}
+				//}
 			}, "attempt_hint_queue" );
 
 			if ( pass === true ) {
