@@ -16,7 +16,7 @@ void shellsort(int[] A) {
 }
 
 /** Modified Insertion Sort for varying increments */
-void inssort2(int A, int start, int incr) {
+void inssort2(int[] A, int start, int incr) {
   for (int i=start+incr; i<A.length; i+=incr)
     for (int j=i; (j>=incr) && (A[j] < A[j-incr]); j-=incr)
       swap(A, j, j-incr);
