@@ -7,6 +7,15 @@
 .showHideLink {
   background-color: #FF0000;
 }
+.jsavcontainer {
+  position: relative;
+}
+.prof_check_mark {
+  position: absolute;
+  bottom: 45px; /* top: 65px; */
+  right: 10px;
+  display: none;
+}
 label {  
   display: block;  
 }

@@ -49,27 +49,15 @@ Here is an implementation for Selection Sort.
 
 Consider the example of the following array.
 
-.. raw:: html
-
-   <div id="SelsortCON1">
-     <span class="jsavcounter"></span>
-     <a class="jsavsettings" href="#">Settings</a>
-     <div class="jsavcontrols"></div>
-     <p class="jsavoutput jsavline" readonly="readonly"></p>
-   </div>
+.. inlineav:: SelsortCON1 slideshow
+   :output: show
 
 Now we continue with the second pass.
 However, since the largest record is already at the right end,
 we will not need to look at it again.
 
-.. raw:: html
-
-   <div id="SelsortCON2">
-     <span class="jsavcounter"></span>
-     <a class="jsavsettings" href="#">Settings</a>
-     <div class="jsavcontrols"></div>
-     <p class="jsavoutput jsavline" readonly="readonly"></p>
-   </div>
+.. inlineav:: SelsortCON2 slideshow
+   :output: show
 
 Selection Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.

@@ -80,14 +80,7 @@ If we reach a point where the remaining sublists have only one
 record (as will be the case for each of the sublists beginning with
 records 4 through 7), then we can skip processing them.
 
-.. raw:: html
-
-   <div id="shellsort_av1">
-     <span class="jsavcounter"></span>
-     <a class="jsavsettings" href="#">Settings</a>
-     <div class="jsavcontrols"></div>
-     <img id="shellsort_av1_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
-   </div>
+.. inlineav:: shellsort_av1 slideshow
 
 Shellsort will sort each of these sublists of length 2 using Insertion
 Sort.
@@ -98,22 +91,12 @@ They are swapped if necessary to put them in sort order.
 (Of course, since these first sublists are each of length 2 when
 the two items are being compared you won't see anything yellow anymore!)
 
-.. raw:: html
-
-   <div id="shellsort_av2">
-     <span class="jsavcounter"></span>
-     <a class="jsavsettings" href="#">Settings</a>
-     <div class="jsavcontrols"></div>
-     <img id="shellsort_av2_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
-   </div>
+.. inlineav:: shellsort_av2 slideshow
 
 At the end of the first pass, the resulting array is "a little better
 sorted".
 
-.. raw:: html
-
-   <div id="shellsort_av3">
-   </div>
+.. inlineav:: shellsort_av3 diagram
 
 The second pass of Shellsort looks at fewer, bigger sublists.
 In our example, the second pass will have an increment of size 4,
@@ -128,55 +111,28 @@ and so on.
 As you click through the slides, you will see the sublists for
 increment size 4.
 
-.. raw:: html
-
-   <div id="shellsort_av4">
-     <span class="jsavcounter"></span>
-     <a class="jsavsettings" href="#">Settings</a>
-     <div class="jsavcontrols"></div>
-     <img id="shellsort_av4_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
-   </div>
+.. inlineav:: shellsort_av4 slideshow
 
 Each sublist of 3 records would also be sorted using an Insertion
 Sort, as shown next.
 
-.. raw:: html
-
-   <div id="shellsort_av5">
-     <span class="jsavcounter"></span>
-     <a class="jsavsettings" href="#">Settings</a>
-     <div class="jsavcontrols"></div>
-     <img id="shellsort_av5_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
-   </div>
+.. inlineav:: shellsort_av5 slideshow
 
 At the end of processing sublists with increment 4, the array is
 "even more sorted".
 
-.. raw:: html
-
-   <div id="shellsort_av6">
-   </div>
+.. inlineav:: shellsort_av6 diagram
 
 The third pass will be made on sublists with increment 2.
 The effect is that we process 2 lists, one consisting of the odd
 positions and the other consisting of the even positions.
 As usual, we sort the sublists using Insertion Sort.
 
-.. raw:: html
-
-   <div id="shellsort_av7">
-     <span class="jsavcounter"></span>
-     <a class="jsavsettings" href="#">Settings</a>
-     <div class="jsavcontrols"></div>
-     <img id="shellsort_av7_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
-   </div>
+.. inlineav:: shellsort_av7 slideshow
 
 At this point, we are getting close to sorted.
 
-.. raw:: html
-
-   <div id="shellsort_av8">
-   </div>
+.. inlineav:: shellsort_av8 diagram
 
 Shellsort's final pass will always use an increment of 1,
 which means a "regular" Insertion Sort of all records.
@@ -184,14 +140,7 @@ But the list is far closer to sorted than it was at the start,
 so this final call to Insertion Sort runs far faster than if we had
 run Insertion Sort on the original array.
 
-.. raw:: html
-
-   <div id="shellsort_av9">
-     <span class="jsavcounter"></span>
-     <a class="jsavsettings" href="#">Settings</a>
-     <div class="jsavcontrols"></div>
-     <img id="shellsort_av9_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
-   </div>
+.. inlineav:: shellsort_av9 slideshow
 
 Finally, the array is sorted.
 

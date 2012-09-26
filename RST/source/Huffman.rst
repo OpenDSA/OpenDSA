@@ -70,16 +70,8 @@ The process of building the Huffman tree for :math:`n` letters is quite simple. 
 <ODSAfig "FreqExamp" />
 The relative frequencies for eight selected letters.
 
-.. raw:: html
-
-   <div id="container">
-     <a class="jsavsettings" href="#">Settings</a>
-       <div id="av">
-         <span class="jsavcounter"></span>
-         <div class="jsavcontrols"></div>
-         <p class="jsavoutput jsavline" readonly="readonly"></p>
-       </div> <!--av-->
-   </div> <!--container-->
+.. inlineav:: huffmanCON1 slideshow
+   :output: show
 
 Figure <ODSAref "HuffTree" /> illustrates part of the Huffman tree construction process for the eight letters of Figure <ODSEref "FreqExamp" />. Ranking D and L arbitrarily by alphabetical order, the letters are ordered by frequency as
 

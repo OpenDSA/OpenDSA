@@ -162,7 +162,7 @@ var huffTree_animation = function (anArray, hfArray) {
 	}	
 }	
 
-var jsav = new JSAV("av");
+var jsav = new JSAV("huffmanCON1");
 
 // numArray: used for logic control
 var numArray = new Array();

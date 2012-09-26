@@ -50,7 +50,8 @@ sys.path.append(os.path.abspath('../ODSAextensions/odsa/chapnum'))
 sys.path.append(os.path.abspath('../ODSAextensions/odsa/odsalink'))
 sys.path.append(os.path.abspath('../ODSAextensions/odsa/odsascript'))
 sys.path.append(os.path.abspath('../ODSAextensions/odsa/sphinx-numfig')) 
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig']
+sys.path.append(os.path.abspath('../ODSAextensions/odsa/inlineav')) 
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

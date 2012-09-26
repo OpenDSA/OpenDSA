@@ -43,38 +43,19 @@ The input is an array of :math:`n` records stored in array ``A``.
 
 Consider the example of the following array.
 
-.. raw:: html
-
-   <div id="InssortCON1">
-     <span class="jsavcounter"></span>
-     <a class="jsavsettings" href="#">Settings</a>
-     <div class="jsavcontrols"></div>
-     <p class="jsavoutput jsavline" readonly="readonly"></p>
-   </div>
+.. inlineav:: InssortCON1 slideshow
+   :output: show
 
 Next, process the record in position 2.
 Swap it to the left until it reaches a value smaller than it is.
 
-.. raw:: html
-
-   <div id="InssortCON2">
-     <span class="jsavcounter"></span>
-     <a class="jsavsettings" href="#">Settings</a>
-     <div class="jsavcontrols"></div>
-     <p class="jsavoutput jsavline" readonly="readonly"></p>
-   </div>
+.. inlineav:: InssortCON2 slideshow
+   :output: show
 
 And now the record in position 3.
 
-.. raw:: html
-
-   <div id="InssortCON3">
-     <span class="jsavcounter"></span>
-     <a class="jsavsettings" href="#">Settings</a>
-     <div class="jsavcontrols"></div>
-     <p class="jsavoutput jsavline" readonly="readonly"></p>
-   </div>
-
+.. inlineav:: InssortCON3 slideshow
+   :output: show
 
 This continues on with each record in turn.
 Call the current record :math:`X`.
