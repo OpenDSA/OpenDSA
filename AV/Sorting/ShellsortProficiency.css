@@ -1,4 +1,4 @@
-#container {
+#ShellsortProficiency_container {
   width: 800px;
   height: 480px;
   border: 1px solid black;
@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 
-#container .jsavarray {
+#ShellsortProficiency_container .jsavarray {
    left: -10px;
    height: 80px;
 }

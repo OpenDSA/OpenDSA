@@ -606,9 +606,10 @@ function mark_inline_av_completed(av_name)
  *     av_name - Name of the AV with which the array is associated
  *     js_array - Raw JavaScript array containing the initial data
  */
-function log_exercise_init_array(av_name, arr) {
+function log_exercise_init_array(av_name, js_array) {
 	if (serverEnabled()) {
-		log_user_action(av_name, 'exercise_initialization', '[' + initialArray.toString() + ']');
+		log_user_action(av_name, 'exercise_initialization', '[' +
+                                js_array.toString() + ']');
 	}
 }
 

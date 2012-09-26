@@ -232,7 +232,7 @@ Next, let's review what makes for a legal increment series.
 Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
-.. avembed:: AV/Development/ShellsortProficiency.html
+.. avembed:: AV/Sorting/ShellsortProficiency.html
    :showbutton: show
    :title: Proficiency Exercise
 
