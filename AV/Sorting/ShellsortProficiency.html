@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShellSort Proficiency Exercise</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../opendsaAV.css" type="text/css" />
+  <link rel="stylesheet" href="ShellsortProficiency.css" type="text/css" />
+</head>
+
+<body>
+<div id="ShellsortProficiency_container">
+  <table id=tableT style="margin-top: -20px">
+    <tr>
+      <td width=125px>&nbsp;</td>
+      <td width=550px align="center">
+	<p align="center" class="jsavexercisecontrols" style="margin-top: 0px"></p>
+      </td>
+      <td width=125px align="right">
+	<p align="right">
+	  <input type="button" name="help" value="Help" />
+	  <input type="button" name="about" value="About" />
+	  <a class="jsavsettings" href="#">Settings</a>
+	</p>
+      </td>
+    </tr>
+  </table>
+  <form style="border: 0px" id="ShellsortProficiency">
+    <div class="jsavcanvas">
+      <p style="margin-top:-15px">Instructions:</p>
+      <p style="margin-top: -15px; padding: 10px; 10px; margin-right: 10px; border: 1px solid black">
+	For each increment, you will need to process each
+	sublist in turn. For each sublist, click on its entries in the
+	Input array to highlight them. Once you have the sublist
+	selected, click "Done Selecting". Next, drag and drop the items
+	to sort them. Then click "Done Sorting Sublist" to go on to the next
+	sublist. When you have processed all of the sublists for a given
+	increment, click "Done Increment". Click on "Help" for more details.
+      </p>
+
+      <p>Increments to use:
+	<input type="text" readonly="readonly" name="incrField"
+	       id="incrField" width="50">
+      </p>
+
+      <p class="jsavscore" />
+
+      <p><b>Input:</b></p>
+
+      <ol id="profArray" style="margin-top: -15px; margin-bottom: 20px"></ol>
+
+      <input type="button" name="selecting"
+	     data-desc="Indicates user is done selecting" value="Done Selecting" />
+      <input type="button" name="sorting"
+	     data-desc="Indicates user is done sorting the sublist"
+	     value="Done Sorting Sublist" />
+      <input type="button" name="incrementing"
+	     data-desc="Indicates user is done with the current increment"
+	     value="Done Increment" />
+
+      <p class="jsavoutput jsavline"></p>
+    </div>
+  </form>
+</div> <!-- container -->
+
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
+</script>
+<script src="../../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../../JSAV/lib/raphael.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../RST/source/_static/ODSA.js"></script>
+<script src="ShellsortProficiency.js"></script>
+</body>
+</html>
