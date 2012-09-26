@@ -1,0 +1,31 @@
+#container {
+  width: 800px;
+  height: 480px;
+  border: 1px solid black;
+  background-color: #efe;
+  padding: 10px;
+  overflow: hidden;
+}
+
+#container .jsavarray {
+   left: -10px;
+   height: 80px;
+}
+
+div h1 {
+  background-color: #efe;
+}
+
+.jsavcontainer {
+  background-color: #efe;
+}
+
+p.jsavoutput.jsavline {
+  height: 40px;
+}
+
+a.jsavsettings {
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
+}

@@ -2,59 +2,19 @@
 <html>
 <head>
   <title>ShellSort Proficiency Exercise</title>
-  <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-<style>
-
-#container {
-  width: 800px;
-  height: 480px;
-  border: 1px solid black;
-  background-color: #efe;
-  padding: 10px;
-  overflow: hidden;
-}
-
-#container .jsavarray {
-   left: -10px;
-   height: 80px;
-}
-
-div h1 {
-  background-color: #efe;
-}
-
-.jsavcontainer {
-  background-color: #efe;
-}
-
-p.jsavoutput.jsavline {
-  height: 40px;
-}
-
-a.jsavsettings {
-  display: block;
-  margin-top: 10px;
-  margin-left: 10px;
-}
-</style>
+  <link rel="stylesheet" href="../opendsaAV.css" type="text/css" />
+  <link rel="stylesheet" href="ShellsortProficiency.css" type="text/css" />
 </head>
 
 <body>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<script src="../../JSAV/lib/jquery.transform.light.js"></script>
-<script src="../../JSAV/lib/raphael.js"></script>
-<script src="../../JSAV/build/JSAV-min.js"></script>
-<script src="../../RST/source/_static/ODSA.js"></script>
 
 <div id="container">
 <table id=tableT style="margin-top: -20px">
   <tr>
   <td width=125px>&nbsp;</td>
   <td width=550px align="center">
-    <p align="center" class="jsavexercisecontrols"></p>
+    <p align="center" class="jsavexercisecontrols" style="margin-top: 0px"></p>
   </td>
   <td width=125px align="right">
     <p align="right">
@@ -67,7 +27,7 @@ a.jsavsettings {
 </table>
 <form style="border: 0px" id="ShellsortProficiency">
   <div class="jsavcanvas">
-  <p style="margin-top:-5px">Instructions:</p>
+  <p style="margin-top:-15px">Instructions:</p>
   <p style="margin-top: -15px; padding: 10px; 10px; margin-right: 10px; border: 1px solid black">
      For each increment, you will need to process each
      sublist in turn. For each sublist, click on its entries in the
@@ -78,11 +38,16 @@ a.jsavsettings {
      increment, click "Done Increment".
   </p>
 
-  Increments to use: <input type="text" readonly="readonly" name="incrField" id="incrField" width="50">
+  <p>Increments to use:
+     <input type="text" readonly="readonly" name="incrField"
+	    id="incrField" width="50">
+  </p>
+
+  <p class="jsavscore" />
 
   <p><b>Input:</b></p>
 
-  <ol id="profArray" style="margin-top: -15px; margin-bottom: 40px"></ol>
+  <ol id="profArray" style="margin-top: -15px; margin-bottom: 20px"></ol>
 
   <input type="button" name="selecting" data-desc="Indicates user is done selecting" value="Done Selecting" />
   <input type="button" name="sorting" data-desc="Indicates user is done sorting the sublist" value="Done Sorting Sublist" />
@@ -93,6 +58,16 @@ a.jsavsettings {
 </form>
 </div> <!-- container -->
 
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
+</script>
+<script src="../../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../../JSAV/lib/raphael.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../RST/source/_static/ODSA.js"></script>
 <script>
 //(function($) {
   /* **************************************************************
@@ -357,7 +332,8 @@ a.jsavsettings {
       }
     }
   });
-//})(jQuery);
+//}(jQuery));
 </script>
+
 </body>
 </html>
