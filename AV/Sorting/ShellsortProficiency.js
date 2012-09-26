@@ -1,4 +1,6 @@
-(function($) {
+"use strict";
+/*global alert, getAVName, log_exercise_init_array*/
+(function ($) {
   /* **************************************************************
   *  This first section is generic initialization that all AVs    *
   *  will need, including initialization for the OpenDSA library  *
@@ -12,32 +14,21 @@
   // add the layout setting preference
   var arrayLayout = settings.add("layout", {"type": "select",
         "options": {"bar": "Bar", "array": "Array"},
-        "label":"Array layout: ", "value": "array"});
+        "label": "Array layout: ", "value": "array"});
 
   //containing HTML element with id ShellsortProficiency.
   var av = new JSAV(context, {settings: settings});
   av.recorded();
 
-  // Create a convenience function named Tell for writing to the
+  // Create a convenience function named tell for writing to the
   // output buffer
-  var Tell = function(msg, color) { av.umsg(msg, {color: color}); };
+  var tell = function (msg, color) { av.umsg(msg, {color: color}); };
 
   var ArraySize = 10; // Size of the exercise array
 
   /* **************************************************************
   *        Everything below this is specific to this AV           *
   ************************************************************** */
-
-  /* **************************************************************
-  *  This section connects the action callbacks to the            *
-  *  form entities.                                               *
-  ************************************************************** */
-  $('input[name="help"]').click(help);
-  $('input[name="about"]').click(about);
-
-  $('input[name="selecting"]', context).click(selecting);
-  $('input[name="sorting"]', context).click(sorting);
-  $('input[name="incrementing"]', context).click(incrementing);
 
   var incrs = [], // The array of increments
       $theArray = $("#profArray"),
@@ -48,15 +39,17 @@
       currSublist = 0; // the current sublist number
     
   // Partial Shellsort. Sweep with the given increment
-  function sweep(incr, arr, jsav, modelmode) {
+  function sweep(jsav, arr, incr, modelmode) {
     var j = 0,
         numElem = 0,
-        highlightFunction = function(index) { return index%incr == j;};
-    for (j=0; j<incr; j++) {         // Sort each sublist
+        highlightFunction = function (index) { return index % incr === j; };
+    for (j = 0; j < incr; j++) {         // Sort each sublist
       // Highlight the sublist
-      numElem = Math.ceil(arr.size()/incr);
-      if(j+(incr*(numElem-1))>=arr.size()) numElem = numElem-1;
-      if (numElem == 1) {
+      numElem = Math.ceil(arr.size() / incr);
+      if (j + (incr * (numElem - 1)) >= arr.size()) {
+        numElem = numElem - 1;
+      }
+      if (numElem === 1) {
         return;
       } else {
         arr.highlight(highlightFunction);
@@ -64,7 +57,7 @@
         jsav.stepOption("grade", true);
         jsav.step();
       }
-      inssort(j, incr, arr, jsav);
+      inssort(jsav, arr, j, incr);
       arr.unhighlight(highlightFunction);
       modelmode.value("SELECTING");
       jsav.stepOption("grade", true);
@@ -73,12 +66,12 @@
   }
 
   // Insertion sort using increments
-  function inssort(start, incr, arr, jsav) {
+  function inssort(jsav, arr, start, incr) {
     var i, j;
-    for (i=start+incr; i<arr.size(); i+=incr) {
-      for (j=i; j>=incr; j-=incr) {
-        if (parseInt(arr.value(j), 10) < parseInt(arr.value(j-incr), 10)) {
-          arr.swap(j, j-incr); // swap the two indices
+    for (i = start + incr; i < arr.size(); i += incr) {
+      for (j = i; j >= incr; j -= incr) {
+        if (parseInt(arr.value(j), 10) < parseInt(arr.value(j - incr), 10)) {
+          arr.swap(j, j - incr); // swap the two indices
           jsav.step();
         } else {
           break; // Done pushing element, leave for loop
@@ -93,13 +86,13 @@
       modelmode = jsav.variable("SORTING");
     var i;
     jsav.displayInit();
-    for (i=0; i<incrs.length; i+=1) {
+    for (i = 0; i < incrs.length; i += 1) {
       if (incrs[i] < modelarr.size()) {
-        sweep(incrs[i], modelarr, jsav, modelmode); // run the sweep to create the AV
+        sweep(jsav, modelarr, incrs[i], modelmode); // run the sweep to create the AV
       }
       modelmode.value("FIRSTSELECTING");
       modelarr.unhighlight();
-      jsav.stepOption("grade", true);      
+      jsav.stepOption("grade", true);
       jsav.step();
     }
     return [modelarr, modelmode];
@@ -108,10 +101,10 @@
   // Generate a random (but constrained) set of four increments
   // (tuned for an array size of 10)
   function generateIncrements() {
-    incrs[0] = Math.floor(Math.random()*3) + 6; // incrs[0]: 6 to 8
-    incrs[2] = Math.floor(Math.random()*3) + 2; // incrs[2]: 2 to 4
+    incrs[0] = Math.floor(Math.random() * 3) + 6; // incrs[0]: 6 to 8
+    incrs[2] = Math.floor(Math.random() * 3) + 2; // incrs[2]: 2 to 4
     // incrs[1] is something between incrs[0] and incrs[2]
-    incrs[1] = Math.floor(Math.random()*(incrs[0]-incrs[2]-1)) + incrs[2] + 1;
+    incrs[1] = Math.floor(Math.random() * (incrs[0] - incrs[2] - 1)) + incrs[2] + 1;
     incrs[3] = 1; // Always end in 1
   }
   
@@ -120,11 +113,11 @@
     generateIncrements();
     $('#incrField').val(incrs);
   
-    htmldata = "";
-    for (var i=ArraySize; i>0; i--) {
-      var randomVal = Math.floor(Math.random()*100);
+    var htmldata = "";
+    for (var i = ArraySize; i > 0; i--) {
+      var randomVal = Math.floor(Math.random() * 100);
       htmldata += "<li>" + randomVal + "</li>";
-      initialArray[ArraySize-i] = randomVal;
+      initialArray[ArraySize - i] = randomVal;
     }
     $theArray.html(htmldata);
 
@@ -136,7 +129,7 @@
     currSublist = av.variable(0);
     mode = av.variable("SELECTING");
     swapIndex = av.variable(-1);
-    Tell("To start the exercise: Click on array elements to highlight those that make up the first sublist. Use increment " + incrs[currIncrIndex.value()]);
+    tell("To start the exercise: Click on array elements to highlight those that make up the first sublist. Use increment " + incrs[currIncrIndex.value()]);
     av.forward();
     av._undo = [];
     return [theArray, mode];
@@ -145,30 +138,29 @@
   // Process help button: Give a full help page for this activity
   // We might give them another HTML page to look at.
   function help() {
-    myRef = window.open("SSprofHelp.html", 'helpwindow');
+    window.open("SSprofHelp.html", 'helpwindow');
   }
 
-  // Process about button: Pop up a message with an Alert
+  // Process About button: Pop up a message with an Alert
   function about() {
-    var mystring = "Shellsort Proficiency Exercise\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during August, 2011\nLast update: August 6, 2011\nJSAV library version " + JSAV.version();
-    alert(mystring);
+    alert("Shellsort Proficiency Exercise\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
 
   // Process Done selecting button: change the message, array status
   function selecting() {
     // Don't do anything if user not in SELECTING mode
-    if (mode.value() !== "SELECTING" && mode.value() !== "FIRSTSELECTING") {return;}
+    if (mode.value() !== "SELECTING" && mode.value() !== "FIRSTSELECTING") { return; }
     mode.value("SORTING");
-    Tell("Click on two array elements to swap them. Swap elements in the sublist until it is sorted.");
+    tell("Click on two array elements to swap them. Swap elements in the sublist until it is sorted.");
     exer.gradeableStep(); // mark this as a gradeable step; also handles continuous feedback
   }
 
   // Process Done sorting Sublist button: change the message, array status
   function sorting() {
     // Don't do anything if user not in SORTING mode
-    if (mode.value() !== "SORTING") {return;}
+    if (mode.value() !== "SORTING") { return; }
     mode.value("SELECTING");
-    Tell("Current increment is " + incrs[currIncrIndex.value()] + ". Click on array elements to highlight those that make up the next sublist. If you have already sorted the last sublist for this increment, then click the 'Done Increment' button. Do not bother to process sublists with only one element.");
+    tell("Current increment is " + incrs[currIncrIndex.value()] + ". Click on array elements to highlight those that make up the next sublist. If you have already sorted the last sublist for this increment, then click the 'Done Increment' button. Do not bother to process sublists with only one element.");
     theArray.unhighlight();
     if (currSublist.value() > 0) {
       theArray.toggleArrow(currSublist.value());
@@ -182,7 +174,7 @@
   // Process Done Increment button: change the message, array status
   function incrementing() {
     // Don't do anything if user not in SELECTING mode
-    if (mode.value() !== "SELECTING") {return;}
+    if (mode.value() !== "SELECTING") { return; }
     var currIndex = currIncrIndex.value();
     if (currIndex < 3) {
       theArray.unhighlight();
@@ -190,9 +182,9 @@
       theArray.toggleArrow(currSublist.value());
       currSublist.value(0);
       
-      Tell("Click on array elements to highlight those that make up the first sublist. Use increment " + incrs[currIndex + 1]);
+      tell("Click on array elements to highlight those that make up the first sublist. Use increment " + incrs[currIndex + 1]);
     } else {
-      Tell("Exercise is done, check your grade.");
+      tell("Exercise is done, check your grade.");
     }
     mode.value("FIRSTSELECTING");
     exer.gradeableStep(); // mark this as a gradeable step; also handles continuous feedback
@@ -208,14 +200,14 @@
       var val = modelArray.value(i),
           hl = modelArray.isHighlight(i);
       if (theArray.isHighlight(i) !== hl) { // fix highlights
-        hl ? theArray.highlight(i) : theArray.unhighlight(i);
+        if (hl) { theArray.highlight(i); } else { theArray.unhighlight(i); }
       }
       if (val !== theArray.value(i)) { // fix values
         theArray.value(i, val);
       }
     }
     var modelModeVal = modelMode.value();
-    // every gradable step changes the mode, so we can use it to deduce the 
+    // every gradable step changes the mode, so we can use it to deduce the
     // action we should take. this will set the state of the exercise correctly
     if (modelModeVal === "SORTING") {
       // if the mode in model answer is sorting, we should call selecting
@@ -240,7 +232,7 @@
   
   var swapIndex;
   // register click handlers for the array indices
-  theArray.click(function(index) {
+  theArray.click(function (index) {
     av._redo = []; // clear the forward stack, should add a method for this in lib
     if (mode.value() === "SELECTING" || mode.value() === "FIRSTSELECTING") { // in selecting mode, highlight index
       if (!theArray.isHighlight(index)) {
@@ -263,5 +255,13 @@
       }
     }
   });
+
+  // Connect the action callbacks to the HTML entities
+  $('input[name="help"]').click(help);
+  $('input[name="about"]').click(about);
+  $('input[name="selecting"]', context).click(selecting);
+  $('input[name="sorting"]', context).click(sorting);
+  $('input[name="incrementing"]', context).click(incrementing);
+
 }(jQuery));
 

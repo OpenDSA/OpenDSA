@@ -29,9 +29,8 @@
   var InitFlag = false;
 
   // Process About button: Pop up a message with an Alert
-  function About() {
-    var mystring = "Shellsort Performance Activity\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten during June, 2011\nLast update: August 14, 2011\nJSAV library version " + JSAV.version();
-    alert(mystring);
+  function about() {
+    alert("Shellsort Performance Activity\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
 
   // Process clear button: Clear the output textbox
@@ -180,7 +179,7 @@
   }
 
   // Action callbacks to the various HTML entities.
-  $('input[name="about"]').click(About);
+  $('input[name="about"]').click(about);
   $('input[name="run"]', context).click(RunIt);
   $('input[name="clear"]', context).click(Clear);
   $('input[name="arraysize"]', context).focusout(Change);
