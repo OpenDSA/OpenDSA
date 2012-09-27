@@ -198,6 +198,17 @@ $(document).ready(function() {
 	$("a.abt").click(function(event){
 		info();
 	});
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+        // Listen to message from child window
+        eventer(messageEvent,function(e) {
+            msg_ka = jQuery.parseJSON( e.data );  
+            updateProfDispStat(msg_ka.exercise, msg_ka.proficient);   
+        },false);    
+
+
 });
 
 function showHide(btnID) {
