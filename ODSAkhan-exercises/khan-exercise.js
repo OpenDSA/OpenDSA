@@ -49,7 +49,7 @@ var Khan = (function() {
 			warningBar.fadeIn( "fast" );
 		});
 	}
-
+        var exercise_data = null; 
 	// Adapted from a comment on http://mathiasbynens.be/notes/localstorage-pattern
 	var sessionStorageEnabled = function() {
 		var enabled, uid = +new Date;
@@ -129,7 +129,7 @@ var Khan = (function() {
 
 	// The main server we're connecting to for saving data
 	server = typeof apiServer !== "undefined" ? apiServer :
-		testMode ? "http://opendsa.cc.vt.edu:8080" : "",
+		testMode ? "http://opendsa.cc.vt.edu:8080" : "",  //128.173.55.223:8080" : "",
 
 	// The name of the exercise
 	exerciseName = typeof userExercise !== "undefined" ? userExercise.exercise : ((/([^\/.]+)(?:\.html)?$/.exec( window.location.pathname ) || [])[1]),
@@ -701,7 +701,6 @@ var Khan = (function() {
 
 		} else {
 			// Load in the exercise data from the server
-                        console.log("sending request");  
 			jQuery.ajax({
 				// Do a request to the server API
 				//url: server + "/api/v1/user/exercises/" + exerciseName,
@@ -862,7 +861,6 @@ var Khan = (function() {
 	}
 
 	function cacheUserExerciseDataLocally( exerciseName, data ) {
-		console.log('in the belly'); 
 		if ( user == null ) return;
 
 		var key = "exercise:" + user + ":" + exerciseName;
@@ -1953,10 +1951,8 @@ var Khan = (function() {
 			// Save the problem results to the server
 			var curTime = new Date().getTime();
 			var data = buildAttemptData(pass, ++attempts, JSON.stringify(validator.guess), curTime);
-			console.log('attempt data: '+ data); 
 			//request( "problems/" + problemNum + "/attempt", data, function() {
                         request( "/attempt", data, function() {  
-                                console.log("we about to save the answer");  
 				// TODO: Save locally if offline
 				jQuery(Khan).trigger( "answerSaved" );
 
@@ -2166,7 +2162,6 @@ var Khan = (function() {
 			var fAnsweredCorrectly = jQuery( "#next-question-button" ).is( ":visible" );
 			if ( !fProdReadOnly && !fAnsweredCorrectly ) {
 				// Resets the streak and logs history for exercise viewer
-                                console.log('hints??');
 				request(
 					"/hint",   //"problems/" + problemNum + "/hint",
 					buildAttemptData(false, attempts, "hint", new Date().getTime()),
@@ -2675,7 +2670,6 @@ var Khan = (function() {
                 
 		if ( data && data.objects[0].name ) {             //data.exercise ) {
 			exerciseName = data.objects[0].name;      //data.exercise;
-                        console.log(" exerciseName =" + exerciseName);
 		}
 
 		if ( user != null ) {
@@ -2691,18 +2685,13 @@ var Khan = (function() {
 	}
 
 	function request( method, data, fn, fnError, queue ) {
-		console.log("request");   
 		if ( testMode ) {
 			// Pretend we have success
-			 console.log("request1"); 
 			if ( jQuery.isFunction( fn ) ) {
-				 console.log("request2"); 
 				fn();
 			}
-			console.log("request3");
 			//return; //temporary efouh;
 		}
-		console.log("request++"); 
 
 		var xhrFields = {};
 		if ( typeof XMLHTTPRequest !== "undefined" ) {
@@ -2710,7 +2699,6 @@ var Khan = (function() {
 			// make sure cookies are passed along.
 			xhrFields["withCredentials"] = true;
 		}
-		console.log("method=" + method);
 		var request = {
 			// Do a request to the server API
 			//url: server + "/api/v1/user/exercise/attempt/",   //s/?name=" + exerciseName + "/" + method,
@@ -2722,8 +2710,9 @@ var Khan = (function() {
 
 			// Backup the response locally, for later use
 			success: function( data ) {
+                                data = jQuery.parseJSON(data);   
 				// Update the visual representation of the points/streak
-				updateData( data );
+				updateData( data);   // , false );
 
 				if ( jQuery.isFunction( fn ) ) {
 					fn( data );
@@ -2778,7 +2767,6 @@ var Khan = (function() {
 	// * when a post to the /api/v1/user/exercises/<exercisename>/attempt succeeds
 	//   which just means there was no 500 error on the server
 	function updateData( data, isFirstUpdate ) {
-
 		// easeInOutCubic easing from
 		// jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
 		// (c) 2008 George McGinley Smith, (c) 2001 Robert Penner - Open source under the BSD License.
@@ -2789,24 +2777,49 @@ var Khan = (function() {
 			}
 		});
 
-		// Check if we're setting/switching usernames
-		if ( data ) {
-			user = data.user || user;
-			userCRC32 = user != null ? crc32( user ) : null;
-			randomSeed = userCRC32 || randomSeed;
-		}
+                var streak = $('li.streak-icon').text();
+                if (!streak) {
+                       streak = 0;
+                }
+                var progress = 0;   
+                if (parseInt(data.progress._exp) == 0) {
+                    progress = parseFloat(data.progress._int);  
+                }  
+                if (parseInt(data.progress._exp) == -2){  
+                    progress = parseFloat(data.progress._int) / 100;  
+                }    
+                if (parseInt(data.progress._exp) == -1){
+                    progress = parseFloat(data.progress._int) / 10;
+                }
+                var  total =  progress*100;   //parseInt(streak) + 1;
+                if (total >=100.00){   
+                    total = 100;  
+                }    
+                $('li.streak-icon').text(total +  "%");
+                if (total >= 100) {
+                        $('.current-streak').css('background-color','green');
+                }
 
+
+
+
+		// Check if we're setting/switching usernames
+		//if ( data) {
+	        //	user = data._user_cache.username || user;
+	 	//	userCRC32 = user != null ? crc32( user ) : null;
+	        //	randomSeed = userCRC32 || randomSeed;
+		//}
 		// Make sure we have current data
 		var oldData = getData();
 
 		// Change users or exercises, if needed
 		if ( data && (data.total_done >= oldData.total_done ||
-				data.user !== oldData.user || data.exercise !== oldData.exercise) ) {
+				data._user_cache.username !== oldData.user || data._exercise_cache.name !== oldData.exercise) ) {
 			cacheUserExerciseDataLocally( exerciseName, data );
 
 			// Don't update the UI with data from a different exercise
-			if ( data.exercise !== exerciseName ) {
-				return;
+			if ( data._exercise_cache.name !== exerciseName ) {
+				return; 
 			}
 
 		// If no data is provided then we're just updating the UI
@@ -2819,7 +2832,6 @@ var Khan = (function() {
 
 			// Streak and longest streak pixel widths
 			streakWidth = Math.min(Math.ceil(streakMaxWidth * data.progress), streakMaxWidth);
-
 		if ( data.summative ) {
 			jQuery( ".summative-help ")
 				.find( ".summative-required-streaks" ).text( data.num_milestones ).end()
@@ -2846,7 +2858,7 @@ var Khan = (function() {
 
 		jQuery(".current-rating").animate({"width":( streakWidth ) }, 365, "easeInOutCubic");
 		jQuery(".streak-icon").css({width:"100%"});
-		jQuery(".streak-bar").toggleClass("proficient", data.progress >= 1.0);
+		jQuery(".streak-bar").toggleClass("proficient", data.progress >= 1.00);
 
 		drawExerciseState( data );
 	}
