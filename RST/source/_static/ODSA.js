@@ -1,7 +1,8 @@
 // Set server_url = "" in order to disable server communication and most logging
-var server_url = "http://128.173.55.223:8080"; // opendsa.cc.vt.edu:8080
+var server_url = "http://opendsa.cc.vt.edu:8080"; // opendsa.cc.vt.edu:8080
 // Dan's desktop: 128.173.54.186:8000
 // Eric's desktop: 128.173.55.223:8080
+var odsa_url = "http://algoviz.org"; 
 
 // Contains a list of all AVs on the page
 var avList = [];
@@ -198,6 +199,19 @@ $(document).ready(function() {
   $("a.abt").click(function(event){
     info();
   });
+  
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+  // Listen to message from child window
+  eventer(messageEvent, function(e) {
+    if (e.origin !== odsa_url) {
+      return;
+    }
+    msg_ka = getJSON(e.data);
+    updateProfDispStat(msg_ka.exercise, msg_ka.proficient);
+  }, false);
 });
 
 function showHide(btnID) {

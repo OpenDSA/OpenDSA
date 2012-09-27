@@ -40,20 +40,26 @@ Here is a pseudocode sketch of Mergesort::
       return merge(mergesort(L1), mergesort(L2));
     }
 
-The following figure illustrates Mergesort.
-The first row shows eight numbers that are to be sorted.
-Mergesort will recursively subdivide the list into
-sublists of one element each, then recombine the sublists.
-The second row shows the four sublists of size 2 created by the
-first merging pass.
-The third row shows the two sublists of size 4 created by the next
-merging pass on the sublists of row 2.
-The last row shows the final sorted list created by merging the two
-sublists of row 3.
+Figure :num:`Figure #MergeSortFig` illustrates Mergesort.
 
-.. image:: Images/MrgSort.png
+.. _MergeSortFig:
+
+.. figure:: Images/MrgSort.png
    :width: 400
    :alt: Mergesort
+   :figwidth: 90%
+   :align: center
+
+   Mergesort example.
+   The first row shows eight numbers that are to be sorted.
+   Mergesort will recursively subdivide the list into
+   sublists of one element each, then recombine the sublists.
+   The second row shows the four sublists of size 2 created by the
+   first merging pass.
+   The third row shows the two sublists of size 4 created by the next
+   merging pass on the sublists of row 2.
+   The last row shows the final sorted list created by merging the two
+   sublists of row 3.
 
 The hardest step to understand about Mergesort is the merge function.
 The merge function starts by examining the first element of each
@@ -66,26 +72,34 @@ output list until no more input elements remain.
 
 Here is a visualization that illustrates how Mergesort works.
 
-.. avembed:: AV/Development/mergesort-av.html
+.. avembed:: AV/Development/mergesortAV.html
 
-Proficiency Exercise:
+Here is a mergesort warmup exercise to practice merging.
+
+.. avembed:: Exercises/Development/MergeSortMergeSublist.html
+   :showbutton: hide
+   :title: Mergesort Merging Exercise
+
+Now here is a full proficiency exercise to put it all together.
 
 .. avembed:: AV/Development/mergesort-proficiency.html
+   :showbutton: show
+   :title: Mergesort Proficiency Exercise
 
 Analysis of Mergesort is straightforward, despite the fact that it is
-a recursive
+a recursive algorithm.
 The merging part takes time :math:`\Theta(i)` where :math:`i`
 is the total length of the two subarrays being merged.
 The array to be sorted is repeatedly split in half until subarrays of
 size 1 are reached, at which time they are merged to be of size 2,
 these merged to subarrays of size 4, and so on as shown in
-Figure <ODSAref "MergeFig" />.
+Figure :num:`Figure #MergeSortFig`.
 Thus, the depth of the recursion is :math:`\log n` for :math:`n`
 elements (assume for simplicity that :math:`n` is a power of two).
 The first level of recursion can be thought of as working on one array
 of size :math:`n`, the next level working on two arrays of size
 :math:`n/2`, the next on four arrays of size :math:`n/4`, and so on.
-The bottom of the recursion has <i>n</i> arrays of size 1.
+The bottom of the recursion has :math:`n` arrays of size 1.
 Thus, :math:`n` arrays of size 1 are merged (requiring
 :math:`\Theta(n)` total steps), :math:`n/2` arrays of size 2
 (again requiring :math:`\Theta(n)` total steps), :math:`n/4` arrays of
@@ -95,13 +109,6 @@ work is done, for a total cost of :math:\Theta(n \log n)`.
 This cost is unaffected by the relative order of the
 values being sorted, thus this analysis holds for the best, average,
 and worst cases.
-
-Mergesort warmup practice exercise
-
-.. avembed:: Exercises/Development/MergeSortMergeSublist.html
-   :showbutton: hide
-   :title: Mergesort Practice
-
 
 Now here are summary questions.
 

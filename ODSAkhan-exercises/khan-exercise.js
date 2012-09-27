@@ -34,6 +34,8 @@
 
 */
 
+// ODSA book url
+var odsa_url = "http://algoviz-beta.cc.vt.edu";
 var Khan = (function() {
 	function warn( message, showClose ) {
 		jQuery(function() {
@@ -2798,6 +2800,7 @@ var Khan = (function() {
                 $('li.streak-icon').text(total +  "%");
                 if (total >= 100) {
                         $('.current-streak').css('background-color','green');
+                        parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}',odsa_url);    
                 }
 
 

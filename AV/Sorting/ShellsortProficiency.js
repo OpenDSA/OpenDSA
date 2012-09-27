@@ -227,7 +227,7 @@
       { controls: $('.jsavexercisecontrols'),
       fix: fixState,
       feedback: "continuous",
-      fixmode: "undo"});
+      fixmode: "fix"});
   exer.reset();
   
   var swapIndex;

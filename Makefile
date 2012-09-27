@@ -26,6 +26,7 @@ lint: csslint jshint
 csslint:
 	@echo 'running csslint'
 	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
+	@csslint $(CSSLINTFLAGS) AV/*.css
 	@csslint $(CSSLINTFLAGS) Doc/*.css
 	@csslint $(CSSLINTFLAGS) QBank/*.css
 
