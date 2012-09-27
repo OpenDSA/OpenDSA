@@ -108,6 +108,29 @@ NOTES
            :start-after: /* *** ODSATag: <my tag> *** */
            :end-before: /* *** ODSAendTag: <my tag> *** */
 
+inlineav
+-----------
+NAME
+    inlineav - displays code snippets within the eTextbook.
+
+SYNOPSIS::
+
+    .. inlineav:: avId [slideshow | diagram]
+       :output: [show | hide]
+
+DESCRIPTION
+    ``.. inlineav:: avId [slideshow | diagram]``
+
+      Create a container for an inline AV with the given ID.
+
+      Providing the 'slideshow' argument will create an interactive slideshow.
+      Providing the 'diagram' argument will create a static example.
+
+    ``:output: [show | hide]``
+
+      If the AV is a slideshow, controls whether or not the message box is displayed
+      Note the 'output' argument is only valid for slideshows.
+
 numref
 ------
 NAME

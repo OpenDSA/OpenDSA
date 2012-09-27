@@ -46,37 +46,37 @@ $(document).ready(function() {
 	});
 	
 	if (serverEnabled()) {
-		// TODO: Figure out a more robust way to determine if this is a module
-		// Get the module or AV name as soon as possible
-		if (getAVName() === "") {
-			var modName = getNameFromURL();
-			// Save the module name in localStorage
-			localStorage["module_name"] = modName;
-			// Log the browser ready event
-			log_user_action('', 'document-ready', 'User loaded the ' + modName + ' module page');
-		} else {
-			var av_name = getNameFromURL();
-			// Log the browser ready event
-			log_user_action(av_name, 'document-ready', 'User loaded the ' + av_name + ' AV');
-		}
-		
 		// Send any stored event data when the page loads
 		if (userLoggedIn()) {
 			flush_stored_data();
 		} else {
 			send_event_data();
 		}
-		
-		// Suggest the user login if they don't have a valid session,
-		// update the login link with their name if they do
-		if (is_SessionExpired()){
-			localStorage.removeItem("opendsa");
-			if (!inLocalStorage("warn_login")) {
-				showLoginBox();
+	
+		// TODO: Figure out a more robust way to determine if this is a module
+		// Get the module or AV name as soon as possible
+		if (isModulePage()) {
+			var modName = getNameFromURL();
+			// Save the module name in localStorage
+			localStorage["module_name"] = modName;
+			// Log the browser ready event
+			log_user_action('', 'document-ready', 'User loaded the ' + modName + ' module page');
+			
+			// Suggest the user login if they don't have a valid session,
+			// update the login link with their name if they do
+			if (is_SessionExpired()){
+				localStorage.removeItem("opendsa");
+				if (!inLocalStorage("warn_login")) {
+					showLoginBox();
+				}
+			} else {
+				var uname = get_user_fromDS();
+				$('a.login-window').text('Logout ' + uname);
 			}
 		} else {
-			var uname = get_user_fromDS();
-			$('a.login-window').text('Logout ' + uname);
+			var av_name = getNameFromURL();
+			// Log the browser ready event
+			log_user_action(av_name, 'document-ready', 'User loaded the ' + av_name + ' AV');
 		}
 		
 		// Add button_logger to all buttons on the page
@@ -335,9 +335,35 @@ function userLoggedIn() {
 	return (get_user_fromDS() !== "");
 }
 
+/**
+ * Returns true if the page contains a hyperlink with id='logon' in a div with class="header"
+ */
+function isModulePage() {
+	// TODO: Is this really a good way to do this?
+	if ($('a#logon').length == 1 && $('a#logon')[0].parentElement.tagName == "DIV" && $('a#logon')[0].parentElement.className.match(/[.*\s]?header[.*\s]?/)) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Returns true if the current page is loaded in an iFrame
+ */
+function isAVPage() {
+	// TODO: Is this really a good way to do this?
+	return location.href.indexOf('/AV/') > -1;
+}
+
 // Reads the module name from localStorage
 function getModuleName() {
 	return (inLocalStorage("module_name") ? localStorage.module_name : "");
+}
+
+/**
+ * Returns the name of the AV or exercise if called from an AV page, returns "" otherwise
+ */
+function getAVName() {
+	return (isAVPage() ? getNameFromURL() : "");
 }
 
 // Parses the name of the AV or module from the page URL
@@ -510,18 +536,6 @@ function inLocalStorage(varName) {
 	return localStorage[varName];
 }
 
-/**
- * Returns the name of the AV or exercise if called from an AV page, returns "" otherwise
- */
-function getAVName() {
-	// TODO: Find a better way to determine whether the page is a module or not
-	if (document.title.match(".+OpenDSA Sample eTextbook") != null) {
-		return "";
-	} else {
-		return getNameFromURL();
-	}
-}
-
 // Returns the given data as a JSON object
 // If given a string, converts it to JSON
 // If given a JSON object, does nothing
@@ -608,8 +622,7 @@ function mark_inline_av_completed(av_name)
  */
 function log_exercise_init_array(av_name, js_array) {
 	if (serverEnabled()) {
-		log_user_action(av_name, 'exercise_initialization', '[' +
-                                js_array.toString() + ']');
+		log_user_action(av_name, 'exercise_initialization', '[' + js_array.toString() + ']');
 	}
 }
 
@@ -898,15 +911,24 @@ function send_av_score(av_name) {
 
 /** 
  * Warn the user they will not receive credit unless they log in, 
- * but only if a login server is enabled and they have not been prompted before
+ * but only:
+ *   - If a login server is enabled
+ *   - They are on a module page
+ *   - They have not been prompted before
  */
 function warn_user_login()
 {
-	// Only prompt the user once per session
+	/*
+	 * Only warn the user:
+	 *   - If the server is enabled
+	 */
 	if (serverEnabled() && (!inLocalStorage("warn_login") || localStorage["warn_login"] !== "false") ) {
-		log_user_action('', 'login-warn-message', 'User warned they must login to receive credit');
-		alert('You must be logged in to receive credit');
-		localStorage["warn_login"] = "false";
+		// If triggered from a module page or an AV in an iFrame
+		if (isModulePage() || (isAVPage() && top !== self)) {
+			log_user_action('', 'login-warn-message', 'User warned they must login to receive credit');
+			alert('You must be logged in to receive credit');
+			localStorage["warn_login"] = "false";
+		}
 	}
 }
 
