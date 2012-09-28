@@ -35,7 +35,7 @@
 */
 
 // ODSA book url
-var odsa_url = "http://algoviz-beta.cc.vt.edu";
+var odsa_url = "http://algoviz.org";
 var Khan = (function() {
 	function warn( message, showClose ) {
 		jQuery(function() {
@@ -131,7 +131,7 @@ var Khan = (function() {
 
 	// The main server we're connecting to for saving data
 	server = typeof apiServer !== "undefined" ? apiServer :
-		testMode ? "http://opendsa.cc.vt.edu:8080" : "",  //128.173.55.223:8080" : "",
+		testMode ? "http://128.173.55.223:8080" : "",
 
 	// The name of the exercise
 	exerciseName = typeof userExercise !== "undefined" ? userExercise.exercise : ((/([^\/.]+)(?:\.html)?$/.exec( window.location.pathname ) || [])[1]),
