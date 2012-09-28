@@ -17,6 +17,9 @@ __author__ = 'breakid'
 from docutils import nodes
 from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
+import os, sys
+sys.path.append(os.path.abspath('./source'))
+import conf
 
 def setup(app):
     app.add_directive('inlineav',inlineav)
@@ -33,7 +36,7 @@ SLIDESHOW = """\
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
- <img id="%(avId)s_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
+ <img id="%(avId)s_check_mark" class="prof_check_mark" src="%(odsa_path)s/lib/Images/green_check.png" />
 </div>
 """
 
@@ -44,7 +47,7 @@ SSOUTPUT = """\
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
  <p class="jsavoutput jsavline" readonly="readonly"></p>
- <img id="%(avId)s_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" />
+ <img id="%(avId)s_check_mark" class="prof_check_mark" src="%(odsa_path)s/lib/Images/green_check.png" />
 </div>
 """
 
@@ -66,6 +69,7 @@ class inlineav(Directive):
         """ Restructured text extension for including inline JSAV content on module pages """
         self.options['avId'] = self.arguments[0]
         self.options['type'] = self.arguments[1]
+        self.options['odsa_path'] = os.path.relpath(conf.odsa_path,conf.ebook_path)
         if self.options['type'] == "diagram":
             res = DIAGRAM % self.options
         else:

@@ -32,7 +32,7 @@ CODE = """\
 <div id="%(div_id)s">
 <p></p>
 <center> 
-<iframe src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
+<iframe id="%(div_id)s_iframe" data-av="%(div_id)s" src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 </iframe>
 </center>
 </div>

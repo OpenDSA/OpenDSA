@@ -2,7 +2,8 @@
 var server_url = "http://opendsa.cc.vt.edu:8080"; // opendsa.cc.vt.edu:8080
 // Dan's desktop: 128.173.54.186:8000
 // Eric's desktop: 128.173.55.223:8080
-var odsa_url = "http://algoviz.org"; 
+var odsa_url = "http://algoviz.org"; //algoviz.org
+// Development: algoviz-beta.cc.vt.edu
 
 // Contains a list of all AVs on the page
 var avList = [];
@@ -36,6 +37,23 @@ $(document).ready(function() {
     
     avList.push(av_name);
   });
+  
+  /*
+  // TODO: Attempt to dynamically add proficiency check marks to AVs that don't have showhide buttons
+  // Works sometimes, but not consistently, CSS doesn't work right (top and right values aren't recognized
+  $('iframe').contents().each(function(index, doc) {
+    var av_name = getNameFromURL($(doc).attr('location').pathname);
+    
+    // TODO: Fix the context once the avcontainers are renamed
+    // If an AV doesn't have a showhide button or a check mark, dynamically add a check mark to the AV
+    if ($('#' + av_name + '_showhide_btn').length == 0 && $('#' + av_name + '_check_mark', $(doc)).length == 0) {
+      console.log('test1: ' + av_name + " doesn't have a showhide button");
+      console.log('test1: $(doc).title = ' + $(doc).title);
+      
+      $('#ssperform', $(doc)).after('<img id="' + av_name + '_check_mark" class="prof_check_mark" style="position: absolute; top: 65px, right: 10px; display: none;" src="../../lib/Images/green_check.png">');
+    }
+  });
+  */
   
   // Add all AVs that have a proficiency check mark that are not already in the list
   $('img.prof_check_mark').each(function(index, item){
@@ -113,7 +131,7 @@ $(document).ready(function() {
           data = getJSON(data);
         
           if(data.success){
-            updateLocalStorage(username );
+            updateLocalStorage(username);
             localStorage.name = username;
             $('a.login-window').text('Logout ' + username);
             log_user_action('', 'user-login', 'User logged in');
@@ -209,8 +227,8 @@ $(document).ready(function() {
     if (e.origin !== odsa_url) {
       return;
     }
-    msg_ka = getJSON(e.data);
-    updateProfDispStat(msg_ka.exercise, msg_ka.proficient);
+    var msg_ka = getJSON(e.data);
+    updateProfDisplay(msg_ka.exercise, msg_ka.proficient);
   }, false);
 });
 
@@ -236,7 +254,7 @@ function showHide(btnID) {
     var width = $('#' + btnID).attr("data-frame-width");
     var height = $('#' + btnID).attr("data-frame-height");
     
-    $('#' + btnID).after('<div id="' + divID + '"><p></p><center> <iframe src="' + src + '" type="text/javascript" width="' + width + '" height="' + height + '" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>'); 
+    $('#' + btnID).after('<div id="' + divID + '"><p></p><center> <iframe id="' + divID + '_iframe" data-av="' + divID + '" src="' + src + '" type="text/javascript" width="' + width + '" height="' + height + '" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n </iframe></center></div>'); 
   }
   
   // Update the button text
@@ -464,7 +482,7 @@ function checkProficiency(av_name) {
   var profStatus = checkProfLocalStorage(av_name);
 
   // Clear the proficiency display if the current user is not listed as proficient
-  updateProfDispStat(av_name, profStatus);
+  updateProfDisplay(av_name, profStatus);
   
   if (profStatus) {
     return;
@@ -491,7 +509,7 @@ function checkProficiency(av_name) {
         // Proficiency indicators were cleared above, only need to 
         // update them again if server responded that the user is proficient
         if (data.proficient) {
-          storeProficiencyStatus(av_name, true);
+          updateProfDisplay(av_name, true);
         }
       },
       error: function(data){ console.log("ERROR " + "isProficient" /*JSON.stringify( data )*/);}
@@ -528,23 +546,62 @@ function checkProfLocalStorage(av_name) {
 }
 
 /**
- * If status is true, saves the given AV name in localStorage, tied to the current user
- * If status is false, clears the proficiency indicator for the given AV
- * 
- * Should be called:
- *     - When the client determines a user is proficient if no user is logged in
- *     - if the server says the logged in user is proficient
+ * Update the proficiency indicator(s) for the specified AV
+ * If status is true, caches the user's proficiency in localStorage
+ *
+ * Status should only be true:
+ *     - If no backend server is enabled or no user is logged in and the client determines a user is proficient
+ *     - If the server responds that the logged in user is proficient
  */
-function storeProficiencyStatus(av_name, status) {
-  console.log("storeProficiencyStatus(" + av_name + ", " + status + ")"); //TODO: FOR TESTING
-
-  // Update the proficiency display for the specified AV
-  updateProfDispStat(av_name, status);
+function updateProfDisplay(av_name, status) {
   
-  if (!status) {
-    return;
+  console.log("updateProfDisplay('" + av_name + "', " + status + ")");  //TODO: FOR TESTING
+  
+  // Store status locally if user is proficient
+  if (status) {
+    storeProficiencyStatus(av_name, status);
   }
   
+  var objId = av_name + '_check_mark';
+  
+  // Hide or display proficiency check mark, if it exists
+  if ($('#' + objId).length > 0) {
+    if (status) {
+      // Display the proficiency check mark
+      $("#" + objId).css('display', 'block');
+    } else {
+      // Hide the proficiency check mark
+      $("#" + objId).css('display', 'none');
+    }
+  }
+  
+  objId = av_name + '_showhide_btn';
+  console.log("updateProfDisplay: $('#' + objId).length = " + ($('#' + objId).length) + ", > 0: " + ($('#' + objId).length > 0) ); //TODO: FOR TESTING
+  
+  // Change AV showhide button to red or green to indicate proficiency, if it exists
+  if ($('#' + objId).length > 0) {
+    console.log("updateProfDisplay: button (" + objId + ") found" ); //TODO: FOR TESTING
+    
+    if (status) {
+      // Turn the button green
+      $("#" + objId).css("background-color", "lime");
+    } else {
+      // Turn the button red
+      $("#" + objId).css("background-color", "#FF0000");
+    }
+  } else {
+    console.log("updateProfDisplay: no button (" + objId + ") found" ); //TODO: FOR TESTING
+  }
+}
+
+/**
+ * Adds the given AV name to a list of AVs for which the current user is proficient
+ *
+ * Note: This is designed to only be called by updateProfDisplay()
+ */
+function storeProficiencyStatus(av_name) {
+  console.log("storeProficiencyStatus(" + av_name + ")"); //TODO: FOR TESTING
+
   var username = getUsername();
   var data = {};
 
@@ -571,45 +628,6 @@ function storeProficiencyStatus(av_name, status) {
   localStorage["proficiency_data"] = JSON.stringify(data);
 }
 
-/**
- * Update the proficiency indicator(s) for the specified AV
- */
-function updateProfDispStat(av_name, status) {
-  
-  console.log("updateProfDispStat('" + av_name + "', " + status + ")");  //TODO: FOR TESTING
-  
-  var objId = av_name + '_check_mark';
-  
-  // Hide or display proficiency check mark, if it exists
-  if ($('#' + objId).length > 0) {
-    if (status) {
-      // Display the proficiency check mark
-      $("#" + objId).css('display', 'block');
-    } else {
-      // Hide the proficiency check mark
-      $("#" + objId).css('display', 'none');
-    }
-  }
-  
-  objId = av_name + '_showhide_btn';
-  console.log("updateProfDispStat: $('#' + objId).length = " + ($('#' + objId).length) + ", > 0: " + ($('#' + objId).length > 0) ); //TODO: FOR TESTING
-  
-  // Change AV showhide button to red or green to indicate proficiency, if it exists
-  if ($('#' + objId).length > 0) {
-    console.log("updateProfDispStat: button (" + objId + ") found" ); //TODO: FOR TESTING
-    
-    if (status) {
-      // Turn the button green
-      $("#" + objId).css("background-color", "lime");
-    } else {
-      // Turn the button red
-      $("#" + objId).css("background-color", "#FF0000");
-    }
-  } else {
-    console.log("updateProfDispStat: no button (" + objId + ") found" ); //TODO: FOR TESTING
-  }
-}
-
 //*****************************************************************************
 //***********        Scoring, Logging and Metrics Collection        ***********
 //*****************************************************************************
@@ -631,7 +649,7 @@ if (serverEnabled()) {
     
     var flush = false;
     
-    var ssEvents = ['jsav-forward', 'jsav-backward', 'jsav-begin', 'jsav-end'];
+    var ssEvents = ['jsav-forward', 'jsav-backward', 'jsav-begin', 'jsav-end', 'jsav-exercise-model-forward', 'jsav-exercise-model-backward', 'jsav-exercise-model-begin', 'jsav-exercise-model-end'];
     
     // TODO: Make sure all additional fields of JSAV events are logged somewhere
     if (ssEvents.indexOf(data.type) > -1) {
@@ -644,6 +662,13 @@ if (serverEnabled()) {
       // On grade change events, log the user's score and submit it
       store_av_score(data.av, "pe", data.score);
       flush = true;
+      
+      // TODO: Proficiency threshold for anonymous users is currently hardcoded to 100%, reimplement this if we ever get access to the proficiency threshold on the client-side
+      if ((!serverEnabled() || !userLoggedIn()) && data.score.student === data.score.total) {
+        // If no user is logged in (whether or not the server is 
+        // enabled), allow the client to determine user proficiency
+        updateProfDisplay(data.av, true);
+      }
     } else {
       data.desc = data.type;
     }
@@ -669,7 +694,7 @@ if (serverEnabled()) {
       if (!serverEnabled() || !userLoggedIn()) {
         // If no user is logged in (whether or not the server is 
         // enabled), allow the client to determine user proficiency
-        storeProficiencyStatus(data.av, true);
+        updateProfDisplay(data.av, true);
       }
     }
     
@@ -968,12 +993,12 @@ function send_av_score(av_name) {
           
           // Check whether the user is proficient
           if (data.proficient) {
-            // Run it locally to store data and update displays on current page
-            storeProficiencyStatus(av_name, true);
+            // Update displays on current page
+            updateProfDisplay(av_name, true);
             
-            // If this is running on an AV embeded in a module page, update display on module page
+            // Update display on module page, if this is an embedded AV
             if (isAVPage() && isModulePage(window.parent.document)) {
-              window.parent.updateProfDispStat(av_name, true);
+              window.parent.updateProfDisplay(av_name, true);
             }
           }
         },
