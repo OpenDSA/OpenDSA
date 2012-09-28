@@ -2784,22 +2784,23 @@ var Khan = (function() {
                        streak = 0;
                 }
                 var progress = 0;   
-                if (parseInt(data.progress._exp) == 0) {
-                    progress = parseFloat(data.progress._int);  
-                }  
-                if (parseInt(data.progress._exp) == -2){  
-                    progress = parseFloat(data.progress._int) / 100;  
+                if(data){ 
+                   if (parseInt(data.progress._exp) == 0) {
+                       progress = parseFloat(data.progress._int);  
+                   }  
+                   if (parseInt(data.progress._exp) == -2){  
+                       progress = parseFloat(data.progress._int) / 100;  
+                   }    
+                   if (parseInt(data.progress._exp) == -1){
+                       progress = parseFloat(data.progress._int) / 10;
+                   }
                 }    
-                if (parseInt(data.progress._exp) == -1){
-                    progress = parseFloat(data.progress._int) / 10;
-                }
                 var  total =  progress*100;   //parseInt(streak) + 1;
                 if (total >=100.00){   
                     total = 100;  
                 }    
                 $('li.streak-icon').text(total +  "%");
                 if (total >= 100) {
-                        $('.current-streak').css('background-color','green');
                         parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}',odsa_url);    
                 }
 
@@ -2816,35 +2817,33 @@ var Khan = (function() {
 		var oldData = getData();
 
 		// Change users or exercises, if needed
-		if ( data && (data.total_done >= oldData.total_done ||
-				data._user_cache.username !== oldData.user || data._exercise_cache.name !== oldData.exercise) ) {
-			cacheUserExerciseDataLocally( exerciseName, data );
+//		if ( data && (data.total_done >= oldData.total_done ||
+//				data._user_cache.username !== oldData.user || data._exercise_cache.name !== oldData.exercise) ) {
+//			cacheUserExerciseDataLocally( exerciseName, data );
 
 			// Don't update the UI with data from a different exercise
-			if ( data._exercise_cache.name !== exerciseName ) {
-				return; 
-			}
+//			if ( data._exercise_cache.name !== exerciseName ) {
+//				return; 
+//			}
 
 		// If no data is provided then we're just updating the UI
-		} else {
-			data = oldData;
-		}
-
+//		} else {
+//			data = oldData;
+//		}
 		// Update the streaks/point bar
 		var streakMaxWidth = jQuery(".streak-bar").width(),
-
 			// Streak and longest streak pixel widths
-			streakWidth = Math.min(Math.ceil(streakMaxWidth * data.progress), streakMaxWidth);
-		if ( data.summative ) {
-			jQuery( ".summative-help ")
-				.find( ".summative-required-streaks" ).text( data.num_milestones ).end()
-				.show();
+			streakWidth = Math.min(Math.ceil(streakMaxWidth * progress), streakMaxWidth);
+		if ( data.progress ) {
+	        //		jQuery( ".summative-help ")
+	        //			.find( ".summative-required-streaks" ).text( data.num_milestones ).end()
+	        //			.show();
 
 			if ( jQuery( ".level-label" ).length === 0 ) {
 
 				// Split summative streak bar into levels
 				var levels = [];
-				var levelCount = data.num_milestones;
+				var levelCount = data.streak;   //num_milestones;
 				for ( var i = 1; i < levelCount; i++ ) {
 
 					// Individual level pixels
@@ -2858,10 +2857,9 @@ var Khan = (function() {
 
 			}
 		}
-
 		jQuery(".current-rating").animate({"width":( streakWidth ) }, 365, "easeInOutCubic");
 		jQuery(".streak-icon").css({width:"100%"});
-		jQuery(".streak-bar").toggleClass("proficient", data.progress >= 1.00);
+		jQuery(".streak-bar").toggleClass("proficient", progress >= 1.00);
 
 		drawExerciseState( data );
 	}
