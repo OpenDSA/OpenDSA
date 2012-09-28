@@ -26,6 +26,6 @@ div h1 {
   background-color: #efe;
 }
 
-p.jsavoutput.jsavscroll {
+.jsavscroll {
   height: 150px;
 }
