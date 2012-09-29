@@ -1,6 +1,6 @@
 #mergesortAV_container {
   width: 800px;
-  height: 565px;
+  height: 650px;
   border: 1px solid black;
   background-color: #efe;
   padding: 10px;
@@ -20,7 +20,7 @@ div h1 {
 .jsavcontainer {
   background-color: #efe;
   border: none;
-  padding: 0px;
+  padding: 0;
 }
   
 .jsavcounter {
@@ -33,7 +33,7 @@ div h1 {
   position: absolute;
 }
   
-p.jsavoutput.jsavline {
+.jsavline {
   height: 30px;
   margin: 0;
 }
@@ -42,7 +42,7 @@ p.jsavoutput.jsavline {
   float: right;
 }
   
-a.jsavsettings {
+.jsavsettings {
   display: block;
   margin-top: 10px;
   margin-left: 10px;

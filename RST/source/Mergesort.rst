@@ -72,7 +72,7 @@ output list until no more input elements remain.
 
 Here is a visualization that illustrates how Mergesort works.
 
-.. avembed:: AV/Development/mergesortAV.html
+.. avembed:: AV/Sorting/mergesortAV.html
 
 Here is a mergesort warmup exercise to practice merging.
 
