@@ -72,8 +72,7 @@
   function runIt() {
     var newSize = $('#arraysize').val();
 
-    if (processArrayValues()) { // if it is false, we got junk user
-                                // needs to fix
+    if (processArrayValues()) { // if false, we got junk user should fix
       if (theArray.length === 0) { // Make a random  array
         ASize = newSize;
         theArray.length = 0; // Out with the old
@@ -113,7 +112,6 @@
       av.recorded(); // mark the end
     }
   }
-  
   
   // The space required for each row to be displayed
   var rowHeight = 80;
@@ -165,21 +163,18 @@
     var returnArr = arr;
     
     arr.highlight();
-    
-    if (arrLen === 1)                  // Base case
-    {
+    if (arrLen === 1) {    // Base case
       av.umsg("An array of length 1 cannot be split, ready for merge");
       av.step();
       arr.unhighlight();
     }
-    else if (arrLen > 1)			// General recursive case
-    {
+    else if (arrLen > 1) { // General recursive case
       av.step();
-    
       av.umsg("Split the selected array (as evenly as possible)");
       arr.unhighlight();
     
-      // Find the middle of the array, if can't split evenly make the first array larger
+      // Find the middle of the array,
+      // if can't split evenly make the first array larger
       var midPoint = Math.ceil(arrLen / 2);
 
       // Create and display sub-arrays
@@ -292,12 +287,11 @@
     av.step();
     
     av.clearumsg();
-    
     return origArr;
   }
   
   /**
-   * Calculates and sets the appropriate 'top' and 'left' CSS values based
+   * Calculate and set the appropriate 'top' and 'left' CSS values based
    * on the specified array's level of recursion, column number and the
    * number of elements in the array
    *

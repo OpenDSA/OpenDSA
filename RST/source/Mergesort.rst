@@ -53,7 +53,7 @@ Figure :num:`Figure #MergeSortFig` illustrates Mergesort.
    Mergesort example.
    The first row shows eight numbers that are to be sorted.
    Mergesort will recursively subdivide the list into
-   sublists of one element each, then recombine the sublists.
+   sublists of one record each, then recombine the sublists.
    The second row shows the four sublists of size 2 created by the
    first merging pass.
    The third row shows the two sublists of size 4 created by the next
@@ -62,13 +62,13 @@ Figure :num:`Figure #MergeSortFig` illustrates Mergesort.
    sublists of row 3.
 
 The hardest step to understand about Mergesort is the merge function.
-The merge function starts by examining the first element of each
-sublist and picks the smaller value as the smallest element overall.
+The merge function starts by examining the first record of each
+sublist and picks the smaller value as the smallest record overall.
 This smaller value is removed from its sublist and placed into the
 output list.
 Merging continues in this way, comparing the front
-elements of the sublists and continually appending the smaller to the
-output list until no more input elements remain.
+records of the sublists and continually appending the smaller to the
+output list until no more input records remain.
 
 Here is a visualization that illustrates how Mergesort works.
 
@@ -95,7 +95,7 @@ size 1 are reached, at which time they are merged to be of size 2,
 these merged to subarrays of size 4, and so on as shown in
 Figure :num:`Figure #MergeSortFig`.
 Thus, the depth of the recursion is :math:`\log n` for :math:`n`
-elements (assume for simplicity that :math:`n` is a power of two).
+records (assume for simplicity that :math:`n` is a power of two).
 The first level of recursion can be thought of as working on one array
 of size :math:`n`, the next level working on two arrays of size
 :math:`n/2`, the next on four arrays of size :math:`n/4`, and so on.
@@ -105,13 +105,13 @@ Thus, :math:`n` arrays of size 1 are merged (requiring
 (again requiring :math:`\Theta(n)` total steps), :math:`n/4` arrays of
 size 4, and so on.
 At each of the :math:`\log n` levels of recursion, :math:`\Theta(n)`
-work is done, for a total cost of :math:\Theta(n \log n)`.
+work is done, for a total cost of :math:`\Theta(n \log n)`.
 This cost is unaffected by the relative order of the
 values being sorted, thus this analysis holds for the best, average,
 and worst cases.
 
 Now here are summary questions.
 
-.. avembed:: Exercises/Development/MergeSortSumm.html
+.. avembed:: Exercises/Sorting/MergeSortSumm.html
    :showbutton: hide
-   :title: Mergesort Review
+   :title: Mergesort Review Questions
