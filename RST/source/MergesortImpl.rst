@@ -66,28 +66,11 @@ devised that alternates between two arrays.  A much simpler approach
 is to copy the sorted sublists to the auxiliary array first, and then
 merge them back to the original array.
 Here is a complete implementation for mergesort following this
-approach.::
+approach.
 
-   static <E extends Comparable<? super E>>
-   void mergesort(E[] A, E[] temp, int l, int r) {
-     int mid = (l+r)/2;                // Select midpoint
-     if (l == r) return;               // List has one record
-     mergesort(A, temp, l, mid);   // Mergesort first half
-     mergesort(A, temp, mid+1, r); // Mergesort second half
-     for (int i=l; i&lt;=r; i++)          // Copy subarray to temp
-       temp[i] = A[i];
-     // Do the merge operation back to A
-     int i1 = l; int i2 = mid + 1;
-     for (int curr=l; curr&lt;=r; curr++) {
-       if (i1 == mid+1)              // Left sublist exhausted
-         A[curr] = temp[i2++];
-       else if (i2 > r)              // Right sublist exhausted
-         A[curr] = temp[i1++];
-       else if (temp[i1].compareTo(temp[i2])<0) // Get smaller
-         A[curr] = temp[i1++];
-       else A[curr] = temp[i2++];
-     }
-   }
+.. literalinclude:: ../../SourceCode/Processing/Sorting/Mergesort/Mergesort.pde
+   :start-after: /* *** ODSATag: Mergesort *** */
+   :end-before: /* *** ODSAendTag: Mergesort *** */
 
 An optimized Mergesort implementation is shown below.
 It reverses the order of the second subarray during the initial copy.
@@ -97,21 +80,8 @@ other.
 Unlike the previous implementation, no test is needed to check for
 when one of the two subarrays becomes empty.
 This version also has a second optimization:
-It uses Insertion Sort to sort small subarrays.::
+It uses Insertion Sort to sort small subarrays.
 
-   static <E extends Comparable<? super E>>
-   void mergesort(E[] A, E[] temp, int l, int r) {
-     int i, j, k, mid = (l+r)/2;  // Select the midpoint
-     if (l == r) return;          // List has one record
-     if ((mid-l) >= THRESHOLD) mergesort(A, temp, l, mid);
-     else inssort(A, l, mid-l+1);
-     if ((r-mid) > THRESHOLD) mergesort(A, temp, mid+1, r);
-     else inssort(A, mid+1, r-mid);
-     // Do the merge operation.  First, copy 2 halves to temp.
-     for (i=l; i<=mid; i++) temp[i] = A[i];
-     for (j=1; j<=r-mid; j++) temp[r-j+1] = A[j+mid];
-     // Merge sublists back to array
-     for (i=l,j=r,k=l; k<=r; k++)
-       if (temp[i].compareTo(temp[j])<0) A[k] = temp[i++];
-       else A[k] = temp[j--];
-   }
+.. literalinclude:: ../../SourceCode/Processing/Sorting/MergesortOpt/MergesortOpt.pde
+   :start-after: /* *** ODSATag: MergesortOpt *** */
+   :end-before: /* *** ODSAendTag: MergesortOpt *** */
