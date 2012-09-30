@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>Mergesort Proficiency Exercise</title>
+  <link rel="stylesheet" href="opendsaAV.css" title="CSS" type="text/css" />
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="mergesortProficiency.css" type="text/css" />
+
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+  </script>
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
+  </script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/build/JSAV.js"></script>
+</head>
+
+<body>  
+<div id="container">
+  <table id=tableT style="margin-top: -20px">
+    <tr>
+      <td style="width: 125px">&nbsp;</td>
+      <td style="width: 550px" align="center">
+	<p align="center" class="jsavexercisecontrols"></p>
+      </td>
+      <td style="width: 185px" align="right">
+	<p align="right">
+	  <input type="button" name="help" value="Help" />
+	  <input type="button" name="about" value="About" />
+	  <a class="jsavsettings" href="#">Settings</a>
+	</p>
+      </td>
+    </tr>
+  </table>
+
+  <form style="border: 0px" id="mergesort_proficiency">
+    <p style="margin-top:-5px">Instructions:</p>
+    <p style="margin-top: -15px; padding: 10px; 10px;
+	      margin-right: 10px; border: 1px solid black">
+      Start at the bottom left.  Merge two single element arrays to
+      sort a sorted two-element array.  Continue merging until you
+      reach an array whose child arrays have not BOTH been sorted.
+      Return to single element arrays and repeat the merging process
+      as necessary until all elements have been merged into a single,
+      sorted array.  To merge an element into another array, click the
+      element to select it, then click the position where it should be
+      in the sorted, merged array.  Remember, the order in which
+      blocks are merged matters so be sure to select the smallest
+      blocks first, starting at the left.
+    </p>
+			
+    <p class="jsavoutput jsavline"></p>
+  </form>
+  <div id="arrays" class="jsavcanvas">
+  </div>
+</div> <!-- container -->
+  
+<script src="../../RST/source/_static/ODSA.js"></script>
+<script src="mergesortProficiency.js"></script>
+</body>
+</html>

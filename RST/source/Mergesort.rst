@@ -86,7 +86,7 @@ Here is a mergesort warmup exercise to practice merging.
 
 Now here is a full proficiency exercise to put it all together.
 
-.. avembed:: AV/Development/mergesort-proficiency.html
+.. avembed:: AV/Sorting/mergesortProficiency.html
    :showbutton: show
    :title: Mergesort Proficiency Exercise
 
@@ -98,7 +98,7 @@ is the total length of the two sublists being merged.
 .. _MergeSortFig:
 
 .. figure:: Images/MrgSort.png
-   :width: 400
+   :width: 250
    :alt: Mergesort
    :figwidth: 90%
    :align: center

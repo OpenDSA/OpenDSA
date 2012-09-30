@@ -54,7 +54,7 @@ simple to implement, presents another difficulty.
 The merge process ends with the sorted list in the auxiliary array.
 Consider how the recursive nature of Mergesort breaks
 the original array into subarrays, as shown in
-Figure <ODSAref "MergeFig" \>.
+Figure :ref:`MergeSortFig`.
 Mergesort is recursively called until subarrays of size 1 have been
 created, requiring :math:`\log n` levels of recursion.
 These subarrays are merged into subarrays of size 2, which are in
@@ -71,7 +71,7 @@ approach.::
    static <E extends Comparable<? super E>>
    void mergesort(E[] A, E[] temp, int l, int r) {
      int mid = (l+r)/2;                // Select midpoint
-     if (l == r) return;               // List has one element
+     if (l == r) return;               // List has one record
      mergesort(A, temp, l, mid);   // Mergesort first half
      mergesort(A, temp, mid+1, r); // Mergesort second half
      for (int i=l; i&lt;=r; i++)          // Copy subarray to temp
@@ -96,12 +96,13 @@ ends, allowing the end of each subarray to act as a sentinel for the
 other.
 Unlike the previous implementation, no test is needed to check for
 when one of the two subarrays becomes empty.
-This version also uses Insertion Sort to sort small subarrays.::
+This version also has a second optimization:
+It uses Insertion Sort to sort small subarrays.::
 
    static <E extends Comparable<? super E>>
    void mergesort(E[] A, E[] temp, int l, int r) {
      int i, j, k, mid = (l+r)/2;  // Select the midpoint
-     if (l == r) return;          // List has one element
+     if (l == r) return;          // List has one record
      if ((mid-l) >= THRESHOLD) mergesort(A, temp, l, mid);
      else inssort(A, l, mid-l+1);
      if ((r-mid) > THRESHOLD) mergesort(A, temp, mid+1, r);
