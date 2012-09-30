@@ -5,7 +5,6 @@ var
   cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
   jsavArr,        // The array that the user manipulates (JSAV object)
   userInput,      // Boolean: Tells us if user ever did anything
-  isSelected,     // Boolean: True iff user has already clicked an array element
   selected_index; // Position that has been selected by user for swap
 
 // Click event handler on the array
@@ -76,7 +75,7 @@ var initJSAV = function (arr_size, sort_pos) {
   $("#reset").click(function () { f_reset(sort_pos); });
 };
 
-// Check student's answer for correctness: User's array must match answer
+// Check user's answer for correctness: User's array must match answer
 var checkAnswer = function (arr_size) {
   var i;
   for (i = 0; i < arr_size; i++) {
