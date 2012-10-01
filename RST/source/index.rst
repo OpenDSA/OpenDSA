@@ -40,6 +40,7 @@ Background
    :maxdepth: 3
 
    SetDef  
+   Recurrence
 
 Sorting
 -------
