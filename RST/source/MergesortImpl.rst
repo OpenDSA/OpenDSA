@@ -80,7 +80,8 @@ other.
 Unlike the previous implementation, no test is needed to check for
 when one of the two subarrays becomes empty.
 This version also has a second optimization:
-It uses Insertion Sort to sort small subarrays.
+It uses Insertion Sort to sort small subarrays whenever the size of
+the array is smaller than a value defined by ``THRESHOLD``.
 
 .. literalinclude:: ../../SourceCode/Processing/Sorting/MergesortOpt/MergesortOpt.pde
    :start-after: /* *** ODSATag: MergesortOpt *** */

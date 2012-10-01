@@ -1,5 +1,6 @@
 final int numtests = 10;
 final int testsize = 100;
+final int THRESHOLD = 9;
 
 void swap(int[] A, int i, int j) {
   int temp = A[i];
