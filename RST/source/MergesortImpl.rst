@@ -54,7 +54,7 @@ simple to implement, presents another difficulty.
 The merge process ends with the sorted list in the auxiliary array.
 Consider how the recursive nature of Mergesort breaks
 the original array into subarrays, as shown in
-Figure :ref:`MergeSortFig`.
+Figure :num:`#MergeSortFig`.
 Mergesort is recursively called until subarrays of size 1 have been
 created, requiring :math:`\log n` levels of recursion.
 These subarrays are merged into subarrays of size 2, which are in
