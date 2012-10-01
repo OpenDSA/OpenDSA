@@ -2787,13 +2787,10 @@ var Khan = (function() {
                 if(data){ 
                    if (parseInt(data.progress._exp) == 0) {
                        progress = parseFloat(data.progress._int);  
-                   }  
-                   if (parseInt(data.progress._exp) == -2){  
-                       progress = parseFloat(data.progress._int) / 100;  
-                   }    
-                   if (parseInt(data.progress._exp) == -1){
-                       progress = parseFloat(data.progress._int) / 10;
-                   }
+                   } 
+                   else {
+                        progress = parseFloat(data.progress._int) *  Math.pow(10,parseInt(data.progress._exp));
+                   } 
                 }    
                 var  total =  progress*100;   //parseInt(streak) + 1;
                 if (total >=100.00){   
