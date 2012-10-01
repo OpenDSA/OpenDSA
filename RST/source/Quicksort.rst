@@ -91,18 +91,11 @@ Here is an implementation for Quicksort.
 Parameters ``i`` and ``j`` define the left and right
 indices, respectively, for the subarray being sorted.
 The initial call to Quicksort would be
-``qsort(array, 0, n-1)``.::
+``quicksort(array, 0, n-1)``.::
 
-   static <E extends Comparable<? super E>>
-   void qsort(E[] A, int i, int j) {      // Quicksort
-     int pivotindex = findpivot(A, i, j); // Pick a pivot
-     DSutil.swap(A, pivotindex, j);       // Stick pivot at end
-     // k will be the first position in the right subarray
-     int k = partition(A, i-1, j, A[j]);
-     DSutil.swap(A, k, j);              // Put pivot in place
-     if ((k-i) > 1) qsort(A, i, k-1);   // Sort left partition
-     if ((j-k) > 1) qsort(A, k+1, j);   // Sort right partition
-   }
+.. literalinclude:: ../../SourceCode/Processing/Sorting/Quicksort/Quicksort.pde
+   :start-after: /* *** ODSATag: Quicksort *** */
+   :end-before: /* *** ODSAendTag: Quicksort *** */
 
 Function ``partition`` will move records to the
 appropriate partition and then return ``k``, the first
@@ -129,9 +122,9 @@ expensive, and we can do nearly as well by selecting the middle
 position in the array.
 Here is a simple ``findpivot`` function.::
 
-   static <E extends Comparable<? super E>>
-   int findpivot(E[] A, int i, int j)
-     { return (i+j)/2; }
+.. literalinclude:: ../../SourceCode/Processing/Sorting/Quicksort/Quicksort.pde
+   :start-after: /* *** ODSATag: findpivot *** */
+   :end-before: /* *** ODSAendTag: findpivot *** */
 
 Now you can have some practice.
 
@@ -151,16 +144,9 @@ ends of the subarray, swapping values as necessary until the two
 indices meet.
 Here is a Java implementation for the partition step.::
 
-   static <E extends Comparable<? super E>>
-   int partition(E[] A, int l, int r, E pivot) {
-     do {                 // Move bounds inward until they meet
-       while (A[++l].compareTo(pivot) < 0);
-       while ((r!=0) && (A[--r].compareTo(pivot)>0));
-       DSutil.swap(A, l, r);       // Swap out-of-place values
-     } while (l < r);              // Stop when they cross
-     DSutil.swap(A, l, r);         // Reverse last, wasted swap
-     return l;      // Return first position in right partition
-   }
+.. literalinclude:: ../../SourceCode/Processing/Sorting/Quicksort/Quicksort.pde
+   :start-after: /* *** ODSATag: partition *** */
+   :end-before: /* *** ODSAendTag: partition *** */
 
 Figure :num:`Figure #PartitionFig` illustrates ``partition``.
 Initially, variables ``l`` and ``r`` are immediately
