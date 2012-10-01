@@ -12,6 +12,8 @@ class num_ref(reference):
 
 figids_1={}  
 
+table_doc={}   
+
 def loadTable():
    try:
       table=open('table.json')
@@ -48,12 +50,18 @@ def latex_visit_num_ref(self, node):
 def html_visit_num_ref(self, node):
     fields = node['reftarget'].split('#')
     json_data = loadTable()  
-    print 'Fields = %s' %figids_1[node['refdoc']]    
     if len(fields) > 1:
         label, target = fields
-        link = "%s.html#%s" %(node['refdoc'], target.lower())   
-
-        html = '<a href="%s">%s</a>' % (link, figids_1[node['refdoc']])
+        target_file = '' 
+        chapter = json_data[target].rsplit('.',1)[0]  
+        for name_l, idx in json_data.iteritems():
+            if idx == chapter:    
+                target_file = name_l   
+        if node['refdoc']==target_file:   #target file and curent file are the same  
+            link = "%s.html#%s" %(node['refdoc'], target.lower())  
+        else:
+            link = "%s.html#%s" %(target_file, target.lower())   
+        html = '<a href="%s">%s</a>' %(link,  json_data[target][:-1])   
         self.body.append(html)
     else:
         self.body.append('<a href="%s.html">%s</a>' % (node['refdoc'], fields[0]))
