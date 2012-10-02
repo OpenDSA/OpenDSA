@@ -91,7 +91,7 @@ Here is an implementation for Quicksort.
 Parameters ``i`` and ``j`` define the left and right
 indices, respectively, for the subarray being sorted.
 The initial call to Quicksort would be
-``quicksort(array, 0, n-1)``.::
+``quicksort(array, 0, n-1)``.
 
 .. literalinclude:: ../../SourceCode/Processing/Sorting/Quicksort/Quicksort.pde
    :start-after: /* *** ODSATag: Quicksort *** */
@@ -120,7 +120,7 @@ a bad input order affecting the sort.
 Unfortunately, using a random number generator is relatively
 expensive, and we can do nearly as well by selecting the middle
 position in the array.
-Here is a simple ``findpivot`` function.::
+Here is a simple ``findpivot`` function.
 
 .. literalinclude:: ../../SourceCode/Processing/Sorting/Quicksort/Quicksort.pde
    :start-after: /* *** ODSATag: findpivot *** */
@@ -142,7 +142,7 @@ the pivot,
 we use a clever algorithm that moves indices inwards from the
 ends of the subarray, swapping values as necessary until the two
 indices meet.
-Here is a Java implementation for the partition step.::
+Here is a Java implementation for the partition step.
 
 .. literalinclude:: ../../SourceCode/Processing/Sorting/Quicksort/Quicksort.pde
    :start-after: /* *** ODSATag: partition *** */
@@ -417,6 +417,6 @@ modest speedup.
 
 Now for review questions.
 
-.. avembed:: Exercises/Development/QuickSortSumm.html
+.. avembed:: Exercises/Sorting/QuicksortSumm.html
    :showbutton: hide
    :title: Quicksort Review Questions

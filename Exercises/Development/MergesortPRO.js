@@ -1,19 +1,17 @@
 "use strict";
 var
   jsav,           // The JSAV object
-  arr ,
-  arr_clone,
-  arr_left,
-  arr_right,
+  jsavarr_answer,
+  jsavarr_left,
+  jsavarr_right,
   userInput,      // Boolean: Tells us if user ever did anything
-  arrdata,
+  arrdata = [],
   useranswer,
   left_size,
   isSelected,     // Boolean: True iff user has already clicked an array element
   sel1 ;
 
 var rowHeight = 80;     // Space required for each row to be displayed
-var canvasWidth = 800;  // Width of the display
 var blockWidth = 47;    // Width of an array element
 
 // Variables used to keep track of the index and array of the
@@ -32,6 +30,7 @@ var clickHandler = function (arr, index) {
     // No element is selected, select an element in a bottom array
     // and highlight
     // Don't let the user select an empty element
+    if (arr == jsavarr_answer) { return; }
     if (arr.value(index) == "") { return; }
     arr.highlight(index);
     isSelected = true;
@@ -47,7 +46,7 @@ var clickHandler = function (arr, index) {
     else {
       if (arr != mergeValueArr) {
         // Don't let the user overwrite a merged element
-        if (arr.value(index) != "") return;
+        if (arr.value(index) != "") { return; }
         var arrLevel = getLevel(arr);
         var mvaLevel = getLevel(mergeValueArr);
         // Ensure the user only merges one level up, not down or too far up
@@ -88,24 +87,23 @@ var initJSAV = function (arr_size) {
   isSelected = false;
   jsav = new JSAV($("#container"));
   left_size = Math.floor(arr_size/2);
-  arrdata = JSAV.utils.rand.numKeys(10, 100,arr_size);
-  initArrays(arr_size,0,arr_size-1, 2, 1,0);
-  initArrays(arr_size,0,left_size-1,3,1,1);
-  initArrays(arr_size,left_size,arr_size-1,3,2,2);
+  arrdata = JSAV.utils.rand.numKeys(10, 100, arr_size);
+  initArrays(jsavarr_answer, arr_size, 0, arr_size - 1, 2, 1, 0);
+  initArrays(jsavarr_left, arr_size, 0, left_size - 1, 3, 1, 1);
+  initArrays(jsavarr_right, arr_size, left_size, arr_size - 1, 3, 2, 2);
   arrdata.sort(function(a,b){return a-b});
-  arr_clone = jsav.ds.array(arrdata, {indexed: true, center: false, layout: "array"});
-  arr_clone.hide();
   var emptycontent = new Array(arr_size);
   useranswer = jsav.ds.array(emptycontent, {indexed: true, center: false, layout: "array"});
   useranswer.hide();
 }
 	
 // function that creates and initialises the arrays for mergesort
-function initArrays(a,l, r, level, column,data_type) {
+function initArrays(arr, a, l, r, level, column, data_type) {
   var i;
   var numElements = r - l + 1;
   var contents = new Array(numElements);
   var top = rowHeight * (level - 1);			
+  var left = 0;
   if (data_type == 1)  {
     for (i=0; i<numElements; i++) {
       contents[i]=arrdata[i];
@@ -118,17 +116,14 @@ function initArrays(a,l, r, level, column,data_type) {
     }
     contents.sort(function(a,b){return a-b});
 
-    var left = (( a - numElements) *blockWidth ) + blockWidth;
+    left = (( a - numElements) *blockWidth ) + blockWidth;
   }
                 
   // Dynamically create and position arrays
-  var arr = jsav.ds.array(contents, {indexed: true, center: false, layout: "array"});
+  arr = jsav.ds.array(contents, {indexed: true, center: false, layout: "array"});
   // Set the ID for the array
   arr.element.attr("id", "array_" + level + "_" + column + "_" + l);
-  if (data_type == 2) {
-    arr.element.css({"left": left, "top": top});
-  } else 
-    arr.element.css({"top": top});
+  arr.element.css({"left": left, "top": top});
   // Attach the click handler to the array
   arr.click(function(index){clickHandler(this, index)});
 }
@@ -137,7 +132,7 @@ function initArrays(a,l, r, level, column,data_type) {
 function checkAnswer (arr_size) {
   var i;
   for (i=0; i < arr_size; i++) {
-    if (useranswer.value(i) != arr_clone.value(i)) {
+    if (useranswer.value(i) != arrdata[i]) {
       return false;
     }
   }

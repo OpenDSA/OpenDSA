@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="math spin">
 <head>
-  <title>Insertion Sort Question: Inversions</title>
+  <title>Exchange Sort Question: Swaps</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -15,17 +15,20 @@
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question"> If <code>I</code> is the number of
-	inversions in an input array of <code>n</code> records,
-	then Insertion Sort will run in what time in the worst
-	case? </p>
-      <div class="solution"><var><code>\Theta(n+I)</code></var></div>
+      <div class="spin">
+	<p class="question">If I is the number of
+	  inversions in an input array of n records,
+	  then {Insertion|Bubble} Sort will require how many swaps?</p>
+      </div>
+      <div class="solution"><var><code>I</code></var></div>
       <ul class="choices" data-show="4">
-	<li><var><code>\Theta(n - I)</code></var></li>
-	<li><var><code>\Theta(I - n)</code></var></li>
-	<li><var><code>\Theta(n)</code></var></li>
-	<li><var><code>\Theta(n^2)</code></var></li>
-	<li><var><code>\Theta(I)</code></var></li>
+	<li><var><code>n - I</code></var></li>
+	<li><var><code>I - n</code></var></li>
+	<li><var><code>n</code></var></li>
+	<li><var><code>n^2/2</code></var></li>
+	<li><var><code>I + n</code></var></li>
+	<li><var><code>I - 1</code></var></li>
+	<li><var><code>n - 1</code></var></li>
       </ul>
     </div> 
   </div>

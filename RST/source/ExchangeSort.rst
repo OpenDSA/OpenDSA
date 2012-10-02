@@ -84,3 +84,9 @@ or :math:`n(n-1)/4` per list.
 We therefore know with certainty that any sorting algorithm which
 limits comparisons to adjacent items will cost at least
 :math:`n(n-1)/4 = \Omega(n^2)` in the average case.
+
+Here are the module review questions.
+
+.. avembed:: Exercises/Sorting/ExchangeSumm.html
+   :showbutton: hide
+   :title: Review Questions
