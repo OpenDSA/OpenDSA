@@ -2798,7 +2798,8 @@ var Khan = (function() {
                 }    
                 $('li.streak-icon').text(total +  "%");
                 if (total >= 100) {
-                        parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}',odsa_url);    
+                        parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}',odsa_url);   
+                        console.log ('{"exercise":"' + exerciseName + '", "proficient":' + true + '}');  
                 }
 
 
