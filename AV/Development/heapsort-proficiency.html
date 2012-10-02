@@ -17,6 +17,7 @@
 </p>
       <p align="center" class="jsavexercisecontrols"><input id="decrement" type="button" value="Decrement heap size" />
 </p>
+<span class="jsavscore" />
     </div>
     <script
        src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
@@ -42,7 +43,25 @@
       initData = JSAV.utils.rand.numKeys(10, 100, nodeNum);
       bh = jsav.ds.binheap(initData, {compare: function(a, b) { return b - a;}});
       swapIndex = jsav.variable(-1);
+      jsav.displayInit();
       return bh;
+    }
+
+    function fixState(modelArray) {
+      var size = modelArray.size();
+      swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step
+      for (var i = 0; i < size; i++) {
+        var val = modelArray.value(i),
+            bgColor = modelArray.css(i, "background-color");
+        if (bh.css(i, "background-color") !== bgColor) { // fix background color
+          bh.css(i, {"background-color": bgColor});
+        }
+        if (val !== bh.value(i)) { // fix values
+          bh.value(i, val);
+        }
+      }
+      bh.heapsize(modelArray.heapsize());
+      exercise.gradeableStep();
     }
     
     function model(modeljsav) {
@@ -64,8 +83,8 @@
           modeljsav.umsg("...swap largest and last items in heap.");
         }
         modelbh.swap(0, modelbh.heapsize() - 1);
-        modelbh.element.attr("data-jsav-heap-size", modelbh.heapsize() - 1);
         modeljsav.step();
+        modelbh.heapsize(modelbh.heapsize() - 1);
         modeljsav.umsg("<br/>..decrement the heap size", {preserve: true});
         modelbh.css(modelbh.heapsize(), {"background-color": "#ddd"})
         modeljsav.stepOption("grade", true);
@@ -80,11 +99,6 @@
     
     function clickHandler(index) {
       jsav._redo = []; // clear the forward stack, should add a method for this in lib
-      if (bh.value(index) === "") {
-        bh.value(index, insertData.shift());
-        jsav.step();
-        return;
-      }
       var sIndex = swapIndex.value();
       if (sIndex === -1) { // if first click
         bh.css(index, {"font-size": "145%"});
@@ -98,7 +112,10 @@
       }
     }
 
-      var exercise = jsav.exercise(model, init, {css: "background-color"}, {feedback: "continuous"});
+      var exercise = jsav.exercise(model, init, { css: "background-color" },
+                                  { feedback: "continuous", 
+                                    fixmode: "fix", 
+                                    fix: fixState });
       exercise.reset();
     
       $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
