@@ -3,17 +3,17 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: MCST
-   :author: 
-   :prerequisites: 
-   :topic: Minimal Cost Spanning Trees
-   :short_name: MCST
+.. avmetadata:: External Sorting
+   :author: Cliff Shaffer
+   :prerequisites: FileProc
+   :topic: External Sorting
+   :short_name: ExternalSort
 
-.. _MCST:
+.. _ExternalSort:
 
 .. include:: JSAVheader.rinc
 
-Minimal Cost Spanning Trees [STUB]
-==================================
+External Sorting[STUB]
+======================
 
 Placeholder for crossreference.
