@@ -33,10 +33,20 @@
                 <p>
                 <a class="forgot" href="#">Forgot your password?</a>
                 </p>        
+                <p>
+                <a class="signup" href="#">Sign Up</a>
+                </p>   
                 </fieldset>
           </form>
 </div>
 {% endmacro %}
+
+{% macro registration() %}
+<a id="registration" style="float:right;color:red;margin:10px 10px auto"  name="#registration-box" class="registration-window" href="#">Register</a>
+<div id="registration-box" class="registration-popup">
+        <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+</div>
+{% endmacro %}  
 
 {% macro nav() %}
         {%- block haikurel1 %}
@@ -82,7 +92,8 @@
 
       <div class="header">
         {%- block haikuheader %}
-        {{ login() }}  
+        {{ login() }} 
+        {{ registration() }}   
         {%- if theme_full_logo != "false" %}
         <a href="{{ pathto('index') }}">
           <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>

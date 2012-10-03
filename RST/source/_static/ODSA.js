@@ -91,6 +91,7 @@ $(document).ready(function() {
       } else {
         var uname = getUsername();
         $('a.login-window').text('Logout ' + uname);
+        $('a.registration-window').hide();   
       }
     } else {
       var av_name = getNameFromURL();
@@ -136,6 +137,7 @@ $(document).ready(function() {
             $('a.login-window').text('Logout ' + username);
             log_user_action('', 'user-login', 'User logged in');
             hideLoginBox();
+            $('a.registration-window').hide();  
             
             // Submit any stored data
             flush_stored_data();
@@ -186,7 +188,7 @@ $(document).ready(function() {
               localStorage.removeItem('warn_login');
               localStorage.removeItem('opendsa');
               $('a.login-window').text("Login");
-              
+              $('a.registration-window').show();       
               // Clear the proficiency displays for the user who just logged out
               update_all_proficiency_displays();
             }
@@ -195,6 +197,21 @@ $(document).ready(function() {
         });
       }
     });
+
+    //Brings the registration form from the login popup page
+    $('a.signup').click(function() {
+        hideLoginBox(); 
+        showRegistrationBox();
+        return false;
+    });
+
+    // Brings up the embedded registration  box if the user clicks 'Register' and
+    // should close the reistration window upon success. 
+    $('a.registration-window').click(function() {
+        showRegistrationBox();
+        return false;
+    });  
+
 
     // When clicking on the button close or the mask layer the popup closed
     $('a.close, #mask').live('click', function() {
@@ -224,9 +241,9 @@ $(document).ready(function() {
 
   // Listen to message from child window
   eventer(messageEvent, function(e) {
-    if (e.origin !== odsa_url) {
-      return;
-    }
+    //if (e.origin != odsa_url) {
+    //  return;
+    //}
     var msg_ka = getJSON(e.data);
     updateProfDisplay(msg_ka.exercise, msg_ka.proficient);
   }, false);
@@ -268,6 +285,43 @@ function showHide(btnID) {
   }
 }
 
+
+function showRegistrationBox() {
+  log_user_action('', 'registration-box-open', 'registration box was opened');
+
+  var registrationBox = '#registration-box';
+
+
+  //Fade in the Popup
+  $(registrationBox).fadeIn(300);
+
+
+  $(registrationBox).css({
+    'margin-top' : -popMargTop,
+    'margin-left' : -popMargLeft
+  });
+
+  //Embed backend registration page 
+  server_regist_url = server_url + "/accounts/register/";   
+  registration_page = '<center><iframe id="registration_iframe" src="'+ server_regist_url +'"type="text/javascript" width="1000" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></center>';   
+
+  if($('#registration_iframe').length == 0){
+     $('.registration-popup').append(registration_page);
+  } 
+  else{  
+     $('#registration_iframe').remove();    
+     $('.registration-popup').append(registration_page);   
+  }    
+  //Set the center alignment padding + border see css style
+  var popMargTop = ($(registrationBox).height() - 20) / 2;
+  var popMargLeft = ($(registrationBox).width() ) / 2;
+
+  // Add the mask to body
+  $('body').append('<div id="mask"></div>');
+  $('#mask').fadeIn(300);
+}
+
+
 function showLoginBox() {
   log_user_action('', 'login-box-open', 'Login box was opened');
   
@@ -297,11 +351,14 @@ function showLoginBox() {
 }
 
 function hideLoginBox() {
-  log_user_action('', 'login-box-close', 'Login box was closed');
+  log_user_action('', 'login/registration-box-close', 'Login/Registration box was closed');
   
   $('#mask , .login-popup').fadeOut(300 , function() {
     $('#mask').remove();
   });
+  $('#mask , .registration-popup').fadeOut(300 , function() {
+    $('#mask').remove();
+  });  
   return false;
 }
 
