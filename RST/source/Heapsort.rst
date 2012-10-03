@@ -43,7 +43,7 @@ This means that we do not necessarily need to insert one value at a
 time into the tree structure.
 
 Heapsort is based on the heap data structure presented in
-Module <ODSAref "Heap" />.
+Module :numref:`Heaps <Heaps>`.
 Heapsort has all of the advantages just listed.
 The complete binary tree is balanced, its array representation is
 space efficient, and we can load all values into the tree at once,
@@ -54,17 +54,18 @@ It is not as fast as Quicksort in the average case (by a constant
 factor), but Heapsort has special properties that will make it
 particularly useful when sorting data sets too large to fit in main
 memory, as discussed in
-Module <ODSAref "ExternalSort" />.
+Module :numref:`External Sorting <ExternalSort>`.
 
 A sorting algorithm based on max-heaps is quite straightforward.
-First we use the heap building algorithm of Module
-<ODSAref "Heap" /> to convert the array into max-heap order.
+First we use the heap building algorithm of
+Module :numref:`Heaps <Heaps>`
+to convert the array into max-heap order.
 Then we repeatedly remove the
 maximum value from the heap, restoring the heap property each time
 that we do so, until the heap is empty.
-Note that each time we remove the maximum element from the heap, it is
-placed at the end of the array.
-Assume the :math:`n` elements are stored in array positions 0
+Note that each time we remove the record with maximum key value from
+the heap, it is placed at the end of the array.
+Assume the :math:`n` records are stored in array positions 0
 through :math:`n-1`.
 After removing the maximum value from the heap and
 readjusting, the maximum value will now be placed in position
@@ -76,7 +77,7 @@ After removing each of the remaining values in turn, the array will be
 properly sorted from least to greatest.
 This is why Heapsort uses a max-heap rather than a min-heap as might
 have been expected.
-Figure <ODSAref "HeapSortFig" /> illustrates Heapsort.
+Figure :num:`#HeapsortFig` illustrates Heapsort.
 The complete JAVA implementation is as follows.::
 
    static <E extends Comparable<? super E>>
@@ -87,14 +88,17 @@ The complete JAVA implementation is as follows.::
        H.removemax(); // Removemax places max at end of heap
    }
 
+.. _HeapsortFig:
+
 .. figure:: Images/Heapsort.png
    :width: 400
+   :align: center
+   :figwidth: 90%
    :alt: Illustration of Heapsort
 
-   <ODSAfig "HeapSortFig" />
    An illustration of Heapsort.
-   The top row shows the values in their original order.
-   The second row shows the values after building the heap.
+   The top row shows the records in their original order.
+   The second row shows the records after building the heap.
    The third row shows the result of the first
    ``removefirst`` operation on key value 88.
    Note that 88 is now at the end of the array.
@@ -103,30 +107,33 @@ The complete JAVA implementation is as follows.::
    The fifth row shows the result of the third ``removefirst``
    operation on key value 83.
    At this point, the last three positions of the array hold the three
-   greatest values in sorted order.
+   greatest-valued records in sorted order.
    Heapsort continues in this manner until the entire array is sorted.
 
 Because building the heap takes :math:`\Theta(n)` time
-(see Module <ODSAref "Heap" />), and because :math:`n` deletions
-of the maximum element each take :math:`\Theta(\log n)` time,
+(see Module :numref:`Heaps <Heaps>`)
+and because :math:`n` deletions
+of the maximum-valued record each take :math:`\Theta(\log n)` time,
 we see that the entire Heapsort operation takes
 :math:`\Theta(n \log n)` time in the worst, average, and best cases.
-While typically slower than Quicksort by a constant factor, Heapsort
+While typically slower than Quicksort by a constant factor
+(because loading and unloading the heap is somewhat slower than
+Quicksort's series of partitions), Heapsort
 has one special advantage over the other sorts studied so far.
 Building the heap is relatively cheap, requiring
 :math:`\Theta(n)` time.
-Removing the maximum element from the heap requires
+Removing the maximum-valued record from the heap requires
 :math:`\Theta(\log n)` time.
-Thus, if we wish to find the :math:`k` largest
-elements in an array, we can do so in time
+Thus, if we wish to find the :math:`k` records with the largest
+key values in an array, we can do so in time
 :math:`\Theta(n + k \log n)`.
 If :math:`k` is small, this is a substantial improvement over the time
-required to find the :math:`k` largest elements using one of the other
-sorting methods described earlier (many of which would require sorting
-all of the array first).
+required to find the :math:`k` largest-valued records using one of the
+other sorting methods described earlier (many of which would require
+sorting all of the array first).
 One situation where we are able to take advantage of this concept is
-in the implementation of Kruskal's minimum-cost spanning tree (MST)
-algorithm of Module <ODSAref "Kruskal" />.
+in the implementation of Kruskal's minimal cost spanning tree (MST)
+algorithm of (see Module :numref:`Minimal Cost Spanning Trees <MCST>`).
 That algorithm requires that edges be visited in ascending
 order (so, use a min-heap), but this process stops as soon as the MST
 is complete.

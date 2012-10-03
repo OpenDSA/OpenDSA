@@ -85,6 +85,7 @@ File Processing
    :maxdepth: 3
 
    FileProc
+   ExternalSort
 
 Trees
 -----
@@ -93,6 +94,7 @@ Trees
    :numbered:
    :maxdepth: 3
 
+   Heaps
    BinaryHeap
    Huffman
    TreeExer
