@@ -30,7 +30,7 @@ var clickHandler = function (arr, index) {
     // No element is selected, select an element in a bottom array
     // and highlight
     // Don't let the user select an empty element
-    if (arr == jsavarr_answer) { return; }
+    if (arr.tag === 0) { return; }
     if (arr.value(index) == "") { return; }
     arr.highlight(index);
     isSelected = true;
@@ -121,6 +121,7 @@ function initArrays(arr, a, l, r, level, column, data_type) {
                 
   // Dynamically create and position arrays
   arr = jsav.ds.array(contents, {indexed: true, center: false, layout: "array"});
+  arr.tag = data_type;
   // Set the ID for the array
   arr.element.attr("id", "array_" + level + "_" + column + "_" + l);
   arr.element.css({"left": left, "top": top});

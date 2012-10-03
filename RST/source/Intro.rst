@@ -14,14 +14,21 @@ Preface
 
 What OpenDSA is.
 
-What browsers we support (or don't).
+What browsers we support: Chrome, Firefox, Safari. We do not support
+Internet Explorer.
 
-How to log in. What you can do when you log in. How to log out.
+How to register. How to log in. What you can do when you log in. How to log out.
 
 Overview of major elements: Modules, slideshows, various types of exercises.
 
 Detail the major elements, including images as necessary to show how
 to use things.
 
-Scoring mechanism. How to recognize that you have credit.
+The concept of "proficiency" and credit, both for elements and for modules.
+
+Scoring mechanism. How to recognize that you have credit:
+* Check marks on mini-slideshows
+* Streak bar on KA exercises
+* Score on JSAV proficiency exercises
+
 
