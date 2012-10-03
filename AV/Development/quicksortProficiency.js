@@ -1,6 +1,61 @@
 ﻿"use strict";
 /*global alert*/
 (function ($) {
+  /**
+   * Convenience function for highlighting the pivot value in blue
+   */
+  JSAV._types.ds.AVArray.prototype.highlightPivot = function(index) {
+    this.css(index, {"background-color": "#ddf" });
+  };
+  
+  /**
+   * Convenience function for highlighting sorted values
+   */
+  JSAV._types.ds.AVArray.prototype.markSorted = function(index) {
+    this.css(index, {"background-color": "#ffffcc" });
+  };
+  
+  /**
+   * Creates an arrow above the specified indices
+   * Does nothing if the element already has an arrow above it
+   */
+  JSAV._types.ds.AVArray.prototype.setArrow = JSAV.anim(function(indices) {
+    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
+    
+    if (!$elems.hasClass("jsavarrow")) {
+      $elems.toggleClass("jsavarrow");
+    }
+  });
+  
+  /**
+   * Removes any arrays the have been toggled over the specified indices
+   */
+  JSAV._types.ds.AVArray.prototype.clearArrow = JSAV.anim(function(indices) {
+    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
+    
+    if ($elems.hasClass("jsavarrow")) {
+      $elems.toggleClass("jsavarrow");
+    }
+  });
+
+  /**
+   * toString function for JSAV arrays, useful for debugging
+   */
+  JSAV._types.ds.AVArray.prototype.toString = function() {
+    var size = this.size();
+    var str = '[';
+    for (var i = 0; i < size; i++) {
+      str += this.value(i);
+      
+      if (i < size - 1) {
+        str += ', ';
+      }
+    }
+    str += ']';
+  
+    return str;
+  };
+  
   $('input[name="help"]').click(help);
   $('input[name="about"]').click(about);
   $('input[name="partition"]').click(partitionButton);
@@ -400,59 +455,4 @@
     msLeft.value(-1);
     msRight.value(-1);
   }
-  
-  /**
-   * Convenience function for highlighting the pivot value in blue
-   */
-  JSAV._types.ds.AVArray.prototype.highlightPivot = function(index) {
-    this.css(index, {"background-color": "#ddf" });
-  };
-  
-  /**
-   * Convenience function for highlighting sorted values
-   */
-  JSAV._types.ds.AVArray.prototype.markSorted = function(index) {
-    this.css(index, {"background-color": "#ffffcc" });
-  };
-  
-  /**
-   * Creates an arrow above the specified indices
-   * Does nothing if the element already has an arrow above it
-   */
-  JSAV._types.ds.AVArray.prototype.setArrow = JSAV.anim(function(indices) {
-    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
-    
-    if (!$elems.hasClass("jsavarrow")) {
-      $elems.toggleClass("jsavarrow");
-    }
-  });
-  
-  /**
-   * Removes any arrays the have been toggled over the specified indices
-   */
-  JSAV._types.ds.AVArray.prototype.clearArrow = JSAV.anim(function(indices) {
-    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
-    
-    if ($elems.hasClass("jsavarrow")) {
-      $elems.toggleClass("jsavarrow");
-    }
-  });
-
-  /**
-   * toString function for JSAV arrays, useful for debugging
-   */
-  JSAV._types.ds.AVArray.prototype.toString = function() {
-    var size = this.size();
-    var str = '[';
-    for (var i = 0; i < size; i++) {
-      str += this.value(i);
-      
-      if (i < size - 1) {
-        str += ', ';
-      }
-    }
-    str += ']';
-  
-    return str;
-  };
 }(jQuery));
