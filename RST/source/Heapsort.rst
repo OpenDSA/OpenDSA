@@ -141,7 +141,7 @@ Here is a warmup practice exercise for Heapsort.
 Now test yourself to see how well you understand Heapsort.
 Can you reproduce its behavior?
 
-.. avembed:: AV/Development/heapsort-proficiency.html
+.. avembed:: AV/Development/heapsortProficiency.html
    :showbutton: show
    :title: Heapsort Proficiency Exercise
 

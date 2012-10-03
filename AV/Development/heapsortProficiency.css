@@ -1,0 +1,12 @@
+#HeapsortProficiency_container {
+  width: 800px;
+  height: 550px;
+  border: 1px solid black;
+  background-color: #efe;
+  padding: 10px;
+  overflow: hidden;
+}
+.jsavtree {top: -30px;}
+.jsavline { height: 45px; margin: 0 0 0 20px;}
+.jsavcontrols a { margin-left: 0;}
+#decrement { margin-right: 20px;}
