@@ -8,5 +8,12 @@
 }
 .jsavtree {top: -30px;}
 .jsavline { height: 45px; margin: 0 0 0 20px;}
-.jsavcontrols a { margin-left: 0;}
 #decrement { margin-right: 20px;}
+.jsavcontainer {
+  background-color: #efe;
+}
+.jsavsettings {
+  display: block;
+  margin-top: 0;
+  margin-left: 10px;
+}

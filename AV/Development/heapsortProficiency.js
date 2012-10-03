@@ -1,6 +1,7 @@
 "use strict";
 var initData, bh,
-    jsav = new JSAV("HeapsortProficiency_container"),
+    settings = new JSAV.utils.Settings($(".jsavsettings")),
+    jsav = new JSAV("HeapsortProficiency", {settings: settings}),
     swapIndex;
 
 jsav.recorded();
@@ -81,8 +82,14 @@ function clickHandler(index) {
   }
 }
 
+  // Process About button: Pop up a message with an Alert
+  function about() {
+    alert("Heapsort Proficiency Exercise\nWritten by Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+  }
+
 var exercise = jsav.exercise(model, init, { css: "background-color" },
                                 { feedback: "continuous",
+                                  controls: $('.jsavexercisecontrols'),
                                   fixmode: "fix",
                                   fix: fixState });
 exercise.reset();
@@ -100,3 +107,4 @@ $("#decrement").click(function() {
   bh.css(bh.heapsize(), {"background-color": "#ddd"});
   exercise.gradeableStep();
 });
+$("input[name='about']").click(about);
