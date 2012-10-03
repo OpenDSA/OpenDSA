@@ -1,5 +1,5 @@
 "use strict";
-/*global alert*/
+/*global alert console*/
 (function ($) {
   // Process help button: Give a full help page for this activity
   // We might give them another HTML page to look at.
@@ -95,13 +95,6 @@
     modelDepthArr.element.css({"top": rowHeight + "px"});
     return [modelArr, modelDepthArr];
   }
-
-  // Using continuous mode slows the exercise down considerably
-  // (probably because it has to check that all the arrays are correct)
-  var exercise = av.exercise(modelSolution, initialize,
-                   [{css: "background-color"}, {}], {fix: fixState, 
-                   feedback: "continuous", fixmode: "fix"});
-  exercise.reset();
 
   /**
    * Dynamically and recursively create the necessary arrays
@@ -230,11 +223,11 @@
     }
     return array;
   }
-  
+
   /**
    * Function that will be called by the exercise if continuous feedback mode
    * is used and the "fix incorrect step" mode is on.
-   * 
+   *
    * Uses the difference between the model and user depth array to determine
    * the absolute index and row where a value should be placed.
    * Determine the relative destination index and which column the destination array is in.
@@ -247,12 +240,13 @@
     // Pull the model array and state variables out of the modelState argument
     var modelArr = modelState[0];
     var modelDepthArr = modelState[1];
-        
-    // Find the absolute index where the correct value 
+    var i;
+
+    // Find the absolute index where the correct value
     // will be placed and which level it belongs in
     var destIndex = 0;
     var destDepth = 0;
-    for (var i = 0; i < modelDepthArr.size(); i++)
+    for (i = 0; i < modelDepthArr.size(); i++)
     {
       if (modelDepthArr.value(i) !== userAnswerDepth.value(i)) {
         destIndex = i;
@@ -267,9 +261,9 @@
     var right = modelArr.size() - 1;
     var mid = 0;
 
-    for (var i = 0; i < destDepth - 1; i++) {
+    for (i = 0; i < destDepth - 1; i++) {
       mid = Math.floor((left + right) / 2);
-      
+
       if (destIndex <= mid) {
         right = mid;
         destColumn = 2 * destColumn - 1;
@@ -279,27 +273,27 @@
         destColumn = 2 * destColumn;
       }
     }
-    
+
     var subArr1 = av.ds.array($('#array_' + (destDepth + 1) + "_" + (2 * destColumn - 1)));
     var subArr2 = av.ds.array($('#array_' + (destDepth + 1) + "_" + (2 * destColumn)));
-    
+
     // Get the index of the first non-empty element in each sublist
     var subArr1Idx = -1;
     var subArr2Idx = -1;
-    for (var i = 0; i < subArr1.size(); i++) {
-      if (subArr1.value(i) != "") {
+    for (i = 0; i < subArr1.size(); i++) {
+      if (subArr1.value(i) !== "") {
         subArr1Idx = i;
         break;
       }
     }
-    
-    for (var i = 0; i < subArr2.size(); i++) {
-      if (subArr2.value(i) != "") {
+
+    for (i = 0; i < subArr2.size(); i++) {
+      if (subArr2.value(i) !== "") {
         subArr2Idx = i;
         break;
       }
     }
-    
+
     var srcArr;
     var srcIndex;
     if (subArr1Idx > -1 && subArr2Idx > -1) {
@@ -321,20 +315,16 @@
       srcArr = subArr2;
       srcIndex = subArr2Idx;
     } else {
-      console.log("Weird stuff happened: subArr1Idx = " + subArr1Idx + ", subArr2Idx = " + subArr2Idx);
+      console.log("Weird stuff happened:\ndestDepth: " + destDepth + ", destColumn: " + destColumn + ", destIndex: " + destIndex + "\nsubArr1 ID: " + subArr1.element.attr('id') + ", subArr1: " + subArr1.toString() + ", subArr2 ID: " + subArr2.element.attr('id') + ", subArr2: " + subArr2.toString() + " subArr1Idx = " + subArr1Idx + ", subArr2Idx = " + subArr2Idx);
       return;
     }
-    
+
     // Select the element to move
     clickHandler(srcArr, srcIndex);
-    
+
     // Select the destination where the element should be moved
     var destArr = av.ds.array($('#array_' + destDepth + "_" + destColumn));
     clickHandler(destArr, destIndex);
-    
-    for (var i = 0; i < destArr.size(); i++) {
-      destArr.value(i, destArr.value());
-    }
   }
 
   // Click handler for all array elements
@@ -363,7 +353,7 @@
         // Complete merge by setting the value of the current element
         // to the stored value
         arr.value(index, mergeValueArr.value(mergeValueIndex));
-        
+
         // Clear values the user has already merged
         mergeValueArr.value(mergeValueIndex, "");
 
@@ -371,7 +361,7 @@
         if (mergeValueArr.isEmpty()) {
           mergeValueArr.hide();
         }
-        
+
         // Update the value in the userAnswerValue array and the depth
         // in the userAnswerDepth array
         var usrAnsIndex = findUsrAnswerIndex(arr, index);
@@ -392,6 +382,15 @@
     }
   }
 
+
+
+  // Using continuous mode slows the exercise down considerably
+  // (probably because it has to check that all the arrays are correct)
+  var exercise = av.exercise(modelSolution, initialize,
+                   [{css: "background-color"}, {}], {fix: fixState,
+                   feedback: "continuous", fixmode: "fix"});
+  exercise.reset();
+
   // Convenience function to reset the merge variables
   function resetMergeVars() {
     if (mergeValueArr !== null) {
@@ -404,6 +403,9 @@
     mergeValueIndex = -1;
   }
 
+//*****************************************************************************
+//*************               Convenience Functions               *************
+//*****************************************************************************
   /**
    * Given an array and an index in that array, calculates the
    * corresponding position in the userAnswerValue array
@@ -429,7 +431,7 @@
    * - Expects array IDs matching the following pattern: 'array_\d+_\d+'
    *   where the first number is the level and the second number is the column
    *   [see setPosition()]
-   * - Additional expects array to have a 'data-offset' attribute which is the 
+   * - Additional expects array to have a 'data-offset' attribute which is the
    *   offset between indices in the given array and indices in the userAnswerValue array
    */
   function parseArrData(arr) {
@@ -467,16 +469,6 @@
     }
     return str + ']';
   };
-
-  // DEBUGGING function - toString function used to inspect JavaScript objects
-  function inspect(obj) {
-    var str = '';
-    var prop;
-    for (prop in obj) {
-      str += prop + " value :" + obj[prop] + "\n";
-    }
-    return str;
-  }
 
   $('input[name="help"]').click(help);
   $('input[name="about"]').click(about);
