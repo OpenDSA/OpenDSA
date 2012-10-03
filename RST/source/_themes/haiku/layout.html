@@ -65,28 +65,6 @@
 {#        <a  href="knowledgemap.html">|  Knowledge Map</a>#}    
 {% endmacro %}
 
-{#  
-{% macro contact() %}  
-
-      <div class="slide-out-div">
-      <a class="handle" href="#">Content</a>
-      <p>You can contact us at:
-      </p>
-      <a href="mailto:opendsa@cs.vt.edu">opendsa@cs.vt.edu</a>
-      <p>Or use the form below to submit feedback</p>
-      <form>
-                        <p><label>Name: </label><input type="text" /></p>
-                        <p><label>Email: </label><input type="text" /></p>
-                        <p><label>Subject: </label><input type="text" /></p>
-                        <p><label>Message: </label><textarea style="resize:none" rows="4" cols="30"></textarea></p>
-                        <p><input type="button" value="Send&raquo;" class="btn"/></p>
-      </form>
-
-      </div>
-
-{% endmacro %}   
-#}   
-
 
 {% block content %}
 
@@ -156,6 +134,7 @@
         {% block body %}{% endblock %}
       </div>
       <div class="bottomnav">
-      <p>{{ nav() }}</p>
+      <p> <a class="contact" style="float:left;color:blue;" href="mailto:opendsa@cs.vt.edu" rel="nofollow">Contact Us</a>&#160;&#160;         
+      {{ nav() }}</p>
       </div>
 {% endblock %}
