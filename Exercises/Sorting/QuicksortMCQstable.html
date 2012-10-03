@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Insertion Sort Question</title>
+  <title>Quicksort Question: Stable</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -15,17 +15,18 @@
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question">Insertion Sort (as the code is written in this
+      <p class="question">Quicksort (as the code is written in this
 	module) is a stable sorting algorithm. Recall that a stable sorting
 	algorithm maintains the relative order of records with equal keys.</p>
-      <div class="solution"><var>"True"</var></div>
+      <div class="solution"><var>"False"</var></div>
       <ul class="choices" data-category="true">
 	<li><var>"True"</var></li>
 	<li><var>"False"</var></li>			  	  	 
       </ul>
       <div class="hints">
-        <p>Think of the behavior of every pass through the inner
-	   for loop of the insertion sort if keys are equal.</p>
+        <p>Think of the behavior for partition.</p>
+	<p>What happens if there are two equal key values in the array.</p>
+	<p>Is it possible for the two equal keys to reverse positions?</p>
       </div>
     </div> 
   </div>
