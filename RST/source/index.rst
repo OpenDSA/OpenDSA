@@ -116,6 +116,7 @@ Algorithms
    :maxdepth: 3
 
    Knapsack
+   EditDistance
 
 Appendix
 --------
