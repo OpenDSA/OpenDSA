@@ -213,7 +213,7 @@ Now for some partition practice.
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.
 
-.. avembed:: AV/Development/quicksort-proficiency.html
+.. avembed:: AV/Development/quicksortProficiency.html
 
 To analyze Quicksort, we first analyze the ``findpivot`` and
 ``partition`` functions when operating on a subarray of length

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>Quicksort Proficiency Exercise</title>
+  <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="quicksortProficiency.css" type="text/css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/build/JSAV.js"></script>
+</head>
+<body>
+  <div id="container">
+    <table id="tableT" style="margin-top: -20px">
+      <tr>
+        <td style="width: 125px">&nbsp;</td>
+        <td style="width: 550px" align="center">
+          <p align="center" class="jsavexercisecontrols"></p>
+        </td>
+        <td style="width: 185px" align="right">
+          <p align="right">
+            <input type="button" name="help" value="Help" />
+            <input type="button" name="about" value="About" />
+            <a class="jsavsettings" href="#">Settings</a>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <form style="border: 0px" id="mergesort_proficiency">
+      <p style="margin-top:-5px">Instructions:</p>
+      <p style="margin-top: -15px; padding: 10px; 10px; margin-right: 10px; border: 1px solid black">
+      Select the pivot element, move it to the appropriate location, then select the left and right endpoints of the range you wish to partition and click "Partition".  Once the partition operation is complete, click the location where the pivot point should be moved.  When a selected element has been moved to its final sorted location, click "Mark Selected as Sorted".
+      <br /><br />
+      
+      Always select the left and right endpoints, even if it is the same element.  When processing a sublist of length 1, simply mark the element as sorted.  When determining the final location for the pivot, treat any elements that match the pivot as if they were smaller than the pivot.
+      </p>
+      
+      <p class="jsavoutput jsavline"></p>
+      <div>
+        <input type="button" name="partition" value="Partition" />
+        <input type="button" name="markSorted" value="Mark Selected as Sorted" />
+      </div>
+    </form>
+    <div id="arrays" class="jsavcanvas">
+    </div>
+  </div> <!-- container -->
+<script src="../../lib/ODSA.js"></script>
+<script src="quicksortProficiency.js"></script>
+</body>
+</html>
