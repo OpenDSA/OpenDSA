@@ -1,0 +1,20 @@
+#container {
+  width: 800px;
+  height: 765px;
+  overflow-y: visible;
+  overflow-x: hidden;
+}
+
+.avcontainer{
+  overflow: visible;
+}
+
+.jsavarray {
+  padding-left: 0;
+  position: absolute;
+}
+
+.jsavline {
+  height: 30px;
+  margin: 0;
+}

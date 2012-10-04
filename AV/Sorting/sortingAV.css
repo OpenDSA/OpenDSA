@@ -20,13 +20,13 @@ form {
   width: 100px;
 }
 .jsavarray {
-  margin: 0px;
+  margin: 0;
   margin-left: -10px;
   margin-top: 10px;
 }
 .jsavline {
   width: 750px;
-  margin: 0px;
+  margin: 0;
   margin-top: -5px;
 }
 .jsavcode {
@@ -54,11 +54,11 @@ form {
   margin-top: -5px;
 }
 
-input#run {
+#run {
   margin-bottom: 5px;
 }
 
-input#about {
+#about {
   margin-top: 10px;
   float: right;
 }

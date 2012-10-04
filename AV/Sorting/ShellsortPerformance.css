@@ -14,8 +14,8 @@
   width: 35%;
 }
 
-input#about {
-  margin-top: 0px;
+#about {
+  margin-top: 0;
 }
 
 .jsavscroll {

@@ -1,4 +1,4 @@
-﻿.container {
+.container {
   width: 780px;
   height: 655px;
   border: 1px solid black;
@@ -30,12 +30,12 @@
 
 .jsavline {
   height: 40px;
-  margin: 0px;
+  margin: 0;
 }
 
 .jsavsettings {
   display: block;
-  margin-top: 0px;
+  margin-top: 0;
   margin-left: 10px;
 }
 
@@ -43,18 +43,18 @@ table.headerTable {
   margin-top: -20px;
 }
 
-table.headerTable td.headerLeft {
+table.headerTable .headerLeft {
   width: 125px;
 }
-table.headerTable td.headerCenter {
+table.headerTable .headerCenter {
   text-align: center;
   width: 550px;
 }
-table.headerTable td.headerRight {
+table.headerTable .headerRight {
   text-align: right;
-  width: 185px;
+  width: 200px;
 }
 
 form {
-  border: 0px
+  border: 0;
 }

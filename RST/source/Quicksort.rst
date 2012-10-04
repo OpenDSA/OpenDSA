@@ -202,7 +202,7 @@ algorithm.
 
 Here is a visualization for the entire Quicksort algorithm.
 
-.. avembed:: AV/Development/quicksort-av.html
+.. avembed:: AV/Sorting/quicksortAV.html
 
 Now for some partition practice.
 
