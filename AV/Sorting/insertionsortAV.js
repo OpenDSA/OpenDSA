@@ -1,6 +1,7 @@
 "use strict";
 /*global alert*/
 (function ($) {
+  var avcId = 'insertionsortAV_avc';
   var
     ASize = $('#arraysize').val(), // Number of values in the array
     theArray = []; // The array of numbers
@@ -20,7 +21,7 @@
                       "label": "Array layout: ", "value": "bar"});
 
   var context = $("#ssperform");
-  var emptyContent = $("#avcontainer").html();
+  var emptyContent = $('#' + avcId).html();
   var av, // for JSAV av
     arr,  // for the JSAV array
     pseudo; // for the pseudocode display
@@ -34,7 +35,7 @@
   function reset(flag) {
     if (av) {
       av.clearumsg();
-      $("#avcontainer").unbind().html(emptyContent);
+      $('#' + avcId).unbind().html(emptyContent);
     }
     // Clear the array values field, when no params given and reset button hit
     if (flag !== true) {
@@ -126,7 +127,7 @@
         ASize = theArray.length;
       }
       reset(true); // Reset any previous visualization
-      av = new JSAV("avcontainer"); // initialize JSAV ..
+      av = new JSAV(avcId); // initialize JSAV ..
 
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});

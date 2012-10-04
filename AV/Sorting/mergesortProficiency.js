@@ -17,8 +17,8 @@
    ******************************************* */
 
   // Variables used by "setPosition()"
+  var canvasWidth = $('#container').width();     // The width of the display
   var rowHeight = 80;        // Space required for each row to be displayed
-  var canvasWidth = 800;     // The width of the display
   var blockWidth = 47;       // The width of an array element
 
   // Variables used to keep track of the index and array of

@@ -3,19 +3,20 @@
 <head>
   <title>Mergesort AV</title>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../opendsaAV.css" title="CSS" type="text/css" />
+  <link rel="stylesheet" href="quadraticsortAV.css" type="text/css" />
   <link rel="stylesheet" href="mergesortAV.css" type="text/css" />
 </head>
 
 <body>
-<div id="mergesortAV_container">
-  <input type="button" id="about" name="about" value="About"
-         style="margin-top:10px;"/> 
-  <a class="jsavsettings" href="#">Settings</a>
-  <h1 style="">Mergesort Visualization</h1>
+<div id="container">
+  <input type="button" id="about" name="about" value="About" /> 
+  <a id="settings" class="jsavsettings" href="#">Settings</a>
+  <h1>Mergesort Visualization</h1>
 
   <form id="ssperform">
     <p>
+      <input id="run" type="button" name="run" value="Run" />
+      <input id="reset" type="button" name="reset" value="Reset" />
       <label for="arraysize">&nbsp;List size:&nbsp;</label>
       <select id="arraysize">
         <option value = 5>5</option>
@@ -27,14 +28,12 @@
         <option value = 11>11</option>
         <option value = 12>12</option>
       </select>
-      <label for="arrayValues">&nbsp;Your values (optional):&nbsp;</label>
-      <input size="60" name="arrayValues" id="arrayValues" type="text" />
-      <br />
-      <input type="button" name="run" value="Run" />
-      <input type="button" name="reset" value="Reset" />
+      <label for="arrayValues">&nbsp;Your values:&nbsp;</label>
+      <input size="60" name="arrayValues" id="arrayValues" type="text"
+          placeholder="Space-separated values to use (optional)" />
     </p>
   </form>
-  <div id="avcontainer">
+  <div id="mergesortAV_avc" class="avcontainer">
     <span class="jsavcounter"></span>
     <div class="jsavcontrols"></div>
     <p class="jsavoutput jsavline" readonly="readonly"></p>
@@ -49,6 +48,7 @@
 </script>
 <script src="../../JSAV/lib/jquery.transform.light.js"></script>
 <script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/ODSA.js"></script>
 <script src="mergesortAV.js"></script>
 </body>
 </html>

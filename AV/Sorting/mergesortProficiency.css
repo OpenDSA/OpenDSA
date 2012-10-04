@@ -1,43 +1,9 @@
 #container {
-  width: 780px;
   height: 655px;
-  border: 1px solid black;
-  background-color: #efe;
-  padding: 10px;
-  overflow: hidden;
 }
 
 .jsavarray {
   position: absolute;
-}
-
-#container .jsavarray {
-  left: -10px;
-  height: 80px;
-}
-
-div h1 {
-  background-color: #efe;
-}
-
-.jsavcontainer {
-  background-color: #efe;
-}
-
-.jsavline {
-  height: 40px;
-  margin: 0;
-}
-
-.jsavsettings {
-  display: block;
-  margin-top: 0;
-  margin-left: 10px;
-}
-
-.mergesortArray {
-  margin-top: -15px;
-  margin-bottom: 40px
 }
 
 .jsavmodelanswer {

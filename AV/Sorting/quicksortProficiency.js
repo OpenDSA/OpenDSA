@@ -108,8 +108,7 @@
       initialArray[i] = Math.floor(Math.random() * 100);
     }
     
-    // Log initial exercise data
-    // TODO
+    // TODO: Log initial exercise data
     
     // Create the array the user will intereact with
     userArr = av.ds.array(initialArray, {indexed: true, layout: "array"});
@@ -232,7 +231,7 @@
     while (l < r) {
       // Move bounds inward until they meet
       while (arr.value(++l) < pivot);
-      while ((r !== 0) && (arr.value(--r) > pivot));
+      while ((r > 0) && (arr.value(--r) > pivot));
 
       // Stop when all elements have been appropriately swapped
       if (l >= r) {

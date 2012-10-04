@@ -9,16 +9,14 @@
 
 <body>
 <div id="container">
-  <input type="button" id="about" name="about" value="About"
-         style="margin-top:10px;"/>
-  <a class="jsavsettings" href="#">Settings</a>
-  <h1 style="margin-top:-10px;">Bubble Sort Visualization</h1>
+  <input type="button" id="about" name="about" value="About" />
+  <a id="settings" class="jsavsettings" href="#">Settings</a>
+  <h1>Bubble Sort Visualization</h1>
 
-  <form id="ssperform" style="margin-top:-5px;">
+  <form id="ssperform">
     <p>
-      <input type="button" name="run" value="Run"
-             style="margin-bottom:5px;">
-      <input type="button" name="reset" value="Reset" />
+      <input id="run" type="button" name="run" value="Run" />
+      <input id="reset" type="button" name="reset" value="Reset" />
       <label for="arraysize">&nbsp;List size:&nbsp;</label>
       <select id="arraysize">
         <option value = 5>5</option>
@@ -35,25 +33,22 @@
         <option value = 16>16</option>
       </select>
       <label for="arrayValues">&nbsp;Your values:&nbsp;</label>
-      <input size="60" name="arrayValues" id="arrayValues" type="text" />
+      <input id="arrayValues" size="60" name="arrayValues" type="text" />
     </p>
   </form>
-  <div id="avcontainer" style="margin-top:-20px;">
+  <div id="bubblesortAV_avc" class="avcontainer">
     <span class="jsavcounter"></span>
     <div class="jsavcontrols"></div>
     <p class="jsavoutput jsavline" readonly="readonly"></p>
   </div> <!--avcontainer-->
 </div> <!--container-->
 
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-</script>
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script src="../../JSAV/lib/jquery.transform.light.js"></script>
 <script src="../../JSAV/lib/raphael.js"></script>
 <script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/ODSA.js"></script>
 <script src="bubblesortAV.js"></script>
 </body>
 </html>

@@ -264,4 +264,3 @@
   $('input[name="incrementing"]', context).click(incrementing);
 
 }(jQuery));
-

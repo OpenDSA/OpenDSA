@@ -1,6 +1,8 @@
 "use strict";
 /*global alert*/
 (function ($) {
+  var avcId = 'mergesortAV_avc';
+  
   // Number of values in the array
   var ASize = $('#arraysize').val();
   // The array of numbers.
@@ -16,7 +18,7 @@
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
   
   var context = $("#ssperform");
-  var emptyContent = $("#avcontainer").html();
+  var emptyContent = $('#' + avcId).html();
   var av, // for JSAV av
     arr;  // for the JSAV array
 
@@ -29,7 +31,7 @@
   function reset(flag) {
     if (av) {
       av.clearumsg();
-      $("#avcontainer").unbind().html(emptyContent);
+      $('#' + avcId).unbind().html(emptyContent);
     }
     // Clear the array values field, when no params given and reset button hit
     if (flag !== true) {
@@ -85,7 +87,7 @@
         ASize = theArray.length;
       }
       reset(true); // Reset any previous visualization
-      av = new JSAV("avcontainer"); // initialize JSAV ..
+      av = new JSAV(avcId); // initialize JSAV ..
       // .. and the array.
       arr = av.ds.array(theArray, {indexed: true});
       av.displayInit();
@@ -94,18 +96,7 @@
       var level = 1;
       var column = 1;
       var arrLen = arr.size();
-
-      // Dynamically determine the canvas width using the centered
-      // alignment of the first block
-      var left = parseFloat(arr.element.css("left"));
-      // Find the center of the canvas by adding half the width of
-      // the array to the left value of the array.
-      // Multiply by 2 to find a value close to the width of the canvas
-      canvasWidth = 2 * (left + (blockWidth * arrLen / 2));
-      // Adjust the calculated width appropriately
-      // (I'm not sure why this is necessary, but it works every time)
-      canvasWidth = canvasWidth - arrLen + 1;
-      
+     
       av.umsg("Select the entire array");
       mergesort(arr, level, column);
       av.umsg("Done sorting!");
@@ -114,8 +105,8 @@
   }
   
   // The space required for each row to be displayed
+  var canvasWidth = $('#container').width();
   var rowHeight = 80;
-  var canvasWidth = 0;
   var blockWidth = 47;
   
   // Extend JSAV AV array to have the slice functionality of JavaScript arrays
@@ -214,7 +205,7 @@
     for (var i = 0; i < origArr.size(); i++) {
       origArr.value(i, "");
     }
-	
+
     arr1.highlight();
     arr2.highlight();
     av.step();

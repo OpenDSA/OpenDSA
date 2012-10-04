@@ -4,25 +4,26 @@
   <title>ShellSort AV</title>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../opendsaAV.css" type="text/css" />
+  <link rel="stylesheet" href="quadraticsortAV.css" type="text/css" />
   <link rel="stylesheet" href="shellsortAV.css" type="text/css" />
 </head>
 
 <body>
 <div id="container">
   <input type="button" id="about" name="about" value="About" />
-  <a class="jsavsettings" href="#">Settings</a>
+  <a id="settings" class="jsavsettings" href="#">Settings</a>
   <input type="button" id="help" name="help" value="Help" />
-  <h1 style="margin-top:-25px;">Shellsort Visualization</h1>
+  <h1>Shellsort Visualization</h1>
 
   <form id="ssperform">
     <p><label for="increments">Type an increment series or
                                use the given default:</label>
-       <input size="30" name="increments" type="text"
+       <input id="increments" size="30" name="increments" type="text"
            value="4 2 1" />
     </p>
     <p>
-      <input type="button" name="run" value="Run" />
-      <input type="button" name="reset" value="Reset" />
+      <input type="button" id="run" name="run" value="Run" />
+      <input type="button" id="reset" name="reset" value="Reset" />
       <label for="arraysize">&nbsp;Array size:&nbsp;</label>
       <select id="arraysize">
         <option value = 5>5</option>
@@ -40,10 +41,10 @@
       </select>
       <label for="arrayValues">&nbsp;Array values:&nbsp;</label>
       <input size="50" name="arrayValues" id="arrayValues" type="text" 
-	     placeholder="Type space-separated values, or just hit 'run' to use random values" />
+         placeholder="Type space-separated values, or just hit 'run' to use random values" />
     </p>
   </form>
-  <div id="avcontainer">
+  <div id="shellsortAV_avc" class="avcontainer">
     <span class="jsavcounter"></span>
     <div class="jsavcontrols"></div>
     <p class="jsavoutput jsavline" readonly="readonly"></p>
@@ -59,6 +60,7 @@
 <script src="../../JSAV/lib/jquery.transform.light.js"></script>
 <script src="../../JSAV/lib/raphael.js"></script>
 <script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/ODSA.js"></script>
 <script src="shellsortCODE.js"></script>
 <script src="shellsortAV.js"></script>
 </body>

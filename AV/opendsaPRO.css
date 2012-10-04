@@ -1,0 +1,60 @@
+﻿.container {
+  width: 780px;
+  height: 655px;
+  border: 1px solid black;
+  background-color: #efe;
+  padding: 10px;
+  overflow: hidden;
+}
+
+#container .jsavarray {
+  left: -10px;
+  height: 80px;
+}
+
+.jsavcontainer {
+  background-color: #efe;
+}
+.jsavexercisecontrols {
+  text-align: center;
+}
+.instructLabel {
+  margin-top: -5px;
+}
+.instructions {
+  margin-top: -15px;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid black;
+}
+
+p.jsavoutput.jsavline {
+  height: 40px;
+  margin: 0px;
+}
+
+a.jsavsettings {
+  display: block;
+  margin-top: 0px;
+  margin-left: 10px;
+}
+
+table.headerTable {
+  margin-top: -20px;
+}
+
+table.headerTable td.headerLeft {
+  width: 125px;
+}
+table.headerTable td.headerCenter {
+  text-align: center;
+  width: 550px;
+}
+table.headerTable td.headerRight {
+  text-align: right;
+  width: 185px;
+}
+
+form {
+  border: 0px
+}

@@ -1,10 +1,6 @@
 #container {
   width: 800px;
   height: 365px;
-  border: 1px solid black;
-  background-color: #efe;
-  padding: 10px;
-  overflow: hidden;
 }
 
 #left {
@@ -18,12 +14,8 @@
   width: 35%;
 }
 
-div h1 {
-  background-color: #efe;
-}
-
-.jsavcontainer {
-  background-color: #efe;
+input#about {
+  margin-top: 0px;
 }
 
 .jsavscroll {
