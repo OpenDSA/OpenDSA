@@ -1879,7 +1879,11 @@ var Khan = (function() {
 				non_summative: exercise.data( "name" ),
 
 				// Whether we are currently in review mode
-				review_mode: reviewMode ? 1 : 0
+				review_mode: reviewMode ? 1 : 0,   
+                         
+                                // The module name. If the exercise is embedded in one   
+                                module_name: typeof localStorage.module_name !== "undefined" ? localStorage.module_name : ""    
+
 			};
 		}
 
