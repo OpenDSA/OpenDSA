@@ -1,4 +1,5 @@
 "use strict";
+/*jslint noempty: false */
 /*global alert*/
 (function ($) {
 //*****************************************************************************
@@ -231,9 +232,8 @@
 
     while (l < r) {
       // Move bounds inward until they meet
-      while (arr.value(++l) < pivot);
-      while ((r !== 0) && (arr.value(--r) > pivot));
-
+      while (arr.value(++l) < pivot) { }
+      while ((r !== 0) && (arr.value(--r) > pivot)) { }
       // Stop when all elements have been appropriately swapped
       if (l >= r) {
         break;

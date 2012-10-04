@@ -24,14 +24,14 @@ div h1 {
   background-color: #efe;
 }
 
-p.jsavoutput.jsavline {
+.jsavline {
   height: 40px;
-  margin: 0px;
+  margin: 0;
 }
 
-a.jsavsettings {
+.jsavsettings {
   display: block;
-  margin-top: 0px;
+  margin-top: 0;
   margin-left: 10px;
 }
 
