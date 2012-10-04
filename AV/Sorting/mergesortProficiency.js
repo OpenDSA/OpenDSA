@@ -254,7 +254,7 @@
         break;
       }
     }
-
+    
     // Determine the correct column and the relative index where the correct answer will be placed
     var destColumn = 1;
     var left = 0;
@@ -262,17 +262,22 @@
     var mid = 0;
 
     for (i = 0; i < destDepth - 1; i++) {
-      mid = Math.floor((left + right) / 2);
+      mid = Math.floor((right - left) / 2);
 
       if (destIndex <= mid) {
+        //console.log("left: destIndex (" + destIndex + ") <= mid (" + mid + ")");  // FOR DEBUGGING
         right = mid;
         destColumn = 2 * destColumn - 1;
       } else {
+        //console.log("right: destIndex (" + destIndex + ") > mid (" + mid + ")");  // FOR DEBUGGING
         left = mid + 1;
         destIndex -= left;
         destColumn = 2 * destColumn;
       }
+      
+      //console.log("destColumn: " + destColumn);  // FOR DEBUGGING
     }
+    //console.log("destDepth: " + destDepth + ", destColumn: " + destColumn + ", destIndex: " + destIndex);  // FOR TESTING
 
     var subArr1 = av.ds.array($('#array_' + (destDepth + 1) + "_" + (2 * destColumn - 1)));
     var subArr2 = av.ds.array($('#array_' + (destDepth + 1) + "_" + (2 * destColumn)));
@@ -315,7 +320,11 @@
       srcArr = subArr2;
       srcIndex = subArr2Idx;
     } else {
-      console.log("Weird stuff happened:\ndestDepth: " + destDepth + ", destColumn: " + destColumn + ", destIndex: " + destIndex + "\nsubArr1 ID: " + subArr1.element.attr('id') + ", subArr1: " + subArr1.toString() + ", subArr2 ID: " + subArr2.element.attr('id') + ", subArr2: " + subArr2.toString() + " subArr1Idx = " + subArr1Idx + ", subArr2Idx = " + subArr2Idx);
+      console.log("Weird stuff happened:\ndestDepth: " + destDepth + ", destColumn: " +
+          destColumn + ", destIndex: " + destIndex + "\nsubArr1 ID: " +
+          subArr1.element.attr('id') + ", subArr1: " + subArr1.toString() +
+          ", subArr2 ID: " + subArr2.element.attr('id') + ", subArr2: " + subArr2.toString() +
+          " subArr1Idx = " + subArr1Idx + ", subArr2Idx = " + subArr2Idx);
       return;
     }
 
