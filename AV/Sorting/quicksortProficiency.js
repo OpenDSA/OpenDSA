@@ -1,4 +1,5 @@
 "use strict";
+/*jslint noempty: false */
 /*global alert*/
 (function ($) {
 //*****************************************************************************
@@ -81,7 +82,7 @@
   var arraySize = 10,
     initialArray = [],
     av = new JSAV($("#container"));
-  
+
   av.recorded();     // we are not recording an AV with an algorithm
 
   // Initialize the variables
@@ -107,9 +108,9 @@
     for (var i = 0; i < arraySize; i++) {
       initialArray[i] = Math.floor(Math.random() * 100);
     }
-    
+
     // TODO: Log initial exercise data
-    
+
     // Create the array the user will intereact with
     userArr = av.ds.array(initialArray, {indexed: true, layout: "array"});
 
@@ -230,8 +231,8 @@
 
     while (l < r) {
       // Move bounds inward until they meet
-      while (arr.value(++l) < pivot);
-      while ((r > 0) && (arr.value(--r) > pivot));
+      while (arr.value(++l) < pivot) { }
+      while ((r > 0) && (arr.value(--r) > pivot)) { }
 
       // Stop when all elements have been appropriately swapped
       if (l >= r) {

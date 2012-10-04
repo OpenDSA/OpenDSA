@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 
-#container .jsavarray {
+.jsavarray {
   left: -10px;
   height: 80px;
 }
@@ -28,12 +28,12 @@
   border: 1px solid black;
 }
 
-p.jsavoutput.jsavline {
+.jsavline {
   height: 40px;
   margin: 0px;
 }
 
-a.jsavsettings {
+.jsavsettings {
   display: block;
   margin-top: 0px;
   margin-left: 10px;
