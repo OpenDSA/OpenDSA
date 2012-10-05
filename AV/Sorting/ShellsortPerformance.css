@@ -1,6 +1,6 @@
 #container {
   width: 800px;
-  height: 365px;
+  height: 450px;
 }
 
 #left {
@@ -19,5 +19,5 @@
 }
 
 .jsavscroll {
-  height: 150px;
+  height: 240px;
 }

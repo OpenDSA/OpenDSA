@@ -101,7 +101,7 @@
     var i,
       num,
       prev = Number.MAX_VALUE,
-      msg = "Increments sequence must be decreasing positive values ending with 1";
+      msg = "Increments series must be decreasing positive values ending with 1";
     // Convert user's increments to an array,
     var incrs = $('input[name="increments"]', context).val().match(/[0-9]+/g) || [];
     for (i = 0; i < incrs.length; i++) {
@@ -157,7 +157,7 @@
         }
       }
       checkArray(tempArray);
-      tell("Divide by twos sequence needs " + Comps +
+      tell("Divide by twos series needs " + Comps +
            " comparisons and " + Swaps + " swaps\n");
       InitFlag = true;
     }
@@ -173,7 +173,7 @@
       }
     }
     checkArray(tempArray);
-    tell("The sequence " + $('input[name="increments"]', context).val() +
+    tell("The series " + $('input[name="increments"]', context).val() +
          " needs " + Comps +
          " comparisons and " + Swaps + " swaps\n");
   }
