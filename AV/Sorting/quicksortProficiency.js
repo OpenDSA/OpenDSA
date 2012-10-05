@@ -79,14 +79,14 @@
 //*************       QUICKSORT PROFICIENCY EXERCISE CODE         *************
 //*****************************************************************************
   var context = 'quicksortProficiency_avc';
-  
+
   // settings for the AV
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
   // add the layout setting preference
   var arrayLayout = settings.add("layout", {"type": "select",
         "options": {"bar": "Bar", "array": "Array"},
         "label": "Array layout: ", "value": "array"});
-  
+
   var arraySize = 10,
     initialArray = [],
     av = new JSAV(context, {settings: settings});
@@ -377,7 +377,7 @@
     // Mark this as a step to be graded and a step that can be undone (continuous feedback)
     exercise.gradeableStep();
   }
-  
+
   /**
    * Reset the variables used for each iteration of the algorithm
    */
@@ -473,7 +473,7 @@
    */
   var exercise = av.exercise(modelSolution, initialize,
                  [{css: "background-color"}, {}, {}, {}, {}, {}],
-                 {controls: $('.jsavexercisecontrols'), fix: fixState, 
+                 {controls: $('.jsavexercisecontrols'), fix: fixState,
                  feedback:  "continuous", fixmode: "fix"}); // fixmode: "undo"
   exercise.reset();
 }(jQuery));

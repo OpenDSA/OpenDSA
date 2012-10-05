@@ -11,7 +11,7 @@
   function about() {
     alert("Mergesort Proficiency Exercise\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
-  
+
   $('#help').click(help);
   $('#about').click(about);
 
@@ -29,13 +29,13 @@
   var mergeValueIndex = -1;
   var mergeValueArr = null;
 
-  
+
   // Define the local context (from form name)
   var context = $("#mergesortProficiency_avc");
-  
+
   // Settings for the AV
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
-  
+
   var arraySize = 10,
       initialArray = [],
       userAnswerValue = [],
@@ -261,7 +261,7 @@
         break;
       }
     }
-    
+
     // Determine the correct column and the relative index where the correct answer will be placed
     var destColumn = 1;
     var left = 0;
@@ -281,7 +281,7 @@
         destIndex -= left;
         destColumn = 2 * destColumn;
       }
-      
+
       //console.log("destColumn: " + destColumn);  // FOR DEBUGGING
     }
     //console.log("destDepth: " + destDepth + ", destColumn: " + destColumn + ", destIndex: " + destIndex);  // FOR TESTING
@@ -398,16 +398,6 @@
     }
   }
 
-
-
-  // Using continuous mode slows the exercise down considerably
-  // (probably because it has to check that all the arrays are correct)
-  var exercise = av.exercise(modelSolution, initialize,
-                   [{css: "background-color"}, {}], {controls: 
-                   $('.jsavexercisecontrols'), fix: fixState,
-                   feedback: "continuous", fixmode: "fix"});
-  exercise.reset();
-
   // Convenience function to reset the merge variables
   function resetMergeVars() {
     if (mergeValueArr !== null) {
@@ -419,6 +409,14 @@
     mergeValueArr = null;
     mergeValueIndex = -1;
   }
+
+  // Using continuous mode slows the exercise down considerably
+  // (probably because it has to check that all the arrays are correct)
+  var exercise = av.exercise(modelSolution, initialize,
+                   [{css: "background-color"}, {}], {controls:
+                   $('.jsavexercisecontrols'), fix: fixState,
+                   feedback: "continuous", fixmode: "fix"});
+  exercise.reset();
 
 //*****************************************************************************
 //*************               Convenience Functions               *************
