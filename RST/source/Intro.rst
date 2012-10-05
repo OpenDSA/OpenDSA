@@ -86,6 +86,10 @@ streak is reset to the beginning.
 Note that once you have been given credit for the exercise, you cannot
 lose it by answering more questions.
 
+The multiple choice question sets work by randomly selecting from a
+set of questions in that set. It is possible that you will see the
+same question twice in that set, and possibly even twice in a row.
+
 Some of the questions have "hints" that you can ask for to help you
 figure out the answer.
 If you ask a hint, you will not get credit for that question toward
