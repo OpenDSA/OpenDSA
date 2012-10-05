@@ -269,7 +269,7 @@
     var mid = 0;
 
     for (i = 0; i < destDepth - 1; i++) {
-      mid = Math.floor((right - left) / 2);
+      mid = Math.floor((left + right) / 2);
 
       if (destIndex <= mid) {
         //console.log("left: destIndex (" + destIndex + ") <= mid (" + mid + ")");  // FOR DEBUGGING
@@ -278,12 +278,14 @@
       } else {
         //console.log("right: destIndex (" + destIndex + ") > mid (" + mid + ")");  // FOR DEBUGGING
         left = mid + 1;
-        destIndex -= left;
         destColumn = 2 * destColumn;
       }
 
-      //console.log("destColumn: " + destColumn);  // FOR DEBUGGING
+      //console.log("destColumn: " + destColumn + ", left: " + left + ", right: " + right);  // FOR DEBUGGING
     }
+    
+    destIndex -= left;
+    
     //console.log("destDepth: " + destDepth + ", destColumn: " + destColumn + ", destIndex: " + destIndex);  // FOR TESTING
 
     var subArr1 = av.ds.array($('#array_' + (destDepth + 1) + "_" + (2 * destColumn - 1)));
