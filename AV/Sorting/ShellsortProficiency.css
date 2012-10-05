@@ -1,8 +1,14 @@
-#ShellsortProficiency_container {
+.jsavline {
+  height: 40px;
+}
+
+.container {
   width: 800px;
   height: 480px;
 }
 
-.jsavline {
-  height: 40px;
+#profArray {
+  margin-top: -15px;
+  margin-bottom: 20px
 }
+

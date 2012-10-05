@@ -11,6 +11,9 @@
   function about() {
     alert("Mergesort Proficiency Exercise\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
+  
+  $('#help').click(help);
+  $('#about').click(about);
 
   /* ********************************************
    *  MERGESORT PROFICIENCY EXERCISE CODE       *
@@ -26,11 +29,18 @@
   var mergeValueIndex = -1;
   var mergeValueArr = null;
 
+  
+  // Define the local context (from form name)
+  var context = $("#mergesortProficiency_avc");
+  
+  // Settings for the AV
+  var settings = new JSAV.utils.Settings($(".jsavsettings"));
+  
   var arraySize = 10,
       initialArray = [],
       userAnswerValue = [],
       userAnswerDepth = [],
-      av = new JSAV($("#container"));
+      av = new JSAV(context, {settings: settings});
 
   av.recorded();   // we are not recording an AV with an algorithm
 
@@ -86,7 +96,7 @@
     var modelDepthArr = [];
     initDepth(0, initialArray.length - 1, depth, modelDepthArr);
     modelDepthArr = jsav.ds.array(modelDepthArr,
-                                  {indexed: true, layout: "array"});
+                                 {indexed: true, layout: "array"});
     jsav.displayInit();
 
     var temp = [];
@@ -205,14 +215,11 @@
     for (var curr = l; curr <= r; curr++) {
       if (i1 === mid + 1) {          // Left sublist exhausted
         array.value(curr, temp[i2++]);
-      }
-      else if (i2 > r) {             // Right sublist exhausted
+      } else if (i2 > r) {             // Right sublist exhausted
         array.value(curr, temp[i1++]);
-      }
-      else if (temp[i1] < temp[i2]) { // Get smaller
+      } else if (temp[i1] < temp[i2]) { // Get smaller
         array.value(curr, temp[i1++]);
-      }
-      else {
+      } else {
         array.value(curr, temp[i2++]);
       }
 
@@ -396,7 +403,8 @@
   // Using continuous mode slows the exercise down considerably
   // (probably because it has to check that all the arrays are correct)
   var exercise = av.exercise(modelSolution, initialize,
-                   [{css: "background-color"}, {}], {fix: fixState,
+                   [{css: "background-color"}, {}], {controls: 
+                   $('.jsavexercisecontrols'), fix: fixState,
                    feedback: "continuous", fixmode: "fix"});
   exercise.reset();
 
@@ -478,7 +486,4 @@
     }
     return str + ']';
   };
-
-  $('input[name="help"]').click(help);
-  $('input[name="about"]').click(about);
 }(jQuery));

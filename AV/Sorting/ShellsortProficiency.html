@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div id="ShellsortProficiency_container" class="container">
+<div id="container" class="container">
   <table class="headerTable">
     <tr>
       <td class="headerLeft">&nbsp;</td>
@@ -22,7 +22,7 @@
       </td>
     </tr>
   </table>
-  <form style="border: 0px" id="ShellsortProficiency">
+  <form id="ShellsortProficiency_avc">
     <div class="jsavcanvas">
       <p class="instructLabel">Instructions:</p>
       <p class="instructions">
@@ -43,14 +43,14 @@
 
       <p><b>Input:</b></p>
 
-      <ol id="profArray" style="margin-top: -15px; margin-bottom: 20px"></ol>
+      <ol id="profArray"></ol>
 
-      <input type="button" name="selecting"
+      <input type="button" id="selecting" name="selecting"
         data-desc="Indicates user is done selecting" value="Done Selecting" />
-      <input type="button" name="sorting"
+      <input type="button" id="sorting" name="sorting"
         data-desc="Indicates user is done sorting the sublist"
         value="Done Sorting Sublist" />
-      <input type="button" name="incrementing"
+      <input type="button" id="incrementing" name="incrementing"
         data-desc="Indicates user is done with the current increment"
         value="Done Increment" />
 

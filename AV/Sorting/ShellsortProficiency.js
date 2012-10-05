@@ -7,7 +7,7 @@
   *  The first line you need to set to use your form's name       *
   ************************************************************** */
   // Define the local context (from form name)
-  var context = $("#ShellsortProficiency");
+  var context = $("#ShellsortProficiency_avc");
 
   // settings for the AV
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
@@ -257,10 +257,9 @@
   });
 
   // Connect the action callbacks to the HTML entities
-  $('input[name="help"]').click(help);
-  $('input[name="about"]').click(about);
-  $('input[name="selecting"]', context).click(selecting);
-  $('input[name="sorting"]', context).click(sorting);
-  $('input[name="incrementing"]', context).click(incrementing);
-
+  $('#help').click(help);
+  $('#about').click(about);
+  $('#selecting', context).click(selecting);
+  $('#sorting', context).click(sorting);
+  $('#incrementing', context).click(incrementing);
 }(jQuery));

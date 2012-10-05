@@ -72,16 +72,24 @@
     alert(mystring);
   }
 
-  $('input[name="help"]').click(help);
-  $('input[name="about"]').click(about);
+  $('#help').click(help);
+  $('#about').click(about);
 
 //*****************************************************************************
 //*************       QUICKSORT PROFICIENCY EXERCISE CODE         *************
 //*****************************************************************************
-
+  var context = 'quicksortProficiency_avc';
+  
+  // settings for the AV
+  var settings = new JSAV.utils.Settings($(".jsavsettings"));
+  // add the layout setting preference
+  var arrayLayout = settings.add("layout", {"type": "select",
+        "options": {"bar": "Bar", "array": "Array"},
+        "label": "Array layout: ", "value": "array"});
+  
   var arraySize = 10,
     initialArray = [],
-    av = new JSAV($("#container"));
+    av = new JSAV(context, {settings: settings});
 
   av.recorded();     // we are not recording an AV with an algorithm
 
@@ -100,8 +108,8 @@
    *     - Initializes the array the user will sort
    */
   function initialize() {
-    // Clear all existing arrays
-    $("#arrays").html("");
+    // Clear existing array
+    $("#array").html("");
 
     // Generate random numbers for the exercise
     initialArray = [];
@@ -112,7 +120,7 @@
     // TODO: Log initial exercise data
 
     // Create the array the user will intereact with
-    userArr = av.ds.array(initialArray, {indexed: true, layout: "array"});
+    userArr = av.ds.array(initialArray, {indexed: true, layout: arrayLayout.val()});
 
     // Assign a click handler function to the user array
     userArr.click(function (index) {
@@ -133,7 +141,7 @@
    * Creates the model solution which is used for grading the exercise
    */
   function modelSolution(jsav) {
-    var modelArr = jsav.ds.array(initialArray, {indexed: true, layout: "array"});
+    var modelArr = jsav.ds.array(initialArray, {indexed: true, layout: arrayLayout.val()});
 
     // ModelSolution vars used for fixing the state
     var msPivotIndex = jsav.variable(-1);
@@ -369,6 +377,28 @@
     // Mark this as a step to be graded and a step that can be undone (continuous feedback)
     exercise.gradeableStep();
   }
+  
+  /**
+   * Reset the variables used for each iteration of the algorithm
+   */
+  function resetStateVars() {
+    pivotIndex.value(-1);
+    pivotMoved.value(false);
+    partitioned.value(false);
+    left.value(-1);
+    right.value(-1);
+  }
+
+  /**
+   * Resets the model solution variables
+   */
+  function resetMSStateVars(msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight) {
+    msPivotIndex.value(-1);
+    msPivotMoved.value(false);
+    msPartitioned.value(false);
+    msLeft.value(-1);
+    msRight.value(-1);
+  }
 
   /**
    * Performs the partition operation on the user array
@@ -420,30 +450,8 @@
   }
 
   // Attach the button handlers
-  $('input[name="partition"]').click(partitionButton);
-  $('input[name="markSorted"]').click(markSortedButton);
-
-  /**
-   * Reset the variables used for each iteration of the algorithm
-   */
-  function resetStateVars() {
-    pivotIndex.value(-1);
-    pivotMoved.value(false);
-    partitioned.value(false);
-    left.value(-1);
-    right.value(-1);
-  }
-
-  /**
-   * Resets the model solution variables
-   */
-  function resetMSStateVars(msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight) {
-    msPivotIndex.value(-1);
-    msPivotMoved.value(false);
-    msPartitioned.value(false);
-    msLeft.value(-1);
-    msRight.value(-1);
-  }
+  $('#partition').click(partitionButton);
+  $('#markSorted').click(markSortedButton);
 
   /*
    * Instantiate the exercise
@@ -465,6 +473,7 @@
    */
   var exercise = av.exercise(modelSolution, initialize,
                  [{css: "background-color"}, {}, {}, {}, {}, {}],
-                 {fix: fixState, feedback:  "continuous", fixmode: "fix"}); // fixmode: "undo"
+                 {controls: $('.jsavexercisecontrols'), fix: fixState, 
+                 feedback:  "continuous", fixmode: "fix"}); // fixmode: "undo"
   exercise.reset();
 }(jQuery));

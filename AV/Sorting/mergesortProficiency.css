@@ -9,3 +9,7 @@
 .jsavmodelanswer {
   height: 275px;
 }
+
+.jsavcontainer {
+  overflow: visible;
+}
