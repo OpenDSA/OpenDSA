@@ -81,26 +81,26 @@ var checkAnswer = function (start_pos, inc_size) {
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <div class="question">
-	<p>Highlight all records contained in the sublist with
+        <p>Highlight all records contained in the sublist with
           increment <var>inc_size</var> starting at
           index <var>start_pos</var></p>
-	<div id="jsav"></div>
+        <div id="jsav"></div>
       </div>
       <div class="solution" data-type="custom">
-	<div class="guess">
-      	  [userInput]
-	</div>
-	<div class="validator-function">
-	  if (!guess[0])
+        <div class="guess">
+          [userInput]
+        </div>
+        <div class="validator-function">
+          if (!guess[0])
             return ""; // User did not click anything
           else
             return checkAnswer (start_pos,inc_size);
-	</div>
+        </div>
       </div>
       <div class="hints">
-	<p>The first record of the sublist is at position <var>start_pos</var></p>
-	<p>The subsequent records of the sublist are spaced <var>inc_size</var> positions apart from each other.</p>
-	<p>In this instance, the second records would be at position <var>sec_pos</var>, and so on.</p>
+        <p>The first record of the sublist is at position <var>start_pos</var></p>
+        <p>The subsequent records of the sublist are spaced <var>inc_size</var> positions apart from each other.</p>
+        <p>In this instance, the second records would be at position <var>sec_pos</var>, and so on.</p>
       </div>
     </div>
   </div>
