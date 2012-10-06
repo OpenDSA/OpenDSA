@@ -33,5 +33,4 @@ csslint:
 jshint:
 	@echo 'running jshint'
 	@jshint AV/Sorting/*.js
-	@jshint Exercises/Sorting/*.js
 	@jshint lib/ODSA.js
