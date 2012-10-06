@@ -80,7 +80,7 @@ Here is pseudocode for merge on lists::
 
 Here is a mergesort warmup exercise to practice merging.
 
-.. avembed:: Exercises/Development/MergesortPRO.html
+.. avembed:: Exercises/Sorting/MergesortPRO.html
    :showbutton: hide
    :title: Mergesort Merging Exercise
 
