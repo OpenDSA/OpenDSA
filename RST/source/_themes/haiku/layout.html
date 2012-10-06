@@ -78,14 +78,14 @@
         </a>
         {%- else %}
         {%- if logo -%}
-          <img class="rightlogo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+          <img class="leftlogo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
         {%- endif -%}
-        <h1 class="heading"><a href="{{ pathto('index') }}">
-          <span>{{ shorttitle|e }}</span></a></h1>
+        <h1 class="heading" ><a href="{{ pathto('index') }}">
+          <span style="margin-left: 60px;">{{ shorttitle|e }}</span></a></h1>
         {%- if pagename=="index" -%}
-	<h2 class="heading"><span>Table Of Contents</span></h2>
+	<h2 class="heading" ><span  style="margin-left: 60px;">Table Of Contents</span></h2>
 	{%- else %}
-	  <h2 class="heading"><span>{{ title|striptags|e }}</span></h2>
+	  <h2 class="heading" ><span  style="margin-left: 60px;">{{ title|striptags|e }}</span></h2>
 	{%- endif %}
 
         {%- endif %}
@@ -137,4 +137,5 @@
       <p> <a class="contact" style="float:left;color:blue;" href="mailto:opendsa@cs.vt.edu" rel="nofollow">Contact Us</a>&#160;&#160;         
       {{ nav() }}</p>
       </div>
+      <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/> 
 {% endblock %}
