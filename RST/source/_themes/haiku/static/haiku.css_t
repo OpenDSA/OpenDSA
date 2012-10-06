@@ -144,6 +144,9 @@ div.header img.rightlogo {
     float: right;
 }
 
+div.header img.leftlogo {
+    float: left;
+}  
 
 div.title {
     font-size: 1.3em;
