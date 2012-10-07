@@ -21,11 +21,14 @@
 
   var ASize = $('input[name="arraysize"]', context).val(); // Array size
 
-  var Comps; // Count for comparisions
-  var Swaps; // Count for swaps
+  var comps; // Count for comparisions
+  var swaps; // Count for swaps
+  // These are stored to compare later against user's series for credit
+  var twosComps; // Number of comparisons for Divide-by-2's series
+  var twosSwaps; // Number of swaps for Divide-by-2's series
 
-  // True if we already printed baseline info;
-  // False means to print it out again and toggle
+  // True if we have already printed baseline info;
+  // False means we need to print it out again on "run", and toggle
   var InitFlag = false;
 
   // Process About button: Pop up a message with an Alert
@@ -77,11 +80,11 @@
     var i, j;
     for (i = start + incr; i < A.length; i += incr) {
       for (j = i; (j >= incr) && (A[j] < A[j - incr]); j -= incr) {
-        Comps += 1;
-        Swaps += 1;
+        comps += 1;
+        swaps += 1;
         swap(A, j, j - incr);
       }
-      if (j >= incr) { Comps += 1; }
+      if (j >= incr) { comps += 1; }
     }
   }
 
@@ -137,18 +140,18 @@
       // First we run a standard insertion sort
       // Copy to the working array
       tempArray = theArray.slice(0);
-      Comps = 0;
-      Swaps = 0;
+      comps = 0;
+      swaps = 0;
       insertionSort(tempArray, 0, 1);
       checkArray(tempArray);
-      tell("\nStraight Insertion Sort needs " + Comps +
-           " comparisons and " + Swaps + " swaps\n");
+      tell("\nStraight Insertion Sort needs " + comps +
+           " comparisons and " + swaps + " swaps\n");
 
       // Next we do the "divide by twos" series
       // Copy to the working array
       tempArray = theArray.slice(0);
-      Comps = 0;
-      Swaps = 0;
+      comps = 0;
+      swaps = 0;
       j = 1;
       while (j * 2 < ASize) { j = j * 2; }
       for (incr = j; incr >= 1; incr = incr / 2) {
@@ -157,16 +160,18 @@
         }
       }
       checkArray(tempArray);
-      tell("Divide by twos series needs " + Comps +
-           " comparisons and " + Swaps + " swaps\n");
+      tell("Divide by twos series needs " + comps +
+           " comparisons and " + swaps + " swaps\n");
+      twosComps = comps;
+      twosSwaps = swaps;
       InitFlag = true;
     }
 
     // Now we are ready to run the user's series
     // Copy to the working array
     tempArray = theArray.slice(0);
-    Comps = 0;
-    Swaps = 0;
+    comps = 0;
+    swaps = 0;
     for (i = 0; i < incrs.length; i += 1) {
       for (curr = 0; curr < incrs[i]; curr++) {
         insertionSort(tempArray, curr, incrs[i]);
@@ -174,8 +179,13 @@
     }
     checkArray(tempArray);
     tell("The series " + $('input[name="increments"]', context).val() +
-         " needs " + Comps +
-         " comparisons and " + Swaps + " swaps\n");
+         " needs " + comps +
+         " comparisons and " + swaps + " swaps\n");
+    // Right here is where we would give user credit
+    if ((comps < twosComps) && (swaps < twosSwaps)) {
+    //   GIVE USER PROFICIENCY CREDIT;
+      tell("CONGRATULATIONS! You did better than divide-by-twos");
+    }
   }
 
   // Action callbacks to the various HTML entities.
