@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <entry>
-<id>http://algoviz.org/OpenDSA/Exercises/Development/BinSortSumm.html</id>
+<id>http://algoviz.org/OpenDSA/Exercises/Sorting/BinsortSumm.html</id>
 <title type='text'>Binsort Summary Review Questions</title>
-<description type='text'>Binsort Summary Review Multiple Choice Questions</description>
+<description type='text'>Binsort Summary Review Questions</description>
 <type>ka</type>  
 <width>950</width>
 <height>650</height>
@@ -11,5 +11,5 @@
 <uri>http://algoviz.org/OpenDSA/</uri>
 </author>
 <covers>sorting</covers>
-<streak>4</streak>
+<streak>5</streak>
 </entry>
