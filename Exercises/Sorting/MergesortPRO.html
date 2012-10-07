@@ -136,10 +136,10 @@ var initJSAV = function (a) {
   left_size = Math.floor(arr_size / 2);
   arrdata = JSAV.utils.rand.numKeys(10, 100, arr_size);
   arrdata_left = arrdata.slice(0, left_size);
-  arrdata_left.sort(function (a, b) { return a - b; });
+  arrdata_left.sort(function (a, b) { return a >= b; });
   arrdata_right = arrdata.slice(left_size, arr_size);
-  arrdata_right.sort(function (a, b) { return a - b; });
-  arrdata.sort(function (a, b) { return a - b; });
+  arrdata_right.sort(function (a, b) { return a >= b; });
+  arrdata.sort(function (a, b) { return a >= b; });
   resetInit();
   // Set up handler for reset button
   $("#reset").click(function () { f_reset(); });
