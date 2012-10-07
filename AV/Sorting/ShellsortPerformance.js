@@ -1,5 +1,5 @@
 "use strict";
-/*global alert*/
+/*global alert awardCompletionCredit getAVName */
 (function ($) {
   // Create the AV object. We turn off slideshow mode, since this is a
   // "static" form-based activity
@@ -19,7 +19,7 @@
   // time a new set of random numbers is drawn.
   var theArray = [];
 
-  var ASize = $('input[name="arraysize"]', context).val(); // Array size
+  var ASize = $('#arraysize', context).val(); // Array size
 
   var comps; // Count for comparisions
   var swaps; // Count for swaps
@@ -56,7 +56,7 @@
   // Change the array size
   function Change() {
     // Validate arraysize
-    var newVal = Number($('input[name="arraysize"]', context).val());
+    var newVal = Number($('#arraysize', context).val());
     if (isNaN(newVal) || (newVal < 1) || (newVal > 10000)) {
       alert("List size has to be a positive number less than 10000");
       return;
@@ -106,7 +106,7 @@
       prev = Number.MAX_VALUE,
       msg = "Increments series must be decreasing positive values ending with 1";
     // Convert user's increments to an array,
-    var incrs = $('input[name="increments"]', context).val().match(/[0-9]+/g) || [];
+    var incrs = $('#increments', context).val().match(/[0-9]+/g) || [];
     for (i = 0; i < incrs.length; i++) {
       incrs[i] = Number(incrs[i]);
       if (isNaN(incrs[i]) || incrs[i] < 0 || incrs[i] > prev) {
@@ -178,21 +178,22 @@
       }
     }
     checkArray(tempArray);
-    tell("The series " + $('input[name="increments"]', context).val() +
+    tell("The series " + $('#increments', context).val() +
          " needs " + comps +
          " comparisons and " + swaps + " swaps\n");
     // Right here is where we would give user credit
     if ((comps < twosComps) && (swaps < twosSwaps)) {
-    //   GIVE USER PROFICIENCY CREDIT;
+      // Give user proficiency credit
+      awardCompletionCredit(getAVName());
       tell("CONGRATULATIONS! You did better than divide-by-twos");
     }
   }
 
   // Action callbacks to the various HTML entities.
-  $('input[name="about"]').click(about);
-  $('input[name="run"]', context).click(RunIt);
-  $('input[name="clear"]', context).click(Clear);
-  $('input[name="arraysize"]', context).focusout(Change);
-  $('input[name="increments"]', context).focusout(checkIncrements);
+  $('#about').click(about);
+  $('#run', context).click(RunIt);
+  $('#clear', context).click(Clear);
+  $('#arraysize', context).focusout(Change);
+  $('#increments', context).focusout(checkIncrements);
 
 }(jQuery));
