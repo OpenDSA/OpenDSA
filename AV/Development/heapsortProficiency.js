@@ -17,12 +17,12 @@ function init() {
   return bh;
 }
 
-function fixState(modelArray) {
-  var size = modelArray.size();
+function fixState(modelHeap) {
+  var size = modelHeap.size();
   swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step
   for (var i = 0; i < size; i++) {
-    var val = modelArray.value(i),
-        bgColor = modelArray.css(i, "background-color");
+    var val = modelHeap.value(i),
+        bgColor = modelHeap.css(i, "background-color");
     if (bh.css(i, "background-color") !== bgColor) { // fix background color
       bh.css(i, {"background-color": bgColor});
     }
@@ -30,7 +30,7 @@ function fixState(modelArray) {
       bh.value(i, val);
     }
   }
-  bh.heapsize(modelArray.heapsize());
+  bh.heapsize(modelHeap.heapsize());
   exercise.gradeableStep();
 }
     
@@ -64,10 +64,16 @@ function model(modeljsav) {
     modeljsav.umsg("");
     modeljsav.step();
   }
+  modelbh.css(0, {"background-color": "#ddd"});
+  modeljsav.stepOption("grade", true);
+  modeljsav.step();
   return modelbh;
 }
     
 function clickHandler(index) {
+  if (bh.heapsize() === 0) {
+    return;
+  }
   jsav._redo = []; // clear the forward stack, should add a method for this in lib
   var sIndex = swapIndex.value();
   if (sIndex === -1) { // if first click
@@ -103,6 +109,10 @@ $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
   clickHandler(index);
 });
 $("#decrement").click(function() {
+  if (bh.heapsize() === 0) {
+    alert("Heapsize is already zero, cannot decrement!");
+    return;
+  }
   bh.heapsize(bh.heapsize() - 1);
   bh.css(bh.heapsize(), {"background-color": "#ddd"});
   exercise.gradeableStep();
