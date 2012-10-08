@@ -8,6 +8,7 @@
    :prerequisites:
    :topic: Sorting
    :short_name: SortingIntro
+   :exercises: SortIntroSumm
 
 .. _Sorting:
 

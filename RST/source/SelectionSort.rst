@@ -8,6 +8,7 @@
    :prerequisites: Sorting, Bubble Sort
    :topic: Sorting
    :short_name: SelectionSort
+   :exercises: SelsortCON1, SelsortCON2, SelsortPRO, SelsortSumm
 
 .. _SelectionSort:
 

@@ -7,7 +7,8 @@
    :author: Cliff Shaffer
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
-   :short_name: RecCompare
+   :short_name: SortCompare
+   :exercises: SortCompareSumm
 
 .. _SortCompare:
 
