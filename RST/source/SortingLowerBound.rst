@@ -26,7 +26,7 @@ This module considers a more difficult task: An analysis for
 the cost of a *problem* as opposed to an *algorithm*.
 The upper bound for a problem can be defined as the asymptotic cost of
 the fastest known algorithm.
-The lower bound defines the best possible efficiency for *any*
+The lower bound defines the best possible cost for *any*
 algorithm that solves the problem, including algorithms not yet
 invented.
 Once the upper and lower bounds for the problem meet, we know that no
@@ -274,3 +274,10 @@ time, so we can conclude that the problem of sorting requires
 As a corollary, we know that no comparison-based sorting algorithm can
 improve on existing :math:`\Theta(n \log n)` time sorting algorithms by
 more than a constant factor.
+
+Here are some review questions to check that you understand
+this proof.
+
+.. avembed:: Exercises/Sorting/SortBoundSumm.html
+   :showbutton: hide
+   :title: Lower Bounds Proof Review Questions
