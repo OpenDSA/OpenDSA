@@ -1,5 +1,5 @@
 "use strict";
-/*global alert*/
+/*global alert log_exercise_init getAVName */
 (function ($) {
   var avcId = 'insertionsortAV_avc';
   var
@@ -52,7 +52,7 @@
         msg = "Must be 5 to 16 positive integers";
     // Convert user's values to an array,
     // assuming values are space separated
-    theArray = $('input[name="arrayValues"]', context).val().match(/[0-9]+/g) || [];
+    theArray = $('#arrayValues', context).val().match(/[0-9]+/g) || [];
     if (theArray.length === 0) { // Empty field
       theArray.length = 0;
       return true;
@@ -115,6 +115,7 @@
 
     if (processArrayValues()) { // if it is false, then we got junk that
                                 // the user needs to fix
+      var initData = {};
       if (theArray.length === 0) { // No user-given array. Make a random array
         ASize = newSize;
         theArray.length = 0; // Out with the old
@@ -122,10 +123,15 @@
         for (i = 0; i < ASize; i++) {
           theArray[i] = Math.floor(Math.random() * 1000);
         }
+        initData.gen_array = theArray;
       }
       else { // Use the values we got out of the user's list
         ASize = theArray.length;
+        initData.user_array = theArray;
       }
+      // Log initial state of exercise
+      log_exercise_init(getAVName(), initData);
+      
       reset(true); // Reset any previous visualization
       av = new JSAV(avcId); // initialize JSAV ..
 
@@ -143,8 +149,7 @@
   }
 
   // Connect action callbacks to the HTML entities
-  $('input[name="about"]').click(about);
-  $('input[name="run"]', context).click(runIt);
-  $('input[name="reset"]', context).click(reset);
-
+  $('#about').click(about);
+  $('#run', context).click(runIt);
+  $('#reset', context).click(reset);
 }(jQuery));

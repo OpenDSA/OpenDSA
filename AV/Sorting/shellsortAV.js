@@ -1,6 +1,6 @@
 "use strict";
 /*global alert*/
-/*global sweep*/
+/*global log_exercise_init getAVName sweep */
 (function ($) {
   var avcId = 'shellsortAV_avc';
   
@@ -15,7 +15,7 @@
   // check query parameters from URL
   var params = JSAV.utils.getQueryParameter();
   if ("increments" in params) { // set value of increments if it is a param
-    $('input[name="increments"]').val(params.increments).prop("disabled", true);
+    $('#increments').val(params.increments).prop("disabled", true);
   }
   if ("array" in params) { // set value of array pick if it is a param
     $('#arrayValues').val(params.array).prop("disabled", true);
@@ -66,7 +66,7 @@
       msg = "Increments sequence must be decreasing positive values ending with 1";
     // Convert user's increments to an array,
     // assuming values are space separated
-    var incrs = $('input[name="increments"]', context).val().match(/[0-9]+/g) || [];
+    var incrs = $('#increments', context).val().match(/[0-9]+/g) || [];
     for (i = 0; i < incrs.length; i++) {
       incrs[i] = Number(incrs[i]);
       if (isNaN(incrs[i]) || incrs[i] < 0 || incrs[i] > prev) {
@@ -89,7 +89,7 @@
         msg = "Must be 5 to 16 positive integers";
     // Convert user's values to an array,
     // assuming values are space separated
-    theArray = $('input[name="arrayValues"]', context).val().match(/[0-9]+/g) || [];
+    theArray = $('#arrayValues', context).val().match(/[0-9]+/g) || [];
     if (theArray.length === 0) { // Empty field
       theArray.length = 0;
       return true;
@@ -123,17 +123,23 @@
 
     if (processArrayValues()) { // if it is false, we got junk user
                                 // needs to fix
-      if (theArray.length === 0) { // Make a random  array
+      var initData = {};
+      if (theArray.length === 0) { // No user-given array. Make a random array
         ASize = newSize;
         theArray.length = 0; // Out with the old
         // Give random numbers in range 0..999
         for (i = 0; i < ASize; i++) {
           theArray[i] = Math.floor(Math.random() * 1000);
         }
+        initData.gen_array = theArray;
       }
       else { // Use the values we got out of the user's list
         ASize = theArray.length;
+        initData.user_array = theArray;
       }
+      // Log initial state of exercise
+      log_exercise_init(getAVName(), initData);
+      
       reset(true); // Reset any previous visualization
       av = new JSAV(avcId); // initialize JSAV ..
       // .. and the array. use the layout the user has selected
@@ -150,9 +156,9 @@
   }
 
   // Connect action callbacks to the HTML entities
-  $('input[name="help"]').click(help);
-  $('input[name="about"]').click(about);
-  $('input[name="run"]', context).click(runIt);
-  $('input[name="reset"]', context).click(reset);
-  $('input[name="increments"]', context).focusout(checkIncrements);
+  $('#help').click(help);
+  $('#about').click(about);
+  $('#run', context).click(runIt);
+  $('#reset', context).click(reset);
+  $('#increments', context).focusout(checkIncrements);
 }(jQuery));

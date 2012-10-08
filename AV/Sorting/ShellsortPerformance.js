@@ -1,5 +1,5 @@
 "use strict";
-/*global alert awardCompletionCredit getAVName */
+/*global alert log_exercise_init getAVName awardCompletionCredit */
 (function ($) {
   // Create the AV object. We turn off slideshow mode, since this is a
   // "static" form-based activity
@@ -187,6 +187,14 @@
       awardCompletionCredit(getAVName());
       tell("CONGRATULATIONS! You did better than divide-by-twos");
     }
+    
+    // LOG
+    // ASize, incrs, theArray
+    var initData = {};
+    initData.gen_array_len = ASize;
+    initData.gen_array = theArray;
+    initData.gen_incrs = incrs;
+    log_exercise_init(getAVName(), initData);
   }
 
   // Action callbacks to the various HTML entities.

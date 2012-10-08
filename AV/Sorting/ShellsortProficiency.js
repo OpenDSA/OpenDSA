@@ -1,5 +1,5 @@
 "use strict";
-/*global alert, getAVName, log_exercise_init_array*/
+/*global alert, log_exercise_init, getAVName */
 (function ($) {
   /* **************************************************************
   *  This first section is generic initialization that all AVs    *
@@ -120,9 +120,12 @@
       initialArray[ArraySize - i] = randomVal;
     }
     $theArray.html(htmldata);
-
-    // Log the exercise initialization
-    log_exercise_init_array(getAVName(), initialArray);
+    
+    // Log the initial state of the exercise
+    var desc = {};
+    desc.gen_array = initialArray;
+    desc.gen_incrs = incrs;
+    log_exercise_init(getAVName(), desc);
 
     theArray = av.ds.array($theArray, {indexed: true, layout: arrayLayout.val()});
     currIncrIndex = av.variable(0);
