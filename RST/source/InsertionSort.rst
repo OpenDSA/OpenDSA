@@ -8,6 +8,7 @@
    :prerequisites: Sorting
    :topic: Sorting
    :short_name: InsertionSort
+   :exercises: InssortCON1, InssortCON2, InssortCON3, InssortPRO, InssortSumm
 
 .. _InsertionSort:
 

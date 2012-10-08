@@ -37,7 +37,8 @@ class avmetadata(Directive):
                    'title': directives.unchanged,
                    'prerequisites': directives.unchanged,
                    'topic': directives.unchanged,
-                   'short_name': directives.unchanged, 
+                   'short_name': directives.unchanged,
+                   'exercises': directives.unchanged,    
                    }
 
     def run(self):
@@ -55,6 +56,7 @@ This is some text.
    :prerequisites: 
    :topic:
    :short_name:
+   :exercises:   
 
 This is some more text.
 """

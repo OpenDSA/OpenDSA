@@ -8,6 +8,7 @@
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
    :short_name: BubbleSort
+   :exercises: BubsortCON1, BubsortCON2, BubsortPRO, BubsortSumm
 
 .. _BubbleSort:
 
