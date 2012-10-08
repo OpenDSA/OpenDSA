@@ -22,7 +22,7 @@ By now you have seen many analyses for algorithms.
 These analyses generally define the upper and lower bounds for
 algorithms in their worst and average cases.
 For many of the algorithms presented so far, analysis has been easy.
-This module considers a more difficult task &mdash; an analysis for
+This module considers a more difficult task: An analysis for
 the cost of a *problem* as opposed to an *algorithm*.
 The upper bound for a problem can be defined as the asymptotic cost of
 the fastest known algorithm.
@@ -42,7 +42,7 @@ From this we see that the sorting problem cannot be solved by
 takes at least :math:`n` steps to read and write the :math:`n` values
 to be sorted.
 Alternatively, any sorting algorithm must at least look at every input
-vale to recognize whether the input values are in sort order.
+value to recognize whether the input values are in sorted order.
 So, based on our current knowledge of sorting algorithms and the
 size of the input, we know that the *problem* of sorting is
 bounded by :math:`\Omega(n)` and :math:`O(n \log n)`.
@@ -63,8 +63,10 @@ This proof is important for three reasons.
 First, knowing that widely used sorting algorithms are asymptotically
 optimal is reassuring.
 In particular, it means that you need not bang your head against
-the wall searching for an :math:`O(n)` sorting algorithm (or at least
-not one in any way based on key comparisons).
+the wall searching for an :math:`O(n)` sorting algorithm.
+(Or at least not one that is in any way based on key comparisons.
+But it is hard to imagine how to sort without any comparisons.
+Even Radix Sort is does comparisons, though in quite a different way.)
 Second, this proof is one of the few non-trivial lower-bounds proofs
 that we have for any problem; that is, this proof provides one of the
 relatively few instances where our lower bound is tighter than simply
@@ -72,11 +74,11 @@ measuring the size of the input and output.
 As such, it provides a useful model for proving lower bounds on other
 problems.
 Finally, knowing a lower bound for sorting gives us a lower
-bound in turn for other problems whose solution could be used as the
-basis for a sorting algorithm.
+bound in turn for other problems whose solution could be made to work
+as the basis for a sorting algorithm.
 The process of deriving asymptotic bounds for one problem from the
 asymptotic bounds of another is called a :dfn:`reduction`,
-a concept further explored in Module <ODSAref "Reduction" />.
+a concept further explored in Module :numref:`<Reductions>`.
 
 Except for the Radix Sort and Binsort, all of the sorting algorithms
 we have studied make decisions based on the direct comparison of two
@@ -88,7 +90,7 @@ In contrast, Radix Sort has no direct comparison of key values.
 All decisions are based on the value of specific digits in the key
 value,
 so it is possible to take approaches to sorting that do not involve
-key comparisons.
+direct key comparisons.
 Of course, Radix Sort in the end does not provide a more efficient
 sorting algorithm than comparison-based sorting.
 Thus, empirical evidence suggests that comparison-based sorting is a
@@ -125,7 +127,7 @@ this is modeled as a left branch in the decision tree.
 In the case where the first value is greater than the second, the
 algorithm takes the right branch.
 
-Figure <ODSAref "Decision" /> shows the decision tree that models
+Figure :num:`Figure #Dectree` shows the decision tree that models
 Sort Insertion on three input values.
 The first input value is labeled X, the second Y, and the third Z.
 They are initially stored in positions 0, 1, and 2, respectively,
@@ -138,14 +140,15 @@ For three values, there are :math:`n! = 6` permutations.
 Thus, the root node of the decision tree lists all six permutations
 that might be the eventual result of the algorithm.
 
-.. _dectree:
+.. _Dectree:
 
 .. figure:: Images/DecTree.png
    :width: 400
+   :align: center
+   :figwidth: 90%
    :alt: A decision tree for Insertion Sort
 
-   <ODSAfig "Decision" />
-   Decision tree for Insertion Sort when processing three values
+   A decision tree to model Insertion Sort when processing three values
    labeled X, Y, and Z, initially stored at positions 0, 1, and 2,
    respectively, in input array ``A``.
 
@@ -170,8 +173,8 @@ Let us assume for the moment that Y is less than X and so the
 left branch is taken.
 In this case, Insertion Sort swaps the two values.
 At this point the array stores YXZ.
-Thus, in Figure <ODSA "Decision" /> the left child of the root shows
-YXZ above the line.
+Thus, in Figure :num:`Figure #Dectree` the left child of the root
+shows YXZ above the line.
 Next, the third value in the array is compared against the second
 (i.e., Z is compared with X).
 Again, there are two possibilities.
@@ -222,7 +225,7 @@ algorithm could be.
 However, we are interested here in knowing what the *best*
 sorting algorithm could have as its minimum cost in the worst
 case.
-In other words, we would like to know what is the \emph{smallest}
+In other words, we would like to know what is the *smallest*
 depth possible for the *deepest* node in the tree for any
 sorting algorithm.
 
@@ -251,8 +254,9 @@ There are :math:`n!` permutations for a set of :math:`n` numbers.
 
 Because there are at least :math:`n!` nodes in the tree, we know that
 the tree must have :math:`\Omega(\log n!)` levels.
-From Stirling's approximation, we know :math:`\log n!` is
-in :math:`\Omega(n \log n)`.
+One way to find the value of :math:`\log n!` is from
+Stirling's approximation, from which we can deduce that
+:math:`\log n!` is in :math:`\Omega(n \log n)`.
 The decision tree for any comparison-based sorting algorithm must
 have nodes :math:`\Omega(n \log n)` levels deep.
 Thus, in the worst case, any such sorting algorithm must require
@@ -264,9 +268,9 @@ the worst case.
 Because any sorting algorithm requires :math:`\Omega(n \log n)` running
 time,
 the problem of sorting also requires :math:`\Omega(n \log n)` time.
-We already know of sorting algorithms with \Onlogn\ running
+We already know of sorting algorithms with :math:`O(n \log n)` running
 time, so we can conclude that the problem of sorting requires
 :math:`\Theta(n \log n)` time.
 As a corollary, we know that no comparison-based sorting algorithm can
 improve on existing :math:`\Theta(n \log n)` time sorting algorithms by
-more than  a constant factor.
+more than a constant factor.

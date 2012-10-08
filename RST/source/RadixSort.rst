@@ -255,6 +255,6 @@ Thus, Radix Sort truly does :math:`\Omega(n \log n)` work to process
 
 Now for some review questions.
 
-.. avembed:: Exercises/Development/RadixSortSumm.html
+.. avembed:: Exercises/Sorting/RadixSortSumm.html
    :showbutton: hide
    :title: Radix Sort Review Questions

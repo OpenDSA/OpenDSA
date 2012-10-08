@@ -118,6 +118,7 @@ Algorithms
 
    Knapsack
    EditDistance
+   Reductions
 
 Appendix
 --------

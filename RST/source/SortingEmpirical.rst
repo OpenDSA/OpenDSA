@@ -26,6 +26,17 @@ Nor does asymptotic analysis say anything about which algorithm is
 best for sorting small lists.
 For answers to these questions, we can turn to empirical testing.
 
+.. _SortCompTable:
+
+.. figure:: Images/PtrSwap.png
+   :width: 1
+   :align: center
+   :figwidth: 90%
+
+   Empirical comparison of sorting algorithms run on a 3.4 GHz Intel
+   Pentium 4 CPU running Linux.
+   All times shown are milliseconds.
+
 .. math::
 
    \begin{array}{l|rrrrrrrr}
@@ -49,34 +60,24 @@ For answers to these questions, we can turn to empirical testing.
    \hline
    \end{array}
 
-.. _SortCompTable:
-
-<ODSAfig "SortComp" />
-Empirical comparison of sorting algorithms run on a 3.4 GHz Intel
-Pentium 4 CPU running Linux.
-Shellsort, Quicksort, Mergesort, and Heapsort each are shown with
-regular and optimized versions.
-Radix Sort is shown for 4- and 8-bit-per-pass versions.
-All times shown are milliseconds.
-
-This table shows timing results for
+Table :num:`#SortCompTable` shows timing results for
 actual implementations of the sorting algorithms presented in this
 chapter.
 The algorithms compared include Insertion Sort, Bubble Sort,
 Selection Sort, Shellsort, Quicksort, Mergesort, Heapsort and
 Radix Sort.
 Shellsort shows both the basic version from
-Module <ODSAref "ShellSort" />
+Module :numref:`<Shellsort>`
 and another with increments based on division by three.
 Mergesort shows both the basic implementation from
-Section <ODSAref "MergeSort" /> and the optimized version
+Module :numref:`<MergesortImpl>` and the optimized version
 (including calls to Insertion Sort for lists of length below nine).
 For Quicksort, two versions are compared: the basic implementation
-from Module <ODSAref "QuickSort" /> and an optimized version
+from Module :numref:`<Quicksort>` and an optimized version
 that does not partition sublists below length nine (with Insertion
 Sort performed at the end).
 The first Heapsort version uses the class definitions from
-Module <ODSAref "HeapSec" />.
+Module :numref:`<Heaps>`.
 The second version removes all the class definitions and operates
 directly on the array using inlined code for all access functions.
 
@@ -108,9 +109,9 @@ large arrays.
 Insertion Sort is by far the best of this group, unless the array is
 already reverse sorted.
 Shellsort is clearly superior to any of these :math:`O(n^2)` sorts for
-lists of even 100 elements.
+lists of even 100 records.
 Optimized Quicksort is clearly the best overall algorithm for all but
-lists of 10 elements.
+lists of 10 records.
 Even for small arrays, optimized Quicksort performs well because
 it does one partition step before calling Insertion Sort.
 Compared to the other :math:`O(n \log n)` sorts, unoptimized Heapsort
@@ -124,7 +125,7 @@ noticeable improvement for larger array sizes.
 Overall, Radix Sort is a surprisingly poor performer.
 If the code had been tuned to use bit shifting of the key value, it
 would likely improve substantially;
-but this would seriously limit the range of element types that the
+but this would seriously limit the range of record types that the
 sort could support.
 
 Here are a few multiple choice questions that ask you to
