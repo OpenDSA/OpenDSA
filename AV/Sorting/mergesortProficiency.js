@@ -84,7 +84,6 @@
     userAnswerDepth = av.ds.array(userAnswerDepth);
     userAnswerDepth.hide();
 
-    av.umsg("Directions: Click on a numbered block to select it.  Then click on an empty block where it should be placed.");
     av.forward();
     av._undo = [];
     return [userAnswerValue, userAnswerDepth];

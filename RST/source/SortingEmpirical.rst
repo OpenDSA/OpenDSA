@@ -126,3 +126,10 @@ If the code had been tuned to use bit shifting of the key value, it
 would likely improve substantially;
 but this would seriously limit the range of element types that the
 sort could support.
+
+Here are a few multiple choice questions that ask you to
+compare the sorting algorithms that we learned about in this chapter.
+
+.. avembed:: Exercises/Sorting/SortAlgCompSumm.html
+   :showbutton: hide
+   :title: Algorithm Comparison
