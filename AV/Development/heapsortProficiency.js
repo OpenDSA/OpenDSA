@@ -55,11 +55,11 @@ function model(modeljsav) {
     modelbh.swap(0, modelbh.heapsize() - 1);
     modeljsav.step();
     modelbh.heapsize(modelbh.heapsize() - 1);
-    modeljsav.umsg("<br/>..decrement the heap size", {preserve: true});
+    modeljsav.umsg("<br/>...decrement the heap size", {preserve: true});
     modelbh.css(modelbh.heapsize(), {"background-color": "#ddd"});
     modeljsav.stepOption("grade", true);
     modeljsav.step();
-    modeljsav.umsg("<br/>..and restore the heap property", {preserve: true});
+    modeljsav.umsg("<br/>...and restore the heap property", {preserve: true});
     modelbh.heapify(1);
     modeljsav.umsg("");
     modeljsav.step();
