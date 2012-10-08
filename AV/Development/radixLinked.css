@@ -1,0 +1,61 @@
+#container {
+  width: 860px;
+  height:720px;
+  border: 1px solid black;
+  background-color: #efe;
+  padding: 10px;
+  overfow: hidden;
+}
+
+div h1 {
+  background-color: #efe;
+  margin: 5px;
+}
+.jsavlistnode {
+  width: 53px;
+  height: 40px;
+}
+.jsavlist .jsavedge {
+  stroke-width: 2;
+
+}
+
+.jsavcontrols {
+  margin-top: -25px;
+}
+
+.jsavcontainer {
+  background-color: #eed;
+  border: 0;
+  width: 845px;
+  height:575px;
+}
+
+.jsavcounter {
+  position: absolute;
+  width: 300px;
+  margin-top: -20px;
+}
+
+.jsavarray {
+  padding-left:0;
+}
+
+p.jsavoutput.jsavline {
+  height: 30px;
+  margin: 0;
+}
+
+#about {
+  float: right;
+}
+
+a.jsavsettings {
+  display: block;
+  margin-top: -1px;
+  margin-left: 10px;
+}
+
+form {
+  clear: both;
+}

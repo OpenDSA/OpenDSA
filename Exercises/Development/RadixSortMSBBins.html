@@ -628,14 +628,15 @@
 
 	<div class="exercise">
   		<div class="vars">
-    			<var id="arr_size">randRange( 6, 12 )</var>
+    			<var id="arr_size">randRange( 6, 10 )</var>
     			<var id="JSAV">initJSAV(arr_size)</var>
 		</div>
 
   		<div class="problems">
     			<div>
       				<div class="question">
-				<p> Select appropriate bins for each element using its MSB </p>
+				<p> Select appropriate bins for each
+				record using its leftmost digit</p>
 				<p align="left" class="jsavexercisecontrols"><input id="reset" type="button" value="Reset" />
 				<div id="jsav"></div>
       			</div>
@@ -646,10 +647,6 @@
 				<div class="validator-function">
 	  				return checkAnswer (arr_size);
 				</div>
-      			</div>
-     
-		 	<div class="hints">
-				<p> Given elements belong to bin with id same as its MSB </p>
       			</div>
     		</div>
   	</div>

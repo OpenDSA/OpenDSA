@@ -20,8 +20,9 @@ Radix Sort
 
 The major problem with Binsort is that it does not work so well for a
 large keyrange.
-Fortunately, there is a way to keep the number of bins and the related
-processing small while allowing the cleanup sort to be based on Binsort.
+Fortunately, there is a way to keep the number of bins small and the
+related processing relatively cheap while using the idea of binning
+the records with similar key values.
 Consider a sequence of records with keys in the range 0 to 99.
 If we have ten bins available, we can first assign records to bins by
 taking their key value modulo 10.
@@ -29,8 +30,9 @@ Thus, every key will be assigned to the
 bin matching its rightmost decimal digit.
 We can then take these records from the bins **in order**,
 and reassign them to the bins
-on the basis of their leftmost (10's place) digit (define values in
-the range 0 to 9 to have a leftmost digit of 0).
+on the basis of their leftmost (10's place) digit.
+We will define values in the range 0 to 9 to have a leftmost digit of
+0.
 In other words, assign the :math:`i`'th record from array ``A`` to
 a bin using the formula ``A[i]/10``.
 If we now gather the values from
@@ -41,7 +43,7 @@ We can see this process in the following visualization.
    :showbutton: show
    :title: Linked Radix Sort
 
-In this example, we have :math:`r=10` bins and :math:`n=12` keys in
+In this example, we have :math:`r=10` bins and key values in
 the range 0 to :math:`r^2-1`.
 The total computation is :math:`\Theta(n)`, because we look at each
 record and each bin a constant number of times.
@@ -62,11 +64,13 @@ keys' digit values working from the rightmost digit to the leftmost.
 If there are :math:`k` digits, then this requires that we assign keys to
 bins :math:`k` times.
 
-Here are some practice exercises.
+Here is a practice exercise for placing keys based on the rightmost digit.
 
 .. avembed:: Exercises/Development/RadixSortLSBBins.html
    :showbutton: hide
    :title: Radix Sort Practice 1
+
+Here is a practice exercise for placing keys based on the leftmost digit.
 
 .. avembed:: Exercises/Development/RadixSortMSBBins.html
    :showbutton: hide
@@ -74,10 +78,11 @@ Here are some practice exercises.
 
 As with Mergesort, an efficient implementation of Radix Sort is
 somewhat difficult to achieve.
-In particular, we would prefer to sort
-an array of values and avoid processing linked lists.  If we know how
-many values will be in each bin, then an auxiliary array of size
-:math:`r` can be used to hold the bins.
+In particular, we would prefer to sort an array of values and avoid
+processing linked lists.
+If we knew how  many values would be in each bin, then an auxiliary
+array of size :math:`r` can be used to define these lengths and guide
+us to were each one starts in the output array.
 For example, if during the first pass the 0 bin will receive three
 records and the 1 bin will receive five records, then we could simply
 reserve the first three array positions for the 0 bin and the next
@@ -138,7 +143,9 @@ Because :math:`r` is the size of the base, it might be rather small.
 One could use base 2 or 10.
 Base 26 would be appropriate for sorting character strings.
 For now, we will treat :math:`r` as a constant value and ignore it
-for the purpose of determining asymptotic complexity.
+for the purpose of determining asymptotic complexity, this value does
+not change with the size of :math:`n`.
+
 Variable :math:`k` is related to the key range:
 It is the maximum number of digits that a
 key may have in base :math:`r`.
@@ -160,16 +167,18 @@ represent :math:`N` distinct key values, we know that
 :math:`k \geq \log_r N`.
 
 Now, consider the situation in which no keys are duplicated.
-If there are :math:`n` unique keys (:math:`n = N`), then it requires
-:math:`n` distinct code values to represent them.
-Thus, :math:`k \geq \log_r n`.
+If there are :math:`n` unique keys then :math:`n = N`.
+It would require :math:`n` distinct values to represent them.
+So now it takes a minimum of :math:`\log_r n` base :math:`r` digits to
+represent the :math:`n` distinct key values.
+This means that :math:`k \geq \log_r n`.
 Because it requires *at least* :math:`\Omega(\log n)` digits
 (within a constant factor) to distinguish between the :math:`n`
 distinct keys, :math:`k` is in :math:`\Omega(\log n)`.
 This yields an asymptotic complexity of :math:`\Omega(n \log n)` for 
 Radix Sort to process :math:`n` distinct key values.
 
-It is possible that the key range is much larger;
+It is possible that the key range is much larger.
 :math:`\log_r n` bits is merely the best case possible for :math:`n`
 distinct values.
 Thus, the :math:`\log_r n` estimate for :math:`k` could be overly
@@ -178,8 +187,8 @@ The moral of this analysis is that, for the general case of :math:`n`
 distinct key values, Radix Sort is at best a :math:`\Omega(n \log n)`
 sorting algorithm.
 
-Radix Sort can be much improved by making base :math:`r` be as large
-as possible.
+Radix Sort's running time can be much improved (by a constant factor)
+if we make base :math:`r` be as large as possible.
 Consider the case of an integer key value.
 Set :math:`r = 2^i` for some :math:`i`.
 In other words, the value of :math:`r` is related to the
@@ -198,7 +207,7 @@ only if the number of records is about 64K or greater.
 In other words, the number of records must be large compared to the
 key size for Radix Sort to be efficient.
 In many sorting applications, Radix Sort can be tuned in this way to
-give good performance.
+give better performance.
 
 Radix Sort depends on the ability to make a fixed number of multiway
 choices based on a digit value, as well as random access to the bins.
@@ -210,26 +219,26 @@ In particular, Radix Sort will need to be careful about deciding when
 the "last digit" has been found to distinguish among real numbers,
 or the last character in variable length strings.
 Implementing the concept of Radix Sort with the trie data
-structure (Module <ODSAref "Trie" />) is most appropriate for these
+structure (Module :numref:`<Trie>`) is most appropriate for these
 situations.
 
 At this point, the perceptive reader might begin to question our
 earlier assumption that key comparison takes constant time.
 If the keys are "normal integer" values stored in, say, an integer
 variable, what is the size of this variable compared to :math:`n`?
-In fact, it is almost certain that 32 (the number of bits in a
-standard ``int`` variable) is
-greater than :math:`\log n` for any practical computation.
+In fact, it is almost certain that either 32 or 64
+(the number of bits in a standard ``int`` variable on most computers)
+is greater than :math:`\log n` for any practical computation.
 In this sense, comparison of two long integers requires
 :math:`\Omega(\log n)` work.
 
 Computers normally do arithmetic in units of a particular size, such
-as a 32-bit word.
+as a 32-bit or 64-bit word.
 Regardless of the size of the variables, comparisons use this
 native word size and require a constant amount of time since the
 comparison is implemented in hardware.
 In practice, comparisons of two 32-bit values take constant time, even
-though 32 is much greater than :math:`\log n`.
+though 32 is typically much greater than :math:`\log n`.
 To some extent the truth of the proposition that there are constant
 time operations (such as integer comparison) is in the eye of the
 beholder.

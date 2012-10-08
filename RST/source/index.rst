@@ -98,6 +98,7 @@ Trees
    BinaryHeap
    Huffman
    TreeExer
+   Trie
 
 Graphs
 ------
