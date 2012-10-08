@@ -86,3 +86,9 @@ the array is smaller than a value defined by ``THRESHOLD``.
 .. literalinclude:: ../../SourceCode/Processing/Sorting/MergesortOpt/MergesortOpt.pde
    :start-after: /* *** ODSATag: MergesortOpt *** */
    :end-before: /* *** ODSAendTag: MergesortOpt *** */
+
+Now here are some review questions.
+
+.. avembed:: Exercises/Sorting/MergeImplSumm.html
+   :showbutton: hide
+   :title: Mergesort Implementation Questions
