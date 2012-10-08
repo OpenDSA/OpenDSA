@@ -73,6 +73,7 @@
   // Execute the "Run" button function
   function runIt() {
     var newSize = $('#arraysize').val();
+    var i;
 
     if (processArrayValues()) { // if false, we got junk user should fix
       var initData = {};
