@@ -71,7 +71,7 @@ function model(modeljsav) {
 }
     
 function clickHandler(index) {
-  if (bh.heapsize() === 0) {
+  if (bh.heapsize() === 0 || index >= bh.heapsize()) {
     return;
   }
   jsav._redo = []; // clear the forward stack, should add a method for this in lib
@@ -79,6 +79,10 @@ function clickHandler(index) {
   if (sIndex === -1) { // if first click
     bh.css(index, {"font-size": "145%"});
     swapIndex.value(index);
+    jsav.step();
+  } else if (sIndex === index) {
+    bh.css(index, {"font-size": "100%"});
+    swapIndex.value(-1);
     jsav.step();
   } else { // second click will swap
     bh.swap(sIndex, index, {});
