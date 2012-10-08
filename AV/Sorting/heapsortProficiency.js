@@ -1,7 +1,9 @@
 "use strict";
+/*global alert*/
 var initData, bh,
     settings = new JSAV.utils.Settings($(".jsavsettings")),
     jsav = new JSAV("HeapsortProficiency", {settings: settings}),
+    exercise,
     swapIndex;
 
 jsav.recorded();
@@ -11,7 +13,7 @@ function init() {
     bh.clear();
   }
   initData = JSAV.utils.rand.numKeys(10, 100, nodeNum);
-  bh = jsav.ds.binheap(initData, { nodegap: 25, compare: function(a, b) { return b - a; }});
+  bh = jsav.ds.binheap(initData, { nodegap: 25, compare: function (a, b) { return b - a; }});
   swapIndex = jsav.variable(-1);
   jsav.displayInit();
   return bh;
@@ -35,10 +37,10 @@ function fixState(modelHeap) {
 }
     
 function model(modeljsav) {
-  var modelbh = modeljsav.ds.binheap(initData, {nodegap: 20, compare: function(a, b) { return b - a;}});
+  var modelbh = modeljsav.ds.binheap(initData, {nodegap: 20, compare: function (a, b) { return b - a; }});
   modelbh.origswap = modelbh.swap; // store original heap grade function
   // set all steps gradeable that include a swap
-  modelbh.swap = function(ind1, ind2, opts) {
+  modelbh.swap = function (ind1, ind2, opts) {
     this.origswap(ind1, ind2, opts);
     this.jsav.stepOption("grade", true);
   };
@@ -93,26 +95,26 @@ function clickHandler(index) {
 }
 
   // Process About button: Pop up a message with an Alert
-  function about() {
-    alert("Heapsort Proficiency Exercise\nWritten by Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
-  }
+function about() {
+  alert("Heapsort Proficiency Exercise\nWritten by Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+}
 
-var exercise = jsav.exercise(model, init, { css: "background-color" },
-                                { feedback: "continuous",
-                                  controls: $('.jsavexercisecontrols'),
-                                  fixmode: "fix",
-                                  fix: fixState });
+exercise = jsav.exercise(model, init, { css: "background-color" },
+                         { feedback: "continuous",
+                           controls: $('.jsavexercisecontrols'),
+                           fixmode: "fix",
+                           fix: fixState });
 exercise.reset();
     
-$(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
+$(".jsavcontainer").on("click", ".jsavarray .jsavindex", function () {
   var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
   clickHandler(index);
 });
-$(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
+$(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function () {
   var index = $(this).data("jsav-heap-index") - 1;
   clickHandler(index);
 });
-$("#decrement").click(function() {
+$("#decrement").click(function () {
   if (bh.heapsize() === 0) {
     alert("Heapsize is already zero, cannot decrement!");
     return;
