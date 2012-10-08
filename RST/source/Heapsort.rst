@@ -154,6 +154,6 @@ Can you reproduce its behavior?
 
 Now here are summary questions.
 
-.. avembed:: Exercises/Development/HeapSortSumm.html
+.. avembed:: Exercises/Sorting/HeapsortSumm.html
    :showbutton: hide
    :title: Heapsort Review

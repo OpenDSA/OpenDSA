@@ -2,10 +2,14 @@
 <entry>
 <id>http://algoviz.org/OpenDSA/AV/Sorting/ShellsortProficiency.html</id>
 <title type='text'>ShellSort Proficiency Exercise</title>
+<description type='text'>Heapsort Proficiency Exercise</description>
+<type>pe</type>  
 <width>823</width>
 <height>502</height>
 <author>
 <name>OpenDSA</name>
 <uri>http://algoviz.org/OpenDSA/</uri>
 </author>
+<covers>sorting</covers>
+<streak>.9</streak>
 </entry>
