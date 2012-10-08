@@ -57,9 +57,11 @@ source/conf.py:
 
 makeconf: source/conf.py
 
-html: makeconf
+preprocessor:
 	-mkdir -p $(BUILDDIR)
 	python preprocessor.py source/ $(BUILDDIR)/html
+
+html: preprocessor makeconf
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	cp source/knowledgemap.html $(BUILDDIR)/html
 	python preprocessor.py -p   source/ $(BUILDDIR)/html 
