@@ -18,26 +18,26 @@
 {% macro login() %}  
 <a id="logon" style="float:right;color:red;margin:10px 10px auto"  name="#login-box" class="login-window" href="#">Login</a>    
 <div id="login-box" class="login-popup">
-        <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
-          <form method="post" class="signin" name="signin" action="#">
-                <fieldset class="textbox">
-            	<label class="username">
-                <span>Username or email</span>
-                <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
-                </label>
-                <label class="password">
-                <span>Password</span>
-                <input id="password" name="password" value="" type="password" placeholder="Password">
-                </label>
-                <button class="submit-button" type="button">Sign in</button>
-                <p>
-                <a class="forgot" href="#">Forgot your password?</a>
-                </p>        
-                <p>
-                <a class="signup" href="#">Sign Up</a>
-                </p>   
-                </fieldset>
-          </form>
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  <form method="post" class="signin" name="signin" action="#">
+    <fieldset class="textbox">
+      <label class="username">
+        <span>Username or email</span>
+        <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+      </label>
+      <label class="password">
+        <span>Password</span>
+        <input id="password" name="password" value="" type="password" placeholder="Password">
+      </label>
+      <button id="login-submit-button" class="submit-button" type="button">Sign in</button>
+      <p>
+        <a class="forgot" href="#">Forgot your password?</a>
+      </p>        
+      <p>
+        <a class="signup" href="#">Sign Up</a>
+      </p>   
+    </fieldset>
+  </form>
 </div>
 {% endmacro %}
 
