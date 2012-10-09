@@ -49,6 +49,7 @@ class modPreReq:
       self.creation_date = ''
       self.last_modified =''
       self.covers=''
+      self.exercises = []  #list of exercises in the module.
       p = re.compile('(%s)' % ('|'.join([c for c in ws])))
       flag = 0
       cpt=0   
@@ -78,6 +79,9 @@ class modPreReq:
          if ':author:' in line:
             str =  re.split('author:', line, re.IGNORECASE)[1]
             self.author = p.sub('',str.replace(' ','_')).replace('_',' ')     
+         if ':exercises:' in line:
+            str =  re.split('exercises:', line, re.IGNORECASE)[1]
+            self.exercises = p.sub('',str).split(',')
          if ':topic:' in line:
             str =  re.split('topic:', line, re.IGNORECASE)[1]
             self.covers =  p.sub('',str).split(',')        
@@ -164,6 +168,8 @@ def generateJSON(modRoster, modDest):
           jsonString = jsonString +'"author": "'+k.author+'",'
           pq= ('-'.join(map(str,k.prereq)), '')[k.prereqNum==0]
           jsonString = jsonString +'"prerequisites": "'+ pq+'",'
+          pe = ','.join(k.exercises)   
+          jsonString = jsonString +'"exercise_list": "'+ pe+'",'    
           jsonString = jsonString +'"covers": "'+",".join(k.covers)+'",'
           jsonString = jsonString +'"creation_date": "'+k.creation_date+'",'
           #jsonString = jsonString +'"seconds_per_fast_problem": %s,'%k.seconds_per_fast_problem
@@ -310,7 +316,7 @@ def updateTOC(args):
          prefix = re.split('prefix:', lins, re.IGNORECASE)[1]     
          #break
       if ':start:' in lins:  
-         sectnum = int(re.split('start:', lins, re.IGNORECASE)[1])   
+         sectnum = int(re.split('start:', lins, re.IGNORECASE)[1])     
          start = True  
     if directive==0:
        print bcolors.FAIL + 'Error: No .. sectnum:: or .. chapnum:: directive in index.rst. Please include the directive and try again.'+bcolors.ENDC
@@ -399,7 +405,7 @@ def updateTOC(args):
                 for i in range(1,7):      
                    if '<h%s>' %i in idxLine and td==0 and pagename != 'index':    
                       par  = re.split('<h%s>'%i,re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1] 
-                      par1 = '%s.' %chap[1] + par  
+                      par1 = '%s.' %data[pagename][1] + par  
                       idxLine = idxLine.replace(par,par1)  
                 if td == 1 and pagename != 'index':
                     if 'a class="headerlink"' in idxLine:
@@ -458,6 +464,27 @@ def isSection(txt):
       return True
    else:
       return False  
+
+def isIncludeChapter(txt):   
+   if txt.startswith('='):
+      return True  
+   else:  
+      return False
+
+
+def getSectionStartNumb(indexfile):
+
+   directive = 0   
+   iFile = open(indexfile,'r')
+   iLine = iFile.readlines()
+   iFile.close()
+   for lins in iLine:
+      if '.. sectnum::' or '.. chapnum::' in lins:
+         directive=1
+      if ':start:' in lins and directive == 1 :
+         sectnum = int(re.split('start:', lins, re.IGNORECASE)[1])
+         return sectnum-1     
+   return 0    
  
 def enumFile(folder, folder1):
 
@@ -470,7 +497,7 @@ def enumFile(folder, folder1):
    chap = ''  
    chap_mod = {} 
    t = 0
-   section = 0     
+   section = getSectionStartNumb(folder+'index.rst')       
    chapter = 1    
    flag = -1   
 
@@ -491,11 +518,27 @@ def enumFile(folder, folder1):
         if flnm in dirlist and not isSection(iLine1[t+1]):            
            chaplist =[] 
            filelist.append(folder+flnm+'.rst')
-           config.table[flnm]='%s.%s'%(section,chapter) 
-           chaplist.append(chap.rstrip('\n'))  
-           chaplist.append(section)  
-           chap_mod[flnm]= chaplist         
-           chapter+=1
+           #in case we have multiple chapter in a single file    
+           iFile2 = open(folder+flnm+'.rst','r')
+           iLine2 = iFile2.readlines()
+           iFile2.close()  
+           line_number = 0
+           is_first_chapter = True 
+           for mod in iLine2:
+              if isIncludeChapter(mod): 
+                 if is_first_chapter:     
+                    config.table[flnm]='%s.%s'%(section,chapter)
+                    chaplist.append(chap.rstrip('\n'))
+                    chaplist.append(section)  
+                    chap_mod[flnm]= chaplist        
+                    is_first_chapter = False   
+                 else:  
+                    config.table[flnm+'#'+iLine2[line_number-1].rstrip('\n').replace(' ','-').lower()]='%s.%s'%(section,chapter)
+                    chaplist.append(chap.rstrip('\n'))
+                    chaplist.append(section)  
+                    chap_mod[flnm+'#'+iLine2[line_number].rstrip('\n').replace(' ','-').lower()]= chaplist  
+                 chapter+=1
+              line_number +=1      
      if isSection(flnm):          
            section +=1
            chapter = 1

@@ -85,7 +85,7 @@
         {%- if pagename=="index" -%}
 	<h2 class="heading" ><span  style="margin-left: 60px;">Table Of Contents</span></h2>
 	{%- else %}
-	  <h2 class="heading" ><span  style="margin-left: 60px;">{{ title|striptags|e }}</span></h2>
+	  <h2 class="heading" ><span  style="margin-left: 60px;">{{ chapter_items[pagename] }}</span></h2>
 	{%- endif %}
 
         {%- endif %}
