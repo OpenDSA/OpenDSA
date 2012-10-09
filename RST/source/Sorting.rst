@@ -7,7 +7,7 @@
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Sorting
-   :short_name: SortingIntro
+   :short_name: Sorting
 
 .. _Sorting:
 
