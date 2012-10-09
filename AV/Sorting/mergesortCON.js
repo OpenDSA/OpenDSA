@@ -17,13 +17,13 @@
     jsavarr_answer.value(o, a.value(i));
     a.value(i, "");
     av.step();
-    av.umsg("Compare the smallest values in each list"); 
-    a.highlight(i+1);
-  }
+    av.umsg("Compare the smallest values in each list");
+    a.highlight(i + 1);
+  };
 
   var jsavarr_answer = av.ds.array(empty, {indexed: true, center: false,
                                          layout: "array"});
-  jsavarr_answer.element.css({"left": blockWidth/2, "top": 0});
+  jsavarr_answer.element.css({"left": blockWidth / 2, "top": 0});
   var jsavarr_left = av.ds.array(leftArray, {indexed: true, center: false,
                                               layout: "array"});
   jsavarr_left.element.css({"left": 0, "top": 0});
@@ -39,10 +39,10 @@
   av.umsg("The smaller value is 2 in the right list.");
   av.step();
   av.umsg("Move it to position 0 of the output list.");
-  jsavarr_answer.value(0,2);
+  jsavarr_answer.value(0, 2);
   jsavarr_right.value(0, "");
   av.step();
-  av.umsg("Continue in this way, at each step comparing the smallest values in each list"); 
+  av.umsg("Continue in this way, at each step comparing the smallest values in each list");
   jsavarr_right.highlight(1);
   move(jsavarr_right, 1, 1);
   move(jsavarr_left, 2, 0);

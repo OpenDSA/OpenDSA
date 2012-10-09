@@ -31,7 +31,7 @@
     }
     
     if ($elems.hasClass("rightarrow")) {
-      // If the selected index already has a right arrow, remove it 
+      // If the selected index already has a right arrow, remove it
       // and don't add a left arrow (will simply use the jsavarrow class)
       $elems.toggleClass("rightarrow");
     } else if (!$elems.hasClass("leftarrow")) {
@@ -52,7 +52,7 @@
     }
     
     if ($elems.hasClass("leftarrow")) {
-      // If the selected index already has a left arrow, remove it 
+      // If the selected index already has a left arrow, remove it
       // and don't add a right arrow (will simply use the jsavarrow class)
       $elems.toggleClass("leftarrow");
     } else if (!$elems.hasClass("rightarrow")) {
@@ -68,7 +68,7 @@
     var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
 
     if ($elems.hasClass("jsavarrow") && !$elems.hasClass("leftarrow") && !$elems.hasClass("rightarrow")) {
-      // A plain jsavarrow class without a left or right arrow 
+      // A plain jsavarrow class without a left or right arrow
       // class indicates both bounds are on the same element
       // Replace the shared bound indicator with a right bound indicator
       $elems.toggleClass("rightarrow");
@@ -86,7 +86,7 @@
     var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
 
     if ($elems.hasClass("jsavarrow") && !$elems.hasClass("leftarrow") && !$elems.hasClass("rightarrow")) {
-      // A plain jsavarrow class without a left or right arrow 
+      // A plain jsavarrow class without a left or right arrow
       // class indicates both bounds are on the same element
       // Replace the shared bound indicator with a left bound indicator
       $elems.toggleClass("leftarrow");
