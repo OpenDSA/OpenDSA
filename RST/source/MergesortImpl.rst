@@ -13,6 +13,8 @@
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/Sorting/mergeCON.css
+
 Implementing Mergesort
 ======================
 
@@ -72,6 +74,11 @@ approach.
    :start-after: /* *** ODSATag: Mergesort *** */
    :end-before: /* *** ODSAendTag: Mergesort *** */
 
+Here is visualization for the merge step.
+
+.. inlineav:: mergeImplCON1 slideshow
+   :output: show
+
 An optimized Mergesort implementation is shown below.
 It reverses the order of the second subarray during the initial copy.
 Now the current positions of the two subarrays work inwards from the
@@ -87,8 +94,15 @@ the array is smaller than a value defined by ``THRESHOLD``.
    :start-after: /* *** ODSATag: MergesortOpt *** */
    :end-before: /* *** ODSAendTag: MergesortOpt *** */
 
+Here is visualization for the optimized merge step.
+
+.. inlineav:: mergeImplCON2 slideshow
+   :output: show
+
 Now here are some review questions.
 
 .. avembed:: Exercises/Sorting/MergeImplSumm.html
    :showbutton: hide
    :title: Mergesort Implementation Questions
+
+.. odsascript:: AV/Sorting/mergeImplCON.js

@@ -1,3 +1,7 @@
+.jsavcontrols {
+  margin-top: -35px;
+}
+
 .jsavcontainer {
   width: 660px;
   background-color: #eed;
@@ -10,6 +14,6 @@
   height: 40px;
 }
 
-#mergesortCON1 .jsavcanvas {
+.jsavcanvas {
   height: 170px;
 }

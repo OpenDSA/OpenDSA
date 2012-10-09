@@ -1,11 +1,9 @@
 "use strict";
-/*global alert*/
-
 (function ($) {
   var blockWidth = 47;  // Width of an array element
 
-  var leftArray = [4, 8, 11, 20];
-  var rightArray = [2, 3, 17, 25, 30];
+  var leftArray = [4, 8, 11, 25, 30];
+  var rightArray = [2, 3, 17, 20];
   var empty = [];
   empty.length = 9;
   var av = new JSAV("mergesortCON1");
@@ -30,7 +28,7 @@
                                               left: answerLeftPosition - blockWidth / 2});
   var jsavarr_right = av.ds.array(rightArray, {indexed: true, center: false,
                                                 layout: "array",
-                                                left: blockWidth * 4.5 + answerLeftPosition });
+                                                left: blockWidth * 5.5 + answerLeftPosition });
   av.umsg("We now merge two sorted lists into one.");
   av.displayInit();
   av.umsg("First compare the smallest values in each list");
@@ -50,8 +48,8 @@
   move(jsavarr_left, 3, 1);
   move(jsavarr_left, 4, 2);
   move(jsavarr_right, 5, 2);
-  move(jsavarr_left, 6, 3);
-  move(jsavarr_right, 7, 3);
-  move(jsavarr_right, 8, 4);
+  move(jsavarr_right, 6, 3);
+  move(jsavarr_left, 7, 3);
+  move(jsavarr_left, 8, 4);
   av.recorded();
 }(jQuery));
