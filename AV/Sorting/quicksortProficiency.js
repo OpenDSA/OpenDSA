@@ -305,7 +305,7 @@
         break;
       }
 
-      //Highlight elements to swap
+      // Highlight elements to swap
       arr.swap(l, r);
     }
 
