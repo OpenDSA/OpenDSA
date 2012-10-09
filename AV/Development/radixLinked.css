@@ -10,6 +10,8 @@
 div h1 {
   background-color: #efe;
   margin: 5px;
+  margin-top: -25px;
+  text-align: center;
 }
 .jsavlistnode {
   width: 53px;
@@ -17,7 +19,6 @@ div h1 {
 }
 .jsavlist .jsavedge {
   stroke-width: 2;
-
 }
 
 .jsavcontrols {
@@ -25,7 +26,7 @@ div h1 {
 }
 
 .jsavcontainer {
-  background-color: #eed;
+  background-color: #efe;
   border: 0;
   width: 845px;
   height:575px;
@@ -38,10 +39,10 @@ div h1 {
 }
 
 .jsavarray {
-  padding-left:0;
+  padding-left: 0;
 }
 
-p.jsavoutput.jsavline {
+.jsavline {
   height: 30px;
   margin: 0;
 }
@@ -50,7 +51,7 @@ p.jsavoutput.jsavline {
   float: right;
 }
 
-a.jsavsettings {
+.jsavsettings {
   display: block;
   margin-top: -1px;
   margin-left: 10px;

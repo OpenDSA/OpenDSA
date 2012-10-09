@@ -10,9 +10,8 @@
 <body>
 <div id="container">
   <input type="button" id="about" name="about" value="About" />
-  <a class="jsavsettings" href="#">Settings</a>
-  <input type="button" id="help" name="help" value="Help" />
-  <h1 align="center" style="margin-top: -25px;">Radix Sort Linked List Visualization</h1>
+  <a id="settings" class="jsavsettings" href="#">Settings</a>
+  <h1>Radix Sort Linked List Visualization</h1>
 
   <form id="ssperform">
     <label for="arraysize">&nbsp;Array size:&nbsp;</label>
@@ -24,7 +23,7 @@
       <option value = 9>9</option>
       <option value = 10>10</option>
     </select>
-	  
+    
     <!-- Number of Digits -->
     <label for="digitsize">&nbsp;Digits:&nbsp;</label> 
     <select id="digitsize">
@@ -35,14 +34,14 @@
       <option value = 4> 4 </option>
     </select>
     <p>
-      <input type="button" name="run" value="Run" />
-      <input type="button" name="reset" value="Reset" />
+      <input type="button" id="run" name="run" value="Run" />
+      <input type="button" id="reset" name="reset" value="Reset" />
       <label for="arrayValues">&nbsp;Array values:&nbsp;</label>
       <input size="60" name="arrayValues" id="arrayValues" type="text" 
-	     placeholder="Type space-separated values, or just hit 'run' to use random values" />
+      placeholder="Type space-separated values, or just hit 'run' to use random values" />
     </p>
   </form>
-  <div id="avcontainer">
+  <div id="radixLinked_avc" class="avcontainer">
     <span class="jsavcounter"></span>
     <div class="jsavcontrols"></div>
     <p class="jsavoutput jsavline" readonly="readonly"></p>
@@ -58,6 +57,7 @@
 <script src="../../JSAV/lib/jquery.transform.light.js"></script>
 <script src="http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"></script>
 <script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/ODSA.js"></script>
 <script src="radixLinked.js"></script>
 </body>
 </html>
