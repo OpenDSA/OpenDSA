@@ -74,7 +74,7 @@ approach.
    :start-after: /* *** ODSATag: Mergesort *** */
    :end-before: /* *** ODSAendTag: Mergesort *** */
 
-Here is visualization for the merge step.
+Here is a visualization for the merge step.
 
 .. inlineav:: mergeImplCON1 slideshow
    :output: show
@@ -94,7 +94,7 @@ the array is smaller than a value defined by ``THRESHOLD``.
    :start-after: /* *** ODSATag: MergesortOpt *** */
    :end-before: /* *** ODSAendTag: MergesortOpt *** */
 
-Here is visualization for the optimized merge step.
+Here is a visualization for the optimized merge step.
 
 .. inlineav:: mergeImplCON2 slideshow
    :output: show
