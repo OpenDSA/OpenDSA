@@ -42,6 +42,9 @@
       userAnswerDepth = [],
       av = new JSAV(context, {settings: settings});
 
+  // Stores the various JSAV arrays created for the user to enter their solution
+  var arrays = {};
+
   av.recorded();   // we are not recording an AV with an algorithm
 
   /**
@@ -70,6 +73,7 @@
     log_exercise_init(getAVName(), desc);
 
     // Dynamically create arrays
+    arrays = {};
     initArrays(0, initialArray.length - 1, 1, 1, userAnswerDepth);
 
     // Reset the merge variables
@@ -79,10 +83,8 @@
     // it simply maintains state and is not used for display purposes
     // Need to record the order of the values and how deep in the
     // recursion they are in order to ensure a correct answer
-    userAnswerValue = av.ds.array(userAnswerValue);
-    userAnswerValue.hide();
-    userAnswerDepth = av.ds.array(userAnswerDepth);
-    userAnswerDepth.hide();
+    userAnswerValue = av.ds.array(userAnswerValue, {visible: false});
+    userAnswerDepth = av.ds.array(userAnswerDepth, {visible: false});
 
     av.forward();
     av._undo = [];
@@ -127,10 +129,15 @@
     // Dynamically create and position arrays
     var arr = av.ds.array(contents, {indexed: true, center: false,
                                       layout: "array"});
-    // Set the ID for the array
-    arr.element.attr("id", "array_" + level + "_" + column);
+    
+    var id = "array_" + level + "_" + column;
+    arrays[id] = arr;
+    
+    // Set array attributes
+    arr.element.attr("id", id);
     arr.element.attr("data-offset", left);
     setPosition(arr, level, column);
+    
     // Attach the click handler to the array
     arr.click(function (index) { clickHandler(this, index); });
 
@@ -292,8 +299,9 @@
     
     //console.log("destDepth: " + destDepth + ", destColumn: " + destColumn + ", destIndex: " + destIndex);  // FOR TESTING
 
-    var subArr1 = av.ds.array($('#array_' + (destDepth + 1) + "_" + (2 * destColumn - 1)));
-    var subArr2 = av.ds.array($('#array_' + (destDepth + 1) + "_" + (2 * destColumn)));
+    // Get the sub arrays from the hash of JSAV arrays
+    var subArr1 = arrays['array_' + (destDepth + 1) + "_" + (2 * destColumn - 1)];
+    var subArr2 = arrays['array_' + (destDepth + 1) + "_" + (2 * destColumn)];
 
     // Get the index of the first non-empty element in each sublist
     var subArr1Idx = -1;
@@ -345,7 +353,7 @@
     clickHandler(srcArr, srcIndex);
 
     // Select the destination where the element should be moved
-    var destArr = av.ds.array($('#array_' + destDepth + "_" + destColumn));
+    var destArr = arrays['array_' + destDepth + "_" + destColumn];
     clickHandler(destArr, destIndex);
   }
 

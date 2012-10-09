@@ -19,7 +19,7 @@
   // time a new set of random numbers is drawn.
   var theArray = [];
 
-  var ASize = $('#arraysize', context).val(); // Array size
+  var ASize = parseInt($('#arraysize', context).val()); // Array size
 
   var comps; // Count for comparisions
   var swaps; // Count for swaps
@@ -44,6 +44,7 @@
 
   // Initialize theArray to be size random numbers
   function initArray(size) {
+    console.log('initArray');
     var i;
     theArray.length = 0; // Out with the old
     // Give random numbers in range 0..9999
@@ -133,7 +134,10 @@
     if (!incrs) { return; }
 
     // This should only happen the very first time we run
-    if (theArray.length !== ASize) { initArray(ASize); }
+    
+    console.log('theArray.length: ' + theArray.length + " !== ASize: " + ASize + ": " + (theArray.length !== ASize));
+    console.log('typeof theArray.length: ' + (typeof theArray.length) + " typeof ASize: " + (typeof ASize));
+    if (theArray.length != ASize) { initArray(ASize); }
 
     if (!InitFlag) {
       tell("For list size of: " + ASize + "\n", "blue");
@@ -188,8 +192,7 @@
       tell("CONGRATULATIONS! You did better than divide-by-twos");
     }
     
-    // LOG
-    // ASize, incrs, theArray
+    // Log the initial state of the exercise
     var initData = {};
     initData.gen_array_len = ASize;
     initData.gen_array = theArray;
