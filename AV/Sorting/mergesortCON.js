@@ -2,7 +2,6 @@
 /*global alert*/
 
 (function ($) {
-  var rowHeight = 91;   // Space required for each row to be displayed
   var blockWidth = 47;  // Width of an array element
 
   var leftArray = [4, 8, 11, 20];
@@ -21,15 +20,17 @@
     a.highlight(i + 1);
   };
 
-  var jsavarr_answer = av.ds.array(empty, {indexed: true, center: false,
+  var jsavarr_answer = av.ds.array(empty, {indexed: true, center: true, // let this auto-center
                                          layout: "array"});
-  jsavarr_answer.element.css({"left": blockWidth / 2, "top": 0});
+  // calculate the position of the jsavarr_answer element
+  var answerLeftPosition = jsavarr_answer.element.position().left;
+  // position the left array absolutely
   var jsavarr_left = av.ds.array(leftArray, {indexed: true, center: false,
-                                              layout: "array"});
-  jsavarr_left.element.css({"left": 0, "top": 0});
+                                              layout: "array",
+                                              left: answerLeftPosition - blockWidth / 2});
   var jsavarr_right = av.ds.array(rightArray, {indexed: true, center: false,
-                                                layout: "array"});
-  jsavarr_right.element.css({"left": blockWidth * 5, "top": -rowHeight});
+                                                layout: "array",
+                                                left: blockWidth * 4.5 + answerLeftPosition });
   av.umsg("We now merge two sorted lists into one.");
   av.displayInit();
   av.umsg("First compare the smallest values in each list");
