@@ -27,8 +27,12 @@
 
   <style>
     .jsavcontainer {
-      border: 0px;
+      border: 0;
       width: 100%;
+    }
+    
+    #reset {
+      margin-right: 20px;
     }
   </style>
 <head>
@@ -36,7 +40,7 @@
 <body>
 
   <script>
-    var jsav, arr, arr_clone, pivotIndex, selIndex, myGuess;
+    var jsav, initArr, arr, arr_clone, pivotIndex, selIndex, myGuess;
 
     // function to handle a click event on an array
     var clickHandler = function (index, e) {
@@ -55,22 +59,36 @@
       myGuess = 1;
     }
 
-    // function that initialise JSAV library
+    // function that initializes JSAV library
     initJSAV = function (length) {
-      selIndex = -1;
-      myGuess = -1;
+      initArr = JSAV.utils.rand.numKeys(0, 999, length);
       pivotIndex = Math.floor(length / 2);
       jsav = new JSAV("jsav");
       jsav.recorded();
-      arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, length), {indexed: true, center: false});
+      
+      arr = jsav.ds.array(initArr, {indexed: true, center: false});
       arr_clone = arr.clone();
+      selIndex = -1;
+      myGuess = -1;
       
       // bind the clickHandler to handle click events on the array
       arr.click(clickHandler);
       
       arr.highlight(pivotIndex);
+      
+      // Set up handler for reset button
+      $("#reset").click(function () { reset(); });
     }
 
+    // reset function definition
+    var reset = function () {
+      selIndex = -1;
+      myGuess = -1;
+      arr.clear();             // Re-initialize the displayed array object
+      arr = jsav.ds.array(initArr, {indexed: true, center: false});
+      arr.highlight(pivotIndex);
+      arr.click(clickHandler); // Rebind click handler after reset
+    };
 
     // function that validates student's answer
     function checkAnswer(length) {
@@ -98,6 +116,7 @@
       // Move the pivot to its final location
       arr_clone.swap(left, length - 1);
 
+      // Compare the user's answer against the calculated values
       for (var i = 0; i < length; i++){
         if (arr.value(i) !== arr_clone.value(i)) {
           return false;
@@ -107,16 +126,16 @@
     }
   </script>
 
-
   <div class="exercise">
     <div class="vars">
-      <var id="arr_size">randRange( 6, 12 )</var>
+      <var id="arr_size">randRange(6, 12)</var>
       <var id="JSAV">initJSAV(arr_size)</var>
     </div>
     <div class="problems">
       <div>
         <div class="question">
           <p>The pivot element for quicksort is highlighted in the array below. Partition the array using quicksort.</p>
+          <input id="reset" type="button" value="Reset" />
           <div id="jsav"></div>
         </div>
         <div class="solution" data-type="custom">
@@ -124,11 +143,11 @@
             [myGuess]
           </div>
           <div class="validator-function">
-            return checkAnswer (arr_size);
+            return checkAnswer(arr_size);
           </div>
         </div>
         <div class="hints">
-          <p>Partition step moves pivot element to its index at the sorted array</p>
+          <p>The partition step moves the pivot element to its final location in the sorted array</p>
         </div>
       </div>
     </div>
