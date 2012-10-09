@@ -18,14 +18,22 @@ from docutils import nodes
 from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
 import random
-
-
-def setup(app):
-    app.add_directive('avmetadata',avmetadata)
+import json  
 
 
 
+chapter_items = {}   
 
+def getChapter(pagename):   
+   json_data=open('page_chapter.json')
+   data = json.load(json_data)
+   json_data.close()
+   if pagename in data:
+       chapter_items[pagename] =  'Chapter ' + str(data[pagename][1]) + ' ' +  data[pagename][0]    
+   return chapter_items  
+
+def html_page_context(app, pagename, templatename, context, doctree): 
+     context['chapter_items'] = getChapter(pagename)   
 
 
 class avmetadata(Directive):
@@ -46,6 +54,12 @@ class avmetadata(Directive):
         """ Restructured text extension for collecting  AVs metadata nothing is written in the output html file """
         return [nodes.raw('', '', format='html')]
 
+
+
+def setup(app):
+    #app.connect('getChapter',getChapter)   
+    app.connect('html-page-context', html_page_context)   
+    app.add_directive('avmetadata',avmetadata)
 
 
 source = """\
