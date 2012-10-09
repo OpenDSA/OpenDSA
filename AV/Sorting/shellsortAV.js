@@ -138,6 +138,7 @@
         initData.user_array = theArray;
       }
       // Log initial state of exercise
+      initData.user_incrs = incrs;
       log_exercise_init(getAVName(), initData);
       
       reset(true); // Reset any previous visualization
