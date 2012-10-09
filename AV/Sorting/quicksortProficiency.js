@@ -20,24 +20,79 @@
   };
 
   /**
-   * Creates an arrow above the specified indices
-   * Does nothing if the element already has an arrow above it
+   * Creates a left bound indicator above the specified indices
+   * Does nothing if the element already has a left bound arrow above it
    */
-  JSAV._types.ds.AVArray.prototype.setArrow = JSAV.anim(function (indices) {
+  JSAV._types.ds.AVArray.prototype.setLeftArrow = JSAV.anim(function (indices) {
     var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
 
     if (!$elems.hasClass("jsavarrow")) {
       $elems.toggleClass("jsavarrow");
     }
+    
+    if ($elems.hasClass("rightarrow")) {
+      // If the selected index already has a right arrow, remove it 
+      // and don't add a left arrow (will simply use the jsavarrow class)
+      $elems.toggleClass("rightarrow");
+    } else if (!$elems.hasClass("leftarrow")) {
+      // If the index does not have a right arrow, add a left one
+      $elems.toggleClass("leftarrow");
+    }
   });
 
   /**
-   * Removes any arrays the have been toggled over the specified indices
+   * Creates a right bound indicator above the specified indices
+   * Does nothing if the element already has a right bound arrow above it
    */
-  JSAV._types.ds.AVArray.prototype.clearArrow = JSAV.anim(function (indices) {
+  JSAV._types.ds.AVArray.prototype.setRightArrow = JSAV.anim(function (indices) {
     var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
 
-    if ($elems.hasClass("jsavarrow")) {
+    if (!$elems.hasClass("jsavarrow")) {
+      $elems.toggleClass("jsavarrow");
+    }
+    
+    if ($elems.hasClass("leftarrow")) {
+      // If the selected index already has a left arrow, remove it 
+      // and don't add a right arrow (will simply use the jsavarrow class)
+      $elems.toggleClass("leftarrow");
+    } else if (!$elems.hasClass("rightarrow")) {
+      // If the index does not have a left arrow, add a right one
+      $elems.toggleClass("rightarrow");
+    }
+  });
+
+  /**
+   * Removes a left arrow (if it exists) from above the specified indices
+   */
+  JSAV._types.ds.AVArray.prototype.clearLeftArrow = JSAV.anim(function (indices) {
+    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
+
+    if ($elems.hasClass("jsavarrow") && !$elems.hasClass("leftarrow") && !$elems.hasClass("rightarrow")) {
+      // A plain jsavarrow class without a left or right arrow 
+      // class indicates both bounds are on the same element
+      // Replace the shared bound indicator with a right bound indicator
+      $elems.toggleClass("rightarrow");
+    } else if ($elems.hasClass("jsavarrow") && $elems.hasClass("leftarrow")) {
+      // Remove the left arrow
+      $elems.toggleClass("leftarrow");
+      $elems.toggleClass("jsavarrow");
+    }
+  });
+
+  /**
+   * Removes a right arrow (if it exists) from above the specified indices
+   */
+  JSAV._types.ds.AVArray.prototype.clearRightArrow = JSAV.anim(function (indices) {
+    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
+
+    if ($elems.hasClass("jsavarrow") && !$elems.hasClass("leftarrow") && !$elems.hasClass("rightarrow")) {
+      // A plain jsavarrow class without a left or right arrow 
+      // class indicates both bounds are on the same element
+      // Replace the shared bound indicator with a left bound indicator
+      $elems.toggleClass("leftarrow");
+    } else if ($elems.hasClass("jsavarrow") && $elems.hasClass("rightarrow")) {
+      // Remove the right arrow
+      $elems.toggleClass("rightarrow");
       $elems.toggleClass("jsavarrow");
     }
   });
@@ -285,7 +340,8 @@
       }
 
       // Clear any arrows the user put in the wrong place
-      userArr.clearArrow(i);
+      userArr.clearLeftArrow(i);
+      userArr.clearRightArrow(i);
     }
 
     // Make sure the value of each user state variable is correct
@@ -315,37 +371,32 @@
       } else if (!pivotMoved.value()) {
         // Move the selected pivot to the specified index
         swapPivot(pivotIndex.value(), index);
-        //av.umsg("Please select the left endpoint");
+        av.umsg("Please select the left endpoint");
       } else if (left.value() === -1) {
         // Select the left end of the range to partition
         left.value(index);
-        arr.setArrow(index);
-        av.umsg("");
-        /*
-        if (right.value() === -1)
-        {
+        arr.setLeftArrow(index);
+        
+        if (right.value() === -1) {
           av.umsg("Please select the right endpoint");
+        } else {
+          av.umsg("");
         }
-        */
       } else if (right.value() === -1) {
         // Select the right end of the range to partition
         right.value(index);
-        arr.setArrow(index);
+        arr.setRightArrow(index);
         av.umsg("");
       } else if (right.value() === index) {
         // Deselect the right end of the range to partition
-        if (left.value() !== right.value()) {
-          arr.clearArrow(index);
-        }
+        arr.clearRightArrow(index);
         right.value(-1);
 
         // Guide the user by telling them they just deselected the right endpoint
         av.umsg("Please select the right endpoint");
       } else if (left.value() === index) {
         // Deselect the left end of the range to partition
-        if (left.value() !== right.value()) {
-          arr.clearArrow(index);
-        }
+        arr.clearLeftArrow(index);
         left.value(-1);
 
         // Guide the user by telling them they just deselected the left endpoint
@@ -424,8 +475,8 @@
     // Update state variables and clear left and right marker arrows
     partitioned.value(true);
     pivotMoved.value(false);
-    userArr.clearArrow(left.value());
-    userArr.clearArrow(right.value());
+    userArr.clearLeftArrow(left.value());
+    userArr.clearRightArrow(right.value());
 
     // Mark this as a step to be graded and a step that can be undone (continuous feedback)
     exercise.gradeableStep();
