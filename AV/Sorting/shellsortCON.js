@@ -1,5 +1,4 @@
 "use strict";
-/*global alert*/
 /*global sweep*/
 // Various functions and variables that will be used by all of the
 // following sections of the tutorial.
