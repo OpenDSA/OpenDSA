@@ -8,9 +8,9 @@ void swap(int[] A, int i, int j) {
   A[j] = temp;
 }
 
-void inssort(int[] A, int start, int len) {
-  for (int i=start+1; i<start+len; i++)        // Insert i'th record
-    for (int j=i; (j>start) && (A[j] < A[j-1]); j--)
+void inssort(int[] A, int left, int right) {
+  for (int i=left+1; i<=right; i++)        // Insert i'th record
+    for (int j=i; (j>left) && (A[j] < A[j-1]); j--)
       swap(A, j, j-1);
 }
 
@@ -18,15 +18,15 @@ void inssort(int[] A, int start, int len) {
 void mergesort(int[] A, int[] temp, int left, int right) {
   int i, j, k, mid = (left+right)/2;  // Select the midpoint
   if (left == right) return;          // List has one record
-  if ((mid-left) >= THRESHOLD) mergesort(A, temp, left, mid-1);
-  else inssort(A, left, mid-left);
-  if ((right-mid) > THRESHOLD) mergesort(A, temp, mid, right);
-  else inssort(A, mid, right-mid+1);
+  if ((mid-left) >= THRESHOLD) mergesort(A, temp, left, mid);
+  else inssort(A, left, mid);
+  if ((right-mid) > THRESHOLD) mergesort(A, temp, mid+1, right);
+  else inssort(A, mid+1, right);
   // Do the merge operation.  First, copy 2 halves to temp.
-  for (i=l; i<mid; i++) temp[i] = A[i];
-  for (j=0; j<=r-mid; j++) temp[r-j+1] = A[j+mid];
+  for (i=left; i<=mid; i++) temp[i] = A[i];
+  for (j=right; j>mid; j--) temp[i++] = A[j];
   // Merge sublists back to array
-  for (i=l,j=r,k=l; k<=r; k++)
+  for (i=left,j=right,k=left; k<=right; k++)
     if (temp[i] < temp[j]) A[k] = temp[i++];
     else A[k] = temp[j--];
 }
