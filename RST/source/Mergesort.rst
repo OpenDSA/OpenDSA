@@ -13,6 +13,8 @@
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/Sorting/mergeCON.css
+
 .. index:: ! Mergesort
 
 Mergesort Concepts
@@ -78,6 +80,11 @@ Here is pseudocode for merge on lists::
       return answer;
     }
 
+Here is a visualization for the merge operation.
+
+.. inlineav:: mergesortCON1 slideshow
+   :output: show
+
 Here is a mergesort warmup exercise to practice merging.
 
 .. avembed:: Exercises/Sorting/MergesortPRO.html
@@ -132,3 +139,5 @@ Now here are summary questions.
 .. avembed:: Exercises/Sorting/MergesortSumm.html
    :showbutton: hide
    :title: Mergesort Review Questions
+
+.. odsascript:: AV/Sorting/mergesortCON.js

@@ -15,16 +15,16 @@ void inssort(int[] A, int start, int len) {
 }
 
 /* *** ODSATag: MergesortOpt *** */
-void mergesort(int[] A, int[] temp, int l, int r) {
-  int i, j, k, mid = (l+r)/2;  // Select the midpoint
-  if (l == r) return;          // List has one record
-  if ((mid-l) >= THRESHOLD) mergesort(A, temp, l, mid);
-  else inssort(A, l, mid-l+1);
-  if ((r-mid) > THRESHOLD) mergesort(A, temp, mid+1, r);
-  else inssort(A, mid+1, r-mid);
+void mergesort(int[] A, int[] temp, int left, int right) {
+  int i, j, k, mid = (left+right)/2;  // Select the midpoint
+  if (left == right) return;          // List has one record
+  if ((mid-left) >= THRESHOLD) mergesort(A, temp, left, mid-1);
+  else inssort(A, left, mid-left);
+  if ((right-mid) > THRESHOLD) mergesort(A, temp, mid, right);
+  else inssort(A, mid, right-mid+1);
   // Do the merge operation.  First, copy 2 halves to temp.
-  for (i=l; i<=mid; i++) temp[i] = A[i];
-  for (j=1; j<=r-mid; j++) temp[r-j+1] = A[j+mid];
+  for (i=l; i<mid; i++) temp[i] = A[i];
+  for (j=0; j<=r-mid; j++) temp[r-j+1] = A[j+mid];
   // Merge sublists back to array
   for (i=l,j=r,k=l; k<=r; k++)
     if (temp[i] < temp[j]) A[k] = temp[i++];

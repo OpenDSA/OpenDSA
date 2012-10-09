@@ -9,10 +9,10 @@ void swap(int[] A, int i, int j) {
 
 /* *** ODSATag: Mergesort *** */
 void mergesort(int[] A, int[] temp, int l, int r) {
-  int mid = (l+r)/2;                // Select midpoint
+  int mid = (l+r)/2;              // Select midpoint
   if (l == r) return;             // List has one record
-  mergesort(A, temp, l, mid);     // Mergesort first half
-  mergesort(A, temp, mid+1, r);   // Mergesort second half
+  mergesort(A, temp, l, mid-1);   // Mergesort first half
+  mergesort(A, temp, mid, r);     // Mergesort second half
   for (int i=l; i<=r; i++)        // Copy subarray to temp
     temp[i] = A[i];
   // Do the merge operation back to A
