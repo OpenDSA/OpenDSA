@@ -1,0 +1,145 @@
+<!--
+Insertion Sort mini-proficiency exercise.
+Written by Gayathri Subramanian, Dan Breakiron, and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Partition Array</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+
+  <style>
+    .jsavcontainer {
+      border: 0;
+      width: 100%;
+    }
+    
+    #reset {
+      margin-right: 20px;
+    }
+  </style>
+<head>
+
+<body>
+<script>
+"use strict";
+var jsav,     // The JSAV object
+  answerArr,  // The (internal) array that will store the correct answer
+  cloneArr,   // Copy of the (internal) array at the start of exercise for reset
+  jsavArr,    // The (visible) JSAV array
+  selIndex,   // Position that has been selected by user for swap
+  userInput;  // Boolean: Tells us if user ever did anything
+
+// swap two values in array
+var swap = function (arr, i, j) {
+  var temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+};
+
+// function to handle a click event on an array
+var clickHandler = function (index, e) {
+  if (selIndex === -1) { // if nothing currently selected
+    jsavArr.css(index, {"font-size": "130%"});
+    selIndex = index;
+  } else {
+    jsavArr.swap(selIndex, index);
+    jsavArr.css(index, {"font-size": "100%"});
+    jsavArr.css(selIndex, {"font-size": "100%"});
+    selIndex = -1;  // Reset to nothing selected
+  }
+  userInput = true;
+};
+
+// reset function
+var reset = function () {
+  selIndex = -1;
+  userInput = false;
+  jsavArr.clear();             // Re-initialize the displayed array object
+  jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
+  jsavArr.highlight(length - 1);
+  jsavArr.click(clickHandler); // Rebind click handler after reset
+};
+
+// Initialize JSAV library
+var initJSAV = function (length) {
+  // Set up the problem
+  answerArr = JSAV.utils.rand.numKeys(0, 999, length);
+  var pivotIndex = Math.floor(length / 2);
+  swap(answerArr, pivotIndex, length - 1);
+  var pivot = answerArr[length - 1];
+  // Now, make a copy
+  cloneArr = answerArr.slice(0);
+
+  // Make the answer (do partition)
+  var left = 0;
+  var right = length - 1;
+  while (left <= right) { // Move bounds inward until they meet
+    while (answerArr[left] < pivot) { left++; }
+    while ((right >= left) && (answerArr[right] >= pivot)) { right--; }
+    if (right > left) { swap(answerArr, left, right); } // Swap out-of-place values
+  }
+
+  // Set up the display array and handlers
+  jsav = new JSAV("jsav");
+  jsav.recorded();
+  $("#reset").click(function () { reset(); }); // clickHandler for reset button
+  selIndex = -1;
+  userInput = false;
+  jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
+  jsavArr.highlight(length - 1);
+  jsavArr.click(clickHandler);   // bind clickHandler for the array
+};
+
+// function that validates student's answer
+var checkAnswer = function (length) {
+  var i;
+  for (i = 0; i < length; i++) {
+    if (jsavArr.value(i) !== answerArr[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="arr_size">randRange(6, 12)</var>
+    <var id="JSAV">initJSAV(arr_size)</var>
+  </div>
+  <div class="problems">
+    <div>
+      <div class="question">
+        <p>The pivot element for quicksort is highlighted in the array below. Partition the array using quicksort.</p>
+        <input id="reset" type="button" value="Reset" />
+        <div id="jsav"></div>
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [userInput]
+        </div>
+        <div class="validator-function">
+          if (!checkAnswer(arr_size) && !guess[0])
+            return ""; // User did not click, and correct answer is not
+	               // initial array state
+          else return checkAnswer(arr_size);
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

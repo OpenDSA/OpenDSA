@@ -3,8 +3,7 @@
   var move = function (o, i) {
     av.step();
     av.umsg("Move the smaller value.");
-    jsavarr_A.value(o, jsavarr_temp.value(i));
-    jsavarr_temp.value(i, "");
+    av.effects.moveValue(jsavarr_temp, i, jsavarr_A, o);
     av.step();
     if (o !== 8) {
       av.umsg("Compare the smallest values in each list.");
@@ -25,8 +24,7 @@
   av.displayInit();
   av.umsg("Move everything from A to temp.");
   for (var i = 0; i < empty.length; i++) {
-    jsavarr_temp.value(i, jsavarr_A.value(i));
-    jsavarr_A.value(i, "");
+    av.effects.moveValue(jsavarr_A, i, jsavarr_temp, i);
   }
   av.step();
   av.umsg("Now we are ready to do the merge. First compare the smallest values in each list");
@@ -36,8 +34,7 @@
   av.umsg("The smaller value is 2 in the right list.");
   av.step();
   av.umsg("Move it to position 0 of the A array.");
-  jsavarr_A.value(0, 2);
-  jsavarr_temp.value(5, "");
+  av.effects.moveValue(jsavarr_temp, 5, jsavarr_A, 0);
   av.step();
   av.umsg("Continue in this way, at each step comparing the smallest values in each list");
   jsavarr_temp.highlight(6);
@@ -56,8 +53,9 @@
   var move = function (o, i, h) {
     av.step();
     av.umsg("Move the smaller value.");
-    jsavarr_A.value(o, jsavarr_temp.value(i));
-    jsavarr_temp.value(i, "");
+    av.effects.moveValue(jsavarr_temp, i, jsavarr_A, o);
+//    jsavarr_A.value(o, jsavarr_temp.value(i));
+//    jsavarr_temp.value(i, "");
     av.step();
     if (o !== 8) {
       av.umsg("Compare the smallest values in each list.");
@@ -77,11 +75,16 @@
                                            layout: "array"});
   av.umsg("Initially, we have the two sorted sublists in array A, and an empty temp array.");
   av.displayInit();
-  av.umsg("Move everything from A to temp, but reverse the values in the right array.");
-  for (var i = 0; i < empty.length; i++) {
-    jsavarr_temp.value(i, tempArray[i]);
-    jsavarr_A.value(i, "");
+  av.umsg("Move everything from A to temp...");
+  for (var i = 0; i <=4; i++) {
+    av.effects.moveValue(jsavarr_A, i, jsavarr_temp, i);
   }
+  av.step();
+  av.umsg("Move everything from A to temp, but reverse the values in the right array.");
+  av.effects.moveValue(jsavarr_A, 8, jsavarr_temp, 5);
+  av.effects.moveValue(jsavarr_A, 7, jsavarr_temp, 6);
+  av.effects.moveValue(jsavarr_A, 6, jsavarr_temp, 7);
+  av.effects.moveValue(jsavarr_A, 5, jsavarr_temp, 8);
   av.step();
   av.umsg("Now we are ready to do the merge. First compare the smallest values in each list");
   jsavarr_temp.highlight(0);
@@ -90,8 +93,7 @@
   av.umsg("The smaller value is 2 in the right list.");
   av.step();
   av.umsg("Move it to position 0 of the A array.");
-  jsavarr_A.value(0, 2);
-  jsavarr_temp.value(8, "");
+  av.effects.moveValue(jsavarr_temp, 8, jsavarr_A, 0);
   av.step();
   av.umsg("Continue in this way, at each step comparing the smallest values in each list");
   jsavarr_temp.highlight(7);

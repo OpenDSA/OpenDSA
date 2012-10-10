@@ -200,15 +200,21 @@ algorithm.
 
    An illustration of the Quicksort array decomposition.
 
-Here is a visualization for the entire Quicksort algorithm.
-
-.. avembed:: AV/Sorting/quicksortAV.html
-
 Now for some partition practice.
 
-.. avembed:: Exercises/Development/QuickSortPartitionElement.html
+.. avembed:: Exercises/Sorting/QuicksortPartitPRO.html
    :showbutton: hide
    :title: Quicksort Partition Exercise
+
+Here is a visualization for the entire Quicksort algorithm.
+This visualization shows you how the logical decomposition caused by
+the partitioning process works.
+In the visualization, the separate sub-partitions are separated out to
+match the recursion tree.
+In reality, there is only a single array involved (as you will see in
+the proficiency exercise that follows the visualization).
+
+.. avembed:: AV/Sorting/quicksortAV.html
 
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.
