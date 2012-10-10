@@ -128,7 +128,7 @@ Here is a simple ``findpivot`` function.
 
 Now you can have some practice.
 
-.. avembed:: Exercises/Development/QuickSortFindPivot.html
+.. avembed:: Exercises/Sorting/QuicksortPivotPRO.html
    :showbutton: hide
    :title: Quicksort Find Pivot Exercise
 

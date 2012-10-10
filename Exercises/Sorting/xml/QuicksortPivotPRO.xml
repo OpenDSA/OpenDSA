@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <entry>
-<id>http://algoviz.org/OpenDSA/Exercises/Development/QuickSortFindPivot.html</id>
+<id>http://algoviz.org/OpenDSA/Exercises/Sorting/QuicksortPivotPRO.html</id>
 <title type='text'>Quicksort Find Pivot Exercise</title>
 <description type='text'>Quicksort Find Pivot Exercise</description>
 <type>ka</type>  
 <width>950</width>
-<height>650</height>
+<height>450</height>
 <author>
 <name>OpenDSA</name>
 <uri>http://algoviz.org/OpenDSA/</uri>
 </author>
 <covers>sorting</covers>
-<streak>4</streak>
+<streak>3</streak>
 </entry>

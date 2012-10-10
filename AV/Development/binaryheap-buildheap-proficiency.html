@@ -53,17 +53,22 @@
     
     function model(modeljsav) {
       var modelbh = modeljsav.ds.binheap(initData, {heapify: false, nodegap: 20});
+      modelbh.origswap = modelbh.swap; // store original heap grade function
+      // set all steps gradeable that include a swap
+      modelbh.swap = function (ind1, ind2, opts) {
+        this.origswap(ind1, ind2, opts);
+        this.jsav.stepOption("grade", true);
+      };
       modeljsav._undo = [];
       for (var i = Math.floor(modelbh.size() / 2); i > 0; i--) {
         modeljsav.umsg("Calling Min-Heapify(A, " + i + ")");
         modeljsav.step();
         modeljsav.umsg("");
         modelbh.heapify(i);
-        modeljsav.stepOption("grade", true);
       }
       return modelbh;
     }
-    var exercise = jsav.exercise(model, init, {}, {grader: "finder"});
+    var exercise = jsav.exercise(model, init, {}/*, {feedback: "continuous"}*/);
     exercise.reset();
     function clickHandler(index) {
       jsav._redo = []; // clear the forward stack, should add a method for this in lib
@@ -71,12 +76,17 @@
       if (sIndex === -1) { // if first click
         bh.css(index, {"font-size": "145%"});
         swapIndex.value(index);
+        jsav.step();
+    } else if (sIndex === index) { // 2nd click on same index -> unselect
+        bh.css(index, {"font-size": "100%"});
+        swapIndex.value(-1);
+        jsav.step();
       } else { // second click will swap
         bh.swap(sIndex, index, {});
         bh.css([sIndex, index], {"font-size": "100%"});
         swapIndex.value(-1);
+        exercise.gradeableStep();
       }
-      jsav.step();
     }
     $(".jsavcontainer").on("click", ".jsavindex", function() {
       var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
