@@ -26,10 +26,11 @@ Written by Gayathri Subramanian, Dan Breakiron, and Cliff Shaffer
 
 <body>
 <script>
+"use strict";
 var arr, selIndex = -1;
 
 // function to handle a click event on an array
-var clickHandler = function(index, e) {
+var clickHandler = function (index, e) {
   if (arr.isHighlight(index)) {
     arr.unhighlight(index);
     selIndex = -1;
@@ -41,31 +42,31 @@ var clickHandler = function(index, e) {
     arr.highlight(index);
     selIndex = index;
   }
-}
+};
 
 // Initialize the JSAV array
-initJSAV = function(length) {
+var initJSAV = function (length) {
   var jsav = new JSAV("jsav");
   arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, length),
                       {indexed: true, center: false});
   // bind the clickHandler to handle click events on the array
   arr.click(clickHandler);
   selIndex = -1;
-}
+};
 
-// Validates the student's answer 
-function checkAnswer(length) {
+// Validates the student's answer
+var checkAnswer = function (length) {
   var pivot = Math.floor((length - 1) / 2);
   if (arr.isHighlight(pivot)) {
     return true;
   }
   return false;
-}
+};
 </script>
 
 <div class="exercise">
   <div class="vars">
-    <var id="arr_size">randRange(6, 11)</var>
+    <var id="arr_size">randRange(6, 12)</var>
     <var id="JSAV">initJSAV(arr_size)</var>
   </div>
   <div class="problems">
