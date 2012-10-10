@@ -17,6 +17,5 @@
 }
 
 .jsavindex.jsavarrow::before {
-  left: 17px;
   border-color: #CC00FF transparent transparent;
 }

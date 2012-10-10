@@ -98,9 +98,6 @@
       reset(true); // Reset any previous visualization
       av = new JSAV(avcId); // initialize JSAV ..
 
-      // Initialize the list of sorted elements to be empty
-      sortedArr = av.ds.array(new Array(theArray.length), {indexed: true});
-
       // Initialize the original array
       initialArray = av.ds.array(theArray, {indexed: true});
       av.displayInit();
@@ -109,9 +106,8 @@
       // Save the left edge of the original array so sublists can be positioned relative to it
       leftEdge = parseFloat(initialArray.element.css("left"));
 
-      var level = 2;
+      var level = 1;
       var leftOffset = 0;
-
       quicksort(initialArray, level, leftOffset);
 
       // END QUICKSORT IMPLEMENTATION
@@ -128,51 +124,50 @@
 
   // The space required for each row to be displayed
   var leftEdge = 0;
-  var sortedArr = [];
 
   function quicksort(arr, level, leftOffset)
   {
-    var i = 0;
-    var j = arr.size() - 1;
+    var left = 0;
+    var right = arr.size() - 1;
 
     // Correctly position the array
     setPosition(arr, level, leftOffset);
 
     av.umsg("Select the pivot");
-    var pivotIndex = Math.floor((i + j) / 2);
+    var pivotIndex = Math.floor((left + right) / 2);
     arr.highlightPivot(pivotIndex);
     av.step();
 
     av.umsg("Move the pivot to the end");
-    arr.toggleArrow(j);
+    arr.toggleArrow(right);
     av.step();
-    arr.swap(pivotIndex, j);
+    arr.swap(pivotIndex, right);
     av.step();
-    arr.toggleArrow(j);
+    arr.toggleArrow(right);
 
     av.umsg("Partition the array");
     av.step();
-    // k will be the final position of the pivot
-    var k = partition(arr, i, j, arr.value(j));
+    // finalPivotIndex will be the final position of the pivot
+    var finalPivotIndex = partition(arr, left, right - 1, arr.value(right));
 
-    arr.toggleArrow(k);
-    av.umsg("All elements to the right of this value are less than the pivot and all elements to the right are greater than or equal to the pivot");
+    arr.toggleArrow(finalPivotIndex);
+    av.umsg("When the right bound is less than or equal to the left bound, all elements to the right of this element are less than the pivot and all elements to the right are greater than or equal to the pivot");
     av.step();
-    arr.toggleArrow(k);
+    arr.toggleArrow(finalPivotIndex);
 
     av.umsg("Move the pivot to its final location");
-    arr.swap(k, j);
-    arr.markSorted(k, leftOffset);
+    arr.swap(finalPivotIndex, right);
+    arr.markSorted(finalPivotIndex);
     av.step();
 
     // Create and display sub-arrays
 
     // Sort left partition
-    var subArr1 = arr.slice(i, k);
+    var subArr1 = arr.slice(left, finalPivotIndex);
     if (subArr1.length === 1) {
       av.umsg("Left sublist contains a single element which means it is sorted");
       av.step();
-      arr.markSorted(i, leftOffset);
+      arr.markSorted(left);
     }
     else if (subArr1.length > 1) {
       var avSubArr1 = av.ds.array(subArr1, {indexed: true, center: false});
@@ -182,64 +177,74 @@
     }
 
     // Sort right partition
-    var subArr2 = arr.slice(k + 1, j + 1);
+    var subArr2 = arr.slice(finalPivotIndex + 1, right + 1);
     if (subArr2.length === 1) {
       av.umsg("Right sublist contains a single element which means it is sorted");
       av.step();
-      arr.markSorted(k + 1, leftOffset);
+      arr.markSorted(finalPivotIndex + 1);
     }
     else if (subArr2.length > 1) {
       var avSubArr2 = av.ds.array(subArr2, {indexed: true, center: false});
       av.umsg("Call quicksort on the right sublist");
       av.step();
-      quicksort(avSubArr2, level + 1, leftOffset + k + 1);
+      quicksort(avSubArr2, level + 1, leftOffset + finalPivotIndex + 1);
     }
   }
 
-  function partition(arr, l, r, pivot)
-  {
-    l -= 1;
+  function partition(arr, left, right, pivot) {
+    var pivotIndex = right + 1;
+    arr.setRightArrow(right);
 
-    while (l < r)
-    {
+    while (left <= right) {
+      // Move the left bound inwards
       av.umsg("Select a value larger than the pivot to swap to the right");
-      while ((arr.value(++l) < pivot))
-      {
-        arr.highlight(l);
+      while (arr.value(left) < pivot) {
+        arr.setLeftArrow(left);
         av.step();
-        arr.unhighlight(l);
+        arr.clearLeftArrow(left);
+        left++;
       }
 
-      arr.highlight(l);
+      // Only highlight element at index left if it isn't the pivot
+      if (left < pivotIndex) {
+        arr.highlight(left);
+      }
+      arr.setLeftArrow(left);
       av.step();
 
+      // Move the right bound inwards
       av.umsg("Select a value smaller than the pivot to swap to the left");
-      while ((r !== 0) && (arr.value(--r) > pivot) && (r > l))
-      {
-        arr.highlight(r);
+      arr.clearRightArrow(right);
+      while ((right >= left) && (arr.value(right) >= pivot)) {
+        arr.setRightArrow(right);
         av.step();
-        arr.unhighlight(r);
+        arr.clearRightArrow();
+        right--;
       }
-
-      arr.highlight(r);
-      av.step();
-
+      
       // Stop when all elements have been appropriately swapped
-      if (l >= r)
-      {
-        arr.unhighlight([l, r]);
+      if (left >= right) {
+        if (left < pivotIndex) {
+          arr.unhighlight(left);
+        }
+        arr.clearLeftArrow(left);
         break;
       }
 
-      //Highlight elements to swap
-      av.umsg("Swap the selected values");
-      arr.swap(l, r);
+      arr.highlight(right);
+      arr.setRightArrow(right);
       av.step();
-      arr.unhighlight([l, r]);
+
+      // Swap highlighted elements
+      av.umsg("Swap the selected values");
+      arr.swap(left, right);
+      av.step();
+      arr.unhighlight([left, right]);
+      arr.clearLeftArrow(left);
     }
 
     // Return first position in right partition
-    return l;
+    return left;
   }
 
   /**
@@ -284,12 +289,85 @@
   /**
    * Convenience function for highlighting sorted values
    */
-  JSAV._types.ds.AVArray.prototype.markSorted = function (index, leftOffset) {
+  JSAV._types.ds.AVArray.prototype.markSorted = function (index) {
     this.css(index, {"background-color": "#ffffcc" });
-
-    // Add the value to the sorted array
-    var sortedIndex = index + leftOffset;
-    sortedArr.value(sortedIndex, this.value(index));
-    sortedArr.css(sortedIndex, {"background-color": "#ffffcc" });
   };
+  
+    /**
+   * Creates a left bound indicator above the specified indices
+   * Does nothing if the element already has a left bound arrow above it
+   */
+  JSAV._types.ds.AVArray.prototype.setLeftArrow = JSAV.anim(function (indices) {
+    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
+
+    if (!$elems.hasClass("jsavarrow")) {
+      $elems.toggleClass("jsavarrow");
+    }
+    
+    if ($elems.hasClass("rightarrow")) {
+      // If the selected index already has a right arrow, remove it
+      // and don't add a left arrow (will simply use the jsavarrow class)
+      $elems.toggleClass("rightarrow");
+    } else if (!$elems.hasClass("leftarrow")) {
+      // If the index does not have a right arrow, add a left one
+      $elems.toggleClass("leftarrow");
+    }
+  });
+
+  /**
+   * Creates a right bound indicator above the specified indices
+   * Does nothing if the element already has a right bound arrow above it
+   */
+  JSAV._types.ds.AVArray.prototype.setRightArrow = JSAV.anim(function (indices) {
+    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
+
+    if (!$elems.hasClass("jsavarrow")) {
+      $elems.toggleClass("jsavarrow");
+    }
+    
+    if ($elems.hasClass("leftarrow")) {
+      // If the selected index already has a left arrow, remove it
+      // and don't add a right arrow (will simply use the jsavarrow class)
+      $elems.toggleClass("leftarrow");
+    } else if (!$elems.hasClass("rightarrow")) {
+      // If the index does not have a left arrow, add a right one
+      $elems.toggleClass("rightarrow");
+    }
+  });
+
+  /**
+   * Removes a left arrow (if it exists) from above the specified indices
+   */
+  JSAV._types.ds.AVArray.prototype.clearLeftArrow = JSAV.anim(function (indices) {
+    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
+
+    if ($elems.hasClass("jsavarrow") && !$elems.hasClass("leftarrow") && !$elems.hasClass("rightarrow")) {
+      // A plain jsavarrow class without a left or right arrow
+      // class indicates both bounds are on the same element
+      // Replace the shared bound indicator with a right bound indicator
+      $elems.toggleClass("rightarrow");
+    } else if ($elems.hasClass("jsavarrow") && $elems.hasClass("leftarrow")) {
+      // Remove the left arrow
+      $elems.toggleClass("leftarrow");
+      $elems.toggleClass("jsavarrow");
+    }
+  });
+
+  /**
+   * Removes a right arrow (if it exists) from above the specified indices
+   */
+  JSAV._types.ds.AVArray.prototype.clearRightArrow = JSAV.anim(function (indices) {
+    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
+
+    if ($elems.hasClass("jsavarrow") && !$elems.hasClass("leftarrow") && !$elems.hasClass("rightarrow")) {
+      // A plain jsavarrow class without a left or right arrow
+      // class indicates both bounds are on the same element
+      // Replace the shared bound indicator with a left bound indicator
+      $elems.toggleClass("leftarrow");
+    } else if ($elems.hasClass("jsavarrow") && $elems.hasClass("rightarrow")) {
+      // Remove the right arrow
+      $elems.toggleClass("rightarrow");
+      $elems.toggleClass("jsavarrow");
+    }
+  });
 }(jQuery));
