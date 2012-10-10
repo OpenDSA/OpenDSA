@@ -78,16 +78,21 @@
     
     function model(modeljsav) {
       var modelbh = modeljsav.ds.binheap(initData.slice(0, initNum), {size: initData.length, nodegap: 20});
+      modelbh.origswap = modelbh.swap; // store original heap grade function
+      // set all steps gradeable that include a swap
+      modelbh.swap = function (ind1, ind2, opts) {
+        this.origswap(ind1, ind2, opts);
+        this.jsav.stepOption("grade", true);
+      };
       modeljsav._undo = [];
       for (var i = initNum; i < initData.length; i++) {
         modeljsav.umsg("Inserting " + initData[i]);
         modeljsav.step();
         modelbh.insert(initData[i]);
-        modeljsav.stepOption("grade", true);
       }
       return modelbh;
     }
-    var exercise = jsav.exercise(model, init, {}, {grader: "finder"}/*, {feedback: "continuous"}*/);
+    var exercise = jsav.exercise(model, init, {}/*, {feedback: "continuous"}*/);
     exercise.reset();
     
     function clickHandler(index) {
@@ -102,20 +107,21 @@
           } else {
             insertValue.value("No more data");
           }
+          exercise.gradeableStep();
         }
-        jsav.step();
         return;
       }
       var sIndex = swapIndex.value();
       if (sIndex === -1) { // if first click
         bh.css(index, {"font-size": "145%"});
         swapIndex.value(index);
+        jsav.step();
       } else { // second click will swap
         bh.swap(sIndex, index, {});
         bh.css([sIndex, index], {"font-size": "100%"});
         swapIndex.value(-1);
+        exercise.gradeableStep();
       }
-      jsav.step();
     }
     $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
       var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);

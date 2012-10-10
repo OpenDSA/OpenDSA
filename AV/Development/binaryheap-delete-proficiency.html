@@ -69,42 +69,48 @@
     
     function model(modeljsav) {
       modelbh = modeljsav.ds.binheap(initData, {nodegap: 20});
+      modelbh.origswap = modelbh.swap; // store original heap grade function
+      // set all steps gradeable that include a swap
+      modelbh.swap = function (ind1, ind2, opts) {
+        this.origswap(ind1, ind2, opts);
+        this.jsav.stepOption("grade", true);
+      };
       modeljsav._undo = [];
       var count = 3;
       while (count > 0) {
         modelbh.swap(0, modelbh.heapsize() - 1);
         modelbh.element.attr("data-jsav-heap-size", modelbh.heapsize() - 1);
         modeljsav.step();
+
         modelbh.css(modelbh.heapsize(), {"opacity": "0"})
         modelbh._treenodes[modelbh.heapsize()].edgeToParent().css("stroke", "white");
-        modeljsav.step();
-        modelbh.heapify(1);
         modeljsav.stepOption("grade", true);
         modeljsav.step();
+        modelbh.heapify(1);
         count--;
       }
       return modelbh;
     }
-    var exercise = jsav.exercise(model, init, {css: "opacity"}, {grader: "finder"});
+    var exercise = jsav.exercise(model, init, {css: "opacity"}/*, {feedback: "continuous"}*/);
     exercise.reset();
     
     function clickHandler(index) {
       jsav._redo = []; // clear the forward stack, should add a method for this in lib
-      if (bh.value(index) === "") {
-        bh.value(index, insertData.shift());
-        jsav.step();
-        return;
-      }
       var sIndex = swapIndex.value();
       if (sIndex === -1) { // if first click
         bh.css(index, {"font-size": "145%"});
         swapIndex.value(index);
+        jsav.step();
+      } else if (index === sIndex) { // second click on same
+        bh.css(index, {"font-size": "100%"});
+        swapIndex.value(-1);
+        jsav.step();
       } else { // second click will swap
         bh.swap(sIndex, index, {});
         bh.css([sIndex, index], {"font-size": "100%"});
         swapIndex.value(-1);
+        exercise.gradeableStep();
       }
-      jsav.step();
     }
     $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
       var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
@@ -121,7 +127,7 @@
         if (swapIndex.value() !== -1) {
           swapIndex.value(-1);
         }
-        jsav.step();
+        exercise.gradeableStep();
     });
     </script>
   </body>
