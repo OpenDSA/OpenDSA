@@ -43,8 +43,7 @@ var clickHandler = function (index, e) {
   if (selected_index === -1) { // if nothing currently selected
     jsavArr.css(index, {"font-size": "130%"});
     selected_index = index;
-  }
-  else {
+  } else {
     jsavArr.swap(selected_index, index);
     jsavArr.css(index, {"font-size": "100%"});
     jsavArr.css(selected_index, {"font-size": "100%"});
