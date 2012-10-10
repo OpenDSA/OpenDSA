@@ -76,7 +76,7 @@
   av.umsg("Initially, we have the two sorted sublists in array A, and an empty temp array.");
   av.displayInit();
   av.umsg("Move everything from A to temp...");
-  for (var i = 0; i <=4; i++) {
+  for (var i = 0; i <= 4; i++) {
     av.effects.moveValue(jsavarr_A, i, jsavarr_temp, i);
   }
   av.step();
