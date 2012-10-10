@@ -1,16 +1,16 @@
 "use strict";
 (function ($) {
-   var move = function (o, i) {
-     av.step();
-     av.umsg("Move the smaller value.");
-     jsavarr_A.value(o, jsavarr_temp.value(i));
-     jsavarr_temp.value(i, "");
-     av.step();
-     if (o !== 8) {
-       av.umsg("Compare the smallest values in each list.");
-       jsavarr_temp.highlight(i + 1);
-     }
-   };
+  var move = function (o, i) {
+    av.step();
+    av.umsg("Move the smaller value.");
+    jsavarr_A.value(o, jsavarr_temp.value(i));
+    jsavarr_temp.value(i, "");
+    av.step();
+    if (o !== 8) {
+      av.umsg("Compare the smallest values in each list.");
+      jsavarr_temp.highlight(i + 1);
+    }
+  };
 
   var startArray = [4, 8, 11, 25, 30, 2, 3, 17, 20];
   var empty = [];
@@ -24,7 +24,7 @@
   av.umsg("Initially, we have the two sorted sublists in array A, and an empty temp array.");
   av.displayInit();
   av.umsg("Move everything from A to temp.");
-  for (var i=0; i<empty.length; i++) {
+  for (var i = 0; i < empty.length; i++) {
     jsavarr_temp.value(i, jsavarr_A.value(i));
     jsavarr_A.value(i, "");
   }
@@ -53,17 +53,17 @@
 }(jQuery));
 
 (function ($) {
-   var move = function (o, i, h) {
-     av.step();
-     av.umsg("Move the smaller value.");
-     jsavarr_A.value(o, jsavarr_temp.value(i));
-     jsavarr_temp.value(i, "");
-     av.step();
-     if (o !== 8) {
-       av.umsg("Compare the smallest values in each list.");
-       jsavarr_temp.highlight(h);
-     }
-   };
+  var move = function (o, i, h) {
+    av.step();
+    av.umsg("Move the smaller value.");
+    jsavarr_A.value(o, jsavarr_temp.value(i));
+    jsavarr_temp.value(i, "");
+    av.step();
+    if (o !== 8) {
+      av.umsg("Compare the smallest values in each list.");
+      jsavarr_temp.highlight(h);
+    }
+  };
 
   var startArray = [4, 8, 11, 25, 30, 2, 3, 17, 20];
   var tempArray = [4, 8, 11, 25, 30, 20, 17, 3, 2];
@@ -78,7 +78,7 @@
   av.umsg("Initially, we have the two sorted sublists in array A, and an empty temp array.");
   av.displayInit();
   av.umsg("Move everything from A to temp, but reverse the values in the right array.");
-  for (var i=0; i<empty.length; i++) {
+  for (var i = 0; i < empty.length; i++) {
     jsavarr_temp.value(i, tempArray[i]);
     jsavarr_A.value(i, "");
   }

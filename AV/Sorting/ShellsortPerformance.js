@@ -1,5 +1,5 @@
 "use strict";
-/*global alert log_exercise_init getAVName awardCompletionCredit */
+/*global alert console log_exercise_init getAVName awardCompletionCredit */
 (function ($) {
   // Create the AV object. We turn off slideshow mode, since this is a
   // "static" form-based activity
@@ -19,7 +19,7 @@
   // time a new set of random numbers is drawn.
   var theArray = [];
 
-  var ASize = parseInt($('#arraysize', context).val()); // Array size
+  var ASize = parseInt($('#arraysize', context).val(), 10); // Array size
 
   var comps; // Count for comparisions
   var swaps; // Count for swaps
@@ -137,7 +137,7 @@
     
     console.log('theArray.length: ' + theArray.length + " !== ASize: " + ASize + ": " + (theArray.length !== ASize));
     console.log('typeof theArray.length: ' + (typeof theArray.length) + " typeof ASize: " + (typeof ASize));
-    if (theArray.length != ASize) { initArray(ASize); }
+    if (theArray.length !== ASize) { initArray(ASize); }
 
     if (!InitFlag) {
       tell("For list size of: " + ASize + "\n", "blue");
