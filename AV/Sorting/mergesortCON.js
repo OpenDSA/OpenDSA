@@ -11,8 +11,7 @@
   var move = function (a, o, i) {
     av.step();
     av.umsg("Move the smaller value.");
-    jsavarr_answer.value(o, a.value(i));
-    a.value(i, "");
+    av.effects.moveValue(a, i, jsavarr_answer, o);
     av.step();
     av.umsg("Compare the smallest values in each list");
     a.highlight(i + 1);
@@ -38,8 +37,7 @@
   av.umsg("The smaller value is 2 in the right list.");
   av.step();
   av.umsg("Move it to position 0 of the output list.");
-  jsavarr_answer.value(0, 2);
-  jsavarr_right.value(0, "");
+  av.effects.moveValue(jsavarr_right, 0, jsavarr_answer, 0);
   av.step();
   av.umsg("Continue in this way, at each step comparing the smallest values in each list");
   jsavarr_right.highlight(1);
