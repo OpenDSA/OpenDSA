@@ -9,12 +9,12 @@ void swap(int[] A, int i, int j) {
 
 /* *** ODSATag: partition *** */
 int partition(int[] A, int left, int right, int pivot) {
-  while (left <= right) {             // Move bounds inward until they meet
+  while (left <= right) { // Move bounds inward until they meet
     while (A[left] < pivot) left++;
     while ((right >= left) && (A[right] >= pivot)) right--;
     if (right > left) swap(A, left, right); // Swap out-of-place values
   }
-  return left;        // Return first position in right partition
+  return left;            // Return first position in right partition
 }
 /* *** ODSAendTag: partition *** */
 
