@@ -20,7 +20,7 @@
   var context = $("#ssperform");
   var emptyContent = $('#' + avcId).html();
   var av, // for JSAV av
-    initialArray;  // for the JSAV array
+      initialArray;  // for the JSAV array
 
   // Process About button: Pop up a message with an Alert
   function about() {
@@ -246,7 +246,7 @@
     // Return first position in right partition
     return left;
   }
-
+  
   /**
    * Calculates and sets the appropriate 'top' and 'left' CSS values based
    * on the specified array's level of recursion and number of blocks the array should be offset from the left
@@ -264,110 +264,4 @@
     // Set the top and left values so that all arrays are spaced properly
     arr.element.css({"left": left, "top": top});
   }
-
-  /**
-   * Extends the JSAV AV array to have the slice functionality of JavaScript arrays
-   */
-  JSAV._types.ds.AVArray.prototype.slice = function (start, end) {
-    var array = [];
-
-    for (var i = 0; i < (end - start); i++)
-    {
-      array[i] = this.value(start + i);
-    }
-
-    return array;
-  };
-
-  /**
-   * Convenience function for highlighting the pivot value in blue
-   */
-  JSAV._types.ds.AVArray.prototype.highlightPivot = function (index) {
-    this.css(index, {"background-color": "#ddf" });
-  };
-
-  /**
-   * Convenience function for highlighting sorted values
-   */
-  JSAV._types.ds.AVArray.prototype.markSorted = function (index) {
-    this.css(index, {"background-color": "#ffffcc" });
-  };
-  
-    /**
-   * Creates a left bound indicator above the specified indices
-   * Does nothing if the element already has a left bound arrow above it
-   */
-  JSAV._types.ds.AVArray.prototype.setLeftArrow = JSAV.anim(function (indices) {
-    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
-
-    if (!$elems.hasClass("jsavarrow")) {
-      $elems.toggleClass("jsavarrow");
-    }
-    
-    if ($elems.hasClass("rightarrow")) {
-      // If the selected index already has a right arrow, remove it
-      // and don't add a left arrow (will simply use the jsavarrow class)
-      $elems.toggleClass("rightarrow");
-    } else if (!$elems.hasClass("leftarrow")) {
-      // If the index does not have a right arrow, add a left one
-      $elems.toggleClass("leftarrow");
-    }
-  });
-
-  /**
-   * Creates a right bound indicator above the specified indices
-   * Does nothing if the element already has a right bound arrow above it
-   */
-  JSAV._types.ds.AVArray.prototype.setRightArrow = JSAV.anim(function (indices) {
-    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
-
-    if (!$elems.hasClass("jsavarrow")) {
-      $elems.toggleClass("jsavarrow");
-    }
-    
-    if ($elems.hasClass("leftarrow")) {
-      // If the selected index already has a left arrow, remove it
-      // and don't add a right arrow (will simply use the jsavarrow class)
-      $elems.toggleClass("leftarrow");
-    } else if (!$elems.hasClass("rightarrow")) {
-      // If the index does not have a left arrow, add a right one
-      $elems.toggleClass("rightarrow");
-    }
-  });
-
-  /**
-   * Removes a left arrow (if it exists) from above the specified indices
-   */
-  JSAV._types.ds.AVArray.prototype.clearLeftArrow = JSAV.anim(function (indices) {
-    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
-
-    if ($elems.hasClass("jsavarrow") && !$elems.hasClass("leftarrow") && !$elems.hasClass("rightarrow")) {
-      // A plain jsavarrow class without a left or right arrow
-      // class indicates both bounds are on the same element
-      // Replace the shared bound indicator with a right bound indicator
-      $elems.toggleClass("rightarrow");
-    } else if ($elems.hasClass("jsavarrow") && $elems.hasClass("leftarrow")) {
-      // Remove the left arrow
-      $elems.toggleClass("leftarrow");
-      $elems.toggleClass("jsavarrow");
-    }
-  });
-
-  /**
-   * Removes a right arrow (if it exists) from above the specified indices
-   */
-  JSAV._types.ds.AVArray.prototype.clearRightArrow = JSAV.anim(function (indices) {
-    var $elems = JSAV.utils._helpers.getIndices($(this.element).find("li"), indices);
-
-    if ($elems.hasClass("jsavarrow") && !$elems.hasClass("leftarrow") && !$elems.hasClass("rightarrow")) {
-      // A plain jsavarrow class without a left or right arrow
-      // class indicates both bounds are on the same element
-      // Replace the shared bound indicator with a left bound indicator
-      $elems.toggleClass("leftarrow");
-    } else if ($elems.hasClass("jsavarrow") && $elems.hasClass("rightarrow")) {
-      // Remove the right arrow
-      $elems.toggleClass("rightarrow");
-      $elems.toggleClass("jsavarrow");
-    }
-  });
 }(jQuery));

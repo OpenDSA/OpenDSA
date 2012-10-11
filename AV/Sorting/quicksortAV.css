@@ -18,13 +18,3 @@
   height: 50px;
   margin: 0;
 }
-
-.jsavindex.jsavarrow.leftarrow::before {
-  left: 7px;
-  border-color: blue transparent transparent;
-}
-
-.jsavindex.jsavarrow.rightarrow::before {
-  left: 27px;
-  border-color: red transparent transparent;
-}
