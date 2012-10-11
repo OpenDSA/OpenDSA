@@ -1,5 +1,8 @@
 "use strict";
+/*global serverEnabled, userLoggedIn, flushStoredData, sendEventData,
+getAVName, logUserAction, checkProficiency*/
 (function ($) {
+
 //*****************************************************************************
 //*************                  JSAV Extensions                  *************
 //*****************************************************************************
@@ -56,7 +59,7 @@
       
       if ($elems.hasClass("rightarrow")) {
         // If the selected index already has a right arrow, remove it
-        // and don't add a left arrow (will simply use the jsavarrow class)
+        // and add leftrightarrow class
         $elems.toggleClass("rightarrow");
         $elems.toggleClass("leftrightarrow");
       } else if (!$elems.hasClass("leftarrow")) {
@@ -81,7 +84,7 @@
       
       if ($elems.hasClass("leftarrow")) {
         // If the selected index already has a left arrow, remove it
-        // and don't add a right arrow (will simply use the jsavarrow class)
+        // and add leftrightarrow class
         $elems.toggleClass("leftarrow");
         $elems.toggleClass("leftrightarrow");
       } else if (!$elems.hasClass("rightarrow")) {
@@ -148,4 +151,34 @@
 
     return str;
   };
+
+//*****************************************************************************
+//*************             LOGGING AND DISPLAY UPDATE            *************
+//*****************************************************************************
+  var avName = getAVName();
+  
+  // Log the browser ready event
+  logUserAction(avName, 'document-ready', 'User loaded the ' + avName + ' AV');
+  
+  $(document).ready(function () {
+    if (serverEnabled()) {
+      // Send any stored event data when the page loads
+      if (userLoggedIn()) {
+        flushStoredData();
+      } else {
+        sendEventData();
+      }
+      
+      $(window).focus(function (e) {
+        logUserAction(avName, 'window-focus', 'User looking at ' + avName + ' window');
+      });
+      
+      $(window).blur(function (e) {
+        logUserAction(avName, 'window-blur', 'User is no longer looking at ' + avName + ' window');
+      });
+    }
+
+    // Check whether the current user has proficiency with this exercise
+    checkProficiency(avName);
+  });
 }(jQuery));

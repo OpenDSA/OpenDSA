@@ -1,5 +1,5 @@
 "use strict";
-/*global alert console log_exercise_init getAVName awardCompletionCredit */
+/*global alert console logExerciseInit getAVName awardCompletionCredit */
 (function ($) {
   // Create the AV object. We turn off slideshow mode, since this is a
   // "static" form-based activity
@@ -197,7 +197,7 @@
     initData.gen_array_len = ASize;
     initData.gen_array = theArray;
     initData.gen_incrs = incrs;
-    log_exercise_init(getAVName(), initData);
+    logExerciseInit(getAVName(), initData);
   }
 
   // Action callbacks to the various HTML entities.

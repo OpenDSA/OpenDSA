@@ -1,5 +1,5 @@
 "use strict";
-/*global alert console log_exercise_init getAVName */
+/*global alert console logExerciseInit getAVName */
 (function ($) {
   // Process help button: Give a full help page for this activity
   // We might give them another HTML page to look at.
@@ -70,7 +70,7 @@
     // Log the initial state of the exercise
     var desc = {};
     desc.gen_array = initialArray;
-    log_exercise_init(getAVName(), desc);
+    logExerciseInit(getAVName(), desc);
 
     // Dynamically create arrays
     arrays = {};

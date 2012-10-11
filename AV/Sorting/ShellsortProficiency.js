@@ -1,5 +1,5 @@
 "use strict";
-/*global alert, log_exercise_init, getAVName */
+/*global alert: true, logExerciseInit, getAVName */
 (function ($) {
   /* **************************************************************
   *  This first section is generic initialization that all AVs    *
@@ -125,7 +125,7 @@
     var desc = {};
     desc.gen_array = initialArray;
     desc.gen_incrs = incrs;
-    log_exercise_init(getAVName(), desc);
+    logExerciseInit(getAVName(), desc);
 
     theArray = av.ds.array($theArray, {indexed: true, layout: arrayLayout.val()});
     currIncrIndex = av.variable(0);

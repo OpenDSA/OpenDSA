@@ -1,6 +1,6 @@
 "use strict";
 /*global alert*/
-/*global log_exercise_init getAVName sweep */
+/*global logExerciseInit getAVName sweep */
 (function ($) {
   var avcId = 'shellsortAV_avc';
   
@@ -139,7 +139,7 @@
       }
       // Log initial state of exercise
       initData.user_incrs = incrs;
-      log_exercise_init(getAVName(), initData);
+      logExerciseInit(getAVName(), initData);
       
       reset(true); // Reset any previous visualization
       av = new JSAV(avcId); // initialize JSAV ..

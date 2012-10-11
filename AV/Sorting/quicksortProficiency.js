@@ -1,6 +1,6 @@
 "use strict";
 /*jslint noempty: false */
-/*global alert log_exercise_init getAVName */
+/*global alert logExerciseInit getAVName */
 (function ($) {
 //*****************************************************************************
 //*************                  JSAV Extensions                  *************
@@ -66,7 +66,7 @@
     // Log the initial state of the exercise
     var desc = {};
     desc.gen_array = initialArray;
-    log_exercise_init(getAVName(), desc);
+    logExerciseInit(getAVName(), desc);
 
     // Create the array the user will intereact with
     userArr = av.ds.array(initialArray, {indexed: true, layout: arrayLayout.val()});
