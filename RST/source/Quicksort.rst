@@ -15,6 +15,8 @@
 
 .. index:: ! Quicksort
 
+.. odsalink:: AV/Sorting/quadraticsortCON.css
+
 Quicksort
 =========
 
@@ -148,57 +150,20 @@ Here is a Java implementation for the partition step.
    :start-after: /* *** ODSATag: partition *** */
    :end-before: /* *** ODSAendTag: partition *** */
 
-Figure :num:`Figure #PartitionFig` illustrates ``partition``.
-Initially, variables ``l`` and ``r`` are immediately
-outside the actual bounds of the subarray being partitioned.
-Each pass through the outer ``do`` loop moves the counters
-``l`` and ``r`` inwards, until eventually they meet.
-Note that at each iteration of the inner ``while`` loops, the
-bounds are moved prior to checking against the pivot value.
-This ensures that progress is made by each ``while`` loop,
-even when the two values swapped on the last iteration of the
-``do`` loop were equal to the pivot.
-Also note the check that ``r > l`` in the second
+Note the check that ``right >= left`` in the second inner
 ``while`` loop.
-This ensures that ``r`` does not run off the low end of the
+This ensures that ``right`` does not run off the low end of the
 partition in the case where the pivot is the least value in that
 partition.
 Function ``partition`` returns the first index of the right
-partition so that the subarray bound for the recursive calls to
-``qsort`` can be determined.
-Figure :num:`Figure #QuickSortPic` illustrates the complete Quicksort
-algorithm.
+partition (the place where ``left`` ends at) so that the subarray
+bound for the recursive calls to ``qsort`` can be determined.
+
+.. inlineav:: QuicksortCON1 slideshow
+   :output: show
+
 
 .. _PartitionFig:
-
-.. figure:: Images/Partit.png
-   :width: 400
-   :align: center
-   :figwidth: 90%
-   :alt: The Quicksort partition step
-
-   The Quicksort partition step.
-   The first row shows the initial positions for a collection of ten
-   key values.
-   The pivot value is 60, which has been swapped to the end of the
-   array.
-   The ``do`` loop makes three iterations, each time moving
-   counters ``l`` and ``r`` inwards until they meet in
-   the third pass.
-   In the end, the left partition contains four values and the right
-   partition contains six values.
-   Function ``qsort`` will place the pivot value into
-   position 4.
-
-.. _QuickSortPic:
-
-.. figure:: Images/Qsort.png
-   :width: 400
-   :align: center
-   :figwidth: 90%
-   :alt: An illustration of Quicksort
-
-   An illustration of the Quicksort array decomposition.
 
 Now for some partition practice.
 
@@ -220,6 +185,8 @@ Here is a complete proficiency exercise to see how well you understand
 Quicksort.
 
 .. avembed:: AV/Sorting/quicksortProficiency.html
+   :showbutton: hide
+   :title: Quicksort Proficiency Exercise
 
 To analyze Quicksort, we first analyze the ``findpivot`` and
 ``partition`` functions when operating on a subarray of length
@@ -277,7 +244,7 @@ work fairly well.
 Quicksort's best case occurs when ``findpivot`` always breaks
 the array into two equal halves.
 Quicksort repeatedly splits the array into
-smaller partitions, as shown in Figure :num:`Figure #QuickSortPic`.
+smaller partitions, as shown in the visualization.
 In the best case, the result will be :math:`\log n` levels of
 partitions,
 with the top level having one array of size :math:`n`, the second
@@ -426,3 +393,5 @@ Now for review questions.
 .. avembed:: Exercises/Sorting/QuicksortSumm.html
    :showbutton: hide
    :title: Quicksort Review Questions
+
+.. odsascript:: AV/Sorting/quicksortCON.js
