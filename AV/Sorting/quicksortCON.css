@@ -1,0 +1,27 @@
+.jsavcontainer {
+  width: 660px;
+  background-color: #eed;
+  margin: 0 auto;
+  border: 0;
+}
+.jsavcontrols {
+  margin-top: -35px;
+}
+.jsavoutput.jsavline{
+  margin-top: -5px;
+  height: 40px;
+}
+
+.jsavindex.jsavarrow.leftarrow::before {
+  left: 7px;
+  border-color: blue transparent transparent;
+}
+
+.jsavindex.jsavarrow.rightarrow::before {
+  left: 27px;
+  border-color: red transparent transparent;
+}
+
+.jsavindex.jsavarrow.leftrightarrow::before {
+  border-color: #CC00FF transparent transparent;
+}

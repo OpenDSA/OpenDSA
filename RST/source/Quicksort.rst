@@ -12,10 +12,11 @@
 .. _Quicksort:
 
 .. include:: JSAVheader.rinc
+.. odsascript:: AV/avUtils.js
 
 .. index:: ! Quicksort
 
-.. odsalink:: AV/Sorting/quadraticsortCON.css
+.. odsalink:: AV/Sorting/quicksortCON.css
 
 Quicksort
 =========
