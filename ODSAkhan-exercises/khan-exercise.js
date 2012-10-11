@@ -2822,7 +2822,7 @@ var Khan = (function() {
     }
     var progress = 0;
     if (data) {
-      if (parseInt(data.progress._int) != 0) {  
+      if (parseInt(data.progress._sign) != 0) {  
           progress = 0;   
       }    
       else { 
