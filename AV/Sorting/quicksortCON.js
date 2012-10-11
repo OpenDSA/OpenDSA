@@ -29,7 +29,7 @@ var setBlue = function (arr, index) {
   av.step();
   av.umsg("Likewise, the right bound starts at a value less than 60, so it does not move.");
   av.step();
-  arr.swap(0,8);
+  arr.swap(0, 8);
   av.umsg("Swap the values at the bounds.");
   av.step();
   av.umsg("Now move the left bound to the right as long as it is at a value less than the pivot.");
@@ -79,6 +79,6 @@ var setBlue = function (arr, index) {
   arr.setRightArrow(3);
   av.umsg("Note that the right bound has crossed over the left bound. So partition is done.");
   av.step();
-  av.umsg("Since the left bound has reached position 4, this is the value returned by the partition function.")
+  av.umsg("Since the left bound has reached position 4, this is the value returned by the partition function.");
   av.recorded();
 }(jQuery));
