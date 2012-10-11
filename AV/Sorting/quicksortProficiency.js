@@ -78,9 +78,10 @@
 
     resetStateVars();
 
-    //av.umsg("Directions: Click on a numbered block to select it.  Then click on an empty block where it should be placed.");
     av.forward();
     av._undo = [];
+
+    av.umsg("Select the pivot and then click on where it should be moved to.")
 
     // Return the array containing the user's answer and the state variables we use to grade their solution
     return [userArr, pivotIndex, pivotMoved, partitioned, left, right];
@@ -262,14 +263,14 @@
       } else if (!pivotMoved.value()) {
         // Move the selected pivot to the specified index
         swapPivot(pivotIndex.value(), index);
-        av.umsg("Please select the left endpoint");
+        av.umsg("Please select the partition\'s left endpoint");
       } else if (left.value() === -1) {
         // Select the left end of the range to partition
         left.value(index);
         arr.setLeftArrow(index);
         
         if (right.value() === -1) {
-          av.umsg("Please select the right endpoint");
+          av.umsg("Please select the partition\'s right endpoint, then click on 'Partition'.");
         } else {
           av.umsg("");
         }
@@ -284,7 +285,7 @@
         right.value(-1);
 
         // Guide the user by telling them they just deselected the right endpoint
-        av.umsg("Please select the right endpoint");
+        av.umsg("Please select the right endpoint, then click on 'Partition'.");
       } else if (left.value() === index) {
         // Deselect the left end of the range to partition
         arr.clearLeftArrow(index);
@@ -372,7 +373,7 @@
     // Mark this as a step to be graded and a step that can be undone (continuous feedback)
     exercise.gradeableStep();
 
-    av.umsg("Done partitioning");
+    av.umsg("Done partitioning. Now move the pivot to its correct location, and 'Mark Selected as Sorted'.");
   }
 
   /**
@@ -391,7 +392,7 @@
     // Mark this as a step to be graded and a step that can be undone (continuous feedback)
     exercise.gradeableStep();
 
-    av.umsg("");
+    av.umsg("Select the pivot and then click on where it should be moved to.")
   }
 
   // Attach the button handlers
