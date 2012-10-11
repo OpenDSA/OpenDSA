@@ -197,7 +197,7 @@
 
     while (left <= right) {
       // Move the left bound inwards
-      av.umsg("Select a value larger than the pivot to swap to the right");
+      av.umsg("Move the left bound to the right until it reaches a value greater than or equal to the pivot");
       while (arr.value(left) < pivot) {
         arr.setLeftArrow(left);
         av.step();
@@ -213,7 +213,7 @@
       av.step();
 
       // Move the right bound inwards
-      av.umsg("Select a value smaller than the pivot to swap to the left");
+      av.umsg("Move the right bound to the left until it reaches a value less than the pivot");
       arr.clearRightArrow(right);
       while ((right >= left) && (arr.value(right) >= pivot)) {
         arr.setRightArrow(right);
