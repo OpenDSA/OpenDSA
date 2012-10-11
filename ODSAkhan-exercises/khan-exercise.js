@@ -2822,13 +2822,18 @@ var Khan = (function() {
     }
     var progress = 0;
     if (data) {
-      if (parseInt(data.progress._exp) == 0) {
-        progress = parseFloat(data.progress._int);
+      if (parseInt(data.progress._sign) != 0) {  
+          progress = 0;   
+      }    
+      else { 
+          if (parseInt(data.progress._exp) == 0) {
+              progress = parseFloat(data.progress._int);
+          }
+          else {
+              progress = parseFloat(data.progress._int) *  Math.pow(10,parseInt(data.progress._exp));
+          }
       }
-      else {
-        progress = parseFloat(data.progress._int) *  Math.pow(10,parseInt(data.progress._exp));
-      }
-    }
+    }    
     var  total =  progress*100;   //parseInt(streak) + 1;
     if (total >=100.00){
       total = 100;
