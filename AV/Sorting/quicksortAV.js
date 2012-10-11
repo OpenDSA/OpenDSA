@@ -218,7 +218,7 @@
       while ((right >= left) && (arr.value(right) >= pivot)) {
         arr.setRightArrow(right);
         av.step();
-        arr.clearRightArrow();
+        arr.clearRightArrow(right);
         right--;
       }
       
