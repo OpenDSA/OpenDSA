@@ -472,9 +472,6 @@ $(document).ready(function () {
     $('a#registration').hide();  // Registration link
   }
 
-  // Load proficiency data for current user
-  updateAllProfDisplays();
-
   $("input.showHideLink").click(function (event) {
     var btnID = event.target.id;
     showHide(btnID);
