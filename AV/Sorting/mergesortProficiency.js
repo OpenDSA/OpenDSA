@@ -474,28 +474,4 @@
     }
     return [level, column, arrOffset];
   }
-
-  // Extend the JSAV array with an isEmpty method that returns true
-  // if the array contains no values
-  JSAV._types.ds.AVArray.prototype.isEmpty = function () {
-    for (var i = 0; i < this.size(); i++) {
-      if (this.value(i) !== "") { return false; }
-    }
-    return true;
-  };
-
-  // Extend the JSAV array with a toString method for visual inspection
-  // of the array --  Useful for debugging
-  JSAV._types.ds.AVArray.prototype.toString = function () {
-    var size = this.size();
-    var str = '[';
-
-    for (var i = 0; i < size; i++) {
-      str += this.value(i);
-      if (i < size - 1) {
-        str += ', ';
-      }
-    }
-    return str + ']';
-  };
 }(jQuery));
