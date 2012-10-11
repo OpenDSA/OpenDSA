@@ -63,7 +63,7 @@ preprocessor:
 
 html: preprocessor makeconf
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	cp source/knowledgemap.html $(BUILDDIR)/html
+	cp ../lib/.htaccess $(BUILDDIR)/html
 	python preprocessor.py -p   source/ $(BUILDDIR)/html 
 	rm *.json
 	@echo
