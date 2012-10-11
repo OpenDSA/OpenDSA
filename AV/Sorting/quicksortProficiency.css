@@ -6,16 +6,6 @@
   height: 200px;
 }
 
-.jsavindex.jsavarrow.leftarrow::before {
-  left: 7px;
-  border-color: blue transparent transparent;
-}
-
-.jsavindex.jsavarrow.rightarrow::before {
-  left: 27px;
-  border-color: red transparent transparent;
-}
-
-.jsavindex.jsavarrow::before {
-  border-color: #CC00FF transparent transparent;
+#quicksortProficiency_avc {
+  margin-top: -25px;
 }
