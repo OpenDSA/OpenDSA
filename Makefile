@@ -33,4 +33,6 @@ csslint:
 jshint:
 	@echo 'running jshint'
 	@jshint AV/Sorting/*.js
+	@jshint AV/*.js
 	@jshint lib/ODSA.js
+	@jshint RST/source/_static/opendsaMOD.js

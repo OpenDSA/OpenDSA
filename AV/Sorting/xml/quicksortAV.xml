@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <entry>
-<id>http://algoviz.org/OpenDSA/AV/Development/quicksortAV.html</id>
+<id>http://algoviz.org/OpenDSA/AV/Sorting/quicksortAV.html</id>
 <title type='text'>Quicksort Visualization</title>
 <width>822</width>
-<height>622</height>
+<height>792</height>
 <author>
 <name>OpenDSA</name>
 <uri>http://algoviz.org/OpenDSA/</uri>
