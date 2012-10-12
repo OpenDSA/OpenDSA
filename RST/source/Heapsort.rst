@@ -98,7 +98,7 @@ Thus, only a relatively small fraction of the edges need be sorted.
 
 Here is a warmup practice exercise for Heapsort.
 
-.. avembed:: Exercises/Sorting/HeapSort.html
+.. avembed:: Exercises/Sorting/HeapsortPRO.html
    :showbutton: hide
    :title: Heapsort Practice
 
