@@ -8,7 +8,7 @@
     Header append Cache-Control "public"
   </FilesMatch>
   ExpiresByType text/css "access plus 1 week"
-  ExpiresByType text/javascript "access plus 12 hours"
+  ExpiresByType text/javascript "access plus 3 hours"
 
   # Cache all files for 2 weeks after access (A).
   ExpiresDefault A1209600
