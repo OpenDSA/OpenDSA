@@ -1,6 +1,6 @@
 "use strict";
 /*jslint noempty: false */
-/*global alert log_exercise_init getAVName */
+/*global alert logExerciseInit getAVName */
 (function ($) {
 //*****************************************************************************
 //*************                  JSAV Extensions                  *************
@@ -66,7 +66,7 @@
     // Log the initial state of the exercise
     var desc = {};
     desc.gen_array = initialArray;
-    log_exercise_init(getAVName(), desc);
+    logExerciseInit(getAVName(), desc);
 
     // Create the array the user will intereact with
     userArr = av.ds.array(initialArray, {indexed: true, layout: arrayLayout.val()});
@@ -81,7 +81,7 @@
     av.forward();
     av._undo = [];
 
-    av.umsg("Select the pivot and then click on where it should be moved to.")
+    av.umsg("Select the pivot and then click on where it should be moved to.");
 
     // Return the array containing the user's answer and the state variables we use to grade their solution
     return [userArr, pivotIndex, pivotMoved, partitioned, left, right];
@@ -392,7 +392,7 @@
     // Mark this as a step to be graded and a step that can be undone (continuous feedback)
     exercise.gradeableStep();
 
-    av.umsg("Select the pivot and then click on where it should be moved to.")
+    av.umsg("Select the pivot and then click on where it should be moved to.");
   }
 
   // Attach the button handlers

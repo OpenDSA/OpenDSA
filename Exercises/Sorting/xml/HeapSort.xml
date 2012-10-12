@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <entry>
-<id>http://algoviz.org/OpenDSA/Exercises/Development/Heapsort.html</id>
-<title type='text'>Heapsort Exercise</title>
-<description type='text'>Heapsort Exercise</description>
+<id>http://algoviz.org/OpenDSA/Exercises/Sorting/Heapsort.html</id>
+<title type='text'>Heapsort Max Remove Exercise</title>
+<description type='text'>Heapsort Max Remove Exercise</description>
 <type>ka</type>  
 <width>950</width>
-<height>650</height>
+<height>710</height>
 <author>
 <name>OpenDSA</name>
 <uri>http://algoviz.org/OpenDSA/</uri>

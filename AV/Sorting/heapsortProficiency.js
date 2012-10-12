@@ -2,7 +2,7 @@
 /*global alert*/
 var initData, bh,
     settings = new JSAV.utils.Settings($(".jsavsettings")),
-    jsav = new JSAV("HeapsortProficiency", {settings: settings}),
+    jsav = new JSAV("heapsortProficiency_avc", {settings: settings}),
     exercise,
     swapIndex;
 
@@ -123,4 +123,4 @@ $("#decrement").click(function () {
   bh.css(bh.heapsize(), {"background-color": "#ddd"});
   exercise.gradeableStep();
 });
-$("input[name='about']").click(about);
+$("#about").click(about);

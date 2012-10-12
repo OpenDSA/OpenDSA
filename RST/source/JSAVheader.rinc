@@ -12,4 +12,8 @@
 
 .. odsascript:: JSAV/lib/jquery.transform.light.js 
 
-.. odsascript:: lib/ODSA.js       
+.. odsascript:: lib/ODSA.js
+
+.. raw:: html
+
+   <script src="_static/opendsaMOD.js"></script>

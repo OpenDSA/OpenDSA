@@ -12,7 +12,7 @@
 .. _Quicksort:
 
 .. include:: JSAVheader.rinc
-.. odsascript:: AV/avUtils.js
+.. odsascript:: AV/opendsaAV.js
 
 .. index:: ! Quicksort
 

@@ -13,6 +13,9 @@
 
 .. include:: JSAVheader.rinc
 
+.. odsascript:: JSAV/extras/binaryheap.js
+.. odsalink:: AV/Sorting/heapsortCON.css
+
 .. index:: ! Heapsort
 
 Heapsort
@@ -56,59 +59,13 @@ particularly useful when sorting data sets too large to fit in main
 memory, as discussed in
 Module :numref:`External Sorting <ExternalSort>`.
 
-A sorting algorithm based on max-heaps is quite straightforward.
-First we use the heap building algorithm of
-Module :numref:`Heaps <Heaps>`
-to convert the array into max-heap order.
-Then we repeatedly remove the
-maximum value from the heap, restoring the heap property each time
-that we do so, until the heap is empty.
-Note that each time we remove the record with maximum key value from
-the heap, it is placed at the end of the array.
-Assume the :math:`n` records are stored in array positions 0
-through :math:`n-1`.
-After removing the maximum value from the heap and
-readjusting, the maximum value will now be placed in position
-:math:`n-1` of the array.
-The heap is now considered to be of size :math:`n-1`.
-Removing the new maximum (root) value places the second largest value
-in position :math:`n-2` of the array.
-After removing each of the remaining values in turn, the array will be
-properly sorted from least to greatest.
-This is why Heapsort uses a max-heap rather than a min-heap as might
-have been expected.
-Figure :num:`#HeapsortFig` illustrates Heapsort.
-The complete JAVA implementation is as follows.::
+.. inlineav:: heapsortCON slideshow
+   :output: show
 
-   static <E extends Comparable<? super E>>
-   void heapsort(E[] A) {
-     // The heap constructor invokes the buildheap method
-     MaxHeap&lt;E> H = new MaxHeap<E>(A, A.length, A.length);
-     for (int i=0; i<A.length; i++)  // Now sort
-       H.removemax(); // Removemax places max at end of heap
-   }
+The complete JAVA implementation is as follows.
 
-.. _HeapsortFig:
-
-.. figure:: Images/Heapsort.png
-   :width: 400
-   :align: center
-   :figwidth: 90%
-   :alt: Illustration of Heapsort
-
-   An illustration of Heapsort.
-   The top row shows the records in their original order.
-   The second row shows the records after building the heap.
-   The third row shows the result of the first
-   ``removefirst`` operation on key value 88.
-   Note that 88 is now at the end of the array.
-   The fourth row shows the result of the second ``removefirst``
-   operation on key value 85.
-   The fifth row shows the result of the third ``removefirst``
-   operation on key value 83.
-   At this point, the last three positions of the array hold the three
-   greatest-valued records in sorted order.
-   Heapsort continues in this manner until the entire array is sorted.
+.. codeinclude:: Sorting/Heapsort/Heapsort.pde 
+   :tag: Heapsort        
 
 Because building the heap takes :math:`\Theta(n)` time
 (see Module :numref:`Heaps <Heaps>`)
@@ -141,7 +98,7 @@ Thus, only a relatively small fraction of the edges need be sorted.
 
 Here is a warmup practice exercise for Heapsort.
 
-.. avembed:: Exercises/Development/HeapSort.html
+.. avembed:: Exercises/Sorting/HeapSort.html
    :showbutton: hide
    :title: Heapsort Practice
 
@@ -149,7 +106,7 @@ Now test yourself to see how well you understand Heapsort.
 Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/heapsortProficiency.html
-   :showbutton: show
+   :showbutton: hide
    :title: Heapsort Proficiency Exercise
 
 Now here are summary questions.
@@ -157,3 +114,5 @@ Now here are summary questions.
 .. avembed:: Exercises/Sorting/HeapsortSumm.html
    :showbutton: hide
    :title: Heapsort Review
+
+.. odsascript:: AV/Sorting/heapsortCON.js
