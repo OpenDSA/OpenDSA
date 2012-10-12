@@ -82,7 +82,7 @@ var initJSAV = function (size) {
   bh_clone = jsav.ds.binheap(initData,
                {visible: false, compare: function (a, b) { return b - a;}});
   bh_clone.swap(0, size - 1);
-  bh_clone.css(bh_clone.heapsize() - 1, {"background-color": "#ddd"});
+  bh_clone.heapsize(size - 1);
   bh_clone.heapify(1);
 
   // bind the clickHandler to handle click events on the array
@@ -101,6 +101,7 @@ var initJSAV = function (size) {
   $("#decrement").click(
     function () {
       bh.css(bh.heapsize() - 1, { "background-color": "#ddd" });
+      bh.heapsize(bh.heapsize()-1);
       userInput = true;
     });
   // Set up handler for reset button
@@ -108,11 +109,11 @@ var initJSAV = function (size) {
 };
 	
 // Validate student's answer
-var checkAnswer = function (a) {
-  var i;
-  for (i = 0; i < heap_size; i++) {
+var checkAnswer = function (arr_size) {
+  for (var i = 0; i < arr_size; i++) {
     if (bh.value(i) !== bh_clone.value(i)) { return false; }
   }
+  if (bh.heapsize() !== bh_clone.heapsize()) { return false; }
   return true;
 };
 </script>
@@ -140,7 +141,7 @@ var checkAnswer = function (a) {
           [userInput]
         </div>
 	<div class="validator-function">
-          if (!checkAnswer(arr_size) && !guess[0])
+          if (!guess[0])
             return ""; // User did not click, and correct answer is not
 	               // initial array state
           else return checkAnswer(arr_size);
