@@ -22,7 +22,7 @@
   av.step();
   av.umsg("Now we re-heapify.");
   av.step();
-  bh.swap(0,1);
+  bh.swap(0, 1);
   av.umsg("Swap.");
   av.step();
   bh.swap(1, 4);

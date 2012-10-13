@@ -13,6 +13,9 @@
 
 .. include:: JSAVheader.rinc
 
+.. odsascript:: AV/opendsaAV.js
+.. odsalink:: AV/Sorting/binsortCON.css
+
 .. index:: ! Binsort
 
 Binsort
@@ -37,6 +40,9 @@ numbers 0 through :math:`n-1`::
 
    for (i=0; i<n; i++)
      B[A[i]] = A[i];
+
+.. inlineav:: BinsortCON1 slideshow
+   :output: show
 
 Here the key value is used to determine the
 position for a record in the final sorted array.
@@ -92,6 +98,9 @@ bins.
 Thus, we need to process each record twice, for :math:`\Theta(n)`
 work.
 
+.. inlineav:: BinsortCON2 slideshow
+   :output: show
+
 Does that really make sense?
 Actually, that last statement is **wrong**,
 because there is a crucial oversight in this analysis.
@@ -124,3 +133,5 @@ only a small number of records in each bucket, and that a
 .. avembed:: Exercises/Sorting/BinsortSumm.html
    :showbutton: hide
    :title: Binsort Review Questions
+
+.. odsascript:: AV/Sorting/binsortCON.js

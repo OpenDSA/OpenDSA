@@ -26,6 +26,9 @@ Nor does asymptotic analysis say anything about which algorithm is
 best for sorting small lists.
 For answers to these questions, we can turn to empirical testing.
 
+.. What follows is a hack with a non-visible image to get use of the
+.. figure directive. We should fix this.
+
 .. _SortCompTable:
 
 .. figure:: Images/PtrSwap.png
