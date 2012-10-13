@@ -41,15 +41,14 @@ var setBlue = function (arr, index) {
   var av = new JSAV("BinsortCON2");
   // Create an array object under control of JSAV library
   var arrA = av.ds.array(theArray, {indexed: true});
-  var labelA = av.label("A", {before: arrA, left: 225});
+  var labelA = av.label("A", {before: arrA, left: 240, top: 10});
   var arrB = av.ds.array(emptyLong, {indexed: true});
-  var labelB = av.label("B", {before: arrB, left: 10});
+  var labelB = av.label("B", {before: arrB, left: 10, top: 105});
   var arrOut = av.ds.array(emptyShort, {indexed: true});
-  var labelOut = av.label("Output", {before: arrOut, left: 200});
+  var labelOut = av.label("Output", {before: arrOut, left: 210, top: 195});
   av.umsg("This time the input has values in the range 0 to 14. Move each value A[i] to position B[A[i]].");
   av.displayInit();
   for (i = 0; i < theArray.length; i++) {
-    arrA.highlight(i);
     if (i !== 0) { arrA.unhighlight(i - 1); }
     av.umsg("Move " + arrA.value(i) + " at position " + i + " in array A to position " + arrA.value(i) + " in array B.");
     av.effects.moveValue(arrA, i, arrB, arrA.value(i));
