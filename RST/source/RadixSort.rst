@@ -130,7 +130,7 @@ Variable ``rtoi`` stores :math:`r^i` for use in bin computation
 on the :math:`i`'th iteration.
 The following visualization illustrates the process.
 
-.. avembed:: AV/Development/radix.html
+.. avembed:: AV/Sorting/radixArrayAV.html
    :showbutton: show
    :title: Array implementation
 

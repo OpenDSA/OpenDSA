@@ -2,9 +2,8 @@
 <html>
 <head>
   <title>Radix Sort AV</title>
-  <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="radix.css" type="text/css" />
+  <link rel="stylesheet" href="sortingAV.css" type="text/css" />
 </head>
 <body>
 <div id="container">
@@ -13,7 +12,7 @@
   <input type="button" id="help" name="help" value="Help" />
   <h1 align="center" style="margin-top:-25px;">Radix Sort Visualization</h1>
 
-  <form id="ssperform">
+  <form id="ssperform" style="margin-top:10px;">
    
 	<label for="arraysize">&nbsp;Array size:&nbsp;</label>
       <select id="arraysize">
@@ -47,13 +46,13 @@
       
 	
       <label for="arrayValues">&nbsp;Array values:&nbsp;</label>
-      <input size="60" name="arrayValues" id="arrayValues" type="text" 
-	     placeholder="Type space-separated values, or just hit 'run' to use random values" />
+      <input size="65" name="arrayValues" id="arrayValues" type="text" 
+	     placeholder="Type space-separated values, or click 'run' to use random values" />
     </p>
   </form>
-  <div id="avcontainer">
+  <div id="avcontainer" style="margin-top: -15px;">
     <span class="jsavcounter"></span>
-    <div class="jsavcontrols"></div>
+    <div class="jsavcontrols" style="margin-top: -15px;"></div>
     <p class="jsavoutput jsavline" readonly="readonly"></p>
   </div> <!--avcontainer-->
 </div> <!--container-->
@@ -67,6 +66,6 @@
 <script src="../../JSAV/lib/jquery.transform.light.js"></script>
 <script src="http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"></script>
 <script src="../../JSAV/build/JSAV-min.js"></script>
-<script src="radix.js"></script>
+<script src="radixArrayAV.js"></script>
 </body>
 </html>
