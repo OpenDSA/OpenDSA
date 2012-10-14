@@ -1,10 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
   <title>Radix Sort AV</title>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="sortingAV.css" type="text/css" />
 </head>
+
 <body>
 <div id="container">
   <input type="button" id="about" name="about" value="About" />
@@ -13,44 +14,40 @@
   <h1 style="margin-top:-25px;">Array-based Radix Sort Visualization</h1>
 
   <form id="ssperform" style="margin-top:10px;">
-   
-	<label for="arraysize">&nbsp;Array size:&nbsp;</label>
-      <select id="arraysize">
-        <option value = 5>5</option>
-        <option value = 6>6</option>
-        <option value = 7>7</option>
-        <option selected value = 8>8</option>
-        <option value = 9>9</option>
-        <option value = 10>10</option>
-        <option value = 11>11</option>
-        <option value = 12>12</option>
-        <option value = 13>13</option>
-        <option value = 14>14</option>
-        <option value = 15>15</option>
-        <option value = 16>16</option>
-      </select>
-	  
-	  <!-- Number of Digits -->
-	 <label for="digitsize">&nbsp;Digits:&nbsp;</label> 
-	<select id="digitsize">
-	  <option selected value = 2> 2 </option>
-	  <option value = 1> 1 </option>
-	  <option value = 2> 2 </option>
-	  <option value = 3> 3 </option>
-	  <option value = 4> 4 </option>
-	  <option value = 5> 5 </option>
-	</select>
+    <label for="arraysize">&nbsp;Array size:&nbsp;</label>
+    <select id="arraysize">
+      <option value = 5>5</option>
+      <option value = 6>6</option>
+      <option value = 7>7</option>
+      <option selected value = 8>8</option>
+      <option value = 9>9</option>
+      <option value = 10>10</option>
+      <option value = 11>11</option>
+      <option value = 12>12</option>
+      <option value = 13>13</option>
+      <option value = 14>14</option>
+      <option value = 15>15</option>
+      <option value = 16>16</option>
+    </select>
+
+    <!-- Number of Digits -->
+    <label for="digitsize">&nbsp;Digits:&nbsp;</label> 
+    <select id="digitsize">
+      <option selected value = 2> 2 </option>
+      <option value = 1> 1 </option>
+      <option value = 2> 2 </option>
+      <option value = 3> 3 </option>
+      <option value = 4> 4 </option>
+    </select>
     <p>
-      <input type="button" name="run" value="Run" />
-      <input type="button" name="reset" value="Reset" />
-      
-	
+      <input type="button" id="run" name="run" value="Run" />
+      <input type="button" id="reset" name="reset" value="Reset" />
       <label for="arrayValues">&nbsp;Array values:&nbsp;</label>
       <input size="65" name="arrayValues" id="arrayValues" type="text" 
 	     placeholder="Type space-separated values, or click 'run' to use random values" />
     </p>
   </form>
-  <div id="avcontainer" style="margin-top: -15px;">
+  <div id="radixArray_avc" class="avcontainer" style="margin-top: -15px;">
     <span class="jsavcounter"></span>
     <div class="jsavcontrols" style="margin-top: -15px;"></div>
     <p class="jsavoutput jsavline" readonly="readonly"></p>
@@ -66,6 +63,7 @@
 <script src="../../JSAV/lib/jquery.transform.light.js"></script>
 <script src="http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"></script>
 <script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/ODSA.js"></script>
 <script src="radixArrayAV.js"></script>
 </body>
 </html>
