@@ -62,3 +62,8 @@ div h1 {
 form {
   clear: both;
 }
+
+.jsavindex .jsavvalue {
+  height: 100%;
+  width: 100%;
+}

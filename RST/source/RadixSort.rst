@@ -39,7 +39,7 @@ If we now gather the values from
 the bins **in order**, the result is a sorted list.
 We can see this process in the following visualization.
 
-.. avembed:: AV/Development/radixLinked.html
+.. avembed:: AV/Sorting/radixLinkAV.html
    :showbutton: show
    :title: Linked Radix Sort
 
