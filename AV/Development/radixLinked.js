@@ -1,12 +1,12 @@
 "use strict";
-/*global alert console */
+/*global alert*/
 (function ($) {
   var avcId = 'radixLinked_avc';
 
   // Number of values in the array
   var ASize = $('#arraysize').val();
 
-  // The array of numbers.
+  // The array of numbers
   var theArray = [];
   var countArray = [];
   var outArray = [];
@@ -20,19 +20,16 @@
 
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
-  // add the layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select", "options": {"bar": "Bar", "array": "Array"}, "label": "Array layout: ", "value": "array"});
-
   var context = $("#ssperform");
   var emptyContent = $('#' + avcId).html();
   var av, // for JSAV av
-    arr, arrC, arrO;  // for the JSAV array
+      arr, arrC, arrO;  // for the JSAV array
 
+  // Process About button: Pop up a message with an Alert
   function about() {
-    var mystring = "Radix Sort Linked List Algorithm Visualization\nWritten by ...\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Summer, 2012\nLast update: July, 2012\nJSAV library version " + JSAV.version();
-    alert(mystring);
+    alert("Radix Sort algorithm visualization\nWritten by Brandon Watkins and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
-
+  
   // Process Reset button: Reinitialize the output textbox and the AV
   function reset(flag) {
     if (av) {
@@ -76,26 +73,8 @@
     return true;
   }
 
-  var setBlue = function (index) {
-    //arr.css(index, {"background-color": "#bbf" });
-    arrC.css(index, {"background-color": "#bbf" });
-  };
-
-  var setBlue2 = function (index) {
-    //arr.css(index, {"background-color": "#bbf" });
-    arrO.css(index, {"background-color": "#bbf" });
-  };
-
-  var setGreen = function (index) {
-    arrC.css(index, {"background-color": "#00FF00" });
-  };
-
-  var setGreen2 = function (index) {
-    arrO.css(index, {"background-color": "#00FF00" });
-  };
-
-  var setGreen3 = function (index) {
-    arr.css(index, {"background-color": "#00FF00" });
+  var setBlue = function (arr, index) {
+    arr.css(index, {"background-color": "#bbf" });
   };
 
   // Execute the "Run" button function
@@ -178,8 +157,6 @@
       L8.layout({center: false});
       var L9 = av.ds.list({top: 458, left: 250});
       L9.layout({center: false});
-
-      console.log(Math.floor(739 / 10));
 
       av.umsg("Creating a linked list by using the rightmost to leftmost digits of the elements in the Original Array and placing them into separate bins according to their digits");
       av.step();
@@ -298,7 +275,6 @@
           av.step();
         }
       }
-      console.log("size =  " + L0.size());
       av.umsg("Now we use the linked list to add values into the Output Array in sorted order according to their digit");
       av.step();
       if (L0.size() > 0) {
@@ -307,7 +283,7 @@
           arrC.value(counting, L0.get(j).value());
           arrC.highlight([counting]);
           //arrO.highlight([0]);
-          setBlue2(0);
+          setBlue(arrO, 0);
           L0.get(j).highlight();
           counting = counting + 1;
           av.step();
@@ -322,7 +298,7 @@
           arrC.value(counting, L1.get(a).value());
           arrC.highlight([counting]);
           //arrO.highlight([1]);
-          setBlue2(1);
+          setBlue(arrO, 1);
           L1.get(a).highlight();
           counting = counting + 1;
           av.step();
@@ -337,7 +313,7 @@
           arrC.value(counting, L2.get(b).value());
           arrC.highlight([counting]);
           //arrO.highlight([2]);
-          setBlue2(2);
+          setBlue(arrO, 2);
           L2.get(b).highlight();
           counting = counting + 1;
           av.step();
@@ -352,7 +328,7 @@
           arrC.value(counting, L3.get(c).value());
           arrC.highlight([counting]);
           //arrO.highlight([3]);
-          setBlue2(3);
+          setBlue(arrO, 3);
           L3.get(c).highlight();
           counting = counting + 1;
           av.step();
@@ -367,7 +343,7 @@
           arrC.value(counting, L4.get(d).value());
           arrC.highlight([counting]);
           //arrO.highlight([4]);
-          setBlue2(4);
+          setBlue(arrO, 4);
           L4.get(d).highlight();
           counting = counting + 1;
           av.step();
@@ -382,7 +358,7 @@
           arrC.value(counting, L5.get(e).value());
           arrC.highlight([counting]);
 
-          setBlue2(5);
+          setBlue(arrO, 5);
           L5.get(e).highlight();
           counting = counting + 1;
 
@@ -398,7 +374,7 @@
           arrC.value(counting, L6.get(f).value());
           arrC.highlight([counting]);
 
-          setBlue2(6);
+          setBlue(arrO, 6);
           L6.get(f).highlight();
           counting = counting + 1;
           av.step();
@@ -413,7 +389,7 @@
           arrC.value(counting, L7.get(g).value());
           arrC.highlight([counting]);
 
-          setBlue2(7);
+          setBlue(arrO, 7);
           L7.get(g).highlight();
           counting = counting + 1;
           av.step();
@@ -428,7 +404,7 @@
           arrC.value(counting, L8.get(h).value());
           arrC.highlight([counting]);
           //arrO.highlight([8]);
-          setBlue2(8);
+          setBlue(arrO, 8);
           L8.get(h).highlight();
           counting = counting + 1;
           av.step();
@@ -442,7 +418,7 @@
           av.umsg("Add " + L9.get(i).value() + " to the Output Array");
           arrC.value(counting, L9.get(i).value());
           //arrO.highlight([9]);
-          setBlue2(9);
+          setBlue(arrO, 9);
           arrC.highlight([counting]);
           L9.get(i).highlight();
           counting = counting + 1;
@@ -456,9 +432,10 @@
       av.umsg("Now we set the Original Array equal to Output Array");
       av.step();
       for (y = 0; y < theArray.length; y++) {
-        arr.value(y, arrC.value(y));
         theArray[y] = arrC.value(y);
-        arr.highlight([y]);
+        av.effects.moveValue(arrC, y, arr, y);
+//        arr.value(y, arrC.value(y));
+//        arr.highlight([y]);
       }
 
       av.step();
@@ -542,7 +519,6 @@
       }
 
       //av.step();
-      console.log("size2 = " + L0.size());
     }
   }
   

@@ -1,10 +1,12 @@
 "use strict";
 /*global alert*/
 (function ($) {
+  var avcId = 'radixArray_avc';
+
   // Number of values in the array
   var ASize = $('#arraysize').val();
   
-  // The array of numbers.
+  // The array of numbers
   var theArray = [];
   var countArray = [];
   var outArray = [];
@@ -116,7 +118,7 @@
       av.step();
       arrC.highlight(0);
 //      setBlue(arrC, 0);
-      av.umsg("But first we subtract 1 from the 0 position so that the resulting sums are correct as positions in the output array.");
+      av.umsg("But first we subtract 1 from the 0 position so that the resulting sums are correct as positions in the Auxilliary array.");
       arrC.value(0, arrC.value(0) - 1);
       av.step();
       for (i = 1; i < 10; i++) {
@@ -130,11 +132,11 @@
       }
       arrC.unhighlight(9);
   
-      av.umsg("Now use the Count array to create the Output array");
+      av.umsg("Now use the Count array to create the Auxilliary array");
       av.step();
       for (i = theArray.length - 1; i >= 0; i--) {
         answer = Math.floor((arr.value(i) / count) % 10);
-        av.umsg(arr.value(i) + " has digit " + answer + ". So we look in position " + answer + " of the Count array, to see that we put it in position " + arrC.value(answer) + " of the output array.");
+        av.umsg(arr.value(i) + " has digit " + answer + ". So we look in position " + answer + " of the Count array, to see that we put it in position " + arrC.value(answer) + " of the Auxilliary array.");
         arrO.highlight(arrC.value(answer));
         arrC.highlight(answer);
         arr.highlight(i);
@@ -158,7 +160,7 @@
         av.effects.moveValue(arrO, i, arr, i);
       }
       size = size - 1;
-      av.umsg("Now we set the Original Array equal to Output Array");
+      av.umsg("Now we set the Input Array equal to Auxilliary Array");
       av.step();
       counter = counter + 1;
       count = Math.pow(10, counter);
@@ -195,11 +197,11 @@
       av = new JSAV("avcontainer"); // initialize JSAV ..
       // .. and the array. use the layout the user has selected
       arr = av.ds.array(theArray, {indexed: true, layout: "array"});
-      av.label("Original Array", {before: arr, left: 0, top: -25});
+      av.label("Input Array", {before: arr, left: 0, top: -25});
       arrC = av.ds.array(countArray, {indexed: true, layout: "array"});
       av.label("Count Array", {before: arrC, left: 0, top: 95});
       arrO = av.ds.array(outArray, {indexed: true, layout: "array"});
-      av.label("Output Array", {before: arrO, left: 0, top: 150});
+      av.label("Auxilliary Array", {before: arrO, left: 0, top: 150});
       av.umsg("Starting Radix Sort. The first step will be to count occurances of digits from the input array.");
       av.displayInit();
       radsort();

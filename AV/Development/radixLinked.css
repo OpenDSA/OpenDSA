@@ -8,11 +8,13 @@
 }
 
 div h1 {
+  text-align: center;
+  border-bottom: 1px solid black;
   background-color: #efe;
   margin: 5px;
   margin-top: -25px;
-  text-align: center;
 }
+
 .jsavlistnode {
   width: 53px;
   height: 40px;
