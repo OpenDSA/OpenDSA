@@ -174,10 +174,15 @@
       av.step();
       curr = 0;
       for (i = 0; i < 10; i++) {
-        for (j = 0; j < lists[i].size(); j++ ) {
-          arrOut.value(curr++, lists[i].get(j).value());
+        while (lists[i].size() !== 0) {
+          arrOut.value(curr++, lists[i].get(0).value());
+          lists[i].remove(0);
           av.step();
         }
+//        for (j = 0; j < lists[i].size(); j++ ) {
+//          arrOut.value(curr++, lists[i].get(j).value());
+//          av.step();
+//        }
       }
       av.umsg("Done with this pass.");
       av.step();
