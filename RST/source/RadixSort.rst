@@ -64,17 +64,11 @@ keys' digit values working from the rightmost digit to the leftmost.
 If there are :math:`k` digits, then this requires that we assign keys to
 bins :math:`k` times.
 
-Here is a practice exercise for placing keys based on the rightmost digit.
+Here is a practice exercise for placing keys into bins.
 
-.. avembed:: Exercises/Development/RadixSortLSBBins.html
+.. avembed:: Exercises/Sorting/RadixsortPRO.html
    :showbutton: hide
-   :title: Radix Sort Practice 1
-
-Here is a practice exercise for placing keys based on the leftmost digit.
-
-.. avembed:: Exercises/Development/RadixSortMSBBins.html
-   :showbutton: hide
-   :title: Radix Sort Practice 2
+   :title: Radix Sort Practice
 
 As with Mergesort, an efficient implementation of Radix Sort is
 somewhat difficult to achieve.

@@ -152,7 +152,7 @@
       av.step();
       // Initialize the lists
       for (i = 0; i < 10; i++) {
-        if (lists[i]) { lists[i].hide(); }
+//        if (lists[i]) { lists[i].clear(); }
         lists[i] = av.ds.list({top: (40 + i * 47), left: 240, nodegap: 30});
         lists[i].layout({center: false});
       }
@@ -164,13 +164,8 @@
         av.umsg(arr.value(i) + " has current digit " + answer +
                 ". Add it to the " + answer + " bin");
         arr.highlight(i);
-        arr.unhighlight(i-1);
-        if (lists[answer].size() === 0) {
-          lists[answer].addFirst(arr.value(i));
-        }
-        else {
-          lists[answer].addLast(arr.value(i));
-        }
+        arr.unhighlight(i - 1);
+        lists[answer].addLast(arr.value(i));
         lists[answer].layout({center: false});
         if (answer !== oldanswer) { arrDigit.highlight(answer); }
         arrDigit.unhighlight(oldanswer);
@@ -178,22 +173,19 @@
         av.step();
       }
       arrDigit.unhighlight(oldanswer);
-      arr.unhighlight(ASize-1);
+      arr.unhighlight(ASize - 1);
       av.umsg("Phase 2: Move the records from the digit lists to the output array.");
       av.step();
       curr = 0;
       for (i = 0; i < 10; i++) {
         arrDigit.highlight(i);
-        arrDigit.unhighlight(i-1);
+        arrDigit.unhighlight(i - 1);
         while (lists[i].size() !== 0) {
           arrOut.value(curr++, lists[i].get(0).value());
           lists[i].remove(0);
+          lists[i].layout({center: false});
           av.step();
         }
-//        for (j = 0; j < lists[i].size(); j++ ) {
-//          arrOut.value(curr++, lists[i].get(j).value());
-//          av.step();
-//        }
         arrDigit.unhighlight(9);
       }
       av.umsg("Done with this pass.");
