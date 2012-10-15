@@ -8,6 +8,7 @@
    :prerequisites: Sorting
    :topic: Sorting
    :short_name: SortingEmpirical
+   :exercises: SortAlgCompSumm
 
 .. _SortingEmpirical:
 

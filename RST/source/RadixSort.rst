@@ -8,6 +8,7 @@
    :prerequisites: BinSort
    :topic: Sorting
    :short_name: RadixSort
+   :exercises: RadixsortPRO, RadixSortSumm
 
 .. _RadixSort:
 
@@ -40,8 +41,6 @@ the bins **in order**, the result is a sorted list.
 We can see this process in the following visualization.
 
 .. avembed:: AV/Sorting/radixLinkAV.html
-   :showbutton: show
-   :title: Linked Radix Sort
 
 In this example, we have :math:`r=10` bins and key values in
 the range 0 to :math:`r^2-1`.
@@ -128,8 +127,6 @@ on the :math:`i`'th iteration.
 The following visualization illustrates the process.
 
 .. avembed:: AV/Sorting/radixArrayAV.html
-   :showbutton: show
-   :title: Array implementation
 
 This algorithm requires :math:`k` passes over the list of :math:`n`
 numbers in base :math:`r`, with :math:`\Theta(n + r)` work done at

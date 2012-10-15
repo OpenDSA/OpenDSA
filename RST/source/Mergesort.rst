@@ -8,6 +8,7 @@
    :prerequisites: Sorting
    :topic: Sorting
    :short_name: Mergesort
+   :exercises: mergesortCON1, MergesortPRO, mergesortProficiency, MergesortSumm
 
 .. _Mergesort:
 

@@ -75,6 +75,9 @@ Hashing
    :numbered:
    :maxdepth: 3
    
+   HashIntro
+   HashFunc
+   HashCollision
    Hashing
 
 File Processing

@@ -136,7 +136,7 @@
 
    <script>
      // Support for "About" button
-     $('input[name="about"]').click(about); // Set callback action
+     $('#about').click(about); // Set callback action
      function about() { // This is what we pop up
        var mystring = "Shellsort Explanation Slideshow\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during June, 2011\nLast update: August 14, 2011\nJSAV library version " + JSAV.version();
        alert(mystring);

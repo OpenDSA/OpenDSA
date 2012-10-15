@@ -8,6 +8,7 @@
    :prerequisites: Sorting
    :topic: Sorting
    :short_name: Quicksort
+   :exercises: QuicksortPivotPRO, QuicksortCON1, QuicksortPartitPRO, quicksortProficiency, QuicksortSumm
 
 .. _Quicksort:
 
