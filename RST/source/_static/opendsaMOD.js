@@ -1,9 +1,8 @@
 "use strict";
 /*global alert: true, console: true, serverEnabled, userLoggedIn,
-warnUserLogin, logUserAction, inLocalStorage, checkProficiency,
-isModulePage, getUsername, flushStoredData, getJSON, updateExerProfDisplays,
+warnUserLogin, logUserAction, inLocalStorage, isModulePage, getUsername,
+flushStoredData, getJSON, storeProficiencyStatus, updateExerProfDisplays,
 getModuleName, sendEventData, server_url, moduleName */
-//(function ($) {
 
 // Contains a list of all exercises (including AVs) on the page
 var exerList = [];
@@ -11,13 +10,59 @@ var exerList = [];
 // Contains a list of all Khan Academy-type exercises on the page
 var kaExerList = [];
 
+
+function info() { // This is what we pop up
+  var loc = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
+  if (loc === "") {
+    loc = "index.html";
+  }
+  var mod = loc.split('.');
+  var outcome = -1;
+  $.ajax({
+    url: 'modules.json',
+    async: false,
+    dataType: 'json',
+    success: function (data) {
+      $.each(data, function (key, val) {
+        if (val.fields.short_display_name.toLowerCase() === mod[0].toLowerCase()) {
+          var mystring = mod[0] + "\nWritten by " + val.fields.author + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nFile created: " + val.fields.last_modified + "\nJSAV library version " + JSAV.version();
+          outcome = 1;
+          alert(mystring);
+        }
+      });
+    }
+  });
+
+  if (outcome === -1) {
+    var mystring = mod[0] + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
+}
+
+function updateLocalStorage(username) {
+  var myDate = new Date();
+  myDate.setDate(myDate.getDate() + 5);  //the session is valid 5 days
+  var strSession = '{"username" :"' + username + '", "expires" :"' + myDate + '"}';
+  localStorage.opendsa = strSession;
+}
+
+function isSessionExpired() {
+  if (inLocalStorage("opendsa")) {
+    var bj = JSON.parse(localStorage.opendsa);
+    var sessionDate = bj.expires;
+    var currentDate = new Date();
+    return sessionDate <= currentDate;
+  }
+  return true;
+}
+
 /**
  * Given a button ID, toggles the visibility of the AV in the associated iframe
  */
 function showHide(btnID) {
   var divID = btnID.replace('_showhide_btn', '');
 
-  var btnText = $('#' + btnID).attr('value');    // If $('#' + btnID) doesn't work use: $('input[id="' + btnID + '"]')
+  var btnText = $('#' + btnID).attr('value');
 
   if (document.getElementById(divID)) {
     if ($('#' + divID).css('display') !== "none") {
@@ -49,6 +94,11 @@ function showHide(btnID) {
     warnUserLogin();
   }
 }
+
+//*****************************************************************************
+//*************           LOGIN AND REGISTRATION BOXES            *************
+//*****************************************************************************
+
 
 /**
  * Opens the registration window
@@ -141,49 +191,107 @@ function hidePopupBox() {
   return false;
 }
 
-function info() { // This is what we pop up
-  var loc = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
-  if (loc === "") {
-    loc = "index.html";
+//*****************************************************************************
+//*************      Proficiency Check and Update Displays        *************
+//*****************************************************************************
+
+/**
+ * If true, shows the module complete message, otherwise hides it
+ */
+function updateModuleProfDisplay(status) {
+  if (status) {
+    $('#modCompleteMsg').show();
+  } else {
+    $('#modCompleteMsg').hide();
   }
-  var mod = loc.split('.');
-  var outcome = -1;
-  $.ajax({
-    url: 'modules.json',
-    async: false,
-    dataType: 'json',
-    success: function (data) {
-      $.each(data, function (key, val) {
-        if (val.fields.short_display_name.toLowerCase() === mod[0].toLowerCase()) {
-          var mystring = mod[0] + "\nWritten by " + val.fields.author + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nFile created: " + val.fields.last_modified + "\nJSAV library version " + JSAV.version();
-          outcome = 1;
-          alert(mystring);
-        }
+}
+
+/**
+ * Given a name, returns whether localStorage has a
+ * record of the current user being proficient
+ */
+function checkProfLocalStorage(name) {
+  var username = getUsername();
+
+  // Check for proficiency status in localStorage
+  if (inLocalStorage("proficiency_data")) {
+    var profData = getJSON(localStorage.proficiency_data);
+
+    // Check whether user has an entry
+    if (profData[username]) {
+      var profList = profData[username];
+
+      // Check to see if the item exists in the user's proficiency list
+      if (profList.indexOf(name) > -1) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Queries the server for the user's proficiency on an exercise or module
+ */
+function checkProficiency(exerName) {
+  var name = (exerName) ? exerName : moduleName;
+  var profStatus = checkProfLocalStorage(name);
+
+  // Clear the proficiency display if the current user is not listed as proficient
+  if (name === moduleName) {
+    updateModuleProfDisplay(profStatus);
+  } else {
+    updateExerProfDisplays(name, profStatus);
+  }
+
+  if (profStatus) {
+    return;
+  }
+
+  // Check server for proficiency status
+  if (serverEnabled() && userLoggedIn()) {
+    if (name === moduleName) {
+      // Check proficiency of the module
+      jQuery.ajax({
+        url:   server_url + "/api/v1/usermodule/ismoduleproficient/",
+        type:  "POST",
+        data: {"username": getUsername(), "module": moduleName },
+        contentType: "application/json; charset=utf-8",
+        datatype: "json",
+        xhrFields: {withCredentials: true},
+        success: function (data) {
+          data = getJSON(data);
+
+          if (data.proficient) {
+            storeProficiencyStatus(moduleName);
+            updateModuleProfDisplay(true);
+          }
+        },
+        error: function (data) { console.error("ERROR " + "isProficient" /*JSON.stringify(data)*/); }
+      });
+    } else {
+      // Check proficiency of an exercise
+      jQuery.ajax({
+        url:   server_url + "/api/v1/userdata/isproficient/",
+        type:  "POST",
+        data: {"username": getUsername(), "exercise": exerName },
+        contentType: "application/json; charset=utf-8",
+        datatype: "json",
+        xhrFields: {withCredentials: true},
+        success: function (data) {
+          data = getJSON(data);
+
+          // Proficiency indicators were cleared above, only need to
+          // update them again if server responded that the user is proficient
+          if (data.proficient) {
+            updateExerProfDisplays(exerName, true);
+          }
+        },
+        error: function (data) { console.error("ERROR " + "isProficient" /*JSON.stringify(data)*/); }
       });
     }
-  });
-
-  if (outcome === -1) {
-    var mystring = mod[0] + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nJSAV library version " + JSAV.version();
-    alert(mystring);
   }
-}
-
-function updateLocalStorage(username) {
-  var myDate = new Date();
-  myDate.setDate(myDate.getDate() + 5);  //the session is valid 5 days
-  var strSession = '{"username" :"' + username + '", "expires" :"' + myDate + '"}';
-  localStorage.opendsa = strSession;
-}
-
-function isSessionExpired() {
-  if (inLocalStorage("opendsa")) {
-    var bj = JSON.parse(localStorage.opendsa);
-    var sessionDate = bj.expires;
-    var currentDate = new Date();
-    return sessionDate <= currentDate;
-  }
-  return true;
 }
 
 /**
@@ -192,7 +300,7 @@ function isSessionExpired() {
  */
 function storeKAExerProgress(exerName) {
   jQuery.ajax({
-    url:   server_url + "/api/v1/user/userexercise/getprogress/",
+    url:   server_url + "/api/v1/user/exercise/getprogress/",
     type:  "POST",
     data: {"username": getUsername(), "exercise": exerName },
     contentType: "application/json; charset=utf-8",
@@ -223,37 +331,20 @@ function storeKAExerProgress(exerName) {
 }
 
 /**
- * Check the proficiency of all AVs on the page
- */
-function updateAllProfDisplays() {
-  var i;
-  for (i = 0; i < exerList.length; i++) {
-    checkProficiency(exerList[i]);
-  }
-
-  if (userLoggedIn()) {
-    // Check and store the progress of all KA exercises
-    for (i = 0; i < kaExerList.length; i++) {
-      storeKAExerProgress(kaExerList[i]);
-    }
-  }
-}
-
-/**
  * Makes sure the display shows the currently logged in user
  * or lack there of
  */
 function updateLogin() {
   if (serverEnabled() && isModulePage()) {
     var username = getUsername();
+    var updated = false;
 
     if (inLocalStorage('opendsa') && $('a.login-window').text() !== 'Logout ' + username) {
+      updated = true;
+
       // Update display to show logged in user
       $('a.login-window').text('Logout ' + username);
       $('a.registration-window').hide();
-
-      // Update proficiency displays for the user who is now logged in
-      updateAllProfDisplays();
 
       // In case the user loaded a bunch of pages,
       // then logs in on one of them
@@ -261,7 +352,17 @@ function updateLogin() {
         hidePopupBox();
       }
     } else if (!inLocalStorage('opendsa') && $('a.login-window').text() !== 'Login') {
+      updated = true;
+
       // Update display to show that no user is logged in
+      $('a.login-window').text("Login");
+      $('a.registration-window').show();
+
+      if (inLocalStorage('warn_login')) {
+        localStorage.removeItem('warn_login');
+      }
+
+      // Remove the variable storing the user's progress on KA exercises
       if (inLocalStorage('khan_exercise')) {
         localStorage.removeItem('khan_exercise');
 
@@ -276,14 +377,24 @@ function updateLogin() {
         }
         */
       }
+    }
 
-      if (inLocalStorage('warn_login')) {
-        localStorage.removeItem('warn_login');
+    if (updated) {
+      // Update proficiency displays to reflect the proficiency of the current user
+      var i;
+      for (i = 0; i < exerList.length; i++) {
+        checkProficiency(exerList[i]);
       }
-      $('a.login-window').text("Login");
-      $('a.registration-window').show();
-      // Clear the proficiency displays for the user who just logged out
-      updateAllProfDisplays();
+
+      // Check for module proficiency
+      checkProficiency();
+
+      if (userLoggedIn()) {
+        // Check and store the progress of all KA exercises
+        for (i = 0; i < kaExerList.length; i++) {
+          storeKAExerProgress(kaExerList[i]);
+        }
+      }
     }
   }
 }
@@ -293,6 +404,10 @@ function updateLogin() {
 //*****************************************************************************
 
 $(document).ready(function () {
+  // Append the module complete code to the header
+  $('h1 > a.headerlink').parent().css('position', 'relative');
+  $('h1 > a.headerlink').parent().append('<div id="modCompleteMsg" class="mod_complete">Module Complete</div>');
+
   // Populate the list of AVs on the page
   // Add all AVs that have a showhide button
   $('.showHideLink').each(function (index, item) {
@@ -419,6 +534,7 @@ $(document).ready(function () {
         showLoginBox();
         return false;
       } else {
+        console.debug("Logout link clicked");
         // Submit whatever data we have collected before the user logs out
         flushStoredData();
 
@@ -490,8 +606,10 @@ $(document).ready(function () {
     //if (e.origin !== odsa_url) {
     //  return;
     //}
-    var msg_ka = getJSON(e.data);
-    updateExerProfDisplays(msg_ka.exercise, msg_ka.proficient);
+    var msg = getJSON(e.data);
+    updateExerProfDisplays(msg.exercise, msg.proficient);
+
+    // Check for module proficiency
+    checkProficiency();
   }, false);
 });
-//}(jQuery));

@@ -16,10 +16,17 @@
   right: 10px;
   display: none;
 }
+.mod_complete {
+  color: lime;
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+
 label {  
   display: block;  
 }
-
 
 
 

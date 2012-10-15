@@ -1,7 +1,7 @@
 "use strict";
 /*global alert*/
 (function ($) {
-  var avcId = 'radixLinked_avc';
+  var avcId = 'radixLinkAV_avc';
 
   // Number of values in the array
   var ASize = $('#arraysize').val();

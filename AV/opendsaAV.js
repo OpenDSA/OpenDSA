@@ -1,6 +1,6 @@
 "use strict";
 /*global serverEnabled, userLoggedIn, flushStoredData, sendEventData,
-getAVName, logUserAction, checkProficiency*/
+getAVName, logUserAction */
 // General utilities
 
 // Randomly scramble the contents of an array
@@ -30,7 +30,7 @@ function permute(A) {
 
     return array;
   };
-  
+
   /**
    * Extends the JSAV array with an isEmpty method that returns true
    * if the array contains no values
@@ -55,7 +55,7 @@ function permute(A) {
   JSAV._types.ds.AVArray.prototype.markSorted = function (index) {
     this.css(index, {"background-color": "#ffffcc" });
   };
-  
+
   /**
    * Creates a left bound indicator above the specified indices
    * Does nothing if the element already has a left bound arrow above it
@@ -68,7 +68,7 @@ function permute(A) {
       if (!$elems.hasClass("jsavarrow")) {
         $elems.toggleClass("jsavarrow");
       }
-      
+
       if ($elems.hasClass("rightarrow")) {
         // If the selected index already has a right arrow, remove it
         // and add leftrightarrow class
@@ -93,7 +93,7 @@ function permute(A) {
       if (!$elems.hasClass("jsavarrow")) {
         $elems.toggleClass("jsavarrow");
       }
-      
+
       if ($elems.hasClass("leftarrow")) {
         // If the selected index already has a left arrow, remove it
         // and add leftrightarrow class
@@ -145,7 +145,7 @@ function permute(A) {
       }
     });
   });
-  
+
   /**
    * toString function for JSAV arrays, useful for debugging
    */
@@ -165,32 +165,29 @@ function permute(A) {
   };
 
 //*****************************************************************************
-//*************             LOGGING AND DISPLAY UPDATE            *************
+//*************                      LOGGING                      *************
 //*****************************************************************************
   var avName = getAVName();
-  
-  // Log the browser ready event
-  logUserAction(avName, 'document-ready', 'User loaded the ' + avName + ' AV');
-  
+
   $(document).ready(function () {
     if (serverEnabled()) {
+      // Log the browser ready event
+      logUserAction(avName, 'document-ready', 'User loaded the ' + avName + ' AV');
+
       // Send any stored event data when the page loads
       if (userLoggedIn()) {
         flushStoredData();
       } else {
         sendEventData();
       }
-      
+
       $(window).focus(function (e) {
         logUserAction(avName, 'window-focus', 'User looking at ' + avName + ' window');
       });
-      
+
       $(window).blur(function (e) {
         logUserAction(avName, 'window-blur', 'User is no longer looking at ' + avName + ' window');
       });
     }
-
-    // Check whether the current user has proficiency with this exercise
-    checkProficiency(avName);
   });
 }(jQuery));
