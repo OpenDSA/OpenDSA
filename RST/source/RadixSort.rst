@@ -8,6 +8,7 @@
    :prerequisites: BinSort
    :topic: Sorting
    :short_name: RadixSort
+   :exercises: RadixsortPRO, RadixSortSumm
 
 .. _RadixSort:
 

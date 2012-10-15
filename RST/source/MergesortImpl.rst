@@ -8,6 +8,7 @@
    :prerequisites: Sorting, Mergesort
    :topic: Sorting
    :short_name: MergesortImpl
+   :exercises: mergeImplCON1, mergeImplCON2, MergeImplSumm
 
 .. _MergesortImpl:
 

@@ -8,6 +8,7 @@
    :prerequisites: Sorting
    :topic: Sorting
    :short_name: SortSumm
+   :exercises: ChapterSumm
 
 .. _SortSumm:
 

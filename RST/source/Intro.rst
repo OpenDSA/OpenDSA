@@ -26,7 +26,7 @@ so that you can tell if you really know what you have been reading.
 **Supported browsers:** We support any reasonably recent version of
 Chrome, Firefox, or Safari.
 Unfortunately, we do not attempt to support Internet Explorer, and we
-can pretty well guarentee that it won't work there.
+can pretty well guarantee that it won't work there.
 At this time we have no plans to take any special effort to support
 the non-standard requirements imposed by Internet Explorer.
 

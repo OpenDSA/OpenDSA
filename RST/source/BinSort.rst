@@ -8,6 +8,7 @@
    :prerequisites: Sorting
    :topic: Sorting
    :short_name: BinSort
+   :exercises: BinsortCON1, BinsortCON2, BinsortSumm
 
 .. _BinSort:
 

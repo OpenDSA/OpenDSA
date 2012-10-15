@@ -8,6 +8,7 @@
    :prerequisites: Sorting
    :topic: Sorting
    :short_name: Heapsort
+   :exercises: heapsortCON, HeapsortPRO, heapsortProficiency, HeapsortSumm
 
 .. _Heapsort:
 
