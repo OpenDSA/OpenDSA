@@ -2,13 +2,16 @@
 (function ($) {
   var startArray = [73, 6, 57, 88, 60, 42, 83, 72, 48, 85];
   var av = new JSAV("heapsortCON");
-  var array = av.ds.array(startArray);
+  var bh = av.ds.binheap(startArray, {compare: function (a, b) { return b - a; },
+                                      steps: false, heapify: false}); // make sure it is not a heap initially
   av.umsg("Initially, we start with our unsorted array.");
   av.displayInit();
   av.umsg("The first step is to heapify the array. We use a Max-heap, which might seem counter-intuitive at first. But you should see why soon.");
-  array.hide();
-  var bh = av.ds.binheap(startArray, {compare: function (a, b) { return b - a; },
-                                      steps: false});
+  av.step();
+  for (var i = Math.floor(bh.size() / 2); i > 0; i--) {
+    // make it a max heap
+    bh.heapify(i, {noAnimation: true, steps: false});
+  }
   av.umsg("Done heapifying.");
   av.step();
   av.umsg("Now we will 'delete' the max element, which actually moves it to the end of the current heap.");
