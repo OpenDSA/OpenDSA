@@ -106,6 +106,8 @@
      
       av.umsg("Select the entire array");
       mergesort(arr, level, column);
+
+      // END MERGESORT IMPLEMENTATION
       av.umsg("Done sorting!");
       av.recorded(); // mark the end
     }
@@ -115,36 +117,6 @@
   var canvasWidth = $('#container').width();
   var rowHeight = 80;
   var blockWidth = 47;
-  
-  // Extend JSAV AV array to have the slice functionality of JavaScript arrays
-  JSAV._types.ds.AVArray.prototype.slice = function (start, end) {
-    var array = [];
-    for (var i = 0; i < (end - start); i++) {
-      array[i] = this.value(start + i);
-    }
-    return array;
-  };
-  
-  // Convenience function for setting another type of highlight
-  // Used to show which elements will be compared during sort
-  var setBlue = function (arr, index) {
-    arr.css(index, {"background-color": "#ddf" });
-  };
-  
-  // Convenience function for setting another type of highlight
-  // Used to show which elements have already been merged back together
-  var markMerged = function (arr, index) {
-    // Clears the value
-    arr.value(index, "");
-    // Change the background color to gray
-    arr.css(index, {"background-color": "#c0c0c0" });
-  };
-  
-  // Convenience function for setting another type of highlight
-  // Used to show which elements are already sorted
-  var highlightSorted = function (arr, index) {
-    arr.css(index, {"background-color": "#ffffcc" });
-  };
   
   /**
    * Recursively splits input array until single element arrays are achieved, arrays are then merged back together in sorted order
@@ -248,18 +220,19 @@
       
       if (pos1 < arr1.size() &&
           (arr1.value(pos1) <= arr2.value(pos2) || pos2 === arr2.size())) {
-        setBlue(arr1, pos1);
+        arr1.highlightBlue(pos1);
         // Bold outline the selected element
         arr1.css(pos1, {"border-width": "2px"});
         av.step();
         // Un-bold outline the selected element
         arr1.css(pos1, {"border-width": "1px"});
         origArr.value(index, arr1.value(pos1));
-        markMerged(arr1, pos1);
+        // Clear the value from the previous array
+        arr1.value(pos1, "");
         pos1++;
       }
       else {
-        setBlue(arr2, pos2);
+        arr2.highlightBlue(pos2);
         // Bold outline the selected element
         arr2.css(pos2, {"border-width": "2px"});
         av.step();
@@ -267,15 +240,16 @@
         // Un-bold outline the selected element
         arr2.css(pos2, {"border-width": "1px"});
         origArr.value(index, arr2.value(pos2));
-        markMerged(arr2, pos2);
+        // Clear the value from the previous array
+        arr2.value(pos2, "");
         pos2++;
       }
       
-      setBlue(origArr, index);
+      origArr.highlightBlue(index);
       av.umsg("Add the selected value to the sorted array");
       av.step();
       
-      highlightSorted(origArr, index);
+      origArr.markSorted(index);
       index++;
     }
     

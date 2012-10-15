@@ -45,7 +45,7 @@ function permute(A) {
   /**
    * Convenience function for highlighting the pivot value in blue
    */
-  JSAV._types.ds.AVArray.prototype.highlightPivot = function (index) {
+  JSAV._types.ds.AVArray.prototype.highlightBlue = function (index) {
     this.css(index, {"background-color": "#ddf" });
   };
 
