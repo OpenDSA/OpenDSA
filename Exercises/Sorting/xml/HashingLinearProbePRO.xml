@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<entry>
+<id>http://algoviz.org/OpenDSA/Exercises/Sorting/HashingLinearProbePRO.html</id>
+<title type='text'>Linear Probing Proficiency Exercise</title>
+<description type='text'>Linear Probing Proficiency Exercise</description>
+<type>ka</type>
+<width>950</width>
+<height>380</height>
+<author>
+<name>OpenDSA</name>
+<uri>http://algoviz.org/OpenDSA/</uri>
+</author>
+<covers>hashing</covers>
+<streak>4</streak> 
+</entry>

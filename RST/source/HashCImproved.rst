@@ -150,6 +150,11 @@ random permutation of the values from 1 to :math:`M - 1`.
 
    Exercise for pseudo-random probing
 
+.. avembed:: Exercises/Sorting/HashingPseudoRandomProbePRO.html
+   :showbutton: hide
+   :title: Pseudo-Random Probing Exercise
+
+
 Quadratic Probing
 -----------------
 

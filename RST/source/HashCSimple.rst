@@ -182,10 +182,10 @@ long probe sequences.
 
    AV to show linear probing
 
-.. TODO::
-   :type: KA
+.. avembed:: Exercises/Sorting/HashingLinearProbePRO.html
+   :showbutton: hide
+   :title: Linear Probing Exercise
 
-   Exercise to practice Linear Probing
 
 .. TODO::
    :type: KA
