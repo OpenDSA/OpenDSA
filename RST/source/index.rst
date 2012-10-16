@@ -77,7 +77,13 @@ Hashing
    
    HashIntro
    HashFunc
-   HashCollision
+   HashFuncExamp
+   OpenHash
+   BucketHash
+   HashCSimple
+   HashCImproved
+   HashAnal
+   HashDel
    Hashing
 
 File Processing

@@ -18,10 +18,6 @@
 Hashing
 =========
 
-Birthday Example:
-
-.. avembed:: AV/Development/Birthday.html
-
 Hashing Visualization:
 
 .. avembed:: AV/Development/hash.html

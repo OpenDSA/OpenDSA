@@ -121,7 +121,7 @@ follows a two-step procedure:
 How to compute the table location is the subject of
 Module :numref:`<HashFunc>`, while
 collision resolution will be discussed in
-Module :numref:`<HashCollision>`.
+Module :numref:`<HashCSimple>`.
 
 .. TODO::
    :type: KA
