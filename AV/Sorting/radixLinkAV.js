@@ -145,6 +145,7 @@
     var shift = 1;
     var answer;
     var lists = [];
+    var arrows = [];
     var oldanswer;
 
     for (d = 0; d < $('#digitsize').val(); d++) {
@@ -155,6 +156,9 @@
 //        if (lists[i]) { lists[i].clear(); }
         lists[i] = av.ds.list({top: (40 + i * 47), left: 240, nodegap: 30});
         lists[i].layout({center: false});
+        // create initially hidden arrows from array indices to lists
+        arrows[i] = av.g.line(200, 60 + i * 47, 240, 60 + i * 47, 
+                    {"arrow-end": "classic-wide-long", "opacity": 0, "stroke-width": 2});
       }
       av.umsg("Phase 1: Move the records from the input array to the digit array.");
       av.step();
@@ -166,6 +170,9 @@
         arr.highlight(i);
         arr.unhighlight(i - 1);
         lists[answer].addLast(arr.value(i));
+        if (lists[answer].size() === 1) { // show arrow when adding first item to list
+          arrows[answer].show();
+        }
         lists[answer].layout({center: false});
         if (answer !== oldanswer) { arrDigit.highlight(answer); }
         arrDigit.unhighlight(oldanswer);
@@ -184,6 +191,9 @@
           arrOut.value(curr++, lists[i].get(0).value());
           lists[i].remove(0);
           lists[i].layout({center: false});
+          if (lists[i].size() === 0) { // hide arrow when removing last item from list
+            arrows[i].hide();
+          }
           av.step();
         }
         arrDigit.unhighlight(9);
