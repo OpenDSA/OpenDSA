@@ -46,7 +46,7 @@ Since hashing schemes place records in the table in whatever order
 satisfies the needs of the address calculation, records are
 not ordered by value.
 A position in the hash table is also known as a :dfn:`slot`.
-The number of slots in hash table <b>HT</b> will be denoted by the
+The number of slots in hash table ``HT`` will be denoted by the
 variable :math:`M` with slots numbered from 0 to :math:`M-1`.
 
 The goal for a hashing system is to arrange things such that,
