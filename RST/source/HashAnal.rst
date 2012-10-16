@@ -109,7 +109,7 @@ The figure above shows how the expected number of record accesses grows as
 :math:`\alpha` grows.
 The horizontal axis is the value for :math:`\alpha` , the vertical axis
 is the expected number of accesses to the hash table.
-Solid lines show the cost for ``random'' probing (a theoretical lower
+Solid lines show the cost for "random" probing (a theoretical lower
 bound on the cost), while dashed lines
 show the cost for linear probing (a relatively poor collision
 resolution strategy).
