@@ -135,7 +135,7 @@
 
     av.umsg("Select the pivot");
     var pivotIndex = Math.floor((left + right) / 2);
-    arr.highlightPivot(pivotIndex);
+    arr.highlightBlue(pivotIndex);
     av.step();
 
     av.umsg("Move the pivot to the end");

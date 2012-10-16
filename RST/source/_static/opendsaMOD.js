@@ -311,11 +311,15 @@ function storeKAExerProgress(exerName) {
 
       // Get the progress from the response
       if (data.progress) {
+        var exerData = {};
+      
+        // Load any existing data
         if (inLocalStorage('khan_exercise')) {
-          localStorage.khan_exercise[exerName] = data.progress;
-        } else {
-          localStorage.khan_exercise = JSON.stringify({exerName: data.progress});
+          exerData = getJSON(localStorage.khan_exercise);
         }
+        
+        exerData[exerName] = data.progress;
+        localStorage.khan_exercise = JSON.stringify(exerData);
 
         /*
         // TODO: get the correct function to trigger

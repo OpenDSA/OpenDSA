@@ -117,7 +117,7 @@
   function quicksort(jsav, arr, i, j, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight) {
     // Select the pivot
     var pivotIndex = Math.floor((i + j) / 2);
-    arr.highlightPivot(pivotIndex);
+    arr.highlightBlue(pivotIndex);
     jsav.step();
 
     // Move the pivot to the end of the list being sorted
@@ -255,7 +255,7 @@
       if (pivotIndex.value() === -1) {
         // Select the pivot
         pivotIndex.value(index);
-        arr.highlightPivot(index);
+        arr.highlightBlue(index);
       } else if (pivotIndex.value() === index && !pivotMoved.value()) {
         // Deselect the pivot unless it has already been moved
         pivotIndex.value(-1);
@@ -298,7 +298,7 @@
       if (pivotIndex.value() === -1) {
         // Select the pivot
         pivotIndex.value(index);
-        arr.highlightPivot(index);
+        arr.highlightBlue(index);
       } else if (pivotIndex.value() === index) {
         // Deselect the pivot
         pivotIndex.value(-1);
