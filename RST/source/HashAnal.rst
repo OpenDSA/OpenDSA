@@ -147,7 +147,6 @@ table size accordingly.
    As you look at the graphs generated for different table sizes, which collision
    resolution methods perform the best?
 
-.. TODO::
-   :type: KA
-
-   Hashing Analysis MCQs
+.. avembed:: Exercises/Sorting/HashAnalSumm.html
+   :showbutton: hide
+   :title: Hashing Analysis Review

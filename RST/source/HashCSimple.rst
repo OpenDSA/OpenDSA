@@ -185,9 +185,3 @@ long probe sequences.
 .. avembed:: Exercises/Sorting/HashingLinearProbePRO.html
    :showbutton: hide
    :title: Linear Probing Exercise
-
-
-.. TODO::
-   :type: KA
-
-   MCQs for linear probing

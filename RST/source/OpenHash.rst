@@ -91,8 +91,3 @@ other way.
    :type: KA
 
    Exercise for open hashing
-
-.. TODO::
-   :type: KA
-
-   MCQs for open hashing

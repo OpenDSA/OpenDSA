@@ -137,10 +137,12 @@ situations:
    the value of the first character because this is likely to be unevenly
    distributed.
 
-Next, you will see several examples of hash functions that illustrate
-these points. 
+In the next module, you will see several examples of hash functions
+that illustrate these points. 
 
-.. TODO::
-   :type: KA
+First, here are some review questions for what has been covered so
+far.
 
-   Write KA questions for hashing functions section.
+.. avembed:: Exercises/Sorting/HashPrinciplesSumm.html
+   :showbutton: hide
+   :title: Review Questions

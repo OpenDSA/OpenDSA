@@ -297,7 +297,6 @@ between 1 and :math:`2^m`.
 
    Exercises for double hashing
 
-.. TODO::
-   :type: KA
-
-   MCQs for improved collision resolution
+.. avembed:: Exercises/Sorting/HashCollisionSumm.html
+   :showbutton: hide
+   :title: Collision Resolution Review

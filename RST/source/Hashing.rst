@@ -21,19 +21,3 @@ Hashing
 Hashing Visualization:
 
 .. avembed:: AV/Development/hash.html
-
-Hashing Practice Exercises
-
-.. avembed:: Exercises/Development/HashJSAV.html
-   :showbutton: hide
-   :title: Hashing Practice 1
-
-.. avembed:: Exercises/Development/Hash_displayTable.html
-   :showbutton: hide
-   :title: Hashing Practice 2
-
-Hashing Review Questions.
-
-.. avembed:: Exercises/Development/HashingMCSummary.html
-   :showbutton: hide
-   :title: Hashing Review Questions

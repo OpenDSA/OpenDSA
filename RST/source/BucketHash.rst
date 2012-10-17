@@ -97,8 +97,3 @@ accesses.
    :type: KA
 
    Exercise to practice bucket hashing
-
-.. TODO::
-   :type: KA
-
-   MCQs for bucket hashing

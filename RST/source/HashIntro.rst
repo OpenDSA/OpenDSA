@@ -122,8 +122,3 @@ How to compute the table location is the subject of
 Module :numref:`<HashFunc>`, while
 collision resolution will be discussed in
 Module :numref:`<HashCSimple>`.
-
-.. TODO::
-   :type: KA
-
-   Add a set of KA review questions
