@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Hashing
    :short_name: HashFunc
-   :exercises: 
+   :exercises: Birthday, HashPrinciplesSumm
 
 .. _HashFunc:
 
@@ -54,6 +54,8 @@ In a hash table of 1000 slots, how many records must be inserted before
 the probability of a collision reaches 50%?
 
 .. avembed:: AV/Sorting/Birthday.html
+   :showbutton: show
+   :title: Birthday Problem Simulator
 
 To be practical, a database organized by hashing must store records in a
 hash table that is not so large that it wastes space.

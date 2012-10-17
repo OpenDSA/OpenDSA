@@ -8,13 +8,15 @@
    :prerequisites:
    :topic: Hashing
    :short_name: HashIntro
-   :exercises: 
+   :exercises: hashIntroCON1.js
 
 .. _HashIntro:
 
 .. include:: JSAVheader.rinc
 
 .. index:: ! hashing
+
+.. odsalink:: AV/Sorting/hashCON.css
 
 Introduction
 ============
@@ -83,12 +85,8 @@ A record with key ``k`` can be stored in
 To find the record with key value ``k``, look in
 ``HT[k]``.
 
-.. TODO::
-   :type: AV or KA
-
-   Example: Select a table size, and enter some numbers.
-   They will be inserted into the hash table using the hash function
-   :math:`\mathbf{h}(k) = k`.
+.. inlineav:: hashIntroCON1 slideshow
+   :output: show
 
 In most applications, there are many more values in the key range
 than there are slots in the hash table.
@@ -122,3 +120,5 @@ How to compute the table location is the subject of
 Module :numref:`<HashFunc>`, while
 collision resolution will be discussed in
 Module :numref:`<HashCSimple>`.
+
+.. odsascript:: AV/Sorting/hashIntroCON.js

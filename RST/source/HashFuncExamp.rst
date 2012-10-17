@@ -14,6 +14,8 @@
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/Sorting/hashCON.css
+
 Sample Hash Functions
 =====================
 
@@ -29,10 +31,8 @@ of sixteen slots::
 
 Note that "%" is the symbol for the mod function.
 
-.. TODO::
-   type: Slideshow
-
-   Slideshow example for Mod Function
+.. inlineav:: hashFuncExCON1 slideshow
+   :output: show
 
 Recall that the values 0 to 15 can be represented with four bits
 (i.e., 0000 to 1111).
@@ -44,7 +44,7 @@ which means that the low order bit is zero),
 the result will also be poorly distributed.
 This example shows that the size of the table :math:`M`
 can have a big effect on the performance of a hash system because the table size
-is typically used as the modulus  to ensure that the hash
+is typically used as the modulus to ensure that the hash
 function produces a number in the range 0 to :math:`M-1`.
 
 
@@ -65,21 +65,41 @@ In the above example, if more records have keys in the range 900-999
 (A similar, analogous problem arises if we were instead hashing strings based
 on the first letter in the string.)
 
-.. TODO::
-   type: Slideshow
+.. inlineav:: hashFuncExCON2 slideshow
+   :output: show
 
-   Slideshow example for Binning
+In general with binning we store the record with key value :math:`i`
+at array position :math:`i/X` for some value :math:`X`
+(using integer division).
+A problem with Binning is that we have to know the key range so that
+we can figure out what value to use for :math:`X`.
+Let's assume that the keys are all in the range 0 to 999.
+Then we want to divide key values by 100 so that the result is in the
+range 0 to 9.
+There is no particular limit on the key range that binning could
+handle, so long as we know the maximum possible value in advance so
+that we can figure out what to divide the key value by.
+Alternatively, we could also take the result of any binning
+computation and then mod by the table size to be safe.
+So if we have keys that are bigger than 999 when dividing by 100, we
+can still make sure that the result is in the range 0 to 9 with a mod
+by 10 step at the end.
 
-Binning is like the inverse of the mod function: 
-the mod function, for a power of two, looks at the low-order bits,
+Binning looks at the opposite part of the key value from the mod
+function.
+The mod function, for a power of two, looks at the low-order bits,
 while binning looks at the high-order bits.
+Or if you want to think in base 10 instead of base 2, modding by 10 or
+100 looks at the low-order digits, while binning into an array of size
+10 or 100 looks at the high-order digits.
+
 As another example, consider hashing a collection of keys whose values
 follow a normal distribution.
 Keys near the mean of the normal distribution are far more likely
 to occur than keys near the tails of the distribution.
 For a given slot, think of where the keys come from within the distribution.
 Binning would be taking thick slices out of the distribution and assign
-those slice to bins.
+those slices to hash table slots.
 If we use a hash table of size 16, we would divide the key range into 16
 equal-width slices and assign each slice to a slot in the table.
 Since a normal distribution is more likely to generate keys from
@@ -89,6 +109,11 @@ slot in the table a series of thin slices in steps of 16.
 In the normal distribution, some of these slices associated with any given
 slot are near the tails, and some are near the center.
 Thus, each table slot is equally likely (roughly) to get a key value.
+
+.. TODO::
+   :type: Figure
+
+   Need a figure showing this effect of mod vs. binning on a normal distribution.
 
 
 The Mid-Square Method
@@ -127,7 +152,7 @@ the digits of the operator and the digits of the result.
 .. TODO::
    type: Slideshow
 
-   Slideshow examBinning
+   Slideshow showing example of Mid-Square method
 
 Hash Functions for Strings
 --------------------------
@@ -251,3 +276,5 @@ Another alternative would be to fold two characters at a time.
    type: KA
 
    Review questions on hash functions
+
+.. odsascript:: AV/Sorting/hashFuncExCON.js

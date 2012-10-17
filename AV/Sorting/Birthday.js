@@ -44,6 +44,9 @@
         prob = 1.0 - fact;
       }
       tell(prob * 100 + "%");
+      if (prob > 0.5) {
+        awardCompletionCredit(getAVName());
+      }
     }
   }
 

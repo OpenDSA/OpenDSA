@@ -1,10 +1,6 @@
 "use strict";
-/*global alert*/
 // Various functions and variables that will be used by all of the
 // following sections of the tutorial.
-
-// This sets the default value of the speed setting to "7"
-JSAV.ext.SPEED = 300;
 
 // The various arrays to start sweeps with or display
 var theArray = [20, 10, 15, 54, 55, 11, 78, 14];
