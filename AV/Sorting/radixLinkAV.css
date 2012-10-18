@@ -63,11 +63,6 @@ form {
   clear: both;
 }
 
-.jsavindex .jsavvalue {
-  height: 100%;
-  width: 100%;
-}
-
 .jsavcanvas > svg {
   height: 550px;
   width: 845px;

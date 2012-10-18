@@ -65,7 +65,7 @@ We start by picking as :math:`I` the largest power of two less than
 :math:`n`.
 This will generate :math:`I` sublists of 2 records each.
 If there were 16 records in the array indexed from 0
-to 15, there would initially be 8 sublists of 2 recordss each,
+to 15, there would initially be 8 sublists of 2 records each,
 with each record in the sublist being 8 positions apart.
 The first sublist would be the records in positions 0 and 8.
 The second is in positions 1 and 9, and so on.

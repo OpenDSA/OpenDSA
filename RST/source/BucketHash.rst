@@ -14,6 +14,8 @@
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/Sorting/buckethashCON.css
+
 Bucket Hashing
 ==============
 
@@ -57,10 +59,8 @@ found or all records in the overflow bucket have been checked.
 If many records are in the overflow bucket, this will be an
 expensive process.
 
-.. TODO::
-   :type: slideshow
-
-   Slideshow to show off bucket hashing
+.. inlineav:: buckethashCON1 slideshow
+   :output: show
 
 A simple variation on bucket hashing is to hash a key value to some slot
 in the hash table as though bucketing were not being used.
@@ -102,3 +102,5 @@ accesses.
    :type: KA
 
    Exercise to practice bucket hashing
+
+.. odsascript:: AV/Sorting/buckethashCON.js

@@ -4,6 +4,7 @@
 
 .jsavcontainer {
   width: 660px;
+  height: 600px;
   background-color: #eed;
   margin: 0 auto;
   border: 0;
@@ -15,5 +16,9 @@
 }
 
 .jsavcanvas {
-  height: 170px;
+  height: 440px;
+}
+
+svg {
+  z-index: 50;
 }
