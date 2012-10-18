@@ -1,8 +1,8 @@
 "use strict";
 /*global alert: true, console: true, serverEnabled, userLoggedIn,
 warnUserLogin, logUserAction, inLocalStorage, isModulePage, getUsername,
-flushStoredData, getJSON, storeProficiencyStatus, updateExerProfDisplays,
-getModuleName, sendEventData, server_url, moduleName */
+getNameFromURL, flushStoredData, getJSON, storeProficiencyStatus,
+updateExerProfDisplays, getModuleName, sendEventData, server_url, moduleName */
 
 // Contains a list of all exercises (including AVs) on the page
 var exerList = [];
@@ -94,6 +94,10 @@ function showHide(btnID) {
     warnUserLogin();
   }
 }
+
+String.prototype.endsWith = function (suffix) {
+  return this.indexOf(suffix, this.length - suffix.length) !== -1;
+};
 
 //*****************************************************************************
 //*************           LOGIN AND REGISTRATION BOXES            *************
@@ -198,11 +202,27 @@ function hidePopupBox() {
 /**
  * If true, shows the module complete message, otherwise hides it
  */
-function updateModuleProfDisplay(status) {
-  if (status) {
-    $('#modCompleteMsg').show();
-  } else {
-    $('#modCompleteMsg').hide();
+function updateModuleProfDisplay(modName, status) {
+  // Show or hide the 'Module Complete' message on a module page
+  var modCompMsgID = '#' + modName + '_complete';
+
+  if ($(modCompMsgID).length > 0) {
+    if (status) {
+      $(modCompMsgID).show();
+    } else {
+      $(modCompMsgID).hide();
+    }
+  }
+
+  // Show or hide the check mark next to a module on the index page
+  if ($('li.toctree-l1 > a.reference.internal[href="' + modName + '.html"]').length > 0) {
+    var listStyleImage = '';
+
+    if (status) {
+      listStyleImage = 'url(_static/Images/small_check_mark_green.gif)';
+    }
+
+    $('li.toctree-l1 > a.reference.internal[href="' + modName + '.html"]').parent().css('list-style-image', listStyleImage);
   }
 }
 
@@ -232,18 +252,13 @@ function checkProfLocalStorage(name) {
 }
 
 /**
- * Queries the server for the user's proficiency on an exercise or module
+ * Queries the server for the user's proficiency on an exercise
  */
-function checkProficiency(exerName) {
-  var name = (exerName) ? exerName : moduleName;
-  var profStatus = checkProfLocalStorage(name);
+function checkExerProficiency(exerName) {
+  var profStatus = checkProfLocalStorage(exerName);
 
   // Clear the proficiency display if the current user is not listed as proficient
-  if (name === moduleName) {
-    updateModuleProfDisplay(profStatus);
-  } else {
-    updateExerProfDisplays(name, profStatus);
-  }
+  updateExerProfDisplays(exerName, profStatus);
 
   if (profStatus) {
     return;
@@ -251,46 +266,62 @@ function checkProficiency(exerName) {
 
   // Check server for proficiency status
   if (serverEnabled() && userLoggedIn()) {
-    if (name === moduleName) {
-      // Check proficiency of the module
-      jQuery.ajax({
-        url:   server_url + "/api/v1/usermodule/ismoduleproficient/",
-        type:  "POST",
-        data: {"username": getUsername(), "module": moduleName },
-        contentType: "application/json; charset=utf-8",
-        datatype: "json",
-        xhrFields: {withCredentials: true},
-        success: function (data) {
-          data = getJSON(data);
+    // Check proficiency of an exercise
+    jQuery.ajax({
+      url:   server_url + "/api/v1/userdata/isproficient/",
+      type:  "POST",
+      data: {"username": getUsername(), "exercise": exerName },
+      contentType: "application/json; charset=utf-8",
+      datatype: "json",
+      xhrFields: {withCredentials: true},
+      success: function (data) {
+        data = getJSON(data);
 
-          if (data.proficient) {
-            storeProficiencyStatus(moduleName);
-            updateModuleProfDisplay(true);
-          }
-        },
-        error: function (data) { console.error("ERROR " + "isProficient" /*JSON.stringify(data)*/); }
-      });
-    } else {
-      // Check proficiency of an exercise
-      jQuery.ajax({
-        url:   server_url + "/api/v1/userdata/isproficient/",
-        type:  "POST",
-        data: {"username": getUsername(), "exercise": exerName },
-        contentType: "application/json; charset=utf-8",
-        datatype: "json",
-        xhrFields: {withCredentials: true},
-        success: function (data) {
-          data = getJSON(data);
+        // Proficiency indicators were cleared above, only need to
+        // update them again if server responded that the user is proficient
+        if (data.proficient) {
+          updateExerProfDisplays(exerName, true);
+        }
+      },
+      error: function (data) { console.error("ERROR " + "isProficient" /*JSON.stringify(data)*/); }
+    });
+  }
+}
 
-          // Proficiency indicators were cleared above, only need to
-          // update them again if server responded that the user is proficient
-          if (data.proficient) {
-            updateExerProfDisplays(exerName, true);
-          }
-        },
-        error: function (data) { console.error("ERROR " + "isProficient" /*JSON.stringify(data)*/); }
-      });
-    }
+/**
+ * Queries the server for the user's proficiency on an exercise or module
+ */
+function checkModuleProficiency(modName) {
+  modName = (modName) ? modName : moduleName;
+  var profStatus = checkProfLocalStorage(modName);
+
+  // Clear the proficiency display if the current user is not listed as proficient
+  updateModuleProfDisplay(modName, profStatus);
+
+  if (profStatus) {
+    return;
+  }
+
+  // Check server for proficiency status
+  if (serverEnabled() && userLoggedIn()) {
+    // Check proficiency of the module
+    jQuery.ajax({
+      url:   server_url + "/api/v1/usermodule/ismoduleproficient/",
+      type:  "POST",
+      data: {"username": getUsername(), "module": modName },
+      contentType: "application/json; charset=utf-8",
+      datatype: "json",
+      xhrFields: {withCredentials: true},
+      success: function (data) {
+        data = getJSON(data);
+
+        if (data.proficient) {
+          storeProficiencyStatus(modName);
+          updateModuleProfDisplay(modName, true);
+        }
+      },
+      error: function (data) { console.error("ERROR " + "isProficient" /*JSON.stringify(data)*/); }
+    });
   }
 }
 
@@ -312,12 +343,12 @@ function storeKAExerProgress(exerName) {
       // Get the progress from the response
       if (data.progress) {
         var exerData = {};
-      
+
         // Load any existing data
         if (inLocalStorage('khan_exercise')) {
           exerData = getJSON(localStorage.khan_exercise);
         }
-        
+
         exerData[exerName] = data.progress;
         localStorage.khan_exercise = JSON.stringify(exerData);
 
@@ -384,19 +415,29 @@ function updateLogin() {
     }
 
     if (updated) {
-      // Update proficiency displays to reflect the proficiency of the current user
-      var i;
-      for (i = 0; i < exerList.length; i++) {
-        checkProficiency(exerList[i]);
-      }
+      if (moduleName === 'index') {
+        // Get every module page link on the index page and determine if the user is proficient
+        $('li.toctree-l1 > a.reference.internal').each(function (index, item) {
+          if ($(item).attr('href').endsWith('.html')) {
+            var modName = getNameFromURL($(item).attr('href'));
+            checkModuleProficiency(modName);
+          }
+        });
+      } else {
+        // Update exercise proficiency displays to reflect the proficiency of the current user
+        var i;
+        for (i = 0; i < exerList.length; i++) {
+          checkExerProficiency(exerList[i]);
+        }
 
-      // Check for module proficiency
-      checkProficiency();
+        // Check for module proficiency
+        checkModuleProficiency();
 
-      if (userLoggedIn()) {
-        // Check and store the progress of all KA exercises
-        for (i = 0; i < kaExerList.length; i++) {
-          storeKAExerProgress(kaExerList[i]);
+        if (userLoggedIn()) {
+          // Check and store the progress of all KA exercises
+          for (i = 0; i < kaExerList.length; i++) {
+            storeKAExerProgress(kaExerList[i]);
+          }
         }
       }
     }
@@ -410,7 +451,7 @@ function updateLogin() {
 $(document).ready(function () {
   // Append the module complete code to the header
   $('h1 > a.headerlink').parent().css('position', 'relative');
-  $('h1 > a.headerlink').parent().append('<div id="modCompleteMsg" class="mod_complete">Module Complete</div>');
+  $('h1 > a.headerlink').parent().append('<div id="' + moduleName + '_complete" class="mod_complete">Module Complete</div>');
 
   // Populate the list of AVs on the page
   // Add all AVs that have a showhide button
@@ -614,6 +655,6 @@ $(document).ready(function () {
     updateExerProfDisplays(msg.exercise, msg.proficient);
 
     // Check for module proficiency
-    checkProficiency();
+    checkModuleProficiency();
   }, false);
 });

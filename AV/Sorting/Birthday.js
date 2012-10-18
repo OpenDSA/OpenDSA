@@ -1,5 +1,5 @@
 "use strict";
-/*global alert*/
+/*global alert: true, awardCompletionCredit, getAVName */
 (function ($) {
   // Declare and initialize state variables
   var
