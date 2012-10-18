@@ -14,6 +14,8 @@
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/Sorting/openhashCON.css
+
 Open Hashing
 ============
 
@@ -38,14 +40,11 @@ The simplest form of open hashing defines each slot in the
 hash table to be the head of a linked list.
 All records that hash to a particular slot are placed on that slot's
 linked list.
-The figure illustrates a hash table where each
-slot stores one record and a link pointer to the rest of the list.
+The following figure illustrates a hash table where each
+slot points to a linked list to hold the records associated with that slot.
+The hash function used is the simple mod function.
 
-.. TODO::
-   :type: slideshow
-
-   Slideshow to demonstrate open hashing (see figure in Section 3 of
-   old tutorial).
+.. inlineav:: openhashCON1 diagram
 
 Records within a slot's list can be ordered in several ways:
 by insertion order, by key value order, or by frequency-of-access
@@ -87,7 +86,8 @@ In a similar fashion, a simple Binsort reduces the number of
 records in each bin to a small number that can be sorted in some
 other way.
 
-.. TODO::
-   :type: KA
+.. avembed:: Exercises/Sorting/OpenHashPRO.html
+   :showbutton: hide
+   :title: Open Hashing Exercise
 
-   Exercise for open hashing
+.. odsascript:: AV/Sorting/openhashCON.js

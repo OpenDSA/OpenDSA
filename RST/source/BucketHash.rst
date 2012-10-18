@@ -81,6 +81,11 @@ The advantage of this approach is that initial collisions are reduced,
 Because any slot can be a home position rather than just the first slot
 in the bucket.
 
+.. TODO::
+   :type: slideshow
+
+   Slideshow to show variant on bucket hashing
+
 Bucket methods are good for implementing hash tables stored on disk,
 because the bucket size can be set to the size of a disk block.
 Whenever search or insertion occurs, the entire bucket is read

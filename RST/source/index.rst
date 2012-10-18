@@ -84,7 +84,6 @@ Hashing
    HashCImproved
    HashAnal
    HashDel
-   Hashing
 
 File Processing
 ---------------

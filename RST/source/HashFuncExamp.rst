@@ -94,39 +94,45 @@ Or if you want to think in base 10 instead of base 2, modding by 10 or
 10 or 100 looks at the high-order digits.
 
 As another example, consider hashing a collection of keys whose values
-follow a normal distribution.
+follow a normal distribution, as illustrated by
+Figure :num:`Figure #HashNormal`.
 Keys near the mean of the normal distribution are far more likely
 to occur than keys near the tails of the distribution.
 For a given slot, think of where the keys come from within the distribution.
 Binning would be taking thick slices out of the distribution and assign
 those slices to hash table slots.
-If we use a hash table of size 16, we would divide the key range into 16
+If we use a hash table of size 8, we would divide the key range into 8
 equal-width slices and assign each slice to a slot in the table.
 Since a normal distribution is more likely to generate keys from
 the middle slice, the middle slot of the table is most likely to be used.
 In contrast, if we use the mod function, then we are assigning to any given
-slot in the table a series of thin slices in steps of 16.
+slot in the table a series of thin slices in steps of 8.
 In the normal distribution, some of these slices associated with any given
 slot are near the tails, and some are near the center.
 Thus, each table slot is equally likely (roughly) to get a key value.
 
-.. TODO::
-   :type: Figure
+.. _HashNormal:
 
-   Need a figure showing this effect of mod vs. binning on a normal distribution.
+.. figure:: Images/HashNormal.png
+   :width: 900
+   :align: center
+   :figwidth: 90%
+   :alt: Binning vs. Mod Function
 
+   A comparison of binning vs. modulus as a hash function.
 
 The Mid-Square Method
 ---------------------
 
-A good hash function to use with integer key values is the <b>mid-square</b>
-method.
+A good hash function to use with integer key values is the
+:dfn:`mid-square` method.
 The mid-square method squares the key value, and then takes out the middle
 :math:`r` bits of the result, giving a value in the range
 0 to :math:`2^{r}-1`.
 This works well because most or all bits of the key value contribute to
 the result.
-For example, consider records whose keys are 4-digit numbers in base 10.
+For example, consider records whose keys are 4-digit numbers in base
+10, as shown in Figure :numref:`MidSquareFig`.
 The goal is to hash these key values to a table of size 100
 (i.e., a range of 0 to 99).
 This range is equivalent to two digits in base 10.
@@ -144,10 +150,15 @@ then their squares will only affect the low-order digits of the hash value.
 This image shows the long division process, and the relationship between
 the digits of the operator and the digits of the result.
 
-.. TODO::
-   type: Figure
+.. _MidSquareFig:
 
-   Get the figure from the old hashing tutorial Section 2.3
+.. figure:: Images/MidSquare.png
+   :width: 70
+   :align: center
+   :figwidth: 90%
+   :alt: Mid-square method example
+
+   An example of the mid-square method.
 
 .. TODO::
    type: Slideshow
@@ -262,19 +273,18 @@ This still only works well for strings long enough
 well for short strings either.
 Another alternative would be to fold two characters at a time.
 
-.. TODO::
-   type: AV
-
-   Summary AV to show off various choices
+.. avembed:: AV/Development/hash.html?method=3&collision=1
 
 .. TODO::
    type: KA
 
-   Exercise to try out different hash functions
+   Exercise to try out different hash functions. There should be a
+   separate exercise for each of 5 hash functions, with only a summary
+   exercise that presents them randomly being shown on the page.
 
 .. TODO::
    type: KA
 
-   Review questions on hash functions
+   MCQ review questions on hash functions
 
 .. odsascript:: AV/Sorting/hashFuncExCON.js

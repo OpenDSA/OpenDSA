@@ -177,11 +177,6 @@ worse.
 The objection to primary clustering is that it leads to
 long probe sequences.
 
-.. TODO::
-   :type: AV
-
-   AV to show linear probing
-
 .. avembed:: Exercises/Sorting/HashingLinearProbePRO.html
    :showbutton: hide
    :title: Linear Probing Exercise

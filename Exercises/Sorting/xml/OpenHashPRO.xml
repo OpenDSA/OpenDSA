@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<entry>
+<id>http://algoviz.org/OpenDSA/Exercises/Sorting/OpenHashPRO.html</id>
+<title type='text'>Open Hashing Exercise</title>
+<description type='text'>Open Hashing Exercise</description>
+<type>ka</type>  
+<width>950</width>
+<height>790</height>
+<author>
+<name>OpenDSA</name>
+<uri>http://algoviz.org/OpenDSA/</uri>
+</author>
+<covers>hashing</covers>
+<streak>3</streak>
+</entry>
