@@ -64,27 +64,16 @@ expensive process.
 
 A simple variation on bucket hashing is to hash a key value to some slot
 in the hash table as though bucketing were not being used.
-If the home position is full, then the collision resolution process is
-to move down through the table toward the end of the bucket while searching
-for a free slot in which to store the record.
-If the bottom of the bucket is reached, then the collision
-resolution routine wraps around to the top of the bucket to continue the
-search for an open slot.
-For example, assume that buckets contain eight records, with the first
-bucket consisting of slots 0 through 7.
-If a record is hashed to slot 5, the collision resolution process
-will attempt to insert the record into the table in the order 5, 6, 7,
-0, 1, 2, 3, and finally 4.
+If the home position is full, then we search through the rest of the
+bucket to find an empty slot
 If all slots in this bucket are full, then the record is assigned
 to the overflow bucket.
 The advantage of this approach is that initial collisions are reduced,
-Because any slot can be a home position rather than just the first slot
+because any slot can be a home position rather than just the first slot
 in the bucket.
 
-.. TODO::
-   :type: slideshow
-
-   Slideshow to show variant on bucket hashing
+.. inlineav:: buckethashCON2 slideshow
+   :output: show
 
 Bucket methods are good for implementing hash tables stored on disk,
 because the bucket size can be set to the size of a disk block.
