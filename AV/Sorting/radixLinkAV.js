@@ -35,7 +35,7 @@
   function about() {
     alert("Radix Sort algorithm visualization\nWritten by Brandon Watkins and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
-  
+
   // Process Reset button: Reinitialize the output textbox and the AV
   function reset(flag) {
     if (av) {
@@ -157,7 +157,7 @@
         lists[i] = av.ds.list({top: (40 + i * 47), left: 240, nodegap: 30});
         lists[i].layout({center: false});
         // create initially hidden arrows from array indices to lists
-        arrows[i] = av.g.line(200, 60 + i * 47, 240, 60 + i * 47, 
+        arrows[i] = av.g.line(200, 60 + i * 47, 240, 60 + i * 47,
                     {"arrow-end": "classic-wide-long", "opacity": 0, "stroke-width": 2});
       }
       av.umsg("Phase 1: Move the records from the input array to the digit array.");
@@ -208,7 +208,7 @@
       shift = shift * 10;
     }
   }
-  
+
   // Connect action callbacks to the HTML entities
   $('#help').click(help);
   $('#about').click(about);

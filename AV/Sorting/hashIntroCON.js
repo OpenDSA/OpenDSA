@@ -39,10 +39,10 @@
   arr.highlight(2);
   av.step();
 
-  av.umsg("Of course, we cannot store multiple records with the same key value either.")  
+  av.umsg("Of course, we cannot store multiple records with the same key value either.");
   arr.unhighlight();
   av.step();
 
-  av.umsg("The good news is that we can immediately tell if there is a record with key value 5 in the array.")
+  av.umsg("The good news is that we can immediately tell if there is a record with key value 5 in the array.");
   av.recorded();
 }(jQuery));

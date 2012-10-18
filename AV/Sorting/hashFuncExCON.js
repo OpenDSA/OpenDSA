@@ -39,11 +39,11 @@
   arr.highlight(2);
   av.step();
 
-  av.umsg("Of course, we cannot store multiple records with the same key value using this hash function either.")  
+  av.umsg("Of course, we cannot store multiple records with the same key value using this hash function either.");
   arr.unhighlight(2);
   av.step();
 
-  av.umsg("The good news is that we can immediately tell if there is a record with key value 392 in the array. We simply take 392 % 10 = 2, and check to see if the key for the record in position 2 matches 392 (which it does not in this example).")
+  av.umsg("The good news is that we can immediately tell if there is a record with key value 392 in the array. We simply take 392 % 10 = 2, and check to see if the key for the record in position 2 matches 392 (which it does not in this example).");
   av.recorded();
 }(jQuery));
 
