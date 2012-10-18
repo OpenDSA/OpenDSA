@@ -12,6 +12,7 @@
     av.step();
     av.umsg("Move the smaller value.");
     av.effects.moveValue(a, i, jsavarr_answer, o);
+    a.unhighlight(i);
     av.step();
     av.umsg("Compare the smallest values in each list");
     a.highlight(i + 1);
@@ -38,6 +39,7 @@
   av.step();
   av.umsg("Move it to position 0 of the output list.");
   av.effects.moveValue(jsavarr_right, 0, jsavarr_answer, 0);
+  jsavarr_right.unhighlight(0);
   av.step();
   av.umsg("Continue in this way, at each step comparing the smallest values in each list");
   jsavarr_right.highlight(1);
