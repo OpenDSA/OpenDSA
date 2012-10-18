@@ -3,7 +3,7 @@
   var empty = [];
   var i;
   for (i = 0; i < 10; i++) { empty[i] = ""; }
-  var av = new JSAV(openhashCON1, {"animationMode": "none"});
+  var av = new JSAV('openhashCON1', {"animationMode": "none"});
   var arr = av.ds.array(empty, {indexed: true, center: false,
                             layout: "vertical"});
   var lists = []; // The actual set of lists

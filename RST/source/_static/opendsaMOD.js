@@ -1,8 +1,8 @@
 "use strict";
 /*global alert: true, console: true, serverEnabled, userLoggedIn,
 warnUserLogin, logUserAction, inLocalStorage, isModulePage, getUsername,
-flushStoredData, getJSON, storeProficiencyStatus, updateExerProfDisplays,
-getModuleName, sendEventData, server_url, moduleName */
+getNameFromURL, flushStoredData, getJSON, storeProficiencyStatus,
+updateExerProfDisplays, getModuleName, sendEventData, server_url, moduleName */
 
 // Contains a list of all exercises (including AVs) on the page
 var exerList = [];
@@ -95,7 +95,7 @@ function showHide(btnID) {
   }
 }
 
-String.prototype.endsWith = function(suffix) {
+String.prototype.endsWith = function (suffix) {
   return this.indexOf(suffix, this.length - suffix.length) !== -1;
 };
 
@@ -205,7 +205,7 @@ function hidePopupBox() {
 function updateModuleProfDisplay(modName, status) {
   // Show or hide the 'Module Complete' message on a module page
   var modCompMsgID = '#' + modName + '_complete';
-  
+
   if ($(modCompMsgID).length > 0) {
     if (status) {
       $(modCompMsgID).show();
@@ -213,15 +213,15 @@ function updateModuleProfDisplay(modName, status) {
       $(modCompMsgID).hide();
     }
   }
-  
+
   // Show or hide the check mark next to a module on the index page
   if ($('li.toctree-l1 > a.reference.internal[href="' + modName + '.html"]').length > 0) {
     var listStyleImage = '';
-    
+
     if (status) {
       listStyleImage = 'url(_static/Images/small_check_mark_green.gif)';
     }
-    
+
     $('li.toctree-l1 > a.reference.internal[href="' + modName + '.html"]').parent().css('list-style-image', listStyleImage);
   }
 }
@@ -343,12 +343,12 @@ function storeKAExerProgress(exerName) {
       // Get the progress from the response
       if (data.progress) {
         var exerData = {};
-      
+
         // Load any existing data
         if (inLocalStorage('khan_exercise')) {
           exerData = getJSON(localStorage.khan_exercise);
         }
-        
+
         exerData[exerName] = data.progress;
         localStorage.khan_exercise = JSON.stringify(exerData);
 
@@ -417,9 +417,9 @@ function updateLogin() {
     if (updated) {
       if (moduleName === 'index') {
         // Get every module page link on the index page and determine if the user is proficient
-        $('li.toctree-l1 > a.reference.internal').each(function (index, item) { 
+        $('li.toctree-l1 > a.reference.internal').each(function (index, item) {
           if ($(item).attr('href').endsWith('.html')) {
-            var modName = getNameFromURL($(item).attr('href')); 
+            var modName = getNameFromURL($(item).attr('href'));
             checkModuleProficiency(modName);
           }
         });
