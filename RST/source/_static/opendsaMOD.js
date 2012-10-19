@@ -374,11 +374,14 @@ function updateLogin() {
     var username = getUsername();
     var updated = false;
 
-    if (inLocalStorage('opendsa') && $('a.login-window').text() !== 'Logout ' + username) {
+    if (inLocalStorage('opendsa') && $('a.username-link').text() !== username) {
       updated = true;
 
       // Update display to show logged in user
-      $('a.login-window').text('Logout ' + username);
+      $('a.login-window').text('Logout');
+      $('a.username-link').text(username);
+      $('a.username-link').attr('href', server_url + '/student_view/' + username);
+      $('a.username-link').show();
       $('a.registration-window').hide();
 
       // In case the user loaded a bunch of pages,
@@ -391,6 +394,8 @@ function updateLogin() {
 
       // Update display to show that no user is logged in
       $('a.login-window').text("Login");
+      $('a.username-link').text('');
+      $('a.username-link').hide();
       $('a.registration-window').show();
 
       if (inLocalStorage('warn_login')) {
