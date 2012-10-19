@@ -111,10 +111,9 @@ after the first step on the sequence should not be identical to the
 probe sequence of :math:`k_2`.
 Instead, their probe sequences should diverge.
 
-.. TODO::
-   :type: KA
-
-   Exercise to practice steps by 2
+.. avembed:: Exercises/Sorting/HashingLinearStepProbePRO.html
+   :showbutton: hide
+   :title: Linear Probing by Steps Exercise
 
 Pseudo-Random Probing
 ---------------------
