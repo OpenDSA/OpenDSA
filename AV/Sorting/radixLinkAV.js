@@ -154,10 +154,10 @@
       // Initialize the lists
       for (i = 0; i < 10; i++) {
 //        if (lists[i]) { lists[i].clear(); }
-        lists[i] = av.ds.list({top: (40 + i * 47), left: 240, nodegap: 30});
+        lists[i] = av.ds.list({top: (40 + i * 46), left: 240, nodegap: 30});
         lists[i].layout({center: false});
         // create initially hidden arrows from array indices to lists
-        arrows[i] = av.g.line(200, 60 + i * 47, 240, 60 + i * 47,
+        arrows[i] = av.g.line(200, 60 + i * 46, 240, 60 + i * 46,
                     {"arrow-end": "classic-wide-long", "opacity": 0, "stroke-width": 2});
       }
       av.umsg("Phase 1: Move the records from the input array to the digit array.");

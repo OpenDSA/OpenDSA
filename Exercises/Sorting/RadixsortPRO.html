@@ -37,11 +37,6 @@ Written by Gayathri Subramanian and Cliff Shaffer
     }
 
     #reset { margin-right: 20px;}
-
-    .jsavindex .jsavvalue {
-      height: 100%;
-      width: 100%;
-    }
   </style>
 </head>
 
@@ -60,7 +55,7 @@ var
   empty = [],     // Dummy for empty data to reset bin array
   isSelected;     // Boolean: True iff user has already clicked an array element
 
-var blockHeight = 47;  // Width/height of an array or list element
+var blockHeight = 46;  // Width/height of an array or list element
 
 // Variables used to keep track of the index and array of the
 // currently selected element within click handler
@@ -104,7 +99,7 @@ function resetInit() {
                            layout: "vertical", top: 10, left: 200});
   jsavBins.click(function (index) { clickHandler(this, index); });
   for (i = 0; i < 10; i++) {
-    jsavLists[i] = jsav.ds.list({top: (11 + i * 47), left: 260, nodegap: 30});
+    jsavLists[i] = jsav.ds.list({top: (11 + i * blockHeight), left: 260, nodegap: 30});
     jsavLists[i].layout({center: false});
   }
   jsav.step();

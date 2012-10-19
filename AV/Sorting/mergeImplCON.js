@@ -4,6 +4,7 @@
     av.step();
     av.umsg("Move the smaller value.");
     av.effects.moveValue(jsavarr_temp, i, jsavarr_A, o);
+    jsavarr_temp.unhighlight(i);
     av.step();
     if (o !== 8) {
       av.umsg("Compare the smallest values in each list.");
@@ -35,6 +36,7 @@
   av.step();
   av.umsg("Move it to position 0 of the A array.");
   av.effects.moveValue(jsavarr_temp, 5, jsavarr_A, 0);
+  jsavarr_temp.unhighlight(5);
   av.step();
   av.umsg("Continue in this way, at each step comparing the smallest values in each list");
   jsavarr_temp.highlight(6);
@@ -54,8 +56,7 @@
     av.step();
     av.umsg("Move the smaller value.");
     av.effects.moveValue(jsavarr_temp, i, jsavarr_A, o);
-//    jsavarr_A.value(o, jsavarr_temp.value(i));
-//    jsavarr_temp.value(i, "");
+    jsavarr_temp.unhighlight(i);
     av.step();
     if (o !== 8) {
       av.umsg("Compare the smallest values in each list.");
@@ -94,6 +95,7 @@
   av.step();
   av.umsg("Move it to position 0 of the A array.");
   av.effects.moveValue(jsavarr_temp, 8, jsavarr_A, 0);
+  jsavarr_temp.unhighlight(8);
   av.step();
   av.umsg("Continue in this way, at each step comparing the smallest values in each list");
   jsavarr_temp.highlight(7);
