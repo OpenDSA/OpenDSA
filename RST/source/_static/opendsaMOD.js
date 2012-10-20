@@ -380,7 +380,6 @@ function updateLogin() {
       // Update display to show logged in user
       $('a.login-window').text('Logout');
       $('a.username-link').text(username);
-      $('a.username-link').attr('href', server_url + '/student_view/' + username);
       $('a.username-link').show();
       $('a.registration-window').hide();
 
