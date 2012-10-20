@@ -449,6 +449,76 @@ function updateLogin() {
   }
 }
 
+
+/**
+ * Queries the server for the user's points
+ */
+function getUserPoints() {
+  // Check server for user's points
+  if (serverEnabled() && userLoggedIn()) {
+    // get user points
+    jQuery.ajax({
+      url:   server_url + "/api/v1/userdata/getgrade/",
+      type:  "POST",
+      data: {"username": getUsername()},    
+      contentType: "application/json; charset=utf-8",
+      datatype: "json",
+      xhrFields: {withCredentials: true},
+      success: function (data) {
+        data = getJSON(data);
+        
+        if (!data.grade) {
+          gradeDisplays(data);
+        }
+      },
+      error: function (data) { console.error("ERROR " + "getGrade" /*JSON.stringify(data)*/); }
+    });
+  }
+}
+
+
+function gradeDisplays(data) {
+  var row = '<tr class="header">';
+  row += '<th style=""><a href="#" class="sort"><span>Exercises</span></a></th>';
+  row += '<th style=""><a href="#" class="sort"><span>Modules</span></a></th>';
+  var pos = new Array(); 
+  var j = 0;
+  var total = 0;   
+  for (var i in data.headers) {
+    row += '<th style=""><a href="#" class="sort"><span>' + data.headers[i] + '</span></a></th>';
+    pos[j] = i;
+    j += 1;
+    }
+  row += '</tr>'
+  $(row).appendTo('table.data');
+  row = '';
+  for (var i in data.grades) {
+    row += '<tr id="' + i + '">';
+    row += '<td>' + data.grades[i].exercise + '</td>';
+    row += '<td>' + data.grades[i].module + '</td>';
+    var col = pos.indexOf(data.grades[i].type);  
+    if (col == -1) {
+      col =  pos.indexOf("ss");   
+      }  
+    for (var k=0;k<col;k++) {  
+       row += '<td></td>'; 
+       }    
+    total += parseFloat(data.grades[i].points);   
+    row += '<td>' + data.grades[i].points + '</td>';
+    row += '</tr>';
+    }
+  $(row).appendTo('table.data'); 
+  row = '';   
+  row += '<tr class="header">';
+  row += '<th style=""><span>Total</span></th>';  
+  row += '<th style=""><span>' + total + '</span></th>';   
+  row += '</tr>'; 
+  $(row).appendTo('table.data');  
+   $('#pointsBox').hide();   
+}
+
+
+
 //*****************************************************************************
 //***********            Runs When Page Finishes Loading            ***********
 //*****************************************************************************
@@ -646,6 +716,12 @@ $(document).ready(function () {
   $("a.abt").click(function (event) {
     info();
   });
+
+
+  //User wants to see grades
+  $('#pointsBox').click(function(){
+    getUserPoints();    
+  });  
 
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];

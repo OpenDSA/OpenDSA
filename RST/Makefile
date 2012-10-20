@@ -65,6 +65,7 @@ html: preprocessor makeconf
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	cp ../lib/.htaccess $(BUILDDIR)/html
 	python preprocessor.py -p   source/ $(BUILDDIR)/html 
+	cp source/student.html $(BUILDDIR)/html 
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."

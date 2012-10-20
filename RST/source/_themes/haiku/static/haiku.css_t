@@ -467,8 +467,56 @@ form.signin .textbox input {
 form.signin input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
 form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
 
+/* student page rules */  
+#pointsBox {
+  width: 180px;
+  height: 25px;
+  margin: 50px auto;
+  cursor:pointer;    
+  /*border: 1px solid #333;*/
+  /*background-color: #00ffff;*/
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}    
 
+span.pointsTitleTxt {
+  display:block;
+  width:100px;
+  height: 100%;
+  margin: 0 auto;  
+}
 
-
-
+table.data {
+ margin: 1em 1em 1em 0;
+ background: whitesmoke;
+ border-collapse: collapse;
+ -moz-border-radius: 10px;
+ -webkit-border-radius: 10px;
+ border-radius: 10px;
+ -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+ -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+ box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}
+table.data th, table.fancy td {
+ border: 1px silver gainsboro;
+ padding: 0.2em;
+}
+table.data th {
+ background: gainsboro;
+ text-align: left;
+}
+table.data tr:hover td {
+ background: mintcream !important;
+}
+table.data caption {
+ margin-left: inherit;
+ margin-right: inherit;
+}
+table.data tr:hover td {
+ background: mintcream !important;
+}   
 
