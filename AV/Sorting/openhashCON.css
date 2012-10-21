@@ -6,3 +6,7 @@
   border: 0;
   position: relative;
 }
+
+svg {
+  z-index: 50;
+}

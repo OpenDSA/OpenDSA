@@ -1,5 +1,6 @@
 "use strict";
 (function ($) {
+  var temp;
   var empty = [];
   var i;
   for (i = 0; i < 10; i++) { empty[i] = ""; }
@@ -12,8 +13,6 @@
     lists[i].layout({center: false});
   }
   lists[0].addFirst(100);
-  av.g.line(200, 60 + i * 46, 240, 60 + i * 46,
-           {"arrow-end": "classic-wide-long", "opacity": 0, "stroke-width": 2});
   lists[0].addLast(930);
   lists[0].layout({center: false});
   lists[3].addLast(313);

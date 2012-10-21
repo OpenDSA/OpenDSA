@@ -160,10 +160,12 @@ the digits of the operator and the digits of the result.
 
    An example of the mid-square method.
 
-.. TODO::
-   type: Slideshow
+Here is a little calculator for you to see how this works.
+Start with '4567' as an example.
 
-   Slideshow showing example of Mid-Square method
+.. avembed:: AV/Sorting/MidSquare.html
+   :showbutton: show
+   :title: Mid-Square Calculator
 
 Hash Functions for Strings
 --------------------------
@@ -282,9 +284,8 @@ Another alternative would be to fold two characters at a time.
    separate exercise for each of 5 hash functions, with only a summary
    exercise that presents them randomly being shown on the page.
 
-.. TODO::
-   type: KA
-
-   MCQ review questions on hash functions
+.. avembed:: Exercises/Sorting/HashFuncSumm.html
+   :showbutton: hide
+   :title: Review Questions
 
 .. odsascript:: AV/Sorting/hashFuncExCON.js

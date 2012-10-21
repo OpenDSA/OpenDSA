@@ -1,5 +1,4 @@
 "use strict";
-
 (function ($) {
   var empty = [];
   empty.length = 10;

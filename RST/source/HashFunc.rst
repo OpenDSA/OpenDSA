@@ -77,12 +77,14 @@ In the extreme case, even a function that maps all records to the same
 slot in the array is a hash function, but it does nothing to help us
 find records during a search operation.
 
-We would like to pick a hash function that stores the
-actual records in the collection such that each slot in the hash table 
-has equal probablility of being filled.
-Unfortunately, we normally have no control over the key values of the
-actual records, so how well any particular hash function does
-depends on the distribution of the keys within the allowable key range.
+We would like to pick a hash function that maps keys
+to slots in a way that makes each slot in the hash table have equal
+probablility of being filled for the actual set keys being used.
+Unfortunately, we normally have no control over the distribution of
+key values for the actual records in a given database or collection.
+So how well any particular hash function does
+depends on the actual distribution of the keys used within the
+allowable key range.
 In some cases, incoming data are well distributed across their key
 range.
 For example, if the input is a set of random numbers selected
