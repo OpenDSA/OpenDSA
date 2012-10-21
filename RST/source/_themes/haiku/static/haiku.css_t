@@ -469,8 +469,8 @@ form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #
 
 /* student page rules */  
 #pointsBox {
-  width: 180px;
-  height: 25px;
+  width: 250px;
+  height: 25px;     
   margin: 50px auto;
   cursor:pointer;    
   /*border: 1px solid #333;*/
@@ -485,7 +485,7 @@ form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #
 
 span.pointsTitleTxt {
   display:block;
-  width:100px;
+  width:200px;
   height: 100%;
   margin: 0 auto;  
 }

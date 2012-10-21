@@ -480,30 +480,48 @@ function gradeDisplays(data) {
   var row = '<tr class="header">';
   row += '<th style=""><a href="#" class="sort"><span>Exercises</span></a></th>';
   row += '<th style=""><a href="#" class="sort"><span>Modules</span></a></th>';
+  row += '<th style=""><a href="#" class="sort"><span>Points</span></a></th>';
+  row += '</tr>';   
   var pos = new Array(); 
   var j = 0;
-  var total = 0;   
-  for (var i in data.headers) {
-    row += '<th style=""><a href="#" class="sort"><span>' + data.headers[i] + '</span></a></th>';
-    pos[j] = i;
-    j += 1;
+  var total = 0;
+  var max_ss = "";
+  var max_ka = "";
+  var max_pe = "";     
+  for (var i in data.max_points) {
+    if (i =="ss") {     
+       max_ss = parseFloat(data.max_points[i]);  
+       }   
+    if (i =="ka") {
+       max_ka = parseFloat(data.max_points[i]);
+       }   
+    if (i =="pe") {
+       max_pe = parseFloat(data.max_points[i]);
+       }
     }
-  row += '</tr>'
   $(row).appendTo('table.data');
   row = '';
   for (var i in data.grades) {
     row += '<tr id="' + i + '">';
     row += '<td>' + data.grades[i].exercise + '</td>';
     row += '<td>' + data.grades[i].module + '</td>';
-    var col = pos.indexOf(data.grades[i].type);  
-    if (col == -1) {
-      col =  pos.indexOf("ss");   
+    var max = 0;  
+    if (data.grades[i].type == "ka") {   
+      max = max_ka;
       }  
-    for (var k=0;k<col;k++) {  
-       row += '<td></td>'; 
-       }    
-    total += parseFloat(data.grades[i].points);   
-    row += '<td>' + data.grades[i].points + '</td>';
+    else if (data.grades[i].type == "pe") {
+      max = max_pe;  
+       }
+    else {
+      max = max_ss;   
+      }   
+    total += parseFloat(data.grades[i].points);  
+    if ( parseFloat(data.grades[i].points) > 0 ) {  
+       row += '<td bgcolor="#00FF00">' + data.grades[i].points + '/' + max + '</td>';  
+       }
+    else {    
+       row += '<td>' + data.grades[i].points + '/' + max + '</td>';
+       }
     row += '</tr>';
     }
   $(row).appendTo('table.data'); 
@@ -718,9 +736,11 @@ $(document).ready(function () {
 
 
   //User wants to see grades
-  $('#pointsBox').click(function(){
-    getUserPoints();    
-  });  
+  var sPath = window.location.pathname;
+  var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+  if (sPage == "student.html") {
+    getUserPoints();
+  }
 
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];
