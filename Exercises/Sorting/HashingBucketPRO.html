@@ -15,7 +15,7 @@
   <script type="text/javascript" src="/MathJax/MathJax.js?config=default"></script>
   <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <style>
@@ -39,6 +39,7 @@
     svg {
       z-index: 50;
     }
+    .jsavcanvas { height: 500px;}
   </style>
 </head>
 
@@ -84,15 +85,15 @@ function resetInit() {
   // Do initializations, both for initial use and reset
   userInput = false;
   jsavInput = jsav.ds.array(initData, {indexed: true, center: false,
-                            layout: "vertical", top: 30});
-  jsav.label("Hash Table", {left: -20, top: 8});
-  jsav.label("<b style='color:#0b0;'>B0</b>", {left: 55, top: 70});
-  jsav.label("<b style='color:#0b0;'>B1</b>", {left: 55, top: 162});
-  jsav.label("<b style='color:#0b0;'>B2</b>", {left: 55, top: 254});
-  jsav.label("<b style='color:#0b0;'>B3</b>", {left: 55, top: 346});
-  jsav.label("<b style='color:#0b0;'>B4</b>", {left: 55, top: 438});
-  for (i = 0; i < 5; i++) {
-    jsav.g.line(20, 107 + (i * 92), 85, 107 + (i * 92), {"stroke-width": 2});
+                            layout: "vertical", left: 20, top: 30});
+  jsav.label("Hash Table", {left: 20, top: 8});
+  jsav.label("<b style='color:#0b0;'>B0</b>", {left: 85, top: 65});
+  jsav.label("<b style='color:#0b0;'>B1</b>", {left: 85, top: 157});
+  jsav.label("<b style='color:#0b0;'>B2</b>", {left: 85, top: 249});
+  jsav.label("<b style='color:#0b0;'>B3</b>", {left: 85, top: 341});
+  jsav.label("<b style='color:#0b0;'>B4</b>", {left: 85, top: 433});
+  for (i = 0; i < 4; i++) {
+    jsav.g.line(20, 123 + (i * 92), 85, 123 + (i * 92), {"stroke-width": 2});
   }
   setGray(jsavInput, [0, 1, 4, 5, 8, 9]);
   jsavInput.click(function (index) { clickHandler(this, index); });
