@@ -57,7 +57,7 @@ var
   overflow,         // Boolean to indicate if this problem instance
                     // results in overflowing
   jsavInput,        // JSAV array for problem instance
-  jsavOverflow,     // JSAV overflow array 
+  jsavOverflow,     // JSAV overflow array
   empty = [],       // Dummy for empty data to reset bin array
   empty8 = [];      // Dummy for empty data for overflow
 
@@ -65,14 +65,10 @@ var
 // Place the value where user puts it
 var clickHandler = function (arr, index) {
   if (arr === jsavInput) {
-console.log("Click jsavInput: " + index);
     jsavInput.value(index, inputkey);
-console.log("Set to: " + jsavInput.value(index));
-  } else if (arr === jsavOverflow) {
-console.log("Click jsavOverflow: " + index);
+  } else { // In overflow array
     jsavOverflow.value(index, inputkey);
   }
-else { console.log("OOOPS!!!"); }
   userInput = true;
 };
 
@@ -117,9 +113,8 @@ var f_reset = function () {
 // Initialize the problem instance (and set the answer arrays)
 // Alternate bucket hash method
 var gen_instance = function (steps) {
-console.log("get_instance: " + inputkey + ", " + steps);
   var i, k;
-  var slot;
+  var slot; // The OTHER slot in the current bucket that does NOT hold inputkey
   if ((inputkey % 2) === 0) { slot = (inputkey % 10) + 1; }
   else { slot = (inputkey % 10) - 1; }
   for (i = 0; i < 8; i++) {
@@ -131,29 +126,27 @@ console.log("get_instance: " + inputkey + ", " + steps);
   if ((steps === 1) || (steps === 2)) { // Make a collision
     k = JSAV.utils.rand.numKey(0, 1000);
     while ((k % 10) !== (inputkey % 10)) { k = JSAV.utils.rand.numKey(0, 1000); }
-    answer[k % 10] = k
+    answer[k % 10] = k;
   }
   if (steps === 2) { // Put it in the other slot of this bucket
     k = JSAV.utils.rand.numKey(0, 1000);
     while ((k % 10) !== slot) { k = JSAV.utils.rand.numKey(0, 1000); }
     answer[slot] = k;
   }
-  for (i = 0; i < (5 - steps); i++) {
+  var bucket = Math.floor((inputkey % 10) / 2);
+  for (i = 0; i < 6; i++) { // Randomly put in some more numbers, but
+                            // not in this bucket
     k = JSAV.utils.rand.numKey(0, 1000);
-    while ((k % 5) === (inputkey % 5)) { k = JSAV.utils.rand.numKey(0, 1000); }
-    answer[k % 10] = k;
+    if (Math.floor((k % 10) / 2) !== bucket) { answer[k % 10] = k; }
   }
   initData = answer.slice(0);
   if (steps === 0) { answer[inputkey % 10] = inputkey; }
   else if (steps === 1) { answer[slot] = inputkey; }
   else { answer_over[0] = inputkey; } // steps === 2
-console.log(answer);
-console.log(initData);
-}
+};
 
 // Initialise JSAV library
 var initJSAV = function (key, steps) {
-console.log("Init: " + key + ", " + steps);
   var i;
   inputkey = key;
   // Do all of the one-time initializations
