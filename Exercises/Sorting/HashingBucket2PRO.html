@@ -5,7 +5,7 @@
 <html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Bucket Hashing Exercise</title>
+  <title>Alternate Bucket Hashing Exercise</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transform.light.js"></script>
@@ -56,7 +56,7 @@ var
   overflow,         // Boolean to indicate if this problem instance
                     // results in overflowing
   jsavInput,        // JSAV array for problem instance
-  jsavOverflow,     // JSAV overflow array
+  jsavOverflow,     // JSAV overflow array 
   empty = [],       // Dummy for empty data to reset bin array
   empty8 = [];      // Dummy for empty data for overflow
 
@@ -64,8 +64,11 @@ var
 // Place the value where user puts it
 var clickHandler = function (arr, index) {
   if (arr === jsavInput) {
+console.log("Click jsavInput: " + index);
     jsavInput.value(index, inputkey);
+console.log("Set to: " + jsavInput.value(index));
   } else if (arr === jsavOverflow) {
+console.log("Click jsavOverflow: " + index);
     jsavOverflow.value(index, inputkey);
   }
 else { console.log("OOOPS!!!"); }
@@ -111,9 +114,13 @@ var f_reset = function () {
 };
 
 // Initialize the problem instance (and set the answer arrays)
-// Original bucket hash method
+// Alternate bucket hash method
 var gen_instance = function (steps) {
+console.log("get_instance: " + inputkey + ", " + steps);
   var i, k;
+  var slot;
+  if ((inputkey % 2) === 0) { slot = (inputkey % 10) + 1; }
+  else { slot = (inputkey % 10) - 1; }
   for (i = 0; i < 8; i++) {
     answer_over[i] = empty8[i];
   }
@@ -122,27 +129,30 @@ var gen_instance = function (steps) {
   }
   if ((steps === 1) || (steps === 2)) { // Make a collision
     k = JSAV.utils.rand.numKey(0, 1000);
-    while ((k % 5) !== (inputkey % 5)) { k = JSAV.utils.rand.numKey(0, 1000); }
-    answer[(inputkey % 5) * 2] = k;
+    while ((k % 10) !== (inputkey % 10)) { k = JSAV.utils.rand.numKey(0, 1000); }
+    answer[k % 10] = k
   }
   if (steps === 2) { // Put it in the other slot of this bucket
     k = JSAV.utils.rand.numKey(0, 1000);
-    while ((k % 5) !== (inputkey % 5)) { k = JSAV.utils.rand.numKey(0, 1000); }
-    answer[(inputkey % 5) * 2 + 1] = k;
+    while ((k % 10) !== slot) { k = JSAV.utils.rand.numKey(0, 1000); }
+    answer[slot] = k;
   }
   for (i = 0; i < (5 - steps); i++) {
     k = JSAV.utils.rand.numKey(0, 1000);
     while ((k % 5) === (inputkey % 5)) { k = JSAV.utils.rand.numKey(0, 1000); }
-    answer[(k % 5) * 2] = k;
+    answer[k % 10] = k;
   }
   initData = answer.slice(0);
-  if (steps === 0) { answer[(inputkey % 5) * 2] = inputkey; }
-  else if (steps === 1) { answer[(inputkey % 5) * 2 + 1] = inputkey; }
+  if (steps === 0) { answer[inputkey % 10] = inputkey; }
+  else if (steps === 1) { answer[slot] = inputkey; }
   else { answer_over[0] = inputkey; } // steps === 2
-};
+console.log(answer);
+console.log(initData);
+}
 
 // Initialise JSAV library
 var initJSAV = function (key, steps) {
+console.log("Init: " + key + ", " + steps);
   var i;
   inputkey = key;
   // Do all of the one-time initializations
@@ -183,7 +193,7 @@ function checkAnswer() {
     <div> <!-- Supresses answer box -->
       <div class="question">
 	<p>You are given a hash table of 5 buckets, each of size 2.
-          Using the <b>first</b> bucket hash method described above,
+          Using the <b>alternate</b> bucket hash method described above,
 	  put key value <var>iKey</var> into the hash table.</p>
         <input id="reset" type="button" value="Reset" />
 	<div id="jsav" class="jsavcanvas"></div>
