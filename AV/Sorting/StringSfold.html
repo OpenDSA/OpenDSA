@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MidSquare Method</title>
+  <title>Improved String Folding</title>
   <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="HashFunc.css" type="text/css" />
@@ -13,13 +13,11 @@
 <body>
   <div id="container">
     <p class="instructions">
-      Type a number. While this is tuned for 4-digit numbers, you can
-      use any value. The number will be squared, and the two middle
-      digits (if the result is an 8-digit number) are highlighted.
+      Type a string. The sfold function will be computed.
     </p>
     <p>
       <label>&nbsp;Key Value:&nbsp;</label>
-      <input name="keyvalue" type="number"/>
+      <input name="keyvalue" type="text"/>
       <input type="button" name="calculate" value="Calculate" />
     </p>
     <p class="output" ></p>
@@ -34,6 +32,6 @@
   </script>
   <script src="../../lib/ODSA.js"></script>
   <script src="../opendsaAV.js"></script>
-  <script src="MidSquare.js"></script>
+  <script src="StringSfold.js"></script>
 </body>
 </html>
