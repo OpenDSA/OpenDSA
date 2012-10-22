@@ -65,21 +65,6 @@ When :math:`M = 11`, any value for :math:`c` between 1 and 10 generates a
 probe sequence that visits all slots for every key.
 
 .. TODO::
-   :type: Exercise or AV
-
-   This applet will let you try different step sizes for collision
-   resolution.
-   As you try this, be sure to pick keys to insert that will generate lots of
-   collisions so that you can try this out.
-   A good way to do this is to pick keys that are mostly multiples of the table
-   size, which will hash to slot 0 in the table.
-   Try some values for :math:`c` that will visit every slot in the table
-   if there are enough collisions.
-   Try some values for :math:`c` that will not visit every slot in the table.
-   What happens when we pick a bad value for :math:`c` and the subset of slots
-   reachable are all full?
-
-.. TODO::
    :type: Slideshow
 
    This applet shows one performance effect of using a collision resolution
