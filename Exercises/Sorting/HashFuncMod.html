@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Hash Function: Simple Mod</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<script>
+// Return the computed Answer
+var genAnswer = function (k, M) {
+  return k % M;
+};
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="M">100</var>
+    <var id="key">randRange(1, 10000)</var>
+    <var id="CorrectAnswer">genAnswer(key, M)</var>
+  </div>
+  <div class="problems">
+    <div>
+      <div class="question">Given a hash table size of <var>M</var>
+	and the <b>simple mod hash function</b>, what slot in the table
+	will <var>key</var> hash to?
+      </div>
+      <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
+      <div class="hints"> 
+	<p>Compute the mode of the key value.</p>
+	<p>This is <var>key</var> mod <var>M</var>.</p>
+	<p>The answer is <var>CorrectAnswer</var>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

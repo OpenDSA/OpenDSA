@@ -22,8 +22,8 @@ console.log("String: |" + s + "| of length " + s.length + "; intLength: " + intL
     for (j = 0; j < intLength; j++) {
       mult = 1;
       for (k = 0 ; k < 4; k++) {
-	sum += keyValue.charCodeAt(curr) * mult;
-console.log("curr: " + curr + "; Add " + keyValue.charCodeAt(curr) + " * " + mult + " = " + keyValue.charCodeAt(curr) * mult);
+	sum += s.charCodeAt(curr) * mult;
+console.log("curr: " + curr + "; Add " + s.charCodeAt(curr) + " * " + mult + " = " + s.charCodeAt(curr) * mult);
         curr++;
 	mult *= 256;
       }
@@ -31,8 +31,8 @@ console.log("curr: " + curr + "; Add " + keyValue.charCodeAt(curr) + " * " + mul
 
     mult = 1;
     while (curr < s.length) {
-      sum += keyValue.charCodeAt(curr) * mult;
-console.log("curr: " + curr + "; Add " + keyValue.charCodeAt(curr) + " * " + mult + " = " + keyValue.charCodeAt(curr) * mult);
+      sum += s.charCodeAt(curr) * mult;
+console.log("curr: " + curr + "; Add " + s.charCodeAt(curr) + " * " + mult + " = " + s.charCodeAt(curr) * mult);
       curr++;
       mult *= 256;
     }

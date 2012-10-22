@@ -290,12 +290,11 @@ functions.
 You should use the calculators above for the more complicated hash
 functions.
 
-.. TODO::
-   type: KA
+.. avembed:: Exercises/Sorting/HashFuncPROSumm.html
+   :showbutton: hide
+   :title: Hash Function Proficency Summary
 
-   Exercise to try out different hash functions. There should be a
-   separate exercise for each of 5 hash functions, with only a summary
-   exercise that presents them randomly being shown on the page.
+Here are some review questions.
 
 .. avembed:: Exercises/Sorting/HashFuncSumm.html
    :showbutton: hide
