@@ -531,10 +531,10 @@ function gradeDisplays(data) {
       }   
     total += parseFloat(data.grades[i].points);  
     if ( parseFloat(data.grades[i].points) > 0 ) {  
-       row += '<td bgcolor="#00FF00">' + data.grades[i].points + '/' + max + '</td>';  
+       row += '<td bgcolor="#00FF00">' + parseFloat(data.grades[i].points).toFixed(2) + '/' + max.toFixed(2) + '</td>';  
        }
     else {    
-       row += '<td>' + data.grades[i].points + '/' + max + '</td>';
+       row += '<td>' + parseFloat(data.grades[i].points).toFixed(2) + '/' + max.toFixed(2) + '</td>';
        }
     row += '</tr>';
     }
@@ -542,7 +542,7 @@ function gradeDisplays(data) {
   row = '';   
   row += '<tr class="header">';
   row += '<th style=""><span>Total</span></th>';  
-  row += '<th style=""><span>' + total + '</span></th>';   
+  row += '<th style=""><span>' + total.toFixed(2) + '</span></th>';   
   row += '</tr>'; 
   $(row).appendTo('table.data');  
   $('#pointsBox').hide();  
