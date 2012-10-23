@@ -164,12 +164,9 @@ Thus, while :math:`k_2` will probe to :math:`k_1`'s
 home position as its second choice, the two keys' probe sequences
 diverge immediately thereafter.
 
-.. TODO::
-   :type: KA
-
-   Try inserting numbers for yourself, and demonstrate how the probe
-   sequences for diverge by inserting these numbers into a table of size
-   16: 0, 16, 32, 15, 31.
+.. avembed:: Exercises/Sorting/HashingQuadraticProbePRO.html
+   :showbutton: hide
+   :title: Quadratic Probing Exercise
 
 Unfortunately, quadratic probing has the disadvantage that typically
 not all hash table slots will be on the probe sequence.

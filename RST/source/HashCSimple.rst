@@ -8,13 +8,15 @@
    :prerequisites:
    :topic: Hashing
    :short_name: HashCSimple
-   :exercises: 
+   :exercises: linProbeCON1, linProbeCON2, HashingLinearProbePRO
 
 .. _HashFunc:
 
 .. include:: JSAVheader.rinc
 
 .. index:: ! collision resolution
+
+.. odsalink:: AV/Sorting/hashCON.css
 
 Collision Resolution
 ====================
@@ -39,13 +41,13 @@ This sequence of slots is known as the
 Insertion works as follows::
 
    // Insert e into hash table HT
-   void hashInsert(const Key&amp; k, const Elem&amp; e) {
+   void hashInsert(const Key& k, const Elem& e) {
      int home;                     // Home position for e
      int pos = home = h(k);        // Init probe sequence
      for (int i=1; EMPTYKEY != (HT[pos]).key(); i++) {
        pos = (home + p(k, i)) % M; // probe
        if (k == HT[pos].key()) {
-         cout << "Duplicates not allowed\n";
+         println("Duplicates not allowed");
          return;
        }
      }
@@ -76,11 +78,11 @@ follows.::
 
 
    // Search for the record with Key K
-   bool hashSearch(const Key&amp; K, Elem&amp; e) const {
+   bool hashSearch(const Key& K, Elem&; e) const {
      int home;              // Home position for K
      int pos = home = h(K); // Initial position is the home slot
      for (int i = 1;
-          (K != (HT[pos]).key()) &amp;&amp; (EMPTYKEY != (HT[pos]).key());
+          (K != (HT[pos]).key()) && (EMPTYKEY != (HT[pos]).key());
           i++)
        pos = (home + p(K, i)) % M; // Next on probe sequence
      if (K == (HT[pos]).key()) {   // Found it
@@ -97,28 +99,24 @@ searches.
 Thus, the hash system should keep a count of the number of records stored,
 and refuse to insert into a table that has only one free slot.
 
-The discussion on bucket hashing presented a simple method of
-collision resolution.
-If the home position for the record is occupied, then move down
-the bucket until a free slot is found.
-This is an example of a technique for collision resolution
-known as :dfn:`linear probing`.
+The simplest approach to collsion resolution is simply to move down
+the table from the home slot until a free slot is found.
+This is known as :dfn:`linear probing`.
 The probe function for simple linear probing is
 :math:`\textbf{p}(K, i) = i`.
 That is, the :math:`i` th offset on the probe sequence is just
-:math:`i` ,
+:math:`i`,
 meaning that the :math:`i` th step is simply to move down  :math:`i`
 slots in the table.
 Once the bottom of the table is reached, the probe sequence
-wraps around to the beginning of the table.
+wraps around to the beginning of the table (since the last step is to
+mod the result to the table size).
 Linear probing has the virtue that all slots in the table will be
 candidates for inserting a new record before the probe sequence
 returns to the home position.
 
-.. TODO::
-   :type: slideshow
-
-   Slideshow for example
+.. inlineav:: linProbeCON1 slideshow
+   :output: show
 
 Can you see any reason why this might not be the best approach
 to collision resolution?
@@ -130,46 +128,15 @@ Probe function **p** allows us many options for how to do collision
 resolution.
 In fact, linear probing is one of the worst collision resolution
 methods.
-The main problem is illustrated by the figure below.
-Here, we see a hash table of ten slots used to store four-digit
-numbers.
-The hash function used is :math:`\textbf{h}(K) = K \mod 10`.
-The four values 1001, 9050, 9877, and 2037 are inserted into the table.
-Then the value 1059 is added to the hash table.
+The main problem is illustrated by the next slideshow.
 
-.. TODO::
-   :type: slideshow
+.. inlineav:: linProbeCON2 slideshow
+   :output: show
 
-   Slideshow to demonstrate why linear probing is poor (replace prior
-   paragraph).
-
-The ideal behavior for a collision resolution mechanism is that
+Again, the ideal behavior for a collision resolution mechanism is that
 each empty slot in the table will have equal probability of
 receiving the next record inserted (assuming that every slot in the
 table has equal probability of being hashed to initially).
-In this example, assume that the hash function gives each slot (roughly) equal
-probability of being the home position for the next key.
-However, consider what happens to the next record if its key has its
-home position at slot 0.
-Linear probing will send the record to slot 2.
-The same will happen to records whose home position is at slot 1.
-A record with home position at slot 2 will remain in slot 2.
-Thus, the probability is 3/10 that the next record inserted will end
-up in slot 2.
-In a similar manner, records hashing to slots 7 or 8 will
-end up in slot 9.
-However, only records hashing to slot 3 will be stored in
-slot 3, yielding one chance in ten of this happening.
-Likewise, there is only one chance in ten that the next record will
-be stored in slot 4, one chance in ten for slot 5, and one chance in
-ten for slot 6.
-Thus, the resulting probabilities are not equal.
-
-To make matters worse, if the next record ends up in slot 9 
-(which already has a higher than normal chance of happening),
-then the following record will end up in slot 2 with probability
-6/10.
-This is illustrated in the right side of the figure.
 This tendency of linear probing to cluster items together is known as
 :dfn:`primary clustering`.
 Small clusters tend to merge into big clusters, making the problem
@@ -180,3 +147,5 @@ long probe sequences.
 .. avembed:: Exercises/Sorting/HashingLinearProbePRO.html
    :showbutton: hide
    :title: Linear Probing Exercise
+
+.. odsascript:: AV/Sorting/linProbeCON.js
