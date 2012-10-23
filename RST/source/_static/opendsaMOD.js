@@ -531,7 +531,7 @@ function gradeDisplays(data) {
       }   
     total += parseFloat(data.grades[i].points);  
     if ( parseFloat(data.grades[i].points) > 0 ) {  
-       row += '<td bgcolor="#00FF00">' + parseFloat(data.grades[i].points).toFixed(2) + '/' + max.toFixed(2) + '</td>';  
+       row += '<td bgcolor="#00FF00">' + parseFloat(data.grades[i].points).toFixed(2) + '/' + parseFloat(max).toFixed(2) + '</td>';  
        }
     else {    
        row += '<td>' + parseFloat(data.grades[i].points).toFixed(2) + '/' + max.toFixed(2) + '</td>';
