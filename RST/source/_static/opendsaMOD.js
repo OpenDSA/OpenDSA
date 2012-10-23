@@ -534,7 +534,7 @@ function gradeDisplays(data) {
        row += '<td bgcolor="#00FF00">' + parseFloat(data.grades[i].points).toFixed(2) + '/' + parseFloat(max).toFixed(2) + '</td>';  
        }
     else {    
-       row += '<td>' + parseFloat(data.grades[i].points).toFixed(2) + '/' + max.toFixed(2) + '</td>';
+       row += '<td>' + parseFloat(data.grades[i].points).toFixed(2) + '/' + parseFloat(max).toFixed(2) + '</td>';
        }
     row += '</tr>';
     }
