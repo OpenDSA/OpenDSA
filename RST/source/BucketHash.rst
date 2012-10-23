@@ -62,6 +62,12 @@ expensive process.
 .. inlineav:: buckethashCON1 slideshow
    :output: show
 
+Now you can try it yourself.
+
+.. avembed:: Exercises/Sorting/HashingBucketPRO.html
+   :showbutton: hide
+   :title: Bucket Hash Exercise
+
 A simple variation on bucket hashing is to hash a key value to some slot
 in the hash table as though bucketing were not being used.
 If the home position is full, then we search through the rest of the
@@ -74,6 +80,12 @@ in the bucket.
 
 .. inlineav:: buckethashCON2 slideshow
    :output: show
+
+Now you can try this version.
+
+.. avembed:: Exercises/Sorting/HashingBucket2PRO.html
+   :showbutton: hide
+   :title: Alternate Bucket Hash Exercise
 
 Bucket methods are good for implementing hash tables stored on disk,
 because the bucket size can be set to the size of a disk block.

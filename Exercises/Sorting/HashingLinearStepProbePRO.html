@@ -56,10 +56,8 @@ var f_reset = function () {
 };
 
 // Initialise the exercise
-var initJSAV = function() {
-  var randomData;
-
-  randomData = Hashing.randomizeInputData(probe_by_step(2), arr_size);
+var initJSAV = function(probeStep) {
+  var randomData = Hashing.randomizeInputData(probe_by_step(probeStep), arr_size);
 
   // Get the correct solution
   solutionArr = randomData[2];
@@ -94,15 +92,17 @@ var checkAnswer = function() {
 </script>
 
 <div class="exercise">
-<div class="vars">                
+    <div class="vars">                
+      <var id="probeStep">randRange(2, 4)</var>
       <var id="hashFunction">"h(k) = k  mod " + arr_size</var>
-      <var id="JSAV">initJSAV()</var>
+      <var id="JSAV">initJSAV(probeStep)</var>
     </div>
     <div class="problems">
       <div> <!-- Supresses answer box -->
         <p class="problem">
           Given the following hash table, with the hash function <var>hashFunction </var>
-          and handling collisions using Linear Probing by Steps with probe function P(K, i) = 2i.
+          and handling collisions using Linear Probing by Steps with probe function P(K, i) = 
+          <var>probeStep</var>i.
         </p>          
         <p class="question"> 
           In which slot element <var>currentKey </var> should be inserted?

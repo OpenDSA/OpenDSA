@@ -173,7 +173,7 @@ Hash Functions for Strings
 Now we will examine some hash functions suitable for storing strings of characters.
 We start with a simple summation function.::
 
-   int h(String x, int M) {
+   int sascii(String x, int M) {
      char ch[];
      ch = x.toCharArray();
      int xlength = x.length();
@@ -216,10 +216,11 @@ only slots 650 to 900 can possibly be the home slot for some key
 value, and the values are not evenly distributed even within those
 slots.
 
-.. TODO::
-   type: Slideshow
+Now you can try it out with this calculator.
 
-   Slideshow for simple string function
+.. avembed:: AV/Sorting/StringSimple.html
+   :showbutton: show
+   :title: Simple String Folding Calculator
 
 Here is a much better hash function for strings.::
 
@@ -261,7 +262,14 @@ interpreted as the integer value 1,650,614,882.
 Their sum is 3,284,386,755 (when treated as an unsigned integer).
 If the table size is 101 then the modulus function will cause this key
 to hash to slot 75 in the table.
-Note that for any sufficiently long string, the sum for the integer
+
+Now you can try it out with this calculator.
+
+.. avembed:: AV/Sorting/StringSfold.html
+   :showbutton: show
+   :title: Improved String Folding Calculator
+
+For any sufficiently long string, the sum for the integer
 quantities will typically cause a 32-bit integer to overflow
 (thus losing some of the high-order bits) because the resulting
 values are so large.
@@ -273,16 +281,20 @@ the resulting values being summed have a bigger range.
 This still only works well for strings long enough
 (say at least 7-12 letters), but the original method would not work
 well for short strings either.
+There is nothing special about using four characters at a time.
+Other choices could be made.
 Another alternative would be to fold two characters at a time.
 
-.. avembed:: AV/Development/hash.html?method=3&collision=1
+Now here is an exercise to let you practice these various hash
+functions.
+You should use the calculators above for the more complicated hash
+functions.
 
-.. TODO::
-   type: KA
+.. avembed:: Exercises/Sorting/HashFuncPROSumm.html
+   :showbutton: hide
+   :title: Hash Function Proficency Summary
 
-   Exercise to try out different hash functions. There should be a
-   separate exercise for each of 5 hash functions, with only a summary
-   exercise that presents them randomly being shown on the page.
+Here are some review questions.
 
 .. avembed:: Exercises/Sorting/HashFuncSumm.html
    :showbutton: hide
