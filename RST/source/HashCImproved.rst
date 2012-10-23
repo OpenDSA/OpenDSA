@@ -14,6 +14,8 @@
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/Sorting/hashCON.css
+
 Improved Collision Resolution
 =============================
 
@@ -26,16 +28,17 @@ but to skip slots by some constant :math:`c` other than 1.
 This would make the probe function
 :math:`\textbf{p}(K, i) = ci`,
 and so the :math:`i` th slot in the probe sequence will be
-:math:`\textbf{h}(K) + ic) \mod M`.
+:math:`(\textbf{h}(K) + ic) \mod M`.
 In this way, records with adjacent home positions will not follow the
 same probe sequence.
-For example, if we were to skip by twos, then our offsets from the home
-slot would be 2, then 4, then 6, and so on.
+
+.. inlineav:: collisionCON1 slideshow
+   :output: show
 
 One quality of a good probe sequence is that it will cycle through
 all slots in the hash table before returning to the home position.
 Clearly linear probing (which "skips" slots by one each time) does this.
-Unfortunately, not all values for <i>c</i> will make this happen.
+Unfortunately, not all values for :math:`c` will make this happen.
 For example, if :math:`c = 2` and the table contains an even number of
 slots, then any key whose home position is in an even slot will have
 a probe sequence that cycles through only the even slots.
@@ -64,20 +67,14 @@ then the probe sequence will visit all slots for any key.
 When :math:`M = 11`, any value for :math:`c` between 1 and 10 generates a
 probe sequence that visits all slots for every key.
 
-.. TODO::
-   :type: Slideshow
+.. inlineav:: collisionCON2 slideshow
+   :output: show
 
-   This applet shows one performance effect of using a collision resolution
-   method that generates disjoint tables.
-   The graph shows the probability that an insert operation will fail as the
-   hash table fills up.
-   When the probe function visits every slot of the table, insertion can
-   never fail unless the hash table is full.
-   But if the probe function does not visit every slot (such as when the
-   step size for linear probing is 2 and the table size is even), then
-   it is possible for one of the sub-tables to become full before the entire
-   table is full.
-   In this graph, the step size is always 2.
+Now you can practice linear probing by different step sizes.
+
+.. avembed:: Exercises/Sorting/HashingLinearStepProbePRO.html
+   :showbutton: hide
+   :title: Linear Probing by Steps Exercise
 
 Consider the situation where :math:`c = 2` and we wish to insert a record
 with key :math:`k_1` such that
@@ -95,10 +92,6 @@ We would prefer that the probe sequence for :math:`k_1`
 after the first step on the sequence should not be identical to the
 probe sequence of :math:`k_2`.
 Instead, their probe sequences should diverge.
-
-.. avembed:: Exercises/Sorting/HashingLinearStepProbePRO.html
-   :showbutton: hide
-   :title: Linear Probing by Steps Exercise
 
 Pseudo-Random Probing
 ---------------------
@@ -276,3 +269,5 @@ between 1 and :math:`2^m`.
 .. avembed:: Exercises/Sorting/HashCollisionSumm.html
    :showbutton: hide
    :title: Collision Resolution Review
+
+.. odsascript:: AV/Sorting/collisionCON.js
