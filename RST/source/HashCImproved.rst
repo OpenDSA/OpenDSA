@@ -108,23 +108,27 @@ In pseudo-random probing, the :math:`i` th slot in the probe sequence is
 :math:`(\textbf{h}(K) + r_i) \mod M`
 where :math:`r_i` is the :math:`i` th value in a random permutation
 of the numbers from 1 to :math:`M-1`.
-All insertions and searches use the same sequence of random numbers.
+All inserts and searches must use the same sequence of random numbers.
 The probe function would be
-:math:`\textbf{p}(K, i) = \textbf{Perm}[i-1]`
-where **Perm** is an array of length :math:`M-1` containing a
-random permutation of the values from 1 to :math:`M - 1`.
+:math:`\textbf{p}(K, i) = \textbf{Perm}[i]`
+where **Perm** is an array of length :math:`M` that stores a value of
+0 in position **Perm[0]**, and stores a
+random permutation of the values from 1 to :math:`M - 1` in slots 1 to
+:math:`M - 1`.
 
-.. TODO::
-   :type: Slideshow
+.. inlineav:: collisionCON3 slideshow
+   :output: show
 
-   As you select values to insert, be sure to trigger collision resolution
-   enough times to get an understanding of how pseudo-random probing works.
-   Try hitting the "reset" button, and see how the random permutation being
-   used will change.
+Here is a practice exercise for pseudo-random probing.
 
 .. avembed:: Exercises/Sorting/HashingPseudoRandomProbePRO.html
    :showbutton: hide
    :title: Pseudo-Random Probing Exercise
+
+.. TODO::
+   :type: Slideshow
+
+   Slideshow showing how probe sequences diverge.
 
 
 Quadratic Probing
