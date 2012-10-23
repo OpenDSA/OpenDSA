@@ -171,6 +171,11 @@ diverge immediately thereafter.
    sequences for diverge by inserting these numbers into a table of size
    16: 0, 16, 32, 15, 31.
 
+
+.. avembed:: Exercises/Sorting/HashingQuadraticProbePRO.html
+   :showbutton: hide
+   :title: Quadratic Probing Exercise
+
 Unfortunately, quadratic probing has the disadvantage that typically
 not all hash table slots will be on the probe sequence.
 Using :math:`\textbf{p}(K, i) = i^2`
