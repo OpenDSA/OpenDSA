@@ -168,6 +168,11 @@ diverge immediately thereafter.
    :showbutton: hide
    :title: Quadratic Probing Exercise
 
+
+.. avembed:: Exercises/Sorting/HashingQuadraticProbePRO.html
+   :showbutton: hide
+   :title: Quadratic Probing Exercise
+
 Unfortunately, quadratic probing has the disadvantage that typically
 not all hash table slots will be on the probe sequence.
 Using :math:`\textbf{p}(K, i) = i^2`
