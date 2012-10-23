@@ -488,7 +488,8 @@ function gradeDisplays(data) {
   var max_ss = "";
   var max_ka = "";
   var max_pe = ""; 
-  var max_ot = "";    
+  var max_ot = "";   
+  var max_pr = "";   
   for (var i in data.max_points) {
     if (i =="ss") {     
        max_ss = parseFloat(data.max_points[i]);  
@@ -502,6 +503,9 @@ function gradeDisplays(data) {
     if (i =="ot") {
        max_ot = parseFloat(data.max_points[i]);
        }  
+    if (i =="pr") {
+       max_pr = parseFloat(data.max_points[i]);
+       }
     }
   $(row).appendTo('table.data');
   row = '';
@@ -518,7 +522,10 @@ function gradeDisplays(data) {
        }
     else if (data.grades[i].type == "ot") {
       max = max_ot;
-       }  
+       } 
+    else if (data.grades[i].type == "pr") {
+      max = max_pr;
+       }   
     else {
       max = max_ss;   
       }   
