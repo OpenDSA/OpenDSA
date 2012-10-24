@@ -8,11 +8,13 @@
    :prerequisites:
    :topic: Hashing
    :short_name: HashDel
-   :exercises: 
+   :exercises: hashdelCON1
 
 .. _HashFunc:
 
 .. include:: JSAVheader.rinc
+
+.. odsalink:: AV/Sorting/hashCON.css
 
 Deletion
 ========
@@ -46,6 +48,9 @@ empty position has been found, simply to verify that a duplicate is
 not in the table.
 However, the new record would actually be inserted into the slot of
 the first tombstone encountered.
+
+.. inlineav:: hashdelCON1 slideshow
+   :output: show
 
 The use of tombstones allows searches to work correctly and allows
 reuse of deleted slots.
@@ -89,11 +94,6 @@ Two possible solutions to this problem are
    opportunity to place the most frequently accessed records into their
    home positions.
 
-.. TODO::
-   :type: Slideshow
-
-   Demonstrate deletion with tombstones
-
 Congratulations! You have reached the end of the hashing tutorial.
 In summary, a properly tuned hashing system will return records with
 an average cost of less than two record accesses.
@@ -107,3 +107,5 @@ or answering questions like
    :type: KA
 
    Deletion MCQs
+
+.. odsascript:: AV/Sorting/hashdelCON.js

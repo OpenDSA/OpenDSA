@@ -8,13 +8,13 @@
    :prerequisites:
    :topic: Hashing
    :short_name: HashCImproved
-   :exercises: 
+   :exercises: collisionCON1, collisionCON2, HashingLinearStepProbePRO, collisionCON3, HashingPseudoRandomProbePRO, collisionCON4, collisionCON5, HashingQuadraticProbePRO, collisionCON6, collisionCON7, collisionCON8, HashingDoubleProbePRO, HashCollisionSumm
 
 .. _HashFunc:
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Sorting/hashCON.css
+.. odsalink:: AV/Sorting/collisionCON.css
 
 Improved Collision Resolution
 =============================
@@ -228,32 +228,31 @@ If instead the hash table size is 101 (a prime number), than any step
 size less than 101 will visit every slot in the table.
 
 This can be achieved easily.
-One way is to select :math:M` to be a prime number, and have
+One way is to select :math:`M` to be a prime number, and have
 :math:`\textbf{h}_2` return a value in the range
 :math:`1 <= \textbf{h}_2(k) <= M - 1`.
 We can do this by using this secondary hash function:
-:math:`\textbf{h}_2(k) = 1 + (k % (M-1))`.
+:math:`\textbf{h}_2(k) = 1 + (k \mod (M-1))`.
 An alternative is to set :math:`M = 2^m`
 for some value :math:`m` and have
 :math:`\textbf{h}_2` return an odd value
 between 1 and :math:`2^m`.
 We can get that result with this secondary hash function:
-:math:`\textbf{h}_2(k) = ((k % (M/2)) * 2) + 1`.
+:math:`\textbf{h}_2(k) = ((k \mod (M/2)) * 2) + 1`.
 
 .. inlineav:: collisionCON7 slideshow
    :output: show
 
-.. TODO::
-   :type: slideshow
+.. inlineav:: collisionCON8 slideshow
+   :output: show
 
-   Use this applet to try out double hashing for yourself.
-   Insert several values that all hash to the same slot.
-   You should see that they follow different probe sequences.
+Now you can try it yourself.
 
-.. TODO::
-   :type: KA
+.. avembed:: Exercises/Sorting/HashingDoubleProbePRO.html
+   :showbutton: hide
+   :title: Double Hashing Exercise
 
-   Exercises for double hashing
+Finally, here are some practice questions.
 
 .. avembed:: Exercises/Sorting/HashCollisionSumm.html
    :showbutton: hide

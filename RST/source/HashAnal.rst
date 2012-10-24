@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Hashing
    :short_name: HashAnal
-   :exercises: 
+   :exercises: HashAnalSumm
 
 .. _HashFunc:
 

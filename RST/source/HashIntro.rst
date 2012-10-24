@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Hashing
    :short_name: HashIntro
-   :exercises: hashIntroCON1.js
+   :exercises: hashIntroCON1
 
 .. _HashIntro:
 
