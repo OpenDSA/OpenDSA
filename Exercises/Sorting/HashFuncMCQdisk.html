@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Hashing Question: Open Hashing</title>
+  <title>Hash Function Question 1</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -13,17 +13,22 @@
 
 <body>
   <div class="exercise">
+    <div class="vars">
+      <var id="QCHOICE">randRange(0,2)</var>
+      <var id="TYPE">["Open", "Closed", "Bucket"]</var>
+      <var id="ANSWER">["False", "True", "True"]</var>
+    </div>
     <div class="problems">
       <div id="problem-type-or-description">
-        <p class="question"> Which of the following is true of open hashing? </p>
-        <div class="solution"><var>"Records are stored on a list associated with a slot in the hash table"</var></div>
-	<ul class="choices" data-none="true">
-	  <li><var>"All records are stored directly within the hash table"</var></li>
-	  <li><var>"The algorithm running time is determined by probes of different table cells until an empty one is found"</var></li>
-        <li><var>"Records are stored on a list associated with a slot in the hash table"</var></li>
+	<p class="question">(T or F) <var>TYPE[QCHOICE]</var> hashing works
+	well for disk-based hash systems.</p>
+	<div class="solution"><var>ANSWER[QCHOICE]</var></div>
+	<ul class="choices" data-category="true">
+	  <li><var> "True"</var></li>
+	  <li><var> "False" </var></li>
 	</ul>
       </div> 
-    </div>
+    </div>	 
   </div>
 </div>
 </body>

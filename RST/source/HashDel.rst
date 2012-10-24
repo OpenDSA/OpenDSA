@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Hashing
    :short_name: HashDel
-   :exercises: hashdelCON1
+   :exercises: hashdelCON1, HashingDeleteProficiency, HashDelSumm
 
 .. _HashFunc:
 
@@ -52,6 +52,12 @@ the first tombstone encountered.
 .. inlineav:: hashdelCON1 slideshow
    :output: show
 
+Here is a practice exercise.
+
+.. avembed:: AV/Sorting/HashingDeleteProficiency.html
+   :showbutton: hide
+   :title: Hashing Deletion Proficiency Exercise
+
 The use of tombstones allows searches to work correctly and allows
 reuse of deleted slots.
 However, after a series of intermixed insertion and deletion
@@ -94,6 +100,12 @@ Two possible solutions to this problem are
    opportunity to place the most frequently accessed records into their
    home positions.
 
+Now here are some practice questions.
+
+.. avembed:: Exercises/Sorting/HashDelSumm.html
+   :showbutton: hide
+   :title: Review Questions
+
 Congratulations! You have reached the end of the hashing tutorial.
 In summary, a properly tuned hashing system will return records with
 an average cost of less than two record accesses.
@@ -102,10 +114,5 @@ to support exact-match queries.
 Unfortunately, hashing is not effective when implementing range queries,
 or answering questions like
 "Which record in the collection has the smallest key value?"
-
-.. TODO::
-   :type: KA
-
-   Deletion MCQs
 
 .. odsascript:: AV/Sorting/hashdelCON.js
