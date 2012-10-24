@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, console: true: awardCompletionCredit, getAVName */
+/*global alert: true, console: true, awardCompletionCredit, getAVName */
 (function ($) {
   // Declare and initialize state variables
   var keyValue = $('#keyvalue').val();

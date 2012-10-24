@@ -186,7 +186,7 @@ var setRed = function (arr, index) {
   av.umsg("So now we look in the permuation array for the value at position perm[4], and add that value to the home slot index (which is 0), to get a value of 1. Finally!");
   arr.unhighlight(6);
   arr.highlight(1);
-  arr.value(1, 110)
+  arr.value(1, 110);
   av.step();
 
   av.umsg("Be aware that potentially any permutation is possible. Even one that gives us a bad probe sequence, such as the same as we would get from linear probing. But this will almost never happen in practice, since any given permutation can only appear once in n! systems.");
@@ -293,6 +293,6 @@ var setRed = function (arr, index) {
   av.step();
 
   av.umsg("Think of any number, and square it. The result will end in 0, 1, 4, 5, 6, or 9. Thus these are the only slots that can be reached by the probe sequence for a key value that hashes to slot 0.");
-  arr.highlight([0,1,4,5,6,9]);
+  arr.highlight([0, 1, 4, 5, 6, 9]);
   av.recorded();
 }(jQuery));
