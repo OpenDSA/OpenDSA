@@ -3,14 +3,14 @@
 (function ($) {
   // Declare and initialize state variables
   var
-    keyValue = Number($('input[name="keyvalue"]').val());
+    keyValue = Number($('#keyvalue').val());
     // Convenience function for writing output messages
 
   var tell = function (msg) { $('p[class="output"]').html(msg); };
 
   // Validate Table size field
   function CheckKey() {
-    keyValue = Number($('input[name="keyvalue"]').val());
+    keyValue = Number($('#keyvalue').val());
     if (isNaN(keyValue) || (keyValue > 1000000000)) {
       alert("Key Value must be a number less than 1000000000");
     }
@@ -19,8 +19,8 @@
   // Main action: Result of clicking "Calculate" button
   function Calculate() {
     var result = keyValue * keyValue;
-    var left = Math.floor(result/100000);
-    var center = Math.floor(result/1000 % 100);
+    var left = Math.floor(result / 100000);
+    var center = Math.floor(result / 1000 % 100);
     if (center < 10) {
       center = '0' + center;
     }
@@ -28,12 +28,11 @@
     if (right < 10) { right = '00' + right; }
     else if (right < 100) { right = '0' + right; }
     var output = left + '<span class = "standout">' + center + '</span>' + right;
-console.log(result);
     tell(output);
     awardCompletionCredit(getAVName());
   }
 
   // Action callbacks for form entities
-  $('input[name="keyvalue"]').focusout(CheckKey);
-  $('input[name="calculate"]').click(Calculate);
+  $('#keyvalue').focusout(CheckKey);
+  $('#calculate').click(Calculate);
 }(jQuery));
