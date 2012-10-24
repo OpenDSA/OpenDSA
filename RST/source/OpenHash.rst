@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Hashing
    :short_name: OpenHash
-   :exercises: 
+   :exercises: OpenHashPRO
 
 .. _OpenHash:
 

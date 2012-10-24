@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Hashing
    :short_name: BucketHash
-   :exercises: 
+   :exercises: buckethashCON1, HashingBucketPRO, buckethashCON2, HashingBucket2PRO
 
 .. _OpenHash:
 
@@ -98,10 +98,5 @@ If the bucket is full, then the overflow bucket must be retrieved
 from disk as well.
 Naturally, overflow should be kept small to minimize unnecessary disk
 accesses.
-
-.. TODO::
-   :type: KA
-
-   Exercise to practice bucket hashing
 
 .. odsascript:: AV/Sorting/buckethashCON.js

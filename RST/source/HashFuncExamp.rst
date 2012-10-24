@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Hashing
    :short_name: HashFuncExamp
-   :exercises: MidSquare, StringSimple, StringSfold  
+   :exercises: hashFuncExCON1, hashFuncExCON2, MidSquare, StringSimple, StringSfold, HashFuncPROSumm, HashFuncSumm
 
 .. _HashFuncExamp:
 
