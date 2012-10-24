@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Hashing
    :short_name: HashDel
-   :exercises: hashdelCON1
+   :exercises: hashdelCON1, HashDelSumm
 
 .. _HashFunc:
 
@@ -94,6 +94,12 @@ Two possible solutions to this problem are
    opportunity to place the most frequently accessed records into their
    home positions.
 
+Now here are some practice questions.
+
+.. avembed:: Exercises/Sorting/HashDelSumm.html
+   :showbutton: hide
+   :title: Review Questions
+
 Congratulations! You have reached the end of the hashing tutorial.
 In summary, a properly tuned hashing system will return records with
 an average cost of less than two record accesses.
@@ -102,10 +108,5 @@ to support exact-match queries.
 Unfortunately, hashing is not effective when implementing range queries,
 or answering questions like
 "Which record in the collection has the smallest key value?"
-
-.. TODO::
-   :type: KA
-
-   Deletion MCQs
 
 .. odsascript:: AV/Sorting/hashdelCON.js
