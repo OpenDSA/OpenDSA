@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Hash Deletion Question 4</title>
+  <title>Hash Function Question 1</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -13,12 +13,16 @@
 
 <body>
   <div class="exercise">
+    <div class="vars">
+      <var id="QCHOICE">randRange(0,2)</var>
+      <var id="TYPE">["Open", "Closed", "Bucket"]</var>
+      <var id="ANSWER">["False", "True", "True"]</var>
+    </div>
     <div class="problems">
       <div id="problem-type-or-description">
-	<p class="question">(T or F) A problem with using tombstones
-	is that they take up slots in the table that cannot be reused, so
-	that over time the effective table size shrinks.</p>
-	<div class="solution"><var>"False"</var></div>
+	<p class="question">(T or F) <var>TYPE[QCHOICE]</var> hashing works
+	well for disk-based hash systems.</p>
+	<div class="solution"><var>ANSWER[QCHOICE]</var></div>
 	<ul class="choices" data-category="true">
 	  <li><var> "True"</var></li>
 	  <li><var> "False" </var></li>
