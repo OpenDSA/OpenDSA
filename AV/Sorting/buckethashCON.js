@@ -11,7 +11,7 @@ var setGray = function (a, index) {
   var i;
   for (i = 0; i < 10; i++) { empty[i] = ""; }
   for (i = 0; i < 8; i++) { empty2[i] = ""; }
-  var av = new JSAV(buckethashCON1);
+  var av = new JSAV('buckethashCON1');
   var arr = av.ds.array(empty, {indexed: true, center: false,
                             layout: "vertical", left: 20});
   for (i = 0; i < 5; i++) {
@@ -125,7 +125,7 @@ var setGray = function (a, index) {
   var i;
   for (i = 0; i < 10; i++) { empty[i] = ""; }
   for (i = 0; i < 8; i++) { empty2[i] = ""; }
-  var av = new JSAV(buckethashCON2);
+  var av = new JSAV('buckethashCON2');
   var arr = av.ds.array(empty, {indexed: true, center: false,
                             layout: "vertical", left: 20});
   for (i = 0; i < 5; i++) {
