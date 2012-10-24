@@ -125,10 +125,8 @@ Here is a practice exercise for pseudo-random probing.
    :showbutton: hide
    :title: Pseudo-Random Probing Exercise
 
-.. TODO::
-   :type: Slideshow
-
-   Slideshow showing how probe sequences diverge.
+.. inlineav:: collisionCON4 slideshow
+   :output: show
 
 
 Quadratic Probing
@@ -147,52 +145,31 @@ The simplest variation is :math:`\textbf{p}(K, i) = i^2`
 :math:`c_3 = 0`).
 Then the :math:`i` th value in the probe sequence would be
 :math:`(\textbf{h}(K) + i^2) \mod M`.
-Under quadratic probing, two keys with different home
-positions will have diverging probe sequences.
-For example, given a hash table of size :math:`M = 101`, assume
-for keys :math:`k_1` and :math:`k_2` that
-and :math:`\textbf{h}(k_1) = 30` and 
-:math:`\textbf{h}(k_2) = 29`.
-The probe sequence for :math:`k_1` is 30,
-then 31, then 34, then 39.
-The probe sequence for :math:`k_2` is 29,
-then 30, then 33, then 38.
-Thus, while :math:`k_2` will probe to :math:`k_1`'s
-home position as its second choice, the two keys' probe sequences
-diverge immediately thereafter.
+
+.. inlineav:: collisionCON5 slideshow
+   :output: show
+
+Now you can practice quadratic probing.
 
 .. avembed:: Exercises/Sorting/HashingQuadraticProbePRO.html
    :showbutton: hide
    :title: Quadratic Probing Exercise
 
-Unfortunately, quadratic probing has the disadvantage that typically
-not all hash table slots will be on the probe sequence.
-Using :math:`\textbf{p}(K, i) = i^2`
-gives particularly inconsistent results.
+
+.. inlineav:: collisionCON6 slideshow
+   :output: show
+
+
 For many hash table sizes, this probe function will cycle through a
 relatively small number of slots.
 If all slots on that cycle happen to be full, this means that the
 record cannot be inserted at all!
-For example, if our hash table has three slots, then records that hash
-to slot 0 can probe only to slots 0 and 1 (that is, the probe sequence
-will never visit slot 2 in the table).
-Thus, if slots 0 and 1 are full, then the record cannot be inserted
-even though the table is not full!
 A more realistic example is a table with 105 slots.
 The probe sequence starting from any given slot will only visit 23
 other slots in the table.
 If all 24 of these slots should happen to be full, even if other slots
 in the table are empty, then the record cannot be inserted because the
 probe sequence will continually hit only those same 24 slots.
-
-.. TODO::
-   :type: KA or slideshow
-
-   Now go back up to the applet above. Pick some hash table size, and try
-   to insert values that all hash to the same slot. See how they follow a
-   probe sequence that will not fill the table.
-   Try to 'fill the probe sequence' such that a record cannot be
-   inserted into the table, even though the table is not full.
 
 Fortunately, it is possible to get good results from quadratic probing
 at low cost.
@@ -206,15 +183,6 @@ free slot will be found.
 Alternatively, if the hash table size is a power of two and the probe
 function is :math:`\textbf{p}(K, i) = (i^2 + i)/2`,
 then every slot in the table will be visited by the probe function.
-
-.. TODO::
-   :type: AV
-
-   This applet will show you how well quadratic probing does (and
-   doesn't) reach all the slots of a hash table.
-   Try some different table sizes, and see how well each works.
-   Try to find some hash table size that visits most of
-   the slots.
 
 Double Hashing
 --------------
