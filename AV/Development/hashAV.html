@@ -20,13 +20,14 @@
         </td>
         <td class="headerRight">
           <input type="button" id="about" name="about" value="About" />
-          <input type="button" id="showcounts" name="showcounts" value="Show Counts" />
+          <a id="settings" class="jsavsettings" href="#">Settings</a>
         </td>
       </tr>
     </table>
     <div id="hashAV_avc" class="avcontainer">
       <p class="jsavoutput jsavscroll" readonly="readonly"></p>
       <ol id="hashTable"></ol>
+      <input type="button" id="showcounts" name="showcounts" value="Show Counts" />
     </div>
   </div>
 
@@ -44,8 +45,18 @@
           <option value="5">Improved Hash for Strings</option>
         </select>
 
+        <!-- Collision Resolution Dropdown -->
+        <select id="collision">
+          <option selected="selected" value="0">Collision Resolution Policy</option>
+          <option value="1">Linear Probing</option>
+          <option value="2">Linear Probing by Stepsize of 2</option>
+          <option value="3">Linear Probing by Stepsize of 3</option>
+          <option value="4">Pseudo-random Probing</option>
+          <option value="5">Quadratic Probing</option>
+        </select>
+
         <!-- Array Size Dropdown -->
-        <select id="arraysize">
+        <select id="tablesize">
           <option selected="selected" value="0">Table Size</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -63,16 +74,6 @@
           <option value="14">14</option>
           <option value="15">15</option>
           <option value="16">16</option>
-        </select>
-
-        <!-- Collision Resolution Dropdown -->
-        <select id="collision">
-          <option selected="selected" value="0">Collision Resolution Policy</option>
-          <option value="1">Linear Probing</option>
-          <option value="2">Linear Probing by Stepsize of 2</option>
-          <option value="3">Linear Probing by Stepsize of 3</option>
-          <option value="4">Pseudo-random Probing</option>
-          <option value="5">Quadratic Probing</option>
         </select>
 
         <!-- Input Text Field -->

@@ -20,17 +20,18 @@ label {
 }
 
 #showcounts {
-  margin-right: 5px;
+  margin-right: -8px;
   float: right;
 }
 
 #input {
+  /* Spacing between the input box and the Next button */
   margin-right: 5px;
 }
 
-.jsavindexlabel .countlabel {
-  top: 5px;
-  right: -20px;
+.countlabel {
+  top: 5px !important;
+  right: -20px !important;
   display: none;
 }
 
@@ -66,6 +67,7 @@ label {
   float: left;
   margin-left: -10px;
   margin-top: 5px;
+  padding-left: 5px;
 }
 
 table.headerTable {
