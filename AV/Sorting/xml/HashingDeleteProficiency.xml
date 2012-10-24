@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<entry>
+<id>http://algoviz.org/OpenDSA/OpenDSA/AV/Sorting/HashingDeleteProficiency.html</id>
+<title type='text'>Hashing Delete Proficiency Exercise</title>
+<description type='text'>Hashing Delete Proficiency Exercise</description>
+<type>pe</type>  
+<width>822</width>
+<height>577</height>
+<author>
+<name>OpenDSA</name>
+<uri>http://algoviz.org/OpenDSA/</uri>
+</author>
+<covers>hashing</covers>
+<streak>90</streak>
+</entry>
