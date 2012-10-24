@@ -70,6 +70,23 @@ You must be logged in to get credit.
 If you go through the exercise and *then* log in, the system should
 give you credit.
 
+**Seeing your credit and seeing your current score:**
+Most exercises or slideshows will give you visual confirmation when
+you have completed it.
+If you complete all exercises and slideshows for a module, the title
+line will show "Module Complete" in green.
+Also, the table of contents page should show a green checkmark beside
+the title of completed modules.
+You have to be logged in to see information about previous work.
+
+If you are logged in, when you click on your ID in the upper right
+corner of the page, you will see a list of exercises, your current
+score for the exercise, and the total points possible for the
+exercise. At the bottom of the page will be your current point total.
+Be aware that the data used by this page are only refreshed
+periodically (about every half hour), so recent work might not
+register there.
+
 **Slideshows:**
 Slideshows are controlled by the buttons at the top.
 "<" and ">" buttons will back up or advance by one slide, while "<<"
