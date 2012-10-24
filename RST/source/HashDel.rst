@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Hashing
    :short_name: HashDel
-   :exercises: hashdelCON1, HashDelSumm
+   :exercises: hashdelCON1, HashingDeleteProficiency, HashDelSumm
 
 .. _HashFunc:
 
@@ -51,6 +51,12 @@ the first tombstone encountered.
 
 .. inlineav:: hashdelCON1 slideshow
    :output: show
+
+Here is a practice exercise.
+
+.. avembed:: AV/Sorting/HashingDeleteProficiency.html
+   :showbutton: hide
+   :title: Hashing Deletion Proficiency Exercise
 
 The use of tombstones allows searches to work correctly and allows
 reuse of deleted slots.
