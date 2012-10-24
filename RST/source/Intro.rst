@@ -9,8 +9,8 @@
    :topic: OpenDSA
    :short_name: Intro
 
-Preface
-=======
+How to Use this System
+======================
 
 **Welcome to OpenDSA!**
 OpenDSA is an open source to provide online course materials for 
