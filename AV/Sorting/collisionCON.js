@@ -355,8 +355,8 @@ var setRed = function (arr, index) {
   // Create an array object under control of JSAV library
   var arr = av.ds.array(empty, {indexed: true});
 
-  av.umsg("Now we try the alternate second hash function. Use a hash table of size M = 16 (a power of 2), our primary hash function is a simple mod on the table size (as usual), and our secondary hash function is h<sub>2</sub>(k) = ((k % (M/2)) * 2) + 1.");
-  av.label("h<sub>2</sub>(k) = ((k % (M/2)) * 2) + 1", {top: 85, left: 325});
+  av.umsg("Now we try the alternate second hash function. Use a hash table of size M = 16 (a power of 2), our primary hash function is a simple mod on the table size (as usual), and our secondary hash function is h<sub>2</sub>(k) = (((k/M) % (M/2)) * 2) + 1.");
+  av.label("h<sub>2</sub>(k) = (((k/M) % (M/2)) * 2) + 1", {top: 85, left: 315});
   av.displayInit();
 
   av.umsg("Insert 55. 55 % 16 = 7.");
@@ -367,49 +367,23 @@ var setRed = function (arr, index) {
   av.umsg("Insert 39. 39 % 16 = 7. This causes a collision at slot 7.");
   av.step();
 
-  av.umsg("Compute h<sub>2</sub>(39) = (39 % 8) * 2 + 1 = 15. So we will now do linear probing by steps of 15. Slot (7 + 15) % 16 = 6 is checked first, and it is empty.");
+  av.umsg("Compute h<sub>2</sub>(39) = ((39/10) % 8) * 2 + 1 = 7. So we will now do linear probing by steps of 7. Slot 7 + 7 = 14 is checked first, and it is empty.");
   arr.unhighlight(7);
-  arr.highlight(6);
-  arr.value(6, 39);
-  av.step();
-
-  av.umsg("Insert 22. This causes a collision at slot 6.");
-  av.step();
-
-  av.umsg("Compute h<sub>2</sub>(22) = (22 % 8) * 2 + 1 = 13. So we will now do linear probing by steps of 13. Slot (6 + 13) % 16 = 3 is checked first, and it is empty.");
-  arr.unhighlight(6);
-  arr.highlight(3);
-  arr.value(3, 22);
-  av.step();
-
-  av.umsg("Insert 8.");
-  arr.unhighlight(3);
-  arr.highlight(8);
-  arr.value(8, 8);
-  av.step();
-
-  av.umsg("Insert 13.");
-  arr.unhighlight(8);
-  arr.highlight(13);
-  arr.value(13, 13);
-  av.step();
-
-  av.umsg("Insert 77. 77 % 16 = 13. This causes a collision at slot 13.");
-  av.step();
-
-  av.umsg("Compute h<sub>2</sub>(77) = (77 % 8) * 2 + 1 = 11. So we will now do linear probing by steps of 11. Slot (13 + 11) % 16 = 8 is checked first, and it causes another collision.");
-  arr.unhighlight(13);
-  arr.highlight(8);
-  av.step();
-
-  av.umsg("Step forward by 11 to slot (8 + 11) % 16 = 3. Again there is a collision.");
-  arr.unhighlight(8);
-  arr.highlight(3);
-  av.step();
-
-  av.umsg("Step forward by 11 to slot (3 + 11) % 16 = 14. Finally we have a free slot.");
-  arr.unhighlight(3);
   arr.highlight(14);
-  arr.value(14, 77);
+  arr.value(14, 39);
+  av.step();
+
+  av.umsg("Insert 46. 46 % 16 = 14. This causes a collision at slot 14.");
+  av.step();
+
+  av.umsg("Compute h<sub>2</sub>(46) = ((46/10) % 8) * 2 + 1 = 9. So we will now do linear probing by steps of 9. Slot (14 + 9) % 16 = 7 is checked first. Since this contains a value, we get another collision.");
+  arr.unhighlight(14);
+  arr.highlight(7);
+  av.step();
+
+  av.umsg("Step forward by 9 again. (7 + 9) % 16 = 0, so check slot 0. This is empty.");
+  arr.unhighlight(7);
+  arr.highlight(0);
+  arr.value(0, 46);
   av.recorded();
 }(jQuery));

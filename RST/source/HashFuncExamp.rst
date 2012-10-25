@@ -62,8 +62,11 @@ if the distribution does not divide evenly on the high-order bits.
 In the above example, if more records have keys in the range 900-999
 (first digit 9) than have keys in the range 100-199
 (first digit 1),  more records will hash to slot 9 than to slot 1.
-(A similar, analogous problem arises if we were instead hashing strings based
-on the first letter in the string.)
+Likewise, if we pick too big a value for the key range and the actual
+key values are all relatively small, then most records will hash to
+slot 0.
+A similar, analogous problem arises if we were instead hashing strings based
+on the first letter in the string.
 
 .. inlineav:: hashFuncExCON2 slideshow
    :output: show
