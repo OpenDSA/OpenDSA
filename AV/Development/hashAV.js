@@ -110,7 +110,6 @@
    * Wrapper class for error messages
    */
   function error(message) {
-    console.log('error(' + message + ')');
     av.umsg(message, {"color" : "red"});
     av.umsg("<br />");
   }
@@ -191,10 +190,12 @@
       av.umsg('Algorithm Selected: ' + $("#function option:selected").text());
 
       // If user selected binning, make sure they selected a key range too
-      if ($('#function').val() === '2' && $('#keyrange').val() === '0') {
-        missingFields.push('key range');
-      } else {
-        av.umsg('Key Range Selected: ' + $("#keyrange option:selected").text());
+      if ($('#function').val() === '2') {
+        if ($('#keyrange').val() === '0') {
+          missingFields.push('key range');
+        } else {
+          av.umsg('Key Range Selected: ' + $("#keyrange option:selected").text());
+        }
       }
     }
 
@@ -253,10 +254,6 @@
   }
 
   function setFunction() {
-    console.log('setFunction');
-    // Clear any existing hash data when the function is changed
-    resetAV();
-
     // Reset the array size options list (in case the previously
     // selected function was mid-square), but keep the currently selected item
     var size = $("#tablesize").val();
@@ -266,22 +263,17 @@
     // Disable keyrange dropdown
     $("#keyrange").attr("disabled", "disabled");
 
-
-    console.log('keyrange disabled');
-    console.log('$("#function").val() = ' + $('#function').val());
-
     // Display Appropriate Message and Enable Appropriate Controls for each function
     switch ($('#function').val()) {
     // Prompt user to select a function
     case '0':
       $('#input').attr("disabled", "disabled");
-      return;
+      break;
 
     // Binning
     case '2':
       // Enable key range
       $("#keyrange").removeAttr("disabled");
-      console.log('keyrange enabled');
       break;
 
     // Mid Square
@@ -290,6 +282,9 @@
       $("#tablesize").html('<option value="0">Table Size</option><option value="8">8</option><option value="16">16</option>');
       break;
     }
+
+    // Clear any existing hash data when the function is changed
+    resetAV();
   }
 
   /**
