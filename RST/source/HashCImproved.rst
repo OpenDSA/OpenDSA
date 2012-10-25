@@ -238,7 +238,7 @@ for some value :math:`m` and have
 :math:`\textbf{h}_2` return an odd value
 between 1 and :math:`2^m`.
 We can get that result with this secondary hash function:
-:math:`\textbf{h}_2(k) = ((k \mod (M/2)) * 2) + 1`.
+:math:`\textbf{h}_2(k) = (((k/M) \mod (M/2)) * 2) + 1`.
 
 .. inlineav:: collisionCON7 slideshow
    :output: show
