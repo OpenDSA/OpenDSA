@@ -12,11 +12,6 @@ var kaExerList = [];
 
 
 function info() { // This is what we pop up
-  var loc = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
-  if (loc === "") {
-    loc = "index.html";
-  }
-  var mod = loc.split('.');
   var outcome = -1;
   $.ajax({
     url: 'modules.json',
@@ -24,8 +19,8 @@ function info() { // This is what we pop up
     dataType: 'json',
     success: function (data) {
       $.each(data, function (key, val) {
-        if (val.fields.short_display_name.toLowerCase() === mod[0].toLowerCase()) {
-          var mystring = mod[0] + "\nWritten by " + val.fields.author + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nFile created: " + val.fields.last_modified + "\nJSAV library version " + JSAV.version();
+        if (val.fields.short_display_name.toLowerCase() === moduleName.toLowerCase()) {
+          var mystring = moduleName + "\nWritten by " + val.fields.author + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nFile created: " + val.fields.last_modified + "\nJSAV library version " + JSAV.version();
           outcome = 1;
           alert(mystring);
         }
@@ -34,7 +29,7 @@ function info() { // This is what we pop up
   });
 
   if (outcome === -1) {
-    var mystring = mod[0] + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nJSAV library version " + JSAV.version();
+    var mystring = moduleName + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nJSAV library version " + JSAV.version();
     alert(mystring);
   }
 }
@@ -366,6 +361,71 @@ function storeKAExerProgress(exerName) {
 }
 
 /**
+ * Populates the grade table on the student page
+ */
+function gradeDisplays(data) {
+  // Create the table header
+  var row = '<tr class="header">';
+  row += '<th style=""><a href="#" class="sort"><span>Exercises</span></a></th>';
+  row += '<th style=""><a href="#" class="sort"><span>Modules</span></a></th>';
+  row += '<th style=""><a href="#" class="sort"><span>Points</span></a></th>';
+  row += '</tr>';
+  $(row).appendTo('table.data');
+
+  var total = 0;
+  row = '';
+  for (var i = 0; i < data.grades.length; i++) {
+    row += '<tr id="' + i + '">';
+    row += '<td>' + data.grades[i].exercise + '</td>';
+    row += '<td>' + data.grades[i].module + '</td>';
+
+    var type = (data.grades[i].type !== "") ? data.grades[i].type : 'ss';
+    var max = data.max_points[type];
+    var points = parseFloat(data.grades[i].points);
+
+    row += (points > 0) ? '<td bgcolor="#00FF00">' : '<td>';
+    row += points.toFixed(2) + '/' + parseFloat(max).toFixed(2) + '</td></tr>';
+    total += points;
+  }
+  $(row).appendTo('table.data');
+
+  // Create the table footer with
+  row = '<tr class="header">';
+  row += '<th></th><th><span>Total</span></th>';
+  row += '<th><span>' + total.toFixed(2) + '</span></th>';
+  row += '</tr>';
+  $(row).appendTo('table.data');
+  $('#pointsBox').hide();
+  $('#example').css('margin', '10px');
+}
+
+/**
+ * Queries the server for the user's points
+ */
+function getUserPoints() {
+  // Check server for user's points
+  if (serverEnabled() && userLoggedIn()) {
+    // get user points
+    jQuery.ajax({
+      url:   server_url + "/api/v1/userdata/getgrade/",
+      type:  "POST",
+      data: {"username": getUsername()},
+      contentType: "application/json; charset=utf-8",
+      datatype: "json",
+      xhrFields: {withCredentials: true},
+      success: function (data) {
+        data = getJSON(data);
+
+        if (data.grades) {
+          gradeDisplays(data);
+        }
+      },
+      error: function (data) { console.error("ERROR " + "getGrade" /*JSON.stringify(data)*/); }
+    });
+  }
+}
+
+/**
  * Makes sure the display shows the currently logged in user
  * or lack there of
  */
@@ -376,6 +436,10 @@ function updateLogin() {
 
     if (inLocalStorage('opendsa') && $('a.username-link').text() !== username) {
       updated = true;
+
+      if (getNameFromURL() === "student") {
+        getUserPoints();
+      }
 
       // Update display to show logged in user
       $('a.login-window').text('Logout');
@@ -447,109 +511,6 @@ function updateLogin() {
     }
   }
 }
-
-
-/**
- * Queries the server for the user's points
- */
-function getUserPoints() {
-  // Check server for user's points
-  if (serverEnabled() && userLoggedIn()) {
-    // get user points
-    jQuery.ajax({
-      url:   server_url + "/api/v1/userdata/getgrade/",
-      type:  "POST",
-      data: {"username": getUsername()},    
-      contentType: "application/json; charset=utf-8",
-      datatype: "json",
-      xhrFields: {withCredentials: true},
-      success: function (data) {
-        data = getJSON(data);
-        
-        if (!data.grade) {
-          gradeDisplays(data);
-        }
-      },
-      error: function (data) { console.error("ERROR " + "getGrade" /*JSON.stringify(data)*/); }
-    });
-  }
-}
-
-
-function gradeDisplays(data) {
-  var row = '<tr class="header">';
-  row += '<th style=""><a href="#" class="sort"><span>Exercises</span></a></th>';
-  row += '<th style=""><a href="#" class="sort"><span>Modules</span></a></th>';
-  row += '<th style=""><a href="#" class="sort"><span>Points</span></a></th>';
-  row += '</tr>';   
-  var pos = new Array(); 
-  var j = 0;
-  var total = 0;
-  var max_ss = "";
-  var max_ka = "";
-  var max_pe = ""; 
-  var max_ot = "";   
-  var max_pr = "";   
-  for (var i in data.max_points) {
-    if (i =="ss") {     
-       max_ss = parseFloat(data.max_points[i]);  
-       }   
-    if (i =="ka") {
-       max_ka = parseFloat(data.max_points[i]);
-       }   
-    if (i =="pe") {
-       max_pe = parseFloat(data.max_points[i]);
-       }
-    if (i =="ot") {
-       max_ot = parseFloat(data.max_points[i]);
-       }  
-    if (i =="pr") {
-       max_pr = parseFloat(data.max_points[i]);
-       }
-    }
-  $(row).appendTo('table.data');
-  row = '';
-  for (var i in data.grades) {
-    row += '<tr id="' + i + '">';
-    row += '<td>' + data.grades[i].exercise + '</td>';
-    row += '<td>' + data.grades[i].module + '</td>';
-    var max = 0;  
-    if (data.grades[i].type == "ka") {   
-      max = max_ka;
-      }  
-    else if (data.grades[i].type == "pe") {
-      max = max_pe;  
-       }
-    else if (data.grades[i].type == "ot") {
-      max = max_ot;
-       } 
-    else if (data.grades[i].type == "pr") {
-      max = max_pr;
-       }   
-    else {
-      max = max_ss;   
-      }   
-    total += parseFloat(data.grades[i].points);  
-    if ( parseFloat(data.grades[i].points) > 0 ) {  
-       row += '<td bgcolor="#00FF00">' + parseFloat(data.grades[i].points).toFixed(2) + '/' + parseFloat(max).toFixed(2) + '</td>';  
-       }
-    else {    
-       row += '<td>' + parseFloat(data.grades[i].points).toFixed(2) + '/' + parseFloat(max).toFixed(2) + '</td>';
-       }
-    row += '</tr>';
-    }
-  $(row).appendTo('table.data'); 
-  row = '';   
-  row += '<tr class="header">';
-  row += '<th style=""><span>Total</span></th>';  
-  row += '<th style=""><span>' + total.toFixed(2) + '</span></th>';   
-  row += '</tr>'; 
-  $(row).appendTo('table.data');  
-  $('#pointsBox').hide();  
-  $('#example').dataTable(); 
-}
-
-
 
 //*****************************************************************************
 //***********            Runs When Page Finishes Loading            ***********
@@ -748,14 +709,6 @@ $(document).ready(function () {
   $("a.abt").click(function (event) {
     info();
   });
-
-
-  //User wants to see grades
-  var sPath = window.location.pathname;
-  var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
-  if (sPage == "student.html") {
-    getUserPoints();
-  }
 
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];

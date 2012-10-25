@@ -1,5 +1,6 @@
-(function($) {
-  "use strict";
+"use strict";
+/*global alert: true */
+(function ($) {
   var arr_size = 10,
       initData,
       inputData,
@@ -15,10 +16,10 @@
   // exercise should be easily modifiable to other collision resolution methods
   // and hashfunctions
   var Setup = {
-    probe: function(i) {
+    probe: function (i) {
       return i;
     },
-    hashfunction: function(val) {
+    hashfunction: function (val) {
       return val % arr_size;
     }
   }; // end setup
@@ -61,8 +62,8 @@
     input.push(["insert", deletions[1] + JSAV.utils.rand.numKey(0, 29)]);
 
     // check which values have not been deleted from the hashtable already
-    var values = $.map(initArr, function(item) {
-      return (deletions.indexOf(item) !== -1)?null:item;
+    var values = $.map(initArr, function (item) {
+      return (deletions.indexOf(item) !== -1) ? null : item;
     });
     // .. and delete all the initial values still in hashtable
     for (i = 0; i < values.length; i++) {
@@ -123,10 +124,10 @@
           probeIndex = 0,
           pos = Setup.hashfunction(val + Setup.probe(probeIndex));
       modelArr.highlight(pos);
-      modeljsav.umsg((inputElem[0] === "delete" ? "Deleting key ":"Inserting key ") +
+      modeljsav.umsg((inputElem[0] === "delete" ? "Deleting key " : "Inserting key ") +
           val + ". We start by inspecting index " + pos + ".");
       if (inputElem[0] === "delete") {
-        while (modelArr.value(pos) != val && modelArr.value(pos) !== "") {
+        while (modelArr.value(pos) !== val && modelArr.value(pos) !== "") {
           modeljsav.stepOption("grade", true);
           modeljsav.step();
           probeIndex++;
@@ -182,7 +183,7 @@
     var pos = jsavInputPos.value(),
         input = inputData[pos];
     if (input[0] === "delete") {
-      if (jsavArr.value(index) != input[1]) {
+      if (jsavArr.value(index) !== input[1]) {
         jsavArr.highlight(index);
       } else {
         jsavArr.unhighlight(true);
@@ -201,7 +202,7 @@
     alert("Hashing Proficiency Exercise\nWritten by Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
 
-  $(function() {
+  $(function () {
     $("#about").click(about);
   });
-})(jQuery);
+}(jQuery));
