@@ -252,6 +252,13 @@ Now you can try it yourself.
    :showbutton: hide
    :title: Double Hashing Exercise
 
+The following visualization lets you test out different combinations
+of hash function and collision resolution, on your own input data.
+
+.. avembed:: AV/Sorting/hashAV.html
+   :showbutton: hide
+   :title: Hashing Visualization
+
 Finally, here are some practice questions.
 
 .. avembed:: Exercises/Sorting/HashCollisionSumm.html
