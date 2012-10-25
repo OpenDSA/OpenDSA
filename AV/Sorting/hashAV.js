@@ -90,11 +90,7 @@
   var defTableSizeOptions;        // Stores the HTML of the default table size options
   var av;                       // JSAV
   var arr;                      // JSAV Array
-  var nextStep = new Queue();   // A queue that will contain the "next step". Stores position and value of next step as an object
-  var tableCount;               // Array that will hold an object that contains the show counts value
-  var isArrayFull = false;      // Flag that determines whether array is full or not
-  var canStillInsert = true;    // Flag that determines that even though the number of insertion attempts is greater than the
-                                // array size, there are still slots available in the array.
+  var nextStep = new Queue();   // A queue containing 'steps' to be played when the user clicks 'Next'
 
   // Initialize JSAV object
   av = new JSAV("hashAV_avc");
@@ -182,6 +178,7 @@
     av.clearumsg();
     var missingFields = [];
 
+    // Ensure user selected a hash function
     if ($('#function').val() === '0') {
       missingFields.push('hash function');
     } else {
@@ -197,12 +194,14 @@
       }
     }
 
+    // Ensure user selected a collision resolution policy
     if ($('#collision').val() === '0') {
       missingFields.push('collision policy');
     } else {
       av.umsg('Collsion Policy Selected: ' + $("#collision option:selected").text());
     }
 
+    // Ensure user selected a table size
     if ($('#tablesize').val() === '0') {
       missingFields.push('table size');
     }
@@ -221,6 +220,7 @@
 
       av.umsg(msg);
     } else {
+      // If all necessary fields are selected, enable the input box and tell the user to begin
       $("#input").removeAttr("disabled");
 
       av.umsg("Enter a value and click Next");
@@ -243,25 +243,25 @@
     
     // Make sure the queue is clear and state variables are reset
     nextStep = new Queue();
-    isArrayFull = false;
-    canStillInsert = false;
-
-    tableCount = [];
 
     // TODO - might be able to combine this with the loop above
     // Append a span containing the count to each index
     $('li.jsavindex').each(function (index, item) {
       $(item).append('<span id="' + index + '_count" class="jsavindexlabel countlabel" style="display: none;">1</span>');
-      tableCount[index] = 1;
     });
   }
 
   function setFunction() {
-    // Reset the array size options list (in case the previously
-    // selected function was mid-square), but keep the currently selected item
-    var size = $("#tablesize").val();
-    $("#tablesize").html(defTableSizeOptions);
-    $("#tablesize").val(size);
+    // Reset the array size options list (if currently shows values for mid-square)
+    if ($('#tablesize option').length === 3) {
+      // Save the value the user has selected
+      var size = $("#tablesize").val();
+      
+      $("#tablesize").html(defTableSizeOptions);
+      
+      // Select the value the user previously had selected
+      $("#tablesize").val(size);
+    }
 
     // Disable keyrange dropdown
     $("#keyrange").attr("disabled", "disabled");
@@ -286,7 +286,7 @@
       break;
     }
 
-    // Clear any existing hash data when the function is changed
+    // Refresh the AV display when the function is changed
     resetAV();
   }
 
@@ -313,25 +313,27 @@
     av.clearumsg();
     $('#hashTable').html('');
 
+    // Reset controls to their default state
     resetControls();
 
+    // Make sure the queue is empty
     nextStep = new Queue();
-    isArrayFull = false;
-    canStillInsert = false;
   }
 
   function loadNextSlide() {
-    var next = nextStep.dequeue();
+    var step = nextStep.dequeue();
 
-    if (next.insert) {    // Insertion step
-      av.umsg("Inserting " + next.value + " at position " + next.position + ".");
-      av.umsg("<br>");
-      arr.unhighlight(next.position);
-      arr.value(next.position, next.value);
-    } else {    // Highlighting step
-      av.umsg("Attempting to insert " + next.value + " at position " + next.position + ".");
-      arr.unhighlight();
-      arr.highlight(next.position);
+    if (step.canInsert) {
+      if (step.insert) {    // Insertion step
+        av.umsg("Inserting " + step.value + " at position " + step.position + ".");
+        av.umsg("<br>");
+        arr.unhighlight(step.position);
+        arr.value(step.position, step.value);
+      } else {    // Highlighting step
+        av.umsg("Attempting to insert " + step.value + " at position " + step.position + ".");
+        arr.unhighlight();
+        arr.highlight(step.position);
+      }
     }
 
     // Disable Next Button & re-enable input field if queue is empty
@@ -344,17 +346,16 @@
       $('#next').attr("disabled", "disabled");
 
       // If array is full at the end of dequeue, display message
-      if (isArrayFull) {
+      if (!step.canInsert) {
         var errorMsg;
-        if (canStillInsert) {
-          errorMsg = "Array is not full, but number of insertion attempts is greater than array size. Insertion failed.";
-        } else {
+        if (step.arrayFull) {
           errorMsg = "Array is full. Insertion failed. Please Restart.";
           // User has been informed the array is full and they
           // must restart, so disable the input textbox
           //$('#input').attr("disabled", "disabled");
+        } else {
+          errorMsg = "Array is not full, but number of insertion attempts is greater than array size. Insertion failed.";
         }
-        canStillInsert = false;
 
         error(errorMsg);
         arr.unhighlight();
@@ -448,8 +449,7 @@
 
     var strpadding = "00000000";
     var modVal = 256;
-    var size = $("#tablesize").val();
-    var strsubtract = size * -1;
+    var size = Number($("#tablesize").val());
 
     if (size === 16) {
       strpadding = "0000000000000000";
@@ -459,8 +459,9 @@
     // Square Input Value
     var squaredInput = (inputVal * inputVal) % modVal;
 
-    var binaryDigit = (strpadding + (squaredInput).toString(2)).substr(strsubtract);
-
+    // Convert squaredInput to base 2 and pad it to the correct length
+    var binaryDigit = (strpadding + squaredInput.toString(2)).substr(size * -1);
+    
     // Concatenate Middle Bits
     var middleBits;
     if (size === 16) {
@@ -592,37 +593,44 @@
   function linearProbing(inputVal, pos, showCounts, stepSize) {
     // Counter that counts how many times the loop ran
     var count = 0;
+    
+    var arrayFull = false;
+    var canInsert = true;
 
     // Loop across the array. "infinite" loop. Breaks if array is full.
     for (;;) {
-      console.debug('count: ' + count + ', pos: ' + pos + ', isArrayFull: ' + isArrayFull + ', showCounts: ' + showCounts);
-    
-      // If array is full, break out
-      if (count === arr.size()) {
-        canStillInsert = false;
-
-        if (stepSize > 1) {
-          // Checking if there are still empty slots, even when count === arr.size()
-          for (var b = 0; b < arr.size(); b++) {
-            if (String(arr.value(b)) === "") {
-              canStillInsert = true;
-              break;
-            }
-          }
-        }
-
-        isArrayFull = true;
-        break;
+      if (!showCounts) {
+        console.debug('count: ' + count + ', pos: ' + pos + ', arrayFull: ' + arrayFull + ', canInsert: ' + canInsert + ', showCounts: ' + showCounts);
       }
 
       // If space is available, break
       if (String(arr.value(pos)) === "") {
         break;
       }
+    
+      // If array is full, break out
+      if (count === arr.size()) {
+        // Tried to insert everywhere the algorithm would let us, failed
+        canInsert = false;
+        
+        // Assume the array is full, since insertion failed
+        arrayFull = true;
+
+        if (stepSize > 1) {
+          // Checking if there are any empty slots, even when count === arr.size()
+          for (var b = 0; b < arr.size(); b++) {
+            if (String(arr.value(b)) === "") {
+              arrayFull = false;
+              break;
+            }
+          }
+        }
+        break;
+      }
 
       // Insert attempt as highlighting activity
       if (!showCounts) {
-        enqueueStep(pos, inputVal, false);
+        enqueueStep(pos, inputVal, false, arrayFull, canInsert);
       }
 
       pos += stepSize;
@@ -636,22 +644,28 @@
       count++;
     }
     
-    console.debug('got out of loop, pos: ' + pos);
-    console.debug('isArrayFull: ' + isArrayFull + ', showCounts: ' + showCounts);
+    if (!showCounts) {
+      console.debug('got out of loop');
+      console.debug('count: ' + count + ', pos: ' + pos + ', arrayFull: ' + arrayFull + ', canInsert: ' + canInsert + ', showCounts: ' + showCounts);
+      //console.debug('isArrayFull: ' + isArrayFull + ', showCounts: ' + showCounts);
+    }
 
     // Empty spot found. Insert element inputVal at pos
-    if (!isArrayFull) {
+    //if (canInsert) {
       if (!showCounts) {
         console.debug('insert value at ' + pos);
-        enqueueStep(pos, inputVal, true);
+        enqueueStep(pos, inputVal, true, arrayFull, canInsert);
       } else {
         return pos;
       }
-    }
+    //}
   }
 
   // Pseudo-Random Probing
   function pseudoRandom(inputVal, pos, showCounts, printPerm) {
+    var arrayFull = false;
+    var canInsert = true;
+    
     // Cast into a number, otherwise '0' will be considered false.
     if ((Number(arr.value(pos))) !== false) {
       var i, j, randomnumber;
@@ -685,30 +699,30 @@
 
       // Loop across the array. "infinite" loop. Breaks if array is full.
       for (;;) {
+        // If space is available, break
+        if (String(arr.value(temp)) === "") {
+          break;
+        }
+        
         // If array is full, break out
         if (count === arr.size()) {
-          canStillInsert = false;
-
-          // Checking if there are still empty slots, even when count === arr.size()
+          // Tried to insert everywhere the algorithm would let us, failed
+          canInsert = false;
+        
+          // Assume the array is full, since insertion failed, but check for any empty slots
+          arrayFull = true;
           for (var b = 0; b < arr.size(); b++) {
             if (String(arr.value(b)) === "") {
-              canStillInsert = true;
+              arrayFull = false;
               break;
             }
           }
-
-          isArrayFull = true;
-          break;
-        }
-
-        // If space is available, break
-        if (String(arr.value(temp)) === "") {
           break;
         }
 
         // Insert attempt as highlighting activity
         if (!showCounts) {
-          enqueueStep(temp, inputVal, false);
+          enqueueStep(temp, inputVal, false, arrayFull, canInsert);
         }
 
         // Calculate next position to check by adding the next random slot to the original position
@@ -728,17 +742,20 @@
       pos = temp;
     }
 
-    if (!isArrayFull) {
+    //if (!isArrayFull) {
       if (!showCounts) {
-        enqueueStep(pos, inputVal, true);
+        enqueueStep(pos, inputVal, true, arrayFull, canInsert);
       } else {
         return pos;
       }
-    }
+    //}
   }
 
   // Quadratic Probing
   function quadraticProbing(inputVal, pos, showCounts) {
+    var arrayFull = false;
+    var canInsert = true;
+    
     // Temp pointer that will point to the correct position at the end of the loop
     var temp = pos;
 
@@ -750,24 +767,24 @@
 
     // Loop across the array. "infinite" loop. Breaks if array is full.
     for (;;) {
+      // If space is available, break
+      if (String(arr.value(temp)) === "") {
+        break;
+      }
+      
       // If array is full, break out
       if (count === arr.size()) {
-        canStillInsert = false;
-
-        // Checking if there are still empty slots, even when count === arr.size()
+        // Tried to insert everywhere the algorithm would let us, failed
+        canInsert = false;
+        
+        // Assume the array is full, since insertion failed, but check for any empty slots
+        arrayFull = true;
         for (var b = 0; b < arr.size(); b++) {
           if (String(arr.value(b)) === "") {
-            canStillInsert = true;
+            arrayFull = false;
             break;
           }
         }
-
-        isArrayFull = true;
-        break;
-      }
-
-      // If space is available, break
-      if (String(arr.value(temp)) === "") {
         break;
       }
 
@@ -790,34 +807,43 @@
     }
 
     // Empty spot found. Insert element inputVal at temp
-    if (!isArrayFull) {
+    //if (!isArrayFull) {
       if (!showCounts) {
         enqueueStep(temp, inputVal, true);
       } else {
         return temp;
       }
-    }
+    //}
   }
 
 
   /**
-   * Adds a step to the queue, either solely highlight or highlight and insert
+   * Adds a step to the queue
+   *  pos - array position to perform an action
+   *  val - the value to insert
+   *  arrayFull - true if entire array is full
+   *  canInsert - true if pos is empty and insertion can take place
+   *              false if all positions the resolution algorithm attempts are full
    */
-  function enqueueStep(pos, val, insert) {
-    // Enqueue highlight step
+  function enqueueStep(pos, val, insert, arrayFull, canInsert) {
+    // Create an queue a highlight step
     var step = {
-      position: pos,
-      value: val,
-      insert: false
+      'position': pos,
+      'value': val,
+      'insert': false,
+      'arrayFull': arrayFull,
+      'canInsert': canInsert
     };
     nextStep.enqueue(step);
-
-    // If insertion step
-    if (insert) {
+    
+    // Queue an insertion step too, if applicable
+    if (insert && canInsert) {
       step = {
-        position: pos,
-        value: val,
-        insert: true
+        'position': pos,
+        'value': val,
+        'insert': true,
+        'arrayFull': arrayFull,
+        'canInsert': canInsert
       };
       nextStep.enqueue(step);
     }
@@ -885,9 +911,6 @@
     $('#next').click(function () {
       var ret = 1;
       if (nextStep.isEmpty()) {    // Perform first step
-        // Reset the flag
-        isArrayFull = false;
-      
         // Input field value
         var inputVal = $("#input").val();
 
@@ -895,9 +918,7 @@
         $("#input").attr("disabled", "disabled");
 
         // Process input with selected function
-        var hashFunction = $("#function").val();
-
-        switch (hashFunction) {
+        switch ($("#function").val()) {
         case '0':  // No function chosen
           reset();
           break;
@@ -922,13 +943,16 @@
         if (ret === 0) {
           loadNextSlide();
         } else {    // Error occurred, re-enable input textfield
+          console.error('Error occurred when hashing ' + inputVal);
           $("#input").removeAttr("disabled");
         }
       } else {    // Load next slide
         loadNextSlide();
+        
         var i;
         var tableSize = $("#tablesize").val();
-
+        var tableCount = [];
+        
         // Reset counts to 0
         for (i = 0; i < tableSize; i++) {
           tableCount[i] = 0;
