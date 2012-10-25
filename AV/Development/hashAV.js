@@ -242,6 +242,11 @@
 
     // Create a new JSAV array
     arr = av.ds.array(hashTable, {indexed: true, layout: "vertical", center: false});
+    
+    // Make sure the queue is clear and state variables are reset
+    nextStep = new Queue();
+    isArrayFull = false;
+    canStillInsert = false;
 
     tableCount = [];
 
@@ -314,7 +319,7 @@
 
     nextStep = new Queue();
     isArrayFull = false;
-    canStillInsert = true;
+    canStillInsert = false;
   }
 
   function loadNextSlide() {
@@ -347,18 +352,14 @@
           errorMsg = "Array is not full, but number of insertion attempts is greater than array size. Insertion failed.";
         } else {
           errorMsg = "Array is full. Insertion failed. Please Restart.";
+          // User has been informed the array is full and they
+          // must restart, so disable the input textbox
+          //$('#input').attr("disabled", "disabled");
         }
         canStillInsert = false;
 
         error(errorMsg);
         arr.unhighlight();
-
-        // Reset flag
-        isArrayFull = false;
-
-        // User has been informed the array is full and they
-        // must restart, so disable the input textbox
-        $('#input').attr("disabled", "disabled");
       }
     } else {
       // Set the focus to the 'Next' button so users can click 'Enter' to trigger the next step
@@ -591,63 +592,59 @@
 
   // Linear Probing
   function linearProbing(inputVal, pos, showCounts, stepSize) {
-    // Cast into a number, otherwise '0' will be considered false.
-    if ((Number(arr.value(pos))) !== false) {
-      // Counter that counts how many times the loop ran
-      var count = 0;
+    // Counter that counts how many times the loop ran
+    var count = 0;
 
-      // Loop across the array. "infinite" loop. Breaks if array is full.
-      for (;;) {
-        // If array is full, break out
-        if (count === arr.size()) {
-          canStillInsert = false;
+    // Loop across the array. "infinite" loop. Breaks if array is full.
+    for (;;) {
+      console.debug('count: ' + count + ', pos: ' + pos + ', isArrayFull: ' + isArrayFull + ', showCounts: ' + showCounts);
+    
+      // If array is full, break out
+      if (count === arr.size()) {
+        canStillInsert = false;
 
-          if (stepSize > 1) {
-            // Checking if there are still empty slots, even when count === arr.size()
-            for (var b = 0; b < arr.size(); b++) {
-              if (String(arr.value(b)) === "") {
-                canStillInsert = true;
-                break;
-              }
+        if (stepSize > 1) {
+          // Checking if there are still empty slots, even when count === arr.size()
+          for (var b = 0; b < arr.size(); b++) {
+            if (String(arr.value(b)) === "") {
+              canStillInsert = true;
+              break;
             }
           }
-
-          isArrayFull = true;
-          break;
         }
 
-        // If space is available, break
-        if (String(arr.value(pos)) === "") {
-          break;
-        }
-
-        // Insert attempt as highlighting activity
-        if (!showCounts) {
-          enqueueStep(pos, inputVal, false);
-        }
-
-        pos += stepSize;
-
-        // Wrap around to the beginning of the array
-        if (pos >= arr.size()) {
-          pos %= arr.size();
-        }
-
-        // Increment count
-        count++;
+        isArrayFull = true;
+        break;
       }
 
-      // Empty spot found. Insert element inputVal at pos
-      if (!isArrayFull) {
-        if (!showCounts) {
-          enqueueStep(pos, inputVal, true);
-        } else {
-          return pos;
-        }
+      // If space is available, break
+      if (String(arr.value(pos)) === "") {
+        break;
       }
-    } else {    // Otherwise, enqueue insertion activity
-      // Hashing position found. Insert activity.
+
+      // Insert attempt as highlighting activity
       if (!showCounts) {
+        enqueueStep(pos, inputVal, false);
+      }
+
+      pos += stepSize;
+
+      // Wrap around to the beginning of the array
+      if (pos >= arr.size()) {
+        pos %= arr.size();
+      }
+
+      // Increment count
+      count++;
+    }
+    
+    console.debug('got out of loop, pos: ' + pos);
+    console.debug('isArrayFull: ' + isArrayFull + ', showCounts: ' + showCounts);
+
+    // Empty spot found. Insert element inputVal at pos
+    if (!isArrayFull) {
+      if (!showCounts) {
+        console.debug('insert value at ' + pos);
         enqueueStep(pos, inputVal, true);
       } else {
         return pos;
@@ -730,16 +727,10 @@
       }
 
       // Empty spot found. Insert element inputVal at temp
-      if (!isArrayFull) {
-        if (!showCounts) {
-          enqueueStep(temp, inputVal, true);
-        } else {
-          return temp;
-        }
-      }
+      pos = temp;
     }
-    else {    // Otherwise, enqueue insertion activity
-      // Hashing position found. Insert activity.
+
+    if (!isArrayFull) {
       if (!showCounts) {
         enqueueStep(pos, inputVal, true);
       } else {
@@ -750,75 +741,62 @@
 
   // Quadratic Probing
   function quadraticProbing(inputVal, pos, showCounts) {
-    // If pos is full, start resolution.
-    // Cast into a number, otherwise '0' will be considered false.
-    if ((Number(arr.value(pos))) !== false) {
+    // Temp pointer that will point to the correct position at the end of the loop
+    var temp = pos;
 
-      // Temp pointer that will point to the correct position at the end of the loop
-      var temp = pos;
+    // Counter that counts how many times the loop ran
+    var count = 0;
 
-      // Counter that counts how many times the loop ran
-      var count = 0;
+    // i for the quadratic probing
+    var i = 1;
 
-      // i for the quadratic probing
-      var i = 1;
+    // Loop across the array. "infinite" loop. Breaks if array is full.
+    for (;;) {
+      // If array is full, break out
+      if (count === arr.size()) {
+        canStillInsert = false;
 
-      // Loop across the array. "infinite" loop. Breaks if array is full.
-      for (;;) {
-        // If array is full, break out
-        if (count === arr.size()) {
-          canStillInsert = false;
-
-          // Checking if there are still empty slots, even when count === arr.size()
-          for (var b = 0; b < arr.size(); b++) {
-            if (String(arr.value(b)) === "") {
-              canStillInsert = true;
-              break;
-            }
+        // Checking if there are still empty slots, even when count === arr.size()
+        for (var b = 0; b < arr.size(); b++) {
+          if (String(arr.value(b)) === "") {
+            canStillInsert = true;
+            break;
           }
-
-          isArrayFull = true;
-          break;
         }
 
-        // If space is available, break
-        if (String(arr.value(temp)) === "") {
-          break;
-        }
-
-        // Insert attempt as highlighting activity
-        if (!showCounts) {
-          enqueueStep(temp, inputVal, false);
-        }
-
-        // Calculate the next position to check by adding the square of i to the original position, increment i
-        temp = pos + i * i;
-        i++;
-
-        // Wrap around to the beginning of the array
-        if (temp >= arr.size()) {
-          temp %= arr.size();
-        }
-
-        // Increment count
-        count++;
+        isArrayFull = true;
+        break;
       }
 
-      // Empty spot found. Insert element inputVal at temp
-      if (!isArrayFull) {
-        if (!showCounts) {
-          enqueueStep(temp, inputVal, true);
-        } else {
-          return temp;
-        }
+      // If space is available, break
+      if (String(arr.value(temp)) === "") {
+        break;
       }
-    }
-    else {    // Otherwise, enqueue insertion activity
-      // Hashing position found. Insert activity.
+
+      // Insert attempt as highlighting activity
       if (!showCounts) {
-        enqueueStep(pos, inputVal, true);
+        enqueueStep(temp, inputVal, false);
+      }
+
+      // Calculate the next position to check by adding the square of i to the original position, increment i
+      temp = pos + i * i;
+      i++;
+
+      // Wrap around to the beginning of the array
+      if (temp >= arr.size()) {
+        temp %= arr.size();
+      }
+
+      // Increment count
+      count++;
+    }
+
+    // Empty spot found. Insert element inputVal at temp
+    if (!isArrayFull) {
+      if (!showCounts) {
+        enqueueStep(temp, inputVal, true);
       } else {
-        return pos;
+        return temp;
       }
     }
   }
@@ -909,6 +887,9 @@
     $('#next').click(function () {
       var ret = 1;
       if (nextStep.isEmpty()) {    // Perform first step
+        // Reset the flag
+        isArrayFull = false;
+      
         // Input field value
         var inputVal = $("#input").val();
 
