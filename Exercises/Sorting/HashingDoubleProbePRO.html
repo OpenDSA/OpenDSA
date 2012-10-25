@@ -27,7 +27,7 @@
 <script>
 var
   jsav,           // The JSAV object
-  arr_size = 10,  // Size of the hashtable
+  arr_size = 11,  // Size of the hashtable
   solutionArr = [], // The (internal) array that stores the correct answer
   studentArr = [],  // A copy of the (internal) array at the start of the exercise for reset
   jsavArr,        // The array that the user manipulates (JSAV object)
@@ -89,27 +89,39 @@ var checkAnswer = function() {
   }
   return true;
 };
+
+var getH1 = function() {
+  return currentKey % arr_size;
+}
+
+var getH2 = function() {
+  return 1 + (currentKey % (arr_size - 1));
+}
 </script>
 
 <div class="exercise">
     <div class="vars">                
-      <var id="hashFunction">"h(k) = k  mod " + arr_size</var>
       <var id="JSAV">initJSAV()</var>
+      <var id="hashFunction">"h(k) = k  mod " + arr_size</var>
+      <var id="H1">getH1()</var>
+      <var id="H2">getH2()</var>
     </div>
     <div class="problems">
       <div> <!-- Supresses answer box -->
         <p class="problem">
           Given the following hash table, use hash
-          function <var>hashFunction </var> and handle collisions
+          function <var>hashFunction</var> and handle collisions
           using Double Hashing with probe function
-          p(K, i) = i*h<sub>2</sub>(K), and
-	  h<sub>2</sub>(K) = 1 + (k % 9). WARNING: THIS EXERCISE IS A
+          p(K, i) = i*h2(K), and h2(K) = 1 + (k % 10).
+	  WARNING: THIS EXERCISE IS A
           PLACEHOLDER AND DOES NOT WORK YET.
         </p>          
         <p class="question"> 
           In which slot should the record with key
-          value <var>currentKey </var> be inserted?
+          value <var>currentKey</var> be inserted?
         </p>
+	<p>h1(<var>currentKey</var>) = <var>H1</var>.</p>
+	<p>h2(<var>currentKey</var>) = <var>H2</var>.</p>
         <input id="reset" type="button" value="Reset" />  
         <div id="jsav"></div>
       <div class="solution" data-type="custom">
