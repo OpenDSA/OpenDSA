@@ -101,9 +101,7 @@
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    var aboutStr = "Hashing Visualization\nWritten by Nayef Copty & Mauricio del la Bara.\nCreated as part of the OpenDSA hypertextbook project.\n";
-    aboutStr += "For more information, see http://algoviz.org/OpenDSA\nWritten during Spring 2012\nLast Update: October 2012\nJSAV Library Version: " + JSAV.version();
-    alert(aboutStr);
+    alert("Shellsort Algorithm Visualization\nWritten by Nayef Copty, Mauricio De la Barra, Daniel Breakiron, and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
 
   /**
