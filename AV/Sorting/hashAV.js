@@ -37,7 +37,7 @@
  */
 
 /* The fun starts here  */
-//(function ($) {
+(function ($) {
   /*
    * Queue Data Structure
    * Created by Stephen Morley - http://code.stephenmorley.org
@@ -164,17 +164,17 @@
     }
 
     return n;
-  }
+  };
 
   /**
    * Optimized version of leastFactor for Opera, Chrome, Firefox
    * In these browsers, "i divides n" is much faster as
    * (q = n / i) === Math.floor(q) than n % i === 0
    */
-  if (navigator.userAgent.indexOf('Opera') !== -1
-   || navigator.userAgent.indexOf('Chrome') !== -1
-   || navigator.userAgent.indexOf('Firefox') !== -1) {
-    leastFactor = function(n) {
+  if (navigator.userAgent.indexOf('Opera') !== -1 ||
+      navigator.userAgent.indexOf('Chrome') !== -1 ||
+      navigator.userAgent.indexOf('Firefox') !== -1) {
+    leastFactor = function (n) {
       if (isNaN(n) || !isFinite(n)) {
         return NaN;
       }
@@ -196,32 +196,32 @@
       var q, m = Math.sqrt(n);
       for (var i = 7; i <= m; i += 30) {
         if ((q = n / i) === Math.floor(q)) {
-        return i;
+          return i;
         }
         if ((q = n / (i + 4)) === Math.floor(q)) {
-          return i+4;
+          return i + 4;
         }
         if ((q = n / (i + 6)) === Math.floor(q)) {
-          return i+6;
+          return i + 6;
         }
         if ((q = n / (i + 10)) === Math.floor(q)) {
-          return i+10;
+          return i + 10;
         }
         if ((q = n / (i + 12)) === Math.floor(q)) {
-          return i+12;
+          return i + 12;
         }
         if ((q = n / (i + 16)) === Math.floor(q)) {
-          return i+16;
+          return i + 16;
         }
         if ((q = n / (i + 22)) === Math.floor(q)) {
-          return i+22;
+          return i + 22;
         }
         if ((q = n / (i + 24)) === Math.floor(q)) {
-          return i+24;
+          return i + 24;
         }
       }
       return n;
-    }
+    };
   }
 
   /**
@@ -230,20 +230,21 @@
    *   - true  if n is prime
    *   - false otherwise
    */
-  var isPrime = function(n) {
+  var isPrime = function (n) {
     if (isNaN(n) || !isFinite(n) || n % 1 || n < 2) {
       return false;
     }
-    if (n==leastFactor(n)) {
+    if (n === leastFactor(n)) {
       return true;
     }
     return false;
-  }
+  };
 
   /* End Primality test code */
 
-  function isPower2(m) {
-    return !(isNaN(M) || !isFinite(M) || M < 1 || ((M - 1) & M)  ===  0);
+  function isPowerOf2(m) {
+    /*jslint bitwise: true */
+    return !(isNaN(m) || !isFinite(m) || m < 1 || ((m - 1) & m)  ===  0);
   }
 
 
@@ -397,7 +398,7 @@
         $('#mValue').show();
         $('#M').attr('placeholder', 'Power-of-2');
 
-        if (isPower2(M)) {
+        if (isPowerOf2(M)) {
           av.umsg('Power-of-2 Selected: ' + M);
         } else {
           missingFields.push('power-of-2 M');
@@ -775,6 +776,7 @@
   function determineResolution(inputVal, pos, showCounts, printPerm) {
     var collisionResolution = $("#collision").val();
     var ret = 0;
+    var stepSize;
 
     switch (collisionResolution) {
       // No function chosen
@@ -797,11 +799,11 @@
       ret = quadraticProbing(inputVal, pos, showCounts);
       break;
     case '6':
-      var stepSize = doubleHashPrime(inputVal, showCounts);
+      stepSize = doubleHashPrime(inputVal, showCounts);
       ret = linearProbing(inputVal, pos, showCounts, stepSize);
       break;
     case '7':
-      var stepSize = doubleHashPowerOf2(inputVal, showCounts);
+      stepSize = doubleHashPowerOf2(inputVal, showCounts);
       ret = linearProbing(inputVal, pos, showCounts, stepSize);
       break;
     }
@@ -1041,9 +1043,9 @@
       // Return error
       return 1;
     }
-    
+
     var stepSize = 1 + (inputVal % (M - 1));
-    
+
     if (!showCounts) {
       av.umsg("Step size = 1 + (Input Value % (M - 1))");
       av.umsg("Step size = 1 + (" + inputVal + " % (" + M + " - 1)) = " + stepSize);
@@ -1056,18 +1058,17 @@
    * Calculates the step size for double hashing collision policy using a power of 2
    */
   function doubleHashPowerOf2(inputVal, showCounts) {
-    /*jslint bitwise: true */
     var M = Number($('#M').val());
 
     // Test if its a valid power of 2
-    if (isNaN(M) || !isFinite(M) || M < 1 || ((M - 1) & M) == 0) {
+    if (!isPowerOf2(M)) {
       error("Please enter a valid power of 2 M");
       // Return error
       return 1;
     }
-    
+
     var stepSize = ((inputVal % (M / 2)) * 2) + 1;
-    
+
     if (!showCounts) {
       av.umsg("Step size = ((Input Value % (M / 2)) * 2) + 1");
       av.umsg("Step size = ((" + inputVal + " % (" + M + " / 2)) * 2) + 1 = " + stepSize);
@@ -1124,7 +1125,7 @@
     $('#M').keyup(function (event) {
       resetAV();
     });
-    
+
     $('#M').keypress(function (event) {
       // Capture 'Enter' press
       if (event.which === 13) {
@@ -1272,4 +1273,4 @@
     // Call reset - the initial state of the vizualization
     reset();
   });
-//}(jQuery));
+}(jQuery));
