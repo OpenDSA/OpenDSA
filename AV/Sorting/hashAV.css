@@ -13,6 +13,7 @@ label {
 }
 
 #bottom {
+  height: 90px;
   width: 810px;
   border: 1px solid black;
   background-color: #ddd;

@@ -3,35 +3,41 @@
 
 /*
  * For queries & switch cases, follow the numbering below:
- * Hash Functions:
+ * Hash Functions (hashFunct):
  *  1. Simple Mod Hash
  *  2. Binning Hash
  *  3. Mid-Square Hash
  *  4. Simple Hash for Strings
  *  5. Improved Hash for Strings
  *
- * Coliision Resolutions:
+ * Collision Resolutions (collision):
  *  1. Linear Probing
  *  2. Linear Probing by Stepsize of 2
  *  3. Linear Probing by Stepsize of 3
  *  4. Pseudo-Random Probing
  *  5. Quadratic Probing
+ *  6. Double Hashing (Prime)
+ *  7. Double Hashing (Power-of-2)
  *
- * Table Size:
+ * Table Size (tableSize):
  *  Number between 1 and 16
  *
- * Key Range:
+ * Key Range (keyrange):
  *  1. 0-99
  *  2. 0-999
  *
+ * M-value (m):
+ *  - A prime number (if collision=6)
+ *  - A power-of-2 (if collision=7)
+ *
  * To handle queries:
- *  Set the hashFunct, collision, tableSize and keyrange according to the reference above
+ *  Set the hashFunct, collision, tableSize, keyrange and m according to the reference above
  *  For example, to choose Mid-Square Hash with pseudo-random probing, you would use:
  *  hash.html?hashFunct=3&collision=4
  */
 
 /* The fun starts here  */
-(function ($) {
+//(function ($) {
   /*
    * Queue Data Structure
    * Created by Stephen Morley - http://code.stephenmorley.org
@@ -85,12 +91,170 @@
   }
   /* End Queue */
 
+  /*
+   * Primality testing code
+   *
+   * Copyright (c) 2011 Alexei Kourbatov, www.JavaScripter.net
+   * All information on these Web sites, JavaScripter.net or JavaScripter.com, is provided "AS IS", without warranties of any
+   * kind. I can change it at any time, without notice.
+   *
+   * Permission is hereby granted to use this information for educational purposes only. You are not allowed to get money for
+   * re-distribution of this information or remove any copyright notices from these pages or code. If you want to make a mirror
+   * of this Web site or otherwise re-distribute the information or code found on this site or make any commercial use of this
+   * information or code, do ask me via e-mail: webmaster(at)javascripter.net.
+   *
+   * All trademarks are the property of their respective owners and are used here for information purposes only. JavaScript is
+   * a trademark of Oracle Corporation.
+   *
+   * Courtesy of http://www.javascripter.net/faq/primefactors.txt
+   */
+
+  /**
+   * function leastFactor(n) returns:
+   *    the smallest prime that divides n
+   *    NaN if n is NaN or Infinity
+   *    0  if n is 0
+   *    1  if n = 1, n = -1, or n is not an integer
+   */
+  var leastFactor = function (n) {
+    if (isNaN(n) || !isFinite(n)) {
+      return NaN;
+    }
+    if (n === 0) {
+      return 0;
+    }
+    if (n % 1 || n * n < 2) {
+      return 1;
+    }
+    if (n % 2 === 0) {
+      return 2;
+    }
+    if (n % 3 === 0) {
+      return 3;
+    }
+    if (n % 5 === 0) {
+      return 5;
+    }
+    var m = Math.sqrt(n);
+    for (var i = 7; i <= m; i += 30) {
+      if (n % i === 0) {
+        return i;
+      }
+      if (n % (i + 4) === 0) {
+        return i + 4;
+      }
+      if (n % (i + 6) === 0) {
+        return i + 6;
+      }
+      if (n % (i + 10) === 0) {
+        return i + 10;
+      }
+      if (n % (i + 12) === 0) {
+        return i + 12;
+      }
+      if (n % (i + 16) === 0) {
+        return i + 16;
+      }
+      if (n % (i + 22) === 0) {
+        return i + 22;
+      }
+      if (n % (i + 24) === 0) {
+        return i + 24;
+      }
+    }
+
+    return n;
+  }
+
+  /**
+   * Optimized version of leastFactor for Opera, Chrome, Firefox
+   * In these browsers, "i divides n" is much faster as
+   * (q = n / i) === Math.floor(q) than n % i === 0
+   */
+  if (navigator.userAgent.indexOf('Opera') !== -1
+   || navigator.userAgent.indexOf('Chrome') !== -1
+   || navigator.userAgent.indexOf('Firefox') !== -1) {
+    leastFactor = function(n) {
+      if (isNaN(n) || !isFinite(n)) {
+        return NaN;
+      }
+      if (n === 0) {
+        return 0;
+      }
+      if (n % 1 || n * n < 2) {
+        return 1;
+      }
+      if (n % 2 === 0) {
+        return 2;
+      }
+      if (n % 3 === 0) {
+        return 3;
+      }
+      if (n % 5 === 0) {
+        return 5;
+      }
+      var q, m = Math.sqrt(n);
+      for (var i = 7; i <= m; i += 30) {
+        if ((q = n / i) === Math.floor(q)) {
+        return i;
+        }
+        if ((q = n / (i + 4)) === Math.floor(q)) {
+          return i+4;
+        }
+        if ((q = n / (i + 6)) === Math.floor(q)) {
+          return i+6;
+        }
+        if ((q = n / (i + 10)) === Math.floor(q)) {
+          return i+10;
+        }
+        if ((q = n / (i + 12)) === Math.floor(q)) {
+          return i+12;
+        }
+        if ((q = n / (i + 16)) === Math.floor(q)) {
+          return i+16;
+        }
+        if ((q = n / (i + 22)) === Math.floor(q)) {
+          return i+22;
+        }
+        if ((q = n / (i + 24)) === Math.floor(q)) {
+          return i+24;
+        }
+      }
+      return n;
+    }
+  }
+
+  /**
+   * function isPrime(n) returns:
+   *   - false if n is NaN or not a finite integer
+   *   - true  if n is prime
+   *   - false otherwise
+   */
+  var isPrime = function(n) {
+    if (isNaN(n) || !isFinite(n) || n % 1 || n < 2) {
+      return false;
+    }
+    if (n==leastFactor(n)) {
+      return true;
+    }
+    return false;
+  }
+
+  /* End Primality test code */
+
+  function isPower2(m) {
+    return !(isNaN(M) || !isFinite(M) || M < 1 || ((M - 1) & M)  ===  0);
+  }
+
+
   /* Variables */
-  var defCtrlState;          // Stores the default state of the controls
-  var defTableSizeOptions;        // Stores the HTML of the default table size options
+  var defCtrlState;             // Stores the default state of the controls
+  var defTableSizeOptions;      // Stores the HTML of the default table size options
   var av;                       // JSAV
   var arr;                      // JSAV Array
   var nextStep = new Queue();   // A queue containing 'steps' to be played when the user clicks 'Next'
+  var slotPerm = [0];           // A permutation of slots for pseudo random probing, must be a global so that
+                                // the same permutation is used each time
 
   // Initialize JSAV object
   av = new JSAV("hashAV_avc");
@@ -117,6 +281,7 @@
     defCtrlState.collision = 0;
     defCtrlState.tableSize = 0;
     defCtrlState.keyrange = 0;
+    defCtrlState.m = '';
 
     // Update the default control state based on the query parameters
     var params = JSAV.utils.getQueryParameter();
@@ -135,7 +300,7 @@
 
     // Set collision resolution policy
     if (params.collision) {
-      if (params.collision > 0 && params.collision <= 5) {
+      if (params.collision > 0 && params.collision <= 7) {
         defCtrlState.collision = params.collision;
 
         // Disable so user can't change the value set by parameter
@@ -168,6 +333,18 @@
         console.error("Invalid URL parameter keyrange: " + params.keyrange);
       }
     }
+
+    // Set M-value
+    if (params.m) {
+      if (params.m > 0) {
+        defCtrlState.m = params.m;
+
+        // Disable so user can't change the value set by parameter
+        $('#M').attr('disabled', 'disabled');
+      } else {
+        console.error("Invalid URL parameter m: " + params.m);
+      }
+    }
   }
 
   /**
@@ -179,13 +356,14 @@
     var missingFields = [];
 
     // Ensure user selected a hash function
-    if ($('#function').val() === '0') {
+    var funct = Number($('#function').val());
+    if (funct === 0) {
       missingFields.push('hash function');
     } else {
       av.umsg('Algorithm Selected: ' + $("#function option:selected").text());
 
       // If user selected binning, make sure they selected a key range too
-      if ($('#function').val() === '2') {
+      if (funct === 2) {
         if ($('#keyrange').val() === '0') {
           missingFields.push('key range');
         } else {
@@ -195,10 +373,38 @@
     }
 
     // Ensure user selected a collision resolution policy
-    if ($('#collision').val() === '0') {
+    var coll = Number($('#collision').val());
+    if (coll === 0) {
       missingFields.push('collision policy');
     } else {
       av.umsg('Collsion Policy Selected: ' + $("#collision option:selected").text());
+
+      // Ensure a valid M-value is provided for double hashing policies
+      var M = Number($('#M').val());
+
+      if (coll === 6) {    // Double hashing (prime)
+        $('#mValue').show();
+        $('#M').attr('placeholder', 'Prime Number');
+
+        console.debug('M: ' + M + ', isPrime(M): ' + isPrime(M));
+
+        if (isPrime(M)) {
+          av.umsg('Prime Number Selected: ' + $("#M").val());
+        } else {
+          missingFields.push('prime number M');
+        }
+      } else if (coll === 7) {    // Double hashing (power-of-2)
+        $('#mValue').show();
+        $('#M').attr('placeholder', 'Power-of-2');
+
+        if (isPower2(M)) {
+          av.umsg('Power-of-2 Selected: ' + M);
+        } else {
+          missingFields.push('power-of-2 M');
+        }
+      } else {
+        $('#mValue').hide();
+      }
     }
 
     // Ensure user selected a table size
@@ -240,9 +446,10 @@
 
     // Create a new JSAV array
     arr = av.ds.array(hashTable, {indexed: true, layout: "vertical", center: false});
-    
+
     // Make sure the queue is clear and state variables are reset
     nextStep = new Queue();
+    slotPerm = [0];
 
     // TODO - might be able to combine this with the loop above
     // Append a span containing the count to each index
@@ -256,15 +463,15 @@
     if ($('#tablesize option').length === 3) {
       // Save the value the user has selected
       var size = $("#tablesize").val();
-      
+
       $("#tablesize").html(defTableSizeOptions);
-      
+
       // Select the value the user previously had selected
       $("#tablesize").val(size);
     }
 
-    // Disable keyrange dropdown
-    $("#keyrange").attr("disabled", "disabled");
+    // Disable and hide keyrange dropdown
+    $('#keyrange').hide();
 
     // Display Appropriate Message and Enable Appropriate Controls for each function
     switch ($('#function').val()) {
@@ -276,7 +483,7 @@
     // Binning
     case '2':
       // Enable key range
-      $("#keyrange").removeAttr("disabled");
+      $('#keyrange').show();
       break;
 
     // Mid Square
@@ -298,6 +505,10 @@
     $("#collision").val(defCtrlState.collision);
     $("#tablesize").val(defCtrlState.tableSize);
     $("#keyrange").val(defCtrlState.keyrange);
+    $("#M").val(defCtrlState.m);
+    if (defCtrlState.m === '') {
+      $('#mValue').hide();
+    }
     setFunction();
 
     // Clear input textbox and disable next button
@@ -447,9 +658,9 @@
 
     av.umsg("Attempting to insert: " + inputVal);
 
+    var size = Number($("#tablesize").val());
     var strpadding = "00000000";
     var modVal = 256;
-    var size = Number($("#tablesize").val());
 
     if (size === 16) {
       strpadding = "0000000000000000";
@@ -461,14 +672,15 @@
 
     // Convert squaredInput to base 2 and pad it to the correct length
     var binaryDigit = (strpadding + squaredInput.toString(2)).substr(size * -1);
-    
-    // Concatenate Middle Bits
-    var middleBits;
-    if (size === 16) {
-      middleBits = binaryDigit.charAt(6) + binaryDigit.charAt(7) + binaryDigit.charAt(8) + binaryDigit.charAt(9);
-    } else if (size === 8) {
-      middleBits = binaryDigit.charAt(3) + binaryDigit.charAt(4);
-    }
+
+    // Get the middle bits
+    var len = size / 4;
+    var start = (size - len) / 2;
+    var middleBits = binaryDigit.substr(start, len);
+
+    // Highlight the middle bits
+    binaryDigit = binaryDigit.substring(0, start) + '<span style="color: red">' +
+                  middleBits + '</span>' + binaryDigit.substring(start + len, binaryDigit.length);
 
     // Convert Middle Bits to Decimal
     var pos = parseInt(middleBits, 2);
@@ -584,6 +796,14 @@
     case '5':
       ret = quadraticProbing(inputVal, pos, showCounts);
       break;
+    case '6':
+      var stepSize = doubleHashPrime(inputVal, showCounts);
+      ret = linearProbing(inputVal, pos, showCounts, stepSize);
+      break;
+    case '7':
+      var stepSize = doubleHashPowerOf2(inputVal, showCounts);
+      ret = linearProbing(inputVal, pos, showCounts, stepSize);
+      break;
     }
 
     return ret;
@@ -593,7 +813,7 @@
   function linearProbing(inputVal, pos, showCounts, stepSize) {
     // Counter that counts how many times the loop ran
     var count = 0;
-    
+
     var arrayFull = false;
     var canInsert = true;
 
@@ -607,12 +827,12 @@
       if (String(arr.value(pos)) === "") {
         break;
       }
-    
+
       // If array is full, break out
       if (count === arr.size()) {
         // Tried to insert everywhere the algorithm would let us, failed
         canInsert = false;
-        
+
         // Assume the array is full, since insertion failed
         arrayFull = true;
 
@@ -643,7 +863,7 @@
       // Increment count
       count++;
     }
-    
+
     if (!showCounts) {
       console.debug('got out of loop');
       console.debug('count: ' + count + ', pos: ' + pos + ', arrayFull: ' + arrayFull + ', canInsert: ' + canInsert + ', showCounts: ' + showCounts);
@@ -651,41 +871,39 @@
     }
 
     // Empty spot found. Insert element inputVal at pos
-    //if (canInsert) {
-      if (!showCounts) {
-        console.debug('insert value at ' + pos);
-        enqueueStep(pos, inputVal, true, arrayFull, canInsert);
-      } else {
-        return pos;
-      }
-    //}
+    if (!showCounts) {
+      console.debug('insert value at ' + pos);
+      enqueueStep(pos, inputVal, true, arrayFull, canInsert);
+    } else {
+      return pos;
+    }
   }
 
   // Pseudo-Random Probing
   function pseudoRandom(inputVal, pos, showCounts, printPerm) {
     var arrayFull = false;
     var canInsert = true;
-    
+
     // Cast into a number, otherwise '0' will be considered false.
     if ((Number(arr.value(pos))) !== false) {
       var i, j, randomnumber;
 
-      // Create a random permutation slots
-      var slots = [0];
-      for (i = 1; i < arr.size(); i++) {
+      // Create a random permutation of slots
+      while (slotPerm.length < arr.size()) {
         randomnumber = Math.ceil(Math.random() * (arr.size() - 1));
 
+        // Ensure that random number hasn't been used before
         for (j = 0; j < arr.size(); j++) {
-          if (slots[j] === randomnumber) {
+          if (slotPerm[j] === randomnumber) {
             continue;
           }
         }
 
-        slots.push(randomnumber);
+        slotPerm.push(randomnumber);
       }
 
       if (printPerm) {
-        av.umsg("Permutation: " + slots.join(' '));
+        av.umsg("Permutation: " + slotPerm.join(' '));
       }
 
       // Counter that counts how many times the loop ran
@@ -703,12 +921,12 @@
         if (String(arr.value(temp)) === "") {
           break;
         }
-        
+
         // If array is full, break out
         if (count === arr.size()) {
           // Tried to insert everywhere the algorithm would let us, failed
           canInsert = false;
-        
+
           // Assume the array is full, since insertion failed, but check for any empty slots
           arrayFull = true;
           for (var b = 0; b < arr.size(); b++) {
@@ -726,7 +944,7 @@
         }
 
         // Calculate next position to check by adding the next random slot to the original position
-        temp  = pos + slots[currIndex];
+        temp  = pos + slotPerm[currIndex];
         currIndex++;
 
         // Wrap around to the beginning of the array
@@ -742,20 +960,18 @@
       pos = temp;
     }
 
-    //if (!isArrayFull) {
-      if (!showCounts) {
-        enqueueStep(pos, inputVal, true, arrayFull, canInsert);
-      } else {
-        return pos;
-      }
-    //}
+    if (!showCounts) {
+      enqueueStep(pos, inputVal, true, arrayFull, canInsert);
+    } else {
+      return pos;
+    }
   }
 
   // Quadratic Probing
   function quadraticProbing(inputVal, pos, showCounts) {
     var arrayFull = false;
     var canInsert = true;
-    
+
     // Temp pointer that will point to the correct position at the end of the loop
     var temp = pos;
 
@@ -771,12 +987,12 @@
       if (String(arr.value(temp)) === "") {
         break;
       }
-      
+
       // If array is full, break out
       if (count === arr.size()) {
         // Tried to insert everywhere the algorithm would let us, failed
         canInsert = false;
-        
+
         // Assume the array is full, since insertion failed, but check for any empty slots
         arrayFull = true;
         for (var b = 0; b < arr.size(); b++) {
@@ -807,15 +1023,58 @@
     }
 
     // Empty spot found. Insert element inputVal at temp
-    //if (!isArrayFull) {
-      if (!showCounts) {
-        enqueueStep(temp, inputVal, true);
-      } else {
-        return temp;
-      }
-    //}
+    if (!showCounts) {
+      enqueueStep(temp, inputVal, true);
+    } else {
+      return temp;
+    }
   }
 
+  /**
+   * Calculates the step size for double hashing collision policy using a prime number M
+   */
+  function doubleHashPrime(inputVal, showCounts) {
+    var M = Number($('#M').val());
+
+    if (!isPrime(M)) {
+      error("Please enter a valid prime number M");
+      // Return error
+      return 1;
+    }
+    
+    var stepSize = 1 + (inputVal % (M - 1));
+    
+    if (!showCounts) {
+      av.umsg("Step size = 1 + (Input Value % (M - 1))");
+      av.umsg("Step size = 1 + (" + inputVal + " % (" + M + " - 1)) = " + stepSize);
+    }
+
+    return stepSize;
+  }
+
+  /**
+   * Calculates the step size for double hashing collision policy using a power of 2
+   */
+  function doubleHashPowerOf2(inputVal, showCounts) {
+    /*jslint bitwise: true */
+    var M = Number($('#M').val());
+
+    // Test if its a valid power of 2
+    if (isNaN(M) || !isFinite(M) || M < 1 || ((M - 1) & M) == 0) {
+      error("Please enter a valid power of 2 M");
+      // Return error
+      return 1;
+    }
+    
+    var stepSize = ((inputVal % (M / 2)) * 2) + 1;
+    
+    if (!showCounts) {
+      av.umsg("Step size = ((Input Value % (M / 2)) * 2) + 1");
+      av.umsg("Step size = ((" + inputVal + " % (" + M + " / 2)) * 2) + 1 = " + stepSize);
+    }
+
+    return stepSize;
+  }
 
   /**
    * Adds a step to the queue
@@ -835,7 +1094,7 @@
       'canInsert': canInsert
     };
     nextStep.enqueue(step);
-    
+
     // Queue an insertion step too, if applicable
     if (insert && canInsert) {
       step = {
@@ -862,8 +1121,18 @@
   $(document).ready(function () {
 
     /* Key Presses */
+    $('#M').keyup(function (event) {
+      resetAV();
+    });
+    
+    $('#M').keypress(function (event) {
+      // Capture 'Enter' press
+      if (event.which === 13) {
+        // Prevent 'Enter' from posting the form and refreshing the page
+        event.preventDefault();
+      }
+    });
 
-    // Disable key range as soon as it has been set
     $('#keyrange').change(function () {
       resetAV();
     });
@@ -948,11 +1217,11 @@
         }
       } else {    // Load next slide
         loadNextSlide();
-        
+
         var i;
         var tableSize = $("#tablesize").val();
         var tableCount = [];
-        
+
         // Reset counts to 0
         for (i = 0; i < tableSize; i++) {
           tableCount[i] = 0;
@@ -1003,4 +1272,4 @@
     // Call reset - the initial state of the vizualization
     reset();
   });
-}(jQuery));
+//}(jQuery));
