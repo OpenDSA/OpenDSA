@@ -1,5 +1,5 @@
 "use strict";
-/*global alert console logExerciseInit getAVName awardCompletionCredit */
+/*global alert: true, logExerciseInit, getAVName, awardCompletionCredit */
 (function ($) {
   // Create the AV object. We turn off slideshow mode, since this is a
   // "static" form-based activity
@@ -44,7 +44,6 @@
 
   // Initialize theArray to be size random numbers
   function initArray(size) {
-    console.log('initArray');
     var i;
     theArray.length = 0; // Out with the old
     // Give random numbers in range 0..9999
@@ -134,9 +133,6 @@
     if (!incrs) { return; }
 
     // This should only happen the very first time we run
-    
-    console.log('theArray.length: ' + theArray.length + " !== ASize: " + ASize + ": " + (theArray.length !== ASize));
-    console.log('typeof theArray.length: ' + (typeof theArray.length) + " typeof ASize: " + (typeof ASize));
     if (theArray.length !== ASize) { initArray(ASize); }
 
     if (!InitFlag) {
