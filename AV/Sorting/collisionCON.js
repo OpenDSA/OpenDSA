@@ -367,23 +367,23 @@ var setRed = function (arr, index) {
   av.umsg("Insert 39. 39 % 16 = 7. This causes a collision at slot 7.");
   av.step();
 
-  av.umsg("Compute h<sub>2</sub>(39) = ((39/10) % 8) * 2 + 1 = 7. So we will now do linear probing by steps of 7. Slot 7 + 7 = 14 is checked first, and it is empty.");
+  av.umsg("Compute h<sub>2</sub>(39) = ((39/16) % 8) * 2 + 1 = 5. So we will now do linear probing by steps of 5. Slot 7 + 5 = 12 is checked first, and it is empty.");
   arr.unhighlight(7);
-  arr.highlight(14);
-  arr.value(14, 39);
+  arr.highlight(12);
+  arr.value(12, 39);
   av.step();
 
-  av.umsg("Insert 46. 46 % 16 = 14. This causes a collision at slot 14.");
+  av.umsg("Insert 92. 92 % 16 = 12. This causes a collision at slot 12.");
   av.step();
 
-  av.umsg("Compute h<sub>2</sub>(46) = ((46/10) % 8) * 2 + 1 = 9. So we will now do linear probing by steps of 9. Slot (14 + 9) % 16 = 7 is checked first. Since this contains a value, we get another collision.");
-  arr.unhighlight(14);
+  av.umsg("Compute h<sub>2</sub>(92) = ((92/16) % 8) * 2 + 1 = 11. So we will now do linear probing by steps of 11. Slot (12 + 11) % 16 = 7 is checked first. Since this contains a value, we get another collision.");
+  arr.unhighlight(12);
   arr.highlight(7);
   av.step();
 
-  av.umsg("Step forward by 9 again. (7 + 9) % 16 = 0, so check slot 0. This is empty.");
+  av.umsg("Step forward by 11 again. (7 + 11) % 16 = 2, so check slot 2. This is empty.");
   arr.unhighlight(7);
-  arr.highlight(0);
-  arr.value(0, 46);
+  arr.highlight(2);
+  arr.value(2, 46);
   av.recorded();
 }(jQuery));
