@@ -5,6 +5,16 @@
 
 var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
 
+// Randomly scramble the contents of an array
+function permute(A) {
+  for (var i = 0; i < A.length; i++) {                // for each i
+    var randompos = Math.floor(Math.random() * A.length);
+    var temp = A[i];
+    A[i] = A[randompos];
+    A[randompos] = temp;
+  }
+}
+
 // Convenience function for setting another type of highlight
 // (will be used for showing which records will be compared during sort)
 var setBlue = function (arr, index) {

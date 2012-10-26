@@ -14,7 +14,6 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsascript:: AV/opendsaAV.js
 .. odsalink:: AV/Sorting/binsortCON.css
 
 .. index:: ! Binsort

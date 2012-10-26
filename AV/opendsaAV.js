@@ -3,16 +3,6 @@
 getAVName, logUserAction */
 // General utilities
 
-// Randomly scramble the contents of an array
-function permute(A) {
-  for (var i = 0; i < A.length; i++) {                // for each i
-    var randompos = Math.floor(Math.random() * A.length);
-    var temp = A[i];
-    A[i] = A[randompos];
-    A[randompos] = temp;
-  }
-}
-
 (function ($) {
 
 //*****************************************************************************
