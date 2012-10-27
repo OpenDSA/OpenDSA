@@ -49,14 +49,14 @@ var setGray = function (a, index) {
   arr.unhighlight(0);
   setGray(arr, 0);
   av.step();
-  av.umsg("Since there are 5 buckets, we take 23 % 5 to get 3. Put this into the frist empty slot in bucket 3, which is slot 7 of the table.");
+  av.umsg("Since there are 5 buckets, we take 23 % 5 to get 3. Put this into the first empty slot in bucket 3, which is slot 7 of the table.");
   arr.highlight(7);
   arr.value(7, 23);
   av.step();
   av.umsg("Now insert a record with key value 48.");
   arr.unhighlight(7);
   av.step();
-  av.umsg("Since there are 5 buckets, we take 48 % 5 to get 3. Put this into the frist empty slot in bucket 3... but there are no more slots available for bucket 3.");
+  av.umsg("Since there are 5 buckets, we take 48 % 5 to get 3. Put this into the first empty slot in bucket 3... but there are no more slots available for bucket 3.");
   av.step();
   av.umsg("So put it in the first available slot in the overflow array.");
   overflow.highlight(0);
@@ -73,7 +73,7 @@ var setGray = function (a, index) {
   arr.unhighlight(1);
   setGray(arr, 1);
   av.step();
-  av.umsg("Since there are 5 buckets, we take 25 % 5 to get 0. Put this into the frist empty slot in bucket 0... but there are no more slots available for bucket 0.");
+  av.umsg("Since there are 5 buckets, we take 25 % 5 to get 0. Put this into the first empty slot in bucket 0... but there are no more slots available for bucket 0.");
   av.step();
   av.umsg("So put it in the first available slot in the overflow array.");
   overflow.highlight(1);

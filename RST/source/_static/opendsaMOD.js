@@ -647,7 +647,6 @@ $(document).ready(function () {
         showLoginBox();
         return false;
       } else {
-        console.debug("Logout link clicked");
         // Submit whatever data we have collected before the user logs out
         flushStoredData();
 
@@ -670,6 +669,9 @@ $(document).ready(function () {
         localStorage.removeItem('opendsa');
         updateLogin();
       }
+      
+      // Force the page to reload to reset all exercises
+      window.location.reload();
     });
 
     //Brings the registration form from the login popup page
