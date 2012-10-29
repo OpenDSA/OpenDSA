@@ -452,6 +452,9 @@ function updateLogin() {
       if (isPopupBoxShowing()) {
         hidePopupBox();
       }
+      
+      // Flush any stored data
+      flushStoredData();
     } else if (!inLocalStorage('opendsa') && $('a.login-window').text() !== 'Login') {
       updated = true;
 
@@ -561,19 +564,14 @@ $(document).ready(function () {
   });
 
   if (serverEnabled()) {
-    // Send any stored event data when the page loads
-    if (userLoggedIn()) {
-      flushStoredData();
-    } else {
-      sendEventData();
-    }
-
     // Log the browser ready event
     logUserAction('', 'document-ready', 'User loaded the ' + moduleName + ' module page');
 
     // Suggest the user login if they don't have a valid session,
     // update the login link with their name if they do
     if (isSessionExpired()) {
+      // Flush any old data before forcing a user to logout
+      flushStoredData();
       localStorage.removeItem("opendsa");
       if (!inLocalStorage("warn_login")) {
         showLoginBox();
