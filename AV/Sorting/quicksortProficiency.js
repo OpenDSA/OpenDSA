@@ -373,7 +373,7 @@
     // Mark this as a step to be graded and a step that can be undone (continuous feedback)
     exercise.gradeableStep();
 
-    av.umsg("Done partitioning. Now move the pivot to its correct location, and 'Mark Selected as Sorted'.");
+    av.umsg("Done partitioning. Now click on the position where the pivot should be moved to, and click 'Mark Selected as Sorted'.");
   }
 
   /**
