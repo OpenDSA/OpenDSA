@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, console: true, awardCompletionCredit, getAVName */
+/*global awardCompletionCredit, getAVName */
 (function ($) {
   // Declare and initialize state variables
   var keyValue = $('#keyvalue').val();
@@ -13,7 +13,6 @@
 
   function sfold(s) {
     var intLength = Math.floor(s.length / 4);
-    console.debug("String: |" + s + "| of length " + s.length + "; intLength: " + intLength);
     var sum = 0;
     var j, k;
     var curr = 0;
@@ -22,7 +21,6 @@
       mult = 1;
       for (k = 0 ; k < 4; k++) {
         sum += s.charCodeAt(curr) * mult;
-        console.debug("curr: " + curr + "; Add " + s.charCodeAt(curr) + " * " + mult + " = " + s.charCodeAt(curr) * mult);
         curr++;
         mult *= 256;
       }
@@ -31,7 +29,6 @@
     mult = 1;
     while (curr < s.length) {
       sum += s.charCodeAt(curr) * mult;
-      console.debug("curr: " + curr + "; Add " + s.charCodeAt(curr) + " * " + mult + " = " + s.charCodeAt(curr) * mult);
       curr++;
       mult *= 256;
     }
