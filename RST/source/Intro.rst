@@ -9,6 +9,8 @@
    :topic: OpenDSA
    :short_name: Intro
 
+.. include:: JSAVheader.rinc
+
 How to Use this System
 ======================
 
