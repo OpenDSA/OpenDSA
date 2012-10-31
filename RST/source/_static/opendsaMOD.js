@@ -54,12 +54,13 @@ function isSessionExpired() {
 /**
  * Given a button ID, toggles the visibility of the AV in the associated iframe
  */
+/*
 function showHide(btnID) {
   var button = $('#' + btnID);
   var divID = btnID.replace('_showhide_btn', '');
   var div = $('#' + divID);
 
-  if (div) {    // AV is loaded, show or hide it
+  if (div.length > 0) {    // AV is loaded, show or hide it
     if (div.is(':visible')) {    // AV is visible, hide it
       button.hide();
       // Update the button text
@@ -79,6 +80,42 @@ function showHide(btnID) {
 
   // Update the button text
   button.val(button.val().replace('Show', 'Hide'));
+
+  // If the server is enabled and no user is logged in, warn them
+  // they will not receive credit for the exercise they are attempting
+  // to view without logging in
+  if (serverEnabled() && !userLoggedIn()) {
+    warnUserLogin();
+  }
+}*/
+
+function showHide(btnID) {
+  var divID = btnID.replace('_showhide_btn', '');
+
+  var btnText = $('#' + btnID).attr('value');
+
+  if (document.getElementById(divID)) {
+    if ($('#' + divID).css('display') !== "none") {
+      // AV is visible, hide it
+      $('#' + divID).css('display', 'none');
+      // Update the button text
+      $('#' + btnID).attr('value', btnText.replace('Hide', 'Show'));
+      return;
+    } else {
+      // AV is hidden, show it
+      $('#' + divID).css('display', 'block');
+    }
+  } else {
+    // If the AV isn't loaded, load it
+    var src = $('#' + btnID).attr("data-frame-src");
+    var width = $('#' + btnID).attr("data-frame-width");
+    var height = $('#' + btnID).attr("data-frame-height");
+
+    $('#' + btnID).after('<div id="' + divID + '"><p></p><center><iframe id="' + divID + '_iframe" data-av="' + divID + '" src="' + src + '" type="text/javascript" width="' + width + '" height="' + height + '" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n</iframe></center></div>');
+  }
+
+  // Update the button text
+  $('#' + btnID).attr('value', btnText.replace('Show', 'Hide'));
 
   // If the server is enabled and no user is logged in, warn them
   // they will not receive credit for the exercise they are attempting
