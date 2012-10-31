@@ -54,7 +54,6 @@ function isSessionExpired() {
 /**
  * Given a button ID, toggles the visibility of the AV in the associated iframe
  */
-/*
 function showHide(btnID) {
   var button = $('#' + btnID);
   var divID = btnID.replace('_showhide_btn', '');
@@ -62,7 +61,8 @@ function showHide(btnID) {
 
   if (div.length > 0) {    // AV is loaded, show or hide it
     if (div.is(':visible')) {    // AV is visible, hide it
-      button.hide();
+      div.hide();
+      
       // Update the button text
       button.val(button.val().replace('Hide', 'Show'));
       return;
@@ -87,7 +87,7 @@ function showHide(btnID) {
   if (serverEnabled() && !userLoggedIn()) {
     warnUserLogin();
   }
-}*/
+}
 
 function showHide(btnID) {
   var divID = btnID.replace('_showhide_btn', '');
