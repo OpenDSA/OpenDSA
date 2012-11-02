@@ -20,17 +20,15 @@ function info() { // This is what we pop up
     success: function (data) {
       $.each(data, function (key, val) {
         if (val.fields.short_display_name.toLowerCase() === moduleName.toLowerCase()) {
-          var mystring = moduleName + "\nWritten by " + val.fields.author + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nFile created: " + val.fields.last_modified + "\nJSAV library version " + JSAV.version();
+          alert(moduleName + "\nWritten by " + val.fields.author + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nFile created: " + val.fields.last_modified + "\nJSAV library version " + JSAV.version());
           outcome = 1;
-          alert(mystring);
         }
       });
     }
   });
 
   if (outcome === -1) {
-    var mystring = moduleName + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nJSAV library version " + JSAV.version();
-    alert(mystring);
+    alert(moduleName + " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nJSAV library version " + JSAV.version());
   }
 }
 
@@ -43,9 +41,9 @@ function updateLocalStorage(username) {
 
 function isSessionExpired() {
   if (inLocalStorage("opendsa")) {
-    var bj = JSON.parse(localStorage.opendsa);
-    var sessionDate = bj.expires;
-    var currentDate = new Date();
+    var bj = JSON.parse(localStorage.opendsa),
+        sessionDate = bj.expires,
+        currentDate = new Date();
     return sessionDate <= currentDate;
   }
   return true;
@@ -55,14 +53,14 @@ function isSessionExpired() {
  * Given a button ID, toggles the visibility of the AV in the associated iframe
  */
 function showHide(btnID) {
-  var button = $('#' + btnID);
-  var divID = btnID.replace('_showhide_btn', '');
-  var div = $('#' + divID);
+  var button = $('#' + btnID),
+      divID = btnID.replace('_showhide_btn', ''),
+      div = $('#' + divID);
 
   if (div.length > 0) {    // AV is loaded, show or hide it
     if (div.is(':visible')) {    // AV is visible, hide it
       div.hide();
-      
+
       // Update the button text
       button.val(button.val().replace('Hide', 'Show'));
       return;
@@ -70,9 +68,9 @@ function showHide(btnID) {
       div.show();
     }
   } else {    // AV isn't loaded, load it
-    var src = button.data("frame-src");
-    var width = button.data("frame-width");
-    var height = button.data("frame-height");
+    var src = button.data("frame-src"),
+        width = button.data("frame-width"),
+        height = button.data("frame-height");
 
     // Append the iFrame after the button
     button.after('<div id="' + divID + '"><p></p><center><iframe id="' + divID + '_iframe" data-av="' + divID + '" src="' + src + '" type="text/javascript" width="' + width + '" height="' + height + '" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n</iframe></center></div>');
@@ -80,42 +78,6 @@ function showHide(btnID) {
 
   // Update the button text
   button.val(button.val().replace('Show', 'Hide'));
-
-  // If the server is enabled and no user is logged in, warn them
-  // they will not receive credit for the exercise they are attempting
-  // to view without logging in
-  if (serverEnabled() && !userLoggedIn()) {
-    warnUserLogin();
-  }
-}
-
-function showHide(btnID) {
-  var divID = btnID.replace('_showhide_btn', '');
-
-  var btnText = $('#' + btnID).attr('value');
-
-  if (document.getElementById(divID)) {
-    if ($('#' + divID).css('display') !== "none") {
-      // AV is visible, hide it
-      $('#' + divID).css('display', 'none');
-      // Update the button text
-      $('#' + btnID).attr('value', btnText.replace('Hide', 'Show'));
-      return;
-    } else {
-      // AV is hidden, show it
-      $('#' + divID).css('display', 'block');
-    }
-  } else {
-    // If the AV isn't loaded, load it
-    var src = $('#' + btnID).attr("data-frame-src");
-    var width = $('#' + btnID).attr("data-frame-width");
-    var height = $('#' + btnID).attr("data-frame-height");
-
-    $('#' + btnID).after('<div id="' + divID + '"><p></p><center><iframe id="' + divID + '_iframe" data-av="' + divID + '" src="' + src + '" type="text/javascript" width="' + width + '" height="' + height + '" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">\n</iframe></center></div>');
-  }
-
-  // Update the button text
-  $('#' + btnID).attr('value', btnText.replace('Show', 'Hide'));
 
   // If the server is enabled and no user is logged in, warn them
   // they will not receive credit for the exercise they are attempting
@@ -141,17 +103,16 @@ function showRegistrationBox() {
   if (serverEnabled()) {
     logUserAction('', 'registration-box-open', 'registration box was opened');
 
-    var registrationBox = '#registration-box';
-    var regBoxWidth = 300;
+    var server_regist_url = server_url + "/accounts/register/",
+        registrationBox = '#registration-box',
+        regBoxWidth = 300,
+        left = ($(window).width() / 2) - (regBoxWidth / 2),
+        registration_page = '<center><iframe id="registration_iframe" src="' + server_regist_url + '" type="text/javascript" width="' + regBoxWidth + '" height="510" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></center>';
 
     //Fade in the Popup
     $(registrationBox).fadeIn(300);
 
-    // Center the popup on the page
-    // $(registrationBox).width() when run here does't give the correct width
-    // (possibly because the box is still fading in?)
-    var left = ($(window).width() / 2) - (regBoxWidth / 2);
-
+    // Position the box
     $(registrationBox).css({
       'top' : $('div.header').height(),
       'left' : left,
@@ -159,9 +120,6 @@ function showRegistrationBox() {
     });
 
     //Embed backend registration page
-    var server_regist_url = server_url + "/accounts/register/";
-    var registration_page = '<center><iframe id="registration_iframe" src="' + server_regist_url + '" type="text/javascript" width="' + regBoxWidth + '" height="510" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></center>';
-
     if ($('#registration_iframe').length === 0) {
       $('.registration-popup').append(registration_page);
     } else {
@@ -181,10 +139,12 @@ function showRegistrationBox() {
 function showLoginBox() {
   logUserAction('', 'login-box-open', 'Login box was opened');
 
-  var loginBox = '#login-box';
+  var loginBox = '#login-box',
+      username = localStorage.name,
+      popMargTop = ($(loginBox).height() + 24) / 2,
+      popMargLeft = ($(loginBox).width() + 24) / 2;
 
   // Preload the last saved username in the login form
-  var username = localStorage.name;
   if (username) {
     $('#username').attr('value', username);
   }
@@ -193,9 +153,6 @@ function showLoginBox() {
   $(loginBox).fadeIn(300);
 
   //Set the center alignment padding + border see css style
-  var popMargTop = ($(loginBox).height() + 24) / 2;
-  var popMargLeft = ($(loginBox).width() + 24) / 2;
-
   $(loginBox).css({
     'margin-top' : -popMargTop,
     'margin-left' : -popMargLeft
@@ -262,11 +219,10 @@ function updateModuleProfDisplay(modName, status) {
  * record of the current user being proficient
  */
 function checkProfLocalStorage(name) {
-  var username = getUsername();
-
   // Check for proficiency status in localStorage
   if (inLocalStorage("proficiency_data")) {
-    var profData = getJSON(localStorage.proficiency_data);
+    var username = getUsername(),
+        profData = getJSON(localStorage.proficiency_data);
 
     // Check whether user has an entry
     if (profData[username]) {
@@ -314,7 +270,11 @@ function checkExerProficiency(exerName) {
           updateExerProfDisplays(exerName, true);
         }
       },
-      error: function (data) { console.error("ERROR " + "isProficient" /*JSON.stringify(data)*/); }
+      error: function (data) {
+        data = getJSON(data);
+        console.error("Error checking for exercise proficiency: " + exerName);
+        console.error(data);
+      }
     });
   }
 }
@@ -351,7 +311,12 @@ function checkModuleProficiency(modName) {
           updateModuleProfDisplay(modName, true);
         }
       },
-      error: function (data) { console.error("ERROR " + "isProficient" /*JSON.stringify(data)*/); }
+      error: function (data) {
+        data = getJSON(data);
+        
+        console.error("Error checking module proficiency: " + modName);
+        console.error(data);
+      }
     });
   }
 }
@@ -392,7 +357,12 @@ function storeKAExerProgress(exerName) {
         */
       }
     },
-    error: function (data) { console.error("ERROR " + "isProficient" /*JSON.stringify(data)*/); }
+    error: function (data) {
+      data = getJSON(data);
+      
+      console.error("Error getting KA exercise progress: " + exerName);
+      console.error(data);
+    }
   });
 }
 
@@ -401,23 +371,28 @@ function storeKAExerProgress(exerName) {
  */
 function gradeDisplays(data) {
   // Create the table header
-  var row = '<tr class="header">';
+  var i = 0,
+      total = 0,
+      type,
+      max,
+      points,
+      row = '<tr class="header">';
+
   row += '<th style=""><a href="#" class="sort"><span>Exercises</span></a></th>';
   row += '<th style=""><a href="#" class="sort"><span>Modules</span></a></th>';
   row += '<th style=""><a href="#" class="sort"><span>Points</span></a></th>';
   row += '</tr>';
   $(row).appendTo('table.data');
 
-  var total = 0;
   row = '';
-  for (var i = 0; i < data.grades.length; i++) {
+  for (i = 0; i < data.grades.length; i++) {
     row += '<tr id="' + i + '">';
     row += '<td>' + data.grades[i].exercise + '</td>';
     row += '<td>' + data.grades[i].module + '</td>';
 
-    var type = (data.grades[i].type !== "") ? data.grades[i].type : 'ss';
-    var max = data.max_points[type];
-    var points = parseFloat(data.grades[i].points);
+    type = (data.grades[i].type !== "") ? data.grades[i].type : 'ss';
+    max = data.max_points[type];
+    points = parseFloat(data.grades[i].points);
 
     row += (points > 0) ? '<td bgcolor="#00FF00">' : '<td>';
     row += points.toFixed(2) + '/' + parseFloat(max).toFixed(2) + '</td></tr>';
@@ -454,9 +429,22 @@ function getUserPoints() {
 
         if (data.grades) {
           gradeDisplays(data);
+        } else {
+          // Remove the loading message and display an error message to the user
+          $('#pointsBox').hide();
+          $('table.data').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
         }
       },
-      error: function (data) { console.error("ERROR " + "getGrade" /*JSON.stringify(data)*/); }
+      error: function (data) {
+        data = getJSON(data);
+        
+        // Remove the loading message and display an error message to the user
+        $('#pointsBox').hide();
+        $('table.data').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
+        
+        console.error("Error getting user's points");
+        console.error(data);
+      }
     });
   }
 }
@@ -467,8 +455,8 @@ function getUserPoints() {
  */
 function updateLogin() {
   if (serverEnabled() && isModulePage()) {
-    var username = getUsername();
-    var updated = false;
+    var username = getUsername(),
+        updated = false;
 
     if (inLocalStorage('opendsa') && $('a.username-link').text() !== username) {
       updated = true;
@@ -488,7 +476,7 @@ function updateLogin() {
       if (isPopupBoxShowing()) {
         hidePopupBox();
       }
-      
+
       // Flush any stored data
       flushStoredData();
     } else if (!inLocalStorage('opendsa') && $('a.login-window').text() !== 'Login') {
@@ -631,8 +619,8 @@ $(document).ready(function () {
     // Attempts to log the user in when they click submit on the login window
     $('button.submit-button').click(function (event) {
       //authenticate user
-      var username = $('#username').attr('value');
-      var password = $('#password').attr('value');
+      var username = $('#username').attr('value'),
+          password = $('#password').attr('value');
       //password = SHA1(password);
       jQuery.ajax({
         url:   server_url + "/api/v1/users/login/",
@@ -648,15 +636,13 @@ $(document).ready(function () {
             updateLocalStorage(username);
             localStorage.name = username;
             logUserAction('', 'user-login', 'User logged in');
-            // Submit any stored data
-            flushStoredData();
-
             updateLogin();
           }
         },
         error: function (data) {
           data = getJSON(data);
-          console.error("ERROR " + JSON.stringify(data));
+          console.error("Error logging in");
+          console.error(data);
 
           if (data.status === 401) {
             alert("Incorrect username / password combination");
@@ -676,7 +662,6 @@ $(document).ready(function () {
     // Brings up the login box if the user clicks 'Login' and
     // logs the user out if they click their username
     $('a.login-window').click(function () {
-      var username = getUsername();
       if ($('a.login-window').text() === 'Login') {
         showLoginBox();
         return false;
@@ -688,14 +673,19 @@ $(document).ready(function () {
         jQuery.ajax({
           url:   server_url + "/api/v1/users/logout/",
           type:  "GET",
-          data: {"username":  username },
+          data: {"username":  getUsername() },
           contentType: "application/json; charset=utf-8",
           datatype: "json",
           xhrFields: {withCredentials: true},
           success: function (data) {
             data = getJSON(data);
           },
-          error: function (data) { console.error("ERROR " + JSON.stringify(data)); }
+          error: function (data) {
+            data = getJSON(data);
+            
+            console.error("Error logging out");
+            console.error(data);
+          }
         });
 
         // Log out the user locally
@@ -703,7 +693,7 @@ $(document).ready(function () {
         localStorage.removeItem('opendsa');
         updateLogin();
       }
-      
+
       // Force the page to reload to reset all exercises
       window.location.reload();
     });
@@ -746,9 +736,9 @@ $(document).ready(function () {
     info();
   });
 
-  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-  var eventer = window[eventMethod];
-  var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent",
+      eventer = window[eventMethod],
+      messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
 
   // Listen to message from child window
   eventer(messageEvent, function (e) {

@@ -221,27 +221,22 @@
       if (pos1 < arr1.size() &&
           (arr1.value(pos1) <= arr2.value(pos2) || pos2 === arr2.size())) {
         arr1.highlightBlue(pos1);
-        // Bold outline the selected element
-        arr1.css(pos1, {"border-width": "2px"});
         av.step();
-        // Un-bold outline the selected element
-        arr1.css(pos1, {"border-width": "1px"});
+        
         origArr.value(index, arr1.value(pos1));
         // Clear the value from the previous array
         arr1.value(pos1, "");
+        arr1.unhighlight(pos1);
         pos1++;
       }
       else {
         arr2.highlightBlue(pos2);
-        // Bold outline the selected element
-        arr2.css(pos2, {"border-width": "2px"});
         av.step();
         
-        // Un-bold outline the selected element
-        arr2.css(pos2, {"border-width": "1px"});
         origArr.value(index, arr2.value(pos2));
         // Clear the value from the previous array
         arr2.value(pos2, "");
+        arr2.unhighlight(pos2);
         pos2++;
       }
       
