@@ -10,6 +10,7 @@ var exerList = [];
 // Contains a list of all Khan Academy-type exercises on the page
 var kaExerList = [];
 
+var readyTime = +new Date();
 
 function info() { // This is what we pop up
   var outcome = -1;
@@ -751,4 +752,8 @@ $(document).ready(function () {
     // Check for module proficiency
     checkModuleProficiency();
   }, false);
+});
+
+$(window).load(function () {
+  console.debug('Load time: ' + (+new Date() - readyTime));
 });

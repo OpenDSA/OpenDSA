@@ -6,6 +6,11 @@
   height: 165px;
 }
 
+#about {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
 .instructions {
   text-align:center;
   margin: 0;
