@@ -4,7 +4,8 @@ getAVName, logUserAction */
 // General utilities
 
 (function ($) {
-
+  var avName = getAVName();
+  
 //*****************************************************************************
 //*************                  JSAV Extensions                  *************
 //*****************************************************************************
@@ -157,8 +158,6 @@ getAVName, logUserAction */
 //*****************************************************************************
 //*************                      LOGGING                      *************
 //*****************************************************************************
-  var avName = getAVName();
-
   $(document).ready(function () {
     if (serverEnabled()) {
       // Log the browser ready event
@@ -177,6 +176,11 @@ getAVName, logUserAction */
 
       $(window).blur(function (e) {
         logUserAction(avName, 'window-blur', 'User is no longer looking at ' + avName + ' window');
+      });
+    
+      $(window).on('beforeunload', function () {
+        // Log the browser unload event
+        logUserAction(avName, 'window-unload', 'User closed or refreshed ' + avName + ' window');
       });
     }
   });

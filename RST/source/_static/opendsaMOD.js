@@ -616,6 +616,11 @@ $(document).ready(function () {
       // When the user leaves an OpenDSA window, log it
       logUserAction('', 'window-blur', 'User is no longer looking at ' + moduleName + ' window');
     });
+    
+    $(window).on('beforeunload', function () {
+      // Log the browser unload event
+      logUserAction('', 'window-unload', 'User closed or refreshed ' + moduleName + ' window');
+    });
 
     // Attempts to log the user in when they click submit on the login window
     $('button.submit-button').click(function (event) {
