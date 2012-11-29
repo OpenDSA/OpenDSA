@@ -122,10 +122,10 @@ var setRed = function (arr, index) {
   var arr = av.ds.array(empty, {indexed: true});
   var perm = av.ds.array(permarray, {indexed: true, visible: false});
 
-  av.umsg("Let's seen an example of collision resolution using pseudorandom probing on a hash table of size 10 using the simple mod hash function.");
+  av.umsg("Let's see an example of collision resolution using pseudorandom probing on a hash table of size 10 using the simple mod hash function.");
   av.displayInit();
 
-  av.umsg("We need to first define a random permutation of the values 1 to M-1 that all inserts and searches will use. The example permuation will shown the second array, so that you can see it during the whole slideshow.");
+  av.umsg("We need to first define a random permutation of the values 1 to M-1 that all inserts and searches will use. The example permuation will show the second array, so that you can see it during the whole slideshow.");
   perm.show();
   av.label("Perm:", {before: perm, top: 100});
   av.step();
@@ -219,7 +219,7 @@ var setRed = function (arr, index) {
   arr.highlight(4);
   av.step();
 
-  av.umsg("In other words, once the two probe sequences join, the move together, leading to a form of clustering.");
+  av.umsg("In other words, once the two probe sequences join, they move together, leading to a form of clustering.");
   av.step();
 
   av.umsg("In contrast, consider what happens with pseudo-random probing. Consider a record that hashes to slot 3, and another that hashes to slot 6.");

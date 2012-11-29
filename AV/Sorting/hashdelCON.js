@@ -65,7 +65,7 @@
   arr.value(7, "[Del]");
   av.step();
 
-  av.umsg("Now insert 97. We hash to slot 7, and find it contains a tomestone. So we can insert there.");
+  av.umsg("Now insert 97. We hash to slot 7, and find it contains a tombstone. So we can insert there.");
   arr.value(7, 97);
   av.step();
 

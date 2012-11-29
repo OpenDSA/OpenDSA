@@ -246,12 +246,7 @@ for the left child, right child, and parent of the position passed,
 respectively.
 </p>
 
-<ODSAembed "hide" "Heap Insert Exercise">../AV/binaryheap-insert-proficiency.html</ODSAembed>
-
 <br/>
-
-<ODSAembed "hide" "Heap Delete Exercise">../AV/binaryheap-delete-proficiency.html</ODSAembed>
-
 
 <p>
 One way to build a heap is to insert the elements one at a time.
@@ -285,8 +280,6 @@ Now test yourself to see how well you understand the
 <code>buildheap</code> algorithm
 Can you reproduce its behavior?
 </p>
-
-<ODSAembed "hide" "Proficiency Exercise">../AV/binaryheap-buildheap-proficiency.html</ODSAembed>
 
 
 <p>
