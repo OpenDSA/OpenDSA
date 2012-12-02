@@ -4,14 +4,24 @@
   <title>Bubble Sort Visualization</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="sortingAV.css" type="text/css" />
+  <link rel="stylesheet" href="../opendsaAV.css" type="text/css" />
 </head>
 
 <body>
 <div id="container">
-  <input type="button" id="about" name="about" value="About" />
-  <a id="settings" class="jsavsettings" href="#">Settings</a>
-  <h1>Bubble Sort Visualization</h1>
+  <table class="headerTable">
+    <tr>
+      <td class="headerLeft">
+      </td>
+      <td class="headerCenter">
+        <h1>Bubble Sort Visualization</h1>
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+        <a id="settings" class="jsavsettings" href="#">Settings</a>
+      </td>
+    </tr>
+  </table>
 
   <form id="ssperform">
     <p>
@@ -19,21 +29,10 @@
       <input id="reset" type="button" name="reset" value="Reset" />
       <label for="arraysize">&nbsp;List size:&nbsp;</label>
       <select id="arraysize">
-        <option value = 5>5</option>
-        <option value = 6>6</option>
-        <option value = 7>7</option>
-        <option selected value = 8>8</option>
-        <option value = 9>9</option>
-        <option value = 10>10</option>
-        <option value = 11>11</option>
-        <option value = 12>12</option>
-        <option value = 13>13</option>
-        <option value = 14>14</option>
-        <option value = 15>15</option>
-        <option value = 16>16</option>
       </select>
       <label for="arrayValues">&nbsp;Your values:&nbsp;</label>
-      <input id="arrayValues" size="60" name="arrayValues" type="text" />
+      <input id="arrayValues" size="70" name="arrayValues" type="text" 
+         placeholder="Type space-separated values, or just hit 'run' to use random values" />
     </p>
   </form>
   <div id="bubblesortAV_avc" class="avcontainer">
@@ -50,6 +49,7 @@
 <script src="../../JSAV/build/JSAV-min.js"></script>
 <script src="../../lib/ODSA.js"></script>
 <script src="../opendsaAV.js"></script>
+<script src="../av.js"></script>
 <script src="bubblesortAV.js"></script>
 </body>
 </html>

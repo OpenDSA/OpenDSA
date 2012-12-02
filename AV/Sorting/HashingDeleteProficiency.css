@@ -1,6 +1,8 @@
-.container {
+#container {
   height: 300px;
+  width: 780px;
 }
+
 .jsavlabel {
   font-weight: bold;
 }

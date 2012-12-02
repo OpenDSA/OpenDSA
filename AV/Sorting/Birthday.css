@@ -2,23 +2,27 @@
   border: 1px solid black;
   background-color: #efe;
   overflow: hidden;
-  width: 520px;
+  width: 550px;
   height: 165px;
+  position: relative;
 }
 
 #about {
-  margin-left: 5px;
-  margin-top: 5px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
 
 .instructions {
   text-align:center;
-  margin: 0;
-  margin-top: -20px;
+  margin: 5px;
+}
+
+.inputs {
+  text-align:center;
 }
 
 .output {
   text-align:center;
   margin: 0;
-  margin-top: -13px;
 }

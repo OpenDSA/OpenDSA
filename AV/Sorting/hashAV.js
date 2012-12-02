@@ -249,16 +249,14 @@
 
 
   /* Variables */
-  var defCtrlState;             // Stores the default state of the controls
-  var defTableSizeOptions;      // Stores the HTML of the default table size options
-  var av;                       // JSAV
-  var arr;                      // JSAV Array
-  var nextStep = new Queue();   // A queue containing 'steps' to be played when the user clicks 'Next'
-  var slotPerm = [0];           // A permutation of slots for pseudo random probing, must be a global so that
-                                // the same permutation is used each time
-
-  // Initialize JSAV object
-  av = new JSAV("hashAV_avc");
+  var AV_NAME = 'hashAV',
+      jsav = new JSAV(AV_NAME + '_avc'),  // JSAV
+      defCtrlState,              // Stores the default state of the controls
+      defTableSizeOptions,       // Stores the HTML of the default table size options
+      arr,                       // JSAV Array
+      nextStep = new Queue(),    // A queue containing 'steps' to be played when the user clicks 'Next'
+      slotPerm = [0];            // A permutation of slots for pseudo random probing, must be a global so that
+                                 // the same permutation is used each time
 
   // Process About button: Pop up a message with an Alert
   function about() {
@@ -269,8 +267,8 @@
    * Wrapper class for error messages
    */
   function error(message) {
-    av.umsg(message, {"color" : "red"});
-    av.umsg("<br />");
+    jsav.umsg(message, {"color" : "red"});
+    jsav.umsg("<br />");
   }
 
   /**
@@ -353,7 +351,7 @@
    */
   function resetAV() {
     // Display a message telling them what fields they need to select
-    av.clearumsg();
+    jsav.clearumsg();
     var missingFields = [];
 
     // Ensure user selected a hash function
@@ -361,14 +359,14 @@
     if (funct === 0) {
       missingFields.push('hash function');
     } else {
-      av.umsg('Algorithm Selected: ' + $("#function option:selected").text());
+      jsav.umsg('Algorithm Selected: ' + $("#function option:selected").text());
 
       // If user selected binning, make sure they selected a key range too
       if (funct === 2) {
         if ($('#keyrange').val() === '0') {
           missingFields.push('key range');
         } else {
-          av.umsg('Key Range Selected: ' + $("#keyrange option:selected").text());
+          jsav.umsg('Key Range Selected: ' + $("#keyrange option:selected").text());
         }
       }
     }
@@ -378,7 +376,7 @@
     if (coll === 0) {
       missingFields.push('collision policy');
     } else {
-      av.umsg('Collsion Policy Selected: ' + $("#collision option:selected").text());
+      jsav.umsg('Collsion Policy Selected: ' + $("#collision option:selected").text());
 
       // Ensure a valid M-value is provided for double hashing policies
       var M = Number($('#M').val());
@@ -390,7 +388,7 @@
         console.debug('M: ' + M + ', isPrime(M): ' + isPrime(M));
 
         if (isPrime(M)) {
-          av.umsg('Prime Number Selected: ' + $("#M").val());
+          jsav.umsg('Prime Number Selected: ' + $("#M").val());
         } else {
           missingFields.push('prime number M');
         }
@@ -399,7 +397,7 @@
         $('#M').attr('placeholder', 'Power-of-2');
 
         if (isPowerOf2(M)) {
-          av.umsg('Power-of-2 Selected: ' + M);
+          jsav.umsg('Power-of-2 Selected: ' + M);
         } else {
           missingFields.push('power-of-2 M');
         }
@@ -425,13 +423,13 @@
         msg = msg.substring(0, commaIndex) + ' and' + msg.substring(commaIndex + 1, msg.length);
       }
 
-      av.umsg(msg);
+      jsav.umsg(msg);
     } else {
       // If all necessary fields are selected, enable the input box and tell the user to begin
       $("#input").removeAttr("disabled");
 
-      av.umsg("Enter a value and click Next");
-      av.umsg("<br />");
+      jsav.umsg("Enter a value and click Next");
+      jsav.umsg("<br />");
     }
 
     // Draw new array
@@ -446,7 +444,7 @@
     hashTable.html(htmlData);
 
     // Create a new JSAV array
-    arr = av.ds.array(hashTable, {indexed: true, layout: "vertical", center: false});
+    arr = jsav.ds.array(hashTable, {indexed: true, layout: "vertical", center: false});
 
     // Make sure the queue is clear and state variables are reset
     nextStep = new Queue();
@@ -522,7 +520,7 @@
    */
   function reset() {
     // Clear any existing messages and hash table data
-    av.clearumsg();
+    jsav.clearumsg();
     $('#hashTable').html('');
 
     // Reset controls to their default state
@@ -537,12 +535,12 @@
 
     if (step.canInsert) {
       if (step.insert) {    // Insertion step
-        av.umsg("Inserting " + step.value + " at position " + step.position + ".");
-        av.umsg("<br>");
+        jsav.umsg("Inserting " + step.value + " at position " + step.position + ".");
+        jsav.umsg("<br>");
         arr.unhighlight(step.position);
         arr.value(step.position, step.value);
       } else {    // Highlighting step
-        av.umsg("Attempting to insert " + step.value + " at position " + step.position + ".");
+        jsav.umsg("Attempting to insert " + step.value + " at position " + step.position + ".");
         arr.unhighlight();
         arr.highlight(step.position);
       }
@@ -592,8 +590,8 @@
     // Simple Mod Function
     var pos = inputVal % arr.size();
 
-    av.umsg("Hash position = Input Value % Table Size");
-    av.umsg("Hash position = " + inputVal + " % " + arr.size() + ' = ' + pos);
+    jsav.umsg("Hash position = Input Value % Table Size");
+    jsav.umsg("Hash position = " + inputVal + " % " + arr.size() + ' = ' + pos);
 
     // Process function with selected collision resolution
     determineResolution(inputVal, pos, false, true);
@@ -628,16 +626,16 @@
         // Return Error
         return 1;
       } else {    // Valid input
-        av.umsg("Attempting to insert: " + inputVal);
+        jsav.umsg("Attempting to insert: " + inputVal);
 
         // Binning function Position
         var binsize = keyrange / $("#tablesize").val();
         var pos =  Math.floor(inputVal / binsize);
 
-        av.umsg("Bin Size = Key Range / Table Size");
-        av.umsg("Bin Size = " + keyrange + " / " + $("#tablesize").val() + " = " + binsize.toFixed(2));
-        av.umsg("Hash Position = Input Value / Bin Size");
-        av.umsg("Hash Position = " + inputVal + " / " + binsize.toFixed(2) + " = " + pos);
+        jsav.umsg("Bin Size = Key Range / Table Size");
+        jsav.umsg("Bin Size = " + keyrange + " / " + $("#tablesize").val() + " = " + binsize.toFixed(2));
+        jsav.umsg("Hash Position = Input Value / Bin Size");
+        jsav.umsg("Hash Position = " + inputVal + " / " + binsize.toFixed(2) + " = " + pos);
 
         // Process function with selected collision resolution
         determineResolution(inputVal, pos, false, true);
@@ -657,7 +655,7 @@
       return 1;
     }
 
-    av.umsg("Attempting to insert: " + inputVal);
+    jsav.umsg("Attempting to insert: " + inputVal);
 
     var size = Number($("#tablesize").val());
     var strpadding = "00000000";
@@ -686,10 +684,10 @@
     // Convert Middle Bits to Decimal
     var pos = parseInt(middleBits, 2);
 
-    av.umsg(inputVal + " * " + inputVal + " % " + modVal + " = " + squaredInput);
-    av.umsg(size + "-bit binary digit = " + binaryDigit);
-    av.umsg("Middle four bits = " + middleBits);
-    av.umsg("Hash position = " + pos);
+    jsav.umsg(inputVal + " * " + inputVal + " % " + modVal + " = " + squaredInput);
+    jsav.umsg(size + "-bit binary digit = " + binaryDigit);
+    jsav.umsg("Middle four bits = " + middleBits);
+    jsav.umsg("Hash position = " + pos);
 
     // Process function with selected collision resolution
     determineResolution(inputVal, pos, false, true);
@@ -707,7 +705,7 @@
       return 1;
     }
 
-    av.umsg("Attempting to insert: " + inputVal);
+    jsav.umsg("Attempting to insert: " + inputVal);
 
     // Sum of string's ASCII number
     var sum = 0;
@@ -721,8 +719,8 @@
     // Position is the sum mod the table size
     var pos = sum % size;
 
-    av.umsg("The sum is " + sum);
-    av.umsg("Hash value: " + sum + " % " + size + " = " + pos);
+    jsav.umsg("The sum is " + sum);
+    jsav.umsg("Hash value: " + sum + " % " + size + " = " + pos);
 
     // Process function with selected collision resolution
     determineResolution(inputVal, pos, false, true);
@@ -741,7 +739,7 @@
       return 1;
     }
 
-    av.umsg("Attempting to insert " + inputVal);
+    jsav.umsg("Attempting to insert " + inputVal);
 
     var inputLength = inputVal.length / 4;
     var sum = 0;
@@ -759,8 +757,8 @@
     var size = $("#tablesize").val();
     var pos = sum % size;
 
-    av.umsg("The sum is " + sum);
-    av.umsg("Hash value: " + sum + " % " + size + " = " + pos);
+    jsav.umsg("The sum is " + sum);
+    jsav.umsg("Hash value: " + sum + " % " + size + " = " + pos);
 
     // Process function with selected collision resolution
     determineResolution(inputVal, pos, false, true);
@@ -905,7 +903,7 @@
       }
 
       if (printPerm) {
-        av.umsg("Permutation: " + slotPerm.join(' '));
+        jsav.umsg("Permutation: " + slotPerm.join(' '));
       }
 
       // Counter that counts how many times the loop ran
@@ -1047,8 +1045,8 @@
     var stepSize = 1 + (inputVal % (M - 1));
 
     if (!showCounts) {
-      av.umsg("Step size = 1 + (Input Value % (M - 1))");
-      av.umsg("Step size = 1 + (" + inputVal + " % (" + M + " - 1)) = " + stepSize);
+      jsav.umsg("Step size = 1 + (Input Value % (M - 1))");
+      jsav.umsg("Step size = 1 + (" + inputVal + " % (" + M + " - 1)) = " + stepSize);
     }
 
     return stepSize;
@@ -1070,8 +1068,8 @@
     var stepSize = ((inputVal % (M / 2)) * 2) + 1;
 
     if (!showCounts) {
-      av.umsg("Step size = ((Input Value % (M / 2)) * 2) + 1");
-      av.umsg("Step size = ((" + inputVal + " % (" + M + " / 2)) * 2) + 1 = " + stepSize);
+      jsav.umsg("Step size = ((Input Value % (M / 2)) * 2) + 1");
+      jsav.umsg("Step size = ((" + inputVal + " % (" + M + " / 2)) * 2) + 1 = " + stepSize);
     }
 
     return stepSize;

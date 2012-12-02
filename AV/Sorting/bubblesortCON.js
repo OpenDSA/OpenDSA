@@ -69,5 +69,4 @@ var setBlue = function (arr, index) {
   arr.css([j - 1], {"color": LIGHT});
   av.umsg("Done this pass");
   av.recorded();
-
 }(jQuery));

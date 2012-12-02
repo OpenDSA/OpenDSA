@@ -1,17 +1,12 @@
 "use strict";
-/*global alert logExerciseInit getAVName */
+/*global alert logExerciseInit */
 (function ($) {
-  var avcId = 'bubblesortAV_avc';
-  
-  var ASize = $('#arraysize').val(), // Number of values in the array
-    theArray = []; // The array of numbers
+  var AV_NAME = 'bubblesortAV';
+  var av = new AV(AV_NAME, 5, 16, 8),
+      jsav,   // for JSAV library object
+      arr,    // for the JSAV array
+      pseudo; // for the pseudocode display
 
-  // check query parameters from URL
-  var params = JSAV.utils.getQueryParameter();
-  if ("array" in params) { // set value of array pick if it is a param
-    $('#arrayValues').val(params.array).prop("disabled", true);
-  }
-  
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
 
@@ -19,12 +14,6 @@
   var arrayLayout = settings.add("layout", {"type": "select",
                       "options": {"bar": "Bar", "array": "Array"},
                       "label": "Array layout: ", "value": "bar"});
-  
-  var context = $("#ssperform");
-  var emptyContent = $('#' + avcId).html();
-  var av, // for JSAV av
-    arr,  // for the JSAV array
-    pseudo; // for the pseudocode display
 
   var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
 
@@ -33,133 +22,70 @@
     alert("Bubble Sort Algorithm Visualization\nWritten by Cliff Shaffer and Brandon Watkins\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
 
-  // Process Reset button: Reinitialize the output textbox and the AV
-  function reset(flag) {
-    if (av) {
-      av.clearumsg();
-      $('#' + avcId).unbind().html(emptyContent);
-    }
-    // Clear the array values field, when no params given and reset button hit
-    if (flag !== true) {
-      if (!$('#arrayValues').prop("disabled")) {
-        $('#arrayValues').val("");
-      }
-    }
-  }
-
-  // Validate the user-defined array values
-  function processArrayValues() {
-    var i,
-        num,
-        msg = "Must be 5 to 16 positive integers";
-    // Convert user's values to an array,
-    // assuming values are space separated
-    theArray = $('#arrayValues', context).val().match(/[0-9]+/g) || [];
-    if (theArray.length === 0) { // Empty field
-      theArray.length = 0;
-      return true;
-    }
-    if (theArray.length < 5 || theArray.length > 16) {
-      alert(msg);
-      theArray.length = 0;
-      return false;
-    }
-    for (i = 0; i < theArray.length; i++) {
-      theArray[i] = Number(theArray[i]);
-      if (isNaN(theArray[i]) || theArray[i] < 0) {
-        alert(msg);
-        theArray.length = 0;
-        return false;
-      }
-    }
-    $('#arraysize').val(theArray.length);
-    return true;
-  }
-
-  var setBlue = function (index) {
-    arr.css(index, {"background-color": "#ddf" });
-  };
-  
   // Bubble Sort
   function bubblesort() {
     var i, j;
-    av.umsg("For each pass, we will move left to right swapping adjacent elements as needed. Each pass moves the next largest element into its final position (these will be shown in lighter color).");
+    jsav.umsg("For each pass, we will move left to right swapping adjacent elements as needed. Each pass moves the next largest element into its final position (these will be shown in lighter color).");
     pseudo.setCurrentLine(0);
-    av.step();
+    jsav.step();
     for (i = 0; i < arr.size() - 1; i++) {
-      av.umsg("Starting pass " + i);
+      jsav.umsg("Starting pass " + i);
       pseudo.setCurrentLine(1);
-      av.step();
-      av.umsg("For each element moving through the list");
+      jsav.step();
+      jsav.umsg("For each element moving through the list");
       pseudo.setCurrentLine(2);
-      av.step();
-      setBlue(0);
+      jsav.step();
+      arr.highlightBlue(0);
       for (j = 1; j < arr.size() - i; j++) {
-        setBlue(j);
-        av.umsg("Compare elements");
+        arr.highlightBlue(j);
+        jsav.umsg("Compare elements");
         pseudo.setCurrentLine(3);
-        av.step();
+        jsav.step();
         if (arr.value(j - 1) > arr.value(j)) {
-          av.umsg("Swap");
+          jsav.umsg("Swap");
           pseudo.setCurrentLine(4);
           arr.swap(j - 1, j);
-          av.step();
+          jsav.step();
         }
         arr.unhighlight(j - 1);
       }
       arr.unhighlight(j - 1);
       arr.css([j - 1], {"color": LIGHT});
-      av.umsg("Done this pass");
-      av.step();
+      jsav.umsg("Done this pass");
+      jsav.step();
     }
     arr.css([0], {"color": LIGHT});
-    av.umsg("Done sorting!");
+    jsav.umsg("Done sorting!");
     pseudo.setCurrentLine(5);
-    av.step();
+    jsav.step();
   }
 
   // Execute the "Run" button function
   function runIt() {
-    var i;
-    var newSize = $('#arraysize').val();
+    // If processArrayValues is false, the user gave us junk which they need to fix
+    if (av.processArrayValues()) {
+      var initData = av.initData;
 
-    if (processArrayValues()) { // if it is false, then we got junk that
-                                // the user needs to fix
-      var initData = {};
-      if (theArray.length === 0) { // No user-given array. Make a random array
-        ASize = newSize;
-        theArray.length = 0; // Out with the old
-        // Give random numbers in range 0..999
-        for (i = 0; i < ASize; i++) {
-          theArray[i] = Math.floor(Math.random() * 1000);
-        }
-        initData.gen_array = theArray;
-      }
-      else { // Use the values we got out of the user's list
-        ASize = theArray.length;
-        initData.user_array = theArray;
-      }
       // Log initial state of exercise
-      logExerciseInit(getAVName(), initData);
-      
-      reset(true); // Reset any previous visualization
-      av = new JSAV(avcId); // initialize JSAV ..
-      // .. and the array. use the layout the user has selected
-      arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
-      pseudo = av.code({url: "../../SourceCode/Processing/Sorting/Bubblesort/Bubblesort.pde",
-            startAfter: "/* *** ODSATag: Bubblesort *** */",
-                        endBefore: "/* *** ODSAendTag: Bubblesort *** */"});
-      // TODO: Log AV initializaton
-      av.umsg("Starting Bubble Sort");
-      av.displayInit();
+      logExerciseInit(AV_NAME, initData);
+
+      jsav = av.initJSAV();
+
+      // Create a new array using the layout the user has selected
+      arr = jsav.ds.array(av.arrValues, {indexed: true, layout: arrayLayout.val()});
+      pseudo = jsav.code({url: "../../SourceCode/Processing/Sorting/Bubblesort/Bubblesort.pde",
+                          startAfter: "/* *** ODSATag: Bubblesort *** */",
+                          endBefore: "/* *** ODSAendTag: Bubblesort *** */"});
+      jsav.umsg("Starting Bubble Sort");
+      jsav.displayInit();
       bubblesort();
       arr.unhighlight();
-      av.recorded(); // mark the end
+      jsav.recorded(); // mark the end
     }
   }
 
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
-  $('#run', context).click(runIt);
-  $('#reset', context).click(reset);
+  $('#run').click(runIt);
+  $('#reset').click(av.reset);
 }(jQuery));

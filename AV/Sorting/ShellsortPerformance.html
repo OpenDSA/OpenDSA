@@ -2,16 +2,24 @@
 <html>
 <head>
   <title>ShellSort Performance</title>
-  <link rel="stylesheet" href="../opendsaAV.css" type="text/css" />
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="sortingAV.css" type="text/css" />
+  <link rel="stylesheet" href="../opendsaAV.css" type="text/css" />
   <link rel="stylesheet" href="ShellsortPerformance.css" type="text/css" />
 </head>
 
 <body>
 <div id="container">
-  <input type="button" id="about" name="about" value="About" />
-  <h1>Shellsort Performance</h1>
+  <table class="headerTable">
+    <tr>
+      <td class="headerLeft"></td>
+      <td class="headerCenter">
+        <h1>Shellsort Performance</h1>
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+      </td>
+    </tr>
+  </table>
 
   <div id="left">
     <form id="ssperform">
@@ -32,8 +40,7 @@
   <div id="right">
     <h2>Directions</h2>
     <div id="directions">
-      <p>
-         Type in your desired series of increments, then press
+      <p>Type in your desired series of increments, then press
          "Run". Remember that your series should always end in 1.</p>
       <p>You will then see the cost for Shellsort on your
          set of increments, and also the cost for a regular
@@ -41,7 +48,7 @@
       <p>You can set the list size. Run this on some bigger lists
          to get a more realistic idea of the costs.</p>
       <p>Your goal should be to come up with an increment series that
-      needs fewer comparisons and swaps than the Divide-by-twos series.
+      needs fewer comparisons and swaps than the Divide-by-twos series.</p>
     </div> <!--directions-->
   </div> <!--right-->
 </div> <!--container-->

@@ -8,9 +8,7 @@
 .avcontainer{
   overflow: visible;
 }
+
 .jsavarray {
   position: absolute;
-}
-.jsavline {
-  height: 30px;
 }

@@ -1,11 +1,12 @@
-.container {
-  height: 520px;
+#container {
+  height: 575px;
+  width: 780px;
 }
 
 .jsavmodelanswer {
   height: 200px;
 }
 
-#quicksortProficiency_avc {
-  margin-top: -25px;
+.jsavcanvas {
+  margin-top: 20px;
 }

@@ -1,8 +1,3 @@
-div h1 {
-  margin: 10px 5px 5px;
-  border-bottom: 0;
-}
-
 label {
   margin-left: 5px;
 }
@@ -55,39 +50,12 @@ label {
   line-height: 30px;
 }
 
-.jsavsettings {
-  display: block;
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
 .jsavscroll {
   width: 370px;
-  height: 505;
+  height: 505px;
   font-size: 95%;
   float: left;
   margin-left: -10px;
   margin-top: 5px;
   padding-left: 5px;
-}
-
-table.headerTable {
-  margin-top: -10px;
-  border-bottom: 1px solid black;
-}
-
-table.headerTable .headerLeft {
-  width: 125px;
-}
-table.headerTable .headerCenter {
-  text-align: center;
-  width: 550px;
-}
-table.headerTable .headerRight {
-  text-align: right;
-  width: 200px;
-}
-
-table.headerTable td input {
-  margin-top: 10px;
 }

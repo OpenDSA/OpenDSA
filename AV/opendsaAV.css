@@ -1,38 +1,112 @@
-/******* GENERAL DEFAULTS *****/
-h1 { font-size: 2em; }
-h2 { font-size: 1.5em; margin: 0.83em 0; }
-h3 { font-size: 1.17em; margin: 1em 0;}
-h1, h2, h3, h4, h5, h6 { font-weight: bold;}
-p { font-size: 1em; }
-input {font-size: 0.7em; }
-/******* END GENERAL DEFAULTS *****/
+table.proHeaderTable {
+  margin-top: -20px;
+  border-bottom: 0 none;
+  width: 100%;
+}
 
-html, body {
-  background-color: #eed;
-  color: #000000;
-  margin: 0;
+table.headerTable {
+  margin-top: -10px;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+table .headerLeft {
+  width: 110px;
+}
+table .headerCenter {
+  text-align: center;
+}
+table .headerRight {
+  text-align: right;
+  width: 110px;
+}
+table td input {
+  margin-top: 10px;
 }
 
 div h1 {
   text-align: center;
-  border-bottom: 1px solid black;
-  background-color: #eed;
-  margin: -8px -8px 0 -8px;
-  padding: 8px 8px 2px 8px;
+  margin: 10px 5px 5px;
 }
 
-.annotation {
-  color:red;
+form {
+  clear: both;
+  border: 0;
 }
 
-a, a:visited {
-  color: #900;
+.avcontainer {
+  margin-top: -20px;
+}
+.jsavcontainer {
+  background-color: #efe;
+  border: 0 none;
+}
+.jsavexercisecontrols {
+  text-align: center;
+}
+.jsavcounter {
+  position: absolute;
+  width: 100px;
+}
+.jsavarray {
+  margin: 0;
+  margin-left: -10px;
+  margin-top: 10px;
+}
+.jsavline {
+  height: 30px;
+  margin: 0;
+  width: 100%;
+}
+.jsavcode {
+  margin-top: -15px;
+}
+.jsavbararray .jsavindex {
+  background-color: #eee;
 }
 
-a:hover {
-  color: #d70;
+.jsavsettings {
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
-applet {
+.instructLabel {
+  margin-top: -5px;
+}
+.instructions {
+  margin-top: -15px;
+  padding: 10px;
+  margin-right: 10px;
   border: 1px solid black;
+}
+
+.jsavindex.jsavarrow.leftarrow::before {
+  left: 7px;
+  border-color: blue transparent transparent;
+}
+
+.jsavindex.jsavarrow.rightarrow::before {
+  left: 27px;
+  border-color: red transparent transparent;
+}
+
+.jsavindex.jsavarrow.leftrightarrow::before {
+  border-color: #CC00FF transparent transparent;
+}
+
+#container {
+  width: 765px;
+  height: 550px;
+  border: 1px solid black;
+  background-color: #efe;
+  padding: 10px;
+  overflow: hidden;
+}
+
+#ssperform {
+  margin-top: -5px;
+}
+
+#about {
+  float: right;
 }

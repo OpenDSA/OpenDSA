@@ -1,6 +1,10 @@
-#HeapsortProficiency_container {
+#container {
   width: 800px;
   height: 555px;
+}
+
+#decrement {
+  margin-right: 20px;
 }
 
 .jsavtree {
@@ -10,12 +14,4 @@
 .jsavline {
   height: 45px;
   margin: 0 0 0 20px;
-}
-
-#decrement {
-  margin-right: 20px;
-}
-
-#heapsortProficiency_avc {
-  margin-top: -25px;
 }

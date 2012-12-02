@@ -1,17 +1,12 @@
 "use strict";
-/*global alert logExerciseInit getAVName */
+/*global alert logExerciseInit */
 (function ($) {
-  var avcId = 'insertionsortAV_avc';
-  var
-    ASize = $('#arraysize').val(), // Number of values in the array
-    theArray = []; // The array of numbers
+  var AV_NAME = 'insertionsortAV';
+  var av = new AV(AV_NAME, 5, 16, 8),
+      jsav,   // for JSAV library object
+      arr,    // for the JSAV array
+      pseudo; // for the pseudocode display
 
-  // check query parameters from URL
-  var params = JSAV.utils.getQueryParameter();
-  if ("array" in params) { // set value of array pick if it is a param
-    $('#arrayValues').val(params.array).prop("disabled", true);
-  }
-  
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
 
@@ -20,58 +15,9 @@
                       "options": {"bar": "Bar", "array": "Array"},
                       "label": "Array layout: ", "value": "bar"});
 
-  var context = $("#ssperform");
-  var emptyContent = $('#' + avcId).html();
-  var av, // for JSAV av
-    arr,  // for the JSAV array
-    pseudo; // for the pseudocode display
-
   // Process About button: Pop up a message with an Alert
   function about() {
     alert("Insertion Sort Algorithm Visualization\nWritten by Cliff Shaffer and Nayef Copty\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
-  }
-
-  // Process Reset button: Reinitialize the output textbox and the AV
-  function reset(flag) {
-    if (av) {
-      av.clearumsg();
-      $('#' + avcId).unbind().html(emptyContent);
-    }
-    // Clear the array values field, when no params given and reset button hit
-    if (flag !== true) {
-      if (!$('#arrayValues').prop("disabled")) {
-        $('#arrayValues').val("");
-      }
-    }
-  }
-
-  // Validate the user-defined array values
-  function processArrayValues() {
-    var i,
-        num,
-        msg = "Must be 5 to 16 positive integers";
-    // Convert user's values to an array,
-    // assuming values are space separated
-    theArray = $('#arrayValues', context).val().match(/[0-9]+/g) || [];
-    if (theArray.length === 0) { // Empty field
-      theArray.length = 0;
-      return true;
-    }
-    if (theArray.length < 5 || theArray.length > 16) {
-      alert(msg);
-      theArray.length = 0;
-      return false;
-    }
-    for (i = 0; i < theArray.length; i++) {
-      theArray[i] = Number(theArray[i]);
-      if (isNaN(theArray[i]) || theArray[i] < 0) {
-        alert(msg);
-        theArray.length = 0;
-        return false;
-      }
-    }
-    $('#arraysize').val(theArray.length);
-    return true;
   }
 
   var setBlue = function (index) {
@@ -81,75 +27,59 @@
   // Insertion Sort
   function inssort() {
     var i, j;
-    av.umsg("Highlighted yellow records to the left are always sorted. We begin with the record in position 0 in the sorted portion, and we will be moving the record in position 1 (in blue) to the left until it is sorted");
+    jsav.umsg("Highlighted yellow records to the left are always sorted. We begin with the record in position 0 in the sorted portion, and we will be moving the record in position 1 (in blue) to the left until it is sorted");
     pseudo.setCurrentLine(0);
     arr.highlight([0]);
     setBlue(1);
-    av.step();
+    jsav.step();
     for (i = 1; i < arr.size(); i++) { // Insert i'th record
       setBlue(i);
-      av.umsg("Processing record in position " + i);
+      jsav.umsg("Processing record in position " + i);
       pseudo.setCurrentLine(1);
-      av.step();
-      av.umsg("Move the blue record to the left until it reaches the correct position");
+      jsav.step();
+      jsav.umsg("Move the blue record to the left until it reaches the correct position");
       pseudo.setCurrentLine(2);
-      av.step();
+      jsav.step();
       for (j = i; (j > 0) && (arr.value(j) < arr.value(j - 1)); j--) {
         setBlue(j);
         arr.swap(j, j - 1); // swap the two indices
-        av.umsg("Swap");
+        jsav.umsg("Swap");
         pseudo.setCurrentLine(3);
-        av.step();
+        jsav.step();
       }
       arr.highlight(j);
     }
     pseudo.setCurrentLine(4);
-    av.umsg("Done sorting!");
-    av.step();
+    jsav.umsg("Done sorting!");
+    jsav.step();
   }
-  
+
   // Execute the "Run" button function
-  function runIt() {
-    var i;
-    var newSize = $('#arraysize').val();
+function runIt() {
+    // If processArrayValues is false, the user gave us junk which they need to fix
+    if (av.processArrayValues()) {
+      var initData = av.initData;
 
-    if (processArrayValues()) { // if it is false, then we got junk that
-                                // the user needs to fix
-      var initData = {};
-      if (theArray.length === 0) { // No user-given array. Make a random array
-        ASize = newSize;
-        theArray.length = 0; // Out with the old
-        // Give random numbers in range 0..999
-        for (i = 0; i < ASize; i++) {
-          theArray[i] = Math.floor(Math.random() * 1000);
-        }
-        initData.gen_array = theArray;
-      }
-      else { // Use the values we got out of the user's list
-        ASize = theArray.length;
-        initData.user_array = theArray;
-      }
       // Log initial state of exercise
-      logExerciseInit(getAVName(), initData);
-      
-      reset(true); // Reset any previous visualization
-      av = new JSAV(avcId); // initialize JSAV ..
+      logExerciseInit(AV_NAME, initData);
 
-      // .. and the array. use the layout the user has selected
-      arr = av.ds.array(theArray, {indexed: true, layout: arrayLayout.val()});
-      pseudo = av.code({url: "../../SourceCode/Processing/Sorting/Insertionsort/Insertionsort.pde",
+      jsav = av.initJSAV();
+
+      // Create a new array using the layout the user has selected
+      arr = jsav.ds.array(av.arrValues, {indexed: true, layout: arrayLayout.val()});
+      pseudo = jsav.code({url: "../../SourceCode/Processing/Sorting/Insertionsort/Insertionsort.pde",
                         startAfter: "/* *** ODSATag: Insertionsort *** */",
                         endBefore: "/* *** ODSAendTag: Insertionsort *** */"});
-      av.umsg("Starting Insertion Sort");
-      av.displayInit();
+      jsav.umsg("Starting Insertion Sort");
+      jsav.displayInit();
       inssort();
       arr.unhighlight();
-      av.recorded(); // mark the end
+      jsav.recorded(); // mark the end
     }
   }
 
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
-  $('#run', context).click(runIt);
-  $('#reset', context).click(reset);
+  $('#run').click(runIt);
+  $('#reset').click(av.reset);
 }(jQuery));

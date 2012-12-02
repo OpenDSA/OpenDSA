@@ -1,5 +1,5 @@
 "use strict";
-/*global awardCompletionCredit, getAVName */
+/*global logExerciseInit, awardCompletionCredit, getAVName */
 (function ($) {
   // Declare and initialize state variables
   var keyValue = $('#keyvalue').val();
@@ -41,6 +41,7 @@
     var i;
     var output = sfold(keyValue);
     tell('<br/>' + output);
+    logExerciseInit(getAVName(), {'user_key': keyValue});
     awardCompletionCredit(getAVName());
   }
 

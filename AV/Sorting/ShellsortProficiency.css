@@ -1,9 +1,4 @@
-.jsavline {
-  margin-top: 15px;
-  height: 50px;
-}
-
-.container {
+#container {
   width: 800px;
   height: 480px;
 }
@@ -13,3 +8,7 @@
   margin-bottom: 20px
 }
 
+.jsavline {
+  margin-top: 15px;
+  height: 50px;
+}
