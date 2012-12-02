@@ -1,0 +1,210 @@
+<!-- Bucket Hashing mini-proficiency exercise.
+     Written by Cliff Shaffer -->
+
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Alternate Bucket Hashing Exercise</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script type="text/javascript" src="/MathJax/MathJax.js?config=default"></script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <style>
+    #container {
+      border: 0;
+      width: 780px;
+      height: 740px;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .jsavarray { position: absolute; }
+
+    #container .jsavarray {
+      left: -10px;
+      height: 80px;
+    }
+
+    #reset { margin-right: 20px;}
+
+    svg {
+      z-index: 50;
+    }
+    .jsavcanvas { height: 500px;}
+  </style>
+</head>
+
+<body>
+<script>
+"use strict";
+var
+  jsav,             // The JSAV object
+  inputkey,         // The value that the user is inserting
+  arr_size,         // Full array size
+  userInput,        // Boolean: Tells us if user ever did anything
+  initData = [],    // The original problem instance (for reset)
+  answer = [],      // The answer array
+  answer_over = [], // Overflow answer array
+  overflow,         // Boolean to indicate if this problem instance
+                    // results in overflowing
+  jsavInput,        // JSAV array for problem instance
+  jsavOverflow,     // JSAV overflow array
+  empty = [],       // Dummy for empty data to reset bin array
+  empty8 = [];      // Dummy for empty data for overflow
+
+// Handle a click event on an array
+// Place the value where user puts it
+var clickHandler = function (arr, index) {
+  if (arr === jsavInput) {
+    jsavInput.value(index, inputkey);
+  } else { // In overflow array
+    jsavOverflow.value(index, inputkey);
+  }
+  userInput = true;
+};
+
+// Convenience function for setting another type of highlight
+// (will be used for showing which elements will be compared during sort)
+var setGray = function (a, index) {
+  a.css(index, {"background-color": "#eee" });
+};
+
+// function that creates and initialises the arrays
+function resetInit() {
+  var i;
+  // Do initializations, both for initial use and reset
+  userInput = false;
+  jsavInput = jsav.ds.array(initData, {indexed: true, center: false,
+                            layout: "vertical", left: 20, top: 30});
+  jsav.label("Hash Table", {left: 20, top: 8});
+  jsav.label("<b style='color:#0b0;'>B0</b>", {left: 85, top: 65});
+  jsav.label("<b style='color:#0b0;'>B1</b>", {left: 85, top: 157});
+  jsav.label("<b style='color:#0b0;'>B2</b>", {left: 85, top: 249});
+  jsav.label("<b style='color:#0b0;'>B3</b>", {left: 85, top: 341});
+  jsav.label("<b style='color:#0b0;'>B4</b>", {left: 85, top: 433});
+  for (i = 0; i < 4; i++) {
+    jsav.g.line(20, 123 + (i * 92), 85, 123 + (i * 92), {"stroke-width": 2});
+  }
+  setGray(jsavInput, [0, 1, 4, 5, 8, 9]);
+  jsavInput.click(function (index) { clickHandler(this, index); });
+  jsavOverflow = jsav.ds.array(empty8, {indexed: true, center: false,
+                           layout: "vertical", top: 30, left: 200});
+  jsav.label("Overflow", {left: 195, top: 8});
+  jsavOverflow.click(function (index) { clickHandler(this, index); });
+  jsav.step();
+}
+
+// reset function definition
+var f_reset = function () {
+  jsavInput.clear();
+  jsavOverflow.clear();
+  resetInit();
+};
+
+// Initialize the problem instance (and set the answer arrays)
+// Alternate bucket hash method
+var gen_instance = function (steps) {
+  var i, k;
+  var slot; // The OTHER slot in the current bucket that does NOT hold inputkey
+  if ((inputkey % 2) === 0) { slot = (inputkey % 10) + 1; }
+  else { slot = (inputkey % 10) - 1; }
+  for (i = 0; i < 8; i++) {
+    answer_over[i] = empty8[i];
+  }
+  for (i = 0; i < 10; i++) {
+    answer[i] = empty[i];
+  }
+  if ((steps === 1) || (steps === 2)) { // Make a collision
+    k = JSAV.utils.rand.numKey(0, 1000);
+    while ((k % 10) !== (inputkey % 10)) { k = JSAV.utils.rand.numKey(0, 1000); }
+    answer[k % 10] = k;
+  }
+  if (steps === 2) { // Put it in the other slot of this bucket
+    k = JSAV.utils.rand.numKey(0, 1000);
+    while ((k % 10) !== slot) { k = JSAV.utils.rand.numKey(0, 1000); }
+    answer[slot] = k;
+  }
+  var bucket = Math.floor((inputkey % 10) / 2);
+  for (i = 0; i < 6; i++) { // Randomly put in some more numbers, but
+                            // not in this bucket
+    k = JSAV.utils.rand.numKey(0, 1000);
+    if (Math.floor((k % 10) / 2) !== bucket) { answer[k % 10] = k; }
+  }
+  initData = answer.slice(0);
+  if (steps === 0) { answer[inputkey % 10] = inputkey; }
+  else if (steps === 1) { answer[slot] = inputkey; }
+  else { answer_over[0] = inputkey; } // steps === 2
+};
+
+// Initialise JSAV library
+var initJSAV = function (key, steps) {
+  var i;
+  inputkey = key;
+  // Do all of the one-time initializations
+  arr_size = 10;
+  jsav = new JSAV($("#container"));
+  for (i = 0; i < 10; i++) { empty[i] = ""; }
+  for (i = 0; i < 8; i++) { empty8[i] = ""; }
+  gen_instance(steps);
+  resetInit();
+  // Set up handler for reset button
+  $("#reset").click(function () { f_reset(); });
+};
+	
+// Check user's answer for correctness
+function checkAnswer() {
+  var i;
+  for (i = 0; i < 10; i++) {
+    if (jsavInput.value(i) !== answer[i]) {
+      return false;
+    }
+  }
+  for (i = 0; i < 8; i++) {
+    if (jsavOverflow.value(i) !== answer_over[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+</script>
+<div class="exercise">
+  <div class="vars">
+    <var id="iKey">randRange(1, 999)</var>
+    <var id="iSteps">randRange(0, 2)</var>
+    <var id="JSAV">initJSAV(iKey, iSteps)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <div class="question">
+	<p>You are given a hash table of 5 buckets, each of size 2.
+          Using the <b>alternate</b> bucket hash method described above,
+	  put key value <var>iKey</var> into the hash table.</p>
+        <input id="reset" type="button" value="Reset" />
+	<div id="jsav" class="jsavcanvas"></div>
+      </div>
+      <div class="solution" data-type="custom">
+	<div class="guess">
+          [userInput]
+        </div>
+	<div class="validator-function">
+          if (!checkAnswer(arr_size) && !guess[0])
+          return ""; // User did not click, and correct answer is not
+	             // initial array state
+          else return checkAnswer(arr_size);
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

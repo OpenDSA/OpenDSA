@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Hashing Linear Probing Proficiency Exercise</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="HashingProbingPRO.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+
+  <style>
+    .jsavcontainer {
+      border: 0px;
+    }
+    #reset { margin-right: 20px;}
+  </style>
+</head>
+
+<body>
+<script>
+var
+  jsav,           // The JSAV object
+  arr_size = 10,  // Size of the hashtable
+  solutionArr = [], // The (internal) array that stores the correct answer
+  studentArr = [],  // A copy of the (internal) array at the start of the exercise for reset
+  jsavArr,        // The array that the user manipulates (JSAV object)
+  userInput,
+  currentKey;     // the value that is inserted
+
+// Click event handler on the array
+var clickHandler = function (index, e) {
+  jsavArr.value(index, currentKey);
+  userInput = true;
+};
+
+// reset function definition
+var f_reset = function () {
+  jsavArr.clear();             // Re-initialize the displayed array object
+  jsavArr = jsav.ds.array(studentArr, {indexed: true, center: false});
+  jsavArr.click(clickHandler); // Rebind click handler after reset
+  userInput = false;
+};
+
+// Initialise the exercise
+var initJSAV = function() {
+  var randomData;
+
+  randomData = Hashing.randomizeInputData(Hashing.linearProbing, arr_size);
+
+  // Get the correct solution
+  solutionArr = randomData[2];
+
+  // initialize JSAV and the JSAV array
+  jsav = new JSAV("jsav");
+  jsav.recorded();
+  studentArr = randomData[0];
+  jsavArr = jsav.ds.array(studentArr, {indexed: true, center: false});
+
+  // store the value student needs to insert
+  currentKey = randomData[1];
+
+  // Bind the clickHandler to handle click events on the array
+  jsavArr.click(clickHandler);
+  // Set up handler for reset button
+  $("#reset").click(function () { f_reset(); });
+
+  userInput = false;
+};
+
+// Check student's answer for correctness: User's array must match answer
+var checkAnswer = function() {
+  var i;
+  for (i = 0; i < arr_size; i++) {
+    if (jsavArr.value(i) !== solutionArr[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+</script>
+
+<div class="exercise">
+<div class="vars">                
+      <var id="hashFunction">"h(k) = k  mod " + arr_size</var>
+      <var id="JSAV">initJSAV()</var>
+    </div>
+    <div class="problems">
+      <div> <!-- Supresses answer box -->
+        <p class="problem">
+          Given the following hash table, use hash
+          function <var>hashFunction</var> and handle collisions
+          using Linear Probing.
+        </p>          
+        <p class="question"> 
+          In which slot should the record with key
+          value <var>currentKey </var> be inserted?
+        </p>
+        <input id="reset" type="button" value="Reset" />  
+        <div id="jsav"></div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [userInput]
+        </div>
+        <div class="validator-function">
+          if (!checkAnswer() && !guess[0])
+            return ""; // User did not click, and correct answer is not
+                 // initial array state
+          else return checkAnswer();
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

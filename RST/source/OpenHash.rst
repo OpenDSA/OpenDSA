@@ -14,7 +14,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Sorting/openhashCON.css
+.. odsalink:: AV/Hashing/openhashCON.css
 
 Open Hashing
 ============
@@ -86,8 +86,8 @@ In a similar fashion, a simple Binsort reduces the number of
 records in each bin to a small number that can be sorted in some
 other way.
 
-.. avembed:: Exercises/Sorting/OpenHashPRO.html
+.. avembed:: Exercises/Hashing/OpenHashPRO.html
    :showbutton: hide
    :title: Open Hashing Exercise
 
-.. odsascript:: AV/Sorting/openhashCON.js
+.. odsascript:: AV/Hashing/openhashCON.js

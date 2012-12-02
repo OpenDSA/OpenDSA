@@ -14,7 +14,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Sorting/hashCON.css
+.. odsalink:: AV/Hashing/hashCON.css
 
 Deletion
 ========
@@ -54,7 +54,7 @@ the first tombstone encountered.
 
 Here is a practice exercise.
 
-.. avembed:: AV/Sorting/HashingDeleteProficiency.html
+.. avembed:: AV/Hashing/HashingDeleteProficiency.html
    :showbutton: hide
    :title: Hashing Deletion Proficiency Exercise
 
@@ -102,7 +102,7 @@ Two possible solutions to this problem are
 
 Now here are some practice questions.
 
-.. avembed:: Exercises/Sorting/HashDelSumm.html
+.. avembed:: Exercises/Hashing/HashDelSumm.html
    :showbutton: hide
    :title: Review Questions
 
@@ -115,4 +115,4 @@ Unfortunately, hashing is not effective when implementing range queries,
 or answering questions like
 "Which record in the collection has the smallest key value?"
 
-.. odsascript:: AV/Sorting/hashdelCON.js
+.. odsascript:: AV/Hashing/hashdelCON.js

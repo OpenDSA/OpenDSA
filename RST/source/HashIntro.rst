@@ -16,7 +16,7 @@
 
 .. index:: ! hashing
 
-.. odsalink:: AV/Sorting/hashCON.css
+.. odsalink:: AV/Hashing/hashCON.css
 
 Introduction
 ============
@@ -121,4 +121,4 @@ Module :numref:`<HashFunc>`, while
 collision resolution will be discussed in
 Module :numref:`<HashCSimple>`.
 
-.. odsascript:: AV/Sorting/hashIntroCON.js
+.. odsascript:: AV/Hashing/hashIntroCON.js

@@ -53,7 +53,7 @@ two share a birthday?
 In a hash table of 1000 slots, how many records must be inserted before
 the probability of a collision reaches 50%?
 
-.. avembed:: AV/Sorting/Birthday.html
+.. avembed:: AV/Hashing/Birthday.html
    :showbutton: show
    :title: Birthday Problem Simulator
 
@@ -147,6 +147,6 @@ that illustrate these points.
 First, here are some review questions for what has been covered so
 far.
 
-.. avembed:: Exercises/Sorting/HashPrinciplesSumm.html
+.. avembed:: Exercises/Hashing/HashPrinciplesSumm.html
    :showbutton: hide
    :title: Review Questions

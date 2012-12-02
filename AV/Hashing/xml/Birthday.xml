@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<entry>
+<id>http://algoviz.org/OpenDSA/AV/Hashing/Birthday.html</id>
+<title type='text'>Birthday Problem Calculator</title>
+<type>pe</type>  
+<width>672</width>
+<height>177</height>
+<author>
+<name>OpenDSA</name>
+<uri>http://algoviz.org/OpenDSA/</uri>
+</author>
+<covers>hashing</covers>
+<streak>90</streak>
+</entry>

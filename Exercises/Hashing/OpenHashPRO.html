@@ -1,0 +1,193 @@
+<!-- Open Hashing mini-proficiency exercise.
+Written by Cliff Shaffer -->
+
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Open Hashing Exercise</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script type="text/javascript" src="/MathJax/MathJax.js?config=default"></script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <style>
+    #container {
+      border: 0;
+      width: 780px;
+      height: 760px;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .jsavarray { position: absolute; }
+
+    #container .jsavarray {
+      left: -10px;
+      height: 80px;
+    }
+
+    #reset { margin-right: 20px;}
+  </style>
+</head>
+
+<body>
+<script>
+"use strict";
+var
+  jsav,           // The JSAV object
+  arr_size,       // Full array size
+  userInput,      // Boolean: Tells us if user ever did anything
+  arrdata = [],   // The array to be sorted; keep for reset
+  answer = [],    // Array that holds the correct order for the values
+  jsavInput,      // JSAV array of input values
+  jsavBins,       // JSAV array that serves as a point for user to click on bins
+  jsavLists = [], // The actual set of lists
+  empty = [],     // Dummy for empty data to reset bin array
+  isSelected;     // Boolean: True iff user has already clicked an array element
+
+var blockHeight = 47;  // Width/height of an array or list element
+
+// Variables used to keep track of the index and array of the
+// currently selected element within click handler
+var ValueIndex = -1;
+
+// Handle a click event on an array
+// On click of bottom array element, highlight.
+// On click of (free) position in top array, move highlighted element there.
+var clickHandler = function (arr, index) {
+  if (ValueIndex === -1) {
+    // Nothing is selected. We must be in the input array
+    if (arr !== jsavInput) { return; } // Wasn't in input array
+    // Don't let the user select an empty element,
+    if (arr.value(index) === "") { return; }
+    arr.highlight(index);
+    ValueIndex = index;
+  } else {
+    // We should be setting the value into a bin
+    if (arr !== jsavBins) { return; } // Wasn't in bin array
+    // Move currently selected element from input array to selected bin
+    jsavLists[index].addLast(jsavInput.value(ValueIndex));
+    jsavLists[index].layout({center: false});
+    jsavInput.unhighlight(ValueIndex);
+    arr.value(index, jsavInput.value(ValueIndex));
+    jsavInput.value(ValueIndex, "");
+    ValueIndex = -1;
+  }
+  userInput = true;
+};
+
+// function that creates and initialises the arrays
+function resetInit() {
+  var i;
+  // Do initializations, both for initial use and reset
+  userInput = false;
+  ValueIndex = -1;
+  jsavInput = jsav.ds.array(arrdata, {indexed: true, center: false,
+                            layout: "vertical", top: 10});
+  jsavInput.click(function (index) { clickHandler(this, index); });
+  jsavBins = jsav.ds.array(empty, {indexed: true, center: false,
+                           layout: "vertical", top: 10, left: 200});
+  jsavBins.click(function (index) { clickHandler(this, index); });
+  for (i = 0; i < 10; i++) {
+    jsavLists[i] = jsav.ds.list({top: (11 + i * 46), left: 260, nodegap: 30});
+    jsavLists[i].layout({center: false});
+  }
+  jsav.step();
+}
+
+// reset function definition
+var f_reset = function () {
+  jsavInput.clear();
+  for (var i = 0; i < 10; i++) {
+    jsavLists[i].clear();
+  }
+  resetInit();
+};
+
+// function that initialise JSAV library
+var initJSAV = function (asize) {
+  var i, j;
+  var shift = 1;
+  var temp = [];
+  // Do all of the one-time initializations
+  arr_size = asize;
+  jsav = new JSAV($("#container"));
+  arrdata = JSAV.utils.rand.numKeys(0, 999, arr_size);
+  for (i = 0; i < 10; i++) { empty[i] = ""; }
+  resetInit();
+  // Set up handler for reset button
+  $("#reset").click(function () { f_reset(); });
+  // Compute the answer
+  for (i = 0; i < 10; i++) {
+    temp[i] = [];
+  }
+  for (i = 0; i < arr_size; i++) {
+    var a = arrdata[i] % 10;
+    temp[a][temp[a].length] = arrdata[i];
+  }
+  var curr = 0;
+  for (i = 0; i < 10; i++) {
+    for (j = 0; j < temp[i].length; j++) {
+      answer[curr++] = temp[i][j];
+    }
+  }
+};
+	
+// Check user's answer for correctness
+function checkAnswer(arr_size) {
+  var i, j;
+  var curr = 0;
+  for (i = 0; i < 10; i++) {
+    for (j = 0; j < jsavLists[i].size(); j++) {
+      if (jsavLists[i].get(j).value() !== answer[curr++]) {
+        return false;
+      }
+    }
+  }
+console.log("curr is " + curr + ", arr_size is " + arr_size);
+  if (curr !== arr_size) { return false; }
+  return true;
+}
+</script>
+<div class="exercise">
+  <div class="vars">
+    <var id="arr_size">randRange(5, 8)</var>
+    <var id="JSAV">initJSAV(arr_size)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <div id="problem-type-or-description">
+	<p class="problem">On the left is an array of numbers that are
+	  to be inserted into the hash table on the right. The hash
+	  table uses open hashing to deal with collisions.</p>
+	<p class="question"> Move each record on the left to the
+          appropriate bin on the right when using the simple mod hash
+          function.</p>
+	<input id="reset" type="button" value="Reset" />
+	<div id="jsav" class="jsavcanvas"></div>
+	<div class="solution" data-type="custom">
+	  <div class="guess">
+            [userInput]
+          </div>
+	  <div class="validator-function">
+            if (!checkAnswer(arr_size) && !guess[0])
+            return ""; // User did not click, and correct answer is not
+                       // initial array state
+            else return checkAnswer(arr_size);
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

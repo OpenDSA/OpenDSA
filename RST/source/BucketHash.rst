@@ -14,7 +14,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Sorting/buckethashCON.css
+.. odsalink:: AV/Hashing/buckethashCON.css
 
 Bucket Hashing
 ==============
@@ -64,7 +64,7 @@ expensive process.
 
 Now you can try it yourself.
 
-.. avembed:: Exercises/Sorting/HashingBucketPRO.html
+.. avembed:: Exercises/Hashing/HashingBucketPRO.html
    :showbutton: hide
    :title: Bucket Hash Exercise
 
@@ -83,7 +83,7 @@ in the bucket.
 
 Now you can try this version.
 
-.. avembed:: Exercises/Sorting/HashingBucket2PRO.html
+.. avembed:: Exercises/Hashing/HashingBucket2PRO.html
    :showbutton: hide
    :title: Alternate Bucket Hash Exercise
 
@@ -99,4 +99,4 @@ from disk as well.
 Naturally, overflow should be kept small to minimize unnecessary disk
 accesses.
 
-.. odsascript:: AV/Sorting/buckethashCON.js
+.. odsascript:: AV/Hashing/buckethashCON.js

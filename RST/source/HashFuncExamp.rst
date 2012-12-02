@@ -14,7 +14,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Sorting/hashCON.css
+.. odsalink:: AV/Hashing/hashCON.css
 
 Sample Hash Functions
 =====================
@@ -166,7 +166,7 @@ the digits of the operator and the digits of the result.
 Here is a little calculator for you to see how this works.
 Start with '4567' as an example.
 
-.. avembed:: AV/Sorting/MidSquare.html
+.. avembed:: AV/Hashing/MidSquare.html
    :showbutton: show
    :title: Mid-Square Calculator
 
@@ -221,7 +221,7 @@ slots.
 
 Now you can try it out with this calculator.
 
-.. avembed:: AV/Sorting/StringSimple.html
+.. avembed:: AV/Hashing/StringSimple.html
    :showbutton: show
    :title: Simple String Folding Calculator
 
@@ -268,7 +268,7 @@ to hash to slot 75 in the table.
 
 Now you can try it out with this calculator.
 
-.. avembed:: AV/Sorting/StringSfold.html
+.. avembed:: AV/Hashing/StringSfold.html
    :showbutton: show
    :title: Improved String Folding Calculator
 
@@ -293,14 +293,14 @@ functions.
 You should use the calculators above for the more complicated hash
 functions.
 
-.. avembed:: Exercises/Sorting/HashFuncPROSumm.html
+.. avembed:: Exercises/Hashing/HashFuncPROSumm.html
    :showbutton: hide
    :title: Hash Function Proficency Summary
 
 Here are some review questions.
 
-.. avembed:: Exercises/Sorting/HashFuncSumm.html
+.. avembed:: Exercises/Hashing/HashFuncSumm.html
    :showbutton: hide
    :title: Review Questions
 
-.. odsascript:: AV/Sorting/hashFuncExCON.js
+.. odsascript:: AV/Hashing/hashFuncExCON.js

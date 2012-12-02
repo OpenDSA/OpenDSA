@@ -14,7 +14,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Sorting/collisionCON.css
+.. odsalink:: AV/Hashing/collisionCON.css
 
 Improved Collision Resolution
 =============================
@@ -72,7 +72,7 @@ probe sequence that visits all slots for every key.
 
 Now you can practice linear probing by different step sizes.
 
-.. avembed:: Exercises/Sorting/HashingLinearStepProbePRO.html
+.. avembed:: Exercises/Hashing/HashingLinearStepProbePRO.html
    :showbutton: hide
    :title: Linear Probing by Steps Exercise
 
@@ -121,7 +121,7 @@ random permutation of the values from 1 to :math:`M - 1` in slots 1 to
 
 Here is a practice exercise for pseudo-random probing.
 
-.. avembed:: Exercises/Sorting/HashingPseudoRandomProbePRO.html
+.. avembed:: Exercises/Hashing/HashingPseudoRandomProbePRO.html
    :showbutton: hide
    :title: Pseudo-Random Probing Exercise
 
@@ -151,7 +151,7 @@ Then the :math:`i` th value in the probe sequence would be
 
 Now you can practice quadratic probing.
 
-.. avembed:: Exercises/Sorting/HashingQuadraticProbePRO.html
+.. avembed:: Exercises/Hashing/HashingQuadraticProbePRO.html
    :showbutton: hide
    :title: Quadratic Probing Exercise
 
@@ -248,19 +248,19 @@ We can get that result with this secondary hash function:
 
 Now you can try it yourself.
 
-.. avembed:: Exercises/Sorting/HashingDoubleProbePRO.html
+.. avembed:: Exercises/Hashing/HashingDoubleProbePRO.html
    :showbutton: hide
    :title: Double Hashing Exercise
 
 The following visualization lets you test out different combinations
 of hash function and collision resolution, on your own input data.
 
-.. avembed:: AV/Sorting/hashAV.html
+.. avembed:: AV/Hashing/hashAV.html
 
 Finally, here are some practice questions.
 
-.. avembed:: Exercises/Sorting/HashCollisionSumm.html
+.. avembed:: Exercises/Hashing/HashCollisionSumm.html
    :showbutton: hide
    :title: Collision Resolution Review
 
-.. odsascript:: AV/Sorting/collisionCON.js
+.. odsascript:: AV/Hashing/collisionCON.js

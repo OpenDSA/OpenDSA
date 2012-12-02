@@ -16,7 +16,7 @@
 
 .. index:: ! collision resolution
 
-.. odsalink:: AV/Sorting/hashCON.css
+.. odsalink:: AV/Hashing/hashCON.css
 
 Collision Resolution
 ====================
@@ -144,8 +144,8 @@ worse.
 The objection to primary clustering is that it leads to
 long probe sequences.
 
-.. avembed:: Exercises/Sorting/HashingLinearProbePRO.html
+.. avembed:: Exercises/Hashing/HashingLinearProbePRO.html
    :showbutton: hide
    :title: Linear Probing Exercise
 
-.. odsascript:: AV/Sorting/linProbeCON.js
+.. odsascript:: AV/Hashing/linProbeCON.js

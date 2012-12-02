@@ -22,6 +22,6 @@ questions in the modules of this chapter.
 If anything goes wrong with one of the questions, or if you think that
 you are in a series of repeating questions, then just reload the page.
 
-.. avembed:: Exercises/Sorting/HashChapterSumm.html
+.. avembed:: Exercises/Hashing/HashChapterSumm.html
    :showbutton: hide
    :title: Complete Review
