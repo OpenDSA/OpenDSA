@@ -7,9 +7,10 @@
 .. odsascript:: lib/jquery.min.js
 .. odsascript:: lib/jquery-ui.min.js
  
-.. odsascript:: JSAV/build/JSAV-min.js
-
 .. odsascript:: JSAV/lib/jquery.transform.light.js 
+.. odsascript:: JSAV/lib/raphael.js 
+
+.. odsascript:: JSAV/build/JSAV-min.js
 
 .. odsascript:: lib/ODSA.js
 
