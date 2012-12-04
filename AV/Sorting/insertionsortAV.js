@@ -56,7 +56,7 @@
   }
 
   // Execute the "Run" button function
-function runIt() {
+  function runIt() {
     var arrValues = processArrayValues();
     
     // If arrValues is null, the user gave us junk which they need to fix

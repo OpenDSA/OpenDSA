@@ -1,12 +1,15 @@
 "use strict";
-/*global serverEnabled, userLoggedIn, flushStoredData, sendEventData,
-AV_NAME, logExerciseInit, logUserAction */
-// General utilities
+/*global alert: true, console: true, serverEnabled, userLoggedIn, flushStoredData, sendEventData, AV_NAME: true, getNameFromURL, logExerciseInit, logUserAction */
 
 
-// Initialize the global AV_NAME variable
+/**
+ * Initialize the global AV_NAME variable
+ */
 AV_NAME = getNameFromURL();
 
+/**
+ * The ID of the avcontainer element
+ */
 var avcId = AV_NAME + '_avc';
 
 /**
@@ -23,21 +26,21 @@ var emptyContent;
 function initArraySize(min, max, selected) {
   // Uses the midpoint between the min and max as a default, if a selected value isn't provided
   selected = (selected) ? selected : Math.round((max + min) / 2);
-  
+
   var html = "";
   for (var i = min; i <= max; i++) {
     html += '<option ';
-    
+
     if (i === selected) {
       html += 'selected="selected" ';
     }
-    
+
     html += 'value="' + i + '">' + i + '</option>';
   }
 
   $('#arraysize').html(html);
-  
-  // Save the min and max values as data attributes so 
+
+  // Save the min and max values as data attributes so
   // they can be used by processArrayValues()
   $('#arraysize').data('min', min);
   $('#arraysize').data('max', max);
@@ -49,7 +52,7 @@ function initArraySize(min, max, selected) {
 function reset(flag) {
   // Replace the contents of the avcontainer with the save initial state
   $('#' + avcId).unbind().html(emptyContent);
-  
+
   // Clear the array values field, when no params given and reset button hit
   if (flag !== true && !$('#arrayValues').prop("disabled")) {
     $('#arrayValues').val("");
@@ -61,21 +64,21 @@ function reset(flag) {
  */
 function processArrayValues(upperLimit) {
   upperLimit = (upperLimit) ? upperLimit : 999;
-  
+
   if (!$('#arraysize').data('min') || !$('#arraysize').data('max')) {
     console.warn('processArrayValues() called without calling initArraySize()');
   }
-  
+
   var i,
       initData = {},
       minSize = $('#arraysize').data('min'),
       maxSize = $('#arraysize').data('max'),
       msg = "Please enter " + minSize + " to " + maxSize + " positive integers between 0 and " + upperLimit;
-      
+
   // Convert user's values to an array,
   // assuming values are space separated
   var arrValues = $('#arrayValues').val().match(/[0-9]+/g) || [];
-  
+
   if (arrValues.length === 0) { // Empty field
     // Generate (appropriate length) array of random numbers between 0 and the given upper limit
     for (i = 0; i < $('#arraysize').val(); i++) {
@@ -88,40 +91,40 @@ function processArrayValues(upperLimit) {
       alert(msg);
       return null;
     }
-    
+
     // Ensure all user entered values are positive integers
     for (i = 0; i < arrValues.length; i++) {
       arrValues[i] = Number(arrValues[i]);
-      if (isNaN(arrValues[i]) || arrValues[i] < 0 || theArray[i] > upperLimit) {
+      if (isNaN(arrValues[i]) || arrValues[i] < 0 || arrValues[i] > upperLimit) {
         alert(msg);
         return null;
       }
     }
-    
+
     initData.user_array = arrValues;
-    
+
     // Update the arraysize dropdown to match the length of the user entered array
     $('#arraysize').val(arrValues.length);
   }
-  
+
   // Dynamically log initial state of text boxes
   $('input[type=text]').each(function (index, item) {
     var id = $(item).attr('id');
-  
+
     if (id !== 'arrayValues') {
       initData['user_' + id] = $(item).val();
     }
   });
-  
+
   // Dynamically log initial state of dropdown lists
   $('select').each(function (index, item) {
     var id = $(item).attr('id');
     initData['user_' + id] = $(item).val();
   });
-  
+
   // Log initial state of exercise
   logExerciseInit(initData);
-  
+
   return arrValues;
 }
 
@@ -283,10 +286,10 @@ function processArrayValues(upperLimit) {
     if (serverEnabled()) {
       // Generate the appropriate ID for the avcontainer element
       $('.avcontainer').attr('id', avcId);
-      
+
       // Save the empty contents of the avcontainer element
       emptyContent = $('#' + avcId).html();
-      
+
       // Log the browser ready event
       logUserAction(AV_NAME, 'document-ready', 'User loaded the ' + AV_NAME + ' AV');
 
@@ -304,7 +307,7 @@ function processArrayValues(upperLimit) {
       $(window).blur(function (e) {
         logUserAction(AV_NAME, 'window-blur', 'User is no longer looking at ' + AV_NAME + ' window');
       });
-    
+
       $(window).on('beforeunload', function () {
         // Log the browser unload event
         logUserAction(AV_NAME, 'window-unload', 'User closed or refreshed ' + AV_NAME + ' window');
