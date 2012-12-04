@@ -1,9 +1,7 @@
 "use strict";
 /*global alert*/
 (function ($) {
-  var AV_NAME = 'radixLinkAV';
-  var av = new AV(AV_NAME, 5, 10, 8),
-      jsav,   // for JSAV library object
+  var jsav,   // for JSAV library object
       arr,    // for the JSAV array
       arrDigit,
       arrOut;
@@ -17,6 +15,9 @@
 
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
+
+  // Initialize the arraysize dropdown list
+  initArraySize(5, 10, 8);
 
   // Process help button: Give a full help page for this activity
   // We might give them another HTML page to look at.
@@ -32,17 +33,16 @@
   // Execute the "Run" button function
   function runIt() {
     var dSize = $('#digitsize').val(),
-        i;
-
-    // If processArrayValues is false, the user gave us junk which they need to fix
-    if (av.processArrayValues(Math.pow(10, dSize))) {
-      var initData = av.initData;
-
-      // Log initial state of exercise
-      logExerciseInit(AV_NAME, initData);
+        i,
+        arrValues = processArrayValues(Math.pow(10, dSize));
+    
+    // If arrValues is null, the user gave us junk which they need to fix
+    if (arrValues) {
+      reset(true);
+      jsav = new JSAV(avcId);
 
       // Set the digit size to the length of the largest number in the array
-      var max = Math.max.apply(Math, av.arrValues);
+      var max = Math.max.apply(Math, arrValues);
       dSize = String(max).length;
       $('#digitsize').val(dSize);
 
@@ -57,10 +57,8 @@
         digitArray[i] = "";
       }
 
-      jsav = av.initJSAV();
-
       // Create a new array using the layout the user has selected
-      arr = jsav.ds.array(av.arrValues, {indexed: true, layout: "vertical",
+      arr = jsav.ds.array(arrValues, {indexed: true, layout: "vertical",
                                    center: false, top: 20, left: 0});
       jsav.label("Input", {before: arr, left: 15, top: 12});
       arrDigit = jsav.ds.array(digitArray, {indexed: true, layout: "vertical",
@@ -151,5 +149,5 @@
   $('#help').click(help);
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#reset').click(av.reset);
+  $('#reset').click(reset);
 }(jQuery));

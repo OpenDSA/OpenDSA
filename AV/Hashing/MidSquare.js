@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, awardCompletionCredit, getAVName */
+/*global alert: true, awardCompletionCredit */
 (function ($) {
   // Declare and initialize state variables
   var
@@ -29,7 +29,7 @@
     else if (right < 100) { right = '0' + right; }
     var output = left + '<span class = "standout">' + center + '</span>' + right;
     tell(output);
-    awardCompletionCredit(getAVName());
+    awardCompletionCredit();
   }
 
   // Action callbacks for form entities

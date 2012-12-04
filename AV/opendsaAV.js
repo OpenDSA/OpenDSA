@@ -1,11 +1,132 @@
 "use strict";
 /*global serverEnabled, userLoggedIn, flushStoredData, sendEventData,
-getAVName, logUserAction */
+AV_NAME, logExerciseInit, logUserAction */
 // General utilities
 
-(function ($) {
-  var avName = getAVName();
+
+// Initialize the global AV_NAME variable
+AV_NAME = getNameFromURL();
+
+var avcId = AV_NAME + '_avc';
+
+/**
+ * Stores the empty contents of the avcontainer, used for reset
+ */
+var emptyContent;
+
+//*****************************************************************************
+//*************                    AV FUNCTIONS                   *************
+//*****************************************************************************
+/**
+ * Initializes the arraysize drop down list
+ */
+function initArraySize(min, max, selected) {
+  // Uses the midpoint between the min and max as a default, if a selected value isn't provided
+  selected = (selected) ? selected : Math.round((max + min) / 2);
   
+  var html = "";
+  for (var i = min; i <= max; i++) {
+    html += '<option ';
+    
+    if (i === selected) {
+      html += 'selected="selected" ';
+    }
+    
+    html += 'value="' + i + '">' + i + '</option>';
+  }
+
+  $('#arraysize').html(html);
+  
+  // Save the min and max values as data attributes so 
+  // they can be used by processArrayValues()
+  $('#arraysize').data('min', min);
+  $('#arraysize').data('max', max);
+}
+
+/**
+ * Resets the AV to its initial state
+ */
+function reset(flag) {
+  // Replace the contents of the avcontainer with the save initial state
+  $('#' + avcId).unbind().html(emptyContent);
+  
+  // Clear the array values field, when no params given and reset button hit
+  if (flag !== true && !$('#arrayValues').prop("disabled")) {
+    $('#arrayValues').val("");
+  }
+}
+
+/**
+ * Validates the array values a user enters or generates an array of random numbers if none are provided
+ */
+function processArrayValues(upperLimit) {
+  upperLimit = (upperLimit) ? upperLimit : 999;
+  
+  if (!$('#arraysize').data('min') || !$('#arraysize').data('max')) {
+    console.warn('processArrayValues() called without calling initArraySize()');
+  }
+  
+  var i,
+      initData = {},
+      minSize = $('#arraysize').data('min'),
+      maxSize = $('#arraysize').data('max'),
+      msg = "Please enter " + minSize + " to " + maxSize + " positive integers between 0 and " + upperLimit;
+      
+  // Convert user's values to an array,
+  // assuming values are space separated
+  var arrValues = $('#arrayValues').val().match(/[0-9]+/g) || [];
+  
+  if (arrValues.length === 0) { // Empty field
+    // Generate (appropriate length) array of random numbers between 0 and the given upper limit
+    for (i = 0; i < $('#arraysize').val(); i++) {
+      arrValues[i] = Math.floor(Math.random() * (upperLimit + 1));
+    }
+    initData.gen_array = arrValues;
+  } else {
+    // Ensure user provided array is in correct range
+    if (arrValues.length < minSize || arrValues.length > maxSize) {
+      alert(msg);
+      return null;
+    }
+    
+    // Ensure all user entered values are positive integers
+    for (i = 0; i < arrValues.length; i++) {
+      arrValues[i] = Number(arrValues[i]);
+      if (isNaN(arrValues[i]) || arrValues[i] < 0 || theArray[i] > upperLimit) {
+        alert(msg);
+        return null;
+      }
+    }
+    
+    initData.user_array = arrValues;
+    
+    // Update the arraysize dropdown to match the length of the user entered array
+    $('#arraysize').val(arrValues.length);
+  }
+  
+  // Dynamically log initial state of text boxes
+  $('input[type=text]').each(function (index, item) {
+    var id = $(item).attr('id');
+  
+    if (id !== 'arrayValues') {
+      initData['user_' + id] = $(item).val();
+    }
+  });
+  
+  // Dynamically log initial state of dropdown lists
+  $('select').each(function (index, item) {
+    var id = $(item).attr('id');
+    initData['user_' + id] = $(item).val();
+  });
+  
+  // Log initial state of exercise
+  logExerciseInit(initData);
+  
+  return arrValues;
+}
+
+
+(function ($) {
 //*****************************************************************************
 //*************                  JSAV Extensions                  *************
 //*****************************************************************************
@@ -160,8 +281,14 @@ getAVName, logUserAction */
 //*****************************************************************************
   $(document).ready(function () {
     if (serverEnabled()) {
+      // Generate the appropriate ID for the avcontainer element
+      $('.avcontainer').attr('id', avcId);
+      
+      // Save the empty contents of the avcontainer element
+      emptyContent = $('#' + avcId).html();
+      
       // Log the browser ready event
-      logUserAction(avName, 'document-ready', 'User loaded the ' + avName + ' AV');
+      logUserAction(AV_NAME, 'document-ready', 'User loaded the ' + AV_NAME + ' AV');
 
       // Send any stored event data when the page loads
       if (userLoggedIn()) {
@@ -171,16 +298,16 @@ getAVName, logUserAction */
       }
 
       $(window).focus(function (e) {
-        logUserAction(avName, 'window-focus', 'User looking at ' + avName + ' window');
+        logUserAction(AV_NAME, 'window-focus', 'User looking at ' + AV_NAME + ' window');
       });
 
       $(window).blur(function (e) {
-        logUserAction(avName, 'window-blur', 'User is no longer looking at ' + avName + ' window');
+        logUserAction(AV_NAME, 'window-blur', 'User is no longer looking at ' + AV_NAME + ' window');
       });
     
       $(window).on('beforeunload', function () {
         // Log the browser unload event
-        logUserAction(avName, 'window-unload', 'User closed or refreshed ' + avName + ' window');
+        logUserAction(AV_NAME, 'window-unload', 'User closed or refreshed ' + AV_NAME + ' window');
       });
     }
   });

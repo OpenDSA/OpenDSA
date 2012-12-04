@@ -1,10 +1,8 @@
 "use strict";
 /*global alert*/
-/*global logExerciseInit sweep */
+/*global sweep */
 (function ($) {
-  var AV_NAME = 'shellsortAV';
-  var av = new AV(AV_NAME, 5, 16, 8),
-      jsav, // for JSAV library object av
+  var jsav, // for JSAV library object av
       arr;  // for the JSAV array
 
   // check query parameters from URL
@@ -20,6 +18,9 @@
     {"type": "select", "options": {"bar": "Bar", "array": "Array"},
      "label": "Array layout: ", "value": "bar"});
 
+  // Initialize the arraysize dropdown list
+  initArraySize(5, 16, 8);
+  
   // Process help button: Give a full help page for this activity
   // We might give them another HTML page to look at.
   function help() {
@@ -56,24 +57,22 @@
 
   // Execute the "Run" button function
   function runIt() {
+    // Validate the user's increments
     var incrs = checkIncrements();
 
-    // Validate the user's increments and array values
-    // If processArrayValues is false, the user gave us junk which they need to fix
-    if (incrs && av.processArrayValues()) {
-      // Log initial state of exercise
-      var initData = av.initData;
-      initData.user_incrs = incrs;
-      logExerciseInit(AV_NAME, initData);
-
-      jsav = av.initJSAV();
+    var arrValues = processArrayValues();
+    
+    // If arrValues is null, the user gave us junk which they need to fix
+    if (incrs && arrValues) {
+      reset(true);
+      jsav = new JSAV(avcId);
 
       // Create a new array using the layout the user has selected
-      arr = jsav.ds.array(av.arrValues, {indexed: true, layout: arrayLayout.val()});
+      arr = jsav.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
       jsav.displayInit();
 
       for (var i = 0; i < incrs.length; i += 1) {
-        if (incrs[i] < av.arrValues.length) {
+        if (incrs[i] < arrValues.length) {
           sweep(jsav, arr, incrs[i]); // run the sweep to create the AV
         }
       }
@@ -86,6 +85,6 @@
   $('#help').click(help);
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#reset').click(av.reset);
+  $('#reset').click(reset);
   $('#increments').focusout(checkIncrements);
 }(jQuery));

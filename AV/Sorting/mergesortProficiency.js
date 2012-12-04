@@ -1,5 +1,5 @@
 "use strict";
-/*global alert console logExerciseInit getAVName */
+/*global alert console logExerciseInit */
 (function ($) {
   // Process help button: Give a full help page for this activity
   // We might give them another HTML page to look at.
@@ -29,10 +29,6 @@
   var mergeValueIndex = -1;
   var mergeValueArr = null;
 
-
-  // Define the local context (from form name)
-  var context = $("#mergesortProficiency_avc");
-
   // Settings for the AV
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
 
@@ -40,7 +36,7 @@
       initialArray = [],
       userAnswerValue = [],
       userAnswerDepth = [],
-      av = new JSAV(context, {settings: settings});
+      av = new JSAV(avcId, {settings: settings});
 
   // Stores the various JSAV arrays created for the user to enter their solution
   var arrays = {};
@@ -70,7 +66,7 @@
     // Log the initial state of the exercise
     var desc = {};
     desc.gen_array = initialArray;
-    logExerciseInit(getAVName(), desc);
+    logExerciseInit(desc);
 
     // Dynamically create arrays
     arrays = {};

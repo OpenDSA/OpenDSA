@@ -1,13 +1,9 @@
 "use strict";
-/*global alert: true, logExerciseInit, getAVName, awardCompletionCredit */
+/*global alert: true, logExerciseInit, awardCompletionCredit */
 (function ($) {
   // Create the AV object. We turn off slideshow mode, since this is a
   // "static" form-based activity
   var av = new JSAV("ssperform", {'animationMode': 'none'});
-
-  // Define the local context (from form name)
-  //containing HTML elements within id ssperform.
-  var context = $("#ssperform");
 
   // Create a convenience function named tell for writing to output
   var tell = function (msg, color) { av.umsg(msg, {color: color}); };
@@ -19,7 +15,7 @@
   // time a new set of random numbers is drawn.
   var theArray = [];
 
-  var ASize = parseInt($('#arraysize', context).val(), 10); // Array size
+  var ASize = parseInt($('#arraysize').val(), 10); // Array size
 
   var comps; // Count for comparisions
   var swaps; // Count for swaps
@@ -56,7 +52,7 @@
   // Change the array size
   function Change() {
     // Validate arraysize
-    var newVal = Number($('#arraysize', context).val());
+    var newVal = Number($('#arraysize').val());
     if (isNaN(newVal) || (newVal < 1) || (newVal > 10000)) {
       alert("List size has to be a positive number less than 10000");
       return;
@@ -106,7 +102,7 @@
       prev = Number.MAX_VALUE,
       msg = "Increments series must be decreasing positive values ending with 1";
     // Convert user's increments to an array,
-    var incrs = $('#increments', context).val().match(/[0-9]+/g) || [];
+    var incrs = $('#increments').val().match(/[0-9]+/g) || [];
     for (i = 0; i < incrs.length; i++) {
       incrs[i] = Number(incrs[i]);
       if (isNaN(incrs[i]) || incrs[i] < 0 || incrs[i] > prev) {
@@ -178,13 +174,13 @@
       }
     }
     checkArray(tempArray);
-    tell("The series " + $('#increments', context).val() +
+    tell("The series " + $('#increments').val() +
          " needs " + comps +
          " comparisons and " + swaps + " swaps\n");
     // Right here is where we would give user credit
     if ((comps < twosComps) && (swaps < twosSwaps)) {
       // Give user proficiency credit
-      awardCompletionCredit(getAVName());
+      awardCompletionCredit();
       tell("CONGRATULATIONS! You did better than divide-by-twos");
     }
     
@@ -193,14 +189,14 @@
     initData.gen_array_len = ASize;
     initData.gen_array = theArray;
     initData.gen_incrs = incrs;
-    logExerciseInit(getAVName(), initData);
+    logExerciseInit(initData);
   }
 
   // Action callbacks to the various HTML entities.
   $('#about').click(about);
-  $('#run', context).click(RunIt);
-  $('#clear', context).click(Clear);
-  $('#arraysize', context).focusout(Change);
-  $('#increments', context).focusout(checkIncrements);
+  $('#run').click(RunIt);
+  $('#clear').click(Clear);
+  $('#arraysize').focusout(Change);
+  $('#increments').focusout(checkIncrements);
 
 }(jQuery));

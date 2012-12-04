@@ -249,8 +249,7 @@
 
 
   /* Variables */
-  var AV_NAME = 'hashAV',
-      jsav = new JSAV(AV_NAME + '_avc'),  // JSAV
+  var jsav = new JSAV(avcId),  // JSAV
       defCtrlState,              // Stores the default state of the controls
       defTableSizeOptions,       // Stores the HTML of the default table size options
       arr,                       // JSAV Array

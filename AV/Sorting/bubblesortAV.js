@@ -1,9 +1,7 @@
 "use strict";
-/*global alert logExerciseInit */
+/*global alert */
 (function ($) {
-  var AV_NAME = 'bubblesortAV';
-  var av = new AV(AV_NAME, 5, 16, 8),
-      jsav,   // for JSAV library object
+  var jsav,   // for JSAV library object
       arr,    // for the JSAV array
       pseudo; // for the pseudocode display
 
@@ -16,6 +14,9 @@
                       "label": "Array layout: ", "value": "bar"});
 
   var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
+  
+  // Initialize the arraysize dropdown list
+  initArraySize(5, 16, 8);
 
   // Process About button: Pop up a message with an Alert
   function about() {
@@ -62,17 +63,15 @@
 
   // Execute the "Run" button function
   function runIt() {
-    // If processArrayValues is false, the user gave us junk which they need to fix
-    if (av.processArrayValues()) {
-      var initData = av.initData;
-
-      // Log initial state of exercise
-      logExerciseInit(AV_NAME, initData);
-
-      jsav = av.initJSAV();
+    var arrValues = processArrayValues();
+    
+    // If arrValues is null, the user gave us junk which they need to fix
+    if (arrValues) {
+      reset(true);
+      jsav = new JSAV(avcId);
 
       // Create a new array using the layout the user has selected
-      arr = jsav.ds.array(av.arrValues, {indexed: true, layout: arrayLayout.val()});
+      arr = jsav.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
       pseudo = jsav.code({url: "../../SourceCode/Processing/Sorting/Bubblesort/Bubblesort.pde",
                           startAfter: "/* *** ODSATag: Bubblesort *** */",
                           endBefore: "/* *** ODSAendTag: Bubblesort *** */"});
@@ -87,5 +86,5 @@
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#reset').click(av.reset);
+  $('#reset').click(reset);
 }(jQuery));

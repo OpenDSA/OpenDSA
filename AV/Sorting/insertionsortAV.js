@@ -1,9 +1,7 @@
 "use strict";
-/*global alert logExerciseInit */
+/*global alert */
 (function ($) {
-  var AV_NAME = 'insertionsortAV';
-  var av = new AV(AV_NAME, 5, 16, 8),
-      jsav,   // for JSAV library object
+  var jsav,   // for JSAV library object
       arr,    // for the JSAV array
       pseudo; // for the pseudocode display
 
@@ -14,6 +12,9 @@
   var arrayLayout = settings.add("layout", {"type": "select",
                       "options": {"bar": "Bar", "array": "Array"},
                       "label": "Array layout: ", "value": "bar"});
+
+  // Initialize the arraysize dropdown list
+  initArraySize(5, 16, 8);
 
   // Process About button: Pop up a message with an Alert
   function about() {
@@ -56,17 +57,15 @@
 
   // Execute the "Run" button function
 function runIt() {
-    // If processArrayValues is false, the user gave us junk which they need to fix
-    if (av.processArrayValues()) {
-      var initData = av.initData;
-
-      // Log initial state of exercise
-      logExerciseInit(AV_NAME, initData);
-
-      jsav = av.initJSAV();
+    var arrValues = processArrayValues();
+    
+    // If arrValues is null, the user gave us junk which they need to fix
+    if (arrValues) {
+      reset(true);
+      jsav = new JSAV(avcId);
 
       // Create a new array using the layout the user has selected
-      arr = jsav.ds.array(av.arrValues, {indexed: true, layout: arrayLayout.val()});
+      arr = jsav.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
       pseudo = jsav.code({url: "../../SourceCode/Processing/Sorting/Insertionsort/Insertionsort.pde",
                         startAfter: "/* *** ODSATag: Insertionsort *** */",
                         endBefore: "/* *** ODSAendTag: Insertionsort *** */"});
@@ -81,5 +80,5 @@ function runIt() {
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#reset').click(av.reset);
+  $('#reset').click(reset);
 }(jQuery));

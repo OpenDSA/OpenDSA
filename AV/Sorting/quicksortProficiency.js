@@ -1,6 +1,6 @@
 "use strict";
 /*jslint noempty: false */
-/*global alert logExerciseInit getAVName */
+/*global alert logExerciseInit */
 (function ($) {
 //*****************************************************************************
 //*************                  JSAV Extensions                  *************
@@ -24,7 +24,6 @@
 //*****************************************************************************
 //*************       QUICKSORT PROFICIENCY EXERCISE CODE         *************
 //*****************************************************************************
-  var context = 'quicksortProficiency_avc';
 
   // settings for the AV
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
@@ -35,7 +34,7 @@
 
   var arraySize = 10,
     initialArray = [],
-    av = new JSAV(context, {settings: settings});
+    av = new JSAV(avcId, {settings: settings});
 
   av.recorded();     // we are not recording an AV with an algorithm
 
@@ -66,7 +65,7 @@
     // Log the initial state of the exercise
     var desc = {};
     desc.gen_array = initialArray;
-    logExerciseInit(getAVName(), desc);
+    logExerciseInit(desc);
 
     // Create the array the user will intereact with
     userArr = av.ds.array(initialArray, {indexed: true, layout: arrayLayout.val()});

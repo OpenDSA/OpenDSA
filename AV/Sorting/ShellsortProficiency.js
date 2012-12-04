@@ -1,13 +1,11 @@
 "use strict";
-/*global alert: true, logExerciseInit, getAVName */
+/*global alert: true, logExerciseInit */
 (function ($) {
   /* **************************************************************
   *  This first section is generic initialization that all AVs    *
   *  will need, including initialization for the OpenDSA library  *
   *  The first line you need to set to use your form's name       *
   ************************************************************** */
-  // Define the local context (from form name)
-  var context = $("#ShellsortProficiency_avc");
 
   // settings for the AV
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
@@ -17,7 +15,7 @@
         "label": "Array layout: ", "value": "array"});
 
   //containing HTML element with id ShellsortProficiency.
-  var av = new JSAV(context, {settings: settings});
+  var av = new JSAV(avcId, {settings: settings});
   av.recorded();
 
   // Create a convenience function named tell for writing to the
@@ -125,7 +123,7 @@
     var desc = {};
     desc.gen_array = initialArray;
     desc.gen_incrs = incrs;
-    logExerciseInit(getAVName(), desc);
+    logExerciseInit(desc);
 
     theArray = av.ds.array($theArray, {indexed: true, layout: arrayLayout.val()});
     currIncrIndex = av.variable(0);
@@ -262,7 +260,7 @@
   // Connect the action callbacks to the HTML entities
   $('#help').click(help);
   $('#about').click(about);
-  $('#selecting', context).click(selecting);
-  $('#sorting', context).click(sorting);
-  $('#incrementing', context).click(incrementing);
+  $('#selecting').click(selecting);
+  $('#sorting').click(sorting);
+  $('#incrementing').click(incrementing);
 }(jQuery));

@@ -1,5 +1,5 @@
 "use strict";
-/*global awardCompletionCredit, getAVName */
+/*global awardCompletionCredit */
 (function ($) {
   // Declare and initialize state variables
   var
@@ -20,7 +20,7 @@
       output += keyValue.charCodeAt(i);
     }
     tell('<br/>' + output);
-    awardCompletionCredit(getAVName());
+    awardCompletionCredit();
   }
 
   // Action callbacks for form entities

@@ -1,13 +1,14 @@
 "use strict";
-/*global alert logExerciseInit getAVName */
+/*global alert */
 (function ($) {
-  var AV_NAME = 'bubblesortAV';
-  var av = new AV(AV_NAME, 5, 12, 8),
-      jsav,   // for JSAV library object
+  var jsav,   // for JSAV library object
       arr;    // for the JSAV array
 
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
+
+  // Initialize the arraysize dropdown list
+  initArraySize(5, 12, 8);
 
   // Process About button: Pop up a message with an Alert
   function about() {
@@ -16,16 +17,15 @@
 
   // Execute the "Run" button function
   function runIt() {
-    // If processArrayValues is false, the user gave us junk which they need to fix
-    if (av.processArrayValues()) {
-      // Log initial state of exercise
-      var initData = av.initData;
-      logExerciseInit(AV_NAME, initData);
-
-      jsav = av.initJSAV();
+    var arrValues = processArrayValues();
+    
+    // If arrValues is null, the user gave us junk which they need to fix
+    if (arrValues) {
+      reset(true);
+      jsav = new JSAV(avcId);
 
       // Create a new array using the layout the user has selected
-      arr = jsav.ds.array(av.arrValues, {indexed: true});
+      arr = jsav.ds.array(arrValues, {indexed: true});
       jsav.displayInit();
       // BEGIN MERGESORT IMPLEMENTATION
 
@@ -223,5 +223,5 @@
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#reset').click(av.reset);
+  $('#reset').click(reset);
 }(jQuery));

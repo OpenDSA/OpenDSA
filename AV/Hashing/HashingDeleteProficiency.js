@@ -6,7 +6,7 @@
       inputData,
       jsavArr,
       jsavInputPos,
-      jsav = new JSAV("HashingDeleteProficiency_avc"),
+      jsav = new JSAV(avcId),
       exercise,
       task;
 

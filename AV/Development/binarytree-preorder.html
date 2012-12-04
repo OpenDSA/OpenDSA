@@ -27,7 +27,7 @@
           </td>
         </tr>
       </table>
-      <form id="bintreePreorderProficiency_avc">
+      <form class="avcontainer">
         <div class="jsavcanvas">
           <p class="instructLabel">Instructions:</p>
           <p class="instructions">
@@ -84,7 +84,7 @@
       return this;
     };
     var initData, bt,
-        jsav = new JSAV("bintreePreorderProficiency_avc");
+        jsav = new JSAV(avcId);
     jsav.recorded();
     function init() {
       var nodeNum = 9;

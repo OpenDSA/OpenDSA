@@ -2,7 +2,7 @@
 /*global alert*/
 var initData, bh,
     settings = new JSAV.utils.Settings($(".jsavsettings")),
-    jsav = new JSAV("heapsortProficiency_avc", {settings: settings}),
+    jsav = new JSAV(avcId, {settings: settings}),
     exercise,
     swapIndex;
 

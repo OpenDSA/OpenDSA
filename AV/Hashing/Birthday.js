@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, awardCompletionCredit, getAVName */
+/*global alert: true, awardCompletionCredit */
 (function ($) {
   // Declare and initialize state variables
   var
@@ -45,7 +45,7 @@
       }
       tell(prob * 100 + "%");
       if (prob > 0.5) {
-        awardCompletionCredit(getAVName());
+        awardCompletionCredit();
       }
     }
   }
