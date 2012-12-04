@@ -1,5 +1,5 @@
 "use strict";
-/*global alert console logExerciseInit */
+/*global alert: true, console: true, logExerciseInit, avcId */
 (function ($) {
   // Process help button: Give a full help page for this activity
   // We might give them another HTML page to look at.

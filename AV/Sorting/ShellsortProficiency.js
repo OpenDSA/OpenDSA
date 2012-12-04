@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, logExerciseInit */
+/*global alert: true, logExerciseInit, avcId */
 (function ($) {
   /* **************************************************************
   *  This first section is generic initialization that all AVs    *

@@ -1,5 +1,5 @@
 "use strict";
-/*global alert*/
+/*global alert: true, avcId*/
 var initData, bh,
     settings = new JSAV.utils.Settings($(".jsavsettings")),
     jsav = new JSAV(avcId, {settings: settings}),

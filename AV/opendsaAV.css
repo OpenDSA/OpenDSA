@@ -1,10 +1,10 @@
-table.proHeaderTable {
+.proHeaderTable {
   margin-top: -20px;
   border-bottom: 0 none;
   width: 100%;
 }
 
-table.headerTable {
+.headerTable {
   margin-top: -10px;
   border-bottom: 1px solid black;
   width: 100%;

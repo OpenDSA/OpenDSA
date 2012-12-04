@@ -1,5 +1,5 @@
 "use strict";
-/*global alert */
+/*global alert: true, initArraySize, processArrayValues, reset, avcId */
 (function ($) {
   var jsav,   // for JSAV library object
       arr,    // for the JSAV array

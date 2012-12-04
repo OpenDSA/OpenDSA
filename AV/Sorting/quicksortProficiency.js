@@ -1,6 +1,6 @@
 "use strict";
 /*jslint noempty: false */
-/*global alert logExerciseInit */
+/*global alert: true, logExerciseInit, avcId */
 (function ($) {
 //*****************************************************************************
 //*************                  JSAV Extensions                  *************
