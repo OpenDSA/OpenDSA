@@ -9,6 +9,7 @@
 
   // settings for the AV
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
+	
   // add the layout setting preference
   var arrayLayout = settings.add("layout", {"type": "select",
         "options": {"bar": "Bar", "array": "Array"},

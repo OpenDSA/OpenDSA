@@ -12,10 +12,13 @@ AV_NAME = getNameFromURL();
  */
 var avcId = AV_NAME + '_avc';
 
+// Generate the appropriate ID for the avcontainer element
+$('.avcontainer').attr('id', avcId);
+
 /**
  * Stores the empty contents of the avcontainer, used for reset
  */
-var emptyContent;
+var emptyContent = $('#' + avcId).html();
 
 //*****************************************************************************
 //*************                    AV FUNCTIONS                   *************
@@ -284,12 +287,6 @@ function processArrayValues(upperLimit) {
 //*****************************************************************************
   $(document).ready(function () {
     if (serverEnabled()) {
-      // Generate the appropriate ID for the avcontainer element
-      $('.avcontainer').attr('id', avcId);
-
-      // Save the empty contents of the avcontainer element
-      emptyContent = $('#' + avcId).html();
-
       // Log the browser ready event
       logUserAction(AV_NAME, 'document-ready', 'User loaded the ' + AV_NAME + ' AV');
 
