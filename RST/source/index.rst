@@ -24,7 +24,8 @@
 
 
 Preface
--------
+=======
+
 
 .. toctree::
    :numbered:
@@ -32,18 +33,8 @@ Preface
 
    Intro
 
-Background
-----------
-
-.. toctree::
-   :numbered:
-   :maxdepth: 3
-
-   SetDef  
-   Recurrence
-
 Sorting
--------
+=======
 
 .. toctree::
    :numbered:
@@ -69,7 +60,7 @@ Sorting
    SortProgExer
 
 Hashing
--------
+=======
 
 .. toctree::
    :numbered:
@@ -85,6 +76,23 @@ Hashing
    HashAnal
    HashDel
    HashSumm
+
+Under Development
+=================
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+Background
+----------
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   SetDef  
+   Recurrence
 
 File Processing
 ---------------
@@ -130,7 +138,7 @@ Algorithms
    Reductions
 
 Appendix
---------
+========
 
 .. toctree::
    :numbered:
