@@ -1,0 +1,92 @@
+{
+  "copy_static_files": true,
+  "code_dir": "SourceCode/Processing",
+  "output_dir": "RST",
+  "title": "OpenDSA (Beta)",
+  "backend_address": "http://opendsa.cc.vt.edu",
+  "chapters": {
+    "Preface": {
+      "modules": {
+        "Intro": {}
+      }
+    },
+    "Sorting": {
+      "modules": {
+        "Sorting": {},
+        "InsertionSort": {},
+        "InsertOpt": {},
+        "BubbleSort": {},
+        "SelectionSort": {},
+        "SortCompare": {},
+        "ExchangeSort": {},
+        "Shellsort": {},
+        "Mergesort": {},
+        "MergesortImpl": {},
+        "Quicksort": {},
+        "Heapsort": {},
+        "BinSort": {},
+        "RadixSort": {},
+        "SortingEmpirical": {},
+        "SortingLowerBound": {},
+        "SortSumm": {},
+        "SortProgExer": {}
+      }
+    },
+    "Hashing": {
+      "modules": {
+        "HashIntro": {},
+        "HashFunc": {},
+        "HashFuncExamp": {},
+        "OpenHash": {},
+        "BucketHash": {},
+        "HashCSimple": {},
+        "HashCImproved": {},
+        "HashAnal": {},
+        "HashDel": {},
+        "HashSumm": {}
+      }
+    },
+    "Under Development": {
+      "Background": {
+        "modules": {
+          "SetDef": {},
+          "Recurrence": {}
+        }
+      },
+      "File Processing": {
+        "modules": {
+          "FileProc": {},
+          "ExternalSort": {}
+        }
+      },
+      "Trees": {
+        "modules": {
+          "Heaps": {},
+          "BinaryHeap": {},
+          "Huffman": {},
+          "TreeExer": {},
+          "Trie": {}
+        }
+      },
+      "Graphs": {
+        "modules": {
+          "MCST": {}
+        }
+      },
+      "Algorithms": {
+        "modules": {
+          "Knapsack": {},
+          "EditDistance": {},
+          "Reductions": {}
+        }
+      }
+    }, 
+    "Appendix": {
+      "modules": {
+        "Glossary": {},
+        "Bibliography": {},
+        "ToDo": {}
+      }
+    }
+  }
+}
