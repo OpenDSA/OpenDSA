@@ -25,7 +25,7 @@ var emptyContent = '';
  *         - Ex: Array data the user enters in the textbox should have a key 'user_array'
  */
 function logExerciseInit(initData) {
-  var data = {type:'odsa-exercise-init', desc: JSON.stringify(initData)};
+  var data = {type: 'odsa-exercise-init', desc: JSON.stringify(initData)};
   $("body").trigger("jsav-log-event", [data]);
 }
 /**
@@ -67,7 +67,7 @@ function initArraySize(min, max, selected) {
  */
 function reset(flag) {
   // Replace the contents of the avcontainer with the save initial state
-  $('#' + avcId).unbind().html(emptyContent);
+  avc.unbind().html(emptyContent);
 
   // Clear the array values field, when no params given and reset button hit
   if (flag !== true && !$('#arrayValues').prop("disabled")) {
