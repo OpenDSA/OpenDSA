@@ -1,11 +1,10 @@
 "use strict";
-/*global alert: true, awardCompletionCredit */
+/*global alert: true, logExerciseInit, awardCompletionCredit */
 (function ($) {
   // Declare and initialize state variables
-  var
-    keyValue = Number($('#keyvalue').val());
-    // Convenience function for writing output messages
-
+  var keyValue = Number($('#keyvalue').val());
+  
+  // Convenience function for writing output messages
   var tell = function (msg) { $('p[class="output"]').html(msg); };
 
   // Validate Table size field
@@ -18,6 +17,8 @@
 
   // Main action: Result of clicking "Calculate" button
   function Calculate() {
+    logExerciseInit({'user_key': keyValue});
+    
     var result = keyValue * keyValue;
     var left = Math.floor(result / 100000);
     var center = Math.floor(result / 1000 % 100);

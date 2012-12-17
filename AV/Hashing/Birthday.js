@@ -3,10 +3,10 @@
 (function ($) {
   // Declare and initialize state variables
   var
-    TSize = Number($('input[name="tablesize"]').val()), // Table size
-    Recs = Number($('input[name="numrecs"]').val()), // Number of records
+    TSize = Number($('#tablesize').val()), // Table size
+    Recs = Number($('#numrecs').val()), // Number of records
     // Convenience function for writing output messages
-    tell = function (msg) { $('p[class="output"]').text(msg); };
+    tell = function (msg) { $('p.output').text(msg); };
 
   // Process About button: Pop up a message with an Alert
   function About() {
@@ -15,7 +15,7 @@
 
   // Validate Table size field
   function CheckTable() {
-    TSize = Number($('input[name="tablesize"]').val());
+    TSize = Number($('#tablesize').val());
     if (isNaN(TSize) || (TSize < 1) || (TSize > 10000)) {
       alert("Table size has to be a positive number less than 10000");
     }
@@ -23,7 +23,7 @@
 
   // Validate number of records field
   function CheckRecs() {
-    Recs = Number($('input[name="numrecs"]').val());
+    Recs = Number($('#numrecs').val());
     if (isNaN(Recs) || (Recs < 1) || (Recs > TSize)) {
       alert("Number of records must be a positive number less than the table size");
     }
@@ -34,6 +34,11 @@
     var prob, fact;
     if (TSize <= 0 || Recs < 0) { tell("Bad input"); }
     else {
+      var initData = {};
+      initData.user_table_size = TSize;
+      initData.user_num_recs = Recs;
+      logExerciseInit(initData);
+      
       if (Recs === 0) { prob = 0.0; }
       else if (Recs > TSize) { prob = 1.0; }
       else {
@@ -51,8 +56,8 @@
   }
 
   // Action callbacks for form entities
-  $('input[name="about"]').click(About);
-  $('input[name="tablesize"]').focusout(CheckTable);
-  $('input[name="numrecs"]').focusout(CheckRecs);
-  $('input[name="calculate"]').click(Calculate);
+  $('#about').click(About);
+  $('#tablesize').focusout(CheckTable);
+  $('#numrecs').focusout(CheckRecs);
+  $('#calculate').click(Calculate);
 }(jQuery));

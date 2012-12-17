@@ -62,7 +62,7 @@ Here is pseudocode for merge on lists::
       List answer = new List();
       while (L1 != NULL || L2 != NULL) {
         if (L1 == NULL) { // Done L1
-	  answer.append(L2);
+          answer.append(L2);
           L2 = NULL;
         }
         else if (L2 == NULL) { // Done L2

@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, initArraySize, processArrayValues, reset, avcId */
+/*global alert: true, initArraySize, processArrayValues, reset, avc */
 /*global sweep */
 (function ($) {
   var jsav, // for JSAV library object av
@@ -65,7 +65,7 @@
     // If arrValues is null, the user gave us junk which they need to fix
     if (incrs && arrValues) {
       reset(true);
-      jsav = new JSAV(avcId);
+      jsav = new JSAV(avc);
 
       // Create a new array using the layout the user has selected
       arr = jsav.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});

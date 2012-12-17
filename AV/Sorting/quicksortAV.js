@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, initArraySize, processArrayValues, reset, avcId */
+/*global alert: true, initArraySize, processArrayValues, reset, avc */
 (function ($) {
   var jsav;   // for JSAV library object
 
@@ -22,7 +22,7 @@
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       reset(true);
-      jsav = new JSAV(avcId);
+      jsav = new JSAV(avc);
       
       // Initialize the original array
       var arr = jsav.ds.array(arrValues, {indexed: true});

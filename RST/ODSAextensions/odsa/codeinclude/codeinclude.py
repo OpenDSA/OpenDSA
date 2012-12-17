@@ -56,7 +56,7 @@ class codeinclude(Directive):
         p = re.compile('(%s)' % ('|'.join([c for c in ws]))) 
         env = document.settings.env
         rel_filename = self.arguments[0]
-	filename = conf.sourcecode_path + self.arguments[0]
+        filename = conf.sourcecode_path + self.arguments[0]
         if 'pyobject' in self.options and 'lines' in self.options:
             return [document.reporter.warning(
                 'Cannot use both "pyobject" and "lines" options',

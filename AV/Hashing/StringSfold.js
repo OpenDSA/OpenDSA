@@ -3,8 +3,9 @@
 (function ($) {
   // Declare and initialize state variables
   var keyValue = $('#keyvalue').val();
+  
   // Convenience function for writing output messages
-  var tell = function (msg) { $('p[class="output"]').html(msg); };
+  var tell = function (msg) { $('p.output').html(msg); };
 
   // Validate Table size field
   function CheckKey() {

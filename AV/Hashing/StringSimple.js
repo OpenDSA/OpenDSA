@@ -1,5 +1,5 @@
 "use strict";
-/*global awardCompletionCredit */
+/*global logExerciseInit, awardCompletionCredit */
 (function ($) {
   // Declare and initialize state variables
   var
@@ -14,6 +14,8 @@
 
   // Main action: Result of clicking "Calculate" button
   function Calculate() {
+    logExerciseInit({'user_key': keyValue});
+    
     var i;
     var output = 0;
     for (i = 0; i < keyValue.length; i++) {

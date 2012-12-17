@@ -1,28 +1,41 @@
 "use strict";
-/*global alert: true, console: true, serverEnabled, userLoggedIn, flushStoredData, sendEventData, AV_NAME: true, getNameFromURL, logExerciseInit, logUserAction */
-
-
-/**
- * Initialize the global AV_NAME variable
- */
-AV_NAME = getNameFromURL();
+/*global alert: true, console: true, serverEnabled, userLoggedIn, flushStoredData, sendEventData, AV_NAME: true, getNameFromURL, logUserAction */
 
 /**
- * The ID of the avcontainer element
+ * The avcontainer element
  */
-var avcId = AV_NAME + '_avc';
-
-// Generate the appropriate ID for the avcontainer element
-$('.avcontainer').attr('id', avcId);
+var avc = '';
 
 /**
  * Stores the empty contents of the avcontainer, used for reset
  */
-var emptyContent = $('#' + avcId).html();
+var emptyContent = '';
 
 //*****************************************************************************
 //*************                    AV FUNCTIONS                   *************
 //*****************************************************************************
+
+/**
+ * Generates a JSAV event to log the initial state of an AV or exercise
+ *   - initData - A JSON object that contains the initial state of an exercise
+ *     Conventions:
+ *       - The key for automatically generated data should have a prefix 'gen_'
+ *         - Ex: an automatically generated array would be 'gen_array'
+ *       - The key for user generated data should have a prefix 'user_'
+ *         - Ex: Array data the user enters in the textbox should have a key 'user_array'
+ */
+function logExerciseInit(initData) {
+  var data = {type:'odsa-exercise-init', desc: JSON.stringify(initData)};
+  $("body").trigger("jsav-log-event", [data]);
+}
+/**
+ * Generates a JSAV event which triggers the code to give a user credit for an exercise
+ */
+function awardCompletionCredit() {
+  var data = {type: 'odsa-award-credit'};
+  $("body").trigger("jsav-log-event", [data]);
+}
+
 /**
  * Initializes the arraysize drop down list
  */
@@ -130,7 +143,6 @@ function processArrayValues(upperLimit) {
 
   return arrValues;
 }
-
 
 (function ($) {
 //*****************************************************************************
@@ -286,6 +298,12 @@ function processArrayValues(upperLimit) {
 //*************                      LOGGING                      *************
 //*****************************************************************************
   $(document).ready(function () {
+    // Initialize the global AV_NAME variable
+    AV_NAME = getNameFromURL();
+    
+    avc = $('.avcontainer');
+    emptyContent = $(avc).html();
+  
     if (serverEnabled()) {
       // Log the browser ready event
       logUserAction(AV_NAME, 'document-ready', 'User loaded the ' + AV_NAME + ' AV');

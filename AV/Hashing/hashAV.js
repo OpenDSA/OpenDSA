@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, console: true, is */
+/*global alert: true, console: true, is, avc, logExerciseInit */
 
 /*
  * For queries & switch cases, follow the numbering below:
@@ -249,13 +249,13 @@
 
 
   /* Variables */
-  var jsav = new JSAV(avcId),  // JSAV
-      defCtrlState,              // Stores the default state of the controls
-      defTableSizeOptions,       // Stores the HTML of the default table size options
-      arr,                       // JSAV Array
-      nextStep = new Queue(),    // A queue containing 'steps' to be played when the user clicks 'Next'
-      slotPerm = [0];            // A permutation of slots for pseudo random probing, must be a global so that
-                                 // the same permutation is used each time
+  var jsav,                     // JSAV
+      defCtrlState,             // Stores the default state of the controls
+      defTableSizeOptions,      // Stores the HTML of the default table size options
+      arr,                      // JSAV Array
+      nextStep = new Queue(),   // A queue containing 'steps' to be played when the user clicks 'Next'
+      slotPerm = [0];           // A permutation of slots for pseudo random probing, must be a global so that
+                                // the same permutation is used each time
 
   // Process About button: Pop up a message with an Alert
   function about() {
@@ -383,8 +383,6 @@
       if (coll === 6) {    // Double hashing (prime)
         $('#mValue').show();
         $('#M').attr('placeholder', 'Prime Number');
-
-        console.debug('M: ' + M + ', isPrime(M): ' + isPrime(M));
 
         if (isPrime(M)) {
           jsav.umsg('Prime Number Selected: ' + $("#M").val());
@@ -818,10 +816,6 @@
 
     // Loop across the array. "infinite" loop. Breaks if array is full.
     for (;;) {
-      if (!showCounts) {
-        console.debug('count: ' + count + ', pos: ' + pos + ', arrayFull: ' + arrayFull + ', canInsert: ' + canInsert + ', showCounts: ' + showCounts);
-      }
-
       // If space is available, break
       if (String(arr.value(pos)) === "") {
         break;
@@ -862,16 +856,9 @@
       // Increment count
       count++;
     }
-
-    if (!showCounts) {
-      console.debug('got out of loop');
-      console.debug('count: ' + count + ', pos: ' + pos + ', arrayFull: ' + arrayFull + ', canInsert: ' + canInsert + ', showCounts: ' + showCounts);
-      //console.debug('isArrayFull: ' + isArrayFull + ', showCounts: ' + showCounts);
-    }
-
+    
     // Empty spot found. Insert element inputVal at pos
     if (!showCounts) {
-      console.debug('insert value at ' + pos);
       enqueueStep(pos, inputVal, true, arrayFull, canInsert);
     } else {
       return pos;
@@ -1117,6 +1104,7 @@
    * Anything that triggers an interaction with an HTML element should be done here
    */
   $(document).ready(function () {
+    jsav = new JSAV(avc);
 
     /* Key Presses */
     $('#M').keyup(function (event) {
@@ -1180,6 +1168,17 @@
       if (nextStep.isEmpty()) {    // Perform first step
         // Input field value
         var inputVal = $("#input").val();
+        
+        // Log the state of the exercise
+        var state = {};
+        state.user_function = $("#function option:selected").text();
+        state.user_collision = $("#collision option:selected").text();
+        state.user_tablesize = $("#tablesize option:selected").text();
+        state.user_keyrange = $("#keyrange option:selected").text();
+        state.user_mValue = $("#mValue").val();
+        state.hash_table = arr.toString();
+        state.user_input = inputVal;
+        logExerciseInit(state);
 
         // Disable input field to process it safely
         $("#input").attr("disabled", "disabled");
