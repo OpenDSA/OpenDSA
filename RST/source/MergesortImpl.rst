@@ -71,9 +71,8 @@ merge them back to the original array.
 Here is a complete implementation for mergesort following this
 approach.
 
-.. literalinclude:: ../../SourceCode/Processing/Sorting/Mergesort/Mergesort.pde
-   :start-after: /* *** ODSATag: Mergesort *** */
-   :end-before: /* *** ODSAendTag: Mergesort *** */
+.. codeinclude:: Sorting/Mergesort/Mergesort.pde
+   :tag: Mergesort
 
 Here is a visualization for the merge step.
 
@@ -91,9 +90,8 @@ This version also has a second optimization:
 It uses Insertion Sort to sort small subarrays whenever the size of
 the array is smaller than a value defined by ``THRESHOLD``.
 
-.. literalinclude:: ../../SourceCode/Processing/Sorting/MergesortOpt/MergesortOpt.pde
-   :start-after: /* *** ODSATag: MergesortOpt *** */
-   :end-before: /* *** ODSAendTag: MergesortOpt *** */
+.. codeinclude:: Sorting/MergesortOpt/MergesortOpt.pde
+   :tag: MergesortOpt
 
 Here is a visualization for the optimized merge step.
 

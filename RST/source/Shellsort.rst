@@ -147,9 +147,8 @@ Finally, the array is sorted.
 
 Here is a code implementation for Shellsort.
 
-.. literalinclude:: ../../SourceCode/Processing/Sorting/Shellsort/Shellsort.pde
-   :start-after: /* *** ODSATag: Shellsort *** */
-   :end-before: /* *** ODSAendTag: Shellsort *** */
+.. codeinclude:: Sorting/Shellsort/Shellsort.pde
+   :tag: Shellsort
 
 Now, test your understanding of the sublist concept.
 

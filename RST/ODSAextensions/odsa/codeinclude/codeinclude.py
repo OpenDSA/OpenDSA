@@ -116,16 +116,16 @@ class codeinclude(Directive):
 
         tag        = self.options.get('tag')
         startafter = '/* *** ODSATag: %s *** */'%self.options.get('tag')        #self.options.get('start-after')
-        endbefore  = '/* *** ODSATag: %s *** */'%self.options.get('tag')        #self.options.get('end-before')
+        endbefore  = '/* *** ODSAendTag: %s *** */'%self.options.get('tag')        #self.options.get('end-before')
         prepend    = self.options.get('prepend')
         append     = self.options.get('append')
         if startafter is not None or endbefore is not None:
             use = not tag    #startafter
             res = []
             for line in lines:
-                if not use and tag in line:    #startafter and startafter in line:
+                if not use and startafter and startafter in line:
                     use = True
-                elif use and tag in line:      #endbefore and endbefore in line:
+                elif use and endbefore and endbefore in line:
                     use = False
                     break
                 elif use:
