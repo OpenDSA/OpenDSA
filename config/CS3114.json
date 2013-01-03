@@ -12,75 +12,525 @@
     },
     "Sorting": {
       "modules": {
-        "Sorting": {},
-        "InsertionSort": {},
+        "Sorting": {
+          "SortIntroSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "InsertionSort": {
+          "InssortCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "InssortCON2": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "InssortCON3": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "InssortPRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "InssortSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
         "InsertOpt": {},
-        "BubbleSort": {},
-        "SelectionSort": {},
-        "SortCompare": {},
-        "ExchangeSort": {},
-        "Shellsort": {},
-        "Mergesort": {},
-        "MergesortImpl": {},
-        "Quicksort": {},
-        "Heapsort": {},
-        "BinSort": {},
-        "RadixSort": {},
-        "SortingEmpirical": {},
-        "SortingLowerBound": {},
-        "SortSumm": {},
-        "SortProgExer": {}
+        "BubbleSort": {
+          "BubsortCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "BubsortCON2": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "BubsortPRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "BubsortSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "SelectionSort": {
+          "SelsortCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "SelsortCON2": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "SelsortPRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "SelsortSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "SortCompare": {
+          "SortCompareSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "ExchangeSort": {
+          "FindInversionsPRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "ExchangeSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "Shellsort": {
+          "shellsortCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "shellsortCON2": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "shellsortCON3": {},
+          "shellsortCON4": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "shellsortCON5": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "shellsortCON6": {},
+          "shellsortCON7": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "shellsortCON9": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "ShellsortSublist": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "shellsortAV": {
+            "required": false,
+            "points": 0,
+            "threshold": 0
+          },
+          "ShellsortSeries": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "ShellsortProficiency": {
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
+          },
+          "ShellsortPerformance": {
+            "required": true,
+            "points": 1,
+            "threshold": 1.0
+          },
+          "ShellsortSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "Mergesort": {
+          "mergesortCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "MergesortPRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "mergesortProficiency": {
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
+          },
+          "MergesortSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "MergesortImpl": {
+          "mergeImplCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "mergeImplCON2": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "MergeImplSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "Quicksort": {
+          "QuicksortPivotPRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "QuicksortCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "QuicksortPartitPRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "quicksortProficiency": {
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
+          },
+          "QuicksortSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "Heapsort": {
+          "heapsortCON": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "HeapsortPRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "heapsortProficiency": {
+            "required": true,
+            "points": 1,
+            "threshold": 0.9
+          },
+          "HeapsortSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "BinSort": {
+          "BinsortCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "BinsortCON2": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "BinsortSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "RadixSort": {
+          "RadixsortPRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "RadixsortSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "SortingEmpirical": {
+          "SortAlgCompSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "SortingLowerBound": {
+          "SortBoundSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "SortSumm": {
+          "ChapterSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
       }
     },
     "Hashing": {
       "modules": {
-        "HashIntro": {},
-        "HashFunc": {},
-        "HashFuncExamp": {},
-        "OpenHash": {},
-        "BucketHash": {},
-        "HashCSimple": {},
-        "HashCImproved": {},
-        "HashAnal": {},
-        "HashDel": {},
-        "HashSumm": {}
+        "HashIntro": {
+          "hashIntroCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          }
+        },
+        "HashFunc": {
+          "Birthday": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "HashPrinciplesSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "HashFuncExamp": {
+          "hashFuncExCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "hashFuncExCON2": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "MidSquare": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "StringSimple": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "StringSfold": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "HashFuncPROSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "HashFuncSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "OpenHash": {
+          "openhashCON1": {},
+          "OpenHashPRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "BucketHash": {
+          "buckethashCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "buckethashCON2": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "HashingBucketPRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "HashingBucket2PRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "HashCSimple": {
+          "linProbeCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "linProbeCON2": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "HashingLinearProbePRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "HashCImproved": {
+          "collisionCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "collisionCON2": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "HashingLinearStepProbePRO": {
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "collisionCON3": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "HashingPseudoRandomProbePRO": {
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "collisionCON4": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "collisionCON5": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "HashingQuadraticProbePRO": {
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "collisionCON6": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "collisionCON7": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "collisionCON8": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "HashingDoubleProbePRO": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "HashCollisionSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "HashAnal": {
+          "HashAnalSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "HashDel": {
+          "hashdelCON1": {
+            "required": true,
+            "points": 0.5,
+            "threshold": 1.0
+          },
+          "HashingDeleteProficiency": {
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
+          },
+          "HashDelSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        },
+        "HashSumm": {
+          "HashChapterSumm": {
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
       }
     },
-    "Under Development": {
-      "Background": {
-        "modules": {
-          "SetDef": {},
-          "Recurrence": {}
-        }
-      },
-      "File Processing": {
-        "modules": {
-          "FileProc": {},
-          "ExternalSort": {}
-        }
-      },
-      "Trees": {
-        "modules": {
-          "Heaps": {},
-          "BinaryHeap": {},
-          "Huffman": {},
-          "TreeExer": {},
-          "Trie": {}
-        }
-      },
-      "Graphs": {
-        "modules": {
-          "MCST": {}
-        }
-      },
-      "Algorithms": {
-        "modules": {
-          "Knapsack": {},
-          "EditDistance": {},
-          "Reductions": {}
-        }
+    "Stubs": {
+      "modules": {
+        "SetDef": {},
+        "Recurrence": {},
+        "MCST": {},
+        "FileProc": {},
+        "Heaps": {},
+        "ExternalSort": {},
+        "Trie": {},
+        "Reductions": {}
       }
-    }, 
+    },
     "Appendix": {
       "modules": {
         "Glossary": {},

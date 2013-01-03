@@ -3,14 +3,11 @@
 #   - Reads the file
 #   - Handles absolute or relative paths for output and code directories (relative paths are rooted at the OpenDSA directory)
 #   - Copies files and directories to the output directory (if applicable)
+#   - Reads each module file and removes exercises or adds information to the directives that create them
+#     - ****Untested for building in place - this is likely to cause issues with rebuilding as information is appended to the source, if the source isn't clean, will end up with duplicates
 #   - Creates a conf.py file in the source directory
 #   - Creates an index.rst file based on which modules were specified in the config file
-#   - Updates the server_url variable in ODSA.js based on the value specified in the config file
-
-# Does NOT handle fixing the paths for Sphinx literalinclude directives
-# Does NOT handle copying Khan academy files
-
-# Sourcecode doesn't build right in external build directory - requires RST directory
+#   - Updates the server_url variable in ODSA.js and khanexercise.js based on the value specified in the config file
 
 import sys
 import os
@@ -81,15 +78,57 @@ def process_section(section, index_file, depth):
 
 def process_modules(section, index_file, depth):
   for module in section:
-    print ("  " * depth) + module
-    index_file.write("   " + module + "\n");
+    if module == 'Intro':
+      continue
     
-    # Copy RST file to source directory
-    if not build_in_place:
-      distutils.file_util.copy_file(odsa_dir + 'RST/source/' + module + '.rst', src_dir)
-
-
-
+    print ("  " * depth) + module
+    index_file.write("   " + module + "\n")
+    
+    with open(odsa_dir + 'RST/source/' + module + '.rst','r') as mod_file:
+      # Read the contents of the module RST file from the ODST RST source directory
+      mod_data = mod_file.readlines()
+    mod_file.close()
+    
+    new_mod_data = []
+    
+    # Alter the module RST contents based on the RST file
+    i = 0
+    while i < len(mod_data):
+      if '.. inlineav::' in mod_data[i] or '.. avembed::' in mod_data[i]:
+        # Find the end-of-line character for the file
+        eol = mod_data[i].replace(mod_data[i].rstrip(), '')
+        
+        # Parse the exercise name from the line
+        av_name = mod_data[i].split(' ')[2]
+        av_name = av_name.rstrip()
+        if av_name.endswith('.html'):
+          av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
+        
+        # Print the configuration for the exercise (TESTING)
+        #print 'exercises: ' + json.dumps(section[module], indent=2, separators=(',', ': ')) + '\n\n'
+        
+        if av_name in section[module]:
+          # Add the necessary information from the configuration file
+          exer_conf = section[module][av_name]
+          
+          new_mod_data.append(mod_data[i])
+          for setting in exer_conf:
+            new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
+          
+        else:
+          # Exercise not listed in config file, remove it from the RST file
+          while (i < len(mod_data) and mod_data[i].rstrip() != ''):
+            i = i + 1
+            
+      else:
+        new_mod_data.append(mod_data[i])
+      
+      i = i + 1
+    
+    with open(src_dir + module + '.rst','w') as mod_file:
+      # Write the contents of the module RST file to the output src directory
+      mod_file.writelines(new_mod_data)
+    mod_file.close()
 
 
 
@@ -419,6 +458,7 @@ src_dir = output_dir + "source/"
 
 # Rebuild JSAV
 print "Building JSAV\n"
+status = 0
 with open(os.devnull, "w") as fnull:
   status = subprocess.check_call('make -C JSAV/', stdout=fnull)
 fnull.close()
@@ -453,9 +493,10 @@ else:
     distutils.dir_util.copy_tree(odsa_dir + 'lib/', output_dir + 'lib/', update=1)
     distutils.dir_util.copy_tree(odsa_dir + 'ODSAkhan-exercises/', output_dir + 'ODSAkhan-exercises/', update=1)
     distutils.dir_util.copy_tree(code_dir, options['code_dir'], update=1)
+    distutils.dir_util.copy_tree(odsa_dir + 'JSAV/lib/', output_dir + 'JSAV/lib/', update=1)
+    distutils.dir_util.copy_tree(odsa_dir + 'JSAV/css/', output_dir + 'JSAV/css/', update=1)
     distutils.dir_util.mkpath(output_dir + 'JSAV/build/')
     
-
     distutils.file_util.copy_file(odsa_dir + 'JSAV/build/JSAV-min.js', output_dir + 'JSAV/build/JSAV-min.js')
     distutils.dir_util.copy_tree(odsa_dir + 'RST/ODSAextensions/', output_dir + 'ODSAextensions/', update=1)
     distutils.file_util.copy_file(odsa_dir + 'RST/preprocessor.py', output_dir)

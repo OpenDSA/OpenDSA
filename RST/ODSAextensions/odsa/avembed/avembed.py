@@ -32,7 +32,7 @@ CODE = """\
 <div id="%(div_id)s">
 <p></p>
 <center> 
-<iframe id="%(div_id)s_iframe" data-av="%(div_id)s" src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
+<iframe id="%(div_id)s_iframe" data-av="%(div_id)s" data-points="%(points)s" data-required="%(required)s" data-threshold="%(threshold)s" src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 </iframe>
 </center>
 </div>
@@ -46,6 +46,9 @@ SHOWHIDE = """\
     data-frame-src="%(av_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
+    data-points="%(points)s"
+    data-required="%(required)s"
+    data-threshold="%(threshold)s"
     value="%(show_hide_text)s %(title)s"/>
 """
 
@@ -97,11 +100,14 @@ def showbutton(argument):
 
 class avembed(Directive):
     required_arguments = 1
-    optional_arguments = 2 
+    optional_arguments = 5
     final_argument_whitespace = True
     has_content = True
     option_spec = {'showbutton':showbutton,
                    'title': directives.unchanged,
+                   'required': directives.unchanged,
+                   'points': directives.unchanged,
+                   'threshold': directives.unchanged,
                    }
 
     def run(self):
