@@ -4,6 +4,11 @@ warnUserLogin, logUserAction, inLocalStorage, isModulePage, getUsername,
 getNameFromURL, flushStoredData, getJSON, storeProficiencyStatus,
 updateExerProfDisplays, getModuleName, sendEventData, server_url, moduleName */
 
+// Contains a list of all exercises (including AVs) on the page
+var exerList = [];
+
+// Contains a list of all Khan Academy-type exercises on the page
+var kaExerList = [];
 
 var readyTime = +new Date();
 
@@ -214,7 +219,7 @@ function updateModuleProfDisplay(modName, status) {
  * Given a name, returns whether localStorage has a
  * record of the current user being proficient
  */
-function checkProfLocalStorage(exerName) {
+function checkProfLocalStorage(name) {
   // Check for proficiency status in localStorage
   if (inLocalStorage("proficiency_data")) {
     var username = getUsername(),
@@ -222,9 +227,11 @@ function checkProfLocalStorage(exerName) {
 
     // Check whether user has an entry
     if (profData[username]) {
+      var profList = profData[username];
+
       // Check to see if the item exists in the user's proficiency list
-      if (profData[username][exerName]) {
-        return profData[username][exerName];
+      if (profList.indexOf(name) > -1) {
+        return true;
       }
     }
   }
@@ -514,8 +521,9 @@ function updateLogin() {
         });
       } else {
         // Update exercise proficiency displays to reflect the proficiency of the current user
-        for (var exerName in exercises) {
-          checkExerProficiency(exerName);
+        var i;
+        for (i = 0; i < exerList.length; i++) {
+          checkExerProficiency(exerList[i]);
         }
 
         // Check for module proficiency
@@ -523,7 +531,6 @@ function updateLogin() {
 
         if (userLoggedIn()) {
           // Check and store the progress of all KA exercises
-          var i;
           for (i = 0; i < kaExerList.length; i++) {
             storeKAExerProgress(kaExerList[i]);
           }
@@ -542,6 +549,19 @@ $(document).ready(function () {
   $('h1 > a.headerlink').parent().css('position', 'relative');
   $('h1 > a.headerlink').parent().append('<div id="' + moduleName + '_complete" class="mod_complete">Module Complete</div>');
 
+  // Populate the list of AVs on the page
+  // Add all AVs that have a showhide button
+  $('.showHideLink').each(function (index, item) {
+    var avName = $(item).attr('id').replace('_showhide_btn', '');
+
+    exerList.push(avName);
+
+    // If the item is an exercise add it to a list of exercises
+    if ($(item).attr('data-frame-src') && $(item).attr('data-frame-src').indexOf('Exercises') > -1) {
+      kaExerList.push(avName);
+    }
+  });
+
   /*
   // TODO: Attempt to dynamically add proficiency check marks to AVs that don't have showhide buttons
   // Works sometimes, but not consistently, CSS doesn't work right (top and right values aren't recognized
@@ -558,6 +578,15 @@ $(document).ready(function () {
     }
   });
   */
+
+  // Add all AVs that have a proficiency check mark that are not already in the list
+  $('img.prof_check_mark').each(function (index, item) {
+    var avName = $(item).attr('id').replace("_check_mark", '');
+
+    if (exerList.indexOf(avName) === -1) {
+      exerList.push(avName);
+    }
+  });
 
   if (serverEnabled()) {
     // Log the browser ready event
