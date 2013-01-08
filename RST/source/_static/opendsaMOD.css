@@ -16,6 +16,20 @@
   right: 10px;
   display: none;
 }
+.prof_warning {
+    bottom: 30px;
+    display: none;
+    position: absolute;
+    right: 20px;
+    width: 20px;
+}
+.prof_warning_img {
+    bottom: 30px;
+    display: none;
+    position: absolute;
+    right: 20px;
+    width: 20px;
+}
 .mod_complete {
   color: lime;
   display: none;

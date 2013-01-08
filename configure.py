@@ -444,15 +444,10 @@ odsa_dir = odsa_dir.replace("\\", "/") + '/'
 code_dir = process_path(conf_data['code_dir'], odsa_dir)
 output_dir = process_path(conf_data['output_dir'], odsa_dir)
 
-build_in_place = False
 
-if output_dir == (odsa_dir):
-  output_dir += "RST/"
-  build_in_place = True
-
-if output_dir == (odsa_dir + "RST/"):
-  build_in_place = True
-
+if output_dir == (odsa_dir) or output_dir == (odsa_dir + "RST/"):
+  print "Unable to build in this location, please select a different directory"
+  sys.exit(1)
 
 src_dir = output_dir + "source/"
 
@@ -475,45 +470,54 @@ options['odsa_dir'] = odsa_dir
 options['ebook_dir'] = output_dir + "build/html/"
 options['code_dir'] = code_dir
 
-# Override copy_static_files setting if OpenDSA/RST is the output directory
-if build_in_place:
-  if conf_data['copy_static_files']:
-    print "The output directory specified is the default, static files do not need to be copied\n"
+
+# Initialize output directory
+distutils.dir_util.mkpath(src_dir)
+distutils.dir_util.copy_tree(odsa_dir + 'RST/ODSAextensions/', output_dir + 'ODSAextensions/', update=1)
+distutils.file_util.copy_file(odsa_dir + 'RST/preprocessor.py', output_dir)
+distutils.file_util.copy_file(odsa_dir + 'RST/config.py', output_dir)
+
+with open(odsa_dir + 'RST/Makefile','r') as makefile:
+  make_data = makefile.readlines()
+makefile.close()
+
+with open(output_dir + 'Makefile','w') as makefile:
+  for i in range(len(make_data)):
+    if '.htaccess $(BUILDDIR)/html' in make_data[i]:
+      make_data[i] = re.sub(r'(cp )../(lib/.htaccess)(.*)', r'\1' + '"' + odsa_dir + r'\2"\3', make_data[i])
+      break
+  makefile.writelines(make_data)
+makefile.close()
+
+
+# Copy all non-RST source files and directories
+for src_file in os.listdir(odsa_dir + 'RST/source/'):
+  src_file_path = odsa_dir + 'RST/source/' + src_file
+  if os.path.isdir(src_file_path):
+    distutils.dir_util.copy_tree(src_file_path, src_dir + src_file, update=1)
+  elif not src_file.endswith('.rst'):
+    distutils.file_util.copy_file(src_file_path, src_dir)
+
+# Copy static files to output directory
+if conf_data['copy_static_files']:
+  # Set the base ODSA directory for conf.py to be the output directory to ensure the copied files get referenced in the build
+  options['odsa_dir'] = output_dir
+  # Calculate the relative path between the code directory and the root OpenDSA directory in order to reference the correct sourcecode in the external build directory
+  options['code_dir'] = process_path(os.path.relpath(code_dir, odsa_dir), output_dir)
+
+  # Copy static files to output directory, creating directories as necessary
+  distutils.dir_util.copy_tree(odsa_dir + 'AV/', output_dir + 'AV/', update=1)
+  distutils.dir_util.copy_tree(odsa_dir + 'Exercises/', output_dir + 'Exercises/', update=1)
+  distutils.dir_util.copy_tree(odsa_dir + 'lib/', output_dir + 'lib/', update=1)
+  distutils.dir_util.copy_tree(odsa_dir + 'ODSAkhan-exercises/', output_dir + 'ODSAkhan-exercises/', update=1)
+  distutils.dir_util.copy_tree(code_dir, options['code_dir'], update=1)
+  distutils.dir_util.copy_tree(odsa_dir + 'JSAV/lib/', output_dir + 'JSAV/lib/', update=1)
+  distutils.dir_util.copy_tree(odsa_dir + 'JSAV/css/', output_dir + 'JSAV/css/', update=1)
+  distutils.dir_util.mkpath(output_dir + 'JSAV/build/')
+  distutils.file_util.copy_file(odsa_dir + 'JSAV/build/JSAV-min.js', output_dir + 'JSAV/build/JSAV-min.js')
+
 else:
-  if conf_data['copy_static_files']:
-    # Set the base ODSA directory for conf.py to be the output directory to ensure the copied files get referenced in the build
-    options['odsa_dir'] = output_dir
-    # Calculate the relative path between the code directory and the root OpenDSA directory in order to reference the correct sourcecode in the external build directory
-    options['code_dir'] = process_path(os.path.relpath(code_dir, odsa_dir), output_dir)
-
-    # Copy static files to output directory, creating directories as necessary
-    distutils.dir_util.mkpath(src_dir)
-    distutils.dir_util.copy_tree(odsa_dir + 'AV/', output_dir + 'AV/', update=1)
-    distutils.dir_util.copy_tree(odsa_dir + 'Exercises/', output_dir + 'Exercises/', update=1)
-    distutils.dir_util.copy_tree(odsa_dir + 'lib/', output_dir + 'lib/', update=1)
-    distutils.dir_util.copy_tree(odsa_dir + 'ODSAkhan-exercises/', output_dir + 'ODSAkhan-exercises/', update=1)
-    distutils.dir_util.copy_tree(code_dir, options['code_dir'], update=1)
-    distutils.dir_util.copy_tree(odsa_dir + 'JSAV/lib/', output_dir + 'JSAV/lib/', update=1)
-    distutils.dir_util.copy_tree(odsa_dir + 'JSAV/css/', output_dir + 'JSAV/css/', update=1)
-    distutils.dir_util.mkpath(output_dir + 'JSAV/build/')
-    
-    distutils.file_util.copy_file(odsa_dir + 'JSAV/build/JSAV-min.js', output_dir + 'JSAV/build/JSAV-min.js')
-    distutils.dir_util.copy_tree(odsa_dir + 'RST/ODSAextensions/', output_dir + 'ODSAextensions/', update=1)
-    distutils.file_util.copy_file(odsa_dir + 'RST/preprocessor.py', output_dir)
-    distutils.file_util.copy_file(odsa_dir + 'RST/Makefile', output_dir)
-    distutils.file_util.copy_file(odsa_dir + 'RST/config.py', output_dir)
-
-    # Copy non-RST source files and directories
-    for src_file in os.listdir(odsa_dir + 'RST/source/'):
-      src_file_path = odsa_dir + 'RST/source/' + src_file
-      if os.path.isdir(src_file_path):
-        distutils.dir_util.copy_tree(src_file_path, src_dir + src_file, update=1)
-      elif not src_file.endswith('.rst'):
-        distutils.file_util.copy_file(src_file_path, src_dir)
-  else:
-    print "MAKE SURE YOUR OUTPUT DIRECTORY EXISTS\n"
-    # TODO: Need to make sure destination directories exist if not building in place and not copying the files
-    print "Since you chose not to copy static files to your output directory, you must make sure your OpenDSA directory is web-accessible in order for these files to be loaded properly\n"
+  print "Since you chose not to copy static files to your output directory, you must make sure your OpenDSA directory is web-accessible in order for these files to be loaded properly\n"
 
 
 
@@ -572,3 +576,12 @@ with open(options['odsa_dir'] + 'ODSAkhan-exercises/khan-exercise.js','w') as kh
       break
   khan_exer.writelines(ke_data)
 khan_exer.close()
+
+print '\nBuilding textbook...'
+
+make_path = conf_data['output_dir'].replace('\\', '/')
+
+# Run make on the output directory
+proc = subprocess.Popen('make -C ' + make_path, stdout=subprocess.PIPE)
+for line in iter(proc.stdout.readline,''):
+   print line.rstrip()

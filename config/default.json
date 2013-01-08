@@ -1,7 +1,7 @@
 {
-  "copy_static_files": true,
+  "copy_static_files": false,
   "code_dir": "SourceCode/Processing",
-  "output_dir": "RST",
+  "output_dir": "Books/OpenDSA",
   "title": "OpenDSA (Beta)",
   "backend_address": "http://opendsa.cc.vt.edu",
   "chapters": {

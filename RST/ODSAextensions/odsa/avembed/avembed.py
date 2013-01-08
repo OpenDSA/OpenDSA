@@ -121,6 +121,15 @@ class avembed(Directive):
         self.options['width'] = embed[2]
         self.options['height'] = embed[3]
  
+        if 'required' not in self.options:
+          self.options['required'] = False
+        
+        if 'points' not in self.options:
+          self.options['points'] = 0
+        
+        if 'threshold' not in self.options:
+          self.options['threshold'] = 1.0
+ 
         if 'showbutton' in self.options:
             if self.options['showbutton'] == "show":
                 self.options['show_hide_text'] = "Hide"

@@ -32,30 +32,37 @@ DIAGRAM = """\
 
 
 SLIDESHOW = """\
-<div id="%(avId)s">
+<div id="%(avId)s" class="ssAV" data-points="%(points)s" data-threshold="%(threshold)s" data-required="%(required)s">
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
  <img id="%(avId)s_check_mark" class="prof_check_mark" src="%(odsa_path)s/lib/Images/green_check.png" />
+ <span id="%(avId)s_prof_warning" class="prof_warning">
+  <img class="prof_warning_img" src="_static/Images/warning.png">
+  <span id="%(avId)s_warning_msg">Saving...</span>
+ </span>
 </div>
 """
 
 
 SSOUTPUT = """\
-<div id="%(avId)s">
+<div id="%(avId)s" class="ssAV" data-points="%(points)s" data-threshold="%(threshold)s" data-required="%(required)s">
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
  <p class="jsavoutput jsavline" readonly="readonly"></p>
  <img id="%(avId)s_check_mark" class="prof_check_mark" src="%(odsa_path)s/lib/Images/green_check.png" />
+ <span id="%(avId)s_prof_warning">
+  <img class="prof_warning" src="_static/Images/warning.png">
+  <div id="%(avId)s_warning_msg">Saving...</div>
+ </span>
 </div>
 """
 
 
 def output(argument):
-    """Conversion function for the "type" option."""
+    """Conversion function for the "output" option."""
     return directives.choice(argument, ('show', 'hide'))
-
 
 class inlineav(Directive):
     required_arguments = 2
@@ -73,6 +80,16 @@ class inlineav(Directive):
         self.options['avId'] = self.arguments[0]
         self.options['type'] = self.arguments[1]
         self.options['odsa_path'] = os.path.relpath(conf.odsa_path,conf.ebook_path)
+        
+        if 'required' not in self.options:
+          self.options['required'] = False
+        
+        if 'points' not in self.options:
+          self.options['points'] = 0
+        
+        if 'threshold' not in self.options:
+          self.options['threshold'] = 1.0
+        
         if self.options['type'] == "diagram":
             res = DIAGRAM % self.options
         else:

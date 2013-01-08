@@ -5,6 +5,7 @@ CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-b
 all: oldODSA
 
 clean:
+	- $(RM) -rf Books
 	- $(RM) -rf build
 	- $(RM) *~
 	- $(RM) Modules/*~
