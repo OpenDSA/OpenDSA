@@ -1,13 +1,23 @@
-# This script builds an OpenDSA book according to a specified configuration file
-#   - It takes the path to a configuration file as input
-#   - Reads the file
-#   - Handles absolute or relative paths for output and code directories (relative paths are rooted at the OpenDSA directory)
-#   - Copies files and directories to the output directory (if applicable)
-#   - Reads each module file and removes exercises or adds information to the directives that create them
-#     - ****Untested for building in place - this is likely to cause issues with rebuilding as information is appended to the source, if the source isn't clean, will end up with duplicates
+# This script builds an OpenDSA textbook according to a specified configuration file
+#   - Reads the configuration information from the specified JSON config file
+#   - Auto-detects the OpenDSA root directory location
+#   - Converts the OpenDSA root directory and specified code and output directories into Unix-style paths so that relative paths are calculated correctly
+#     - Handles absolute or relative paths for output and code directories (relative paths are rooted at the OpenDSA directory)
+#   - Builds JSAV to make sure the library is up-to-date
+#   - Initilizes necessary files and directories in the output directory
+#     - Alters the Makefile to correctly point to the .htaccess file
+#   - Copies additional files and directories to the output directory (if specified in the config file)
+#     - Its possible for the output directory to be outside of the OpenDSA root directory and web-accessible when the ODSA root directory is not.  In this case, a several directories must be copied to the output directory in order for OpenDSA to function correctly.  These files / directories include:
+#       - AV
+#       - Exercises
+#       - JSAV-min.js and supporting JS and CSS files
+#       - Khan Academy files
+#   - Reads each module file and removes exercises or adds arguments to the directives that create them
+#     - Specifically adds 'points', 'required' and 'threshold'
 #   - Creates a conf.py file in the source directory
-#   - Creates an index.rst file based on which modules were specified in the config file
+#   - Generates an index.rst file based on which modules were specified in the config file
 #   - Updates the server_url variable in ODSA.js and khanexercise.js based on the value specified in the config file
+#   - Runs make on the output directory to build the textbook
 
 import sys
 import os
