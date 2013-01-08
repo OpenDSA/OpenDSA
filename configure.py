@@ -431,7 +431,7 @@ print "Configuring OpenDSA, using " + config_file + '\n'
 # Read the configuration data
 with open(config_file) as config:
   # Force python to maintain original order of JSON objects
-  conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
+  conf_data = json.load(config)
 config.close()
 
 
@@ -453,10 +453,15 @@ src_dir = output_dir + "source/"
 
 # Rebuild JSAV
 print "Building JSAV\n"
+cwd = os.getcwd()
 status = 0
-with open(os.devnull, "w") as fnull:
-  status = subprocess.check_call('make -C JSAV/', stdout=fnull)
-fnull.close()
+try:
+  os.chdir('JSAV/')
+  with open(os.devnull, "w") as fnull:
+    status = subprocess.check_call('make', stdout=fnull)
+  fnull.close()
+finally:
+  os.chdir(cwd)
 
 if status != 0:
   print "JSAV make failed"
@@ -582,6 +587,10 @@ print '\nBuilding textbook...'
 make_path = conf_data['output_dir'].replace('\\', '/')
 
 # Run make on the output directory
-proc = subprocess.Popen('make -C ' + make_path, stdout=subprocess.PIPE)
-for line in iter(proc.stdout.readline,''):
-   print line.rstrip()
+try:
+  os.chdir(make_path)
+  proc = subprocess.Popen('make', stdout=subprocess.PIPE)
+  for line in iter(proc.stdout.readline,''):
+     print line.rstrip()
+finally:
+  os.chdir(cwd)
