@@ -36,26 +36,11 @@ SLIDESHOW = """\
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
+ %(output_code)s
  <img id="%(avId)s_check_mark" class="prof_check_mark" src="%(odsa_path)s/lib/Images/green_check.png" />
- <span id="%(avId)s_prof_warning" class="prof_warning">
-  <img class="prof_warning_img" src="_static/Images/warning.png">
-  <span id="%(avId)s_warning_msg">Saving...</span>
- </span>
-</div>
-"""
-
-
-SSOUTPUT = """\
-<div id="%(avId)s" class="ssAV" data-points="%(points)s" data-threshold="%(threshold)s" data-required="%(required)s">
- <span class="jsavcounter"></span>
- <a class="jsavsettings" href="#">Settings</a>
- <div class="jsavcontrols"></div>
- <p class="jsavoutput jsavline" readonly="readonly"></p>
- <img id="%(avId)s_check_mark" class="prof_check_mark" src="%(odsa_path)s/lib/Images/green_check.png" />
- <span id="%(avId)s_prof_warning">
-  <img class="prof_warning" src="_static/Images/warning.png">
-  <div id="%(avId)s_warning_msg">Saving...</div>
- </span>
+ <img id="%(avId)s_prof_warning_img" class="prof_warning_img" src="_static/Images/warning.png" />
+ <span id="%(avId)s_prof_saving_msg" class="prof_saving_msg">Saving...</span>
+ <span id="%(avId)s_prof_error_msg" class="prof_error_msg">Server Error<br /><a href="#" style="text-decoration: underline;">Resubmit</a></span>
 </div>
 """
 
@@ -90,16 +75,15 @@ class inlineav(Directive):
         if 'threshold' not in self.options:
           self.options['threshold'] = 1.0
         
-        if self.options['type'] == "diagram":
-            res = DIAGRAM % self.options
+        if 'output' in self.options and self.options['output'] == "show":
+          self.options['output_code'] = '<p class="jsavoutput jsavline" readonly="readonly"></p>'
         else:
-            if 'output' in self.options:
-                if self.options['output'] == "show":
-                    res = SSOUTPUT % self.options
-                else:
-                    res = SLIDESHOW % self.options
-            else:
-                res = SLIDESHOW % self.options
+          self.options['output_code'] = ''
+        
+        if self.options['type'] == "diagram":
+          res = DIAGRAM % self.options
+        else:
+          res = SLIDESHOW % self.options
         return [nodes.raw('', res, format='html')]
 
 

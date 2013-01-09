@@ -138,6 +138,7 @@
             "points": 0.5,
             "threshold": 1.0
           },
+          "shellsortCON8": {},
           "shellsortCON9": {
             "required": true,
             "points": 0.5,
