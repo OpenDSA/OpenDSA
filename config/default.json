@@ -1,5 +1,7 @@
 {
   "copy_static_files": false,
+  "build_JSAV": false,
+  "build_ODSA": true,
   "code_dir": "SourceCode/Processing",
   "output_dir": "Books/OpenDSA",
   "title": "OpenDSA (Beta)",

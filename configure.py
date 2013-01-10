@@ -461,22 +461,23 @@ if output_dir == (odsa_dir) or output_dir == (odsa_dir + "RST/"):
 
 src_dir = output_dir + "source/"
 
-# Rebuild JSAV
-print "Building JSAV\n"
-cwd = os.getcwd()
-status = 0
-try:
-  os.chdir('JSAV/')
-  with open(os.devnull, "w") as fnull:
-    status = subprocess.check_call('make', stdout=fnull)
-  fnull.close()
-finally:
-  os.chdir(cwd)
+if conf_data['build_JSAV']:
+  # Rebuild JSAV
+  print "Building JSAV\n"
+  cwd = os.getcwd()
+  status = 0
+  try:
+    os.chdir('JSAV/')
+    with open(os.devnull, "w") as fnull:
+      status = subprocess.check_call('make', stdout=fnull)
+    fnull.close()
+  finally:
+    os.chdir(cwd)
 
-if status != 0:
-  print "JSAV make failed"
-  print status
-  sys.exit(1)
+  if status != 0:
+    print "JSAV make failed"
+    print status
+    sys.exit(1)
 
 # Initialize options for conf.py
 options = {}
@@ -592,15 +593,18 @@ with open(options['odsa_dir'] + 'ODSAkhan-exercises/khan-exercise.js','w') as kh
   khan_exer.writelines(ke_data)
 khan_exer.close()
 
-print '\nBuilding textbook...'
 
-make_path = conf_data['output_dir'].replace('\\', '/')
 
-# Run make on the output directory
-try:
-  os.chdir(make_path)
-  proc = subprocess.Popen('make', stdout=subprocess.PIPE)
-  for line in iter(proc.stdout.readline,''):
-     print line.rstrip()
-finally:
-  os.chdir(cwd)
+if conf_data['build_ODSA']:
+  print '\nBuilding textbook...'
+
+  make_path = conf_data['output_dir'].replace('\\', '/')
+
+  # Run make on the output directory
+  try:
+    os.chdir(make_path)
+    proc = subprocess.Popen('make', stdout=subprocess.PIPE)
+    for line in iter(proc.stdout.readline,''):
+       print line.rstrip()
+  finally:
+    os.chdir(cwd)
