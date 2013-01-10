@@ -461,10 +461,11 @@ if output_dir == (odsa_dir) or output_dir == (odsa_dir + "RST/"):
 
 src_dir = output_dir + "source/"
 
+cwd = os.getcwd()
+  
 if conf_data['build_JSAV']:
   # Rebuild JSAV
   print "Building JSAV\n"
-  cwd = os.getcwd()
   status = 0
   try:
     os.chdir('JSAV/')
