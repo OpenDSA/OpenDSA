@@ -30,17 +30,21 @@ DIAGRAM = """\
 </div>
 """
 
-
+# div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
 SLIDESHOW = """\
 <div id="%(avId)s" class="ssAV" data-points="%(points)s" data-threshold="%(threshold)s" data-required="%(required)s">
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
  %(output_code)s
+ <div class="jsavcanvas"></div>
  <img id="%(avId)s_check_mark" class="prof_check_mark" src="%(odsa_path)s/lib/Images/green_check.png" />
- <img id="%(avId)s_prof_warning_img" class="prof_warning_img" src="_static/Images/warning.png" />
- <span id="%(avId)s_prof_saving_msg" class="prof_saving_msg">Saving...</span>
- <span id="%(avId)s_prof_error_msg" class="prof_error_msg">Server Error<br /><a href="#" style="text-decoration: underline;">Resubmit</a></span>
+ <span id="%(avId)s_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+ <span id="%(avId)s_cm_error_msg" class="cm_error_msg">
+  <img id="%(avId)s_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" /><br />
+  Server Error<br />
+  <a href="#" style="text-decoration: underline;">Resubmit</a>
+ </span>
 </div>
 """
 
