@@ -76,7 +76,7 @@ approach.
 
 Here is a visualization for the merge step.
 
-.. inlineav:: mergeImplCON1 slideshow
+.. inlineav:: mergeImplCON1
    :output: show
 
 An optimized Mergesort implementation is shown below.
@@ -95,7 +95,7 @@ the array is smaller than a value defined by ``THRESHOLD``.
 
 Here is a visualization for the optimized merge step.
 
-.. inlineav:: mergeImplCON2 slideshow
+.. inlineav:: mergeImplCON2
    :output: show
 
 Now here are some review questions.

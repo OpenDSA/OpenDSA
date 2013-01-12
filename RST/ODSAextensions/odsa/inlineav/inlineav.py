@@ -32,7 +32,7 @@ DIAGRAM = """\
 
 # div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
 SLIDESHOW = """\
-<div id="%(avId)s" class="ssAV" data-points="%(points)s" data-threshold="%(threshold)s" data-required="%(required)s">
+<div id="%(avId)s" class="ssAV" data-exer-name="%(avId)s" data-points="%(points)s" data-threshold="%(threshold)s" data-type="%(type)s" data-required="%(required)s">
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
@@ -53,21 +53,25 @@ def output(argument):
     """Conversion function for the "output" option."""
     return directives.choice(argument, ('show', 'hide'))
 
+def type(argument):
+    """Conversion function for the "output" option."""
+    return directives.choice(argument, ('ss', 'diagram'))
+
 class inlineav(Directive):
-    required_arguments = 2
-    optional_arguments = 4
+    required_arguments = 1
+    optional_arguments = 5
     final_argument_whitespace = True
     option_spec = {
                    'output':output,
                    'required': directives.unchanged,
                    'points': directives.unchanged,
                    'threshold': directives.unchanged,
+                   'type': type,
                   }
 
     def run(self):
         """ Restructured text extension for including inline JSAV content on module pages """
         self.options['avId'] = self.arguments[0]
-        self.options['type'] = self.arguments[1]
         self.options['odsa_path'] = os.path.relpath(conf.odsa_path,conf.ebook_path)
         
         if 'required' not in self.options:
@@ -78,6 +82,9 @@ class inlineav(Directive):
         
         if 'threshold' not in self.options:
           self.options['threshold'] = 1.0
+          
+        if 'type' not in self.options:
+          self.options['type'] = 'diagram'
         
         if 'output' in self.options and self.options['output'] == "show":
           self.options['output_code'] = '<p class="jsavoutput jsavline" readonly="readonly"></p>'
@@ -94,7 +101,7 @@ class inlineav(Directive):
 source = """\
 This is some text.
 
-.. inlineav:: avId type
+.. inlineav:: avId
    :output:
 
 This is some more text.

@@ -31,7 +31,7 @@ of sixteen slots::
 
 Note that "%" is the symbol for the mod function.
 
-.. inlineav:: hashFuncExCON1 slideshow
+.. inlineav:: hashFuncExCON1
    :output: show
 
 Recall that the values 0 to 15 can be represented with four bits
@@ -68,7 +68,7 @@ slot 0.
 A similar, analogous problem arises if we were instead hashing strings based
 on the first letter in the string.
 
-.. inlineav:: hashFuncExCON2 slideshow
+.. inlineav:: hashFuncExCON2
    :output: show
 
 In general with binning we store the record with key value :math:`i`

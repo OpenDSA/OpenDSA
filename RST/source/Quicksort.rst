@@ -158,7 +158,7 @@ Function ``partition`` returns the first index of the right
 partition (the place where ``left`` ends at) so that the subarray
 bound for the recursive calls to ``qsort`` can be determined.
 
-.. inlineav:: QuicksortCON1 slideshow
+.. inlineav:: QuicksortCON1
    :output: show
 
 

@@ -41,7 +41,7 @@ numbers 0 through :math:`n-1`::
    for (i=0; i<n; i++)
      B[A[i]] = A[i];
 
-.. inlineav:: BinsortCON1 slideshow
+.. inlineav:: BinsortCON1
    :output: show
 
 Here the key value is used to determine the
@@ -98,7 +98,7 @@ bins.
 Thus, we need to process each record twice, for :math:`\Theta(n)`
 work.
 
-.. inlineav:: BinsortCON2 slideshow
+.. inlineav:: BinsortCON2
    :output: show
 
 Does that really make sense?

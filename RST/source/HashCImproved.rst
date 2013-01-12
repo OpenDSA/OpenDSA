@@ -32,7 +32,7 @@ and so the :math:`i` th slot in the probe sequence will be
 In this way, records with adjacent home positions will not follow the
 same probe sequence.
 
-.. inlineav:: collisionCON1 slideshow
+.. inlineav:: collisionCON1
    :output: show
 
 One quality of a good probe sequence is that it will cycle through
@@ -67,7 +67,7 @@ then the probe sequence will visit all slots for any key.
 When :math:`M = 11`, any value for :math:`c` between 1 and 10 generates a
 probe sequence that visits all slots for every key.
 
-.. inlineav:: collisionCON2 slideshow
+.. inlineav:: collisionCON2
    :output: show
 
 Now you can practice linear probing by different step sizes.
@@ -116,7 +116,7 @@ where **Perm** is an array of length :math:`M` that stores a value of
 random permutation of the values from 1 to :math:`M - 1` in slots 1 to
 :math:`M - 1`.
 
-.. inlineav:: collisionCON3 slideshow
+.. inlineav:: collisionCON3
    :output: show
 
 Here is a practice exercise for pseudo-random probing.
@@ -125,7 +125,7 @@ Here is a practice exercise for pseudo-random probing.
    :showbutton: hide
    :title: Pseudo-Random Probing Exercise
 
-.. inlineav:: collisionCON4 slideshow
+.. inlineav:: collisionCON4
    :output: show
 
 
@@ -146,7 +146,7 @@ The simplest variation is :math:`\textbf{p}(K, i) = i^2`
 Then the :math:`i` th value in the probe sequence would be
 :math:`(\textbf{h}(K) + i^2) \mod M`.
 
-.. inlineav:: collisionCON5 slideshow
+.. inlineav:: collisionCON5
    :output: show
 
 Now you can practice quadratic probing.
@@ -156,7 +156,7 @@ Now you can practice quadratic probing.
    :title: Quadratic Probing Exercise
 
 
-.. inlineav:: collisionCON6 slideshow
+.. inlineav:: collisionCON6
    :output: show
 
 
@@ -240,10 +240,10 @@ between 1 and :math:`2^m`.
 We can get that result with this secondary hash function:
 :math:`\textbf{h}_2(k) = (((k/M) \mod (M/2)) * 2) + 1`.
 
-.. inlineav:: collisionCON7 slideshow
+.. inlineav:: collisionCON7
    :output: show
 
-.. inlineav:: collisionCON8 slideshow
+.. inlineav:: collisionCON8
    :output: show
 
 Now you can try it yourself.

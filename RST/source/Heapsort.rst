@@ -60,7 +60,7 @@ particularly useful when sorting data sets too large to fit in main
 memory, as discussed in
 Module :numref:`External Sorting <ExternalSort>`.
 
-.. inlineav:: heapsortCON slideshow
+.. inlineav:: heapsortCON
    :output: show
 
 The complete JAVA implementation is as follows.

@@ -83,7 +83,7 @@ Here is pseudocode for merge on lists::
 
 Here is a visualization for the merge operation.
 
-.. inlineav:: mergesortCON1 slideshow
+.. inlineav:: mergesortCON1
    :output: show
 
 Here is a mergesort warmup exercise to practice merging.

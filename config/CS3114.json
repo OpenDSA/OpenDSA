@@ -18,34 +18,40 @@
           "SortIntroSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "InsertionSort": {
           "InssortCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "InssortCON2": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "InssortCON3": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "InssortPRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "InssortSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "InsertOpt": {},
@@ -53,81 +59,95 @@
           "BubsortCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "BubsortCON2": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "BubsortPRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "BubsortSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "SelectionSort": {
           "SelsortCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "SelsortCON2": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "SelsortPRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "SelsortSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "SortCompare": {
           "SortCompareSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "ExchangeSort": {
           "FindInversionsPRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "ExchangeSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "Shellsort": {
           "shellsortCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "shellsortCON2": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "shellsortCON3": {},
           "shellsortCON4": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "shellsortCON5": {
             "required": true,
@@ -138,181 +158,213 @@
           "shellsortCON7": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "shellsortCON8": {},
           "shellsortCON9": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "ShellsortSublist": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "shellsortAV": {
             "required": false,
             "points": 0,
-            "threshold": 0
+            "threshold": 0,
+            "type": "ss"
           },
           "ShellsortSeries": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "ShellsortProficiency": {
             "required": true,
             "points": 1,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "type": "pe"
           },
           "ShellsortPerformance": {
             "required": true,
             "points": 1,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "pe"
           },
           "ShellsortSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "Mergesort": {
           "mergesortCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "MergesortPRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "mergesortProficiency": {
             "required": true,
             "points": 1,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "type": "pe"
           },
           "MergesortSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "MergesortImpl": {
           "mergeImplCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "mergeImplCON2": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "MergeImplSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "Quicksort": {
           "QuicksortPivotPRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "QuicksortCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "QuicksortPartitPRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "quicksortProficiency": {
             "required": true,
             "points": 1,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "type": "pe"
           },
           "QuicksortSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "Heapsort": {
           "heapsortCON": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "HeapsortPRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "heapsortProficiency": {
             "required": true,
             "points": 1,
-            "threshold": 0.9
+            "threshold": 0.9,
+            "type": "pe"
           },
           "HeapsortSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "BinSort": {
           "BinsortCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "BinsortCON2": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "BinsortSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "RadixSort": {
           "RadixsortPRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "RadixsortSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "SortingEmpirical": {
           "SortAlgCompSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "SortingLowerBound": {
           "SortBoundSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "SortSumm": {
           "ChapterSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         }
       }
@@ -323,56 +375,66 @@
           "hashIntroCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           }
         },
         "HashFunc": {
           "Birthday": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "pe"
           },
           "HashPrinciplesSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "HashFuncExamp": {
           "hashFuncExCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "hashFuncExCON2": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "MidSquare": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "pe"
           },
           "StringSimple": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "pe"
           },
           "StringSfold": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "pe"
           },
           "HashFuncPROSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "HashFuncSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "OpenHash": {
@@ -380,144 +442,170 @@
           "OpenHashPRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "BucketHash": {
           "buckethashCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "buckethashCON2": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "HashingBucketPRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "HashingBucket2PRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "HashCSimple": {
           "linProbeCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "linProbeCON2": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "HashingLinearProbePRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "HashCImproved": {
           "collisionCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "collisionCON2": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "HashingLinearStepProbePRO": {
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "collisionCON3": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "HashingPseudoRandomProbePRO": {
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "collisionCON4": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "collisionCON5": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "HashingQuadraticProbePRO": {
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "collisionCON6": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "collisionCON7": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "collisionCON8": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "HashingDoubleProbePRO": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           },
           "HashCollisionSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "HashAnal": {
           "HashAnalSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "HashDel": {
           "hashdelCON1": {
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "HashingDeleteProficiency": {
             "required": true,
             "points": 1,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "type": "pe"
           },
           "HashDelSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         },
         "HashSumm": {
           "HashChapterSumm": {
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 5,
+            "type": "ka"
           }
         }
       }

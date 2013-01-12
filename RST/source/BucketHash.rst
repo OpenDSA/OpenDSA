@@ -59,7 +59,7 @@ found or all records in the overflow bucket have been checked.
 If many records are in the overflow bucket, this will be an
 expensive process.
 
-.. inlineav:: buckethashCON1 slideshow
+.. inlineav:: buckethashCON1
    :output: show
 
 Now you can try it yourself.
@@ -78,7 +78,7 @@ The advantage of this approach is that initial collisions are reduced,
 because any slot can be a home position rather than just the first slot
 in the bucket.
 
-.. inlineav:: buckethashCON2 slideshow
+.. inlineav:: buckethashCON2
    :output: show
 
 Now you can try this version.

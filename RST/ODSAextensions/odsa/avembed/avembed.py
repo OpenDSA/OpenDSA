@@ -32,7 +32,7 @@ CODE = """\
 <div id="%(div_id)s">
 <p></p>
 <center> 
-<iframe id="%(div_id)s_iframe" data-av="%(div_id)s" data-points="%(points)s" data-required="%(required)s" data-threshold="%(threshold)s" src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
+<iframe id="%(div_id)s_iframe" data-exer-name="%(div_id)s" data-points="%(points)s" data-required="%(required)s" data-threshold="%(threshold)s" data-type="%(type)s" src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 </iframe>
 </center>
 </div>
@@ -43,12 +43,14 @@ SHOWHIDE = """\
 <input type="button" 
     id="%(div_id)s_showhide_btn"
     class="showHideLink"
+    data-exer-name="%(div_id)s" 
     data-frame-src="%(av_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
     data-points="%(points)s"
     data-required="%(required)s"
     data-threshold="%(threshold)s"
+    data-type="%(type)s" 
     value="%(show_hide_text)s %(title)s"/>
 """
 
@@ -100,7 +102,7 @@ def showbutton(argument):
 
 class avembed(Directive):
     required_arguments = 1
-    optional_arguments = 5
+    optional_arguments = 6
     final_argument_whitespace = True
     has_content = True
     option_spec = {'showbutton':showbutton,
@@ -108,6 +110,7 @@ class avembed(Directive):
                    'required': directives.unchanged,
                    'points': directives.unchanged,
                    'threshold': directives.unchanged,
+                   'type': directives.unchanged,
                    }
 
     def run(self):
@@ -129,21 +132,26 @@ class avembed(Directive):
         
         if 'threshold' not in self.options:
           self.options['threshold'] = 1.0
+          
+        if 'type' not in self.options:
+          if 'Exercise' in self.options['av_address']:
+            self.options['type'] = 'ka'
+          else:
+            self.options['type'] = 'pe'
  
         if 'showbutton' in self.options:
             if self.options['showbutton'] == "show":
                 self.options['show_hide_text'] = "Hide"
                 res = SHOWHIDE % (self.options)
                 res += CODE % (self.options)
-                return [nodes.raw('', res, format='html')]
             else:
                 self.options['show_hide_text'] = "Show"
                 res = SHOWHIDE % (self.options)
-                return [nodes.raw('', res, format='html')]
 
         else:
             res = CODE % self.options 
-            return [nodes.raw('', res, format='html')]
+        
+        return [nodes.raw('', res, format='html')]
 
 
 

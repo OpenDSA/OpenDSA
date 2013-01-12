@@ -44,18 +44,18 @@ The input is an array of :math:`n` records stored in array ``A``.
 
 Consider the example of the following array.
 
-.. inlineav:: InssortCON1 slideshow
+.. inlineav:: InssortCON1
    :output: show
 
 Next, process the record in position 2.
 Swap it to the left until it reaches a value smaller than it is.
 
-.. inlineav:: InssortCON2 slideshow
+.. inlineav:: InssortCON2
    :output: show
 
 And now the record in position 3.
 
-.. inlineav:: InssortCON3 slideshow
+.. inlineav:: InssortCON3
    :output: show
 
 This continues on with each record in turn.

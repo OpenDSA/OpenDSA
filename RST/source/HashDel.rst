@@ -49,7 +49,7 @@ not in the table.
 However, the new record would actually be inserted into the slot of
 the first tombstone encountered.
 
-.. inlineav:: hashdelCON1 slideshow
+.. inlineav:: hashdelCON1
    :output: show
 
 Here is a practice exercise.

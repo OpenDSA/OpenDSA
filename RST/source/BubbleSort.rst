@@ -57,14 +57,14 @@ An implementation is as follows.
 
 Consider the example of the following array.
 
-.. inlineav:: BubsortCON1 slideshow
+.. inlineav:: BubsortCON1
    :output: show
 
 Now we continue with the second pass. However, since the largest
 record has "bubbled" to the very right, we will not need to look at
 it again.
 
-.. inlineav:: BubsortCON2 slideshow
+.. inlineav:: BubsortCON2
    :output: show
 
 Bubble Sort continues in this way until the entire array is sorted.

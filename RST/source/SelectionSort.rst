@@ -50,14 +50,14 @@ Here is an implementation for Selection Sort.
 
 Consider the example of the following array.
 
-.. inlineav:: SelsortCON1 slideshow
+.. inlineav:: SelsortCON1
    :output: show
 
 Now we continue with the second pass.
 However, since the largest record is already at the right end,
 we will not need to look at it again.
 
-.. inlineav:: SelsortCON2 slideshow
+.. inlineav:: SelsortCON2
    :output: show
 
 Selection Sort continues in this way until the entire array is sorted.

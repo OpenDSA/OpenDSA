@@ -70,7 +70,7 @@ The process of building the Huffman tree for :math:`n` letters is quite simple. 
 <ODSAfig "FreqExamp" />
 The relative frequencies for eight selected letters.
 
-.. inlineav:: huffmanCON1 slideshow
+.. inlineav:: huffmanCON1
    :output: show
 
 Figure <ODSAref "HuffTree" /> illustrates part of the Huffman tree construction process for the eight letters of Figure <ODSEref "FreqExamp" />. Ranking D and L arbitrarily by alphabetical order, the letters are ordered by frequency as
