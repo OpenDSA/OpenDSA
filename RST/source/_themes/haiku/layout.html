@@ -47,16 +47,6 @@
 </div>
 {% endmacro %}  
 
-{% macro email() %}   
-<tt><script type="text/javascript" language="JavaScript">
-#// Make it just a little harder for spammers to pick up email address
-var name = "opendsa";
-var place = "cs.vt.edu";
-var theAddress = name + "@" + place;
-document.write (theAddress.link ("mailto:" + theAddress))
-</script></tt>
-{% endmacro %}   
-
 {% macro nav() %}
         {%- block haikurel1 %}
         {%- endblock %}
