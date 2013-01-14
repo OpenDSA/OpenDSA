@@ -47,6 +47,16 @@
 </div>
 {% endmacro %}  
 
+{% macro email() %}   
+<tt><script type="text/javascript" language="JavaScript">
+#// Make it just a little harder for spammers to pick up email address
+var name = "opendsa";
+var place = "cs.vt.edu";
+var theAddress = name + "@" + place;
+document.write (theAddress.link ("mailto:" + theAddress))
+</script></tt>
+{% endmacro %}   
+
 {% macro nav() %}
         {%- block haikurel1 %}
         {%- endblock %}
@@ -133,7 +143,7 @@
         {% block body %}{% endblock %}
       </div>
       <div class="bottomnav">
-      <p> <a id="contact_us" class="contact" style="float:left;color:blue;" href="mailto:opendsa@cs.vt.edu" rel="nofollow">Contact Us</a>&#160;&#160;         
+      <p><odsa class="email_div"></odsa>&#160;&#160;         
       {{ nav() }}</p>
       </div>
       <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/> 

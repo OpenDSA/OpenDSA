@@ -545,6 +545,12 @@ function updateLogin() {
 //*****************************************************************************
 
 $(document).ready(function () {
+  //Dynamically add email address to make life harder to spammers
+  var name = "opendsa";
+  var place = "cs.vt.edu";
+  var theAddress = name + "@" + place;   
+  $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" href="mailto:'+ theAddress + '" rel="nofollow">Contact Us</a>');                
+
   // Append the module complete code to the header
   $('h1 > a.headerlink').parent().css('position', 'relative');
   $('h1 > a.headerlink').parent().append('<div id="' + moduleName + '_complete" class="mod_complete">Module Complete</div>');
