@@ -81,7 +81,7 @@ other than the instructor of that course.
 We never display your email address, and we never share your email
 address with any third party.
 We use your email address only to help identify you to the course
-instructor, or to provide you with notiﬁcations of new and updated
+instructor, or to provide you with notifications of new and updated
 site content.
 </p>
 
@@ -106,8 +106,10 @@ content of such web sites.
 
 <p>
 This site uses cookies for session management.
-This site manages user sessions using server-side PHP. A unique ID is
-used to identify your browser session. This ID is stored server-side
+This site manages user sessions using information stored  and managed
+on the server.
+A unique ID is used to identify your browser session.
+This ID is stored server-side
 in a Django Python variable as well as in the MySQL database backend.
 It is also stored on your computer as a cookie, which contains only
 this session ID.
@@ -128,12 +130,11 @@ accordance with the privacy restrictions described above.
 <p>
 This site has security measures in place to protect the loss, misuse,
 and alteration of the information under our control.
-Log ﬁle access is restricted to system administrators while stored on
+Log file access is restricted to system administrators while stored on
 the server.
-Log ﬁles are rotated regularly and archived in a secure location.
+Log files are rotated regularly and archived in a secure location.
 User and password information is encrypted before it is transmitted
-across the network. [THIS IS A PROBLEM: WE STILL DO NOT HAVE PROPER
-SECURITY IN PLACE]
+across the network.
 The MySQL database is protected and accessible only by
 the OpenDSA system administrators.
 Users should also consult Virginia Tech’s policy on Acceptable Use.
@@ -146,7 +147,14 @@ respect to access to information.
 <p>
 If you have any questions about this privacy statement, the practices
 of this site, or your dealings with this site, please
-<a href="mailto:opendsa@cs.vt.edu">contact us</a>.
+contact us at
+<tt><script type="text/javascript" language="JavaScript">
+  // Make it just a little harder for spammers to pick up email address
+  var name = "opendsa";
+  var place = "cs.vt.edu";
+  var theAddress = name + "@" + place;
+  document.write (theAddress.link ("mailto:" + theAddress))
+</script></tt>.
 </p>
 
 </body>
