@@ -1,13 +1,14 @@
 {
-  "copy_static_files": false,
-  "build_JSAV": false,
-  "build_ODSA": true,
-  "code_dir": "SourceCode/Processing",
-  "output_dir": "Books/OpenDSA",
+  "name": "OpenDSA",
   "title": "OpenDSA (Beta)",
+  "output_dir": "Books/OpenDSA",
+  "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
   "exercise_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu",
+  "copy_static_files": false,
+  "build_JSAV": false,
+  "build_ODSA": true,
   "chapters": {
     "Preface": {
       "modules": {
@@ -16,7 +17,7 @@
     },
     "Sorting": {
       "modules": {
-"Sorting": {
+        "Sorting": {
           "SortIntroSumm": {
             "required": true,
             "points": 1,

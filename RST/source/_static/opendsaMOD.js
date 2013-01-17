@@ -21,12 +21,7 @@ var Status = {
   ERROR: 'error'
 };
 
-/**
- * The location where exercises are hosted, we will accept post messages from this origin
- */
-var exerciseOrigin = "http://algoviz.org";
-
-var readyTime = +new Date();
+var readyTime = +new Date();  // TODO: For performance testing
 
 /**
  * Adds an 'endsWith' function to strings
@@ -177,7 +172,6 @@ function storeProficiencyStatus(name, status, username) {
  *  - If 'name' is not provided, will default to moduleName
  */
 function updateProfDisplay(name) {
-  //console.log('updateProfPage(' + name + ')');
   name = (isDefined(name)) ? name : moduleName;
 
   var username = getUsername(),
@@ -366,61 +360,12 @@ function storeStatusAndUpdateDisplays(name, status, username) {
   }
 }
 
-// TODO: Fix loadModule() to return KA exercise progress, eliminating the need for this function
-/**
- * Queries the server for the progress of a KA exercise
- * and writes it to localStorage
- */
-function storeKAExerProgress(exerName) {
-  var exerData = {};
-  exerData.exercise = exerName;
-  exerData.key = getSessionKey();
-
-  jQuery.ajax({
-    url:   server_url + "/api/v1/user/exercise/getprogress/",
-    type:  "POST",
-    data: exerData,
-    contentType: "application/json; charset=utf-8",
-    datatype: "json",
-    xhrFields: {withCredentials: true},
-    success: function (data) {
-      data = getJSON(data);
-
-      // Get the progress from the response
-      if (data.progress) {
-        // Load any existing data
-        exerData = getJSON(localStorage.khan_exercise);
-        exerData[exerName] = data.progress;
-        localStorage.khan_exercise = JSON.stringify(exerData);
-
-        /*
-        // TODO: get the correct function to trigger
-        // Trigger progress bar update on KA exercise page, if its loaded
-        if ($('#' + exerName + '_iframe')) {
-          document.getElementById(exerName + '_iframe').contentWindow.updateProgressBar();
-        }
-        */
-      }
-    },
-    error: function (data) {
-      data = getJSON(data);
-
-      if (data.status === 404) {
-        console.warn('Exercise does not exist in the database');
-      } else {
-        console.error("Error getting KA exercise progress: " + exerName);
-        console.error(data);
-      }
-    }
-  });
-}
-
 /**
  * Sends all the data necessary to load a module to the server
  */
 function loadModule(modName) {
   modName = (isDefined(modName)) ? modName : moduleName;
-  
+
   if (modName === 'index') {
     // Get every module page link on the index page and determine if the user is proficient
     $('li.toctree-l1 > a.reference.internal').each(function (index, item) {
@@ -452,6 +397,9 @@ function loadModule(modName) {
 
       // Package the module data
       modData.key = getSessionKey();
+      modData.book = "OpenDSA";
+      // Calculate the URL of the book, relative to the current module page
+      modData.url = location.href.substring(0, location.href.lastIndexOf('/') + 1);
       modData.module = modName;
       modData.exercises = JSON.stringify(exerList);
 
@@ -469,30 +417,34 @@ function loadModule(modName) {
           for (var exerName in data) {
             if (data.hasOwnProperty(exerName)) {
               // Update the user's status for the exercise
-              if (data[exerName]) {
-                storeProficiencyStatus(exerName, Status.STORED, username);
+              // Since the server is the ultimate authority for logged in users,
+              // if the user's proficiency comes back as false, it will remove
+              // their local proficiency to keep the client in sync with the server
+              if (exercises[exerName]) {  // Exercise proficiency
+                storeProficiencyStatus(exerName, (data[exerName].proficient) ? Status.STORED : false, username);
+                updateProfDisplay(exerName);
+
+                // Store the user's progress for Khan Academy exercises
+                if (exercises[exerName].type === 'ka' && isDefined(data[exerName].progress)) {
+                  exercises[exerName].progress = data[exerName].progress;
+
+                  // Load any existing data
+                  exerData = getJSON(localStorage.khan_exercise);
+                  exerData[exerName] = exercises[exerName].progress;
+                  localStorage.khan_exercise = JSON.stringify(exerData);
+
+                  /*
+                  // TODO: get the correct function to trigger
+                  // Trigger progress bar update on KA exercise page, if its loaded
+                  if ($('#' + exerName + '_iframe')) {
+                  document.getElementById(exerName + '_iframe').contentWindow.updateProgressBar();
+                  }
+                  */
+                }
+              } else {  // Module proficiency
+                storeProficiencyStatus(exerName, (data[exerName]) ? Status.STORED : false, username);
                 updateProfDisplay(exerName);
               }
-
-              // Store the user's progress for Khan Academy exercises
-              /*
-              if (exercises[exerName].type === 'ka' && data[exerName].progress) {
-              exercises[exerName].progress = data.exercises[exerName].progress;
-
-              // Load any existing data
-              exerData = getJSON(localStorage.khan_exercise);
-              exerData[exerName] = data.progress;
-              localStorage.khan_exercise = JSON.stringify(exerData);
-
-              / *
-              // TODO: get the correct function to trigger
-              // Trigger progress bar update on KA exercise page, if its loaded
-              if ($('#' + exerName + '_iframe')) {
-              document.getElementById(exerName + '_iframe').contentWindow.updateProgressBar();
-              }
-              * /
-              }
-              */
             }
           }
         },
@@ -507,12 +459,6 @@ function loadModule(modName) {
       for (exerName in exercises) {
         if (exercises.hasOwnProperty(exerName)) {
           checkProficiency(exerName);
-
-          // TODO: Figure out how to do this on the client side
-          // If the exercise is a Khan Academy style exercise, check and store its progress
-          if (exercises[exerName].type === 'ka' && serverEnabled() && userLoggedIn()) {
-            storeKAExerProgress(exerName);
-          }
         }
       }
 
@@ -667,7 +613,7 @@ function storeExerciseScore(exerName, score, username) {
     if (!scoreData[username]) {
       scoreData[username] = {};
     }
-    
+
     // If the user does not have buffered data for the given exercise or if the new score is higher, save the score data
     if (!scoreData[username][exerName] || score >= scoreData[username][exerName].score) {
       var data = {};
@@ -696,7 +642,6 @@ function storeExerciseScore(exerName, score, username) {
  * Sends the score for a single exercise
  */
 function sendExerciseScore(exerName, username, sessionKey) {
-  //console.debug('sendExerciseScore(' + exerName + ', ' + username + ', ' + sessionKey + ')');
   if (serverEnabled()) {
     // Issue a warning if called without an exercise name
     if (!exerName) {
@@ -1040,13 +985,10 @@ function updateLogin() {
         hidePopupBox();
       }
 
-      //console.debug('before flush');
-
       // Flush any stored data
       flushStoredData();
     } else if (!inLocalStorage('opendsa') && $('a.login-window').text() !== 'Login') {
       // If a user was logged in on the page, but has since logged out, update the page with the anonymous user state
-
       updated = true;
 
       // Update display to show that no user is logged in
@@ -1079,8 +1021,8 @@ $(document).ready(function () {
   //Dynamically add email address to make life harder to spammers
   var name = "opendsa";
   var place = "cs.vt.edu";
-  var theAddress = name + "@" + place;   
-  $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" href="mailto:'+ theAddress + '" rel="nofollow">Contact Us</a>');                
+  var theAddress = name + "@" + place;
+  $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" href="mailto:'+ theAddress + '" rel="nofollow">Contact Us</a>');
 
   // Append the module complete code to the header
   $('h1 > a.headerlink').parent().css('position', 'relative');
@@ -1142,6 +1084,9 @@ $(document).ready(function () {
 
   // Listen to message from embedded exercise
   eventer(messageEvent, function (e) {
+    // The location where exercises are hosted, we will accept post messages from this origin
+    var exerciseOrigin = "http://algoviz.org";
+
     if (e.origin !== exerciseOrigin) {
       return;
     }

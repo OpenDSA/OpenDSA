@@ -489,8 +489,8 @@ options['code_dir'] = code_dir
 # Initialize output directory
 distutils.dir_util.mkpath(src_dir)
 distutils.dir_util.copy_tree(odsa_dir + 'RST/ODSAextensions/', output_dir + 'ODSAextensions/', update=1)
-distutils.file_util.copy_file(odsa_dir + 'RST/preprocessor.py', output_dir)
-distutils.file_util.copy_file(odsa_dir + 'RST/config.py', output_dir)
+distutils.file_util.copy_file(odsa_dir + 'RST/preprocessor.py', output_dir, update=1)
+distutils.file_util.copy_file(odsa_dir + 'RST/config.py', output_dir, update=1)
 
 with open(odsa_dir + 'RST/Makefile','r') as makefile:
   make_data = makefile.readlines()
@@ -568,10 +568,12 @@ with open(odsa_dir + 'lib/ODSA.js','r') as odsa:
   odsa_data = odsa.readlines()
 odsa.close()
 
+# options['odsa_dir'] is used as a base for relative paths to static files,
+# changes depending on whether static files are copied or not
 with open(options['odsa_dir'] + 'lib/ODSA.js','w') as odsa:
   for i in range(len(odsa_data)):
     if 'var server_url = "' in odsa_data[i]:
-      odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['backend_address'] + r'\2', odsa_data[i])
+      odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['backend_address'].rstrip('/') + r'\2', odsa_data[i])
       break
 
   for i in range(len(odsa_data)):
@@ -584,16 +586,28 @@ odsa.close()
 # TODO: If static files are copied, run minifier on ODSA.JS
 
 
-# Replace 'exerciseOrigin' in opendsaMOD.js
+# Replace 'exerciseOrigin' and 'bookName' in opendsaMOD.js
 with open(odsa_dir + 'RST/source/_static/opendsaMOD.js','r') as odsaMOD:
   odsaMOD_data = odsaMOD.readlines()
 odsaMOD.close()
 
-with open(options['odsa_dir'] + 'RST/source/_static/opendsaMOD.js','w') as odsaMOD:
+# opendsaMOD.js is always copied to the build location, so write the updated data to the output source directory
+with open(src_dir + '_static/opendsaMOD.js','w') as odsaMOD:
+  replaced = 0
+  total_replacements = 2
+  
   for i in range(len(odsaMOD_data)):
     if 'var exerciseOrigin = "' in odsaMOD_data[i]:
       odsaMOD_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['exercise_origin'] + r'\2', odsaMOD_data[i])
-      break
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
+      
+    if 'modData.book = "' in odsaMOD_data[i]:
+      odsaMOD_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['name'] + r'\2', odsaMOD_data[i])
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
   odsaMOD.writelines(odsaMOD_data)
 odsaMOD.close()
 
@@ -603,10 +617,12 @@ with open(odsa_dir + 'ODSAkhan-exercises/khan-exercise.js','r') as khan_exer:
   ke_data = khan_exer.readlines()
 khan_exer.close()
 
+# options['odsa_dir'] is used as a base for relative paths to static files,
+# changes depending on whether static files are copied or not
 with open(options['odsa_dir'] + 'ODSAkhan-exercises/khan-exercise.js','w') as khan_exer:
   for i in range(len(ke_data)):
     if 'testMode ? "' in ke_data[i]:
-      ke_data[i] = re.sub(r'(.+ ? ").*(" :.*)', r'\1' + conf_data['backend_address'] + r'\2', ke_data[i])
+      ke_data[i] = re.sub(r'(.+ ? ").*(" :.*)', r'\1' + conf_data['backend_address'].rstrip('/') + r'\2', ke_data[i])
       break
   khan_exer.writelines(ke_data)
 khan_exer.close()

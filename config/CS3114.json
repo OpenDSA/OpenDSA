@@ -1,13 +1,14 @@
 {
+  "name": "CS3114",
+  "title": "OpenDSA (Beta)",
+  "output_dir": "Books/CS3114",
+  "code_dir": "SourceCode/Processing",
+  "module_origin": "http://algoviz.org",
+  "exercise_origin": "http://algoviz.org",
+  "backend_address": "http://198.82.152.245:8080/",
   "copy_static_files": false,
   "build_JSAV": false,
   "build_ODSA": true,
-  "code_dir": "SourceCode/Processing",
-  "output_dir": "Books/CS3114",
-  "title": "OpenDSA (Beta)",
-  "module_origin": "http://algoviz.org",
-  "exercise_origin": "http://algoviz.org",
-  "backend_address": "https://opendsa.cc.vt.edu",
   "chapters": {
     "Preface": {
       "modules": {
