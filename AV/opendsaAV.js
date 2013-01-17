@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, console: true, serverEnabled, userLoggedIn, flushStoredData, sendEventData, AV_NAME: true, getNameFromURL, logUserAction */
+/*global alert: true, console: true, serverEnabled, sendEventData, moduleOrigin, AV_NAME: true, getNameFromURL, logUserAction, logEvent */
 
 /**
  * The avcontainer element
@@ -10,6 +10,12 @@ var avc = '';
  * Stores the empty contents of the avcontainer, used for reset
  */
 var emptyContent = '';
+
+/**
+ * Set a flag indicating the user cannot receive credit for the
+ * current exercise instance after viewing the model answer
+ */
+var allowCredit = true;
 
 //*****************************************************************************
 //*************                    AV FUNCTIONS                   *************
@@ -25,14 +31,14 @@ var emptyContent = '';
  *         - Ex: Array data the user enters in the textbox should have a key 'user_array'
  */
 function logExerciseInit(initData) {
-  var data = {type: 'odsa-exercise-init', desc: JSON.stringify(initData)};
+  var data = {av: AV_NAME, type: 'odsa-exercise-init', desc: JSON.stringify(initData)};
   $("body").trigger("jsav-log-event", [data]);
 }
 /**
  * Generates a JSAV event which triggers the code to give a user credit for an exercise
  */
 function awardCompletionCredit() {
-  var data = {type: 'odsa-award-credit'};
+  var data = {av: AV_NAME, type: 'odsa-award-credit'};
   $("body").trigger("jsav-log-event", [data]);
 }
 
@@ -300,20 +306,91 @@ function processArrayValues(upperLimit) {
   $(document).ready(function () {
     // Initialize the global AV_NAME variable
     AV_NAME = getNameFromURL();
-    
+
     avc = $('.avcontainer');
     emptyContent = $(avc).html();
-  
+
+    // Listen for JSAV events and forward them to the parent page
+    $("body").on("jsav-log-event", function (e, data) {
+
+      var flush = false,
+          discardEvents = ["jsav-init", "jsav-recorded", "jsav-exercise-model-init", "jsav-exercise-model-recorded"],
+          ssEvents = ['jsav-forward', 'jsav-backward', 'jsav-begin', 'jsav-end', 'jsav-exercise-model-forward', 'jsav-exercise-model-backward', 'jsav-exercise-model-begin', 'jsav-exercise-model-end'];
+
+      // Filter out events we aren't interested in
+      if (discardEvents.indexOf(data.type) > -1) {
+        return;
+      }
+
+      // Overwrite the av attribute with the correct value
+      data.av = AV_NAME;
+
+      // If data.desc doesn't exist or is empty, initialize it
+      if (!data.desc || data.desc === '') {
+        data.desc = data.type;
+      }
+
+      if (ssEvents.indexOf(data.type) > -1) {
+        data.desc = data.currentStep + " / " + data.totalSteps;
+
+        // Flush event data when the end of a slideshow is reached
+        if (data.currentStep === data.totalSteps) {
+          flush = true;
+        }
+      } else if (data.type === "jsav-array-click") {
+        data.desc = JSON.stringify({'index': data.index, 'arrayid': data.arrayid});
+      } else if (data.type === "jsav-exercise-grade-change") {
+        // On grade change events, log the user's score and submit it
+        var score = (data.score.student - data.score.fix) / data.score.total;
+        var complete = (data.score.student + data.score.fix) / data.score.total;
+        data.desc = JSON.stringify({'score': score, 'complete': complete});
+        flush = true;
+      } else if (data.type === "jsav-exercise-model-open") {
+        // If user looks at the model answer before they are done and
+        // they haven't already lost credit, warn them they can no longer
+        // receive credit and prevent them from getting credit for the exercise
+        if (allowCredit && $('span.jsavamidone').html() !== "DONE") {
+          allowCredit = false;
+
+          alert("You can no longer receive credit for the current instance of this exercise.\nClick 'Reset' or refresh the page to get a new problem instance.");
+
+          // Hide the score widget and display and appropriate message in its place
+          $('span.jsavscore').hide();
+          $('span.jsavscore').parent().append('<span id="credit_disabled_msg">Credit not given for this instance</span>');
+        }
+      } else if (data.type === "jsav-exercise-reset") {
+        // If the student looked at the model answer for the previous
+        // attempt, allow them to get credit for the new instance
+        if (!allowCredit) {
+          allowCredit = true;
+
+          $('span.jsavscore').show();
+          $('#credit_disabled_msg').remove();
+        }
+      }
+
+      // Save the event in localStorage
+      if (serverEnabled()) {
+        logEvent(data);
+
+        data.logged = true;
+
+        if (flush) {
+          sendEventData();
+        }
+      }
+
+      // Send to message to the parent window
+      parent.postMessage(data, moduleOrigin);
+    });
+
+    // TODO: Remove explicit calls to logUserAction and sendEventData to decouple opendsaAV.js from ODSA.js
     if (serverEnabled()) {
       // Log the browser ready event
       logUserAction(AV_NAME, 'document-ready', 'User loaded the ' + AV_NAME + ' AV');
 
       // Send any stored event data when the page loads
-      if (userLoggedIn()) {
-        flushStoredData();
-      } else {
-        sendEventData();
-      }
+      sendEventData();
 
       $(window).focus(function (e) {
         logUserAction(AV_NAME, 'window-focus', 'User looking at ' + AV_NAME + ' window');

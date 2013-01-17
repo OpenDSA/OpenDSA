@@ -113,10 +113,7 @@ def process_modules(section, index_file, depth):
         av_name = av_name.rstrip()
         if av_name.endswith('.html'):
           av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
-        
-        # Print the configuration for the exercise (TESTING)
-        #print 'exercises: ' + json.dumps(section[module], indent=2, separators=(',', ': ')) + '\n\n'
-        
+          
         if av_name in section[module]:
           # Add the necessary information from the configuration file
           exer_conf = section[module][av_name]
@@ -126,9 +123,10 @@ def process_modules(section, index_file, depth):
             new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
           
         else:
-          # Exercise not listed in config file, remove it from the RST file
-          while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-            i = i + 1
+          if '.. avembed::' in mod_data[i]:  # Only remove exercises, not slideshows
+            # Exercise not listed in config file, remove it from the RST file
+            while (i < len(mod_data) and mod_data[i].rstrip() != ''):
+              i = i + 1
             
       else:
         new_mod_data.append(mod_data[i])
@@ -441,7 +439,7 @@ print "Configuring OpenDSA, using " + config_file + '\n'
 # Read the configuration data
 with open(config_file) as config:
   # Force python to maintain original order of JSON objects
-  conf_data = json.load(config)
+  conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
 config.close()
 
 
@@ -572,13 +570,32 @@ odsa.close()
 
 with open(options['odsa_dir'] + 'lib/ODSA.js','w') as odsa:
   for i in range(len(odsa_data)):
-    if 'server_url = "' in odsa_data[i]:
+    if 'var server_url = "' in odsa_data[i]:
       odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['backend_address'] + r'\2', odsa_data[i])
+      break
+
+  for i in range(len(odsa_data)):
+    if 'var moduleOrigin = "' in odsa_data[i]:
+      odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['module_origin'] + r'\2', odsa_data[i])
       break
   odsa.writelines(odsa_data)
 odsa.close()
 
+# TODO: If static files are copied, run minifier on ODSA.JS
 
+
+# Replace 'exerciseOrigin' in opendsaMOD.js
+with open(odsa_dir + 'RST/source/_static/opendsaMOD.js','r') as odsaMOD:
+  odsaMOD_data = odsaMOD.readlines()
+odsaMOD.close()
+
+with open(options['odsa_dir'] + 'RST/source/_static/opendsaMOD.js','w') as odsaMOD:
+  for i in range(len(odsaMOD_data)):
+    if 'var exerciseOrigin = "' in odsaMOD_data[i]:
+      odsaMOD_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['exercise_origin'] + r'\2', odsaMOD_data[i])
+      break
+  odsaMOD.writelines(odsaMOD_data)
+odsaMOD.close()
 
 
 # Replace the backend server address in khan-exercise.js
@@ -609,3 +626,6 @@ if conf_data['build_ODSA']:
        print line.rstrip()
   finally:
     os.chdir(cwd)
+
+  # TODO: Run a minifier on opendsaMOD.js
+

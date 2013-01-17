@@ -62,6 +62,9 @@
   right: 20px;
   top: 0;
 }
+.resubmit_link {
+  text-decoration: underline;
+}
 
 .error {
   color: red;

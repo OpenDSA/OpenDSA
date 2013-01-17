@@ -5,7 +5,9 @@
   "code_dir": "SourceCode/Processing",
   "output_dir": "Books/CS3114",
   "title": "OpenDSA (Beta)",
-  "backend_address": "http://opendsa.cc.vt.edu",
+  "module_origin": "http://algoviz.org",
+  "exercise_origin": "http://algoviz.org",
+  "backend_address": "https://opendsa.cc.vt.edu",
   "chapters": {
     "Preface": {
       "modules": {

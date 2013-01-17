@@ -131,7 +131,7 @@ var Khan = (function() {
 
   // The main server we're connecting to for saving data
   server = typeof apiServer !== "undefined" ? apiServer :
-    testMode ? "http://opendsa.cc.vt.edu" : "",
+    testMode ? "https://opendsa.cc.vt.edu" : "",
 
   // The name of the exercise
   exerciseName = typeof userExercise !== "undefined" ? userExercise.exercise : ((/([^\/.]+)(?:\.html)?$/.exec( window.location.pathname ) || [])[1]),

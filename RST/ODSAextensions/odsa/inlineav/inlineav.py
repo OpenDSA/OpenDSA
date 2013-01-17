@@ -43,7 +43,7 @@ SLIDESHOW = """\
  <span id="%(avId)s_cm_error_msg" class="cm_error_msg">
   <img id="%(avId)s_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" /><br />
   Server Error<br />
-  <a href="#" style="text-decoration: underline;">Resubmit</a>
+  <a href="#" class="resubmit_link">Resubmit</a>
  </span>
 </div>
 """
