@@ -854,7 +854,7 @@ function showRegistrationBox() {
 
     var server_regist_url = server_url + "/accounts/register/",
         registrationBox = '#registration-box',
-        regBoxWidth = 300,
+        regBoxWidth = $(registrationBox).width(),
         left = ($(window).width() / 2) - (regBoxWidth / 2),
         registration_page = '<center><iframe id="registration_iframe" src="' + server_regist_url + '" type="text/javascript" width="' + regBoxWidth + '" height="510" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></center>';
 

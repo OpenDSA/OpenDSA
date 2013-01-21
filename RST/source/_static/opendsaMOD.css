@@ -4,6 +4,10 @@
 .admonition-todo {
   background-color: #FFC0CB;
 }
+.registration-popup {
+  height: 300px;
+  width: 250px;
+}
 .showHideLink {
   background-color: #FF0000;
 }

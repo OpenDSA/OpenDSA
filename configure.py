@@ -12,6 +12,7 @@
 #       - Exercises
 #       - JSAV-min.js and supporting JS and CSS files
 #       - Khan Academy files
+#       - lib files
 #   - Reads each module file and removes exercises or adds arguments to the directives that create them
 #     - Specifically adds 'points', 'required' and 'threshold'
 #   - Creates a conf.py file in the source directory
@@ -113,20 +114,22 @@ def process_modules(section, index_file, depth):
         av_name = av_name.rstrip()
         if av_name.endswith('.html'):
           av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
-          
-        if av_name in section[module]:
-          # Add the necessary information from the configuration file
-          exer_conf = section[module][av_name]
-          
-          new_mod_data.append(mod_data[i])
-          for setting in exer_conf:
-            new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
-          
+        
+        if '.. avembed::' in mod_data[i] and av_name not in section[module]: 
+          # Exercise not listed in config file, remove it from the RST file
+          while (i < len(mod_data) and mod_data[i].rstrip() != ''):
+            i = i + 1
         else:
-          if '.. avembed::' in mod_data[i]:  # Only remove exercises, not slideshows
-            # Exercise not listed in config file, remove it from the RST file
-            while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-              i = i + 1
+          # Object is an exercise found in the config file or a 
+          # slideshow which shouldn't be removed because its considered content
+          new_mod_data.append(mod_data[i])
+          
+          if av_name in section[module]:
+            # Add the necessary information from the configuration file
+            exer_conf = section[module][av_name]
+            
+            for setting in exer_conf:
+              new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
             
       else:
         new_mod_data.append(mod_data[i])
@@ -441,6 +444,10 @@ with open(config_file) as config:
   # Force python to maintain original order of JSON objects
   conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
 config.close()
+
+# If 'name' is not specified in the config file, parse and use the name of the config file itself
+if not conf_data['name']:
+  conf_data['name'] = os.path.basename(config_file).replace('.json', '')
 
 
 # Auto-detect ODSA directory
