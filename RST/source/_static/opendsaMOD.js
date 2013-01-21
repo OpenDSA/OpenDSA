@@ -688,14 +688,17 @@ function sendExerciseScore(exerName, username, sessionKey) {
       xhrFields: {withCredentials: true},
       success: function (data) {
         data = getJSON(data);
-
+        
+        // Make sure score_data is up-to-date (localStorage concurrency issue)
+        scoreData = getJSON(localStorage.score_data);
+        // Delete the buffered score data, since the server replied successfully,
+        // either it was stored successfully and should be removed or
+        // rejected and should be removed 
+        delete scoreData[username][exerName];
+        localStorage.score_data = JSON.stringify(scoreData);
+        
         // Clear the saved data once it has been successfully transmitted
         if (data.success) {
-          // Make sure score_data is up-to-date (localStorage concurrency issue)
-          scoreData = getJSON(localStorage.score_data);
-          delete scoreData[username][exerName];
-          localStorage.score_data = JSON.stringify(scoreData);
-
           // Check whether the user is proficient
           if (data.proficient) {
             storeStatusAndUpdateDisplays(exerName, Status.STORED, username);
