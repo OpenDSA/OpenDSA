@@ -7,6 +7,7 @@
     recs = Number($('#numrecs').val()), // Number of records
     birthCredit = false,    // Credit flag for question 1
     thousandCredit = false, // Credit flag for question 2
+    noCredit = true,        // Have not yet given credit
     // Convenience function for writing output messages
     tell = function (msg) { $('p.output').text(msg); };
 
@@ -59,8 +60,9 @@
       if ((tsize === 1000) && (recs === 38)) {
         thousandCredit = true;
       }
-      if (birthCredit && thousandCredit) {
+      if (birthCredit && thousandCredit && noCredit) {
         awardCompletionCredit();
+        noCredit = false;  // Don't keep trying to assign credit
         console.log("Got birthday credit");
       }
     }
