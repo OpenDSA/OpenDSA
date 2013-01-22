@@ -2,7 +2,7 @@
   border: 1px solid black;
   background-color: #efe;
   overflow: hidden;
-  width: 550px;
+  width: 500px;
   height: 165px;
   position: relative;
 }
@@ -18,12 +18,42 @@
   margin: 5px;
 }
 
-.inputs {
-  text-align:center;
-  margin-bottom: 5px;
+.tsize {
+  position: absolute;
+  left: 55px;
+  top: 60px;
+}
+
+#tablesize {
+  position: absolute;
+  left: 200px;
+  top: 75px;
+  width: 100px;
+}
+
+.nrecs {
+  position: absolute;
+  left: 55px;
+  top: 85px;
+}
+
+#numrecs {
+  position: absolute;
+  left: 200px;
+  top: 100px;
+  width: 100px;
+}
+
+#calculate {
+  position: absolute;
+  right: 5px;
+  top: 95px;
 }
 
 .output {
+  position: absolute;
+  top: 135px;
   text-align:center;
+  width: 500px;
   margin: 0;
 }

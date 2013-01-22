@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-require="math spin">
+<head>
+  <title>Hash Function Question 6</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <div class="spin">
+	<p class="problem">Answer TRUE or FALSE.
+        <p class="question">
+          A company wants to use a system where they randomly assign
+          each customer a 9-digit ID (so there are 1 billion
+          possible ID numbers). Of course, there is a chance that two
+          customers will be assigned the same ID. But the company
+          figures that risk is OK if the odds are only one in a
+          million. They expect to assign IDs to 1000 customers.
+          But the chance of collision is much higher than one in a
+          million.
+        </p>
+      </div>
+      <div class="solution"><var>"True"</var></div>
+      <ul class="choices" data-category="true">
+	<li><var>"True"</var></li>
+	<li><var>"False"</var></li>
+      </ul>
+      <div class="hints">
+	<p>While it is true that the last customer given an ID has
+	about one chance in a million of sharing it with another
+	customer (actually, the chance is 999/1,000,000,000 if 999 IDs
+	are already assigned)...</p>
+        <p>... this logic does not account for the fact that any of the
+        previous 998 assignments might also have caused a
+        collision.</p>
+        <p>So the chance for a collision is rather higher than one in
+        a million.</p>
+      </div>
+    </div>
+</div>
+</body>
+</html>

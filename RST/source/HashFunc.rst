@@ -46,12 +46,16 @@ students share a birthday, or on *which* days of the year shared
 birthdays fall.
 
 Try it for yourself.
-Select several table sizes and several different numbers of records to be inserted.
-This applet will calculate the probability that there is a collision.
-How many people must be in the room for the probability to be 60% that
-two share a birthday?
-In a hash table of 1000 slots, how many records must be inserted before
-the probability of a collision reaches 50%?
+Select several table sizes and several different numbers of records to
+be inserted in the calculator below.
+It will calculate the probability that there is a collision.
+To get credit for the exercise, answer the following two questions:
+
+- What is the smallest number of people that must be in the room for
+  the probability to be at least 60% that two share a birthday?
+
+- In a hash table of 1000 slots, what is the smallest number of records
+  must be inserted before the probability of a collision reaches 50%?
 
 .. avembed:: AV/Hashing/Birthday.html
    :showbutton: show
