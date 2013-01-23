@@ -1,4 +1,4 @@
-﻿.. _Client-sideFramework
+﻿.. _Client-sideFramework:
 
 =============================
 OpenDSA Client-Side Framework
@@ -48,9 +48,9 @@ Proficiency data
   * When a logged in user obtains proficiency, the status is set to SUBMITTED and the appropriate proficiency indicator is displayed with a message stating that the grade is being saved.  The score is sent to the server and the proficiency display(s) is updated to reflect the response obtained from the server.  If the server confirms that the user's proficiency was successfully stored, the status changes to STORED and the saving message disappears.  If an error occurs the status is set to ERROR and the saving message is replaced with an error message, a warning indicator (to draw the user's attention to the exercise) and a 'Resubmit' link which allows the user to resend their score data without recompleting the exercise.
   * Caching a logged in user's proficiency allows us to reduce network traffic caused by the client checking whether or not a user is proficient
 
------------------------------
-Implementation and Operation:
------------------------------
+----------------------------
+Implementation and Operation
+----------------------------
 
 * With the exception of login, all data is sent to the server with a session key rather than the username.  The server is able to recover the username from the session and this should prevent data from inappropriately being sent as a different user.
 

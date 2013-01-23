@@ -115,21 +115,44 @@ NAME
 
 SYNOPSIS::
 
-    .. inlineav:: avId [slideshow | diagram]
+    .. inlineav:: avId
        :output: [show | hide]
+       :points: #
+       :required: [true | false]
+       :threshold: #
+       :type: [ss]
 
 DESCRIPTION
-    ``.. inlineav:: avId [slideshow | diagram]``
+    ``.. inlineav:: avId``
 
       Create a container for an inline AV with the given ID.
 
-      Providing the 'slideshow' argument will create an interactive slideshow.
-      Providing the 'diagram' argument will create a static example.
+      The points, required, threshold and type arguments are automatically
+      appended to the inlineav directive by the configuration process and
+      should not be added manually
 
     ``:output: [show | hide]``
 
       If the AV is a slideshow, controls whether or not the message box is displayed
       Note the 'output' argument is only valid for slideshows.
+    
+    ``:points: #``
+    
+      Added automatically by the configuration process, do NOT add manually
+    
+    ``:required: [true | false]``
+    
+      Added automatically by the configuration process, do NOT add manually
+    
+    ``:threshold: #``
+    
+      Added automatically by the configuration process, do NOT add manually
+    
+    ``:type: [ss]``
+    
+      Added automatically by the configuration process, do NOT add manually
+      If type is 'ss', the inlineav will be a slideshow.  If type is not
+      specified, the inlineav will be a diagram.
 
 numref
 ------
