@@ -261,6 +261,12 @@
             "threshold": 5,
             "type": "ka"
           },
+          "quicksortAV": {
+            "required": false,
+            "points": 0,
+            "threshold": 0,
+            "type": "ss"
+          },
           "QuicksortCON1": {
             "required": true,
             "points": 0.5,

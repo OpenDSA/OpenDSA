@@ -1,6 +1,39 @@
 "use strict";
 /*global alert: true, console: true, serverEnabled, sendEventData, moduleOrigin, AV_NAME: true, getNameFromURL, logUserAction, logEvent */
 
+/** This file should only be referenced by AVs (not modules) */
+
+// Create empty definitions for functions in ODSA.js (eliminates dependence of opendsaAV.js on ODSA.js)
+if (typeof AV_NAME === "undefined") {
+  // Define the console object if it doesn't exist to support IE without developer tools
+  if (!(window.console && console.log)) {
+    console = {
+      log: function () {},
+      debug: function () {},
+      info: function () {},
+      warn: function () {},
+      error: function () {}
+    };
+  }
+
+  var AV_NAME = '',
+      moduleOrigin = '';
+  
+  var serverEnabled = function() {
+    return false;
+  };
+  
+  var getNameFromURL = function() {
+    return '';
+  };
+  
+  var sendEventData = function() {},
+      logUserAction = function(avName, type, desc) {},
+      logEvent = function(data) {};
+  
+  console.warn('ODSA.js was not included, using fallback function definitions');
+}
+
 /**
  * The avcontainer element
  */
@@ -167,17 +200,7 @@ function processArrayValues(upperLimit) {
     return array;
   };
 
-  /**
-   * Extends the JSAV array with an isEmpty method that returns true
-   * if the array contains no values
-   */
-  JSAV._types.ds.AVArray.prototype.isEmpty = function () {
-    for (var i = 0; i < this.size(); i++) {
-      if (this.value(i) !== "") { return false; }
-    }
-    return true;
-  };
-
+  // TODO: Reimplement this using JSAV's built-in addClass and removeClass methods
   /**
    * Convenience function for highlighting the pivot value in blue
    */

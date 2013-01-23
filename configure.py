@@ -537,6 +537,7 @@ if conf_data['copy_static_files']:
   distutils.dir_util.copy_tree(code_dir, options['code_dir'], update=1)
   distutils.dir_util.copy_tree(odsa_dir + 'JSAV/lib/', output_dir + 'JSAV/lib/', update=1)
   distutils.dir_util.copy_tree(odsa_dir + 'JSAV/css/', output_dir + 'JSAV/css/', update=1)
+  distutils.dir_util.copy_tree(odsa_dir + 'JSAV/extras/', output_dir + 'JSAV/extras/', update=1)
   distutils.dir_util.mkpath(output_dir + 'JSAV/build/')
   distutils.file_util.copy_file(odsa_dir + 'JSAV/build/JSAV-min.js', output_dir + 'JSAV/build/JSAV-min.js')
 

@@ -5,7 +5,7 @@
   background-color: #FFC0CB;
 }
 .registration-popup {
-  height: 300px;
+  /*height: 300px;*/ /* The popup box must be as big as it is to accomodate space for errors */
   width: 250px;
 }
 .showHideLink {
