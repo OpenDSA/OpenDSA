@@ -6,7 +6,7 @@
   "module_origin": "http://algoviz.org",
   "exercise_origin": "http://algoviz.org",
   "backend_address": "http://198.82.152.245:8080/",
-  "copy_static_files": false,
+  "copy_static_files": true,
   "build_JSAV": false,
   "build_ODSA": true,
   "chapters": {

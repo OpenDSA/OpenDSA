@@ -1,3 +1,5 @@
+#! /usr/bin/python
+#
 # This script builds an OpenDSA textbook according to a specified configuration file
 #   - Reads the configuration information from the specified JSON config file
 #   - Auto-detects the OpenDSA root directory location

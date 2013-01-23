@@ -386,6 +386,10 @@ function loadModule(modName) {
       // Package exercises into a list so it can be stringified
       for (exerName in exercises) {
         if (exercises.hasOwnProperty(exerName)) {
+          // Update proficiency displays based on localStorage to make the page
+          // more responsive (don't have to wait until the server responds to see your proficiency)
+          updateProfDisplay(exerName);
+
           // Make a deep copy of the 'exercises' object, so we can add the
           // exercise name and remove uiid without affecting 'exercises'
           exerData = $.extend(true, {}, exercises[exerName]);
@@ -459,6 +463,13 @@ function loadModule(modName) {
       for (exerName in exercises) {
         if (exercises.hasOwnProperty(exerName)) {
           checkProficiency(exerName);
+
+          // Update Khan Academy exercise progress bar
+          /*
+          if (exercises[exerName].type === 'ka') {
+
+          }
+          */
         }
       }
 
@@ -688,15 +699,15 @@ function sendExerciseScore(exerName, username, sessionKey) {
       xhrFields: {withCredentials: true},
       success: function (data) {
         data = getJSON(data);
-        
+
         // Make sure score_data is up-to-date (localStorage concurrency issue)
         scoreData = getJSON(localStorage.score_data);
         // Delete the buffered score data, since the server replied successfully,
         // either it was stored successfully and should be removed or
-        // rejected and should be removed 
+        // rejected and should be removed
         delete scoreData[username][exerName];
         localStorage.score_data = JSON.stringify(scoreData);
-        
+
         // Clear the saved data once it has been successfully transmitted
         if (data.success) {
           // Check whether the user is proficient
@@ -1021,11 +1032,26 @@ function updateLogin() {
 //*****************************************************************************
 
 $(document).ready(function () {
-  //Dynamically add email address to make life harder to spammers
-  var name = "opendsa";
-  var place = "cs.vt.edu";
-  var theAddress = name + "@" + place;
-  $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" href="mailto:'+ theAddress + '" rel="nofollow">Contact Us</a>');
+  // Dynamically add obfuscated email address to discourage spammers
+
+  // Email obfuscator script 2.1 by Tim Williams, University of Arizona
+  // Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+  // This code is freeware provided these four comment lines remain intact
+  // A wizard to generate this code is at http://www.jottings.com/obfuscator/
+  var coded = "czSpsiM@Ei.ZT.Ssv",
+      key = "81fRgEkPiQjWvw4aTnyq5IKJCX3xeZ0HMoprdUGA2NbYFSlh7mcz6sDBVuOL9t",
+      shift = coded.length,
+      link = "";
+      
+  for (var i = 0; i < coded.length; i++) {
+    if (key.indexOf(coded.charAt(i)) === -1) {
+      link += coded.charAt(i);
+    } else {
+      link += key.charAt((key.indexOf(coded.charAt(i)) - shift + key.length) % key.length);
+    }
+  }
+
+  $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:' + link + '">Contact Us</a>');
 
   // Append the module complete code to the header
   $('h1 > a.headerlink').parent().css('position', 'relative');

@@ -50,13 +50,14 @@
         - Trailing '/' is optional
         - Ex: "backend_address": "https://opendsa.cc.vt.edu/",
 
-      - "copy_static_files" - a boolean which controls whether or not supplemental files should be copied to the output directory
+      - "copy_static_files" - a boolean which controls whether or not supplemental (non-built) files should be copied to the output directory
         - Supplemental files include:
           - AV
           - Exercises
           - JSAV-min.js and supporting JS and CSS files
           - Khan Academy files
           - lib files
+          - SourceCode files
         
         - If the OpenDSA root directory is web accessible, this can be set to false
         - If the OpenDSA root directory is not web accessible or you want the output directory (specified above) to contain all the files necessary to host OpenDSA, set this value to true
