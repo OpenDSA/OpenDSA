@@ -494,6 +494,7 @@ options['odsa_dir'] = odsa_dir
 options['ebook_dir'] = output_dir + "build/html/"
 options['code_dir'] = code_dir
 
+print "Copying files to output directory\n"
 
 # Initialize output directory
 distutils.dir_util.mkpath(src_dir)
