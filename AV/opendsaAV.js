@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, console: true, serverEnabled, sendEventData, moduleOrigin, AV_NAME: true, getNameFromURL, logUserAction, logEvent */
+/*global alert: true, console: true, serverEnabled: true, sendEventData: true, moduleOrigin: true, uiid: true, AV_NAME: true, getNameFromURL: true, logUserAction: true, logEvent: true */
 
 /** This file should only be referenced by AVs (not modules) */
 
@@ -17,19 +17,20 @@ if (typeof AV_NAME === "undefined") {
   }
 
   var AV_NAME = '',
-      moduleOrigin = '';
+      moduleOrigin = '',
+      uiid = +new Date();
   
-  var serverEnabled = function() {
+  var serverEnabled = function () {
     return false;
   };
   
-  var getNameFromURL = function() {
+  var getNameFromURL = function () {
     return '';
   };
   
-  var sendEventData = function() {},
-      logUserAction = function(avName, type, desc) {},
-      logEvent = function(data) {};
+  var sendEventData = function () {},
+      logUserAction = function (type, desc, exerName, eventUiid) {},
+      logEvent = function (data) {};
   
   console.warn('ODSA.js was not included, using fallback function definitions');
 }
@@ -64,6 +65,9 @@ var allowCredit = true;
  *         - Ex: Array data the user enters in the textbox should have a key 'user_array'
  */
 function logExerciseInit(initData) {
+  // Reset the uiid (unique instance identifier)
+  uiid = +new Date();
+  
   var data = {av: AV_NAME, type: 'odsa-exercise-init', desc: JSON.stringify(initData)};
   $("body").trigger("jsav-log-event", [data]);
 }
@@ -347,6 +351,9 @@ function processArrayValues(upperLimit) {
 
       // Overwrite the av attribute with the correct value
       data.av = AV_NAME;
+      
+      // Append the uiid
+      data.uiid = uiid;
 
       // If data.desc doesn't exist or is empty, initialize it
       if (!data.desc || data.desc === '') {
@@ -410,22 +417,22 @@ function processArrayValues(upperLimit) {
     // TODO: Remove explicit calls to logUserAction and sendEventData to decouple opendsaAV.js from ODSA.js
     if (serverEnabled()) {
       // Log the browser ready event
-      logUserAction(AV_NAME, 'document-ready', 'User loaded the ' + AV_NAME + ' AV');
+      logUserAction('document-ready', 'User loaded the ' + AV_NAME + ' AV');
 
       // Send any stored event data when the page loads
       sendEventData();
 
       $(window).focus(function (e) {
-        logUserAction(AV_NAME, 'window-focus', 'User looking at ' + AV_NAME + ' window');
+        logUserAction('window-focus', 'User looking at ' + AV_NAME + ' window');
       });
 
       $(window).blur(function (e) {
-        logUserAction(AV_NAME, 'window-blur', 'User is no longer looking at ' + AV_NAME + ' window');
+        logUserAction('window-blur', 'User is no longer looking at ' + AV_NAME + ' window');
       });
 
       $(window).on('beforeunload', function () {
         // Log the browser unload event
-        logUserAction(AV_NAME, 'window-unload', 'User closed or refreshed ' + AV_NAME + ' window');
+        logUserAction('window-unload', 'User closed or refreshed ' + AV_NAME + ' window');
       });
     }
   });
