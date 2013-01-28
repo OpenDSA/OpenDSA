@@ -605,7 +605,7 @@ odsaMOD.close()
 # opendsaMOD.js is always copied to the build location, so write the updated data to the output source directory
 with open(src_dir + '_static/opendsaMOD.js','w') as odsaMOD:
   replaced = 0
-  total_replacements = 2
+  total_replacements = 3
   
   for i in range(len(odsaMOD_data)):
     if 'var exerciseOrigin = "' in odsaMOD_data[i]:
@@ -616,6 +616,12 @@ with open(src_dir + '_static/opendsaMOD.js','w') as odsaMOD:
       
     if 'modData.book = "' in odsaMOD_data[i]:
       odsaMOD_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['name'] + r'\2', odsaMOD_data[i])
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
+    
+    if 'var allowAnonCredit = ' in odsaMOD_data[i]:
+      odsaMOD_data[i] = re.sub(r'(.+ = ).*(;.*)', r'\1' + str(conf_data['allow_anonymous_credit']).lower() + r'\2', odsaMOD_data[i])
       replaced = replaced + 1
       if replaced == total_replacements:
         break

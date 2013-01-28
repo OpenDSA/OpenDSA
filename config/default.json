@@ -9,6 +9,7 @@
   "copy_static_files": true,
   "build_JSAV": false,
   "build_ODSA": true,
+  "allow_anonymous_credit": true,
   "chapters": {
     "Preface": {
       "modules": {

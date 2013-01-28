@@ -21,6 +21,12 @@ var Status = {
   ERROR: 'ERROR'
 };
 
+/**
+ * Flag controlling whether or not the system will assign credit (
+ * scores) obtained by anonymous users to the next user to log in
+ */
+var allowAnonCredit = false;
+
 var readyTime = +new Date();  // TODO: For performance testing
 
 /**
@@ -178,7 +184,7 @@ function storeProficiencyStatus(name, status, username) {
     // User is not proficient, remove any data from the local proficiency cache
     delete profData[username][name];
   }
-  
+
   localStorage.proficiency_data = JSON.stringify(profData);
 
   if (debugMode) {
@@ -699,44 +705,46 @@ function getUserPoints() {
 function storeScoreData(newScoreData, username) {
   username = (username) ? username : getUsername();
 
-  if (debugMode) {
-    console.group('storeScoreData(' + JSON.stringify(newScoreData) + ', ' + ((username) ? username : 'the anonymous user') + ')');
-  }
-
-  if (serverEnabled()) {
-    // Load stored score_data if it exists
-    var scoreData = getJSON(localStorage.score_data);
-
+  if (allowAnonCredit || username !== '') {
     if (debugMode) {
-      console.debug('Storing exercise score for ' + ((username) ? username : 'the anonymous user'));
-      console.debug('scoreData (unmodified):');
-      console.debug(JSON.stringify(scoreData));
+      console.group('storeScoreData(' + JSON.stringify(newScoreData) + ', ' + ((username) ? username : 'the anonymous user') + ')');
     }
 
-    if (!scoreData) {
-      scoreData = {};
-    }
+    if (serverEnabled()) {
+      // Load stored score_data if it exists
+      var scoreData = getJSON(localStorage.score_data);
 
-    // If user does not have an entry in score data, create one
-    if (!scoreData[username]) {
       if (debugMode) {
-        console.debug('Creating a new score_data entry for ' + ((username) ? username : 'the anonymous user'));
+        console.debug('Storing exercise score for ' + ((username) ? username : 'the anonymous user'));
+        console.debug('scoreData (unmodified):');
+        console.debug(JSON.stringify(scoreData));
       }
 
-      scoreData[username] = [];
-    }
+      if (!scoreData) {
+        scoreData = {};
+      }
 
-    scoreData[username].push(newScoreData);
-    localStorage.score_data = JSON.stringify(scoreData);
+      // If user does not have an entry in score data, create one
+      if (!scoreData[username]) {
+        if (debugMode) {
+          console.debug('Creating a new score_data entry for ' + ((username) ? username : 'the anonymous user'));
+        }
+
+        scoreData[username] = [];
+      }
+
+      scoreData[username].push(newScoreData);
+      localStorage.score_data = JSON.stringify(scoreData);
+
+      if (debugMode) {
+        console.debug('scoreData (modified):');
+        console.debug(JSON.stringify(scoreData));
+      }
+    }
 
     if (debugMode) {
-      console.debug('scoreData (modified):');
-      console.debug(JSON.stringify(scoreData));
+      console.groupEnd();
     }
-  }
-
-  if (debugMode) {
-    console.groupEnd();
   }
 }
 
@@ -744,42 +752,50 @@ function storeScoreData(newScoreData, username) {
  * Assigns the anonymous score data to the given user
  */
 function assignAnonScoreData(username) {
-  username = (isDefined(username)) ? username : getUsername();
+  if (allowAnonCredit) {
+    username = (isDefined(username)) ? username : getUsername();
 
-  // Return is specified user is the anonymous user
-  if (!username) {
-    return;
-  }
+    // Return is specified user is the anonymous user
+    if (!username) {
+      return;
+    }
 
-  if (debugMode) {
-    console.group('assignAnonScoreData(' + username + ')');
-  }
+    if (debugMode) {
+      console.group('assignAnonScoreData(' + username + ')');
+    }
 
-  // Load score data
-  var scoreData = getJSON(localStorage.score_data);
+    // Load score data
+    var scoreData = getJSON(localStorage.score_data);
 
-  // Create a deep copy of anonymous user's data so that the original can be
-  // cleared and saved immediately to prevent accidentally overwriting data
-  var anonData = $.extend(true, [], scoreData['']);
+    // Create a deep copy of anonymous user's data so that the original can be
+    // cleared and saved immediately to prevent accidentally overwriting data
+    var anonData = $.extend(true, [], scoreData['']);
 
-  if (debugMode) {
-    console.debug('scoreData (unmodified):');
-    console.debug(JSON.stringify(scoreData));
-  }
+    if (debugMode) {
+      console.debug('scoreData (unmodified):');
+      console.debug(JSON.stringify(scoreData));
+    }
 
-  // Clear list of anonymous user's score objects
-  scoreData[''] = [];
-  localStorage.score_data = JSON.stringify(scoreData);
+    // Clear list of anonymous user's score objects
+    scoreData[''] = [];
+    localStorage.score_data = JSON.stringify(scoreData);
 
-  // Associate each score object with the given user
-  for (var i = 0; i < anonData.length; i ++) {
-    storeScoreData(anonData[i], username);
-  }
+    var validDate = new Date();
+    validDate.setDate(validDate.getDate() - 5);
 
-  if (debugMode) {
-    console.debug('scoreData (modified):');
-    console.debug(JSON.stringify(scoreData));
-    console.groupEnd();
+    // Associate each score object with the given user, if the
+    // exercise was completed within the last 5 days
+    for (var i = 0; i < anonData.length; i++) {
+      if (anonData[i].submit_time > +validDate) {
+        storeScoreData(anonData[i], username);
+      }
+    }
+
+    if (debugMode) {
+      console.debug('scoreData (modified):');
+      console.debug(JSON.stringify(scoreData));
+      console.groupEnd();
+    }
   }
 }
 
@@ -805,7 +821,7 @@ function storeExerciseScore(exerName, score, username) {
     return;
   }
 
-  if (serverEnabled()) {
+  if (serverEnabled() && (allowAnonCredit || userLoggedIn())) {
     var data = {};
     data.exercise = exerName;
     data.submit_time = (new Date()).getTime();
@@ -1001,9 +1017,6 @@ function sendExerciseScores(username, sessionKey) {
     // cleared and saved to prevent accidentally overwriting data
     var userData = $.extend(true, [], scoreData[username]);
 
-    scoreData[username] = [];
-    localStorage.score_data = JSON.stringify(scoreData);
-
     if (debugMode) {
       console.debug('sendExerciseScores(' + username + ', ' + sessionKey + ')');
       console.debug('scoreData:');
@@ -1011,6 +1024,9 @@ function sendExerciseScores(username, sessionKey) {
       console.debug('userData:');
       console.debug(JSON.stringify(userData));
     }
+
+    scoreData[username] = [];
+    localStorage.score_data = JSON.stringify(scoreData);
 
     // Send score data for the specified user
     for (var i = 0; i < userData.length; i++) {
