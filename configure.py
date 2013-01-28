@@ -91,11 +91,11 @@ def process_section(section, index_file, depth):
 
 def process_modules(section, index_file, depth):
   for module in section:
-    if module == 'Intro':
-      continue
-    
     print ("  " * depth) + module
     index_file.write("   " + module + "\n")
+    
+    if module == 'ToDo':
+      continue
     
     with open(odsa_dir + 'RST/source/' + module + '.rst','r') as mod_file:
       # Read the contents of the module RST file from the ODST RST source directory

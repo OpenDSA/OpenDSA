@@ -157,9 +157,9 @@ function storeProficiencyStatus(name, status, username) {
   if (debugMode) {
     console.debug('storeProficiencyStatus(' + name + ', ' + status + ', ' + username + ')');
     console.debug('profData (unmodified):');
-    console.debug(profData);
+    console.debug(JSON.stringify(profData));
     console.debug('data:');
-    console.debug(data);
+    console.debug(JSON.stringify(data));
   }
 
   // Check whether user has an entry
@@ -178,15 +178,12 @@ function storeProficiencyStatus(name, status, username) {
     // User is not proficient, remove any data from the local proficiency cache
     delete profData[username][name];
   }
-
-  if (debugMode) {
-    console.debug('profData (modified):');
-    console.debug(profData);
-  }
-
+  
   localStorage.proficiency_data = JSON.stringify(profData);
 
   if (debugMode) {
+    console.debug('profData (modified):');
+    console.debug(JSON.stringify(profData));
     console.groupEnd();
   }
 }
@@ -357,8 +354,8 @@ function checkProficiency(name, username) {
         data = getJSON(data);
 
         if (debugMode) {
-          console.group('checkProficiency(' + name + ', ' + username + '), server response');
-          console.debug(data);
+          console.group('Server response, checkProficiency(' + name + ', ' + username + ')');
+          console.debug(JSON.stringify(data));
         }
 
         // Proficiency indicators were cleared above, only need to
@@ -373,13 +370,13 @@ function checkProficiency(name, username) {
       },
       error: function (data) {
         data = getJSON(data);
-        
+
         if (data.status === 404) {
           console.warn(name + ' does not exist in the database');
         } else {
           console.group('checkProficiency(' + name + ', ' + username + '), error');
-          console.error("Error checking proficiency: " + name);
-          console.error(data);
+          console.debug("Error checking proficiency: " + name);
+          console.debug(JSON.stringify(data));
           console.groupEnd();
         }
       }
@@ -513,7 +510,7 @@ function loadModule(modName) {
 
       if (debugMode) {
         console.debug('Sending modData:');
-        console.debug(modData);
+        console.debug(JSON.stringify(modData));
       }
 
       jQuery.ajax({
@@ -527,8 +524,8 @@ function loadModule(modName) {
           data = getJSON(data);
 
           if (debugMode) {
-            console.group('loadModule(' + modName + ', ' + username + '), server response');
-            console.debug(data);
+            console.group('Server response, loadModule(' + modName + ', ' + username + ')');
+            console.debug(JSON.stringify(data));
           }
 
           // Loop through all the exercises listed in the server's response and update the user's status for each exercise
@@ -573,7 +570,7 @@ function loadModule(modName) {
         error: function (data) {
           data = getJSON(data);
           console.group("Error loading module: " + modName);
-          console.debug(data);
+          console.debug(JSON.stringify(data));
           console.groupEnd();
         }
       });
@@ -687,10 +684,59 @@ function getUserPoints() {
         $('#pointsBox').hide();
         $('table.data').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
 
-        console.error("Error getting user's points");
-        console.error(data);
+        console.debug("Error getting user's points");
+        console.debug(JSON.stringify(data));
       }
     });
+  }
+}
+
+/**
+ * Adds the specified score data to the user's list
+ *   - newScoreData - the score data to store
+ *   - username (optional) - the user to whom the score belongs
+ */
+function storeScoreData(newScoreData, username) {
+  username = (username) ? username : getUsername();
+
+  if (debugMode) {
+    console.group('storeScoreData(' + JSON.stringify(newScoreData) + ', ' + ((username) ? username : 'the anonymous user') + ')');
+  }
+
+  if (serverEnabled()) {
+    // Load stored score_data if it exists
+    var scoreData = getJSON(localStorage.score_data);
+
+    if (debugMode) {
+      console.debug('Storing exercise score for ' + ((username) ? username : 'the anonymous user'));
+      console.debug('scoreData (unmodified):');
+      console.debug(JSON.stringify(scoreData));
+    }
+
+    if (!scoreData) {
+      scoreData = {};
+    }
+
+    // If user does not have an entry in score data, create one
+    if (!scoreData[username]) {
+      if (debugMode) {
+        console.debug('Creating a new score_data entry for ' + ((username) ? username : 'the anonymous user'));
+      }
+
+      scoreData[username] = [];
+    }
+
+    scoreData[username].push(newScoreData);
+    localStorage.score_data = JSON.stringify(scoreData);
+
+    if (debugMode) {
+      console.debug('scoreData (modified):');
+      console.debug(JSON.stringify(scoreData));
+    }
+  }
+
+  if (debugMode) {
+    console.groupEnd();
   }
 }
 
@@ -710,49 +756,29 @@ function assignAnonScoreData(username) {
   }
 
   // Load score data
-  var scoreData = getJSON(localStorage.score_data),
-      exerData;
+  var scoreData = getJSON(localStorage.score_data);
+
+  // Create a deep copy of anonymous user's data so that the original can be
+  // cleared and saved immediately to prevent accidentally overwriting data
+  var anonData = $.extend(true, [], scoreData['']);
 
   if (debugMode) {
     console.debug('scoreData (unmodified):');
-    console.debug(scoreData);
+    console.debug(JSON.stringify(scoreData));
   }
 
-  if (!scoreData[username]) {
-    if (debugMode) {
-      console.debug('Creating a new score_data entry for ' + username);
-    }
+  // Clear list of anonymous user's score objects
+  scoreData[''] = [];
+  localStorage.score_data = JSON.stringify(scoreData);
 
-    scoreData[username] = {};
-  }
-
-  // Loop through anonymous user's score data
-  for (var exerName in scoreData['']) {
-    if (scoreData[''].hasOwnProperty(exerName)) {
-      // Get the anonymous user's data for an exercise
-      exerData = scoreData[''][exerName];
-      delete scoreData[''][exerName];
-
-      if (scoreData[username][exerName]) {
-        // If the given user already has an entry for that exercise, keep the one with the higher score
-        if (exerData.score > scoreData[username][exerName].score) {
-          scoreData[username][exerName] = exerData;
-        }
-      } else {
-        // If the given user doesn't have an entry for the exercise, add it
-        scoreData[username][exerName] = exerData;
-      }
-    }
+  // Associate each score object with the given user
+  for (var i = 0; i < anonData.length; i ++) {
+    storeScoreData(anonData[i], username);
   }
 
   if (debugMode) {
     console.debug('scoreData (modified):');
-    console.debug(scoreData);
-  }
-
-  localStorage.score_data = JSON.stringify(scoreData);
-
-  if (debugMode) {
+    console.debug(JSON.stringify(scoreData));
     console.groupEnd();
   }
 }
@@ -780,60 +806,34 @@ function storeExerciseScore(exerName, score, username) {
   }
 
   if (serverEnabled()) {
-    // Load stored score_data if it exists
-    var scoreData = getJSON(localStorage.score_data);
+    var data = {};
+    data.exercise = exerName;
+    data.submit_time = (new Date()).getTime();
+    data.module = moduleName;
+    data.score = score;
+    data.total_time = 0;  // TODO: Figure out how to record total time
+    data.uiid = exercises[exerName].uiid;
 
     if (debugMode) {
       console.debug('Storing exercise score for ' + ((username) ? username : 'the anonymous user'));
-      console.debug('scoreData (unmodified):');
-      console.debug(scoreData);
+      console.debug('data:');
+      console.debug(JSON.stringify(data));
     }
 
-    // If user does not have an entry in score data, create one
-    if (!scoreData[username]) {
-      if (debugMode) {
-        console.debug('Creating a new score_data entry for ' + ((username) ? username : 'the anonymous user'));
-      }
+    // Save the score data in localStorage
+    storeScoreData(data, username);
+  }
 
-      scoreData[username] = {};
-    }
-
-    // If the user does not have buffered data for the given exercise or if the new score is higher, save the score data
-    if (!scoreData[username][exerName] || score >= scoreData[username][exerName].score) {
-      var data = {};
-      data.submit_time = (new Date()).getTime();
-      data.module = moduleName;
-      data.score = score;
-      data.total_time = 0;  // TODO: Figure out how to record total time
-      data.uiid = exercises[exerName].uiid;
-      scoreData[username][exerName] = data;
-
-      if (debugMode) {
-        console.debug('scoreData (modified):');
-        console.debug(scoreData);
-      }
-
-      // Save score data to localStorage
-      localStorage.score_data = JSON.stringify(scoreData);
-    }
-
-    if (!userLoggedIn() && score >= exercises[exerName].threshold) {
-      if (debugMode) {
-        console.debug('Award anonymous user proficiency');
-      }
-
-      // Server is enabled but no one is logged in, allow client to determine proficiency based on the threshold
-      storeStatusAndUpdateDisplays(exerName, Status.STORED, username);
-    }
-  } else if (score >= exercises[exerName].threshold) {
+  // If the score is above the threshold and the server isn't enabled or it
+  // is and no one is logged in, award proficiency to the anonymous user
+  if (score >= exercises[exerName].threshold && (!serverEnabled() || !userLoggedIn())) {
     if (debugMode) {
       console.debug('Award anonymous user proficiency');
     }
 
-    // Server is not enabled, so scores can't be verified, simply mark them as STORED if they are above the threshold
     storeStatusAndUpdateDisplays(exerName, Status.STORED, username);
   }
-  
+
   if (debugMode) {
     console.groupEnd();
   }
@@ -842,15 +842,16 @@ function storeExerciseScore(exerName, score, username) {
 /**
  * Sends the score for a single exercise
  */
-function sendExerciseScore(exerName, username, sessionKey) {
+function sendExerciseScore(exerData, username, sessionKey) {
   if (debugMode) {
-    console.group('sendExerciseScore(' + exerName + ', ' + username + ', ' + sessionKey + ')');
+    console.group('sendExerciseScore(exerData, ' + username + ', ' + sessionKey + ')');
+    console.debug(JSON.stringify(exerData));
   }
 
   if (serverEnabled()) {
-    // Issue a warning if called without an exercise name
-    if (!exerName) {
-      console.warn('Invalid exercise name: sendExerciseScore(' + exerName + ', ' + username + ', ' + sessionKey + ')');
+    // Issue a warning if called without exercise data
+    if (!exerData) {
+      console.warn('Invalid exercise data: ' + JSON.stringify(exerData));
       if (debugMode) {
         console.groupEnd();
       }
@@ -861,7 +862,7 @@ function sendExerciseScore(exerName, username, sessionKey) {
     username = (isDefined(username)) ? username : getUsername();
 
     if (debugMode) {
-      console.debug('sendExerciseScore(' + exerName + ', ' + username + ', ' + sessionKey + ')');
+      console.debug('sendExerciseScore(exerData, ' + username + ', ' + sessionKey + ')');
     }
 
     if (!username) {
@@ -877,42 +878,24 @@ function sendExerciseScore(exerName, username, sessionKey) {
       return;
     }
 
-    // TODO: Fix localStorage concurrency issue
-    // Load stored score data from localStorage
-    var scoreData = getJSON(localStorage.score_data),
-        profStored = false,
-        exerData;
-
-    // Return if there is no score data
-    if (scoreData === {} || !scoreData[username]) {
-      if (debugMode) {
-        console.debug('No score data for ' + username);
-        console.groupEnd();
-      }
-      return;
-    }
-
     // Determine if the user is already proficient
-    exerData = getCachedProf(exerName, username);
-
-    if (exerData && exerData.status === Status.STORED) {
-      profStored = true;
-    }
-
-    // Get the user's score data for the given exercise, append the session key and exercise name
-    exerData = scoreData[username][exerName];
-    exerData.key = sessionKey;
-    exerData.exercise = exerName;
+    var profData = getCachedProf(exerData.exercise, username),
+        profStored = false;
 
     // If user's proficiency is already confirmed by the server, don't confuse them by changing the status
-    if (!profStored) {
+    if (profData && profData.status === Status.STORED) {
+      profStored = true;
+    } else {
       // Update exercise status to SUBMITTED
-      storeStatusAndUpdateDisplays(exerName, Status.SUBMITTED, username);
+      storeStatusAndUpdateDisplays(exerData.exercise, Status.SUBMITTED, username);
     }
+
+    // Append the session key to the exercise data
+    exerData.key = sessionKey;
 
     if (debugMode) {
       console.debug('Sending exerData:');
-      console.debug(exerData);
+      console.debug(JSON.stringify(exerData));
     }
 
     // Submit the user's score
@@ -927,17 +910,9 @@ function sendExerciseScore(exerName, username, sessionKey) {
         data = getJSON(data);
 
         if (debugMode) {
-          console.group('sendExerciseScore(' + exerName + ', ' + username + ', ' + sessionKey + '), server response');
-          console.debug(data);
+          console.group('Server response, sendExerciseScore(exerData, ' + username + ', ' + sessionKey + ')');
+          console.debug(JSON.stringify(data));
         }
-        
-        // Make sure score_data is up-to-date (localStorage concurrency issue)
-        scoreData = getJSON(localStorage.score_data);
-        // Delete the buffered score data, since the server replied successfully,
-        // either it was stored successfully and should be removed or
-        // rejected and should be removed
-        delete scoreData[username][exerName];
-        localStorage.score_data = JSON.stringify(scoreData);
 
         // Clear the saved data once it has been successfully transmitted
         if (data.success) {
@@ -945,52 +920,52 @@ function sendExerciseScore(exerName, username, sessionKey) {
           if (data.proficient) {
             // If the status is already STORED, don't need to change it
             if (!profStored) {
-              storeStatusAndUpdateDisplays(exerName, Status.STORED, username);
+              storeStatusAndUpdateDisplays(exerData.exercise, Status.STORED, username);
             }
           } else {
             // If server successfully replies, but user's proficiency is not verified, revoke their proficiency on the client (to keep everything in sync)
-            storeStatusAndUpdateDisplays(exerName, false, username);
+            storeStatusAndUpdateDisplays(exerData.exercise, false, username);
           }
         } else if (!profStored) {
           // If server replies as unsuccessful, stored status as ERROR
-          storeStatusAndUpdateDisplays(exerName, Status.ERROR, username);
+          storeStatusAndUpdateDisplays(exerData.exercise, Status.ERROR, username);
         }
-        
+
         if (debugMode) {
           console.groupEnd();
         }
       },
       error: function (data) {
         data = getJSON(data);
-        
+
         if (debugMode) {
-          console.group('sendExerciseScore(' + exerName + ', ' + username + ', ' + sessionKey + '), error');
-          console.debug(data);
+          console.group('sendExerciseScore(exerData, ' + username + ', ' + sessionKey + '), error');
+          console.debug(JSON.stringify(data));
         }
 
         // If user's proficiency is already confirmed by the server, don't confuse them by changing the status
         if (!profStored) {
           // Mark the exercise as having encountered a server error
-          storeStatusAndUpdateDisplays(exerName, Status.ERROR, username);
+          storeStatusAndUpdateDisplays(exerData.exercise, Status.ERROR, username);
         }
 
         if (data.status === 400) {    // Bad request
-          // Make sure scoreData is up-to-date (localStorage concurrency issue)
-          scoreData = getJSON(localStorage.score_data);
-          // Server rejected score data, discard the rejected
-          // score data so it doesn't affect future attempts
-          delete scoreData[username][exerName];
-          localStorage.score_data = JSON.stringify(scoreData);
-
-          console.error("Score rejected by server: " + exerName + " for " + username);
-          console.error(data);
-        } else if (data.status === 404) {
-          console.warn('Exercise does not exist in the database');
+          console.debug("Score rejected by server: " + exerData.exercise + " for " + username);
+          console.debug(JSON.stringify(data));
         } else {
-          console.error("Error sending exercise score: " + exerName + " for " + username);
-          console.error(data);
+          // Failed to send the score data which has already been
+          // removed from the buffer, so save it back to the buffer
+          delete exerData.key;
+          storeScoreData(exerData, username);
+
+          if (data.status === 404) {
+            console.warn('Exercise does not exist in the database');
+          } else {
+            console.debug("Error sending exercise score: " + exerData.exercise + " for " + username);
+            console.debug(JSON.stringify(data));
+          }
         }
-        
+
         if (debugMode) {
           console.groupEnd();
         }
@@ -1022,17 +997,24 @@ function sendExerciseScores(username, sessionKey) {
     // Load buffered score data
     var scoreData = getJSON(localStorage.score_data);
 
+    // Create a deep copy of user's score data so the original can be
+    // cleared and saved to prevent accidentally overwriting data
+    var userData = $.extend(true, [], scoreData[username]);
+
+    scoreData[username] = [];
+    localStorage.score_data = JSON.stringify(scoreData);
+
     if (debugMode) {
       console.debug('sendExerciseScores(' + username + ', ' + sessionKey + ')');
       console.debug('scoreData:');
-      console.debug(scoreData);
+      console.debug(JSON.stringify(scoreData));
+      console.debug('userData:');
+      console.debug(JSON.stringify(userData));
     }
 
     // Send score data for the specified user
-    for (var exerName in scoreData[username]) {
-      if (scoreData[username].hasOwnProperty(exerName)) {
-        sendExerciseScore(exerName, username, sessionKey);
-      }
+    for (var i = 0; i < userData.length; i++) {
+      sendExerciseScore(userData[i], username, sessionKey);
     }
   }
 
@@ -1065,7 +1047,7 @@ function flushStoredData() {
 function processEventData(data) {
   if (debugMode) {
     console.group('processEventData(data)');
-    console.debug(data);
+    console.debug(JSON.stringify(data));
   }
 
   var flush = false,
@@ -1274,7 +1256,7 @@ function updateLogin() {
   if (debugMode) {
     console.group('updateLogin()');
   }
-  
+
   if (serverEnabled()) {
     var username = getUsername(),
         updated = false;
@@ -1309,7 +1291,7 @@ function updateLogin() {
       if (debugMode) {
         console.debug($('a.login-window').text() + ' has logged out since the last page refresh, update the page');
       }
-      
+
       // If a user was logged in on the page, but has since logged out, update the page with the anonymous user state
       updated = true;
 
@@ -1504,7 +1486,7 @@ $(document).ready(function () {
           if (debugMode) {
             console.group('User logged in');
           }
-          
+
           if (data.success) {
             updateLocalStorage(username, data.key);
             localStorage.name = username;
@@ -1513,7 +1495,7 @@ $(document).ready(function () {
             assignAnonScoreData(username);
             updateLogin();
           }
-          
+
           if (debugMode) {
             console.groupEnd();
           }
