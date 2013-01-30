@@ -22,10 +22,15 @@ var Status = {
 };
 
 /**
+ * Stores the name of the book, used to uniquely identify a book in the database
+ */
+var bookName = "OpenDSA";
+
+/**
  * Flag controlling whether or not the system will assign credit (
  * scores) obtained by anonymous users to the next user to log in
  */
-var allowAnonCredit = false;
+var allowAnonCredit = true;
 
 var readyTime = +new Date();  // TODO: For performance testing
 
@@ -380,7 +385,7 @@ function checkProficiency(name, username) {
         if (data.status === 404) {
           console.warn(name + ' does not exist in the database');
         } else {
-          console.group('checkProficiency(' + name + ', ' + username + '), error');
+          console.group('Error: checkProficiency(' + name + ', ' + username + ')');
           console.debug("Error checking proficiency: " + name);
           console.debug(JSON.stringify(data));
           console.groupEnd();
@@ -477,6 +482,9 @@ function loadModule(modName) {
         checkProficiency(modName);
       }
     });
+  } else if (modName === "Gradebook") {
+    // Trigger loading the gradebook
+    $("body").trigger("gradebook-load", []);
   } else {
     var exerName;
 
@@ -508,7 +516,7 @@ function loadModule(modName) {
 
       // Package the module data
       modData.key = getSessionKey();
-      modData.book = "OpenDSA";
+      modData.book = bookName;
       // Calculate the URL of the book, relative to the current module page
       modData.url = location.href.substring(0, location.href.lastIndexOf('/') + 1);
       modData.module = modName;
@@ -613,89 +621,6 @@ function loadModule(modName) {
 //*****************************************************************************
 //***********                    Scoring System                     ***********
 //*****************************************************************************
-
-/**
- * Populates the grade table on the student page
- */
-function gradeDisplays(data) {
-  // Create the table header
-  var i = 0,
-      total = 0,
-      type,
-      max,
-      points,
-      row = '<tr class="header">';
-
-  row += '<th style=""><a href="#" class="sort"><span>Exercises</span></a></th>';
-  row += '<th style=""><a href="#" class="sort"><span>Modules</span></a></th>';
-  row += '<th style=""><a href="#" class="sort"><span>Points</span></a></th>';
-  row += '</tr>';
-  $(row).appendTo('table.data');
-
-  row = '';
-  for (i = 0; i < data.grades.length; i++) {
-    row += '<tr id="' + i + '">';
-    row += '<td>' + data.grades[i].exercise + '</td>';
-    row += '<td>' + data.grades[i].module + '</td>';
-
-    type = (data.grades[i].type !== "") ? data.grades[i].type : 'ss';
-    max = data.max_points[type];
-    points = parseFloat(data.grades[i].points);
-
-    row += (points > 0) ? '<td bgcolor="#00FF00">' : '<td>';
-    row += points.toFixed(2) + '/' + parseFloat(max).toFixed(2) + '</td></tr>';
-    total += points;
-  }
-  $(row).appendTo('table.data');
-
-  // Create the table footer with
-  row = '<tr class="header">';
-  row += '<th></th><th><span>Total</span></th>';
-  row += '<th><span>' + total.toFixed(2) + '</span></th>';
-  row += '</tr>';
-  $(row).appendTo('table.data');
-  $('#pointsBox').hide();
-  $('#example').css('margin', '10px');
-}
-
-/**
- * Queries the server for the user's points
- */
-function getUserPoints() {
-  // Check server for user's points
-  if (serverEnabled() && userLoggedIn()) {
-    // get user points
-    jQuery.ajax({
-      url:   server_url + "/api/v1/userdata/getgrade/",
-      type:  "POST",
-      data: {"key": getSessionKey()},
-      contentType: "application/json; charset=utf-8",
-      datatype: "json",
-      xhrFields: {withCredentials: true},
-      success: function (data) {
-        data = getJSON(data);
-
-        if (data.grades) {
-          gradeDisplays(data);
-        } else {
-          // Remove the loading message and display an error message to the user
-          $('#pointsBox').hide();
-          $('table.data').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
-        }
-      },
-      error: function (data) {
-        data = getJSON(data);
-
-        // Remove the loading message and display an error message to the user
-        $('#pointsBox').hide();
-        $('table.data').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
-
-        console.debug("Error getting user's points");
-        console.debug(JSON.stringify(data));
-      }
-    });
-  }
-}
 
 /**
  * Adds the specified score data to the user's list
@@ -955,7 +880,7 @@ function sendExerciseScore(exerData, username, sessionKey) {
         data = getJSON(data);
 
         if (debugMode) {
-          console.group('sendExerciseScore(exerData, ' + username + ', ' + sessionKey + '), error');
+          console.group('Error: sendExerciseScore(exerData, ' + username + ', ' + sessionKey + ')');
           console.debug(JSON.stringify(data));
         }
 
@@ -1284,10 +1209,6 @@ function updateLogin() {
 
       // If a user is logged in, but its not the one that appears logged in on the page, update the page
       updated = true;
-
-      if (getNameFromURL() === "student") {
-        getUserPoints();
-      }
 
       // Update display to show logged in user
       $('a.login-window').text('Logout');

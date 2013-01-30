@@ -1,5 +1,4 @@
 {
-  "name": "CS3114",
   "title": "OpenDSA (Beta)",
   "output_dir": "Books/CS3114",
   "code_dir": "SourceCode/Processing",
@@ -634,6 +633,7 @@
     },
     "Appendix": {
       "modules": {
+        "Gradebook": {},
         "Glossary": {},
         "Bibliography": {},
         "ToDo": {}

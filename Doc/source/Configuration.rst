@@ -42,13 +42,13 @@ Format
     
   * Abundance of online JSON validators and formatters
 
+* Book name
+
+  * The name of the configuration file will be used to uniquely identify this instance of OpenDSA in the backend database
+
 
 Settings (all are required unless otherwise specified)
 ======================================================
-
-* "name" (optional) - the name of the book (used to uniquely identify an OpenDSA book in the backend database
-
-  * If no name is specified, the name of the config file will be used
 
 * "title" - the title of the OpenDSA textbook
 

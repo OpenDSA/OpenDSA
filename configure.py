@@ -447,9 +447,8 @@ with open(config_file) as config:
   conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
 config.close()
 
-# If 'name' is not specified in the config file, parse and use the name of the config file itself
-if not conf_data['name']:
-  conf_data['name'] = os.path.basename(config_file).replace('.json', '')
+# Parse the name of the config file to use as the book name
+conf_data['name'] = os.path.basename(config_file).replace('.json', '')
 
 
 # Auto-detect ODSA directory
@@ -522,6 +521,9 @@ for src_file in os.listdir(odsa_dir + 'RST/source/'):
     distutils.dir_util.copy_tree(src_file_path, src_dir + src_file, update=1)
   elif not src_file.endswith('.rst'):
     distutils.file_util.copy_file(src_file_path, src_dir)
+
+# Copy config file to _static directory
+distutils.file_util.copy_file(config_file, src_dir + '_static/')
 
 # Copy static files to output directory
 if conf_data['copy_static_files']:
@@ -614,7 +616,7 @@ with open(src_dir + '_static/opendsaMOD.js','w') as odsaMOD:
       if replaced == total_replacements:
         break
       
-    if 'modData.book = "' in odsaMOD_data[i]:
+    if 'var bookName = "' in odsaMOD_data[i]:
       odsaMOD_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['name'] + r'\2', odsaMOD_data[i])
       replaced = replaced + 1
       if replaced == total_replacements:

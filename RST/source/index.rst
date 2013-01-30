@@ -144,6 +144,7 @@ Appendix
    :numbered:
    :maxdepth: 3
 
+   Gradebook
    Glossary
    Bibliography
    ToDo
