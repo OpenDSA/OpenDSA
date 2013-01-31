@@ -17,7 +17,7 @@
     },
     "Sorting": {
       "modules": {
-        "Sorting": {
+        "SortIntro": {
           "SortIntroSumm": {
             "required": true,
             "points": 1,
@@ -633,10 +633,9 @@
     },
     "Appendix": {
       "modules": {
-        "Gradebook": {},
         "Glossary": {},
         "Bibliography": {},
-        "ToDo": {}
+        "Gradebook": {}
       }
     }
   }

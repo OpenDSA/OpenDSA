@@ -7,14 +7,14 @@
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Sorting
-   :short_name: Sorting
+   :short_name: SortIntro
    :exercises: SortIntroSumm
 
-.. _Sorting:
+.. _SortIntro:
 
 .. include:: JSAVheader.rinc
 
-.. index:: ! sorting
+.. index:: ! SortIntro
 
 Introduction
 ============

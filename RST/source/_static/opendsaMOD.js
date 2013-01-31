@@ -132,6 +132,8 @@ function showHide(btnID) {
  * record of the current user being proficient
  */
 function getCachedProf(name, username) {
+  username = (isDefined(username)) ? username : getUsername();
+  
   // Check for proficiency status in localStorage
   if (inLocalStorage("proficiency_data")) {
     var profData = getJSON(localStorage.proficiency_data);
@@ -484,7 +486,7 @@ function loadModule(modName) {
     });
   } else if (modName === "Gradebook") {
     // Trigger loading the gradebook
-    $("body").trigger("gradebook-load", []);
+    $("body").trigger("gradebook-load");
   } else {
     var exerName;
 

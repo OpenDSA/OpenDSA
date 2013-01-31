@@ -1,143 +1,180 @@
 ﻿"use strict";
-/*global console: true, debugMode, serverEnabled, userLoggedIn, getUsername, getSessionKey, getJSON, server_url, moduleName */
+/*global console: true, debugMode, serverEnabled, userLoggedIn, getUsername, getSessionKey, getJSON, server_url, moduleName, getCachedProf, bookName, Status */
 
-(function($) {
-  var Gradebook = {};
-  
+(function ($) {
   /**
-   * Populates the grade table on the student page
+   * How fast to show and hide subsections
    */
-  function gradeDisplays(data) {
-    // Create the table header
-    var i = 0,
-        total = 0,
-        type,
-        max,
-        points,
-        row = '<tr class="header">';
+  var speed = 300;
 
-    row += '<th style=""><a href="#" class="sort"><span>Exercises</span></a></th>';
-    row += '<th style=""><a href="#" class="sort"><span>Modules</span></a></th>';
-    row += '<th style=""><a href="#" class="sort"><span>Points</span></a></th>';
-    row += '</tr>';
-    $(row).appendTo('table.data');
+  var Gradebook = {};
 
-    row = '';
-    for (i = 0; i < data.grades.length; i++) {
-      row += '<tr id="' + i + '">';
-      row += '<td>' + data.grades[i].exercise + '</td>';
-      row += '<td>' + data.grades[i].module + '</td>';
-
-      type = (data.grades[i].type !== "") ? data.grades[i].type : 'ss';
-      max = data.max_points[type];
-      points = parseFloat(data.grades[i].points);
-
-      row += (points > 0) ? '<td bgcolor="#00FF00">' : '<td>';
-      row += points.toFixed(2) + '/' + parseFloat(max).toFixed(2) + '</td></tr>';
-      total += points;
-    }
-    $(row).appendTo('table.data');
-
-    // Create the table footer with
-    row = '<tr class="header">';
-    row += '<th></th><th><span>Total</span></th>';
-    row += '<th><span>' + total.toFixed(2) + '</span></th>';
-    row += '</tr>';
-    $(row).appendTo('table.data');
-    $('#pointsBox').hide();
-    $('#example').css('margin', '10px');
-  }
-
-  function loadSection(section, secData, depth) {
+  /**
+   * Generates a table of exercises and the user's score, for the given module
+   */
+  function loadModule(modName, modData, depth) {
     if (debugMode) {
-      console.group('loadSection(' + section + ', secData, ' + depth + ')');
-      console.debug(JSON.stringify(secData));
+      console.group('loadModule(' + modName + ', modData, ' + depth + ')');
+      console.debug(JSON.stringify(modData));
     }
 
-    var username = getUsername(),
-        profData = getJSON(localStorage.proficiency_data);
+    var userTotal = 0,
+        modTotal = 0,
+        html = '';
 
-    $('#gradeData').append('<h' + (depth + 1) + '>' + section + '</h' + (depth + 1) + '>');
+    if (Object.keys(modData).length === 0) { // Module contains no exercises
+      html = 'There are no exercises in this section';
+    } else {
+      var userProfData = getJSON(localStorage.proficiency_data)[getUsername()],
+          // If this value stays at -1 after looping through all exercises,
+          // there are no exercises worth points in the module
+          userPoints = -1, 
+          exerPoints = 0;
 
-    if (profData[username]) {
-      profData = profData[username];
-    }
+      // Generate the table of exercises
+      html = '<table id="' + modName + '-exercises" class="data" width="90%">';
+      html += '<tr class="header"><th>Exercises</th><th>Points</th></tr>';
 
-    if (secData.modules) {
-      var userPoints = 0,
-          exerPoints = 0,
-          userTotal = 0,
-          total = 0,
-          rowsAdded = 0,
-          html = '<table id="' + section + '" class="data">';
-      html += '<tr class="header">';
-      html += '<th style=""><a href="#" class="sort"><span>Exercises</span></a></th>';
-      html += '<th style=""><a href="#" class="sort"><span>Modules</span></a></th>';
-      html += '<th style=""><a href="#" class="sort"><span>Points</span></a></th>';
-      html += '</tr>';
+      for (var exercise in modData) {
+        if (modData.hasOwnProperty(exercise) && modData[exercise].points) {
+          userPoints = 0;
 
-      for (var module in secData.modules) {
-        if (secData.modules.hasOwnProperty(module)) {
-          for (var exercise in secData.modules[module]) {
-            if (secData.modules[module].hasOwnProperty(exercise) && secData.modules[module][exercise].points) {
-              userPoints = 0;
-
-              if (profData[exercise] && profData[exercise].points) {
-                userPoints = parseFloat(profData[exercise].points);
-                userTotal += userPoints;
-              }
-
-              exerPoints = parseFloat(secData.modules[module][exercise].points);
-              total += exerPoints;
-
-              html += '<tr id="' + exercise + '"><td>' + exercise + '</td><td>' + module + '</td>';
-              html += (userPoints > 0) ? '<td bgcolor="#00FF00">' : '<td>';
-              html += userPoints.toFixed(2) + '/' + exerPoints.toFixed(2) + '</td></tr>';
-              rowsAdded++;
-            }
+          // Get user's points from local proficiency cache
+          if (userProfData && userProfData[exercise] && userProfData[exercise].points) {
+            userPoints = parseFloat(userProfData[exercise].points);
+            userTotal += userPoints;
           }
+
+          // Determine how many points the exercise is worth and keep a running total for the module
+          exerPoints = parseFloat(modData[exercise].points);
+          modTotal += exerPoints;
+
+          // Create a row in the table for the exercise
+          html += '<tr id="' + exercise + '"><td><a href="' + modName + '.html">' + exercise + '</a></td>';
+          html += (userPoints > 0) ? '<td class="center proficient">' : '<td class="center">';
+          html += userPoints.toFixed(2) + '/' + exerPoints.toFixed(2) + '</td></tr>';
         }
       }
 
-      html += '<tr class="header"><th></th><th><span>Total</span></th><th><span>' + userTotal.toFixed(2) + '/' + total.toFixed(2) + '</span></th></tr></table>';
+      // Append the total row
+      html += '<tr class="header"><th><span>Total</span></th><th><span>' + userTotal.toFixed(2) + '/' + modTotal.toFixed(2) + '</span></th></tr></table>';
 
-      if (rowsAdded === 0) {
-        html = '<div>There are no exercises in this section</div>';
-      } 
-      /*else {
-        $('#chapterTotals').append('<tr class="header"><th></th><th><span>' +  + '</span></th><th><span>' + userTotal.toFixed(2) + '/' + total.toFixed(2) + '</span></th></tr></table>');
-      }*/
-
-      $('#gradeData').append(html);
-    } else {
-      for (var sect in secData) {
-        if (secData.hasOwnProperty(sect)) {
-          loadSection(sect, secData[sect], depth + 1);
-        }
+      // If the module contains only exercises that don't have points, list the module as containing no exercises
+      if (userPoints === -1) {
+        html = 'There are no exercises in this section';
       }
     }
 
     if (debugMode) {
       console.groupEnd();
     }
+
+    return {'userTotal': userTotal, 'total': modTotal, 'html': html};
   }
 
-  function loadConfig() {
-    //$('#chapterTotals').append('<h2>Chapter Totals</h2><table class="data">');
+  /**
+   * Generate the necessary rows and tables for a section of the book (chapter, section, subsection, etc)
+   */
+  function loadSection(secData, prefix, depth, isModule) {
+    if (debugMode) {
+      console.group('loadSection(secData, ' + depth + ')');
+      console.debug(JSON.stringify(secData));
+    }
 
-    // Hide the "loading" message
-    $('#pointsBox').hide();
+    var i = 0,
+        userTotal = 0,
+        sectionTotal = 0,
+        data,
+        html = '<table width="100%">';
 
-    // Get the config file and use it to load the exercises
-    $.getJSON(location.href.replace(moduleName + '.html', '_static/' + bookName + '.json'), function (data) {
-      for (var chapter in data.chapters) {
-        if (data.chapters.hasOwnProperty(chapter)) {
-          loadSection(chapter, data.chapters[chapter], 1);
+    for (var sect in secData) {
+      if (secData.hasOwnProperty(sect)) {
+        if (sect === "modules") { // Don't print anything for the "modules" key, simply move on to the modules
+          if (debugMode) {
+            console.groupEnd();
+          }
+          return loadSection(secData[sect], prefix, depth + 1, true);
+        } else {
+          // Calculate the new prefix
+          i++;
+          var newPrefix = (prefix === '') ? prefix + (i - 1) : prefix + '.' + i;
+
+          // Call the appropriate function for processing a module or a subsection
+          if (isModule) {
+            data = loadModule(sect, secData[sect], depth + 1);
+          } else {
+            data = loadSection(secData[sect], newPrefix, depth + 1, false);
+          }
+
+          // Keep a total of how many points a user has earned and how much each section is worth
+          userTotal += data.userTotal;
+          sectionTotal += data.total;
+
+          // Remove the periods from the prefix, so that jQuery can properly use IDs
+          var secName = newPrefix.replace(/\./g, '') + '-' + sect;
+
+          // Add a row for the section
+          html += '<tr><td class="section-header" data-sec-name="' + secName + '">' + newPrefix + ' ' + sect + '</td>';
+          html += (getCachedProf(sect).status === Status.STORED) ? '<td class="center proficient">' : '<td class="center">';
+          html += data.userTotal + ' / ' + data.total + '</td></tr>';
+          html += '<tr id="' + secName + '" class="gb-section-container"><td colspan="2" style="padding-left: 20px">';
+          html += data.html;
+          html += '</td></tr>';
         }
       }
-    });
+    }
 
-    //$('#chapterTotals').append('</table>');
+    html += '</table>';
+
+    if (debugMode) {
+      console.groupEnd();
+    }
+
+    return {'userTotal': userTotal, 'total': sectionTotal, 'html': html};
+  }
+
+  /**
+   * Get the config file and use it to initialize the gradebook
+   * Attach click handlers to section headers to expand their subsections
+   */
+  function loadConfig() {
+    // Hide the "loading" message
+    $('#loadingMessage').hide();
+
+    // Get the config file and use it to load the exercises
+    $.getJSON(location.href.replace(moduleName + '.html', '_static/' + bookName + '.json'), function (confData) {
+      var data = loadSection(confData.chapters, '', 0, false);
+
+      var html = data.html;
+      html = html.slice(html.indexOf('<tr'), html.lastIndexOf('</table'));
+      html = '<table class="data" width="50%"><tr><th>Chapter</th><th class="center">Score</th></tr>' + html;
+      html += '<tr class="header"><th>Total</th><th class="center">' + data.userTotal + ' / ' + data.total + '</th></tr></table>';
+      $('#gradeData').append(html);
+
+      // Collapse all the containers
+      $('.section-header').addClass('expandImage');
+
+      $('.section-header').each(function (index, item) {
+        // Attach a click handler to all section headers that makes the appropriate container appear
+        $(this).click(function (event) {
+          var secName = $(event.target).data('sec-name');
+
+          if (secName) {
+            var container = $('#' + secName);
+
+            if ($(this).hasClass('expandImage')) {
+              container.show(speed);
+              $(this).removeClass('expandImage');
+              $(this).addClass('collapseImage');
+            } else {
+              container.hide(speed);
+              $(this).removeClass('collapseImage');
+              $(this).addClass('expandImage');
+            }
+          }
+        });
+      });
+    });
   }
 
   /**
@@ -149,17 +186,14 @@
       console.group('loadGradebook()');
       console.debug('book: ' + bookName);
     }
-    
+
     // Clear previous grade data, show the "loading" message
     $('#gradeData').html('');
-    $('#pointsBox').show();
+    $('#loadingMessage').show();
 
     // Check server for user's points
     if (serverEnabled() && userLoggedIn()) {
       var username = getUsername();
-
-      // Append the grade table
-      $('#gradeData').append('<table id="example" class="data"></table>');
 
       // get user points
       jQuery.ajax({
@@ -213,11 +247,10 @@
               console.debug(JSON.stringify(profData));
             }
 
-            //gradeDisplays(data); // Replace with loadConfig()?
             loadConfig();
           } else {
             // Remove the loading message and display an error message to the user
-            $('#pointsBox').hide();
+            $('#loadingMessage').hide();
             $('table.data').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
           }
         },
@@ -225,7 +258,7 @@
           data = getJSON(data);
 
           // Remove the loading message and display an error message to the user
-          $('#pointsBox').hide();
+          $('#loadingMessage').hide();
           $('table.data').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
 
           console.debug("Error getting user's points");
@@ -239,11 +272,20 @@
     if (debugMode) {
       console.groupEnd();
     }
-  }
-  
+  };
+
+  Gradebook.expandAll = function () {
+    $('.gb-section-container').show(speed);
+  };
+
   $(document).ready(function () {
+    // Hack for removing the chapter number from the "Gradebook" header
+    var html = $($('h1')[1]).html();
+    html = html.slice(html.indexOf(' ') + 1, html.length);
+    $($('h1')[1]).html(html);
+
     Gradebook.load();
-  
+
     // Listen for and process JSAV events
     $("body").on("gradebook-load", function (e, data) {
       Gradebook.load();
