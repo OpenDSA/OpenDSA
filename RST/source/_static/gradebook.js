@@ -277,6 +277,10 @@
   Gradebook.expandAll = function () {
     $('.gb-section-container').show(speed);
   };
+  
+  Gradebook.collapseAll = function () {
+    $('.gb-section-container').hide(speed);
+  };
 
   $(document).ready(function () {
     // Hack for removing the chapter number from the "Gradebook" header
@@ -289,6 +293,16 @@
     // Listen for and process JSAV events
     $("body").on("gradebook-load", function (e, data) {
       Gradebook.load();
+    });
+    
+    $('#expand').click(function () {
+      Gradebook.expandAll();
+      return false;
+    });
+    
+    $('#collapse').click(function () {
+      Gradebook.collapseAll();
+      return false;
     });
   });
 }(jQuery));

@@ -55,7 +55,8 @@ Gradebook
 
    <div id="loadingMessage">Loading data...</div>
    <div>
-    Click on the links below to view more specific information.
+    Click on the links below to view more specific information.<br />
+    <a id="expand" href="#">Expand All</a> / <a id="collapse" href="#">Collapse All</a>
    </div>
    <div id="gradeData"></div>
    
