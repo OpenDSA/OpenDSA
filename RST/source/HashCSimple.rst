@@ -146,6 +146,5 @@ long probe sequences.
 
 .. avembed:: Exercises/Hashing/HashingLinearProbePRO.html
    :showbutton: hide
-   :title: Linear Probing Exercise
 
 .. odsascript:: AV/Hashing/linProbeCON.js

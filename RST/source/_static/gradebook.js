@@ -12,31 +12,31 @@
   /**
    * Generates a table of exercises and the user's score, for the given module
    */
-  function loadModule(modName, modData, depth) {
+  function loadModule(modName, modExercises) {
     if (debugMode) {
-      console.group('loadModule(' + modName + ', modData, ' + depth + ')');
-      console.debug(JSON.stringify(modData));
+      console.group('loadModule(' + modName + ', modExercises)');
+      console.debug(JSON.stringify(modExercises));
     }
 
     var userTotal = 0,
         modTotal = 0,
         html = '';
 
-    if (Object.keys(modData).length === 0) { // Module contains no exercises
+    if (Object.keys(modExercises).length === 0) { // Module contains no exercises
       html = 'There are no exercises in this section';
     } else {
       var userProfData = getJSON(localStorage.proficiency_data)[getUsername()],
           // If this value stays at -1 after looping through all exercises,
           // there are no exercises worth points in the module
-          userPoints = -1, 
+          userPoints = -1,
           exerPoints = 0;
 
       // Generate the table of exercises
       html = '<table id="' + modName + '-exercises" class="data" width="90%">';
       html += '<tr class="header"><th>Exercises</th><th>Points</th></tr>';
 
-      for (var exercise in modData) {
-        if (modData.hasOwnProperty(exercise) && modData[exercise].points) {
+      for (var exercise in modExercises) {
+        if (modExercises.hasOwnProperty(exercise) && modExercises[exercise].points) {
           userPoints = 0;
 
           // Get user's points from local proficiency cache
@@ -46,12 +46,12 @@
           }
 
           // Determine how many points the exercise is worth and keep a running total for the module
-          exerPoints = parseFloat(modData[exercise].points);
+          exerPoints = parseFloat(modExercises[exercise].points);
           modTotal += exerPoints;
 
           // Create a row in the table for the exercise
           html += '<tr id="' + exercise + '"><td><a href="' + modName + '.html">' + exercise + '</a></td>';
-          html += (userPoints > 0) ? '<td class="center proficient">' : '<td class="center">';
+          html += (userPoints > 0) ? '<td class="score proficient">' : '<td class="score">';
           html += userPoints.toFixed(2) + '/' + exerPoints.toFixed(2) + '</td></tr>';
         }
       }
@@ -75,7 +75,7 @@
   /**
    * Generate the necessary rows and tables for a section of the book (chapter, section, subsection, etc)
    */
-  function loadSection(secData, prefix, depth, isModule) {
+  function loadSection(secData, prefix, depth) {
     if (debugMode) {
       console.group('loadSection(secData, ' + depth + ')');
       console.debug(JSON.stringify(secData));
@@ -89,38 +89,32 @@
 
     for (var sect in secData) {
       if (secData.hasOwnProperty(sect)) {
-        if (sect === "modules") { // Don't print anything for the "modules" key, simply move on to the modules
-          if (debugMode) {
-            console.groupEnd();
-          }
-          return loadSection(secData[sect], prefix, depth + 1, true);
+        // Calculate the new prefix
+        i++;
+        var newPrefix = (prefix === '') ? prefix + (i - 1) : prefix + '.' + i;
+
+        // Call the appropriate function for processing a module or a subsection
+        if (secData[sect].exercises) {
+          data = loadModule(sect, secData[sect].exercises);
         } else {
-          // Calculate the new prefix
-          i++;
-          var newPrefix = (prefix === '') ? prefix + (i - 1) : prefix + '.' + i;
-
-          // Call the appropriate function for processing a module or a subsection
-          if (isModule) {
-            data = loadModule(sect, secData[sect], depth + 1);
-          } else {
-            data = loadSection(secData[sect], newPrefix, depth + 1, false);
-          }
-
-          // Keep a total of how many points a user has earned and how much each section is worth
-          userTotal += data.userTotal;
-          sectionTotal += data.total;
-
-          // Remove the periods from the prefix, so that jQuery can properly use IDs
-          var secName = newPrefix.replace(/\./g, '') + '-' + sect;
-
-          // Add a row for the section
-          html += '<tr><td class="section-header" data-sec-name="' + secName + '">' + newPrefix + ' ' + sect + '</td>';
-          html += (getCachedProf(sect).status === Status.STORED) ? '<td class="center proficient">' : '<td class="center">';
-          html += data.userTotal + ' / ' + data.total + '</td></tr>';
-          html += '<tr id="' + secName + '" class="gb-section-container"><td colspan="2" style="padding-left: 20px">';
-          html += data.html;
-          html += '</td></tr>';
+          data = loadSection(secData[sect], newPrefix, depth + 1);
         }
+
+        // Keep a total of how many points a user has earned and how much each section is worth
+        userTotal += data.userTotal;
+        sectionTotal += data.total;
+
+        // Remove the periods from the prefix, so that jQuery can properly use IDs
+        var secName = newPrefix.replace(/\./g, '') + '-' + sect;
+
+        // Add a row for the section
+        html += '<tr><td class="section-header" data-sec-name="' + secName + '">' + newPrefix + ' ';
+        html += ((secData[sect].exercises && secData[sect].long_name) ? secData[sect].long_name : sect) + '</td>';
+        html += (getCachedProf(sect).status === Status.STORED) ? '<td class="score proficient">' : '<td class="score">';
+        html += data.userTotal + ' / ' + data.total + '</td></tr>';
+        html += '<tr id="' + secName + '" class="gb-section-container"><td colspan="2" style="padding-left: 20px">';
+        html += data.html;
+        html += '</td></tr>';
       }
     }
 
@@ -140,15 +134,16 @@
   function loadConfig() {
     // Hide the "loading" message
     $('#loadingMessage').hide();
+    $('#gradeHeader').show();
 
     // Get the config file and use it to load the exercises
     $.getJSON(location.href.replace(moduleName + '.html', '_static/' + bookName + '.json'), function (confData) {
-      var data = loadSection(confData.chapters, '', 0, false);
+      var data = loadSection(confData.chapters, '', 0);
 
       var html = data.html;
       html = html.slice(html.indexOf('<tr'), html.lastIndexOf('</table'));
-      html = '<table class="data" width="50%"><tr><th>Chapter</th><th class="center">Score</th></tr>' + html;
-      html += '<tr class="header"><th>Total</th><th class="center">' + data.userTotal + ' / ' + data.total + '</th></tr></table>';
+      html = '<table class="data" width="50%"><tr><th>Chapter</th><th class="score">Score</th></tr>' + html;
+      html += '<tr class="header"><th>Total</th><th class="score">' + data.userTotal + ' / ' + data.total + '</th></tr></table>';
       $('#gradeData').append(html);
 
       // Collapse all the containers
@@ -189,6 +184,7 @@
 
     // Clear previous grade data, show the "loading" message
     $('#gradeData').html('');
+    $('#gradeHeader').hide();
     $('#loadingMessage').show();
 
     // Check server for user's points
@@ -205,11 +201,17 @@
         xhrFields: {withCredentials: true},
         success: function (data) {
           data = getJSON(data);
+          
+          if (debugMode) {
+            console.group('Server response, loadGradebook()');
+            console.debug(JSON.stringify(data));
+          }
 
-          if (data.grades) {
+          if (data.grades && data.modules) {
             // Update local proficiency cache
             var profData = getJSON(localStorage.proficiency_data),
-                exerName;
+                exerName,
+                modName;
 
             if (debugMode) {
               console.debug('profData:');
@@ -223,7 +225,8 @@
             if (!profData[username]) {
               profData[username] = {};
             }
-
+            
+            // Load proficiency data for exercises
             for (var i = 0; i < data.grades.length; i++) {
               exerName = data.grades[i].exercise;
 
@@ -236,6 +239,17 @@
                 profData[username][exerName].status = Status.STORED;
               } else {
                 delete profData[username][exerName];
+              }
+            }
+            
+            // Load proficiency data for modules
+            for (var i = 0; i < data.modules.length; i++) {
+              modName = data.modules[i].module;
+              
+              if (data.modules[i].status) {
+                profData[username][modName].status = Status.STORED;
+              } else {
+                delete profData[username][modName];
               }
             }
 
@@ -251,7 +265,11 @@
           } else {
             // Remove the loading message and display an error message to the user
             $('#loadingMessage').hide();
-            $('table.data').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
+            $('#gradeData').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
+          }
+          
+          if (debugMode) {
+            console.groupEnd();
           }
         },
         error: function (data) {
@@ -259,7 +277,7 @@
 
           // Remove the loading message and display an error message to the user
           $('#loadingMessage').hide();
-          $('table.data').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
+          $('#gradeData').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
 
           console.debug("Error getting user's points");
           console.debug(JSON.stringify(data));
@@ -276,10 +294,14 @@
 
   Gradebook.expandAll = function () {
     $('.gb-section-container').show(speed);
+    $('.section-header').removeClass('expandImage');
+    $('.section-header').addClass('collapseImage');
   };
-  
+
   Gradebook.collapseAll = function () {
     $('.gb-section-container').hide(speed);
+    $('.section-header').addClass('expandImage');
+    $('.section-header').removeClass('collapseImage');
   };
 
   $(document).ready(function () {
@@ -294,12 +316,12 @@
     $("body").on("gradebook-load", function (e, data) {
       Gradebook.load();
     });
-    
+
     $('#expand').click(function () {
       Gradebook.expandAll();
       return false;
     });
-    
+
     $('#collapse').click(function () {
       Gradebook.collapseAll();
       return false;

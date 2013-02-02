@@ -131,4 +131,3 @@ Here are some review questions to test your knowledge from this module.
 
 .. avembed:: Exercises/Sorting/SortCompareSumm.html
    :showbutton: hide
-   :title: Review Questions

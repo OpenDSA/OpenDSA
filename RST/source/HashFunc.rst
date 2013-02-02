@@ -59,7 +59,6 @@ To get credit for the exercise, answer the following two questions:
 
 .. avembed:: AV/Hashing/Birthday.html
    :showbutton: show
-   :title: Birthday Problem Simulator
 
 To be practical, a database organized by hashing must store records in a
 hash table that is not so large that it wastes space.
@@ -153,4 +152,3 @@ far.
 
 .. avembed:: Exercises/Hashing/HashPrinciplesSumm.html
    :showbutton: hide
-   :title: Review Questions

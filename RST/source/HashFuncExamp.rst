@@ -168,7 +168,6 @@ Start with '4567' as an example.
 
 .. avembed:: AV/Hashing/MidSquare.html
    :showbutton: show
-   :title: Mid-Square Calculator
 
 Hash Functions for Strings
 --------------------------
@@ -223,7 +222,6 @@ Now you can try it out with this calculator.
 
 .. avembed:: AV/Hashing/StringSimple.html
    :showbutton: show
-   :title: Simple String Folding Calculator
 
 Here is a much better hash function for strings.::
 
@@ -270,7 +268,6 @@ Now you can try it out with this calculator.
 
 .. avembed:: AV/Hashing/StringSfold.html
    :showbutton: show
-   :title: Improved String Folding Calculator
 
 For any sufficiently long string, the sum for the integer
 quantities will typically cause a 32-bit integer to overflow
@@ -295,12 +292,10 @@ functions.
 
 .. avembed:: Exercises/Hashing/HashFuncPROSumm.html
    :showbutton: hide
-   :title: Hash Function Proficency Summary
 
 Here are some review questions.
 
 .. avembed:: Exercises/Hashing/HashFuncSumm.html
    :showbutton: hide
-   :title: Review Questions
 
 .. odsascript:: AV/Hashing/hashFuncExCON.js

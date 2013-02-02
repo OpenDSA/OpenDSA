@@ -41,8 +41,18 @@
       background: none repeat scroll 0 0 #00FF00 !important;
     }
     
-    .center, table.data th.center, #loadingMessage {
+    .score, table.data th.score {
       text-align: center;
+      width: 100px;
+    }
+    
+    #loadingMessage {
+      border-radius: 10px 10px 10px 10px;
+      box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8);
+      height: 25px;
+      margin: 50px auto;
+      text-align: center;
+      width: 250px;
     }
    </style>
 
@@ -54,7 +64,7 @@ Gradebook
 .. raw:: html
 
    <div id="loadingMessage">Loading data...</div>
-   <div>
+   <div id="gradeHeader">
     Click on the links below to view more specific information.<br />
     <a id="expand" href="#">Expand All</a> / <a id="collapse" href="#">Collapse All</a>
    </div>

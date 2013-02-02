@@ -101,19 +101,16 @@ Here is a warmup practice exercise for Heapsort.
 
 .. avembed:: Exercises/Sorting/HeapsortPRO.html
    :showbutton: hide
-   :title: Heapsort Practice
 
 Now test yourself to see how well you understand Heapsort.
 Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/heapsortProficiency.html
    :showbutton: hide
-   :title: Heapsort Proficiency Exercise
 
 Now here are summary questions.
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html
    :showbutton: hide
-   :title: Heapsort Review
 
 .. odsascript:: AV/Sorting/heapsortCON.js

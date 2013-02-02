@@ -26,22 +26,22 @@ def setup(app):
 
 
 DIAGRAM = """\
-<div id="%(avId)s">
+<div id="%(exer_name)s">
 </div>
 """
 
 # div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
 SLIDESHOW = """\
-<div id="%(avId)s" class="ssAV" data-exer-name="%(avId)s" data-points="%(points)s" data-threshold="%(threshold)s" data-type="%(type)s" data-required="%(required)s">
+<div id="%(exer_name)s" class="ssAV" data-exer-name="%(exer_name)s" data-points="%(points)s" data-threshold="%(threshold)s" data-type="%(type)s" data-required="%(required)s" data-long-name="$(long_name)s">
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
  %(output_code)s
  <div class="jsavcanvas"></div>
- <img id="%(avId)s_check_mark" class="prof_check_mark" src="%(odsa_path)s/lib/Images/green_check.png" />
- <span id="%(avId)s_cm_saving_msg" class="cm_saving_msg">Saving...</span>
- <span id="%(avId)s_cm_error_msg" class="cm_error_msg">
-  <img id="%(avId)s_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" /><br />
+ <img id="%(exer_name)s_check_mark" class="prof_check_mark" src="%(odsa_path)s/lib/Images/green_check.png" />
+ <span id="%(exer_name)s_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+ <span id="%(exer_name)s_cm_error_msg" class="cm_error_msg">
+  <img id="%(exer_name)s_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" /><br />
   Server Error<br />
   <a href="#" class="resubmit_link">Resubmit</a>
  </span>
@@ -59,11 +59,12 @@ def type(argument):
 
 class inlineav(Directive):
     required_arguments = 1
-    optional_arguments = 5
+    optional_arguments = 6
     final_argument_whitespace = True
     option_spec = {
                    'output':output,
                    'required': directives.unchanged,
+                   'long_name': directives.unchanged,
                    'points': directives.unchanged,
                    'threshold': directives.unchanged,
                    'type': type,
@@ -71,7 +72,7 @@ class inlineav(Directive):
 
     def run(self):
         """ Restructured text extension for including inline JSAV content on module pages """
-        self.options['avId'] = self.arguments[0]
+        self.options['exer_name'] = self.arguments[0]
         self.options['odsa_path'] = os.path.relpath(conf.odsa_path,conf.ebook_path)
         
         if 'required' not in self.options:
@@ -85,6 +86,9 @@ class inlineav(Directive):
           
         if 'type' not in self.options:
           self.options['type'] = 'diagram'
+        
+        if 'long_name' not in self.options:
+          self.options['long_name'] = self.options['exer_name']
         
         if 'output' in self.options and self.options['output'] == "show":
           self.options['output_code'] = '<p class="jsavoutput jsavline" readonly="readonly"></p>'
@@ -101,7 +105,7 @@ class inlineav(Directive):
 source = """\
 This is some text.
 
-.. inlineav:: avId
+.. inlineav:: exer_name
    :output:
 
 This is some more text.

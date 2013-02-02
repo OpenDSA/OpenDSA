@@ -176,4 +176,3 @@ extra memory beyond the input array.
 
 .. avembed:: Exercises/Sorting/SortIntroSumm.html
    :showbutton: hide
-   :title: Review Questions

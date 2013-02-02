@@ -63,7 +63,6 @@ appears before it.
 
 .. avembed:: Exercises/Sorting/FindInversionsPRO.html
    :showbutton: hide
-   :title: Inversion Count Exercise
 
 What is the average number of inversions?
 Consider a list **L** containing
@@ -90,4 +89,3 @@ Here are the module review questions.
 
 .. avembed:: Exercises/Sorting/ExchangeSumm.html
    :showbutton: hide
-   :title: Review Questions

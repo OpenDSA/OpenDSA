@@ -146,4 +146,3 @@ table size accordingly.
 
 .. avembed:: Exercises/Hashing/HashAnalSumm.html
    :showbutton: hide
-   :title: Hashing Analysis Review
