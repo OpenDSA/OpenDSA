@@ -85,15 +85,20 @@ function isSessionExpired() {
   return true;
 }
 
-// TODO: Implement this
+/**
+ * Deletes the session data from local storage, informs the user that their
+ * session has expired and reload the page to reset all exercises
+ */
 function handleExpiredSession(key) {
+  console.warn('Sesson expired');
+  
   var currKey = getSessionKey();
   
   // Checks key used to submit data against current key to prevent multiple alerts
   // from popping up when multiple responses come in from multiple messages sent with an invalid session key 
   if (key === currKey) {
     localStorage.removeItem('opendsa');
-    // Alternatively, trigger updateLogin() and show the login box
+    // Alternatively, trigger updateLogin() and show the login box (won't reset exercises that have been completed)
     //updateLogin();
     //showLoginBox();
     alert('Your account has been logged in on another computer and the\n current session is no longer valid. Please login again to continue.');
@@ -488,6 +493,87 @@ function storeStatusAndUpdateDisplays(name, status, username) {
 }
 
 /**
+ * Queries getgrade endpoint to obtain proficiency status for all exercises and modules
+ * Used on the index page to concisely determine with which modules the user is proficient
+ */
+function syncProficiency() {
+  if (serverEnabled() && userLoggedIn()) {
+    var username = getUsername(),
+        key = getSessionKey();
+
+    // get user points
+    jQuery.ajax({
+      url:   server_url + "/api/v1/userdata/getgrade/",
+      type:  "POST",
+      data: {"key": key, "book": bookName},
+      contentType: "application/json; charset=utf-8",
+      datatype: "json",
+      xhrFields: {withCredentials: true},
+      success: function (data) {
+        data = getJSON(data);
+        
+        if (debugMode) {
+          console.group('Server response, syncProficiency()');
+          console.debug(JSON.stringify(data));
+        }
+
+        if (data.grades && data.modules) {
+          // Update local proficiency cache
+          var i,
+              exer,
+              mod,
+              profData;
+
+          // Exercises
+          for (i = 0; i < data.grades.length; i++) {
+            exer = data.grades[i];
+            
+            if (exer.points > 0) {
+              storeProficiencyStatus(exer.exercise, Status.STORED, username);
+            
+              // Store the points as well
+              profData = getJSON(localStorage.proficiency_data);
+              profData[username][exer.exercise].points = exer.points;
+              localStorage.proficiency_data = JSON.stringify(profData);
+            } else {
+              storeProficiencyStatus(exer.exercise, false, username);
+            }
+            
+            updateProfDisplay(exer.exercise);
+          }
+          
+          // Modules
+          for (i = 0; i < data.modules.length; i++) {
+            mod = data.modules[i];
+            storeProficiencyStatus(mod.module, (mod.proficient) ? Status.STORED : false, username);
+            updateProfDisplay(mod.module);
+          }
+          
+          if (debugMode) {
+            console.debug('profData:');
+            console.debug(JSON.stringify(profData));
+          }
+        }
+        
+        if (debugMode) {
+          console.groupEnd();
+        }
+      },
+      error: function (data) {
+        data = getJSON(data);
+
+        if (data.status === 401) {
+          handleExpiredSession(key);
+        } else {
+          console.debug("Error getting user's points");
+          console.debug(JSON.stringify(data));
+        }
+      }
+    });
+  }
+}
+
+/**
  * Sends all the data necessary to load a module to the server
  */
 function loadModule(modName) {
@@ -498,13 +584,19 @@ function loadModule(modName) {
   }
 
   if (modName === 'index') {
-    // Get every module page link on the index page and determine if the user is proficient
-    $('li.toctree-l1 > a.reference.internal').each(function (index, item) {
-      if ($(item).attr('href').endsWith('.html')) {
-        modName = getNameFromURL($(item).attr('href'));
-        checkProficiency(modName);
-      }
-    });
+    if (serverEnabled() && userLoggedIn()) {
+      // Query the server for user proficiency data, update local storage and proficiency indicators
+      syncProficiency();
+    } else {
+      // Get every module page link on the index page and determine if the user is proficient
+      $('li.toctree-l1 > a.reference.internal').each(function (index, item) {
+        if ($(item).attr('href').endsWith('.html')) {
+          modName = getNameFromURL($(item).attr('href'));
+          // Update the proficiency indicators based on what is currently in local storage
+          updateProfDisplay(modName);
+        }
+      });
+    }
   } else if (modName === "Gradebook") {
     // Trigger loading the gradebook
     $("body").trigger("gradebook-load");
@@ -626,7 +718,7 @@ function loadModule(modName) {
       // Update exercise proficiency displays to reflect the proficiency of the current user
       for (exerName in exercises) {
         if (exercises.hasOwnProperty(exerName)) {
-          checkProficiency(exerName);
+          updateProfDisplay(exerName);
 
           // Update Khan Academy exercise progress bar
           /*
@@ -638,7 +730,7 @@ function loadModule(modName) {
       }
 
       // Check for module proficiency
-      checkProficiency();
+      checkProficiency(moduleName);
     }
   }
 
@@ -646,6 +738,8 @@ function loadModule(modName) {
     console.groupEnd();
   }
 }
+
+
 
 
 //*****************************************************************************
@@ -1427,7 +1521,8 @@ $(document).ready(function () {
     } else {
       updateLogin();
     }
-
+    
+    // Attach event handlers
     $(window).focus(function (e) {
       // When the user switches tabs, make sure the login display on the new tab is correct
       updateLogin();
@@ -1456,7 +1551,6 @@ $(document).ready(function () {
     $('button.submit-button').click(function (event) {
       var username = $('#username').attr('value'),
           password = $('#password').attr('value');
-          //password = SHA1(password);
 
       jQuery.ajax({
         url:   server_url + "/api/v1/users/login/",
@@ -1590,210 +1684,3 @@ $(document).ready(function () {
 $(window).load(function () {
   console.debug('Load time: ' + (+new Date() - readyTime));
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
-*
-*  Secure Hash Algorithm (SHA1)
-*  http://www.webtoolkit.info/
-*
-**/
-function SHA1(msg) {
-/*jslint bitwise: true */
-  function rotate_left(n, s) {
-    var t4 = (n << s) | (n >>> (32 - s));
-    return t4;
-  }
-
-  function lsb_hex(val) {
-    var str = "";
-    var i;
-    var vh;
-    var vl;
-
-    for (i = 0; i <= 6; i += 2) {
-      vh = (val >>> (i * 4 + 4)) & 0x0f;
-      vl = (val >>> (i * 4)) & 0x0f;
-      str += vh.toString(16) + vl.toString(16);
-    }
-    return str;
-  }
-
-  function cvt_hex(val) {
-    var str = "";
-    var i;
-    var v;
-
-    for (i = 7; i >= 0; i--) {
-      v = (val >>> (i * 4)) & 0x0f;
-      str += v.toString(16);
-    }
-    return str;
-  }
-
-  function Utf8Encode(string) {
-    string = string.replace(/\r\n/g, "\n");
-    var utftext = "";
-
-    for (var n = 0; n < string.length; n++) {
-      var c = string.charCodeAt(n);
-
-      if (c < 128) {
-        utftext += String.fromCharCode(c);
-      } else if ((c > 127) && (c < 2048)) {
-        utftext += String.fromCharCode((c >> 6) | 192);
-        utftext += String.fromCharCode((c & 63) | 128);
-      } else {
-        utftext += String.fromCharCode((c >> 12) | 224);
-        utftext += String.fromCharCode(((c >> 6) & 63) | 128);
-        utftext += String.fromCharCode((c & 63) | 128);
-      }
-    }
-
-    return utftext;
-  }
-
-  var blockstart;
-  var i, j;
-  var W = new Array(80);
-  var H0 = 0x67452301;
-  var H1 = 0xEFCDAB89;
-  var H2 = 0x98BADCFE;
-  var H3 = 0x10325476;
-  var H4 = 0xC3D2E1F0;
-  var A, B, C, D, E;
-  var temp;
-
-  msg = new Utf8Encode(msg);
-  var msg_len = msg.length;
-
-  var word_array = [];
-  for (i = 0; i < msg_len - 3; i += 4) {
-    j = msg.charCodeAt(i) << 24 | msg.charCodeAt(i + 1) << 16 |
-    msg.charCodeAt(i + 2) << 8 | msg.charCodeAt(i + 3);
-    word_array.push(j);
-  }
-
-  switch (msg_len % 4) {
-  case 0:
-    i = 0x080000000;
-    break;
-
-  case 1:
-    i = msg.charCodeAt(msg_len - 1) << 24 | 0x0800000;
-    break;
-
-  case 2:
-    i = msg.charCodeAt(msg_len - 2) << 24 | msg.charCodeAt(msg_len - 1) << 16 | 0x08000;
-    break;
-
-  case 3:
-    i = msg.charCodeAt(msg_len - 3) << 24 | msg.charCodeAt(msg_len - 2) << 16 | msg.charCodeAt(msg_len - 1) << 8 | 0x80;
-    break;
-  }
-
-  word_array.push(i);
-
-  while ((word_array.length % 16) !== 14) {
-    word_array.push(0);
-  }
-
-  word_array.push(msg_len >>> 29);
-  word_array.push((msg_len << 3) & 0x0ffffffff);
-
-  for (blockstart = 0; blockstart < word_array.length; blockstart += 16) {
-
-    for (i = 0; i < 16; i++) {
-      W[i] = word_array[blockstart + i];
-    }
-    for (i = 16; i <= 79; i++) {
-      W[i] = rotate_left(W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16], 1);
-    }
-
-    A = H0;
-    B = H1;
-    C = H2;
-    D = H3;
-    E = H4;
-
-    for (i = 0; i <= 19; i++) {
-      temp = (rotate_left(A, 5) + ((B & C) | (~B & D)) + E + W[i] + 0x5A827999) & 0x0ffffffff;
-      E = D;
-      D = C;
-      C = rotate_left(B, 30);
-      B = A;
-      A = temp;
-    }
-
-    for (i = 20; i <= 39; i++) {
-      temp = (rotate_left(A, 5) + (B ^ C ^ D) + E + W[i] + 0x6ED9EBA1) & 0x0ffffffff;
-      E = D;
-      D = C;
-      C = rotate_left(B, 30);
-      B = A;
-      A = temp;
-    }
-
-    for (i = 40; i <= 59; i++) {
-      temp = (rotate_left(A, 5) + ((B & C) | (B & D) | (C & D)) + E + W[i] + 0x8F1BBCDC) & 0x0ffffffff;
-      E = D;
-      D = C;
-      C = rotate_left(B, 30);
-      B = A;
-      A = temp;
-    }
-
-    for (i = 60; i <= 79; i++) {
-      temp = (rotate_left(A, 5) + (B ^ C ^ D) + E + W[i] + 0xCA62C1D6) & 0x0ffffffff;
-      E = D;
-      D = C;
-      C = rotate_left(B, 30);
-      B = A;
-      A = temp;
-    }
-
-    H0 = (H0 + A) & 0x0ffffffff;
-    H1 = (H1 + B) & 0x0ffffffff;
-    H2 = (H2 + C) & 0x0ffffffff;
-    H3 = (H3 + D) & 0x0ffffffff;
-    H4 = (H4 + E) & 0x0ffffffff;
-  }
-
-  temp = cvt_hex(H0) + cvt_hex(H1) + cvt_hex(H2) + cvt_hex(H3) + cvt_hex(H4);
-
-  return temp.toLowerCase();
-}

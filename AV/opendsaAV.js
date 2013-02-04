@@ -277,6 +277,10 @@ function processArrayValues(upperLimit) {
         if (data.currentStep === data.totalSteps) {
           flush = true;
         }
+        
+        // Remove currentStep and totalSteps because they are stored in the description and won't be logged explicitly
+        delete data.currentStep;
+        delete data.totalSteps;
       } else if (data.type === "jsav-array-click") {
         data.desc = JSON.stringify({'index': data.index, 'arrayid': data.arrayid});
       } else if (data.type === "jsav-exercise-grade-change") {
@@ -324,7 +328,6 @@ function processArrayValues(upperLimit) {
       parent.postMessage(data, moduleOrigin);
     });
 
-    // TODO: Remove explicit calls to logUserAction and sendEventData to decouple opendsaAV.js from ODSA.js
     if (serverEnabled()) {
       // Log the browser ready event
       logUserAction('document-ready', 'User loaded the ' + AV_NAME + ' AV');

@@ -12,9 +12,9 @@
   /**
    * Generates a table of exercises and the user's score, for the given module
    */
-  function loadModule(modName, modExercises) {
+  function generateModule(modName, modExercises) {
     if (debugMode) {
-      console.group('loadModule(' + modName + ', modExercises)');
+      console.group('generateModule(' + modName + ', modExercises)');
       console.debug(JSON.stringify(modExercises));
     }
 
@@ -75,9 +75,9 @@
   /**
    * Generate the necessary rows and tables for a section of the book (chapter, section, subsection, etc)
    */
-  function loadSection(secData, prefix, depth) {
+  function generateSection(secData, prefix, depth) {
     if (debugMode) {
-      console.group('loadSection(secData, ' + depth + ')');
+      console.group('generateSection(secData, ' + depth + ')');
       console.debug(JSON.stringify(secData));
     }
 
@@ -95,9 +95,9 @@
 
         // Call the appropriate function for processing a module or a subsection
         if (secData[sect].exercises) {
-          data = loadModule(sect, secData[sect].exercises);
+          data = generateModule(sect, secData[sect].exercises);
         } else {
-          data = loadSection(secData[sect], newPrefix, depth + 1);
+          data = generateSection(secData[sect], newPrefix, depth + 1);
         }
 
         // Keep a total of how many points a user has earned and how much each section is worth
@@ -138,7 +138,7 @@
 
     // Get the config file and use it to load the exercises
     $.getJSON(location.href.replace(moduleName + '.html', '_static/' + bookName + '.json'), function (confData) {
-      var data = loadSection(confData.chapters, '', 0);
+      var data = generateSection(confData.chapters, '', 0);
 
       var html = data.html;
       html = html.slice(html.indexOf('<tr'), html.lastIndexOf('</table'));
@@ -178,7 +178,7 @@
    */
   Gradebook.load = function () { // Queries the server for the user's points
     if (debugMode) {
-      console.group('loadGradebook()');
+      console.group('Gradebook.load()');
       console.debug('book: ' + bookName);
     }
 
@@ -203,7 +203,7 @@
           data = getJSON(data);
           
           if (debugMode) {
-            console.group('Server response, loadGradebook()');
+            console.group('Server response, Gradebook.load()');
             console.debug(JSON.stringify(data));
           }
 
