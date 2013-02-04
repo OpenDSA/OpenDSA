@@ -44,6 +44,7 @@ SHOWHIDE = """\
     id="%(exer_name)s_showhide_btn"
     class="showHideLink"
     data-exer-name="%(exer_name)s" 
+    data-long-name="%(long_name)s" 
     data-frame-src="%(av_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
@@ -51,7 +52,7 @@ SHOWHIDE = """\
     data-required="%(required)s"
     data-threshold="%(threshold)s"
     data-type="%(type)s" 
-    value="%(show_hide_text)s %(long_name)s"/>
+    value="%(show_hide_text)s"/>
 """
 
 

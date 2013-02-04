@@ -543,6 +543,9 @@ function loadModule(modName) {
       // Calculate the URL of the book, relative to the current module page
       modData.url = location.href.substring(0, location.href.lastIndexOf('/') + 1);
       modData.module = modName;
+      // Hack to parse the long form module name from the module page title
+      // TODO: Create a more reliable way to get this information
+      modData.name = document.title.slice(document.title.indexOf(' ') + 1, document.title.indexOf('\u2014') - 1);
       modData.exercises = JSON.stringify(exerList);
 
       if (debugMode) {
@@ -1336,7 +1339,7 @@ $(document).ready(function () {
       return;
     }
 
-    exerData.name = $(item).data('long_name');
+    exerData.name = $(item).data('long-name');
     exerData.points = $(item).data('points');
     exerData.required = ($(item).data('required') === "True");
     exerData.threshold = $(item).data('threshold');
