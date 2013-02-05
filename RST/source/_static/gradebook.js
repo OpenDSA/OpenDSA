@@ -50,7 +50,7 @@
           modTotal += exerPoints;
 
           // Create a row in the table for the exercise
-          html += '<tr id="' + exercise + '"><td><a href="' + modName + '.html">' + exercise + '</a></td>';
+          html += '<tr id="' + exercise + '"><td><a href="' + modName + '.html">' + modExercises[exercise].long_name + '</a></td>';
           html += (userPoints > 0) ? '<td class="score proficient">' : '<td class="score">';
           html += userPoints.toFixed(2) + '/' + exerPoints.toFixed(2) + '</td></tr>';
         }

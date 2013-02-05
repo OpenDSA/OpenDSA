@@ -583,15 +583,23 @@ odsa.close()
 # options['odsa_dir'] is used as a base for relative paths to static files,
 # changes depending on whether static files are copied or not
 with open(options['odsa_dir'] + 'lib/ODSA.js','w') as odsa:
+  replaced = 0
+  total_replacements = 2
+  
   for i in range(len(odsa_data)):
     if 'var server_url = "' in odsa_data[i]:
       odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['backend_address'].rstrip('/') + r'\2', odsa_data[i])
-      break
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
 
   for i in range(len(odsa_data)):
     if 'var moduleOrigin = "' in odsa_data[i]:
       odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['module_origin'] + r'\2', odsa_data[i])
-      break
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
+
   odsa.writelines(odsa_data)
 odsa.close()
 
@@ -638,10 +646,21 @@ khan_exer.close()
 # options['odsa_dir'] is used as a base for relative paths to static files,
 # changes depending on whether static files are copied or not
 with open(options['odsa_dir'] + 'ODSAkhan-exercises/khan-exercise.js','w') as khan_exer:
+  replaced = 0
+  total_replacements = 2
+  
   for i in range(len(ke_data)):
     if 'testMode ? "' in ke_data[i]:
       ke_data[i] = re.sub(r'(.+ ? ").*(" :.*)', r'\1' + conf_data['backend_address'].rstrip('/') + r'\2', ke_data[i])
-      break
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
+
+    if 'var moduleOrigin = "' in ke_data[i]:
+      ke_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['module_origin'] + r'\2', ke_data[i])
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
   khan_exer.writelines(ke_data)
 khan_exer.close()
 

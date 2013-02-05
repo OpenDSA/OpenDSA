@@ -5,7 +5,7 @@
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
   "exercise_origin": "http://algoviz.org",
-  "backend_address": "http://198.82.152.245:8080/",
+  "backend_address": "https://opendsa.cc.vt.edu/",
   "copy_static_files": true,
   "build_JSAV": false,
   "build_ODSA": true,
