@@ -19,19 +19,19 @@ if (typeof AV_NAME === "undefined") {
   var AV_NAME = '',
       moduleOrigin = '',
       uiid = +new Date();
-  
+
   var serverEnabled = function () {
     return false;
   };
-  
+
   var getNameFromURL = function () {
     return '';
   };
-  
+
   var sendEventData = function () {},
       logUserAction = function (type, desc, exerName, eventUiid) {},
       logEvent = function (data) {};
-  
+
   console.warn('ODSA.js was not included, using fallback function definitions');
 }
 
@@ -67,7 +67,7 @@ var allowCredit = true;
 function logExerciseInit(initData) {
   // Reset the uiid (unique instance identifier)
   uiid = +new Date();
-  
+
   var data = {av: AV_NAME, type: 'odsa-exercise-init', desc: JSON.stringify(initData)};
   $("body").trigger("jsav-log-event", [data]);
 }
@@ -261,7 +261,7 @@ function processArrayValues(upperLimit) {
 
       // Overwrite the av attribute with the correct value
       data.av = AV_NAME;
-      
+
       // Append the uiid
       data.uiid = uiid;
 
@@ -277,7 +277,7 @@ function processArrayValues(upperLimit) {
         if (data.currentStep === data.totalSteps) {
           flush = true;
         }
-        
+
         // Remove currentStep and totalSteps because they are stored in the description and won't be logged explicitly
         delete data.currentStep;
         delete data.totalSteps;

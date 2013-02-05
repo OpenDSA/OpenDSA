@@ -91,11 +91,11 @@ function isSessionExpired() {
  */
 function handleExpiredSession(key) {
   console.warn('Sesson expired');
-  
+
   var currKey = getSessionKey();
-  
+
   // Checks key used to submit data against current key to prevent multiple alerts
-  // from popping up when multiple responses come in from multiple messages sent with an invalid session key 
+  // from popping up when multiple responses come in from multiple messages sent with an invalid session key
   if (key === currKey) {
     localStorage.removeItem('opendsa');
     // Alternatively, trigger updateLogin() and show the login box (won't reset exercises that have been completed)
@@ -105,8 +105,6 @@ function handleExpiredSession(key) {
     // Trigger a page reload to reset exercises (in case someone else logs in) and proficiency indicators
     window.location.reload();
   }
-  
-  console.groupEnd();
 }
 
 /**
@@ -157,7 +155,7 @@ function showHide(btnID) {
  */
 function getCachedProf(name, username) {
   username = (isDefined(username)) ? username : getUsername();
-  
+
   // Check for proficiency status in localStorage
   if (inLocalStorage("proficiency_data")) {
     var profData = getJSON(localStorage.proficiency_data);
@@ -511,7 +509,7 @@ function syncProficiency() {
       xhrFields: {withCredentials: true},
       success: function (data) {
         data = getJSON(data);
-        
+
         if (debugMode) {
           console.group('Server response, syncProficiency()');
           console.debug(JSON.stringify(data));
@@ -527,10 +525,10 @@ function syncProficiency() {
           // Exercises
           for (i = 0; i < data.grades.length; i++) {
             exer = data.grades[i];
-            
+
             if (exer.points > 0) {
               storeProficiencyStatus(exer.exercise, Status.STORED, username);
-            
+
               // Store the points as well
               profData = getJSON(localStorage.proficiency_data);
               profData[username][exer.exercise].points = exer.points;
@@ -538,23 +536,23 @@ function syncProficiency() {
             } else {
               storeProficiencyStatus(exer.exercise, false, username);
             }
-            
+
             updateProfDisplay(exer.exercise);
           }
-          
+
           // Modules
           for (i = 0; i < data.modules.length; i++) {
             mod = data.modules[i];
             storeProficiencyStatus(mod.module, (mod.proficient) ? Status.STORED : false, username);
             updateProfDisplay(mod.module);
           }
-          
+
           if (debugMode) {
             console.debug('profData:');
             console.debug(JSON.stringify(profData));
           }
         }
-        
+
         if (debugMode) {
           console.groupEnd();
         }
@@ -704,7 +702,7 @@ function loadModule(modName) {
           console.group("Error loading module: " + modName);
           console.debug(JSON.stringify(data));
           console.groupEnd();
-          
+
           if (data.status === 401) {
             handleExpiredSession(modData.key);
           }
@@ -1013,7 +1011,7 @@ function sendExerciseScore(exerData, username, sessionKey) {
           // Mark the exercise as having encountered a server error
           storeStatusAndUpdateDisplays(exerData.exercise, Status.ERROR, username);
         }
-        
+
         if (data.status === 400) {    // Bad request
           console.debug("Score rejected by server: " + exerData.exercise + " for " + username);
           console.debug(JSON.stringify(data));
@@ -1117,9 +1115,6 @@ function processEventData(data) {
     console.group('processEventData(data)');
     console.debug(JSON.stringify(data));
   }
-  
-  console.debug('processEventData(data)');
-  console.debug(JSON.stringify(data));
 
   var flush = false,
       discardEvents = ["jsav-init", "jsav-recorded", "jsav-exercise-model-init", "jsav-exercise-model-recorded"],
@@ -1162,7 +1157,7 @@ function processEventData(data) {
       updateProfDisplay(data.av);
       flush = true;
     }
-    
+
     // Remove currentStep and totalSteps because they are stored in the description and won't be logged explicitly
     delete data.currentStep;
     delete data.totalSteps;
@@ -1471,11 +1466,9 @@ $(document).ready(function () {
   $("body").on("jsav-log-event", function (e, data) {
     processEventData(data);
   });
-  
+
   // Listen for and process JSAV events
   $("body").on("odsa-session-expired", function (e, data) {
-    console.log('odsa-session-expired');
-    console.log(data);
     handleSessionExpired(data.key);
   });
 
@@ -1521,7 +1514,7 @@ $(document).ready(function () {
     } else {
       updateLogin();
     }
-    
+
     // Attach event handlers
     $(window).focus(function (e) {
       // When the user switches tabs, make sure the login display on the new tab is correct
