@@ -52,7 +52,7 @@ SHOWHIDE = """\
     data-required="%(required)s"
     data-threshold="%(threshold)s"
     data-type="%(type)s" 
-    value="%(show_hide_text)s"/>
+    value="%(show_hide_text)s %(long_name)s"/>
 """
 
 
