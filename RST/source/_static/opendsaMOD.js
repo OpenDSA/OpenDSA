@@ -714,8 +714,11 @@ function loadModule(modName) {
     $('li.toctree-l1 > a.reference.internal').each(function (index, item) {
       if ($(item).attr('href').endsWith('.html')) {
         modName = getNameFromURL($(item).attr('href'));
-        // Update the proficiency indicators based on what is currently in local storage
-        updateProfDisplay(modName);
+        
+        if (modName !== 'Gradebook') {
+          // Update the proficiency indicators based on what is currently in local storage
+          updateProfDisplay(modName);
+        }
       }
     });
   } else { // Load anonymous user data from localStorage
@@ -1429,10 +1432,12 @@ $(document).ready(function () {
 
   $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:' + link + '">Contact Us</a>');
 
-  // Append the module complete code to the header
-  $('h1 > a.headerlink').parent().css('position', 'relative');
-  $('h1 > a.headerlink').parent().append('<div id="' + moduleName + '_complete" class="mod_complete">Module Complete</div>');
-
+  if (moduleName !== 'Gradebook') {
+    // Append the module complete code to the header
+    $('h1 > a.headerlink').parent().css('position', 'relative');
+    $('h1 > a.headerlink').parent().append('<div id="' + moduleName + '_complete" class="mod_complete">Module Complete</div>');
+  }
+  
   // Populate the exercises hash
   // Iterate through all showHide buttons, iframe and slideshows and add exercises (as necessary)
   $('.showHideLink, iframe, .ssAV').each(function (index, item) {
