@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, initArraySize, processArrayValues, reset, avc */
+/*global alert: true, initArraySize, processArrayValues, reset */
 (function ($) {
   var jsav;
 
@@ -20,8 +20,8 @@
   // Execute the "Run" button function
   function runIt() {    
       reset(true);
-      jsav = new JSAV(avc);
-	   
+      jsav = new JSAV($('.avcontainer'));
+
     jsav.displayInit();
     linkedListInsert();
      //jsav.umsg("Done insertion!");

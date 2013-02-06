@@ -36,9 +36,14 @@ if (typeof AV_NAME === "undefined") {
 }
 
 /**
- * The avcontainer element
+ * A timestamp when the user started looking at the pages
  */
-var avc = '';
+var focusTime = 0;
+
+/**
+ * The total amount of time the user has spent on the current exercise instance
+ */
+var totalTime = 0;
 
 /**
  * Stores the empty contents of the avcontainer, used for reset
@@ -67,6 +72,7 @@ var allowCredit = true;
 function logExerciseInit(initData) {
   // Reset the uiid (unique instance identifier)
   uiid = +new Date();
+  totalTime = 0;
 
   var data = {av: AV_NAME, type: 'odsa-exercise-init', desc: JSON.stringify(initData)};
   $("body").trigger("jsav-log-event", [data]);
@@ -110,7 +116,7 @@ function initArraySize(min, max, selected) {
  */
 function reset(flag) {
   // Replace the contents of the avcontainer with the save initial state
-  avc.unbind().html(emptyContent);
+  $('.avcontainer').unbind().html(emptyContent);
 
   // Clear the array values field, when no params given and reset button hit
   if (flag !== true && !$('#arrayValues').prop("disabled")) {
@@ -244,8 +250,7 @@ function processArrayValues(upperLimit) {
     // Initialize the global AV_NAME variable
     AV_NAME = getNameFromURL();
 
-    avc = $('.avcontainer');
-    emptyContent = $(avc).html();
+    emptyContent = $('.avcontainer').html();
 
     // Listen for JSAV events and forward them to the parent page
     $("body").on("jsav-log-event", function (e, data) {
@@ -306,8 +311,9 @@ function processArrayValues(upperLimit) {
           $('#credit_disabled_msg').remove();
         }
       }
-
+      
       // Mark data as logged on the client side, then send to message to the parent window
+      data.totalTime = totalTime + (+new Date()) - focusTime;
       data.logged = true;
       parent.postMessage(data, moduleOrigin);
 
@@ -330,10 +336,12 @@ function processArrayValues(upperLimit) {
 
       $(window).focus(function (e) {
         logUserAction('window-focus', 'User looking at ' + AV_NAME + ' window');
+        focusTime = +new Date();
       });
 
       $(window).blur(function (e) {
         logUserAction('window-blur', 'User is no longer looking at ' + AV_NAME + ' window');
+        totalTime += (+new Date() - focusTime);
       });
 
       $(window).on('beforeunload', function () {
