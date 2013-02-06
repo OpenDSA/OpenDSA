@@ -69,7 +69,6 @@ Now try for yourself to see if you understand how Selection Sort works.
 
 .. avembed:: Exercises/Sorting/SelsortPRO.html
    :showbutton: hide
-   :title: Selection Sort Exercise
 
 Any algorithm can be written in slightly different ways.
 For example, we could have written Selection Sort to find the smallest
@@ -143,6 +142,5 @@ Selection Sort.
 
 .. avembed:: Exercises/Sorting/SelsortSumm.html
    :showbutton: hide
-   :title: Review Questions
 
 .. odsascript:: AV/Sorting/selectionsortCON.js

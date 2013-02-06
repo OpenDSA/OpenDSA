@@ -281,4 +281,3 @@ this proof.
 
 .. avembed:: Exercises/Sorting/SortBoundSumm.html
    :showbutton: hide
-   :title: Lower Bounds Proof Review Questions

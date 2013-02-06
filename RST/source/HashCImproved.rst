@@ -74,7 +74,6 @@ Now you can practice linear probing by different step sizes.
 
 .. avembed:: Exercises/Hashing/HashingLinearStepProbePRO.html
    :showbutton: hide
-   :title: Linear Probing by Steps Exercise
 
 Consider the situation where :math:`c = 2` and we wish to insert a record
 with key :math:`k_1` such that
@@ -123,7 +122,6 @@ Here is a practice exercise for pseudo-random probing.
 
 .. avembed:: Exercises/Hashing/HashingPseudoRandomProbePRO.html
    :showbutton: hide
-   :title: Pseudo-Random Probing Exercise
 
 .. inlineav:: collisionCON4
    :output: show
@@ -153,7 +151,6 @@ Now you can practice quadratic probing.
 
 .. avembed:: Exercises/Hashing/HashingQuadraticProbePRO.html
    :showbutton: hide
-   :title: Quadratic Probing Exercise
 
 
 .. inlineav:: collisionCON6
@@ -250,7 +247,6 @@ Now you can try it yourself.
 
 .. avembed:: Exercises/Hashing/HashingDoubleProbePRO.html
    :showbutton: hide
-   :title: Double Hashing Exercise
 
 The following visualization lets you test out different combinations
 of hash function and collision resolution, on your own input data.
@@ -261,6 +257,5 @@ Finally, here are some practice questions.
 
 .. avembed:: Exercises/Hashing/HashCollisionSumm.html
    :showbutton: hide
-   :title: Collision Resolution Review
 
 .. odsascript:: AV/Hashing/collisionCON.js

@@ -114,7 +114,6 @@ Note that for these animations, the starting string is *"cat"* and the ending st
 
 .. avembed:: AV/Development/editRCT.html
     :showbutton: hide
-    :title: Call Tree
 
 Obviously, to compare any sizeable strings together, a recursive solution is not optimal.  As was seen by the previous demonstrations of dynamic programming, a dynamic approach to this problem will make things run more efficiently \(i.e., in linear time\).
 
@@ -124,7 +123,6 @@ Note that due to the similarity in approach, the majority of the code that opera
 
 .. avembed:: AV/Development/editPrune.html
 	:showbutton: hide
-	:title: Efficency Visual
 
 As you can see, the efficiency of this dynamic approach is :math:`O(m*n)`, which is obviously better than the recursive's efficiency of :math:`O(3^{max(m,n)})`.  In fact, for this particular example, of the original 19 function calls, the dynamic approach eliminated 10 of those calls, a 52.6% saving on efficiency, and this was for a **small** example!
 
@@ -134,7 +132,6 @@ Note that for this animation, there are no deletions.  If the starting string wa
 
 .. avembed:: AV/Development/editOptimal.html
     :showbutton: hide
-    :title: Optimal Solution Path
 
 The following is the same Edit Distance algorithm as above, but implemented dynamically.  As you can see, memoization is used to provide the means for a look-up table, storing the repeated function calls.  The initial setup of the grid might be the hardest part to understand.  This code will generate a two-dimensional array of the same type as seen in previous animations' grids, sans the initial row and column used for displaying the strings to be compared. ::
 
@@ -192,11 +189,9 @@ Now that you've seen the algorithms in action, you should hopefully understand w
 
 .. avembed:: Exercises/Development/edit-KA1.html
     :showbutton: hide
-    :title: Question 1
 
 On this next quiz, identify the correct value that would go in the highlighted cell.
 
 .. avembed:: Exercises/Development/edit-KA2.html
     :showbutton: hide
-    :title: Question 2
 

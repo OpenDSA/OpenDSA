@@ -80,29 +80,6 @@ label {
   display: block;  
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.data td {
+  padding: 0 5px;
+}

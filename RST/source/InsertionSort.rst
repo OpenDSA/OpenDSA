@@ -74,7 +74,6 @@ Now try for yourself to see if you understand how Insertion Sort works.
 
 .. avembed:: Exercises/Sorting/InssortPRO.html
    :showbutton: hide
-   :title: Insertion Sort Exercise
 
 Insertion Sort Analysis
 -----------------------
@@ -187,6 +186,5 @@ Insertion Sort.
 
 .. avembed:: Exercises/Sorting/InssortSumm.html
    :showbutton: hide
-   :title: Review Questions
 
 .. odsascript:: AV/Sorting/insertionsortCON.js

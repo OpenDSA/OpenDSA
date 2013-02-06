@@ -75,10 +75,10 @@ def process_path(path, abs_prefix):
   return path
 
 def process_section(section, index_file, depth):  
-  if "modules" in section:
-    process_modules(section["modules"], index_file, depth)
-  else:
-    for subsect in section:
+  for subsect in section:
+    if ('exercises' in section[subsect]):
+      process_module(subsect, section[subsect]['exercises'], index_file, depth + 1)
+    else:
       print ("  " * depth) + subsect
       index_file.write(subsect + '\n')
       index_file.write((sphinx_header_chars[depth] * len(subsect)) + "\n\n")
@@ -89,59 +89,58 @@ def process_section(section, index_file, depth):
   
   index_file.write("\n")
 
-def process_modules(section, index_file, depth):
-  for module in section:
-    print ("  " * depth) + module
-    index_file.write("   " + module + "\n")
-    
-    if module == 'ToDo':
-      continue
-    
-    with open(odsa_dir + 'RST/source/' + module + '.rst','r') as mod_file:
-      # Read the contents of the module RST file from the ODST RST source directory
-      mod_data = mod_file.readlines()
-    mod_file.close()
-    
-    new_mod_data = []
-    
-    # Alter the module RST contents based on the RST file
-    i = 0
-    while i < len(mod_data):
-      if '.. inlineav::' in mod_data[i] or '.. avembed::' in mod_data[i]:
-        # Find the end-of-line character for the file
-        eol = mod_data[i].replace(mod_data[i].rstrip(), '')
-        
-        # Parse the exercise name from the line
-        av_name = mod_data[i].split(' ')[2]
-        av_name = av_name.rstrip()
-        if av_name.endswith('.html'):
-          av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
-        
-        if '.. avembed::' in mod_data[i] and av_name not in section[module]: 
-          # Exercise not listed in config file, remove it from the RST file
-          while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-            i = i + 1
-        else:
-          # Object is an exercise found in the config file or a 
-          # slideshow which shouldn't be removed because its considered content
-          new_mod_data.append(mod_data[i])
-          
-          if av_name in section[module]:
-            # Add the necessary information from the configuration file
-            exer_conf = section[module][av_name]
-            
-            for setting in exer_conf:
-              new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
-            
-      else:
-        new_mod_data.append(mod_data[i])
+def process_module(module, exercises, index_file, depth):
+  print ("  " * depth) + module
+  index_file.write("   " + module + "\n")
+  
+  if module == 'ToDo':
+    return
+  
+  with open(odsa_dir + 'RST/source/' + module + '.rst','r') as mod_file:
+    # Read the contents of the module RST file from the ODST RST source directory
+    mod_data = mod_file.readlines()
+  mod_file.close()
+  
+  new_mod_data = []
+  
+  # Alter the module RST contents based on the RST file
+  i = 0
+  while i < len(mod_data):
+    if '.. inlineav::' in mod_data[i] or '.. avembed::' in mod_data[i]:
+      # Find the end-of-line character for the file
+      eol = mod_data[i].replace(mod_data[i].rstrip(), '')
       
-      i = i + 1
+      # Parse the exercise name from the line
+      av_name = mod_data[i].split(' ')[2]
+      av_name = av_name.rstrip()
+      if av_name.endswith('.html'):
+        av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
+      
+      if '.. avembed::' in mod_data[i] and av_name not in exercises: 
+        # Exercise not listed in config file, remove it from the RST file
+        while (i < len(mod_data) and mod_data[i].rstrip() != ''):
+          i = i + 1
+      else:
+        # Object is an exercise found in the config file or a 
+        # slideshow which shouldn't be removed because its considered content
+        new_mod_data.append(mod_data[i])
+        
+        if av_name in exercises:
+          # Add the necessary information from the configuration file
+          exer_conf = exercises[av_name]
+          
+          for setting in exer_conf:
+            new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
+          
+    else:
+      new_mod_data.append(mod_data[i])
     
-    with open(src_dir + module + '.rst','w') as mod_file:
-      # Write the contents of the module RST file to the output src directory
-      mod_file.writelines(new_mod_data)
-    mod_file.close()
+    i = i + 1
+  
+  with open(src_dir + module + '.rst','w') as mod_file:
+    # Write the contents of the module RST file to the output src directory
+    mod_file.writelines(new_mod_data)
+  mod_file.close()
 
 
 
@@ -447,9 +446,8 @@ with open(config_file) as config:
   conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
 config.close()
 
-# If 'name' is not specified in the config file, parse and use the name of the config file itself
-if not conf_data['name']:
-  conf_data['name'] = os.path.basename(config_file).replace('.json', '')
+# Parse the name of the config file to use as the book name
+conf_data['name'] = os.path.basename(config_file).replace('.json', '')
 
 
 # Auto-detect ODSA directory
@@ -523,6 +521,9 @@ for src_file in os.listdir(odsa_dir + 'RST/source/'):
   elif not src_file.endswith('.rst'):
     distutils.file_util.copy_file(src_file_path, src_dir)
 
+# Copy config file to _static directory
+distutils.file_util.copy_file(config_file, src_dir + '_static/')
+
 # Copy static files to output directory
 if conf_data['copy_static_files']:
   # Set the base ODSA directory for conf.py to be the output directory to ensure the copied files get referenced in the build
@@ -582,15 +583,23 @@ odsa.close()
 # options['odsa_dir'] is used as a base for relative paths to static files,
 # changes depending on whether static files are copied or not
 with open(options['odsa_dir'] + 'lib/ODSA.js','w') as odsa:
+  replaced = 0
+  total_replacements = 2
+  
   for i in range(len(odsa_data)):
     if 'var server_url = "' in odsa_data[i]:
       odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['backend_address'].rstrip('/') + r'\2', odsa_data[i])
-      break
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
 
   for i in range(len(odsa_data)):
     if 'var moduleOrigin = "' in odsa_data[i]:
       odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['module_origin'] + r'\2', odsa_data[i])
-      break
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
+
   odsa.writelines(odsa_data)
 odsa.close()
 
@@ -614,7 +623,7 @@ with open(src_dir + '_static/opendsaMOD.js','w') as odsaMOD:
       if replaced == total_replacements:
         break
       
-    if 'modData.book = "' in odsaMOD_data[i]:
+    if 'var bookName = "' in odsaMOD_data[i]:
       odsaMOD_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['name'] + r'\2', odsaMOD_data[i])
       replaced = replaced + 1
       if replaced == total_replacements:
@@ -637,10 +646,21 @@ khan_exer.close()
 # options['odsa_dir'] is used as a base for relative paths to static files,
 # changes depending on whether static files are copied or not
 with open(options['odsa_dir'] + 'ODSAkhan-exercises/khan-exercise.js','w') as khan_exer:
+  replaced = 0
+  total_replacements = 2
+  
   for i in range(len(ke_data)):
     if 'testMode ? "' in ke_data[i]:
       ke_data[i] = re.sub(r'(.+ ? ").*(" :.*)', r'\1' + conf_data['backend_address'].rstrip('/') + r'\2', ke_data[i])
-      break
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
+
+    if 'var moduleOrigin = "' in ke_data[i]:
+      ke_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['module_origin'] + r'\2', ke_data[i])
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
   khan_exer.writelines(ke_data)
 khan_exer.close()
 

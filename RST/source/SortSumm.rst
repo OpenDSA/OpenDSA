@@ -24,4 +24,3 @@ you are in a series of repeating questions, then just reload the page.
 
 .. avembed:: Exercises/Sorting/ChapterSumm.html
    :showbutton: hide
-   :title: Complete Review

@@ -88,6 +88,5 @@ other way.
 
 .. avembed:: Exercises/Hashing/OpenHashPRO.html
    :showbutton: hide
-   :title: Open Hashing Exercise
 
 .. odsascript:: AV/Hashing/openhashCON.js

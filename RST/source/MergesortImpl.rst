@@ -102,6 +102,5 @@ Now here are some review questions.
 
 .. avembed:: Exercises/Sorting/MergeImplSumm.html
    :showbutton: hide
-   :title: Mergesort Implementation Questions
 
 .. odsascript:: AV/Sorting/mergeImplCON.js

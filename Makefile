@@ -30,6 +30,7 @@ csslint:
 	@csslint $(CSSLINTFLAGS) AV/*.css
 	@csslint $(CSSLINTFLAGS) Doc/*.css
 	@csslint $(CSSLINTFLAGS) QBank/*.css
+	@csslint $(CSSLINTFLAGS) RST/source/_static/opendsaMOD.css
 
 jshint:
 	@echo 'running jshint'
@@ -37,3 +38,4 @@ jshint:
 	@jshint AV/*.js
 	@jshint lib/ODSA.js
 	@jshint RST/source/_static/opendsaMOD.js
+	@jshint RST/source/_static/gradebook.js

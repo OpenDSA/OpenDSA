@@ -56,7 +56,6 @@ Here is a practice exercise.
 
 .. avembed:: AV/Hashing/HashingDeleteProficiency.html
    :showbutton: hide
-   :title: Hashing Deletion Proficiency Exercise
 
 The use of tombstones allows searches to work correctly and allows
 reuse of deleted slots.
@@ -104,7 +103,6 @@ Now here are some practice questions.
 
 .. avembed:: Exercises/Hashing/HashDelSumm.html
    :showbutton: hide
-   :title: Review Questions
 
 Congratulations! You have reached the end of the hashing tutorial.
 In summary, a properly tuned hashing system will return records with

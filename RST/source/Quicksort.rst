@@ -132,7 +132,6 @@ Now you can have some practice.
 
 .. avembed:: Exercises/Sorting/QuicksortPivotPRO.html
    :showbutton: hide
-   :title: Quicksort Find Pivot Exercise
 
 We now turn to function ``partition``.
 If we knew in advance how many keys are less than the pivot,
@@ -168,7 +167,6 @@ Now for some partition practice.
 
 .. avembed:: Exercises/Sorting/QuicksortPartitPRO.html
    :showbutton: hide
-   :title: Quicksort Partition Exercise
 
 Here is a visualization for the entire Quicksort algorithm.
 This visualization shows you how the logical decomposition caused by
@@ -185,7 +183,6 @@ Quicksort.
 
 .. avembed:: AV/Sorting/quicksortProficiency.html
    :showbutton: hide
-   :title: Quicksort Proficiency Exercise
 
 To analyze Quicksort, we first analyze the ``findpivot`` and
 ``partition`` functions when operating on a subarray of length
@@ -391,6 +388,5 @@ Now for review questions.
 
 .. avembed:: Exercises/Sorting/QuicksortSumm.html
    :showbutton: hide
-   :title: Quicksort Review Questions
 
 .. odsascript:: AV/Sorting/quicksortCON.js

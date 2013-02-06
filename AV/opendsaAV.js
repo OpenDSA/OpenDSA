@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, console: true, serverEnabled: true, sendEventData: true, moduleOrigin: true, uiid: true, AV_NAME: true, getNameFromURL: true, logUserAction: true, logEvent: true */
+/*global alert: true, console: true, serverEnabled: true, sendEventData: true, moduleOrigin: true, uiid: true, AV_NAME: true, getNameFromURL: true, logUserAction: true, logEvent: true, roundPercent */
 
 /** This file should only be referenced by AVs (not modules) */
 
@@ -19,19 +19,19 @@ if (typeof AV_NAME === "undefined") {
   var AV_NAME = '',
       moduleOrigin = '',
       uiid = +new Date();
-  
+
   var serverEnabled = function () {
     return false;
   };
-  
+
   var getNameFromURL = function () {
     return '';
   };
-  
+
   var sendEventData = function () {},
       logUserAction = function (type, desc, exerName, eventUiid) {},
       logEvent = function (data) {};
-  
+
   console.warn('ODSA.js was not included, using fallback function definitions');
 }
 
@@ -67,7 +67,7 @@ var allowCredit = true;
 function logExerciseInit(initData) {
   // Reset the uiid (unique instance identifier)
   uiid = +new Date();
-  
+
   var data = {av: AV_NAME, type: 'odsa-exercise-init', desc: JSON.stringify(initData)};
   $("body").trigger("jsav-log-event", [data]);
 }
@@ -259,10 +259,8 @@ function processArrayValues(upperLimit) {
         return;
       }
 
-      // Overwrite the av attribute with the correct value
+      // Overwrite the av attribute with the correct value and append the uiid
       data.av = AV_NAME;
-      
-      // Append the uiid
       data.uiid = uiid;
 
       // If data.desc doesn't exist or is empty, initialize it
@@ -277,14 +275,25 @@ function processArrayValues(upperLimit) {
         if (data.currentStep === data.totalSteps) {
           flush = true;
         }
+
+        // Remove currentStep and totalSteps because they are stored in the description and won't be logged explicitly
+        delete data.currentStep;
+        delete data.totalSteps;
       } else if (data.type === "jsav-array-click") {
         data.desc = JSON.stringify({'index': data.index, 'arrayid': data.arrayid});
+        
+        // Remove index and arrayid because they are stored in the description and won't be logged explicitly
+        delete data.index;
+        delete data.arrayid;
       } else if (data.type === "jsav-exercise-grade-change") {
         // On grade change events, log the user's score and submit it
-        var score = (data.score.student - data.score.fix) / data.score.total;
-        var complete = (data.score.student + data.score.fix) / data.score.total;
+        var score = roundPercent((data.score.student - data.score.fix) / data.score.total);
+        var complete = roundPercent((data.score.student + data.score.fix) / data.score.total);
         data.desc = JSON.stringify({'score': score, 'complete': complete});
         flush = true;
+        
+        // Remove score because the necessary data is stored in the description and it won't be logged explicitly
+        delete data.score;
       } else if (data.type === "jsav-exercise-model-open") {
         // If user looks at the model answer before they are done and
         // they haven't already lost credit, warn them they can no longer
@@ -324,7 +333,6 @@ function processArrayValues(upperLimit) {
       parent.postMessage(data, moduleOrigin);
     });
 
-    // TODO: Remove explicit calls to logUserAction and sendEventData to decouple opendsaAV.js from ODSA.js
     if (serverEnabled()) {
       // Log the browser ready event
       logUserAction('document-ready', 'User loaded the ' + AV_NAME + ' AV');

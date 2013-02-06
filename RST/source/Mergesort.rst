@@ -90,13 +90,11 @@ Here is a mergesort warmup exercise to practice merging.
 
 .. avembed:: Exercises/Sorting/MergesortPRO.html
    :showbutton: hide
-   :title: Mergesort Merging Exercise
 
 Now here is a full proficiency exercise to put it all together.
 
 .. avembed:: AV/Sorting/mergesortProficiency.html
    :showbutton: show
-   :title: Mergesort Proficiency Exercise
 
 Analysis of Mergesort is straightforward, despite the fact that it is
 a recursive algorithm.
@@ -139,6 +137,5 @@ Now here are summary questions.
 
 .. avembed:: Exercises/Sorting/MergesortSumm.html
    :showbutton: hide
-   :title: Mergesort Review Questions
 
 .. odsascript:: AV/Sorting/mergesortCON.js

@@ -67,7 +67,6 @@ Here is a practice exercise for placing keys into bins.
 
 .. avembed:: Exercises/Sorting/RadixsortPRO.html
    :showbutton: hide
-   :title: Radix Sort Practice
 
 As with Mergesort, an efficient implementation of Radix Sort is
 somewhat difficult to achieve.
@@ -251,4 +250,3 @@ Now for some review questions.
 
 .. avembed:: Exercises/Sorting/RadixSortSumm.html
    :showbutton: hide
-   :title: Radix Sort Review Questions

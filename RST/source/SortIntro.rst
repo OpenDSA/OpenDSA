@@ -7,14 +7,14 @@
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Sorting
-   :short_name: Sorting
+   :short_name: SortIntro
    :exercises: SortIntroSumm
 
-.. _Sorting:
+.. _SortIntro:
 
 .. include:: JSAVheader.rinc
 
-.. index:: ! sorting
+.. index:: ! SortIntro
 
 Introduction
 ============
@@ -176,4 +176,3 @@ extra memory beyond the input array.
 
 .. avembed:: Exercises/Sorting/SortIntroSumm.html
    :showbutton: hide
-   :title: Review Questions

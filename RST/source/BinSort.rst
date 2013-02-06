@@ -132,6 +132,5 @@ only a small number of records in each bucket, and that a
 
 .. avembed:: Exercises/Sorting/BinsortSumm.html
    :showbutton: hide
-   :title: Binsort Review Questions
 
 .. odsascript:: AV/Sorting/binsortCON.js
