@@ -1169,25 +1169,14 @@ function processEventData(data) {
       updateProfDisplay(data.av);
       flush = true;
     }
-
-    // Remove currentStep and totalSteps because they are stored in the description and won't be logged explicitly
-    delete data.currentStep;
-    delete data.totalSteps;
   } else if (data.type === "jsav-array-click") {
     data.desc = JSON.stringify({'index': data.index, 'arrayid': data.arrayid});
-    
-    // Remove index and arrayid because they are stored in the description and won't be logged explicitly
-    delete data.index;
-    delete data.arrayid;
   } else if (data.type === "jsav-exercise-grade-change") {
     // On grade change events, log the user's score and submit it
     score = roundPercent((data.score.student - data.score.fix) / data.score.total);
     complete = roundPercent((data.score.student + data.score.fix) / data.score.total);
     data.desc = JSON.stringify({'score': score, 'complete': complete});
     
-    // Remove score because the necessary data is stored in the description and it won't be logged explicitly
-    delete data.score;
-
     // Store the user's score when they complete the exercise
     if (complete === 1) {
       storeExerciseScore(data.av, score);

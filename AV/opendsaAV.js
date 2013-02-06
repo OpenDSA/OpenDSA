@@ -275,25 +275,14 @@ function processArrayValues(upperLimit) {
         if (data.currentStep === data.totalSteps) {
           flush = true;
         }
-
-        // Remove currentStep and totalSteps because they are stored in the description and won't be logged explicitly
-        delete data.currentStep;
-        delete data.totalSteps;
       } else if (data.type === "jsav-array-click") {
         data.desc = JSON.stringify({'index': data.index, 'arrayid': data.arrayid});
-        
-        // Remove index and arrayid because they are stored in the description and won't be logged explicitly
-        delete data.index;
-        delete data.arrayid;
       } else if (data.type === "jsav-exercise-grade-change") {
         // On grade change events, log the user's score and submit it
         var score = roundPercent((data.score.student - data.score.fix) / data.score.total);
         var complete = roundPercent((data.score.student + data.score.fix) / data.score.total);
         data.desc = JSON.stringify({'score': score, 'complete': complete});
         flush = true;
-        
-        // Remove score because the necessary data is stored in the description and it won't be logged explicitly
-        delete data.score;
       } else if (data.type === "jsav-exercise-model-open") {
         // If user looks at the model answer before they are done and
         // they haven't already lost credit, warn them they can no longer
@@ -318,19 +307,18 @@ function processArrayValues(upperLimit) {
         }
       }
 
+      // Mark data as logged on the client side, then send to message to the parent window
+      data.logged = true;
+      parent.postMessage(data, moduleOrigin);
+
       // Save the event in localStorage
       if (serverEnabled()) {
         logEvent(data);
-
-        data.logged = true;
 
         if (flush) {
           sendEventData();
         }
       }
-
-      // Send to message to the parent window
-      parent.postMessage(data, moduleOrigin);
     });
 
     if (serverEnabled()) {
