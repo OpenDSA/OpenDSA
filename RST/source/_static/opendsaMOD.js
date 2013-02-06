@@ -632,7 +632,11 @@ function loadModule(modName) {
     modData.module = modName;
     // Hack to parse the long form module name from the module page title
     // TODO: Create a more reliable way to get this information
-    modData.name = document.title.slice(document.title.indexOf(' ') + 1, document.title.indexOf('\u2014') - 1);
+    if (modName === 'index') {
+      modData.name = 'Contents';
+    } else {
+      modData.name = document.title.slice(document.title.indexOf(' ') + 1, document.title.indexOf('\u2014') - 1);
+    }
     modData.exercises = JSON.stringify(exerList);
 
     if (debugMode) {
