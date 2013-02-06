@@ -1,7 +1,8 @@
 "use strict";
 /*global alert: true, console: true, debugMode, serverEnabled, userLoggedIn, uiid,
 warnUserLogin, logUserAction, logEvent, inLocalStorage, getUsername, getSessionKey,
-getNameFromURL, getJSON, getModuleName, sendEventData, server_url, moduleName, isDefined, storeStatusAndUpdateDisplays, SHA1 */
+getNameFromURL, getJSON, getModuleName, sendEventData, server_url, moduleName,
+roundPercent, isDefined, storeStatusAndUpdateDisplays, SHA1 */
 
 /* warnUserLogin and storeStatusAndUpdateDisplays are defined in this file, but due to cyclic dependencies */
 // SHA1 is more of a library and is defined at the bottom
@@ -581,155 +582,162 @@ function loadModule(modName) {
     console.group('loadModule(' + modName + ')');
   }
 
-  if (modName === 'index') {
-    if (serverEnabled() && userLoggedIn()) {
+
+  // Trigger loading the gradebook
+  if (modName === "Gradebook") {
+    $("body").trigger("gradebook-load");
+  }
+
+  var exerName;
+
+  if (serverEnabled() && userLoggedIn()) {
+    // Sends all the data necessary to load a module to the server
+    // All modules must be loaded this way to ensure event data will be logged successfully
+
+    if (modName === 'index') {
       // Query the server for user proficiency data, update local storage and proficiency indicators
       syncProficiency();
-    } else {
-      // Get every module page link on the index page and determine if the user is proficient
-      $('li.toctree-l1 > a.reference.internal').each(function (index, item) {
-        if ($(item).attr('href').endsWith('.html')) {
-          modName = getNameFromURL($(item).attr('href'));
-          // Update the proficiency indicators based on what is currently in local storage
-          updateProfDisplay(modName);
-        }
-      });
     }
+
+    if (debugMode) {
+      console.debug('Querying server for module data');
+    }
+
+    var username = getUsername(),
+        modData = {},
+        exerData = {},
+        exerList = [];
+
+    // Package exercises into a list so it can be stringified
+    for (exerName in exercises) {
+      if (exercises.hasOwnProperty(exerName)) {
+        // Update proficiency displays based on localStorage to make the page
+        // more responsive (don't have to wait until the server responds to see your proficiency)
+        updateProfDisplay(exerName);
+
+        // Make a deep copy of the 'exercises' object, so we can add the
+        // exercise name and remove uiid without affecting 'exercises'
+        exerData = $.extend(true, {}, exercises[exerName]);
+        exerData.exercise = exerName;
+        delete exerData.uiid;
+        exerList.push(exerData);
+      }
+    }
+
+    // Package the module data
+    modData.key = getSessionKey();
+    modData.book = bookName;
+    // Calculate the URL of the book, relative to the current module page
+    modData.url = location.href.substring(0, location.href.lastIndexOf('/') + 1);
+    modData.module = modName;
+    // Hack to parse the long form module name from the module page title
+    // TODO: Create a more reliable way to get this information
+    modData.name = document.title.slice(document.title.indexOf(' ') + 1, document.title.indexOf('\u2014') - 1);
+    modData.exercises = JSON.stringify(exerList);
+
+    if (debugMode) {
+      console.debug('Sending modData:');
+      console.debug(JSON.stringify(modData));
+    }
+
+    jQuery.ajax({
+      url:  server_url + "/api/v1/module/loadmodule/",
+      type: "POST",
+      data: modData,
+      contentType: "application/json; charset=utf-8",
+      datatype: "json",
+      xhrFields: {withCredentials: true},
+      success: function (data) {
+        data = getJSON(data);
+
+        if (debugMode) {
+          console.group('Server response, loadModule(' + modName + ', ' + username + ')');
+          console.debug(JSON.stringify(data));
+        }
+
+        // Loop through all the exercises listed in the server's response and update the user's status for each exercise
+        for (var exerName in data) {
+          if (data.hasOwnProperty(exerName)) {
+            // Update the user's status for the exercise
+            // Since the server is the ultimate authority for logged in users,
+            // if the user's proficiency comes back as false, it will remove
+            // their local proficiency to keep the client in sync with the server
+            if (exercises[exerName]) {  // Exercise proficiency
+              storeProficiencyStatus(exerName, (data[exerName].proficient) ? Status.STORED : false, username);
+              updateProfDisplay(exerName);
+
+              // Store the user's progress for Khan Academy exercises
+              if (exercises[exerName].type === 'ka' && isDefined(data[exerName].progress)) {
+                exercises[exerName].progress = data[exerName].progress;
+
+                // Load any existing data
+                exerData = getJSON(localStorage.khan_exercise);
+                exerData[exerName] = exercises[exerName].progress;
+                localStorage.khan_exercise = JSON.stringify(exerData);
+
+                /*
+                // TODO: get the correct function to trigger
+                // Trigger progress bar update on KA exercise page, if its loaded
+                if ($('#' + exerName + '_iframe')) {
+                document.getElementById(exerName + '_iframe').contentWindow.updateProgressBar();
+                }
+                */
+              }
+            } else {  // Module proficiency
+              storeProficiencyStatus(exerName, (data[exerName]) ? Status.STORED : false, username);
+              updateProfDisplay(exerName);
+            }
+          }
+        }
+
+        if (debugMode) {
+          console.groupEnd();
+        }
+      },
+      error: function (data) {
+        data = getJSON(data);
+        console.group("Error loading module: " + modName);
+        console.debug(JSON.stringify(data));
+        console.groupEnd();
+
+        if (data.status === 401) {
+          handleExpiredSession(modData.key);
+        }
+      }
+    });
+  } else if (modName === 'index') {{
+    // Get every module page link on the index page and determine if the user is proficient
+    $('li.toctree-l1 > a.reference.internal').each(function (index, item) {
+      if ($(item).attr('href').endsWith('.html')) {
+        modName = getNameFromURL($(item).attr('href'));
+        // Update the proficiency indicators based on what is currently in local storage
+        updateProfDisplay(modName);
+      }
+    });
   } else if (modName === "Gradebook") {
     // Trigger loading the gradebook
     $("body").trigger("gradebook-load");
   } else {
-    var exerName;
-
-    if (serverEnabled() && userLoggedIn()) {  // Sends all the data necessary to load a module to the server
-      if (debugMode) {
-        console.debug('Querying server for module data');
-      }
-
-      var username = getUsername(),
-          modData = {},
-          exerData = {},
-          exerList = [];
-
-      // Package exercises into a list so it can be stringified
-      for (exerName in exercises) {
-        if (exercises.hasOwnProperty(exerName)) {
-          // Update proficiency displays based on localStorage to make the page
-          // more responsive (don't have to wait until the server responds to see your proficiency)
-          updateProfDisplay(exerName);
-
-          // Make a deep copy of the 'exercises' object, so we can add the
-          // exercise name and remove uiid without affecting 'exercises'
-          exerData = $.extend(true, {}, exercises[exerName]);
-          exerData.exercise = exerName;
-          delete exerData.uiid;
-          exerList.push(exerData);
-        }
-      }
-
-      // Package the module data
-      modData.key = getSessionKey();
-      modData.book = bookName;
-      // Calculate the URL of the book, relative to the current module page
-      modData.url = location.href.substring(0, location.href.lastIndexOf('/') + 1);
-      modData.module = modName;
-      // Hack to parse the long form module name from the module page title
-      // TODO: Create a more reliable way to get this information
-      modData.name = document.title.slice(document.title.indexOf(' ') + 1, document.title.indexOf('\u2014') - 1);
-      modData.exercises = JSON.stringify(exerList);
-
-      if (debugMode) {
-        console.debug('Sending modData:');
-        console.debug(JSON.stringify(modData));
-      }
-
-      jQuery.ajax({
-        url:  server_url + "/api/v1/module/loadmodule/",
-        type: "POST",
-        data: modData,
-        contentType: "application/json; charset=utf-8",
-        datatype: "json",
-        xhrFields: {withCredentials: true},
-        success: function (data) {
-          data = getJSON(data);
-
-          if (debugMode) {
-            console.group('Server response, loadModule(' + modName + ', ' + username + ')');
-            console.debug(JSON.stringify(data));
-          }
-
-          // Loop through all the exercises listed in the server's response and update the user's status for each exercise
-          for (var exerName in data) {
-            if (data.hasOwnProperty(exerName)) {
-              // Update the user's status for the exercise
-              // Since the server is the ultimate authority for logged in users,
-              // if the user's proficiency comes back as false, it will remove
-              // their local proficiency to keep the client in sync with the server
-              if (exercises[exerName]) {  // Exercise proficiency
-                storeProficiencyStatus(exerName, (data[exerName].proficient) ? Status.STORED : false, username);
-                updateProfDisplay(exerName);
-
-                // Store the user's progress for Khan Academy exercises
-                if (exercises[exerName].type === 'ka' && isDefined(data[exerName].progress)) {
-                  exercises[exerName].progress = data[exerName].progress;
-
-                  // Load any existing data
-                  exerData = getJSON(localStorage.khan_exercise);
-                  exerData[exerName] = exercises[exerName].progress;
-                  localStorage.khan_exercise = JSON.stringify(exerData);
-
-                  /*
-                  // TODO: get the correct function to trigger
-                  // Trigger progress bar update on KA exercise page, if its loaded
-                  if ($('#' + exerName + '_iframe')) {
-                  document.getElementById(exerName + '_iframe').contentWindow.updateProgressBar();
-                  }
-                  */
-                }
-              } else {  // Module proficiency
-                storeProficiencyStatus(exerName, (data[exerName]) ? Status.STORED : false, username);
-                updateProfDisplay(exerName);
-              }
-            }
-          }
-
-          if (debugMode) {
-            console.groupEnd();
-          }
-        },
-        error: function (data) {
-          data = getJSON(data);
-          console.group("Error loading module: " + modName);
-          console.debug(JSON.stringify(data));
-          console.groupEnd();
-
-          if (data.status === 401) {
-            handleExpiredSession(modData.key);
-          }
-        }
-      });
-    } else {
-      if (debugMode) {
-        console.debug('Load anonymous user data from localStorage');
-      }
-
-      // Update exercise proficiency displays to reflect the proficiency of the current user
-      for (exerName in exercises) {
-        if (exercises.hasOwnProperty(exerName)) {
-          updateProfDisplay(exerName);
-
-          // Update Khan Academy exercise progress bar
-          /*
-          if (exercises[exerName].type === 'ka') {
-
-          }
-          */
-        }
-      }
-
-      // Check for module proficiency
-      checkProficiency(moduleName);
+    if (debugMode) {
+      console.debug('Load anonymous user data from localStorage');
     }
+
+    // Update exercise proficiency displays to reflect the proficiency of the current user
+    for (exerName in exercises) {
+      if (exercises.hasOwnProperty(exerName)) {
+        updateProfDisplay(exerName);
+
+        // Update Khan Academy exercise progress bar
+        /*
+        if (exercises[exerName].type === 'ka') {
+
+        }
+        */
+      }
+    }
+
+    // Check for module proficiency
+    checkProficiency(moduleName);
   }
 
   if (debugMode) {
@@ -1163,11 +1171,18 @@ function processEventData(data) {
     delete data.totalSteps;
   } else if (data.type === "jsav-array-click") {
     data.desc = JSON.stringify({'index': data.index, 'arrayid': data.arrayid});
+    
+    // Remove index and arrayid because they are stored in the description and won't be logged explicitly
+    delete data.index;
+    delete data.arrayid;
   } else if (data.type === "jsav-exercise-grade-change") {
     // On grade change events, log the user's score and submit it
-    score = (data.score.student - data.score.fix) / data.score.total;
-    complete = (data.score.student + data.score.fix) / data.score.total;
+    score = roundPercent((data.score.student - data.score.fix) / data.score.total);
+    complete = roundPercent((data.score.student + data.score.fix) / data.score.total);
     data.desc = JSON.stringify({'score': score, 'complete': complete});
+    
+    // Remove score because the necessary data is stored in the description and it won't be logged explicitly
+    delete data.score;
 
     // Store the user's score when they complete the exercise
     if (complete === 1) {

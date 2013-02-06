@@ -229,7 +229,7 @@
             "long_name": "Shellsort Visualization",
             "required": false,
             "points": 0,
-            "threshold": 0,
+            "threshold": 1.0,
             "type": "ss"
           },
           "ShellsortSeries": {
@@ -335,7 +335,7 @@
             "long_name": "Quicksort Visualization",
             "required": false,
             "points": 0,
-            "threshold": 0,
+            "threshold": 1.0,
             "type": "ss"
           },
           "QuicksortCON1": {

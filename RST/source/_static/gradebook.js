@@ -201,7 +201,7 @@
         xhrFields: {withCredentials: true},
         success: function (data) {
           data = getJSON(data);
-          
+
           if (debugMode) {
             console.group('Server response, Gradebook.load()');
             console.debug(JSON.stringify(data));
@@ -225,7 +225,7 @@
             if (!profData[username]) {
               profData[username] = {};
             }
-            
+
             // Load proficiency data for exercises
             for (var i = 0; i < data.grades.length; i++) {
               exerName = data.grades[i].exercise;
@@ -241,11 +241,11 @@
                 delete profData[username][exerName];
               }
             }
-            
+
             // Load proficiency data for modules
             for (var i = 0; i < data.modules.length; i++) {
               modName = data.modules[i].module;
-              
+
               if (data.modules[i].status) {
                 profData[username][modName].status = Status.STORED;
               } else {
@@ -267,7 +267,7 @@
             $('#loadingMessage').hide();
             $('#gradeData').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
           }
-          
+
           if (debugMode) {
             console.groupEnd();
           }
@@ -306,22 +306,24 @@
 
   $(document).ready(function () {
     // Hack for removing the chapter number from the "Gradebook" header
-    var html = $($('h1')[1]).html();
+    var html = $('h1 > a.headerlink').parent().html();
     html = html.slice(html.indexOf(' ') + 1, html.length);
-    $($('h1')[1]).html(html);
+    $('h1 > a.headerlink').parent().html(html);
 
     Gradebook.load();
 
-    // Listen for and process JSAV events
+    // Listen for event that triggers a gradebook load
     $("body").on("gradebook-load", function (e, data) {
       Gradebook.load();
     });
 
+    // Attach the expandAll function to the 'Expand All' link
     $('#expand').click(function () {
       Gradebook.expandAll();
       return false;
     });
 
+    // Attach the collapseAll function to the 'Collapse All' link
     $('#collapse').click(function () {
       Gradebook.collapseAll();
       return false;
