@@ -705,7 +705,7 @@ function loadModule(modName) {
         }
       }
     });
-  } else if (modName === 'index') {{
+  } else if (modName === 'index') {
     // Get every module page link on the index page and determine if the user is proficient
     $('li.toctree-l1 > a.reference.internal').each(function (index, item) {
       if ($(item).attr('href').endsWith('.html')) {
@@ -714,10 +714,7 @@ function loadModule(modName) {
         updateProfDisplay(modName);
       }
     });
-  } else if (modName === "Gradebook") {
-    // Trigger loading the gradebook
-    $("body").trigger("gradebook-load");
-  } else {
+  } else { // Load anonymous user data from localStorage
     if (debugMode) {
       console.debug('Load anonymous user data from localStorage');
     }
