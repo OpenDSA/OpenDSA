@@ -1,6 +1,6 @@
 "use strict";
 /*jslint noempty: false */
-/*global alert: true, logExerciseInit, avc */
+/*global alert: true, logExerciseInit */
 (function ($) {
   $(document).ready(function () {
     // Process help button: Give a full help page for this activity
@@ -31,7 +31,7 @@
 
     var arraySize = 10,
       initialArray = [],
-      av = new JSAV(avc, {settings: settings});
+      av = new JSAV($('.avcontainer'), {settings: settings});
 
     av.recorded();     // we are not recording an AV with an algorithm
 

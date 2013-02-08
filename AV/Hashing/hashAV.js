@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, console: true, is, avc, logExerciseInit */
+/*global alert: true, console: true, is, logExerciseInit */
 
 /*
  * For queries & switch cases, follow the numbering below:
@@ -1104,7 +1104,7 @@
    * Anything that triggers an interaction with an HTML element should be done here
    */
   $(document).ready(function () {
-    jsav = new JSAV(avc);
+    jsav = new JSAV($('.avcontainer'));
 
     /* Key Presses */
     $('#M').keyup(function (event) {

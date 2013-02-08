@@ -1,10 +1,10 @@
 "use strict";
-/*global alert: true, logExerciseInit, avc*/
+/*global alert: true, logExerciseInit */
 (function ($) {
   $(document).ready(function () {
     var initData, bh,
         settings = new JSAV.utils.Settings($(".jsavsettings")),
-        jsav = new JSAV(avc, {settings: settings}),
+        jsav = new JSAV($('.avcontainer'), {settings: settings}),
         exercise,
         swapIndex;
 

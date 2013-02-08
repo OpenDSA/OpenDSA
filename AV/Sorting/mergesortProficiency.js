@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, console: true, logExerciseInit, avc */
+/*global alert: true, console: true, logExerciseInit */
 (function ($) {
   $(document).ready(function () {
     // Process help button: Give a full help page for this activity
@@ -37,7 +37,7 @@
         initialArray = [],
         userAnswerValue = [],
         userAnswerDepth = [],
-        av = new JSAV(avc, {settings: settings});
+        av = new JSAV($('.avcontainer'), {settings: settings});
 
     // Stores the various JSAV arrays created for the user to enter their solution
     var arrays = {};

@@ -861,17 +861,17 @@ function assignAnonScoreData(username) {
 /**
  * Stores the user's score for an AV / exercise
  */
-function storeExerciseScore(exerName, score, username) {
+function storeExerciseScore(exerName, score, totalTime, username) {
   // TODO: Fix the localStorage concurrency problem
   username = (isDefined(username)) ? username : getUsername();
 
   if (debugMode) {
-    console.group('storeExerciseScore(' + exerName + ', ' + score + ', ' + username + ')');
+    console.group('storeExerciseScore(' + exerName + ', ' + score + ', ' + totalTime + ', ' + username + ')');
   }
 
   // Return if exerName is not a valid exercise
   if (!exercises[exerName]) {
-    console.warn('storeExerciseScore(' + exerName + ', ' + score + ', ' + username + '): invalid reference ' + exerName);
+    console.warn('storeExerciseScore(' + exerName + ', ' + score + ', ' + totalTime + ', ' + username + '): invalid reference ' + exerName);
 
     if (debugMode) {
       console.groupEnd();
@@ -886,7 +886,7 @@ function storeExerciseScore(exerName, score, username) {
     data.submit_time = (new Date()).getTime();
     data.module = moduleName;
     data.score = score;
-    data.total_time = 0;  // TODO: Figure out how to record total time
+    data.total_time = totalTime;
     data.uiid = exercises[exerName].uiid;
 
     if (debugMode) {
@@ -1162,10 +1162,23 @@ function processEventData(data) {
   // TODO: Make sure all additional fields of JSAV events are logged somewhere
   if (ssEvents.indexOf(data.type) > -1) {
     data.desc = data.currentStep + " / " + data.totalSteps;
+    
+    // Initializes the start time for a slideshow, the first time a user clicks on it
+    if (!exercises[data.av].startTime) {
+      exercises[data.av].startTime = +new Date();
+    }
 
     // User reached the end of a slideshow, award them credit
     if (data.type === "jsav-forward" && data.currentStep === data.totalSteps) {
-      storeExerciseScore(data.av, 1);
+      if (!data.totalTime) {
+        data.totalTime = +new Date() - exercises[data.av].startTime;
+        
+        // TODO: Do we really want to delete this?
+        // Remove the start time because the user just finished
+        delete exercises[data.av].startTime;
+      }
+    
+      storeExerciseScore(data.av, 1, data.totalTime);
       updateProfDisplay(data.av);
       flush = true;
     }
@@ -1179,13 +1192,13 @@ function processEventData(data) {
     
     // Store the user's score when they complete the exercise
     if (complete === 1) {
-      storeExerciseScore(data.av, score);
+      storeExerciseScore(data.av, score, data.totalTime);
       updateProfDisplay(data.av);
       flush = true;
     }
   } else if (data.type === "odsa-award-credit") {
     // Store completion credit
-    storeExerciseScore(data.av, 1);
+    storeExerciseScore(data.av, 1, data.totalTime);
     updateProfDisplay(data.av);
     flush = true;
   }

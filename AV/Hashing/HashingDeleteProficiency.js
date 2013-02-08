@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, avc, logExerciseInit */
+/*global alert: true, logExerciseInit */
 (function ($) {
   $(document).ready(function () {
     var arr_size = 10,
@@ -7,7 +7,7 @@
         inputData,
         jsavArr,
         jsavInputPos,
-        jsav = new JSAV(avc),
+        jsav = new JSAV($('.avcontainer')),
         exercise,
         task;
 

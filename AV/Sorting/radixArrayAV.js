@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, initArraySize, processArrayValues, reset, avc */
+/*global alert: true, initArraySize, processArrayValues, reset */
 (function ($) {
   var jsav,   // for JSAV library object
       arr,    // for the JSAV array
@@ -39,7 +39,7 @@
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       reset(true);
-      jsav = new JSAV(avc);
+      jsav = new JSAV($('.avcontainer'));
 
       // Set the digit size to the length of the largest number in the array
       var max = Math.max.apply(Math, arrValues);
