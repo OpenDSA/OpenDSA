@@ -200,7 +200,8 @@
             "long_name": "Shellsort Slideshow 4",
             "required": true,
             "points": 0.5,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "type": "ss"
           },
           "shellsortCON6": {},
           "shellsortCON7": {
