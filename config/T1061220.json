@@ -1,7 +1,7 @@
 {
   "config_version": 0.1,
-  "title": "OpenDSA Sorting and Hashing: Spring 2013",
-  "output_dir": "Books/CS3114",
+  "title": "OpenDSA Sorting and Hashing: T1061220",
+  "output_dir": "Books/T1061220",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz-beta7.cc.vt.edu",
   "exercise_origin": "http://algoviz-beta7.cc.vt.edu",

@@ -6,6 +6,9 @@ modules.csv
 #build HTML directory
 build
 
+#Books directory (these are build targets)
+Books
+
 #RST build directory
 RST/build
 RST/source/ToDo.rst
