@@ -1,3 +1,8 @@
+body, input {
+  font-size: 14px;
+  font-family: Tahoma,Verdana,Arial,Helvetica,sans-serif;;
+}
+
 .proHeaderTable {
   margin-top: -20px;
   border-bottom: 0 none;

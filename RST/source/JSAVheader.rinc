@@ -17,3 +17,10 @@
 .. raw:: html
 
    <script src="_static/opendsaMOD.js"></script>
+   <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+       "HTML-CSS": {
+         scale: "80"
+       }
+     });
+   </script>
