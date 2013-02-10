@@ -3,8 +3,8 @@
   "title": "OpenDSA Sorting and Hashing: Spring 2013",
   "output_dir": "Books/CS3114",
   "code_dir": "SourceCode/Processing",
-  "module_origin": "http://algoviz-beta7.cc.vt.edu",
-  "exercise_origin": "http://algoviz-beta7.cc.vt.edu",
+  "module_origin": "http://algoviz.org",
+  "exercise_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "copy_static_files": true,
   "build_JSAV": false,
@@ -438,7 +438,7 @@
             "threshold": 5,
             "type": "ka"
           },
-          "RadixsortSumm": {
+          "RadixSortSumm": {
             "long_name": "Radixsort Summary",
             "required": true,
             "points": 1,

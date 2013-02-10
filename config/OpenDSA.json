@@ -36,21 +36,21 @@
           "InssortCON1": {
             "long_name": "Insertion Sort Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "InssortCON2": {
             "long_name": "Insertion Sort Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "InssortCON3": {
             "long_name": "Insertion Sort Slideshow 3",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -80,14 +80,14 @@
           "BubsortCON1": {
             "long_name": "Bubble Sort Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "BubsortCON2": {
             "long_name": "Bubble Sort Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -113,14 +113,14 @@
           "SelsortCON1": {
             "long_name": "Selection Sort Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "SelsortCON2": {
             "long_name": "Selection Sort Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -177,14 +177,14 @@
           "shellsortCON1": {
             "long_name": "Shellsort Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "shellsortCON2": {
             "long_name": "Shellsort Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -192,14 +192,14 @@
           "shellsortCON4": {
             "long_name": "Shellsort Slideshow 3",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "shellsortCON5": {
             "long_name": "Shellsort Slideshow 4",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -207,7 +207,7 @@
           "shellsortCON7": {
             "long_name": "Shellsort Slideshow 5",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -215,7 +215,7 @@
           "shellsortCON9": {
             "long_name": "Shellsort Slideshow 6",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -269,7 +269,7 @@
           "mergesortCON1": {
             "long_name": "Mergesort Concepts Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -302,14 +302,14 @@
           "mergeImplCON1": {
             "long_name": "Mergesort Implementation Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "mergeImplCON2": {
             "long_name": "Mergesort Implementation Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -342,7 +342,7 @@
           "QuicksortCON1": {
             "long_name": "Quicksort Slideshow",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -375,7 +375,7 @@
           "heapsortCON": {
             "long_name": "Heapsort Slideshow",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -408,14 +408,14 @@
           "BinsortCON1": {
             "long_name": "Binsort Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "BinsortCON2": {
             "long_name": "Binsort Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -438,7 +438,7 @@
             "threshold": 5,
             "type": "ka"
           },
-          "RadixsortSumm": {
+          "RadixSortSumm": {
             "long_name": "Radixsort Summary",
             "required": true,
             "points": 1,
@@ -491,7 +491,7 @@
           "hashIntroCON1": {
             "long_name": "Hashing Intro Slideshow",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           }
@@ -503,7 +503,7 @@
           "Birthday": {
             "long_name": "Birthday Problem Calculator",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "pe"
           },
@@ -522,35 +522,35 @@
           "hashFuncExCON1": {
             "long_name": "Hash Function Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "hashFuncExCON2": {
             "long_name": "Hash Function Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "MidSquare": {
             "long_name": "Mid-Square Calculator",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "pe"
           },
           "StringSimple": {
             "long_name": "Simple String Folding Calculator",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "pe"
           },
           "StringSfold": {
             "long_name": "Improved String Folding Calculator",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "pe"
           },
@@ -589,14 +589,14 @@
           "buckethashCON1": {
             "long_name": "Bucket Hashing Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "buckethashCON2": {
             "long_name": "Bucket Hashing Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -622,14 +622,14 @@
           "linProbeCON1": {
             "long_name": "Linear Probing Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "linProbeCON2": {
             "long_name": "Linear Probing Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -648,14 +648,14 @@
           "collisionCON1": {
             "long_name": "Linear Probing By Steps Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "collisionCON2": {
             "long_name": "Linear Probing By Steps Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -669,7 +669,7 @@
           "collisionCON3": {
             "long_name": "Pseudo-Random Probing Slideshow",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -683,14 +683,14 @@
           "collisionCON4": {
             "long_name": "Quadratic Probing Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "collisionCON5": {
             "long_name": "Quadratic Probing Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -704,21 +704,21 @@
           "collisionCON6": {
             "long_name": "Double Hashing Slideshow 1",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "collisionCON7": {
             "long_name": "Double Hashing Slideshow 2",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
           "collisionCON8": {
             "long_name": "Double Hashing Slideshow 3",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -756,7 +756,7 @@
           "hashdelCON1": {
             "long_name": "Hash Deletion Slideshow",
             "required": true,
-            "points": 0.5,
+            "points": 0.1,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -825,14 +825,14 @@
             "huffmanCON1": {
               "long_name": "Huffman Coding Tree Slideshow",
               "required": true,
-              "points": 0.5,
+              "points": 0.1,
               "threshold": 1.0,
               "type": "ss"
             },
             "HuffmanCoding": {
               "long_name": "Huffman Coding Tree Visualization",
               "required": true,
-              "points": 0.5,
+              "points": 0.1,
               "threshold": 1.0,
               "type": "ss"
             }
@@ -859,20 +859,20 @@
             "sackCallTree": {
               "long_name": "Knapsack Call Tree",
               "required": true,
-              "points": 0.5,
+              "points": 0.1,
               "threshold": 1.0,
               "type": "ss"
             },
             "sackTreePluck": {
               "required": true,
-              "points": 0.5,
+              "points": 0.1,
               "threshold": 1.0,
               "type": "ss"
             },
             "sackTraceBack": {
               "long_name": "Knapsack Tree Reduction",
               "required": true,
-              "points": 0.5,
+              "points": 0.1,
               "threshold": 1.0,
               "type": "ss"
             },
