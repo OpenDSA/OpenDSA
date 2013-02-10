@@ -21,6 +21,9 @@ body, input {
 .instructions {
   text-align:center;
   margin: 5px;
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .tsize {
