@@ -1877,14 +1877,18 @@ var Khan = (function() {
         userActivityLog.push([ "hint-activity", "0", timeTaken ]);
       }
 
-      var usernme = '';
-      if ( typeof localStorage["opendsa"] !== "undefined" ) {
-        var obj = JSON.parse(localStorage["opendsa"]);
-        usernme =  obj.username;
+      var key = 'phantom-key',
+          book = localStorage.book;
+
+      if (localStorage.session) {
+        var session = JSON.parse(localStorage.session);
+        key = session.key;
       }
 
       return {
-        user: usernme,
+        key: key,
+        book: book,
+
         // The user answered correctly
         complete: pass === true ? 1 : 0,
 
@@ -2823,10 +2827,10 @@ var Khan = (function() {
     }
     var progress = 0;
     if (data) {
-      if (parseInt(data.progress._sign) != 0) {  
-          progress = 0;   
-      }    
-      else { 
+      if (parseInt(data.progress._sign) != 0) {
+          progress = 0;
+      }
+      else {
           if (parseInt(data.progress._exp) == 0) {
               progress = parseFloat(data.progress._int);
           }
@@ -2834,7 +2838,7 @@ var Khan = (function() {
               progress = parseFloat(data.progress._int) *  Math.pow(10,parseInt(data.progress._exp));
           }
       }
-    }    
+    }
     var  total =  progress*100;   //parseInt(streak) + 1;
     if (total >=100.00){
       total = 100;

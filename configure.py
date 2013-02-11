@@ -424,7 +424,6 @@ sourcecode_path = '%(code_dir)s'
 
 
 
-
 # Process script arguments
 if len(sys.argv) != 2:
   print "Invalid config filename"
@@ -584,16 +583,21 @@ odsa.close()
 # changes depending on whether static files are copied or not
 with open(options['odsa_dir'] + 'lib/ODSA.js','w') as odsa:
   replaced = 0
-  total_replacements = 2
+  total_replacements = 3
   
   for i in range(len(odsa_data)):
-    if 'var server_url = "' in odsa_data[i]:
+    if 'var serverURL = "' in odsa_data[i]:
       odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['backend_address'].rstrip('/') + r'\2', odsa_data[i])
       replaced = replaced + 1
       if replaced == total_replacements:
         break
 
-  for i in range(len(odsa_data)):
+    if 'var bookName = "' in odsa_data[i]:
+      odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['name'] + r'\2', odsa_data[i])
+      replaced = replaced + 1
+      if replaced == total_replacements:
+        break
+    
     if 'var moduleOrigin = "' in odsa_data[i]:
       odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['module_origin'] + r'\2', odsa_data[i])
       replaced = replaced + 1
@@ -614,17 +618,11 @@ odsaMOD.close()
 # opendsaMOD.js is always copied to the build location, so write the updated data to the output source directory
 with open(src_dir + '_static/opendsaMOD.js','w') as odsaMOD:
   replaced = 0
-  total_replacements = 3
+  total_replacements = 2
   
   for i in range(len(odsaMOD_data)):
     if 'var exerciseOrigin = "' in odsaMOD_data[i]:
       odsaMOD_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['exercise_origin'] + r'\2', odsaMOD_data[i])
-      replaced = replaced + 1
-      if replaced == total_replacements:
-        break
-      
-    if 'var bookName = "' in odsaMOD_data[i]:
-      odsaMOD_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['name'] + r'\2', odsaMOD_data[i])
       replaced = replaced + 1
       if replaced == total_replacements:
         break
@@ -663,6 +661,23 @@ with open(options['odsa_dir'] + 'ODSAkhan-exercises/khan-exercise.js','w') as kh
         break
   khan_exer.writelines(ke_data)
 khan_exer.close()
+
+
+
+# Add the index.html file that redirects to the build/html directory
+indexHTML = """\
+<html>
+<head>
+  <script>
+    window.location.replace(window.location.href + 'build/html');
+  </script>
+</head>
+</html>
+"""
+
+with open(output_dir + 'index.html','w') as indexFile:
+  indexFile.writelines(indexHTML)
+indexFile.close()
 
 
 

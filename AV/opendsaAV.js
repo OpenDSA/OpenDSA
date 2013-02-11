@@ -130,15 +130,15 @@ function reset(flag) {
 function processArrayValues(upperLimit) {
   upperLimit = (upperLimit) ? upperLimit : 999;
 
-  if (!$('#arraysize').data('min') || !$('#arraysize').data('max')) {
-    console.warn('processArrayValues() called without calling initArraySize()');
-  }
-
   var i,
       initData = {},
       minSize = $('#arraysize').data('min'),
       maxSize = $('#arraysize').data('max'),
       msg = "Please enter " + minSize + " to " + maxSize + " positive integers between 0 and " + upperLimit;
+
+  if (!minSize || !maxSize) {
+    console.warn('processArrayValues() called without calling initArraySize()');
+  }
 
   // Convert user's values to an array,
   // assuming values are space separated
@@ -311,7 +311,7 @@ function processArrayValues(upperLimit) {
           $('#credit_disabled_msg').remove();
         }
       }
-      
+
       // Mark data as logged on the client side, then send to message to the parent window
       data.totalTime = totalTime + (+new Date()) - focusTime;
       data.logged = true;
