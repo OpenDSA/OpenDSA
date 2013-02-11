@@ -4,28 +4,29 @@ https://github.com/cashaffer/OpenDSA-stable.
 
 The goal of the OpenDSA project is to create open-source courseware
 for use in Data Structures and Algorithms courses, that deeply
-integrate textbook-quality content with algorithm visualizations and
-automated assessment exercises.
+integrates textbook-quality content with algorithm visualizations and
+interactive, automatically assessed exercises.
 
-An outline of the major components in the directory structure is as
-follows:
+The major components in the directory structure is as follows:
 
-AV: Source code for various algorithm visualizations. Subdirectories
-divide the content by topical areas.
+AV: Source code for various algorithm visualizations and associated
+exercises. Subdirectories divide the content by topical areas.
 
-**build: An obsolete directory that will be removed at some point.
+Books: This contains compiled versions of "textbooks".
 
-**Demos: Some minor JSAV technology demonstrations that should be moved
-soon.
+config: This holds configuration files for specific books (whose
+output will go to the "Books" directory).
 
-Doc: Documentation. Currently contains a template for Khan Academy
+configure.py: The file used to drive book compilation.
+
+Doc: Documentation. Currently includes a template for Khan Academy
 multiple choice questions, and documentation for using the various
 Sphinx directives that we have created.
 
-Exercises: Our Khan Academy-style exercises. Subdirectories divide the
-content by topic.
+Exercises: Our Khan Academy Infrastructure-based exercises.
+Subdirectories divide the content by topic.
 
-Frontend: Experimental interface for allowing instructor selection of
+**Frontend: Experimental interface for allowing instructor selection of
 modules. Currently not in use, will be replaced at some point.
 
 JSAV: The JavaScript Algorithm Visualization library (JSAV). This is a
@@ -35,9 +36,10 @@ you must get the JSAV submodule by doing the following:
   git submodule init
   git submodule update
 
-lib: System-wide library
+lib: System-wide library files
 
-Makefile: Primarily for source file validation
+Makefile: Primarily for source file validation and to generate some of
+the "textbooks" to the Books directory.
 
 MIT-license.txt: The license file. OpenDSA is distributed under an MIT
 open source license.
@@ -71,7 +73,7 @@ tutorials. Ultimately, we hope to support code snippits in Processing
 would be able to generate versions of tutorials that support any of
 these three languages.
 
-Storyboard: Materials related to "storyboarding" designs for
+**Storyboard: Materials related to "storyboarding" designs for
 tutorials. This concept never gained much traction, and this might be
 removed at some point.
 
