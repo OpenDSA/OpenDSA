@@ -1190,7 +1190,7 @@ function processEventData(data) {
   } else if (data.type === "jsav-exercise-grade-change") {
     // On grade change events, log the user's score and submit it
     score = roundPercent((data.score.student - data.score.fix) / data.score.total);
-    complete = roundPercent((data.score.student + data.score.fix) / data.score.total);
+    complete = roundPercent(data.score.student / data.score.total);
     data.desc = JSON.stringify({'score': score, 'complete': complete});
 
     // Store the user's score when they complete the exercise

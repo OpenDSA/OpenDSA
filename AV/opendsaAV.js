@@ -285,7 +285,7 @@ function processArrayValues(upperLimit) {
       } else if (data.type === "jsav-exercise-grade-change") {
         // On grade change events, log the user's score and submit it
         var score = roundPercent((data.score.student - data.score.fix) / data.score.total);
-        var complete = roundPercent((data.score.student + data.score.fix) / data.score.total);
+        var complete = roundPercent(data.score.student / data.score.total);
         data.desc = JSON.stringify({'score': score, 'complete': complete});
         flush = true;
       } else if (data.type === "jsav-exercise-model-open") {
