@@ -1,7 +1,7 @@
 {
   "config_version": 0.1,
-  "title": "OpenDSA (Beta)",
-  "output_dir": "Books/OpenDSA",
+  "title": "OpenDSA Sorting and Hashing: T1061220",
+  "output_dir": "Books/T1061220",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
   "exercise_origin": "http://algoviz.org",
@@ -503,7 +503,7 @@
           "Birthday": {
             "long_name": "Birthday Problem Calculator",
             "required": true,
-            "points": 0.1,
+            "points": 0.5,
             "threshold": 1.0,
             "type": "pe"
           },
@@ -536,21 +536,21 @@
           "MidSquare": {
             "long_name": "Mid-Square Calculator",
             "required": true,
-            "points": 0.1,
+            "points": 0.25,
             "threshold": 1.0,
             "type": "pe"
           },
           "StringSimple": {
             "long_name": "Simple String Folding Calculator",
             "required": true,
-            "points": 0.1,
+            "points": 0.25,
             "threshold": 1.0,
             "type": "pe"
           },
           "StringSfold": {
             "long_name": "Improved String Folding Calculator",
             "required": true,
-            "points": 0.1,
+            "points": 0.25,
             "threshold": 1.0,
             "type": "pe"
           },
@@ -573,7 +573,13 @@
       "OpenHash": {
         "long_name": "Open Hashing",
         "exercises": {
-          "openhashCON1": {},
+          "openhashCON1": {
+            "long_name": "Open Hashing Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
           "OpenHashPRO": {
             "long_name": "Open Hashing Proficiency",
             "required": true,
@@ -789,168 +795,40 @@
         }
       }
     },
-    "Under Development": {
-      "Background": {
-        "SetDef": {
-          "long_name": "Set Definitions",
-          "exercises": {}
-        },
-        "Recurrence": {
-          "long_name": "Recurrence",
-          "exercises": {}
-        }
+    "Stubs": {
+      "SetDef": {
+        "long_name": "Set Definitions",
+        "exercises": {}
       },
-      "File Processing": {
-        "FileProc": {
-          "long_name": "File Processing",
-          "exercises": {}
-        },
-        "ExternalSort": {
-          "long_name": "External Sorting",
-          "exercises": {}
-        }
+      "Recurrence": {
+        "long_name": "Recurrence",
+        "exercises": {}
       },
-      "Trees": {
-        "Heaps": {
-          "long_name": "Heaps",
-          "exercises": {}
-        },
-        "BinaryHeap": {
-          "long_name": "Binary Heap",
-          "exercises": {}
-        },
-        "Huffman": {
-          "long_name": "Huffman Coding Trees",
-          "exercises": {
-            "huffmanCON1": {
-              "long_name": "Huffman Coding Tree Slideshow",
-              "required": true,
-              "points": 0.1,
-              "threshold": 1.0,
-              "type": "ss"
-            },
-            "HuffmanCoding": {
-              "long_name": "Huffman Coding Tree Visualization",
-              "required": true,
-              "points": 0.1,
-              "threshold": 1.0,
-              "type": "ss"
-            }
-          }
-        },
-        "TreeExer": {
-          "long_name": "Tree Exercises",
-          "exercises": {}
-        },
-        "Trie": {
-          "long_name": "Tries",
-          "exercises": {}
-        }
+      "MCST": {
+        "long_name": "Minimal Cost Spanning Trees",
+        "exercises": {}
       },
-      "Graphs": {
-        "MCST": {
-          "long_name": "Minimal Cost Spanning Trees",
-          "exercises": {}
-        }
+      "FileProc": {
+        "long_name": "File Processing",
+        "exercises": {}
       },
-      "Algorithms": {
-        "Knapsack": {
-          "exercises": {
-            "sackCallTree": {
-              "long_name": "Knapsack Call Tree",
-              "required": true,
-              "points": 0.1,
-              "threshold": 1.0,
-              "type": "ss"
-            },
-            "sackTreePluck": {
-              "required": true,
-              "points": 0.1,
-              "threshold": 1.0,
-              "type": "ss"
-            },
-            "sackTraceBack": {
-              "long_name": "Knapsack Tree Reduction",
-              "required": true,
-              "points": 0.1,
-              "threshold": 1.0,
-              "type": "ss"
-            },
-            "knapsackSelect": {
-              "long_name": "Knapsack Select",
-              "required": true,
-              "points": 1,
-              "threshold": 5,
-              "type": "ka"
-            },
-            "knapsackFillRow": {
-              "long_name": "Knapsack Fill Row",
-              "required": true,
-              "points": 1,
-              "threshold": 5,
-              "type": "ka"
-            },
-            "knapsackSolution": {
-              "long_name": "Knapsack Solution",
-              "required": true,
-              "points": 1,
-              "threshold": 5,
-              "type": "ka"
-            },
-            "sackProficiency": {
-              "long_name": "Knapsack Proficiency",
-              "required": true,
-              "points": 1,
-              "threshold": 0.9,
-              "type": "pe"
-            }
-          }
-        },
-        "EditDistance": {
-          "exercises": {
-            "editRCT": {
-              "long_name": "Edit RCT",
-              "required": true,
-              "points": 1,
-              "threshold": 0.9,
-              "type": "pe"
-            },
-            "editPrune": {
-              "long_name": "Edit Prune",
-              "required": true,
-              "points": 1,
-              "threshold": 0.9,
-              "type": "pe"
-            },
-            "editOptimal": {
-              "long_name": "Edit Optimal",
-              "required": true,
-              "points": 1,
-              "threshold": 0.9,
-              "type": "pe"
-            },
-            "edit-KA1": {
-              "long_name": "Edit KA1",
-              "required": true,
-              "points": 1,
-              "threshold": 5,
-              "type": "ka"
-            },
-            "edit-KA2": {
-              "long_name": "Edit KA2",
-              "required": true,
-              "points": 1,
-              "threshold": 5,
-              "type": "ka"
-            }
-          }
-        },
-        "Reductions": {
-          "long_name": "Reductions",
-          "exercises": {}
-        }
+      "Heaps": {
+        "long_name": "Heaps",
+        "exercises": {}
+      },
+      "ExternalSort": {
+        "long_name": "External Sorting",
+        "exercises": {}
+      },
+      "Trie": {
+        "long_name": "Tries",
+        "exercises": {}
+      },
+      "Reductions": {
+        "long_name": "Reductions",
+        "exercises": {}
       }
-    }, 
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",

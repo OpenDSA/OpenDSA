@@ -1,3 +1,8 @@
+body, input {
+  font-size: 14px;
+  font-family: Tahoma,Verdana,Arial,Helvetica,sans-serif;;
+}
+
 #container {
   border: 1px solid black;
   background-color: #efe;
@@ -16,31 +21,34 @@
 .instructions {
   text-align:center;
   margin: 5px;
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .tsize {
   position: absolute;
   left: 55px;
-  top: 60px;
+  top: 70px;
 }
 
 #tablesize {
   position: absolute;
   left: 200px;
-  top: 75px;
+  top: 85px;
   width: 100px;
 }
 
 .nrecs {
   position: absolute;
   left: 55px;
-  top: 85px;
+  top: 95px;
 }
 
 #numrecs {
   position: absolute;
   left: 200px;
-  top: 100px;
+  top: 110px;
   width: 100px;
 }
 
@@ -52,7 +60,7 @@
 
 .output {
   position: absolute;
-  top: 135px;
+  top: 140px;
   text-align:center;
   width: 500px;
   margin: 0;

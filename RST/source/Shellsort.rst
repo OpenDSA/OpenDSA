@@ -93,6 +93,7 @@ They are swapped if necessary to put them in sort order.
 the two items are being compared you won't see anything yellow anymore!)
 
 .. inlineav:: shellsortCON2
+   :output: show
 
 At the end of the first pass, the resulting array is "a little better
 sorted".

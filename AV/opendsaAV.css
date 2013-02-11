@@ -1,28 +1,44 @@
+body, input {
+  font-size: 14px;
+  font-family: Tahoma,Verdana,Arial,Helvetica,sans-serif;;
+}
+
+/* Creates a header which standardizes the layout for proficiency exercise controls and buttons */
 .proHeaderTable {
   margin-top: -20px;
   border-bottom: 0 none;
   width: 100%;
 }
 
+/* Creates a header which standardizes the layout for AV controls */
 .headerTable {
   margin-top: -10px;
   border-bottom: 1px solid black;
   width: 100%;
 }
+
+/* Left column of the standardized header */
 table .headerLeft {
   width: 110px;
 }
+
+/* Center column of the standardized header */
 table .headerCenter {
   text-align: center;
 }
+
+/* Right column of the standardized header */
 table .headerRight {
   text-align: right;
   width: 110px;
 }
+
+/* Affects the margin of buttons in the header table */
 table td input {
   margin-top: 10px;
 }
 
+/* AV title */
 div h1 {
   text-align: center;
   margin: 10px 5px 5px;
@@ -33,6 +49,7 @@ form {
   border: 0;
 }
 
+/* Style for container holding AV content */
 .avcontainer {
   margin-top: -20px;
 }
@@ -68,9 +85,13 @@ form {
   margin-top: 10px;
   margin-left: 10px;
 }
+
+/* Style of proficiency exercise "Instructions" label */
 .instructLabel {
   margin-top: -5px;
 }
+
+/* Style for the container holding proficiency exercise instructions */
 .instructions {
   margin-top: -15px;
   padding: 10px;
@@ -78,20 +99,27 @@ form {
   border: 1px solid black;
 }
 
+/* Deprecated, should be removed once quicksort has been rewritten to use annotations */
+/* Creates a blue, left aligned arrow above an array element */
 .jsavindex.jsavarrow.leftarrow::before {
   left: 7px;
   border-color: blue transparent transparent;
 }
 
+/* Deprecated, should be removed once quicksort has been rewritten to use annotations */
+/* Creates a red, right aligned arrow above an array element */
 .jsavindex.jsavarrow.rightarrow::before {
   left: 27px;
   border-color: red transparent transparent;
 }
 
+/* Deprecated, should be removed once quicksort has been rewritten to use annotations */
+/* Creates a purple, center aligned arrow above an array element */
 .jsavindex.jsavarrow.leftrightarrow::before {
   border-color: #CC00FF transparent transparent;
 }
 
+/* Style for the div containing the entire AV or exercise */
 #container {
   width: 765px;
   height: 550px;
@@ -101,10 +129,12 @@ form {
   overflow: hidden;
 }
 
+/* Style for the form holding AV inputs */
 #ssperform {
   margin-top: -5px;
 }
 
+/* Right aligns the About button */
 #about {
   float: right;
 }
