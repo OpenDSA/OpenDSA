@@ -1432,7 +1432,7 @@ $(document).ready(function () {
 
   $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:' + link + '">Contact Us</a>');
 
-  if (moduleName !== 'Gradebook') {
+  if (moduleName !== 'index' && moduleName !== 'Gradebook') {
     // Append the module complete code to the header
     $('h1 > a.headerlink').parent().css('position', 'relative');
     $('h1 > a.headerlink').parent().append('<div id="' + moduleName + '_complete" class="mod_complete">Module Complete</div>');
