@@ -34,7 +34,7 @@
 
   // Main action: Result of clicking "Calculate" button
   function Calculate() {
-    var prob, fact;
+    var prob, fact, result;
     if (tsize <= 0 || recs < 0) { tell("Bad input"); }
     else {
       var initData = {};
@@ -51,7 +51,9 @@
         }
         prob = 1.0 - fact;
       }
-      tell((prob * 100).toFixed(4) + "%");
+      result = (prob * 100).toFixed(4);
+      tell(result + "%");
+      console.log("Calculated: " + result);
       // Smallest number to get a collision chance of 60% on 365
       if ((tsize === 365) && (recs === 27)) {
         birthCredit = true;
