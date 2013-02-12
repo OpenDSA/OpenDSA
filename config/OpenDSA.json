@@ -963,6 +963,10 @@
       "Gradebook": {
         "long_name": "Gradebook",
         "exercises": {}
+      },
+      "Privacy": {
+        "long_name": "Privacy",
+        "exercises": {}
       }
     }
   }

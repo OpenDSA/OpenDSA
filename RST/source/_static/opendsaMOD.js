@@ -1430,7 +1430,7 @@ $(document).ready(function () {
     }
   }
 
-  $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:' + link + '">Contact Us</a>');
+  $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:' + link + '">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="Privacy.html">| Privacy</a>');
 
   if (moduleName !== 'index' && moduleName !== 'Gradebook') {
     // Append the module complete code to the header

@@ -364,6 +364,19 @@ def updateTOC(args):
           otfile = open(args[1]+'/index.html','wb')
           otfile.writelines(modIndex)
           otfile.close()
+       if pagename=='Privacy.html':
+          idx  = open(args[1]+'/Privacy.html','r')
+          idxL = idx.readlines()
+          idx.close()
+          modIndex =[]
+          for idxLine in idxL:
+              if '<title>' in idxLine and 'no title' in idxLine:
+                  idxLine = idxLine.replace('no title','OpenDSA Site Privacy Policy')
+              modIndex.append(idxLine)
+          otfile = open(args[1]+'/Privacy.html','wb')
+          otfile.writelines(modIndex)
+          otfile.close() 
+
        processedFiles=[]
        if pagename[:-5] not in processedFiles:
           processedFiles.append(pagename[:-5])
