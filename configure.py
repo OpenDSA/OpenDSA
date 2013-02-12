@@ -669,7 +669,7 @@ indexHTML = """\
 <html>
 <head>
   <script>
-    window.location.replace(window.location.href + 'build/html');
+    window.location.replace(window.location.href.replace(/\/(index.html)?$/, '/build/html/'));
   </script>
 </head>
 </html>
