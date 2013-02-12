@@ -65,8 +65,6 @@ README.txt: This file
 
 RST: The source for tutorial content, in reStructuredText (RST) format.
 
-Scripts: Scripts used to process the content.
-  
 SourceCode: The sourcecode for code snippits contained in the
 tutorials. Ultimately, we hope to support code snippits in Processing
 (a Java dialect), Python, and JavaScript. In this way, instructors
