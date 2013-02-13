@@ -1,7 +1,7 @@
 {
   "config_version": 0.1,
-  "title": "OpenDSA Sorting and Hashing: T1061220",
-  "output_dir": "Books/T1061220",
+  "title": "Sorting and Hashing: T1061220",
+  "output_dir": "Books/CS3114",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
   "exercise_origin": "http://algoviz.org",
@@ -54,6 +54,13 @@
             "threshold": 1.0,
             "type": "ss"
           },
+          "insertionsortAV": {
+            "long_name": "Insertion Sort Visualization",
+            "required": false,
+            "points": 0,
+            "threshold": 1.0,
+            "type": "ss"
+          },
           "InssortPRO": {
             "long_name": "Insertion Sort Proficiency",
             "required": true,
@@ -91,6 +98,13 @@
             "threshold": 1.0,
             "type": "ss"
           },
+          "bubblesortAV": {
+            "long_name": "Bubble Sort Visualization",
+            "required": false,
+            "points": 0,
+            "threshold": 1.0,
+            "type": "ss"
+          },
           "BubsortPRO": {
             "long_name": "Bubble Sort Proficiency",
             "required": true,
@@ -121,6 +135,13 @@
             "long_name": "Selection Sort Slideshow 2",
             "required": true,
             "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "selectionsortAV": {
+            "long_name": "Selection Sort Visualization",
+            "required": false,
+            "points": 0,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -431,12 +452,26 @@
       "RadixSort": {
         "long_name": "Radix Sort",
         "exercises": {
+          "radixLinkAV": {
+            "long_name": "Radix Sort Linked Visualization",
+            "required": false,
+            "points": 0,
+            "threshold": 1.0,
+            "type": "ss"
+          },
           "RadixsortPRO": {
             "long_name": "Radixsort Proficiency",
             "required": true,
             "points": 1,
             "threshold": 5,
             "type": "ka"
+          },
+          "radixArrayAV": {
+            "long_name": "Radix Sort Array Visualization",
+            "required": false,
+            "points": 0,
+            "threshold": 1.0,
+            "type": "ss"
           },
           "RadixSortSumm": {
             "long_name": "Radixsort Summary",
