@@ -62,7 +62,7 @@
       arrC = jsav.ds.array(countArray, {indexed: true, layout: "array"});
       jsav.label("Count Array", {before: arrC, left: 0, top: 95});
       arrO = jsav.ds.array(outArray, {indexed: true, layout: "array"});
-      jsav.label("Auxilliary Array", {before: arrO, left: 0, top: 150});
+      jsav.label("Auxilliary Array", {before: arrO, left: 0, top: 165});
       jsav.umsg("Starting Radix Sort. We will process digits from right to left. The first step will be to count occurances of digits from the input array.");
       jsav.displayInit();
       radsort();

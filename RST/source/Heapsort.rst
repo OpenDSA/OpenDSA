@@ -63,7 +63,7 @@ Module :numref:`External Sorting <ExternalSort>`.
 .. inlineav:: heapsortCON
    :output: show
 
-The complete JAVA implementation is as follows.
+A complete implementation is as follows.
 
 .. codeinclude:: Sorting/Heapsort/Heapsort.pde 
    :tag: Heapsort        

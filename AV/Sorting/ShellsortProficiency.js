@@ -111,7 +111,7 @@
     // Process reset button: Re-initialize everything, including the increments
     function initialize() {
       generateIncrements();
-      $('#incrField').val(incrs);
+      $('#increments').val(incrs);
     
       var htmldata = "";
       for (var i = ArraySize; i > 0; i--) {
