@@ -116,16 +116,16 @@ def process_module(module, exercises, index_file, depth):
       if av_name.endswith('.html'):
         av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
       
-      #if '.. avembed::' in mod_data[i] and av_name not in exercises: 
+      if '.. avembed::' in mod_data[i] and av_name not in exercises: 
         # Exercise not listed in config file, remove it from the RST file
-      #  while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-      #    i = i + 1
-      #else:
+        while (i < len(mod_data) and mod_data[i].rstrip() != ''):
+          i = i + 1
+      else:
         # Object is an exercise found in the config file or a 
         # slideshow which shouldn't be removed because its considered content
-      new_mod_data.append(mod_data[i])
+        new_mod_data.append(mod_data[i])
         
-      if av_name in exercises:
+        if av_name in exercises:
           # Add the necessary information from the configuration file
           exer_conf = exercises[av_name]
           
