@@ -1,6 +1,6 @@
-body, input {
-  font-size: 14px;
-  font-family: Tahoma,Verdana,Arial,Helvetica,sans-serif;;
+body, input, select {
+  font-size: 16px;
+  font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
 }
 
 /* Creates a header which standardizes the layout for proficiency exercise controls and buttons */
@@ -99,30 +99,8 @@ form {
   border: 1px solid black;
 }
 
-/* Deprecated, should be removed once quicksort has been rewritten to use annotations */
-/* Creates a blue, left aligned arrow above an array element */
-.jsavindex.jsavarrow.leftarrow::before {
-  left: 7px;
-  border-color: blue transparent transparent;
-}
-
-/* Deprecated, should be removed once quicksort has been rewritten to use annotations */
-/* Creates a red, right aligned arrow above an array element */
-.jsavindex.jsavarrow.rightarrow::before {
-  left: 27px;
-  border-color: red transparent transparent;
-}
-
-/* Deprecated, should be removed once quicksort has been rewritten to use annotations */
-/* Creates a purple, center aligned arrow above an array element */
-.jsavindex.jsavarrow.leftrightarrow::before {
-  border-color: #CC00FF transparent transparent;
-}
-
 /* Style for the div containing the entire AV or exercise */
 #container {
-  width: 765px;
-  height: 550px;
   border: 1px solid black;
   background-color: #efe;
   padding: 10px;

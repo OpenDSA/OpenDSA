@@ -1,6 +1,6 @@
-[submodule "JSAV"]
-	path = JSAV
-	url = git://github.com/vkaravir/JSAV.git
 [submodule "QBank"]
 	path = QBank
 	url = git://github.com/cashaffer/QBank.git
+[submodule "JSAV"]
+	path = JSAV
+	url = https://github.com/vkaravir/JSAV.git
