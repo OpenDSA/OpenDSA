@@ -62,7 +62,7 @@ index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 .. raw:: html
    
    <script>
-   var awardModProf = false;
+   var dispModComp = false;
    </script>
 
 .. include:: JSAVheader.rinc
@@ -91,7 +91,7 @@ def process_path(path, abs_prefix):
 def process_section(section, index_file, depth):  
   for subsect in section:
     if ('exercises' in section[subsect]):
-      process_module(subsect, section[subsect]['exercises'], index_file, depth + 1)
+      process_module(subsect, section[subsect], index_file, depth + 1)
     else:
       print ("  " * depth) + subsect
       index_file.write(subsect + '\n')
@@ -103,22 +103,28 @@ def process_section(section, index_file, depth):
   
   index_file.write("\n")
 
-def process_module(module, exercises, index_file, depth):
-  print ("  " * depth) + module
-  index_file.write("   " + module + "\n")
+def process_module(mod_name, mod_attrib, index_file, depth):
+  print ("  " * depth) + mod_name
+  index_file.write("   " + mod_name + "\n")
   
-  if module == 'ToDo':
+  if mod_name == 'ToDo':
     return
   
-  with open(odsa_dir + 'RST/source/' + module + '.rst','r') as mod_file:
+  with open(odsa_dir + 'RST/source/' + mod_name + '.rst','r') as mod_file:
     # Read the contents of the module RST file from the ODST RST source directory
     mod_data = mod_file.readlines()
   mod_file.close()
   
   new_mod_data = []
   
+  exercises = mod_attrib['exercises']
+  
   # Only award module completion if the module contains required exercises
-  award_mod_prof = any(exercises[exer]['required'] for exer in exercises)
+  disp_mod_comp = any(exercises[exer]['required'] for exer in exercises)
+  
+  # If config file explicitly lists whether module can be completed 
+  if 'dispModComp' in mod_attrib:
+    disp_mod_comp = mod_attrib['dispModComp']
 
   # Find the end-of-line character for the file
   eol = mod_data[0].replace(mod_data[0].rstrip(), '')
@@ -131,10 +137,10 @@ def process_module(module, exercises, index_file, depth):
       new_mod_data.append(eol)
       new_mod_data.append('   <script>' + eol)
       
-      if award_mod_prof:
-        new_mod_data.append('   var awardModProf = true;' + eol)
+      if disp_mod_comp:
+        new_mod_data.append('   var dispModComp = true;' + eol)
       else:
-        new_mod_data.append('   var awardModProf = false;' + eol)
+        new_mod_data.append('   var dispModComp = false;' + eol)
         
       new_mod_data.append('   </script>' + eol)
       new_mod_data.append(eol)
@@ -167,7 +173,7 @@ def process_module(module, exercises, index_file, depth):
     
     i = i + 1
   
-  with open(src_dir + module + '.rst','w') as mod_file:
+  with open(src_dir + mod_name + '.rst','w') as mod_file:
     # Write the contents of the module RST file to the output src directory
     mod_file.writelines(new_mod_data)
   mod_file.close()

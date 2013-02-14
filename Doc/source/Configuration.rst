@@ -121,19 +121,23 @@ Settings (all are required unless otherwise specified)
 
 * "chapters" - this object contains a hierarchy of chapters, sections, subsections, modules and exercises
 
-  * Each key in "chapters" represents a chapter name, any key values in the associated object represent sections within that chapter.  This concept is applied recursively until an object is reached which contains the key "modules".  
-  * The "modules" object contains the modules associated with the chapter or section under which they are found
-  
-    * The keys in "modules" must correspond with names of RST files found in the ~OpenDSA/RST/source/ directory
-    * Each module object contains exercise objects which represent the exercises found in the module's RST file
+  * Each key in "chapters" represents a chapter name, any key values in the associated object represent sections within that chapter.  This concept is applied recursively until a module object is reached.  A module object is one whose key matches the name of an RST file in the ~OpenDSA/RST/source/ directory and which contains the key "exercises".
+
+  * Modules
     
-      * Modules which contain no exercises should have a empty object as their value
-      
-        * Ex: "Glossary": {},
-        
-      * Omitting an exercise from the module object will cause the exercise to be removed from the configured module
+    * The key relating to each module object must correspond with the name of an RST file found in the ~OpenDSA/RST/source/ directory
+    * If a module contains no exercises, it should still contain a key "exercises" with a value of an empty object
+    
+    * "long_name" - a long form, human-readable name used to identify the module in the GUI
+    
+    * "dispModComp" - (optional) a flag which if set to "true" will force the "Module Complete" message to appear even if the module contains no required exercises, if set to "false", the "Module Complete" message will not appear even if the module DOES contain required exercises
+    
+    * "exercises" - a collection of exercise objects representing the exercises found in the module's RST file
+
+      * Omitting an exercise from the module's "exercises" object will cause the exercise to be removed from the configured module
       * Each exercise object contains required information about that exercise including:
       
+        * "long_name" - a long form, human-readable name used to identify the exercise in the GUI
         * "required" - whether the exercise is required for module proficiency
         * "points" - the number of points the exercise is worth
         * "threshold" - the percentage a user needs to score on the exercise to obtain proficiency
