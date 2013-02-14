@@ -19,7 +19,7 @@ body, input, select {
 
 /* Left column of the standardized header */
 table .headerLeft {
-  width: 110px;
+  width: 120px;
 }
 
 /* Center column of the standardized header */
@@ -30,7 +30,7 @@ table .headerCenter {
 /* Right column of the standardized header */
 table .headerRight {
   text-align: right;
-  width: 110px;
+  width: 120px;
 }
 
 /* Affects the margin of buttons in the header table */
@@ -58,7 +58,11 @@ form {
   border: 0 none;
 }
 .jsavexercisecontrols {
+  margin-top: 10px;
   text-align: center;
+}
+.jsavcontrols {
+  margin-top: -10px;
 }
 .jsavcounter {
   position: absolute;
