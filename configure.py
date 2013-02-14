@@ -5,22 +5,28 @@
 #   - Auto-detects the OpenDSA root directory location
 #   - Converts the OpenDSA root directory and specified code and output directories into Unix-style paths so that relative paths are calculated correctly
 #     - Handles absolute or relative paths for output and code directories (relative paths are rooted at the OpenDSA directory)
-#   - Builds JSAV to make sure the library is up-to-date
-#   - Initilizes necessary files and directories in the output directory
+#   - Builds JSAV to make sure the library is up-to-date, if specified in the configuration file
+#   - Initializes necessary files and directories in the output directory
 #     - Alters the Makefile to correctly point to the .htaccess file
 #   - Copies additional files and directories to the output directory (if specified in the config file)
-#     - Its possible for the output directory to be outside of the OpenDSA root directory and web-accessible when the ODSA root directory is not.  In this case, a several directories must be copied to the output directory in order for OpenDSA to function correctly.  These files / directories include:
+#     - Its possible for the output directory to be outside of the OpenDSA root directory and web-accessible when the ODSA root directory is not.  In this case, several directories must be copied to the output directory in order for OpenDSA to function correctly.  These files / directories include:
 #       - AV
 #       - Exercises
 #       - JSAV-min.js and supporting JS and CSS files
 #       - Khan Academy files
 #       - lib files
-#   - Reads each module file and removes exercises or adds arguments to the directives that create them
-#     - Specifically adds 'points', 'required' and 'threshold'
+#       - SourceCode files (only the language specified in the config file is copied)
+#   - Reads each module RST file and removes sphinx directives for exercises that do no appear in the config file (causing those exercises not to be included) or adds arguments to the sphinx directives that create them
+#     - Appends a raw JavaScript flag to each module indicating whether or not the module has completion requirements (if the module has required exercises)
+#     - Specifically adds 'long_name', 'points', 'required', 'threshold' and 'type'
 #   - Creates a conf.py file in the source directory
 #   - Generates an index.rst file based on which modules were specified in the config file
-#   - Updates the server_url variable in ODSA.js and khanexercise.js based on the value specified in the config file
-#   - Runs make on the output directory to build the textbook
+#   - Updates variables in JS files based on the values specified in the config file
+#     - serverURL, bookName and moduleOrigin variables in ODSA.js
+#     - exerciseOrigin and allowAnonCredit in opendsaMOD.js
+#     - The server address and moduleOrigin in khanexercise.js
+#   - Generates an index.html file in the output directory of the new book which redirects (via JavaScript) to the build/html directory
+#   - Runs make on the output directory to build the textbook, if specified in the configuration file
 
 import sys
 import os
@@ -53,6 +59,12 @@ index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 
 .. _index:
 
+.. raw:: html
+   
+   <script>
+   var awardModProf = false;
+   </script>
+
 .. include:: JSAVheader.rinc
 
 .. chapnum::
@@ -60,6 +72,8 @@ index_header = '''.. This file is part of the OpenDSA eTextbook project. See
    :prefix: Chapter
 
 '''
+
+
 
 def process_path(path, abs_prefix):
   # If the path is relative, make it absolute
@@ -103,13 +117,29 @@ def process_module(module, exercises, index_file, depth):
   
   new_mod_data = []
   
+  # Only award module completion if the module contains required exercises
+  award_mod_prof = any(exercises[exer]['required'] for exer in exercises)
+
+  # Find the end-of-line character for the file
+  eol = mod_data[0].replace(mod_data[0].rstrip(), '')
+  
   # Alter the module RST contents based on the RST file
   i = 0
   while i < len(mod_data):
-    if '.. inlineav::' in mod_data[i] or '.. avembed::' in mod_data[i]:
-      # Find the end-of-line character for the file
-      eol = mod_data[i].replace(mod_data[i].rstrip(), '')
+    if '.. include:: JSAVheader.rinc' in mod_data[i]:
+      new_mod_data.append('.. raw:: html' + eol)
+      new_mod_data.append(eol)
+      new_mod_data.append('   <script>' + eol)
       
+      if award_mod_prof:
+        new_mod_data.append('   var awardModProf = true;' + eol)
+      else:
+        new_mod_data.append('   var awardModProf = false;' + eol)
+        
+      new_mod_data.append('   </script>' + eol)
+      new_mod_data.append(eol)
+      new_mod_data.append(mod_data[i])
+    elif '.. inlineav::' in mod_data[i] or '.. avembed::' in mod_data[i]:
       # Parse the exercise name from the line
       av_name = mod_data[i].split(' ')[2]
       av_name = av_name.rstrip()
