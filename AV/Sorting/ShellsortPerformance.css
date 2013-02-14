@@ -1,17 +1,17 @@
 #container {
-  width: 800px;
+  width: 810px;
   height: 450px;
 }
 
 #left {
   float: left;
-  width: 60%;
+  width: 58%;
   margin: 7px 0 0 0;
 }
 
 #right {
   float: right;
-  width: 35%;
+  width: 40%;
   margin-top: -15px;
 }
 

@@ -24,7 +24,7 @@
         <input type="button" id="help" name="help" value="Help" />
       </td>
       <td class="headerCenter">
-        <h1>Array-based Radix Sort Visualization</h1>
+        <h1>Radix Sort: Array</h1>
       </td>
       <td class="headerRight">
         <input type="button" id="about" name="about" value="About" />
@@ -34,11 +34,10 @@
   </table>
 
   <form id="ssperform" style="margin-top:10px;">
+    <input type="button" id="run" name="run" value="Run" />
+    <input type="button" id="reset" name="reset" value="Reset" />
     <label for="arraysize">&nbsp;Array size:&nbsp;</label>
-    <select id="arraysize">
-    </select>
-
-    <!-- Number of Digits -->
+    <select id="arraysize"></select>
     <label for="digitsize">&nbsp;Digits:&nbsp;</label> 
     <select id="digitsize">
       <option value="1"> 1 </option>
@@ -47,10 +46,8 @@
       <option value="4"> 4 </option>
     </select>
     <p>
-      <input type="button" id="run" name="run" value="Run" />
-      <input type="button" id="reset" name="reset" value="Reset" />
       <label for="arrayValues">&nbsp;Array values:&nbsp;</label>
-      <input size="65" name="arrayValues" id="arrayValues" type="text" 
+      <input size="55" name="arrayValues" id="arrayValues" type="text" 
          placeholder="Type space-separated values, or click 'run' to use random values" />
     </p>
   </form>

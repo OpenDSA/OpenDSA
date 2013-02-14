@@ -119,6 +119,7 @@ Each sublist of 3 records would also be sorted using an Insertion
 Sort, as shown next.
 
 .. inlineav:: shellsortCON5
+   :output: show
 
 At the end of processing sublists with increment 4, the array is
 "even more sorted".
@@ -131,6 +132,7 @@ positions and the other consisting of the even positions.
 As usual, we sort the sublists using Insertion Sort.
 
 .. inlineav:: shellsortCON7
+   :output: show
 
 At this point, we are getting close to sorted.
 
@@ -143,6 +145,7 @@ so this final call to Insertion Sort runs far faster than if we had
 run Insertion Sort on the original array.
 
 .. inlineav:: shellsortCON9
+   :output: show
 
 Finally, the array is sorted.
 

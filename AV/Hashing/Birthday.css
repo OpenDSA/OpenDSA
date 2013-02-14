@@ -1,29 +1,14 @@
-body, input {
-  font-size: 14px;
-  font-family: Tahoma,Verdana,Arial,Helvetica,sans-serif;;
-}
-
 #container {
-  border: 1px solid black;
-  background-color: #efe;
-  overflow: hidden;
-  width: 500px;
+  width: 525px;
   height: 165px;
   position: relative;
 }
 
-#about {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-}
-
 .instructions {
-  text-align:center;
-  margin: 5px;
   border: 0px;
   padding: 0px;
   margin: 0px;
+  text-align: center;
 }
 
 .tsize {
@@ -42,13 +27,13 @@ body, input {
 .nrecs {
   position: absolute;
   left: 55px;
-  top: 95px;
+  top: 100px;
 }
 
 #numrecs {
   position: absolute;
   left: 200px;
-  top: 110px;
+  top: 115px;
   width: 100px;
 }
 
@@ -60,7 +45,7 @@ body, input {
 
 .output {
   position: absolute;
-  top: 140px;
+  top: 150px;
   text-align:center;
   width: 500px;
   margin: 0;
