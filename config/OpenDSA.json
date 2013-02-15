@@ -79,6 +79,7 @@
       },
       "InsertOpt": {
         "long_name": "Optimizing Insertion Sort",
+        "dispModComp": true,
         "exercises": {}
       },
       "BubbleSort": {

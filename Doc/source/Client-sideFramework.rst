@@ -52,9 +52,22 @@ Proficiency data
 Implementation and Operation
 ----------------------------
 
+* The "Module Complete" message should appear on any module page once a user has received proficiency with all the required exercises unless "dispModComp" is set to "false" in the configuration file.
 * With the exception of login, all data is sent to the server with a session key rather than the username.  The server is able to recover the username from the session and this should prevent data from inappropriately being sent as a different user.
 
   * Since anonymous users do not have sessions, anonymous user data is sent using the hardcoded value, "phantom-key", as the session key
+
+
+Module Completion
+=================
+
+* In order to obtain module completion a user must complete all exercises marked as "required" in the configuration file
+
+  * For the Guest account (anonymous user), the client determines whether the user is proficient with all required exercises
+  * For logged in users, the server must confirm the user is proficient with all required exercises AND the module itself
+
+* If a module does not have any required exercises (or no exercises at all), the "Module Complete" message will not appear unless "dispModComp" is set to "true" for the given module in the configuration file 
+* If "dispModComp" is explicitly set to "false" for the given module, the "Module Complete" message will not appear even if the user completes all required exercises
 
 
 Page Initialization
