@@ -872,20 +872,18 @@
 
     // Cast into a number, otherwise '0' will be considered false.
     if ((Number(arr.value(pos))) !== false) {
-      var i, j, randomnumber;
+      var i, j, rnum, temp;
 
-      // Create a random permutation of slots
-      while (slotPerm.length < arr.size()) {
-        randomnumber = Math.ceil(Math.random() * (arr.size() - 1));
-
-        // Ensure that random number hasn't been used before
-        for (j = 0; j < arr.size(); j++) {
-          if (slotPerm[j] === randomnumber) {
-            continue;
-          }
+      // If not already done, create a random permutation
+      if (slotPerm.length < arr.size()) {
+	for (i = 1; i < arr.size(); i++) {
+          slotPerm[i] = i;
         }
-
-        slotPerm.push(randomnumber);
+        // Now, randomize
+        for (i = 1; i < arr.size(); i++) {
+          rnum = Math.ceil(Math.random() * (arr.size() - 1));
+          temp = slotPerm[i]; slotPerm[i] = slotPerm[rnum]; slotPerm[rnum] = temp;
+        }
       }
 
       if (printPerm) {

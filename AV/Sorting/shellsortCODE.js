@@ -23,6 +23,7 @@ function inssort(av, arr, start, incr) {
       }
       else {
         arr.highlight([j - incr, j]);
+	av.umsg("Done this element");
         break; // Done pushing element, leave for loop
       }
       arr.highlight(j);
