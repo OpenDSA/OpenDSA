@@ -30,6 +30,12 @@ var allowAnonCredit = true;
 var readyTime = +new Date();  // TODO: For performance testing
 
 /**
+ * Flag indicating whether or not the "Module Complete" message should be displayed
+ */
+var dispModComp = false;
+
+
+/**
  * Adds an 'endsWith' function to strings
  */
 String.prototype.endsWith = function (suffix) {
@@ -1432,12 +1438,6 @@ $(document).ready(function () {
 
   $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:' + link + '">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="Privacy.html">| Privacy</a>');
 
-  if (dispModComp) {
-    // Append the module complete code to the header
-    $('h1 > a.headerlink').parent().css('position', 'relative');
-    $('h1 > a.headerlink').parent().append('<div id="' + moduleName + '_complete" class="mod_complete">Module Complete</div>');
-  }
-
   // Populate the exercises hash
   // Iterate through all showHide buttons, iframe and slideshows and add exercises (as necessary)
   $('.showHideLink, iframe, .ssAV').each(function (index, item) {
@@ -1465,6 +1465,20 @@ $(document).ready(function () {
       $(item).after("<span id='" + exerName + "_shb_saving_msg' class='shb_msg'>Saving...</span>");
     }
   });
+  
+  // Set dispModComp to true if the module contains any required exercises
+  for (var exer in exercises) {
+    if (exercises.hasOwnProperty(exer) && exer.required) {
+      dispModComp = true;
+      break;
+    }
+  }
+  
+  if (dispModComp) {
+    // Append the module complete code to the header
+    $('h1 > a.headerlink').parent().css('position', 'relative');
+    $('h1 > a.headerlink').parent().append('<div id="' + moduleName + '_complete" class="mod_complete">Module Complete</div>');
+  }
 
   /*
   // TODO: Attempt to dynamically add proficiency check marks to AVs that don't have showhide buttons

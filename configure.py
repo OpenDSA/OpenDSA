@@ -104,6 +104,8 @@ def process_section(section, index_file, depth):
   index_file.write("\n")
 
 def process_module(mod_name, mod_attrib, index_file, depth):
+  exercises = mod_attrib['exercises']
+  
   print ("  " * depth) + mod_name
   index_file.write("   " + mod_name + "\n")
   
@@ -116,15 +118,6 @@ def process_module(mod_name, mod_attrib, index_file, depth):
   mod_file.close()
   
   new_mod_data = []
-  
-  exercises = mod_attrib['exercises']
-  
-  # Only award module completion if the module contains required exercises
-  disp_mod_comp = any(exercises[exer]['required'] for exer in exercises)
-  
-  # If config file explicitly lists whether module can be completed 
-  if 'dispModComp' in mod_attrib:
-    disp_mod_comp = mod_attrib['dispModComp']
 
   # Find the end-of-line character for the file
   eol = mod_data[0].replace(mod_data[0].rstrip(), '')
@@ -132,19 +125,21 @@ def process_module(mod_name, mod_attrib, index_file, depth):
   # Alter the module RST contents based on the RST file
   i = 0
   while i < len(mod_data):
-    if '.. include:: JSAVheader.rinc' in mod_data[i]:
+    if '.. include:: JSAVheader.rinc' in mod_data[i] and 'dispModComp' in mod_attrib:
+      # If config file explicitly lists whether module can be completed 
+      new_mod_data.append(mod_data[i])
+      new_mod_data.append(eol)
       new_mod_data.append('.. raw:: html' + eol)
       new_mod_data.append(eol)
       new_mod_data.append('   <script>' + eol)
       
-      if disp_mod_comp:
-        new_mod_data.append('   var dispModComp = true;' + eol)
+      if mod_attrib['dispModComp']:
+        new_mod_data.append('   dispModComp = true;' + eol)
       else:
-        new_mod_data.append('   var dispModComp = false;' + eol)
+        new_mod_data.append('   dispModComp = false;' + eol)
         
       new_mod_data.append('   </script>' + eol)
       new_mod_data.append(eol)
-      new_mod_data.append(mod_data[i])
     elif '.. inlineav::' in mod_data[i] or '.. avembed::' in mod_data[i]:
       # Parse the exercise name from the line
       av_name = mod_data[i].split(' ')[2]

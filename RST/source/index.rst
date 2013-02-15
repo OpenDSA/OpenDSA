@@ -40,7 +40,7 @@ Sorting
    :numbered:
    :maxdepth: 3
 
-   Sorting
+   SortIntro
    InsertionSort
    InsertOpt
    BubbleSort
