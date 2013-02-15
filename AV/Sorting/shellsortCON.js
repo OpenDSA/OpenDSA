@@ -24,7 +24,6 @@ function doSweep(container, inArr, increment) {
   arr.unhighlight(); // unhighlight seems to have the side effect of
   // making the cell dark.
   sweep(av, arr, increment); // first sweep with increment 8
-  av.umsg("Done this increment");
   av.recorded();
 }
 
