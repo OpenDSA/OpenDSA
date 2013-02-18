@@ -25,12 +25,12 @@ csslint:
 
 jshint:
 	@echo 'running jshint'
-	@jshint AV/Sorting/*.js
-	@jshint AV/Hashing/*.js
-	@jshint AV/*.js
-	@jshint lib/ODSA.js
-	@jshint RST/source/_static/opendsaMOD.js
-	@jshint RST/source/_static/gradebook.js
+	-@jshint AV/Sorting/*.js
+	-@jshint AV/Hashing/*.js
+	-@jshint AV/*.js
+	-@jshint lib/ODSA.js
+	-@jshint RST/source/_static/opendsaMOD.js
+	-@jshint RST/source/_static/gradebook.js
 
 CS3114:
 	python $(CONFIG_SCRIPT) config/CS3114.json

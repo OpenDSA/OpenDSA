@@ -2,7 +2,7 @@
 /*global alert: true, console: true, debugMode, serverEnabled, userLoggedIn, uiid,
 warnUserLogin, logUserAction, logEvent, getUsername, getSessionKey,
 getNameFromURL, getJSON, getModuleName, sendEventData, serverURL, moduleName,
-roundPercent, storeStatusAndUpdateDisplays */
+roundPercent, storeStatusAndUpdateDisplays, bookName, handleSessionExpired */
 
 /* warnUserLogin and storeStatusAndUpdateDisplays are defined in this file, but due to cyclic dependencies */
 
@@ -1083,7 +1083,7 @@ function sendExerciseScores(username, sessionKey, book) {
     var scoreData = getJSON(localStorage.score_data);
     
     if (scoreData[username] && scoreData[username][book]) {
-      // Create a deep copy of user's score data (for the given book) so the 
+      // Create a deep copy of user's score data (for the given book) so the
       // original can be cleared and saved to prevent accidentally overwriting data
       var userData = $.extend(true, [], scoreData[username][book]);
 

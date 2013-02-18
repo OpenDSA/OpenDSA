@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, awardCompletionCredit */
+/*global alert: true, console: true, awardCompletionCredit, logExerciseInit */
 (function ($) {
   // Declare and initialize state variables
   var

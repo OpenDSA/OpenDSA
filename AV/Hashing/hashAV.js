@@ -876,13 +876,15 @@
 
       // If not already done, create a random permutation
       if (slotPerm.length < arr.size()) {
-	for (i = 1; i < arr.size(); i++) {
+        for (i = 1; i < arr.size(); i++) {
           slotPerm[i] = i;
         }
         // Now, randomize
         for (i = 1; i < arr.size(); i++) {
           rnum = Math.ceil(Math.random() * (arr.size() - 1));
-          temp = slotPerm[i]; slotPerm[i] = slotPerm[rnum]; slotPerm[rnum] = temp;
+          temp = slotPerm[i];
+          slotPerm[i] = slotPerm[rnum];
+          slotPerm[rnum] = temp;
         }
       }
 
@@ -897,7 +899,7 @@
       var currIndex = 1;
 
       // Position to check, will point to the correct position at the end of the loop
-      var temp = pos;
+      temp = pos;
 
       // Loop across the array. "infinite" loop. Breaks if array is full.
       for (;;) {
