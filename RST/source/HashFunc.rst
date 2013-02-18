@@ -57,7 +57,7 @@ To get credit for the exercise, answer the following two questions:
 - In a hash table of 1000 slots, what is the smallest number of records
   must be inserted before the probability of a collision reaches 50%?
 
-.. avembed:: AV/Hashing/Birthday.html
+.. avembed:: AV/Hashing/Birthday.html pe
    :showbutton: show
 
 To be practical, a database organized by hashing must store records in a
@@ -150,5 +150,5 @@ that illustrate these points.
 First, here are some review questions for what has been covered so
 far.
 
-.. avembed:: Exercises/Hashing/HashPrinciplesSumm.html
+.. avembed:: Exercises/Hashing/HashPrinciplesSumm.html ka
    :showbutton: hide

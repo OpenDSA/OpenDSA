@@ -50,24 +50,24 @@ Here is an implementation for Selection Sort.
 
 Consider the example of the following array.
 
-.. inlineav:: SelsortCON1
+.. inlineav:: SelsortCON1 ss
    :output: show
 
 Now we continue with the second pass.
 However, since the largest record is already at the right end,
 we will not need to look at it again.
 
-.. inlineav:: SelsortCON2
+.. inlineav:: SelsortCON2 ss
    :output: show
 
 Selection Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
-.. avembed:: AV/Sorting/selectionsortAV.html
+.. avembed:: AV/Sorting/selectionsortAV.html ss
 
 Now try for yourself to see if you understand how Selection Sort works.
 
-.. avembed:: Exercises/Sorting/SelsortPRO.html
+.. avembed:: Exercises/Sorting/SelsortPRO.html ka
    :showbutton: hide
 
 Any algorithm can be written in slightly different ways.
@@ -140,7 +140,7 @@ return is a faster swap operation.
 Here are some review questions to check that you understand
 Selection Sort.
 
-.. avembed:: Exercises/Sorting/SelsortSumm.html
+.. avembed:: Exercises/Sorting/SelsortSumm.html ka
    :showbutton: hide
 
 .. odsascript:: AV/Sorting/selectionsortCON.js

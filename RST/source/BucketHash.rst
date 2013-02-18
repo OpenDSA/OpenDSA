@@ -59,12 +59,12 @@ found or all records in the overflow bucket have been checked.
 If many records are in the overflow bucket, this will be an
 expensive process.
 
-.. inlineav:: buckethashCON1
+.. inlineav:: buckethashCON1 ss
    :output: show
 
 Now you can try it yourself.
 
-.. avembed:: Exercises/Hashing/HashingBucketPRO.html
+.. avembed:: Exercises/Hashing/HashingBucketPRO.html ka
    :showbutton: hide
 
 A simple variation on bucket hashing is to hash a key value to some slot
@@ -77,12 +77,12 @@ The advantage of this approach is that initial collisions are reduced,
 because any slot can be a home position rather than just the first slot
 in the bucket.
 
-.. inlineav:: buckethashCON2
+.. inlineav:: buckethashCON2 ss
    :output: show
 
 Now you can try this version.
 
-.. avembed:: Exercises/Hashing/HashingBucket2PRO.html
+.. avembed:: Exercises/Hashing/HashingBucket2PRO.html ka
    :showbutton: hide
 
 Bucket methods are good for implementing hash tables stored on disk,

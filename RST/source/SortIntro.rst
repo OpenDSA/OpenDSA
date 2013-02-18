@@ -174,5 +174,5 @@ little memory as possible.
 We will call attention to sorting algorithms that require significant
 extra memory beyond the input array.
 
-.. avembed:: Exercises/Sorting/SortIntroSumm.html
+.. avembed:: Exercises/Sorting/SortIntroSumm.html ka
    :showbutton: hide

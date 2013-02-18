@@ -44,18 +44,18 @@ The input is an array of :math:`n` records stored in array ``A``.
 
 Consider the example of the following array.
 
-.. inlineav:: InssortCON1
+.. inlineav:: InssortCON1 ss
    :output: show
 
 Next, process the record in position 2.
 Swap it to the left until it reaches a value smaller than it is.
 
-.. inlineav:: InssortCON2
+.. inlineav:: InssortCON2 ss
    :output: show
 
 And now the record in position 3.
 
-.. inlineav:: InssortCON3
+.. inlineav:: InssortCON3 ss
    :output: show
 
 This continues on with each record in turn.
@@ -68,11 +68,11 @@ encountered, ``inssort`` is done with that record because all
 records to its left in the array must have smaller keys.
 The following visualization puts it all together.
 
-.. avembed:: AV/Sorting/insertionsortAV.html
+.. avembed:: AV/Sorting/insertionsortAV.html ss
 
 Now try for yourself to see if you understand how Insertion Sort works.
 
-.. avembed:: Exercises/Sorting/InssortPRO.html
+.. avembed:: Exercises/Sorting/InssortPRO.html ka
    :showbutton: hide
 
 Insertion Sort Analysis
@@ -184,7 +184,7 @@ Actually, it happens a lot.
 Here are some review questions to check that you understand
 Insertion Sort.
 
-.. avembed:: Exercises/Sorting/InssortSumm.html
+.. avembed:: Exercises/Sorting/InssortSumm.html ka
    :showbutton: hide
 
 .. odsascript:: AV/Sorting/insertionsortCON.js

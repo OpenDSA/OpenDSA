@@ -130,7 +130,7 @@ Here is a simple ``findpivot`` function.
 
 Now you can have some practice.
 
-.. avembed:: Exercises/Sorting/QuicksortPivotPRO.html
+.. avembed:: Exercises/Sorting/QuicksortPivotPRO.html ka
    :showbutton: hide
 
 We now turn to function ``partition``.
@@ -157,7 +157,7 @@ Function ``partition`` returns the first index of the right
 partition (the place where ``left`` ends at) so that the subarray
 bound for the recursive calls to ``qsort`` can be determined.
 
-.. inlineav:: QuicksortCON1
+.. inlineav:: QuicksortCON1 ss
    :output: show
 
 
@@ -165,7 +165,7 @@ bound for the recursive calls to ``qsort`` can be determined.
 
 Now for some partition practice.
 
-.. avembed:: Exercises/Sorting/QuicksortPartitPRO.html
+.. avembed:: Exercises/Sorting/QuicksortPartitPRO.html ka
    :showbutton: hide
 
 Here is a visualization for the entire Quicksort algorithm.
@@ -176,12 +176,12 @@ match the recursion tree.
 In reality, there is only a single array involved (as you will see in
 the proficiency exercise that follows the visualization).
 
-.. avembed:: AV/Sorting/quicksortAV.html
+.. avembed:: AV/Sorting/quicksortAV.html ss
 
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.
 
-.. avembed:: AV/Sorting/quicksortProficiency.html
+.. avembed:: AV/Sorting/quicksortProficiency.html pe
    :showbutton: hide
 
 To analyze Quicksort, we first analyze the ``findpivot`` and
@@ -386,7 +386,7 @@ modest speedup.
 
 Now for review questions.
 
-.. avembed:: Exercises/Sorting/QuicksortSumm.html
+.. avembed:: Exercises/Sorting/QuicksortSumm.html ka
    :showbutton: hide
 
 .. odsascript:: AV/Sorting/quicksortCON.js

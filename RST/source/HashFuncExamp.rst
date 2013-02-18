@@ -31,7 +31,7 @@ of sixteen slots::
 
 Note that "%" is the symbol for the mod function.
 
-.. inlineav:: hashFuncExCON1
+.. inlineav:: hashFuncExCON1 ss
    :output: show
 
 Recall that the values 0 to 15 can be represented with four bits
@@ -68,7 +68,7 @@ slot 0.
 A similar, analogous problem arises if we were instead hashing strings based
 on the first letter in the string.
 
-.. inlineav:: hashFuncExCON2
+.. inlineav:: hashFuncExCON2 ss
    :output: show
 
 In general with binning we store the record with key value :math:`i`
@@ -166,7 +166,7 @@ the digits of the operator and the digits of the result.
 Here is a little calculator for you to see how this works.
 Start with '4567' as an example.
 
-.. avembed:: AV/Hashing/MidSquare.html
+.. avembed:: AV/Hashing/MidSquare.html pe
    :showbutton: show
 
 Hash Functions for Strings
@@ -220,7 +220,7 @@ slots.
 
 Now you can try it out with this calculator.
 
-.. avembed:: AV/Hashing/StringSimple.html
+.. avembed:: AV/Hashing/StringSimple.html pe
    :showbutton: show
 
 Here is a much better hash function for strings.::
@@ -233,8 +233,8 @@ Here is a much better hash function for strings.::
        char c[] = s.substring(j * 4, (j * 4) + 4).toCharArray();
        long mult = 1;
        for (int k = 0; k < c.length; k++) {
-	 sum += c[k] * mult;
-	 mult *= 256;
+         sum += c[k] * mult;
+         mult *= 256;
        }
      }
 
@@ -266,7 +266,7 @@ to hash to slot 75 in the table.
 
 Now you can try it out with this calculator.
 
-.. avembed:: AV/Hashing/StringSfold.html
+.. avembed:: AV/Hashing/StringSfold.html pe
    :showbutton: show
 
 For any sufficiently long string, the sum for the integer
@@ -290,12 +290,12 @@ functions.
 You should use the calculators above for the more complicated hash
 functions.
 
-.. avembed:: Exercises/Hashing/HashFuncPROSumm.html
+.. avembed:: Exercises/Hashing/HashFuncPROSumm.html ka
    :showbutton: hide
 
 Here are some review questions.
 
-.. avembed:: Exercises/Hashing/HashFuncSumm.html
+.. avembed:: Exercises/Hashing/HashFuncSumm.html ka
    :showbutton: hide
 
 .. odsascript:: AV/Hashing/hashFuncExCON.js

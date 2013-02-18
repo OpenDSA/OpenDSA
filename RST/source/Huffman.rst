@@ -70,7 +70,7 @@ The process of building the Huffman tree for :math:`n` letters is quite simple. 
 <ODSAfig "FreqExamp" />
 The relative frequencies for eight selected letters.
 
-.. inlineav:: huffmanCON1
+.. inlineav:: huffmanCON1 ss
    :output: show
 
 Figure <ODSAref "HuffTree" /> illustrates part of the Huffman tree construction process for the eight letters of Figure <ODSEref "FreqExamp" />. Ranking D and L arbitrarily by alphabetical order, the letters are ordered by frequency as
@@ -88,7 +88,7 @@ Because the first two letters on the list are Z and K, they are selected to be t
 
 Here is a visualization of building a random huffman tree.
 
-.. avembed:: AV/Development/HuffmanCoding.html
+.. avembed:: AV/Development/HuffmanCoding.html ss
 
 Here is the implementation for Huffman tree nodes.
 

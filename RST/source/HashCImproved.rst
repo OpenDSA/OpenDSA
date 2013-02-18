@@ -32,7 +32,7 @@ and so the :math:`i` th slot in the probe sequence will be
 In this way, records with adjacent home positions will not follow the
 same probe sequence.
 
-.. inlineav:: collisionCON1
+.. inlineav:: collisionCON1 ss
    :output: show
 
 One quality of a good probe sequence is that it will cycle through
@@ -67,12 +67,12 @@ then the probe sequence will visit all slots for any key.
 When :math:`M = 11`, any value for :math:`c` between 1 and 10 generates a
 probe sequence that visits all slots for every key.
 
-.. inlineav:: collisionCON2
+.. inlineav:: collisionCON2 ss
    :output: show
 
 Now you can practice linear probing by different step sizes.
 
-.. avembed:: Exercises/Hashing/HashingLinearStepProbePRO.html
+.. avembed:: Exercises/Hashing/HashingLinearStepProbePRO.html ka
    :showbutton: hide
 
 Consider the situation where :math:`c = 2` and we wish to insert a record
@@ -115,15 +115,15 @@ where **Perm** is an array of length :math:`M` that stores a value of
 random permutation of the values from 1 to :math:`M - 1` in slots 1 to
 :math:`M - 1`.
 
-.. inlineav:: collisionCON3
+.. inlineav:: collisionCON3 ss
    :output: show
 
 Here is a practice exercise for pseudo-random probing.
 
-.. avembed:: Exercises/Hashing/HashingPseudoRandomProbePRO.html
+.. avembed:: Exercises/Hashing/HashingPseudoRandomProbePRO.html ka
    :showbutton: hide
 
-.. inlineav:: collisionCON4
+.. inlineav:: collisionCON4 ss
    :output: show
 
 
@@ -144,16 +144,16 @@ The simplest variation is :math:`\textbf{p}(K, i) = i^2`
 Then the :math:`i` th value in the probe sequence would be
 :math:`(\textbf{h}(K) + i^2) \mod M`.
 
-.. inlineav:: collisionCON5
+.. inlineav:: collisionCON5 ss
    :output: show
 
 Now you can practice quadratic probing.
 
-.. avembed:: Exercises/Hashing/HashingQuadraticProbePRO.html
+.. avembed:: Exercises/Hashing/HashingQuadraticProbePRO.html ka
    :showbutton: hide
 
 
-.. inlineav:: collisionCON6
+.. inlineav:: collisionCON6 ss
    :output: show
 
 
@@ -237,25 +237,25 @@ between 1 and :math:`2^m`.
 We can get that result with this secondary hash function:
 :math:`\textbf{h}_2(k) = (((k/M) \mod (M/2)) * 2) + 1`.
 
-.. inlineav:: collisionCON7
+.. inlineav:: collisionCON7 ss
    :output: show
 
-.. inlineav:: collisionCON8
+.. inlineav:: collisionCON8 ss
    :output: show
 
 Now you can try it yourself.
 
-.. avembed:: Exercises/Hashing/HashingDoubleProbePRO.html
+.. avembed:: Exercises/Hashing/HashingDoubleProbePRO.html ka
    :showbutton: hide
 
 The following visualization lets you test out different combinations
 of hash function and collision resolution, on your own input data.
 
-.. avembed:: AV/Hashing/hashAV.html
+.. avembed:: AV/Hashing/hashAV.html pe
 
 Finally, here are some practice questions.
 
-.. avembed:: Exercises/Hashing/HashCollisionSumm.html
+.. avembed:: Exercises/Hashing/HashCollisionSumm.html ka
    :showbutton: hide
 
 .. odsascript:: AV/Hashing/collisionCON.js

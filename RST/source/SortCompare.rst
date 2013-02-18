@@ -129,5 +129,5 @@ Insertion Sort here_.
 
 Here are some review questions to test your knowledge from this module.
 
-.. avembed:: Exercises/Sorting/SortCompareSumm.html
+.. avembed:: Exercises/Sorting/SortCompareSumm.html ka
    :showbutton: hide

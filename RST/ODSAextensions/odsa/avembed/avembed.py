@@ -102,22 +102,23 @@ def showbutton(argument):
 
 
 class avembed(Directive):
-    required_arguments = 1
-    optional_arguments = 6
+    required_arguments = 2
+    optional_arguments = 5
     final_argument_whitespace = True
     has_content = True
-    option_spec = {'showbutton':showbutton,
-                   'required': directives.unchanged,
+    option_spec = {
                    'long_name': directives.unchanged,
                    'points': directives.unchanged,
+                   'required': directives.unchanged,
+                   'showbutton':showbutton,
                    'threshold': directives.unchanged,
-                   'type': directives.unchanged,
                    }
 
     def run(self):
                 
         """ Restructured text extension for inserting embedded AVs with show/hide button """
-        self.options['address'] = self.arguments[0] 
+        self.options['address'] = self.arguments[0]
+        self.options['type'] = self.arguments[1]
 
         embed = embedlocal(self.arguments[0])   
         self.options['exer_name'] = embed[0]
@@ -137,11 +138,11 @@ class avembed(Directive):
         if 'long_name' not in self.options:
           self.options['long_name'] = self.options['exer_name']
           
-        if 'type' not in self.options:
-          if 'Exercise' in self.options['av_address']:
-            self.options['type'] = 'ka'
-          else:
-            self.options['type'] = 'pe'
+        #if 'type' not in self.options:
+        #  if 'Exercise' in self.options['av_address']:
+        #    self.options['type'] = 'ka'
+        #  else:
+        #    self.options['type'] = 'pe'
  
         if 'showbutton' in self.options:
             if self.options['showbutton'] == "show":
@@ -162,9 +163,8 @@ class avembed(Directive):
 source = """\
 This is some text.
 
-.. avembed:: address 
+.. avembed:: address type
    :showbutton:
-
 
 This is some more text.
 """

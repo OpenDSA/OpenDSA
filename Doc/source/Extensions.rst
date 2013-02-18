@@ -14,23 +14,43 @@ NAME
 
 SYNOPSIS::  
                       
-    .. avembed:: <AV_Path> 
-       [:showbutton: {show|hide}]       
-       [:title: ]              
-
+    .. avembed:: <AV_Path> type
+       [:showbutton: {show|hide}]
+       [:long_name: ]
+       [:points: #]
+       [:required: <true | false>]
+       [:threshold: #]
+       
 DESCRIPTION
-    ``.. avembed:: <AV_Path>``                        		              
+    ``.. avembed:: <AV_Path> type``
       Call the directive followed by the relative path of the
-      AV or Exercise.
+      AV or Exercise and its type ('ss', 'pe' or 'ka').
+      
+      The points, required, threshold and type arguments are automatically
+      appended to the inlineav directive by the configuration process and
+      should not be added manually
+
     ``[:showbutton: {show|hide}]`` 
       Include a button to show or hide the embedded
       content. The options are ``show`` to have the content visible
       when the page is first loaded and ``hide`` to have it hidden.
-    ``[:title: ]``
-      Specify the text that will appear in the *show|hide*
-      button. Alphanumeric characters plus space and special
-      characters are allowed.
-               
+    
+    ``[:long_name: ]``
+    
+      Added automatically by the configuration process, do NOT add manually
+    
+    ``[:points: #]``
+    
+      Added automatically by the configuration process, do NOT add manually
+    
+    ``[:required: <true | false>]``
+    
+      Added automatically by the configuration process, do NOT add manually
+    
+    ``[:threshold: #]``
+    
+      Added automatically by the configuration process, do NOT add manually
+    
 NOTES
     The ``.. avembed::`` directive fetches the AV's information
     (width and height, etc.) from its XML description file.
@@ -115,17 +135,17 @@ NAME
 
 SYNOPSIS::
 
-    .. inlineav:: avId
+    .. inlineav:: avId type
        :output: [show | hide]
        :points: #
        :required: [true | false]
        :threshold: #
-       :type: [ss]
 
 DESCRIPTION
-    ``.. inlineav:: avId``
+    ``.. inlineav:: avId type``
 
-      Create a container for an inline AV with the given ID.
+      Create a container for an inline AV with the given ID and type ('ss' or 'dgm').
+      If the type is 'ss' a slideshow will be created and if it is 'dgm' a diagram will be created
 
       The points, required, threshold and type arguments are automatically
       appended to the inlineav directive by the configuration process and
@@ -147,12 +167,6 @@ DESCRIPTION
     ``:threshold: #``
     
       Added automatically by the configuration process, do NOT add manually
-    
-    ``:type: [ss]``
-    
-      Added automatically by the configuration process, do NOT add manually
-      If type is 'ss', the inlineav will be a slideshow.  If type is not
-      specified, the inlineav will be a diagram.
 
 numref
 ------

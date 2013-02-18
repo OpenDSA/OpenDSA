@@ -85,7 +85,7 @@ A record with key ``k`` can be stored in
 To find the record with key value ``k``, look in
 ``HT[k]``.
 
-.. inlineav:: hashIntroCON1
+.. inlineav:: hashIntroCON1 ss
    :output: show
 
 In most applications, there are many more values in the key range

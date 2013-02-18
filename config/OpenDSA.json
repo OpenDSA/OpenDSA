@@ -288,6 +288,13 @@
       "Mergesort": {
         "long_name": "Mergesort Concepts",
         "exercises": {
+          "mergesortAV": {
+            "long_name": "Mergesort Visualization",
+            "required": false,
+            "points": 0,
+            "threshold": 1.0,
+            "type": "ss"
+          },
           "mergesortCON1": {
             "long_name": "Mergesort Concepts Slideshow 1",
             "required": true,
@@ -764,6 +771,13 @@
             "points": 1,
             "threshold": 5,
             "type": "ka"
+          },
+          "hashAV": {
+            "long_name": "Hashing Exercise",
+            "required": false,
+            "points": 0,
+            "threshold": 1.0,
+            "type": "pe"
           },
           "HashCollisionSumm": {
             "long_name": "Improved Collision Resolution Summary",

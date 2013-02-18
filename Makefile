@@ -1,4 +1,5 @@
 RM = rm
+CONFIG_SCRIPT = lib/configure.py
 TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 
@@ -32,12 +33,12 @@ jshint:
 	@jshint RST/source/_static/gradebook.js
 
 CS3114:
-	python configure.py config/CS3114.json
+	python $(CONFIG_SCRIPT) config/CS3114.json
 
 OpenDSA:
-	python configure.py config/OpenDSA.json
+	python $(CONFIG_SCRIPT) config/OpenDSA.json
 
 T1061220:
-	python configure.py config/T1061220.json
+	python $(CONFIG_SCRIPT) config/T1061220.json
 
 allBooks: CS3114 OpenDSA T1061220

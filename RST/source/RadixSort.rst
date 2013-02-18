@@ -40,7 +40,7 @@ If we now gather the values from
 the bins **in order**, the result is a sorted list.
 We can see this process in the following visualization.
 
-.. avembed:: AV/Sorting/radixLinkAV.html
+.. avembed:: AV/Sorting/radixLinkAV.html ss
 
 In this example, we have :math:`r=10` bins and key values in
 the range 0 to :math:`r^2-1`.
@@ -65,7 +65,7 @@ bins :math:`k` times.
 
 Here is a practice exercise for placing keys into bins.
 
-.. avembed:: Exercises/Sorting/RadixsortPRO.html
+.. avembed:: Exercises/Sorting/RadixsortPRO.html ka
    :showbutton: hide
 
 As with Mergesort, an efficient implementation of Radix Sort is
@@ -103,7 +103,7 @@ array.::
        // Since bins fill from bottom, j counts downwards
        for (j=A.length-1; j>=0; j--) {
          B[count[(A[j]/rtok)%r]] = A[j];
-	 count[(A[j]/rtok)%r] = count[(A[j]/rtok)%r] - 1;
+         count[(A[j]/rtok)%r] = count[(A[j]/rtok)%r] - 1;
        }
        for (j=0; j<A.length; j++) A[j] = B[j]; // Copy B back
      }
@@ -125,7 +125,7 @@ Variable ``rtoi`` stores :math:`r^i` for use in bin computation
 on the :math:`i`'th iteration.
 The following visualization illustrates the process.
 
-.. avembed:: AV/Sorting/radixArrayAV.html
+.. avembed:: AV/Sorting/radixArrayAV.html ss
 
 This algorithm requires :math:`k` passes over the list of :math:`n`
 numbers in base :math:`r`, with :math:`\Theta(n + r)` work done at
@@ -248,5 +248,5 @@ Thus, Radix Sort truly does :math:`\Omega(n \log n)` work to process
 
 Now for some review questions.
 
-.. avembed:: Exercises/Sorting/RadixSortSumm.html
+.. avembed:: Exercises/Sorting/RadixSortSumm.html ka
    :showbutton: hide

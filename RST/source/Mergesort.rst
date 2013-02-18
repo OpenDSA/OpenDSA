@@ -45,7 +45,7 @@ Here is a pseudocode sketch of Mergesort::
 
 Here is a visualization that illustrates how Mergesort works.
 
-.. avembed:: AV/Sorting/mergesortAV.html
+.. avembed:: AV/Sorting/mergesortAV.html ss
 
 The hardest step to understand about Mergesort is the merge function.
 The merge function starts by examining the first record of each
@@ -83,17 +83,17 @@ Here is pseudocode for merge on lists::
 
 Here is a visualization for the merge operation.
 
-.. inlineav:: mergesortCON1
+.. inlineav:: mergesortCON1 ss
    :output: show
 
 Here is a mergesort warmup exercise to practice merging.
 
-.. avembed:: Exercises/Sorting/MergesortPRO.html
+.. avembed:: Exercises/Sorting/MergesortPRO.html ka
    :showbutton: hide
 
 Now here is a full proficiency exercise to put it all together.
 
-.. avembed:: AV/Sorting/mergesortProficiency.html
+.. avembed:: AV/Sorting/mergesortProficiency.html pe
    :showbutton: show
 
 Analysis of Mergesort is straightforward, despite the fact that it is
@@ -135,7 +135,7 @@ and worst cases.
 
 Now here are summary questions.
 
-.. avembed:: Exercises/Sorting/MergesortSumm.html
+.. avembed:: Exercises/Sorting/MergesortSumm.html ka
    :showbutton: hide
 
 .. odsascript:: AV/Sorting/mergesortCON.js

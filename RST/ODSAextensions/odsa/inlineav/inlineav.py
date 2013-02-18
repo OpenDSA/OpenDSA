@@ -53,26 +53,22 @@ def output(argument):
     """Conversion function for the "output" option."""
     return directives.choice(argument, ('show', 'hide'))
 
-def type(argument):
-    """Conversion function for the "output" option."""
-    return directives.choice(argument, ('ss', 'diagram'))
-
 class inlineav(Directive):
-    required_arguments = 1
-    optional_arguments = 6
+    required_arguments = 2
+    optional_arguments = 5
     final_argument_whitespace = True
     option_spec = {
-                   'output':output,
+                   'output': output,
                    'required': directives.unchanged,
                    'long_name': directives.unchanged,
                    'points': directives.unchanged,
                    'threshold': directives.unchanged,
-                   'type': type,
                   }
 
     def run(self):
         """ Restructured text extension for including inline JSAV content on module pages """
         self.options['exer_name'] = self.arguments[0]
+        self.options['type'] = self.arguments[1]
         self.options['odsa_path'] = os.path.relpath(conf.odsa_path,conf.ebook_path)
         
         if 'required' not in self.options:
@@ -83,9 +79,6 @@ class inlineav(Directive):
         
         if 'threshold' not in self.options:
           self.options['threshold'] = 1.0
-          
-        if 'type' not in self.options:
-          self.options['type'] = 'diagram'
         
         if 'long_name' not in self.options:
           self.options['long_name'] = self.options['exer_name']
@@ -95,7 +88,7 @@ class inlineav(Directive):
         else:
           self.options['output_code'] = ''
         
-        if self.options['type'] == "diagram":
+        if self.options['type'] == "dgm":
           res = DIAGRAM % self.options
         else:
           res = SLIDESHOW % self.options
@@ -105,7 +98,7 @@ class inlineav(Directive):
 source = """\
 This is some text.
 
-.. inlineav:: exer_name
+.. inlineav:: exer_name type
    :output:
 
 This is some more text.

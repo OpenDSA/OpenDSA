@@ -49,12 +49,12 @@ not in the table.
 However, the new record would actually be inserted into the slot of
 the first tombstone encountered.
 
-.. inlineav:: hashdelCON1
+.. inlineav:: hashdelCON1 ss
    :output: show
 
 Here is a practice exercise.
 
-.. avembed:: AV/Hashing/HashingDeleteProficiency.html
+.. avembed:: AV/Hashing/HashingDeleteProficiency.html pe
    :showbutton: hide
 
 The use of tombstones allows searches to work correctly and allows
@@ -101,7 +101,7 @@ Two possible solutions to this problem are
 
 Now here are some practice questions.
 
-.. avembed:: Exercises/Hashing/HashDelSumm.html
+.. avembed:: Exercises/Hashing/HashDelSumm.html ka
    :showbutton: hide
 
 Congratulations! You have reached the end of the hashing tutorial.

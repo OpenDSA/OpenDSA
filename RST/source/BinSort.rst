@@ -41,7 +41,7 @@ numbers 0 through :math:`n-1`::
    for (i=0; i<n; i++)
      B[A[i]] = A[i];
 
-.. inlineav:: BinsortCON1
+.. inlineav:: BinsortCON1 ss
    :output: show
 
 Here the key value is used to determine the
@@ -98,7 +98,7 @@ bins.
 Thus, we need to process each record twice, for :math:`\Theta(n)`
 work.
 
-.. inlineav:: BinsortCON2
+.. inlineav:: BinsortCON2 ss
    :output: show
 
 Does that really make sense?
@@ -130,7 +130,7 @@ The hope is that the relatively inexpensive bucketing process will put
 only a small number of records in each bucket, and that a
 "cleanup sort" to each bucket will then be relatively cheap.
 
-.. avembed:: Exercises/Sorting/BinsortSumm.html
+.. avembed:: Exercises/Sorting/BinsortSumm.html ka
    :showbutton: hide
 
 .. odsascript:: AV/Sorting/binsortCON.js

@@ -61,7 +61,7 @@ inversions for the record, where an :index:`inversion` occurs when a
 record with key value greater than the current record's key value
 appears before it.
 
-.. avembed:: Exercises/Sorting/FindInversionsPRO.html
+.. avembed:: Exercises/Sorting/FindInversionsPRO.html ka
    :showbutton: hide
 
 What is the average number of inversions?
@@ -87,5 +87,5 @@ limits comparisons to adjacent items will cost at least
 
 Here are the module review questions.
 
-.. avembed:: Exercises/Sorting/ExchangeSumm.html
+.. avembed:: Exercises/Sorting/ExchangeSumm.html ka
    :showbutton: hide

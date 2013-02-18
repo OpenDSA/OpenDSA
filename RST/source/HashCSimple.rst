@@ -115,7 +115,7 @@ Linear probing has the virtue that all slots in the table will be
 candidates for inserting a new record before the probe sequence
 returns to the home position.
 
-.. inlineav:: linProbeCON1
+.. inlineav:: linProbeCON1 ss
    :output: show
 
 Can you see any reason why this might not be the best approach
@@ -130,7 +130,7 @@ In fact, linear probing is one of the worst collision resolution
 methods.
 The main problem is illustrated by the next slideshow.
 
-.. inlineav:: linProbeCON2
+.. inlineav:: linProbeCON2 ss
    :output: show
 
 Again, the ideal behavior for a collision resolution mechanism is that
@@ -144,7 +144,7 @@ worse.
 The objection to primary clustering is that it leads to
 long probe sequences.
 
-.. avembed:: Exercises/Hashing/HashingLinearProbePRO.html
+.. avembed:: Exercises/Hashing/HashingLinearProbePRO.html ka
    :showbutton: hide
 
 .. odsascript:: AV/Hashing/linProbeCON.js

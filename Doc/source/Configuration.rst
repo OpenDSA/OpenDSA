@@ -137,6 +137,10 @@ Settings (all are required unless otherwise specified)
       * Omitting an exercise from the module's "exercises" object will cause the exercise to be removed from the configured module
       * Each exercise object contains required information about that exercise including:
       
+        * "remove" - (optional) if set to true, the exercise will not be included in the module
+          
+          * This option can only be used with exercises embedded using the 'avembed' directive.  Slideshows and diagrams created using the 'inlineav' directive are considered content and cannot be removed via the configuration file.
+          
         * "long_name" - a long form, human-readable name used to identify the exercise in the GUI
         * "required" - whether the exercise is required for module proficiency
         * "points" - the number of points the exercise is worth
@@ -146,5 +150,6 @@ Settings (all are required unless otherwise specified)
           * "ka" - Khan Academy style exercises
           * "pe" - OpenDSA proficiency exercises
           * "ss" - slideshows
+          * "dgm" - JSAV-based diagram
           
       * JSAV-based diagrams do not need to be listed

@@ -76,7 +76,7 @@ approach.
 
 Here is a visualization for the merge step.
 
-.. inlineav:: mergeImplCON1
+.. inlineav:: mergeImplCON1 ss
    :output: show
 
 An optimized Mergesort implementation is shown below.
@@ -95,12 +95,12 @@ the array is smaller than a value defined by ``THRESHOLD``.
 
 Here is a visualization for the optimized merge step.
 
-.. inlineav:: mergeImplCON2
+.. inlineav:: mergeImplCON2 ss
    :output: show
 
 Now here are some review questions.
 
-.. avembed:: Exercises/Sorting/MergeImplSumm.html
+.. avembed:: Exercises/Sorting/MergeImplSumm.html ka
    :showbutton: hide
 
 .. odsascript:: AV/Sorting/mergeImplCON.js

@@ -112,7 +112,7 @@ This recursive algorithm handles Edit Distance, but as the string length increas
 
 Note that for these animations, the starting string is *"cat"* and the ending string is *"kate"*.  The numbers in each node refer to the recursive function call parameters, in this case the character positions for comparison of the starting and ending strings, respectively.  For simplicity's sake, assume the starting and ending string are globally defined.
 
-.. avembed:: AV/Development/editRCT.html
+.. avembed:: AV/Development/editRCT.html pe
     :showbutton: hide
 
 Obviously, to compare any sizeable strings together, a recursive solution is not optimal.  As was seen by the previous demonstrations of dynamic programming, a dynamic approach to this problem will make things run more efficiently \(i.e., in linear time\).
@@ -121,7 +121,7 @@ The following animation demonstrates, just as the previous demonstrations of N-C
 
 Note that due to the similarity in approach, the majority of the code that operates this next animation is of an abstracted form that actually runs the second animations of all three dynamic programming problem visualizations.  You've already seen this animation if you've viewed N-Choose-K and the 0/1 Knapsack problems, just with a different algorithm being visualized.  If you don't see the similarity, don't worry.  The point of these three algorithm demonstrations, N-Choose-K, 0/1 Knapsack, and Edit Distance, is to reveal the same abstracted approach to creating dynamic solutions for problems.  Since the second step is virtually identical for all three of these demonstrations, we've created one animation to handle them all.
 
-.. avembed:: AV/Development/editPrune.html
+.. avembed:: AV/Development/editPrune.html pe
 	:showbutton: hide
 
 As you can see, the efficiency of this dynamic approach is :math:`O(m*n)`, which is obviously better than the recursive's efficiency of :math:`O(3^{max(m,n)})`.  In fact, for this particular example, of the original 19 function calls, the dynamic approach eliminated 10 of those calls, a 52.6% saving on efficiency, and this was for a **small** example!
@@ -130,7 +130,7 @@ Once the grid is filled, the last part of the dynamic solution approach is to id
 
 Note that for this animation, there are no deletions.  If the starting string was of greater length than the ending string, then there would be no insertions, but one or more deletions.
 
-.. avembed:: AV/Development/editOptimal.html
+.. avembed:: AV/Development/editOptimal.html pe
     :showbutton: hide
 
 The following is the same Edit Distance algorithm as above, but implemented dynamically.  As you can see, memoization is used to provide the means for a look-up table, storing the repeated function calls.  The initial setup of the grid might be the hardest part to understand.  This code will generate a two-dimensional array of the same type as seen in previous animations' grids, sans the initial row and column used for displaying the strings to be compared. ::
@@ -187,11 +187,11 @@ One major difference between the recursive Edit Distance and this particular dyn
 
 Now that you've seen the algorithms in action, you should hopefully understand where the grid gets its values.  More than this, you should understand how the algorithm chooses which operation to do next.  For the following quiz, the key to completing it is understanding ultimately which operation will be done at any point.  For any given cell, identify which operation will yield the lowest total operation count.
 
-.. avembed:: Exercises/Development/edit-KA1.html
+.. avembed:: Exercises/Development/edit-KA1.html ka
     :showbutton: hide
 
 On this next quiz, identify the correct value that would go in the highlighted cell.
 
-.. avembed:: Exercises/Development/edit-KA2.html
+.. avembed:: Exercises/Development/edit-KA2.html ka
     :showbutton: hide
 

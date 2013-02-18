@@ -40,6 +40,8 @@ import subprocess
 
 sphinx_header_chars = ['=', '-', '`', "'", '.', '*', '+', '^']
 
+missing_exercises = []
+
 # Used to generate the index.rst file
 index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
@@ -74,109 +76,8 @@ index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 '''
 
 
-
-def process_path(path, abs_prefix):
-  # If the path is relative, make it absolute
-  if not os.path.isabs(path):
-    path = abs_prefix + path
-
-  # Convert to Unix path
-  path = path.replace("\\", "/")
-  # Ensure path ends with '/'
-  if not path.endswith('/'):
-    path += "/"
-  
-  return path
-
-def process_section(section, index_file, depth):  
-  for subsect in section:
-    if ('exercises' in section[subsect]):
-      process_module(subsect, section[subsect], index_file, depth + 1)
-    else:
-      print ("  " * depth) + subsect
-      index_file.write(subsect + '\n')
-      index_file.write((sphinx_header_chars[depth] * len(subsect)) + "\n\n")
-      index_file.write(".. toctree::\n")
-      index_file.write("   :numbered:\n")
-      index_file.write("   :maxdepth: 3\n\n")
-      process_section(section[subsect], index_file, depth + 1)
-  
-  index_file.write("\n")
-
-def process_module(mod_name, mod_attrib, index_file, depth):
-  exercises = mod_attrib['exercises']
-  
-  print ("  " * depth) + mod_name
-  index_file.write("   " + mod_name + "\n")
-  
-  if mod_name == 'ToDo':
-    return
-  
-  with open(odsa_dir + 'RST/source/' + mod_name + '.rst','r') as mod_file:
-    # Read the contents of the module RST file from the ODST RST source directory
-    mod_data = mod_file.readlines()
-  mod_file.close()
-  
-  new_mod_data = []
-
-  # Find the end-of-line character for the file
-  eol = mod_data[0].replace(mod_data[0].rstrip(), '')
-  
-  # Alter the module RST contents based on the RST file
-  i = 0
-  while i < len(mod_data):
-    if '.. include:: JSAVheader.rinc' in mod_data[i] and 'dispModComp' in mod_attrib:
-      # If config file explicitly lists whether module can be completed 
-      new_mod_data.append(mod_data[i])
-      new_mod_data.append(eol)
-      new_mod_data.append('.. raw:: html' + eol)
-      new_mod_data.append(eol)
-      new_mod_data.append('   <script>' + eol)
-      
-      if mod_attrib['dispModComp']:
-        new_mod_data.append('   dispModComp = true;' + eol)
-      else:
-        new_mod_data.append('   dispModComp = false;' + eol)
-        
-      new_mod_data.append('   </script>' + eol)
-      new_mod_data.append(eol)
-    elif '.. inlineav::' in mod_data[i] or '.. avembed::' in mod_data[i]:
-      # Parse the exercise name from the line
-      av_name = mod_data[i].split(' ')[2]
-      av_name = av_name.rstrip()
-      if av_name.endswith('.html'):
-        av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
-      
-      if '.. avembed::' in mod_data[i] and av_name not in exercises: 
-        # Exercise not listed in config file, remove it from the RST file
-        while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-          i = i + 1
-      else:
-        # Object is an exercise found in the config file or a 
-        # slideshow which shouldn't be removed because its considered content
-        new_mod_data.append(mod_data[i])
-        
-        if av_name in exercises:
-          # Add the necessary information from the configuration file
-          exer_conf = exercises[av_name]
-          
-          for setting in exer_conf:
-            new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
-          
-    else:
-      new_mod_data.append(mod_data[i])
-    
-    i = i + 1
-  
-  with open(src_dir + mod_name + '.rst','w') as mod_file:
-    # Write the contents of the module RST file to the output src directory
-    mod_file.writelines(new_mod_data)
-  mod_file.close()
-
-
-
 # Used to generate the conf.py file
-conf= """\
+conf = '''\
 # -*- coding: utf-8 -*-
 #
 # OpenDSA documentation build configuration file, created by
@@ -446,7 +347,123 @@ ebook_path = '%(ebook_dir)s'
 sourcecode_path = '%(code_dir)s'
 
 
-"""
+'''
+
+
+
+def process_path(path, abs_prefix):
+  # If the path is relative, make it absolute
+  if not os.path.isabs(path):
+    path = abs_prefix + path
+
+  # Convert to Unix path
+  path = path.replace("\\", "/")
+  # Ensure path ends with '/'
+  if not path.endswith('/'):
+    path += "/"
+  
+  return path
+
+def process_section(section, index_file, depth):  
+  for subsect in section:
+    if ('exercises' in section[subsect]):
+      process_module(subsect, section[subsect], index_file, depth)
+    else:
+      print ("  " * depth) + subsect
+      index_file.write(subsect + '\n')
+      index_file.write((sphinx_header_chars[depth] * len(subsect)) + "\n\n")
+      index_file.write(".. toctree::\n")
+      index_file.write("   :numbered:\n")
+      index_file.write("   :maxdepth: 3\n\n")
+      process_section(section[subsect], index_file, depth + 1)
+  
+  index_file.write("\n")
+
+def process_module(mod_name, mod_attrib, index_file, depth):
+  exercises = mod_attrib['exercises']
+  
+  print ("  " * depth) + mod_name
+  index_file.write("   " + mod_name + "\n")
+  
+  if mod_name == 'ToDo':
+    return
+  
+  # Read the contents of the module file from the RST source directory
+  with open(odsa_dir + 'RST/source/' + mod_name + '.rst','r') as mod_file:
+    mod_data = mod_file.readlines()
+  mod_file.close()
+  
+  new_mod_data = []
+
+  # Find the end-of-line character for the file
+  eol = mod_data[0].replace(mod_data[0].rstrip(), '')
+  
+  # Alter the contents of the module based on the config file
+  i = 0
+  while i < len(mod_data):
+    if '.. include:: JSAVheader.rinc' in mod_data[i] and 'dispModComp' in mod_attrib:
+      # If the module contains a 'dispModComp' attribute, set the JS flag to indicate whether the module can be completed
+      new_mod_data.append(mod_data[i])
+      new_mod_data.append(eol)
+      new_mod_data.append('.. raw:: html' + eol + eol)
+      new_mod_data.append('   <script>' + eol)
+      
+      if mod_attrib['dispModComp']:
+        new_mod_data.append('   dispModComp = true;' + eol)
+      else:
+        new_mod_data.append('   dispModComp = false;' + eol)
+        
+      new_mod_data.append('   </script>' + eol + eol)
+    elif '.. inlineav::' in mod_data[i] or '.. avembed::' in mod_data[i]:
+      # Parse the exercise name from the line
+      av_name = mod_data[i].split(' ')[2]
+      av_name = av_name.rstrip()
+      
+      if av_name.endswith('.html'):
+        av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
+      
+      type = mod_data[i].split(' ')[3].rstrip()
+      
+      if av_name not in exercises:
+        # If the exercise is not listed in the config file, let it pass through and add the name to a list of missing exercises
+        new_mod_data.append(mod_data[i])
+        missing_exercises.append(av_name)
+      else:
+        # Print a warning if the type in the RST file does not match the one in the config file
+        if 'type' in exercises[av_name] and exercises[av_name]['type'] != type:
+          print ("  " * (depth + 1 )) + av_name + ', RST type: ' + type + ', Config type: ' + exercises[av_name]['type']
+        
+        # Slideshows and diagrams (inlineav) are considered content and cannot be removed via the config file
+        # Only avembed-ed exercises can be explicitly removed
+        if '.. avembed::' in mod_data[i] and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
+          print ("  " * (depth + 1 )) + 'Removing: ' + av_name
+          
+          # Config file states exercise should be removed, remove it from the RST file
+          while (i < len(mod_data) and mod_data[i].rstrip() != ''):
+            i = i + 1
+        else:
+          # Object is an exercise found in the config file or a 
+          # slideshow which shouldn't be removed because its considered content
+          new_mod_data.append(mod_data[i])
+          
+          # Add the necessary information from the configuration file
+          exer_conf = exercises[av_name]
+          
+          for setting in exer_conf:
+            if setting == 'type' or setting == 'remove':
+              continue
+            
+            new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
+    else:
+      new_mod_data.append(mod_data[i])
+    
+    i = i + 1
+  
+  # Write the contents of the module file to the output src directory
+  with open(src_dir + mod_name + '.rst','w') as mod_file:
+    mod_file.writelines(new_mod_data)
+  mod_file.close()
+
 
 
 
@@ -482,12 +499,13 @@ conf_data['name'] = os.path.basename(config_file).replace('.json', '')
 
 # Auto-detect ODSA directory
 (odsa_dir, script) = os.path.split( os.path.abspath(__file__))
-odsa_dir = odsa_dir.replace("Scripts/", "")
-odsa_dir = odsa_dir.replace("\\", "/") + '/'
+odsa_dir = odsa_dir.replace("\\", "/")
+odsa_dir = odsa_dir.replace("lib", "") + '/'
 
 # Process the code and output directory paths
 code_dir = process_path(conf_data['code_dir'], odsa_dir)
 output_dir = process_path(conf_data['output_dir'], odsa_dir)
+
 
 
 if output_dir == (odsa_dir) or output_dir == (odsa_dir + "RST/"):
@@ -497,13 +515,13 @@ if output_dir == (odsa_dir) or output_dir == (odsa_dir + "RST/"):
 src_dir = output_dir + "source/"
 
 cwd = os.getcwd()
-  
+
 if conf_data['build_JSAV']:
   # Rebuild JSAV
   print "Building JSAV\n"
   status = 0
   try:
-    os.chdir('JSAV/')
+    os.chdir(odsa_dir + 'JSAV/')
     with open(os.devnull, "w") as fnull:
       status = subprocess.check_call('make', stdout=fnull)
     fnull.close()
@@ -534,6 +552,7 @@ with open(odsa_dir + 'RST/Makefile','r') as makefile:
   make_data = makefile.readlines()
 makefile.close()
 
+# Rewrite Makefile to correctly point to .htaccess file 
 with open(output_dir + 'Makefile','w') as makefile:
   for i in range(len(make_data)):
     if '.htaccess $(BUILDDIR)/html' in make_data[i]:
@@ -558,6 +577,7 @@ distutils.file_util.copy_file(config_file, src_dir + '_static/')
 if conf_data['copy_static_files']:
   # Set the base ODSA directory for conf.py to be the output directory to ensure the copied files get referenced in the build
   options['odsa_dir'] = output_dir
+  
   # Calculate the relative path between the code directory and the root OpenDSA directory in order to reference the correct sourcecode in the external build directory
   options['code_dir'] = process_path(os.path.relpath(code_dir, odsa_dir), output_dir)
 
@@ -605,7 +625,16 @@ index_file.close()
 
 
 
-# Replace the backend server address in ODSA.js
+# Print out a list of any exercises found in RST files that do not appear in the config file
+if len(missing_exercises) > 0:
+  print "\nExercises Not Listed in Config File:"
+  
+  for exercise in missing_exercises:
+    print '  ' + exercise
+  
+
+
+# Read the contents of ODSA.js
 with open(odsa_dir + 'lib/ODSA.js','r') as odsa:
   odsa_data = odsa.readlines()
 odsa.close()
@@ -641,7 +670,7 @@ odsa.close()
 # TODO: If static files are copied, run minifier on ODSA.JS
 
 
-# Replace 'exerciseOrigin' and 'bookName' in opendsaMOD.js
+# Replace 'exerciseOrigin' and 'allowAnonCredit' in opendsaMOD.js
 with open(odsa_dir + 'RST/source/_static/opendsaMOD.js','r') as odsaMOD:
   odsaMOD_data = odsaMOD.readlines()
 odsaMOD.close()
@@ -667,7 +696,7 @@ with open(src_dir + '_static/opendsaMOD.js','w') as odsaMOD:
 odsaMOD.close()
 
 
-# Replace the backend server address in khan-exercise.js
+# Replace the backend server address and 'moduleOrigin' in khan-exercise.js
 with open(odsa_dir + 'ODSAkhan-exercises/khan-exercise.js','r') as khan_exer:
   ke_data = khan_exer.readlines()
 khan_exer.close()
@@ -696,7 +725,7 @@ khan_exer.close()
 
 
 # Add the index.html file that redirects to the build/html directory
-indexHTML = """\
+indexHTML = '''\
 <html>
 <head>
   <script>
@@ -704,7 +733,7 @@ indexHTML = """\
   </script>
 </head>
 </html>
-"""
+'''
 
 with open(output_dir + 'index.html','w') as indexFile:
   indexFile.writelines(indexHTML)
@@ -715,11 +744,9 @@ indexFile.close()
 if conf_data['build_ODSA']:
   print '\nBuilding textbook...'
 
-  make_path = conf_data['output_dir'].replace('\\', '/')
-
   # Run make on the output directory
   try:
-    os.chdir(make_path)
+    os.chdir(output_dir)
     proc = subprocess.Popen('make', stdout=subprocess.PIPE)
     for line in iter(proc.stdout.readline,''):
        print line.rstrip()

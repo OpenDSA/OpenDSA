@@ -144,5 +144,5 @@ This requires that the implementor have some idea of how many records
 are likely to be in the table at maximum loading, and select the
 table size accordingly.
 
-.. avembed:: Exercises/Hashing/HashAnalSumm.html
+.. avembed:: Exercises/Hashing/HashAnalSumm.html ka
    :showbutton: hide
