@@ -1,5 +1,5 @@
 ﻿"use strict";
-/*global console: true, debugMode, serverEnabled, userLoggedIn, getUsername, getSessionKey, getJSON, serverURL, moduleName, getProficiencyStatus, bookName, Status */
+/*global console: true, debugMode, serverEnabled, userLoggedIn, getUsername, getSessionKey, getJSON, serverURL, moduleName, getProficiencyStatus, bookName, Status, storeProficiencyStatus */
 
 (function ($) {
   /**
@@ -214,7 +214,7 @@
             }
 
             // Load proficiency data for modules
-            for (var i = 0; i < data.modules.length; i++) {
+            for (i = 0; i < data.modules.length; i++) {
               name = data.modules[i].module;
               storeProficiencyStatus(name, (data.modules[i].proficient) ? Status.STORED : false, username);
             }
