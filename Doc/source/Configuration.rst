@@ -31,6 +31,9 @@ Configuration Process
 
 Please see the comment at the beginning of configure.py for more information about how the script works.  Keeping the information in the script itself ensures the script is well-documented and makes it easier to maintain the documentation.
 
+* Only the modules listed in the configuration file will be included.  To remove a module from the book, simply remove the module object from the configuration file.  
+* To remove an exercise from a module, set the "remove" attribute to true.  Exercises that do not appear in the configuration file will still be included in the book using the default configuration options.  During configuration, a list will be printed of any exercises which were encountered in the modules but not present in the configuration file.
+
 
 Future Features
 ===============
