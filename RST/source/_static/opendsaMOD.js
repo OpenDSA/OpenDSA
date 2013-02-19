@@ -1468,7 +1468,7 @@ $(document).ready(function () {
   
   // Set dispModComp to true if the module contains any required exercises
   for (var exer in exercises) {
-    if (exercises.hasOwnProperty(exer) && exer.required) {
+    if (exercises.hasOwnProperty(exer) && exercises[exer].required) {
       dispModComp = true;
       break;
     }
