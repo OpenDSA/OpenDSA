@@ -28,6 +28,7 @@ jshint:
 	-@jshint AV/Sorting/*.js
 	-@jshint AV/Hashing/*.js
 	-@jshint AV/*.js
+	-@jshint Exercises/Hashing/*.js
 	-@jshint lib/ODSA.js
 	-@jshint RST/source/_static/opendsaMOD.js
 	-@jshint RST/source/_static/gradebook.js

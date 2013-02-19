@@ -17,8 +17,6 @@ Books: This contains compiled versions of "textbooks".
 config: This holds configuration files for specific books (whose
 output will go to the "Books" directory).
 
-configure.py: The file used to drive book compilation.
-
 Doc: Documentation. Currently includes a template for Khan Academy
 multiple choice questions, and documentation for using the various
 Sphinx directives that we have created.

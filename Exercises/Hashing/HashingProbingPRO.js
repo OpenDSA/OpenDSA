@@ -1,14 +1,14 @@
-(function() {
+(function () {
   "use strict";
   var Hashing = {
-    linearProbing: function(i) {
+    linearProbing: function (i) {
       return i;
     },
-    quadraticProbing: function(i) {
+    quadraticProbing: function (i) {
       return i * i;
     },
     // randomize input for linear&quadratic probing, probefunction should be one of the above
-    randomizeInputData: function(probeFunction, arr_size) {
+    randomizeInputData: function (probeFunction, arr_size) {
       var tries = JSAV.utils.rand.sample([0, 1, 1, 1, 1, 2, 2, 2, 2, 3], 1)[0], // how many indices are tried before success
           valueMod = JSAV.utils.rand.numKey(0, arr_size), // which index to insert to
           arr = [], // store the hashtable in this array
@@ -46,7 +46,7 @@
       }
       // replace undefined values with empty strings because jsavArr.value(..) returns
       // empty strings and this makes comparison easier
-      arr = $.map(arr, function(item, index) { return item || ""; });
+      arr = $.map(arr, function (item, index) { return item || ""; });
 
       // create a duplicate for the solution and add the input to the array
       solutionArray = arr.slice(0);
@@ -57,5 +57,5 @@
     }
   }; // end Hashing
 
-  window['Hashing'] = Hashing;
+  window.Hashing = Hashing;
 })();
