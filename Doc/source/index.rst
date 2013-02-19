@@ -12,10 +12,10 @@ Table of Contents
    ModAuthor
    Structure
    Extensions
+   Configuration
    Exercise 
    BackendSpecs
    FrontendJSSpecs
-   Configuration
    Client-sideFramework
 
  

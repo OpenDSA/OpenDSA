@@ -1,10 +1,10 @@
 .. _Exercise:
 
-OpenDSA and Khan Academy infrastructure
+Using OpenDSA with Khan Academy infrastructure
 =======================================
 
-We use the Khan Academy infrastructure for writing questions.
-They supply some documentation at their
+We use the Khan Academy (KA) infrastructure for writing questions.
+KA supplies some documentation at
 `wiki <https://github.com/Khan/khan-exercises/wiki/>`_.
 
 Using the Multiple Choice Question Template

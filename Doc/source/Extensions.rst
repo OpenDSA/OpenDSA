@@ -3,14 +3,26 @@
 OpenDSA ReST Extensions
 =======================
 
-A number of custom ReST extensions have been created for the OpenDSA
+The following custom ReST extensions have been created for the OpenDSA
 project.
-They are documented here.
+
+The documentation here presents all of the options associated with
+each directive, as if the directive were to appear for direct processing
+by Sphinx. However, OpenDSA modules are intended to be pre-processed
+by a configuration script that dynamically loads in additional
+information to tailor modules for specific eTextbook instances.
+In particular, information related to grading of embedded exercises
+should be controlled by the configuration files.
+See :ref:`Configuration` for details.
+Thus, a number of the directive options, while documented, are labeled
+as not being set manually (i.e., by the module author) within the ReST
+file. You just leave those options out when you create your module,
+and specify them instead in your configuration file.
 
 avembed
 -------
 NAME
-    avembed - embed an AV or other HTML page inside a ReST document.     
+    avembed - embed an AV or other HTML page inside a ReST document.
 
 SYNOPSIS::  
                       
@@ -23,33 +35,41 @@ SYNOPSIS::
        
 DESCRIPTION
     ``.. avembed:: <AV_Path> type``
-      Call the directive followed by the relative path of the
-      AV or Exercise and its type ('ss', 'pe' or 'ka').
+      Parameters are the relative path (from the OpenDSA
+      home directory) to the embedded page, and its type ('ss' for
+      slideshow, 'pe' for proficiency exercise,
+      or 'ka' for Khan Academy exercise).
       
-      The points, required, threshold and type arguments are automatically
-      appended to the inlineav directive by the configuration process and
-      should not be added manually
+      ```Note:``` The ``points``, ``required``, and ``threshold``
+      arguments are automatically appended to the ``avembed``
+      directive by the configuration process and should not be added
+      manually.
 
     ``[:showbutton: {show|hide}]`` 
       Include a button to show or hide the embedded
       content. The options are ``show`` to have the content visible
-      when the page is first loaded and ``hide`` to have it hidden.
+      when the page is first loaded or ``hide`` to have it hidden on
+      page load.
     
     ``[:long_name: ]``
     
-      Added automatically by the configuration process, do NOT add manually
+      Long name for the embedded object. The "short name" is the file name.
+      **Added automatically by the configuration process, do NOT add manually.**
     
     ``[:points: #]``
     
-      Added automatically by the configuration process, do NOT add manually
+      Number of points this activity is worth.
+      **Added automatically by the configuration process, do NOT add manually.**
     
     ``[:required: <true | false>]``
     
-      Added automatically by the configuration process, do NOT add manually
+      Whether this activity is required for module credit.
+      **Added automatically by the configuration process, do NOT add manually.**
     
     ``[:threshold: #]``
     
-      Added automatically by the configuration process, do NOT add manually
+      Threshold number of points required for credit.
+      **Added automatically by the configuration process, do NOT add manually.**
     
 NOTES
     The ``.. avembed::`` directive fetches the AV's information
@@ -57,15 +77,15 @@ NOTES
     This XML file is located in the directory ``xml`` contained
     within the same directory as the AV. If the AV is named
     ``fooAV.html`` then the XML file must be ``xml/fooAV.xml``.
-    The path to OpenDSA directory should be set in ``conf.py`` file in
-    source directory. 
+    The path to the OpenDSA top-level directory should be set within
+    ``conf.py`` in the source directory. 
 
 avmetadata
 ----------
 NAME                   
-    avmetadata - list of metadata information associated with the
-    ReST document. It is used to generate the knowledge map and
-    the module selection interface.
+    avmetadata - metadata information associated with this
+    module. It is used to generate a knowledge map and
+    by the module selection interface.
 
 SYNOPSIS::             
         
@@ -77,10 +97,7 @@ SYNOPSIS::
 
 DESCRIPTION
     ``.. avmetadata:: module_name``
-      Call the directive followed by the module's
-      identifier (``module_name``). It should match the module's
-      (ReST) file name without the extension. No space nor special
-      characters are allowed.
+      The parameter is the module's name.
     ``:author:``
       Module author's name.
     ``:prerequisites:``

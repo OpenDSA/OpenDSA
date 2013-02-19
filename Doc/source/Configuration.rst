@@ -1,8 +1,8 @@
 ﻿.. _Configuration:
 
-==========================
-OpenDSA Configuration File
-==========================
+================================
+The OpenDSA Configuration System
+================================
 
 ----------
 Motivation
