@@ -3,11 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Set Definitions
+.. avmetadata:: 
    :author: Cliff Shaffer
    :prerequisites: Sets
    :topic: Sets
-   :short_name: SetDef
 
 .. _SetDef:
 

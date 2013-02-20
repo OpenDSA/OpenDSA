@@ -3,11 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Reductions
+.. avmetadata:: 
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Algorithm Analysis
-   :short_name: Reductions
 
 .. _Reductions:
 

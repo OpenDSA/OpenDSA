@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Radix Sort
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: BinSort
    :topic: Sorting
-   :short_name: RadixSort
-   :exercises: RadixsortPRO, RadixSortSumm
 
 .. _RadixSort:
 

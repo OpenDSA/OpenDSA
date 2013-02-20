@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Sorting Chapter Summary
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting
    :topic: Sorting
-   :short_name: SortSumm
-   :exercises: ChapterSumm
 
 .. _SortSumm:
 

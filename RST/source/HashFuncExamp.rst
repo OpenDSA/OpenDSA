@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Sample Hash Functions
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Hashing
-   :short_name: HashFuncExamp
-   :exercises: hashFuncExCON1, hashFuncExCON2, MidSquare, StringSimple, StringSfold, HashFuncPROSumm, HashFuncSumm
 
 .. _HashFuncExamp:
 

@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Hashing Analysis
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Hashing
-   :short_name: HashAnal
-   :exercises: HashAnalSumm
 
 .. _HashFunc:
 

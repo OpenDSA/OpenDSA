@@ -3,11 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Tries
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: BST
    :topic: Search Trees
-   :short_name: Trie
 
 .. _Trie:
 

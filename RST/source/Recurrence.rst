@@ -3,11 +3,9 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Recurrence Relations
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
-   :topic: Recurrence Relations
-   :short_name: Recurrence
 
 .. _Recurrence:
 
