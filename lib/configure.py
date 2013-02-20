@@ -38,6 +38,9 @@ import collections
 import re
 import subprocess
 
+# The location in the output directory where the built HTML files go
+ebook_suffix = 'html/'
+
 sphinx_header_chars = ['=', '-', '`', "'", '.', '*', '+', '^']
 
 missing_exercises = []
@@ -72,6 +75,42 @@ index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 .. chapnum::
    :start: 0
    :prefix: Chapter
+
+'''
+
+makefile_data = '''\
+# Makefile for Sphinx documentation
+#
+# You can set these variables from the command line.
+SPHINXOPTS    =
+SPHINXBUILD   = sphinx-build
+PAPER         =
+BUILDDIR      = build
+HTMLDIR       = %(ebook_suffix)s
+
+# Internal variables.
+ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
+
+.PHONY: clean html
+
+all: html
+
+clean:
+	-rm -rf $(BUILDDIR)/*
+	-rm -rf $(HTMLDIR)/*
+	-rm source/ToDo.rst
+
+cleanbuild: clean html
+
+preprocessor:
+	python preprocessor.py source/ $(HTMLDIR)
+
+html: preprocessor
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(HTMLDIR)
+	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
+	rm *.json
+	@echo
+	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
 
 '''
 
@@ -500,7 +539,8 @@ conf_data['name'] = os.path.basename(config_file).replace('.json', '')
 # Auto-detect ODSA directory
 (odsa_dir, script) = os.path.split( os.path.abspath(__file__))
 odsa_dir = odsa_dir.replace("\\", "/")
-odsa_dir = odsa_dir.replace("lib", "") + '/'
+odsa_dir = odsa_dir.replace("/lib", "") + '/'
+
 
 # Process the code and output directory paths
 code_dir = process_path(conf_data['code_dir'], odsa_dir)
@@ -537,7 +577,7 @@ if conf_data['build_JSAV']:
 options = {}
 options['title'] = conf_data['title']
 options['odsa_dir'] = odsa_dir
-options['ebook_dir'] = output_dir + "build/html/"
+options['ebook_dir'] = output_dir + ebook_suffix
 options['code_dir'] = code_dir
 
 print "Copying files to output directory\n"
@@ -548,17 +588,14 @@ distutils.dir_util.copy_tree(odsa_dir + 'RST/ODSAextensions/', output_dir + 'ODS
 distutils.file_util.copy_file(odsa_dir + 'RST/preprocessor.py', output_dir, update=1)
 distutils.file_util.copy_file(odsa_dir + 'RST/config.py', output_dir, update=1)
 
-with open(odsa_dir + 'RST/Makefile','r') as makefile:
-  make_data = makefile.readlines()
-makefile.close()
 
-# Rewrite Makefile to correctly point to .htaccess file 
+# Create a Makefile in the output directory 
 with open(output_dir + 'Makefile','w') as makefile:
-  for i in range(len(make_data)):
-    if '.htaccess $(BUILDDIR)/html' in make_data[i]:
-      make_data[i] = re.sub(r'(cp )../(lib/.htaccess)(.*)', r'\1' + '"' + odsa_dir + r'\2"\3', make_data[i])
-      break
-  makefile.writelines(make_data)
+  make_options = {}
+  make_options['ebook_suffix'] = ebook_suffix
+  make_options['odsa_dir'] = odsa_dir
+
+  makefile.writelines(makefile_data % make_options)
 makefile.close()
 
 
@@ -729,22 +766,24 @@ indexHTML = '''\
 <html>
 <head>
   <script>
-    window.location.replace(window.location.href.replace(/\/(index.html)?$/, '/build/html/'));
+    window.location.replace(window.location.href.replace(/\/(index.html)?$/, '/%(ebook_suffix)s'));
   </script>
 </head>
 </html>
 '''
 
 with open(output_dir + 'index.html','w') as indexFile:
-  indexFile.writelines(indexHTML)
+  options = {}
+  options['ebook_suffix'] = ebook_suffix
+  indexFile.writelines(indexHTML %options)
 indexFile.close()
 
 
 
+# Optionally run make on the output directory
 if conf_data['build_ODSA']:
   print '\nBuilding textbook...'
 
-  # Run make on the output directory
   try:
     os.chdir(output_dir)
     proc = subprocess.Popen('make', stdout=subprocess.PIPE)
