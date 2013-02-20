@@ -426,7 +426,7 @@ div.viewcode-block:target {
 }
 
 
-img.btn_close { Position the close button
+img.btn_close { /* Position the close button */
         float: right;
         margin: -28px -28px 0 0;
 }
