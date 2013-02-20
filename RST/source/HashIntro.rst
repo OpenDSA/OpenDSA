@@ -14,7 +14,7 @@
 
 .. index:: ! hashing
 
-.. odsalink:: AV/Hashing/hashCON.css
+.. odsalink:: AV/slideCON.css
 
 Introduction
 ============

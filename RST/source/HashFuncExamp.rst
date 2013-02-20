@@ -12,7 +12,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Hashing/hashCON.css
+.. odsalink:: AV/slideCON.css
 
 Sample Hash Functions
 =====================
