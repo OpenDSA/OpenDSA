@@ -14,6 +14,7 @@
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Hashing/buckethashCON.css
 
 Bucket Hashing

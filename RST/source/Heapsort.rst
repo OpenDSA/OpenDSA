@@ -15,6 +15,7 @@
 .. include:: JSAVheader.rinc
 
 .. odsascript:: JSAV/extras/binaryheap.js
+.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Sorting/heapsortCON.css
 
 .. index:: ! Heapsort

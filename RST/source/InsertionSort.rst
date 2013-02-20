@@ -16,7 +16,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Sorting/quadraticsortCON.css
+.. odsalink:: AV/slideCON.css
 
 Insertion Sort
 ==============

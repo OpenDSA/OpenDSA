@@ -17,6 +17,7 @@
 
 .. index:: ! Quicksort
 
+.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Sorting/quicksortCON.css
 
 Quicksort

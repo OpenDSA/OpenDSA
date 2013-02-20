@@ -1,10 +1,5 @@
 .jsavcontainer {
-  width: 660px;
   height: 500px;
-  background-color: #eed;
-  margin: 0 auto;
-  border: 0;
-  position: relative;
 }
 
 svg {

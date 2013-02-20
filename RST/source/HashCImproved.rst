@@ -14,6 +14,7 @@
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Hashing/collisionCON.css
 
 Improved Collision Resolution

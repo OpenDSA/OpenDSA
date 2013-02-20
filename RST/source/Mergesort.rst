@@ -14,6 +14,7 @@
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Sorting/mergeCON.css
 
 .. index:: ! Mergesort

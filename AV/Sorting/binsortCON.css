@@ -1,17 +1,5 @@
-.jsavcontrols {
-  margin-top: -35px;
-}
-
 .jsavcontainer {
   width: 760px;
-  background-color: #eed;
-  margin: 0 auto;
-  border: 0;
-}
-
-.jsavoutput.jsavline{
-  margin-top: -5px;
-  height: 40px;
 }
 
 .jsavcanvas {

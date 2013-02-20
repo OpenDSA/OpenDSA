@@ -16,7 +16,7 @@
 
 .. index:: ! collision resolution
 
-.. odsalink:: AV/Hashing/hashCON.css
+.. odsalink:: AV/slideCON.css
 
 Collision Resolution
 ====================
