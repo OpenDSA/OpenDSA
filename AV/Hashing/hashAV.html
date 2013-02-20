@@ -26,7 +26,7 @@
       </tr>
     </table>
     <div class="avcontainer">
-      <p class="jsavoutput jsavscroll" readonly="readonly"></p>
+      <p class="jsavoutput jsavscroll"></p>
       <ol id="hashTable"></ol>
       <input type="button" id="showcounts" name="showcounts" value="Show Counts" />
     </div>
@@ -35,7 +35,7 @@
   <!-- Bottom Container -->
   <div id="bottom">
     <form id="ssperform">
-      <p align="left">
+      <p id="procontrols">
         <!-- Function Dropdown -->
         <select id="function">
           <option selected="selected" value="0"> Choose Hashing Function</option>
@@ -94,7 +94,7 @@
           <option value="2">0 - 999</option>
         </select>
         <span id="mValue">
-          <label for="mValue">M-value:</label>
+          <label>M-value:</label>
           <input size="12" name="M" id="M" type="text" />
         </span>
       </p>

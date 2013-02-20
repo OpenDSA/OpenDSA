@@ -1,4 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,10 +31,10 @@
       <p>
         <input type="button" id="run" name="run" value="Run" />
         <input type="button" id="clear" name="clear" value="Clear" />
-        <label for="arraysize">&nbsp;List size:&nbsp;</label>
-        <input size="5" id="arraysize" name="arraysize" type="number" value="64"/>
+        <label for="arraysize">&nbsp;Input size:&nbsp;</label>
+        <input id="arraysize" name="arraysize" type="number" value="64"/>
       </p>
-      <p class="jsavoutput jsavscroll" readonly="readonly"></p>
+      <p class="jsavoutput jsavscroll"></p>
     </form>
   </div> <!--left-->
 
@@ -47,7 +46,7 @@
       <p>You will then see the cost for Shellsort on your
          set of increments, and also the cost for a regular
          Insertion Sort and the cost for the "divide by 2" increments.</p>
-      <p>You can set the list size. Run this on some bigger lists
+      <p>You can set the input size. Run this on some bigger inputs
          to get a more realistic idea of the costs.</p>
       <p>Your goal is to come up with an increment series that
       needs fewer comparisons and swaps than the "divide by 2" series.</p>

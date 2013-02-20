@@ -15,13 +15,13 @@ It is also important to add the line::
 
 This allows the "About" link used on every page to get access to the
 JSAV library (which it uses to post the version number).
-This also gives you access to JSAV, jQuery, etc., for your
-development.
+This also provides access to JSAV, jQuery, etc. to any JavaScript
+files that you want to include to control dynamic components on the
+page.
 
 Generally, exercises and visualizations are embedded from elsewhere.
 The major exception is small slideshows, which are included directly
-via raw HTML.
-But the actual CSS code and JS code will be maintained
-in separate files (so that the code can be validated).
-These files are included as appropriate.
-See some existing modules for examples.
+via an ``inlineav`` directive.
+The actual CSS code and JS code will be maintained in separate files
+and included using ``odsalink`` and ``odsascript`` directives,
+respectively.
