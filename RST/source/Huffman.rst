@@ -3,11 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Huffman Coding Trees Tutorial 
+.. avmetadata:: 
    :author: Cliff Shaffer
    :prerequisites: BinTreeImp, SpaceBounds
    :topic: BinTreeImp
-   :short_name: Huffman
    
 .. _Huffman:
 

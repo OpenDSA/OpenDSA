@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Comparisons
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
-   :short_name: SortCompare
-   :exercises: SortCompareSumm
 
 .. _SortCompare:
 

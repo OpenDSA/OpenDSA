@@ -3,11 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: External Sorting
+.. avmetadata:: 
    :author: Cliff Shaffer
    :prerequisites: FileProc
    :topic: External Sorting
-   :short_name: ExternalSort
 
 .. _ExternalSort:
 

@@ -3,11 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Edit Distance
+.. avmetadata:: 
    :author: Erich Brungraber
    :prerequisites: Knapsack
    :topic: Algorithms
-   :short_name: EditDistance
 
 .. _EditDistance:
 

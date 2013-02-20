@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Selection Sort
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting, Bubble Sort
    :topic: Sorting
-   :short_name: SelectionSort
-   :exercises: SelsortCON1, SelsortCON2, SelsortPRO, SelsortSumm
 
 .. _SelectionSort:
 

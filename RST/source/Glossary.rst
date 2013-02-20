@@ -3,11 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Glossary
+.. avmetadata::
    :author: OpenDSA Contributors
    :prerequisites: 
    :topic:
-   :short_name: Glossary
 
 .. include:: JSAVheader.rinc   
 

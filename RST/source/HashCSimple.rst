@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Collision Resolution
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Hashing
-   :short_name: HashCSimple
-   :exercises: linProbeCON1, linProbeCON2, HashingLinearProbePRO
 
 .. _HashFunc:
 

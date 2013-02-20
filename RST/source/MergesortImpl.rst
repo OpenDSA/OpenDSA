@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: MergesortImpl
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting, Mergesort
    :topic: Sorting
-   :short_name: MergesortImpl
-   :exercises: mergeImplCON1, mergeImplCON2, MergeImplSumm
 
 .. _MergesortImpl:
 

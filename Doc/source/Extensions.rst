@@ -84,20 +84,16 @@ avmetadata
 ----------
 NAME                   
     avmetadata - metadata information associated with this
-    module. It is used to generate a knowledge map and
-    by the module selection interface.
+    module. 
 
 SYNOPSIS::             
         
-    .. avmetadata:: module_name
+    .. avmetadata::
        :author:
        :prerequisites:
        :topic:
-       :short_name:                    	
 
 DESCRIPTION
-    ``.. avmetadata:: module_name``
-      The parameter is the module's name.
     ``:author:``
       Module author's name.
     ``:prerequisites:``
@@ -105,9 +101,6 @@ DESCRIPTION
       These represent the prerequisites for this module.
     ``:topic:``
       The topic covered by this module.
-    ``:short_name:``
-      The name that will be displayed in the knowledge map.
-      Spaces and special characters are allowed here.
 
 codeinclude
 -----------

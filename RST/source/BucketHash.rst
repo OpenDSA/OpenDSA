@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Bucket Hashing
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Hashing
-   :short_name: BucketHash
-   :exercises: buckethashCON1, HashingBucketPRO, buckethashCON2, HashingBucket2PRO
 
 .. _OpenHash:
 

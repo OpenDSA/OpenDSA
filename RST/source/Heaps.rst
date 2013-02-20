@@ -3,11 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Heaps
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Heaps
-   :short_name: Heaps
 
 .. _SetDef:
 

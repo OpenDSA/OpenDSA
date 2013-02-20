@@ -37,16 +37,16 @@ def html_page_context(app, pagename, templatename, context, doctree):
 
 
 class avmetadata(Directive):
-    required_arguments = 1
-    optional_arguments = 4 
+    required_arguments = 0 
+    optional_arguments = 3 
     final_argument_whitespace = True
     has_content = True
     option_spec = {'author':directives.unchanged,
-                   'title': directives.unchanged,
+                   #'title': directives.unchanged,
                    'prerequisites': directives.unchanged,
                    'topic': directives.unchanged,
-                   'short_name': directives.unchanged,
-                   'exercises': directives.unchanged,    
+                   #'short_name': directives.unchanged,
+                   #'exercises': directives.unchanged,    
                    }
 
     def run(self):

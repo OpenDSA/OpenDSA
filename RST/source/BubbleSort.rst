@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Bubble Sort
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
-   :short_name: BubbleSort
-   :exercises: BubsortCON1, BubsortCON2, BubsortPRO, BubsortSumm
 
 .. _BubbleSort:
 

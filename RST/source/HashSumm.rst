@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Hashing Chapter Summary
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: HashIntro
    :topic: Hashing
-   :short_name: HashSumm
-   :exercises: HashChapterSumm
 
 .. _HashSumm:
 
