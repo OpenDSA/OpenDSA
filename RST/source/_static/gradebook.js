@@ -6,7 +6,7 @@
    * How fast to show and hide subsections
    */
   var speed = 300;
-  
+
   var chapters = {};
 
   var Gradebook = {};
@@ -42,7 +42,14 @@
           modTotal += exerPoints;
 
           // Create a row in the table for the exercise
-          html += '<tr id="' + exercise + '"><td><a href="' + modName + '.html">' + modExercises[exercise].long_name + '</a></td>';
+          html += '<tr id="' + exercise + '"';
+
+          // If the exercise is worth zero points, append a special class to the row
+          if (exerPoints === 0) {
+            html += ' class="zeroPointExer"';
+          }
+
+          html += '><td><a href="' + modName + '.html">' + modExercises[exercise].long_name + '</a></td>';
 
           if (getProficiencyStatus(exercise) === Status.STORED) {
             // User is proficient with this exercise
@@ -143,6 +150,10 @@
     html += '<tr class="header"><th>Total</th><th class="score">' + data.userTotal.toFixed(2) + ' / ' + data.total.toFixed(2) + '</th></tr></table>';
     $('#gradeData').append(html);
 
+    // Hide all zero point exercises by default
+    $('.zeroPointExer').hide();
+    $('#showZeroPointExer').removeAttr('checked');
+
     // Collapse all the containers
     $('.section-header').addClass('expandImage');
 
@@ -233,12 +244,20 @@
         error: function (data) {
           data = getJSON(data);
 
-          // Remove the loading message and display an error message to the user
+          // Hide the loading message
           $('#loadingMessage').hide();
-          $('#gradeData').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
 
-          console.debug("Error getting user's points");
-          console.debug(JSON.stringify(data));
+          if (data.status === 404) {
+            // 404 is returned when a new user views the gradebook before completing any exercises
+            // because the database cannot find any data relating to that user, generate the default gradebook
+            generateGradeTable();
+          } else {
+            // Display an error message to the user
+            $('#gradeData').replaceWith('<div class="error">The server did not respond.  Please try again later.</div>');
+
+            console.debug("Error getting user's points");
+            console.debug(JSON.stringify(data));
+          }
         }
       });
     } else {
@@ -271,7 +290,7 @@
     // Get the config file and use it to initialize chapters
     $.getJSON(location.href.replace(moduleName + '.html', '_static/' + bookName + '.json'), function (confData) {
       chapters = confData.chapters;
-    
+
       Gradebook.load();
     });
 
@@ -289,6 +308,16 @@
     // Attach the collapseAll function to the 'Collapse All' link
     $('#collapse').click(function () {
       Gradebook.collapseAll();
+      return false;
+    });
+
+    // Attach a handler to the "Show 0-point execises" checkbox which will show or hide exercises that are worth 0-points
+    $('#showZeroPointExer').change(function () {
+      if (this.checked) {
+        $('.zeroPointExer').show(speed);
+      } else {
+        $('.zeroPointExer').hide(speed);
+      }
       return false;
     });
   });

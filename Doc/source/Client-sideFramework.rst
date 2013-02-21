@@ -27,8 +27,28 @@ Exercises
 Score data
 ==========
 
-* When a user completes an exercise, a score object is generated and saved to a buffer in local storage (assigned to a specific user).  The OpenDSA framework will attempt to send the score to the server immediately.  If it is successful, the buffered score data is removed, otherwise it remains in local storage and will be resent at a later time or when the user clicks the 'Resubmit' button associated with an exercise.
+* When a user completes an exercise, a score object is generated and saved to a buffer in local storage (assigned to a specific book and user).  The OpenDSA framework will attempt to send the score to the server immediately.  If it is successful, the buffered score data is removed, otherwise it remains in local storage and will be resent at a later time or when the user clicks the 'Resubmit' button associated with an exercise.
 * If no user is logged in, score data will still be buffered, but not sent to the server.  When a user logs in, all anonymous score data is awarded to that user.
+
+Example of localStorage.score_data::
+
+  {
+    "guest": {
+      "CS3114": [
+        {
+          "exercise":"SelsortCON1",
+          "submit_time":1360269557116,
+          "module":"SelectionSort",
+          "score":1,
+          "total_time":2559,
+          "uiid":1360269543543
+        }
+      ]
+    },
+    "breakid":{
+      "CS3114": []
+    }
+  }
 
 Proficiency data
 ================
@@ -47,6 +67,58 @@ Proficiency data
     
   * When a logged in user obtains proficiency, the status is set to SUBMITTED and the appropriate proficiency indicator is displayed with a message stating that the grade is being saved.  The score is sent to the server and the proficiency display(s) is updated to reflect the response obtained from the server.  If the server confirms that the user's proficiency was successfully stored, the status changes to STORED and the saving message disappears.  If an error occurs the status is set to ERROR and the saving message is replaced with an error message, a warning indicator (to draw the user's attention to the exercise) and a 'Resubmit' link which allows the user to resend their score data without recompleting the exercise.
   * Caching a logged in user's proficiency allows us to reduce network traffic caused by the client checking whether or not a user is proficient
+
+Example of localStorage.proficiency_data::
+
+  {
+    "guest": {
+      "CS3114": {
+        "shellsortCON1":"STORED",
+        "shellsortCON2": "STORED"
+      }
+    },
+    "breakid": {
+      "OpenDSA": {
+        "shellsortCON1":"STORED",
+        "shellsortCON2": "SUBMITTED"
+      }
+    }
+  }
+
+
+Interaction / Event data
+========================
+
+* We collect data about how users interact with OpenDSA for two reasons
+  
+  1. To continually improve OpenDSA
+  2. For research purposes
+
+* As a user interacts with OpenDSA, a variety of events are generated.  If there is a backend server enabled, we record information about these events, buffering it in local storage and sending it to the server when a flush is triggered.  If a user is logged in, we send the event data with their session key, effectively tying interaction data to a specific user, but if no user is logged in the data is sent anonymously (using 'phantom-key' as the session key).  This ensures that we are able to collect as much interaction data as possible.
+* localStorage.event_data stores an object where the book name is a key and the value is a list of event object
+* Each event object contains:
+  
+  * av - the name of the exercise with which the event is associated ("" if it is a module-level event)
+  * desc - a human readable description or stringified JSON object containing additional event-specific information
+  * module - the module the event is associated with
+  * tstamp - a timestamp when the event occurred
+  * type - the type of event
+  * uiid - the unique instance identifier which allows an event to be tied to a specific instance of an exercise or a specific load of a module page
+
+Example of localStorage.event_data::
+
+  {
+    "CS3114": [
+      {
+        "av":"SelsortCON1",
+        "desc":"1 / 14",
+        "module":"SelectionSort",
+        "tstamp":1360269557116,
+        "type":"jsav-forward",
+        "uiid":1360269543543
+      }
+    ]
+  }
 
 ----------------------------
 Implementation and Operation

@@ -389,6 +389,14 @@ sourcecode_path = '%(code_dir)s'
 '''
 
 
+def minify(path):
+  print 'Minifying ' + os.path.basename(path)
+  
+  min_command = 'java -jar "' + odsa_dir + 'JSAV/tools/yuicompressor-2.4.6.jar" --preserve-semi -o "' + path + '" "' + path + '"'
+  
+  with open(os.devnull, "w") as fnull:
+    status = subprocess.check_call(min_command, stdout=fnull)
+  fnull.close()
 
 def process_path(path, abs_prefix):
   # If the path is relative, make it absolute
@@ -704,8 +712,6 @@ with open(options['odsa_dir'] + 'lib/ODSA.js','w') as odsa:
   odsa.writelines(odsa_data)
 odsa.close()
 
-# TODO: If static files are copied, run minifier on ODSA.JS
-
 
 # Replace 'exerciseOrigin' and 'allowAnonCredit' in opendsaMOD.js
 with open(odsa_dir + 'RST/source/_static/opendsaMOD.js','r') as odsaMOD:
@@ -731,7 +737,6 @@ with open(src_dir + '_static/opendsaMOD.js','w') as odsaMOD:
         break
   odsaMOD.writelines(odsaMOD_data)
 odsaMOD.close()
-
 
 # Replace the backend server address and 'moduleOrigin' in khan-exercise.js
 with open(odsa_dir + 'ODSAkhan-exercises/khan-exercise.js','r') as khan_exer:
@@ -778,6 +783,22 @@ with open(output_dir + 'index.html','w') as indexFile:
   indexFile.writelines(indexHTML %options)
 indexFile.close()
 
+# Default to minifying JS files, but allow the configuration file to override it
+if 'minify_js' not in conf_data or conf_data['minify_js']:
+  print '\n'
+  
+  # Run a minifier on JS and CSS files in _static because they are always copied
+  minify(src_dir + '_static/opendsaMOD.js')
+  minify(src_dir + '_static/opendsaMOD.css')
+  minify(src_dir + '_static/gradebook.js')
+  minify(src_dir + '_static/gradebook.css')
+
+  # If static files are copied, minify them too
+  if conf_data['copy_static_files']:
+    minify(output_dir + 'AV/opendsaAV.js')
+    minify(output_dir + 'AV/opendsaAV.css')
+    minify(output_dir + 'lib/ODSA.js')
+    minify(output_dir + 'ODSAkhan-exercises/khan-exercise.js')
 
 
 # Optionally run make on the output directory
@@ -791,6 +812,3 @@ if conf_data['build_ODSA']:
        print line.rstrip()
   finally:
     os.chdir(cwd)
-
-  # TODO: Run a minifier on opendsaMOD.js
-
