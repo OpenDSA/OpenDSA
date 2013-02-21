@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Insertion Sort
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting
    :topic: Sorting
-   :short_name: InsertionSort
-   :exercises: InssortCON1, InssortCON2, InssortCON3, InssortPRO, InssortSumm
 
 .. _InsertionSort:
 
@@ -16,7 +14,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Sorting/quadraticsortCON.css
+.. odsalink:: AV/slideCON.css
 
 Insertion Sort
 ==============
@@ -69,6 +67,7 @@ records to its left in the array must have smaller keys.
 The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/insertionsortAV.html ss
+   :showbutton: show
 
 Now try for yourself to see if you understand how Insertion Sort works.
 

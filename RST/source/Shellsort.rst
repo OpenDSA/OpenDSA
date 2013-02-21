@@ -3,17 +3,16 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Shellsort
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
-   :short_name: Shellsort
-   :exercises: shellsortCON1, shellsortCON2, shellsortCON4, shellsortCON5, shellsortCON7, shellsortCON9, ShellsortSublist, ShellsortSeries, ShellsortProficiency, ShellsortPerformance, ShellsortSumm
 
 .. _Shellsort:
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Sorting/shellsortCON.css
 
 .. index:: ! Shellsort
@@ -174,6 +173,7 @@ Use this visualization to make sure that you understand how Shellsort
 works.
 
 .. avembed:: AV/Sorting/shellsortAV.html ss
+   :showbutton: show
 
 Next, let's review what makes for a legal increment series.
 

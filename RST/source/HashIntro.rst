@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Hashing Introduction
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Hashing
-   :short_name: HashIntro
-   :exercises: hashIntroCON1
 
 .. _HashIntro:
 
@@ -16,7 +14,7 @@
 
 .. index:: ! hashing
 
-.. odsalink:: AV/Hashing/hashCON.css
+.. odsalink:: AV/slideCON.css
 
 Introduction
 ============

@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Bubble Sort
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
-   :short_name: BubbleSort
-   :exercises: BubsortCON1, BubsortCON2, BubsortPRO, BubsortSumm
 
 .. _BubbleSort:
 
@@ -16,7 +14,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Sorting/quadraticsortCON.css
+.. odsalink:: AV/slideCON.css
 
 Bubble Sort
 ===========
@@ -71,6 +69,7 @@ Bubble Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/bubblesortAV.html ss
+   :showbutton: show
 
 Now try for yourself to see if you understand how Bubble Sort works.
 

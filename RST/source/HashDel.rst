@@ -3,18 +3,16 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Deletion
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Hashing
-   :short_name: HashDel
-   :exercises: hashdelCON1, HashingDeleteProficiency, HashDelSumm
 
 .. _HashFunc:
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Hashing/hashCON.css
+.. odsalink:: AV/slideCON.css
 
 Deletion
 ========

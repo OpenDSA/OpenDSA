@@ -3,17 +3,16 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Open Hashsing
+.. avmetadata:: 
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Hashing
-   :short_name: OpenHash
-   :exercises: OpenHashPRO
 
 .. _OpenHash:
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Hashing/openhashCON.css
 
 Open Hashing
@@ -44,7 +43,7 @@ The following figure illustrates a hash table where each
 slot points to a linked list to hold the records associated with that slot.
 The hash function used is the simple mod function.
 
-.. inlineav:: openhashCON1 ss
+.. inlineav:: openhashCON1 dgm
 
 Records within a slot's list can be ordered in several ways:
 by insertion order, by key value order, or by frequency-of-access

@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Sorting Introduction
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Sorting
-   :short_name: SortIntro
-   :exercises: SortIntroSumm
 
 .. _SortIntro:
 

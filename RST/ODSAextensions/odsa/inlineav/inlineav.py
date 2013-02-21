@@ -84,7 +84,7 @@ class inlineav(Directive):
           self.options['long_name'] = self.options['exer_name']
         
         if 'output' in self.options and self.options['output'] == "show":
-          self.options['output_code'] = '<p class="jsavoutput jsavline" readonly="readonly"></p>'
+          self.options['output_code'] = '<p class="jsavoutput jsavline"></p>'
         else:
           self.options['output_code'] = ''
         

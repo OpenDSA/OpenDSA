@@ -60,7 +60,6 @@ index_header = '''.. This file is part of the OpenDSA eTextbook project. See
    :author: OpenDSA Contributors
    :prerequisites:
    :topic: Data Structures
-   :short_name: index
 
 .. _index:
 

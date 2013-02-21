@@ -153,6 +153,7 @@ class modPreReq:
       self.prereqNum = len(self.prereq)
 
 
+#Creates dump of all modules into a JSON file
 def generateJSON(modRoster, modDest):
 
     jsonString='['
@@ -162,21 +163,20 @@ def generateJSON(modRoster, modDest):
        for k in modRoster :
           jsonString = jsonString +'{"pk": %s,"model": "opendsa.module",'%l
           jsonString = jsonString +'"fields": {'    # "summative": %s,'%k.summative
-          jsonString = jsonString +'"h_position": %s,'%k.h_position
+          #jsonString = jsonString +'"h_position": %s,'%k.h_position
           jsonString = jsonString +'"name": "'+k.description+'",'
           jsonString = jsonString +'"last_modified": "'+k.last_modified+'",'
           jsonString = jsonString +'"author": "'+k.author+'",'
           pq= ('-'.join(map(str,k.prereq)), '')[k.prereqNum==0]
           jsonString = jsonString +'"prerequisites": "'+ pq+'",'
-          pe = ','.join(k.exercises)
-          jsonString = jsonString +'"exercise_list": "'+ pe+'",'
+          #pe = ','.join(k.exercises)
+          #jsonString = jsonString +'"exercise_list": "'+ pe+'",'
           jsonString = jsonString +'"covers": "'+",".join(k.covers)+'",'
           jsonString = jsonString +'"creation_date": "'+k.creation_date+'",'
-          #jsonString = jsonString +'"seconds_per_fast_problem": %s,'%k.seconds_per_fast_problem
-          #jsonString = jsonString +'"live": %s,'%k.live
           jsonString = jsonString +'"short_display_name": "'+k.name[:-4]+'",'
-          jsonString = jsonString +'"v_position": %s,'%k.v_position
-          jsonString = jsonString +'"raw_html": "'+k.raw_html+'"}},'
+          #jsonString = jsonString +'"v_position": %s,'%k.v_position
+          #jsonString = jsonString +'"raw_html": "'+k.raw_html+
+          '"}},'
           l=l+1
        jsonString = jsonString[:-1] +']'
        gfile.writelines(jsonString)
@@ -184,9 +184,11 @@ def generateJSON(modRoster, modDest):
     except IOError:
        print 'ERROR: When saving JSON file'
 
+
+#Creates dump of all modules into a CSV file
 def generateCSV(modRoster, modDest):
 
-    csvString='last_sanitized,h_position,name,v_position,author,prerequisites,summative,covers,seconds_per_fast_problem,live,short_display_name,key\n'
+    csvString='h_position,name,v_position,author,prerequisites,summative,covers,seconds_per_fast_problem,live,short_display_name,key\n'
     l=2001
     try:
        gfile = open(modDest+'/modules.csv','w')

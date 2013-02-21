@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Selection Sort
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting, Bubble Sort
    :topic: Sorting
-   :short_name: SelectionSort
-   :exercises: SelsortCON1, SelsortCON2, SelsortPRO, SelsortSumm
 
 .. _SelectionSort:
 
@@ -16,7 +14,7 @@
 
 .. include:: JSAVheader.rinc
 
-.. odsalink:: AV/Sorting/quadraticsortCON.css
+.. odsalink:: AV/slideCON.css
 
 Selection Sort
 ==============
@@ -64,6 +62,7 @@ Selection Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/selectionsortAV.html ss
+   :showbutton: show
 
 Now try for yourself to see if you understand how Selection Sort works.
 

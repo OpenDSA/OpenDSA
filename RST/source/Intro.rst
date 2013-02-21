@@ -3,11 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: OpenDSA Preface
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
    :topic: OpenDSA
-   :short_name: Intro
 
 .. include:: JSAVheader.rinc
 

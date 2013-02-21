@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Exchange Sorting
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting, InsertionSort, BubbleSort, SelectionSort
    :topic: Sorting
-   :short_name: ExchangeSort
-   :exercises: FindInversionsPRO, ExchangeSumm
 
 .. _ExchangeSort:
 

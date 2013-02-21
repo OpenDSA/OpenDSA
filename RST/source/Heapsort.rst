@@ -3,18 +3,17 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Heapsort
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting
    :topic: Sorting
-   :short_name: Heapsort
-   :exercises: heapsortCON, HeapsortPRO, heapsortProficiency, HeapsortSumm
 
 .. _Heapsort:
 
 .. include:: JSAVheader.rinc
 
 .. odsascript:: JSAV/extras/binaryheap.js
+.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Sorting/heapsortCON.css
 
 .. index:: ! Heapsort

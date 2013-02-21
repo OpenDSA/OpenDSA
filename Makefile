@@ -33,8 +33,14 @@ jshint:
 	-@jshint RST/source/_static/opendsaMOD.js
 	-@jshint RST/source/_static/gradebook.js
 
-CS3114:
-	python $(CONFIG_SCRIPT) config/CS3114.json
+CS223:
+	python $(CONFIG_SCRIPT) config/CS223.json
+
+CS3114a:
+	python $(CONFIG_SCRIPT) config/CS3114a.json
+
+CS3114b:
+	python $(CONFIG_SCRIPT) config/CS3114b.json
 
 OpenDSA:
 	python $(CONFIG_SCRIPT) config/OpenDSA.json
@@ -42,4 +48,4 @@ OpenDSA:
 T1061220:
 	python $(CONFIG_SCRIPT) config/T1061220.json
 
-allBooks: CS3114 OpenDSA T1061220
+allBooks: CS223 CS3114a CS3114b OpenDSA T1061220

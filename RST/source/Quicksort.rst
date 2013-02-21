@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Quicksort
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting
    :topic: Sorting
-   :short_name: Quicksort
-   :exercises: QuicksortPivotPRO, QuicksortCON1, QuicksortPartitPRO, quicksortProficiency, QuicksortSumm
 
 .. _Quicksort:
 
@@ -17,6 +15,7 @@
 
 .. index:: ! Quicksort
 
+.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Sorting/quicksortCON.css
 
 Quicksort
@@ -177,6 +176,7 @@ In reality, there is only a single array involved (as you will see in
 the proficiency exercise that follows the visualization).
 
 .. avembed:: AV/Sorting/quicksortAV.html ss
+   :showbutton: show
 
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.

@@ -1,0 +1,357 @@
+{
+  "config_version": 0.1,
+  "title": "CS223 Spring 2013",
+  "output_dir": "Books/CS223",
+  "code_dir": "SourceCode/Processing",
+  "module_origin": "http://algoviz.org",
+  "exercise_origin": "http://algoviz.org",
+  "backend_address": "https://opendsa.cc.vt.edu/",
+  "copy_static_files": true,
+  "build_JSAV": false,
+  "build_ODSA": true,
+  "allow_anonymous_credit": true,
+  "chapters": {
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "exercises": {}
+      }
+    },
+    "Hashing": {
+      "HashIntro": {
+        "long_name": "Introduction",
+        "exercises": {
+          "hashIntroCON1": {
+            "long_name": "Hashing Intro Slideshow",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          }
+        }
+      },
+      "HashFunc": {
+        "long_name": "Hash Function Principles",
+        "exercises": {
+          "Birthday": {
+            "long_name": "Birthday Problem Calculator",
+            "required": true,
+            "points": 0.25,
+            "threshold": 1.0,
+            "type": "pe"
+          },
+          "HashPrinciplesSumm": {
+            "long_name": "Hashing Principles Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5,
+            "type": "ka"
+          }
+        }
+      },
+      "HashFuncExamp": {
+        "long_name": "Sample Hash Functions",
+        "exercises": {
+          "hashFuncExCON1": {
+            "long_name": "Hash Function Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "hashFuncExCON2": {
+            "long_name": "Hash Function Slideshow 2",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "MidSquare": {
+            "long_name": "Mid-Square Calculator",
+            "required": true,
+            "points": 0.25,
+            "threshold": 1.0,
+            "type": "pe"
+          },
+          "StringSimple": {
+            "long_name": "Simple String Folding Calculator",
+            "required": true,
+            "points": 0.25,
+            "threshold": 1.0,
+            "type": "pe"
+          },
+          "StringSfold": {
+            "long_name": "Improved String Folding Calculator",
+            "required": true,
+            "points": 0.25,
+            "threshold": 1.0,
+            "type": "pe"
+          },
+          "HashFuncPROSumm": {
+            "long_name": "Hash Function Proficiency Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5,
+            "type": "ka"
+          },
+          "HashFuncSumm": {
+            "long_name": "Hash Function Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5,
+            "type": "ka"
+          }
+        }
+      },
+      "OpenHash": {
+        "long_name": "Open Hashing",
+        "exercises": {
+          "openhashCON1": {
+            "long_name": "Open Hashing Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "OpenHashPRO": {
+            "long_name": "Open Hashing Proficiency",
+            "required": true,
+            "points": 1.25,
+            "threshold": 5,
+            "type": "ka"
+          }
+        }
+      },
+      "BucketHash": {
+        "long_name": "Bucket Hashing",
+        "exercises": {
+          "buckethashCON1": {
+            "long_name": "Bucket Hashing Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "buckethashCON2": {
+            "long_name": "Bucket Hashing Slideshow 2",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "HashingBucketPRO": {
+            "long_name": "Bucket Hashing Proficiency",
+            "required": true,
+            "points": 1.25,
+            "threshold": 5,
+            "type": "ka"
+          },
+          "HashingBucket2PRO": {
+            "long_name": "Alternate Bucket Hashing Proficiency",
+            "required": true,
+            "points": 1.25,
+            "threshold": 5,
+            "type": "ka"
+          }
+        }
+      },
+      "HashCSimple": {
+        "long_name": "Collision Resolution",
+        "exercises": {
+          "linProbeCON1": {
+            "long_name": "Linear Probing Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "linProbeCON2": {
+            "long_name": "Linear Probing Slideshow 2",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "HashingLinearProbePRO": {
+            "long_name": "Linear Probing Proficiency",
+            "required": true,
+            "points": 1.25,
+            "threshold": 5,
+            "type": "ka"
+          }
+        }
+      },
+      "HashCImproved": {
+        "long_name": "Improved Collision Resolution",
+        "exercises": {
+          "collisionCON1": {
+            "long_name": "Linear Probing By Steps Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "collisionCON2": {
+            "long_name": "Linear Probing By Steps Slideshow 2",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "HashingLinearStepProbePRO": {
+            "long_name": "Linear Probing By Steps Proficiency",
+            "required": true,
+            "points": 1.25,
+            "threshold": 5,
+            "type": "ka"
+          },
+          "collisionCON3": {
+            "long_name": "Pseudo-Random Probing Slideshow",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "HashingPseudoRandomProbePRO": {
+            "long_name": "Pseudo-Random Probing Proficiency",
+            "required": true,
+            "points": 1.25,
+            "threshold": 5,
+            "type": "ka"
+          },
+          "collisionCON4": {
+            "long_name": "Quadratic Probing Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "collisionCON5": {
+            "long_name": "Quadratic Probing Slideshow 2",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "HashingQuadraticProbePRO": {
+            "long_name": "Quadratic Probing Proficiency",
+            "required": true,
+            "points": 1.25,
+            "threshold": 5,
+            "type": "ka"
+          },
+          "collisionCON6": {
+            "long_name": "Double Hashing Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "collisionCON7": {
+            "long_name": "Double Hashing Slideshow 2",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "collisionCON8": {
+            "long_name": "Double Hashing Slideshow 3",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "HashingDoubleProbePRO": {
+            "long_name": "Double Hashing Proficiency",
+            "required": true,
+            "points": 1.25,
+            "threshold": 5,
+            "type": "ka"
+          },
+          "hashAV": {
+            "long_name": "Hashing Exercise",
+            "required": false,
+            "points": 0,
+            "threshold": 1.0,
+            "type": "pe"
+          },
+          "HashCollisionSumm": {
+            "long_name": "Improved Collision Resolution Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5,
+            "type": "ka"
+          }
+        }
+      },
+      "HashAnal": {
+        "long_name": "Analysis of Closed Hashing",
+        "exercises": {
+          "HashAnalSumm": {
+            "long_name": "Analysis of Closed Hashing Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5,
+            "type": "ka"
+          }
+        }
+      },
+      "HashDel": {
+        "long_name": "Deletion",
+        "exercises": {
+          "hashdelCON1": {
+            "long_name": "Hash Deletion Slideshow",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0,
+            "type": "ss"
+          },
+          "HashingDeleteProficiency": {
+            "long_name": "Hash Deletion Proficiency",
+            "required": true,
+            "points": 1.25,
+            "threshold": 0.90,
+            "type": "pe"
+          },
+          "HashDelSumm": {
+            "long_name": "Hash Deletion Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5,
+            "type": "ka"
+          }
+        }
+      },
+      "HashSumm": {
+        "long_name": "Hashing Chapter Summary Exercises",
+        "exercises": {
+          "HashChapterSumm": {
+            "long_name": "Hashing Chapter Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5,
+            "type": "ka"
+          }
+        }
+      }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "exercises": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "exercises": {}
+      },
+      "Gradebook": {
+        "long_name": "Gradebook",
+        "exercises": {}
+      },
+      "Privacy": {
+        "long_name": "Privacy",
+        "exercises": {}
+      }
+    }
+  }
+}

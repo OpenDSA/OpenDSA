@@ -3,17 +3,16 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Mergesort
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: Sorting
    :topic: Sorting
-   :short_name: Mergesort
-   :exercises: mergesortCON1, MergesortPRO, mergesortProficiency, MergesortSumm
 
 .. _Mergesort:
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Sorting/mergeCON.css
 
 .. index:: ! Mergesort
@@ -46,6 +45,7 @@ Here is a pseudocode sketch of Mergesort::
 Here is a visualization that illustrates how Mergesort works.
 
 .. avembed:: AV/Sorting/mergesortAV.html ss
+   :showbutton: show
 
 The hardest step to understand about Mergesort is the merge function.
 The merge function starts by examining the first record of each

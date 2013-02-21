@@ -15,18 +15,18 @@
 
 {% macro login() %}  
 <a id="username-link" style="float:right;color:red;margin:10px 0 auto; display: none" class="username-link" href="Gradebook.html"></a>
-<a id="logon" style="float:right;color:red;margin:10px 10px auto"  name="#login-box" class="login-window" href="#">Login</a>    
+<a id="logon" style="float:right;color:red;margin:10px 10px auto"   class="login-window" href="#">Login</a>    
 <div id="login-box" class="login-popup">
   <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
-  <form method="post" class="signin" name="signin" action="#">
+  <form method="post" class="signin" action="#">
     <fieldset class="textbox">
       <label class="username">
         <span>Username or email</span>
-        <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+        <input id="username"  value="" type="text" autocomplete="on" placeholder="Username">
       </label>
       <label class="password">
         <span>Password</span>
-        <input id="password" name="password" value="" type="password" placeholder="Password">
+        <input id="password" value="" type="password" placeholder="Password">
       </label>
       <button id="login-submit-button" class="submit-button" type="button">Sign in</button>
       <p>
@@ -41,7 +41,7 @@
 {% endmacro %}
 
 {% macro registration() %}
-<a id="registration" style="float:right;color:red;margin:10px 10px auto"  name="#registration-box" class="registration-window" href="#">Register</a>
+<a id="registration" style="float:right;color:red;margin:10px 10px auto"   class="registration-window" href="#">Register</a>
 <div id="registration-box" class="registration-popup">
         <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
 </div>
@@ -64,6 +64,23 @@
 {#        <a  href="knowledgemap.html">|  Knowledge Map</a>#}    
 {% endmacro %}
 
+
+{% macro btm_nav() %}
+        {%- block haikurel3 %}
+        {%- endblock %}
+        {%- if prev %}
+        «&#160;&#160;<a id="prevm" href="{{ prev.link|e }}">{{ prev.title }}</a>
+        &#160;&#160;::&#160;&#160;
+        {%- endif %}
+        <a  class="uplink" href="{{ pathto(master_doc) }}">{{ _('Contents') }}</a>
+        {%- if next %}
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod1" href="{{ next.link|e }}">{{ next.title }}</a>&#160;&#160;»
+        {%- endif %}
+        {%- block haikurel4 %}
+        {%- endblock %}
+{#        <a  href="knowledgemap.html">|  Knowledge Map</a>#}
+{% endmacro %}
 
 {% block content %}
 
@@ -111,10 +128,10 @@
           {%- block sidebarsearch %}
           <h3 style="margin-top:0em;">{{ _('Search') }} the book</h3>
           <form class="search" action="{{ pathto('search') }}" method="get">
-            <input type="text" name="q" />
+            <input type="text" />
             <input type="submit" value="{{ _('Go') }}" />
-            <input type="hidden" name="check_keywords" value="yes" />
-            <input type="hidden" name="area" value="default" />
+            <input type="hidden" value="yes" />
+            <input type="hidden" value="default" />
           </form>
           <p class="searchtip" style="font-size: 60%">
             {{ _('Enter search terms or a module, class or function name.') }}
@@ -134,7 +151,7 @@
       </div>
       <div class="bottomnav">
       <p><span class="email_div" style="display:inline;"></span>&#160;&#160;         
-      {{ nav() }}</p>
+      {{ btm_nav() }}</p>
       </div>
       <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/> 
 {% endblock %}

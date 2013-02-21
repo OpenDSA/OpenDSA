@@ -3,17 +3,16 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Improved Collision Resolution
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Hashing
-   :short_name: HashCImproved
-   :exercises: collisionCON1, collisionCON2, HashingLinearStepProbePRO, collisionCON3, HashingPseudoRandomProbePRO, collisionCON4, collisionCON5, HashingQuadraticProbePRO, collisionCON6, collisionCON7, collisionCON8, HashingDoubleProbePRO, HashCollisionSumm
 
 .. _HashFunc:
 
 .. include:: JSAVheader.rinc
 
+.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Hashing/collisionCON.css
 
 Improved Collision Resolution
@@ -252,6 +251,7 @@ The following visualization lets you test out different combinations
 of hash function and collision resolution, on your own input data.
 
 .. avembed:: AV/Hashing/hashAV.html pe
+   :showbutton: show
 
 Finally, here are some practice questions.
 

@@ -3,12 +3,10 @@
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: Gradebook
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites: 
    :topic: Gradebook
-   :short_name: Gradebook
-   :exercises: 
 
 .. _Gradebook:
 

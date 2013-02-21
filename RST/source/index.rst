@@ -8,11 +8,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. avmetadata:: OpenDSA Sample eTextbook
+.. avmetadata::
    :author: OpenDSA Contributors
    :prerequisites:
    :topic: Data Structures
-   :short_name: index
 
 .. _index:
 
