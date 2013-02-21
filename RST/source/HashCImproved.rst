@@ -251,6 +251,7 @@ The following visualization lets you test out different combinations
 of hash function and collision resolution, on your own input data.
 
 .. avembed:: AV/Hashing/hashAV.html pe
+   :showbutton: show
 
 Finally, here are some practice questions.
 

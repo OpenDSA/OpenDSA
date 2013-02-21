@@ -69,6 +69,7 @@ Bubble Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/bubblesortAV.html ss
+   :showbutton: show
 
 Now try for yourself to see if you understand how Bubble Sort works.
 

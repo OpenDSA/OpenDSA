@@ -1,5 +1,5 @@
 .jsavcontainer {
-  width: 660px;
+  width: 760px;
   background-color: #eed;
   margin: 0 auto;
   border: 0;
@@ -10,4 +10,9 @@
 .jsavoutput.jsavline{
   margin-top: -5px;
   height: 55px;
+}
+
+.ssAV {
+  font-size: 16px;
+  font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
 }

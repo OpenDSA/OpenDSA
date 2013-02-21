@@ -27,7 +27,7 @@ of sixteen slots::
      return x % 16;
    }
 
-Note that "%" is the symbol for the mod function.
+Here "%" is the symbol for the mod function.
 
 .. inlineav:: hashFuncExCON1 ss
    :output: show
@@ -115,7 +115,7 @@ Thus, each table slot is equally likely (roughly) to get a key value.
 .. _HashNormal:
 
 .. figure:: Images/HashNormal.png
-   :width: 900
+   :width: 800
    :align: center
    :figwidth: 90%
    :alt: Binning vs. Mod Function
@@ -171,7 +171,7 @@ Hash Functions for Strings
 --------------------------
 
 Now we will examine some hash functions suitable for storing strings of characters.
-We start with a simple summation function.::
+We start with a simple summation function::
 
    int sascii(String x, int M) {
      char ch[];
@@ -221,7 +221,7 @@ Now you can try it out with this calculator.
 .. avembed:: AV/Hashing/StringSimple.html pe
    :showbutton: show
 
-Here is a much better hash function for strings.::
+Here is a much better hash function for strings::
 
    // Use folding on a string, summed 4 bytes at a time
    long sfold(String s, int M) {

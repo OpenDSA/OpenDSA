@@ -173,6 +173,7 @@ Use this visualization to make sure that you understand how Shellsort
 works.
 
 .. avembed:: AV/Sorting/shellsortAV.html ss
+   :showbutton: show
 
 Next, let's review what makes for a legal increment series.
 

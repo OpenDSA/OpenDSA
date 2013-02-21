@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Heaps
 
-.. _SetDef:
+.. _Heaps:
 
 .. include:: JSAVheader.rinc
 

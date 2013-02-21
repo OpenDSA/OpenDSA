@@ -1,7 +1,7 @@
 {
   "config_version": 0.1,
-  "title": "Sorting and Hashing: CS3114",
-  "output_dir": "Books/CS3114",
+  "title": "CS3114 Spring 2013 (Barnette)",
+  "output_dir": "Books/CS3114b",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
   "exercise_origin": "http://algoviz.org",
@@ -56,8 +56,8 @@
           },
           "insertionsortAV": {
             "long_name": "Insertion Sort Visualization",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 0.2,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -101,8 +101,8 @@
           },
           "bubblesortAV": {
             "long_name": "Bubble Sort Visualization",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 0.2,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -141,8 +141,8 @@
           },
           "selectionsortAV": {
             "long_name": "Selection Sort Visualization",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 0.2,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -250,8 +250,8 @@
           },
           "shellsortAV": {
             "long_name": "Shellsort Visualization",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 0.2,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -290,8 +290,8 @@
         "exercises": {
           "mergesortAV": {
             "long_name": "Mergesort Visualization",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 0.2,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -363,8 +363,8 @@
           },
           "quicksortAV": {
             "long_name": "Quicksort Visualization",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 0.2,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -462,8 +462,8 @@
         "exercises": {
           "radixLinkAV": {
             "long_name": "Radix Sort Linked Visualization",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 0.2,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -476,8 +476,8 @@
           },
           "radixArrayAV": {
             "long_name": "Radix Sort Array Visualization",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 0.2,
             "threshold": 1.0,
             "type": "ss"
           },
@@ -546,7 +546,7 @@
           "Birthday": {
             "long_name": "Birthday Problem Calculator",
             "required": true,
-            "points": 0.5,
+            "points": 0.25,
             "threshold": 1.0,
             "type": "pe"
           },
@@ -616,13 +616,7 @@
       "OpenHash": {
         "long_name": "Open Hashing",
         "exercises": {
-          "openhashCON1": {
-            "long_name": "Open Hashing Slideshow 1",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
-          },
+          "openhashCON1": {},
           "OpenHashPRO": {
             "long_name": "Open Hashing Proficiency",
             "required": true,
@@ -781,7 +775,7 @@
           "hashAV": {
             "long_name": "Hashing Exercise",
             "required": false,
-            "points": 0,
+            "points": 0.0,
             "threshold": 1.0,
             "type": "pe"
           },

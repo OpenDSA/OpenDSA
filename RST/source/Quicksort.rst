@@ -176,6 +176,7 @@ In reality, there is only a single array involved (as you will see in
 the proficiency exercise that follows the visualization).
 
 .. avembed:: AV/Sorting/quicksortAV.html ss
+   :showbutton: show
 
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.
