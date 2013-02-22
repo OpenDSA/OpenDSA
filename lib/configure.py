@@ -81,14 +81,12 @@ makefile_data = '''\
 # Makefile for Sphinx documentation
 #
 # You can set these variables from the command line.
-SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-PAPER         =
 BUILDDIR      = build
 HTMLDIR       = %(ebook_suffix)s
 
 # Internal variables.
-ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
+ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees source
 
 .PHONY: clean html
 
@@ -102,7 +100,7 @@ clean:
 cleanbuild: clean html
 
 preprocessor:
-	python preprocessor.py source/ $(HTMLDIR)
+	python "%(odsa_dir)sRST/preprocessor.py" source/ $(HTMLDIR)
 
 html: preprocessor
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(HTMLDIR)
@@ -390,7 +388,7 @@ sourcecode_path = '%(code_dir)s'
 def minify(path):
   print 'Minifying ' + os.path.basename(path)
   
-  min_command = 'java -jar "' + odsa_dir + 'JSAV/tools/yuicompressor-2.4.6.jar" --preserve-semi -o "' + path + '" "' + path + '"'
+  min_command = 'java -jar "' + odsa_dir + 'lib/yuicompressor-2.4.7.jar" --preserve-semi -o "' + path + '" "' + path + '"'
 
   with open(os.devnull, "w") as fnull:
     status = subprocess.check_call(min_command, shell=True, stdout=fnull)
@@ -591,7 +589,6 @@ print "Copying files to output directory\n"
 # Initialize output directory
 distutils.dir_util.mkpath(src_dir)
 distutils.dir_util.copy_tree(odsa_dir + 'RST/ODSAextensions/', output_dir + 'ODSAextensions/', update=1)
-distutils.file_util.copy_file(odsa_dir + 'RST/preprocessor.py', output_dir, update=1)
 distutils.file_util.copy_file(odsa_dir + 'RST/config.py', output_dir, update=1)
 
 
@@ -627,7 +624,11 @@ if conf_data['copy_static_files']:
   # Copy static files to output directory, creating directories as necessary
   distutils.dir_util.copy_tree(odsa_dir + 'AV/', output_dir + 'AV/', update=1)
   distutils.dir_util.copy_tree(odsa_dir + 'Exercises/', output_dir + 'Exercises/', update=1)
-  distutils.dir_util.copy_tree(odsa_dir + 'lib/', output_dir + 'lib/', update=1)
+  distutils.dir_util.copy_tree(odsa_dir + 'lib/Images/', output_dir + 'lib/Images/', update=1)
+  distutils.file_util.copy_file(odsa_dir + 'lib/jquery.min.js', output_dir + 'lib/')
+  distutils.file_util.copy_file(odsa_dir + 'lib/jquery-ui.min.js', output_dir + 'lib/')
+  # lib/ODSA.js will be written later, so it does not need to be copied
+  # lib/.htaccess will be copied from its original location by the Makefile
   distutils.dir_util.copy_tree(odsa_dir + 'ODSAkhan-exercises/', output_dir + 'ODSAkhan-exercises/', update=1)
   distutils.dir_util.copy_tree(code_dir, options['code_dir'], update=1)
   distutils.dir_util.copy_tree(odsa_dir + 'JSAV/lib/', output_dir + 'JSAV/lib/', update=1)
@@ -769,20 +770,20 @@ indexHTML = '''\
 <html>
 <head>
   <script>
-    window.location.replace(window.location.href.replace(/\/(index.html)?$/, '/%(ebook_suffix)s'));
+    window.location.replace(window.location.href.replace(/\/(index.html)?$/, '/%s'));
   </script>
 </head>
 </html>
 '''
 
 with open(output_dir + 'index.html','w') as indexFile:
-  options = {}
-  options['ebook_suffix'] = ebook_suffix
-  indexFile.writelines(indexHTML %options)
+  #options = {}
+  #options['ebook_suffix'] = ebook_suffix
+  indexFile.writelines(indexHTML % ebook_suffix)
 indexFile.close()
 
 # Default to minifying JS files, but allow the configuration file to override it
-if 'minify_js' not in conf_data or conf_data['minify_js']:
+if 'minify' not in conf_data or conf_data['minify']:
   print '\n'
   
   # Run a minifier on JS and CSS files in _static because they are always copied

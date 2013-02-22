@@ -1,5 +1,5 @@
 ﻿"use strict";
-/*global console: true, debugMode, serverEnabled, userLoggedIn, getUsername, getSessionKey, getJSON, serverURL, moduleName, getProficiencyStatus, bookName, Status, storeProficiencyStatus */
+/*global console: true, debugMode, serverEnabled, userLoggedIn, getUsername, getSessionKey, getJSON, serverURL, moduleName, getProficiencyStatus, bookName, Status, storeProficiencyStatus, logUserAction */
 
 (function ($) {
   /**
@@ -315,8 +315,10 @@
     $('#showZeroPointExer').change(function () {
       if (this.checked) {
         $('.zeroPointExer').show(speed);
+        logUserAction('odsa-gradebook-show-zpe', '');
       } else {
         $('.zeroPointExer').hide(speed);
+        logUserAction('odsa-gradebook-hide-zpe', '');
       }
       return false;
     });
