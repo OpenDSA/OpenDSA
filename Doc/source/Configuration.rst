@@ -120,7 +120,7 @@ Settings (all are required unless otherwise specified)
   * This value should be set to false for development
   * Instructors may wish to set this to true for production environments when configuration is run infrequently and JSAV is likely to have changed since the last time configuration occurred
 
-* **build_ODSA** - a boolean controlling whether OpenDSA should be built after the configuration process has occurred
+* **build_ODSA** - (optional) a boolean controlling whether OpenDSA should be built after the configuration process has occurred, OpenDSA will be built by default if this attribute is not present
 
   * This can generally be set to true because in most cases it makes sense to build the book immediately after it is configured
   * If necessary, this value can be set to false and OpenDSA can be built manually by running make from the output directory

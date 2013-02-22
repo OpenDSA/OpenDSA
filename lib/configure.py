@@ -800,7 +800,7 @@ if 'minify_js' not in conf_data or conf_data['minify_js']:
 
 
 # Optionally run make on the output directory
-if conf_data['build_ODSA']:
+if 'build_ODSA' not in conf_data or conf_data['build_ODSA']:
   print '\nBuilding textbook...'
 
   try:
