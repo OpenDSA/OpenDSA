@@ -384,7 +384,6 @@ ebook_path = '%(ebook_dir)s'
 #path (from the RST home) to the sourcecode directory that I want to use
 sourcecode_path = '%(code_dir)s'
 
-
 '''
 
 
@@ -392,9 +391,9 @@ def minify(path):
   print 'Minifying ' + os.path.basename(path)
   
   min_command = 'java -jar "' + odsa_dir + 'JSAV/tools/yuicompressor-2.4.6.jar" --preserve-semi -o "' + path + '" "' + path + '"'
-  
+
   with open(os.devnull, "w") as fnull:
-    status = subprocess.check_call(min_command, stdout=fnull)
+    status = subprocess.check_call(min_command, shell=True, stdout=fnull)
   fnull.close()
 
 def process_path(path, abs_prefix):
@@ -808,6 +807,6 @@ if conf_data['build_ODSA']:
     os.chdir(output_dir)
     proc = subprocess.Popen('make', stdout=subprocess.PIPE)
     for line in iter(proc.stdout.readline,''):
-       print line.rstrip()
+      print line.rstrip()
   finally:
     os.chdir(cwd)
