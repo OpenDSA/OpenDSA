@@ -385,11 +385,11 @@ div.viewcode-block:target {
         position: fixed; left: 0; top: 0;
         z-index: 10;
         width: 100%; height: 100%;
-        opacity: 0.8;
+        opacity: 0.5;
         z-index: 999;
 }
 /* You can customize to your needs  */
-.login-popup{
+.login-popup {
         display:none;
         background: #333;
         padding: 10px;
@@ -409,7 +409,7 @@ div.viewcode-block:target {
 
 .registration-popup{
         display:none;
-        background: rgb(211, 201, 201);
+        background: #333;
         padding: 10px;
         border: 2px solid #ddd;
         float: left;
@@ -466,6 +466,19 @@ form.signin .textbox input {
 
 form.signin input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
 form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
+
+#dis {
+	text-align:center;
+	height: 25px;
+	width: 250px;
+	background-color:#46DAFF;
+	color:#000;
+}
+#tex {
+	width:120px;
+	float: left;
+}
+
 
 /* student page rules */  
 #pointsBox {
