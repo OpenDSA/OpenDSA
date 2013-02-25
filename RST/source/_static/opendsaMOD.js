@@ -1254,7 +1254,7 @@
     if (odsaUtils.serverEnabled()) {
       odsaUtils.logUserAction('registration-box-open', 'registration box was opened');
 
-      var server_regist_url = settings.serverURL + "/accounts/register/",
+      var server_regist_url = "_static/registration.html", //serverURL + "/accounts/register/",
           registrationBox = '#registration-box',
           regBoxWidth = $(registrationBox).width(),
           left = ($(window).width() / 2) - (regBoxWidth / 2),
@@ -1283,7 +1283,7 @@
       $('#mask').fadeIn(300);
     }
   }
-
+  
   /**
    * Opens the login window
    */
