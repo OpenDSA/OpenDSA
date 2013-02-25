@@ -4,6 +4,12 @@
   cursor: pointer;
 }
 
+/* Style for the "Error loading data" message */
+.error {
+  font-size: 20px;
+  text-align: center;
+}
+
 /* Style for the container which is expanded when the associated chapter, section or module row is clicked */
 .gb-section-container {
   border-bottom: solid 1px;

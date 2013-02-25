@@ -4,46 +4,30 @@
 .admonition-todo {
   background-color: #FFC0CB;
 }
-.registration-popup {
-  /*height: 300px;*/ /* The popup box must be as big as it is to accomodate space for errors */
-  width: 250px;
-}
-.showHideLink {
-  background-color: #FF0000;
-}
 .jsavcontainer {
   position: relative;
 }
-.prof_check_mark {
-  position: absolute;
-  bottom: 45px; /* top: 65px; */
-  right: 10px;
-  display: none;
+/* Style for the registration popup window */
+.registration-popup {
+  background: none repeat scroll 0 0 #333333;
+  color: #999999;
+  font-size: 1em;
+  left: 50%;
+  top: 50%;
+  width: 260px;
 }
-/* Saving message for check mark proficiency indicator */
-.cm_saving_msg {
-  bottom: 25px;
-  color: red;
-  display: none;
-  font-size: x-small;
-  position: absolute;
-  right: 12px;
+/* Make the width of the 'Sign In' and 'Register' buttons match the width of the textboxes */
+#login-submit-button, #register-button , #register-submit-button{
+  background-color: #888888;
+  width: 214px;
 }
-/* Warning icon for check mark proficiency indicator */
-.cm_warning_icon {
-  position: relative;
-  right: -10px;
-  width: 20px;
+/* Increase the size of labels and links on login and registration forms */
+form.signin p, form.signin span {
+  font-size: 12px;
 }
-/* Error message for check mark proficiency indicator */
-.cm_error_msg {
-  bottom: 10px;
-  color: red;
-  display: none;
-  font-size: x-small;
-  position: absolute;
-  right: 10px;
-  text-align: center;
+/* All showHide buttons default to red */
+.showHideLink {
+  background-color: #FF0000;
 }
 /* Message that appears next to a showHide button */
 .shb_msg {
@@ -59,6 +43,41 @@
   top: 5px;
   width: 20px;
 }
+/* Style for mini-slideshow checkmark proficiency indicator */
+.prof_check_mark {
+  position: absolute;
+  bottom: 45px; /* top: 65px; */
+  right: 10px;
+  display: none;
+}
+/* Saving message for checkmark proficiency indicator */
+.cm_saving_msg {
+  bottom: 25px;
+  color: red;
+  display: none;
+  font-size: x-small;
+  position: absolute;
+  right: 12px;
+}
+/* Warning icon for checkmark proficiency indicator */
+.cm_warning_icon {
+  position: relative;
+  right: -10px;
+  width: 20px;
+}
+/* Error message for checkmark proficiency indicator */
+.cm_error_msg {
+  bottom: 10px;
+  color: red;
+  display: none;
+  font-size: x-small;
+  position: absolute;
+  right: 10px;
+  text-align: center;
+}
+.resubmit_link {
+  text-decoration: underline;
+}
 .mod_complete {
   color: lime;
   display: none;
@@ -66,18 +85,14 @@
   right: 20px;
   top: 0;
 }
-.resubmit_link {
-  text-decoration: underline;
-}
 
 .error {
   color: red;
-  font-size: 20px;
-  text-align: center;
+  font-weight: bold;
 }
 
-label {  
-  display: block;  
+label {
+  display: block;
 }
 
 .data td {

@@ -1254,33 +1254,28 @@
     if (odsaUtils.serverEnabled()) {
       odsaUtils.logUserAction('registration-box-open', 'registration box was opened');
 
-      var server_regist_url = "_static/registration.html", //serverURL + "/accounts/register/",
-          registrationBox = '#registration-box',
-          regBoxWidth = $(registrationBox).width(),
-          left = ($(window).width() / 2) - (regBoxWidth / 2),
-          registration_page = '<center><iframe id="registration_iframe" src="' + server_regist_url + '" type="text/javascript" width="' + regBoxWidth + '" height="510" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></center>';
-
-      //Fade in the Popup
-      $(registrationBox).fadeIn(300);
-
-      // Position the box
+      var registrationBox = '#registration-box',
+          popMargTop = ($(registrationBox).height() + 24) / 2,
+          popMargLeft = ($(registrationBox).width() + 24) / 2;
+      
+      // Change the top and left margins to center the box
       $(registrationBox).css({
-        'top' : $('div.header').height(),
-        'left' : left,
-        'margin-top' : 0
+        'margin-top' : -popMargTop,
+        'margin-left' : -popMargLeft
       });
-
-      //Embed backend registration page
-      if ($('#registration_iframe').length === 0) {
-        $('.registration-popup').append(registration_page);
-      } else {
-        $('#registration_iframe').remove();
-        $('.registration-popup').append(registration_page);
-      }
+      
+      // Clear any existing error messages
+      $('#register_error').slideUp().html('');
+      
+      // Fade in the Popup
+      $(registrationBox).fadeIn(300);
 
       // Add the mask to body
       $('body').append('<div id="mask"></div>');
       $('#mask').fadeIn(300);
+      
+      // Set the focus to the username box
+      $('#user').focus();
     }
   }
   
@@ -1288,33 +1283,35 @@
    * Opens the login window
    */
   function showLoginBox() {
-    odsaUtils.logUserAction('login-box-open', 'Login box was opened');
+    if (odsaUtils.serverEnabled()) {
+      odsaUtils.logUserAction('login-box-open', 'Login box was opened');
 
-    var loginBox = '#login-box',
-        username = localStorage.name,
-        popMargTop = ($(loginBox).height() + 24) / 2,
-        popMargLeft = ($(loginBox).width() + 24) / 2;
+      var loginBox = '#login-box',
+          username = localStorage.name,
+          popMargTop = ($(loginBox).height() + 24) / 2,
+          popMargLeft = ($(loginBox).width() + 24) / 2;
 
-    // Preload the last saved username in the login form
-    if (username) {
-      $('#username').attr('value', username);
+      // Preload the last saved username in the login form
+      if (username) {
+        $('#username').attr('value', username);
+      }
+
+      // Fade in the Popup
+      $(loginBox).fadeIn(300);
+
+      // Change the top and left margins to center the box
+      $(loginBox).css({
+        'margin-top' : -popMargTop,
+        'margin-left' : -popMargLeft
+      });
+
+      // Add the mask to body
+      $('body').append('<div id="mask"></div>');
+      $('#mask').fadeIn(300);
+
+      // Set the focus to the username box
+      $('#username').focus();
     }
-
-    //Fade in the Popup
-    $(loginBox).fadeIn(300);
-
-    //Set the center alignment padding + border see css style
-    $(loginBox).css({
-      'margin-top' : -popMargTop,
-      'margin-left' : -popMargLeft
-    });
-
-    // Add the mask to body
-    $('body').append('<div id="mask"></div>');
-    $('#mask').fadeIn(300);
-
-    // Set the focus to the username box
-    $('#username').focus();
   }
 
   /**
@@ -1360,6 +1357,55 @@
       localStorage.warn_login = "false";
     }
   }
+  
+  function login(username, password) {
+    jQuery.ajax({
+      url:   settings.serverURL + "/api/v1/users/login/",
+      type:  "POST",
+      data: {"username":  username, "password": password  },
+      contentType: "application/json; charset=utf-8",
+      datatype: "json",
+      xhrFields: {withCredentials: true},
+      success: function (data) {
+        data = odsaUtils.getJSON(data);
+
+        if (settings.debugMode) {
+          console.group('User logged in');
+        }
+
+        if (data.success) {
+          updateLocalStorage(username, data.key);
+          localStorage.name = username;
+          odsaUtils.logUserAction('user-login', 'User logged in');
+          // Assign anonymous user's score data to the user who just logged in
+          assignAnonScoreData(username);
+          updateLogin();
+        }
+
+        if (settings.debugMode) {
+          console.groupEnd();
+        }
+      },
+      error: function (data) {
+        data = odsaUtils.getJSON(data);
+        console.group("Error logging in");
+        console.debug(data);
+        console.groupEnd();
+
+        if (data.status === 401) {
+          alert("Incorrect username / password combination");
+        } else if (data.status === 0) {
+          alert("Login failed because the server is not responding or is not reachable.\nFor help, please contact the OpenDSA team.");
+          localStorage.warn_login = true;
+          hidePopupBox();
+        } else {
+          alert("Login failed");
+          localStorage.warn_login = true;
+          hidePopupBox();
+        }
+      }
+    });
+  }
 
   /**
    * Makes sure the display shows the currently logged in user
@@ -1383,10 +1429,10 @@
         updated = true;
 
         // Update display to show logged in user
-        $('a.login-window').text('Logout');
+        $('#login-link').text('Logout');
         $('a.username-link').text(username);
         $('a.username-link').show();
-        $('a.registration-window').hide();
+        $('#registration-link').hide();
 
         // In case the user loaded a bunch of pages,
         // then logs in on one of them
@@ -1396,19 +1442,19 @@
 
         // Flush any stored data
         flushStoredData();
-      } else if (!localStorage.session && $('a.login-window').text() !== 'Login') {
+      } else if (!localStorage.session && $('#login-link').text() !== 'Login') {
         if (settings.debugMode) {
-          console.debug($('a.login-window').text() + ' has logged out since the last page refresh, update the page');
+          console.debug($('#login-link').text() + ' has logged out since the last page refresh, update the page');
         }
 
         // If a user was logged in on the page, but has since logged out, update the page with the anonymous user state
         updated = true;
 
         // Update display to show that no user is logged in
-        $('a.login-window').text("Login");
+        $('#login-link').text("Login");
         $('a.username-link').text('');
         $('a.username-link').hide();
-        $('a.registration-window').show();
+        $('#registration-link').show();
         localStorage.removeItem('warn_login');
 
         // Remove the variable storing the user's progress on KA exercises
@@ -1587,63 +1633,24 @@
         return false;
       });
 
-      // Attempts to log the user in when they click submit on the login window
-      $('button.submit-button').click(function (event) {
-        var username = $('#username').attr('value'),
-            password = $('#password').attr('value');
-
-        jQuery.ajax({
-          url:   settings.serverURL + "/api/v1/users/login/",
-          type:  "POST",
-          data: {"username":  username, "password": password  },
-          contentType: "application/json; charset=utf-8",
-          datatype: "json",
-          xhrFields: {withCredentials: true},
-          success: function (data) {
-            data = odsaUtils.getJSON(data);
-
-            if (settings.debugMode) {
-              console.group('User logged in');
-            }
-
-            if (data.success) {
-              updateLocalStorage(username, data.key);
-              localStorage.name = username;
-              odsaUtils.logUserAction('user-login', 'User logged in');
-              // Assign anonymous user's score data to the user who just logged in
-              assignAnonScoreData(username);
-              updateLogin();
-            }
-
-            if (settings.debugMode) {
-              console.groupEnd();
-            }
-          },
-          error: function (data) {
-            data = odsaUtils.getJSON(data);
-            console.group("Error logging in");
-            console.debug(data);
-            console.groupEnd();
-
-            if (data.status === 401) {
-              alert("Incorrect username / password combination");
-            } else if (data.status === 0) {
-              alert("Login failed because the server is not responding or is not reachable.\nFor help, please contact the OpenDSA team.");
-              localStorage.warn_login = true;
-              hidePopupBox();
-            } else {
-              alert("Login failed");
-              localStorage.warn_login = true;
-              hidePopupBox();
-            }
-          }
-        });
+      // Attaches a click handler to the "Sign-in" button that logs a user in
+      $('#login-submit-button').click(function (event) {
+        var username = $('#username').val(),
+            password = $('#password').val();
+        
+        if (username === "" || password === "") {
+          alert("Please enter your username and password");
+          return false;
+        }
+      
+        login(username, password);
+        return false;
       });
 
       // Brings up the login box if the user clicks 'Login' and
       // logs the user out if they click their username
-      $('a.login-window').click(function () {
-        if ($('a.login-window').text() === 'Login') {
+      $('#login-link').click(function () {
+        if ($('#login-link').text() === 'Login') {
           showLoginBox();
           return false;
         } else {
@@ -1681,16 +1688,88 @@
       });
 
       //Brings the registration form from the login popup page
+      $('#register-button').click(function () {
+        $('.login-popup').fadeOut(300);
+        showRegistrationBox();
+        return false;
+      });
+      
+      /*
+      //Brings the registration form from the login popup page
       $('a.signup').click(function () {
         $('.login-popup').fadeOut(300);
         showRegistrationBox();
         return false;
       });
+      */
 
       // Brings up the embedded registration  box if the user clicks 'Register' and
-      // should close the reistration window upon success.
-      $('a.registration-window').click(function () {
+      // should close the registration window upon success.
+      $('#registration-link').click(function () {
         showRegistrationBox();
+        return false;
+      });
+      
+      // Attaches a click handler to the registration submit button
+      // Validation user input and if valid sends a message to the server to create a new user
+      // If a new user is successfully created, automatically logs the user in
+      $('#register-submit-button').click(function () {
+        var user = $('#user').val();
+        var pass = $('#pass').val();
+        var rpass = $('#rpass').val();
+        var email = $('#email').val();
+
+        if (user === "") {
+          $('#register_error').slideDown().html("Please enter a username");
+          return false;
+        }
+        
+        if (pass === "") {
+          $('#register_error').slideDown().html('Please enter a password');
+          return false;
+        }
+        
+        if (rpass === "") {
+          $('#register_error').slideDown().html('Please confirm your password');
+          return false;
+        }
+        
+        if (pass !== rpass) {
+          $('#register_error').slideDown().html('Passwords do not match');
+          return false;
+        }
+        
+        // TODO: Better support these email rules: http://rumkin.com/software/email/rules.php
+        // Quoted local parts are not currently supported
+        // Filter based on http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
+        // This filter allows the domain to be an IP address (not sure if this is desirable or not)
+        var filter = /^([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!filter.test(email)) {
+          $('#register_error').slideDown().html('Please enter a valid email');
+          return false;
+        }
+        
+        jQuery.ajax({
+          url:   settings.serverURL + "/api/v1/newuser/",
+          type:  "POST",
+          data: JSON.stringify({"username":  user, "password": pass, "email": email }),
+          processData: false,
+          contentType: "application/json; charset=utf-8",
+          datatype: "json",
+          xhrFields: {withCredentials: true},
+          success: function (data) {
+            // If new user account successfully created, log the user in
+            login(user, pass);
+            hidePopupBox();
+          },
+          error: function (data) {
+            data = odsaUtils.getJSON(data);
+            
+            if (data.status === 400) {
+              $('#register_error').slideDown().html('Username already exists');
+            }
+          }
+        });
         return false;
       });
 
@@ -1703,8 +1782,8 @@
       });
     } else {  // Backend server is NOT enabled
       // Hide page elements that don't make sense when there is no backend server
-      $('a#logon').hide();  // Login link
-      $('a#registration').hide();  // Registration link
+      $('#login-link').hide();  // Login link
+      $('#registration-link').hide();  // Registration link
 
       // Update proficiency indicators based on local proficiency cache
       loadModule();

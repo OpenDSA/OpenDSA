@@ -293,7 +293,7 @@
     $('h1 > a.headerlink').parent().html(html);
 
     // Get the config file and use it to initialize chapters
-    $.getJSON(location.href.replace(settings.MODULE_NAME + '.html', '_static/' + settings.bookName + '.json'), function (confData) {
+    $.getJSON(location.href.substring(0, location.href.lastIndexOf('/')) + '/_static/' + settings.bookName + '.json', function (confData) {
       chapters = confData.chapters;
 
       Gradebook.load();

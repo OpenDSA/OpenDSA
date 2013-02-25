@@ -9,7 +9,6 @@
 
    <head>
   <title>OpenDSA Privacy Policy</title>
-  <link href="site.css" rel="stylesheet" type="text/css">
   </head>
 
   <body>

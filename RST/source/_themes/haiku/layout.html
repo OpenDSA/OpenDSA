@@ -13,39 +13,76 @@
 {% block relbar1 %}{% endblock %}
 {% block relbar2 %}{% endblock %}
 
-{% macro login() %}  
+{% macro login() %}
 <a id="username-link" style="float:right;color:red;margin:10px 0 auto; display: none" class="username-link" href="Gradebook.html"></a>
-<a id="logon" style="float:right;color:red;margin:10px 10px auto"   class="login-window" href="#">Login</a>    
+<a id="login-link" style="float:right;color:red;margin:10px 10px auto" class="login-link" href="#">Login</a>
 <div id="login-box" class="login-popup">
   <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
   <form method="post" class="signin" action="#">
     <fieldset class="textbox">
       <label class="username">
         <span>Username or email</span>
-        <input id="username"  value="" type="text" autocomplete="on" placeholder="Username">
+        <input id="username" value="" type="text" autocomplete="on" placeholder="Username">
       </label>
       <label class="password">
         <span>Password</span>
         <input id="password" value="" type="password" placeholder="Password">
+        <span><a class="forgot" href="#">Forgot your password?</a></span>
       </label>
-      <button id="login-submit-button" class="submit-button" type="button">Sign in</button>
+      
       <p>
-        <a class="forgot" href="#">Forgot your password?</a>
-      </p>        
+        <input type="submit" id="login-submit-button" value="Sign in" />
+      </p>
+      <p>
+        <input type="button" id="register-button" value="Register" />
+      </p>
+      
+      <!--
+      <button id="login-submit-button" class="submit-button" type="button">Sign in</button>
+      
       <p>
         <a class="signup" href="#">Sign Up</a>
-      </p>   
+      </p>
+      -->
     </fieldset>
   </form>
 </div>
 {% endmacro %}
 
 {% macro registration() %}
-<a id="registration" style="float:right;color:red;margin:10px 10px auto"   class="registration-window" href="#">Register</a>
-<div id="registration-box" class="registration-popup">
-        <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+<a id="registration-link" style="float:right;color:red;margin:10px 10px auto" class="registration-link" href="#">Register</a>
+<div id="registration-box" class="registration-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  <form method="post" class="signin" action="">
+    <fieldset class="textbox">
+      <div id="register_error" class="error"></div>
+      <label class="username">
+        <span>Username:</span>
+        <input type="text" id="user" placeholder="Username" />
+      </label>
+      
+      <label class="password">
+        <span>Password</span>
+        <input id="pass" type="password" placeholder="Password" />
+      </label>
+
+      <label class="password">
+        <span>Confirm Password</span>
+        <input id="rpass" type="password" placeholder="Confirm Password" />
+      </label>
+
+      <label class="email">
+        <span>Email:</span>
+        <input type="text" id="email" placeholder="Email">
+      </label>
+
+      <p>
+        <input type="submit" id="register-submit-button" value="Register &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
 </div>
-{% endmacro %}  
+{% endmacro %}
 
 {% macro nav() %}
         {%- block haikurel1 %}
@@ -61,7 +98,7 @@
         {%- endif %}
         {%- block haikurel2 %}
         {%- endblock %}
-{#        <a  href="knowledgemap.html">|  Knowledge Map</a>#}    
+{#        <a  href="knowledgemap.html">|  Knowledge Map</a>#}
 {% endmacro %}
 
 
@@ -86,8 +123,8 @@
 
       <div class="header">
         {%- block haikuheader %}
-        {{ login() }} 
-        {{ registration() }}   
+        {{ login() }}
+        {{ registration() }}
         {%- if theme_full_logo != "false" %}
         <a href="{{ pathto('index') }}">
           <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
@@ -99,10 +136,10 @@
         <h1 class="heading" ><a href="{{ pathto('index') }}">
           <span style="margin-left: 60px;">{{ shorttitle|e }}</span></a></h1>
         {%- if pagename=="index" -%}
-	<h2 class="heading" ><span  style="margin-left: 60px;">Table Of Contents</span></h2>
-	{%- else %}
-	  <h2 class="heading" ><span  style="margin-left: 60px;">{{ chapter_items[pagename] }}</span></h2>
-	{%- endif %}
+        <h2 class="heading" ><span  style="margin-left: 60px;">Table Of Contents</span></h2>
+        {%- else %}
+          <h2 class="heading" ><span  style="margin-left: 60px;">{{ chapter_items[pagename] }}</span></h2>
+        {%- endif %}
 
         {%- endif %}
         {%- endblock %}
@@ -115,10 +152,10 @@
         {%- if pagename=="ToDo" or pagename =="search" -%}
         &#160;&#160;
        {{ nav() }}</p>
-        {%- else %}   
+        {%- else %}
          <a class="abt" style="float:left;color:blue;" href="#" rel="nofollow">| About</a>&#160;&#160;
        {{ nav() }}</p>
-        {%- endif %} 
+        {%- endif %}
       </div>
        {{ linktags }}
       <div class="content">
@@ -150,8 +187,8 @@
         {% block body %}{% endblock %}
       </div>
       <div class="bottomnav">
-      <p><span class="email_div" style="display:inline;"></span>&#160;&#160;         
+      <p><span class="email_div" style="display:inline;"></span>&#160;&#160;
       {{ btm_nav() }}</p>
       </div>
-      <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/> 
+      <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/>
 {% endblock %}
