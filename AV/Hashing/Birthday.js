@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, console: true, awardCompletionCredit, logExerciseInit */
+/*global alert: true, console: true, ODSA */
 (function ($) {
   // Declare and initialize state variables
   var
@@ -40,7 +40,7 @@
       var initData = {};
       initData.user_table_size = tsize;
       initData.user_num_recs = recs;
-      logExerciseInit(initData);
+      ODSA.AV.logExerciseInit(initData);
       
       if (recs === 0) { prob = 0.0; }
       else if (recs > tsize) { prob = 1.0; }
@@ -63,7 +63,7 @@
         thousandCredit = true;
       }
       if (birthCredit && thousandCredit && noCredit) {
-        awardCompletionCredit();
+        ODSA.AV.awardCompletionCredit();
         noCredit = false;  // Don't keep trying to assign credit
         console.log("Got birthday credit");
       }

@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, initArraySize, processArrayValues, reset */
+/*global alert: true, ODSA */
 (function ($) {
   var jsav,   // for JSAV library object
       arr,    // for the JSAV array
@@ -17,7 +17,7 @@
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
 
   // Initialize the arraysize dropdown list
-  initArraySize(5, 16, 8);
+  ODSA.AV.initArraySize(5, 16, 8);
 
   // Process help button: Give a full help page for this activity
   // We might give them another HTML page to look at.
@@ -34,11 +34,11 @@
   function runIt() {
     var dSize = $('#digitsize').val(),
         i;
-    var arrValues = processArrayValues(Math.pow(10, dSize));
+    var arrValues = ODSA.AV.processArrayValues(Math.pow(10, dSize));
     
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
-      reset(true);
+      ODSA.AV.reset(true);
       jsav = new JSAV($('.avcontainer'));
 
       // Set the digit size to the length of the largest number in the array
@@ -148,5 +148,5 @@
   $('#help').click(help);
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#reset').click(reset);
+  $('#reset').click(ODSA.AV.reset);
 }(jQuery));

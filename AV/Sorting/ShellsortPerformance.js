@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, logExerciseInit, awardCompletionCredit */
+/*global alert: true, ODSA */
 (function ($) {
   $(document).ready(function () {
     // Create the AV object. We turn off slideshow mode, since this is a
@@ -137,7 +137,7 @@
       initData.user_array_len = ASize;
       initData.gen_array = theArray;
       initData.user_incrs = incrs;
-      logExerciseInit(initData);
+      ODSA.AV.logExerciseInit(initData);
 
       if (!InitFlag) {
         tell("For list size of: " + ASize + "\n", "blue");
@@ -188,7 +188,7 @@
       // Right here is where we would give user credit
       if ((comps < twosComps) && (swaps < twosSwaps)) {
         // Give user proficiency credit
-        awardCompletionCredit();
+        ODSA.AV.awardCompletionCredit();
         tell("CONGRATULATIONS! You did better than divide-by-twos");
       }
     }

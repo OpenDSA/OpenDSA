@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, logExerciseInit, awardCompletionCredit */
+/*global alert: true, ODSA */
 (function ($) {
   // Declare and initialize state variables
   var keyValue = Number($('#keyvalue').val());
@@ -17,7 +17,7 @@
 
   // Main action: Result of clicking "Calculate" button
   function Calculate() {
-    logExerciseInit({'user_key': keyValue});
+    ODSA.AV.logExerciseInit({'user_key': keyValue});
     
     var result = keyValue * keyValue;
     var left = Math.floor(result / 100000);
@@ -30,7 +30,7 @@
     else if (right < 100) { right = '0' + right; }
     var output = left + '<span class = "standout">' + center + '</span>' + right;
     tell(output);
-    awardCompletionCredit();
+    ODSA.AV.awardCompletionCredit();
   }
 
   // Action callbacks for form entities

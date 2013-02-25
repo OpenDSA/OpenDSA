@@ -6,7 +6,6 @@
   "module_origin": "http://algoviz.org",
   "exercise_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
-  "copy_static_files": true,
   "build_JSAV": false,
   "build_ODSA": true,
   "allow_anonymous_credit": true,
@@ -25,8 +24,7 @@
             "long_name": "Hashing Intro Slideshow",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           }
         }
       },
@@ -37,15 +35,13 @@
             "long_name": "Birthday Problem Calculator",
             "required": true,
             "points": 0.25,
-            "threshold": 1.0,
-            "type": "pe"
+            "threshold": 1.0
           },
           "HashPrinciplesSumm": {
             "long_name": "Hashing Principles Summary",
             "required": true,
             "points": 1,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           }
         }
       },
@@ -56,50 +52,43 @@
             "long_name": "Hash Function Slideshow 1",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "hashFuncExCON2": {
             "long_name": "Hash Function Slideshow 2",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "MidSquare": {
             "long_name": "Mid-Square Calculator",
             "required": true,
             "points": 0.25,
-            "threshold": 1.0,
-            "type": "pe"
+            "threshold": 1.0
           },
           "StringSimple": {
             "long_name": "Simple String Folding Calculator",
             "required": true,
             "points": 0.25,
-            "threshold": 1.0,
-            "type": "pe"
+            "threshold": 1.0
           },
           "StringSfold": {
             "long_name": "Improved String Folding Calculator",
             "required": true,
             "points": 0.25,
-            "threshold": 1.0,
-            "type": "pe"
+            "threshold": 1.0
           },
           "HashFuncPROSumm": {
             "long_name": "Hash Function Proficiency Summary",
             "required": true,
             "points": 1,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           },
           "HashFuncSumm": {
             "long_name": "Hash Function Summary",
             "required": true,
             "points": 1,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           }
         }
       },
@@ -110,15 +99,13 @@
             "long_name": "Open Hashing Slideshow 1",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "OpenHashPRO": {
             "long_name": "Open Hashing Proficiency",
             "required": true,
             "points": 1.25,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           }
         }
       },
@@ -129,29 +116,25 @@
             "long_name": "Bucket Hashing Slideshow 1",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "buckethashCON2": {
             "long_name": "Bucket Hashing Slideshow 2",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "HashingBucketPRO": {
             "long_name": "Bucket Hashing Proficiency",
             "required": true,
             "points": 1.25,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           },
           "HashingBucket2PRO": {
             "long_name": "Alternate Bucket Hashing Proficiency",
             "required": true,
             "points": 1.25,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           }
         }
       },
@@ -162,22 +145,19 @@
             "long_name": "Linear Probing Slideshow 1",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "linProbeCON2": {
             "long_name": "Linear Probing Slideshow 2",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "HashingLinearProbePRO": {
             "long_name": "Linear Probing Proficiency",
             "required": true,
             "points": 1.25,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           }
         }
       },
@@ -188,99 +168,85 @@
             "long_name": "Linear Probing By Steps Slideshow 1",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "collisionCON2": {
             "long_name": "Linear Probing By Steps Slideshow 2",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "HashingLinearStepProbePRO": {
             "long_name": "Linear Probing By Steps Proficiency",
             "required": true,
             "points": 1.25,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           },
           "collisionCON3": {
             "long_name": "Pseudo-Random Probing Slideshow",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "HashingPseudoRandomProbePRO": {
             "long_name": "Pseudo-Random Probing Proficiency",
             "required": true,
             "points": 1.25,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           },
           "collisionCON4": {
             "long_name": "Quadratic Probing Slideshow 1",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "collisionCON5": {
             "long_name": "Quadratic Probing Slideshow 2",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "HashingQuadraticProbePRO": {
             "long_name": "Quadratic Probing Proficiency",
             "required": true,
             "points": 1.25,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           },
           "collisionCON6": {
             "long_name": "Double Hashing Slideshow 1",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "collisionCON7": {
             "long_name": "Double Hashing Slideshow 2",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "collisionCON8": {
             "long_name": "Double Hashing Slideshow 3",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "HashingDoubleProbePRO": {
             "long_name": "Double Hashing Proficiency",
             "required": true,
             "points": 1.25,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           },
           "hashAV": {
             "long_name": "Hashing Exercise",
             "required": false,
             "points": 0,
-            "threshold": 1.0,
-            "type": "pe"
+            "threshold": 1.0
           },
           "HashCollisionSumm": {
             "long_name": "Improved Collision Resolution Summary",
             "required": true,
             "points": 1,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           }
         }
       },
@@ -291,8 +257,7 @@
             "long_name": "Analysis of Closed Hashing Summary",
             "required": true,
             "points": 1,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           }
         }
       },
@@ -303,22 +268,19 @@
             "long_name": "Hash Deletion Slideshow",
             "required": true,
             "points": 0.1,
-            "threshold": 1.0,
-            "type": "ss"
+            "threshold": 1.0
           },
           "HashingDeleteProficiency": {
             "long_name": "Hash Deletion Proficiency",
             "required": true,
             "points": 1.25,
-            "threshold": 0.90,
-            "type": "pe"
+            "threshold": 0.90
           },
           "HashDelSumm": {
             "long_name": "Hash Deletion Summary",
             "required": true,
             "points": 1,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           }
         }
       },
@@ -329,8 +291,7 @@
             "long_name": "Hashing Chapter Summary",
             "required": true,
             "points": 1,
-            "threshold": 5,
-            "type": "ka"
+            "threshold": 5
           }
         }
       }

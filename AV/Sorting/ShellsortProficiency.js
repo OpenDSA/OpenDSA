@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, logExerciseInit */
+/*global alert: true, ODSA */
 (function ($) {
   $(document).ready(function () {
     /* **************************************************************
@@ -125,7 +125,7 @@
       var initData = {};
       initData.gen_array = initialArray;
       initData.gen_incrs = incrs;
-      logExerciseInit(initData);
+      ODSA.AV.logExerciseInit(initData);
 
       theArray = av.ds.array($theArray, {indexed: true, layout: arrayLayout.val()});
       currIncrIndex = av.variable(0);

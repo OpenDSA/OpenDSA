@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, console: true, logExerciseInit */
+/*global alert: true, console: true, ODSA */
 (function ($) {
   $(document).ready(function () {
     // Process help button: Give a full help page for this activity
@@ -67,7 +67,7 @@
       // Log the initial state of the exercise
       var initData = {};
       initData.gen_array = initialArray;
-      logExerciseInit(initData);
+      ODSA.AV.logExerciseInit(initData);
 
       // Dynamically create arrays
       arrays = {};

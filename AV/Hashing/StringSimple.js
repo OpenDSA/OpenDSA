@@ -1,5 +1,5 @@
 "use strict";
-/*global logExerciseInit, awardCompletionCredit */
+/*global ODSA */
 (function ($) {
   // Declare and initialize state variables
   var
@@ -14,7 +14,7 @@
 
   // Main action: Result of clicking "Calculate" button
   function Calculate() {
-    logExerciseInit({'user_key': keyValue});
+    ODSA.AV.logExerciseInit({'user_key': keyValue});
     
     var i;
     var output = 0;
@@ -22,7 +22,7 @@
       output += keyValue.charCodeAt(i);
     }
     tell('<br/>' + output);
-    awardCompletionCredit();
+    ODSA.AV.awardCompletionCredit();
   }
 
   // Action callbacks for form entities
