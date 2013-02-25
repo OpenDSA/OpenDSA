@@ -146,6 +146,8 @@ div.header img.rightlogo {
 
 div.header img.leftlogo {
     float: left;
+    height: 64px;
+    margin-top: 8px;
 }  
 
 div.title {
