@@ -23,6 +23,7 @@ import re
 sys.path.append(os.path.abspath('./source'))
 import conf 
 from xml.dom.minidom import parse, parseString
+import urllib
 
 def setup(app):
     app.add_directive('avembed',avembed)
@@ -102,7 +103,7 @@ def showbutton(argument):
 
 
 class avembed(Directive):
-    required_arguments = 2
+    required_arguments = 5
     optional_arguments = 5
     final_argument_whitespace = True
     has_content = True
@@ -120,9 +121,14 @@ class avembed(Directive):
         self.options['address'] = self.arguments[0]
         self.options['type'] = self.arguments[1]
 
+        url_params = {}
+        url_params['bookName'] = self.arguments[2]
+        url_params['serverURL'] = self.arguments[3]
+        url_params['moduleOrigin'] = self.arguments[4]
+        
         embed = embedlocal(self.arguments[0])   
         self.options['exer_name'] = embed[0]
-        self.options['av_address'] = embed[1]
+        self.options['av_address'] = embed[1] + '?' + urllib.urlencode(url_params)
         self.options['width'] = embed[2]
         self.options['height'] = embed[3]
  
@@ -137,12 +143,6 @@ class avembed(Directive):
           
         if 'long_name' not in self.options:
           self.options['long_name'] = self.options['exer_name']
-          
-        #if 'type' not in self.options:
-        #  if 'Exercise' in self.options['av_address']:
-        #    self.options['type'] = 'ka'
-        #  else:
-        #    self.options['type'] = 'pe'
  
         if 'showbutton' in self.options:
             if self.options['showbutton'] == "show":

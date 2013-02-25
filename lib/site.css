@@ -1,11 +1,11 @@
 #content {
   background-color: white;
-  padding: 20px;  
-  border-style: solid;  
-  border-color: black;  
+  border-color: black;
+  border-style: solid;
   border-width: 1px 1px 1px 1px;
-  margin-top: 20px;
   box-shadow: 2px 1px 5px #333, -2px 1px 5px #333;
+  margin-top: 20px;
+  padding: 20px;
 }
 
 #maintext {
@@ -13,22 +13,21 @@
 }
 
 #firsttitle {
+  color: red;
   position: absolute;
   top: -85px;
-  color: red;
 }
 
 h1 {
-  text-align: center;
-  font-family: Verdana, Arial, sans-serif;
-  vertical-align: middle;
   background-color: white;
   border-bottom: 1px solid black;
-  background-color: white;
   color: #336299;
-  margin: -8px -8px 0px -8px;
-  padding: 8px 8px 2px 8px;
+  font-family: Verdana, Arial, sans-serif;
   font-size: 36px;
+  margin: -8px -8px 0 -8px;
+  padding: 8px 8px 2px 8px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 h2, h3, h4, h5, h6 {

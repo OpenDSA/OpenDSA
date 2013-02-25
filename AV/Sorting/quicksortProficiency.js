@@ -1,6 +1,6 @@
 "use strict";
 /*jslint noempty: false */
-/*global alert: true, logExerciseInit */
+/*global alert: true, ODSA */
 (function ($) {
   $(document).ready(function () {
     // Process help button: Give a full help page for this activity
@@ -62,7 +62,7 @@
       // Log the initial state of the exercise
       var initData = {};
       initData.gen_array = initialArray;
-      logExerciseInit(initData);
+      ODSA.AV.logExerciseInit(initData);
 
       // Create the array the user will intereact with
       userArr = av.ds.array(initialArray, {indexed: true, layout: arrayLayout.val()});

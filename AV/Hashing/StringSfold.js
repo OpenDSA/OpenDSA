@@ -1,5 +1,5 @@
 "use strict";
-/*global logExerciseInit, awardCompletionCredit */
+/*global ODSA */
 (function ($) {
   // Declare and initialize state variables
   var keyValue = $('#keyvalue').val();
@@ -42,8 +42,8 @@
     var i;
     var output = sfold(keyValue);
     tell('<br/>' + output);
-    logExerciseInit({'user_key': keyValue});
-    awardCompletionCredit();
+    ODSA.AV.logExerciseInit({'user_key': keyValue});
+    ODSA.AV.awardCompletionCredit();
   }
 
   // Action callbacks for form entities

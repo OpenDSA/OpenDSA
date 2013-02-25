@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, logExerciseInit */
+/*global alert: true, ODSA */
 (function ($) {
   $(document).ready(function () {
     var initData, bh,
@@ -19,7 +19,7 @@
       // Log the initial state of the exercise
       var exInitData = {};
       exInitData.gen_array = initData;
-      logExerciseInit(exInitData);
+      ODSA.AV.logExerciseInit(exInitData);
       
       bh = jsav.ds.binheap(initData, { nodegap: 25, compare: function (a, b) { return b - a; }});
       swapIndex = jsav.variable(-1);

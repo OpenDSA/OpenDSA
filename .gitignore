@@ -20,3 +20,6 @@ lib/khan-exercises/exercises/khan-site.html
 
 #ignore compiled Python files
 *pyc
+
+# Minified JS and CSS files
+lib/*-min.*

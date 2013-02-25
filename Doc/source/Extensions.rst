@@ -26,7 +26,7 @@ NAME
 
 SYNOPSIS::  
                       
-    .. avembed:: <AV_Path> type
+    .. avembed:: <relative_path> <type> <book_name> <server_URL> <module_origin>
        [:showbutton: {show|hide}]
        [:long_name: ]
        [:points: #]
@@ -34,16 +34,17 @@ SYNOPSIS::
        [:threshold: #]
        
 DESCRIPTION
-    ``.. avembed:: <AV_Path> type``
-      Parameters are the relative path (from the OpenDSA
-      home directory) to the embedded page, and its type ('ss' for
-      slideshow, 'pe' for proficiency exercise,
-      or 'ka' for Khan Academy exercise).
+    ``.. avembed:: <relative_path> <type> <book_name> <server_URL> <module_origin>``
+      ``<relative_path>`` is the relative path (from the OpenDSA
+      home directory) to the embedded page.  ``<type>`` is the type of embedded exercise:
+
+        * **ka** - Khan Academy style exercises
+        * **pe** - OpenDSA proficiency exercises
+        * **ss** - slideshows
+        * **dgm** - JSAV-based diagram
       
-      ```Note:``` The ``points``, ``required``, and ``threshold``
-      arguments are automatically appended to the ``avembed``
-      directive by the configuration process and should not be added
-      manually.
+      **Note**: ``<book_name>``, ``<server_URL>`` and ``<module_origin>`` are 
+      automatically appended as part of the configuration process and should not be added manually
 
     ``[:showbutton: {show|hide}]`` 
       Include a button to show or hide the embedded
@@ -109,14 +110,14 @@ NAME
 
 SYNOPSIS::
 
-    .. codeinclude:: <relative path>
+    .. codeinclude:: <relative_path>
        [:tag: <my tag>]    
 
 DESCRIPTION
-    ``.. codeinclude:: <relative path>``
+    ``.. codeinclude:: <relative_path>``
 
       Include the code present inside the file located at
-      ``<relative path>``.
+      ``<relative_path>``.
 
     ``:tag: <my tag>``
 
@@ -129,12 +130,12 @@ NOTES
     The ``codeinclude`` directive closely matches the standard ReST
     directive ``literalinclude``.::
 
-        .. codeinclude:: <relative path>
+        .. codeinclude:: <relative_path>
            [:tag: <my tag>]  
 
     will (logically) map to:::
 
-        .. literalinclude:: <relative path>
+        .. literalinclude:: <relative_path>
            :start-after: /* *** ODSATag: <my tag> *** */
            :end-before: /* *** ODSAendTag: <my tag> *** */
 
@@ -166,17 +167,25 @@ DESCRIPTION
       If the AV is a slideshow, controls whether or not the message box is displayed
       Note the 'output' argument is only valid for slideshows.
     
-    ``:points: #``
+    ``[:long_name: ]``
     
-      Added automatically by the configuration process, do NOT add manually
+      Long-form name for a slideshow object.
+      **Added automatically by the configuration process, do NOT add manually.**
     
-    ``:required: [true | false]``
+    ``[:points: #]``
     
-      Added automatically by the configuration process, do NOT add manually
+      Number of points this activity is worth.
+      **Added automatically by the configuration process, do NOT add manually.**
     
-    ``:threshold: #``
+    ``[:required: <true | false>]``
     
-      Added automatically by the configuration process, do NOT add manually
+      Whether this activity is required for module credit.
+      **Added automatically by the configuration process, do NOT add manually.**
+    
+    ``[:threshold: #]``
+    
+      Threshold number of points required for credit.
+      **Added automatically by the configuration process, do NOT add manually.**
 
 numref
 ------

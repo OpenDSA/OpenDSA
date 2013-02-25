@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, logExerciseInit */
+/*global alert: true, ODSA */
 (function ($) {
   $(document).ready(function () {
     var arr_size = 10,
@@ -93,7 +93,7 @@
       var exInitData = {};
       exInitData.gen_array = initData.array;
       exInitData.gen_input = initData.input;
-      logExerciseInit(exInitData);
+      ODSA.AV.logExerciseInit(exInitData);
       
       inputData = initData.input;
       task = jsav.label((inputData[0][0] === "delete" ? "Delete key ":"Insert key ") + inputData[0][1]);

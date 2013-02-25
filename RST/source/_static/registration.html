@@ -3,32 +3,38 @@
 <title>User Registration</title>
 <style>
 .textbox input {
-background:#666666;
-border-bottom:1px solid #333;
-border-left:1px solid #000;
-border-right:1px solid #333;
-border-top:1px solid #000;
-color:#fff;
-border-radius: 3px 3px 3px 3px;
--moz-border-radius: 3px;
--webkit-border-radius: 3px;
-font:13px Arial, Helvetica, sans-serif;
-padding:6px 6px 4px;
-width:200px;
+	background:#666666;
+	border-bottom:1px solid #333;
+	border-left:1px solid #000;
+	border-right:1px solid #333;
+	border-top:1px solid #000;
+	color:#fff;
+	border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	font:13px Arial, Helvetica, sans-serif;
+	padding:6px 6px 4px;
+	width:200px;
 }
 
-#dis
-{
-text-align:center;
-height: 25px;
-width: 250px;
-background-color:#46DAFF;
-color:#000;
+#dis {
+	text-align:center;
+	height: 25px;
+	width: 250px;
+	background-color:#46DAFF;
+	color:#000;
+        font-size: 11px;
+        line-height: 18px;
 }
-#tex
-{
-width:120px;
-float: left;
+#tex {
+	width:250px;
+	float: left;
+	color: #999999;
+	font-size: 11px;
+	line-height: 18px;
+}
+body {
+    font-family: "DejaVu Sans",Arial,Helvetica,sans-serif;
 }
 </style>
 <script type="text/javascript" src="jquery.js"></script>
@@ -83,7 +89,7 @@ $(document).ready(function(){
         datatype: "json",
         xhrFields: {withCredentials: true},
         success: function (data) {
-            $('#dis').slideDown().html('<span style="background-color: green;">Your registration is now completed. Close this window and login inside the OpenDSA main page.</span>');
+            $('#dis').slideDown().html('<span style="background-color: yellow;">Your registration is now completed. Close this window and login inside the OpenDSA main page.</span>');
         }, 
         error: function (data) { 
              $('#dis').slideDown().html('<span id="error">A user with that username already exists.</span>');
@@ -99,19 +105,19 @@ $(document).ready(function(){
 <form method="post" action="">
 <label id="dis" style="width:240px;min-height: 50px;vertical-align: top;"></label><br>
 <div id="tex">Username:</div>
-<input type="text" id="user" /><br /><br />
+<input type="text" id="user" placeholder="Username"/><br /><br />
 
 <div id="tex">Password:</div>
-<input type="password" id="pass" /><br /><br />
+<input type="password" id="pass" placeholder="Password"/><br /><br />
 
 <div id="tex">Re-type Password:</div>
-<input type="password" id="rpass" /><br /><br />
+<input type="password" id="rpass" placeholder="Password"/><br /><br />
 
 <div id="tex">Email:</div>
-<input type="text" id="email"><br /><br />
+<input type="text" id="email" placeholder="Email"><br /><br />
 
 <p>
-<input type="submit" id="submit" class="regsubmit" value="Register &rarr;"/>
+<button type="button" id="submit" class="regsubmit" />Register &rarr;</button>
 </p>
 </form>
 </fieldset>

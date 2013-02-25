@@ -5,28 +5,29 @@
 #   - Auto-detects the OpenDSA root directory location
 #   - Converts the OpenDSA root directory and specified code and output directories into Unix-style paths so that relative paths are calculated correctly
 #     - Handles absolute or relative paths for output and code directories (relative paths are rooted at the OpenDSA directory)
-#   - Builds JSAV to make sure the library is up-to-date, if specified in the configuration file
-#   - Initializes necessary files and directories in the output directory
-#     - Alters the Makefile to correctly point to the .htaccess file
-#   - Copies additional files and directories to the output directory (if specified in the config file)
-#     - Its possible for the output directory to be outside of the OpenDSA root directory and web-accessible when the ODSA root directory is not.  In this case, several directories must be copied to the output directory in order for OpenDSA to function correctly.  These files / directories include:
-#       - AV
-#       - Exercises
-#       - JSAV-min.js and supporting JS and CSS files
-#       - Khan Academy files
-#       - lib files
-#       - SourceCode files (only the language specified in the config file is copied)
-#   - Reads each module RST file and removes sphinx directives for exercises that do no appear in the config file (causing those exercises not to be included) or adds arguments to the sphinx directives that create them
-#     - Appends a raw JavaScript flag to each module indicating whether or not the module has completion requirements (if the module has required exercises)
-#     - Specifically adds 'long_name', 'points', 'required', 'threshold' and 'type'
-#   - Creates a conf.py file in the source directory
+#   - Optionally builds JSAV to make sure the library is up-to-date, if specified in the configuration file
+#   - Creates a source directory in the output directory and copies the necessary supplemental source files
+#   - Creates a Makefile and conf.py file
+#     - Makefile is configured to copy the original .htaccess file from lib to the html output directory
+#   - Reads the RST source file for each module which appears in the configuration file
+#     - Optionally, appends a raw JavaScript flag to each module indicating whether or not the module can be completed
+#       This allows the configuration file to override the default behavior of the client-side framework which is to allow 
+#       module completion only if the module contains required exercises
+#     - For each exercise that appears in the module RST file
+#       - If the exercise is listed in the configuration file, the additional information from the configuration file
+#         is appended to the Sphinx directive that creates the exercise, UNLESS the 'remove' attribute is present and "true",
+#         in which case the entire Sphinx directive for that exercise is removed
+#         - Specifically adds 'long_name', 'points', 'required' and 'threshold'
+#       - If the exercise does not appear in the configuration file, the Sphinx directive will be included, but no additional
+#         information will be included so the defaults (specified in the Sphinx directive file) will be used.  The name of the
+#         exercise is added to a list of missing exercises which will be displayed to the user 
+#     - The configured module RST file is written to the source directory in the output file
 #   - Generates an index.rst file based on which modules were specified in the config file
-#   - Updates variables in JS files based on the values specified in the config file
-#     - serverURL, bookName and moduleOrigin variables in ODSA.js
-#     - exerciseOrigin and allowAnonCredit in opendsaMOD.js
-#     - The server address and moduleOrigin in khanexercise.js
-#   - Generates an index.html file in the output directory of the new book which redirects (via JavaScript) to the build/html directory
-#   - Runs make on the output directory to build the textbook, if specified in the configuration file
+#   - Prints out a list of any exercises encountered in RST source files that did not appear in the config file
+#   - Generates _static/config.js which contains settings needed by the client-side framework that can be configured
+#     using the config file
+#   - Generates an index.html file in the output directory of the new book which redirects (via JavaScript) to the html/ directory
+#   - Optionally runs make on the output directory to build the textbook, if specified in the configuration file
 
 import sys
 import os
@@ -39,10 +40,12 @@ import re
 import subprocess
 
 # The location in the output directory where the built HTML files go
-ebook_suffix = 'html/'
+rel_ebook_path = 'html/'
 
+# List of characters Sphinx uses for headers, the depth of a section header determines which character to use
 sphinx_header_chars = ['=', '-', '`', "'", '.', '*', '+', '^']
 
+# List of exercises encountered in RST files that do not appear in the configuration file
 missing_exercises = []
 
 # Used to generate the index.rst file
@@ -77,13 +80,13 @@ index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 
 '''
 
-makefile_data = '''\
+makefile_template = '''\
 # Makefile for Sphinx documentation
 #
 # You can set these variables from the command line.
 SPHINXBUILD   = sphinx-build
 BUILDDIR      = build
-HTMLDIR       = %(ebook_suffix)s
+HTMLDIR       = %(rel_ebook_path)s
 
 # Internal variables.
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees source
@@ -100,11 +103,11 @@ clean:
 cleanbuild: clean html
 
 preprocessor:
-	python "%(odsa_dir)sRST/preprocessor.py" source/ $(HTMLDIR)
+	python "%(odsa_root)sRST/preprocessor.py" source/ $(HTMLDIR)
 
 html: preprocessor
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(HTMLDIR)
-	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
+	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
@@ -142,15 +145,15 @@ import sys, os
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 
-sys.path.append(os.path.abspath('../ODSAextensions/odsa/avembed'))
-sys.path.append(os.path.abspath('../ODSAextensions/odsa/avmetadata'))
-sys.path.append(os.path.abspath('../ODSAextensions/odsa/codeinclude'))
-sys.path.append(os.path.abspath('../ODSAextensions/odsa/numref'))
-sys.path.append(os.path.abspath('../ODSAextensions/odsa/chapnum'))
-sys.path.append(os.path.abspath('../ODSAextensions/odsa/odsalink'))
-sys.path.append(os.path.abspath('../ODSAextensions/odsa/odsascript'))
-sys.path.append(os.path.abspath('../ODSAextensions/odsa/sphinx-numfig')) 
-sys.path.append(os.path.abspath('../ODSAextensions/odsa/inlineav')) 
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/avembed'))
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/avmetadata'))
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/codeinclude'))
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/numref'))
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/chapnum'))
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsalink'))
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsascript'))
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/sphinx-numfig')) 
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/inlineav')) 
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -374,10 +377,10 @@ todo_include_todos = True
 #---- OpenDSA variables ---------------------------------------
 
 #Absolute path to OpenDSA directory
-odsa_path = '%(odsa_dir)s'
+odsa_path = '%(supplemental_ref_root)s'
 
 #Absolute path of eTextbook (build) directory
-ebook_path = '%(ebook_dir)s'
+ebook_path = '%(output_dir)s%(rel_ebook_path)s'
 
 #path (from the RST home) to the sourcecode directory that I want to use
 sourcecode_path = '%(code_dir)s'
@@ -388,12 +391,14 @@ sourcecode_path = '%(code_dir)s'
 def minify(path):
   print 'Minifying ' + os.path.basename(path)
   
-  min_command = 'java -jar "' + odsa_dir + 'lib/yuicompressor-2.4.7.jar" --preserve-semi -o "' + path + '" "' + path + '"'
+  min_command = 'java -jar "' + odsa_dir + 'tools/yuicompressor-2.4.7.jar" --preserve-semi -o "' + path + '" "' + path + '"'
 
   with open(os.devnull, "w") as fnull:
     status = subprocess.check_call(min_command, shell=True, stdout=fnull)
   fnull.close()
 
+# If the given path is relative, it prepends the abs_prefix to create an absolute path
+# Converts the resulting path to a Unix-style path
 def process_path(path, abs_prefix):
   # If the path is relative, make it absolute
   if not os.path.isabs(path):
@@ -407,26 +412,26 @@ def process_path(path, abs_prefix):
   
   return path
 
-def process_section(section, index_file, depth):  
+def process_section(section, index_rst, depth):  
   for subsect in section:
     if ('exercises' in section[subsect]):
-      process_module(subsect, section[subsect], index_file, depth)
+      process_module(subsect, section[subsect], index_rst, depth)
     else:
       print ("  " * depth) + subsect
-      index_file.write(subsect + '\n')
-      index_file.write((sphinx_header_chars[depth] * len(subsect)) + "\n\n")
-      index_file.write(".. toctree::\n")
-      index_file.write("   :numbered:\n")
-      index_file.write("   :maxdepth: 3\n\n")
-      process_section(section[subsect], index_file, depth + 1)
+      index_rst.write(subsect + '\n')
+      index_rst.write((sphinx_header_chars[depth] * len(subsect)) + "\n\n")
+      index_rst.write(".. toctree::\n")
+      index_rst.write("   :numbered:\n")
+      index_rst.write("   :maxdepth: 3\n\n")
+      process_section(section[subsect], index_rst, depth + 1)
   
-  index_file.write("\n")
+  index_rst.write("\n")
 
-def process_module(mod_name, mod_attrib, index_file, depth):
+def process_module(mod_name, mod_attrib, index_rst, depth):
   exercises = mod_attrib['exercises']
   
   print ("  " * depth) + mod_name
-  index_file.write("   " + mod_name + "\n")
+  index_rst.write("   " + mod_name + "\n")
   
   if mod_name == 'ToDo':
     return
@@ -452,50 +457,61 @@ def process_module(mod_name, mod_attrib, index_file, depth):
       new_mod_data.append('   <script>' + eol)
       
       if mod_attrib['dispModComp']:
-        new_mod_data.append('   dispModComp = true;' + eol)
+        new_mod_data.append('   ODSA.SETTINGS.dispModComp = true;' + eol)
       else:
-        new_mod_data.append('   dispModComp = false;' + eol)
+        new_mod_data.append('   ODSA.SETTINGS.dispModComp = false;' + eol)
         
       new_mod_data.append('   </script>' + eol + eol)
-    elif '.. inlineav::' in mod_data[i] or '.. avembed::' in mod_data[i]:
-      # Parse the exercise name from the line
-      av_name = mod_data[i].split(' ')[2]
-      av_name = av_name.rstrip()
+    elif '.. inlineav::' in mod_data[i]:
+      # Parse the AV name from the line
+      av_name = mod_data[i].split(' ')[2].rstrip()
+      type = mod_data[i].split(' ')[3].rstrip()
       
-      if av_name.endswith('.html'):
-        av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
+      # Include the slideshow or diagram because it is considered content and cannot be removed via the config file
+      new_mod_data.append(mod_data[i])
+    
+      if av_name not in exercises:
+        # If the AV is not listed in the config file, add its name to a list of missing exercises
+        missing_exercises.append(av_name)
+      elif type == 'ss':
+        # Add the necessary information from the slideshow from the configuration file
+        # Diagrams (type == 'dgm') do not require this extra information
+        exer_conf = exercises[av_name]
+        
+        for setting in exer_conf:
+          if setting == 'remove':
+            continue
+          
+          new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
+    
+    elif '.. avembed::' in mod_data[i]:
+      # Parse the exercise name from the line
+      av_name = mod_data[i].split(' ')[2].rstrip()
+      av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
       
       type = mod_data[i].split(' ')[3].rstrip()
       
-      if av_name not in exercises:
-        # If the exercise is not listed in the config file, let it pass through and add the name to a list of missing exercises
-        new_mod_data.append(mod_data[i])
-        missing_exercises.append(av_name)
-      else:
-        # Print a warning if the type in the RST file does not match the one in the config file
-        if 'type' in exercises[av_name] and exercises[av_name]['type'] != type:
-          print ("  " * (depth + 1 )) + av_name + ', RST type: ' + type + ', Config type: ' + exercises[av_name]['type']
+      # If the config file states the exercise should be removed, remove it 
+      if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
+        print ("  " * (depth + 1 )) + 'Removing: ' + av_name
         
-        # Slideshows and diagrams (inlineav) are considered content and cannot be removed via the config file
-        # Only avembed-ed exercises can be explicitly removed
-        if '.. avembed::' in mod_data[i] and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
-          print ("  " * (depth + 1 )) + 'Removing: ' + av_name
-          
-          # Config file states exercise should be removed, remove it from the RST file
-          while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-            i = i + 1
+        # Config file states exercise should be removed, remove it from the RST file
+        while (i < len(mod_data) and mod_data[i].rstrip() != ''):
+          i = i + 1
+      else:
+        # Append necessary attributes to avembed directive
+        new_avembed = mod_data[i].rstrip() + ' ' + conf_data['name'] + ' '
+        new_avembed += conf_data['backend_address'] + ' ' + conf_data['module_origin'] + ' ' + eol
+        new_mod_data.append(new_avembed)
+        
+        if av_name not in exercises:
+          # Add the name to a list of missing exercises
+          missing_exercises.append(av_name)
         else:
-          # Object is an exercise found in the config file or a 
-          # slideshow which shouldn't be removed because its considered content
-          new_mod_data.append(mod_data[i])
-          
           # Add the necessary information from the configuration file
           exer_conf = exercises[av_name]
           
           for setting in exer_conf:
-            if setting == 'type' or setting == 'remove':
-              continue
-            
             new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
     else:
       new_mod_data.append(mod_data[i])
@@ -528,7 +544,7 @@ if not os.path.exists(config_file):
   print "Error: File " + config_file + " doesn't exist"
   sys.exit(1)
 
-print "Configuring OpenDSA, using " + config_file + '\n'
+print "\nConfiguring OpenDSA, using " + config_file + '\n'
 
 # Read the configuration data
 with open(config_file) as config:
@@ -539,19 +555,19 @@ config.close()
 # Parse the name of the config file to use as the book name
 conf_data['name'] = os.path.basename(config_file).replace('.json', '')
 
+# Strip the '/' from the end of the serverURL
+conf_data['backend_address'] = conf_data['backend_address'].rstrip('/')
 
 # Auto-detect ODSA directory
 (odsa_dir, script) = os.path.split( os.path.abspath(__file__))
 odsa_dir = odsa_dir.replace("\\", "/")
-odsa_dir = odsa_dir.replace("/lib", "") + '/'
-
+odsa_dir = odsa_dir.replace("/tools", "/")
 
 # Process the code and output directory paths
 code_dir = process_path(conf_data['code_dir'], odsa_dir)
 output_dir = process_path(conf_data['output_dir'], odsa_dir)
 
-
-
+# TODO: Is this limitation still necessary?
 if output_dir == (odsa_dir) or output_dir == (odsa_dir + "RST/"):
   print "Unable to build in this location, please select a different directory"
   sys.exit(1)
@@ -567,7 +583,7 @@ if conf_data['build_JSAV']:
   try:
     os.chdir(odsa_dir + 'JSAV/')
     with open(os.devnull, "w") as fnull:
-      status = subprocess.check_call('make', stdout=fnull)
+      status = subprocess.check_call('make', shell=True, stdout=fnull)
     fnull.close()
   finally:
     os.chdir(cwd)
@@ -577,32 +593,12 @@ if conf_data['build_JSAV']:
     print status
     sys.exit(1)
 
-# Initialize options for conf.py
-options = {}
-options['title'] = conf_data['title']
-options['odsa_dir'] = odsa_dir
-options['ebook_dir'] = output_dir + ebook_suffix
-options['code_dir'] = code_dir
-
 print "Copying files to output directory\n"
 
 # Initialize output directory
 distutils.dir_util.mkpath(src_dir)
-distutils.dir_util.copy_tree(odsa_dir + 'RST/ODSAextensions/', output_dir + 'ODSAextensions/', update=1)
-distutils.file_util.copy_file(odsa_dir + 'RST/config.py', output_dir, update=1)
 
-
-# Create a Makefile in the output directory 
-with open(output_dir + 'Makefile','w') as makefile:
-  make_options = {}
-  make_options['ebook_suffix'] = ebook_suffix
-  make_options['odsa_dir'] = odsa_dir
-
-  makefile.writelines(makefile_data % make_options)
-makefile.close()
-
-
-# Copy all non-RST source files and directories
+# Copy all non-RST source files and directories to the output source directory
 for src_file in os.listdir(odsa_dir + 'RST/source/'):
   src_file_path = odsa_dir + 'RST/source/' + src_file
   if os.path.isdir(src_file_path):
@@ -613,61 +609,38 @@ for src_file in os.listdir(odsa_dir + 'RST/source/'):
 # Copy config file to _static directory
 distutils.file_util.copy_file(config_file, src_dir + '_static/')
 
-# Copy static files to output directory
-if conf_data['copy_static_files']:
-  # Set the base ODSA directory for conf.py to be the output directory to ensure the copied files get referenced in the build
-  options['odsa_dir'] = output_dir
-  
-  # Calculate the relative path between the code directory and the root OpenDSA directory in order to reference the correct sourcecode in the external build directory
-  options['code_dir'] = process_path(os.path.relpath(code_dir, odsa_dir), output_dir)
+# Initialize options for conf.py
+options = {}
+options['title'] = conf_data['title']
+options['odsa_root'] = odsa_dir
+# Base directory where supplemental files such as AV/, Exercises/, lib/ can be referenced from
+# Will either be the ODSA root directory (if supplemental files are not copied) or output_dir (if they are copied)
+options['supplemental_ref_root'] = odsa_dir
+options['output_dir'] = output_dir
+options['rel_ebook_path'] = rel_ebook_path
+options['code_dir'] = code_dir
 
-  # Copy static files to output directory, creating directories as necessary
-  distutils.dir_util.copy_tree(odsa_dir + 'AV/', output_dir + 'AV/', update=1)
-  distutils.dir_util.copy_tree(odsa_dir + 'Exercises/', output_dir + 'Exercises/', update=1)
-  distutils.dir_util.copy_tree(odsa_dir + 'lib/Images/', output_dir + 'lib/Images/', update=1)
-  distutils.file_util.copy_file(odsa_dir + 'lib/jquery.min.js', output_dir + 'lib/')
-  distutils.file_util.copy_file(odsa_dir + 'lib/jquery-ui.min.js', output_dir + 'lib/')
-  # lib/ODSA.js will be written later, so it does not need to be copied
-  # lib/.htaccess will be copied from its original location by the Makefile
-  distutils.dir_util.copy_tree(odsa_dir + 'ODSAkhan-exercises/', output_dir + 'ODSAkhan-exercises/', update=1)
-  distutils.dir_util.copy_tree(code_dir, options['code_dir'], update=1)
-  distutils.dir_util.copy_tree(odsa_dir + 'JSAV/lib/', output_dir + 'JSAV/lib/', update=1)
-  distutils.dir_util.copy_tree(odsa_dir + 'JSAV/css/', output_dir + 'JSAV/css/', update=1)
-  distutils.dir_util.copy_tree(odsa_dir + 'JSAV/extras/', output_dir + 'JSAV/extras/', update=1)
-  distutils.dir_util.mkpath(output_dir + 'JSAV/build/')
-  distutils.file_util.copy_file(odsa_dir + 'JSAV/build/JSAV-min.js', output_dir + 'JSAV/build/JSAV-min.js')
+# Create a Makefile in the output directory 
+with open(output_dir + 'Makefile','w') as makefile:
+  makefile.writelines(makefile_template % options)
+makefile.close()
 
-else:
-  print "Since you chose not to copy static files to your output directory, you must make sure your OpenDSA directory is web-accessible in order for these files to be loaded properly\n"
+# Create conf.py file in output source directory
+with open(src_dir + 'conf.py','w') as conf_py:
+  conf_py.writelines(conf % options)
+conf_py.close()
 
-
-
-
-# Create conf.py file in src directory
-try:
-  cfile = open(src_dir + 'conf.py','w')  
-  cfile.writelines(conf %options)  
-  cfile.close()  
-except IOError:
-  print 'ERROR: Could not save conf.py' 
-
-
-
-
-# Create the index.rst file
-with open(src_dir + 'index.rst', 'w+') as index_file:
+# Generate the index.rst file
+with open(src_dir + 'index.rst', 'w+') as index_rst:
   print "Generating index.rst\n"
   print "Processing..."
-  index_file.write(index_header)
+  index_rst.write(index_header)
   
-  process_section(conf_data['chapters'], index_file, 0)
+  process_section(conf_data['chapters'], index_rst, 0)
 
-  index_file.write("* :ref:`genindex`\n")
-  index_file.write("* :ref:`search`\n")
-index_file.close()
-
-
-
+  index_rst.write("* :ref:`genindex`\n")
+  index_rst.write("* :ref:`search`\n")
+index_rst.close()
 
 # Print out a list of any exercises found in RST files that do not appear in the config file
 if len(missing_exercises) > 0:
@@ -675,98 +648,49 @@ if len(missing_exercises) > 0:
   
   for exercise in missing_exercises:
     print '  ' + exercise
+
+
+config_js_template = '''\
+"use strict";
+(function () {
+  var settings = {};
+  // Stores the name of the book, used to uniquely identify a book in the database
+  settings.bookName = "%(book_name)s";
+  // The (protocol and) domain address of the backend server
+  // Set serverURL = "" in order to disable server communication and logging
+  settings.serverURL = "%(server_url)s";
+  settings.moduleOrigin = "%(module_origin)s";
+  settings.exerciseOrigin = "%(exercise_origin)s";
+  // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
+  settings.allowAnonCredit = "%(allow_anon_credit)s";
+  // Flag which controls debugMode
+  // When set to true, the framework will print a full stacktrace to the console, allowing developers to easily trace execution
+  // This value can be changed at runtime via the JavaScript console
+  settings.debugMode = false;
   
+  window.ODSA = {};
+  window.ODSA.SETTINGS = settings;
+}());
+'''
 
-
-# Read the contents of ODSA.js
-with open(odsa_dir + 'lib/ODSA.js','r') as odsa:
-  odsa_data = odsa.readlines()
-odsa.close()
-
-# options['odsa_dir'] is used as a base for relative paths to static files,
-# changes depending on whether static files are copied or not
-with open(options['odsa_dir'] + 'lib/ODSA.js','w') as odsa:
-  replaced = 0
-  total_replacements = 3
+# Create source/_static/config.js in the output directory
+with open(src_dir + '_static/config.js','w') as config_js:
+  conf_js_data = {}
+  conf_js_data['book_name'] = conf_data['name']
+  conf_js_data['server_url'] = conf_data['backend_address']
+  conf_js_data['module_origin'] = conf_data['module_origin']
+  conf_js_data['exercise_origin'] = conf_data['exercise_origin']
   
-  for i in range(len(odsa_data)):
-    if 'var serverURL = "' in odsa_data[i]:
-      odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['backend_address'].rstrip('/') + r'\2', odsa_data[i])
-      replaced = replaced + 1
-      if replaced == total_replacements:
-        break
-
-    if 'var bookName = "' in odsa_data[i]:
-      odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['name'] + r'\2', odsa_data[i])
-      replaced = replaced + 1
-      if replaced == total_replacements:
-        break
-    
-    if 'var moduleOrigin = "' in odsa_data[i]:
-      odsa_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['module_origin'] + r'\2', odsa_data[i])
-      replaced = replaced + 1
-      if replaced == total_replacements:
-        break
-
-  odsa.writelines(odsa_data)
-odsa.close()
-
-
-# Replace 'exerciseOrigin' and 'allowAnonCredit' in opendsaMOD.js
-with open(odsa_dir + 'RST/source/_static/opendsaMOD.js','r') as odsaMOD:
-  odsaMOD_data = odsaMOD.readlines()
-odsaMOD.close()
-
-# opendsaMOD.js is always copied to the build location, so write the updated data to the output source directory
-with open(src_dir + '_static/opendsaMOD.js','w') as odsaMOD:
-  replaced = 0
-  total_replacements = 2
+  if 'allow_anonymous_credit' in conf_data:
+    conf_js_data['allow_anon_credit'] = str(conf_data['allow_anonymous_credit']).lower()
+  else:
+    conf_js_data['allow_anon_credit'] = 'true'
   
-  for i in range(len(odsaMOD_data)):
-    if 'var exerciseOrigin = "' in odsaMOD_data[i]:
-      odsaMOD_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['exercise_origin'] + r'\2', odsaMOD_data[i])
-      replaced = replaced + 1
-      if replaced == total_replacements:
-        break
-    
-    if 'var allowAnonCredit = ' in odsaMOD_data[i]:
-      odsaMOD_data[i] = re.sub(r'(.+ = ).*(;.*)', r'\1' + str(conf_data['allow_anonymous_credit']).lower() + r'\2', odsaMOD_data[i])
-      replaced = replaced + 1
-      if replaced == total_replacements:
-        break
-  odsaMOD.writelines(odsaMOD_data)
-odsaMOD.close()
-
-# Replace the backend server address and 'moduleOrigin' in khan-exercise.js
-with open(odsa_dir + 'ODSAkhan-exercises/khan-exercise.js','r') as khan_exer:
-  ke_data = khan_exer.readlines()
-khan_exer.close()
-
-# options['odsa_dir'] is used as a base for relative paths to static files,
-# changes depending on whether static files are copied or not
-with open(options['odsa_dir'] + 'ODSAkhan-exercises/khan-exercise.js','w') as khan_exer:
-  replaced = 0
-  total_replacements = 2
-  
-  for i in range(len(ke_data)):
-    if 'testMode ? "' in ke_data[i]:
-      ke_data[i] = re.sub(r'(.+ ? ").*(" :.*)', r'\1' + conf_data['backend_address'].rstrip('/') + r'\2', ke_data[i])
-      replaced = replaced + 1
-      if replaced == total_replacements:
-        break
-
-    if 'var moduleOrigin = "' in ke_data[i]:
-      ke_data[i] = re.sub(r'(.+ = ").*(";.*)', r'\1' + conf_data['module_origin'] + r'\2', ke_data[i])
-      replaced = replaced + 1
-      if replaced == total_replacements:
-        break
-  khan_exer.writelines(ke_data)
-khan_exer.close()
-
-
+  config_js.writelines(config_js_template % conf_js_data)
+config_js.close()
 
 # Add the index.html file that redirects to the build/html directory
-indexHTML = '''\
+index_html_template = '''\
 <html>
 <head>
   <script>
@@ -776,29 +700,9 @@ indexHTML = '''\
 </html>
 '''
 
-with open(output_dir + 'index.html','w') as indexFile:
-  #options = {}
-  #options['ebook_suffix'] = ebook_suffix
-  indexFile.writelines(indexHTML % ebook_suffix)
-indexFile.close()
-
-# Default to minifying JS files, but allow the configuration file to override it
-if 'minify' not in conf_data or conf_data['minify']:
-  print '\n'
-  
-  # Run a minifier on JS and CSS files in _static because they are always copied
-  minify(src_dir + '_static/opendsaMOD.js')
-  minify(src_dir + '_static/opendsaMOD.css')
-  minify(src_dir + '_static/gradebook.js')
-  minify(src_dir + '_static/gradebook.css')
-
-  # If static files are copied, minify them too
-  if conf_data['copy_static_files']:
-    minify(output_dir + 'AV/opendsaAV.js')
-    minify(output_dir + 'AV/opendsaAV.css')
-    minify(output_dir + 'lib/ODSA.js')
-    minify(output_dir + 'ODSAkhan-exercises/khan-exercise.js')
-
+with open(output_dir + 'index.html','w') as index_html:
+  index_html.writelines(index_html_template % rel_ebook_path)
+index_html.close()
 
 # Optionally run make on the output directory
 if 'build_ODSA' not in conf_data or conf_data['build_ODSA']:

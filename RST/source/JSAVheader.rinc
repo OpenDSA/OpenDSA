@@ -1,8 +1,5 @@
 .. odsalink:: JSAV/css/JSAV.css
-
-.. raw:: html
-
-   <link href="_static/opendsaMOD.css" rel="stylesheet" type="text/css" />
+.. odsalink:: lib/odsaMOD-min.css
 
 .. odsascript:: lib/jquery.min.js
 .. odsascript:: lib/jquery-ui.min.js
@@ -12,11 +9,9 @@
 
 .. odsascript:: JSAV/build/JSAV-min.js
 
-.. odsascript:: lib/ODSA.js
-
 .. raw:: html
 
-   <script src="_static/opendsaMOD.js"></script>
+   <script src="_static/config.js"></script>
    <script type="text/x-mathjax-config">
      MathJax.Hub.Config({
        "HTML-CSS": {
@@ -24,3 +19,6 @@
        }
      });
    </script>
+
+.. odsascript:: lib/odsaUtils-min.js
+.. odsascript:: lib/odsaMOD-min.js
