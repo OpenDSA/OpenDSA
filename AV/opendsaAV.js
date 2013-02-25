@@ -1,202 +1,223 @@
 "use strict";
-/*global alert: true, console: true, serverEnabled: true, sendEventData: true, moduleOrigin: true, uiid: true, AV_NAME: true, getNameFromURL: true, logUserAction: true, logEvent: true, roundPercent */
+/*global alert: true, console: true, ODSA */
 
 /** This file should only be referenced by AVs (not modules) */
 
-// Create empty definitions for functions in ODSA.js (eliminates dependence of opendsaAV.js on ODSA.js)
-if (typeof AV_NAME === "undefined") {
-  // Define the console object if it doesn't exist to support IE without developer tools
-  if (!(window.console && console.log)) {
-    console = {
-      log: function () {},
-      debug: function () {},
-      info: function () {},
-      warn: function () {},
-      error: function () {}
+(function ($) {
+  var settings = {},
+      odsaUtils = {};
+
+  // Eliminate dependence on OpenDSA framework by creating stubbed function definition
+  if (typeof ODSA === "undefined") {
+    settings.AV_NAME = '';
+    settings.moduleOrigin = location.protocol + '//' + location.host;
+
+    // Define the console object if it doesn't exist to support IE without developer tools
+    if (!(window.console && console.log)) {
+      console = {
+        log: function () {},
+        debug: function () {},
+        info: function () {},
+        warn: function () {},
+        error: function () {}
+      };
+    }
+
+    odsaUtils.serverEnabled = function () {return false; };
+    odsaUtils.getNameFromURL = function () {return ''; };
+    odsaUtils.roundPercent = function (number) {
+      return Math.round(number * 100) / 100;
     };
-  }
+    odsaUtils.sendEventData = function () {};
+    odsaUtils.logUserAction = function (type, desc, exerName, eventUiid) {};
+    odsaUtils.logEvent = function (data) {};
 
-  var AV_NAME = '',
-      moduleOrigin = '',
-      uiid = +new Date();
+    window.ODSA = {};
+    window.ODSA.SETTINGS = settings;
+    window.ODSA.UTILS = odsaUtils;
 
-  var serverEnabled = function () {
-    return false;
-  };
-
-  var getNameFromURL = function () {
-    return '';
-  };
-
-  var sendEventData = function () {},
-      logUserAction = function (type, desc, exerName, eventUiid) {},
-      logEvent = function (data) {};
-
-  console.warn('ODSA.js was not included, using fallback function definitions');
-}
-
-/**
- * A timestamp when the user started looking at the pages
- */
-var focusTime = 0;
-
-/**
- * The total amount of time the user has spent on the current exercise instance
- */
-var totalTime = 0;
-
-/**
- * Stores the empty contents of the avcontainer, used for reset
- */
-var emptyContent = '';
-
-/**
- * Set a flag indicating the user cannot receive credit for the
- * current exercise instance after viewing the model answer
- */
-var allowCredit = true;
-
-//*****************************************************************************
-//*************                    AV FUNCTIONS                   *************
-//*****************************************************************************
-
-/**
- * Generates a JSAV event to log the initial state of an AV or exercise
- *   - initData - A JSON object that contains the initial state of an exercise
- *     Conventions:
- *       - The key for automatically generated data should have a prefix 'gen_'
- *         - Ex: an automatically generated array would be 'gen_array'
- *       - The key for user generated data should have a prefix 'user_'
- *         - Ex: Array data the user enters in the textbox should have a key 'user_array'
- */
-function logExerciseInit(initData) {
-  // Reset the uiid (unique instance identifier)
-  uiid = +new Date();
-  totalTime = 0;
-
-  var data = {av: AV_NAME, type: 'odsa-exercise-init', desc: JSON.stringify(initData)};
-  $("body").trigger("jsav-log-event", [data]);
-}
-/**
- * Generates a JSAV event which triggers the code to give a user credit for an exercise
- */
-function awardCompletionCredit() {
-  var data = {av: AV_NAME, type: 'odsa-award-credit'};
-  $("body").trigger("jsav-log-event", [data]);
-}
-
-/**
- * Initializes the arraysize drop down list
- */
-function initArraySize(min, max, selected) {
-  // Uses the midpoint between the min and max as a default, if a selected value isn't provided
-  selected = (selected) ? selected : Math.round((max + min) / 2);
-
-  var html = "";
-  for (var i = min; i <= max; i++) {
-    html += '<option ';
-
-    if (i === selected) {
-      html += 'selected="selected" ';
-    }
-
-    html += 'value="' + i + '">' + i + '</option>';
-  }
-
-  $('#arraysize').html(html);
-
-  // Save the min and max values as data attributes so
-  // they can be used by processArrayValues()
-  $('#arraysize').data('min', min);
-  $('#arraysize').data('max', max);
-}
-
-/**
- * Resets the AV to its initial state
- */
-function reset(flag) {
-  // Replace the contents of the avcontainer with the save initial state
-  $('.avcontainer').unbind().html(emptyContent);
-
-  // Clear the array values field, when no params given and reset button hit
-  if (flag !== true && !$('#arrayValues').prop("disabled")) {
-    $('#arrayValues').val("");
-  }
-}
-
-/**
- * Validates the array values a user enters or generates an array of random numbers if none are provided
- */
-function processArrayValues(upperLimit) {
-  upperLimit = (upperLimit) ? upperLimit : 999;
-
-  var i,
-      initData = {},
-      minSize = $('#arraysize').data('min'),
-      maxSize = $('#arraysize').data('max'),
-      msg = "Please enter " + minSize + " to " + maxSize + " positive integers between 0 and " + upperLimit;
-
-  if (!minSize || !maxSize) {
-    console.warn('processArrayValues() called without calling initArraySize()');
-  }
-
-  // Convert user's values to an array,
-  // assuming values are space separated
-  var arrValues = $('#arrayValues').val().match(/[0-9]+/g) || [];
-
-  if (arrValues.length === 0) { // Empty field
-    // Generate (appropriate length) array of random numbers between 0 and the given upper limit
-    for (i = 0; i < $('#arraysize').val(); i++) {
-      arrValues[i] = Math.floor(Math.random() * (upperLimit + 1));
-    }
-    initData.gen_array = arrValues;
+    console.warn('ODSA.js was not included, using fallback function definitions');
   } else {
-    // Ensure user provided array is in correct range
-    if (arrValues.length < minSize || arrValues.length > maxSize) {
-      alert(msg);
-      return null;
+    settings = ODSA.SETTINGS;
+    odsaUtils = ODSA.UTILS;
+  }
+
+  /**
+   * A timestamp when the user started looking at the pages
+   */
+  var focusTime = 0;
+
+  /**
+   * The total amount of time the user has spent on the current exercise instance
+   */
+  var totalTime = 0;
+
+  /**
+   * Stores the empty contents of the avcontainer, used for reset
+   */
+  var emptyContent = '';
+
+  /**
+   * Set a flag indicating the user cannot receive credit for the
+   * current exercise instance after viewing the model answer
+   */
+  var allowCredit = true;
+
+  /**
+   * A unique instance identifier, used to group interaction events from a single instance
+   */
+  var uiid = +new Date();
+
+  //*****************************************************************************
+  //*************                    AV FUNCTIONS                   *************
+  //*****************************************************************************
+
+  /**
+   * Generates a JSAV event to log the initial state of an AV or exercise
+   *   - initData - A JSON object that contains the initial state of an exercise
+   *     Conventions:
+   *       - The key for automatically generated data should have a prefix 'gen_'
+   *         - Ex: an automatically generated array would be 'gen_array'
+   *       - The key for user generated data should have a prefix 'user_'
+   *         - Ex: Array data the user enters in the textbox should have a key 'user_array'
+   */
+  function logExerciseInit(initData) {
+    // Reset the uiid (unique instance identifier)
+    uiid = +new Date();
+    totalTime = 0;
+
+    var data = {av: settings.AV_NAME, type: 'odsa-exercise-init', desc: JSON.stringify(initData)};
+    $("body").trigger("jsav-log-event", [data]);
+  }
+	
+  /**
+   * Generates a JSAV event which triggers the code to give a user credit for an exercise
+   */
+  function awardCompletionCredit() {
+    var data = {av: settings.AV_NAME, type: 'odsa-award-credit'};
+    $("body").trigger("jsav-log-event", [data]);
+  }
+
+  /**
+   * Initializes the arraysize drop down list
+   */
+  function initArraySize(min, max, selected) {
+    // Uses the midpoint between the min and max as a default, if a selected value isn't provided
+    selected = (selected) ? selected : Math.round((max + min) / 2);
+
+    var html = "";
+    for (var i = min; i <= max; i++) {
+      html += '<option ';
+
+      if (i === selected) {
+        html += 'selected="selected" ';
+      }
+
+      html += 'value="' + i + '">' + i + '</option>';
     }
 
-    // Ensure all user entered values are positive integers
-    for (i = 0; i < arrValues.length; i++) {
-      arrValues[i] = Number(arrValues[i]);
-      if (isNaN(arrValues[i]) || arrValues[i] < 0 || arrValues[i] > upperLimit) {
+    $('#arraysize').html(html);
+
+    // Save the min and max values as data attributes so
+    // they can be used by processArrayValues()
+    $('#arraysize').data('min', min);
+    $('#arraysize').data('max', max);
+  }
+
+  /**
+   * Resets the AV to its initial state
+   */
+  function reset(flag) {
+    // Replace the contents of the avcontainer with the save initial state
+    $('.avcontainer').unbind().html(emptyContent);
+
+    // Clear the array values field, when no params given and reset button hit
+    if (flag !== true && !$('#arrayValues').prop("disabled")) {
+      $('#arrayValues').val("");
+    }
+  }
+
+  /**
+   * Validates the array values a user enters or generates an array of random numbers if none are provided
+   */
+  function processArrayValues(upperLimit) {
+    upperLimit = (upperLimit) ? upperLimit : 999;
+
+    var i,
+        initData = {},
+        minSize = $('#arraysize').data('min'),
+        maxSize = $('#arraysize').data('max'),
+        msg = "Please enter " + minSize + " to " + maxSize + " positive integers between 0 and " + upperLimit;
+
+    if (!minSize || !maxSize) {
+      console.warn('processArrayValues() called without calling initArraySize()');
+    }
+
+    // Convert user's values to an array,
+    // assuming values are space separated
+    var arrValues = $('#arrayValues').val().match(/[0-9]+/g) || [];
+
+    if (arrValues.length === 0) { // Empty field
+      // Generate (appropriate length) array of random numbers between 0 and the given upper limit
+      for (i = 0; i < $('#arraysize').val(); i++) {
+        arrValues[i] = Math.floor(Math.random() * (upperLimit + 1));
+      }
+      initData.gen_array = arrValues;
+    } else {
+      // Ensure user provided array is in correct range
+      if (arrValues.length < minSize || arrValues.length > maxSize) {
         alert(msg);
         return null;
       }
+
+      // Ensure all user entered values are positive integers
+      for (i = 0; i < arrValues.length; i++) {
+        arrValues[i] = Number(arrValues[i]);
+        if (isNaN(arrValues[i]) || arrValues[i] < 0 || arrValues[i] > upperLimit) {
+          alert(msg);
+          return null;
+        }
+      }
+
+      initData.user_array = arrValues;
+
+      // Update the arraysize dropdown to match the length of the user entered array
+      $('#arraysize').val(arrValues.length);
     }
 
-    initData.user_array = arrValues;
+    // Dynamically log initial state of text boxes
+    $('input[type=text]').each(function (index, item) {
+      var id = $(item).attr('id');
 
-    // Update the arraysize dropdown to match the length of the user entered array
-    $('#arraysize').val(arrValues.length);
+      if (id !== 'arrayValues') {
+        initData['user_' + id] = $(item).val();
+      }
+    });
+
+    // Dynamically log initial state of dropdown lists
+    $('select').each(function (index, item) {
+      var id = $(item).attr('id');
+      initData['user_' + id] = $(item).val();
+    });
+
+    // Log initial state of exercise
+    logExerciseInit(initData);
+
+    return arrValues;
   }
 
-  // Dynamically log initial state of text boxes
-  $('input[type=text]').each(function (index, item) {
-    var id = $(item).attr('id');
+  // Add AV utility functions to a
+  var av = {};
+  av.logExerciseInit = logExerciseInit;
+  av.awardCompletionCredit = awardCompletionCredit;
+  av.initArraySize = initArraySize;
+  av.reset = reset;
+  av.processArrayValues = processArrayValues;
+  window.ODSA.AV = av;
 
-    if (id !== 'arrayValues') {
-      initData['user_' + id] = $(item).val();
-    }
-  });
-
-  // Dynamically log initial state of dropdown lists
-  $('select').each(function (index, item) {
-    var id = $(item).attr('id');
-    initData['user_' + id] = $(item).val();
-  });
-
-  // Log initial state of exercise
-  logExerciseInit(initData);
-
-  return arrValues;
-}
-
-(function ($) {
-//*****************************************************************************
-//*************                  JSAV Extensions                  *************
-//*****************************************************************************
+  //*****************************************************************************
+  //*************                  JSAV Extensions                  *************
+  //*****************************************************************************
   /**
    * Extends the JSAV AV array to have the slice functionality of JavaScript arrays
    */
@@ -243,12 +264,12 @@ function processArrayValues(upperLimit) {
     return str;
   };
 
-//*****************************************************************************
-//*************                      LOGGING                      *************
-//*****************************************************************************
+  //*****************************************************************************
+  //*************                      LOGGING                      *************
+  //*****************************************************************************
   $(document).ready(function () {
-    // Initialize the global AV_NAME variable
-    AV_NAME = getNameFromURL();
+    // Initialize settings.AV_NAME
+    settings.AV_NAME = odsaUtils.getNameFromURL();
 
     emptyContent = $('.avcontainer').html();
 
@@ -265,7 +286,7 @@ function processArrayValues(upperLimit) {
       }
 
       // Overwrite the av attribute with the correct value and append the uiid
-      data.av = AV_NAME;
+      data.av = settings.AV_NAME;
       data.uiid = uiid;
 
       // If data.desc doesn't exist or is empty, initialize it
@@ -284,8 +305,8 @@ function processArrayValues(upperLimit) {
         data.desc = JSON.stringify({'index': data.index, 'arrayid': data.arrayid});
       } else if (data.type === "jsav-exercise-grade-change") {
         // On grade change events, log the user's score and submit it
-        var score = roundPercent((data.score.student - data.score.fix) / data.score.total);
-        var complete = roundPercent(data.score.student / data.score.total);
+        var score = odsaUtils.roundPercent((data.score.student - data.score.fix) / data.score.total);
+        var complete = odsaUtils.roundPercent(data.score.student / data.score.total);
         data.desc = JSON.stringify({'score': score, 'complete': complete});
         flush = true;
       } else if (data.type === "jsav-exercise-model-open") {
@@ -315,38 +336,38 @@ function processArrayValues(upperLimit) {
       // Mark data as logged on the client side, then send to message to the parent window
       data.totalTime = totalTime + (+new Date()) - focusTime;
       data.logged = true;
-      parent.postMessage(data, moduleOrigin);
+      parent.postMessage(data, settings.moduleOrigin);
 
       // Save the event in localStorage
-      if (serverEnabled()) {
-        logEvent(data);
+      if (odsaUtils.serverEnabled()) {
+        odsaUtils.logEvent(data);
 
         if (flush) {
-          sendEventData();
+          odsaUtils.sendEventData();
         }
       }
     });
 
-    if (serverEnabled()) {
+    if (odsaUtils.serverEnabled()) {
       // Log the browser ready event
-      logUserAction('document-ready', 'User loaded the ' + AV_NAME + ' AV');
+      odsaUtils.logUserAction('document-ready', 'User loaded the ' + settings.AV_NAME + ' AV');
 
       // Send any stored event data when the page loads
-      sendEventData();
+      odsaUtils.sendEventData();
 
       $(window).focus(function (e) {
-        logUserAction('window-focus', 'User looking at ' + AV_NAME + ' window');
+        odsaUtils.logUserAction('window-focus', 'User looking at ' + settings.AV_NAME + ' window');
         focusTime = +new Date();
       });
 
       $(window).blur(function (e) {
-        logUserAction('window-blur', 'User is no longer looking at ' + AV_NAME + ' window');
+        odsaUtils.logUserAction('window-blur', 'User is no longer looking at ' + settings.AV_NAME + ' window');
         totalTime += (+new Date() - focusTime);
       });
 
       $(window).on('beforeunload', function () {
         // Log the browser unload event
-        logUserAction('window-unload', 'User closed or refreshed ' + AV_NAME + ' window');
+        odsaUtils.logUserAction('window-unload', 'User closed or refreshed ' + settings.AV_NAME + ' window');
       });
     }
   });

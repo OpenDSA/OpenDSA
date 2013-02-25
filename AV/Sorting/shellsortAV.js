@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, initArraySize, processArrayValues, reset */
+/*global alert: true, ODSA */
 /*global sweep */
 (function ($) {
   var jsav, // for JSAV library object av
@@ -19,7 +19,7 @@
      "label": "Array layout: ", "value": "bar"});
 
   // Initialize the arraysize dropdown list
-  initArraySize(5, 16, 8);
+  ODSA.AV.initArraySize(5, 16, 8);
   
   // Process help button: Give a full help page for this activity
   // We might give them another HTML page to look at.
@@ -60,11 +60,11 @@
     // Validate the user's increments
     var incrs = checkIncrements();
 
-    var arrValues = processArrayValues();
+    var arrValues = ODSA.AV.processArrayValues();
     
     // If arrValues is null, the user gave us junk which they need to fix
     if (incrs && arrValues) {
-      reset(true);
+      ODSA.AV.reset(true);
       jsav = new JSAV($('.avcontainer'));
 
       // Create a new array using the layout the user has selected
@@ -85,6 +85,6 @@
   $('#help').click(help);
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#reset').click(reset);
+  $('#reset').click(ODSA.AV.reset);
   $('#increments').focusout(checkIncrements);
 }(jQuery));

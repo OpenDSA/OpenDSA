@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, initArraySize, processArrayValues, reset */
+/*global alert: true, ODSA */
 (function ($) {
   var jsav;
 
@@ -19,7 +19,7 @@
 
   // Execute the "Run" button function
   function runIt() {    
-      reset(true);
+      ODSA.AV.reset(true);
       jsav = new JSAV($('.avcontainer'));
 
     jsav.displayInit();
@@ -148,5 +148,5 @@
   $('#help').click(help);
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#reset').click(reset);
+  $('#reset').click(ODSA.AV.reset);
 }(jQuery));

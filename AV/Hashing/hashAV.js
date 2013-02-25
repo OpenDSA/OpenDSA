@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, console: true, is, logExerciseInit */
+/*global alert: true, console: true, is, ODSA */
 
 /*
  * For queries & switch cases, follow the numbering below:
@@ -1178,7 +1178,7 @@
         state.user_mValue = $("#mValue").val();
         state.hash_table = arr.toString();
         state.user_input = inputVal;
-        logExerciseInit(state);
+        ODSA.AV.logExerciseInit(state);
 
         // Disable input field to process it safely
         $("#input").attr("disabled", "disabled");

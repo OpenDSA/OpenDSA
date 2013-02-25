@@ -31,6 +31,12 @@ Configuration Process
 
 Please see the comment at the beginning of configure.py for more information about how the script works.  Keeping the information in the script itself ensures the script is well-documented and makes it easier to maintain the documentation.
 
+**Note**: The OpenDSA root directory must be web-accessible as there are many supplemental directories and files (AV/, Exercises/, lib/, SourceCode/, etc) which must be referenced.  These files are identical for all books and not copying them reduces the footprint of each book.
+
+
+Module and Exercise Removal
+===========================
+
 * Only the modules listed in the configuration file will be included.  To remove a module from the book, simply remove the module object from the configuration file.  
 * To remove an exercise from a module, set the "remove" attribute to true.  Exercises that do not appear in the configuration file will still be included in the book using the default configuration options.  During configuration, a list will be printed of any exercises which were encountered in the modules but not present in the configuration file.
 
@@ -38,9 +44,8 @@ Please see the comment at the beginning of configure.py for more information abo
 Future Features
 ===============
 
-* Implement independent source locations for various files rather than basing them all off the OpenDSA root directory or the output directory
+* Implement independent source locations for various files rather than basing them all off the OpenDSA root directory
 
-  * Allow copies of ODSA.js and khan-exercise.js to be built rather than modifying the originals, but reference AV and Exercise files from OpenDSA root directory
   * Implement support for hosting AVs and exercises on a different domain than modules
   
 * Build in config validator that ensures necessary fields appear in the source config file
@@ -98,23 +103,6 @@ Settings (all are required unless otherwise specified)
   * Trailing '/' is optional
   * Ex: "backend_address": "https://opendsa.cc.vt.edu/",
 
-* **copy_static_files** - a boolean which controls whether or not supplemental (non-built) files should be copied to the output directory
-
-  * Supplemental files include:
-  
-    * AV
-    * Exercises
-    * JSAV-min.js and supporting JS and CSS files
-    * Khan Academy files
-    * lib files
-    * SourceCode files
-  
-  * If the OpenDSA root directory is web accessible, this can be set to false
-  * If the OpenDSA root directory is not web accessible or you want the output directory (specified above) to contain all the files necessary to host OpenDSA, set this value to true
-  * **NOTE**: If this is set to false, the original copy of lib/ODSA.js and ODSAkhan-exercises/khan-exercise.js will be modified
-
-* **minify** - (optional) a boolean controlling whether or not the JS and CSS files will be minified, if this attribute is not present the files will be minified by default
-
 * **build_JSAV** - a boolean controlling whether or not the JSAV library should be rebuild every time the configuration file is run
 
   * This value should be set to false for development
@@ -124,6 +112,8 @@ Settings (all are required unless otherwise specified)
 
   * This can generally be set to true because in most cases it makes sense to build the book immediately after it is configured
   * If necessary, this value can be set to false and OpenDSA can be built manually by running make from the output directory
+
+* **allow_anonymous_credit** - (optional) a boolean controlling whether credit for exercises completed anonymously (without logging in) will be transferred to the next user to log in, OpenDSA will accept anonymous credit by default if this attribute is not present
 
 * **chapters** - this object contains a hierarchy of chapters, sections, subsections, modules and exercises
 
@@ -151,11 +141,5 @@ Settings (all are required unless otherwise specified)
         * **required** - whether the exercise is required for module proficiency
         * **points** - the number of points the exercise is worth
         * **threshold** - the percentage a user needs to score on the exercise to obtain proficiency
-        * **type** - the exercise type
-        
-          * **ka** - Khan Academy style exercises
-          * **pe** - OpenDSA proficiency exercises
-          * **ss** - slideshows
-          * **dgm** - JSAV-based diagram
           
       * JSAV-based diagrams do not need to be listed

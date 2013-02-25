@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, initArraySize, processArrayValues, reset */
+/*global alert: true, ODSA */
 (function ($) {
   var jsav,   // for JSAV library object
       arr,    // for the JSAV array
@@ -16,7 +16,7 @@
   var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
   
   // Initialize the arraysize dropdown list
-  initArraySize(5, 16, 8);
+  ODSA.AV.initArraySize(5, 16, 8);
 
   // Process About button: Pop up a message with an Alert
   function about() {
@@ -63,11 +63,11 @@
 
   // Execute the "Run" button function
   function runIt() {
-    var arrValues = processArrayValues();
+    var arrValues = ODSA.AV.processArrayValues();
     
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
-      reset(true);
+      ODSA.AV.reset(true);
       jsav = new JSAV($('.avcontainer'));
 
       // Create a new array using the layout the user has selected
@@ -86,5 +86,5 @@
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#reset').click(reset);
+  $('#reset').click(ODSA.AV.reset);
 }(jQuery));

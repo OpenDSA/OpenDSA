@@ -42,6 +42,10 @@ table.data tr td.proficient, table.data tr:hover td.proficient {
   width: 250px;
 }
 
+#gradeHeader {
+  display: none;
+}
+
 /* Moves the checkbox away from the Expand / Collapse links so the interface doesn't look cluttered */
 #showZeroPointExer {
   margin-left: 40px;
