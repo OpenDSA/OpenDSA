@@ -467,18 +467,6 @@ form.signin .textbox input {
 form.signin input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
 form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
 
-#dis {
-	text-align:center;
-	height: 25px;
-	width: 250px;
-	background-color:#46DAFF;
-	color:#000;
-}
-#tex {
-	width:120px;
-	float: left;
-}
-
 
 /* student page rules */  
 #pointsBox {
