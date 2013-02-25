@@ -545,16 +545,7 @@
       "OpenHash": {
         "long_name": "Open Hashing",
         "exercises": {
-<<<<<<< HEAD
           "openhashCON1": {},
-=======
-          "openhashCON1": {
-            "long_name": "Open Hashing Slideshow 1",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
->>>>>>> 61f96ba313f608f40890b050aaa6096b652eb5ce
           "OpenHashPRO": {
             "long_name": "Open Hashing Proficiency",
             "required": true,
