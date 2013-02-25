@@ -95,12 +95,7 @@
       "OpenHash": {
         "long_name": "Open Hashing",
         "exercises": {
-          "openhashCON1": {
-            "long_name": "Open Hashing Slideshow 1",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
+          "openhashCON1": {},
           "OpenHashPRO": {
             "long_name": "Open Hashing Proficiency",
             "required": true,
