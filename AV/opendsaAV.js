@@ -89,7 +89,7 @@
     var data = {av: settings.AV_NAME, type: 'odsa-exercise-init', desc: JSON.stringify(initData)};
     $("body").trigger("jsav-log-event", [data]);
   }
-	
+
   /**
    * Generates a JSAV event which triggers the code to give a user credit for an exercise
    */
