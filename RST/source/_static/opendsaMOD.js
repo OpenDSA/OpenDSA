@@ -1,7 +1,5 @@
 "use strict";
-/*global alert: true, console: true, ODSA, warnUserLogin, storeStatusAndUpdateDisplays */
-
-/* warnUserLogin and storeStatusAndUpdateDisplays are defined in this file, but due to cyclic dependencies */
+/*global alert: true, console: true, ODSA */
 
 (function ($) {
   var settings = ODSA.SETTINGS,
@@ -791,7 +789,7 @@
 
           scoreData[username] = {};
         }
-        
+
         // If user does not have an entry for the given book, create one
         if (!scoreData[username][book]) {
           if (settings.debugMode) {
@@ -828,10 +826,10 @@
       if (username === "guest") {
         return;
       }
-      
+
       // Load score data
       var scoreData = odsaUtils.getJSON(localStorage.score_data);
-      
+
       if (!scoreData.guest || !scoreData.guest[book]) {
         return;
       }
@@ -841,7 +839,7 @@
         console.debug('scoreData (unmodified):');
         console.debug(JSON.stringify(scoreData));
       }
-      
+
       // Create a deep copy of anonymous user's data so that the original can be
       // cleared and saved immediately to prevent accidentally overwriting data
       var anonData = $.extend(true, [], scoreData.guest[book]);
@@ -852,7 +850,7 @@
 
       var validDate = new Date();
       validDate.setDate(validDate.getDate() - 5);
-      
+
       if (settings.debugMode) {
         console.debug('anonData:');
         console.debug(JSON.stringify(anonData));
@@ -864,7 +862,7 @@
         if (settings.debugMode) {
           console.debug(anonData[i].tstamp + ' > ' + (+validDate));
         }
-        
+
         if (anonData[i].tstamp > +validDate) {
           storeScoreData(anonData[i], username, book);
         }
@@ -1098,7 +1096,7 @@
 
       // Load buffered score data
       var scoreData = odsaUtils.getJSON(localStorage.score_data);
-      
+
       if (scoreData[username] && scoreData[username][book]) {
         // Create a deep copy of user's score data (for the given book) so the
         // original can be cleared and saved to prevent accidentally overwriting data
@@ -1257,28 +1255,28 @@
       var registrationBox = '#registration-box',
           popMargTop = ($(registrationBox).height() + 24) / 2,
           popMargLeft = ($(registrationBox).width() + 24) / 2;
-      
+
       // Change the top and left margins to center the box
       $(registrationBox).css({
         'margin-top' : -popMargTop,
         'margin-left' : -popMargLeft
       });
-      
+
       // Clear any existing error messages
       $('#register_error').slideUp().html('');
-      
+
       // Fade in the Popup
       $(registrationBox).fadeIn(300);
 
       // Add the mask to body
       $('body').append('<div id="mask"></div>');
       $('#mask').fadeIn(300);
-      
+
       // Set the focus to the username box
       $('#user').focus();
     }
   }
-  
+
   /**
    * Opens the login window
    */
@@ -1357,7 +1355,7 @@
       localStorage.warn_login = "false";
     }
   }
-  
+
   function login(username, password) {
     jQuery.ajax({
       url:   settings.serverURL + "/api/v1/users/login/",
@@ -1523,7 +1521,7 @@
         $(item).after("<span id='" + exerName + "_shb_saving_msg' class='shb_msg'>Saving...</span>");
       }
     });
-    
+
     // Set settings.dispModComp to true if the module contains any required exercises
     for (var exer in exercises) {
       if (exercises.hasOwnProperty(exer) && exercises[exer].required) {
@@ -1531,7 +1529,7 @@
         break;
       }
     }
-    
+
     if (settings.dispModComp) {
       // Append the module complete code to the header
       $('h1 > a.headerlink').parent().css('position', 'relative');
@@ -1637,12 +1635,12 @@
       $('#login-submit-button').click(function (event) {
         var username = $('#username').val(),
             password = $('#password').val();
-        
+
         if (username === "" || password === "") {
           alert("Please enter your username and password");
           return false;
         }
-      
+
         login(username, password);
         return false;
       });
@@ -1693,7 +1691,7 @@
         showRegistrationBox();
         return false;
       });
-      
+
       /*
       //Brings the registration form from the login popup page
       $('a.signup').click(function () {
@@ -1709,7 +1707,7 @@
         showRegistrationBox();
         return false;
       });
-      
+
       // Attaches a click handler to the registration submit button
       // Validation user input and if valid sends a message to the server to create a new user
       // If a new user is successfully created, automatically logs the user in
@@ -1723,22 +1721,22 @@
           $('#register_error').slideDown().html("Please enter a username");
           return false;
         }
-        
+
         if (pass === "") {
           $('#register_error').slideDown().html('Please enter a password');
           return false;
         }
-        
+
         if (rpass === "") {
           $('#register_error').slideDown().html('Please confirm your password');
           return false;
         }
-        
+
         if (pass !== rpass) {
           $('#register_error').slideDown().html('Passwords do not match');
           return false;
         }
-        
+
         // TODO: Better support these email rules: http://rumkin.com/software/email/rules.php
         // Quoted local parts are not currently supported
         // Filter based on http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
@@ -1748,7 +1746,7 @@
           $('#register_error').slideDown().html('Please enter a valid email');
           return false;
         }
-        
+
         jQuery.ajax({
           url:   settings.serverURL + "/api/v1/newuser/",
           type:  "POST",
@@ -1764,7 +1762,7 @@
           },
           error: function (data) {
             data = odsaUtils.getJSON(data);
-            
+
             if (data.status === 400) {
               $('#register_error').slideDown().html('Username already exists');
             }
@@ -1803,11 +1801,11 @@
   $(window).load(function () {
     console.debug('Load time: ' + (+new Date() - readyTime));
   });
-  
+
   //*****************************************************************************
   //***********            Creates global ODSA.MOD object           ***********
   //*****************************************************************************
-  
+
   // Add publically available functions to a globally accessible ODSA.MOD object
   var odsaMod = {};
   odsaMod.STATUS = Status;
