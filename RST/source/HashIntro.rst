@@ -50,7 +50,7 @@ The number of slots in hash table ``HT`` will be denoted by the
 variable :math:`M` with slots numbered from 0 to :math:`M-1`.
 
 The goal for a hashing system is to arrange things such that,
-for any key value ``K`` and some hash function **h**,
+for any key value ``K`` and some hash function :math:`h`,
 :math:`i = \mathbf{h}(K)` is a slot in the table such that
 :math:`0 <= i < M`,
 and we have the key of the record stored at
