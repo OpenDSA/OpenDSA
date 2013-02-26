@@ -409,11 +409,6 @@ div.viewcode-block:target {
         -webkit-border-radius: 3px; /* Safari, Chrome */
 }
 
-.registration-popup{
-        top: 30%; left: 30%;
-}
-
-
 img.btn_close { /* Position the close button */
         float: right;
         margin: -28px -28px 0 0;
