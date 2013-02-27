@@ -4,11 +4,18 @@ Using OpenDSA with Khan Academy infrastructure
 ==============================================
 
 We use the Khan Academy (KA) infrastructure for writing questions.
-KA supplies some documentation at
+KA supplies some documentation at their
 `wiki <https://github.com/Khan/khan-exercises/wiki/>`_.
 
 Using the Multiple Choice Question Template
 -------------------------------------------
+
+A template for writing multiple choice questions is available in
+``OpenDSA/Doc/TemplateLessonMC.html``.
+This page walks you through how to use the template to write your own
+multiple choice (or T/F) questions.
+When complete, your file should go in the
+``OpenDSA/Exercises/Development`` directory.
 
 #. Copy the file "TemplateLessonMC.html" and open it in any text editor.
 
@@ -60,8 +67,8 @@ Using the Multiple Choice Question Template
        with your selected incorrect answer
 
    * If any question text, question answer, or incorrect answer
-      has mathematical formula (in latex format), put the formula
-      between ``<code></code>`` tags as in these examples::
+     has a mathematical formula (in latex format), put the formula
+     between ``<code></code>`` tags as in these examples::
 
         <code>\log n</code>  
         <code>n</code>
@@ -77,4 +84,4 @@ Using the Multiple Choice Question Template
    * Replace ``<<ANY HINTS YOU HAVE>>`` with any hints you may think will
      be useful to the student. If you don't have any just delete this
      code from this question. If you have multiple hints, you can add
-     as many as you like, each in its own ``<p></p>`` tags.
+     as many as you like, each within its own ``<p></p>`` tags.

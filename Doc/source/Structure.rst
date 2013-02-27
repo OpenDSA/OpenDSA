@@ -5,7 +5,7 @@ Module Structure
 
 Each module is basically a single ReST file.
 However, the first thing that you should always include is an
-`avembed` directive block.
+`avmetadata` directive block.
 Among other things, this will define the module within the
 prerequisite structure, which is important when generating a full
 textbook.

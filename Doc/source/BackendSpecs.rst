@@ -3,9 +3,11 @@
 OpenDSA back-end web services and user interface Specifications (draft)
 =======================================================================
 
-The backend should provide web services to store student responses, notifies the instructor, and shows student progress and performance over time.
-The API is based on REST (REpresentional State Transfer) principles. The preferred data exchanged format will be JSON.
-
+The OpenDSA "back end" provides web services to store student
+responses and show student progress and performance over time.
+The API is based on REST (REpresentional State Transfer)
+principles.
+Information is transferred to/from the back end using JSON.
 
 
 KA Exercises
