@@ -86,6 +86,5 @@ records in each bin to a small number that can be sorted in some
 other way.
 
 .. avembed:: Exercises/Hashing/OpenHashPRO.html ka
-   :showbutton: hide
 
 .. odsascript:: AV/Hashing/openhashCON.js

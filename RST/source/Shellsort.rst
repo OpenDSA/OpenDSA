@@ -156,7 +156,6 @@ Here is a code implementation for Shellsort.
 Now, test your understanding of the sublist concept.
 
 .. avembed:: Exercises/Sorting/ShellsortSublist.html ka
-   :showbutton: hide
 
 There is a lot of flexibility to picking the increment series.
 It does not need to start with the greatest power of less than
@@ -173,18 +172,15 @@ Use this visualization to make sure that you understand how Shellsort
 works.
 
 .. avembed:: AV/Sorting/shellsortAV.html ss
-   :showbutton: show
 
 Next, let's review what makes for a legal increment series.
 
 .. avembed:: Exercises/Sorting/ShellsortSeries.html ka
-   :showbutton: hide
 
 Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/ShellsortProficiency.html pe
-   :showbutton: show
 
 Some choices for the series of increments will make Shellsort
 run more efficiently than others.
@@ -207,7 +203,6 @@ Now you are ready to try out some different increment series to see
 how they affect the cost of Shellsort.
 
 .. avembed:: AV/Sorting/ShellsortPerformance.html pe
-   :showbutton: hide
 
 A theoretical analysis of Shellsort is difficult, so we must accept
 without proof that the average-case performance of Shellsort
@@ -226,7 +221,6 @@ algorithm is unacceptably slow.
 Here are some review questions to check that you understand Shellsort.
 
 .. avembed:: Exercises/Sorting/ShellsortSumm.html ka
-   :showbutton: hide
 
 Notes
 -----

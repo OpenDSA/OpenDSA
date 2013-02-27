@@ -143,4 +143,3 @@ are likely to be in the table at maximum loading, and select the
 table size accordingly.
 
 .. avembed:: Exercises/Hashing/HashAnalSumm.html ka
-   :showbutton: hide

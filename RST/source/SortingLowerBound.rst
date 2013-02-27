@@ -278,4 +278,3 @@ Here are some review questions to check that you understand
 this proof.
 
 .. avembed:: Exercises/Sorting/SortBoundSumm.html ka
-   :showbutton: hide

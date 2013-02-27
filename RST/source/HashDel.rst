@@ -53,7 +53,6 @@ the first tombstone encountered.
 Here is a practice exercise.
 
 .. avembed:: AV/Hashing/HashingDeleteProficiency.html pe
-   :showbutton: hide
 
 The use of tombstones allows searches to work correctly and allows
 reuse of deleted slots.
@@ -100,7 +99,6 @@ Two possible solutions to this problem are
 Now here are some practice questions.
 
 .. avembed:: Exercises/Hashing/HashDelSumm.html ka
-   :showbutton: hide
 
 Congratulations! You have reached the end of the hashing tutorial.
 In summary, a properly tuned hashing system will return records with

@@ -72,7 +72,6 @@ probe sequence that visits all slots for every key.
 Now you can practice linear probing by different step sizes.
 
 .. avembed:: Exercises/Hashing/HashingLinearStepProbePRO.html ka
-   :showbutton: hide
 
 Consider the situation where :math:`c = 2` and we wish to insert a record
 with key :math:`k_1` such that
@@ -120,7 +119,6 @@ random permutation of the values from 1 to :math:`M - 1` in slots 1 to
 Here is a practice exercise for pseudo-random probing.
 
 .. avembed:: Exercises/Hashing/HashingPseudoRandomProbePRO.html ka
-   :showbutton: hide
 
 .. inlineav:: collisionCON4 ss
    :output: show
@@ -149,7 +147,6 @@ Then the :math:`i` th value in the probe sequence would be
 Now you can practice quadratic probing.
 
 .. avembed:: Exercises/Hashing/HashingQuadraticProbePRO.html ka
-   :showbutton: hide
 
 
 .. inlineav:: collisionCON6 ss
@@ -245,17 +242,14 @@ We can get that result with this secondary hash function:
 Now you can try it yourself.
 
 .. avembed:: Exercises/Hashing/HashingDoubleProbePRO.html ka
-   :showbutton: hide
 
 The following visualization lets you test out different combinations
 of hash function and collision resolution, on your own input data.
 
 .. avembed:: AV/Hashing/hashAV.html pe
-   :showbutton: show
 
 Finally, here are some practice questions.
 
 .. avembed:: Exercises/Hashing/HashCollisionSumm.html ka
-   :showbutton: hide
 
 .. odsascript:: AV/Hashing/collisionCON.js

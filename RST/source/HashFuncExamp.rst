@@ -165,7 +165,6 @@ Here is a little calculator for you to see how this works.
 Start with '4567' as an example.
 
 .. avembed:: AV/Hashing/MidSquare.html pe
-   :showbutton: show
 
 Hash Functions for Strings
 --------------------------
@@ -219,7 +218,6 @@ slots.
 Now you can try it out with this calculator.
 
 .. avembed:: AV/Hashing/StringSimple.html pe
-   :showbutton: show
 
 Here is a much better hash function for strings::
 
@@ -265,7 +263,6 @@ to hash to slot 75 in the table.
 Now you can try it out with this calculator.
 
 .. avembed:: AV/Hashing/StringSfold.html pe
-   :showbutton: show
 
 For any sufficiently long string, the sum for the integer
 quantities will typically cause a 32-bit integer to overflow
@@ -289,11 +286,9 @@ You should use the calculators above for the more complicated hash
 functions.
 
 .. avembed:: Exercises/Hashing/HashFuncPROSumm.html ka
-   :showbutton: hide
 
 Here are some review questions.
 
 .. avembed:: Exercises/Hashing/HashFuncSumm.html ka
-   :showbutton: hide
 
 .. odsascript:: AV/Hashing/hashFuncExCON.js

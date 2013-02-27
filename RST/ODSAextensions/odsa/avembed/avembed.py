@@ -1,4 +1,4 @@
-# Copyright (C) 2012 Eric Fouh 
+# Copyright (C) 2012 Eric Fouh
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the MIT License as published by
@@ -18,10 +18,10 @@ from docutils import nodes
 from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
 import random
-import os, sys 
+import os, sys
 import re
 sys.path.append(os.path.abspath('./source'))
-import conf 
+import conf
 from xml.dom.minidom import parse, parseString
 import urllib
 
@@ -32,7 +32,7 @@ def setup(app):
 CODE = """\
 <div id="%(exer_name)s">
 <p></p>
-<center> 
+<center>
 <iframe id="%(exer_name)s_iframe" data-exer-name="%(exer_name)s" data-points="%(points)s" data-required="%(required)s" data-threshold="%(threshold)s" data-long-name="%(long_name)s" data-type="%(type)s" src="%(av_address)s" type="text/javascript" width="%(width)s" height="%(height)s" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 </iframe>
 </center>
@@ -41,122 +41,120 @@ CODE = """\
 
 
 SHOWHIDE = """\
-<input type="button" 
+<input type="button"
     id="%(exer_name)s_showhide_btn"
     class="showHideLink"
-    data-exer-name="%(exer_name)s" 
-    data-long-name="%(long_name)s" 
+    data-exer-name="%(exer_name)s"
+    data-long-name="%(long_name)s"
     data-frame-src="%(av_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
     data-points="%(points)s"
     data-required="%(required)s"
     data-threshold="%(threshold)s"
-    data-type="%(type)s" 
+    data-type="%(type)s"
     value="%(show_hide_text)s %(long_name)s"/>
 """
 
 
 def embedlocal(av_path):
-   embed=[]
-   av_fullname = os.path.basename(av_path)    
-   av_name = av_fullname.partition('.')[0]  
-   the_path = conf.odsa_path + av_path
+  embed=[]
+  av_fullname = os.path.basename(av_path)
+  av_name = av_fullname.partition('.')[0]
+  
+  xmlfile = conf.av_dir + os.path.dirname(av_path) + '/xml/' + av_name + '.xml'
 
-   xmlfile = conf.odsa_path + os.path.dirname(av_path)+ '/' + '/xml/' + av_name + '.xml' 
-   av_fullpath =  conf.odsa_path + av_path  
-   avwidth=0
-   avheight=0
-   try:
-      dom = parse(xmlfile)
-      node = dom.documentElement
-      widths = dom.getElementsByTagName("width")
-      for width in widths:
-           nodes = width.childNodes
-           for node in nodes:
-               if node.nodeType == node.TEXT_NODE:
-                   avwidth=node.data
+  avwidth = 0
+  avheight = 0
+  try:
+    dom = parse(xmlfile)
+    #node = dom.documentElement
+    widths = dom.getElementsByTagName("width")
+    for width in widths:
+      nodes = width.childNodes
+      for node in nodes:
+        if node.nodeType == node.TEXT_NODE:
+          avwidth=node.data
 
-      heights = dom.getElementsByTagName("height")
-      for height in heights:
-           nodes = height.childNodes
-           for node in nodes:
-               if node.nodeType == node.TEXT_NODE:
-                   avheight=node.data
-      #link =os.path.abspath(address[1:])
-      embed.append(av_name)
-      embed.append( os.path.relpath(conf.odsa_path,conf.ebook_path)+'/' + av_path)
-      embed.append(avwidth)
-      embed.append(avheight)
-      return embed     
+    heights = dom.getElementsByTagName("height")
+    for height in heights:
+      nodes = height.childNodes
+      for node in nodes:
+        if node.nodeType == node.TEXT_NODE:
+          avheight=node.data
+    embed.append(av_name)
+    embed.append(os.path.relpath(conf.odsa_path,conf.ebook_path) + '/' + av_path)
+    embed.append(avwidth)
+    embed.append(avheight)
+    return embed
 
-   except IOError:
-      print 'ERROR: No description file when embedding: ' + xmlfile 
-      sys.exit()
+  except IOError:
+    print 'ERROR: No description file when embedding: ' + xmlfile
+    sys.exit()
 
 
 
 
 def showbutton(argument):
-    """Conversion function for the "showbutton" option."""
-    return directives.choice(argument, ('show', 'hide'))
+  """Conversion function for the "showbutton" option."""
+  return directives.choice(argument, ('show', 'hide'))
 
 
 class avembed(Directive):
-    required_arguments = 5
-    optional_arguments = 5
-    final_argument_whitespace = True
-    has_content = True
-    option_spec = {
-                   'long_name': directives.unchanged,
-                   'points': directives.unchanged,
-                   'required': directives.unchanged,
-                   'showbutton':showbutton,
-                   'threshold': directives.unchanged,
-                   }
+  required_arguments = 2
+  optional_arguments = 5
+  final_argument_whitespace = True
+  has_content = True
+  option_spec = {
+                 'long_name': directives.unchanged,
+                 'points': directives.unchanged,
+                 'required': directives.unchanged,
+                 'showbutton':showbutton,
+                 'threshold': directives.unchanged,
+                 }
 
-    def run(self):
-                
-        """ Restructured text extension for inserting embedded AVs with show/hide button """
-        self.options['address'] = self.arguments[0]
-        self.options['type'] = self.arguments[1]
+  def run(self):
 
-        url_params = {}
-        url_params['bookName'] = self.arguments[2]
-        url_params['serverURL'] = self.arguments[3]
-        url_params['moduleOrigin'] = self.arguments[4]
-        
-        embed = embedlocal(self.arguments[0])   
-        self.options['exer_name'] = embed[0]
-        self.options['av_address'] = embed[1] + '?' + urllib.urlencode(url_params)
-        self.options['width'] = embed[2]
-        self.options['height'] = embed[3]
- 
-        if 'required' not in self.options:
-          self.options['required'] = False
-        
-        if 'points' not in self.options:
-          self.options['points'] = 0
-        
-        if 'threshold' not in self.options:
-          self.options['threshold'] = 1.0
-          
-        if 'long_name' not in self.options:
-          self.options['long_name'] = self.options['exer_name']
- 
-        if 'showbutton' in self.options:
-            if self.options['showbutton'] == "show":
-                self.options['show_hide_text'] = "Hide"
-                res = SHOWHIDE % (self.options)
-                res += CODE % (self.options)
-            else:
-                self.options['show_hide_text'] = "Show"
-                res = SHOWHIDE % (self.options)
+    """ Restructured text extension for inserting embedded AVs with show/hide button """
+    self.options['address'] = self.arguments[0]
+    self.options['type'] = self.arguments[1]
 
-        else:
-            res = CODE % self.options 
-        
-        return [nodes.raw('', res, format='html')]
+    url_params = {}
+    url_params['bookName'] = conf.book_name
+    url_params['serverURL'] = conf.server_url
+    url_params['moduleOrigin'] = conf.module_origin
+
+    embed = embedlocal(self.arguments[0])
+    self.options['exer_name'] = embed[0]
+    self.options['av_address'] = embed[1] + '?' + urllib.urlencode(url_params)
+    self.options['width'] = embed[2]
+    self.options['height'] = embed[3]
+
+    if 'required' not in self.options:
+      self.options['required'] = False
+
+    if 'points' not in self.options:
+      self.options['points'] = 0
+
+    if 'threshold' not in self.options:
+      self.options['threshold'] = 1.0
+
+    if 'long_name' not in self.options:
+      self.options['long_name'] = self.options['exer_name']
+
+    if 'showbutton' in self.options:
+      if self.options['showbutton'] == "show":
+        self.options['show_hide_text'] = "Hide"
+        res = SHOWHIDE % (self.options)
+        res += CODE % (self.options)
+      else:
+        self.options['show_hide_text'] = "Show"
+        res = SHOWHIDE % (self.options)
+
+    else:
+      res = CODE % self.options
+
+    return [nodes.raw('', res, format='html')]
 
 
 
@@ -164,24 +162,19 @@ source = """\
 This is some text.
 
 .. avembed:: address type
-   :showbutton:
 
 This is some more text.
 """
 
 if __name__ == '__main__':
-    from docutils.core import publish_parts
+  from docutils.core import publish_parts
 
-    directives.register_directive('avembed',avembed)
+  directives.register_directive('avembed',avembed)
 
-    doc_parts = publish_parts(source,
-            settings_overrides={'output_encoding': 'utf8',
-            'initial_header_level': 2},
-            writer_name="html")
+  doc_parts = publish_parts(source,
+          settings_overrides={'output_encoding': 'utf8',
+          'initial_header_level': 2},
+          writer_name="html")
 
-    print doc_parts['html_body']
+  print doc_parts['html_body']
 
-
-
-
- 

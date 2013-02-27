@@ -62,12 +62,10 @@ Selection Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/selectionsortAV.html ss
-   :showbutton: show
 
 Now try for yourself to see if you understand how Selection Sort works.
 
 .. avembed:: Exercises/Sorting/SelsortPRO.html ka
-   :showbutton: hide
 
 Any algorithm can be written in slightly different ways.
 For example, we could have written Selection Sort to find the smallest
@@ -140,6 +138,5 @@ Here are some review questions to check that you understand
 Selection Sort.
 
 .. avembed:: Exercises/Sorting/SelsortSumm.html ka
-   :showbutton: hide
 
 .. odsascript:: AV/Sorting/selectionsortCON.js

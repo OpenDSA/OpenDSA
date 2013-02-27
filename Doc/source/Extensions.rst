@@ -26,7 +26,7 @@ NAME
 
 SYNOPSIS::  
                       
-    .. avembed:: <relative_path> <type> <book_name> <server_URL> <module_origin>
+    .. avembed:: <relative_path> <type>
        [:showbutton: {show|hide}]
        [:long_name: ]
        [:points: #]
@@ -34,7 +34,7 @@ SYNOPSIS::
        [:threshold: #]
        
 DESCRIPTION
-    ``.. avembed:: <relative_path> <type> <book_name> <server_URL> <module_origin>``
+    ``.. avembed:: <relative_path> <type>``
       ``<relative_path>`` is the relative path (from the OpenDSA
       home directory) to the embedded page.  ``<type>`` is the type of embedded exercise:
 
@@ -42,15 +42,13 @@ DESCRIPTION
         * **pe** - OpenDSA proficiency exercises
         * **ss** - slideshows
         * **dgm** - JSAV-based diagram
-      
-      **Note**: ``<book_name>``, ``<server_URL>`` and ``<module_origin>`` are 
-      automatically appended as part of the configuration process and should not be added manually
 
     ``[:showbutton: {show|hide}]`` 
       Include a button to show or hide the embedded
       content. The options are ``show`` to have the content visible
       when the page is first loaded or ``hide`` to have it hidden on
       page load.
+      **Added automatically by the configuration process, do NOT add manually.**
     
     ``[:long_name: ]``
     

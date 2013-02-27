@@ -69,12 +69,10 @@ Bubble Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/bubblesortAV.html ss
-   :showbutton: show
 
 Now try for yourself to see if you understand how Bubble Sort works.
 
 .. avembed:: Exercises/Sorting/BubsortPRO.html ka
-   :showbutton: hide
 
 Determining Bubble Sort's number of comparisons is easy.
 Regardless of the arrangement of the values in the array, the number
@@ -97,6 +95,5 @@ The actual number of swaps performed by Bubble Sort will be identical
 to that performed by Insertion Sort.
 
 .. avembed:: Exercises/Sorting/BubsortSumm.html ka
-   :showbutton: hide
 
 .. odsascript:: AV/Sorting/bubblesortCON.js

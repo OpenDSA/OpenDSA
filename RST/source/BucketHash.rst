@@ -64,7 +64,6 @@ expensive process.
 Now you can try it yourself.
 
 .. avembed:: Exercises/Hashing/HashingBucketPRO.html ka
-   :showbutton: hide
 
 A simple variation on bucket hashing is to hash a key value to some slot
 in the hash table as though bucketing were not being used.
@@ -82,7 +81,6 @@ in the bucket.
 Now you can try this version.
 
 .. avembed:: Exercises/Hashing/HashingBucket2PRO.html ka
-   :showbutton: hide
 
 Bucket methods are good for implementing hash tables stored on disk,
 because the bucket size can be set to the size of a disk block.

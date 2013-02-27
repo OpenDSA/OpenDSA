@@ -130,7 +130,6 @@ Here is a simple ``findpivot`` function.
 Now you can have some practice.
 
 .. avembed:: Exercises/Sorting/QuicksortPivotPRO.html ka
-   :showbutton: hide
 
 We now turn to function ``partition``.
 If we knew in advance how many keys are less than the pivot,
@@ -165,7 +164,6 @@ bound for the recursive calls to ``qsort`` can be determined.
 Now for some partition practice.
 
 .. avembed:: Exercises/Sorting/QuicksortPartitPRO.html ka
-   :showbutton: hide
 
 Here is a visualization for the entire Quicksort algorithm.
 This visualization shows you how the logical decomposition caused by
@@ -176,13 +174,11 @@ In reality, there is only a single array involved (as you will see in
 the proficiency exercise that follows the visualization).
 
 .. avembed:: AV/Sorting/quicksortAV.html ss
-   :showbutton: show
 
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.
 
 .. avembed:: AV/Sorting/quicksortProficiency.html pe
-   :showbutton: hide
 
 To analyze Quicksort, we first analyze the ``findpivot`` and
 ``partition`` functions when operating on a subarray of length
@@ -387,6 +383,5 @@ modest speedup.
 Now for review questions.
 
 .. avembed:: Exercises/Sorting/QuicksortSumm.html ka
-   :showbutton: hide
 
 .. odsascript:: AV/Sorting/quicksortCON.js

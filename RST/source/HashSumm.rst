@@ -21,4 +21,3 @@ If anything goes wrong with one of the questions, or if you think that
 you are in a series of repeating questions, then just reload the page.
 
 .. avembed:: Exercises/Hashing/HashChapterSumm.html ka
-   :showbutton: hide

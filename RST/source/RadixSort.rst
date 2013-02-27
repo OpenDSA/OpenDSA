@@ -39,7 +39,6 @@ the bins **in order**, the result is a sorted list.
 We can see this process in the following visualization.
 
 .. avembed:: AV/Sorting/radixLinkAV.html ss
-   :showbutton: show
 
 In this example, we have :math:`r=10` bins and key values in
 the range 0 to :math:`r^2-1`.
@@ -65,7 +64,6 @@ bins :math:`k` times.
 Here is a practice exercise for placing keys into bins.
 
 .. avembed:: Exercises/Sorting/RadixsortPRO.html ka
-   :showbutton: hide
 
 As with Mergesort, an efficient implementation of Radix Sort is
 somewhat difficult to achieve.
@@ -125,7 +123,6 @@ on the :math:`i`'th iteration.
 The following visualization illustrates the process.
 
 .. avembed:: AV/Sorting/radixArrayAV.html ss
-   :showbutton: show
 
 This algorithm requires :math:`k` passes over the list of :math:`n`
 numbers in base :math:`r`, with :math:`\Theta(n + r)` work done at
@@ -249,4 +246,3 @@ Thus, Radix Sort truly does :math:`\Omega(n \log n)` work to process
 Now for some review questions.
 
 .. avembed:: Exercises/Sorting/RadixSortSumm.html ka
-   :showbutton: hide

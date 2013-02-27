@@ -56,7 +56,6 @@ To get credit for the exercise, answer the following two questions:
   must be inserted before the probability of a collision reaches 50%?
 
 .. avembed:: AV/Hashing/Birthday.html pe
-   :showbutton: show
 
 To be practical, a database organized by hashing must store records in a
 hash table that is not so large that it wastes space.
@@ -149,4 +148,3 @@ First, here are some review questions for what has been covered so
 far.
 
 .. avembed:: Exercises/Hashing/HashPrinciplesSumm.html ka
-   :showbutton: hide

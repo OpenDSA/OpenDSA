@@ -53,6 +53,7 @@
             "long_name": "Insertion Sort Visualization",
             "required": false,
             "points": 0,
+            "showbutton": "show",
             "threshold": 1.0
           },
           "InssortPRO": {
@@ -93,6 +94,7 @@
             "long_name": "Bubble Sort Visualization",
             "required": false,
             "points": 0,
+            "showbutton": "show",
             "threshold": 1.0
           },
           "BubsortPRO": {
@@ -128,6 +130,7 @@
             "long_name": "Selection Sort Visualization",
             "required": false,
             "points": 0,
+            "showbutton": "show",
             "threshold": 1.0
           },
           "SelsortPRO": {
@@ -224,6 +227,7 @@
             "long_name": "Shellsort Visualization",
             "required": false,
             "points": 0,
+            "showbutton": "show",
             "threshold": 1.0
           },
           "ShellsortSeries": {
@@ -259,6 +263,7 @@
             "long_name": "Mergesort Visualization",
             "required": false,
             "points": 0,
+            "showbutton": "show",
             "threshold": 1.0
           },
           "mergesortCON1": {
@@ -323,6 +328,7 @@
             "long_name": "Quicksort Visualization",
             "required": false,
             "points": 0,
+            "showbutton": "show",
             "threshold": 1.0
           },
           "QuicksortCON1": {
@@ -410,6 +416,7 @@
             "long_name": "Radix Sort Linked Visualization",
             "required": false,
             "points": 0,
+            "showbutton": "show",
             "threshold": 1.0
           },
           "RadixsortPRO": {
@@ -422,6 +429,7 @@
             "long_name": "Radix Sort Array Visualization",
             "required": false,
             "points": 0,
+            "showbutton": "show",
             "threshold": 1.0
           },
           "RadixSortSumm": {

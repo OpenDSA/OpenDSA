@@ -45,7 +45,6 @@ Here is a pseudocode sketch of Mergesort::
 Here is a visualization that illustrates how Mergesort works.
 
 .. avembed:: AV/Sorting/mergesortAV.html ss
-   :showbutton: show
 
 The hardest step to understand about Mergesort is the merge function.
 The merge function starts by examining the first record of each
@@ -89,12 +88,10 @@ Here is a visualization for the merge operation.
 Here is a mergesort warmup exercise to practice merging.
 
 .. avembed:: Exercises/Sorting/MergesortPRO.html ka
-   :showbutton: hide
 
 Now here is a full proficiency exercise to put it all together.
 
 .. avembed:: AV/Sorting/mergesortProficiency.html pe
-   :showbutton: show
 
 Analysis of Mergesort is straightforward, despite the fact that it is
 a recursive algorithm.
@@ -136,6 +133,5 @@ and worst cases.
 Now here are summary questions.
 
 .. avembed:: Exercises/Sorting/MergesortSumm.html ka
-   :showbutton: hide
 
 .. odsascript:: AV/Sorting/mergesortCON.js

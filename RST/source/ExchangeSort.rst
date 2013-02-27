@@ -60,7 +60,6 @@ record with key value greater than the current record's key value
 appears before it.
 
 .. avembed:: Exercises/Sorting/FindInversionsPRO.html ka
-   :showbutton: hide
 
 What is the average number of inversions?
 Consider a list **L** containing
@@ -86,4 +85,3 @@ limits comparisons to adjacent items will cost at least
 Here are the module review questions.
 
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka
-   :showbutton: hide

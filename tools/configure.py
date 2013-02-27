@@ -376,14 +376,29 @@ todo_include_todos = True
 
 #---- OpenDSA variables ---------------------------------------
 
+# Name used to uniquely identify 
+book_name = '%(book_name)s'
+
+# Protocol and domain of the backend server
+server_url = '%(server_url)s'
+
+# Protocol and domain of the server hosting the module files
+module_origin = '%(module_origin)s'
+
 #Absolute path to OpenDSA directory
-odsa_path = '%(supplemental_ref_root)s'
+odsa_path = '%(odsa_root)s'
 
 #Absolute path of eTextbook (build) directory
 ebook_path = '%(output_dir)s%(rel_ebook_path)s'
 
 #path (from the RST home) to the sourcecode directory that I want to use
 sourcecode_path = '%(code_dir)s'
+
+# Path to AV/ directory (local or remote)
+av_dir = '%(av_dir)s'
+
+# Path to Exercises/ directory (local or remote)
+exercises_dir = '%(exercises_dir)s'
 
 '''
 
@@ -479,7 +494,7 @@ def process_module(mod_name, mod_attrib, index_rst, depth):
         exer_conf = exercises[av_name]
         
         for setting in exer_conf:
-          if setting == 'remove':
+          if setting == 'remove' or setting == 'showbutton':
             continue
           
           new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
@@ -499,10 +514,7 @@ def process_module(mod_name, mod_attrib, index_rst, depth):
         while (i < len(mod_data) and mod_data[i].rstrip() != ''):
           i = i + 1
       else:
-        # Append necessary attributes to avembed directive
-        new_avembed = mod_data[i].rstrip() + ' ' + conf_data['name'] + ' '
-        new_avembed += conf_data['backend_address'] + ' ' + conf_data['module_origin'] + ' ' + eol
-        new_mod_data.append(new_avembed)
+        new_mod_data.append(mod_data[i])
         
         if av_name not in exercises:
           # Add the name to a list of missing exercises
@@ -512,7 +524,15 @@ def process_module(mod_name, mod_attrib, index_rst, depth):
           exer_conf = exercises[av_name]
           
           for setting in exer_conf:
+            # If "showbutton": "none", then don't append showbutton option
+            if setting == 'showbutton' and exer_conf[setting] == 'none':
+              continue
+            
             new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
+          
+          # If 'showbutton' attribute isn't present, default to hidden
+          if 'showbutton' not in exer_conf:
+            new_mod_data.append('   :showbutton: hide' + eol)
     else:
       new_mod_data.append(mod_data[i])
     
@@ -541,7 +561,7 @@ config_file = sys.argv[1]
 
 # Throw an error if the specified config files doesn't exist
 if not os.path.exists(config_file):
-  print "Error: File " + config_file + " doesn't exist"
+  print "ERROR: File " + config_file + " doesn't exist"
   sys.exit(1)
 
 print "\nConfiguring OpenDSA, using " + config_file + '\n'
@@ -552,12 +572,6 @@ with open(config_file) as config:
   conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
 config.close()
 
-# Parse the name of the config file to use as the book name
-conf_data['name'] = os.path.basename(config_file).replace('.json', '')
-
-# Strip the '/' from the end of the serverURL
-conf_data['backend_address'] = conf_data['backend_address'].rstrip('/')
-
 # Auto-detect ODSA directory
 (odsa_dir, script) = os.path.split( os.path.abspath(__file__))
 odsa_dir = odsa_dir.replace("\\", "/")
@@ -566,6 +580,40 @@ odsa_dir = odsa_dir.replace("/tools", "/")
 # Process the code and output directory paths
 code_dir = process_path(conf_data['code_dir'], odsa_dir)
 output_dir = process_path(conf_data['output_dir'], odsa_dir)
+
+# Assign defaults to optional settings
+
+# Parse the name of the config file to use as the book name
+conf_data['name'] = os.path.basename(config_file).replace('.json', '')
+
+# Strip the '/' from the end of the serverURL
+conf_data['backend_address'] = conf_data['backend_address'].rstrip('/')
+
+# Assume exercises are hosted on same domain as modules
+if 'av_origin' not in conf_data:
+  conf_data['av_origin'] = conf_data['module_origin']
+
+# Assume exercises are hosted on same domain as modules
+if 'exercise_origin' not in conf_data:
+  conf_data['exercise_origin'] = conf_data['module_origin']
+
+# Display an error message and exit if 'av_root_dir' is an absolute pathname to a remote system and its domain doesn't match 'av_origin' 
+if 'av_root_dir' in conf_data and conf_data['av_root_dir'].startswith('http') and not conf_data['av_root_dir'].startswith(conf_data['module_origin']) and not conf_data['av_root_dir'].startswith(conf_data['av_origin']):
+  print 'ERROR: "av_origin" does not match domain of remote AV root directory'
+  print '"av_origin": ' + conf_data['av_origin']
+  print '"av_root_dir": ' + conf_data['av_root_dir']
+  sys.exit(1)
+elif 'av_root_dir' not in conf_data:
+  conf_data['av_root_dir'] = odsa_dir
+  
+# Display an error message and exit if 'exercises_root_dir' is an absolute pathname to a remote system and its domain doesn't match 'exercise_origin' 
+if 'exercises_root_dir' in conf_data and conf_data['exercises_root_dir'].startswith('http') and not conf_data['exercises_root_dir'].startswith(conf_data['module_origin']) and not conf_data['exercises_root_dir'].startswith(conf_data['exercise_origin']):
+  print 'ERROR: "exercise_origin" does not match domain of remote Exercises root directory'
+  print '"exercise_origin": ' + conf_data['exercise_origin']
+  print '"exercises_root_dir": ' + conf_data['exercises_root_dir']
+  sys.exit(1)
+elif 'exercises_root_dir' not in conf_data:
+  conf_data['exercises_root_dir'] = odsa_dir
 
 # TODO: Is this limitation still necessary?
 if output_dir == (odsa_dir) or output_dir == (odsa_dir + "RST/"):
@@ -612,13 +660,15 @@ distutils.file_util.copy_file(config_file, src_dir + '_static/')
 # Initialize options for conf.py
 options = {}
 options['title'] = conf_data['title']
+options['book_name'] = conf_data['name']
+options['server_url'] = conf_data['backend_address']
+options['module_origin'] = conf_data['module_origin']
 options['odsa_root'] = odsa_dir
-# Base directory where supplemental files such as AV/, Exercises/, lib/ can be referenced from
-# Will either be the ODSA root directory (if supplemental files are not copied) or output_dir (if they are copied)
-options['supplemental_ref_root'] = odsa_dir
 options['output_dir'] = output_dir
 options['rel_ebook_path'] = rel_ebook_path
 options['code_dir'] = code_dir
+options['av_dir'] = conf_data['av_root_dir']
+options['exercises_dir'] = conf_data['exercises_root_dir']
 
 # Create a Makefile in the output directory 
 with open(output_dir + 'Makefile','w') as makefile:
@@ -661,6 +711,7 @@ config_js_template = '''\
   settings.serverURL = "%(server_url)s";
   settings.moduleOrigin = "%(module_origin)s";
   settings.exerciseOrigin = "%(exercise_origin)s";
+  settings.avOrigin = "%(av_origin)s";
   // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
   settings.allowAnonCredit = "%(allow_anon_credit)s";
   // Flag which controls debugMode
@@ -680,6 +731,7 @@ with open(src_dir + '_static/config.js','w') as config_js:
   conf_js_data['server_url'] = conf_data['backend_address']
   conf_js_data['module_origin'] = conf_data['module_origin']
   conf_js_data['exercise_origin'] = conf_data['exercise_origin']
+  conf_js_data['av_origin'] = conf_data['av_origin']
   
   if 'allow_anonymous_credit' in conf_data:
     conf_js_data['allow_anon_credit'] = str(conf_data['allow_anonymous_credit']).lower()
