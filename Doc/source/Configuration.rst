@@ -158,7 +158,7 @@ Settings (all are required unless otherwise specified)
       * Omitting an exercise from the module's "exercises" object will cause the exercise to be removed from the configured module
       * Each exercise object contains required information about that exercise including:
 
-        * **showbutton** - (optional) controls whether or not the exercises is displayed and a Show / Hide button created
+        * **showhide** - (optional) controls whether or not the exercises is displayed and a Show / Hide button created
 
           * Setting this attribute to "show" or "hide" will create the corresponding button and if set to "show", it will display the embedded page
           * Setting this attribute to "none" will cause the exercise to be embedded without a button

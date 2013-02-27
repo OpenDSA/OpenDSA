@@ -494,7 +494,7 @@ def process_module(mod_name, mod_attrib, index_rst, depth):
         exer_conf = exercises[av_name]
         
         for setting in exer_conf:
-          if setting == 'remove' or setting == 'showbutton':
+          if setting == 'remove' or setting == 'showhide':
             continue
           
           new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
@@ -524,15 +524,15 @@ def process_module(mod_name, mod_attrib, index_rst, depth):
           exer_conf = exercises[av_name]
           
           for setting in exer_conf:
-            # If "showbutton": "none", then don't append showbutton option
-            if setting == 'showbutton' and exer_conf[setting] == 'none':
+            # If "showhide": "none", then don't append showhide option
+            if setting == 'showhide' and exer_conf[setting] == 'none':
               continue
             
             new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
           
-          # If 'showbutton' attribute isn't present, default to hidden
-          if 'showbutton' not in exer_conf:
-            new_mod_data.append('   :showbutton: hide' + eol)
+          # If 'showhide' attribute isn't present, default to hidden
+          if 'showhide' not in exer_conf:
+            new_mod_data.append('   :showhide: hide' + eol)
     else:
       new_mod_data.append(mod_data[i])
     

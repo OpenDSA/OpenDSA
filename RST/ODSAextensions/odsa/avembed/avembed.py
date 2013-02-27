@@ -29,7 +29,7 @@ def setup(app):
     app.add_directive('avembed',avembed)
 
 
-CODE = """\
+IFRAME_HTML = """\
 <div id="%(exer_name)s">
 <p></p>
 <center>
@@ -40,7 +40,7 @@ CODE = """\
 """
 
 
-SHOWHIDE = """\
+BUTTON_HTML = """\
 <input type="button"
     id="%(exer_name)s_showhide_btn"
     class="showHideLink"
@@ -95,8 +95,8 @@ def embedlocal(av_path):
 
 
 
-def showbutton(argument):
-  """Conversion function for the "showbutton" option."""
+def showhide(argument):
+  """Conversion function for the "showhide" option."""
   return directives.choice(argument, ('show', 'hide'))
 
 
@@ -109,7 +109,7 @@ class avembed(Directive):
                  'long_name': directives.unchanged,
                  'points': directives.unchanged,
                  'required': directives.unchanged,
-                 'showbutton':showbutton,
+                 'showhide':showhide,
                  'threshold': directives.unchanged,
                  }
 
@@ -142,17 +142,17 @@ class avembed(Directive):
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
 
-    if 'showbutton' in self.options:
-      if self.options['showbutton'] == "show":
+    if 'showhide' in self.options:
+      if self.options['showhide'] == "show":
         self.options['show_hide_text'] = "Hide"
-        res = SHOWHIDE % (self.options)
-        res += CODE % (self.options)
+        res = BUTTON_HTML % (self.options)
+        res += IFRAME_HTML % (self.options)
       else:
         self.options['show_hide_text'] = "Show"
-        res = SHOWHIDE % (self.options)
+        res = BUTTON_HTML % (self.options)
 
     else:
-      res = CODE % self.options
+      res = IFRAME_HTML % self.options
 
     return [nodes.raw('', res, format='html')]
 
