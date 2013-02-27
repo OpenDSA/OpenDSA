@@ -3,8 +3,8 @@
 modules.json
 modules.csv
 
-#build HTML directory
-build
+# Documentation build directory
+Doc/manual
 
 #Books directory (these are build targets)
 Books
