@@ -1703,8 +1703,8 @@
 
       //User forgot his username. We open backend reset password page in a new window.
       $('#forgot').click(function () {
-          window.open( settings.serverURL + "/accounts/password/reset/");
-      });      
+        window.open(settings.serverURL + "/accounts/password/reset/");
+      });
 
 
       // Brings up the embedded registration  box if the user clicks 'Register' and
