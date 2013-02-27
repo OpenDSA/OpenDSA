@@ -1692,20 +1692,10 @@
         return false;
       });
 
-      /*
-      //Brings the registration form from the login popup page
-      $('a.signup').click(function () {
-        $('.login-popup').fadeOut(300);
-        showRegistrationBox();
-        return false;
-      });
-      */
-
       //User forgot his username. We open backend reset password page in a new window.
       $('#forgot').click(function () {
         window.open(settings.serverURL + "/accounts/password/reset/");
       });
-
 
       // Brings up the embedded registration  box if the user clicks 'Register' and
       // should close the registration window upon success.

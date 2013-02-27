@@ -27,7 +27,7 @@ NAME
 SYNOPSIS::  
                       
     .. avembed:: {relative_path} {type}
-       [:showbutton: show|hide]
+       [:showhide: show|hide]
        [:long_name: {string}]
        [:points: {number}]
        [:required: true|false]
@@ -44,7 +44,7 @@ DESCRIPTION
         * **ss** - slideshows
         * **dgm** - JSAV-based diagram
 
-    ``:showbutton: show|hide`` 
+    ``:showhide: show|hide`` 
       Include a button to show or hide the embedded
       content. The options are ``show`` to have the content visible
       when the page is first loaded or ``hide`` to have it hidden on
