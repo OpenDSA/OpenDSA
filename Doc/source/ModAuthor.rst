@@ -4,7 +4,7 @@ Authoring OpenDSA Modules
 =========================
 
 This documentation describes the support infrastructure for authoring
-of OpenDSA modules.
+OpenDSA modules.
 We author using
 `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ (also
 known as ReST).

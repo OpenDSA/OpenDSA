@@ -26,48 +26,50 @@ NAME
 
 SYNOPSIS::  
                       
-    .. avembed:: <relative_path> <type> <book_name> <server_URL> <module_origin>
-       [:showbutton: {show|hide}]
-       [:long_name: ]
-       [:points: #]
-       [:required: <true | false>]
-       [:threshold: #]
+    .. avembed:: {relative_path} {type} {book_name} {server_URL} {module_origin}
+       [:showbutton: show|hide]
+       [:long_name: {string}]
+       [:points: {number}]
+       [:required: true|false]
+       [:threshold: {number}]
        
 DESCRIPTION
-    ``.. avembed:: <relative_path> <type> <book_name> <server_URL> <module_origin>``
-      ``<relative_path>`` is the relative path (from the OpenDSA
-      home directory) to the embedded page.  ``<type>`` is the type of embedded exercise:
+    ``.. avembed:: {relative_path} {type} {book_name} {server_URL} {module_origin}``
+      ``{relative_path}`` is the relative path (from the OpenDSA
+      home directory) to the embedded page.
+      ``{type}`` is the type of embedded exercise, one of the following:
 
         * **ka** - Khan Academy style exercises
         * **pe** - OpenDSA proficiency exercises
         * **ss** - slideshows
         * **dgm** - JSAV-based diagram
       
-      **Note**: ``<book_name>``, ``<server_URL>`` and ``<module_origin>`` are 
-      automatically appended as part of the configuration process and should not be added manually
+      ``{book_name}``, ``{server_URL}`` **and** ``{module_origin}``
+      **are automatically appended as part of the configuration
+      process and should not be added manually**
 
-    ``[:showbutton: {show|hide}]`` 
+    ``:showbutton: show|hide`` 
       Include a button to show or hide the embedded
       content. The options are ``show`` to have the content visible
       when the page is first loaded or ``hide`` to have it hidden on
       page load.
     
-    ``[:long_name: ]``
+    ``:long_name: {string}``
     
-      Long name for the embedded object. The "short name" is the file name.
+      Long name for the embedded object. The "short" name is the file name.
       **Added automatically by the configuration process, do NOT add manually.**
     
-    ``[:points: #]``
+    ``:points: {number}``
     
       Number of points this activity is worth.
       **Added automatically by the configuration process, do NOT add manually.**
     
-    ``[:required: <true | false>]``
+    ``[:required: true|false]``
     
       Whether this activity is required for module credit.
       **Added automatically by the configuration process, do NOT add manually.**
     
-    ``[:threshold: #]``
+    ``[:threshold: {number}]``
     
       Threshold number of points required for credit.
       **Added automatically by the configuration process, do NOT add manually.**
@@ -84,23 +86,22 @@ NOTES
 avmetadata
 ----------
 NAME                   
-    avmetadata - metadata information associated with this
-    module. 
+    avmetadata - metadata information associated with this module.
 
 SYNOPSIS::             
         
     .. avmetadata::
-       :author:
-       :prerequisites:
-       :topic:
+       :author: {string}
+       :prerequisites: {list of module_name}
+       :topic: {string}
 
 DESCRIPTION
-    ``:author:``
+    ``:author: {string}``
       Module author's name.
-    ``:prerequisites:``
-      A comma-separated list of ``module_name``.
+    ``:prerequisites: {list of module_name}``
+      A comma-separated list of zero or more ``module_name``.
       These represent the prerequisites for this module.
-    ``:topic:``
+    ``:topic: {string}``
       The topic covered by this module.
 
 codeinclude
@@ -110,16 +111,16 @@ NAME
 
 SYNOPSIS::
 
-    .. codeinclude:: <relative_path>
-       [:tag: <my tag>]    
+    .. codeinclude:: {relative_path}
+       [:tag: {my tag}]    
 
 DESCRIPTION
-    ``.. codeinclude:: <relative_path>``
+    ``.. codeinclude:: {relative_path}``
 
       Include the code present inside the file located at
-      ``<relative_path>``.
+      ``{relative_path}``.
 
-    ``:tag: <my tag>``
+    ``:tag: {my_tag}``
 
       A tag inside the source code file that delimits the block
       of code that will be included.
@@ -130,59 +131,59 @@ NOTES
     The ``codeinclude`` directive closely matches the standard ReST
     directive ``literalinclude``.::
 
-        .. codeinclude:: <relative_path>
-           [:tag: <my tag>]  
+        .. codeinclude:: {relative_path}
+           [:tag: my_tag]  
 
     will (logically) map to:::
 
         .. literalinclude:: <relative_path>
-           :start-after: /* *** ODSATag: <my tag> *** */
-           :end-before: /* *** ODSAendTag: <my tag> *** */
+           :start-after: /* *** ODSATag: my_tag *** */
+           :end-before: /* *** ODSAendTag: my_tag *** */
 
 inlineav
 -----------
 NAME
-    inlineav - displays code snippets within the eTextbook.
+    inlineav - used to embed an AV (in particular "slideshows") into the document
 
 SYNOPSIS::
 
-    .. inlineav:: avId type
-       :output: [show | hide]
-       :points: #
-       :required: [true | false]
-       :threshold: #
+    .. inlineav:: {avId} {type}
+       [:output: show|hide]
+       :points: {number}
+       :required: true|false
+       :threshold: {number}
 
 DESCRIPTION
     ``.. inlineav:: avId type``
 
-      Create a container for an inline AV with the given ID and type ('ss' or 'dgm').
-      If the type is 'ss' a slideshow will be created and if it is 'dgm' a diagram will be created
+      Create a container for an inline AV with the given ID and type.
+      If the type is ``ss`` a slideshow will be created and if it is
+      ``dgm`` a diagram will be created.
 
-      The points, required, threshold and type arguments are automatically
-      appended to the inlineav directive by the configuration process and
-      should not be added manually
+      ``<type>`` **is automatically appended to the inlineav directive
+      by the configuration process and should not be added manually.**
 
-    ``:output: [show | hide]``
+    ``[:output: show|hide]``
 
       If the AV is a slideshow, controls whether or not the message box is displayed
       Note the 'output' argument is only valid for slideshows.
     
-    ``[:long_name: ]``
+    ``:long_name:``
     
       Long-form name for a slideshow object.
       **Added automatically by the configuration process, do NOT add manually.**
     
-    ``[:points: #]``
+    ``:points: {number}``
     
       Number of points this activity is worth.
       **Added automatically by the configuration process, do NOT add manually.**
     
-    ``[:required: <true | false>]``
+    ``:required: true|false``
     
       Whether this activity is required for module credit.
       **Added automatically by the configuration process, do NOT add manually.**
     
-    ``[:threshold: #]``
+    ``:threshold: {number}``
     
       Threshold number of points required for credit.
       **Added automatically by the configuration process, do NOT add manually.**
@@ -194,23 +195,23 @@ NAME
 
 SYNOPSIS::
 
-    :numref:`[caption] <reference_label>`
-    :numref:`reference_label`
+    :numref: {caption} <{reference_label}>
+    :numref: {reference_label}
 
 DESCRIPTION
-    ``:numref:``               
+    ``:numref: {caption} <{reference_label}>``
 
     A custom interpreted text role. ``numref`` adds numbered cross
     references within ODSA documents.
 
-    ``caption``      
+    ``{caption}``      
 
-    Text that will be display next to the numbered reference.    
+    Text to be displayed next to the numbered reference.    
 
-    ``reference_label``
+    ``{reference_label}``
 
     Reference name (unique) of the referenced object. Should be
-    enclose in brackets ('<>') when a caption is provided. It is
+    enclose in brackets (``<>``) when a caption is provided. It is
     specified via the standard ReST referencing mechanisms.
 
 NOTES
@@ -223,25 +224,28 @@ TODO
 ----
 NAME
     TODO - adds a todo box in the output HTML file, and is
-    also used by the ODSA preprocessor script to create a HTML
-    page containing the collated list of desired AVs and Exercises.
+    also used by the ODSA preprocessor script to create a separate
+    HTML page containing the collated list of desired AVs and
+    Exercises.
     (NOTE: Can also be called as ``todo``.)
 
 SYNOPSIS::
 
     .. TODO::
-       [:type: <type label of the desired artifact>]  
+       [:type: {type label of the desired artifact}]  
 
 DESCRIPTION
 
     ``.. TODO::``
 
     Within the module, this behaves like the standard Sphinx
-    TODO (or todo) directive. The ODSA version also creates a
+    TODO (or todo) directive. As with the standard TODO directive, the
+    author should then include (indented) text that describes the task
+    to be done. The ODSA version will in addition create a
     separate page TODO.html that includes a listing of all TODO
     blocks from all of the modules.
 
-    ``:type: <type label of the desired artifact>``    
+    ``:type: {type label of the desired artifact}``
 
     The type of the desired artifact (AV, Proficiency Exercise,
     etc). This is just a label, so it can be anything. Each
@@ -249,9 +253,10 @@ DESCRIPTION
     that label on the TODO.html page.
 
 NOTES
-    The ODSA preprocessor collects the description of the TODO
-    directive (inside rst files) to create a TODO.rst file that lists
-    all the desired AVs and Exercises grouped by type.
+    The ODSA preprocessor collects the descriptions (i.e., the text
+    that follows the TODO directive) from the complete collection of
+    RST files to create a separate TODO.rst file that lists all the
+    desired AVs and Exercises grouped by type.
     The TODO.rst file should be included in the index.rst file to be
     part of the table of contents for the eBook. 
 
@@ -259,70 +264,70 @@ NOTES
 odsalink  
 --------
 NAME  
-    ODSALINK - adds the code to include an OpenDSA CSS file in the
-    final HTML eTextBook.
+    odsalink - adds the code to include a CSS file in the
+    HTML output file.
       
 SYNOPSIS::   
 
-   .. odsalink:: <path to file>      
+   .. odsalink:: {path to file}
 
 DESCRIPTION 
     ``.. odsalink::``  
-    The directive injects the code to include a file in the outputted
-    html files.
+    The directive injects the code to include a linked file in the
+    outputted HTML files.
     It gets the path to ODSA directory from the ``odsa_path`` variable
     in the ``conf.py`` file.
 
-    ``<path to file>``  
+    ``{path to file}``  
     The path (relative to ODSA directory root as defined by the
-    ``odsa_path`` variable in the ``conf.py`` file) to the script file
+    ``odsa_path`` variable in the ``conf.py`` file) to the linked file
     to be include.
 
 NOTES
     The directory containing the file to be included should be hosted
-    within ODSA folder.
-    Example:
+    within the ODSA directory.
+    Example, if ``odsa_path`` is defined to be ``..\..\..``, then
 
     ``.. odsalink:: JSAV/css/JSAV.css``
 
-    will produce something like
+    will produce
 
     ``<link href="../../../JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />``
 
-    in html files.    
+    in the HTML output file.
 
 
 odsascript  
 ----------
 NAME
-    ODSASCRIPT - adds the code to include an OpenDSA script file in
-    the final HTML eTextBook.
+    odsascript - adds the code to include a script file in the
+    HTML output file.
 
 SYNOPSIS::
 
-   .. odsascript:: <path to file>
+   .. odsascript:: {path to file}
 
 DESCRIPTION
     ``.. odsascript::``
-    The directive injects the code to include a file in the outputted
-    html files.
+    The directive injects the code to include a script file in the
+    outputted HTML files.
     It gets the path to ODSA directory from the ``odsa_path`` variable
     in the ``conf.py`` file.
 
-    ``<path to file>``
+    ``{path to file}``
     The path (relative to ODSA directory root as defined by the
     ``odsa_path`` variable in the ``conf.py`` file) to the script file
     to be include.
 
 NOTES
     The directory containing the file to be included should be hosted
-    within the ODSA folder.
-    Example:
+    within the ODSA directory.
+    Example, if ``odsa_path`` is defined to be ``..\..\..``, then
     
     ``.. odsascript:: JSAV/build/JSAV-min.js``
 
-    will produce something like
+    will produce
 
     ``<script type="text/javascript" src="../../../JSAV/build/JSAV-min.js"></script>``
 
-    in html files.
+    in the HTML output file.
