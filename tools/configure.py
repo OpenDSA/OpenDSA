@@ -85,18 +85,13 @@ makefile_template = '''\
 #
 # You can set these variables from the command line.
 SPHINXBUILD   = sphinx-build
-BUILDDIR      = build
 HTMLDIR       = %(rel_ebook_path)s
-
-# Internal variables.
-ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees source
 
 .PHONY: clean html
 
 all: html
 
 clean:
-	-rm -rf $(BUILDDIR)/*
 	-rm -rf $(HTMLDIR)/*
 	-rm source/ToDo.rst
 
@@ -106,7 +101,7 @@ preprocessor:
 	python "%(odsa_root)sRST/preprocessor.py" source/ $(HTMLDIR)
 
 html: preprocessor
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(HTMLDIR)
+	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
 	rm *.json
 	@echo
