@@ -1492,7 +1492,7 @@
       }
     }
 
-    $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:' + link + '">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="Privacy.html">| Privacy</a>');
+    $('.email_div').append('<a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:' + link + '">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="../../../lib/Privacy.html" target="_blank">| Privacy</a>');
 
     // Populate the exercises hash
     // Iterate through all showHide buttons, iframe and slideshows and add exercises (as necessary)
