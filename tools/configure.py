@@ -518,6 +518,8 @@ def process_module(mod_name, mod_attrib, index_rst, depth):
           # Add the necessary information from the configuration file
           exer_conf = exercises[av_name]
           
+          new_mod_data.append('   :module: ' + mod_name + eol)
+          
           for setting in exer_conf:
             # If "showhide": "none", then don't append showhide option
             if setting == 'showhide' and exer_conf[setting] == 'none':
