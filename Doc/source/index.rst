@@ -15,5 +15,4 @@ Table of Contents
    Exercise 
    BackendSpecs
    Configuration
-   FrontendJSSpecs
    Client-sideFramework
