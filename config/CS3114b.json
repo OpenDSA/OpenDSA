@@ -692,6 +692,7 @@
           "hashAV": {
             "long_name": "Hashing Exercise",
             "required": false,
+            "showhide": "none",
             "points": 0.0,
             "threshold": 1.0
           },
