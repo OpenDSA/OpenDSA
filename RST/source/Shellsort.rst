@@ -13,7 +13,6 @@
 .. include:: JSAVheader.rinc
 
 .. odsalink:: AV/slideCON.css
-.. odsalink:: AV/Sorting/shellsortCON.css
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
