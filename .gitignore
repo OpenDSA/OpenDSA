@@ -13,7 +13,6 @@ Books
 RST/build
 RST/source/ToDo.rst
 RST/source/conf.py
-Books
 
 #Ignore the copy we make of khan-site.html
 lib/khan-exercises/exercises/khan-site.html
