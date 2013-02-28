@@ -11,6 +11,7 @@ Table of Contents
 
    ModAuthor
    Structure
+   Style
    Extensions
    Exercise 
    BackendSpecs
