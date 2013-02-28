@@ -1,4 +1,4 @@
-RM = rm
+RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
 TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
@@ -7,13 +7,15 @@ MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar
 all: lint
 
 clean:
-	- $(RM) -rf Books
+	- $(RM) *~
+	- $(RM) Doc/build
+	- $(RM) Books
 	# Remove minified JS and CSS files
-	- $(RM) -rf lib/*-min.*
-	- $(RM) -r *~
-	- $(RM) -r Doc/*~
-	- $(RM) -r Scripts/*~
-	- $(RM) -r config/*~
+	- $(RM) lib/*-min.*
+	- $(RM) *~
+	- $(RM) Doc/*~
+	- $(RM) Scripts/*~
+	- $(RM) config/*~
 
 lint: csslint jshint
 
