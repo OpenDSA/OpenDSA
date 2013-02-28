@@ -232,8 +232,9 @@
             "threshold": 5
           },
           "hashAV": {
-            "long_name": "Hashing Exercise",
+            "long_name": "Hashing Visualization",
             "required": false,
+            "showhide": "none",
             "points": 0,
             "threshold": 1.0
           },

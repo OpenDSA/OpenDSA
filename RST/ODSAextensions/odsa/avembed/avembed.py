@@ -102,11 +102,12 @@ def showhide(argument):
 
 class avembed(Directive):
   required_arguments = 2
-  optional_arguments = 5
+  optional_arguments = 6
   final_argument_whitespace = True
   has_content = True
   option_spec = {
                  'long_name': directives.unchanged,
+                 'module': directives.unchanged,
                  'points': directives.unchanged,
                  'required': directives.unchanged,
                  'showhide':showhide,
@@ -123,6 +124,7 @@ class avembed(Directive):
     url_params['bookName'] = conf.book_name
     url_params['serverURL'] = conf.server_url
     url_params['moduleOrigin'] = conf.module_origin
+    url_params['module'] = self.options['module']
 
     embed = embedlocal(self.arguments[0])
     self.options['exer_name'] = embed[0]

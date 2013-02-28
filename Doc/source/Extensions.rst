@@ -29,6 +29,7 @@ SYNOPSIS::
     .. avembed:: {relative_path} {type}
        [:showhide: show|hide]
        [:long_name: {string}]
+       [:module: {string}]
        [:points: {number}]
        [:required: true|false]
        [:threshold: {number}]
@@ -49,6 +50,11 @@ DESCRIPTION
       content. The options are ``show`` to have the content visible
       when the page is first loaded or ``hide`` to have it hidden on
       page load.
+      **Added automatically by the configuration process, do NOT add manually.**
+    
+    ``:module: {string}``
+    
+      The name of the module on which the AV is embedded.
       **Added automatically by the configuration process, do NOT add manually.**
     
     ``:long_name: {string}``
