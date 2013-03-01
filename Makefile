@@ -68,3 +68,30 @@ T1061220: min
 	python $(CONFIG_SCRIPT) config/T1061220.json
 
 allBooks: CS223 CS3114a CS3114b OpenDSA T1061220
+
+nomin:
+	cp lib/ODSA.js lib/odsaUtils-min.js
+	cp AV/opendsaAV.js lib/odsaAV-min.js
+	cp AV/opendsaAV.css lib/odsaAV-min.css
+
+pull:
+	git pull
+	git submodule update
+	make -C JSAV
+	make min
+
+odsaUtils-min.js: lib/ODSA.js
+	@echo 'odsaUtils-min.js'
+	-@$(MINIMIZE) lib/ODSA.js -o lib/odsaUtils-min.js
+
+mymin: odsaUtils-min.js
+	@echo 'Alternate Minifying files'
+	-@$(MINIMIZE) lib/site.css -o lib/site-min.css
+	-@$(MINIMIZE) AV/opendsaAV.js -o lib/odsaAV-min.js
+	-@$(MINIMIZE) AV/opendsaAV.css -o lib/odsaAV-min.css
+	-@$(MINIMIZE) ODSAkhan-exercises/khan-exercise.js -o lib/khan-exercise-min.js
+	-@$(MINIMIZE) RST/source/_static/opendsaMOD.js -o lib/odsaMOD-min.js
+	-@$(MINIMIZE) RST/source/_static/opendsaMOD.css -o lib/odsaMOD-min.css
+	-@$(MINIMIZE) RST/source/_static/gradebook.js -o lib/gradebook-min.js
+	-@$(MINIMIZE) RST/source/_static/gradebook.css -o lib/gradebook-min.css
+
