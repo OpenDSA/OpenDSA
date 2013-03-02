@@ -17,7 +17,7 @@
       }
     },
     "Hashing": {
-      "HashIntro": {
+      "Hashing/HashIntro": {
         "long_name": "Introduction",
         "exercises": {
           "hashIntroCON1": {
@@ -28,7 +28,7 @@
           }
         }
       },
-      "HashFunc": {
+      "Hashing/HashFunc": {
         "long_name": "Hash Function Principles",
         "exercises": {
           "Birthday": {
@@ -45,7 +45,7 @@
           }
         }
       },
-      "HashFuncExamp": {
+      "Hashing/HashFuncExamp": {
         "long_name": "Sample Hash Functions",
         "exercises": {
           "hashFuncExCON1": {
@@ -92,7 +92,7 @@
           }
         }
       },
-      "OpenHash": {
+      "Hashing/OpenHash": {
         "long_name": "Open Hashing",
         "exercises": {
           "openhashCON1": {},
@@ -104,7 +104,7 @@
           }
         }
       },
-      "BucketHash": {
+      "Hashing/BucketHash": {
         "long_name": "Bucket Hashing",
         "exercises": {
           "buckethashCON1": {
@@ -133,7 +133,7 @@
           }
         }
       },
-      "HashCSimple": {
+      "Hashing/HashCSimple": {
         "long_name": "Collision Resolution",
         "exercises": {
           "linProbeCON1": {
@@ -156,7 +156,7 @@
           }
         }
       },
-      "HashCImproved": {
+      "Hashing/HashCImproved": {
         "long_name": "Improved Collision Resolution",
         "exercises": {
           "collisionCON1": {
@@ -246,7 +246,7 @@
           }
         }
       },
-      "HashAnal": {
+      "Hashing/HashAnal": {
         "long_name": "Analysis of Closed Hashing",
         "exercises": {
           "HashAnalSumm": {
@@ -257,7 +257,7 @@
           }
         }
       },
-      "HashDel": {
+      "Hashing/HashDel": {
         "long_name": "Deletion",
         "exercises": {
           "hashdelCON1": {
@@ -280,7 +280,7 @@
           }
         }
       },
-      "HashSumm": {
+      "Hashing/HashSumm": {
         "long_name": "Hashing Chapter Summary Exercises",
         "exercises": {
           "HashChapterSumm": {

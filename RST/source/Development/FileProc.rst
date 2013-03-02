@@ -3,15 +3,14 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
-   :author: OpenDSA Contributors
+.. avmetadata::
+   :author: Cliff Shaffer
    :prerequisites: 
-   :topic:  
+   :topic: File Processing
 
+.. _FileProc:
 
-Bibliography
-============
+File Processing [STUB]
+======================
 
-.. [KnuthV3] Donald E. Knuth, 
-   *The Art of Computer Programming Volume 3: Sorting and Searching*,
-   Second Edition, Addison-Wesley, Reading, MA, 1998.
+Placeholder for crossreference.

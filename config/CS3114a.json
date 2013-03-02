@@ -17,7 +17,7 @@
       }
     },
     "Sorting": {
-      "SortIntro": {
+      "Sorting/SortIntro": {
         "long_name": "Introduction",
         "exercises": {
           "SortIntroSumm": {
@@ -28,7 +28,7 @@
           }
         }
       },
-      "InsertionSort": {
+      "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
         "exercises" : {
           "InssortCON1": {
@@ -70,12 +70,12 @@
           }
         }
       },
-      "InsertOpt": {
+      "Sorting/InsertOpt": {
         "long_name": "Optimizing Insertion Sort",
         "dispModComp": true,
         "exercises": {}
       },
-      "BubbleSort": {
+      "Sorting/BubbleSort": {
         "long_name": "Bubble Sort",
         "exercises": {
           "BubsortCON1": {
@@ -111,7 +111,7 @@
           }
         }
       },
-      "SelectionSort": {
+      "Sorting/SelectionSort": {
         "long_name": "Selection Sort",
         "exercises": {
           "SelsortCON1": {
@@ -147,7 +147,7 @@
           }
         }
       },
-      "SortCompare": {
+      "Sorting/SortCompare": {
         "long_name": "Comparing Records",
         "exercises": {
           "SortCompareSumm": {
@@ -158,7 +158,7 @@
           }
         }
       },
-      "ExchangeSort": {
+      "Sorting/ExchangeSort": {
         "long_name": "The Cost of Exchange Sorting",
         "exercises": {
           "FindInversionsPRO": {
@@ -175,7 +175,7 @@
           }
         }
       },
-      "Shellsort": {
+      "Sorting/Shellsort": {
         "long_name": "Shellsort",
         "exercises": {
           "shellsortCON1": {
@@ -256,7 +256,7 @@
           }
         }
       },
-      "Mergesort": {
+      "Sorting/Mergesort": {
         "long_name": "Mergesort Concepts",
         "exercises": {
           "mergesortAV": {
@@ -267,7 +267,7 @@
             "threshold": 1.0
           },
           "mergesortCON1": {
-            "long_name": "Mergesort Concepts Slideshow",
+            "long_name": "Mergesort Concepts Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
@@ -292,7 +292,7 @@
           }
         }
       },
-      "MergesortImpl": {
+      "Sorting/MergesortImpl": {
         "long_name": "Implementing Mergesort",
         "exercises": {
           "mergeImplCON1": {
@@ -315,7 +315,7 @@
           }
         }
       },
-      "Quicksort": {
+      "Sorting/Quicksort": {
         "long_name": "Quicksort",
         "exercises": {
           "QuicksortPivotPRO": {
@@ -357,7 +357,7 @@
           }
         }
       },
-      "Heapsort": {
+      "Sorting/Heapsort": {
         "long_name": "Heapsort",
         "exercises": {
           "heapsortCON": {
@@ -386,7 +386,7 @@
           }
         }
       },
-      "BinSort": {
+      "Sorting/BinSort": {
         "long_name": "Binsort",
         "exercises": {
           "BinsortCON1": {
@@ -409,7 +409,7 @@
           }
         }
       },
-      "RadixSort": {
+      "Sorting/RadixSort": {
         "long_name": "Radix Sort",
         "exercises": {
           "radixLinkAV": {
@@ -440,7 +440,7 @@
           }
         }
       },
-      "SortingEmpirical": {
+      "Sorting/SortingEmpirical": {
         "long_name": "An Empirical Comparison of Sorting Algorithms",
         "exercises": {
           "SortAlgCompSumm": {
@@ -451,7 +451,7 @@
           }
         }
       },
-      "SortingLowerBound": {
+      "Sorting/SortingLowerBound": {
         "long_name": "Lower Bounds of Sorting",
         "exercises": {
           "SortBoundSumm": {
@@ -462,7 +462,7 @@
           }
         }
       },
-      "SortSumm": {
+      "Sorting/SortSumm": {
         "long_name": "Sorting Chapter Summary Exercises",
         "exercises": {
           "ChapterSumm": {
@@ -475,7 +475,7 @@
       }
     },
     "Hashing": {
-      "HashIntro": {
+      "Hashing/HashIntro": {
         "long_name": "Introduction",
         "exercises": {
           "hashIntroCON1": {
@@ -486,7 +486,7 @@
           }
         }
       },
-      "HashFunc": {
+      "Hashing/HashFunc": {
         "long_name": "Hash Function Principles",
         "exercises": {
           "Birthday": {
@@ -503,7 +503,7 @@
           }
         }
       },
-      "HashFuncExamp": {
+      "Hashing/HashFuncExamp": {
         "long_name": "Sample Hash Functions",
         "exercises": {
           "hashFuncExCON1": {
@@ -550,7 +550,7 @@
           }
         }
       },
-      "OpenHash": {
+      "Hashing/OpenHash": {
         "long_name": "Open Hashing",
         "exercises": {
           "openhashCON1": {},
@@ -562,7 +562,7 @@
           }
         }
       },
-      "BucketHash": {
+      "Hashing/BucketHash": {
         "long_name": "Bucket Hashing",
         "exercises": {
           "buckethashCON1": {
@@ -591,7 +591,7 @@
           }
         }
       },
-      "HashCSimple": {
+      "Hashing/HashCSimple": {
         "long_name": "Collision Resolution",
         "exercises": {
           "linProbeCON1": {
@@ -614,7 +614,7 @@
           }
         }
       },
-      "HashCImproved": {
+      "Hashing/HashCImproved": {
         "long_name": "Improved Collision Resolution",
         "exercises": {
           "collisionCON1": {
@@ -704,7 +704,7 @@
           }
         }
       },
-      "HashAnal": {
+      "Hashing/HashAnal": {
         "long_name": "Analysis of Closed Hashing",
         "exercises": {
           "HashAnalSumm": {
@@ -715,7 +715,7 @@
           }
         }
       },
-      "HashDel": {
+      "Hashing/HashDel": {
         "long_name": "Deletion",
         "exercises": {
           "hashdelCON1": {
@@ -738,7 +738,7 @@
           }
         }
       },
-      "HashSumm": {
+      "Hashing/HashSumm": {
         "long_name": "Hashing Chapter Summary Exercises",
         "exercises": {
           "HashChapterSumm": {
@@ -751,35 +751,35 @@
       }
     },
     "Stubs": {
-      "SetDef": {
+      "Development/SetDef": {
         "long_name": "Set Definitions",
         "exercises": {}
       },
-      "Recurrence": {
+      "Development/Recurrence": {
         "long_name": "Recurrence",
         "exercises": {}
       },
-      "MCST": {
+      "Development/MCST": {
         "long_name": "Minimal Cost Spanning Trees",
         "exercises": {}
       },
-      "FileProc": {
+      "Development/FileProc": {
         "long_name": "File Processing",
         "exercises": {}
       },
-      "Heaps": {
+      "Development/Heaps": {
         "long_name": "Heaps",
         "exercises": {}
       },
-      "ExternalSort": {
+      "Development/ExternalSort": {
         "long_name": "External Sorting",
         "exercises": {}
       },
-      "Trie": {
+      "Development/Trie": {
         "long_name": "Tries",
         "exercises": {}
       },
-      "Reductions": {
+      "Development/Reductions": {
         "long_name": "Reductions",
         "exercises": {}
       }
