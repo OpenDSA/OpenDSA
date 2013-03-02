@@ -6,24 +6,32 @@
 #   - Converts the OpenDSA root directory and specified code and output directories into Unix-style paths so that relative paths are calculated correctly
 #     - Handles absolute or relative paths for output and code directories (relative paths are rooted at the OpenDSA directory)
 #   - Optionally builds JSAV to make sure the library is up-to-date, if specified in the configuration file
-#   - Creates a source directory in the output directory and copies the necessary supplemental source files
-#   - Creates a Makefile and conf.py file
+#   - Creates a source directory in the output directory and generates a Makefile and conf.py file
 #     - Makefile is configured to copy the original .htaccess file from lib to the html output directory
+#     - conf.py is configured to point to the original ODSAextensions and _themes directories 
 #   - Reads the RST source file for each module which appears in the configuration file
+#     - Appends the list of external JavaScript and CSS links to every module
 #     - Optionally, appends a raw JavaScript flag to each module indicating whether or not the module can be completed
 #       This allows the configuration file to override the default behavior of the client-side framework which is to allow 
 #       module completion only if the module contains required exercises
-#     - For each exercise that appears in the module RST file
-#       - If the exercise is listed in the configuration file, the additional information from the configuration file
-#         is appended to the Sphinx directive that creates the exercise, UNLESS the 'remove' attribute is present and "true",
-#         in which case the entire Sphinx directive for that exercise is removed
-#         - Specifically adds 'long_name', 'points', 'required' and 'threshold'
-#       - If the exercise does not appear in the configuration file, the Sphinx directive will be included, but no additional
-#         information will be included so the defaults (specified in the Sphinx directive file) will be used.  The name of the
-#         exercise is added to a list of missing exercises which will be displayed to the user 
+#     - For each figure encountered in the RST file, adds the name to a list so that we only copy the images used in the book
+#       to the output directory
+#     - For each inlineav directive encountered, configure.py attempts to append additional information from the configuration file
+#       - If the specified exercise does not appear in the configuration file, the Sphinx directive will be included, but no 
+#         additional information will be included so the defaults (specified in the Sphinx directive file) will be used.  The 
+#         name of the exercise is added to a list of missing exercises which will be displayed to the user 
+#       - Specifically adds 'long_name', 'points', 'required' and 'threshold'
+#     - For each avembed directive encountered, configure.py attempts to append additional information from the configuration file
+#       - UNLESS the 'remove' attribute is present and "true", in which case the entire avembed directive is removed
+#       - If the specified exercise does not appear in the configuration file, the Sphinx directive will be included, but no 
+#         additional information will be included so the defaults (specified in the Sphinx directive file) will be used.  The 
+#         name of the exercise is added to a list of missing exercises which will be displayed to the user 
+#       - Specifically adds 'long_name', 'points', 'required', 'showhide' and 'threshold'
 #     - The configured module RST file is written to the source directory in the output file
 #   - Generates an index.rst file based on which modules were specified in the config file
 #   - Prints out a list of any exercises encountered in RST source files that did not appear in the config file
+#   - Copies _static directory and the images contained in the list of encountered images to the output source directory, also 
+#     creates a copy of the config file in the _static directory for use by the gradebook page 
 #   - Generates _static/config.js which contains settings needed by the client-side framework that can be configured
 #     using the config file
 #   - Generates an index.html file in the output directory of the new book which redirects (via JavaScript) to the html/ directory
@@ -572,10 +580,6 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
           for option in options:
             if option in exer_conf:
               new_mod_data.append('   :' + option + ': ' + str(exer_conf[option]) + eol)
-          
-          # If 'showhide' attribute isn't present, default to hidden
-          if 'showhide' not in exer_conf:
-            new_mod_data.append('   :showhide: hide' + eol)
     
     i = i + 1
   
