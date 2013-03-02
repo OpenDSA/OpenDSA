@@ -4,6 +4,8 @@ TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar
 
+.PHONY: all clean lint csslint jshint min CS223 CS3114a CS3114b OpenDSA T1061220 allBooks nomin pull
+
 all: lint
 
 clean:
@@ -40,17 +42,7 @@ jshint:
 	-@jshint RST/source/_static/opendsaMOD.js
 	-@jshint RST/source/_static/gradebook.js
 
-min:
-	@echo 'Minifying files'
-	-@$(MINIMIZE) lib/ODSA.js -o lib/odsaUtils-min.js
-	-@$(MINIMIZE) lib/site.css -o lib/site-min.css
-	-@$(MINIMIZE) AV/opendsaAV.js -o lib/odsaAV-min.js
-	-@$(MINIMIZE) AV/opendsaAV.css -o lib/odsaAV-min.css
-	-@$(MINIMIZE) ODSAkhan-exercises/khan-exercise.js -o lib/khan-exercise-min.js
-	-@$(MINIMIZE) RST/source/_static/opendsaMOD.js -o lib/odsaMOD-min.js
-	-@$(MINIMIZE) RST/source/_static/opendsaMOD.css -o lib/odsaMOD-min.css
-	-@$(MINIMIZE) RST/source/_static/gradebook.js -o lib/gradebook-min.js
-	-@$(MINIMIZE) RST/source/_static/gradebook.css -o lib/gradebook-min.css
+min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css
 
 CS223: min
 	python $(CONFIG_SCRIPT) config/CS223.json
@@ -77,21 +69,41 @@ nomin:
 pull:
 	git pull
 	git submodule update
-	make -C JSAV
-	make min
+	make -s -C JSAV
+	make -s min
 
-odsaUtils-min.js: lib/ODSA.js
-	@echo 'odsaUtils-min.js'
-	-@$(MINIMIZE) lib/ODSA.js -o lib/odsaUtils-min.js
+lib/odsaUtils-min.js: lib/ODSA.js
+	@echo 'minimize lib/odsaUtils-min.js'
+	@$(MINIMIZE) lib/ODSA.js -o lib/odsaUtils-min.js
 
-mymin: odsaUtils-min.js
-	@echo 'Alternate Minifying files'
+lib/site-min.css: lib/site.css
+	@echo 'minimize lib/site-min.css'
 	-@$(MINIMIZE) lib/site.css -o lib/site-min.css
-	-@$(MINIMIZE) AV/opendsaAV.js -o lib/odsaAV-min.js
-	-@$(MINIMIZE) AV/opendsaAV.css -o lib/odsaAV-min.css
-	-@$(MINIMIZE) ODSAkhan-exercises/khan-exercise.js -o lib/khan-exercise-min.js
-	-@$(MINIMIZE) RST/source/_static/opendsaMOD.js -o lib/odsaMOD-min.js
-	-@$(MINIMIZE) RST/source/_static/opendsaMOD.css -o lib/odsaMOD-min.css
-	-@$(MINIMIZE) RST/source/_static/gradebook.js -o lib/gradebook-min.js
-	-@$(MINIMIZE) RST/source/_static/gradebook.css -o lib/gradebook-min.css
 
+lib/odsaAV-min.js: AV/opendsaAV.js
+	@echo 'minimize lib/odsaAV-min.js'
+	@$(MINIMIZE) AV/opendsaAV.js -o lib/odsaAV-min.js
+
+lib/odsaAV-min.css: AV/opendsaAV.css
+	@echo 'minimize lib/odsaAV-min.css'
+	@$(MINIMIZE) AV/opendsaAV.css -o lib/odsaAV-min.css
+
+lib/khan-exercise-min.js: ODSAkhan-exercises/khan-exercise.js
+	@echo 'minimize lib/khan-exercise-min.js'
+	@$(MINIMIZE) ODSAkhan-exercises/khan-exercise.js -o lib/khan-exercise-min.js
+
+lib/odsaMOD-min.js: RST/source/_static/opendsaMOD.js
+	@echo 'minimize lib/odsaMOD-min.js'
+	@$(MINIMIZE) RST/source/_static/opendsaMOD.js -o lib/odsaMOD-min.js
+
+lib/odsaMOD-min.css: RST/source/_static/opendsaMOD.css
+	@echo 'minimize lib/odsaMOD-min.css'
+	@$(MINIMIZE) RST/source/_static/opendsaMOD.css -o lib/odsaMOD-min.css
+
+lib/gradebook-min.js: RST/source/_static/gradebook.js
+	@echo 'minimize lib/gradebook-min.js'
+	@$(MINIMIZE) RST/source/_static/gradebook.js -o lib/gradebook-min.js
+
+lib/gradebook-min.css: RST/source/_static/gradebook.css
+	@echo 'minimize lib/gradebook-min.css'
+	@$(MINIMIZE) RST/source/_static/gradebook.css -o lib/gradebook-min.css
