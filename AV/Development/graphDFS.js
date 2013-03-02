@@ -1,4 +1,3 @@
-
 (function ($) {
 	
 	var jsav = new JSAV($('.avcontainer'));;
@@ -6,46 +5,35 @@
 	var arr;
 	var a, b, c, d, e, f;
 	
+	
+	
 	function runit() {
-		//var arrValues = ODSA.AV.processArrayValues();
-	//	jsav = 
-		
-					
-		//-------------------ADD NEW GRAPH STUFF HERE----------------------------------------
 		g = jsav.ds.graph({width: 500, height: 500, layout: "manual", directed: true});
-		//array = jsav.ds.array({layout: vertical});
 		arr = jsav.ds.array([1,2,3,4],{layout: "vertical"});
-	//	g.css({"left": "+=400px"});
-		arr.css({"left": "+=400px", "bottom": "400px", "width": "30px"});
+		arr.css({"left": "+=300px", "bottom": "450px", "width": "30px"});
 		initGraph();
-	//	finalGraph();
 		g.layout();
 		jsav.displayInit();
 		markIt(g.nodes()[0]);
 		dfs(g.nodes()[0]);
 		jsav.step();
 		finalGraph();
-		//jsav.displayInit():
 		jsav.recorded();
-
-  }
-  
-
-  
+	}
   
   
   	function preVisit(node, prev) {
-    // node.addClass("processing");
+   
       jsav.umsg("Add " + node.value() + " to the stack");
       if (prev) {
-        node.edgeFrom(prev).css("stroke", "red"); // highlight
-       // node.edgeTo(prev).css("stroke", "red"); // highlight
+        node.edgeFrom(prev).css("stroke-width", "4", "red"); // highlight
       }
 	 
       jsav.step();
     }
 	
-	
+    // Mark the nodes when visited and highlight it to 
+	// show it has been marked
     function markIt(node) {
       node.addClass("marked");
       jsav.umsg("Mark node " + node.value());
@@ -62,7 +50,8 @@
       
     }
 	
-	
+	// Recursive depth first search algorithmn for searching
+	// the graph
     function dfs(start, prev) {
 		var adjacent;
 		var next;
@@ -75,20 +64,19 @@
 			  jsav.step();
 			}
 		  }
-		
-			postVisit(start);
-			
-			
-		  
-    }
+		postVisit(start);
+	}
   
 	
    
 
 	function about() {
-	   alert("First attempt at a slideshow");
-   }
-   
+	   alert("Depth first search visualization");
+	}
+    
+	
+	// Graph prepartion for initial stage of visualization
+	
     function initGraph() {
 		a = g.addNode("A", {"left": 25});
 		b = g.addNode("B", {"left": 325});
@@ -110,26 +98,12 @@
 		
 	}
 	
+	// Resulting graph of completed depth first search
 	function finalGraph() {
-	
-	
-		//var a = g.addNode("A", {"left": 25});
-		// var b = g.addNode("B", {"left": 325});
-		// var c = g.addNode("C", {"left": 145, "top": 75});
-		// var d = g.addNode("D", {"left":145, "top": 200});
-        // var e = g.addNode("E", {"left": 0, "top": 300});
-		// var f = g.addNode("F", {"left":325, "top":250});
 		jsav.umsg("Completed depth first search graph");
-	//	g.addEdge(a, c);
 		g.removeEdge(a, e);
-	//	g.addEdge(c, b);
 		g.removeEdge(c, d);
 		g.removeEdge(c, f);
-	//	g.addEdge(b, f);
-		
-	//	g.addEdge(f, d);
-	//	g.addEdge(f, e);
-		
 	}
 
  // Connect action callbacks to the HTML entities
