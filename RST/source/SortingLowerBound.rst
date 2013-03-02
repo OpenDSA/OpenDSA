@@ -10,8 +10,6 @@
 
 .. _SortingLowerBound:
 
-.. include:: JSAVheader.rinc
-
 .. index:: ! sorting; lower bounds proof
 
 Lower Bounds for Sorting

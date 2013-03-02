@@ -10,8 +10,6 @@
 
 .. _SortingEmpirical:
 
-.. include:: JSAVheader.rinc
-
 .. index:: ! sorting; empirical comparison
 
 An Empirical Comparison of Sorting Algorithms

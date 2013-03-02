@@ -10,8 +10,6 @@
 
 .. _OpenHash:
 
-.. include:: JSAVheader.rinc
-
 .. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Hashing/openhashCON.css
 

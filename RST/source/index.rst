@@ -15,8 +15,6 @@
 
 .. _index:
 
-.. include:: JSAVheader.rinc
-
 .. chapnum::
    :start: 0
    :prefix: Chapter    

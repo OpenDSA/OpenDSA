@@ -14,8 +14,6 @@
 
 .. index:: sorting; exchange
 
-.. include:: JSAVheader.rinc
-
 The Cost of Exchange Sorting
 ============================
 

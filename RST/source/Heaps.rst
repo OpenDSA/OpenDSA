@@ -10,8 +10,6 @@
 
 .. _Heaps:
 
-.. include:: JSAVheader.rinc
-
 Heaps [STUB]
 ============
 

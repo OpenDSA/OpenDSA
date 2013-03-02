@@ -10,8 +10,6 @@
 
 .. _HashFuncExamp:
 
-.. include:: JSAVheader.rinc
-
 .. odsalink:: AV/slideCON.css
 
 Sample Hash Functions

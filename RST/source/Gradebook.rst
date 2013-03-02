@@ -10,8 +10,6 @@
 
 .. _Gradebook:
 
-.. include:: JSAVheader.rinc
-
 .. odsalink:: lib/gradebook-min.css
 .. odsascript:: lib/gradebook-min.js
 

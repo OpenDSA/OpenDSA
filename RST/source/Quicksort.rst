@@ -9,8 +9,6 @@
    :topic: Sorting
 
 .. _Quicksort:
-
-.. include:: JSAVheader.rinc
 .. odsascript:: AV/Sorting/quicksortCODE.js
 
 .. index:: ! Quicksort

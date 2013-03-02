@@ -10,8 +10,6 @@
 
 .. _Heapsort:
 
-.. include:: JSAVheader.rinc
-
 .. odsascript:: JSAV/extras/binaryheap.js
 .. odsalink:: AV/slideCON.css
 

@@ -10,8 +10,6 @@
 
 .. _SortProgExer:
 
-.. include:: JSAVheader.rinc
-
 Sorting Chapter Programming Exercises
 =====================================
 

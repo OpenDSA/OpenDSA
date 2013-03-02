@@ -6,9 +6,7 @@
 .. avmetadata:: 
    :author: OpenDSA Contributors
    :prerequisites: 
-   :topic:
-
-.. include:: JSAVheader.rinc  
+   :topic:  
 
 
 Bibliography

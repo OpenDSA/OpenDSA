@@ -10,13 +10,11 @@
 
 .. _Shellsort:
 
-.. include:: JSAVheader.rinc
-
 .. odsalink:: AV/slideCON.css
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
-                                          
+
 Shellsort
 =========
 
@@ -101,7 +99,7 @@ sorted".
 The second pass of Shellsort looks at fewer, bigger sublists.
 In our example, the second pass will have an increment of size 4,
 resulting in :math:`n/4` sublists.
-Since the array in our example has :math:`n=12` records, we have 
+Since the array in our example has :math:`n=12` records, we have
 4 sublists that each have :math:`12/4 = 3` records.
 Thus, the second pass would have as its first
 sublist the 3 records in positions 0, 4, and 8.

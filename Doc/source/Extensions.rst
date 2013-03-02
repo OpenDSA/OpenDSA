@@ -24,16 +24,16 @@ avembed
 NAME
     avembed - embed an AV or other HTML page inside a ReST document.
 
-SYNOPSIS::  
-                      
+SYNOPSIS::
+
     .. avembed:: {relative_path} {type}
-       [:showhide: show|hide]
        [:long_name: {string}]
        [:module: {string}]
        [:points: {number}]
        [:required: true|false]
+       [:showhide: show|hide|none]
        [:threshold: {number}]
-       
+
 DESCRIPTION
     ``.. avembed:: {relative_path} {type}``
       ``{relative_path}`` is the relative path (from the OpenDSA
@@ -45,38 +45,38 @@ DESCRIPTION
         * **ss** - slideshows
         * **dgm** - JSAV-based diagram
 
-    ``:showhide: show|hide`` 
+    ``:module: {string}``
+
+      The name of the module on which the AV is embedded.
+      **Added automatically by the configuration process, do NOT add manually.**
+
+    ``:long_name: {string}``
+
+      Long name for the embedded object. The "short" name is the file name.
+      **Added automatically by the configuration process, do NOT add manually.**
+
+    ``:points: {number}``
+
+      Number of points this activity is worth.
+      **Added automatically by the configuration process, do NOT add manually.**
+
+    ``[:required: true|false]``
+
+      Whether this activity is required for module credit.
+      **Added automatically by the configuration process, do NOT add manually.**
+
+    ``:showhide: show|hide|none``
       Include a button to show or hide the embedded
       content. The options are ``show`` to have the content visible
       when the page is first loaded or ``hide`` to have it hidden on
       page load.
       **Added automatically by the configuration process, do NOT add manually.**
-    
-    ``:module: {string}``
-    
-      The name of the module on which the AV is embedded.
-      **Added automatically by the configuration process, do NOT add manually.**
-    
-    ``:long_name: {string}``
-    
-      Long name for the embedded object. The "short" name is the file name.
-      **Added automatically by the configuration process, do NOT add manually.**
-    
-    ``:points: {number}``
-    
-      Number of points this activity is worth.
-      **Added automatically by the configuration process, do NOT add manually.**
-    
-    ``[:required: true|false]``
-    
-      Whether this activity is required for module credit.
-      **Added automatically by the configuration process, do NOT add manually.**
-    
+
     ``[:threshold: {number}]``
-    
+
       Threshold number of points required for credit.
       **Added automatically by the configuration process, do NOT add manually.**
-    
+
 NOTES
     The ``.. avembed::`` directive fetches the AV's information
     (width and height, etc.) from its XML description file.
@@ -84,15 +84,15 @@ NOTES
     within the same directory as the AV. If the AV is named
     ``fooAV.html`` then the XML file must be ``xml/fooAV.xml``.
     The path to the OpenDSA top-level directory should be set within
-    ``conf.py`` in the source directory. 
+    ``conf.py`` in the source directory.
 
 avmetadata
 ----------
-NAME                   
+NAME
     avmetadata - metadata information associated with this module.
 
-SYNOPSIS::             
-        
+SYNOPSIS::
+
     .. avmetadata::
        :author: {string}
        :prerequisites: {list of module_name}
@@ -115,7 +115,7 @@ NAME
 SYNOPSIS::
 
     .. codeinclude:: {relative_path}
-       [:tag: {my tag}]    
+       [:tag: {my tag}]
 
 DESCRIPTION
     ``.. codeinclude:: {relative_path}``
@@ -135,7 +135,7 @@ NOTES
     directive ``literalinclude``.::
 
         .. codeinclude:: {relative_path}
-           [:tag: my_tag]  
+           [:tag: my_tag]
 
     will (logically) map to:::
 
@@ -170,24 +170,24 @@ DESCRIPTION
 
       If the AV is a slideshow, controls whether or not the message box is displayed
       Note the 'output' argument is only valid for slideshows.
-    
+
     ``:long_name:``
-    
+
       Long-form name for a slideshow object.
       **Added automatically by the configuration process, do NOT add manually.**
-    
+
     ``:points: {number}``
-    
+
       Number of points this activity is worth.
       **Added automatically by the configuration process, do NOT add manually.**
-    
+
     ``:required: true|false``
-    
+
       Whether this activity is required for module credit.
       **Added automatically by the configuration process, do NOT add manually.**
-    
+
     ``:threshold: {number}``
-    
+
       Threshold number of points required for credit.
       **Added automatically by the configuration process, do NOT add manually.**
 
@@ -207,9 +207,9 @@ DESCRIPTION
     A custom interpreted text role. ``numref`` adds numbered cross
     references within ODSA documents.
 
-    ``{caption}``      
+    ``{caption}``
 
-    Text to be displayed next to the numbered reference.    
+    Text to be displayed next to the numbered reference.
 
     ``{reference_label}``
 
@@ -235,7 +235,7 @@ NAME
 SYNOPSIS::
 
     .. TODO::
-       [:type: {type label of the desired artifact}]  
+       [:type: {type label of the desired artifact}]
 
 DESCRIPTION
 
@@ -261,27 +261,27 @@ NOTES
     RST files to create a separate TODO.rst file that lists all the
     desired AVs and Exercises grouped by type.
     The TODO.rst file should be included in the index.rst file to be
-    part of the table of contents for the eBook. 
+    part of the table of contents for the eBook.
 
-   
-odsalink  
+
+odsalink
 --------
-NAME  
+NAME
     odsalink - adds the code to include a CSS file in the
     HTML output file.
-      
-SYNOPSIS::   
+
+SYNOPSIS::
 
    .. odsalink:: {path to file}
 
-DESCRIPTION 
-    ``.. odsalink::``  
+DESCRIPTION
+    ``.. odsalink::``
     The directive injects the code to include a linked file in the
     outputted HTML files.
     It gets the path to ODSA directory from the ``odsa_path`` variable
     in the ``conf.py`` file.
 
-    ``{path to file}``  
+    ``{path to file}``
     The path (relative to ODSA directory root as defined by the
     ``odsa_path`` variable in the ``conf.py`` file) to the linked file
     to be include.
@@ -300,7 +300,7 @@ NOTES
     in the HTML output file.
 
 
-odsascript  
+odsascript
 ----------
 NAME
     odsascript - adds the code to include a script file in the
@@ -326,7 +326,7 @@ NOTES
     The directory containing the file to be included should be hosted
     within the ODSA directory.
     Example, if ``odsa_path`` is defined to be ``..\..\..``, then
-    
+
     ``.. odsascript:: JSAV/build/JSAV-min.js``
 
     will produce

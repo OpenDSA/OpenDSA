@@ -10,8 +10,6 @@
 
 .. _ExternalSort:
 
-.. include:: JSAVheader.rinc
-
 External Sorting[STUB]
 ======================
 

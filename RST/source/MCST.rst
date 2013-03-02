@@ -10,8 +10,6 @@
 
 .. _MCST:
 
-.. include:: JSAVheader.rinc
-
 Minimal Cost Spanning Trees [STUB]
 ==================================
 

@@ -8,8 +8,6 @@
 
 .. _Knapsack:
 
-.. include:: JSAVheader.rinc
-
 0/1 Knapsack Problem
 ====================
 

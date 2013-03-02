@@ -10,8 +10,6 @@
 
 .. _HashFunc:
 
-.. include:: JSAVheader.rinc
-
 .. index:: ! hashing function
 
 Hash Function Principles

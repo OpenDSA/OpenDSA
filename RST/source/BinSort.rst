@@ -10,8 +10,6 @@
 
 .. _BinSort:
 
-.. include:: JSAVheader.rinc
-
 .. odsalink:: AV/slideCON.css
 
 .. index:: ! Binsort

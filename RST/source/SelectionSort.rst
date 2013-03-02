@@ -12,8 +12,6 @@
 
 .. index:: ! Selection Sort
 
-.. include:: JSAVheader.rinc
-
 .. odsalink:: AV/slideCON.css
 
 Selection Sort

@@ -97,7 +97,7 @@ def embedlocal(av_path):
 
 def showhide(argument):
   """Conversion function for the "showhide" option."""
-  return directives.choice(argument, ('show', 'hide'))
+  return directives.choice(argument, ('show', 'hide', 'none'))
 
 
 class avembed(Directive):
@@ -144,17 +144,15 @@ class avembed(Directive):
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
 
-    if 'showhide' in self.options:
-      if self.options['showhide'] == "show":
-        self.options['show_hide_text'] = "Hide"
-        res = BUTTON_HTML % (self.options)
-        res += IFRAME_HTML % (self.options)
-      else:
-        self.options['show_hide_text'] = "Show"
-        res = BUTTON_HTML % (self.options)
-
-    else:
+    if 'showhide' in self.options and self.options['showhide'] == "none":
       res = IFRAME_HTML % self.options
+    elif 'showhide' in self.options and self.options['showhide'] == "show":
+      self.options['show_hide_text'] = "Hide"
+      res = BUTTON_HTML % (self.options)
+      res += IFRAME_HTML % (self.options)
+    else:
+      self.options['show_hide_text'] = "Show"
+      res = BUTTON_HTML % (self.options)
 
     return [nodes.raw('', res, format='html')]
 
