@@ -34,7 +34,10 @@ jshint:
 	-@jshint AV/Sorting/*.js
 	-@jshint AV/Hashing/*.js
 	-@jshint Exercises/Hashing/*.js
-	-@jshint lib/*.js
+	-@jshint lib/odsaUtils.js
+	-@jshint lib/odsaAV.js
+	-@jshint lib/odsaMOD.js
+	-@jshint lib/gradebook.js
 
 min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css
 
