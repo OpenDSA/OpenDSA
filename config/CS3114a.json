@@ -175,7 +175,7 @@
           }
         }
       },
-      "Sorting/Shellsort.rst": {
+      "Shellsort": {
         "long_name": "Shellsort",
         "exercises": {
           "shellsortCON1": {
