@@ -60,19 +60,17 @@
     jsav.step();
 
     jsav.umsg("Move the pivot to the end");
-    arr.toggleArrow(right);
-    jsav.step();
+    arr.setRightArrow(right);
     arr.swap(pivotIndex, right);
     jsav.step();
-    arr.toggleArrow(right);
 
-    jsav.umsg("Partition the array");
+    jsav.umsg("Partition the subarray");
+    arr.setLeftArrow(left);
     jsav.step();
     // finalPivotIndex will be the final position of the pivot
-    var finalPivotIndex = partition(arr, left, right - 1, arr.value(right));
+    var finalPivotIndex = partition(arr, left, right, arr.value(right));
 
-    arr.toggleArrow(finalPivotIndex);
-    jsav.umsg("When the right bound is less than or equal to the left bound, all elements to the right of this element are less than the pivot and all elements to the right are greater than or equal to the pivot");
+    jsav.umsg("When the right bound reaches the left bound, all elements to the left of the left bound are less than the pivot and all elements to the right are greater than or equal to the pivot");
     jsav.step();
     arr.toggleArrow(finalPivotIndex);
 
@@ -87,7 +85,9 @@
     var subArr1 = arr.slice(left, finalPivotIndex);
     if (subArr1.length === 1) {
       jsav.umsg("Left sublist contains a single element which means it is sorted");
+      arr.toggleArrow(finalPivotIndex - 1);
       jsav.step();
+      arr.toggleArrow(finalPivotIndex - 1);
       arr.markSorted(left);
     }
     else if (subArr1.length > 1) {
@@ -101,7 +101,9 @@
     var subArr2 = arr.slice(finalPivotIndex + 1, right + 1);
     if (subArr2.length === 1) {
       jsav.umsg("Right sublist contains a single element which means it is sorted");
+      arr.toggleArrow(finalPivotIndex + 1);
       jsav.step();
+      arr.toggleArrow(finalPivotIndex + 1);
       arr.markSorted(finalPivotIndex + 1);
     }
     else if (subArr2.length > 1) {
@@ -113,57 +115,49 @@
   }
 
   function partition(arr, left, right, pivot) {
-    var pivotIndex = right + 1;
-    arr.setRightArrow(right);
-
-    while (left <= right) {
+    while (left < right) {
       // Move the left bound inwards
       jsav.umsg("Move the left bound to the right until it reaches a value greater than or equal to the pivot");
+      jsav.step();
       while (arr.value(left) < pivot) {
-        arr.setLeftArrow(left);
-        jsav.step();
         arr.clearLeftArrow(left);
         left++;
+        arr.setLeftArrow(left);
+	jsav.umsg("Step right");
+        jsav.step();
       }
 
-      // Only highlight element at index left if it isn't the pivot
-      if (left < pivotIndex) {
-        arr.highlight(left);
-      }
-      arr.setLeftArrow(left);
+      arr.highlight(left);
+      jsav.umsg("That is as far as we go this round");
       jsav.step();
 
       // Move the right bound inwards
-      jsav.umsg("Move the right bound to the left until it reaches a value less than the pivot");
-      arr.clearRightArrow(right);
-      while ((right >= left) && (arr.value(right) >= pivot)) {
-        arr.setRightArrow(right);
-        jsav.step();
+      jsav.umsg("Move the right bound to the left until it reaches the left bound or a value less than the pivot");
+      jsav.step();
+      while ((right > left) && (arr.value(right) >= pivot)) {
         arr.clearRightArrow(right);
         right--;
+        arr.setRightArrow(right);
+	jsav.umsg("Step left");
+        jsav.step();
       }
 
-      // Stop when all elements have been appropriately swapped
-      if (left >= right) {
-        if (left < pivotIndex) {
-          arr.unhighlight(left);
-        }
-        arr.clearLeftArrow(left);
-        break;
+      if (right > left) {
+        arr.highlight(right);
+        jsav.umsg("That is as far as we go this round");
+        jsav.step();
+        // Swap highlighted elements
+        jsav.umsg("Swap the selected values");
+        arr.swap(left, right);
+        jsav.step();
+        arr.unhighlight([left, right]);
       }
-
-      arr.highlight(right);
-      arr.setRightArrow(right);
-      jsav.step();
-
-      // Swap highlighted elements
-      jsav.umsg("Swap the selected values");
-      arr.swap(left, right);
-      jsav.step();
-      arr.unhighlight([left, right]);
-      arr.clearLeftArrow(left);
+      else {
+	jsav.umsg("Bounds have met");
+        arr.unhighlight(left);
+        jsav.step();
+      }
     }
-
     // Return first position in right partition
     return left;
   }
