@@ -9,8 +9,6 @@
 
 .. _Recurrence:
 
-.. include:: JSAVheader.rinc
-
 Recurrence Relations [STUB]
 ===========================
 

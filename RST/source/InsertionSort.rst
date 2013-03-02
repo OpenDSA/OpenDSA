@@ -12,8 +12,6 @@
 
 .. index:: ! Insertion Sort
 
-.. include:: JSAVheader.rinc
-
 .. odsalink:: AV/slideCON.css
 
 Insertion Sort

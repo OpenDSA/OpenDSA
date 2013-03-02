@@ -10,8 +10,6 @@
 
 .. _HashIntro:
 
-.. include:: JSAVheader.rinc
-
 .. index:: ! hashing
 
 .. odsalink:: AV/slideCON.css

@@ -10,8 +10,6 @@
 
 .. _TreeExer:
 
-.. include:: JSAVheader.rinc
-
 Tree Exercises
 ==============
 

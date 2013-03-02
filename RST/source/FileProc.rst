@@ -10,8 +10,6 @@
 
 .. _FileProc:
 
-.. include:: JSAVheader.rinc
-
 File Processing [STUB]
 ======================
 

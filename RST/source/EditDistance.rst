@@ -10,8 +10,6 @@
 
 .. _EditDistance:
 
-.. include:: JSAVheader.rinc
-
 Edit Distance
 =============
 

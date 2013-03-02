@@ -10,8 +10,6 @@
 
 .. _HashFunc:
 
-.. include:: JSAVheader.rinc
-
 .. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Hashing/collisionCON.css
 

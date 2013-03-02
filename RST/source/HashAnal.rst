@@ -8,9 +8,7 @@
    :prerequisites:
    :topic: Hashing
 
-.. _HashFunc:
-
-.. include:: JSAVheader.rinc
+.. _HashAnal:
 
 Analysis of Closed Hashing
 ==========================

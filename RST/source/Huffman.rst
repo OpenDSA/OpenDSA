@@ -10,8 +10,6 @@
    
 .. _Huffman:
 
-.. include:: JSAVheader.rinc
-
 .. odsalink:: AV/Development/HuffmanCodingExamp.css
 
 .. index:: ! Huffman

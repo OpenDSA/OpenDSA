@@ -10,8 +10,6 @@
 
 .. _HashSumm:
 
-.. include:: JSAVheader.rinc
-
 Hashing Chapter Summary Exercises
 =================================
 

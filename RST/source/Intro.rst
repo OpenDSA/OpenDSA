@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: OpenDSA
 
-.. include:: JSAVheader.rinc
-
 How to Use this System
 ======================
 

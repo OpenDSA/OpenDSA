@@ -10,8 +10,6 @@
 
 .. _SortSumm:
 
-.. include:: JSAVheader.rinc
-
 Sorting Chapter Summary Exercises
 =================================
 

@@ -10,8 +10,6 @@
 
 .. _Reductions:
 
-.. include:: JSAVheader.rinc
-
 Reductions [STUB]
 =================
 

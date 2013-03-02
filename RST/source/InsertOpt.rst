@@ -12,8 +12,6 @@
 
 .. index:: Insertion Sort; optimizing
 
-.. include:: JSAVheader.rinc
-
 Optimizing Insertion Sort
 =========================
 

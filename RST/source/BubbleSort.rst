@@ -12,8 +12,6 @@
 
 .. index:: ! Bubble Sort
 
-.. include:: JSAVheader.rinc
-
 .. odsalink:: AV/slideCON.css
 
 Bubble Sort

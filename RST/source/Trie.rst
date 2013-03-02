@@ -10,8 +10,6 @@
 
 .. _Trie:
 
-.. include:: JSAVheader.rinc
-
 Tries [STUB]
 ============
 

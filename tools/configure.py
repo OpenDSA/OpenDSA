@@ -48,7 +48,13 @@ sphinx_header_chars = ['=', '-', '`', "'", '.', '*', '+', '^']
 # List of exercises encountered in RST files that do not appear in the configuration file
 missing_exercises = []
 
-# Used to generate the index.rst file
+# List of modules that have been processed, do not allow multiple modules with the same name (would cause a conflict in the database)
+processed_modules = []
+
+# List of images encountered while processing module files, these will be copied from the source/Images to Images in the output source directory
+images = []
+
+# Used to generate the index.rst file (%s is used to include the rst_script_header string)
 index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
@@ -66,18 +72,39 @@ index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 
 .. _index:
 
-.. raw:: html
-   
-   <script>
-   var dispModComp = false;
-   </script>
-
-.. include:: JSAVheader.rinc
+%s
 
 .. chapnum::
    :start: 0
    :prefix: Chapter
 
+'''
+
+rst_script_header = '''\
+.. odsalink:: JSAV/css/JSAV.css
+.. odsalink:: lib/odsaMOD-min.css
+
+.. odsascript:: lib/jquery.min.js
+.. odsascript:: lib/jquery-ui.min.js
+ 
+.. odsascript:: JSAV/lib/jquery.transform.light.js 
+.. odsascript:: JSAV/lib/raphael.js 
+
+.. odsascript:: JSAV/build/JSAV-min.js
+
+.. raw:: html
+
+   <script src="_static/config.js"></script>
+   <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+       "HTML-CSS": {
+         scale: "80"
+       }
+     });
+   </script>
+
+.. odsascript:: lib/odsaUtils-min.js
+.. odsascript:: lib/odsaMOD-min.js
 '''
 
 makefile_template = '''\
@@ -101,6 +128,7 @@ preprocessor:
 	python "%(odsa_root)sRST/preprocessor.py" source/ $(HTMLDIR)
 
 html: preprocessor
+	rm source/ToDo.rst
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
 	rm *.json
@@ -215,7 +243,7 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 sys.path.append(os.path.abspath('_themes'))
-html_theme_path = ['_themes']
+html_theme_path = ['%(odsa_root)sRST/source/_themes']
 html_theme = 'haiku'
 
 # Theme options are theme-specific and customize the look and feel of a theme
@@ -437,17 +465,28 @@ def process_section(section, index_rst, depth):
   
   index_rst.write("\n")
 
-def process_module(mod_name, mod_attrib, index_rst, depth):
-  exercises = mod_attrib['exercises']
+def process_module(mod_path, mod_attrib, index_rst, depth):
+  mod_path = mod_path.replace('.rst', '')
+  mod_name = os.path.basename(mod_path)
   
-  print ("  " * depth) + mod_name
-  index_rst.write("   " + mod_name + "\n")
+  # Print error message and exit if duplicate module name is detected
+  if mod_name in processed_modules:
+    print 'ERROR: Duplicate module name detected, module: ' + mod_name
+    sys.exit(1)
+  
+  # Add module to list of modules processed
+  processed_modules.append(mod_name)
   
   if mod_name == 'ToDo':
     return
   
+  print ("  " * depth) + mod_name
+  index_rst.write("   " + mod_name + "\n")
+  
+  exercises = mod_attrib['exercises']
+  
   # Read the contents of the module file from the RST source directory
-  with open(odsa_dir + 'RST/source/' + mod_name + '.rst','r') as mod_file:
+  with open(odsa_dir + 'RST/source/' + mod_path + '.rst','r') as mod_file:
     mod_data = mod_file.readlines()
   mod_file.close()
   
@@ -459,26 +498,33 @@ def process_module(mod_name, mod_attrib, index_rst, depth):
   # Alter the contents of the module based on the config file
   i = 0
   while i < len(mod_data):
-    if '.. include:: JSAVheader.rinc' in mod_data[i] and 'dispModComp' in mod_attrib:
-      # If the module contains a 'dispModComp' attribute, set the JS flag to indicate whether the module can be completed
-      new_mod_data.append(mod_data[i])
-      new_mod_data.append(eol)
-      new_mod_data.append('.. raw:: html' + eol + eol)
-      new_mod_data.append('   <script>' + eol)
+    # Append the line to the output data
+    new_mod_data.append(mod_data[i])
+    
+    if '.. _' + mod_name + ':' in mod_data[i]:
+      # Append the RST script header to the module after the self reference directive
+      new_mod_data.append(eol + rst_script_header)
       
-      if mod_attrib['dispModComp']:
-        new_mod_data.append('   ODSA.SETTINGS.dispModComp = true;' + eol)
-      else:
-        new_mod_data.append('   ODSA.SETTINGS.dispModComp = false;' + eol)
+      # If the module contains a 'dispModComp' attribute, set the JS flag to indicate whether the module can be completed
+      if 'dispModComp' in mod_attrib:
+        new_mod_data.append(eol + '.. raw:: html' + eol + eol)
+        script = '   <script>ODSA.SETTINGS.dispModComp = '
         
-      new_mod_data.append('   </script>' + eol + eol)
+        if mod_attrib['dispModComp']:
+          script += 'true'
+        else:
+          script += 'false'
+        
+        script += ';</script>'
+        
+        new_mod_data.append(script + eol + eol)
+    elif '.. figure::' in mod_data[i]:
+      image_path = mod_data[i].split(' ')[2].rstrip()
+      images.append(os.path.basename(image_path))
     elif '.. inlineav::' in mod_data[i]:
       # Parse the AV name from the line
       av_name = mod_data[i].split(' ')[2].rstrip()
       type = mod_data[i].split(' ')[3].rstrip()
-      
-      # Include the slideshow or diagram because it is considered content and cannot be removed via the config file
-      new_mod_data.append(mod_data[i])
     
       if av_name not in exercises:
         # If the AV is not listed in the config file, add its name to a list of missing exercises
@@ -488,29 +534,29 @@ def process_module(mod_name, mod_attrib, index_rst, depth):
         # Diagrams (type == 'dgm') do not require this extra information
         exer_conf = exercises[av_name]
         
-        for setting in exer_conf:
-          if setting == 'remove' or setting == 'showhide':
-            continue
-          
-          new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
+        # List of valid options for inlineav directive
+        options = ['long_name', 'points', 'required', 'threshold']
+        
+        for option in options:
+          if option in exer_conf:
+            new_mod_data.append('   :' + option + ': ' + str(exer_conf[option]) + eol)
     
     elif '.. avembed::' in mod_data[i]:
       # Parse the exercise name from the line
       av_name = mod_data[i].split(' ')[2].rstrip()
       av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
-      
       type = mod_data[i].split(' ')[3].rstrip()
       
       # If the config file states the exercise should be removed, remove it 
       if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
         print ("  " * (depth + 1 )) + 'Removing: ' + av_name
         
+        new_mod_data.pop()
+        
         # Config file states exercise should be removed, remove it from the RST file
         while (i < len(mod_data) and mod_data[i].rstrip() != ''):
           i = i + 1
       else:
-        new_mod_data.append(mod_data[i])
-        
         if av_name not in exercises:
           # Add the name to a list of missing exercises
           missing_exercises.append(av_name)
@@ -520,18 +566,16 @@ def process_module(mod_name, mod_attrib, index_rst, depth):
           
           new_mod_data.append('   :module: ' + mod_name + eol)
           
-          for setting in exer_conf:
-            # If "showhide": "none", then don't append showhide option
-            if setting == 'showhide' and exer_conf[setting] == 'none':
-              continue
-            
-            new_mod_data.append('   :' + setting + ': ' + str(exer_conf[setting]) + eol)
+          # List of valid options for avembed directive
+          options = ['long_name', 'points', 'required', 'showhide', 'threshold']
+          
+          for option in options:
+            if option in exer_conf:
+              new_mod_data.append('   :' + option + ': ' + str(exer_conf[option]) + eol)
           
           # If 'showhide' attribute isn't present, default to hidden
           if 'showhide' not in exer_conf:
             new_mod_data.append('   :showhide: hide' + eol)
-    else:
-      new_mod_data.append(mod_data[i])
     
     i = i + 1
   
@@ -617,8 +661,6 @@ if output_dir == (odsa_dir) or output_dir == (odsa_dir + "RST/"):
   print "Unable to build in this location, please select a different directory"
   sys.exit(1)
 
-src_dir = output_dir + "source/"
-
 cwd = os.getcwd()
 
 if conf_data['build_JSAV']:
@@ -638,21 +680,11 @@ if conf_data['build_JSAV']:
     print status
     sys.exit(1)
 
-print "Copying files to output directory\n"
+print "Writing files to output directory\n"
 
 # Initialize output directory
+src_dir = output_dir + "source/"
 distutils.dir_util.mkpath(src_dir)
-
-# Copy all non-RST source files and directories to the output source directory
-for src_file in os.listdir(odsa_dir + 'RST/source/'):
-  src_file_path = odsa_dir + 'RST/source/' + src_file
-  if os.path.isdir(src_file_path):
-    distutils.dir_util.copy_tree(src_file_path, src_dir + src_file, update=1)
-  elif not src_file.endswith('.rst'):
-    distutils.file_util.copy_file(src_file_path, src_dir)
-
-# Copy config file to _static directory
-distutils.file_util.copy_file(config_file, src_dir + '_static/')
 
 # Initialize options for conf.py
 options = {}
@@ -681,7 +713,7 @@ conf_py.close()
 with open(src_dir + 'index.rst', 'w+') as index_rst:
   print "Generating index.rst\n"
   print "Processing..."
-  index_rst.write(index_header)
+  index_rst.write(index_header % rst_script_header)
   
   process_section(conf_data['chapters'], index_rst, 0)
 
@@ -695,6 +727,18 @@ if len(missing_exercises) > 0:
   
   for exercise in missing_exercises:
     print '  ' + exercise
+
+
+# Copy _static and select images from RST/source/Images/ to the output source directory
+distutils.dir_util.copy_tree(odsa_dir + 'RST/source/_static/', src_dir + '_static', update=1)
+
+distutils.dir_util.mkpath(src_dir + 'Images/')
+
+for image in images:
+  distutils.file_util.copy_file(odsa_dir + 'RST/source/Images/' + image, src_dir + 'Images/')
+
+# Copy config file to _static directory
+distutils.file_util.copy_file(config_file, src_dir + '_static/')
 
 
 config_js_template = '''\

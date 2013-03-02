@@ -10,8 +10,6 @@
 
 .. _BinaryHeap:
 
-.. include:: JSAVheader.rinc
-
 .. raw:: html
 
    <style>

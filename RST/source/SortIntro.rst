@@ -10,8 +10,6 @@
 
 .. _SortIntro:
 
-.. include:: JSAVheader.rinc
-
 .. index:: ! SortIntro
 
 Introduction
@@ -74,7 +72,7 @@ We will see how it is possible to speed up sorting algorithms
 by taking advantage of the best case behavior of another algorithm
 (:ref:`Insertion Sort <InsertionSort>`).
 We'll see several examples of how we can tune an algorithm for better
-performance. 
+performance.
 We'll see that special case behavior by some algorithms makes them a
 good solution for special niche applications (:ref:`Heapsort <Heapsort>`).
 Sorting provides an example of a significant technique for
@@ -134,7 +132,7 @@ are stable, or can be made stable with minor changes.
 When comparing two sorting algorithms, the simplest approach would be to
 program both and measure their running times.
 An example of such timings is presented in
-Module :numref:`Empirical Comparsion of Sorting Algorithms <SortingEmpirical>`. 
+Module :numref:`Empirical Comparsion of Sorting Algorithms <SortingEmpirical>`.
 However, you must be careful when doing empirical comparisons because
 the running time for many sorting algorithms depends on specifics of
 the input values.

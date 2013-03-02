@@ -146,7 +146,7 @@ Settings (all are required unless otherwise specified)
 
   * Modules
 
-    * The key relating to each module object must correspond with the name of an RST file found in the ~OpenDSA/RST/source/ directory
+    * The key relating to each module object must correspond with a path to an RST file found in ~OpenDSA/RST/source/ or a sub-directory
     * If a module contains no exercises, it should still contain a key "exercises" with a value of an empty object
 
     * **long_name** - a long form, human-readable name used to identify the module in the GUI

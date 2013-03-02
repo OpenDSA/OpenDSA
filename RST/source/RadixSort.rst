@@ -10,8 +10,6 @@
 
 .. _RadixSort:
 
-.. include:: JSAVheader.rinc
-
 .. index:: ! Radix Sort
 
 Radix Sort
