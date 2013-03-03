@@ -57,6 +57,8 @@
 		var next;
 		  preVisit(start, prev);
 		  adjacent = start.neighbors();
+		//  jsav.step();
+		//  jsav.umsg("size " + adjacent.size());
 		  for (next = adjacent.next(); next; next = adjacent.next()) {
 			if (!next.hasClass("marked")) {
 			  markIt(next);
@@ -82,19 +84,17 @@
 		b = g.addNode("B", {"left": 325});
 		c = g.addNode("C", {"left": 145, "top": 75});
 		d = g.addNode("D", {"left":145, "top": 200});
-        e = g.addNode("E", {"left": 0, "top": 300});
+        e = g.addNode("E", {"top": 300});
 		f = g.addNode("F", {"left":325, "top":250});
-		
 		g.addEdge(a, c);
 		g.addEdge(a, e);
 		g.addEdge(c, b);
 		g.addEdge(c, d);
 		g.addEdge(c, f);
 		g.addEdge(b, f);
-		
 		g.addEdge(f, d);
 		g.addEdge(f, e);
-		
+		jsav.umsg("Start transversal at node A");
 		
 	}
 	
