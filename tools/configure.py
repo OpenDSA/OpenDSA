@@ -497,8 +497,6 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
   with open(odsa_dir + 'RST/source/' + mod_path + '.rst','r') as mod_file:
     mod_data = mod_file.readlines()
   mod_file.close()
-  
-  new_mod_data = []
 
   # Find the end-of-line character for the file
   eol = mod_data[0].replace(mod_data[0].rstrip(), '')
@@ -506,26 +504,16 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
   # Alter the contents of the module based on the config file
   i = 0
   while i < len(mod_data):
-    # Append the line to the output data
-    new_mod_data.append(mod_data[i])
-    
     if '.. _' + mod_name + ':' in mod_data[i]:
       # Append the RST script header to the module after the self reference directive
-      new_mod_data.append(eol + rst_script_header)
+      line = mod_data[i] + eol + rst_script_header
       
       # If the module contains a 'dispModComp' attribute, set the JS flag to indicate whether the module can be completed
       if 'dispModComp' in mod_attrib:
-        new_mod_data.append(eol + '.. raw:: html' + eol + eol)
-        script = '   <script>ODSA.SETTINGS.dispModComp = '
-        
-        if mod_attrib['dispModComp']:
-          script += 'true'
-        else:
-          script += 'false'
-        
-        script += ';</script>'
-        
-        new_mod_data.append(script + eol + eol)
+        line += eol + '.. raw:: html' + eol + eol
+        line += '   <script>ODSA.SETTINGS.dispModComp = ' + str(mod_attrib['dispModComp']).lower() + ';</script>' + eol + eol
+      
+      mod_data[i] = line
     elif '.. figure::' in mod_data[i]:
       image_path = mod_data[i].split(' ')[2].rstrip()
       images.append(os.path.basename(image_path))
@@ -533,7 +521,7 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
       # Parse the AV name from the line
       av_name = mod_data[i].split(' ')[2].rstrip()
       type = mod_data[i].split(' ')[3].rstrip()
-    
+      
       if av_name not in exercises:
         # If the AV is not listed in the config file, add its name to a list of missing exercises
         missing_exercises.append(av_name)
@@ -545,10 +533,13 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
         # List of valid options for inlineav directive
         options = ['long_name', 'points', 'required', 'threshold']
         
+        line = mod_data[i]
+        
         for option in options:
           if option in exer_conf:
-            new_mod_data.append('   :' + option + ': ' + str(exer_conf[option]) + eol)
-    
+            line += '   :' + option + ': ' + str(exer_conf[option]) + eol
+      
+        mod_data[i] = line
     elif '.. avembed::' in mod_data[i]:
       # Parse the exercise name from the line
       av_name = mod_data[i].split(' ')[2].rstrip()
@@ -559,11 +550,9 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
       if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
         print ("  " * (depth + 1 )) + 'Removing: ' + av_name
         
-        new_mod_data.pop()
-        
         # Config file states exercise should be removed, remove it from the RST file
         while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-          i = i + 1
+          mod_data.pop()
       else:
         if av_name not in exercises:
           # Add the name to a list of missing exercises
@@ -572,20 +561,22 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
           # Add the necessary information from the configuration file
           exer_conf = exercises[av_name]
           
-          new_mod_data.append('   :module: ' + mod_name + eol)
+          line = mod_data[i] + '   :module: ' + mod_name + eol
           
           # List of valid options for avembed directive
           options = ['long_name', 'points', 'required', 'showhide', 'threshold']
           
           for option in options:
             if option in exer_conf:
-              new_mod_data.append('   :' + option + ': ' + str(exer_conf[option]) + eol)
+              line += '   :' + option + ': ' + str(exer_conf[option]) + eol
+    
+          mod_data[i] = line
     
     i = i + 1
   
   # Write the contents of the module file to the output src directory
   with open(src_dir + mod_name + '.rst','w') as mod_file:
-    mod_file.writelines(new_mod_data)
+    mod_file.writelines(mod_data)
   mod_file.close()
 
 
