@@ -66,17 +66,22 @@
 
     jsav.umsg("Partition the subarray");
     arr.setLeftArrow(left);
+    arr.clearRightArrow(right);
+    arr.setRightArrow(right - 1);
     jsav.step();
     // finalPivotIndex will be the final position of the pivot
-    var finalPivotIndex = partition(arr, left, right, arr.value(right));
+    var finalPivotIndex = partition(arr, left, right - 1, arr.value(right));
 
-    jsav.umsg("When the right bound reaches the left bound, all elements to the left of the left bound are less than the pivot and all elements to the right are greater than or equal to the pivot");
+    jsav.umsg("When the right bound crosses the left bound, all elements to the left of the left bound are less than the pivot and all elements to the right are greater than or equal to the pivot");
     jsav.step();
     arr.toggleArrow(finalPivotIndex);
 
     jsav.umsg("Move the pivot to its final location");
     arr.swap(finalPivotIndex, right);
     arr.markSorted(finalPivotIndex);
+    if (right >= 0) {
+      arr.clearRightArrow(right);
+    }
     jsav.step();
 
     // Create and display sub-arrays
@@ -115,7 +120,7 @@
   }
 
   function partition(arr, left, right, pivot) {
-    while (left < right) {
+    while (left <= right) {
       // Move the left bound inwards
       jsav.umsg("Move the left bound to the right until it reaches a value greater than or equal to the pivot");
       jsav.step();
@@ -123,7 +128,7 @@
         arr.clearLeftArrow(left);
         left++;
         arr.setLeftArrow(left);
-	jsav.umsg("Step right");
+        jsav.umsg("Step right");
         jsav.step();
       }
 
@@ -132,13 +137,15 @@
       jsav.step();
 
       // Move the right bound inwards
-      jsav.umsg("Move the right bound to the left until it reaches the left bound or a value less than the pivot");
+      jsav.umsg("Move the right bound to the left until it crosses the left bound or finds a value less than the pivot");
       jsav.step();
-      while ((right > left) && (arr.value(right) >= pivot)) {
+      while ((right >= left) && (arr.value(right) >= pivot)) {
         arr.clearRightArrow(right);
         right--;
-        arr.setRightArrow(right);
-	jsav.umsg("Step left");
+        if (right >= 0) {
+          arr.setRightArrow(right);
+        }
+        jsav.umsg("Step left");
         jsav.step();
       }
 
@@ -153,7 +160,7 @@
         arr.unhighlight([left, right]);
       }
       else {
-	jsav.umsg("Bounds have met");
+        jsav.umsg("Bounds have crossed");
         arr.unhighlight(left);
         jsav.step();
       }

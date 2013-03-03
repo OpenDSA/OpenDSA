@@ -114,9 +114,11 @@
       // Select the pivot
       var pivotIndex = Math.floor((i + j) / 2);
       arr.highlightBlue(pivotIndex);
+      jsav.umsg("Select the pivot");
       jsav.step();
 
       // Move the pivot to the end of the list being sorted
+      jsav.umsg("Move the pivot to the end");
       arr.swap(pivotIndex, j);
       msPivotIndex.value(j);
       msPivotMoved.value(true);
@@ -125,7 +127,8 @@
 
       // Partition the array
       // k will be the first position in the right subarray
-      var k = partition(arr, i, j, arr.value(j));
+      jsav.umsg("Partition the subarray");
+      var k = partition(arr, i, j - 1, arr.value(j));
       msLeft.value(i);
       msRight.value(j - 1);
       msPartitioned.value(true);
@@ -133,6 +136,7 @@
       jsav.stepOption("grade", true);
       jsav.step();
 
+      jsav.umsg("Put the pivot value into its correct location");
       // If the pivot is already in its final location, don't need to swap it
       if (k !== j) {
         arr.swap(k, j);
@@ -142,6 +146,7 @@
         jsav.step();
       }
 
+      jsav.umsg("Mark the pivot location as sorted");
       arr.markSorted(k);
       resetMSStateVars(msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight);
       jsav.stepOption("grade", true);
@@ -152,6 +157,7 @@
         quicksort(jsav, arr, i, k - 1, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight);
       } else if ((k - i) === 1) {
         // If the sublist is a single element, mark it as sorted
+        jsav.umsg("Mark the single value on the left side as sorted");
         arr.markSorted(i);
         resetMSStateVars(msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight);
         jsav.stepOption("grade", true);
@@ -163,6 +169,7 @@
         quicksort(jsav, arr, k + 1, j, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight);
       } else if ((j - k) === 1) {
         // If the sublist is a single element, mark it as sorted
+        jsav.umsg("Mark the single value on the right side as sorted");
         arr.markSorted(j);
         resetMSStateVars(msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight);
         jsav.stepOption("grade", true);
@@ -181,22 +188,14 @@
      * pivot - the value to compare all the elements against
      */
     function partition(arr, l, r, pivot) {
-      l -= 1;
-
-      while (l < r) {
+      while (l <= r) {
         // Move bounds inward until they meet
-        while (arr.value(++l) < pivot) { }
-        while ((r > 0) && (arr.value(--r) > pivot)) { }
-
-        // Stop when all elements have been appropriately swapped
-        if (l >= r) {
-          break;
+        while (arr.value(l) < pivot) { l++; }
+        while ((r >= l) && (arr.value(r) >= pivot)) { r--; }
+        if (r > l) {
+          arr.swap(l, r);
         }
-
-        // Highlight elements to swap
-        arr.swap(l, r);
       }
-
       // Return first position in right partition
       return l;
     }
@@ -259,14 +258,14 @@
         } else if (!pivotMoved.value()) {
           // Move the selected pivot to the specified index
           swapPivot(pivotIndex.value(), index);
-          av.umsg("Please select the partition\'s left endpoint");
+          av.umsg("Select the partition\'s left endpoint");
         } else if (left.value() === -1) {
           // Select the left end of the range to partition
           left.value(index);
           arr.setLeftArrow(index);
           
           if (right.value() === -1) {
-            av.umsg("Please select the partition\'s right endpoint, then click on 'Partition'.");
+            av.umsg("Select the partition\'s right endpoint, then click on 'Partition'.");
           } else {
             av.umsg("");
           }
@@ -281,14 +280,14 @@
           right.value(-1);
 
           // Guide the user by telling them they just deselected the right endpoint
-          av.umsg("Please select the right endpoint, then click on 'Partition'.");
+          av.umsg("Select the right endpoint, then click on 'Partition'.");
         } else if (left.value() === index) {
           // Deselect the left end of the range to partition
           arr.clearLeftArrow(index);
           left.value(-1);
 
           // Guide the user by telling them they just deselected the left endpoint
-          av.umsg("Please select the left endpoint");
+          av.umsg("Select the left endpoint");
         }
       } else {
         if (pivotIndex.value() === -1) {
