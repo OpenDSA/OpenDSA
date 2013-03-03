@@ -1,5 +1,5 @@
 final int numtests = 10;
-final int testsize = 100;
+final int testsize = 1000;
 
 void swap(int[] A, int i, int j) {
   int temp = A[i];
@@ -7,6 +7,10 @@ void swap(int[] A, int i, int j) {
   A[j] = temp;
 }
 
+/* Warning: Partition is sensitive. If we don't make the right
+   position actually cross the left, then it seems hard to get things
+   to work right when there is only one element in the partition
+   (i.e., a list of 2 elements). */
 /* *** ODSATag: partition *** */
 int partition(int[] A, int left, int right, int pivot) {
   while (left <= right) { // Move bounds inward until they meet

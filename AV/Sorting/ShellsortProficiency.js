@@ -55,11 +55,13 @@
           arr.highlight(highlightFunction);
           modelmode.value("SORTING");
           jsav.stepOption("grade", true);
+          jsav.umsg("Done selecting sublist");
           jsav.step();
         }
         inssort(jsav, arr, j, incr);
         arr.unhighlight(highlightFunction);
         modelmode.value("SELECTING");
+        jsav.umsg("Done sorting sublist");
         jsav.stepOption("grade", true);
         jsav.step();
       }
@@ -72,6 +74,7 @@
         for (j = i; j >= incr; j -= incr) {
           if (parseInt(arr.value(j), 10) < parseInt(arr.value(j - incr), 10)) {
             arr.swap(j, j - incr); // swap the two indices
+            jsav.umsg("Swap");
             jsav.step();
           } else {
             break; // Done pushing element, leave for loop
@@ -92,6 +95,7 @@
         }
         modelmode.value("FIRSTSELECTING");
         modelarr.unhighlight();
+        jsav.umsg("Done increment");
         jsav.stepOption("grade", true);
         jsav.step();
       }

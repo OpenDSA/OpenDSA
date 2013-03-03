@@ -32,7 +32,7 @@
       swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step
       for (var i = 0; i < size; i++) {
         var val = modelHeap.value(i),
-            bgColor = modelHeap.css(i, "background-color");
+        bgColor = modelHeap.css(i, "background-color");
         if (bh.css(i, "background-color") !== bgColor) { // fix background color
           bh.css(i, {"background-color": bgColor});
         }
