@@ -8,8 +8,6 @@
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
 
-.. _InsertOpt:
-
 .. index:: Insertion Sort; optimizing
 
 Optimizing Insertion Sort

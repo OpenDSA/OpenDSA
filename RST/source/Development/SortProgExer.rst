@@ -8,8 +8,6 @@
    :prerequisites: Sorting, InsertionSort, BubbleSort, SelectionSort, MergeSort
    :topic: Sorting
 
-.. _SortProgExer:
-
 Sorting Chapter Programming Exercises [SB]
 ==========================================
 

@@ -8,8 +8,6 @@
    :prerequisites: BST, Heap
    :topic: Trees
 
-.. _TreeExer:
-
 Tree Exercises [STUB]
 =====================
 

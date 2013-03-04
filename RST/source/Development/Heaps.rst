@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Heaps
 
-.. _Heaps:
-
 Heaps [STUB]
 ============
 

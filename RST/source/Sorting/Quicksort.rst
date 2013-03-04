@@ -8,7 +8,6 @@
    :prerequisites: Sorting
    :topic: Sorting
 
-.. _Quicksort:
 .. odsascript:: AV/Sorting/quicksortCODE.js
 
 .. index:: ! Quicksort

@@ -7,8 +7,6 @@
    :author: Cliff Shaffer
    :prerequisites:
 
-.. _Recurrence:
-
 Recurrence Relations [STUB]
 ===========================
 

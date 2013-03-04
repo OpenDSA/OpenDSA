@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Hashing
 
-.. _HashFunc:
-
 .. index:: ! hashing function
 
 Hash Function Principles

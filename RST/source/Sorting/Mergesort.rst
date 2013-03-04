@@ -8,8 +8,6 @@
    :prerequisites: Sorting
    :topic: Sorting
 
-.. _Mergesort:
-
 .. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Sorting/mergeCON.css
 

@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Hashing
 
-.. _HashCImproved:
-
 .. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Hashing/collisionCON.css
 

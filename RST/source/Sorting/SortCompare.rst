@@ -8,8 +8,6 @@
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
 
-.. _SortCompare:
-
 .. index::
    pair: sorting; record comparison
    pair: searching; record comparison

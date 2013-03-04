@@ -8,8 +8,6 @@
    :prerequisites: FileProc
    :topic: External Sorting
 
-.. _ExternalSort:
-
 External Sorting[STUB]
 ======================
 

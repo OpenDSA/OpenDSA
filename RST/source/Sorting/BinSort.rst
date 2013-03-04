@@ -8,8 +8,6 @@
    :prerequisites: Sorting
    :topic: Sorting
 
-.. _BinSort:
-
 .. odsalink:: AV/slideCON.css
 
 .. index:: ! Binsort

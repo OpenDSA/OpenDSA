@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-.. _Reductions:
-
 Reductions [STUB]
 =================
 
