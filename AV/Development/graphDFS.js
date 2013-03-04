@@ -27,8 +27,8 @@
       jsav.umsg("Add " + node.value() + " to the stack");
       if (prev) {
 		
-        node.edgeFrom(prev).css("stroke-width", "4", "red"); // highlight
-	
+        node.edgeFrom(prev).css({"stroke-width":"4", "stroke":"red"}); // highlight
+		//prev.edgeFrom(node).css("stroke-width", "4" );
 		
       }
 	 
@@ -66,6 +66,10 @@
 	 
 		  for (next = adjacent.next(); next; next = adjacent.next()) {
 				jsav.umsg("Process (" + start.value() + "," + next.value() + ")");
+					if(next.hasClass("marked")) {
+						jsav.umsg("Node " + next.value() + " already marked");
+					}
+			
 				jsav.step();
 				if (!next.hasClass("marked")) {
 				jsav.umsg("Print (" + start.value() + "," + next.value() + ") and call depth first search on " + next.value());
