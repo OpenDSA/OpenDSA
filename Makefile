@@ -9,6 +9,7 @@ MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar
 all: lint
 
 clean:
+	- $(RM) *~
 	- $(RM) Doc/build
 	- $(RM) Books
 	# Remove minified JS and CSS files

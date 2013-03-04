@@ -12,11 +12,11 @@
 <script>
 // Determine whether a proposed series is legal or not
 function getAnswer(series) {
-  if (series[series.length - 1] !== 1) { return "False"; }
+  if (series[series.length - 1] !== 1) { return "No"; }
   for (var i = 1; i < series.length; i++) {
-    if (series[i] >= series[i - 1]) { return "False"; }
+    if (series[i] >= series[i - 1]) { return "No"; }
   }
-  return "True";
+  return "Yes";
 }
 
 // Generate an array containing a proposed increment series
@@ -48,8 +48,8 @@ function makeSeries(count) {
       </p>
       <div class="solution"><var>ANSWER</var></div>
       <ul class="choices" data-category="true">
-        <li><var>"True"</var></li>
-        <li><var>"False"</var></li>
+        <li><var>"Yes"</var></li>
+        <li><var>"No"</var></li>
       </ul>
     </div>
   </div>

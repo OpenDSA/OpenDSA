@@ -97,6 +97,6 @@ Here is a visualization for the optimized merge step.
 
 Now here are some review questions.
 
-.. avembed:: Exercises/Sorting/MergeImplSumm.html ka
+.. avembed:: Exercises/Sorting/MergesortSumm.html ka
 
 .. odsascript:: AV/Sorting/mergeImplCON.js

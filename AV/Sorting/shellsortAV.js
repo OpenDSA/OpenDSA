@@ -75,6 +75,12 @@
         if (incrs[i] < arrValues.length) {
           sweep(jsav, arr, incrs[i]); // run the sweep to create the AV
         }
+	else {
+          jsav.umsg("Start the next increment size: " + incrs[i]);
+          jsav.step();
+	  jsav.umsg("Increment " + incrs[i] + " is so big that the sublists would have only one element. So it is skipped.");
+	  jsav.step();
+        }
       }
       jsav.umsg("Done sorting!");
       jsav.recorded(); // mark the end
