@@ -30,7 +30,7 @@ def setup(app):
 
 
 ANCHOR_HTML = '''\
-<a id="%(exer_name)s"></a>
+<a id="%(exer_name)s_exer"></a>
 '''
 
 IFRAME_HTML = '''\
