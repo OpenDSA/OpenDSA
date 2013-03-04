@@ -492,6 +492,8 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
   index_rst.write("   " + mod_name + "\n")
   
   exercises = mod_attrib['exercises']
+
+  scripts_appended = False
   
   # Read the contents of the module file from the RST source directory
   with open(odsa_dir + 'RST/source/' + mod_path + '.rst','r') as mod_file:
@@ -504,16 +506,19 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
   # Alter the contents of the module based on the config file
   i = 0
   while i < len(mod_data):
-    if '.. _' + mod_name + ':' in mod_data[i]:
+    if '.. avmetadata::' in mod_data[i]:
       # Append the RST script header to the module after the self reference directive
-      line = mod_data[i] + eol + rst_script_header
+      line = rst_script_header
       
       # If the module contains a 'dispModComp' attribute, set the JS flag to indicate whether the module can be completed
       if 'dispModComp' in mod_attrib:
         line += eol + '.. raw:: html' + eol + eol
-        line += '   <script>ODSA.SETTINGS.dispModComp = ' + str(mod_attrib['dispModComp']).lower() + ';</script>' + eol + eol
+        line += '   <script>ODSA.SETTINGS.dispModComp = ' + str(mod_attrib['dispModComp']).lower() + ';</script>' + eol
       
-      mod_data[i] = line
+      line += eol + '.. _' + mod_name + ':' + eol
+      
+      mod_data[i] = line + eol + mod_data[i]
+      scripts_appended = True
     elif '.. figure::' in mod_data[i]:
       image_path = mod_data[i].split(' ')[2].rstrip()
       images.append(os.path.basename(image_path))
@@ -573,6 +578,10 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
           mod_data[i] = line
     
     i = i + 1
+  
+  if not scripts_appended:
+    print ("  " * (depth + 1 )) + 'ERROR: avmetadata directive is missing'
+    sys.exit(1)
   
   # Write the contents of the module file to the output src directory
   with open(src_dir + mod_name + '.rst','w') as mod_file:
