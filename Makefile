@@ -10,11 +10,9 @@ all: lint
 
 clean:
 	- $(RM) *~
-	- $(RM) Doc/build
 	- $(RM) Books
-	# Remove minified JS and CSS files
+	@# Remove minified JS and CSS files
 	- $(RM) lib/*-min.*
-	- $(RM) *~
 	- $(RM) Doc/*~
 	- $(RM) Scripts/*~
 	- $(RM) config/*~
