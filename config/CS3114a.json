@@ -24,7 +24,7 @@
             "long_name": "Sorting Intro Summary",
             "required": true,
             "points": 1.1,
-            "threshold": 5
+            "threshold": 3
           }
         }
       },
@@ -154,7 +154,7 @@
             "long_name": "Record Comparison Summary",
             "required": true,
             "points": 1.1,
-            "threshold": 5
+            "threshold": 4
           }
         }
       },
@@ -283,12 +283,6 @@
             "required": true,
             "points": 1.1,
             "threshold": 0.90
-          },
-          "MergesortSumm": {
-            "long_name": "Mergesort Concepts Summary",
-            "required": true,
-            "points": 1.1,
-            "threshold": 5
           }
         }
       },
@@ -307,10 +301,10 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "MergeImplSumm": {
-            "long_name": "Mergesort Implementation Summary",
+          "MergesortSumm": {
+            "long_name": "Mergesort Concepts Summary",
             "required": true,
-            "points": 1.1,
+            "points": 1.5,
             "threshold": 5
           }
         }
@@ -400,12 +394,6 @@
             "required": false,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "BinsortSumm": {
-            "long_name": "Binsort Summary",
-            "required": true,
-            "points": 1.1,
-            "threshold": 5
           }
         }
       },
@@ -435,7 +423,7 @@
           "RadixSortSumm": {
             "long_name": "Radixsort Summary",
             "required": true,
-            "points": 1.1,
+            "points": 1.25,
             "threshold": 5
           }
         }
@@ -458,7 +446,7 @@
             "long_name": "Lower Bounds Summary",
             "required": true,
             "points": 1.1,
-            "threshold": 5
+            "threshold": 4
           }
         }
       },
@@ -494,12 +482,6 @@
             "required": true,
             "points": 0.5,
             "threshold": 1.0
-          },
-          "HashPrinciplesSumm": {
-            "long_name": "Hashing Principles Summary",
-            "required": true,
-            "points": 1.1,
-            "threshold": 5
           }
         }
       },
@@ -539,13 +521,13 @@
           "HashFuncPROSumm": {
             "long_name": "Hash Function Proficiency Summary",
             "required": true,
-            "points": 1.1,
+            "points": 1.5,
             "threshold": 5
           },
           "HashFuncSumm": {
             "long_name": "Hash Function Summary",
             "required": true,
-            "points": 1.1,
+            "points": 1.5,
             "threshold": 5
           }
         }
@@ -695,12 +677,6 @@
             "showhide": "none",
             "points": 0,
             "threshold": 1.0
-          },
-          "HashCollisionSumm": {
-            "long_name": "Improved Collision Resolution Summary",
-            "required": true,
-            "points": 1.1,
-            "threshold": 5
           }
         }
       },
@@ -710,7 +686,7 @@
           "HashAnalSumm": {
             "long_name": "Analysis of Closed Hashing Summary",
             "required": true,
-            "points": 1.1,
+            "points": 2,
             "threshold": 5
           }
         }
@@ -734,7 +710,7 @@
             "long_name": "Hash Deletion Summary",
             "required": true,
             "points": 1.1,
-            "threshold": 5
+            "threshold": 3
           }
         }
       },

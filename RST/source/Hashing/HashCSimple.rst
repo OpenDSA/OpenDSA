@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Hashing
 
-.. _HashFunc:
+.. _HashCSimple:
 
 .. index:: ! collision resolution
 

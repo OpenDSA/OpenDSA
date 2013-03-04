@@ -126,6 +126,4 @@ The hope is that the relatively inexpensive bucketing process will put
 only a small number of records in each bucket, and that a
 "cleanup sort" to each bucket will then be relatively cheap.
 
-.. avembed:: Exercises/Sorting/BinsortSumm.html ka
-
 .. odsascript:: AV/Sorting/binsortCON.js
