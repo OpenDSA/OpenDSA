@@ -461,7 +461,7 @@
             "long_name": "Sorting Chapter Summary",
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 10
           }
         }
       },
@@ -729,7 +729,7 @@
             "long_name": "Hashing Chapter Summary",
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 10
           }
         }
       }
