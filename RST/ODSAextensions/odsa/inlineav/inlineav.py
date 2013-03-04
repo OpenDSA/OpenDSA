@@ -32,7 +32,7 @@ DIAGRAM = '''\
 
 # div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
 SLIDESHOW = '''\
-<a id="%(exer_name)s"></a>
+<a id="%(exer_name)s_exer"></a>
 <div id="%(exer_name)s" class="ssAV" data-exer-name="%(exer_name)s" data-points="%(points)s" data-threshold="%(threshold)s" data-type="%(type)s" data-required="%(required)s" data-long-name="%(long_name)s">
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
