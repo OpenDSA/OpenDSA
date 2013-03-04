@@ -23,8 +23,8 @@
           "SortIntroSumm": {
             "long_name": "Sorting Intro Summary",
             "required": true,
-            "points": 1.25,
-            "threshold": 5
+            "points": 1.0,
+            "threshold": 3
           }
         }
       },
@@ -65,7 +65,7 @@
           "InssortSumm": {
             "long_name": "Insertion Sort Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.35,
             "threshold": 5
           }
         }
@@ -106,7 +106,7 @@
           "BubsortSumm": {
             "long_name": "Bubble Sort Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.35,
             "threshold": 5
           }
         }
@@ -142,7 +142,7 @@
           "SelsortSumm": {
             "long_name": "Selection Sort Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.35,
             "threshold": 5
           }
         }
@@ -153,7 +153,7 @@
           "SortCompareSumm": {
             "long_name": "Record Comparison Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.35,
             "threshold": 5
           }
         }
@@ -170,7 +170,7 @@
           "ExchangeSumm": {
             "long_name": "Exchange Sorting Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.35,
             "threshold": 5
           }
         }
@@ -239,7 +239,7 @@
           "ShellsortProficiency": {
             "long_name": "Shellsort Proficiency",
             "required": true,
-            "points": 1.5,
+            "points": 1.75,
             "threshold": 0.90
           },
           "ShellsortPerformance": {
@@ -251,7 +251,7 @@
           "ShellsortSumm": {
             "long_name": "Shellsort Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.35,
             "threshold": 5
           }
         }
@@ -283,12 +283,6 @@
             "required": true,
             "points": 1.5,
             "threshold": 0.90
-          },
-          "MergesortSumm": {
-            "long_name": "Mergesort Concepts Summary",
-            "required": true,
-            "points": 1.25,
-            "threshold": 5
           }
         }
       },
@@ -307,10 +301,10 @@
             "points": 0.2,
             "threshold": 1.0
           },
-          "MergeImplSumm": {
-            "long_name": "Mergesort Implementation Summary",
+          "MergesortSumm": {
+            "long_name": "Mergesort Concepts Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.75,
             "threshold": 5
           }
         }
@@ -346,13 +340,13 @@
           "quicksortProficiency": {
             "long_name": "Quicksort Proficiency",
             "required": true,
-            "points": 1.5,
+            "points": 1.75,
             "threshold": 0.90
           },
           "QuicksortSumm": {
             "long_name": "Quicksort Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.35,
             "threshold": 5
           }
         }
@@ -375,13 +369,13 @@
           "heapsortProficiency": {
             "long_name": "Heapsort Proficiency 2",
             "required": true,
-            "points": 1.5,
+            "points": 1.75,
             "threshold": 0.9
           },
           "HeapsortSumm": {
             "long_name": "Heapsort Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.35,
             "threshold": 5
           }
         }
@@ -400,12 +394,6 @@
             "required": true,
             "points": 0.2,
             "threshold": 1.0
-          },
-          "BinsortSumm": {
-            "long_name": "Binsort Summary",
-            "required": true,
-            "points": 1.25,
-            "threshold": 5
           }
         }
       },
@@ -435,7 +423,7 @@
           "RadixSortSumm": {
             "long_name": "Radixsort Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.75,
             "threshold": 5
           }
         }
@@ -446,8 +434,8 @@
           "SortAlgCompSumm": {
             "long_name": "Sorting Algorithms Comparison Summary",
             "required": true,
-            "points": 1.25,
-            "threshold": 5
+            "points": 1.35,
+            "threshold": 4
           }
         }
       },
@@ -457,8 +445,8 @@
           "SortBoundSumm": {
             "long_name": "Lower Bounds Summary",
             "required": true,
-            "points": 1.25,
-            "threshold": 5
+            "points": 1.15,
+            "threshold": 4
           }
         }
       },
@@ -468,8 +456,8 @@
           "ChapterSumm": {
             "long_name": "Sorting Chapter Summary",
             "required": true,
-            "points": 1,
-            "threshold": 5
+            "points": 1.25,
+            "threshold": 10
           }
         }
       }
@@ -492,14 +480,8 @@
           "Birthday": {
             "long_name": "Birthday Problem Calculator",
             "required": true,
-            "points": 0.25,
+            "points": 0.3,
             "threshold": 1.0
-          },
-          "HashPrinciplesSumm": {
-            "long_name": "Hashing Principles Summary",
-            "required": true,
-            "points": 1.25,
-            "threshold": 5
           }
         }
       },
@@ -521,31 +503,31 @@
           "MidSquare": {
             "long_name": "Mid-Square Calculator",
             "required": true,
-            "points": 0.25,
+            "points": 0.3,
             "threshold": 1.0
           },
           "StringSimple": {
             "long_name": "Simple String Folding Calculator",
             "required": true,
-            "points": 0.25,
+            "points": 0.3,
             "threshold": 1.0
           },
           "StringSfold": {
             "long_name": "Improved String Folding Calculator",
             "required": true,
-            "points": 0.25,
+            "points": 0.3,
             "threshold": 1.0
           },
           "HashFuncPROSumm": {
             "long_name": "Hash Function Proficiency Summary",
             "required": true,
-            "points": 1.5,
+            "points": 2.0,
             "threshold": 5
           },
           "HashFuncSumm": {
             "long_name": "Hash Function Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.5,
             "threshold": 5
           }
         }
@@ -609,7 +591,7 @@
           "HashingLinearProbePRO": {
             "long_name": "Linear Probing Proficiency",
             "required": true,
-            "points": 1.4,
+            "points": 1.5,
             "threshold": 5
           }
         }
@@ -632,7 +614,7 @@
           "HashingLinearStepProbePRO": {
             "long_name": "Linear Probing By Steps Proficiency",
             "required": true,
-            "points": 1.4,
+            "points": 1.5,
             "threshold": 5
           },
           "collisionCON3": {
@@ -644,7 +626,7 @@
           "HashingPseudoRandomProbePRO": {
             "long_name": "Pseudo-Random Probing Proficiency",
             "required": true,
-            "points": 1.4,
+            "points": 1.5,
             "threshold": 5
           },
           "collisionCON4": {
@@ -662,7 +644,7 @@
           "HashingQuadraticProbePRO": {
             "long_name": "Quadratic Probing Proficiency",
             "required": true,
-            "points": 1.4,
+            "points": 1.5,
             "threshold": 5
           },
           "collisionCON6": {
@@ -686,7 +668,7 @@
           "HashingDoubleProbePRO": {
             "long_name": "Double Hashing Proficiency",
             "required": true,
-            "points": 1.4,
+            "points": 1.5,
             "threshold": 5
           },
           "hashAV": {
@@ -695,12 +677,6 @@
             "showhide": "none",
             "points": 0.0,
             "threshold": 1.0
-          },
-          "HashCollisionSumm": {
-            "long_name": "Improved Collision Resolution Summary",
-            "required": true,
-            "points": 1.25,
-            "threshold": 5
           }
         }
       },
@@ -710,7 +686,7 @@
           "HashAnalSumm": {
             "long_name": "Analysis of Closed Hashing Summary",
             "required": true,
-            "points": 1.25,
+            "points": 1.5,
             "threshold": 5
           }
         }
@@ -727,14 +703,14 @@
           "HashingDeleteProficiency": {
             "long_name": "Hash Deletion Proficiency",
             "required": true,
-            "points": 1.4,
+            "points": 1.5,
             "threshold": 0.90
           },
           "HashDelSumm": {
             "long_name": "Hash Deletion Summary",
             "required": true,
-            "points": 1.25,
-            "threshold": 5
+            "points": 1.3,
+            "threshold": 3
           }
         }
       },
@@ -745,7 +721,7 @@
             "long_name": "Hashing Chapter Summary",
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 10
           }
         }
       }

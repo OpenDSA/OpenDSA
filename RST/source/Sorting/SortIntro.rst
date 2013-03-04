@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Sorting
 
-.. _SortIntro:
-
 .. index:: ! SortIntro
 
 Introduction

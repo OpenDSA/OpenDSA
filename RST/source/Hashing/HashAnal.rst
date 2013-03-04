@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Hashing
 
-.. _HashAnal:
-
 Analysis of Closed Hashing
 ==========================
 

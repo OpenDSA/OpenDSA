@@ -8,8 +8,6 @@
    :prerequisites: Sets
    :topic: Sets
 
-.. _SetDef:
-
 Set Definitions [STUB]
 ======================
 

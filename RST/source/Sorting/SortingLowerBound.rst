@@ -8,8 +8,6 @@
    :prerequisites: Sorting
    :topic: Sorting
 
-.. _SortingLowerBound:
-
 .. index:: ! sorting; lower bounds proof
 
 Lower Bounds for Sorting

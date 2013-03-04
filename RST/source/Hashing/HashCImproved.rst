@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Hashing
 
-.. _HashFunc:
-
 .. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Hashing/collisionCON.css
 
@@ -247,7 +245,5 @@ of hash function and collision resolution, on your own input data.
 .. avembed:: AV/Hashing/hashAV.html pe
 
 Finally, here are some practice questions.
-
-.. avembed:: Exercises/Hashing/HashCollisionSumm.html ka
 
 .. odsascript:: AV/Hashing/collisionCON.js

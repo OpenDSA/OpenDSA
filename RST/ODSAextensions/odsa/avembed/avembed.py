@@ -29,7 +29,11 @@ def setup(app):
     app.add_directive('avembed',avembed)
 
 
-IFRAME_HTML = """\
+ANCHOR_HTML = '''\
+<a id="%(exer_name)s_exer"></a>
+'''
+
+IFRAME_HTML = '''\
 <div id="%(exer_name)s">
 <p></p>
 <center>
@@ -37,10 +41,10 @@ IFRAME_HTML = """\
 </iframe>
 </center>
 </div>
-"""
+'''
 
 
-BUTTON_HTML = """\
+BUTTON_HTML = '''\
 <input type="button"
     id="%(exer_name)s_showhide_btn"
     class="showHideLink"
@@ -54,7 +58,7 @@ BUTTON_HTML = """\
     data-threshold="%(threshold)s"
     data-type="%(type)s"
     value="%(show_hide_text)s %(long_name)s"/>
-"""
+'''
 
 
 def embedlocal(av_path):
@@ -145,14 +149,17 @@ class avembed(Directive):
       self.options['long_name'] = self.options['exer_name']
 
     if 'showhide' in self.options and self.options['showhide'] == "none":
-      res = IFRAME_HTML % self.options
+      res = ANCHOR_HTML % self.options
+      res += IFRAME_HTML % self.options
     elif 'showhide' in self.options and self.options['showhide'] == "show":
       self.options['show_hide_text'] = "Hide"
-      res = BUTTON_HTML % (self.options)
+      res = ANCHOR_HTML % (self.options)
+      res += BUTTON_HTML % (self.options)
       res += IFRAME_HTML % (self.options)
     else:
       self.options['show_hide_text'] = "Show"
-      res = BUTTON_HTML % (self.options)
+      res = ANCHOR_HTML % (self.options)
+      res += BUTTON_HTML % (self.options)
 
     return [nodes.raw('', res, format='html')]
 

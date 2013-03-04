@@ -8,8 +8,6 @@
    :prerequisites: 
    :topic: Minimal Cost Spanning Trees
 
-.. _MCST:
-
 Minimal Cost Spanning Trees [STUB]
 ==================================
 

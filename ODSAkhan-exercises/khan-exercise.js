@@ -52,6 +52,9 @@ var moduleOrigin = getURLParam('moduleOrigin');
 // The name of the module in which the KA exercises is embedded
 var moduleName = getURLParam('module');
 
+// The name of the book
+var bookName = getURLParam('bookName');
+
 var Khan = (function() {
   function warn( message, showClose ) {
     jQuery(function() {
@@ -1857,8 +1860,7 @@ var Khan = (function() {
         userActivityLog.push([ "hint-activity", "0", timeTaken ]);
       }
 
-      var key = 'phantom-key',
-          book = localStorage.book;
+      var key = 'phantom-key';
 
       if (localStorage.session) {
         var session = JSON.parse(localStorage.session);
@@ -1867,7 +1869,7 @@ var Khan = (function() {
 
       return {
         key: key,
-        book: book,
+        book: bookName,
 
         // The user answered correctly
         complete: pass === true ? 1 : 0,

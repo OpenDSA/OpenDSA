@@ -8,8 +8,6 @@
    :prerequisites: Sorting
    :topic: Sorting
 
-.. _SortSumm:
-
 Sorting Chapter Summary Exercises
 =================================
 

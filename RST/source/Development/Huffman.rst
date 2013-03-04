@@ -7,8 +7,6 @@
    :author: Cliff Shaffer
    :prerequisites: BinTreeImp, SpaceBounds
    :topic: BinTreeImp
-   
-.. _Huffman:
 
 .. odsalink:: AV/Development/HuffmanCodingExamp.css
 

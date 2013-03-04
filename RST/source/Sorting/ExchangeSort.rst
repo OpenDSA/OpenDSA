@@ -8,8 +8,6 @@
    :prerequisites: Sorting, InsertionSort, BubbleSort, SelectionSort
    :topic: Sorting
 
-.. _ExchangeSort:
-
 .. index:: ! exchange sorting
 
 .. index:: sorting; exchange

@@ -8,8 +8,6 @@
    :prerequisites: Sorting
    :topic: Sorting
 
-.. _Heapsort:
-
 .. odsascript:: JSAV/extras/binaryheap.js
 .. odsalink:: AV/slideCON.css
 

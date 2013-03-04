@@ -8,8 +8,6 @@
    :prerequisites: BinSort
    :topic: Sorting
 
-.. _RadixSort:
-
 .. index:: ! Radix Sort
 
 Radix Sort

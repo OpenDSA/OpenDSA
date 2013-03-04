@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Hashing
 
-.. _HashFunc:
-
 .. index:: ! hashing function
 
 Hash Function Principles
@@ -144,5 +142,3 @@ that illustrate these points.
 
 First, here are some review questions for what has been covered so
 far.
-
-.. avembed:: Exercises/Hashing/HashPrinciplesSumm.html ka

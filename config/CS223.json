@@ -36,12 +36,6 @@
             "required": true,
             "points": 0.25,
             "threshold": 1.0
-          },
-          "HashPrinciplesSumm": {
-            "long_name": "Hashing Principles Summary",
-            "required": true,
-            "points": 1,
-            "threshold": 5
           }
         }
       },
@@ -81,13 +75,13 @@
           "HashFuncPROSumm": {
             "long_name": "Hash Function Proficiency Summary",
             "required": true,
-            "points": 1,
+            "points": 2.0,
             "threshold": 5
           },
           "HashFuncSumm": {
             "long_name": "Hash Function Summary",
             "required": true,
-            "points": 1,
+            "points": 1.5,
             "threshold": 5
           }
         }
@@ -237,12 +231,6 @@
             "showhide": "none",
             "points": 0,
             "threshold": 1.0
-          },
-          "HashCollisionSumm": {
-            "long_name": "Improved Collision Resolution Summary",
-            "required": true,
-            "points": 1,
-            "threshold": 5
           }
         }
       },
@@ -252,7 +240,7 @@
           "HashAnalSumm": {
             "long_name": "Analysis of Closed Hashing Summary",
             "required": true,
-            "points": 1,
+            "points": 2,
             "threshold": 5
           }
         }
@@ -276,7 +264,7 @@
             "long_name": "Hash Deletion Summary",
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 3
           }
         }
       },
@@ -287,7 +275,7 @@
             "long_name": "Hashing Chapter Summary",
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 10
           }
         }
       }

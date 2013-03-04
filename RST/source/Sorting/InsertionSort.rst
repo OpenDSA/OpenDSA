@@ -8,8 +8,6 @@
    :prerequisites: Sorting
    :topic: Sorting
 
-.. _InsertionSort:
-
 .. index:: ! Insertion Sort
 
 .. odsalink:: AV/slideCON.css
