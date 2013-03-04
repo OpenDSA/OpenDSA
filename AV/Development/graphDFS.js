@@ -9,10 +9,11 @@
 	
 	function runit() {
 		g = jsav.ds.graph({width: 500, height: 500, layout: "manual", directed: true});
-		arr = jsav.ds.array([1,2,3,4],{layout: "vertical"});
+		arr = jsav.ds.array(["A",2,3,4],{layout: "vertical"});
 		arr.css({"left": "+=300px", "bottom": "450px", "width": "30px"});
 		initGraph();
 		g.layout();
+	  jsav.umsg("Let's see what a very long line will look like so that we can tell if this looks good. I guess that was not really good enough, this is a very big AV.");
 		jsav.displayInit();
 		markIt(g.nodes()[0]);
 		dfs(g.nodes()[0]);
