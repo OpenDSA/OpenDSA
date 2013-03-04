@@ -457,7 +457,7 @@
             "long_name": "Sorting Chapter Summary",
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 10
           }
         }
       }
@@ -710,7 +710,7 @@
             "long_name": "Hash Deletion Summary",
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 3
           }
         }
       },
@@ -721,7 +721,7 @@
             "long_name": "Hashing Chapter Summary",
             "required": true,
             "points": 1,
-            "threshold": 3
+            "threshold": 10
           }
         }
       }
