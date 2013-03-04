@@ -8,8 +8,6 @@
    :prerequisites: 
    :topic: Binary Heaps
 
-.. _BinaryHeap:
-
 .. index:: ! Binary Heap
 .. index:: ! Priority Queue
 

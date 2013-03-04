@@ -8,8 +8,6 @@
    :prerequisites: HashIntro
    :topic: Hashing
 
-.. _HashSumm:
-
 Hashing Chapter Summary Exercises
 =================================
 

@@ -8,8 +8,6 @@
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
 
-.. _BubbleSort:
-
 .. index:: ! Bubble Sort
 
 .. odsalink:: AV/slideCON.css

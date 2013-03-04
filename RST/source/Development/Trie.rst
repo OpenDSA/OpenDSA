@@ -8,8 +8,6 @@
    :prerequisites: BST
    :topic: Search Trees
 
-.. _Trie:
-
 Tries [STUB]
 ============
 

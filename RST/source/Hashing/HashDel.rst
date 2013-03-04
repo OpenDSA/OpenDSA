@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Hashing
 
-.. _HashDel:
-
 .. odsalink:: AV/slideCON.css
 
 Deletion

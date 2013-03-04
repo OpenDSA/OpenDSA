@@ -6,8 +6,6 @@
 .. avmetadata:: 
    :author: Jeremy Rodencal
 
-.. _Knapsack:
-
 0/1 Knapsack Problem [DRAFT]
 ============================
 

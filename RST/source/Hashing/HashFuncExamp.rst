@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Hashing
 
-.. _HashFuncExamp:
-
 .. odsalink:: AV/slideCON.css
 
 Sample Hash Functions

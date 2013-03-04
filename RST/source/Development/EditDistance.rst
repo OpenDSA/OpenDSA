@@ -8,8 +8,6 @@
    :prerequisites: Knapsack
    :topic: Algorithms
 
-.. _EditDistance:
-
 Edit Distance [DRAFT]
 =====================
 

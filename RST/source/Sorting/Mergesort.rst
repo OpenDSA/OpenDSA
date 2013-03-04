@@ -8,8 +8,6 @@
    :prerequisites: Sorting
    :topic: Sorting
 
-.. _Mergesort:
-
 .. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Sorting/mergeCON.css
 
@@ -127,9 +125,5 @@ work is done, for a total cost of :math:`\Theta(n \log n)`.
 This cost is unaffected by the relative order of the
 values being sorted, thus this analysis holds for the best, average,
 and worst cases.
-
-Now here are summary questions.
-
-.. avembed:: Exercises/Sorting/MergesortSumm.html ka
 
 .. odsascript:: AV/Sorting/mergesortCON.js

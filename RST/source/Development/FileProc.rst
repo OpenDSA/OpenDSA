@@ -8,8 +8,6 @@
    :prerequisites: 
    :topic: File Processing
 
-.. _FileProc:
-
 File Processing [STUB]
 ======================
 

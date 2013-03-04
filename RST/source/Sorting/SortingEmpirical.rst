@@ -8,8 +8,6 @@
    :prerequisites: Sorting
    :topic: Sorting
 
-.. _SortingEmpirical:
-
 .. index:: ! sorting; empirical comparison
 
 An Empirical Comparison of Sorting Algorithms

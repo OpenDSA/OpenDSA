@@ -8,8 +8,6 @@
    :prerequisites: 
    :topic: Gradebook
 
-.. _Gradebook:
-
 .. odsalink:: lib/gradebook-min.css
 .. odsascript:: lib/gradebook-min.js
 

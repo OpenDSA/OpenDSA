@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Hashing
 
-.. _HashIntro:
-
 .. index:: ! hashing
 
 .. odsalink:: AV/slideCON.css

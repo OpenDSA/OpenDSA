@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Hashing
 
-.. _HashFunc:
-
 .. index:: ! collision resolution
 
 .. odsalink:: AV/slideCON.css
