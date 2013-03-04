@@ -1,6 +1,6 @@
 (function ($) {
 	
-	var jsav = new JSAV($('.avcontainer'));;
+	var jsav = new JSAV($('.avcontainer'));
 	var g;
 	var arr;
 	var a, b, c, d, e, f;
@@ -26,11 +26,16 @@
    
       jsav.umsg("Add " + node.value() + " to the stack");
       if (prev) {
+		
         node.edgeFrom(prev).css("stroke-width", "4", "red"); // highlight
+	
+		
       }
 	 
       jsav.step();
     }
+	
+	
 	
     // Mark the nodes when visited and highlight it to 
 	// show it has been marked
@@ -57,13 +62,17 @@
 		var next;
 		  preVisit(start, prev);
 		  adjacent = start.neighbors();
-		//  jsav.step();
-		//  jsav.umsg("size " + adjacent.size());
+		
+	 
 		  for (next = adjacent.next(); next; next = adjacent.next()) {
-			if (!next.hasClass("marked")) {
-			  markIt(next);
-			  dfs(next, start);
-			  jsav.step();
+				jsav.umsg("Process (" + start.value() + "," + next.value() + ")");
+				jsav.step();
+				if (!next.hasClass("marked")) {
+				jsav.umsg("Print (" + start.value() + "," + next.value() + ") and call depth first search on " + next.value());
+				jsav.step();
+				markIt(next);
+				dfs(next, start);
+				jsav.step();
 			}
 		  }
 		postVisit(start);
@@ -87,14 +96,22 @@
         e = g.addNode("E", {"top": 300});
 		f = g.addNode("F", {"left":325, "top":250});
 		g.addEdge(a, c);
+		g.addEdge(c, a);
 		g.addEdge(a, e);
 		g.addEdge(c, b);
-		g.addEdge(c, d);
+		g.addEdge(b, c);
+		g.addEdge(c, e);
 		g.addEdge(c, f);
 		g.addEdge(b, f);
+		g.addEdge(f, b);
+		g.addEdge(f, c);
 		g.addEdge(f, d);
+		g.addEdge(d, c);
+		g.addEdge(d, f);
 		g.addEdge(f, e);
-		jsav.umsg("Start transversal at node A");
+		g.addEdge(e, a);
+		g.addEdge(e, f);
+		jsav.umsg("Call depth first search on A");
 		
 	}
 	
@@ -102,8 +119,12 @@
 	function finalGraph() {
 		jsav.umsg("Completed depth first search graph");
 		g.removeEdge(a, e);
+		g.removeEdge(e, a);
 		g.removeEdge(c, d);
+		g.removeEdge(d, c);
 		g.removeEdge(c, f);
+		g.removeEdge(f, c);
+		g.removeEdge(c, e);
 	}
 
  // Connect action callbacks to the HTML entities
