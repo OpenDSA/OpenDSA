@@ -9,11 +9,6 @@ Doc/manual
 #Books directory (these are build targets)
 Books
 
-#RST build directory
-RST/build
-RST/source/ToDo.rst
-RST/source/conf.py
-
 #Ignore the copy we make of khan-site.html
 lib/khan-exercises/exercises/khan-site.html
 
