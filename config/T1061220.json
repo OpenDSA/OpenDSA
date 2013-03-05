@@ -1,10 +1,9 @@
 {
   "config_version": 0.1,
   "title": "Sorting and Hashing: T1061220",
-  "output_dir": "Books/T1061220",
+  "book_dir": "Books",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
-  "exercise_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
   "build_ODSA": true,

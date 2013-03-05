@@ -79,11 +79,13 @@ Settings (all are required unless otherwise specified)
 
 * **title** - the title of the OpenDSA textbook
 
-* **output_dir** - the directory where the textbook materials will be placed
+* **book_dir** - the directory where the configured book directory will be created
 
-  * Files required to compile the book will be copied / written here, including modified version of the source RST files
-  * If 'copy_static_files' is 'true', all files necessary to host an instance of OpenDSA will be contained within this directory
-  * The compiled textbook will appear in 'build/html' within this directory
+  * A new directory, named after the book, will be created at this location and serve as the output directory for the configuration process.  Files required to compile the book will be copied / written to the output directory, including modified version of the source RST files
+  
+    * Example: Assume "book_dir": "Books" and the name of the configuration file used is "CS3114.json", the output directory would be "Books/CS3114/"
+  
+  * The compiled textbook will appear in ``[book_dir]/[book name]/html``
   * This directory must be web accessible
 
 * **code_dir** - specifies the directory containing the source code to be used in textbook examples

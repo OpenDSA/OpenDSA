@@ -44,16 +44,16 @@ function getURLParam(name) {
 }
 
 // The address of the server where the data is sent
-var serverURL = getURLParam('serverURL');
+var SERVER_URL = getURLParam('serverURL');
 
 // The domain where the OpenDSA modules are hosted, used by postMessage to send data to the parent module page
-var moduleOrigin = getURLParam('moduleOrigin');
+var MODULE_ORIGIN = getURLParam('moduleOrigin');
 
 // The name of the module in which the KA exercises is embedded
-var moduleName = getURLParam('module');
+var MODULE_NAME = getURLParam('module');
 
 // The name of the book
-var bookName = getURLParam('bookName');
+var BOOK_NAME = getURLParam('bookName');
 
 var Khan = (function() {
   function warn( message, showClose ) {
@@ -150,7 +150,7 @@ var Khan = (function() {
 
   // The main server we're connecting to for saving data
   server = typeof apiServer !== "undefined" ? apiServer :
-    testMode ? serverURL : "",
+    testMode ? SERVER_URL : "",
 
   // The name of the exercise
   exerciseName = typeof userExercise !== "undefined" ? userExercise.exercise : ((/([^\/.]+)(?:\.html)?$/.exec( window.location.pathname ) || [])[1]),
@@ -1869,7 +1869,7 @@ var Khan = (function() {
 
       return {
         key: key,
-        book: bookName,
+        book: BOOK_NAME,
 
         // The user answered correctly
         complete: pass === true ? 1 : 0,
@@ -1904,7 +1904,7 @@ var Khan = (function() {
         review_mode: reviewMode ? 1 : 0,
 
         // The module name. If the exercise is embedded in one
-        module_name: moduleName
+        module_name: MODULE_NAME
       };
     }
 
@@ -2827,7 +2827,7 @@ var Khan = (function() {
     }
     $('li.streak-icon').text(total +  "%");
     if (total >= 100) {
-        parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}', moduleOrigin);
+        parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}', MODULE_ORIGIN);
         console.log ('{"exercise":"' + exerciseName + '", "proficient":' + true + '}');
     }
 
