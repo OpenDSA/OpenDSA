@@ -7,9 +7,10 @@
   height: 620px;
 }
 
-.jsavlistnode {
-  width: 53px;
-  height: 40px;
+.jsavlist .jsavlistnode {
+  min-height: 30px !important;
+  max-height: 30px !important;
+  line-height: 30px;
 }
 
 .jsavlist .jsavedge {

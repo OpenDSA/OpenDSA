@@ -89,11 +89,10 @@
       jsav.step();
       // Initialize the lists
       for (i = 0; i < 10; i++) {
-//        if (lists[i]) { lists[i].clear(); }
-        lists[i] = jsav.ds.list({top: (40 + i * 46), left: 240, nodegap: 30});
+        lists[i] = jsav.ds.list({top: (47 + i * 46), left: 240, nodegap: 30});
         lists[i].layout({center: false});
         // create initially hidden arrows from array indices to lists
-        arrows[i] = jsav.g.line(200, 60 + i * 46, 240, 60 + i * 46,
+        arrows[i] = jsav.g.line(200, 62 + i * 46, 240, 62 + i * 46,
                     {"arrow-end": "classic-wide-long", "opacity": 0, "stroke-width": 2});
       }
       jsav.umsg("Phase 1: Move the records from the input array to the digit array.");

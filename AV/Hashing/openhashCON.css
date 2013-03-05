@@ -5,3 +5,9 @@
 svg {
   z-index: 50;
 }
+
+.jsavlist .jsavlistnode {
+  min-height: 30px !important;
+  max-height: 30px !important;
+  line-height: 30px;
+}

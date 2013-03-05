@@ -1,0 +1,20 @@
+{
+  "config_version": 0.1,
+  "title": "Test",
+  "output_dir": "Books/test",
+  "code_dir": "SourceCode/Processing",
+  "module_origin": "http://algoviz.org",
+  "exercise_origin": "http://algoviz.org",
+  "backend_address": "https://opendsa.cc.vt.edu/",
+  "build_JSAV": false,
+  "build_ODSA": false,
+  "allow_anonymous_credit": true,
+  "chapters": {
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "exercises": {}
+      }
+    }
+  }
+}
