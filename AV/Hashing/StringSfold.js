@@ -40,9 +40,9 @@
   // Main action: Result of clicking "Calculate" button
   function Calculate() {
     var i;
-    var output = sfold(keyValue);
-    tell('<br/>' + output);
     ODSA.AV.logExerciseInit({'user_key': keyValue});
+    var output = sfold($.trim(keyValue));
+    tell('<br/>' + output);
     ODSA.AV.awardCompletionCredit();
   }
 

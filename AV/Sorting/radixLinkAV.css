@@ -1,5 +1,5 @@
 #container {
-  width: 860px;
+  width: 850px;
   height: 750px;
 }
 
@@ -22,6 +22,6 @@
 
 .jsavcanvas > svg {
   height: 550px;
-  width: 845px;
+  width: 835px;
   z-index: 100;
 }
