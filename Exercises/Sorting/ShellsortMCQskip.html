@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Sorting Lower Bounds Question 4</title>
+  <title> Shellsort Increment Skipping</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script type="text/javascript"
@@ -10,25 +10,30 @@
   <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
   <script src="../../lib/khan-exercise-min.js"></script>
 </head>
-<body>
 
+<body>
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="problem">Answer TRUE or FALSE.
-      <p class="question">
-	The proof that the lower bound for the
-	sorting problem is <code>\Omega(n \log n)</code> technically
-	only applies to comparison-based sorting. This means that we
-	can find other approaches (such as radix sort) to solve the
-	problem faster.</p>
-      <div class="solution"><var>"False"</var></div>
+      <p class="question">If we Shellsort an array of length 9, and we
+      start with an increment size of 5, which element (if any) will be
+      skipped on the first pass due to being in a sublist of only
+      one elemente?</p>
+      <div class="solution"><var>"5"</var></div>
       <ul class="choices" data-category="true">
-	<li><var>"True"</var></li>
-	<li><var>"False"</var></li>			  	  	 
+        <li><var>"0"</var></li>
+        <li><var>"1"</var></li>
+        <li><var>"2"</var></li>
+        <li><var>"3"</var></li>
+        <li><var>"4"</var></li>
+        <li><var>"5"</var></li>
+        <li><var>"6"</var></li>
+        <li><var>"7"</var></li>
+        <li><var>"8"</var></li>
+        <li><var>"No elements are skipped"</var></li>
       </ul>
       <div class="hints">
-	<p>Sorry, no hints are available.</p>
+        <p>Sorry, no hints are available.</p>
       </div>
     </div>
   </div>

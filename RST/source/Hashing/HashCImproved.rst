@@ -116,6 +116,9 @@ Here is a practice exercise for pseudo-random probing.
 
 .. avembed:: Exercises/Hashing/HashingPseudoRandomProbePRO.html ka
 
+Pseudo-random probing exhibits another desirable feature in a hash
+function. 
+
 .. inlineav:: collisionCON4 ss
    :output: show
 
@@ -144,6 +147,8 @@ Now you can practice quadratic probing.
 
 .. avembed:: Exercises/Hashing/HashingQuadraticProbePRO.html ka
 
+There is one problem with quadratic probing: Its probe sequence
+typically will not visit all slots in the hash table.
 
 .. inlineav:: collisionCON6 ss
    :output: show
@@ -243,7 +248,5 @@ The following visualization lets you test out different combinations
 of hash function and collision resolution, on your own input data.
 
 .. avembed:: AV/Hashing/hashAV.html pe
-
-Finally, here are some practice questions.
 
 .. odsascript:: AV/Hashing/collisionCON.js

@@ -206,7 +206,7 @@ var setRed = function (arr, index) {
   var arr = av.ds.array(empty, {indexed: true});
   var perm = av.ds.array(permarray, {indexed: true, visible: false});
 
-  av.umsg("Pseudo-random probing exhibits another desirable feature in a hash function. First recall what happens with linear probing by steps of 2. Say that one record hashes to slot 4, and another hashes to slot 6.");
+  av.umsg("First recall what happens with linear probing by steps of 2. Say that one record hashes to slot 4, and another hashes to slot 6.");
   arr.value(4, 104);
   arr.value(6, 936);
   av.displayInit();
