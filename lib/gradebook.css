@@ -35,7 +35,7 @@ table.data tr td.proficient, table.data tr:hover td.proficient {
 /* Centers the scores and score labels in their column */
 .score, table.data th.score {
   text-align: center;
-  width: 100px;
+  width: 200px;
 }
 
 /* Style for the loading message which is displayed while waiting for the server's response */
