@@ -55,6 +55,9 @@ OpenDSA: min
 T1061220: min
 	python $(CONFIG_SCRIPT) config/T1061220.json
 
+test: min
+	python $(CONFIG_SCRIPT) config/test.json
+
 allBooks: CS223 CS3114a CS3114b OpenDSA T1061220
 
 nomin:
