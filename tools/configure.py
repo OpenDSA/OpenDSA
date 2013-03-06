@@ -8,30 +8,31 @@
 #   - Optionally builds JSAV to make sure the library is up-to-date, if specified in the configuration file
 #   - Creates a source directory in the output directory and generates a Makefile and conf.py file
 #     - Makefile is configured to copy the original .htaccess file from lib to the html output directory
-#     - conf.py is configured to point to the original ODSAextensions and _themes directories 
+#     - conf.py is configured to point to the original ODSAextensions and _themes directories
 #   - Reads the RST source file for each module which appears in the configuration file
-#     - Appends the list of external JavaScript and CSS links to every module
+#     - Appends the list of external JavaScript and CSS links and a Sphinx self reference directive to every module
+#       - Ensures we can reference any module, without relying on the module author to correctly add the reference link
 #     - Optionally, appends a raw JavaScript flag to each module indicating whether or not the module can be completed
-#       This allows the configuration file to override the default behavior of the client-side framework which is to allow 
+#       This allows the configuration file to override the default behavior of the client-side framework which is to allow
 #       module completion only if the module contains required exercises
 #     - For each figure encountered in the RST file, adds the name to a list so that we only copy the images used in the book
 #       to the output directory
 #     - For each inlineav directive encountered, configure.py attempts to append additional information from the configuration file
-#       - If the specified exercise does not appear in the configuration file, the Sphinx directive will be included, but no 
-#         additional information will be included so the defaults (specified in the Sphinx directive file) will be used.  The 
-#         name of the exercise is added to a list of missing exercises which will be displayed to the user 
+#       - If the specified exercise does not appear in the configuration file, the Sphinx directive will be included, but no
+#         additional information will be included so the defaults (specified in the Sphinx directive file) will be used.  The
+#         name of the exercise is added to a list of missing exercises which will be displayed to the user
 #       - Specifically adds 'long_name', 'points', 'required' and 'threshold'
 #     - For each avembed directive encountered, configure.py attempts to append additional information from the configuration file
 #       - UNLESS the 'remove' attribute is present and "true", in which case the entire avembed directive is removed
-#       - If the specified exercise does not appear in the configuration file, the Sphinx directive will be included, but no 
-#         additional information will be included so the defaults (specified in the Sphinx directive file) will be used.  The 
-#         name of the exercise is added to a list of missing exercises which will be displayed to the user 
+#       - If the specified exercise does not appear in the configuration file, the Sphinx directive will be included, but no
+#         additional information will be included so the defaults (specified in the Sphinx directive file) will be used.  The
+#         name of the exercise is added to a list of missing exercises which will be displayed to the user
 #       - Specifically adds 'long_name', 'points', 'required', 'showhide' and 'threshold'
 #     - The configured module RST file is written to the source directory in the output file
 #   - Generates an index.rst file based on which modules were specified in the config file
 #   - Prints out a list of any exercises encountered in RST source files that did not appear in the config file
-#   - Copies _static directory and the images contained in the list of encountered images to the output source directory, also 
-#     creates a copy of the config file in the _static directory for use by the gradebook page 
+#   - Copies _static directory and the images contained in the list of encountered images to the output source directory, also
+#     creates a copy of the config file in the _static directory for use by the gradebook page
 #   - Generates _static/config.js which contains settings needed by the client-side framework that can be configured
 #     using the config file
 #   - Generates an index.html file in the output directory of the new book which redirects (via JavaScript) to the html/ directory
@@ -94,9 +95,9 @@ rst_script_header = '''\
 
 .. odsascript:: lib/jquery.min.js
 .. odsascript:: lib/jquery-ui.min.js
- 
-.. odsascript:: JSAV/lib/jquery.transform.light.js 
-.. odsascript:: JSAV/lib/raphael.js 
+
+.. odsascript:: JSAV/lib/jquery.transform.light.js
+.. odsascript:: JSAV/lib/raphael.js
 
 .. odsascript:: JSAV/build/JSAV-min.js
 
@@ -183,8 +184,8 @@ sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/numref'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/chapnum'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsalink'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsascript'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/sphinx-numfig')) 
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/inlineav')) 
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/sphinx-numfig'))
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/inlineav'))
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -407,7 +408,7 @@ todo_include_todos = True
 
 #---- OpenDSA variables ---------------------------------------
 
-# Name used to uniquely identify 
+# Name used to uniquely identify
 book_name = '%(book_name)s'
 
 # Protocol and domain of the backend server
@@ -436,7 +437,7 @@ exercises_dir = '%(exercises_dir)s'
 
 def minify(path):
   print 'Minifying ' + os.path.basename(path)
-  
+
   min_command = 'java -jar "' + odsa_dir + 'tools/yuicompressor-2.4.7.jar" --preserve-semi -o "' + path + '" "' + path + '"'
 
   with open(os.devnull, "w") as fnull:
@@ -455,10 +456,10 @@ def process_path(path, abs_prefix):
   # Ensure path ends with '/'
   if not path.endswith('/'):
     path += "/"
-  
+
   return path
 
-def process_section(section, index_rst, depth):  
+def process_section(section, index_rst, depth):
   for subsect in section:
     if ('exercises' in section[subsect]):
       process_module(subsect, section[subsect], index_rst, depth)
@@ -470,31 +471,31 @@ def process_section(section, index_rst, depth):
       index_rst.write("   :numbered:\n")
       index_rst.write("   :maxdepth: 3\n\n")
       process_section(section[subsect], index_rst, depth + 1)
-  
+
   index_rst.write("\n")
 
 def process_module(mod_path, mod_attrib, index_rst, depth):
   mod_path = mod_path.replace('.rst', '')
   mod_name = os.path.basename(mod_path)
-  
+
   # Print error message and exit if duplicate module name is detected
   if mod_name in processed_modules:
     print 'ERROR: Duplicate module name detected, module: ' + mod_name
     sys.exit(1)
-  
+
   # Add module to list of modules processed
   processed_modules.append(mod_name)
-  
+
   if mod_name == 'ToDo':
     return
-  
+
   print ("  " * depth) + mod_name
   index_rst.write("   " + mod_name + "\n")
-  
+
   exercises = mod_attrib['exercises']
 
   scripts_appended = False
-  
+
   # Read the contents of the module file from the RST source directory
   with open(odsa_dir + 'RST/source/' + mod_path + '.rst','r') as mod_file:
     mod_data = mod_file.readlines()
@@ -502,21 +503,21 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
 
   # Find the end-of-line character for the file
   eol = mod_data[0].replace(mod_data[0].rstrip(), '')
-  
+
   # Alter the contents of the module based on the config file
   i = 0
   while i < len(mod_data):
     if '.. avmetadata::' in mod_data[i]:
       # Append the RST script header to the module after the self reference directive
       line = rst_script_header
-      
+
       # If the module contains a 'dispModComp' attribute, set the JS flag to indicate whether the module can be completed
       if 'dispModComp' in mod_attrib:
         line += eol + '.. raw:: html' + eol + eol
-        line += '   <script>ODSA.SETTINGS.dispModComp = ' + str(mod_attrib['dispModComp']).lower() + ';</script>' + eol
-      
+        line += '   <script>ODSA.SETTINGS.DISP_MOD_COMP = ' + str(mod_attrib['dispModComp']).lower() + ';</script>' + eol
+
       line += eol + '.. _' + mod_name + ':' + eol
-      
+
       mod_data[i] = line + eol + mod_data[i]
       scripts_appended = True
     elif '.. figure::' in mod_data[i]:
@@ -526,7 +527,7 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
       # Parse the AV name from the line
       av_name = mod_data[i].split(' ')[2].rstrip()
       type = mod_data[i].split(' ')[3].rstrip()
-      
+
       if av_name not in exercises:
         # If the AV is not listed in the config file, add its name to a list of missing exercises
         missing_exercises.append(av_name)
@@ -534,27 +535,27 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
         # Add the necessary information from the slideshow from the configuration file
         # Diagrams (type == 'dgm') do not require this extra information
         exer_conf = exercises[av_name]
-        
+
         # List of valid options for inlineav directive
         options = ['long_name', 'points', 'required', 'threshold']
-        
+
         line = mod_data[i]
-        
+
         for option in options:
           if option in exer_conf:
             line += '   :' + option + ': ' + str(exer_conf[option]) + eol
-      
+
         mod_data[i] = line
     elif '.. avembed::' in mod_data[i]:
       # Parse the exercise name from the line
       av_name = mod_data[i].split(' ')[2].rstrip()
       av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
       type = mod_data[i].split(' ')[3].rstrip()
-      
-      # If the config file states the exercise should be removed, remove it 
+
+      # If the config file states the exercise should be removed, remove it
       if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
         print ("  " * (depth + 1 )) + 'Removing: ' + av_name
-        
+
         # Config file states exercise should be removed, remove it from the RST file
         while (i < len(mod_data) and mod_data[i].rstrip() != ''):
           mod_data.pop()
@@ -565,24 +566,24 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
         else:
           # Add the necessary information from the configuration file
           exer_conf = exercises[av_name]
-          
+
           line = mod_data[i] + '   :module: ' + mod_name + eol
-          
+
           # List of valid options for avembed directive
           options = ['long_name', 'points', 'required', 'showhide', 'threshold']
-          
+
           for option in options:
             if option in exer_conf:
               line += '   :' + option + ': ' + str(exer_conf[option]) + eol
-    
+
           mod_data[i] = line
-    
+
     i = i + 1
-  
+
   if not scripts_appended:
     print ("  " * (depth + 1 )) + 'ERROR: avmetadata directive is missing'
     sys.exit(1)
-  
+
   # Write the contents of the module file to the output src directory
   with open(src_dir + mod_name + '.rst','w') as mod_file:
     mod_file.writelines(mod_data)
@@ -617,6 +618,9 @@ with open(config_file) as config:
   conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
 config.close()
 
+# Parse the name of the config file to use as the book name
+conf_data['name'] = os.path.basename(config_file).replace('.json', '')
+
 # Auto-detect ODSA directory
 (odsa_dir, script) = os.path.split( os.path.abspath(__file__))
 odsa_dir = odsa_dir.replace("\\", "/")
@@ -624,14 +628,11 @@ odsa_dir = odsa_dir.replace("/tools", "/")
 
 # Process the code and output directory paths
 code_dir = process_path(conf_data['code_dir'], odsa_dir)
-output_dir = process_path(conf_data['output_dir'], odsa_dir)
+output_dir = process_path(conf_data['book_dir'], odsa_dir) + conf_data['name'] + '/'
 
 # Assign defaults to optional settings
 
-# Parse the name of the config file to use as the book name
-conf_data['name'] = os.path.basename(config_file).replace('.json', '')
-
-# Strip the '/' from the end of the serverURL
+# Strip the '/' from the end of the SERVER_URL
 conf_data['backend_address'] = conf_data['backend_address'].rstrip('/')
 
 # Assume exercises are hosted on same domain as modules
@@ -642,7 +643,7 @@ if 'av_origin' not in conf_data:
 if 'exercise_origin' not in conf_data:
   conf_data['exercise_origin'] = conf_data['module_origin']
 
-# Display an error message and exit if 'av_root_dir' is an absolute pathname to a remote system and its domain doesn't match 'av_origin' 
+# Display an error message and exit if 'av_root_dir' is an absolute pathname to a remote system and its domain doesn't match 'av_origin'
 if 'av_root_dir' in conf_data and conf_data['av_root_dir'].startswith('http') and not conf_data['av_root_dir'].startswith(conf_data['module_origin']) and not conf_data['av_root_dir'].startswith(conf_data['av_origin']):
   print 'ERROR: "av_origin" does not match domain of remote AV root directory'
   print '"av_origin": ' + conf_data['av_origin']
@@ -650,8 +651,8 @@ if 'av_root_dir' in conf_data and conf_data['av_root_dir'].startswith('http') an
   sys.exit(1)
 elif 'av_root_dir' not in conf_data:
   conf_data['av_root_dir'] = odsa_dir
-  
-# Display an error message and exit if 'exercises_root_dir' is an absolute pathname to a remote system and its domain doesn't match 'exercise_origin' 
+
+# Display an error message and exit if 'exercises_root_dir' is an absolute pathname to a remote system and its domain doesn't match 'exercise_origin'
 if 'exercises_root_dir' in conf_data and conf_data['exercises_root_dir'].startswith('http') and not conf_data['exercises_root_dir'].startswith(conf_data['module_origin']) and not conf_data['exercises_root_dir'].startswith(conf_data['exercise_origin']):
   print 'ERROR: "exercise_origin" does not match domain of remote Exercises root directory'
   print '"exercise_origin": ' + conf_data['exercise_origin']
@@ -684,7 +685,7 @@ if conf_data['build_JSAV']:
     print status
     sys.exit(1)
 
-print "Writing files to output directory\n"
+print "Writing files to " + output_dir + "\n"
 
 # Initialize output directory
 src_dir = output_dir + "source/"
@@ -703,7 +704,7 @@ options['code_dir'] = code_dir
 options['av_dir'] = conf_data['av_root_dir']
 options['exercises_dir'] = conf_data['exercises_root_dir']
 
-# Create a Makefile in the output directory 
+# Create a Makefile in the output directory
 with open(output_dir + 'Makefile','w') as makefile:
   makefile.writelines(makefile_template % options)
 makefile.close()
@@ -718,7 +719,7 @@ with open(src_dir + 'index.rst', 'w+') as index_rst:
   print "Generating index.rst\n"
   print "Processing..."
   index_rst.write(index_header % rst_script_header)
-  
+
   process_section(conf_data['chapters'], index_rst, 0)
 
   index_rst.write("* :ref:`genindex`\n")
@@ -728,7 +729,7 @@ index_rst.close()
 # Print out a list of any exercises found in RST files that do not appear in the config file
 if len(missing_exercises) > 0:
   print "\nExercises Not Listed in Config File:"
-  
+
   for exercise in missing_exercises:
     print '  ' + exercise
 
@@ -750,20 +751,20 @@ config_js_template = '''\
 (function () {
   var settings = {};
   // Stores the name of the book, used to uniquely identify a book in the database
-  settings.bookName = "%(book_name)s";
+  settings.BOOK_NAME = "%(book_name)s";
   // The (protocol and) domain address of the backend server
-  // Set serverURL = "" in order to disable server communication and logging
-  settings.serverURL = "%(server_url)s";
-  settings.moduleOrigin = "%(module_origin)s";
-  settings.exerciseOrigin = "%(exercise_origin)s";
-  settings.avOrigin = "%(av_origin)s";
+  // Set SERVER_URL = "" in order to disable server communication and logging
+  settings.SERVER_URL = "%(server_url)s";
+  settings.MODULE_ORIGIN = "%(module_origin)s";
+  settings.EXERCISE_ORIGIN = "%(exercise_origin)s";
+  settings.AV_ORIGIN = "%(av_origin)s";
   // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
-  settings.allowAnonCredit = "%(allow_anon_credit)s";
+  settings.ALLOW_ANON_CREDIT = "%(allow_anon_credit)s";
   // Flag which controls debugMode
   // When set to true, the framework will print a full stacktrace to the console, allowing developers to easily trace execution
   // This value can be changed at runtime via the JavaScript console
-  settings.debugMode = false;
-  
+  settings.DEBUG_MODE = false;
+
   window.ODSA = {};
   window.ODSA.SETTINGS = settings;
 }());
@@ -777,12 +778,12 @@ with open(src_dir + '_static/config.js','w') as config_js:
   conf_js_data['module_origin'] = conf_data['module_origin']
   conf_js_data['exercise_origin'] = conf_data['exercise_origin']
   conf_js_data['av_origin'] = conf_data['av_origin']
-  
+
   if 'allow_anonymous_credit' in conf_data:
     conf_js_data['allow_anon_credit'] = str(conf_data['allow_anonymous_credit']).lower()
   else:
     conf_js_data['allow_anon_credit'] = 'true'
-  
+
   config_js.writelines(config_js_template % conf_js_data)
 config_js.close()
 
