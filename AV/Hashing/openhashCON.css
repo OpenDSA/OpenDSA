@@ -2,12 +2,14 @@
   height: 490px;
 }
 
-svg {
-  z-index: 50;
-}
-
 .jsavlist .jsavlistnode {
   min-height: 30px !important;
   max-height: 30px !important;
   line-height: 30px;
+}
+
+.jsavcanvas > svg {
+  height: 550px;
+  width: 835px;
+  z-index: 100;
 }
