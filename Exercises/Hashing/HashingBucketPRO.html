@@ -29,6 +29,16 @@
 
     .jsavarray { position: absolute; }
 
+    .jsavarray .jsavindex {
+      min-height: 30px;
+      min-width: 30px;
+      line-height: 30px;
+    }
+
+    .jsavverticalarray .jsavindexlabel {
+      right: 40px;
+    }
+
     #container .jsavarray {
       left: -10px;
       height: 80px;
@@ -39,7 +49,7 @@
     svg {
       z-index: 50;
     }
-    .jsavcanvas { height: 500px;}
+    .jsavcanvas { height: 350px;}
   </style>
 </head>
 
@@ -87,13 +97,13 @@ function resetInit() {
   jsavInput = jsav.ds.array(initData, {indexed: true, center: false,
                             layout: "vertical", left: 20, top: 30});
   jsav.label("Hash Table", {left: 20, top: 8});
-  jsav.label("<b style='color:#0b0;'>B0</b>", {left: 85, top: 65});
-  jsav.label("<b style='color:#0b0;'>B1</b>", {left: 85, top: 157});
-  jsav.label("<b style='color:#0b0;'>B2</b>", {left: 85, top: 249});
-  jsav.label("<b style='color:#0b0;'>B3</b>", {left: 85, top: 341});
-  jsav.label("<b style='color:#0b0;'>B4</b>", {left: 85, top: 433});
+  jsav.label("<b style='color:#0b0;'>B0</b>", {left: 80, top: 51});
+  jsav.label("<b style='color:#0b0;'>B1</b>", {left: 80, top: 113});
+  jsav.label("<b style='color:#0b0;'>B2</b>", {left: 80, top: 175});
+  jsav.label("<b style='color:#0b0;'>B3</b>", {left: 80, top: 237});
+  jsav.label("<b style='color:#0b0;'>B4</b>", {left: 80, top: 299});
   for (i = 0; i < 4; i++) {
-    jsav.g.line(20, 123 + (i * 92), 85, 123 + (i * 92), {"stroke-width": 2});
+    jsav.g.line(20, 93 + (i * 62), 70, 93 + (i * 62), {"stroke-width": 2});
   }
   setGray(jsavInput, [0, 1, 4, 5, 8, 9]);
   jsavInput.click(function (index) { clickHandler(this, index); });
@@ -101,6 +111,8 @@ function resetInit() {
                            layout: "vertical", top: 30, left: 200});
   jsav.label("Overflow", {left: 195, top: 8});
   jsavOverflow.click(function (index) { clickHandler(this, index); });
+  jsavInput.layout();
+  jsavOverflow.layout();
   jsav.step();
 }
 
@@ -201,7 +213,11 @@ function checkAnswer() {
 	</div>
       </div>
       <div class="hints">
-        <p>Sorry, no hints are available.</p>
+        <p>Bucket hash first uses the hash function to select a bucket
+          (the number of buckets serves as the hash table size).</p>
+        <p>If there is a collision, then linear probing is used to
+          locate another slot <b>within that bucket</b>.
+	<p>If the bucket is full, then put the record into the overflow.</p>
       </div>
     </div>
   </div>

@@ -67,7 +67,6 @@
         modelbh.heapsize(modelbh.heapsize() - 1);
         modeljsav.umsg("<br/>...decrement the heap size", {preserve: true});
         modelbh.css(modelbh.heapsize(), {"background-color": "#ddd"});
-        modelbh._treenodes[modelbh.heapsize()].edgeToParent().hide();
         modeljsav.stepOption("grade", true);
         modeljsav.step();
         modeljsav.umsg("<br/>...and restore the heap property", {preserve: true});
@@ -130,7 +129,6 @@
       }
       bh.heapsize(bh.heapsize() - 1);
       bh.css(bh.heapsize(), {"background-color": "#ddd"});
-      bh._treenodes[bh.heapsize()].edgeToParent().hide();
       exercise.gradeableStep();
     });
     $("#about").click(about);

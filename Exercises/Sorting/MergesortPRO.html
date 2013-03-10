@@ -28,7 +28,9 @@ Written by Gayathri Subramanian and Cliff Shaffer
       overflow: hidden;
     }
 
-    .jsavarray { position: absolute; }
+    .jsavarray {
+      position: absolute;
+    }
 
     #container .jsavarray {
       left: -10px;
@@ -36,6 +38,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
     }
 
     #reset { margin-right: 20px;}
+    .jsavcanvas { height: 190px;}
   </style>
 </head>
 
@@ -56,6 +59,7 @@ var
   isSelected;     // Boolean: True iff user has already clicked an array element
 
 var rowHeight = 80;   // Space required for each row to be displayed
+var rowTop = 30;   // Position for top array
 var blockWidth = 47;  // Width of an array element
 
 // Variables used to keep track of the index and array of the
@@ -106,16 +110,16 @@ function resetInit() {
   isSelected = false;
   jsavarr_answer = jsav.ds.array(empty, {indexed: true, center: false,
                                          layout: "array"});
-  jsavarr_answer.element.css({"left": 0, "top": rowHeight});
+  jsavarr_answer.element.css({"left": 0, "top": rowTop});
   jsavarr_answer.click(function (index) { clickHandler(this, index); });
   jsavarr_left = jsav.ds.array(arrdata_left, {indexed: true, center: false,
                                               layout: "array"});
-  jsavarr_left.element.css({"left": 0, "top": 2 * rowHeight});
+  jsavarr_left.element.css({"left": 0, "top": rowTop + rowHeight});
   jsavarr_left.click(function (index) { clickHandler(this, index); });
   jsavarr_right = jsav.ds.array(arrdata_right, {indexed: true, center: false,
                                                 layout: "array"});
   jsavarr_right.element.css({"left": blockWidth * (left_size + 1),
-                             "top": 2 * rowHeight});
+                             "top": rowTop + rowHeight});
   jsavarr_right.click(function (index) { clickHandler(this, index); });
 }
 

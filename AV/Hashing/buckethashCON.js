@@ -15,7 +15,7 @@ var setGray = function (a, index) {
   var arr = av.ds.array(empty, {indexed: true, center: false,
                             layout: "vertical", left: 20});
   for (i = 0; i < 5; i++) {
-    av.g.line(20, 107 + (i * 92), 85, 107 + (i * 92), {"stroke-width": 2});
+    av.g.line(20, 108 + (i * 92), 85, 108 + (i * 92), {"stroke-width": 2});
   }
   setGray(arr, [0, 1, 4, 5, 8, 9]);
   av.umsg("Demonstration of bucket hash for an array of size 10 storing 5 buckets, each two slots in size. The alternating gray and white cells indicate the buckets.");
@@ -129,7 +129,7 @@ var setGray = function (a, index) {
   var arr = av.ds.array(empty, {indexed: true, center: false,
                             layout: "vertical", left: 20});
   for (i = 0; i < 5; i++) {
-    av.g.line(20, 107 + (i * 92), 85, 107 + (i * 92), {"stroke-width": 2});
+    av.g.line(20, 108 + (i * 92), 85, 108 + (i * 92), {"stroke-width": 2});
   }
   setGray(arr, [0, 1, 4, 5, 8, 9]);
   av.umsg("Demonstration of alternative bucket hash for an array of size 10 storing 5 buckets, each two slots in size. The alternating gray and white cells indicate the buckets.");

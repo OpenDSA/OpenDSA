@@ -184,7 +184,10 @@ var getH2 = function(K) {
         </div>
       </div>
       <div class="hints">
-        <p>Sorry, no hints are available.</p>
+        <p>First, we hash to the home slot with the first hash function.</p>
+        <p>If there is a collistion, then we use the second hash
+          function to compute a stepsize.</p>
+	<p>We then use linear pobing by the cmoputed step size.</p>
       </div>
     </div>
   </div>

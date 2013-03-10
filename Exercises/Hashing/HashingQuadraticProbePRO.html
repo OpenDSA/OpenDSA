@@ -121,7 +121,13 @@ var checkAnswer = function() {
         </div>
       </div>
       <div class="hints">
-        <p>Sorry, no hints are available.</p>
+        <p>First use the hash function to computer the home slot.</p>
+	<p>If there is a collision, then the <code>i</code>'th place
+	  to look is <code>i*i</code> steps from the home slot.</p>
+	<p>Remember that offsets are always with respect to the home
+	  slot, not from the last slot probed to.</p>
+	<p>If we reach the end of the array while stepping, then cycle
+	  around to the beginning.</p>
       </div>
     </div>
   </div>

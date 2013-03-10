@@ -699,7 +699,7 @@
         }
       },
       "Hashing/HashDel": {
-        "long_name": "Deletion",
+        "long_name": "Hash Deletion",
         "exercises": {
           "hashdelCON1": {
             "long_name": "Hash Deletion Slideshow",
@@ -731,6 +731,10 @@
             "threshold": 10
           }
         }
+      },
+      "Hashing/PerfectHash": {
+        "long_name": "Perfect Hashing",
+        "exercises": {}
       }
     },
     "Under Development": {
