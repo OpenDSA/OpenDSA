@@ -560,6 +560,9 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
         while (i < len(mod_data) and mod_data[i].rstrip() != ''):
           mod_data.pop()
       else:
+        # Append module name to embedded exercise
+        mod_data[i] += '   :module: ' + mod_name + eol
+        
         if av_name not in exercises:
           # Add the name to a list of missing exercises
           missing_exercises.append(av_name)
@@ -567,16 +570,12 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
           # Add the necessary information from the configuration file
           exer_conf = exercises[av_name]
 
-          line = mod_data[i] + '   :module: ' + mod_name + eol
-
           # List of valid options for avembed directive
           options = ['long_name', 'points', 'required', 'showhide', 'threshold']
 
           for option in options:
             if option in exer_conf:
-              line += '   :' + option + ': ' + str(exer_conf[option]) + eol
-
-          mod_data[i] = line
+              mod_data[i] += '   :' + option + ': ' + str(exer_conf[option]) + eol
 
     i = i + 1
 
