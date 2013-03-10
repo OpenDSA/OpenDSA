@@ -35,6 +35,10 @@
       line-height: 30px;
     }
 
+    .jsavverticalarray .jsavindexlabel {
+      right: 40px;
+    }
+
     #container .jsavarray {
       left: -10px;
       height: 80px;
@@ -107,6 +111,8 @@ function resetInit() {
                            layout: "vertical", top: 30, left: 200});
   jsav.label("Overflow", {left: 195, top: 8});
   jsavOverflow.click(function (index) { clickHandler(this, index); });
+  jsavInput.layout();
+  jsavOverflow.layout();
   jsav.step();
 }
 

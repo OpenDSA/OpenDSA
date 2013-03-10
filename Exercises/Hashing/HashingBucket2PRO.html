@@ -40,6 +40,10 @@
       line-height: 30px;
     }
 
+    .jsavverticalarray .jsavindexlabel {
+      right: 40px;
+    }
+
     #reset { margin-right: 20px;}
 
     svg {
@@ -106,6 +110,8 @@ function resetInit() {
                            layout: "vertical", top: 30, left: 200});
   jsav.label("Overflow", {left: 195, top: 8});
   jsavOverflow.click(function (index) { clickHandler(this, index); });
+  jsavInput.layout();
+  jsavOverflow.layout();
   jsav.step();
 }
 
