@@ -1,6 +1,6 @@
-"use strict";
-/*global alert: true, ODSA */
 (function ($) {
+  "use strict";
+  /*global alert: true, ODSA */
   $(document).ready(function () {
     var initData, bh,
         settings = new JSAV.utils.Settings($(".jsavsettings")),
@@ -15,12 +15,12 @@
         bh.clear();
       }
       initData = JSAV.utils.rand.numKeys(10, 100, nodeNum);
-      
+
       // Log the initial state of the exercise
       var exInitData = {};
       exInitData.gen_array = initData;
       ODSA.AV.logExerciseInit(exInitData);
-      
+
       bh = jsav.ds.binheap(initData, { nodegap: 25, compare: function (a, b) { return b - a; }});
       swapIndex = jsav.variable(-1);
       jsav.displayInit();
@@ -32,7 +32,7 @@
       swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step
       for (var i = 0; i < size; i++) {
         var val = modelHeap.value(i),
-        bgColor = modelHeap.css(i, "background-color");
+            bgColor = modelHeap.css(i, "background-color");
         if (bh.css(i, "background-color") !== bgColor) { // fix background color
           bh.css(i, {"background-color": bgColor});
         }
@@ -43,7 +43,7 @@
       bh.heapsize(modelHeap.heapsize());
       exercise.gradeableStep();
     }
-        
+
     function model(modeljsav) {
       var modelbh = modeljsav.ds.binheap(initData, {nodegap: 20, compare: function (a, b) { return b - a; }});
       modelbh.origswap = modelbh.swap; // store original heap grade function
@@ -79,7 +79,7 @@
       modeljsav.step();
       return modelbh;
     }
-        
+
     function clickHandler(index) {
       if (bh.heapsize() === 0 || index >= bh.heapsize()) {
         return;
@@ -95,8 +95,8 @@
         swapIndex.value(-1);
         jsav.step();
       } else { // second click will swap
-        bh.swap(sIndex, index, {});
         bh.css([sIndex, index], {"font-size": "100%"});
+        bh.swap(sIndex, index, {});
         swapIndex.value(-1);
         exercise.gradeableStep();
       }
@@ -113,7 +113,7 @@
                                fixmode: "fix",
                                fix: fixState });
     exercise.reset();
-        
+
     $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function () {
       var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
       clickHandler(index);
