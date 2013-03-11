@@ -4,15 +4,20 @@
   "book_dir": "Books",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
-  "exercise_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
-  "build_ODSA": false,
+  "build_ODSA": true,
   "allow_anonymous_credit": true,
   "chapters": {
     "Preface": {
       "Intro": {
         "long_name": "How to Use this System",
+        "exercises": {}
+      }
+    },
+    "Hashing": {
+      "Hashing/PerfectHash": {
+        "long_name": "Perfect Hashing",
         "exercises": {}
       }
     }
