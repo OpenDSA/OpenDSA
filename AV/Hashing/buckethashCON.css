@@ -5,7 +5,3 @@
 .jsavcanvas {
   height: 440px;
 }
-
-svg {
-  z-index: 50;
-}

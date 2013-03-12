@@ -1,0 +1,214 @@
+{
+  "config_version": 0.1,
+  "title": "OpenDSA (Development)",
+  "book_dir": "Books",
+  "code_dir": "SourceCode/Processing",
+  "module_origin": "http://algoviz.org",
+  "backend_address": "https://opendsa.cc.vt.edu/",
+  "build_JSAV": false,
+  "build_ODSA": true,
+  "allow_anonymous_credit": true,
+  "chapters": {
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "exercises": {}
+      },
+      "Status": {
+        "long_name": "OpenDSA Content Status",
+        "exercises": {}
+      }
+    },
+    "Hashing": {
+      "Development/PerfectHash": {
+        "long_name": "Perfect Hashing",
+        "exercises": {
+          "perfectHashAV": {
+            "long_name": "Perfect Hashing Visualization",
+            "required": false,
+            "showhide": "none",
+            "points": 0,
+            "threshold": 1.0
+          }
+	}
+      }
+    },
+    "Graphs": {
+      "Development/GraphIntro": {
+        "long_name": "Introduction and Terminology",
+        "exercises": {}
+      },
+      "Development/GraphImpl": {
+        "long_name": "Graph Implementation",
+        "exercises": {}
+      },
+      "Development/MCST": {
+        "long_name": "Minimal Cost Spanning Trees",
+        "exercises": {}
+      }
+    },
+    "Under Development": {
+      "Background": {
+        "Development/SetDef": {
+          "long_name": "Set Definitions",
+          "exercises": {}
+        },
+        "Development/Recurrence": {
+          "long_name": "Recurrence",
+          "exercises": {}
+        }
+      },
+      "General Trees": {
+        "Development/LOChild": {
+          "long_name": "Lists of Children Representation",
+          "exercises": {}
+        }
+      },
+      "File Processing": {
+        "Development/FileProc": {
+          "long_name": "File Processing",
+          "exercises": {}
+        },
+        "Development/ExternalSort": {
+          "long_name": "External Sorting",
+          "exercises": {}
+        }
+      },
+      "Trees": {
+        "Development/Heaps": {
+          "long_name": "Heaps",
+          "exercises": {}
+        },
+        "Development/BinaryHeap": {
+          "long_name": "Binary Heap",
+          "exercises": {}
+        },
+        "Development/Huffman": {
+          "long_name": "Huffman Coding Trees",
+          "exercises": {
+            "huffmanCON1": {
+              "long_name": "Huffman Coding Tree Slideshow",
+              "required": true,
+              "points": 0.1,
+              "threshold": 1.0
+            },
+            "HuffmanCoding": {
+              "long_name": "Huffman Coding Tree Visualization",
+              "required": true,
+              "points": 0.1,
+              "showhide": "show",
+              "threshold": 1.0
+            }
+          }
+        },
+        "Development/TreeExer": {
+          "long_name": "Tree Exercises",
+          "exercises": {}
+        },
+        "Development/Trie": {
+          "long_name": "Tries",
+          "exercises": {}
+        }
+      },
+      "Algorithms": {
+        "Development/Knapsack": {
+          "exercises": {
+            "sackCallTree": {
+              "long_name": "Knapsack Call Tree",
+              "required": true,
+              "points": 0.1,
+              "threshold": 1.0
+            },
+            "sackTreePluck": {
+              "required": true,
+              "points": 0.1,
+              "threshold": 1.0
+            },
+            "sackTraceBack": {
+              "long_name": "Knapsack Tree Reduction",
+              "required": true,
+              "points": 0.1,
+              "threshold": 1.0
+            },
+            "knapsackSelect": {
+              "long_name": "Knapsack Select",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            },
+            "knapsackFillRow": {
+              "long_name": "Knapsack Fill Row",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            },
+            "knapsackSolution": {
+              "long_name": "Knapsack Solution",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            },
+            "sackProficiency": {
+              "long_name": "Knapsack Proficiency",
+              "required": true,
+              "points": 1,
+              "threshold": 0.9
+            }
+          }
+        },
+        "Development/EditDistance": {
+          "exercises": {
+            "editRCT": {
+              "long_name": "Edit RCT",
+              "required": true,
+              "points": 1,
+              "threshold": 0.9
+            },
+            "editPrune": {
+              "long_name": "Edit Prune",
+              "required": true,
+              "points": 1,
+              "threshold": 0.9
+            },
+            "editOptimal": {
+              "long_name": "Edit Optimal",
+              "required": true,
+              "points": 1,
+              "threshold": 0.9
+            },
+            "edit-KA1": {
+              "long_name": "Edit KA1",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            },
+            "edit-KA2": {
+              "long_name": "Edit KA2",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          }
+        },
+        "Development/Reductions": {
+          "long_name": "Reductions",
+          "exercises": {}
+        }
+      }
+    }, 
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "exercises": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "exercises": {}
+      },
+      "Gradebook": {
+        "long_name": "Gradebook",
+        "exercises": {}
+      }
+    }
+  }
+}

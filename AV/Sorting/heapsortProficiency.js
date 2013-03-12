@@ -31,14 +31,8 @@
       var size = modelHeap.size();
       swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step
       for (var i = 0; i < size; i++) {
-        var val = modelHeap.value(i),
-            bgColor = modelHeap.css(i, "background-color");
-        if (bh.css(i, "background-color") !== bgColor) { // fix background color
-          bh.css(i, {"background-color": bgColor});
-        }
-        if (val !== bh.value(i)) { // fix values
-          bh.value(i, val);
-        }
+        bh.css(i, {"background-color": modelHeap.css(i, "background-color")});
+        bh.value(i, modelHeap.value(i));
       }
       bh.heapsize(modelHeap.heapsize());
       exercise.gradeableStep();
