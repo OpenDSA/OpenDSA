@@ -381,6 +381,7 @@
       },
       "Sorting/BinSort": {
         "long_name": "Binsort",
+        "dispModComp": true,
         "exercises": {
           "BinsortCON1": {
             "long_name": "Binsort Slideshow 1",
@@ -464,6 +465,7 @@
     "Hashing": {
       "Hashing/HashIntro": {
         "long_name": "Introduction",
+        "dispModComp": true,
         "exercises": {
           "hashIntroCON1": {
             "long_name": "Hashing Intro Slideshow",
