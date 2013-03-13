@@ -73,10 +73,10 @@ A graph with labels associated with its vertices
 :dfn:`labeled graph`.
 Two vertices are :dfn:`adjacent` if they are joined by an edge.
 Such vertices are also called :dfn:`neighbors`.
-An edge connecting Vertices :math:`U` and :math:`V` is written
-:math:`(U, V)`.
-Such an edge is said to be :dfn:`incident` on Vertices :math:`U`
-and :math:`V`.
+An edge connecting Vertices :math:`u` and :math:`v` is written
+:math:`(u, v)`.
+Such an edge is said to be :dfn:`incident` on Vertices :math:`u`
+and :math:`v`.
 Associated with each edge may be a cost or :dfn:`weight`.
 Graphs whose edges have weights
 (as in Figure :num:`Figure #GraphTerms` (c))
@@ -224,7 +224,7 @@ directed or undirected
 graphs.
 Each edge of an undirected graph connecting Vertices :math:`u`
 and :math:`v` is represented by two directed edges: one from
-:math:`u` to :math:`v` and one from :math:`V` to :math:`U`.
+:math:`u` to :math:`v` and one from :math:`v` to :math:`u`.
 Figure :num:`Figure #Undirected` illustrates the use of the adjacency
 matrix and the adjacency list for undirected graphs.
 
