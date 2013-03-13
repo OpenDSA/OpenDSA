@@ -142,6 +142,10 @@ Settings (all are required unless otherwise specified)
 
 * **allow_anonymous_credit** - (optional) a boolean controlling whether credit for exercises completed anonymously (without logging in) will be transferred to the next user to log in, OpenDSA will accept anonymous credit by default if this attribute is not present
 
+* **suppress_todo** - (optional) a boolean controlling whether or not the TODO directives are removed from the RST source files, if this attribute is not present, it will default to removing them
+
+  * **Note**: When changing from ``false`` to ``true``, you must run ``make clean`` to completely remove any references to ``ToDo``
+
 * **chapters** - this object contains a hierarchy of chapters, sections, subsections, modules and exercises
 
   * Each key in "chapters" represents a chapter name, any key values in the associated object represent sections within that chapter.  This concept is applied recursively until a module object is reached.  A module object is one whose key matches the name of an RST file in the ~OpenDSA/RST/source/ directory and which contains the key "exercises".

@@ -63,6 +63,9 @@ processed_modules = []
 # List of images encountered while processing module files, these will be copied from the source/Images to Images in the output source directory
 images = []
 
+# Keeps a count of how many ToDo directives are encountered
+todo_count = 0
+
 # Used to generate the index.rst file (%s is used to include the rst_script_header string)
 index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
@@ -137,7 +140,7 @@ preprocessor:
 	python "%(odsa_root)sRST/preprocessor.py" source/ $(HTMLDIR)
 
 html: preprocessor
-	rm source/ToDo.rst
+	%(remove_todo)s
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
 	rm *.json
@@ -475,6 +478,8 @@ def process_section(section, index_rst, depth):
   index_rst.write("\n")
 
 def process_module(mod_path, mod_attrib, index_rst, depth):
+  global todo_count
+  
   mod_path = mod_path.replace('.rst', '')
   mod_name = os.path.basename(mod_path)
 
@@ -523,6 +528,18 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
     elif '.. figure::' in mod_data[i]:
       image_path = mod_data[i].split(' ')[2].rstrip()
       images.append(os.path.basename(image_path))
+    elif '.. TODO::' in mod_data[i]:
+      if conf_data['suppress_todo']:
+        # Remove TODO directives from the RST file
+        mod_data[i] = ''
+        i += 1
+        
+        while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
+          mod_data[i] = ''
+          i += 1
+      else:
+        # Increment the TODO directive counter
+        todo_count += 1
     elif '.. inlineav::' in mod_data[i]:
       # Parse the AV name from the line
       av_name = mod_data[i].split(' ')[2].rstrip()
@@ -558,7 +575,8 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
 
         # Config file states exercise should be removed, remove it from the RST file
         while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-          mod_data.pop()
+          mod_data[i] = ''
+          i += 1
       else:
         # Append module name to embedded exercise
         mod_data[i] += '   :module: ' + mod_name + eol
@@ -631,6 +649,9 @@ output_dir = process_path(conf_data['book_dir'], odsa_dir) + conf_data['name'] +
 
 # Assign defaults to optional settings
 
+if 'suppress_todo' not in conf_data:
+  conf_data['suppress_todo'] = True
+
 # Strip the '/' from the end of the SERVER_URL
 conf_data['backend_address'] = conf_data['backend_address'].rstrip('/')
 
@@ -690,6 +711,33 @@ print "Writing files to " + output_dir + "\n"
 src_dir = output_dir + "source/"
 distutils.dir_util.mkpath(src_dir)
 
+# Generate the index.rst file
+with open(src_dir + 'index.rst', 'w+') as index_rst:
+  print "Generating index.rst\n"
+  print "Processing..."
+  index_rst.write(index_header % rst_script_header)
+
+  process_section(conf_data['chapters'], index_rst, 0)
+
+  index_rst.write(".. toctree::\n")
+  index_rst.write("   :maxdepth: 3\n\n")
+  index_rst.write("   Gradebook\n")
+  
+  if todo_count > 0:
+    index_rst.write("   ToDo\n")
+  
+  index_rst.write("\n")
+  index_rst.write("* :ref:`genindex`\n")
+  index_rst.write("* :ref:`search`\n")
+index_rst.close()
+
+# Print out a list of any exercises found in RST files that do not appear in the config file
+if len(missing_exercises) > 0:
+  print "\nExercises Not Listed in Config File:"
+
+  for exercise in missing_exercises:
+    print '  ' + exercise
+
 # Initialize options for conf.py
 options = {}
 options['title'] = conf_data['title']
@@ -702,6 +750,11 @@ options['rel_ebook_path'] = rel_ebook_path
 options['code_dir'] = code_dir
 options['av_dir'] = conf_data['av_root_dir']
 options['exercises_dir'] = conf_data['exercises_root_dir']
+# TODO: Temporary fix until preprocessor.py stops creating a ToDo.rst file when were are no TODO directives
+options['remove_todo'] = 'rm source/ToDo.rst'
+
+if todo_count > 0:
+  options['remove_todo'] = ''
 
 # Create a Makefile in the output directory
 with open(output_dir + 'Makefile','w') as makefile:
@@ -713,26 +766,6 @@ with open(src_dir + 'conf.py','w') as conf_py:
   conf_py.writelines(conf % options)
 conf_py.close()
 
-# Generate the index.rst file
-with open(src_dir + 'index.rst', 'w+') as index_rst:
-  print "Generating index.rst\n"
-  print "Processing..."
-  index_rst.write(index_header % rst_script_header)
-
-  process_section(conf_data['chapters'], index_rst, 0)
-
-  index_rst.write("* :ref:`genindex`\n")
-  index_rst.write("* :ref:`search`\n")
-index_rst.close()
-
-# Print out a list of any exercises found in RST files that do not appear in the config file
-if len(missing_exercises) > 0:
-  print "\nExercises Not Listed in Config File:"
-
-  for exercise in missing_exercises:
-    print '  ' + exercise
-
-
 # Copy _static and select images from RST/source/Images/ to the output source directory
 distutils.dir_util.copy_tree(odsa_dir + 'RST/source/_static/', src_dir + '_static', update=1)
 
@@ -740,6 +773,9 @@ distutils.dir_util.mkpath(src_dir + 'Images/')
 
 for image in images:
   distutils.file_util.copy_file(odsa_dir + 'RST/source/Images/' + image, src_dir + 'Images/')
+
+# Copy Gradebook.rst to output source directory
+distutils.file_util.copy_file(odsa_dir + 'RST/source/Gradebook.rst', src_dir)
 
 # Copy config file to _static directory
 distutils.file_util.copy_file(config_file, src_dir + '_static/')
