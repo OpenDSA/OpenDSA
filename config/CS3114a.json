@@ -8,6 +8,7 @@
   "build_JSAV": false,
   "build_ODSA": true,
   "allow_anonymous_credit": true,
+  "suppress_todo": true,
   "chapters": {
     "Preface": {
       "Intro": {

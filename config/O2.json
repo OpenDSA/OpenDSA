@@ -8,6 +8,7 @@
   "build_JSAV": false,
   "build_ODSA": true,
   "allow_anonymous_credit": true,
+  "suppress_todo": false,
   "chapters": {
     "Preface": {
       "Intro": {
@@ -42,6 +43,18 @@
         "long_name": "Graph Implementation",
         "exercises": {}
       },
+      "Development/GraphTraversal": {
+        "long_name": "Graph Traversal",
+        "exercises": {
+          "graphDFS": {
+            "long_name": "Depth First Search Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+        }
+      },
       "Development/MCST": {
         "long_name": "Minimal Cost Spanning Trees",
         "exercises": {}
@@ -55,6 +68,10 @@
         },
         "Development/Recurrence": {
           "long_name": "Recurrence",
+          "exercises": {}
+        },
+        "Development/VisitorPatt": {
+          "long_name": "Visitor Design Pattern",
           "exercises": {}
         }
       },
