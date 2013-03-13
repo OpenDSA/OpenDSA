@@ -67,7 +67,7 @@ as follows on a graph :math:`\mathbf{G}`:
 .. codeinclude:: Graphs/GraphTrav/GraphTrav.pde 
    :tag: GraphTrav
 
-Function ``doTraverse`` might be implemented by using
+Function ``doTraversal`` might be implemented by using
 one of the graph traversals described in this section.
 
 Depth-First Search
