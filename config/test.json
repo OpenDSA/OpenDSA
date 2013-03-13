@@ -16,7 +16,7 @@
       }
     },
     "Hashing": {
-      "Hashing/PerfectHash": {
+      "Development/PerfectHash": {
         "long_name": "Perfect Hashing",
         "exercises": {}
       }
