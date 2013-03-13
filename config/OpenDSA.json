@@ -732,12 +732,30 @@
           }
         }
       },
-      "Hashing/PerfectHash": {
+      "Development/PerfectHash": {
         "long_name": "Perfect Hashing",
-        "exercises": {}
+        "exercises": {
+          "perfectHashAV": {
+            "long_name": "Perfect Hashing Visualization",
+            "required": false,
+            "showhide": "none",
+            "points": 0,
+            "threshold": 1.0
+          }
+	}
       }
     },
     "Under Development": {
+      "Graphs": {
+        "Development/GraphIntro": {
+          "long_name": "Introduction",
+          "exercises": {}
+        },
+        "Development/MCST": {
+          "long_name": "Minimal Cost Spanning Trees",
+          "exercises": {}
+        }
+      },
       "Background": {
         "Development/SetDef": {
           "long_name": "Set Definitions",
@@ -791,12 +809,6 @@
         },
         "Development/Trie": {
           "long_name": "Tries",
-          "exercises": {}
-        }
-      },
-      "Graphs": {
-        "Development/MCST": {
-          "long_name": "Minimal Cost Spanning Trees",
           "exercises": {}
         }
       },
