@@ -1,4 +1,4 @@
-final int UNVISITED = 0;
+final Object VISITED = "Visited";
 
 void doTraversal(Graph G, int v) {
   println("doTraversal");
@@ -6,19 +6,21 @@ void doTraversal(Graph G, int v) {
 
 /* *** ODSATag: GraphTrav *** */
 void graphTraverse(Graph G) {
+  Node [] all = G.nodes();
   int v;
   for (v=0; v<G.n(); v++)
-    G.setMark(v, UNVISITED); // Initialize
+    all[v].value(null); // Initialize
   for (v=0; v<G.n(); v++)
-    if (G.getMark(v) == UNVISITED)
+    if (all[v].value() != VISITED)
       doTraversal(G, v);
 }
 /* *** ODSAendTag: GraphTrav *** */
 
 void setup() {
   println("begin");
-  GraphM GM;
+  GraphM GM = new GraphM();
 
-  graphTraverse(G);
+  graphTraverse(GM);
   println("Testing successful!");
 }
+
