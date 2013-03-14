@@ -36,7 +36,6 @@ The ``Graph`` class need have no knowledge of the type or content
 of the information associated with a vertex, only the index number for
 that vertex.
 
-
 Abstract class ``Graph``
 has methods to return the number of vertices and edges
 (methods ``n`` and ``e``, respectively).
