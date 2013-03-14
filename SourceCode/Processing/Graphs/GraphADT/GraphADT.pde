@@ -2,9 +2,8 @@
 /* Graph ADT */
 public interface Graph {         // Graph class ADT
 
-  // Initialize the graph
-  // n: The number of vertices
-  public void Init(int n);
+  // Initialize the graph with n vertices
+  public Graph(int n);
 
   // Return the number of vertices
   public int n();
@@ -12,70 +11,44 @@ public interface Graph {         // Graph class ADT
   // Return the current number of edges
   public int e();
 
-  // Adds a new node with value to the graph.
-  // Returns the new node
-  public Node addNode(Object value);
-
-  // Removes a node from the graph.
-  public Node removeNode(Node node);
-
-  // Adds a new edge from fromNode to toNode
+  // Adds a new edge from node v to node w
   // Returns the new edge
-  public Node addEdge(Node fromNode, Node toNode);
+  public Edge addEdge(int v, int w);
 
-  // Removes a node from the graph.
-  // Edge is specified using either an object or by its
-  // from and to nodes
-  public Node removeEdge(Node fromNode, Node toNode);
-  public Node removeEdge(Edge edge);
+  // Get or set the value of node with index v
+  public Object nodeValue(v);
+  public void nodeValue(v, Object val);
 
-  // Returns true iff the graph has an edge
-  public boolean hasEdge(Node fromNode, Node toNode);
+  // Removes the edge from the graph.
+  public void removeEdge(int v, int w);
+  public void removeEdge(Edge e);
+
+  // Returns true iff the graph has the edge
+  public boolean hasEdge(int v, int w);
   public boolean hasEdge(Edge edge);
 
-  // Returns the Edge object connecting fromNode and toNode,
+  // Returns the Edge object connecting node indicies v and w,
   // or returns Null if no such edge exists
-  public Edge getEdge(Node fromNode, Node toNode);
+  public Edge getEdge(int v, int w);
 
-  // Returns an iterable array of nodes in the graph
-  // In addition, it has methods next() and hasNext() for iterating
-  // over the values
-  public Node[] nodes();
-
-  // Returns an iterable array of edges in the graph
+  // Returns an array with all edges in the graph
   public Edge[] edges();
-}
 
-public interface Node {  // Node class ADT
-  // Returns and iterable array of the nodes that this node is
-  // connected to.
-  Node[] neighbors();
-
-  // Returns the Edge object connecting this node to the given node
-  // Returns NULL if no such edge exists
-  Edge edgeTo(node);
-
-  // Returns the Edge object connecting the given node to this node
-  // Returns NULL if no such edge exists
-  Edge edgeFrom(node);
-
-  // Returns or sets the value associated with this node
-  Object value();
-  Object value(Object newValue);
-  
+  // Returns an array containing the indicies of the neighbors of v
+  public int[] neighbors(int v);
 }
 
 public interface Edge { // Edge class ADT
   // Returns or sets the start node of this edge.
   start();
-  start(Node node);
+  start(int v);
 
   // Returns or sets the end node of this edge.
   end();
-  end(Node node);
+  end(int w);
 
-  // Returns or sets the label attached to this edge.
+  // Returns or sets the value associated with this edge.
   Object value();
-  Object value(Object newLabel);
+  Object value(Object val);
 }
 /* *** ODSAendTag: GraphADT *** */
