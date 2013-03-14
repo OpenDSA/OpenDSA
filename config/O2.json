@@ -1,5 +1,4 @@
 {
-  "config_version": 0.1,
   "title": "OpenDSA (Development)",
   "book_dir": "Books",
   "code_dir": "SourceCode/Processing",
@@ -30,7 +29,7 @@
             "points": 0,
             "threshold": 1.0
           }
-	}
+        }
       }
     },
     "Graphs": {
@@ -203,10 +202,6 @@
       },
       "Bibliography": {
         "long_name": "Bibliography",
-        "exercises": {}
-      },
-      "Gradebook": {
-        "long_name": "Gradebook",
         "exercises": {}
       }
     }

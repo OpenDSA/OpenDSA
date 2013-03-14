@@ -79,7 +79,7 @@ Settings (all are required unless otherwise specified)
 
 * **title** - the title of the OpenDSA textbook
 
-* **book_dir** - the directory where the configured book directory will be created
+* **book_dir** - (optional) the directory where the configured book directory will be created, defaults to 'Books' if omitted 
 
   * A new directory, named after the book, will be created at this location and serve as the output directory for the configuration process.  Files required to compile the book will be copied / written to the output directory, including modified version of the source RST files
   
@@ -95,7 +95,7 @@ Settings (all are required unless otherwise specified)
   * Used by embedded exercises as the target of HTML5 post messages which send information to the parent (module) page
   * Ex: "module_origin": "http://algoviz.org",
 
-* **av_root_dir** - (optional) allows the user to change the default location where the AV/ directory can be found
+* **av_root_dir** - (optional) allows the user to change the default location where the AV/ directory can be found, defaults to OpenDSA root directory if omitted
 
   * This can point to another location on the same machine that hosts the module files (as long as it is web-accessible) or it can point to a remote location (not fully supported yet)
   * **Note**: This should not point to the AV/ directory itself, but the directory containing the AV/ directory (to avoid breaking the relative paths in the RST files)
@@ -104,13 +104,12 @@ Settings (all are required unless otherwise specified)
   * Ex: "av_root_dir": "/home/algoviz/OpenDSA/test/",
   * Ex: "av_root_dir": "http://algoviz.org/OpenDSA/", // This directory contains an AV/ directory
   
-* **av_origin** - (optional, unless **av_root_dir** is defined) the protocol and domain where the AV files are hosted
+* **av_origin** - (optional, unless **av_root_dir** is defined) the protocol and domain where the AV files are hosted, defaults to match ``module_origin`` if omitted
 
   * Used on module pages to allow HTML5 post messages from this origin, allows embedded AVs to communicate with the parent module page
-  * If this attribute is not present, it will default to be the same as the module_origin
   * Ex: "av_origin": "http://algoviz.org",
 
-* **exercises_root_dir** - (optional) allows the user to change the default location where the Exercises/ directory can be found
+* **exercises_root_dir** - (optional) allows the user to change the default location where the Exercises/ directory can be found, defaults to OpenDSA root directory if omitted
 
   * This can point to another location on the same machine that hosts the module files (as long as it is web-accessible) or it can point to a remote location (not fully supported yet)
   * **Note**: This should not point to the Exercises/ directory itself, but the directory containing the Exercises/ directory (to avoid breaking the relative paths in the RST files)
@@ -119,30 +118,29 @@ Settings (all are required unless otherwise specified)
   * Ex: "exercises_root_dir": "/home/algoviz/OpenDSA/test/",
   * Ex: "exercises_root_dir": "http://algoviz.org/OpenDSA/", // This directory contains an Exercises/ directory
 
-* **exercise_origin** - (optional, unless **exercises_root_dir** is defined) the protocol and domain where the Exercises files are hosted
+* **exercise_origin** - (optional, unless **exercises_root_dir** is defined) the protocol and domain where the Exercises files are hosted, defaults to match ``module_origin`` if omitted
 
   * Used on module pages to allow HTML5 post messages from this origin, allows embedded exercises to communicate with the parent module page
-  * If this attribute is not present, it will default to be the same as the module_origin
   * Ex: "exercise_origin": "http://algoviz.org",
 
-* **backend_address** - the protocol and domain (and port number, if not the protocol default) of the backend server which supports centralized user scoring and interaction data collection
+* **backend_address** - (optional) the protocol and domain (and port number, if different than the protocol default) of the backend server which supports centralized user scoring and interaction data collection, defaults to an empty string (backend server disabled) if omitted
 
   * Trailing '/' is optional
   * Ex: "backend_address": "https://opendsa.cc.vt.edu/",
 
-* **build_JSAV** - a boolean controlling whether or not the JSAV library should be rebuild every time the configuration file is run
+* **build_JSAV** - (optional) a boolean controlling whether or not the JSAV library should be rebuild every time the configuration file is run, defaults to ``false`` if omitted
 
   * This value should be set to false for development
   * Instructors may wish to set this to true for production environments when configuration is run infrequently and JSAV is likely to have changed since the last time configuration occurred
 
-* **build_ODSA** - (optional) a boolean controlling whether OpenDSA should be built after the configuration process has occurred, OpenDSA will be built by default if this attribute is not present
+* **build_ODSA** - (optional) a boolean controlling whether OpenDSA should be built after the configuration process has occurred, defaults to ``true`` if omitted
 
   * This can generally be set to true because in most cases it makes sense to build the book immediately after it is configured
   * If necessary, this value can be set to false and OpenDSA can be built manually by running make from the output directory
 
-* **allow_anonymous_credit** - (optional) a boolean controlling whether credit for exercises completed anonymously (without logging in) will be transferred to the next user to log in, OpenDSA will accept anonymous credit by default if this attribute is not present
+* **allow_anonymous_credit** - (optional) a boolean controlling whether credit for exercises completed anonymously (without logging in) will be transferred to the next user to log in, defaults to ``true`` if omitted
 
-* **suppress_todo** - (optional) a boolean controlling whether or not the TODO directives are removed from the RST source files, if this attribute is not present, it will default to removing them
+* **suppress_todo** - (optional) a boolean controlling whether or not the TODO directives are removed from the RST source files, if this attribute is not present, defaults to ``false`` if omitted
 
   * **Note**: When changing from ``false`` to ``true``, you must run ``make clean`` to completely remove any references to ``ToDo``
 
@@ -164,6 +162,13 @@ Settings (all are required unless otherwise specified)
       * Omitting an exercise from the module's "exercises" object will cause the exercise to be removed from the configured module
       * Each exercise object contains required information about that exercise including:
 
+        * **long_name** - (optional) a long form, human-readable name used to identify the exercise in the GUI, defaults to short exercise name if omitted
+        * **points** - (optional) the number of points the exercise is worth, defaults to ``0`` if omitted
+        * **remove** - (optional) if set to true, the exercise will not be included in the module
+
+          * This option can only be used with exercises embedded using the 'avembed' directive.  Slideshows and diagrams created using the 'inlineav' directive are considered content and cannot be removed via the configuration file.
+
+        * **required** - (optional) whether the exercise is required for module proficiency, defaults to ``false`` if omitted
         * **showhide** - (optional) controls whether or not the exercises is displayed and a Show / Hide button created
 
           * Setting this attribute to "show" or "hide" will create the corresponding button and if set to "show", it will display the embedded page
@@ -171,13 +176,6 @@ Settings (all are required unless otherwise specified)
           * If this attribute is not present in the config file, the default behavior is 'hide'
           * This option is only valid for exercises embedded using the 'avembed' directive.  Slideshows and diagrams created using the 'inlineav' directive are considered content and cannot be removed via the configuration file.
 
-        * **remove** - (optional) if set to true, the exercise will not be included in the module
-
-          * This option can only be used with exercises embedded using the 'avembed' directive.  Slideshows and diagrams created using the 'inlineav' directive are considered content and cannot be removed via the configuration file.
-
-        * **long_name** - a long form, human-readable name used to identify the exercise in the GUI
-        * **required** - whether the exercise is required for module proficiency
-        * **points** - the number of points the exercise is worth
-        * **threshold** - the percentage a user needs to score on the exercise to obtain proficiency
+        * **threshold** - (optional) the percentage a user needs to score on the exercise to obtain proficiency, defaults to 100% (1 on a 0-1 scale) if omitted
 
       * JSAV-based diagrams do not need to be listed
