@@ -1,3 +1,10 @@
+#The preprocessor role is to create a dictionary of book objects and 
+#a number representing their order of appearance in the document.
+#The number is used as hyperlink text for cross referencing.
+#The preprocessor also edit the html page to insert correct chapter and section numbers. 
+
+__author__ = 'efouh'
+
 import os
 import sys
 import re
@@ -13,6 +20,7 @@ from xml.dom.minidom import parse, parseString
 from string import whitespace as ws
 
 
+#defines the color of output text (warnings, errors, and info)
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -30,7 +38,8 @@ class bcolors:
         self.ENDC = ''
 
 
-
+#a class representing modules. Object attributes are module metadata.
+#The constructor parses module file to extract metadata indentified by keywords
 class modPreReq:
 
    def __init__(self,filename):
@@ -141,7 +150,7 @@ class modPreReq:
 
       self.prereqNum = len(self.prereq)
 
-
+   #Function that verifies that module prerequisites are in index.rst
    def verifPreref(self, modRoster):
       set1 = set(self.prereq)
       set2 = set(modRoster)
@@ -213,7 +222,8 @@ def generateCSV(modRoster, modDest):
     except IOError:
        print 'ERROR: When saving CSV file'
 
-
+#creates a tree of modules based on the number of prerequisites.
+#it was/will be use for the concept/knowledge map
 def modOrdering(modRoster):
 
    finalMod=[]
@@ -301,7 +311,10 @@ def is_file_modified(dict, dir, file, run_number):
      else:
          return False
 
-
+#This method is run after Sphinx has created all html files. 
+#It loads the correct chapter and section numbers of each section and hyperlink from page_chapter.json file created
+# by enumFile method before running Sphinx. The method also writes in count.txt the modification date of the file to avoid
+#parsing non modified files  
 def updateTOC(args):
     iFile = open(args[0]+'index.rst','r')
     iLine = iFile.readlines()
@@ -436,7 +449,7 @@ def updateTOC(args):
              otfile.writelines('%s.html:%s\n'%(pagename,tsize))
              otfile.close()
 
-
+#creates the ToDo.html page
 def todoHTML(todolst):
 
    tp =''
@@ -486,7 +499,7 @@ def isIncludeChapter(txt):
    else:
       return False
 
-
+#get the start number for sectnum and chapnum directives
 def getSectionStartNumb(indexfile):
 
    directive = 0
@@ -501,6 +514,10 @@ def getSectionStartNumb(indexfile):
          return sectnum-1
    return 0
 
+
+#Parses all modules files in index.rst and associates each section to their chaper and section numbers 
+# in the following format "chapter_number.section_number". The dictionary created is dumped into a file.
+#the file will be used after all html files are created to replace sphinx hyperlink text with numbers. 
 def enumFile(folder, folder1):
 
    filelist = []
