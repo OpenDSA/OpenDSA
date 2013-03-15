@@ -1,3 +1,5 @@
 /* *** ODSATag: GraphL *** */
 // PLACEHOLDER FOR ADJACENCY LIST IMPLEMENTATION
-/* *** ODSAendTag: GraphL *** */
+class GraphL implements Graph {
+}
+/* *** ODSAendTag: GraphM *** */
