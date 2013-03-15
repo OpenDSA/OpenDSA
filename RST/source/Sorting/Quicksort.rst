@@ -93,7 +93,7 @@ indices, respectively, for the subarray being sorted.
 The initial call to Quicksort would be
 ``quicksort(array, 0, n-1)``.
 
-.. codeinclude:: Sorting/Quicksort/Quicksort.pde
+.. codeinclude:: Sorting/Quicksort.pde
    :tag: Quicksort
 
 Function ``partition`` will move records to the
