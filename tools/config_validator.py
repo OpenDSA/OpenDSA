@@ -3,7 +3,7 @@
 # Given an OpenDSA config file as a parameter, this script ensures all required fields are present and no invalid options are present
 import sys
 import os
-import simplejson as json
+import json
 import collections
 from urlparse import urlparse
 

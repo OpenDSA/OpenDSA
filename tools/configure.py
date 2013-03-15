@@ -43,7 +43,7 @@ import os
 import shutil
 import distutils.dir_util
 import distutils.file_util
-import simplejson as json
+import json
 import collections
 import re
 import subprocess
