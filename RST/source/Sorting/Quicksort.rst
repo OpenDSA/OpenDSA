@@ -121,7 +121,7 @@ expensive, and we can do nearly as well by selecting the middle
 position in the array.
 Here is a simple ``findpivot`` function.
 
-.. codeinclude:: Sorting/Quicksort/Quicksort.pde
+.. codeinclude:: Sorting/Quicksort.pde
    :tag: findpivot
 
 Now you can have some practice.
@@ -140,7 +140,7 @@ ends of the subarray, swapping values as necessary until the two
 indices meet.
 Here is a Java implementation for the partition step.
 
-.. codeinclude:: Sorting/Quicksort/Quicksort.pde
+.. codeinclude:: Sorting/Quicksort.pde
    :tag: partition
 
 Note the check that ``right >= left`` in the second inner
