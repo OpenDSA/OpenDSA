@@ -12,8 +12,10 @@ Table of Contents
    ModAuthor
    Structure
    Style
+   Preprocessor
    Extensions
    Exercise 
    BackendSpecs
    Configuration
    Client-sideFramework
+   Client-sideDevelopment
