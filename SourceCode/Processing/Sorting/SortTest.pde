@@ -1,4 +1,4 @@
-final int numtests = 10;
+final int numtests = 5;
 final int testsize = 100;
 
 void swap(int[] A, int i, int j) {
@@ -7,17 +7,8 @@ void swap(int[] A, int i, int j) {
   A[j] = temp;
 }
 
-/* *** ODSATag: Bubblesort *** */
-void bubblesort(int[] A) {
-  for (int i=0; i<A.length-1; i++) // Insert i'th record
-    for (int j=1; j<A.length-i; j++)
-      if (A[j-1] > A[j])
-        swap(A, j-1, j);
-}
-/* *** ODSAendTag: Bubblesort *** */
 
 void setup() {
-  println("begin");
   int[] A = new int[testsize];
   int i;
 
@@ -25,7 +16,7 @@ void setup() {
   for (int tests=0; tests<numtests; tests++) {
     for (i=0; i<A.length; i++)
       A[i] = int(random(1000))+1;
-    bubblesort(A);
+    sorttest(A);
     for (i=1; i<A.length; i++)
       if (A[i] < A[i-1]) {
         println("Error! Value " + A[i] + " at position " + i +
@@ -33,5 +24,5 @@ void setup() {
         exit();
       }
   }
-  println("Testing successful!");
+  exit();
 }

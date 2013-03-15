@@ -1,10 +1,5 @@
-final int numtests = 10;
-final int testsize = 1000;
-
-void swap(int[] A, int i, int j) {
-  int temp = A[i];
-  A[i] = A[j];
-  A[j] = temp;
+void sorttest(int[] A) {
+  quicksort(A, 0, A.length-1);
 }
 
 /* Warning: Partition is sensitive. If we don't make the right
@@ -38,24 +33,3 @@ void quicksort(int[] A, int i, int j) { // Quicksort
   if ((j-k) > 1) quicksort(A, k+1, j);  // Sort right partition
 }
 /* *** ODSAendTag: Quicksort *** */
-
-void setup() {
-  println("begin");
-  int[] A = new int[testsize];
-  int[] temp = new int[testsize];
-  int i;
-
-  // Perform numtests trials to test this
-  for (int tests=0; tests<numtests; tests++) {
-    for (i=0; i<A.length; i++)
-      A[i] = int(random(1000))+1;
-    quicksort(A, 0, testsize-1);
-    for (i=1; i<A.length; i++)
-      if (A[i] < A[i-1]) {
-        println("Error! Value " + A[i] + " at position " + i +
-                " was less than " + A[i-1] + " at position " + (i-1));
-        exit();
-      }
-  }
-  println("Testing successful!");
-}

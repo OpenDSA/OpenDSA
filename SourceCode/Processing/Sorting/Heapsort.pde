@@ -1,3 +1,7 @@
+void sorttest(int[] A) {
+  heapsort(A);
+}
+
 /* *** ODSATag: Heapsort *** */
 void heapsort(int[] A) {
   // The heap constructor invokes the buildheap method
