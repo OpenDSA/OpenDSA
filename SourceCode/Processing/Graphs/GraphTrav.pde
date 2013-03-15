@@ -1,8 +1,21 @@
 final Object VISITED = "Visited";
 String out;
 
+void PreVisit(Graph G, int v) {
+  out = out + v + " ";
+}
+
+void PostVisit(Graph G, int v) {
+  out = out + v + " ";
+}
+
+
 void doTraversal(Graph G, int v) {
   DFS(G, v);
+}
+
+void doTraversalBFS(Graph G, int v) {
+  BFS(G, v);
 }
 
 void test(Graph G) {
@@ -25,7 +38,20 @@ void test(Graph G) {
   out = "";
   graphTraverse(G);
   if (out.equals("0 2 1 5 3 3 4 4 5 1 2 0 ") != true)
-    println("ERROR!!!");
+    println("ERROR IN DFS!!!");
+  out = "";
+  graphTraverseBFS(G);
+  if (out.equals("0 2 1 5 3 3 4 4 5 1 2 0 ") != true)
+    println("ERROR IN BFS!!!");
+}
+
+void graphTraverseBFS(Graph G) {
+  int v;
+  for (v=0; v<G.n(); v++)
+    G.nodeValue(v, null); // Initialize
+  for (v=0; v<G.n(); v++)
+    if (G.nodeValue(v) != VISITED)
+      doTraversalBFS(G, v);
 }
 
 /* *** ODSATag: GraphTrav *** */
@@ -41,9 +67,10 @@ void graphTraverse(Graph G) {
 
 void setup() {
   GraphM GM = new GraphM(6);
+  GraphL GL = new GraphL(6);
 
   test(GM);
+  test(GL);
   println("Test done");
   exit();
 }
-

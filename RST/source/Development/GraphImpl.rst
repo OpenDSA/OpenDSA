@@ -15,7 +15,7 @@ We next turn to the problem of implementing a general-purpose graph
 class.
 Here is an abstract class defining an ADT for graphs.
 
-.. codeinclude:: Graphs/GraphADT/GraphADT.pde 
+.. codeinclude:: Graphs//Graph.pde 
    :tag: GraphADT
 
 This ADT assumes that the number of vertices is fixed
@@ -94,7 +94,7 @@ provided by the ADT.
 
 Here is an implementation for the adjacency matrix.
 
-.. codeinclude:: Graphs/GraphM/GraphM.pde 
+.. codeinclude:: Graphs/GraphM.pde 
    :tag: GraphM
 
 Array ``Mark`` stores the information manipulated by the
@@ -129,7 +129,7 @@ These linked lists store objects of type ``Edge``, which merely
 stores the index for the vertex pointed to by the edge, along with the
 weight of the edge.
 
-.. codeinclude:: Graphs/GraphL/GraphL.pde 
+.. codeinclude:: Graphs/GraphL.pde 
    :tag: GraphL
 
 Implementation for ``Graphl`` member functions is straightforward

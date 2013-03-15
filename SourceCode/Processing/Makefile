@@ -85,12 +85,14 @@ Heapsort: Sorting/Heapsort.pde Sorting/SortTest.pde
 	@cp Sorting/SortTest.pde TEMP/HeapsortTest/HeapsortTest.pde
 	@$(PROCESS) --run --sketch="$(TEMP)/HeapsortTest" --output="$(TEMP)/TEMP" --force
 
-GraphTrav:
+GraphTrav: Graphs/BFS.pde Graphs/DFS.pde Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Graphs/GraphTrav.pde
 	@echo "GraphTrav Test"
 	-@rm -rf TEMP/GraphTrav
 	@mkdir TEMP/GraphTrav
-	@cp Graphs/GraphTrav/GraphTrav.pde TEMP/GraphTrav
-	@cp Graphs/GraphTrav/Graph.pde TEMP/GraphTrav
-	@cp Graphs/GraphTrav/GraphM.pde TEMP/GraphTrav
-	@cp Graphs/GraphTrav/DFS.pde TEMP/GraphTrav
+	@cp Graphs/GraphTrav.pde TEMP/GraphTrav
+	@cp Graphs/Graph.pde TEMP/GraphTrav
+	@cp Graphs/GraphM.pde TEMP/GraphTrav
+	@cp Graphs/GraphL.pde TEMP/GraphTrav
+	@cp Graphs/DFS.pde TEMP/GraphTrav
+	@cp Graphs/BFS.pde TEMP/GraphTrav
 	@$(PROCESS) --run --sketch="$(TEMP)/GraphTrav" --output="$(TEMP)/TEMP" --force
