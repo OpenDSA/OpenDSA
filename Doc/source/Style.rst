@@ -85,5 +85,5 @@ probably going to be done in terms of :math:`n`, a quantity that
 expresses the array size (as opposed to the function variable ``n``).
 It can be a subtle point whether the variable or the quantity is
 intended.
-Having to typeset it helps you to think through what you are trying to
-convey.
+Having to typeset it (and so make a conscious decision) helps you to
+think through what you are trying to convey.

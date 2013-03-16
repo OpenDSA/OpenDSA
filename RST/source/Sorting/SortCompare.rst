@@ -113,7 +113,7 @@ comparison problem.
 To illustrate, here is an example of Insertion Sort implemented to
 work on an array that stores key-record pairs.
 
-.. codeinclude:: Sorting/InssortKV/InssortKV.pde 
+.. codeinclude:: Sorting/InssortKV.pde 
    :tag: InssortKV
 
 You can see a complete implementation supporting this version of

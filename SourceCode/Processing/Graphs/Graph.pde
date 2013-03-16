@@ -1,0 +1,31 @@
+/* *** ODSATag: GraphADT *** */
+interface Graph { // Graph class ADT
+  // Initialize the graph with n vertices
+  // TODO: HOW TO SPECIFY? Graph(int n);
+
+  // Return the number of vertices
+  int n();
+
+  // Return the current number of edges
+  int e();
+
+  // Get or set the value of node with index v
+  Object nodeValue(int v);
+  void nodeValue(int v, Object val);
+  
+  // Adds a new edge from node v to node w with weight wgt
+  void addEdge(int v, int w, int wgt);
+
+  // Get the weight value for an edge
+  int weight(int v, int w);
+
+  // Removes the edge from the graph.
+  void removeEdge(int v, int w);
+
+  // Returns true iff the graph has the edge
+  boolean hasEdge(int v, int w);
+
+  // Returns an array containing the indicies of the neighbors of v
+  int[] neighbors(int v);
+}
+/* *** ODSAendTag: GraphADT *** */

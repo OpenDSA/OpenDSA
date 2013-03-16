@@ -18,63 +18,50 @@ class GraphM implements Graph {
     return numEdge;
   }
   
-  // Adds a new edge from node v to node w
-  // Returns the new edge
-  Edge addEdge(int v, int w) {
-    matrix[v][w] = ??;
-    return new Edge(v, w, matrix[v][w]);
-  }
-
   // Get or set the value of node with index v
-  Object nodeValue(v) {
+  Object nodeValue(int v) {
     return nodeValues[v];
   }
   
-  void nodeValue(v, Object val) {
+  void nodeValue(int v, Object val) {
     nodeValues[v] = val;
+  }
+
+  // Adds a new edge from node v to node w
+  // Returns the new edge
+  void addEdge(int v, int w, int wgt) {
+    if (wgt == 0) return; // Can't store weight of 0
+    matrix[v][w] = wgt;
+  }
+
+  // Get the weight value for an edge
+  int weight(int v, int w) {
+    return matrix[v][w];
   }
 
   // Removes the edge from the graph.
   void removeEdge(int v, int w) {
-    matrix[v][w] = ??;
+    matrix[v][w] = 0;
   }
   
-  void removeEdge(Edge e) {
-    matrix[??][??] = ??;
-  }
-
   // Returns true iff the graph has the edge
   boolean hasEdge(int v, int w) {
-    return matrix[v][w] != ??;
-  }
-  
-  boolean hasEdge(Edge edge) {
-    return matrix[??][??] != ??;
-  }
-
-  // Returns the Edge object connecting node indicies v and w,
-  // or returns Null if no such edge exists
-  Edge getEdge(int v, int w) {
-    return new Edge(v, w, matrix[v][w]);
-  }
-
-  // Returns an array with all edges in the graph
-  Edge[] edges() {
-    println("METHOD edges() NOT YET IMPLEMENTED");
-    return null;
+    return matrix[v][w] != 0;
   }
 
   // Returns an array containing the indicies of the neighbors of v
   int[] neighbors(int v) {
     int i;
     int count = 0;
+    int[] temp;
+    
     for (i=0; i<nodeValues.length; i++)
-      if (matrix[v][i] != ??) count++;
+      if (matrix[v][i] != 0) count++;
     temp = new int[count];
-    for (i=0; i<nodeValues.length; i++)
-      if (matrix[v][i] != ??)
+    for (i=0, count=0; i<nodeValues.length; i++)
+      if (matrix[v][i] != 0)
         temp[count++] = i;
-    return temp;         
+    return temp;
   }
 }
 /* *** ODSAendTag: GraphM *** */

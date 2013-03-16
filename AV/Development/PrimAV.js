@@ -23,6 +23,17 @@
   }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	//This function is applied to get the edge in the opposite direction of the given edge
+	function getReverseEdge(edge){
+		for(var i=0;i<graph.edges().length;i++){
+			if(graph.edges()[i].start()==edge.end() && graph.edges()[i].end()==edge.start()){
+				return graph.edges()[i];
+			}
+		}
+	}
+  
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
   //This function is for searching for a node in a specific set of nodes.
   //We use this function to state whether a particular node is contained in the set of nodes added so far to the spanning tree.
@@ -41,7 +52,7 @@
   function findCut(S) {
     var cutEdges = [];
     for (var i = 0; i < graph.edges().length; i++) {
-      if (searchNodes(S, graph.edges()[i].start()) && !searchNodes(S, graph.edges()[i].end())) {
+      if ((searchNodes(S, graph.edges()[i].start()) && !searchNodes(S, graph.edges()[i].end()))){
         cutEdges.push(graph.edges()[i]);
       }
     }
@@ -88,20 +99,32 @@
     var cut = [];
     var edgeIndex;
     var edges = [];
+	var reverseEdge;
+	var endNode;
     while (S.length < graph.nodes().length) {
       cut = findCut(S);
       edgeIndex = findMinimumCostEdge(cut);
       jsav.umsg("Find the minimum cost edge in cut of " + displayNodes(S));
-      cut[edgeIndex].css("stroke", "red");
+      cut[edgeIndex].css({"stroke-width":"2", "stroke":"red"});
+	  reverseEdge=getReverseEdge(cut[edgeIndex]);
+	  reverseEdge.css({"stroke-width":"2", "stroke":"red"});
       edges.push(cut[edgeIndex]);
+	  edges.push(reverseEdge);
       jsav.step();
-      markIt(cut[edgeIndex].end());
-      S.push(cut[edgeIndex].end());
+	  endNode=cut[edgeIndex].end();
+	  if(endNode.hasClass("marked")){
+		markIt(reverseEdge.end());
+		S.push(reverseEdge.end());
+	  }
+	  else{
+		markIt(cut[edgeIndex].end());
+		S.push(cut[edgeIndex].end());
+	  }
     }
-
     return edges;
   }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
   function about() {
     var mystring = "Prim's Algorithm Visualization\nWritten by Mohammed Fawzy\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2013\nLast update: March, 2013\nJSAV library version " + JSAV.version();
     alert(mystring);
@@ -129,11 +152,23 @@
         e8 = graph.addEdge(e, f).label("40"),
         e9 = graph.addEdge(f, g).label("50"),
         e10 = graph.addEdge(b, g).label("22");
+		
+	var e11 = graph.addEdge(c, a).label("30"),
+		e22 = graph.addEdge(e, a).label("10"),
+        e33 = graph.addEdge(b, c).label("20"),
+        e44 = graph.addEdge(d, c).label("15"),
+        e55 = graph.addEdge(f, c).label("25"),
+        e66 = graph.addEdge(b, f).label("2"),
+        e77 = graph.addEdge(f, d).label("5"),
+        e88 = graph.addEdge(f, e).label("40"),
+        e99 = graph.addEdge(g, f).label("50"),
+        e100 = graph.addEdge(g, b).label("22");
   }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   //This function is used to remove edges that are not in the minimum spanning tree
   function removeEdges(edges) {
+	var reverseEdge;
     for (var i = 0; i < graph.edges().length; i++) {
       for (var j = 0; j < edges.length; j++) {
         if (graph.edges()[i] === edges[j]) {
@@ -141,7 +176,9 @@
         }
       }
       if (j === edges.length) {
+		reverseEdge=getReverseEdge(graph.edges()[i]);
         graph.removeEdge(graph.edges()[i].start(), graph.edges()[i].end());
+		graph.removeEdge(reverseEdge.start(), reverseEdge.end());
       }
     }
     jsav.umsg("Complete minimum spanning tree");
