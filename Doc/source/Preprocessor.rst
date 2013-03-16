@@ -58,4 +58,4 @@ OUTPUT
     Modified ``html`` files with updated table of content, and navigation bar, and section numbering to display the rigth numbers.
 
 DESCRIPTION
-   During the third pass, the document processor parses the html files and replaces headers and section numbers with the one generated during the first two passes. Since our processor do not modify Sphinx document tree, we have to modify ``html`` files to replace Sphinx number with preprocessor number. This phase applies only to the Table Of Content, the navigation bar, pages headers and sections.
+   During the third pass, the document processor parses the html files and replaces headers and section numbers with the one generated during the first two passes. Since our processor do not modify Sphinx document tree, we have to modify ``html`` files to replace Sphinx number with preprocessor number. This phase applies only to the Table Of Content, the navigation bar, pages headers and sections. The document processor perform a third pass only if the html file has been modified by Sphinx, the file count.txt stores the latest modification time of html files.
