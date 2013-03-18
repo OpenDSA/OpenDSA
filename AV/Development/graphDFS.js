@@ -30,14 +30,14 @@ function preVisit(node, prev) {
   size--;
   if (prev) {
     node.edgeFrom(prev).css({"stroke-width":"4", "stroke":"red"}); // highlight
-  //prev.edgeFrom(node).css("stroke-width", "4" );
+    //prev.edgeFrom(node).css("stroke-width", "4" );
   }
   jsav.step();
 }
 
 
 
-  // Mark the nodes when visited and highlight it to 
+// Mark the nodes when visited and highlight it to 
 // show it has been marked
 function markIt(node) {
   node.addClass("marked");
