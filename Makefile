@@ -61,6 +61,9 @@ test: min
 O2: min
 	python $(CONFIG_SCRIPT) config/O2.json
 
+invalid: min
+	python $(CONFIG_SCRIPT) config/invalid.json
+
 allBooks: CS223 CS3114a CS3114b OpenDSA T1061220
 
 nomin:

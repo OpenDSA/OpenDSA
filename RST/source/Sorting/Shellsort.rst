@@ -145,7 +145,7 @@ Finally, the array is sorted.
 
 Here is a code implementation for Shellsort.
 
-.. codeinclude:: Sorting/Shellsort/Shellsort.pde
+.. codeinclude:: Sorting/Shellsort.pde
    :tag: Shellsort
 
 Now, test your understanding of the sublist concept.

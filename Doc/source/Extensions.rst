@@ -191,6 +191,8 @@ DESCRIPTION
       Threshold number of points required for credit.
       **Added automatically by the configuration process, do NOT add manually.**
 
+.. _numref:
+
 numref
 ------
 NAME

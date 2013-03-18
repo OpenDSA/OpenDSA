@@ -12,6 +12,7 @@ Table of Contents
    ModAuthor
    Structure
    Style
+   Preprocessor
    Extensions
    Exercise 
    BackendSpecs

@@ -15,8 +15,13 @@ We next turn to the problem of implementing a general-purpose graph
 class.
 Here is an abstract class defining an ADT for graphs.
 
-.. codeinclude:: Graphs/GraphADT/GraphADT.pde 
+.. codeinclude:: Graphs/Graph.pde 
    :tag: GraphADT
+
+.. TODO::
+   :type: Text
+
+   Revise this text to match the actual graph ADT once it settles down.
 
 This ADT assumes that the number of vertices is fixed
 when the graph is created, but that edges can be added and removed.
@@ -69,19 +74,15 @@ and returns the index for the vertex forming the next edge with
 :math:`v1` after :math:`v2` on :math:`v1` 's edge list.
 Function ``next`` will return a value of :math:`n = |\mathbf{V}|` once
 the end of the edge list for :math:`v1` has been reached.
-The following line appears in many graph algorithms::
+The following lines appear in many graph algorithms.
 
-   for (w = G=>first(v); w < G->n(); w = G->next(v,w))
+.. codeinclude:: Graphs/GraphDummy.pde 
+   :tag: GraphNeighbor
 
-This ``for`` loop gets the first neighbor of ``v``, then
-works through the remaining neighbors of ``v`` until a value equal
-to ``G->n()`` is returned, signaling that all neighbors of ``v``
-have been visited.
-For example, ``first(1)`` in Figure :num:`Figure #Undirected` would
-return 0.
-``next(1, 0)`` would return 3.
-``next(0, 3)`` would return 4.
-``next(1, 4)`` would return 5, which is not a vertex in the graph.
+First, an array is generated that contains the indices of the nodes
+that can be directly reached from node ``v``.
+The ``for`` loop iterates through this neighbor array to execute some
+function on each.
 
 It is reasonably straightforward to implement our graph and edge ADTs
 using either the adjacency list or adjacency matrix.
@@ -94,7 +95,7 @@ provided by the ADT.
 
 Here is an implementation for the adjacency matrix.
 
-.. codeinclude:: Graphs/GraphM/GraphM.pde 
+.. codeinclude:: Graphs/GraphM.pde 
    :tag: GraphM
 
 Array ``Mark`` stores the information manipulated by the
@@ -129,7 +130,7 @@ These linked lists store objects of type ``Edge``, which merely
 stores the index for the vertex pointed to by the edge, along with the
 weight of the edge.
 
-.. codeinclude:: Graphs/GraphL/GraphL.pde 
+.. codeinclude:: Graphs/GraphL.pde 
    :tag: GraphL
 
 Implementation for ``Graphl`` member functions is straightforward
