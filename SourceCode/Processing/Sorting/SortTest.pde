@@ -24,5 +24,9 @@ void setup() {
         exit();
       }
   }
+  PrintWriter output = createWriter("success");
+  output.println("Success");
+  output.flush();
+  output.close();
   exit();
 }

@@ -19,38 +19,23 @@ void doTraversalBFS(Graph G, int v) {
 }
 
 void test(Graph G) {
-  G.addEdge(0, 4, 9);
-  G.addEdge(4, 0, 9);
-  G.addEdge(0, 2, 7);
-  G.addEdge(2, 0, 7);
-  G.addEdge(2, 3, 1);
-  G.addEdge(3, 2, 1);
-  G.addEdge(1, 2, 5);
-  G.addEdge(2, 1, 5);
-  G.addEdge(2, 5, 2);
-  G.addEdge(5, 2, 2);
-  G.addEdge(1, 5, 6);
-  G.addEdge(5, 1, 6);
-  G.addEdge(3, 5, 2);
-  G.addEdge(5, 3, 2);
-  G.addEdge(4, 5, 1);
-  G.addEdge(5, 4, 1);
+  GraphCreate(G, "GraphTrav.gph");
   out = "";
   graphTraverse(G);
   if (out.equals("0 2 1 5 3 3 4 4 5 1 2 0 ") != true)
-    println("ERROR IN DFS!!!");
+    println("ERROR IN DFS!!!:" + out);
   out = "";
   graphTraverseBFS(G);
-  if (out.equals("0 2 1 5 3 3 4 4 5 1 2 0 ") != true)
-    println("ERROR IN BFS!!!");
+  if (out.equals("0 0 2 2 4 4 1 1 3 3 5 5 ") != true)
+    println("ERROR IN BFS!!!:" + out);
 }
 
 void graphTraverseBFS(Graph G) {
   int v;
   for (v=0; v<G.n(); v++)
-    G.nodeValue(v, null); // Initialize
+    G.setValue(v, null); // Initialize
   for (v=0; v<G.n(); v++)
-    if (G.nodeValue(v) != VISITED)
+    if (G.getValue(v) != VISITED)
       doTraversalBFS(G, v);
 }
 
@@ -58,19 +43,22 @@ void graphTraverseBFS(Graph G) {
 void graphTraverse(Graph G) {
   int v;
   for (v=0; v<G.n(); v++)
-    G.nodeValue(v, null); // Initialize
+    G.setValue(v, null); // Initialize
   for (v=0; v<G.n(); v++)
-    if (G.nodeValue(v) != VISITED)
+    if (G.getValue(v) != VISITED)
       doTraversal(G, v);
 }
 /* *** ODSAendTag: GraphTrav *** */
 
 void setup() {
-  GraphM GM = new GraphM(6);
-  GraphL GL = new GraphL(6);
+  GraphM GM = new GraphM();
+  GraphL GL = new GraphL();
 
   test(GM);
   test(GL);
-  println("Test done");
+  PrintWriter output = createWriter("success");
+  output.println("Success");
+  output.flush();
+  output.close();
   exit();
 }

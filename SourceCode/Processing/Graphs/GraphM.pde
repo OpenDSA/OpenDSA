@@ -4,26 +4,29 @@ class GraphM implements Graph {
   private Object[] nodeValues;
   private int numEdge;
 
-  public GraphM(int n) {
+  GraphM() {
+  }
+
+  void init(int n) {
     matrix = new int[n][n];
     nodeValues = new Object[n];
     numEdge = 0;
   }
 
-  public int n() {
+  int n() {
     return nodeValues.length;
   }
 
-  public int e() {
+  int e() {
     return numEdge;
   }
   
   // Get or set the value of node with index v
-  Object nodeValue(int v) {
+  Object getValue(int v) {
     return nodeValues[v];
   }
   
-  void nodeValue(int v, Object val) {
+  void setValue(int v, Object val) {
     nodeValues[v] = val;
   }
 
@@ -32,6 +35,7 @@ class GraphM implements Graph {
   void addEdge(int v, int w, int wgt) {
     if (wgt == 0) return; // Can't store weight of 0
     matrix[v][w] = wgt;
+    numEdge++;
   }
 
   // Get the weight value for an edge
@@ -42,6 +46,7 @@ class GraphM implements Graph {
   // Removes the edge from the graph.
   void removeEdge(int v, int w) {
     matrix[v][w] = 0;
+    numEdge--;
   }
   
   // Returns true iff the graph has the edge

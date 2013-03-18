@@ -2,97 +2,137 @@
 # This isn't quite running unit tests, but the effect should be similar.
 PROCESS = ~/processing-2.0b8/processing-java
 SRC = c:\Cliff\OpenDSA\SourceCode\Processing
-TEMP = c:\Cliff\OpenDSA\SourceCode\Processing\TEMP
+BUILD = c:\Cliff\OpenDSA\SourceCode\Processing\build
 
-all: GraphTrav Sorting
+all: Graphs Sorting
 
 clean:
-	-rm -rf TEMP
-	mkdir TEMP
+	-rm -rf build
+	mkdir build
 
 Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort
 
-Inssort: Sorting/Insertionsort.pde Sorting/SortTest.pde
+Test: build/GraphTrav/success
+
+Graphs: GraphDummy GraphTrav
+
+Inssort: build/InssortTest/success
+
+build/InssortTest/success: Sorting/Insertionsort.pde Sorting/SortTest.pde
 	@echo "Inssort Test"
-	-@rm -rf TEMP/InssortTest
-	@mkdir TEMP/InssortTest
-	@cp Sorting/Insertionsort.pde TEMP/InssortTest
-	@cp Sorting/SortTest.pde TEMP/InssortTest/InssortTest.pde
-	@$(PROCESS) --run --sketch="$(TEMP)/InssortTest" --output="$(TEMP)/TEMP" --force
+	-@rm -rf build/InssortTest
+	@mkdir build/InssortTest
+	@cp Sorting/Insertionsort.pde build/InssortTest
+	@cp Sorting/SortTest.pde build/InssortTest/InssortTest.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/InssortTest" --output="$(BUILD)/build" --force
 
-InssortKV: Sorting/InssortKV.pde Sorting/SortTestKV.pde Sorting/KVPair.pde
+InssortKV: build/InssortKVTest/success
+
+build/InssortKVTest/success: Sorting/InssortKV.pde Sorting/SortTestKV.pde Sorting/KVPair.pde
 	@echo "InssortKV Test"
-	-@rm -rf TEMP/InssortKVTest
-	@mkdir TEMP/InssortKVTest
-	@cp Sorting/InssortKV.pde TEMP/InssortKVTest
-	@cp Sorting/KVPair.pde TEMP/InssortKVTest
-	@cp Sorting/SortTestKV.pde TEMP/InssortKVTest/InssortKVTest.pde
-	@$(PROCESS) --run --sketch="$(TEMP)/InssortKVTest" --output="$(TEMP)/TEMP" --force
+	-@rm -rf build/InssortKVTest
+	@mkdir build/InssortKVTest
+	@cp Sorting/InssortKV.pde build/InssortKVTest
+	@cp Sorting/KVPair.pde build/InssortKVTest
+	@cp Sorting/SortTestKV.pde build/InssortKVTest/InssortKVTest.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/InssortKVTest" --output="$(BUILD)/build" --force
 
-Bubblesort: Sorting/Bubblesort.pde Sorting/SortTest.pde
+Bubblesort: build/BubblesortTest/success
+
+build/BubblesortTest/success: Sorting/Bubblesort.pde Sorting/SortTest.pde
 	@echo "Bubblesort Test"
-	-@rm -rf TEMP/BubblesortTest
-	@mkdir TEMP/BubblesortTest
-	@cp Sorting/Bubblesort.pde TEMP/BubblesortTest
-	@cp Sorting/SortTest.pde TEMP/BubblesortTest/BubblesortTest.pde
-	@$(PROCESS) --run --sketch="$(TEMP)/BubblesortTest" --output="$(TEMP)/TEMP" --force
+	-@rm -rf build/BubblesortTest
+	@mkdir build/BubblesortTest
+	@cp Sorting/Bubblesort.pde build/BubblesortTest
+	@cp Sorting/SortTest.pde build/BubblesortTest/BubblesortTest.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/BubblesortTest" --output="$(BUILD)/build" --force
 
-Selsort: Sorting/Selectionsort.pde Sorting/SortTest.pde
+Selsort: build/SelsortTest/success
+
+build/SelsortTest/success: Sorting/Selectionsort.pde Sorting/SortTest.pde
 	@echo "Selsort Test"
-	-@rm -rf TEMP/SelsortTest
-	@mkdir TEMP/SelsortTest
-	@cp Sorting/Selectionsort.pde TEMP/SelsortTest
-	@cp Sorting/SortTest.pde TEMP/SelsortTest/SelsortTest.pde
-	@$(PROCESS) --run --sketch="$(TEMP)/SelsortTest" --output="$(TEMP)/TEMP" --force
+	-@rm -rf build/SelsortTest
+	@mkdir build/SelsortTest
+	@cp Sorting/Selectionsort.pde build/SelsortTest
+	@cp Sorting/SortTest.pde build/SelsortTest/SelsortTest.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/SelsortTest" --output="$(BUILD)/build" --force
 
-Shellsort: Sorting/Shellsort.pde Sorting/SortTest.pde
+Shellsort: build/ShellsortTest/success
+
+build/ShellsortTest/success: Sorting/Shellsort.pde Sorting/SortTest.pde
 	@echo "Shellsort Test"
-	-@rm -rf TEMP/ShellsortTest
-	@mkdir TEMP/ShellsortTest
-	@cp Sorting/Shellsort.pde TEMP/ShellsortTest
-	@cp Sorting/SortTest.pde TEMP/ShellsortTest/ShellsortTest.pde
-	@$(PROCESS) --run --sketch="$(TEMP)/ShellsortTest" --output="$(TEMP)/TEMP" --force
+	-@rm -rf build/ShellsortTest
+	@mkdir build/ShellsortTest
+	@cp Sorting/Shellsort.pde build/ShellsortTest
+	@cp Sorting/SortTest.pde build/ShellsortTest/ShellsortTest.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/ShellsortTest" --output="$(BUILD)/build" --force
 
-Mergesort: Sorting/Mergesort.pde Sorting/SortTest.pde
+Mergesort: build/MergesortTest/success
+
+build/MergesortTest/success: Sorting/Mergesort.pde Sorting/SortTest.pde
 	@echo "Mergesort Test"
-	-@rm -rf TEMP/MergesortTest
-	@mkdir TEMP/MergesortTest
-	@cp Sorting/Mergesort.pde TEMP/MergesortTest
-	@cp Sorting/SortTest.pde TEMP/MergesortTest/MergesortTest.pde
-	@$(PROCESS) --run --sketch="$(TEMP)/MergesortTest" --output="$(TEMP)/TEMP" --force
+	-@rm -rf build/MergesortTest
+	@mkdir build/MergesortTest
+	@cp Sorting/Mergesort.pde build/MergesortTest
+	@cp Sorting/SortTest.pde build/MergesortTest/MergesortTest.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/MergesortTest" --output="$(BUILD)/build" --force
 
-MergesortOpt: Sorting/MergesortOpt.pde Sorting/SortTest.pde
+MergesortOpt: build/MergesortOptTest/success
+
+build/MergesortOptTest/success: Sorting/MergesortOpt.pde Sorting/SortTest.pde
 	@echo "MergesortOpt Test"
-	-@rm -rf TEMP/MergesortOptTest
-	@mkdir TEMP/MergesortOptTest
-	@cp Sorting/MergesortOpt.pde TEMP/MergesortOptTest
-	@cp Sorting/SortTest.pde TEMP/MergesortOptTest/MergesortOptTest.pde
-	@$(PROCESS) --run --sketch="$(TEMP)/MergesortOptTest" --output="$(TEMP)/TEMP" --force
+	-@rm -rf build/MergesortOptTest
+	@mkdir build/MergesortOptTest
+	@cp Sorting/MergesortOpt.pde build/MergesortOptTest
+	@cp Sorting/SortTest.pde build/MergesortOptTest/MergesortOptTest.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/MergesortOptTest" --output="$(BUILD)/build" --force
 
-Quicksort: Sorting/Quicksort.pde Sorting/SortTest.pde
+Quicksort: build/QuicksortTest/success
+
+build/QuicksortTest/success: Sorting/Quicksort.pde Sorting/SortTest.pde
 	@echo "Quicksort Test"
-	-@rm -rf TEMP/QuicksortTest
-	@mkdir TEMP/QuicksortTest
-	@cp Sorting/Quicksort.pde TEMP/QuicksortTest
-	@cp Sorting/SortTest.pde TEMP/QuicksortTest/QuicksortTest.pde
-	@$(PROCESS) --run --sketch="$(TEMP)/QuicksortTest" --output="$(TEMP)/TEMP" --force
+	-@rm -rf build/QuicksortTest
+	@mkdir build/QuicksortTest
+	@cp Sorting/Quicksort.pde build/QuicksortTest
+	@cp Sorting/SortTest.pde build/QuicksortTest/QuicksortTest.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/QuicksortTest" --output="$(BUILD)/build" --force
 
-Heapsort: Sorting/Heapsort.pde Sorting/SortTest.pde
+Heapsort: build/HeapsortTest/success
+
+build/HeapsortTest/success: Sorting/Heapsort.pde Sorting/SortTest.pde
 	@echo "Heapsort Test"
-	-@rm -rf TEMP/HeapsortTest
-	@mkdir TEMP/HeapsortTest
-	@cp Sorting/Heapsort.pde TEMP/HeapsortTest
-	@cp Sorting/SortTest.pde TEMP/HeapsortTest/HeapsortTest.pde
-	@$(PROCESS) --run --sketch="$(TEMP)/HeapsortTest" --output="$(TEMP)/TEMP" --force
+	-@rm -rf build/HeapsortTest
+	@mkdir build/HeapsortTest
+	@cp Sorting/Heapsort.pde build/HeapsortTest
+	@cp Sorting/SortTest.pde build/HeapsortTest/HeapsortTest.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/HeapsortTest" --output="$(BUILD)/build" --force
 
-GraphTrav: Graphs/BFS.pde Graphs/DFS.pde Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Graphs/GraphTrav.pde
+GraphDummy: build/GraphDummy/success
+
+build/GraphDummy/success: Graphs/GraphDummy.pde Graphs/Graph.pde Graphs/GraphM.pde
+	@echo "GraphDummy Test"
+	-@rm -rf build/GraphDummy
+	@mkdir build/GraphDummy
+	@cp Graphs/GraphDummy.pde build/GraphDummy
+	@cp Graphs/Graph.pde build/GraphDummy
+	@cp Graphs/GraphM.pde build/GraphDummy
+	@$(PROCESS) --run --sketch="$(BUILD)/GraphDummy" --output="$(BUILD)/build" --force
+
+GraphTrav: build/GraphTrav/success
+
+build/GraphTrav/success: Graphs/BFS.pde Graphs/DFS.pde Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Graphs/GraphTrav.pde Graphs/GraphCreate.pde Lists/Queue.pde Lists/LQueue.pde Lists/Link.pde Graphs/GraphTrav.gph
 	@echo "GraphTrav Test"
-	-@rm -rf TEMP/GraphTrav
-	@mkdir TEMP/GraphTrav
-	@cp Graphs/GraphTrav.pde TEMP/GraphTrav
-	@cp Graphs/Graph.pde TEMP/GraphTrav
-	@cp Graphs/GraphM.pde TEMP/GraphTrav
-	@cp Graphs/GraphL.pde TEMP/GraphTrav
-	@cp Graphs/DFS.pde TEMP/GraphTrav
-	@cp Graphs/BFS.pde TEMP/GraphTrav
-	@$(PROCESS) --run --sketch="$(TEMP)/GraphTrav" --output="$(TEMP)/TEMP" --force
+	-@rm -rf build/GraphTrav
+	@mkdir build/GraphTrav
+	@cp Graphs/GraphTrav.pde build/GraphTrav
+	@cp Graphs/GraphTrav.gph build/GraphTrav
+	@cp Graphs/GraphCreate.pde build/GraphTrav
+	@cp Graphs/Graph.pde build/GraphTrav
+	@cp Graphs/GraphM.pde build/GraphTrav
+	@cp Graphs/GraphL.pde build/GraphTrav
+	@cp Graphs/DFS.pde build/GraphTrav
+	@cp Graphs/BFS.pde build/GraphTrav
+	@cp Lists/Queue.pde build/GraphTrav
+	@cp Lists/LQueue.pde build/GraphTrav
+	@cp Lists/Link.pde build/GraphTrav
+	@$(PROCESS) --run --sketch="$(BUILD)/GraphTrav" --output="$(BUILD)/build" --force

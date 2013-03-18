@@ -7,7 +7,7 @@ modules.csv
 Doc/manual
 
 # Sourcecode testing
-SourceCode/Processing/TEMP
+SourceCode/Processing/build
 
 #Books directory (these are build targets)
 Books

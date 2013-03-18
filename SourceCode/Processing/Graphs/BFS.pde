@@ -1,16 +1,16 @@
 /* *** ODSATag: BFS *** */
 void BFS(Graph G, int v) {
-  Queue Q = new LQueue(G.n());
+  LQueue Q = new LQueue(G.n());
   Q.enqueue(v);
   G.setValue(v, VISITED);
   while (Q.length() > 0) { // Process each vertex on Q
-    int v = Q.dequeue();
+    v = (Integer)Q.dequeue();
     PreVisit(G, v);
     int[] nList = G.neighbors(v);
     for (int i=0; i< nList.length; i++)
-      if (G.getValue(w) != VISITED) { // Put neighbors on Q
-        G.setValue(w, VISITED);
-        Q.enqueue(w);
+      if (G.getValue(nList[i]) != VISITED) { // Put neighbors on Q
+        G.setValue(nList[i], VISITED);
+        Q.enqueue(nList[i]);
       }
     PostVisit(G, v);
   }

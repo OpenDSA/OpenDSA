@@ -1,0 +1,11 @@
+# Graph example from book for DFS/BFS, MST: Figure 7.10
+6               # Number of vertices
+U               # Undirected graph
+0 4 9           # List of Edges
+0 2 7
+2 3 1
+2 1 5
+2 5 2
+1 5 6
+3 5 2
+4 5 1

@@ -54,6 +54,10 @@
           }
         }
       },
+      "Development/GraphTopsort": {
+        "long_name": "Topological Sort",
+        "exercises": {}
+      },
       "Development/MCST": {
         "long_name": "Minimal Cost Spanning Trees",
         "exercises": {}

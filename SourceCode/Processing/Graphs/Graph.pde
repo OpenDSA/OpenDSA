@@ -1,7 +1,7 @@
 /* *** ODSATag: GraphADT *** */
 interface Graph { // Graph class ADT
-  // Initialize the graph with n vertices
-  // TODO: HOW TO SPECIFY? Graph(int n);
+  // Initialize the graph with some number of vertices
+  void init(int n);
 
   // Return the number of vertices
   int n();
@@ -9,9 +9,11 @@ interface Graph { // Graph class ADT
   // Return the current number of edges
   int e();
 
-  // Get or set the value of node with index v
-  Object nodeValue(int v);
-  void nodeValue(int v, Object val);
+  // Get the value of node with index v
+  Object getValue(int v);
+
+  // Set the value of node with index v
+  void setValue(int v, Object val);
   
   // Adds a new edge from node v to node w with weight wgt
   void addEdge(int v, int w, int wgt);
