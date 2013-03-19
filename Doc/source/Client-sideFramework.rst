@@ -187,9 +187,10 @@ Example of ``localStorage.score_data``::
       "CS3114": [
         {
           "exercise":"SelsortCON1",
-          "submit_time":1360269557116,
           "module":"SelectionSort",
           "score":1,
+          "steps_fixed":0,
+          "submit_time":1360269557116,
           "total_time":2559,
           "uiid":1360269543543
         }
