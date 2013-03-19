@@ -638,7 +638,7 @@ def main(argv):
         num += 1
 
      try:
-        gfile = open(modDest+'/count.txt.tmp','wb')
+        gfile = open(modDest+'/count.txt','wb')
         cLine[0] = '%s\n'%num
         gfile.writelines(cLine)
         gfile.close
