@@ -379,18 +379,6 @@ def updateTOC(args):
           otfile = open(args[1]+'/index.html','wb')
           otfile.writelines(modIndex)
           otfile.close()
-       if pagename=='Privacy.html':
-          idx  = open(args[1]+'/Privacy.html','r')
-          idxL = idx.readlines()
-          idx.close()
-          modIndex =[]
-          for idxLine in idxL:
-              if '<title>' in idxLine and 'no title' in idxLine:
-                  idxLine = idxLine.replace('no title','OpenDSA Site Privacy Policy')
-              modIndex.append(idxLine)
-          otfile = open(args[1]+'/Privacy.html','wb')
-          otfile.writelines(modIndex)
-          otfile.close() 
 
        processedFiles=[]
        if pagename[:-5] not in processedFiles:
@@ -430,6 +418,10 @@ def updateTOC(args):
                 if '<h2 class="heading"><span>'  in idxLine and pagename != 'index':
                    heading = re.split('<span>',re.split('</span>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                    idxLine = idxLine.replace(heading,header)
+                if '<title>'  in idxLine and pagename != 'index':
+                   title = re.split('<title>',re.split('</title>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
+                   number_title = '%s.' %chap[1] + title
+                   idxLine = idxLine.replace(title,number_title)
                 for i in range(1,7):
                    if '<h%s>' %i in idxLine and td==0 and pagename != 'index':
                       par  = re.split('<h%s>'%i,re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
@@ -646,7 +638,7 @@ def main(argv):
         num += 1
 
      try:
-        gfile = open(modDest+'/count.txt','wb')
+        gfile = open(modDest+'/count.txt.tmp','wb')
         cLine[0] = '%s\n'%num
         gfile.writelines(cLine)
         gfile.close

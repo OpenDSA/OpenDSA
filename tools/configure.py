@@ -140,9 +140,11 @@ cleanbuild: clean html
 preprocessor:
 	python "%(odsa_root)sRST/preprocessor.py" source/ $(HTMLDIR)
 
+
 html: preprocessor
 	%(remove_todo)s
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
+	python %(odsa_root)sRST/preprocessor.py -p source/ $(HTMLDIR) 
 	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
 	rm *.json
 	@echo
