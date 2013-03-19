@@ -192,7 +192,8 @@ sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsalink')
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsascript'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/sphinx-numfig'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/inlineav'))
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav']
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/html5'))
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav','html5']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -254,6 +255,10 @@ pygments_style = 'sphinx'
 #modindex_common_prefix = []
 
 # -- Options for HTML output ---------------------------------------------------
+#The fully-qualified name of a HTML Translator, that is used to translate document
+#trees to HTML.
+html_translator_class = 'html5.HTMLTranslator' 
+
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
