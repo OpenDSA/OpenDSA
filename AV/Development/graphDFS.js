@@ -1,5 +1,8 @@
+"use strict";
+/*global alert: true, ODSA */
+
 (function ($) {
-  var jsav = new JSAV($('.avcontainer'));
+  var jsav;
   var g;
   var arr;
   var a, b, c, d, e, f;
@@ -7,6 +10,8 @@
  
 
 function runit() {
+  ODSA.AV.reset(true);
+  jsav = new JSAV($('.avcontainer'));
   g = jsav.ds.graph({width: 500, height: 500, layout: "manual", directed: true});
   arr = jsav.ds.array([" "," "," ", " ", " "],{layout: "vertical"});
   arr.css({"left": "600px", "bottom": "500px", "width": "30px"}); 
@@ -136,5 +141,5 @@ function finalGraph() {
 $('#about').click(about);
 $('#runit').click(runit);
 $('#help').click(help);
-$('#reset').click(reset);
+$('#reset').click(ODSA.AV.reset);
 }(jQuery));
