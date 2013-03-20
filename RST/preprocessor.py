@@ -399,7 +399,7 @@ def updateTOC(args):
                 header = '%s %s %s' %(prefix,chap[1],chap[0])
                 td = 1
              for idxLine in idxL:
-                if 'id="prevmod"' in idxLine or 'id="nextmod"' in idxLine:
+                if 'id="prevmod"' in idxLine or 'id="nextmod"' in idxLine or 'id="prevmod1"' in idxLine or 'id="nextmod1"' in idxLine:
                    prev = re.split('">',re.split('</a>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                    href = re.split('href="',re.split('">', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                    if href[:-5] in data:
