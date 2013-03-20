@@ -1,13 +1,17 @@
+"use strict";
+/*global alert: true, ODSA */
+
 (function ($) {
-  var jsav = new JSAV($('.avcontainer'));
+  var jsav;
   var g;
   var arr;
   var a, b, c, d, e, f;
   var firstElement;
   var lastElement;
-  
 
 function runit() {
+  ODSA.AV.reset(true);
+  jsav = new JSAV($('.avcontainer'));
   g = jsav.ds.graph({width: 500, height: 500, left: 0, top: 50, layout: "manual", directed: true});
   arr = jsav.ds.array(["","","","","",""],  {left: 400, top: 150});
   firstElement = 0;
@@ -70,7 +74,6 @@ function bfs(start) {
       jsav.step();
       next.edgeFrom(start).css({"stroke-width":"4", "stroke":"red"}); // highlight
       jsav.step();
-      
     }
   }
 }
@@ -117,11 +120,9 @@ function finalGraph() {
   g.removeEdge(f, b);
 }
 
-
-
 // Connect action callbacks to the HTML entities
 $('#about').click(about);
 $('#runit').click(runit);
 $('#help').click(help);
-$('#reset').click(reset);
+$('#reset').click(ODSA.AV.reset);
 }(jQuery));
