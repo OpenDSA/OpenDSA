@@ -14,41 +14,41 @@ from sphinx.writers.html import HTMLTranslator as SphinxHTMLTranslator
 class HTMLTranslator(SphinxHTMLTranslator):
     def visit_desc_addname(self, node):
         '''
-        Similar to Sphinx but using a <span> node instead of <tt>.
+        Similar to Sphinx but using a <code> node instead of <tt>.
         '''
-        self.body.append(self.starttag(node, 'span', '', CLASS='descclassname'))
+        self.body.append(self.starttag(node, 'code', '', CLASS='descclassname'))
 
 
 
     def depart_desc_addname(self, node):
         '''
-        Similar to Sphinx but using a <span> node instead of <tt>.
+        Similar to Sphinx but using a <code> node instead of <tt>.
         '''
-        self.body.append('</span>')
+        self.body.append('</code>')
 
 
 
     def visit_desc_name(self, node):
         '''
-        Similar to Sphinx but using a <span> node instead of <tt>.
+        Similar to Sphinx but using a <code> node instead of <tt>.
         '''
-        self.body.append(self.starttag(node, 'span', '', CLASS='descname'))
+        self.body.append(self.starttag(node, 'code', '', CLASS='descname'))
 
 
 
     def depart_desc_name(self, node):
         '''
-        Similar to Sphinx but using a <span> node instead of <tt>.
+        Similar to Sphinx but using a <code> node instead of <tt>.
         '''
-        self.body.append('</span>')
+        self.body.append('</code>')
     
 
 
     def visit_literal(self, node):
         '''
-        Similar to Sphinx but using a <span> node instead of <tt>.
+        Similar to Sphinx but using a <code> node instead of <tt>.
         '''
-        self.body.append(self.starttag(node, 'span', '',
+        self.body.append(self.starttag(node, 'code', '',
                                        CLASS='docutils literal'))
         self.protect_literal_text += 1
 
@@ -56,10 +56,10 @@ class HTMLTranslator(SphinxHTMLTranslator):
 
     def depart_literal(self, node):
         '''
-        Similar to Sphinx but using a <span> node instead of <tt>.
+        Similar to Sphinx but using a <code> node instead of <tt>.
         '''
         self.protect_literal_text -= 1
-        self.body.append('</span>')
+        self.body.append('</code>')
 
 
 

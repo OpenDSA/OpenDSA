@@ -284,6 +284,10 @@ p.last {
     margin-bottom: 0;
 }
 
+p.caption {
+    text-align: inherit;
+}
+
 ol {
     padding-left: 20px;
 }
@@ -298,9 +302,7 @@ li {
     -moz-background-clip:border;
     -moz-background-inline-policy:continuous;
     -moz-background-origin:padding;
-    background: transparent url(bullet_orange.png) no-repeat scroll left 0.45em;
     list-style-image: none;
-    list-style-type: none;
     padding: 0 0 0 1.666em;
     margin-bottom: 3px;
 }
