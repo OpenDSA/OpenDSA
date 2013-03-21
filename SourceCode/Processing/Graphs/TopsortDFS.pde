@@ -1,5 +1,5 @@
 /* *** ODSATag: TopsortDFS *** */
-void topsort(Graph G) {
+void topsortDFS(Graph G) {
   int v;
   for (v=0; v<G.n(); v++)
     G.setValue(v, null); // Initialize

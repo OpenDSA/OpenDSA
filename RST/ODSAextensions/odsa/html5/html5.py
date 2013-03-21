@@ -73,6 +73,14 @@ class HTMLTranslator(SphinxHTMLTranslator):
         HTMLTranslator.depart_desc_name = depart_desc_name
         HTMLTranslator.visit_literal = visit_literal
         HTMLTranslator.depart_literal = depart_literal
+    
+    def visit_citation(self, node):
+        self.body.append(self.starttag(node, 'table',
+                                       CLASS='docutils citation'))
+        self.body.append('<colgroup><col class="label" /><col /></colgroup>\n'
+                         '<tbody style="vertical-align: top">\n'
+                         '<tr>')
+        self.footnote_backrefs(node)
 
 def setup(sphinx):
     sphinx.config.html_translator_class = 'html5.HTMLTranslator'    
