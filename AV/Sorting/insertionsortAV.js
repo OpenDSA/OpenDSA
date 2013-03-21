@@ -66,7 +66,7 @@
 
       // Create a new array using the layout the user has selected
       arr = jsav.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
-      pseudo = jsav.code({url: "../../SourceCode/Processing/Sorting/Insertionsort/Insertionsort.pde",
+      pseudo = jsav.code({url: "../../SourceCode/Processing/Sorting/Insertionsort.pde",
                         startAfter: "/* *** ODSATag: Insertionsort *** */",
                         endBefore: "/* *** ODSAendTag: Insertionsort *** */"});
       jsav.umsg("Starting Insertion Sort");

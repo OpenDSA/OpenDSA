@@ -89,10 +89,21 @@ form.signin p, form.signin span {
   font-weight: bold;
 }
 
+/* Container that holds the iframes for embedded content */
+.embedContainer {
+  text-align: center;
+}
+
 label {
   display: block;
 }
 
 .data td {
   padding: 0 5px;
+}
+
+iframe {
+  border: 0;
+  margin: 0;
+  overflow: hidden;
 }
