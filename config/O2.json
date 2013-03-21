@@ -63,7 +63,9 @@
       },
       "Development/GraphTopsort": {
         "long_name": "Topological Sort",
-        "exercises": {}
+        "exercises": {
+          "topsortCON1": {}
+	}
       },
       "Development/GraphShortest": {
         "long_name": "Shortest Paths Problems",

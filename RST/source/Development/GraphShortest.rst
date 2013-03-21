@@ -136,10 +136,8 @@ Here is an implementation for Dijkstra's
 algorithm.
 At the end, array ``D`` will contain the shortest distance values.
 
-.. TODO::
-   :type: CODE
-
-   Dijkstra's algorithm code goes here.
+.. codeinclude:: Graphs/Dijkstra.pde 
+   :tag: GraphDijk1
 
 There are two reasonable solutions to the key issue of finding the
 unvisited vertex with minimum distance value during each pass through
@@ -148,10 +146,8 @@ The first method is simply to scan through the list of
 :math:`|\mathbf{V}|` vertices searching for the minimum value, as
 follows:
 
-.. TODO::
-   :type: CODE
-
-   MinVert.book code goes here
+.. codeinclude:: Graphs/Dijkstra.pde 
+   :tag: MinVertex
 
 .. TODO::
    :type: CODE
@@ -203,10 +199,8 @@ adjacency list representation.
 Next we show an implementation for Dijkstra's
 algorithm using the priority queue.
 
-.. TODO::
-   :type: CODE
-
-   Grdijk2.book code here
+.. codeinclude:: Graphs/DijkstraPQ.pde 
+   :tag: DijkstraPQ
 
 Using ``MinVertex`` to scan the vertex list for the minimum value
 is more efficient when the graph is dense, that is, when

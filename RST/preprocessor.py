@@ -464,7 +464,7 @@ def todoHTML(todolst):
 
    tp =''
    mn=0
-   rst='.. _Todo:\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'
+   rst='.. _Todo:\n\n.. meta::\n   :module-name: ToDo\n   :module-long-name: ToDo\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'
    for i, (k,v,s) in enumerate(todolst):
          if tp=='' and v=='':
             if mn==0:
@@ -603,7 +603,7 @@ def main(argv):
   (options, args) = parser.parse_args()
   control(argv,args)
 
-  if not options.postp is None:
+  if options.postp is not None:
      updateTOC(args)
   else:
      modDir=''
