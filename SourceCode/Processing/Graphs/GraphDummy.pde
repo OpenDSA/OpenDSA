@@ -17,6 +17,7 @@ void Neighbor() {
 
 void setup() {
   G = new GraphM();
+  G.init(1);
 
   Neighbor();
   PrintWriter output = createWriter("success");

@@ -1,3 +1,5 @@
+boolean SUCCESS = true;
+
 final Object VISITED = "Visited";
 String out;
 
@@ -22,12 +24,16 @@ void test(Graph G) {
   GraphCreate(G, "GraphTrav.gph");
   out = "";
   graphTraverse(G);
-  if (out.equals("0 2 1 5 3 3 4 4 5 1 2 0 ") != true)
+  if (out.equals("0 2 1 5 3 3 4 4 5 1 2 0 ") != true) {
     println("ERROR IN DFS!!!:" + out);
+    SUCCESS = false;
+  }
   out = "";
   graphTraverseBFS(G);
-  if (out.equals("0 0 2 2 4 4 1 1 3 3 5 5 ") != true)
+  if (out.equals("0 0 2 2 4 4 1 1 3 3 5 5 ") != true) {
     println("ERROR IN BFS!!!:" + out);
+    SUCCESS = false;
+  }
 }
 
 void graphTraverseBFS(Graph G) {
@@ -56,9 +62,11 @@ void setup() {
 
   test(GM);
   test(GL);
-  PrintWriter output = createWriter("success");
-  output.println("Success");
-  output.flush();
-  output.close();
+  if (SUCCESS) {
+    PrintWriter output = createWriter("success");
+    output.println("Success");
+    output.flush();
+    output.close();
+  }
   exit();
 }
