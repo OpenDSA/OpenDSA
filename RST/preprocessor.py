@@ -363,6 +363,9 @@ def updateTOC(args):
           idx.close()
           modIndex =[]
           for idxLine in idxL:
+             #inject css rule to remove haiku's orange bullets
+             if '</head>' in idxLine:      
+                 idxLine = idxLine.replace('</head>','<style>\nul li {\n\tbackground: none;\n\tlist-style-type: none;\n}\n</style>\n</head>')      
              if 'class="section"' in idxLine:
                 if not start:
                     sectnum+=1
