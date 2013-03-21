@@ -138,7 +138,4 @@ Here is an implementation for BFS.
 
 Here is how it works.
 
-.. TODO::
-   :type: AV
-
-   AV for BFS
+.. avembed:: AV/Development/graphBFS.html ss

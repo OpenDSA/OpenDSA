@@ -28,10 +28,12 @@ Figure :num:`Figure #TopSort` illustrates the problem.
 An acceptable topological sort for this example is J1,
 J2, J3, J4, J5, J6, J7.
 
+.. inlineav:: topsortCON1 dgm
+
 .. _TopSort:
 
 .. figure:: Images/GraphDef.png
-   :width: 500
+   :width: 1
    :align: center
    :figwidth: 90%
    :alt: Topological sort example
@@ -81,3 +83,5 @@ Here is an implementation for the algorithm.
 
 .. codeinclude:: Graphs/TopsortBFS.pde 
    :tag: TopsortBFS
+
+.. odsascript:: AV/Development/topsortCON.js

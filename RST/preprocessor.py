@@ -363,6 +363,9 @@ def updateTOC(args):
           idx.close()
           modIndex =[]
           for idxLine in idxL:
+             #inject css rule to remove haiku's orange bullets
+             if '</head>' in idxLine:      
+                 idxLine = idxLine.replace('</head>','<style>\nul li {\n\tbackground: none;\n\tlist-style-type: none;\n}\n</style>\n</head>')      
              if 'class="section"' in idxLine:
                 if not start:
                     sectnum+=1
@@ -370,7 +373,7 @@ def updateTOC(args):
                     start = False
              if 'class="headerlink"' in idxLine:
                 chapter = re.split('>',re.split('<a class="headerlink"', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
-             if 'class="toctree-l' in idxLine:
+             if 'class="toctree-l' in idxLine and 'Gradebook' not in idxLine:
                  str1 = re.split('>', re.split('</a>', idxLine, re.IGNORECASE)[0], re.IGNORECASE)
                  str = str1[len(str1)-1]
                  str2 ='%s.' % sectnum + str
@@ -406,28 +409,23 @@ def updateTOC(args):
                       chap = data[href[:-5]]
                       str = '%s.' %chap[1] + prev
                       idxLine = idxLine.replace(prev,str)
-                   else:
-                       if pagename=='ToDO':           #ToDo case
-                          chap = data['Bibliography']
-                          str = '%s.' %chap[1] + prev
-                          idxLine = idxLine.replace(prev,str)
                    if  href[:-5]=='ToDO':   #special case ToDo.html
                       chap = data['Bibliography']
                       str = '%s.' %chap[1] + prev
                       idxLine = idxLine.replace(prev,str)
-                if '<h2 class="heading"><span>'  in idxLine and pagename != 'index':
+                if '<h2 class="heading"><span>'  in idxLine and pagename != 'index' and pagename != 'Gradebook':
                    heading = re.split('<span>',re.split('</span>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                    idxLine = idxLine.replace(heading,header)
-                if '<title>'  in idxLine and pagename != 'index':
+                if '<title>'  in idxLine and pagename != 'index' and pagename != 'Gradebook':
                    title = re.split('<title>',re.split('</title>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                    number_title = '%s.' %chap[1] + title
                    idxLine = idxLine.replace(title,number_title)
                 for i in range(1,7):
-                   if '<h%s>' %i in idxLine and td==0 and pagename != 'index':
+                   if '<h%s>' %i in idxLine and td==0 and pagename != 'index' and pagename != 'Gradebook':
                       par  = re.split('<h%s>'%i,re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                       par1 = '%s.' %data[pagename][1] + par
                       idxLine = idxLine.replace(par,par1)
-                if td == 1 and pagename != 'index':
+                if td == 1 and pagename != 'index' and pagename != 'Gradebook':
                     if 'a class="headerlink"' in idxLine:
                       par  = re.split('<h1>',re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                       par1 = '%s.' %chap[1] + par
@@ -446,7 +444,7 @@ def todoHTML(todolst):
 
    tp =''
    mn=0
-   rst='.. _Todo:\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'
+   rst='.. _Todo:\n\n.. meta::\n   :module-name: ToDo\n   :module-long-name: ToDo\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'
    for i, (k,v,s) in enumerate(todolst):
          if tp=='' and v=='':
             if mn==0:
@@ -585,7 +583,7 @@ def main(argv):
   (options, args) = parser.parse_args()
   control(argv,args)
 
-  if not options.postp is None:
+  if options.postp is not None:
      updateTOC(args)
   else:
      modDir=''

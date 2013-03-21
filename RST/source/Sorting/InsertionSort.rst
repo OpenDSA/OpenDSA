@@ -110,8 +110,8 @@ restoring sorted order using Insertion Sort might be a good idea if we
 know that the disordering is slight.
 Examples of algorithms that take advantage of Insertion Sort's
 near-best-case running time are Shellsort
-(Module :ref:`ShellSort <Shellsort>`)
-and Quicksort (Module :ref:`Quicksort <Quicksort>`).
+(Module :numref:`ShellSort <Shellsort>`)
+and Quicksort (Module :numref:`Quicksort <Quicksort>`).
 
 .. index:: ! inversion
 
