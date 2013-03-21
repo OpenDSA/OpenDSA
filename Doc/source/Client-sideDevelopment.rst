@@ -61,7 +61,6 @@ ODSA.MOD
 * **getUsername()** - returns the username stored in local storage
 * **getSessionKey()** - returns the session key stored in local storage
 * **userLoggedIn()** - returns whether or not a user is logged in
-* **getNameFromURL(url)** - parses the name of the page from the URL
 * **getJSON(data)** - converts the input string to a JSON object, if given a JSON object, returns it
 * **logUserAction(type, desc, exerName, eventUiid)** - logging function that takes the event type, a description of the event and the name and uiid of the exercise with which the event is associated
 * **logEvent(data)** - flexible logging function that appends whatever data is specified to the event log, provided it meets the criteria for a valid event
