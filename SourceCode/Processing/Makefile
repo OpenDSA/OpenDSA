@@ -12,9 +12,8 @@ clean:
 
 Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort
 
-Test: build/GraphTrav/success
-
 Graphs: GraphDummy GraphTrav GraphTop
+
 
 Inssort: build/InssortTest/success
 
