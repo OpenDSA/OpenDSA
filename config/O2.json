@@ -51,11 +51,22 @@
             "points": 0,
             "showhide": "show",
             "threshold": 1.0
+          },
+          "graphBFS": {
+            "long_name": "Breadth First Search Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "show",
+            "threshold": 1.0
           }
         }
       },
       "Development/GraphTopsort": {
         "long_name": "Topological Sort",
+        "exercises": {}
+      },
+      "Development/GraphShortest": {
+        "long_name": "Shortest Paths Problems",
         "exercises": {}
       },
       "Development/MCST": {
