@@ -14,7 +14,7 @@ Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Q
 
 Test: build/GraphTrav/success
 
-Graphs: GraphDummy GraphTrav
+Graphs: GraphDummy GraphTrav GraphTop
 
 Inssort: build/InssortTest/success
 
@@ -136,3 +136,22 @@ build/GraphTrav/success: Graphs/BFS.pde Graphs/DFS.pde Graphs/Graph.pde Graphs/G
 	@cp Lists/LQueue.pde build/GraphTrav
 	@cp Lists/Link.pde build/GraphTrav
 	@$(PROCESS) --run --sketch="$(BUILD)/GraphTrav" --output="$(BUILD)/build" --force
+
+GraphTop: build/GraphTop/success
+
+build/GraphTop/success: Graphs/TopsortBFS.pde Graphs/TopsortDFS.pde Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Graphs/GraphTop.pde Graphs/GraphCreate.pde Lists/Queue.pde Lists/LQueue.pde Lists/Link.pde Graphs/GraphTop.gph
+	@echo "GraphTop Test"
+	-@rm -rf build/GraphTop
+	@mkdir build/GraphTop
+	@cp Graphs/GraphTop.pde build/GraphTop
+	@cp Graphs/GraphTop.gph build/GraphTop
+	@cp Graphs/GraphCreate.pde build/GraphTop
+	@cp Graphs/Graph.pde build/GraphTop
+	@cp Graphs/GraphM.pde build/GraphTop
+	@cp Graphs/GraphL.pde build/GraphTop
+	@cp Graphs/TopsortDFS.pde build/GraphTop
+	@cp Graphs/TopsortBFS.pde build/GraphTop
+	@cp Lists/Queue.pde build/GraphTop
+	@cp Lists/LQueue.pde build/GraphTop
+	@cp Lists/Link.pde build/GraphTop
+	@$(PROCESS) --run --sketch="$(BUILD)/GraphTop" --output="$(BUILD)/build" --force
