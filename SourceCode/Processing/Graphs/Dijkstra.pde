@@ -1,11 +1,11 @@
 /* *** ODSATag: MinVertex *** */
 // Find the unvisited vertex with the smalled distance
-static int minVertex(Graph G, int[] D) {
+int minVertex(Graph G, int[] D) {
   int v = 0;  // Initialize v to any unvisited vertex;
   for (int i=0; i<G.n(); i++)
-    if (G.getMark(i) == UNVISITED) { v = i; break; }
+    if (G.getValue(i) != VISITED) { v = i; break; }
   for (int i=0; i<G.n(); i++)  // Now find smallest value
-    if ((G.getMark(i) == UNVISITED) && (D[i] < D[v]))
+    if ((G.getValue(i) != VISITED) && (D[i] < D[v]))
       v = i;
   return v;
 }
@@ -14,17 +14,20 @@ static int minVertex(Graph G, int[] D) {
 
 /* *** ODSATag: GraphDijk1 *** */
 // Compute shortest path distances from s, store them in D
-static void Dijkstra(Graph G, int s, int[] D) {
+void Dijkstra(Graph G, int s, int[] D) {
   for (int i=0; i<G.n(); i++)    // Initialize
     D[i] = Integer.MAX_VALUE;
   D[s] = 0;
   for (int i=0; i<G.n(); i++) {  // Process the vertices
     int v = minVertex(G, D);     // Find next-closest vertex
-    G.setMark(v, VISITED);
+    G.setValue(v, VISITED);
     if (D[v] == Integer.MAX_VALUE) return; // Unreachable
-    for (int w = G.first(v); w < G.n(); w = G.next(v, w))
+    int[] nList = G.neighbors(v);
+    for (int j=0; j<nList.length; j++) {
+      int w = nList[j];
       if (D[w] > (D[v] + G.weight(v, w)))
         D[w] = D[v] + G.weight(v, w);
+    }
   }
 }
 /* *** ODSAendTag: GraphDijk1 *** */
