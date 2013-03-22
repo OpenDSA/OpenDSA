@@ -116,7 +116,6 @@ class modPreReq:
          if ':caption:' in line and ss_label !='':
              new_caption = ':caption: <' + ss_label + '>'
              line = line.replace(':caption:',new_caption) 
-             print 'new line = %s' %line
              file_modified = True
              ss_label = ''
   
@@ -163,7 +162,6 @@ class modPreReq:
          new_data.append(line)
       #write the modified file if we encountered an slide show figure
       if file_modified:
-          print 'file_modified: %s' %filename
           otfile = open(filename,'wb')
           otfile.writelines(new_data)
           otfile.close()
