@@ -19,7 +19,7 @@
       start with an increment size of 5, which element (if any) will be
       skipped on the first pass due to being in a sublist of only
       one element?</p>
-      <div class="solution"><var>"5"</var></div>
+      <div class="solution"><var>"4"</var></div>
       <ul class="choices" data-category="true">
         <li><var>"0"</var></li>
         <li><var>"1"</var></li>
@@ -33,7 +33,13 @@
         <li><var>"No elements are skipped"</var></li>
       </ul>
       <div class="hints">
-        <p>Sorry, no hints are available.</p>
+        <p>There is an element that is skipped due to being in a
+        sublist of length 1.</p>
+	<p>Recall that array indexing starts at 0, so the records are
+	in positions 0 to 8.</p>
+	<p>0 is paired with 5, 1 with 6, and so on.</p>
+	<p>This means that records 4 would have been paired with 9 if
+	there had been a 9.</p>
       </div>
     </div>
   </div>

@@ -13,28 +13,21 @@
 {% block relbar1 %}{% endblock %}
 {% block relbar2 %}{% endblock %}
 
+{% macro script() %}
+  <script type="text/javascript" src="test.js"></script>
+{% endmacro %}
+
 {% macro scripts() %}
-  {%- for cssfile in odsa_css %}
-    <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
-  {%- endfor %}
-    
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      "HTML-CSS": {
-        scale: "80"
-      }
-    });
-  </script>
+  {# For all pages other than the search page append the scripts to the body to make the page load faster #}
+  {%- if pagename != "search" -%}
+    {%- for scriptfile in script_files %}
+      <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+    {%- endfor %}
+  {%- endif %}
   
   {%- for scriptfile in odsa_scripts %}
     <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
   {%- endfor %}
-  
-  {%- if pagename=="search" -%}
-    <script type="text/javascript" src="{{ pathto('_static/underscore.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/searchtools.js', 1) }}"></script>
-  {%- endif %}
-    
 {% endmacro %}
 
 {% macro login() %}
@@ -207,7 +200,7 @@
         {% block body %}{% endblock %}
       </div>
       <div class="bottomnav">
-      <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="{{ pathto(odsa_root_path + 'Privacy.html', 1) }}" target="_blank">| Privacy</a></span>&#160;&#160;
+      <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="{{ odsa_root_path + 'lib/Privacy.html' }}" target="_blank">| Privacy</a></span>&#160;&#160;
       {{ btm_nav() }}</p>
       </div>
       <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/>

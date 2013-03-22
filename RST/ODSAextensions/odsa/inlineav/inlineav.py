@@ -20,18 +20,31 @@ from docutils.parsers.rst import Directive
 import os, sys
 sys.path.append(os.path.abspath('./source'))
 import conf
+import re
+import json
 
 def setup(app):
     app.add_directive('inlineav',inlineav)
 
+def loadTable():
+   try:
+      table=open('table.json')
+      data = json.load(table)
+      table.close()
+      return data
+   except IOError:
+      print 'ERROR: No table.json file.'
 
 DIAGRAM = '''\
+%(anchor)s
 <div id="%(exer_name)s">
 </div>
+%(caption)s
 '''
 
 # div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
 SLIDESHOW = '''\
+%(anchor)s
 <a id="%(exer_name)s_exer"></a>
 <div id="%(exer_name)s" class="ssAV" data-exer-name="%(exer_name)s" data-points="%(points)s" data-threshold="%(threshold)s" data-type="%(type)s" data-required="%(required)s" data-long-name="%(long_name)s">
  <span class="jsavcounter"></span>
@@ -47,6 +60,7 @@ SLIDESHOW = '''\
   <a href="#" class="resubmit_link">Resubmit</a>
  </span>
 </div>
+%(caption)s
 '''
 
 
@@ -56,7 +70,7 @@ def output(argument):
 
 class inlineav(Directive):
     required_arguments = 2
-    optional_arguments = 5
+    optional_arguments = 7 
     final_argument_whitespace = True
     option_spec = {
                    'output': output,
@@ -64,6 +78,8 @@ class inlineav(Directive):
                    'long_name': directives.unchanged,
                    'points': directives.unchanged,
                    'threshold': directives.unchanged,
+                   'caption': directives.unchanged,
+                   'align': directives.unchanged,
                   }
 
     def run(self):
@@ -84,6 +100,27 @@ class inlineav(Directive):
         if 'long_name' not in self.options:
           self.options['long_name'] = self.options['exer_name']
         
+        if 'align' not in self.options:
+          self.options['align'] = 'center'
+        
+        if 'caption' not in self.options:
+          self.options['caption'] = ''
+          self.options['anchor'] = ''
+        else:
+          json_data = loadTable()
+          #efouh: Get label from caption. The preprocessor adds the figure label to the caption, and 
+          #encloses it between '<' and '>'signs
+          label = re.split('>',re.split('<', self.options['caption'], re.IGNORECASE)[1], re.IGNORECASE)[0]
+          a_label = '<' + label + '>'
+          if label in json_data:
+            xrefs = json_data[label]
+            if '#' in xrefs:
+              xrefs = xrefs[:-1]
+            numbered_label = 'Figure %s' %xrefs
+            self.options['caption'] = self.options['caption'].replace(a_label,numbered_label)
+            self.options['caption'] = '<p class="caption"  style="text-align:%s;">%s</p>' %(self.options['align'],self.options['caption']) 
+            self.options['anchor'] = '<p id="%s">' %label.lower() 
+ 
         if 'output' in self.options and self.options['output'] == "show":
           self.options['output_code'] = '<p class="jsavoutput jsavline"></p>'
         else:

@@ -105,10 +105,11 @@ makefile_template = '''\
 # You can set these variables from the command line.
 SPHINXBUILD   = sphinx-build
 HTMLDIR       = %(rel_ebook_path)s
+MINIMIZE      = java -jar "%(odsa_root)stools/yuicompressor-2.4.7.jar"
 
 .PHONY: clean html
 
-all: html
+all: html min
 
 clean:
 	-rm -rf ./$(HTMLDIR)*
@@ -116,14 +117,28 @@ clean:
 
 cleanbuild: clean html
 
+min: min-underscore min-doctools min-searchtools
+
+min-underscore:
+	@echo 'Minimizing $(HTMLDIR)_static/underscore.js'
+	-@$(MINIMIZE) $(HTMLDIR)_static/underscore.js -o $(HTMLDIR)_static/underscore.js
+
+min-doctools:
+	@echo 'Minimizing $(HTMLDIR)_static/doctools.js'
+	-@$(MINIMIZE) $(HTMLDIR)_static/doctools.js -o $(HTMLDIR)_static/doctools.js
+
+min-searchtools:
+	@echo 'Minimizing $(HTMLDIR)_static/searchtools.js'
+	-@$(MINIMIZE) $(HTMLDIR)_static/searchtools.js -o $(HTMLDIR)_static/searchtools.js
+
 preprocessor:
 	python "%(odsa_root)sRST/preprocessor.py" source/ $(HTMLDIR)
 
 html: preprocessor
 	%(remove_todo)s
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
-	rm html/_static/doctools.js html/_static/jquery.js html/_static/websupport.js
-	rm -rf html/_sources/
+	rm html/_static/jquery.js html/_static/websupport.js
+	#rm -rf html/_sources/
 	python "%(odsa_root)sRST/preprocessor.py" -p source/ $(HTMLDIR) 
 	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
 	rm *.json
@@ -274,16 +289,28 @@ html_logo =  "_static/OpenDSALogoT64.png"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# Overrides the list of script files Sphinx automatically appends to the header of each file (script_files)
-# Creates a custom variable used in RST\source\_themes\haiku\layout.html to append our script and CSS files
-# to the body which should allow the page to load faster
-# In order to load the scripts and CSS in the head, move the contents of 'odsa_scripts' to 'script_files' 
-# and rename 'odsa_css' to 'css_files'
-html_context = {"script_files": [], 
+# Manipulates the lists of scripts that jQuery automatically loads
+# The Sphinx-generated search page is dependent on certain files being loaded in the head element whereas
+# we normally want to load these scripts in the body to make the page load faster
+# 'script_files' will be loaded in the head element on search.html and in the body on all other pages 
+# (setting this value here overrides Sphinx's default script files, so we have to add 'underscore.js' and 'doctools.js')
+# 'search_scripts' are only loaded on the search page
+# 'odsa_scripts' will be loaded as part of the body on all pages
+# 'css_files' adds our custom CSS files to be loaded in the head element so that page doesn't have to re-render 
+# all the content that loaded before the CSS files
+# 'odsa_root_path' specifies the relative path from the HTML output directory to the ODSA root directory and is used 
+# to properly link to Privacy.html
+# The code that appends these scripts can be found in RST/source/_themes/haiku/layout.html and basic/layout.html
+html_context = {"script_files": [
+                  '%(eb2root)slib/jquery.min.js',
+                  'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML.js'
+                ],
+                "search_scripts": [
+                  '_static/underscore.js',
+                  '_static/doctools.js'
+                ],
                 "odsa_scripts": [
-                  '%(eb2root)slib/jquery.min.js', 
                   '%(eb2root)slib/jquery-ui.min.js', 
-                  'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML.js', 
                   '%(eb2root)sJSAV/lib/jquery.transform.light.js', 
                   '%(eb2root)sJSAV/lib/raphael.js', 
                   '%(eb2root)sJSAV/build/JSAV-min.js', 
@@ -291,7 +318,7 @@ html_context = {"script_files": [],
                   '%(eb2root)slib/odsaUtils.js', 
                   '%(eb2root)slib/odsaMOD.js' 
                 ], 
-                "odsa_css": [
+                "css_files": [
                   '%(eb2root)sJSAV/css/JSAV.css', 
                   '%(eb2root)slib/odsaMOD-min.css'
                 ],
