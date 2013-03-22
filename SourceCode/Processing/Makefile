@@ -12,7 +12,7 @@ clean:
 
 Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort
 
-Graphs: GraphDummy GraphTrav GraphTop
+Graphs: GraphDummy GraphTrav GraphTop GraphDijk
 
 
 Inssort: build/InssortTest/success
@@ -154,3 +154,22 @@ build/GraphTop/success: Graphs/TopsortBFS.pde Graphs/TopsortDFS.pde Graphs/Graph
 	@cp Lists/LQueue.pde build/GraphTop
 	@cp Lists/Link.pde build/GraphTop
 	@$(PROCESS) --run --sketch="$(BUILD)/GraphTop" --output="$(BUILD)/build" --force
+
+GraphDijk: build/GraphDijk/success
+
+build/GraphDijk/success: Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Graphs/GraphDijk.pde Graphs/GraphCreate.pde Lists/Queue.pde Lists/LQueue.pde Lists/Link.pde Graphs/GraphDijk.gph Graphs/Dijkstra.pde Graphs/DijkstraPQ.pde
+	@echo "GraphDijk Test"
+	-@rm -rf build/GraphDijk
+	@mkdir build/GraphDijk
+	@cp Graphs/Graph.pde build/GraphDijk
+	@cp Graphs/GraphM.pde build/GraphDijk
+	@cp Graphs/GraphL.pde build/GraphDijk
+	@cp Graphs/GraphDijk.pde build/GraphDijk
+	@cp Graphs/GraphDijk.gph build/GraphDijk
+	@cp Graphs/GraphCreate.pde build/GraphDijk
+	@cp Lists/Queue.pde build/GraphDijk
+	@cp Lists/LQueue.pde build/GraphDijk
+	@cp Lists/Link.pde build/GraphDijk
+	@cp Graphs/Dijkstra.pde build/GraphDijk
+	@cp Graphs/DijkstraPQ.pde build/GraphDijk
+	@$(PROCESS) --run --sketch="$(BUILD)/GraphDijk" --output="$(BUILD)/build" --force

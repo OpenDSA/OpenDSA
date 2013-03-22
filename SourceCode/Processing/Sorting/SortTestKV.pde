@@ -1,5 +1,6 @@
 final int numtests = 5;
 final int testsize = 100;
+boolean SUCCESS = true;
 
 void swap(KVPair[] A, int i, int j) {
   KVPair temp = A[i];
@@ -21,12 +22,14 @@ void setup() {
       if (A[i].key() < A[i-1].key()) {
         println("Error! Value " + A[i].key() + " at position " + i +
                 " was less than " + A[i-1].key() + " at position " + (i-1));
-        exit();
+        SUCCESS = false;
       }
   }
-  PrintWriter output = createWriter("success");
-  output.println("Success");
-  output.flush();
-  output.close();
+  if (SUCCESS) {
+    PrintWriter output = createWriter("success");
+    output.println("Success");
+    output.flush();
+    output.close();
+  }
   exit();
 }

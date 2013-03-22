@@ -1,16 +1,25 @@
+final Object VISITED = "Visited";
+String out;
+Boolean SUCCESS = true;
+
 void test(Graph G) {
   GraphCreate(G, "GraphDijk.gph");
   int[] D = new int[G.n()];
+  int i;
   out = "";
   Dijkstra(G, 0, D);
-  if (out.equals("0 2 1 5 3 3 4 4 5 1 2 0 ") != true)
-    println("ERROR IN DFS!!!:" + out);
-
-// Will add back when DijkstraPQ is ready
-//  out = "";
-//  DijkstraPQ(G);
-//  if (out.equals("0 0 2 2 4 4 1 1 3 3 5 5 ") != true)
-//    println("ERROR IN BFS!!!:" + out);
+  for (i=0; i<G.n(); i++)
+    out += D[i] + " ";
+  if (out.equals("0 5 3 10 18 ") != true) {
+    println("ERROR IN Dijkstra!!!:" + out);
+    SUCCESS = false;
+  }
+  out = "";
+  DijkstraPQ(G, 0, D);
+  if (out.equals("0 5 3 10 18 ") != true) {
+    println("ERROR IN DijkstraPQ!!!:" + out);
+    SUCCESS = false;
+  }
 }
 
 void setup() {
@@ -19,9 +28,11 @@ void setup() {
 
   test(GM);
   test(GL);
-  PrintWriter output = createWriter("success");
-  output.println("Success");
-  output.flush();
-  output.close();
+  if (SUCCESS) {
+    PrintWriter output = createWriter("success");
+    output.println("Success");
+    output.flush();
+    output.close();
+  }
   exit();
 }
