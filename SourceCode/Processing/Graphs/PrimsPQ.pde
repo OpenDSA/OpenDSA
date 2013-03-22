@@ -13,9 +13,9 @@ class DijkElem {
 /* *** ODSAendTag: DijkElement *** */
 
 
-/* *** ODSATag: DijkstraPQ *** */
-/* Dijkstra's shortest-paths: priority queue version */
-void DijkstraPQ(Graph G, int s, int[] D) {
+/* *** ODSATag: PrimsPQ *** */
+// Prims MCST algorithm: priority queue version
+void PrimPQ(Graph G, int s, int[] D, int[] V) {
   int v;                              // The current vertex
   DijkElem[] E = new DijkElem[G.e()]; // Heap for edges
   E[0] = new DijkElem(s, 0);          // Initial vertex
@@ -27,11 +27,13 @@ void DijkstraPQ(Graph G, int s, int[] D) {
     do { v = (H.removemin()).vertex(); }    // Get position
       while (G.getValue(v) == VISITED);
     G.setValue(v, VISITED);
+    if (v != s) AddEdgetoMST(V[v], v); // Add edge to MST
     if (D[v] == INFINITY) return;  // Unreachable
     for (int j=0; j<nList.length; j++) {
       int w = nList[j];
-      if (D[w] > (D[v] + G.weight(v, w))) { // Update D
-        D[w] = D[v] + G.weight(v, w);
+      if (D[w] > G.weight(v, w)) { // Update D
+        D[w] = G.weight(v, w);
+        V[w] = v;                  // Where it came from
         H.insert(new DijkElem(w, D[w]));
       }
     }

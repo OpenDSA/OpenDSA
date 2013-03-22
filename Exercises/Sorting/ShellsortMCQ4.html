@@ -28,7 +28,16 @@
         <li><var>"An array with random input."</var></li>
       </ul>
       <div class="hints">
-	<p>Sorry, no hints are available.</p>
+	<p>A sorted array will result in every sublist also being
+	sorted, which is fast.</p>
+	<p>An array with random input is unlikely to give the worst
+	case.</p>
+	<p>A reverse-sorted array turns out not to cause any
+	particular problem.</p>
+	<p>When the array size is a power of 2, the divide-by-twos
+	increment series will keep the even-position items 
+	separate from the odd-position items until the final pass,
+	resulting an a really expensive final pass.</p>
       </div>
     </div>
   </div>

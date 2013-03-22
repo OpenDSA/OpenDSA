@@ -47,13 +47,9 @@ We assume that all weights are positive.
 
 .. _DistExamp:
 
-.. figure:: Images/GraphDef.png
-   :width: 500
+.. inlineav:: dijkstraCON1 dgm
+   :caption: Example graph for shortest-path definitions.
    :align: center
-   :figwidth: 90%
-   :alt: Example graph for shortest-path definitions
-
-   Example graph for shortest-path definitions.
 
 Single-Source Shortest Paths
 ----------------------------
@@ -188,13 +184,9 @@ because for each edge we must reorder the heap.
 Because the objects stored on the heap need to know both their vertex
 number and their distance, we create a simple class for the purpose
 called ``DijkElem``, as follows.
-``DijkElem`` is quite similar to the ``Edge`` class used by the
-adjacency list representation.
 
-.. TODO::
-   :type: CODE
-
-   DijkElem.book code here
+.. codeinclude:: Graphs/DijkstraPQ.pde 
+   :tag: DijkElement
 
 Next we show an implementation for Dijkstra's
 algorithm using the priority queue.
@@ -225,3 +217,5 @@ However, when the graph is dense, this cost can become as great as
    The remaining vertices are processed in order B, D,
    and E.
    Changes in the D array should be shown along with this.
+
+.. odsascript:: AV/Development/dijkstraCON.js

@@ -69,9 +69,11 @@
       },
       "Development/GraphShortest": {
         "long_name": "Shortest Paths Problems",
-        "exercises": {}
+        "exercises": {
+          "dijkstraCON1": {}
+	}
       },
-      "Development/MCST": {
+      "Development/MCSTfull": {
         "long_name": "Minimal Cost Spanning Trees",
         "exercises": {}
       }
@@ -94,6 +96,10 @@
       "General Trees": {
         "Development/LOChild": {
           "long_name": "Lists of Children Representation",
+          "exercises": {}
+        },
+        "Development/UnionFind": {
+          "long_name": "Union/Find",
           "exercises": {}
         }
       },
