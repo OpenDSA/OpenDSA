@@ -1,4 +1,5 @@
 final Object VISITED = "Visited";
+final int INFINITY = Integer.MAX_VALUE;
 String out;
 Boolean SUCCESS = true;
 

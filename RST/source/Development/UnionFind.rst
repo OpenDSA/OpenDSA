@@ -4,11 +4,11 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author:
-   :prerequisites: GraphShortest
-   :topic: Graphs
+   :author: Cliff Shaffer
+   :prerequisites: GeneralTree
+   :topic: UnionFind
 
-MCST [STUB]
-===========
+Union/Find [STUB]
+=================
 
 Placeholder for Crossreference

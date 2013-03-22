@@ -28,19 +28,11 @@ Figure :num:`Figure #TopSort` illustrates the problem.
 An acceptable topological sort for this example is J1,
 J2, J3, J4, J5, J6, J7.
 
-.. inlineav:: topsortCON1 dgm
-
 .. _TopSort:
 
-.. figure:: Images/GraphDef.png
-   :width: 1
+.. inlineav:: topsortCON1 dgm
+   :caption: An example graph for topological sort. Seven tasks have dependencies as shown by the directed graph.
    :align: center
-   :figwidth: 90%
-   :alt: Topological sort example
-
-   An example graph for topological sort.
-   Seven tasks have dependencies as shown by the directed
-   graph.
 
 A topological sort may be found by performing a DFS on the graph.
 When a vertex is visited, no action is taken (i.e., function

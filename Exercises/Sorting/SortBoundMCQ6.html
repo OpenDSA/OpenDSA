@@ -26,7 +26,14 @@
           <li><var><code>\Omega(n^n)</code></var></li>
         </ul>
 	<div class="hints">
-	  <p>Sorry, no hints are available.</p>
+	  <p>It should be obvious that <code>\log n! < \log n^n = n
+	  \log n</code>. So that eliminates anything bigger
+	  than <code>n \log n</code>.</p>
+          <p>There are <code>n</code> terms in <code>n!</code>, and
+          you need to take the log of each of them. Since they have
+          some size, it has to be much more than
+          <code>\log n</code>.</p>
+	  <p>It turns out to be worse than just <code>n</code>.</p>
 	</div>
       </div>
     </div>
