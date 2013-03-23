@@ -462,7 +462,7 @@ def todoHTML(todolst):
 
    tp =''
    mn=0
-   rst='.. _Todo:\n\n.. meta::\n   :module-name: ToDo\n   :module-long-name: ToDo\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'
+   rst='.. _Todo:\n\n.. raw:: html\n\n   <script>ODSA.SETTINGS.DISP_MOD_COMP = false;ODSA.SETTINGS.MODULE_NAME = "ToDo";ODSA.SETTINGS.MODULE_LONG_NAME = "ToDo";</script>\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'
    for i, (k,v,s) in enumerate(todolst):
          if tp=='' and v=='':
             if mn==0:
