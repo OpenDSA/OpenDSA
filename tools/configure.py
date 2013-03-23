@@ -488,7 +488,7 @@ def process_module(index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0):
         dispModComp = True
         break
   
-  line = '.. raw:: html' + (eol * 2) + '   <script>'
+  line = '.. _' + mod_name + ':' + (eol * 2) + '.. raw:: html' + (eol * 2) + '   <script>'
   line += 'ODSA.SETTINGS.DISP_MOD_COMP = ' + str(dispModComp).lower() + ';'
   line += 'ODSA.SETTINGS.MODULE_NAME = ' + mod_name + ';'
   line += 'ODSA.SETTINGS.MODULE_LONG_NAME = ' + long_name + ';'
