@@ -470,15 +470,10 @@ def process_module(index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0):
   # Find the end-of-line character for the file
   eol = mod_data[0].replace(mod_data[0].rstrip(), '')
   
-  # Add a self reference directive and a meta tag with the module name (used to get the module name on the client-side)
-  line = '.. _' + mod_name + ':' + (eol * 2) + '.. meta::' + eol + '   :module-name: ' + mod_name + eol
-
-  long_name = mod_name
-  
   if 'long_name' in mod_attrib:
     long_name = mod_attrib['long_name']
-  
-  line += '   :module-long-name: ' + long_name + (eol * 2)
+  else:
+    long_name = mod_name
   
   # Set a JS flag on the page, indicating whether or not the module can be completed
   if 'dispModComp' in mod_attrib:
@@ -493,7 +488,11 @@ def process_module(index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0):
         dispModComp = True
         break
   
-  line += '.. raw:: html' + (eol * 2) + '   <script>ODSA.SETTINGS.DISP_MOD_COMP = ' + str(dispModComp).lower() + ';</script>' + (eol * 2)
+  line = '.. raw:: html' + (eol * 2) + '   <script>'
+  line += 'ODSA.SETTINGS.DISP_MOD_COMP = ' + str(dispModComp).lower() + ';'
+  line += 'ODSA.SETTINGS.MODULE_NAME = ' + mod_name + ';'
+  line += 'ODSA.SETTINGS.MODULE_LONG_NAME = ' + long_name + ';'
+  line += '</script>' + (eol * 2)
 
   mod_data[0] = line + mod_data[0]
 
