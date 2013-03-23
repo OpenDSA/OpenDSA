@@ -85,13 +85,9 @@ index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 
 .. _index:
 
-.. meta::
-   :module-name: index
-   :module-name: Contents
-
 .. raw:: html
 
-   <script>ODSA.SETTINGS.DISP_MOD_COMP = false;</script>
+   <script>ODSA.SETTINGS.DISP_MOD_COMP = false;ODSA.SETTINGS.MODULE_NAME = 'index';ODSA.SETTINGS.MODULE_LONG_NAME = 'Contents';</script>
 
 .. chapnum::
    :start: 0
@@ -315,8 +311,8 @@ html_context = {"script_files": [
                   '%(eb2root)sJSAV/lib/raphael.js', 
                   '%(eb2root)sJSAV/build/JSAV-min.js', 
                   '_static/config.js', 
-                  '%(eb2root)slib/odsaUtils.js', 
-                  '%(eb2root)slib/odsaMOD.js' 
+                  '%(eb2root)slib/odsaUtils-min.js', 
+                  '%(eb2root)slib/odsaMOD-min.js' 
                 ], 
                 "css_files": [
                   '%(eb2root)sJSAV/css/JSAV.css', 
@@ -488,6 +484,7 @@ def process_module(index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0):
         dispModComp = True
         break
   
+  # If these JavaScript variables are changed be sure to change them in the index.rst file (above) and ToDo.rst file (preprocessor.py)
   line = '.. _' + mod_name + ':' + (eol * 2) + '.. raw:: html' + (eol * 2) + '   <script>'
   line += 'ODSA.SETTINGS.DISP_MOD_COMP = ' + str(dispModComp).lower() + ';'
   line += 'ODSA.SETTINGS.MODULE_NAME = "' + mod_name + '";'
