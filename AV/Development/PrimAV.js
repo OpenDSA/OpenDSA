@@ -10,7 +10,7 @@
     jsav = new JSAV($('.avcontainer'));
 
     //-------------------ADD NEW GRAPH STUFF HERE----------------------------------------
-    graph = jsav.ds.graph({width: 600, height: 600, layout: "manual", directed: true});
+    graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
     initGraph();
     graph.layout();
     jsav.displayInit();
@@ -134,8 +134,8 @@
 
   //This function is used to initialize the graph.
   function initGraph() {
-    var a = graph.addNode("A", {"left": 25}),
-        b = graph.addNode("B", {"left": 325}),
+    var a = graph.addNode("A", {"left": 25,"top":50}),
+        b = graph.addNode("B", {"left": 325,"top":50}),
         c = graph.addNode("C", {"left": 145, "top": 75}),
         d = graph.addNode("D", {"left": 145, "top": 200}),
         e = graph.addNode("E", {"left": 0, "top": 300}),
