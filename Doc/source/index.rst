@@ -9,11 +9,13 @@ Table of Contents
 .. toctree::
    :maxdepth: 3
 
+   Overview
    ModAuthor
-   Structure
    Style
+   Preprocessor
    Extensions
    Exercise 
    BackendSpecs
    Configuration
    Client-sideFramework
+   Client-sideDevelopment

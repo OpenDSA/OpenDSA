@@ -47,6 +47,7 @@ import json
 import collections
 import re
 import subprocess
+from config_validator import validate_config_file
 
 # The location in the output directory where the built HTML files go
 rel_ebook_path = 'html/'
@@ -63,7 +64,10 @@ processed_modules = []
 # List of images encountered while processing module files, these will be copied from the source/Images to Images in the output source directory
 images = []
 
-# Used to generate the index.rst file (%s is used to include the rst_script_header string)
+# Keeps a count of how many ToDo directives are encountered
+todo_count = 0
+
+# Used to generate the index.rst file
 index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
@@ -81,39 +85,14 @@ index_header = '''.. This file is part of the OpenDSA eTextbook project. See
 
 .. _index:
 
-%s
+.. raw:: html
+
+   <script>ODSA.SETTINGS.DISP_MOD_COMP = false;ODSA.SETTINGS.MODULE_NAME = 'index';ODSA.SETTINGS.MODULE_LONG_NAME = 'Contents';</script>
 
 .. chapnum::
    :start: 0
    :prefix: Chapter
 
-'''
-
-rst_script_header = '''\
-.. odsalink:: JSAV/css/JSAV.css
-.. odsalink:: lib/odsaMOD-min.css
-
-.. odsascript:: lib/jquery.min.js
-.. odsascript:: lib/jquery-ui.min.js
-
-.. odsascript:: JSAV/lib/jquery.transform.light.js
-.. odsascript:: JSAV/lib/raphael.js
-
-.. odsascript:: JSAV/build/JSAV-min.js
-
-.. raw:: html
-
-   <script src="_static/config.js"></script>
-   <script type="text/x-mathjax-config">
-     MathJax.Hub.Config({
-       "HTML-CSS": {
-         scale: "80"
-       }
-     });
-   </script>
-
-.. odsascript:: lib/odsaUtils-min.js
-.. odsascript:: lib/odsaMOD-min.js
 '''
 
 makefile_template = '''\
@@ -122,28 +101,45 @@ makefile_template = '''\
 # You can set these variables from the command line.
 SPHINXBUILD   = sphinx-build
 HTMLDIR       = %(rel_ebook_path)s
+MINIMIZE      = java -jar "%(odsa_root)stools/yuicompressor-2.4.7.jar"
 
 .PHONY: clean html
 
-all: html
+all: html min
 
 clean:
-	-rm -rf $(HTMLDIR)/*
+	-rm -rf ./$(HTMLDIR)*
 	-rm source/ToDo.rst
 
 cleanbuild: clean html
+
+min: min-underscore min-doctools min-searchtools
+
+min-underscore:
+	@echo 'Minimizing $(HTMLDIR)_static/underscore.js'
+	-@$(MINIMIZE) $(HTMLDIR)_static/underscore.js -o $(HTMLDIR)_static/underscore.js
+
+min-doctools:
+	@echo 'Minimizing $(HTMLDIR)_static/doctools.js'
+	-@$(MINIMIZE) $(HTMLDIR)_static/doctools.js -o $(HTMLDIR)_static/doctools.js
+
+min-searchtools:
+	@echo 'Minimizing $(HTMLDIR)_static/searchtools.js'
+	-@$(MINIMIZE) $(HTMLDIR)_static/searchtools.js -o $(HTMLDIR)_static/searchtools.js
 
 preprocessor:
 	python "%(odsa_root)sRST/preprocessor.py" source/ $(HTMLDIR)
 
 html: preprocessor
-	rm source/ToDo.rst
+	%(remove_todo)s
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
+	rm html/_static/jquery.js html/_static/websupport.js
+	#rm -rf html/_sources/
+	python "%(odsa_root)sRST/preprocessor.py" -p source/ $(HTMLDIR) 
 	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
-
 '''
 
 
@@ -186,7 +182,8 @@ sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsalink')
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsascript'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/sphinx-numfig'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/inlineav'))
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav']
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/html5'))
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav','html5']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -248,6 +245,10 @@ pygments_style = 'sphinx'
 #modindex_common_prefix = []
 
 # -- Options for HTML output ---------------------------------------------------
+#The fully-qualified name of a HTML Translator, that is used to translate document
+#trees to HTML.
+html_translator_class = 'html5.HTMLTranslator' 
+
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
@@ -272,7 +273,7 @@ html_title = '%(title)s'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo =  "_static/OpenDSALogoNewT64.png"
+html_logo =  "_static/OpenDSALogoT64.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -283,6 +284,42 @@ html_logo =  "_static/OpenDSALogoNewT64.png"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Manipulates the lists of scripts that jQuery automatically loads
+# The Sphinx-generated search page is dependent on certain files being loaded in the head element whereas
+# we normally want to load these scripts in the body to make the page load faster
+# 'script_files' will be loaded in the head element on search.html and in the body on all other pages 
+# (setting this value here overrides Sphinx's default script files, so we have to add 'underscore.js' and 'doctools.js')
+# 'search_scripts' are only loaded on the search page
+# 'odsa_scripts' will be loaded as part of the body on all pages
+# 'css_files' adds our custom CSS files to be loaded in the head element so that page doesn't have to re-render 
+# all the content that loaded before the CSS files
+# 'odsa_root_path' specifies the relative path from the HTML output directory to the ODSA root directory and is used 
+# to properly link to Privacy.html
+# The code that appends these scripts can be found in RST/source/_themes/haiku/layout.html and basic/layout.html
+html_context = {"script_files": [
+                  '%(eb2root)slib/jquery.min.js',
+                  'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML.js'
+                ],
+                "search_scripts": [
+                  '_static/underscore.js',
+                  '_static/doctools.js'
+                ],
+                "odsa_scripts": [
+                  '%(eb2root)slib/jquery-ui.min.js', 
+                  '%(eb2root)sJSAV/lib/jquery.transform.light.js', 
+                  '%(eb2root)sJSAV/lib/raphael.js', 
+                  '%(eb2root)sJSAV/build/JSAV-min.js', 
+                  '_static/config.js', 
+                  '%(eb2root)slib/odsaUtils-min.js', 
+                  '%(eb2root)slib/odsaMOD-min.js' 
+                ], 
+                "css_files": [
+                  '%(eb2root)sJSAV/css/JSAV.css', 
+                  '%(eb2root)slib/odsaMOD-min.css'
+                ],
+                "odsa_root_path": "%(eb2root)s"}
+
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -329,79 +366,6 @@ html_last_updated_fmt = '%%b %%d, %%Y'
 htmlhelp_basename = 'OpenDSAdoc'
 
 
-# -- Options for LaTeX output --------------------------------------------------
-
-latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
-
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
-
-# Additional stuff for the LaTeX preamble.
-#'preamble': '',
-}
-
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-  ('index', 'OpenDSA.tex', u'OpenDSA Documentation',
-   u'OpenDSA Project Contributors', 'manual'),
-]
-
-# The name of an image file (relative to this directory) to place at the top of
-# the title page.
-#latex_logo = None
-
-# For "manual" documents, if this is true, then toplevel headings are parts,
-# not chapters.
-#latex_use_parts = False
-
-# If true, show page references after internal links.
-#latex_show_pagerefs = False
-
-# If true, show URL addresses after external links.
-#latex_show_urls = False
-
-# Documents to append as an appendix to all manuals.
-#latex_appendices = []
-
-# If false, no module index is generated.
-#latex_domain_indices = True
-
-# -- Options for manual page output --------------------------------------------
-
-# One entry per manual page. List of tuples
-# (source start file, name, description, authors, manual section).
-man_pages = [
-    ('index', 'opendsa', u'OpenDSA Documentation',
-     [u'OpenDSA Project Contributors'], 1)
-]
-
-# If true, show URL addresses after external links.
-#man_show_urls = False
-
-
-# -- Options for Texinfo output ------------------------------------------------
-
-# Grouping the document tree into Texinfo files. List of tuples
-# (source start file, target name, title, author,
-#  dir menu entry, description, category)
-texinfo_documents = [
-  ('index', 'OpenDSA', u'OpenDSA Documentation',
-   u'OpenDSA Project Contributors', 'OpenDSA', 'One line description of project.',
-   'Miscellaneous'),
-]
-
-# Documents to append as an appendix to all manuals.
-#texinfo_appendices = []
-
-# If false, no module index is generated.
-#texinfo_domain_indices = True
-
-# How to display URL addresses: 'footnote', 'no', or 'inline'.
-#texinfo_show_urls = 'footnote'
-
 # -- My stuff ------------------------------------------------
 
 todo_include_todos = True
@@ -442,7 +406,6 @@ def minify(path):
 
   with open(os.devnull, "w") as fnull:
     status = subprocess.check_call(min_command, shell=True, stdout=fnull)
-  fnull.close()
 
 # If the given path is relative, it prepends the abs_prefix to create an absolute path
 # Converts the resulting path to a Unix-style path
@@ -461,8 +424,8 @@ def process_path(path, abs_prefix):
 
 def process_section(section, index_rst, depth):
   for subsect in section:
-    if ('exercises' in section[subsect]):
-      process_module(subsect, section[subsect], index_rst, depth)
+    if 'exercises' in section[subsect]:
+      process_module(index_rst, subsect, section[subsect], depth)
     else:
       print ("  " * depth) + subsect
       index_rst.write(subsect + '\n')
@@ -474,7 +437,9 @@ def process_section(section, index_rst, depth):
 
   index_rst.write("\n")
 
-def process_module(mod_path, mod_attrib, index_rst, depth):
+def process_module(index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0):
+  global todo_count
+  
   mod_path = mod_path.replace('.rst', '')
   mod_name = os.path.basename(mod_path)
 
@@ -486,43 +451,66 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
   # Add module to list of modules processed
   processed_modules.append(mod_name)
 
+  print ("  " * depth) + mod_name
+  index_rst.write("   " + mod_name + "\n")
+  
   if mod_name == 'ToDo':
     return
 
-  print ("  " * depth) + mod_name
-  index_rst.write("   " + mod_name + "\n")
-
   exercises = mod_attrib['exercises']
-
-  scripts_appended = False
 
   # Read the contents of the module file from the RST source directory
   with open(odsa_dir + 'RST/source/' + mod_path + '.rst','r') as mod_file:
     mod_data = mod_file.readlines()
-  mod_file.close()
 
   # Find the end-of-line character for the file
   eol = mod_data[0].replace(mod_data[0].rstrip(), '')
+  
+  if 'long_name' in mod_attrib:
+    long_name = mod_attrib['long_name']
+  else:
+    long_name = mod_name
+  
+  # Set a JS flag on the page, indicating whether or not the module can be completed
+  if 'dispModComp' in mod_attrib:
+    # Use the value specified in the configuration file to override the calculated value
+    dispModComp = mod_attrib['dispModComp']
+  else:
+    dispModComp = False
+    
+    # Display 'Module Complete' only if the module contains at least one required exercise
+    for exer_name, exer_obj in exercises.items():
+      if 'required' in exer_obj and exer_obj['required']:
+        dispModComp = True
+        break
+  
+  # If these JavaScript variables are changed be sure to change them in the index.rst file (above) and ToDo.rst file (preprocessor.py)
+  line = '.. _' + mod_name + ':' + (eol * 2) + '.. raw:: html' + (eol * 2) + '   <script>'
+  line += 'ODSA.SETTINGS.DISP_MOD_COMP = ' + str(dispModComp).lower() + ';'
+  line += 'ODSA.SETTINGS.MODULE_NAME = "' + mod_name + '";'
+  line += 'ODSA.SETTINGS.MODULE_LONG_NAME = "' + long_name + '";'
+  line += '</script>' + (eol * 2)
+
+  mod_data[0] = line + mod_data[0]
 
   # Alter the contents of the module based on the config file
   i = 0
   while i < len(mod_data):
-    if '.. avmetadata::' in mod_data[i]:
-      # Append the RST script header to the module after the self reference directive
-      line = rst_script_header
-
-      # If the module contains a 'dispModComp' attribute, set the JS flag to indicate whether the module can be completed
-      if 'dispModComp' in mod_attrib:
-        line += eol + '.. raw:: html' + eol + eol
-        line += '   <script>ODSA.SETTINGS.DISP_MOD_COMP = ' + str(mod_attrib['dispModComp']).lower() + ';</script>' + eol
-
-      line += eol + '.. _' + mod_name + ':' + eol
-
-      mod_data[i] = line + eol + mod_data[i]
-      scripts_appended = True
-    elif '.. figure::' in mod_data[i]:
+    if '.. figure::' in mod_data[i]:
       image_path = mod_data[i].split(' ')[2].rstrip()
       images.append(os.path.basename(image_path))
+    elif '.. TODO::' in mod_data[i]:
+      if conf_data['suppress_todo']:
+        # Remove TODO directives from the RST file
+        mod_data[i] = ''
+        i += 1
+        
+        while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
+          mod_data[i] = ''
+          i += 1
+      else:
+        # Increment the TODO directive counter
+        todo_count += 1
     elif '.. inlineav::' in mod_data[i]:
       # Parse the AV name from the line
       av_name = mod_data[i].split(' ')[2].rstrip()
@@ -558,7 +546,8 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
 
         # Config file states exercise should be removed, remove it from the RST file
         while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-          mod_data.pop()
+          mod_data[i] = ''
+          i += 1
       else:
         # Append module name to embedded exercise
         mod_data[i] += '   :module: ' + mod_name + eol
@@ -579,17 +568,43 @@ def process_module(mod_path, mod_attrib, index_rst, depth):
 
     i = i + 1
 
-  if not scripts_appended:
-    print ("  " * (depth + 1 )) + 'ERROR: avmetadata directive is missing'
-    sys.exit(1)
-
   # Write the contents of the module file to the output src directory
   with open(src_dir + mod_name + '.rst','w') as mod_file:
     mod_file.writelines(mod_data)
-  mod_file.close()
 
+# Assigns default values to optional config attributes
+def set_defaults(conf_data, odsa_dir):
+  # Parse the name of the config file to use as the book name
+  conf_data['name'] = os.path.basename(config_file).replace('.json', '')
+  
+  if 'book_dir' not in conf_data:
+    conf_data['book_dir'] = 'Books'
+  
+  # If no backend address is specified, use an empty string to specify a disabled server
+  if 'backend_address' not in conf_data:
+    conf_data['backend_address'] = ''
 
+  # Strip the '/' from the end of the SERVER_URL
+  conf_data['backend_address'] = conf_data['backend_address'].rstrip('/')
 
+  if 'suppress_todo' not in conf_data:
+    conf_data['suppress_todo'] = False
+
+  # Assume exercises are hosted on same domain as modules
+  if 'av_origin' not in conf_data:
+    conf_data['av_origin'] = conf_data['module_origin']
+
+  # Assume exercises are hosted on same domain as modules
+  if 'exercise_origin' not in conf_data:
+    conf_data['exercise_origin'] = conf_data['module_origin']
+
+  # 'exercises_root_dir' should default to the OpenDSA root directory
+  if 'av_root_dir' not in conf_data:
+    conf_data['av_root_dir'] = odsa_dir
+
+  # 'exercises_root_dir' should default to the OpenDSA root directory
+  if 'exercises_root_dir' not in conf_data:
+    conf_data['exercises_root_dir'] = odsa_dir
 
 
 
@@ -604,70 +619,35 @@ if len(sys.argv) != 2:
 
 config_file = sys.argv[1]
 
-# Throw an error if the specified config files doesn't exist
-if not os.path.exists(config_file):
-  print "ERROR: File " + config_file + " doesn't exist"
-  sys.exit(1)
+validate_config_file(config_file)
 
-print "\nConfiguring OpenDSA, using " + config_file + '\n'
+print "Configuring OpenDSA, using " + config_file + '\n'
 
 # Read the configuration data
 with open(config_file) as config:
   # Force python to maintain original order of JSON objects
   conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
-config.close()
-
-# Parse the name of the config file to use as the book name
-conf_data['name'] = os.path.basename(config_file).replace('.json', '')
 
 # Auto-detect ODSA directory
 (odsa_dir, script) = os.path.split( os.path.abspath(__file__))
 odsa_dir = odsa_dir.replace("\\", "/")
 odsa_dir = odsa_dir.replace("/tools", "/")
 
+# Assign defaults to optional settings
+set_defaults(conf_data, odsa_dir)
+
 # Process the code and output directory paths
 code_dir = process_path(conf_data['code_dir'], odsa_dir)
 output_dir = process_path(conf_data['book_dir'], odsa_dir) + conf_data['name'] + '/'
 
-# Assign defaults to optional settings
-
-# Strip the '/' from the end of the SERVER_URL
-conf_data['backend_address'] = conf_data['backend_address'].rstrip('/')
-
-# Assume exercises are hosted on same domain as modules
-if 'av_origin' not in conf_data:
-  conf_data['av_origin'] = conf_data['module_origin']
-
-# Assume exercises are hosted on same domain as modules
-if 'exercise_origin' not in conf_data:
-  conf_data['exercise_origin'] = conf_data['module_origin']
-
-# Display an error message and exit if 'av_root_dir' is an absolute pathname to a remote system and its domain doesn't match 'av_origin'
-if 'av_root_dir' in conf_data and conf_data['av_root_dir'].startswith('http') and not conf_data['av_root_dir'].startswith(conf_data['module_origin']) and not conf_data['av_root_dir'].startswith(conf_data['av_origin']):
-  print 'ERROR: "av_origin" does not match domain of remote AV root directory'
-  print '"av_origin": ' + conf_data['av_origin']
-  print '"av_root_dir": ' + conf_data['av_root_dir']
-  sys.exit(1)
-elif 'av_root_dir' not in conf_data:
-  conf_data['av_root_dir'] = odsa_dir
-
-# Display an error message and exit if 'exercises_root_dir' is an absolute pathname to a remote system and its domain doesn't match 'exercise_origin'
-if 'exercises_root_dir' in conf_data and conf_data['exercises_root_dir'].startswith('http') and not conf_data['exercises_root_dir'].startswith(conf_data['module_origin']) and not conf_data['exercises_root_dir'].startswith(conf_data['exercise_origin']):
-  print 'ERROR: "exercise_origin" does not match domain of remote Exercises root directory'
-  print '"exercise_origin": ' + conf_data['exercise_origin']
-  print '"exercises_root_dir": ' + conf_data['exercises_root_dir']
-  sys.exit(1)
-elif 'exercises_root_dir' not in conf_data:
-  conf_data['exercises_root_dir'] = odsa_dir
-
 # TODO: Is this limitation still necessary?
-if output_dir == (odsa_dir) or output_dir == (odsa_dir + "RST/"):
+if output_dir == odsa_dir or output_dir == (odsa_dir + "RST/"):
   print "Unable to build in this location, please select a different directory"
   sys.exit(1)
 
 cwd = os.getcwd()
 
-if conf_data['build_JSAV']:
+if 'build_JSAV' in conf_data and conf_data['build_JSAV']:
   # Rebuild JSAV
   print "Building JSAV\n"
   status = 0
@@ -675,7 +655,6 @@ if conf_data['build_JSAV']:
     os.chdir(odsa_dir + 'JSAV/')
     with open(os.devnull, "w") as fnull:
       status = subprocess.check_call('make', shell=True, stdout=fnull)
-    fnull.close()
   finally:
     os.chdir(cwd)
 
@@ -690,6 +669,35 @@ print "Writing files to " + output_dir + "\n"
 src_dir = output_dir + "source/"
 distutils.dir_util.mkpath(src_dir)
 
+# Generate the index.rst file
+with open(src_dir + 'index.rst', 'w+') as index_rst:
+  print "Generating index.rst\n"
+  print "Processing..."
+  index_rst.write(index_header)
+
+  process_section(conf_data['chapters'], index_rst, 0)
+
+  index_rst.write(".. toctree::\n")
+  index_rst.write("   :maxdepth: 3\n\n")
+  
+  # Process the Gradebook as well
+  process_module(mod_path='Gradebook', index_rst=index_rst)
+  
+  if todo_count > 0:
+    index_rst.write("   ToDo\n")
+  
+  index_rst.write("\n")
+  index_rst.write("* :ref:`genindex`\n")
+  index_rst.write("* :ref:`search`\n")
+
+
+# Print out a list of any exercises found in RST files that do not appear in the config file
+if len(missing_exercises) > 0:
+  print "\nExercises Not Listed in Config File:"
+
+  for exercise in missing_exercises:
+    print '  ' + exercise
+
 # Initialize options for conf.py
 options = {}
 options['title'] = conf_data['title']
@@ -702,36 +710,21 @@ options['rel_ebook_path'] = rel_ebook_path
 options['code_dir'] = code_dir
 options['av_dir'] = conf_data['av_root_dir']
 options['exercises_dir'] = conf_data['exercises_root_dir']
+# TODO: Temporary fix until preprocessor.py stops creating a ToDo.rst file when were are no TODO directives
+options['remove_todo'] = 'rm source/ToDo.rst'
+# The relative path between the ebook output directory (where the HTML files are generated) and the root ODSA directory
+options['eb2root'] = os.path.relpath(odsa_dir, output_dir + rel_ebook_path) + '/'
+
+if todo_count > 0:
+  options['remove_todo'] = ''
 
 # Create a Makefile in the output directory
 with open(output_dir + 'Makefile','w') as makefile:
   makefile.writelines(makefile_template % options)
-makefile.close()
 
 # Create conf.py file in output source directory
 with open(src_dir + 'conf.py','w') as conf_py:
   conf_py.writelines(conf % options)
-conf_py.close()
-
-# Generate the index.rst file
-with open(src_dir + 'index.rst', 'w+') as index_rst:
-  print "Generating index.rst\n"
-  print "Processing..."
-  index_rst.write(index_header % rst_script_header)
-
-  process_section(conf_data['chapters'], index_rst, 0)
-
-  index_rst.write("* :ref:`genindex`\n")
-  index_rst.write("* :ref:`search`\n")
-index_rst.close()
-
-# Print out a list of any exercises found in RST files that do not appear in the config file
-if len(missing_exercises) > 0:
-  print "\nExercises Not Listed in Config File:"
-
-  for exercise in missing_exercises:
-    print '  ' + exercise
-
 
 # Copy _static and select images from RST/source/Images/ to the output source directory
 distutils.dir_util.copy_tree(odsa_dir + 'RST/source/_static/', src_dir + '_static', update=1)
@@ -784,7 +777,6 @@ with open(src_dir + '_static/config.js','w') as config_js:
     conf_js_data['allow_anon_credit'] = 'true'
 
   config_js.writelines(config_js_template % conf_js_data)
-config_js.close()
 
 # Add the index.html file that redirects to the build/html directory
 index_html_template = '''\
@@ -799,7 +791,6 @@ index_html_template = '''\
 
 with open(output_dir + 'index.html','w') as index_html:
   index_html.writelines(index_html_template % rel_ebook_path)
-index_html.close()
 
 # Optionally run make on the output directory
 if 'build_ODSA' not in conf_data or conf_data['build_ODSA']:

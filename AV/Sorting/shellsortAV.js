@@ -74,12 +74,11 @@
       for (var i = 0; i < incrs.length; i += 1) {
         if (incrs[i] < arrValues.length) {
           sweep(jsav, arr, incrs[i]); // run the sweep to create the AV
-        }
-	else {
+        } else {
           jsav.umsg("Start the next increment size: " + incrs[i]);
           jsav.step();
-	  jsav.umsg("Increment " + incrs[i] + " is so big that the sublists would have only one element. So it is skipped.");
-	  jsav.step();
+          jsav.umsg("Increment " + incrs[i] + " is so big that the sublists would have only one element. So it is skipped.");
+          jsav.step();
         }
       }
       jsav.umsg("Done sorting!");

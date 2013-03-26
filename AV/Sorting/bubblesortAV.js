@@ -72,7 +72,7 @@
 
       // Create a new array using the layout the user has selected
       arr = jsav.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
-      pseudo = jsav.code({url: "../../SourceCode/Processing/Sorting/Bubblesort/Bubblesort.pde",
+      pseudo = jsav.code({url: "../../SourceCode/Processing/Sorting/Bubblesort.pde",
                           startAfter: "/* *** ODSATag: Bubblesort *** */",
                           endBefore: "/* *** ODSAendTag: Bubblesort *** */"});
       jsav.umsg("Starting Bubble Sort");

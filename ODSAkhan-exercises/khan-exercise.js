@@ -721,12 +721,23 @@ var Khan = (function() {
       prepareUserExercise( userExercise );
 
     } else {
+      var jsonData = {};
+      jsonData.book = BOOK_NAME;
+      jsonData.module = MODULE_NAME;
+      jsonData.key = 'phantom-key';
+
+      if (localStorage.session) {
+        var session = JSON.parse(localStorage.session);
+        jsonData.key = session.key;
+      }
+
       // Load in the exercise data from the server
       jQuery.ajax({
         // Do a request to the server API
         //url: server + "/api/v1/user/exercises/" + exerciseName,
         url: server + "/api/v1/exercises/?name=" + exerciseName,
         type: "GET",
+        data: jsonData,
         dataType: "json",
 
         // Make sure cookies are passed along

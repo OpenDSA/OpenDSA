@@ -2,7 +2,7 @@ RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
 TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
-MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar
+MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
 .PHONY: all clean lint csslint jshint min CS223 CS3114a CS3114b OpenDSA T1061220 allBooks nomin pull
 
@@ -57,6 +57,12 @@ T1061220: min
 
 test: min
 	python $(CONFIG_SCRIPT) config/test.json
+
+O2: min
+	python $(CONFIG_SCRIPT) config/O2.json
+
+invalid: min
+	python $(CONFIG_SCRIPT) config/invalid.json
 
 allBooks: CS223 CS3114a CS3114b OpenDSA T1061220
 

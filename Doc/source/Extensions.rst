@@ -155,13 +155,16 @@ SYNOPSIS::
        :points: {number}
        :required: true|false
        :threshold: {number}
+       :caption: {string}
+       :align: left|right|center|justify|inherit
 
 DESCRIPTION
     ``.. inlineav:: avId type``
 
       Create a container for an inline AV with the given ID and type.
       If the type is ``ss`` a slideshow will be created and if it is
-      ``dgm`` a diagram will be created.
+      ``dgm`` a diagram will be created. Also treats inline AVs as figure,
+      when a cross reference target is declared along with ``caption`` and ``align`` options.
 
       ``<type>`` **is automatically appended to the inlineav directive
       by the configuration process and should not be added manually.**
@@ -190,6 +193,17 @@ DESCRIPTION
 
       Threshold number of points required for credit.
       **Added automatically by the configuration process, do NOT add manually.**
+
+    ``:caption: {string}``
+
+      The caption to be displayed below the AV.
+
+
+    ``:align: left|right|center|justify|inherit``
+
+      The alignment of the caption within the page.
+
+.. _numref:
 
 numref
 ------

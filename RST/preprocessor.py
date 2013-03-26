@@ -1,3 +1,10 @@
+#The preprocessor role is to create a dictionary of book objects and 
+#a number representing their order of appearance in the document.
+#The number is used as hyperlink text for cross referencing.
+#The preprocessor also edit the html page to insert correct chapter and section numbers. 
+
+__author__ = 'efouh'
+
 import os
 import sys
 import re
@@ -13,6 +20,7 @@ from xml.dom.minidom import parse, parseString
 from string import whitespace as ws
 
 
+#defines the color of output text (warnings, errors, and info)
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -30,7 +38,8 @@ class bcolors:
         self.ENDC = ''
 
 
-
+#a class representing modules. Object attributes are module metadata.
+#The constructor parses module file to extract metadata indentified by keywords
 class modPreReq:
 
    def __init__(self,filename):
@@ -60,9 +69,14 @@ class modPreReq:
       desc=''
       fig = 1
       tab = 1
+      label = ''
+      file_modified = False
+      #label of jsav slide shows
+      ss_label=''
       #config.mod_numb+=1
       fls = open(filename,'r')
       data = fls.readlines()
+      new_data = []
       fls.close()
       self.name = os.path.basename(filename)
       now = datetime.datetime.now()
@@ -87,17 +101,24 @@ class modPreReq:
             self.covers =  p.sub('',str).split(',')
          if line.startswith('.. _'):
             label =  re.split(':', re.split('.. _', line, re.IGNORECASE)[1], re.IGNORECASE)[0]
-            if data[cpt+1].startswith('.. figure::'):
+            if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. inlineav::'):
                if os.path.splitext(os.path.basename(filename))[0] in config.table:
                  tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                  config.table[label] = tb + '.%s#' %fig
                  fig+=1
+                 if data[cpt+1].startswith('.. inlineav::'):
+                     ss_label = label
             if data[cpt+1].startswith('.. table::'):
                 if os.path.splitext(os.path.basename(filename))[0] in config.table:
                   tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                   config.table[label] = tb + '.%s#' %tab
                   tab+=1
-
+         if ':caption:' in line and ss_label !='':
+             new_caption = ':caption: <' + ss_label + '>'
+             line = line.replace(':caption:',new_caption) 
+             file_modified = True
+             ss_label = ''
+  
          if ('.. TODO::' in line  or '.. todo::' in line) and len_wthsp==-1 and start==-1 and end==-1:
             start = cpt+1
          if start==cpt:
@@ -138,10 +159,16 @@ class modPreReq:
          if ('.. TODO::' in line  or '.. todo::' in line) and len_wthsp==-1 and start==-1 and end==0:
             start = cpt+1
             end = -1
+         new_data.append(line)
+      #write the modified file if we encountered an slide show figure
+      if file_modified:
+          otfile = open(filename,'wb')
+          otfile.writelines(new_data)
+          otfile.close()
 
       self.prereqNum = len(self.prereq)
 
-
+   #Function that verifies that module prerequisites are in index.rst
    def verifPreref(self, modRoster):
       set1 = set(self.prereq)
       set2 = set(modRoster)
@@ -213,7 +240,8 @@ def generateCSV(modRoster, modDest):
     except IOError:
        print 'ERROR: When saving CSV file'
 
-
+#creates a tree of modules based on the number of prerequisites.
+#it was/will be use for the concept/knowledge map
 def modOrdering(modRoster):
 
    finalMod=[]
@@ -301,7 +329,10 @@ def is_file_modified(dict, dir, file, run_number):
      else:
          return False
 
-
+#This method is run after Sphinx has created all html files. 
+#It loads the correct chapter and section numbers of each section and hyperlink from page_chapter.json file created
+# by enumFile method before running Sphinx. The method also writes in count.txt the modification date of the file to avoid
+#parsing non modified files  
 def updateTOC(args):
     iFile = open(args[0]+'index.rst','r')
     iLine = iFile.readlines()
@@ -350,6 +381,9 @@ def updateTOC(args):
           idx.close()
           modIndex =[]
           for idxLine in idxL:
+             #inject css rule to remove haiku's orange bullets
+             if '</head>' in idxLine:      
+                 idxLine = idxLine.replace('</head>','<style>\nul li {\n\tbackground: none;\n\tlist-style-type: none;\n}\n</style>\n</head>')      
              if 'class="section"' in idxLine:
                 if not start:
                     sectnum+=1
@@ -357,7 +391,7 @@ def updateTOC(args):
                     start = False
              if 'class="headerlink"' in idxLine:
                 chapter = re.split('>',re.split('<a class="headerlink"', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
-             if 'class="toctree-l' in idxLine:
+             if 'class="toctree-l' in idxLine and 'Gradebook' not in idxLine:
                  str1 = re.split('>', re.split('</a>', idxLine, re.IGNORECASE)[0], re.IGNORECASE)
                  str = str1[len(str1)-1]
                  str2 ='%s.' % sectnum + str
@@ -366,18 +400,6 @@ def updateTOC(args):
           otfile = open(args[1]+'/index.html','wb')
           otfile.writelines(modIndex)
           otfile.close()
-       if pagename=='Privacy.html':
-          idx  = open(args[1]+'/Privacy.html','r')
-          idxL = idx.readlines()
-          idx.close()
-          modIndex =[]
-          for idxLine in idxL:
-              if '<title>' in idxLine and 'no title' in idxLine:
-                  idxLine = idxLine.replace('no title','OpenDSA Site Privacy Policy')
-              modIndex.append(idxLine)
-          otfile = open(args[1]+'/Privacy.html','wb')
-          otfile.writelines(modIndex)
-          otfile.close() 
 
        processedFiles=[]
        if pagename[:-5] not in processedFiles:
@@ -398,31 +420,30 @@ def updateTOC(args):
                 header = '%s %s %s' %(prefix,chap[1],chap[0])
                 td = 1
              for idxLine in idxL:
-                if 'id="prevmod"' in idxLine or 'id="nextmod"' in idxLine:
+                if 'id="prevmod"' in idxLine or 'id="nextmod"' in idxLine or 'id="prevmod1"' in idxLine or 'id="nextmod1"' in idxLine:
                    prev = re.split('">',re.split('</a>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                    href = re.split('href="',re.split('">', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                    if href[:-5] in data:
                       chap = data[href[:-5]]
                       str = '%s.' %chap[1] + prev
                       idxLine = idxLine.replace(prev,str)
-                   else:
-                       if pagename=='ToDO':           #ToDo case
-                          chap = data['Bibliography']
-                          str = '%s.' %chap[1] + prev
-                          idxLine = idxLine.replace(prev,str)
                    if  href[:-5]=='ToDO':   #special case ToDo.html
                       chap = data['Bibliography']
                       str = '%s.' %chap[1] + prev
                       idxLine = idxLine.replace(prev,str)
-                if '<h2 class="heading"><span>'  in idxLine and pagename != 'index':
+                if '<h2 class="heading"><span>'  in idxLine and pagename != 'index' and pagename != 'Gradebook':
                    heading = re.split('<span>',re.split('</span>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                    idxLine = idxLine.replace(heading,header)
+                if '<title>'  in idxLine and pagename != 'index' and pagename != 'Gradebook':
+                   title = re.split('<title>',re.split('</title>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
+                   number_title = '%s.' %chap[1] + title
+                   idxLine = idxLine.replace(title,number_title)
                 for i in range(1,7):
-                   if '<h%s>' %i in idxLine and td==0 and pagename != 'index':
+                   if '<h%s>' %i in idxLine and td==0 and pagename != 'index' and pagename != 'Gradebook':
                       par  = re.split('<h%s>'%i,re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                       par1 = '%s.' %data[pagename][1] + par
                       idxLine = idxLine.replace(par,par1)
-                if td == 1 and pagename != 'index':
+                if td == 1 and pagename != 'index' and pagename != 'Gradebook':
                     if 'a class="headerlink"' in idxLine:
                       par  = re.split('<h1>',re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                       par1 = '%s.' %chap[1] + par
@@ -436,12 +457,12 @@ def updateTOC(args):
              otfile.writelines('%s.html:%s\n'%(pagename,tsize))
              otfile.close()
 
-
+#creates the ToDo.html page
 def todoHTML(todolst):
 
    tp =''
    mn=0
-   rst='.. _Todo:\n\n.. include:: JSAVheader.rinc\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'
+   rst='.. _Todo:\n\n.. raw:: html\n\n   <script>ODSA.SETTINGS.DISP_MOD_COMP = false;ODSA.SETTINGS.MODULE_NAME = "ToDo";ODSA.SETTINGS.MODULE_LONG_NAME = "ToDo";</script>\n\n.. index:: ! todo\n\nTODO List\n=========\n\n'
    for i, (k,v,s) in enumerate(todolst):
          if tp=='' and v=='':
             if mn==0:
@@ -486,7 +507,7 @@ def isIncludeChapter(txt):
    else:
       return False
 
-
+#get the start number for sectnum and chapnum directives
 def getSectionStartNumb(indexfile):
 
    directive = 0
@@ -501,6 +522,10 @@ def getSectionStartNumb(indexfile):
          return sectnum-1
    return 0
 
+
+#Parses all modules files in index.rst and associates each section to their chaper and section numbers 
+# in the following format "chapter_number.section_number". The dictionary created is dumped into a file.
+#the file will be used after all html files are created to replace sphinx hyperlink text with numbers. 
 def enumFile(folder, folder1):
 
    filelist = []
@@ -576,7 +601,7 @@ def main(argv):
   (options, args) = parser.parse_args()
   control(argv,args)
 
-  if not options.postp is None:
+  if options.postp is not None:
      updateTOC(args)
   else:
      modDir=''

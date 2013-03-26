@@ -15,7 +15,8 @@
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question">The worst-case cost for Radix Sort when
+      <p class="question">Assuming that the number of digits used is
+      not excessive, the worst-case cost for Radix Sort when
       sorting <code>n</code> keys with distinct key values is:</p>
       <div class="solution"><var><code>\Theta(n \log n)</code></var></div>
       <ul class="choices">
@@ -24,7 +25,11 @@
 	<li><var><code>\Theta(n^2)</code></var></li>
       </ul>
       <div class="hints">
-	<p>Sorry, no hints are available.</p>
+	<p>It takes at least <code>\log n</code> digits to
+	represent <code>n</code> distinct values.</p>
+	<p>The cost is number of digits times number of records.</p>
+	<p>In a reasonable implementation, the number of digits won't
+	be much worse than <code>\log n</code></p>
       </div>
     </div> 
   </div>

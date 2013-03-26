@@ -187,9 +187,10 @@ Example of ``localStorage.score_data``::
       "CS3114": [
         {
           "exercise":"SelsortCON1",
-          "submit_time":1360269557116,
           "module":"SelectionSort",
           "score":1,
+          "steps_fixed":0,
+          "submit_time":1360269557116,
           "total_time":2559,
           "uiid":1360269543543
         }
@@ -280,3 +281,10 @@ Support Functions
 * ``storeProficiencyStatus(name, [status], [username])`` takes an exercise or module name, a status (optional) and username (optional) and caches the given status for the given exercise / module for the given user in local storage.  If username is not specified, the current user's name is used and if status is not specified, it defaults to ``STORED``.
 * ``updateProfDisplay(name)`` can be called with either an exercise or module name as an argument (if no argument is given, it will default to the current module name).  The function automatically detects whether the argument is an exercise or module name and updates the appropriate display(s) based on the current user's proficiency status in local storage.
 * ``checkProficiency(name)`` can be called with either an exercise or module name as an argument (if no argument is given, it will default to the current module name).  This function checks local storage for the given exercise / module and if it's found, calls ``updateProfDisplay()`` and returns.  If the exercise / module is not found, the server is queried for the user's proficiency status and when the response is received, ``storeStatusAndUpdateDisplays()`` is called to make sure the status is stored in local storage and the proficiency indicators are updated.
+
+Debugging
+=========
+
+The client-side framework is a relatively complex system which can be difficult to fully understand without tracing its execution.  While the debugging tool built into Firebug can be useful for this, its impossible to back up and see something execute again or compare how a value changes without manually remembering the previous value (which is nearly impossible to do with the long strings of log data we save to local storage).  The current solution is to wrap console logging statements with a conditional based on the flag ODSA.SETTING.DEBUG_MODE.  This is automatically set to ``false`` by ``configure.py`` when ``_static/config.js`` is created, but can be manually changed in ``configure.py`` or in the generated ``config.js`` file itself for persistent debugging.  For a quick diagnosis, the value can be changed interactively via the console, however, this setting will not persist between page loads.  The log statements are grouped by function and internal calls are nested to make it easy to trace the call chain.  Groups can be minimized to hide information the user is no interested in and make the interesting information stand out more.  It also provides a quick and easy way for a developer to scan through the log and make sure all the functions they expect to be called are called without having to step through all of them with the debugger.
+
+Unfortunately, this debugging system makes the code a little more bulky and less readable, but it has been found to be very helpful for debugging.  Additionally, if students are experiencing problems, this system will allow us to quickly and easily diagnose their problem on their own computer without requiring them to install Firebug or adding additional print statements to the framework itself.  

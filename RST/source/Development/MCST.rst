@@ -3,12 +3,12 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata::
-   :author: 
-   :prerequisites: 
-   :topic: Minimal Cost Spanning Trees
+.. avmetadata:: 
+   :author:
+   :prerequisites: GraphShortest
+   :topic: Graphs
 
-Minimal Cost Spanning Trees [STUB]
-==================================
+MCST [STUB]
+===========
 
-Placeholder for crossreference.
+Placeholder for Crossreference

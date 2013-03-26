@@ -17,8 +17,7 @@
     <div id="problem-type-or-description">
       <p class="question"> If <code>I</code> is the number of
 	inversions in an input array of <code>n</code> records,
-	then Insertion Sort will run in what time in the worst
-	case?</p>
+	then Insertion Sort will run in what time?
       <div class="solution"><var><code>\Theta(n+I)</code></var></div>
       <ul class="choices" data-show="4">
 	<li><var><code>\Theta(n - I)</code></var></li>
@@ -28,7 +27,12 @@
 	<li><var><code>\Theta(I)</code></var></li>
       </ul>
       <div class="hints">
-	<p>Sorry, no hints are available.</p>
+	<p>Insertion sort has to do <code>n</code> passes where it
+	compares at least once.</p>
+	<p>If the record for this pass has no remaining
+	inversions, then it requires no work.</p>
+	<p>But if it does have inversions, it will need a swap for
+	each such inversion.</p>
       </div>
     </div> 
   </div>

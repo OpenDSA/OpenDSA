@@ -116,8 +116,8 @@ There are many reasons why data values might be poorly distributed.
 3. If the input is a collection of common English words, the beginning
    letter will be poorly distributed.
 
-Note that in examples 2  and 3, either high- or
-low-order bits of the key are poorly distributed.
+Note that for items 2 and 3 on this list,
+either high- or low-order bits of the key are poorly distributed.
 
 When designing hash functions, we are generally faced with one of two
 situations:

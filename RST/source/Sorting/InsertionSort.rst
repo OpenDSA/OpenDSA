@@ -33,7 +33,7 @@ already processed.
 Here is an implementation.
 The input is an array of :math:`n` records stored in array ``A``.
 
-.. codeinclude:: Sorting/Insertionsort/Insertionsort.pde 
+.. codeinclude:: Sorting/Insertionsort.pde 
    :tag: Insertionsort        
 
 Consider the example of the following array.
@@ -110,8 +110,8 @@ restoring sorted order using Insertion Sort might be a good idea if we
 know that the disordering is slight.
 Examples of algorithms that take advantage of Insertion Sort's
 near-best-case running time are Shellsort
-(Module :ref:`ShellSort <Shellsort>`)
-and Quicksort (Module :ref:`Quicksort <Quicksort>`).
+(Module :numref:`ShellSort <Shellsort>`)
+and Quicksort (Module :numref:`Quicksort <Quicksort>`).
 
 .. index:: ! inversion
 
@@ -178,5 +178,14 @@ Here are some review questions to check that you understand
 Insertion Sort.
 
 .. avembed:: Exercises/Sorting/InssortSumm.html ka
+
+Notes
+-----
+
+See
+`Computational Fairy Tales: Why Tailors Use Insertion Sort
+<http://computationaltales.blogspot.com/2011/04/why-tailors-use-insertion-sort.html>`_
+for a discussion on how the relative costs of search and insert can
+affect what is the best sort algorithm to use.
 
 .. odsascript:: AV/Sorting/insertionsortCON.js

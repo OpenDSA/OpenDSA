@@ -93,7 +93,7 @@ indices, respectively, for the subarray being sorted.
 The initial call to Quicksort would be
 ``quicksort(array, 0, n-1)``.
 
-.. codeinclude:: Sorting/Quicksort/Quicksort.pde
+.. codeinclude:: Sorting/Quicksort.pde
    :tag: Quicksort
 
 Function ``partition`` will move records to the
@@ -121,7 +121,7 @@ expensive, and we can do nearly as well by selecting the middle
 position in the array.
 Here is a simple ``findpivot`` function.
 
-.. codeinclude:: Sorting/Quicksort/Quicksort.pde
+.. codeinclude:: Sorting/Quicksort.pde
    :tag: findpivot
 
 Now you can have some practice.
@@ -140,7 +140,7 @@ ends of the subarray, swapping values as necessary until the two
 indices meet.
 Here is a Java implementation for the partition step.
 
-.. codeinclude:: Sorting/Quicksort/Quicksort.pde
+.. codeinclude:: Sorting/Quicksort.pde
    :tag: partition
 
 Note the check that ``right >= left`` in the second inner

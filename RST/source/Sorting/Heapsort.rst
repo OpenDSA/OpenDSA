@@ -59,7 +59,7 @@ Module :numref:`External Sorting <ExternalSort>`.
 
 A complete implementation is as follows.
 
-.. codeinclude:: Sorting/Heapsort/Heapsort.pde 
+.. codeinclude:: Sorting/Heapsort.pde 
    :tag: Heapsort        
 
 Because building the heap takes :math:`\Theta(n)` time

@@ -1,5 +1,4 @@
 {
-  "config_version": 0.1,
   "title": "CS3114 Spring 2013 (Cao)",
   "book_dir": "Books",
   "code_dir": "SourceCode/Processing",
@@ -8,6 +7,7 @@
   "build_JSAV": false,
   "build_ODSA": true,
   "allow_anonymous_credit": true,
+  "suppress_todo": true,
   "chapters": {
     "Preface": {
       "Intro": {
@@ -381,6 +381,7 @@
       },
       "Sorting/BinSort": {
         "long_name": "Binsort",
+        "dispModComp": true,
         "exercises": {
           "BinsortCON1": {
             "long_name": "Binsort Slideshow 1",
@@ -464,6 +465,7 @@
     "Hashing": {
       "Hashing/HashIntro": {
         "long_name": "Introduction",
+        "dispModComp": true,
         "exercises": {
           "hashIntroCON1": {
             "long_name": "Hashing Intro Slideshow",
@@ -766,10 +768,6 @@
       },
       "Bibliography": {
         "long_name": "Bibliography",
-        "exercises": {}
-      },
-      "Gradebook": {
-        "long_name": "Gradebook",
         "exercises": {}
       }
     }
