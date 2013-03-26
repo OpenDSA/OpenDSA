@@ -194,12 +194,12 @@ DESCRIPTION
       Threshold number of points required for credit.
       **Added automatically by the configuration process, do NOT add manually.**
 
-      ``:caption: {string}``
+    ``:caption: {string}``
 
       The caption to be displayed below the AV.
 
 
-      ``:align: left|right|center|justify|inherit``
+    ``:align: left|right|center|justify|inherit``
 
       The alignment of the caption within the page.
 

@@ -28,6 +28,13 @@ def validate_origin(origin, origin_type):
 # Validate an exercise
 def validate_exercise(exer_name, exercise):
   global error_count
+  
+  # Ensure exercise name is <= the max length of the Exercise name field in the database 
+  max_length = 50
+  if len(exer_name) > max_length:
+    print 'ERROR: ' + exer_name + ' is greater than ' + max_length + ' characters'
+    error_count += 1
+  
   required_fields = []
   optional_fields = ['long_name', 'points', 'remove', 'required', 'showhide', 'threshold']
   

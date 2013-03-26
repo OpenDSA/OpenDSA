@@ -179,4 +179,13 @@ Insertion Sort.
 
 .. avembed:: Exercises/Sorting/InssortSumm.html ka
 
+Notes
+-----
+
+See
+`Computational Fairy Tales: Why Tailors Use Insertion Sort
+<http://computationaltales.blogspot.com/2011/04/why-tailors-use-insertion-sort.html>`_
+for a discussion on how the relative costs of search and insert can
+affect what is the best sort algorithm to use.
+
 .. odsascript:: AV/Sorting/insertionsortCON.js

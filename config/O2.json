@@ -75,7 +75,15 @@
       },
       "Development/MCSTfull": {
         "long_name": "Minimal Cost Spanning Trees",
-        "exercises": {}
+        "exercises": {
+          "PrimAV": {
+            "long_name": "Prim's Algorithm Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+	}
       }
     },
     "Under Development": {

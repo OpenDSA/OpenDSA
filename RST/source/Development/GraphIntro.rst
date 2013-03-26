@@ -8,26 +8,30 @@
    :prerequisites:
    :topic: Graphs
 
-Introduction [Text]
-===================
+Introduction [Storyboard]
+=========================
 
 Graphs provide the ultimate in data structure flexibility.
-Graphs can model both real-world systems and abstract problems,
-so they are used in hundreds of applications.
-Here is a small sampling of the range of problems that graphs are
-routinely applied to.
+Graphs are used to model both real-world systems and abstract
+problems, so they are the data structure of choice in many
+applications.
+Here is a small sampling of the types of problems that graphs are
+routinely used for.
 
 1. Modeling connectivity in computer and communications networks.
 
-2. Representing a map as a set of locations with distances between
-   locations; used to compute shortest routes between locations.
+2. Representing an abstract map as a set of locations with distances
+   between locations. This can used to compute shortest routes between
+   locations such as in a GPS routefinder.
 
-3. Modeling flow capacities in transportation networks.
+3. Modeling flow capacities in transportation networks to find which
+   links create the bottlenecks.
 
-4. Finding a path from a starting condition to a goal condition;
-   for example, in artificial intelligence problem solving.
+4. Finding a path from a starting condition to a goal condition.
+   This is a common way to model problems in artificial intelligence
+   applications and computerized game players.
 
-5. Modeling computer algorithms, showing transitions from one program
+5. Modeling computer algorithms, to show transitions from one program
    state to another.
 
 6. Finding an acceptable order for finishing subtasks in a complex
@@ -36,14 +40,14 @@ routinely applied to.
 7. Modeling relationships such as family trees, business or military
    organizations, and scientific taxonomies.
 
-In the rest of this section covers some basic graph terminology.
+The rest of this module covers some basic graph terminology.
 The following modules will describe fundamental representations for
 graphs, provide a reference implementation, and cover
 core graph algorithms including traversal, topological sort, shortest
 paths algorithms, and algorithms to find the minimal-cost spanning tree.
 Besides being useful and interesting in their own right, these
-algorithms illustrate the use of some data structures presented
-in earlier chapters.
+algorithms illustrate the use of many other data structures presented
+throughout the course.
 
 
 Terminology and Representations
@@ -52,7 +56,7 @@ Terminology and Representations
 A graph :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists of a set of
 vertices :math:`\mathbf{V}` and a set of edges :math:`\mathbf{E}`, such
 that each edge in :math:`\mathbf{E}` is a connection between a pair of
-vertices in :math:`\mathbf{V}` [#]_.
+vertices in :math:`\mathbf{V}`. [#]_
 
 The number of vertices is written :math:`|\mathbf{V}|`, and the number
 of edges is written :math:`|\mathbf{E}|`.
@@ -101,6 +105,15 @@ are said to be :dfn:`weighted`.
    because Vertex 1 appears twice.
    Vertices 1, 3, 2, 4, and 1 form a simple cycle.
 
+.. TODO::
+   :type: Figure
+
+   Replace the image above with a JSAV-generated diagram. Possibly
+   could use a slideshow to walk through the various
+   definitions. Could start with a slide that lists the words and
+   their definitions, then a series of slides that illustrate each
+   word.
+
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
 forms a :dfn:`path` of length :math:`n-1` if there exist edges from
 :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
@@ -138,6 +151,11 @@ with three connected components.
    Vertices 5 and 6 form a second connected component.
    Vertex 7 by itself forms a third connected component.
 
+.. TODO::
+   :type: Figure
+
+   Replace image above with a JSAV diagram
+
 A graph without cycles is called :dfn:`acyclic`.
 Thus, a directed graph without cycles is called a
 :dfn:`directed acyclic graph` or DAG.
@@ -159,6 +177,12 @@ a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
    (a) A directed graph.
    (b) The adjacency matrix for the graph of (a).
    (c) The adjacency list for the graph of (a).
+
+.. TODO::
+   :type: Figure
+
+   Replace image above with a JSAV-generated image. Or better, a
+   slideshow to illustrate the various representation issues.
 
 There are two commonly used methods for representing graphs.
 The :dfn:`adjacency matrix`
@@ -284,8 +308,9 @@ Notes
 -----
 
 .. [#] Some graph applications require that a given pair of vertices
-       can have multiple or parallel edges connecting them or that a
+       can have multiple or parallel edges connecting them, or that a
        vertex can have an edge to itself.
-       However, the applications discussed in here do not require
-       either of these special cases, so for simplicity we will assume
-       that they cannot occur.
+       However, the applications discussed here do not require
+       either of these special cases.
+       To simplify our graph API, we will assume that they cannot
+       occur.
