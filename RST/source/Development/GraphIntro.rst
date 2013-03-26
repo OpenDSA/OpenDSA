@@ -126,7 +126,7 @@ and last vertices being the same.
 
 A :dfn:`subgraph` :math:\mathbf{S}` is formed from graph
 :math:`\mathbf{G}` by selecting a subset :math:`\mathbf{V}_s` of
-:math:`\mathbf{G}` 's vertices and a subset 
+:math:`\mathbf{G}`'s vertices and a subset 
 :math:`\mathbf{E}_s` of :math:`\mathbf{G}` 's edges such that for every
 edge :math:`e  \in \mathbf{E}_s`,
 both of :math:`e` 's vertices are in :math:`\mathbf{V}_s`.

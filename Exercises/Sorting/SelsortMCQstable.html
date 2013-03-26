@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Selection Sort Question: Stable</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script type="text/javascript"
+     src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+</script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../lib/khan-exercise-min.js"></script>
+</head>
+<body>
+
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">
+	Which statement best characterizes
+	Selection Sort (as the code is written in this module)?
+	Recall that a stable sorting algorithm maintains the relative
+	order of records with equal keys.</p>
+      <div class="solution"><var>"Selection Sort is not stable, but with minor modifications it could be made so"</var></div>
+      <ul class="choices">
+	<li><var>"Selection Sort is stable"</var></li>
+	<li><var>"Selection Sort is not stable"</var></li>
+      </ul>
+      <div class="hints">
+        <p>Think of the behaviour of every pass through the inner
+	   for loop of Selection Sort if two records are equal, with
+	   the greatest value in the array.</p>
+        <p>Which record will be selected?</p>
+	<p>The first such record.</p>
+	<p>It will be moved to the last position in the array, putting
+	it out of order with other equal-valued records.</p>
+	<p> But we could easily change the maximum-finding part of the
+	loop to take the last of these equal-valued records.</p>
+      </div>
+    </div> 
+  </div>
+</div>
+</body>
+</html>

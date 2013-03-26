@@ -27,14 +27,15 @@
 	<li>It depends on the order of the records</li>
       </ul>
       <div class="hints">
-	<p> Selection Sort first finds the smallest key in an
-	  unsorted list, then the second smallest, and so on. </p>
-	<p> To find the next smallest key value requires searching
+	<p> Selection Sort first finds the largest key in an
+	  unsorted list, then the second largest, and so on. </p>
+	<p> To find the next largest key value requires searching
 	  through the entire unsorted portion of the array, but the
 	  search itself needs no swaps.</p>
-	<p> Once the next smallest element is found, one swap is
+	<p> Once the next largest key is found, one swap is
 	  required to put the record in place.</p>
-	<p>We don't need to check the very last element, since it
+	<p>We don't need to check anything on the very last pass,
+	  since at that point the first record
 	  must already be in place.</p>
       </div>
     </div>
