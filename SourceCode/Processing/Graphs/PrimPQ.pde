@@ -1,6 +1,6 @@
-/* *** ODSATag: DijkstraPQ *** */
-// Dijkstra's shortest-paths: priority queue version
-void DijkstraPQ(Graph G, int s, int[] D) {
+/* *** ODSATag: PrimsPQ *** */
+// Prims MCST algorithm: priority queue version
+void PrimPQ(Graph G, int s, int[] D, int[] V) {
   int v;                                 // The current vertex
   KVPair[] E = new KVPair[G.e()];        // Heap for edges
   E[0] = new KVPair(0, s);               // Initial vertex
@@ -14,15 +14,17 @@ void DijkstraPQ(Graph G, int s, int[] D) {
          v = (Integer)temp.value(); } // Get position
       while (G.getValue(v) == VISITED);
     G.setValue(v, VISITED);
-    if (D[v] == INFINITY) return;        // Unreachable
+    if (D[v] == INFINITY) return;  // Unreachable
+    if (v != s) AddEdgetoMST(V[v], v); // Add edge to MST
     int[] nList = G.neighbors(v);
     for (int j=0; j<nList.length; j++) {
       int w = nList[j];
-      if (D[w] > (D[v] + G.weight(v, w))) { // Update D
-        D[w] = D[v] + G.weight(v, w);
+      if (D[w] > G.weight(v, w)) { // Update D
+        D[w] = G.weight(v, w);
+        V[w] = v;                  // Where it came from
         H.insert(D[w], w);
       }
     }
   }
 }
-/* *** ODSAendTag: DijkstraPQ *** */
+/* *** ODSAendTag: PrimsPQ *** */

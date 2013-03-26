@@ -2,13 +2,6 @@ final int numtests = 5;
 final int testsize = 100;
 boolean SUCCESS = true;
 
-void swap(int[] A, int i, int j) {
-  int temp = A[i];
-  A[i] = A[j];
-  A[j] = temp;
-}
-
-
 void setup() {
   int[] A = new int[testsize];
   int i;
