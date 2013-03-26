@@ -2,13 +2,6 @@ final int numtests = 5;
 final int testsize = 100;
 boolean SUCCESS = true;
 
-void swap(KVPair[] A, int i, int j) {
-  KVPair temp = A[i];
-  A[i] = A[j];
-  A[j] = temp;
-}
-
-
 void setup() {
   KVPair[] A = new KVPair[testsize];
   int i;

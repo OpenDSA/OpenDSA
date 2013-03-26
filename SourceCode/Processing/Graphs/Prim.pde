@@ -21,12 +21,12 @@ void Prim(Graph G, int s, int[] D, int[] V) {
   for (int i=0; i<G.n(); i++) {  // Process the vertices
     int v = minVertex(G, D);     // Find next-closest vertex
     G.setValue(v, VISITED);
-    if (v != s) AddEdgetoMST(V[v], v);
     if (D[v] == INFINITY) return; // Unreachable
+    if (v != s) AddEdgetoMST(V[v], v);
     int[] nList = G.neighbors(v);
     for (int j=0; j<nList.length; j++) {
       int w = nList[j];
-      if (D[w] > G.weight(v, w))) {
+      if (D[w] > G.weight(v, w)) {
         D[w] = G.weight(v, w);
         V[w] = v;
       }
