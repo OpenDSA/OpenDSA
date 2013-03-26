@@ -70,7 +70,7 @@ The only requirement is that each possible key value have a
 corresponding bin in ``B``.
 We assume that we know that the range of possible keys is between
 0 and ``MaxKeyValue``.
-Here is the extended Binsort algorithm.::
+Here is the extended Binsort algorithm::
 
    void binsort(Integer A[]) {
      List[] B = new LinkedList[MaxKeyValue+1];
@@ -86,18 +86,19 @@ Here is the extended Binsort algorithm.::
 
 This version of Binsort can sort any collection of records whose key
 values fall in the range from 0 to ``MaxKeyValue``.
+
+.. inlineav:: BinsortCON2 ss
+   :output: show
+
 The total work required is simply that needed to place each record
 into the appropriate bin and then take all of the records out of the
 bins.
 Thus, we need to process each record twice, for :math:`\Theta(n)`
 work.
 
-.. inlineav:: BinsortCON2 ss
-   :output: show
-
-Does that really make sense?
+Does that cost analysis really make sense?
 Actually, that last statement is **wrong**,
-because there is a crucial oversight in this analysis.
+because it neglects a crucial observation.
 Taking all of the records out of the bins requires Binsort to look at
 every bin to see if it contains a record.
 Thus, the algorithm must process ``MaxKeyValue`` bins,
@@ -115,13 +116,15 @@ In addition, a large key range requires an unacceptably large array
 Thus, even the extended Binsort is useful only for a limited key
 range.
 
-A further generalization to Binsort yields a :dfn:`bucket sort`.
-Each bin (now called a bucket) is associated with not just one key,
-but rather a range of key values.
+A further generalization to Binsort would yield a :dfn:`bucket sort`.
+Here, each bin (now called a bucket) is associated with not just one
+key, but rather a range of key values.
 A bucket sort assigns records to buckets and then relies on some
 other sorting technique to sort the records within each bucket.
 The hope is that the relatively inexpensive bucketing process will put
-only a small number of records in each bucket, and that a
+only a small number of records into each bucket, and that a
 "cleanup sort" to each bucket will then be relatively cheap.
+This is similar in spirit to the Radix Sort, which extends the
+concept of the Binsort in a practical way.
 
 .. odsascript:: AV/Sorting/binsortCON.js

@@ -180,8 +180,8 @@ because :math:`|\mathbf{E}|` is in :math:`O(|\mathbf{V}|^2)`.
 
    AV here to demonstrate the minVertex implementation.
 
-The second method is to store unprocessed vertices in a
-min-heap ordered by distance values.
+An alternative approach is to store unprocessed vertices in a
+min-heap ordered by their distance from the processed vertices.
 The next-closest vertex can be found in the heap in
 :math:`\Theta(\log |\mathbf{V}|)` time.
 Every time we modify :math:`\mathbf{D}(X)`,
@@ -190,28 +190,25 @@ the heap by deleting and reinserting it.
 This is an example of a priority queue with
 priority update, as described in Module :numref: `<Heaps>`.
 To implement true priority updating, we would need to store with each
-vertex its array index within the heap.
-A simpler approach is to add the new (smaller) distance value
+vertex its position within the heap so that we can remove its old
+distances whenever it is updated by processing new edges.
+A simpler approach is to add the new (always smaller) distance value
 for a given vertex as a new record in the heap.
 The smallest value for a given vertex currently in the heap will be
 found first, and greater distance values found later will be ignored
 because the vertex will already be marked as ``VISITED``.
-The only disadvantage to repeatedly inserting distance values is that
-it will raise the number of elements in the heap from
+The only disadvantage to repeatedly inserting distance values in this
+way is that it will raise the number of elements in the heap from
 :math:`\Theta(|\mathbf{V}|)` to :math:`\Theta(|\mathbf{E}|)`
-in the worst case. 
+in the worst case.
+But in practice this only adds a slight increase to the depth of the
+heap.
 The time complexity is
 :math:`\Theta((|\mathbf{V}| + |\mathbf{E}|) \log |\mathbf{E}|)`,
-because for each edge we must reorder the heap.
-Because the objects stored on the heap need to know both their vertex
-number and their distance, we create a simple class for the purpose
-called ``DijkElem``, as follows.
-
-.. codeinclude:: Graphs/DijkstraPQ.pde 
-   :tag: DijkElement
-
-Next we show an implementation for Dijkstra's
-algorithm using the priority queue.
+because for each edge that we process we must reorder the heap.
+We use the ``KVPair`` class to store key-value pairs in the heap, with
+the edge weight as the key and the target vertex as the value.
+here is the implementation for Dijkstra's algorithm using a heap.
 
 .. codeinclude:: Graphs/DijkstraPQ.pde 
    :tag: DijkstraPQ
@@ -219,7 +216,7 @@ algorithm using the priority queue.
 .. TODO::
    :type: Slideshow
 
-   This slideshow illustrates Dijkstra's algorithm using the Priority Queue.
+   This slideshow illustrates Dijkstra's algorithm using the heap.
    The start vertex is A.
    All vertices except A have an initial value of :math:`\infty`.
    After processing Vertex A, its neighbors have their D estimates
@@ -234,7 +231,7 @@ algorithm using the priority queue.
 Using ``MinVertex`` to scan the vertex list for the minimum value
 is more efficient when the graph is dense, that is, when
 :math:`|\mathbf{E}|` approaches :math:`|\mathbf{V}|^2`.
-Using a priority queue is more efficient when the graph is sparse
+Using a heap is more efficient when the graph is sparse
 because its cost is
 :math:`\Theta((|\mathbf{V}| + |\mathbf{E}|) \log |\mathbf{E}|)`.
 However, when the graph is dense, this cost can become as great as

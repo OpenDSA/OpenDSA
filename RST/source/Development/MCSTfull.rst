@@ -93,7 +93,7 @@ in Prim's algorithm.
 The following code shows an implementation for Prim's algorithm
 that searches the distance matrix for the next closest vertex.
 
-.. codeinclude:: Graphs/Prims.pde
+.. codeinclude:: Graphs/Prim.pde
    :tag: Prims
 
 For each vertex :math:`I`, when :math:`I` is processed by Prim's
@@ -140,7 +140,7 @@ shown next.
 As with the priority queue version of Dijkstra's algorithm, the heap
 stores ``DijkElem`` objects.
 
-.. codeinclude:: Graphs/PrimsPQ.pde
+.. codeinclude:: Graphs/PrimPQ.pde
    :tag: PrimsPQ
 
 .. TODO::
