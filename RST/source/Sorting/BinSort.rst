@@ -30,10 +30,10 @@ This is the basic idea behind a Binsort.
 
 Let's start with an especially easy situation.
 Consider the following code fragment to sort a permutation of the
-numbers 0 through :math:`n-1`::
+numbers 0 through :math:`n-1`.
 
-   for (i=0; i<n; i++)
-     B[A[i]] = A[i];
+.. codeinclude:: Sorting/Binsort.pde 
+   :tag: simplebinsort
 
 .. inlineav:: BinsortCON1 ss
    :output: show
@@ -70,19 +70,10 @@ The only requirement is that each possible key value have a
 corresponding bin in ``B``.
 We assume that we know that the range of possible keys is between
 0 and ``MaxKeyValue``.
-Here is the extended Binsort algorithm::
+Here is the extended Binsort algorithm.
 
-   void binsort(Integer A[]) {
-     List[] B = new LinkedList[MaxKeyValue+1];
-     Integer item;
-     for (int i=0; i<=MaxKeyValue; i++)
-       B[i] = new LinkedList();
-     for (int i=0; i<A.length; i++) B[A[i]].append(A[i]);
-     for (int i=0; i<=MaxKeyValue; i++)
-       for (B[i].moveToStart();
-            (item = B[i].getValue()) != null; B[i].next())
-         output(item);
-   }
+.. codeinclude:: Sorting/Binsort.pde
+   :tag: Binsort
 
 This version of Binsort can sort any collection of records whose key
 values fall in the range from 0 to ``MaxKeyValue``.

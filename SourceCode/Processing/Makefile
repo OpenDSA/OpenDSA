@@ -12,7 +12,7 @@ clean:
 
 Trees: UFTest
 
-Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort
+Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort
 
 Graphs: GraphDummy GraphTrav GraphTop GraphDijk GraphMCST
 
@@ -126,6 +126,18 @@ build/HeapsortTest/success: Sorting/Heapsort.pde Sorting/SortTest.pde Trees/Maxh
 	@cp Trees/Maxheap.pde build/HeapsortTest
 	@cp Utils/Swap.pde build/HeapsortTest
 	@$(PROCESS) --run --sketch="$(BUILD)/HeapsortTest" --output="$(BUILD)/build" --force
+
+Binsort: build/Binsort/success
+
+build/Binsort/success: Sorting/Binsort.pde Utils/Swap.pde Utils/Permute.pde
+	@echo "Binsort Test"
+	-@rm -rf build/Binsort
+	@mkdir build/Binsort
+	@cp Sorting/Binsort.pde build/Binsort
+	@cp Utils/Swap.pde build/Binsort
+	@cp Utils/Permute.pde build/Binsort
+	@$(PROCESS) --run --sketch="$(BUILD)/Binsort" --output="$(BUILD)/build" --force
+
 
 GraphDummy: build/GraphDummy/success
 
