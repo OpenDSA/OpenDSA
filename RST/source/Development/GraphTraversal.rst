@@ -8,11 +8,11 @@
    :prerequisites: GraphImpl
    :topic: Graphs
 
-Graph Traversals [Text]
-=======================
+Graph Traversals [Storyboard]
+=============================
 
-Often it is useful to visit the vertices of a graph in some specific
-order based on the graph's topology.
+Many graph applications need to visit the vertices of a graph in some
+specific order based on the graph's topology.
 This is known as a :dfn:`graph traversal` and is similar in concept
 to a tree traversal.
 Recall that tree traversals visit every node exactly once, in some
@@ -26,9 +26,9 @@ Standard graph traversal orders also exist.
 Each is appropriate for solving certain problems.
 For example, many problems in artificial intelligence programming
 are modeled using graphs.
-The problem domain may consist of a large collection of states,
+The problem domain might consist of a large collection of states,
 with connections between various pairs of states.
-Solving the problem may require getting from a specified start
+Solving this sort of problem requires getting from a specified start
 state to a specified goal state by moving between states only
 through the connections.
 Typically, the start and goal states are not directly connected.
@@ -38,27 +38,27 @@ some organized manner.
 Graph traversal algorithms typically begin with a start vertex and
 attempt to visit the remaining vertices from there.
 Graph traversals must deal with a number of troublesome cases.
-First, it may not be possible to reach all vertices from the start
+First, it might not be possible to reach all vertices from the start
 vertex.
 This occurs when the graph is not connected.
-Second, the graph may contain cycles, and we must make sure that
+Second, the graph might contain cycles, and we must make sure that
 cycles do not cause the algorithm to go into an infinite loop.
 
 Graph traversal algorithms can solve both of these problems
-by maintaining a :dfn:`mark bit` for each vertex on the graph.
-At the beginning of the algorithm, the mark bit for all vertices is
-cleared.
-The mark bit for a vertex is set when the vertex is first visited
+by flagging vertices as ``VISITED`` when appropriate.
+At the beginning of the algorithm, no vertex is flagged as ``VISITED``.
+The flag for a vertex is set when the vertex is first visited
 during the traversal.
-If a marked vertex is encountered during traversal, it is not visited
+If a flagged vertex is encountered during traversal, it is not visited
 a second time.
 This keeps the program from going into an infinite loop when it
 encounters a cycle.
 
 Once the traversal algorithm completes, we can check to see if all
-vertices have been processed by checking the mark bit array.
-If not all vertices are marked,
-we can continue the traversal from another unmarked vertex.
+vertices have been processed by checking whether they have the
+``VISITED`` flag set.
+If not all vertices are flagged,
+we can continue the traversal from another unvisited vertex.
 Note that this process works regardless of whether the graph is
 directed or undirected.
 To ensure visiting all vertices, ``graphTraverse`` could be called
@@ -68,27 +68,33 @@ as follows on a graph :math:`\mathbf{G}`:
    :tag: GraphTrav
 
 Function ``doTraversal`` might be implemented by using
-one of the graph traversals described in this section.
+one of the graph traversals described next.
 
 Depth-First Search
 ------------------
 
-The first method of organized graph traversal is called
-:dfn:`depth-first search` (DFS).
-Whenever a :math:`v` is visited during the search,
-DFS will recursively visit all of :math:`v` 's unvisited neighbors.
-Equivalently, DFS will add all edges leading out of :math:`v` to a
-stack.
-The next vertex to be visited is determined by popping the stack and
-following that edge.
-The effect is to follow one branch through the graph to its
-conclusion, then it will back up and follow another branch, and so on.
-The DFS process can be used to define a
-:dfn:`depth-first search tree`.
-This tree is composed of the edges that were followed to any new
-(unvisited) vertex during the traversal, and leaves out the edges that
-lead to already visited vertices.
-DFS can be applied to directed or undirected graphs.
+.. TODO::
+   type: Slideshow
+
+   Replace this description with a slideshow.
+
+   The first method of organized graph traversal is called
+   :dfn:`depth-first search` (DFS).
+   Whenever a :math:`v` is visited during the search,
+   DFS will recursively visit all of :math:`v` 's unvisited neighbors.
+   Equivalently, DFS will add all edges leading out of :math:`v` to a
+   stack.
+   The next vertex to be visited is determined by popping the stack and
+   following that edge.
+   The effect is to follow one branch through the graph to its
+   conclusion, then it will back up and follow another branch, and so on.
+   The DFS process can be used to define a
+   :dfn:`depth-first search tree`.
+   This tree is composed of the edges that were followed to any new
+   (unvisited) vertex during the traversal, and leaves out the edges that
+   lead to already visited vertices.
+   DFS can be applied to directed or undirected graphs.
+
 Here is an implementation for the DFS algorithm.
 
 .. codeinclude:: Graphs/DFS.pde 
@@ -118,6 +124,7 @@ directions.
 Each vertex must be visited, but only once, so the total cost is
 :math:`\Theta(|\mathbf{V}| + |\mathbf{E}|)`.
 
+
 Breadth-First Search
 --------------------
 
@@ -131,11 +138,21 @@ Note that if the graph is a tree and the start vertex is at the root,
 BFS is equivalent to visiting vertices level by level from top to
 bottom.
 
+.. TODO::
+   :type: Slideshow
+
+   Provide a slideshow to demonstrate BFS.
+
 Here is an implementation for BFS.
 
 .. codeinclude:: Graphs/BFS.pde 
    :tag: BFS
 
-Here is how it works.
+Here is an AV for you to try it on other graphs.
 
 .. avembed:: AV/Development/graphBFS.html ss
+
+.. TODO::
+   :type: Exercise
+
+   Summary exercise for graph traversals.

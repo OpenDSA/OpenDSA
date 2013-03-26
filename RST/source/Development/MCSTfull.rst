@@ -8,8 +8,8 @@
    :prerequisites: GraphShortest
    :topic: Graphs
 
-Minimal Cost Spanning Trees [Text]
-==================================
+Minimal Cost Spanning Trees [Storyboard]
+========================================
 
 The :dfn:`minimum-cost spanning tree` (MST)
 problem takes as input a connected, undirected graph
@@ -34,10 +34,15 @@ required set of edges forms a tree, it spans the vertices (i.e., it
 connects them together), and it has minimum cost.
 Figure :num:`Figure #MSTExamp` shows the MST for an example graph.
 
+.. TODO::
+   :type: Figure
+
+   Replace the following figure with a JSAV figure.
+
 .. _MSTExamp:
 
 .. figure:: Images/MST.png
-   :width: 500
+   :width: 300
    :align: center
    :figwidth: 90%
    :alt: The MST for a graph
@@ -102,85 +107,6 @@ The implementation above also contains calls to
 ``AddEdgetoMST`` to indicate which edges are actually added to the
 MST.
 
-Alternatively, we can implement Prim's algorithm using a priority
-queue to find the next closest vertex, as
-shown next.
-As with the priority queue version of Dijkstra's algorithm, the heap
-stores ``DijkElem`` objects.
-
- .. codeinclude:: Graphs/PrimsPQ.pde
-    :tag: PrimsPQ
-
-Prim's algorithm is an example of a greedy
-algorithm.
-At each step in the ``for`` loop, we select the least-cost edge that
-connects some marked vertex to some unmarked vertex.
-The algorithm does not otherwise check that the MST really should
-include this least-cost edge.
-This leads to an important question:
-Does Prim's algorithm work correctly?
-Clearly it generates a spanning tree (because each pass through the
-``for`` loop adds one edge and one unmarked vertex to the spanning tree
-until all vertices have been added), but does this tree have minimum
-cost?
-
-**Theorem:** Prim's algorithm produces a minimum-cost spanning tree.
-
-BEGIN PROOF
-
-We will use a proof by contradiction.
-Let :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` be a graph for which
-Prim's algorithm does *not* generate an MST.
-Define an ordering on the vertices according to the order in which
-they were added by Prim's algorithm to the MST:
-:math:`v_0, v_1, ..., v_{n-1}`. 
-Let edge :math:`e_i` connect :math:`(v_x, v_i)` for
-some :math:`x < i` and :math:`i \leq 1`.
-Let :math:`e_j` be the lowest numbered (first) edge added
-by Prim's algorithm such that the set of edges selected so
-far *cannot* be extended to form an MST for :math:`\mathbf{G}`.
-In other words, :math:`e_j` is the first edge where Prim's algorithm
-``went wrong.''
-Let :math:`\mathbf{T}` be the ``true'' MST.
-Call :math:`\v_p (p<j)` the vertex connected by edge
-:math:`e_j`, that is, :math:`e_j = (v_p, v_j)`.
-
-Because :math:`\mathbf{T}` is a tree, there exists some path in
-:math:`\mathbf{T}` connecting :math:`v_p` and :math:`v_j`.
-There must be some edge :math:`e'` in this path connecting vertices
-:math:`v_u` and :math:`v_w`, with :math:`u < j` and :math:`w \geq j`.
-Because :math:`e_j` is not part of :math:`\mathbf{T}`, adding edge
-:math:`e_j` to :math:`\mathbf{T}` forms a cycle.
-Edge :math:`e'` must be of lower cost than
-edge :math:`e_j`, because Prim's algorithm did not generate an MST.
-This situation is illustrated in Figure :num:`Figure #PrimProof`.
-However, Prim's algorithm would have selected the least-cost edge
-available.
-It would have selected :math:`e'`, not :math:`e_j`.
-Thus, it is a contradiction that Prim's algorithm would have selected
-the wrong edge, and thus, Prim's algorithm must be correct.
-
-END PROOF
-
-.. _PrimProof:
-
-.. figure:: Images/PrimMST.png
-   :width: 500
-   :align: center
-   :figwidth: 90%
-   :alt: Prim's MST algorithm proof
-
-   Prim's MST algorithm proof.
-   The left oval contains that portion of the graph where Prim's MST
-   and the "true" MST :math:`\mathbf{T}` agree.
-   The right oval contains the rest of the graph.
-   The two portions of the graph are connected by (at least) edges 
-   :math:`e_j` (selected by Prim's algorithm to be in the MST) and
-   :math:`e'` (the "correct" edge to be placed in the MST).
-   Note that the path from :math:`v_w` to :math:`v_j` cannot
-   include any marked vertex :math:`v_i, i \leq j`, because to do so
-   would form a cycle.
-
 .. TODO::
    :type: Slideshow
 
@@ -207,6 +133,96 @@ END PROOF
    Following in this manner, Vertex :math:`B`
    (through edge :math:`(C, B)`) is marked.
    At this point, the algorithm terminates.
+
+Alternatively, we can implement Prim's algorithm using a priority
+queue to find the next closest vertex, as
+shown next.
+As with the priority queue version of Dijkstra's algorithm, the heap
+stores ``DijkElem`` objects.
+
+.. codeinclude:: Graphs/PrimsPQ.pde
+   :tag: PrimsPQ
+
+.. TODO::
+   :type: Slideshow
+
+   Implement a slideshow demonstrating the Priority Queue version of
+   Prim's algorithm
+
+Here is an AV that lets you try Prim's algorithm on other graphs.
+
+.. avembed:: AV/Development/PrimAV.html ss
+
+Prim's algorithm is an example of a greedy
+algorithm.
+At each step in the ``for`` loop, we select the least-cost edge that
+connects some marked vertex to some unmarked vertex.
+The algorithm does not otherwise check that the MST really should
+include this least-cost edge.
+This leads to an important question:
+Does Prim's algorithm work correctly?
+Clearly it generates a spanning tree (because each pass through the
+``for`` loop adds one edge and one unmarked vertex to the spanning tree
+until all vertices have been added), but does this tree have minimum
+cost?
+
+   **Theorem:** Prim's algorithm produces a minimum-cost spanning tree.
+
+   **Proof:** We will use a proof by contradiction.
+   Let :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` be a graph for which
+   Prim's algorithm does *not* generate an MST.
+   Define an ordering on the vertices according to the order in which
+   they were added by Prim's algorithm to the MST:
+   :math:`v_0, v_1, ..., v_{n-1}`. 
+   Let edge :math:`e_i` connect :math:`(v_x, v_i)` for
+   some :math:`x < i` and :math:`i \leq 1`.
+   Let :math:`e_j` be the lowest numbered (first) edge added
+   by Prim's algorithm such that the set of edges selected so
+   far *cannot* be extended to form an MST for :math:`\mathbf{G}`.
+   In other words, :math:`e_j` is the first edge where Prim's algorithm
+   "went wrong."
+   Let :math:`\mathbf{T}` be the "true" MST.
+   Call :math:`\v_p (p<j)` the vertex connected by edge
+   :math:`e_j`, that is, :math:`e_j = (v_p, v_j)`.
+
+   Because :math:`\mathbf{T}` is a tree, there exists some path in
+   :math:`\mathbf{T}` connecting :math:`v_p` and :math:`v_j`.
+   There must be some edge :math:`e'` in this path connecting vertices
+   :math:`v_u` and :math:`v_w`, with :math:`u < j` and :math:`w \geq j`.
+   Because :math:`e_j` is not part of :math:`\mathbf{T}`, adding edge
+   :math:`e_j` to :math:`\mathbf{T}` forms a cycle.
+   Edge :math:`e'` must be of lower cost than
+   edge :math:`e_j`, because Prim's algorithm did not generate an MST.
+   This situation is illustrated in Figure :num:`Figure #PrimProof`.
+   However, Prim's algorithm would have selected the least-cost edge
+   available.
+   It would have selected :math:`e'`, not :math:`e_j`.
+   Thus, it is a contradiction that Prim's algorithm would have selected
+   the wrong edge, and thus, Prim's algorithm must be correct. BOX HERE
+
+.. _PrimProof:
+
+.. figure:: Images/PrimMST.png
+   :width: 400
+   :align: center
+   :figwidth: 90%
+   :alt: Prim's MST algorithm proof
+
+   Prim's MST algorithm proof.
+   The left oval contains that portion of the graph where Prim's MST
+   and the "true" MST :math:`\mathbf{T}` agree.
+   The right oval contains the rest of the graph.
+   The two portions of the graph are connected by (at least) edges 
+   :math:`e_j` (selected by Prim's algorithm to be in the MST) and
+   :math:`e'` (the "correct" edge to be placed in the MST).
+   Note that the path from :math:`v_w` to :math:`v_j` cannot
+   include any marked vertex :math:`v_i, i \leq j`, because to do so
+   would form a cycle.
+
+.. TODO::
+   :type: Exercise
+
+   Proficiency exercise for Kruskal's algorithm.
 
 Kruskal's Algorithm
 -------------------
@@ -274,6 +290,11 @@ Class ``KruskalElem`` is used to store the edges on the min-heap.
 .. codeinclude:: Graphs/Kruskal.pde
    :tag: Kruskal
 
+.. TODO::
+   :type: AV
+
+   Provide AV to demonstrate Kruskal's algorithm
+
 Kruskal's algorithm is dominated by the time required to
 process the edges.
 The ``differ`` and ``UNION`` functions are nearly
@@ -286,3 +307,13 @@ More often the edges of the spanning tree are the shorter ones,and
 only about :math:`|\mathbf{V}|` edges must be processed.
 If so, the cost is often close to
 :math:`\Theta(|\mathbf{V}| \log |\mathbf{E}|)` in the average case.
+
+.. TODO::
+   :type: Exercise
+
+   Proficiency exercise for Kruskal's algorithm.
+
+.. TODO::
+   :type: Exercise
+
+   Summary battery of questions for Prim's and Kruskal's algorithms.

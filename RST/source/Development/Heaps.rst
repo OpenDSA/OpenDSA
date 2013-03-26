@@ -12,3 +12,11 @@ Heaps [STUB]
 ============
 
 Placeholder for Crossreference
+
+Notes
+-----
+
+For a story on Priority Queues and dragons, see
+`Computational Fairy Tales: Stacks, Queues, Priority Queues, and the
+Prince's Complaint Line
+<http://computationaltales.blogspot.com/2011/04/stacks-queues-priority-queues-and.html>`_.
