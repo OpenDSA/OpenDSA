@@ -19,6 +19,28 @@
         "exercises": {}
       }
     },
+    "GeneralTrees": {
+      "Development/GenTreeIntro": {
+        "long_name": "General Tree Intrduction",
+        "exercises": {}
+      },
+      "Development/UnionFind": {
+        "long_name": "Union/Find",
+        "exercises": {}
+      },
+      "Development/GenTreeImplement": {
+        "long_name": "General Tree Implementations",
+        "exercises": {}
+      },
+      "Development/Kary": {
+        "long_name": "K-ary Trees",
+        "exercises": {}
+      },
+      "Development/SequentialRep": {
+        "long_name": "Sequential Tree Representations",
+        "exercises": {}
+      }
+    },
     "Hashing": {
       "Development/PerfectHash": {
         "long_name": "Perfect Hashing",
@@ -96,18 +118,12 @@
           "long_name": "Recurrence",
           "exercises": {}
         },
-        "Development/VisitorPatt": {
-          "long_name": "Visitor Design Pattern",
-          "exercises": {}
-        }
-      },
-      "General Trees": {
-        "Development/LOChild": {
-          "long_name": "Lists of Children Representation",
+        "Development/AmortAnal": {
+          "long_name": "Amortized Analysis",
           "exercises": {}
         },
-        "Development/UnionFind": {
-          "long_name": "Union/Find",
+        "Development/VisitorPatt": {
+          "long_name": "Visitor Design Pattern",
           "exercises": {}
         }
       },
@@ -147,6 +163,10 @@
               "threshold": 1.0
             }
           }
+        },
+        "Development/Spatial": {
+          "long_name": "Spatial Data Structures",
+          "exercises": {}
         },
         "Development/TreeExer": {
           "long_name": "Tree Exercises",

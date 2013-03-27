@@ -10,12 +10,20 @@ clean:
 	-rm -rf build
 	mkdir build
 
-Trees: UFTest
+Trees: GenTree UFTest
 
 Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort
 
 Graphs: GraphDummy GraphTrav GraphTop GraphDijk GraphMCST
 
+
+GenTree: build/GenTree/success
+
+build/GenTree/success: Trees/GenTree.pde
+	@echo "GenTree Test"
+	-@rm -rf build/GenTree
+	@mkdir build/GenTree
+	@cp Trees/GenTree.pde build/GenTree
 
 UFTest: build/UFTest/success
 
@@ -226,6 +234,8 @@ build/GraphMCST/success: Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Gr
 	@cp Lists/Link.pde build/GraphMCST
 	@cp Graphs/Prim.pde build/GraphMCST
 	@cp Graphs/PrimPQ.pde build/GraphMCST
+	@cp Graphs/Kruskal.pde build/GraphMCST
 	@cp Utils/KVPair.pde build/GraphMCST
 	@cp Trees/MinheapKV.pde build/GraphMCST
+	@cp Trees/ParPtrTree.pde build/GraphMCST
 	@$(PROCESS) --run --sketch="$(BUILD)/GraphMCST" --output="$(BUILD)/build" --force

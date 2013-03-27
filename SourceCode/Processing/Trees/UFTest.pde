@@ -4,14 +4,17 @@ public void testUF() {
   String out;
   ParPtrTree it = new ParPtrTree(10);
 
-  if (it.differ(1, 2)) it.UNION(1, 2);
-  if (it.differ(3, 4)) it.UNION(3, 4);
-  if (it.differ(6, 5)) it.UNION(6, 5);
-  if (it.differ(4, 1)) it.UNION(4, 1);
-  if (it.differ(4, 1)) it.UNION(4, 1);
-  it.UNION(4, 1);
+  it.UNION(0, 1);
+  it.UNION(2, 7);
+  it.UNION(6, 5);
+  it.UNION(3, 4);
+  it.UNION(8, 5);
+  it.UNION(7, 0);
+  it.UNION(4, 6);
+  it.UNION(7, 4);
+
   out = it.print();
-  if (out.equals("-1 3 1 -1 3 6 -1 -1 -1 -1 ") != true) {
+  if (out.equals("2 0 6 6 6 6 -1 2 6 -1 ") != true) {
     SUCCESS = false;
     println("Error in Union/FIND!! " + out);
   }

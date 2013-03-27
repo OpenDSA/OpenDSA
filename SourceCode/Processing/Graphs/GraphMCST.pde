@@ -35,7 +35,6 @@ void test(Graph G) {
   out = "";
   for (i=0; i<G.n(); i++)
    G.setValue(i, UNVISITED);
-  V = new int[G.n()];
   Kruskal(G);
   if (out.equals("5 4 3 2 2 5 2 1 0 2 ") != true) {
     println("ERROR IN Kruskal!!!:" + out);
@@ -56,7 +55,7 @@ void test(Graph G) {
   for (i=0; i<G.n(); i++)
     out = out + V[i] + " ";
   if (out.equals("0 2 2 5 5 4 2 1 0 2 5 0 5 4 ") != true) {
-    println("ERROR IN Prim!!!:" + out);
+    println("ERROR IN Prim disconnect test!!!:" + out);
     SUCCESS = false;
   }
   out = "";
@@ -67,10 +66,17 @@ void test(Graph G) {
   for (i=0; i<G.n(); i++)
     out =  out + V[i] + " ";
   if (out.equals("0 2 2 5 5 4 2 1 0 2 5 0 5 4 ") != true) {
-    println("ERROR IN PrimPQ!!!:" + out);
+    println("ERROR IN PrimPQ disconnect test!!!:" + out);
     SUCCESS = false;
   }
-
+  out = "";
+  for (i=0; i<G.n(); i++)
+   G.setValue(i, UNVISITED);
+  Kruskal(G);
+  if (out.equals("4 5 5 2 1 2 2 0 ") != true) {
+    println("ERROR IN Kruskal disconnect test!!!:" + out);
+    SUCCESS = false;
+  }
 }
 
 void setup() {

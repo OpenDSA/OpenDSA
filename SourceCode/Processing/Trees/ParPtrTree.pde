@@ -1,3 +1,4 @@
+/* *** ODSATag: UnionFind *** */
 // General Tree class implementation for UNION/FIND
 class ParPtrTree {
   private int[] array;      // Node array
@@ -44,3 +45,4 @@ class ParPtrTree {
     return out;
   }
 }
+/* *** ODSAendTag: UnionFind *** */
