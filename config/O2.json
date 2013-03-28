@@ -36,6 +36,10 @@
         "long_name": "Full Binary Tree Node Implementations",
         "exercises": {}
       },
+      "Development/Composite": {
+        "long_name": "Composite Design Pattern",
+        "exercises": {}
+      },
       "Development/BinaryTreeNodeSpace": {
         "long_name": "Full Binary Tree Node Space Requirements",
         "exercises": {}
