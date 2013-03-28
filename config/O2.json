@@ -19,6 +19,66 @@
         "exercises": {}
       }
     },
+    "BinaryTrees": {
+      "Development/BinaryTree": {
+        "long_name": "Binary Tree Introduction",
+        "exercises": {}
+      },
+      "Development/BinaryTreeFullThm": {
+        "long_name": "Full Binary Tree Theorem",
+        "exercises": {}
+      },
+      "Development/BinaryTreeTraversal": {
+        "long_name": "Full Binary Tree Traversals",
+        "exercises": {}
+      },
+      "Development/BinaryTreeImpl": {
+        "long_name": "Full Binary Tree Node Implementations",
+        "exercises": {}
+      },
+      "Development/BinaryTreeNodeSpace": {
+        "long_name": "Full Binary Tree Node Space Requirements",
+        "exercises": {}
+      },
+      "Development/CompleteTree": {
+        "long_name": "Array Implementation for Complete Trees",
+        "exercises": {}
+      },
+      "Development/BST": {
+        "long_name": "Binary Search Trees",
+        "exercises": {}
+      },
+      "Development/Heaps": {
+        "long_name": "Heaps",
+        "exercises": {}
+      },
+      "Development/Huffman": {
+        "long_name": "Huffman Coding Trees",
+        "exercises": {
+          "huffmanCON1": {
+            "long_name": "Huffman Coding Tree Slideshow",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "HuffmanCoding": {
+            "long_name": "Huffman Coding Tree Visualization",
+            "required": true,
+            "points": 0.1,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+        }
+      },
+      "Development/HuffProof": {
+        "long_name": "Proof for Huffman Coding",
+        "exercises": {}
+      },
+      "Development/BinaryTreeSumm": {
+        "long_name": "Binary Tree Chapter Summary",
+        "exercises": {}
+      }
+    },
     "GeneralTrees": {
       "Development/GenTreeIntro": {
         "long_name": "General Tree Intrduction",
@@ -138,38 +198,8 @@
         }
       },
       "Trees": {
-        "Development/Heaps": {
-          "long_name": "Heaps",
-          "exercises": {}
-        },
-        "Development/BinaryHeap": {
-          "long_name": "Binary Heap",
-          "exercises": {}
-        },
-        "Development/Huffman": {
-          "long_name": "Huffman Coding Trees",
-          "exercises": {
-            "huffmanCON1": {
-              "long_name": "Huffman Coding Tree Slideshow",
-              "required": true,
-              "points": 0.1,
-              "threshold": 1.0
-            },
-            "HuffmanCoding": {
-              "long_name": "Huffman Coding Tree Visualization",
-              "required": true,
-              "points": 0.1,
-              "showhide": "show",
-              "threshold": 1.0
-            }
-          }
-        },
         "Development/Spatial": {
           "long_name": "Spatial Data Structures",
-          "exercises": {}
-        },
-        "Development/TreeExer": {
-          "long_name": "Tree Exercises",
           "exercises": {}
         },
         "Development/Trie": {

@@ -1,10 +1,16 @@
-<div id="content">
-<ODSAtitle>Binary Tree Traversals</ODSAtitle>
-<ODSAprereq "BinTree" />
-<ODSAprereq "BinTreeNodeADT" />
-<ODSAprereq "DesignPatterns" />
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
 
-<p>
+.. avmetadata::
+   :author: Cliff Shaffer
+   :prerequisites:
+   :topic: Binary Trees
+
+Binary Tree Traversals [Raw]
+============================
+
 Often we wish to process a binary tree by "visiting" each of its
 nodes, each time performing a specific action such as printing the
 contents of the node.
@@ -19,7 +25,6 @@ preserves some relationship.
 For example, we might wish to make sure that we visit any given node
 <em>before</em> we visit its children.
 This is called a <dfn>preorder traversal</dfn>.
-</p>
 
 <p class="example">
 The preorder enumeration for the tree of
@@ -61,9 +66,38 @@ traversal to print all nodes in ascending order of value.
 <p class="example">
 The inorder enumeration for the tree of Figure <ODSAref "BinExample" />
 is <b>B D A G E C H F I</b>.
-</p>
 
-<p>
+Now we will discuss some implementations for the traversals, but we
+need to have an ADT for nodes to do this with.
+Just as a linked list is comprised of a collection of link objects, a
+tree is comprised of a collection of node objects.
+Figure <ODSAref "BinNodeADT" /> shows an ADT for binary tree nodes,
+called <code>BinNode</code>
+This class will be used by some of the binary tree structures
+presented later.
+Class <code>BinNode</code> is a generic with parameter <code>E</code>,
+which is the type for the data record stored in the node.
+Member functions are provided that set or return the element value,
+set or return a pointer to the left child,
+set or return a pointer to the right child,
+or indicate whether the node is a leaf.::
+
+   /** ADT for binary tree nodes */
+   public interface BinNode<E> {
+     /** Get and set the element value */
+     public E element();
+     public void setElement(E v);
+
+     /** @return The left child */
+     public BinNode<E> left();
+
+     /** @return The right child */
+     public BinNode<E> right();
+
+     /** @return True if a leaf node, false otherwise */
+     public boolean isLeaf();
+   }
+
 A traversal routine is naturally written as a recursive
 function.
 Its input parameter is a pointer to a node which we will call
@@ -75,20 +109,16 @@ The traversal function visits <code>rt</code> and its children (if any)
 in the desired order.
 For example, a preorder traversal specifies that <code>rt</code> be
 visited before its children.
-This can easily be implemented as follows.
-</p>
+This can easily be implemented as follows.::
 
-<pre>
-void preorder(BinNode rt)
-{
-  if (rt == null) return; // Empty subtree - do nothing
-  visit(rt);              // Process root node
-  preorder(rt.left());    // Process all nodes in left
-  preorder(rt.right());   // Process all nodes in right
-}
-</pre>
+   void preorder(BinNode rt)
+   {
+     if (rt == null) return; // Empty subtree - do nothing
+     visit(rt);              // Process root node
+     preorder(rt.left());    // Process all nodes in left
+     preorder(rt.right());   // Process all nodes in right
+   }
 
-<p>
 Function <code>preorder</code> first checks that the tree is not
 empty (if it is, then the traversal is done and <code>preorder</code>
 simply returns).
@@ -102,9 +132,7 @@ visiting all nodes in the right subtree.
 Postorder and inorder traversals are similar.
 They simply change the order in which the node and its children are
 visited, as appropriate.
-</p>
 
-<p>
 An important decision in the implementation of any recursive function
 on trees is when to check for an empty subtree.
 Function <code>preorder</code> first checks to see if the value for
@@ -116,33 +144,27 @@ itself on an empty child.
 Some programmers use an alternate design in which the left and
 right pointers of the current node are checked so that the recursive
 call is made only on non-empty children.
-Such a design typically looks as follows:
-</p>
+Such a design typically looks as follows::
 
-<pre>
-void preorder2(BinNode rt)
-{
-  visit(rt);
-  if (rt.left() != null) preorder2(rt.left());
-  if (rt.right() != null) preorder2(rt.right());
-}
-</pre>
+   void preorder2(BinNode rt)
+   {
+     visit(rt);
+     if (rt.left() != null) preorder2(rt.left());
+     if (rt.right() != null) preorder2(rt.right());
+   }
 
-<p>
 At first it might appear that <code>preorder2</code> is more efficient
 than <code>preorder</code>, because it makes only half as many recursive
 calls.On the other hand, <code>preorder2</code> must access the left and right
 child pointers twice as often.
 The net result is little or no performance improvement.
-</p>
 
-<p class="TODO">
-Question:
-Why does <code>preorder2</code> make only half as many recursive calls?
-Answer: Because half the pointers are null.
-</p>
+.. TODO::
+   :type: Exercise
 
-<p>
+   Why does <code>preorder2</code> make only half as many recursive calls?
+   Answer: Because half the pointers are null.
+
 In reality, the design of <code>preorder2</code> is inferior to
 that of <code>preorder</code> for two reasons.
 First, while it is not apparent in this simple example,
@@ -165,9 +187,9 @@ The net result is that many programmers forget to test for the
 possibility that the empty tree is being traversed.
 By using the first design, which explicitly supports processing of
 empty subtrees, the problem is avoided.
-</p>
 
-<p>
+.. avembed:: AV/Development/binarytree-preorder.html pe
+
 Another issue to consider when designing a traversal is how to
 define the visitor function that is to be executed on every node.
 One approach is simply to write a new version of the traversal for
@@ -176,9 +198,7 @@ The disadvantage to this is that whatever function does the traversal
 must have access to the <code>BinNode</code> class.
 It is probably better design to permit only the tree class to have
 access to the <code>BinNode</code> class.
-</p>
 
-<p>
 Another approach is for the tree class to supply a generic traversal
 function which takes the visitor as a function parameter.
 This is known as the
@@ -189,9 +209,7 @@ their return type and parameters, must be fixed in advance.
 Thus, the designer of the generic traversal function must be able to
 adequately judge what parameters and return type will likely be needed
 by potential visitor functions.
-</p>
 
-<p>
 Handling information flow between parts of a program can
 be a significant design challenge, especially when dealing with
 recursive functions such as tree traversals.
@@ -202,31 +220,24 @@ We will see many examples throughout the book that illustrate methods
 for passing information in and out of recursive functions as they
 traverse a tree structure.
 Here are a few simple examples.
-</p>
 
-<p>
 First we consider the simple case where a computation requires
 that we communicate information back up the tree to the end user.
-</p>
 
-<p class="example">
-We wish to count the number of nodes in a binary tree.
-The key insight is that the total count for any (non-empty) subtree is
-one for the root plus the counts for the left and right subtrees.
-Where do left and right subtree counts come from?
-Calls to function <code>count</code> on the subtrees will compute this for
-us.
-Thus, we can implement <code>count</code> as follows.
-</p>
+   **Example**
+   We wish to count the number of nodes in a binary tree.
+   The key insight is that the total count for any (non-empty) subtree is
+   one for the root plus the counts for the left and right subtrees.
+   Where do left and right subtree counts come from?
+   Calls to function <code>count</code> on the subtrees will compute this for
+   us.
+   Thus, we can implement <code>count</code> as follows.::
 
-<pre>
-int count(BinNode rt) {
-  if (rt == null) return 0;  // Nothing to count
-  return 1 + count(rt.left()) + count(rt.right());
-}
-</pre>
+      int count(BinNode rt) {
+        if (rt == null) return 0;  // Nothing to count
+        return 1 + count(rt.left()) + count(rt.right());
+      }
 
-<p>
 Another problem that occurs when recursively processing data
 collections is controlling which members of the collection will be
 visited.
@@ -238,9 +249,7 @@ This function must visit only those children of a given node that
 might possibly fall within a given range of values.
 Fortunately, it requires only a simple local calculation to determine
 which child(ren) to visit.
-</p>
 
-<p>
 A more difficult situation is illustrated by the following problem.
 Given an arbitrary binary tree we wish to determine if,
 for every node <var>A</var>, are all nodes in <var>A</var>'s left
@@ -250,7 +259,6 @@ subtree less than the value of <var>A</var>, and are all nodes in
 see Module <ODSAref "BST" />.)
 Unfortunately, to make this decision we need to know some context
 that is not available just by looking at the node's parent or children.
-</p>
 
 <figure>
 <center>
@@ -264,7 +272,6 @@ must have a value between 20 and 40.
 </figcaption>
 </figure>
 
-<p>
 As shown by Figure <ODSAref "BSTCheckFig" />,
 it is not enough to verify that <var>A</var>'s left child has a value
 less than that of <var>A</var>, and that <var>A</var>'s right child
@@ -275,38 +282,35 @@ In fact, we need to know information about what range of values is
 legal for a given node.
 That information might come from any of the node's ancestors.
 Thus, relevant range information must be passed down the tree.
-We can implement this function as follows.
-</p>
+We can implement this function as follows.::
 
-<pre>
-boolean checkBST(BinNode<Integer> rt, int low, int high) {
-  if (rt == null) return true; // Empty subtree
-  int rootkey = rt.element();
-  if ((rootkey < low) || (rootkey > high))
-    return false; // Out of range
-  if (!checkBST(rt.left(), low, rootkey))
-    return false; // Left side failed
-  return checkBST(rt.right(), rootkey, high);
-}
-</pre>
+   boolean checkBST(BinNode<Integer> rt, int low, int high) {
+     if (rt == null) return true; // Empty subtree
+     int rootkey = rt.element();
+     if ((rootkey < low) || (rootkey > high))
+       return false; // Out of range
+     if (!checkBST(rt.left(), low, rootkey))
+       return false; // Left side failed
+     return checkBST(rt.right(), rootkey, high);
+   }
 
-<p class="TODO">
-<b>KA-style exercise:</b>
-Given one of the three traversals (randomly selected), and a random
-tree, give the enumeration.
-</p>
+.. TODO::
+   :type: Exercise
 
-<p class="TODO">
-<b>Active Code exercise:</b> Given the three lines of code related to
-doing any of the traversals, arrange them in proper order to get the
-desired traversal. The answer can easily be checked, either by
-examining the resulting code (since it is so constrained) or by
-examining a computed output.
-</p>
+   Given one of the three traversals (randomly selected), and a random
+   tree, give the enumeration.
 
-<p class="TODO">
-Given an enumeration from a tree, determine if it is pre-order,
-post-order, in-order, or none of the above.
-</p>
+.. TODO::
+   :type: Exercise
 
-</div>
+   Given the three lines of code related to
+   doing any of the traversals, arrange them in proper order to get the
+   desired traversal. The answer can easily be checked, either by
+   examining the resulting code (since it is so constrained) or by
+   examining a computed output.
+
+.. TODO::
+   :type: Exercise
+
+   Given an enumeration from a tree, determine if it is pre-order,
+   post-order, in-order, or none of the above.

@@ -1,9 +1,16 @@
-<div id="content">
-<ODSAtitle>The Full Binary Tree Theorem</ODSAtitle>
-<ODSAprereq "Induction" />
-<ODSAprereq "BinTree" />
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
 
-<p>
+.. avmetadata::
+   :author: Cliff Shaffer
+   :prerequisites:
+   :topic: Binary Trees
+
+The Full Binary Tree Theorem [Raw]
+==================================
+
 Some binary tree implementations store data only at the leaf nodes,
 using the internal nodes to provide structure to the tree.
 By definition, a leaf node does not need to store pointers to its
@@ -13,9 +20,7 @@ of space for internal nodes, and a different amount for leaf nodes.
 Thus, to compute the space required by such implementations, it is
 useful to know the minimum and maximum fraction of the nodes that are
 leaves in a tree containing <i>n</i> internal nodes.
-</p>
 
-<p>
 Unfortunately, this fraction is not fixed.
 A binary tree of <i>n</i> internal nodes might have only one leaf.
 This occurs when the internal nodes are arranged in a chain ending
@@ -33,7 +38,6 @@ It turns out not to matter, because all full binary trees with
 This fact allows us to compute the space requirements for a full
 binary tree implementation whose leaves require a different amount of
 space from its internal nodes.
-</p>
 
 <figure>
 <center>
@@ -156,6 +160,3 @@ Every node except the root node has one parent, for a total of
 In other words, there are <i>n</i>-1 non-empty children.
 Because the total number of children is <i>2n</i>, the remaining
 <i>n</i>+1 children must be empty.
-</p>
-
-</div>

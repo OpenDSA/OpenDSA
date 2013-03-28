@@ -5,13 +5,26 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: BST, Heap
-   :topic: Trees
+   :prerequisites:
+   :topic: Binary Trees
 
-Tree Exercises [STUB]
-=====================
+Binary Tree Chapter Summary [Stub]
+==================================
 
-A place to put exercises that don't have anywhere better for now.
+This module contains "end of chapter" questions to review things
+related to the whole chapter. Need to figure out what the proper set
+of prereqs is.
+
+.. TODO::
+   :type: Exercise
+
+   Show a tree. Ask if it is a BST, a heap, or neither.
+
+.. TODO::
+   :type: Exercise
+
+   Show a tree. Ask if it is a Full Binary Tree, Complete Binary Tree,
+   or neither.
 
 .. todo::
    :type: Exercise

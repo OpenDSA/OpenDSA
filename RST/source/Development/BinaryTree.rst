@@ -1,9 +1,16 @@
-<div id="content">
-<ODSAtitle>Binary Trees Terminology</ODSAtitle>
-<ODSAauthor>Clifford A. Shaffer</ODSAauthor>
-<ODSAyear>2012</ODSAyear>
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
 
-<p>
+.. avmetadata::
+   :author: Cliff Shaffer
+   :prerequisites:
+   :topic: Binary Trees
+
+Binary Trees [Raw]
+==================
+
 Tree structures enable efficient access and efficient update to
 large collections of data.
 Binary trees in particular are widely used and relatively easy to
@@ -14,9 +21,7 @@ prioritizing jobs, describing mathematical expressions and the
 syntactic elements of computer programs,
 or organizing the information needed to drive data compression
 algorithms.
-</p>
 
-<p>
 This module presents definitions and some key properties
 for binary trees.
 Module <ODSAref "BinTreeTraversal" />
@@ -36,13 +41,12 @@ Huffman coding trees are used for text compression.
 </ODSAif>
 Each of these representations has distinctive
 structural features that affect their implementation and use.
-</p>
 
-<h2>Definitions and Properties</h2>
+Definitions and Properties
+--------------------------
 
-<p>
-A <dfn>binary tree</dfn> is made up of a finite set of elements
-called <dfn>nodes</dfn>.
+A :dfn:`binary tree` is made up of a finite set of elements
+called :dfn:`nodes`.
 This set either is empty or consists of a node called the
 <dfn>root</dfn> together with two binary trees, called the left and
 right 
@@ -53,9 +57,7 @@ The roots of these subtrees are
 <dfn>children</dfn> of the root.
 There is an <dfn>edge</dfn> from a node to each of its children,
 and a node is said to be the <dfn>parent</dfn> of its children.
-</p>
 
-<p>
 If <var>n<sub>1</sub></var>, <var>n<sub>2</sub></var>, ...,
 <var>n<sub>k</sub></var>
 is a sequence of nodes in the tree such
@@ -79,7 +81,6 @@ The root is the only node at level 0, and its depth is 0.
 A <dfn>leaf</dfn> node is any node that has two empty children.
 An <dfn>internal</dfn> node is
 any node that has at least one non-empty child.
-</p>
 
 <figure>
 <center>
@@ -125,7 +126,6 @@ Two different binary trees.
 </figcaption>
 </figure>
 
-<p>
 Figure <ODSAref "BinExample" /> illustrates the various terms used to
 identify parts of a binary tree.
 Figure <ODSAref "BinDiff" /> illustrates an important point regarding the
@@ -133,9 +133,7 @@ structure of binary trees.
 Because <em>all</em> binary tree nodes have two children
 (one or both of which might be empty), the two binary
 trees of Figure <ODSAref "BinDiff" /> are <em>not</em> the same.
-</p>
 
-<p>
 Two restricted forms of binary tree are sufficiently
 important to warrant special names.
 Each node in a <dfn>full</dfn> binary tree
@@ -147,7 +145,6 @@ tree by levels from left to right.
 In the complete binary tree of height <i>d</i>, all levels
 except possibly level <i>d</i>-1 are completely full.
 The bottom level has its nodes filled in from the left side.
-</p>
 
 <figure>
 <center>
@@ -162,7 +159,6 @@ Examples of full and complete binary trees.
 </figcaption>
 </figure>
 
-<p>
 Figure <ODSAref "FullComplete" /> illustrates the differences between
 full and complete binary trees. <sup><a href="#fn1" id="r1">[1]</a></sup>
 There is no particular relationship between these two tree shapes;
@@ -176,13 +172,15 @@ The Huffman coding tree
 (Module <ODSAref "Huffman" />)
 </ODSAif>
 is an example of a full binary tree.
-</p>
 
-<p class="TODO">
-[EXERCISE HERE TO TEST KNOWLEDGE OF THE TERMINOLOGY.]
-</p>
+.. TODO::
+   :type: Exercise
 
-<section>
+   EXERCISE HERE TO TEST KNOWLEDGE OF THE TERMINOLOGY.
+
+Notes
+-----
+
 <p id="fn1"><a href="#r1">[1]</a>
 While these definitions for full and complete binary tree are the ones
 most commonly used, they are not universal.
@@ -193,7 +191,3 @@ Here is a memory aid that you might find useful:
 "Complete" is a wider word than "full", and complete binary
 trees tend to be wider than full binary trees because each level of a
 complete binary tree is as wide as possible.
-</p>
-</section>
-
-</div>

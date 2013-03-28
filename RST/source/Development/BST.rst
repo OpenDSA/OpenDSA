@@ -1,12 +1,17 @@
-<div id="content">
-<ODSAtitle>Binary Search Trees</ODSAtitle>
-<ODSAprereq "BinTreeImp" />
-<ODSAprereq "Dictionary" />
-<ODSAprereq "List" />
-<ODSAprereq "LinkedList" />
-<ODSAprereq "ArrayBasedList" />
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
 
-<p>
+.. avmetadata::
+   :author: Cliff Shaffer
+   :prerequisites:
+   :topic: Binary Trees
+
+
+Binary Search Trees [Raw]
+=========================
+
 Module <ODSAref "Dictionary" /> presented the dictionary ADT,
 along with dictionary implementations based on sorted and unsorted
 lists.
@@ -26,17 +31,13 @@ However, insertion will now require &Theta;(<i>n</i>) time on average
 because, once the proper location for the new record in the sorted
 list has been found, many records might be shifted to make room for
 the new record.
-</p>
 
-<p>
 Is there some way to organize a collection of records so
 that inserting records and searching for records can both be done
 quickly?
 This module presents the binary search tree (BST),
 which allows an improved solution to this problem.
-</p>
 
-<p>
 A BST is a binary tree that conforms to the following condition, known
 as the <dfn>Binary Search Tree Property</dfn>.
 All nodes stored in the left
@@ -51,7 +52,6 @@ nodes are printed using an inorder traversal
 (see Module <ODSAref "BinTreeTraversal" />)
 the resulting enumeration will be in
 sorted order from lowest to highest.
-</p>
 
 <figure>
 <center>
@@ -69,7 +69,6 @@ order 120, 42, 42, 7, 2, 32, 37, 24, 40.
 </figcaption>
 </figure>
 
-<p>
 Figure <ODSAref "BSTClass" /> shows a class declaration for the BST
 that implements the dictionary ADT.
 The public member functions include those required by the dictionary
@@ -80,69 +79,58 @@ there are various ways to deal with keys and comparing records
 method such as using the <code>Comparator</code> class,
 and passing in a comparator function).
 Our BST implementation will handle comparison by explicitly storing
-a key separate from the data value at each node of the tree.
-</p>
+a key separate from the data value at each node of the tree.::
 
-<figure>
-<pre>
-/** Binary Search Tree implementation for Dictionary ADT */
-class BST<Key extends Comparable<? super Key>, E>
-         implements Dictionary<Key, E> {
-  private BSTNode<Key,E> root; // Root of the BST
-  private int nodecount; // Number of nodes in the BST
+   /** Binary Search Tree implementation for Dictionary ADT */
+   class BST<Key extends Comparable<? super Key>, E>
+            implements Dictionary<Key, E> {
+     private BSTNode<Key,E> root; // Root of the BST
+     private int nodecount; // Number of nodes in the BST
 
-  /** Constructor */
-  BST() { root = null; nodecount = 0; }
+     /** Constructor */
+     BST() { root = null; nodecount = 0; }
 
-  /** Reinitialize tree */
-  public void clear() { root = null; nodecount = 0; }
+     /** Reinitialize tree */
+     public void clear() { root = null; nodecount = 0; }
 
-  /** Insert a record into the tree.
-      @param k Key value of the record.
-      @param e The record to insert. */
-  public void insert(Key k, E e) {
-    root = inserthelp(root, k, e);
-    nodecount++;
-  }
+     /** Insert a record into the tree.
+         @param k Key value of the record.
+         @param e The record to insert. */
+     public void insert(Key k, E e) {
+       root = inserthelp(root, k, e);
+       nodecount++;
+     }
 
-  /** Remove a record from the tree.
-      @param k Key value of record to remove.
-      @return The record removed, null if there is none. */
-  public E remove(Key k) {
-    E temp = findhelp(root, k); // First find it
-    if (temp != null) {
-      root = removehelp(root, k); // Now remove it
-      nodecount--;
-    }
-    return temp;
-  }
+     /** Remove a record from the tree.
+         @param k Key value of record to remove.
+         @return The record removed, null if there is none. */
+     public E remove(Key k) {
+       E temp = findhelp(root, k); // First find it
+       if (temp != null) {
+         root = removehelp(root, k); // Now remove it
+         nodecount--;
+       }
+       return temp;
+     }
 
-  /** Remove and return the root node from the dictionary.
-      @return The record removed, null if tree is empty. */
-  public E removeAny() {
-    if (root == null) return null;
-    E temp = root.element();
-    root = removehelp(root, root.key());
-    nodecount--;
-    return temp;
-  }
+     /** Remove and return the root node from the dictionary.
+         @return The record removed, null if tree is empty. */
+     public E removeAny() {
+       if (root == null) return null;
+       E temp = root.element();
+       root = removehelp(root, root.key());
+       nodecount--;
+       return temp;
+     }
 
-  /** @return Record with key value k, null if none exist.
-      @param k The key value to find. */
-  public E find(Key k) { return findhelp(root, k); }
+     /** @return Record with key value k, null if none exist.
+         @param k The key value to find. */
+     public E find(Key k) { return findhelp(root, k); }
 
-  /** @return The number of records in the dictionary. */
-  public int size() { return nodecount; }
-}
-</pre>
+     /** @return The number of records in the dictionary. */
+     public int size() { return nodecount; }
+   }
 
-<figcaption>
-<ODSAfig "BSTClass" />
-The binary search tree implementation.
-</figcaption>
-</figure>
-
-<p>
 To find a record with key value <var>K</var> in a BST, begin at the root.
 If~the root stores a record with key value <var>K</var>,
 then the search is over.
@@ -157,22 +145,19 @@ This process continues until a record with key value <var>K</var> is
 found, or we reach a leaf node.
 If we reach a leaf node without encountering <var>K</var>, then
 no record exists in the BST whose key value is <var>K</var>.
-</p>
 
-<p class="example">
-Consider searching for the node with key value 32 in the tree of
-Figure <ODSAref "BSTShape" />(a).
-Because 32 is less than the root value of 37, the search
-proceeds to the left subtree.
-Because 32 is greater than 24, we search in 24's right subtree.
-At this point the node containing 32 is found.
-If the search value were 35, the same path would be followed to the
-node containing 32.
-Because this node has no children, we know that 35 is not
-in the BST.
-</p>
+   **Example:**
+   Consider searching for the node with key value 32 in the tree of
+   Figure <ODSAref "BSTShape" />(a).
+   Because 32 is less than the root value of 37, the search
+   proceeds to the left subtree.
+   Because 32 is greater than 24, we search in 24's right subtree.
+   At this point the node containing 32 is found.
+   If the search value were 35, the same path would be followed to the
+   node containing 32.
+   Because this node has no children, we know that 35 is not
+   in the BST.
 
-<p>
 Notice that in Figure <ODSAref "BSTClass" />, public member function
 <code>find</code> calls private member function <code>findhelp</code>.
 Method <code>find</code> takes the search key as an explicit parameter
@@ -182,32 +167,25 @@ However, the find operation is most easily implemented as a
 recursive function whose parameters are the root of a
 subtree and the search key.
 Member <code>findhelp</code> has the desired form for this recursive
-subroutine and is implemented as follows.
-</p>
+subroutine and is implemented as follows.::
 
-<pre>
-private E findhelp(BSTNode<Key,E> rt, Key k) {
-  if (rt == null) return null;
-  if (rt.key().compareTo(k) > 0)
-    return findhelp(rt.left(), k);
-  else if (rt.key().compareTo(k) == 0) return rt.element();
-  else return findhelp(rt.right(), k);
-}
-</pre>
+   private E findhelp(BSTNode<Key,E> rt, Key k) {
+     if (rt == null) return null;
+     if (rt.key().compareTo(k) > 0)
+       return findhelp(rt.left(), k);
+     else if (rt.key().compareTo(k) == 0) return rt.element();
+     else return findhelp(rt.right(), k);
+   }
 
-<p>
 Once the desired record is found, it is passed through
 return values up the chain of recursive calls.
 If a suitable record is not found, NULL is returned.
-</p>
 
-<p>
 Inserting a record with key value <var>K</var> requires that we first find
 where that record would have been if it were in the tree.
 This takes us to either a leaf node, or to an internal node with no
 child in the appropriate direction.
 <sup><a href="#fn1" id="r1">[1]</a></sup>
-</p>
 
 <figure>
 <center>
@@ -225,30 +203,25 @@ containing~35.
 </figcaption>
 </figure>
 
-<p>
 Call this node <var>R'</var>.
 We then add a new node containing the new record as a child
 of <var>R'</var>.
 Figure <ODSAref "BSTAdd" /> illustrates this operation.
 The value 35 is added as the right child of the node with value 32.
-Here is the implementation for <code>inserthelp</code>.
-</p>
+Here is the implementation for <code>inserthelp</code>.::
 
-<pre>
-/** @return The current subtree, modified to contain
-   the new item */
-private BSTNode<Key,E> inserthelp(BSTNode<Key,E> rt,
-                                  Key k, E e) {
-  if (rt == null) return new BSTNode<Key,E>(k, e);
-  if (rt.key().compareTo(k) > 0)
-    rt.setLeft(inserthelp(rt.left(), k, e));
-  else
-    rt.setRight(inserthelp(rt.right(), k, e));
-  return rt;
-}
-</pre>
+   /** @return The current subtree, modified to contain
+      the new item */
+   private BSTNode<Key,E> inserthelp(BSTNode<Key,E> rt,
+                                     Key k, E e) {
+     if (rt == null) return new BSTNode<Key,E>(k, e);
+     if (rt.key().compareTo(k) > 0)
+       rt.setLeft(inserthelp(rt.left(), k, e));
+     else
+       rt.setRight(inserthelp(rt.right(), k, e));
+     return rt;
+   }
 
-<p>
 You should pay careful attention to the implementation for
 <code>inserthelp</code>.
 Note that <code>inserthelp</code> returns a pointer to a
@@ -266,9 +239,9 @@ However, the cost of these additional assignments is worth paying to
 keep the insertion process simple.
 The alternative is to check if a given assignment is necessary, which
 is probably more expensive than the assignment!
-</p>
 
-<p>
+.. avembed:: AV/Development/BST-insert.html ss
+
 The shape of a BST depends on the order in which elements are inserted.
 A new element is added to the BST as a new leaf node,
 potentially increasing the depth of the tree.
@@ -281,9 +254,7 @@ sorted order.
 In general, it is preferable for a BST to be as shallow as
 possible.
 This keeps the average cost of a BST operation low.
-</p>
 
-<p>
 Removing a node from a BST is a bit trickier than inserting a node,
 but it is not complicated if all of the possible cases are considered
 individually.
@@ -302,45 +273,40 @@ did have a left child, <var>S</var> would not be the node with minimum
 key value).
 Thus, changing the pointer as described will maintain a BST, with
 <var>S</var> removed.
-The code for this method, named <code>deletemin</code>, is as follows:
-</p>
+The code for this method, named <code>deletemin</code>, is as follows::
 
-<pre>
-private BSTNode<Key,E> deletemin(BSTNode<Key,E> rt) {
-  if (rt.left() == null) return rt.right();
-  rt.setLeft(deletemin(rt.left()));
-  return rt;
-}
-</pre>
+   private BSTNode<Key,E> deletemin(BSTNode<Key,E> rt) {
+     if (rt.left() == null) return rt.right();
+     rt.setLeft(deletemin(rt.left()));
+     return rt;
+   }
 
-<p class="example">
-Figure <ODSAref "DelMin" /> illustrates the <code>deletemin</code>
-process.
-Beginning at the root node with value 10,
-<code>deletemin</code> follows the left link until there is no further
-left link, in this case reaching the node with value 5.
-The node with value10 is changed to point to the right child of the
-node containing the minimum value.
-This is indicated in Figure <ODSAref "DelMin" /> by a dashed line.
-</p>
+Here is an example
 
-<figure>
-<center>
-<img src="Images/DelMin.png" alt="Deleting the node with minimum value" />
-<br/>
-</center>
+   **Example**
+   Figure <ODSAref "DelMin" /> illustrates the <code>deletemin</code>
+   process.
+   Beginning at the root node with value 10,
+   <code>deletemin</code> follows the left link until there is no further
+   left link, in this case reaching the node with value 5.
+   The node with value10 is changed to point to the right child of the
+   node containing the minimum value.
+   This is indicated in Figure <ODSAref "DelMin" /> by a dashed line.
 
-<figcaption>
-<ODSAfig "DelMin" />
-An example of deleting the node with minimum value.
-In this tree, the node with minimum value, 5, is the left child of the
-root.
-Thus, the root's <code>left</code> pointer is changed to point to 5's right
-child.
-</figcaption>
-</figure>
+   <center>
+   <img src="Images/DelMin.png" alt="Deleting the node with minimum value" />
+   <br/>
+   </center>
 
-<p>
+   <figcaption>
+   <ODSAfig "DelMin" />
+   An example of deleting the node with minimum value.
+   In this tree, the node with minimum value, 5, is the left child of the
+   root.
+   Thus, the root's <code>left</code> pointer is changed to point to 5's right
+   child.
+   </figcaption>
+
 A pointer to the node containing the minimum-valued element is stored
 in parameter <code>S</code>.
 The return value of the <code>deletemin</code> method is the subtree of
@@ -348,21 +314,15 @@ the current node with the minimum-valued node in the subtree removed.
 As with method <code>inserthelp</code>, each node on the path back to the
 root has its left child pointer reassigned to the subtree resulting
 from its call to the <code>deletemin</code> method.
-</p>
 
-<p>
 A useful companion method is <code>getmin</code> which returns a
-pointer to the node containing the minimum value in the subtree.
-</p>
+pointer to the node containing the minimum value in the subtree.::
 
-<pre>
-private BSTNode<Key,E> getmin(BSTNode<Key,E> rt) {
-  if (rt.left() == null) return rt;
-  return getmin(rt.left());
-}
-</pre>
+   private BSTNode<Key,E> getmin(BSTNode<Key,E> rt) {
+     if (rt.left() == null) return rt;
+     return getmin(rt.left());
+   }
 
-<p>
 Removing a node with given key value <var>R</var> from the BST
 requires that we first find <var>R</var> and then remove it from the
 tree.
@@ -379,9 +339,7 @@ point to one of <var>R</var>'s subtrees, and then reinsert the remaining
 subtree's nodes one at a time.
 A better alternative is to find a value in one of the
 subtrees that can replace the value in <var>R</var>.
-</p>
 
-<p>
 Thus, the question becomes:
 Which value can substitute for the one being removed?
 It cannot be any arbitrary value, because we must preserve the BST
@@ -392,37 +350,34 @@ being removed, or else the greatest key value less than the one being
 removed.
 If either of these values replace the one being removed,
 then the BST property is maintained.
-</p>
 
-<p class="example">
-Assume that we wish to remove the value 37 from the BST
-of Figure <ODSAref "BSTShape" />(a).
-Instead of removing the root node, we remove the node with the least
-value in the right subtree (using the <code>deletemin</code>
-operation).
-This value can then replace the value in the root.
-In this example we first remove the node with value 40,
-because it contains the least value in the right subtree.
-We then substitute 40 as the new value for the root node.
-Figure <ODSAref "Remove" /> illustrates this process.
-</p>
+   **Example**
+   Assume that we wish to remove the value 37 from the BST
+   of Figure <ODSAref "BSTShape" />(a).
+   Instead of removing the root node, we remove the node with the least
+   value in the right subtree (using the <code>deletemin</code>
+   operation).
+   This value can then replace the value in the root.
+   In this example we first remove the node with value 40,
+   because it contains the least value in the right subtree.
+   We then substitute 40 as the new value for the root node.
+   Figure <ODSAref "Remove" /> illustrates this process.
 
-<figure>
-<center>
-<img src="Images/Remove.png" alt="Removing a node from the BST" />
-<br/>
-</center>
+   <center>
+   <img src="Images/Remove.png" alt="Removing a node from the BST" />
+   <br/>
+   </center>
 
-<figcaption>
-<ODSAfig "Remove" />
-An example of removing the value 37 from the BST.
-The node containing this value has two children.
-We replace value 37 with the least value from the
-node's right subtree, in this case 40.
-</figcaption>
-</figure>
+   <figcaption>
+   <ODSAfig "Remove" />
+   An example of removing the value 37 from the BST.
+   The node containing this value has two children.
+   We replace value 37 with the least value from the
+   node's right subtree, in this case 40.
+   </figcaption>
 
-<p>
+.. avembed:: AV/Development/BST-delete.html ss
+
 When duplicate node values do not appear in the tree, it makes no
 difference whether the replacement is the greatest value from the
 left subtree or the least value from the right subtree.
@@ -439,40 +394,34 @@ greatest value in the left subtree of Figure
 Selecting the least value from the right subtree does not
 have a similar problem, because it does not violate the Binary Search
 Tree Property if equal values appear in the right subtree.
-</p>
 
-<p>
 From the above, we see that if we want to remove the record stored in
 a node with two children, then we simply call <code>deletemin</code> on
 the node's right subtree and substitute the record returned for the
 record being removed.
-Here is an implementation for <code>removehelp</code>.
-</p>
+Here is an implementation for <code>removehelp</code>.::
 
-<pre>
-/** Remove a node with key value k
-    @return The tree with the node removed */
-private BSTNode<Key,E> removehelp(BSTNode<Key,E> rt,Key k) {
-  if (rt == null) return null;
-  if (rt.key().compareTo(k) > 0)
-    rt.setLeft(removehelp(rt.left(), k));
-  else if (rt.key().compareTo(k) < 0)
-    rt.setRight(removehelp(rt.right(), k));
-  else { // Found it
-    if (rt.left() == null) return rt.right();
-    else if (rt.right() == null) return rt.left();
-    else { // Two children
-      BSTNode<Key,E> temp = getmin(rt.right());
-      rt.setElement(temp.element());
-      rt.setKey(temp.key());
-      rt.setRight(deletemin(rt.right()));
-    }
-  }
-  return rt;
-}
-</pre>
+   /** Remove a node with key value k
+       @return The tree with the node removed */
+   private BSTNode<Key,E> removehelp(BSTNode<Key,E> rt,Key k) {
+     if (rt == null) return null;
+     if (rt.key().compareTo(k) > 0)
+       rt.setLeft(removehelp(rt.left(), k));
+     else if (rt.key().compareTo(k) < 0)
+       rt.setRight(removehelp(rt.right(), k));
+     else { // Found it
+       if (rt.left() == null) return rt.right();
+       else if (rt.right() == null) return rt.left();
+       else { // Two children
+         BSTNode<Key,E> temp = getmin(rt.right());
+         rt.setElement(temp.element());
+         rt.setKey(temp.key());
+         rt.setRight(deletemin(rt.right()));
+       }
+     }
+     return rt;
+   }
 
-<p>
 The cost for <code>findhelp</code> and <code>inserthelp</code> is the depth of
 the node found or inserted.
 The cost for <code>removehelp</code> is the depth of the node being
@@ -493,7 +442,7 @@ operations in the worst case costing &Theta;(<i>n</i>).
 Consider the situation where we construct a BST of <i>n</i> nodes
 by inserting records one at a time.
 If we are fortunate to have them arrive in an order that results in a
-balanced tree (a ``random'' order is likely to be good
+balanced tree (a "random" order is likely to be good
 enough for this purpose), then each insertion will cost on average
 &Theta;(log <i>n</i>), for a total cost of
 &Theta;(<i>n</i> log <i>n</i>).
@@ -502,29 +451,22 @@ then the resulting tree will be a chain of height <i>n</i>.
 The cost of insertion in this case will be
 \(\sum_{i=1}^{n} i = \Theta(n^2)\).
 
-<p>
 Traversing a BST costs &Theta;(<i>n</i>) regardless of the shape of
 the tree.
 Each node is visited exactly once, and each child pointer
 is followed exactly once.
-</p>
 
-<p>
 Below is an example traversal, named <code>printhelp</code>.
 It performs an inorder traversal on the BST to print the node values
-in ascending order.
-</p>
+in ascending order.::
 
-<pre>
-private void printhelp(BSTNode<Key,E> rt) {
-  if (rt == null) return;
-  printhelp(rt.left());
-  printVisit(rt.element());
-  printhelp(rt.right());
-}
-</pre>
+   private void printhelp(BSTNode<Key,E> rt) {
+     if (rt == null) return;
+     printhelp(rt.left());
+     printVisit(rt.element());
+     printhelp(rt.right());
+   }
 
-<p>
 While the BST is simple to implement and efficient when the tree is
 balanced, the possibility of its being unbalanced is a serious
 liability.
@@ -532,9 +474,10 @@ There are techniques for organizing a BST to guarantee good performance.
 Two examples are the AVL tree and the splay tree.
 Other search trees are guaranteed to remain
 balanced, such as the 2-3 Tree.
-</p>
 
-<section>
+Notes
+-----
+
 <p id="fn1"><a href="#r1">[1]</a>
 This assumes that no node
 has a key value equal to the one being inserted.
@@ -544,7 +487,3 @@ If the application does not allow nodes with equal keys, then this
 insertion should be treated as an error (or ignored).
 If duplicate keys are allowed, our convention will be to insert the
 duplicate in the right subtree.
-</p>
-</section>
-
-</div>

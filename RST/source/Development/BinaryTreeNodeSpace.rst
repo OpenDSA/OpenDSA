@@ -1,9 +1,16 @@
-<div id="content">
-<ODSAtitle>Binary Tree Space Requirements</ODSAtitle>
-<ODSAprereq "BinTreeNodeADT" />
-<ODSAFullTheorem" />
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
 
-<p>
+.. avmetadata::
+   :author: Cliff Shaffer
+   :prerequisites:
+   :topic: Binary Trees
+
+Binary Tree Space Requirements [Raw]
+====================================
+
 This module presents techniques for calculating the amount of
 overhead required by a binary tree, based on its node implementation.
 Recall that overhead is the amount of space necessary to maintain the
@@ -13,9 +20,7 @@ The amount of overhead depends on several factors including which
 nodes store data values (all nodes, or just the leaves),
 whether the leaves store child pointers, and whether the tree is a
 full binary tree.
-</p>
 
-<p>
 In a simple pointer-based implementation for the binary tree such
 as that of Figure <ODSAref "BinNodeClass" />, every node has two
 pointers to its children (even when the children are NULL).
@@ -31,20 +36,16 @@ If we arbitrarily assume that <i>P</i> = <i>D</i>, then a full tree
 has about two thirds of its total space taken up in overhead.
 Worse yet, Theorem <ODSAref "SubTreeThrm" />
 tells us that about half of the
-pointers are ``wasted'' NULL values that serve only to indicate tree
+pointers are "wasted" NULL values that serve only to indicate tree
 structure, but which do not provide access to new data.
-</p>
 
-<p>
 In Java, the most typical
 implementation is not to store any actual
 data in a node, but rather a pointer to the data record.
 In this case, each node will typically store three pointers, all of
 which are overhead, resulting in an overhead fraction of
 3<i>P</i>/(3<i>P</i> + <i>D</i>).
-</p>
 
-<p>
 If only leaves store data values, then the fraction of total space
 devoted to overhead depends on whether the tree is
 full.
@@ -55,9 +56,7 @@ binary trees.
 The overhead fraction drops as the tree becomes closer to full,
 being lowest when the tree is truly full.
 In this case, about one half of the nodes are internal.
-</p>
 
-<p>
 Great savings can be had by eliminating the pointers from leaf
 nodes in full binary trees.
 Again assume the tree stores a pointer to the data field.
@@ -66,17 +65,13 @@ and because only internal nodes now have child pointers, the
 overhead fraction in this case will be approximately 
 \[\frac{\frac{n}{2} (2P)}{\frac{n}{2} (2P) + Dn} =
 \frac{P}{P + D}\]
-</p>
 
-<p>
 If <i>P</i> = <i>D</i>, the overhead drops to about one half of the
 total space.
 However, if only leaf nodes store useful information, the overhead
 fraction for this implementation is actually three quarters of the
-total space, because half of the ``data'' space is unused.
-</p>
+total space, because half of the "data" space is unused.
 
-<p>
 If a full binary tree needs to store data only
 at the leaf nodes, a better implementation would have
 the internal nodes store two pointers and no data
@@ -92,9 +87,7 @@ The reason is because we have changed our definition of "data" to
 refer only to what is stored in the leaf nodes,
 so while the overhead fraction is higher, it is from a
 total storage requirement that is lower.
-</p>
 
-<p>
 There is one serious flaw with this analysis.
 When using separate implementations for internal and leaf nodes,
 there must be a way to distinguish between the node types.
@@ -122,7 +115,9 @@ success and failure.
 In any other situation, such "bit packing" tricks should be
 avoided because they are difficult to debug and understand at
 best, and are often machine dependent at worst.
-</p>
+
+Notes
+-----
 
 <p class="footnote">
 In the early to mid 1980s, I worked on a Geographic
@@ -131,8 +126,6 @@ At the time space was a critical resource, so we used a bit-packing
 approach where we stored the nodetype flag as the last bit in the
 parent node's pointer.
 This worked perfectly on various 32-bit workstations.
-Unfortunately, in those days IBM PC-compatibles used 16-bit pointers.
+Unfortunately, in those days (before Microsoft Windows!)
+IBM PC-compatibles used 16-bit pointers.
 We never did figure out how to port our code to the 16-bit machine.
-</p>
-
-</div>

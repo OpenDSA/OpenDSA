@@ -1,4 +1,4 @@
-final long runs = 100000;
+final long runs = 10000;
 
 void setup() {
   long i, j;
@@ -12,15 +12,20 @@ void setup() {
       { sum1++; }
   long time2 = millis();
   long sum2 = 0;
-  for (i=runs; i != 0; i--)
-    for (j=count; j != 0; j--)
+  for (i=runs; i > 0; i--)
+    for (j=count; j > 0; j--)
       { sum2++; }
   long time3 = millis();
+  long sum3 = 0;
+  for (i=runs; i != 0; i--)
+    for (j=count; j != 0; j--)
+      { sum3++; }
+  long time4 = millis();
 
   println("Up time is " + (time2-time1) +
           ", down time is " + (time3-time2));
-  println("Sum1 is " + sum1 + ", sum2 is " + sum2);
-
-
+  println("Check vs. zero time is " + (time4-time3));
+  println("Sum1 is " + sum1 + ", sum2 is " + sum2 + ", sum 3 is " + sum3);
+  exit();
 }
 

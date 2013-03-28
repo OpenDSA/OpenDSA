@@ -4,11 +4,16 @@ PROCESS = ~/processing-2.0b8/processing-java
 SRC = c:\Cliff\OpenDSA\SourceCode\Processing
 BUILD = c:\Cliff\OpenDSA\SourceCode\Processing\build
 
-all: Trees Sorting Graphs
+all: Demo Trees Sorting Graphs
 
 clean:
 	-rm -rf build
 	mkdir build
+
+Demo: UpDown
+
+UpDown: 
+	@$(PROCESS) --run --sketch="$(SRC)/Demo/UpDown" --output="$(BUILD)/build" --force
 
 Trees: GenTree UFTest
 

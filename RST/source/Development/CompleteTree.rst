@@ -1,8 +1,17 @@
-<div id="content">
-<ODSAtitle>Array Implementation for Complete Binary Trees</ODSAtitle>
-<ODSAprereq "BinTreeImp" />
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
 
-<p>
+.. avmetadata::
+   :author: Cliff Shaffer
+   :prerequisites:
+   :topic: Binary Trees
+
+
+Array Implementation for Complete Binary Trees [Raw]
+====================================================
+
 Module <ODSAref "BinTreeImp" /> explains how a large
 fraction of the space in a typical binary tree node implementation is
 devoted to structural overhead, not to storing data.
@@ -21,9 +30,7 @@ important being the heap data structure discussed in
 Module <ODSAref "Heap" />.
 Heaps are often used to implement priority queues
 and for external sorting algorithms.
-</p>
 
-<p>
 We begin by assigning numbers to the node positions in the complete
 binary tree, level by level, from left to right as shown in
 Figure <ODSAref "BinArray" />(a). 
@@ -62,13 +69,11 @@ A dash indicates that the relative does not exist.
 </figcaption>
 </figure>
 
-<p>
 The formulae for calculating the array indices of the various
 relatives of a node are as follows.
 The total number of nodes in the tree is <i>n</i>.
 The index of the node in question is <i>r</i>,
 which must fall in the range 0 to <i>n</i>-1.
-</p>
 
 <ul>
 <li>
@@ -88,5 +93,3 @@ Left sibling(<i>r</i>) = <i>r</i> - 1 if <i>r</i> is even.
 Right sibling(<i>r</i>) = <i>r</i> + 1 if <i>r</i>
 is odd and <i>r</i> + 1 &lt; <i>n</i>.
 </ul>
-
-</div>

@@ -1,11 +1,16 @@
-<div id="content">
-<ODSAtitle>Binary Tree Node Implementations</ODSAtitle>
-<ODSAprereq "Dictionary" />
-<ODSAprereq "BinTree" />
-<ODSAprereq "BinTreeNodeADT" />
-<ODSAprereq "BinTreeTraversal" />
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
 
-<p>
+.. avmetadata::
+   :author: Cliff Shaffer
+   :prerequisites:
+   :topic: Binary Trees
+
+Binary Tree Node Implementations [Raw]
+======================================
+
 In this module we examine various ways to implement binary tree
 nodes.
 By definition, all binary tree nodes have two children,
@@ -14,9 +19,7 @@ Binary tree nodes typically contain a value field,
 with the type of the field depending on the application.
 The most common node implementation includes a value field and
 pointers to the two children.
-</p>
 
-<p>
 Figure <ODSAref "BinNodeClass" /> shows a simple implementation for the
 <code>BinNode</code> abstract class, which we will name <code>BSTNode</code>.
 Class <code>BSTNode</code> includes a data member of type <code>E</code>,
@@ -29,55 +32,45 @@ Its type is determined by the first generic parameter, named
 <code>Key</code>.
 Every <code>BSTNode</code> object also has two pointers,
 one to its left child and another to its right child.
-Figure <ODSAref "BinLink" />
-illustrates the <code>BSTNode</code> implementation.
-</p>
+The following
+illustrates the <code>BSTNode</code> implementation.::
 
-<figure>
-<pre>
-/** Binary tree node implementation: Pointers to children
-    @param E The data element
-    @param Key The associated key for the record */
-class BSTNode<Key, E> implements BinNode<E> {
-  private Key key;              // Key for this node
-  private E element;            // Element for this node
-  private BSTNode<Key,E> left;  // Pointer to left child
-  private BSTNode<Key,E> right; // Pointer to right child
+   /** Binary tree node implementation: Pointers to children
+       @param E The data element
+       @param Key The associated key for the record */
+   class BSTNode<Key, E> implements BinNode<E> {
+     private Key key;              // Key for this node
+     private E element;            // Element for this node
+     private BSTNode<Key,E> left;  // Pointer to left child
+     private BSTNode<Key,E> right; // Pointer to right child
 
-  /** Constructors */
-  public BSTNode() {left = right = null; }
-  public BSTNode(Key k, E val)
-  { left = right = null; key = k; element = val; }
-  public BSTNode(Key k, E val, BSTNode<Key,E> l, BSTNode<Key,E> r)
-  { left = l; right = r; key = k; element = val; }
+     /** Constructors */
+     public BSTNode() {left = right = null; }
+     public BSTNode(Key k, E val)
+     { left = right = null; key = k; element = val; }
+     public BSTNode(Key k, E val, BSTNode<Key,E> l, BSTNode<Key,E> r)
+     { left = l; right = r; key = k; element = val; }
 
-  /** Get and set the key value */
-  public Key key() { return key; }
-  public void setKey(Key k) { key = k; }
+     /** Get and set the key value */
+     public Key key() { return key; }
+     public void setKey(Key k) { key = k; }
 
-  /** Get and set the element value */
-  public E element() { return element; }
-  public void setElement(E v) { element = v; }
+     /** Get and set the element value */
+     public E element() { return element; }
+     public void setElement(E v) { element = v; }
 
-  /** Get and set the left child */
-  public BSTNode<Key,E> left() { return left; }
-  public void setLeft(BSTNode<Key,E> p) { left = p; }
+     /** Get and set the left child */
+     public BSTNode<Key,E> left() { return left; }
+     public void setLeft(BSTNode<Key,E> p) { left = p; }
 
-  /** Get and set the right child */
-  public BSTNode<Key,E> right() { return right; }
-  public void setRight(BSTNode<Key,E> p) { right = p; }
+     /** Get and set the right child */
+     public BSTNode<Key,E> right() { return right; }
+     public void setRight(BSTNode<Key,E> p) { right = p; }
 
-  /** @return True if a leaf node, false otherwise */
-  public boolean isLeaf()
-  { return (left == null) && (right == null); }
-}
-</pre>
-
-<figcaption>
-<ODSAfig "BinNodeClass" />
-A binary tree node class implementation.
-</figcaption>
-</figure>
+     /** @return True if a leaf node, false otherwise */
+     public boolean isLeaf()
+     { return (left == null) && (right == null); }
+   }
 
 <figure>
 <center>
@@ -91,7 +84,6 @@ where each node stores two child pointers and a value.
 </figcaption>
 </figure>
 
-<p>
 Some programmers find it convenient to add a pointer to the
 node's parent, allowing easy upward movement in the
 tree.
@@ -104,9 +96,7 @@ More importantly, many uses of the parent pointer are driven by
 improper understanding of recursion and so indicate poor programming.
 If you are inclined toward using a parent pointer, consider if there
 is a more efficient implementation possible.
-</p>
 
-<p>
 An important decision in the design of a pointer-based node
 implementation is whether the same class definition will be used for
 leaves and internal nodes.
@@ -124,7 +114,6 @@ nodes, then both must store the child pointers.
 But it seems wasteful to store child pointers in the leaf nodes.
 Thus, there are many reasons why it can save space to have separate
 implementations for internal and leaf nodes.
-</p>
 
 <figure>
 <center>
@@ -138,7 +127,6 @@ An expression tree for
 </figcaption>
 </figure>
 
-<p>
 As an example of a tree that stores different information at the leaf
 and internal nodes, consider the expression tree illustrated by
 Figure <ODSAref "DiffNodes" />.
@@ -157,9 +145,7 @@ In contrast, leaves store variable names or numbers,
 which is considerably larger in order
 to handle the wider range of possible values.
 At the same time, leaf nodes need not store child pointers.
-</p>
 
-<p>
 Java allows us to differentiate leaf from internal
 nodes through the use of class inheritance.
 A <dfn>base class</dfn> provides a general definition for an
@@ -177,51 +163,47 @@ Subclasses for the internal and leaf node types each implement
 Internal nodes store child pointers of the base class type;
 they do not distinguish their children's actual subclass.
 Whenever a node is examined, its version of <code>isLeaf</code> indicates
-the node's subclass.
-</p>
+the node's subclass.::
 
-<figure>
-<pre>
-/** Base class for expression tree nodes */
-public interface VarBinNode {
-  public boolean isLeaf(); // All subclasses must implement
-}
+   /** Base class for expression tree nodes */
+   public interface VarBinNode {
+     public boolean isLeaf(); // All subclasses must implement
+   }
 
-/** Leaf node */
-class VarLeafNode implements VarBinNode {
-  private String operand;                 // Operand value
+   /** Leaf node */
+   class VarLeafNode implements VarBinNode {
+     private String operand;                 // Operand value
 
-  public VarLeafNode(String val) { operand = val; }
-  public boolean isLeaf() { return true; }
-  public String value() { return operand; }
-};
+     public VarLeafNode(String val) { operand = val; }
+     public boolean isLeaf() { return true; }
+     public String value() { return operand; }
+   };
 
-/** Internal node */
-class VarIntlNode implements VarBinNode {
-  private VarBinNode left;                // Left child
-  private VarBinNode right;               // Right child
-  private Character operator;             // Operator value
+   /** Internal node */
+   class VarIntlNode implements VarBinNode {
+     private VarBinNode left;                // Left child
+     private VarBinNode right;               // Right child
+     private Character operator;             // Operator value
 
-  public VarIntlNode(Character op, VarBinNode l, VarBinNode r)
-    { operator = op; left = l; right = r; }
-  public boolean isLeaf() { return false; }
-  public VarBinNode leftchild() { return left; }
-  public VarBinNode rightchild() { return right; }
-  public Character value() { return operator; }
-}
+     public VarIntlNode(Character op, VarBinNode l, VarBinNode r)
+       { operator = op; left = l; right = r; }
+     public boolean isLeaf() { return false; }
+     public VarBinNode leftchild() { return left; }
+     public VarBinNode rightchild() { return right; }
+     public Character value() { return operator; }
+   }
 
-/** Preorder traversal */
-public static void traverse(VarBinNode rt) {
-  if (rt == null) return;          // Nothing to visit
-  if (rt.isLeaf())                 // Process leaf node
-    Visit.VisitLeafNode(((VarLeafNode)rt).value());
-  else {                           // Process internal node
-    Visit.VisitInternalNode(((VarIntlNode)rt).value());
-    traverse(((VarIntlNode)rt).leftchild());
-    traverse(((VarIntlNode)rt).rightchild());
-  }
-}
-</pre>
+   /** Preorder traversal */
+   public static void traverse(VarBinNode rt) {
+     if (rt == null) return;          // Nothing to visit
+     if (rt.isLeaf())                 // Process leaf node
+       Visit.VisitLeafNode(((VarLeafNode)rt).value());
+     else {                           // Process internal node
+       Visit.VisitInternalNode(((VarIntlNode)rt).value());
+       traverse(((VarIntlNode)rt).leftchild());
+       traverse(((VarIntlNode)rt).rightchild());
+     }
+   }
 
 <figcaption>
 <ODSAfig "VarNodeI" />
@@ -229,9 +211,7 @@ An implementation for separate internal and leaf node
 representations using Java class inheritance
 and virtual functions.
 </figcaption>
-</figure>
 
-<p>
 Figure <ODSAref "VarNodeI" /> includes two subclasses derived from
 class <code>VarBinNode</code>, named <code>LeafNode</code> and
 <code>IntlNode</code>.
@@ -247,6 +227,3 @@ caller.
 The other member functions for the derived subclasses are accessed by
 type-casting the base class pointer as appropriate, as shown in
 function <code>traverse</code>.
-</p>
-
-</div>
