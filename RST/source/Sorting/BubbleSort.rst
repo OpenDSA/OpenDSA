@@ -21,11 +21,11 @@ introductory computer science courses.
 This is unfortunate, because Bubble Sort has no redeeming features
 whatsoever.
 It is rather slow, even compared to the other :math:`\Theta(n^2)`
-sorts that are commonly know.
-It not particularly intutitive --
+sorts that are commonly known.
+It is not particularly intutitive --
 nobody is going to come naturally to Bubble Sort as a way to sort
-their Bridge hand or their bills like they might with Insertion Sort
-or Selection Sort.
+their Bridge hand or their pile of bills like they might with
+Insertion Sort or Selection Sort.
 However, Bubble Sort can serve as the inspiration for a better sorting
 algorithm that will be presented in
 Module :numref:`Selection Sort <SelectionSort>`.

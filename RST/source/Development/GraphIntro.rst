@@ -224,9 +224,6 @@ The array is :math:`|\mathbf{V}|` items long, with position :math:`i`
 storing a pointer to the linked list of edges for Vertex :math:`v_i`.
 This linked list represents the edges by the vertices that are
 adjacent to Vertex :math:`v_i`.
-The adjacency list is therefore a generalization of the
-"list of children" representation for trees described in
-Module :numref:`<GenTreeImplement>`.
 
    **Example:** The entry for Vertex 0 in Figure :num:`Figure
    #GraphRep` (c) stores 1 and 4 because there are two edges in the

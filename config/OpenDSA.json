@@ -787,7 +787,15 @@
       },
       "Development/MCSTfull": {
         "long_name": "Minimal Cost Spanning Trees",
-        "exercises": {}
+        "exercises": {
+          "PrimAV": {
+            "long_name": "Prim's Algorithm Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+	}
       }
     },
     "Under Development": {
@@ -800,16 +808,16 @@
           "long_name": "Recurrence",
           "exercises": {}
         },
+        "Development/AmortAnal": {
+          "long_name": "Amortized Analysis",
+          "exercises": {}
+        },
         "Development/VisitorPatt": {
           "long_name": "Visitor Design Pattern",
           "exercises": {}
         }
       },
       "General Trees": {
-        "Development/LOChild": {
-          "long_name": "Lists of Children Representation",
-          "exercises": {}
-        },
         "Development/UnionFind": {
           "long_name": "Union/Find",
           "exercises": {}

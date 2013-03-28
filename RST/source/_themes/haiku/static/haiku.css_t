@@ -353,6 +353,7 @@ pre {
     margin: 0 0 12px 0;
     padding: 0.8em;
     background-color: #f0f0f0;
+    font-size: 1.4em;
 }
 
 hr {
@@ -535,3 +536,6 @@ table.data tr:hover td {
  background: mintcream !important;
 }   
 
+code {
+  font-size: 1.4em;
+}

@@ -176,3 +176,12 @@ That will let you change some of the default settings,
 such as the animation speed (usually used for things like the swap
 steps in the sorting algorithm visualizations), or whether the arrays
 show values or height bars.
+
+**Important Tip:** Math is rendered using the MathJAX library, which
+gives you a lot of options on how you can see things. Most
+importantly, if you right click on any math equation, you will get a
+context menu that include "Math Settings" with a sub-menu named "Zoom
+Trigger". Under that, you can set zoome to "hover" (among other
+options). From then on, when you use that browser on pages with
+MathJAX equations, hovering over the equation will make it
+larger. This can really help with reading some of the equations.

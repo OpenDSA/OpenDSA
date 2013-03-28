@@ -12,7 +12,7 @@ clean:
 
 Trees: GenTree UFTest
 
-Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort
+Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
 
 Graphs: GraphDummy GraphTrav GraphTop GraphDijk GraphMCST
 
@@ -145,6 +145,16 @@ build/Binsort/success: Sorting/Binsort.pde Utils/Swap.pde Utils/Permute.pde
 	@cp Utils/Swap.pde build/Binsort
 	@cp Utils/Permute.pde build/Binsort
 	@$(PROCESS) --run --sketch="$(BUILD)/Binsort" --output="$(BUILD)/build" --force
+
+Radixsort: build/RadixsortTest/success
+
+build/RadixsortTest/success: Sorting/Radixsort.pde Sorting/SortTest.pde
+	@echo "Radixsort Test"
+	-@rm -rf build/RadixsortTest
+	@mkdir build/RadixsortTest
+	@cp Sorting/Radixsort.pde build/RadixsortTest
+	@cp Sorting/SortTest.pde build/RadixsortTest/RadixsortTest.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/RadixsortTest" --output="$(BUILD)/build" --force
 
 
 GraphDummy: build/GraphDummy/success
