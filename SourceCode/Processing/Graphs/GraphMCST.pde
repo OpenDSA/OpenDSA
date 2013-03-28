@@ -23,7 +23,7 @@ void test(Graph G) {
   }
   out = "";
   for (i=0; i<G.n(); i++)
-   G.setValue(i, UNVISITED);
+    G.setValue(i, UNVISITED);
   V = new int[G.n()];
   PrimPQ(G, 0, D, V);
   for (i=0; i<G.n(); i++)
