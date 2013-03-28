@@ -77,7 +77,7 @@ At the end of each pass, the records are copied back to the original
 array.
 
 .. codeinclude:: Sorting/Radixsort.pde
-   :tag: RadixSort
+   :tag: Radixsort
 
 The first inner ``for`` loop initializes array ``cnt``.
 The second loop counts the number of records to be assigned to each
