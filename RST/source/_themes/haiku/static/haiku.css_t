@@ -284,10 +284,6 @@ p.last {
     margin-bottom: 0;
 }
 
-p.caption {
-    text-align: inherit;
-}
-
 ol {
     padding-left: 20px;
     counter-reset: item;
