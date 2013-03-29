@@ -10,8 +10,6 @@
 
 .. index:: ! collision resolution
 
-.. odsalink:: AV/slideCON.css
-
 Collision Resolution
 ====================
 

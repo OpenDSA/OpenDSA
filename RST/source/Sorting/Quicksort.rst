@@ -10,10 +10,9 @@
 
 .. odsascript:: AV/Sorting/quicksortCODE.js
 
-.. index:: ! Quicksort
-
-.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Sorting/quicksortCON.css
+
+.. index:: ! Quicksort
 
 Quicksort
 =========

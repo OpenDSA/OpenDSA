@@ -10,8 +10,6 @@
 
 .. index:: ! Insertion Sort
 
-.. odsalink:: AV/slideCON.css
-
 Insertion Sort
 ==============
 

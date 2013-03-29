@@ -8,7 +8,6 @@
    :prerequisites:
    :topic: Hashing
 
-.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Hashing/openhashCON.css
 
 Open Hashing
