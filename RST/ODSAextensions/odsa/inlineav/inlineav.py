@@ -111,7 +111,7 @@ class inlineav(Directive):
           #efouh: Get caption.  
           if self.content:
               self.options['anchor'] = ''
-              self.options['caption'] = ''.join(self.content)
+              self.options['caption'] = ' '.join(self.content)
           else:
               self.options['caption'] = ''
 
