@@ -37,6 +37,7 @@ jshint:
 	-@jshint lib/odsaAV.js
 	-@jshint lib/odsaMOD.js
 	-@jshint lib/gradebook.js
+	-@jshint SourceCode/JavaScript/*.js
 
 min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css
 
@@ -58,13 +59,16 @@ T1061220: min
 test: min
 	python $(CONFIG_SCRIPT) config/test.json
 
-O2: min
-	python $(CONFIG_SCRIPT) config/O2.json
+Dev: min
+	python $(CONFIG_SCRIPT) config/Dev.json
+
+Everything: min
+	python $(CONFIG_SCRIPT) config/Everything.json
 
 invalid: min
 	python $(CONFIG_SCRIPT) config/invalid.json
 
-allBooks: CS223 CS3114a CS3114b OpenDSA T1061220
+allBooks: CS223 CS3114a CS3114b OpenDSA T1061220 Dev Everything
 
 nomin:
 	cp lib/odsaUtils.js lib/odsaUtils-min.js

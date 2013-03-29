@@ -15,15 +15,15 @@
 Insertion Sort
 ==============
 
-What if you have a stack of phone bills from the past two years
-and you want to organize them by date?
-A fairly natural way to do this might be to look at the first two
+What would you do if you have a stack of phone bills from the past
+two years and you want to order by date?
+A fairly natural way to handle this is to look at the first two
 bills and put them in order.
 Then take the third bill and put it into the right order with respect
 to the first two, and so on.
 As you take each bill, you would add it to the sorted pile that you
 have already made.
-This natural approach to sorting is the inspiration for
+This simple approach is the inspiration for
 our first sorting algorithm, called :dfn:`Insertion Sort`.
 
 Insertion Sort iterates through a list of records.

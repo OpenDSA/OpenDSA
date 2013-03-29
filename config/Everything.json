@@ -1,5 +1,5 @@
 {
-  "title": "OpenDSA (Beta)",
+  "title": "OpenDSA: All Modules with TODO LIst",
   "book_dir": "Books",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
@@ -7,7 +7,7 @@
   "build_JSAV": false,
   "build_ODSA": true,
   "allow_anonymous_credit": true,
-  "suppress_todo": true,
+  "suppress_todo": false,
   "chapters": {
     "Preface": {
       "Intro": {

@@ -43,8 +43,7 @@ having been invented to sort thousands or even millions of records
 stored on the computer.
 For example, no normal person would use Quicksort to order a pile of
 bills by date, even though :ref:`Quicksort <Quicksort>` is the
-standard sorting algorithm of choice that you would find in a
-software utility library.
+standard sorting algorithm of choice for most software libraries.
 After years of study, there are still unsolved problems related to
 sorting.
 New algorithms are still being developed and refined for
@@ -55,36 +54,35 @@ studying sorting algorithms helps us to understand
 issues in algorithm design and analysis.
 For example, the sorting algorithms in this tutorial show multiple
 approaches to using divide-and-conquer.
-In particular, there are multiple ways to do the dividing:
-Mergesort divides a list in half;
-Quicksort divides a list into big values and small values;
-and Radix Sort divides the problem by working on one digit of the key
+In particular, there are multiple ways to do the dividing.
+Mergesort divides a list in half.
+Quicksort divides a list into big values and small values.
+Radix Sort divides the problem by working on one digit of the key
 at a time.
 Sorting algorithms can also illustrate a wide variety of
 analysis techniques.
 We'll find that it is possible for an algorithm to have an average
 case whose growth rate is significantly smaller than its worse case
 (:ref:`Quicksort <Quicksort>`).
-We will see how it is possible to speed up sorting algorithms
-(both :ref:`Shellsort <Shellsort>` and :ref:`Quicksort <Quicksort>`)
+We will see how it is possible to speed up one sorting algorithm
+(:ref:`Shellsort <Shellsort>` or :ref:`Quicksort <Quicksort>`)
 by taking advantage of the best case behavior of another algorithm
 (:ref:`Insertion Sort <InsertionSort>`).
-We'll see several examples of how we can tune an algorithm for better
+We will see several examples of how we can tune an algorithm for better
 performance.
-We'll see that special case behavior by some algorithms makes them a
+We will see that special case behavior by some algorithms makes them a
 good solution for special niche applications (:ref:`Heapsort <Heapsort>`).
 Sorting provides an example of a significant technique for
 analyzing the lower bound for a problem.
-Sorting will also be used to motivate the introduction to file
-processing presented in
-Module :numref:`<FileProc>`.
+Sorting also motivates the the study of file processing
+(Module :numref:`<FileProc>`).
 
 This tutorial covers several standard algorithms appropriate
-for sorting a collection of records that fit in the computer's
+for sorting a collection of records that fit into the computer's
 main memory.
 It begins with a discussion of three simple, but relatively slow,
-algorithms requiring :math:`\Theta(n^2)`
-time in the average and worst cases.
+algorithms that require :math:`\Theta(n^2)`
+time in the average and worst cases to sort :math:`n` records.
 Several algorithms with considerably better performance are then
 presented, some with :math:`\Theta(n \log n)` worst-case running
 time.
@@ -93,7 +91,7 @@ The final sorting method presented requires only
 (but it cannot run that fast in the general case).
 The chapter concludes with a proof that sorting in general
 requires :math:`\Omega(n \log n)` time in the worst case
-(see Module :numref:`<SortingLowerBound>`).
+(Module :numref:`<SortingLowerBound>`).
 
 Sorting Terminology and Notation
 --------------------------------
@@ -101,7 +99,7 @@ Sorting Terminology and Notation
 .. index:: key, search key
 
 Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`
-with key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
+with associated key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
 the :dfn:`Sorting Problem` is to
 arrange the records into any order :math:`s` such that records
 :math:`r_{s_1}`, :math:`r_{s_2}`, ..., :math:`r_{s_n}`
@@ -161,8 +159,8 @@ Some applications require that a small number of records be
 sorted, but that the sort be performed frequently.
 An example would be an application that repeatedly sorts groups of
 five numbers.
-In such cases, the constants in the runtime equations that are usually
-ignored in an asymptotic analysis now become crucial.
+In such cases, the constants in the runtime equations that usually
+get ignored in asymptotic analysis now become crucial.
 Finally, some situations require that a sorting algorithm use as
 little memory as possible.
 We will call attention to sorting algorithms that require significant

@@ -11,36 +11,51 @@
 OpenDSA Content Status
 ======================
 
-This status update was written March 2, 2013.
+This status update was written March 28, 2013.
 
 OpenDSA is rapidly evolving and adding new content.
-At the present time, the chapters are Sorting and Hashing are
-considered complete and actively maintained.
+At the present time, the chapters on Sorting and Hashing are
+considered complete (though some polishing and minor additions are
+still being made), and they are actively maintained.
 This amounts to roughly three weeks worth of material in a typical
-class.
-Everything else that you see here is in various stages of
-perparation.
+post-CS2-level class.
+If you are looking at the "Everything" book, you will see these as
+well as all modules that are in various stages of perparation.
+You will also see the "TODO" list items.
+If you are looking at the "Dev" book, then you will see everything
+**execept** the modules that are considered complete.
+(We have this version to speed up compilation a bit for the
+developers.)
 
 We have a goal of completing enough material for a complete semester
-course by Fall, 2013. That would contain chapters on algorithm
-analysis, lists, binary trees, general trees, sorting, searching, file
-processing (including external sorting), indexing, and graphs.
+course by Fall, 2013. That would contain chapters on
+mathematical background topics, algorithm analysis, lists,
+binary trees, general trees (with Union/FIND), sorting,
+searching (including hashing),
+file processing basics (including external sorting),
+indexing (including B-trees), and graphs.
 
-To guide you on the status of the materials, modules that are not
+As a quick guide on the status of the materials, modules that are not
 considered complete will show a suffix in the table of contents,
 tagged as follows.
 
 [STUB] means that there is little to no content, and the file is there
 primarily as a target for a crossreference from another module.
 
-[TEXT] means that expository text has been written, pehaps copied from
-one of our textbook sources. But that text does not yet contain any
-visualizations or exercises, nor any description of how visualizations
-and exercises should be included.
+[RAW] means that expository text has been written and copied from a
+source that we have rights to, but has not yet been typeset into
+ReST. It will look pretty ugly!
+
+[TEXT] means that expository text has been written, typically copied
+from one of our textbooks or another source that we have rights to
+use.
+But that text does not yet contain any visualizations or exercises,
+nor any description of how visualizations and exercises should be
+included.
 
 [SB] means that the module is a "storyboard". That includes the
-expository text, along with specifications for the various
-visualizations and exercises that yet need to be implemented.
+expository text properly typeset, along with specifications for the
+various visualizations and exercises that yet need to be implemented.
 "Quick prototype" or third party implementations (such as a Java
 applet) might be included to indicate how a visualization is intended.
 
@@ -48,4 +63,3 @@ applet) might be included to indicate how a visualization is intended.
 and various visualizations and exercises. But the content needs to be
 polished, and additional visualization support or exercise support
 might still be needed.
-
