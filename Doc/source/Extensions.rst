@@ -155,7 +155,7 @@ SYNOPSIS::
        :points: {number}
        :required: true|false
        :threshold: {number}
-       :caption: {string}
+       :target: {string}
        :align: left|right|center|justify|inherit
 
 DESCRIPTION
@@ -194,9 +194,9 @@ DESCRIPTION
       Threshold number of points required for credit.
       **Added automatically by the configuration process, do NOT add manually.**
 
-    ``:caption: {string}``
+    ``:target: {string}``
 
-      The caption to be displayed below the AV.
+      The label of the AV it is used for cross referencing. It is the id of the AV (HTML) anchor.
 
 
     ``:align: left|right|center|justify|inherit``
