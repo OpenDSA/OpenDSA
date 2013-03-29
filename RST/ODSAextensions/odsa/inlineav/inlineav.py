@@ -78,10 +78,10 @@ class inlineav(Directive):
                    'long_name': directives.unchanged,
                    'points': directives.unchanged,
                    'threshold': directives.unchanged,
-                   'caption': directives.unchanged,
+                   'target': directives.unchanged,
                    'align': directives.unchanged,
                   }
-
+    has_content = True
     def run(self):
         """ Restructured text extension for including inline JSAV content on module pages """
         self.options['exer_name'] = self.arguments[0]
@@ -103,22 +103,26 @@ class inlineav(Directive):
         if 'align' not in self.options:
           self.options['align'] = 'center'
         
-        if 'caption' not in self.options:
+        if 'target' not in self.options:
           self.options['caption'] = ''
           self.options['anchor'] = ''
         else:
           json_data = loadTable()
-          #efouh: Get label from caption. The preprocessor adds the figure label to the caption, and 
-          #encloses it between '<' and '>'signs
-          label = re.split('>',re.split('<', self.options['caption'], re.IGNORECASE)[1], re.IGNORECASE)[0]
-          a_label = '<' + label + '>'
+          #efouh: Get caption.  
+          if self.content:
+              self.options['anchor'] = ''
+              self.options['caption'] = ''.join(self.content)
+          else:
+              self.options['caption'] = ''
+
+          label = self.options['target']
           if label in json_data:
+            print 'label exists'
             xrefs = json_data[label]
             if '#' in xrefs:
               xrefs = xrefs[:-1]
             numbered_label = 'Figure %s' %xrefs
-            self.options['caption'] = self.options['caption'].replace(a_label,numbered_label)
-            self.options['caption'] = '<p class="caption"  style="text-align:%s;">%s</p>' %(self.options['align'],self.options['caption']) 
+            self.options['caption'] = '<p class="caption"  style="text-align:%s;">%s: %s</p>' %(self.options['align'],numbered_label,self.options['caption']) 
             self.options['anchor'] = '<p id="%s">' %label.lower() 
  
         if 'output' in self.options and self.options['output'] == "show":

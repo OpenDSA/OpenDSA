@@ -70,10 +70,6 @@ class modPreReq:
       fig = 1
       tab = 1
       label = ''
-      file_modified = False
-      #label of jsav slide shows
-      ss_label=''
-      #config.mod_numb+=1
       fls = open(filename,'r')
       data = fls.readlines()
       new_data = []
@@ -101,24 +97,24 @@ class modPreReq:
             self.covers =  p.sub('',str).split(',')
          if line.startswith('.. _'):
             label =  re.split(':', re.split('.. _', line, re.IGNORECASE)[1], re.IGNORECASE)[0]
-            if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. inlineav::'):
+            if data[cpt+1].startswith('.. figure::'):
                if os.path.splitext(os.path.basename(filename))[0] in config.table:
                  tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                  config.table[label] = tb + '.%s#' %fig
                  fig+=1
-                 if data[cpt+1].startswith('.. inlineav::'):
-                     ss_label = label
             if data[cpt+1].startswith('.. table::'):
                 if os.path.splitext(os.path.basename(filename))[0] in config.table:
                   tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                   config.table[label] = tb + '.%s#' %tab
                   tab+=1
-         if ':caption:' in line and ss_label !='':
-             new_caption = ':caption: <' + ss_label + '>'
-             line = line.replace(':caption:',new_caption) 
-             file_modified = True
-             ss_label = ''
-  
+         if ':target:' in line:
+             trgt =  re.split('target:', line, re.IGNORECASE)[1]
+             trgt=p.sub('',trgt)
+             if os.path.splitext(os.path.basename(filename))[0] in config.table:
+                 tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
+                 config.table[trgt] = tb + '.%s#' %fig
+                 fig+=1 
+ 
          if ('.. TODO::' in line  or '.. todo::' in line) and len_wthsp==-1 and start==-1 and end==-1:
             start = cpt+1
          if start==cpt:
@@ -160,11 +156,6 @@ class modPreReq:
             start = cpt+1
             end = -1
          new_data.append(line)
-      #write the modified file if we encountered an slide show figure
-      if file_modified:
-          otfile = open(filename,'wb')
-          otfile.writelines(new_data)
-          otfile.close()
 
       self.prereqNum = len(self.prereq)
 
