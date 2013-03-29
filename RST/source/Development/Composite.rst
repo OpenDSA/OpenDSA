@@ -1,9 +1,21 @@
-<div id="content">
-<ODSAtitle>Expression Tree Composite Design</ODSAtitle>
-<ODSAprereq "DesignPatterns" />
-<ODSAprereq "BinTreeImp" />
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
 
-<p>
+.. avmetadata::
+   :author: Cliff Shaffer
+   :prerequisites:
+   :topic: Binary Trees, Design Patterns
+
+Composite Design Pattern [Raw]
+==============================
+
+.. TODO::
+   :type: Text
+
+   Deal with the composite material from the book's Intro chapter.
+
 There is another approach that we can take to represent separate leaf
 and internal nodes, also using a virtual base class and separate node
 classes for the two types.
@@ -19,56 +31,52 @@ Each subclass then implements its own appropriate behavior for its
 role in a traversal.
 The whole traversal process is called by invoking <code>traverse</code>
 on the root node, which in turn invokes <code>traverse</code> on its
-children. 
-</p>
+children.::
 
-<figure>
-<pre>
-/** Base class: Composite */
-public interface VarBinNode {
-  public boolean isLeaf();
-  public void traverse();
-}
+   /** Base class: Composite */
+   public interface VarBinNode {
+     public boolean isLeaf();
+     public void traverse();
+   }
 
-/** Leaf node: Composite */
-class VarLeafNode implements VarBinNode {
-  private String operand;                 // Operand value
+   /** Leaf node: Composite */
+   class VarLeafNode implements VarBinNode {
+     private String operand;                 // Operand value
 
-  public VarLeafNode(String val) { operand = val; }
-  public boolean isLeaf() { return true; }
-  public String value() { return operand; }
+     public VarLeafNode(String val) { operand = val; }
+     public boolean isLeaf() { return true; }
+     public String value() { return operand; }
 
-  public void traverse() {
-    Visit.VisitLeafNode(operand);
-  }
-}
+     public void traverse() {
+       Visit.VisitLeafNode(operand);
+     }
+   }
 
-/** Internal node: Composite */
-class VarIntlNode implements VarBinNode { // Internal node
-  private VarBinNode left;                // Left child
-  private VarBinNode right;               // Right child
-  private Character operator;             // Operator value
+   /** Internal node: Composite */
+   class VarIntlNode implements VarBinNode { // Internal node
+     private VarBinNode left;                // Left child
+     private VarBinNode right;               // Right child
+     private Character operator;             // Operator value
 
-  public VarIntlNode(Character op,
-                     VarBinNode l, VarBinNode r)
-    { operator = op; left = l; right = r; }
-  public boolean isLeaf() { return false; }
-  public VarBinNode leftchild() { return left; }
-  public VarBinNode rightchild() { return right; }
-  public Character value() { return operator; }
+     public VarIntlNode(Character op,
+                        VarBinNode l, VarBinNode r)
+       { operator = op; left = l; right = r; }
+     public boolean isLeaf() { return false; }
+     public VarBinNode leftchild() { return left; }
+     public VarBinNode rightchild() { return right; }
+     public Character value() { return operator; }
 
-  public void traverse() {
-    Visit.VisitInternalNode(operator);
-    if (left != null) left.traverse();
-    if (right != null) right.traverse();
-  }
-}
+     public void traverse() {
+       Visit.VisitInternalNode(operator);
+       if (left != null) left.traverse();
+       if (right != null) right.traverse();
+     }
+   }
 
-/** Preorder traversal */
-public static void traverse(VarBinNode rt) {
-  if (rt != null) rt.traverse();
-}
-</pre>
+   /** Preorder traversal */
+   public static void traverse(VarBinNode rt) {
+     if (rt != null) rt.traverse();
+   }
 
 <figcaption>
 <ODSAfig "VarNodeC" />
@@ -78,9 +86,7 @@ and virtual functions using the composite design pattern.
 Here, the functionality of <code>traverse</code> is
 embedded into the node subclasses.
 </figcaption>
-</figure>
 
-<p>
 When comparing the implementations of Figures <ODSAref "VarNodeI" />
 and <ODSAref "VarNodeC" />, each has advantages and disadvantages.
 The first does not require that the node classes know about
@@ -110,9 +116,7 @@ A disadvantage is that the traversal operation must not be called on a
 NULL pointer, because there is no object to catch the call.
 This problem could be avoided by using a flyweight
 (see Module <ODSAref "DesignPatterns" />) to implement empty nodes.
-</p>
 
-<p>
 Typically, the version of Figure <ODSAref "VarNodeI" /> would be
 preferred in this example if <code>traverse</code> is a member function of
 the tree class, and if the node subclasses are hidden from users of
@@ -122,9 +126,7 @@ to users of the tree separate from their existence as nodes in the
 tree, then the version of Figure <ODSAref "VarNodeC" /> might be
 preferred because hiding the internal behavior of the nodes becomes
 more important.
-</p>
 
-<p>
 Another advantage of the composite design is that implementing each
 node type's functionality might be easier.
 This is because you can focus solely on the information passing and
@@ -132,6 +134,3 @@ other behavior needed by this node type to do its job.
 This breaks down the complexity that many programmers feel overwhelmed
 by when dealing with complex information flows related to recursive
 processing.
-</p>
-
-</div>
