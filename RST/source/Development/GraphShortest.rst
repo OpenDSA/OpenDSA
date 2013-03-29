@@ -8,6 +8,8 @@
    :prerequisites: GraphTrav
    :topic: Graphs
 
+.. odsalink:: AV/slideCON.css
+
 Shortest-Paths Problems [Storyboard]
 ====================================
 
@@ -51,11 +53,11 @@ along a path involving one or more intermediate vertices.
    Figure :num:`Figure #DistExamp` is directed.
    We assume that all weights are positive.
 
-.. _DistExamp:
-
 .. inlineav:: dijkstraCON1 dgm
-   :caption: Example graph for shortest-path definitions.
+   :target: DistExamp
    :align: center
+
+   Example graph for shortest-path definitions.
 
 Single-Source Shortest Paths
 ----------------------------

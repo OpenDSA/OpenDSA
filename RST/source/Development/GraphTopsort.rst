@@ -8,6 +8,8 @@
    :prerequisites: GraphTraversal
    :topic: Graphs
 
+.. odsalink:: AV/slideCON.css
+
 Topological Sort [Storyboard]
 =============================
 
@@ -25,11 +27,12 @@ one prerequisite.
 The process of laying out the vertices of a DAG in a linear order to
 meet the prerequisite rules is called a :dfn:`topological sort`.
 
-.. _TopSort:
-
 .. inlineav:: topsortCON1 dgm
-   :caption: An example graph for topological sort. Seven tasks have dependencies as shown by the directed graph.
+   :target: TopSort
    :align: center
+
+   An example graph for topological sort. Seven tasks have
+   dependencies as shown by the directed graph.
 
 .. TODO::
    :type: Slideshow
