@@ -6,7 +6,7 @@
 .. avmetadata:: 
    :author: Jeremy Rodencal
 
-0/1 Knapsack Problem [DRAFT]
+0/1 Knapsack Problem [Draft]
 ============================
 
 The 0/1 Knapsack problem can be defined in terms of a thief who enters the

@@ -8,12 +8,20 @@
    :prerequisites: Knapsack
    :topic: Algorithms
 
-Edit Distance [DRAFT]
+Edit Distance [Draft]
 =====================
 
-:dfn:`Edit Distance` is an algorithm for computing the minimum number of changes from one string to another.  The two non-interesting cases are: if both strings are of length zero (or identical), then zero operations are needed; and if one string is of zero length, then the number of operations needed is the length of the non-zero length string.
+:dfn:`Edit Distance` is an algorithm for computing the minimum number
+of changes from one string to another.  The two non-interesting cases
+are: if both strings are of length zero (or identical), then zero
+operations are needed; and if one string is of zero length, then the
+number of operations needed is the length of the non-zero length
+string.
 
-Following the dynamic programming approach, the first step is solve the problem recursively.  Like most recursive solutions, this algorithm is easy to follow.  First, some symbols and their defintions to make the description easier to understand.
+Following the dynamic programming approach, the first step is solve
+the problem recursively.  Like most recursive solutions, this
+algorithm is easy to follow.  First, some symbols and their defintions
+to make the description easier to understand.
 
 +--------------+------------------------------------------+
 |  Symbol      | Definition                               |
@@ -175,13 +183,27 @@ The following is the same Edit Distance algorithm as above, but implemented dyna
 	    	return array[startMax][endMax];
 	}
 
-One major difference between the recursive Edit Distance and this particular dynamic Edit Distance is the minimum filling of the grid.  As was seen above in the second animation, not every cell received a value.  These missing values were entirely unnecessary for determining the actual Edit Distance between the two strings, and were therefore bypassed.  This dynamic implementation, as was seen by the third animation, will actually fill in every cell with its appropriate value.  Perhaps you can think of a way to only fill in the necessary cells using the dynamic method.
+One major difference between the recursive Edit Distance and this
+particular dynamic Edit Distance is the minimum filling of the grid.
+As was seen above in the second animation, not every cell received a
+value.  These missing values were entirely unnecessary for determining
+the actual Edit Distance between the two strings, and were therefore
+bypassed.  This dynamic implementation, as was seen by the third
+animation, will actually fill in every cell with its appropriate
+value.  Perhaps you can think of a way to only fill in the necessary
+cells using the dynamic method.
 
-Now that you've seen the algorithms in action, you should hopefully understand where the grid gets its values.  More than this, you should understand how the algorithm chooses which operation to do next.  For the following quiz, the key to completing it is understanding ultimately which operation will be done at any point.  For any given cell, identify which operation will yield the lowest total operation count.
+Now that you've seen the algorithms in action, you should hopefully
+understand where the grid gets its values.  More than this, you should
+understand how the algorithm chooses which operation to do next.  For
+the following quiz, the key to completing it is understanding
+ultimately which operation will be done at any point.  For any given
+cell, identify which operation will yield the lowest total operation
+count.
 
 .. avembed:: Exercises/Development/edit-KA1.html ka
 
-On this next quiz, identify the correct value that would go in the highlighted cell.
+On this next quiz, identify the correct value that would go in the
+highlighted cell.
 
 .. avembed:: Exercises/Development/edit-KA2.html ka
-

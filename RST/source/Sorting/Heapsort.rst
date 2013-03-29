@@ -41,7 +41,7 @@ This means that we do not necessarily need to insert one value at a
 time into the tree structure.
 
 Heapsort is based on the heap data structure presented in
-Module :numref:`Heaps <Heaps>`.
+Module :numref:`Heaps <Heapstub>`.
 Heapsort has all of the advantages just listed.
 The complete binary tree is balanced, its array representation is
 space efficient, and we can load all values into the tree at once,
@@ -63,7 +63,7 @@ A complete implementation is as follows.
    :tag: Heapsort        
 
 Because building the heap takes :math:`\Theta(n)` time
-(see Module :numref:`Heaps <Heaps>`)
+(see Module :numref:`Heaps <Heapstub>`)
 and because :math:`n` deletions
 of the maximum-valued record each take :math:`\Theta(\log n)` time,
 we see that the entire Heapsort operation takes
@@ -85,7 +85,7 @@ other sorting methods described earlier (many of which would require
 sorting all of the array first).
 One situation where we are able to take advantage of this concept is
 in the implementation of Kruskal's minimal cost spanning tree (MST)
-algorithm of (see Module :numref:`Minimal Cost Spanning Trees <MCST>`).
+algorithm of (see Module :numref:`Minimal Cost Spanning Trees <MCSTstub>`).
 That algorithm requires that edges be visited in ascending
 order (so, use a min-heap), but this process stops as soon as the MST
 is complete.

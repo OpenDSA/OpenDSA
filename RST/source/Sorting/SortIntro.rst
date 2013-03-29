@@ -27,7 +27,7 @@ advertisement and mail them more cheaply.
 We might use sorting to help an algorithm to solve
 some other problem.
 For example, Kruskal's algorthm to solve the minimum-cost spanning
-tree problem (see Module :numref:`<MCST>`) must sort the edges of
+tree problem (see Module :numref:`<MCSTstub>`) must sort the edges of
 a graph by length before it can process them.
 
 Because sorting is so important, naturally it has been studied
@@ -108,6 +108,11 @@ have keys obeying the property
 In other words, the sorting problem is to arrange a set of records so
 that the values of their key fields are in non-decreasing order.
 
+.. TODO::
+   :type: Slideshow
+
+   The preceding paragraph could be turned into a slideshow.
+
 As defined, the Sorting Problem allows input with two or more
 records that have the same key value.
 Certain applications require that input not contain
@@ -129,7 +134,7 @@ When comparing two sorting algorithms, the simplest approach would be to
 program both and measure their running times.
 An example of such timings is presented in
 Module :numref:`Empirical Comparsion of Sorting Algorithms <SortingEmpirical>`.
-However, you must be careful when doing empirical comparisons because
+However, doing fair empirical comparisons can be tricky because
 the running time for many sorting algorithms depends on specifics of
 the input values.
 The number of records, the size of the keys and the records,
@@ -137,30 +142,37 @@ the allowable range of the key values, and the amount
 by which the input records are "out of order" can all greatly affect
 the relative running times for sorting algorithms.
 
-When analyzing sorting algorithms, it is traditional to measure
-the number of comparisons made between keys.
-This measure is usually closely related to the running time for
+When analyzing sorting algorithms, it is traditional to measure the
+cost by counting the number of comparisons made between keys.
+This measure is usually closely related to the actual running time for
 the algorithm and has the advantage of being machine and data-type
 independent.
 However, in some cases records might be so large that their physical
 movement might take a significant fraction of the total running time.
-If so, it might be appropriate to measure the number of
-swap operations performed by the algorithm.
+If so, it might be appropriate to measure the cost by counting the
+number of swap operations performed by the algorithm.
 In most applications we can assume that all records and keys are of
 fixed length, and that a single comparison or a single swap operation
 requires a constant amount of time regardless of which keys are
 involved.
-Some special situations "change the rules" for comparing sorting
-algorithms.
+However, some special situations "change the rules" for comparing
+sorting algorithms.
 For example, an application with records or keys having widely
 varying length (such as sorting a sequence of variable length strings)
-will benefit from a special-purpose sorting technique.
-Some applications require that a small number of records be
+cannot expect all comparisons to cost roughly the same.
+Not only do such situations require special measures for analysis,
+they also will usually benefit from a special-purpose sorting
+technique.
+
+Other applications require that a small number of records be
 sorted, but that the sort be performed frequently.
 An example would be an application that repeatedly sorts groups of
 five numbers.
 In such cases, the constants in the runtime equations that usually
 get ignored in asymptotic analysis now become crucial.
+Note that recursive sorting algorithms end up sorting lots of small
+lists as well.
+
 Finally, some situations require that a sorting algorithm use as
 little memory as possible.
 We will call attention to sorting algorithms that require significant

@@ -188,7 +188,7 @@ possibility that the empty tree is being traversed.
 By using the first design, which explicitly supports processing of
 empty subtrees, the problem is avoided.
 
-.. avembed:: AV/Development/binarytree-preorder.html pe
+.. avembed:: AV/Development/binarytreePreorder.html pe
 
 Another issue to consider when designing a traversal is how to
 define the visitor function that is to be executed on every node.

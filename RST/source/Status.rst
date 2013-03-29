@@ -42,24 +42,24 @@ tagged as follows.
 [STUB] means that there is little to no content, and the file is there
 primarily as a target for a crossreference from another module.
 
-[RAW] means that expository text has been written and copied from a
+[Raw] means that expository text has been written and copied from a
 source that we have rights to, but has not yet been typeset into
 ReST. It will look pretty ugly!
 
-[TEXT] means that expository text has been written, typically copied
+[Text] means that expository text has been written, typically copied
 from one of our textbooks or another source that we have rights to
 use.
 But that text does not yet contain any visualizations or exercises,
 nor any description of how visualizations and exercises should be
 included.
 
-[SB] means that the module is a "storyboard". That includes the
+[Storyboard] means that the module is a "storyboard". That includes the
 expository text properly typeset, along with specifications for the
 various visualizations and exercises that yet need to be implemented.
 "Quick prototype" or third party implementations (such as a Java
 applet) might be included to indicate how a visualization is intended.
 
-[DRAFT] means that the module is nearing completion. It contains text
+[Draft] means that the module is nearing completion. It contains text
 and various visualizations and exercises. But the content needs to be
 polished, and additional visualization support or exercise support
 might still be needed.

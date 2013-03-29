@@ -147,7 +147,7 @@ that objects :math:`A` and :math:`C` are also equivalent.
 
 Another application for UNION/FIND occurs in Kruskal's algorithm for
 computing the minimal cost spanning tree for a graph
-(Module :numref:`<MCSTfull>`).
+(Module :numref:`<MCST>`).
 
 The input to the UNION/FIND algorithm is typically  a series of
 equivalence pairs.

@@ -13,6 +13,14 @@
 Optimizing Insertion Sort
 =========================
 
+.. TODO::
+   :type: Text
+
+   Move this to after the Exchange Sorting module, and give a broader
+   discussion of optimization. Include the bubble sort and selection
+   sort anti-optimizations. Talk about some details like how
+   JavaScript does better with < than with !==.
+
 Since sorting is used so much, it is natural for programmers to want
 to optimize their sorting code to run faster.
 Let's consider a potential optimization

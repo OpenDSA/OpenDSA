@@ -23,7 +23,7 @@ this would not be an interesting question.
 We can just use standard comparison operators like "<" or ">".
 Even if we wanted to store strings, most programming languages give us
 built-in functions for comparing strings alphabetically.
-But we do not usually want to store integers or strings in a data
+But we do not usually want to store just integers or strings in a data
 structure.
 Usually we want to store records, where a record is made up of
 multiple values, such as a name, an address, and a phone number.

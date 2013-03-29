@@ -734,7 +734,7 @@
         "long_name": "Recurrence",
         "exercises": {}
       },
-      "Development/MCST": {
+      "Development/MCSTstub": {
         "long_name": "Minimal Cost Spanning Trees",
         "exercises": {}
       },
@@ -742,7 +742,7 @@
         "long_name": "File Processing",
         "exercises": {}
       },
-      "Development/Heaps": {
+      "Development/Heapstub": {
         "long_name": "Heaps",
         "exercises": {}
       },

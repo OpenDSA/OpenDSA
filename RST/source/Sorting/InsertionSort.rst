@@ -19,8 +19,8 @@ What would you do if you have a stack of phone bills from the past
 two years and you want to order by date?
 A fairly natural way to handle this is to look at the first two
 bills and put them in order.
-Then take the third bill and put it into the right order with respect
-to the first two, and so on.
+Then take the third bill and put it into the right position with
+respect to the first two, and so on.
 As you take each bill, you would add it to the sorted pile that you
 have already made.
 This simple approach is the inspiration for
@@ -31,12 +31,22 @@ For each iteration, the current record is inserted in turn at the
 correct position within a sorted list composed of those records
 already processed.
 Here is an implementation.
-The input is an array of :math:`n` records stored in array ``A``.
+The input is an array named ``A`` that stores :math:`n` records.
 
 .. codeinclude:: Sorting/Insertionsort.pde 
    :tag: Insertionsort        
 
-Consider the example of the following array.
+(Note that to make the explanation for these sorting algorithms as
+simple as possible, we will usually assume that our input is an
+integer array rather than an array of more complex records.
+But you should realize that in practice, there is not usually much
+use to sorting an array of simple integers.
+Nearly always we want to sort more complex records that each have an
+integer :dfn:`key` value.
+You will see how to deal with more complex records in
+Module :numref:`<SortCompare>`.)
+
+Consider this start to the process.
 
 .. inlineav:: InssortCON1 ss
    :output: show
@@ -53,11 +63,11 @@ And now the record in position 3.
    :output: show
 
 This continues on with each record in turn.
-Call the current record :math:`X`.
+Call the current record :math:`x`.
 Insertion Sort will move it to the left so
 long as its value is less than that of the record immediately
 preceding it.
-As soon as a key value less than or equal to :math:`X` is
+As soon as a key value less than or equal to :math:`x` is
 encountered, ``inssort`` is done with that record because all
 records to its left in the array must have smaller keys.
 The following visualization puts it all together.
@@ -71,7 +81,7 @@ Now try for yourself to see if you understand how Insertion Sort works.
 Insertion Sort Analysis
 -----------------------
 
-The body of ``inssort`` is made up of two nested
+The body of ``inssort`` consists of two nested
 ``for`` loops.
 The outer ``for`` loop is executed :math:`n-1` times.
 The inner ``for`` loop is harder to analyze because the
@@ -87,7 +97,7 @@ through the ``for`` loop, two the second time, and so on.
 Thus, the total number of comparisons will be
 
 .. math::
-   \sum_{i=2}^n i \approx n^2/2 = \Theta(n^2)
+   \sum_{i=1}^{n-1} i = \frac{n(n-1)}{2} \approx n^2/2 = \Theta(n^2).
 
 In contrast, consider the best-case cost.
 This occurs when the values occur in sorted order from lowest to
@@ -98,20 +108,6 @@ The total number of comparisons will be :math:`n-1`, which is the
 number of times the outer ``for`` loop executes.
 Thus, the cost for Insertion Sort in the best case is
 :math:`\Theta(n)`.
-
-While the best case is significantly faster than the worst case,
-the worst case is usually a more reliable indication of the "typical"
-running time.
-However, there are situations where we can expect the input to be in
-sorted or nearly sorted order.
-One example is when an already sorted list is slightly disordered by a
-small number of additions to the list;
-restoring sorted order using Insertion Sort might be a good idea if we
-know that the disordering is slight.
-Examples of algorithms that take advantage of Insertion Sort's
-near-best-case running time are Shellsort
-(Module :numref:`ShellSort <Shellsort>`)
-and Quicksort (Module :numref:`Quicksort <Quicksort>`).
 
 .. index:: ! inversion
 
@@ -140,7 +136,25 @@ Thus, the average case should be about half the cost of the worst
 case, or around :math:`n^2/4`, which is still
 :math:`\Theta(n^2)`.
 So, the average case is no better than the worst case in
-asymptotic complexity.
+its growth rate.
+
+While the best case is significantly faster than the average and worst
+cases, the average and worst cases are usually more reliable
+indicators of the "typical" running time.
+However, there are situations where we can expect the input to be in
+sorted or nearly sorted order.
+One example is when an already sorted list is slightly disordered by a
+small number of additions to the list;
+restoring sorted order using Insertion Sort might be a good idea if we
+know that the disordering is slight.
+And even when the input is not perfectly sorted, Insertion Sort's cost
+goes up in proportion to the number of inversions.
+So a "nearly sorted" list will always be cheap to sort with Insertion
+Sort.
+Examples of algorithms that take advantage of Insertion Sort's
+near-best-case running time are Shellsort
+(Module :numref:`<Shellsort>`)
+and Quicksort (Module :numref:`<Quicksort>`).
 
 Counting comparisons or swaps yields similar results.
 Each time through the inner ``for`` loop yields both a
@@ -151,30 +165,31 @@ Thus, the number of swaps for the entire sort operation is
 This is 0 in the best case, and :math:`\Theta(n^2)` in the
 average and worst cases.
 
-We will study algorithms whose asympotitic growth rate is much better
-than :math:`\Theta(n^2)`.
-This means for larger arrays, Insertion Sort will not be a good
-performer.
-However, it does have two situations in which it works well.
-The first is when the array is already sorted (or nearly so) as we
-have seen its best case cost is only :math:`\Theta(n)`.
-The other comes when the array is very small, since Insertion Sort is
-so simple.
-The other algorithms that have better asympotic growth rates are a bit
+Later we will see algorithms whose growth rate is much
+better than :math:`\Theta(n^2)`.
+Thus for larger arrays, Insertion Sort will not be so good a
+performer as other algorithms.
+So Insertion Sort is not the best sorting algorithm to use in most
+situations.
+But there are special situations where it is ideal.
+We already know that Insertion Sort works great when the input is
+sorted or nearly so.
+Another good time to use Insertion Sort is when the array is very
+small, since Insertion Sort is so simple.
+The algorithms that have better asymptotic growth rates tend to be
 more complicated, which leads to larger constant factors in their
-running time (so typically fewer comparisons for larger arrays, but
-more cost per comparison).
-It might seem that neither of these special situations are all that
-helpful.
-But we will see later that there are times when we can count on an
-array to be nearly sorted.
-And we will see later that there are times when we might need to do
-many, many sorts on very small arrays.
+running time.
+That means they typically need fewer comparisons for larger arrays,
+but they cost more per comparison.
+This observation might not seem that helpful, since even an algorithm
+with high cost per comparison will be fast on small input sizes.
+But there are times when we might need to do many, many sorts on very
+small arrays.
 You should spend some time right now trying to think of a situation
 where you will need to sort many small arrays.
 Actually, it happens a lot.
 
-Here are some review questions to check that you understand
+Here are some review questions to check your understanding of
 Insertion Sort.
 
 .. avembed:: Exercises/Sorting/InssortSumm.html ka

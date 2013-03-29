@@ -205,31 +205,15 @@ exchanges that could be used to build the heap.
 All exchanges are between a node and one of its children.
 The heap is formed as a result of this exchange process.
 The array for the right-hand tree of
-Figure <ODSAref "HeapBuild" />(a) would appear as follows:
+Figure <ODSAref "HeapBuild" />(a) would appear as follows::
 
-<ODSAeq "display">
-\sffamily
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-\rule{0pt}{12pt}7&4&6&1&2&3&5\\
-\hline
-\end{tabular}
-</ODSAeq>
+   7 4 6 1 2 3 5
 
-<p>
 Figure <ODSAref "HeapBuild" />(b) shows an alternate series of
 exchanges that also forms a heap, but much more efficiently.
-The equivalent array representation would be
-</p>
+The equivalent array representation would be::
 
-
-<ODSAeq "display">
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-\rule{0pt}{12pt}7&5&6&4&2&1&3\\
-\hline
-\end{tabular}
-</ODSAeq>
+   7 5 6 4 2 1 3
 
 From this example, it is clear that the heap for any given
 set of numbers is not unique, and we see that some rearrangements of

@@ -25,7 +25,7 @@ var setBlue = function (arr, index) {
   av.umsg("Insertion Sort starts with the record in position 1");
   av.displayInit();
 
-  av.umsg("Since this is smaller than the value to its left, swap");
+  av.umsg("Since this is smaller than the value to its left, swap them");
   arr.swap(0, 1);
   av.step();
 
@@ -49,7 +49,7 @@ var setBlue = function (arr, index) {
   av.step();
 
   arr.swap(1, 2);
-  av.umsg("Since the record in position 2 is smaller, swap");
+  av.umsg("Since the record in position 2 is smaller, swap them");
   arr.unhighlight(2);
   av.step();
 

@@ -29,8 +29,15 @@
         "exercises": {}
       },
       "Development/BinaryTreeTraversal": {
-        "long_name": "Full Binary Tree Traversals",
-        "exercises": {}
+        "long_name": "Binary Tree Traversals",
+        "exercises": {
+	  "binarytreePreorder": {
+            "long_name": "Preorder Exercise",
+	    "required": false,
+	    "points": 0.0,
+	    "threshold": 1.0
+          }
+        }
       },
       "Development/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
@@ -50,11 +57,43 @@
       },
       "Development/BST": {
         "long_name": "Binary Search Trees",
-        "exercises": {}
+        "exercises": {
+          "BST-insert": {
+            "long_name": "Binary Tree Insertion",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BST-delete": {
+            "long_name": "Binary Tree Deletion",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/Heaps": {
         "long_name": "Heaps",
-        "exercises": {}
+        "exercises": {
+          "binaryheap-insert-proficiency": {
+            "long_name": "Binary Heap Insertion",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binaryheap-delete-proficiency": {
+            "long_name": "Binary Heap Deletion",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binaryheap-buildheap-proficiency": {
+            "long_name": "Binary Heap Building",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/Huffman": {
         "long_name": "Huffman Coding Trees",
@@ -159,7 +198,7 @@
           "dijkstraCON1": {}
 	}
       },
-      "Development/MCSTfull": {
+      "Development/MCST": {
         "long_name": "Minimal Cost Spanning Trees",
         "exercises": {
           "PrimAV": {
