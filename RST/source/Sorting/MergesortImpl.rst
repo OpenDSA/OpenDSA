@@ -8,7 +8,6 @@
    :prerequisites: Sorting, Mergesort
    :topic: Sorting
 
-.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Sorting/mergeCON.css
 
 Implementing Mergesort

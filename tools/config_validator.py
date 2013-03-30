@@ -1,6 +1,7 @@
 ﻿#! /usr/bin/python
 #
 # Given an OpenDSA config file as a parameter, this script ensures all required fields are present and no invalid options are present
+import re
 import sys
 import os
 import json
@@ -9,7 +10,26 @@ from urlparse import urlparse
 
 error_count = 0
 
+# Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
+def parse_error(err):
+  """
+  "Parse" error string (formats) raised by (simple)json:
+  '%s: line %d column %d (char %d)'
+  '%s: line %d column %d - line %d column %d (char %d - %d)'
+  """
+  return re.match(r"""^
+      (?P<msg>.+):\s+
+      line\ (?P<lineno>\d+)\s+
+      column\ (?P<colno>\d+)\s+
+      (?:-\s+
+        line\ (?P<endlineno>\d+)\s+
+        column\ (?P<endcolno>\d+)\s+
+      )?
+      \(char\ (?P<pos>\d+)(?:\ -\ (?P<end>\d+))?\)
+  $""", err, re.VERBOSE)
+
 def validate_origin(origin, origin_type):
+  """Validate all protocol, domain and path of an origin"""
   global error_count
   
   parsed = urlparse(origin)
@@ -18,7 +38,7 @@ def validate_origin(origin, origin_type):
     error_count += 1
   
   if parsed.netloc == '':
-    print 'ERROR: Invalid ' + origin_type + '_origin netloc, ' + parsed.netloc
+    print 'ERROR: Invalid ' + origin_type + '_origin domain, ' + parsed.netloc
     error_count += 1
   
   if parsed.path not in ['', '/']:
@@ -27,6 +47,7 @@ def validate_origin(origin, origin_type):
 
 # Validate an exercise
 def validate_exercise(exer_name, exercise):
+  """Validate an exercise object"""
   global error_count
   
   # Ensure exercise name is <= the max length of the Exercise name field in the database 
@@ -52,6 +73,7 @@ def validate_exercise(exer_name, exercise):
 
 # Validate a module
 def validate_module(mod_name, module):
+  """Validate a module object"""
   global error_count
   required_fields = ['exercises']
   optional_fields = ['long_name', 'dispModComp']
@@ -75,6 +97,7 @@ def validate_module(mod_name, module):
 
 # Validate a section
 def validate_section(section):
+  """Validate a chapter or section"""
   for subsect in section:
     is_mod = 'exercises' in section[subsect]
     
@@ -92,9 +115,10 @@ def validate_section(section):
       validate_module(subsect, section[subsect])
     else:
       validate_section(section[subsect])
-
+      
 # Validate an OpenDSA configuration file
 def validate_config_file(config_file):
+  """Open the specified config file, parse it as JSON and validate the overall settings"""
   global error_count
   # Throw an error if the specified config files doesn't exist
   if not os.path.exists(config_file):
@@ -103,15 +127,39 @@ def validate_config_file(config_file):
 
   print "\nValidating " + config_file + '\n'
 
-  # Read the configuration data
-  with open(config_file) as config:
-    try:
+  # Try to read the configuration file data as JSON
+  try:
+    with open(config_file) as config:
       # Force python to maintain original order of JSON objects
       conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
-    except ValueError:
+  except ValueError, err:
+    # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
+    msg = err.message
+    print msg
+    
+    if msg == 'No JSON object could be decoded':
       print 'ERROR: ' + config_file + ' is not a valid JSON file or does not use a supported encoding\n'
-      # TODO: Figure out how to get simplejson to accept different encodings
-      sys.exit(1)
+    else:
+      err = parse_error(msg).groupdict()
+      # cast int captures to int
+      for k, v in err.items():
+        if v and v.isdigit():
+          err[k] = int(v)
+      
+      with open(config_file) as config:
+        lines = config.readlines()
+      
+      for ii, line in enumerate(lines):
+        if ii == err["lineno"] - 1:
+          break
+      
+      print """
+      %s
+      %s^-- %s
+      """ % (line.replace("\n", ""), " " * (err["colno"] - 1), err["msg"])
+
+    # TODO: Figure out how to get (simple)json to accept different encodings
+    sys.exit(1)
 
   required_fields = ['title', 'code_dir', 'module_origin', 'chapters']
 

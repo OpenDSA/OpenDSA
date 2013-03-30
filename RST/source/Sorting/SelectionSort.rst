@@ -10,8 +10,6 @@
 
 .. index:: ! Selection Sort
 
-.. odsalink:: AV/slideCON.css
-
 Selection Sort
 ==============
 

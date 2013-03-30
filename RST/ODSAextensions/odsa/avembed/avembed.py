@@ -35,7 +35,7 @@ ANCHOR_HTML = '''\
 
 IFRAME_HTML = '''\
 <div id="%(exer_name)s" class="embedContainer">
-<iframe id="%(exer_name)s_iframe" data-exer-name="%(exer_name)s" data-points="%(points)s" data-required="%(required)s" data-threshold="%(threshold)s" data-long-name="%(long_name)s" data-type="%(type)s" src="%(av_address)s" width="%(width)s" height="%(height)s" scrolling="no">Your browser does not support iframes.</iframe>
+  <iframe id="%(exer_name)s_iframe" data-exer-name="%(exer_name)s" data-points="%(points)s" data-required="%(required)s" data-threshold="%(threshold)s" data-long-name="%(long_name)s" data-type="%(type)s" src="%(av_address)s" width="%(width)s" height="%(height)s" scrolling="no">Your browser does not support iframes.</iframe>
 </div>
 '''
 
@@ -144,17 +144,16 @@ class avembed(Directive):
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
 
+    res = ANCHOR_HTML % self.options
+    
     if 'showhide' in self.options and self.options['showhide'] == "none":
-      res = ANCHOR_HTML % self.options
       res += IFRAME_HTML % self.options
     elif 'showhide' in self.options and self.options['showhide'] == "show":
       self.options['show_hide_text'] = "Hide"
-      res = ANCHOR_HTML % (self.options)
       res += BUTTON_HTML % (self.options)
       res += IFRAME_HTML % (self.options)
     else:
       self.options['show_hide_text'] = "Show"
-      res = ANCHOR_HTML % (self.options)
       res += BUTTON_HTML % (self.options)
 
     return [nodes.raw('', res, format='html')]

@@ -8,8 +8,6 @@
    :prerequisites: Sorting, InsertionSort
    :topic: Sorting
 
-.. odsalink:: AV/slideCON.css
-
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
 

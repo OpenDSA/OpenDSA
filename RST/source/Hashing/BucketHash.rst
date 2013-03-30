@@ -8,7 +8,6 @@
    :prerequisites:
    :topic: Hashing
 
-.. odsalink:: AV/slideCON.css
 .. odsalink:: AV/Hashing/buckethashCON.css
 
 Bucket Hashing

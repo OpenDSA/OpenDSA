@@ -9,7 +9,6 @@
    :topic: Sorting
 
 .. odsascript:: JSAV/extras/binaryheap.js
-.. odsalink:: AV/slideCON.css
 
 .. index:: ! Heapsort
 

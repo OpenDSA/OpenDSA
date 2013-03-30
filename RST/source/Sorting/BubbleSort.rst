@@ -10,8 +10,6 @@
 
 .. index:: ! Bubble Sort
 
-.. odsalink:: AV/slideCON.css
-
 Bubble Sort
 ===========
 

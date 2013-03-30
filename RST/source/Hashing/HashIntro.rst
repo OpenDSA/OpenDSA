@@ -10,8 +10,6 @@
 
 .. index:: ! hashing
 
-.. odsalink:: AV/slideCON.css
-
 Introduction
 ============
 

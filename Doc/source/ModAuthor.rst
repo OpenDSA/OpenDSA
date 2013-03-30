@@ -2,19 +2,18 @@
 
 Module Authoring
 ================
-We author modules using
+OpenDSA modules are authored using 
 `reStructuredText <http://docutils.sourceforge.net/rst.html>`_
-(also known as ReST).
-ReST files are converted to HTML (or, in theory, other formats -- but
-we do not support that) by the
-`sphinx compiler <http://sphinx.pocoo.org/contents.html>`_.
-Module source files are currently at ``OpenDSA/RST/source``.
-A "book" is created by running some configuration file against the
-script ``OpenDSA/lib/configure.py``.
-We normally store sample configuration files in ``OpenDSA/config``.
+(also known as ReST).  The source files for these modules (which 
+can be found in ``OpenDSA/RST/source``) are compiled to HTML 
+(or, in theory, other formats -- but we do not support that) by 
+`Sphinx <http://sphinx.pocoo.org/contents.html>`_.
+To create a "book", you must invoke ``OpenDSA/tools/configure.py``, 
+being sure to specify a configuration file (sample of which can be 
+found in ``OpenDSA/config``.
 Sample books can be compiled using ``OpenDSA/Makefile``.
 A sample command (run from the OpenDSA toplevel directory)
-looks like: ``python lib/configure.py config/OpenDSA.json``.
+looks like: ``python tools/configure.py config/OpenDSA.json``.
 
 A number of special directives have been created, which are documented
 in :ref:`OpenDSA ReST Extensions <ODSAExtensions>`.
@@ -35,19 +34,10 @@ However, the first thing that you should always include is an
 Among other things, this will define the module within the
 prerequisite structure, which is important when generating a full
 textbook.
-It is also important to add the line::
 
-    .. include:: JSAVheader.rinc
-
-This allows the "About" link used on every page to get access to the
-JSAV library (which it uses to post the version number).
-This also provides access to JSAV, jQuery, etc. to any JavaScript
-files that you want to include to control dynamic components on the
-page.
-
-Generally, exercises and visualizations are embedded from elsewhere.
-The major exception is small slideshows, which are included directly
-via an ``inlineav`` directive.
-The actual CSS code and JS code will be maintained in separate files
-and included using ``odsalink`` and ``odsascript`` directives,
-respectively.
+Most exercises and visualizations are embedded from elsewhere 
+using the ``avembed`` directive, but small slideshows and dynamically 
+generated diagrams can be included directly using the ``inlineav`` directive.
+Any CSS or JS code that is unique to a specific module page should be 
+maintained in separate files and included using ``odsalink`` and 
+``odsascript`` directives, respectively.
