@@ -1,4 +1,4 @@
-final long runs = 10000;
+final long runs = 1000;
 
 void setup() {
   long i, j;

@@ -81,30 +81,8 @@ large records.
 Selection Sort is more efficient than Bubble Sort (by a constant
 factor) in most other situations as well.
 
-You should note that the way our Selection Sort code is written,
-a call to ``swap`` will be made even if the current
-record is already in its correct location.
-For example, if the record with the largest value is alread in the
-rightmost array position, ``selsort`` will still call ``swap`` with
-both position parameters being the same.
-The net effect is that the work done by ``swap`` will not change
-anything in the array, and this is a waste of time.
-Thus, the total number of swaps done by Selection sort is always
-:math:`n-1` in the best, average and worst cases.
-It might seem like a good idea to test if the positions are the same
-before calling ``swap``, especially since Selection Sort's claim to
-fame is its low number of swaps.
-Whether this is really a good idea depends on how often the
-unnecessary swap takes place.
-For randomly ordered input, it is more expensive to test this
-condition before every swap than to just do the swap.
-So this would be an example of an "optimization" that does not improve
-performance.
-But if the input records are already sorted, then all of the swaps are
-unnecessary and it would have been faster to test.
-
-There is another approach to keeping the cost of swapping records low
-that can be used by any sorting algorithm, even when the records are
+There is another approach to keeping the cost of swapping records low,
+and it can be used by any sorting algorithm even when the records are
 large.
 This is to have each element of the array store a pointer to a record
 rather than store the record itself.
@@ -130,7 +108,12 @@ return is a faster swap operation.
    Now the record with key value 5 comes before the record with key
    value 42.
 
-Here are some review questions to check that you understand
+.. TODO::
+   :type: Figure
+
+   Replace with with a JSAV version of the figure
+
+Here are some review questions to check how well you understand
 Selection Sort.
 
 .. avembed:: Exercises/Sorting/SelsortSumm.html ka

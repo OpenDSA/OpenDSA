@@ -19,6 +19,8 @@ Trees: GenTree UFTest
 
 Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
 
+Sorttime: InssortTime SelsortTime BubblesortTime
+
 Graphs: GraphDummy GraphTrav GraphTop GraphDijk GraphMCST
 
 
@@ -161,6 +163,33 @@ build/RadixsortTest/success: Sorting/Radixsort.pde Sorting/SortTest.pde
 	@cp Sorting/SortTest.pde build/RadixsortTest/RadixsortTest.pde
 	@$(PROCESS) --run --sketch="$(BUILD)/RadixsortTest" --output="$(BUILD)/build" --force
 
+
+InssortTime:
+	@echo "Insertion Sort Timer"
+	-@rm -rf build/InssortTime
+	@mkdir build/InssortTime
+	@cp Sorting/SortTime.pde build/InssortTime/InssortTime.pde
+	@cp Sorting/Insertionsort.pde build/InssortTime
+	@cp Utils/Swap.pde build/InssortTime
+	@$(PROCESS) --run --sketch="$(BUILD)/InssortTime" --output="$(BUILD)/build" --force
+
+SelsortTime:
+	@echo "Selection Sort Timer"
+	-@rm -rf build/SelsortTime
+	@mkdir build/SelsortTime
+	@cp Sorting/SortTime.pde build/SelsortTime/SelsortTime.pde
+	@cp Sorting/Selectionsort.pde build/SelsortTime
+	@cp Utils/Swap.pde build/SelsortTime
+	@$(PROCESS) --run --sketch="$(BUILD)/SelsortTime" --output="$(BUILD)/build" --force
+
+BubblesortTime:
+	@echo "Bubble Sort Timer"
+	-@rm -rf build/BubblesortTime
+	@mkdir build/BubblesortTime
+	@cp Sorting/SortTime.pde build/BubblesortTime/BubblesortTime.pde
+	@cp Sorting/Bubblesort.pde build/BubblesortTime
+	@cp Utils/Swap.pde build/BubblesortTime
+	@$(PROCESS) --run --sketch="$(BUILD)/BubblesortTime" --output="$(BUILD)/build" --force
 
 GraphDummy: build/GraphDummy/success
 

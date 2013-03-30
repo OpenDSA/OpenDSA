@@ -6,6 +6,8 @@ void setup() {
   int[] A = new int[testsize];
   int i;
 
+println(arg:args);
+
   // Perform numtests trials to test this
   for (int tests=0; tests<numtests; tests++) {
     for (i=0; i<A.length; i++)

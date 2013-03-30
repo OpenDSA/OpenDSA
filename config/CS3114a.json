@@ -56,13 +56,13 @@
             "threshold": 1.0
           },
           "InssortPRO": {
-            "long_name": "Insertion Sort Proficiency",
+            "long_name": "Insertion Sort Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
           },
           "InssortSumm": {
-            "long_name": "Insertion Sort Summary",
+            "long_name": "Insertion Sort Summary Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -97,13 +97,13 @@
             "threshold": 1.0
           },
           "BubsortPRO": {
-            "long_name": "Bubble Sort Proficiency",
+            "long_name": "Bubble Sort Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
           },
           "BubsortSumm": {
-            "long_name": "Bubble Sort Summary",
+            "long_name": "Bubble Sort Summary Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -133,13 +133,13 @@
             "threshold": 1.0
           },
           "SelsortPRO": {
-            "long_name": "Selection Sort Proficiency",
+            "long_name": "Selection Sort Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
           },
           "SelsortSumm": {
-            "long_name": "Selection Sort Summary",
+            "long_name": "Selection Sort Summary Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -150,7 +150,7 @@
         "long_name": "Comparing Records",
         "exercises": {
           "SortCompareSumm": {
-            "long_name": "Record Comparison Summary",
+            "long_name": "Record Comparison Summary Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 4
@@ -161,13 +161,13 @@
         "long_name": "The Cost of Exchange Sorting",
         "exercises": {
           "FindInversionsPRO": {
-            "long_name": "Inversions Proficiency",
+            "long_name": "Inversions Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
           },
           "ExchangeSumm": {
-            "long_name": "Exchange Sorting Summary",
+            "long_name": "Exchange Sorting Summary Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -217,7 +217,7 @@
             "threshold": 1.0
           },
           "ShellsortSublist": {
-            "long_name": "Shellsort Sublist",
+            "long_name": "Shellsort Sublist Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -230,25 +230,25 @@
             "threshold": 1.0
           },
           "ShellsortSeries": {
-            "long_name": "Shellsort Series",
+            "long_name": "Shellsort Series Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
           },
           "ShellsortProficiency": {
-            "long_name": "Shellsort Proficiency",
+            "long_name": "Shellsort Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 0.90
           },
           "ShellsortPerformance": {
-            "long_name": "Shellsort Performance",
+            "long_name": "Shellsort Performance Activity",
             "required": true,
             "points": 1.25,
             "threshold": 1.0
           },
           "ShellsortSumm": {
-            "long_name": "Shellsort Summary",
+            "long_name": "Shellsort Summary Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -272,13 +272,13 @@
             "threshold": 1.0
           },
           "MergesortPRO": {
-            "long_name": "Mergesort Merging Proficiency",
+            "long_name": "Mergesort Merging Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
           },
           "mergesortProficiency": {
-            "long_name": "Mergesort Proficiency",
+            "long_name": "Mergesort Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 0.90
@@ -301,7 +301,7 @@
             "threshold": 1.0
           },
           "MergesortSumm": {
-            "long_name": "Mergesort Concepts Summary",
+            "long_name": "Mergesort Summary Exercise",
             "required": true,
             "points": 1.5,
             "threshold": 5
@@ -312,7 +312,7 @@
         "long_name": "Quicksort",
         "exercises": {
           "QuicksortPivotPRO": {
-            "long_name": "Quicksort Pivot Proficiency",
+            "long_name": "Quicksort Pivot Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -331,19 +331,19 @@
             "threshold": 1.0
           },
           "QuicksortPartitPRO": {
-            "long_name": "Quicksort Partition Proficiency",
+            "long_name": "Quicksort Partition Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
           },
           "quicksortProficiency": {
-            "long_name": "Quicksort Proficiency",
+            "long_name": "Quicksort Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 0.90
           },
           "QuicksortSumm": {
-            "long_name": "Quicksort Summary",
+            "long_name": "Quicksort Summary Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -360,19 +360,19 @@
             "threshold": 1.0
           },
           "HeapsortPRO": {
-            "long_name": "Heapsort Proficiency 1",
+            "long_name": "Heapsort RemoveMax Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
           },
           "heapsortProficiency": {
-            "long_name": "Heapsort Proficiency 2",
+            "long_name": "Heapsort Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 0.9
           },
           "HeapsortSumm": {
-            "long_name": "Heapsort Summary",
+            "long_name": "Heapsort Summary Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -408,7 +408,7 @@
             "threshold": 1.0
           },
           "RadixsortPRO": {
-            "long_name": "Radixsort Proficiency",
+            "long_name": "Radix Sort Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -421,7 +421,7 @@
             "threshold": 1.0
           },
           "RadixSortSumm": {
-            "long_name": "Radixsort Summary",
+            "long_name": "Radix Sort Summary Exercise",
             "required": true,
             "points": 1.25,
             "threshold": 5
@@ -432,7 +432,7 @@
         "long_name": "An Empirical Comparison of Sorting Algorithms",
         "exercises": {
           "SortAlgCompSumm": {
-            "long_name": "Sorting Algorithms Comparison Summary",
+            "long_name": "Sort Comparison Summary Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -443,7 +443,7 @@
         "long_name": "Lower Bounds of Sorting",
         "exercises": {
           "SortBoundSumm": {
-            "long_name": "Lower Bounds Summary",
+            "long_name": "Lower Bounds Summary Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 4
@@ -454,7 +454,7 @@
         "long_name": "Sorting Chapter Summary Exercises",
         "exercises": {
           "ChapterSumm": {
-            "long_name": "Sorting Chapter Summary",
+            "long_name": "Sorting Chapter Summary Exercise",
             "required": true,
             "points": 1,
             "threshold": 10
@@ -526,7 +526,7 @@
             "threshold": 5
           },
           "HashFuncSumm": {
-            "long_name": "Hash Function Summary",
+            "long_name": "Hash Function Summary Exercise",
             "required": true,
             "points": 1.5,
             "threshold": 5
@@ -538,7 +538,7 @@
         "exercises": {
           "openhashCON1": {},
           "OpenHashPRO": {
-            "long_name": "Open Hashing Proficiency",
+            "long_name": "Open Hashing Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -561,13 +561,13 @@
             "threshold": 1.0
           },
           "HashingBucketPRO": {
-            "long_name": "Bucket Hashing Proficiency",
+            "long_name": "Bucket Hashing Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
           },
           "HashingBucket2PRO": {
-            "long_name": "Alternate Bucket Hashing Proficiency",
+            "long_name": "Alternate Bucket Hashing Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -590,7 +590,7 @@
             "threshold": 1.0
           },
           "HashingLinearProbePRO": {
-            "long_name": "Linear Probing Proficiency",
+            "long_name": "Linear Probing Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -613,7 +613,7 @@
             "threshold": 1.0
           },
           "HashingLinearStepProbePRO": {
-            "long_name": "Linear Probing By Steps Proficiency",
+            "long_name": "Linear Probing By Steps Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -625,7 +625,7 @@
             "threshold": 1.0
           },
           "HashingPseudoRandomProbePRO": {
-            "long_name": "Pseudo-Random Probing Proficiency",
+            "long_name": "Pseudo-Random Probing Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -643,7 +643,7 @@
             "threshold": 1.0
           },
           "HashingQuadraticProbePRO": {
-            "long_name": "Quadratic Probing Proficiency",
+            "long_name": "Quadratic Probing Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -667,7 +667,7 @@
             "threshold": 1.0
           },
           "HashingDoubleProbePRO": {
-            "long_name": "Double Hashing Proficiency",
+            "long_name": "Double Hashing Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 5
@@ -685,7 +685,7 @@
         "long_name": "Analysis of Closed Hashing",
         "exercises": {
           "HashAnalSumm": {
-            "long_name": "Analysis of Closed Hashing Summary",
+            "long_name": "Analysis of Closed Hashing Summary Exercise",
             "required": true,
             "points": 2,
             "threshold": 5
@@ -702,13 +702,13 @@
             "threshold": 1.0
           },
           "HashingDeleteProficiency": {
-            "long_name": "Hash Deletion Proficiency",
+            "long_name": "Hash Deletion Proficiency Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 0.90
           },
           "HashDelSumm": {
-            "long_name": "Hash Deletion Summary",
+            "long_name": "Hash Deletion Summary Exercise",
             "required": true,
             "points": 1.1,
             "threshold": 3
@@ -719,7 +719,7 @@
         "long_name": "Hashing Chapter Summary Exercises",
         "exercises": {
           "HashChapterSumm": {
-            "long_name": "Hashing Chapter Summary",
+            "long_name": "Hashing Chapter Summary Exercise",
             "required": true,
             "points": 1,
             "threshold": 10
