@@ -32,6 +32,14 @@ def sorttime(B):
   checkorder(A)
   print "Wikipedia Bubble Sort: Size ", testsize, ", Time: ", millis(time2 - time1)
 
+  for i in range(len(B)):
+    A[i] = B[i]
+  time1 = datetime.now()
+  unwikipedia(A)
+  time2 = datetime.now()
+  checkorder(A)
+  print "Wikipedia-compatible Bubble Sort without swap checking: Size ", testsize, ", Time: ", millis(time2 - time1)
+
 # A flag check if a pass did not have any swaps, which lets us quit
 def bubblesortcheck(A):
   for i in range(len(A)): # Insert i'th record
@@ -69,6 +77,16 @@ def wikipedia(A):
         swap(A, i, i + 1)
         newn = i
     n = newn
+
+# Wikipedia article-compatible version without swap checking
+def unwikipedia(A):
+  n = len(A) - 1;
+  while (n > 0):
+    for i in range(n):
+      # if this pair is out of order
+      if (A[i] > A[i + 1]):
+        swap(A, i, i + 1)
+    n -= 1
 
 def success():
   print "Success! (Need to define this)"

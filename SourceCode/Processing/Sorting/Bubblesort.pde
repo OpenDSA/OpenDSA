@@ -3,7 +3,6 @@ void sorttime(int[] B) {
   int[] A = new int[B.length];
 
   for(i=0; i<B.length; i++) A[i] = B[i];
-  makenew(A);
   time1 = millis();
   bubblesort(A);
   time2 = millis();
@@ -11,7 +10,6 @@ void sorttime(int[] B) {
   println("Standard Bubble Sort: Size " + testsize + ", Time: " + (time2-time1));
 
   for(i=0; i<B.length; i++) A[i] = B[i];
-  makenew(A);
   time1 = millis();
   bubblesortcheck(A);
   time2 = millis();
@@ -19,7 +17,6 @@ void sorttime(int[] B) {
   println("Swap Check Bubble Sort: Size " + testsize + ", Time: " + (time2-time1));
 
   for(i=0; i<B.length; i++) A[i] = B[i];
-  makenew(A);
   time1 = millis();
   bubblesortcheck2(A);
   time2 = millis();
@@ -27,7 +24,6 @@ void sorttime(int[] B) {
   println("Swap Check Bubble Sort 2: Size " + testsize + ", Time: " + (time2-time1));
 
   for(i=0; i<B.length; i++) A[i] = B[i];
-  makenew(A);
   time1 = millis();
   wikipedia(A);
   time2 = millis();
@@ -35,12 +31,18 @@ void sorttime(int[] B) {
   println("Wikipedia Bubble Sort: Size " + testsize + ", Time: " + (time2-time1));
 
   for(i=0; i<B.length; i++) A[i] = B[i];
-  makenew(A);
   time1 = millis();
   wikipedia2(A);
   time2 = millis();
   checkorder(A);
   println("Wikipedia Bubble Sort 2: Size " + testsize + ", Time: " + (time2-time1));
+
+  for(i=0; i<B.length; i++) A[i] = B[i];
+  time1 = millis();
+  unwikipedia(A);
+  time2 = millis();
+  checkorder(A);
+  println("Wikipedia Bubble Sort w/out Swap Cheking: Size " + testsize + ", Time: " + (time2-time1));
 }
 
 // A flag check if a pass did not have any swaps, which lets us quit
@@ -101,6 +103,19 @@ void wikipedia2(int[] A) {
       }
   }
   println("Loopcnt was " + loopcnt);
+}
+
+// Wikipedia article-compatible version without swap checking
+void unwikipedia(int[] A) {
+  int n = A.length-1;
+  while (n>0) {
+    for (int i=0; i<n; i++)
+      /* if this pair is out of order */
+      if (A[i] > A[i+1]) {
+        swap(A, i, i+1);
+      }
+    n -= 1;
+  }
 }
 
 

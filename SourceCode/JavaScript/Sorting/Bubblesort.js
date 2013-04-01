@@ -37,6 +37,13 @@ function sorttime(B) {
   time2 = new Date();
   checkorder(A);
   console.log("Wikipedia Bubble Sort 2: Size " + testsize + ", Time: " + (time2 - time1));
+
+  for(i = 0; i < B.length; i++) A[i] = B[i];
+  time1 = new Date();
+  unwikipedia(A);
+  time2 = new Date();
+  checkorder(A);
+  console.log("Wikipedia Bubble Sort without swap checking: Size " + testsize + ", Time: " + (time2 - time1));
 }
 
 // A flag check if a pass did not have any swaps, which lets us quit
@@ -97,6 +104,19 @@ function wikipedia2(A) {
       }
   }
   console.log("Loopcnt was " + loopcnt);
+}
+
+// Wikipedia article-compatible version without swap checking
+function unwikipedia(A) {
+  var n = A.length - 1;
+  while (n > 0) {
+    for (var i = 0; i < n; i++)
+      /* if this pair is out of order */
+      if (A[i] > A[i + 1]) {
+        swap(A, i, i + 1);
+      }
+    n -= 1;
+  }
 }
 
 function success() {

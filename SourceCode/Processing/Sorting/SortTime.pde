@@ -9,14 +9,11 @@ void checkorder(int[] A) {
     }
 }
 
-void makenew(int[] A) {
-  for (int i=0; i<A.length; i++)
-    A[i] = int(random(1000))+1;
-}
-
 void setup() {
   int[] A = new int[testsize];
-  int i;
+
+  for (int i=0; i<A.length; i++)
+    A[i] = int(random(1000))+1;
 
   sorttime(A);
   exit();

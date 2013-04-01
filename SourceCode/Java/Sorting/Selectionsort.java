@@ -3,7 +3,6 @@ static void sorttime(int[] B) {
   int[] A = new int[B.length];
 
   for(i=0; i<B.length; i++) A[i] = B[i];
-  makenew(A);
   time1 = millis();
   selsort(A);
   time2 = millis();
@@ -11,7 +10,6 @@ static void sorttime(int[] B) {
   println("Standard Selection Sort: Size " + testsize + ", Time: " + (time2-time1));
 
   for(i=0; i<B.length; i++) A[i] = B[i];
-  makenew(A);
   time1 = millis();
   selsortcheck(A);
   time2 = millis();

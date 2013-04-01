@@ -33,8 +33,8 @@ SelsortTime: Utils/Strict.js Sorting/SortTime.js Utils/Swap.js Sorting/Selection
 
 Inssort: build/InssortTestSuccess
 
-build/InssortTestSuccess: utils/Strict.js Sorting/SortTest.js Utils/Swap.js Sorting/Insertionsort.js
-	cat utils/Strict.js Sorting/SortTest.js Utils/Swap.js Sorting/Insertionsort.js > build/InssortTest.js
+build/InssortTestSuccess: Utils/Strict.js Sorting/SortTest.js Utils/Swap.js Sorting/Insertionsort.js
+	cat Utils/Strict.js Sorting/SortTest.js Utils/Swap.js Sorting/Insertionsort.js > build/InssortTest.js
 	cd build; node InssortTest.js
 
 Bubblesort: build/BubblesortTestSuccess

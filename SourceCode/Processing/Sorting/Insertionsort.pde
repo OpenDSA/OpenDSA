@@ -3,7 +3,6 @@ void sorttime(int[] B) {
   int[] A = new int[B.length];
 
   for(i=0; i<B.length; i++) A[i] = B[i];
-  makenew(A);
   time1 = millis();
   inssort(A);
   time2 = millis();
@@ -11,7 +10,6 @@ void sorttime(int[] B) {
   println("Standard Insertion Sort: Size " + testsize + ", Time: " + (time2-time1));
 
   for(i=0; i<B.length; i++) A[i] = B[i];
-  makenew(A);
   time1 = millis();
   inssort2(A);
   time2 = millis();
@@ -19,14 +17,13 @@ void sorttime(int[] B) {
   println("Standard Insertion Sort: Size " + testsize + ", Time: " + (time2-time1));
 
   for(i=0; i<B.length; i++) A[i] = B[i];
-  makenew(A);
   time1 = millis();
   inssortshift(A);
   time2 = millis();
   checkorder(A);
   println("shuffling Insertion Sort: Size " + testsize + ", Time: " + (time2-time1));
 
-  makenew(A);
+  for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
   inssortshift2(A);
   time2 = millis();

@@ -1,5 +1,5 @@
 # Java version of Makefile
-JAVA= /c/Program\ Files/Java/jdk1.6.0_24/bin/java
+JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
