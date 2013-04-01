@@ -9,26 +9,7 @@
     :license: FreeBSD, see LICENSE file.
 """
 
-import sys
-import os
-import os.path
-import time
-import re
-import urllib
-from docutils import frontend, nodes, utils, writers, languages, io
 
-import conf
-import json
-
-try: # check for the Python Imaging Library
-    import PIL.Image
-except ImportError:
-    try:  # sometimes PIL modules are put in PYTHONPATH's root
-        import Image
-        class PIL(object): pass  # dummy wrapper
-        PIL.Image = Image
-    except ImportError:
-        PIL = None
 
 from sphinx.writers.html import HTMLTranslator as SphinxHTMLTranslator
 
