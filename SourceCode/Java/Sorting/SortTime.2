@@ -1,5 +1,5 @@
 static int numtests = 5;
-static int testsize = 10000;
+static int testsize = 100000;
 static boolean SUCCESS = true;
 static long time1, time2;
 static Random value;
@@ -12,15 +12,12 @@ static void checkorder(int[] A) {
     }
 }
 
-static void makenew(int[] A) {
-  for (int i=0; i<A.length; i++)
-    A[i] = (Math.abs(value.nextInt()) % 1000) + 1;
-}
-
 public static void main(String args[]) throws IOException {
   int[] A = new int[testsize];
-  int i;
   value = new Random();
+
+  for (int i=0; i<A.length; i++)
+    A[i] = (Math.abs(value.nextInt()) % 1000) + 1;
 
   sorttime(A);
 }
