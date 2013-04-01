@@ -188,7 +188,8 @@ sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsascript
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/sphinx-numfig'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/inlineav'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/html5'))
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav','html5']
+sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsafig'))
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav','html5','odsafig']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -497,7 +498,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   # Alter the contents of the module based on the config file
   i = 0
   while i < len(mod_data):
-    if '.. figure::' in mod_data[i]:
+    if '.. figure::' in mod_data[i] or '.. odsafig::' in mod_data[i]:
       image_path = mod_data[i].split(' ')[2].rstrip()
       images.append(os.path.basename(image_path))
     elif '.. TODO::' in mod_data[i]:

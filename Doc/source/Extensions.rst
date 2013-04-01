@@ -348,3 +348,25 @@ NOTES
     ``<script type="text/javascript" src="../../../JSAV/build/JSAV-min.js"></script>``
 
     in the HTML output file.
+
+odsafig
+--------
+NAME
+    odsafig - provides the ability to specify caption alignment to figures.
+
+SYNOPSIS::
+
+    .. odsafig:: {path to image}
+       :capalign: left|right|center|justify|inherit
+
+DESCRIPTION
+    ``.. odsafig::``
+    The diective behaves exactly as the standard ``.. figure::`` directive.
+    It allows you to specify the positioning of figure caption on the page
+
+    ``:capalign: left|right|center|justify|inherit``
+      The alignment of the caption on the page.  
+
+NOTES
+    The directive closely matches the standard ReST ``figure`` directive. The only addition
+    is the ``:capalign:`` argument.

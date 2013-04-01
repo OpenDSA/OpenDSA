@@ -8,7 +8,30 @@
     CONTRIBUTORS file)
     :license: FreeBSD, see LICENSE file.
 """
+
+import sys
+import os
+import os.path
+import time
+import re
+import urllib
+from docutils import frontend, nodes, utils, writers, languages, io
+
+import conf
+import json
+
+try: # check for the Python Imaging Library
+    import PIL.Image
+except ImportError:
+    try:  # sometimes PIL modules are put in PYTHONPATH's root
+        import Image
+        class PIL(object): pass  # dummy wrapper
+        PIL.Image = Image
+    except ImportError:
+        PIL = None
+
 from sphinx.writers.html import HTMLTranslator as SphinxHTMLTranslator
+
 
 
 class HTMLTranslator(SphinxHTMLTranslator):
@@ -63,6 +86,16 @@ class HTMLTranslator(SphinxHTMLTranslator):
 
 
 
+
+    def visit_caption(self, node):
+        atts = {'class': 'caption'}
+        if node.get('align'):
+            atts['style'] = 'text-align: %s' % node['align']
+        self.body.append(self.starttag(node, 'p', '', **atts))
+
+    def depart_caption(self, node):
+        self.body.append('</p>\n')
+
     def patch_translator():
         '''
         Monkey-patch Sphinx translator to emit proper HTML5.
@@ -73,7 +106,10 @@ class HTMLTranslator(SphinxHTMLTranslator):
         HTMLTranslator.depart_desc_name = depart_desc_name
         HTMLTranslator.visit_literal = visit_literal
         HTMLTranslator.depart_literal = depart_literal
+        HTMLTranslator.visit_caption = visit_caption
+        HTMLTranslator.depart_caption = depart_caption
     
+
     def visit_citation(self, node):
         self.body.append(self.starttag(node, 'table',
                                        CLASS='docutils citation'))
@@ -81,6 +117,8 @@ class HTMLTranslator(SphinxHTMLTranslator):
                          '<tbody style="vertical-align: top">\n'
                          '<tr>')
         self.footnote_backrefs(node)
+
+
 
 def setup(sphinx):
     sphinx.config.html_translator_class = 'html5.HTMLTranslator'    

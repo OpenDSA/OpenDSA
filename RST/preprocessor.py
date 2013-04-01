@@ -97,7 +97,7 @@ class modPreReq:
             self.covers =  p.sub('',str).split(',')
          if line.startswith('.. _'):
             label =  re.split(':', re.split('.. _', line, re.IGNORECASE)[1], re.IGNORECASE)[0]
-            if data[cpt+1].startswith('.. figure::'):
+            if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. odsafig::'):
                if os.path.splitext(os.path.basename(filename))[0] in config.table:
                  tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                  config.table[label] = tb + '.%s#' %fig
