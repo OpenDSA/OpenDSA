@@ -1,4 +1,4 @@
-var testsize = 1000;
+var testsize = 10000;
 var time1, time2;         // These get set by sorttime()
 
 function checkorder(A) {

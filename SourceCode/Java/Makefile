@@ -1,4 +1,5 @@
 # Java version of Makefile
+JAVA= /c/Program\ Files/Java/jdk1.6.0_24/bin/java
 CFLAGS= -Xlint
 RFLAGS= 
 
@@ -17,7 +18,7 @@ UpDown: Demo/UpDown.1 Demo/UpDown.2 Utils/Processing.java
 	cat Demo/UpDown.1 Utils/Processing.java Demo/UpDown.2 > build/UpDown/UpDown.java
 	cd build/UpDown; \
 	javac $(CFLAGS) UpDown.java; \
-	java $(RFLAGS) UpDown
+	$(JAVA) $(RFLAGS) UpDown
 
 Sorting: Inssort Bubblesort Selsort
 
@@ -32,7 +33,7 @@ build/InssortTest/success: Sorting/Insertionsort.java Sorting/SortTest.1 Sorting
 	cat Sorting/SortTest.1 Utils/Swap.java Utils/Processing.java Sorting/Insertionsort.java Sorting/SortTest.2 > build/InssortTest/SortTest.java
 	cd build/InssortTest; \
 	javac $(CFLAGS) SortTest.java; \
-	java $(RFLAGS) SortTest
+	$(JAVA) $(RFLAGS) SortTest
 
 Bubblesort: build/BubblesortTest/success
 
@@ -43,7 +44,7 @@ build/BubblesortTest/success: Sorting/Bubblesort.java Sorting/SortTest.1 Sorting
 	cat Sorting/SortTest.1 Utils/Swap.java Utils/Processing.java Sorting/Bubblesort.java Sorting/SortTest.2 > build/BubblesortTest/SortTest.java
 	cd build/BubblesortTest; \
 	javac $(CFLAGS) SortTest.java; \
-	java $(RFLAGS) SortTest
+	$(JAVA) $(RFLAGS) SortTest
 
 Selsort: build/SelsortTest/success
 
@@ -54,8 +55,7 @@ build/SelsortTest/success: Sorting/Selectionsort.java Sorting/SortTest.1 Sorting
 	cat Sorting/SortTest.1 Utils/Swap.java Utils/Processing.java Sorting/Selectionsort.java Sorting/SortTest.2 > build/SelsortTest/SortTest.java
 	cd build/SelsortTest; \
 	javac $(CFLAGS) SortTest.java; \
-	java $(RFLAGS) SortTest
-
+	$(JAVA) $(RFLAGS) SortTest
 
 InssortTime: Sorting/Insertionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java
 	@echo "Inssort Timing Test"
@@ -64,7 +64,7 @@ InssortTime: Sorting/Insertionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Ut
 	cat Sorting/SortTime.1 Utils/Swap.java Utils/Processing.java Sorting/Insertionsort.java Sorting/SortTime.2 > build/InssortTime/SortTime.java
 	cd build/InssortTime; \
 	javac $(CFLAGS) SortTime.java; \
-	java $(RFLAGS) SortTime
+	$(JAVA) $(RFLAGS) SortTime
 
 BubblesortTime: Sorting/Bubblesort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java
 	@echo "Bubble Sort Timing Test"
@@ -73,7 +73,7 @@ BubblesortTime: Sorting/Bubblesort.java Sorting/SortTime.1 Sorting/SortTime.2 Ut
 	cat Sorting/SortTime.1 Utils/Swap.java Utils/Processing.java Sorting/Bubblesort.java Sorting/SortTime.2 > build/BubblesortTime/SortTime.java
 	cd build/BubblesortTime; \
 	javac $(CFLAGS) SortTime.java; \
-	java $(RFLAGS) SortTime
+	$(JAVA) $(RFLAGS) SortTime
 
 SelsortTime: Sorting/Selectionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java
 	@echo "Selection Sort Timing Test"
@@ -82,4 +82,4 @@ SelsortTime: Sorting/Selectionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Ut
 	cat Sorting/SortTime.1 Utils/Swap.java Utils/Processing.java Sorting/Selectionsort.java Sorting/SortTime.2 > build/SelsortTime/SortTime.java
 	cd build/SelsortTime; \
 	javac $(CFLAGS) SortTime.java; \
-	java $(RFLAGS) SortTime
+	$(JAVA) $(RFLAGS) SortTime

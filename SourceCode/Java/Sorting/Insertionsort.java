@@ -16,7 +16,7 @@ static void sorttime(int[] B) {
   inssort2(A);
   time2 = millis();
   checkorder(A);
-  println("Standard Insertion Sort: Size " + testsize + ", Time: " + (time2-time1));
+  println("Standard Insertion Sort/No swaps: Size " + testsize + ", Time: " + (time2-time1));
 
   for(i=0; i<B.length; i++) A[i] = B[i];
   makenew(A);
