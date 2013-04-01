@@ -16,7 +16,12 @@ for (var tests = 0; tests < numtests; tests++) {
     if (A[i] < A[i-1]) {
       console.log("Error! Value " + A[i] + " at position " + i +
               " was less than " + A[i-1] + " at position " + (i-1));
+      SUCCESS = false;
     }
   }
   console.log("Done!");
+}
+
+if (SUCCESS) {
+  success();
 }

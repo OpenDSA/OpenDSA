@@ -1,19 +1,20 @@
-final int numtests = 5;
-final int testsize = 100;
-boolean SUCCESS = true;
-long time1, time2;         // These get set by sorttime()
+static int numtests = 5;
+static int testsize = 100;
+static boolean SUCCESS = true;
+static long time1, time2;
 
-void makenew(int[] A) { }
-void checkorder(int[] A) { }
+static void makenew(int[] A) { }
+static void checkorder(int[] A) { }
 
-void setup() {
+public static void main(String args[]) throws IOException {
   int[] A = new int[testsize];
   int i;
 
+  Random value = new Random();
   // Perform numtests trials to test this
   for (int tests=0; tests<numtests; tests++) {
     for (i=0; i<A.length; i++)
-      A[i] = int(random(1000))+1;
+      A[i] = (Math.abs(value.nextInt()) % 1000) + 1;
     sorttest(A);
     for (i=1; i<A.length; i++)
       if (A[i] < A[i-1]) {
@@ -22,11 +23,7 @@ void setup() {
         SUCCESS = false;
       }
   }
-  if (SUCCESS) {
-    PrintWriter output = createWriter("success");
-    output.println("Success");
-    output.flush();
-    output.close();
-  }
-  exit();
+  println("Hooray!");
+}
+
 }

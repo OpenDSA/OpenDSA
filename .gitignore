@@ -8,6 +8,9 @@ Doc/manual
 
 # Sourcecode testing
 SourceCode/Processing/build
+SourceCode/Java/build
+SourceCode/JavaScript/build
+SourceCode/Python/build
 
 #Books directory (these are build targets)
 Books

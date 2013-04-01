@@ -28,15 +28,32 @@ function updown() {
   }
   var time4 = new Date();
 
+  var sum4 = 0; i = 0;
+  while (i !== runs) {
+    j = 0;
+    while (j !== count)
+      { sum4++; j++; }
+    i++;
+  }
+  var time5 = new Date();
+
+  var sum5 = 0; i = 0;
+  while (i < runs) {
+    j = 0;
+    while (j < count)
+      { sum5++; j++; }
+    i++;
+  }
+  var time6 = new Date();
+
   console.log("Up time is " + (time2 - time1) +
           ", down time is " + (time3 - time2));
   console.log("Check vs. zero time is " + (time4-time3));
-  if ((sum1 === sum2) && (sum2 === sum3)) {
-    console.log("Sum1, Sum2, and Sum3 are " + sum1);
-  } else {
-    console.log("Oops, sum1 is " + sum1 + ", sum2 is " + sum2 +
-                ", and sum3 is " + sum3);
-  }
+  console.log("While loop time is " + (time5-time4));
+  console.log("While loop 2 time is " + (time6-time5));
+  console.log("Sum1 is " + sum1 + ", sum2 is " + sum2 + ", sum 3 is " + sum3);
+  console.log("Sum4 is " + sum4);
+  console.log("Sum5 is " + sum5);
 }
 
 updown();

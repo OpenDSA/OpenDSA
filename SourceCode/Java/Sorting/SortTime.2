@@ -1,0 +1,28 @@
+static int numtests = 5;
+static int testsize = 10000;
+static boolean SUCCESS = true;
+static long time1, time2;
+static Random value;
+
+static void checkorder(int[] A) {
+  for (int i=1; i<A.length; i++)
+    if (A[i] < A[i-1]) {
+      println("Error! Value " + A[i] + " at position " + i +
+              " was less than " + A[i-1] + " at position " + (i-1));
+    }
+}
+
+static void makenew(int[] A) {
+  for (int i=0; i<A.length; i++)
+    A[i] = (Math.abs(value.nextInt()) % 1000) + 1;
+}
+
+public static void main(String args[]) throws IOException {
+  int[] A = new int[testsize];
+  int i;
+  value = new Random();
+
+  sorttime(A);
+}
+
+}
