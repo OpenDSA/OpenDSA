@@ -14,6 +14,10 @@ void setup() {
 
   for (int i=0; i<A.length; i++)
     A[i] = int(random(1000))+1;
+//  for (int i=0; i<A.length; i++)
+//    A[i] = i+1;
+//  for (int i=0; i<A.length; i++)
+//    A[i] = 200000 - i;
 
   sorttime(A);
   exit();

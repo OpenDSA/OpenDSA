@@ -14,5 +14,9 @@ var A = [];
 A.length = testsize;
 for (var i = 0; i < A.length; i++)
   A[i] = Math.floor(Math.random() * 1000) + 1;
+// for (var i = 0; i < A.length; i++)
+//   A[i] = i + 1;
+// for (var i = 0; i < A.length; i++)
+//   A[i] = 200000 - i;
 
 sorttime(A);
