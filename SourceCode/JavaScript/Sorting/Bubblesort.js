@@ -92,9 +92,7 @@ function wikipedia(A) {
 // Wikipedia article "optimization" rewritten with a for loop
 function wikipedia2(A) {
   var newn;
-  var loopcnt = 0;
   for(var n = A.length - 1; n > 0; n = newn) {
-    loopcnt++;
     newn = 0;
     for (var i = 0; i < n; i++)
       /* if this pair is out of order */
@@ -103,7 +101,6 @@ function wikipedia2(A) {
         newn = i;
       }
   }
-  console.log("Loopcnt was " + loopcnt);
 }
 
 // Wikipedia article-compatible version without swap checking
