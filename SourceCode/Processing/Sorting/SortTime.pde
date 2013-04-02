@@ -12,8 +12,8 @@ void checkorder(int[] A) {
 void setup() {
   int[] A = new int[testsize];
 
-  for (int i=0; i<A.length; i++)
-    A[i] = int(random(1000))+1;
+   for (int i=0; i<A.length; i++)
+     A[i] = int(random(1000))+1;
 //  for (int i=0; i<A.length; i++)
 //    A[i] = i+1;
 //  for (int i=0; i<A.length; i++)

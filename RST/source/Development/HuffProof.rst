@@ -53,7 +53,6 @@ The proof requires the following lemma.
 </center>
 
 <figcaption>
-<ODSAfig "HuffProof" />
 An impossible Huffman tree, showing the situation where the two nodes 
 with least weight, <var>l<sub>1</sub></var> and
 <var>l<sub>2</sub></var>, are not the deepest nodes in the tree.

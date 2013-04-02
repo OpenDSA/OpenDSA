@@ -79,7 +79,6 @@ children.::
    }
 
 <figcaption>
-<ODSAfig "VarNodeC" />
 A second implementation for separate internal and leaf node
 representations using Java class inheritance
 and virtual functions using the composite design pattern.

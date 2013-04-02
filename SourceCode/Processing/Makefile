@@ -1,6 +1,7 @@
 # Run the commandline compiler and runtime for all Processing code.
 # This isn't quite running unit tests, but the effect should be similar.
 PROCESS = ~/processing-2.0b8/processing-java
+BUILD = c:/Cliff/OpenDSA/Sourcecode/Processing/build
 
 all: Demo Trees Sorting Graphs
 
@@ -174,7 +175,7 @@ InssortTime:
 	@cp Sorting/SortTime.pde build/InssortTime/InssortTime.pde
 	@cp Sorting/Insertionsort.pde build/InssortTime
 	@cp Utils/Swap.pde build/InssortTime
-	@$(PROCESS) --run --sketch="build/InssortTime" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/InssortTime" --output="build/build" --force
 
 SelsortTime:
 	@echo "Selection Sort Timer"
@@ -183,7 +184,7 @@ SelsortTime:
 	@cp Sorting/SortTime.pde build/SelsortTime/SelsortTime.pde
 	@cp Sorting/Selectionsort.pde build/SelsortTime
 	@cp Utils/Swap.pde build/SelsortTime
-	@$(PROCESS) --run --sketch="build/SelsortTime" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/SelsortTime" --output="build/build" --force
 
 BubblesortTime:
 	@echo "Bubble Sort Timer"
@@ -192,7 +193,7 @@ BubblesortTime:
 	@cp Sorting/SortTime.pde build/BubblesortTime/BubblesortTime.pde
 	@cp Sorting/Bubblesort.pde build/BubblesortTime
 	@cp Utils/Swap.pde build/BubblesortTime
-	@$(PROCESS) --run --sketch="build/BubblesortTime" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/BubblesortTime" --output="build/build" --force
 
 GraphDummy: build/GraphDummy/success
 

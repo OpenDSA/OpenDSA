@@ -88,7 +88,6 @@ any node that has at least one non-empty child.
 </center>
 
 <figcaption>
-<ODSAfig "BinExample" />
 A binary tree.
 Node <var>A</var> is the root.
 Nodes <var>B</var> and <var>C</var> are <var>A</var>'s children.
@@ -117,7 +116,6 @@ The height of this tree is 4.
 </center>
 
 <figcaption>
-<ODSAfig "BinDiff" />
 Two different binary trees.
 (a) A binary tree whose root has a non-empty left child.
 (b) A binary tree whose root has a non-empty right child.
@@ -152,7 +150,6 @@ The bottom level has its nodes filled in from the left side.
 </center>
 
 <figcaption>
-<ODSAfig "FullComplete" />
 Examples of full and complete binary trees.
 (a) This tree is full (but not complete).
 (b)~This tree is complete (but not full).

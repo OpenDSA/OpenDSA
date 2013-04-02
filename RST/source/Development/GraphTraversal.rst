@@ -111,7 +111,7 @@ Alternatively, some applications require activity *after* the
 remaining vertices are processed; hence the call to function
 ``PostVisit``.
 This would be a natural opportunity to make use of the visitor design
-pattern described in Module :numref:`<VisitorPatt>`.
+pattern described in Module :numref:`<DesignPatterns>`.
 
 This visualization shows a graph and the result of performing a DFS on
 it, resulting in a depth-first search tree.

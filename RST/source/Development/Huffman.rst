@@ -69,7 +69,7 @@ uncommon letters.
    \textrm M & 24 & Z &  2\\
    \end{array}
 
-<ODSAfig "Freq" /> Relative frequencies for the 26 letters of the
+Relative frequencies for the 26 letters of the
 alphabet as they appear in a selected set of English
 documents. "Frequency" represents the expected frequency of occurrence
 per 1000 letters, ignoring case.
@@ -130,7 +130,6 @@ into one.
    \hline
    \end{array}
 
-<ODSAfig "FreqExamp" />
 The relative frequencies for eight selected letters.
 
 .. inlineav:: huffmanCON1 ss
@@ -173,7 +172,7 @@ Here is the implementation for Huffman tree nodes.
 .. codeinclude:: Trees/Huffman.pde
    :tag: HuffmanNode 
 
-<ODSAfig "HuffNode" /> Implementation for Huffman tree nodes. Internal
+Implementation for Huffman tree nodes. Internal
 nodes and leaf nodes are represented by separate classes, each derived
 from an abstract base class.
 
@@ -191,7 +190,7 @@ process.
 .. codeinclude:: Trees/Huffman.pde
    :tag: HuffmanTree
 
-<ODSAfig "HuffClass" /> Class declarations for the Huffman tree.
+Class declarations for the Huffman tree.
 
 .. codeinclude:: Trees/Huffman.pde
    :tag: HuffmanTreeBuild
@@ -237,7 +236,6 @@ letters.
    \textrm Z & 2 & 111100 & 6\\
    \end{array}
 
-<ODSAfig "TheCodes" />
 The Huffman codes for the letters of Figure <ODSAref "FreqExamp" />.
 
 Given codes for the letters, it is a simple matter to use these codes

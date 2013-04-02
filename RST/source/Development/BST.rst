@@ -60,7 +60,6 @@ sorted order from lowest to highest.
 </center>
 
 <figcaption>
-<ODSAfig "BSTShape" />
 Two Binary Search Trees for a collection of values.
 Tree (a) results if values are inserted
 in the order 37, 24, 42, 7, 2, 40, 42, 32, 120.
@@ -194,7 +193,6 @@ child in the appropriate direction.
 </center>
 
 <figcaption>
-<ODSAfig "BSTAdd" />
 An example of BST insertion.
 A record with value 35 is inserted into the BST of
 Figure <ODSAref "BSTShape" />(a).
@@ -299,7 +297,6 @@ Here is an example
    </center>
 
    <figcaption>
-   <ODSAfig "DelMin" />
    An example of deleting the node with minimum value.
    In this tree, the node with minimum value, 5, is the left child of the
    root.
@@ -369,7 +366,6 @@ then the BST property is maintained.
    </center>
 
    <figcaption>
-   <ODSAfig "Remove" />
    An example of removing the value 37 from the BST.
    The node containing this value has two children.
    We replace value 37 with the least value from the

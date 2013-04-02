@@ -3,12 +3,12 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata::
+.. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites: DesignPatt
-   :topic: Design Patterns
+   :prerequisites:
+   :topic: Indexing
 
-Visitor Pattern [STUB]
+Linear Indexing [STUB]
 ======================
 
-Placeholder for crossreference.
+Placeholder for Crossreference

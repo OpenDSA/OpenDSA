@@ -78,7 +78,6 @@ illustrates the <code>BSTNode</code> implementation.::
 </center>
 
 <figcaption>
-<ODSAfig "BinLink" />
 Illustration of a typical pointer-based binary tree implementation,
 where each node stores two child pointers and a value.
 </figcaption>
@@ -121,7 +120,6 @@ implementations for internal and leaf nodes.
 </center>
 
 <figcaption>
-<ODSAfig "DiffNodes" />
 An expression tree for
 4<var>x</var>(2<var>x</var> + <var>a</var>) - <var>c</var>.
 </figcaption>
@@ -206,7 +204,6 @@ the node's subclass.::
    }
 
 <figcaption>
-<ODSAfig "VarNodeI" />
 An implementation for separate internal and leaf node
 representations using Java class inheritance
 and virtual functions.

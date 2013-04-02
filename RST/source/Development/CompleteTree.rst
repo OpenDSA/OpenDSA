@@ -60,7 +60,6 @@ Generate image for Figure 5.12(b) from table.
 </p>
 
 <figcaption>
-<ODSAfig "BinArray" />
 A complete binary tree and its array implementation.
 (a) The complete binary tree with twelve nodes.
 Each node has been labeled with its position in the tree.

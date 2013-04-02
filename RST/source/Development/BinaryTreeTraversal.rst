@@ -266,7 +266,6 @@ that is not available just by looking at the node's parent or children.
 </center>
 
 <figcaption>
-<ODSAfig "BSTCheckFig" \>
 To be a binary search tree, the left child of the node with value 40
 must have a value between 20 and 40.
 </figcaption>

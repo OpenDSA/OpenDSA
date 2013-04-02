@@ -46,7 +46,6 @@ alt="A tree containing many internal nodes and a single leaf." />
 </center>
 
 <figcaption>
-<ODSAfig "OneLeaf" />
 A tree containing many internal nodes and a single leaf.
 </figcaption>
 </figure>

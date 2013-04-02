@@ -964,10 +964,6 @@
       }
     },
     "DesignPatterns": {
-      "Development/VisitorPatt": {
-        "long_name": "Visitor Design Pattern",
-        "exercises": {}
-      }
     },
     "AdvancedTrees": {
       "Development/Spatial": {

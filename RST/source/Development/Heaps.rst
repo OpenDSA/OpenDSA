@@ -188,7 +188,6 @@ worst case.
 </center>
 
 <figcaption>
-<ODSAfig "HeapBuild" />
 Two series of exchanges to build a max-heap.
 (a) This heap is built by a series of nine exchanges in the order
 (4-2), (4-1), (2-1), (5-2), (5-4), (6-3), (6-5), (7-5), (7-6).
@@ -248,7 +247,6 @@ Figure <ODSAref "SiftPic" />.
 </center>
 
 <figcaption>
-<ODSAfig "HeapInduct" />
 Final stage in the heap-building algorithm.
 Both subtrees of node <var>R</var> are heaps.
 All that remains is to push <var>R</var> down to its proper level in
@@ -262,7 +260,6 @@ the heap.
 </center>
 
 <figcaption>
-<ODSAfig "SiftPic" />
 The siftdown operation.
 The subtrees of the root are assumed to be heaps.
 (a) The partially completed heap.

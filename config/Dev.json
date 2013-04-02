@@ -19,6 +19,40 @@
         "exercises": {}
       }
     },
+    "Introduction": {
+      "Development/IntroDSA.rst": {
+        "long_name": "Introduction to Data Structures and Algorithms",
+        "exercises": {}
+      }
+    },
+    "Background": {
+      "Development/SetDef": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      }
+    },
+    "Algorithm Analysis": {
+      "Development/AnalPrelim": {
+        "long_name": "Problems, Algorithms, and Programs",
+        "exercises": {}
+      }
+    },
+    "Design": {
+      "Development/ADT": {
+        "long_name": "Abstract Data Types",
+        "exercises": {}
+      },
+      "Development/DesignPatterns": {
+        "long_name": "Design Patterns",
+        "exercises": {}
+      }
+    },
+    "Linear Structures": {
+      "Development/ListIntro": {
+        "long_name": "Instroduction to Lists",
+        "exercises": {}
+      }
+    },
     "BinaryTrees": {
       "Development/BinaryTree": {
         "long_name": "Binary Tree Introduction",
@@ -144,6 +178,24 @@
         "exercises": {}
       }
     },
+    "File Processing": {
+      "Development/FileProc": {
+        "long_name": "File Processing",
+        "exercises": {}
+      },
+      "Development/BuffPool": {
+        "long_name": "Buffer Pools",
+        "exercises": {}
+      },
+      "Development/MemoryMan": {
+        "long_name": "Memory Management",
+        "exercises": {}
+      },
+      "Development/ExternalSort": {
+        "long_name": "External Sorting",
+        "exercises": {}
+      }
+    },
     "Hashing": {
       "Development/PerfectHash": {
         "long_name": "Perfect Hashing",
@@ -211,131 +263,137 @@
 	}
       }
     },
-    "Under Development": {
-      "Background": {
-        "Development/SetDef": {
-          "long_name": "Set Definitions",
-          "exercises": {}
-        },
-        "Development/Recurrence": {
-          "long_name": "Recurrence",
-          "exercises": {}
-        },
-        "Development/AmortAnal": {
-          "long_name": "Amortized Analysis",
-          "exercises": {}
-        },
-        "Development/VisitorPatt": {
-          "long_name": "Visitor Design Pattern",
-          "exercises": {}
-        }
+    "Indexing": {
+      "Development/IndexIntro": {
+        "long_name": "Introduction to Indexing",
+        "exercises": {}
       },
-      "File Processing": {
-        "Development/FileProc": {
-          "long_name": "File Processing",
-          "exercises": {}
-        },
-        "Development/ExternalSort": {
-          "long_name": "External Sorting",
-          "exercises": {}
-        }
+      "Development/LinearIndex": {
+        "long_name": "Linear Indexing",
+        "exercises": {}
       },
-      "Trees": {
-        "Development/Spatial": {
-          "long_name": "Spatial Data Structures",
-          "exercises": {}
-        },
-        "Development/Trie": {
-          "long_name": "Tries",
-          "exercises": {}
-        }
+      "Development/BTree": {
+        "long_name": "B-Trees",
+        "exercises": {}
+      }
+    },
+    "Advanced Analysis": {
+      "Development/Recurrence": {
+        "long_name": "Recurrence",
+        "exercises": {}
       },
-      "Algorithms": {
-        "Development/Knapsack": {
-          "exercises": {
-            "sackCallTree": {
-              "long_name": "Knapsack Call Tree",
-              "required": true,
-              "points": 0.1,
-              "threshold": 1.0
-            },
-            "sackTreePluck": {
-              "required": true,
-              "points": 0.1,
-              "threshold": 1.0
-            },
-            "sackTraceBack": {
-              "long_name": "Knapsack Tree Reduction",
-              "required": true,
-              "points": 0.1,
-              "threshold": 1.0
-            },
-            "knapsackSelect": {
-              "long_name": "Knapsack Select",
-              "required": true,
-              "points": 1,
-              "threshold": 5
-            },
-            "knapsackFillRow": {
-              "long_name": "Knapsack Fill Row",
-              "required": true,
-              "points": 1,
-              "threshold": 5
-            },
-            "knapsackSolution": {
-              "long_name": "Knapsack Solution",
-              "required": true,
-              "points": 1,
-              "threshold": 5
-            },
-            "sackProficiency": {
-              "long_name": "Knapsack Proficiency",
-              "required": true,
-              "points": 1,
-              "threshold": 0.9
-            }
+      "Development/AmortAnal": {
+        "long_name": "Amortized Analysis",
+        "exercises": {}
+      }
+    },
+    "Advanced Linear Structures": {
+      "Development/SparseMatrix": {
+        "long_name": "Sparse Matrices",
+        "exercises": {}
+      }
+    },
+    "Advanced Trees": {
+      "Development/Spatial": {
+        "long_name": "Spatial Data Structures",
+        "exercises": {}
+      },
+      "Development/Trie": {
+        "long_name": "Tries",
+        "exercises": {}
+      }
+    },
+    "Algorithms": {
+      "Development/Knapsack": {
+        "exercises": {
+          "sackCallTree": {
+            "long_name": "Knapsack Call Tree",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "sackTreePluck": {
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "sackTraceBack": {
+            "long_name": "Knapsack Tree Reduction",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "knapsackSelect": {
+            "long_name": "Knapsack Select",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "knapsackFillRow": {
+            "long_name": "Knapsack Fill Row",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "knapsackSolution": {
+            "long_name": "Knapsack Solution",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "sackProficiency": {
+            "long_name": "Knapsack Proficiency",
+            "required": true,
+            "points": 1,
+            "threshold": 0.9
           }
-        },
-        "Development/EditDistance": {
-          "exercises": {
-            "editRCT": {
-              "long_name": "Edit RCT",
-              "required": true,
-              "points": 1,
-              "threshold": 0.9
-            },
-            "editPrune": {
-              "long_name": "Edit Prune",
-              "required": true,
-              "points": 1,
-              "threshold": 0.9
-            },
-            "editOptimal": {
-              "long_name": "Edit Optimal",
-              "required": true,
-              "points": 1,
-              "threshold": 0.9
-            },
-            "edit-KA1": {
-              "long_name": "Edit KA1",
-              "required": true,
-              "points": 1,
-              "threshold": 5
-            },
-            "edit-KA2": {
-              "long_name": "Edit KA2",
-              "required": true,
-              "points": 1,
-              "threshold": 5
-            }
+        }
+      },
+      "Development/EditDistance": {
+        "exercises": {
+          "editRCT": {
+            "long_name": "Edit RCT",
+            "required": true,
+            "points": 1,
+            "threshold": 0.9
+          },
+          "editPrune": {
+            "long_name": "Edit Prune",
+            "required": true,
+            "points": 1,
+            "threshold": 0.9
+          },
+          "editOptimal": {
+            "long_name": "Edit Optimal",
+            "required": true,
+            "points": 1,
+            "threshold": 0.9
+          },
+          "edit-KA1": {
+            "long_name": "Edit KA1",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "edit-KA2": {
+            "long_name": "Edit KA2",
+            "required": true,
+            "points": 1,
+            "threshold": 5
           }
-        },
-        "Development/Reductions": {
-          "long_name": "Reductions",
-          "exercises": {}
         }
       }
-    }, 
+    },
+    "Complexity": {
+      "Development/Reductions": {
+        "long_name": "Reductions",
+        "exercises": {}
+      },
+      "Development/Computability": {
+        "long_name": "Computability",
+        "exercises": {}
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
