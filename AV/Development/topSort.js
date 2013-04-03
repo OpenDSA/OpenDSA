@@ -21,7 +21,7 @@ function runit() {
   jsav.umsg("A topological sort is performed by doing a depth first search on a " +
     "directed acyclic graph. The nodes are are then popped off the stack resulting in a topological sort ");
   jsav.displayInit();
-   markIt(g.nodes()[0]);
+  markIt(g.nodes()[0]);
   dfs(g.nodes()[0]);
   jsav.step();
   jsav.umsg("Possible ordering of CS coures:  " + displaySort(numberofnodes));
@@ -114,24 +114,6 @@ function displaySort(numberofnodes) {
   return str;
 }
 
-//Resulting graph of completed depth first search
-// function finalGraph(S) 
-// {
-  // var size = 0;
-  // var nodes = [];
-  // nodes[0] = g.nodes()[0];
-  // jsav.step();
-  // jsav.umsg(nodes[4]);
-  // arr2 = jsav.ds.array(["","","","","","","","",""],  {left: 200, top: 500});
-  // while (size < graph.nodes().length) {
-    // jsav.umsg("Pop " + g.nodes[size].value() + " off the stack ");
-    // arr2.value(size, g.nodes[size].value());
-    // size = size + 1;
-    // jsav.step();
-   // }
-    
- 
-// }
 
 // Connect action callbacks to the HTML entities
 $('#about').click(about);
