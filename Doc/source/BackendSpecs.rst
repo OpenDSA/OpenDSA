@@ -1,7 +1,7 @@
 .. _BackendSpecs:
 
-OpenDSA back-end web services and user interface Specifications (draft)
-=======================================================================
+Back-end web services and user interface
+========================================
 
 The OpenDSA "back end" provides web services to store student
 responses and show student progress and performance over time.

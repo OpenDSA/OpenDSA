@@ -1,7 +1,7 @@
 .. _Style:
 
-OpenDSA Project House Style Rules
-=================================
+House Style Rules
+=================
 
 The following guidelines should be observed with writing content for
 the OpenDSA project.

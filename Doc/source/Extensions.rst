@@ -1,7 +1,7 @@
 .. _ODSAExtensions:
 
-OpenDSA ReST Extensions
-=======================
+ReST Extensions
+===============
 
 The following custom ReST extensions have been created for the OpenDSA
 project.

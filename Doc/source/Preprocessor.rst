@@ -1,7 +1,7 @@
 .. _Preprocessor:
 
-OpenDSA Document Processor
-==============================
+The Document Processor
+======================
 
 The OpenDSA textbook compilation pipeline includes custom
 preprocessing of module files into compileable ReStructuredText source.
@@ -71,7 +71,7 @@ objects (figures, tables, and equations) to the output of the
 document preprocessor and uses it as hyperlink text for cross
 referencing. 
 
-Third-Pass
+Third Pass
 ----------
 
 INPUT
@@ -79,18 +79,18 @@ INPUT
 
 OUTPUT
     Modified ``html`` files with an updated table of contents and
-    navigation bar, and section numbering to display the right
-    numbers.
+    navigation bar, and section numbers augmented with a chapter
+    number prefix.
 
 DESCRIPTION
    During the third pass, the document processor parses the html files
    and replaces headers and section numbers as appropriate from the
    dictionaries created during the first two passes.
    Since our processor does not modify the Sphinx document tree, we
-   have to modify ``html`` files to replace the raw Sphinx number with
-   our own numbering scheme.
+   have to modify ``html`` files to replace the raw Sphinx section
+   number with our own numbering scheme.
    This phase applies only to the Table Of Content, the navigation
-   bar, page headers and sections.
+   bar, page headers, and sections.
    The document processor perform a third pass only if the
    html file has been modified by Sphinx.
    The file ``count.txt`` stores the latest modification times for the
