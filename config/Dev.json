@@ -241,14 +241,21 @@
       "Development/GraphTopsort": {
         "long_name": "Topological Sort",
         "exercises": {
-          "topsortCON1": {}
-	}
+          "topsortCON1": {},
+          "topSort": {
+            "long_name": "Topological Sort (DFS) visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+        }
       },
       "Development/GraphShortest": {
         "long_name": "Shortest Paths Problems",
         "exercises": {
           "dijkstraCON1": {}
-	}
+        }
       },
       "Development/MCST": {
         "long_name": "Minimal Cost Spanning Trees",
@@ -260,7 +267,7 @@
             "showhide": "show",
             "threshold": 1.0
           }
-	}
+        }
       }
     },
     "Indexing": {

@@ -1,4 +1,4 @@
-testsize = 1000
+testsize = 10000
 time1 = 0
 time2 = 0
 
