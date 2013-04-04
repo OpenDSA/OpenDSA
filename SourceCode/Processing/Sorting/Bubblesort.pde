@@ -25,7 +25,7 @@ void sorttime(int[] B) {
 
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
-  wikipedia(A);
+  bubblecheckswap(A);
   time2 = millis();
   checkorder(A);
   println("Wikipedia Bubble Sort: Size " + testsize + ", Time: " + (time2-time1));
@@ -74,7 +74,8 @@ void bubblesortcheck2(int[] A) {
 }
 
 // Wikipedia article "optimization" to only swap up to the last swap seen
-void wikipedia(int[] A) {
+/* *** ODSATag: BubblesortCheck *** */
+void bubblecheckswap(int[] A) {
   int n = A.length-1;
   while (n>0) {
     int newn = 0;
@@ -87,6 +88,7 @@ void wikipedia(int[] A) {
     n = newn;
   }
 }
+/* *** ODSAendTag: BubblesortCheck *** */
 
 // Wikipedia article "optimization" rewritten with a for loop
 void wikipedia2(int[] A) {

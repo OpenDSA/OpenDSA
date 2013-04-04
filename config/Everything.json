@@ -232,11 +232,6 @@
           }
         }
       },
-      "Sorting/InsertOpt": {
-        "long_name": "Optimizing Insertion Sort",
-        "dispModComp": true,
-        "exercises": {}
-      },
       "Sorting/BubbleSort": {
         "long_name": "Bubble Sort",
         "exercises": {
@@ -336,6 +331,11 @@
             "threshold": 5
           }
         }
+      },
+      "Sorting/SortOpt": {
+        "long_name": "Optimizing Sorts with Code Tuning",
+        "dispModComp": false,
+        "exercises": {}
       },
       "Sorting/Shellsort": {
         "long_name": "Shellsort",
