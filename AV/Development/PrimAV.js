@@ -10,7 +10,7 @@
     jsav = new JSAV($('.avcontainer'));
 
     //-------------------ADD NEW GRAPH STUFF HERE----------------------------------------
-    graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
+    graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});
     initGraph();
     graph.layout();
     jsav.displayInit();
@@ -62,11 +62,11 @@
 
   //This function is for finding the minimum cost edge in cut(S).
   function findMinimumCostEdge(cut) {
-    var minCost = parseInt(cut[0].label(), 10);
+    var minCost = parseInt(cut[0].weight(), 10);
     var minCostIndex = 0;
     for (var i = 1; i < cut.length; i++) {
-      if (parseInt(cut[i].label(), 10) < minCost) {
-        minCost = parseInt(cut[i].label(), 10);
+      if (parseInt(cut[i].weight(), 10) < minCost) {
+        minCost = parseInt(cut[i].weight(), 10);
         minCostIndex = i;
       }
     }
@@ -134,41 +134,28 @@
 
   //This function is used to initialize the graph.
   function initGraph() {
+   
     var a = graph.addNode("A", {"left": 25,"top":50}),
         b = graph.addNode("B", {"left": 325,"top":50}),
         c = graph.addNode("C", {"left": 145, "top": 75}),
         d = graph.addNode("D", {"left": 145, "top": 200}),
         e = graph.addNode("E", {"left": 0, "top": 300}),
-        f = graph.addNode("F", {"left": 325, "top": 250}),
-        g = graph.addNode("G", {"left": 500, "top": 150});
+        f = graph.addNode("F", {"left": 325, "top": 250});
 
-    var e1 = graph.addEdge(a, c).label("30"),
-        e2 = graph.addEdge(a, e).label("10"),
-        e3 = graph.addEdge(c, b).label("20"),
-        e4 = graph.addEdge(c, d).label("15"),
-        e5 = graph.addEdge(c, f).label("25"),
-        e6 = graph.addEdge(f, b).label("2"),
-        e7 = graph.addEdge(d, f).label("5"),
-        e8 = graph.addEdge(e, f).label("40"),
-        e9 = graph.addEdge(f, g).label("50"),
-        e10 = graph.addEdge(b, g).label("22");
-		
-	var e11 = graph.addEdge(c, a).label("30"),
-		e22 = graph.addEdge(e, a).label("10"),
-        e33 = graph.addEdge(b, c).label("20"),
-        e44 = graph.addEdge(d, c).label("15"),
-        e55 = graph.addEdge(f, c).label("25"),
-        e66 = graph.addEdge(b, f).label("2"),
-        e77 = graph.addEdge(f, d).label("5"),
-        e88 = graph.addEdge(f, e).label("40"),
-        e99 = graph.addEdge(g, f).label("50"),
-        e100 = graph.addEdge(g, b).label("22");
+    var e1 = graph.addEdge(a, c,{"weight": 7}),
+        e2 = graph.addEdge(a, e,{"weight": 9}),
+        e3 = graph.addEdge(c, b,{"weight": 5}),
+        e4 = graph.addEdge(c, d,{"weight": 6}),
+        e5 = graph.addEdge(c, f,{"weight": 1}),
+        e6 = graph.addEdge(f, b,{"weight": 2}),
+        e7 = graph.addEdge(d, f,{"weight": 2}),
+        e8 = graph.addEdge(e, f,{"weight": 1});		
   }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  //This function is used to remove edges that are not in the minimum spanning tree
+ //This function is used to remove edges that are not in the minimum spanning tree
   function removeEdges(edges) {
-	var reverseEdge;
+	var toBeRemoved=[];
     for (var i = 0; i < graph.edges().length; i++) {
       for (var j = 0; j < edges.length; j++) {
         if (graph.edges()[i] === edges[j]) {
@@ -176,11 +163,13 @@
         }
       }
       if (j === edges.length) {
-		reverseEdge=getReverseEdge(graph.edges()[i]);
-        graph.removeEdge(graph.edges()[i].start(), graph.edges()[i].end());
-		graph.removeEdge(reverseEdge.start(), reverseEdge.end());
+		toBeRemoved.push(graph.edges()[i]);
       }
     }
+	for(var k=0;k<toBeRemoved.length;k++)
+	{
+		graph.removeEdge(toBeRemoved[k].start(),toBeRemoved[k].end());
+	}
     jsav.umsg("Complete minimum spanning tree");
   }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -190,4 +179,4 @@
   $('#runit').click(runit);
   //$('#help').click(help);
   $('#reset').click(ODSA.AV.reset);
-}(jQuery));
+}(jQuery))
