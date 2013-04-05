@@ -1,34 +1,51 @@
 static void sorttime(int[] B) {
   int i;
   int[] A = new int[B.length];
+  int totaltime, runs;
 
+totaltime = 0;
+for (runs=0; runs<10; runs++) {
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
   inssort(A);
   time2 = millis();
   checkorder(A);
-  println("Standard Insertion Sort: Size " + testsize + ", Time: " + (time2-time1));
+totaltime += (time2-time1);
+}
+  println("Standard Insertion Sort: Size " + testsize + ", Time: " + totaltime);
 
+totaltime = 0;
+for (runs=0; runs<10; runs++) {
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
   inssort2(A);
   time2 = millis();
   checkorder(A);
-  println("Standard Insertion Sort/No swaps: Size " + testsize + ", Time: " + (time2-time1));
+totaltime += (time2-time1);
+}
+  println("Standard Insertion Sort/No swaps: Size " + testsize + ", Time: " + totaltime);
 
+totaltime = 0;
+for (runs=0; runs<10; runs++) {
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
   inssortshift(A);
   time2 = millis();
   checkorder(A);
-  println("shuffling Insertion Sort: Size " + testsize + ", Time: " + (time2-time1));
+totaltime += (time2-time1);
+}
+  println("shuffling Insertion Sort: Size " + testsize + ", Time: " + totaltime);
 
+totaltime = 0;
+for (runs=0; runs<10; runs++) {
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
   inssortshift2(A);
   time2 = millis();
   checkorder(A);
-  println("shuffling Insertion Sort 2: Size " + testsize + ", Time: " + (time2-time1));
+totaltime += (time2-time1);
+}
+  println("shuffling Insertion Sort 2: Size " + testsize + ", Time: " + totaltime);
 }
 
 

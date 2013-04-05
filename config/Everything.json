@@ -972,6 +972,7 @@
       "Development/MCST": {
         "long_name": "Minimal Cost Spanning Trees",
         "exercises": {
+          "MCSTCON1": {},
           "PrimAV": {
             "long_name": "Prim's Algorithm Visualization",
             "required": false,
