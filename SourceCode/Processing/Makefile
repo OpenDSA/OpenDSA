@@ -1,7 +1,8 @@
 # Run the commandline compiler and runtime for all Processing code.
 # This isn't quite running unit tests, but the effect should be similar.
 PROCESS = ~/processing-2.0b8/processing-java
-BUILD = c:/Cliff/OpenDSA/Sourcecode/Processing/build
+# BUILD = c:/Cliff/OpenDSA/Sourcecode/Processing/build
+BUILD = /home/shaffer/OpenDSA/SourceCode/Processing/build
 
 all: Demo Trees Sorting Graphs
 
@@ -175,7 +176,8 @@ InssortTime:
 	@cp Sorting/SortTime.pde build/InssortTime/InssortTime.pde
 	@cp Sorting/Insertionsort.pde build/InssortTime
 	@cp Utils/Swap.pde build/InssortTime
-	@$(PROCESS) --run --sketch="$(BUILD)/InssortTime" --output="build/build" --force
+	export DISPLAY=:0.0
+	@$(PROCESS) --run --sketch="$(BUILD)/InssortTime" --output="$(BUILD)/build" --force
 
 SelsortTime:
 	@echo "Selection Sort Timer"

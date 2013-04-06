@@ -1,36 +1,52 @@
 def sorttime(B):
   A = [randrange(1,1000) for _ in range(testsize)]  # To make it create a real A for copying
-  for i in range(len(B)):
-    A[i] = B[i]
-  time1 = datetime.now()
-  inssort(A)
-  time2 = datetime.now()
-  checkorder(A)
-  print "Standard Insertion Sort: Size ", testsize, ", Time: ", millis(time2 - time1)
+  numruns = 5
 
-  for i in range(len(B)):
-    A[i] = B[i]
-  time1 = datetime.now()
-  inssort2(A)
-  time2 = datetime.now()
-  checkorder(A)
-  print "Standard Insertion Sort, no swap function: Size ", testsize, ", Time: ", millis(time2 - time1)
+  print "Range ", range(0, numruns)
 
-  for i in range(len(B)):
-    A[i] = B[i]
-  time1 = datetime.now()
-  inssortshift(A)
-  time2 = datetime.now()
-  checkorder(A)
-  print "Shifting Insertion Sort: Size ", testsize, ", Time: ", millis(time2 - time1)
+  totaltime = 0
+  for runs in range(1, numruns):
+    for i in range(len(B)):
+      A[i] = B[i]
+    time1 = datetime.now()
+    inssort(A)
+    time2 = datetime.now()
+    checkorder(A)
+    totaltime += millis(time2-time1)
+  print "Standard Insertion Sort: Size ", testsize, ", Time: ", totaltime
 
-  for i in range(len(B)):
-    A[i] = B[i]
-  time1 = datetime.now()
-  inssortshift(A)
-  time2 = datetime.now()
-  checkorder(A)
-  print "Shifting Insertion Sort 2 (!=): Size ", testsize, ", Time: ", millis(time2 - time1)
+  totaltime = 0
+  for runs in range(1, numruns):
+    for i in range(len(B)):
+      A[i] = B[i]
+    time1 = datetime.now()
+    inssort2(A)
+    time2 = datetime.now()
+    checkorder(A)
+    totaltime += millis(time2-time1)
+  print "Standard Insertion Sort, no swap function: Size ", testsize, ", Time: ", totaltime
+
+  totaltime = 0
+  for runs in range(1, numruns):
+    for i in range(len(B)):
+      A[i] = B[i]
+    time1 = datetime.now()
+    inssortshift(A)
+    time2 = datetime.now()
+    checkorder(A)
+    totaltime += millis(time2-time1)
+  print "Shifting Insertion Sort: Size ", testsize, ", Time: ", totaltime
+
+  totaltime = 0
+  for runs in range(1, numruns):
+    for i in range(len(B)):
+      A[i] = B[i]
+    time1 = datetime.now()
+    inssortshift(A)
+    time2 = datetime.now()
+    checkorder(A)
+    totaltime += millis(time2-time1)
+  print "Shifting Insertion Sort 2 (!=): Size ", testsize, ", Time: ", totaltime
 
 # Instead of swapping, "shift" the values down the array
 def inssortshift(A):

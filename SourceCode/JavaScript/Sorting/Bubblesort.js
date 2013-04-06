@@ -2,6 +2,8 @@ function sorttime(B) {
   var i;
   var A = [];
   A.length = B.length;
+  var totaltime, runs;
+  var numruns = 20;
 
   for(i = 0; i < B.length; i++) A[i] = B[i];
   time1 = new Date();
@@ -24,12 +26,16 @@ function sorttime(B) {
   checkorder(A);
   console.log("Swap Check Bubble Sort 2: Size " + testsize + ", Time: " + (time2 - time1));
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i = 0; i < B.length; i++) A[i] = B[i];
   time1 = new Date();
   wikipedia(A);
   time2 = new Date();
   checkorder(A);
-  console.log("Wikipedia Bubble Sort: Size " + testsize + ", Time: " + (time2 - time1));
+totaltime += (time2-time1);
+}
+  console.log("Wikipedia Bubble Sort: Size " + testsize + ", " + " for " + numruns + " runs, Time: " + totaltime);
 
   for(i = 0; i < B.length; i++) A[i] = B[i];
   time1 = new Date();
@@ -38,12 +44,16 @@ function sorttime(B) {
   checkorder(A);
   console.log("Wikipedia Bubble Sort 2: Size " + testsize + ", Time: " + (time2 - time1));
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i = 0; i < B.length; i++) A[i] = B[i];
   time1 = new Date();
   unwikipedia(A);
   time2 = new Date();
   checkorder(A);
-  console.log("Wikipedia Bubble Sort without swap checking: Size " + testsize + ", Time: " + (time2 - time1));
+totaltime += (time2-time1);
+}
+  console.log("Wikipedia Bubble Sort without swap checking: Size " + testsize + ", " + " for " + numruns + " runs, Time: " + totaltime);
 }
 
 // A flag check if a pass did not have any swaps, which lets us quit
