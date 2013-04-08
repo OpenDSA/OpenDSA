@@ -34,7 +34,8 @@ for (runs=0; runs<numruns; runs++) {
   checkorder(A);
 totaltime += (time2-time1);
 }
-  println("Wikipedia Bubble Sort: Size " + testsize + ", for " + numruns + "runs, Time: " + totaltime));
+  println("Wikipedia Bubble Sort: Size " + testsize + ", for " +
+          numruns + " runs, Time: " + totaltime);
 
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
@@ -52,7 +53,8 @@ for (runs=0; runs<numruns; runs++) {
   checkorder(A);
 totaltime += (time2-time1);
 }
-  println("Wikipedia Bubble Sort w/out Swap Checking: Size " + testsize + ", for " + numruns + "runs, Time: " + totaltime));
+  println("Wikipedia Bubble Sort w/out Swap Checking: Size " +
+          testsize + ", for " + numruns + " runs, Time: " + totaltime);
 }
 
 // A flag check if a pass did not have any swaps, which lets us quit
