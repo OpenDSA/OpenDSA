@@ -72,8 +72,18 @@ images = []
 # Keeps a count of how many ToDo directives are encountered
 todo_count = 0
 
+rst_header = '''\
+.. _%(mod_name)s:
+
+.. raw:: html
+
+   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";</script>
+
+%(orig_data)s'''
+
 # Used to generate the index.rst file
-index_header = '''.. This file is part of the OpenDSA eTextbook project. See
+index_header = '''\
+.. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
 .. Copyright (c) 2012 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
@@ -87,12 +97,6 @@ index_header = '''.. This file is part of the OpenDSA eTextbook project. See
    :author: OpenDSA Contributors
    :prerequisites:
    :topic: Data Structures
-
-.. _index:
-
-.. raw:: html
-
-   <script>ODSA.SETTINGS.DISP_MOD_COMP = false;ODSA.SETTINGS.MODULE_NAME = 'index';ODSA.SETTINGS.MODULE_LONG_NAME = 'Contents';</script>
 
 .. chapnum::
    :start: 0
@@ -484,15 +488,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   header_data['dispModComp'] = str(dispModComp).lower()
   header_data['long_name'] = long_name
   header_data['orig_data'] = mod_data[0]
-  
-  mod_data[0] = '''\
-.. _%(mod_name)s:
-
-.. raw:: html
-
-   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";</script>
-
-%(orig_data)s''' % header_data
+  mod_data[0] = rst_header % header_data
   
   avmetadata_found = False
 
@@ -683,7 +679,13 @@ def configure(config_file):
   with open(src_dir + 'index.rst', 'w+') as index_rst:
     print "Generating index.rst\n"
     print "Processing..."
-    index_rst.write(index_header)
+    
+    header_data = {}
+    header_data['mod_name'] = 'index'
+    header_data['dispModComp'] = 'false'
+    header_data['long_name'] = 'Contents'
+    header_data['orig_data'] = index_header
+    index_rst.write(rst_header % header_data)
 
     # Process all the chapter and module information
     process_section(conf_data, conf_data['chapters'], index_rst, 0)
