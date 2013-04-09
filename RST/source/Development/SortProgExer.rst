@@ -21,7 +21,7 @@ Sorting Chapter Programming Exercises [SB]
    :type: Coding Exercise
 
    Revise Insertion Sort to use the shift approach described in
-   Module :numref:`<InsertOpt>`.
+   Module :numref:`<SortOpt>`.
    Compare the time required by this implementation to the original
    version.
 

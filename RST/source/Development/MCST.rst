@@ -32,20 +32,11 @@ Thus, the MST is a free tree with :math:`|\mathbf{V}| - 1` edges.
 The name "minimum-cost spanning tree" comes from the fact that the
 required set of edges forms a tree, it spans the vertices (i.e., it
 connects them together), and it has minimum cost.
-Figure :num:`Figure #MSTExamp` shows the MST for an example graph.
+Figure :num:`Figure #MCSTdgm` shows the MST for an example graph.
 
-.. TODO::
-   :type: Figure
-
-   Replace the following figure with a JSAV figure.
-
-.. _MSTExamp:
-
-.. figure:: Images/MST.png
-   :width: 300
-   :align: center
-   :figwidth: 90%
-   :alt: The MST for a graph
+.. inlineav:: MCSTCON1 dgm
+   :target: MCSTdgm
+   :align: left
 
    A graph and its MST.
    All edges appear in the original graph.
@@ -53,6 +44,13 @@ Figure :num:`Figure #MSTExamp` shows the MST for an example graph.
    the subset making up the MST.
    Note that edge :math:`(C, F)` could be replaced with edge
    :math:`(D, F)` to form a different MST with equal cost.
+
+.. TODO::
+   :type: Slideshow
+
+   Replace the previous disagram with a slideshow illustrating the
+   concept of MCST.
+
 
 Prim's Algorithm
 ----------------
@@ -112,7 +110,7 @@ MST.
 
    Put this example into a slideshow:
 
-   For the graph of Figure :num:`Figure #MSTExamp`, assume that we
+   For the graph of Figure :num:`Figure #MCSTdgm`, assume that we
    begin by marking Vertex :math:`A`.
    From :math:`A`, the least-cost edge leads to Vertex :math:`C`.
    Vertex :math:`C` and edge :math:`(A, C)` are added to the MST.
@@ -245,7 +243,7 @@ This process is repeated until only one equivalence class remains.
 
    Figure :num:`Figure #KruskalFig` shows the first three steps of
    Kruskal's Algorithm for the graph of
-   Figure :num:`Figure #MSTExamp`.
+   Figure :num:`Figure #MCSTdgm`.
    Edge (C, D) has the least cost, and because
    C and D are currently in separate MSTs, they are combined.
    We next select edge (E, F) to process, and combine these
@@ -268,7 +266,7 @@ This process is repeated until only one equivalence class remains.
    :alt: Illustration of Kruskal's MST algorithm
 
    Illustration of the first three steps of Kruskal's MST algorithm as
-   applied to the graph of Figure :num:`Figure #MSTExamp`.
+   applied to the graph of Figure :num:`Figure #MCSTdgm`.
 
 The edges can be processed in order of weight by using a
 min-heap.
@@ -317,3 +315,5 @@ If so, the cost is often close to
    :type: Exercise
 
    Summary battery of questions for Prim's and Kruskal's algorithms.
+
+.. odsascript:: AV/Development/MCSTCON.js

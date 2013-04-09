@@ -29,15 +29,21 @@ Module Structure
 ----------------
 
 Each module is basically a single ReST file.
-However, the first thing that you should always include is an
-`avmetadata` directive block.
+The first thing that will normally appear is the 
+``avmetadata`` directive block.
 Among other things, this will define the module within the
-prerequisite structure, which is important when generating a full
-textbook.
+prerequisite structure, which is important when
+generating a full textbook.
 
-Most exercises and visualizations are embedded from elsewhere 
-using the ``avembed`` directive, but small slideshows and dynamically 
-generated diagrams can be included directly using the ``inlineav`` directive.
+Most exercises and visualizations are embedded into the module from
+elsewhere  using the ``avembed`` directive, but small slideshows and
+dynamically generated diagrams can be included directly using the
+``inlineav`` directive.
 Any CSS or JS code that is unique to a specific module page should be 
 maintained in separate files and included using ``odsalink`` and 
 ``odsascript`` directives, respectively.
+
+Defining which modules will be used in a given book, which exercises
+are included for credit, and various other aspects of module use are
+defined with the
+:ref:`Configuration system <Configuration>`.

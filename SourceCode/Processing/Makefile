@@ -2,6 +2,7 @@
 # This isn't quite running unit tests, but the effect should be similar.
 PROCESS = ~/processing-2.0b8/processing-java
 BUILD = c:/Cliff/OpenDSA/Sourcecode/Processing/build
+#BUILD = /home/shaffer/OpenDSA/SourceCode/Processing/build
 
 all: Demo Trees Sorting Graphs
 
@@ -22,7 +23,7 @@ Trees: GenTree UFTest
 
 Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
 
-Sorttime: InssortTime SelsortTime BubblesortTime
+Sorttime: InssortTime BubblesortTime SelsortTime
 
 Graphs: GraphDummy GraphTrav GraphTop GraphDijk GraphMCST
 
@@ -175,7 +176,7 @@ InssortTime:
 	@cp Sorting/SortTime.pde build/InssortTime/InssortTime.pde
 	@cp Sorting/Insertionsort.pde build/InssortTime
 	@cp Utils/Swap.pde build/InssortTime
-	@$(PROCESS) --run --sketch="$(BUILD)/InssortTime" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/InssortTime" --output="$(BUILD)/build" --force
 
 SelsortTime:
 	@echo "Selection Sort Timer"

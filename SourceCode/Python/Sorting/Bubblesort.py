@@ -1,5 +1,7 @@
 def sorttime(B):
   A = [randrange(1,1000) for _ in range(testsize)]  # To make it create a real A for copying
+  numruns = 5
+
   for i in range(len(B)):
     A[i] = B[i]
   time1 = datetime.now()
@@ -24,21 +26,27 @@ def sorttime(B):
   checkorder(A)
   print "Swap Check Bubble Sort 2: Size ", testsize, ", Time: ", millis(time2 - time1)
 
-  for i in range(len(B)):
-    A[i] = B[i]
-  time1 = datetime.now()
-  wikipedia(A)
-  time2 = datetime.now()
-  checkorder(A)
-  print "Wikipedia Bubble Sort: Size ", testsize, ", Time: ", millis(time2 - time1)
+  totaltime = 0
+  for runs in range(1, numruns):
+    for i in range(len(B)):
+      A[i] = B[i]
+    time1 = datetime.now()
+    wikipedia(A)
+    time2 = datetime.now()
+    checkorder(A)
+    totaltime += millis(time2-time1)
+  print "Wikipedia Bubble Sort: Size ", testsize, ", for ", numruns, " runs, Time: ", totaltime
 
-  for i in range(len(B)):
-    A[i] = B[i]
-  time1 = datetime.now()
-  unwikipedia(A)
-  time2 = datetime.now()
-  checkorder(A)
-  print "Wikipedia-compatible Bubble Sort without swap checking: Size ", testsize, ", Time: ", millis(time2 - time1)
+  totaltime = 0
+  for runs in range(1, numruns):
+    for i in range(len(B)):
+      A[i] = B[i]
+    time1 = datetime.now()
+    unwikipedia(A)
+    time2 = datetime.now()
+    checkorder(A)
+    totaltime += millis(time2-time1)
+  print "Wikipedia-compatible Bubble Sort without swap checking: Size ", testsize, " for ", numruns, "runs, Time: ", totaltime
 
 # A flag check if a pass did not have any swaps, which lets us quit
 def bubblesortcheck(A):

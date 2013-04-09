@@ -1,6 +1,8 @@
 void sorttime(int[] B) {
   int i;
   int[] A = new int[B.length];
+  int totaltime, runs;
+  int numruns = 20;
 
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
@@ -23,12 +25,17 @@ void sorttime(int[] B) {
   checkorder(A);
   println("Swap Check Bubble Sort 2: Size " + testsize + ", Time: " + (time2-time1));
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
-  wikipedia(A);
+  bubblecheckswap(A);
   time2 = millis();
   checkorder(A);
-  println("Wikipedia Bubble Sort: Size " + testsize + ", Time: " + (time2-time1));
+totaltime += (time2-time1);
+}
+  println("Wikipedia Bubble Sort: Size " + testsize + ", for " +
+          numruns + " runs, Time: " + totaltime);
 
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
@@ -37,12 +44,17 @@ void sorttime(int[] B) {
   checkorder(A);
   println("Wikipedia Bubble Sort 2: Size " + testsize + ", Time: " + (time2-time1));
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
   unwikipedia(A);
   time2 = millis();
   checkorder(A);
-  println("Wikipedia Bubble Sort w/out Swap Cheking: Size " + testsize + ", Time: " + (time2-time1));
+totaltime += (time2-time1);
+}
+  println("Wikipedia Bubble Sort w/out Swap Checking: Size " +
+          testsize + ", for " + numruns + " runs, Time: " + totaltime);
 }
 
 // A flag check if a pass did not have any swaps, which lets us quit
@@ -74,7 +86,8 @@ void bubblesortcheck2(int[] A) {
 }
 
 // Wikipedia article "optimization" to only swap up to the last swap seen
-void wikipedia(int[] A) {
+/* *** ODSATag: BubblesortCheck *** */
+void bubblecheckswap(int[] A) {
   int n = A.length-1;
   while (n>0) {
     int newn = 0;
@@ -87,6 +100,7 @@ void wikipedia(int[] A) {
     n = newn;
   }
 }
+/* *** ODSAendTag: BubblesortCheck *** */
 
 // Wikipedia article "optimization" rewritten with a for loop
 void wikipedia2(int[] A) {

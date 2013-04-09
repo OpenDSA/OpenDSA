@@ -70,9 +70,13 @@ ODSA.MOD
 ODSA.UTILS
 ==========
 
-* **STATUS** - pseudo-enumerated variable used to define the different states of proficiency
-* **getProficiencyStatus(name, username, book)** - returns whether or not local storage has a record of the given user being proficient with the given exercise or module in the given book
-* **syncProficiency()** - queries ``getgrade`` endpoint to obtain proficiency status for all exercises and modules
+* **STATUS** - pseudo-enumerated variable used to define the different
+  states of proficiency
+* **getProficiencyStatus(name, username, book)** - returns whether or
+  not local storage has a record of the given user being proficient
+  with the given exercise or module in the given book
+* **syncProficiency()** - queries ``getgrade`` endpoint to obtain
+  proficiency status for all exercises and modules
 
 ---------------
 Tips and Tricks
@@ -81,21 +85,46 @@ Tips and Tricks
 Truthy and Falsy
 ================
 
-Be aware that values in JavaScript will not always evaluate the way you expect when used in conditionals.  When comparing objects use **strict equal** (``===``) and **strict not equal** (``!==``) to ensure values are compared by type and value.  When testing whether a variable contains useful information you can generally use the value inself in the conditional, i.e. ``if (testCondition) {...}``.  While this is 'sloppy', it works unless you expect a ``0``, ``false`` of ``""`` to be valid.  If you want a more formal test, you can use ``typeof testCondition === "undefined"``.  This expression will be true only if ``testCondition`` has never been assigned a value.  
+Be aware that values in JavaScript will not always evaluate the way
+you expect when used in conditionals.  When comparing objects use
+**strict equal** (``===``) and **strict not equal** (``!==``) to
+ensure values are compared by type and value.  When testing whether a
+variable contains useful information you can generally use the value
+inself in the conditional, i.e. ``if (testCondition) {...}``.  While
+this is 'sloppy', it works unless you expect a ``0``, ``false`` of
+``""`` to be valid.  If you want a more formal test, you can use
+``typeof testCondition === "undefined"``.  This expression will be
+true only if ``testCondition`` has never been assigned a value.
 
-For more information please refer to `Truthy and Falsy: When All is Not Equal in JavaScript <http://www.sitepoint.com/javascript-truthy-falsy/>`_.
+For more information see
+`Truthy and Falsy: When All is Not Equal in JavaScript <http://www.sitepoint.com/javascript-truthy-falsy/>`_.
 
 
 HTML5 postMessage
 =================
 
-We have no guarantee that content embedded in iFrames (such s AVs and Exercises) will be hosted on the same domain as the modules.  In order to create a robust application communication between the parent and child pages should take place using ``postMessage`` rather than referencing elements or functions through the ``contentDocument`` or ``contentWindow.document`` of the iFrame element or ``window.parent`` or ``window.top``.
+We have no guarantee that content embedded in iFrames (such as AVs and
+Exercises) will be hosted on the same domain as the modules.  In order
+to create a robust application communication between the parent and
+child pages should take place using ``postMessage`` rather than
+referencing elements or functions through the ``contentDocument`` or
+``contentWindow.document`` of the iFrame element or ``window.parent``
+or ``window.top``.
 
 
 Encapsulation
 =============
 
-You should always wrap your JavaScript code in an anonymous function to prevent the DOM from getting cluttered and to prevent outside access to specific data or functions.  All functions and global variables defined within an anonymous function are visible to each other and can be used normally.  However, sometimes you will need to define a publically accessible function that interacts with functions you wish to keep private.  The simplest way to do this is to write your JavaScript as normal within an anonymous function and then assign specific "public" functions to be properties of the ``window`` object.  Please refer to the example below::
+You should always wrap your JavaScript code in an anonymous function
+to prevent the DOM from getting cluttered and to prevent outside
+access to specific data or functions.  All functions and global
+variables defined within an anonymous function are visible to each
+other and can be used normally.  However, sometimes you will need to
+define a publically accessible function that interacts with functions
+you wish to keep private.  The simplest way to do this is to write
+your JavaScript as normal within an anonymous function and then assign
+specific "public" functions to be properties of the ``window`` object.
+Please refer to the example below::
 
   (function() {
     var privateData = 0;
@@ -134,7 +163,13 @@ Another alternative is::
     window.ODSA = ODSA;
   }(jQuery));
 
-In both of these example, ``publicFunct()`` can be referenced outside the anonymous function using ``ODSA.publicFunct()`` (or ``window.ODSA.publicFunct()``).  We prefer the first method because it looks more like a standard JavaScript file, internal function references are simpler and its easy to add all the public functions in one place, giving the developer greater control over what they make public.
+In both of these example, ``publicFunct()`` can be referenced outside
+the anonymous function using ``ODSA.publicFunct()`` (or
+``window.ODSA.publicFunct()``).  We prefer the first method because it
+looks more like a standard JavaScript file, internal function
+references are simpler and its easy to add all the public functions in
+one place, giving the developer greater control over what they make
+public.
 
 
 ---------------
@@ -144,17 +179,29 @@ Troubleshooting
 jQuery Selectors
 ================
 
-jQuery selectors can be very useful, but do have some limitations.  For instance, when using jQuery to reference an element by ID, the ID cannot contain specific characters such as a period, a plus sign or spaces.  While its better to avoid them if possible, if you find that you must use these or other invalid characters, use ``$('[id="' + objID + '"]')``.
+jQuery selectors can be useful, but do have some limitations.  For
+instance, when using jQuery to reference an element by ID, the ID
+cannot contain specific characters such as a period, a plus sign or
+spaces.  While its better to avoid them if possible, if you find that
+you must use these or other invalid characters, use ``$('[id="' +
+objID + '"]')``.
 
 
 Proficiency Exercises
 =====================
 
-* If your AV doesn't show up immediately but shows up as soon as you advance the slideshow, make sure you ran: ``jsav.displayInit();``
+* If your AV doesn't show up immediately but shows up as soon as you
+  advance the slideshow, make sure you ran: ``jsav.displayInit();`` 
 * If you are having difficulties with variables managed by JSAV
 
-  * Make sure you use ``.value()`` to access the variables value, otherwise you get an object rather than the string or number you most likely want
-  * Make sure you use ``.value(newValue)`` to change the value of the variable, assignment using '=' doesn't work
+  * Make sure you use ``.value()`` to access the variables value,
+    otherwise you get an object rather than the string or number you
+    most likely want
+  * Make sure you use ``.value(newValue)`` to change the value of the
+    variable, assignment using '=' doesn't work
 
-* If your fixState function successfully changes the state of everything, but says you are getting all subsequent correct answers wrong and undoing everything to the state where you first made a mistake, make sure you are calling ``exercise.gradeableStep();``
+* If your fixState function successfully changes the state of
+  everything, but says you are getting all subsequent correct answers
+  wrong and undoing everything to the state where you first made a
+  mistake, make sure you are calling ``exercise.gradeableStep();``
 

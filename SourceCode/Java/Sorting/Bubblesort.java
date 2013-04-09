@@ -1,6 +1,10 @@
 static void sorttime(int[] B) {
   int i;
   int[] A = new int[B.length];
+  int totaltime, runs;
+  int numruns = 20;
+
+  println("Doing timings on the basis of " + numruns + " runs");
 
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
@@ -23,12 +27,16 @@ static void sorttime(int[] B) {
   checkorder(A);
   println("Swap Check Bubble Sort 2: Size " + testsize + ", Time: " + (time2-time1));
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
   wikipedia(A);
   time2 = millis();
   checkorder(A);
-  println("Wikipedia Bubble Sort: Size " + testsize + ", Time: " + (time2-time1));
+totaltime += (time2-time1);
+}
+  println("Wikipedia Bubble Sort: Size " + testsize + ", " + numruns + " Time: " + totaltime);
 
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
@@ -37,12 +45,16 @@ static void sorttime(int[] B) {
   checkorder(A);
   println("Wikipedia Bubble Sort 2: Size " + testsize + ", Time: " + (time2-time1));
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
   unwikipedia(A);
   time2 = millis();
   checkorder(A);
-  println("Wikipedia Bubble Sort w/out checks: Size " + testsize + ", Time: " + (time2-time1));
+totaltime += (time2-time1);
+}
+  println("Wikipedia Bubble Sort w/out checks: Size " + testsize + ", " + numruns + " Time: " + totaltime);
 }
 
 // A flag check if a pass did not have any swaps, which lets us quit

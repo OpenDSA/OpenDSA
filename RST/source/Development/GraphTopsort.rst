@@ -70,10 +70,7 @@ Here is implementation for the DFS-based algorithm.
    Reversing this yields the topological sort
    J1, J3, J2, J6, J4, J5, J7.
 
-.. TODO::
-   :type: AV
-
-   Add an AV for DFS-based Topological Sort.
+.. avembed:: AV/Development/topSort.html ss
 
 We can implement topological sort using a queue
 instead of recursion, as follows.
