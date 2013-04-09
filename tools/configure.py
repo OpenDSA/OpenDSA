@@ -410,13 +410,13 @@ def process_path(path, abs_prefix):
   
   # If the path is relative, make it absolute
   if not os.path.isabs(path):
-    path = abs_prefix + path
+    path = ''.join([abs_prefix, path])
 
   # Convert to Unix path
   path = path.replace("\\", "/")
   # Ensure path ends with '/'
   if not path.endswith('/'):
-    path += "/"
+    path += '/'
 
   return path
 
@@ -452,7 +452,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   processed_modules.append(mod_name)
 
   print ("  " * depth) + mod_name
-  index_rst.write("   " + mod_name + "\n")
+  index_rst.write("   %s\n" % mod_name)
   
   if mod_name == 'ToDo':
     return
@@ -460,16 +460,10 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   exercises = mod_attrib['exercises']
 
   # Read the contents of the module file from the RST source directory
-  with open(odsa_dir + 'RST/source/' + mod_path + '.rst','r') as mod_file:
+  with open('{0}RST/source/{1}.rst'.format(odsa_dir, mod_path),'r') as mod_file:
     mod_data = mod_file.readlines()
 
-  # Find the end-of-line character for the file
-  eol = mod_data[0].replace(mod_data[0].rstrip(), '')
-  
-  if 'long_name' in mod_attrib:
-    long_name = mod_attrib['long_name']
-  else:
-    long_name = mod_name
+  long_name = mod_attrib['long_name'] if 'long_name' in mod_attrib else mod_name
   
   # Set a JS flag on the page, indicating whether or not the module can be completed
   if 'dispModComp' in mod_attrib:
@@ -484,14 +478,21 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
         dispModComp = True
         break
   
-  # If these JavaScript variables are changed be sure to change them in the index.rst file (above) and ToDo.rst file (preprocessor.py)
-  line = '.. _' + mod_name + ':' + (eol * 2) + '.. raw:: html' + (eol * 2) + '   <script>'
-  line += 'ODSA.SETTINGS.DISP_MOD_COMP = ' + str(dispModComp).lower() + ';'
-  line += 'ODSA.SETTINGS.MODULE_NAME = "' + mod_name + '";'
-  line += 'ODSA.SETTINGS.MODULE_LONG_NAME = "' + long_name + '";'
-  line += '</script>' + (eol * 2)
+  # If these JavaScript variables are changed, be sure to change them in the index.rst file (above) and ToDo.rst file (preprocessor.py)
+  header_data = {}
+  header_data['mod_name'] = mod_name
+  header_data['dispModComp'] = str(dispModComp).lower()
+  header_data['long_name'] = long_name
+  header_data['orig_data'] = mod_data[0]
+  
+  mod_data[0] = '''\
+.. _%(mod_name)s:
 
-  mod_data[0] = line + mod_data[0]
+.. raw:: html
+
+   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";</script>
+
+%(orig_data)s''' % header_data
   
   avmetadata_found = False
 
@@ -529,13 +530,8 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
         # List of valid options for inlineav directive
         options = ['long_name', 'points', 'required', 'threshold']
 
-        line = mod_data[i]
-
-        for option in options:
-          if option in exer_conf:
-            line += '   :' + option + ': ' + str(exer_conf[option]) + eol
-
-        mod_data[i] = line
+        rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+        mod_data[i] += ''.join(rst_options)
     elif '.. avembed::' in mod_data[i]:
       # Parse the exercise name from the line
       av_name = mod_data[i].split(' ')[2].rstrip()
@@ -552,7 +548,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
           i += 1
       else:
         # Append module name to embedded exercise
-        mod_data[i] += '   :module: ' + mod_name + eol
+        mod_data[i] += '   :module: %s\n' % mod_name
         
         if av_name not in exercises:
           # Add the name to a list of missing exercises
@@ -564,19 +560,18 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
           # List of valid options for avembed directive
           options = ['long_name', 'points', 'required', 'showhide', 'threshold']
 
-          for option in options:
-            if option in exer_conf:
-              mod_data[i] += '   :' + option + ': ' + str(exer_conf[option]) + eol
+          rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+          mod_data[i] += ''.join(rst_options)
     elif '.. avmetadata::' in mod_data[i]:
       avmetadata_found = True
 
     i = i + 1
 
   if not avmetadata_found:
-    print ("  " * (depth + 1)) + 'WARNING: ' + mod_name + ' does not contain an ..avmetadata:: directive'
+    print ("  " * (depth + 1)) + 'WARNING: %s does not contain an ..avmetadata:: directive' % mod_name
   
   # Write the contents of the module file to the output src directory
-  with open(get_src_dir(conf_data) + mod_name + '.rst','w') as mod_file:
+  with open('{0}{1}.rst'.format(get_src_dir(conf_data), mod_name),'w') as mod_file:
     mod_file.writelines(mod_data)
 
 def set_defaults(conf_data):
@@ -625,13 +620,11 @@ def get_odsa_dir():
   
   # Convert to Unix-style path and move up a directory 
   # (assumes configure.py is one level below root OpenDSA directory)
-  odsa_dir = os.path.abspath(odsa_dir.replace("\\", "/") + '/..') + '/'
-  
-  return odsa_dir
+  return os.path.abspath(odsa_dir.replace("\\", "/") + '/..') + '/'
 
 def get_output_dir(conf_data):
   odsa_dir = get_odsa_dir()
-  return process_path(conf_data['book_dir'], odsa_dir) + conf_data['name'] + '/'
+  return '%s%s/' % (process_path(conf_data['book_dir'], odsa_dir), conf_data['name'])
 
 def get_src_dir(conf_data):
   return get_output_dir(conf_data) + 'source/'
