@@ -15,12 +15,6 @@ function permute(A) {
   }
 }
 
-// Convenience function for setting another type of highlight
-// (will be used for showing which records will be compared during sort)
-var setBlue = function (arr, index) {
-  arr.css(index, {"background-color": "#ddf" });
-};
-
 (function ($) {
   var theArray = [76, 6, 57, 88, 85, 42, 83, 73, 48, 60];
   var av = new JSAV("QuicksortCON1");
@@ -28,9 +22,9 @@ var setBlue = function (arr, index) {
   var arr = av.ds.array(theArray, {indexed: true});
 
   av.umsg("When we start the partition function, pivot value 60 has been moved to the right most position.");
-  setBlue(arr, 9);
+  arr.addClass(9, "processing");
   av.displayInit();
-  arr.unhighlight(9);
+  arr.removeClass(9, "processing");
   arr.setLeftArrow(0);
   arr.setRightArrow(8);
   av.umsg("The left and right bounds are set to positions 0 and 8, respectively");

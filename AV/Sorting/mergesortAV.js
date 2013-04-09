@@ -149,23 +149,23 @@
 
       if (pos1 < arr1.size() &&
           (arr1.value(pos1) <= arr2.value(pos2) || pos2 === arr2.size())) {
-        arr1.highlightBlue(pos1);
+        arr1.unhighlight(pos1).highlightBlue(pos1);
         jsav.step();
 
         origArr.value(index, arr1.value(pos1));
         // Clear the value from the previous array
         arr1.value(pos1, "");
-        arr1.unhighlight(pos1);
+        arr1.unhighlightBlue(pos1);
         pos1++;
       }
       else {
-        arr2.highlightBlue(pos2);
+        arr2.unhighlight(pos2).highlightBlue(pos2);
         jsav.step();
 
         origArr.value(index, arr2.value(pos2));
         // Clear the value from the previous array
         arr2.value(pos2, "");
-        arr2.unhighlight(pos2);
+        arr2.unhighlightBlue(pos2);
         pos2++;
       }
 
