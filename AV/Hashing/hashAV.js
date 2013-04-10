@@ -696,11 +696,13 @@
   // Simple hashing for strings
   function simpleStrings(inputVal) {
     // Check input is a string
-    if (!is("String", inputVal)) {
-      error("Please enter a string to hash.");
-      // Return error
-      return 1;
-    }
+// TODO: Make sure the string is not null, but otherwise accept it
+// This is bugged, because there is no "is" function
+//    if (!is("String", inputVal)) {
+//      error("Please enter a string to hash.");
+//      // Return error
+//      return 1;
+//    }
 
     jsav.umsg("Attempting to insert: " + inputVal);
 
@@ -730,21 +732,23 @@
   // Hashing for Strings (Improved)
   function improvedStrings(inputVal) {
     // Check input is a string
-    if (!is("String", inputVal)) {
-      error("Please enter a string to hash.");
-      // Return error
-      return 1;
-    }
+// TODO: Make sure the string is not null, but otherwise accept it
+// This is bugged, because there is no "is" function
+//    if (!is("String", inputVal)) {
+//      error("Please enter a string to hash.");
+//      // Return error
+//      return 1;
+//    }
 
     jsav.umsg("Attempting to insert " + inputVal);
 
     var inputLength = inputVal.length / 4;
     var sum = 0;
-
+    var mult;
     for (var i = 0; i < inputLength; i++) {
       // Grab the substring of size 4
       var inputsubstring = inputVal.substring(i * 4, (i * 4) + 4);
-      var mult = 1;
+      mult = 1;
       for (var j = 0; j < inputsubstring.length; j++) {
         sum += inputsubstring.charCodeAt(j) * mult;
         mult *= 256;

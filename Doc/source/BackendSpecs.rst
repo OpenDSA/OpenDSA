@@ -3,291 +3,254 @@
 Back-end web services and user interface
 ========================================
 
-The OpenDSA "back end" provides web services to store student
-responses and show student progress and performance over time.
-The API is based on REST (REpresentional State Transfer)
-principles.
-Information is transferred to/from the back end using JSON.
+The OpenDSA "backend" API provides access to resources stored 
+in the database. OpenDSA implements RESTful (REpresentional State Transfer)
+service server-side. Information is transferred to/from the back end using JSON.
 
-
-KA Exercises
-------------   
-
-
-Enter exercises data
-^^^^^^^^^^^^^^^^^^^^  
-``HTTP method:``  POST   
- 
-``POST parameters:``   
-	+-------------------------+----------------------------+
-        |   Parameters            |   Description              |  
-        +=========================+============================+  
-        |   Name                  |   Name of the exercise     | 
-        +-------------------------+----------------------------+ 
-        |   Description	          | Description of the exercise|   
-        +-------------------------+----------------------------+ 
-        |   Author                |                            |   	
-        +-------------------------+----------------------------+  
-        |   Covers                |Topic/section covered by the|    
-        |                         |      exercise              |     
-        +-------------------------+----------------------------+    
-        |   Expected time	  | Time we expect students to |   
-        |                         |   complete the exercise    |  
-        +-------------------------+----------------------------+  
-        |   Proficiency score     | Rules to determine student |   
-        |                         |   proficiency              |   
-        +-------------------------+----------------------------+  
-        |   streak                | streak of correct exercise | 
-        |                         | for proficiency            |
-        +-------------------------+----------------------------+   
-        |   hint penalty          | points substracted for     |
-        |                         | using hints                |
-        +-------------------------+----------------------------+  
-        |   points                | points awarded for a       |
-        |                         | correct exercise (no hint) |
-        +-------------------------+----------------------------+   
-
-``Access:``  instructors, administrators
-
-``HTTP Response:`` success/Error
-
-``User interface:`` a web interface to manually enter POST Parameter
-
-                                                   
-Update exercises data
-^^^^^^^^^^^^^^^^^^^^^
+Users Resources
+---------------
+Create new user
+^^^^^^^^^^^^^^^
 ``HTTP method:``  POST
 
 ``POST parameters:``
+
         +-------------------------+----------------------------+
         |   Parameters            |   Description              |
         +=========================+============================+
-        |   Description           | Description of the exercise|
+        |   username              |   username of user         |
         +-------------------------+----------------------------+
-        |   Author                |                            |
+        |   password              | new user password          |
         +-------------------------+----------------------------+
-        |   Covers                |Topic/section covered by the|
-        |                         |      exercise              |
+        |   email                 | new user email address     |
         +-------------------------+----------------------------+
-        |   Expected time         | Time we expect students to |
-        |                         |   complete the exercise    |
+
+``Server Response:`` HTTP status[bad request], [error message].
+
+Login user
+^^^^^^^^^^
+``HTTP method:``  POST
+
+``POST parameters:``
+
         +-------------------------+----------------------------+
-        |   Proficiency score     | Rules to determine student |
-        |                         |   proficiency              |
+        |   Parameters            |   Description              |
+        +=========================+============================+
+        |   username              |   username of user         |
         +-------------------------+----------------------------+
-        |   streak                | streak of correct exercise |
+        |   password              | new user password          |
+        +-------------------------+----------------------------+
+
+``Server Response:`` HTTP status[bad request|unauthorized|forbidden], [session key] 
+
+Logout user
+^^^^^^^^^^^
+``HTTP method:``  POST
+
+``POST parameters:``
+
+        +-------------------------+----------------------------+
+        |   Parameters            |   Description              |
+        +=========================+============================+
+        |   key                   | session key (generated by  |
+        |                         |  the server)               |
+        +-------------------------+----------------------------+
+
+``Server Response:`` HTTP status[bad request|unauthorized]
+
+
+Books Resources
+---------------   
+
+Add new book
+^^^^^^^^^^^^  
+``HTTP method:``  POST   
+ 
+``POST parameters:``   
+
+	+-------------------------+----------------------------+
+        |   Parameters            |   Description              |  
+        +=========================+============================+  
+        |   book_name             |   Name of the book         | 
+        +-------------------------+----------------------------+ 
+        |   book_url	          |   BOOK'S URL               |   
+        +-------------------------+----------------------------+ 
+
+``Server Response:`` HTTP status[bad request|unauthorized]
+
+Modules Resources
+-----------------
+Add new Module
+^^^^^^^^^^^^^^  
+``HTTP method:``  POST
+
+``POST parameters:``
+
+        +-------------------------+----------------------------+
+        |   Parameters            |   Description              |
+        +=========================+============================+
+        |   name                  |   Name of the module       |     
+        +-------------------------+----------------------------+
+        |   exercises             |   names of the exercises   |
+        |                         |   in the module            | 
+        +-------------------------+----------------------------+
+
+``Server Response:`` HTTP status[bad request|unauthorized]
+
+Exercises Resources
+-------------------
+``HTTP method:``  POST
+
+``POST parameters:``
+
+	+-------------------------+----------------------------+
+        |   Parameters            |   Description              |  
+        +=========================+============================+  
+        |   name                  |   Name of the exercise     | 
+        +-------------------------+----------------------------+ 
+        |   description	          | Description of the exercise|   
+        +-------------------------+----------------------------+ 
+        |   author                | Exercise author            |   	
+        +-------------------------+----------------------------+  
+        |   covers                |  Topic covered by the      |    
+        |                         |      exercise              |     
+        +-------------------------+----------------------------+    
+        |   ex_type      	  | Type of exercise: Khan     |   
+        |                         | academy, JSAV proficiency, |
+        |                         | or JSAV slide shows        |  
+        +-------------------------+----------------------------+  
+        |   streak (KA exercises) | streak of correct exercise | 
         |                         | for proficiency            |
-        +-------------------------+----------------------------+
-        |   hint penalty          | points substracted for     |
-        |                         | using hints                |
-        +-------------------------+----------------------------+
-        |   points                | points awarded for a       |
-        |                         | correct exercise (no hint) |
-        +-------------------------+----------------------------+
+        +-------------------------+----------------------------+   
 
-``Access:``  instructors, administrators
+``Server Response:`` HTTP status[bad request|unauthorized]
 
-``HTTP Response:`` success/Error message 
 
-``User interface:`` a web interface to manually enter POST Parameter
+                                                   
+UserModule Resources
+^^^^^^^^^^^^^^^^^^^^
+``Endpoint:`` ismoduleproficient
 
-Retrieve exercises data
-^^^^^^^^^^^^^^^^^^^^^^^
-``HTTP method:`` GET 
+``HTTP method:``  POST
 
-``GET parameters:``
+``POST parameters:``
+
         +-------------------------+----------------------------+
         |   Parameters            |   Description              |
         +=========================+============================+
-        |   id                    |  Unique (numeric)          |   
-        |                         |  exercise identifier       |
+        |   key                   | session key                |
         +-------------------------+----------------------------+
-        |   name                  |  name of the exercise      |
-        +-------------------------+----------------------------+
-        |   Covers                |Topic/section covered by the|
-        |                         |      exercise              |
+        |   module                | module name                |
         +-------------------------+----------------------------+
 
-``Access:``  instructors, administrators
+``HTTP Response:`` HTTP status[bad request|unauthorized], user module proficiency status 
 
-``HTTP Response:`` success/Error
+UserExercises Resources
+-----------------------
 
-``User interface:`` a web interface to manually enter POST Parameter
-
-
-Modules
--------
-
-Enter modules data   
-^^^^^^^^^^^^^^^^^^  
-
-``HTTP method:`` POST 
-
-``POST parameters:`` 
-        +-------------------------+----------------------------+
-        |   Parameters            |   Description              |
-        +=========================+============================+
-        |   name                  |  name of the module        |
-        +-------------------------+----------------------------+
-        |   Prerequisites         |                            |
-        +-------------------------+----------------------------+
-        |   topic                 |Topic covered by the        |
-        |                         |      module                |
-        +-------------------------+----------------------------+
-        |  KA exercises           | Reference to all           |   
-        |                         | ka-exercise in the module  | 
-        +-------------------------+----------------------------+  
-        | Proficiency exercise    | Reference to all           |  
-        |                         | proficiency exercise in    |  
-        |                         | the module                 |  
-        +-------------------------+----------------------------+  
-        | Other exercises	  | Reference to all any other | 
-        |                         | exercises in the module    |   
-        +-------------------------+----------------------------+  
-        | Proficiency score       | Rules to determine student |   
-        |                         | proficiency                | 
-        +-------------------------+----------------------------+  
-
-``Access:`` instructors, administrators
-
-``HTTP Response:`` Success/Error message
-
-``User interface:`` a web interface to manually enter POST Parameter
-
-Update modules data
-^^^^^^^^^^^^^^^^^^^  
-Same as enter modules data.  
-
-Retrieve module data
-^^^^^^^^^^^^^^^^^^^^ 
-
-``HTTP Method:``  GET
-
-``GET Parameter:``   
-        +-------------------------+----------------------------+
-        |   Parameters            |   Description              |
-        +=========================+============================+
-        |   id                    |  Unique (numeric)          |
-        |                         |  exercise identifier       |
-        +-------------------------+----------------------------+
-        |   name                  |  name of the module        |
-        +-------------------------+----------------------------+
-        |   topic                 |  Topic covered by the      |
-        |                         |      module                |
-        +-------------------------+----------------------------+  
-
-``Access:`` all
-
-``HTTP Response:`` module data
-
-``User interface:`` a web interface to display modules. The interface should allow the user to filter the result based on GET Parameter filters 
-
-
-Student-exercises logs
-----------------------
-
-Enter student-exercise logs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+userexercise logs (KA exercises)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
 ``HTTP method:`` POST
 
 ``POST Parameters:``  
+
         +-------------------------+----------------------------+
         |   Parameters            |   Description              |
         +=========================+============================+
-        |   Students	          |  Reference to the student  |   
+        |   key  	          |  session key               |   
         +-------------------------+----------------------------+ 
-        |   Exercise	          |  Reference to exercise     |   
-        +-------------------------+----------------------------+  
-        |   Attempt number	  |  Counter for how many time | 
+        |   exercise	          |  exercise name             |   
+        +-------------------------+----------------------------
+        |   module                | module name                |
+        +-------------------------+----------------------------+
+        |   attempt_number	  |  Counter for how many time | 
         |                         |  the exercise has been     | 
         |                         |  attempted                 |  
         +-------------------------+----------------------------+
-        |  [Attempt content]	  |  [Student answer]          |   
+        |  attempt_content	  |  Student answer            |   
         +-------------------------+----------------------------+  
-        |  Correct                |                            |
+        |  complete               |  1 if the answer is correct|
+        |                         |  0 otherwise               |
         +-------------------------+----------------------------+  
-        |  Hints number	          | Counter for how many time  |  
+        |  count_hints	          | Counter for how many time  |  
         |                         | hints were use             |  
         +-------------------------+----------------------------+ 
-        |  Time	                  | Time taken to complete     | 
+        |  time_taken             | Time taken to complete     | 
         |                         |  the exercise              |   
         +-------------------------+----------------------------+   
- 
-``Access:`` student
+        |   remote_adrr           | IP address                 |
+        +-------------------------+----------------------------+
 
-``Action triggered:`` check if student meet exercise and module.s proficiency requirements. Update proficiency field accordingly. 
 
-``HTTP Response:`` success and proficiency status.  Error message
+``Action triggered:`` Update proficiency field accordingly. 
 
-``User interface:`` No, this action is triggered automatically upon completion of an exercise.
+``HTTP Response:`` HTTP status[bad request|unauthorized], proficiency status.
 
-Retrieve "individual" student log
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     
 
-``HTTP method:`` GET
+userexercise logs (JSAV exercises)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``HTTP method:`` POST
 
-``GET parameters:`` 
+``POST Parameters:``
+
         +-------------------------+----------------------------+
         |   Parameters            |   Description              |
         +=========================+============================+
-        |   name                  |  student's name            |
+        |   key                   |  session key               |
+        +-------------------------+----------------------------+
+        |   exercise              |  exercise name             |
+        +-------------------------+----------------------------+
+        |   uiid                  |  exercise unique id        |
+        +-------------------------+----------------------------+
+        |   module                | module name                |
+        +-------------------------+----------------------------+
+        |   tstamp                | time the exercise was done |
+        +-------------------------+----------------------------+
+        |  score                  |  number of correct steps   |
+        +-------------------------+----------------------------+
+        |  total_time             | Time taken to complete     |
+        |                         |  the exercise              |
+        +-------------------------+----------------------------+
+        |   remote_adrr           | IP address                 |
         +-------------------------+----------------------------+
 
 
-``Access:`` student, instructors, administrators
+``Action triggered:`` Update proficiency field accordingly.
 
-``HTTP Response:`` student activity log
-
-``User interface:`` a web interface to display activity logs for currently registered user. A link to this page should be present on every student profile page.
+``HTTP Response:`` HTTP status[bad request|unauthorized], proficiency status.
 
 
-Retrieve "multiple" students logs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Userinterface Resources
+-----------------------
 
-``HTTP method:`` GET
+userinterface logs
+^^^^^^^^^^^^^^^^^^
+``HTTP method:`` POST
 
-``GET parameter:`` 
-        +-------------------------+----------------------------+
-        |   Parameters            |   Description              |
-        +=========================+============================+
-        |   exercise              |  exercise's name           |
-        +-------------------------+----------------------------+
-        |   Topic                 | Topic covered by exercises |  
-        +-------------------------+----------------------------+  
-        |   student               |	student name           |   
-        +-------------------------+----------------------------+   
+``POST Parameters:``
 
-``Access:`` instructors, administrators
-
-``HTTP Response:`` student exercise logs
-
-``User interface:``  a web interface to student.s activity data. The interface should allow user to filter the result based on GET Parameter filters 
-
-Students-modules logs
----------------------
-
-Retrieve students logs
-^^^^^^^^^^^^^^^^^^^^^^   
-
-``HTTP method:`` GET
-
-``GET parameter:``     
         +-------------------------+----------------------------+
         |   Parameters            |   Description              |
         +=========================+============================+
-        |   module                |  module name               |
+        |   key                   |  session key               |
         +-------------------------+----------------------------+
-        |   Topic                 | Topic covered by the module|
+        |   exercise              |  exercise name             |
+        +-------------------------+----------------------------
+        |   module                | module name                |
         +-------------------------+----------------------------+
-        |   student               |     student name           |
+        |   book                  | book name                  |
+        +-------------------------+----------------------------+
+        |   type                  |  type of interaction       |
+        +-------------------------+----------------------------+
+        |  uiid                   |  exercise unique id        |
+        +-------------------------+----------------------------+
+        |  desc                   |  description of the        |
+        |                         |  interaction               |
+        +-------------------------+----------------------------+
+        |   tstamp                | time the exercise was done |
+        +-------------------------+----------------------------+
+        |   remote_adrr           | IP address                 |
         +-------------------------+----------------------------+
 
 
-``Access:`` instructors, administrators
-
-``HTTP Response:`` student.s module logs
-
-``User interface:`` a web interface to display students activity on a module leve;. The interface should allow the user to filter the result based on GET Parameter filters 
-
-
-
+``HTTP Response:`` HTTP status[bad request|unauthorized], starage status.

@@ -21,6 +21,9 @@ var setBlue = function (arr, index) {
 var setGreen = function (arr, index) {
   arr.css(index, {"background-color": "#00FF00" });
 };
+var setWhite = function (arr, index) {
+  arr.css(index, {"background-color": "#fff" });
+};
 
 (function ($) {
   var av = new JSAV("SelsortCON1");
@@ -40,13 +43,13 @@ var setGreen = function (arr, index) {
     av.step();
     if (arr.value(j) > arr.value(bigindex)) {
       av.umsg("Found something bigger, so switch value of bigindex");
-      arr.unhighlight(bigindex);
+      setWhite(arr, bigindex);
       bigindex = j;
       setGreen(arr, bigindex);
       av.step();
     }
     else {
-      arr.unhighlight(j);
+      setWhite(arr, j);
     }
   }
   av.umsg("Now swap the next biggest element into place");
@@ -54,7 +57,7 @@ var setGreen = function (arr, index) {
   arr.swap(bigindex, arr.size() - 1); // swap the two indices
   av.step();
   av.umsg("Done this pass");
-  arr.unhighlight(arr.size() - 1);
+  setWhite(arr, arr.size() - 1);
   arr.css([arr.size() - 1], {"color": LIGHT});
   av.recorded();
 }(jQuery));
@@ -78,13 +81,13 @@ var setGreen = function (arr, index) {
     av.step();
     if (arr.value(j) > arr.value(bigindex)) {
       av.umsg("Found something bigger, so switch value of bigindex");
-      arr.unhighlight(bigindex);
+      setWhite(arr, bigindex);
       bigindex = j;
       setGreen(arr, bigindex);
       av.step();
     }
     else {
-      arr.unhighlight(j);
+      setWhite(arr, j);
     }
   }
   av.umsg("Now swap the next biggest element into place");
@@ -92,7 +95,7 @@ var setGreen = function (arr, index) {
   arr.swap(bigindex, arr.size() - 2); // swap the two indices
   av.step();
   av.umsg("Done this pass");
-  arr.unhighlight(arr.size() - 2);
+  setWhite(arr, arr.size() - 2);
   arr.css([arr.size() - 2], {"color": LIGHT});
   av.recorded();
 }(jQuery));

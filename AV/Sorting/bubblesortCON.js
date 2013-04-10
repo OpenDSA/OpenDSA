@@ -14,8 +14,11 @@ var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
 
 // Convenience function for setting another type of highlight
 // (will be used for showing which elements will be compared during sort)
-var setBlue = function (arr, index) {
-  arr.css(index, {"background-color": "#ddf" });
+var setProcessing = function (arr, index) {
+  arr.addClass(index, "processing");
+};
+var unsetProcessing = function (arr, index) {
+  arr.removeClass(index, "processing");
 };
 
 (function ($) {
@@ -26,9 +29,9 @@ var setBlue = function (arr, index) {
 
   av.umsg("Moving from left to right, compare adjacent elements and swap if the left one is bigger than the right one.");
   av.displayInit();
-  setBlue(arr, 0);
+  setProcessing(arr, 0);
   for (j = 1; j < arr.size(); j++) {
-    setBlue(arr, j);
+    setProcessing(arr, j);
     av.umsg("Compare elements");
     av.step();
     if (arr.value(j - 1) > arr.value(j)) {
@@ -36,9 +39,9 @@ var setBlue = function (arr, index) {
       arr.swap(j - 1, j);
       av.step();
     }
-    arr.unhighlight(j - 1);
+    unsetProcessing(arr, j - 1);
   }
-  arr.unhighlight(j - 1);
+  unsetProcessing(arr, j - 1);
   arr.css([j - 1], {"color": LIGHT});
   av.umsg("Done this pass");
   av.recorded();
@@ -53,9 +56,9 @@ var setBlue = function (arr, index) {
   av.umsg("Moving from left to right, compare adjacent elements and swap if the left one is bigger than the right one.");
   arr.css([arr.size() - 1], {"color": LIGHT});
   av.displayInit();
-  setBlue(arr, 0);
+  setProcessing(arr, 0);
   for (j = 1; j < arr.size() - 1; j++) {
-    setBlue(arr, j);
+    setProcessing(arr, j);
     av.umsg("Compare elements");
     av.step();
     if (arr.value(j - 1) > arr.value(j)) {
@@ -63,9 +66,9 @@ var setBlue = function (arr, index) {
       arr.swap(j - 1, j);
       av.step();
     }
-    arr.unhighlight(j - 1);
+    unsetProcessing(arr, j - 1);
   }
-  arr.unhighlight(j - 1);
+  unsetProcessing(arr, j - 1);
   arr.css([j - 1], {"color": LIGHT});
   av.umsg("Done this pass");
   av.recorded();

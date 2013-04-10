@@ -48,9 +48,9 @@
           arr.swap(j - 1, j);
           jsav.step();
         }
-        arr.unhighlight(j - 1);
+        arr.unhighlightBlue(j - 1);
       }
-      arr.unhighlight(j - 1);
+      arr.unhighlightBlue(j - 1);
       arr.css([j - 1], {"color": LIGHT});
       jsav.umsg("Done this pass");
       jsav.step();
@@ -78,7 +78,7 @@
       jsav.umsg("Starting Bubble Sort");
       jsav.displayInit();
       bubblesort();
-      arr.unhighlight();
+      arr.unhighlightBlue(true);
       jsav.recorded(); // mark the end
     }
   }

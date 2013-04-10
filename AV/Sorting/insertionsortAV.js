@@ -1,6 +1,6 @@
-"use strict";
 /*global alert: true, ODSA */
 (function ($) {
+  "use strict";
   var jsav,   // for JSAV library object
       arr,    // for the JSAV array
       pseudo; // for the pseudocode display
@@ -21,8 +21,11 @@
     alert("Insertion Sort Algorithm Visualization\nWritten by Cliff Shaffer and Nayef Copty\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
 
-  var setBlue = function (index) {
-    arr.css(index, {"background-color": "#ddf" });
+  var setProcessing = function(index) {
+    arr.addClass(index, "processing");
+  };
+  var unsetProcessing = function(index) {
+    arr.removeClass(index, "processing");
   };
 
   // Insertion Sort
@@ -31,10 +34,10 @@
     jsav.umsg("Highlighted yellow records to the left are always sorted. We begin with the record in position 0 in the sorted portion, and we will be moving the record in position 1 (in blue) to the left until it is sorted");
     pseudo.setCurrentLine(0);
     arr.highlight([0]);
-    setBlue(1);
+    setProcessing(1);
     jsav.step();
     for (i = 1; i < arr.size(); i++) { // Insert i'th record
-      setBlue(i);
+      setProcessing(i);
       jsav.umsg("Processing record in position " + i);
       pseudo.setCurrentLine(1);
       jsav.step();
@@ -42,7 +45,7 @@
       pseudo.setCurrentLine(2);
       jsav.step();
       for (j = i; (j > 0) && (arr.value(j) < arr.value(j - 1)); j--) {
-        setBlue(j);
+        setProcessing(j);
         arr.swap(j, j - 1); // swap the two indices
         jsav.umsg("Swap");
         pseudo.setCurrentLine(3);
@@ -58,7 +61,7 @@
   // Execute the "Run" button function
   function runIt() {
     var arrValues = ODSA.AV.processArrayValues();
-    
+
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       ODSA.AV.reset(true);
@@ -73,6 +76,7 @@
       jsav.displayInit();
       inssort();
       arr.unhighlight();
+      unsetProcessing(true);
       jsav.recorded(); // mark the end
     }
   }
