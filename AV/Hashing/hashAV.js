@@ -694,15 +694,14 @@
   }
 
   // Simple hashing for strings
+  //  - inputVal should be a string, however a number in a string is acceptable (e.g. "123")
   function simpleStrings(inputVal) {
     // Check input is a string
-// TODO: Make sure the string is not null, but otherwise accept it
-// This is bugged, because there is no "is" function
-//    if (!is("String", inputVal)) {
-//      error("Please enter a string to hash.");
-//      // Return error
-//      return 1;
-//    }
+    if (inputVal === null) {
+      error("Please enter a value to hash.");
+      // Return error
+      return 1;
+    }
 
     jsav.umsg("Attempting to insert: " + inputVal);
 
@@ -726,19 +725,17 @@
 
     // Return success
     return 0;
-
   }
 
   // Hashing for Strings (Improved)
+  //   - inputVal should be a string, however a number in a string is acceptable (e.g. "123")
   function improvedStrings(inputVal) {
     // Check input is a string
-// TODO: Make sure the string is not null, but otherwise accept it
-// This is bugged, because there is no "is" function
-//    if (!is("String", inputVal)) {
-//      error("Please enter a string to hash.");
-//      // Return error
-//      return 1;
-//    }
+    if (inputVal === null) {
+      error("Please enter a value to hash.");
+      // Return error
+      return 1;
+    }
 
     jsav.umsg("Attempting to insert " + inputVal);
 
