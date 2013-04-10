@@ -1,4 +1,4 @@
-.. This file is part of the OpenDSA eTextbook project. See
+ss.. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
@@ -8,11 +8,11 @@
    :prerequisites:
    :topic: Design Patterns
 
-Design Patterns [Text]
-======================
+Design Patterns [Storyboard]
+============================
 
 At a higher level of abstraction than ADTs
-are abstractions for describing the design of programs --- that is,
+are abstractions for describing the design of programs |---| that is,
 the interactions of objects and classes.
 Experienced software designers learn and reuse patterns
 for combining software components.
@@ -45,7 +45,7 @@ are used in later modules.
 Flyweight
 ---------
 
-The Flyweight design pattern is meant to solve the following problem.
+The Flyweight design pattern is meant to solve the following problem:
 You have an application with many objects.
 Some of these objects are identical in the information that
 they contain, and the role that they play.
@@ -93,8 +93,9 @@ Visitor
 
 Given a tree of objects to describe a page layout,
 we might wish to perform some activity on every node in the tree.
-Section~\ref{BinTravers} discusses tree traversal, which is the
-process of visiting every node in the tree in a defined order.
+Module :numref:`<BinaryTreeTraversal>` discusses tree traversal,
+which is the process of visiting every node in the tree in a defined
+order.
 A simple example for our text composition application might be to
 count the number of nodes in the tree that represents the page.
 At another time, we might wish to print a listing of all the nodes for
@@ -107,7 +108,7 @@ pass in the activity to be performed at each node.
 This organization constitutes the visitor design pattern.
 The visitor design pattern is used in
 Module :numref:`Tree Traversal <BinaryTreeTraversal>` 
-and Module :numref:`<GraphTraversal>`.
+and Module :numref:`Graph Traversal <GraphTraversal>`.
 
 Composite
 ---------
@@ -234,3 +235,8 @@ The visitor design pattern is focused on encapsulating an activity that
 will be performed on all members of a collection so that completely
 different activities can be substituted within a generic method that
 accesses all of the collection members.
+
+.. TODO::
+   :type: Exercise
+
+   Create a battery of summary questions.

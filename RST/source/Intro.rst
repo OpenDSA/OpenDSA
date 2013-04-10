@@ -35,13 +35,19 @@ At this time we have no plans to take any special effort to support
 the non-standard requirements imposed by Internet Explorer.
 
 **Registration and Accounts:**
-To practice with OpenDSA materials, and to tell if you have completed
-an exercise correctly, you do not need to be registered or logged in.
-However, to get credit for completing exercises and modules (if your
-instructor has assigned these materials to you to do for credit),
+This is an open source project, and in keeping with the spirit of our
+commitment to  openness, our materials are not hidden behind a login
+wall.
+If all you want to do is look at modules or exercises
+you do not need to be registered or logged in.
+You can even work an exercise, and the system will let you know if
+you have completed it correctly.
+However, to get credit for completing exercises and modules
+(if your instructor has assigned these materials to you to do for
+credit),
 or if you just want to have the system remember from session to
-session what exercises you have completed, you will need to be logged
-in.
+session what exercises you have completed,
+you will need to be logged in.
 
 You register an account by clicking on the link in the
 upper-right corner of any OpenDSA page.
@@ -51,6 +57,8 @@ account.
 If you are doing this for credit, then you should use something that
 will be meaningful to your instructor, such as your name or
 University ID.
+Typically your instructor will tell you at the start what convention
+you should use for your login ID.
 
 After you register, you will need to then click the "Login" button.
 Once you log in, you should see your account name in the upper-right
@@ -61,9 +69,9 @@ be able to use the same computer to also access the OpenDSA materials
 under another account.
 
 **Overview of major elements:**
-An OpenDSA module contains a number of interactive components intended
-to help you learn the material, in addition to regular text and
-graphics.
+An OpenDSA module contains a number of interactive components
+intended to help you learn the material, in addition to regular text
+and graphics.
 There are short slideshows that help explain steps of an
 algorithm,
 there are full Algorithm Visualizations that go through a complete
@@ -75,27 +83,32 @@ calculators, and there are other interactive exercises.
 **Getting credit:**
 You can get completion credit for the following:
 Going through a slideshow, completing a proficiency exercise,
-completing a question set, or fulfilling the the requirements of the a
+completing a question set, or fulfilling the requirements of the a
 calculator or other exercise.
 You must be logged in for the system to remember your credit, but you
 will usually receive visual feedback if you have completed the
-exercise.
-If you go through the exercise and *then* log in, the system should
-still register your credit.
+exercise even when you are not logged in.
+If you go through the exercise and *then* log in, the system will
+hopefully retroactively register your credit (but don't tempt fate!).
 
 **Seeing your credit and seeing your current score:**
-Most exercises or slideshows will give you visual confirmation when
-you have completed it.
+Usually an exercise or slideshow will give you visual confirmation
+when you have completed it.
 If you complete all exercises and slideshows for a module, the title
-line will show "Module Complete" in green.
+line should show "Module Complete" in green.
 Also, the table of contents page should show a green checkmark beside
 the title of completed modules.
 You have to be logged in to see information about previous work.
 
 If you are logged in, when you click on your ID in the upper right
-corner of the page you will see a list of exercises, your current
-score for the exercise, and the total points possible for the
-exercise. At the bottom of the page will be your current point total.
+corner of the page you will see the "student view" for your progress.
+This includes a list of modules.
+Initially, this might be in closed form, in which case just click on
+an item to expand it.
+Under each module (when in open form) will be a list of exercises,
+your current score for each exercise, and the total points possible
+for the exercise.
+At the bottom of the page will be your current point total.
 
 **Slideshows:**
 Slideshows are controlled by the buttons at the top.
@@ -106,43 +119,44 @@ step at a time).
 A green checkmark should show up on the right when you get credit.
 
 **Visualizations:**
-While the slideshows are used to demonstrate a part of an algorithm on
-a fixed input, the visualizations let you run the whole algorithm on
+The slideshows demonstrate a part of an algorithm on a fixed input.
+The visualizations let you run the whole algorithm, typically on
 input that you can choose.
-Generally these have some parameters that you can set (such as number
-of elements in an input array, and the values of the input).
+The visualizations will have some parameters that you can set
+(such as number of elements in an input array,
+and the values of the array elements).
 The "Run" button will start the visualization.
-It will also restart the visualization with new data values if you did
-not specify your own input.
+It will also restart the visualization with new, randomly selected
+data values if you did not specify your own input.
 "Reset" will typically clear all of the input fields and restart the
 visualization.
 Many visualizations have a "Help" button to give detailed information
 about that particular visualization.
 
-**Question Sets:** Most modules finish with a collection of multiple
+**Question Sets:**
+Most modules finish with a collection of multiple
 choice, True/False, or type-a-number questions.
-To get credit for one of these exercises, you will have to correctly
+To get credit for one of these exercises, you will have to
 answer some number of questions correctly (the exact number required
 is different for each question set).
-Once you have credit, the button above the exercise turns green.
+Once you have credit, the "hide/show" button above the exercise turns
+green.
 You can still get more questions at that point if you would like more
 practice.
 There is also a "streak" bar that shows your current progress.
 If you answer a question wrong, your progress toward the completion
 streak threshold will go backwards by one point. (And you will still
-have to answer the question before you can continue!)
-Note that once you have been given credit for the exercise, you cannot
-lose it by answering more questions, even if you get some wrong.
-
-Once you have credit for the question set, the "hide/show"
-button above the exercise will turn green.
+have to answer that question before you can continue!)
+Note that once you have been given credit for the question set,
+you cannot lose it by answering more questions, even if you get some
+wrong.
 
 The multiple choice question sets work by randomly selecting from the
 questions in that set.
 It is possible that you will see the same question twice in that set,
 and possibly even twice in a row.
 
-Some of the questions have "hints" that you can get to help you
+The questions will have "hints" that you can get to help you
 figure out the answer.
 If you take a hint, you will not get credit for that question toward
 completing the exercise.
@@ -160,7 +174,7 @@ Proficiency exercises are graded on a point system.
 Each (logical) step that you do correctly in the proficiency exercise
 gives you a point.
 You need to get a set fraction of the total possible points to
-complete the exercise.
+complete the exercise (typically 90% of the possible points).
 Generally, if you make a mistake on a proficiency exercise, it will
 tell you that you did the step wrong and correct it for you so that
 you can continue on.
@@ -178,10 +192,11 @@ steps in the sorting algorithm visualizations), or whether the arrays
 show values or height bars.
 
 **Enlarging Equations:** Math is rendered using the MathJAX library,
-which gives you a lot of options on how you can see things. Most
-importantly, if you right click on any math equation, you will get a
-context menu that includes "Math Settings". This in turn has a
-sub-menu named "Zoom Trigger". With that, you can set zoom to
-"hover" or "click". From then on, hovering or clicking
-on any equation will make it larger. This can really help with reading
-some of the equations.
+which gives you a lot of options on how you can see things.
+Most importantly, if you right click on any math equation, you will
+get a context menu that includes "Math Settings".
+This in turn has a sub-menu named "Zoom Trigger".
+With that, you can set zoom to "hover" or "click".
+From then on, hovering or clicking on any equation will make it
+larger.
+This can really help with reading some of the equations.

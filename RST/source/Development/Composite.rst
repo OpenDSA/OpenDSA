@@ -11,16 +11,12 @@
 Composite Design Pattern [Raw]
 ==============================
 
-.. TODO::
-   :type: Text
-
-   Deal with the composite material from the book's Intro chapter.
-
 There is another approach that we can take to represent separate leaf
 and internal nodes, also using a virtual base class and separate node
 classes for the two types.
 This is to implement nodes using the
-<dfn>composite design pattern</dfn>.
+<dfn>composite design pattern</dfn> described in
+Module :numref:`<DesignPatterns>`.
 This approach is noticeably different from the one of
 Figure <ODSAref "VarNodeI" /> in that the node classes themselves
 implement the functionality of <code>traverse</code>.
@@ -114,7 +110,7 @@ problem.
 A disadvantage is that the traversal operation must not be called on a
 NULL pointer, because there is no object to catch the call.
 This problem could be avoided by using a flyweight
-(see Module <ODSAref "DesignPatterns" />) to implement empty nodes.
+(see Module :numref:`<DesignPatterns>`) to implement empty nodes.
 
 Typically, the version of Figure <ODSAref "VarNodeI" /> would be
 preferred in this example if <code>traverse</code> is a member function of

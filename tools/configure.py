@@ -74,6 +74,9 @@ todo_count = 0
 
 rst_header = '''\
 .. _%(mod_name)s:
+.. |--| unicode:: U+2013   .. en dash
+.. |---| unicode:: U+2014  .. em dash, trimming surrounding whitespace
+   :trim:
 
 .. raw:: html
 

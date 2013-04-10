@@ -8,16 +8,17 @@
    :prerequisites:
    :topic: Abstract Data Types
 
-Abstract Data Types [Text]
-==========================
+.. odsalink:: AV/Development/ADTCON.css
 
-The previous section used the terms "data item" and
-"data structure" without properly defining them.
-This section presents terminology and motivates the design
-process embodied in the three-step approach to selecting a data
-structure.
-This motivation stems from the need to manage the tremendous
-complexity of computer programs.
+Abstract Data Types [Storyboard]
+================================
+
+This module presents terminology and definitions related to techniques
+for managing the tremendouscomplexity of computer programs.
+As part of this we will define the fundamental but somewhat slippery
+terms "data item" and "data structure".
+We will begin with the basic elements on which data structures are
+built.
 
 A :dfn:`type` is a collection of values.
 For example, the Boolean type consists of the values ``true`` and
@@ -32,13 +33,12 @@ Such a record is an example of an :dfn:`aggregate type` or
 :dfn:`composite type`.
 A :dfn:`data item` is a piece of information
 or a record whose value is drawn from a type.
-A data item is said to be a
-:dfn:`member` of a type.
+A data item is said to be a :dfn:`member` of a type.
 
-A :dfn:`data type` is a type
-together with a collection of operations to manipulate the type.
-For example, an integer variable is a member of
-the integer data type.
+A :dfn:`data type` is a type together with a collection of operations
+to manipulate the type.
+For example, an integer variable is a member of the integer data
+type.
 Addition is an example of an operation on the integer data type.
 
 A distinction should be made between the
@@ -49,7 +49,12 @@ for the list data type:
 the linked list and the array-based list.
 The list data type can therefore be implemented using a linked list or
 an array.
-Even the term "array" is ambiguous in that it can refer either
+But we should also realize that an implementation in one context might
+be a data type in another.
+A list might be used to help implement a graph data structure
+(as described in Module :numref:`<GraphImpl>`).
+
+As another example, the term "array" could refer either
 to a data type or an implementation.
 "Array" is commonly used in computer programming to mean a
 contiguous block of memory locations,
@@ -58,14 +63,12 @@ By this meaning, an array is a physical data structure.
 However, array can also mean a logical data type composed of a
 (typically homogeneous) collection of data items, with each data item
 identified by an index number.
-It is possible to implement arrays in many different ways.
+It is possible to implement arrays in many different ways besides as a
+block of contiguous memory location.
 For example, Module :numref:`<SparseMatrix>` describes the data
 structure used to implement a sparse matrix, a large
 two-dimensional array that stores only a relatively few non-zero
 values.
-This implementation is quite different from the physical
-representation of an array as
-contiguous memory locations.
 
 An :dfn:`abstract data type` (ADT) is the realization of a data type
 as a software component.
@@ -81,7 +84,7 @@ A :dfn:`data structure` is the implementation for an ADT.
 In an object-oriented language,
 an ADT and its implementation together make up a
 :dfn:`class`.
-Each operation associated with the~ADT is implemented by a
+Each operation associated with the ADT is implemented by a
 :dfn:`member function` or :dfn:`method`.
 The variables that define the space required by a data item are
 referred to as :dfn:`data members`.
@@ -95,37 +98,38 @@ The related term  :dfn:`file structure`
 often refers to the organization of data on peripheral storage, such
 as a disk drive or CD.
 
+.. topic:: Example
 
-  **Example:**
-  The mathematical concept of an integer, along with operations
-  that manipulate integers, form a data type.
-  The ``int`` variable type is a physical representation of
-  the abstract integer.
-  The ``int`` variable type, along with the operations that act on an 
-  ``int`` variable, form an ADT.
-  Unfortunately, the ``int`` implementation is not
-  completely true to the abstract integer, as there are limitations on
-  the range of values an ``int`` variable can store.
-  If these limitations prove unacceptable, then some other
-  representation for the ADT "integer" must be devised, and a new
-  implementation must be used for the associated operations.
+   The mathematical concept of an integer, along with operations
+   that manipulate integers, form a data type.
+   The ``int`` variable type is a physical representation of
+   the abstract integer.
+   The ``int`` variable type, along with the operations that act on an 
+   ``int`` variable, form an ADT.
+   Unfortunately, the ``int`` implementation is not
+   completely true to the abstract integer, as there are limitations on
+   the range of values an ``int`` variable can store.
+   If these limitations prove unacceptable, then some other
+   representation for the ADT "integer" must be devised, and a new
+   implementation must be used for the associated operations.
 
-  **Example:**
-  An ADT for a list of integers might specify the following operations:
+.. topic:: Example
 
-  #. Insert a new integer at a particular position in the list.
+   An ADT for a list of integers might specify the following operations:
 
-  #. Return ``True`` if the list is empty.
+   #. Insert a new integer at a particular position in the list.
 
-  #. Reinitialize the list.
+   #. Return ``True`` if the list is empty.
 
-  #. Return the number of integers currently in the list.
+   #. Reinitialize the list.
 
-  #. Delete the integer at a particular position in the list.
+   #. Return the number of integers currently in the list.
 
-  From this description, the input and output of each operation should
-  be clear, but the implementation for lists has not been
-  specified.
+   #. Delete the integer at a particular position in the list.
+
+   From this description, the input and output of each operation should
+   be clear, but the implementation for lists has not been
+   specified.
 
 One application that makes use of some ADT might use particular
 member functions of that ADT more than a second application, or the
@@ -134,7 +138,8 @@ various operations.
 These differences in the requirements of applications are the reason
 why a given ADT might be supported by more than one implementation.
 
-   **Example:**
+.. topic:: Example
+
    Two popular implementations for large disk-based
    database applications are hashing (Module :numref:`<HashIntro>`)
    and the B+-tree (Module :numref:`<BTree>`).
@@ -156,12 +161,13 @@ why a given ADT might be supported by more than one implementation.
 The concept of an ADT can help us to focus on key issues even in
 non-computing applications.
 
-   **Example:**
+.. topic:: Example
+
    When operating a car, the primary activities are steering,
    accelerating, and braking.
    On nearly all passenger cars, you steer by turning the steering
-   wheel, accelerate by pushing the gas~pedal, and brake by pushing
-   the brake~pedal.
+   wheel, accelerate by pushing the gas pedal, and brake by pushing
+   the brake pedal.
    This design for cars can be viewed as an ADT with operations
    "steer", "accelerate", and "brake".
    Two cars might implement these operations in radically different
@@ -191,7 +197,8 @@ forming a hierarchy of concepts and labels.
 This hierarchy of labels allows us to focus on
 important issues while ignoring unnecessary details.
 
-   **Example:**
+.. topic:: Example
+
    We apply the label "hard drive" to a collection of
    hardware that manipulates data on a particular type of
    storage device, and we apply the label "CPU" to the hardware that
@@ -212,7 +219,8 @@ concern for the data structure's implementation.
 Without this ability to simplify your thinking about a complex
 program, you would have no hope of understanding or implementing it.
 
-   **Example:**
+.. topic:: Example
+
    Consider the design for a relatively simple database system stored
    on disk.
    Typically, records on disk in such a program are accessed through a
@@ -256,25 +264,17 @@ implementations for a given data structure.
 Other sections use the logical ADT for the data structure in the
 context of a higher-level task.
 
-.. TODO::
-   :type: Figure
-
-   Deal with this figure properly, ideally with a JSAV diagram.
-
-.. _DataType:
-
-.. figure:: Images/GraphDef.png
-   :width: 500
-   :align: center
-   :figwidth: 90%
-   :alt: Data items, abstract data types, and data structures
+.. inlineav:: ADTCON1 dgm
+   :target: DataType
+   :align: left
 
    The relationship between data items, abstract data types, and data
    structures.
    The ADT defines the logical form of the data type.
    The data structure implements the physical form of the data type.
 
-   **Example:**
+.. topic:: Example
+
    A particular programming environment might provide a library that
    includes a list class.
    The logical form of the list is defined by the public 
@@ -284,3 +284,5 @@ context of a higher-level task.
    Within the class, a variety of physical implementations for lists
    is possible.
    Several are described in Module :numref:`<ListIntro>`.
+
+.. odsascript:: AV/Development/ADTCON.js

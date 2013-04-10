@@ -75,7 +75,7 @@ from Module :numref:`<Quicksort>` and an optimized version
 that does not partition sublists below length nine (with Insertion
 Sort performed at the end).
 The first Heapsort version uses the class definitions from
-Module :numref:`<Heapstub>`.
+Module :numref:`<Heaps>`.
 The second version removes all the class definitions and operates
 directly on the array using inlined code for all access functions.
 
