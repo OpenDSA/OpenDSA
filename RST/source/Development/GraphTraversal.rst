@@ -74,7 +74,7 @@ Depth-First Search
 ------------------
 
 .. TODO::
-   type: Slideshow
+   :type: Slideshow
 
    Replace this description with a slideshow.
 

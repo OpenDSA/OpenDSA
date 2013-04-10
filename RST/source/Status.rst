@@ -11,7 +11,10 @@
 OpenDSA Content Status
 ======================
 
-This status update was written March 28, 2013.
+This status update was last updated on April 8, 2013.
+
+Status Report
+-------------
 
 OpenDSA is rapidly evolving and adding new content.
 At the present time, the chapters on Sorting and Hashing are
@@ -34,6 +37,9 @@ binary trees, general trees (with Union/FIND), sorting,
 searching (including hashing),
 file processing basics (including external sorting),
 indexing (including B-trees), and graphs.
+
+Determining Individual Module Status
+------------------------------------
 
 As a quick guide on the status of the materials, modules that are not
 considered complete will show a suffix in the table of contents,
@@ -63,3 +69,24 @@ applet) might be included to indicate how a visualization is intended.
 and various visualizations and exercises. But the content needs to be
 polished, and additional visualization support or exercise support
 might still be needed.
+
+If the module has no status suffix, then it is considered in usable
+form.
+
+Configuring Your Own Book
+-------------------------
+
+If you look in the "Books" directory, you might see that this is only
+one of several versions of the OpenDSA materials.
+The "config" directory contains various configuration files that
+control the modules in a book, the exercises in a module, and the
+points awarded for completing an exercise.
+You can create your own book by writing a new configuration file and
+compiling it. Look at the Makefile for guidance on how to compile a
+new configuration file.
+
+At some point in the future, we will make a more user friendly way to
+create OpenDSA books.
+For now, if you are an instructor who would like to have a custom book
+set up for use with your class, feel free to contact the OpenDSA
+project team for help.

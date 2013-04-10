@@ -8,18 +8,20 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Problems, Algorithms, and Programs [Text]
-=========================================
+Problems, Algorithms, and Programs [Storyboard]
+===============================================
 
 Programmers commonly deal with problems, algorithms, and
 computer programs.
 These are three distinct concepts.
 
-**Problems:**
+Problems
+--------
+
 As your intuition would suggest, a :dfn:`problem` is
 a task to be performed.
 It is best thought of in terms of inputs and matching outputs.
-A~problem definition should not include any constraints on
+A problem definition should not include any constraints on
 *how* the problem is to be solved.
 The solution method should be developed only after the problem is
 precisely defined and thoroughly understood.
@@ -61,7 +63,7 @@ the same command is given.
 However, there is obviously more to the input for the date program
 than the command that you type to run the program.
 The date program computes a function.
-In~other words, on any particular day there can only be a single
+In other words, on any particular day there can only be a single
 answer returned by a properly running date program on a completely
 specified input.
 For all computer programs, the output is completely determined by the
@@ -73,7 +75,9 @@ process beyond the user's control).
 The relationship between programs and functions is explored further in
 Module :numref:`<Computability>`.
 
-**Algorithms:**
+Algorithms
+----------
+
 An :dfn:`algorithm` is a method or a process followed to
 solve a problem.
 If the problem is viewed as a function, then an algorithm is an
@@ -82,16 +86,17 @@ that transforms an input to the corresponding output.
 A problem can be solved by many different algorithms.
 A given algorithm solves only one
 problem (i.e., computes a particular function).
-This book covers many problems, and for several of these
+OpenDSA modules cover many problems, and for several of these
 problems we will see more than one algorithm.
-For the important problem of sorting we will look at nearly
-a dozen algorithms!
+For the important problem of sorting there are over a dozen commonly
+known algorithms!
 
 The advantage of knowing several solutions to a problem is that
-solution :math:`A` might be more efficient than solution :math:`B` for
-a specific variation of the problem, or for a specific class of inputs
-to the problem, while solution :math:`B` might be more efficient than
-:math:`A` for another variation or class of inputs.
+solution :math:`\mathbf{A}` might be more efficient than solution
+:math:`\mathbf{B}` for a specific variation of the problem, or for a
+specific class of inputs to the problem, while solution
+:math:`\mathbf{B}` might be more efficient than 
+:math:`\mathbf{A}` for another variation or class of inputs.
 For example, one sorting algorithm might be the best
 for sorting a small collection of integers (which is important if you
 need to do this many times).
@@ -149,12 +154,14 @@ of the following properties.
 #. It must *terminate*.
    In other words, it may not go into an infinite loop.
 
-**Programs:**
+Programs
+--------
+
 We often think of a :dfn:`computer program` as an
 instance, or concrete representation, of an algorithm in some
 programming language.
-In~this book, nearly all of the algorithms are presented in terms of
-programs, or parts of programs.
+Algorithms are usually presented in terms of programs,
+or parts of programs.
 Naturally, there are many programs that are instances of the same
 algorithm, because any modern computer programming language can be
 used to implement the same collection of algorithms (although some
@@ -183,3 +190,8 @@ Algorithms must be correct, of finite length, and must terminate
 for all inputs.
 A :dfn:`program` is an instantiation of an algorithm
 in a programming language.
+
+.. TODO::
+   :type: Exercise
+
+   Create a battery of summary questions.
