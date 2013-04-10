@@ -93,7 +93,7 @@ search.
 When weights are added, BFS will not give the correct answer.
 
 .. TODO::
-   type: Slideshow
+   :type: Slideshow
 
    Provide a slideshow to demonstrate the following.
 
@@ -165,7 +165,7 @@ follows:
    :tag: MinVertex
 
 .. TODO::
-   :type: CODE
+   :type: Code
 
    Why does the code look for an unvisited value first?
    Is there an easier way?
