@@ -198,7 +198,7 @@ therefore is reliable within the proof context.
 Using the induction hypothesis it do work is exactly the same as using
 a recursive call to do work.
 
-.. #SumIEx_
+.. :SumIEx_
 
 .. topic:: Example
 
@@ -254,7 +254,7 @@ From here, it is simple algebra to prove that
 :math:`\mathbf{S}(n-1) + n` equals the 
 right-hand side of the original theorem.
 
-.. #nOdds_
+.. :nOdds_
 
 .. topic:: Example
 
@@ -300,7 +300,7 @@ right-hand side of the original theorem.
 
       \sum_{i=1}^n (2i - 1) = n^2.
 
-.. #FactRecurProof_
+.. :FactRecurProof_
 
 .. topic:: Example
 
@@ -331,7 +331,7 @@ right-hand side of the original theorem.
    equations.
    It also illustrates a more flexible use of base cases.
 
-   .. #ThmStamps_
+   .. :ThmStamps_
 
    **Theorem:**
    2 cent and 5 cent stamps can be used to form any value
@@ -387,26 +387,27 @@ It also illustrates a standard technique of induction proof where we
 take :math:`n` objects and remove some object to use the
 induction hypothesis.
 
+.. _TwoColor:
+
+.. figure:: Images/TwoColor.png
+   :width: 400
+   :align: center
+   :figwidth: 90%
+   :alt: A two-coloring for three lines in the plane
+
+   A two-coloring for the regions formed by three lines in the plane.
+
 .. topic:: Example
 
    Define a :dfn:`two-coloring` for a
    set of regions as a way of assigning one of two colors to each region
    such that no two regions sharing a side have the same color.
    For example, a chessboard is two-colored.
-   Figure :numref:`<TwoColor>` shows a two-coloring for the plane with
+   Figure :num:`Figure #TwoColor` shows a two-coloring for the plane with
    three lines.
    We will assume that the two colors to be used are black and white.
 
-   \begin{figure}
-   \pdffig{TwoColor}
-
-   \capt{4.5in}{A two-coloring for three lines in the plane}
-   {A two-coloring for the regions formed by three lines in the
-   plane.}{TwoColor}
-   \smallskip
-   \end{figure}
-
-   .. #ThmRegion_
+   .. :ThmRegion_
 
    **Theorem:**
    The set of regions formed by :math:`n` infinite lines in the plane

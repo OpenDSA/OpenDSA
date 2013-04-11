@@ -9,7 +9,7 @@
    :topic: Math Background
 
 Estimation [Text]
-================
+=================
 
 One of the most useful life skills that you can gain from your
 computer science training is the ability to perform quick estimates.

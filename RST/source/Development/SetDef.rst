@@ -18,138 +18,154 @@ when describing and implementing algorithms because the abstractions
 associated with sets often help to clarify and simplify algorithm
 design.
 
-A \defit{set} is a collection of distinguishable
-\defit{members} or \defit{elements}.\index{element}
+A :dfn:`set` is a collection of distinguishable
+:dfn:`members` or :dfn:`elements`.
 The members are typically drawn from some larger population known as
-the \defit{base type}.
-Each member of a set is either a \defit{primitive element} of the
+the :dfn:`base type`.
+Each member of a set is either a :dfn:`primitive element` of the
 base type or is a set itself.
 There is no concept of duplication in a set.
 Each value from the base type is either in the set or not in the set.
-For example, a set named \cvar{P} might consist of the three
-integers~7, 11, and~42.
-In this case, \cvar{P}'s members are~7, 11, and~42, and the base type is
-integer.
+For example, a set named :math:`\mathbf{P}` might consist of the three
+integers 7, 11, and 42.
+In this case, :math:`\mathbf{P}`'s members are 7, 11, and 42, and the
+base type is integer.
 
-\begin{mytable}
-\begin{center}
+.. _SetNotation:
 
-{\sffamily
-\begin{tabular}{l|l}
-\{1, 4\}& A set composed of the members 1 and 4\\
-\{\(\mathsf{x}\, |\, \mathsf{x}\) is a positive integer\}&
-	A set definition using a \defit{set former}\\
-&\qquad Example: the set of all positive integers\\
-\(\mathsf{x} \in \cvar{P}\)&\(\mathsf{x}\) is a member of
-	set~\cvar{P}\\
-\(\mathsf{x} \notin \cvar{P}\)&\(\mathsf{x}\) is not a member of
-	set~\cvar{P}\\
-\(\emptyset\)&The null or empty set\\
-\(|\cvar{P}|\)& Cardinality: size of set~\cvar{P}\\
-&\qquad or number of members for set~\cvar{P}\\
-\(\cvar{P}\,\subseteq\,\cvar{Q}\),
-	\(\cvar{Q}\,\supseteq\,\cvar{P}\)&
-	Set~\cvar{P} is included in set~\cvar{Q},\\
-&\qquad set~\cvar{P} is a subset\index{set!subset, superset} of set~\cvar{Q},\\
-&\qquad set~\cvar{Q} is a superset\index{set!subset, superset} of set~\cvar{P}\\
-\(\cvar{P}\,\cup\,\cvar{Q}\)
-	&Set Union\index{set!union, intersection, difference}:\\
-&\qquad all elements appearing in \cvar{P} OR \cvar{Q}\\
-\(\cvar{P}\,\cap\,\cvar{Q}\)
-	&Set Intersection\index{set!union, intersection, difference}:\\
-&\qquad all elements appearing in \cvar{P} AND \cvar{Q}\\
-\(\cvar{P}\,-\,\cvar{Q}\)
-	&Set difference\index{set!union, intersection, difference}:\\
-&\qquad all elements of set~\cvar{P} NOT in set~\cvar{Q}\\
-\end{tabular}
-}
-\end{center}
+.. figure:: Images/PtrSwap.png
+   :width: 1
+   :align: center
+   :figwidth: 90%
 
-\capt{4.5in}{Set notation}{Set notation.}{SetNotation}
-\end{mytable}
+   SetNotation
 
-Figure~\ref{SetNotation} shows the symbols commonly used to express sets
+.. math::
+
+   \begin{array}{l|l}
+   \{1, 4\}& \mbox{A set composed of the members 1 and 4}\\
+   \{\mathsf{x}\, |\, \mathsf{x}\ \mbox{is a positive integer}\}&
+	\mbox{A set definition using a set former}\\
+   &\qquad \mbox{Example: the set of all positive integers}\\
+   \mathsf{x} \in \mathbf{P}&\mathsf{x}\ \mbox{is a member of set}\ \mathbf{P}\\
+   \mathsf{x} \notin \mathbf{P}&\mathsf{x}\ \mbox{is not a member of set}\ \mathbf{P}\\
+   \emptyset&\mbox{The null or empty set}\\
+   |\mathbf{P}|& \mbox{Cardinality: size of set}\ \mathbf{P}\\
+   &\qquad \mbox{or number of members for set}\ \mathbf{P}\\
+   \mathbf{P}\,\subseteq\,\mathbf{Q},
+	\mathbf{Q}\,\supseteq\,\mathbf{P}&
+	\mbox{Set}\ \mathbf{P}\ \mbox{is included in set}\ \mathbf{Q},\\
+   &\qquad \mbox{set}\ \mathbf{P}\ \mbox{is a subset of set}\ \mathbf{Q},\\
+   &\qquad \mbox{set}\ \mathbf{Q}\ \mbox{is a superset of set}\ \mathbf{P}\\
+   \mathbf{P}\,\cup\,\mathbf{Q}
+	&\mbox{Set Union:}\\
+   &\qquad mbox{all elements appearing in}\ \mathbf{P}\ \mbox{OR}\ \mathbf{Q}\\
+   \mathbf{P}\,\cap\,\mathbf{Q}
+	&\mbox{Set Intersection:}\\
+   &\qquad \mbox{all elements appearing in}\ \mbox{P}\ \mbox{AND}\ \mathbf{Q}\\
+   \mathbf{P}\,-\,\mathbf{Q}
+	&\mbox{Set difference:}\\
+   &\qquad \mbox{all elements of set}\ \mathbf{P}\ \mbox{NOT in set}\ \mathbf{Q}\\
+   \end{array}
+
+Figure :num:`#SetNotation` shows the symbols commonly used to express sets
 and their relationships.
 Here are some examples of this notation in use.
-First define two sets, \cvar{P} and \cvar{Q}.
-\[ \cvar{P} = \{2, 3, 5\}, \qquad \cvar{Q} = \{5, 10\}. \]
-\noindent \(|\cvar{P}| = 3\)  (because \cvar{P} has three members) and
-\(|\cvar{Q}| = 2\) (because \cvar{Q} has two members).
-The union\index{set!union, intersection, difference}
-of \cvar{P} and \cvar{Q}, written
-\( \cvar{P} \cup \cvar{Q} \), is the set of elements in either~\cvar{P}
-or~\cvar{Q}, which is \{2, 3, 5, 10\}.
-The intersection of \cvar{P} and~\cvar{Q},
-written \( \cvar{P} \cap \cvar{Q} \), is the set of elements that
-appear in both~\cvar{P} and~\cvar{Q}, which is \{5\}.
-The set difference of \cvar{P} and~\cvar{Q},
-written \( \cvar{P} - \cvar{Q} \),
-is the set of elements that occur in \cvar{P} but not in~\cvar{Q}, which
-is \{2,~3\}.
-Note that \( \cvar{P} \cup \cvar{Q} = \cvar{Q} \cup \cvar{P} \) and that
-\( \cvar{P} \cap \cvar{Q} = \cvar{Q} \cap \cvar{P} \), but in general
-\( \cvar{P} - \cvar{Q} \neq \cvar{Q} - \cvar{P} \).
-In this example,
-\( \cvar{Q} - \cvar{P}  = \{10\} \).\index{set!terminology|)}
-Note that the set \( \{4, 3, 5\} \) is indistinguishable from set
-\cvar{P}, because sets have no concept of order.
-Likewise, set \(\{4, 3, 4, 5\}\) is also indistinguishable from 
-\cvar{P}, because sets have no concept of duplicate elements.
+First define two sets, :math:`\mathbf{P}` and :math:`\mathbf{Q}`.
 
-The \defit{powerset} of a set \cvar{S} is the set of all
-possible subsets for \cvar{S}.\index{set!powerset}
-Consider the set \( \cvar{S} = \{ a, b, c \}\).
-The powerset of \cvar{S} is
-\[ \{ \emptyset,\ \{a\},\ \{b\},\ \{c\},\ \{a, b\},
-\ \{a, c\},\ \{b, c\},\ \{a, b, c\}\}.\]
+.. math::
+
+   \mathbf{P} = \{2, 3, 5\}, \qquad \mathbf{Q} = \{5, 10\}.
+
+:math:`|\mathbf{P}| = 3`  (because :math:`\mathbf{P}` has three
+members) and :math:`|\mathbf{Q}| = 2`
+(because :math:`\mathbf{Q}` has two members).
+The union of :math:`\mathbf{P}` and :math:`\mathbf{Q}`, written
+:math:`\mathbf{P} \cup \mathbf{Q}`, is the set of elements in either
+:math:`\mathbf{P}` or :math:`\mathbf{Q}`, which is {2, 3, 5, 10}.
+The intersection of :math:`\mathbf{P}` and :math:`\mathbf{Q}`,
+written :math:`\mathbf{P} \cap \mathbf{Q}`, is the set of elements that
+appear in both :math:`\mathbf{P}` and :math:`\mathbf{Q}`, which is {5}.
+The set difference of :math:\mathbf{P}` and :math:`\mathbf{Q}`,
+written :math:`\mathbf{P} - \mathbf{Q}`,
+is the set of elements that occur in :math:`\mathbf{P}` but not in
+:math:`\mathbf{Q}`, which is {2, 3}.
+Note that
+:math:`\mathbf{P} \cup \mathbf{Q} = \mathbf{Q} \cup \mathbf{P}`
+and that
+:math:`\mathbf{P} \cap \mathbf{Q} = \matbhf{Q} \cap \mathbf{P}`,
+but in general
+:math:`\mathbf{P} - \mathbf{Q} \neq \mathbf{Q} - \mathbf{P}`.
+In this example,
+:math:`\mathbf{Q} - \mathbf{P}  = \{10\}`.
+Note that the set {4, 3, 5} is indistinguishable from set
+:math:`\mathbf{P}`, because sets have no concept of order.
+Likewise, set {4, 3, 4, 5} is also indistinguishable from 
+:math:`\mathbf{P}`, because sets have no concept of duplicate elements.
+
+The :dfn:`powerset` of a set :math:`\mathbf{S}` is the set of all
+possible subsets for :math:`\mathbf{S}`.
+Consider the set :math:`\matbhf{S} = \{ a, b, c \}`.
+The powerset of :math:`\mathbf{S}` is
+
+.. math::
+
+   \{ \emptyset,\ \{a\},\ \{b\},\ \{c\},\ \{a, b\},
+   \ \{a, c\},\ \{b, c\},\ \{a, b, c\}\}.
+
 A collection of elements with no order (like a set), but with
-duplicate-valued elements is called a\index{bag}
-\defit{bag}.\footnote{The object referred to here as a
-bag is sometimes called a \defit{multilist}.\index{multilist}
-But, I~reserve the term multilist for a list that may contain sublists
-(see Section~\ref{Multilists}).}
-To distinguish bags from sets, I~use square brackets [] around
+duplicate-valued elements is called a
+:dfn:`bag`. [#]_
+To distinguish bags from sets, we will use square brackets [] around
 a bag's elements.
 For example, bag [3, 4, 5, 4] is distinct from bag [3, 4, 5],
-while set \(\{3, 4, 5, 4\}\) is indistinguishable from set
-\(\{3, 4, 5\}\).
+while set {3, 4, 5, 4} is indistinguishable from set
+{3, 4, 5}.
 However, bag [3, 4, 5, 4] is indistinguishable from bag
 [3, 4, 4, 5].
 
-A \defit{sequence} is a collection of elements with an order, and
-which may contain duplicate-valued elements.\index{sequence}
-A sequence is also sometimes called a \defit{tuple} or a
-\defit{vector}.\index{tuple}\index{vector}
-In a sequence, there is a 0th element, a 1st element, 2nd element, and 
+A :dfn:`sequence` is a collection of elements with an order, and
+which may contain duplicate-valued elements.
+A sequence is also sometimes called a :dfn:`tuple` or a
+:dfn:`vector`.
+In a sequence, there is a 0th element, a 1st element, 2nd element, and
 so on.
-I~indicate a sequence by using angle brackets \(\langle\rangle\)
-to enclose its elements.
-For example, \(\langle3, 4, 5, 4\rangle\) is a sequence.
-Note that sequence \(\langle3, 5, 4, 4\rangle\) is distinct from
-sequence \(\langle3, 4, 5, 4\rangle\), and both are distinct from
-sequence \(\langle3, 4, 5\rangle\). 
+We will use angle brackets :math:`\langle\rangle` to enclose the
+elements of a sequence.
+For example, :math:`\langle3, 4, 5, 4\rangle` is a sequence.
+Note that sequence :math:`\langle3, 5, 4, 4\rangle` is distinct from
+sequence :math:`\langle3, 4, 5, 4\rangle`, and both are distinct from
+sequence :math:`\langle3, 4, 5\rangle`. 
 
-\index{relation|(}
-A \defit{relation} \(R\) over set \cvar{S} is a set of ordered 
-pairs from \cvar{S}.
-As an example of a relation, if \cvar{S} is \(\{a, b, c\}\), then
-\[\{ \langle a, c\rangle, \langle b, c\rangle, \langle c, b\rangle \}\]
+A :dfn:`relation` :math:`R` over set :math:`\mathbf{S}` is a set of
+ordered pairs from :math:`\mathbf{S}`.
+As an example of a relation, if :math:`\mathbf{S}` is
+:math:`\{a, b, c\}`, then
+
+.. math::
+
+   \{ \langle a, c\rangle, \langle b, c\rangle, \langle c, b\rangle \}
+
 is a relation, and
-\[\{ \langle a, a\rangle, \langle a, c\rangle, \langle b, b\rangle,
-\langle b, c\rangle, \langle c, c\rangle \}\]
-is a different relation.
-If tuple \(\langle x, y\rangle\) is in relation \(R\), we may use the
-infix notation \(xRy\).
-We often use relations such as the less than operator (\(<\)) on the
-natural numbers, which includes ordered pairs such as
-\(\langle1, 3\rangle\) and 
-\(\langle2, 23\rangle\), but not \(\langle3, 2\rangle\) or
-\(\langle2, 2\rangle\).
-Rather than writing the relationship in terms of ordered pairs, we
-typically use an infix notation for such relations, writing \(1<3\).
 
-Define the properties of relations as follows, with \(R\) a
-binary relation over set~\cvar{S}.
+.. math::
+
+   \{ \langle a, a\rangle, \langle a, c\rangle, \langle b, b\rangle,
+   \langle b, c\rangle, \langle c, c\rangle \}
+
+is a different relation.
+If tuple :math:`\langle x, y\rangle` is in relation :math:`R`, we may
+use the infix notation :math:`xRy`.
+We often use relations such as the less than operator (:math:`<`) on
+the natural numbers, which includes ordered pairs such as
+:math:`\langle1, 3\rangle` and 
+:math:`\langle2, 23\rangle`, but not :math:`\langle3, 2\rangle` or
+:math:`\langle2, 2\rangle`.
+Rather than writing the relationship in terms of ordered pairs, we
+typically use an infix notation for such relations, writing :math:`1<3`.
+
+Define the properties of relations as follows, with :math:`R` a
+binary relation over set :math:`\mathbf{S}`.
 \begin{itemize}
 \item \(R\) is \defit{reflexive} if \(aRa\)
 	for all \(a \in \cvar{S}\).
@@ -271,3 +287,11 @@ subset operator, because neither is a subset of the other.
 Therefore, the subset operator does not define a total order on the
 powerset of the integers.
 \end{example}
+
+Notes
+-----
+
+.. [#] The object referred to here as a
+       bag is sometimes called a :dfn:`multilist`.
+       But, multilist is also refers to a list that may contain
+       sublists (see Module :numref:`<Multilists>`).

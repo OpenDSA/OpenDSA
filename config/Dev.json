@@ -319,6 +319,10 @@
       }
     },
     "Advanced Linear Structures": {
+      "Development/Multilists": {
+        "long_name": "Multilists",
+        "exercises": {}
+      },
       "Development/SparseMatrix": {
         "long_name": "Sparse Matrices",
         "exercises": {}
