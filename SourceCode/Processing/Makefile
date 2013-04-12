@@ -12,12 +12,35 @@ clean:
 
 Demo: UpDown
 
+Misc: Fact TOH Fibonnaci
+
 UpDown: 
 	@echo "UpDown Test"
 	-@rm -rf build/UpDown
 	@mkdir build/UpDown
 	@cp Demo/UpDown.pde build/UpDown
 	@$(PROCESS) --run --sketch="build/UpDown" --output="build/build" --force
+
+Fact: 
+	@echo "Factorial Test"
+	-@rm -rf build/Fact
+	@mkdir build/Fact
+	@cp Misc/Fact.pde build/Fact
+	@$(PROCESS) --run --sketch="build/Fact" --output="build/build" --force
+
+TOH: 
+	@echo "TOH Test"
+	-@rm -rf build/TOH
+	@mkdir build/TOH
+	@cp Misc/TOH.pde build/TOH
+	@$(PROCESS) --run --sketch="build/TOH" --output="build/build" --force
+
+Fibonnaci: 
+	@echo "Fibonnaci Test"
+	-@rm -rf build/Fibonnaci
+	@mkdir build/Fibonnaci
+	@cp Misc/Fibonnaci.pde build/Fibonnaci
+	@$(PROCESS) --run --sketch="build/Fibonnaci" --output="build/build" --force
 
 Trees: GenTree UFTest
 

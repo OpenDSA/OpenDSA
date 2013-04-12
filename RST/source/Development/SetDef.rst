@@ -8,8 +8,8 @@
    :prerequisites: Sets
    :topic: Sets
 
-Sets and Relations [RAW]
-========================
+Sets and Relations [Text]
+=========================
 
 The concept of a set in the mathematical sense has wide
 application in computer science.
@@ -50,22 +50,23 @@ base type is integer.
    \mathsf{x} \in \mathbf{P}&\mathsf{x}\ \mbox{is a member of set}\ \mathbf{P}\\
    \mathsf{x} \notin \mathbf{P}&\mathsf{x}\ \mbox{is not a member of set}\ \mathbf{P}\\
    \emptyset&\mbox{The null or empty set}\\
-   |\mathbf{P}|& \mbox{Cardinality: size of set}\ \mathbf{P}\\
-   &\qquad \mbox{or number of members for set}\ \mathbf{P}\\
+   |\mathbf{P}|& \mbox{Cardinality: size of set}\ \mathbf{P}
+                 \mbox{or number of members for set}\ \mathbf{P}\\
    \mathbf{P}\,\subseteq\,\mathbf{Q},
 	\mathbf{Q}\,\supseteq\,\mathbf{P}&
 	\mbox{Set}\ \mathbf{P}\ \mbox{is included in set}\ \mathbf{Q},\\
    &\qquad \mbox{set}\ \mathbf{P}\ \mbox{is a subset of set}\ \mathbf{Q},\\
    &\qquad \mbox{set}\ \mathbf{Q}\ \mbox{is a superset of set}\ \mathbf{P}\\
-   \mathbf{P}\,\cup\,\mathbf{Q}
-	&\mbox{Set Union:}\\
-   &\qquad mbox{all elements appearing in}\ \mathbf{P}\ \mbox{OR}\ \mathbf{Q}\\
-   \mathbf{P}\,\cap\,\mathbf{Q}
-	&\mbox{Set Intersection:}\\
-   &\qquad \mbox{all elements appearing in}\ \mbox{P}\ \mbox{AND}\ \mathbf{Q}\\
-   \mathbf{P}\,-\,\mathbf{Q}
-	&\mbox{Set difference:}\\
-   &\qquad \mbox{all elements of set}\ \mathbf{P}\ \mbox{NOT in set}\ \mathbf{Q}\\
+   \mathbf{P}\,\cup\,\mathbf{Q}	&
+      \mbox{Set Union:} \mbox{all elements appearing in}
+      \ \mathbf{P}\ \mbox{OR}\ \mathbf{Q}\\
+   \mathbf{P}\,\cap\,\mathbf{Q}	&
+      \mbox{Set Intersection:}
+      \mbox{all elements appearing in}\ \mbox{P}
+      \ \mbox{AND}\ \mathbf{Q}\\
+   \mathbf{P}\,-\,\mathbf{Q} &
+      \mbox{Set difference:} \mbox{all elements of set}
+      \ \mathbf{P}\ \mbox{NOT in set}\ \mathbf{Q}\\
    \end{array}
 
 Figure :num:`#SetNotation` shows the symbols commonly used to express sets
@@ -86,14 +87,14 @@ The union of :math:`\mathbf{P}` and :math:`\mathbf{Q}`, written
 The intersection of :math:`\mathbf{P}` and :math:`\mathbf{Q}`,
 written :math:`\mathbf{P} \cap \mathbf{Q}`, is the set of elements that
 appear in both :math:`\mathbf{P}` and :math:`\mathbf{Q}`, which is {5}.
-The set difference of :math:\mathbf{P}` and :math:`\mathbf{Q}`,
+The set difference of :math:`\mathbf{P}` and :math:`\mathbf{Q}`,
 written :math:`\mathbf{P} - \mathbf{Q}`,
 is the set of elements that occur in :math:`\mathbf{P}` but not in
 :math:`\mathbf{Q}`, which is {2, 3}.
 Note that
 :math:`\mathbf{P} \cup \mathbf{Q} = \mathbf{Q} \cup \mathbf{P}`
 and that
-:math:`\mathbf{P} \cap \mathbf{Q} = \matbhf{Q} \cap \mathbf{P}`,
+:math:`\mathbf{P} \cap \mathbf{Q} = \mathbf{Q} \cap \mathbf{P}`,
 but in general
 :math:`\mathbf{P} - \mathbf{Q} \neq \mathbf{Q} - \mathbf{P}`.
 In this example,
@@ -105,7 +106,7 @@ Likewise, set {4, 3, 4, 5} is also indistinguishable from
 
 The :dfn:`powerset` of a set :math:`\mathbf{S}` is the set of all
 possible subsets for :math:`\mathbf{S}`.
-Consider the set :math:`\matbhf{S} = \{ a, b, c \}`.
+Consider the set :math:`\mathbf{S} = \{ a, b, c \}`.
 The powerset of :math:`\mathbf{S}` is
 
 .. math::
@@ -166,127 +167,129 @@ typically use an infix notation for such relations, writing :math:`1<3`.
 
 Define the properties of relations as follows, with :math:`R` a
 binary relation over set :math:`\mathbf{S}`.
-\begin{itemize}
-\item \(R\) is \defit{reflexive} if \(aRa\)
-	for all \(a \in \cvar{S}\).
-\item \(R\) is \defit{symmetric} if whenever \(aRb\), then
-	\(bRa\), for all \(a, b \in \cvar{S}\).
-\item \(R\) is \defit{antisymmetric} if whenever \(aRb\) and
-	\(bRa\), then \(a = b\), for all \(a, b \in \cvar{S}\).
-\item \(R\) is \defit{transitive} if whenever \(aRb\) and
-	\(bRc\), then \(aRc\), for all \(a, b, c \in \cvar{S}\).
-\end{itemize}
 
-As examples, for the natural numbers, \(<\)~is antisymmetric
-(because there is no case where \(aRb\) and \(bRa\)) and
-transitive; \(\leq\)~is reflexive, antisymmetric, and transitive,
-and \(=\)~is reflexive, symmetric (and antisymmetric!),
+* :math:`R` is :dfn:`reflexive` if :math:`aRa`
+  for all :math:`a \in \mathbf{S}`.
+
+* :math:`R` is :dfn:`symmetric` if whenever :math:`aRb`,
+  then :math:`bRa`, for all :math:`a, b \in \mathbf{S}`.
+
+* :math:`R` is :dfn:`antisymmetric` if whenever :math:`aRb`
+  and :math:`bRa`, then :math:`a = b`, for all
+  :math:`a, b \in \mathbf{S}`.
+
+* :math:`R` is :dfn:`transitive` if whenever :math:`aRb` and
+  :math:`bRc`, then :math:`aRc`, for all
+  :math:`a, b, c \in \mathbf{S}`.
+
+As examples, for the natural numbers, :math:`<` is antisymmetric
+(because there is no case where :math:`aRb` and :math:`bRa`) and
+transitive; :math:`\leq` is reflexive, antisymmetric, and transitive,
+and :math:`=` is reflexive, symmetric (and antisymmetric!),
 and transitive.
-For people, the relation ``is a sibling of'' is symmetric and
+For people, the relation "is a sibling of" is symmetric and
 transitive.
 If we define a person to be a sibling of himself, then it is
 reflexive; if we define a person not to be a sibling of himself, then
 it is not reflexive.
 
-\index{equivalence|(}
-\(R\) is an \defit{equivalence relation} on set \cvar{S} if it is
-reflexive, symmetric, and transitive.\index{equivalence!relation}
+:math:`R` is an :dfn:`equivalence relation` on set :math:`\mathbf{S}`
+if it is reflexive, symmetric, and transitive.
 An equivalence relation can be used to partition a set into
-\defit{equivalence classes}.\index{equivalence!class}
-If two elements \(a\) and \(b\) are equivalent to each other,
-we write \(a \equiv b\).
-A \defit{partition} of a set \cvar{S} is a collection of subsets that
-are disjoint from each other and whose union is~\cvar{S}.
-An equivalence relation on set \cvar{S} partitions the set into
-subsets whose elements are equivalent.
-See Section~\ref{ParentPointer} for a discussion on how to represent
-equivalence classes on a set.
-One application for disjoint sets appears in Section~\ref{Kruskal}.
+:dfn:`equivalence classes`.
+If two elements :math:`a` and :math:`b` are equivalent to each other,
+we write :math:`a \equiv b`.
+A :math:`partition` of a set :math:`\mathbf{S}` is a collection of
+subsets that are disjoint from each other and whose union is
+:math:`\mathbf{S}`.
+An equivalence relation on set :math:`\mathbf{S}` partitions the set
+into subsets whose elements are equivalent.
+See Module :numref:`<UnionFind>` for a discussion on how to
+represent equivalence classes on a set.
+One application for disjoint sets appears in
+Module :numref:`MCST`.
 
-\begin{example}
-For the integers, \(=\) is an equivalence relation that partitions
-each element into a distinct subset.
-In other words, for any integer \(a\), three things are true.
-\begin{enumerate}
-\item \(a = a\),
-\item if \(a = b\) then \(b = a\), and
-\item if \(a = b\) and \(b = c\), then \(a = c\).
-\end{enumerate}
+.. topic:: Example
 
-Of course, for distinct integers \(a\), \(b\), and \(c\) there are
-never cases where \(a = b\), \(b = a\), or \(b = c\).
-So the claims that \(=\) is symmetric and transitive are vacuously
-true (there are never examples in the relation where these events
-occur).
-But because the requirements for symmetry and transitivity are not
-violated, the relation is symmetric and transitive.
-\end{example}
+   For the integers, :math:`=` is an equivalence relation that
+   partitions each element into a distinct subset.
+   In other words, for any integer :math:`a`, three things are true.
 
-\begin{example}
-If we clarify the definition of sibling to mean that a person is
-a sibling of him- or herself, then the sibling
-relation is an equivalence relation that partitions the set of people.
-\end{example}
+   #. :math:`a = a`,
 
-\begin{example}
-We can use the modulus function (defined in the next section) to
-define an equivalence relation.\index{modulus function}
-For the set of integers, use the modulus function 
-to define a binary relation such that two numbers
-\(x\) and \(y\) are in the relation if and only if
-\(x \bmod m = y \bmod m\).
-Thus, for \(m = 4\), \(\langle1, 5\rangle\) is in the relation because
-\(1 \bmod 4 = 5 \bmod 4\).
-We see that modulus used in this way defines an equivalence relation
-on the integers, and this relation can be used to partition the
-integers into \(m\) equivalence classes.
-This relation is an equivalence relation because
-\begin{enumerate}
-\item \(x \bmod m = x \bmod m\) for all \(x\);
-\item if \(x \bmod m = y \bmod m\), then \(y \bmod m = x \bmod m\); and 
-\item if \(x \bmod m = y \bmod m\) and \(y \bmod m = z \bmod m\), then
-	\(x \bmod m = z \bmod m\).
-\end{enumerate}
-\end{example}
-\index{equivalence|)}
+   #. if :math:`a = b` then :math:`b = a`, and
+
+   #. if :math:`a = b` and :math:`b = c`, then :math:`a = c`.
+
+   Of course, for distinct integers :math:`a`, :math:`b`, and :math:`c`
+   there are never cases where :math:`a = b`, :math:`b = a`, or
+   :math:`b = c`.
+   So the claims that :math:`=` is symmetric and transitive are
+   vacuously true (there are never examples in the relation where
+   these events occur).
+   But because the requirements for symmetry and transitivity are not
+   violated, the relation is symmetric and transitive.
+
+.. topic:: Example
+
+   If we clarify the definition of sibling to mean that a person is
+   a sibling of him- or herself, then the sibling relation is an
+   equivalence relation that partitions the set of people. 
+
+.. topic:: Example
+
+   We can use the modulus function (defined in Module
+   :numref:`<MiscMath>` to define an equivalence relation.
+   For the set of integers, use the modulus function 
+   to define a binary relation such that two numbers
+   :math:`x` and :math:`y` are in the relation if and only if
+   :math:`x \bmod m = y \bmod m`.
+   Thus, for :math:`m = 4`, :math:`\langle1, 5\rangle` is in the
+   relation because :math:`1 \bmod 4 = 5 \bmod 4`.
+   We see that modulus used in this way defines an equivalence
+   relation on the integers, and this relation can be used to
+   partition the integers into :math:`m` equivalence classes.
+   This relation is an equivalence relation because
+
+   #. :math:`x \bmod m = x \bmod m` for all :math:`x`;
+
+   #. if :math:`x \bmod m = y \bmod m`,
+      then :math:`y \bmod m = x \bmod m`; and 
+
+   #. if :math:`x \bmod m = y \bmod m` and
+      :math:`y \bmod m = z \bmod m`, then
+      :math:`x \bmod m = z \bmod m`.
 
 A binary relation is called a
-\defit{partial order}\index{partial order}
-if it is antisymmetric and transitive.\footnote{Not all authors use
-this definition for partial order.
-I~have seen at least three significantly different definitions in the
-literature.
-I~have selected the one that lets \(<\) and \(\leq\) both define
-partial orders on the integers, because this seems the most natural to
-me.}
+:dfn:`partial order` if it is antisymmetric and transitive. [#]_
 The set on which the partial order is defined is called a
-\defit{partially ordered set} or a
-\defit{poset}.\index{partial order!poset}
-Elements \(x\) and \(y\) of a set are \defit{comparable} under a
-given relation if either \(xRy\) or \(yRx\).
+:dfn:`partially ordered set` or a :dfn:`poset`.
+Elements :math:`x` and :math:`y` of a set are :dfn:`comparable` under
+a given relation if either :dfn:`xRy` or :dfn:`yRx`.
 If every pair of distinct elements in a partial order are comparable,
-then the order is called a \defit{total order} or
-\defit{linear order}.\index{total order}
+then the order is called a :dfn:`total order` or :dfn:`linear order`.
 
-\begin{example}
-For the integers, relations \(<\) and \(\leq\) define partial orders.
-Operation \(<\) is a total order because, for every pair of integers
-\(x\) and \(y\) such that \(x \neq y\), either \(x < y\) or \(y < x\).
-Likewise, \(\leq\) is a total order because, for every pair of integers
-\(x\) and \(y\) such that \(x \neq y\), either \(x \leq y\) or
-\(y \leq x\).
-\end{example}
+.. topic:: Example
 
-\begin{example}
-For the powerset\index{set!powerset} of the integers, the subset
-operator defines a partial order (because it is antisymmetric and
-transitive).
-For example, \(\{1, 2\}\subseteq\{1, 2, 3\}\).
-However, sets \(\{1, 2\}\) and \(\{1, 3\}\) are not comparable by the
-subset operator, because neither is a subset of the other.
-Therefore, the subset operator does not define a total order on the
-powerset of the integers.
-\end{example}
+   For the integers, relations :math:`<` and :math:`\leq` define
+   partial orders. 
+   Operation :math:`<` is a total order because, for every pair of
+   integers :math:`x` and :math:`y` such that :math:`x \neq y`,
+   either :math:`x < y` or :math:`y < x`.
+   Likewise, :math:`\leq` is a total order because,
+   for every pair of integers :math:`x` and :math:`y` such that
+   :math:`x \neq y`, either :math:`x \leq y` or :math:`y \leq x`.
+
+.. topic:: Example
+
+   For the powerset of the integers, the subset
+   operator defines a partial order (because it is antisymmetric and
+   transitive).
+   For example, :math:`\{1, 2\}\subseteq\{1, 2, 3\}`.
+   However, sets {1, 2} and {1, 3} are not comparable by the
+   subset operator, because neither is a subset of the other.
+   Therefore, the subset operator does not define a total order on the
+   powerset of the integers.
 
 Notes
 -----
@@ -295,3 +298,10 @@ Notes
        bag is sometimes called a :dfn:`multilist`.
        But, multilist is also refers to a list that may contain
        sublists (see Module :numref:`<Multilists>`).
+
+.. [#] Not all authors use this definition for partial order.
+       I have seen at least three significantly different definitions
+       in the literature.
+       I have selected the one that lets :math:`<` and :math:`\leq`
+       both define partial orders on the integers, because this seems
+       the most natural to me.

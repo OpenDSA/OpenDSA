@@ -113,7 +113,7 @@ More commonly, people use the term "data structure" to mean
 an organization or structuring for a collection of data items.
 A sorted list of integers stored in an array is an
 example of such a structuring.
-These ideas are explored further in Module :numref`<ADT>`.
+These ideas are explored further in Module :numref:`<ADT>`.
 
 Given sufficient space to store a collection of data items, it is
 always possible to search for specified items within the collection,
