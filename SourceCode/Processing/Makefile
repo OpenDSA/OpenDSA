@@ -12,7 +12,7 @@ clean:
 
 Demo: UpDown
 
-Misc: Fact TOH Fibonnaci
+Misc: Fact TOH Fibonnaci Largest
 
 UpDown: 
 	@echo "UpDown Test"
@@ -41,6 +41,13 @@ Fibonnaci:
 	@mkdir build/Fibonnaci
 	@cp Misc/Fibonnaci.pde build/Fibonnaci
 	@$(PROCESS) --run --sketch="build/Fibonnaci" --output="build/build" --force
+
+Largest: 
+	@echo "Analysis Chapter Test"
+	-@rm -rf build/Anal
+	@mkdir build/Anal
+	@cp Misc/Anal.pde build/Anal
+	@$(PROCESS) --run --sketch="build/Anal" --output="build/build" --force
 
 Trees: GenTree UFTest
 
