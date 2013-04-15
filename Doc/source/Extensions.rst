@@ -370,3 +370,25 @@ DESCRIPTION
 NOTES
     The directive closely matches the standard ReST ``figure`` directive. The only addition
     is the ``:capalign:`` argument.
+
+topic (special case)
+--------------------
+
+The syntax of the  ``topic`` is not changed in OpenDSA. We are using the directive to display
+``examples``.
+To include an example in your module, just use the keyword ``Example`` as topic title.
+The example can be referenced using standard Sphinx mechanism, for numbered reference,
+use the ``:num:`` directive.
+
+EXAMPLE::
+
+    (1) to add  an example with an anchor
+    .. _example1:
+
+    .. topic:: Example
+
+    This is our first example
+     
+
+    (2) to reference the example
+    See Example :num: `Example #example1`. 
