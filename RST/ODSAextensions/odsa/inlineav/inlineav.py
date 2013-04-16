@@ -37,9 +37,11 @@ def loadTable():
 
 DIAGRAM = '''\
 %(anchor)s
+<div class="divdgm">
 <div id="%(exer_name)s">
 </div>
 %(caption)s
+<div>
 '''
 
 # div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
@@ -117,7 +119,6 @@ class inlineav(Directive):
 
           label = self.options['target']
           if label in json_data:
-            print 'label exists'
             xrefs = json_data[label]
             if '#' in xrefs:
               xrefs = xrefs[:-1]
