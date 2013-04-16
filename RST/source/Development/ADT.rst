@@ -266,12 +266,13 @@ context of a higher-level task.
 
 .. inlineav:: ADTCON1 dgm
    :target: DataType
-   :align: left
+   :align: justify
 
    The relationship between data items, abstract data types, and data
    structures.
    The ADT defines the logical form of the data type.
    The data structure implements the physical form of the data type.
+   Test some :math:`n`.
 
 .. topic:: Example
 

@@ -8,156 +8,163 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Calculating Program Running Time [Raw]
-======================================
+Calculating Program Running Time [Text]
+=======================================
 
-This section presents the analysis for several simple code
+This modules discusses the analysis for several simple code
 fragments.
 
-\begin{example}
-We begin with an analysis of a simple assignment to an integer
-variable.
+.. topic: Example
 
-\vspace{-\medskipamount}
-\xprogexamp{c3p2.book}
+   We begin with an analysis of a simple assignment to an integer
+   variable.
 
-\vspace{-\medskipamount}
-\noindent Because the assignment statement takes constant time, it is
-\Thetaone.
-\end{example}
+   .. codeinclude:: Misc/Anal.pde 
+      :tag: c3p2
 
-\begin{example}
-\label{FLAnal}
-Consider a simple \Cref{for} loop.
+   Because the assignment statement takes constant time, it is
+   :math:`\Theta(1)`.
 
-\vspace{-\medskipamount}
-\xprogexamp{c3p3.book}
 
-\vspace{-\medskipamount}
-The first line is~\Thetaone.
-The \Cref{for} loop is repeated \(n\) times.
-The third line takes constant time so, by simplifying rule~(4)
-of Section~\ref{SimpRule}, the total cost for executing the two lines
-making up the \Cref{for} loop is \Thetan.
-By rule~(3), the cost of the entire code fragment is also
-\Thetan.
-\end{example}
+.. _FLAnal:
 
-\begin{example}
-We now analyze a code fragment with several \Cref{for}
-loops, some of which are nested.
+.. topic: Example
 
-\vspace{-\medskipamount}
-\xprogexamp{c3p4.book}
+   Consider a simple ``for`` loop.
 
-\vspace{-\medskipamount}
-This code fragment has three separate statements: the
-first assignment statement and the two \Cref{for} loops.
-Again the assignment statement takes constant time;
-call it \(c_1\).
-The second \Cref{for} loop is just like the one in
-Example~\ref{FLAnal} and takes \(c_2 n\) = \Thetan\ time.
+   .. codeinclude:: Misc/Anal.pde 
+      :tag: c3p3
 
-The first \Cref{for} loop is a double loop and requires a special
-technique.
-We work from the inside of the loop outward.
-The expression \Cref{sum++} requires constant time; call it \(c_3\).
-Because the inner \Cref{for} loop is executed \(i\)~times,
-by simplifying rule (4) it has cost \(c_3i\).
-The outer \Cref{for} loop is executed \(n\)~times, but each time
-the cost of the inner loop is different because it costs \(c_3i\) with
-\(i\) changing each time.
-You should see that for the first execution of the outer loop,
-\(i\)~is~1.
-For the second execution of the outer loop, \(i\)~is~2.
-Each time through the outer loop, \(i\)~becomes one greater, until
-the last time through the loop when \(i = n\).
-Thus, the total cost of the loop is \(c_3\) times the sum of the
-integers~1 through~\(n\).\index{summation}
-From Equation~\ref{Sumi}, we know that
-\[\sum_{i = 1}^{n} i = \frac{n (n+1)}{2},\]
-which is \Thetantwo.
-By simplifying rule (3), \(\Theta(c_1 + c_2 n + c_3 n^2)\) is
-simply \Thetantwo.
-\end{example}
+   The first line is :math:`Theta(1)`.
+   The ``for`` loop is repeated :math:`n` times.
+   The third line takes constant time so, by simplifying rule (4)
+   of Module :numref:`<AnalAsymptotic>`, the total cost for executing
+   the two lines making up the ``for`` loop is :math:`\Theta(n)`.
+   By rule (3), the cost of the entire code fragment is also
+   :math:`\Theta(n)`.
 
-\begin{example}
-Compare the asymptotic analysis for the following two code
-fragments:
+.. topic: Example
 
-\xprogexamp{c3p5.book}
+   We now analyze a code fragment with several ``for``
+   loops, some of which are nested.
 
-In the first double loop, the inner \Cref{for} loop always executes
-\(n\) times.
-Because the outer loop executes \(n\) times, it should be obvious
-that the statement \Cref{sum1++} is executed precisely \(n^2\) times.
-The second loop is similar to the one analyzed in the previous
-example, with cost \(\sum_{j = 1}^{n} j\).\index{summation}
-This is approximately \({1 \over 2} n^2\).
-Thus, both double loops cost \Thetantwo, though the second requires
-about half the time of the first.
-\end{example}
+   .. codeinclude:: Misc/Anal.pde 
+      :tag: c3p4
 
-\begin{example}
-Not all doubly nested \Cref{for} loops are \Thetantwo.
-The following pair of nested loops illustrates this fact.
+   This code fragment has three separate statements: the
+   first assignment statement and the two ``for`` loops.
+   Again the assignment statement takes constant time;
+   call it :math:`c_1`.
+   The second ``for`` loop is just like the one in
+   Example :num:`#FLAnal` and takes :math:`c_2 n = \Theta(n)` time.
 
-\xprogexamp{c3p6.book}
+   The first ``for`` loop is a double loop and requires a special
+   technique.
+   We work from the inside of the loop outward.
+   The expression ``sum++`` requires constant time; call it
+   :math:`c_3`.
+   Because the inner ``for`` loop is executed :math:`i` times,
+   by simplifying rule (4) it has cost :math:`c_3i`.
+   The outer ``for``loop is executed :math:`n` times, but each time
+   the cost of the inner loop is different because it costs
+   :math:`c_3i` with :math:`i` changing each time.
+   You should see that for the first execution of the outer loop,
+   :math:`i` is 1.
+   For the second execution of the outer loop, :math:`i` is 2.
+   Each time through the outer loop, :math:`i` becomes one greater,
+   until the last time through the loop when :math:`i = n`.
+   Thus, the total cost of the loop is :math:`c_3` times the sum of
+   the integers 1 through :math:`n`.
+   From Equation  :num:`#Sumi`, we know that
 
-When analyzing these two code fragments, we will assume that \(n\) is
-a power of two.
-The first code fragment has its outer \Cref{for} loop executed
-\(\log n+1\) times because on each iteration~\(k\) is multiplied by
-two until it reaches~\(n\).
-Because the inner loop always executes \(n\) times, the total cost for
-the first code fragment can be expressed as
-\(\sum_{i=0}^{\log n} n\).\index{summation}
-Note that a variable substitution takes place here to create the
-summation, with \(k = 2^i\).
-From Equation~\ref{SumLog}, the solution for this summation is
-\Thetanlogn.
-In the second code fragment, the outer loop is also executed
-\(\log n+1\) times.
-The inner loop has cost \(k\), which doubles each time.
-The summation can be expressed as \(\sum_{i=0}^{\log n} 2^i\)
-where~\(n\) is assumed to be a power of two and again
-\(k = 2^i\).\index{summation}
-From Equation~\ref{SumExLog}, we know that this summation is
-simply~\Thetan.
-\end{example}
+   .. math::
+
+      \sum_{i = 1}^{n} i = \frac{n (n+1)}{2},
+
+   which is :math:`\Theta(n^2)`.
+   By simplifying rule (3), :math:`\Theta(c_1 + c_2 n + c_3 n^2)` is
+   simply :math:`\Theta(n^2)`.
+
+.. topic: Example
+
+   Compare the asymptotic analysis for the following two code
+   fragments.
+
+   .. codeinclude:: Misc/Anal.pde 
+      :tag: c3p5
+
+   In the first double loop, the inner ``for`` loop always executes
+   :math:`n` times.
+   Because the outer loop executes :math:`n` times, it should be
+   obvious that the statement ``sum1++`` is executed precisely
+   :math:`n^2` times.
+   The second loop is similar to the one analyzed in the previous
+   example, with cost :math:`\sum_{j = 1}^{n} j`.
+   This is approximately :math:{1 \over 2} n^2`.
+   Thus, both double loops cost :math:`Theta(n^2)`, though the second
+   requires about half the time of the first.
+
+.. topic: Example
+
+   Not all doubly nested ``for`` loops are :math:`\Theta(n^2)`.
+   The following pair of nested loops illustrates this fact.
+
+   .. codeinclude:: Misc/Anal.pde
+      :tag: c3p6
+
+     When analyzing these two code fragments, we will assume that
+   :math:`n` is a power of two.
+   The first code fragment has its outer ``for`` loop executed
+   :math:`\log n+1` times because on each iteration :math:`k` is
+   multiplied by two until it reaches :math:`n`.
+   Because the inner loop always executes :math:`n` times,
+   the total cost for the first code fragment can be expressed as
+   :math:`\sum_{i=0}^{\log n} n`.
+   Note that a variable substitution takes place here to create the
+   summation, with :math:`k = 2^i`.
+   From Equation~\ref{SumLog}, the solution for this summation is
+   :math:`\Theta(n \log n)`.
+   In the second code fragment, the outer loop is also executed
+   :math:`\log n+1` times.
+   The inner loop has cost :math:`k`, which doubles each time.
+   The summation can be expressed as :math:`\sum_{i=0}^{\log n} 2^i`
+   where :math:`n` is assumed to be a power of two and again
+   :math:`k = 2^i`.
+   From Equation :num:`#SumExLog`, we know that this summation is
+   simply :math:`Theta(n)`.
 
 What about other control statements?
-\Cref{While} loops are analyzed in a manner similar to \Cref{for}
+``While`` loops are analyzed in a manner similar to ``for``
 loops.
-The cost of an \Cref{if} statement in the worst case is the greater of
-the costs for the \Cref{then} and \Cref{else} clauses.
+The cost of an ``if`` statement in the worst case is the greater of
+the costs for the ``then`` and ``else`` clauses.
 This is also true for the average case, assuming that
-the size of~\(n\) does not affect the probability of executing one of
-the clauses (which is usually, but not necessarily, true).
-For \Cref{switch} statements, the worst-case cost is that of the most
+the size of :math:`n` does not affect the probability of executing one
+of the clauses (which is usually, but not necessarily, true).
+For :math:`switch` statements, the worst-case cost is that of the most
 expensive branch.
 For subroutine calls, simply add the cost of executing the subroutine.
 
 There are rare situations in which the probability for executing the
-various branches of an \Cref{if} or \Cref{switch} statement are
+various branches of an ``if`` or ``switch`` statement are
 functions of the input size.
-For example, for input of size~\(n\), the \Cref{then} clause of an
-\Cref{if} statement might be executed with probability \(1/n\).
-An example would be an \Cref{if} statement that executes the
-\Cref{then} clause only for the smallest of~\(n\) values.
+For example, for input of size :math:`n`, the ``then`` clause of an
+``if`` statement might be executed with probability :math:`1/n`.
+An example would be an ``if`` statement that executes the
+``then`` clause only for the smallest of :math:`n` values.
 To perform an average-case analysis for such programs,
-we cannot simply count the cost of the \Cref{if}
+we cannot simply count the cost of the ``if``
 statement as being the cost of the more expensive branch.
 In such situations, the technique of
-amortized analysis\index{amortized analysis}
-(see Section~\ref{AmortAnal}) can come to the rescue.
+amortized analysis (see Module :numref:`<AmortAnal>`) can come to the
+rescue.
 
 Determining the execution time of a recursive
 subroutine can be difficult.
-The running time for a recursive\index{recursion} subroutine is
+The running time for a recursive subroutine is
 typically best expressed by a recurrence relation.
-For example, the recursive factorial\index{factorial function}
-function \Cref{fact} of Section~\ref{Recurse} calls itself with a
+For example, the recursive factorial
+function ``fact`` of Module :numref:`<Recurse>` calls itself with a
 value one less than its input value.
 The result of this recursive call is then multiplied by the input
 value, which takes constant time.
@@ -167,14 +174,15 @@ is one more than the number of multiplications made by the recursive
 call on the smaller input.
 Because the base case does no multiplications, its cost is zero.
 Thus, the running time for this function can be expressed as
-\[ \Tn = \Tnone + 1 \ \mbox{for}\ n>1;\ \ T(1) = 0.\]
-\noindent We know from Examples~\ref{FactRecurSol} and
-\ref{FactRecurProof} that 
-the closed-form solution for this recurrence relation
-is \Thetan.
 
-\index{search!sequential|(}
-\index{search!binary|(}
+.. math::
+
+   \Tn = \Tnone + 1 \ \mbox{for}\ n>1;\ \ T(1) = 0.
+
+We know from Examples :num:`#FactRecurSol` and
+:num:`#FactRecurProof` that the closed-form solution for this
+recurrence relation is :math:`\Theta(n)`.
+
 The final example of algorithm analysis for this section will compare
 two algorithms for performing search in an array.
 Earlier, we determined that the running time for sequential search on

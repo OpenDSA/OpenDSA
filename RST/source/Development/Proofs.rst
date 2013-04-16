@@ -300,7 +300,7 @@ right-hand side of the original theorem.
 
       \sum_{i=1}^n (2i - 1) = n^2.
 
-.. :FactRecurProof_
+.. _FactRecurProof:
 
 .. topic:: Example
 

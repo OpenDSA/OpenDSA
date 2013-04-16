@@ -41,7 +41,7 @@ After reading this chapter, you should understand
 
 * the concept of upper and lower bounds for a
   growth rate, and how to estimate these bounds for a simple program,
-  algorithm, or problem; and\index{estimation}
+  algorithm, or problem; and
 
 * the difference between the cost of an algorithm
   (or program) and the cost of a problem.

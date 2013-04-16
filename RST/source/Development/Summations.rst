@@ -162,6 +162,8 @@ One approach is to :dfn:`expand` the recurrence by replacing any
 occurrences of :math:`\mathbf{T}` on the right-hand side with its
 definition.
 
+.. _FactRecurSol:
+
 .. topic:: Example
 
    If we expand the recurrence
