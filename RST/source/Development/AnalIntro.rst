@@ -177,7 +177,7 @@ because the cost depends on the value of :math:`n`
    Because the most important factor affecting running time is
    normally size of the input, for a given input size :math:`n` we
    often express the time :math:`\mathbf{T}` to  run the algorithm as
-   a function of :math:`n`, written as :math:`\mathbf{T}(n).
+   a function of :math:`n`, written as :math:`\mathbf{T}(n)`.
    We will always assume :math:`\mathbf{T}(n)` is a non-negative
    value.
 

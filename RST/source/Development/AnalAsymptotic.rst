@@ -236,7 +236,7 @@ definition of big-Oh.
    Therefore, :math:`\mathbf{T}(n)` is in :math:`\Omega(n^2)` by the
    definition. 
 
-It is also true that the equation of Example AAnalEx_ is in
+It is also true that the equation of Example :num:`Example #AAnalEx` is in
 :math:`\Omega(n)`.
 However, as with big-Oh notation, we wish to get the "tightest"
 (for :math:`\Omega` notation, the largest) bound possible.
