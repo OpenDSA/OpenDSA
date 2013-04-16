@@ -163,8 +163,8 @@ Determining the execution time of a recursive
 subroutine can be difficult.
 The running time for a recursive subroutine is
 typically best expressed by a recurrence relation.
-For example, the recursive factorial
-function ``fact`` of Module :numref:`<Recurse>` calls itself with a
+For example, the recursive factorial function ``fact`` of
+Module :numref:`<Recursion>` calls itself with a
 value one less than its input value.
 The result of this recursive call is then multiplied by the input
 value, which takes constant time.
@@ -177,7 +177,7 @@ Thus, the running time for this function can be expressed as
 
 .. math::
 
-   \Tn = \Tnone + 1 \ \mbox{for}\ n>1;\ \ T(1) = 0.
+   \Theta(n) = \Theta(n-1) + 1 \ \mbox{for}\ n>1;\ \ T(1) = 0.
 
 We know from Examples :num:`#FactRecurSol` and
 :num:`#FactRecurProof` that the closed-form solution for this
@@ -186,94 +186,98 @@ recurrence relation is :math:`\Theta(n)`.
 The final example of algorithm analysis for this section will compare
 two algorithms for performing search in an array.
 Earlier, we determined that the running time for sequential search on
-an array where the search value \(K\) is equally likely to appear in any
-location is \Thetan\ in both the average and worst cases.
+an array where the search value :math:`K` is equally likely to appear
+in any location is :math:`\Theta(n)` in both the average and worst
+cases.
 We would like to compare this running time to that required to perform
-a \defit{binary search} on an array whose values are stored in order
+a :dfn:`binary search` on an array whose values are stored in order
 from lowest to highest.
 
 Binary search begins by examining the value in the middle
-position of the array; call this position \(mid\) and the
-corresponding value \(k_{mid}\).
-If \mbox{\(k_{mid} = K\)}, then processing can stop immediately.
+position of the array; call this position :math:`mid` and the
+corresponding value :math:`k_{mid}`.
+If :math:`k_{mid} = K`, then processing can stop immediately.
 This is unlikely to be the case, however.
 Fortunately, knowing the middle value provides useful information
 that can help guide the search process.
-In particular, if \mbox{\(k_{mid} > K\)},
-then you know that the value~\(K\)
-cannot appear in the array at any position greater than~\(mid\).
+In particular, if :math:`k_{mid} > K`, then you know that the value
+:math:`K` cannot appear in the array at any position greater
+than :math:`mid`. 
 Thus, you can eliminate future search in the upper half of the array.
-Conversely, if \mbox{\(k_{mid} < K\)}, then you know that you can
-ignore all positions in the array less than~\(mid\).
+Conversely, if :math:`k_{mid} < K`, then you know that you can
+ignore all positions in the array less than :math:`mid`.
 Either way, half of the positions are eliminated from further
 consideration.
 Binary search next looks at the middle position in that part of the
-array where value \(K\) may exist.
+array where value :math:`K` may exist.
 The value at this position again allows us to eliminate half
 of the remaining positions from consideration.
 This process repeats until either the desired value is found, or
 there are no positions remaining in the array that might contain the
-value \(K\).
-Figure~\ref{BinSchFig} illustrates the binary search method.
-Figure~\ref{BinSchCode} shows an implementation for binary search.
+value :math:`K`.
+Figure :num:`Figure #BinSchFig` illustrates the binary search method.
 
-\begin{figure}
-\pdffig{BinSch}
+.. _BinSchFig:
 
-\capt{4.5in}{Illustration of binary search}
-{An illustration of binary search on a sorted array of 16~positions.
-Consider a search for the position with value \(K = 45\).
-Binary search first checks the value at position~7.
-Because \(41 < K\), the desired value cannot
-appear in any position below~7 in the array.
-Next, binary search checks the value at position~11.
-Because \(56 > K\), the desired value (if it exists) must be between
-positions~7 and~11.
-Position~9 is checked next.
-Again, its value is too great.
-The final search is at position~8, which contains the desired value.
-Thus, function \Cref{binary} returns position~8.
-Alternatively, if \(K\) were 44, then the same series of record accesses
-would be made.
-After checking position~8, \Cref{binary} would return a value of
-\(n\), indicating that the search is unsuccessful.}{BinSchFig}
-\bigskip
-\end{figure}
+.. figure:: Images/GraphDef.png
+   :width: 500
+   :align: center
+   :figwidth: 90%
+   :alt: Illustration of binary search
 
-\begin{figure}
-\xprogfig{bsearch.book}
+   An illustration of binary search on a sorted array of
+   16 positions. 
+   Consider a search for the position with value :math:`K = 45`.
+   Binary search first checks the value at position 7.
+   Because :math:`41 < K`, the desired value cannot
+   appear in any position below 7 in the array.
+   Next, binary search checks the value at position 11.
+   Because :math:`56 > K`, the desired value (if it exists) must be
+   between positions 7 and 11.
+   Position 9 is checked next.
+   Again, its value is too great.
+   The final search is at position 8, which contains the desired
+   value.
+   Thus, function ``binary`` returns position 8.
+   Alternatively, if :math:`K` were 44, then the same series of record
+   accesses would be made.
+   After checking position 8, ``binary`` would return a value of
+   :math:`n`, indicating that the search is unsuccessful.
 
-\vspace{-\bigskipamount}
-\capt{4.5in}{Binary search implementation}
-{Implementation for binary search.}{BinSchCode}
-\end{figure}
+Here is an implementation for binary search.
+
+   .. codeinclude:: Misc/Anal.pde 
+      :tag: bsearch
 
 To find the cost of this algorithm in the worst case, we can model the
 running time as a recurrence and then find the closed-form solution.
-Each recursive call to \Cref{binary} cuts the size of the array
+Each recursive call to ``binary`` cuts the size of the array
 approximately in half, so we can model the worst-case cost as follows,
-assuming for simplicity that \(n\) is a power of two.
+assuming for simplicity that :math:`n` is a power of two.
 
-\[\Tn = \Tnhalf + 1\ \mbox{for}\ n>1; \quad \Tone = 1.\]
+.. math::
+
+   \Theta(n) = \Theta(n/2) + 1\ \mbox{for}\ n>1; \quad \Theta(1) = 1.
 
 If we expand the recurrence, we find that we can do so only
-\(\log n\) times before we reach the base case, and each expansion
+:math:`\log n` times before we reach the base case, and each expansion
 adds one to the cost.
-Thus, the closed-form solution for the recurrence is \(\Tn = \log n\).
+Thus, the closed-form solution for the recurrence is
+:math:`\mathbf{T}(n) = \log n`.
 
-Function \Cref{binary} is designed to find the
-(single) occurrence of \(K\) and return its position.
-A special value is returned if \(K\) does not appear in the array.
+Function ``binary`` is designed to find the (single) occurrence of
+:math:`K` and return its position. 
+A special value is returned if :math:`K` does not appear in the array.
 This algorithm can be modified to implement variations 
 such as returning the position of the first
-occurrence of \(K\) in the array if multiple occurrences are allowed,
-and returning the position of the greatest value less than \svar{K}
-when \(K\) is not in the array.
+occurrence of :math:`K` in the array if multiple occurrences are
+allowed, and returning the position of the greatest value less than
+:math:`K` when :math:`K` is not in the array.
 
-Comparing sequential search to binary search, we see that as \(n\)
-grows, the \Thetan\ running time for sequential search in the
+Comparing sequential search to binary search, we see that as :math:`n`
+grows, the :math:`\Theta(n)` running time for sequential search in the
 average and worst cases quickly becomes much greater than the
-\Thetalogn\ running time for binary search.
+:math:`\Theta(\log n)` running time for binary search.
 Taken in isolation, binary search appears to be much more
 efficient than sequential search.
 This is despite the fact that the constant factor for binary search is 
@@ -291,7 +295,7 @@ requirement for a sorted array could be detrimental to the running
 time of a complete program, because  maintaining the values in sorted
 order requires to greater cost when inserting new elements into the
 array.
-This is an example of a tradeoff\index{tradeoff} between the
+This is an example of a tradeoff between the
 advantage of binary search during search and the disadvantage related
 to maintaining a sorted array.
 Only in the context of the complete problem to be solved can we know

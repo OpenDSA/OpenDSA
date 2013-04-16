@@ -43,15 +43,15 @@
         "exercises": {}
       },
       "Development/Recursion": {
-        "long_name": "Set Definitions",
+        "long_name": "Recursion",
         "exercises": {}
       },
       "Development/Proofs": {
-        "long_name": "Set Definitions",
+        "long_name": "Proofs",
         "exercises": {}
       },
       "Development/Estimation": {
-        "long_name": "Set Definitions",
+        "long_name": "Estimation",
         "exercises": {}
       }
     },
