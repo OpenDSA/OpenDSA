@@ -12,6 +12,6 @@ static int largest(int[] A) {
 /* *** ODSATag: Analp1 *** */
 sum = 0;
 for (i=1; i<=n; i++)
-   for (j=1; j<=n; j++)
-      sum++;
+  for (j=1; j<=n; j++)
+    sum++;
 /* *** ODSAendTag: Analp1 *** */
