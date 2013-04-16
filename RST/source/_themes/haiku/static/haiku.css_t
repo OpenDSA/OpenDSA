@@ -535,3 +535,8 @@ table.data tr:hover td {
 code {
   font-size: 1.4em;
 }
+div.divdgm {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -36,7 +36,7 @@ Figure :num:`Figure #MCSTdgm` shows the MST for an example graph.
 
 .. inlineav:: MCSTCON1 dgm
    :target: MCSTdgm
-   :align: left
+   :align: justify
 
    A graph and its MST.
    All edges appear in the original graph.

@@ -25,15 +25,79 @@
         "exercises": {}
       }
     },
-    "Background": {
+    "Mathematical Background": {
       "Development/SetDef": {
         "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/MiscMath": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Logarithms": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Summations": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Recursion": {
+        "long_name": "Recursion",
+        "exercises": {}
+      },
+      "Development/Proofs": {
+        "long_name": "Proofs",
+        "exercises": {}
+      },
+      "Development/Estimation": {
+        "long_name": "Estimation",
         "exercises": {}
       }
     },
     "Algorithm Analysis": {
       "Development/AnalPrelim": {
         "long_name": "Problems, Algorithms, and Programs",
+        "exercises": {}
+      },
+      "Development/AnalIntro": {
+        "long_name": "Introduction to Algorithm Analysis",
+        "exercises": {}
+      },
+      "Development/AnalCases": {
+        "long_name": "Best, Average, and Worst Cases",
+        "exercises": {}
+      },
+      "Development/AnalCompvsAlg": {
+        "long_name": "A Faster Computer, or a Faster Algorithm?",
+        "exercises": {}
+      },
+      "Development/AnalAsymptotic": {
+        "long_name": "Asymptotic Analysis",
+        "exercises": {}
+      },
+      "Development/AnalProgram": {
+        "long_name": "Calculating the Running Time of a Program",
+        "exercises": {}
+      },
+      "Development/AnalProblem": {
+        "long_name": "Analyzing Problems",
+        "exercises": {}
+      },
+      "Development/AnalMisunderstanding": {
+        "long_name": "Common Misunderstandings",
+        "exercises": {}
+      },
+      "Development/AnalMultiple": {
+        "long_name": "Multiple Parameters",
+        "exercises": {}
+      },
+      "Development/AnalSpace": {
+        "long_name": "Space Bounds",
+        "exercises": {}
+      },
+      "Development/AnalTuning": {
+        "long_name": "Speeding Up Your Programs",
         "exercises": {}
       }
     },
@@ -972,6 +1036,7 @@
       "Development/MCST": {
         "long_name": "Minimal Cost Spanning Trees",
         "exercises": {
+          "MCSTCON1": {},
           "PrimAV": {
             "long_name": "Prim's Algorithm Visualization",
             "required": false,
@@ -1023,6 +1088,10 @@
       }
     },
     "Algorithms": {
+      "Development/DynamicProgramming": {
+        "long_name": "Dynamic Programming",
+        "exercises": {}
+      },
       "Development/Knapsack": {
         "exercises": {
           "sackCallTree": {

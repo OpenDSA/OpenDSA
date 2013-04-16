@@ -135,3 +135,8 @@ form {
 #increments, #arrayValues {
   padding-left: 5px;
 }
+
+
+.jsavvalue.processing {
+  background-color: #ddf;
+}

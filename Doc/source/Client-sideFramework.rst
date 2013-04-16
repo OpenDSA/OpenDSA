@@ -15,7 +15,7 @@ Client-Side Framework
 The client-side framework for OpenDSA is implemented in 3 main files
 located in the lib directory: ``odsaMOD.js``, ``odsaAV.js`` and
 ``odsaUtils.js``.  ``odsaMOD.js`` contains the code which is specific
-and common to modules, while odsaAV.js contains code specific and
+and common to modules, while ``odsaAV.js`` contains code specific and
 common to AVs.  ``odsaUtils.js`` contains several utility functions as
 well as the interaction data logging functions used by both
 ``odsaMOD.js`` and ``odsaAV.js``.  AVs must include both

@@ -20,6 +20,13 @@ from xml.dom.minidom import parse, parseString
 from string import whitespace as ws
 
 
+#a method to detect if the topic element is an example
+def isExample(topic):
+    if 'example' in topic.lower() and topic.startswith('.. topic::'):
+        return True
+    else:
+        return False
+
 #defines the color of output text (warnings, errors, and info)
 class bcolors:
     HEADER = '\033[95m'
@@ -69,6 +76,7 @@ class modPreReq:
       desc=''
       fig = 1
       tab = 1
+      exp = 1
       label = ''
       fls = open(filename,'r')
       data = fls.readlines()
@@ -97,7 +105,7 @@ class modPreReq:
             self.covers =  p.sub('',str).split(',')
          if line.startswith('.. _'):
             label =  re.split(':', re.split('.. _', line, re.IGNORECASE)[1], re.IGNORECASE)[0]
-            if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. odsafig::'):
+            if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. odsafig::') or isExample(data[cpt+1]):
                if os.path.splitext(os.path.basename(filename))[0] in config.table:
                  tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                  config.table[label] = tb + '.%s#' %fig
@@ -107,6 +115,11 @@ class modPreReq:
                   tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                   config.table[label] = tb + '.%s#' %tab
                   tab+=1
+            if isExample(data[cpt+1]):
+                if os.path.splitext(os.path.basename(filename))[0] in config.table:
+                   tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
+                   config.table[label.lower()] = tb + '.%s#' %exp
+                   exp+=1 
          if ':target:' in line:
              trgt =  re.split('target:', line, re.IGNORECASE)[1]
              trgt=p.sub('',trgt)

@@ -694,10 +694,11 @@
   }
 
   // Simple hashing for strings
+  //  - inputVal should be a string, however a number in a string is acceptable (e.g. "123")
   function simpleStrings(inputVal) {
     // Check input is a string
-    if (!is("String", inputVal)) {
-      error("Please enter a string to hash.");
+    if (inputVal === null) {
+      error("Please enter a value to hash.");
       // Return error
       return 1;
     }
@@ -724,14 +725,14 @@
 
     // Return success
     return 0;
-
   }
 
   // Hashing for Strings (Improved)
+  //   - inputVal should be a string, however a number in a string is acceptable (e.g. "123")
   function improvedStrings(inputVal) {
     // Check input is a string
-    if (!is("String", inputVal)) {
-      error("Please enter a string to hash.");
+    if (inputVal === null) {
+      error("Please enter a value to hash.");
       // Return error
       return 1;
     }
@@ -740,11 +741,11 @@
 
     var inputLength = inputVal.length / 4;
     var sum = 0;
-
+    var mult;
     for (var i = 0; i < inputLength; i++) {
       // Grab the substring of size 4
       var inputsubstring = inputVal.substring(i * 4, (i * 4) + 4);
-      var mult = 1;
+      mult = 1;
       for (var j = 0; j < inputsubstring.length; j++) {
         sum += inputsubstring.charCodeAt(j) * mult;
         mult *= 256;

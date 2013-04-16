@@ -22,7 +22,7 @@ UpDown: Demo/UpDown.1 Demo/UpDown.2 Utils/Processing.java
 
 Sorting: Inssort Bubblesort Selsort
 
-Sorttime: InssortTime SelsortTime BubblesortTime
+Sorttime: InssortTime BubblesortTime SelsortTime
 
 Inssort: build/InssortTest/success
 

@@ -16,3 +16,11 @@
 .ssAV {
   font-size: 15px;
 }
+
+/* CSS class to mark that a JSAV item is currently processed by the algorithm */
+.processing {
+  background-color: #ddf;
+}
+.jsavhighlight {
+  color: black;
+}

@@ -4,31 +4,40 @@
 // Convenience function for setting another type of highlight
 // (will be used for showing which elements will be compared during sort)
 var setBlue = function (arr, index) {
-  arr.css(index, {"background-color": "#ddf" });
+  arr.addClass(index, "processing");
+};
+var unsetBlue = function (arr, index) {
+  arr.removeClass(index, "processing");
 };
 
 // Insertion sort using increments
 function inssort(av, arr, start, incr) {
   var i, j;
   for (i = start + incr; i < arr.size(); i += incr) {
-    setBlue(arr, i);
     for (j = i; j >= incr; j -= incr) {
-      setBlue(arr, j - incr);
+      arr.unhighlight([j - incr, j]);
+      setBlue(arr, [j - incr, j]);
       av.umsg("Compare");
       av.step();
       if (arr.value(j) < arr.value(j - incr)) {
         arr.swap(j, j - incr); // swap the two indices
         av.umsg("Swap");
         av.step();
+        if (j - incr > incr) {
+          unsetBlue(arr, j);
+          arr.highlight(j);
+        } else {
+          unsetBlue(arr, [j - incr, j]);
+          arr.highlight([j - incr, j]);
+        }
       }
       else {
-        arr.highlight([j - incr, j]);
         av.umsg("Done this element");
+        arr.highlight([j - incr, j]);
+        unsetBlue(arr, [j - incr, j]);
         break; // Done pushing element, leave for loop
       }
-      arr.highlight(j);
     }
-    arr.highlight(j);
   }
 }
 
@@ -54,6 +63,7 @@ function sweep(av, arr, incr) {
     av.umsg("Starting to sort a new subarray with " + numElem + " elements");
     av.step();
     inssort(av, arr, j, incr);
+    unsetBlue(arr, true);
     arr.unhighlight(highlightFunction);
   }
 }

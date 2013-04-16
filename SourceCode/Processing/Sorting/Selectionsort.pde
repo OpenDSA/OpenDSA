@@ -1,20 +1,30 @@
 void sorttime(int[] B) {
   int i;
   int[] A = new int[B.length];
+  int totaltime, runs;
+  int numruns = 20;
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
   selsort(A);
   time2 = millis();
   checkorder(A);
-  println("Standard Selection Sort: Size " + testsize + ", Time: " + (time2-time1));
+totaltime += (time2-time1);
+}
+  println("Standard Selection Sort: Size " + testsize + ", Time: " + totaltime);
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
   selsortcheck(A);
   time2 = millis();
   checkorder(A);
-  println("Standard Selection Sort: Size " + testsize + ", Time: " + (time2-time1));
+totaltime += (time2-time1);
+}
+  println("Standard Selection Sort: Size " + testsize + ", Time: " + totaltime);
 }
 
 // Same as selsort, but check if the swap is necessary

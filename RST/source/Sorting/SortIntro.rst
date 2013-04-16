@@ -27,7 +27,7 @@ advertisement and mail them more cheaply.
 We might use sorting to help an algorithm to solve
 some other problem.
 For example, Kruskal's algorthm to solve the minimum-cost spanning
-tree problem (see Module :numref:`<MCSTstub>`) must sort the edges of
+tree problem (see Module :numref:`<MCST>`) must sort the edges of
 a graph by length before it can process them.
 
 Because sorting is so important, naturally it has been studied

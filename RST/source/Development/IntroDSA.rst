@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Introduction
 
-Data Structures and Algorithms [Text]
-=====================================
+Data Structures and Algorithms [Storyboard]
+===========================================
 
 How many cities with more than 250,000 people lie within 500 miles of
 Dallas, Texas?
@@ -23,14 +23,17 @@ answers in time to satisfy our needs.
 
 Representing information is fundamental to computer science.
 The primary purpose of most computer programs is not to
-perform calculations, but to store and retrieve information ---
+perform calculations, but to store and retrieve information |---|
 usually as fast as possible.
 For this reason, the study of data structures and the algorithms that
 manipulate them is at the heart of computer science.
-And that is what this book is about --- helping you to understand how
+And that is what OpenDSA is about |---| helping you to understand how
 to structure information to support efficient processing.
 
-This book has three primary goals.
+Course Goals
+------------
+
+This course has three primary goals.
 The first is to present the commonly used data structures.
 These form a programmer's basic data structure "toolkit."
 For many problems, some data structure in the toolkit provides a good
@@ -62,11 +65,11 @@ Ideally, the resulting program is true to both of these goals.
 We might say that such a program is "elegant."
 While the algorithms and program code examples presented here
 attempt to be elegant in this sense,
-it is not the purpose of this book to explicitly treat issues related
+it is not the purpose of this course to explicitly treat issues related
 to goal (1).
 These are primarily concerns of the discipline of
 Software Engineering.
-Rather, this book is mostly about issues relating to goal (2).
+Rather, we will mostly focus on issues relating to goal (2).
 
 How do we measure efficiency?
 Our method for evaluating the efficiency of an algorithm or computer
@@ -79,25 +82,13 @@ This allows you to see how each algorithm compares to other
 algorithms for solving the same problem in terms of its
 efficiency.
 
-This module sets the stage for what is to follow, by presenting
-some higher-order issues related to the selection and use of data
-structures.
-We first examine the process by which a designer selects a data
-structure appropriate to the task at hand.
-We then consider the role of abstraction in program design.
-We briefly consider the concept of a design pattern and see some
-examples.
-The chapter ends with an exploration of the relationship between
-problems, algorithms, and programs.
-
 A Philosophy of Data Structures
 -------------------------------
 
 You might think that with ever more powerful computers,
 program efficiency is becoming less important.
 After all, processor speed and memory size still continue to improve.
-Won't any efficiency problem we might have today be solved by
-tomorrow's hardware?
+Won't today's efficiency problem be solved by tomorrow's hardware?
 
 As we develop more powerful computers,
 our history so far has always been to use that additional computing
@@ -106,7 +97,7 @@ sophisticated user interfaces, bigger problem sizes, or new problems
 previously deemed computationally infeasible.
 More complex problems demand more computation, making the need for
 efficient programs even greater.
-Worse yet, as~tasks become more complex, they become less like
+Worse yet, as tasks become more complex, they become less like
 our everyday experience.
 Today's computer scientists must be trained to have a thorough
 understanding of the principles behind efficient program design,
@@ -120,8 +111,9 @@ number stored on the computer can be viewed as a simple data
 structure.
 More commonly, people use the term "data structure" to mean
 an organization or structuring for a collection of data items.
-A~sorted list of integers stored in an array is an
+A sorted list of integers stored in an array is an
 example of such a structuring.
+These ideas are explored further in Module :numref:`<ADT>`.
 
 Given sufficient space to store a collection of data items, it is
 always possible to search for specified items within the collection,
@@ -137,20 +129,23 @@ A solution is said to be :dfn:`efficient`
 if it solves the problem within the required
 :dfn:`resource constraints`.
 Examples of resource constraints include the total space available to
-store the data --- possibly divided into separate main memory and disk
-space constraints --- and the time allowed to perform each subtask.
+store the data |---| possibly divided into separate main memory and disk
+space constraints |---| and the time allowed to perform each subtask.
 A solution is sometimes said to be
 efficient if it requires fewer resources than known alternatives,
 regardless of whether it meets any particular requirements.
-The~\defit{cost}\index{cost} of a solution is the
+The :dfn:`cost` of a solution is the
 amount of resources that the solution consumes.
 Most often, cost is measured in terms of one key resource such as
 time, with the implied assumption that the solution meets the other
 resource constraints.
 
+Selecting a Data Structure
+--------------------------
+
 It should go without saying that people write programs to
 solve problems.
-However, sometimes people forget this,.
+However, sometimes people forget this.
 So it is crucial to keep this truism in mind when selecting a
 data structure to solve a particular problem.
 Only by first analyzing the problem to determine the performance
@@ -159,7 +154,7 @@ right data structure for the job.
 Poor program designers ignore this analysis step
 and apply a data structure that they are familiar with but which is
 inappropriate to the problem.
-The~result is typically a slow program.
+The result is typically a slow program.
 Conversely, there is no sense in adopting a complex representation to
 "improve" a program that can meet its performance goals when
 implemented using a simpler design.
@@ -224,7 +219,8 @@ must account for this.
 Only after a careful analysis of your problem's characteristics can
 you determine the best data structure for the task.
 
-   **Example:**
+.. topic:: Example
+
    A bank must support many types of transactions with its customers, but 
    we will examine a simple model where customers wish to open accounts,
    close accounts, and add money or withdraw money from accounts.
@@ -287,7 +283,8 @@ you determine the best data structure for the task.
    Such reorganization can occur offline so as not to affect ATM
    transactions.
 
-   **Example:**
+.. topic:: Example
+
    A company is developing a database system containing information
    about cities and towns in the United States.
    There are many thousands of cities and towns, and the database
@@ -321,3 +318,8 @@ you determine the best data structure for the task.
    appropriate if the database is created once, and then never
    changed, such as an atlas distributed on a CD or accessed from a
    website.
+
+.. TODO::
+   :type: Exercise
+
+   Create a battery of summary questions.

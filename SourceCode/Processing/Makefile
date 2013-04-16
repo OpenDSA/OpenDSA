@@ -2,6 +2,7 @@
 # This isn't quite running unit tests, but the effect should be similar.
 PROCESS = ~/processing-2.0b8/processing-java
 BUILD = c:/Cliff/OpenDSA/Sourcecode/Processing/build
+#BUILD = /home/shaffer/OpenDSA/SourceCode/Processing/build
 
 all: Demo Trees Sorting Graphs
 
@@ -11,6 +12,8 @@ clean:
 
 Demo: UpDown
 
+Misc: Fact TOH Fibonnaci Largest
+
 UpDown: 
 	@echo "UpDown Test"
 	-@rm -rf build/UpDown
@@ -18,11 +21,39 @@ UpDown:
 	@cp Demo/UpDown.pde build/UpDown
 	@$(PROCESS) --run --sketch="build/UpDown" --output="build/build" --force
 
+Fact: 
+	@echo "Factorial Test"
+	-@rm -rf build/Fact
+	@mkdir build/Fact
+	@cp Misc/Fact.pde build/Fact
+	@$(PROCESS) --run --sketch="build/Fact" --output="build/build" --force
+
+TOH: 
+	@echo "TOH Test"
+	-@rm -rf build/TOH
+	@mkdir build/TOH
+	@cp Misc/TOH.pde build/TOH
+	@$(PROCESS) --run --sketch="build/TOH" --output="build/build" --force
+
+Fibonnaci: 
+	@echo "Fibonnaci Test"
+	-@rm -rf build/Fibonnaci
+	@mkdir build/Fibonnaci
+	@cp Misc/Fibonnaci.pde build/Fibonnaci
+	@$(PROCESS) --run --sketch="build/Fibonnaci" --output="build/build" --force
+
+Largest: 
+	@echo "Analysis Chapter Test"
+	-@rm -rf build/Anal
+	@mkdir build/Anal
+	@cp Misc/Anal.pde build/Anal
+	@$(PROCESS) --run --sketch="build/Anal" --output="build/build" --force
+
 Trees: GenTree UFTest
 
 Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
 
-Sorttime: InssortTime SelsortTime BubblesortTime
+Sorttime: InssortTime BubblesortTime SelsortTime
 
 Graphs: GraphDummy GraphTrav GraphTop GraphDijk GraphMCST
 
@@ -175,7 +206,7 @@ InssortTime:
 	@cp Sorting/SortTime.pde build/InssortTime/InssortTime.pde
 	@cp Sorting/Insertionsort.pde build/InssortTime
 	@cp Utils/Swap.pde build/InssortTime
-	@$(PROCESS) --run --sketch="$(BUILD)/InssortTime" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/InssortTime" --output="$(BUILD)/build" --force
 
 SelsortTime:
 	@echo "Selection Sort Timer"

@@ -1,6 +1,6 @@
-"use strict";
 /*global alert: true, ODSA */
 (function ($) {
+  "use strict";
   var jsav, // for JSAV av
       arr,  // for the JSAV array
       pseudo; // for the pseudocode display
@@ -32,11 +32,15 @@
   var setBlue = function (index) {
     arr.css(index, {"background-color": "#ddf" });
   };
-  
+
   var setGreen = function (index) {
     arr.css(index, {"background-color": "#00FF00" });
   };
-  
+
+  var setGray = function (index) {
+    arr.css(index, {"background-color": "#eee"});
+  };
+
   // Selection sort
   function selsort() {
     var i, j, bigindex;
@@ -62,14 +66,14 @@
         jsav.step();
         if (arr.value(j) > arr.value(bigindex)) {
           jsav.umsg("Found something bigger, so switch value of bigindex");
-          arr.unhighlight(bigindex);
+          setGray(bigindex);
           pseudo.setCurrentLine(5);
           bigindex = j;
           setGreen(j);
           jsav.step();
         }
         else {
-          arr.unhighlight(j);
+          setGray(j);
         }
       }
       jsav.umsg("Now swap the next biggest element into place");
@@ -80,7 +84,7 @@
       }
       jsav.step();
       jsav.umsg("Done this pass");
-      arr.unhighlight(arr.size() - i - 1);
+      setGray(arr.size() - i - 1);
       arr.css([arr.size() - i - 1], {"color": LIGHT});
       jsav.step();
     }
@@ -105,7 +109,7 @@
           endBefore: "/* *** ODSAendTag: Selectionsort *** */"});
       jsav.displayInit();
       selsort();
-      arr.unhighlight();
+      setGray();
       jsav.recorded(); // mark the end
     }
   }
