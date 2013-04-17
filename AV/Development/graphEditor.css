@@ -1,0 +1,32 @@
+#container {
+  width: 900px;
+  height: 800px;
+  border: solid green;
+}
+
+
+.jsavcontainer {
+
+	height: 1500px;
+	padding: 0px;
+	overflow: visible;
+	border: solid red;
+}
+.avcontainer{
+  overflow: visible;
+  width: auto;
+  height: auto;
+  border: solid red;
+}
+
+.jsavline{
+  height: 50px;
+}
+
+.jsavcanvas {
+	  border: solid blue;
+      width: auto;
+      height: auto;
+}
+
+
