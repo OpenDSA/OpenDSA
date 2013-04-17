@@ -13,7 +13,8 @@ int minVertex(Graph G, int[] D) {
 
 
 /* *** ODSATag: Prims *** */
-// Compute shortest path distances from s, store them in D
+// Compute shortest path distances from s, store them in D.
+// V[i] will hold the index for the vertex that is i's parent in the MCST
 void Prim(Graph G, int s, int[] D, int[] V) {
   for (int i=0; i<G.nodeCount(); i++)    // Initialize
     D[i] = INFINITY;

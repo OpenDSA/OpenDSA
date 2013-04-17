@@ -153,7 +153,7 @@ function calls, which are typically more expensive than other
 alternatives such as a ``while`` loop.
 However, the recursive approach usually provides an algorithm that is
 reasonably efficient in the sense discussed in Module
-:numref:`<AlgAnal>`.
+:numref:`<AnalAsymptotic>`.
 If necessary, the clear, recursive solution can later be modified to
 yield a faster implementation, as described in Module
 :numref:`<ImpRecur>`.

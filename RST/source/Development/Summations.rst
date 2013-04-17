@@ -207,7 +207,7 @@ definition.
    Because we have merely guessed at a pattern and not actually proved
    that this is the correct closed form solution, we should use an
    induction proof to complete the process
-   (see Example :numref:`#FactRecurProof`). 
+   (see Example :num:`Example #FactRecurProof`). 
 
 
 .. topic:: Example

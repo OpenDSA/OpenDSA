@@ -22,7 +22,7 @@ Fibonacci number.
 
 The cost of this algorithm (in terms of function calls) is the size of
 the :math:`n`'th Fibonacci number itself, which our analysis of
-Module :numref:`<Summation>` showed to be exponential
+Module :numref:`<Summations>` showed to be exponential
 (approximately :math:`n^{1.62}` ). 
 Why is this so expensive?
 Primarily because two recursive calls are made by the

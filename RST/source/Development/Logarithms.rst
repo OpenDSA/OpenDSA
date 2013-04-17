@@ -40,7 +40,7 @@ Here are two typical uses.
    The algorithm then continues splitting the appropriate
    subarray in half until the desired value is found.
    (Binary search is described in more detail in
-   Module :numref:`<ProgTimeSec>`.)
+   Module :numref:`<AnalProgram>`.)
    How many times can an array of size \(n\) be split in half until
    only one element remains in the final subarray?
    The answer is :math:`\lceil \log_2 n \rceil` times.

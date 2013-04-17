@@ -6,9 +6,9 @@
 .. avmetadata:: 
    :author: Cliff Shaffer
    :prerequisites:
-   :topic: Heaps
+   :topic: Advanced Analysis
 
-Multlists [STUB]
-================
+Advanced Summations [STUB]
+==========================
 
 Placeholder for Crossreference
