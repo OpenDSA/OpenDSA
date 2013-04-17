@@ -10,30 +10,30 @@ void AddEdgetoMST(int v1, int v2) {
 
 void test(Graph G) {
   GraphCreate(G, "GraphTrav.gph");
-  int[] D = new int[G.n()];
-  int[] V = new int[G.n()];
+  int[] D = new int[G.nodeCount()];
+  int[] V = new int[G.nodeCount()];
   int i;
   out = "";
   Prim(G, 0, D, V);
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
     out = out + V[i] + " ";
   if (out.equals("0 2 2 3 2 5 5 4 2 1 0 2 3 2 5 4 ") != true) {
     println("ERROR IN Prim!!!:" + out);
     SUCCESS = false;
   }
   out = "";
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
     G.setValue(i, UNVISITED);
-  V = new int[G.n()];
+  V = new int[G.nodeCount()];
   PrimPQ(G, 0, D, V);
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
     out =  out + V[i] + " ";
   if (out.equals("0 2 2 3 2 5 5 4 2 1 0 2 3 2 5 4 ") != true) {
     println("ERROR IN PrimPQ!!!:" + out);
     SUCCESS = false;
   }
   out = "";
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
    G.setValue(i, UNVISITED);
   Kruskal(G);
   if (out.equals("5 4 3 2 2 5 2 1 0 2 ") != true) {
@@ -48,29 +48,29 @@ void test(Graph G) {
   G.removeEdge(5, 3);
 
   out = "";
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
    G.setValue(i, UNVISITED);
-  V = new int[G.n()];
+  V = new int[G.nodeCount()];
   Prim(G, 0, D, V);
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
     out = out + V[i] + " ";
   if (out.equals("0 2 2 5 5 4 2 1 0 2 5 0 5 4 ") != true) {
     println("ERROR IN Prim disconnect test!!!:" + out);
     SUCCESS = false;
   }
   out = "";
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
    G.setValue(i, UNVISITED);
-  V = new int[G.n()];
+  V = new int[G.nodeCount()];
   PrimPQ(G, 0, D, V);
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
     out =  out + V[i] + " ";
   if (out.equals("0 2 2 5 5 4 2 1 0 2 5 0 5 4 ") != true) {
     println("ERROR IN PrimPQ disconnect test!!!:" + out);
     SUCCESS = false;
   }
   out = "";
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
    G.setValue(i, UNVISITED);
   Kruskal(G);
   if (out.equals("4 5 5 2 1 2 2 0 ") != true) {
