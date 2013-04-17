@@ -74,3 +74,12 @@ static int binary(int[] A, int k) {
   return A.length;    // Search value not in A
 }
 /* *** ODSAendTag: bsearch *** */
+
+
+/* *** ODSATag: c3p16 *** */
+  for (i=0; i<C; i++)   // Initialize count
+     count[i] = 0;
+  for (i=0; i<P; i++)   // Look at all of the pixels
+     count[value(i)]++; // Increment a pixel value count
+  sort(count);          // Sort pixel value counts
+/* *** ODSAendTag: c3p16 *** */

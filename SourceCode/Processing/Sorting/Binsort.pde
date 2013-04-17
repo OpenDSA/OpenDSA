@@ -53,6 +53,17 @@ void simplebinsort(int[] A, int[] B) {
 /* *** ODSAendTag: simplebinsort *** */
 }
 
+
+THIS BUG IS INTENTIONAL: TEST FOR THIS CODE!
+void simplebinsort2(int[] A, int[] B) {
+  int i;
+/* *** ODSATag: simplebinsort2 *** */
+for (i=0; i<n; i++)
+  while (A[i] != i) // Swap element A[i] with A[A[i]]
+    DSutil.swap(A, i, A[i]);
+/* *** ODSAendTag: simplebinsort2 *** */
+}
+
 void setup() {
   int[] A = new int[testsize];
   int[] B = new int[testsize];
