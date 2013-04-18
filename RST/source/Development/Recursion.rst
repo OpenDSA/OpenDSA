@@ -78,11 +78,11 @@ It cannot be rewritten easily using ``while`` loops.
 .. TODO::
    :type: Figure
 
-   Put in the proper figure here
+   Replace figure with JSAV version
 
 .. _TOH:
 
-.. figure:: Images/TwoColor.png
+.. figure:: Images/TOH.png
    :width: 400
    :align: center
    :figwidth: 90%

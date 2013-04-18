@@ -301,14 +301,9 @@ A 0-path is defined to be a direct edge from :math:`v` to :math:`u`.
 Figure :num:`Figure #FloydExamp` illustrates the concept of
 :math:`k`-paths.
 
-.. TODO::
-   :type: Figure
-
-   Put in the proper figure
-
 .. _FloydExamp:
 
-.. figure:: Images/TwoColor.png
+.. figure:: Images/Floyd.png
    :width: 400
    :align: center
    :figwidth: 90%

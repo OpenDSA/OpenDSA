@@ -189,19 +189,19 @@
         "long_name": "Heaps",
         "exercises": {
           "binaryheap-insert-proficiency": {
-            "long_name": "Binary Heap Insertion",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "binaryheap-delete-proficiency": {
-            "long_name": "Binary Heap Deletion",
+            "long_name": "Binary Heap Insertion Exercise",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
           "binaryheap-buildheap-proficiency": {
-            "long_name": "Binary Heap Building",
+            "long_name": "Binary Heap Building Exercise",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binaryheap-delete-proficiency": {
+            "long_name": "Binary Heap Deletion Exercise",
             "required": false,
             "points": 0.0,
             "threshold": 1.0

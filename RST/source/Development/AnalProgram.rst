@@ -219,7 +219,7 @@ Figure :num:`Figure #BinSchFig` illustrates the binary search method.
 
 .. _BinSchFig:
 
-.. figure:: Images/GraphDef.png
+.. figure:: Images/BinSch.png
    :width: 500
    :align: center
    :figwidth: 90%
@@ -243,6 +243,11 @@ Figure :num:`Figure #BinSchFig` illustrates the binary search method.
    accesses would be made.
    After checking position 8, ``binary`` would return a value of
    :math:`n`, indicating that the search is unsuccessful.
+
+.. TODO::
+   :type: Figure
+
+   Redo this figure using JSAV
 
 Here is an implementation for binary search.
 
