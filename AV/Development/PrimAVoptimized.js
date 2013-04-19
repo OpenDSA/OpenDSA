@@ -46,13 +46,13 @@
   function minVertex(D) {
     var v = Infinity;
     var i;
-    for(i = 0; i < graph.nodes().length; i++) {
+    for(i = 0; i < graph.nodeCount(); i++) {
       if(!graph.nodes()[i].hasClass("marked")) {
 	v = i;
 	break;
       }
     }
-    for(i = 0; i < graph.nodes().length; i++) {
+    for(i = 0; i < graph.nodeCount(); i++) {
       if(!(graph.nodes()[i].hasClass("marked")) && D[i] <D [v]){
 	v = i;
       }
@@ -69,15 +69,15 @@
     var weight;             // The weight of the edge by which the distance value of a node will be updated
     var edges = [];           // Edges in the MST
     var minNode = [];         // Nodes in the MST by which other nodes outside the MST got their minimum distance 
-    for(var i = 0; i < graph.nodes().length; i++) {
+    for(var i = 0; i < graph.nodeCount(); i++) {
       D[i]=Infinity;
     }
-    for(var i = 0; i < graph.nodes().length; i++) {
+    for(var i = 0; i < graph.nodeCount(); i++) {
       minNode[i] = Infinity;
     }
     D[s] = 0;
     minNode[s] = 0;
-    for(var i = 0; i < graph.nodes().length; i++){
+    for(var i = 0; i < graph.nodeCount(); i++){
       v = minVertex(D);
       markIt(graph.nodes()[v]);
       if(v!=s){
