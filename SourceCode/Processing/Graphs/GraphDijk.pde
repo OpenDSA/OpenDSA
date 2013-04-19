@@ -6,21 +6,21 @@ Boolean SUCCESS = true;
 
 void test(Graph G) {
   GraphCreate(G, "GraphDijk.gph");
-  int[] D = new int[G.n()];
+  int[] D = new int[G.nodeCount()];
   int i;
   out = "";
   Dijkstra(G, 0, D);
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
     out = out + D[i] + " ";
   if (out.equals("0 5 3 10 18 ") != true) {
     println("ERROR IN Dijkstra!!!:" + out);
     SUCCESS = false;
   }
   out = "";
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
    G.setValue(i, UNVISITED);
   DijkstraPQ(G, 0, D);
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
     out = out + D[i] + " ";
   if (out.equals("0 5 3 10 18 ") != true) {
     println("ERROR IN DijkstraPQ!!!:" + out);
@@ -32,22 +32,22 @@ void test(Graph G) {
   G.removeEdge(3, 4);
 
   out = "";
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
    G.setValue(i, UNVISITED);
   Dijkstra(G, 0, D);
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
     out = out + D[i] + " ";
   if (out.equals("0 5 3 10 2147483647 ") != true) {
     println("ERROR IN Dijkstra!!!:" + out);
     SUCCESS = false;
   }
   out = "";
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
    G.setValue(i, UNVISITED);
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
    G.setValue(i, UNVISITED);
   DijkstraPQ(G, 0, D);
-  for (i=0; i<G.n(); i++)
+  for (i=0; i<G.nodeCount(); i++)
     out = out + D[i] + " ";
   if (out.equals("0 5 3 10 2147483647 ") != true) {
     println("ERROR IN DijkstraPQ!!!:" + out);

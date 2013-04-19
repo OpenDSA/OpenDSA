@@ -1,9 +1,9 @@
 /* *** ODSATag: TopsortDFS *** */
 void topsortDFS(Graph G) {
   int v;
-  for (v=0; v<G.n(); v++)
+  for (v=0; v<G.nodeCount(); v++)
     G.setValue(v, null); // Initialize
-  for (v=0; v<G.n(); v++)
+  for (v=0; v<G.nodeCount(); v++)
     if (G.getValue(v) != VISITED)
       tophelp(G, v);
 }

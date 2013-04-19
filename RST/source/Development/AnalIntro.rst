@@ -8,48 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Introduction to Algorithm Analysis [Text]
-=========================================
-
-How long will it take to process the company payroll once we complete
-our planned merger?
-Should I buy a new payroll program from vendor X or vendor Y?
-If a particular program is slow, is it badly implemented or is it
-solving a hard problem?
-Questions like these ask us to consider the difficulty of a problem,
-or the relative efficiency of two or more approaches to solving a
-problem.
-
-This chapter introduces the motivation, basic notation, and
-fundamental techniques of algorithm analysis.
-We focus on a methodology known as
-:dfn:`asymptotic algorithm analysis`, or simply
-:dfn:`asymptotic analysis`.
-Asymptotic analysis attempts to estimate the resource
-consumption of an algorithm.
-It allows us to compare the relative costs of two or more
-algorithms for solving the same problem.
-Asymptotic analysis also gives algorithm designers a tool for
-estimating whether a proposed solution is likely to meet the resource
-constraints for a problem before they implement an actual
-program.
-After reading this chapter, you should understand
-
-* the concept of a growth rate
-  the rate at which the cost of an algorithm grows
-  as the size of its input grows;
-
-* the concept of upper and lower bounds for a
-  growth rate, and how to estimate these bounds for a simple program,
-  algorithm, or problem; and\index{estimation}
-
-* the difference between the cost of an algorithm
-  (or program) and the cost of a problem.
-
-The chapter concludes with a brief discussion of the
-practical difficulties encountered when empirically measuring the cost
-of a program, and some principles for code tuning
-to improve program efficiency.
+Comparing Algorithms
+====================
 
 How do you compare two algorithms for solving some problem in terms
 of efficiency?
@@ -61,7 +21,7 @@ First, there is the effort involved in programming and testing two
 algorithms when at best you want to keep only one.
 Second, when empirically comparing two algorithms there
 is always the chance that one of the programs was "better written"
-than the other, and therefor the relative qualities of the underlying
+than the other, and therefore the relative qualities of the underlying
 algorithms are not truly represented by their implementations.
 This can easily occur when the programmer has a bias
 regarding the algorithms.
@@ -114,9 +74,10 @@ constraints on a particular computer, all of these factors can be
 relevant.
 Yet, none of these factors address the differences between
 two algorithms or data structures.
-To be fair, programs derived from two algorithms for solving the same
-problem should both be compiled with the same compiler
-and run on the same computer under the same conditions.
+To be fair, if you want to compare two programs derived from two
+algorithms for solving the same problem, they should both be compiled
+with the same compiler and run on the same computer under the same
+conditions.
 As much as possible, the same amount of care should be taken in
 the programming effort devoted to each program to make the
 implementations "equally efficient".
@@ -125,14 +86,16 @@ out of the comparison because they apply to both algorithms equally.
 
 If you truly wish to understand the running time of an algorithm,
 there are other factors that are more appropriate to consider than
-machine speed, programming language, compiler, and so
-forth.
+machine speed, programming language, compiler, and so forth.
 Ideally we would measure the running time of the algorithm under
 standard benchmark conditions.
 However, we have no way to calculate the running time reliably other
 than to run an implementation of the algorithm on some computer.
 The only alternative is to use some other measure as a surrogate for
 running time.
+
+Basic Operations and Input Size
+-------------------------------
 
 Of primary consideration when estimating an algorithm's performance
 is the number of :dfn:`basic operations` required by
@@ -177,7 +140,7 @@ because the cost depends on the value of :math:`n`
    Because the most important factor affecting running time is
    normally size of the input, for a given input size :math:`n` we
    often express the time :math:`\mathbf{T}` to  run the algorithm as
-   a function of :math:`n`, written as :math:`\mathbf{T}(n).
+   a function of :math:`n`, written as :math:`\mathbf{T}(n)`.
    We will always assume :math:`\mathbf{T}(n)` is a non-negative
    value.
 
@@ -251,6 +214,17 @@ because the cost depends on the value of :math:`n`
    Thus, we say that the running time is
    :math:`\mathbf{T}(n) = c_2 n^2`.
 
+Growth Rates
+------------
+
+The :dfn:`growth rate` for an algorithm is the rate at which the cost
+of the algorithm grows as the size of its input grows.
+Figure :num:`Figure #RunTimeGraph` shows a graph for six equations,
+each meant to describe the running time for a particular program or
+algorithm.
+A variety of growth rates that are representative of typical
+algorithms are shown.
+
 .. _RunTimeGraph:
 
 .. figure:: Images/plot.png
@@ -267,13 +241,6 @@ because the cost depends on the value of :math:`n`
    The vertical axis can represent time, space, or any other measure of
    cost.
 
-The :dfn:`growth rate` for an algorithm is the rate at which the cost
-of the algorithm grows as the size of its input grows.
-Figure :num:`Figure #RunTimeGraph` shows a graph for six equations,
-each meant to describe the running time for a particular program or
-algorithm.
-A variety of growth rates representative of typical
-algorithms are shown.
 The two equations labeled :math:`10n` and :math:`20n` are graphed by
 straight lines.
 A growth rate of :math:`cn` (for :math:`c` any positive constant) is
@@ -359,3 +326,8 @@ resources consumed by an algorithm.
    \mathsf{30 \cdot 2^{30} \approx 2^{35}} &
    \mathsf{2^{60}} & \mathsf{2^{90}} & \mathsf{2^{1 {\rm G}}}\\
    \end{array}
+
+.. TODO::
+   :type: Exercise
+
+   Write a battery of summary questions

@@ -24,6 +24,11 @@ For answers to these questions, we can turn to empirical testing.
 .. What follows is a hack with a non-visible image to get use of the
 .. figure directive. We should fix this.
 
+.. TODO::
+   :type: Table
+
+   Use proper directive for following table, no dummy figure
+
 .. _SortCompTable:
 
 .. figure:: Images/PtrSwap.png

@@ -31,6 +31,11 @@ integers 7, 11, and 42.
 In this case, :math:`\mathbf{P}`'s members are 7, 11, and 42, and the
 base type is integer.
 
+.. TODO::
+   :type: Table
+
+   Use proper directive for following table, no dummy figure
+
 .. _SetNotation:
 
 .. figure:: Images/PtrSwap.png

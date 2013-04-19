@@ -39,7 +39,7 @@ This simplifies the analysis and keeps us thinking about the most
 important aspect: the growth rate.
 This is called :dfn:`asymptotic algorithm analysis`.
 To be precise, asymptotic analysis refers to the study of an
-algorithm as the input size ``gets big'' or reaches
+algorithm as the input size "gets big" or reaches
 a limit (in the calculus sense).
 However, it has proved to be so useful to ignore all constant factors
 that asymptotic analysis is used for most algorithm comparisons.
@@ -236,8 +236,8 @@ definition of big-Oh.
    Therefore, :math:`\mathbf{T}(n)` is in :math:`\Omega(n^2)` by the
    definition. 
 
-It is also true that the equation of Example AAnalEx_ is in
-:math:`\Omega(n)`.
+It is also true that the equation of Example :num:`Example #AAnalEx`
+is in :math:`\Omega(n)`.
 However, as with big-Oh notation, we wish to get the "tightest"
 (for :math:`\Omega` notation, the largest) bound possible.
 Thus, we prefer to say that this running time is in :math:`\Omega(n^2)`.
@@ -262,7 +262,7 @@ When the upper and lower bounds are the same within a constant factor,
 we indicate this by using :math:`\Theta` (big-Theta) notation.
 An algorithm is said to be :math:`\Theta(h(n))` if it is in
 :math:`O(h(n))` *and* it is in :math:`\Omega(h(n))`.
-Note that we drop the word ``in'' for :math:`\Theta` notation,
+Note that we drop the word "in" for :math:`\Theta` notation,
 because there is a strict equality for two equations with the
 same :math:`\Theta`.
 In other words, if :math:`f(n)` is :math:`\Theta(g(n))`, then

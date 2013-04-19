@@ -15,8 +15,8 @@ Consider the problem of finding the factorial of :math:`n`.
 For this problem, there is only one input of a given "size" (that
 is, there is only a single instance for each size of :math:`n`).
 Now consider our largest-value sequential search
-algorithm of Example SeqMax_ , which always examines every
-array value.
+algorithm of Example :num:`Example #SeqMax`, which always examines
+every array value.
 This algorithm works on many inputs of a given size :math:`n`.
 That is, there are many possible arrays of any given size.
 However, no matter what array of size :math:`n` that the algorithm
@@ -33,8 +33,8 @@ at the first position in the array and looks at each value in turn
 until :math:`K` is found.
 Once :math:`K` is found, the algorithm stops.
 This is different from the largest-value sequential search
-algorithm of Example SeqMax_ , which always examines every array
-value.
+algorithm of Example :num:`Example #SeqMax`, which always examines
+every array value.
 
 There is a wide range of possible running
 times for the sequential search algorithm.

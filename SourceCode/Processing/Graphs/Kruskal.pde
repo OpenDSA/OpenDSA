@@ -1,17 +1,17 @@
 /* *** ODSATag: Kruskal *** */
 // Kruskal's MST algorithm
 void Kruskal(Graph G) {
-  ParPtrTree A = new ParPtrTree(G.n()); // Equivalence array
-  KVPair[] E = new KVPair[G.e()];       // Minheap array
+  ParPtrTree A = new ParPtrTree(G.nodeCount()); // Equivalence array
+  KVPair[] E = new KVPair[G.edgeCount()];       // Minheap array
   int edgecnt = 0; // Count of edges
 
-  for (int i=0; i<G.n(); i++) {         // Put edges in the array
+  for (int i=0; i<G.nodeCount(); i++) {         // Put edges in the array
     int[] nList = G.neighbors(i);
     for (int w=0; w<nList.length; w++)
       E[edgecnt++] = new KVPair(G.weight(i, nList[w]), new int[]{i,nList[w]});
   }
   MinHeap H = new MinHeap(E, edgecnt, edgecnt);
-  int numMST = G.n();                   // Initially n disjoint classes
+  int numMST = G.nodeCount();                   // Initially n disjoint classes
   for (int i=0; numMST>1; i++) {        // Combine equivalence classes
     KVPair temp = H.removemin();        // Next cheapest edge
     if (temp == null) return;           // Must have disconnected vertices

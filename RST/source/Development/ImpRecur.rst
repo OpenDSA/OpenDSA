@@ -6,9 +6,9 @@
 .. avmetadata:: 
    :author: Cliff Shaffer
    :prerequisites:
-   :topic: Heaps
+   :topic: Linear Structures
 
-Multlists [STUB]
-================
+Implementing Recursion [STUB]
+=============================
 
 Placeholder for Crossreference

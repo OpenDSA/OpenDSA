@@ -3,12 +3,12 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
-   :topic: Heaps
+   :topic: Search
 
-Multlists [STUB]
-================
+Self-organizing Lists [STUB]
+============================
 
-Placeholder for Crossreference
+Placeholder.

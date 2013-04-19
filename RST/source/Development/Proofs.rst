@@ -300,7 +300,7 @@ right-hand side of the original theorem.
 
       \sum_{i=1}^n (2i - 1) = n^2.
 
-.. :FactRecurProof_
+.. _FactRecurProof:
 
 .. topic:: Example
 
@@ -389,9 +389,10 @@ induction hypothesis.
 
 .. _TwoColor:
 
-.. figure:: Images/TwoColor.png
+.. odsafig:: Images/TwoColor.png
    :width: 400
    :align: center
+   :capalign: center
    :figwidth: 90%
    :alt: A two-coloring for three lines in the plane
 

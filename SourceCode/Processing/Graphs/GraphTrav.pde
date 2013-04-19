@@ -38,9 +38,9 @@ void test(Graph G) {
 
 void graphTraverseBFS(Graph G) {
   int v;
-  for (v=0; v<G.n(); v++)
+  for (v=0; v<G.nodeCount(); v++)
     G.setValue(v, null); // Initialize
-  for (v=0; v<G.n(); v++)
+  for (v=0; v<G.nodeCount(); v++)
     if (G.getValue(v) != VISITED)
       doTraversalBFS(G, v);
 }
@@ -48,9 +48,9 @@ void graphTraverseBFS(Graph G) {
 /* *** ODSATag: GraphTrav *** */
 void graphTraverse(Graph G) {
   int v;
-  for (v=0; v<G.n(); v++)
+  for (v=0; v<G.nodeCount(); v++)
     G.setValue(v, null); // Initialize
-  for (v=0; v<G.n(); v++)
+  for (v=0; v<G.nodeCount(); v++)
     if (G.getValue(v) != VISITED)
       doTraversal(G, v);
 }

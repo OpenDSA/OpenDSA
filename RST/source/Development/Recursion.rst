@@ -78,11 +78,11 @@ It cannot be rewritten easily using ``while`` loops.
 .. TODO::
    :type: Figure
 
-   Put in the proper figure here
+   Replace figure with JSAV version
 
 .. _TOH:
 
-.. figure:: Images/TwoColor.png
+.. figure:: Images/TOH.png
    :width: 400
    :align: center
    :figwidth: 90%
@@ -153,7 +153,7 @@ function calls, which are typically more expensive than other
 alternatives such as a ``while`` loop.
 However, the recursive approach usually provides an algorithm that is
 reasonably efficient in the sense discussed in Module
-:numref:`<AlgAnal>`.
+:numref:`<AnalAsymptotic>`.
 If necessary, the clear, recursive solution can later be modified to
 yield a faster implementation, as described in Module
 :numref:`<ImpRecur>`.

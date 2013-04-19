@@ -162,6 +162,8 @@ One approach is to :dfn:`expand` the recurrence by replacing any
 occurrences of :math:`\mathbf{T}` on the right-hand side with its
 definition.
 
+.. _FactRecurSol:
+
 .. topic:: Example
 
    If we expand the recurrence
@@ -205,7 +207,7 @@ definition.
    Because we have merely guessed at a pattern and not actually proved
    that this is the correct closed form solution, we should use an
    induction proof to complete the process
-   (see Example :numref:`#FactRecurProof`). 
+   (see Example :num:`Example #FactRecurProof`). 
 
 
 .. topic:: Example

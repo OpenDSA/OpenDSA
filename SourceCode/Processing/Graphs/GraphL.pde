@@ -31,10 +31,10 @@ class GraphL implements Graph {
   }
 
   // Return the number of vertices
-  int n() { return nodeArray.length; }
+  int nodeCount() { return nodeArray.length; }
 
   // Return the current number of edges
-  int e() { return numEdge; }
+  int edgeCount() { return numEdge; }
 
   // Get the value of node with index v
   Object getValue(int v) { return nodeValues[v]; }

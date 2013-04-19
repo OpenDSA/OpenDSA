@@ -1,0 +1,341 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Window Click</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="Window Click" charset="utf-8" />
+  <link href="../../lib/odsaAV-min.css" title="CSS" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="graphEditor.css" type="text/css" />
+ 
+</head>
+<body>
+ <!-- 
+	<div style="float:left; width:95%; height:1500px;" id="av">
+	<p class="jsavoutput jsavline"></p> 
+	</div> 
+ -->   
+ <div id="container">
+  <table class="headerTable">
+    <tr>
+      <td class="headerLeft">
+        <input type="button" id="help" name="help" value="Help" />
+      </td>
+      <td class="headerCenter">
+        <h1>Window Click</h1>
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+      </td>
+    </tr>
+  </table>
+  
+  <form id="ssperform">
+    <p>
+      <input type="button" id="runit" name="runit" value="Run" />
+      <input type="button" id="reset" name="reset" value="Reset" />
+	  <input type="checkbox" id ="chkbox"/><label for = "chkbox">Directed</label>
+	  
+	  <label for="graphsize">&nbsp;Graph size:&nbsp;</label>
+      <select id="graphsize">
+		<option value="3">3</option>
+		<option value="4">4</option>
+        <option value="5">5</option>
+		<option value="6">6</option>
+        <option value="7">7</option>
+	  </select>
+	  
+	<!--  <select id="numberNodes">
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="7">7</option>
+       </select>
+	-->   
+    </p>
+  </form>
+  
+  <div class="avcontainer">
+    <span class="jsavcounter"></span>
+    <div class="jsavcontrols"></div>
+    <p class="jsavoutput jsavline"></p>
+	
+  </div>
+  
+ 
+</div> 
+ 
+ 
+ 
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+
+<!--<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/odsaUtils-min.js"></script>
+<script src="../../lib/odsaAV-min.js"></script>
+  -->
+
+  <script>
+      
+
+    
+    var caption_text = "";
+    var xcanvas, ycanvas, canW, canH;
+    var winwidth, winheight;
+    var j = 0; 
+   // var isChecked = false;
+	
+	//console.log("ischecked " + cll);
+	
+ // Get Viewport width and height:
+    if (typeof window.innerWidth != 'undefined') {
+          winwidth = window.innerWidth,     
+          winheight = window.innerHeight;
+    }
+		// When using IE 8,7,6,5	  
+    else if (typeof document.documentElement != 'undefined'     
+             && typeof document.documentElement.clientWidth !='undefined' 
+             && document.documentElement.clientWidth != 0) {
+                 winwidth = document.documentElement.clientWidth, 
+                 winheight = document.documentElement.clientHeight;
+    }
+	else {   
+          winwidth = document.getElementsByTagName('body')[0].clientWidth,      
+          winheight = document.getElementsByTagName('body')[0].clientHeight;
+    }  
+    
+	
+	
+    $('avcontainer').css({'width': winwidth}); 
+	//$('jsavcontainer').css({'width': winwidth});
+	//$('jsavcanvas').css({'width': winwidth});
+   	
+	xcanvas = winwidth/2;
+	ycanvas = 0;
+	canH =  winheight*2/3 ; 
+	canW = winwidth/3;
+	// var rect = jsav.g.rect(xcanvas, ycanvas, canW, canH);
+    // Initialize arrays to hold points
+    var keyX = new Array(10);
+    var keyY = new Array(10);
+    var points = [];   
+    var pcount =0; 
+	
+	function findPos(obj) {
+		var curleft = curtop = 0;
+		if (obj.offsetParent) {
+		do {
+			curleft += obj.offsetLeft;
+			curtop += obj.offsetTop;
+		} while (obj = obj.offsetParent);
+			return [curleft,curtop];
+		}
+	}
+   
+   
+    // Struct type container to hold id and x,y position of nodes   
+	function node(id, x, y) {
+		this.id = id;
+		this.x = x;
+		this.y = y;
+	}
+	//Struct type container to hold the x,y positions of a previous click
+	function storeClick(x,y) {
+    	this.x = x;
+		this.y = y;
+	}
+	
+	function getStoredNode() {
+		
+	}
+	function getClick(preClick) {
+	 
+	
+	}
+	
+	function getGraphNodeOne(graphNodes, preClick, x, y) {
+		var	clickedX = preClick[0].x;
+		var clickedY = preClick[0].y;
+		for(var i = 0; i < graphNodes.length; i++) {
+			realX = graphNodes[i].x;
+			realY = graphNodes[i].y;
+				if(realX  + 25 >= clickedX && realX - 25 <= clickedX && realY + 25 >= clickedY && realY - 25 <= clickedY) {
+		    		//console.log("X: " + realX + "  Y: " + realY);
+					return graphNodes[i].id;
+				}
+		}
+		return null;
+		jsav.umsg("---- Click on the first node you want to connect ----");
+		//jsav.alert("click inside a null");
+		console.log("X: " + x + "     Y: " + y);
+		console.log("Did not find node here");
+		
+	}
+	
+	
+    function getGraphNode(graphNodes, x, y) {
+		var realX;
+		var realY;
+		for(var i = 0; i < graphNodes.length; i++) {
+			realX = graphNodes[i].x;
+			realY = graphNodes[i].y;
+			console.log("GET GRAPH NODE:   X: " + x + "  Y: " + y);
+			console.log("GET GRAPH NODE:   realX: " + realX + "  realY: " + realY);
+				if(realX + 25 >= x && realX - 25 <= x && realY + 25 >= y && realY - 25 <= y) {
+		    		console.log("GET GRAPH NODE:   X: " + realX + "  Y: " + realY);
+					return graphNodes[i].id;
+				}
+		}
+		return null;
+		jsav.umsg("---- Click on the second node you want to connect ----");
+		console.log("Click on a node in the graph");
+    }
+    
+	// Returns whether checkbox is checked?
+	// I don't think I need this---html should be able to handle this instead of me!??
+	function isChecked(){
+	///console.log("ischecked");
+	var checkbox = document.getElementById('chkbox');
+	//var d=document.getElementById('terms_div');
+		if (checkbox.checked) {
+			return true;
+		} else { 
+			return false;
+		}
+	}
+   
+    // Return the number of nodes selected from the drop down menu?
+	// I do not know if I need this--html can return this value to .js instead of me handling it?!?
+	function numberOfNodes() {
+		var elem = document.getElementById('graphsize');
+		var elem2 =  elem.options[elem.selectedIndex].value;
+		return elem2;
+	}
+   
+   
+   
+	// Global variables?????
+	
+	var click = false;
+	var cll = isChecked();
+	jsav = new JSAV($('.avcontainer'));  
+	//jsav = new JSAV($('.jsavcontainer'));  
+    var g = jsav.ds.graph({width: 800, height: 500, layout: "manual", directed: cll});
+	var i = 0; 
+	var graphNodes = new Array();
+	var preClick = new Array();
+	var graphSize = numberOfNodes();
+	jsav.umsg("graphsize: " + graphSize);
+ // START MAKING CHANGES HERE... ATTEMPT TO CAPTURE CLICK AND DRAW A NODE.  
+  
+	jQuery(document).ready(function(){$('.avcontainer').click(function(e){
+	//jQuery(document).ready(function(){$('.jsavcontainer').click(function(e){
+	
+			//console.log("nodes: " + numberNodes);
+			var parentOffset = $(this).parent();
+			//var x = e.pageX - objPos[0]-10;                                //this.offsetLeft; // - window.scrollMaxX ;
+			//var y = e.pageY - objPos[1]-80;    
+			var x = e.pageX ;                               //this.offsetLeft; // - window.scrollMaxX ;
+			var y = e.pageY ;  		//this.offsetTop; //window.scrollMaxY;
+			
+			if(i<graphSize) {
+				console.log("B4 displacement " + x + "   " + y);
+				g.addNode(i, {"left": x - 75, "top": y-320});
+				//g.addNode(i, {"left": x, "top": y});
+				console.log("ID: " + i + "  x " + x  + "    y " + y);
+				graphNodes[i] = new node(i, x, y);
+				
+		
+				//console.log("treenodes: " + treeNodes[i].x);
+				//console.log("i " + i);
+				i++;
+				console.log("i after i++ " + i);
+				//g.addNode(i, {"left": x, "top": y});
+			}
+			
+			if(i > graphSize) {
+				console.log("inside i >= graphsize:   " + graphSize);
+				console.log("Click inside i >=5: "+ click);
+				if(i===graphSize + 1 && !click) {
+					preClick[0] = new storeClick(x,y);
+					click = !click;
+					i++;
+				}
+				else if(i > graphSize && click) {
+					var nodeOne = getGraphNodeOne(graphNodes, preClick, x, y);
+					var nodeTwo = getGraphNode(graphNodes, x, y);
+					
+					if(nodeOne === null || nodeTwo === null) {
+						jsav.umsg("Must click on a node -- Try again");
+						click = !click;
+						
+					}
+					//Also need to check if there is already an edge connecting two nodes
+					
+					else if (g.nodes()[nodeOne].value() === g.nodes()[nodeTwo].value()) {
+						jsav.umsg("Can not connect a node to itself");
+					}
+					
+					else {
+						
+					
+						
+					//console.log("nodeOne id: " + g.nodes()[nodeOne].value());
+						g.addEdge(g.nodes()[nodeOne],g.nodes()[nodeTwo]);
+						jsav.umsg("Connected node " + g.nodes()[nodeOne].value() + " to node " + g.nodes()[nodeTwo].value());
+						g.layout();
+						click = !click;
+					//preClick[0] = new storeClick(x,y);
+					//click = !click;
+					//console.log("click: " + click);
+					}
+				}
+				else {
+					console.log("inside else for edges");
+					
+					preClick[0] = new storeClick(x,y);
+					click = !click;
+					
+					//var nodeOne = getTreeNodeOne(treeNodes, preClick, x, y);
+					//var nodeTwo = getTreeNode(treeNodes, x, y);
+					//console.log(g.nodes()[nodeOne].value);
+					//g.addEdge(g.nodes()[nodeOne],g.nodes()[nodeTwo]);
+					//g.addEdge(g.nodes()[1],g.nodes()[2]);
+					//g.addEdge(g.nodes()[0],g.nodes()[3]);
+					//g.layout();
+					//click = !click;
+					//console.log("click in else: " + click);
+					//i++;
+					//jsav.displayInit();
+					//jsav.recorded();
+					//	console.log("Node[0]: " + g.nodes()[].value() + "   Node[1]: " + g.nodes()[1].value());
+				}
+				
+		
+			}
+			if(i==graphSize) {
+				i++;
+			}
+			
+
+		}
+	   ); 
+    }
+	)
+//jsav.recorded(); // done recording changes, will rewind
+
+  $(".jsavtreenode").live("hover", function() {
+	//console.log($(this).text(), $(this).offset().left, $(this).offset().top);
+    });
+    $("path").live("hover", function() {
+	//console.log($(this).attr("d"));
+    });
+
+  </script>
+ 
+  
+  </body>
+</html>

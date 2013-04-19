@@ -22,7 +22,7 @@ Fibonacci number.
 
 The cost of this algorithm (in terms of function calls) is the size of
 the :math:`n`'th Fibonacci number itself, which our analysis of
-Module :numref:`<Summation>` showed to be exponential
+Module :numref:`<Summations>` showed to be exponential
 (approximately :math:`n^{1.62}` ). 
 Why is this so expensive?
 Primarily because two recursive calls are made by the
@@ -301,14 +301,9 @@ A 0-path is defined to be a direct edge from :math:`v` to :math:`u`.
 Figure :num:`Figure #FloydExamp` illustrates the concept of
 :math:`k`-paths.
 
-.. TODO::
-   :type: Figure
-
-   Put in the proper figure
-
 .. _FloydExamp:
 
-.. figure:: Images/TwoColor.png
+.. figure:: Images/Floyd.png
    :width: 400
    :align: center
    :figwidth: 90%
