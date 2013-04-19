@@ -155,7 +155,6 @@ SYNOPSIS::
        :points: {number}
        :required: true|false
        :threshold: {number}
-       :target: {string}
        :align: left|right|center|justify|inherit
 
 DESCRIPTION
@@ -193,10 +192,6 @@ DESCRIPTION
 
       Threshold number of points required for credit.
       **Added automatically by the configuration process, do NOT add manually.**
-
-    ``:target: {string}``
-
-      The label of the AV it is used for cross referencing. It is the id of the AV (HTML) anchor.
 
 
     ``:align: left|right|center|justify|inherit``
@@ -375,9 +370,11 @@ topic (special case)
 --------------------
 
 The syntax of the  ``topic`` is not changed in OpenDSA. We are using the directive to display
-``examples``.
-To include an example in your module, just use the keyword ``Example`` as topic title.
-The example can be referenced using standard Sphinx mechanism, for numbered reference,
+``examples, tables, and theorems``.
+To insert an example in your module, just use the keyword ``Example`` as topic title.
+To insert a table in your module, just use the keyword ``Table`` followed by the caption of the table as topic title.
+To insert a theorem in your module, just use the keyword ``Theorem`` as topic title.
+The example/table/theorem can be referenced using standard Sphinx mechanism, for numbered reference,
 use the ``:num:`` directive.
 
 EXAMPLE::

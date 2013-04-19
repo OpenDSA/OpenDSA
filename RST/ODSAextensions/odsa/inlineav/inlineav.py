@@ -15,15 +15,63 @@
 __author__ = 'breakid'
 
 from docutils import nodes
+from docutils.nodes import General, Element, caption, Text, figure
 from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
+from docutils.parsers.rst.directives.images import Figure, Image
 import os, sys
 sys.path.append(os.path.abspath('./source'))
 import conf
 import re
 import json
 
+
+
+#InlineAV diagram Element class
+class av_dgm(Element): pass
+
+
+def visit_av_dgm_html(self, node):
+    self.body.append(self.starttag(node, 'div', CLASS='divdgm'))
+
+
+def depart_av_dgm_html(self, node):
+    self.body.append('</div>\n')
+
+def doctree_read(app, doctree):
+    # first generate figure numbers for each figure
+    env = app.builder.env
+
+    json_data = loadTable()
+    i = getattr(env, 'i', 1)
+    figids = getattr(env, 'figids', {})
+    figid_docname_map = getattr(env, 'figid_docname_map', {})
+    module = ''
+    num_module = 0
+    for avdgm_info in doctree.traverse(Element):  #av_dgm):
+        if env.docname != module:
+           i = 1
+        if  env.docname in json_data:
+            module = env.docname
+            num_module = json_data[env.docname]
+        if isinstance( avdgm_info, av_dgm ):
+            for cap in avdgm_info.traverse(caption):
+                cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
+                #figids_1[env.docname]= '%s.%d' %(num_module, i)
+            for id in avdgm_info['ids']:
+                figids[id] = i
+                figid_docname_map[id] = env.docname
+            i += 1
+        if isinstance( avdgm_info, figure ):
+            i += 1
+
+    env.figid_docname_map = figid_docname_map
+    env.i = i
+    env.figids = figids
+
 def setup(app):
+    app.connect('doctree-read', doctree_read)
+    app.add_node(av_dgm,html=(visit_av_dgm_html, depart_av_dgm_html))
     app.add_directive('inlineav',inlineav)
 
 def loadTable():
@@ -35,18 +83,8 @@ def loadTable():
    except IOError:
       print 'ERROR: No table.json file.'
 
-DIAGRAM = '''\
-%(anchor)s
-<div class="divdgm">
-<div id="%(exer_name)s">
-</div>
-%(caption)s
-<div>
-'''
-
 # div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
 SLIDESHOW = '''\
-%(anchor)s
 <a id="%(exer_name)s_exer"></a>
 <div id="%(exer_name)s" class="ssAV" data-exer-name="%(exer_name)s" data-points="%(points)s" data-threshold="%(threshold)s" data-type="%(type)s" data-required="%(required)s" data-long-name="%(long_name)s">
  <span class="jsavcounter"></span>
@@ -62,13 +100,15 @@ SLIDESHOW = '''\
   <a href="#" class="resubmit_link">Resubmit</a>
  </span>
 </div>
-%(caption)s
 '''
 
 
 def output(argument):
     """Conversion function for the "output" option."""
     return directives.choice(argument, ('show', 'hide'))
+
+
+
 
 class inlineav(Directive):
     required_arguments = 2
@@ -84,12 +124,13 @@ class inlineav(Directive):
                    'align': directives.unchanged,
                   }
     has_content = True
+
     def run(self):
         """ Restructured text extension for including inline JSAV content on module pages """
         self.options['exer_name'] = self.arguments[0]
         self.options['type'] = self.arguments[1]
         self.options['odsa_path'] = os.path.relpath(conf.odsa_path,conf.ebook_path)
-        
+ 
         if 'required' not in self.options:
           self.options['required'] = False
         
@@ -105,26 +146,6 @@ class inlineav(Directive):
         if 'align' not in self.options:
           self.options['align'] = 'center'
         
-        if 'target' not in self.options:
-          self.options['caption'] = ''
-          self.options['anchor'] = ''
-        else:
-          json_data = loadTable()
-          #efouh: Get caption.  
-          if self.content:
-              self.options['anchor'] = ''
-              self.options['caption'] = ' '.join(self.content)
-          else:
-              self.options['caption'] = ''
-
-          label = self.options['target']
-          if label in json_data:
-            xrefs = json_data[label]
-            if '#' in xrefs:
-              xrefs = xrefs[:-1]
-            numbered_label = 'Figure %s' %xrefs
-            self.options['caption'] = '<p class="caption"  style="text-align:%s;">%s: %s</p>' %(self.options['align'],numbered_label,self.options['caption']) 
-            self.options['anchor'] = '<p id="%s">' %label.lower() 
  
         if 'output' in self.options and self.options['output'] == "show":
           self.options['output_code'] = '<p class="jsavoutput jsavline"></p>'
@@ -132,10 +153,23 @@ class inlineav(Directive):
           self.options['output_code'] = ''
         
         if self.options['type'] == "dgm":
-          res = DIAGRAM % self.options
+          avdgm_node = av_dgm()
+          avdgm_node['exer_name'] = self.options['exer_name']
+          avdgm_node['ids'].append(self.options['exer_name'])
+          if self.content:
+            node = nodes.Element()          # anonymous container for parsing
+            self.state.nested_parse(self.content, self.content_offset, node)
+            first_node = node[0]
+            if isinstance(first_node, nodes.paragraph):
+                caption = nodes.caption(first_node.rawsource, '',
+                                        *first_node.children)
+                caption['align']= self.options['align']
+                avdgm_node += caption
+
+          return [avdgm_node]
         else:
           res = SLIDESHOW % self.options
-        return [nodes.raw('', res, format='html')]
+          return [nodes.raw('', res, format='html')]
 
 
 source = """\
