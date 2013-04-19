@@ -65,7 +65,6 @@
     var D = [];       // Distances to nodes
     var v;            // The current node added to the MST
     var neighbors = [];  // The neighbors of a specific node
-    var validNeighbors=[];  // Neighbors of a specific node not in the MST
     var weight;             // The weight of the edge by which the distance value of a node will be updated
     var edges = [];           // Edges in the MST
     var minNode = [];         // Nodes in the MST by which other nodes outside the MST got their minimum distance 
@@ -89,21 +88,17 @@
 	jsav.step();
       }
       neighbors=graph.nodes()[v].neighbors();
-      //Remove the neighbors already in the spanning tree
       for(var j=0;j<neighbors.length;j++){
-	if(!neighbors[j].hasClass("marked")){
-	  validNeighbors.push(neighbors[j]);
-	}
-      }
-      for(var j=0;j<validNeighbors.length;j++){
-	weight=(graph.nodes()[v].edgeTo(validNeighbors[j])).weight();
+	  if(!neighbors[j].hasClass("marked")){
+	weight=(graph.nodes()[v].edgeTo(neighbors[j])).weight();
 	//Update Distances Of neighbors not in the minimum spanning tree
-	if(weight<=D[graph.nodes().indexOf(validNeighbors[j])]){
-	  D[graph.nodes().indexOf(validNeighbors[j])]=weight;
-	  minNode[graph.nodes().indexOf(validNeighbors[j])]=v;
+	if(weight<=D[graph.nodes().indexOf(neighbors[j])]){
+	  D[graph.nodes().indexOf(neighbors[j])]=weight;
+	  minNode[graph.nodes().indexOf(neighbors[j])]=v;
+	}
 	}
       }
-      validNeighbors=[];
+      neighbors=[];
     }
     return edges;
   }
