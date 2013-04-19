@@ -4,28 +4,34 @@
 (function ($) {
   var jsav;
   var graph;
+  var mst;
 
   function runit() {
     ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
     graph = jsav.ds.graph({width: 600, height: 400, layout: "manual",
                            directed: false});
+	mst = jsav.ds.graph({width: 600, height: 400, layout: "manual",
+                           directed: false});
     initGraph();
     graph.layout();
     jsav.displayInit();
     var edges = prim(0);  // Run Prim's algorithm from start node.
-    removeEdges(edges);   // Remove extra edges that are not in spanning tree.
+	displayMST(edges);
     jsav.recorded();
   }
 
-  // Get the edge in the opposite direction of the given edge
-  function getReverseEdge(edge) {
-    for(var i=0;i<graph.edges().length;i++) {
-      if(graph.edges()[i].start() == edge.end() &&
-         graph.edges()[i].end()==edge.start()) {
-	return graph.edges()[i];
-      }
-    }
+  //Display the MST instead of the original graph
+  function displayMST(edges){
+	var i;
+	for(i=0;i<edges.length;i++){
+		mst.addEdge(mst.nodes()[graph.nodes().indexOf(edges[i].start())]
+		,mst.nodes()[graph.nodes().indexOf(edges[i].end())],
+		{"weight":edges[i].weight()});
+	}
+	graph.hide();
+	jsav.umsg("Complete minimum spanning tree");
+	mst.layout();
   }
 
   // Mark a node in the graph.
@@ -77,12 +83,9 @@
       if(v!=s){
 	//Add an edge to the MST
 	var edge=graph.getEdge(graph.nodes()[minNode[v]],graph.nodes()[v]);
-	var reverseEdge=getReverseEdge(edge);
-	edge.css({"stroke-width":"2", "stroke":"red"});
-	reverseEdge.css({"stroke-width":"2", "stroke":"red"});
+	edge.css({"stroke-width":"4", "stroke":"red"});
 	jsav.umsg("Adding the edge ("+graph.nodes()[minNode[v]].value()+","+graph.nodes()[v].value()+") to the MST");
 	edges.push(edge);
-	edges.push(reverseEdge);
 	jsav.step();
       }
       neighbors=graph.nodes()[v].neighbors();
@@ -120,7 +123,15 @@
         d = graph.addNode("D", {"left": 145, "top": 200}),
         e = graph.addNode("E", {"left": 0, "top": 300}),
         f = graph.addNode("F", {"left": 325, "top": 250});
-
+		
+	//Initialize the MST
+	var a1 = mst.addNode("A", {"left": 25,"top":50}),
+        b1 = mst.addNode("B", {"left": 325,"top":50}),
+        c1 = mst.addNode("C", {"left": 145, "top": 75}),
+        d1 = mst.addNode("D", {"left": 145, "top": 200}),
+        e1 = mst.addNode("E", {"left": 0, "top": 300}),
+        f1 = mst.addNode("F", {"left": 325, "top": 250});
+		
     var e1 = graph.addEdge(a, c,{"weight": 7}),
         e2 = graph.addEdge(a, e,{"weight": 9}),
         e3 = graph.addEdge(c, b,{"weight": 5}),
@@ -130,26 +141,7 @@
         e7 = graph.addEdge(d, f,{"weight": 2}),
         e8 = graph.addEdge(e, f,{"weight": 1});		
   }
-
- // Remove edges that are not in the minimum spanning tree
-  function removeEdges(edges) {
-	var toBeRemoved=[];
-    for (var i = 0; i < graph.edges().length; i++) {
-      for (var j = 0; j < edges.length; j++) {
-        if (graph.edges()[i] === edges[j]) {
-          break;
-        }
-      }
-      if (j === edges.length) {
-		toBeRemoved.push(graph.edges()[i]);
-      }
-    }
-	for(var k=0;k<toBeRemoved.length;k++){
-		graph.removeEdge(toBeRemoved[k].start(),toBeRemoved[k].end());
-	}
-    jsav.umsg("Complete minimum spanning tree");
-  }
-
+  
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
   $('#runit').click(runit);
