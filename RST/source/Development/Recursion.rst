@@ -171,3 +171,8 @@ subproblem solutions to form the solution to the original problem.
 This process is often implemented using recursion.
 Thus, recursion plays an important role throughout this book,
 and many more examples of recursive functions will be given.
+
+.. TODO::
+   :type: Programming Exercise
+
+   Create a series of programming exercises.

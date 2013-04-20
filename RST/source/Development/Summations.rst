@@ -53,6 +53,11 @@ the closed-form solution is :math:`n`.
 The following is a list of useful summations,
 along with their closed-form solutions.
 
+.. TODO::
+   :type: Text
+
+   These equations need numbers. Some of them need HTML target labels.
+
 .. math::
 
    \begin{eqnarray}
@@ -243,3 +248,8 @@ definition.
 
 Techniques to find closed-form solutions for recurrence relations are
 discussed in Module :numref:`<Recurrence>`.
+
+.. TODO::
+   :type: Exercise
+
+   Create a battery of summary questions.

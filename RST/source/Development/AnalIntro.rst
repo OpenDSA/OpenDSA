@@ -293,39 +293,40 @@ resources consumed by an algorithm.
 
 .. _GrowthTable:
 
-.. odsafig:: Images/GraphDef.png
-   :width: 1
-   :capalign: center
-   :figwidth: 90%
-   :alt: Costs for representative growth rates
+.. topic:: Table
 
    Costs for representative growth rates.
 
-.. math::
+   .. math::
 
-   \begin{array}{c|c|c|c|c|c|c|c}
-   \mathsf{n} & \mathsf{\log \log n} & \mathsf{\log n} & \mathsf{n} &
-   \mathsf{n \log n} & \mathsf{n^2} & \mathsf{n^3} & \mathsf{2^n}\\
-   \hline
-   \mathsf{16} & \mathsf{2} & \mathsf{4} & \mathsf{2^{4}} &
-   \mathsf{4 \cdot 2^{4} = 2^{6}} &
-   \mathsf{2^{8}} & \mathsf{2^{12}} & \mathsf{2^{16}}\\
-   \mathsf{256} & \mathsf{3} & \mathsf{8} & \mathsf{2^{8}} &
-   \mathsf{8 \cdot 2^{8} = 2^{11}} &
-   \mathsf{2^{16}} & \mathsf{2^{24}} & \mathsf{2^{256}}\\
-   \mathsf{1024} & \mathsf{\approx 3.3} & \mathsf{10} & \mathsf{2^{10}} &
-   \mathsf{10 \cdot 2^{10} \approx 2^{13}} &
-   \mathsf{2^{20}} & \mathsf{2^{30}} & \mathsf{2^{1024}}\\
-   \mathsf{64 {\rm K}} & \mathsf{4} & \mathsf{16} & \mathsf{2^{16}} &
-   \mathsf{16 \cdot 2^{16} = 2^{20}} &
-   \mathsf{2^{32}} & \mathsf{2^{48}} & \mathsf{2^{64 {\rm K}}}\\
-   \mathsf{1 {\rm M}} & \mathsf{\approx 4.3} & \mathsf{20} & \mathsf{2^{20}} &
-   \mathsf{20 \cdot 2^{20} \approx 2^{24}} &
-   \mathsf{2^{40}} & \mathsf{2^{60}} & \mathsf{2^{1 {\rm M}}}\\
-   \mathsf{1 {\rm G}} & \mathsf{\approx 4.9} & \mathsf{30} & \mathsf{2^{30}} &
-   \mathsf{30 \cdot 2^{30} \approx 2^{35}} &
-   \mathsf{2^{60}} & \mathsf{2^{90}} & \mathsf{2^{1 {\rm G}}}\\
-   \end{array}
+      \begin{array}{c|c|c|c|c|c|c|c}
+      \mathsf{n} & \mathsf{\log \log n} & \mathsf{\log n} & \mathsf{n} &
+      \mathsf{n \log n} & \mathsf{n^2} & \mathsf{n^3} & \mathsf{2^n}\\
+      \hline
+      \mathsf{16} & \mathsf{2} & \mathsf{4} & \mathsf{2^{4}} &
+      \mathsf{4 \cdot 2^{4} = 2^{6}} &
+      \mathsf{2^{8}} & \mathsf{2^{12}} & \mathsf{2^{16}}\\
+      \mathsf{256} & \mathsf{3} & \mathsf{8} & \mathsf{2^{8}} &
+      \mathsf{8 \cdot 2^{8} = 2^{11}} &
+      \mathsf{2^{16}} & \mathsf{2^{24}} & \mathsf{2^{256}}\\
+      \mathsf{1024} & \mathsf{\approx 3.3} & \mathsf{10} & \mathsf{2^{10}} &
+      \mathsf{10 \cdot 2^{10} \approx 2^{13}} &
+      \mathsf{2^{20}} & \mathsf{2^{30}} & \mathsf{2^{1024}}\\
+      \mathsf{64 {\rm K}} & \mathsf{4} & \mathsf{16} & \mathsf{2^{16}} &
+      \mathsf{16 \cdot 2^{16} = 2^{20}} &
+      \mathsf{2^{32}} & \mathsf{2^{48}} & \mathsf{2^{64 {\rm K}}}\\
+      \mathsf{1 {\rm M}} & \mathsf{\approx 4.3} & \mathsf{20} & \mathsf{2^{20}} &
+      \mathsf{20 \cdot 2^{20} \approx 2^{24}} &
+      \mathsf{2^{40}} & \mathsf{2^{60}} & \mathsf{2^{1 {\rm M}}}\\
+      \mathsf{1 {\rm G}} & \mathsf{\approx 4.9} & \mathsf{30} & \mathsf{2^{30}} &
+      \mathsf{30 \cdot 2^{30} \approx 2^{35}} &
+      \mathsf{2^{60}} & \mathsf{2^{90}} & \mathsf{2^{1 {\rm G}}}\\
+      \end{array}
+
+.. TODO::
+   :type: Exercise
+
+   Take a bunch of functions and put them in order of growth rate.
 
 .. TODO::
    :type: Exercise

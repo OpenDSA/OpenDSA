@@ -31,12 +31,14 @@ Code tuning is the art of hand-optimizing a program to run faster
 or require less storage.
 For many programs, code tuning can reduce running time by a factor of
 ten, or cut the storage requirements by a factor of two or more.
-I once tuned a critical function in a program |---| without changing
-its basic algorithm |---| to achieve a factor of 200 speedup.
-To get this speedup, however, I did make major changes in the
-representation of the information, converting from a symbolic coding
-scheme to a numeric coding scheme on which I was able to do direct
-computation.
+Occasionally, you can get an even bigger speedup
+by converting from a symbolic representation of the data
+to a numeric coding scheme on which you can do direct computation.
+
+.. TODO::
+   :type: text
+
+   Give an example of this type of representational change.
 
 Here are some suggestions for ways to speed up your
 programs by code tuning.
@@ -191,3 +193,8 @@ hashing alternatives.
 Instead, the purpose is to analyze the proper loading factor that
 would be used in an efficient hashing system to balance time cost
 versus hash table size (space cost).
+
+.. TODO::
+   :type: Exercise
+
+   Write a battery of summary questions

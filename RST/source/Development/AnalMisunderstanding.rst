@@ -27,7 +27,8 @@ bound for that cost function are always the same.
 Thus, the distinction between an upper and a lower bound is only
 worthwhile when you have incomplete knowledge about the thing being
 measured.
-If this distinction is still not clear, reread Section~\ref{ProbAnal}.
+If this distinction is still not clear,
+reread Module :numref:`<AnalProblem>`.
 We use :math:`\Theta`-notation to indicate that there is no meaningful
 difference between what we know about the growth rates of the upper
 and lower bound (which is usually the case for simple algorithms).
@@ -137,3 +138,8 @@ worst, and average cases as the input size grows.
    :math:`O(g(n))` in the best, average, or worst case!
    If we leave off which class of inputs we are discussing, we cannot
    know which cost measure we are referring to for most algorithms.
+
+.. TODO::
+   :type: Exercise
+
+   Write a battery of summary questions

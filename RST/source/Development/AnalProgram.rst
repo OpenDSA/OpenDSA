@@ -305,3 +305,8 @@ advantage of binary search during search and the disadvantage related
 to maintaining a sorted array.
 Only in the context of the complete problem to be solved can we know
 whether the advantage outweighs the disadvantage.
+
+.. TODO::
+   :type: Exercise
+
+   Write a battery of summary questions

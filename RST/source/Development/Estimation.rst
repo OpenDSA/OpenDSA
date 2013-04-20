@@ -108,3 +108,8 @@ purpose.
    item in your shopping cart.
    This will likely give an answer within a couple of dollars of the true
    total.
+
+.. TODO::
+   :type: Exercise
+
+   Need some sort of exercise for this

@@ -37,7 +37,7 @@ function call with the code that the function would perform.
 
 .. _OptimizeTable:
 
-.. topic: Table
+.. topic:: Table
 
    Empirical comparison of proposed optimizations to quadratic sort
    implementations. Each sorting algorithm is run on a random integer

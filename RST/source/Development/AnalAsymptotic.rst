@@ -129,7 +129,11 @@ steps for some constant :math:`c`.
    in the average case where :math:`c_1` and :math:`c_2` are positive
    numbers. 
    Then,
-   :math:`c_1 n^2 + c_2 n \leq c_1 n^2 + c_2 n^2 \leq (c_1 + c_2)n^2` 
+
+   .. math::
+
+      c_1 n^2 + c_2 n \leq c_1 n^2 + c_2 n^2 \leq (c_1 + c_2)n^2
+
    for all :math:`n > 1`.
    So, :math:`\mathbf{T}(n) \leq c n^2` for :math:`c = c_1 + c_2`,
    and :math:`n_0 = 1`.
@@ -415,6 +419,17 @@ If the limit goes to some constant other than zero, then
 
    because :math:`n` grows faster than :math:`2\log n`.
    Thus, :math:`n^2` is in :math:`\Omega(2n\log n)`.
+
+.. TODO::
+   :type: Exercise
+
+   Given two functions, determine the relative growth rates (see
+   Exercise 3.11 in the book).
+
+.. TODO::
+   :type: Exercise
+
+   Write a battery of summary questions
 
 Notes
 -----

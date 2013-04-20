@@ -96,6 +96,11 @@ If the lower bound for the problem matches the upper bound for the
 algorithm (within a constant factor), then we know that we can find an
 algorithm that is better only by a constant factor.
 
+.. TODO::
+   :type: Exercise
+
+   Write a battery of summary questions
+
 Notes
 -----
 

@@ -325,13 +325,13 @@ right-hand side of the original theorem.
    for :math:`n > 1`.
    Thus, we have proved the theorem correct by mathematical induction.
 
+.. _ThmStamps:
+
 .. topic:: Example
 
    This example uses induction without involving summations or other
    equations.
    It also illustrates a more flexible use of base cases.
-
-   .. :ThmStamps_
 
    **Theorem:**
    2 cent and 5 cent stamps can be used to form any value
@@ -398,6 +398,8 @@ induction hypothesis.
 
    A two-coloring for the regions formed by three lines in the plane.
 
+.. _ThmRegion:
+
 .. topic:: Example
 
    Define a :dfn:`two-coloring` for a
@@ -407,8 +409,6 @@ induction hypothesis.
    Figure :num:`Figure #TwoColor` shows a two-coloring for the plane with
    three lines.
    We will assume that the two colors to be used are black and white.
-
-   .. :ThmRegion_
 
    **Theorem:**
    The set of regions formed by :math:`n` infinite lines in the plane
@@ -441,16 +441,16 @@ induction hypothesis.
    Thus, by mathematical induction, the entire plane is
    two-colored.
 
-Compare the proof of Theorem :numref:`<ThmRegion>` with that of
-Theorem :numref:`<ThmStamps>`.
-For Theorem :numref:`<ThmStamps>`, we took a collection of stamps of
+Compare the proof of Theorem :num:`Example #ThmRegion` with that of
+Theorem :num:`Example #ThmStamps`.
+For Theorem :num:`Example #ThmStamps`, we took a collection of stamps of
 size :math:`n-1` (which, by the induction hypothesis, must have the
 desired property) and from that "built" a collection of size :math:`n`
 that has the desired property.
 We therefore proved the existence of *some* collection of stamps
 of size :math:`n` with the desired property.
 
-For Theorem :numref:`<ThmRegion>` we must prove that *any*
+For Theorem :num:`Example #ThmRegion` we must prove that *any*
 collection of :math:`n` lines has the desired property.
 Thus, our strategy is to take an *arbitrary* collection of
 :math:`n` lines, and "reduce" it so that we have a set of lines that
@@ -514,3 +514,10 @@ then to use the induction hypothesis to show that the recursive step
 also produces the correct result.
 Prior to this, we must prove that the function always terminates,
 which might also be done using an induction proof.
+
+.. TODO::
+   :type: Exercise
+
+   Need a battery of summary questions.
+
+   It would be nice if we could do something else as well.

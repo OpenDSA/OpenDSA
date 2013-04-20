@@ -287,3 +287,9 @@ context of a higher-level task.
    Several are described in Module :numref:`<ListIntro>`.
 
 .. odsascript:: AV/Development/ADTCON.js
+
+
+.. TODO::
+   :type: Exercise
+
+   Write a battery of summary questions

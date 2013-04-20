@@ -156,6 +156,11 @@ result of the computation is always positive, or else add the hash
 table size to the result of the modulo function when that result is
 negative.
 
+.. TODO::
+   :type: Exercise
+
+   Create a battery of summary questions.
+
 Notes
 -----
 

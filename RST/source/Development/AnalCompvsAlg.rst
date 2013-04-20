@@ -55,11 +55,7 @@ Figure :num:`Figure #RunTimeGraph`.
 
 .. _Speedups:
 
-.. odsafig:: Images/GraphDef.png
-   :width: 1
-   :capalign: left
-   :figwidth: 90%
-   :alt: The increase in problem size for a computer ten times faster
+.. topic:: Table
 
    The increase in problem size that can be run
    in a fixed period of time on a computer that is ten times faster.
@@ -79,21 +75,21 @@ Figure :num:`Figure #RunTimeGraph`.
    The fifth column shows the increase in the problem size as the
    ratio of :math:`n'` to :math:`n`.
 
-.. math::
+   .. math::
 
-   \begin{array} {l|r|r|l|r}
-   \mathbf{f(n)} &
-   \mathbf{n} & 
-   \mathbf{n'} &
-   \mathbf{Change} &
-   \mathbf{n'/n}\\
-   \hline
-   10n         & 1000 & 10,000 & n' = 10n               & 10\\
-   20n         & 500  & 5000   & n' = 10n               & 10\\
-   5 n \log n  & 250  & 1842   & \sqrt{10} n < n' < 10n & 7.37\\
-   2 n^2       & 70   & 223    & n' = \sqrt{10} n       & 3.16\\
-   2^n         & 13   & 16     & n' = n + 3             & --\\
-   \end{array}
+      \begin{array} {l|r|r|l|r}
+      \mathbf{f(n)} &
+      \mathbf{n} & 
+      \mathbf{n'} &
+      \mathbf{Change} &
+      \mathbf{n'/n}\\
+      \hline
+      10n         & 1000 & 10,000 & n' = 10n               & 10\\
+      20n         & 500  & 5000   & n' = 10n               & 10\\
+      5 n \log n  & 250  & 1842   & \sqrt{10} n < n' < 10n & 7.37\\
+      2 n^2       & 70   & 223    & n' = \sqrt{10} n       & 3.16\\
+      2^n         & 13   & 16     & n' = n + 3             & --\\
+      \end{array}
 
 
 This table illustrates many important points.
@@ -175,3 +171,8 @@ buying a computer ten times faster.
 Furthermore, when you do buy a faster computer, an algorithm with a
 slower growth rate provides a greater benefit in terms of larger
 problem size that can run in a certain time on the new computer.
+
+.. TODO::
+   :type: Exercise
+
+   Write a battery of summary questions
