@@ -123,19 +123,19 @@ def doctree_read(app, doctree):
                 if 'example' in figure_info.children[0].children[0].lower():
                     title = str(figure_info.children[0].children[0]) + numbered_label
                     figure_info.children[0].children[0] = Text(title) 
-                    title = 'Example %s.%d:' %(num_module,_exple)
+                    title = 'Example %s.%d ' %(num_module,_exple)
                     figure_info.children[0].children[0] = Text(title)
                     _exple += 1
                 if 'table' in figure_info.children[0].children[0].lower():
                     title = str(figure_info.children[0].children[0]) + numbered_label
                     figure_info.children[0].children[0] = Text(title)
-                    title = 'Table %s.%d: %s' %(num_module,_table,str(figure_info.children[0].children[0]).split('Table')[1])
+                    title = 'Table %s.%d %s' %(num_module,_table,str(figure_info.children[0].children[0]).split('Table')[1])
                     figure_info.children[0].children[0] = Text(title)
                     _table += 1
                 if 'theorem' in figure_info.children[0].children[0].lower():
                     title = str(figure_info.children[0].children[0]) + numbered_label
                     figure_info.children[0].children[0] = Text(title)
-                    title = 'Theorem %s.%d: %s' %(num_module,_thrm,str(figure_info.children[0].children[0]).split('Theorem')[1])
+                    title = 'Theorem %s.%d %s' %(num_module,_thrm,str(figure_info.children[0].children[0]).split('Theorem')[1])
                     figure_info.children[0].children[0] = Text(title)
                     _thrm += 1
     env.figid_docname_map = figid_docname_map
