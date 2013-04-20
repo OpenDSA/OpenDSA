@@ -34,47 +34,43 @@ with lesser value.
 In the original code, this is done with a series of swap operations.
 In some languages, simple way to speed things up is to replace a
 function call with the code that the function would perform.
-Table :num:`#OptimizeTable` shows the relative costs for
-this and other optimizations in four programming languages: Java,
-JavaScipt, Processing, and Python.
-Only Python had a noticeable effect from replacing the swap function
-call with inline code.
 
 .. _OptimizeTable:
 
-.. odsafig:: Images/PtrSwap.png
-   :width: 1
-   :align: center
-   :capalign: center
-   :figwidth: 90%
+.. topic: Table
 
    Empirical comparison of proposed optimizations to quadratic sort
    implementations. Each sorting algorithm is run on a random integer
    array with 10,000 items. Times are in milliseconds.
 
-.. math::
+   .. math::
 
-   \begin{array}{l|rrrr}
-   \hline
-   \textbf{Sort} & \textbf{Java}& \textbf{Processing} & \textbf{JavaScript}&
-   \textbf{Python}\\
-   \hline
-   \textbf{Insertion Sort}\\
-   \textrm{Basic}       &  60 &  26 & 118 & 11,220\\
-   \textrm{No swap}     &  60 &  26 & 112 &  8,672\\
-   \textrm{Shift <}     &  41 &  18 &  77 &  5,100\\
-   \textrm{Shift !=}    &  41 &  18 &  95 &  5,100\\
-   \hline
-   \textbf{Bubble Sort}\\
-   \textrm{Basic}       & 202 & 149 & 303 & 12,700\\
-   \textrm{Check Swaps} & 230 & 152 & 327 & 13,275\\
-   \hline
-   \textbf{Selection Sort}\\
-   \textrm{Basic}       & 104 &  65 & 158 &  4,000\\
-   \textrm{Check Swaps} & 104 &  65 & 155 &  4,050\\
-   \hline
-   \end{array}
+      \begin{array}{l|rrrr}
+      \hline
+      \textbf{Sort} & \textbf{Java}& \textbf{Processing} & \textbf{JavaScript}&
+      \textbf{Python}\\
+      \hline
+      \textbf{Insertion Sort}\\
+      \textrm{Basic}       &  60 &  26 & 118 & 11,220\\
+      \textrm{No swap}     &  60 &  26 & 112 &  8,672\\
+      \textrm{Shift <}     &  41 &  18 &  77 &  5,100\\
+      \textrm{Shift !=}    &  41 &  18 &  95 &  5,100\\
+      \hline
+      \textbf{Bubble Sort}\\
+      \textrm{Basic}       & 202 & 149 & 303 & 12,700\\
+      \textrm{Check Swaps} & 230 & 152 & 327 & 13,275\\
+      \hline
+      \textbf{Selection Sort}\\
+      \textrm{Basic}       & 104 &  65 & 158 &  4,000\\
+      \textrm{Check Swaps} & 104 &  65 & 155 &  4,050\\
+      \hline
+      \end{array}
 
+Table :num:`#OptimizeTable` shows the relative costs for
+this and other optimizations in four programming languages: Java,
+JavaScipt, Processing, and Python.
+Only Python had a noticeable effect from replacing the swap function
+call with inline code.
 
 There is a better alternative than continuously swapping the
 record to the left until a smaller value is found.
