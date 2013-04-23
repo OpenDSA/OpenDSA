@@ -117,7 +117,7 @@ class modPreReq:
          if ':topic:' in line:
             str =  re.split('topic:', line, re.IGNORECASE)[1]
             self.covers =  p.sub('',str).split(',')
-         label = ''
+         #label = ''
          if line.startswith('.. _'):
             label =  re.split(':', re.split('.. _', line, re.IGNORECASE)[1], re.IGNORECASE)[0]
             if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. odsafig::') or data[cpt+1].startswith('.. inlineav::'): 
@@ -135,7 +135,7 @@ class modPreReq:
                 if os.path.splitext(os.path.basename(filename))[0] in config.table:
                    tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                    config.table[label] = tb + '.%s#' %exp
-                   exp+=1
+                exp+=1
                 label = '-2'
             if isTheorem(data[cpt+1]):
                 if os.path.splitext(os.path.basename(filename))[0] in config.table:
@@ -144,18 +144,17 @@ class modPreReq:
                    thr+=1
                 label = '-3'
  
-         if isTable(line):
-                if label != '-1':
-                    tab+=1
-                    label = ''
          if isExample(line):
-                if label != '-2':
-                    exp+=1
-                    label = ''
+             if label == '-2':
+                 label = ''
+             else:
+                 exp+=1
+                    
          if isTheorem(line):
-                if label != '-3':
-                    thr+=1
-                    label = ''
+             if label == '-3':
+                 label = ''
+             else:
+                 thr+=1
    
 
          if ':target:' in line:
