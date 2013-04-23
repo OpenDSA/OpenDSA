@@ -4,6 +4,7 @@
 (function ($) {
   var jsav;
   var graph;
+  var gnodes = [];
 
   function runit() {
     ODSA.AV.reset(true);
@@ -70,7 +71,6 @@
     var v;         // The current node added to the MST
     var neighbors = []; // The neighbors of a specific node
     var weight;         // Weight of current edge
-    var gnodes = graph.nodes();
     var next, i;
 
     for (next = gnodes.next(); next; next = gnodes.next()) {
@@ -134,6 +134,8 @@
     graph.addEdge(f, b, {"weight": 6});
     graph.addEdge(d, f, {"weight": 2});
     graph.addEdge(e, f, {"weight": 1});
+
+    gnodes = graph.nodes();
   }
   
   // Connect action callbacks to the HTML entities
