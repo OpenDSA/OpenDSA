@@ -5,17 +5,34 @@
   var jsav;
   var graph;
   var gnodes = [];
+  var distances;
+  var labels;
+  var arr;     //Used to initialize the distance and labels arrays.
 
   function runit() {
     ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
     graph = jsav.ds.graph({width: 600, height: 400, layout: "manual",
-                           directed: false});
+                           directed: false});					   
     initGraph();
     graph.layout();
+	
+	arr=new Array(graph.nodeCount());
+	for(var i=0;i<arr.length;i++){
+		arr[i]=Infinity;
+	}
+	distances = jsav.ds.array(arr,{layout: "vertical"});
+    distances.css({"left": "600px", "bottom": "380px", "width": "30px"}); 
+	
+	for(var i=0;i<arr.length;i++){
+		arr[i]=gnodes[i].value();
+	}
+	labels = jsav.ds.array(arr,{layout: "vertical"});
+    labels.css({"left": "555px", "bottom": "676px", "width": "30px"}); 
+	
     jsav.displayInit();
     prim(graph.nodes()[0]);            // Run Prim's algorithm from start node.
-    displayMST();
+    //displayMST();
     jsav.recorded();
   }
 
@@ -41,6 +58,8 @@
   function markIt(node) {
     node.addClass("visited");
     jsav.umsg("Add node " + node.value() + " to the MST");
+	distances.highlight(gnodes.indexOf(node));
+	labels.highlight(gnodes.indexOf(node));
     node.highlight();
     jsav.step();
   }
@@ -78,6 +97,12 @@
       next.parent = next;
     }
     s.D = 0;
+	
+	distances.css({"left": "600px", "bottom": "380px", "width": "30px"}); 
+	distances.value(gnodes.indexOf(s),s.D);
+	
+	jsav.umsg("Update the distance value of node "+s.value());
+	jsav.step();
     for (i = 0; i < graph.nodeCount(); i++) {
       v = minVertex();
       markIt(v);
@@ -96,6 +121,7 @@
         jsav.step();
       }
       neighbors = v.neighbors();
+	  var nodes="";
       for (var j = 0; j < neighbors.length; j++) {
         if (!neighbors[j].hasClass("visited")) {
           var w = neighbors[j];
@@ -104,9 +130,22 @@
           if (w.D > weight) {
             w.D = weight;
             w.parent = v;
+			distances.css({"left": "600px", "bottom": "380px", "width": "30px"}); 
+			distances.value(graph.nodes().indexOf(w),w.D);
+			if(j<neighbors.length-1){
+				nodes+=w.value()+",";
+			}
+			else{
+				nodes+=w.value();
+			}
           }
         }
       }
+	  if(nodes!="")
+	  {
+		jsav.umsg("Update the distance values of nodes ("+nodes+")");
+		jsav.step();
+	  }
     }
   }
   
@@ -115,7 +154,7 @@
     alert(mystring);
     alert("Prim's Algorithm visualization");
   }
-
+  
   // Initialize the graph.
   function initGraph() {
    
