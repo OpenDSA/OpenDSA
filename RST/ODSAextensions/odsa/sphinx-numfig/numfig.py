@@ -101,7 +101,6 @@ def doctree_read(app, doctree):
                 for id in figure_info['ids']:
                     figids[id] = i
                     figid_docname_map[id] = env.docname
-        
                 i += 1
             if isinstance( figure_info, av_dgm ): 
                 module = env.docname
@@ -111,6 +110,8 @@ def doctree_read(app, doctree):
                 if  env.docname in json_data:
                     module = env.docname
                     num_module = json_data[env.docname]
+                    if module not in app.config.expleid:
+                        app.config.expleid[module] = {}
                 if len(figure_info.attributes['ids']) > 0:
                     for label in figure_info.attributes['ids']:
                         xrefs = ''
@@ -125,6 +126,14 @@ def doctree_read(app, doctree):
                     figure_info.children[0].children[0] = Text(title) 
                     title = 'Example %s.%d ' %(num_module,_exple)
                     figure_info.children[0].children[0] = Text(title)
+                    #_exple += 1
+                    for mod in app.config.expleid:
+                        if mod == module:
+                            expl_dict = app.config.expleid[mod]
+                            for id in figure_info['ids']:
+                                expl_dict[id] = _exple
+                                figids[id] = _exple 
+                                figid_docname_map[id] = env.docname
                     _exple += 1
                 if 'table' in figure_info.children[0].children[0].lower():
                     title = str(figure_info.children[0].children[0]) + numbered_label
@@ -157,7 +166,7 @@ def doctree_resolved(app, doctree, docname):
 
             if target not in figids:
                 continue
-
+            
             if app.builder.name == 'html':
                 target_doc = app.builder.env.figid_docname_map[target]
                 link = "%s#%s" % (app.builder.get_relative_uri(docname, target_doc),
@@ -171,6 +180,7 @@ def doctree_resolved(app, doctree, docname):
 def setup(app):
     app.add_config_value('number_figures', True, True)
     app.add_config_value('figure_caption_prefix', "Figure", True)
+    app.add_config_value('expleid', {}, True)
 
     app.add_node(page_ref,
                  text=(skip_page_ref, None),

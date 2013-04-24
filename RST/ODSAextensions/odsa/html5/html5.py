@@ -76,27 +76,6 @@ class HTMLTranslator(SphinxHTMLTranslator):
         self.body.append('</code>')
 
 
-    def visit_topic(self, node):
-        json_data = loadTable()
-        numbered_label = ''
-        if len(node.attributes['ids']) > 0:
-            for label in node.attributes['ids']: 
-                if label in json_data:
-                    xrefs = json_data[label]
-                    if '#' in xrefs:
-                      xrefs = xrefs[:-1]
-                    numbered_label = ' %s' %xrefs
-                    break 
-        if 'example' in node.children[0].children[0].lower():
-            title = str(node.children[0].children[0]) + numbered_label
-            node.children[0].children[0] = Text(title)   
-        self.body.append(self.starttag(node,'div', CLASS='topic'))
-        self.topic_classes = node['classes']
-
-    def depart_topic(self, node):
-        self.body.append('</div>\n')
-        self.topic_classes = []
-
     def visit_caption(self, node):
         atts = {'class': 'caption'}
         if node.get('align'):
