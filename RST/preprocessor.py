@@ -33,6 +33,7 @@ def isTable(topic):
     else:
         return False
 
+
 def isTheorem(topic):
     if 'theorem' in topic.lower() and topic.startswith('.. topic::'):
         return True
@@ -125,7 +126,7 @@ class modPreReq:
                  tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                  config.table[label] = tb + '.%s#' %fig
                  fig+=1
-            if data[cpt+1].startswith('.. table::') or isTable(data[cpt+1]):
+            if data[cpt+1].startswith('.. table::') or data[cpt+1].startswith('.. odsatab') or isTable(data[cpt+1]):
                 if os.path.splitext(os.path.basename(filename))[0] in config.table:
                   tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                   config.table[label] = tb + '.%s#' %tab
