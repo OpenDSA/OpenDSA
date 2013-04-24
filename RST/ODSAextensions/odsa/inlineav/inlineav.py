@@ -29,6 +29,7 @@ import json
 
 #InlineAV diagram Element class
 class av_dgm(Element): pass
+class av_anchor(Element): pass
 
 
 def visit_av_dgm_html(self, node):
@@ -36,6 +37,13 @@ def visit_av_dgm_html(self, node):
 
 
 def depart_av_dgm_html(self, node):
+    self.body.append('</div>\n')
+
+def visit_av_anchor_html(self, node):
+    self.body.append(self.starttag(node, 'div', CLASS=''))
+
+
+def depart_av_anchor_html(self, node):
     self.body.append('</div>\n')
 
 def doctree_read(app, doctree):
@@ -72,6 +80,7 @@ def doctree_read(app, doctree):
 def setup(app):
     app.connect('doctree-read', doctree_read)
     app.add_node(av_dgm,html=(visit_av_dgm_html, depart_av_dgm_html))
+    app.add_node(av_anchor,html=(visit_av_anchor_html, depart_av_anchor_html))
     app.add_directive('inlineav',inlineav)
 
 def loadTable():
@@ -154,8 +163,11 @@ class inlineav(Directive):
         
         if self.options['type'] == "dgm":
           avdgm_node = av_dgm()
+          anchor_node = av_anchor()
+
           avdgm_node['exer_name'] = self.options['exer_name']
-          avdgm_node['ids'].append(self.options['exer_name'])
+          anchor_node['ids'].append(self.options['exer_name'])
+          avdgm_node += anchor_node
           if self.content:
             node = nodes.Element()          # anonymous container for parsing
             self.state.nested_parse(self.content, self.content_offset, node)
