@@ -32,7 +32,7 @@
 	
     jsav.displayInit();
     prim(gnodes[0]);            // Run Prim's algorithm from start node.
-    displayMST();
+    //displayMST();
     jsav.recorded();
   }
 
