@@ -17,17 +17,17 @@
     initGraph();
     graph.layout();
 	
-	arr=new Array(graph.nodeCount());
-	for(var i=0;i<arr.length;i++){
-		arr[i]=Infinity;
-	}
-	distances = jsav.ds.array(arr,{layout: "vertical"});
+    arr=new Array(graph.nodeCount());
+    for(var i=0;i<arr.length;i++){
+      arr[i]=Infinity;
+    }
+    distances = jsav.ds.array(arr,{layout: "vertical"});
     distances.css({"left": "600px", "bottom": "380px", "width": "30px"}); 
 	
-	for(var i=0;i<arr.length;i++){
-		arr[i]=gnodes[i].value();
-	}
-	labels = jsav.ds.array(arr,{layout: "vertical"});
+    for(var i=0;i<arr.length;i++){
+      arr[i]=gnodes[i].value();
+    }
+    labels = jsav.ds.array(arr,{layout: "vertical"});
     labels.css({"left": "555px", "bottom": "676px", "width": "30px"}); 
 	
     jsav.displayInit();
@@ -41,8 +41,8 @@
     var next;
     for (next = edges.next(); next; next = edges.next()) {
       if (next.mst !== true) {
+        // We need to check if (a, b) exists because (b, a) might have been removed earlier
 	if (graph.hasEdge(next.start(), next.end())) {
-          // We need to check because it might have been removed earlier
           graph.removeEdge(next);
 	}
       }
@@ -55,8 +55,8 @@
   function markIt(node) {
     node.addClass("visited");
     jsav.umsg("Add node " + node.value() + " to the MST");
-	distances.highlight(gnodes.indexOf(node));
-	labels.highlight(gnodes.indexOf(node));
+    distances.highlight(gnodes.indexOf(node));
+    labels.highlight(gnodes.indexOf(node));
     node.highlight();
     jsav.step();
   }
@@ -127,7 +127,7 @@
           if (w.D > weight) {
             w.D = weight;
             w.parent = v;
-            distances.css({"left": "600px", "bottom": "380px", "width": "30px"}); 
+//            distances.css({"left": "600px", "bottom": "380px", "width": "30px"}); 
             distances.value(graph.nodes().indexOf(w),w.D);
             if(j<neighbors.length-1) {
                nodes+=w.value()+",";
@@ -146,7 +146,7 @@
   }
   
   function about() {
-    var mystring = "Prim's Algorithm Visualization\nWritten by Mohammed Fawzy\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2013\nLast update: March, 2013\nJSAV library version " + JSAV.version();
+    var mystring = "Prim's Algorithm Visualization\nWritten by Mohammed Fawzy and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2013\nLast update: March, 2013\nJSAV library version " + JSAV.version();
     alert(mystring);
     alert("Prim's Algorithm visualization");
   }
