@@ -45,9 +45,9 @@ This section briefly introduces three commonly used proof techniques:
 
 #) deduction, or direct proof;
 
-#) proof by contradiction,\index{proof!contradiction} and
+#) proof by contradiction and
 
-#) proof by mathematical induction.\index{proof!induction}
+#) proof by mathematical induction.
 
 Direct Proof
 ------------
@@ -441,16 +441,16 @@ induction hypothesis.
    Thus, by mathematical induction, the entire plane is
    two-colored.
 
-Compare the proof of Theorem :num:`Example #ThmRegion` with that of
-Theorem :num:`Example #ThmStamps`.
-For Theorem :num:`Example #ThmStamps`, we took a collection of stamps of
+Compare the proof in Example :num:`Example #ThmRegion` with that in
+Example :num:`Example #ThmStamps`.
+For Example :num:`Example #ThmStamps`, we took a collection of stamps of
 size :math:`n-1` (which, by the induction hypothesis, must have the
 desired property) and from that "built" a collection of size :math:`n`
 that has the desired property.
 We therefore proved the existence of *some* collection of stamps
 of size :math:`n` with the desired property.
 
-For Theorem :num:`Example #ThmRegion` we must prove that *any*
+For Example :num:`Example #ThmRegion` we must prove that *any*
 collection of :math:`n` lines has the desired property.
 Thus, our strategy is to take an *arbitrary* collection of
 :math:`n` lines, and "reduce" it so that we have a set of lines that
@@ -473,7 +473,7 @@ prove that a recursive function produces the correct result.
 .. topic:: Example
 
    We would like to prove that function ``fact`` does indeed compute
-   the factorial function.\index{factorial function}
+   the factorial function.
    There are two distinct steps to such a proof.
    The first is to prove that the function always terminates.
    The second is to prove that the function returns the correct value.
