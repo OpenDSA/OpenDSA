@@ -31,27 +31,24 @@
     labels.css({"left": "555px", "bottom": "676px", "width": "30px"}); 
 	
     jsav.displayInit();
-    prim(graph.nodes()[0]);            // Run Prim's algorithm from start node.
-    //displayMST();
+    prim(gnodes[0]);            // Run Prim's algorithm from start node.
+    displayMST();
     jsav.recorded();
   }
 
   function displayMST() {
     var edges = graph.edges();
     var next;
-    console.log("Display the MST");
     for (next = edges.next(); next; next = edges.next()) {
-      console.log("Got edge from " + next.start().value() + " to " + next.end().value());
       if (next.mst !== true) {
-        console.log("Remove an edge from " + next.start().value() + " to " + next.end().value());
-        graph.removeEdge(next);
+	if (graph.hasEdge(next.start(), next.end())) {
+          // We need to check because it might have been removed earlier
+          graph.removeEdge(next);
+	}
       }
-      else {
-        console.log("KEEP EDGE");
-      }
-      console.log("Done the edge");
     }
     jsav.umsg("Complete minimum spanning tree");
+    jsav.step();
   }
 
   // Mark a node in the graph.
@@ -68,7 +65,7 @@
   function minVertex() {
     var v;    // The closest node seen so far
     var next; // Current node being looked at
-    var gnodes = graph.nodes();
+    gnodes.reset();
 
     for (next = gnodes.next(); next; next = gnodes.next()) {
       if (!next.hasClass("visited")) {
@@ -97,12 +94,10 @@
       next.parent = next;
     }
     s.D = 0;
-	
-	distances.css({"left": "600px", "bottom": "380px", "width": "30px"}); 
-	distances.value(gnodes.indexOf(s),s.D);
-	
-	jsav.umsg("Update the distance value of node "+s.value());
-	jsav.step();
+    distances.css({"left": "600px", "bottom": "380px", "width": "30px"}); 
+    distances.value(gnodes.indexOf(s),s.D);
+    jsav.umsg("Update the distance value of node "+s.value());
+    jsav.step();
     for (i = 0; i < graph.nodeCount(); i++) {
       v = minVertex();
       markIt(v);
@@ -114,14 +109,16 @@
       if (v !== s) {
         //Add an edge to the MST
         var edge = graph.getEdge(v.parent, v);
+        var backedge = graph.getEdge(v, v.parent);
         edge.css({"stroke-width": "4", "stroke": "red"});
-	edge.mst = true;
+        edge.mst = true;
+	backedge.mst = true;
         jsav.umsg("Adding the edge (" + v.parent.value() +
                   "," + v.value() + ") to the MST");
         jsav.step();
       }
       neighbors = v.neighbors();
-	  var nodes="";
+      var nodes="";
       for (var j = 0; j < neighbors.length; j++) {
         if (!neighbors[j].hasClass("visited")) {
           var w = neighbors[j];
@@ -130,22 +127,21 @@
           if (w.D > weight) {
             w.D = weight;
             w.parent = v;
-			distances.css({"left": "600px", "bottom": "380px", "width": "30px"}); 
-			distances.value(graph.nodes().indexOf(w),w.D);
-			if(j<neighbors.length-1){
-				nodes+=w.value()+",";
-			}
-			else{
-				nodes+=w.value();
-			}
+            distances.css({"left": "600px", "bottom": "380px", "width": "30px"}); 
+            distances.value(graph.nodes().indexOf(w),w.D);
+            if(j<neighbors.length-1) {
+               nodes+=w.value()+",";
+	    }
+            else{
+              nodes+=w.value();
+            }
           }
         }
       }
-	  if(nodes!="")
-	  {
-		jsav.umsg("Update the distance values of nodes ("+nodes+")");
-		jsav.step();
-	  }
+      if(nodes!="") {
+        jsav.umsg("Update the distance values of nodes ("+nodes+")");
+        jsav.step();
+      }
     }
   }
   
