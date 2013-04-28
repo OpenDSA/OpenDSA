@@ -14,15 +14,23 @@
         "long_name": "How to Use this System",
         "exercises": {}
       }
+      "Status": {
+        "long_name": "OpenDSA Content Status",
+        "exercises": {}
+      }
     },
     "Sorting": {
-      "Sorting/SortIntro": {
-        "long_name": "Introduction",
+      "Sorting/InSort": {
+        "long_name": "Chapter Introduction: Sorting",
+        "exercises": {}
+      },
+      "Sorting/SortNotation": {
+        "long_name": "Sorting Terminology and Notation",
         "exercises": {
           "SortIntroSumm": {
             "long_name": "Sorting Intro Summary",
             "required": true,
-            "points": 1,
+            "points": 1.1,
             "threshold": 3
           }
         }

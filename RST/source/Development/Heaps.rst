@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Heaps
 
-Heaps and Priority Queues [Storyboard]
-======================================
+Heaps and Priority Queues [Draft]
+=================================
 
 There are many situations, both in real life and in computing
 applications, where we wish to choose the next "most important"

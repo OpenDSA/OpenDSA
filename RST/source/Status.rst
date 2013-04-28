@@ -8,10 +8,10 @@
    :prerequisites:
    :topic: OpenDSA
 
-OpenDSA Content Status
-======================
+OpenDSA Project Content Status
+==============================
 
-This status update was last updated on April 8, 2013.
+This status report was last updated on April 28, 2013.
 
 Status Report
 -------------
@@ -25,16 +25,19 @@ post-CS2-level class.
 If you are looking at the "Everything" book, you will see these as
 well as all modules that are in various stages of perparation.
 You will also see the "TODO" list items.
-If you are looking at the "Dev" book, then you will see everything
+If you are looking at the "Dev" book, then you are seeing everything
 **execept** the modules that are considered complete.
-(We have this version to speed up compilation a bit for the
+(We maintain this version to speed up compilation a bit for the
 developers.)
+If you are looking at the "OpenDSA" book, are are seeing the modules
+that we consider "ready for use", perhaps with some stub modules to
+make the cross-referencing work.
 
 We have a goal of completing enough material for a complete semester
-course by Fall, 2013. That would contain chapters on
-mathematical background topics, algorithm analysis, lists,
-binary trees, general trees (with Union/FIND), sorting,
-searching (including hashing),
+course by the end of 2013.
+That would contain chapters on mathematical background topics,
+algorithm analysis, lists, binary trees, general trees (with
+Union/FIND), sorting, searching (including hashing),
 file processing basics (including external sorting),
 indexing (including B-trees), and graphs.
 

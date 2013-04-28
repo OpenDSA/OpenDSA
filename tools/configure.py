@@ -88,7 +88,7 @@ rst_header = '''\
 index_header = '''\
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. OpenDSA documentation master file, created by
@@ -213,7 +213,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OpenDSA'
-copyright = u'2012 by OpenDSA Project Contributors'
+copyright = u'2013 by OpenDSA Project Contributors and distributed under an MIT license'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
