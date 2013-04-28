@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Quicksort Multiple Choice Question: Pivot choice</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../lib/khan-exercise-min.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">When selecting a pivot value, a simple thing
+       to do is to always pick from the same place in the
+       partition. If we use this approach, does it matter whether we
+       always pick from the first position in the partition, the last
+       position in the partition, or the middle position in the
+       partition?</p>
+      <div class="solution"><var>"It is much better to pick the middle value"</var></div>
+      <ul class="choices">
+	<li><var>"It is much better to pick the first value"</var></li>
+	<li><var>"It is much better to pick the last value"</var></li>
+	<li><var>"It doesn't really matter, they are all equally good or bad"</var></li>
+      </ul>
+      <div class="hints">
+	<p>If you pick the first or last one, then sorted input will
+	  give the worst case performance.</p>
+	<p>If you pick the middle value, then it is still possible to
+          get worst-case performance.</p>
+        <p>But to do so requires a very specific and unusual
+          permuation that will normally occur very rarely.</p>
+	<p>In theory, all permuations are equally likely. But in
+         practice, the sorted input is much more likely to occur.</p> 
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

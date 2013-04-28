@@ -86,7 +86,7 @@ build/InssortTest/success: Sorting/Insertionsort.pde Sorting/SortTest.pde Utils/
 	@cp Sorting/Insertionsort.pde build/InssortTest
 	@cp Sorting/SortTest.pde build/InssortTest/InssortTest.pde
 	@cp Utils/Swap.pde build/InssortTest
-	@$(PROCESS) --run --sketch="build/InssortTest" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/InssortTest" --output="$(BUILD)/build" --force
 
 InssortKV: build/InssortKVTest/success
 
@@ -97,7 +97,7 @@ build/InssortKVTest/success: Sorting/InssortKV.pde Sorting/SortTestKV.pde Utils/
 	@cp Sorting/InssortKV.pde build/InssortKVTest
 	@cp Utils/KVPair.pde build/InssortKVTest
 	@cp Sorting/SortTestKV.pde build/InssortKVTest/InssortKVTest.pde
-	@$(PROCESS) --run --sketch="build/InssortKVTest" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/InssortKVTest" --output="$(BUILD)/build" --force
 
 Bubblesort: build/BubblesortTest/success
 
@@ -108,7 +108,7 @@ build/BubblesortTest/success: Sorting/Bubblesort.pde Sorting/SortTest.pde Utils/
 	@cp Sorting/Bubblesort.pde build/BubblesortTest
 	@cp Sorting/SortTest.pde build/BubblesortTest/BubblesortTest.pde
 	@cp Utils/Swap.pde build/BubblesortTest
-	@$(PROCESS) --run --sketch="build/BubblesortTest" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/BubblesortTest" --output="$(BUILD)/build" --force
 
 Selsort: build/SelsortTest/success
 
@@ -119,7 +119,7 @@ build/SelsortTest/success: Sorting/Selectionsort.pde Sorting/SortTest.pde Utils/
 	@cp Sorting/Selectionsort.pde build/SelsortTest
 	@cp Utils/Swap.pde build/SelsortTest
 	@cp Sorting/SortTest.pde build/SelsortTest/SelsortTest.pde
-	@$(PROCESS) --run --sketch="build/SelsortTest" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/SelsortTest" --output="$(BUILD)/build" --force
 
 Shellsort: build/ShellsortTest/success
 
@@ -130,7 +130,7 @@ build/ShellsortTest/success: Sorting/Shellsort.pde Sorting/SortTest.pde Utils/Sw
 	@cp Sorting/Shellsort.pde build/ShellsortTest
 	@cp Utils/Swap.pde build/ShellsortTest
 	@cp Sorting/SortTest.pde build/ShellsortTest/ShellsortTest.pde
-	@$(PROCESS) --run --sketch="build/ShellsortTest" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/ShellsortTest" --output="$(BUILD)/build" --force
 
 Mergesort: build/MergesortTest/success
 
@@ -141,7 +141,7 @@ build/MergesortTest/success: Sorting/Mergesort.pde Sorting/SortTest.pde Utils/Sw
 	@cp Sorting/Mergesort.pde build/MergesortTest
 	@cp Utils/Swap.pde build/MergesortTest
 	@cp Sorting/SortTest.pde build/MergesortTest/MergesortTest.pde
-	@$(PROCESS) --run --sketch="build/MergesortTest" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/MergesortTest" --output="$(BUILD)/build" --force
 
 MergesortOpt: build/MergesortOptTest/success
 
@@ -152,7 +152,7 @@ build/MergesortOptTest/success: Sorting/MergesortOpt.pde Sorting/SortTest.pde Ut
 	@cp Sorting/MergesortOpt.pde build/MergesortOptTest
 	@cp Utils/Swap.pde build/MergesortOptTest
 	@cp Sorting/SortTest.pde build/MergesortOptTest/MergesortOptTest.pde
-	@$(PROCESS) --run --sketch="build/MergesortOptTest" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/MergesortOptTest" --output="$(BUILD)/build" --force
 
 Quicksort: build/QuicksortTest/success
 
@@ -163,7 +163,7 @@ build/QuicksortTest/success: Sorting/Quicksort.pde Sorting/SortTest.pde Utils/Sw
 	@cp Sorting/Quicksort.pde build/QuicksortTest
 	@cp Utils/Swap.pde build/QuicksortTest
 	@cp Sorting/SortTest.pde build/QuicksortTest/QuicksortTest.pde
-	@$(PROCESS) --run --sketch="build/QuicksortTest" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/QuicksortTest" --output="$(BUILD)/build" --force
 
 Heapsort: build/HeapsortTest/success
 
@@ -175,7 +175,7 @@ build/HeapsortTest/success: Sorting/Heapsort.pde Sorting/SortTest.pde Trees/Maxh
 	@cp Sorting/SortTest.pde build/HeapsortTest/HeapsortTest.pde
 	@cp Trees/Maxheap.pde build/HeapsortTest
 	@cp Utils/Swap.pde build/HeapsortTest
-	@$(PROCESS) --run --sketch="build/HeapsortTest" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/HeapsortTest" --output="$(BUILD)/build" --force
 
 Binsort: build/Binsort/success
 
@@ -186,7 +186,7 @@ build/Binsort/success: Sorting/Binsort.pde Utils/Swap.pde Utils/Permute.pde
 	@cp Sorting/Binsort.pde build/Binsort
 	@cp Utils/Swap.pde build/Binsort
 	@cp Utils/Permute.pde build/Binsort
-	@$(PROCESS) --run --sketch="build/Binsort" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/Binsort" --output="$(BUILD)/build" --force
 
 Radixsort: build/RadixsortTest/success
 
@@ -196,7 +196,7 @@ build/RadixsortTest/success: Sorting/Radixsort.pde Sorting/SortTest.pde
 	@mkdir build/RadixsortTest
 	@cp Sorting/Radixsort.pde build/RadixsortTest
 	@cp Sorting/SortTest.pde build/RadixsortTest/RadixsortTest.pde
-	@$(PROCESS) --run --sketch="build/RadixsortTest" --output="build/build" --force
+	@$(PROCESS) --run --sketch="$(BUILD)/RadixsortTest" --output="$(BUILD)/build" --force
 
 
 InssortTime:
