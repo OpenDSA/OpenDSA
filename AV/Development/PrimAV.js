@@ -40,9 +40,6 @@ function displayMST() {
   var edges=mst.edges();
   graph.hide();
   mst.layout();
-  for(next=edges.next();next;next=edges.next()){
-    next.css({"stroke-width": "2", "stroke": "red"});
-  }
   jsav.umsg("Complete minimum spanning tree");
 }
 
@@ -60,7 +57,7 @@ function markIt(node) {
 function minVertex() {
   var v;    // The closest node seen so far
   var next; // Current node being looked at
-  gnodes=graph.nodes();
+  gnodes.reset();
   for (next = gnodes.next(); next; next = gnodes.next()) {
     if (!next.hasClass("visited")) {
 	  v = next;
@@ -83,6 +80,7 @@ function prim(s) {
   var weight;         // Weight of current edge
   var next, i;
 
+  // Initialize the MST "parents" to dummy values
   for (next = gnodes.next(); next; next = gnodes.next()) {
     next.parent = next;
   }
@@ -93,15 +91,17 @@ function prim(s) {
     v = minVertex();	 
     markIt(v);
     if (distances.value(v.index) === Infinity) {
-	  jsav.umsg("No other nodes are reachable, so quit.");
-	  jsav.step();
-	  return;
+      jsav.umsg("No other nodes are reachable, so quit.");
+      jsav.step();
+      return;
     }
     if (v !== s) {
 	//Add an edge to the MST
 	  var edge = graph.getEdge(v.parent, v);
 	  edge.css({"stroke-width": "4", "stroke": "red"});
-	  mst.addEdge(mstnodes[v.parent.index],mstnodes[v.index],{"weight":edge.weight()});
+	  var mstedge = mst.addEdge(mstnodes[v.parent.index], mstnodes[v.index],
+                                    {"weight": edge.weight()});
+          mstedge.css({"stroke-width": "2", "stroke": "red"});
 	  jsav.umsg("Adding the edge (" + v.parent.value() +
 			  "," + v.value() + ") to the MST");
 	  jsav.step();
@@ -169,7 +169,6 @@ function initGraph() {
   mstnodes=mst.nodes();
   for(var i=0;i<mstnodes.length;i++){
     gnodes[i].index=i;
-    mstnodes[i].highlight();
   }
 
 }
