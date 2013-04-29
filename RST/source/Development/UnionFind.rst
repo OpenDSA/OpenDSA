@@ -124,26 +124,33 @@ that objects :math:`A` and :math:`C` are also equivalent.
 .. TODO::
    :type: Figure
 
-   Book figure 6.6: A graph with two connected components.
+.. _UFexamp:
 
-   There are many practical uses for disjoint sets and representing
-   equivalences.
-   For example, consider Figure~\ref{UFexamp} which shows a graph of
-   ten nodes labeled \svar{A} through \svar{J}.
-   Notice that for nodes \svar{A} through \svar{I}, there is some series
-   of edges that connects any pair of the nodes, but node \svar{J} is
-   disconnected from the rest of the nodes.
-   Such a graph might be used to represent connections such as wires
-   between components on a circuit board, or roads between cities.
-   We can consider two nodes of the graph to be equivalent if there is a
-   path between them.
-   Thus, nodes \svar{A}, \svar{H}, and \svar{E} would
-   be equivalent in Figure~\ref{UFexamp}, but \svar{J} is not equivalent
-   to any other.
-   A subset of equivalent (connected) edges in a graph is called a
-   \defit{connected component}.
-   The goal is to quickly classify the objects
-   into disjoint sets that correspond to the connected components.
+.. figure:: Images/UFexamp.png
+   :width: 500
+   :align: center
+   :figwidth: 90%
+
+   A graph with two connected components.
+
+There are many practical uses for disjoint sets and representing
+equivalences.
+For example, consider Figure :num:`Figure #UFexamp` which shows a
+graph of ten nodes labeled \svar{A} through \svar{J}.
+Notice that for nodes \svar{A} through \svar{I}, there is some series
+of edges that connects any pair of the nodes, but node \svar{J} is
+disconnected from the rest of the nodes.
+Such a graph might be used to represent connections such as wires
+between components on a circuit board, or roads between cities.
+We can consider two nodes of the graph to be equivalent if there is a
+path between them.
+Thus, nodes \svar{A}, \svar{H}, and \svar{E} would
+be equivalent in Figure :num:`Figure #UFexamp`, but \svar{J} is not
+equivalent to any other.
+A subset of equivalent (connected) edges in a graph is called a
+\defit{connected component}.
+The goal is to quickly classify the objects
+into disjoint sets that correspond to the connected components.
 
 Another application for UNION/FIND occurs in Kruskal's algorithm for
 computing the minimal cost spanning tree for a graph
@@ -171,14 +178,23 @@ objects are already in the same equivalence class.
 Otherwise, the two equivalence classes should be merged by the
 ``UNION`` method.
 
+.. _EquivEx:
+
+.. figure:: Images/EquivEx.png
+   :width: 500
+   :align: center
+   :figwidth: 90%
+
+   An example of equivalence processing.
+
 .. TODO::
    :type: Slideshow
 
-   Build this around Book Figure 6.7:
+   Build this around the figure above.
 
    An example of equivalence processing.
    (a) Initial configuration for the ten nodes of the graph in
-   Figure~\ref{UFexamp}.
+   Figure :num:`Figure #UFexamp`.
    The nodes are placed into ten independent equivalence classes.
    (b) The result of processing five edges:
    (\svar{A},~\svar{B}), (\svar{C},~\svar{H}), (\svar{G},~\svar{F}),
@@ -189,12 +205,12 @@ Otherwise, the two equivalence classes should be merged by the
 
 
    As an example of solving the equivalence class problem, consider the
-   graph of Figure~\ref{UFexamp}.
+   graph of Figure :num:`Figure #UFexamp`.
    Initially, we assume that each node of the graph is in a distinct
    equivalence class.
    This is represented by storing each as the root of its own tree.
-   Figure~\ref{EquivExamp}(a) shows this initial configuration using the
-   parent pointer array representation.
+   Figure Figure :num:`Figure #EquivEx` (a) shows this initial
+   configuration using the parent pointer array representation.
    Now, consider what happens when equivalence relationship
    (\svar{A},~\svar{B}) is processed.
    The root of the tree containing~\svar{A} is~\svar{A}, and the root of
@@ -213,7 +229,7 @@ Otherwise, the two equivalence classes should be merged by the
    \svar{I}~is set to point to~\svar{F}.
    Note that this also makes \svar{G} equivalent to~\svar{I}.
    The result of processing these five equivalences is shown in
-   Figure~\ref{EquivExamp}(b).
+   Figure :num:`Figure #EquivEx` (b).
 
 The parent pointer representation places no limit on the number of
 nodes that can share a parent.
@@ -249,12 +265,14 @@ times when :math:`n` equivalences are processed.
    Illustration of Weighted Union Rule.
 
    When processing equivalence pair (\svar{I},~\svar{F}) in
-   Figure~\ref{EquivExamp}(b), \svar{F}~is the root of a tree with two
-   nodes while \svar{I}~is the root of a tree with only one node.
+   Figure :num:`Figure #EquivEx` (b), \svar{F}~is the root of a
+   tree with two nodes while \svar{I}~is the root of a tree with only
+   one node.
    Thus, \svar{I}~is set to point to~\svar{F} rather than the other way
    around.
-   Figure~\ref{EquivExamp}(c) shows the result of processing two more
-   equivalence pairs: (\svar{H},~\svar{A}) and (\svar{E},~\svar{G}).
+   Figure :num:`Figure #EquivEx` (c) shows the result of processing
+   two more equivalence pairs: (\svar{H},~\svar{A}) and
+   (\svar{E},~\svar{G}).
    For the first pair, the root for~\svar{H} is~\svar{C} while the root
    for~\svar{A} is itself.
    Both trees contain two nodes, so it is an arbitrary decision as to
@@ -272,7 +290,8 @@ times when :math:`n` equivalences are processed.
 
    Not all equivalences will combine two trees.
    If equivalence :math:`(F, G)` is processed when the
-   representation is in the state shown in Figure~\ref{EquivExamp}(c),
+   representation is in the state shown in
+   Figure :num:`Figure #EquivEx` (c),
    no change will be made because~\svar{F} is already the root
    for~\svar{G}.
 
@@ -300,17 +319,26 @@ to the root.
    Resolve the fact that the current code presentation already shows
    Path Compression, but we need to explain it somehow.
 
+.. _PathCompFig:
+
+.. figure:: Images/PathComp.png
+   :width: 500
+   :align: center
+   :figwidth: 90%
+
+   Example of Path Compression
+
 .. TODO::
    :type: Slideshow
 
    Demonstration of Path Compression.
 
-   Figure~\ref{EquivExamp}(d) shows the result of processing equivalence
-   pair (\svar{H},~\svar{E}) on the the representation shown in
-   Figure~\ref{EquivExamp}(c) using the standard weighted union rule
-   without path compression.
-   Figure~\ref{PathCompFig} illustrates the path compression process for
-   the same equivalence pair.
+   Figure :num:`Figure #EquivEx` (d) shows the result of processing
+   equivalence pair (\svar{H},~\svar{E}) on the the representation
+   shown in Figure :num:`Figure #EquivEx` (c) using the standard
+   weighted union rule without path compression.
+   Figure :num:`Figure #PathCompFig` illustrates the path compression
+   process for the same equivalence pair.
    After locating the root for node~\svar{H}, we can perform path
    compression to make~\svar{H} point directly to root object~\svar{A}.
    Likewise, \svar{E}~is set to point directly to its root,~\svar{F}.
@@ -318,9 +346,9 @@ to the root.
 
    Note that path compression takes place during the
    FIND operation, \emph{not} during the UNION operation.
-   In Figure~\ref{PathCompFig}, this means that nodes \svar{B},
-   \svar{C}, and \svar{H} have node \svar{A} remain as their parent,
-   rather than changing their parent to be \svar{F}.
+   In Figure :num:`Figure #PathCompFig`, this means that nodes
+   \svar{B}, \svar{C}, and \svar{H} have node \svar{A} remain as their
+   parent, rather than changing their parent to be \svar{F}.
    While we might prefer to have these nodes point to \svar{F}, to
    accomplish this would require that additional information from the
    FIND operation be passed back to the UNION operation.

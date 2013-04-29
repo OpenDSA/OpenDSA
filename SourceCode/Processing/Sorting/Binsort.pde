@@ -53,6 +53,16 @@ void simplebinsort(int[] A, int[] B) {
 /* *** ODSAendTag: simplebinsort *** */
 }
 
+
+void simplebinsort2(int[] A) {
+  int i;
+/* *** ODSATag: simplebinsort2 *** */
+for (i=0; i<A.length; i++)
+  while (A[i] != i) // Swap element A[i] with A[A[i]]
+    swap(A, i, A[i]);
+/* *** ODSAendTag: simplebinsort2 *** */
+}
+
 void setup() {
   int[] A = new int[testsize];
   int[] B = new int[testsize];
@@ -70,6 +80,20 @@ void setup() {
       if (B[i] < B[i-1]) {
         println("Error! Value " + B[i] + " at position " + i +
                 " was less than " + B[i-1] + " at position " + (i-1));
+        SUCCESS = false;
+      }
+  }
+
+  for (int tests=0; tests<numtests; tests++) {
+    for (i=0; i<A.length; i++) {
+      A[i] = i;
+    }
+    permute(A);
+    simplebinsort2(A);
+    for (i=1; i<A.length; i++)
+      if (A[i] < A[i-1]) {
+        println("Error! Value " + A[i] + " at position " + i +
+                " was less than " + A[i-1] + " at position " + (i-1));
         SUCCESS = false;
       }
   }

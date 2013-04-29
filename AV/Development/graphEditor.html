@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Window Click</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="Custom Graph Editor" charset="utf-8" />
+  <link href="../../lib/odsaAV-min.css" title="CSS" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="graphEditor.css" type="text/css" />
+ 
+</head>
+<body>
+ <!-- 
+	<div style="float:left; width:95%; height:1500px;" id="av">
+	<p class="jsavoutput jsavline"></p> 
+	</div> 
+ -->   
+ <div id="container">
+  <table class="headerTable">
+    <tr>
+      <td class="headerLeft">
+        <input type="button" id="help" name="help" value="Help" />
+      </td>
+      <td class="headerCenter">
+        <h1>Custom Graph Editor</h1>
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+      </td>
+    </tr>
+  </table>
+  
+  <form id="ssperform">
+    <p>
+      <input type="button" id="addNode" name="addNode" onclick="addNodeMode()" value="Add Nodes" />
+      <input type="button" id="addEdges" name="addEdges" onclick="addEdgeMode()" value="Add Egdes" />
+	  <input type="button" id ="addWeight" name ="addWeight" onclick="addWeightMode()" value="Add Weights" />
+	  <input type="checkbox" id ="chkbox"/><label for = "chkbox">Directed</label>
+	  
+	</p>
+  </form>
+  
+  <div class="avcontainer">
+   
+    <p class="jsavoutput jsavline"></p>
+	
+  </div>
+  
+ 
+</div> 
+ 
+ 
+ 
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+
+<!--<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/odsaUtils-min.js"></script>
+<script src="../../lib/odsaAV-min.js"></script>
+  -->
+
+  <script>
+      
+
+    
+    var caption_text = "";
+    var xcanvas, ycanvas, canW, canH;
+    var winwidth, winheight;
+    var j = 0; 
+   // var isChecked = false;
+	
+	//console.log("ischecked " + cll);
+	
+ // Get Viewport width and height:
+    if (typeof window.innerWidth != 'undefined') {
+          winwidth = window.innerWidth,     
+          winheight = window.innerHeight;
+    }
+		// When using IE 8,7,6,5	  
+    else if (typeof document.documentElement != 'undefined'     
+             && typeof document.documentElement.clientWidth !='undefined' 
+             && document.documentElement.clientWidth != 0) {
+                 winwidth = document.documentElement.clientWidth, 
+                 winheight = document.documentElement.clientHeight;
+    }
+	else {   
+          winwidth = document.getElementsByTagName('body')[0].clientWidth,      
+          winheight = document.getElementsByTagName('body')[0].clientHeight;
+    }  
+    
+    // Struct type container to hold id and x,y position of nodes   
+	function node(id, x, y) {
+		this.id = id;
+		this.x = x;
+		this.y = y;
+	}
+	//Struct type container to hold the x,y positions of a previous click
+	function storeClick(x,y) {
+    	this.x = x;
+		this.y = y;
+	}
+	
+	function getGraphNodeOne(graphNodes, preClick, x, y) {
+		var	clickedX = preClick[0].x;
+		var clickedY = preClick[0].y;
+		for(var i = 0; i < graphNodes.length; i++) {
+			realX = graphNodes[i].x;
+			realY = graphNodes[i].y;
+				if(realX  + 25 >= clickedX && realX - 25 <= clickedX && realY + 25 >= clickedY && realY - 25 <= clickedY) {
+		    		//console.log("X: " + realX + "  Y: " + realY);
+					//g.nodes()[graphNodes[i].id].highlight();
+					//alert("now I am in node one");
+				
+					return graphNodes[i].id;
+				}
+		}
+		return null;
+	}
+	
+	
+    function getGraphNodeTwo(graphNodes, x, y) {
+		var realX;
+		var realY;
+		for(var i = 0; i < graphNodes.length; i++) {
+			realX = graphNodes[i].x;
+			realY = graphNodes[i].y;
+			console.log("GET GRAPH NODE:   X: " + x + "  Y: " + y);
+			console.log("GET GRAPH NODE:   realX: " + realX + "  realY: " + realY);
+				if(realX + 25 >= x && realX - 25 <= x && realY + 25 >= y && realY - 25 <= y) {
+		    		//alert("now I am in node one");
+					//g.nodes()[graphNodes[i].id].highlight();
+					return graphNodes[i].id;
+				}
+		}
+		return null;
+		
+    }
+    
+	
+	function isChecked(){
+	var checkbox = document.getElementById('chkbox');
+		if (checkbox.checked) {
+			return true;
+		} else { 
+			return false;
+		}
+	}
+	
+	function addNodeMode() {
+		addNodes = true;
+		addEdges = false;
+		addWeights = false;
+		jsav.umsg("You are currently in add node mode");
+	}
+	
+	function addEdgeMode() {
+		addEdges = true;
+		addNodes = false;
+		addWeights = false;
+		jsav.umsg("You are currently in add edge mode");
+	}
+	
+	function addWeightMode() {
+		addEdges = false;
+		addNodes = false;
+		addWeights = true;
+		jsav.umsg("You are currently in add a weight to an edge mode.  Click on two nodes that have an edge to add weight");
+	
+	}
+	
+	function validateNodeClick(nodeOne, nodeTwo) {
+		if(nodeOne === null || nodeTwo === null) {
+			alert("Must click on a node -- Try again");
+			click = !click;	
+		}
+	}		
+					
+					
+   
+   
+   
+	// Global variables?????
+	
+	var click = false;
+	var cll = isChecked();
+	jsav = new JSAV($('.avcontainer'));  
+	var g = jsav.ds.graph({width: 800, height: 500, layout: "manual", directed: cll});
+	var i = 0; 
+	var weight = 10;
+	var graphNodes = new Array();
+	var preClick = new Array();
+	var insideBox = true;
+	var addNodes = false;
+	var addEdges = false;
+	var addWeights = false;
+	var nodeOneHigh = null;
+	var nodeTwoHigh = null;
+ // START MAKING CHANGES HERE... ATTEMPT TO CAPTURE CLICK AND DRAW A NODE.  
+  
+	jQuery(document).ready(function(){$('.avcontainer').click(function(e)
+	{
+		//	var parentOffset = $(this).parent();
+			var x = e.pageX ;        //x click coordinate
+			var y = e.pageY ;  		// y click coordinate
+			console.log("entering: " + nodeOneHigh);
+			
+			//if click is outside of the box that contains the graph
+			if(y < 250) {
+				//jsav.umsg("click inside blue box");
+				alert("You can only add nodes inside the blue box");
+				insideBox = !insideBox;
+			}
+			
+			/* Add the node to the canvas and store the id (i) and coordinates (x and y) in an array. */
+ 			if(insideBox && addNodes) {
+				g.addNode(i, {"left": x - 83, "top": y - 240});
+				graphNodes[i] = new node(i, x, y);
+				i++;
+			}
+			
+			/* Add Edges */
+			if(addEdges && g.nodeCount() > 1) {
+				if(nodeOneHigh!=null && nodeTwoHigh!=null) {
+					g.nodes()[nodeOneHigh].unhighlight();
+					g.nodes()[nodeTwoHigh].unhighlight();
+				}
+				
+				
+			
+				//Need to store a click location to identify the first node selected
+				if(!click){
+				   	preClick[0] = new storeClick(x,y);
+					var nodeOne = getGraphNodeOne(graphNodes, preClick, x, y);
+					nodeOneHigh = nodeOne;
+					console.log(nodeOneHigh);
+					g.nodes()[nodeOne].highlight();
+					click = !click;
+				}
+				
+				else if(click) {
+					var nodeOne = getGraphNodeOne(graphNodes, preClick, x, y);
+					nodeOneHigh = nodeOne;
+					//g.nodes()[nodeOne].highlight();
+					var nodeTwo = getGraphNodeTwo(graphNodes, x, y);
+					nodeTwoHigh = nodeTwo;
+					g.nodes()[nodeTwo].highlight();
+					
+					//validateNodeClick(nodeOne, nodeTwo);
+					
+					g.nodes()[nodeOne].highlight();
+					if(nodeOne === null || nodeTwo === null) {
+						alert("Must click on a node -- Try again");
+						click = !click;
+						
+					}
+					//Also need to check if there is already an edge connecting two nodes
+					
+					if (g.nodes()[nodeOne].value() === g.nodes()[nodeTwo].value()) {
+						jsav.umsg("Can not connect a node to itself");
+						click = !click;
+					}
+					else if (g.hasEdge(g.nodes()[nodeOne],g.nodes()[nodeTwo])) {
+						alert("Graph already has a edge between " + g.nodes()[nodeOne].value() +
+							" and " + g.nodes()[nodeTwo].value());
+							click = !click;
+					}
+					
+					else {
+						g.addEdge(g.nodes()[nodeOne],g.nodes()[nodeTwo]);
+						
+						jsav.umsg("Connected node " + g.nodes()[nodeOne].value() + " to node " + g.nodes()[nodeTwo].value());
+						g.layout();
+						click = !click;
+					
+					}
+				}
+				else {
+					preClick[0] = new storeClick(x,y);
+					click = !click;
+				}
+			}		
+			if(addWeights && g.edgeCount() > 0) {
+				if(!click){
+				   	preClick[0] = new storeClick(x,y);
+					var nodeOne = getGraphNodeOne(graphNodes, preClick, x, y);
+					nodeOneHigh = nodeOne;
+					console.log(nodeOneHigh);
+					g.nodes()[nodeOne].highlight();
+					click = !click;
+				}else  {
+					console.log("in weights: ");
+					var nodeOne = getGraphNodeOne(graphNodes, preClick, x, y);
+					var nodeTwo = getGraphNodeTwo(graphNodes, x, y);
+					validateNodeClick(nodeOne, nodeTwo);
+					
+					if(!g.hasEdge(g.nodes()[nodeOne], g.nodes()[nodeTwo])) {
+						alert("There is not an edge between the two selected nodes");
+						click = !click;
+					}else {
+						var weight = window.prompt("Input weight of edge","");
+						var edge = g.getEdge(g.nodes()[nodeOne], g.nodes()[nodeTwo]);
+						edge.weight(weight);
+						click = !click;
+					}
+				}
+			}
+			if(!insideBox){
+				insideBox=!insideBox;
+			}
+			
+	}
+		
+	   ); 
+    }
+	)
+//jsav.recorded(); // done recording changes, will rewind
+
+  $(".jsavtreenode").live("hover", function() {
+	//console.log($(this).text(), $(this).offset().left, $(this).offset().top);
+    });
+    $("path").live("hover", function() {
+	//console.log($(this).attr("d"));
+    });
+
+  </script>
+ 
+  
+  </body>
+</html>

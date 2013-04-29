@@ -16,8 +16,12 @@
       }
     },
     "Sorting": {
-      "Sorting/SortIntro": {
-        "long_name": "Introduction",
+      "Sorting/InSort": {
+        "long_name": "Chapter Introduction: Sorting",
+        "exercises": {}
+      },
+      "Sorting/SortNotation": {
+        "long_name": "Sorting Terminology and Notation",
         "exercises": {
           "SortIntroSumm": {
             "long_name": "Sorting Intro Summary",

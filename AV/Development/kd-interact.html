@@ -1,10 +1,14 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <title>Kd-Tree Visualization</title>
-     <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" media="screen" title="kd-tree" charset="utf-8" />
-     <link href="opendsaAV.css" title="CSS" rel="stylesheet" type="text/css" />
-    <style>
+<head>
+  <title>Kd-Tree Visualization</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="kd-tree" charset="utf-8" />
+  <link href="../../lib/odsaAV-min.css" title="CSS" rel="stylesheet" type="text/css" />
+  <style>
+    .jsavcanvas {
+      width: 800px;
+      height: 480px;
+    }
     .jsavtree {
       position: relative;
       left:100px;
@@ -17,38 +21,32 @@
     path {
       pointer-events: visible;
     }
-    p.jsavoutput.jsavline
-    {
-    	visibility:visible;
-    	height: 40px;
+    p.jsavoutput.jsavline {
+      visibility:visible;
+      height: 40px;
     }
-    .jsavlabel
-    {
+    .jsavlabel {
     	position:absolute;
     }
     .jsavnode {
-     line-height : 22px;
-     height :50px;
-     width :50px;
-     }
-    </style>
-  </head>
-  <body>
+      line-height : 22px;
+      height :50px;
+      width :50px;
+    }
+  </style>
+</head>
+<body>
+  <div style="float:left; width:95%; height:1500px;" id="av">
+    <p class="jsavoutput jsavline"></p> 
+  </div>
     
-    <div style="float:left; width:95%; height:1500px;" id="av">
-      <p class="jsavoutput jsavline"></p> 
-    </div>
-    
-    
-    <script
-       src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <script src="../JSAV/lib/jquery.transform.light.js"></script>
-    <script src="../JSAV/lib/raphael.js"></script>
-    <script src="../JSAV/build/JSAV-min.js"></script>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
 
-   <script>
+  <script>
       
    function setKdValues(node, x, y){
    node.value("x: <span style=\"font-weight:bold;\" class='xvalue'>" + x + "</span><br/>y: <span class='yvalue'>" + y + "</span>");

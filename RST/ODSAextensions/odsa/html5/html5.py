@@ -12,7 +12,17 @@
 
 
 from sphinx.writers.html import HTMLTranslator as SphinxHTMLTranslator
+from docutils.nodes import Text
+import json 
 
+def loadTable():
+   try:
+      table=open('table.json')
+      data = json.load(table)
+      table.close()
+      return data
+   except IOError:
+      print 'ERROR: No table.json file.'
 
 
 class HTMLTranslator(SphinxHTMLTranslator):
@@ -64,8 +74,6 @@ class HTMLTranslator(SphinxHTMLTranslator):
         '''
         self.protect_literal_text -= 1
         self.body.append('</code>')
-
-
 
 
     def visit_caption(self, node):

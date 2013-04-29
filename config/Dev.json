@@ -25,8 +25,32 @@
         "exercises": {}
       }
     },
-    "Background": {
+    "Mathematical Background": {
       "Development/SetDef": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/MiscMath": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Logarithms": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Summations": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Recursion": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Proofs": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Estimation": {
         "long_name": "Set Definitions",
         "exercises": {}
       }
@@ -295,6 +319,10 @@
       }
     },
     "Advanced Linear Structures": {
+      "Development/Multilists": {
+        "long_name": "Multilists",
+        "exercises": {}
+      },
       "Development/SparseMatrix": {
         "long_name": "Sparse Matrices",
         "exercises": {}

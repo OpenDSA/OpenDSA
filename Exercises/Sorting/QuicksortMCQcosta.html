@@ -27,6 +27,12 @@
 	<p>There are a few really bad inputs.</p>
 	<p>The bad cases have pivots that repeatedly reduce the
 	partition size by one.</p>
+        <p>That leads to a series of partition sizes of
+	   <code>n-1</code>, <code>n-2></code>, and so on.
+	<p>Since the time to process a partition is linear on its
+	   size, this in turn leads to a cost for the whole algorithm
+	   that is the sum of <code>i</code> from 2 to
+           <code>n-1</code>, that you should be very familiar with.
       </div>
     </div>
   </div>

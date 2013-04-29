@@ -80,6 +80,7 @@ pull:
 	git submodule update
 	make -s -C JSAV
 	make -s min
+	cd Doc; make
 
 lib/odsaUtils-min.js: lib/odsaUtils.js
 	@echo 'Minimizing lib/odsaUtils.js'

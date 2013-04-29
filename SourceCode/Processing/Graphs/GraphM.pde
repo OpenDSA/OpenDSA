@@ -15,10 +15,10 @@ class GraphM implements Graph {
   }
 
   // Return the number of vertices
-  int n() { return nodeValues.length; }
+  int nodeCount() { return nodeValues.length; }
 
   // Return the current number of edges
-  int e() { return numEdge; }
+  int edgeCount() { return numEdge; }
   
   // Get the value of node with index v
   Object getValue(int v) { return nodeValues[v]; }

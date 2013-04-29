@@ -4,10 +4,10 @@ interface Graph { // Graph class ADT
   void init(int n);
 
   // Return the number of vertices
-  int n();
+  int nodeCount();
 
   // Return the current number of edges
-  int e();
+  int edgeCount();
 
   // Get the value of node with index v
   Object getValue(int v);

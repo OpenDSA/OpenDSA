@@ -25,22 +25,97 @@
         "exercises": {}
       }
     },
-    "Background": {
+    "Mathematical Background": {
       "Development/SetDef": {
         "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/MiscMath": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Logarithms": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Summations": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Recursion": {
+        "long_name": "Recursion",
+        "exercises": {}
+      },
+      "Development/Proofs": {
+        "long_name": "Proofs",
+        "exercises": {}
+      },
+      "Development/Estimation": {
+        "long_name": "Estimation",
         "exercises": {}
       }
     },
     "Algorithm Analysis": {
+      "Development/AnalChap": {
+        "long_name": "Chapter Intro: Algorithm Analysis",
+        "exercises": {}
+      },
       "Development/AnalPrelim": {
         "long_name": "Problems, Algorithms, and Programs",
+        "exercises": {}
+      },
+      "Development/AnalIntro": {
+        "long_name": "Comparing Algorithms",
+        "exercises": {}
+      },
+      "Development/AnalCases": {
+        "long_name": "Best, Average, and Worst Cases",
+        "exercises": {}
+      },
+      "Development/AnalCompvsAlg": {
+        "long_name": "A Faster Computer, or a Faster Algorithm?",
+        "exercises": {}
+      },
+      "Development/AnalAsymptotic": {
+        "long_name": "Asymptotic Analysis",
+        "exercises": {}
+      },
+      "Development/AnalProgram": {
+        "long_name": "Calculating the Running Time of a Program",
+        "exercises": {}
+      },
+      "Development/AnalProblem": {
+        "long_name": "Analyzing Problems",
+        "exercises": {}
+      },
+      "Development/AnalMisunderstanding": {
+        "long_name": "Common Misunderstandings",
+        "exercises": {}
+      },
+      "Development/AnalMultiple": {
+        "long_name": "Multiple Parameters",
+        "exercises": {}
+      },
+      "Development/AnalSpace": {
+        "long_name": "Space Bounds",
+        "exercises": {}
+      },
+      "Development/AnalTuning": {
+        "long_name": "Speeding Up Your Programs",
         "exercises": {}
       }
     },
     "Design": {
       "Development/ADT": {
         "long_name": "Abstract Data Types",
-        "exercises": {}
+        "exercises": {
+          "ADTCON1": {
+            "long_name": "ADT Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/DesignPatterns": {
         "long_name": "Design Patterns",
@@ -49,7 +124,11 @@
     },
     "Linear Structures": {
       "Development/ListIntro": {
-        "long_name": "Instroduction to Lists",
+        "long_name": "Chapter Introduction: Linear Structures",
+        "exercises": {}
+      },
+      "Development/ImpRecur": {
+        "long_name": "Implementing Recursion",
         "exercises": {}
       }
     },
@@ -110,19 +189,19 @@
         "long_name": "Heaps",
         "exercises": {
           "binaryheap-insert-proficiency": {
-            "long_name": "Binary Heap Insertion",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "binaryheap-delete-proficiency": {
-            "long_name": "Binary Heap Deletion",
+            "long_name": "Binary Heap Insertion Exercise",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
           "binaryheap-buildheap-proficiency": {
-            "long_name": "Binary Heap Building",
+            "long_name": "Binary Heap Building Exercise",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binaryheap-delete-proficiency": {
+            "long_name": "Binary Heap Deletion Exercise",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
@@ -179,8 +258,12 @@
       }
     },
     "Sorting": {
-      "Sorting/SortIntro": {
-        "long_name": "Introduction",
+      "Sorting/InSort": {
+        "long_name": "Chapter Introduction: Sorting",
+        "exercises": {}
+      },
+      "Sorting/SortNotation": {
+        "long_name": "Sorting Terminology and Notation",
         "exercises": {
           "SortIntroSumm": {
             "long_name": "Sorting Intro Summary",
@@ -646,6 +729,12 @@
         "exercises": {}
       }
     },
+    "Searching": {
+      "Development/SelfOrg": {
+        "long_name": "Self-organizing Lists",
+        "exercises": {}
+      }
+    },
     "Hashing": {
       "Hashing/HashIntro": {
         "long_name": "Introduction",
@@ -998,8 +1087,12 @@
       }
     },
     "Advanced Analysis": {
+      "Development/AdvSumm": {
+        "long_name": "Advanced Summations",
+        "exercises": {}
+      },
       "Development/Recurrence": {
-        "long_name": "Recurrence",
+        "long_name": "Solving Recurrence Relations",
         "exercises": {}
       },
       "Development/AmortAnal": {
@@ -1008,6 +1101,10 @@
       }
     },
     "Advanced Linear Structures": {
+      "Development/Multilists": {
+        "long_name": "Multilists",
+        "exercises": {}
+      },
       "Development/SparseMatrix": {
         "long_name": "Sparse Matrices",
         "exercises": {}
@@ -1024,6 +1121,10 @@
       }
     },
     "Algorithms": {
+      "Development/DynamicProgramming": {
+        "long_name": "Dynamic Programming",
+        "exercises": {}
+      },
       "Development/Knapsack": {
         "exercises": {
           "sackCallTree": {
@@ -1104,7 +1205,11 @@
         }
       }
     },
-    "Complexity": {
+    "Limits to Computing": {
+      "Development/LimComp": {
+        "long_name": "Chapter Intro: Limits to Computing",
+        "exercises": {}
+      },
       "Development/Reductions": {
         "long_name": "Reductions",
         "exercises": {}

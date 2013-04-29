@@ -20,6 +20,27 @@ from xml.dom.minidom import parse, parseString
 from string import whitespace as ws
 
 
+#a method to detect if the topic element is an example
+def isExample(topic):
+    if 'example' in topic.lower() and topic.startswith('.. topic::'):
+        return True
+    else:
+        return False
+
+def isTable(topic):
+    if 'table' in topic.lower() and topic.startswith('.. topic::'):
+        return True
+    else:
+        return False
+
+
+def isTheorem(topic):
+    if 'theorem' in topic.lower() and topic.startswith('.. topic::'):
+        return True
+    else:
+        return False
+
+
 #defines the color of output text (warnings, errors, and info)
 class bcolors:
     HEADER = '\033[95m'
@@ -69,6 +90,8 @@ class modPreReq:
       desc=''
       fig = 1
       tab = 1
+      exp = 1
+      thr = 1 
       label = ''
       fls = open(filename,'r')
       data = fls.readlines()
@@ -95,18 +118,46 @@ class modPreReq:
          if ':topic:' in line:
             str =  re.split('topic:', line, re.IGNORECASE)[1]
             self.covers =  p.sub('',str).split(',')
+         #label = ''
          if line.startswith('.. _'):
             label =  re.split(':', re.split('.. _', line, re.IGNORECASE)[1], re.IGNORECASE)[0]
-            if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. odsafig::'):
+            if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. odsafig::') or data[cpt+1].startswith('.. inlineav::'): 
                if os.path.splitext(os.path.basename(filename))[0] in config.table:
                  tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                  config.table[label] = tb + '.%s#' %fig
                  fig+=1
-            if data[cpt+1].startswith('.. table::'):
+            if data[cpt+1].startswith('.. table::') or data[cpt+1].startswith('.. odsatab') or isTable(data[cpt+1]):
                 if os.path.splitext(os.path.basename(filename))[0] in config.table:
                   tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                   config.table[label] = tb + '.%s#' %tab
                   tab+=1
+                label = '-1' 
+            if isExample(data[cpt+1]):
+                if os.path.splitext(os.path.basename(filename))[0] in config.table:
+                   tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
+                   config.table[label] = tb + '.%s#' %exp
+                exp+=1
+                label = '-2'
+            if isTheorem(data[cpt+1]):
+                if os.path.splitext(os.path.basename(filename))[0] in config.table:
+                   tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
+                   config.table[label] = tb + '.%s#' %thr
+                   thr+=1
+                label = '-3'
+ 
+         if isExample(line):
+             if label == '-2':
+                 label = ''
+             else:
+                 exp+=1
+                    
+         if isTheorem(line):
+             if label == '-3':
+                 label = ''
+             else:
+                 thr+=1
+   
+
          if ':target:' in line:
              trgt =  re.split('target:', line, re.IGNORECASE)[1]
              trgt=p.sub('',trgt)

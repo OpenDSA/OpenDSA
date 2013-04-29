@@ -1,25 +1,25 @@
 /* *** ODSATag: TopsortBFS *** */
-void topsortBFS(Graph G) { // Topological sort: Queue
-  Queue Q = new LQueue(G.n());
-  int[] Count = new int[G.n()];
+void topsortBFS(Graph G) {          // Topological sort: Queue
+  Queue Q = new LQueue(G.nodeCount());
+  int[] Count = new int[G.nodeCount()];
   int[] nList;
   int v;
-  for (v=0; v<G.n(); v++) Count[v] = 0; // Initialize
-  for (v=0; v<G.n(); v++) {    // Process every edge
+  for (v=0; v<G.nodeCount(); v++) Count[v] = 0; // Initialize
+  for (v=0; v<G.nodeCount(); v++) { // Process every edge
     nList = G.neighbors(v);
     for (int i=0; i< nList.length; i++)
-      Count[nList[i]]++;       // Add to v's prereq count
+      Count[nList[i]]++;            // Add to v's prereq count
   }
-  for (v=0; v<G.n(); v++)      // Initialize Queue
-    if (Count[v] == 0)         // V has no prerequisites
+  for (v=0; v<G.nodeCount(); v++)   // Initialize Queue
+    if (Count[v] == 0)              // V has no prerequisites
       Q.enqueue(v);
-  while (Q.length() > 0) {     // Process the vertices
+  while (Q.length() > 0) {          // Process the vertices
     v = (Integer)Q.dequeue();
-    printout(v);               // PreVisit for Vertex V
+    printout(v);                    // PreVisit for Vertex V
     nList = G.neighbors(v);
     for (int i=0; i< nList.length; i++) {
-      Count[nList[i]]--;       // One less prerequisite
-      if (Count[nList[i]] == 0)       // This vertex is now free
+      Count[nList[i]]--;            // One less prerequisite
+      if (Count[nList[i]] == 0)     // This vertex is now free
         Q.enqueue(nList[i]);
     }
   }
