@@ -3,7 +3,7 @@
 Back-end web services and user interface
 ========================================
 
-The OpenDSA "backend" API provides access to resources stored 
+The OpenDSA "backend" API provides access to resources stored
 in the database. OpenDSA implements RESTful (REpresentional State Transfer)
 service server-side. Information is transferred to/from the back end using JSON.
 
@@ -41,7 +41,7 @@ Login user
         |   password              | new user password          |
         +-------------------------+----------------------------+
 
-``Server Response:`` HTTP status[bad request|unauthorized|forbidden], [session key] 
+``Server Response:`` HTTP status[bad request|unauthorized|forbidden], [session key]
 
 Logout user
 ^^^^^^^^^^^
@@ -60,28 +60,10 @@ Logout user
 
 
 Books Resources
----------------   
+---------------
 
 Add new book
-^^^^^^^^^^^^  
-``HTTP method:``  POST   
- 
-``POST parameters:``   
-
-	+-------------------------+----------------------------+
-        |   Parameters            |   Description              |  
-        +=========================+============================+  
-        |   book_name             |   Name of the book         | 
-        +-------------------------+----------------------------+ 
-        |   book_url	          |   BOOK'S URL               |   
-        +-------------------------+----------------------------+ 
-
-``Server Response:`` HTTP status[bad request|unauthorized]
-
-Modules Resources
------------------
-Add new Module
-^^^^^^^^^^^^^^  
+^^^^^^^^^^^^
 ``HTTP method:``  POST
 
 ``POST parameters:``
@@ -89,10 +71,28 @@ Add new Module
         +-------------------------+----------------------------+
         |   Parameters            |   Description              |
         +=========================+============================+
-        |   name                  |   Name of the module       |     
+        |   book_name             |   Name of the book         |
+        +-------------------------+----------------------------+
+        |   book_url              |   BOOK'S URL               |
+        +-------------------------+----------------------------+
+
+``Server Response:`` HTTP status[bad request|unauthorized]
+
+Modules Resources
+-----------------
+Add new Module
+^^^^^^^^^^^^^^
+``HTTP method:``  POST
+
+``POST parameters:``
+
+        +-------------------------+----------------------------+
+        |   Parameters            |   Description              |
+        +=========================+============================+
+        |   name                  |   Name of the module       |
         +-------------------------+----------------------------+
         |   exercises             |   names of the exercises   |
-        |                         |   in the module            | 
+        |                         |   in the module            |
         +-------------------------+----------------------------+
 
 ``Server Response:`` HTTP status[bad request|unauthorized]
@@ -103,30 +103,30 @@ Exercises Resources
 
 ``POST parameters:``
 
-	+-------------------------+----------------------------+
-        |   Parameters            |   Description              |  
-        +=========================+============================+  
-        |   name                  |   Name of the exercise     | 
-        +-------------------------+----------------------------+ 
-        |   description	          | Description of the exercise|   
-        +-------------------------+----------------------------+ 
-        |   author                | Exercise author            |   	
-        +-------------------------+----------------------------+  
-        |   covers                |  Topic covered by the      |    
-        |                         |      exercise              |     
-        +-------------------------+----------------------------+    
-        |   ex_type      	  | Type of exercise: Khan     |   
+        +-------------------------+----------------------------+
+        |   Parameters            |   Description              |
+        +=========================+============================+
+        |   name                  |   Name of the exercise     |
+        +-------------------------+----------------------------+
+        |   description	          | Description of the exercise|
+        +-------------------------+----------------------------+
+        |   author                | Exercise author            |
+        +-------------------------+----------------------------+
+        |   covers                |  Topic covered by the      |
+        |                         |      exercise              |
+        +-------------------------+----------------------------+
+        |   ex_type               | Type of exercise: Khan     |
         |                         | academy, JSAV proficiency, |
-        |                         | or JSAV slide shows        |  
-        +-------------------------+----------------------------+  
-        |   streak (KA exercises) | streak of correct exercise | 
+        |                         | or JSAV slide shows        |
+        +-------------------------+----------------------------+
+        |   streak (KA exercises) | streak of correct exercise |
         |                         | for proficiency            |
-        +-------------------------+----------------------------+   
+        +-------------------------+----------------------------+
 
 ``Server Response:`` HTTP status[bad request|unauthorized]
 
 
-                                                   
+
 UserModule Resources
 ^^^^^^^^^^^^^^^^^^^^
 ``Endpoint:`` ismoduleproficient
@@ -143,46 +143,46 @@ UserModule Resources
         |   module                | module name                |
         +-------------------------+----------------------------+
 
-``HTTP Response:`` HTTP status[bad request|unauthorized], user module proficiency status 
+``HTTP Response:`` HTTP status[bad request|unauthorized], user module proficiency status
 
 UserExercises Resources
 -----------------------
 
 userexercise logs (KA exercises)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ``HTTP method:`` POST
 
-``POST Parameters:``  
+``POST Parameters:``
 
         +-------------------------+----------------------------+
         |   Parameters            |   Description              |
         +=========================+============================+
-        |   key  	          |  session key               |   
-        +-------------------------+----------------------------+ 
-        |   exercise	          |  exercise name             |   
-        +-------------------------+----------------------------
+        |   key                   |  session key               |
+        +-------------------------+----------------------------+
+        |   exercise              |  exercise name             |
+        +-------------------------+----------------------------+
         |   module                | module name                |
         +-------------------------+----------------------------+
-        |   attempt_number	  |  Counter for how many time | 
-        |                         |  the exercise has been     | 
-        |                         |  attempted                 |  
+        |   attempt_number        |  Counter for how many time |
+        |                         |  the exercise has been     |
+        |                         |  attempted                 |
         +-------------------------+----------------------------+
-        |  attempt_content	  |  Student answer            |   
-        +-------------------------+----------------------------+  
+        |  attempt_content        |  Student answer            |
+        +-------------------------+----------------------------+
         |  complete               |  1 if the answer is correct|
         |                         |  0 otherwise               |
-        +-------------------------+----------------------------+  
-        |  count_hints	          | Counter for how many time  |  
-        |                         | hints were use             |  
-        +-------------------------+----------------------------+ 
-        |  time_taken             | Time taken to complete     | 
-        |                         |  the exercise              |   
-        +-------------------------+----------------------------+   
+        +-------------------------+----------------------------+
+        |  count_hints            | Counter for how many time  |
+        |                         | hints were use             |
+        +-------------------------+----------------------------+
+        |  time_taken             | Time taken to complete     |
+        |                         |  the exercise              |
+        +-------------------------+----------------------------+
         |   remote_adrr           | IP address                 |
         +-------------------------+----------------------------+
 
 
-``Action triggered:`` Update proficiency field accordingly. 
+``Action triggered:`` Update proficiency field accordingly.
 
 ``HTTP Response:`` HTTP status[bad request|unauthorized], proficiency status.
 
@@ -235,7 +235,7 @@ userinterface logs
         |   key                   |  session key               |
         +-------------------------+----------------------------+
         |   exercise              |  exercise name             |
-        +-------------------------+----------------------------
+        +-------------------------+----------------------------+
         |   module                | module name                |
         +-------------------------+----------------------------+
         |   book                  | book name                  |
