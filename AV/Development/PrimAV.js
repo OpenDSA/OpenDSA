@@ -14,10 +14,8 @@
 function runit() {
   ODSA.AV.reset(true);
   jsav = new JSAV($('.avcontainer'));
-  graph = jsav.ds.graph({width: 600, height: 400, layout: "manual",
-					   directed: false});	
-  mst = jsav.ds.graph({width: 600, height: 400, layout: "manual",
-					 directed: true});
+  graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});	
+  mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
   initGraph();	
   graph.layout();
   arr=new Array(graph.nodeCount());
@@ -60,13 +58,13 @@ function minVertex() {
   gnodes.reset();
   for (next = gnodes.next(); next; next = gnodes.next()) {
     if (!next.hasClass("visited")) {
-	  v = next;
-	  break;
+      v = next;
+      break;
     }
   }
   for (next = gnodes.next(); next; next = gnodes.next()) {
     if (!(next.hasClass("visited")) && distances.value(next.index) < distances.value(v.index)) {
-	  v = next;
+      v = next;
     }
   }
   console.log("v is " + v.value() + ", Distance for v is " + distances.value(v.index));
@@ -80,7 +78,7 @@ function prim(s) {
   var weight;         // Weight of current edge
   var next, i;
 
-  // Initialize the MST "parents" to dummy values
+// Initialize the MST "parents" to dummy values
   for (next = gnodes.next(); next; next = gnodes.next()) {
     next.parent = next;
   }
@@ -96,38 +94,34 @@ function prim(s) {
       return;
     }
     if (v !== s) {
-	//Add an edge to the MST
-	  var edge = graph.getEdge(v.parent, v);
-	  edge.css({"stroke-width": "4", "stroke": "red"});
-	  var mstedge = mst.addEdge(mstnodes[v.parent.index], mstnodes[v.index],
-                                    {"weight": edge.weight()});
-          mstedge.css({"stroke-width": "2", "stroke": "red"});
-	  jsav.umsg("Adding the edge (" + v.parent.value() +
-			  "," + v.value() + ") to the MST");
-	  jsav.step();
+    //Add an edge to the MST
+    var edge = graph.getEdge(v.parent, v);
+    edge.css({"stroke-width": "4", "stroke": "red"});
+    var mstedge = mst.addEdge(mstnodes[v.parent.index], mstnodes[v.index], {"weight": edge.weight()});
+    mstedge.css({"stroke-width": "2", "stroke": "red"});
+    jsav.umsg("Add edge (" + v.parent.value() + "," + v.value() + ") to the MST");
+    jsav.step();
     }
     neighbors = v.neighbors();
-    var nodes="";
-    var distanceChanged=false;   //A flag to test whether the distance value of a node was changed
+    var msg="";
     for (var j = 0; j < neighbors.length; j++) {
-	  if (!neighbors[j].hasClass("visited")) {
-	    var w = neighbors[j];
-	    weight = v.edgeTo(w).weight();
-	    //Update Distances Of neighbors not in the minimum spanning tree
-	    if (distances.value(w.index) > weight) {
-		  w.parent = v;
-		  distances.value(w.index,weight);
-		  if(distanceChanged){
-		    nodes+=",";
-		  }
-		  nodes+=w.value();
-		  distanceChanged=true;
-	    }
-	  }
-    }
-    if(nodes!="") {
-	  jsav.umsg("Update the distance values of nodes ("+nodes+")");
-	  jsav.step();
+      if (!neighbors[j].hasClass("visited")) {
+        var w = neighbors[j];
+        weight = v.edgeTo(w).weight();
+        //Update Distances Of neighbors not in the minimum spanning tree
+        msg+="<u>Processing edge ("+v.value()+","+w.value()+"): </u>";
+        if (distances.value(w.index) > weight) {
+          w.parent = v;
+          distances.value(w.index,weight);
+          msg+="Update the distance value of node ("+w.value()+")"
+        }
+        else {
+          msg+="Leave the distance value of node ("+w.value()+") unchanged"
+        }
+        jsav.umsg(msg);
+        jsav.step();
+        msg="";
+      }
     }
   }
 }
@@ -140,22 +134,21 @@ function about() {
 // Initialize the graph.
 function initGraph() {
 
+  //Nodes of the original graph
   var a = graph.addNode("A", {"left": 25, "top": 50});
   var b = graph.addNode("B", {"left": 325, "top": 50});
   var c = graph.addNode("C", {"left": 145, "top": 75});
   var d = graph.addNode("D", {"left": 145, "top": 200});
   var e = graph.addNode("E", {"left": 0, "top": 300});
   var f = graph.addNode("F", {"left": 325, "top": 250});
-
-
+  //Nodes of the MST
   mst.addNode("A", {"left": 25, "top": 50});
   mst.addNode("B", {"left": 325, "top": 50});
   mst.addNode("C", {"left": 145, "top": 75});
   mst.addNode("D", {"left": 145, "top": 200});
   mst.addNode("E", {"left": 0, "top": 300});
   mst.addNode("F", {"left": 325, "top": 250});
-
-
+  //Original graph edges
   graph.addEdge(a, c, {"weight": 7});
   graph.addEdge(a, e, {"weight": 9});
   graph.addEdge(c, b, {"weight": 5});
@@ -170,9 +163,7 @@ function initGraph() {
   for(var i=0;i<mstnodes.length;i++){
     gnodes[i].index=i;
   }
-
 }
-
 // Connect action callbacks to the HTML entities
 $('#about').click(about);
 $('#runit').click(runit);
