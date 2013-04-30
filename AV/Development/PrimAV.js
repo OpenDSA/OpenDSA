@@ -103,13 +103,12 @@ function prim(s) {
     jsav.step();
     }
     neighbors = v.neighbors();
-    var msg="";
     for (var j = 0; j < neighbors.length; j++) {
       if (!neighbors[j].hasClass("visited")) {
         var w = neighbors[j];
         weight = v.edgeTo(w).weight();
         //Update Distances Of neighbors not in the minimum spanning tree
-        msg+="<u>Processing edge ("+v.value()+","+w.value()+"): </u>";
+        var msg = "<u>Processing edge ("+v.value()+","+w.value()+"): </u>";
         if (distances.value(w.index) > weight) {
           w.parent = v;
           distances.value(w.index,weight);
@@ -120,7 +119,6 @@ function prim(s) {
         }
         jsav.umsg(msg);
         jsav.step();
-        msg="";
       }
     }
   }
