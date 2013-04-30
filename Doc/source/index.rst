@@ -19,3 +19,5 @@ Table of Contents
    Configuration
    Client-sideFramework
    Client-sideDevelopment
+   QBankUserManual
+   QBankDevManual
