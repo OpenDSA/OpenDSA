@@ -19,18 +19,10 @@ function runit() {
   initGraph();
   g.layout();
   jsav.umsg("Let's see what a very long line will look like so that we can tell if this looks good. I guess that was not really good enough, this is a very big AV.");
-  jsav.displayInit();
-   
+  jsav.displayInit();   
   markIt(g.nodes()[0]);
   jsav.step();
   bfs(g.nodes()[0]);
-  // bfs(g.nodes()[2]);
-  
-  // bfs(g.nodes()[4]);
-  // bfs(g.nodes()[1]);
-  // bfs(g.nodes()[3]);
-  // bfs(g.nodes()[5]);
-//  jsav.step();
   finalGraph();
   jsav.recorded();
 }
@@ -51,7 +43,6 @@ function dequeueIt(node) {
   jsav.umsg("Dequeue " + node.value());
   arr.value(firstElement, "");
   firstElement++;
-  //jsav.step();
 }
 
 function bfs(start) {
@@ -102,12 +93,10 @@ function initGraph() {
   g.addEdge(a, c);
   g.addEdge(a, e);
   g.addEdge(c, b);
-
   g.addEdge(c, d);
   g.addEdge(c, f);
   g.addEdge(b, f);
   g.addEdge(d, f);
- 
   g.addEdge(e, f);
   jsav.umsg("Initial call to BFS on A.");
 }
