@@ -8,126 +8,108 @@
    :prerequisites:
    :topic: Binary Trees
 
-Binary Tree Traversals [Raw]
-============================
+Binary Tree Traversals [Text]
+=============================
 
 Often we wish to process a binary tree by "visiting" each of its
 nodes, each time performing a specific action such as printing the
 contents of the node.
 Any process for visiting all of the nodes in some order is
-called a <dfn>traversal</dfn>.
+called a :dfn:`traversal`.
 Any traversal that lists every node in the tree exactly once is
-called an <dfn>enumeration</dfn> of the tree's nodes.
+called an :dfn:`enumeration` of the tree's nodes.
 Some applications do not require that the nodes be visited in any
 particular order as long as each node is visited precisely once.
 For other applications, nodes must be visited in an order that
 preserves some relationship.
 For example, we might wish to make sure that we visit any given node
-<em>before</em> we visit its children.
-This is called a <dfn>preorder traversal</dfn>.
+*before* we visit its children.
+This is called a :dfn:`preorder traversal`.
 
-<p class="example">
-The preorder enumeration for the tree of
-Figure <ODSAref "BinExample" /> is
-<b>A B D C E G F H I</b>.
-<br/>
-The first node printed is the root.
-Then all nodes of the left subtree are printed (in preorder) before
-any node of the right subtree.
-</p>
+.. topic:: Example
 
-<p>
+   The preorder enumeration for the tree of
+   Figure :num:`Figure #BinExample` is
+   **A B D C E G F H I**.
+
+   The first node printed is the root.
+   Then all nodes of the left subtree are printed (in preorder) before
+   any node of the right subtree.
+
 Alternatively, we might wish to visit each node only
-<em>after</em> we visit its children (and their subtrees).
-For example, this would be necessary if we wish to return all nodes in 
-the tree to free store.
+*after* we visit its children (and their subtrees).
+For example, this would be necessary if we wish to return all nodes
+in the tree to free store.
 We would like to delete the children of a node before deleting the
 node itself.
 But to do that requires that the children's children be deleted
 first, and so on.
-This is called a <dfn>postorder traversal</dfn>.
-</p>
+This is called a :dfn:`postorder traversal`.
 
-<p class="example">
-The postorder enumeration for the tree of
-Figure <ODSAref "BinExample" />
-is <b>D B G E H I F C A</b>.
-</p>
+.. topic:: Example
 
-<p>
-An <dfn>inorder traversal</dfn> first visits the left child
+   The postorder enumeration for the tree of
+   Figure :num:`Figure #BinExample` is
+   **D B G E H I F C A**.
+
+An :dfn:`inorder traversal` first visits the left child
 (including its entire subtree), then visits the node, and finally
 visits the right child (including its entire
 subtree).
-The binary search tree (see Module <ODSAref "BST" />) makes use of this
+The binary search tree (see Module :numref:`<BST>`) makes use of this
 traversal to print all nodes in ascending order of value.
-</p>
 
-<p class="example">
-The inorder enumeration for the tree of Figure <ODSAref "BinExample" />
-is <b>B D A G E C H F I</b>.
+.. topic:: Example
+
+   The inorder enumeration for the tree of
+   Figure :num:`Figure #BinExample` is
+   **B D A G E C H F I**.
+
+.. TODO::
+   :type: Exercise
+
+   Add the exercises like what Ville did for traversals.
 
 Now we will discuss some implementations for the traversals, but we
-need to have an ADT for nodes to do this with.
-Just as a linked list is comprised of a collection of link objects, a
-tree is comprised of a collection of node objects.
-Figure <ODSAref "BinNodeADT" /> shows an ADT for binary tree nodes,
-called <code>BinNode</code>
+need to define a node ADT to work with.
+Just as a linked list is composed of a collection of link objects, a
+tree is composed of a collection of node objects.
+Here is an ADT for binary tree nodes, called ``BinNode``.
 This class will be used by some of the binary tree structures
 presented later.
-Class <code>BinNode</code> is a generic with parameter <code>E</code>,
-which is the type for the data record stored in the node.
 Member functions are provided that set or return the element value,
 set or return a pointer to the left child,
 set or return a pointer to the right child,
-or indicate whether the node is a leaf.::
+or indicate whether the node is a leaf.
 
-   /** ADT for binary tree nodes */
-   public interface BinNode<E> {
-     /** Get and set the element value */
-     public E element();
-     public void setElement(E v);
-
-     /** @return The left child */
-     public BinNode<E> left();
-
-     /** @return The right child */
-     public BinNode<E> right();
-
-     /** @return True if a leaf node, false otherwise */
-     public boolean isLeaf();
-   }
+.. codeinclude:: Trees/BinNode.pde
+   :tag: BinNode
 
 A traversal routine is naturally written as a recursive
 function.
 Its input parameter is a pointer to a node which we will call
-<code>rt</code> because each node can be viewed as the root of a some
+``rt`` because each node can be viewed as the root of a some
 subtree.
 The initial call to the traversal function passes in a pointer to the
 root node of the tree.
-The traversal function visits <code>rt</code> and its children (if any) 
+The traversal function visits ``rt`` and its children (if any) 
 in the desired order.
-For example, a preorder traversal specifies that <code>rt</code> be
+For example, a preorder traversal specifies that ``rt`` be
 visited before its children.
-This can easily be implemented as follows.::
+This can easily be implemented as follows.
 
-   void preorder(BinNode rt)
-   {
-     if (rt == null) return; // Empty subtree - do nothing
-     visit(rt);              // Process root node
-     preorder(rt.left());    // Process all nodes in left
-     preorder(rt.right());   // Process all nodes in right
-   }
+.. codeinclude:: Trees/Traverse.pde
+   :tag: preorder
 
-Function <code>preorder</code> first checks that the tree is not
-empty (if it is, then the traversal is done and <code>preorder</code>
+Function ``preorder`` first checks that the tree is not
+empty (if it is, then the traversal is done and ``preorder``
 simply returns).
-Otherwise, <code>preorder</code> makes  a call to <code>visit</code>,
+Otherwise, ``preorder`` makes  a call to ``visit``,
 which processes the root node (i.e., prints the value or performs
 whatever computation as required by the application).
-Function <code>preorder</code> is then called recursively on the left
+Function ``preorder`` is then called recursively on the left
 subtree, which will visit all nodes in that subtree.
-Finally, <code>preorder</code> is called on the right subtree,
+Finally, ``preorder`` is called on the right subtree,
 visiting all nodes in the right subtree.
 Postorder and inorder traversals are similar.
 They simply change the order in which the node and its children are
@@ -135,53 +117,50 @@ visited, as appropriate.
 
 An important decision in the implementation of any recursive function
 on trees is when to check for an empty subtree.
-Function <code>preorder</code> first checks to see if the value for
-<code>rt</code> is <code>NULL</code>.
-If not, it will recursively call itself on the left and right children 
-of <code>rt</code>.
-In other words, <code>preorder</code> makes no attempt to avoid calling
+Function ``preorder`` first checks to see if the value for
+``rt`` is ``null``.
+If not, it will recursively call itself on the left and right children
+of ``rt``.
+In other words, ``preorder`` makes no attempt to avoid calling
 itself on an empty child.
 Some programmers use an alternate design in which the left and
 right pointers of the current node are checked so that the recursive
 call is made only on non-empty children.
-Such a design typically looks as follows::
+Such a design typically looks as follows
 
-   void preorder2(BinNode rt)
-   {
-     visit(rt);
-     if (rt.left() != null) preorder2(rt.left());
-     if (rt.right() != null) preorder2(rt.right());
-   }
+.. codeinclude:: Trees/Traverse.pde
+   :tag: preorder
 
-At first it might appear that <code>preorder2</code> is more efficient
-than <code>preorder</code>, because it makes only half as many recursive
-calls.On the other hand, <code>preorder2</code> must access the left and right
+At first it might appear that ``preorder2`` is more efficient
+than ``preorder``, because it makes only half as many recursive
+calls.
+On the other hand, ``preorder2`` must access the left and right
 child pointers twice as often.
 The net result is little or no performance improvement.
 
 .. TODO::
    :type: Exercise
 
-   Why does <code>preorder2</code> make only half as many recursive calls?
+   Why does ``preorder2`` make only half as many recursive calls?
    Answer: Because half the pointers are null.
 
-In reality, the design of <code>preorder2</code> is inferior to
-that of <code>preorder</code> for two reasons.
+In reality, the design of ``preorder2`` is inferior to
+that of ``preorder`` for two reasons.
 First, while it is not apparent in this simple example,
 for more complex traversals it can become awkward to place the check
-for the <code>NULL</code> pointer in the calling code.
-Even here we had to write two tests for <code>NULL</code>,
-rather than the one needed by <code>preorder</code>.
-The more important concern with <code>preorder2</code> is that it
+for the ``null`` pointer in the calling code.
+Even here we had to write two tests for ``null``,
+rather than the one needed by ``preorder``.
+The more important concern with ``preorder2`` is that it
 tends to be error prone.
-While <code>preorder2</code> insures that no recursive
-calls will be made on empty subtrees, it will fail if the initial call 
-passes in a <code>NULL</code> pointer.
+While ``preorder2`` insures that no recursive
+calls will be made on empty subtrees, it will fail if the initial call
+passes in a ``null`` pointer.
 This would occur if the original tree is empty.
-To avoid the bug, either <code>preorder2</code> needs
-an additional test for a <code>NULL</code> pointer at the beginning
+To avoid the bug, either ``preorder2`` needs
+an additional test for a ``null`` pointer at the beginning
 (making the subsequent tests redundant after all), or the caller of
-<code>preorder2</code> has a hidden obligation to
+``preorder2`` has a hidden obligation to
 pass in a non-empty tree, which is unreliable design.
 The net result is that many programmers forget to test for the
 possibility that the empty tree is being traversed.
@@ -195,16 +174,16 @@ define the visitor function that is to be executed on every node.
 One approach is simply to write a new version of the traversal for
 each such visitor function as needed.
 The disadvantage to this is that whatever function does the traversal
-must have access to the <code>BinNode</code> class.
+must have access to the ``BinNode`` class.
 It is probably better design to permit only the tree class to have
-access to the <code>BinNode</code> class.
+access to the ``BinNode`` class.
 
 Another approach is for the tree class to supply a generic traversal
 function which takes the visitor as a function parameter.
 This is known as the
-<dfn>visitor design pattern</dfn>.
+:dfn:`visitor design pattern`.
 A major constraint on this approach is that the
-<dfn>signature</dfn> for all visitor functions, that is,
+:dfn:`signature` for all visitor functions, that is,
 their return type and parameters, must be fixed in advance.
 Thus, the designer of the generic traversal function must be able to
 adequately judge what parameters and return type will likely be needed
@@ -224,19 +203,18 @@ Here are a few simple examples.
 First we consider the simple case where a computation requires
 that we communicate information back up the tree to the end user.
 
-   **Example**
+.. topic:: Example
+
    We wish to count the number of nodes in a binary tree.
    The key insight is that the total count for any (non-empty) subtree is
    one for the root plus the counts for the left and right subtrees.
    Where do left and right subtree counts come from?
-   Calls to function <code>count</code> on the subtrees will compute this for
+   Calls to function ``count`` on the subtrees will compute this for
    us.
-   Thus, we can implement <code>count</code> as follows.::
+   Thus, we can implement ``count`` as follows.
 
-      int count(BinNode rt) {
-        if (rt == null) return 0;  // Nothing to count
-        return 1 + count(rt.left()) + count(rt.right());
-      }
+   .. codeinclude:: Trees/BinNode.pde
+      :tag: count
 
 Another problem that occurs when recursively processing data
 collections is controlling which members of the collection will be
@@ -252,46 +230,40 @@ which child(ren) to visit.
 
 A more difficult situation is illustrated by the following problem.
 Given an arbitrary binary tree we wish to determine if,
-for every node <var>A</var>, are all nodes in <var>A</var>'s left
-subtree less than the value of <var>A</var>, and are all nodes in
-<var>A</var>'s right subtree greater than the value of <var>A</var>?
+for every node :math:`A`, are all nodes in :math:`A`'s left
+subtree less than the value of :math:`A`, and are all nodes in
+:math:`A`'s right subtree greater than the value of :math:`A`?
 (This happens to be the definition for a binary search tree,
-see Module <ODSAref "BST" />.)
+see Module :numref:`<BST>`.)
 Unfortunately, to make this decision we need to know some context
-that is not available just by looking at the node's parent or children.
+that is not available just by looking at the node's parent or
+children.
 
-<figure>
-<center>
-<img src="Images/BSTCheckFig.png" alt="Binary tree checking" />
-</center>
+.. _BSTCheckFig:
 
-<figcaption>
-To be a binary search tree, the left child of the node with value 40
-must have a value between 20 and 40.
-</figcaption>
-</figure>
+.. figure:: Images/BSTCheckFig.png
+   :width: 100
+   :align: center
+   :figwidth: 90%
+   :alt: Binary tree checking
 
-As shown by Figure <ODSAref "BSTCheckFig" />,
-it is not enough to verify that <var>A</var>'s left child has a value
-less than that of <var>A</var>, and that <var>A</var>'s right child
+   To be a binary search tree, the left child of the node with value
+   40 must have a value between 20 and 40.
+
+As shown by Figure :num:`Figure #BSTCheckFig`,
+it is not enough to verify that :math:`A`'s left child has a value
+less than that of :math:`A`, and that :math:`A`'s right child
 has a greater value.
-Nor is it enough to verify that <var>A</var> has a value consistent
+Nor is it enough to verify that :math:`A` has a value consistent
 with that of its parent.
 In fact, we need to know information about what range of values is
 legal for a given node.
 That information might come from any of the node's ancestors.
 Thus, relevant range information must be passed down the tree.
-We can implement this function as follows.::
+We can implement this function as follows.
 
-   boolean checkBST(BinNode<Integer> rt, int low, int high) {
-     if (rt == null) return true; // Empty subtree
-     int rootkey = rt.element();
-     if ((rootkey < low) || (rootkey > high))
-       return false; // Out of range
-     if (!checkBST(rt.left(), low, rootkey))
-       return false; // Left side failed
-     return checkBST(rt.right(), rootkey, high);
-   }
+.. codeinclude:: Trees/BinNode.pde
+   :tag: checkBST
 
 .. TODO::
    :type: Exercise
@@ -313,3 +285,8 @@ We can implement this function as follows.::
 
    Given an enumeration from a tree, determine if it is pre-order,
    post-order, in-order, or none of the above.
+
+.. TODO::
+   :type: Exercise
+
+   Need a battery of MCQ questions on content

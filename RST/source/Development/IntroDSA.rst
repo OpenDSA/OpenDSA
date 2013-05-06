@@ -57,9 +57,10 @@ How do we choose between them?
 At the heart of computer program design are two (sometimes conflicting)
 goals:
 
-1) To design an algorithm that is easy to understand, code, and debug.
-2) To design an algorithm that makes efficient use of the computer's
-   resources.
+(#) To design an algorithm that is easy to understand, code, and debug.
+
+(#) To design an algorithm that makes efficient use of the computer's
+    resources.
 
 Ideally, the resulting program is true to both of these goals.
 We might say that such a program is "elegant."

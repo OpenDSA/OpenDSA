@@ -77,12 +77,10 @@ A :dfn:`leaf` node is any node that has two empty children.
 An :dfn:`internal` node is
 any node that has at least one non-empty child.
 
-.. Images/BinExamp.png
-
 .. _BinExample:
 
-.. figure:: Images/GraphDef.png
-   :width: 500
+.. figure:: Images/BinExamp.png
+   :width: 200
    :align: center
    :figwidth: 90%
    :alt: An example binary tree
@@ -112,11 +110,10 @@ any node that has at least one non-empty child.
    Replace the figure above with a series of slides that show each of
    the defitions.
 
-.. Images/BinDiff.png
 .. _BinDiff:
 
-.. figure:: Images/GraphDef.png
-   :width: 500
+.. figure:: Images/BinDiff.png
+   :width: 300
    :align: center
    :figwidth: 90%
    :alt: Two different binary trees
@@ -147,12 +144,10 @@ In the complete binary tree of height :math:`d`, all levels
 except possibly level :math:`d-1` are completely full.
 The bottom level has its nodes filled in from the left side.
 
-.. Images/FullComp.png
-
 .. _FullComplete:
 
-.. figure:: Images/GraphDef.png
-   :width: 500
+.. figure:: Images/FullComp.png
+   :width: 400
    :align: center
    :figwidth: 90%
    :alt: Full and complete binary trees

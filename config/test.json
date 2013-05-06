@@ -7,24 +7,17 @@
   "build_JSAV": false,
   "build_ODSA": true,
   "allow_anonymous_credit": true,
+  "suppress_todo": false,
   "chapters": {
     "Preface": {
       "Intro": {
         "long_name": "How to Use this System",
         "exercises": {}
-      },
-      "Development/SetDef": {
-        "long_name": "Set Definitions",
-        "exercises": {}
-      },
-      "Development/Proofs": {
-        "long_name": "Proofs",
-        "exercises": {}
       }
     },
-    "Hashing": {
-      "Development/PerfectHash": {
-        "long_name": "Perfect Hashing",
+    "Test Stuff": {
+      "Development/HuffProof": {
+        "long_name": "Huffman Proof",
         "exercises": {}
       }
     }
