@@ -96,9 +96,10 @@ searches.
 
 .. _HashPlot:
 
-.. figure:: Images/hashplot.gif
+.. odsafig:: Images/hashplot.gif
    :width: 400
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Hashing analysis plot
 

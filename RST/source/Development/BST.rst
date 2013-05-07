@@ -53,13 +53,12 @@ nodes are printed using an inorder traversal
 the resulting enumeration will be in
 sorted order from lowest to highest.
 
-.. Images/BSTShape.png
-
 .. _BSTShape:
 
-.. figure:: Images/GraphDef.png
+.. odsafig:: Images/BSTShape.png
    :width: 500
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Two Binary Search Trees
 
@@ -135,13 +134,12 @@ find where that record would have been if it were in the tree.
 This takes us to either a leaf node, or to an internal node with no
 child in the appropriate direction. [#]_
 
-.. Images/BSTAdd.png
-
 .. _BSTAdd:
 
-.. figure:: Images/GraphDef.png
-   :width: 500
+.. odsafig:: Images/BSTAdd.png
+   :width: 300
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Inserting a node into a BST
 
@@ -235,13 +233,12 @@ Here is an example
    node containing the minimum value.
    This is indicated in Figure :num:`Figure #DelMin` by a dashed line.
 
-.. Images/DelMin.png
-
 .. _DelMin:
 
-.. figure:: Images/GraphDef.png
-   :width: 500
+.. odsafig:: Images/DelMin.png
+   :width: 200
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Deleting the node with minimum value
 
@@ -306,13 +303,12 @@ then the BST property is maintained.
    We then substitute 40 as the new value for the root node.
    Figure :num:`Figure #Remove` illustrates this process.
 
-.. Images/Remove.png
-
 .. _Remove:
 
-.. figure:: Images/GraphDef.png
-   :width: 500
+.. odsafig:: Images/Remove.png
+   :width: 300
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Removing a node from the BST
 

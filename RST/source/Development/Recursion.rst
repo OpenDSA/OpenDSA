@@ -82,9 +82,10 @@ It cannot be rewritten easily using ``while`` loops.
 
 .. _TOH:
 
-.. figure:: Images/TOH.png
+.. odsafig:: Images/TOH.png
    :width: 400
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Towers of Hanoi Example
 

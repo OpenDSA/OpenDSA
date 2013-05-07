@@ -49,9 +49,10 @@ However, this is impossible because :math:`l_1` and
 
 .. _HProof:
 
-.. figure:: Images/HProof.png
+.. odsafig:: Images/HProof.png
    :width: 200
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: An impossible Huffman tree
 

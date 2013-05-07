@@ -303,9 +303,10 @@ Figure :num:`Figure #FloydExamp` illustrates the concept of
 
 .. _FloydExamp:
 
-.. figure:: Images/Floyd.png
+.. odsafig:: Images/Floyd.png
    :width: 400
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: An example of :math:`k`-paths in Floyd's algorithm
 

@@ -95,9 +95,10 @@ is the total length of the two sublists being merged.
 
 .. _MergeSortFig:
 
-.. figure:: Images/MrgSort.png
+.. odsafig:: Images/MrgSort.png
    :width: 250
    :alt: Mergesort
+   :capalign: center
    :figwidth: 90%
    :align: center
 

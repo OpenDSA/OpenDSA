@@ -41,9 +41,10 @@ space from its internal nodes.
 
 .. _OneLeaf:
 
-.. figure:: Images/OneLeaf.png
+.. odsafig:: Images/OneLeaf.png
    :width: 150
    :align: center
+   :capalign: center
    :figwidth: 90%
    :alt: A tree containing many internal nodes and a single leaf.
 

@@ -200,9 +200,10 @@ cost?
 
 .. _PrimProof:
 
-.. figure:: Images/PrimMST.png
+.. odsafig:: Images/PrimMST.png
    :width: 400
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Prim's MST algorithm proof
 
@@ -259,9 +260,10 @@ This process is repeated until only one equivalence class remains.
 
 .. _KruskalFig:
 
-.. figure:: Images/Kruskal.png
+.. odsafig:: Images/Kruskal.png
    :width: 500
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Illustration of Kruskal's MST algorithm
 

@@ -175,9 +175,10 @@ worst case.
 
 .. _HeapBuild:
 
-.. figure:: Images/HeapBld.png
+.. odsafig:: Images/HeapBld.png
    :width: 500
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Two series of exchanges to build a heap
 
@@ -218,9 +219,10 @@ This situation is illustrated by Figure :num:`Figure #HeapInduct`.
 
 .. _HeapInduct:
 
-.. figure:: Images/HeapInd.png
+.. odsafig:: Images/HeapInd.png
    :width: 250
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: An example of heap building
 
@@ -249,9 +251,10 @@ Figure :num:`Figure #SiftPic`.
 
 .. _SiftPic:
 
-.. figure:: Images/SiftPic.png
+.. odsafig:: Images/SiftPic.png
    :width: 500
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: The siftdown operation
 

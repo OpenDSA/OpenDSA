@@ -79,9 +79,10 @@ any node that has at least one non-empty child.
 
 .. _BinExample:
 
-.. figure:: Images/BinExamp.png
+.. odsafig:: Images/BinExamp.png
    :width: 200
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: An example binary tree
 
@@ -112,9 +113,10 @@ any node that has at least one non-empty child.
 
 .. _BinDiff:
 
-.. figure:: Images/BinDiff.png
+.. odsafig:: Images/BinDiff.png
    :width: 300
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Two different binary trees
 
@@ -146,9 +148,10 @@ The bottom level has its nodes filled in from the left side.
 
 .. _FullComplete:
 
-.. figure:: Images/FullComp.png
+.. odsafig:: Images/FullComp.png
    :width: 400
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Full and complete binary trees
 

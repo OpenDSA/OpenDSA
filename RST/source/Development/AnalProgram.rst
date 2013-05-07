@@ -219,9 +219,10 @@ Figure :num:`Figure #BinSchFig` illustrates the binary search method.
 
 .. _BinSchFig:
 
-.. figure:: Images/BinSch.png
+.. odsafig:: Images/BinSch.png
    :width: 500
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Illustration of binary search
 

@@ -88,9 +88,10 @@ are said to be :dfn:`weighted`.
 
 .. _GraphTerms:
 
-.. figure:: Images/GraphDef.png
+.. odsafig:: Images/GraphDef.png
    :width: 500
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Examples of graphs and graph terminology
 
@@ -140,9 +141,10 @@ with three connected components.
 
 .. _ConCom:
 
-.. figure:: Images/ConCom.png
+.. odsafig:: Images/ConCom.png
    :width: 300
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Illustration of connected components
 
@@ -167,9 +169,10 @@ a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
 
 .. _GraphRep:
 
-.. figure:: Images/GraphRep.png
+.. odsafig:: Images/GraphRep.png
    :width: 400
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Graph Representations
 
@@ -205,9 +208,10 @@ In either case, the space requirements for the adjacency matrix are
 
 .. _Undirected:
 
-.. figure:: Images/GraphUD.png
+.. odsafig:: Images/GraphUD.png
    :width: 400
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Using the graph representations for undirected graphs
 

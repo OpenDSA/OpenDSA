@@ -241,9 +241,10 @@ children.
 
 .. _BSTCheckFig:
 
-.. figure:: Images/BSTCheckFig.png
+.. odsafig:: Images/BSTCheckFig.png
    :width: 100
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Binary tree checking
 

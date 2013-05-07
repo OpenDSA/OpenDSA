@@ -107,10 +107,10 @@ UNION/FIND array, and methods ``differ`` and
    which stores its value and a pointer to its parent.
    The parent pointers are represented by the position in the array
    of the parent.
-   The root of any tree stores \Cref{ROOT}, represented graphically by a
+   The root of any tree stores ``ROOT``, represented graphically by a
    slash in the "Parent's Index" box.
    This figure shows two trees stored in the same parent pointer array,
-   one rooted at~\svar{R}, and the other rooted at~\svar{W}.
+   one rooted at :math:`R`, and the other rooted at :math:`W`.
 
 Consider the problem of assigning the members of a set to
 disjoint subsets called
@@ -126,9 +126,10 @@ that objects :math:`A` and :math:`C` are also equivalent.
 
 .. _UFexamp:
 
-.. figure:: Images/UFexamp.png
-   :width: 500
+.. odsafig:: Images/UFexamp.png
+   :width: 250
    :align: center
+   :capalign: center
    :figwidth: 90%
 
    A graph with two connected components.
@@ -136,19 +137,19 @@ that objects :math:`A` and :math:`C` are also equivalent.
 There are many practical uses for disjoint sets and representing
 equivalences.
 For example, consider Figure :num:`Figure #UFexamp` which shows a
-graph of ten nodes labeled \svar{A} through \svar{J}.
-Notice that for nodes \svar{A} through \svar{I}, there is some series
-of edges that connects any pair of the nodes, but node \svar{J} is
-disconnected from the rest of the nodes.
+graph of ten nodes labeled :math:`A` through :math:`J`.
+Notice that for nodes :math:`A` through :math:`I`, there is some
+series of edges that connects any pair of the nodes, but node
+:math:`J` is disconnected from the rest of the nodes.
 Such a graph might be used to represent connections such as wires
 between components on a circuit board, or roads between cities.
 We can consider two nodes of the graph to be equivalent if there is a
 path between them.
-Thus, nodes \svar{A}, \svar{H}, and \svar{E} would
-be equivalent in Figure :num:`Figure #UFexamp`, but \svar{J} is not
+Thus, nodes :math:`A`, :math:`H`, and :math:`E` would
+be equivalent in Figure :num:`Figure #UFexamp`, but :math:`J` is not
 equivalent to any other.
 A subset of equivalent (connected) edges in a graph is called a
-\defit{connected component}.
+:dfn:`connected component`.
 The goal is to quickly classify the objects
 into disjoint sets that correspond to the connected components.
 
@@ -180,9 +181,10 @@ Otherwise, the two equivalence classes should be merged by the
 
 .. _EquivEx:
 
-.. figure:: Images/EquivEx.png
+.. odsafig:: Images/EquivEx.png
    :width: 500
    :align: center
+   :capalign: center
    :figwidth: 90%
 
    An example of equivalence processing.
@@ -197,11 +199,11 @@ Otherwise, the two equivalence classes should be merged by the
    Figure :num:`Figure #UFexamp`.
    The nodes are placed into ten independent equivalence classes.
    (b) The result of processing five edges:
-   (\svar{A},~\svar{B}), (\svar{C},~\svar{H}), (\svar{G},~\svar{F}),
-   (\svar{D},~\svar{E}), and (\svar{I},~\svar{F}).
+   :math:`(A, B)`, :math:`(C, H)`, :math:`(G, F)`,
+   :math:`(D, E)`, and :math:`(I, F)`.
    (c) The result of processing two more edges:
-   (\svar{H},~\svar{A}) and (\svar{E},~\svar{G}).
-   (d) The result of processing edge (\svar{H},~\svar{E}).}
+   :math:`(H, A)` and :math:`(E, G)`.
+   (d) The result of processing edge :math:`(H, E)`.}
 
 
    As an example of solving the equivalence class problem, consider the
@@ -212,22 +214,22 @@ Otherwise, the two equivalence classes should be merged by the
    Figure Figure :num:`Figure #EquivEx` (a) shows this initial
    configuration using the parent pointer array representation.
    Now, consider what happens when equivalence relationship
-   (\svar{A},~\svar{B}) is processed.
-   The root of the tree containing~\svar{A} is~\svar{A}, and the root of
-   the tree containing~\svar{B} is~\svar{B}.
+   :math:`(A, B)` is processed.
+   The root of the tree containing :math:`A` is :math:`A`, and the
+   root of the tree containing :math:`B` is :math:`B`.
    To make them equivalent, one of these two roots is set to be the
    parent of the other.
-   In this case it is irrelevant which points to which, so we arbitrarily
-   select the first in alphabetical order to be the root.
-   This is represented in the parent pointer array by setting the parent
-   field of~\svar{B} (the node in array position~1 of the array)
-   to store a pointer to~\svar{A}.
-   Equivalence pairs (\svar{C},~\svar{H}), (\svar{G},~\svar{F}), and
-   (\svar{D},~\svar{E}) are processed in similar fashion.
-   When processing the equivalence pair (\svar{I},~\svar{F}),
-   because~\svar{I} and~\svar{F} are both their own roots,
-   \svar{I}~is set to point to~\svar{F}.
-   Note that this also makes \svar{G} equivalent to~\svar{I}.
+   In this case it is irrelevant which points to which, so we
+   arbitrarily select the first in alphabetical order to be the root.
+   This is represented in the parent pointer array by setting the
+   parent field of :math:`B` (the node in array position 1 of the
+   array) to store a pointer to :math:`A`.
+   Equivalence pairs :math:`(C, H)`, :math:`(G, F)`, and
+   :math:`(D, E)` are processed in similar fashion.
+   When processing the equivalence pair :math:`(I, F)`,
+   because :math:`I` and :math:`F` are both their own roots,
+   :math:`I` is set to point to :math:`F`.
+   Note that this also makes :math:`G` equivalent to :math:`I`.
    The result of processing these five equivalences is shown in
    Figure :num:`Figure #EquivEx` (b).
 
@@ -264,24 +266,24 @@ times when :math:`n` equivalences are processed.
 
    Illustration of Weighted Union Rule.
 
-   When processing equivalence pair (\svar{I},~\svar{F}) in
-   Figure :num:`Figure #EquivEx` (b), \svar{F}~is the root of a
-   tree with two nodes while \svar{I}~is the root of a tree with only
+   When processing equivalence pair :math:`(I, F)` in
+   Figure :num:`Figure #EquivEx` (b), :math:`F` is the root of a
+   tree with two nodes while :math:`I` is the root of a tree with only
    one node.
-   Thus, \svar{I}~is set to point to~\svar{F} rather than the other way
-   around.
+   Thus, :math:`I` is set to point to :math:`F` rather than the other
+   way around.
    Figure :num:`Figure #EquivEx` (c) shows the result of processing
-   two more equivalence pairs: (\svar{H},~\svar{A}) and
-   (\svar{E},~\svar{G}).
-   For the first pair, the root for~\svar{H} is~\svar{C} while the root
-   for~\svar{A} is itself.
+   two more equivalence pairs: :math:`(H, A)` and
+   :math:`(E, G)`.
+   For the first pair, the root for :math:`H` is :math:`C` while the
+   root for :math:`A` is itself.
    Both trees contain two nodes, so it is an arbitrary decision as to
    which node is set to be the root for the combined tree.
-   In the case of equivalence pair (\svar{E},~\svar{G}),
-   the root of~\svar{E} is~\svar{D} while the
-   root of~\svar{G} is~\svar{F}.
-   Because~\svar{F} is the root of the larger tree, node~\svar{D} is set
-   to point to~\svar{F}.
+   In the case of equivalence pair :math:`(E, G)`,
+   the root of :math:`E` is :math:`D` while the
+   root of :math:`G` is :math:`F`.
+   Because :math:`F` is the root of the larger tree, node :math:`D` is
+   set to point to :math:`F`.
 
 .. TODO::
    :type: Slideshow
@@ -292,9 +294,8 @@ times when :math:`n` equivalences are processed.
    If equivalence :math:`(F, G)` is processed when the
    representation is in the state shown in
    Figure :num:`Figure #EquivEx` (c),
-   no change will be made because~\svar{F} is already the root
-   for~\svar{G}.
-
+   no change will be made because :math:`F` is already the root
+   for :math:`G`.
 
 The weighted union rule helps to minimize the depth of the tree, but
 we can do better than this.
@@ -321,9 +322,10 @@ to the root.
 
 .. _PathCompFig:
 
-.. figure:: Images/PathComp.png
+.. odsafig:: Images/PathComp.png
    :width: 500
    :align: center
+   :capalign: center
    :figwidth: 90%
 
    Example of Path Compression
@@ -334,22 +336,25 @@ to the root.
    Demonstration of Path Compression.
 
    Figure :num:`Figure #EquivEx` (d) shows the result of processing
-   equivalence pair (\svar{H},~\svar{E}) on the the representation
+   equivalence pair :math:`(H, E)` on the the representation
    shown in Figure :num:`Figure #EquivEx` (c) using the standard
    weighted union rule without path compression.
    Figure :num:`Figure #PathCompFig` illustrates the path compression
    process for the same equivalence pair.
-   After locating the root for node~\svar{H}, we can perform path
-   compression to make~\svar{H} point directly to root object~\svar{A}.
-   Likewise, \svar{E}~is set to point directly to its root,~\svar{F}.
-   Finally, object~\svar{A} is set to point to root object~\svar{F}.
+   After locating the root for node :math:`H`, we can perform path
+   compression to make :math:`H` point directly to root object
+   :math:`A`.
+   Likewise, :math:`E` is set to point directly to its root,
+   :math:`F`.
+   Finally, object :math:`A` is set to point to root object
+   :math:`F`.
 
    Note that path compression takes place during the
-   FIND operation, \emph{not} during the UNION operation.
+   FIND operation, *not* during the UNION operation.
    In Figure :num:`Figure #PathCompFig`, this means that nodes
-   \svar{B}, \svar{C}, and \svar{H} have node \svar{A} remain as their
-   parent, rather than changing their parent to be \svar{F}.
-   While we might prefer to have these nodes point to \svar{F}, to
+   :math:`B`, :math:`C`, and :math:`H` have node :math:`A` remain as
+   their parent, rather than changing their parent to be :math:`F`.
+   While we might prefer to have these nodes point to :math:`F`, to
    accomplish this would require that additional information from the
    FIND operation be passed back to the UNION operation.
    This would not be practical.

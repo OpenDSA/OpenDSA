@@ -75,9 +75,10 @@ generalized from the notation for binary trees.
 
 .. _GenTreeFig:
 
-.. figure:: Images/GTreeFig.png
+.. odsafig:: Images/GTreeFig.png
    :width: 400
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Notation for general trees
 

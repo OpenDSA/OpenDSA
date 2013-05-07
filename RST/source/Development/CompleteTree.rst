@@ -50,13 +50,12 @@ This means there is no overhead to the array implementation if the
 array is selected to be of size :math:`n` for a tree of :math:`n`
 nodes.
 
-.. Images/BinArray.png
-
 .. _BinArray:
 
-.. figure:: Images/GraphDef.png
-   :width: 500
+.. odsafig:: Images/BinArray.png
+   :width: 400
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Complete binary tree stored in an array
 

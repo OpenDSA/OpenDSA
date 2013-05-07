@@ -93,9 +93,10 @@ return is a faster swap operation.
 
 .. _PointerSwap:
 
-.. figure:: Images/PtrSwap.png
+.. odsafig:: Images/PtrSwap.png
    :width: 300
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Swapping pointers to records
 

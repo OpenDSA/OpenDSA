@@ -44,10 +44,10 @@ to full and complete binary trees, respectively.
 
 Many of the properties of binary trees extend to :math:`K`-ary trees.
 Equivalent theorems to those in Module numref`<BinSpace>` regarding the
-number of ``null`` pointers in a :math:`K`-ary` tree and the
+number of ``null`` pointers in a :math:`K`-ary tree and the
 relationship between the number of leaves and the number of internal
 nodes in a :math:`K`-ary tree can be derived.
 We can also store a complete :math:`K`-ary tree in an array,
 using simple formulas to compute a node's relations in a manner
 similar to that used in
-Section numref`<Complete>`.
+Section :numref:`<CompleteTree>`.

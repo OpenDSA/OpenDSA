@@ -227,9 +227,10 @@ algorithms are shown.
 
 .. _RunTimeGraph:
 
-.. figure:: Images/plot.png
+.. odsafig:: Images/plot.png
    :width: 500
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: The growth rates for five equations
 

@@ -32,13 +32,12 @@ one to its left child and another to its right child.
 .. codeinclude:: Trees/BSTNode.pde
    :tag: BSTNode
 
-.. Images/BinLink.png
-
 .. _BinLink:
 
-.. figure:: Images/GraphDef.png
+.. odsafig:: Images/BinLink.png
    :width: 300
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Binary tree node implementation
 
@@ -76,13 +75,12 @@ But it seems wasteful to store child pointers in the leaf nodes.
 Thus, there are many reasons why it can save space to have separate
 implementations for internal and leaf nodes.
 
-.. Images/DiffNode.png
-
 .. _DiffNodes:
 
-.. figure:: Images/GraphDef.png
+.. odsafig:: Images/DiffNode.png
    :width: 300
    :align: center
+   :capalign: center
    :figwidth: 90%
    :alt: Expression Tree
 

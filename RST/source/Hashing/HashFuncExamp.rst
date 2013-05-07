@@ -108,9 +108,10 @@ Thus, each table slot is equally likely (roughly) to get a key value.
 
 .. _HashNormal:
 
-.. figure:: Images/HashNormal.png
+.. odsafig:: Images/HashNormal.png
    :width: 800
    :align: center
+   :capalign: center
    :figwidth: 90%
    :alt: Binning vs. Mod Function
 
@@ -147,9 +148,10 @@ the digits of the operator and the digits of the result.
 
 .. _MidSquareFig:
 
-.. figure:: Images/MidSquare.png
+.. odsafig:: Images/MidSquare.png
    :width: 70
    :align: center
+   :capalign: center
    :figwidth: 90%
    :alt: Mid-square method example
 

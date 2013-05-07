@@ -137,9 +137,10 @@ that might be the eventual result of the algorithm.
 
 .. _Dectree:
 
-.. figure:: Images/DecTree.png
+.. odsafig:: Images/DecTree.png
    :width: 400
    :align: center
+   :capalign: justify
    :figwidth: 90%
    :alt: A decision tree for Insertion Sort
 
