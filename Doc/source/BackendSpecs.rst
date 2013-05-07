@@ -254,3 +254,14 @@ userinterface logs
 
 
 ``HTTP Response:`` HTTP status[bad request|unauthorized], starage status.
+
+
+Scheduled Tasks
+---------------
+
+Daily summary logs
+^^^^^^^^^^^^^^^^^^
+We use ``celery`` (http://celeryproject.org/) to run scripts that create daily activity log files.
+The scripts run at the same time everyday. The scripts query the database and update the logs files
+that are used by the visualization webpage. 
+
