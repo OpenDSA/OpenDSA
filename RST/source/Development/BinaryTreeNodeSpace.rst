@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Binary Trees
 
-Binary Tree Space Requirements [Raw]
-====================================
+Binary Tree Space Requirements [Text]
+=====================================
 
 This module presents techniques for calculating the amount of
 overhead required by a binary tree, based on its node implementation.
@@ -22,29 +22,28 @@ whether the leaves store child pointers, and whether the tree is a
 full binary tree.
 
 In a simple pointer-based implementation for the binary tree such
-as that of Figure <ODSAref "BinNodeClass" />, every node has two
+as that of Module :numref:`<BinaryTreeImpl>`, every node has two
 pointers to its children (even when the children are NULL).
 This implementation requires total space amounting to
-<i>n</i>(2<i>P</i> + <i>D</i>) for a tree of <i>n</i> nodes.
-Here, <i>P</i> stands for the amount of space required by a pointer,
-and <i>D</i> stands for the amount of space required by a data value.
-The total overhead space will be 2<i>Pn</i> for the entire tree.
-Thus, the overhead fraction will be 2<i>P</i>/(2<i>P</i> + <i>D</i>).
+:math:`n(2P + D)` for a tree of :math:`n` nodes.
+Here, :math:`P` stands for the amount of space required by a pointer,
+and :math:`D` stands for the amount of space required by a data value.
+The total overhead space will be :math:`2Pn` for the entire tree.
+Thus, the overhead fraction will be :math:`2P/(2P + D)`.
 The actual value for this expression depends on the relative size of
 pointers versus data fields.
-If we arbitrarily assume that <i>P</i> = <i>D</i>, then a full tree
+If we arbitrarily assume that :math:`P = D`, then a full tree
 has about two thirds of its total space taken up in overhead.
-Worse yet, Theorem <ODSAref "SubTreeThrm" />
-tells us that about half of the
-pointers are "wasted" NULL values that serve only to indicate tree
+Worse yet, the Full Binary Tree Theorem tells us that about half of
+the pointers are "wasted" NULL values that serve only to indicate tree
 structure, but which do not provide access to new data.
 
-In Java, the most typical
+In many languages (such as Java or JavaScript), the most typical
 implementation is not to store any actual
 data in a node, but rather a pointer to the data record.
 In this case, each node will typically store three pointers, all of
 which are overhead, resulting in an overhead fraction of
-3<i>P</i>/(3<i>P</i> + <i>D</i>).
+:math:`3P/(3P + D)`.
 
 If only leaves store data values, then the fraction of total space
 devoted to overhead depends on whether the tree is
@@ -63,10 +62,13 @@ Again assume the tree stores a pointer to the data field.
 Because about half of the nodes are leaves and half internal nodes,
 and because only internal nodes now have child pointers, the
 overhead fraction in this case will be approximately 
-\[\frac{\frac{n}{2} (2P)}{\frac{n}{2} (2P) + Dn} =
-\frac{P}{P + D}\]
 
-If <i>P</i> = <i>D</i>, the overhead drops to about one half of the
+.. math::
+
+   \frac{\frac{n}{2} (2P)}{\frac{n}{2} (2P) + Dn} =
+   \frac{P}{P + D}
+
+If :math:`P = D`, the overhead drops to about one half of the
 total space.
 However, if only leaf nodes store useful information, the overhead
 fraction for this implementation is actually three quarters of the
@@ -77,10 +79,14 @@ at the leaf nodes, a better implementation would have
 the internal nodes store two pointers and no data
 field while the leaf nodes store only a pointer to the data field.
 This implementation requires
-\[\frac{n}{2}2P + \frac{n}{2}(p+d)\)\]
+
+.. math::
+
+   \frac{n}{2}2P + \frac{n}{2}(p+d)
+
 units of space.
-If <i>P</i> = <i>D</i>, then the overhead is
-3<i>P</i>/(3<i>P</i> + <i>D</i>) = 3/4.
+If :math:`P = D`, then the overhead is
+:math:`3P/(3P + D) = 3/4`.
 It might seem counter-intuitive that the overhead ratio has gone up
 while the total amount of space has gone down.
 The reason is because we have changed our definition of "data" to
@@ -94,7 +100,7 @@ there must be a way to distinguish between the node types.
 When separate node types are implemented via Java subclasses,
 the runtime environment stores information with
 each object allowing it to determine, for example, the correct
-subclass to use when the <code>isLeaf</code> virtual function
+subclass to use when the ``isLeaf`` virtual function
 is called.
 Thus, each node requires additional space.
 Only one bit is truly necessary to distinguish the two possibilities.
@@ -115,17 +121,3 @@ success and failure.
 In any other situation, such "bit packing" tricks should be
 avoided because they are difficult to debug and understand at
 best, and are often machine dependent at worst.
-
-Notes
------
-
-<p class="footnote">
-In the early to mid 1980s, I worked on a Geographic
-Information System that stored spatial data in quadtrees
-At the time space was a critical resource, so we used a bit-packing
-approach where we stored the nodetype flag as the last bit in the
-parent node's pointer.
-This worked perfectly on various 32-bit workstations.
-Unfortunately, in those days (before Microsoft Windows!)
-IBM PC-compatibles used 16-bit pointers.
-We never did figure out how to port our code to the 16-bit machine.

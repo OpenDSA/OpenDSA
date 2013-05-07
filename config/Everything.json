@@ -120,6 +120,10 @@
       "Development/DesignPatterns": {
         "long_name": "Design Patterns",
         "exercises": {}
+      },
+      "Development/Dictionary": {
+        "long_name": "The Dictionary ADT",
+        "exercises": {}
       }
     },
     "Linear Structures": {

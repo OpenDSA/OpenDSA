@@ -8,100 +8,51 @@
    :prerequisites:
    :topic: Binary Trees, Design Patterns
 
-Composite Design Pattern [Raw]
-==============================
+Composite Design Pattern [Text]
+===============================
 
 There is another approach that we can take to represent separate leaf
 and internal nodes, also using a virtual base class and separate node
 classes for the two types.
 This is to implement nodes using the
-<dfn>composite design pattern</dfn> described in
+:dfn:`composite design pattern` described in
 Module :numref:`<DesignPatterns>`.
 This approach is noticeably different from the one of
-Figure <ODSAref "VarNodeI" /> in that the node classes themselves
-implement the functionality of <code>traverse</code>.
-Figure <ODSAref "VarNodeC" /> shows the implementation.
-Here, base class <code>VarBinNode</code> declares a member function
-<code>traverse</code> that each subclass must implement.
+Module :numref:`<BinaryTreeImpl>` in that the node classes themselves
+implement the functionality of ``traverse``.
+Here is the implementation.
+Base class ``VarBinNode`` declares a member function
+``traverse`` that each subclass must implement.
 Each subclass then implements its own appropriate behavior for its
 role in a traversal.
-The whole traversal process is called by invoking <code>traverse</code>
-on the root node, which in turn invokes <code>traverse</code> on its
-children.::
+The whole traversal process is called by invoking ``traverse``
+on the root node, which in turn invokes ``traverse`` on its
+children.
 
-   /** Base class: Composite */
-   public interface VarBinNode {
-     public boolean isLeaf();
-     public void traverse();
-   }
+.. codeinclude:: Trees/Composite.pde
+   :tag: Composite
 
-   /** Leaf node: Composite */
-   class VarLeafNode implements VarBinNode {
-     private String operand;                 // Operand value
-
-     public VarLeafNode(String val) { operand = val; }
-     public boolean isLeaf() { return true; }
-     public String value() { return operand; }
-
-     public void traverse() {
-       Visit.VisitLeafNode(operand);
-     }
-   }
-
-   /** Internal node: Composite */
-   class VarIntlNode implements VarBinNode { // Internal node
-     private VarBinNode left;                // Left child
-     private VarBinNode right;               // Right child
-     private Character operator;             // Operator value
-
-     public VarIntlNode(Character op,
-                        VarBinNode l, VarBinNode r)
-       { operator = op; left = l; right = r; }
-     public boolean isLeaf() { return false; }
-     public VarBinNode leftchild() { return left; }
-     public VarBinNode rightchild() { return right; }
-     public Character value() { return operator; }
-
-     public void traverse() {
-       Visit.VisitInternalNode(operator);
-       if (left != null) left.traverse();
-       if (right != null) right.traverse();
-     }
-   }
-
-   /** Preorder traversal */
-   public static void traverse(VarBinNode rt) {
-     if (rt != null) rt.traverse();
-   }
-
-<figcaption>
-A second implementation for separate internal and leaf node
-representations using Java class inheritance
-and virtual functions using the composite design pattern.
-Here, the functionality of <code>traverse</code> is
-embedded into the node subclasses.
-</figcaption>
-
-When comparing the implementations of Figures <ODSAref "VarNodeI" />
-and <ODSAref "VarNodeC" />, each has advantages and disadvantages.
-The first does not require that the node classes know about
-the <code>traverse</code> function.
+When comparing the composite implementation to that of
+Module :numref:`<BinaryTreeImpl>`,
+each has advantages and disadvantages.
+The non-composite approach does not require that the node classes know
+about the ``traverse`` function.
 With this approach, it is easy to add new methods to the tree class
 that do other traversals or other operations on nodes of the tree.
-However, we see that <code>traverse</code> in
-Figure <ODSAref "VarNodeI" /> does 
+However, we see that ``traverse`` in
+the non-composite approach does 
 need to be familiar with each node subclass.
 Adding a new node subclass would therefore require modifications to
-the <code>traverse</code> function.
-In contrast, the approach of Figure <ODSAref "VarNodeC" /> requires
-that any new operation on the tree that requires a traversal also be
-implemented in the node subclasses.
-On the other hand, the approach of Figure <ODSAref "VarNodeC" />
-avoids the need for the <code>traverse</code> function to know
+the ``traverse`` function.
+In contrast, the composite approach requires that any new operation on
+the tree that requires a traversal also be implemented in the node
+subclasses.
+On the other hand, the composite approach
+avoids the need for the ``traverse`` function to know
 anything about the distinct abilities of the node subclasses.
 Those subclasses handle the responsibility of performing a traversal
 on themselves.
-A secondary benefit is that there is no need for <code>traverse</code> to
+A secondary benefit is that there is no need for ``traverse`` to
 explicitly enumerate all of the different node subclasses,
 directing appropriate action for each.
 With only two node classes this is a minor point.
@@ -112,15 +63,14 @@ NULL pointer, because there is no object to catch the call.
 This problem could be avoided by using a flyweight
 (see Module :numref:`<DesignPatterns>`) to implement empty nodes.
 
-Typically, the version of Figure <ODSAref "VarNodeI" /> would be
-preferred in this example if <code>traverse</code> is a member function of
+Typically, the non-composite version would be
+preferred in this example if ``traverse`` is a member function of
 the tree class, and if the node subclasses are hidden from users of
 that tree class.
 On the other hand, if the nodes are objects that have meaning
 to users of the tree separate from their existence as nodes in the
-tree, then the version of Figure <ODSAref "VarNodeC" /> might be
-preferred because hiding the internal behavior of the nodes becomes
-more important.
+tree, then the composite version might be preferred because hiding the
+internal behavior of the nodes becomes more important.
 
 Another advantage of the composite design is that implementing each
 node type's functionality might be easier.

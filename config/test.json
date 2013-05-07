@@ -16,9 +16,22 @@
       }
     },
     "Test Stuff": {
-      "Development/HuffProof": {
-        "long_name": "Huffman Proof",
-        "exercises": {}
+      "Development/BST": {
+        "long_name": "Binary Search Trees",
+        "exercises": {
+          "BST-insert": {
+            "long_name": "Binary Tree Insertion",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BST-delete": {
+            "long_name": "Binary Tree Deletion",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       }
     }
   }
