@@ -8,7 +8,47 @@
    :prerequisites:
    :topic: Lists
 
-Introduction to Lists [STUB]
+Introduction to Lists [Text]
 ============================
 
-Placeholder for Crossreference
+If your program needs to store a few things---numbers,
+payroll records, or job descriptions for example---the simplest and
+most effective approach might be to put them in a list.
+Only when you have to organize and search through a large number of
+things do more sophisticated data structures usually become necessary.
+(We will study how to organize and search through medium amounts of
+data in Chapters :numref:<`BinaryTree>`, :numref:`<Sorting>`,
+and :numref:`<Search>`,
+and discuss how to deal with large amounts of data in
+Chapters :numref:`<FileProc>` through :numref:`<Indexing>`.)
+Many applications don't require any form of search,
+and they do not require that any ordering be placed on the objects
+being stored.
+Some applications require processing in a strict chronological order,
+processing objects in the order that they arrived,
+or perhaps processing objects in the reverse of the order that they
+arrived.
+For all these situations, a simple list structure is appropriate.
+
+This chapter describes representations for lists in general,
+as well as two important list-like structures called
+the stack and the queue.
+Along with presenting these fundamental data structures, the other
+goals of the chapter are to:
+
+1. Give examples of separating a logical representation in the form of
+   an ADT from a physical implementation for a data structure.
+
+2. Illustrate the use of asymptotic analysis in the context of
+   some simple operations that you might already be familiar with.
+   In this way you can begin to see how asymptotic
+   analysis works, without the complications that arise when analyzing
+   more sophisticated algorithms and data structures.
+
+We begin by defining an ADT for
+lists in Module :numref:`<Lists>`.
+Two implementations for the list ADT---the array-based
+list and the linked list---are covered in
+detail and their relative merits discussed.
+Modules :numref:`<Stacks> and :numref:`<Queues>` cover stacks and
+queues, respectively.

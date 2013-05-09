@@ -1,3 +1,4 @@
+/* *** ODSATag: KVpair *** */
 // KVPair class definition
 class KVPair {
   int theKey;
@@ -16,6 +17,7 @@ class KVPair {
     return theVal;
   }
 }
+/* *** ODSAendTag: KVpair *** */
 
 // Swap for KVPair arrays
 void swap(KVPair[] A, int i, int j) {
