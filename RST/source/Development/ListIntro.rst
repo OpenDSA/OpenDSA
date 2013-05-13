@@ -18,9 +18,10 @@ Only when you have to organize and search through a large number of
 things do more sophisticated data structures usually become necessary.
 (We will see how to organize and search through medium amounts of
 data when we study :ref:`Binary Trees <BinaryTree>`,
-:ref:`Sorting <InSort>`, and :ref:` Searching <Search>`.
-How to deal with large amounts of data is covered in 
-:ref:`File Processing <FileProc>` through :ref:`Indexing <Indexing>`.)
+:ref:`Sorting <InSort>`, and :ref:`Searching <Search>`.
+How to deal with large amounts of data is covered in the chapters on
+:ref:`File Processing <FileProc>` through
+:ref:`Indexing <IndexIntro>`.)
 Many applications don't require any form of search,
 and they do not require that any ordering be placed on the objects
 being stored.
@@ -46,9 +47,9 @@ goals of the chapter are to:
    more sophisticated algorithms and data structures.
 
 We begin by defining an ADT for
-lists in Module :numref:`<Lists>`.
+lists in Module :numref:`<ListADT>`.
 Two implementations for the list ADT---the array-based
 list and the linked list---are covered in
 detail and their relative merits discussed.
-Modules :numref:`<Stacks> and :numref:`<Queues>` cover stacks and
+Modules :numref:`<Stack> and :numref:`<Queue>` cover stacks and
 queues, respectively.
