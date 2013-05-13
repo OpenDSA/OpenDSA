@@ -16,11 +16,11 @@ payroll records, or job descriptions for example---the simplest and
 most effective approach might be to put them in a list.
 Only when you have to organize and search through a large number of
 things do more sophisticated data structures usually become necessary.
-(We will study how to organize and search through medium amounts of
-data in Chapters :numref:<`BinaryTree>`, :numref:`<Sorting>`,
-and :numref:`<Search>`,
-and discuss how to deal with large amounts of data in
-Chapters :numref:`<FileProc>` through :numref:`<Indexing>`.)
+(We will see how to organize and search through medium amounts of
+data when we study :ref:`Binary Trees <BinaryTree>`,
+:ref:`Sorting <InSort>`, and :ref:` Searching <Search>`.
+How to deal with large amounts of data is covered in 
+:ref:`File Processing <FileProc>` through :ref:`Indexing <Indexing>`.)
 Many applications don't require any form of search,
 and they do not require that any ordering be placed on the objects
 being stored.
