@@ -1,4 +1,4 @@
-/* *** ODSATag: Queue *** */
+/* *** ODSATag: LQueue *** */
 // Linked queue implementation
 class LQueue implements Queue {
   private Link front; // Pointer to front queue node
@@ -44,3 +44,4 @@ class LQueue implements Queue {
   // Return queue size
   public int length() { return size; }
 }
+/* *** ODSAendTag: LQueue *** */
