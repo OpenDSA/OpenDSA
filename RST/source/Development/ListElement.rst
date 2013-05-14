@@ -8,14 +8,14 @@
    :prerequisites:
    :topic: Lists
 
-List Element Implementations [Raw]
-==================================
+List Element Implementations [Text]
+===================================
 
 List users must decide whether they wish to store a copy of any given
 element on each list that contains it.
 For small elements such as an integer, this makes sense.
 If the elements are payroll records, it might be desirable for
-the list node to store a \pointref\ to the record rather than store a
+the list node to store a pointer to the record rather than store a
 copy of the record itself.
 This change would allow multiple list nodes (or other data structures) 
 to point to the same record, rather than make repeated copies of the
@@ -27,34 +27,21 @@ The disadvantage of storing a pointer to each element is that the
 pointer requires space of its own.
 If elements are never duplicated, then this additional space
 adds unnecessary overhead.
-\ifthenelse{\boolean{java}}
-{\Lang\ most naturally stores references to objects, meaning that only
+Java most naturally stores references to objects, meaning that only
 a single copy of an object such as a payroll record will be
-maintained, even if it is on multiple lists.}{}
-\ifthenelse{\boolean{cpp}}{
+maintained, even if it is on multiple lists.
 
-The \Lang\ implementations for lists presented in this section give the
-user of the list the choice of whether to store copies of
-elements or pointers to elements.
-The user can declare \Cref{E} to be, for
-example, a pointer to a payroll record.
-In this case, multiple lists can point to the same copy of the
-record.
-On the other hand, if the user declares \Cref{E} to be
-the record itself, then a new copy of the record will be made
-when it is inserted into the list.}{}
-
-Whether it is more advantageous to use \pointrefs\ to shared elements
+Whether it is more advantageous to use pointers to shared elements
 or separate copies depends on the intended application.
 In general, the larger the elements and the more they are duplicated,
-the more likely that \pointrefs\ to shared elements is the
+the more likely that pointers to shared elements is the
 better approach.
 
 A second issue faced by implementors of a list class (or any other
 data structure that stores a collection of user-defined data elements)
 is whether the elements stored are all required to be of the same type.
-This is known as \defit{homogeneity} in a data
-structure.\index{element!homogeneity}
+This is known as :dfn:`homogeneity` in a data
+structure.
 In some applications, the user would like to define the class of the
 data element that is stored on a given list, and then never permit
 objects of a different class to be stored on that same list.
@@ -64,20 +51,7 @@ stored on a single list to be of differing types.
 For the list implementations presented in this section,
 the compiler requires that all objects stored on the list be of the
 same type.
-\ifthenelse{\boolean{cpp}}
-{In fact, because the lists are implemented using
-templates,\index{template} a new class 
-is created by the compiler for each data type.
-For implementors who wish to minimize the number of classes created by 
-the compiler, the lists can all store a \Cref{void*} pointer, with the 
-user performing the necessary casting to and from the actual object
-type for each element.
-However, this approach requires that the user do his or her own type
-checking, either to enforce homogeneity or to differentiate between
-the various object types.
-
-}{}
-Besides \Lang\ \Gens,
+Besides C++ templates and Java generics,
 there are other techniques that implementors of a
 list class can use to ensure that the element type for a given list
 remains fixed,
@@ -93,21 +67,11 @@ primarily of concern when programming in languages that do not support
 automatic garbage collection.
 That is
 how to deal with the memory of the objects stored on the list
-when the list is deleted or the \Cref{clear} method is called.
-The list destructor and the \Cref{clear} method are
+when the list is deleted or the ``clear`` method is called.
+The list destructor and the ``clear`` method are
 problematic in that there is a potential that they will
-be\ifthenelse{\boolean{cpp}}
-{misused, thus causing a memory leak.
-The type of the element stored determines whether there is a potential
-for trouble here.
-If the elements are of a simple type such as an \Cref{int}, then there
-is no need to delete the elements explicitly.
-If the elements are of a user-defined class, then their own destructor
-will be called.
-However, what if the list elements are pointers to objects?
-Then deleting}{}
-\ifthenelse{\boolean{java}}{misused. Deleting}{}
-\Cref{listArray} in the array-based implementation,
+be misused.
+Deleting ``listArray`` in the array-based implementation,
 or deleting a link node in the linked list implementation,
 might remove the only reference to an object, leaving its memory space
 inaccessible.

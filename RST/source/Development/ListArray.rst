@@ -33,8 +33,7 @@ and so must implement all of the member functions of ``List``.
 
 The private portion of class ``AList``contains the data members for
 the array-based list.
-These include ``listArray``, the array which holds the list
-elements.
+These include ``listArray``, the array which holds the list elements.
 Because ``listArray`` must be allocated at some fixed size,
 the size of the array must be known when the list object is created.
 Note that an optional parameter is declared for the ``AList``

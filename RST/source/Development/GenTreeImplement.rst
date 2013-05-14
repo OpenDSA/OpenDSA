@@ -179,7 +179,7 @@ copied over to the new space, and the old space is then returned to
 free store.
 As an alternative to relying on the system's garbage collector,
 a memory manager for variable size storage units can be implemented,
-as described in Module :numref:`<MemMan>`.
+as described in Module :numref:`<MemoryMan>`.
 Another possibility is to use a collection of free lists, one for each
 array size, as described in Module :numref:`<Freelist>`.
 Note in Figure :num:`Figure #GenLinkedFixed` that the current number
