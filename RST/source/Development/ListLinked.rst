@@ -53,11 +53,9 @@ The vertical line between the nodes labeled 23 and 12 in
 Figure :num:`Figure #BadList` (a) indicates the current position
 (immediately to the right of this line).
 
-.. Images/BadList.png
-
 .. _BadList:
 
-.. odsafig:: Images/GraphDef.png
+.. odsafig:: Images/BadList.png
    :width: 500
    :align: center
    :capalign: justify
@@ -126,11 +124,9 @@ current node.
    Deal with this: See Exercise "FenceExer" for further discussion of
    why making ``curr`` point directly to the current element fails.
 
-.. Images/GoodList.png
-
 .. _GoodList:
 
-.. odsafig:: Images/GraphDef.png
+.. odsafig:: Images/GoodList.png
    :width: 500
    :align: center
    :capalign: justify
@@ -168,11 +164,9 @@ lists created.
 Figure :num:`Figure #InitList` shows the state of an initialized or
 empty list when using a header node.
 
-.. Images/InitList
-
 .. _InitList:
 
-.. odsafig:: Images/GraphDef.png
+.. odsafig:: Images/InitList.png
    :width: 500
    :align: center
    :capalign: justify
@@ -225,11 +219,9 @@ Once the new node is added, ``tail`` is pushed forward if the new
 element was added to the end of the list.
 Insertion requires :math:`\Theta(1)` time.
 
-.. Images/LinkIns.png
-
 .. _LinkInsert:
 
-.. odsafig:: Images/GraphDef.png
+.. odsafig:: Images/LinkIns.png
    :width: 500
    :align: center
    :capalign: justify
@@ -262,11 +254,9 @@ Figure :num:`Figure #LinkRemove` illustrates the ``remove``
 method.
 Removing an element requires :math:`\Theta(1)` time.
 
-.. Images/LinkRem.png
-
 .. _LinkRemove:
 
-.. odsafig:: Images/GraphDef.png
+.. odsafig:: Images/LinkRem.png
    :width: 500
    :align: center
    :capalign: justify

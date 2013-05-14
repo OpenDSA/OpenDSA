@@ -25,6 +25,12 @@ and so must implement all of the member functions of ``List``.
 .. codeinclude:: Lists/AList.pde
    :tag: AList
 
+.. TODO::
+   :type: Code
+
+   Replace this with a proper Processing implementation, and rewrite
+   the text as necessary to match.
+
 The private portion of class ``AList``contains the data members for
 the array-based list.
 These include ``listArray``, the array which holds the list
@@ -84,11 +90,9 @@ elements must shift toward the head.
 In the average case, insertion or removal requires moving half
 of the elements, which is :math:`\Theta(n)`.
 
-.. Images/ShiftLis.png
-
 .. _ShiftList:
 
-.. odsafig:: Images/GraphDef.png
+.. odsafig:: Images/ShiftLis.png
    :width: 500
    :align: center
    :capalign: justify
@@ -115,3 +119,21 @@ These three member functions each make use of the system
 free-store operation ``new``.
 As discussed further in Module :numref:`<Freelist>`, system free-store
 operations can be expensive.
+
+.. TODO::
+   :type: Slideshow
+
+   Replace the above description of insert with a slideshow. Add a
+   similar slideshow for delete.
+
+.. TODO::
+   :type: Exercise
+
+   Add proficiency exercise where students are given an array, and
+   told to either delete a given element, or add a given element at a
+   certain position.
+
+.. TODO::
+   :type: Exercise
+
+   Add a battery of summary questions.
