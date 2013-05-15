@@ -16,19 +16,13 @@
       }
     },
     "Test Stuff": {
-      "Development/BST": {
-        "long_name": "Binary Search Trees",
+      "Development/ListArray": {
+        "long_name": "Array-based Lists",
         "exercises": {
-          "BST-insert": {
-            "long_name": "Binary Tree Insertion",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "BST-delete": {
-            "long_name": "Binary Tree Deletion",
-            "required": false,
-            "points": 0.0,
+          "AlistCON1": {
+            "long_name": "Alist Slideshow 1",
+            "required": true,
+            "points": 0.1,
             "threshold": 1.0
           }
         }

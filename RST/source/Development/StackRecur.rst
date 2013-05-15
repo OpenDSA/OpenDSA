@@ -38,11 +38,9 @@ Figure :num:`Figure #RecurStack` illustrates the implementation of
 the recursive factorial function of Module :numref:`<Recursion>`
 from the runtime environment's point of view.
 
-.. Images/RecurSta.png
-
 .. _RecurStack:
 
-.. odsafig:: Images/GraphDef.png
+.. odsafig:: Images/RecurSta.png
    :width: 500
    :align: center
    :capalign: justify

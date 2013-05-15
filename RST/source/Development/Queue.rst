@@ -74,11 +74,9 @@ Now, both the ``enqueue`` and the ``dequeue`` operations can be
 performed in :math:`\Theta(1)` time because no other elements in the
 queue need be moved.
 
-.. Images/BadQueue.png
-
 .. _BadQueue:
 
-.. odsafig:: Images/GraphDef.png
+.. odsafig:: Images/BadQueue.png
    :width: 500
    :align: center
    :capalign: justify
@@ -121,7 +119,7 @@ Figure :num:`Figure #GoodQueue` illustrates this solution.
 
 .. _GoodQueue:
 
-.. odsafig:: Images/GraphDef.png
+.. odsafig:: Images/GoodQ.png
    :width: 500
    :align: center
    :capalign: justify

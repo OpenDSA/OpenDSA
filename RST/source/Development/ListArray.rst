@@ -72,6 +72,10 @@ Because the array-based list implementation is defined to store list
 elements in contiguous cells of the array, the
 ``insert``, ``append``, and ``remove``
 methods must maintain this property.
+
+.. inlineav:: AlistCON1 ss
+   :output: show
+
 Inserting or removing elements at the tail of the list
 is easy, so the ``append`` operation takes :math:`\Theta(1)` time.
 But if we wish to insert an element at the head of the list,
@@ -136,3 +140,5 @@ operations can be expensive.
    :type: Exercise
 
    Add a battery of summary questions.
+
+.. odsascript:: AV/Development/alistCON.js

@@ -162,11 +162,9 @@ If instead both stacks grow at the same time, then the free space
 in the middle of the array will be exhausted
 quickly.
 
-.. Images/TwoArray.png
-
 .. _TwoArrayStacks:
 
-.. odsafig:: Images/GraphDef.png
+.. odsafig:: Images/TwoArray.png
    :width: 500
    :align: center
    :capalign: justify
