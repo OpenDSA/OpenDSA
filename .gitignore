@@ -2,6 +2,7 @@
 *~
 modules.json
 modules.csv
+*.bak
 
 # Documentation build directory
 Doc/manual
