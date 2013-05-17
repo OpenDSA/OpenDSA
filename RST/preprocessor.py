@@ -457,10 +457,10 @@ def updateTOC(args):
              if pagename in data:
                 chap = data[pagename]
                 header = '%s %s %s' %(prefix,chap[1],chap[0])
-             else: #special case ToDo.html, we put all the other files in the Appendix chapter
-                chap = data['Bibliography']
-                header = '%s %s %s' %(prefix,chap[1],chap[0])
-                td = 1
+             #else: #special case ToDo.html, we put all the other files in the Appendix chapter
+             #   chap = data['Bibliography']
+             #   header = '%s %s %s' %(prefix,chap[1],chap[0])
+             #   td = 1
              for idxLine in idxL:
                 if 'id="prevmod"' in idxLine or 'id="nextmod"' in idxLine or 'id="prevmod1"' in idxLine or 'id="nextmod1"' in idxLine:
                    prev = re.split('">',re.split('</a>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
@@ -469,10 +469,10 @@ def updateTOC(args):
                       chap = data[href[:-5]]
                       str = '%s.' %chap[1] + prev
                       idxLine = idxLine.replace(prev,str)
-                   if  href[:-5]=='ToDO':   #special case ToDo.html
-                      chap = data['Bibliography']
-                      str = '%s.' %chap[1] + prev
-                      idxLine = idxLine.replace(prev,str)
+                   #if  href[:-5]=='ToDO':   #special case ToDo.html
+                   #   chap = data['Bibliography']
+                   #   str = '%s.' %chap[1] + prev
+                   #   idxLine = idxLine.replace(prev,str)
                 if '<h2 class="heading"><span>'  in idxLine and pagename != 'index' and pagename != 'Gradebook':
                    heading = re.split('<span>',re.split('</span>', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
                    idxLine = idxLine.replace(heading,header)
