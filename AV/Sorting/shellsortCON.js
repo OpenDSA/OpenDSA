@@ -15,10 +15,11 @@ var theArray4 = [12, 11, 13, 14, 20, 30, 44, 54, 55, 79, 78, 98];
 var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
 var DARK = "black";                // Make array elements dark again
 
-var setLight = function(arr, index) {
+function setLight(arr, index) {
   arr.addClass(index, "light");
 }
-var usetLight = function(arr, index) {
+
+function usetLight(arr, index) {
   arr.removeClass(index, "light");
 }
 

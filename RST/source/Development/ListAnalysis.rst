@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Lists
 
-Comparison of List Implementations [Raw]
-========================================
+Comparison of List Implementations [Text]
+=========================================
 
 Now that you have seen two substantially different implementations for
 lists, it is natural to ask which is better.
@@ -25,11 +25,10 @@ Linked lists have the advantage that they only need space for the
 objects actually on the list.
 There is no limit to the number of elements on a linked list,
 as long as there is free-store memory available.
-The amount of space required by a linked list is \Thetan, while the
-space required by the array-based list implementation is \Omegan, but
-can be greater.
+The amount of space required by a linked list is :math:`\Theta(n)`,
+while the space required by the array-based list implementation is
+:math:`\Omega(n)`, but can be greater.
 
-\index{overhead|(}
 Array-based lists have the advantage that there is no wasted
 space for an individual element.
 Linked lists require that an extra pointer be added to every list
@@ -44,36 +43,41 @@ constant factor, than the linked implementation.
 A simple formula can be used to determine whether the array-based list
 or linked list implementation will be more space efficient in a
 particular situation.
-Call~\(n\) the number of elements currently in the list,
-\svar{P}~the size of a pointer in storage units
-(typically four bytes), \svar{E}~the size of a data element in storage
-units (this could be anything, from one bit for a Boolean variable on
-up to thousands of bytes or more for complex records), and \svar{D} the 
-maximum number of list elements that can be stored in the array.
-The amount of space required for the array-based list is \(DE\),
+Call :math:`n` the number of elements currently in the list,
+:math:`P` the size of a pointer in storage units
+(typically four bytes), :math:`E` the size of a data element in
+storage units (this could be anything, from one bit for a Boolean
+variable on up to thousands of bytes or more for complex records),
+and :math:`D` the maximum number of list elements that can be stored
+in the array.
+The amount of space required for the array-based list is :math:`DE`,
 regardless of the number of elements actually stored in the list at
 any given time.
-The amount of space required for the linked list is \(n(P + E)\).
-The smaller of these expressions for a given value \(n\) determines the
-more space-efficient implementation for \(n\) elements.
+The amount of space required for the linked list is :math:`n(P + E)`.
+The smaller of these expressions for a given value :math:`n`
+determines the more space-efficient implementation for :math:`n`
+elements.
 In general, the linked implementation requires less space than the
 array-based implementation when relatively few elements are in the
 list.
 Conversely, the array-based implementation becomes more space
 efficient when the array is close to full.
-Using the equation, we can solve for \(n\) to determine the
+Using the equation, we can solve for :math:`n` to determine the
 break-even point beyond which the array-based implementation is more
 space efficient in any particular situation.
 This occurs when
-\[n > DE/(P + E).\]
-\noindent If \(P = E\), then the break-even point is at \(D/2\).
+
+.. math::
+
+   n > DE/(P + E).
+
+If :math:`P = E`, then the break-even point is at :math:`D/2`.
 This would happen if the element field is either a four-byte
-\Cref{int} value or a pointer, and the next field is a typical
+``int`` value or a pointer, and the next field is a typical
 four-byte pointer.
 That is, the array-based implementation would be more efficient (if
 the link field and the element field are the same size) whenever the
 array is more than half full.
-\index{overhead|)}
 
 As a rule of thumb, linked lists are more space efficient when
 implementing lists whose number of elements varies widely or is
@@ -81,27 +85,26 @@ unknown.
 Array-based lists are generally more space efficient when
 the user knows in advance approximately how large the list will
 become.
-\index{list!space requirements|)}
 
 Array-based lists are faster for random access by position.
 Positions can easily be adjusted forwards or backwards by
-the \Cref{next}\index{list!current position} and \Cref{prev} methods.
-These operations always take \Thetaone\ time.
+the ``next`` and ``prev`` methods.
+These operations always take :math:`\Theta(1)` time.
 In contrast, singly linked lists have no explicit access to the
 previous element, and access by position requires that we march
 down the list from the front (or the current position) to the
 specified position.
-Both of these operations require \Thetan\ time in the average and
-worst cases, if we assume that each position on the list is equally
-likely to be accessed on any call to \Cref{prev} or \Cref{moveToPos}.
+Both of these operations require :math:`\Theta(n)` time in the average
+and worst cases, if we assume that each position on the list is
+equally likely to be accessed on any call to ``prev`` or
+``moveToPos``. 
 
 Given a pointer to a suitable location in the list,
-the \Cref{insert}\index{list!insert} and
-\Cref{remove}\index{list!remove} methods for linked lists
-require only \Thetaone\ time.
+the ``insert`` and ``remove`` methods for linked lists
+require only :math:`\Theta(1)` time.
 Array-based lists must shift the remainder of the list up or down
 within the array.
-This requires \Thetan\ time in the average and worst cases.
+This requires :math:`\Theta(n)` time in the average and worst cases.
 For many applications, the time to insert and delete elements
 dominates all other operations.
 For this reason, linked lists are often preferred to array-based
@@ -111,8 +114,8 @@ When implementing the array-based list, an implementor could
 allow the size of the array to grow and shrink depending on the number 
 of elements that are actually stored.
 This data structure is known as a
-\defit{dynamic array}.\index{array!dynamic}\index{vector}
-Both the \LangJava\ and \LangCPP/STL \Cref{Vector} classes implement a
+:dfn:`dynamic array`.
+Both the Java and C++/STL ``Vector`` classes implement a
 dynamic array.
 Dynamic arrays allow the programmer to get around the limitation on
 the standard array that its size cannot be changed once the array has
@@ -131,5 +134,5 @@ becomes full, and to cut the array size in half when it becomes one
 quarter full.
 To analyze the overall cost of dynamic array operations over time,
 we need to use a technique known as
-\defit{amortized analysis}\index{amortized analysis},
-which is discussed in Section~\ref{AmortAnal}.
+:dfn:`amortized analysis`
+which is discussed in Module :numref:`<AmortAnal>`.

@@ -24,7 +24,7 @@ calls to the algorithm where the parameters are in some sense
 Here is a recursive function to compute the factorial
 of :math:`n`.
 A trace of ``fact``'s execution for a small value
-of :math:`n` is presented in Module :numref:`<ImpRecur>`.
+of :math:`n` is presented in Module :numref:`<StackRecur>`.
 
 .. codeinclude:: Misc/Fact.pde 
    :tag: RFact
@@ -157,7 +157,7 @@ reasonably efficient in the sense discussed in Module
 :numref:`<AnalAsymptotic>`.
 If necessary, the clear, recursive solution can later be modified to
 yield a faster implementation, as described in Module
-:numref:`<ImpRecur>`.
+:numref:`<StackRecur>`.
 
 Many data structures are naturally recursive, in that they can be
 defined as being made up of self-similar parts.
