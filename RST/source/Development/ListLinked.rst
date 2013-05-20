@@ -282,7 +282,7 @@ beginning until we reach the current node (being sure always to
 remember the node before it, because that is what we really want).
 This takes :math:`\Theta(n)` time in the average and worst cases.
 Implementation of method ``moveToPos`` is
-similar in that finding the :math:`i`th position requires marching
+similar in that finding the :math:`i` th position requires marching
 down :math:`i` positions from the head of the list, taking
 :math:`\Theta(i)` time.
 
