@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Lists
+   
+.. odsalink:: AV/Development/listLinkedCON.css
 
 Linked Lists [Text]
 ===================
@@ -201,8 +203,8 @@ does all three of these steps.
 
 ``curr.setNext(new Link<E>(it, curr.next()));``
 
-.. TODO::
-   :type: Slideshow
+.. inlineav:: listLinkedCON1 ss
+   :output: show
 
    This code above needs to be put in a slideshow.
 
@@ -247,7 +249,10 @@ does precisely this.::
 
    E it = curr.next().element();\ \ \ \ \     // Remember value\\
    curr.setNext(curr.next().next());  // Remove from list\\
-
+   
+.. inlineav:: listLinkedCON2 ss
+   :output: show
+   
 Memory for the link will eventually be reclaimed by the
 garbage collector.
 Figure :num:`Figure #LinkRemove` illustrates the ``remove``
@@ -288,3 +293,5 @@ down :math:`i` positions from the head of the list, taking
 
 Implementations for the remaining operations each require
 :math:`\Theta(1)` time.
+
+.. odsascript:: AV/Development/listLinkedCON.js
