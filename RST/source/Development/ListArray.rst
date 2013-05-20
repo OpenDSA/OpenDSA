@@ -7,8 +7,8 @@
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Lists
-
-.. odsalink:: AV/Development/alistCON.css
+   
+.. odsalink:: AV/Development/listArrayCON.css
 
 The Array-Based List Implementation [Text]
 ==========================================
@@ -125,8 +125,8 @@ free-store operation ``new``.
 As discussed further in Module :numref:`<Freelist>`, system free-store
 operations can be expensive.
 
-.. TODO::
-   :type: Slideshow
+.. inlineav:: AlistCON2 ss
+   :output: show
 
    Replace the above description of insert with a slideshow. Add a
    similar slideshow for delete.
@@ -143,4 +143,4 @@ operations can be expensive.
 
    Add a battery of summary questions.
 
-.. odsascript:: AV/Development/alistCON.js
+.. odsascript:: AV/Development/listArrayCON.js
