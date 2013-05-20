@@ -15,17 +15,56 @@
         "exercises": {}
       }
     },
-    "Test Stuff": {
+    "Linear Structures": {
+      "Development/ListIntro": {
+        "long_name": "Chapter Introduction: Linear Structures",
+        "exercises": {}
+      },
+      "Development/ListADT": {
+        "long_name": "List ADT",
+        "exercises": {}
+      },
       "Development/ListArray": {
         "long_name": "Array-based Lists",
-        "exercises": {
-          "AlistCON1": {
-            "long_name": "Alist Slideshow 1",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          }
-        }
+        "exercises": {}
+      },
+      "Development/ListLinked": {
+        "long_name": "Linked Lists",
+        "exercises": {}
+      },
+      "Development/ListAnalysis": {
+        "long_name": "Comparison of List Implementations",
+        "exercises": {}
+      },
+      "Development/Freelist": {
+        "long_name": "Freelists",
+        "exercises": {}
+      },
+      "Development/ListDouble": {
+        "long_name": "Doubly Linked Lists",
+        "exercises": {}
+      },
+      "Development/ListElement": {
+        "long_name": "List Element Implementations",
+        "exercises": {}
+      },
+      "Development/Stack": {
+        "long_name": "Stacks",
+        "exercises": {}
+      },
+      "Development/StackRecur": {
+        "long_name": "Implementing Recursion",
+        "exercises": {}
+      },
+      "Development/Queue": {
+        "long_name": "Queues",
+        "exercises": {}
+      }
+    },
+    "Other Stuff": {
+      "Development/Recursion": {
+        "long_name": "Recursion",
+        "exercises": {}
       }
     }
   }

@@ -11,45 +11,47 @@
 Introduction to Lists [Text]
 ============================
 
-If your program needs to store a few things---numbers,
-payroll records, or job descriptions for example---the simplest and
-most effective approach might be to put them in a list.
+If your program needs to store a few things |---| numbers,
+payroll records, or job descriptions for example |---| the simplest
+and most effective approach might be to put them in a list.
 Only when you have to organize and search through a large number of
-things do more sophisticated data structures usually become necessary.
+things do more sophisticated data structures like search trees become
+necessary.
 (We will see how to organize and search through medium amounts of
 data when we study :ref:`Binary Trees <BinaryTree>`,
-:ref:`Sorting <InSort>`, and :ref:`Searching <Search>`.
+:ref:`Sorting <InSort>`, and :ref:`Searching <SearchChap>`.
 How to deal with large amounts of data is covered in the chapters on
 :ref:`File Processing <FileProc>` through
 :ref:`Indexing <IndexIntro>`.)
 Many applications don't require any form of search,
 and they do not require that any ordering be placed on the objects
 being stored.
-Some applications require processing in a strict chronological order,
+Some applications require that actions be performed in a strict
+chronological order, 
 processing objects in the order that they arrived,
 or perhaps processing objects in the reverse of the order that they
 arrived.
 For all these situations, a simple list structure is appropriate.
 
-This chapter describes representations for lists in general,
-as well as two important list-like structures called
-the stack and the queue.
+This chapter describes representations both for lists and for
+two important list-like structures called the stack and the queue.
 Along with presenting these fundamental data structures, the other
 goals of the chapter are to:
 
-1. Give examples of separating a logical representation in the form of
-   an ADT from a physical implementation for a data structure.
+1. Give examples that show the separation of a logical representation
+   in the form of an ADT from a physical implementation as a data
+   structure.
 
 2. Illustrate the use of asymptotic analysis in the context of
-   some simple operations that you might already be familiar with.
+   simple operations that you might already be familiar with.
    In this way you can begin to see how asymptotic
    analysis works, without the complications that arise when analyzing
    more sophisticated algorithms and data structures.
 
 We begin by defining an ADT for
 lists in Module :numref:`<ListADT>`.
-Two implementations for the list ADT---the array-based
-list and the linked list---are covered in
+Two implementations for the list ADT |---| the array-based
+list and the linked list |---| are covered in
 detail and their relative merits discussed.
-Modules :numref:`<Stack> and :numref:`<Queue>` cover stacks and
+Modules :numref:`<Stack>` and :numref:`<Queue>` cover stacks and
 queues, respectively.

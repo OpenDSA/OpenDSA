@@ -12,9 +12,9 @@ The List ADT [Text]
 ===================
 
 We all have an intuitive understanding of what we mean by a "list".
-Our first step is to define precisely what is meant so that
+Our first step is to define precisely what this means so that
 this intuitive understanding can eventually be converted into a
-concrete data structure and its operations.
+concrete data structure and implementations for its operations.
 The most important concept related to lists is that of
 :dfn:`position`.
 In other words, we perceive that there is a first element in the list,
@@ -50,12 +50,13 @@ element and its position in the list.
 For example, :dfn:`sorted lists` have their elements positioned in
 ascending order of value, while :dfn:`unsorted lists` have no
 particular relationship between element values and positions.
-This module will consider only unsorted lists.
-Chapters :ref:`Sorting <InSort>` and :ref:`Searching <Search>` treat
-the problems of how to create and search sorted lists efficiently.
+Chapters :ref:`Sorting <InSort>` and :ref:`Searching <SearchChap>`
+treat the problems of how to create and search sorted lists
+efficiently.
 
-When presenting the contents of a list, we use the same notation
-as was introduced for sequences in Module :numref:`<SetDef>`.
+To show the contents of a list, we will use the same angle bracket
+notation as was introduced for sequences in Module
+:numref:`<SetDef>`.
 To be consistent with standard array indexing, the first position
 on the list is denoted as 0.
 Thus, if there are :math:`n` elements in the list, they are given
@@ -65,11 +66,9 @@ The subscript indicates an element's position within the list.
 Using this notation, the empty list would appear as
 :math:`\langle \rangle`. 
 
-Before selecting a list implementation, a program designer should
-first consider what basic operations the implementation must support.
+What basic operations do we want our lists to support?
 Our common intuition about lists tells us that a list should be able
-to grow and shrink in size as we insert and remove
-elements.
+to grow and shrink in size as we insert and remove elements.
 We should be able to insert and remove elements from anywhere in
 the list.
 We should be able to gain access to any element's value,
@@ -79,29 +78,29 @@ lists.
 It is also convenient to access the next or previous
 element from the "current" one.
 
-The next step is to define the ADT for a list object in terms of a set
+Now we can define the ADT for a list object in terms of a set
 of operations on that object.
-We will use an interface
-to formally define the list ADT.
+We will use an interface to formally define the list ADT.
 ``List`` defines the member functions that any list
 implementation inheriting from it must support, along with their
 parameters and return types.
 
 True to the notion of an ADT, an interface
 does not specify how operations are implemented.
-Two complete implementations are presented later in this section,
-both of which use the same list ADT to define their operations,
-but they are  considerably different in approaches and in their
+Two complete implementations are presented later in later modules,
+both of which use the same list ADT to define their operations.
+But they are  considerably different in approaches and in their
 space/time tradeoffs.
 
 The code below presents our list ADT.
 The data values stored are assumed to be of type ``Object``.
 Languages that support templates (C++) or generics (Java) could put
-more control on the element types, but we will keep this presentation
+more control on the element types, but we will keep this ADT
 simple by just using the ``Object`` type.
-The comments given in interface below describe
-what each member function is intended to do.
-However, some explanation of the basic design is in order.
+The comments given with each member function describe what it is
+intended to do.
+However, an explanation of the basic design should help make this
+clearer.
 Given that we wish to support the concept of a sequence, with access
 to any position in the list, the need for many of the member
 functions such as ``insert`` and ``moveToPos`` is clear.

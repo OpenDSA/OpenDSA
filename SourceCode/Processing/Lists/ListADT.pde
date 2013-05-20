@@ -1,50 +1,41 @@
 /* *** ODSATag: ListADT *** */
-/** List ADT */
-public interface List<E> {
-  /** Remove all contents from the list, so it is once again
-      empty. Client is responsible for reclaiming storage
-      used by the list elements. */
-  public void clear();
+interface List { // List class ADT
+  // Remove all contents from the list, so it is once again empty
+  void clear();
 
-  /** Insert an element at the current location. The client
-      must ensure that the list's capacity is not exceeded.   
-      @param item The element to be inserted. */
-  public void insert(E item);
+  // Insert "item" at the current location
+  // The client must ensure that the list's capacity is not exceeded
+  void insert(Object item);
 
-  /** Append an element at the end of the list. The client
-      must ensure that the list's capacity is not exceeded.   
-      @param item The element to be appended. */
-  public void append(E item);
+  // Append "item" at the end of the list
+  // The client must ensure that the list's capacity is not exceeded
+  void append(Object item);
 
-  /** Remove and return the current element.
-      @return The element that was removed. */
-  public E remove();
+  // Remove and return the current element
+  Object remove();
 
-  /** Set the current position to the start of the list */
-  public void moveToStart();
+  // Set the current position to the start of the list
+  void moveToStart();
 
-  /** Set the current position to the end of the list */
+  // Set the current position to the end of the list
   public void moveToEnd();
 
-  /** Move the current position one step left. No change
-      if already at beginning. */
-  public void prev();
+  // Move the current position one step left, no change if already at beginning
+  void prev();
 
-  /** Move the current position one step right. No change
-      if already at end. */
-  public void next();
+  // Move the current position one step right, no change if already at end
+  void next();
 
-  /** @return The number of elements in the list. */
-  public int length();
+  // Return the number of elements in the list
+  int length();
 
-  /** @return The position of the current element. */
-  public int currPos();
+  // Return the position of the current element
+  int currPos();
 
-  /** Set current position.
-      @param pos The position to make current. */
-  public void moveToPos(int pos);
+  // Set the current position to "pos"
+  void moveToPos(int pos);
 
-  /** @return The current element. */
-  public E getValue();
+  // Return the current element
+  Object getValue();
 }
 /* *** ODSAendTag: ListADT *** */
