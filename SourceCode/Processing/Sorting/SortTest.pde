@@ -27,6 +27,7 @@ void setup() {
     output.println("Success");
     output.flush();
     output.close();
+    println("Success!");
   }
   exit();
 }

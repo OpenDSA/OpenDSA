@@ -1,8 +1,10 @@
 # Run the commandline compiler and runtime for all Processing code.
 # This isn't quite running unit tests, but the effect should be similar.
-PROCESS = ~/processing-2.0b8/processing-java
-BUILD = c:/Cliff/OpenDSA/Sourcecode/Processing/build
-#BUILD = /home/shaffer/OpenDSA/SourceCode/Processing/build
+PROCESS = ~/processing-2.0b9/processing-java
+# Use this one on Linux
+# BUILD = build
+# On Windows, I can't make it work without an absolute path
+BUILD = c:/shaffer/OpenDSA/SourceCode/Processing/build
 
 all: Demo Trees Sorting Graphs
 
