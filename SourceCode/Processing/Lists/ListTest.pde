@@ -5,12 +5,14 @@ void doSomething(Object it) { }
 /* *** ODSATag: listfind *** */
 // Return true if k is in list L, false otherwise
 boolean find(List L, int k) {
-  for (L.moveToStart(); L.currPos()<L.length(); L.next())
-    if (k == (Integer)L.getValue()) return true;    // Found k
-  return false;                            // k not found
+  for (L.moveToStart(); L.currPos() < L.length(); L.next())
+    if (k == (Integer)L.getValue()) return true; // Found k
+  return false;                                  // k not found
 }
+/* *** ODSAendTag: listfind *** */
 
 void test(List L) {
+  L.moveToFront();
   L.insert(5);
   L.insert(7);
   L.insert(3);
@@ -18,7 +20,7 @@ void test(List L) {
 
 Object it;
 /* *** ODSATag: listiter *** */
-for (L.moveToStart(); L.currPos()<L.length(); L.next()) {
+for (L.moveToStart(); L.currPos() < L.length(); L.next()) {
   it = L.getValue();
   doSomething(it);
 }
@@ -31,8 +33,6 @@ for (L.moveToStart(); L.currPos()<L.length(); L.next()) {
   if (find(L, 10))
     SUCCESS = false;
 }
-
-/* *** ODSAendTag: listfind *** */
 
 void setup() {
   AList AL = new AList();

@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Search
 
-Self-organizing Lists [STUB]
-============================
+Chapter Introduction: Search [STUB]
+===================================
 
 Placeholder for cross-reference.
