@@ -64,7 +64,6 @@ class GraphL implements Graph {
     numEdge++;
   }
 
-
   // Get the weight value for an edge
   int weight(int v, int w) {
     Edge curr = find(v, w);
