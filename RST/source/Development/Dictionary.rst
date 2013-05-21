@@ -11,6 +11,13 @@
 The Dictionary ADT [Text]
 =========================
 
+.. TODO::
+   :type: Text
+
+   The material on comparison is redundant with module SortCompare.
+   Need to factor this out into one "comparison" module, to be put
+   in the Design chapter.
+
 The most common objective of computer programs is to store and
 retrieve data.
 Much of this book is about efficient ways to organize collections of
@@ -38,7 +45,7 @@ Instead, we typically define what record we want in terms of a
 key value.
 For example, if searching for payroll records, we might wish to
 search for the record that matches a particular ID number.
-In this example the ID number is the \defit{search key}.
+In this example the ID number is the :dfn:`search key`.
 
 To implement the search function, we require that keys be comparable.
 At a minimum, we must be able to take two keys and reliably determine
@@ -242,13 +249,6 @@ Even if we used binary search to cut down on the time to find the
 record prior to removal, we would still need to shift down the
 remaining records in the list to fill the gap left by the
 ``remove`` operation.
-
-.. TODO::
-   :type: Text
-
-   The following is probably redundant with module SortCompare. Need
-   to get this worked out. Probably this should be in the Design
-   chapter, and not the Sorting chapter.
 
 Given two keys, we have not properly addressed the issue of
 how to compare them.

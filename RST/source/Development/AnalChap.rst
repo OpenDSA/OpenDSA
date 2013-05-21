@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Chapter Intro: Algorithm Analysis [Text]
-========================================
+Chapter Introduction: Algorithm Analysis [Text]
+===============================================
 
 How long will it take to process the company payroll once we complete
 our planned merger?

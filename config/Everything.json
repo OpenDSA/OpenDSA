@@ -137,11 +137,37 @@
       },
       "Development/ListArray": {
         "long_name": "Array-based Lists",
-        "exercises": {}
+        "exercises": {
+          "AlistCON1": {
+            "long_name": "Array List Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "AlistCON2": {
+            "long_name": "Array List Slideshow 2",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/ListLinked": {
         "long_name": "Linked Lists",
-        "exercises": {}
+        "exercises": {
+          "listLinkedCON1": {
+            "long_name": "Array List Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "listLinkedCON2": {
+            "long_name": "Array List Slideshow 2",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/ListAnalysis": {
         "long_name": "Comparison of List Implementations",
@@ -770,6 +796,10 @@
       }
     },
     "Searching": {
+      "Development/SearchIntro": {
+        "long_name": "Searching",
+        "exercises": {}
+      },
       "Development/SelfOrg": {
         "long_name": "Self-organizing Lists",
         "exercises": {}

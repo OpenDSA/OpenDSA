@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Lists
 
-Introduction to Lists [Text]
-============================
+Chapter Introduction: Lists
+===========================
 
 If your program needs to store a few things |---| numbers,
 payroll records, or job descriptions for example |---| the simplest
@@ -19,7 +19,7 @@ things do more sophisticated data structures like search trees become
 necessary.
 (We will see how to organize and search through medium amounts of
 data when we study :ref:`Binary Trees <BinaryTree>`,
-:ref:`Sorting <InSort>`, and :ref:`Searching <SearchChap>`.
+:ref:`Sorting <InSort>`, and :ref:`Searching <SearchIntro>`.
 How to deal with large amounts of data is covered in the chapters on
 :ref:`File Processing <FileProc>` through
 :ref:`Indexing <IndexIntro>`.)

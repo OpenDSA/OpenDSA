@@ -10,8 +10,8 @@
    
 .. odsalink:: AV/Development/listArrayCON.css
 
-The Array-Based List Implementation [Text]
-==========================================
+Array-Based List Implementation [Text]
+======================================
 
 There are two standard approaches to implementing lists, the
 :dfn:`array-based` list, and the :dfn:`linked` list.

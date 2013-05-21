@@ -8,53 +8,54 @@
    :prerequisites:
    :topic: Lists
 
-The List ADT [Text]
-===================
+The List ADT [Storyboard]
+=========================
+
+List Terminology and Notation
+-----------------------------
 
 We all have an intuitive understanding of what we mean by a "list".
-Our first step is to define precisely what this means so that
-this intuitive understanding can eventually be converted into a
-concrete data structure and implementations for its operations.
+We want to turn this intuitive understanding into a concrete data
+structure with implementations for its operations.
 The most important concept related to lists is that of
 :dfn:`position`.
 In other words, we perceive that there is a first element in the list,
 a second element, and so on.
-We should view a list as embodying the mathematical concepts of
+So, define a :dfn:`list` to be a finite, ordered
+sequence of data items known as :dfn:`elements`.
+This is close to the mathematical concept of
 a sequence, as defined in Module :numref:`<SetDef>`.
 
-We define a :dfn:`list` to be a finite, ordered
-sequence of data items known as :dfn:`elements`.
 "Ordered" in this definition means that each element has a
 position in the list.
-(The term "ordered" in this context does **not** mean that the list
-elements are sorted by value.)
-Each list element has a data type.
+So the term "ordered" in this context does **not** mean that the list
+elements are sorted by value.
+(Of course, we can always choose to sort the elements on the list if
+we want, its just that keeping the elements sorted is not an inherent
+property of being a list.
+Chapters :ref:`Sorting <InSort>` and :ref:`Searching <SearchIntro>`
+treat the problems of how to create and search sorted lists
+efficiently.)
+
+Each list element must have some data type.
 In the simple list implementations discussed in this chapter, all
-elements of the list have the same data type, although there is
-no conceptual objection to lists whose elements have differing
-data types if the application requires it (see
-Module :numref:`<Multilists>`).
+elements of the list are usually assumed to have the same data type,
+although there is no conceptual objection to lists whose elements have
+differing data types if the application requires it
+(see Module :numref:`<Multilists>`).
 The operations defined as part of the list ADT do not
 depend on the elemental data type.
 For example, the list ADT can be used for lists of integers, lists of
 characters, lists of payroll records, even lists of lists.
 
-A list is said to be :dfn:`empty` when it
-contains no elements.
+A list is said to be :dfn:`empty` when it contains no elements.
 The number of elements currently stored is called the
 :dfn:`length` of the list.
 The beginning of the list is called the :dfn:`head`,
 the end of the list is called the :dfn:`tail`.
-There might or might not be some relationship between the value of an
-element and its position in the list.
-For example, :dfn:`sorted lists` have their elements positioned in
-ascending order of value, while :dfn:`unsorted lists` have no
-particular relationship between element values and positions.
-Chapters :ref:`Sorting <InSort>` and :ref:`Searching <SearchChap>`
-treat the problems of how to create and search sorted lists
-efficiently.
 
-To show the contents of a list, we will use the same angle bracket
+We need some notation to show the contents of a list,
+so we will use the same angle bracket
 notation as was introduced for sequences in Module
 :numref:`<SetDef>`.
 To be consistent with standard array indexing, the first position
@@ -65,6 +66,9 @@ positions 0 through :math:`n-1` as
 The subscript indicates an element's position within the list.
 Using this notation, the empty list would appear as
 :math:`\langle \rangle`. 
+
+Defining the ADT
+----------------
 
 What basic operations do we want our lists to support?
 Our common intuition about lists tells us that a list should be able
@@ -123,34 +127,37 @@ to be able to insert to the front or the back of the list as well as
 anywhere in between, there are actually :math:`n+1` possible
 "current positions" when there are :math:`n` elements in the list.
 
-It is helpful to modify our list display notation to show the position
-of the current element.
-We will use a vertical bar, such as
-:math:`\langle 20,\ 23\ |\ 12,\ 15\rangle`
-to indicate the list of four elements,
+.. TODO::
+   :type: Diagram
+
+   Slide 1 'A list with four elements.'
+
+   Slide 2 'Five possible positions for "current".'
+
+We can make our list display notation more clear by showing the
+position of the current element.
+We will use a vertical bar like this:
+
+.. math::
+
+   \langle 20,\ 23\ |\ 12,\ 15\rangle
+
+This indicates a list of four elements,
 with the current position being to the right of the bar at element 12.
 Given this configuration, calling ``insert`` with value 10
-will change the list to be
-:math:`\langle 20,\ 23\ |\ 10,\ 12,\ 15\rangle`. 
+will change the list to be:
+
+.. math::
+
+   \langle 20,\ 23\ |\ 10,\ 12,\ 15\rangle
 
 The ``List`` member functions allow you to build a list with elements
 in any desired order, and to access any desired position in the list.
-You might notice that the ``clear`` method is not
-necessary, in that it could be implemented by means of the other
+You might notice that the ``clear`` method is a "convenience" method,
+since it could be implemented by means of the other
 member functions in the same asymptotic time.
-It is included merely for convenience.
 
-Method ``getValue`` returns a pointer to the current element.
-It is considered a violation of the preconditions for ``getValue``
-to ask for the value of a non-existent element
-(i.e., there must be something to the right of the vertical bar).
-In our concrete list implementations, assertions are
-used to enforce such preconditions.
-In a commercial implementation, such violations would be best
-implemented by the programming language's exception mechanism.
-
-A list can be iterated through as shown in the following code
-fragment.
+A list can be iterated through follows:
 
 .. codeinclude:: Lists/ListTest.pde
    :tag: listiter
@@ -165,28 +172,34 @@ many possible interpretations for lists.
 Our list interface provides most of the operations that one
 naturally expects to perform on lists and serves to illustrate the
 issues relevant to implementing the list data structure.
-As an example of using the list ADT, we can create a function to
-return ``TRUE`` if there is an occurrence of a given integer in the
-list, and ``FALSE`` otherwise.
+As an example of using the list ADT, here is a function to
+return ``true`` if there is an occurrence of a given integer in the
+list, and ``false`` otherwise.
 The ``find`` method needs no knowledge about the specific list
 implementation, just the list ADT.
 
 .. codeinclude:: Lists/ListTest.pde
    :tag: listfind
 
-While this implementation for ``find`` could be written as a
-generic with respect to the element type, it would still be
-limited in its ability to handle different data types stored on the
-list.
-In particular, it only works when the description for the object being
-searched for (``k`` in the function) is of the same type as the
-objects themselves,
-and that can meaningfully be compared when using the ``==``
-comparison operator.
-A more typical situation is that we are searching for a record that
+In languages that support it, this implementation for ``find`` could
+be rewritten as a generic or template with respect to the element
+type.
+While making it more flexible, even generic types still
+are limited in their ability to handle different data types stored on
+the list.
+In particular, they only work when the description for the object
+being searched for (``k`` in the function) is of the same type as the
+objects themselves.
+They also have to be comparable when using the ``==`` operator.
+A more realistic situation is that we are searching for a record that
 contains a key field who's value matches ``k``.
 Similar functions to find and return a composite element based on a
 key value can be created using the list implementation, but to do so
 requires some agreement between the list ADT and the ``find``
 function on the concept of a key, and on how keys may be compared.
-This topic is discussed in Module :numref:`<Dictionary>`.
+This topic is discussed in Module :numref:`<SortCompare>`.
+
+.. TODO::
+   :type: Exercise
+
+   Need a battery of summary questions.
