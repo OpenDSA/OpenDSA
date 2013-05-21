@@ -114,23 +114,28 @@ class codeinclude(Directive):
         else:
             hl_lines = None
 
-        tag        = self.options.get('tag')
-        startafter = '/* *** ODSATag: %s *** */'%self.options.get('tag')        #self.options.get('start-after')
-        endbefore  = '/* *** ODSAendTag: %s *** */'%self.options.get('tag')        #self.options.get('end-before')
-        prepend    = self.options.get('prepend')
-        append     = self.options.get('append')
-        if startafter is not None or endbefore is not None:
-            use = not tag    #startafter
-            res = []
-            for line in lines:
-                if not use and startafter and startafter in line:
-                    use = True
-                elif use and endbefore and endbefore in line:
-                    use = False
-                    break
-                elif use:
-                    res.append(line)
-            lines = res
+        tag_       = self.options.get('tag')
+        tags       = tag_.split(',')
+        res        = []
+        for tag in tags:
+            startafter = '/* *** ODSATag: %s *** */'%tag #self.options.get('tag')        #self.options.get('start-after')
+            endbefore  = '/* *** ODSAendTag: %s *** */'%tag #self.options.get('tag')        #self.options.get('end-before')
+            prepend    = self.options.get('prepend')
+            append     = self.options.get('append')
+            if startafter is not None or endbefore is not None:
+                use = not tag    #startafter
+                #res = []
+                for line in lines:
+                    if not use and startafter and startafter in line:
+                        use = True
+                    elif use and endbefore and endbefore in line:
+                        use = False
+                        break
+                    elif use and '/* *** ODSA' in line and startafter not in line:
+                        pass 
+                    elif use:
+                        res.append(line)
+        lines = res
 
         if prepend:
            lines.insert(0, prepend + '\n')
