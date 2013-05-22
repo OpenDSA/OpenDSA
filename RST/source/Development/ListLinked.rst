@@ -13,10 +13,17 @@
 Linked Lists [Text]
 ===================
 
-The second traditional approach to implementing lists makes use of
+.. TODO::
+   :type: Code
+
+   Revise the linked list implementation to use a "trailer" node to
+   match the header.
+
+Besides the array-based list presented in
+Module :numref:`<ListArray>`,
+the other traditional approach to implementing lists makes use of
 pointers and is usually called a :dfn:`linked list`.
-The linked list uses
-:dfn:`dynamic memory allocation`,
+The linked list uses :dfn:`dynamic memory allocation`,
 that is, it allocates memory for new list elements as needed.
 
 A linked list is made up of a series of objects, called the

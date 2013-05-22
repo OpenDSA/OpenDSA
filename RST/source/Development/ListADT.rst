@@ -199,6 +199,17 @@ requires some agreement between the list ADT and the ``find``
 function on the concept of a key, and on how keys may be compared.
 This topic is discussed in Module :numref:`<SortCompare>`.
 
+Implementing Lists
+------------------
+
+There are two standard approaches to implementing lists, the
+:dfn:`array-based` list, and the :dfn:`linked` list.
+The array-based list implementation is presented in
+Module :numref:`<ListArray>`.
+The linked list is presented in Module :numref:`<ListLinked>`.
+Time and space efficiency comparisons for the two are discussed in
+Module :numref:`<ListAnalysis>`.
+
 .. TODO::
    :type: Exercise
 
