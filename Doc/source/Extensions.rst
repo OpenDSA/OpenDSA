@@ -115,7 +115,7 @@ NAME
 SYNOPSIS::
 
     .. codeinclude:: {relative_path}
-       [:tag: {my tag}]
+       [:tag: {my tag,mytag1}]
 
 DESCRIPTION
     ``.. codeinclude:: {relative_path}``
@@ -125,7 +125,7 @@ DESCRIPTION
 
     ``:tag: {my_tag}``
 
-      A tag inside the source code file that delimits the block
+      A tag or a comma separated list of tags inside the source code file that delimits the block
       of code that will be included.
       Note that the source code must use the tags correctly, as shown
       below.
