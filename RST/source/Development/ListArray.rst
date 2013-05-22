@@ -13,25 +13,13 @@
 Array-Based List Implementation [Text]
 ======================================
 
-There are two standard approaches to implementing lists, the
-:dfn:`array-based` list, and the :dfn:`linked` list.
-This section discusses the array-based approach.
-The linked list is presented in Module :numref:`<ListLinked>`.
-Time and space efficiency comparisons for the two are discussed in
-Module :numref:`<ListAnalysis>`.
-
 Here is an implementation for the array-based list, named ``AList``.
 ``AList`` inherits from interface ``List``
+(from Module :numref:`<ListADT>`)
 and so must implement all of the member functions of ``List``.
 
 .. codeinclude:: Lists/AList.pde
    :tag: AList
-
-.. TODO::
-   :type: Code
-
-   Replace this with a proper Processing implementation, and rewrite
-   the text as necessary to match.
 
 The private portion of class ``AList``contains the data members for
 the array-based list.
