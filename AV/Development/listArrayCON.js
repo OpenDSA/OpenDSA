@@ -6,6 +6,17 @@ var arrValues = [13,12,20,8,3,26,71,25,"","","",""];
 var itemsSize = 8;
 //array "It" in AlistCON2 for holding the copied element
 var arrItValues = [""];
+//array values in AlistCON3
+var arrPositions = [" ",5, 7, 3, 9," "];
+
+//calculate the left margin for the JSAV array object in AlistCON1 and AlistCON2
+var canvasWidth = $('.jsavcanvas').width();
+var arrWidth = arrValues.length * 45;
+var leftMargin = (canvasWidth - arrWidth) / 2;
+
+//calculate the left margin for the JSAV array object in AlistCON3
+var arrWidth3 = arrPositions.length * 45;
+var leftMargin3 = (canvasWidth - arrWidth3) / 2;
 
 //sets the backgroud of the array elements according to their values
 var bgColor = function(array){
@@ -28,16 +39,17 @@ var bgColor = function(array){
 
 	var jsav = new JSAV("AlistCON1");
 	//vertical arrow in step 1
-	var arrow1 = jsav.g.line(256, -10, 256, 20,{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+	var arrow1_x = leftMargin + 22.5;
+	var arrow1 = jsav.g.line(arrow1_x, -10, arrow1_x, 20,{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 	//label in step 1
-	var label = jsav.label("Insert 23", {before: arr, left: 230, top: -20});	
+	var label = jsav.label("Insert 23", {before: arr, left: arrow1_x - 26, top: -20});	
 	//horizontal arrow in step 2
-	var arrow2 = jsav.g.line(290, 10, 400, 10,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+	var arrow2 = jsav.g.line(leftMargin + 50, 5, leftMargin + 150, 5,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
 	// Create an array object under control of JSAV library
-    var arr = jsav.ds.array(arrValues, {indexed: true, layout: "array"});
+    var arr = jsav.ds.array(arrValues, {indexed: true, layout: "array", left:leftMargin});
 	
-	//move the array object 20px down to make room
-	arr.css({top: 20});
+	//move the array object 2px down to make room
+	arr.css({top: 2});
 	//sets the background of empty elements to gray
 	bgColor(arr);
 	
@@ -77,12 +89,14 @@ var bgColor = function(array){
 //Array-Based list deletion
 (function ($) {
 	var jsav = new JSAV("AlistCON2");	
-	//vertical arrow poitting to current position
-	var arrow1 = jsav.g.line(396, -10, 396, 20,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+	var arrow1_x = leftMargin + 20 + 45*3;
+
+	//vertical arrow pointing to current position
+	var arrow1 = jsav.g.line(arrow1_x, -10, arrow1_x, 20,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
 	//horizontal arrow in step 4
 	var arrow2 = jsav.g.line(550, 10,440, 10, {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
 	//label for current position in step 1
-	var label = jsav.label("curr", {before: arr, left: 380, top: -20});	
+	var label = jsav.label("curr", {before: arr, left: arrow1_x - 15, top: -20});	
 	label.hide();
 
 	// Create an array object under control of JSAV library
@@ -137,6 +151,33 @@ var bgColor = function(array){
 	arrIt.highlight([0]);
 	jsav.umsg(" return the deleted element");
 	//step 5
+	jsav.step();
+	jsav.recorded();
+
+}(jQuery));
+
+//Possible positions for Array-Based list
+(function ($) {
+	var jsav = new JSAV("AlistCON3");
+    var arr = jsav.ds.array(arrPositions, {indexed: false, layout: "array"});
+	arr.css({top: 10});
+
+	var i;
+	var arrowArray = [];
+	for(i = 0; i < 5; i++)
+	{
+		arrowArray[i] = jsav.g.line(leftMargin3 + 2 + 65 * i, 0, leftMargin3 + 2 + 65 * i, 25,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+	}
+	
+	jsav.umsg("A list with 4 elements");
+	jsav.displayInit();
+
+	for(i = 0; i < 5; i++)
+	{
+		arrowArray[i].show();
+	}
+
+	jsav.umsg("Five possible positions for \"current\"");
 	jsav.step();
 	jsav.recorded();
 
