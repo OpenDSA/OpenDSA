@@ -118,25 +118,31 @@ class codeinclude(Directive):
         tags       = tag_.split(',')
         res        = []
         for tag in tags:
-            startafter = '/* *** ODSATag: %s *** */'%tag #self.options.get('tag')        #self.options.get('start-after')
-            endbefore  = '/* *** ODSAendTag: %s *** */'%tag #self.options.get('tag')        #self.options.get('end-before')
+            startafter = '/* *** ODSATag: %s *** */'%tag 
+            endbefore  = '/* *** ODSAendTag: %s *** */'%tag 
             prepend    = self.options.get('prepend')
             append     = self.options.get('append')
             if startafter is not None or endbefore is not None:
                 use = not tag    #startafter
-                #res = []
+                tags_counter = 0
                 for line in lines:
                     if not use and startafter and startafter in line:
                         use = True
+                        tags_counter = tags_counter + 1
                     elif use and endbefore and endbefore in line:
-                        use = False
+                        use = False 
+                        tags_counter = tags_counter + 1
                         break
                     elif use and '/* *** ODSA' in line and startafter not in line:
                         pass 
                     elif use:
                         res.append(line)
-        lines = res
 
+                if tags_counter == 0:
+                    return [document.reporter.warning(str("Tag not found. Make sure the tag in your module file matches the delimiter in the source code file."), line=self.lineno)]      
+                elif tags_counter == 1:
+                    return [document.reporter.warning(str("Begin or end tag missing. Please verify your source code file."), line=self.lineno)] 
+        lines = res
         if prepend:
            lines.insert(0, prepend + '\n')
         if append:
