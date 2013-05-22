@@ -149,6 +149,12 @@
             "required": true,
             "points": 0.1,
             "threshold": 1.0
+          },
+          "AlistCON3": {
+            "long_name": "Array List Slideshow 3",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
           }
         }
       },
@@ -210,11 +216,29 @@
       "Development/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-	  "binarytreePreorder": {
-            "long_name": "Preorder Exercise",
-	    "required": false,
-	    "points": 0.0,
-	    "threshold": 1.0
+          "binarytree-inorder": {
+            "long_name": "Binary Tree Inorder Traversal",
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
+          },
+          "binarytree-levelorder": {
+            "long_name": "Binary Tree Level Order Traversal",
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
+          },
+          "binarytree-preorder": {
+            "long_name": "Binary Tree Preorder Traversal",
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
+          },
+          "binarytree-postorder": {
+            "long_name": "Binary Tree Postorder Traversal",
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
           }
         }
       },

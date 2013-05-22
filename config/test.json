@@ -26,11 +26,43 @@
       },
       "Development/ListArray": {
         "long_name": "Array-based Lists",
-        "exercises": {}
+        "exercises": {
+          "AlistCON1": {
+            "long_name": "Array List Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "AlistCON2": {
+            "long_name": "Array List Slideshow 2",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "AlistCON3": {
+            "long_name": "Array List Slideshow 3",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/ListLinked": {
         "long_name": "Linked Lists",
-        "exercises": {}
+        "exercises": {
+          "listLinkedCON1": {
+            "long_name": "Array List Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "listLinkedCON2": {
+            "long_name": "Array List Slideshow 2",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/ListAnalysis": {
         "long_name": "Comparison of List Implementations",
@@ -65,6 +97,39 @@
       "Development/Recursion": {
         "long_name": "Recursion",
         "exercises": {}
+      },
+      "Development/BinaryTree": {
+        "long_name": "Binary Trees",
+        "exercises": {}
+      },
+      "Development/BinaryTreeTraversal": {
+        "long_name": "Binary Tree Traversal",
+        "exercises": {
+          "binarytree-inorder": {
+            "long_name": "Binary Tree Inorder Traversal",
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
+          },
+          "binarytree-levelorder": {
+            "long_name": "Binary Tree Level Order Traversal",
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
+          },
+          "binarytree-preorder": {
+            "long_name": "Binary Tree Preorder Traversal",
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
+          },
+          "binarytree-postorder": {
+            "long_name": "Binary Tree Postorder Traversal",
+            "required": true,
+            "points": 1,
+            "threshold": 0.90
+          }
+        }
       }
     }
   }
