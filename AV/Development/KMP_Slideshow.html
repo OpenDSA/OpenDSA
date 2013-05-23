@@ -49,143 +49,115 @@
 <script src="../../JSAV/build/JSAV-min.js"></script>
     <script>
 
-    var av = new JSAV("container");
+    var kmp_slideshow = new JSAV("container");
 
 
-    var master = av.ds.array(['x','y','a','b','a','b','c','a','b','a','b','a','t','c','a','h','a','b','a','b','a','t','c','a','b'], {center: false, indexed: true});
-    var sub = av.ds.array(['a','b','a','b','a','t','c','a','b',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '], {center: false});
-    var align = av.ds.array(['-1','0','0','1','2','3','0','0','1',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '], {center: false});
-    var master_label = av.label("Master String", {before: master});
-    var sub_label = av.label("Sub String", {before: sub});
-    var align_label = av.label("Alignment Array for Sub String", {before: align});
+    var master = kmp_slideshow.ds.array(['x','y','a','b','a','b','c','a','b','a','b','a','t','c','a','h','a','b','a','b','a','t','c','a','b'], {center: false, indexed: true});
+    var sub = kmp_slideshow.ds.array(['a','b','a','b','a','t','c','a','b',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '], {center: false});
+    var align = kmp_slideshow.ds.array(['-1','0','0','1','2','3','0','0','1',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '], {center: false});
+    var master_label = kmp_slideshow.label("Master String", {before: master});
+    var sub_label = kmp_slideshow.label("Sub String", {before: sub});
+    var align_label = kmp_slideshow.label("Alignment Array for Sub String", {before: align});
 
 
-    av.umsg("First we have the Master string (indexed [0-n]), the Sub string (indexed [0-m]) and the alignment array for the Sub string.");
+    kmp_slideshow.umsg("First we have the Master string (indexed [0-n]), the Sub string (indexed [0-m]) and the alignment array for the Sub string.");
 
-    av.step();
-    av.umsg("We can now take a look at the pseudo-code and notice a few key variables... m, which will default to 0, s, which will default to 0, and also note that our strings are called master and sub, and the alignment array is calle align.");
-    var kmp_pseudo = av.code("input: master string, sub string, align array\nm = 0\ns = 0\nwhile((s < sub.length) and (sub.length - s <= master.length - m)):\n\tif(master[m] == sub[s]):\n\t\tm++\n\t\ts++\n\telse if(s == 0):\n\t\tm++\n\telse:\n\t\ts = align[s]\nif(s == sub.length):\n\treturn m - sub.length\nelse \n\treturn -1", {before: master_label});
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We can now take a look at the pseudo-code and notice a few key variables... m, which will default to 0, s, which will default to 0, and also note that our strings are called master and sub, and the alignment array is called align.");
+    /*
+        Setting up the two variables and the pseudo code used throughout the slideshow.
+    */
+    var kmp_pseudo = kmp_slideshow.code("input: master string, sub string, align array\nm = 0\ns = 0\nwhile((s < sub.length) and (sub.length - s <= master.length - m)):\n\tif(master[m] == sub[s]): m++, s++\n\telse if(s == 0): m++\n\telse: s = align[s]\nif(s == sub.length): return m - sub.length\nelse: return -1", {before: master_label});
+    var m = kmp_slideshow.variable(["0"],{visible: true, label: "m = ", left: "150px", bottom: "460px"});
+    var s = kmp_slideshow.variable(["0"], {visible: true, label: "s = ", left: "150px", bottom: "430px"});
+
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We will also notice the termination condition of our loop, that s is less than the length of our sub string and that the length of the substring - s is <= length of the master - m.");
 
 
-    var m = av.variable(["0"],{visible: true, label: "m = ", left: "150px", bottom: "460px"});
-    var s = av.variable(["0"], {visible: true, label: "s = ", left: "150px", bottom: "430px"});
-
-    //step
-    av.step();
-    av.umsg("We will also notice the termination condition of our loop, that s is less than the length of our sub string and that the length of the substring - s is <= length of the master - m.");
-
-
-    av.step();
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We notice that the first characters of each string (x and a) do not match...");    
     sub.css(0, {"background-color": "red"});
     master.css(0, {"background-color": "red"});
-    av.umsg("We notice that the first characters of each string (x and a) do not match...");
 
-    //step
-    av.step();
+
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("Because there is a mismatch immediately we increment the pointer to the current location in the master string to one spot ahead so that we are comparing substring[0] to master[1], in other words we enter the second if statement (since s == 0) and increment m by 1.");    
     sub.css(0, {"background-color": "white"});
     master.css(0, {"background-color": "white"});
-
-
     for(var i=sub.size()-1;i>0;i--){
       sub.value(i, sub.value(i-1));
     }
     sub.value(0, ' ');
-
     for(var x = align.size()-1; x > 0; x--){
       align.value(x, align.value(x-1));
     }
     align.value(0, ' ');
-    av.umsg("Because there is a mismatch immediately we increment the pointer to the current location in the master string to one spot ahead so that we are comparing substring[0] to master[1], in other words we enter the second if statement (since s == 0) and increment m by 1.");
-    kmp_pseudo.setCurrentLine(8);
+    kmp_pseudo.setCurrentLine(5);
     m.value("1");
 
-
-    //step
-    av.step();
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We jump back to the beginning of the loop and notice that, once again, the first characters of each string (y and a) do not match...");    
     sub.css(1, {"background-color": "red"});
     master.css(1, {"background-color": "red"});
-    av.umsg("We jump back to the beginning of the loop and notice that, once again, the first characters of each string (y and a) do not match...");
     kmp_pseudo.setCurrentLine(4);
 
-    //step
-    av.step();
-
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("Because there is a mismatch immediately we increment the pointer to the current location in the master string to one spot ahead so that we are comparing the substring[0] to master[2], this done by again entering the if statement on line 8 and setting m to m+1.");    
     sub.css(1, {"background-color": "white"});
     master.css(1, {"background-color": "white"});
-
     for(i=sub.size()-1;i>0;i--){
       sub.value(i, sub.value(i-1));
     }
-
-
-    for(x = align.size()-1; x > 0; x--){
-      align.value(x, align.value(x-1));
+    for(i = align.size()-1; i > 0; i--){
+      align.value(i, align.value(i-1));
     }
-
-
-    av.umsg("Because there is a mismatch immediately we increment the pointer to the current location in the master string to one spot ahead so that we are comparing the substring[0] to master[2], this done by again entering the if statement on line 8 and setting m to m+1.");
-    kmp_pseudo.setCurrentLine(8);
+    kmp_pseudo.setCurrentLine(5);
     m.value("2");  
 
-    av.step();
-    av.umsg("We can now observe that the next 4 characters match, meaning our loop ran smoothly 4 times, entering the first if statement and incrementing m and s ahead by 4 each.");
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We can now observe that the next 4 characters match, meaning our loop ran smoothly 4 times, entering the first if statement and incrementing m and s ahead by 4 each.");
     kmp_pseudo.setCurrentLine(4);
     m.value("6");
     s.value("4");
     master.highlight([2,3,4,5]);
     sub.highlight([2,3,4,5]);
 
-
-    //step
-    av.step();
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("Now we can have some fun. We can now observe here that sub[0-3] match up with master [2-5]. Then everything is ruined when we realize that sub[4] (a) doesn't match up with master[6] (c)...");    
     sub.css(6, {"background-color": "red"});
     master.css(6, {"background-color": "red"});
-    av.umsg("Now we can have some fun. We can now observe here that sub[0-3] match up with master [2-5]. Then everything is ruined when we realize that sub[4] (a) doesn't match up with master[6] (c)...");
 
-    av.step();
-    av.umsg("We can't enter the second if statement because s != 0, so we have to enter the else.");
-    kmp_pseudo.setCurrentLine(7);
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We can't enter the second if statement because s != 0, so we have to enter the else.");
+    kmp_pseudo.setCurrentLine(6);
 
-
-
-    //step
-    av.step();
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We now utilize the alignment array to figure out what index in the our substring we can jump to. We note that align[s] (align[4]) is 2, that means we shift our substring over so that the current index in the master string is aligned with sub[2]. Then this also resets our s value to 2.");    
     align.highlight(6);
-    kmp_pseudo.setCurrentLine(10);
-    av.umsg("We now utilize the alignment array to figure out what index in the our substring we can jump to. We note that align[s] (align[4]) is 2, that means we shift our substring over so that the current index in the master string is aligned with sub[2]. Then this also resets our s value to 2.");
     s.value("2");
 
-
-    //step
-    av.step();
-
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("Note now that we still don't have a match at master[m] and sub[s] (master[6] != sub[2]).");    
     kmp_pseudo.setCurrentLine(4);
     align.unhighlight(6);
     master.unhighlight([2,3,4,5]);
     sub.unhighlight([2,3,4,5]);
-
-
     for(i=sub.size()-1;i>1;i--){
       sub.value(i, sub.value(i-2));
     }
-
-
-    for(x = align.size()-1; x > 1; x--){
-      align.value(x, align.value(x-2));
+    for(i = align.size()-1; i > 1; i--){
+      align.value(i, align.value(i-2));
     }
 
-    av.umsg("Note now that we still don't have a match at master[m] and sub[s] (master[6] != sub[2]).");
-
-
-    //step
-    av.step();
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("s is still > 0 so we head down to our else statement and reassign s to align[s] (align[2]) which is just 0.");    
     align.highlight(6);
-    kmp_pseudo.setCurrentLine(10);
-    av.umsg("s is still > 0 so we head down to our else statement and reassign s to align[s] (align[2]) which is just 0.");
+    kmp_pseudo.setCurrentLine(6);
     s.value("0");
 
-    //step
-    av.step();
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("Now we end up back in the same situation after the jump, the mistmatch occurs at master[6] and sub[0] now.");    
     kmp_pseudo.setCurrentLine(4);    
     align.unhighlight(6);
     master.unhighlight([4,5]);
@@ -193,58 +165,53 @@
     for(i=sub.size()-1;i>1;i--){
       sub.value(i, sub.value(i-2));
     }
-
-    for(x = align.size()-1; x > 1; x--){
-      align.value(x, align.value(x-2));
+    for(i = align.size()-1; i > 1; i--){
+      align.value(i, align.value(i-2));
     }
-    av.umsg("Now we end up back in the same situation after the jump, the mistmatch occurs at master[6] and sub[0] now.");
 
-    av.step();
-    av.umsg("We enter the second if statement this time because s == 0, so we just increment m by 1...");
+
+    kmp_slideshow.step();    
+    kmp_slideshow.umsg("We enter the second if statement this time because s == 0, so we just increment m by 1...");
     m.value("7");
-    kmp_pseudo.setCurrentLine(8);
+    kmp_pseudo.setCurrentLine(5);
 
-    av.step();
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We are now comparing master[7] to sub[0].");    
     sub.css(6, {"background-color": "white"});
     master.css(6, {"background-color": "white"});    
     for(i=sub.size()-1;i>0;i--){
       sub.value(i, sub.value(i-1));
     }
-    for(x = align.size()-1; x > 0; x--){
-      align.value(x, align.value(x-1));
+    for(i = align.size()-1; i > 0; i--){
+      align.value(i, align.value(i-1));
     }   
-    av.umsg("We are now comparing master[7] to sub[0].");
     kmp_pseudo.setCurrentLine(4);
 
 
-
-    //step
-    av.step();
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We get to travel through our loop successfully incrementing m and s 8 times now because all of the characters in master[7-14] and sub[0-7] matched one another, but we will notice a mismatch at master[15] and sub[8]...");
     master.highlight([7,8,9,10,11,12,13,14]);
     sub.highlight([7,8,9,10,11,12,13,14]);
     sub.css(15, {"background-color": "red"});
     master.css(15, {"background-color": "red"});      
-
-    av.umsg("We get to travel through our loop successfully incrementing m and s 8 times now because all of the characters in master[7-14] and sub[0-7] matched one another, but we will notice a mismatch at master[15] and sub[8]...");
     m.value("15");
     s.value("8");
 
 
 
-    av.step();
-    av.umsg("We enter our else statement this time because we know s != 0 and the current characters don't match.");
-    kmp_pseudo.setCurrentLine(9);
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We enter our else statement this time because we know s != 0 and the current characters don't match.");
+    kmp_pseudo.setCurrentLine(6);
 
-    //step
-    av.step();
 
-    align.highlight(15);
-    av.umsg("We now get to see why KMP is such a cool algorithm. We look back at our alignment array and see that at align[s] (align[8]) we get to reassign s to 1!");
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We now get to see why KMP is such a cool algorithm. We look back at our alignment array and see that at align[s] (align[8]) we get to reassign s to 1!");
     s.value("1");
-    kmp_pseudo.setCurrentLine(10);
+    align.highlight(15);
 
-    //step
-    av.step();
+
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("Wow! How Exciting! We just skipped over 6 comparisons that the naive method would have had to make!");
     master.unhighlight();
     sub.unhighlight();
     align.unhighlight();
@@ -253,51 +220,47 @@
     for(i=sub.size()-1;i>6;i--){
       sub.value(i, sub.value(i-7));
     }
-
-    for(x = align.size()-1; x > 6; x--){
-      align.value(x, align.value(x-7));
+    for(i = align.size()-1; i > 6; i--){
+      align.value(i, align.value(i-7));
     }
-    av.umsg("Wow! How Exciting! We just skipped over 6 comparisons that the naive method would have had to make!");
 
-    //step
-    av.step();
 
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We know take a look at master[15] and sub[1] which don't match.");    
     sub.css(15, {"background-color": "red"});
     master.css(15, {"background-color": "red"});  
     align.highlight(15);
-    av.umsg("We know take a look at master[15] and sub[1] which don't match.");
     kmp_pseudo.setCurrentLine(4);
 
-    av.step();
-    av.umsg("We go back into our else statement because s != 0 and we reset s to align[s] (align[1]) which is 0.");
-    kmp_pseudo.setCurrentLine(10);
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We go back into our else statement because s != 0 and we reset s to align[s] (align[1]) which is 0.");
+    kmp_pseudo.setCurrentLine(6);
     s.value("0");
 
 
-    //step
-    av.step();
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("Right away our new alignment doesn't match and s == 0 so we increment m by 1 to compare the next spot in the master string.");
     for(i=sub.size()-1;i>0;i--){
       sub.value(i, sub.value(i-1));
     }
-    for(x = align.size()-1; x > 0; x--){
-      align.value(x, align.value(x-1));
+    for(i = align.size()-1; i > 0; i--){
+      align.value(i, align.value(i-1));
     }
-    av.umsg("Right away our new alignment doesn't match and s == 0 so we increment m by 1 to compare the next spot in the master string.");
     m.value("16");
     align.unhighlight(15);
-    kmp_pseudo.setCurrentLine(8);
+    kmp_pseudo.setCurrentLine(5);
 
 
-    av.step();
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We move through the next 9 characters easily, entering our first if statement every time and increasing m and s by a total of 8 after 8 iterations");
     for(i=sub.size()-1;i>0;i--){
       sub.value(i, sub.value(i-1));
       align.value(i, align.value(i-1));
     }
-    for(var j = 16; j < master.size(); j++) {
-      sub.highlight(j);
-      master.highlight(j);      
+    for(i = 16; i < master.size(); i++) {
+      sub.highlight(i);
+      master.highlight(i);      
     }
-    av.umsg("We move through the next 9 characters easily, entering our first if statement every time and increasing m and s by a total of 8 after 8 iterations");
     s.value("8");
     m.value("24");
     kmp_pseudo.setCurrentLine(4);
@@ -305,36 +268,28 @@
     master.css(15, {"background-color": "white"});  
 
 
-    av.step();
-    av.umsg("It is at this point that we notice that s is no longer < sub.length and we break out of our loop...");
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("It is at this point that we notice that s is no longer < sub.length and we break out of our loop...");
     kmp_pseudo.setCurrentLine(3);
 
 
-    av.step();
-    av.umsg("we also not that s == sub.length so we enter our if statement on line 12.");
-    kmp_pseudo.setCurrentLine(11);
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("we also not that s == sub.length so we enter our if statement on line 12.");
+    kmp_pseudo.setCurrentLine(7);
 
-    av.step();
-    av.umsg("We return the value m (24) - sub.length (9), so we know that our match occurs at index 16 of the master")
-    kmp_pseudo.setCurrentLine(12);
+    kmp_slideshow.step();
+    kmp_slideshow.umsg("We return the value m (24) - sub.length (9), so we know that our match occurs at index 16 of the master")
 
     //step
-    av.step();
-    sub.css(15, {"background-color": "white"});
-    master.css(15, {"background-color": "white"});  
-    align.unhighlight(15);
-    for(i=sub.size()-1;i>0;i--){
-      sub.value(i, sub.value(i-1));
+    kmp_slideshow.step();
+    sub.unhighlight();
+    master.unhighlight();
+    for(var i = 16; i < master.size(); i++) {
+      sub.css(i, {"background-color": "green"});
+      master.css(i, {"background-color": "green"});      
     }
-    for(x = align.size()-1; x > 0; x--){
-      align.value(x, align.value(x-1));
-    }
-    for(var j = 16; j < master.size(); j++) {
-      sub.css(j, {"background-color": "green"});
-      master.css(j, {"background-color": "green"});      
-    }
-    av.umsg("We found our match at master[16]!");
-    av.recorded();
+    kmp_slideshow.umsg("We found our match at master[16]!");
+    kmp_slideshow.recorded();
 
     </script>
   </body>

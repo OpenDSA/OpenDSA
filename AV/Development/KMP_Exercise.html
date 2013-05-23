@@ -39,9 +39,8 @@
   <script>
 
 
+//This function computes the alignment lookup table for the KMP algorithm
   function compute_align_array(arr) {
-
-
     var align = new Array();
     align[0] = -1;
     align[1] = 0;
@@ -57,7 +56,7 @@
   	return align;
   }
 
-
+//This function is the KMP algorithm, implemented in the way described in the pseudo code in the slideshow
   function kmp(master, sub) {
     var align_array = new Array(); 
     align_array = compute_align_array(sub);
@@ -81,10 +80,11 @@
     }
   }
 
+//This function initializes the arrays, and handles the clicks on the specific indexes, see comments in method for more information
   function make_arrays(){
-    var av = new JSAV("container", {"animationMode": "none"});
+    var kmp_exercise = new JSAV("container", {"animationMode": "none"});
     var max = 0;
-      
+    //handles the actual click on an index and highlights the specified index
     var clickHandler = function(index, e) {
       if (!main_text.isHighlight(index)) {
         main_text.highlight(index);
@@ -160,20 +160,20 @@
     var index_match = kmp(master_arr, sub_arr);
     console.log("supposed answer: "+index_match);
 
-    main_text = av.ds.array([' '], {indexed: true});
+    main_text = kmp_exercise.ds.array([' '], {indexed: true});
 
 
     for(i=0; i<master_str.length;i++) {
     	main_text.value(i, master_str.charAt(i));
     }
 
-    search_string = av.ds.array([' ']);
+    search_string = kmp_exercise.ds.array([' ']);
 
     for(z=0;z<search_string.size();z++) {
     	search_string.value(z, ' ');
     }
 
-
+    //need to make the arrays align nicely so we need to fill the remaining indexes of the substring array with empty characters 
     for(j=0;j<master_str.length;j++) {
       if(sub_str.charAt(j).length > 0) {
     	  search_string.value(j, sub_str.charAt(j));
@@ -181,8 +181,8 @@
         search_string.value(j, " ");
       }
     }
-
-    var alignment_table = av.ds.array([' ']);
+    //initializing the alignment array
+    var alignment_table = kmp_exercise.ds.array([' ']);
     var align_table_temp = new Array();
     align_table_temp = compute_align_array(sub_arr);
     for(f=0;f<align_table_temp.length;f++) {

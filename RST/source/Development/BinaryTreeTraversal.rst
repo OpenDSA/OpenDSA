@@ -167,8 +167,6 @@ possibility that the empty tree is being traversed.
 By using the first design, which explicitly supports processing of
 empty subtrees, the problem is avoided.
 
-.. avembed:: AV/Development/binarytreePreorder.html pe
-
 Another issue to consider when designing a traversal is how to
 define the visitor function that is to be executed on every node.
 One approach is simply to write a new version of the traversal for
@@ -265,6 +263,22 @@ We can implement this function as follows.
 
 .. codeinclude:: Trees/BinNode.pde
    :tag: checkBST
+
+Inorder Traversal Exercise.
+
+.. avembed:: AV/Development/binarytree-inorder.html pe
+
+Level order Traversal Exercise.
+
+.. avembed:: AV/Development/binarytree-levelorder.html pe
+
+Postorder Traversal Exercise.
+
+.. avembed:: AV/Development/binarytree-postorder.html pe
+
+Preorder Traversal Exercise.
+
+.. avembed:: AV/Development/binarytree-preorder.html pe
 
 .. TODO::
    :type: Exercise

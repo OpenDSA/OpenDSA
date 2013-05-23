@@ -21,6 +21,9 @@ and so must implement all of the member functions of ``List``.
 .. codeinclude:: Lists/AList.pde
    :tag: AList
 
+.. inlineav:: AlistCON3 ss
+   :output: show   
+
 The private portion of class ``AList``contains the data members for
 the array-based list.
 These include ``listArray``, the array which holds the list elements.
@@ -115,9 +118,6 @@ operations can be expensive.
 
 .. inlineav:: AlistCON2 ss
    :output: show
-
-   Replace the above description of insert with a slideshow. Add a
-   similar slideshow for delete.
 
 .. TODO::
    :type: Exercise
