@@ -119,15 +119,11 @@ operations can be expensive.
 .. inlineav:: AlistCON2 ss
    :output: show
 
-.. TODO::
-   :type: Exercise
-
-   Add proficiency exercise where students are given an array, and
-   told to either delete a given element, or add a given element at a
-   certain position.
-
-.. TODO::
-   :type: Exercise
+Now try for yourself to see if you understand how Array-Based Insertion and Deletion work.
+   
+.. avembed:: Exercises/Development/listArrayInsertion.html ka
+  
+.. avembed:: Exercises/Development/listArrayDeletion.html ka
 
    Add a battery of summary questions.
 
