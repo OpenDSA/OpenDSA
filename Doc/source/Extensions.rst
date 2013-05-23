@@ -115,20 +115,32 @@ NAME
 SYNOPSIS::
 
     .. codeinclude:: {relative_path}
-       [:tag: {my tag,mytag1}]
+       [:tag: {mytag1} [, {mytag2}, ...]]
 
 DESCRIPTION
     ``.. codeinclude:: {relative_path}``
 
-      Include the code present inside the file located at
+      Include the contents of the file located at
       ``{relative_path}``.
 
     ``:tag: {my_tag}``
 
-      A tag or a comma separated list of tags inside the source code file that delimits the block
-      of code that will be included.
-      Note that the source code must use the tags correctly, as shown
-      below.
+      Optionally, a tag or a comma separated list of tags can be
+      specified. These tags must appear inside the source code file
+      as specially formatted comments that delimit the block(s) of
+      code that will be included.
+      If tags are used, then only the code block(s) with the tags will
+      appear.
+      If multiple tags are used, then the multiple blocks will appear
+      as though they were one continuous block of code without the
+      intervening code that does not appear with the tags.
+      If additional tags are hierarchically embedded within a tag
+      block, then those tags will not appear (but the code will).
+      Note that the source code must format the tags correctly,
+      as::
+
+         /* *** ODSATag: my_tag *** */
+         /* *** ODSAendTag: my_tag *** */
 
 NOTES
     The ``codeinclude`` directive closely matches the standard ReST

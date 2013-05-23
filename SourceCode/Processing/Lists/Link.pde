@@ -19,6 +19,11 @@ class Link {
     return e;
   }
 
+  // Set element value
+  void setelement(Object ine) {
+    e = ine;
+  }
+
   // Return next link
   Link next() {
     return n;

@@ -121,6 +121,10 @@
         "long_name": "Design Patterns",
         "exercises": {}
       },
+      "Development/DesignAltList": {
+        "long_name": "Alternate List ADT Design",
+        "exercises": {}
+      },
       "Development/Dictionary": {
         "long_name": "The Dictionary ADT",
         "exercises": {}
