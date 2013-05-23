@@ -122,8 +122,6 @@ def doctree_read(app, doctree):
                             xrefs = json_data[label]
                             if '#' in xrefs:
                                 xrefs = xrefs[:-1]
-                        else:
-                            print "WARNING: Missing object reference '%s'" %label
                         numbered_label = ' %s' %xrefs
                         break
                 if 'example' in figure_info.children[0].children[0].lower():
