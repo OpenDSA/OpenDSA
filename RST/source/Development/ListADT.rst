@@ -8,6 +8,8 @@
    :prerequisites:
    :topic: Lists
 
+.. odsalink:: AV/Development/listADTCON.css
+
 The List ADT [Storyboard]
 =========================
 
@@ -217,3 +219,5 @@ Module :numref:`<ListAnalysis>`.
    :type: Exercise
 
    Need a battery of summary questions.
+
+.. odsascript:: AV/Development/listADTCON.js
