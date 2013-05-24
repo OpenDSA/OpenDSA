@@ -131,4 +131,10 @@ Now try for yourself to see if you understand how Array-Based Insertion and Dele
    Add a battery of summary questions.
 
 .. odsascript:: AV/Development/listArrayCON.js
+
 .. odsascript:: AV/Development/listArrayTestCON.js
+
+.. TODO::
+   :type: Exercise
+
+   Need a battery of summary questions.
