@@ -9,6 +9,7 @@
    :topic: Lists
    
 .. odsalink:: AV/Development/listArrayCON.css
+.. odsalink:: AV/Development/listArrayTestCON.css
 
 Array-Based List Implementation [Text]
 ======================================
@@ -44,6 +45,11 @@ Data member ``curr`` stores the current position.
 Because ``listArray``, ``maxSize``, ``listSize``, and 
 ``curr`` are all declared to be ``private``, they may only
 be accessed by methods of Class ``AList``.
+
+Now let's do the previous two paragraphs with a slideshow.
+
+.. inlineav:: AlistTestCON1 ss
+   :output: show
 
 Class ``AList`` stores the list elements in the first
 ``listSize`` contiguous array positions.
@@ -125,3 +131,4 @@ Now try for yourself to see if you understand how Array-Based Insertion and Dele
    Add a battery of summary questions.
 
 .. odsascript:: AV/Development/listArrayCON.js
+.. odsascript:: AV/Development/listArrayTestCON.js

@@ -19,17 +19,24 @@
   margin-left: 250px;
   width: 560px;
 }
+
 #AlistCON2 {
   height: 260px;
 }
 
+<<<<<<< HEAD
 #AlistCON2 .jsavcanvas{
   width: 850px;
 }
 
 .ssAV .jsavline{
 	height: 30px;
+=======
+.ssAV .jsavline{
+  height: 30px;
+>>>>>>> aefe1f3037c94fb16c7ea218b8104a26a7d7d0b1
 }
+
 .jsavcanvas{
   height:50px;
 }
