@@ -129,7 +129,7 @@ call is made only on non-empty children.
 Such a design typically looks as follows
 
 .. codeinclude:: Trees/Traverse.pde
-   :tag: preorder
+   :tag: preorder2
 
 At first it might appear that ``preorder2`` is more efficient
 than ``preorder``, because it makes only half as many recursive
@@ -211,7 +211,7 @@ that we communicate information back up the tree to the end user.
    us.
    Thus, we can implement ``count`` as follows.
 
-   .. codeinclude:: Trees/BinNode.pde
+   .. codeinclude:: Trees/Traverse.pde
       :tag: count
 
 Another problem that occurs when recursively processing data
@@ -261,7 +261,7 @@ That information might come from any of the node's ancestors.
 Thus, relevant range information must be passed down the tree.
 We can implement this function as follows.
 
-.. codeinclude:: Trees/BinNode.pde
+.. codeinclude:: Trees/Traverse.pde
    :tag: checkBST
 
 Inorder Traversal Exercise.

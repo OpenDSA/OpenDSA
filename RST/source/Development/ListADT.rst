@@ -127,6 +127,9 @@ to be able to insert to the front or the back of the list as well as
 anywhere in between, there are actually :math:`n+1` possible
 "current positions" when there are :math:`n` elements in the list.
 
+.. inlineav:: listADTCON1 ss
+   :output: show   
+
 .. TODO::
    :type: Diagram
 

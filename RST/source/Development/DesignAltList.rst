@@ -11,7 +11,6 @@
 Alternative List ADT Designs [Text]
 ===================================
 
-
 The list ADT of Module :numref:`<ListADT>` specifies that a List
 comprises not only a collection of objects in linear order,
 but also "the current position".
@@ -28,8 +27,9 @@ This is a simple form of a concept that is sometimes called an
 The ``ListIndex`` interface abstracts the notion of a position in a
 list.
 
-.. codeinclude:: Lists/ListAltADT.pde
-   :tag: ListAltADT
+.. codeinclude:: ListAlt/ListIndex.pde
+
+.. codeinclude:: ListAlt/ListADT.pde
 
 There is the issue in an implementation of how the two classes will
 communicate.
@@ -42,7 +42,11 @@ this pointer, but nobody outside should need to know about it.
 Some languages like Java and C++ have mechanisms that allow a specific
 class to have access to non-public members of another class.
 Oher languages like Processing have no such concept.
-In that case it might be necessary to make the internal data of the
-``ListIndex`` public so that the ``List`` implementation can operate
-on it, but the expectation is that outsiders would not need to use
-this.
+
+One general solution is to make the interface for ``ListIndex``
+public, but make the implementation a private inner class of the List
+implementation.
+This approach is used in the following implmentation for the
+Array-based list.
+
+.. codeinclude:: ListAlt/AList.pde
