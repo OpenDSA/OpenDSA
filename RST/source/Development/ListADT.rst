@@ -125,40 +125,12 @@ will take place.
    :tag: ListADT
 
 .. inlineav:: listADTCON1 ss
+   :output: show  
+
+Slideshow
+   
+.. inlineav:: listADTCON2 ss
    :output: show   
-
-.. TODO::
-   :type: Slideshow
-
-   We can make our list display notation more clear by showing the
-   position of the current element.
-   We will use a vertical bar like this:
-
-   .. math::
-
-      \langle\ 20,\ 23\ |\ 12,\ 15\ \rangle
-
-   This indicates a list of four elements,
-   with the current position being to the right of the bar at element 12.
-   Given this configuration, calling ``insert`` with value 10
-   will change the list to be:
-
-   .. math::
-
-      \langle\ 20,\ 23\ |\ 10,\ 12,\ 15\ \rangle
-
-   Here is another example, showing the current position set to allow
-   insertion at the end of the list.
-
-   .. math::
-
-      \langle\ 20,\ 23,\ 10,\ 12,\ 15\ |\ \rangle
-
-   Here is the result of inserting 17.
-
-   .. math::
-
-      \langle\ 20,\ 23,\ 10,\ 12,\ 15\ |\ 17\ \rangle
 
 The ``List`` member functions allow you to build a list with elements
 in any desired order, and to access any desired position in the list.
