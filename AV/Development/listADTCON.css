@@ -1,0 +1,10 @@
+#listADTCON1 { 
+  height: 200px;
+}
+#listADTCON1 .jsavnode{
+  border: 0px;
+  background-color: #eed;
+  line-height: 60px;
+  font-size: 20px;
+  min-width: 65px;
+}

@@ -64,10 +64,10 @@ To be consistent with standard array indexing, the first position
 on the list is denoted as 0.
 Thus, if there are :math:`n` elements in the list, they are given
 positions 0 through :math:`n-1` as
-:math:`\langle a_0,\ a_1,\ ...,\ a_{n-1}\rangle`.
+:math:`\langle\ a_0,\ a_1,\ ...,\ a_{n-1}\ \rangle`.
 The subscript indicates an element's position within the list.
 Using this notation, the empty list would appear as
-:math:`\langle \rangle`. 
+:math:`\langle\ \rangle`. 
 
 Defining the ADT
 ----------------
@@ -124,37 +124,41 @@ will take place.
 .. codeinclude:: Lists/ListADT.pde
    :tag: ListADT
 
-Since insertions take place at the current position, and since we want
-to be able to insert to the front or the back of the list as well as
-anywhere in between, there are actually :math:`n+1` possible
-"current positions" when there are :math:`n` elements in the list.
-
 .. inlineav:: listADTCON1 ss
    :output: show   
 
 .. TODO::
-   :type: Diagram
+   :type: Slideshow
 
-   Slide 1 'A list with four elements.'
+   We can make our list display notation more clear by showing the
+   position of the current element.
+   We will use a vertical bar like this:
 
-   Slide 2 'Five possible positions for "current".'
+   .. math::
 
-We can make our list display notation more clear by showing the
-position of the current element.
-We will use a vertical bar like this:
+      \langle\ 20,\ 23\ |\ 12,\ 15\ \rangle
 
-.. math::
+   This indicates a list of four elements,
+   with the current position being to the right of the bar at element 12.
+   Given this configuration, calling ``insert`` with value 10
+   will change the list to be:
 
-   \langle 20,\ 23\ |\ 12,\ 15\rangle
+   .. math::
 
-This indicates a list of four elements,
-with the current position being to the right of the bar at element 12.
-Given this configuration, calling ``insert`` with value 10
-will change the list to be:
+      \langle\ 20,\ 23\ |\ 10,\ 12,\ 15\ \rangle
 
-.. math::
+   Here is another example, showing the current position set to allow
+   insertion at the end of the list.
 
-   \langle 20,\ 23\ |\ 10,\ 12,\ 15\rangle
+   .. math::
+
+      \langle\ 20,\ 23,\ 10,\ 12,\ 15\ |\ \rangle
+
+   Here is the result of inserting 17.
+
+   .. math::
+
+      \langle\ 20,\ 23,\ 10,\ 12,\ 15\ |\ 17\ \rangle
 
 The ``List`` member functions allow you to build a list with elements
 in any desired order, and to access any desired position in the list.

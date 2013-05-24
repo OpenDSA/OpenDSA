@@ -15,16 +15,13 @@ Array-Based List Implementation [Text]
 
 Here is an implementation for the array-based list, named ``AList``.
 ``AList`` inherits from interface ``List``
-(from Module :numref:`<ListADT>`)
+(see Module :numref:`<ListADT>`)
 and so must implement all of the member functions of ``List``.
 
 .. codeinclude:: Lists/AList.pde
    :tag: AList
 
-.. inlineav:: AlistCON3 ss
-   :output: show   
-
-The private portion of class ``AList``contains the data members for
+The private portion of class ``AList`` contains the data members for
 the array-based list.
 These include ``listArray``, the array which holds the list elements.
 Because ``listArray`` must be allocated at some fixed size,

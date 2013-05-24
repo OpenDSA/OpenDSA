@@ -2,7 +2,7 @@
   background-color: #eed;
   margin: 0 auto;
   border: 0;
-  width: 100%;
+  width: 850px;
 }
 .jsavcontrols {
   margin-top: -35px;
@@ -12,6 +12,7 @@
 .jsavoutput.jsavline{
   margin-top: -5px;
   height: 55px;
+  width: 800px;
 }
 
 .ssAV {

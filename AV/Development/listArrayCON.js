@@ -6,8 +6,6 @@ var arrValues = [13,12,20,8,3,26,71,25,"","","",""];
 var itemsSize = 8;
 //array "It" in AlistCON2 for holding the copied element
 var arrItValues = [""];
-//array values in AlistCON3
-var arrPositions = [" ",5, 7, 3, 9," "];
 
 //calculate the left margin for the JSAV array object in AlistCON1 and AlistCON2
 var canvasWidth = $('.jsavcanvas').width();
@@ -34,7 +32,7 @@ var bgColor = function(array){
 	}
 };
 
-//Array-Based list inserstion
+//Array-Based list insertion
 (function ($) {
 
 	var jsav = new JSAV("AlistCON1");
@@ -151,33 +149,6 @@ var bgColor = function(array){
 	arrIt.highlight([0]);
 	jsav.umsg(" return the deleted element");
 	//step 5
-	jsav.step();
-	jsav.recorded();
-
-}(jQuery));
-
-//Possible positions for Array-Based list
-(function ($) {
-	var jsav = new JSAV("AlistCON3");
-    var arr = jsav.ds.array(arrPositions, {indexed: false, layout: "array"});
-	arr.css({top: 10});
-
-	var i;
-	var arrowArray = [];
-	for(i = 0; i < 5; i++)
-	{
-		arrowArray[i] = jsav.g.line(leftMargin3 + 2 + 65 * i, 0, leftMargin3 + 2 + 65 * i, 25,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
-	}
-	
-	jsav.umsg("A list with 4 elements");
-	jsav.displayInit();
-
-	for(i = 0; i < 5; i++)
-	{
-		arrowArray[i].show();
-	}
-
-	jsav.umsg("Five possible positions for \"current\"");
 	jsav.step();
 	jsav.recorded();
 
