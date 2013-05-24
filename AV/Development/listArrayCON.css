@@ -1,14 +1,15 @@
 #AlistCON1 {
   height: 200px;
 }
+
 #AlistCON2 {
   height: 260px;
 }
-.ssAV .jsavline{
-	height: 30px;
-	font-size: 1.1em;
 
+.ssAV .jsavline{
+  height: 30px;
 }
+
 .jsavcanvas{
   height:50px;
 }

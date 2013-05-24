@@ -26,3 +26,7 @@
 .jsavhighlight {
   color: black;
 }
+
+code {
+  font-size: 0.9em;
+}

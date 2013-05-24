@@ -1,11 +1,13 @@
 /* *** ODSATag: AList *** */
 // Array-based list implementation
+/* *** ODSATag: AListVars *** */
 class AList implements List {
   private static final int defaultSize = 10; // Default size
   private int maxSize;                    // Maximum size of list
   private int listSize;                   // Current # of list items
   private int curr;                       // Position of current element
   private Object listArray[];             // Array holding list elements
+/* *** ODSAendTag: AListVars *** */
 
   // Constructors
   // Create a new list object with maximum size "size"

@@ -9,17 +9,7 @@
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "chapters": {
-    "Preface": {
-      "Intro": {
-        "long_name": "How to Use this System",
-        "exercises": {}
-      }
-    },
     "Linear Structures": {
-      "Development/ListIntro": {
-        "long_name": "Chapter Introduction: Linear Structures",
-        "exercises": {}
-      },
       "Development/ListADT": {
         "long_name": "List ADT",
         "exercises": {}
@@ -44,90 +34,6 @@
             "required": true,
             "points": 0.1,
             "threshold": 1.0
-          }
-        }
-      },
-      "Development/ListLinked": {
-        "long_name": "Linked Lists",
-        "exercises": {
-          "listLinkedCON1": {
-            "long_name": "Array List Slideshow 1",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "listLinkedCON2": {
-            "long_name": "Array List Slideshow 2",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          }
-        }
-      },
-      "Development/ListAnalysis": {
-        "long_name": "Comparison of List Implementations",
-        "exercises": {}
-      },
-      "Development/Freelist": {
-        "long_name": "Freelists",
-        "exercises": {}
-      },
-      "Development/ListDouble": {
-        "long_name": "Doubly Linked Lists",
-        "exercises": {}
-      },
-      "Development/ListElement": {
-        "long_name": "List Element Implementations",
-        "exercises": {}
-      },
-      "Development/Stack": {
-        "long_name": "Stacks",
-        "exercises": {}
-      },
-      "Development/StackRecur": {
-        "long_name": "Implementing Recursion",
-        "exercises": {}
-      },
-      "Development/Queue": {
-        "long_name": "Queues",
-        "exercises": {}
-      }
-    },
-    "Other Stuff": {
-      "Development/Recursion": {
-        "long_name": "Recursion",
-        "exercises": {}
-      },
-      "Development/BinaryTree": {
-        "long_name": "Binary Trees",
-        "exercises": {}
-      },
-      "Development/BinaryTreeTraversal": {
-        "long_name": "Binary Tree Traversal",
-        "exercises": {
-          "binarytree-inorder": {
-            "long_name": "Binary Tree Inorder Traversal",
-            "required": true,
-            "points": 1,
-            "threshold": 0.90
-          },
-          "binarytree-levelorder": {
-            "long_name": "Binary Tree Level Order Traversal",
-            "required": true,
-            "points": 1,
-            "threshold": 0.90
-          },
-          "binarytree-preorder": {
-            "long_name": "Binary Tree Preorder Traversal",
-            "required": true,
-            "points": 1,
-            "threshold": 0.90
-          },
-          "binarytree-postorder": {
-            "long_name": "Binary Tree Postorder Traversal",
-            "required": true,
-            "points": 1,
-            "threshold": 0.90
           }
         }
       }
