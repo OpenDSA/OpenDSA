@@ -1,9 +1,9 @@
 "use strict";
 
 //array values for AlistCON1, AlistCON2
-var arrValues = [13,12,20,8,3,26,71,25,"","","",""];
+var arrValues = [13,12,20,8,3,"",""];
 //elements size of array in AlistCON1,AlistCON2
-var itemsSize = 8;
+var itemsSize = 5;
 //array "It" in AlistCON2 for holding the copied element
 var arrItValues = [""];
 
@@ -32,6 +32,11 @@ var bgColor = function(array){
 (function ($) {
 
 	var jsav = new JSAV("AlistCON1");
+	var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/AList.pde",
+                        startAfter: "/* *** ODSATag: arrayList *** */",
+                        endBefore: "/* *** ODSAendTag: arrayList *** */"});
+
+	leftMargin = 5;
 	//vertical arrow in step 1
 	var arrow1_x = leftMargin + 22.5;
 	var arrow1 = jsav.g.line(arrow1_x, -10, arrow1_x, 20,{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
@@ -47,6 +52,7 @@ var bgColor = function(array){
 	//sets the background of empty elements to gray
 	bgColor(arr);
 	
+	pseudo.setCurrentLine(0);
 	jsav.umsg("A list containing eight elements before inserting an element with value 23");
 	jsav.displayInit();	
 
@@ -66,6 +72,9 @@ var bgColor = function(array){
 	arrow1.hide();
 	arrow2.show();
 	label.hide();
+	
+	pseudo.setCurrentLine(7);
+	pseudo.setCurrentLine(6);
 	jsav.umsg("Shift all existing elements one position to the right to make room.");
 	//step 2
 	jsav.step();
@@ -73,8 +82,13 @@ var bgColor = function(array){
 	arr.value(0,23);
 	arr.highlight([0]);
 	arrow2.hide();
+	pseudo.setCurrentLine(8);
 	jsav.umsg(" Insert 23 in array position 0.  ");
 	//step 3
+	jsav.step();
+	pseudo.setCurrentLine(9);
+	jsav.umsg(" Increase list size by 1");
+	//step 4
 	jsav.step();
 	jsav.recorded();
 
