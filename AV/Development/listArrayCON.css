@@ -20,13 +20,27 @@
   width: 560px;
 }
 #AlistCON2 {
-  height: 260px;
+  height: 400px;
 }
 
 #AlistCON2 .jsavcanvas{
   width: 850px;
 }
 
+#AlistCON2 .jsavnode{
+  border: 1px solid;
+  background-color: #eed;
+  line-height: 35px;
+  font-size: 12px;
+  min-width: 35px;
+  min-height: 35px;
+}
+
+#AlistCON2 .jsavcode{
+  margin-left: 0px;
+  margin-left: 290px;
+  width: 560px;
+}
 .ssAV .jsavline{
 	height: 30px;
 }
