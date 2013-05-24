@@ -196,12 +196,12 @@ type.
 While making it more flexible, even generic types still
 are limited in their ability to handle different data types stored on
 the list.
-In particular, they only work when the description for the object
-being searched for (``k`` in the function) is of the same type as the
-objects themselves.
+In particular, for the ``find`` function generic types would only work
+when the description for the object being searched for (``k`` in the
+function) is of the same type as the objects themselves.
 They also have to be comparable when using the ``==`` operator.
 A more realistic situation is that we are searching for a record that
-contains a key field who's value matches ``k``.
+contains a key field whose value matches ``k``.
 Similar functions to find and return a composite element based on a
 key value can be created using the list implementation, but to do so
 requires some agreement between the list ADT and the ``find``

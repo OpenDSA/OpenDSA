@@ -12,10 +12,6 @@ var canvasWidth = $('.jsavcanvas').width();
 var arrWidth = arrValues.length * 45;
 var leftMargin = (canvasWidth - arrWidth) / 2;
 
-//calculate the left margin for the JSAV array object in AlistCON3
-var arrWidth3 = arrPositions.length * 45;
-var leftMargin3 = (canvasWidth - arrWidth3) / 2;
-
 //sets the backgroud of the array elements according to their values
 var bgColor = function(array){
 	var i;
