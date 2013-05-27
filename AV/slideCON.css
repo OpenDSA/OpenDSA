@@ -4,6 +4,9 @@
   border: 0;
   width: 850px;
 }
+ul li {
+  background-image: none;
+}
 .jsavcontrols {
   margin-top: -35px;
   margin-left: 35px; /* Center on screen, despite setting button */
@@ -28,5 +31,5 @@
 }
 
 .ssAV code {
-  font-size: 0.9em;
+  font-size: 15px;
 }

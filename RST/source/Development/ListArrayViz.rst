@@ -8,10 +8,10 @@
    :prerequisites:
    :topic: Lists
    
-.. odsalink:: AV/Development/listArrayCON.css
+.. odsalink:: AV/Development/listArrayTestCON.css
 
-Array-Based List Implementation
-===============================
+Array-Based List Implementation (Visual)
+========================================
 
 Here is an implementation for the array-based list, named ``AList``.
 ``AList`` inherits from interface ``List``
@@ -21,29 +21,8 @@ and so must implement all of the member functions of ``List``.
 .. codeinclude:: Lists/AList.pde
    :tag: AList
 
-The private portion of class ``AList`` contains the data members for
-the array-based list.
-These include ``listArray``, the array which holds the list elements.
-Because ``listArray`` must be allocated at some fixed size,
-the size of the array must be known when the list object is created.
-Note that an optional parameter is declared for the ``AList``
-constructor.
-With this parameter, the user can indicate the maximum
-number of elements permitted in the list.
-If no parameter is given, then it takes the value
-``defaultSize``, which is assumed to be a suitably defined
-constant value.
-
-Because each list can have a differently sized array, each list must
-remember its maximum permitted size.
-Data member ``maxSize`` serves this purpose.
-At any given time the list actually holds some number
-of elements that can be less than the maximum allowed by the array.
-This value is stored in ``listSize``.
-Data member ``curr`` stores the current position.
-Because ``listArray``, ``maxSize``, ``listSize``, and 
-``curr`` are all declared to be ``private``, they may only
-be accessed by methods of Class ``AList``.
+.. inlineav:: AlistTestCON1 ss
+   :output: show
 
 Class ``AList`` stores the list elements in the first
 ``listSize`` contiguous array positions.
@@ -72,16 +51,11 @@ tail to make room, as illustrated by the following slideshow.
 .. inlineav:: AlistCON1 ss
    :output: show
 
-This process takes :math:`\Theta(n)` time if there are :math:`n`
-elements already in the list.
-If we wish to insert at position :math:`i` within a list of :math:`n`
-elements, then :math:`n - i` elements must shift toward the tail.
-
 Removing an element from the head of the list is
 similar in that all remaining elements  must shift toward
 the head by one position to fill in the gap.
 To remove the element at position :math:`i`, :math:`n - i - 1`
-elements must shift toward the head, as shown in the following slideshow.
+elements must shift toward the head.
 In the average case, insertion or removal requires moving half
 of the elements, which is :math:`\Theta(n)`.
 
@@ -99,8 +73,7 @@ free-store operation ``new``.
 As discussed further in Module :numref:`<Freelist>`, system free-store
 operations can be expensive.
 
-Now try for yourself to see if you understand how Array-Based
-Insertion and Deletion work.
+Now try for yourself to see if you understand how Array-Based Insertion and Deletion work.
    
 .. avembed:: Exercises/Development/listArrayInsertion.html ka
   
@@ -108,10 +81,9 @@ Insertion and Deletion work.
 
    Add a battery of summary questions.
 
-.. odsascript:: AV/Development/listArrayCON.js
+.. odsascript:: AV/Development/listArrayTestCON.js
 
 .. TODO::
-
    :type: Exercise
 
    Need a battery of summary questions.

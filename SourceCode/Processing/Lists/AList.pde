@@ -22,57 +22,46 @@ class AList implements List {
   public void clear()                     // Reinitialize the list
     { listSize = curr = 0; }              // Simply reinitialize values
 
-/* *** ODSATag: arrayList *** */
+/* *** ODSATag: AListInsert *** */
   // Insert "it" at current position
   void insert(Object it) {
-    if (listSize >= maxSize) {
-      println("List capacity exceeded, nothing inserted");
-      return;
-    }
-    for (int i=listSize; i>curr; i--)     // Shift elements up
-      listArray[i] = listArray[i-1];      //   to make room
+    if (listSize >= maxSize) return;
+    for (int i=listSize; i>curr; i--)  // Shift elements up
+      listArray[i] = listArray[i-1];   //   to make room
     listArray[curr] = it;
-    listSize++;                           // Increment list size
+    listSize++;                        // Increment list size
   }
-/* *** ODSAendTag: arrayList *** */
+/* *** ODSAendTag: AListInsert *** */
 
   // Append "it" to list
   void append(Object it) {
-    if (listSize >= maxSize) {
-      println("List capacity exceeded, nothing inserted");
-      return;
-    }
+    if (listSize >= maxSize) return;
     listArray[listSize++] = it;
   }
 
+/* *** ODSATag: AListRemove *** */
   // Remove and return the current element
   Object remove() {
-    if ((curr<0) || (curr>=listSize))     // No current element
+    if ((curr<0) || (curr>=listSize))  // No current element
       return null;
-    Object it = listArray[curr];          // Copy the element
-    for(int i=curr; i<listSize-1; i++)    // Shift them down
+    Object it = listArray[curr];       // Copy the element
+    for(int i=curr; i<listSize-1; i++) // Shift them down
       listArray[i] = listArray[i+1];
-    listSize--;                           // Decrement size
+    listSize--;                        // Decrement size
     return it;
   }
+/* *** ODSAendTag: AListRemove *** */
 
-  void moveToStart() { curr = 0; }        // Set to front
-  void moveToEnd() { curr = listSize; }   // Set at end
-  void prev() { if (curr != 0) curr--; }  // Back up
-  void next() { if (curr < listSize) curr++; }
-
-  // Return list size
-  int length() { return listSize; }
-
-  // Return current position
-  int currPos() { return curr; }
+  void moveToStart() { curr = 0; }       // Set to front
+  void moveToEnd() { curr = listSize; }  // Set at end
+  void prev() { if (curr != 0) curr--; } // Move left
+  void next() { if (curr < listSize) curr++; } // Move right
+  int length() { return listSize; }      // Return list size
+  int currPos() { return curr; }         // Return current position
   
   // Set current list position to "pos"
   void moveToPos(int pos) {
-    if ((pos < 0) || (pos > listSize)) {
-      println("Pos out of range, current position unchanged");
-      return;
-    }
+    if ((pos < 0) || (pos > listSize)) return;
     curr = pos;
   }
 

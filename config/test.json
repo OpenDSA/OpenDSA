@@ -16,26 +16,11 @@
       },
       "Development/ListArray": {
         "long_name": "Array-based Lists",
-        "exercises": {
-          "AlistCON1": {
-            "long_name": "Array List Slideshow 1",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "AlistCON2": {
-            "long_name": "Array List Slideshow 2",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "AlistCON3": {
-            "long_name": "Array List Slideshow 3",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          }
-        }
+        "exercises": { }
+      },
+      "Development/ListArrayViz": {
+        "long_name": "Visualization version: Array-based Lists",
+        "exercises": { }
       }
     }
   }
