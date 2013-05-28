@@ -122,13 +122,13 @@ function bgColor(array) {
   arrIt.hide();
   labelIt.hide();
 
-  //move array objects down
+  //move array objects down -- THIS SHOULD GO INTO CSS
   arr.css({top: 20});
   arrIt.css({top: 90});	
 	
   //sets the background of empty elements to gray
   bgColor(arr);
-  jsav.umsg("A list containing five elements before deleting an element at the current position");
+  jsav.umsg("Here is a list containing five elements. We will remove the value 12 in position 1 of the array, which is the current position");
   arr.highlight([1]);
   label.show();
   arrow1.show();

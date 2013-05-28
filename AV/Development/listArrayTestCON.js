@@ -41,7 +41,7 @@ function bgColor(array) {
   var arrow2 = jsav.g.line(leftMargin + 50, 5, leftMargin + 150, 5,
         {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
   arrow2.hide();
-  var arrow3 = jsav.g.line(arrow1_x+90, -10, arrow1_x+90, 20,
+  var arrow3 = jsav.g.line(arrow1_x+60, -10, arrow1_x+60, 20,
 			   {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
   arrow3.hide();
   // Create an array object under control of JSAV library
@@ -102,8 +102,8 @@ function bgColor(array) {
   pseudo.highlight(4);
   jsav.step();
 
-  jsav.umsg("If we wish to insert at position <i>i</i> within a list of <i>n</i> elements, then <i>n-i</i> elements must shift toward the tail. If we want to insert to position 3 in this example, then 6-3 elements must shift.");
-  arr.unhighlight([1, 2]);
+  jsav.umsg("If we wish to insert at position <i>i</i> within a list of <i>n</i> elements, then <i>n-i</i> elements must shift toward the tail. If we want to insert to position 2 in this example, then 6 - 2 = 4 elements must shift.");
+  arr.unhighlight([1]);
   arrow3.show();
   jsav.recorded();
 }(jQuery));
@@ -138,18 +138,23 @@ function bgColor(array) {
   arrIt.hide();
   labelIt.hide();
 
-  //move array objects down
+  //move array objects down -- THIS SHOULD GO INTO CSS
   arr.css({top: 20});
   arrIt.css({top: 90});	
-	
-  //sets the background of empty elements to gray
   bgColor(arr);
-  jsav.umsg("A list containing five elements before deleting an element at the current position");
+
+  jsav.umsg("Removing an element from the head of the list is similar to insert in that all remaining elements must shift toward the head by one position to fill in the gap");
+  jsav.displayInit();
+
+  jsav.umsg("If we want to remove the element at position <i>i</i>, then <i>n - i</i> - 1 elements must shift toward the head");
+  jsav.step();
+
+  jsav.umsg("Here is a list containing five elements. We will remove the value 12 in position 1 of the array, which is the current position");
   arr.highlight([1]);
   label.show();
   arrow1.show();
   pseudo.highlight(1);
-  jsav.displayInit();
+  jsav.step();
 
   arrIt.show();
   labelIt.show();
@@ -202,23 +207,23 @@ function bgColor(array) {
                         endBefore: "/* *** ODSAendTag: AListVars *** */"});
   jsav.umsg("The private portion of class <code>AList</code> contains the data members for the array-based list.");
   jsav.displayInit();
-  pseudo.setCurrentLine(5);
+  pseudo.highlight(5);
   jsav.umsg("These include <code>listArray</code>, the array which holds the list elements. Because <code>listArray</code> must be allocated at some fixed size, the size of the array must be known when the list object is created.");
   jsav.step(); 
   pseudo.unhighlight(5);
-  pseudo.setCurrentLine(1);
+  pseudo.highlight(1);
   jsav.umsg("An optional parameter is declared for the <code>AList</code> constructor. With this parameter, the user can indicate the maximum number of elements permitted in the list. If no parameter is given, then it takes the value <code>defaultSize</code>, which is assumed to be a suitably defined constant value.");
   jsav.step();
   pseudo.unhighlight(1);
-  pseudo.setCurrentLine(2);
+  pseudo.highlight(2);
   jsav.umsg("Because each list can have a differently sized array, each list must remember its maximum permitted size. Data member <code>maxSize</code> serves this purpose.");
   jsav.step();
   pseudo.unhighlight(2);
-  pseudo.setCurrentLine(3);
+  pseudo.highlight(3);
   jsav.umsg("At any given time the list actually holds some number of elements that can be less than the maximum allowed by the array. This value is stored in <code>listSize</code>.");
   jsav.step();
   pseudo.unhighlight(3);
-  pseudo.setCurrentLine(4);
+  pseudo.highlight(4);
   jsav.umsg("Data member <code>curr</code> stores the current position.");
   jsav.step();
   pseudo.unhighlight(4);

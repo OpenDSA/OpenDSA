@@ -24,56 +24,69 @@ and so must implement all of the member functions of ``List``.
 .. inlineav:: AlistTestCON1 ss
    :output: show
 
-Class ``AList`` stores the list elements in the first
-``listSize`` contiguous array positions.
-Array positions correspond to list positions.
-In other words, the element at position :math:`i` in the list is
-stored at array cell :math:`i`.
-The head of the list is always at position 0.
-This makes random access to any element in the list quite easy.
-Given some position in the list, the value of the element
-in that position can be accessed directly.
-Thus, access to any element using the
-``moveToPos`` method followed by the ``getValue`` method takes
-:math:`\Theta(1)` time.
+.. TODO::
+   :type: Slideshow
 
-Because the array-based list implementation is defined to store list
-elements in contiguous cells of the array, the
-``insert``, ``append``, and ``remove``
-methods must maintain this property.
+   S1 Class ``AList`` stores the list elements in the first
+   ``listSize`` contiguous array positions. (Highlight the elements
+   and show the value for listsize.)
 
-Inserting or removing elements at the tail of the list
-is easy, so the ``append`` operation takes :math:`\Theta(1)` time.
-But if we wish to insert an element at the head of the list,
-all elements currently in the list must shift one position toward the
-tail to make room, as illustrated by the following slideshow.
+   S2 Array positions correspond to list positions.
+   In other words, the element at position :math:`i` in the list is
+   stored at array cell :math:`i`. (Highlight an element and its array
+   index.)
+
+   S3 The head of the list is always at position 0. (Highlight)
+
+   S4+ This makes random access to any element in the list quite easy.
+   Given some position in the list, the value of the element
+   in that position can be accessed directly. (Illustrate)
+
+   S5 Thus, access to any element using the
+   ``moveToPos`` method followed by the ``getValue`` method takes
+   :math:`\Theta(1)` time. (Text for last slide)
+
+.. TODO::
+   :type: Slideshow
+
+   Inserting or removing elements at the tail of the list
+   is easy, so the ``append`` operation takes :math:`\Theta(1)` time.
+   (Add a couple of slides to show append, with pseudocode.)
+
+
+Here a visualization for how the ``insert`` method works.
 
 .. inlineav:: AlistCON1 ss
    :output: show
 
-Removing an element from the head of the list is
-similar in that all remaining elements  must shift toward
-the head by one position to fill in the gap.
-To remove the element at position :math:`i`, :math:`n - i - 1`
-elements must shift toward the head.
-In the average case, insertion or removal requires moving half
-of the elements, which is :math:`\Theta(n)`.
+Here a visualization for how the ``remove`` method works.
 
 .. inlineav:: AlistCON2 ss
    :output: show
 
-Most of the other member functions for Class ``AList`` simply
-access the current list element or move the current position.
-Such operations all require :math:`\Theta(1)` time.
-Aside from ``insert`` and ``remove``,
-the only other operations that might require more than
-constant time are the constructor, the destructor, and ``clear``.
-These three member functions each make use of the system
-free-store operation ``new``.
-As discussed further in Module :numref:`<Freelist>`, system free-store
-operations can be expensive.
+In the average case, insertion or removal each requires moving half
+of the elements, which is :math:`\Theta(n)`.
 
-Now try for yourself to see if you understand how Array-Based Insertion and Deletion work.
+.. TODO::
+   :type: Slideshow
+
+   S1 Most of the other member functions for Class ``AList`` simply
+   access the current list element or move the current position.
+
+   S2 The following operations all require :math:`\Theta(1)` time.
+
+   S3+ (Show each one of these in turn, with a slide to illustrate.)
+
+Because the array-based list implementation is defined to store list
+elements in contiguous cells of the array, the ``insert``, ``append``,
+and ``remove`` methods must maintain this property.
+
+Aside from ``insert`` and ``remove``, the only other operations that
+might require more than constant time are the constructor and
+``clear``.
+
+Now try for yourself to see if you understand how Array-Based
+Insertion and Deletion work.
    
 .. avembed:: Exercises/Development/listArrayInsertion.html ka
   
