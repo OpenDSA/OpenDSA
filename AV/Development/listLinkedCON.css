@@ -32,4 +32,16 @@
 .jsavcanvas{
 	height: 200px;
 }
+#listLinkedCON3 .jsavnode{
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  line-height: 30px;
+  padding-right: 32px;
+}
+#listLinkedCON3 .jsavpointerarea{
+  width: 30px;
+}
+
 

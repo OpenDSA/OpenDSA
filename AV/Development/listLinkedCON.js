@@ -255,3 +255,50 @@ var nodeGap = 25;
   av.step();
   av.recorded();
 }(jQuery));
+
+// Initial state of a linked list when using a header node
+(function ($) {
+  var jsav = new JSAV("listLinkedCON3", {"animationMode": "none"});
+  var l = jsav.ds.list({"nodegap": 30, "top": 100, left: 300});
+
+  //Left margin of head
+  var headLeftMargin = 280;
+  //Top margin of head
+  var headTopMargin = 50;
+  //Label "head"
+  var headLabel = jsav.label("head",
+	  {before: l, left: headLeftMargin, top: headTopMargin, "font-size":"20px"});
+  //Head arrow
+  var headArrow = jsav.g.line(headLeftMargin + 12, headTopMargin + 25, headLeftMargin + 12 + 20, headTopMargin + 45,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+
+  //Left margin of curr
+  var currLeftMargin = 373;
+  //Top margin of curr
+  var currTopMargin = 50;
+  //Label "curr" and its arrow
+  var currLabel = jsav.label("curr",
+	  {before: l, left: currLeftMargin, top: currTopMargin, "font-size":"20px"});
+  //Curr arrow
+  var currArrow = jsav.g.line(currLeftMargin + 12, currTopMargin + 25, currLeftMargin + 12 + 20, currTopMargin + 45,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+
+  //Left margin of tail
+  var tailLeftMargin = 430;
+  //Top margin of tail
+  var tailTopMargin = 50;
+  //label "tail" and its arrow
+  var tailLabel = jsav.label("tail",
+	  {before: l, left: tailLeftMargin, top: tailTopMargin, "font-size":"20px"});
+  //Tail arrow
+  var tailArrow = jsav.g.line(tailLeftMargin + 8, tailTopMargin + 25, tailLeftMargin + 8 - 20, tailTopMargin + 45,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+
+  //Diagonal slash
+  var slash = jsav.g.line(427, 131, 457, 100,
+	  {"opacity": 100,"stroke-width": 1});
+
+  l.addFirst(15)
+   .addFirst("");
+  l.layout();
+}(jQuery));

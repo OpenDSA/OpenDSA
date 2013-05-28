@@ -34,7 +34,7 @@ function bgColor(array) {
   arrow1.hide();
   //label in step 1
   var label = jsav.label("Insert 23",
-			 {before: arr, left: arrow1_x - 16, top: -20}).hide();
+			  {before: arr, left: arrow1_x - 16, top: -20}).hide();
   //horizontal arrow in step 2
   var arrow2 = jsav.g.line(leftMargin + 50, 5, leftMargin + 150, 5,
         {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
@@ -106,25 +106,27 @@ function bgColor(array) {
   var arrow1_x = 25 + nodeWidth;
 
   //vertical arrow pointing to current position
-  var arrow1 = jsav.g.line(arrow1_x, 10, arrow1_x, 35,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+  var arrow1 = jsav.g.line(arrow1_x, 10, arrow1_x, 35,
+	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
   //horizontal arrow in step 4
-  var arrow2 = jsav.g.line(arrow1_x +100, 20,arrow1_x+20, 20, {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+  var arrow2 = jsav.g.line(arrow1_x +100, 20,arrow1_x+20, 20, 
+	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
   //label for current position in step 1
-  var label = jsav.label("curr", {before: arr, left: arrow1_x - 10, top: -10});	
+  var label = jsav.label("curr", 
+	  {before: arr, left: arrow1_x - 10, top: -10});	
   label.hide();
 
   // Create an array object under control of JSAV library
-  var arr = jsav.ds.array(arrValues, {indexed: true, layout: "array", left:leftMargin});
+  var arr = jsav.ds.array(arrValues, 
+	  {indexed: true, layout: "array", left:leftMargin, top: 20});
   //array "it" for holding the copied element
   var arrItValues = [""];
-  var labelIt =jsav.label("it", {before: arrIt, left: 90, top: 110});
-  var arrIt = jsav.ds.array(arrItValues, {indexed: false, layout: "array", left:leftMargin + (nodeWidth + 2) * 3});
+  var labelIt = jsav.label("it",
+	  {before: arrIt, left: 90, top: 110});
+  var arrIt = jsav.ds.array(arrItValues,
+	  {indexed: false, layout: "array", left:leftMargin + (nodeWidth + 2) * 3 , top: 90});
   arrIt.hide();
-  labelIt.hide();
-
-  //move array objects down -- THIS SHOULD GO INTO CSS
-  arr.css({top: 20});
-  arrIt.css({top: 90});	
+  labelIt.hide();	
 	
   //sets the background of empty elements to gray
   bgColor(arr);

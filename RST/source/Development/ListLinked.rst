@@ -173,16 +173,9 @@ lists created.
 Figure :num:`Figure #InitList` shows the state of an initialized or
 empty list when using a header node.
 
-.. _InitList:
-
-.. odsafig:: Images/InitList.png
-   :width: 500
+.. inlineav:: listLinkedCON3 dgm
+   :target: TopSort
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Initial state of a linked list when using a header node
-
-   Initial state of a linked list when using a header node.
 
 Here is the implementation for the linked list class,
 named ``LList``.
