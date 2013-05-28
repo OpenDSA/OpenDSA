@@ -2,11 +2,11 @@
 // Array-based list implementation
 /* *** ODSATag: AListVars *** */
 class AList implements List {
+  private Object listArray[];             // Array holding list elements
   private static final int defaultSize = 10; // Default size
   private int maxSize;                    // Maximum size of list
   private int listSize;                   // Current # of list items
   private int curr;                       // Position of current element
-  private Object listArray[];             // Array holding list elements
 /* *** ODSAendTag: AListVars *** */
 
   // Constructors
@@ -33,11 +33,13 @@ class AList implements List {
   }
 /* *** ODSAendTag: AListInsert *** */
 
+/* *** ODSATag: AListAppend *** */
   // Append "it" to list
   void append(Object it) {
     if (listSize >= maxSize) return;
     listArray[listSize++] = it;
   }
+/* *** ODSAendTag: AListAppend *** */
 
 /* *** ODSATag: AListRemove *** */
   // Remove and return the current element

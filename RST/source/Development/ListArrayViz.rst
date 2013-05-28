@@ -21,8 +21,10 @@ and so must implement all of the member functions of ``List``.
 .. codeinclude:: Lists/AList.pde
    :tag: AList
 
-.. inlineav:: AlistTestCON1 ss
+.. inlineav:: AlistVarsCON ss
    :output: show
+
+Next slideshow.
 
 .. TODO::
    :type: Slideshow
@@ -46,44 +48,34 @@ and so must implement all of the member functions of ``List``.
    ``moveToPos`` method followed by the ``getValue`` method takes
    :math:`\Theta(1)` time. (Text for last slide)
 
-.. TODO::
-   :type: Slideshow
-
-   Inserting or removing elements at the tail of the list
-   is easy, so the ``append`` operation takes :math:`\Theta(1)` time.
-   (Add a couple of slides to show append, with pseudocode.)
-
+Because the array-based list implementation is defined to store list
+elements in contiguous cells of the array, the ``insert``, ``append``,
+and ``remove`` methods must maintain this property.
 
 Here a visualization for how the ``insert`` method works.
 
-.. inlineav:: AlistCON1 ss
+.. inlineav:: AlistInsertCON ss
+   :output: show
+
+Visualization for Append
+
+.. inlineav:: AlistAppendCON ss
    :output: show
 
 Here a visualization for how the ``remove`` method works.
 
-.. inlineav:: AlistCON2 ss
+.. inlineav:: AlistRemoveCON ss
    :output: show
 
 In the average case, insertion or removal each requires moving half
 of the elements, which is :math:`\Theta(n)`.
 
-.. TODO::
-   :type: Slideshow
-
-   S1 Most of the other member functions for Class ``AList`` simply
-   access the current list element or move the current position.
-
-   S2 The following operations all require :math:`\Theta(1)` time.
-
-   S3+ (Show each one of these in turn, with a slide to illustrate.)
-
-Because the array-based list implementation is defined to store list
-elements in contiguous cells of the array, the ``insert``, ``append``,
-and ``remove`` methods must maintain this property.
-
 Aside from ``insert`` and ``remove``, the only other operations that
 might require more than constant time are the constructor and
 ``clear``.
+The other methods for Class ``AList`` simply
+access the current list element or move the current position.
+They all require :math:`\Theta(1)` time.
 
 Now try for yourself to see if you understand how Array-Based
 Insertion and Deletion work.
