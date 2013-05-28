@@ -244,6 +244,31 @@ NOTES
     role.
 
 
+.. _chap:
+
+chap/numchap
+-------------
+NAME
+    chap/numchap - adds a reference to the first (introduction) module
+    of a chapter. 
+
+SYNOPSIS::
+
+    :chap: {chapter_name}
+    :numchap: {chapter_name}
+
+DESCRIPTION
+    ``:chap|numchap: {chapter_name}``
+
+    A custom interpreted role. ``chap`` adds a reference to the first module of the chapter.
+    ``numchap`` adds a numbered reference to the first module of the chapter. 
+
+    ``{chapter_name}``
+  
+    The name of the chapter. It should be identical (case sensitive) to the one specified in the 
+    json configuration file.
+
+
 TODO
 ----
 NAME
