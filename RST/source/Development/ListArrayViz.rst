@@ -24,29 +24,10 @@ and so must implement all of the member functions of ``List``.
 .. inlineav:: AlistVarsCON ss
    :output: show
 
-Next slideshow.
+Next slideshow
 
-.. TODO::
-   :type: Slideshow
-
-   S1 Class ``AList`` stores the list elements in the first
-   ``listSize`` contiguous array positions. (Highlight the elements
-   and show the value for listsize.)
-
-   S2 Array positions correspond to list positions.
-   In other words, the element at position :math:`i` in the list is
-   stored at array cell :math:`i`. (Highlight an element and its array
-   index.)
-
-   S3 The head of the list is always at position 0. (Highlight)
-
-   S4+ This makes random access to any element in the list quite easy.
-   Given some position in the list, the value of the element
-   in that position can be accessed directly. (Illustrate)
-
-   S5 Thus, access to any element using the
-   ``moveToPos`` method followed by the ``getValue`` method takes
-   :math:`\Theta(1)` time. (Text for last slide)
+.. inlineav:: AlistIntroCON ss
+   :output: show
 
 Because the array-based list implementation is defined to store list
 elements in contiguous cells of the array, the ``insert``, ``append``,

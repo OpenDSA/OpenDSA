@@ -20,6 +20,35 @@ function bgColor(array) {
 
 //Array-Based list insertion
 (function ($) {
+  var jsav = new JSAV("AlistIntroCON");
+  var arr = jsav.ds.array(arrValues, {indexed: true, layout: "array"});
+  bgColor(arr);
+
+  jsav.umsg("Class <code>AList</code> stores the list elements in the first <code>listSize</code> contiguous array positions");
+  arr.highlight([0, 1, 2, 3, 4]);  
+  jsav.displayInit();
+
+  jsav.umsg("Array positions correspond to list positions. In other words, the element at position <i>i</i> in the list is stored at array cell <i>i</i>. Here, the element at position 3 in the list (and index 3 in the array) is highlighted.");
+  arr.unhighlight([0, 1, 2, 3, 4]);  
+  arr.highlight(3);
+  jsav.step();
+
+  jsav.umsg("The head of the list is always at position 0");
+  arr.unhighlight(3);
+  arr.highlight(0);
+  jsav.step();
+
+  jsav.umsg("Random access to any element in the list quite easy. Given some position in the list, the value of the element in that position can be accessed directly");
+  arr.unhighlight(0);
+  jsav.step();
+
+  jsav.umsg("Thus, access to any element using the <code>moveToPos</code> method followed by the <code>getValue<code> method takes &Theta;(1) time");
+  jsav.recorded();
+}(jQuery));
+
+
+//Array-Based list insertion
+(function ($) {
   var jsav = new JSAV("AlistInsertCON");
 
   //pseudocode
@@ -139,7 +168,7 @@ function bgColor(array) {
   //array "it" for holding the copied element
   var arrIt = jsav.ds.array([""], {indexed: false, layout: "array", left:leftMargin + (nodeWidth + 2) * 3});
   arrIt.hide();
-  var labelIt =jsav.label("it", {before: arrIt, left: 90, top: 110});
+  var labelIt = jsav.label("it", {before: arrIt, left: 85, top: 110});
   labelIt.hide();
 
   //move array objects down -- THIS SHOULD GO INTO CSS

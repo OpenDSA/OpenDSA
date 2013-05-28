@@ -121,8 +121,7 @@ function bgColor(array) {
 	  {indexed: true, layout: "array", left:leftMargin, top: 20});
   //array "it" for holding the copied element
   var arrItValues = [""];
-  var labelIt = jsav.label("it",
-	  {before: arrIt, left: 90, top: 110});
+  var labelIt = jsav.label("it", {before: arrIt, left: 85, top: 110});
   var arrIt = jsav.ds.array(arrItValues,
 	  {indexed: false, layout: "array", left:leftMargin + (nodeWidth + 2) * 3 , top: 90});
   arrIt.hide();
