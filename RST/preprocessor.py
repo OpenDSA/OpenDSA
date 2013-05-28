@@ -176,7 +176,6 @@ class modPreReq:
                if expr is not None:
                   if  ':type:' not in line:
                      print bcolors.FAIL + 'Error: in %s line %s... unknown Option %s for TODO directive'%(filename,cpt,expr.group()[1:]) + bcolors.ENDC
-                     sys.exit(0)
                if ':type:' in line:
                   type =  re.split('type:', line, re.IGNORECASE)[1]
                len_wthsp = len(re.match(r'\s*',line).group())
@@ -395,7 +394,6 @@ def updateTOC(args):
          start = True
     if directive==0:
        print bcolors.FAIL + 'Error: No .. sectnum:: or .. chapnum:: directive in index.rst. Please include the directive and try again.'+bcolors.ENDC
-       sys.exit(0)
 
 
     try:
