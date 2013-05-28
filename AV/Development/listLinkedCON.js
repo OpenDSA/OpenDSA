@@ -259,10 +259,10 @@ var nodeGap = 25;
 // Initial state of a linked list when using a header node
 (function ($) {
   var jsav = new JSAV("listLinkedCON3", {"animationMode": "none"});
-  var l = jsav.ds.list({"nodegap": 30, "top": 100, left: 300});
+  var l = jsav.ds.list({"nodegap": 30, "top": 100, left: 367});
 
   //Left margin of head
-  var headLeftMargin = 280;
+  var headLeftMargin = 347;
   //Top margin of head
   var headTopMargin = 50;
   //Label "head"
@@ -273,7 +273,7 @@ var nodeGap = 25;
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
   //Left margin of curr
-  var currLeftMargin = 373;
+  var currLeftMargin = 420;
   //Top margin of curr
   var currTopMargin = 50;
   //Label "curr" and its arrow
@@ -284,7 +284,7 @@ var nodeGap = 25;
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
   //Left margin of tail
-  var tailLeftMargin = 430;
+  var tailLeftMargin = 477;
   //Top margin of tail
   var tailTopMargin = 50;
   //label "tail" and its arrow
@@ -295,7 +295,7 @@ var nodeGap = 25;
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
   //Diagonal slash
-  var slash = jsav.g.line(427, 131, 457, 100,
+  var slash = jsav.g.line(474, 132, 484, 101,
 	  {"opacity": 100,"stroke-width": 1});
 
   l.addFirst(15)
