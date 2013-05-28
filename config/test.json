@@ -21,7 +21,11 @@
       "Development/ListArrayViz": {
         "long_name": "Visualization version: Array-based Lists",
         "exercises": { }
-      }
+      },
+	  "Development/ListLinked": {
+        "long_name": "Visualization version: Linked Lists",
+        "exercises": { }
+      }	  
     }
   }
 }
