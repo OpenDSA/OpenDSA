@@ -1,21 +1,35 @@
 #listLinkedCON1 {
-  height: 240px;
+  height: 290px;
+}
+#listLinkedCON1 .jsavcode{
+  border: 1px solid;
+  border-color: white;
+  margin-left: 338px;
+  width: 510px;
 }
 #listLinkedCON2 {
-  height: 240px;
+  height: 345px;
 }
+
+#listLinkedCON2 .jsavcode{
+  border: 1px solid;
+  border-color: white;
+  margin-left: 270px;
+  width: 600px;
+}
+
 .jsavhorizontallist.jsavautoresize .jsavnode {
   min-width: 30px;
+  max-width: 30px;
   min-height: 30px;
+  max-height: 30px;
   line-height: 30px;
   padding-right: 12px;
 }
 .jsavoutput.jsavline{
-  height: 20px;
+  height: 30px;
 }
 .jsavcanvas{
 	height: 200px;
 }
-.jsavlist {
-  height: 300px;
-}
+

@@ -18,7 +18,8 @@ class LList implements List {
     head = new Link(tail);        // Create header
     cnt = 0;
   }
-
+  
+/* *** ODSATag: LListInsert *** */
   // Insert "it" at current position
   void insert(Object it) {
     curr.setnext(new Link(curr.element(), curr.next()));
@@ -26,7 +27,8 @@ class LList implements List {
     if (tail == curr) tail = curr.next();  // New tail
     cnt++;
   }
-
+/* *** ODSAendTag: LListInsert *** */
+  
   // Append "it" to list
   void append(Object it) {
     tail.setnext(new Link(null));
@@ -35,6 +37,7 @@ class LList implements List {
     cnt++;
   }
 
+/* *** ODSATag: LListRemove *** */
   // Remove and return current element
   Object remove () {
     if (curr == tail) return null;          // Nothing to remove
@@ -44,6 +47,7 @@ class LList implements List {
     curr.setnext(curr.next().next());       // Point around unneeded link
     return it;                              // Return value
   }
+/* *** ODSAendTag: LListRemove *** */
 
   void moveToStart() { curr = head.next(); } // Set curr at list start
   void moveToEnd() { curr = tail; }     // Set curr at list end
