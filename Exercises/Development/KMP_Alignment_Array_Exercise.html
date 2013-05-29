@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<!--
+  Samuel A. Micka
+-->
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <title>Alignment Array Exercise</title>
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css"
+          media="screen" title="no title" charset="utf-8" /> 
+  </head>
+  <body>
+  <div id="container">
+    <div class="jsavcanvas"></div>
+    <p class="jsavoutput jsavline"></p>
+  </div>
+  <style>
+    .jsavarray .jsavindex {
+      min-width: 15px;
+      width: 15px;
+      font-size: 12px;
+    }
+    .jsavcanvas {
+      text-align: center;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js"></script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="http://algoviz.org/OpenDSA/ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script> 
+  <script src="../../AV/Development/edit.js"></script>
+  <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" /> 
+
+  <script>
+  /*#################################################################
+    These global constants are set to modify the strings easily.
+  #################################################################*/
+  //this determines the maximum length of the string
+  var string_max_length = 12;
+  //this represents the lower bound of randomly generated numbers desired in the ascii table
+  var char_lower_bound = 97;
+  //this represents the upper bound of randomly generated numbers desired in the ascii table
+  var char_upper_bound = 122;
+
+
+  /*#################################################################
+    Global variables used throughout the program
+  #################################################################*/
+  var started; //tells us if anything has been done
+  var alignment_table; //global variable for the alignment array
+  var str_arr; //global variable for the actual string
+  var answer_index;
+  var answer_value;
+
+  //returns a random number between lower_bound and upper_bound
+  function gen_random(lower_bound, upper_bound) {
+    return Math.floor(Math.random() * (upper_bound - lower_bound + 1) + lower_bound);
+  }
+  //converts the ascii_value parameter to character and returns it
+  function get_char(ascii_value) {
+    return String.fromCharCode(ascii_value);
+  }
+  //function that generates the first 5 characters of our substring
+  function generate_first_part_of_string(decision, seed) {
+    if(decision == 1) {
+      var second = get_char(gen_random(char_lower_bound, char_upper_bound));
+      return seed + second + seed + second + seed;
+    } else if(decision == 2) {
+      var second = get_char(gen_random(char_lower_bound,char_upper_bound));
+      return seed+seed+seed+second+second;
+    } else if(decision == 3) {
+      return seed+seed+seed+seed+get_char(gen_random(char_lower_bound,char_upper_bound));
+    } else if(decision == 4) {
+      return seed + get_char(gen_random(char_lower_bound,char_upper_bound)) + seed + seed + get_char(gen_random(char_lower_bound,char_upper_bound));
+    }
+  }
+  //generates last 1-3 characters of the substring
+  function generate_last_part_of_string(num, rep, first) {
+    if(rep){
+      return first + first.substring(0, num);
+    } else {
+      var tail = '';
+      for(var i = 0; i < num; i++){
+        tail += get_char(gen_random(char_lower_bound,char_upper_bound));
+      }
+      return first + tail;
+    }
+  }
+  //This function generates the master and substring needed for the exercise
+  function generate_strings(){
+      /*######################################
+        String generation
+      ######################################*/
+      //ascii values of lower case characters are char_lower_bound - char_upper_bound, so I'll choose a random number in that range
+      var rand_char = get_char(gen_random(char_lower_bound, char_upper_bound));
+      //now that rand_char holds the "seed" for our random string we will start with the substring
+      var decision_one = gen_random(1, 4);
+      //we first generate 5 random characters (the smallest the string can be)
+      var first_sub = generate_first_part_of_string(decision_one, rand_char);
+      /*
+      next we decide how many characters to add and if they will be repeats of the first part of the string or not.
+      We add anywhere form 1 - string_rough_size - 5 characters to the original 5 and then we decide if it will be repeated or not based on the number returned being even or odd.
+      */
+      var decision_two = gen_random(1, string_max_length-5);
+      var repeat;
+      if(decision_two % 2 == 0) {
+        repeat = true;
+      } else {
+        repeat = false;
+      }
+      var the_string = generate_last_part_of_string(decision_two, repeat, first_sub);
+
+      return the_string.split("");
+  }
+
+  //This function computes the alignment lookup table for the KMP algorithm
+  function compute_align_array(arr) {
+    var align = new Array();
+    align[0] = -1;
+    align[1] = 0;
+    var q = 0;
+    L = arr.length;
+
+    var answer_is_set = false;
+    for(var p = 2; p < L; p++) {
+      q = align[p-1];
+      while((q>=0) && (arr[q] != arr[p-1])) {
+        q = align[q];
+      }
+      align[p] = q+1;
+      if(!answer_is_set && q > 0){
+        answer_index = p;
+        answer_value = align[p];
+        answer_is_set = true;
+      }    
+    }
+    if(!answer_is_set){
+      answer_index = gen_random(2, arr.length-1);
+      answer_value = align[answer_index];
+    }
+    align[answer_index] = " ";
+    console.log("Answer index: "+answer_index+" Answer: "+answer_value);
+    return align;
+  }
+
+  function checkAnswer() {
+    var answer = $("#user_answer").val();
+    if(answer == answer_value) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //This function initializes the arrays, and handles the clicks on the specific indexes, see comments in method for more information
+  function initExercise(){
+    started = true;
+    //figure out how to reset the JSAV container if it is already set
+    if(kmp_exercise != null){
+        kmp_exercise.reset();
+    }
+    var kmp_exercise = new JSAV("jsav_area", {"animationMode": "none"});
+    var max = 0;
+    //handles the actual click on an index and highlights the specified index
+    var str = generate_strings();
+    str_arr = kmp_exercise.ds.array([' '], {indexed: true});
+    for(var i = 0; i < str.length; i++){
+      str_arr.value(i, str[i]);
+    }
+    //initializing the alignment array
+    var align_table_temp = compute_align_array(str);
+    alignment_table = kmp_exercise.ds.array([' '], {indexed: true});
+    for(var i = 0; i < align_table_temp.length; i++){
+      alignment_table.value(i, align_table_temp[i]);
+    }
+  }
+  // reset function definition
+  var f_reset = function () {
+    started = null;
+    alignment_table = null;
+    str_arr = null;
+    answer_index = null;
+    answer_value = null;    
+  };
+  </script>
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">initExercise()</var>
+      </div> <!-- vars -->
+
+      <div class="problems">
+        <div>
+          <div class="question">
+            The exercise below will test your newly acquired knowledge on the KMP Alignment Array. Please use the text field to fill in the correct value that is missing from the alignment array. When you are finished hit <b>Check Answer</b> to see if you are correct.
+            <p><b>Your solution:</b> <input type = "text" id = "user_answer" size = "2"/> </p>
+            <div id="jsav_area"></div>
+          </div> <!-- question -->
+          <div class="solution" data-type="custom">
+            <div class="guess">
+              [started]
+            </div>
+            <div class="validator-function">
+              if (!checkAnswer() && !guess[0])
+                return "";
+              else return checkAnswer();
+            </div>
+          </div>
+          <div class="hints">
+            <p>1. Look at the prefix at the beginning of the string and compare it to the substring directly preceding the current character.</p> 
+            </var></b>.</p>
+          </div>
+          <div class = "model"></div>
+        </div>
+      </div> <!-- problems -->
+    </div> <!--exercises-->
+  </body>
+</html>
