@@ -6,7 +6,7 @@
 <html>
   <head>
   <meta charset="UTF-8">
-    <title>Knuth Morris Pratt</title>
+    <title>Knuth Morris Pratt Exercise</title>
     <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css"
           media="screen" title="no title" charset="utf-8" /> 
   </head>
@@ -21,10 +21,13 @@
     <p class="jsavoutput jsavline"></p>
   </div>
   <style>
-    .jsavcanvas{
-      float: left;
-      margin-left: 10px;
-      margin-top: 10px;
+    .jsavarray .jsavindex {
+      min-width: 12px;
+      width: 12px;
+      font-size: 10px;
+    }
+    .jsavcanvas {
+      text-align: center;
     }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -32,8 +35,6 @@
   <script src="../../JSAV/lib/jquery.transform.light.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
-
-
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js"></script>
   <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
   <script src="http://algoviz.org/OpenDSA/ODSAkhan-exercises/khan-exercise.js"></script>
@@ -42,13 +43,13 @@
   <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" /> 
 
   <script>
-  /*
+  /*#################################################################
     These global constants are set to modify the strings easily.
-  */
+  #################################################################*/
   //this determines the maximum length of the substring
-  var substring_max_length = 10;
+  var substring_max_length = 8;
   //this determines the maximum length of the master string
-  var master_string_max_length = 20;
+  var master_string_max_length = 15;
   //this represents the lower bound of randomly generated numbers desired in the ascii table
   var char_lower_bound = 97;
   //this represents the upper bound of randomly generated numbers desired in the ascii table
@@ -63,7 +64,11 @@
   var sub_str; //the actual sub string
   var master_str; //the actual master string
   var started; //tells us if anything has been done
-  var answer_array = new Array(); //stores the correct steps in the answer
+  //var answer_array = new Array(); //stores the correct steps in the answer
+  var substring_start_location; //where the substring will line up initially
+  var substring_answer_location; //the index of the answer to the substring click event
+  var master_answer_location;    //the index of the answer to the master string click event
+  substring_start_isset = false;
 
   //returns a random number between lower_bound and upper_bound
   function gen_random(lower_bound, upper_bound) {
@@ -168,9 +173,6 @@
       } else {
           master = substr.substring(0, substr.length/2) + get_char(gen_random(char_lower_bound,char_upper_bound)) + master;
       }
-      
-      console.log("Sub string location:" + sub_str_location + " Contains: "+contains);
-      console.log("Substring length: " +substr.length + " Master string length: " + master_str_len);
 
       var returned = new Array();
       returned[0] = master;
@@ -208,11 +210,21 @@
       } else if(s == 0) {
         m+=1;
       } else {
-        s = align_array[s];
+        //Add code here to save location of first significant shift
+        if(!substring_start_isset) {
+          substring_start_location = m-s; //needs to account for the whitespace
+          substring_answer_location = m - s + align_array[s];
+          master_answer_location = m;
+          s = align_array[s]; 
+          substring_start_isset = true;
+        } else {
+          s = align_array[s];
+        }
+        console.log("Substring start:" + substring_start_location + " Master answer: "+ master_answer_location + " Substring answer index: " + substring_answer_location);
       }
-      answer_array.push(m);
+      //answer_array.push(m);
     }
-    console.log("Currently storing the indexes of the master array that are checked each iteration: " + answer_array);
+    //console.log("Currently storing the indexes of the master array that are checked each iteration: " + answer_array);
     if(s == sub.length) {
       return m - sub.length;
     } else {
@@ -221,58 +233,20 @@
   }
 
   function checkAnswer(main_text, search_string, sub_str) {
-    var check_match = true;
-    if(main_text.isHighlight(main_text.size()-1)){
-      if(contains == 1){
-        console.log("Correct Answer.");
-        return true;
-      } else {
-        return false;
-        console.log("Incorrect Answer.");
-      }
-    }
     // Figure out what the user has done, and report on it
     for (i=0; i<main_text.size(); i++) {
       //find the highlighted index  
-      if (main_text.isHighlight(i)) {
-        //check to make sure the index will work with the algorithm
-        if(i <= (search_string.size() - sub_str.length)) {
-          //create new array
-          var temp = new Array();
-          //fill array with appropriate values
-          for(x = 0; x < search_string.size(); x++) {
-            temp[x] = search_string.value(x);
-          }
-          //reset all of the old positions in the array to ' '
-          for(y=0; y<search_string.size();y++) {
-            search_string.value(y, ' ');
-          }
-          var count = 0;
-          //go through and put the old word into the right spot in the array
-          for(z=i; z < i+sub_str.length; z++) {
-            search_string.value(z, temp[search_start_index+count]);
-            count++;
-          }
-          search_start_index = i;
-          for(a = i; i < (a+sub_str.length);i++) {
-            if(main_text.value(i) != search_string.value(i)) {
-                check_match = false;
-            }
-          }
-          if(check_match) {   //case they got the correct answer
-            console.log("Correct Answer.");
+      if (main_text.isHighlight(i) && master_answer_location == i) {
+        for(j = 0; j < search_string.size(); j++){
+          if(search_string.isHighlight(j) && substring_answer_location == j) {
+            console.log("Master answer: " +i + " Sub answer: "+j);
             return true;
-          } else {            //case they got the wrong answer
-            console.log("Incorrect Answer.");
-            return false;
           }
-        } else {
-            //warn them that they are too close to the end
-            alert("ERROR: You can't choose an index so near the end of the searchable text!");
-            return false;
         }
-      } 
+      }
     }
+    console.log("Master answer: " +i + " Sub answer: "+j);
+    return false;
   }
   var clickHandler = function(index, e) {
     started = true;
@@ -289,6 +263,20 @@
     }
     //checkAnswer(main_text, search_string, sub_str);
   }
+  var clickHandlerSub = function(index, e) {
+    started = true;
+    if (!search_string.isHighlight(index)) {
+      search_string.highlight(index);
+      for(i=0;i<search_string.size();i++)
+      {
+        if(search_string.isHighlight(i) && index != i) {
+            search_string.unhighlight(i);
+        }
+      }
+    } else {
+      search_string.unhighlight(index);
+    }   
+  }
 
   //This function initializes the arrays, and handles the clicks on the specific indexes, see comments in method for more information
   function initExercise(){
@@ -297,7 +285,7 @@
     if(kmp_exercise != null){
         kmp_exercise.reset();
     }
-    var kmp_exercise = new JSAV("container", {"animationMode": "none"});
+    var kmp_exercise = new JSAV("jsav_area", {"animationMode": "none"});
     var max = 0;
     //handles the actual click on an index and highlights the specified index
 
@@ -315,11 +303,13 @@
     sub_arr = sub_str.split("");
 
     var index_match = kmp(master_arr, sub_arr);
-    console.log("supposed answer: "+index_match);
 
     main_text = kmp_exercise.ds.array([' '], {indexed: true});
     for(i=0; i<master_str.length;i++) {
         main_text.value(i, master_str.charAt(i));
+        if(i < master_answer_location && i >= substring_start_location){
+          main_text.css(i, {"background-color": "green"});
+        }
     }
 
     search_string = kmp_exercise.ds.array([' ']);
@@ -328,16 +318,21 @@
     }
 
     //need to make the arrays align nicely so we need to fill the remaining indexes of the substring array with empty characters 
+    var necessary_offset = 0;
     for(j=0;j<master_str.length;j++) {
-      if(sub_str.charAt(j).length > 0) {
-          search_string.value(j, sub_str.charAt(j));
+      if(j >= substring_start_location && j <= sub_str.length + substring_start_location) {
+        search_string.value(j, sub_str.charAt(j-necessary_offset));
       } else {
+        necessary_offset +=1;
         search_string.value(j, " ");
+      }
+      if(j < master_answer_location && j >= substring_start_location){
+        search_string.css(j, {"background-color": "green"});
       }
     }
 
     //initializing the alignment array
-    var alignment_table = kmp_exercise.ds.array([' ']);
+    var alignment_table = kmp_exercise.ds.array([' '], {indexed: true});
     var align_table_temp = new Array();
     align_table_temp = compute_align_array(sub_arr);
     for(f=0;f<align_table_temp.length;f++) {
@@ -346,19 +341,24 @@
     search_start_index = 0;
 
     main_text.click(clickHandler);
+    search_string.click(clickHandlerSub);
   }
-/*
-  function gen_answer() {
-    kmp
-  }
-  */
   // reset function definition
   var f_reset = function () {
+
+    /*
+      Issues reseting the canvas so that the variables aren't messed up during the second round
+    */
     main_text.clear();
     search_string.clear();
     alignment_table.clear();
-
     started = false;
+    sub_str = "";
+    master_str = "";
+    substring_start_location = 0;
+    substring_answer_location = 0;
+    master_answer_location = 0;
+    substring_start_isset = false;
   };
   </script>
     <div class="exercise">
@@ -370,8 +370,8 @@
       <div class="problems">
         <div>
           <div class="question">
-            The exercise below will test your newly acquired knowledge on the KMP algorithm. Please click the indexes in the master string that the sub string will jump to at each step of the algorithm. You must click them in order to ensure that your answer will register correctly. The idea is to trace the string <b><var>sub_str</var></b> through the string <b><var>master_str</var></b> using the KMP Algorithm.
-            <div id="jsav"></div>
+            The exercise below will test your newly acquired knowledge on the KMP algorithm. Please click the index of the master string that will be compared next and then the index of the substring that will be compared next. When you are finished hit <b>Check Answer</b> to see if you are correct. The values in the strings that have already been compared are highlighted in green so there is no confusion. The idea is to trace the string <b><var>sub_str</var></b> through the string <b><var>master_str</var></b> using the KMP Algorithm for just one step.
+            <div id="jsav_area"></div>
           </div> <!-- question -->
           <div class="solution" data-type="custom">
             <div class="guess">
@@ -384,9 +384,10 @@
             </div>
           </div>
           <div class="hints">
-            <p>1. Get the answer right.</p> 
-            <p>2. Don't get the answer wrong.</p>
+            <p>1. Use the alignment array and line up the indexes (the index of the first character in the substring is 0).</p> 
+            <p>2. Answer: Master Index: <b><var>master_answer_location</var></b> Substring Index: <b><var>substring_answer_location</var></b>.</p>
           </div>
+          <div class = "model"></div>
         </div>
       </div> <!-- problems -->
     </div> <!--exercises-->
