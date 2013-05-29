@@ -18,11 +18,11 @@ Only when you have to organize and search through a large number of
 things do more sophisticated data structures like search trees become
 necessary.
 (We will see how to organize and search through medium amounts of
-data when we study :ref:`Binary Trees <BinaryTree>`,
-:ref:`Sorting <InSort>`, and :ref:`Searching <SearchIntro>`.
+data when we study :chap:`Binary Trees`,
+:chap:`Sorting`, and :chap:`Searching`.
 How to deal with large amounts of data is covered in the chapters on
-:ref:`File Processing <FileProc>` through
-:ref:`Indexing <IndexIntro>`.)
+:chap:`File Processing` through
+:chap:`Indexing`.)
 Many applications don't require any form of search,
 and they do not require that any ordering be placed on the objects
 being stored.
