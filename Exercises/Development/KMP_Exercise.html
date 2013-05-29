@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<!--
+  Samuel A. Micka
+-->
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <title>Knuth Morris Pratt</title>
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css"
+          media="screen" title="no title" charset="utf-8" /> 
+  </head>
+  <body>
+
+
+<!--
+  <div> <p> <button type="button" id="go_button" onclick="make_arrays()">Generate!</button> </p> </div>
+-->
+  <div id="container">
+    <div class="jsavcanvas"></div>
+    <p class="jsavoutput jsavline"></p>
+  </div>
+  <style>
+    .jsavcanvas{
+      float: left;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+
+
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js"></script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="http://algoviz.org/OpenDSA/ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script> 
+  <script src="../../AV/Development/edit.js"></script>
+  <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" /> 
+
+  <script>
+  /*
+    These global constants are set to modify the strings easily.
+  */
+  //this determines the maximum length of the substring
+  var substring_max_length = 10;
+  //this determines the maximum length of the master string
+  var master_string_max_length = 20;
+  //this represents the lower bound of randomly generated numbers desired in the ascii table
+  var char_lower_bound = 97;
+  //this represents the upper bound of randomly generated numbers desired in the ascii table
+  var char_upper_bound = 122;
+  var contains; //determines if the substring will be contained in the master string
+
+  /*#################################################################
+    Global variables used throughout the program
+  #################################################################*/
+  var main_text; // main string array
+  var search_string; //sub string array
+  var sub_str; //the actual sub string
+  var master_str; //the actual master string
+  var started; //tells us if anything has been done
+  var answer_array = new Array(); //stores the correct steps in the answer
+
+  //returns a random number between lower_bound and upper_bound
+  function gen_random(lower_bound, upper_bound) {
+    return Math.floor(Math.random() * (upper_bound - lower_bound + 1) + lower_bound);
+  }
+  //converts the ascii_value parameter to character and returns it
+  function get_char(ascii_value) {
+    return String.fromCharCode(ascii_value);
+  }
+  //function that generates the first 5 characters of our substring
+  function generate_first_part_of_substring(decision, seed) {
+    if(decision == 1) {
+      var second = get_char(gen_random(char_lower_bound, char_upper_bound));
+      return seed + second + seed + second + seed;
+    } else if(decision == 2) {
+      var second = get_char(gen_random(char_lower_bound,char_upper_bound));
+      return seed+seed+seed+second+second;
+    } else if(decision == 3) {
+      return seed+seed+seed+seed+get_char(gen_random(char_lower_bound,char_upper_bound));
+    } else if(decision == 4) {
+      return seed + get_char(gen_random(char_lower_bound,char_upper_bound)) + seed + seed + get_char(gen_random(char_lower_bound,char_upper_bound));
+    } else {
+      return seed + get_char(gen_random(char_lower_bound,char_upper_bound)) + get_char(gen_random(char_lower_bound,char_upper_bound))+ get_char(gen_random(char_lower_bound,char_upper_bound)) + get_char(gen_random(char_lower_bound,char_upper_bound));
+    }
+  }
+  //generates last 1-3 characters of the substring
+  function generate_last_part_of_substring(num, rep, first) {
+    if(rep){
+      return first + first.substring(0, num);
+    } else {
+      var tail = '';
+      for(var i = 0; i < num; i++){
+        tail += get_char(gen_random(char_lower_bound,char_upper_bound));
+      }
+      return first + tail;
+    }
+  }
+  //This function generates the master and substring needed for the exercise
+  function generate_strings(){
+      //grab the two divs that will hold our output
+      var master_div = document.getElementById("master_string");
+      var sub_div = document.getElementById("sub_string");
+
+
+      /*######################################
+        Substring generation begins here
+      ######################################*/
+      //ascii values of lower case characters are char_lower_bound - char_upper_bound, so I'll choose a random number in that range
+      var rand_char = get_char(gen_random(char_lower_bound, char_upper_bound));
+      //now that rand_char holds the "seed" for our random string we will start with the substring
+      var decision_one = gen_random(1, 5);
+      //we first generate 5 random characters (the smallest the substring can be)
+      var first_sub = generate_first_part_of_substring(decision_one, rand_char);
+
+      /*
+      next we decide how many characters to add and if they will be repeats of the first part of the string or not.
+      We add anywhere form 1 - substring_rough_size - 5 characters to the original 5 and then we decide if it will be repeated or not based on the
+      number returned being even or odd.
+      */
+      var decision_two = gen_random(1, substring_max_length-5);
+      var repeat;
+      if(decision_two % 2 == 0) {
+        repeat = true;
+      } else {
+        repeat = false;
+      }
+      var substr = generate_last_part_of_substring(decision_two, repeat, first_sub);
+
+      /*############################################
+        Master string generation begins here
+      ############################################*/
+      //there will be a 1 in 4 chance that the master string won't contain the substring
+      contains = gen_random(1, 4);
+      //we want the master string to be at least 3 characters larger than the substring
+      var master_str_len = gen_random(substr.length + 3, master_string_max_length);
+      var sub_str_location = gen_random((substr.length/2)+1, master_str_len - substr.length);
+      //1 is the case that it doesn't contain the substring, unless the randomly generated characters decide to contain it anyway...
+      var master;
+      if(contains == 1){
+        master = substr.substring(0,substr.length/2);
+        //it will put the first half of the substring somewhere and half of the substring will go at the beginning somewhere
+        for(var i = (substr.length/2)+1; i < master_str_len; i++) {
+          if(i < sub_str_location){
+            master = get_char(gen_random(char_lower_bound,char_upper_bound)) + master;
+          } else if (i >= (sub_str_location + (substr.length/2))) {
+            master = master + get_char(gen_random(char_lower_bound,char_upper_bound));
+          }
+        }
+      } else {
+        master = substr;
+        for(var i = (substr.length/2)+1; i < master_str_len; i++) {
+          if(i < sub_str_location){
+            master = get_char(gen_random(char_lower_bound,char_upper_bound)) + master;
+          } else if (i >= (sub_str_location + substr.length)) {
+            master = master + get_char(gen_random(char_lower_bound,char_upper_bound));
+          }
+        }
+      }
+      //determine whether a random character is placed before or after the first half of the substring at the beginning of the master
+      if(gen_random(1,2) == 1){
+          master = get_char(gen_random(char_lower_bound,char_upper_bound)) + substr.substring(0, substr.length/2) + master;
+      } else {
+          master = substr.substring(0, substr.length/2) + get_char(gen_random(char_lower_bound,char_upper_bound)) + master;
+      }
+      
+      console.log("Sub string location:" + sub_str_location + " Contains: "+contains);
+      console.log("Substring length: " +substr.length + " Master string length: " + master_str_len);
+
+      var returned = new Array();
+      returned[0] = master;
+      returned[1] = substr;
+      return returned;
+  }
+
+  //This function computes the alignment lookup table for the KMP algorithm
+  function compute_align_array(arr) {
+    var align = new Array();
+    align[0] = -1;
+    align[1] = 0;
+    var q = 0;
+    L = arr.length;
+    for(var p = 2; p < L; p++) {
+      q = align[p-1];
+      while((q>=0) && (arr[q] != arr[p-1])) {
+        q = align[q];
+      }
+      align[p] = q+1;
+    }
+    return align;
+  }
+
+  //This function is the KMP algorithm, implemented in the way described in the pseudo code in the slideshow
+  function kmp(master, sub) {
+    var align_array = new Array(); 
+    align_array = compute_align_array(sub);
+    var m = 0;
+    var s = 0;
+    while((s < sub.length) && (sub.length -s <= master.length - m)) {
+      if(master[m] === sub[s]) {
+        m+=1;
+        s+=1;
+      } else if(s == 0) {
+        m+=1;
+      } else {
+        s = align_array[s];
+      }
+      answer_array.push(m);
+    }
+    console.log("Currently storing the indexes of the master array that are checked each iteration: " + answer_array);
+    if(s == sub.length) {
+      return m - sub.length;
+    } else {
+      return -1;
+    }
+  }
+
+  function checkAnswer(main_text, search_string, sub_str) {
+    var check_match = true;
+    if(main_text.isHighlight(main_text.size()-1)){
+      if(contains == 1){
+        console.log("Correct Answer.");
+        return true;
+      } else {
+        return false;
+        console.log("Incorrect Answer.");
+      }
+    }
+    // Figure out what the user has done, and report on it
+    for (i=0; i<main_text.size(); i++) {
+      //find the highlighted index  
+      if (main_text.isHighlight(i)) {
+        //check to make sure the index will work with the algorithm
+        if(i <= (search_string.size() - sub_str.length)) {
+          //create new array
+          var temp = new Array();
+          //fill array with appropriate values
+          for(x = 0; x < search_string.size(); x++) {
+            temp[x] = search_string.value(x);
+          }
+          //reset all of the old positions in the array to ' '
+          for(y=0; y<search_string.size();y++) {
+            search_string.value(y, ' ');
+          }
+          var count = 0;
+          //go through and put the old word into the right spot in the array
+          for(z=i; z < i+sub_str.length; z++) {
+            search_string.value(z, temp[search_start_index+count]);
+            count++;
+          }
+          search_start_index = i;
+          for(a = i; i < (a+sub_str.length);i++) {
+            if(main_text.value(i) != search_string.value(i)) {
+                check_match = false;
+            }
+          }
+          if(check_match) {   //case they got the correct answer
+            console.log("Correct Answer.");
+            return true;
+          } else {            //case they got the wrong answer
+            console.log("Incorrect Answer.");
+            return false;
+          }
+        } else {
+            //warn them that they are too close to the end
+            alert("ERROR: You can't choose an index so near the end of the searchable text!");
+            return false;
+        }
+      } 
+    }
+  }
+  var clickHandler = function(index, e) {
+    started = true;
+    if (!main_text.isHighlight(index)) {
+      main_text.highlight(index);
+      for(i=0;i<main_text.size();i++)
+      {
+        if(main_text.isHighlight(i) && index != i) {
+            main_text.unhighlight(i);
+        }
+      }
+    } else {
+      main_text.unhighlight(index);
+    }
+    //checkAnswer(main_text, search_string, sub_str);
+  }
+
+  //This function initializes the arrays, and handles the clicks on the specific indexes, see comments in method for more information
+  function initExercise(){
+    started = false;
+    //figure out how to reset the JSAV container if it is already set
+    if(kmp_exercise != null){
+        kmp_exercise.reset();
+    }
+    var kmp_exercise = new JSAV("container", {"animationMode": "none"});
+    var max = 0;
+    //handles the actual click on an index and highlights the specified index
+
+
+    var strs = generate_strings();
+    master_str = strs[0];       //first index of returned array has master string
+    sub_str = strs[1];          //second index of returned array has substring
+    //$("#go_button").remove();
+
+
+    var master_arr = new Array();
+    var sub_arr = new Array();
+
+    master_arr = master_str.split("");
+    sub_arr = sub_str.split("");
+
+    var index_match = kmp(master_arr, sub_arr);
+    console.log("supposed answer: "+index_match);
+
+    main_text = kmp_exercise.ds.array([' '], {indexed: true});
+    for(i=0; i<master_str.length;i++) {
+        main_text.value(i, master_str.charAt(i));
+    }
+
+    search_string = kmp_exercise.ds.array([' ']);
+    for(z=0;z<search_string.size();z++) {
+        search_string.value(z, ' ');
+    }
+
+    //need to make the arrays align nicely so we need to fill the remaining indexes of the substring array with empty characters 
+    for(j=0;j<master_str.length;j++) {
+      if(sub_str.charAt(j).length > 0) {
+          search_string.value(j, sub_str.charAt(j));
+      } else {
+        search_string.value(j, " ");
+      }
+    }
+
+    //initializing the alignment array
+    var alignment_table = kmp_exercise.ds.array([' ']);
+    var align_table_temp = new Array();
+    align_table_temp = compute_align_array(sub_arr);
+    for(f=0;f<align_table_temp.length;f++) {
+      alignment_table.value(f, align_table_temp[f]);
+    }
+    search_start_index = 0;
+
+    main_text.click(clickHandler);
+  }
+/*
+  function gen_answer() {
+    kmp
+  }
+  */
+  // reset function definition
+  var f_reset = function () {
+    main_text.clear();
+    search_string.clear();
+    alignment_table.clear();
+
+    started = false;
+  };
+  </script>
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">initExercise()</var>
+        <var id="CorrectAnswer">genAnswer()</var> 
+      </div> <!-- vars -->
+
+      <div class="problems">
+        <div>
+          <div class="question">
+            The exercise below will test your newly acquired knowledge on the KMP algorithm. Please click the indexes in the master string that the sub string will jump to at each step of the algorithm. You must click them in order to ensure that your answer will register correctly. The idea is to trace the string <b><var>sub_str</var></b> through the string <b><var>master_str</var></b> using the KMP Algorithm.
+            <div id="jsav"></div>
+          </div> <!-- question -->
+          <div class="solution" data-type="custom">
+            <div class="guess">
+              [started]
+            </div>
+            <div class="validator-function">
+              if (!checkAnswer(main_text, search_string, sub_str) && !guess[0])
+                return "";
+              else return checkAnswer(main_text, search_string, sub_str);
+            </div>
+          </div>
+          <div class="hints">
+            <p>1. Get the answer right.</p> 
+            <p>2. Don't get the answer wrong.</p>
+          </div>
+        </div>
+      </div> <!-- problems -->
+    </div> <!--exercises-->
+  </body>
+</html>
