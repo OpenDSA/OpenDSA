@@ -595,6 +595,7 @@ def enumFile(folder, folder1):
         if isSection(iLine1[t+1]):
            flag = 1
            chap = iLine[t]
+           config.table[chap.rstrip('\n')] = -1 
         if flnm in dirlist and not isSection(iLine1[t+1]):
            chaplist =[]
            filelist.append(folder+flnm+'.rst')
@@ -608,6 +609,8 @@ def enumFile(folder, folder1):
               if isIncludeChapter(mod):
                  if is_first_chapter:
                     config.table[flnm]='%s.%s'%(section,chapter)
+                    if config.table[chap.rstrip('\n')] == -1:
+                        config.table[chap.rstrip('\n')]=flnm
                     chaplist.append(chap.rstrip('\n'))
                     chaplist.append(section)
                     chap_mod[flnm]= chaplist
