@@ -53,8 +53,9 @@ along a path involving one or more intermediate vertices.
    Figure :num:`Figure #DistExamp` is directed.
    We assume that all weights are positive.
 
+.. _DistExamp:
+
 .. inlineav:: dijkstraCON1 dgm
-   :target: DistExamp
    :align: center
 
    Example graph for shortest-path definitions.

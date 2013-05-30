@@ -128,8 +128,9 @@ value.
 The initial condition for an empty list is shown in Figure
 :num:`Figure #LinkedListInit`.
 
+.. _LinkedListInit:
+
 .. inlineav:: listLinkedCON3 dgm
-   :target: LinkedListInit
    :align: center
 
    Initial conditions for the linked list, with header and trailer nodes.
