@@ -24,7 +24,7 @@ def html_visit_chap_ref(self, node):
     target_file = ''
     chapter = ''
     if target in json_data:
-        chapter = json_data[json_data[target]]
+        chapter = str(json_data[json_data[target]]).split('.')[0]
         target_file = json_data[target]
         if node['refdoc']==target_file:   #target file and curent file are the same  
             link = "#" 
