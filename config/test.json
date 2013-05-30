@@ -22,7 +22,7 @@
         "long_name": "Visualization version: Array-based Lists",
         "exercises": { }
       },
-	  "Development/ListLinked": {
+      "Development/ListLinked": {
         "long_name": "Visualization version: Linked Lists",
         "exercises": { }
       }	  

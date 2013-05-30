@@ -298,7 +298,7 @@ var nodeGap = 25;
   var slash = jsav.g.line(474, 132, 484, 101,
 	  {"opacity": 100,"stroke-width": 1});
 
-  l.addFirst(15)
+  l.addFirst("")
    .addFirst("");
   l.layout();
 }(jQuery));

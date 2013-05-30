@@ -245,10 +245,16 @@ function bgColor(array) {
                         lineNumbers: false,
                         startAfter: "/* *** ODSATag: AListVars *** */",
                         endBefore: "/* *** ODSAendTag: AListVars *** */"});
-  jsav.umsg("The private portion of class <code>AList</code> contains the data members for the array-based list.");
+  jsav.umsg("Let's take a look at the private data members for class <code>AList</code>.");
   jsav.displayInit();
+
+  jsav.umsg("First, notice that class <code>AList</code> implements the <code>List</code> interface. This means that <code>AList</code> is required to give implementations for all of the methods listed as part of the <code>List</code> interface.");
+  pseudo.highlight(0);
+  jsav.step();
+
+  pseudo.unhighlight(0);
   pseudo.highlight(1);
-  jsav.umsg("These include <code>listArray</code>, the array which holds the list elements. Because <code>listArray</code> must be allocated at some fixed size, the size of the array must be known when the list object is created.");
+  jsav.umsg("The first of the private data members is <code>listArray</code>, the array which holds the list elements. Because <code>listArray</code> must be allocated at some fixed size, the size of the array must be known when the list object is created.");
   jsav.step(); 
   pseudo.unhighlight(1);
   pseudo.highlight(2);
