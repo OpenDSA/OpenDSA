@@ -174,8 +174,9 @@ DESCRIPTION
 
       Create a container for an inline AV with the given ID and type.
       If the type is ``ss`` a slideshow will be created and if it is
-      ``dgm`` a diagram will be created. Also treats inline AVs as figure,
-      when a cross reference target is declared along with ``caption`` and ``align`` options.
+      ``dgm`` a diagram will be created. inlineav diagrams behave like 
+      typicall reStructuredText figures. Cross reference target and 
+      caption are declared using the standard syntax.
 
       ``<type>`` **is automatically appended to the inlineav directive
       by the configuration process and should not be added manually.**

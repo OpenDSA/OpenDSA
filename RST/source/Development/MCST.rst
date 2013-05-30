@@ -34,8 +34,9 @@ required set of edges forms a tree, it spans the vertices (i.e., it
 connects them together), and it has minimum cost.
 Figure :num:`Figure #MCSTdgm` shows the MST for an example graph.
 
+.. _MCSTdgm:
+
 .. inlineav:: MCSTCON1 dgm
-   :target: MCSTdgm
    :align: justify
 
    A graph and its MST.
