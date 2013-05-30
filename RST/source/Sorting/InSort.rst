@@ -73,7 +73,7 @@ good solution for special niche applications (:ref:`Heapsort <Heapsort>`).
 Sorting provides an example of a significant technique for
 analyzing the lower bound for a problem.
 Sorting also motivates the the study of file processing
-(Module :numref:`<FileProc>`).
+(Chapter :numchap:`File Processing`).
 
 This chapter covers several standard algorithms appropriate
 for sorting a collection of records that fit into the computer's

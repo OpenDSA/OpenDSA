@@ -258,15 +258,20 @@ SYNOPSIS::
     :numchap: {chapter_name}
 
 DESCRIPTION
-    ``:chap|numchap: {chapter_name}``
+    ``:chap: {chapter_name}``
 
-    A custom interpreted role. ``chap`` adds a reference to the first module of the chapter.
-    ``numchap`` adds a numbered reference to the first module of the chapter. 
+    A custom interpreted role that adds the chapter name as the label
+    for a link to the first module of the indicated chapter.
+
+    ``:numchap: {chapter_name}``
+
+    A custom interpreted role that adds a chapter number as the label
+    for a link to the first module of the indicated chapter.
 
     ``{chapter_name}``
   
-    The name of the chapter. It should be identical (case sensitive) to the one specified in the 
-    json configuration file.
+    The name of the chapter. It should be identical (case sensitive)
+    to the one specified in the json configuration file.
 
 
 TODO
