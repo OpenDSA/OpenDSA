@@ -129,7 +129,6 @@ class inlineav(Directive):
                    'long_name': directives.unchanged,
                    'points': directives.unchanged,
                    'threshold': directives.unchanged,
-                   'target': directives.unchanged,
                    'align': directives.unchanged,
                   }
     has_content = True
