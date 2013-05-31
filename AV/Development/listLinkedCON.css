@@ -38,6 +38,20 @@
   height: 70px;
 }
 
+#LlistBadCON {
+  height: 250px;
+}
+#LlistBadCON .jsavoutput.jsavline {
+  height: 75px;
+}
+
+#LlistBadReasonCON {
+  height: 250px;
+}
+#LlistBadReasonCON .jsavoutput.jsavline {
+  height: 70px;
+}
+
 .jsavhorizontallist.jsavautoresize .jsavnode {
   min-width: 30px;
   max-width: 30px;

@@ -77,6 +77,9 @@ and ``link`` fields.
    [Slide 3: Show a transition to part (a) of the figure.]
    [Text:] Here is what we would like to have happen when we delete
    the current node (the one with value 10).
+   
+.. inlineav:: LlistBadCON ss
+   :output: show
 
 .. _BadList:
 
@@ -124,7 +127,10 @@ and thus increases the chance of introducing bugs.
    As in this example. There is no way to update the "next" pointer of
    the node with value 12.
    There is no way around this problem with the list as shown here.
-
+   
+.. inlineav:: LlistBadReasonCON ss
+   :output: show
+   
 Fortunately, there is a fairly easy way to deal with all of the
 special cases, as well as the problem with deleting the last node.
 Many special cases can be eliminated by implementing
