@@ -57,6 +57,12 @@ T1061220: min
 test: min
 	python $(CONFIG_SCRIPT) config/test.json
 
+List: min
+	python $(CONFIG_SCRIPT) config/List.json
+
+ListViz: min
+	python $(CONFIG_SCRIPT) config/ListViz.json
+
 Dev: min
 	python $(CONFIG_SCRIPT) config/Dev.json
 

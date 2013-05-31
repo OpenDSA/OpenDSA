@@ -1,5 +1,5 @@
 {
-  "title": "Test",
+  "title": "Lists",
   "book_dir": "Books",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
@@ -20,11 +20,6 @@
       },
       "Development/ListArray": {
         "long_name": "Array-based Lists",
-        "exercises": {
-        }
-      },
-      "Development/ListArrayViz": {
-        "long_name": "Array-based Lists (Visual)",
         "exercises": {
         }
       },

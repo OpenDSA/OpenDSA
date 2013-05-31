@@ -120,8 +120,6 @@ var initJSAV = function (arr_size, insertPos, insertValue) {
 	var arrowCurr = jsav.g.line(24 + inPosision * 45, 30, 24 + inPosision * 45, 52,{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 	var label = jsav.label("Curr", {before: jsavArr, left: 10 + inPosision * 45, top: 10});	
 	
-	//var arrow1 = jsav.g.path( "M0 0 L125 0 L125 40 L35 40 L25 50 L15 40 L0 40 z", {"stroke":"red", "stroke-width": 2});
-
 	// correct answer
 	answerArr.splice(inPosision, 0, inValue);
 	
@@ -166,11 +164,17 @@ var checkAnswer = function (arr_size) {
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem">Your task in this exercise is to show the behavior of Array-Based List insertion.
+      <p class="problem">Your task in this exercise is to show the
+        behavior for array-based list insertion.
         In the array displayed below, the "current" position is <b><var>insert_pos</var></b>.</p>
       <div class="question">
-        <p> Perform the Array-Based List Insertion to move all elements after "current" one position to the right, then insert a value of <b><var>insert_value</var></b> into "current", which is position <b><var>insert_pos</var></b>.</p>
-        <input id="reset" type="button" value="Reset" />	
+        <p>The value to insert is  <b><var>insert_value</var></b>,
+	  and it is to be inserted into position <b><var>insert_pos</var></b>.</p>
+        <p>To move an element, click on it (to highlight it), then click on where you
+        want it to go. You can insert the new
+        value <b><var>insert_value</var></b> into a highlighted
+        array position by clicking the "Insert" button.</p>
+        <input id="reset" type="button" value="Reset" />
 		<input id="insert" type="button" value="Insert" />
         <div id="jsav"></div>
       </div>

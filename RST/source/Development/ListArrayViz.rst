@@ -11,8 +11,8 @@
 .. odsalink:: AV/Development/listArrayCON.css
 .. odsalink:: AV/Development/listArrayVizCON.css
 
-Array-Based List Implementation (Visual)
-========================================
+Array-Based List Implementation
+===============================
 
 Here is an implementation for the array-based list, named ``AList``.
 ``AList`` inherits from interface ``List``
