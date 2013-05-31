@@ -343,10 +343,10 @@ var nodeGap = 25;
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
   var currLabel = jsav.label("curr",
-	  {before: l, left: labelLeftMargin + 75, top: labelTopMargin, "font-size":"20px"});
+	  {before: l, left: labelLeftMargin + 150, top: labelTopMargin, "font-size":"20px"});
   //Curr arrow
-  var currArrow = jsav.g.line(labelLeftMargin + 85, labelTopMargin + 20,
-                              labelLeftMargin + 105, labelTopMargin + 40,
+  var currArrow = jsav.g.line(labelLeftMargin + 160, labelTopMargin + 20,
+                              labelLeftMargin + 180, labelTopMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
   //Left margin of tail
