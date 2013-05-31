@@ -374,3 +374,38 @@ var nodeGap = 25;
   l.layout();
   jsav.recorded();
 }(jQuery));
+
+// Show off the data members
+(function ($) {
+  var jsav = new JSAV("LlistVarsCON");	
+  var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
+                        lineNumbers: false,
+                        startAfter: "/* *** ODSATag: LListVars *** */",
+                        endBefore: "/* *** ODSAendTag: LListVars *** */"});
+  jsav.umsg("Let's take a look at the data members for class <code>LList</code>.");
+  jsav.displayInit();
+
+  jsav.umsg("First, notice that class <code>LList</code> implements the <code>List</code> interface. This means that <code>LList</code> is required to give implementations for all of the methods listed as part of the <code>List</code> interface.");
+  pseudo.highlight(0);
+  jsav.step();
+
+  pseudo.unhighlight(0);
+  pseudo.highlight(1);
+  jsav.umsg("The first of the private data members is <code>head</code>, the first node of the list. This header node is a link node like any other, but its value is ignored and it is not considered to be an actual element of the list.");
+  jsav.step(); 
+  pseudo.unhighlight(1);
+  pseudo.highlight(2);
+  jsav.umsg("The second of the private data members is <code>tail</code>, the last node of the list. This tailer node is a link node like any other, but its <code>next</code> field is set to <code>null</code>, pointing to nowhere.");
+  jsav.step();
+  pseudo.unhighlight(2);
+  pseudo.highlight(3);
+  jsav.umsg("The data member <code>curr</code> is the current node of the list. It could be any node on the list, except the <code>head</code> node.");
+  jsav.step();
+  pseudo.unhighlight(3);
+  pseudo.highlight(4);
+  jsav.umsg(" Since there is no simple way to compute the length of the list simply from these three pointers, the list length will be stored explicitly, and updated by every operation that modifies the list size. The value cnt stores the length of the list.");
+  jsav.step();
+  pseudo.unhighlight(4);
+  jsav.umsg("Because <code>head</code>, <code>tail</code>, and <code>cnt</code> are all declared to be <code>private</code>, they may only be accessed by methods of Class <code>LList</code>. Since <code>curr</code> is a protected data member, it can only be accessed by Class or Subclass of LList.");
+  jsav.recorded();
+}(jQuery));
