@@ -323,4 +323,54 @@ var nodeGap = 25;
   l.addFirst("")
    .addFirst("");
   l.layout();
+  jsav.recorded();
+}(jQuery));
+
+// List with header and tailer nodes added
+(function ($) {
+  var jsav = new JSAV("listLinkedHeaderTailerCON", {"animationMode": "none"});
+
+  // Relative offsets
+  var labelLeftMargin = 240;
+  var labelTopMargin = 10;
+
+  var l = jsav.ds.list({"nodegap": 30, "top": labelTopMargin + 40, left: labelLeftMargin + 17});
+
+  var headLabel = jsav.label("head",
+                    {before: l, left: labelLeftMargin, top: labelTopMargin});
+  var headArrow = jsav.g.line(labelLeftMargin + 10, labelTopMargin + 20,
+                              labelLeftMargin + 30, labelTopMargin + 40,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+
+  var currLabel = jsav.label("curr",
+	  {before: l, left: labelLeftMargin + 75, top: labelTopMargin, "font-size":"20px"});
+  //Curr arrow
+  var currArrow = jsav.g.line(labelLeftMargin + 85, labelTopMargin + 20,
+                              labelLeftMargin + 105, labelTopMargin + 40,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+
+  //Left margin of tail
+  var tailLabel = jsav.label("tail",
+	  {before: l, left: labelLeftMargin + 300, top: labelTopMargin, "font-size":"20px"});
+  //Tail arrow
+  var tailArrow = jsav.g.line(labelLeftMargin + 310, labelTopMargin + 20,
+                              labelLeftMargin + 330, labelTopMargin + 40,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+
+  //Vertical bar
+  var bar = jsav.g.line(labelLeftMargin + 145, labelTopMargin + 35,
+                          labelLeftMargin + 145, labelTopMargin + 75,
+	                      {"stroke-width": 1, "stroke":"#000"});
+  //Diagonal slash
+  var slash = jsav.g.line(labelLeftMargin + 346, labelTopMargin + 72,
+                          labelLeftMargin + 356, labelTopMargin + 42,
+	  {"opacity": 100,"stroke-width": 1});
+
+  l.addFirst(15)
+   .addFirst(12)
+   .addFirst(10)
+   .addFirst(23)
+   .addFirst(20);
+  l.layout();
+  jsav.recorded();
 }(jQuery));

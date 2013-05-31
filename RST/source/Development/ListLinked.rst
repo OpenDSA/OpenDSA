@@ -163,7 +163,9 @@ node on the list, as we will see below.
    [Show the list of 0.4.2 (b) with header and tailer.]
    Here is what the list would look like with the header and trailer
    nodes added.
-
+   
+.. inlineav:: listLinkedHeaderTailerCON dgm
+   :align: center
 
 Here is the implementation for the linked list class,
 named ``LList``.
