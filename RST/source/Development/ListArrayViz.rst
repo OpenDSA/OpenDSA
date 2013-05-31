@@ -8,7 +8,8 @@
    :prerequisites:
    :topic: Lists
    
-.. odsalink:: AV/Development/listArrayTestCON.css
+.. odsalink:: AV/Development/listArrayCON.css
+.. odsalink:: AV/Development/listArrayVizCON.css
 
 Array-Based List Implementation (Visual)
 ========================================
@@ -43,7 +44,12 @@ Visualization for Append
 .. inlineav:: AlistAppendCON ss
    :output: show
 
-Here a visualization for how the ``remove`` method works.
+Removing an element from the head of the list is
+similar to insert in that all remaining elements  must shift toward
+the head by one position to fill in the gap.
+If we want to remove the element at position :math:`i`, then
+:math:`n - i - 1` elements must shift toward the head, as shown in the
+following slideshow. 
 
 .. inlineav:: AlistRemoveCON ss
    :output: show
@@ -67,7 +73,8 @@ Insertion and Deletion work.
 
    Add a battery of summary questions.
 
-.. odsascript:: AV/Development/listArrayTestCON.js
+.. odsascript:: AV/Development/listArrayCON.js
+.. odsascript:: AV/Development/listArrayVizCON.js
 
 .. TODO::
    :type: Exercise

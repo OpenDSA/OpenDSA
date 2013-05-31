@@ -4,34 +4,12 @@ class Link {
   private Link n;
 
   // Constructors
-  Link(Object ine, Link inn) {
-    e = ine;
-    n = inn;
-  }
+  Link(Object ine, Link inn) { e = ine; n = inn; }
+  Link(Link inn) { e = null; n = inn; }
 
-  Link(Link inn) {
-    e = null;
-    n = inn;
-  }
-
-  // Return the value
-  Object element() {
-    return e;
-  }
-
-  // Set element value
-  void setelement(Object ine) {
-    e = ine;
-  }
-
-  // Return next link
-  Link next() {
-    return n;
-  }
-
-  // Set next link
-  void setnext(Link inn) {
-    n = inn;
-  }
+  Object element() { return e; }           // Return the value
+  void setelement(Object ine) { e = ine; } // Set element value
+  Link next() { return n; }                // Return next link
+  void setnext(Link inn) { n = inn; }      // Set next link
 }
 /* *** ODSAendTag: Link *** */

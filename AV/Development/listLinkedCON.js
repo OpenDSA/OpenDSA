@@ -8,6 +8,34 @@ var tempArr = [10];
 var nodeWidth = 42;
 var nodeGap = 25;
 
+// Diagram showing node concept
+(function ($) {
+  var jsav = new JSAV("listLinkedNodeCON", {"animationMode": "none"});
+  var l = jsav.ds.list({"nodegap": 30, "top": 50, left: 350});
+
+  // Relative offsets
+  var labelLeftMargin = 350;
+  var labelTopMargin = 10;
+
+  var nodeLabel = jsav.label("nodes",
+                    {before: l, left: labelLeftMargin + 70, top: labelTopMargin});
+  var node1Arrow = jsav.g.line(labelLeftMargin + 75, labelTopMargin + 20,
+                              labelLeftMargin + 15, labelTopMargin + 35,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 1});
+
+  var node2Arrow = jsav.g.line(labelLeftMargin + 90, labelTopMargin + 20,
+                              labelLeftMargin + 90, labelTopMargin + 35,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 1});
+
+  var node3Arrow = jsav.g.line(labelLeftMargin + 105, labelTopMargin + 20,
+                              labelLeftMargin + 165, labelTopMargin + 35,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 1});
+
+  l.addFirst("").addFirst("").addFirst("");
+  l.layout();
+}(jQuery));
+
+
 //Linked list insertion
 (function ($) {
   var av = new JSAV("listLinkedCON1");
@@ -256,46 +284,40 @@ var nodeGap = 25;
   av.recorded();
 }(jQuery));
 
+
 // Initial state of a linked list when using a header node
 (function ($) {
-  var jsav = new JSAV("listLinkedCON3", {"animationMode": "none"});
-  var l = jsav.ds.list({"nodegap": 30, "top": 100, left: 367});
+  var jsav = new JSAV("listLinkedInitCON", {"animationMode": "none"});
+  var l = jsav.ds.list({"nodegap": 30, "top": 50, left: 367});
 
-  //Left margin of head
-  var headLeftMargin = 347;
-  //Top margin of head
-  var headTopMargin = 50;
-  //Label "head"
+  // Relative offsets
+  var labelLeftMargin = 350;
+  var labelTopMargin = 10;
+
   var headLabel = jsav.label("head",
-	  {before: l, left: headLeftMargin, top: headTopMargin, "font-size":"20px"});
-  //Head arrow
-  var headArrow = jsav.g.line(headLeftMargin + 12, headTopMargin + 25, headLeftMargin + 12 + 20, headTopMargin + 45,
+                    {before: l, left: labelLeftMargin, top: labelTopMargin});
+  var headArrow = jsav.g.line(labelLeftMargin + 10, labelTopMargin + 20,
+                              labelLeftMargin + 30, labelTopMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
-  //Left margin of curr
-  var currLeftMargin = 420;
-  //Top margin of curr
-  var currTopMargin = 50;
-  //Label "curr" and its arrow
   var currLabel = jsav.label("curr",
-	  {before: l, left: currLeftMargin, top: currTopMargin, "font-size":"20px"});
+	  {before: l, left: labelLeftMargin + 70, top: labelTopMargin, "font-size":"20px"});
   //Curr arrow
-  var currArrow = jsav.g.line(currLeftMargin + 12, currTopMargin + 25, currLeftMargin + 12 + 20, currTopMargin + 45,
+  var currArrow = jsav.g.line(labelLeftMargin + 80, labelTopMargin + 20,
+                              labelLeftMargin + 100, labelTopMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
   //Left margin of tail
-  var tailLeftMargin = 477;
-  //Top margin of tail
-  var tailTopMargin = 50;
-  //label "tail" and its arrow
   var tailLabel = jsav.label("tail",
-	  {before: l, left: tailLeftMargin, top: tailTopMargin, "font-size":"20px"});
+	  {before: l, left: labelLeftMargin + 120, top: labelTopMargin, "font-size":"20px"});
   //Tail arrow
-  var tailArrow = jsav.g.line(tailLeftMargin + 8, tailTopMargin + 25, tailLeftMargin + 8 - 20, tailTopMargin + 45,
+  var tailArrow = jsav.g.line(labelLeftMargin + 130, labelTopMargin + 20,
+                              labelLeftMargin + 110, labelTopMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
   //Diagonal slash
-  var slash = jsav.g.line(474, 132, 484, 101,
+  var slash = jsav.g.line(labelLeftMargin + 125, labelTopMargin + 72,
+                          labelLeftMargin + 135, labelTopMargin + 42,
 	  {"opacity": 100,"stroke-width": 1});
 
   l.addFirst("")

@@ -1,8 +1,4 @@
-.jsavcodeline.jsavhighlight {
-  background-color: #ccc !important;
-}
-
-.jsavnode{
+.jsavnode {
   line-height: 30px !important;
   min-width: 30px !important;
   max-width: 30px !important;
@@ -14,13 +10,11 @@
   height: 330px;
 }
 
-#AlistInsertCON .jsavcanvas{
+#AlistInsertCON .jsavcanvas {
   margin-top: 20px;
 }
 
-#AlistInsertCON .jsavcode{
-  border: 1px solid;
-  border-color: white;
+#AlistInsertCON .jsavcode {
   margin-left: 285px;
   width: 560px;
 }
@@ -29,18 +23,16 @@
   height: 375px;
 }
 
-#AlistRemoveCON .jsavcode{
-  border: 1px solid;
-  border-color: white;
+#AlistRemoveCON .jsavcode {
   margin-left: 287px;
   width: 560px;
 }
 
-.ssAV .jsavline{
+.ssAV .jsavline {
   height: 45px;
 }
 
-.jsavcanvas{
+.jsavcanvas {
   height:50px;
 }
 
@@ -50,15 +42,4 @@
 
 #AlistVarsCON .jsavoutput.jsavline {
   height: 70px;
-}
-
-#AlistAppendCON {
-  height: 280px;
-}
-
-#AlistAppendCON .jsavcode{
-  border: 1px solid;
-  border-color: white;
-  margin-left: 350px;
-  width: 400px;
 }

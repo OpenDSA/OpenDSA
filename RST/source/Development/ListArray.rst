@@ -63,19 +63,15 @@ elements in contiguous cells of the array, the
 ``insert``, ``append``, and ``remove``
 methods must maintain this property.
 
-Inserting or removing elements at the tail of the list
-is easy, so the ``append`` operation takes :math:`\Theta(1)` time.
-But if we wish to insert an element at the head of the list,
-all elements currently in the list must shift one position toward the
-tail to make room, as illustrated by the following slideshow.
+Here a visualization for how the ``insert`` method works.
 
-.. inlineav:: AlistCON1 ss
+.. inlineav:: AlistInsertCON ss
    :output: show
 
-This process takes :math:`\Theta(n)` time if there are :math:`n`
-elements already in the list.
-If we wish to insert at position :math:`i` within a list of :math:`n`
-elements, then :math:`n - i` elements must shift toward the tail.
+Visualization for Append
+
+.. inlineav:: AlistAppendCON ss
+   :output: show
 
 Removing an element from the head of the list is
 similar to insert in that all remaining elements  must shift toward
@@ -83,18 +79,19 @@ the head by one position to fill in the gap.
 If we want to remove the element at position :math:`i`, then
 :math:`n - i - 1` elements must shift toward the head, as shown in the
 following slideshow. 
+
+.. inlineav:: AlistRemoveCON ss
+   :output: show
+
 In the average case, insertion or removal each requires moving half
 of the elements, which is :math:`\Theta(n)`.
 
-.. inlineav:: AlistCON2 ss
-   :output: show
-
-Most of the other member functions for Class ``AList`` simply
+Aside from ``insert`` and ``remove``, the only other operations that
+might require more than constant time are the constructor and
+``clear``.
+The other methods for Class ``AList`` simply
 access the current list element or move the current position.
-Such operations all require :math:`\Theta(1)` time.
-Aside from ``insert`` and ``remove``,
-the only other operations that might require more than
-constant time are the constructor and ``clear``.
+They all require :math:`\Theta(1)` time.
 
 Now try for yourself to see if you understand how Array-Based
 Insertion and Deletion work.
