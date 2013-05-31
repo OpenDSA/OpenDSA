@@ -184,6 +184,9 @@ named ``LList``.
    list simply from these three pointers, the list length will be stored
    explicitly, and updated by every operation that modifies the list size.
    The value ``cnt`` stores the length of the list.
+   
+.. inlineav:: LlistVarsCON ss
+   :output: show
 
 .. TODO::
    :type: Slideshow
