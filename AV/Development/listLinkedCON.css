@@ -10,15 +10,6 @@
   height: 100px;
 }
 
-#listLinkedCON1 {
-  height: 290px;
-}
-#listLinkedCON1 .jsavcode{
-  border: 1px solid;
-  border-color: white;
-  margin-left: 338px;
-  width: 510px;
-}
 #listLinkedCON2 {
   height: 345px;
 }
@@ -28,14 +19,6 @@
   border-color: white;
   margin-left: 270px;
   width: 600px;
-}
-
-#LlistVarsCON {
-  height: 280px;
-}
-
-#LlistVarsCON .jsavoutput.jsavline {
-  height: 70px;
 }
 
 #LlistBadCON {
@@ -50,6 +33,32 @@
 }
 #LlistBadReasonCON .jsavoutput.jsavline {
   height: 70px;
+}
+
+#LlistVarsCON {
+  height: 280px;
+}
+
+#LlistVarsCON .jsavoutput.jsavline {
+  height: 70px;
+}
+
+#LListCons {
+  height: 390px;
+}
+
+#LListCons .jsavoutput.jsavline {
+  height: 70px;
+}
+
+#LlistInsertCON {
+  height: 290px;
+}
+#LlistInsertCON .jsavcode{
+  border: 1px solid;
+  border-color: white;
+  margin-left: 338px;
+  width: 510px;
 }
 
 .jsavhorizontallist.jsavautoresize .jsavnode {

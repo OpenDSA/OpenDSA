@@ -208,6 +208,9 @@ named ``LList``.
    linked lists.
    It is ignored by the implementation.
    Both constructors rely on the ``clear`` method to do the real work.
+   
+.. inlineav:: LListCons ss
+   :output: show
 
 Implementations for most member functions of the ``list``
 class are straightforward.
@@ -247,7 +250,7 @@ However, ``insert`` and ``remove`` should be studied carefully.
    element was added to the end of the list.
    Insertion requires :math:`\Theta(1)` time.
 
-.. inlineav:: listLinkedCON1 ss
+.. inlineav:: LlistInsertCON ss
    :output: show
 
 .. _LinkInsert:
