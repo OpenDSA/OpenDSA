@@ -109,6 +109,7 @@ SLIDESHOW = '''\
   <a href="#" class="resubmit_link">Resubmit</a>
  </span>
 </div>
+<p></p>
 '''
 
 

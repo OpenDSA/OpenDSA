@@ -72,6 +72,9 @@ Everything: min
 invalid: min
 	python $(CONFIG_SCRIPT) config/invalid.json
 
+slides: min
+	python $(CONFIG_SCRIPT) s config/slides.json
+
 allBooks: CS223 CS3114a CS3114b OpenDSA T1061220 Dev Everything
 
 nomin:

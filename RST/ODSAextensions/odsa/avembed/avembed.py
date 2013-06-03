@@ -37,6 +37,7 @@ IFRAME_HTML = '''\
 <div id="%(exer_name)s" class="embedContainer">
   <iframe id="%(exer_name)s_iframe" data-exer-name="%(exer_name)s" data-points="%(points)s" data-required="%(required)s" data-threshold="%(threshold)s" data-long-name="%(long_name)s" data-type="%(type)s" src="%(av_address)s" width="%(width)s" height="%(height)s" scrolling="no">Your browser does not support iframes.</iframe>
 </div>
+<p></p>
 '''
 
 
@@ -155,6 +156,7 @@ class avembed(Directive):
     else:
       self.options['show_hide_text'] = "Show"
       res += BUTTON_HTML % (self.options)
+      res += '<p></p>'
 
     return [nodes.raw('', res, format='html')]
 
