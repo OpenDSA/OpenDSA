@@ -52,13 +52,14 @@
 }
 
 #LlistInsertCON {
-  height: 290px;
+  height: 450px;
 }
 #LlistInsertCON .jsavcode{
   border: 1px solid;
   border-color: white;
-  margin-left: 338px;
-  width: 510px;
+  position: relative;
+  top: 150px;
+  width: 600px;
 }
 
 #LlistSpecInsertCON {
@@ -70,6 +71,7 @@
   margin-left: 338px;
   width: 510px;
 }
+
 
 .jsavhorizontallist.jsavautoresize .jsavnode {
   min-width: 30px;
@@ -85,6 +87,7 @@
 .jsavcanvas{
 	height: 200px;
 }
+
 
 
 

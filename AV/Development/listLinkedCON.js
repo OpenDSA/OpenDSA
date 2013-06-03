@@ -538,18 +538,18 @@ var nodeGap = 25;
   // Left margin of label "head"
   // Top margin of label "head"
   // They will be the benchmark for calculating other objects' offset.
-  var leftMargin = 5;
-  var topMargin = 5;
+  var leftMargin = 200;
+  var topMargin =  0;
 
   // Create an list object under control of JSAV library
-  var l = jsav.ds.list({"nodegap": 25, "center": false, left: leftMargin});
-  
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin + 40, left: leftMargin + 17});
+    
   //create two hidden arrays for ".copyValue" animation
   tempArr[0] = ""; 
   var arr = jsav.ds.array(tempArr, 
             {indexed: true, layout: "array"});
   arr.hide();  
-  var cpyArr = [10]; 
+  var cpyArr = ["it"]; 
   var arr1 = jsav.ds.array(cpyArr, 
             {indexed: true, layout: "array"});
   arr1.hide();
@@ -558,56 +558,57 @@ var nodeGap = 25;
   var headLabel = jsav.label("head",
                     {before: l, left: leftMargin, top: topMargin});
   var headArrow = jsav.g.line(leftMargin + 10, topMargin + 20,
-                              leftMargin + 20, topMargin + 45,
+                              leftMargin + 30, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
+  
   //curr
   var currLabel = jsav.label("curr",
-	  {before: l, left: leftMargin + 60, top: topMargin, "font-size":"20px"});
-  var currArrow = jsav.g.line(leftMargin + 70, topMargin + 20,
-                              leftMargin + 85, topMargin + 45,
+	  {before: l, left: leftMargin + 150, top: topMargin, "font-size":"20px"});
+  var currArrow = jsav.g.line(leftMargin + 160, topMargin + 20,
+                              leftMargin + 180, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
   //Tail
   var tailLabel = jsav.label("tail",
-	  {before: l, left: leftMargin + 200, top: topMargin, "font-size":"20px"});
-  var tailArrow = jsav.g.line(leftMargin + 210, topMargin + 20,
-                              leftMargin + 225, topMargin + 45,
+	  {before: l, left: leftMargin + 300, top: topMargin, "font-size":"20px"});
+  var tailArrow = jsav.g.line(leftMargin + 310, topMargin + 20,
+                              leftMargin + 330, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
  
    //New Tail after inserting one item 
-  var tailLabel1 = jsav.label("tail",
-	  {before: l, left: leftMargin + 265, top: topMargin, "font-size":"20px"}).hide();
-  var tailArrow1 = jsav.g.line(leftMargin + 275, topMargin + 20,
-                              leftMargin + 290, topMargin + 45,
+   var temp = leftMargin + 260 + 115;
+  var newTailLabel = jsav.label("tail",
+	  {before: l, left: temp, top: topMargin, "font-size":"20px"}).hide();
+  var newTailArrow = jsav.g.line(leftMargin + 385, topMargin + 20,
+                              leftMargin + 405, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
 
   //Vertical bar
-  var bar1 = jsav.g.line(leftMargin + 52, 50, leftMargin + 52, 80,
+  var bar = jsav.g.line(leftMargin + 52 + 95, 42, leftMargin + 52 + 95, 72,
 		{"stroke-width": 1, "stroke":"#000"});
 
   //Horizontal arrow in step 4 pointing to item 12
-  var longArrow= jsav.g.line(leftMargin + 107, 65, leftMargin + 107 + 93, 65,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+  var longArrow= jsav.g.line(leftMargin + 107 + 95, topMargin + 56, leftMargin + 107 + 198, topMargin + 56,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
 
   //initialize the link list
   jsav.umsg("The linked list before insertion");
   l.addFirst("null")
    .addFirst(12)
    .addFirst(23)
+   .addFirst(35)
    .addFirst("null");
   l.layout();
-  l.css({top: 50, left: leftMargin});
   pseudo.highlight(1);
   jsav.displayInit();
     
   //step 2
-  var n3 = l.newNode("");	
+  var newNode = l.newNode("");	
   // Set the position for the new node
-  n3.css({top: 60, left: nodeWidth * 2 + nodeGap - 7}); 
+  newNode.css({top: 60, left: 187}); 
   jsav.umsg("Create a new link node.");
   //Copy 23 to the new link node   
-  jsav.effects.copyValue(arr, 0, n3);
-  n3.highlight();
+  jsav.effects.copyValue(arr, 0, newNode);
+  newNode.highlight();
   pseudo.unhighlight(1);
   pseudo.highlight(2);
   jsav.step();
@@ -615,47 +616,45 @@ var nodeGap = 25;
   //step 3
   jsav.umsg("Copy current.element() to the new node.");
   //Copy 10 to the new link node   
-  jsav.effects.copyValue(l.get(1), n3);
+  jsav.effects.copyValue(l.get(2), newNode);
   jsav.step();
 
   //step 4
-  var node = l.get(1).next();    
-  l.get(1).edgeToNext().hide();
-  l.get(1).next(n3);	
-  n3.next(node);
-  n3.unhighlight();
+  var node = l.get(2).next();    
+  l.get(2).edgeToNext().hide();
+  l.get(2).next(newNode);	
+  newNode.next(node);
+  newNode.unhighlight();
   l.layout({updateTop: false}); // control that top coordinate of nodes should not be recalculated
-  l.css({left: leftMargin});  
   l.get(3).highlight();  
   longArrow.show();
   tailArrow.hide();
   tailLabel.hide();
-  tailArrow1.show();
-  tailLabel1.show();
-  jsav.umsg(" The next field of the new list node is assigned to point to the current node (the one after the node that curr points to).");
+  newTailArrow.show();
+  newTailLabel.show();
+  jsav.umsg(" The next field of the new list node is assigned to point to the next node of the current node.");
   jsav.step();
 
   //step 5
-  l.get(1).highlight();
+  l.get(2).highlight();
   l.get(3).unhighlight();
-  l.get(1).next(n3).edgeToNext().show();	
+  l.get(2).next(newNode).edgeToNext().show();	
   longArrow.hide();
-  jsav.umsg("The next field of node pointed to by curr is assigned to point to the newly inserted node.");
+  jsav.umsg("The next field of the current node is assigned to point to the newly inserted node.");
   jsav.step();
 
   //step 6
-  l.get(1).unhighlight();
-  bar1.show();
-  l.get(2).highlight();
+  l.get(2).unhighlight();
+  l.get(3).highlight();
   jsav.umsg("The new link node is in its correct position in the list.");
   l.layout();
   jsav.step();
 
   //step 7
-  jsav.effects.copyValue(arr1, 0, l.get(1));
-  l.get(2).unhighlight();
-  l.get(1).highlight();
-  jsav.umsg("The value of the current node is set to 10.");
+  jsav.effects.copyValue(arr1, 0, l.get(2));
+  l.get(3).unhighlight();
+  l.get(2).highlight();
+  jsav.umsg("The value of the current node is set to \"it\".");
   pseudo.unhighlight(2);
   pseudo.highlight(3);
   jsav.step();
