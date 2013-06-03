@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block header %}
+    <section id="controls">
+      <a href="" id="prev">prev</a>
+      <span id="cur_slide_num"></span> / <span id="num_slides"></span>
+      <a href="" id="next">next</a>
+    </section>
+{% endblock %}
+
+{%- block slide_container_class %}table{%- endblock %}
