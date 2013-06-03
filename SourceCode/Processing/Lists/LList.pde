@@ -1,16 +1,17 @@
 /* *** ODSATag: LList *** */
 // Linked list implementation
+/* *** ODSATag: LListVars *** */
 class LList implements List {
   private Link head;         // Pointer to list header
   private Link tail;         // Pointer to last element
   protected Link curr;       // Access to current element
   private int cnt;           // Size of list
+/* *** ODSAendTag: LListVars *** */
 
+/* *** ODSATag: LListCons *** */
   // Constructors
   LList(int size) { this(); }   // Constructor -- Ignore size
-  LList() {
-    clear();
-  }
+  LList() { clear(); }
 
   // Remove all elements
   void clear() {
@@ -18,6 +19,7 @@ class LList implements List {
     head = new Link(tail);        // Create header
     cnt = 0;
   }
+/* *** ODSAendTag: LListCons *** */
   
 /* *** ODSATag: LListInsert *** */
   // Insert "it" at current position

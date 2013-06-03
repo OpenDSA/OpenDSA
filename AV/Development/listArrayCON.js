@@ -17,9 +17,9 @@ function bgColor(array) {
   }
 }
 
-//Array-Based list insertion
+// Array-Based list insertion
 (function ($) {
-  var jsav = new JSAV("AlistCON1");
+  var jsav = new JSAV("AlistInsertCON");
 
   //pseudocode
   var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/AList.pde",
@@ -95,7 +95,7 @@ function bgColor(array) {
 
 //Array-Based list deletion
 (function ($) {
-  var jsav = new JSAV("AlistCON2");	
+  var jsav = new JSAV("AlistRemoveCON");
   var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/AList.pde",
                        lineNumbers: false,
                        startAfter: "/* *** ODSATag: AListRemove *** */",
@@ -176,4 +176,69 @@ function bgColor(array) {
   jsav.umsg("Return the deleted element");
   jsav.recorded();
 
+}(jQuery));
+
+
+// Append visualization
+(function ($) {
+  var jsav = new JSAV("AlistAppendCON");	
+  var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/AList.pde",
+                        lineNumbers: false,
+                        startAfter: "/* *** ODSATag: AListAppend *** */",
+                        endBefore: "/* *** ODSAendTag: AListAppend *** */"});
+  var arr = jsav.ds.array(arrValues,
+        {indexed: true, layout: "array", top: 12, left: 10}).hide();
+  var arrow1 = jsav.g.line(180, 3, 180, 28,
+        {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  arrow1.hide();
+  var label = jsav.label("Append 23",
+			 {before: arr, left: 140, top: -20}).hide();
+
+  var arrMS = jsav.ds.array([8], {indexed: false, layout: "array",
+					  left: 100, top: 70});
+  arrMS.hide();
+  var labelMaxSize = jsav.label("maxSize", {before: arrMS, left: 33, top: 89});
+  labelMaxSize.hide();
+
+  var arrLS = jsav.ds.array([5], {indexed: false, layout: "array",
+					  left: 100, top: 105});
+  arrLS.hide();
+  var labelListSize =jsav.label("listSize", {before: arrLS, left: 42, top: 124});
+  labelListSize.hide();
+
+  jsav.umsg("Inserting at the tail of the list is easy");
+  jsav.displayInit();
+
+  arr.show();
+  arr.highlight(5);
+  arrow1.show();
+  label.show();
+  pseudo.highlight(1);
+  jsav.umsg("We will append the value 23");
+  arrMS.show();
+  labelMaxSize.show();
+  arrLS.show();
+  labelListSize.show();
+  jsav.step();
+
+  pseudo.unhighlight(1);
+  pseudo.highlight(2);
+  jsav.umsg("First check that the array has a free slot");
+  arrMS.highlight(0);
+  arrLS.highlight(0);
+  jsav.step();
+
+  jsav.umsg("Now simply insert the value into the empty position, and update <code>listSize</code>");
+  pseudo.unhighlight(2);
+  pseudo.highlight(3);
+  arrLS.value(0, 6);
+  arrMS.unhighlight(0);
+  arr.value(5, "23");
+  jsav.step();
+
+  jsav.umsg("The append operation requires &theta;(1) time");
+  arr.unhighlight(5);
+  arrLS.unhighlight(0);
+  pseudo.unhighlight(3);
+  jsav.recorded();
 }(jQuery));

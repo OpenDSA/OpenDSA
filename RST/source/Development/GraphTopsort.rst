@@ -27,8 +27,9 @@ one prerequisite.
 The process of laying out the vertices of a DAG in a linear order to
 meet the prerequisite rules is called a :dfn:`topological sort`.
 
+.. _TopSort:
+
 .. inlineav:: topsortCON1 dgm
-   :target: TopSort
    :align: center
 
    An example graph for topological sort. Seven tasks have

@@ -264,8 +264,9 @@ implementations for a given data structure.
 Other sections use the logical ADT for the data structure in the
 context of a higher-level task.
 
+.. _DataType:
+
 .. inlineav:: ADTCON1 dgm
-   :target: DataType
    :align: justify
 
    The relationship between data items, abstract data types, and data

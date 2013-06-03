@@ -33,115 +33,89 @@ Written by Junyang Chen and Cliff Shaffer
 <body>
 
 <script>
-var
-	jsav,           // The JSAV object
-	answerArr = [], // The (internal) array that stores the correct answer
-	cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
-	jsavArr,        // The array that the user manipulates (JSAV object)
-	inPosision,		// insertion location
-	inValue,        // insertion value
-	insertEnable,   // Boolean: Tells us if insertion allowed
-	userInput,      // Boolean: Tells us if user ever did anything
-	selected_index; // Position that has been selected by user for swap
+var jsav,           // The JSAV object
+  answerArr = [], // The (internal) array that stores the correct answer
+  cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
+  jsavArr,        // The array that the user manipulates (JSAV object)
+  inPosision,		// insertion location
+  inValue,        // insertion value
+  userInput,      // Boolean: Tells us if user ever did anything
+  selected_index; // Position that has been selected by user for swap
 
 // Click event handler on the array
 var clickHandler = function (index, e) {
-	if(insertEnable === false)
-		clickSwap(index);
-	else
-		clickInsert(index);
+  if (selected_index === -1) { // if nothing currently selected
+    jsavArr.css(index, {"font-size": "130%"});
+	selected_index = index;
+	jsavArr.highlight(index);
+  } 
+  else {	
+    jsavArr.swap(selected_index, index);	
+	jsavArr.css(index, {"font-size": "100%"});
+	jsavArr.unhighlight(index);
+	selected_index = -1;  // Reset to nothing selected
+  }
+  userInput = true;
 };
 
-// Click event on the array for Swapping values
-var clickSwap = function(index){	
-	if (selected_index === -1) { // if nothing currently selected
-		jsavArr.css(index, {"font-size": "130%"});
-		selected_index = index;
-		jsavArr.highlight(index);
-	} 
-	else {	
-		jsavArr.swap(selected_index, index);	
-		jsavArr.css(index, {"font-size": "100%"});
-		jsavArr.unhighlight(index);
-		selected_index = -1;  // Reset to nothing selected
-	}
-	userInput = true;
-}
-
-// Click event on the array for insertion
-var clickInsert = function(index){	
-	if(jsavArr.value(index) != ""){
-		//alert("You can only insert value into an empty location");
-		insertEnable = false;
-		return;
-	}
-
-	jsavArr.value(index, inValue);
-	jsavArr.css(index, { "background-color": "#ddd" });
-	insertEnable = false;
-	userInput = true;
-}
 
 // reset function definition
 var f_reset = function () {
-	jsavArr.clear();
-	// Re-initialize the displayed array object
-	jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
-	jsavArr.css({top:50});
-	jsavArr.click(clickHandler); // Rebind click handler after reset
-	userInput = false;
-	insertEnable = false;
+  jsavArr.clear();
+  // Re-initialize the displayed array object
+  jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
+  jsavArr.css({top:50});
+  jsavArr.click(clickHandler); // Rebind click handler after reset
+  userInput = false;
 };
 
 // Initialise the exercise
 var initJSAV = function (arr_size, insertPos, insertValue) {
-	var i, j;
-	var emptyArr = ["","","",""]; //for the last 4 elements of the array
-	userInput = false;
-	selected_index = -1;
-	insertEnable = false;
-	inPosision = insertPos;
-	inValue = insertValue;  
-	answerArr.length = 0; // Out with the old
+  var i, j;
+  var emptyArr = ["","","",""]; //for the last 4 elements of the array
+  userInput = false;
+  selected_index = -1;
+  insertEnable = false;
+  inPosision = insertPos;
+  inValue = insertValue;  
+  answerArr.length = 0; // Out with the old
 
-	// Give random numbers in range 0..999
-	for (i = 0; i < arr_size; i++) {
-		answerArr[i] = Math.floor(Math.random() * 1000);
-	}
+  // Give random numbers in range 0..999
+  for (i = 0; i < arr_size; i++) {
+    answerArr[i] = Math.floor(Math.random() * 1000);
+  }
 
-	answerArr.push.apply(answerArr, emptyArr);
-	// Now make a copy
-	cloneArr = answerArr.slice(0);
+  answerArr.push.apply(answerArr, emptyArr);
+  // Now make a copy
+  cloneArr = answerArr.slice(0);
 
-	jsav = new JSAV("jsav");
-	jsav.recorded();
-	jsavArr = jsav.ds.array(answerArr, {indexed: true, center: false});
-	jsavArr.css({top:50});
-	var arrowCurr = jsav.g.line(24 + inPosision * 45, 30, 24 + inPosision * 45, 52,{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  jsav = new JSAV("jsav");
+  //jsav.recorded();
+  jsavArr = jsav.ds.array(answerArr, {indexed: true, center: false});
+  jsavArr.css({top:50});
+  var arrowCurr = jsav.g.line(24 + inPosision * 45, 30, 24 + inPosision * 45, 52,{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 	var label = jsav.label("Curr", {before: jsavArr, left: 10 + inPosision * 45, top: 10});	
 	
-	//var arrow1 = jsav.g.path( "M0 0 L125 0 L125 40 L35 40 L25 50 L15 40 L0 40 z", {"stroke":"red", "stroke-width": 2});
-
-	// correct answer
-	answerArr.splice(inPosision, 0, inValue);
+  // correct answer
+  answerArr.splice(inPosision, 0, inValue);
 	
-	// Bind the clickHandler to handle click events on the array
-	jsavArr.click(clickHandler);
+  // Bind the clickHandler to handle click events on the array
+  jsavArr.click(clickHandler);
 
-	// Set up handler for insert button
-	$("#insert").click(
-	function () {
-			  
-		jsavArr.unhighlight(selected_index);	
-		jsavArr.css(selected_index, {"font-size": "100%"});
-		insertEnable = true;
-		selected_index = -1;
-		userInput = true;
-	});
+  // Set up handler for insert button
+  $("#insert").click(function () {
+    if(selected_index !== -1){
+      jsavArr.value(selected_index, inValue);
+	  jsavArr.css(selected_index, { "background-color": "#ddd" });
+	  jsavArr.css(selected_index, {"font-size": "100%"});
+	  jsavArr.unhighlight(selected_index);
+	  selected_index = -1;
+	  userInput = true;
+    }
+  });
 
-	// Set up handler for reset button
-	$("#reset").click(function () { f_reset(); });
-
+  // Set up handler for reset button
+  $("#reset").click(function () { f_reset(); });
 };
 
 // Check user's answer for correctness: User's array must match answer
@@ -166,11 +140,17 @@ var checkAnswer = function (arr_size) {
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem">Your task in this exercise is to show the behavior of Array-Based List insertion.
+      <p class="problem">Your task in this exercise is to show the
+        behavior for array-based list insertion.
         In the array displayed below, the "current" position is <b><var>insert_pos</var></b>.</p>
       <div class="question">
-        <p> Perform the Array-Based List Insertion to move all elements after "current" one position to the right, then insert a value of <b><var>insert_value</var></b> into "current", which is position <b><var>insert_pos</var></b>.</p>
-        <input id="reset" type="button" value="Reset" />	
+        <p>The value to insert is  <b><var>insert_value</var></b>,
+	  and it is to be inserted into position <b><var>insert_pos</var></b>.</p>
+        <p>To move an element, click on it (to highlight it), then click on where you
+        want it to go. You can insert the new
+        value <b><var>insert_value</var></b> into a highlighted
+        array position by clicking the "Insert" button.</p>
+        <input id="reset" type="button" value="Reset" />
 		<input id="insert" type="button" value="Insert" />
         <div id="jsav"></div>
       </div>

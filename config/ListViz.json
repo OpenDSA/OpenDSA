@@ -1,5 +1,5 @@
 {
-  "title": "Test",
+  "title": "Lists (Visual Version)",
   "book_dir": "Books",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
@@ -18,13 +18,8 @@
         "long_name": "List ADT",
         "exercises": {}
       },
-      "Development/ListArray": {
-        "long_name": "Array-based Lists",
-        "exercises": {
-        }
-      },
       "Development/ListArrayViz": {
-        "long_name": "Array-based Lists (Visual)",
+        "long_name": "Array-based Lists",
         "exercises": {
         }
       },

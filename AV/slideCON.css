@@ -26,10 +26,12 @@ ul li {
 .processing {
   background-color: #ddf;
 }
-.jsavhighlight {
-  color: black;
+
+.jsavcode {
+  border: 1px solid;
+  border-color: white;
 }
 
-.ssAV code {
-  font-size: 15px;
+.jsavcodeline.jsavhighlight {
+  background-color: #ccc !important;
 }

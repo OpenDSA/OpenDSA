@@ -20,8 +20,15 @@ pointers and is usually called a :dfn:`linked list`.
 The linked list uses :dfn:`dynamic memory allocation`,
 that is, it allocates memory for new list elements as needed.
 
-A linked list is made up of a series of objects, called the
-:dfn:`nodes` of the list.
+.. _LinkedListNodes:
+
+.. inlineav:: listLinkedNodeCON dgm
+   :align: center
+
+   A linked list is made up of a series of objects, called the
+   :dfn:`nodes` of the list. You can see that the nodes are "linked"
+   together.
+
 Because a list node is a distinct object (as opposed to simply a cell
 in an array), it is good practice to make a separate list node class.
 (We can also use the list node class for the linked implementations
@@ -38,30 +45,27 @@ has a single pointer to the next node on the list.
 .. codeinclude:: Lists/Link.pde
    :tag: Link
 
-.. TODO::
-   :type: Slideshow
-
-   The ``Link`` class is quite simple.
-   There are two forms for its constructor, one with
-   an initial element value and one without.
-   Member functions allow the link user to get or set the ``element``
-   and ``link`` fields.
+The ``Link`` class is quite simple.
+There are two forms for its constructor, one with
+an initial element value and one without.
+Member functions allow the link user to get or set the ``element``
+and ``link`` fields.
 
 .. TODO::
    :type: Slideshow
 
-   [The image should become a JSAV slideshow.]
-   Here is a graphical depiction for a
-   linked list storing four integers.
+   [Slide 1: Use JSAV to show what is now Figure :num:`Figure #BadList` (b).]
+   [Text:] Here is a graphical depiction for a linked list storing
+   five integers. 
    The value stored in a pointer variable is indicated by an arrow
    "pointing" to something.
    A ``NULL`` pointer is indicated graphically by a diagonal slash
    through a pointer variable's box.
-   The vertical line between the nodes labeled 23 and 12 in
-   Figure :num:`Figure #BadList` (a) indicates the current position
-   (immediately to the right of this line).
+   The vertical line between the nodes labeled 23 and 10 indicates the
+   current position (immediately to the right of this line).
 
-   The list's first node is accessed from a pointer named
+   [Slide 2: Still show the diagram of part (b).]
+   [Text:] The list's first node is accessed from a pointer named
    ``head``.
    To speed access to the end of the list, and to allow the
    ``append`` method to be performed in
@@ -69,6 +73,13 @@ has a single pointer to the next node on the list.
    link of the list.
    The position of the current element is indicated by another pointer,
    named ``curr``.
+
+   [Slide 3: Show a transition to part (a) of the figure.]
+   [Text:] Here is what we would like to have happen when we delete
+   the current node (the one with value 10).
+   
+.. inlineav:: LlistBadCON ss
+   :output: show
 
 .. _BadList:
 
@@ -79,36 +90,50 @@ has a single pointer to the next node on the list.
    :figwidth: 90%
    :alt: Linked list implementation: ``curr`` points to current node
 
-   ``curr`` points directly to the current node.
-   (a) Linked list prior to inserting element with value 10.
-   (b) Desired effect of inserting element with
-   value 10.
+   curr points directly to the current node.
 
-There are a number of problems with the figure above.
-First, there are lots of special cases when the list is
+There are a number of problems with the representation just
+described.
+First, there are lots of special cases to code up when the list is
 empty, or when the current position is at an end of the list.
-Special cases occur when the list is empty, since then we have no
-element for ``head``, ``tail``, and ``curr`` to point to.
-Implementing special cases for ``insert`` and ``remove``
+Special cases will occur when the list is empty because then we have
+no element for ``head``, ``tail``, and ``curr`` to point to.
+Implementing these special cases for ``insert`` and ``remove``
 increases code complexity, making it harder to understand,
 and thus increases the chance of introducing bugs.
 
 .. TODO::
    :type: Slideshow
 
-   Another problem comes up when curr points to the last element.
-   Since we have no pointer available to the node preceding the
-   current node, there is no way to change that node's ``next``
-   pointer value.
-   Normally we can deal with this by bringing the element from the
-   node following curr, and dropping that element.
-   But we cannot do that if ``curr`` is already pointing to that last
-   element.
-   There is no way around this problem with the list as shown here.
+   [Slide 1: Show the list of Figure 0.4.2 (b)]
+   Another problem is that we have no link for the preceding
+   node. Often we can get around this problem during deletion by
+   copying the next value into the current node.
+   Lets look again at the example where we delete value 10.
 
+   [Slide 2: Remove value 10] First we remove the value 10 from the
+   current node.
+
+   [Slide 3: Transition value 12 to the current node.] Now we move the
+   next value (12) to the current node).
+
+   [Slide 4: Change the link of curr.next.] Now we can route around
+   the uneeded node.
+
+   [Slide 5: Unfortunately, this approach does not work when the
+   current node is the last one on the list.
+
+   [Slide 6: Show the list with curr moved to the last node.]
+   As in this example. There is no way to update the "next" pointer of
+   the node with value 12.
+   There is no way around this problem with the list as shown here.
+   
+.. inlineav:: LlistBadReasonCON ss
+   :output: show
+   
 Fortunately, there is a fairly easy way to deal with all of the
 special cases, as well as the problem with deleting the last node.
-These special cases can be eliminated by implementing
+Many special cases can be eliminated by implementing
 linked lists with an additional :dfn:`header node`
 as the first node of the list.
 This header node is a link node like any other, but its value is
@@ -128,11 +153,25 @@ value.
 The initial condition for an empty list is shown in Figure
 :num:`Figure #LinkedListInit`.
 
-.. inlineav:: listLinkedCON3 dgm
-   :target: LinkedListInit
+.. _LinkedListInit:
+
+.. inlineav:: listLinkedInitCON dgm
    :align: center
 
    Initial conditions for the linked list, with header and trailer nodes.
+
+Adding the trailer node also solves our problem with deleting the last
+node on the list, as we will see below.
+
+.. TODO::
+   :type: Diagram
+
+   [Show the list of 0.4.2 (b) with header and tailer.]
+   Here is what the list would look like with the header and trailer
+   nodes added.
+   
+.. inlineav:: listLinkedHeaderTailerCON dgm
+   :align: center
 
 Here is the implementation for the linked list class,
 named ``LList``.
@@ -143,17 +182,23 @@ named ``LList``.
 .. TODO::
    :type: Slideshow
 
-   [Slideshow walking through the data members.]
+   [Slideshow walking through the data members. Show code with tag
+   LListVars from Lists/LList.pde]
    Class ``LList`` inherits from the abstract list class and
    thus must implement all the member functions of Class ``List``.
    Since there is no simple way to compute the length of the
    list simply from these three pointers, the list length will be stored
    explicitly, and updated by every operation that modifies the list size.
    The value ``cnt`` stores the length of the list.
+   
+.. inlineav:: LlistVarsCON ss
+   :output: show
 
 .. TODO::
    :type: Slideshow
 
+   [Slideshow walking through the constructors. Show code with tag
+   LListCons from Lists/LList.pde]
    Note that the constructor for ``LList`` maintains the optional
    parameter for minimum list size introduced for Class ``AList``.
    This is done simply to keep the calls to the constructor
@@ -162,6 +207,10 @@ named ``LList``.
    array when the list is created, this parameter is unnecessary for
    linked lists.
    It is ignored by the implementation.
+   Both constructors rely on the ``clear`` method to do the real work.
+   
+.. inlineav:: LListCons ss
+   :output: show
 
 Implementations for most member functions of the ``list``
 class are straightforward.
@@ -201,9 +250,14 @@ However, ``insert`` and ``remove`` should be studied carefully.
    element was added to the end of the list.
    Insertion requires :math:`\Theta(1)` time.
 
-.. inlineav:: listLinkedCON1 ss
+.. inlineav:: LlistInsertCON ss
    :output: show
+   
+Special case for Linked list insertion 
 
+.. inlineav:: LlistSpecInsertCON ss
+   :output: show
+   
 .. _LinkInsert:
 
 .. odsafig:: Images/LinkIns.png
