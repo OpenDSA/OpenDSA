@@ -27,7 +27,7 @@ existing modules.
 
 Create Course Notes
 -------------------
-OpenDSA uses `hieroglyph <https://github.com/nyergler/hieroglyph/>` a Sphinx 
+OpenDSA uses `hieroglyph <https://github.com/nyergler/hieroglyph/>`_ a Sphinx 
 extension to build HTML slides.
 
 The course notes infrastructures is similar to eTextBook creation, and uses
