@@ -124,7 +124,7 @@ objects (such as rendering the objects to the screen).
 The procedural design approach is for each action to be implemented
 as a method that takes as a parameter a pointer to the base class
 type.
-Each action such method will traverse through the collection of
+Each such action method will traverse through the collection of
 objects, visiting each object in turn.
 Each action method contains something like a switch statement that
 defines the details of the action for each subclass in the collection
