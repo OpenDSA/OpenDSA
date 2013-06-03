@@ -252,7 +252,12 @@ However, ``insert`` and ``remove`` should be studied carefully.
 
 .. inlineav:: LlistInsertCON ss
    :output: show
+   
+Special case for Linked list insertion 
 
+.. inlineav:: LlistSpecInsertCON ss
+   :output: show
+   
 .. _LinkInsert:
 
 .. odsafig:: Images/LinkIns.png
