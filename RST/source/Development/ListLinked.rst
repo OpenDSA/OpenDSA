@@ -296,7 +296,7 @@ Special case for Linked list insertion
    method.
    Removing an element requires :math:`\Theta(1)` time.
 
-.. inlineav:: listLinkedCON2 ss
+.. inlineav:: LlistRemoveCON ss
    :output: show
    
 .. _LinkRemove:

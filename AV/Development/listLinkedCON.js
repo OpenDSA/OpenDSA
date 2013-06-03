@@ -35,125 +35,6 @@ var nodeGap = 25;
   l.layout();
 }(jQuery));
 
-//Linked list deletion
-(function ($) {
-  var av = new JSAV("listLinkedCON2");
-  //pseudocode
-  var pseudo = av.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
-                       lineNumbers: false,
-                       startAfter: "/* *** ODSATag: LListRemove *** */",
-                       endBefore: "/* *** ODSAendTag: LListRemove *** */"});
-  // Left margin of the JSAV List
-  var leftMargin = 5;
-  var l = av.ds.list({"nodegap": 25, "center": false, "left": leftMargin});
-  //create a the hidden array
-  var arr = av.ds.array(tempArr, {indexed: true, layout: "array"});
-  arr.hide();
-
-  //Left margin of bar1 in step 1
-  var bar1LeftMargin = leftMargin + nodeWidth * 2 + nodeGap * 1.5;
-  //vertical bar in 1st step
-  var bar1 = av.g.line(bar1LeftMargin, 50, bar1LeftMargin, 80,
-	         {"stroke-width": 1, "stroke":"#000"});
-
-  //Left margin of label in step 1
-  var labelLeftMargin = leftMargin + nodeWidth + 10;
-  //label "curr" and arrow in the 1st step
-  var label = av.label("curr", 
-	          {before: arr, left: labelLeftMargin, top: 0, "font-size":"20px"});
-  //Left margin of arrow in step 1
-  var arrowLeftMargin = labelLeftMargin + 12;
-  //arrow pointing to "curr" in the 1st step
-  var arrow = av.g.line(arrowLeftMargin, 25, arrowLeftMargin + 20, 45,
-	          {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  //Left margin of labelIt in the 3rd step
-  var labelItLeftMargin = leftMargin + nodeGap + nodeWidth * 2 - 40;
-  //label "it" and arrow in the 3rd step
-  var labelIt = av.label("it", 
-	            {before: arr, left: labelItLeftMargin, top: 104, "font-size":"20px"});
-  //Left margin of arrowIt the 3rd step
-  var arrowItLeftMargin = labelItLeftMargin + 18;
-  var arrowIt = av.g.line(arrowItLeftMargin, 105, arrowItLeftMargin + 50, 75,
-	            {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
-  labelIt.hide();
-  //Left margin of dashline in the 4th step
-  var dashlineLeftMargin = leftMargin + nodeGap + nodeWidth * 2 - 3;
-  //dashline in the 4th step
-  var dashline = av.g.polyline([[dashlineLeftMargin, 66], 
-	  [dashlineLeftMargin + 13, 66], [dashlineLeftMargin + 13, 30],[dashlineLeftMargin + 83,30],[dashlineLeftMargin + 83,66],[dashlineLeftMargin + 101,66]], {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
-  var bar4 = av.g.line(dashlineLeftMargin + 23, 15, dashlineLeftMargin + 23, 45,
-	         {"stroke-width": 1, "stroke":"#000"});
-  bar4.hide();
-	
-  //Left Margin of arrowIt1 in the 5th step
-  var arrowIt1LeftMargin = labelItLeftMargin + 15 ;
-  //arrow pointing to 10 in the 5th step
-  var arrowIt1 = av.g.line(arrowIt1LeftMargin, 115, arrowIt1LeftMargin + 20, 115,
-	             {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
-
-  //initialize the linked list
-  av.umsg("The linked list before deletion");
-  l.addFirst(12)
-   .addFirst(10)
-   .addFirst(23)
-   .addFirst("20");
-  l.layout();
-  l.css({top: 50});
-	
-  //create new node 10
-  var n3 = l.newNode("10");
-  n3.highlight();
-  n3.css({left: 105, top: 50}); 
-  n3.hide();
-  pseudo.highlight(1);
-  av.displayInit(); 
-
-  //step 2
-  l.get(2).highlight();
-  l.layout({updateLeft: false});
-  av.umsg("10 is the current node to be deleted");
-  av.step(); 
-
-  //step 3
-  labelIt.show();
-  arrowIt.show();
-  av.umsg("Remember the value by setting \"it\" to point to the element");
-  pseudo.unhighlight(1);
-  pseudo.highlight(3);
-  av.step();
-
-  //step 4
-  l.get(1).edgeToNext().hide();
-  l.get(2).edgeToNext().hide();
-  bar1.hide();
-  dashline.show();
-  bar4.show();
-  av.umsg(" The next field of the preceding list node is set to point to the node following the one being deleted");	
-  pseudo.unhighlight(3);
-  pseudo.highlight(6);
-  av.step();	
-
-  ////step 5
-  l.remove(2);
-  dashline.hide();
-  bar4.hide();
-  arrowIt.hide();
-  bar1.show();  
-  l.layout();
-  l.get(1).edgeToNext().show();
-  arrowIt1.show();
-  n3.show();
-  n3.hide();
-  n3.show();
-  av.umsg(" Finally, the node is removed from the linked list");
-  pseudo.unhighlight(6);
-  pseudo.highlight(7);
-  av.step();
-  av.recorded();
-}(jQuery));
-
-
 // Initial state of a linked list when using a header node
 (function ($) {
   var jsav = new JSAV("listLinkedInitCON", {"animationMode": "none"});
@@ -575,8 +456,8 @@ var nodeGap = 25;
                               leftMargin + 330, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
  
-   //New Tail after inserting one item 
-   var temp = leftMargin + 260 + 115;
+  //New Tail after inserting one item 
+  var temp = leftMargin + 260 + 115;
   var newTailLabel = jsav.label("tail",
 	  {before: l, left: temp, top: topMargin, "font-size":"20px"}).hide();
   var newTailArrow = jsav.g.line(leftMargin + 385, topMargin + 20,
@@ -965,5 +846,122 @@ var nodeGap = 25;
   var insertEmpty = new InsertEmpty(jsav);
   insertEmpty.steps();
   jsav.recorded();
+}(jQuery));
 
+//Linked list deletion
+(function ($) {
+  var av = new JSAV("LlistRemoveCON");
+  //pseudocode
+  var pseudo = av.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
+                       lineNumbers: false,
+                       startAfter: "/* *** ODSATag: LListRemove *** */",
+                       endBefore: "/* *** ODSAendTag: LListRemove *** */"});
+  // Left margin of the JSAV List
+  var leftMargin = 5;
+  var l = av.ds.list({"nodegap": 25, "center": false, "left": leftMargin});
+  //create a the hidden array
+  var arr = av.ds.array(tempArr, {indexed: true, layout: "array"});
+  arr.hide();
+
+  //Left margin of bar1 in step 1
+  var bar1LeftMargin = leftMargin + nodeWidth * 2 + nodeGap * 1.5;
+  //vertical bar in 1st step
+  var bar1 = av.g.line(bar1LeftMargin, 50, bar1LeftMargin, 80,
+	         {"stroke-width": 1, "stroke":"#000"});
+
+  //Left margin of label in step 1
+  var labelLeftMargin = leftMargin + nodeWidth + 10;
+  //label "curr" and arrow in the 1st step
+  var label = av.label("curr", 
+	          {before: arr, left: labelLeftMargin, top: 0, "font-size":"20px"});
+  //Left margin of arrow in step 1
+  var arrowLeftMargin = labelLeftMargin + 12;
+  //arrow pointing to "curr" in the 1st step
+  var arrow = av.g.line(arrowLeftMargin, 25, arrowLeftMargin + 20, 45,
+	          {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+
+  //Left margin of labelIt in the 3rd step
+  var labelItLeftMargin = leftMargin + nodeGap + nodeWidth * 2 - 40;
+  //label "it" and arrow in the 3rd step
+  var labelIt = av.label("it", 
+	            {before: arr, left: labelItLeftMargin, top: 104, "font-size":"20px"});
+  //Left margin of arrowIt the 3rd step
+  var arrowItLeftMargin = labelItLeftMargin + 18;
+  var arrowIt = av.g.line(arrowItLeftMargin, 105, arrowItLeftMargin + 50, 75,
+	            {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+  labelIt.hide();
+  //Left margin of dashline in the 4th step
+  var dashlineLeftMargin = leftMargin + nodeGap + nodeWidth * 2 - 3;
+  //dashline in the 4th step
+  var dashline = av.g.polyline([[dashlineLeftMargin, 66], 
+	  [dashlineLeftMargin + 13, 66], [dashlineLeftMargin + 13, 30],[dashlineLeftMargin + 83,30],[dashlineLeftMargin + 83,66],[dashlineLeftMargin + 101,66]], {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
+  var bar4 = av.g.line(dashlineLeftMargin + 23, 15, dashlineLeftMargin + 23, 45,
+	         {"stroke-width": 1, "stroke":"#000"});
+  bar4.hide();
+	
+  //Left Margin of arrowIt1 in the 5th step
+  var arrowIt1LeftMargin = labelItLeftMargin + 15 ;
+  //arrow pointing to 10 in the 5th step
+  var arrowIt1 = av.g.line(arrowIt1LeftMargin, 115, arrowIt1LeftMargin + 20, 115,
+	             {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+
+  //initialize the linked list
+  av.umsg("The linked list before deletion");
+  l.addFirst(12)
+   .addFirst(10)
+   .addFirst(23)
+   .addFirst("20");
+  l.layout();
+  l.css({top: 50});
+	
+  //create new node 10
+  var n3 = l.newNode("10");
+  n3.highlight();
+  n3.css({left: 105, top: 50}); 
+  n3.hide();
+  pseudo.highlight(1);
+  av.displayInit(); 
+
+  //step 2
+  l.get(2).highlight();
+  l.layout({updateLeft: false});
+  av.umsg("10 is the current node to be deleted");
+  av.step(); 
+
+  //step 3
+  labelIt.show();
+  arrowIt.show();
+  av.umsg("Remember the value by setting \"it\" to point to the element");
+  pseudo.unhighlight(1);
+  pseudo.highlight(3);
+  av.step();
+
+  //step 4
+  l.get(1).edgeToNext().hide();
+  l.get(2).edgeToNext().hide();
+  bar1.hide();
+  dashline.show();
+  bar4.show();
+  av.umsg(" The next field of the preceding list node is set to point to the node following the one being deleted");	
+  pseudo.unhighlight(3);
+  pseudo.highlight(6);
+  av.step();	
+
+  ////step 5
+  l.remove(2);
+  dashline.hide();
+  bar4.hide();
+  arrowIt.hide();
+  bar1.show();  
+  l.layout();
+  l.get(1).edgeToNext().show();
+  arrowIt1.show();
+  n3.show();
+  n3.hide();
+  n3.show();
+  av.umsg(" Finally, the node is removed from the linked list");
+  pseudo.unhighlight(6);
+  pseudo.highlight(7);
+  av.step();
+  av.recorded();
 }(jQuery));
