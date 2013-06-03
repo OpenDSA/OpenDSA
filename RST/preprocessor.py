@@ -667,11 +667,11 @@ def main(argv):
      modList1 = sorted(modList,key = attrgetter('prereqNum'))
      for ml in modList1:
         ml.verifPreref(modRost)
-     finalList =modOrdering(modList1)
+     #finalList =modOrdering(modList1)
 
      #create JSON and CSV files with modules information
-     generateJSON(finalList, modDest)
-     generateCSV(finalList, modDest)
+     #generateJSON(finalList, modDest)
+     #generateCSV(finalList, modDest)
 
      #ToDO list page
      todolist1 = sorted(config.todolist, key=lambda todo: todo[1])

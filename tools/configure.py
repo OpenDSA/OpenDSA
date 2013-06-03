@@ -74,15 +74,25 @@ todo_count = 0
 
 rst_header = '''\
 .. _%(mod_name)s:
-.. |--| unicode:: U+2013   .. en dash
-.. |---| unicode:: U+2014  .. em dash, trimming surrounding whitespace
-   :trim:
 
 .. raw:: html
 
    <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";</script>
 
-%(orig_data)s'''
+%(unicode_directive)s
+
+%(orig_data)s
+
+'''
+
+rst_header_unicode = '''\
+
+.. |--| unicode:: U+2013   .. en dash
+.. |---| unicode:: U+2014  .. em dash, trimming surrounding whitespace
+   :trim:
+
+'''
+
 
 # Used to generate the index.rst file
 index_header = '''\
@@ -152,6 +162,18 @@ html: preprocessor
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
+
+slides: preprocessor
+	%(remove_todo)s
+	@SLIDES=yes \
+	$(SPHINXBUILD) -b slides source $(HTMLDIR)
+	rm html/_static/jquery.js html/_static/websupport.js
+	#rm -rf html/_sources/
+	#python "%(odsa_root)sRST/preprocessor.py" -p source/ $(HTMLDIR) 
+	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
+	rm *.json
+	@echo
+	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
 '''
 
 
@@ -171,6 +193,9 @@ conf = '''\
 # serve to show the default.
 
 import sys, os
+
+#checking if we are building a book or class notes (slides)
+on_slides = os.environ.get('SLIDES', None) == "yes"
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -198,7 +223,7 @@ sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/html5'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsafig'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsatable'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/chapref'))
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav','html5','odsafig','odsatable','chapref']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav','html5','odsafig','odsatable','chapref','hieroglyph']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -253,11 +278,28 @@ exclude_patterns = []
 # output. They are ignored by default.
 #show_authors = False
 
+#language to highlight source code in
+highlight_language = '%(code_lang)s'
+
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'emacs' #'sphinx'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
+
+# -- Options for HTML Slide output ---------------------------------------------------
+sys.path.append(os.path.abspath('_themes'))
+slide_theme_path = ['%(odsa_root)sRST/source/_themes/']
+slide_theme = 'slidess' #'single-level'
+#slide_theme_options = {'custom_css':'custom.css'}
+
+slide_link_html_to_slides = not on_slides 
+slide_link_html_sections_to_slides = not on_slides
+#slide_relative_path = "./slides/"
+
+slide_link_to_html = True
+slide_html_relative_path = "../"
+
 
 # -- Options for HTML output ---------------------------------------------------
 #The fully-qualified name of a HTML Translator, that is used to translate document
@@ -269,7 +311,10 @@ html_translator_class = 'html5.HTMLTranslator'
 # a list of builtin themes.
 sys.path.append(os.path.abspath('_themes'))
 html_theme_path = ['%(odsa_root)sRST/source/_themes']
-html_theme = 'haiku'
+if on_slides:
+   html_theme = 'slides'
+else:
+   html_theme = 'haiku'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -492,6 +537,11 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   header_data['mod_name'] = mod_name
   header_data['dispModComp'] = str(dispModComp).lower()
   header_data['long_name'] = long_name
+  #no unicode directive when building ourse notes
+  if os.environ.get('SLIDES', None) == "yes":
+    header_data['unicode_directive'] = ''
+  else:
+    header_data['unicode_directive'] = rst_header_unicode
   header_data['orig_data'] = mod_data[0]
   mod_data[0] = rst_header % header_data
   
@@ -631,7 +681,7 @@ def get_src_dir(conf_data):
   return get_output_dir(conf_data) + 'source/'
 
 
-def configure(config_file):
+def configure(config_file, slides = False):
   """Configure an OpenDSA textbook based on a validated configuration file"""
   
   print "Configuring OpenDSA, using " + config_file + '\n'
@@ -646,9 +696,13 @@ def configure(config_file):
   # Assign defaults to optional settings
   set_defaults(conf_data)
 
-  # Process the code and output directory paths
+  # Process the code and output directory paths, get code language
   code_dir = process_path(conf_data['code_dir'], odsa_dir)
   output_dir = get_output_dir(conf_data)
+  code_lang = conf_data['code_dir'].rsplit('/',1)[1].lower()
+  #special case treats Processing as Java
+  if code_lang =='processing':
+    code_lang = 'java'
 
   # Prevent user from setting the output directory where the configuration process 
   # would overwrite important things
@@ -690,8 +744,13 @@ def configure(config_file):
     header_data['dispModComp'] = 'false'
     header_data['long_name'] = 'Contents'
     header_data['orig_data'] = index_header
-    index_rst.write(rst_header % header_data)
+    if slides:
+      header_data['unicode_directive'] = ''
+    else:
+      header_data['unicode_directive'] = rst_header_unicode
 
+    index_rst.write(rst_header % header_data)
+    
     # Process all the chapter and module information
     process_section(conf_data, conf_data['chapters'], index_rst, 0)
 
@@ -699,7 +758,8 @@ def configure(config_file):
     index_rst.write("   :maxdepth: 3\n\n")
     
     # Process the Gradebook as well
-    process_module(conf_data, mod_path='Gradebook', index_rst=index_rst)
+    if not slides:
+      process_module(conf_data, mod_path='Gradebook', index_rst=index_rst)
     
     if todo_count > 0:
       index_rst.write("   ToDo\n")
@@ -726,6 +786,7 @@ def configure(config_file):
   options['output_dir'] = output_dir
   options['rel_ebook_path'] = rel_ebook_path
   options['code_dir'] = code_dir
+  options['code_lang'] = code_lang
   options['av_dir'] = conf_data['av_root_dir']
   options['exercises_dir'] = conf_data['exercises_root_dir']
   # TODO: Temporary fix until preprocessor.py stops creating a ToDo.rst file when were are no TODO directives
@@ -817,7 +878,10 @@ def configure(config_file):
 
     try:
       os.chdir(output_dir)
-      proc = subprocess.Popen('make', stdout=subprocess.PIPE)
+      if slides:
+        proc = subprocess.Popen(['make','slides'], stdout=subprocess.PIPE)
+      else:
+        proc = subprocess.Popen('make', stdout=subprocess.PIPE)
       for line in iter(proc.stdout.readline,''):
         print line.rstrip()
     finally:
@@ -828,13 +892,26 @@ def configure(config_file):
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
   # Process script arguments
-  if len(sys.argv) != 2:
+  if len(sys.argv) > 3:
     print "Invalid config filename"
-    print "Usage: " + sys.argv[0] + " config_file"
+    print "Usage: " + sys.argv[0] + " [s] config_file"
     sys.exit(1)
 
-  config_file = sys.argv[1]
+  slides = False 
+  #building book
+  if len(sys.argv) == 2: 
+    config_file = sys.argv[1]
+    os.environ['SLIDES'] = 'no'
+  #building slides
+  if len(sys.argv) == 3:
+    if sys.argv[1] == "s":
+      slides = True
+      os.environ['SLIDES'] = 'yes'
+    else:
+      print "Invalid build option"
+      print "Usage: " + sys.argv[0] + " s config_file"
+    config_file = sys.argv[2]
 
   validate_config_file(config_file)
   
-  configure(config_file)
+  configure(config_file, slides)
