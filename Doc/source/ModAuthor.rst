@@ -25,6 +25,16 @@ infrastructure is in
 The best way to get a sense for how things work is to look at some
 existing modules.
 
+Create Course Notes
+-------------------
+OpenDSA uses `hieroglyph <https://github.com/nyergler/hieroglyph/>`_ a Sphinx 
+extension to build HTML slides.
+
+The course notes infrastructures is similar to eTextBook creation, and uses
+``OpenDSA/Makefile``. The only difference is the ``s`` option for slides
+when calling the configuration, for example ``python tools/configure.py s config/OpenDSA.json``.
+
+
 Module Structure
 ----------------
 

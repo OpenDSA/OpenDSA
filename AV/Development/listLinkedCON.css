@@ -10,17 +10,6 @@
   height: 100px;
 }
 
-#listLinkedCON2 {
-  height: 345px;
-}
-
-#listLinkedCON2 .jsavcode{
-  border: 1px solid;
-  border-color: white;
-  margin-left: 270px;
-  width: 600px;
-}
-
 #LlistBadCON {
   height: 250px;
 }
@@ -52,13 +41,14 @@
 }
 
 #LlistInsertCON {
-  height: 290px;
+  height: 450px;
 }
 #LlistInsertCON .jsavcode{
   border: 1px solid;
   border-color: white;
-  margin-left: 338px;
-  width: 510px;
+  position: relative;
+  top: 150px;
+  width: 600px;
 }
 
 #LlistSpecInsertCON {
@@ -69,6 +59,16 @@
   border-color: white;
   margin-left: 338px;
   width: 510px;
+}
+#LlistRemoveCON {
+  height: 345px;
+}
+
+#LlistRemoveCON .jsavcode{
+  border: 1px solid;
+  border-color: white;
+  margin-left: 270px;
+  width: 600px;
 }
 
 .jsavhorizontallist.jsavautoresize .jsavnode {
@@ -85,6 +85,7 @@
 .jsavcanvas{
 	height: 200px;
 }
+
 
 
 
