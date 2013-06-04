@@ -223,7 +223,13 @@ sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/html5'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsafig'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsatable'))
 sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/chapref'))
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav','html5','odsafig','odsatable','chapref','hieroglyph']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata','codeinclude','numref','chapnum','odsalink','odsascript','numfig','inlineav','html5','odsafig','odsatable','chapref']
+
+slides_lib = '%(slides_lib)s'
+
+#only import hieroglyph when building course notes
+if slides_lib == 'hieroglyph':
+  extensions.append('hieroglyph') 
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -744,8 +750,10 @@ def configure(config_file, slides = False):
     header_data['dispModComp'] = 'false'
     header_data['long_name'] = 'Contents'
     header_data['orig_data'] = index_header
+    slides_lib = ''
     if slides:
       header_data['unicode_directive'] = ''
+      slides_lib = 'hieroglyph'
     else:
       header_data['unicode_directive'] = rst_header_unicode
 
@@ -793,6 +801,7 @@ def configure(config_file, slides = False):
   options['remove_todo'] = 'rm source/ToDo.rst'
   # The relative path between the ebook output directory (where the HTML files are generated) and the root ODSA directory
   options['eb2root'] = os.path.relpath(odsa_dir, output_dir + rel_ebook_path) + '/'
+  options['slides_lib'] = slides_lib
 
   if todo_count > 0:
     options['remove_todo'] = ''

@@ -150,7 +150,10 @@ Special case for Linked list insertion
    similar in that finding the :math:`i` th position requires marching
    down :math:`i` positions from the head of the list, taking
    :math:`\Theta(i)` time.
-
+   
+.. inlineav:: LlistPosCON ss
+   :output: show
+   
 Implementations for the remaining operations each require
 :math:`\Theta(1)` time.
 

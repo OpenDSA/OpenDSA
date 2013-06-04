@@ -314,19 +314,19 @@ var nodeGap = 25;
                               leftMargin + 252, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
-  //Left margin of tail
+  // Left margin of tail
   var tailLabel = jsav.label("tail",
 	  {before: l, left: leftMargin + 445, top: topMargin, "font-size":"20px"});
-  //Tail arrow
+  // Tail arrow
   var tailArrow = jsav.g.line(leftMargin + 455, topMargin + 20,
                               leftMargin + 475, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
-  //Vertical line
+  // Vertical line
   var bar = jsav.g.line(leftMargin + 145 + 77, topMargin + 35,
                           leftMargin + 145 + 77, topMargin + 75,
 	                      {"stroke-width": 1, "stroke":"#000"});
-  //Diagonal slash
+  // Diagonal slash
   var slash = jsav.g.line(leftMargin + 494, topMargin + 72,
                           leftMargin + 504, topMargin + 42,
 	  {"opacity": 100,"stroke-width": 1});
@@ -435,11 +435,7 @@ var nodeGap = 25;
   tempArr[0] = ""; 
   var arr = jsav.ds.array(tempArr, 
             {indexed: true, layout: "array"});
-  arr.hide();  
-  var cpyArr = ["it"]; 
-  var arr1 = jsav.ds.array(cpyArr, 
-            {indexed: true, layout: "array"});
-  arr1.hide();
+  arr.hide(); 
 
   //head
   var headLabel = jsav.label("head",
@@ -476,15 +472,23 @@ var nodeGap = 25;
 
   //Horizontal arrow in step 4 pointing to item 12
   var longArrow= jsav.g.line(leftMargin + 107 + 95, topMargin + 56, leftMargin + 107 + 198, topMargin + 56,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+ 
+  // Box "it"
+  var itLabel = jsav.label("it",
+	  {before: l, left: 20, top: 0, "font-size":"20px"});
+  tempArr[0] = "15"; 
+  var itBox = jsav.ds.array(tempArr, 
+            {indexed: false, layout: "array", top: -20, left: 40});
 
   //initialize the link list
-  jsav.umsg("The linked list before insertion");
+  jsav.umsg("The linked list before insertion. 15 is the value to be inserted.");
   l.addFirst("null")
    .addFirst(12)
    .addFirst(23)
    .addFirst(35)
    .addFirst("null");
   l.layout();
+  itBox.highlight(0);
   pseudo.highlight(1);
   jsav.displayInit();
     
@@ -538,10 +542,11 @@ var nodeGap = 25;
   jsav.step();
 
   //step 7
-  jsav.effects.copyValue(arr1, 0, l.get(2));
+  jsav.effects.copyValue(itBox, 0, l.get(2));
+  itBox.unhighlight(0);
   l.get(3).unhighlight();
   l.get(2).highlight();
-  jsav.umsg("The value of the current node is set to \"it\".");
+  jsav.umsg("The value of the current node is set to the value of \"it\", which is 15.");
   pseudo.unhighlight(2);
   pseudo.highlight(3);
   jsav.step();
@@ -562,14 +567,24 @@ var nodeGap = 25;
                        lineNumbers: false,
                        startAfter: "/* *** ODSATag: LListInsert *** */",
                        endBefore: "/* *** ODSAendTag: LListInsert *** */"});
+  // Relative offsets
+  var leftMargin = 10;
+  var topMargin = 40;
+
+  // Box "it"
+  var itLabel = jsav.label("it",
+	  {left: 20, top: 0, "font-size":"20px"});
+  tempArr[0] = "15"; 
+  var itBox = jsav.ds.array(tempArr, 
+            {indexed: false, layout: "array", top: -20, left: 40});
   
   //Inserting at the tail of the list.
   //DOM elements are created here.
-  function Tail(jsavSpec){
+  function InsertTail(jsavSpec){
 	this.jsav = jsavSpec;
     // Relative offsets
-    this.leftMargin = 10;
-    this.topMargin = 10;
+    this.leftMargin = leftMargin;
+    this.topMargin = topMargin;
 	this.l = this.jsav.ds.list({"nodegap": 30, "top": this.topMargin + 40, left: this.leftMargin + 17});
     //Head
     this.headLabel = this.jsav.label("head",
@@ -599,7 +614,7 @@ var nodeGap = 25;
     this.newTailLabel.hide();
 
     //Vertical bar
-    this.bar1 = this.jsav.g.line(this.leftMargin + 145, 50, this.leftMargin + 145, 80,
+    this.bar1 = this.jsav.g.line(this.leftMargin + 145, this.topMargin + 40, this.leftMargin + 145, this.topMargin + 70,
 		{"stroke-width": 1, "stroke":"#000"});
 
     //Diagonal slash
@@ -616,9 +631,6 @@ var nodeGap = 25;
     this.newTailSlash = this.jsav.g.line(this.leftMargin + 272, this.topMargin + 72,
                           this.leftMargin + 282, this.topMargin + 42,
 	  {"opacity": 0,"stroke-width": 1});
-    this.cpyArr = ["it"]; 
-    this.arr = this.jsav.ds.array(this.cpyArr, 
-            {indexed: true, layout: "array"}).hide();
 	this.l.addFirst("null")
           .addFirst(20)
           .addFirst("null");
@@ -626,7 +638,7 @@ var nodeGap = 25;
 
   }
   //Clear DOM elements
-  Tail.prototype.clear = function(){
+  InsertTail.prototype.clear = function(){
 	  this.l.hide();
 	  this.headLabel.hide();
 	  this.headArrow.hide();
@@ -642,10 +654,11 @@ var nodeGap = 25;
 	  this.newTailSlash.hide();
   }
   
-  Tail.prototype.steps = function(){
+  InsertTail.prototype.steps = function(){
 	//step 1
-    this.jsav.umsg("Here is an example showing insert at tail.");
-    pseudo.highlight(1);
+    this.jsav.umsg("Here is an example showing insert at tail. 15 is the value to be inserted.");
+    itBox.highlight(0);
+	pseudo.highlight(1);
     this.jsav.displayInit();
 
     //step 2
@@ -681,7 +694,8 @@ var nodeGap = 25;
     this.jsav.step();
 
     //step 6
-    this.jsav.effects.copyValue(this.arr, 0, this.l.get(2));
+    this.jsav.effects.copyValue(itBox, 0, this.l.get(2));
+	itBox.unhighlight(0);
     this.jsav.umsg("The value of the current node is set to \"it\".");
     pseudo.unhighlight(2);
     pseudo.highlight(3);
@@ -715,14 +729,14 @@ var nodeGap = 25;
   function InsertEmpty(jsavEmp) {
     this.jsav = jsavEmp;
 	// Relative offsets
-    this.leftMargin = 10;
-    this.topMargin = 10;
+    this.leftMargin = leftMargin;
+    this.topMargin = topMargin;
 	//Head
     this.headLabel = this.jsav.label("head",
                     {before: this.l, left: this.leftMargin, top: this.topMargin});
     this.headArrow = this.jsav.g.line(this.leftMargin + 10, this.topMargin + 20,
                               this.leftMargin + 30, this.topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
 	//Curr
     this.currLabel = this.jsav.label("curr",
 	  {before: this.l, left: this.leftMargin + 75, top: this.topMargin, "font-size":"20px"});
@@ -736,7 +750,7 @@ var nodeGap = 25;
                               this.leftMargin + 115, this.topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
 	//Vertical bar
-    this.bar = this.jsav.g.line(this.leftMargin + 75, 50, this.leftMargin + 75, 80,
+    this.bar = this.jsav.g.line(this.leftMargin + 75, this.topMargin + 40, this.leftMargin + 75, this.topMargin + 70,
 		{"stroke-width": 1, "stroke":"#000"});
 	//New Tail
     this.newTailLabel = this.jsav.label("tail",
@@ -760,9 +774,6 @@ var nodeGap = 25;
     this.newTailSlash = this.jsav.g.line(this.leftMargin + 197, this.topMargin + 72,
                           this.leftMargin + 207, this.topMargin + 42,
 	  {"opacity": 0,"stroke-width": 1});
-    this.cpyArr = ["it"]; 
-    this.arr = this.jsav.ds.array(this.cpyArr, 
-            {indexed: true, layout: "array"}).hide();
 
 	this.l = this.jsav.ds.list({"nodegap": 30, "top": this.topMargin + 40, left: this.leftMargin + 17});
 	this.l.addFirst("null")
@@ -774,8 +785,10 @@ var nodeGap = 25;
 	//step 9
     pseudo.highlight(1);
 	pseudo.unhighlight(5);
-    this.jsav.umsg("Inserting into empty list is similar to inserting at the tail of the list.");
-    this.currArrow.show();
+    this.jsav.umsg("Inserting into empty list is similar to inserting at the tail of the list. 15 is the value to be inserted.");
+    itBox.highlight(0);
+	this.headArrow.show();
+	this.currArrow.show();
 	this.tailArrow.show();
 	this.slash.show();
     this.jsav.step();	
@@ -813,7 +826,8 @@ var nodeGap = 25;
     this.jsav.step();
 
     //step 14
-    this.jsav.effects.copyValue(this.arr, 0, this.l.get(1));
+    this.jsav.effects.copyValue(itBox, 0, this.l.get(1));
+	itBox.unhighlight(0);
     this.jsav.umsg("The value of the current node is set to \"it\".");
     pseudo.unhighlight(2);
     pseudo.highlight(3);
@@ -844,7 +858,7 @@ var nodeGap = 25;
   }
 
   //Inserting at the tail of the list
-  var insertTail = new Tail(jsav);
+  var insertTail = new InsertTail(jsav);
   insertTail.steps();
   insertTail.clear();
    
@@ -981,5 +995,20 @@ var nodeGap = 25;
   pseudo.unhighlight(7);
   pseudo.highlight(8);
   jsav.step();
+  jsav.recorded();
+}(jQuery));
+
+// Move curr around the Linked list
+(function ($) {
+  var jsav = new JSAV("LlistPosCON");
+  // pseudocode
+  var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
+                       lineNumbers: false,
+                       startAfter: "/* *** ODSATag: LListRemove *** */",
+                       endBefore: "/* *** ODSAendTag: LListRemove *** */"});
+  // Relative offsets
+  var leftMargin = 250;
+  var topMargin = 0;
+  
   jsav.recorded();
 }(jQuery));
