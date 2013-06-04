@@ -43,7 +43,7 @@ var nodeGap = 25;
   var leftMargin = 350;
   var topMargin = 10;
   
-  var l = jsav.ds.list({"nodegap": 30, "top": 50, left: leftMargin + 17});
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin + 40, left: leftMargin + 17});
 
   // Head
   var headLabel = jsav.label("head",
@@ -296,39 +296,39 @@ var nodeGap = 25;
   var jsav = new JSAV("listLinkedHeaderTailerCON", {"animationMode": "none"});
 
   // Relative offsets
-  var labelLeftMargin = 163;
-  var labelTopMargin = 10;
+  var leftMargin = 163;
+  var topMargin = 10;
 
-  var l = jsav.ds.list({"nodegap": 30, "top": labelTopMargin + 40, left: labelLeftMargin + 17});
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin + 40, left: leftMargin + 17});
 
   var headLabel = jsav.label("head",
-                    {before: l, left: labelLeftMargin, top: labelTopMargin});
-  var headArrow = jsav.g.line(labelLeftMargin + 10, labelTopMargin + 20,
-                              labelLeftMargin + 30, labelTopMargin + 40,
+                    {before: l, left: leftMargin, top: topMargin});
+  var headArrow = jsav.g.line(leftMargin + 10, topMargin + 20,
+                              leftMargin + 30, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
+  // Curr
   var currLabel = jsav.label("curr",
-	  {before: l, left: labelLeftMargin + 150, top: labelTopMargin, "font-size":"20px"});
-  //Curr arrow
-  var currArrow = jsav.g.line(labelLeftMargin + 160, labelTopMargin + 20,
-                              labelLeftMargin + 180, labelTopMargin + 40,
+	  {before: l, left: leftMargin + 222, top: topMargin, "font-size":"20px"});
+  var currArrow = jsav.g.line(leftMargin + 232, topMargin + 20,
+                              leftMargin + 252, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
   //Left margin of tail
   var tailLabel = jsav.label("tail",
-	  {before: l, left: labelLeftMargin + 445, top: labelTopMargin, "font-size":"20px"});
+	  {before: l, left: leftMargin + 445, top: topMargin, "font-size":"20px"});
   //Tail arrow
-  var tailArrow = jsav.g.line(labelLeftMargin + 455, labelTopMargin + 20,
-                              labelLeftMargin + 475, labelTopMargin + 40,
+  var tailArrow = jsav.g.line(leftMargin + 455, topMargin + 20,
+                              leftMargin + 475, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
-  //Vertical bar
-  var bar = jsav.g.line(labelLeftMargin + 145, labelTopMargin + 35,
-                          labelLeftMargin + 145, labelTopMargin + 75,
+  //Vertical line
+  var bar = jsav.g.line(leftMargin + 145 + 77, topMargin + 35,
+                          leftMargin + 145 + 77, topMargin + 75,
 	                      {"stroke-width": 1, "stroke":"#000"});
   //Diagonal slash
-  var slash = jsav.g.line(labelLeftMargin + 494, labelTopMargin + 72,
-                          labelLeftMargin + 504, labelTopMargin + 42,
+  var slash = jsav.g.line(leftMargin + 494, topMargin + 72,
+                          leftMargin + 504, topMargin + 42,
 	  {"opacity": 100,"stroke-width": 1});
 
   l.addFirst("null")
