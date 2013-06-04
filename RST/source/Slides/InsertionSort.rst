@@ -32,8 +32,8 @@ Insertion Sort
 Overview
 ========
 
-.. slide:: 1  
-   :level: 2
+.. slide:: Title 1  
+   :level: 3 
  
    Consider this start to the process.
 
@@ -43,8 +43,8 @@ Overview
 Overview
 ========
 
-.. slide:: 2
-   :level: 2
+.. slide:: Title 2
+   :level: 3
 
    Next, process the record in position 2.
    Swap it to the left until it reaches a value smaller than it is.
@@ -57,8 +57,8 @@ Overview
 Overview
 ========
 
-.. slide:: 3
-   :level: 2
+.. slide:: Title 3
+   :level: 3 
 
    And now the record in position 3.
 
@@ -69,8 +69,8 @@ Overview
 Insertion Sort Analysis
 =======================
 
-.. slide:: 4
-   :level: 2
+.. slide:: Title 4
+   :level: 3
 
    The body of ``inssort`` consists of two nested
    ``for`` loops.
