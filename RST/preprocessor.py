@@ -481,7 +481,10 @@ def updateTOC(args):
                 for i in range(1,7):
                    if '<h%s>' %i in idxLine and td==0 and pagename != 'index' and pagename != 'Gradebook':
                       par  = re.split('<h%s>'%i,re.split('<a', idxLine, re.IGNORECASE)[0],re.IGNORECASE)[1]
-                      par1 = '%s.' %data[pagename][1] + par
+                      if pagename in data:
+                         par1 = '%s.' %data[pagename][1] + par
+                      else:
+                         par1 = par
                       idxLine = idxLine.replace(par,par1)
                 if td == 1 and pagename != 'index' and pagename != 'Gradebook':
                     if 'a class="headerlink"' in idxLine:

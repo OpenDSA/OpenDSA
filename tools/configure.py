@@ -282,7 +282,7 @@ exclude_patterns = []
 highlight_language = '%(code_lang)s'
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'emacs' #'sphinx'
+pygments_style = 'borland' #'sphinx'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
