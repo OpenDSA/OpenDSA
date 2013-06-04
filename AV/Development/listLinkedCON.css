@@ -71,6 +71,18 @@
   top: 140px;
   width: 700px;
 }
+
+#LlistPosCON {
+  height: 515px;
+}
+
+#LlistPosCON .jsavcode{
+  border: 1px solid;
+  border-color: white;  
+  position: relative;
+  top: 140px;
+  width: 700px;
+}
 .jsavhorizontalarray.jsavautoresize .jsavnode {
   min-width: 35px;
   max-width: 35px;

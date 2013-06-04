@@ -997,3 +997,18 @@ var nodeGap = 25;
   jsav.step();
   jsav.recorded();
 }(jQuery));
+
+// Move curr around the Linked list
+(function ($) {
+  var jsav = new JSAV("LlistPosCON");
+  // pseudocode
+  var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
+                       lineNumbers: false,
+                       startAfter: "/* *** ODSATag: LListRemove *** */",
+                       endBefore: "/* *** ODSAendTag: LListRemove *** */"});
+  // Relative offsets
+  var leftMargin = 250;
+  var topMargin = 0;
+  
+  jsav.recorded();
+}(jQuery));
