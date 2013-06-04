@@ -1001,14 +1001,134 @@ var nodeGap = 25;
 // Move curr around the Linked list
 (function ($) {
   var jsav = new JSAV("LlistPosCON");
-  // pseudocode
-  var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
-                       lineNumbers: false,
-                       startAfter: "/* *** ODSATag: LListRemove *** */",
-                       endBefore: "/* *** ODSAendTag: LListRemove *** */"});
   // Relative offsets
-  var leftMargin = 250;
-  var topMargin = 0;
+  var leftMargin = 210;
+  var topMargin = -15;
+
+  // pseudocode
+  var pseudo_next = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
+                       lineNumbers: false,
+                       startAfter: "/* *** ODSATag: LListNext *** */",
+                       endBefore: "/* *** ODSAendTag: LListNext *** */", top: 150, left: 80}); 
+  var pseudo_prev = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
+                       lineNumbers: false,
+                       startAfter: "/* *** ODSATag: LListPrev *** */",
+                       endBefore: "/* *** ODSAendTag: LListPrev *** */"}).hide();
+  var pseudo_pos = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
+                       lineNumbers: false,
+                       startAfter: "/* *** ODSATag: LListPos *** */",
+                       endBefore: "/* *** ODSAendTag: LListPos *** */"}).hide();
+  //Head
+  var headLabel = jsav.label("head",
+    {before: l, left: leftMargin - 15, top: topMargin});
+  var headArrow = jsav.g.line(leftMargin - 5, topMargin + 20,
+  leftMargin + 15, topMargin + 40,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  //Curr
+  var currLabel = jsav.label("curr",
+	  {before: l, left: leftMargin + 206, top: topMargin, "font-size":"20px"});
+  var currArrow = jsav.g.line(leftMargin + 216, topMargin + 20,
+                   leftMargin + 236, topMargin + 40,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  //Curr Next
+  var nextCurrLabel = jsav.label("curr",
+	  {before: l, left: leftMargin + 206 + 74, top: topMargin, "font-size":"20px"}).hide();
+  var nextCurrArrow = jsav.g.line(leftMargin + 216 + 74, topMargin + 20,
+                   leftMargin + 236 + 74, topMargin + 40,
+	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+  //Tail
+  var tailLabel = jsav.label("tail",
+	  {before: l, left: leftMargin + 355, top: topMargin, "font-size":"20px"});
+  var tailArrow = jsav.g.line(leftMargin + 365, topMargin + 20,
+                              leftMargin + 385, topMargin + 40,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+
+  // JSAV list
+  var l = jsav.ds.list({"nodegap": 30, "center": false, "left": leftMargin, "top":topMargin + 40});
+  l.addFirst("null")
+   .addFirst(10)
+   .addFirst(35)
+   .addFirst(8)
+   .addFirst(23)
+   .addFirst("null");
+  l.layout();
+
+  pseudo_next.highlight(1);
+  jsav.umsg("Method next simply moves curr one position toward the tail of the list.");
+  jsav.displayInit();
+
+  //step 2  
+  l.get(4).highlight();
+  currLabel.hide();
+  currArrow.hide();
+  nextCurrLabel.show();
+  nextCurrArrow.show();
+  jsav.umsg("This takes &Theta;(1) time.");
+  jsav.step();
+
+  //step 3
+  l.get(4).unhighlight();
+  pseudo_next.hide();
+  pseudo_prev.show();
+  pseudo_prev.highlight(1);
+  jsav.umsg("Method prev moves curr one position toward the head of the list, but its implementation is more difficult.");
+  jsav.step();
   
+  //step 4
+  pseudo_next.hide();
+  pseudo_prev.show();
+  pseudo_prev.unhighlight(1);
+  pseudo_prev.highlight(5);
+  l.get(0).highlight();
+  l.get(1).highlight();  
+  l.get(2).highlight();  
+  l.get(3).highlight();
+  jsav.umsg("In a singly linked list, there is no pointer to the previous node. Thus, the only alternative is to march down the list from the beginning until we reach the current node (being sure always to remember the node before it, because that is what we really want). ");
+  jsav.step();
+
+  //step 5
+  l.get(0).unhighlight();
+  l.get(1).unhighlight();  
+  l.get(2).unhighlight(); 
+  currLabel.show();
+  currArrow.show();
+  nextCurrLabel.hide();
+  nextCurrArrow.hide();
+  pseudo_next.hide();
+  pseudo_prev.show();
+  pseudo_prev.unhighlight(5);
+  pseudo_prev.highlight(6);
+  jsav.umsg("This takes &Theta;(n) time in the average and worst cases.");
+  jsav.step();
+
+  //step 6
+  l.get(3).unhighlight();
+  pseudo_prev.hide();
+  pseudo_pos.show();
+  pseudo_pos.highlight(1);
+  jsav.umsg("Method moveToPos moves curr to \"pos\" position. 23 is at position 0.");
+  jsav.step();
+  //step 7  
+  l.get(1).highlight();
+  l.get(2).highlight();
+  l.get(3).highlight();  
+  l.get(4).highlight();
+  currLabel.hide();
+  currArrow.hide();
+  nextCurrLabel.show();
+  nextCurrArrow.show();
+  pseudo_pos.unhighlight(1);
+  pseudo_pos.highlight(7);
+  jsav.umsg("Implementation of method moveToPos(3) is similar in that finding the 3th position requires marching down 3 + 1 positions from the head of the list.");
+  jsav.step();
+
+  //step 8
+  l.get(1).unhighlight();
+  l.get(2).unhighlight();
+  l.get(3).unhighlight();  
+  l.get(4).unhighlight();
+  jsav.umsg("This takes &Theta;(i) time, where i is the position to move to.");
+  jsav.step();
+
   jsav.recorded();
 }(jQuery));

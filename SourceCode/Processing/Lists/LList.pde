@@ -55,6 +55,7 @@ class LList implements List {
   void moveToStart() { curr = head.next(); } // Set curr at list start
   void moveToEnd() { curr = tail; }     // Set curr at list end
 
+/* *** ODSATag: LListPrev *** */
   // Move curr one step left; no change if now at front
   void prev() {
     if (head.next() == curr) return; // No previous element
@@ -63,9 +64,12 @@ class LList implements List {
     while (temp.next() != curr) temp = temp.next();
     curr = temp;
   }
+/* *** ODSAendTag: LListPrev *** */
 
+/* *** ODSATag: LListNext *** */
   // Move curr one step right; no change if now at end
   void next() { if (curr != tail) curr = curr.next(); }
+/* *** ODSAendTag: LListNext *** */
 
   int length() { return listSize; } // Return list length
 
@@ -78,7 +82,8 @@ class LList implements List {
       temp = temp.next();
     return i;
   }
-
+  
+/* *** ODSATag: LListPos *** */
   // Move down list to "pos" position
   void moveToPos(int pos) {
     if ((pos < 0) || (pos > listSize)) {
@@ -88,6 +93,7 @@ class LList implements List {
     curr = head.next();
     for(int i=0; i<pos; i++) curr = curr.next();
   }
+/* *** ODSAendTag: LListPos *** */
 
   // Return true if current position is at end of the list
   Boolean isAtEnd() { return curr == tail; }
