@@ -169,4 +169,9 @@ Implementations for the remaining operations each require
    linked list deletion. Show a linked list. User will do a series of
    drags for values and links to get the list updated properly.
 
+.. TODO::
+   :type: Exercise
+
+   Add a battery of summary questions.
+
 .. odsascript:: AV/Development/listLinkedCON.js
