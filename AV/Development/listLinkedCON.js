@@ -38,40 +38,46 @@ var nodeGap = 25;
 // Initial state of a linked list when using a header node
 (function ($) {
   var jsav = new JSAV("listLinkedInitCON", {"animationMode": "none"});
-  var l = jsav.ds.list({"nodegap": 30, "top": 50, left: 367});
 
   // Relative offsets
-  var labelLeftMargin = 350;
-  var labelTopMargin = 10;
+  var leftMargin = 350;
+  var topMargin = 10;
+  
+  var l = jsav.ds.list({"nodegap": 30, "top": 50, left: leftMargin + 17});
 
+  // Head
   var headLabel = jsav.label("head",
-                    {before: l, left: labelLeftMargin, top: labelTopMargin});
-  var headArrow = jsav.g.line(labelLeftMargin + 10, labelTopMargin + 20,
-                              labelLeftMargin + 30, labelTopMargin + 40,
+                    {before: l, left: leftMargin, top: topMargin});
+  var headArrow = jsav.g.line(leftMargin + 10, topMargin + 20,
+                              leftMargin + 30, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
+  // Curr
   var currLabel = jsav.label("curr",
-	  {before: l, left: labelLeftMargin + 70, top: labelTopMargin, "font-size":"20px"});
-  //Curr arrow
-  var currArrow = jsav.g.line(labelLeftMargin + 80, labelTopMargin + 20,
-                              labelLeftMargin + 100, labelTopMargin + 40,
+	  {before: l, left: leftMargin + 70, top: topMargin, "font-size":"20px"});
+  var currArrow = jsav.g.line(leftMargin + 80, topMargin + 20,
+                              leftMargin + 100, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
-  //Left margin of tail
+  // Tail
   var tailLabel = jsav.label("tail",
-	  {before: l, left: labelLeftMargin + 120, top: labelTopMargin, "font-size":"20px"});
-  //Tail arrow
-  var tailArrow = jsav.g.line(labelLeftMargin + 130, labelTopMargin + 20,
-                              labelLeftMargin + 110, labelTopMargin + 40,
+	  {before: l, left: leftMargin + 120, top: topMargin, "font-size":"20px"});
+  var tailArrow = jsav.g.line(leftMargin + 130, topMargin + 20,
+                              leftMargin + 110, topMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
-  //Diagonal slash
-  var slash = jsav.g.line(labelLeftMargin + 125, labelTopMargin + 72,
-                          labelLeftMargin + 135, labelTopMargin + 42,
+  // Diagonal slash
+  var slash = jsav.g.line(leftMargin + 125, topMargin + 72,
+                          leftMargin + 135, topMargin + 42,
 	  {"opacity": 100,"stroke-width": 1});
 
-  l.addFirst("")
-   .addFirst("");
+  // Vertical bar  
+  var bar = jsav.g.line(leftMargin + 73, topMargin + 35,
+                          leftMargin + 73, topMargin + 75,
+	                      {"stroke-width": 1, "stroke":"#000"});
+
+  l.addFirst("null")
+   .addFirst("null");
   l.layout();
   jsav.recorded();
 }(jQuery));
