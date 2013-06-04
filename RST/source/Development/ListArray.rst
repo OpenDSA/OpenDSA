@@ -63,12 +63,8 @@ elements in contiguous cells of the array, the
 ``insert``, ``append``, and ``remove``
 methods must maintain this property.
 
-Here a visualization for how the ``insert`` method works.
-
 .. inlineav:: AlistInsertCON ss
    :output: show
-
-Visualization for Append
 
 .. inlineav:: AlistAppendCON ss
    :output: show

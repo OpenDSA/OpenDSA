@@ -5,7 +5,7 @@ class LList implements List {
   private Link head;         // Pointer to list header
   private Link tail;         // Pointer to last element
   protected Link curr;       // Access to current element
-  private int cnt;           // Size of list
+  private int listSize;      // Size of list
 /* *** ODSAendTag: LListVars *** */
 
 /* *** ODSATag: LListCons *** */
@@ -17,7 +17,7 @@ class LList implements List {
   void clear() {
     curr = tail = new Link(null); // Create trailer
     head = new Link(tail);        // Create header
-    cnt = 0;
+    listSize = 0;
   }
 /* *** ODSAendTag: LListCons *** */
   
@@ -27,7 +27,7 @@ class LList implements List {
     curr.setnext(new Link(curr.element(), curr.next()));
     curr.setelement(it);
     if (tail == curr) tail = curr.next();  // New tail
-    cnt++;
+    listSize++;
   }
 /* *** ODSAendTag: LListInsert *** */
   
@@ -36,7 +36,7 @@ class LList implements List {
     tail.setnext(new Link(null));
     tail.setelement(it);
     tail = tail.next();
-    cnt++;
+    listSize++;
   }
 
 /* *** ODSATag: LListRemove *** */
@@ -47,6 +47,7 @@ class LList implements List {
     curr.setelement(curr.next().element()); // Pull forward the next element
     if (curr.next() == tail) tail = curr;   // Removed last, move tail
     curr.setnext(curr.next().next());       // Point around unneeded link
+    listSize--;                             // Decrement element count
     return it;                              // Return value
   }
 /* *** ODSAendTag: LListRemove *** */
@@ -66,7 +67,7 @@ class LList implements List {
   // Move curr one step right; no change if now at end
   void next() { if (curr != tail) curr = curr.next(); }
 
-  int length() { return cnt; } // Return list length
+  int length() { return listSize; } // Return list length
 
 
   // Return the position of the current element
@@ -80,7 +81,7 @@ class LList implements List {
 
   // Move down list to "pos" position
   void moveToPos(int pos) {
-    if ((pos < 0) || (pos > cnt)) {
+    if ((pos < 0) || (pos > listSize)) {
       println("Pos out of range, current position unchanged");
       return;
     }
