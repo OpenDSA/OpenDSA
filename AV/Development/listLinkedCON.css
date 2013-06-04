@@ -61,14 +61,22 @@
   width: 510px;
 }
 #LlistRemoveCON {
-  height: 345px;
+  height: 515px;
 }
 
 #LlistRemoveCON .jsavcode{
   border: 1px solid;
-  border-color: white;
-  margin-left: 270px;
-  width: 600px;
+  border-color: white;  
+  position: relative;
+  top: 140px;
+  width: 700px;
+}
+#LlistRemoveCON .jsavhorizontalarray .jsavnode {
+  min-width: 35px;
+  max-width: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  line-height: 35px;
 }
 
 .jsavhorizontallist.jsavautoresize .jsavnode {

@@ -848,120 +848,132 @@ var nodeGap = 25;
   jsav.recorded();
 }(jQuery));
 
-//Linked list deletion
+// Linked list deletion
 (function ($) {
-  var av = new JSAV("LlistRemoveCON");
-  //pseudocode
-  var pseudo = av.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
+  var jsav = new JSAV("LlistRemoveCON");
+  // pseudocode
+  var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
                        lineNumbers: false,
                        startAfter: "/* *** ODSATag: LListRemove *** */",
                        endBefore: "/* *** ODSAendTag: LListRemove *** */"});
-  // Left margin of the JSAV List
-  var leftMargin = 5;
-  var l = av.ds.list({"nodegap": 25, "center": false, "left": leftMargin});
-  //create a the hidden array
-  var arr = av.ds.array(tempArr, {indexed: true, layout: "array"});
-  arr.hide();
+  // Relative offsets
+  var leftMargin = 250;
+  var topMargin = 0;
+  // JSAV list
+  var l = jsav.ds.list({"nodegap": 30, "center": false, "left": leftMargin, "top":topMargin + 40});
+  // Create a the hidden array
+  var arr = jsav.ds.array(tempArr, {indexed: false, layout: "array",left: leftMargin + 150, top: topMargin + 75}).hide();
 
-  //Left margin of bar1 in step 1
-  var bar1LeftMargin = leftMargin + nodeWidth * 2 + nodeGap * 1.5;
-  //vertical bar in 1st step
-  var bar1 = av.g.line(bar1LeftMargin, 50, bar1LeftMargin, 80,
-	         {"stroke-width": 1, "stroke":"#000"});
-
-  //Left margin of label in step 1
-  var labelLeftMargin = leftMargin + nodeWidth + 10;
-  //label "curr" and arrow in the 1st step
-  var label = av.label("curr", 
-	          {before: arr, left: labelLeftMargin, top: 0, "font-size":"20px"});
-  //Left margin of arrow in step 1
-  var arrowLeftMargin = labelLeftMargin + 12;
-  //arrow pointing to "curr" in the 1st step
-  var arrow = av.g.line(arrowLeftMargin, 25, arrowLeftMargin + 20, 45,
-	          {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  //Left margin of labelIt in the 3rd step
-  var labelItLeftMargin = leftMargin + nodeGap + nodeWidth * 2 - 40;
-  //label "it" and arrow in the 3rd step
-  var labelIt = av.label("it", 
-	            {before: arr, left: labelItLeftMargin, top: 104, "font-size":"20px"});
-  //Left margin of arrowIt the 3rd step
-  var arrowItLeftMargin = labelItLeftMargin + 18;
-  var arrowIt = av.g.line(arrowItLeftMargin, 105, arrowItLeftMargin + 50, 75,
-	            {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+  //Head
+  var headLabel = jsav.label("head",
+    {before: l, left: leftMargin - 15, top: topMargin});
+  var headArrow = jsav.g.line(leftMargin - 5, topMargin + 20,
+  leftMargin + 15, topMargin + 40,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  //Curr
+  var currLabel = jsav.label("curr",
+	  {before: l, left: leftMargin + 132, top: topMargin, "font-size":"20px"});
+  var currArrow = jsav.g.line(leftMargin + 142, topMargin + 20,
+                   leftMargin + 162, topMargin + 40,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  //Tail
+  var tailLabel = jsav.label("tail",
+	  {before: l, left: leftMargin + 355, top: topMargin, "font-size":"20px"});
+  var tailArrow = jsav.g.line(leftMargin + 365, topMargin + 20,
+                              leftMargin + 385, topMargin + 40,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  // NewTail
+  var newTailLabel = jsav.label("tail",
+	  {before: l, left: leftMargin + 355 - 72, top: topMargin, "font-size":"20px"}).hide();
+  var newTailArrow = jsav.g.line(leftMargin + 365 - 72, topMargin + 20,
+                              leftMargin + 385 - 72, topMargin + 40,
+	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+  // "It"
+  var labelIt = jsav.label("it", 
+	            {before: arr, left: leftMargin + 90, top: topMargin + 98, "font-size":"20px"});
+  var arrowIt = jsav.g.line(leftMargin + 106, topMargin + 110,
+	  leftMargin + 146, topMargin + 110,
+	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
   labelIt.hide();
-  //Left margin of dashline in the 4th step
-  var dashlineLeftMargin = leftMargin + nodeGap + nodeWidth * 2 - 3;
-  //dashline in the 4th step
-  var dashline = av.g.polyline([[dashlineLeftMargin, 66], 
-	  [dashlineLeftMargin + 13, 66], [dashlineLeftMargin + 13, 30],[dashlineLeftMargin + 83,30],[dashlineLeftMargin + 83,66],[dashlineLeftMargin + 101,66]], {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
-  var bar4 = av.g.line(dashlineLeftMargin + 23, 15, dashlineLeftMargin + 23, 45,
+  // Dashline
+  var dashline = jsav.g.polyline([[leftMargin + 112 + 74, topMargin + 57],[leftMargin + 125 + 74, topMargin + 57],
+	  [leftMargin + 125 + 74, topMargin + 28],[leftMargin + 202 + 74,topMargin + 28],
+	  [leftMargin + 202 + 74,topMargin + 57],[leftMargin + 223 + 74,topMargin + 57]], 
+	  {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
+  // Vertical bar
+  var verticalBar = jsav.g.line(leftMargin + 129, topMargin + 41, leftMargin + 129, topMargin + 71,
 	         {"stroke-width": 1, "stroke":"#000"});
-  bar4.hide();
-	
-  //Left Margin of arrowIt1 in the 5th step
-  var arrowIt1LeftMargin = labelItLeftMargin + 15 ;
-  //arrow pointing to 10 in the 5th step
-  var arrowIt1 = av.g.line(arrowIt1LeftMargin, 115, arrowIt1LeftMargin + 20, 115,
-	             {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
-
   //initialize the linked list
-  av.umsg("The linked list before deletion");
-  l.addFirst(12)
+  jsav.umsg("The linked list before deletion");
+  l.addFirst("null")
    .addFirst(10)
+   .addFirst(35)
+   .addFirst(8)
    .addFirst(23)
-   .addFirst("20");
+   .addFirst("null");
   l.layout();
-  l.css({top: 50});
 	
-  //create new node 10
-  var n3 = l.newNode("10");
-  n3.highlight();
-  n3.css({left: 105, top: 50}); 
-  n3.hide();
   pseudo.highlight(1);
-  av.displayInit(); 
+  jsav.displayInit(); 
 
   //step 2
   l.get(2).highlight();
   l.layout({updateLeft: false});
-  av.umsg("10 is the current node to be deleted");
-  av.step(); 
+  jsav.umsg("8 is the current node to be deleted");
+  jsav.step(); 
 
   //step 3
+  arr.show();
+  jsav.effects.copyValue(l.get(2), arr, 0);
   labelIt.show();
   arrowIt.show();
-  av.umsg("Remember the value by setting \"it\" to point to the element");
+  l.get(2).unhighlight();
+  arr.highlight(0);
+  jsav.umsg("Remember the value of current node.");
   pseudo.unhighlight(1);
   pseudo.highlight(3);
-  av.step();
-
+  jsav.step();  
+  
   //step 4
-  l.get(1).edgeToNext().hide();
-  l.get(2).edgeToNext().hide();
-  bar1.hide();
-  dashline.show();
-  bar4.show();
-  av.umsg(" The next field of the preceding list node is set to point to the node following the one being deleted");	
+  jsav.effects.copyValue(l.get(3), l.get(2));
+  l.get(2).highlight();
+  arr.unhighlight(0);
+  jsav.umsg("Pull forward the next element");
   pseudo.unhighlight(3);
-  pseudo.highlight(6);
-  av.step();	
+  pseudo.highlight(4);
+  jsav.step();
 
-  ////step 5
-  l.remove(2);
-  dashline.hide();
-  bar4.hide();
-  arrowIt.hide();
-  bar1.show();  
+  //step 5
+  l.get(2).edgeToNext().hide();
+  l.get(3).edgeToNext().hide();
+  dashline.show();
+  l.get(4).highlight();
+  jsav.umsg(" The next field of the current node is set to point to the node following the one being deleted");	
+  pseudo.unhighlight(4);
+  pseudo.highlight(6);
+  jsav.step();	
+
+  //step 6
+  l.remove(3);
+  dashline.hide(); 
   l.layout();
-  l.get(1).edgeToNext().show();
-  arrowIt1.show();
-  n3.show();
-  n3.hide();
-  n3.show();
-  av.umsg(" Finally, the node is removed from the linked list");
+  l.get(2).edgeToNext().show();
+  tailLabel.hide();
+  tailArrow.hide();
+  newTailLabel.show();
+  newTailArrow.show();
+  l.get(2).unhighlight();  
+  l.get(3).unhighlight();
+  jsav.umsg(" Finally, the node is removed from the linked list. Decrease the list size by 1.");
   pseudo.unhighlight(6);
   pseudo.highlight(7);
-  av.step();
-  av.recorded();
+  jsav.step();
+  
+  //step 7
+  arr.highlight();
+  jsav.umsg(" Return the value of the node being deleted");
+  pseudo.unhighlight(7);
+  pseudo.highlight(8);
+  jsav.step();
+  jsav.recorded();
 }(jQuery));
