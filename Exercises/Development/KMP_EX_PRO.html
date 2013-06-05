@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KMP Proficiency Exercise</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+</head>
+
+<style>
+#container {
+  width: 800px;
+  height: 480px;
+}
+
+#profArray {
+  margin-top: -15px;
+  margin-bottom: 20px
+}
+
+.jsavline {
+  margin-top: 15px;
+  height: 50px;
+}
+
+#increments {
+  width: 150px;
+}
+
+</style>
+<body>
+
+<div id="container">
+  <table class="proHeaderTable">
+    <tr>
+      <td class="headerLeft">
+        <input type="button" id="help" name="help" value="Help" />
+      </td>
+      <td class="headerCenter">
+        <p class="jsavexercisecontrols"></p>
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+        <a id="settings" class="jsavsettings" href="#">Settings</a>
+      </td>
+    </tr>
+  </table>
+
+  <form class="avcontainer">
+    <p class="instructLabel">Instructions:</p>
+      <p class="instructions">
+        For this exercise you will trace the KMP algorithm in its entirity. You will start by highlighting the index from both the master string and substring that is currently being compared (simply click the index you want). Then you can click the <b>Next</b> button to move onto the next step. When you have found a match or made it to the end of the master string (whenever you think the algorithm has ended) you can click the <b>Grade</b> button. The alignment array has been precomputed for your convenience.
+      </p>
+    <p><span class="jsavscore"></span></p>
+    <div id="arrays" class="jsavcanvas"></div>
+    
+    <input type="button" id="next" name="next"
+    data-desc="Indicates user is done with the current increment"
+    value="Next" />
+
+  </form>
+</div> <!-- container -->
+
+<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../../JSAV/lib/raphael.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/odsaUtils-min.js"></script>
+<script src="../../lib/odsaAV-min.js"></script>
+<script src="KMP_EX_PRO.js"></script>
+</body>
+</html>
