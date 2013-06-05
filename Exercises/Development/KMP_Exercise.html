@@ -64,11 +64,14 @@
   var sub_str; //the actual sub string
   var master_str; //the actual master string
   var started; //tells us if anything has been done
+  var alignment_table; //the alignment table
   //var answer_array = new Array(); //stores the correct steps in the answer
   var substring_start_location; //where the substring will line up initially
   var substring_answer_location; //the index of the answer to the substring click event
   var master_answer_location;    //the index of the answer to the master string click event
-  substring_start_isset = false;
+  substring_start_isset = false; //boolean to see if the substring starting position has been set yet
+
+  var kmp_exercise = null;
 
   //returns a random number between lower_bound and upper_bound
   function gen_random(lower_bound, upper_bound) {
@@ -108,11 +111,6 @@
   }
   //This function generates the master and substring needed for the exercise
   function generate_strings(){
-      //grab the two divs that will hold our output
-      var master_div = document.getElementById("master_string");
-      var sub_div = document.getElementById("sub_string");
-
-
       /*######################################
         Substring generation begins here
       ######################################*/
@@ -220,11 +218,8 @@
         } else {
           s = align_array[s];
         }
-        console.log("Substring start:" + substring_start_location + " Master answer: "+ master_answer_location + " Substring answer index: " + substring_answer_location);
       }
-      //answer_array.push(m);
     }
-    //console.log("Currently storing the indexes of the master array that are checked each iteration: " + answer_array);
     if(s == sub.length) {
       return m - sub.length;
     } else {
@@ -280,12 +275,21 @@
 
   //This function initializes the arrays, and handles the clicks on the specific indexes, see comments in method for more information
   function initExercise(){
-    started = false;
-    //figure out how to reset the JSAV container if it is already set
-    if(kmp_exercise != null){
-        kmp_exercise.reset();
+    if(kmp_exercise!=null){ //if the exercise has already been initialized reset the important variables in it
+      main_text.clear();
+      search_string.clear();
+      alignment_table.clear();
+      started = null;
+      sub_str = null;
+      master_str = null;
+      substring_start_location = null;
+      substring_answer_location = null;
+      master_answer_location = null;
+      substring_start_isset = null;
     }
-    var kmp_exercise = new JSAV("jsav_area", {"animationMode": "none"});
+    started = false;
+
+    kmp_exercise = new JSAV("jsav_area", {"animationMode": "none"});
     var max = 0;
     //handles the actual click on an index and highlights the specified index
 
@@ -295,12 +299,8 @@
     sub_str = strs[1];          //second index of returned array has substring
     //$("#go_button").remove();
 
-
-    var master_arr = new Array();
-    var sub_arr = new Array();
-
-    master_arr = master_str.split("");
-    sub_arr = sub_str.split("");
+    var master_arr = master_str.split("");
+    var sub_arr = sub_str.split("");
 
     var index_match = kmp(master_arr, sub_arr);
 
@@ -308,7 +308,8 @@
     for(i=0; i<master_str.length;i++) {
         main_text.value(i, master_str.charAt(i));
         if(i < master_answer_location && i >= substring_start_location){
-          main_text.css(i, {"background-color": "green"});
+          //make green lighter
+          main_text.css(i, {"background-color": "#33FF33"});
         }
     }
 
@@ -327,12 +328,12 @@
         search_string.value(j, " ");
       }
       if(j < master_answer_location && j >= substring_start_location){
-        search_string.css(j, {"background-color": "green"});
+        search_string.css(j, {"background-color": "#33FF33"});
       }
     }
 
     //initializing the alignment array
-    var alignment_table = kmp_exercise.ds.array([' '], {indexed: true});
+    alignment_table = kmp_exercise.ds.array([' '], {indexed: true});
     var align_table_temp = new Array();
     align_table_temp = compute_align_array(sub_arr);
     for(f=0;f<align_table_temp.length;f++) {
@@ -345,32 +346,33 @@
   }
   // reset function definition
   var f_reset = function () {
-
     /*
       Issues reseting the canvas so that the variables aren't messed up during the second round
-    */
+    
     main_text.clear();
     search_string.clear();
     alignment_table.clear();
-    started = false;
-    sub_str = "";
-    master_str = "";
-    substring_start_location = 0;
-    substring_answer_location = 0;
-    master_answer_location = 0;
-    substring_start_isset = false;
+    started = null;
+    sub_str = null;
+    master_str = null;
+    substring_start_location = null;
+    substring_answer_location = null;
+    master_answer_location = null;
+    substring_start_isset = null;
+    */
+    alert("reset");
+    kmp_exercise.reset();
   };
   </script>
     <div class="exercise">
       <div class="vars">
         <var id="JSAV">initExercise()</var>
-        <var id="CorrectAnswer">genAnswer()</var> 
       </div> <!-- vars -->
 
       <div class="problems">
         <div>
           <div class="question">
-            The exercise below will test your newly acquired knowledge on the KMP algorithm. Please click the index of the master string that will be compared next and then the index of the substring that will be compared next. When you are finished hit <b>Check Answer</b> to see if you are correct. The values in the strings that have already been compared are highlighted in green so there is no confusion. The idea is to trace the string <b><var>sub_str</var></b> through the string <b><var>master_str</var></b> using the KMP Algorithm for just one step.
+            The exercise below will test your newly acquired knowledge on the KMP algorithm. The two characters that currently line up simulate a mismatch in the algorithm. Please click the index of the master string that will be compared <b>after the current mismatch</b> and then the index of the substring that will be compared next. When you are finished hit <b>Check Answer</b> to see if you are correct. The values in the strings that have already been compared are highlighted in green so there is no confusion. The idea is to trace the string <b><var>sub_str</var></b> through the string <b><var>master_str</var></b> using the KMP Algorithm for just one step.
             <div id="jsav_area"></div>
           </div> <!-- question -->
           <div class="solution" data-type="custom">
@@ -389,7 +391,7 @@
           </div>
           <div class = "model"></div>
         </div>
-      </div> <!-- problems -->
-    </div> <!--exercises-->
+      </div>
+    </div> 
   </body>
 </html>
