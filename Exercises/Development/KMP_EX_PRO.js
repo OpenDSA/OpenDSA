@@ -189,12 +189,15 @@
       var master_arr = strs[0].split("");
       var sub_arr = strs[1].split("");
       sub_str_size = sub_arr.length;
-      str = kmp_jsav.ds.array([' ']);
+      str = kmp_jsav.ds.array(master_arr);
+      /*
       for(var i=0; i<master_arr.length;i++) {
           str.value(i, master_arr[i]);
       }
+      */
 
-      sub_str = kmp_jsav.ds.array([' ']);
+      sub_str = str.clone();
+      sub_str.show();
       for(var j=0;j<master_arr.length;j++) {
         if(j < sub_arr.length) {
           sub_str.value(j, sub_arr[j]);
@@ -203,11 +206,13 @@
         }
       }
 
-      align_arr = kmp_jsav.ds.array([' '], {indexed: true});
+      
       var align_table_temp = compute_align_array(sub_arr);
+      align_arr = kmp_jsav.ds.array(align_table_temp, {indexed: true});
+      /*
       for(var f=0;f<align_table_temp.length;f++) {
         align_arr.value(f, align_table_temp[f]);
-      }
+      }*/
       num_comp = 0;
       str_curr = 0;
       sub_str_curr = 0;
