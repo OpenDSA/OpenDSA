@@ -4,7 +4,6 @@
   $(document).ready(function () {
     /*
       This area will be cleaned up soon but I was mimicking example exercise in an attempt to ensure that everything worked.
-
       -S.A.M.
     */
     /* **************************************************************
@@ -340,8 +339,7 @@
 
 
     // Initialize the exercise
-    // Defines the function to call on reset (initialize()), and the
-    //  function to call to generate the model answer (shellsort())
+    // Defines the function to call on reset (initialize())
     var exercise = kmp_jsav.exercise(modelSolution, initialize,
                      [{css: "background-color"}, {}], {controls:
                      $('.jsavexercisecontrols'), fix: fixState,
