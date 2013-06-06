@@ -3,7 +3,7 @@
 (function ($) {
   $(document).ready(function () {
     /*
-      This area will be cleaned up soon but I was mimicking example exercise in an attempt to ensure that everything worked.
+      This area will be cleaned up soon but I was mimicking an example exercise in an attempt to ensure that everything worked.
       -S.A.M.
     */
     /* **************************************************************
@@ -79,9 +79,6 @@
     }
     //function that generates the first 5 characters of our substring
 
-    /*
-      Remove case that results in all 0's in alignment array
-    */
     function generate_first_part_of_substring(decision, seed) {
       if(decision == 1) {
         var second = get_char(gen_random(char_lower_bound, char_upper_bound));
@@ -176,6 +173,16 @@
       return align;
     }
 
+    function str_click_handler(index) {
+      str_curr = index;
+      str.unhighlight();
+      str.highlight(index);
+    }
+    function sub_str_click_handler(index) {
+      sub_str_curr = index;
+      sub_str.unhighlight();
+      sub_str.highlight(index);
+    }
 
     //This function initializes the arrays for the exercise
     function initialize(){
@@ -190,11 +197,6 @@
       var sub_arr = strs[1].split("");
       sub_str_size = sub_arr.length;
       str = kmp_jsav.ds.array(master_arr);
-      /*
-      for(var i=0; i<master_arr.length;i++) {
-          str.value(i, master_arr[i]);
-      }
-      */
 
       sub_str = str.clone();
       sub_str.show();
@@ -209,13 +211,13 @@
       
       var align_table_temp = compute_align_array(sub_arr);
       align_arr = kmp_jsav.ds.array(align_table_temp, {indexed: true});
-      /*
-      for(var f=0;f<align_table_temp.length;f++) {
-        align_arr.value(f, align_table_temp[f]);
-      }*/
       num_comp = 0;
       str_curr = 0;
       sub_str_curr = 0;
+
+      //bind click events to the handler functions
+      str.click(str_click_handler);
+      sub_str.click(sub_str_click_handler);
 
       return [str, sub_str, align_arr];
     }
@@ -330,6 +332,7 @@
       for(var i = 0; i < sub_str.size(); i++) {
         if(sub_str.value(i) != " ") {
           spot = i;
+          break;
         }
       }
       num_comp = (sub_str_curr - spot) + 1;
@@ -350,7 +353,7 @@
                      $('.jsavexercisecontrols'), fix: fixState,
                      feedback: "continuous", fixmode: "fix"});
     exercise.reset();
-
+/*
     str.click(function(index) {
       str_curr = index;
       str.unhighlight();
@@ -361,7 +364,7 @@
       sub_str.unhighlight();
       sub_str.highlight(index);
     });
-
+*/
     $('#next').click(function() {
       if(str_curr != sub_str_curr){
         sub_str.unhighlight(sub_str_curr); 
