@@ -1,3 +1,6 @@
+final int testsize = 100000;
+long time1, time2;
+
 boolean SUCCESS = true;
 
 void doSomething(Object it) { }
@@ -74,5 +77,16 @@ void setup() {
     output.flush();
     output.close();
   }
+
+  LList LT = new LList();
+  time1 = millis();
+  for (int i = 0; i < testsize; i++) {
+    LL.insert(10);
+    LL.remove();
+  }
+  time2 = millis();
+  long totaltime = (time2-time1);
+  println("Timing test on " + testsize + " iterations: " + totaltime);
+
   exit();
 }

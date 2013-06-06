@@ -1,38 +1,35 @@
 /* *** ODSATag: Freelink *** */
-/** Singly linked list node with freelist support */
-class Link<E> {
-  private E element;    // Value for this node
-  private Link<E> next; // Point to next node in list
+static class Link {         // Singly linked list node with freelist support
+  private Object e;  // Value for this node
+  private Link n;    // Point to next node in list
 
-  /** Constructors */
-  Link(E it, Link<E> nextval)
-    { element = it; next = nextval; }
-  Link(Link<E> nextval) { next = nextval; }
+  // Constructors
+  Link(Object it, Link inn) { e = it; n = inn; }
+  Link(Link inn) { e = null; n = inn; }
 
-  /** Get and set methods */
-  Link<E> next() { return next; }
-  Link<E> setNext(Link<E> nxtval) { return next = nxtval; }
-  E element() { return element; }
-  E setElement(E it) { return element = it; }
+  Object element() { return e; }           // Return the value
+  void setelement(Object it) { e = it; }   // Set element value
+  Link next() { return n; }                // Return next link
+  void setnext(Link inn) { n = inn; }      // Set next link
 
-  /** Extensions to support freelists */
+  // Extensions to support freelists
   static Link freelist = null;     // Freelist for the class
 
-  /** @return A new link */
-  static <E> Link<E> get(E it, Link<E> nextval) {
+  // Return a new link, from freelist if possible
+  static Link get(Object it, Link inn) {
     if (freelist == null)
-      return new Link<E>(it, nextval); // Get from "new"
-    Link<E> temp = freelist;           // Get from freelist
+      return new Link(it, inn);        // Get from "new"
+    Link temp = freelist;              // Get from freelist
     freelist = freelist.next();
-    temp.setElement(it);
-    temp.setNext(nextval);
+    temp.setelement(it);
+    temp.setnext(inn);
     return temp;
   }
 
-  /** Return a link to the freelist */
+  // Return a link node to the freelist
   void release() {
-    element = null;   // Drop reference to the element
-    next = freelist;
+    e = null;   // Drop reference to the element
+    n = freelist;
     freelist = this;
   }
 }

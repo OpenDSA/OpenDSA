@@ -10,7 +10,7 @@ PROCESS = ~/processing-2.0b9/processing-java
 # Use this one on Linux
 # BUILD = build
 # On Windows, I can't make it work without an absolute path
-BUILD = c:/Cliff/OpenDSA/SourceCode/Processing/build
+BUILD = /home/shaffer/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
 all: Demo Misc Lists Trees Sorting Graphs
@@ -59,7 +59,7 @@ Largest:
 	@cp Misc/Anal.pde build/Anal
 	@$(PROCESS) --run --sketch="$(BUILD)/Anal" --output="build/build" --force
 
-Lists: ListTest
+Lists: ListTest FreeList
 
 ListTest: build/ListTest/success
 
@@ -73,6 +73,19 @@ build/ListTest/success: Lists/ListADT.pde Lists/AList.pde Lists/Link.pde Lists/L
 	@cp Lists/Link.pde build/ListTest/
 	@cp Lists/ListTest.pde build/ListTest/
 	@$(PROCESS) --run --sketch="$(BUILD)/ListTest" --output="$(BUILD)/build" --force
+
+FreeList: build/FreeList/success
+
+build/FreeList/success: Lists/ListADT.pde Lists/AList.pde Lists/Freelink.pde Lists/Freelist.pde Lists/ListTest.pde
+	@echo "Freelist Test"
+	-@rm -rf build/FreeList
+	@mkdir build/FreeList
+	@cp Lists/ListADT.pde build/FreeList
+	@cp Lists/AList.pde build/FreeList/
+	@cp Lists/Freelist.pde build/FreeList/LList.pde
+	@cp Lists/Freelink.pde build/FreeList/Link.pde
+	@cp Lists/ListTest.pde build/FreeList/FreeList.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/FreeList" --output="$(BUILD)/build" --force
 
 Trees: GenTree UFTest
 
