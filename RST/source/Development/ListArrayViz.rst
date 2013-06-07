@@ -25,10 +25,6 @@ and so must implement all of the member functions of ``List``.
 .. inlineav:: AlistVarsCON ss
    :output: show
 
-.. raw:: html
-
-   <p></p>
-
 .. inlineav:: AlistIntroCON ss
    :output: show
 
@@ -38,10 +34,6 @@ and ``remove`` methods must maintain this property.
 
 .. inlineav:: AlistInsertCON ss
    :output: show
-
-.. raw:: html
-
-   <p></p>
 
 .. inlineav:: AlistAppendCON ss
    :output: show
@@ -71,10 +63,6 @@ Insertion and Deletion work.
    
 .. avembed:: Exercises/Development/listArrayInsertion.html ka
   
-.. raw:: html
-
-   <p></p>
-
 .. avembed:: Exercises/Development/listArrayDeletion.html ka
 
    Add a battery of summary questions.

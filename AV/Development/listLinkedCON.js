@@ -96,24 +96,30 @@ var nodeGap = 25;
 
   var headLabel = jsav.label("head",
                     {before: l, left: labelLeftMargin, top: labelTopMargin});
+  headLabel.hide();
   var headArrow = jsav.g.line(labelLeftMargin + 10, labelTopMargin + 20,
                               labelLeftMargin + 30, labelTopMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  headArrow.hide();
 
   var currLabel = jsav.label("curr",
 	  {before: l, left: labelLeftMargin + 150, top: labelTopMargin, "font-size":"20px"});
+  currLabel.hide();
   //Curr arrow
   var currArrow = jsav.g.line(labelLeftMargin + 160, labelTopMargin + 20,
                               labelLeftMargin + 180, labelTopMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  currArrow.hide();
 
   //Left margin of tail
   var tailLabel = jsav.label("tail",
 	  {before: l, left: labelLeftMargin + 300, top: labelTopMargin, "font-size":"20px"});
+  tailLabel.hide();
   //Tail arrow
   var tailArrow = jsav.g.line(labelLeftMargin + 310, labelTopMargin + 20,
                               labelLeftMargin + 330, labelTopMargin + 40,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  tailArrow.hide();
 
   //Vertical bar
   var bar = jsav.g.line(labelLeftMargin + 145, labelTopMargin + 35,
@@ -147,6 +153,12 @@ var nodeGap = 25;
   jsav.displayInit();
 
   //step 2
+  headLabel.show();
+  headArrow.show();
+  currLabel.show();
+  currArrow.show();
+  tailLabel.show();
+  tailArrow.show();
   jsav.umsg("The list's first node is accessed from a pointer named head. To speed access to the end of the list, and to allow the append method to be performed in constant time, a pointer named tail is also kept to the last link of the list. The position of the current element is indicated by another pointer, named curr.");
   jsav.step();
 
@@ -207,6 +219,12 @@ var nodeGap = 25;
   var bar = jsav.g.line(labelLeftMargin + 145, labelTopMargin + 35,
                           labelLeftMargin + 145, labelTopMargin + 75,
 	                      {"stroke-width": 1, "stroke":"#000"});
+  // Another vertical bar
+  var bar2 = jsav.g.line(labelLeftMargin + 220, labelTopMargin + 35,
+                          labelLeftMargin + 220, labelTopMargin + 75,
+	                      {"stroke-width": 1, "stroke":"#000"});
+  bar2.hide();
+
   //Diagonal slash
   var slash = jsav.g.line(labelLeftMargin + 346, labelTopMargin + 72,
                           labelLeftMargin + 356, labelTopMargin + 42,
@@ -241,31 +259,34 @@ var nodeGap = 25;
    .addFirst(10)
    .addFirst(23)
    .addFirst(20);
+  l.get(1).highlight();
   l.layout();
-  jsav.umsg("Another problem is that we have no link for the preceding node. Often we can get around this problem during deletion by copying the next value into the current node. Lets look again at the example where we delete value 10.");
+  jsav.umsg("Another problem is that we have no link to get us to the preceding node (shown in yellow). So we have no way to update its <code>next</code> pointer.");
   jsav.displayInit();
+
+  l.get(1).unhighlight();
+  l.get(3).highlight();
+  jsav.umsg("Often we can get around this problem during deletion by copying the value following the current node (in this case the value 12) back into the current node. Let's look again at the example where we delete value 10.");
+  jsav.step();
   
-  //step 2
+  l.get(3).unhighlight();
   l.get(2).value("");
   l.get(2).highlight();
   jsav.umsg("First we remove the value 10 from the current node.");
   jsav.step();
   
-  //step 3
   jsav.effects.moveValue(l.get(3), l.get(2));
-  jsav.umsg(" Now we move the next value (12) to the current node).");
+  jsav.umsg("Now we move the value 12 to the current node).");
   jsav.step();
 
-  //step 4
   dashline.show();
   l.get(2).edgeToNext().hide();
   l.get(3).edgeToNext().hide();
   l.get(2).unhighlight();
   l.get(3).highlight();
-  jsav.umsg("  Now we can route around the uneeded node.");
+  jsav.umsg(" Now we can route around the un-needed node.");
   jsav.step();
 
-  //step 5
   dashline.hide();
   l.remove(3);
   l.get(2).edgeToNext().show();
@@ -276,17 +297,18 @@ var nodeGap = 25;
   slash.hide();
   slash5.show();
   l.layout();
-  jsav.umsg("  The node with a value of 10 is removed from the list. Unfortunately, this approach does not work when the current node is the last one on the list.");
+  jsav.umsg("The node with a value of 10 is removed from the list.");
   jsav.step();
 
-  //step 6
   currLabel.hide();
   currArrow.hide();
   tailLabel5.text("curr");
   tailLabel6.show();
   tailArrow6.show();
-  l.get(3).highlight();
-  jsav.umsg(" As in this example. There is no way to update the \"next\" pointer of the node with value 15. There is no way around this problem with the list as shown here.");
+  bar.hide();
+  bar2.show();
+  l.get(2).highlight();
+  jsav.umsg("Unfortunately, this approach does not work when the current node is the last one on the list, as in this example. Here we want to delete the node with value 15. But there is no way to update the <code>next</code> pointer of the node with value 12. There is no direct way around this problem with the list as shown here.");
   jsav.step();
   jsav.recorded();
 }(jQuery));
@@ -362,18 +384,18 @@ var nodeGap = 25;
   jsav.step(); 
   pseudo.unhighlight(1);
   pseudo.highlight(2);
-  jsav.umsg("The second of the private data members is <code>tail</code>, the last node of the list. This tailer node is a link node like any other, but its <code>next</code> field is set to <code>null</code>, pointing to nowhere.");
+  jsav.umsg("The second of the private data members is <code>tail</code>, the last node of the list. This trailer node is a link node like any other, but its <code>next</code> field is set to <code>null</code>, pointing to nowhere. Like the header node, the trailer node's value is ignored.");
   jsav.step();
   pseudo.unhighlight(2);
   pseudo.highlight(3);
-  jsav.umsg("The data member <code>curr</code> is the current node of the list. It could be any node on the list, except the <code>head</code> node.");
+  jsav.umsg("Data member <code>curr</code> is the current node of the list. It could be any node on the list, except the <code>head</code> node. If <code>curr</code> points to the same node as <code>tail</code>, then <code>curr</code> is at the end of the list and a newly inserted node would go to the end.");
   jsav.step();
   pseudo.unhighlight(3);
   pseudo.highlight(4);
   jsav.umsg(" Since there is no simple way to compute the length of the list simply from these three pointers, the list length will be stored explicitly, and updated by every operation that modifies the list size. The value cnt stores the length of the list.");
   jsav.step();
   pseudo.unhighlight(4);
-  jsav.umsg("Because <code>head</code>, <code>tail</code>, and <code>cnt</code> are all declared to be <code>private</code>, they may only be accessed by methods of Class <code>LList</code>. Since <code>curr</code> is a protected data member, it can only be accessed by Class or Subclass of LList.");
+  jsav.umsg("Because <code>head</code>, <code>tail</code>, <code>curr</code>, and <code>cnt</code> are all declared to be <code>private</code>, they may only be accessed by methods of Class <code>LList</code>.");
   jsav.recorded();
 }(jQuery));
 
@@ -385,22 +407,22 @@ var nodeGap = 25;
                         startAfter: "/* *** ODSATag: LListCons *** */",
                         endBefore: "/* *** ODSAendTag: LListCons *** */"});
 
-  jsav.umsg("Let's work through the constructor of class <code>LList</code>.");
+  jsav.umsg("Let's look at the constructors for class <code>LList</code>.");
   pseudo.highlight(0);
   jsav.displayInit();
   
-  //step 2
-  jsav.umsg("Note that the constructor for LList maintains the optional parameter for minimum list size introduced for Class AList. ");
+  // Slide
+  jsav.umsg("The constructor for LList maintains the optional parameter for minimum list size introduced for Class AList. This is done simply to keep the calls to the constructor consistent for both implementations. The linked list class does not declare a fixed-size array when the list is created, so this parameter is unnecessary for linked lists. It is ignored.");
   pseudo.unhighlight(0);
   pseudo.highlight(1);
   jsav.step();
 
-  //step 3
-  jsav.umsg("This is done simply to keep the calls to the constructor the same for both variants. Because the linked list class does not need to declare a fixed-size array when the list is created, this parameter is unnecessary for linked lists. It is ignored by the implementation.");
+  // Slide
+  jsav.umsg("So the constructor that takes the value just calls the version that does not take a value.")
   pseudo.highlight(2);
   jsav.step();
 
-  //step 4
+  // Slide
   pseudo.unhighlight(1);
   pseudo.unhighlight(2);
   pseudo.highlight(5);
@@ -408,8 +430,11 @@ var nodeGap = 25;
   pseudo.highlight(7);
   pseudo.highlight(8);
   pseudo.highlight(9);
-  jsav.umsg(" Both constructors rely on the clear method to do the real work.");
+  jsav.umsg("Both constructors rely on the clear method to do the real work.");
   jsav.step(); 
+
+  // Slide
+  jsav.umsg("The <code>clear</code> method initializes the list to just the empty header and trailer nodes as was shown before.");
   jsav.recorded();
 }(jQuery));
 
@@ -505,7 +530,7 @@ var nodeGap = 25;
   jsav.step();
   
   //step 3
-  jsav.umsg("Copy current.element() to the new node.");
+  jsav.umsg("Copy <code>current.element()</code> as the new node's value.");
   //Copy 10 to the new link node   
   jsav.effects.copyValue(l.get(2), newNode);
   jsav.step();
@@ -523,7 +548,7 @@ var nodeGap = 25;
   tailLabel.hide();
   newTailArrow.show();
   newTailLabel.show();
-  jsav.umsg(" The next field of the new list node is assigned to point to the next node of the current node.");
+  jsav.umsg("The next field of the new list node is assigned to point to what <code>curr.next()</code> points to.");
   jsav.step();
 
   //step 5
@@ -531,7 +556,7 @@ var nodeGap = 25;
   l.get(3).unhighlight();
   l.get(2).next(newNode).edgeToNext().show();	
   longArrow.hide();
-  jsav.umsg("The next field of the current node is assigned to point to the newly inserted node.");
+  jsav.umsg("<code>curr</code>'s <code>next</code> field is assigned to point to the new link node.");
   jsav.step();
 
   //step 6
@@ -656,7 +681,7 @@ var nodeGap = 25;
   
   InsertTail.prototype.steps = function(){
 	//step 1
-    this.jsav.umsg("Here is an example showing insert at tail. 15 is the value to be inserted.");
+    this.jsav.umsg("Here is an example showing insertion at the end of the list. 15 is the value to be inserted.");
     itBox.highlight(0);
 	pseudo.highlight(1);
     this.jsav.displayInit();
@@ -673,12 +698,12 @@ var nodeGap = 25;
 	
 	//step 3
     this.jsav.effects.copyValue(this.l.get(2), this.newNode);
-    this.jsav.umsg("Copy current.element() to the new node, which is null.");
+    this.jsav.umsg("Copy current.element() to the new node (this value is <code>null</code>).");
     this.jsav.step();
 
 	//step 4
     this.newNodeSlash.show();
-    this.jsav.umsg(" The next field of the new list node is assigned to point to the node after the curr, which is nowhere.");
+    this.jsav.umsg("The <code>next</code> field for the new node is assigned to point to what <code>curr.next()</code> points to (which is <code>null</code>).");
     this.jsav.step();
 
 	//step 5
@@ -690,13 +715,13 @@ var nodeGap = 25;
     this.l.get(2).highlight();
     this.l.layout({updateTop: false}); // control that top coordinate of nodes should not be recalculated
     this.slash.hide();
-    this.jsav.umsg(" The next field of the current node is assigned to point to the new link node.");
+    this.jsav.umsg("<code>curr</code>'s <code>next</code> field is assigned to point to the new link node.");
     this.jsav.step();
 
     //step 6
     this.jsav.effects.copyValue(itBox, 0, this.l.get(2));
 	itBox.unhighlight(0);
-    this.jsav.umsg("The value of the current node is set to \"it\".");
+    this.jsav.umsg("The value of the current node is set to 15.");
     pseudo.unhighlight(2);
     pseudo.highlight(3);
     this.jsav.step();
@@ -785,7 +810,7 @@ var nodeGap = 25;
 	//step 9
     pseudo.highlight(1);
 	pseudo.unhighlight(5);
-    this.jsav.umsg("Inserting into empty list is similar to inserting at the tail of the list. 15 is the value to be inserted.");
+    this.jsav.umsg("Inserting into the empty list is similar to inserting at the end of the list. Here 15 is again being inserted.");
     itBox.highlight(0);
 	this.headArrow.show();
 	this.currArrow.show();
@@ -810,7 +835,7 @@ var nodeGap = 25;
 
 	//step 12
     this.newNodeSlash.show();
-    this.jsav.umsg(" The next field of the new list node is assigned to point to the node after the curr, which is nowhere.");
+    this.jsav.umsg("The <code>next</code> field for the new node is assigned to point to what <code>curr.next()</code> points to (which is <code>null</code>).");
     this.jsav.step();
 
 	//step 13
@@ -822,13 +847,13 @@ var nodeGap = 25;
     this.l.get(1).highlight();
     this.l.layout({updateTop: false}); // control that top coordinate of nodes should not be recalculated
     this.slash.hide();
-    this.jsav.umsg(" The next field of the current node is assigned to point to the new link node.");
+    this.jsav.umsg("<code>curr.next()</code> is assigned to point to the new link node.");
     this.jsav.step();
 
     //step 14
     this.jsav.effects.copyValue(itBox, 0, this.l.get(1));
 	itBox.unhighlight(0);
-    this.jsav.umsg("The value of the current node is set to \"it\".");
+    this.jsav.umsg("The value of the current node is set to 15.");
     pseudo.unhighlight(2);
     pseudo.highlight(3);
     this.jsav.step();
@@ -924,7 +949,7 @@ var nodeGap = 25;
   var verticalBar = jsav.g.line(leftMargin + 129, topMargin + 41, leftMargin + 129, topMargin + 71,
 	         {"stroke-width": 1, "stroke":"#000"});
   //initialize the linked list
-  jsav.umsg("The linked list before deletion");
+  jsav.umsg("Now let's look at the <code>remove</code> method.");
   l.addFirst("null")
    .addFirst(10)
    .addFirst(35)
@@ -939,7 +964,7 @@ var nodeGap = 25;
   //step 2
   l.get(2).highlight();
   l.layout({updateLeft: false});
-  jsav.umsg("8 is the current node to be deleted");
+  jsav.umsg("Here is the linked list before we remove the node with value 8.");
   jsav.step(); 
 
   //step 3
@@ -949,7 +974,7 @@ var nodeGap = 25;
   arrowIt.show();
   l.get(2).unhighlight();
   arr.highlight(0);
-  jsav.umsg("Remember the value of current node.");
+  jsav.umsg("Remember the value of the current node.");
   pseudo.unhighlight(1);
   pseudo.highlight(3);
   jsav.step();  
@@ -958,7 +983,7 @@ var nodeGap = 25;
   jsav.effects.copyValue(l.get(3), l.get(2));
   l.get(2).highlight();
   arr.unhighlight(0);
-  jsav.umsg("Pull forward the next element");
+  jsav.umsg("Pull forward the next node's value");
   pseudo.unhighlight(3);
   pseudo.highlight(4);
   jsav.step();
@@ -968,7 +993,7 @@ var nodeGap = 25;
   l.get(3).edgeToNext().hide();
   dashline.show();
   l.get(4).highlight();
-  jsav.umsg(" The next field of the current node is set to point to the node following the one being deleted");	
+  jsav.umsg("<code>curr</code>'s next field is set to point to the node following the one being deleted. This removes the node from the linked list.");	
   pseudo.unhighlight(4);
   pseudo.highlight(6);
   jsav.step();	
@@ -984,14 +1009,14 @@ var nodeGap = 25;
   newTailArrow.show();
   l.get(2).unhighlight();  
   l.get(3).unhighlight();
-  jsav.umsg(" Finally, the node is removed from the linked list. Decrease the list size by 1.");
+  jsav.umsg("Decrease the list size by 1.");
   pseudo.unhighlight(6);
   pseudo.highlight(7);
   jsav.step();
   
   //step 7
   arr.highlight();
-  jsav.umsg(" Return the value of the node being deleted");
+  jsav.umsg(" Return the value of the node that was deleted.");
   pseudo.unhighlight(7);
   pseudo.highlight(8);
   jsav.step();
@@ -1054,8 +1079,11 @@ var nodeGap = 25;
   l.layout();
 
   pseudo_next.highlight(1);
-  jsav.umsg("Method next simply moves curr one position toward the tail of the list.");
+  jsav.umsg("Finally, we will look at how a few other methods work.");
   jsav.displayInit();
+
+  jsav.umsg("Method next simply moves curr one position toward the tail of the list.");
+  jsav.step();
 
   //step 2  
   l.get(4).highlight();

@@ -2,7 +2,7 @@
 class LList implements List {
   private Link head;         // Pointer to list header
   private Link tail;         // Pointer to last element
-  protected Link curr;       // Access to current element
+  private Link curr;         // Access to current element
   private int listSize;      // Size of list
 
   // Constructors
@@ -44,20 +44,20 @@ class LList implements List {
     Object it = curr.element();             // Remember value
     curr.setelement(curr.next().element()); // Pull forward the next element
     if (curr.next() == tail) tail = curr;   // Removed last, move tail
-    Link tempptr = curr.next();             // Remember link
+    Link tempptr = curr.next();             // Remember the link
     curr.setnext(curr.next().next());       // Point around unneeded link
-    tempptr.release();                    // Release link
+    tempptr.release();                      // Release the link
     listSize--;                             // Decrement element count
     return it;                              // Return value
   }
   /* *** ODSAendTag: Freelist *** */
 
   void moveToStart() { curr = head.next(); } // Set curr at list start
-  void moveToEnd() { curr = tail; }     // Set curr at list end
+  void moveToEnd() { curr = tail; }          // Set curr at list end
 
   // Move curr one step left; no change if now at front
   void prev() {
-    if (head.next() == curr) return; // No previous element
+    if (head.next() == curr) return;         // No previous element
     Link temp = head;
     // March down list until we find the previous element
     while (temp.next() != curr) temp = temp.next();
@@ -67,7 +67,7 @@ class LList implements List {
   // Move curr one step right; no change if now at end
   void next() { if (curr != tail) curr = curr.next(); }
 
-  int length() { return listSize; } // Return list length
+  int length() { return listSize; }          // Return list length
 
 
   // Return the position of the current element

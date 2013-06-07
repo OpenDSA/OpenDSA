@@ -13,8 +13,8 @@ Freelists
 
 The ``new`` operator is relatively expensive to use.
 Garbage collection is also expensive.
-Module :numref:`MemoryMan` discusses how general-purpose memory
-managers are implemented.
+If you want to know why, Module :numref:`MemoryMan` discusses how
+general-purpose memory managers are implemented.
 The expense comes from the fact that free-store routines must be
 capable of handling requests to and from free store with no particular
 pattern, as well as memory requests of vastly different sizes.
@@ -47,10 +47,8 @@ multiple lists.
 So long as they do not all grow and shrink together, the free list can
 let link nodes move between the lists.
 
-In the implementation shown here, the link class is augmented with
+In the implementation shown here, the ``Link`` class is augmented with
 methods ``get`` and ``release``. [#]_
-Here is the code to reimplement the ``Link`` class
-to support these methods.
 
 .. codeinclude:: Lists/Freelink.pde
    :tag: Freelink

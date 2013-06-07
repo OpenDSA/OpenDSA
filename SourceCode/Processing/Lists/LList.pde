@@ -4,13 +4,13 @@
 class LList implements List {
   private Link head;         // Pointer to list header
   private Link tail;         // Pointer to last element
-  protected Link curr;       // Access to current element
+  private Link curr;         // Access to current element
   private int listSize;      // Size of list
 /* *** ODSAendTag: LListVars *** */
 
 /* *** ODSATag: LListCons *** */
   // Constructors
-  LList(int size) { this(); }   // Constructor -- Ignore size
+  LList(int size) { this(); }     // Constructor -- Ignore size
   LList() { clear(); }
 
   // Remove all elements

@@ -8,19 +8,30 @@
    :prerequisites:
    :topic: Lists
 
-Comparison of List Implementations [Text]
-=========================================
+Comparison of List Implementations [Storyboard]
+===============================================
 
 Now that you have seen two substantially different implementations for
 lists, it is natural to ask which is better.
 In particular, if you must implement a list for some task,
 which implementation should you choose?
 
+Space Comparison
+----------------
+
+Given a collection of elements to store, they take up some amount of
+space whether they are simple integers or large objects with many
+fields.
+Any container data structure like a list then requires some additional
+space to organize the elements being stored.
+This additional space is called :dfn`overhead`.
+
 Array-based lists have the disadvantage that their size must be
 predetermined before the array can be allocated.
 Array-based lists cannot grow beyond their predetermined size.
 Whenever the list contains only a few elements, a
 substantial amount of space might be tied up in a largely empty array.
+This empty space is the overhead required by the array-based list.
 Linked lists have the advantage that they only need space for the
 objects actually on the list.
 There is no limit to the number of elements on a linked list,
@@ -31,17 +42,18 @@ while the space required by the array-based list implementation is
 
 Array-based lists have the advantage that there is no wasted
 space for an individual element.
-Linked lists require that an extra pointer be added to every list
-node.
+Linked lists require that an extra pointer for the ``next`` field be
+added to every list node.
+So the linked list has these ``next`` pointers as overhead.
 If the element size is small, then the overhead for
 links can be a significant fraction of the total storage.
 When the array for the array-based list is completely filled, there
-is no storage overhead.
+is no wasted space, and so no overhead.
 The array-based list will then be more space efficient, by a
 constant factor, than the linked implementation.
 
 A simple formula can be used to determine whether the array-based list
-or linked list implementation will be more space efficient in a
+or the linked list implementation will be more space efficient in a
 particular situation.
 Call :math:`n` the number of elements currently in the list,
 :math:`P` the size of a pointer in storage units
@@ -73,18 +85,29 @@ This occurs when
 
 If :math:`P = E`, then the break-even point is at :math:`D/2`.
 This would happen if the element field is either a four-byte
-``int`` value or a pointer, and the next field is a typical
+``int`` value or a pointer, and the ``next`` field is a typical
 four-byte pointer.
 That is, the array-based implementation would be more efficient (if
 the link field and the element field are the same size) whenever the
 array is more than half full.
+
+.. TODO::
+   :type: Exercise
+
+   Give the student a scenario in terms of sizes required for D, E,
+   P. Then the student must deterimine which representation is more
+   space efficient (or if they are the same).
 
 As a rule of thumb, linked lists are more space efficient when
 implementing lists whose number of elements varies widely or is
 unknown.
 Array-based lists are generally more space efficient when
 the user knows in advance approximately how large the list will
-become.
+become, and can be confident that the list will never grow beyond a
+certain limit.
+
+Time Comparison
+---------------
 
 Array-based lists are faster for random access by position.
 Positions can easily be adjusted forwards or backwards by
@@ -115,11 +138,12 @@ allow the size of the array to grow and shrink depending on the number
 of elements that are actually stored.
 This data structure is known as a
 :dfn:`dynamic array`.
-Both the Java and C++/STL ``Vector`` classes implement a
-dynamic array.
+For example, both the Java and C++/STL ``Vector`` classes implement a
+dynamic array,
+and JavaScript arrays are always dynamic.
 Dynamic arrays allow the programmer to get around the limitation on
-the standard array that its size cannot be changed once the array has
-been created.
+the traditional array that its size cannot be changed once the array
+has been created.
 This also means that space need not be allocated to the dynamic array
 until it is to be used.
 The disadvantage of this approach is that it takes time to deal
@@ -136,3 +160,8 @@ To analyze the overall cost of dynamic array operations over time,
 we need to use a technique known as
 :dfn:`amortized analysis`
 which is discussed in Module :numref:`<AmortAnal>`.
+
+.. TODO::
+   :type: Exercise
+
+   Need a battery of summary questions.

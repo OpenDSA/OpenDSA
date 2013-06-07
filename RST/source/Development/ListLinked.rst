@@ -64,11 +64,6 @@ Implementing these special cases for ``insert`` and ``remove``
 increases code complexity, making it harder to understand,
 and thus increases the chance of introducing bugs.
 
-.. TODO::
-   :type: Slideshow
-
-   The following slideshow needs a bit of polishing.
-   
 .. inlineav:: LlistBadReasonCON ss
    :output: show
    
