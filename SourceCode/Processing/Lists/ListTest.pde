@@ -1,4 +1,4 @@
-final int testsize = 100000;
+final int testsize = 0;
 long time1, time2;
 
 boolean SUCCESS = true;
@@ -78,15 +78,34 @@ void setup() {
     output.close();
   }
 
+  if (testsize == 0) {
+    exit();
+    return;
+  }
+  println("Do the timing test");
   LList LT = new LList();
   time1 = millis();
   for (int i = 0; i < testsize; i++) {
     LL.insert(10);
-    LL.remove();
+    LL.insert(15);
+    LL.insert(20);
+    LL.insert(25);
+    LL.clear();
   }
   time2 = millis();
   long totaltime = (time2-time1);
   println("Timing test on " + testsize + " iterations: " + totaltime);
 
+  time1 = millis();
+  for (int i = 0; i < testsize; i++) {
+    Link temp = new Link(null, null);
+    temp = new Link(null, null);
+    temp = new Link(null, null);
+    temp = new Link(null, null);
+    temp = new Link(null, null);
+  }
+  time2 = millis();
+  totaltime = (time2-time1);
+  println("Timing test2 on " + testsize + " iterations: " + totaltime);
   exit();
 }

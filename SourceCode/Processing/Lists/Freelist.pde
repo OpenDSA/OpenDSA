@@ -11,8 +11,13 @@ class LList implements List {
 
   // Remove all elements
   void clear() {
-    curr = tail = new Link(null); // Create trailer
-    head = new Link(tail);        // Create header
+    while (head != null) {
+      Link temp = head.next();
+      head.release();
+      head = temp;
+    }
+    curr = tail = Link.get(null, null); // Create trailer
+    head = Link.get(null, tail);        // Create header
     listSize = 0;
   }
   

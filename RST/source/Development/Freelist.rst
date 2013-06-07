@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Lists
 
-Freelists [Text]
-================
+Freelists
+=========
 
 The ``new`` operator is relatively expensive to use.
 Garbage collection is also expensive.
@@ -69,15 +69,25 @@ Here are the necessary modifications to members of the linked list
 class to make use of the freelist version of the link class.
 
 .. TODO::
-   :type: Text
+   :type: Timings
 
-   Run timings on Freelist operators to see the speedup: On my
-   computer, a call to the overloaded ``new`` and ``delete``
-   operators requires about one tenth of the time required by the
-   system free-store operators.
+   Need to run timings for freelist use in various languages.
+   In Processing, there was not much benefit to using the freelist.
+   The information reported in the next paragraph on Java might or
+   might not still be reliable.
+
+How much time is saved by using freelists depends on the language that
+you are programming in.
+For example, in Java, getting a node from your own freelist requires
+about one tenth of the time required by the new operator.
 
 .. codeinclude:: Lists/Freelist.pde
    :tag: Freelist
+
+.. TODO::
+   :type: Exercise
+
+   Need a battery of summary questions.
 
 Notes
 -----
