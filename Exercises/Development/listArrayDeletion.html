@@ -27,6 +27,13 @@ Written by Junyang Chen and Cliff Shaffer
 	.jsavcanvas{
 		height: 125px;
 	}
+   .jsavnode {
+     line-height: 30px !important;
+     min-width: 30px !important;
+     max-width: 30px !important;
+     min-height: 30px !important;
+	 max-height: 30px !important;
+    }
     #reset { margin-right: 20px;}
   </style>
 </head>
@@ -45,7 +52,7 @@ var	jsav,           // The JSAV object
 // Click event handler on the array
 var clickHandler = function (index, e) {
   if (selected_index === -1) { // if nothing currently selected
-	jsavArr.css(index, {"font-size": "130%"});
+	jsavArr.css(index, {"font-size": "110%"});
 	selected_index = index;
 	jsavArr.highlight(index);
   } else {
@@ -91,8 +98,8 @@ var initJSAV = function (arr_size, insertPos, insertValue) {
   //jsav.recorded();
   jsavArr = jsav.ds.array(answerArr, {indexed: true, center: false});
   jsavArr.css({top:50});
-  var arrowCurr = jsav.g.line(24 + delPosision * 45, 30, 24 + delPosision * 45, 52,{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-	var label = jsav.label("Curr", {before: jsavArr, left: 10 + delPosision * 45, top: 10});	
+  var arrowCurr = jsav.g.line(18 + delPosision * 31, 30, 18 + delPosision * 31, 52,{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+	var label = jsav.label("Curr", {before: jsavArr, left: 4 + delPosision * 31, top: 10});	
   answerArr.splice (delPosision, 1);
   answerArr.push("");
  
