@@ -142,6 +142,8 @@ Implementations for the remaining operations each require
    linked list insertion. Show a linked list, and below it a node
    holding the new value. User will do a series of drags for values
    and links to get the new node into place.
+   
+.. avembed:: Exercises/Development/listLinkedInsertion.html ka
 
 .. TODO::
    :type: Exercise
