@@ -19,7 +19,7 @@
       position: absolute;
       top: 15px;
     }
-    .jsavcanvas { height: 400px; }
+    .jsavcanvas { height: 500px; }
 
     .jsavarray .jsavindex {
       min-width: 25px;
@@ -58,7 +58,7 @@
     var master_label = kmp_slideshow.label("Master String", {before: master});
     var sub_label = kmp_slideshow.label("Sub String", {before: sub});
     var align_label = kmp_slideshow.label("Alignment Array for Sub String", {before: align});
-
+    kmp_slideshow.displayInit();
 
     kmp_slideshow.umsg("First we have the Master string (indexed [0-n]), the Sub string (indexed [0-m]) and the alignment array for the Sub string.");
 
@@ -68,8 +68,8 @@
         Setting up the two variables and the pseudo code used throughout the slideshow.
     */
     var kmp_pseudo = kmp_slideshow.code("input: master string, sub string, align array\nm = 0\ns = 0\nwhile((s < sub.length) and (sub.length - s <= master.length - m)):\n\tif(master[m] == sub[s]): m++, s++\n\telse if(s == 0): m++\n\telse: s = align[s]\nif(s == sub.length): return m - sub.length\nelse: return -1", {before: master_label});
-    var m = kmp_slideshow.variable(["0"],{visible: true, label: "m = ", left: "150px", bottom: "460px"});
-    var s = kmp_slideshow.variable(["0"], {visible: true, label: "s = ", left: "150px", bottom: "430px"});
+    var m = kmp_slideshow.variable(["0"],{visible: true, label: "m = ", left: "150px", top: "230px"});
+    var s = kmp_slideshow.variable(["0"], {visible: true, label: "s = ", left: "150px", top: "260px"});
 
     kmp_slideshow.step();
     kmp_slideshow.umsg("We will also notice the termination condition of our loop, that s is less than the length of our sub string and that the length of the substring - s is <= length of the master - m.");
