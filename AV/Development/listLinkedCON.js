@@ -2,11 +2,38 @@
 // Various functions and variables that will be used by all of the
 // following sections of the tutorial.
 
-// The various arrays to start sweeps with or display
-var tempArr = [10];
-// List node width = min-width + padding-right
-var nodeWidth = 42;
-var nodeGap = 25;
+// JSAV extension
+(function ($) {
+  JSAV._types.ds.ListNode.prototype.odsa_addLabel = function(leftOffset, topOffset, type){
+    //leftOffset = this.container.position().left;
+    //topOffset = this.container.position().top;
+	var leftMargin = $('#' + this.id()).position().left + leftOffset;
+    var topMargin = $('#' + this.id()).position().top + topOffset - 40;
+    return this.jsav.label(type,
+      {left: -10 + leftMargin, top: topMargin, "font-size":"20px"});
+  }
+
+  JSAV._types.ds.ListNode.prototype.odsa_addArrow = function(leftOffset, topOffset){
+    var leftMargin = $('#' + this.id()).position().left + leftOffset;
+    var topMargin = $('#' + this.id()).position().top + topOffset - 40;
+    return this.jsav.g.line(-4 + leftMargin, topMargin + 20, 16 + leftMargin, topMargin + 40,
+    {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  }
+
+  JSAV._types.ds.ListNode.prototype.odsa_addTail = function(leftOffset, topOffset){	  
+    var fx = $('#' + this.id()).position().left + leftOffset + 33;
+    var fy = $('#' + this.id()).position().top + topOffset + 32;
+    return this.jsav.g.line(fx, fy, fx + 10, fy - 31,
+      {"opacity": 100,"stroke-width": 1});
+  }
+
+  JSAV._types.ds.ListNode.prototype.odsa_addVLine = function(leftOffset, topOffset){	  
+    var fx = $('#' + this.id()).position().left + leftOffset;
+    var fy = $('#' + this.id()).position().top + topOffset;
+    return this.jsav.g.line(fx - 15, fy - 5 , fx - 15, fy + 35,
+      {"opacity": 100, "stroke-width": 1});
+  }
+}(jQuery));
 
 // Diagram showing node concept
 (function ($) {
@@ -38,47 +65,31 @@ var nodeGap = 25;
 // Initial state of a linked list when using a header node
 (function ($) {
   var jsav = new JSAV("listLinkedInitCON", {"animationMode": "none"});
-
-  // Relative offsets
-  var leftMargin = 350;
-  var topMargin = 10;
   
-  var l = jsav.ds.list({"nodegap": 30, "top": topMargin + 40, left: leftMargin + 17});
-
-  // Head
-  var headLabel = jsav.label("head",
-                    {before: l, left: leftMargin, top: topMargin});
-  var headArrow = jsav.g.line(leftMargin + 10, topMargin + 20,
-                              leftMargin + 30, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  // Curr
-  var currLabel = jsav.label("curr",
-	  {before: l, left: leftMargin + 70, top: topMargin, "font-size":"20px"});
-  var currArrow = jsav.g.line(leftMargin + 80, topMargin + 20,
-                              leftMargin + 100, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  // Tail
-  var tailLabel = jsav.label("tail",
-	  {before: l, left: leftMargin + 120, top: topMargin, "font-size":"20px"});
-  var tailArrow = jsav.g.line(leftMargin + 130, topMargin + 20,
-                              leftMargin + 110, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  // Diagonal slash
-  var slash = jsav.g.line(leftMargin + 125, topMargin + 72,
-                          leftMargin + 135, topMargin + 42,
-	  {"opacity": 100,"stroke-width": 1});
-
-  // Vertical bar  
-  var bar = jsav.g.line(leftMargin + 73, topMargin + 35,
-                          leftMargin + 73, topMargin + 75,
-	                      {"stroke-width": 1, "stroke":"#000"});
-
+  // Relative offsets
+  var leftMargin = 367;
+  var topMargin = 50;
+  
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
   l.addFirst("null")
    .addFirst("null");
   l.layout();
+  // Head
+  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
+  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+  // Curr
+  var currLabel = l.get(1).odsa_addLabel(leftMargin,topMargin,"curr");
+  var currArrow = l.get(1).odsa_addArrow(leftMargin,topMargin);
+  // Tail
+  var tailLabel = jsav.label("tail",
+	  {before: l, left: leftMargin + 105, top: topMargin - 40, "font-size":"20px"});
+  var tailArrow = jsav.g.line(leftMargin + 115, topMargin - 20,
+                              leftMargin + 95, topMargin,
+	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  // Diagonal slash
+  var slash = l.get(1).odsa_addTail(leftMargin,topMargin);
+  // Vertical bar  
+  var bar = l.get(1).odsa_addVLine(leftMargin,topMargin);
   jsav.recorded();
 }(jQuery));
 
@@ -87,68 +98,45 @@ var nodeGap = 25;
   var jsav = new JSAV("LlistBadCON");
 
   // Relative offsets
-  var labelLeftMargin = 240;
-  var labelTopMargin = 10;
-  // Relative offsets for tail and slash in step 3
-  var labelLeftMargin3 = labelLeftMargin -74;
+  var leftMargin = 257;
+  var topMargin = 50;
 
-  var l = jsav.ds.list({"nodegap": 30, "top": labelTopMargin + 40, left: labelLeftMargin + 17});
-
-  var headLabel = jsav.label("head",
-                    {before: l, left: labelLeftMargin, top: labelTopMargin});
-  headLabel.hide();
-  var headArrow = jsav.g.line(labelLeftMargin + 10, labelTopMargin + 20,
-                              labelLeftMargin + 30, labelTopMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-  headArrow.hide();
-
-  var currLabel = jsav.label("curr",
-	  {before: l, left: labelLeftMargin + 150, top: labelTopMargin, "font-size":"20px"});
-  currLabel.hide();
-  //Curr arrow
-  var currArrow = jsav.g.line(labelLeftMargin + 160, labelTopMargin + 20,
-                              labelLeftMargin + 180, labelTopMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-  currArrow.hide();
-
-  //Left margin of tail
-  var tailLabel = jsav.label("tail",
-	  {before: l, left: labelLeftMargin + 300, top: labelTopMargin, "font-size":"20px"});
-  tailLabel.hide();
-  //Tail arrow
-  var tailArrow = jsav.g.line(labelLeftMargin + 310, labelTopMargin + 20,
-                              labelLeftMargin + 330, labelTopMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-  tailArrow.hide();
-
-  //Vertical bar
-  var bar = jsav.g.line(labelLeftMargin + 145, labelTopMargin + 35,
-                          labelLeftMargin + 145, labelTopMargin + 75,
-	                      {"stroke-width": 1, "stroke":"#000"});
-  //Diagonal slash
-  var slash = jsav.g.line(labelLeftMargin + 346, labelTopMargin + 72,
-                          labelLeftMargin + 356, labelTopMargin + 42,
-	  {"opacity": 100,"stroke-width": 1});
-
-  //Diagonal slash in step 3
-  var slash3 = jsav.g.line(labelLeftMargin3 + 345, labelTopMargin + 72,
-                          labelLeftMargin3 + 355, labelTopMargin + 42,
-	  {"opacity": 0,"stroke-width": 1});
-
-  //Label tail in step 3
-  var tailLabel3 = jsav.label("tail",
-	  {before: l, left: labelLeftMargin3 + 300, top: labelTopMargin, "font-size":"20px"}).hide();
-  //Arrow tail in step 3
-  var tailArrow3 = jsav.g.line(labelLeftMargin3 + 310, labelTopMargin + 20,
-                              labelLeftMargin3 + 330, labelTopMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
-
-  l.addFirst(15)
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
+    l.addFirst(15)
    .addFirst(12)
    .addFirst(10)
    .addFirst(23)
    .addFirst(20);
   l.layout();
+
+  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
+  headLabel.hide();
+  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+  headArrow.hide();
+  // curr
+  var currLabel = l.get(2).odsa_addLabel(leftMargin,topMargin,"curr");
+  currLabel.hide();
+  var currArrow = l.get(2).odsa_addArrow(leftMargin,topMargin);
+  currArrow.hide();
+  // tail
+  var tailLabel = l.get(4).odsa_addLabel(leftMargin,topMargin,"tail");
+  tailLabel.hide();
+  var tailArrow = l.get(4).odsa_addArrow(leftMargin,topMargin);
+  tailArrow.hide();
+  // Vertical line  
+  var bar = l.get(2).odsa_addVLine(leftMargin,topMargin);
+  //Diagonal slash at tail
+  var slash = l.get(4).odsa_addTail(leftMargin,topMargin);
+  //Diagonal slash in step 3
+  var slash3 = l.get(3).odsa_addTail(leftMargin,topMargin);
+  slash3.hide();
+  //Label tail in step 3
+  var tailLabel3 = l.get(3).odsa_addLabel(leftMargin,topMargin,"tail");
+  tailLabel3.hide();
+  //Arrow tail in step 3
+  var tailArrow3 = l.get(3).odsa_addArrow(leftMargin,topMargin);
+  tailArrow3.hide();
+
   jsav.umsg("Here is a graphical depiction for a linked list storing five integers. The value stored in a pointer variable is indicated by an arrow \"pointing\" to something. A NULL pointer is indicated graphically by a diagonal slash through a pointer variable's box. The vertical line between the nodes labeled 23 and 10 indicates the current position (immediately to the right of this line).");
   jsav.displayInit();
 
@@ -159,6 +147,7 @@ var nodeGap = 25;
   currArrow.show();
   tailLabel.show();
   tailArrow.show();
+  
   jsav.umsg("The list's first node is accessed from a pointer named head. To speed access to the end of the list, and to allow the append method to be performed in constant time, a pointer named tail is also kept to the last link of the list. The position of the current element is indicated by another pointer, named curr.");
   jsav.step();
 
@@ -181,79 +170,11 @@ var nodeGap = 25;
   var jsav = new JSAV("LlistBadReasonCON");
 
   // Relative offsets
-  var labelLeftMargin = 240;
-  var labelTopMargin = 10;
-  // Relative offsets for tail and slash in step 5
-  var labelLeftMargin5 = labelLeftMargin -74;
+  var leftMargin = 257;
+  var topMargin = 50;
 
   // Linked list
-  var l = jsav.ds.list({"nodegap": 30, "top": labelTopMargin + 40, left: labelLeftMargin + 17});
-  
-  //Hiddent JSAV array for animation
-  tempArr[0] = ""; 
-  var arr = jsav.ds.array(tempArr, 
-            {indexed: false, layout: "array", left:0}).hide();
-
-  var headLabel = jsav.label("head",
-                    {before: l, left: labelLeftMargin, top: labelTopMargin});
-  var headArrow = jsav.g.line(labelLeftMargin + 10, labelTopMargin + 20,
-                              labelLeftMargin + 30, labelTopMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  var currLabel = jsav.label("curr",
-	  {before: l, left: labelLeftMargin + 150, top: labelTopMargin, "font-size":"20px"});
-  //Curr arrow
-  var currArrow = jsav.g.line(labelLeftMargin + 160, labelTopMargin + 20,
-                              labelLeftMargin + 180, labelTopMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  //Left margin of tail
-  var tailLabel = jsav.label("tail",
-	  {before: l, left: labelLeftMargin + 300, top: labelTopMargin, "font-size":"20px"});
-  //Tail arrow
-  var tailArrow = jsav.g.line(labelLeftMargin + 310, labelTopMargin + 20,
-                              labelLeftMargin + 330, labelTopMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  //Vertical bar
-  var bar = jsav.g.line(labelLeftMargin + 145, labelTopMargin + 35,
-                          labelLeftMargin + 145, labelTopMargin + 75,
-	                      {"stroke-width": 1, "stroke":"#000"});
-  // Another vertical bar
-  var bar2 = jsav.g.line(labelLeftMargin + 220, labelTopMargin + 35,
-                          labelLeftMargin + 220, labelTopMargin + 75,
-	                      {"stroke-width": 1, "stroke":"#000"});
-  bar2.hide();
-
-  //Diagonal slash
-  var slash = jsav.g.line(labelLeftMargin + 346, labelTopMargin + 72,
-                          labelLeftMargin + 356, labelTopMargin + 42,
-	  {"opacity": 100,"stroke-width": 1});
-  //dash line in step 4
-  var dashlineLeftMargin = 452
-  var dashline = jsav.g.polyline([[dashlineLeftMargin, 66], 
-	  [dashlineLeftMargin + 13, 66], [dashlineLeftMargin + 13, 30],[dashlineLeftMargin + 83,30],[dashlineLeftMargin + 83,66],[dashlineLeftMargin + 101,66]], {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
-  
-  //Diagonal slash in step 5
-  var slash5 = jsav.g.line(labelLeftMargin5 + 346, labelTopMargin + 72,
-                          labelLeftMargin5 + 356, labelTopMargin + 42,
-	  {"opacity": 0,"stroke-width": 1});
-
-  //Label tail in step 5
-  var tailLabel5 = jsav.label("tail",
-	  {before: l, left: labelLeftMargin5 + 300, top: labelTopMargin, "font-size":"20px"}).hide();
-  //Arrow tail in step 5
-  var tailArrow5 = jsav.g.line(labelLeftMargin5 + 310, labelTopMargin + 20,
-                              labelLeftMargin5 + 330, labelTopMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
-  //Label tail in step 6
-  var tailLabel6 = jsav.label("tail",
-	  {before: l, left: labelLeftMargin5 + 340, top: labelTopMargin, "font-size":"20px"}).hide();
-  //Arrow tail in step 6
-  var tailArrow6 = jsav.g.line(labelLeftMargin5 + 350, labelTopMargin + 20,
-                              labelLeftMargin5 + 330, labelTopMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity":	0,"stroke-width": 2});
-
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
   l.addFirst(15)
    .addFirst(12)
    .addFirst(10)
@@ -261,6 +182,51 @@ var nodeGap = 25;
    .addFirst(20);
   l.get(1).highlight();
   l.layout();
+
+  //Hiddent JSAV array for animation
+  var arr = jsav.ds.array([""], 
+            {indexed: false, layout: "array", left:0}).hide();
+  // Head
+  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
+  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+  // Curr
+  var currLabel = l.get(2).odsa_addLabel(leftMargin,topMargin,"curr");
+  var currArrow = l.get(2).odsa_addArrow(leftMargin,topMargin);
+  // Tail
+  var tailLabel = l.get(4).odsa_addLabel(leftMargin,topMargin,"tail");
+  var tailArrow = l.get(4).odsa_addArrow(leftMargin,topMargin);
+
+  // Vertical line
+  var bar = l.get(2).odsa_addVLine(leftMargin,topMargin);
+  // Another vertical line
+  var bar2 = l.get(3).odsa_addVLine(leftMargin,topMargin);
+  bar2.hide();
+
+  //Diagonal slash
+  var slash = l.get(4).odsa_addTail(leftMargin,topMargin);
+  //dash line in step 4
+  var dashlineLeftMargin = 452
+  var dashline = jsav.g.polyline([[dashlineLeftMargin, 66], 
+	  [dashlineLeftMargin + 13, 66], [dashlineLeftMargin + 13, 30],[dashlineLeftMargin + 83,30],[dashlineLeftMargin + 83,66],[dashlineLeftMargin + 101,66]], {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
+  
+  //Diagonal slash in step 6
+  var slash5 = l.get(3).odsa_addTail(leftMargin,topMargin);
+  slash5.hide();
+
+  //Label tail in step 6
+  var tailLabel5 = l.get(3).odsa_addLabel(leftMargin,topMargin,"tail");
+  tailLabel5.hide();
+  var tailArrow5 = l.get(3).odsa_addArrow(leftMargin,topMargin);
+  tailArrow5.hide();
+  //Label tail in step 7
+  var tailLabel6 = jsav.label("tail",
+	  {before: l, left: leftMargin +256, top: topMargin - 40, "font-size":"20px"}).hide();
+  //Arrow tail in step 7
+  var tailArrow6 = jsav.g.line(leftMargin + 266, topMargin -20 ,
+                              leftMargin + 246, topMargin,
+	  {"arrow-end": "classic-wide-long", "opacity":	0,"stroke-width": 2});
+
+
   jsav.umsg("Another problem is that we have no link to get us to the preceding node (shown in yellow). So we have no way to update its <code>next</code> pointer.");
   jsav.displayInit();
 
@@ -318,41 +284,9 @@ var nodeGap = 25;
   var jsav = new JSAV("listLinkedHeaderTailerCON", {"animationMode": "none"});
 
   // Relative offsets
-  var leftMargin = 163;
-  var topMargin = 10;
-
-  var l = jsav.ds.list({"nodegap": 30, "top": topMargin + 40, left: leftMargin + 17});
-
-  var headLabel = jsav.label("head",
-                    {before: l, left: leftMargin, top: topMargin});
-  var headArrow = jsav.g.line(leftMargin + 10, topMargin + 20,
-                              leftMargin + 30, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  // Curr
-  var currLabel = jsav.label("curr",
-	  {before: l, left: leftMargin + 222, top: topMargin, "font-size":"20px"});
-  var currArrow = jsav.g.line(leftMargin + 232, topMargin + 20,
-                              leftMargin + 252, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  // Left margin of tail
-  var tailLabel = jsav.label("tail",
-	  {before: l, left: leftMargin + 445, top: topMargin, "font-size":"20px"});
-  // Tail arrow
-  var tailArrow = jsav.g.line(leftMargin + 455, topMargin + 20,
-                              leftMargin + 475, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  // Vertical line
-  var bar = jsav.g.line(leftMargin + 145 + 77, topMargin + 35,
-                          leftMargin + 145 + 77, topMargin + 75,
-	                      {"stroke-width": 1, "stroke":"#000"});
-  // Diagonal slash
-  var slash = jsav.g.line(leftMargin + 494, topMargin + 72,
-                          leftMargin + 504, topMargin + 42,
-	  {"opacity": 100,"stroke-width": 1});
-
+  var leftMargin = 180;
+  var topMargin = 50;
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
   l.addFirst("null")
    .addFirst(15)
    .addFirst(12)
@@ -361,6 +295,23 @@ var nodeGap = 25;
    .addFirst(20)
    .addFirst("null");
   l.layout();
+
+  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
+  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+
+  // Curr
+  var currLabel = l.get(3).odsa_addLabel(leftMargin,topMargin,"curr");
+  var currArrow = l.get(3).odsa_addArrow(leftMargin,topMargin);
+
+  // Tail
+  var tailLabel = l.get(6).odsa_addLabel(leftMargin,topMargin,"tail");
+  var tailArrow = l.get(6).odsa_addArrow(leftMargin,topMargin);
+
+  // Vertical line
+  var bar = l.get(3).odsa_addVLine(leftMargin,topMargin);
+  // Diagonal slash
+  var slash = l.get(6).odsa_addTail(leftMargin,topMargin);
+
   jsav.recorded();
 }(jQuery));
 
@@ -447,81 +398,61 @@ var nodeGap = 25;
                        startAfter: "/* *** ODSATag: LListInsert *** */",
                        endBefore: "/* *** ODSAendTag: LListInsert *** */"});
 
-  // Left margin of label "head"
-  // Top margin of label "head"
-  // They will be the benchmark for calculating other objects' offset.
-  var leftMargin = 200;
-  var topMargin =  0;
+  // Offsets
+  var leftMargin = 217;
+  var topMargin =  40;
 
   // Create an list object under control of JSAV library
-  var l = jsav.ds.list({"nodegap": 30, "top": topMargin + 40, left: leftMargin + 17});
-    
-  //create two hidden arrays for ".copyValue" animation
-  tempArr[0] = ""; 
-  var arr = jsav.ds.array(tempArr, 
-            {indexed: true, layout: "array"});
-  arr.hide(); 
-
-  //head
-  var headLabel = jsav.label("head",
-                    {before: l, left: leftMargin, top: topMargin});
-  var headArrow = jsav.g.line(leftMargin + 10, topMargin + 20,
-                              leftMargin + 30, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-  
-  //curr
-  var currLabel = jsav.label("curr",
-	  {before: l, left: leftMargin + 150, top: topMargin, "font-size":"20px"});
-  var currArrow = jsav.g.line(leftMargin + 160, topMargin + 20,
-                              leftMargin + 180, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
-  //Tail
-  var tailLabel = jsav.label("tail",
-	  {before: l, left: leftMargin + 300, top: topMargin, "font-size":"20px"});
-  var tailArrow = jsav.g.line(leftMargin + 310, topMargin + 20,
-                              leftMargin + 330, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
- 
-  //New Tail after inserting one item 
-  var temp = leftMargin + 260 + 115;
-  var newTailLabel = jsav.label("tail",
-	  {before: l, left: temp, top: topMargin, "font-size":"20px"}).hide();
-  var newTailArrow = jsav.g.line(leftMargin + 385, topMargin + 20,
-                              leftMargin + 405, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
-
-  //Diagonal slash in step 1
-  var slash = jsav.g.line(leftMargin + 346, topMargin + 72,
-                          leftMargin + 356, topMargin + 42,
-	  {"opacity": 100,"stroke-width": 1});
-    //Diagonal slash in step 1
-  var newSlash = jsav.g.line(leftMargin + 346 + 74, topMargin + 72,
-                          leftMargin + 356 + 74, topMargin + 42,
-	  {"opacity": 0,"stroke-width": 1});
-
-  //Vertical bar
-  var bar = jsav.g.line(leftMargin + 52 + 95, 42, leftMargin + 52 + 95, 72,
-		{"stroke-width": 1, "stroke":"#000"});
-
-  //Horizontal arrow in step 4 pointing to item 12
-  var longArrow= jsav.g.line(leftMargin + 114 + 95, topMargin + 56, leftMargin + 114 + 198, topMargin + 56,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
- 
-  // Box "it"
-  var itLabel = jsav.label("it",
-	  {before: l, left: 20, top: 0, "font-size":"20px"});
-  tempArr[0] = "15"; 
-  var itBox = jsav.ds.array(tempArr, 
-            {indexed: false, layout: "array", top: -20, left: 40});
-
-  //initialize the link list
-  jsav.umsg("The linked list before insertion. 15 is the value to be inserted.");
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
   l.addFirst("null")
    .addFirst(12)
    .addFirst(23)
    .addFirst(35)
    .addFirst("null");
   l.layout();
+
+  //create two hidden arrays for ".copyValue" animation 
+  var arr = jsav.ds.array([""], 
+            {indexed: true, layout: "array"});
+  arr.hide(); 
+
+  //head
+  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
+  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+  
+  //curr
+  var currLabel = l.get(2).odsa_addLabel(leftMargin,topMargin,"curr");
+  var currArrow = l.get(2).odsa_addArrow(leftMargin,topMargin);
+
+  //Tail
+  var tailLabel = l.get(4).odsa_addLabel(leftMargin,topMargin,"tail");
+  var tailArrow = l.get(4).odsa_addArrow(leftMargin,topMargin);
+ 
+  //New Tail after inserting one item
+  var newTailLabel = l.get(4).odsa_addLabel(leftMargin + 74,topMargin,"tail");
+  newTailLabel.hide();
+  var newTailArrow = l.get(4).odsa_addArrow(leftMargin + 74,topMargin);
+  newTailArrow.hide();
+  //Diagonal slash
+  var slash = l.get(4).odsa_addTail(leftMargin,topMargin);
+  var newSlash = l.get(4).odsa_addTail(leftMargin + 74,topMargin);
+  newSlash.hide();
+
+  //Vertical bar
+  var bar = l.get(2).odsa_addVLine(leftMargin,topMargin);
+
+  //Horizontal arrow in step 4 pointing to item 12
+  var longArrow= jsav.g.line(leftMargin + 185, topMargin + 16, leftMargin + 293, topMargin + 16,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+ 
+  // Box "it"
+  var itLabel = jsav.label("it",
+	  {before: l, left: 20, top: 0, "font-size":"20px"});
+  var itBox = jsav.ds.array(["15"], 
+            {indexed: false, layout: "array", top: -20, left: 40});
+
+  //initialize the link list
+  jsav.umsg("The linked list before insertion. 15 is the value to be inserted.");
+
   itBox.highlight(0);
   pseudo.highlight(1);
   jsav.displayInit();
@@ -607,14 +538,13 @@ var nodeGap = 25;
                        startAfter: "/* *** ODSATag: LListInsert *** */",
                        endBefore: "/* *** ODSAendTag: LListInsert *** */"});
   // Relative offsets
-  var leftMargin = 10;
-  var topMargin = 40;
+  var leftMargin = 27;
+  var topMargin = 80;
 
   // Box "it"
   var itLabel = jsav.label("it",
 	  {left: 20, top: 0, "font-size":"20px"});
-  tempArr[0] = "15"; 
-  var itBox = jsav.ds.array(tempArr, 
+  var itBox = jsav.ds.array(["15"], 
             {indexed: false, layout: "array", top: -20, left: 40});
   
   //Inserting at the tail of the list.
@@ -624,56 +554,44 @@ var nodeGap = 25;
     // Relative offsets
     this.leftMargin = leftMargin;
     this.topMargin = topMargin;
-	this.l = this.jsav.ds.list({"nodegap": 30, "top": this.topMargin + 40, left: this.leftMargin + 17});
-    //Head
-    this.headLabel = this.jsav.label("head",
-                    {before: this.l, left: this.leftMargin, top: this.topMargin});
-    this.headArrow = this.jsav.g.line(this.leftMargin + 10, this.topMargin + 20,
-                              this.leftMargin + 30, this.topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+	this.l = this.jsav.ds.list({"nodegap": 30, "top": this.topMargin, left: this.leftMargin});
+    this.l.addFirst("null")
+          .addFirst(20)
+          .addFirst("null");
+    this.l.layout();
+	//Head
+    this.headLabel = this.l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
+    this.headArrow = this.l.get(0).odsa_addArrow(leftMargin,topMargin);
 	//Curr
-    this.currLabel = this.jsav.label("curr",
-	  {before: this.l, left: this.leftMargin + 145, top: this.topMargin, "font-size":"20px"});
-    this.currArrow = this.jsav.g.line(this.leftMargin + 155, this.topMargin + 20,
-                              this.leftMargin + 175, this.topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+    this.currLabel = this.l.get(2).odsa_addLabel(leftMargin,topMargin,"curr");
+    this.currArrow = this.l.get(2).odsa_addArrow(leftMargin,topMargin);
 	//Tail
     this.tailLabel = this.jsav.label("tail",
-	  {before: this.l, left: this.leftMargin + 195, top: this.topMargin, "font-size":"20px"});
-    this.tailArrow = this.jsav.g.line(this.leftMargin + 205, this.topMargin + 20,
-                              this.leftMargin + 185, this.topMargin + 40,
+	  {before: this.l, left: this.leftMargin + 195 - 17, top: this.topMargin - 40, "font-size":"20px"});
+    this.tailArrow = this.jsav.g.line(this.leftMargin + 205 - 17, this.topMargin - 20,
+                              this.leftMargin + 185 - 17, this.topMargin,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
     //New Tail
-    this.newTailLabel = this.jsav.label("tail",
-	  {before: this.l, left: this.leftMargin + 155 + 70, top: this.topMargin, "font-size":"20px"});
-    this.newTailArrow = this.jsav.g.line(this.leftMargin + 165 + 70, this.topMargin + 20,
-                              this.leftMargin + 185 + 70, this.topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+    this.newTailLabel = this.l.get(2).odsa_addLabel(leftMargin + 74,topMargin,"tail");
     this.newTailLabel.hide();
+	this.newTailArrow = this.l.get(2).odsa_addArrow(leftMargin + 74,topMargin);
+    this.newTailArrow.hide();
 
     //Vertical bar
-    this.bar1 = this.jsav.g.line(this.leftMargin + 145, this.topMargin + 40, this.leftMargin + 145, this.topMargin + 70,
-		{"stroke-width": 1, "stroke":"#000"});
+    this.bar1 = this.l.get(2).odsa_addVLine(leftMargin,topMargin);
 
     //Diagonal slash
-    this.slash = this.jsav.g.line(this.leftMargin + 198, this.topMargin + 72,
-                          this.leftMargin + 208, this.topMargin + 42,
-	  {"opacity": 100,"stroke-width": 1});
+    this.slash = this.l.get(2).odsa_addTail(leftMargin,topMargin);
 
     //Diagonal slash for new node
-    this.newNodeSlash = this.jsav.g.line(this.leftMargin + 198 + 73, this.topMargin + 72 +60,
-                          this.leftMargin + 208 + 73, this.topMargin + 42 +60,
+    this.newNodeSlash = this.jsav.g.line(this.leftMargin + 254, this.topMargin + 92,
+                          this.leftMargin + 264, this.topMargin + 62,
 	  {"opacity": 0,"stroke-width": 1});
 
     //Diagonal slash for new tail
-    this.newTailSlash = this.jsav.g.line(this.leftMargin + 272, this.topMargin + 72,
-                          this.leftMargin + 282, this.topMargin + 42,
-	  {"opacity": 0,"stroke-width": 1});
-	this.l.addFirst("null")
-          .addFirst(20)
-          .addFirst("null");
-    this.l.layout();	
+    this.newTailSlash = this.l.get(2).odsa_addTail(leftMargin + 74,topMargin);
+	this.newTailSlash.hide();
 
   }
   //Clear DOM elements
@@ -768,8 +686,8 @@ var nodeGap = 25;
   function InsertEmpty(jsavEmp) {
     this.jsav = jsavEmp;
 	// Relative offsets
-    this.leftMargin = leftMargin;
-    this.topMargin = topMargin;
+    this.leftMargin = leftMargin -17;
+    this.topMargin = topMargin - 40;
 	//Head
     this.headLabel = this.jsav.label("head",
                     {before: this.l, left: this.leftMargin, top: this.topMargin});
@@ -917,62 +835,9 @@ var nodeGap = 25;
                        endBefore: "/* *** ODSAendTag: LListRemove *** */"});
   // Relative offsets
   var leftMargin = 250;
-  var topMargin = 0;
+  var topMargin = 40;
   // JSAV list
-  var l = jsav.ds.list({"nodegap": 30, "center": false, "left": leftMargin, "top":topMargin + 40});
-  // Create a the hidden array
-  var arr = jsav.ds.array(tempArr, {indexed: false, layout: "array",left: leftMargin + 150, top: topMargin + 75}).hide();
-
-  //Head
-  var headLabel = jsav.label("head",
-    {before: l, left: leftMargin - 15, top: topMargin});
-  var headArrow = jsav.g.line(leftMargin - 5, topMargin + 20,
-  leftMargin + 15, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-  //Curr
-  var currLabel = jsav.label("curr",
-	  {before: l, left: leftMargin + 132, top: topMargin, "font-size":"20px"});
-  var currArrow = jsav.g.line(leftMargin + 142, topMargin + 20,
-                   leftMargin + 162, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-  //Tail
-  var tailLabel = jsav.label("tail",
-	  {before: l, left: leftMargin + 355, top: topMargin, "font-size":"20px"});
-  var tailArrow = jsav.g.line(leftMargin + 365, topMargin + 20,
-                              leftMargin + 385, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-  // NewTail
-  var newTailLabel = jsav.label("tail",
-	  {before: l, left: leftMargin + 355 - 72, top: topMargin, "font-size":"20px"}).hide();
-  var newTailArrow = jsav.g.line(leftMargin + 365 - 72, topMargin + 20,
-                              leftMargin + 385 - 72, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
-  // "It"
-  var labelIt = jsav.label("it", 
-	            {before: arr, left: leftMargin + 90, top: topMargin + 98, "font-size":"20px"});
-  var arrowIt = jsav.g.line(leftMargin + 106, topMargin + 110,
-	  leftMargin + 146, topMargin + 110,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
-  labelIt.hide();
-  // Dashline
-  var dashline = jsav.g.polyline([[leftMargin + 112 + 74, topMargin + 57],[leftMargin + 125 + 74, topMargin + 57],
-	  [leftMargin + 125 + 74, topMargin + 28],[leftMargin + 202 + 74,topMargin + 28],
-	  [leftMargin + 202 + 74,topMargin + 57],[leftMargin + 223 + 74,topMargin + 57]], 
-	  {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
-  // Vertical bar
-  var verticalBar = jsav.g.line(leftMargin + 129, topMargin + 41, leftMargin + 129, topMargin + 71,
-	         {"stroke-width": 1, "stroke":"#000"});
-  //Diagonal slash
-  var slash = jsav.g.line(leftMargin + 404, topMargin + 72,
-                          leftMargin + 414, topMargin + 42,
-	  {"opacity": 100,"stroke-width": 1});
-  // New slash after deletion
-  var newSlash = jsav.g.line(leftMargin + 330, topMargin + 72,
-                          leftMargin + 340, topMargin + 42,
-	  {"opacity": 0,"stroke-width": 1});
-
-  //initialize the linked list
-  jsav.umsg("Now let's look at the <code>remove</code> method.");
+  var l = jsav.ds.list({"nodegap": 30, "center": false, "left": leftMargin, "top":topMargin});
   l.addFirst("null")
    .addFirst(10)
    .addFirst(35)
@@ -980,6 +845,46 @@ var nodeGap = 25;
    .addFirst(23)
    .addFirst("null");
   l.layout();
+  // Create a the hidden array
+  var arr = jsav.ds.array(["10"], {indexed: false, layout: "array",left: leftMargin + 140, top: topMargin + 35}).hide();
+
+  //Head
+  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
+  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+  //Curr
+  var currLabel = l.get(2).odsa_addLabel(leftMargin,topMargin,"curr");
+  var currArrow = l.get(2).odsa_addArrow(leftMargin,topMargin);
+  //Tail
+  var tailLabel = l.get(5).odsa_addLabel(leftMargin,topMargin,"tail");
+  var tailArrow = l.get(5).odsa_addArrow(leftMargin,topMargin);
+  // NewTail
+  var newTailLabel = l.get(4).odsa_addLabel(leftMargin,topMargin,"tail");
+  newTailLabel.hide();
+  var newTailArrow = l.get(4).odsa_addArrow(leftMargin,topMargin);
+  newTailArrow.hide();
+  // "It"
+  var labelIt = jsav.label("it", 
+	            {before: arr, left: leftMargin + 73, top: topMargin + 58, "font-size":"20px"});
+  var arrowIt = jsav.g.line(leftMargin + 89, topMargin + 70,
+	  leftMargin + 129, topMargin + 70,
+	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+  labelIt.hide();
+  // Dashline
+  var dashline = jsav.g.polyline([[leftMargin + 186, topMargin + 17],[leftMargin + 125 + 74, topMargin + 17],
+	  [leftMargin + 199, topMargin - 12],[leftMargin + 276,topMargin - 12],
+	  [leftMargin + 276,topMargin + 17],[leftMargin + 297,topMargin + 17]], 
+	  {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
+  // Vertical bar
+  var verticalBar = l.get(2).odsa_addVLine(leftMargin,topMargin);
+  //Diagonal slash
+  var slash = l.get(5).odsa_addTail(leftMargin,topMargin);
+  // New slash after deletion
+  var newSlash = l.get(4).odsa_addTail(leftMargin,topMargin);
+  newSlash.hide();
+
+  //initialize the linked list
+  jsav.umsg("Now let's look at the <code>remove</code> method.");
+
 	
   pseudo.highlight(1);
   jsav.displayInit(); 
@@ -1053,7 +958,16 @@ var nodeGap = 25;
   var jsav = new JSAV("LlistPosCON");
   // Relative offsets
   var leftMargin = 210;
-  var topMargin = -15;
+  var topMargin = 25;
+  // JSAV list
+  var l = jsav.ds.list({"nodegap": 30, "center": false, "left": leftMargin, "top":topMargin});
+  l.addFirst("null")
+   .addFirst(10)
+   .addFirst(35)
+   .addFirst(8)
+   .addFirst(23)
+   .addFirst("null");
+  l.layout();
 
   // pseudocode
   var pseudo_next = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
@@ -1069,43 +983,21 @@ var nodeGap = 25;
                        startAfter: "/* *** ODSATag: LListPos *** */",
                        endBefore: "/* *** ODSAendTag: LListPos *** */"}).hide();
   // Head
-  var headLabel = jsav.label("head",
-    {before: l, left: leftMargin - 15, top: topMargin});
-  var headArrow = jsav.g.line(leftMargin - 5, topMargin + 20,
-  leftMargin + 15, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
+  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
   // Curr
-  var currLabel = jsav.label("curr",
-	  {before: l, left: leftMargin + 206, top: topMargin, "font-size":"20px"});
-  var currArrow = jsav.g.line(leftMargin + 216, topMargin + 20,
-                   leftMargin + 236, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  var currLabel = l.get(3).odsa_addLabel(leftMargin,topMargin,"curr");
+  var currArrow = l.get(3).odsa_addArrow(leftMargin,topMargin);
   // Curr Next
-  var nextCurrLabel = jsav.label("curr",
-	  {before: l, left: leftMargin + 206 + 74, top: topMargin, "font-size":"20px"}).hide();
-  var nextCurrArrow = jsav.g.line(leftMargin + 216 + 74, topMargin + 20,
-                   leftMargin + 236 + 74, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+  var nextCurrLabel = l.get(4).odsa_addLabel(leftMargin,topMargin,"curr");
+  nextCurrLabel.hide();
+  var nextCurrArrow = l.get(4).odsa_addArrow(leftMargin,topMargin);
+  nextCurrArrow.hide();
   // Tail
-  var tailLabel = jsav.label("tail",
-	  {before: l, left: leftMargin + 355, top: topMargin, "font-size":"20px"});
-  var tailArrow = jsav.g.line(leftMargin + 365, topMargin + 20,
-                              leftMargin + 385, topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  var tailLabel = l.get(5).odsa_addLabel(leftMargin,topMargin,"tail");
+  var tailArrow = l.get(5).odsa_addArrow(leftMargin,topMargin);
   // Diagonal slash
-  var slash = jsav.g.line(leftMargin + 404, topMargin + 72,
-                          leftMargin + 414, topMargin + 42,
-	  {"opacity": 100,"stroke-width": 1});
-
-  // JSAV list
-  var l = jsav.ds.list({"nodegap": 30, "center": false, "left": leftMargin, "top":topMargin + 40});
-  l.addFirst("null")
-   .addFirst(10)
-   .addFirst(35)
-   .addFirst(8)
-   .addFirst(23)
-   .addFirst("null");
-  l.layout();
+  var slash = l.get(5).odsa_addTail(leftMargin,topMargin);
 
   pseudo_next.highlight(1);
   jsav.umsg("Finally, we will look at how a few other methods work.");

@@ -151,6 +151,8 @@ Implementations for the remaining operations each require
    Proficiency exercise (probably using KA, but possibly not) for
    linked list deletion. Show a linked list. User will do a series of
    drags for values and links to get the list updated properly.
+   
+.. avembed:: Exercises/Development/listLinkedInsertion.html ka
 
 .. TODO::
    :type: Exercise
