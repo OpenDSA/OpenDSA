@@ -2,3 +2,11 @@
   width: 800px;
   height: 650px;
 }
+
+.jsavnode {
+  line-height: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+}
