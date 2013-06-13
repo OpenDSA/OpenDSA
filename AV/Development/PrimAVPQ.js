@@ -11,16 +11,16 @@
   function runit() {
     ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
-    graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});
-    mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
+    graph = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: false});
+    mst = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: true});
     initGraph();
     graph.layout();
 	
-	var startArray = [73, 6, 57, 88, 60, 42, 83, 72, 48, 85];
-    var bh = jsav.ds.binheap(startArray, {size: 10, stats: true, tree: false});
+	var startArray = [73, 6, 57, 88, 60, 42, 83, 72];
+    var bh = jsav.ds.binheap(startArray, {size: 8, stats: true, tree: true});
 	jsav.displayInit();
     //prim(gnodes[0]);            // Run Prim's algorithm from start node.
-    displayMST();
+    //displayMST();
     jsav.recorded();
   }
 
@@ -106,18 +106,18 @@
 
     //Nodes of the original graph
     var a = graph.addNode("A", {"left": 0, "top": 50});
-    var b = graph.addNode("B", {"left": 305, "top": 50});
-    var c = graph.addNode("C", {"left": 125, "top": 75});
-    var d = graph.addNode("D", {"left": 125, "top": 200});
-    var e = graph.addNode("E", {"left": 0, "top": 300});
-    var f = graph.addNode("F", {"left": 305, "top": 250});
+    var b = graph.addNode("B", {"left": 150, "top": 50});
+    var c = graph.addNode("C", {"left": 75, "top": 75});
+    var d = graph.addNode("D", {"left": 75, "top": 150});
+    var e = graph.addNode("E", {"left": 0, "top": 200});
+    var f = graph.addNode("F", {"left": 150, "top": 200});
     //Nodes of the MST
-    mst.addNode("A", {"left": 5, "top": 50});
-    mst.addNode("B", {"left": 305, "top": 50});
-    mst.addNode("C", {"left": 125, "top": 75});
-    mst.addNode("D", {"left": 125, "top": 200});
-    mst.addNode("E", {"left": 0, "top": 300});
-    mst.addNode("F", {"left": 305, "top": 250});
+    mst.addNode("A", {"left": 0, "top": 50});
+    mst.addNode("B", {"left": 150, "top": 50});
+    mst.addNode("C", {"left": 75, "top": 75});
+    mst.addNode("D", {"left": 75, "top": 150});
+    mst.addNode("E", {"left": 0, "top": 200});
+    mst.addNode("F", {"left": 150, "top": 200});
     //Original graph edges
     graph.addEdge(a, c, {"weight": 7});
     graph.addEdge(a, e, {"weight": 9});
