@@ -12,14 +12,15 @@
     ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
     graph = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: false});
-    mst = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: true});
+    mst = jsav.ds.graph({width: 400, height: 300, layout: "manual", directed: true});
+    mst.hide();
     initGraph();
     graph.layout();
-	
-	var startArray = [73, 6, 57, 88, 60, 42, 83, 72];
-    var bh = jsav.ds.binheap(startArray, {size: 8, stats: true, tree: true});
-	jsav.displayInit();
-    //prim(gnodes[0]);            // Run Prim's algorithm from start node.
+
+    var startArray = [73, 6, 57, 88, 60, 42, 83, 72];
+    var bh = jsav.ds.binheap(startArray, {left: 400, height: 550, size: 8, stats: true, tree: true});
+    jsav.displayInit();	
+s    //prim(gnodes[0]);            // Run Prim's algorithm from start node.
     //displayMST();
     jsav.recorded();
   }

@@ -3,10 +3,31 @@
   height: 650px;
 }
 
-.jsavnode {
+.jsavcanvas {
+  height: 500px;
+}
+
+.jsavgraph .jsavnode {
   line-height: 30px !important;
   min-width: 30px !important;
   max-width: 30px !important;
   min-height: 30px !important;
   max-height: 30px !important;
+}
+
+.jsavtree .jsavnode {
+  line-height: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+}
+
+.jsavarray {
+  top: 0px;
+}
+
+.jsavtree {
+  position: relative;
+  top: 70px;
 }
