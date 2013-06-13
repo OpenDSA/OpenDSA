@@ -4,34 +4,69 @@
 
 // JSAV extension
 (function ($) {
-  JSAV._types.ds.ListNode.prototype.odsa_addLabel = function(leftOffset, topOffset, type){
-    //leftOffset = this.container.position().left;
-    //topOffset = this.container.position().top;
-	var leftMargin = $('#' + this.id()).position().left + leftOffset;
-    var topMargin = $('#' + this.id()).position().top + topOffset - 40;
-    return this.jsav.label(type,
+  JSAV._types.ds.ListNode.prototype.odsa_addLabel = function(name,options){
+	var leftMargin = $('#' + this.id()).position().left + this.container.position().left;
+    var topMargin = $('#' + this.id()).position().top + this.container.position().top - 40;
+    var options = options || {};
+	if(options.left){
+	  leftMargin += options.left;
+	}
+	if(options.top){
+	  topMargin += options.top;
+	}	
+	return this.jsav.label(name,
       {left: -10 + leftMargin, top: topMargin, "font-size":"20px"});
   }
 
-  JSAV._types.ds.ListNode.prototype.odsa_addArrow = function(leftOffset, topOffset){
-    var leftMargin = $('#' + this.id()).position().left + leftOffset;
-    var topMargin = $('#' + this.id()).position().top + topOffset - 40;
+  JSAV._types.ds.ListNode.prototype.odsa_addArrow = function(options){
+	var leftMargin = $('#' + this.id()).position().left + this.container.position().left;
+    var topMargin = $('#' + this.id()).position().top + this.container.position().top - 40;
+	var options = options || {};
+	if(options.left){
+	  leftMargin += options.left;
+	}
+	if(options.top){
+	  topMargin += options.top;
+	}	
+	if(options.visible === "undefined"){
+      options.visible = 100;
+	}
     return this.jsav.g.line(-4 + leftMargin, topMargin + 20, 16 + leftMargin, topMargin + 40,
-    {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+    {"arrow-end": "classic-wide-long", "opacity": options.visible,"stroke-width": 2});
   }
 
-  JSAV._types.ds.ListNode.prototype.odsa_addTail = function(leftOffset, topOffset){	  
-    var fx = $('#' + this.id()).position().left + leftOffset + 33;
-    var fy = $('#' + this.id()).position().top + topOffset + 32;
-    return this.jsav.g.line(fx, fy, fx + 10, fy - 31,
-      {"opacity": 100,"stroke-width": 1});
+  JSAV._types.ds.ListNode.prototype.odsa_addTail = function(options){	  
+	var fx = $('#' + this.id()).position().left + this.container.position().left + 33;
+    var fy = $('#' + this.id()).position().top + this.container.position().top + 32;
+    var options = options || {};
+	if(options.left){
+	  fx += options.left;
+	}
+	if(options.top){
+	  fy += options.top;
+	}
+	if(options.visible === "undefined"){
+      options.visible = 100;
+	}
+	return this.jsav.g.line(fx, fy, fx + 10, fy - 31,
+      {"opacity": options.visible,"stroke-width": 1});
   }
 
-  JSAV._types.ds.ListNode.prototype.odsa_addVLine = function(leftOffset, topOffset){	  
-    var fx = $('#' + this.id()).position().left + leftOffset;
-    var fy = $('#' + this.id()).position().top + topOffset;
-    return this.jsav.g.line(fx - 15, fy - 5 , fx - 15, fy + 35,
-      {"opacity": 100, "stroke-width": 1});
+  JSAV._types.ds.ListNode.prototype.odsa_addVLine = function(options){	  
+	var fx = $('#' + this.id()).position().left + this.container.position().left;
+    var fy = $('#' + this.id()).position().top + this.container.position().top;
+    var options = options || {};
+	if(options.left){
+	  fx += options.left;
+	}
+	if(options.top){
+	  fy += options.top;
+	}	
+	if(options.visible === "undefined"){
+      options.visible = 100;
+	}
+	return this.jsav.g.line(fx - 15, fy - 5 , fx - 15, fy + 35,
+      {"opacity": options.visible, "stroke-width": 1});
   }
 }(jQuery));
 
@@ -75,11 +110,11 @@
    .addFirst("null");
   l.layout();
   // Head
-  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
-  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+  var headLabel = l.get(0).odsa_addLabel( "head");
+  var headArrow = l.get(0).odsa_addArrow( );
   // Curr
-  var currLabel = l.get(1).odsa_addLabel(leftMargin,topMargin,"curr");
-  var currArrow = l.get(1).odsa_addArrow(leftMargin,topMargin);
+  var currLabel = l.get(1).odsa_addLabel( "curr");
+  var currArrow = l.get(1).odsa_addArrow( );
   // Tail
   var tailLabel = jsav.label("tail",
 	  {before: l, left: leftMargin + 105, top: topMargin - 40, "font-size":"20px"});
@@ -87,9 +122,9 @@
                               leftMargin + 95, topMargin,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
   // Diagonal slash
-  var slash = l.get(1).odsa_addTail(leftMargin,topMargin);
+  var slash = l.get(1).odsa_addTail( );
   // Vertical bar  
-  var bar = l.get(1).odsa_addVLine(leftMargin,topMargin);
+  var bar = l.get(1).odsa_addVLine( );
   jsav.recorded();
 }(jQuery));
 
@@ -109,33 +144,28 @@
    .addFirst(20);
   l.layout();
 
-  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
+  var headLabel = l.get(0).odsa_addLabel( "head");
   headLabel.hide();
-  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
-  headArrow.hide();
+  var headArrow = l.get(0).odsa_addArrow({visible: 0});
   // curr
-  var currLabel = l.get(2).odsa_addLabel(leftMargin,topMargin,"curr");
+  var currLabel = l.get(2).odsa_addLabel( "curr");
   currLabel.hide();
-  var currArrow = l.get(2).odsa_addArrow(leftMargin,topMargin);
-  currArrow.hide();
+  var currArrow = l.get(2).odsa_addArrow({visible: 0});
   // tail
-  var tailLabel = l.get(4).odsa_addLabel(leftMargin,topMargin,"tail");
+  var tailLabel = l.get(4).odsa_addLabel( "tail");
   tailLabel.hide();
-  var tailArrow = l.get(4).odsa_addArrow(leftMargin,topMargin);
-  tailArrow.hide();
+  var tailArrow = l.get(4).odsa_addArrow({visible: 0});
   // Vertical line  
-  var bar = l.get(2).odsa_addVLine(leftMargin,topMargin);
+  var bar = l.get(2).odsa_addVLine( );
   //Diagonal slash at tail
-  var slash = l.get(4).odsa_addTail(leftMargin,topMargin);
+  var slash = l.get(4).odsa_addTail( );
   //Diagonal slash in step 3
-  var slash3 = l.get(3).odsa_addTail(leftMargin,topMargin);
-  slash3.hide();
+  var slash3 = l.get(3).odsa_addTail({visible:0});
   //Label tail in step 3
-  var tailLabel3 = l.get(3).odsa_addLabel(leftMargin,topMargin,"tail");
+  var tailLabel3 = l.get(3).odsa_addLabel( "tail");
   tailLabel3.hide();
   //Arrow tail in step 3
-  var tailArrow3 = l.get(3).odsa_addArrow(leftMargin,topMargin);
-  tailArrow3.hide();
+  var tailArrow3 = l.get(3).odsa_addArrow({visible: 0});
 
   jsav.umsg("Here is a graphical depiction for a linked list storing five integers. The value stored in a pointer variable is indicated by an arrow \"pointing\" to something. A NULL pointer is indicated graphically by a diagonal slash through a pointer variable's box. The vertical line between the nodes labeled 23 and 10 indicates the current position (immediately to the right of this line).");
   jsav.displayInit();
@@ -187,37 +217,34 @@
   var arr = jsav.ds.array([""], 
             {indexed: false, layout: "array", left:0}).hide();
   // Head
-  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
-  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+  var headLabel = l.get(0).odsa_addLabel( "head");
+  var headArrow = l.get(0).odsa_addArrow({});
   // Curr
-  var currLabel = l.get(2).odsa_addLabel(leftMargin,topMargin,"curr");
-  var currArrow = l.get(2).odsa_addArrow(leftMargin,topMargin);
+  var currLabel = l.get(2).odsa_addLabel( "curr");
+  var currArrow = l.get(2).odsa_addArrow( );
   // Tail
-  var tailLabel = l.get(4).odsa_addLabel(leftMargin,topMargin,"tail");
-  var tailArrow = l.get(4).odsa_addArrow(leftMargin,topMargin);
+  var tailLabel = l.get(4).odsa_addLabel( "tail");
+  var tailArrow = l.get(4).odsa_addArrow( );
 
   // Vertical line
-  var bar = l.get(2).odsa_addVLine(leftMargin,topMargin);
+  var bar = l.get(2).odsa_addVLine( );
   // Another vertical line
-  var bar2 = l.get(3).odsa_addVLine(leftMargin,topMargin);
-  bar2.hide();
+  var bar2 = l.get(3).odsa_addVLine({visible : 0});
 
   //Diagonal slash
-  var slash = l.get(4).odsa_addTail(leftMargin,topMargin);
+  var slash = l.get(4).odsa_addTail( );
   //dash line in step 4
   var dashlineLeftMargin = 452
   var dashline = jsav.g.polyline([[dashlineLeftMargin, 66], 
 	  [dashlineLeftMargin + 13, 66], [dashlineLeftMargin + 13, 30],[dashlineLeftMargin + 83,30],[dashlineLeftMargin + 83,66],[dashlineLeftMargin + 101,66]], {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
   
   //Diagonal slash in step 6
-  var slash5 = l.get(3).odsa_addTail(leftMargin,topMargin);
-  slash5.hide();
+  var slash5 = l.get(3).odsa_addTail({visible : 0});
 
   //Label tail in step 6
-  var tailLabel5 = l.get(3).odsa_addLabel(leftMargin,topMargin,"tail");
+  var tailLabel5 = l.get(3).odsa_addLabel( "tail");
   tailLabel5.hide();
-  var tailArrow5 = l.get(3).odsa_addArrow(leftMargin,topMargin);
-  tailArrow5.hide();
+  var tailArrow5 = l.get(3).odsa_addArrow({visible: 0});
   //Label tail in step 7
   var tailLabel6 = jsav.label("tail",
 	  {before: l, left: leftMargin +256, top: topMargin - 40, "font-size":"20px"}).hide();
@@ -296,21 +323,21 @@
    .addFirst("null");
   l.layout();
 
-  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
-  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+  var headLabel = l.get(0).odsa_addLabel( "head");
+  var headArrow = l.get(0).odsa_addArrow( );
 
   // Curr
-  var currLabel = l.get(3).odsa_addLabel(leftMargin,topMargin,"curr");
-  var currArrow = l.get(3).odsa_addArrow(leftMargin,topMargin);
+  var currLabel = l.get(3).odsa_addLabel( "curr");
+  var currArrow = l.get(3).odsa_addArrow( );
 
   // Tail
-  var tailLabel = l.get(6).odsa_addLabel(leftMargin,topMargin,"tail");
-  var tailArrow = l.get(6).odsa_addArrow(leftMargin,topMargin);
+  var tailLabel = l.get(6).odsa_addLabel( "tail");
+  var tailArrow = l.get(6).odsa_addArrow( );
 
   // Vertical line
-  var bar = l.get(3).odsa_addVLine(leftMargin,topMargin);
+  var bar = l.get(3).odsa_addVLine( );
   // Diagonal slash
-  var slash = l.get(6).odsa_addTail(leftMargin,topMargin);
+  var slash = l.get(6).odsa_addTail( );
 
   jsav.recorded();
 }(jQuery));
@@ -417,29 +444,27 @@
   arr.hide(); 
 
   //head
-  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
-  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+  var headLabel = l.get(0).odsa_addLabel( "head");
+  var headArrow = l.get(0).odsa_addArrow();
   
   //curr
-  var currLabel = l.get(2).odsa_addLabel(leftMargin,topMargin,"curr");
-  var currArrow = l.get(2).odsa_addArrow(leftMargin,topMargin);
+  var currLabel = l.get(2).odsa_addLabel( "curr");
+  var currArrow = l.get(2).odsa_addArrow();
 
   //Tail
-  var tailLabel = l.get(4).odsa_addLabel(leftMargin,topMargin,"tail");
-  var tailArrow = l.get(4).odsa_addArrow(leftMargin,topMargin);
+  var tailLabel = l.get(4).odsa_addLabel( "tail");
+  var tailArrow = l.get(4).odsa_addArrow();
  
   //New Tail after inserting one item
-  var newTailLabel = l.get(4).odsa_addLabel(leftMargin + 74,topMargin,"tail");
+  var newTailLabel = l.get(4).odsa_addLabel("tail",{left:74, top:0});
   newTailLabel.hide();
-  var newTailArrow = l.get(4).odsa_addArrow(leftMargin + 74,topMargin);
-  newTailArrow.hide();
+  var newTailArrow = l.get(4).odsa_addArrow({left:74, top:0, visible:0});
   //Diagonal slash
-  var slash = l.get(4).odsa_addTail(leftMargin,topMargin);
-  var newSlash = l.get(4).odsa_addTail(leftMargin + 74,topMargin);
-  newSlash.hide();
+  var slash = l.get(4).odsa_addTail();
+  var newSlash = l.get(4).odsa_addTail({left:74, top:0, visible : 0});
 
   //Vertical bar
-  var bar = l.get(2).odsa_addVLine(leftMargin,topMargin);
+  var bar = l.get(2).odsa_addVLine( );
 
   //Horizontal arrow in step 4 pointing to item 12
   var longArrow= jsav.g.line(leftMargin + 185, topMargin + 16, leftMargin + 293, topMargin + 16,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
@@ -560,29 +585,27 @@
           .addFirst("null");
     this.l.layout();
 	//Head
-    this.headLabel = this.l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
-    this.headArrow = this.l.get(0).odsa_addArrow(leftMargin,topMargin);
+    this.headLabel = this.l.get(0).odsa_addLabel( "head");
+    this.headArrow = this.l.get(0).odsa_addArrow( );
 	//Curr
-    this.currLabel = this.l.get(2).odsa_addLabel(leftMargin,topMargin,"curr");
-    this.currArrow = this.l.get(2).odsa_addArrow(leftMargin,topMargin);
+    this.currLabel = this.l.get(2).odsa_addLabel( "curr");
+    this.currArrow = this.l.get(2).odsa_addArrow( );
 	//Tail
     this.tailLabel = this.jsav.label("tail",
 	  {before: this.l, left: this.leftMargin + 195 - 17, top: this.topMargin - 40, "font-size":"20px"});
     this.tailArrow = this.jsav.g.line(this.leftMargin + 205 - 17, this.topMargin - 20,
                               this.leftMargin + 185 - 17, this.topMargin,
 	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-
     //New Tail
-    this.newTailLabel = this.l.get(2).odsa_addLabel(leftMargin + 74,topMargin,"tail");
+    this.newTailLabel = this.l.get(2).odsa_addLabel("tail",{left:74});
     this.newTailLabel.hide();
-	this.newTailArrow = this.l.get(2).odsa_addArrow(leftMargin + 74,topMargin);
-    this.newTailArrow.hide();
+	this.newTailArrow = this.l.get(2).odsa_addArrow({left:74, visible : 0});
 
     //Vertical bar
-    this.bar1 = this.l.get(2).odsa_addVLine(leftMargin,topMargin);
+    this.bar1 = this.l.get(2).odsa_addVLine( );
 
     //Diagonal slash
-    this.slash = this.l.get(2).odsa_addTail(leftMargin,topMargin);
+    this.slash = this.l.get(2).odsa_addTail( );
 
     //Diagonal slash for new node
     this.newNodeSlash = this.jsav.g.line(this.leftMargin + 254, this.topMargin + 92,
@@ -590,8 +613,7 @@
 	  {"opacity": 0,"stroke-width": 1});
 
     //Diagonal slash for new tail
-    this.newTailSlash = this.l.get(2).odsa_addTail(leftMargin + 74,topMargin);
-	this.newTailSlash.hide();
+    this.newTailSlash = this.l.get(2).odsa_addTail({left : 74, visible : 0});
 
   }
   //Clear DOM elements
@@ -849,19 +871,18 @@
   var arr = jsav.ds.array(["10"], {indexed: false, layout: "array",left: leftMargin + 140, top: topMargin + 35}).hide();
 
   //Head
-  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
-  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+  var headLabel = l.get(0).odsa_addLabel( "head");
+  var headArrow = l.get(0).odsa_addArrow( );
   //Curr
-  var currLabel = l.get(2).odsa_addLabel(leftMargin,topMargin,"curr");
-  var currArrow = l.get(2).odsa_addArrow(leftMargin,topMargin);
+  var currLabel = l.get(2).odsa_addLabel( "curr");
+  var currArrow = l.get(2).odsa_addArrow( );
   //Tail
-  var tailLabel = l.get(5).odsa_addLabel(leftMargin,topMargin,"tail");
-  var tailArrow = l.get(5).odsa_addArrow(leftMargin,topMargin);
+  var tailLabel = l.get(5).odsa_addLabel( "tail");
+  var tailArrow = l.get(5).odsa_addArrow( );
   // NewTail
-  var newTailLabel = l.get(4).odsa_addLabel(leftMargin,topMargin,"tail");
+  var newTailLabel = l.get(4).odsa_addLabel( "tail");
   newTailLabel.hide();
-  var newTailArrow = l.get(4).odsa_addArrow(leftMargin,topMargin);
-  newTailArrow.hide();
+  var newTailArrow = l.get(4).odsa_addArrow({visible: 0});
   // "It"
   var labelIt = jsav.label("it", 
 	            {before: arr, left: leftMargin + 73, top: topMargin + 58, "font-size":"20px"});
@@ -875,17 +896,14 @@
 	  [leftMargin + 276,topMargin + 17],[leftMargin + 297,topMargin + 17]], 
 	  {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
   // Vertical bar
-  var verticalBar = l.get(2).odsa_addVLine(leftMargin,topMargin);
+  var verticalBar = l.get(2).odsa_addVLine( );
   //Diagonal slash
-  var slash = l.get(5).odsa_addTail(leftMargin,topMargin);
+  var slash = l.get(5).odsa_addTail( );
   // New slash after deletion
-  var newSlash = l.get(4).odsa_addTail(leftMargin,topMargin);
-  newSlash.hide();
+  var newSlash = l.get(4).odsa_addTail({visible : 0});
 
   //initialize the linked list
-  jsav.umsg("Now let's look at the <code>remove</code> method.");
-
-	
+  jsav.umsg("Now let's look at the <code>remove</code> method.");	
   pseudo.highlight(1);
   jsav.displayInit(); 
 
@@ -983,24 +1001,23 @@
                        startAfter: "/* *** ODSATag: LListPos *** */",
                        endBefore: "/* *** ODSAendTag: LListPos *** */"}).hide();
   // Head
-  var headLabel = l.get(0).odsa_addLabel(leftMargin,topMargin,"head");
-  var headArrow = l.get(0).odsa_addArrow(leftMargin,topMargin);
+  var headLabel = l.get(0).odsa_addLabel( "head");
+  var headArrow = l.get(0).odsa_addArrow( );
   // Curr
-  var currLabel = l.get(3).odsa_addLabel(leftMargin,topMargin,"curr");
-  var currArrow = l.get(3).odsa_addArrow(leftMargin,topMargin);
+  var currLabel = l.get(3).odsa_addLabel( "curr");
+  var currArrow = l.get(3).odsa_addArrow( );
   // Temp
-  var tempLabel = l.get(3).odsa_addLabel(leftMargin,topMargin,"temp");
+  var tempLabel = l.get(3).odsa_addLabel("temp");
   tempLabel.hide();
   // Curr Next
-  var nextCurrLabel = l.get(4).odsa_addLabel(leftMargin,topMargin,"curr");
+  var nextCurrLabel = l.get(4).odsa_addLabel( "curr");
   nextCurrLabel.hide();
-  var nextCurrArrow = l.get(4).odsa_addArrow(leftMargin,topMargin);
-  nextCurrArrow.hide();
+  var nextCurrArrow = l.get(4).odsa_addArrow({ visible : 0});
   // Tail
-  var tailLabel = l.get(5).odsa_addLabel(leftMargin,topMargin,"tail");
-  var tailArrow = l.get(5).odsa_addArrow(leftMargin,topMargin);
+  var tailLabel = l.get(5).odsa_addLabel( "tail");
+  var tailArrow = l.get(5).odsa_addArrow( );
   // Diagonal slash
-  var slash = l.get(5).odsa_addTail(leftMargin,topMargin);
+  var slash = l.get(5).odsa_addTail( );
 
   jsav.umsg("Finally, we will look at how a few other methods work.");
   jsav.displayInit();
