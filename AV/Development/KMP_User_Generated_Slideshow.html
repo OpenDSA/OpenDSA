@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<!--
+  Samuel A. Micka
+-->
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <title>Knuth Morris Pratt</title>
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css"
+          media="screen" title="no title" charset="utf-8" /> 
+  </head>
+  <body>
+  <h1>Knuth Morris Pratt (KMP) Algorithm</h1>
+
+  <p> This will generate a slideshow based on your input, please enter in a master string and sub string that you would like a slideshow dynamically created for. </p>
+  <p>Start by entering a string you which to search (Max length: 14 chars), the enter the string you would like
+  	to search for in the first string you entered.</p>
+
+  <div> <p> String to search in: <input type ="text" maxlength = "14" size = "10" id = "search_in"/>  </p> </div>
+  <div> <p> String to search for: <input type ="text" maxlength = "14" size = "10" id = "search_for"/>  </p> </div>
+  <div> <p> <button type="button" id="go_button" onclick="make_arrays()">Go!</button> </p> </div>
+
+  <div id="container">
+    <div class="jsavcontrols"></div><span class="jsavcounter"></span>
+    <p class="jsavoutput jsavline"></p>
+    <div class="jsavcanvas"></div>
+  </div>
+  <script
+     src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+  </script>
+  <script
+     src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
+  </script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src = "KMP_User_Generated_Slideshow.js"></script>
+
+  </body>
+</html>
