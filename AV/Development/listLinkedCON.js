@@ -973,7 +973,7 @@
   var pseudo_next = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
                        lineNumbers: false,
                        startAfter: "/* *** ODSATag: LListNext *** */",
-                       endBefore: "/* *** ODSAendTag: LListNext *** */", top: 150, left: 80}); 
+                       endBefore: "/* *** ODSAendTag: LListNext *** */", top: 150, left: 80}).hide();
   var pseudo_prev = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
                        lineNumbers: false,
                        startAfter: "/* *** ODSATag: LListPrev *** */",
@@ -988,6 +988,9 @@
   // Curr
   var currLabel = l.get(3).odsa_addLabel(leftMargin,topMargin,"curr");
   var currArrow = l.get(3).odsa_addArrow(leftMargin,topMargin);
+  // Temp
+  var tempLabel = l.get(3).odsa_addLabel(leftMargin,topMargin,"temp");
+  tempLabel.hide();
   // Curr Next
   var nextCurrLabel = l.get(4).odsa_addLabel(leftMargin,topMargin,"curr");
   nextCurrLabel.hide();
@@ -999,10 +1002,11 @@
   // Diagonal slash
   var slash = l.get(5).odsa_addTail(leftMargin,topMargin);
 
-  pseudo_next.highlight(1);
   jsav.umsg("Finally, we will look at how a few other methods work.");
   jsav.displayInit();
 
+  pseudo_next.show();
+  pseudo_next.highlight(1);
   jsav.umsg("Method next simply moves curr one position toward the tail of the list.");
   jsav.step();
 
@@ -1035,19 +1039,25 @@
   jsav.umsg("In a singly linked list, there is no pointer to the previous node. Thus, the only alternative is to march down the list from the beginning until we reach the current node (being sure always to remember the node before it, because that is what we really want). ");
   jsav.step();
 
-  //step 5
+  // Step
   l.get(0).unhighlight();
   l.get(1).unhighlight();  
   l.get(2).unhighlight(); 
-  currLabel.show();
+  tempLabel.show();
   currArrow.show();
+  jsav.umsg("Once <code>temp.next()</code> is equal to <code>curr</code>, we are at the right place.");
+  jsav.step();
+
+  //step 5
+  tempLabel.hide();
+  currLabel.show();
   nextCurrLabel.hide();
   nextCurrArrow.hide();
   pseudo_next.hide();
   pseudo_prev.show();
   pseudo_prev.unhighlight(5);
   pseudo_prev.highlight(6);
-  jsav.umsg("This takes &Theta;(n) time in the average and worst cases.");
+  jsav.umsg("<code>curr</code> can now be set to point to where <code>temp</code> is pointing. This process takes &Theta;(<i>n</i>) time in the average and worst cases.");
   jsav.step();
 
   //step 6
@@ -1055,7 +1065,7 @@
   pseudo_prev.hide();
   pseudo_pos.show();
   pseudo_pos.highlight(1);
-  jsav.umsg("Method moveToPos moves curr to \"pos\" position. 23 is at position 0.");
+  jsav.umsg("Method <code>moveToPos</code> moves <code>curr</code> to position <code>pos</code>. Note that 23, as the first element on the list, is at position 0.");
   jsav.step();
   //step 7  
   l.get(1).highlight();
@@ -1068,7 +1078,7 @@
   nextCurrArrow.show();
   pseudo_pos.unhighlight(1);
   pseudo_pos.highlight(7);
-  jsav.umsg("Implementation of method moveToPos(3) is similar in that finding the 3th position requires marching down 3 + 1 positions from the head of the list.");
+  jsav.umsg("Implementation of <code>moveToPos(3)</code> is similar in that finding the 3th position requires marching down 3 + 1 positions from the head of the list.");
   jsav.step();
 
   //step 8
@@ -1076,7 +1086,7 @@
   l.get(2).unhighlight();
   l.get(3).unhighlight();  
   l.get(4).unhighlight();
-  jsav.umsg("This takes &Theta;(i) time, where i is the position to move to.");
+  jsav.umsg("This takes &Theta;(<i>i</i>) time, where <i>i</i> is the position to move to.");
   jsav.step();
 
   jsav.recorded();
