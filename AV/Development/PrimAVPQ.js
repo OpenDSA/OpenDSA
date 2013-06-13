@@ -20,7 +20,7 @@
     var startArray = [73, 6, 57, 88, 60, 42, 83, 72];
     var bh = jsav.ds.binheap(startArray, {left: 400, height: 550, size: 8, stats: true, tree: true});
     jsav.displayInit();	
-s    //prim(gnodes[0]);            // Run Prim's algorithm from start node.
+    //prim(gnodes[0]);            // Run Prim's algorithm from start node.
     //displayMST();
     jsav.recorded();
   }
