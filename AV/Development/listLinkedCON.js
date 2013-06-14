@@ -1117,10 +1117,10 @@
   // Function for creating a pointer using Pointer API.
   function setPointer(name, obj){
     var pointer = jsav.pointer(name, obj,{visible: true,
-                          anchor: "right top",
-                          myAnchor: "right top",
-                          left: -20,
-                          top: -40});
+                          anchor: "left top",
+                          myAnchor: "right bottom",
+                          left: 15,
+                          top: -20});
     return pointer;
   }
 
