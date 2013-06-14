@@ -1112,19 +1112,18 @@
 
 // Using Pointer API
 (function ($) {
+  var jsav = new JSAV("LlistPointerCON");
+
   // Function for creating a pointer using Pointer API.
   function setPointer(name, obj){
-    var pointer = jsav.pointer(name, obj,{visible: true, // visible by default
-                          // positioned 20px above the object pointed to
+    var pointer = jsav.pointer(name, obj,{visible: true,
                           anchor: "right top",
                           myAnchor: "right top",
                           left: -20,
-                          top: "-40px" });
+                          top: -40});
     return pointer;
   }
 
-  var jsav = new JSAV("LlistPointerCON");
-  
   // Relative offsets
   var leftMargin = 270;
   var topMargin = 50;
@@ -1147,8 +1146,9 @@
   // Insert a new node into the list
   var newNode = l.newNode("");
   newNode.css({top: 60, left: 187});
+  var node = l.get(2).next();
   l.get(2).next(newNode);
-  newNode.next(l.get(2).next());
+  newNode.next(node);
   jsav.step();
 
   // You could notice the moving of the tail pointer folowing the "tail" node in this step. 
