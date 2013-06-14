@@ -7,6 +7,9 @@
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Lists
+.. odsalink::  JSAV/extras/dlist.css
+.. odsalink:: AV/Development/listDLinkedCON.css
+
 
 Doubly Linked Lists [Text]
 ==========================
@@ -64,7 +67,10 @@ consistency.
    :alt: A doubly linked list
 
    A doubly linked list.
-
+   
+.. inlineav:: DLlistInsertCON ss
+   :output: show
+   
 Here is the complete implementation for a
 ``Link`` class to be used with doubly linked lists.
 This code is a little longer than that for the singly linked list node
@@ -194,3 +200,6 @@ the singly linked list.
    XORing the outline of a box around it.
    XORing the box outline a second time restores the original
    contents of the screen.
+
+   .. odsascript:: JSAV/extras/dlist.js
+   .. odsascript:: AV/Development/listDLinkedCON.js
