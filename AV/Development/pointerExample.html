@@ -35,17 +35,18 @@
     <script>
   (function ($) {
     var jsav = new JSAV("container");
-	var arr = jsav.ds.array([21,3,5,10,18,7],{indexed: true, top : 50, left : 500, layout: "array"});
-	jsav.umsg("We start by creating an array with 6 elements.");
-	jsav.displayInit();
+	// Should move JSAV array 50px down to make room for pointer arrow canvas.
+    var arr = jsav.ds.array([21,3,5,10,18,7],{indexed: true, top : 50, left:500,layout: "array"});
+    jsav.umsg("We start by creating an array with 6 elements.");
+    jsav.displayInit();
     jsav.umsg("Create a pointer for the element with index 1.");
     var arrayPointer = jsav.pointer("pointer", arr,{
-		                  targetIndex : 1,
-		                  visible: true,
-                          anchor: "left top",
-                          myAnchor: "right bottom",
-                          left: 15,
-                          top: -20});
+                       targetIndex : 1,
+                       visible: true,
+                       anchor: "left top",
+                       myAnchor: "right bottom",
+                       left: 15,
+                       top: -20});
 	jsav.step();
     jsav.umsg("Hide the JSAV array for the list pointer example");
     arr.hide();
