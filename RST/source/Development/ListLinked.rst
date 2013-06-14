@@ -24,6 +24,11 @@ that is, it allocates memory for new list elements as needed.
 
 .. inlineav:: listLinkedNodeCON dgm
    :align: center
+   
+Pointer API in Slideshows
+
+.. inlineav:: LlistPointerCON ss
+   :output: show
 
    A linked list is made up of a series of objects, called the
    :dfn:`nodes` of the list. You can see that the nodes are "linked"

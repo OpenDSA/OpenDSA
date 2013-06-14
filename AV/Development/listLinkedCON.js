@@ -109,6 +109,7 @@
   l.addFirst("null")
    .addFirst("null");
   l.layout();
+
   // Head
   var headLabel = l.get(0).odsa_addLabel( "head");
   var headArrow = l.get(0).odsa_addArrow( );
@@ -1106,5 +1107,57 @@
   jsav.umsg("This takes &Theta;(<i>i</i>) time, where <i>i</i> is the position to move to.");
   jsav.step();
 
+  jsav.recorded();
+}(jQuery));
+
+// Using Pointer API
+(function ($) {
+  // Function for creating a pointer using Pointer API.
+  function setPointer(name, obj){
+    var pointer = jsav.pointer(name, obj,{visible: true, // visible by default
+                          // positioned 20px above the object pointed to
+                          anchor: "right top",
+                          myAnchor: "right top",
+                          left: -20,
+                          top: "-40px" });
+    return pointer;
+  }
+
+  var jsav = new JSAV("LlistPointerCON");
+  
+  // Relative offsets
+  var leftMargin = 270;
+  var topMargin = 50;
+  
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
+  l.addFirst("5")
+   .addFirst("4")
+   .addFirst("3")
+   .addFirst("2")
+   .addFirst("1");
+  l.layout();
+  jsav.displayInit();
+  
+  // Create three pointers
+  var head = setPointer("head", l.get(0));
+  var curr = setPointer(" curr ", l.get(2));  
+  var tail = setPointer(" tail ", l.get(4));
+  jsav.step();
+  
+  // Insert a new node into the list
+  var newNode = l.newNode("");
+  newNode.css({top: 60, left: 187});
+  l.get(2).next(newNode);
+  newNode.next(l.get(2).next());
+  jsav.step();
+
+  // You could notice the moving of the tail pointer folowing the "tail" node in this step. 
+  // Now,we don't need to create one extra arrow(label) and hide the original arrow(label) when inserting a new node. 
+  // Yes, this will shorten the code.
+  l.layout({"updateTop" : false});
+
+  //step 5
+  jsav.step();
+  l.layout();
   jsav.recorded();
 }(jQuery));
