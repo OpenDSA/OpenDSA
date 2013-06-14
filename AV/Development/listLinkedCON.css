@@ -93,7 +93,12 @@
   max-height: 35px;
   line-height: 35px;
 }
-
+#LlistPointerCON{
+  height: 270px;
+}
+#LlistPointerCON .jsavoutput.jsavline{
+  height: 55px;
+}
 .jsavhorizontallist.jsavautoresize .jsavnode {
   min-width: 30px;
   max-width: 30px;

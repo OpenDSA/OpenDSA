@@ -1125,7 +1125,7 @@
   }
 
   // Relative offsets
-  var leftMargin = 270;
+  var leftMargin = 260;
   var topMargin = 50;
   
   var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
@@ -1154,11 +1154,11 @@
   jsav.step();
 
   //step 4
-  jsav.umsg("Insert the new node into the list. You could notice the moving of the tail pointer folowing the \"tail\" node in this step. Now,we don't need to create one extra arrow(label) for the new 'tail' and hide the original arrow(label) when inserting a new node.");
+  jsav.umsg("Insert the new node into the list. You could notice the moving of the tail pointer folowing the \"tail\" node in this step. Now, we don't need to create one extra arrow(label) for the new 'tail' and hide the original arrow(label) when inserting a new node.");
   l.layout();
   jsav.step();
   //step 5
-  jsav.umsg("We can also use .target() function to reset the target of pointer. Animation of the pointer moving from the original node to new target node could be observed when target of pointer is changed.");
+  jsav.umsg("We can also use .target() function to reset the target of pointer. Animation of the pointer moving from the original node to new target node could be observed when the target of pointer is changed.");
   head.target(l.get(3));
   jsav.recorded();
 }(jQuery));
