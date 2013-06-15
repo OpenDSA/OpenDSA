@@ -36,7 +36,8 @@
   (function ($) {
     var jsav = new JSAV("container");
     // Should move JSAV array 50px down to make room for pointer arrow canvas.
-    var arr = jsav.ds.array([21,3,5,10,18,7],{indexed: true, top : 50, left:500,layout: "array"});
+    var arr = jsav.ds.array([21,3,5,10,18,7],{indexed: true, layout: "array"});
+	arr.css({top : 50});
     jsav.umsg("We start by creating an array with 6 elements.");
     jsav.displayInit();
     jsav.umsg("Create a pointer for the element with index 1.");
@@ -53,7 +54,8 @@
 
     jsav.step();
     // Should move JSAV list 50px down to make room for pointer arrow canvas.
-    var l = jsav.ds.list({top: 50, left: 450});
+    var l = jsav.ds.list();
+	l.css({top: 50});
     jsav.umsg("We create a list and add some elements.");
     l.addFirst(5)
      .addFirst(4)
