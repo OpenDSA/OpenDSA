@@ -62,16 +62,21 @@
      .addFirst(1);
     l.layout();
     jsav.step();
-    jsav.umsg("Add a pointer with the name \"pointer\" above the first node of the list.");
+    jsav.umsg("Add two pointers, one with the name \"pointer1\" above the first node of the list, another with the name \"pointer2\" above the third node of the list,.");
 
-    var listPointer = jsav.pointer("pointer", l.get(0),{visible: true,
+    var listPointer1 = jsav.pointer("pointer1", l.get(0),{visible: true,
+                      anchor: "left top",
+                      myAnchor: "right bottom",
+                      left: 15,
+                      top: -20});
+    var listPointer2 = jsav.pointer("pointer2", l.get(2),{visible: true,
                       anchor: "left top",
                       myAnchor: "right bottom",
                       left: 15,
                       top: -20});
     jsav.step();
     jsav.umsg("Moves the pointer from the first node to the last node");
-    listPointer.target(l.get(4));
+    listPointer1.target(l.get(4));
     jsav.step(); 
     jsav.recorded();
 }(jQuery));
