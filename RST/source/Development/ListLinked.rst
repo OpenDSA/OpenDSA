@@ -25,14 +25,14 @@ that is, it allocates memory for new list elements as needed.
 .. inlineav:: listLinkedNodeCON dgm
    :align: center
    
+   A linked list is made up of a series of objects, called the
+   :dfn:`nodes` of the list. You can see that the nodes are "linked"
+   together.
+
 Pointer API in Slideshows
 
 .. inlineav:: LlistPointerCON ss
    :output: show
-
-   A linked list is made up of a series of objects, called the
-   :dfn:`nodes` of the list. You can see that the nodes are "linked"
-   together.
 
 Because a list node is a distinct object (as opposed to simply a cell
 in an array), it is good practice to make a separate list node class.
@@ -140,14 +140,6 @@ Special case for Linked list insertion
 Implementations for the remaining operations each require
 :math:`\Theta(1)` time.
 
-.. TODO::
-   :type: Exercise
-
-   Proficiency exercise (probably using KA, but possibly not) for
-   linked list insertion. Show a linked list, and below it a node
-   holding the new value. User will do a series of drags for values
-   and links to get the new node into place.
-   
 .. avembed:: Exercises/Development/listLinkedInsertion.html ka
 
 .. TODO::
@@ -157,7 +149,7 @@ Implementations for the remaining operations each require
    linked list deletion. Show a linked list. User will do a series of
    drags for values and links to get the list updated properly.
    
-.. avembed:: Exercises/Development/listLinkedInsertion.html ka
+.. (avembed) Exercises/Development/listLinkedInsertion.html ka
 
 .. TODO::
    :type: Exercise
