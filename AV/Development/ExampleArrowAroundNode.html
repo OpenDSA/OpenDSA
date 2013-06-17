@@ -38,9 +38,9 @@
     function arrowAround(node, options){
        var jsav = node.jsav;
        var nodeWidth = node.element.outerWidth();
-	   var nodeHeight = node.element.outerHeight();
+       var nodeHeight = node.element.outerHeight();
        var left = node.element.offset().left -    jsav.container.find(".jsavcanvas:first").offset().left;
-	   var top = node.element.offset().top - jsav.container.find(".jsavcanvas:first").offset().top;
+       var top = node.element.offset().top - jsav.container.find(".jsavcanvas:first").offset().top;
        var opts = $.extend({leftOffset: 20,
                             rightOffset: 20, topOffset: 15, nodeGap: 40, nodeWidth: nodeWidth, nodeHeight: nodeHeight}, options);
        return jsav.g.polyline([[left - opts.nodeGap - 6, top + opts.nodeHeight/2], 
@@ -50,7 +50,7 @@
     var jsav = new JSAV("container");
     // Should move JSAV list 50px down to make room for arrow around the node.
     var l = jsav.ds.list();
-	l.css({top: 50});
+    l.css({top: 50});
     l.addFirst(5)
      .addFirst(4)
      .addFirst(3)
@@ -60,7 +60,7 @@
     
     //create a arrow around the node, then call the .hide() function.
     var dashline = arrowAround(l.get(2));
-	dashline.hide();
+    dashline.hide();
     jsav.umsg("We start by creating a list with 5 elements. We also create a hidden arrow around the node with value 3.");
     jsav.displayInit();
 
