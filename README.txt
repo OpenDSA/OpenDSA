@@ -7,6 +7,13 @@ for use in Data Structures and Algorithms courses, that deeply
 integrates textbook-quality content with algorithm visualizations and
 interactive, automatically assessed exercises.
 
+
+When first cloning this repository, you will need to update the
+submodules and compile some of the libraries. Do the following:
+  git submodule init
+  make pull
+  
+
 The major components in the directory structure is as follows:
 
 AV: Source code for various algorithm visualizations and associated
