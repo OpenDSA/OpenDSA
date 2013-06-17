@@ -36,20 +36,25 @@
   (function ($) {
     // Helper function for drawing arrow around the node
     function arrowAround(node, options){
-       var jsav = node.jsav;
-       var nodeWidth = node.element.outerWidth();
-       var nodeHeight = node.element.outerHeight();
-       var left = node.element.offset().left -    jsav.container.find(".jsavcanvas:first").offset().left;
-       var top = node.element.offset().top - jsav.container.find(".jsavcanvas:first").offset().top;
-       var opts = $.extend({leftOffset: 20,
-                            rightOffset: 20, topOffset: 15, nodeGap: 40, nodeWidth: nodeWidth, nodeHeight: nodeHeight}, options);
-       return jsav.g.polyline([[left - opts.nodeGap - 6, top + opts.nodeHeight/2], 
+      var jsav = node.jsav;
+      var nodeWidth = node.element.outerWidth();
+      var nodeHeight = node.element.outerHeight();
+      var nodegap = 40;
+      var nextnode = node.next();
+      if(nextnode){
+        var nodegap = nextnode.element.offset().left - node.element.offset().left - nodeWidth;
+      }
+      var left = node.element.offset().left -    jsav.container.find(".jsavcanvas:first").offset().left;
+      var top = node.element.offset().top - jsav.container.find(".jsavcanvas:first").offset().top;
+      var opts = $.extend({leftOffset: nodegap/2,
+                            rightOffset: nodegap/2, topOffset: 15, nodeGap: nodegap, nodeWidth: nodeWidth, nodeHeight: nodeHeight}, options);
+      return jsav.g.polyline([[left - opts.nodeGap - 6, top + opts.nodeHeight/2], 
       [left - opts.leftOffset, top + opts.nodeHeight/2], [left - opts.leftOffset, top - opts.topOffset],[left + opts.nodeWidth + opts.rightOffset, top - opts.topOffset],[left + opts.nodeWidth + opts.rightOffset, top + opts.nodeHeight/2],[left + opts.nodeWidth + opts.nodeGap + 1,top + opts.nodeHeight/2]],{"arrow-end":"classic-wide-long", "opacity":100, "stroke-width":2,"stroke-dasharray":"-"});
-	}
+    }
 
     var jsav = new JSAV("container");
     // Should move JSAV list 50px down to make room for arrow around the node.
-    var l = jsav.ds.list();
+    var l = jsav.ds.list({nodegap:30});
     l.css({top: 50});
     l.addFirst(5)
      .addFirst(4)
