@@ -82,6 +82,8 @@ void setup() {
     output.println("Success");
     output.flush();
     output.close();
+  } else {
+    println("Testing failed");
   }
 
   if (testsize == 0) {
