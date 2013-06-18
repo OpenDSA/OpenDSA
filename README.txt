@@ -73,7 +73,7 @@ In order to pull a more recent copy of JSAV than what is in the submodule:
 A similar command will let you pull the up-to-date version of QBank.
 
 To check out a read-only copy of this repository:
-  git clone git://github.com/cashaffer/OpenDSA.git OpenDSA
+  git clone git://github.com/OpenDSA/OpenDSA.git OpenDSA
 
 To check out a read-write copy of this repository (requires permission to commit to the repo):
-  git clone https://YOURGITHUBID@github.com/cashaffer/OpenDSA.git OpenDSA
+  git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA.git OpenDSA
