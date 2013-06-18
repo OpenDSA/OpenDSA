@@ -2,39 +2,25 @@
 // Various functions and variables that will be used by all of the
 // following sections of the tutorial.
 
+// Helper function for seting pointer
+function setPointer(name, node, opt){
+  var pointerRight = {anchor: "right top",
+    myAnchor: "left bottom",
+    left: -10,
+    top: 70};
+  var pointerLeft = {anchor: "left top",
+    myAnchor: "right bottom",
+    left: 15,
+    top: 70};
+  if(opt === "right"){
+    return node.jsav.pointer(name, node, pointerRight);
+  }else{
+    return node.jsav.pointer(name, node, pointerLeft);
+  }
+}
+
 // JSAV extension
 (function ($) {
-  JSAV._types.ds.ListNode.prototype.odsa_addLabel = function(name,options){
-	var leftMargin = $('#' + this.id()).position().left + this.container.position().left;
-    var topMargin = $('#' + this.id()).position().top + this.container.position().top - 40;
-    var options = options || {};
-	if(options.left){
-	  leftMargin += options.left;
-	}
-	if(options.top){
-	  topMargin += options.top;
-	}	
-	return this.jsav.label(name,
-      {left: -10 + leftMargin, top: topMargin, "font-size":"20px"});
-  }
-
-  JSAV._types.ds.ListNode.prototype.odsa_addArrow = function(options){
-	var leftMargin = $('#' + this.id()).position().left + this.container.position().left;
-    var topMargin = $('#' + this.id()).position().top + this.container.position().top - 40;
-	var options = options || {};
-	if(options.left){
-	  leftMargin += options.left;
-	}
-	if(options.top){
-	  topMargin += options.top;
-	}	
-	if(options.visible === "undefined"){
-      options.visible = 100;
-	}
-    return this.jsav.g.line(-4 + leftMargin, topMargin + 20, 16 + leftMargin, topMargin + 40,
-    {"arrow-end": "classic-wide-long", "opacity": options.visible,"stroke-width": 2});
-  }
-
   JSAV._types.ds.ListNode.prototype.odsa_addTail = function(options){	  
 	var fx = $('#' + this.id()).position().left + this.container.position().left + 33;
     var fy = $('#' + this.id()).position().top + this.container.position().top + 32;
@@ -111,17 +97,12 @@
   l.layout();
 
   // Head
-  var headLabel = l.get(0).odsa_addLabel( "head");
-  var headArrow = l.get(0).odsa_addArrow( );
+  var head = setPointer("head", l.get(0));
+
   // Curr
-  var currLabel = l.get(1).odsa_addLabel( "curr");
-  var currArrow = l.get(1).odsa_addArrow( );
+  var curr = setPointer("curr", l.get(1));
   // Tail
-  var tailLabel = jsav.label("tail",
-	  {before: l, left: leftMargin + 105, top: topMargin - 40, "font-size":"20px"});
-  var tailArrow = jsav.g.line(leftMargin + 115, topMargin - 20,
-                              leftMargin + 95, topMargin,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+  var tail = setPointer("tail", l.get(1), "right");
   // Diagonal slash
   var slash = l.get(1).odsa_addTail( );
   // Vertical bar  
@@ -145,52 +126,37 @@
    .addFirst(20);
   l.layout();
 
-  var headLabel = l.get(0).odsa_addLabel( "head");
-  headLabel.hide();
-  var headArrow = l.get(0).odsa_addArrow({visible: 0});
+  //head
+  var head = setPointer("head", l.get(0));
+  head.hide();
   // curr
-  var currLabel = l.get(2).odsa_addLabel( "curr");
-  currLabel.hide();
-  var currArrow = l.get(2).odsa_addArrow({visible: 0});
+  var curr = setPointer("curr", l.get(2));
+  curr.hide();
   // tail
-  var tailLabel = l.get(4).odsa_addLabel( "tail");
-  tailLabel.hide();
-  var tailArrow = l.get(4).odsa_addArrow({visible: 0});
+  var tail = setPointer("tail", l.get(4));
+  tail.hide();
   // Vertical line  
   var bar = l.get(2).odsa_addVLine( );
   //Diagonal slash at tail
   var slash = l.get(4).odsa_addTail( );
   //Diagonal slash in step 3
   var slash3 = l.get(3).odsa_addTail({visible:0});
-  //Label tail in step 3
-  var tailLabel3 = l.get(3).odsa_addLabel( "tail");
-  tailLabel3.hide();
-  //Arrow tail in step 3
-  var tailArrow3 = l.get(3).odsa_addArrow({visible: 0});
 
   jsav.umsg("Here is a graphical depiction for a linked list storing five integers. The value stored in a pointer variable is indicated by an arrow \"pointing\" to something. A NULL pointer is indicated graphically by a diagonal slash through a pointer variable's box. The vertical line between the nodes labeled 23 and 10 indicates the current position (immediately to the right of this line).");
   jsav.displayInit();
 
   //step 2
-  headLabel.show();
-  headArrow.show();
-  currLabel.show();
-  currArrow.show();
-  tailLabel.show();
-  tailArrow.show();
-  
+  head.show();
+  curr.show();
+  tail.show();
   jsav.umsg("The list's first node is accessed from a pointer named head. To speed access to the end of the list, and to allow the append method to be performed in constant time, a pointer named tail is also kept to the last link of the list. The position of the current element is indicated by another pointer, named curr.");
   jsav.step();
 
   //step 3
+  slash.hide();
+  slash3.show();
   l.remove(2);
   l.layout();
-  slash.hide();
-  tailLabel.hide();
-  tailArrow.hide();
-  slash3.show();  
-  tailLabel3.show();
-  tailArrow3.show();
   jsav.umsg("Here is what we would like to have happen when we delete the current node (the one with value 10).");
   jsav.step();
   jsav.recorded();
@@ -218,14 +184,11 @@
   var arr = jsav.ds.array([""], 
             {indexed: false, layout: "array", left:0}).hide();
   // Head
-  var headLabel = l.get(0).odsa_addLabel( "head");
-  var headArrow = l.get(0).odsa_addArrow({});
+  var head = setPointer("head", l.get(0));
   // Curr
-  var currLabel = l.get(2).odsa_addLabel( "curr");
-  var currArrow = l.get(2).odsa_addArrow( );
+  var curr = setPointer("curr", l.get(2));
   // Tail
-  var tailLabel = l.get(4).odsa_addLabel( "tail");
-  var tailArrow = l.get(4).odsa_addArrow( );
+  var tail = setPointer("tail", l.get(4));
 
   // Vertical line
   var bar = l.get(2).odsa_addVLine( );
@@ -237,23 +200,10 @@
   //dash line in step 4
   var dashlineLeftMargin = 452
   var dashline = jsav.g.polyline([[dashlineLeftMargin, 66], 
-	  [dashlineLeftMargin + 13, 66], [dashlineLeftMargin + 13, 30],[dashlineLeftMargin + 83,30],[dashlineLeftMargin + 83,66],[dashlineLeftMargin + 101,66]], {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
+      [dashlineLeftMargin + 13, 66], [dashlineLeftMargin + 13, 30],[dashlineLeftMargin + 83,30],[dashlineLeftMargin + 83,66],[dashlineLeftMargin + 101,66]], {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
   
   //Diagonal slash in step 6
   var slash5 = l.get(3).odsa_addTail({visible : 0});
-
-  //Label tail in step 6
-  var tailLabel5 = l.get(3).odsa_addLabel( "tail");
-  tailLabel5.hide();
-  var tailArrow5 = l.get(3).odsa_addArrow({visible: 0});
-  //Label tail in step 7
-  var tailLabel6 = jsav.label("tail",
-	  {before: l, left: leftMargin +256, top: topMargin - 40, "font-size":"20px"}).hide();
-  //Arrow tail in step 7
-  var tailArrow6 = jsav.g.line(leftMargin + 266, topMargin -20 ,
-                              leftMargin + 246, topMargin,
-	  {"arrow-end": "classic-wide-long", "opacity":	0,"stroke-width": 2});
-
 
   jsav.umsg("Another problem is that we have no link to get us to the preceding node (shown in yellow). So we have no way to update its <code>next</code> pointer.");
   jsav.displayInit();
@@ -284,21 +234,17 @@
   dashline.hide();
   l.remove(3);
   l.get(2).edgeToNext().show();
-  tailLabel.hide();
-  tailArrow.hide();
-  tailLabel5.show();
-  tailArrow5.show();
   slash.hide();
   slash5.show();
   l.layout();
   jsav.umsg("The node with a value of 10 is removed from the list.");
   jsav.step();
 
-  currLabel.hide();
-  currArrow.hide();
-  tailLabel5.text("curr");
-  tailLabel6.show();
-  tailArrow6.show();
+
+  curr.hide();
+  tail.hide();
+  var newcurr = setPointer("curr", l.get(3));
+  var newtail = setPointer("tail", l.get(3), "right");
   bar.hide();
   bar2.show();
   l.get(2).highlight();
@@ -324,16 +270,13 @@
    .addFirst("null");
   l.layout();
 
-  var headLabel = l.get(0).odsa_addLabel( "head");
-  var headArrow = l.get(0).odsa_addArrow( );
-
+  // Head
+  var head = setPointer("head", l.get(0));
   // Curr
-  var currLabel = l.get(3).odsa_addLabel( "curr");
-  var currArrow = l.get(3).odsa_addArrow( );
+  var curr = setPointer("curr", l.get(3));
 
   // Tail
-  var tailLabel = l.get(6).odsa_addLabel( "tail");
-  var tailArrow = l.get(6).odsa_addArrow( );
+  var tail = setPointer("tail", l.get(6));
 
   // Vertical line
   var bar = l.get(3).odsa_addVLine( );
@@ -439,30 +382,21 @@
    .addFirst("null");
   l.layout();
 
-  //create two hidden arrays for ".copyValue" animation 
+  // create two hidden arrays for ".copyValue" animation 
   var arr = jsav.ds.array([""], 
             {indexed: true, layout: "array"});
   arr.hide(); 
 
-  //head
-  var headLabel = l.get(0).odsa_addLabel( "head");
-  var headArrow = l.get(0).odsa_addArrow();
-  
-  //curr
-  var currLabel = l.get(2).odsa_addLabel( "curr");
-  var currArrow = l.get(2).odsa_addArrow();
+  // head
+  var head = setPointer("head", l.get(0));  
+  // curr
+  var curr = setPointer("curr", l.get(2));  
+  // Tail
+  var tail = setPointer("tail", l.get(4));  
 
-  //Tail
-  var tailLabel = l.get(4).odsa_addLabel( "tail");
-  var tailArrow = l.get(4).odsa_addArrow();
- 
-  //New Tail after inserting one item
-  var newTailLabel = l.get(4).odsa_addLabel("tail",{left:74, top:0});
-  newTailLabel.hide();
-  var newTailArrow = l.get(4).odsa_addArrow({left:74, top:0, visible:0});
   //Diagonal slash
   var slash = l.get(4).odsa_addTail();
-  var newSlash = l.get(4).odsa_addTail({left:74, top:0, visible : 0});
+  var newSlash = l.get(4).odsa_addTail({left:72, top:0, visible : 0});
 
   //Vertical bar
   var bar = l.get(2).odsa_addVLine( );
@@ -493,10 +427,6 @@
   l.get(2).edgeToNext().hide();
   l.get(3).edgeToNext().hide();    
   longArrow.show();
-  tailArrow.hide();
-  tailLabel.hide();
-  newTailArrow.show();
-  newTailLabel.show();
   slash.hide();
   newSlash.show();
   l.layout({updateTop: false});
@@ -572,6 +502,11 @@
 	  {left: 20, top: 0, "font-size":"20px"});
   var itBox = jsav.ds.array(["15"], 
             {indexed: false, layout: "array", top: -20, left: 40});
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
+  l.addFirst("null")
+        .addFirst(20)
+        .addFirst("null");
+  l.layout();
   
   //Inserting at the tail of the list.
   //DOM elements are created here.
@@ -580,33 +515,18 @@
     // Relative offsets
     this.leftMargin = leftMargin;
     this.topMargin = topMargin;
-	this.l = this.jsav.ds.list({"nodegap": 30, "top": this.topMargin, left: this.leftMargin});
-    this.l.addFirst("null")
-          .addFirst(20)
-          .addFirst("null");
-    this.l.layout();
-	//Head
-    this.headLabel = this.l.get(0).odsa_addLabel( "head");
-    this.headArrow = this.l.get(0).odsa_addArrow( );
-	//Curr
-    this.currLabel = this.l.get(2).odsa_addLabel( "curr");
-    this.currArrow = this.l.get(2).odsa_addArrow( );
-	//Tail
-    this.tailLabel = this.jsav.label("tail",
-	  {before: this.l, left: this.leftMargin + 195 - 17, top: this.topMargin - 40, "font-size":"20px"});
-    this.tailArrow = this.jsav.g.line(this.leftMargin + 205 - 17, this.topMargin - 20,
-                              this.leftMargin + 185 - 17, this.topMargin,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
-    //New Tail
-    this.newTailLabel = this.l.get(2).odsa_addLabel("tail",{left:74});
-    this.newTailLabel.hide();
-	this.newTailArrow = this.l.get(2).odsa_addArrow({left:74, visible : 0});
+	// Head
+    this.head = setPointer("head", l.get(0));  
+	// Curr
+    this.curr = setPointer("curr", l.get(2));  
+	// Tail
+    this.tail = setPointer("tail", l.get(2), "right");
 
     //Vertical bar
-    this.bar1 = this.l.get(2).odsa_addVLine( );
+    this.bar1 = l.get(2).odsa_addVLine( );
 
     //Diagonal slash
-    this.slash = this.l.get(2).odsa_addTail( );
+    this.slash = l.get(2).odsa_addTail( );
 
     //Diagonal slash for new node
     this.newNodeSlash = this.jsav.g.line(this.leftMargin + 254, this.topMargin + 92,
@@ -614,20 +534,15 @@
 	  {"opacity": 0,"stroke-width": 1});
 
     //Diagonal slash for new tail
-    this.newTailSlash = this.l.get(2).odsa_addTail({left : 74, visible : 0});
+    this.newTailSlash = l.get(2).odsa_addTail({left : 74, visible : 0});
 
   }
   //Clear DOM elements
   InsertTail.prototype.clear = function(){
-	  this.l.hide();
-	  this.headLabel.hide();
-	  this.headArrow.hide();
-	  this.currLabel.hide();
-	  this.currArrow.hide();
-	  this.tailLabel.hide();
-	  this.tailArrow.hide();
-	  this.newTailLabel.hide();
-	  this.newTailArrow.hide();
+	  l.hide();
+	  this.head.hide();
+	  this.curr.hide();
+	  this.tail.hide();
 	  this.bar1.hide();
 	  this.slash.hide();
 	  this.newNodeSlash.hide();
@@ -642,9 +557,9 @@
     this.jsav.displayInit();
 
     //step 2
-    this.newNode = this.l.newNode("");	
+    this.newNode = l.newNode("");	
     // Set the position for the new node
-    this.newNode.css({top: 60, left: 149 + 73}); 
+    this.newNode.css({top: 60, left: 222}); 
     this.newNode.highlight();  
     this.jsav.umsg("Create a new link node.");
     pseudo.unhighlight(1);
@@ -652,7 +567,7 @@
     this.jsav.step();
 	
 	//step 3
-    this.jsav.effects.copyValue(this.l.get(2), this.newNode);
+    this.jsav.effects.copyValue(l.get(2), this.newNode);
     this.jsav.umsg("Copy current.element() to the new node (this value is <code>null</code>).");
     this.jsav.step();
 
@@ -662,19 +577,19 @@
     this.jsav.step();
 
 	//step 5
-    var node = this.l.get(2).next();    
-    this.l.get(2).edgeToNext();
-    this.l.get(2).next(this.newNode);
+    var node = l.get(2).next();    
+    l.get(2).edgeToNext();
+    l.get(2).next(this.newNode);
     this.newNode.next(node);
     this.newNode.unhighlight();
-    this.l.get(2).highlight();
-    this.l.layout({updateTop: false}); // control that top coordinate of nodes should not be recalculated
+    l.get(2).highlight();
+    l.layout({updateTop: false}); // control that top coordinate of nodes should not be recalculated
     this.slash.hide();
     this.jsav.umsg("<code>curr</code>'s <code>next</code> field is assigned to point to the new link node.");
     this.jsav.step();
 
     //step 6
-    this.jsav.effects.copyValue(itBox, 0, this.l.get(2));
+    this.jsav.effects.copyValue(itBox, 0, l.get(2));
 	itBox.unhighlight(0);
     this.jsav.umsg("The value of the current node is set to 15.");
     pseudo.unhighlight(2);
@@ -682,22 +597,20 @@
     this.jsav.step();
 
     //step 7
-    this.l.layout();
+    l.layout();
     this.newNodeSlash.hide();
     this.newTailSlash.show();
-    this.tailLabel.hide();
-    this.tailArrow.hide();
-    this.newTailLabel.show();
-    this.newTailArrow.show();
-	this.l.get(2).unhighlight();
-    this.l.get(3).highlight();
+    this.tail.target(l.get(3),
+      {anchor: "left top", myAnchor: "right bottom", left: 15, top: 70});
+	l.get(2).unhighlight();
+    l.get(3).highlight();
     this.jsav.umsg(" Update the new tail.");
     pseudo.unhighlight(3);
     pseudo.highlight(4);
     this.jsav.step();
 
     //step 8	
-    this.l.get(3).unhighlight();
+    l.get(3).unhighlight();
     this.jsav.umsg("Increase the list size by 1.");
     pseudo.unhighlight(4);
     pseudo.highlight(5);
@@ -711,34 +624,19 @@
 	// Relative offsets
     this.leftMargin = leftMargin -17;
     this.topMargin = topMargin - 40;
+	this.l = this.jsav.ds.list({"nodegap": 30, "top": this.topMargin + 40, left: this.leftMargin + 17});
+	this.l.addFirst("null")
+          .addFirst("null");
+    this.l.layout();
 	//Head
-    this.headLabel = this.jsav.label("head",
-                    {before: this.l, left: this.leftMargin, top: this.topMargin});
-    this.headArrow = this.jsav.g.line(this.leftMargin + 10, this.topMargin + 20,
-                              this.leftMargin + 30, this.topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+    this.head = setPointer("head", this.l.get(0)); 
 	//Curr
-    this.currLabel = this.jsav.label("curr",
-	  {before: this.l, left: this.leftMargin + 75, top: this.topMargin, "font-size":"20px"});
-    this.currArrow = this.jsav.g.line(this.leftMargin + 85, this.topMargin + 20,
-                              this.leftMargin + 105, this.topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+	this.curr = setPointer("curr", this.l.get(1));
 	//Tail
-    this.tailLabel = this.jsav.label("tail",
-	  {before: this.l, left: this.leftMargin + 125, top: this.topMargin, "font-size":"20px"});
-    this.tailArrow = this.jsav.g.line(this.leftMargin + 135, this.topMargin + 20,
-                              this.leftMargin + 115, this.topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+    this.tail = setPointer("tail", this.l.get(1), "right");
 	//Vertical bar
     this.bar = this.jsav.g.line(this.leftMargin + 75, this.topMargin + 40, this.leftMargin + 75, this.topMargin + 70,
 		{"stroke-width": 1, "stroke":"#000"});
-	//New Tail
-    this.newTailLabel = this.jsav.label("tail",
-	  {before: this.l, left: this.leftMargin + 155 , top: this.topMargin, "font-size":"20px"});
-    this.newTailArrow = this.jsav.g.line(this.leftMargin + 165, this.topMargin + 20,
-                              this.leftMargin + 185 , this.topMargin + 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
-    this.newTailLabel.hide();
 
     //Diagonal slash
     this.slash = this.jsav.g.line(this.leftMargin + 125, this.topMargin + 72,
@@ -754,11 +652,6 @@
     this.newTailSlash = this.jsav.g.line(this.leftMargin + 197, this.topMargin + 72,
                           this.leftMargin + 207, this.topMargin + 42,
 	  {"opacity": 0,"stroke-width": 1});
-
-	this.l = this.jsav.ds.list({"nodegap": 30, "top": this.topMargin + 40, left: this.leftMargin + 17});
-	this.l.addFirst("null")
-          .addFirst("null");
-    this.l.layout();
   }
   //
   InsertEmpty.prototype.steps = function(){
@@ -767,9 +660,9 @@
 	pseudo.unhighlight(5);
     this.jsav.umsg("Inserting into the empty list is similar to inserting at the end of the list. Here 15 is again being inserted.");
     itBox.highlight(0);
-	this.headArrow.show();
-	this.currArrow.show();
-	this.tailArrow.show();
+	this.head.show();
+	this.curr.show();
+	this.tail.show();
 	this.slash.show();
     this.jsav.step();	
 
@@ -817,10 +710,8 @@
     this.l.layout();
     this.newNodeSlash.hide();
     this.newTailSlash.show();
-    this.tailLabel.hide();
-    this.tailArrow.hide();
-    this.newTailLabel.show();
-    this.newTailArrow.show();
+	this.tail.target(this.l.get(2),
+      {anchor: "left top", myAnchor: "right bottom", left: 15, top: 70});
 	this.l.get(1).unhighlight();
 	this.l.get(2).highlight();
     this.jsav.umsg(" Update the new tail.");
@@ -872,18 +763,11 @@
   var arr = jsav.ds.array(["10"], {indexed: false, layout: "array",left: leftMargin + 140, top: topMargin + 35}).hide();
 
   //Head
-  var headLabel = l.get(0).odsa_addLabel( "head");
-  var headArrow = l.get(0).odsa_addArrow( );
+  var head = setPointer("head", l.get(0));
   //Curr
-  var currLabel = l.get(2).odsa_addLabel( "curr");
-  var currArrow = l.get(2).odsa_addArrow( );
+  var curr = setPointer("curr", l.get(2));
   //Tail
-  var tailLabel = l.get(5).odsa_addLabel( "tail");
-  var tailArrow = l.get(5).odsa_addArrow( );
-  // NewTail
-  var newTailLabel = l.get(4).odsa_addLabel( "tail");
-  newTailLabel.hide();
-  var newTailArrow = l.get(4).odsa_addArrow({visible: 0});
+  var tail = setPointer("tail", l.get(5));
   // "It"
   var labelIt = jsav.label("it", 
 	            {before: arr, left: leftMargin + 73, top: topMargin + 58, "font-size":"20px"});
@@ -950,10 +834,6 @@
   dashline.hide(); 
   l.layout();
   l.get(2).edgeToNext().show();
-  tailLabel.hide();
-  tailArrow.hide();
-  newTailLabel.show();
-  newTailArrow.show();
   slash.hide();
   newSlash.show();
   l.get(2).unhighlight();  
@@ -1002,21 +882,17 @@
                        startAfter: "/* *** ODSATag: LListPos *** */",
                        endBefore: "/* *** ODSAendTag: LListPos *** */"}).hide();
   // Head
-  var headLabel = l.get(0).odsa_addLabel( "head");
-  var headArrow = l.get(0).odsa_addArrow( );
+  var head = setPointer("head", l.get(0));
   // Curr
-  var currLabel = l.get(3).odsa_addLabel( "curr");
-  var currArrow = l.get(3).odsa_addArrow( );
+  var curr = setPointer("curr", l.get(3));
   // Temp
-  var tempLabel = l.get(3).odsa_addLabel("temp");
-  tempLabel.hide();
+  var temp = setPointer("temp", l.get(3));
+  temp.hide();
   // Curr Next
-  var nextCurrLabel = l.get(4).odsa_addLabel( "curr");
-  nextCurrLabel.hide();
-  var nextCurrArrow = l.get(4).odsa_addArrow({ visible : 0});
+  var nextCurr = setPointer("curr", l.get(4));
+  nextCurr.hide();
   // Tail
-  var tailLabel = l.get(5).odsa_addLabel( "tail");
-  var tailArrow = l.get(5).odsa_addArrow( );
+  var tail = setPointer("tail", l.get(5));
   // Diagonal slash
   var slash = l.get(5).odsa_addTail( );
 
@@ -1028,16 +904,14 @@
   jsav.umsg("Method next simply moves curr one position toward the tail of the list.");
   jsav.step();
 
-  //step 2  
+  //step 3  
   l.get(4).highlight();
-  currLabel.hide();
-  currArrow.hide();
-  nextCurrLabel.show();
-  nextCurrArrow.show();
+  curr.hide();
+  nextCurr.show();
   jsav.umsg("This takes &Theta;(1) time.");
   jsav.step();
 
-  //step 3
+  //step 4
   l.get(4).unhighlight();
   pseudo_next.hide();
   pseudo_prev.show();
@@ -1045,7 +919,7 @@
   jsav.umsg("Method prev moves curr one position toward the head of the list, but its implementation is more difficult.");
   jsav.step();
   
-  //step 4
+  //step 5
   pseudo_next.hide();
   pseudo_prev.show();
   pseudo_prev.unhighlight(1);
@@ -1057,20 +931,18 @@
   jsav.umsg("In a singly linked list, there is no pointer to the previous node. Thus, the only alternative is to march down the list from the beginning until we reach the current node (being sure always to remember the node before it, because that is what we really want). ");
   jsav.step();
 
-  // Step
+  // Step 6
   l.get(0).unhighlight();
   l.get(1).unhighlight();  
   l.get(2).unhighlight(); 
-  tempLabel.show();
-  currArrow.show();
+  temp.show();
   jsav.umsg("Once <code>temp.next()</code> is equal to <code>curr</code>, we are at the right place.");
   jsav.step();
 
-  //step 5
-  tempLabel.hide();
-  currLabel.show();
-  nextCurrLabel.hide();
-  nextCurrArrow.hide();
+  //step 7
+  temp.hide();
+  curr.show();
+  nextCurr.hide();
   pseudo_next.hide();
   pseudo_prev.show();
   pseudo_prev.unhighlight(5);
@@ -1078,28 +950,26 @@
   jsav.umsg("<code>curr</code> can now be set to point to where <code>temp</code> is pointing. This process takes &Theta;(<i>n</i>) time in the average and worst cases.");
   jsav.step();
 
-  //step 6
+  //step 8
   l.get(3).unhighlight();
   pseudo_prev.hide();
   pseudo_pos.show();
   pseudo_pos.highlight(1);
   jsav.umsg("Method <code>moveToPos</code> moves <code>curr</code> to position <code>pos</code>. Note that 23, as the first element on the list, is at position 0.");
   jsav.step();
-  //step 7  
+  //step 9  
   l.get(1).highlight();
   l.get(2).highlight();
   l.get(3).highlight();  
   l.get(4).highlight();
-  currLabel.hide();
-  currArrow.hide();
-  nextCurrLabel.show();
-  nextCurrArrow.show();
+  curr.hide();
+  nextCurr.show();
   pseudo_pos.unhighlight(1);
   pseudo_pos.highlight(7);
   jsav.umsg("Implementation of <code>moveToPos(3)</code> is similar in that finding the 3th position requires marching down 3 + 1 positions from the head of the list.");
   jsav.step();
 
-  //step 8
+  //step 10
   l.get(1).unhighlight();
   l.get(2).unhighlight();
   l.get(3).unhighlight();  

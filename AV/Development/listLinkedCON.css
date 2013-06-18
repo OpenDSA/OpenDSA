@@ -105,9 +105,12 @@
   height: 30px;
 }
 .jsavcanvas{
-	height: 200px;
+  height: 200px;
 }
-
+.jsavpointer{
+  width: 35px;
+  text-align: center;
+}
 
 
 
