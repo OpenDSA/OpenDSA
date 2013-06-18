@@ -38,6 +38,4 @@
   jsav.step();
   l.layout();
   jsav.recorded();
-
-  
 }(jQuery));
