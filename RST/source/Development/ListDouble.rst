@@ -36,7 +36,10 @@ linked list), and a second pointer to the node preceding it.
    :capalign: justify
    :figwidth: 90%
    :alt: A doubly linked list
-
+   
+.. inlineav:: DLlistDiagramCON dgm
+   :align: center
+   
    A doubly linked list.
 
 The most common reason to use a doubly linked list is
@@ -64,15 +67,7 @@ head or tail of the list.
 In our implementation, ``curr`` will point to the current node (or to
 the tail if the current position is at the end of the list).
 
-.. TODO::
-   :type: Slideshow
-
-   This following slideshow is a technology demonstration only, it
-   will go away.
-
-.. inlineav:: DLlistInsertCON ss
-   :output: show
-   
+ 
 Here is the complete implementation for a
 ``Link`` class to be used with doubly linked lists.
 This code is a little longer than that for the singly linked list node
@@ -107,6 +102,9 @@ each node to deal with), they tend to be simpler.
    inserting a node into the doubly linked list. This will replace the
    following text and the image.
 
+.. inlineav:: DLlistInsertCON ss
+   :output: show   
+   
 The ``insert`` method is especially simple for our doubly linked
 list implementation, because most of the work is done by the node's
 constructor.
