@@ -8,9 +8,9 @@
 PROCESS = ~/processing-2.0b9/processing-java
 
 # Use this one on Linux
-# BUILD = build
+BUILD = build
 # On Windows, I can't make it work without an absolute path
-BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+# BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
 all: Demo Misc Lists Trees Sorting Graphs
@@ -31,11 +31,15 @@ UpDown:
 	@cp Demo/UpDown.pde build/UpDown
 	@$(PROCESS) --run --sketch="$(BUILD)/UpDown" --output="build/build" --force
 
-Fact: 
+Fact: build/Fact/success
+
+build/Fact/success: Misc/Fact.pde Lists/Stack.pde Lists/AStack.pde
 	@echo "Factorial Test"
 	-@rm -rf build/Fact
 	@mkdir build/Fact
 	@cp Misc/Fact.pde build/Fact
+	@cp Lists/Stack.pde build/Fact
+	@cp Lists/AStack.pde build/Fact
 	@$(PROCESS) --run --sketch="$(BUILD)/Fact" --output="build/build" --force
 
 TOH: 
