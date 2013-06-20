@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reset pointer target</title>
+    <link rel="stylesheet" href="../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <style>
+    #container {
+      width: 98%;
+      position: relative;
+
+    }
+    .jsavcounter {
+      position: absolute;
+      top: 15px;
+    }
+    .jsavcanvas { height: 300px;}
+    </style>
+  </head>
+  <body>
+    <h1>Reset pointer target</h1>
+  <div id="container">
+    <div class="jsavcontrols"></div><span class="jsavcounter"></span>
+    <p class="jsavoutput jsavline"></p>
+    <div class="jsavcanvas"></div>
+  </div>
+  <style>
+  </style>
+    <script
+       src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script src="../JSAV/lib/jquery.transform.light.js"></script>
+    <script src="../JSAV/lib/raphael.js"></script>
+    <script src="../JSAV/build/JSAV.js"></script>
+    <script>
+  (function ($) {
+    var jsav = new JSAV("container");
+
+    // Should move JSAV list 50px down to make room for pointer arrow canvas.
+    var l = jsav.ds.list();
+	l.css({top: 50});
+    jsav.umsg("We create a list and add some elements.");
+    l.addFirst(5)
+     .addFirst(4)
+     .addFirst(3)
+     .addFirst(2)
+     .addFirst(1);
+    l.layout();
+
+    var listPointer = jsav.pointer("pointer", l.get(0),{visible: true,
+                      anchor: "left top",
+                      myAnchor: "right bottom",
+                      left: 15,
+                      top: -20});
+
+    $(document).ready(function () {
+      $("button").click(function (){
+        listPointer.target(l.get(3));
+        //listPointer.element.remove();
+        
+	  });
+	});
+}(jQuery));
+    </script>
+	<button>Reset pointer target</button>
+  </body>
+</html>
