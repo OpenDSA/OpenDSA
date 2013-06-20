@@ -5,22 +5,28 @@
   var jsav;
   var graph;
   var mst;   //A graph representing the resulted MST
+  var bh;    //Binary heap
   var gnodes = [];
   var mstnodes = [];
+  var size;    //Actual size of the displayed heap nodes
  
   function runit() {
     ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
     graph = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: false});
-    mst = jsav.ds.graph({width: 400, height: 300, layout: "manual", directed: true});
+    mst = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: true});
     mst.hide();
     initGraph();
     graph.layout();
-
-    var startArray = [73, 6, 57, 88, 60, 42, 83, 72];
-    var bh = jsav.ds.binheap(startArray, {left: 400, height: 550, size: 8, stats: true, tree: true});
+    size=graph.nodeCount();
+    var startArray=[];
+	for(var i=0;i<graph.nodeCount();i++)
+	{
+		startArray.push(Infinity);
+	}
+    bh = jsav.ds.binheap(startArray,{left: 400, height: 500, stats: true, tree: true});
     jsav.displayInit();	
-    //prim(gnodes[0]);            // Run Prim's algorithm from start node.
+    prim(gnodes[0]);            // Run Prim's algorithm from start node.
     //displayMST();
     jsav.recorded();
   }
@@ -37,13 +43,53 @@
   function markIt(node) {
     node.addClass("visited");
     jsav.umsg("Add node " + node.value() + " to the MST");
-    distances.highlight(gnodes.indexOf(node));
-    labels.highlight(gnodes.indexOf(node));
     node.highlight();
     jsav.step();
   }
+  
+  function deleteMin()
+  {
+    var minHeapNodeValue = bh._treenodes[0].graphNode.value();
+	bh.swap(0,size-1);
+	
+	bh.css(size-1, {"opacity": "0"});
+    bh._treenodes[size-1].edgeToParent().css("stroke", "white");
+	size--;
+	for (var i = Math.floor(size / 2); i > 0; i--) {
+		bh.heapify(i, {noAnimation: true, steps: false});
+	}
+	bh.heapsize(bh.heapsize()-1);
+	return minHeapNodeValue;    //Return the graph Node with minimum distance
+  }
 
   // Compute Prim's algorithm and return edges
+  function prim(s)
+  {
+	var neighbors;
+	var weight;
+	var v;
+	var heapNode;
+	bh.heapsize(0);     //To inserting adding at the begining of the heap
+	markIt(s); //Add the start node to the MST
+	neighbors = s.neighbors();
+	for (var j = 0; j < neighbors.length; j++) {
+		if (!neighbors[j].hasClass("visited")) {
+			var w = neighbors[j];
+			weight = s.edgeTo(w).weight();
+			//Add Distances Of neighbors not in the minimum spanning tree to the heap
+			jsav.umsg("Adding the weight of edge ("+s.value()+","+w.value()+") to the heap");
+			bh.insert(weight);
+			var heapNode = bh._treenodes[bh.heapsize()-1];
+			heapNode.graphNode = w;
+		}
+	}
+	 //Extracting the minimum distance node from the heap
+	 jsav.umsg("Extracting the minimum distance from the heap");
+	 v = deleteMin();
+	 alert(v);
+	 //v = deleteMin();
+	 //alert(v);
+  }
   /*
   function prim(s) {
     var v;         // The current node added to the MST
@@ -107,18 +153,18 @@
 
     //Nodes of the original graph
     var a = graph.addNode("A", {"left": 0, "top": 50});
-    var b = graph.addNode("B", {"left": 150, "top": 50});
-    var c = graph.addNode("C", {"left": 75, "top": 75});
-    var d = graph.addNode("D", {"left": 75, "top": 150});
-    var e = graph.addNode("E", {"left": 0, "top": 200});
-    var f = graph.addNode("F", {"left": 150, "top": 200});
+    var b = graph.addNode("B", {"left": 250, "top": 50});
+    var c = graph.addNode("C", {"left": 120, "top": 75});
+    var d = graph.addNode("D", {"left": 120, "top": 200});
+    var e = graph.addNode("E", {"left": 0, "top": 250});
+    var f = graph.addNode("F", {"left": 250, "top": 250});
     //Nodes of the MST
     mst.addNode("A", {"left": 0, "top": 50});
-    mst.addNode("B", {"left": 150, "top": 50});
-    mst.addNode("C", {"left": 75, "top": 75});
-    mst.addNode("D", {"left": 75, "top": 150});
-    mst.addNode("E", {"left": 0, "top": 200});
-    mst.addNode("F", {"left": 150, "top": 200});
+    mst.addNode("B", {"left": 250, "top": 50});
+    mst.addNode("C", {"left": 120, "top": 75});
+    mst.addNode("D", {"left": 120, "top": 200});
+    mst.addNode("E", {"left": 0, "top": 250});
+    mst.addNode("F", {"left": 250, "top": 250});
     //Original graph edges
     graph.addEdge(a, c, {"weight": 7});
     graph.addEdge(a, e, {"weight": 9});
@@ -131,9 +177,11 @@
 
     gnodes = graph.nodes();
     mstnodes = mst.nodes();
-    for (var i = 0; i < mstnodes.length; i++) {
+    /*
+	for (var i = 0; i < mstnodes.length; i++) {
       gnodes[i].index = i;
     }
+	*/
   }
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
