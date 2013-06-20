@@ -3,13 +3,13 @@ interface List { // List class ADT
   // Remove all contents from the list, so it is once again empty
   void clear();
 
-  // Insert "item" at the current location
+  // Insert "it" at the current location
   // The client must ensure that the list's capacity is not exceeded
-  void insert(Object item);
+  void insert(Object it);
 
-  // Append "item" at the end of the list
+  // Append "it" at the end of the list
   // The client must ensure that the list's capacity is not exceeded
-  void append(Object item);
+  void append(Object it);
 
   // Remove and return the current element
   Object remove();

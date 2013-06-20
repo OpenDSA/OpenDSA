@@ -21,12 +21,12 @@ Written by Junyang Chen and Cliff Shaffer
 
   <style>
     .jsavcontainer {
-	  height: 525px;
+      height: 130px;
       border: 0px;
     }
-	.jsavcanvas{
-		height: 525px;
-	}
+    .jsavcanvas{
+      height: 130px;
+    }
     .jsavhorizontallist.jsavautoresize .jsavnode {
       min-width: 30px;
       max-width: 30px;
@@ -35,23 +35,23 @@ Written by Junyang Chen and Cliff Shaffer
       line-height: 30px;
       padding-right: 12px;
     }
-	.bgColor{
-	  font-size: 130%;
-	  background-color: yellow;
-	}
-	.jsavlist.jsavautoresize.jsavhorizontallist{
-	  height: 300px;
-	}
-	.jsavcanvas svg{
-	  height: 300px;
-	  overflow: show;
-	}
+    .bgColor{
+      font-size: 130%;
+      background-color: yellow;
+    }
+    .jsavlist.jsavautoresize.jsavhorizontallist{
+      height: 150px;
+    }
+    .jsavcanvas svg{
+      height: 150px;
+      overflow: show;
+    }
     #reset { margin-right: 20px;}
   </style>
 </head>
 <body>
 <script>
-var jsav,           // The JSAV object
+var jsav,         // The JSAV object
   answerArr = [], // The (internal) array that stores the correct answer
   answerOrderArr = [], // The (internal) array that stores the correct order of nodes
   orderArr = [],  
@@ -198,6 +198,7 @@ var clickHandler = function (e) {
     userInput = true;
   }
 };
+
 function addTail(node){
   if(node.exe_tail){
     node.exe_tail.element.remove();
@@ -210,38 +211,35 @@ function addTail(node){
   }
 }
 
-var f_newnode = function(){ 
-  if(newNodeGen == false)
-  {
-	if(status == 2){
-	  $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
-	  fromNode = null;
-	}else if(status == 1)
-	{
+var f_newnode = function() { 
+  if (newNodeGen == false) {
+    if(status == 2){
+      $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
+      fromNode = null;
+    } else if (status == 1) {
       selected_node.removeClass('bgColor');
-	  selected_node = null;
-	}
-	status = 0;
+      selected_node = null;
+    }
+    status = 0;
     newLinkNode = jsavList.newNode("null");
     // Calculate the position for the new node
     var left = (listSize - 1) * 73 / 2;
-    var top = 70;
+    var top = 60;
     // Set the position for the new node
     newLinkNode.css({"top": top, "left": left});
     
     newLinkNode.exe_next = null;
     newLinkNode.exe_edgeToNext = null;
-	answerOrderArr = orderArr.slice(0);
+    answerOrderArr = orderArr.slice(0);
     answerOrderArr.splice(insertPosition + 2, 0, newLinkNode.id());
 
     var x1 = left + 34;
-	var y1 = top + 31 + 40;
-	var x2 = left + 45;
-	var y2 = top + 1 + 40;
+    var y1 = top + 31 + 40;
+    var x2 = left + 45;
+    var y2 = top + 1 + 40;
 	
     newLinkNode.exe_tail = jsav.g.line(x1, y1,
                           x2, y2,{"opacity": 100,"stroke-width": 1});
-	
 
     $("#" + newLinkNode.id()).draggable({
 	  start: function(){
@@ -416,17 +414,24 @@ var checkAnswer = function (arr_size) {
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-	    <div id = "xx">x</div>
-	<div id = "yy">y</div>
+      <div id = "xx"></div>
+      <div id = "yy"></div>
       <p class="problem" id = "test">Your task in this exercise is to show the
         behavior for Linked list insertion.
-        In the List displayed below, the "current" position is <b><var>insert_pos</var></b>.</p>
+        In the List displayed below, the "current" position
+        is <b><var>insert_pos</var></b>.</p>
       <div class="question">
-	    <p>Insert <b><var>insert_value</var></b> into current position, which is position <b><var>insert_pos</var></b>.</p>
-        <p>To move an element, click on it (to highlight it), then click on where you
-        want it to go. You can insert the new
+	<p>Insert <b><var>insert_value</var></b> into current
+	position, which is position <b><var>insert_pos</var></b>.</p>
+        <p>To move a node value, click on it (to highlight it), then
+        click on where you want it to go. You can insert the new
         value <b><var>insert_value</var></b> into a highlighted
-        array position by clicking the "Insert" button.</p>
+        node by clicking the "Insert" button.
+	You can create a new link node by clicking the "NewNode"
+	button.
+	To change a pointer, click on its box (on the right side of
+        the node) to highlight it, then click on the node that you
+        want it to point to.</p>
         <input id="reset" type="button" value="Reset" />
 		<input id="NewNode" type="button" value="NewNode" />		
 		<input id="insert" type="button" value="Insert" />
@@ -444,9 +449,17 @@ var checkAnswer = function (arr_size) {
         </div>
       </div>
       <div class="hints">
-        <p>To shift elements after "current" one position to the right, the first step could be swapping element <var>arr_size - 1</var> with position <var>arr_size</var></p> 
-	<p>Then, keep swapping element i with i+1 until you make "current" empty for insertion </p>
-        <p>Insert value to "current" position</p>
+        <p>You want to reproduce the behavior of the insertion
+        function. Try starting with a new node.</p>
+	<p>Remember that the new node has to come after the current
+	node in the list, but we want the new value to appear before
+	the the current node's value.</p>
+	<p>So move the current node's value to the new node's value,
+	then use "insert" to put the new value into the current
+	node.</p>
+	<p>Now you need to fix up the pointers. Click the new node's
+	pointer box, then click the node after current. Click the
+	current node's pointer box, then click the new node.</p>
       </div>
     </div>
   </div>

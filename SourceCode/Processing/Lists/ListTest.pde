@@ -49,7 +49,7 @@ void test(List L) {
   if (!temp.equals("< 7 5 | 17 3 >"))
     SUCCESS = false;
 
-Object it;
+  Object it;
 /* *** ODSATag: listiter *** */
 for (L.moveToStart(); !L.isAtEnd(); L.next()) {
   it = L.getValue();
@@ -62,6 +62,12 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
   if (!find(L, 3))
     SUCCESS = false;
   if (find(L, 10))
+    SUCCESS = false;
+
+  L.moveToPos(2);
+  it = L.remove();
+  temp = toString(L);
+  if (!temp.equals("< 7 5 | 3 >"))
     SUCCESS = false;
 }
 
@@ -76,6 +82,8 @@ void setup() {
     output.println("Success");
     output.flush();
     output.close();
+  } else {
+    println("Testing failed");
   }
 
   if (testsize == 0) {

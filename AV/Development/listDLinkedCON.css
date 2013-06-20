@@ -1,0 +1,28 @@
+.jsavcanvas{
+	height: 200px;
+}
+
+.jsavpointer{
+  border:1px solid #eee;
+}
+.jsavnode {
+  min-width: 50px;
+  min-height: 30px; 
+  max-height: 45px;
+  line-height: 30px;
+  text-align: center;
+}
+.jsavhorizontalarray.jsavautoresize .jsavnode {
+  min-width: 35px;
+  max-width: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  line-height: 35px;
+}
+#DLlistDiagramCON {
+  height: 100px;
+}
+#DLlistDiagramCON .jsavoutput.jsavline {
+  height: 75px;
+}
+

@@ -36,6 +36,12 @@ If so, the node is taken from the freelist.
 If the freelist is empty, the standard ``new`` operator must then
 be called.
 
+.. TODO::
+   :type: Slideshow
+
+   Slideshow to illustrate using a freelist in conjunction with a
+   linked list.
+
 Freelists are particularly useful for linked lists that periodically
 grow and then shrink.
 The freelist will never grow larger than the largest size yet reached
@@ -66,21 +72,22 @@ exhausted and the ``new`` operation must be called.
 Here are the necessary modifications to members of the linked list
 class to make use of the freelist version of the link class.
 
-.. TODO::
-   :type: Timings
-
-   Need to run timings for freelist use in various languages.
-   In Processing, there was not much benefit to using the freelist.
-   The information reported in the next paragraph on Java might or
-   might not still be reliable.
+.. codeinclude:: Lists/Freelist.pde
+   :tag: Freelist
 
 How much time is saved by using freelists depends on the language that
 you are programming in.
-For example, in Java, getting a node from your own freelist requires
-about one tenth of the time required by the new operator.
-
-.. codeinclude:: Lists/Freelist.pde
-   :tag: Freelist
+In a language like C++ where the programmer must call ``new`` and
+``delete`` to manage memory, getting a node from your own freelist
+requires less than one tenth of the time required by the ``new``
+operator.
+In a language like Java that uses garbage collection, it might at
+first appear that using your own freelist saves no time, because
+Java's ``new`` operator can quickly return space from the current
+start of its memory pool.
+However, when you do not use a freelist, dropping access to nodes
+creates garbage which leads to expensive processing at garbage
+collection time.
 
 .. TODO::
    :type: Exercise

@@ -1,5 +1,5 @@
 /* *** ODSATag: Queue *** */
-interface Queue { // Queue ADT
+interface Queue { // Queue class ADT
   // Reinitialize queue
   void clear();
 
@@ -12,7 +12,7 @@ interface Queue { // Queue ADT
   // Return front element
   public Object frontValue();
 
-  // @return Queue size
+  // Return queue size
   int length();
 }
 /* *** ODSAendTag: Queue *** */

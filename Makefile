@@ -75,7 +75,7 @@ invalid: min
 slides: min
 	python $(CONFIG_SCRIPT) s config/slides.json
 
-allBooks: CS223 CS3114a CS3114b OpenDSA T1061220 Dev Everything
+allBooks: OpenDSA Dev Everything test ListViz slides
 
 nomin:
 	cp lib/odsaUtils.js lib/odsaUtils-min.js
