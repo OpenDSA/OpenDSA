@@ -10,7 +10,7 @@ PROCESS = ~/processing-2.0b9/processing-java
 # Use this one on Linux
 # BUILD = build
 # On Windows, I can't make it work without an absolute path
-BUILD = /home/shaffer/OpenDSA/SourceCode/Processing/build
+BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
 all: Demo Misc Lists Trees Sorting Graphs
@@ -59,7 +59,7 @@ Largest:
 	@cp Misc/Anal.pde build/Anal
 	@$(PROCESS) --run --sketch="$(BUILD)/Anal" --output="build/build" --force
 
-Lists: ListTest FreeList
+Lists: ListTest FreeList DoubleTest StackTest QueueTest
 
 ListTest: build/ListTest/success
 
@@ -87,11 +87,50 @@ build/FreeList/success: Lists/ListADT.pde Lists/AList.pde Lists/Freelink.pde Lis
 	@cp Lists/ListTest.pde build/FreeList/FreeList.pde
 	@$(PROCESS) --run --sketch="$(BUILD)/FreeList" --output="$(BUILD)/build" --force
 
+DoubleTest: build/DoubleTest/success
+
+build/DoubleTest/success: Lists/ListADT.pde Lists/AList.pde Lists/DLink.pde Lists/Dlist.pde Lists/ListTest.pde
+	@echo "Array-based and Doubly Linked List Test"
+	-@rm -rf build/DoubleTest
+	@mkdir build/DoubleTest
+	@cp Lists/ListADT.pde build/DoubleTest
+	@cp Lists/AList.pde build/DoubleTest/
+	@cp Lists/Dlist.pde build/DoubleTest/LList.pde
+	@cp Lists/DLink.pde build/DoubleTest/Link.pde
+	@cp Lists/ListTest.pde build/DoubleTest/DoubleTest.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/DoubleTest" --output="$(BUILD)/build" --force
+
+StackTest: build/StackTest/success
+
+build/StackTest/success: Lists/Stack.pde Lists/AStack.pde Lists/Link.pde Lists/LStack.pde Lists/StackTest.pde
+	@echo "Array-based and Linked Stack Test"
+	-@rm -rf build/StackTest
+	@mkdir build/StackTest
+	@cp Lists/Stack.pde build/StackTest
+	@cp Lists/AStack.pde build/StackTest/
+	@cp Lists/LStack.pde build/StackTest/
+	@cp Lists/Link.pde build/StackTest/
+	@cp Lists/StackTest.pde build/StackTest/
+	@$(PROCESS) --run --sketch="$(BUILD)/StackTest" --output="$(BUILD)/build" --force
+
+QueueTest: build/QueueTest/success
+
+build/QueueTest/success: Lists/Queue.pde Lists/AQueue.pde Lists/Link.pde Lists/LQueue.pde Lists/QueueTest.pde
+	@echo "Array-based and Linked Queue Test"
+	-@rm -rf build/QueueTest
+	@mkdir build/QueueTest
+	@cp Lists/Queue.pde build/QueueTest
+	@cp Lists/AQueue.pde build/QueueTest/
+	@cp Lists/LQueue.pde build/QueueTest/
+	@cp Lists/Link.pde build/QueueTest/
+	@cp Lists/QueueTest.pde build/QueueTest/
+	@$(PROCESS) --run --sketch="$(BUILD)/QueueTest" --output="$(BUILD)/build" --force
+
 Trees: GenTree UFTest
 
 Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
 
-# This will to timing tests. The "Sorting" target tests for errors.
+# This will do timing tests. The "Sorting" target tests for errors.
 Sorttime: InssortTime BubblesortTime SelsortTime
 
 Graphs: GraphDummy GraphTrav GraphTop GraphDijk GraphMCST

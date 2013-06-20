@@ -2,8 +2,8 @@
 // Linked queue implementation
 class LQueue implements Queue {
   private Link front; // Pointer to front queue node
-  private Link rear; // Pointer to rear queuenode
-  private int size; // Number of elements in queue
+  private Link rear;  // Pointer to rear queuenode
+  private int size;   // Number of elements in queue
 
   // Constructors
   LQueue() { init(); }
@@ -17,6 +17,15 @@ class LQueue implements Queue {
 
   // Reinitialize queue
   public void clear() { init(); }
+
+  String toString() {
+    StringBuffer out = new StringBuffer(size * 4);
+    for (Link temp = front.next(); temp != null;  temp = temp.next()) {
+      out.append(temp.element());
+      out.append(" ");
+    }
+    return out.toString();
+  }
 
   // Put element on rear
   public void enqueue(Object it) {
