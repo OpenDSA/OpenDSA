@@ -22,7 +22,7 @@ clean:
 
 Demo: UpDown
 
-Misc: Fact TOH Fibonnaci Largest
+Misc: Rfact Sfact TOH Fibonnaci Largest
 
 UpDown: 
 	@echo "UpDown Test"

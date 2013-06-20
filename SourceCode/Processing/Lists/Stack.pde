@@ -1,8 +1,7 @@
 /* *** ODSATag: Stack *** */
 interface Stack { // Stack class ADT
 
-  // Reinitialize the stack.  The user is responsible for
-  //   reclaiming the storage used by the stack elements.
+  // Reinitialize the stack.
   void clear();
 
   // Push "it" onto the top of the stack

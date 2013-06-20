@@ -1,12 +1,13 @@
-/* *** ODSATag: LStack *** */
+/* *** ODSATag: LStack1 *** */
 // Linked stack implementation
 class LStack implements Stack {
-  private Link top;             // Pointer to first element
-  private int size;             // Number of elements
+  private Link top;               // Pointer to first element
+  private int size;               // Number of elements
 
   // Constructors
   public LStack() { top = null; size = 0; }
   public LStack(int size) { top = null; size = 0; }
+/* *** ODSAendTag: LStack1 *** */
 
   String toString() {
     StringBuffer out = new StringBuffer(size * 4);
@@ -16,6 +17,7 @@ class LStack implements Stack {
     }
     return out.toString();
   }
+/* *** ODSATag: LStack2 *** */
 
   // Reinitialize stack
   public void clear() { top = null; size = 0; }
@@ -41,4 +43,4 @@ class LStack implements Stack {
   // Return stack length
   public int length() { return size; }
 }
-/* *** ODSAendTag: LStack *** */
+/* *** ODSAendTag: LStack2 *** */
