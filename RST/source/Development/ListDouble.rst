@@ -158,6 +158,9 @@ operator is executed.
    removing a node from a doubly linked list. This will
    replace the following text and image.
 
+.. inlineav:: DLlistRemoveCON ss
+   :output: show
+   
 .. _DblListRemove:
 
 .. odsafig:: Images/DblListD.png
