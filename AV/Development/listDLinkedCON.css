@@ -5,7 +5,7 @@
 .jsavpointer{
   border:1px solid #eee;
 }
-.jsavnode {
+.jsavhorizontallist.jsavautoresize .jsavnode{
   min-width: 50px;
   min-height: 30px; 
   max-height: 45px;

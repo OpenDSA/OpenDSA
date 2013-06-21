@@ -143,6 +143,9 @@ special cases to worry about when inserting into an empty list.
    appending a node at the end of a doubly linked list. This will
    replace the following text.
 
+.. inlineav:: DLlistAppendCON ss
+   :output: show  
+   
 The :math:`append` method is also simple.
 Again, the ``Link`` class constructor sets the ``element``,
 ``prev``, and ``next`` fields of the node when the ``new``

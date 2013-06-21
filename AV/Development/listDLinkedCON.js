@@ -35,9 +35,9 @@ function addEdge(node1, node2){
 
 
   edges.topEdge = jsav.g.line(edge1_fx, edge1_fy, edge1_tx, edge1_ty,
-      {"arrow-end": "classic-wide-long", "stroke-width": 2});
+      {"arrow-end": "classic-wide-long", "stroke-width": 2, "stroke-dasharray":"-"});
   edges.bottomEdge = jsav.g.line(edge2_fx, edge2_fy, edge2_tx, edge2_ty,
-      {"arrow-end": "classic-wide-long", "stroke-width": 2});
+      {"arrow-end": "classic-wide-long", "stroke-width": 2, "stroke-dasharray":"-"});
   edges.hide = function (){
     edges.topEdge.hide();
     edges.bottomEdge.hide();
@@ -100,7 +100,7 @@ function addEdge(node1, node2){
   var leftMargin = 160;
   var topMargin = 45;
   // JSAV list
-  var l = jsav.ds.dlist({"nodegap": 40, "center": false, "left": leftMargin, "top":topMargin});
+  var l = jsav.ds.dlist({"nodegap": 30, "center": false, "left": leftMargin, "top":topMargin});
   l.addFirst("null")
    .addFirst(15)
    .addFirst(12)
@@ -113,12 +113,112 @@ function addEdge(node1, node2){
   setPointer("tail", l.get(5));
   l.get(0).odsa_addSlash("left");
   l.get(5).odsa_addSlash();
-  l.get(3).odsa_addVLine();
+  l.get(2).odsa_addVLine();
 }(jQuery));
 
 // Doubly Linked Lists Insertion
 (function ($) {
   var jsav = new JSAV("DLlistInsertCON");
+  // Relative offsets
+  var leftMargin = 150;
+  var topMargin = 25;
+  // Box "it"
+  var itLabel = jsav.label("it",
+	  {left: 20, top: 0, "font-size":"20px"});
+  var itBox = jsav.ds.array(["15"], 
+            {indexed: false, layout: "array", top: -20, left: 40});
+  itBox.highlight();
+  // JSAV list
+  var l = jsav.ds.dlist({"nodegap": 30, "center": false, "left": leftMargin, "top":topMargin});
+  l.addFirst("null")
+   .addFirst(10)
+   .addFirst(35)
+   .addFirst(8)
+   .addFirst(23)
+   .addFirst("null");
+  l.layout();
+  l.get(0).odsa_addSlash("left");
+  var tailSlash = l.get(5).odsa_addSlash();
+  var Vline = l.get(2).odsa_addVLine();
+  var Vline1 = l.get(2).odsa_addVLine({left : l.get(2).element.outerWidth()});
+  var Vline2 = l.get(2).odsa_addVLine({top : 25});
+  Vline1.hide();
+  Vline2.hide();
+  setPointer("head", l.get(0));
+  var curr = setPointer("curr", l.get(2));
+
+  setPointer("tail", l.get(5));
+  jsav.umsg("The linked list before insertion. 15 is the value to be inserted.");
+  jsav.displayInit();
+
+  // Step 2
+  jsav.umsg("Create a new link node.");
+  var node = l.newNode("");
+  node.css({top: 50, left: 184});
+  node.highlight();
+  node.next(l.get(2));
+  l.get(2).prev(node);
+  l.get(1).next(node);
+  node.prev(l.get(1));
+  l.get(1).edgeToNext().hide();
+  l.get(2).edgeToNext().hide();
+  l.get(2).edgeToPrev().hide();
+  l.get(3).edgeToPrev().hide();
+  l.layout({updateTop: false});  
+  var longEdge = addEdge(l.get(1), l.get(3));
+  tailSlash.hide();
+  Vline.hide();
+  Vline1.show();
+  var newTailSlash = l.get(6).odsa_addSlash();
+  jsav.step();
+  // Step 3
+  jsav.umsg("Copy the value of \"it\", which is 15, to the new node.");
+  jsav.effects.copyValue(itBox, 0, node);
+  jsav.step();
+
+  // Step 4
+  jsav.umsg("The new node's <code>next</code> field is assigned to point to what <code>curr</code> pointed to. The new node's <code>prev</code> field is assigned to point to what <code>curr.prev()</code> pointed to. <code>curr</code> points to the new link node.");
+  l.get(2).edgeToNext().show();
+  l.get(2).edgeToPrev().show();
+  curr.target(l.get(2));
+  jsav.step();
+
+  // Step 5
+  jsav.umsg("The <code>curr.prev()</code>'s <code>next</code> field is assigned to point to the new link node, which is now pointed by <code>curr</code>.");
+  Vline1.hide();
+  Vline2.show();
+  l.get(1).highlight();
+  l.get(2).unhighlight();
+  l.get(1).edgeToNext().show();
+  longEdge.topEdge.hide();
+  jsav.step();
+
+  // Step 6
+  jsav.umsg("<code>curr.next()</code>'s <code>prev</code> field is assigned to point to the new link node.");
+  longEdge.bottomEdge.hide();
+  l.get(3).edgeToPrev().show();
+  l.get(1).unhighlight();
+  l.get(3).highlight();
+  jsav.step();
+
+  // Step 7
+  jsav.umsg("The new link node is in its correct position in the list.");
+  l.layout();
+  l.get(3).unhighlight();
+  l.get(2).highlight();
+  Vline.show();
+  Vline2.hide();
+  jsav.step();
+
+  // Step 8
+  jsav.umsg("Increase the list size by 1.");
+  jsav.step();
+  jsav.recorded();
+}(jQuery));
+
+// Doubly Linked Lists Append method
+(function ($) {
+  var jsav = new JSAV("DLlistAppendCON");
   // Relative offsets
   var leftMargin = 150;
   var topMargin = 25;
@@ -139,32 +239,32 @@ function addEdge(node1, node2){
   l.layout();
   l.get(0).odsa_addSlash("left");
   var tailSlash = l.get(5).odsa_addSlash();
-  var Vline = l.get(3).odsa_addVLine();
-  var Vline1 = l.get(3).odsa_addVLine({left : l.get(3).element.outerWidth()});
-  var Vline2 = l.get(3).odsa_addVLine({top : 25});
+  var Vline = l.get(2).odsa_addVLine();
+  var Vline1 = l.get(2).odsa_addVLine({left : l.get(2).element.outerWidth()});
+  var Vline2 = l.get(2).odsa_addVLine({top : 25});
   Vline1.hide();
   Vline2.hide();
-  setPointer1("head", l.get(0));
-  setPointer1("curr", l.get(2));
-  setPointer1("tail", l.get(5));
+  setPointer("head", l.get(0));
+  var curr = setPointer("curr", l.get(2));
+  setPointer("tail", l.get(5));
   jsav.umsg("The linked list before insertion. 15 is the value to be inserted.");
   jsav.displayInit();
 
   // Step 2
   jsav.umsg("Create a new link node.");
   var node = l.newNode("");
-  node.css({top: 50, left: 275});
+  node.css({top: 50, left: 184});
   node.highlight();
-  node.next(l.get(3));
-  l.get(3).prev(node);
-  l.get(2).next(node);
-  node.prev(l.get(2));
+  node.next(l.get(2));
+  l.get(2).prev(node);
+  l.get(1).next(node);
+  node.prev(l.get(1));
+  l.get(1).edgeToNext().hide();
   l.get(2).edgeToNext().hide();
-  l.get(3).edgeToNext().hide();
+  l.get(2).edgeToPrev().hide();
   l.get(3).edgeToPrev().hide();
-  l.get(4).edgeToPrev().hide();
   l.layout({updateTop: false});  
-  var longEdge = addEdge(l.get(2), l.get(4));
+  var longEdge = addEdge(l.get(1), l.get(3));
   tailSlash.hide();
   Vline.hide();
   Vline1.show();
@@ -176,34 +276,35 @@ function addEdge(node1, node2){
   jsav.step();
 
   // Step 4
-  jsav.umsg("The new node's <code>next</code> field is assigned to point to what <code>curr.next()</code> points to. The new node's <code>prev</code> field is assigned to point to <code>curr</code>.");
-  l.get(3).edgeToNext().show();
-  l.get(3).edgeToPrev().show();
+  jsav.umsg("The new node's <code>next</code> field is assigned to point to what <code>curr</code> pointed to. The new node's <code>prev</code> field is assigned to point to what <code>curr.prev()</code> pointed to. <code>curr</code> points to the new link node.");
+  l.get(2).edgeToNext().show();
+  l.get(2).edgeToPrev().show();
+  curr.target(l.get(2));
   jsav.step();
 
   // Step 5
-  jsav.umsg("<code>curr</code>'s <code>next</code> field is assigned to point to the new link node.");
+  jsav.umsg("The <code>curr.prev()</code>'s <code>next</code> field is assigned to point to the new link node, which is now pointed by <code>curr</code>.");
   Vline1.hide();
   Vline2.show();
-  l.get(2).highlight();
-  l.get(3).unhighlight();
-  l.get(2).edgeToNext().show();
+  l.get(1).highlight();
+  l.get(2).unhighlight();
+  l.get(1).edgeToNext().show();
   longEdge.topEdge.hide();
   jsav.step();
 
   // Step 6
-  jsav.umsg("<code>curr.next().next()</code>'s <code>prev</code> field is assigned to point to the new link node.");
+  jsav.umsg("<code>curr.next()</code>'s <code>prev</code> field is assigned to point to the new link node.");
   longEdge.bottomEdge.hide();
-  l.get(4).edgeToPrev().show();
-  l.get(2).unhighlight();
-  l.get(4).highlight();
+  l.get(3).edgeToPrev().show();
+  l.get(1).unhighlight();
+  l.get(3).highlight();
   jsav.step();
 
   // Step 7
   jsav.umsg("The new link node is in its correct position in the list.");
   l.layout();
-  l.get(4).unhighlight();
-  l.get(3).highlight();
+  l.get(3).unhighlight();
+  l.get(2).highlight();
   Vline.show();
   Vline2.hide();
   jsav.step();
