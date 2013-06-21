@@ -1,4 +1,4 @@
-/* *** ODSATag: AQueue *** */
+/* *** ODSATag: AQueue1 *** */
 // Array-based queue implementation
 class AQueue implements Queue {
   private static final int defaultSize = 10;
@@ -15,6 +15,7 @@ class AQueue implements Queue {
   }
 
   AQueue() { this(defaultSize); }
+/* *** ODSAendTag: AQueue1 *** */
 
   String toString() {
     StringBuffer out = new StringBuffer(length() * 4);
@@ -24,6 +25,7 @@ class AQueue implements Queue {
     }
     return out.toString();
   }
+/* *** ODSATag: AQueue2 *** */
 
   // Reinitialize
   public void clear() { rear = 0; front = 1; }
@@ -52,4 +54,4 @@ class AQueue implements Queue {
   // Return queue size
   public int length() { return ((rear+maxSize) - front + 1) % maxSize; }
 }
-/* *** ODSAendTag: AQueue *** */
+/* *** ODSAendTag: AQueue2 *** */

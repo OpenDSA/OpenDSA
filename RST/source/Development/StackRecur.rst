@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Lists
 
-Implementing Recursion [Text]
-=============================
+Implementing Recursion [Storyboard]
+===================================
 
 WARNING! You should not read this section unless you are already
 comfortable with implementing recursive functions.
@@ -131,10 +131,11 @@ Hanoi function, which cannot be done iteratively.
 
 .. topic:: Example
 
-   The ``TOH`` function shown in Figure :num:`Figure #TOH`
-   makes two recursive calls: one to move :math:`n-1` rings off the
-   bottom ring, and another to move these :math:`n-1` rings back to
-   the goal pole.
+   Function ``TOH`` from Module :numref:`<Recursion>` recurcively
+   computes the Towers of Hanoi puzzle.
+   It makes two recursive calls:
+   one to move :math:`n-1` rings off the bottom ring, and another to
+   move these :math:`n-1` rings back to the goal pole.
    We can eliminate the recursion by using a stack to store a
    representation of the three operations that ``TOH`` must perform:
    two recursive calls and a move operation.
@@ -142,17 +143,14 @@ Hanoi function, which cannot be done iteratively.
    various operations, implemented as a class whose objects will be
    stored on the stack.
 
-   Figure~\ref{TOHstack} shows such a class.
-
    .. codeinclude:: Misc/TOH.pde
       :tag: TOHstack
 
-
-   We first define an enumerated type called ``TOHop``, with two
-   values MOVE and TOH, to indicate calls to the ``move`` function
+   We first enumerate the possible operations MOVE and TOH, to
+   indicate calls to the ``move`` function 
    and recursive calls to ``TOH``, respectively.
-   Class ``TOHobj`` stores five values: an operation field
-   (indicating either a move or a new TOH operation), the number of
+   Class ``TOHobj`` stores five values: an operation value
+   (indicating either a MOVE or a new TOH operation), the number of
    rings, and the three poles.
    Note that the move operation actually needs only to store
    information about two poles.
@@ -177,3 +175,8 @@ efficient implementation with a stack when the amount of
 information needed to describe a sub-problem is small.
 For example, Module :numref:`<Quicksort>` discusses a
 stack-based implementation for Quicksort.
+
+.. TODO::
+   :type: Exercise
+
+   Need a battery of summary multiple choice questions.

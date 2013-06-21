@@ -10,7 +10,7 @@ long rfact(int n) {
 }
 /* *** ODSAendTag: RFact *** */
 
-/* *** ODSATag: sfact *** */
+/* *** ODSATag: Sfact *** */
 // Return n!
 long sfact(int n) {
   // fact(20) is the largest value that fits in a long
@@ -23,7 +23,7 @@ long sfact(int n) {
     result = result * (Integer)S.pop();
   return result;
 }
-/* *** ODSAendTag: sfact *** */
+/* *** ODSAendTag: Sfact *** */
 
 void setup() {
   long temp1, temp2;

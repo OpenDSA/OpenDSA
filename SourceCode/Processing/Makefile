@@ -8,9 +8,9 @@
 PROCESS = ~/processing-2.0b9/processing-java
 
 # Use this one on Linux
-BUILD = build
+# BUILD = build
 # On Windows, I can't make it work without an absolute path
-# BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
 all: Demo Misc Lists Trees Sorting Graphs
@@ -22,14 +22,14 @@ clean:
 
 Demo: UpDown
 
-Misc: Rfact Sfact TOH Fibonnaci Largest
-
 UpDown: 
 	@echo "UpDown Test"
 	-@rm -rf build/UpDown
 	@mkdir build/UpDown
 	@cp Demo/UpDown.pde build/UpDown
 	@$(PROCESS) --run --sketch="$(BUILD)/UpDown" --output="build/build" --force
+
+Misc: Fact TOH Fibonnaci Anal
 
 Fact: build/Fact/success
 
@@ -42,21 +42,29 @@ build/Fact/success: Misc/Fact.pde Lists/Stack.pde Lists/AStack.pde
 	@cp Lists/AStack.pde build/Fact
 	@$(PROCESS) --run --sketch="$(BUILD)/Fact" --output="build/build" --force
 
-TOH: 
+TOH: build/TOH/success
+
+build/TOH/success: Misc/TOH.pde Lists/Stack.pde Lists/AStack.pde
 	@echo "TOH Test"
 	-@rm -rf build/TOH
 	@mkdir build/TOH
 	@cp Misc/TOH.pde build/TOH
+	@cp Lists/Stack.pde build/TOH
+	@cp Lists/AStack.pde build/TOH
 	@$(PROCESS) --run --sketch="$(BUILD)/TOH" --output="build/build" --force
 
-Fibonnaci: 
+Fibonnaci: build/Fibonnaci/success
+
+build/Fibonnaci/success: Misc/Fibonnaci.pde
 	@echo "Fibonnaci Test"
 	-@rm -rf build/Fibonnaci
 	@mkdir build/Fibonnaci
 	@cp Misc/Fibonnaci.pde build/Fibonnaci
 	@$(PROCESS) --run --sketch="$(BUILD)/Fibonnaci" --output="build/build" --force
 
-Largest: 
+Anal:  build/Anal/success
+
+build/Anal/success: Misc/Anal.pde
 	@echo "Analysis Chapter Test"
 	-@rm -rf build/Anal
 	@mkdir build/Anal

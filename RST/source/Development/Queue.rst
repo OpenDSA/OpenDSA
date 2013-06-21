@@ -198,7 +198,7 @@ Our choice here is to use an array of size :math:`n+1`.
 Here is an array-based queue implementation.
 
 .. codeinclude:: Lists/AQueue.pde
-   :tag: AQueue
+   :tag: AQueue1,AQueue2
 
 Member ``listArray`` holds the queue elements, and as usual, the
 queue constructor allows an optional parameter to set the maximum size
@@ -235,7 +235,7 @@ of the linked list.
 Here is the linked queue class declaration.
 
 .. codeinclude:: Lists/LQueue.pde
-   :tag: LQueue
+   :tag: LQueue1,LQueue2
 
 Methods ``front`` and ``rear`` are pointers to the front and
 rear queue elements, respectively.

@@ -1,6 +1,8 @@
+boolean SUCCESS = true;
+
 /* *** ODSATag: Largest *** */
 /** Return position of largest value in array A */
-static int largest(int[] A) {
+int largest(int[] A) {
   int currlarge = 0; // Holds largest element position
   for (int i=1; i<A.length; i++) // For each element
     if (A[currlarge] < A[i])     // if A[i] is larger
@@ -8,6 +10,35 @@ static int largest(int[] A) {
   return currlarge;              // Return largest position
 }
 /* *** ODSAendTag: Largest *** */
+
+/* *** ODSATag: bsearch *** */
+// Return the position of an element in sorted array A
+// with value k.  If k is not in A, return A.length.
+int binary(int[] A, int k) {
+  int l = -1;
+  int r = A.length;   // l and r are beyond array bounds
+  while (l+1 != r) {  // Stop when l and r meet
+    int i = (l+r)/2;  // Check middle of remaining subarray
+    if (k < A[i]) r = i;     // In left half
+    if (k == A[i]) return i; // Found it
+    if (k > A[i]) l = i;     // In right half
+  }
+  return A.length;    // Search value not in A
+}
+/* *** ODSAendTag: bsearch *** */
+
+int value(int i) {
+  return i;
+}
+
+void dum() {
+  int a, b = 10, sum, sum1, sum2;
+  int C = 10;
+  int P = 20;
+  int count[] = new int[C];
+  int i, j, k;
+  int n = 10;
+  int A[] = new int[n];
 
 /* *** ODSATag: Analp1 *** */
 sum = 0;
@@ -59,23 +90,6 @@ for (k=1; k<=n; k*=2)    // Do log n times
       sum2++;
 /* *** ODSAendTag: c3p6 *** */
 
-/* *** ODSATag: bsearch *** */
-/** @return The position of an element in sorted array A
-    with value k.  If k is not in A, return A.length. */
-static int binary(int[] A, int k) {
-  int l = -1;
-  int r = A.length;   // l and r are beyond array bounds
-  while (l+1 != r) {  // Stop when l and r meet
-    int i = (l+r)/2;  // Check middle of remaining subarray
-    if (k < A[i]) r = i;     // In left half
-    if (k == A[i]) return i; // Found it
-    if (k > A[i]) l = i;     // In right half
-  }
-  return A.length;    // Search value not in A
-}
-/* *** ODSAendTag: bsearch *** */
-
-
 /* *** ODSATag: c3p16 *** */
   for (i=0; i<C; i++)   // Initialize count
      count[i] = 0;
@@ -83,3 +97,24 @@ static int binary(int[] A, int k) {
      count[value(i)]++; // Increment a pixel value count
   sort(count);          // Sort pixel value counts
 /* *** ODSAendTag: c3p16 *** */
+}
+
+void setup() {
+  int myarray[] = {5, 20, 3, 11};
+
+  int temp = largest(myarray);
+  if (temp != 1) SUCCESS = false;
+  temp = binary(myarray, 20);
+  if (temp != 1) SUCCESS = false;
+
+  if (SUCCESS) {
+    PrintWriter output = createWriter("success");
+    output.println("Success");
+    output.flush();
+    output.close();
+  } else {
+    println("Testing failed");
+  }
+
+  exit();
+}
