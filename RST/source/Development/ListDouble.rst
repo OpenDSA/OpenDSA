@@ -198,6 +198,9 @@ list length and return the value of the deleted element.
    Slideshow to display the ``prev`` method and do a walkthrough of
    calling ``prev`` on doubly linked list.
 
+.. inlineav:: DLlistPrevCON ss
+   :output: show
+   
 The only disadvantage of the doubly linked list as compared to the
 singly linked list is the additional space used.
 The doubly linked list requires two pointers per node, and so in the
