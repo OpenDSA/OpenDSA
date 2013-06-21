@@ -23,11 +23,6 @@
         "exercises": {
         }
       },
-      "Development/ListArrayViz": {
-        "long_name": "Array-based Lists (Visual)",
-        "exercises": {
-        }
-      },
       "Development/ListLinked": {
         "long_name": "Linked Lists",
         "exercises": {

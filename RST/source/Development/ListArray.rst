@@ -9,6 +9,7 @@
    :topic: Lists
    
 .. odsalink:: AV/Development/listArrayCON.css
+.. odsalink:: AV/Development/listArrayVizCON.css
 
 Array-Based List Implementation
 ===============================
@@ -21,47 +22,15 @@ and so must implement all of the member functions of ``List``.
 .. codeinclude:: Lists/AList.pde
    :tag: AList
 
-The private portion of class ``AList`` contains the data members for
-the array-based list.
-These include ``listArray``, the array which holds the list elements.
-Because ``listArray`` must be allocated at some fixed size,
-the size of the array must be known when the list object is created.
-Note that an optional parameter is declared for the ``AList``
-constructor.
-With this parameter, the user can indicate the maximum
-number of elements permitted in the list.
-If no parameter is given, then it takes the value
-``defaultSize``, which is assumed to be a suitably defined
-constant value.
+.. inlineav:: AlistVarsCON ss
+   :output: show
 
-Because each list can have a differently sized array, each list must
-remember its maximum permitted size.
-Data member ``maxSize`` serves this purpose.
-At any given time the list actually holds some number
-of elements that can be less than the maximum allowed by the array.
-This value is stored in ``listSize``.
-Data member ``curr`` stores the current position.
-Because ``listArray``, ``maxSize``, ``listSize``, and 
-``curr`` are all declared to be ``private``, they may only
-be accessed by methods of Class ``AList``.
-
-Class ``AList`` stores the list elements in the first
-``listSize`` contiguous array positions.
-Array positions correspond to list positions.
-In other words, the element at position :math:`i` in the list is
-stored at array cell :math:`i`.
-The head of the list is always at position 0.
-This makes random access to any element in the list quite easy.
-Given some position in the list, the value of the element
-in that position can be accessed directly.
-Thus, access to any element using the
-``moveToPos`` method followed by the ``getValue`` method takes
-:math:`\Theta(1)` time.
+.. inlineav:: AlistIntroCON ss
+   :output: show
 
 Because the array-based list implementation is defined to store list
-elements in contiguous cells of the array, the
-``insert``, ``append``, and ``remove``
-methods must maintain this property.
+elements in contiguous cells of the array, the ``insert``, ``append``,
+and ``remove`` methods must maintain this property.
 
 .. inlineav:: AlistInsertCON ss
    :output: show
@@ -99,9 +68,9 @@ Insertion and Deletion work.
    Add a battery of summary questions.
 
 .. odsascript:: AV/Development/listArrayCON.js
+.. odsascript:: AV/Development/listArrayVizCON.js
 
 .. TODO::
-
    :type: Exercise
 
    Need a battery of summary questions.

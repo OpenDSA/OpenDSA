@@ -128,6 +128,11 @@ array should represent the top of the stack.
    the array position indicated by ``top``.
    ``pop`` first decrements ``top`` and then removes the top element.
 
+.. TODO::
+   :type: Exercise
+
+   Need exercises for pushing and popping on array-based stacks.
+
 Linked Stacks
 -------------
 
@@ -165,6 +170,12 @@ Here is the complete linked stack implementation.
    The stack is updated by setting ``top`` to point to the
    next link in the stack.
    The element value is returned.
+
+.. TODO::
+   :type: Exercise
+
+   Need exercises for pushing and popping on linked stacks.
+
 
 Comparison of Array-Based and Linked Stacks
 -------------------------------------------

@@ -60,9 +60,6 @@ test: min
 List: min
 	python $(CONFIG_SCRIPT) config/List.json
 
-ListViz: min
-	python $(CONFIG_SCRIPT) config/ListViz.json
-
 Dev: min
 	python $(CONFIG_SCRIPT) config/Dev.json
 
@@ -75,7 +72,7 @@ invalid: min
 slides: min
 	python $(CONFIG_SCRIPT) s config/slides.json
 
-allBooks: OpenDSA Dev Everything test ListViz slides
+allBooks: OpenDSA Dev Everything test List slides
 
 nomin:
 	cp lib/odsaUtils.js lib/odsaUtils-min.js

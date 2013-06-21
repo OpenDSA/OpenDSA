@@ -10,8 +10,8 @@
    
 .. odsalink:: AV/Development/listLinkedCON.css
 
-Linked Lists [Storyboard]
-=========================
+Linked Lists
+============
 
 Besides the array-based list presented in
 Module :numref:`<ListArray>`,

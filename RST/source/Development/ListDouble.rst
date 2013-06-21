@@ -23,20 +23,8 @@ The doubly linked list node accomplishes this in the obvious way by
 storing two pointers: one to the node following it (as in the singly
 linked list), and a second pointer to the node preceding it.
 
-.. TODO::
-   :type: Diagram
-
-   Show the doubly linked list, replacing the following image:
-
 .. _DblListFig:
 
-.. odsafig:: Images/DblListF.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: A doubly linked list
-   
 .. inlineav:: DLlistDiagramCON dgm
    :align: center
    
@@ -65,8 +53,7 @@ special-case code when the list is empty, or when we insert at the
 head or tail of the list.
 
 In our implementation, ``curr`` will point to the current node (or to
-the tail if the current position is at the end of the list).
-
+the trailer node if the current position is at the end of the list).
  
 Here is the complete implementation for a
 ``Link`` class to be used with doubly linked lists.
@@ -200,6 +187,16 @@ singly linked list is the additional space used.
 The doubly linked list requires two pointers per node, and so in the
 implementation presented it requires twice as much overhead as
 the singly linked list.
+
+.. TODO::
+   :type: Exercise
+
+   Need exercises for inserting to and deleting from doubly linked lists.
+
+.. TODO::
+   :type: Exercise
+
+   Add a battery of summary questions.
 
 Notes
 -----

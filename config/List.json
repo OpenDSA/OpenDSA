@@ -16,11 +16,66 @@
       },
       "Development/ListADT": {
         "long_name": "List ADT",
-        "exercises": {}
+        "exercises": {
+          "listADTCON1": {
+            "long_name": "List ADT Slideshow 1",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "listADTCON2": {
+            "long_name": "List ADT Slideshow 2",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/ListArray": {
         "long_name": "Array-based Lists",
         "exercises": {
+          "AlistVarsCON": {
+            "long_name": "Array-based List Variables",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "AlistIntroCON": {
+            "long_name": "Array-based List Intro",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "AlistInsertCON": {
+            "long_name": "Array-based List Insertion",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "AlistAppendCON": {
+            "long_name": "Array-based List Append",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "AlistRemoveCON": {
+            "long_name": "Array-based List Remove",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
+          },
+          "listArrayInsertion": {
+            "long_name": "Array-based List Insert Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "listArrayDeletion": {
+            "long_name": "Array-based List Delete Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
         }
       },
       "Development/ListLinked": {
