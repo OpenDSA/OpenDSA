@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<!--
+  Samuel A. Micka
+-->
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <title>MMC Array Exercise</title>
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css"
+          media="screen" title="no title" charset="utf-8" /> 
+  </head>
+  <body>
+  <div id="container">
+    <div class="jsavcanvas"></div>
+    <p class="jsavoutput jsavline"></p>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js"></script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="http://algoviz.org/OpenDSA/ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script> 
+  <script src="../../AV/Development/edit.js"></script>
+  <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" /> 
+  <script>
+  /*
+  Samuel A. Micka
+  */
+  /*#################################################################
+    These global constants are set to modify the strings easily.
+  #################################################################*/
+  //this determines the maximum length of the string
+  var string_max_length = 12;
+  //this determines the minimum length of the string
+  var string_min_length = 8;
+  //this represents the lower bound of randomly generated numbers desired in the ascii table
+  var char_lower_bound = 97;
+  //this represents the upper bound of randomly generated numbers desired in the ascii table
+  var char_upper_bound = 122;
+
+
+  /*#################################################################
+    Global variables used throughout the program
+  #################################################################*/
+  var started; //tells us if anything has been done
+  var mmc_arr; //global variable for the mmc array
+  var str_arr; //global variable for the actual string
+  var alphabet_arr; //alphabet
+  var answer_index;
+  var answer_value;
+
+  //returns a random number between lower_bound and upper_bound
+  function gen_random(lower_bound, upper_bound) {
+    return Math.floor(Math.random() * (upper_bound - lower_bound + 1) + lower_bound);
+  }
+  //converts the ascii_value parameter to character and returns it
+  function get_char(ascii_value) {
+    return String.fromCharCode(ascii_value);
+  }
+
+  //This function generates the master and substring needed for the exercise
+  function generate_strings(){
+    var str_length = gen_random(string_min_length, string_max_length);
+    var the_string = '';
+    for(var i = 0; i < str_length; i++){
+      the_string += get_char(gen_random(char_lower_bound, char_upper_bound));
+    }
+    return the_string.split("");
+  }
+
+  function find_index(the_arr, the_char){
+    for(var i = the_arr.length-1; i >= 0; i--){
+      if(the_arr[i] == the_char){
+        return i;
+      }
+    }
+    return -1
+  }
+  function num_of_unique_chars(arr){
+    var x = 0;
+    for(var i = 0; i < arr.length; i++){
+      if(arr.indexOf(arr[i]) == i){
+        x++;
+      }
+    }
+    //-1 because it needs to generate between 0 and arr.length-1, not 1 and arr.length
+    return x-1;
+  }
+
+  function compute_mmc(arr){
+    var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    var temp_local_mmc = new Array();
+    for(var j = 0; j < alphabet.length; j++){
+      temp_local_mmc[j] = arr.length;
+    }
+    answer_index = gen_random(0, num_of_unique_chars(arr));
+    
+    var num_accounted_for = 0;
+    for(var i = 0; i < alphabet.length; i++){
+      var location_in_arr = find_index(arr, alphabet[i]);
+      if(location_in_arr > -1){
+        if(num_accounted_for == answer_index){
+          temp_local_mmc[i] = ' ';
+          answer_value = arr.length - location_in_arr - 1;
+        } else {
+          temp_local_mmc[i] = arr.length - location_in_arr - 1;
+        }
+        num_accounted_for++;
+      }
+    }
+    return [alphabet, temp_local_mmc];
+  }
+
+  function checkAnswer() {
+    var answer = $("#user_answer").val();
+    if(answer == answer_value) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //This function initializes the arrays, and handles the clicks on the specific indexes, see comments in method for more information
+  function initExercise(){
+    started = true;
+    //figure out how to reset the JSAV container if it is already set
+    if(mmc != null){
+        mmc.reset();
+    }
+    var mmc = new JSAV("jsav_area", {"animationMode": "none"});
+    //handles the actual click on an index and highlights the specified index
+    var str = generate_strings();
+    str_arr = mmc.ds.array(str, {indexed: true});
+
+    //initializing the alignment array
+    var mmc_returned = compute_mmc(str);
+
+    alphabet_arr = mmc.ds.array(mmc_returned[0]);
+    mmc_arr = mmc.ds.array(mmc_returned[1]);
+
+    var str_label = mmc.label("String", {before: str_arr});
+    var alphabet_label = mmc.label("Alphabet", {before: alphabet_arr});
+    var mmc_label = mmc.label("MMC Array", {before: mmc_arr});
+  }
+  // reset function definition
+  var f_reset = function () {
+    started = null;
+    mmc_arr = null;
+    alphabet_arr = null;
+    str_arr = null;
+    answer_index = null;
+    answer_value = null;    
+  };
+  </script>
+  <style>
+    .jsavarray .jsavindex {
+      min-height: 30px;
+      height: 30px;
+      min-width: 25px;
+      width: 25px;
+      font-size: 15px;
+    }
+  </style>
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">initExercise()</var>
+      </div> <!-- vars -->
+
+      <div class="problems">
+        <div>
+          <div class="question">
+            The exercise below will test your newly acquired knowledge on the Boyer-Moore MMC array. Please use the text field to fill in the correct value that is missing from the MMC array. When you are finished hit <b>Check Answer</b> to see if you are correct.
+            <p><b>Your solution:</b> <input type = "text" id = "user_answer" size = "2"/> </p>
+            <div id="jsav_area"></div>
+          </div> <!-- question -->
+          <div class="solution" data-type="custom">
+            <div class="guess">
+              [started]
+            </div>
+            <div class="validator-function">
+              if (!checkAnswer() && !guess[0])
+                return "";
+              else return checkAnswer();
+            </div>
+          </div>
+          <div class="hints">
+            <p>1. Scroll back up and check out the pseudo code from the slideshow.</p> 
+            </var></b>.</p>
+          </div>
+          <div class = "model"></div>
+        </div>
+      </div> <!-- problems -->
+    </div> <!--exercises-->
+  </body>
+</html>
