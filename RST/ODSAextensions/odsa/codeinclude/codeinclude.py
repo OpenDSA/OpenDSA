@@ -114,9 +114,10 @@ class codeinclude(Directive):
         else:
             hl_lines = None
 
-        tag_       = self.options.get('tag').replace(" ","")
+        tag_       = self.options.get('tag')
         tags = []
         if tag_ is not None:
+            tag_       = tag_.replace(" ","")
             tags       = tag_.split(',')
         res        = []
         prepend    = self.options.get('prepend')
