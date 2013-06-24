@@ -25,4 +25,45 @@
 #DLlistDiagramCON .jsavoutput.jsavline {
   height: 75px;
 }
+#DLlistInsertCON {
+  height: 400px;
+}
+#DLlistInsertCON .jsavcode{
+  border: 1px solid;
+  border-color: white;
+  width: 510px;
+  position: relative;
+  top: 115px;
+}
 
+#DLlistAppendCON {
+  height: 380px;
+}
+#DLlistAppendCON .jsavcode{
+  border: 1px solid;
+  border-color: white;
+  width: 510px;
+  position: relative;
+  top: 115px;
+}
+
+#DLlistRemoveCON {
+  height: 380px;
+}
+#DLlistRemoveCON .jsavcode{
+  border: 1px solid;
+  border-color: white;
+  width: 450px;
+  margin-left: 400px;
+}
+
+#DLlistPrevCON {
+  height: 380px;
+}
+#DLlistPrevCON .jsavcode{
+  border: 1px solid;
+  border-color: white;
+  position: relative;
+  width: 600px;
+  top: 140px;
+}

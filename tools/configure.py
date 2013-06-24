@@ -557,7 +557,8 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   i = 0
   while i < len(mod_data):
     if '.. figure::' in mod_data[i] or '.. odsafig::' in mod_data[i]:
-      image_path = mod_data[i].split(' ')[2].rstrip()
+      l_image = len(mod_data[i].split(' '))
+      image_path = mod_data[i].split(' ')[l_image-1].rstrip()
       images.append(os.path.basename(image_path))
     elif '.. TODO::' in mod_data[i]:
       if conf_data['suppress_todo']:

@@ -114,7 +114,7 @@ class codeinclude(Directive):
         else:
             hl_lines = None
 
-        tag_       = self.options.get('tag')
+        tag_       = self.options.get('tag').replace(" ","")
         tags = []
         if tag_ is not None:
             tags       = tag_.split(',')

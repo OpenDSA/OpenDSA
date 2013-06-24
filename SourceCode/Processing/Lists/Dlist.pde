@@ -21,21 +21,26 @@ class LList implements List {
 
 /* *** ODSATag: Dlist *** */
 // Insert "it" at current position
+/* *** ODSATag: DListInsert *** */
 void insert(Object it) {
   curr = new Link(it, curr.prev(), curr);
   curr.prev().setNext(curr);
   curr.next().setPrev(curr);
   listSize++;
 }
+/* *** ODSAendTag: DListInsert *** */
 
 // Append "it" to list
+/* *** ODSATag: DListAppend *** */
 void append(Object it) {
   tail.setPrev(new Link(it, tail.prev(), tail));
   tail.prev().prev().setNext(tail.prev());
   listSize++;
 }
+/* *** ODSAendTag: DListAppend *** */
 
 // Remove and return current element
+/* *** ODSATag: DListRemove *** */
 Object remove() {
   if (curr == tail) return null;        // Nothing to remove
   Object it = curr.element();           // Remember value
@@ -45,12 +50,16 @@ Object remove() {
   listSize--;                           // Decrement node count
   return it;                            // Return value removed
 }
+/* *** ODSAendTag: DListRemove *** */
 
 // Move curr one step left; no change if at front
+/* *** ODSATag: DListPrev *** */
 void prev() {
   if (curr.prev() != head)   // Can't back up from list head
     curr = curr.prev();
 }
+/* *** ODSAendTag: DListPrev *** */
+
 /* *** ODSAendTag: Dlist *** */
 
   void moveToStart() { curr = head.next(); } // Set curr at list start
