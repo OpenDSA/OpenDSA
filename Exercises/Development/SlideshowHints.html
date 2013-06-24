@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Hash Function Question 1</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../lib/khan-exercise-min.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+</head>
+
+<body>
+  <div class="exercise">
+    <div class="problems">
+      <div id="problem-type-or-description">
+	<p class="question">The simple mod hash function makes use of:</p>
+	<div class="solution"><var>"The low order digits or bits in the key"</var></div>
+	<ul class="choices" data-none="true">
+	  <li><var> "The high order digits or bits in the key"</var></li>
+	  <li><var> "The middle digits or bits of the key" </var></li>
+	  <li><var> "All of the digits or bits in the key" </var></li>
+	</ul>
+	<div class="hints">
+          <div>Think of taking a three-digit number mod 10. What digit
+            is used? <div id="hint1" class="jsavhint">
+              <span class="jsavcontrols"></span>
+            </div>
+          </div>
+          <div>Second hint! <div id="hint2" class="jsavhint">
+              <span class="jsavcontrols"></span>
+            </div>
+          </div>
+	</div>
+      </div> 
+    </div>	 
+  </div>
+</div>
+<style>
+.jsavcontainer { height: 200px;}
+</style>
+<script>
+(function() {
+  var hintSlideshowFunctions = {
+    // objects with a function with key mathing id of an element inside .hints element
+    hint1: function(elem) {
+      // initialize a JSAV instance with the elem parameter
+      var jsav = new JSAV(elem);
+      // record whatever you want in the hint slideshow
+      var arr = jsav.ds.array([0, 1, 2, 3]);
+      arr.highlight(0);
+      jsav.step();
+      arr.highlight(1);
+      jsav.recorded();
+    },
+    hint2: function(elem) {
+      var jsav = new JSAV(elem);
+      var arr = jsav.ds.array([0, 1, 2, 3]);
+      arr.highlight(2);
+      jsav.step();
+      arr.highlight(3);
+      jsav.recorded();
+    }
+  };
+  // set a function to be called every 50 ms to check if there are uninitialized hints
+  setInterval(function() {
+    // find all .jsavhint elements within the #hintsarea element which don't already
+    // have the class jsavcontainer added by JSAV when initialized
+    var emptyHints = $("#hintsarea .jsavhint:not(.jsavcontainer)");
+    if (emptyHints.size() > 0) {          // if we have empty hints elements..
+      var elem = emptyHints.first(),      // ..get the first elements..
+          id = elem[0].id;                // .. and its ID
+      hintSlideshowFunctions[id](elem);   // and call the matching initialization function
+    }
+  }, 50); // you might have to tweak this to get it work fast enough but not effect performance
+})();
+</script>
+</body>
+</html>
