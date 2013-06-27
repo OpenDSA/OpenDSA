@@ -64,6 +64,9 @@ better approach.
    In other applications, the user would like to permit the objects
    stored on a single list to be of differing types.
 
+.. inlineav:: listElementTypeCON ss
+   :output: show 
+   
 The simple list implementations presented in this chapter use elements
 of type ``Object``.
 Thus, the compiler will not enforce any restrictions regarding
@@ -106,7 +109,10 @@ object.
    not.
    Thus, the user of the list must be responsible for
    deleting these objects when that is appropriate.
-
+   
+.. inlineav:: listElementDeleteCON ss
+   :output: show 
+   
 .. TODO::
    :type: Exercise
 

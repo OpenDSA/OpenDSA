@@ -10,7 +10,6 @@
   min-height: 30px; 
   max-height: 45px;
   line-height: 30px;
-  text-align: center;
 }
 
 .jsavhorizontalarray.jsavautoresize .jsavnode {
@@ -34,5 +33,17 @@
   height: 500px;
 }
 #listElementDataCON .jsavoutput.jsavline {
+  height: 75px;
+}
+#listElementTypeCON {
+  height: 500px;
+}
+#listElementTypeCON .jsavoutput.jsavline {
+  height: 75px;
+}
+#listElementDeleteCON {
+  height: 500px;
+}
+#listElementDeleteCON .jsavoutput.jsavline {
   height: 75px;
 }
