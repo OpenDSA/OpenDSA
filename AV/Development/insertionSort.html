@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Insertion Sort</title>
+        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+    </head>
+
+    <body>
+        <style>
+          #jsavcontainer {
+            width: 800px;
+            height: 530px;
+            background-color: #fff;
+          }
+          p.jsavoutput.jsavline {
+            height: 40px;
+          }
+          .jsavscore {
+            text-align: center;
+          }
+          p.instructLabel {
+            margin-top: -5;
+          }
+          p.instructions {
+            margin-top: -15px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid black;
+          }
+        </style>
+        <h1>Insertion Sort</h1>
+        <div id="jsavcontainer">
+            <!-- <a class="jsavsettings" href="#">Settings</a> -->
+            <p class="instructLabel">Instructions:</p>
+            <p class="instructions">
+                    Use Insertion Sort to sort the table given below in ascending order. Click on an item to select it and swap its value with another one by clicking again.
+            </p>
+            <p align="center" class="jsavexercisecontrols"></p>
+            <p class="jsavscore"></p>
+            <ol id="exerArray"></ol>
+            <!-- <p class="jsavoutput jsavline"></p> -->
+        </div>
+
+        <script
+           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+        <script src="../../JSAV/lib/raphael.js"></script>
+        <script src="../../JSAV/build/JSAV.js"></script>
+
+        <script>
+
+        var arraySize = 10,
+            initialArray = [],
+            jsavArray,
+            swapIndex,
+            $array = $("#exerArray"),
+            av = new JSAV($("#jsavcontainer")),
+            code = av.code(
+                "public static void insertionSort(int[] table) {\n"+
+                "   for (int i = 0; i < table.length; i++) {\n"+
+                "       int j = i;\n"+
+                "       while (j > 0 && table[j - 1] > table[j]) {\n"+
+                "           swap(table, j - 1, j);\n"+
+                "           j--;\n"+
+                "       }\n"+
+                "   }\n"+
+                "}");
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        function initialize() {
+          
+            var htmldata = "";
+            for (var i = 0; i < arraySize; i++) {
+                randomVal = Math.floor(Math.random()*100) + 10;
+                htmldata += "<li>" + randomVal + "</li>";
+                initialArray[i] = randomVal;
+            }
+            $array.html(htmldata);
+
+            swapIndex = av.variable(-1);
+
+            av.forward();
+
+            jsavArray = av.ds.array($array, {indexed: true, layout: "bar"});
+            code.show();
+            code.highlight(4);
+            return jsavArray;
+        }
+        
+        function modelSolution(jsav) {
+            var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar"});
+            
+            jsav._undo = [];
+
+            for (var i = 1; i < arraySize; i++) {
+                var j = i;
+                while (j > 0 && modelArray.value(j-1) > modelArray.value(j)) {
+                    modelArray.swap(j, j-1);
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+                    j--;
+                }
+            }
+
+          return modelArray;
+        }
+        
+        var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+        exercise.reset();
+        
+        // bind a function to handle all click events on the array
+        jsavArray.click(function(index) {
+            
+            // the first click will select an index and save it
+            if (swapIndex.value() === -1) {
+                swapIndex.value(index);
+                // apply the CSS property change to index
+                this.css(index, {"font-size": "130%", "background-color": "#ddf"});
+                av.step(); // add a step to the animation
+            } else if (swapIndex.value() === index) {
+                // change the CSS property back to normal
+                this.css(index, {"font-size": "100%", "background-color": "#ddd"});
+                swapIndex.value(-1);
+                av.step(); // add a step to the animation   
+                exercise.gradeableStep();
+            } else { // swap
+                // change the CSS property back to normal
+                this.css([swapIndex.value(), index], {"font-size": "100%", "background-color": "#ddd"});
+                this.swap(index, swapIndex.value());
+                swapIndex.value(-1);
+                av.step(); // add a step to the animation   
+                exercise.gradeableStep();
+            }
+        });
+
+        </script>
+    </body>
+</html>

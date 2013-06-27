@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Insertion Sort</title>
+        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+    </head>
+
+    <body>
+        <style>
+            #jsavcontainer {
+              width: 800px;
+              height: 450px;
+              background-color: #fff;
+            }
+            p.jsavoutput.jsavline {
+              height: 40px;
+            }
+            .jsavscore {
+              text-align: center;
+            }
+            p.instructLabel {
+              margin-top: -5;
+            }
+            p.instructions {
+              margin-top: -15px;
+              padding: 10px;
+              margin-right: 10px;
+              border: 1px solid black;
+            }
+        </style>
+
+        <h1>Insertion Sort</h1>
+        <div id="jsavcontainer">
+            <!-- <a class="jsavsettings" href="#">Settings</a> -->
+            <p class="instructLabel">Instructions:</p>
+            <p class="instructions">
+                    Use Insertion Sort to sort the table given below in ascending order. Click on an item to select it and copy its value to another position by clicking again.
+            </p>
+            <p align="center" class="jsavexercisecontrols"></p>
+            <p class="jsavscore"></p>
+            <ol id="exerArray"></ol>
+            <ol id="tempArray"></ol>
+            <p style="text-align:center">temp</p>
+            <!-- <p class="jsavoutput jsavline"></p> -->
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+        <script src="../../JSAV/lib/raphael.js"></script>
+        <script src="../../JSAV/build/JSAV.js"></script>
+
+        <script>
+
+        var arraySize = 10,
+            initialArray = [],
+            initialTempArray = [],
+            jsavArray,
+            jsavTempArray,
+            selectedIndex,
+            $array = $("#exerArray"),
+            $temparray = $("#tempArray"),
+            av = new JSAV($("#jsavcontainer"));
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        function initialize() {
+          
+            var htmldata = "";
+            for (var i = 0; i < arraySize; i++) {
+                randomVal = Math.floor(Math.random()*100) + 10;
+                htmldata += "<li>" + randomVal + "</li>";
+                initialArray[i] = randomVal;
+            }
+            $array.html(htmldata);
+
+            randomVal = Math.floor(Math.random()*100) + 10;
+            initialTempArray[0] = randomVal;
+            $temparray.html("<li>"+randomVal+"</li>");
+
+            selectedIndex = av.variable(-2);
+
+            // av.umsg("Sort the table using insertion sort."); 
+            av.forward();
+
+            jsavArray = av.ds.array($array, {indexed: true, layout: "bar"});
+            jsavTempArray = av.ds.array($temparray, {indexed: false});
+            return jsavArray;
+        }
+        
+        function modelSolution(jsav) {
+            var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar"});
+            var modelTempArray = jsav.ds.array(initialTempArray);
+
+            jsav._undo = [];
+            modelArray.layout();
+            jsav.displayInit();
+            
+            for (var i = 1; i < arraySize; i++) {
+                // jsav.effects.copyValue(modelArray, i, modelTempArray, 0);
+                // modelTempArray.value(0, modelArray.value(i));
+                copyValue(modelArray, i , modelTempArray, 0);
+                jsav.stepOption("grade", true);
+                jsav.step();
+                var j = i;
+                while (j > 0 && modelArray.value(j - 1) > modelTempArray.value(0)) {
+                    // jsav.effects.copyValue(modelArray, j - 1, modelArray, j);
+                    // modelArray.value(j, modelArray.value(j - 1));
+                    // modelArray.layout();
+                    copyValue(modelArray, j - 1, modelArray, j);
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+                    j--;
+                }
+                if (j !== i) {
+                    // jsav.effects.copyValue(modelTempArray, 0, modelArray, j);
+                    // modelArray.value(j, modelTempArray.value(0));
+                    // modelArray.layout();
+                    copyValue(modelTempArray, 0, modelArray, j);
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+                }
+            }
+
+
+          return modelArray;
+        }
+        
+        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+        exercise.reset();
+        
+        // bind a function to handle all click events on the array
+        jsavArray.click(function(index) {
+            
+            if (selectedIndex.value() === -2) {
+                // first click will select an index and save it
+                selectedIndex.value(index);
+                paintBlue(this, index);
+                av.step(); // add a step to the animation
+            } else if (selectedIndex.value() === index) {
+                //unselect
+                paintGrey(this, index);
+                //reset select index
+                selectedIndex.value(-2);
+                av.step(); // add a step to the animation
+            } else if (selectedIndex.value() > -1) {
+                // move value within the array
+                // change the CSS property back to normal
+                paintGrey(this, index);
+                paintGrey(this, selectedIndex.value());
+                // av.effects.copyValue(this, selectedIndex.value(), this, index);
+                // this.value(index, this.value(selectedIndex.value()));
+                // this.layout();
+                copyValue(this, selectedIndex.value(), this, index);
+                // $(".jsavvaluelabel").attr("style", "");
+                selectedIndex.value(-2);
+                av.step(); // add a step to the animation   
+                exercise.gradeableStep();
+            } else if (selectedIndex.value() === -1) {
+                // move value from the temporary variable to the array
+                // change the CSS property back to normal
+                paintGrey(this, index);
+                paintWhite(jsavTempArray, 0);
+                // av.effects.copyValue(jsavTempArray, 0, this, index);
+                // this.value(index, jsavTempArray.value(0));
+                copyValue(jsavTempArray, 0, this, index);
+                // this.layout();
+                //reset select index
+                selectedIndex.value(-2);
+                av.step(); // add a step to the animation   
+                exercise.gradeableStep();
+            }
+        });
+
+        jsavTempArray.click(function(index) {
+            if (selectedIndex.value() === -2) {
+                // select temporary variable if nothing else is selected
+                selectedIndex.value(-1);
+                // apply the CSS property change to index
+                paintBlue(this, index);
+                av.step();
+            } else if (selectedIndex.value() === -1) {
+                // unselect temporary variable
+                selectedIndex.value(-2);
+                // change the CSS property back to normal
+                paintWhite(this, index);
+                av.step();
+            } else {
+                // move the value from the array into the temporary variable
+                // change the CSS property back to normal
+                paintGrey(jsavArray, selectedIndex.value());
+                paintWhite(this, index);
+                // av.effects.copyValue(jsavArray, selectedIndex.value(), this, index);
+                // this.value(0, jsavArray.value(selectedIndex.value()));
+                copyValue(jsavArray, selectedIndex.value(), this, index);
+                //reset select index
+                selectedIndex.value(-2);
+                av.step(); // add a step to the animation   
+                exercise.gradeableStep();
+            }
+        });
+
+        function paintBlue(array, index) {
+            array.css(index, {"font-size": "130%", "background-color": "#ddf"});
+        }
+
+        function paintGrey(array, index) {
+            array.css(index, {"font-size": "100%", "background-color": "#ddd"});
+        }
+        
+        function paintWhite(array, index) {
+            array.css(index, {"font-size": "100%", "background-color": "#fff"});
+        }
+
+        //fixes problem in the JSAV copyValue effect
+        function copyValue(array1, fromIndex, array2, toIndex) {
+            $fromValElem = array1.element.find("li:eq("+fromIndex+") .jsavvaluelabel");
+            $toValElem = array2.element.find("li:eq("+toIndex+") .jsavvaluelabel");
+
+            array2.value(toIndex, array1.value(fromIndex));
+            array2.layout();
+
+            $toValElem.position({of: $fromValElem});
+            if (array2.options.layout === "bar") {
+                var bottom = array2.element.find("li:eq("+toIndex+") .jsavvalue").height() - $toValElem.position().top - 20;
+                $toValElem.css("top","").css("bottom", bottom);
+
+                $toValElem.animate({"left": 0, "bottom": 0}, 400, "linear");
+            } else {
+                $toValElem.animate({"left": 0, "top": 0}, 400, "linear");
+            }
+        }
+
+        </script>
+    </body>
+</html>
