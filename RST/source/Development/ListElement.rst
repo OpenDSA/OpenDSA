@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Lists
+.. odsalink:: AV/Development/dlist.css
+.. odsalink:: AV/Development/listElementCON.css   
 
 List Element Implementations [Storyboard]
 =========================================
@@ -36,6 +38,9 @@ List Element Implementations [Storyboard]
    Java most naturally stores references to objects, meaning that only
    a single copy of an object such as a payroll record will be
    maintained, even if it is on multiple lists.
+
+.. inlineav:: listElementDataCON ss
+   :output: show
 
 Whether it is more advantageous to use pointers to shared elements
 or separate copies depends on the intended application.
@@ -106,3 +111,6 @@ object.
    :type: Exercise
 
    Need a battery of summary questions.
+   
+.. odsascript:: AV/Development/dlist.js   
+.. odsascript:: AV/Development/listElementCON.js
