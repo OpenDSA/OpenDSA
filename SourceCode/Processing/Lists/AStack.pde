@@ -1,5 +1,5 @@
-/* *** ODSATag: AStack1 *** */
 // Array-based stack implementation
+/* *** ODSATag: AStack1 *** */
 class AStack implements Stack {
   private static final int defaultSize = 10;
   private int maxSize;            // Maximum size of stack

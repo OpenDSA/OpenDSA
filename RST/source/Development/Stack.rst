@@ -8,6 +8,8 @@
    :prerequisites:
    :topic: Lists
 
+.. odsalink:: AV/Development/listStackCON.css      
+
 Stacks [Storyboard]
 ===================
 
@@ -71,6 +73,9 @@ the array-based stack class.
    of the stack), as well as indicating the number of elements
    currently in the stack.
 
+.. inlineav:: AStackVarCON ss
+   :output: show
+   
 The array-based stack implementation is essentially
 a simplified version of the array-based list.
 The only important design decision to be made is which end of the
@@ -110,7 +115,10 @@ array should represent the top of the stack.
    first free position.
    If this had been done, the empty list would initialize ``top``
    as -1.
-
+   
+.. inlineav:: AStackTopposCON ss
+   :output: show
+   
 .. TODO::
    :type: slideshow
 
@@ -217,3 +225,5 @@ quickly.
    :type: Exercise
 
    Need a battery of summary multiple choice questions.
+
+.. odsascript:: AV/Development/listStackCON.js
