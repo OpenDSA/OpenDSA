@@ -128,7 +128,10 @@ array should represent the top of the stack.
    Because ``top`` is assumed to be at the first free position,
    ``push`` first inserts its value into the top position and then
    increments ``top``, 
-
+   
+.. inlineav:: AStackPushCON ss
+   :output: show
+   
 .. TODO::
    :type: slideshow
 
@@ -136,6 +139,9 @@ array should represent the top of the stack.
    the array position indicated by ``top``.
    ``pop`` first decrements ``top`` and then removes the top element.
 
+.. inlineav:: AStackPopCON ss
+   :output: show
+   
 Linked Stacks
 -------------
 

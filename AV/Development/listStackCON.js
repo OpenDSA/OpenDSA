@@ -78,3 +78,58 @@ function setPointer(name, obj){
   jsav.umsg("Alternatively, top could have been defined to be the index for the top element in the stack, rather than the first free position. If this had been done, the empty list would initialize top as -1.");
   jsav.recorded();
 }(jQuery));
+
+// Astack push method
+(function($){
+  var jsav = new JSAV("AStackPushCON");
+  // Relative offsets
+  var leftMargin = 300;
+  var topMargin = 25; 
+  var arr = jsav.ds.array([12,45,5,81,"", "", "", ""],{indexed:true, top: topMargin, left: leftMargin});
+  var arrCopy = jsav.ds.array([10]);
+  arrCopy.hide();
+  var topPointer = jsav.pointer("top", arr, {targetIndex : 4});
+  topPointer.hide();
+  jsav.umsg("Method <code>push</code> is easy.");
+  jsav.displayInit();
+  jsav.umsg("<code>top</code> is at the first free position.");
+  topPointer.show();
+  arr.highlight(4);
+  jsav.step();
+  jsav.umsg("Method <code>push</code> simply places an element into the array position indicated by top.");
+  jsav.step();
+  jsav.effects.copyValue(arrCopy, 0, arr, 4);
+  jsav.step();
+  jsav.umsg("Increments top by one position.");
+  topPointer.hide();
+  var newTopPointer = jsav.pointer("top", arr, {targetIndex : 5});
+  arr.unhighlight(4);
+  arr.highlight(5);
+  jsav.step();
+  jsav.recorded();
+}(jQuery));
+
+// Astack pop method
+(function($){
+  var jsav = new JSAV("AStackPopCON");
+  // Relative offsets
+  var leftMargin = 300;
+  var topMargin = 25; 
+  var arr = jsav.ds.array([12,45,5,81,"", "", "", ""],{indexed:true, top: topMargin, left: leftMargin});
+  var arrCopy = jsav.ds.array([10]);
+  arrCopy.hide();
+  var topPointer = jsav.pointer("top", arr, {targetIndex : 4});
+  jsav.umsg("<code>top</code> is at the first free position, which is index 4 on the array.");
+  arr.highlight(4);
+  jsav.displayInit();
+  jsav.umsg("<code>pop</code> first decrements <code>top<code> by 1 position.");
+  arr.unhighlight(4);
+  arr.highlight(3);
+  topPointer.hide();
+  var newTopPointer = jsav.pointer("top", arr, {targetIndex : 3});
+  jsav.step();
+  jsav.umsg("Then removes the <code>top</code> element.");
+  arr.value(3, "");
+  jsav.step();
+  jsav.recorded();
+}(jQuery));

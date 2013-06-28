@@ -39,3 +39,15 @@
 #AStackTopposCON .jsavoutput.jsavline {
   height: 30px;
 }
+#AStackPushCON {
+  height: 220px;
+}
+#AStackPushCON .jsavoutput.jsavline {
+  height: 30px;
+}
+#AStackPopCON {
+  height: 220px;
+}
+#AStackPopCON .jsavoutput.jsavline {
+  height: 30px;
+}
