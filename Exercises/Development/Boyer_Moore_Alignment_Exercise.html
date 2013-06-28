@@ -120,7 +120,7 @@
     for(var i = sub.length-2; i >=0; i--){
       var p = i;
       suffix_length = sub.length - (p+1);
-      index_of_sub = substr.substring(0, p).lastIndexOf(substr.substring(p+1, sub.length));
+      index_of_sub = substr.substring(0, p-1).lastIndexOf(substr.substring(p+1, sub.length));
       offset = sub.length;
       if(index_of_sub != -1){
         offset = (p+1) - index_of_sub;
