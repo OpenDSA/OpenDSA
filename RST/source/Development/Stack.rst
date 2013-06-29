@@ -163,6 +163,11 @@ Here is the complete linked stack implementation.
    only data member is ``top``, a pointer to the first (top) link node
    of the stack.
 
+.. inlineav:: LStackDiagramCON dgm
+   :align: center   
+   
+   Diagram showing a linked stack
+   
 .. TODO::
    :type: Slideshow
 
@@ -170,6 +175,9 @@ Here is the complete linked stack implementation.
    field of the newly created link node to point to the top of the
    stack and then sets ``top`` to point to the new link node.
 
+.. inlineav:: LStackPushCON ss
+   :output: show   
+   
 .. TODO::
    :type: Slideshow
 
@@ -179,7 +187,10 @@ Here is the complete linked stack implementation.
    The stack is updated by setting ``top`` to point to the
    next link in the stack.
    The element value is returned.
-
+   
+.. inlineav:: LStackPopCON ss
+   :output: show
+   
 Comparison of Array-Based and Linked Stacks
 -------------------------------------------
 
@@ -223,10 +234,13 @@ quickly.
    :capalign: justify
    :figwidth: 90%
    :alt: Two stacks implemented within a single array
+   
+.. inlineav:: LStackTwostacksCON dgm
+   :align: center     
 
    Two stacks implemented within in a single array, both growing
    toward the middle.
-
+   
 .. TODO::
    :type: Exercise
 

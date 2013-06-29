@@ -5,9 +5,8 @@ function setPointer(name, obj){
                 anchor: "left top",
                 myAnchor: "right bottom",
                 left: 20,
-                top: 70});
+                top: -20});
 }
-
 
 // Data menbers of Astack
 (function ($) {
@@ -132,4 +131,126 @@ function setPointer(name, obj){
   arr.value(3, "");
   jsav.step();
   jsav.recorded();
+}(jQuery));
+
+// LStack Diagram
+(function($){
+  var jsav = new JSAV("LStackDiagramCON");
+  // Relative offsets
+  var leftMargin = 300;
+  var topMargin = 25; 
+  var list = jsav.ds.list({"nodegap": 30});
+  list.css({top : 40});
+  list.addFirst(15)
+      .addFirst(12)
+      .addFirst(8)
+      .addFirst(23)
+      .addFirst(20);
+  list.layout();
+  jsav.pointer("top", list.get(0));
+}(jQuery));
+
+// LStack method push
+(function($){
+  var jsav = new JSAV("LStackPushCON");
+  // Relative offsets
+  var leftMargin = 300;
+  var topMargin = 25; 
+  var list = jsav.ds.list({"nodegap": 30});
+  list.css({top : 40});
+  list.addFirst(15)
+      .addFirst(12)
+      .addFirst(8)
+      .addFirst(23)
+      .addFirst(20);
+  list.layout();
+  list.get(0).edgeToNext().hide();
+  list.get(0).hide();
+  var arr = jsav.ds.array([10]);
+  arr.hide();
+  var topPointer = jsav.pointer("top", list.get(1));
+  jsav.umsg("The listed stack before <code>push</code>");
+  jsav.displayInit();
+  jsav.umsg("Create a new node."); 
+  var newNode = list.newNode("");
+  newNode.css({top : topMargin + 70});
+  newNode.highlight();
+  jsav.step();
+  jsav.umsg("Set the value of the new node.");
+  jsav.effects.copyValue(arr, 0, newNode);
+  jsav.step();
+  jsav.umsg("Modifies the <code>next</code> field of the newly created link node to point to the top of the stack");
+  newNode.next(list.get(1));
+  list.get(0).next(newNode);
+  list.layout({updateTop : false});
+  jsav.step();
+  jsav.umsg("Then sets top to point to the new link node.");
+  topPointer.target(list.get(1));
+  list.layout();
+  jsav.step();
+  jsav.recorded();
+}(jQuery));
+
+// LStack method pop
+(function($){
+  var jsav = new JSAV("LStackPopCON");
+  // Relative offsets
+  var leftMargin = 300;
+  var topMargin = 25; 
+  var list = jsav.ds.list({"nodegap": 30});
+  list.css({top : 40});
+  list.addFirst(15)
+      .addFirst(12)
+      .addFirst(8)
+      .addFirst(23)
+      .addFirst(20);
+  
+  var topPointer = setPointer("top", list.get(1));
+  list.layout();
+  list.get(0).edgeToNext().hide();
+  list.get(0).hide();
+  var arr = jsav.ds.array([10]);
+  arr.hide();
+
+  jsav.umsg("Method <code>pop</code> is also quite simple.");
+  jsav.displayInit();
+  jsav.umsg("Create a new node."); 
+  var newNode = list.newNode("");
+  newNode.css({top : topMargin + 50});
+  newNode.highlight();
+  jsav.step();
+  jsav.umsg("Set the value of the new node.");
+  jsav.effects.copyValue(arr, 0, newNode);
+  jsav.step();
+  jsav.umsg("Modifies the <code>next</code> field of the newly created link node to point to the top of the stack");
+  newNode.next(list.get(1));
+  list.get(0).next(newNode);
+  list.layout({updateTop : false});
+  jsav.step();
+  jsav.umsg("Then sets top to point to the new link node.");
+  topPointer.target(list.get(1));
+  list.layout();
+  jsav.step();
+  jsav.recorded();
+}(jQuery));
+
+// Diagram showing Two stacks implemented within in a single array.
+(function($){
+  var jsav = new JSAV("LStackTwostacksCON");
+  // Relative offsets
+  var leftMargin = 180;
+  var topMargin = 50; 
+  var rect = jsav.g.rect(leftMargin, topMargin, 500, 31);
+  var line1 = jsav.g.line(leftMargin + 31, topMargin, leftMargin + 31, topMargin + 31);
+  var line2 = jsav.g.line(leftMargin + 31*2, topMargin, leftMargin + 31*2, topMargin + 31);
+  var line2 = jsav.g.line(leftMargin + 376, topMargin, leftMargin + 376, topMargin + 31);
+  for(var i =0; i < 4; i++){
+    jsav.g.line(leftMargin + 376 + 31*i, topMargin, leftMargin + 376 + 31*i, topMargin + 31);
+  }
+  var top1Label = jsav.label("top1",{left : leftMargin + 20, top: topMargin - 40});
+  var top1Arrow = jsav.g.line(leftMargin + 30, topMargin - 20, leftMargin + 45, topMargin-2,{'arrow-end': 'classic-wide-long', 'stroke-width' : 2});
+  var top2Label = jsav.label("top2",{left : leftMargin + 376 + 20, top: topMargin - 40});
+  var top2Arrow = jsav.g.line(leftMargin + 376 + 30, topMargin - 20, leftMargin + 376 + 15, topMargin-2,{'arrow-end': 'classic-wide-long', 'stroke-width' : 2});
+  var arrow1 = jsav.g.line(leftMargin + 82, topMargin + 16, leftMargin + 82 + 35, topMargin + 16, {'stroke-width' : 2, 'arrow-end' : 'block-wide-long'})
+  var arrow2 = jsav.g.line(leftMargin + 356, topMargin + 16, leftMargin + 356 - 35, topMargin + 16, {'stroke-width' : 2, 'arrow-end' : 'block-wide-long'})
 }(jQuery));

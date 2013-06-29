@@ -6,7 +6,7 @@
   border:1px solid #eee;
 }
 .jsavhorizontallist.jsavautoresize .jsavnode{
-  min-width: 50px;
+  min-width: 30px;
   min-height: 30px; 
   max-height: 45px;
   line-height: 30px;
@@ -51,3 +51,24 @@
 #AStackPopCON .jsavoutput.jsavline {
   height: 30px;
 }
+#LStackDiagramCON {
+  height: 80px;
+}
+
+#LStackPushCON {
+  height: 280px;
+}
+#LStackPushCON .jsavoutput.jsavline {
+  height: 30px;
+}
+#LStackPopCON {
+  height: 250px;
+}
+#LStackPopCON .jsavoutput.jsavline {
+  height: 30px;
+}
+#LStackTwostacksCON {
+  height: 120px;
+}
+
+
