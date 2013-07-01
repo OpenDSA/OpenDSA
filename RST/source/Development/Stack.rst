@@ -70,18 +70,8 @@ array should represent the top of the stack.
 .. inlineav:: AStackTopposCON ss
    :output: show
    
-.. TODO::
-   :type: slideshow
-
-   Need to show push code in following slideshow.
-   
 .. inlineav:: AStackPushCON ss
    :output: show
-   
-.. TODO::
-   :type: slideshow
-
-   Need to show pop code in following slideshow.
 
 .. inlineav:: AStackPopCON ss
    :output: show
@@ -109,27 +99,19 @@ Here is the complete linked stack implementation.
    :align: center   
    
    Diagram showing a linked stack
-   
-.. TODO::
-   :type: Slideshow
-
-   Need to show push code in following slideshow.
 
 .. inlineav:: LStackPushCON ss
    :output: show   
    
-.. TODO::
-   :type: Slideshow
-
-   Need to show push code in following slideshow.
-
+.. inlineav:: LStackPopCON ss
+   :output: show
+   
 .. TODO::
    :type: Exercise
 
    Need exercises for pushing and popping on linked stacks.
    
-.. inlineav:: LStackPopCON ss
-   :output: show
+
    
 Comparison of Array-Based and Linked Stacks
 -------------------------------------------

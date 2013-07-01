@@ -45,27 +45,60 @@
 #AStackPushCON .jsavoutput.jsavline {
   height: 30px;
 }
+#AStackPushCON .jsavcode{
+  border: 1px solid;
+  border-color: white;
+  position: relative;
+  top: 0px;
+  left: 170px;
+  width: 500px;
+}
 #AStackPopCON {
-  height: 220px;
+  height: 240px;
 }
 #AStackPopCON .jsavoutput.jsavline {
   height: 30px;
+}
+#AStackPopCON .jsavcode{
+  border: 1px solid;
+  border-color: white;  
+  position: relative;
+  top: 30px;
+  left: 170px;
+  width: 500px;
 }
 #LStackDiagramCON {
   height: 80px;
 }
 
 #LStackPushCON {
-  height: 280px;
+  height: 230px;
 }
 #LStackPushCON .jsavoutput.jsavline {
   height: 30px;
 }
+#LStackPushCON .jsavcode{
+  border: 1px solid;
+  border-color: white;  
+  position: relative;
+  top: 0px;
+  left: 190px;
+  width: 450px;
+}
+
 #LStackPopCON {
-  height: 250px;
+  height: 280px;
 }
 #LStackPopCON .jsavoutput.jsavline {
   height: 30px;
+}
+#LStackPopCON .jsavcode{
+  border: 1px solid;
+  border-color: white;  
+  position: relative;
+  top: -10px;
+  left: 190px;
+  width: 450px;
 }
 #LStackTwostacksCON {
   height: 120px;

@@ -28,15 +28,21 @@ class AStack implements Stack {
 
   void clear() { top = 0; }       // Reinitialize stack
 
-  void push(Object it) {          // Push "it" onto stack
+// Push "it" onto stack
+/* *** ODSATag: AStackPush *** */
+  void push(Object it) {
     if (top >= maxSize) return;
     listArray[top++] = it;
   }
+/* *** ODSAendTag: AStackPush *** */
 
-  Object pop() {                  // Remove and return top element
+// Remove and return top element
+/* *** ODSATag: AStackPop *** */
+  Object pop() {               
     if (top == 0) return null;
     return listArray[--top];
   }
+/* *** ODSAendTag: AStackPop *** */
 
   Object topValue() {             // Return top element
     if (top == 0) return null;

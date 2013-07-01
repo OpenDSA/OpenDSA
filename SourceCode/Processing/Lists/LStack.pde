@@ -21,19 +21,25 @@ class LStack implements Stack {
 
   // Reinitialize stack
   public void clear() { top = null; size = 0; }
-  
-  public void push(Object it) {   // Put "it" on stack
+
+// Put "it" on stack
+/* *** ODSATag: LStackPush *** */  
+  public void push(Object it) {  
     top = new Link(it, top);
     size++;
   }
+/* *** ODSAendTag: LStackPush *** */
 
-  public Object pop() {           // Remove "it" from stack
+// Remove "it" from stack
+/* *** ODSATag: LStackPop *** */    
+  public Object pop() {           
     if (top == null) return null;
     Object it = top.element();
     top = top.next();
     size--;
     return it;
   }
+/* *** ODSAendTag: LStackPop *** */
 
   public Object topValue() {      // Return top value
     if (top == null) return null;
