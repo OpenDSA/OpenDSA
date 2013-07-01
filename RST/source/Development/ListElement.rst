@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Lists
+.. odsalink:: AV/Development/dlist.css
+.. odsalink:: AV/Development/listElementCON.css   
 
 List Element Implementations [Storyboard]
 =========================================
@@ -37,6 +39,9 @@ List Element Implementations [Storyboard]
    a single copy of an object such as a payroll record will be
    maintained, even if it is on multiple lists.
 
+.. inlineav:: listElementDataCON ss
+   :output: show
+
 Whether it is more advantageous to use pointers to shared elements
 or separate copies depends on the intended application.
 In general, the larger the elements and the more they are duplicated,
@@ -59,6 +64,9 @@ better approach.
    In other applications, the user would like to permit the objects
    stored on a single list to be of differing types.
 
+.. inlineav:: listElementTypeCON ss
+   :output: show 
+   
 The simple list implementations presented in this chapter use elements
 of type ``Object``.
 Thus, the compiler will not enforce any restrictions regarding
@@ -101,8 +109,14 @@ object.
    not.
    Thus, the user of the list must be responsible for
    deleting these objects when that is appropriate.
-
+   
+.. inlineav:: listElementDeleteCON ss
+   :output: show 
+   
 .. TODO::
    :type: Exercise
 
    Need a battery of summary questions.
+   
+.. odsascript:: AV/Development/dlist.js   
+.. odsascript:: AV/Development/listElementCON.js

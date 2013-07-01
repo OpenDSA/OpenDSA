@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Binary Search</title>
+        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+    </head>
+
+    <body>
+        <style>
+          #jsavcontainer {
+            width: 1000px;
+            height: 650px;
+            background-color: #fff;
+          }
+          p.jsavoutput.jsavline {
+            height: 40px;
+          }
+          .jsavscore {
+            text-align: center;
+          }
+          p.instructLabel {
+            margin-top: -5px;
+          }
+          p.instructions {
+            margin-top: -15px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid black;
+          }
+          .greybackground, .greybackground .jsavvalue, .jsavarray.jsavbararray .jsavindex.greybackground .jsavvalue{
+            background-color: #eee !important;
+          }
+        </style>
+        <h1>Binary Search</h1>
+        <div id="jsavcontainer">
+            <!-- <a class="jsavsettings" href="#">Settings</a> -->
+            <p class="instructLabel">Instructions:</p>
+            <p class="instructions">
+                    Find the key given in the exercise by highlighting the mid points used in Binary Search. The values are in ascending order.
+            </p>
+            <p align="center" class="jsavexercisecontrols"></p>
+            <p class="jsavscore"></p>
+            <p style="text-align:center">Find</p>
+            <ol id="keyToFind"></ol>
+            <ol id="exerArray"></ol>
+            <!-- <p class="jsavoutput jsavline"></p> -->
+        </div>
+
+        <script
+           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+        <script src="../../JSAV/lib/raphael.js"></script>
+        <script src="../../JSAV/build/JSAV.js"></script>
+
+        <script>
+
+        var arraySize = 20,
+            keyToFind,
+            initialArray = [],
+            jsavArray,
+            $array = $("#exerArray"),
+            $key = $('#keyToFind'),
+            av = new JSAV($("#jsavcontainer")),
+            code = av.code(
+                "int binarySearch(int[] table,int x) {\n"+
+                "    int low = 0;\n"+
+                "    int high = table.length - 1;\n"+
+                "    int mid;\n"+
+                "\n"+
+                "    while( low <= high )\n"+
+                "    {\n"+
+                "        // Division truncates\n"+
+                "        mid = (low + high) / 2;\n"+
+                "        if( table[mid] < x)\n"+
+                "            low = mid + 1;\n"+
+                "        else if(table[mid] > x)\n"+
+                "            high = mid - 1;\n"+
+                "        else\n"+
+                "            return mid;\n"+
+                "    }\n"+
+                "    return -1;     // Not found\n"+
+                "}");
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        function initialize() {
+          
+            var htmldata = "";
+            var randomVal = Math.floor(Math.random()*10);
+            for (var i = 0; i < arraySize; i++) {
+                randomVal += Math.floor(Math.random()*10);
+                htmldata += "<li></li>";
+                initialArray[i] = randomVal;
+            }
+            $array.html(htmldata);
+
+            keyToFind = Math.ceil(5* (initialArray[0] + initialArray[arraySize -1]) / 7);
+            $key.html("<li>" + keyToFind + "</li>");
+            // av.umsg("Find the key " + keyToFind + "."); 
+            av.forward();
+
+            av.ds.array($key, {indexed: false}).css(0, {"background-color": "#ddf"}).toggleArrow(0);
+            jsavArray = av.ds.array($array, {indexed: true});
+            // jsavArray.css(true, {"color": "#ccc"});
+            jsavArray.layout();
+            code.show();
+            // highlight the row where mid is counted
+            code.highlight(8);
+            return jsavArray;
+        }
+        
+        function modelSolution(jsav) {
+            // var modelArray = jsav.ds.array(initialArray);
+            jsav.ds.array([keyToFind], {indexed: false}).css(0, {"background-color": "#ddf"});
+            var modelArray = jsav.ds.array(Array(arraySize), {indexed: true});
+            // modelArray.css(true, {"color": "#ccc"});
+
+
+            jsav._undo = [];
+
+            var low = 0, high = arraySize - 1, mid;
+
+            while (low <= high) {
+                mid = Math.floor( (low + high)/2);
+                jsav.umsg("Low = " + low + " and high = " + high +
+                    ", so mid = ( " + low + " + " + high + " ) / 2 = " + mid);
+                modelArray.value(mid, initialArray[mid]);
+                if (modelArray.value(mid) < keyToFind) {
+                    jsav.umsg("<br/>Because " + modelArray.value(mid) + " is less than " + keyToFind + ", the new low will be " + (mid + 1) + ".", {preserve: true});
+                    low = mid + 1;
+                    paintGrey(modelArray, initialArray, 0, mid);
+                }
+                if (modelArray.value(mid) > keyToFind) {
+                    jsav.umsg("<br/>Because " + modelArray.value(mid) + " is greater than " + keyToFind + ", the new high will be " + (mid - 1) + ".", {preserve: true});
+                    high = mid - 1;
+                    paintGrey(modelArray, initialArray, mid, arraySize - 1);
+                }
+                if (modelArray.value(mid) === keyToFind) {
+                    jsav.umsg("<br/>The key was found at index " + mid + "!", {preserve: true});
+
+                    paintGrey(modelArray, initialArray, 0, arraySize - 1);
+                }
+                modelArray.highlight(mid);
+                jsav.stepOption("grade", true);
+                jsav.step();
+                if (modelArray.value(mid) === keyToFind) {
+                    return modelArray;
+                }
+            }
+            jsav.umsg("<br/>The key wasn't found in the table.", {preserve: true});
+            return modelArray;
+        }
+        
+        var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+        exercise.reset();
+        
+        // bind a function to handle all click events on the array
+        jsavArray.click(function(index) {
+            
+            //if the clicked index is not higlighted earlier, highlight it and paint the ones which are outside of the new range
+            if (!this.isHighlight(index)) {
+                this.value(index, initialArray[index]);
+                if (this.value(index) > keyToFind) {
+                    paintGrey(this, initialArray, index, arraySize - 1);
+                } else if (this.value(index) < keyToFind) {
+                    paintGrey(this, initialArray, 0, index);
+                }
+                if (this.value(index) === keyToFind) {
+                    paintGrey(this, initialArray, 0, arraySize - 1);
+                }
+                // highlight the index
+                this.highlight(index);
+                exercise.gradeableStep();
+            }
+        });
+
+        // inserts the value from initArray into the array and paints the background gray for indices [first, last].
+        function paintGrey(array, initArr, first, last) {
+            for (var i = first; i <= last; i++) {
+                if (array.value(i) === "") {
+                    array.addClass(i, "greybackground");
+                    // array.value(i, initArr[i]);
+                }
+            }
+        }
+        </script>
+    </body>
+</html>

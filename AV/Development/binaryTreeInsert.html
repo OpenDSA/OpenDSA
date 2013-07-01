@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Binary Tree Insert</title>
+        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+    </head>
+
+    <body>
+        <style>
+          #jsavcontainer {
+            width: 800px;
+            height: 650px;
+            background-color: #fff;
+          }
+          p.jsavoutput.jsavline {
+            height: 40px;
+          }
+          .jsavscore {
+            text-align: center;
+          }
+          p.instructLabel {
+            margin-top: -5px;
+          }
+          p.instructions {
+            margin-top: -15px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid black;
+          }
+          .greybackground, .greybackground .jsavvalue, .jsavarray.jsavbararray .jsavindex.greybackground .jsavvalue{
+            background-color: #eee !important;
+          }
+        </style>
+        <h1>Binary Tree Insert</h1>
+        <div id="jsavcontainer">
+            <!-- <a class="jsavsettings" href="#">Settings</a> -->
+            <p class="instructLabel">Instructions:</p>
+            <p class="instructions">
+                    Use the Binary Tree Insert algorith to insert the values in the array. Click on a node to move the highlighted value from the array into the binary tree.
+            </p>
+            <p align="center" class="jsavexercisecontrols"></p>
+            <p class="jsavscore"></p>
+            <ol id="insertValues"></ol>
+            <!-- <p class="jsavoutput jsavline"></p> -->
+        </div>
+
+        <script
+           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+        <script src="../../JSAV/lib/raphael.js"></script>
+        <script src="../../JSAV/build/JSAV.js"></script>
+
+        <script>
+
+        var initialArray = [],
+            jsavBinaryTree,
+            jsavArray,
+            arraySize = 10,
+            arrayIndex,
+            $array = $('#insertValues'),
+            av = new JSAV($("#jsavcontainer"));
+
+        JSAV._types.ds.BinaryTree.prototype.insert = function(value) {
+            // helper function to recursively insert
+            var ins = function(node, insval) {
+              var val = node.value();
+              if (!val || val === "jsavnull") { // no value in node
+                node.value(insval);
+              } else if (val - insval > 0) { // go left
+                if (node.left()) {
+                  ins(node.left(), insval);
+                } else {
+                  node.left(insval);
+                }
+              } else { // go right
+                if (node.right()) {
+                  ins(node.right(), insval);
+                } else {
+                  node.right(insval);
+                }
+              }
+            };
+            if ($.isArray(value)) { // array of values
+              for (var i = 0, l = value.length; i < l; i++) {
+                ins(this.root(), value[i]);
+              }
+            } else {
+              ins(this.root(), value);
+            }
+            return this;
+        };
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        function initialize() {
+            if (jsavBinaryTree) {
+                jsavBinaryTree.clear();
+            }
+            jsavBinaryTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
+            jsavBinaryTree.root("");
+            jsavBinaryTree.click(clickHandler);
+            jsavBinaryTree.layout();
+
+            arrayIndex = av.variable(0);
+
+            function dataTest(array) {
+                var bst = av.ds.bintree();
+                bst.insert(array);
+                var result = bst.height() <= 5;
+                bst.clear();
+                return result;
+            } 
+
+            initialArray = JSAV.utils.rand.numKeys(10, 100, arraySize, {test: dataTest, tries: 10});
+            var htmldata = "";
+            for (var i = 0; i < arraySize; i++)
+                htmldata += "<li>"+initialArray[i]+"</li>";
+            $array.html(htmldata);
+            jsavArray = av.ds.array($array, {indexed: true});
+            jsavArray.highlight(0);
+
+            av.forward();
+            
+            return jsavBinaryTree;
+        }
+        
+        function modelSolution(jsav) {
+            var modelArray = jsav.ds.array(initialArray, {indexed: true});
+            var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 10});
+
+            jsav._undo = [];
+
+            modelTree.root("");
+            modelTree.layout();
+
+            modelArray.highlight(0);
+            jsav.displayInit();
+
+            for (var i = 0; i < arraySize; i++) {
+                var val = initialArray[i];
+                var node = modelTree.root();
+                while (node.value() !== "") {
+                    if (val <= node.value()) {
+                        node = node.left();
+                    } else {
+                        node = node.right();
+                    }
+                }
+                node.value(val);
+                node.left("");
+                node.right("");
+                modelTree.layout();
+
+                modelArray.unhighlight(i);
+                modelArray.value(i, "");
+                if (i + 1 < arraySize)
+                    modelArray.highlight(i + 1);
+
+                jsav.stepOption("grade", true);
+                jsav.step();
+            }
+
+            return modelTree;
+        }
+
+        function clickHandler() {
+            if (arrayIndex.value() < arraySize) {
+                this.value(initialArray[arrayIndex.value()]);
+                jsavArray.value(arrayIndex.value(), "");
+                jsavArray.unhighlight(arrayIndex.value());
+                // av.effects.copyValue(jsavArray, arrayIndex.value(), this);
+                arrayIndex.value(arrayIndex.value() + 1);
+                jsavArray.highlight(arrayIndex.value());
+                if (!this.left())
+                    this.left("");
+                if (!this.right())
+                    this.right("");
+                jsavBinaryTree.layout();
+                exercise.gradeableStep();
+            }
+        }
+
+        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+        exercise.reset();
+
+        </script>
+    </body>
+</html>

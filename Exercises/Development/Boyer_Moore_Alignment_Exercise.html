@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<!--
+  Samuel A. Micka
+-->
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <title>Alignment Array Exercise</title>
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css"
+          media="screen" title="no title" charset="utf-8" /> 
+  </head>
+  <body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js"></script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="http://algoviz.org/OpenDSA/ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script> 
+  <script src="../../AV/Development/edit.js"></script>
+  <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" /> 
+  <script>
+  /*
+  Samuel A. Micka
+  */
+  /*#################################################################
+    These global constants are set to modify the strings easily.
+  #################################################################*/
+  //this determines the maximum length of the string
+  var string_max_length = 12;
+  //this determines the minimum length of the string
+  var string_min_length = 8;
+  //this represents the lower bound of randomly generated numbers desired in the ascii table
+  var char_lower_bound = 97;
+  //this represents the upper bound of randomly generated numbers desired in the ascii table
+  var char_upper_bound = 122;
+
+
+  /*#################################################################
+    Global variables used throughout the program
+  #################################################################*/
+  var started; //tells us if anything has been done
+  var align_arr; //global variable for the alignment array
+  var str_arr; //global variable for the actual string
+  var answer_index;
+  var answer_value;
+
+  //returns a random number between lower_bound and upper_bound
+  function gen_random(lower_bound, upper_bound) {
+    return Math.floor(Math.random() * (upper_bound - lower_bound + 1) + lower_bound);
+  }
+  //converts the ascii_value parameter to character and returns it
+  function get_char(ascii_value) {
+    return String.fromCharCode(ascii_value);
+  }
+
+  function generate_sub(seed){
+    var seed = gen_random(97,122);
+    var dec = gen_random(0, 3);
+    var length = gen_random(string_min_length, string_max_length);
+    var return_str = '';
+    console.log("decision " + dec);
+    if(dec == 0) {
+      var seed2 = gen_random(97,122);
+      for(var i = 0; i < length; i++){
+        if(i % 2 == 0){
+          return_str += get_char(seed);
+        } else {
+          return_str += get_char(seed2);
+        }
+      }
+    } else if (dec == 1){
+      return_str += get_char(gen_random(97,122)) + get_char(gen_random(97,122)) +get_char(gen_random(97,122));
+      var seed2 = gen_random(97,122);   
+      for(var i = 3; i < length; i++){
+        if(i % 2 == 0) {
+          return_str += get_char(seed);
+        } else {
+          return_str += get_char(seed2);
+        }
+      }
+    } else if (dec == 2){
+      for(var i = 0; i < length; i++){
+        if(i % 2 == 0) {
+          return_str += get_char(seed);
+        } else {
+          return_str += get_char(gen_random(97,122));
+        }
+      }
+    } else {
+      for(var i = 0; i < length; i++){
+        return_str+=get_char(gen_random(97,122));
+      }
+    }
+    return return_str.split("");
+  }
+
+
+  function find_best_solution(align){
+    for(var i = 1; i < align.length; i++){
+      if(align[i-1] - align[i] > 1){
+        console.log(align[i-1]);
+        answer_value = align[i-1];
+        align[i-1] = '';
+        break;
+      }
+    }   
+  }
+
+  function compute_align_table( sub ) {
+    var align = new Array();
+    var substr = sub.join("");
+    console.log(substr);
+    var offset, suffix_length, index_of_sub;
+    align[sub.length-1] = 1;
+    for(var i = sub.length-2; i >=0; i--){
+      var p = i;
+      suffix_length = sub.length - (p+1);
+      index_of_sub = substr.substring(0, p-1).lastIndexOf(substr.substring(p+1, sub.length));
+      offset = sub.length;
+      if(index_of_sub != -1){
+        offset = (p+1) - index_of_sub;
+      }
+      align[p] = suffix_length + offset;
+    }
+    find_best_solution(align);
+
+    return align;
+  }
+
+  function checkAnswer() {
+    var answer = $("#user_answer").val();
+    console.log(answer);
+    console.log(answer_value);
+    if(answer == answer_value) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //This function initializes the arrays, and handles the clicks on the specific indexes, see comments in method for more information
+  function initExercise(){
+    started = true;
+    //figure out how to reset the JSAV container if it is already set
+    if(alignment != null){
+        alignment.reset();
+    }
+    var alignment = new JSAV("jsav_area", {"animationMode": "none"});
+    //handles the actual click on an index and highlights the specified index
+    var str = generate_sub();
+    console.log(str);
+    str_arr = alignment.ds.array(str, {indexed: true});
+
+    //initializing the alignment array
+    var alignment_returned = compute_align_table(str);
+
+    align_arr = alignment.ds.array(alignment_returned);
+
+    var str_label = alignment.label("String:", {before: str_arr});
+    var align_label = alignment.label("Alignment Array:", {before: align_arr});
+  }
+  // reset function definition
+  var f_reset = function () {
+    started = null;
+    str_arr = null;
+    answer_index = null;
+    answer_value = null;    
+  };
+  </script>
+  <style>
+    .jsavarray .jsavindex {
+      min-height: 30px;
+      height: 30px;
+      min-width: 25px;
+      width: 25px;
+      font-size: 15px;
+    }
+  </style>
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">initExercise()</var>
+      </div> <!-- vars -->
+
+      <div class="problems">
+        <div>
+          <div class="question">
+            The exercise below will test your newly acquired knowledge on the Boyer-Moore Alignment array. Please use the text field to fill in the correct value that is missing from the Alignment array. When you are finished hit <b>Check Answer</b> to see if you are correct.
+            <p><b>Your solution:</b> <input type = "text" id = "user_answer" size = "2"/> </p>
+            <div id="jsav_area"></div>
+          </div> <!-- question -->
+          <div class="solution" data-type="custom">
+            <div class="guess">
+              [started]
+            </div>
+            <div class="validator-function">
+              if (!checkAnswer() && !guess[0])
+                return "";
+              else return checkAnswer();
+            </div>
+          </div>
+          <div class="hints">
+            <p>1. Scroll back up and check out the pseudo code from the slideshow.</p> 
+            </var></b>.</p>
+          </div>
+          <div class = "model"></div>
+        </div>
+      </div> <!-- problems -->
+    </div> <!--exercises-->
+  </body>
+</html>

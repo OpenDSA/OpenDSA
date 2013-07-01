@@ -1,0 +1,74 @@
+.jsavcanvas{
+	height: 500px;
+}
+
+.jsavpointer{
+  border:1px solid #eee;
+}
+.jsavhorizontallist.jsavautoresize .jsavnode{
+  min-width: 30px;
+  min-height: 30px; 
+  max-height: 45px;
+  line-height: 30px;
+}
+
+.jsavhorizontalarray.jsavautoresize .jsavnode {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  line-height: 30px;
+}
+
+.jsavverticalarray.jsavautoresize .jsavnode {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  line-height: 30px;
+}
+#AStackVarCON {
+  height: 480px;
+}
+#AStackVarCON .jsavoutput.jsavline {
+  height: 50px;
+}
+#AStackTopposCON {
+  height: 250px;
+}
+#AStackTopposCON .jsavoutput.jsavline {
+  height: 30px;
+}
+#AStackPushCON {
+  height: 220px;
+}
+#AStackPushCON .jsavoutput.jsavline {
+  height: 30px;
+}
+#AStackPopCON {
+  height: 220px;
+}
+#AStackPopCON .jsavoutput.jsavline {
+  height: 30px;
+}
+#LStackDiagramCON {
+  height: 80px;
+}
+
+#LStackPushCON {
+  height: 280px;
+}
+#LStackPushCON .jsavoutput.jsavline {
+  height: 30px;
+}
+#LStackPopCON {
+  height: 250px;
+}
+#LStackPopCON .jsavoutput.jsavline {
+  height: 30px;
+}
+#LStackTwostacksCON {
+  height: 120px;
+}
+
+

@@ -1,13 +1,11 @@
 "use strict";
 // Helper function for creating a pointer
 function setPointer(name, obj){
-  var jsav = obj.jsav;
-  var pointer = jsav.pointer(name, obj,{visible: true, 
+  return obj.jsav.pointer(name, obj,{visible: true, 
                 anchor: "left top",
                 myAnchor: "right bottom",
                 left: 20,
                 top: -15});
-  return pointer;
 }
 
 // Helper function for drawing arrow around the node

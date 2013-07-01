@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Selection Sort</title>
+        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+    </head>
+
+    <body>
+        <style>
+          #jsavcontainer {
+            width: 800px;
+            height: 500px;
+            background-color: #fff;
+          }
+          p.jsavoutput.jsavline {
+            height: 40px;
+          }
+          .jsavscore {
+            text-align: center;
+          }
+          p.instructLabel {
+            margin-top: -5px;
+          }
+          p.instructions {
+            margin-top: -15px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid black;
+          }
+          .bluebackground, .bluebackground .jsavvalue, .jsavarray.jsavbararray .jsavindex.bluebackground .jsavvalue{
+            background-color: #ddf !important;
+          }
+          .greenbackground, .greenbackground .jsavvalue, .jsavarray.jsavbararray .jsavindex.greenbackground .jsavvalue{
+            background-color: #5f5 !important;
+          }
+        </style>
+        <h1>Selection Sort</h1>
+        <div id="jsavcontainer">
+            <!-- <a class="jsavsettings" href="#">Settings</a> -->
+            <p class="instructLabel">Instructions:</p>
+            <p class="instructions">
+                    Use Selection Sort to sort the table given below in ascending order.
+            </p>
+            <p align="center" class="jsavexercisecontrols"></p>
+            <p class="jsavscore"></p>
+            <ol id="exerArray"></ol>
+            <p class="jsavoutput jsavline"></p>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+        <script src="../../JSAV/lib/raphael.js"></script>
+        <script src="../../JSAV/build/JSAV.js"></script>
+
+        <script>
+
+        var arraySize = 10,
+            initialArray = [],
+            jsavArray,
+            sorted,
+            lineIndex,
+            $array = $("#exerArray"),
+            av = new JSAV($("#jsavcontainer")),
+            code = av.code(
+                "for i = 0 to n-2 do\n"+
+                "    min = i\n"+
+                "    for j = i+1 to n-1 do\n"+
+                "        if (a[j] < a[min]) do\n"+
+                "            min = j\n"+
+                "    swap a[i] and a[min]");
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        function initialize() {
+          
+            var htmldata = "";
+            for (var i = 0; i < arraySize; i++) {
+                randomVal = Math.floor(Math.random()*100) + 10;
+                htmldata += "<li>" + randomVal + "</li>";
+                initialArray[i] = randomVal;
+            }
+            $array.html(htmldata);
+
+            sorted = av.variable(-1);
+            lineIndex = av.variable(-1);
+
+            av.forward();
+
+            jsavArray = av.ds.array($array, {indexed: true, layout: "bar"});
+            code.show();
+            code.highlight(1);
+            code.highlight(4);
+            code.highlight(5);
+
+            av.umsg("Begin by highlighting the bar at index min, assuming line #2 has just been run.");
+            av.forward();
+
+            return jsavArray;
+        }
+        
+        function modelSolution(jsav) {
+            var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar"});
+            
+            // modelArray.paintGreen = function(index) {
+            //     this.css(index, {"background-color": "#5f5"});
+            // }
+
+            // jsav._undo = [];
+            jsav.displayInit();
+
+
+            jsav.step();
+            for (var i = 0; i < arraySize - 1; i++) {
+                var j = i + 1;
+                var min = i;
+                modelArray.highlight(i);
+                modelArray.toggleLine(i, {startIndex: i});
+                jsav.stepOption("grade", true);
+                jsav.step();
+                while (j < arraySize) {
+                    if (modelArray.value(j) < modelArray.value(min)) {
+                        modelArray.toggleLine(min);
+                        min = j;
+                        modelArray.addClass(min, "bluebackground");
+                        modelArray.toggleLine(min, {startIndex: min});
+                        jsav.stepOption("grade", true);
+                        jsav.step();
+                    }
+                    j++;
+                }
+                //remove highlights, blue backgrounds and lines
+                modelArray.unhighlight(i);
+                modelArray.removeClass(true, "bluebackground");
+                modelArray.toggleLine(min);
+                if (min !== i) {
+                    modelArray.swap(min, i);
+                    jsav.step(); // animate swap first and then color the bars green
+                }
+                if (i !== arraySize - 2) {
+                    modelArray.addClass(function(ind) {return ind <= i}, "greenbackground");
+                } else {
+                    modelArray.addClass(function(ind) {return ind <= arraySize - 1}, "greenbackground");                
+                }
+                jsav.stepOption("grade", true);
+                jsav.step();
+            }
+
+          return modelArray;
+        }
+        
+        var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+        exercise.reset();
+        
+        // bind a function to handle all click events on the array
+        jsavArray.click(function(index) {
+            
+            if (!this.isHighlight(true)) {
+                //higlight the first bar 
+                this.highlight(index);
+                this.toggleLine(index, {startIndex: index});
+                lineIndex.value(index);
+                sorted.value(index);
+                av.umsg("Now select all the bars corresponding to the indices min gets in the for loop. When all bars have been selected, click on a selected bar to swap it with the highlighted bar.");
+                exercise.gradeableStep();
+            } else {
+                if (!this.hasClass(index, "bluebackground") && !this.isHighlight(index)) {
+                    this.addClass(index, "bluebackground");
+                    this.toggleLine(lineIndex.value());
+                    this.toggleLine(lineIndex.value(index).value(), {startIndex: index});
+                    exercise.gradeableStep();
+                } else {
+                    this.removeClass(true, "bluebackground");
+                    this.unhighlight(sorted.value())
+                    this.toggleLine(lineIndex.value());
+                    lineIndex.value(-1);
+                    if (sorted.value() !== index)
+                        this.swap(sorted.value(), index);
+                    turnAnimationOff()
+                    this.addClass(function(ind) {return ind <= (sorted.value() !== arraySize - 2? sorted.value() : sorted.value() + 1)}, "greenbackground");
+                    restoreAnimationState();
+                    av.umsg("Continue by highlighting the next bar at index min, assuming line #2 has just been run.");
+                    exercise.gradeableStep();
+                }
+            }
+            
+            var oldfx;
+
+            function turnAnimationOff() {
+                //save the state of fx.off
+                var oldfx = $.fx.off || false;
+                //turn off the animations when painting the bars green
+                //because it doesn't work well with the swap
+                $.fx.off = true;
+            }
+
+            function restoreAnimationState() {
+                $.fx.off = oldfx;
+            }
+
+        });
+
+        </script>
+    </body>
+</html>

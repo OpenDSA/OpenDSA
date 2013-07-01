@@ -7,11 +7,11 @@ function setPointer(name, node, opt){
   var pointerRight = {anchor: "right top",
     myAnchor: "left bottom",
     left: -10,
-    top: 70};
+    top: -20};
   var pointerLeft = {anchor: "left top",
     myAnchor: "right bottom",
     left: 15,
-    top: 70};
+    top: -20};
   if(opt === "right"){
     return node.jsav.pointer(name, node, pointerRight);
   }else{
@@ -601,7 +601,7 @@ function setPointer(name, node, opt){
     this.newNodeSlash.hide();
     this.newTailSlash.show();
     this.tail.target(l.get(3),
-      {anchor: "left top", myAnchor: "right bottom", left: 15, top: 70});
+      {anchor: "left top", myAnchor: "right bottom", left: 15, top: -20});
 	l.get(2).unhighlight();
     l.get(3).highlight();
     this.jsav.umsg(" Update the new tail.");
@@ -711,7 +711,7 @@ function setPointer(name, node, opt){
     this.newNodeSlash.hide();
     this.newTailSlash.show();
 	this.tail.target(this.l.get(2),
-      {anchor: "left top", myAnchor: "right bottom", left: 15, top: 70});
+      {anchor: "left top", myAnchor: "right bottom", left: 15, top: -20});
 	this.l.get(1).unhighlight();
 	this.l.get(2).highlight();
     this.jsav.umsg(" Update the new tail.");
