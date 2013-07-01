@@ -1,0 +1,56 @@
+.jsavcanvas{
+	height: 500px;
+}
+
+.jsavpointer{
+  
+  border:1px solid #eee;
+}
+.jsavlabel.jsavpointer{
+  width:35px;
+}
+.jsavhorizontallist.jsavautoresize .jsavnode{
+  min-width: 30px;
+  min-height: 30px; 
+  max-height: 45px;
+  line-height: 30px;
+}
+
+.jsavhorizontalarray.jsavautoresize .jsavnode {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  line-height: 30px;
+}
+
+.jsavverticalarray.jsavautoresize .jsavnode {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  line-height: 30px;
+}
+
+#AQueueFirstNposCON {
+  height: 280px;
+}
+#AQueueFirstNposCON .jsavoutput.jsavline {
+  height: 55px;
+}
+
+#AQueueDriftposCON {
+  height: 280px;
+}
+#AQueueDriftposCON .jsavoutput.jsavline {
+  height: 75px;
+}
+#AQueueDriftposCON .jsavcode{
+  border: 1px solid;
+  border-color: white;  
+  position: relative;
+  top: -10px;
+  left: 190px;
+  width: 450px;
+}
+

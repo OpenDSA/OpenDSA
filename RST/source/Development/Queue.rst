@@ -8,6 +8,8 @@
    :prerequisites:
    :topic: Lists
 
+.. odsalink:: AV/Development/listQueueCON.css   
+   
 Queues [Storyboard]
 ===================
 
@@ -68,6 +70,9 @@ efficient.
    because all of the elements must be shifted down by one position to
    retain the property that the remaining $n-1$ queue elements reside in
    the first :math:`n-1` positions of the array.
+   
+.. inlineav:: AQueueFirstNposCON ss
+   :output: show
 
 .. TODO::
    :type: Slideshow
@@ -85,7 +90,10 @@ efficient.
    Now, both the ``enqueue`` and the ``dequeue`` operations can be
    performed in :math:`\Theta(1)` time because no other elements in the
    queue need be moved.
-
+   
+.. inlineav:: AQueueDriftposCON ss
+   :output: show
+   
 .. _BadQueue:
 
 .. odsafig:: Images/BadQueue.png
@@ -318,3 +326,5 @@ unless items are always transferred directly from one queue to the other.
    :type: Exercise
 
    Add a battery of summary questions.
+
+.. odsascript:: AV/Development/listQueueCON.js   
