@@ -10,15 +10,16 @@
     <body>
         <style>
           #jsavcontainer {
-            width: 1000px;
+            width: 800px;
             height: 650px;
             background-color: #fff;
           }
-          p.jsavoutput.jsavline {
-            height: 40px;
-          }
-          .jsavscore {
-            text-align: center;
+          .jsavautoresize .jsavnode {  
+            width: auto;
+            min-width: 39px;
+            height: auto;
+            min-height: 39px;
+            line-height: 39px;
           }
           p.instructLabel {
             margin-top: -5px;
@@ -30,22 +31,19 @@
             border: 1px solid black;
           }
           .greybackground, .greybackground .jsavvalue, .jsavarray.jsavbararray .jsavindex.greybackground .jsavvalue{
-            background-color: #eee !important;
+            background-color: #eee;
           }
         </style>
         <h1>Binary Search</h1>
         <div id="jsavcontainer">
-            <!-- <a class="jsavsettings" href="#">Settings</a> -->
             <p class="instructLabel">Instructions:</p>
             <p class="instructions">
-                    Find the key given in the exercise by highlighting the mid points used in Binary Search. The values are in ascending order.
+                    Find the key given in the exercise by highlighting the <strong>mid points</strong> used in Binary Search. The values are hidden and in <strong>ascending order</strong>.
             </p>
             <p align="center" class="jsavexercisecontrols"></p>
-            <p class="jsavscore"></p>
             <p style="text-align:center">Find</p>
             <ol id="keyToFind"></ol>
             <ol id="exerArray"></ol>
-            <!-- <p class="jsavoutput jsavline"></p> -->
         </div>
 
         <script
@@ -119,7 +117,6 @@
             var modelArray = jsav.ds.array(Array(arraySize), {indexed: true});
             // modelArray.css(true, {"color": "#ccc"});
 
-
             jsav._undo = [];
 
             var low = 0, high = arraySize - 1, mid;
@@ -127,24 +124,24 @@
             while (low <= high) {
                 mid = Math.floor( (low + high)/2);
                 jsav.umsg("Low = " + low + " and high = " + high +
-                    ", so mid = ( " + low + " + " + high + " ) / 2 = " + mid);
+                    ", so mid = ( " + low + " + " + high + " ) / 2 = <strong>" + mid + "</strong> (line 9, division truncates!)");
                 modelArray.value(mid, initialArray[mid]);
+                modelArray.highlight(mid);
                 if (modelArray.value(mid) < keyToFind) {
-                    jsav.umsg("<br/>Because " + modelArray.value(mid) + " is less than " + keyToFind + ", the new low will be " + (mid + 1) + ".", {preserve: true});
+                    jsav.umsg("<br/>Because " + modelArray.value(mid) + " is less than " + keyToFind + ", the new low will be <strong>" + (mid + 1) + "</strong>. (line 10 and 11)", {preserve: true});
                     low = mid + 1;
-                    paintGrey(modelArray, initialArray, 0, mid);
+                    paintGrey(modelArray, 0, mid);
                 }
                 if (modelArray.value(mid) > keyToFind) {
-                    jsav.umsg("<br/>Because " + modelArray.value(mid) + " is greater than " + keyToFind + ", the new high will be " + (mid - 1) + ".", {preserve: true});
+                    jsav.umsg("<br/>Because " + modelArray.value(mid) + " is greater than " + keyToFind + ", the new high will be <strong>" + (mid - 1) + "</strong>. (line 12 and 13)", {preserve: true});
                     high = mid - 1;
-                    paintGrey(modelArray, initialArray, mid, arraySize - 1);
+                    paintGrey(modelArray, mid, arraySize - 1);
                 }
                 if (modelArray.value(mid) === keyToFind) {
                     jsav.umsg("<br/>The key was found at index " + mid + "!", {preserve: true});
 
-                    paintGrey(modelArray, initialArray, 0, arraySize - 1);
+                    paintGrey(modelArray, 0, arraySize - 1);
                 }
-                modelArray.highlight(mid);
                 jsav.stepOption("grade", true);
                 jsav.step();
                 if (modelArray.value(mid) === keyToFind) {
@@ -155,7 +152,7 @@
             return modelArray;
         }
         
-        var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
         exercise.reset();
         
         // bind a function to handle all click events on the array
@@ -164,28 +161,26 @@
             //if the clicked index is not higlighted earlier, highlight it and paint the ones which are outside of the new range
             if (!this.isHighlight(index)) {
                 this.value(index, initialArray[index]);
-                if (this.value(index) > keyToFind) {
-                    paintGrey(this, initialArray, index, arraySize - 1);
-                } else if (this.value(index) < keyToFind) {
-                    paintGrey(this, initialArray, 0, index);
-                }
-                if (this.value(index) === keyToFind) {
-                    paintGrey(this, initialArray, 0, arraySize - 1);
-                }
+                // if (this.value(index) > keyToFind) {
+                //     paintGrey(this, index, arraySize - 1);
+                // } else if (this.value(index) < keyToFind) {
+                //     paintGrey(this, 0, index);
+                // }
+                // if (this.value(index) === keyToFind) {
+                //     paintGrey(this, 0, arraySize - 1);
+                // }
                 // highlight the index
                 this.highlight(index);
                 exercise.gradeableStep();
             }
         });
 
-        // inserts the value from initArray into the array and paints the background gray for indices [first, last].
-        function paintGrey(array, initArr, first, last) {
-            for (var i = first; i <= last; i++) {
-                if (array.value(i) === "") {
-                    array.addClass(i, "greybackground");
-                    // array.value(i, initArr[i]);
-                }
-            }
+        // paints the background gray for indices [first, last].
+        function paintGrey(array, first, last) {
+            array.addClass(
+                function(index) {return index >= first && index <= last},
+                "greybackground"
+                );
         }
         </script>
     </body>
