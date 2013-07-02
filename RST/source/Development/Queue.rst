@@ -128,6 +128,9 @@ efficient.
    the low end of the array where elements have previously been removed
    from the queue.
 
+.. inlineav:: AQueueBadCON ss
+   :output: show 
+   
 .. TODO::
    :type: Slideshow
 
@@ -164,6 +167,9 @@ efficient.
    (b) The queue after elements 20 and 5 are deleted, following which
    3, 30, and 4 are inserted.
 
+.. inlineav:: AQueueCircularCON ss
+   :output: show 
+   
 .. TODO::
    :type: Slideshow
 
