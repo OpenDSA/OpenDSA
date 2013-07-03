@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Evaluating Postfix Expression</title>
+        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+    </head>
+
+    <body>
+        <style>
+          #jsavcontainer {
+            width: 800px;
+            height: 650px;
+            background-color: #fff;
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+          }
+          .jsavnode {
+            cursor: pointer;
+          }
+          .jsavcanvas {
+            height: 500px;
+          }
+          p.instructLabel {
+            margin-top: -5px;
+          }
+          p.instructions {
+            margin-top: -15px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid black;
+          }
+          .selected, .selected .jsavvalue, .jsavarray.jsavbararray .jsavindex.selected .jsavvalue{
+            font-size: 130%;
+            background-color: #ddf !important;
+          }
+          .greybg, .greybg .jsavvalue, .jsavarray.jsavbararray .jsavindex.greybg .jsavvalue{
+            background-color: #ddd !important;
+          }
+        </style>
+        <h1>Evaluating Postfix Expression</h1>
+        <div id="jsavcontainer">
+            <p class="instructLabel">Instructions:</p>
+            <p class="instructions">
+                    Evaluate the postfix expression. You can performe an operation on the two topmost values in a stack by moving an operator into the evaluator.
+            </p>
+            <p align="center" class="jsavexercisecontrols"></p>
+            <p class="jsavscore"></p>
+            <p style="text-align:center"><br/>Postfix Expression</p>
+            <ol id="exerArray"></ol>
+            <p style="text-align:center"><br/>Operand Stack</p>
+        </div>
+
+        <script
+           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+        <script src="../../JSAV/lib/raphael.js"></script>
+        <script src="../../JSAV/build/JSAV.js"></script>
+
+        <script>
+
+        var arraySize = 15, //size needs to be odd
+            initialArray = [],
+            jsavArray,
+            $array = $("#exerArray"),
+            evaluatorArrays = [],
+            stack,
+            selectedIndex,
+            selectedStruct,
+            av = new JSAV($("#jsavcontainer"));
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        function initialize() {
+            
+            turnAnimationOff();
+
+            var htmldata = "";
+            var numbersInArray = 0;
+            for (var i = 0; i < arraySize; i++) {
+                var randomVal;
+                if (numbersInArray < i - numbersInArray + 2 || Math.random() < (Math.ceil(arraySize / 2) - numbersInArray) / (arraySize - i))
+                {
+                    randomVal = JSAV.utils.rand.numKey(1,10);
+                    numbersInArray++;
+                } else {
+                    randomVal = Math.random() < 0.5 ? "+" : "*";
+                }
+                htmldata += "<li>"+randomVal+"</li>";
+                initialArray[i] = randomVal;
+            }
+            $array.html(htmldata);
+
+            av.forward();
+
+            jsavArray = av.ds.array($array, {indexed: true});
+            jsavArray.layout();
+
+            if (stack) {
+                stack.clear();
+            }
+            stack = av.ds.list({nodegap: 15, layout: "vertical", center: true});
+            stack.addFirst("");
+            stack.first().addClass("greybg");
+            stack.css("top", 0);
+            stack.click(stackClickHandler);
+            stack.layout();
+            
+            //clear all the Raphael elements
+            if (av.svg)
+                av.svg.clear();
+
+            //draw the Evaluator
+            var rect_x = 50;
+            var rect_y = 20;
+            av.g.rect(rect_x, rect_y, 200, 120, {r: 20});
+            av.svg.text(rect_x + 100, rect_y + 15, "Evaluator 2.0");
+
+            for (var i = 0; i < 3; i++) {
+                if (evaluatorArrays[i])
+                    evaluatorArrays[i].clear();
+                evaluatorArrays[i] = av.ds.array([""], {indexed: false, center: false});
+                evaluatorArrays[i].element.css({"top": rect_y + 30, "left": rect_x + 15 + 60 * i, "position": "absolute"});
+                if (i === 0 || i === 2) {
+                    evaluatorArrays[i].element.children().css("border", "none");
+                }
+                evaluatorArrays[i].layout();
+            }
+            evaluatorArrays[1].click(evalClickHandler);
+
+            selectedIndex = av.variable(-1);
+            selectedStruct = av.variable(-1);
+
+            av.displayInit();
+
+            restoreAnimationState();
+
+            return [jsavArray, evaluatorArrays[1]];
+        }
+        
+        function modelSolution(jsav) {
+            //array
+            var modelArray = jsav.ds.array(initialArray);
+            //stack
+            var modelStack = jsav.ds.list({nodegap: 15, layout: "vertical", center: true});
+            modelStack.addFirst("");
+            modelStack.first().addClass("greybg");
+            modelStack.layout();
+            //evaluator
+            var rect_x = 50;
+            var rect_y = 100;
+            jsav.g.rect(rect_x, rect_y, 200, 120, {r: 20});
+            jsav.svg.text(rect_x + 100, rect_y + 15, "Evaluator 2.0");
+            var modelEvalAr = [];
+
+            for (var i = 0; i < 3; i++) {
+                modelEvalAr[i] = jsav.ds.array([""], {indexed: false, center: false});
+                modelEvalAr[i].element.css({"top": rect_y + 30, "left": rect_x + 15 + 60 * i, "position": "absolute"});
+                if (i === 0 || i === 2) {
+                    modelEvalAr[i].element.children().css("border", "none");
+                }
+                modelEvalAr[i].layout();
+            }
+
+            jsav._undo = [];
+
+            //model solution
+            for (var i = 0; i < arraySize; i++) {
+                if ("+*".indexOf(modelArray.value(i)) === -1) {
+                    //move the operand into the stack
+                    modelStack.addFirst();
+                    jsav.effects.moveValue(modelArray, i, modelStack.first());
+                    modelStack.layout();
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+                } else {
+                    //move the operator to the evaluator
+                    jsav.effects.moveValue(modelArray, i, modelEvalAr[1], 0);
+                    jsav.step();
+                    //"run the evaluator"
+                    //move the first value
+                    jsav.effects.moveValue(modelStack.first(), modelEvalAr[0], 0);
+                    modelStack.removeFirst();
+                    modelStack.layout();
+                    //move the second value
+                    jsav.effects.moveValue(modelStack.first(), modelEvalAr[2], 0);
+                    modelStack.removeFirst();
+                    modelStack.layout();
+                    jsav.step();
+                    //animate operator
+                    if ($.fx.off === false) {
+                        console.log("asd")
+                        animateOperator(modelEvalAr[1], jsav);
+                    }
+                    //caluculate result
+                    var result;
+                    if (modelEvalAr[1].value(0) === "+") {
+                        result = parseInt(modelEvalAr[0].value(0)) + parseInt(modelEvalAr[2].value(0));
+                    } else {
+                        result = parseInt(modelEvalAr[0].value(0)) * parseInt(modelEvalAr[2].value(0));
+                    }
+                    //clear the evaluator and show the result
+                    modelEvalAr[0].value(0, "");
+                    modelEvalAr[1].value(0, result);
+                    modelEvalAr[2].value(0, "");
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+                    //move the value back into the stack
+                    modelStack.addFirst();
+                    jsav.effects.moveValue(modelEvalAr[1], 0, modelStack.first());
+                    modelStack.layout();
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+                }
+            }
+
+            return [modelArray, modelEvalAr[1]];
+        }
+        
+        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+        exercise.reset();
+        
+
+        // SelectedStruct:
+        //      0: jsavArray
+        //      1: stack
+        //      2: evaluator
+
+        // Click handler for the array
+        jsavArray.click(function(index) {
+            //move the values from the JSAV variables into regulas js vars
+            var sIndex = selectedIndex.value();
+            var sStruct = selectedStruct.value();
+            //changed to true if the step should be graded
+            var grade = false;
+
+            if (sIndex === -1 ) {
+                // select index
+                sStruct = 0;
+                sIndex = index;
+                this.addClass(index, "selected");
+            } else if (sStruct === 0) {
+                //unselect value in the array
+                this.removeClass(sIndex, "selected");
+                if (sIndex !== index) {
+                    //move value within array
+                    av.effects.moveValue(this, sIndex, this, index);
+                    grade = true;
+                }
+                sIndex = -1;
+                sStruct = -1;
+            } else if (sStruct === 1) {
+                //move value from the stack
+                stack.get(sIndex).removeClass("selected");
+                av.effects.moveValue(stack.get(sIndex), this, index);
+                stack.remove(sIndex);
+                stack.layout();
+                grade = true;
+                sIndex = -1;
+                sStruct = -1;
+            } else if (sStruct === 2) {
+                //move value from evaluator
+                evaluatorArrays[1].removeClass(0, "selected");
+                av.effects.moveValue(evaluatorArrays[1], 0, this, index);
+                grade = true;
+                sIndex = -1;
+                sStruct = -1;
+            }
+            // move the values back to the JSAV variables
+            selectedIndex.value(sIndex);
+            selectedStruct.value(sStruct);
+            if (grade)
+                exercise.gradeableStep();
+        });
+        
+
+        //Click handler for the stack
+        function stackClickHandler() {
+            //move the values from the JSAV variables into regulas js vars
+            var sIndex = selectedIndex.value();
+            var sStruct = selectedStruct.value();
+            //changed to true if the step should be graded
+            var grade = false;            
+
+            if (sIndex === -1 && !stack.first().hasClass("greybg")) {
+                //select node
+                sStruct = 1;
+                sIndex = 0;
+                stack.first().addClass("selected");
+                // sIndex = index;
+                // this.addClass("selected");
+            } else if (sStruct === 0) {
+                //move value from the array to the top of the stack
+                jsavArray.removeClass(sIndex, "selected");
+                //add the value on top of the stack
+                stack.addFirst();
+                av.effects.moveValue(jsavArray, sIndex, stack.first());
+                stack.layout();
+                grade = true;
+                sIndex = -1;
+                sStruct = -1;
+            } else if (sStruct === 1) {
+                //unselect
+                stack.first().removeClass("selected");
+                sStruct = -1;
+                sIndex = -1;
+            } else if (sStruct === 2) {
+                // move value from Evaluator
+                evaluatorArrays[1].removeClass(0, "selected");
+                stack.addFirst();
+                av.effects.moveValue(evaluatorArrays[1], 0, stack.first());
+                stack.layout();
+                grade = true;
+                sIndex = -1;
+                sStruct = -1;
+            }
+            //move the values back to the JSAV variables
+            selectedIndex.value(sIndex);
+            selectedStruct.value(sStruct);
+            if (grade)
+                exercise.gradeableStep();
+        }
+
+        //click handler for evaluatorArrays
+        function evalClickHandler() {
+            //move the values from the JSAV variables into regulas js vars
+            var sIndex = selectedIndex.value();
+            var sStruct = selectedStruct.value();
+            //changed to true if the step should be graded
+            var grade = false;
+
+            //always move the operand/operator into the array in the middle
+            var that = evaluatorArrays[1];
+
+            if (sStruct === -1) {
+                //select array
+                that.addClass(0, "selected");
+                sIndex = 0;
+                sStruct = 2;
+            } else if (sStruct === 0) {
+                //move value from the array
+                jsavArray.removeClass(sIndex, "selected");
+                av.effects.moveValue(jsavArray, sIndex, that, 0);
+                sIndex = -1;
+                sStruct = -1;
+                if ("+*".indexOf(that.value(0)) === -1 || stack.size() <= 2 )
+                    grade = true;
+            } else if (sStruct === 1) {
+                //move value from the stack
+                stack.first().removeClass("selected");
+                av.effects.moveValue(stack.first(), that, 0);
+                stack.remove(sIndex);
+                stack.layout();
+                sIndex = -1;
+                sStruct = -1;
+                if ("+*".indexOf(that.value(0)) === -1 || stack.size() <= 2 )
+                    grade = true;
+            } else if (sStruct === 2) {
+                //unselect
+                that.removeClass(0, "selected");
+                sIndex = -1;
+                sStruct = -1;
+            }
+
+            //perform the calculation if possible
+            runEvaluator(evaluatorArrays, stack, av);
+            //move the values back to the JSAV variables
+            selectedIndex.value(sIndex);
+            selectedStruct.value(sStruct);
+            if (grade)
+                exercise.gradeableStep();
+        }
+
+        function runEvaluator(arr, stack, jsav) {
+            var result;
+            if (arr[1].value(0) === "+" || arr[1].value(0) === "*") {
+                // pop two values from the stack if it is big enough
+                if (stack.size() > 2) {
+                    jsav.effects.moveValue(stack.first(), arr[0], 0);
+                    drawPopArrow(stack, arr[0], jsav);
+                    stack.removeFirst();
+                    stack.layout();
+                    setTimeout(function () {
+                        jsav.effects.moveValue(stack.first(), arr[2], 0);
+                        drawPopArrow(stack, arr[2], jsav);
+                        stack.removeFirst();
+                        stack.layout();
+                    }, 700);
+                } else {
+                    return;
+                }
+            } else {
+                return;
+            }
+
+            //wait until the values have been popped, then calculate the result
+            setTimeout(function () {
+                if (arr[1].value(0) === "+") {
+                    result = parseInt(arr[0].value(0), 10) + parseInt(arr[2].value(0), 10);
+                } else if (arr[1].value(0) === "*") {
+                    result = parseInt(arr[0].value(0), 10) * parseInt(arr[2].value(0), 10);
+                }
+
+                //start operator animation
+                animateOperator(arr[1], av);
+
+                //empty the calculator
+                arr[0].value(0, "");
+                arr[1].value(0, result);
+                arr[2].value(0, "");
+
+                if (jsav === av) {
+                    exercise.gradeableStep();
+                } else {
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+                }
+
+            }, 1400);
+            
+        }
+
+
+        function drawPopArrow(st, arr, jsav) {
+            //draw arrow from the calculator to the stack
+            var $val1 = st.first().element,
+              $val2 = arr.element,
+              off1 = $val1.offset(),
+              off2 = $val2.offset(),
+              coff = jsav.canvas.offset(),
+              x1 = off1.left - coff.left,
+              x2 = off2.left - coff.left + $val2.outerWidth()/2,
+              y1 = off1.top - coff.top + $val1.outerHeight()/2,
+              y2 = off2.top - coff.top,
+              curve = 20,
+              cx1 = x1 - curve,
+              cx2 = x2,
+              cy1 = y1,
+              cy2 = y2 - curve,
+              arrowStyle = "classic-wide-long";
+
+            // var arr = av.getSvg().path("M" + x1 + "," + y1 + "C" + cx1 + "," + cy1 + " " + cx2 + "," + cy2 + " " + x2 + "," + y2).attr({"arrow-end": arrowStyle, "stroke-width": 10, "stroke":"pink"});
+            var arr = drawpath(
+                jsav.svg,
+                "M" + x1 + "," + y1 + "C" + cx1 + "," + cy1 + " " + cx2 + "," + cy2 + " " + x2 + "," + y2,
+                500,
+                {"arrow-end": arrowStyle, "stroke-width": 10, "stroke":"pink"},
+                function() {arr.remove}
+                );
+
+            //remove the arrow
+            setTimeout(function() {arr.remove()}, 700);
+        }
+
+
+        function drawpath( canvas, pathstr, duration, attr, callback ) {
+            var guide_path = canvas.path( pathstr ).attr( { stroke: "none", fill: "none" } );
+            var path = canvas.path( guide_path.getSubpath( 0, 1 ) ).attr( attr );
+            var total_length = guide_path.getTotalLength( guide_path );
+            var last_point = guide_path.getPointAtLength( 0 );
+            var start_time = new Date().getTime();
+            var interval_length = 10;
+            var result = path;        
+
+            var interval_id = setInterval( function()
+            {
+                var elapsed_time = new Date().getTime() - start_time;
+                var this_length = elapsed_time / duration * total_length;
+                var subpathstr = guide_path.getSubpath( 0, this_length );            
+                attr.path = subpathstr;
+                path.animate( attr, interval_length - 1 );
+                if ( elapsed_time >= duration )
+                {
+                    clearInterval( interval_id );
+                    if ( typeof callback !== undefined ) callback();
+                        guide_path.remove();
+                }                                       
+            }, interval_length );  
+            return result;
+        }
+
+        function animateOperator(arr, jsav) {
+            var opSign = jsav.svg.text(
+                arr.element.offset().left - jsav.canvas.offset().left + arr.element.outerWidth()/2,
+                arr.element.offset().top - jsav.canvas.offset().top + arr.element.outerHeight()/2,
+                arr.value(0)
+            );
+            opSign.animate({"font-size": 400, "opacity": 0}, 500, "<",
+                function() {
+                    //remove the operator sign when the animation is done
+                    opSign.remove();
+            });
+        }
+
+        var oldfx;
+
+        function turnAnimationOff() {
+            //save the state of fx.off
+            var oldfx = $.fx.off || false;
+            //turn off the animations when painting the bars green
+            //because it doesn't work well with the swap
+            $.fx.off = true;
+        }
+
+        function restoreAnimationState() {
+            $.fx.off = oldfx;
+        }
+
+        </script>
+    </body>
+</html>
