@@ -174,6 +174,7 @@ jQuery.fn.rotate = function(degrees) {
   jsav.recorded();
 }(jQuery));
 
+// JSAV extension for circular queue.
 (function($){
   function sin(x){
     return Math.sin(x*Math.PI/180);
@@ -189,79 +190,102 @@ jQuery.fn.rotate = function(degrees) {
     this.r2 = r2;
     var defaultOptions = {};
     this.options = $.extend(defaultOptions, options);
-    this.circle1 = this.jsav.g.circle(cx, cy, r1, this.options);
-    this.circle2 = this.jsav.g.circle(cx, cy, r2, this.options);
-    this.lines = [];
-    this.values = [];
-    var name = "test test";
-
-    var i = 0, x1, y1, x2, y2, label, degree = 0, step = 30;
-    while(degree < 360){
-      x1 = cx + r1 * cos(degree);
-      y1 = cy + r1 * sin(degree);
-      x2 = cx + r2 * cos(degree);
-      y2 = cy + r2 * sin(degree);
-      this.lines[i] = (this.jsav.g.line(x1, y1, x2, y2 , this.options));
+    var x1, y1, x2, y2, x3, y3, x4, y4, label,
+		i = 0, theta = 0, step = 30, pathString;
+    this.path = [];
+	this.labels = [];
+    while(theta < 360){
+      x1 = cx + r1 * cos(theta);
+      y1 = cy + r1 * sin(theta);
+      x2 = cx + r2 * cos(theta);
+      y2 = cy + r2 * sin(theta);
+      theta += 30;
+      x3 = cx + r2 * cos(theta);
+      y3 = cy + r2 * sin(theta);
+      x4 = cx + r1 * cos(theta);
+      y4 = cy + r1 * sin(theta);
+      theta -= 30;
+      pathString = "M" + x2 + "," + y2;
+      pathString += " A" + r2 + "," + r2 + " 1 0,1 " + x3 + "," + y3;
+      pathString += " L" + x4 + "," + y4;
+      pathString += " A" + r1 + "," + r1 + " 1 0,0 " + x1 + "," + y1;
+      this.path[i] = this.jsav.g.path(pathString, this.options);
       label = this.jsav.label(" ");
       label.css({'position' : 'absolute', 
-                 left : cx + (r1+r2)/2 * cos(degree + 15) - 20 + 'px', 
-                 top : cy + (r1+r2)/2 * sin(degree + 15) - 10 + 'px', width : '40px', height:'20px', 'text-align': 'center'});
-      this.values[i] = label;
+                 left : cx + (r1+r2)/2 * cos(theta + 15) - 20 + 'px', 
+                 top : cy + (r1+r2)/2 * sin(theta + 15) - 10 + 'px', width : '40px', height:'20px', 'text-align': 'center'});
+      this.labels[i] = label;
       i++;
-      degree += 30;
-    }
+      theta += 30;
+	}
   };
+
   Circular.prototype.value = JSAV.anim(function(index, value){
-    var oldval = this.values[index].element.html();
-    this.values[index].element.html(value);
+    console.log(this.labels);
+    var oldval = this.labels[index].element.html();
+    this.labels[index].element.html(value);
     return [index, oldval];
   });
+  Circular.prototype.highlight = function(index){
+    this.path[index]._setattrs({"fill" : "yellow", "opacity" : "0.5"});
+  }
+  Circular.prototype.unhighlight = function(index){
+    this.path[index]._setattrs({"fill" : "none", "opacity" : "1.0"});
+  }
   Circular.prototype.pointer = function(name, index){
-  var degree = 15 + 30 * index;
-  var left = cos(degree)*((this.r2 - this.r1)/2*1.8);
-  var top = sin(degree)*((this.r2 - this.r1)/2*1.8);
-  var fx, fy; 
-  var tx = this.r2*cos(degree) + this.cx;
-  var ty = this.r2*sin(degree) + this.cy;
-  if(degree + 15 < 180){
+    var degree = 15 + 30 * index;
+    var left = cos(degree)*((this.r2 - this.r1)/2*1.8);
+    var top = sin(degree)*((this.r2 - this.r1)/2*1.8);
+    var fx, fy; 
+    var tx = this.r2*cos(degree) + this.cx;
+    var ty = this.r2*sin(degree) + this.cy;
     left = tx + 25 * cos(degree + 15) -20;
-    top = ty + 25 * sin(degree + 15);
-  }else{
-    left = tx + 25 * cos(degree + 15) -20;
-    top = ty + 25 * sin(degree + 15) - 22;
-  }
-  var pointer = {};
-  pointer.label = this.jsav.label(name,{relativeTo: this.values[index], anchor: "center",
-                          myAnchor: "center",
-                          left: 0,
-                          top: 0, width : 40});
-  pointer.label.element.css({left : left, top : top});
-  this.value(index, top.toFixed(0));
-  if(degree + 15 < 180){
+    if(degree + 15 < 180){
+      top = ty + 25 * sin(degree + 15);
+    }else{
+      top = ty + 25 * sin(degree + 15) - 22;
+    }
+    var pointer = {};
+    pointer.label = this.jsav.label(name,{relativeTo: this.labels[index], anchor: "center",
+                            myAnchor: "center",
+                            left: 0,
+                            top: 0, width : 40});
+    pointer.label.element.css({left : left, top : top});
     fx = pointer.label.element.position().left + pointer.label.element.outerWidth()/2;
-    fy = pointer.label.element.position().top;
-  }else{
-    fx = pointer.label.element.position().left + pointer.label.element.outerWidth()/2;
-    fy = pointer.label.element.position().top + pointer.label.element.outerHeight();
+    if(degree + 15 < 180){
+      fy = pointer.label.element.position().top;
+    }else{
+      fy = pointer.label.element.position().top + pointer.label.element.outerHeight();
+    }
+    pointer.arrow = this.jsav.g.line(fx, fy, tx, ty, {"stroke-width" : 2, "arrow-end":"classic-wide-long"});
+    return pointer;
   }
-  pointer.arrow = this.jsav.g.line(fx, fy, tx, ty, {"stroke-width" : 2, "arrow-end":"classic-wide-long"});
-  return pointer;
-}
 
   JSAV.ext.circular = function(cx, cy, r1, r2, options) {
     return new Circular(this, cx, cy, r1, r2, $.extend({}, options));
   }; 
 }(jQuery));
 
+// Array-based circular queue
 (function($){
   var jsav = new JSAV("AQueueCircularCON");
 
-  // Relative offsets
-  var cx = 400;
-  var cy = 120; 
-  var cir = jsav.circular(cx, cy, 50, 100, {"stroke-width" : 2});
+  // center coordinate
+  var cx = 400, cy = 120; 
+  // radius
+  var r1 = 50, r2 = 100;
+  var fx = cx, fy = cy - r2 - 15;
+  var tx = cx + r2 + 15, ty = cy;
+  var fx1 = fx + 70, ty2 = ty - 70;
+  var path = "M" + fx + "," + fy;
+      path += " C" + fx1 + "," + fy;
+      path += " " + tx + "," + ty2;
+      path += " " + tx + "," + ty;
+  var curve = jsav.g.path(path, {"stroke-width" : 2, "arrow-end" : "classic-wide-long"});
+  var cir = jsav.circular(cx, cy, r1, r2, {"stroke-width" : 2});
   jsav.umsg("The circular queue with array positions increasing in the clockwise direction.");
   jsav.displayInit();
+  curve.hide();
   cir.value(8, "20");
   cir.value(9, "5");
   cir.value(10, "12");
