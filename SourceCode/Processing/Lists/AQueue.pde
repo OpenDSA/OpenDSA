@@ -1,5 +1,5 @@
-/* *** ODSATag: AQueue1 *** */
 // Array-based queue implementation
+/* *** ODSATag: AQueue1 *** */
 class AQueue implements Queue {
   private static final int defaultSize = 10;
   private int maxSize;         // Maximum size of queue

@@ -215,13 +215,17 @@ jQuery.fn.rotate = function(degrees) {
                  left : cx + (r1+r2)/2 * cos(theta + 15) - 20 + 'px', 
                  top : cy + (r1+r2)/2 * sin(theta + 15) - 10 + 'px', width : '40px', height:'20px', 'text-align': 'center'});
       this.labels[i] = label;
+      var test = this.jsav.label(i);
+      test.css({'position' : 'absolute', 
+                 left : cx + (r1)/100*78 * cos(theta + 15) - 20 + 'px', 
+                 top : cy + (r1)/100*78 * sin(theta + 15) - 10 + 'px', width : '40px', height:'20px', 'text-align': 'center'});
+  
       i++;
       theta += 30;
 	}
   };
 
   Circular.prototype.value = JSAV.anim(function(index, value){
-    console.log(this.labels);
     var oldval = this.labels[index].element.html();
     this.labels[index].element.html(value);
     return [index, oldval];
@@ -251,6 +255,7 @@ jQuery.fn.rotate = function(degrees) {
                             left: 0,
                             top: 0, width : 40});
     pointer.label.element.css({left : left, top : top});
+    //this.value(index, tx.toFixed() + "," + ty.toFixed());
     fx = pointer.label.element.position().left + pointer.label.element.outerWidth()/2;
     if(degree + 15 < 180){
       fy = pointer.label.element.position().top;
@@ -283,8 +288,14 @@ jQuery.fn.rotate = function(degrees) {
       path += " " + tx + "," + ty;
   var curve = jsav.g.path(path, {"stroke-width" : 2, "arrow-end" : "classic-wide-long"});
   var cir = jsav.circular(cx, cy, r1, r2, {"stroke-width" : 2});
-  jsav.umsg("The circular queue with array positions increasing in the clockwise direction.");
+  curve.hide();
+  jsav.umsg("The \"drifting queue\" problem can be solved by pretending that the array is circular and so allow the queue to continue directly from the highest-numbered position in the array to the lowest-numbered position.");
   jsav.displayInit();
+  jsav.umsg(" This is easily implemented through use of the modulus operator (denoted by % in many programming languages). In this way, positions in the array are numbered from 0 through size-1, and position size-1 is defined to immediately precede position 0.");
+  jsav.step();
+  jsav.umsg("The circular queue with array positions increasing in the clockwise direction.");
+  curve.show();
+  jsav.step();
   curve.hide();
   cir.value(8, "20");
   cir.value(9, "5");
@@ -312,3 +323,62 @@ jQuery.fn.rotate = function(degrees) {
   jsav.recorded();
 }(jQuery));
 
+// How to recognize when the queue is empty or full.
+(function($){
+  var jsav = new JSAV("AQueueEmptyFullCON");
+
+  // center coordinate
+  var cx = 400, cy = 120; 
+  // radius
+  var r1 = 50, r2 = 100;
+  var cir = jsav.circular(cx, cy, r1, r2, {"stroke-width" : 2});
+  jsav.umsg("How can we recognize when the queue is empty or full? ");
+  jsav.displayInit();
+  cir.value(10, "12");
+  cir.highlight(10);
+  var frontP = cir.pointer("front,rear", 10);
+  jsav.umsg("Assume that front stores the array index for the front element in the queue, and rear stores the array index for the rear element. If both front and rear have the same position, then with this scheme there must be one element in the queue.");
+  jsav.step();
+  cir.unhighlight(10);
+  cir.highlight(11);
+  cir.highlight(0);
+  cir.value(10, " ");
+  frontP.arrow.hide();
+  frontP.label.hide();
+  cir.pointer("front", 0);
+  cir.pointer("rear", 11);
+  jsav.umsg("Thus, an empty queue would be recognized by having rear be one less than front (taking into account the fact that the queue is circular, so position size-1 is actually considered to be one less than position 0).");
+  jsav.step();
+  jsav.umsg("But what if the queue is completely full? In other words, what is the situation when a queue with n array positions available contains n elements? In this case, if the front element is in position 0, then the rear element is in position size-1.");
+  jsav.step();
+  jsav.umsg("But this means that the value for rear is one less than the value for front when the circular nature of the queue is taken into account. In other words, the full queue is indistinguishable from the empty queue!")
+  jsav.recorded();
+}(jQuery));
+
+// Show the AQueue code.
+(function($){
+  var jsav = new JSAV("AQueueVarCON");
+  var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/AQueue.pde",
+                       lineNumbers: false,
+                       startAfter: "/* *** ODSATag: AQueue1 *** */",
+                       endBefore: "/* *** ODSAendTag: AQueue1 *** */"});
+  jsav.umsg("Member <code>listArray</code> holds the queue elements,");
+  pseudo.highlight(5);
+  jsav.displayInit();
+  pseudo.unhighlight(5);
+  pseudo.highlight(8);
+  jsav.umsg("and as usual, the queue constructor allows an optional parameter to set the maximum size of the queue.");
+  jsav.step();
+  pseudo.unhighlight(8);
+  pseudo.highlight(9);
+  jsav.umsg("The array as created is actually large enough to hold one element more than the queue will allow, so that empty queues can be distinguished from full queues.");
+  jsav.step(); 
+  pseudo.unhighlight(9);
+  pseudo.highlight(2);
+  jsav.umsg("Member <code>maxSize</code> is used to control the circular motion of the queue (it is the base for the modulus operator).");
+  jsav.step();
+  pseudo.unhighlight(2);
+  pseudo.highlight(4);
+  jsav.umsg("Member <code>rear</code> is set to the position of the current rear element, while front is the position of the current front element.");
+  jsav.recorded();
+}(jQuery));

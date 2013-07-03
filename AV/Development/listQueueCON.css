@@ -60,13 +60,23 @@
   height: 400px;
 }
 #AQueueCircularCON .jsavoutput.jsavline {
-  height: 50px;
+  height: 70px;
 }
-#AQueueCircularCON .jsavcode{
+#AQueueEmptyFullCON {
+  height: 400px;
+}
+#AQueueEmptyFullCON .jsavoutput.jsavline {
+  height: 55px;
+}
+#AQueueVarCON {
+  height: 480px;
+}
+#AQueueVarCON .jsavoutput.jsavline {
+  height: 40px;
+}
+#AQueueVarCON .jsavcode{
   border: 1px solid;
-  border-color: white;  
-  position: relative;
+  border-color: white; 
   top: -10px;
-  left: 190px;
-  width: 450px;
+  width:700px;
 }

@@ -198,6 +198,9 @@ efficient.
    In other words, the full queue is indistinguishable from the empty
    queue!
 
+.. inlineav:: AQueueEmptyFullCON ss
+   :output: show 
+   
    You might think that the problem is in the assumption about
    ``front`` and ``rear`` being defined to store the array indices
    of the front and rear elements, respectively, and that some
@@ -258,6 +261,9 @@ Here is an array-based queue implementation.
    Member ``rear`` is set to the position of the current rear element,
    while ``front`` is the position of the current front element.
 
+.. inlineav:: AQueueVarCON ss
+   :output: show 
+   
 In this implementation, the front of the queue is defined to be toward
 the lower numbered positions in the array (in the counter-clockwise
 direction in Figure :num:`Figure #GoodQueue`), and the rear is
