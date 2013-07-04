@@ -301,6 +301,9 @@ Here is the linked queue class declaration.
    point to the header node, and front will always point to the header
    node while rear points to the true last link node in the queue.
 
+.. inlineav:: LQueueIntroCON ss
+   :output: show    
+   
 .. TODO::
    :type: Slideshow
 
@@ -311,6 +314,9 @@ Here is the linked queue class declaration.
    points to) and then advances ``rear`` to point to the new link
    node.
 
+.. inlineav:: LQueueEnqueueCON ss
+   :output: show   
+   
 .. TODO::
    :type: Slideshow
 
@@ -318,6 +324,9 @@ Here is the linked queue class declaration.
 
    Method ``dequeue`` removes and returns the first element of the list.
 
+.. inlineav:: LQueueDequeueCON ss
+   :output: show 
+   
 .. TODO::
    :type: Exercise
 

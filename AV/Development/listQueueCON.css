@@ -80,3 +80,45 @@
   top: -10px;
   width:700px;
 }
+#LQueueIntroCON {
+  height: 530px;
+}
+#LQueueIntroCON .jsavoutput.jsavline {
+  height: 40px;
+}
+#LQueueIntroCON .jsavcode{
+  border: 1px solid;
+  border-color: white; 
+  position: relative;
+  left: 150px;
+  top: -10px;
+  width:535px;
+}
+#LQueueEnqueueCON {
+  height: 270px;
+}
+#LQueueEnqueueCON .jsavoutput.jsavline {
+  height: 40px;
+}
+#LQueueEnqueueCON .jsavcode{
+  border: 1px solid;
+  border-color: white; 
+  position: relative;
+  left: 200px;
+  top: -10px;
+  width:450px;
+}
+#LQueueDequeueCON {
+  height: 350px;
+}
+#LQueueDequeueCON .jsavoutput.jsavline {
+  height: 40px;
+}
+#LQueueDequeueCON .jsavcode{
+  border: 1px solid;
+  border-color: white; 
+  position: relative;
+  left: 150px;
+  top: -10px;
+  width:550px;
+}
