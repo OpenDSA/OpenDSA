@@ -50,7 +50,7 @@ jQuery.fn.rotate = function(degrees) {
   var minusOne = jsav.ds.array(["-1"],{top: topMargin + 70, left: leftMargin + 30});
   minusOne.hide();
   var arr = jsav.ds.array([12,45,5,81,"", "", "", ""],{indexed:true, top: topMargin, left: leftMargin});
-  jsav.umsg("Assume that there are <code>n</code> elements in the queue. By analogy to the array-based list implementation, we could require that all elements of the queue be stored in the first <code>n</code> positions of the array.");
+  jsav.umsg("Assume that there are <i>n</i> elements in the queue. By analogy to the array-based list implementation, we could require that all elements of the queue be stored in the first <i>n</i> positions of the array.");
   jsav.displayInit();
   var rearPointer = jsav.pointer("rear", arr, {targetIndex : 0});
   var frontPointer = jsav.pointer("front", arr, {targetIndex : 3});
@@ -60,14 +60,14 @@ jQuery.fn.rotate = function(degrees) {
   arr.highlight(0);
   arr.highlight(1);
   arr.highlight(2);
-  jsav.umsg("However, enqueue operations will require &theta;(n) time, because the n elements currently in the queue must each be shifted one position in the array.");
+  jsav.umsg("However, enqueue operations will require &theta;(<i>n</i>) time, because the n elements currently in the queue must each be shifted one position in the array.");
   jsav.step();
   arr.unhighlight();
   rearPointer.target(arr, {relativeIndex : 3, targetIndex : 3});
   frontPointer.target(arr, {relativeIndex : 0, targetIndex : 0});
   jsav.umsg("If instead we chose the rear element of the queue to be in position n-1, then an enqueue operation is equivalent to an append operation on a list. This requires only &theta;(1) time.");
   jsav.step();
-  jsav.umsg("But now, a dequeue operation requires &theta;(n) time, because all of the elements must be shifted down by one position to retain the property that the remaining $n-1$ queue elements reside in the first n-1 positions of the array.");
+  jsav.umsg("But now, a dequeue operation requires &theta;(<i>n</i>) time, because all of the elements must be shifted down by one position to retain the property that the remaining <i>n</i>-1 queue elements reside in the first <i>n</i>-1 positions of the array.");
   jsav.step();
   jsav.step();
   jsav.recorded();
@@ -80,7 +80,7 @@ jQuery.fn.rotate = function(degrees) {
   // Relative offsets
   var leftMargin = 250;
   var topMargin = 25; 
-  jsav.umsg("A far more efficient implementation can be obtained by relaxing the requirement that all elements of the queue must be in the first $n$~positions of the array. We will still require that the queue be stored be in contiguous array positions, but the contents of the queue will be permitted to drift within the array, as illustrated by the following slides ");
+  jsav.umsg("A far more efficient implementation can be obtained by relaxing the requirement that all elements of the queue must be in the first <i>n</i> positions of the array. We will still require that the queue be stored be in contiguous array positions, but the contents of the queue will be permitted to drift within the array, as illustrated by the following slides ");
   jsav.displayInit();
   var arr = jsav.ds.array([20,5,12,17, "", "", "", "", "", "", "", ""],{left:leftMargin, top:topMargin});
   var rearPointer =  jsav.pointer("rear", arr, {targetIndex : 3});
@@ -135,7 +135,7 @@ jQuery.fn.rotate = function(degrees) {
   var arr = jsav.ds.array([20,5,12,17, "", "", "", "", "", "", "", ""],{left:leftMargin, top:topMargin});
   var rearPointer =  jsav.pointer("rear", arr, {targetIndex : 3});
   var frontPointer =  jsav.pointer("front", arr, {targetIndex : 0});
-  jsav.umsg("This implementation raises a new problem. Assume that the front element of the queue is initially at position~0, and that elements are added to successively higher-numbered positions in the array.");
+  jsav.umsg("This implementation raises a new problem. Assume that the front element of the queue is initially at position 0, and that elements are added to successively higher-numbered positions in the array.");
   jsav.displayInit();
   frontPointer.target(arr, {relativeIndex : 1, targetIndex : 1});
   arr.value(0, "");
