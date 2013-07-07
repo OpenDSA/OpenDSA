@@ -49,8 +49,8 @@
   /*#################################################################
     Global variables used throughout the program
   #################################################################*/
-  var sub_str; //the actual sub string
-  var master_str; //the actual master string
+  var sub_str; //the actual sub string array for the visualization
+  var master_str; //the actual master string array for the visualization
   var sub_temp;
   var master_temp;
   var align; //the alignment table
@@ -175,7 +175,6 @@ function compute_mmc(sub) {
 
 function compute_align_table( sub ) {
   var align = new Array();
-  console.log(sub);
   var offset, suffix_length, index_of_sub;
   align[sub.length-1] = 1;
   for(var i = sub.length-2; i >=0; i--){
@@ -183,7 +182,6 @@ function compute_align_table( sub ) {
     suffix_length = sub.length - (p+1);
 
     index_of_sub = sub.substring(0, p-1).lastIndexOf(sub.substring(p+1, sub.length));
-    //console.log("p: "+(p+1) + " index of sub: "+index_of_sub);
     offset = sub.length;
     if(index_of_sub != -1){
       offset = (p+1) - index_of_sub;
@@ -219,7 +217,7 @@ function boyer_moore(ma, su, mmc, align_table) {
       m = m-1;
       s = s-1;
       indexes_checked++;
-      //console.log("Comparing characters: "+master[m] + " "+sub[s]);
+
     }
     if(s < 0){
       return m+1;
@@ -228,7 +226,7 @@ function boyer_moore(ma, su, mmc, align_table) {
       m = m + get_max(value_in_mmc, align_table[s]);
       real_master_answer = m;
       amount_to_shift = m - indexes_checked;
-      console.log("Master answer index: "+ m +" Sub answer index: " + (sub_temp.length-1));
+
       break;
     }
   }
@@ -241,13 +239,13 @@ function boyer_moore(ma, su, mmc, align_table) {
       if (master_str.isHighlight(i) && real_master_answer == i) {
         for(j = 0; j < sub_str.size(); j++){
           if(sub_str.isHighlight(j) && (sub_temp.length-1) == j) {
-            //console.log("Master answer: " +i + " Sub answer: "+j);
+
             return true;
           }
         }
       }
     }
-    //console.log("Master answer: " +i + " Sub answer: "+j);
+
     return false;
   }
   var clickHandler = function(index, e) {
@@ -360,7 +358,7 @@ function boyer_moore(ma, su, mmc, align_table) {
       <div class="problems">
         <div>
           <div class="question">
-            The exercise below requires that you determine the next step in the algorithm.
+                   The exercise below will test your newly acquired knowledge on the Boyer-Moore algorithm. Assume the two characters highlighted in red were just compared and it is discovered they don't match. Please click the index of the master string that will be compared <b>after the current mismatch</b> and then the index of the substring that will be compared to it. When you are finished hit <b>Check Answer</b> to see if you are correct. The values in the strings that have already been compared are highlighted in green so there is no confusion, and the characters that were just mismatched are in red. The idea is to trace the string <b><var>sub_temp.join("")</var></b> through the string <b><var>master_temp.join("")</var></b> using the KMP Algorithm for just one step.
             <div id="jsav_area"></div>
           </div> <!-- question -->
           <div class="solution" data-type="custom">
