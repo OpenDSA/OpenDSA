@@ -101,11 +101,13 @@
     answer_index = gen_random(0, num_of_unique_chars(arr));
     
     var num_accounted_for = 0;
+    var final_answer_index;
     for(var i = 0; i < alphabet.length; i++){
       var location_in_arr = find_index(arr, alphabet[i]);
       if(location_in_arr > -1){
         if(num_accounted_for == answer_index){
           temp_local_mmc[i] = ' ';
+          final_answer_index = i;
           answer_value = arr.length - location_in_arr - 1;
         } else {
           temp_local_mmc[i] = arr.length - location_in_arr - 1;
@@ -113,7 +115,7 @@
         num_accounted_for++;
       }
     }
-    return [alphabet, temp_local_mmc];
+    return [alphabet, temp_local_mmc, final_answer_index];
   }
 
   function checkAnswer() {
@@ -142,7 +144,7 @@
 
     alphabet_arr = mmc.ds.array(mmc_returned[0]);
     mmc_arr = mmc.ds.array(mmc_returned[1]);
-
+    mmc_arr.highlight(mmc_returned[2]);
     var str_label = mmc.label("String", {before: str_arr});
     var alphabet_label = mmc.label("Alphabet", {before: alphabet_arr});
     var mmc_label = mmc.label("MMC Array", {before: mmc_arr});
