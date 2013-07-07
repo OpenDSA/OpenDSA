@@ -63,7 +63,7 @@
     var dec = gen_random(0, 3);
     var length = gen_random(string_min_length, string_max_length);
     var return_str = '';
-    console.log("decision " + dec);
+
     if(dec == 0) {
       var seed2 = gen_random(97,122);
       for(var i = 0; i < length; i++){
@@ -105,6 +105,7 @@
       if(align[i-1] - align[i] > 1){
         console.log(align[i-1]);
         answer_value = align[i-1];
+        answer_index = i-1;
         align[i-1] = '';
         break;
       }
@@ -114,7 +115,6 @@
   function compute_align_table( sub ) {
     var align = new Array();
     var substr = sub.join("");
-    console.log(substr);
     var offset, suffix_length, index_of_sub;
     align[sub.length-1] = 1;
     for(var i = sub.length-2; i >=0; i--){
@@ -134,8 +134,6 @@
 
   function checkAnswer() {
     var answer = $("#user_answer").val();
-    console.log(answer);
-    console.log(answer_value);
     if(answer == answer_value) {
       return true;
     } else {
@@ -153,13 +151,13 @@
     var alignment = new JSAV("jsav_area", {"animationMode": "none"});
     //handles the actual click on an index and highlights the specified index
     var str = generate_sub();
-    console.log(str);
     str_arr = alignment.ds.array(str, {indexed: true});
 
     //initializing the alignment array
     var alignment_returned = compute_align_table(str);
 
     align_arr = alignment.ds.array(alignment_returned);
+    align_arr.highlight(answer_index);
 
     var str_label = alignment.label("String:", {before: str_arr});
     var align_label = alignment.label("Alignment Array:", {before: align_arr});
