@@ -145,7 +145,6 @@
       answer_value = align[answer_index];
     }
     align[answer_index] = " ";
-    console.log("Answer index: "+answer_index+" Answer: "+answer_value);
     return align;
   }
 
@@ -179,6 +178,7 @@
     for(var i = 0; i < align_table_temp.length; i++){
       alignment_table.value(i, align_table_temp[i]);
     }
+    alignment_table.highlight(answer_index);
   }
   // reset function definition
   var f_reset = function () {
