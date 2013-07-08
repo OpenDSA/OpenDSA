@@ -1,0 +1,262 @@
+<!--
+Array-Based Stacks Push Proficiency Exercise.
+Written by Junyang Chen and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Array-Based Stacks Push Proficiency Exercise</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../lib/khan-exercise-min.js"></script>
+  <script src="../../JSAV/build/JSAV.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+
+  <style>
+    .jsavcontainer {
+	  height: 125px;
+      border: 0px;
+    }
+	.jsavcanvas{
+	  height: 125px;
+	}
+	.jsavnode {
+      line-height: 30px !important;
+      min-width: 30px !important;
+      max-width: 30px !important;
+      min-height: 30px !important;
+      max-height: 30px !important;
+    }
+    .jsavpointer{
+      width: 40px;
+      border: 1px solid #bbb;
+      text-align: center;
+	  cursor: pointer;
+    }
+    #reset { margin-right: 20px;}
+    .highlight{
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+var jsav,           // The JSAV object
+  answerArr = [], // The (internal) array that stores the correct answer
+  cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
+  jsavArr,        // The array that the user manipulates (JSAV object)
+  arrMax,
+  selected_pointer,
+  pointerIndex,   // The index of array by which the pointer points to.
+  pointerTop,     // 'top' pointer
+  status,
+  inValue,        // insertion value
+  userInput,      // Boolean: Tells us if user ever did anything
+  selected_index; // Position that has been selected by user for swap
+
+JSAV._types.Pointer.prototype.click = function(fn){
+  var pointer = this;
+  this.element.click(function(){fn(pointer)});
+}
+// pointer click handler
+var pclick = function(pointer){
+  if(status == 1){
+    jsavArr.css(selected_index, {"font-size": "100%"});
+    jsavArr.unhighlight(selected_index);
+    selected_pointer = pointer;
+    selected_pointer.element.toggleClass('highlight');
+    status = 2;
+  }else if(status == 2){
+    selected_pointer.element.removeClass('highlight');
+	status = 0;
+  }else{
+    selected_pointer = pointer;
+    selected_pointer.element.toggleClass('highlight');
+    status = 2;
+  }
+  userInput = true;
+}
+
+// Click event handler on the array 'jsavArr'
+var clickHandler = function (index, e) {
+  if (status == 0) { // if nothing currently selected
+    jsavArr.css(index, {"font-size": "110%"});
+	selected_index = index;
+	jsavArr.highlight(index);
+    status = 1;
+  } else if(status == 1) {	
+    jsavArr.swap(selected_index, index);	
+	jsavArr.css(index, {"font-size": "100%"});
+	jsavArr.unhighlight(index);
+	selected_index = -1;  // Reset to nothing selected
+    status = 0;
+  } else if (status == 2){
+    selected_pointer.target(jsavArr, {relativeIndex : index,targetIndex : index});
+    //jsav.step();
+    jsav.container.trigger("jsav-updaterelative");
+    selected_pointer.element.removeClass('highlight');
+    pointerIndex = index;
+    status = 0;
+  }
+  userInput = true;
+};
+
+// Click event handler on the array 'arrMax'
+var maxClickHandler = function (index, e) {
+  if (status == 2){
+    selected_pointer.target(arrMax, {relativeIndex : 0,targetIndex : 0});
+    jsav.container.trigger("jsav-updaterelative");
+    selected_pointer.element.removeClass('highlight');
+    pointerIndex = 0;
+    status = 0;
+  }
+  userInput = true;
+}
+
+// reset function definition
+var f_reset = function (max_size, arr_size) {
+  selected_index = -1;
+  status = 0; 
+
+  if($("#jsav")){
+    $("#jsav").empty();
+  }
+  jsav = new JSAV("jsav");	
+  jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false, top : 50});
+  arrMax = jsav.ds.array([max_size], {left:jsavArr.element.outerWidth() + 20, top : 50});
+  if(arr_size === max_size){
+    pointerTop = jsav.pointer("top", arrMax, {targetIndex:0});
+    pointerIndex = 0;
+  }else{
+     pointerTop = jsav.pointer("top", jsavArr, {targetIndex:arr_size});
+     pointerIndex = arr_size;
+  }
+  pointerTop.click(pclick);
+  jsav.recorded();
+  jsav.forward();
+  // Bind the clickHandler to handle click events on the array
+  jsavArr.click(clickHandler);
+  arrMax.click(maxClickHandler);
+  userInput = false;
+};
+
+// Initialise the exercise
+var initJSAV = function (max_size, arr_size, insertValue) {
+  var i, j;
+  userInput = false;
+  selected_index = -1;
+  insertEnable = false;
+  status = 0;
+  inValue = insertValue;  
+  answerArr.length = 0; // Out with the old
+
+  // Give random numbers in range 0..999
+  for (i = 0; i < arr_size; i++) {
+    answerArr[i] = Math.floor(Math.random() * 1000);
+  }
+  for(i = 0; i < max_size - arr_size; i++)
+  {
+    answerArr.push.apply(answerArr, [""]);
+  }
+  // Now make a copy
+  cloneArr = answerArr.slice(0);
+
+  f_reset(max_size, arr_size);
+
+  // correct answer
+  answerArr.splice(arr_size, 0, inValue); 
+  answerArr.splice(arr_size + 1, 1); 
+
+  // Set up handler for insert button
+  $("#insert").click(function () {
+    if(selected_index !== -1){
+      jsavArr.value(selected_index, inValue);
+	  jsavArr.css(selected_index, { "background-color": "#ddd" });
+	  jsavArr.css(selected_index, {"font-size": "100%"});
+	  jsavArr.unhighlight(selected_index);
+	  selected_index = -1;
+	  status = 0;
+	  userInput = true;
+    }
+  });
+
+  // Set up handler for reset button
+  $("#reset").click(function () { f_reset(max_size, arr_size); });
+};
+
+// Check user's answer for correctness: User's array must match answer
+var checkAnswer = function (max_size, arr_size) {
+
+  if(max_size === arr_size || max_size === arr_size + 1){  
+    if(pointerTop.target() !== arrMax || pointerIndex !== 0){
+      alert(pointerIndex);
+      return false;
+	}
+  }else {
+    if(pointerTop.target() !== jsavArr || pointerIndex !== arr_size + 1){
+      return false;
+	}
+  }
+    var i;
+  for (i = 0; i < max_size; i++) {
+    if (jsavArr.value(i) !== answerArr[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="max_size">randRange(6, 8)</var>
+    <var id="arr_size">randRange(0, max_size)</var>
+	<var id="insert_value">randRange(0, 999)</var>
+    <var id="JSAV">initJSAV(max_size, arr_size, insert_value)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem">Your task in this exercise is to show the
+        behavior for array-based list insertion.
+        In the array displayed below, the "current" position is <b><var>insert_pos</var></b>.</p>
+      <div class="question">
+        <p>The value to insert is  <b><var>insert_value</var></b>,
+	  and it is to be inserted into position <b><var>insert_pos</var></b>.</p>
+        <p>To move an element, click on it (to highlight it), then click on where you
+        want it to go. You can insert the new
+        value <b><var>insert_value</var></b> into a highlighted
+        array position by clicking the "Insert" button.</p>
+        <input id="reset" type="button" value="Reset" />
+		<input id="insert" type="button" value="Insert" />
+        <div id="jsav"></div>
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [userInput]
+        </div>
+        <div class="validator-function">
+          if (!checkAnswer(max_size, arr_size) && !guess[0])
+            return ""; // User did not click, and correct answer is not
+	               // initial array state
+          else return checkAnswer(max_size, arr_size);
+        </div>
+      </div>
+      <div class="hints">
+        <p>To shift elements after "current" one position to the right, the first step could be swapping element <var>arr_size - 1</var> with position <var>arr_size</var></p> 
+	<p>Then, keep swapping element i with i+1 until you make "current" empty for insertion </p>
+        <p>Insert value to "current" position</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -194,8 +194,8 @@ function setPointer(name, obj){
       .addFirst(8)
       .addFirst(20);
   list.layout();
-  list.get(0).edgeToNext().hide();
-  list.get(0).hide();
+  //list.get(0).edgeToNext().hide();
+  //list.get(0).hide();
   var arr = jsav.ds.array([10]);
   arr.hide();
   var topPointer = jsav.pointer("top", list.get(1));
