@@ -234,7 +234,7 @@
 
         // Click handler for the array
         jsavArray.click(function(index) {
-            //move the values from the JSAV variables into regulas js vars
+            //get the values from the JSAV variables and put them into regular js vars
             var sIndex = selectedIndex.value();
             var sStruct = selectedStruct.value();
             //changed to true if the step should be graded
@@ -272,7 +272,7 @@
                 sIndex = -1;
                 sStruct = -1;
             }
-            // move the values back to the JSAV variables
+            // put the values back to the JSAV variables
             selectedIndex.value(sIndex);
             selectedStruct.value(sStruct);
             if (grade)
@@ -478,7 +478,7 @@
                 if ( elapsed_time >= duration )
                 {
                     clearInterval( interval_id );
-                    if ( typeof callback !== undefined ) callback();
+                    if ( typeof callback !== "undefined" ) callback();
                         guide_path.remove();
                 }                                       
             }, interval_length );  
