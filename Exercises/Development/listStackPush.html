@@ -225,16 +225,9 @@ var checkAnswer = function (max_size, arr_size) {
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem">Your task in this exercise is to show the
-        behavior for array-based list insertion.
-        In the array displayed below, the "current" position is <b><var>insert_pos</var></b>.</p>
+      <p class="problem">
       <div class="question">
-        <p>The value to insert is  <b><var>insert_value</var></b>,
-	  and it is to be inserted into position <b><var>insert_pos</var></b>.</p>
-        <p>To move an element, click on it (to highlight it), then click on where you
-        want it to go. You can insert the new
-        value <b><var>insert_value</var></b> into a highlighted
-        array position by clicking the "Insert" button.</p>
+        
         <input id="reset" type="button" value="Reset" />
 		<input id="insert" type="button" value="Insert" />
         <div id="jsav"></div>
@@ -251,9 +244,6 @@ var checkAnswer = function (max_size, arr_size) {
         </div>
       </div>
       <div class="hints">
-        <p>To shift elements after "current" one position to the right, the first step could be swapping element <var>arr_size - 1</var> with position <var>arr_size</var></p> 
-	<p>Then, keep swapping element i with i+1 until you make "current" empty for insertion </p>
-        <p>Insert value to "current" position</p>
       </div>
     </div>
   </div>
