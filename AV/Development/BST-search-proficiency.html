@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>Binary Tree Search</title>
+        <title>BST Search</title>
         <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
         <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
     </head>
@@ -33,12 +33,12 @@
             background-color: #eee !important;
           }
         </style>
-        <h1>Binary Tree Search</h1>
+        <h1>BST Search</h1>
         <div id="jsavcontainer">
             <!-- <a class="jsavsettings" href="#">Settings</a> -->
             <p class="instructLabel">Instructions:</p>
             <p class="instructions">
-                    Use the Binary Tree Search algorith to find the key given in the excercise. Click on a node to see its value and its children.
+                    Use the BST Search algorith to find the key given in the excercise. Click on a node to unhide the value and its children.
             </p>
             <p align="center" class="jsavexercisecontrols"></p>
             <p class="jsavscore"></p>
@@ -127,6 +127,7 @@
             }
             jsavBinaryTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
             jsavBinaryTree.root("?");
+            jsavBinaryTree.root().css("opacity", 0.5);
             jsavBinaryTree.click(clickHandler);
             jsavBinaryTree.layout();
 
@@ -176,11 +177,14 @@
         function clickHandler() {
             if (!this.isHighlight()) {
                 var index = getIndex(this, jsavBinaryTree.root());
+                this.css("opacity", 1);
                 this.value(initialData[index]);
                 this.highlight();
                 if ((index + 1) * 2 < nodeNum) {
                     this.left("?");
+                    this.left().css("opacity", 0.5);
                     this.right("?");
+                    this.right().css("opacity", 0.5);
                 }
                 jsavBinaryTree.layout();
                 exercise.gradeableStep();
