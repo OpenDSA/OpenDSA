@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Infix to Postfix</title>
+        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+    </head>
+
+    <body>
+        <style>
+          #jsavcontainer {
+            width: 800px;
+            height: 650px;
+            background-color: #fff;
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+          }
+          .jsavnode {
+            cursor: pointer;
+          }
+          .jsavcanvas {
+            min-height: 100px;
+          }
+          p.instructLabel {
+            margin-top: -5px;
+          }
+          p.instructions {
+            margin-top: -15px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid black;
+          }
+          .selected, .selected .jsavvalue, .jsavarray.jsavbararray .jsavindex.selected .jsavvalue{
+            font-size: 130%;
+            background-color: #ddf !important;
+          }
+          .greybg, .greybg .jsavvalue, .jsavarray.jsavbararray .jsavindex.greybg .jsavvalue{
+            background-color: #eee;
+          }
+        </style>
+        <h1>Infix to Postfix</h1>
+        <div id="jsavcontainer">
+            <p class="instructLabel">Instructions:</p>
+            <p class="instructions">
+                    Convert the infix expression into a postfix expression in the table below. You can move elements to the Bit Bucket to make them disappear.
+            </p>
+            <p align="center" class="jsavexercisecontrols"></p>
+            <p class="jsavscore"></p>
+            <p style="text-align:center"><br/>Infix Expression</p>
+            <ol id="exerArray"></ol>
+            <p style="text-align:center"><br/>Stack</p>
+            <div class="jsavcanvas"></div>
+            <p style="text-align:center"><br/>Postfix Expression</p>
+            <ol id="resultArray"></ol>
+        </div>
+
+        <script
+           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+        <script src="../../JSAV/lib/raphael.js"></script>
+        <script src="../../JSAV/build/JSAV.js"></script>
+        <script src="ClickHandler.js"></script>
+
+        <script>
+
+        var arraySize = 15, //size needs to be odd
+            initialArray = [],
+            jsavArray,
+            resultArray,
+            $array = $("#exerArray"),
+            $result = $("#resultArray"),
+            stack,
+            bitBucket,
+            av = new JSAV($("#jsavcontainer")),
+            clickHandler;
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        function initialize() {
+            
+            turnAnimationOff();
+
+            //generate random infix and insert in the array
+            var htmldata = "";
+            initialArray = generateRandomInfix(arraySize, 2, false);
+            for (var i = 0; i < arraySize; i++) {
+                htmldata += "<li>"+initialArray[i]+"</li>";
+            }
+            $array.html(htmldata);
+
+            jsavArray = av.ds.array($array, {indexed: false});
+            jsavArray.layout();
+
+            //create empty array for the result
+            $result.html(new Array(arraySize - 3).join("<li></li>"));
+            resultArray = av.ds.array($result, {indexed: false, center: true});
+
+            //set up click handler
+            if (typeof clickHandler === "undefined") {
+                clickHandler = new ClickHandler(av, exercise, {selectedClass: "selected"});
+                clickHandler.addArray(jsavArray);
+                clickHandler.addArray(resultArray, {onDrop: function(){restoreInfix(jsavArray).call(this)}});
+            }
+            clickHandler.reset();
+
+            //add stack and set click handler
+            if (stack) {
+                clickHandler.remove(stack);
+                stack.clear();
+            }
+            stack = av.ds.list({nodegap: 15, center: false});
+            clickHandler.addList(stack, {keep: true, select: "first", drop: "first", onDrop: function(){restoreInfix(jsavArray).call(this)}});
+            stack.addFirst("");
+            stack.first().addClass("greybg");
+            stack.css({top: 30, left: 200});
+            stack.layout();
+
+            //create the bit bucket
+            if (typeof bitBucket === "undefined") {
+                bitBucket = av.ds.array(["Bit Bucket"], {indexed: false, center: false});
+                bitBucket.element.css({"top": 0, "left": 60 , "position": "absolute"});
+                clickHandler.addArray(bitBucket, {onDrop: restoreInfix(jsavArray), effect: "toss"});
+            }
+
+            av.displayInit();
+
+            restoreAnimationState();
+
+            return resultArray;
+        }
+        
+        function modelSolution(jsav) {
+            //array
+            var modelArray = jsav.ds.array(initialArray);
+            //stack
+            var modelStack = jsav.ds.list({nodegap: 15, layout: "horizontal", center: false});
+            modelStack.addFirst("");
+            modelStack.first().addClass("greybg");
+            modelStack.css({top: 30, left: 200});
+            modelStack.layout();
+
+            var modelResultArray = jsav.ds.array(new Array(arraySize - 4));
+            modelResultArray.element.css(
+                {top: 165,
+                left: (jsav.canvas.outerWidth() - modelResultArray.element.outerWidth()) / 2,
+                "position": "absolute"});
+            
+            var modelBitBucket = jsav.ds.array(["Bit Bucket"], {indexed: false, center: false});
+            modelBitBucket.element.css({"top": 60, "left": 60 , "position": "absolute"});
+
+            jsav.canvas.css({height: 250});
+
+            jsav._undo = [];
+
+            $(".jsavforward").click(function() {
+                if (jsav.container.hasClass("jsavplaying")) {
+                    jsav.container.removeClass("jsavplaying");
+                }
+            });
+            $(".jsavbackward").click(function() {
+                if (jsav.container.hasClass("jsavplaying")) {
+                    jsav.container.removeClass("jsavplaying");
+                }
+            });
+
+            //postfix index
+            var postfixInd = 0;
+
+            for (var i = 0; i < arraySize; i++) {
+                var newChar = initialArray[i];
+                var type;
+                if (parseInt(newChar, 16)) {
+                    type = "operand";
+                } else {
+                    type = newChar;
+                }
+
+                switch (type) {
+                    case "operand":
+                        //move operand into the expression
+                        jsav.effects.moveValue(modelArray, i, modelResultArray, postfixInd++);
+                        restoreInfix(modelArray).call(this);
+                        jsav.stepOption("grade", true);
+                        jsav.step();
+                        break;
+                    case "(":
+                        //push the left parenthesis to the stack
+                        modelStack.addFirst();
+                        jsav.effects.moveValue(modelArray, i, modelStack.first());
+                        restoreInfix(modelArray).call(this);
+                        modelStack.layout();
+                        jsav.stepOption("grade", true);
+                        jsav.step();
+                        break;
+                    case ")":
+                        //throw the right parenthesis into the bit bucket and pop operators into the expression
+                        modelArray.value(i, "");
+                        restoreInfix(modelArray).call(this);
+                        // jsav.stepOption("grade", true);
+                        jsav.step();
+                        var node = modelStack.first();
+                        while (node.value() !== "(") {
+                            jsav.effects.moveValue(node, modelResultArray, postfixInd++);
+                            modelStack.removeFirst();
+                            modelStack.layout();
+                            jsav.stepOption("grade", true);
+                            jsav.step();
+                            node = modelStack.first();
+                        }
+                        //pop the left parenthesis into the bit bucket
+                        modelStack.removeFirst();
+                        modelStack.layout();
+                        jsav.stepOption("grade", true);
+                        jsav.step();
+                        break;
+                    case "*":
+                        //pop possible * from the stack into the expression
+                        var node = modelStack.first();
+                        while (node.value() === "*") {
+                            jsav.effects.moveValue(node, modelResultArray, postfixInd++);
+                            modelStack.removeFirst();
+                            modelStack.layout();
+                            jsav.stepOption("grade", true);
+                            jsav.step();
+                            node = modelStack.first();
+                        }
+                        //push the * into the stack
+                        modelStack.addFirst();
+                        jsav.effects.moveValue(modelArray, i, modelStack.first());
+                        restoreInfix(modelArray).call(this);
+                        modelStack.layout();
+                        jsav.stepOption("grade", true);
+                        jsav.step();
+                        break;
+                    case "+":
+                        //pop possible * and + from the stack into the expression
+                        var node = modelStack.first();
+                        while (node.value() === "*" || node.value() === "+") {
+                            jsav.effects.moveValue(node, modelResultArray, postfixInd++);
+                            modelStack.removeFirst();
+                            modelStack.layout();
+                            jsav.stepOption("grade", true);
+                            jsav.step();
+                            node = modelStack.first();
+                        }
+                        //push the + into the stack
+                        modelStack.addFirst();
+                        jsav.effects.moveValue(modelArray, i, modelStack.first());
+                        restoreInfix(modelArray).call(this);
+                        modelStack.layout();
+                        jsav.stepOption("grade", true);
+                        jsav.step();
+                        break;
+                }
+            }
+
+            //empty the stack into the expression
+            var node = modelStack.first();
+            while (node.value() !== "") {
+                jsav.effects.moveValue(node, modelResultArray, postfixInd++);
+                modelStack.removeFirst();
+                modelStack.layout();
+                jsav.stepOption("grade", true);
+                jsav.step();
+                node = modelStack.first();
+            }
+
+            return modelResultArray;
+        }
+        
+        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+        exercise.reset();
+        
+        //generates a random infix expression
+        //only made to work with the exercise
+        //initial call should be made with odd length
+        function generateRandomInfix(length, parentheses, endWithOperator) {
+            if (length === 0)
+                return [];
+            if (length === 1) {
+                if (endWithOperator) {
+                    return Math.random() < 0.5? ["+"]: ["*"];
+                } else {
+                    var operand = Math.ceil(Math.random() * 15).toString(16);
+                    return [operand];
+                }
+            }
+
+            var minLengthForParentheses = parentheses * 5 + parentheses - 1 + (endWithOperator && parentheses?1:0);
+            
+            if (Math.random() < minLengthForParentheses / length) {
+                //return array with parentheses
+                if (    parentheses - 1 > 0 &&
+                        length >= 11 + (endWithOperator?1:0) &&
+                        Math.random() < 0.5) {
+                    //parentheses inside parentheses
+                    if (length <= 12) {
+                        return ["("].concat(generateRandomInfix(9, 1, false),
+                                            [")"],
+                                            generateRandomInfix(length - 11,parentheses - 2, endWithOperator));
+                    } else {
+                        return ["("].concat(generateRandomInfix(9, 1, false),
+                                            [")"],
+                                            generateRandomInfix(1, 0, true),
+                                            generateRandomInfix(length - 12,parentheses - 2, endWithOperator));
+                    }
+                }
+                var parInside = Math.min(Math.random() < 0.5? 3: 5, length - 2);
+                if (length <= parInside + 3) {
+                    return ["("].concat(generateRandomInfix(parInside, 0, false),
+                                        [")"],
+                                        generateRandomInfix(length - parInside - 2, parentheses - 1, endWithOperator));
+
+                } else {
+                    return ["("].concat(generateRandomInfix(parInside, 0, false),
+                                        [")"],
+                                        generateRandomInfix(1, 0, true),
+                                        generateRandomInfix(length - parInside - 3, parentheses - 1, endWithOperator));  
+                }
+            }
+
+            //no parentheses
+            //return operand + operator
+            var operand = Math.ceil(Math.random() * 15).toString(16);
+            return [operand].concat(generateRandomInfix(1, 0, true),
+                                    generateRandomInfix(length - 2, parentheses, endWithOperator));
+
+        }
+
+        //returns a function which:
+        //restores the infix expression after an element has been moved
+        //away from the expression
+        //paints the restored index grey to mark that it has been used
+        function restoreInfix(array) {
+            return function() {
+                for (var i = 0; i < arraySize; i++) {
+                    if (array.value(i) === "") {
+                        array.value(i, initialArray[i]);
+                        array.addClass(i, "greybg");
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
+        var oldfx;
+
+        function turnAnimationOff() {
+            //save the state of fx.off
+            var oldfx = $.fx.off || false;
+            //turn off the animations when painting the bars green
+            //because it doesn't work well with the swap
+            $.fx.off = true;
+        }
+
+        function restoreAnimationState() {
+            $.fx.off = oldfx;
+        }
+
+        </script>
+    </body>
+</html>
