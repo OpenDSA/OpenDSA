@@ -2,6 +2,8 @@
 
 <!--
   Samuel A. Micka
+
+  Ville Karavirta: setInterval function and the idea behind getting slideshows in the hints
 -->
 <html>
   <head>
@@ -148,46 +150,44 @@
     return align;
     }
 
+    /*
+        This is the actual KMP algorithm, it is used to check their answer to create the two numbers at the beginning
+    */
     function kmp_real(master, sub, align, which) {
       var m = 0;
       var s = 0;
-      while((m < sub.length-1) && (sub.length - s <= master.length -m)) {
-        if(master[m] == sub[s]){
-          if(which ==1){
-            compares+=1;
-          } else {
-            user_compares+=1;
-          }
-                   
+      while((s < sub.length) && (sub.length - s <= master.length -m)) {
+        if(master[m] == sub[s]){   
+        console.log("comparing "+master[m] +" to "+sub[s]); 
           m+=1;
           s+=1;
-        } else if (s ==0 ){
-          if(which == 1){
-            compares+=1;
-          } else {
-            user_compares +=1;
-          }
-          
+        } else if (s == 0 ){
           m+=1;
         } else {
           if(which == 1){
-            shifts+=1;
-            compares+=1;
+            shifts++;
           } else {
-            user_shifts +=1;
-            user_compares +=1;
+            user_shifts++;
           }
           s = align[s];
         }
+        if(which == 1){
+          compares++;
+        } else {
+          user_compares++;
+        }
       }
-      if(s == sub.length-1) {
+      if(s == sub.length) {
         return m-s;
       } else {
+        console.log(-1);
         return -1;
       }
     }
 
-
+    /*
+      This is the kmp algorithm used to compute the slideshow for the hint
+    */
     function kmp(master, sub, align) {
         var m = 0;
         var s = 0;
@@ -238,7 +238,7 @@
           kmp_exercise.step();
         }
           kmp_exercise.recorded();
-        if(s == sub_str.length-1 || found) {
+        if(s == sub_str.length || found) {
           return m - s;
         } else {
           return -1;
@@ -246,19 +246,24 @@
       }
 
 
+      //This function just checks their input and ensures that it matches what we are looking for
     function checkAnswer() {
       var user_master = $("#user_master_id").val();
       var user_sub = $("#user_sub_id").val();
       var user_align = compute_align_array(user_sub.split(""));
       kmp_real(user_master.split(""), user_sub.split(""), user_align, 2);
-
+      console.log("user compares: " + user_compares + " user shifts: "+user_shifts);
       if(user_compares == compares && user_shifts == shifts) {
+        user_compares = 0;
+        user_shifts = 0;
         return true;
       } else {
+        user_compares = 0;
+        user_shifts = 0;
         return false;
       }
     }
-
+    //called at the beginning to the exercise, just to be safe...
     function reset_ex() {
       kmp_exercise = null;
       master_str = null;
@@ -307,7 +312,7 @@
       <div class="problems">
         <div>
           <div class="question">
-             This exercise will provide you with 2 numbers. The first number is the number of comparisons, the second number is the number of shifts. Shifts can be defined as when the sub string realigns itself with the master string using the alignment array. Comparisons can be defined as comparing 2 characters between the master and sub string. Start by entering a string you which to search (Max length: 14 chars), the enter the string you would like
+             This exercise will provide you with 2 numbers. The first number is the number of comparisons, the second number is the number of shifts. Shifts can be defined as when the sub string realigns itself with the master string using the alignment array (any shift larger than 1). Comparisons can be defined as comparing 2 characters between the master and sub string. Start by entering a string you which to search (Max length: 14 chars), then enter the string you would like
               to search for in the first string you entered. <br /> <br />
 
               <p id = "number1"> </p>
@@ -338,6 +343,7 @@
   </body>
 
   <script>
+  //this function creates the slideshow when a hint is requested
   ( function() {
     var hintSlideshowFunctions = {
       // objects with a function with key mathing id of an element inside .hints element
@@ -394,6 +400,6 @@
           hintSlideshowFunctions[id](elem);   // and call the matching initialization function
         }
       }, 50); // you might have to tweak this to get it work fast enough but not effect performance
-  })();
-    </script>
+    })();
+  </script>
 </html>
