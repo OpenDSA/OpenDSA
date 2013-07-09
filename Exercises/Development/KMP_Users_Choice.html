@@ -29,7 +29,7 @@
   <script src="../../AV/Development/edit.js"></script>
   <script>
 
-    var kmp_exercise, master_str, sub_str, started, align_table_temp;
+    var kmp_exercise, master_str, sub_str, started, align_table_temp, compares_var, shifts_var;
     var compares = 0;
     var user_compares = 0;
     var shifts = 0;
@@ -191,6 +191,10 @@
     function kmp(master, sub, align) {
         var m = 0;
         var s = 0;
+
+        var compares_val = 1;
+        var shifts_val = 0;
+        compares_var.value("1");
         //highlight the first spots
         master.highlight(m);
         sub.highlight(m);   
@@ -198,8 +202,11 @@
         var n = 0;
         var found = false;
         while((m < sub.size()-1) && (sub_str.length - s <= master.size() - m)) {
+
           align.unhighlight();
-          if(master.value(m) === sub.value(m)) {          
+          compares_val++;       
+
+          if(master.value(m) === sub.value(m)) {   
             m+=1;
             s+=1;
             //case that we have found a match
@@ -222,6 +229,7 @@
             master.highlight(m);
             sub.highlight(m);
           } else {
+            shifts_val++;           
             n = s;
             align.highlight(s);        
             s = align.value(s);
@@ -235,6 +243,10 @@
             sub.unhighlight();
             sub.highlight(m);
           }
+
+          compares_var.value(compares_val.toString());
+          shifts_var.value(shifts_val.toString());
+
           kmp_exercise.step();
         }
           kmp_exercise.recorded();
@@ -355,8 +367,12 @@
         var master_arr = master_str.split("");
         var sub_arr = sub_str.split("");
 
+
+
         main_text = kmp_exercise.ds.array([' '], {indexed: true});
 
+        shifts_var = kmp_exercise.variable(["0"],{visible: true, label: "shifts = ", before: main_text});
+        compares_var = kmp_exercise.variable(["0"],{visible: true, label: "compares = ", before: shifts_var});
 
         for(i=0; i<master_str.length;i++) {
           main_text.value(i, master_str.charAt(i));
@@ -382,6 +398,7 @@
         for(f=0;f<align_table_temp.length;f++) {
           alignment_table.value(f, align_table_temp[f]);
         }
+
         kmp_exercise.displayInit();
         kmp_exercise.step();
         kmp(main_text, search_string, alignment_table);
