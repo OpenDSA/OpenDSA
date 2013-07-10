@@ -39,7 +39,7 @@
             background-color: #ddf !important;
           }
           .greybg, .greybg .jsavvalue, .jsavarray.jsavbararray .jsavindex.greybg .jsavvalue{
-            background-color: #ddd !important;
+            background-color: #ddd;
           }
         </style>
         <h1>Evaluating Postfix Expression</h1>
@@ -117,7 +117,7 @@
             stack.addFirst("");
             stack.first().addClass("greybg");
             stack.css("top", 0);
-            clickHandler.addList(stack, {select: "first", drop: "first"});
+            clickHandler.addList(stack, {select: "first", drop: "first", keep: true});
             stack.layout();
             
             //clear all the Raphael elements
