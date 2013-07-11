@@ -74,8 +74,8 @@
 
         <script>
 
-        var arraySize = 8, //size needs to be odd
-            bits = 8,
+        var arraySize = 10, //size needs to be odd
+            bits = 3,
             initialArray = [],
             jsavArray,
             $array = $("#exerArray"),
@@ -120,7 +120,7 @@
                             extendStackValue("Left", index);
                             av.umsg("Select the <strong>right endpoint</strong>.");
                             mode.value(2);
-                            exercise.gradeableStep();
+                            av.step();
                             break;
                         case 2:
                             extendStackValue("Right", index);
@@ -164,13 +164,13 @@
         
         function modelSolution(jsav) {
             //array
-            var modelArray = jsav.ds.array(initialArray);
+            var modelArray = jsav.ds.array(initialArray, {indexed: true});
 
             var modelStack = jsav.ds.list({nodegap: 15, layout: "vertical", center: false, autoresize: false});
             modelStack.element.css({width: 180, position: "absolute"});
-            modelStack.element.css({top: 0, left: jsav.canvas.width() / 2 - 90});
-            modelStack.addFirst("Bit: "+(bits - 1)+", Left: 0, Right: "+(arraySize - 1));
-            modelStack.layout();
+            modelStack.element.css({top: 100, left: jsav.canvas.width() / 2 - 90});
+
+            jsav.canvas.css({height: 350});
 
             jsav._undo = [];
 
@@ -185,13 +185,58 @@
                 }
             });
 
-            
+            function modelRadix(bit, left, right) {
+                modelStack.addFirst("Bit: " + bit + ", Left: " + left + ", Right: " + right);
+                modelStack.layout();
+
+                focusOn(modelArray, left, right);
+
+                //add a step if not first call
+                if (left !== 0 || right !== arraySize - 1) {
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+                } else {
+                    jsav.displayInit();
+                }
+
+                var i = left;
+                var j = right;
+
+                while (i < j) {
+                    while ( modelArray.value(i).charAt(bits - 1 - bit) === "0"
+                            && i <= right)
+                        i++;
+                    while ( modelArray.value(j).charAt(bits - 1 - bit) === "1"
+                            && j >= left)
+                        j--;
+                    if (i < j) {
+                        modelArray.swap(i, j);
+                        jsav.stepOption("grade", true);
+                        jsav.step();
+                    }
+                }
+
+                //call function recursivley for both sides
+                if (bit > 0) {
+                    if (left < j)
+                        modelRadix(bit - 1, left, j);
+                    if (right > i)
+                        modelRadix(bit - 1, i, right);
+                }
+
+                //return
+                returnClick(modelArray, modelStack);
+                jsav.stepOption("grade", true);
+                jsav.step();
+            }
+
+            modelRadix(bits - 1, 0, arraySize - 1);
 
             return modelArray;
         }
         
         //create excercise
-        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+        var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
         exercise.reset();
         
         //position buttons
@@ -204,7 +249,7 @@
             stack.addFirst("Bit: " + (getCurrentValue("Bit", stack) - 1));
             stack.layout();
             av.umsg("Select the <strong>left endpoint</strong>.");
-            exercise.gradeableStep();
+            av.step();
         });
         $("#returnButton").click(function() {
             returnClick(jsavArray, stack);
