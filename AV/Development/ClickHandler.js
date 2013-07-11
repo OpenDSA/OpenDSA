@@ -64,6 +64,20 @@
 			}
 		},
 
+		//unselect the selected node
+		unselect: function unselect() {
+			if (this.selStruct.value() !== -1) {
+				if (this.selIndex.value() === -1) {
+					//unselect node
+					this.selNode.removeClass(this.options.selectedClass);
+				} else {
+					//unselect from array
+					this.getDs(this.selStruct.value()).removeClass(this.selIndex.value(), this.options.selectedClass);
+				}
+				this.reset();
+			}
+		},
+
 		//add an array to the click handler
 		addArray: function addArray(array, options) {
 			//push array into ds
@@ -79,16 +93,19 @@
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
 				//changed to true if the step should be graded
-	            var grade;
+	            var grade = false;
 
 				if (sStruct === -1) {
 					//select empty nodes only if the options allow it
 					if (!options.selectEmpty && this.value(index) === "")
 						return;
-					//select
-					this.addClass(index, ch.options.selectedClass);
 					//call onSelect function
-					options.onSelect.call(this, index);
+					var continueSelect = options.onSelect.call(this, index);
+					//return if onSelect returns false
+					if (typeof continueSelect !== "undefined" && !continueSelect)
+						return;
+					//mark as selected
+					this.addClass(index, ch.options.selectedClass);
 					//set sStruct and sIndex values
 					sStruct = ch.getDsIndex(this);
 					sIndex = index;
@@ -110,10 +127,10 @@
 						//call onDrop function
 						grade = options.onDrop.call(this, index);
 						if (typeof grade === "undefined") {
-							//if grade undefined, set true
+							//set true if nothing was returned
 							grade = true;
 						} else {
-							//change to boolean
+							//convert to boolean
 							grade = !!grade;
 						}
 					}
@@ -152,10 +169,10 @@
 					//call onDrop function
 						grade = options.onDrop.call(this, index);
 						if (typeof grade === "undefined") {
-							//if grade undefined, set true
+							//set true if nothing was returned
 							grade = true;
 						} else {
-							//change to boolean
+							//convert to boolean
 							grade = !!grade;
 						}					
 					//set sStruct and sIndex values					
@@ -206,9 +223,13 @@
 						default: //"click"
 							ch.selNode = this;
 					}
-					ch.selNode.addClass(ch.options.selectedClass);
 					//call onSelect function
-					options.onSelect.call(ch.selNode);
+					var continueSelect = options.onSelect.call(ch.selNode);
+					//return if onSelect returns false
+					if (typeof continueSelect !== "undefined" && !continueSelect)
+						return;
+					//mark as selected
+					ch.selNode.addClass(ch.options.selectedClass);
 					//set sStruct and sIndex values
 					sStruct = ch.getDsIndex(list);
 					sIndex = -1;
@@ -245,10 +266,10 @@
 						//call onDrop function
 						grade = options.onDrop.call(to);
 						if (typeof grade === "undefined") {
-							//if grade undefined, set true
+							//set true if nothing was returned
 							grade = true;
 						} else {
-							//change to boolean
+							//convert to boolean
 							grade = !!grade;
 						}
 					}
@@ -295,10 +316,10 @@
 					//call onDrop function
 						grade = options.onDrop.call(to);
 						if (typeof grade === "undefined") {
-							//if grade undefined, set true
+							//set true if nothing was returned
 							grade = true;
 						} else {
-							//change to boolean
+							//convert to boolean
 							grade = !!grade;
 						}					
 					//set sStruct and sIndex values					
