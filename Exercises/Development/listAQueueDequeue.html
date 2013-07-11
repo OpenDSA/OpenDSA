@@ -1,12 +1,12 @@
 <!--
-Array-Based Queue Enqueue Proficiency Exercise.
+Array-Based Queue Dequeue Proficiency Exercise.
 Written by Junyang Chen and Cliff Shaffer
 -->
 
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Array-Based Queue Enqueue Proficiency Exercise</title>
+  <title>Array-Based Queue Dequeue Proficiency Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transform.light.js"></script>
@@ -21,18 +21,18 @@ Written by Junyang Chen and Cliff Shaffer
 
   <style>
     .jsavcontainer {
-	  height: 350px;
+      height: 350px;
       border: 1px solid red;
     }
     .jsavcontainer svg{
       pointer-events: all;
     }
-	.jsavcanvas{
-     -moz-user-select: none;
-	  -webkit-user-select: none;
-	  height: 350px;
-	}
-	.jsavnode {
+    .jsavcanvas{
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      height: 350px;
+    }
+    .jsavnode {
       line-height: 30px !important;
       min-width: 30px !important;
       max-width: 30px !important;
@@ -52,9 +52,7 @@ Written by Junyang Chen and Cliff Shaffer
   </style>
 </head>
 <body>
-
 <script>
-//"use strict";
 // JSAV extension for circular queue.
 (function($){
   function sin(x){
@@ -77,7 +75,7 @@ Written by Junyang Chen and Cliff Shaffer
     var x1, y1, x2, y2, x3, y3, x4, y4, label,
 		i = 0, theta = 0, pathString;
     this.path = [];
-	this.labels = [];
+    this.labels = [];
     while(theta < 360){
       x1 = cx + r1 * cos(theta);
       y1 = cy + r1 * sin(theta);
@@ -115,6 +113,9 @@ Written by Junyang Chen and Cliff Shaffer
     this.labels[index].element.html(value);
     return [index, oldval];
   });
+  Circular.prototype.getvalue = function(index){
+    return this.labels[index].element.html();
+  };
   Circular.prototype.highlight = function(index){
     this.path[index]._setattrs({"fill" : "yellow", "opacity" : "0.5"});
   }
@@ -160,9 +161,12 @@ Written by Junyang Chen and Cliff Shaffer
 }(jQuery));
 
 var jsav,           // The JSAV object
-  answerArr = [], // The (internal) array that stores the correct answer
   answFrontPos,
   answRearPos,
+  answCopyFrom,
+  copyFrom,
+  arrReturn,
+  labelReturn,
   cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
   jsavCir,        // The array that the user manipulates (JSAV object)
   selected_pointer,
@@ -172,7 +176,6 @@ var jsav,           // The JSAV object
   rear_index,
   status,
   background,
-  inValue,        // Enqueue value
   userInput,      // Boolean: Tells us if user ever did anything
   selected_index; // Position that has been selected by user for swap
 
@@ -227,7 +230,7 @@ var pclick = function(pointer){
     }else {
       pointer.label.element.removeClass('highlight');
       status = 0;
-	}
+    }
   }else if(status == 0){
     pointer.label.element.addClass('highlight');
     selected_pointer = pointer;
@@ -249,8 +252,8 @@ var clickHandler = function (index) {
     }else{
       jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
       jsavCir.path[index].rObj.attr({"fill":"yellow", "opacity" : "0.5"});
-	  selected_index = index;
-	}
+      selected_index = index;
+    }
   }else if (status == 2){
     resetPointer(selected_pointer, index, selected_pointer.label.element.html());
     selected_pointer.label.element.removeClass('highlight');
@@ -261,15 +264,22 @@ var clickHandler = function (index) {
   userInput = true;
 };
 
-var f_insert = function(){
+var f_copy = function(){
+  var val;
   if(status == 1 && selected_index > -1){
-    jsavCir.value(selected_index, inValue);
+    jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
+    val = jsavCir.getvalue(selected_index);
+    arrReturn.value(0, val);
+    copyFrom = selected_index;
+    selected_index = -1;
+    status = 0;
   }
 }
 
 // reset function definition
 var f_reset = function (maxSize, front, rear) {
   selected_index = -1;
+  copyFrom = front;
   front_index = front;
   rear_index = rear;
   status = 0; 
@@ -279,6 +289,8 @@ var f_reset = function (maxSize, front, rear) {
   }
   jsav = new JSAV("jsav");	
   jsavCir = jsav.circular(cx, cy, 50, 100, maxSize,{"stroke-width" : 2});
+  arrReturn = jsav.ds.array(["null"],{left: cx + 200, top: cy - 15});
+  labelReturn = jsav.label("return", {left: cx + 155, top : cy - 10});
   if(front === rear){
     front_pointer = jsavCir.pointer("front", front, 0.3);
     rear_pointer = jsavCir.pointer("rear", rear, 0.7);
@@ -300,51 +312,48 @@ var f_reset = function (maxSize, front, rear) {
       return function(){clickHandler(j);}
     }(i); 
   }
-  
-
+  arrReturn.element.css( { 'z-index': 100} );
+  arrReturn.click(f_copy);
   bindPointerClick(front_pointer);
   bindPointerClick(rear_pointer);
   userInput = false;
+
+  // correct answer
+  answFrontPos = front;
+  answRearPos = rear;
+  if ( ( (rear+maxSize) - front + 1 ) % maxSize !== 0){
+    answFrontPos = (front+1) % maxSize; // Circular increment
+  }else{
+    answCopyFrom = 1000;
+    copyFrom = 1000;
+  }
 };
 
 // Initialise the exercise
-var initJSAV = function (maxSize, front, rear, insertValue) {
+var initJSAV = function (maxSize, front, rear) {
   var i, j;
   userInput = false;
   selected_index = -1;
   status = 0;
-  inValue = insertValue; 
-  answerArr.length = 0; // Out with the old
+  answCopyFrom = front;
+  cloneArr.length = 0; // Out with the old
 
   // Give random numbers in range 0..999
   for (i = 0; i < maxSize; i++) {
-    answerArr[i] = "";
+    cloneArr[i] = "";
   }
   var frontIndex = front;
   var rearIndex = rear;
   if( ( (rear+maxSize) - front + 1) % maxSize !== 0){
     while( frontIndex !== rear + 1){
-      answerArr[frontIndex] = Math.floor(Math.random() * 1000);
+      cloneArr[frontIndex] = Math.floor(Math.random() * 1000);
       frontIndex =(frontIndex + 1)%maxSize;
     }
   }
-  // Now make a copy
-  cloneArr = answerArr.slice(0);
 
   f_reset(maxSize, front, rear);
 
-  // correct answer
-  answFrontPos = front;
-  answRearPos = rear;
-  if (((rear+2) % maxSize) !== front){
-    rearIndex = (rearIndex+1) % maxSize; // Circular increment
-    answerArr[rearIndex] = inValue;
-    answRearPos = rearIndex;
-  }
-  // Set up handler for insert button
-  $("#insert").click(function () {
-    f_insert();
-  });
+
   // Set up handler for reset button
   $("#reset").click(function () { f_reset(maxSize, front, rear); });
 };
@@ -354,10 +363,8 @@ var checkAnswer = function (maxSize) {
   if(front_index !== answFrontPos || rear_index !== answRearPos){
     return false;
   }
-  for(var i = 0; i < maxSize; i ++){
-    if(jsavCir.labels[i].element.html() != answerArr[i]){
-      return false;
-	};
+  if(answCopyFrom != copyFrom){
+    return false;
   }
   return true;
 };
@@ -368,8 +375,7 @@ var checkAnswer = function (maxSize) {
     <var id="maxSize">randRange(5, 10)</var>
     <var id="front">randRange(0, maxSize-1)</var>
     <var id="rear">randRange(0, maxSize-1)</var>
-	<var id="insert_value">randRange(0, 999)</var>
-    <var id="JSAV">initJSAV(maxSize, front, rear, insert_value)</var>
+    <var id="JSAV">initJSAV(maxSize, front, rear)</var>
   </div>
 
   <div class="problems">
@@ -378,7 +384,6 @@ var checkAnswer = function (maxSize) {
       <div class="question">
         
         <input id="reset" type="button" value="Reset" />
-		<input id="insert" type="button" value="Insert" />
         <div id="jsav"></div>
       </div>
       <div class="solution" data-type="custom">
