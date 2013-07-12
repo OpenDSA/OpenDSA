@@ -44,6 +44,12 @@
           .greybg, .greybg .jsavvalue, .jsavarray.jsavbararray .jsavindex.greybg .jsavvalue{
             background-color: #eee;
           }
+          span.bit {
+            color: #ccc;
+          }
+          span.bit.coloredbit {
+            color: #000 !important;
+          }
         </style>
         <h1>Radix Exchange Sort</h1>
         <div id="jsavcontainer">
@@ -76,6 +82,7 @@
 
         var arraySize = 10, //size needs to be odd
             bits = 3,
+            colorBits = true,
             initialArray = [],
             jsavArray,
             $array = $("#exerArray"),
@@ -99,6 +106,10 @@
                 //add leading zeros
                 initialArray[i] =
                     new Array( bits + 1 - initialArray[i].length).join("0") + initialArray[i];
+                if (colorBits) {
+                    //add <span class="bit"> around all bits
+                    initialArray[i] = '<span class="bit">' + initialArray[i].split("").join('</span><span class="bit">') + '</span>';
+                }
                 htmldata += "<li>"+initialArray[i]+"</li>";
             }
             $array.html(htmldata);
@@ -110,7 +121,7 @@
             if (typeof clickHandler === "undefined") {
                 clickHandler = new ClickHandler(av, exercise,
                     {effect: "swap", selectedClass: "selected"});
-                clickHandler.addArray(jsavArray, {onSelect: function(index) {
+                clickHandler.addArray(jsavArray, {onSelect: function (index) {
                     switch (mode.value()) {
                         case 0:
                             //return true to tell clickHandler to select the item
@@ -125,7 +136,7 @@
                         case 2:
                             extendStackValue("Right", index);
                             av.umsg("");
-                            focusOn(jsavArray, getCurrentValue("Left", stack), index);
+                            focusOn(jsavArray, getCurrentValue("Left", stack), index, getCurrentValue("Bit", stack));
                             mode.value(0);
                             exercise.gradeableStep();
                             break;
@@ -155,6 +166,8 @@
             //hide old umsg messages
             av.umsg("");
 
+            focusOn(jsavArray, 0, arraySize - 1, bits - 1);
+
             av.displayInit();
 
             restoreAnimationState();
@@ -174,22 +187,28 @@
 
             jsav._undo = [];
 
-            $(".jsavforward").click(function() {
+            $(".jsavforward").click(function () {
                 if (jsav.container.hasClass("jsavplaying")) {
                     jsav.container.removeClass("jsavplaying");
                 }
             });
-            $(".jsavbackward").click(function() {
+            $(".jsavbackward").click(function () {
                 if (jsav.container.hasClass("jsavplaying")) {
                     jsav.container.removeClass("jsavplaying");
                 }
             });
+
+            //get the bit from the array at index
+            //removes possible spans
+            function getBit(arr, index, bit) {
+                return parseInt(arr.element.find("li:eq("+index+")").find(".jsavvalue").text().charAt(bits - 1 - bit));
+            }
 
             function modelRadix(bit, left, right) {
                 modelStack.addFirst("Bit: " + bit + ", Left: " + left + ", Right: " + right);
                 modelStack.layout();
 
-                focusOn(modelArray, left, right);
+                focusOn(modelArray, left, right, bit);
 
                 //add a step if not first call
                 if (left !== 0 || right !== arraySize - 1) {
@@ -203,11 +222,9 @@
                 var j = right;
 
                 while (i < j) {
-                    while ( i <= right &&
-                            modelArray.value(i).charAt(bits - 1 - bit) === "0")
+                    while ( i <= right && getBit(modelArray, i, bit) === 0)
                         i++;
-                    while ( j >= left &&
-                            modelArray.value(j).charAt(bits - 1 - bit) === "1")
+                    while ( j >= left && getBit(modelArray, j, bit) === 1)
                         j--;
                     if (i < j) {
                         modelArray.swap(i, j);
@@ -243,7 +260,7 @@
         $("#callButton").css({position: "absolute", left: 50, top: 0, width: 100});
         $("#returnButton").css({position: "absolute", left: 50, top: 30, width: 100});
         //add click handlers
-        $("#callButton").click(function() {
+        $("#callButton").click(function () {
             mode.value(1);
             clickHandler.unselect();
             stack.addFirst("Bit: " + (getCurrentValue("Bit", stack) - 1));
@@ -251,7 +268,7 @@
             av.umsg("Select the <strong>left endpoint</strong>.");
             av.step();
         });
-        $("#returnButton").click(function() {
+        $("#returnButton").click(function () {
             returnClick(jsavArray, stack);
             exercise.gradeableStep();
         });
@@ -263,7 +280,7 @@
             var result;
             var value = stack.first().value();
             var parts = value.split(", ");
-            parts.forEach(function(val) {
+            parts.forEach(function (val) {
                 var newparts = val.split(": ")
                 if (newparts[0] === name){
                     result = newparts[1];
@@ -280,13 +297,24 @@
         }
 
         //paints all the squares outside of [first, last] grey
-        function focusOn(arr, first, last) {
+        function focusOn(arr, first, last, bit) {
             turnAnimationOff()
             arr.removeClass(true, "greybg");
-            arr.addClass(function(index) {
+            arr.addClass(function (index) {
                 return index < first || index > last;
             },
             "greybg");
+            if (colorBits && typeof bit === "number") {
+                //uncolor all bits
+                arr.element.find(".bit").removeClass("coloredbit");
+                //color the wanted bits
+                arr.element.find(".jsavvalue").find(".bit:eq("+(bits - 1 - bit)+")").addClass("coloredbit");
+                //update the real values of the elements
+                for (var i = 0; i < arraySize; i++) {
+                    var v = arr.element.find("li:eq("+i+") .jsavvaluelabel").html();
+                    arr.value(i, v);
+                }
+            } 
             restoreAnimationState();
         }
 
@@ -297,7 +325,10 @@
                 stack.layout();
             }
             if (stack.size())
-                focusOn(array, getCurrentValue("Left", stack), getCurrentValue("Right", stack));
+                focusOn(array,
+                    getCurrentValue("Left", stack),
+                    getCurrentValue("Right", stack),
+                    getCurrentValue("Bit", stack));
         }
 
         var oldfx;
