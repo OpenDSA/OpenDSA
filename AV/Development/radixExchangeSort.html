@@ -203,11 +203,11 @@
                 var j = right;
 
                 while (i < j) {
-                    while ( modelArray.value(i).charAt(bits - 1 - bit) === "0"
-                            && i <= right)
+                    while ( i <= right &&
+                            modelArray.value(i).charAt(bits - 1 - bit) === "0")
                         i++;
-                    while ( modelArray.value(j).charAt(bits - 1 - bit) === "1"
-                            && j >= left)
+                    while ( j >= left &&
+                            modelArray.value(j).charAt(bits - 1 - bit) === "1")
                         j--;
                     if (i < j) {
                         modelArray.swap(i, j);
