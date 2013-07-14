@@ -841,10 +841,6 @@ def configure(config_file, slides = False):
     settings.AV_ORIGIN = "%(av_origin)s";
     // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
     settings.ALLOW_ANON_CREDIT = "%(allow_anon_credit)s";
-    // Flag which controls debugMode
-    // When set to true, the framework will print a full stacktrace to the console, allowing developers to easily trace execution
-    // This value can be changed at runtime via the JavaScript console
-    settings.DEBUG_MODE = false;
 
     window.ODSA = {};
     window.ODSA.SETTINGS = settings;
