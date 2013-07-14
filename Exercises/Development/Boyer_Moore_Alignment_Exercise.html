@@ -63,7 +63,7 @@
     var dec = gen_random(0, 3);
     var length = gen_random(string_min_length, string_max_length);
     var return_str = '';
-    console.log("decision " + dec);
+
     if(dec == 0) {
       var seed2 = gen_random(97,122);
       for(var i = 0; i < length; i++){
@@ -105,37 +105,53 @@
       if(align[i-1] - align[i] > 1){
         console.log(align[i-1]);
         answer_value = align[i-1];
+        answer_index = i-1;
         align[i-1] = '';
         break;
       }
     }   
   }
 
+  //this is a recursive function to find the real last index of the suffix
+  function find_last_match(str, p, sub) {
+    var local_answer = str.lastIndexOf(sub.substring(p+1, sub.length));
+    if(local_answer == -1) { //base case, suffix not found 
+      return -1;
+    } else if(str.charAt(local_answer - 1) != sub.charAt(p)) { //we found our match
+      return local_answer;
+    } else { //shorten the string and try again so we don't get the same sub string
+      return find_last_match(str.substring(0, str.length-1), p, sub); 
+    }       
+  }
   function compute_align_table( sub ) {
     var align = new Array();
-    var substr = sub.join("");
-    console.log(substr);
+    //console.log(sub);
     var offset, suffix_length, index_of_sub;
     align[sub.length-1] = 1;
     for(var i = sub.length-2; i >=0; i--){
       var p = i;
       suffix_length = sub.length - (p+1);
-      index_of_sub = substr.substring(0, p-1).lastIndexOf(substr.substring(p+1, sub.length));
+
+
+      offset = sub.length;
+      index_of_sub = -1;
+      var sub_temp = sub.substring(0, sub.length-1);
+
+      index_of_sub = find_last_match(sub_temp, p, sub);
+
       offset = sub.length;
       if(index_of_sub != -1){
         offset = (p+1) - index_of_sub;
       }
+
       align[p] = suffix_length + offset;
     }
-    find_best_solution(align);
-
+	find_best_solution(align);
     return align;
   }
 
   function checkAnswer() {
     var answer = $("#user_answer").val();
-    console.log(answer);
-    console.log(answer_value);
     if(answer == answer_value) {
       return true;
     } else {
@@ -153,13 +169,13 @@
     var alignment = new JSAV("jsav_area", {"animationMode": "none"});
     //handles the actual click on an index and highlights the specified index
     var str = generate_sub();
-    console.log(str);
     str_arr = alignment.ds.array(str, {indexed: true});
 
     //initializing the alignment array
-    var alignment_returned = compute_align_table(str);
+    var alignment_returned = compute_align_table(str.join(""));
 
     align_arr = alignment.ds.array(alignment_returned);
+    align_arr.highlight(answer_index);
 
     var str_label = alignment.label("String:", {before: str_arr});
     var align_label = alignment.label("Alignment Array:", {before: align_arr});

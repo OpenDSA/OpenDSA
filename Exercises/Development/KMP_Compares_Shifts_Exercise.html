@@ -31,9 +31,7 @@
 
     var kmp_exercise, master_str, sub_str, started, align_table_temp, compares_var, shifts_var;
     var compares = 0;
-    var user_compares = 0;
     var shifts = 0;
-    var user_shifts = 0;
 
     /*#################################################################
       These global constants are set to modify the strings easily.
@@ -153,7 +151,7 @@
     /*
         This is the actual KMP algorithm, it is used to check their answer to create the two numbers at the beginning
     */
-    function kmp_real(master, sub, align, which) {
+    function kmp_real(master, sub, align) {
       var m = 0;
       var s = 0;
       while((s < sub.length) && (sub.length - s <= master.length -m)) {
@@ -164,18 +162,10 @@
         } else if (s == 0 ){
           m+=1;
         } else {
-          if(which == 1){
-            shifts++;
-          } else {
-            user_shifts++;
-          }
+          shifts++;
           s = align[s];
         }
-        if(which == 1){
-          compares++;
-        } else {
-          user_compares++;
-        }
+        compares++;
       }
       if(s == sub.length) {
         return m-s;
@@ -260,18 +250,12 @@
 
       //This function just checks their input and ensures that it matches what we are looking for
     function checkAnswer() {
-      var user_master = $("#user_master_id").val();
-      var user_sub = $("#user_sub_id").val();
-      var user_align = compute_align_array(user_sub.split(""));
-      kmp_real(user_master.split(""), user_sub.split(""), user_align, 2);
-      console.log("user compares: " + user_compares + " user shifts: "+user_shifts);
+      var user_compares = $("#user_compares_id").val();
+      var user_shifts = $("#user_shifts_id").val();
+
       if(user_compares == compares && user_shifts == shifts) {
-        user_compares = 0;
-        user_shifts = 0;
         return true;
       } else {
-        user_compares = 0;
-        user_shifts = 0;
         return false;
       }
     }
@@ -283,10 +267,8 @@
       started = null;
       align_table_temp = null;
       compares = 0;
-      user_compares = 0;
       shifts = 0;
-      user_shifts = 0;   
-    }
+      }
     //This function initializes the arrays, and handles the clicks on the specific indexes, see comments in method for more information
     function make_arrays(){
       reset_ex();
@@ -296,10 +278,10 @@
 
       align_table_temp = compute_align_array(sub_str.split(""));
 
-      kmp_real(master_str.split(""), sub_str.split(""), align_table_temp, 1);
+      kmp_real(master_str.split(""), sub_str.split(""), align_table_temp);
 
-      $("#number1").html("Number 1 (compares): "+compares);
-      $("#number2").html("Number 2 (shifts): "+shifts);
+      $("#string1").html("Master String: "+master_str);
+      $("#string2").html("Sub String: "+sub_str);
       started = true;
     }
 
@@ -324,13 +306,12 @@
       <div class="problems">
         <div>
           <div class="question">
-             This exercise will provide you with 2 numbers. The first number is the number of comparisons, the second number is the number of shifts. Shifts can be defined as when the sub string realigns itself with the master string using the alignment array (any shift larger than 1). Comparisons can be defined as comparing 2 characters between the master and sub string. Start by entering a string you which to search (Max length: 14 chars), then enter the string you would like
-              to search for in the first string you entered. <br /> <br />
+             This exercise will provide you with 2 strings. The first string represents the master string, the second represents the sub string. For this exercise you will trace through the algorithm, counting the number of comparisons and shifts made. Comparisons are the number of character comparisons made in the algorithm, this can be generalized to the number of times the while loop must iterate. Shifts are counted by the number of times the shift amount must be looked up in the alignment array, therefore we don't count mismatches on the first character in the sub string as a shift, only when the algorithm enters the else statement in the pseudo code. When you are done tracing the algorithm, enter the two numbers you come up with and hit Check Answer. <br /> <br />
 
-              <p id = "number1"> </p>
-              <p id = "number2"> </p>
-              <p><b>Your Master String:</b> <input type = "text" id = "user_master_id"/> </p>
-              <p><b>Your Sub String:</b> <input type = "text" id = "user_sub_id"/> </p>
+              <p id = "string1"> </p>
+              <p id = "string2"> </p>
+              <p><b>Number of Compares:</b> <input type = "text" id = "user_compares_id" size = "3"/> </p>
+              <p><b>Number of Shifts:</b> <input type = "text" id = "user_shifts_id" size = "3"/> </p>
           </div> <!-- question -->
           <div class="solution" data-type="custom">
             <div class="guess">

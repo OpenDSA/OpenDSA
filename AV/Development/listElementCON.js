@@ -5,7 +5,7 @@ function setPointer(name, obj){
                 anchor: "left top",
                 myAnchor: "right bottom",
                 left: 20,
-                top: 70});
+                top: -20});
 }
 
 

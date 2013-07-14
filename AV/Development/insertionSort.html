@@ -10,7 +10,7 @@
     <body>
         <style>
           #jsavcontainer {
-            width: 800px;
+            width: 740px;
             height: 530px;
             background-color: #fff;
           }
@@ -127,7 +127,6 @@
                 this.css(index, {"font-size": "100%", "background-color": "#ddd"});
                 swapIndex.value(-1);
                 av.step(); // add a step to the animation   
-                exercise.gradeableStep();
             } else { // swap
                 // change the CSS property back to normal
                 this.css([swapIndex.value(), index], {"font-size": "100%", "background-color": "#ddd"});

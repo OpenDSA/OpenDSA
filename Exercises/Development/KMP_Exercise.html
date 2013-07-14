@@ -308,8 +308,10 @@
     for(i=0; i<master_str.length;i++) {
         main_text.value(i, master_str.charAt(i));
         if(i < master_answer_location && i >= substring_start_location){
-          //make green lighter
+          //highligh already matched values
           main_text.css(i, {"background-color": "#33FF33"});
+        } else if(i == master_answer_location){
+          main_text.css(i, {"background-color": "red"});
         }
     }
 
@@ -329,6 +331,8 @@
       }
       if(j < master_answer_location && j >= substring_start_location){
         search_string.css(j, {"background-color": "#33FF33"});
+      } else if(j == master_answer_location){
+        search_string.css(j, {"background-color": "red"});
       }
     }
 
@@ -346,21 +350,6 @@
   }
   // reset function definition
   var f_reset = function () {
-    /*
-      Issues reseting the canvas so that the variables aren't messed up during the second round
-    
-    main_text.clear();
-    search_string.clear();
-    alignment_table.clear();
-    started = null;
-    sub_str = null;
-    master_str = null;
-    substring_start_location = null;
-    substring_answer_location = null;
-    master_answer_location = null;
-    substring_start_isset = null;
-    */
-    alert("reset");
     kmp_exercise.reset();
   };
   </script>
@@ -372,7 +361,7 @@
       <div class="problems">
         <div>
           <div class="question">
-            The exercise below will test your newly acquired knowledge on the KMP algorithm. The two characters that currently line up simulate a mismatch in the algorithm. Please click the index of the master string that will be compared <b>after the current mismatch</b> and then the index of the substring that will be compared next. When you are finished hit <b>Check Answer</b> to see if you are correct. The values in the strings that have already been compared are highlighted in green so there is no confusion. The idea is to trace the string <b><var>sub_str</var></b> through the string <b><var>master_str</var></b> using the KMP Algorithm for just one step.
+            The exercise below will test your newly acquired knowledge on the KMP algorithm. Assume the two characters highlighted in red were just compared and it is discovered they don't match. Please click the index of the master string that will be compared <b>after the current mismatch</b> and then the index of the substring that will be compared to it. When you are finished hit <b>Check Answer</b> to see if you are correct. The values in the strings that have already been compared are highlighted in green so there is no confusion. The idea is to trace the string <b><var>sub_str</var></b> through the string <b><var>master_str</var></b> using the KMP Algorithm for just one step.
             <div id="jsav_area"></div>
           </div> <!-- question -->
           <div class="solution" data-type="custom">

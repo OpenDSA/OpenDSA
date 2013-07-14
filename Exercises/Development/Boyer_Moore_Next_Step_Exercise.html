@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<!--
+  Samuel A. Micka
+-->
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <title>Boyer-Moore Next Step Exercise</title>
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css"
+          media="screen" title="no title" charset="utf-8" /> 
+  </head>
+  <body>
+
+
+<!--
+  <div> <p> <button type="button" id="go_button" onclick="make_arrays()">Generate!</button> </p> </div>
+-->
+  <div id="container">
+    <div class="jsavcanvas"></div>
+    <p class="jsavoutput jsavline"></p>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js"></script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="http://algoviz.org/OpenDSA/ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script> 
+  <script src="../../AV/Development/edit.js"></script>
+  <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" /> 
+
+  <script>
+ /*#################################################################
+    These global constants are set to modify the strings easily.
+  #################################################################*/
+  //this determines the maximum length of the string
+  var string_max_length = 12;
+  //this determines the minimum length of the string
+  var string_min_length = 8;
+  //this represents the lower bound of randomly generated numbers desired in the ascii table
+  var char_lower_bound = 97;
+  //this represents the upper bound of randomly generated numbers desired in the ascii table
+  var char_upper_bound = 122;
+
+  /*#################################################################
+    Global variables used throughout the program
+  #################################################################*/
+  var sub_str; //the actual sub string array for the visualization
+  var master_str; //the actual master string array for the visualization
+  var sub_temp;
+  var master_temp;
+  var align; //the alignment table
+  var mmc;
+  var started; //tells us if anything has been done
+  var real_master_answer;
+  var indexes_checked; //counter for the number of comparisons so far (used for my offset calculation)
+  var amount_to_shift; //actual amount of indexes to move the end of the substring (used for my offset calculation)
+
+  //var answer_array = new Array(); //stores the correct steps in the answer
+  var substring_start_location; //where the substring will line up initially
+  var substring_answer_location; //the index of the answer to the substring click event
+  var master_answer_location;    //the index of the answer to the master string click event
+  var substring_start_isset = false; //boolean to see if the substring starting position has been set yet
+
+  var bm = null;
+
+//returns a random number between lower_bound and upper_bound
+function gen_random(lower_bound, upper_bound) {
+  return Math.floor(Math.random() * (upper_bound - lower_bound + 1) + lower_bound);
+}
+//converts the ascii_value parameter to character and returns it
+function get_char(ascii_value) {
+  return String.fromCharCode(ascii_value);
+}
+function generate_sub(seed){
+  var dec = gen_random(0, 3);
+  var length = gen_random(5, 9);
+  var return_str = "";
+  if(dec == 0) {
+    var seed2 = gen_random(97,122);
+    for(var i = 0; i < length; i++){
+      if(i % 2 == 0){
+        return_str += get_char(seed);
+      } else {
+        return_str += get_char(seed2);
+      }
+    }
+  } else if (dec == 1){
+    return_str += get_char(gen_random(97,122)) + get_char(gen_random(97,122)) +get_char(gen_random(97,122));
+    var seed2 = gen_random(97,122);   
+    for(var i = 3; i < length; i++){
+      if(i % 2 == 0) {
+        return_str += get_char(seed);
+      } else {
+        return_str += get_char(seed2);
+      }
+    }
+  } else if (dec == 2){
+    for(var i = 0; i < length; i++){
+      if(i % 2 == 0) {
+        return_str += get_char(seed);
+      } else {
+        return_str += get_char(gen_random(97,122));
+      }
+    }
+  } else {
+    for(var i = 0; i < length; i++){
+      return_str+=get_char(gen_random(97,122));
+    }
+  }
+
+  return return_str;
+}
+function generate_master(sub) {
+  var len = gen_random(0, 3);
+  var dec = gen_random(0,2);
+  var master = "";
+
+  if(dec == 0) {
+     master = get_char(gen_random(97,122)) + get_char(gen_random(97,122)) + sub.substring(2, sub.length) + get_char(gen_random(97,122)) + sub;
+    for(var i = 0; i < len; i++) {
+      master = master + get_char(gen_random(97,122));
+    }    
+  }
+  else if (dec == 1){
+    for(var i = 0; i < 4; i ++){
+      master += get_char(gen_random(97,122));
+    }
+    master = master + sub.substring(4, sub.length) + get_char(gen_random(97,122)) + sub;
+  }
+  else if (dec == 2){
+    for(var i = 0; i < 6; i ++){
+      master += get_char(gen_random(97,122));
+    }
+    master = master + sub.substring(6, sub.length) + get_char(gen_random(97,122)) + sub;
+  }
+  return master;
+}
+function generate_strings() {
+  var seed = gen_random(97,122);
+  var sub = generate_sub(seed);
+  var master = generate_master(sub);
+  return [master, sub];
+}
+
+function find_rightmost_index(the_arr, the_char){
+  for(var i = the_arr.length-1; i >= 0; i--){
+    if(the_arr[i] == the_char){
+      return i;
+    }
+  }
+  return -1
+}
+
+function compute_mmc(sub) {
+  var mmc = [['a', sub.length],['b', sub.length],['c', sub.length],['d', sub.length],['e', sub.length],
+    ['f', sub.length],['g', sub.length],['h', sub.length],['i', sub.length],['j', sub.length],['k', sub.length],
+    ['l', sub.length],['m', sub.length],['n', sub.length],['o', sub.length],['p', sub.length],['q', sub.length],
+    ['r', sub.length],['s', sub.length],['t', sub.length],['u', sub.length],['v', sub.length],['w', sub.length],
+    ['x', sub.length],['y', sub.length],['z', sub.length]];
+
+  for(var i = 0; i < mmc.length; i++){
+      var location_in_arr = find_rightmost_index(sub, mmc[i][0]);
+      if(location_in_arr > -1){
+        mmc[i][1] = sub.length - location_in_arr - 1;
+      }
+  }
+
+  return mmc;
+}
+
+  //this is a recursive function to find the real last index of the suffix
+  function find_last_match(str, p, sub) {
+    var local_answer = str.lastIndexOf(sub.substring(p+1, sub.length));
+    if(local_answer == -1) { //base case, suffix not found 
+      return -1;
+    } else if(str.charAt(local_answer - 1) != sub.charAt(p)) { //we found our match
+      return local_answer;
+    } else { //shorten the string and try again so we don't get the same sub string
+      return find_last_match(str.substring(0, str.length-1), p, sub); 
+    }       
+  }
+  function compute_align_table( sub ) {
+    var align = new Array();
+    //console.log(sub);
+    var offset, suffix_length, index_of_sub;
+    align[sub.length-1] = 1;
+    for(var i = sub.length-2; i >=0; i--){
+      var p = i;
+      suffix_length = sub.length - (p+1);
+
+      offset = sub.length;
+      index_of_sub = -1;
+      var sub_temp = sub.substring(0, sub.length-1);
+
+      index_of_sub = find_last_match(sub_temp, p, sub);
+
+      offset = sub.length;
+      if(index_of_sub != -1){
+        offset = (p+1) - index_of_sub;
+      }
+
+      align[p] = suffix_length + offset;
+    }
+    return align;
+  }
+
+//naive search method to get the index in the mmc of a specific character
+function index_of_char_in_mmc(the_mmc, the_char) {
+  for(var i = 0; i < the_mmc.length; i++){
+    if(the_mmc[i][0] == the_char){
+      return i;
+    }
+  }
+}
+//simply returns the maximum value of the two parameters
+function get_max(x, y){
+  if(x > y){return x;} else{ return y;}
+}
+
+//actual boyer-moore algorithm
+function boyer_moore(ma, su, mmc, align_table) {
+  var master = ma.split("");
+  var sub = su.split("");
+  var m = sub.length -1;
+  while(m < master.length) {
+    var s = sub.length -1;
+    indexes_checked = 0;
+    while(s >= 0 && master[m] == sub[s]) {
+      m = m-1;
+      s = s-1;
+      indexes_checked++;
+
+    }
+    if(s < 0){
+      return m+1;
+    } else {
+      var value_in_mmc = mmc[index_of_char_in_mmc(mmc,master[m])][1];
+      m = m + get_max(value_in_mmc, align_table[s]);
+      real_master_answer = m;
+      amount_to_shift = m - indexes_checked;
+
+      break;
+    }
+  }
+  return -1;
+}
+  function checkAnswer() {
+    // Figure out what the user has done, and report on it
+    for (i=0; i<master_str.size(); i++) {
+      //find the highlighted index  
+      if (master_str.isHighlight(i) && real_master_answer == i) {
+        for(j = 0; j < sub_str.size(); j++){
+          if(sub_str.isHighlight(j) && (sub_temp.length-1) == j) {
+
+            return true;
+          }
+        }
+      }
+    }
+
+    return false;
+  }
+  var clickHandler = function(index, e) {
+    started = true;
+    if (!master_str.isHighlight(index)) {
+      master_str.highlight(index);
+      for(i=0;i<master_str.size();i++)
+      {
+        if(master_str.isHighlight(i) && index != i) {
+            master_str.unhighlight(i);
+        }
+      }
+    } else {
+      master_str.unhighlight(index);
+    }
+    //checkAnswer(main_text, search_string, sub_str);
+  }
+  var clickHandlerSub = function(index, e) {
+    started = true;
+    if (!sub_str.isHighlight(index)) {
+      sub_str.highlight(index);
+      for(i=0;i<sub_str.size();i++)
+      {
+        if(sub_str.isHighlight(i) && index != i) {
+            sub_str.unhighlight(i);
+        }
+      }
+    } else {
+      sub_str.unhighlight(index);
+    }   
+  }
+
+  //This function initializes the arrays, and handles the clicks on the specific indexes, see comments in method for more information
+  function initExercise() {
+    started = false;
+
+    bm = new JSAV("jsav_area", {"animationMode": "none"});
+
+    //local variables for the initialization of the exercise
+    var strs = generate_strings();
+    master_temp = strs[0];       //first index of returned array has master string
+    sub_temp = strs[1];          //second index of returned array has substring    
+    var mmc_temp = compute_mmc(sub_temp);
+    var align_temp = compute_align_table(sub_temp);
+
+
+
+
+
+    boyer_moore(master_temp, sub_temp, mmc_temp, align_temp);
+
+    master_temp = master_temp.split("");
+    sub_temp = sub_temp.split("");
+
+    //initialize the master and sub string arrays
+    master_str = bm.ds.array(master_temp, {center: false});
+
+    //initialize sub_str with the master_temp array so that they are the same length, we will fill in appropriate data below
+    sub_str = bm.ds.array(master_temp, {center: false});
+
+    //fill in the appropriate information for the sub string
+    for(var i = 0; i < master_temp.length; i++){ 
+      if(i < sub_temp.length){
+        sub_str.value(i, sub_temp[i]);
+      } else { 
+        sub_str.value(i, ' '); 
+      }
+    }
+
+    //highlight the already checked locations
+    for(var i = 0; i < master_temp.length; i++){
+      if(i >= (sub_temp.length - indexes_checked) && i < sub_temp.length){
+        master_str.css(i, {"background-color": "#33FF33"});
+        sub_str.css(i, {"background-color": "#33FF33"});
+      }
+    }
+    master_str.css((sub_temp.length - indexes_checked -1), {"background-color": "red"});
+    sub_str.css((sub_temp.length - indexes_checked -1), {"background-color": "red"});
+    //initialize the mmc array and the alignment array
+    mmc = bm.ds.array(mmc_temp, {center: false});
+    align = bm.ds.array(align_temp, {center: false});
+
+
+    master_str.click(clickHandler);
+    sub_str.click(clickHandlerSub);
+  };
+
+
+  // reset function definition
+  var f_reset = function () {
+    bm.reset();
+  };
+  </script>
+
+  <style>
+    .jsavarray .jsavindex {
+      min-height: 30px;
+      height: 30px;
+      min-width: 25px;
+      width: 25px;
+      font-size: 15px;
+    }
+  </style>
+
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">initExercise()</var>
+      </div> <!-- vars -->
+
+      <div class="problems">
+        <div>
+          <div class="question">
+                   The exercise below will test your newly acquired knowledge on the Boyer-Moore algorithm. Assume the two characters highlighted in red were just compared and it is discovered they don't match. Please click the index of the master string that will be compared <b>after the current mismatch</b> and then the index of the substring that will be compared to it. When you are finished hit <b>Check Answer</b> to see if you are correct. The values in the strings that have already been compared are highlighted in green so there is no confusion, and the characters that were just mismatched are in red. The idea is to trace the string <b><var>sub_temp.join("")</var></b> through the string <b><var>master_temp.join("")</var></b> using the KMP Algorithm for just one step.
+            <div id="jsav_area"></div>
+          </div> <!-- question -->
+          <div class="solution" data-type="custom">
+            <div class="guess">
+              [started]
+            </div>
+            <div class="validator-function">
+              if (!checkAnswer() && !guess[0])
+                return "";
+              else return checkAnswer();
+            </div>
+          </div>
+          <div class="hints">
+            <p>1. Check out the pseudo code above.</p> 
+          </div>
+          <div class = "model"></div>
+        </div>
+      </div>
+    </div> 
+  </body>
+</html>

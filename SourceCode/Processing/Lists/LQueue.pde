@@ -29,13 +29,16 @@ class LQueue implements Queue {
   }
 /* *** ODSATag: LQueue2 *** */
 
+/* *** ODSATag: LQueueEnqueue *** */
   // Put element on rear
   public void enqueue(Object it) {
     rear.setnext(new Link(it, null));
     rear = rear.next();
     size++;
   }
+/* *** ODSAendTag: LQueueEnqueue *** */
 
+/* *** ODSATag: LQueueDequeue *** */
   // Remove and return element from front
   public Object dequeue() {
     if (size == 0) return null;
@@ -45,6 +48,7 @@ class LQueue implements Queue {
     size--;
     return it; // Return Object
   }
+/* *** ODSAendTag: LQueueDequeue *** */
 
   // Return front element
   public Object frontValue() {
