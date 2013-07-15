@@ -1,10 +1,12 @@
 "use strict";
 // Helper function for creating a pointer
-function setPointer(name, obj){
-  return obj.jsav.pointer(name, obj,{visible: true, 
+function setPointer(name, obj, index){
+  return obj.jsav.pointer(name, obj,{
+                targetIndex : index,
+                visible: true, 
                 anchor: "left top",
                 myAnchor: "right bottom",
-                left: 20,
+                left: 15,
                 top: -20});
 }
 
@@ -52,8 +54,9 @@ jQuery.fn.rotate = function(degrees) {
   var arr = jsav.ds.array([12,45,5,81,"", "", "", ""],{indexed:true, top: topMargin, left: leftMargin});
   jsav.umsg("Assume that there are <i>n</i> elements in the queue. By analogy to the array-based list implementation, we could require that all elements of the queue be stored in the first <i>n</i> positions of the array.");
   jsav.displayInit();
-  var rearPointer = jsav.pointer("rear", arr, {targetIndex : 0});
-  var frontPointer = jsav.pointer("front", arr, {targetIndex : 3});
+
+  var rearPointer = setPointer("rear",arr, 0);
+  var frontPointer = setPointer("front",arr, 3);
   arr.highlight(3);
   jsav.umsg(" If we choose the rear element of the queue to be in position 0, then dequeue operations require only &theta;(1) time because the front element of the queue (the one being removed) is the last element in the array.");
   jsav.step();
@@ -83,8 +86,8 @@ jQuery.fn.rotate = function(degrees) {
   jsav.umsg("A far more efficient implementation can be obtained by relaxing the requirement that all elements of the queue must be in the first <i>n</i> positions of the array. We will still require that the queue be stored be in contiguous array positions, but the contents of the queue will be permitted to drift within the array, as illustrated by the following slides ");
   jsav.displayInit();
   var arr = jsav.ds.array([20,5,12,17, "", "", "", "", "", "", "", ""],{left:leftMargin, top:topMargin});
-  var rearPointer =  jsav.pointer("rear", arr, {targetIndex : 3});
-  var frontPointer =  jsav.pointer("front", arr, {targetIndex : 0});
+  var rearPointer =  setPointer("rear",arr, 3);
+  var frontPointer =  setPointer("front",arr, 0);
   jsav.umsg(" The queue after the initial four numbers 20, 5, 12, and 17 have been inserted");
   jsav.step();
   frontPointer.target(arr, {relativeIndex : 1, targetIndex : 1});
@@ -133,8 +136,8 @@ jQuery.fn.rotate = function(degrees) {
   var leftMargin = 250;
   var topMargin = 25; 
   var arr = jsav.ds.array([20,5,12,17, "", "", "", "", "", "", "", ""],{left:leftMargin, top:topMargin});
-  var rearPointer =  jsav.pointer("rear", arr, {targetIndex : 3});
-  var frontPointer =  jsav.pointer("front", arr, {targetIndex : 0});
+  var rearPointer =  setPointer("rear",arr, 3);
+  var frontPointer =  setPointer("front",arr, 0);
   jsav.umsg("This implementation raises a new problem. Assume that the front element of the queue is initially at position 0, and that elements are added to successively higher-numbered positions in the array.");
   jsav.displayInit();
   frontPointer.target(arr, {relativeIndex : 1, targetIndex : 1});
@@ -269,11 +272,11 @@ jQuery.fn.rotate = function(degrees) {
     var fx, fy; 
     var tx = this.r2*cos(degree) + this.cx;
     var ty = this.r2*sin(degree) + this.cy;
-    left = tx + 25 * cos(degree + 15) -20;
+    left = tx + 32 * cos(degree + 15) -20;
     if(degree + 15 < 180){
-      top = ty + 25 * sin(degree + 15);
+      top = ty + 32 * sin(degree + 15);
     }else{
-      top = ty + 25 * sin(degree + 15) - 22;
+      top = ty + 32 * sin(degree + 15) - 22;
     }
     var pointer = {};
     pointer.label = this.jsav.label(name,{relativeTo: this.labels[index], anchor: "center",
@@ -302,7 +305,7 @@ jQuery.fn.rotate = function(degrees) {
   var jsav = new JSAV("AQueueCircularCON");
 
   // center coordinate
-  var cx = 400, cy = 120; 
+  var cx = 400, cy = 130; 
   // radius
   var r1 = 50, r2 = 100;
   var fx = cx, fy = cy - r2 - 15;
@@ -365,19 +368,33 @@ jQuery.fn.rotate = function(degrees) {
   var frontP = cir.pointer("front,rear", 10);
   jsav.umsg("Assume that front stores the array index for the front element in the queue, and rear stores the array index for the rear element. If both front and rear have the same position, then with this scheme there must be one element in the queue.");
   jsav.step();
-  cir.unhighlight(10);
   cir.highlight(11);
-  cir.highlight(0);
   cir.value(10, " ");
   frontP.arrow.hide();
   frontP.label.hide();
-  cir.pointer("front", 0);
-  cir.pointer("rear", 11);
+  var frontP1 = cir.pointer("front", 11);
+  var rearP1 = cir.pointer("rear", 10);
   jsav.umsg("Thus, an empty queue would be recognized by having rear be one less than front (taking into account the fact that the queue is circular, so position size-1 is actually considered to be one less than position 0).");
   jsav.step();
   jsav.umsg("But what if the queue is completely full? In other words, what is the situation when a queue with n array positions available contains n elements? In this case, if the front element is in position 0, then the rear element is in position size-1.");
+  frontP1.arrow.hide();
+  frontP1.label.hide();
+  rearP1.arrow.hide();
+  rearP1.label.hide();
+  cir.unhighlight(10);
+  var frontP2 = cir.pointer("front", 0);
+  var rearP2 = cir.pointer("rear", 11);
+  cir.highlight(11);
+  cir.highlight(0);
   jsav.step();
   jsav.umsg("But this means that the value for rear is one less than the value for front when the circular nature of the queue is taken into account. In other words, the full queue is indistinguishable from the empty queue!")
+  jsav.step();
+  jsav.umsg("You might think that the problem is in the assumption about front and rear being defined to store the array indices of the front and rear elements, respectively, and that some modification in this definition will allow a solution. ");
+  jsav.step();
+  jsav.umsg(" Unfortunately, the problem cannot be remedied by a simple change to the definition for front and rear, because of the number of conditions or states that the queue can be in. Ignoring the actual position of the first element, and ignoring the actual values of the elements stored in the queue, how many different states are there? ");
+  jsav.step();
+  jsav.umsg(" There can be no elements in the queue, one element, two, and so on. At most there can be n elements in the queue if there are n array positions. This means that there are n+1 different states for the queue (0 through n elements are possible).");
+  jsav.step();
   jsav.recorded();
 }(jQuery));
 
