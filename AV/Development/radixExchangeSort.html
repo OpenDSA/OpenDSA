@@ -262,7 +262,7 @@
         //add click handlers
         $("#callButton").click(function () {
             mode.value(1);
-            clickHandler.unselect();
+            clickHandler.deselect();
             stack.addFirst("Bit: " + (getCurrentValue("Bit", stack) - 1));
             stack.layout();
             av.umsg("Select the <strong>left endpoint</strong>.");
