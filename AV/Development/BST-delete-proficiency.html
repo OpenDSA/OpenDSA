@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>BST Delete</title>
+        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+    </head>
+
+    <body>
+        <style>
+          #jsavcontainer {
+            width: 740px;
+            height: 650px;
+            background-color: #fff;
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+          }
+          .jsavtreenode {
+            cursor: pointer;
+          }
+          .jsavtreenode.jsavnullnode, .jsavnode.jsavindex{
+            cursor: default;
+          }
+          p.jsavoutput.jsavline {
+            height: 40px;
+          }
+          .jsavscore {
+            text-align: center;
+          }
+          p.instructLabel {
+            margin-top: -5px;
+          }
+          p.instructions {
+            margin-top: -15px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid black;
+          }
+          .greybackground, .greybackground .jsavvalue, .jsavarray.jsavbararray .jsavindex.greybackground .jsavvalue{
+            background-color: #eee !important;
+          }
+        </style>
+        <h1>BST Delete</h1>
+        <div id="jsavcontainer">
+            <p class="instructLabel">Instructions:</p>
+            <p class="instructions">
+                    Use the BST Delete algorith to delete the values in the array. Click on a node to erase its value, or if there is a previously erased value, to move the value the value into the erased erased node. 
+            </p>
+            <p align="center" class="jsavexercisecontrols"></p>
+            <ol id="deleteValues"></ol>
+        </div>
+
+        <script
+           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+        <script src="../../JSAV/lib/raphael.js"></script>
+        <script src="../../JSAV/build/JSAV.js"></script>
+
+        <script>
+
+        var initialArray = [],
+            deleteValues = [],
+            jsavTree,
+            jsavArray,
+            arraySize = 5,          //delete 5 values/nodes
+            treeSize = 20,          //20 nodes
+            maxHeight = 6,
+            arrayIndex,
+            $array = $('#deleteValues'),
+            av = new JSAV($("#jsavcontainer"));
+
+        JSAV._types.ds.BinaryTree.prototype.insert = function (value) {
+            // helper function to recursively insert
+            var ins = function(node, insval) {
+              var val = node.value();
+              if (!val || val === "jsavnull") { // no value in node
+                node.value(insval);
+              } else if (val - insval >= 0) { // go left
+                if (node.left()) {
+                  ins(node.left(), insval);
+                } else {
+                  node.left(insval);
+                }
+              } else { // go right
+                if (node.right()) {
+                  ins(node.right(), insval);
+                } else {
+                  node.right(insval);
+                }
+              }
+            };
+            if ($.isArray(value)) { // array of values
+              for (var i = 0, l = value.length; i < l; i++) {
+                ins(this.root(), value[i]);
+              }
+            } else {
+              ins(this.root(), value);
+            }
+            return this;
+        };
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        function initialize() {
+
+
+            function dataTest(array) {
+                var bst = av.ds.bintree();
+                bst.insert(array);
+                var result = bst.height() <= maxHeight;
+                bst.clear();
+                return result;
+            } 
+
+            //clear old binary tree
+            if (jsavTree) {
+                jsavTree.clear();
+            }
+            //generate random tree
+            jsavTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
+            do {
+                initialArray = []
+                perfectBinTree(initialArray, 1, 10, 100, 3, 1);
+                initialArray = initialArray.concat(JSAV.utils.rand.numKeys(10, 100, treeSize - 7));
+            } while (!dataTest(initialArray))
+            jsavTree.insert(initialArray);
+            jsavTree.click(clickHandler);
+            jsavTree.layout();
+
+            //pick the values to delete and insert them in the array
+            var htmldata = "";
+            for (var i = 0; i < arraySize; i++) {
+                deleteValues[i] = initialArray[Math.floor(treeSize - 1 - i * (treeSize - 1) / (arraySize - 1))];
+                htmldata += "<li>"+deleteValues[i]+"</li>";
+            }
+            $array.html(htmldata);
+            jsavArray = av.ds.array($array, {indexed: false});
+            jsavArray.highlight(0);
+
+            //create variable to store current index
+            arrayIndex = av.variable(0);
+            
+            return jsavTree;
+        }
+        
+        function modelSolution(jsav) {
+            //helper function for finding the node
+            //naive because path and node are guaranteed to exist
+            function find(val) {
+                var node = modelTree.root();
+                while (node.value() !== val) {
+                    if (val < node.value()) {
+                        node = node.left();
+                    } else {
+                        node = node.right();
+                    }
+                }
+                return node;
+            }
+            //helper function for finding replacing node on the left side
+            //if no left child the function will return undefined
+            function findLargest(root) {
+                var node = root.left()
+                if (!node || node.value() === "jsavnull") {
+                    return undefined;
+                }
+                while (node.right() && node.right().value() !== "jsavnull") {
+                    node = node.right();
+                }
+                return node;
+            }
+
+            var modelArray = jsav.ds.array(deleteValues, {indexed: false});
+            var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 10});
+
+            modelTree.insert(initialArray);
+            modelTree.layout();
+
+            jsav._undo = [];
+
+            for (var i = 0; i < arraySize; i++) {
+                //highlight the value which should be deleted
+                modelArray.highlight(i);
+                //add step
+                jsav.step();
+                //node which should be deleted
+                var node = find(deleteValues[i]);
+                while (node) {
+                    //find possible empty node between node and root
+                    var empty = node;
+                    while (empty !== null && empty.value() !== "") {
+                        empty = empty.parent();
+                    }
+
+                    //if an empty node is found, insert the value of node into the empty node, or replace the empty node with node
+                    if (empty) {
+                        if (empty.right() && !empty.left()) {
+                            //replace node with node
+                            //turn animation off, because all children of empty will be hidden using animation, which will prevent calling show()
+                            turnAnimationOff();
+                            if (empty.parent().left() === empty) {
+                                empty.parent().left(node);
+                            } else {
+                                empty.parent().right(node);
+                            }
+                            node.show();
+                            restoreAnimationState();
+                            modelTree.layout();
+                            jsav.stepOption("grade", true);
+                            jsav.step();
+                            break;
+                        } else {
+                            //insert value of node into empty node
+                            empty.value(node.value());
+                        }
+                    }
+                    //empty this node
+                    node.value("");
+                    //if no children, remove node and move on
+                    if (!node.left() && !node.right()) {
+                        node.remove();
+                        modelTree.layout();
+                        node = null;
+                    } else {
+                        var rep = findLargest(node);
+                        if (rep) {
+                            node = rep;
+                        } else {
+                            node = node.right();
+                        }
+                    }
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+
+                }
+
+                //unhighlight
+                modelArray.unhighlight(i);
+            }
+
+            return modelTree;
+        }
+
+        function highlightNext() {
+            //unhighlight the current one
+            if (arrayIndex.value() < arraySize) {
+                jsavArray.unhighlight(arrayIndex.value());
+                arrayIndex.value(arrayIndex.value() + 1);
+            }
+            //higlight the next one
+            if (arrayIndex.value() < arraySize) {
+                jsavArray.highlight(arrayIndex.value());
+            }
+        }
+
+        function clickHandler() {
+            if (arrayIndex.value() < arraySize && !this.hasClass("jsavnullnode")) {
+                //find possible empty node between this and root
+                var empty = this;
+                while (empty !== null && empty.value() !== "") {
+                    empty = empty.parent();
+                }
+
+                //if an empty node is found, insert the value of this node into the empty node, or replace the empty node with this one
+                if (empty) {
+                    if (empty.right() && !empty.left()) {
+                        //replace node with this
+                        //turn animation off, because all children of empty will be hidden using animation, which will prevent calling show()
+                        turnAnimationOff();
+                        if (empty.parent().left() === empty) {
+                            empty.parent().left(this);
+                        } else {
+                            empty.parent().right(this);
+                        }
+                        this.show();
+                        restoreAnimationState();
+                        jsavTree.layout();
+                        highlightNext();
+                        exercise.gradeableStep();
+                        return;
+                    } else {
+                        //insert value of this into empty node
+                        empty.value(this.value());
+                    }
+                }
+                //empty this node
+                this.value("");
+                //if no children, remove node and move on
+                // if (!(this.left() && !this.left().hasClass("jsavnullnode")) &&
+                    // !(this.right() && !this.right().hasClass("jsavnullnode"))) {
+                if (!this.left() && !this.right()) {
+                    this.remove();
+                    jsavTree.layout();
+                    highlightNext();
+                }
+                exercise.gradeableStep();
+            }
+        }
+
+        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+        exercise.reset();
+
+        // helper function for creating a perfect binary tree
+        function perfectBinTree(arr, level, min, max, levelsInTotal, arrayIndex) {
+            diff = max - min;
+            var value = JSAV.utils.rand.numKey(min + Math.floor(diff / 3), max - Math.floor(diff / 3))
+            arr[arrayIndex - 1] = value;
+            if (level < levelsInTotal) {
+                perfectBinTree(arr, level + 1, min, value - 1, levelsInTotal, 2 * arrayIndex);
+                perfectBinTree(arr, level + 1, value + 1, max, levelsInTotal, 2 * arrayIndex + 1);
+            }
+        }
+
+        var oldfx;
+
+        function turnAnimationOff() {
+            //save the state of fx.off
+            var oldfx = $.fx.off || false;
+            //turn off the jQuery animations
+            $.fx.off = true;
+        }
+
+        function restoreAnimationState() {
+            $.fx.off = oldfx;
+        }
+        </script>
+    </body>
+</html>
