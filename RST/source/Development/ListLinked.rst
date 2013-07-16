@@ -144,7 +144,7 @@ Implementations for the remaining operations each require
    linked list deletion. Show a linked list. User will do a series of
    drags for values and links to get the list updated properly.
    
-.. (avembed) Exercises/Development/listLinkedInsertion.html ka
+.. avembed:: Exercises/Development/listLinkedDeletion.html ka
 
 .. TODO::
    :type: Exercise
