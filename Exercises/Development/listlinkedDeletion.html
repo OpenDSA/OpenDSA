@@ -21,11 +21,11 @@ Written by Junyang Chen and Cliff Shaffer
 
   <style>
     .jsavcontainer {
-      height: 525px;
+      height: 225px;
       border: 0px;
     }
 	.jsavcanvas{
-      height: 525px;
+      height: 225px;
     }
     .jsavhorizontallist.jsavautoresize .jsavnode {
       min-width: 30px;
@@ -73,6 +73,8 @@ var jsav,           // The JSAV object
   answerHead,
   answerCurr,
   answerTail,
+  answerCopyFrom,
+  answerCopyVal,
   orderArr = [],  
   listArr = [],
   status = 0,    // Nothing is currently selected, status = 0;
@@ -86,9 +88,11 @@ var jsav,           // The JSAV object
   headNode,
   currNode,
   tailNode,
+  copyFrom,
   jsavList,        // JSAV list
   listSize,        // JSAV list size
-  insertPosition,  // Position to be inserted
+  jsavCopyArr,
+  currPosition,  // Position to be inserted
   userInput,      // Boolean: Tells us if user ever did anything
   selected_pointer,
   selected_node; // Position that has been selected by user for swap
@@ -217,7 +221,14 @@ function Connect(obj1, obj2){
     connections.push({from: obj1, to: obj2});  
 }
 
-
+var copyHandler = function(){
+  if(status == 1){
+    jsav.effects.copyValue(selected_node, jsavCopyArr, 0);
+    selected_node.removeClass('bgColor');
+    copyFrom = selected_node;
+    status = 0;
+  }
+}
 
 // Click event handler on the list
 var clickHandler = function (e) {
@@ -315,16 +326,19 @@ var nullClickHandler = function (index,e) {
 };
 // reset function definition
 var f_reset = function () {
+  var leftMargin = 20;
+  var topMargin = 50;
   userInput = false;
   connections = [];
   selected_node = null;
+  copyFrom = null;
   status = 0;
   if($("#jsav")){
     $("#jsav").empty();
   }
   jsav = new JSAV("jsav");	
 
-  jsavList = jsav.ds.list({"nodegap": 30, "top": 40, left: 20});
+  jsavList = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
   jsavList.addFirst("null");
   for(var i = listSize - 2; i > 0; i--)
   {
@@ -332,7 +346,7 @@ var f_reset = function () {
   }
   jsavList.addFirst("null");
   jsavList.layout(); 
-
+  jsavCopyArr = jsav.ds.array(["null"],{left : leftMargin+ 10 + 73 * (currPosition + 1), top: topMargin + 70});
   odsa_head = jsavList.get(0);
   jsavList.get(0).odsa_tail = null;
   for(var i = 0; i < listSize; i ++)
@@ -342,9 +356,9 @@ var f_reset = function () {
 	jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
 	jsavList.get(i).odsa_tail = null;
   }
-  if(insertPosition !== listSize-2){
+  if(currPosition !== listSize-2){
     for(var i = 0; i < listSize; i ++){
-      if(i !== insertPosition + 2){
+      if(i !== currPosition + 2){
         answerOrderArr.push(orderArr[i]);
 	  }
     }
@@ -353,26 +367,34 @@ var f_reset = function () {
   }
   setPointer("head", jsavList.get(0));
   headNode = jsavList.get(0);
-  setPointer("curr", jsavList.get(insertPosition + 1));
-  currNode = jsavList.get(insertPosition + 1);
+  setPointer("curr", jsavList.get(currPosition + 1));
+  currNode = jsavList.get(currPosition + 1);
   setPointer("tail", jsavList.get(listSize - 1));
   tailNode = jsavList.get(listSize - 1);
   jsavList.get(listSize - 1).odsa_tail = addTail(jsavList.get(listSize - 1));
   jsav.recorded();
   jsav.forward();
-  answerCurr = jsavList.get(insertPosition + 1);
+  answerCurr = jsavList.get(currPosition + 1);
   answerHead = jsavList.get(0);
-  if(insertPosition === listSize - 3){
+  if(currPosition === listSize - 3){
     answerTail = jsavList.get(listSize - 2);
   }else{
     answerTail = jsavList.get(listSize - 1);
   }
+  if(currPosition === listSize - 2){
+    answerCopyFrom = null;
+    answerCopyVal = "null";
+  }else{
+    answerCopyFrom = jsavList.get(currPosition + 1);
+    answerCopyVal = jsavList.get(currPosition + 1).value();
+  }
+  jsavCopyArr.click(copyHandler);
   jsavList.click(clickHandler); // Rebind click handler after reset
   userInput = false;
 
 };
 // Initialise the exercise
-var initJSAV = function (size, pos, value) {
+var initJSAV = function (size, pos) {
   
   // Out with the old
   answerArr.length = 0;
@@ -387,13 +409,13 @@ var initJSAV = function (size, pos, value) {
   
   
   listSize = size;
-  insertPosition = pos;
+  currPosition = pos;
 
   f_reset();
 
   // correct answer
-  if(insertPosition != listSize-2){
-    answerArr.splice(insertPosition + 1, 1);
+  if(currPosition != listSize-2){
+    answerArr.splice(currPosition + 1, 1);
   }
   console.log(answerArr);
   
@@ -405,18 +427,11 @@ var initJSAV = function (size, pos, value) {
 };
 
 // Check user's answer for correctness: User's array must match answer
-var checkAnswer = function (arr_size, insert_pos) {
+var checkAnswer = function (arr_size, curr_pos) {
   var i = 1;
   var curr = odsa_head;
-  if(tailNode!== answerTail){
-    alert(3);return false;
-  }
-  if(headNode!== answerHead){
-    alert(1);return false;
-  }
-  if(currNode!== answerCurr){
-    alert(2);return false;
-  }
+  if(copyFrom !== answerCopyFrom){return false;}
+  if(answerCopyVal !== jsavCopyArr.value(0)){return false;}
   if(headNode!== answerHead || currNode!== answerCurr || tailNode!== answerTail){
     return false;
   }
@@ -431,8 +446,7 @@ var checkAnswer = function (arr_size, insert_pos) {
       return false;
     }
   }
-  //alert(i + "," + curr.value() + ", " + answerArr[i] + ", " + curr.id() + "," + answerOrderArr[i]);
-  if(insert_pos == arr_size - 2){ return true;}
+  if(curr_pos == arr_size - 2){ return true;}
   if(i == listSize-1)
   {
     return true;
@@ -444,22 +458,19 @@ var checkAnswer = function (arr_size, insert_pos) {
 <div class="exercise">
   <div class="vars">
     <var id="arr_size">randRange(4, 6)</var>
-	<var id="insert_value">randRange(0, 999)</var>
-	<var id="insert_pos">randRange(0, arr_size-2)</var>
-    <var id="JSAV">initJSAV(arr_size, insert_pos,insert_value)</var>
+	<var id="curr_pos">randRange(0, arr_size-2)</var>
+    <var id="JSAV">initJSAV(arr_size, curr_pos)</var>
   </div>
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <p class="problem" id = "test">Your task in this exercise is to show the
-        behavior for Linked list insertion.
-        In the List displayed below, the "current" position is <b><var>insert_pos</var></b>.</p>
+        behavior for Linked list deletion.
+        In the List displayed below, the "current" position is <b><var>curr_pos</var></b>.</p>
       <div class="question">
-	    <p>Insert <b><var>insert_value</var></b> into current position, which is position <b><var>insert_pos</var></b>.</p>
+	    <p>Delete the element in current position, which is position <b><var>curr_pos</var></b>.</p>
         <p>To move an element, click on it (to highlight it), then click on where you
-        want it to go. You can insert the new
-        value <b><var>insert_value</var></b> into a highlighted
-        array position by clicking the "Insert" button.</p>
+        want it to go. You can make a node poiting to "null" by firstly clicking the pointer area of the node and then clicking the "makenull" button.</p>
         <input id="reset" type="button" value="Reset" />
 		<input id="makenull" type="button" value="makenull" />
         <div id="jsav" style = "{background-color : #333}"></div>
@@ -469,10 +480,10 @@ var checkAnswer = function (arr_size, insert_pos) {
           [userInput]
         </div>
         <div class="validator-function">
-          if (!checkAnswer(arr_size, insert_pos) && !guess[0])
+          if (!checkAnswer(arr_size, curr_pos) && !guess[0])
             return ""; // User did not click, and correct answer is not
 	               // initial array state
-          else return checkAnswer(arr_size, insert_pos);
+          else return checkAnswer(arr_size, curr_pos);
         </div>
       </div>
       <div class="hints">
