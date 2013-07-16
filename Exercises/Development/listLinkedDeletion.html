@@ -339,6 +339,7 @@ Written by Junyang Chen and Cliff Shaffer
       topMargin = 50;
     // Reset the value of global variables.
     userInput = false;
+    answerOrderArr.length = 0;
     connections = [];
     selected_node = null;
     selected_pointer = null;
@@ -438,7 +439,6 @@ Written by Junyang Chen and Cliff Shaffer
     if(currPosition != listSize-2){
       answerArr.splice(currPosition + 1, 1);
     }
-
     // Set up handler for 'makenull' button.
     $("#makenull").click(function () { nullClickHandler(); });
     // Set up handler for reset button
