@@ -154,6 +154,8 @@ Written by Junyang Chen and Cliff Shaffer
 
     // Rebuild JSAV Objects on the canvas.
     jsav = new JSAV("jsav");
+    // Sets the speed of animation.
+    jsav.SPEED = 120;
     jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false, left: 35});
     jsavArr.css({top:50});
     returnArr = jsav.ds.array(["null"], {left: delPosition*31 + 35 , top: 120});

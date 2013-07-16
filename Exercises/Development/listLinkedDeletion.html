@@ -24,8 +24,14 @@ Written by Junyang Chen and Cliff Shaffer
       height: 160px;
       border: 0px;
     }
-	.jsavcanvas{
+    .jsavcanvas{
       height: 160px;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: moz-none;
+      -ms-user-select: none;
+      user-select: none;
     }
     .jsavhorizontallist.jsavautoresize .jsavnode {
       min-width: 30px;
@@ -57,7 +63,7 @@ Written by Junyang Chen and Cliff Shaffer
       width: 40px;
       border: 1px solid #bbb;
       text-align: center;
-	  cursor: pointer;
+      cursor: pointer;
     }
     .highlight{
       background-color: yellow;
@@ -67,122 +73,123 @@ Written by Junyang Chen and Cliff Shaffer
 </head>
 <body>
 <script>
-var jsav,           // The JSAV object
-  answerArr = [], // The (internal) array that stores the correct answer
-  answerOrderArr = [], // The (internal) array that stores the correct order of nodes
-  answerHead,
-  answerCurr,
-  answerTail,
-  answerCopyFrom,
-  answerCopyVal,
-  orderArr = [],  
-  listArr = [],
-  status = 0,    // Nothing is currently selected, status = 0;
-                 // Data area of the node is selected, status = 1;
-                 // Pointer area of the node is selected, status = 2.
-				 // Label area of the pointer is clicked, status = 3.
-  odsa_head,      // head of the list
-  connections = [],
-  fromNode,
-  toNode,
-  headNode,
-  currNode,
-  tailNode,
-  copyFrom,
-  jsavList,        // JSAV list
-  listSize,        // JSAV list size
-  jsavCopyArr,
-  labelReturn,
-  currPosition,  // Position to be inserted
-  userInput,      // Boolean: Tells us if user ever did anything
-  selected_pointer,
-  selected_node; // Position that has been selected by user for swap
+  var jsav,               // The JSAV object
+    answerArr = [],       // The (internal) array that stores the correct answer
+    answerOrderArr = [],  // The (internal) array that stores the correct order of nodes' ids
+    answerHead,           // Correct answer of 'head' node.
+    answerCurr,           // Correct answer of 'curr' node.
+    answerTail,           // Correct answer of 'tail' node.
+    answerCopyFrom,       // Correct answer of node from which the return 'box' copies value.
+    answerCopyVal,        // Correct value of the return 'box'.
+    odsa_head,            // Stores the head node of the list
+    orderArr = [],        // Initial node ids of the JSAV list.
+    listSize,             // JSAV list size
+    listArr = [],         // Initial node elements' values for the JSAV list.
+    jsavList,             // JSAV list
+    labelReturn,          // 'return' label.
+    jsavCopyArr,          // Return 'box'.
 
-JSAV._types.ds.ListNode.prototype.odsa_next = {};
-JSAV._types.ds.ListNode.prototype.odsa_tail = {};
-JSAV._types.ds.ListNode.prototype.odsa_edgeToNext = {};
+    connections = [],     // Stores the node-pairs of the JSAV-List arrows.
+    fromNode,             // Stores the node whose pointer area is clicked.
+    headNode,             // Used to trace the node pointed by 'head' pointer.
+    currNode,             // Used to trace the node pointed by 'curr' pointer.
+    tailNode,             // Used to trace the node pointed by 'tail' pointer.
+    copyFrom,             // Used to trace the node where the return 'box' copies value from.
+    currPosition,         // Index of 'curr' node, starting counting from the next node of head.
+    selected_pointer,     // Pointer that has been selected by user.
+    selected_node,         // Node that has been selected by user.
+    userInput,            // Boolean: Tells us if user ever did anything
+    status = 0;           // status = 0 : nothing is currently selected;
+                          // status = 1 : data area of the node is selected;
+                          // status = 2 : pointer area of the node is selected.
+                          // status = 3 : Label area of the pointer is clicked.
 
-JSAV._types.ds.ListNode.prototype.odsa_pleft = null;
-JSAV._types.ds.ListNode.prototype.odsa_pright = null;
-JSAV._types.Pointer.prototype.click = function(fn){
-  var pointer = this;
-  this.element.click(function(){fn(pointer)});
-}
-var pclick = function(pointer){
-  if(status == 1){
-    selected_node.removeClass('bgColor');
-    selected_node = null;
-  }else if(status == 3){
-    if(selected_pointer !== pointer){
-      selected_pointer.element.removeClass('highlight');
-    }else{
-      selected_pointer.element.removeClass('highlight');
-      selected_pointer = null;
-      status = 0;
-      return;
+  // JSAV extensions
+  JSAV._types.ds.ListNode.prototype.odsa_next = {};
+  JSAV._types.ds.ListNode.prototype.odsa_tail = {};
+  JSAV._types.ds.ListNode.prototype.odsa_edgeToNext = {};
+  JSAV._types.ds.ListNode.prototype.odsa_pleft = null;
+  JSAV._types.ds.ListNode.prototype.odsa_pright = null;
+  // Click handler for pointer
+  JSAV._types.Pointer.prototype.click = function(fn){
+    var pointer = this;
+    this.element.click(function(){fn(pointer)});
+  }
+  var pclick = function(pointer){
+    if(status == 1){
+      selected_node.removeClass('bgColor');
+      selected_node = null;
+    }else if(status == 3){
+      if(selected_pointer !== pointer){
+        selected_pointer.element.removeClass('highlight');
+      }else{
+        selected_pointer.element.removeClass('highlight');
+        selected_pointer = null;
+        status = 0;
+        return;
+      }
+    }
+    selected_pointer = pointer;
+    selected_pointer.element.toggleClass('highlight');
+    status = 3;
+  }
+
+  // Helper function for seting pointer
+  function setPointer(name, newnode, oldpointer, opt){
+    if(oldpointer){
+      if(newnode === oldpointer.target()){return;}
+    }
+    if(newnode.odsa_pleft && newnode.odsa_pright){return;}
+    var pointerRight = {visible: true,
+      anchor: "right top",
+      myAnchor: "left bottom",
+      left: -5,
+      top: -20};
+    var pointerLeft = {visible: true,
+      anchor: "left top",
+      myAnchor: "right bottom",
+      left: 15,
+      top: -20};
+
+    if(oldpointer){
+      if(oldpointer.target().odsa_pleft === oldpointer){
+        oldpointer.target().odsa_pleft = null;
+      }else if(oldpointer.target().odsa_pright === oldpointer){
+        oldpointer.target().odsa_pright = null;
+      }
+      // Remove the old pointer
+      oldpointer.element.remove();
+      oldpointer.arrow.element.remove();
+    }
+
+    if(!newnode.odsa_pleft){
+      newnode.odsa_pleft = newnode.jsav.pointer(name, newnode, pointerLeft);
+      newnode.odsa_pleft.click(pclick);
+      return newnode.odsa_pleft;
+    }else if(!newnode.odsa_pright){
+      newnode.odsa_pright = newnode.jsav.pointer(name, newnode, pointerRight);
+      newnode.odsa_pright.click(pclick);
+      return newnode.odsa_pright; 
     }
   }
-  selected_pointer = pointer;
-  selected_pointer.element.toggleClass('highlight');
-  status = 3;
-}
 
-// Helper function for seting pointer
-function setPointer(name, newnode, oldpointer, opt){
-	
-  if(oldpointer){
-    if(newnode === oldpointer.target()){return;}
-  }
-  if(newnode.odsa_pleft && newnode.odsa_pright){return;}
-  pointerRight = {visible: true,
-    anchor: "right top",
-    myAnchor: "left bottom",
-    left: -5,
-    top: -20};
-  pointerLeft = {visible: true,
-    anchor: "left top",
-    myAnchor: "right bottom",
-    left: 15,
-    top: -20};
+  // Add an edge from obj1(node) to obj2(node) 
+  function connection(obj1, obj2){
+    if(obj1 == obj2){ return;}
+    var left = obj1.jsav.container.find(".jsavcanvas:first").offset().left;
+    var top = obj1.jsav.container.find(".jsavcanvas:first").offset().top;
+    var fx = obj1.element.offset().left + 39 - left;
+    var tx = obj2.element.offset().left  +2 - left;	  
+    var fy = obj1.element.offset().top + 16 - top;
+    var ty = obj2.element.offset().top + 16 - top;
+    var fx1 = fx, fy1 = fy, tx1 = tx, ty1 = ty;
 
-  if(oldpointer){
-    if(oldpointer.target().odsa_pleft === oldpointer){
-      oldpointer.target().odsa_pleft = null;
-    }else if(oldpointer.target().odsa_pright === oldpointer){
-      oldpointer.target().odsa_pright = null;
-    }
-    oldpointer.element.remove();
-    oldpointer.arrow.element.remove();
-  }
-
-  if(!newnode.odsa_pleft){
-    newnode.odsa_pleft = newnode.jsav.pointer(name, newnode, pointerLeft);
-    newnode.odsa_pleft.click(pclick);
-    return newnode.odsa_pleft;
-  }else if(!newnode.odsa_pright){
-    newnode.odsa_pright = newnode.jsav.pointer(name, newnode, pointerRight);
-    newnode.odsa_pright.click(pclick);
-    return newnode.odsa_pright; 
-  }
-}
-
-// Add an edge from obj1 to obj2 
-function connection(obj1, obj2){
-  if(obj1 == obj2){ return;}
-  var left = obj1.jsav.container.find(".jsavcanvas:first").offset().left;
-  var top = obj1.jsav.container.find(".jsavcanvas:first").offset().top;
-  var fx = obj1.element.offset().left + 39 - left;
-  var tx = obj2.element.offset().left  +2 - left;	  
-  var fy = obj1.element.offset().top + 16 - top;
-  var ty = obj2.element.offset().top + 16 - top;
-  var fx1 = fx, fy1 = fy, tx1 = tx, ty1 = ty;
-
-  var disx = (fx - tx - 22) > 0 ? 1 : (fx - tx - 22) == 0 ? 0 : -1;
-  var disy = (fy - ty) > 0 ? 1 : (fy - ty) == 0 ? 0 : -1;
+    var disx = (fx - tx - 22) > 0 ? 1 : (fx - tx - 22) == 0 ? 0 : -1;
+    var disy = (fy - ty) > 0 ? 1 : (fy - ty) == 0 ? 0 : -1;
   
-  var dx = Math.max(Math.abs(fx - tx) / 2, 35);
-  var dy = Math.max(Math.abs(fy - ty) / 2, 35);
-  if(fy - ty > -10 && fy - ty < 10 && (tx - fx < 36 || tx - fx > 38)){
+    var dx = Math.max(Math.abs(fx - tx) / 2, 35);
+    var dy = Math.max(Math.abs(fy - ty) / 2, 35);
+    if(fy - ty > -10 && fy - ty < 10 && (tx - fx < 36 || tx - fx > 38)){
       dx = Math.min(Math.abs(fx - tx), 20);
       dy = Math.min(Math.abs(fx - tx)/3, 50);
       tx += 22;
@@ -191,269 +198,283 @@ function connection(obj1, obj2){
       fy1 = fy + dy;
       tx1 = tx + dx;
       ty1 = ty + dy;
-  }
-  var edge = jsav.g.path(["M", fx, fy , "C", fx1, fy1, tx1 , ty1, tx, ty].join(","),{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2,});
+    }
+    var edge = jsav.g.path(["M", fx, fy , "C", fx1, fy1, tx1 , ty1, tx, ty].join(","),{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2,});
   
-  if(obj1.odsa_next){
-    obj1.odsa_edgeToNext.element.remove();	
-  }else{
-    obj1.odsa_tail.element.remove();
-    obj1.odsa_tail = null;
-  }
-  
-  obj1.odsa_edgeToNext = edge;
-  obj1.odsa_next = obj2;
-  
-}
+    if(obj1.odsa_next){
+      obj1.odsa_edgeToNext.element.remove();	
+    }else{
+      obj1.odsa_tail.element.remove();
+      obj1.odsa_tail = null;
+    }
 
-// Function for connecting to nodes when click them 
-function Connect(obj1, obj2){
-  if(obj1 == obj2){ return;}
-  connection(obj1,obj2);
-  obj1.odsa_next = obj2;
-  obj1._next = obj2;
-  for(var i=0; i<connections.length; i++)
-  {
-	  if(connections[i].from == obj1 && connections[i].to != obj2){
-	    connections[i].to = obj2;
-		return;
-	  }
+    obj1.odsa_edgeToNext = edge;
+    obj1.odsa_next = obj2;
   }
+
+  // Function for connecting two nodes 
+  function Connect(obj1, obj2){
+    if(obj1 == obj2){ return;}
+    connection(obj1,obj2);
+    obj1.odsa_next = obj2;
+    obj1._next = obj2;
+    for(var i=0; i<connections.length; i++){
+      if(connections[i].from == obj1 && connections[i].to != obj2){
+        connections[i].to = obj2;
+        return;
+      }
+    }
     connections.push({from: obj1, to: obj2});  
-}
-
-var copyHandler = function(){
-  if(status == 1){
-    jsav.effects.copyValue(selected_node, jsavCopyArr, 0);
-    selected_node.removeClass('bgColor');
-    copyFrom = selected_node;
-    status = 0;
   }
-}
 
-// Click event handler on the list
-var clickHandler = function (e) {
-  var x = parseInt(e.pageX - $('#' + this.id()).offset().left);
-  var y = parseInt(e.pageY - $('#' + this.id()).offset().top);
-  if(x > 31 && x < 42 && y > 0 && y < 31){	
+  // Click event handler for 'return' array
+  var copyHandler = function(){
     if(status == 1){
+      jsav.effects.copyValue(selected_node, jsavCopyArr, 0);
       selected_node.removeClass('bgColor');
-      selected_node = null;
-	}else if(status == 2){
-      $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
-	}
+      copyFrom = selected_node;
+      status = 0;
+    }
+  }
 
-    if(status == 0 || status == 1){
-      $('#' + this.id() + " .jsavpointerarea:first").addClass('bgColor');
-      fromNode = this;
-      status = 2;
-    }else if(status == 2){		
-      if(this.id() == fromNode.id()){
-        $('#' + this.id() + " .jsavpointerarea:first").removeClass('bgColor');
-        fromNode = null;
-        status = 0;
-      }else{
+  // Click event handler on the list
+  var clickHandler = function (e) {
+    var x = parseInt(e.pageX - $('#' + this.id()).offset().left);
+    var y = parseInt(e.pageY - $('#' + this.id()).offset().top);
+    if(x > 31 && x < 42 && y > 0 && y < 31){	
+      if(status == 1){
+        selected_node.removeClass('bgColor');
+        selected_node = null;
+      }else if(status == 2){
+        $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
+    }
+
+      if(status == 0 || status == 1){
         $('#' + this.id() + " .jsavpointerarea:first").addClass('bgColor');
         fromNode = this;
         status = 2;
-      }  
-    }
-  }else{
-    if(status == 0){
-      this.addClass('bgColor');
-      selected_node = this;
-      status = 1;
-    }else if(status == 1){
-      this.value(selected_node.value());
-      selected_node.removeClass('bgColor');
-      jsav.effects.copyValue(selected_node, this);
-      selected_node = null;
-      status = 0;
-    }else if(status == 2){
-      toNode = this;
-      Connect(fromNode, toNode);
-      $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
-      $('#' + toNode.id()).removeClass('bgColor');
-      fromNode = null;
-      toNode = null;
-      status = 0;
-    }else if(status == 3){
-      var oldPointer = selected_pointer;
-      oldPointer.element.removeClass('highlight');
-      if(oldPointer.target() !== this){
-        selected_pointer = setPointer(selected_pointer.element.html(), this, oldPointer);
-        if(selected_pointer.element.html() === "head"){
-          headNode = selected_pointer.target();;
-        }else if(selected_pointer.element.html() === "curr"){
-          currNode = selected_pointer.target();;	
-        }else if (selected_pointer.element.html() === "tail"){
-          tailNode = selected_pointer.target();;
+      }else if(status == 2){		
+        if(this.id() == fromNode.id()){
+          $('#' + this.id() + " .jsavpointerarea:first").removeClass('bgColor');
+          fromNode = null;
+          status = 0;
+        }else{
+          $('#' + this.id() + " .jsavpointerarea:first").addClass('bgColor');
+          fromNode = this;
+          status = 2;
+        }  
+      }
+    }else{
+      if(status == 0){
+        this.addClass('bgColor');
+        selected_node = this;
+        status = 1;
+      }else if(status == 1){
+        this.value(selected_node.value());
+        selected_node.removeClass('bgColor');
+        jsav.effects.copyValue(selected_node, this);
+        selected_node = null;
+        status = 0;
+      }else if(status == 2){
+        Connect(fromNode, this);
+        $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
+        $('#' + this.id()).removeClass('bgColor');
+        fromNode = null;
+        status = 0;
+      }else if(status == 3){
+        var oldPointer = selected_pointer;
+        oldPointer.element.removeClass('highlight');
+        if(oldPointer.target() !== this){
+          selected_pointer = setPointer(selected_pointer.element.html(), this, oldPointer);
+          if(selected_pointer.element.html() === "head"){
+            headNode = selected_pointer.target();;
+          }else if(selected_pointer.element.html() === "curr"){
+            currNode = selected_pointer.target();;	
+          }else if (selected_pointer.element.html() === "tail"){
+            tailNode = selected_pointer.target();;
+          }
         }
+        status = 0;
+      }
+      userInput = true;
+    }
+  };
+ 
+  // Helper function for adding a tail to the target node.
+  function addTail(node){	  
+    var left = node.element.offset().left -    jsav.container.find(".jsavcanvas:first").offset().left;
+    var top = node.element.offset().top - jsav.container.find(".jsavcanvas:first").offset().top;
+    var fx = left + 34;
+    var tx = left + 44;
+    var fy = top + 32;
+    var ty = top + 1;
+
+    if(node.odsa_tail){
+      node.odsa_tail.element.remove();
+      node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
+    }else{
+      node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
+    }
+    node.odsa_next = null;
+  }
+
+  // Click event handler of 'makenull' button.
+  var nullClickHandler = function (index,e) {
+    if (status == 2) {
+      $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
+      addTail(fromNode);
+      if(fromNode.odsa_edgeToNext){
+        fromNode.odsa_edgeToNext.element.remove();
+        fromNode.odsa_next = null;
       }
       status = 0;
-    }
+    } 
     userInput = true;
-  }
-};
-function addTail(node){	  
-  var left = node.element.offset().left -    jsav.container.find(".jsavcanvas:first").offset().left;
-  var top = node.element.offset().top - jsav.container.find(".jsavcanvas:first").offset().top;
-  var fx = left + 34;
-  var tx = left + 44;
-  var fy = top + 32;
-  var ty = top + 1;
+  };
 
-  if(node.odsa_tail){
-    node.odsa_tail.element.remove();
-    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
-  }else{
-    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
-  }
-  node.odsa_next = null;
-}
-
-
-var nullClickHandler = function (index,e) {
-  if (status == 2) {
-    $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
-    addTail(fromNode);
-    if(fromNode.odsa_edgeToNext){
-      fromNode.odsa_edgeToNext.element.remove();
-      fromNode.odsa_next = null;
-    }
+  // Reinitialize the exercise.
+  var f_reset = function () {
+    // JSAV-List position.
+    var leftMargin = 20,
+      topMargin = 50;
+    // Reset the value of global variables.
+    userInput = false;
+    connections = [];
+    selected_node = null;
+    selected_pointer = null;
+    copyFrom = null;
     status = 0;
-  } 
-  userInput = true;
-};
-// reset function definition
-var f_reset = function () {
-  var leftMargin = 20;
-  var topMargin = 50;
-  userInput = false;
-  connections = [];
-  selected_node = null;
-  copyFrom = null;
-  status = 0;
-  if($("#jsav")){
-    $("#jsav").empty();
-  }
-  jsav = new JSAV("jsav");	
 
-  jsavList = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
-  jsavList.addFirst("null");
-  for(var i = listSize - 2; i > 0; i--)
-  {
-	jsavList.addFirst(listArr[i]);
-  }
-  jsavList.addFirst("null");
-  jsavList.layout(); 
-  jsavCopyArr = jsav.ds.array(["null"],{left : leftMargin+ 10 + 73 * (currPosition + 1), top: topMargin + 70});
-  labelReturn = jsav.label("return", {left: leftMargin - 35 +73 * (currPosition + 1), top: topMargin + 74});
-  odsa_head = jsavList.get(0);
-  jsavList.get(0).odsa_tail = null;
-  for(var i = 0; i < listSize; i ++)
-  {
-	orderArr[i] = jsavList.get(i).id();
-    jsavList.get(i).odsa_next = jsavList.get(i).next();
-	jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
-	jsavList.get(i).odsa_tail = null;
-  }
-  if(currPosition !== listSize-2){
-    for(var i = 0; i < listSize; i ++){
-      if(i !== currPosition + 2){
-        answerOrderArr.push(orderArr[i]);
-	  }
+    // Clear the old JSAV canvas.
+    if($("#jsav")){
+      $("#jsav").empty();
     }
-  }else{
-    answerOrderArr = orderArr.slice(0);
-  }
-  setPointer("head", jsavList.get(0));
-  headNode = jsavList.get(0);
-  setPointer("curr", jsavList.get(currPosition + 1));
-  currNode = jsavList.get(currPosition + 1);
-  setPointer("tail", jsavList.get(listSize - 1));
-  tailNode = jsavList.get(listSize - 1);
-  jsavList.get(listSize - 1).odsa_tail = addTail(jsavList.get(listSize - 1));
-  jsav.recorded();
-  jsav.forward();
-  answerCurr = jsavList.get(currPosition + 1);
-  answerHead = jsavList.get(0);
-  if(currPosition === listSize - 3){
-    answerTail = jsavList.get(listSize - 2);
-  }else{
-    answerTail = jsavList.get(listSize - 1);
-  }
-  if(currPosition === listSize - 2){
-    answerCopyFrom = null;
-    answerCopyVal = "null";
-  }else{
-    answerCopyFrom = jsavList.get(currPosition + 1);
-    answerCopyVal = jsavList.get(currPosition + 1).value();
-  }
-  jsavCopyArr.click(copyHandler);
-  jsavList.click(clickHandler); // Rebind click handler after reset
-  userInput = false;
 
-};
-// Initialise the exercise
-var initJSAV = function (size, pos) {
-  
-  // Out with the old
-  answerArr.length = 0;
-  answerOrderArr.length = 0;
-  // Give random numbers in range 0..999
-  answerArr[0] = "null";
-  for (i = 1; i < size-1; i++) {
-    answerArr[i] = Math.floor(Math.random() * 1000);
-  }
-  answerArr[size-1] = "null";
-  listArr = answerArr.slice(0);
-  
-  
-  listSize = size;
-  currPosition = pos;
+    jsav = new JSAV("jsav");
+    // JSAV list	
+    jsavList = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
+    jsavList.addFirst("null");
+    for(var i = listSize - 2; i > 0; i--){
+      jsavList.addFirst(listArr[i]);
+    }
+    jsavList.addFirst("null");
+    jsavList.layout(); 
 
-  f_reset();
+    // 'return' JSAV array
+    jsavCopyArr = jsav.ds.array(["null"],{left : leftMargin+ 10 + 73 * (currPosition + 1), top: topMargin + 70});
+    // 'return' Label
+    labelReturn = jsav.label("return", {left: leftMargin - 35 +73 * (currPosition + 1), top: topMargin + 74});
+    // Create pointers
+    setPointer("head", jsavList.get(0));
+    setPointer("curr", jsavList.get(currPosition + 1));
+    setPointer("tail", jsavList.get(listSize - 1));
 
-  // correct answer
-  if(currPosition != listSize-2){
-    answerArr.splice(currPosition + 1, 1);
-  }
-  
-  // Set up handler for newnode
-  $("#makenull").click(function () { nullClickHandler(); });
+    for(var i = 0; i < listSize; i ++){
+      orderArr[i] = jsavList.get(i).id();
+      jsavList.get(i).odsa_next = jsavList.get(i).next();
+      jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
+      jsavList.get(i).odsa_tail = null;
+    }
+    // Add tail for the last node.
+    jsavList.get(listSize - 1).odsa_tail = addTail(jsavList.get(listSize - 1));
+    jsav.recorded();
+    jsav.forward();
 
-  // Set up handler for reset button
-  $("#reset").click(function () { f_reset(); });
-};
+    odsa_head = jsavList.get(0);
+    headNode = jsavList.get(0);
+    currNode = jsavList.get(currPosition + 1);
+    tailNode = jsavList.get(listSize - 1);
 
-// Check user's answer for correctness: User's array must match answer
-var checkAnswer = function (arr_size, curr_pos) {
-  var i = 1;
-  var curr = odsa_head;
-  if(copyFrom !== answerCopyFrom){return false;}
-  if(answerCopyVal !== jsavCopyArr.value(0)){return false;}
-  if(headNode!== answerHead || currNode!== answerCurr || tailNode!== answerTail){
-    return false;
-  }
-  if(curr.value() != answerArr[0] || curr.id() != answerOrderArr[0]){
-    return false;
-  }
-  while(curr.odsa_next){	
-    curr = curr.odsa_next;
-    if(curr.value() == answerArr[i] && curr.id() == answerOrderArr[i]){
-      i++;
-    }else{	alert(curr.value() + ", " + answerArr[i] + ", " + curr.id() + "," + answerOrderArr[i]);
+    // Correct answer.
+    if(currPosition !== listSize-2){
+      for(var i = 0; i < listSize; i ++){
+        if(i !== currPosition + 2){
+          answerOrderArr.push(orderArr[i]);
+        }
+      }
+    }else{
+      answerOrderArr = orderArr.slice(0);
+    }
+    answerCurr = jsavList.get(currPosition + 1);
+    answerHead = jsavList.get(0);
+    if(currPosition === listSize - 3){
+      answerTail = jsavList.get(listSize - 2);
+    }else{
+      answerTail = jsavList.get(listSize - 1);
+    }
+    if(currPosition === listSize - 2){
+      answerCopyFrom = null;
+      answerCopyVal = "null";
+    }else{
+      answerCopyFrom = jsavList.get(currPosition + 1);
+      answerCopyVal = jsavList.get(currPosition + 1).value();
+    }
+
+    // Rebind click handlers
+    jsavCopyArr.click(copyHandler);
+    jsavList.click(clickHandler);
+  };
+
+  // Initialise the exercise
+  var initJSAV = function (size, pos) {
+    // Out with the old
+    answerArr.length = 0;
+    answerOrderArr.length = 0;
+    listSize = size;
+    currPosition = pos;
+
+    // Give random numbers in range 0..999
+    answerArr[0] = "null";
+    for (i = 1; i < size-1; i++) {
+      answerArr[i] = Math.floor(Math.random() * 1000);
+    }
+    answerArr[size-1] = "null";
+    // Make a copy
+    listArr = answerArr.slice(0);
+
+    f_reset();
+
+    // correct answer of array values.
+    if(currPosition != listSize-2){
+      answerArr.splice(currPosition + 1, 1);
+    }
+
+    // Set up handler for 'makenull' button.
+    $("#makenull").click(function () { nullClickHandler(); });
+    // Set up handler for reset button
+    $("#reset").click(function () { f_reset(); });
+  };
+
+  // Check user's answer for correctness: User's array must match answer
+  var checkAnswer = function (arr_size, curr_pos) {
+    var i = 1,
+      curr = odsa_head;
+    // Check the 'return' array
+    if(copyFrom !== answerCopyFrom || answerCopyVal !== jsavCopyArr.value(0)){return false;}
+    // Check the pointers
+    if(headNode!== answerHead || currNode!== answerCurr || tailNode!== answerTail){
       return false;
     }
-  }
-  if(curr_pos == arr_size - 2){ return true;}
-  if(i == listSize-1)
-  {
-    return true;
-  }
-  return false;
-};
+    // Check the list
+    if(curr.value() != answerArr[0] || curr.id() != answerOrderArr[0]){
+      return false;
+    }
+    while(curr.odsa_next){	
+      curr = curr.odsa_next;
+      if(curr.value() == answerArr[i] && curr.id() == answerOrderArr[i]){
+        i++;
+      }else{
+        return false;
+      }
+    }
+    // if 'curr' points to the 'tail' node.
+    if(curr_pos == arr_size - 2){ return true;}
+
+    if(i == listSize-1){
+      return true;
+    }
+    return false;
+  };
 </script>
 
 <div class="exercise">
@@ -489,7 +510,7 @@ var checkAnswer = function (arr_size, curr_pos) {
       </div>
       <div class="hints">
         <p>If "curr" points to the same node as "tail", the default list is a correct answer. Otherwise, the first step could be to remember the value of the "curr" node.</p>
-        <p>Copy value to "curr" from its next node.</p> 
+        <p>Copy value to "curr" from the node following 'curr'.</p> 
         <p>If "curr" points to the node proceding tail, sets the "curr" node to point to "null". Label "tail" should point to the current node. Otherwise, the "curr" node should point to the following node of the node it used to point to. </p>
         <p></p>
       </div>
