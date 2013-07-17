@@ -48,7 +48,7 @@
         <div id="jsavcontainer">
             <p class="instructLabel">Instructions:</p>
             <p class="instructions">
-                    Use the BST Delete algorith to delete the values in the array. Click on a node to erase its value, or if there is a previously erased value, to move the value the value into the erased erased node. 
+                    Use the BST Delete algorith to delete the values in the array. Click on a node to erase its value, or if there is a previously erased value, to move the value into the erased node or replace the node. 
             </p>
             <p align="center" class="jsavexercisecontrols"></p>
             <ol id="deleteValues"></ol>
@@ -198,9 +198,10 @@
                         empty = empty.parent();
                     }
 
-                    //if an empty node is found, insert the value of node into the empty node, or replace the empty node with node
+                    //if an empty node is found with only one child, replace the empty node with node
+                    //if the empty node has two children move the value of node into the empty node
                     if (empty) {
-                        if (empty.right() && !empty.left()) {
+                        if (!empty.right() !== !empty.left()) {
                             //replace node with node
                             //turn animation off, because all children of empty will be hidden using animation, which will prevent calling show()
                             turnAnimationOff();
@@ -217,7 +218,8 @@
                             break;
                         } else {
                             //insert value of node into empty node
-                            empty.value(node.value());
+                            // empty.value(node.value());
+                            jsav.effects.moveValue(node, empty);
                         }
                     }
                     //empty this node
@@ -267,9 +269,10 @@
                     empty = empty.parent();
                 }
 
-                //if an empty node is found, insert the value of this node into the empty node, or replace the empty node with this one
+                //if an empty node is found with only one child, replace the empty node with this
+                    //if the empty node has two children move the value of this into the empty node
                 if (empty) {
-                    if (empty.right() && !empty.left()) {
+                    if (!empty.right() !== !empty.left()) {
                         //replace node with this
                         //turn animation off, because all children of empty will be hidden using animation, which will prevent calling show()
                         turnAnimationOff();
@@ -286,7 +289,8 @@
                         return;
                     } else {
                         //insert value of this into empty node
-                        empty.value(this.value());
+                        // empty.value(this.value());
+                        av.effects.moveValue(this, empty);
                     }
                 }
                 //empty this node
