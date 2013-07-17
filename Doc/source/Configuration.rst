@@ -144,6 +144,8 @@ Settings (all are required unless otherwise specified)
 
   * **Note**: When changing from ``false`` to ``true``, you must run ``make clean`` to completely remove any references to ``ToDo``
 
+* **assumes** - (optional) a string containing a semi-colon delimited list of topics with which the book assumes students are familiar
+
 * **chapters** - this object contains a hierarchy of chapters, sections, subsections, modules and exercises
 
   * Each key in "chapters" represents a chapter name, any key values in the associated object represent sections within that chapter.  This concept is applied recursively until a module object is reached.  A module object is one whose key matches the name of an RST file in the ~OpenDSA/RST/source/ directory and which contains the key "exercises".

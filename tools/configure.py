@@ -72,6 +72,9 @@ images = []
 # Keeps a count of how many ToDo directives are encountered
 todo_count = 0
 
+# List of fulfilled prerequisite topics
+satisfied_requirements = []
+
 rst_header = '''\
 .. _%(mod_name)s:
 
@@ -497,6 +500,7 @@ def process_section(conf_data, section, index_rst, depth):
 
 def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0):
   global todo_count
+  global satisfied_requirements
   
   odsa_dir = get_odsa_dir()
   
@@ -556,7 +560,19 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   # Alter the contents of the module based on the config file
   i = 0
   while i < len(mod_data):
-    if '.. figure::' in mod_data[i] or '.. odsafig::' in mod_data[i]:
+    if ':requires:' in mod_data[i]:
+      # Parse the list of prerequisite topics from the module
+      requires = [req.strip() for req in mod_data[i].replace(':requires:', '').split(';')]
+      
+      # Print and error message and exit if a missing prereq is encountered
+      for req in requires:
+        if req not in satisfied_requirements:
+          print "ERROR: " + req + " is an unsatisfied prerequisite for " + mod_name
+          sys.exit(1)
+    elif ':satisfies:' in mod_data[i]:
+      # Parse the list of prerequisite topics this module satisfies and add them to the list of satisfied prereqs
+      satisfied_requirements += [req.strip() for req in mod_data[i].replace(':satisfies:', '').split(';')]
+    elif '.. figure::' in mod_data[i] or '.. odsafig::' in mod_data[i]:
       l_image = len(mod_data[i].split(' '))
       image_path = mod_data[i].split(' ')[l_image-1].rstrip()
       images.append(os.path.basename(image_path))
@@ -690,6 +706,7 @@ def get_src_dir(conf_data):
 
 def configure(config_file, slides = False):
   """Configure an OpenDSA textbook based on a validated configuration file"""
+  global satisfied_requirements
   
   print "Configuring OpenDSA, using " + config_file + '\n'
 
@@ -702,6 +719,10 @@ def configure(config_file, slides = False):
 
   # Assign defaults to optional settings
   set_defaults(conf_data)
+  
+  # Add the list of topics the book assumes students know to the list of fulfilled prereqs
+  if 'assumes' in conf_data:
+    satisfied_requirements += [a.strip() for a in conf_data['assumes'].split(';')]
 
   # Process the code and output directory paths, get code language
   code_dir = process_path(conf_data['code_dir'], odsa_dir)

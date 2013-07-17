@@ -45,6 +45,8 @@ class avmetadata(Directive):
                    #'title': directives.unchanged,
                    'prerequisites': directives.unchanged,
                    'topic': directives.unchanged,
+                   'requires': directives.unchanged,
+                   'satisfies': directives.unchanged,
                    #'short_name': directives.unchanged,
                    #'exercises': directives.unchanged,    
                    }
@@ -69,8 +71,8 @@ This is some text.
    :author:
    :prerequisites: 
    :topic:
-   :short_name:
-   :exercises:   
+   :requires:
+   :satisfies:   
 
 This is some more text.
 """

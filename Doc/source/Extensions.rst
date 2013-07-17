@@ -97,6 +97,8 @@ SYNOPSIS::
        :author: {string}
        :prerequisites: {list of module_name}
        :topic: {string}
+       :requires: {string}
+       :satisfies: {string}
 
 DESCRIPTION
     ``:author: {string}``
@@ -106,6 +108,10 @@ DESCRIPTION
       These represent the prerequisites for this module.
     ``:topic: {string}``
       The topic covered by this module.
+    ``:requires: {string}``
+      A semi-colon delimited list of topics students are expected to know prior to completing the module
+    ``:satisfies: {string}``
+      A semi-colon delimited list of topics covered in this module that satisfy prerequisite knowledge requirements of other modules
 
 codeinclude
 -----------

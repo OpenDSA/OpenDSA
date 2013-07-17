@@ -163,7 +163,7 @@ def validate_config_file(config_file):
 
   required_fields = ['title', 'code_dir', 'module_origin', 'chapters']
 
-  optional_fields = ['book_dir', 'backend_address', 'av_root_dir', 'av_origin', 'exercises_root_dir', 'exercise_origin', 'build_JSAV', 'build_ODSA', 'allow_anonymous_credit', 'suppress_todo']
+  optional_fields = ['book_dir', 'backend_address', 'av_root_dir', 'av_origin', 'exercises_root_dir', 'exercise_origin', 'build_JSAV', 'build_ODSA', 'allow_anonymous_credit', 'suppress_todo', 'assumes']
 
   # Ensure all required fields are present
   for field in required_fields:
