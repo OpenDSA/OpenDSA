@@ -15,15 +15,16 @@
 	var ClickHandler = function ClickHandler(jsav, exercise, options) {
 		var defaults = {
 			selectedClass: "jsavhighlight",
-			selectEmpty: false,
-			effect: "move",
-			removeNodes: true,
+			selectEmpty: false,			//don't allow selecting empty nodes
+			effect: "move",				//move, copy, swap, toss
+			removeNodes: true,			//remove nodes when they become empty
 			gradeable: true,
+			bgDeselect: true,			//allow deselecting by clicking on the background
 			select: "click",			//click, first, last
 			drop: "click",				//click, first, last
 			keep: false,				//don't allow selecting the last node
-			onSelect: function () {},	//called by array when array is selected
-			onDrop: function () {}		//called by array when value has been changed
+			onSelect: function () {},	//called by structure when something is selected
+			onDrop: function () {}		//called by structure when value has been changed
 		};
 
 		this.jsav = jsav;
@@ -33,6 +34,18 @@
 		this.selNode = null;	//only valid when selStruct != -1 and selIndex = -1
 		this.ds = [];
 		this.options = $.extend({}, defaults, options);
+
+		if (this.options.bgDeselect) {
+			var ch = this;
+			this.jsav.container.click(function (event) {
+				var $target = $(event.target);
+				if ($target.is(ch.jsav.container) || 
+					$target.is(ch.jsav.canvas) ||
+					$target.is("p")) {
+					ch.deselect();
+				}
+			});
+		}
 	};
 
 	ClickHandler.prototype = {
@@ -64,14 +77,14 @@
 			}
 		},
 
-		//unselect the selected node
-		unselect: function unselect() {
+		//deselect the selected node
+		deselect: function deselect() {
 			if (this.selStruct.value() !== -1) {
 				if (this.selIndex.value() === -1) {
-					//unselect node
+					//deselect node
 					this.selNode.removeClass(this.options.selectedClass);
 				} else {
-					//unselect from array
+					//deselect from array
 					this.getDs(this.selStruct.value()).removeClass(this.selIndex.value(), this.options.selectedClass);
 				}
 				this.reset();
@@ -116,7 +129,7 @@
 					if (!options.selectEmpty && this.value(index) === "" && ch.options.effect === "swap") {
 						return;
 					}
-					//unselect
+					//deselect
 					this.removeClass(sIndex, ch.options.selectedClass);
 					if (sIndex !== index) {
 						//move/copy/swap within the array
@@ -148,7 +161,7 @@
 					}
 					if (sIndex === -1) {
 						//from node
-						//unselect node
+						//deselect node
 						ch.selNode.removeClass(ch.options.selectedClass);
 						//move value
 						valueEffect(ch, {
@@ -159,7 +172,7 @@
 						});
 					} else {
 						//from another array
-						//unselect
+						//deselect
 						ch.getDs(sStruct).removeClass(sIndex, ch.options.selectedClass);
 						//move value
 						valueEffect(ch, {
@@ -240,7 +253,7 @@
 					sStruct = ch.getDsIndex(list);
 					sIndex = -1;
 				} else if (sStruct === ch.getDsIndex(list)) {
-					//unselect
+					//deselect
 					ch.selNode.removeClass(ch.options.selectedClass);
 					var to;
 					switch (options.drop) {
@@ -297,7 +310,7 @@
 					}
 					if (sIndex === -1) {
 						//from node
-						//unselect node
+						//deselect node
 						ch.selNode.removeClass(ch.options.selectedClass);
 						//move value
 						valueEffect(ch, {
@@ -308,7 +321,7 @@
 						list.layout();
 					} else {
 						//from an array
-						//unselect
+						//deselect
 						ch.getDs(sStruct).removeClass(sIndex, ch.options.selectedClass);
 						//move value
 						valueEffect(ch, {

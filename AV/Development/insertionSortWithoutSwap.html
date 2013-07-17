@@ -140,7 +140,7 @@
                 paintBlue(this, index);
                 av.step(); // add a step to the animation
             } else if (selectedIndex.value() === index) {
-                //unselect
+                //deselect
                 paintGrey(this, index);
                 //reset select index
                 selectedIndex.value(-2);
@@ -182,7 +182,7 @@
                 paintBlue(this, index);
                 av.step();
             } else if (selectedIndex.value() === -1) {
-                // unselect temporary variable
+                // deselect temporary variable
                 selectedIndex.value(-2);
                 // change the CSS property back to normal
                 paintWhite(this, index);

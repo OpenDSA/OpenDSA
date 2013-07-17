@@ -262,7 +262,7 @@
         //add click handlers
         $("#callButton").click(function () {
             mode.value(1);
-            clickHandler.unselect();
+            clickHandler.deselect();
             stack.addFirst("Bit: " + (getCurrentValue("Bit", stack) - 1));
             stack.layout();
             av.umsg("Select the <strong>left endpoint</strong>.");
@@ -309,6 +309,13 @@
                 arr.element.find(".bit").removeClass("coloredbit");
                 //color the wanted bits
                 arr.element.find(".jsavvalue").find(".bit:eq("+(bits - 1 - bit)+")").addClass("coloredbit");
+                if (bit === bits) {
+                    //remove all bit classes
+                    for (var i = 0; i < arraySize; i++) {
+                        var $temp = arr.element.find(".jsavvaluelabel:eq("+i+")");
+                        $temp.html($temp.text());
+                    }
+                }
                 //update the real values of the elements
                 for (var i = 0; i < arraySize; i++) {
                     var v = arr.element.find("li:eq("+i+") .jsavvaluelabel").html();
@@ -324,11 +331,14 @@
                 stack.removeFirst();
                 stack.layout();
             }
-            if (stack.size())
+            if (stack.size()) {
                 focusOn(array,
                     getCurrentValue("Left", stack),
                     getCurrentValue("Right", stack),
                     getCurrentValue("Bit", stack));
+            } else {
+                focusOn(array, 0, arraySize - 1, bits);
+            }
         }
 
         var oldfx;
