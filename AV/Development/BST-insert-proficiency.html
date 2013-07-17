@@ -83,7 +83,7 @@
               var val = node.value();
               if (!val || val === "jsavnull") { // no value in node
                 node.value(insval);
-              } else if (val - insval > 0) { // go left
+              } else if (val - insval >= 0) { // go left
                 if (node.left()) {
                   ins(node.left(), insval);
                 } else {
