@@ -115,7 +115,7 @@ Written by Junyang Chen and Cliff Shaffer
     var newpointer = jsav.pointer(name, jsavArr, pointerLeft);
     newpointer.click(pclick);
     return newpointer;
-}
+  }
 
   // Click event handler on the array
   var clickHandler = function (index, e) {
@@ -154,7 +154,7 @@ Written by Junyang Chen and Cliff Shaffer
 
     // Rebuild JSAV Objects on the canvas.
     jsav = new JSAV("jsav");
-    // Sets the speed of animation.
+    // Set the speed of animation.
     jsav.SPEED = 120;
     jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false, left: 35});
     jsavArr.css({top:50});
@@ -189,11 +189,8 @@ Written by Junyang Chen and Cliff Shaffer
 
     // Correct answer.
     delValue = answerArr[delPosition];
-    if(delPosition === arr_size - 1){
-      answerPointerIndex = delPosition - 1;
-    }else{
-      answerPointerIndex = delPosition;
-    }
+
+    answerPointerIndex = delPosition;
     answerArr.splice (delPosition, 1);
     answerArr.push("");
 
@@ -218,7 +215,7 @@ Written by Junyang Chen and Cliff Shaffer
 
 <div class="exercise">
   <div class="vars">
-    <var id="arr_size">randRange(4, 6)</var>
+    <var id="arr_size">randRange(1, 6)</var>
 	<var id="delete_pos">randRange(0, arr_size-1)</var>
     <var id="JSAV">initJSAV(arr_size, delete_pos)</var>
   </div>
