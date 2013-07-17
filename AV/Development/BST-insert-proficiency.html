@@ -13,9 +13,25 @@
             width: 740px;
             height: 650px;
             background-color: #fff;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
           }
           p.jsavoutput.jsavline {
             height: 40px;
+          }
+          .jsavnode {
+            cursor: default;
+          }
+          .jsavtreenode {
+            cursor: pointer;
+          }
+          .jsavtreenode.emptynode {
+            border: 1px dashed #777;
           }
           .jsavscore {
             text-align: center;
@@ -99,6 +115,7 @@
             }
             jsavBinaryTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
             jsavBinaryTree.root("");
+            jsavBinaryTree.root().addClass("emptynode");
             jsavBinaryTree.click(clickHandler);
             jsavBinaryTree.layout();
 
@@ -120,8 +137,6 @@
             jsavArray = av.ds.array($array, {indexed: true});
             jsavArray.highlight(0);
 
-            av.forward();
-            
             return jsavBinaryTree;
         }
         
@@ -132,6 +147,7 @@
             jsav._undo = [];
 
             modelTree.root("");
+            modelTree.root().addClass("emptynode");
             modelTree.layout();
 
             modelArray.highlight(0);
@@ -147,9 +163,12 @@
                         node = node.right();
                     }
                 }
+                node.removeClass("emptynode");
                 node.value(val);
                 node.left("");
+                node.left().addClass("emptynode");
                 node.right("");
+                node.right().addClass("emptynode");
                 modelTree.layout();
 
                 modelArray.unhighlight(i);
@@ -166,19 +185,51 @@
 
         function clickHandler() {
             if (arrayIndex.value() < arraySize) {
+                //turn off animations for a while to avoid extra edges being drawn
+                turnAnimationOff();
+                //insert value into this node
                 this.value(initialArray[arrayIndex.value()]);
+                //remove class for dashed border
+                this.removeClass("emptynode");
+                //remove value from the array
                 jsavArray.value(arrayIndex.value(), "");
+                //unhighlight array
                 jsavArray.unhighlight(arrayIndex.value());
-                // av.effects.copyValue(jsavArray, arrayIndex.value(), this);
+                //increase value of arrayIndex
                 arrayIndex.value(arrayIndex.value() + 1);
-                jsavArray.highlight(arrayIndex.value());
-                if (!this.left())
+                //highlight next value
+                if (arrayIndex.value() < arraySize) {
+                    jsavArray.highlight(arrayIndex.value());
+                }
+                if (!this.left()) {
+                    //add empty node on the left side
                     this.left("");
-                if (!this.right())
+                    this.left().addClass("emptynode");
+                }
+                if (!this.right()) {
+                    //add empty node on the right side
                     this.right("");
+                    this.right().addClass("emptynode");
+                }
+                restoreAnimationState();
+                //update tree
                 jsavBinaryTree.layout();
+                //gradeable step
                 exercise.gradeableStep();
             }
+        }
+
+        var oldfx;
+
+        function turnAnimationOff() {
+            //save the state of fx.off
+            var oldfx = $.fx.off || false;
+            //turn off the jQuery animations
+            $.fx.off = true;
+        }
+
+        function restoreAnimationState() {
+            $.fx.off = oldfx;
         }
 
         var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
