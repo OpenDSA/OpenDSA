@@ -163,9 +163,17 @@
                 }
                 return node;
             }
-            //helper function for finding replacing node on the left side
+            //helper function for finding replacing node
             //if no left child the function will return undefined
-            function findLargest(root) {
+            function findReplacingNode(root) {
+                if (!root.left() !== !root.right()) {
+                    //only one child -> return child
+                    if (root.left()) {
+                        return root.left();
+                    } else {
+                        return root.right();
+                    }
+                }
                 var node = root.left()
                 if (!node || node.value() === "jsavnull") {
                     return undefined;
@@ -174,6 +182,21 @@
                     node = node.right();
                 }
                 return node;
+            }
+
+            //higlights and unhighlights a path between root and node
+            function highlightPath(root, node, undo) {
+                var n = node;
+                var css;
+                if (undo) {
+                    css = {"stroke-width":"1", "stroke":"black"};  
+                } else {
+                    css = {"stroke-width":"4", "stroke":"blue"};  
+                } 
+                while (n !== root) {
+                    n.edgeToParent().css(css);
+                    n = n.parent();
+                }
             }
 
             var modelArray = jsav.ds.array(deleteValues, {indexed: false});
@@ -187,10 +210,13 @@
             for (var i = 0; i < arraySize; i++) {
                 //highlight the value which should be deleted
                 modelArray.highlight(i);
-                //add step
-                jsav.step();
                 //node which should be deleted
                 var node = find(deleteValues[i]);
+                //highlight node
+                node.highlight();
+                //add step
+                jsav.step();
+
                 while (node) {
                     //find possible empty node between node and root
                     var empty = node;
@@ -201,6 +227,8 @@
                     //if an empty node is found with only one child, replace the empty node with node
                     //if the empty node has two children move the value of node into the empty node
                     if (empty) {
+                        //unhighlight path
+                        highlightPath(empty, node, true);
                         if (!empty.right() !== !empty.left()) {
                             //replace node with node
                             //turn animation off, because all children of empty will be hidden using animation, which will prevent calling show()
@@ -218,8 +246,8 @@
                             break;
                         } else {
                             //insert value of node into empty node
-                            // empty.value(node.value());
                             jsav.effects.moveValue(node, empty);
+                            empty.unhighlight();
                         }
                     }
                     //empty this node
@@ -230,10 +258,12 @@
                         modelTree.layout();
                         node = null;
                     } else {
-                        var rep = findLargest(node);
+                        var rep = findReplacingNode(node);
                         if (rep) {
+                            highlightPath(node, rep);
                             node = rep;
                         } else {
+                            highlightPath(node, node.right());
                             node = node.right();
                         }
                     }
@@ -248,6 +278,11 @@
 
             return modelTree;
         }
+
+
+        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+        exercise.reset();
+
 
         function highlightNext() {
             //unhighlight the current one
@@ -270,7 +305,7 @@
                 }
 
                 //if an empty node is found with only one child, replace the empty node with this
-                    //if the empty node has two children move the value of this into the empty node
+                //if the empty node has two children move the value of this into the empty node
                 if (empty) {
                     if (!empty.right() !== !empty.left()) {
                         //replace node with this
@@ -289,15 +324,12 @@
                         return;
                     } else {
                         //insert value of this into empty node
-                        // empty.value(this.value());
                         av.effects.moveValue(this, empty);
                     }
                 }
                 //empty this node
                 this.value("");
                 //if no children, remove node and move on
-                // if (!(this.left() && !this.left().hasClass("jsavnullnode")) &&
-                    // !(this.right() && !this.right().hasClass("jsavnullnode"))) {
                 if (!this.left() && !this.right()) {
                     this.remove();
                     jsavTree.layout();
@@ -306,9 +338,6 @@
                 exercise.gradeableStep();
             }
         }
-
-        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
-        exercise.reset();
 
         // helper function for creating a perfect binary tree
         function perfectBinTree(arr, level, min, max, levelsInTotal, arrayIndex) {
