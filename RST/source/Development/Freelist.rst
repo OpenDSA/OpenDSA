@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Lists
+   
+.. odsalink:: AV/Development/listFreeCON.css
 
 Freelists
 =========
@@ -41,6 +43,9 @@ be called.
 
    Slideshow to illustrate using a freelist in conjunction with a
    linked list.
+
+.. inlineav:: listFreeCON ss
+   :output: show
 
 Freelists are particularly useful for linked lists that periodically
 grow and then shrink.
@@ -99,3 +104,5 @@ Notes
 
 .. [#] A language like C++ could use operator overloading to redefine
    the ``new`` and ``delete`` operators.
+
+.. odsascript:: AV/Development/listFreeCON.js
