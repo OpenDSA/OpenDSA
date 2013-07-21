@@ -13,12 +13,26 @@
             width: 740px;
             height: 650px;
             background-color: #fff;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
           }
           p.jsavoutput.jsavline {
             height: 40px;
           }
           .jsavscore {
             text-align: center;
+          }
+          .jsavnode {
+            cursor: default;
+          }
+          .jsavtreenode.emptynode {
+            color: #777;
+            cursor: pointer;
           }
           p.instructLabel {
             margin-top: -5px;
@@ -38,7 +52,7 @@
             <!-- <a class="jsavsettings" href="#">Settings</a> -->
             <p class="instructLabel">Instructions:</p>
             <p class="instructions">
-                    Use the BST Search algorith to find the key given in the excercise. Click on a node to unhide the value and its children.
+                    Use the BST Search algorith to find the key given in the excercise. Click on a node to reveal the value and its children.
             </p>
             <p align="center" class="jsavexercisecontrols"></p>
             <p class="jsavscore"></p>
@@ -71,7 +85,7 @@
               var val = node.value();
               if (!val || val === "jsavnull") { // no value in node
                 node.value(insval);
-              } else if (val - insval > 0) { // go left
+              } else if (val - insval >= 0) { // go left
                 if (node.left()) {
                   ins(node.left(), insval);
                 } else {
@@ -127,7 +141,7 @@
             }
             jsavBinaryTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
             jsavBinaryTree.root("?");
-            jsavBinaryTree.root().css("opacity", 0.5);
+            jsavBinaryTree.root().addClass("emptynode");
             jsavBinaryTree.click(clickHandler);
             jsavBinaryTree.layout();
 
@@ -147,17 +161,21 @@
             jsav._undo = [];
 
             modelTree.root("?");
+            modelTree.root().addClass("emptynode");
             modelTree.layout();
 
             var node = modelTree.root();
 
             while (node.value() !== keyToFind) {
                 var index = getIndex(node, modelTree.root());
+                node.removeClass("emptynode");
                 node.value(initialData[index]);
                 node.highlight();
                 if ((index + 1) * 2 < nodeNum) {
                     node.left("?");
+                    node.left().addClass("emptynode");
                     node.right("?");
+                    node.right().addClass("emptynode");
                     if (node.value() > keyToFind) {
                         node = node.left();
                     } else {
@@ -177,21 +195,38 @@
         function clickHandler() {
             if (!this.isHighlight()) {
                 var index = getIndex(this, jsavBinaryTree.root());
-                this.css("opacity", 1);
+                this.removeClass("emptynode");
                 this.value(initialData[index]);
                 this.highlight();
                 if ((index + 1) * 2 < nodeNum) {
+                    turnAnimationOff();
                     this.left("?");
-                    this.left().css("opacity", 0.5);
+                    this.left().addClass("emptynode");
                     this.right("?");
-                    this.right().css("opacity", 0.5);
+                    this.right().addClass("emptynode");
+                    restoreAnimationState();
                 }
                 jsavBinaryTree.layout();
                 exercise.gradeableStep();
             }
         }
 
-        var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+
+        var oldfx;
+
+        function turnAnimationOff() {
+            //save the state of fx.off
+            var oldfx = $.fx.off || false;
+            //turn off the jQuery animations
+            $.fx.off = true;
+        }
+
+        function restoreAnimationState() {
+            $.fx.off = oldfx;
+        }
+
+
+        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
         exercise.reset();
 
         </script>

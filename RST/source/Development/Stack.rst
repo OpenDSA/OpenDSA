@@ -80,6 +80,8 @@ array should represent the top of the stack.
    :type: Exercise
 
    Need exercises for pushing and popping on array-based stacks.
+   
+.. avembed:: Exercises/Development/listAStackPush.html ka
 
 Linked Stacks
 -------------

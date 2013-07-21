@@ -286,11 +286,11 @@ Written by Junyang Chen and Cliff Shaffer
         oldPointer.element.removeClass('highlight');
         if(oldPointer.target() !== this){
           selected_pointer = setPointer(selected_pointer.element.html(), this, oldPointer);
-          if(selected_pointer.element.html() === "head"){
+          if(selected_pointer && selected_pointer.element.html() === "head"){
             headNode = selected_pointer.target();;
-          }else if(selected_pointer.element.html() === "curr"){
+          }else if(selected_pointer && selected_pointer.element.html() === "curr"){
             currNode = selected_pointer.target();;	
-          }else if (selected_pointer.element.html() === "tail"){
+          }else if (selected_pointer && selected_pointer.element.html() === "tail"){
             tailNode = selected_pointer.target();;
           }
         }
