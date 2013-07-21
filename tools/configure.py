@@ -860,7 +860,7 @@ def configure(config_file, slides = False):
     settings.EXERCISE_ORIGIN = "%(exercise_origin)s";
     settings.AV_ORIGIN = "%(av_origin)s";
     // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
-    settings.ALLOW_ANON_CREDIT = "%(allow_anon_credit)s";
+    settings.ALLOW_ANON_CREDIT = %(allow_anon_credit)s;
 
     window.ODSA = {};
     window.ODSA.SETTINGS = settings;
