@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+    Samuel A. Micka
+-->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Rabin-Karp Algorithm</title>
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <style>
+    #container {
+      width: 98%;
+      position: relative;
+    }
+    .jsavcounter {
+      position: absolute;
+      top: 15px;
+    }
+    .jsavcanvas { height: 470px; }
+
+    }
+    .jsavoutput {
+      height: 75px;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Rabin-Karp Algorithm</h1>
+  <div id="container">
+    <div class="jsavcontrols"></div><span class="jsavcounter"></span>
+    <p class="jsavoutput jsavline"></p>
+    <div class="jsavcanvas"></div>
+  </div>
+  <style>
+  </style>
+    <script
+       src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+    <script src="../../JSAV/lib/raphael.js"></script>
+    <script src="../../JSAV/build/JSAV-min.js"></script>
+    <script>
+    var rk_slideshow = new JSAV("container");
+
+ 	rk_slideshow.umsg("The Rabin-Karp algorithm uses the numeric representation of the substring, as a whole, to make comparisons. This is done by choose an alphabet, we will simply use the 26 letters in the english alphabet (lower case representations only). Since there are 26 letters we will be using a Base 26 number system for this example.");
+	var alphabet = rk_slideshow.ds.array(['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']);
+
+	rk_slideshow.displayInit();	
+	rk_slideshow.step();
+
+	rk_slideshow.umsg("We will start by assigning every letter in our alphabet a value. To elaborate 'a' will be 0, 'b' will be 1, ... , 'z' will be 25.");
+	for(var i = 0; i < 26; i++) {
+		alphabet.value(i, alphabet.value(i) +", "+ i);
+	}
+	rk_slideshow.step();
+
+	rk_slideshow.umsg("The shown array is not actually used in the algorithm, it has been computed to make the algorithm easier to understand when tracing through it. With that noted, lets introduce our master string and search string...");
+	rk_slideshow.step();
+
+	rk_slideshow.umsg("We can now see our two strings 'lookforsomestr' and 'somestr', We will now introduce the pseudo code and then get started");
+	var master = rk_slideshow.ds.array("lookforsomestr".split(""), {indexed: true});
+	var sub = rk_slideshow.ds.array("somestr       ".split(""), {indexed: true});
+	rk_slideshow.step();
+
+    var pseudo = rk_slideshow.code("Input: Two Strings M and S and appropriate mod factor Q \nOutput: Position of the first match of S in M or -1 \nCP = 1 \nfor i = 1 to S.length: \n\tCP = CP * C mod Q \nMagic_S = Horner(S) \nMagic_M = Horner(M[0] ... M[S.length-1] \nWhile p < M.length - S.length+1 and Magic_S != Magic_M: \n\tp+=1\n\tMagic_M = (Magic_M * C - M[p] * CP + Q * C + M[p+S.length]) mod Q \nif Magic_M == Magic_S return p \nelse return -1", {before: alphabet});
+
+
+
+    rk_slideshow.recorded();
+  </script>
+  </body>
+</html>
