@@ -19,6 +19,7 @@
 	<select id = "choices">
 		<option value="kmp()">Knuth-Morris-Pratt</option>
 		<option value = "array_list()">Array List</option>
+		<option value = "bin_counter()">Binary Counter</option>
 	</select>
 	<button id = "begin">Visualize!</button>
   <div id="container">
@@ -43,7 +44,7 @@
 	//size_of_bar: determines how large the bar needs to be able to grow to for the example you are sending in
 	//pseudo_code_string: string of the pseudo code for the algorithm
 	//operations_and_costs: 2D array of [[operation, cost], [operation, cost]...], operation: string, cost: int
-	var construct_show = (function(size_of_bar, pseudo_code_string, operations_and_costs, set_up_function_call){
+	var construct_show = (function(size_of_bar, pseudo_code_string, operations_and_costs){
 		visualization = new JSAV("container");
 		bank_bar = visualization.ds.array([' '], {indexed: true, center: false});
 		var bank_bar_label = visualization.label("Amount Saved", {before: bank_bar});
@@ -52,12 +53,50 @@
 		}
 		pseudo = visualization.code(pseudo_code_string);
 
-		eval(set_up_function_call);
-
 			
 	});
 
+	/*******************************
+		Binary Increment template
+	*******************************/
 
+
+	function begin_bin_counter() {
+		var number = visualization.ds.array([0,0,0,0], {indexed: true});
+		//get the div I want to nest them in
+		var the_div = document.getElementById('container');
+
+		//create a button to increment the binary value
+		var inc_button = document.createElement('button');
+		inc_button.id = 'inc_button';
+		the_div.appendChild(inc_button);
+		$("#inc_button").html("Increment");
+
+		//create an area to display the function name being called
+		var the_div = document.getElementById('container');
+		var function_name = document.createElement('p');
+		function_name.id = 'function_name';
+		the_div.appendChild(function_name);
+
+		//function to handle the increment on the binary number
+		$("#inc_button").click(function() {
+			var i = number.size()-1;
+			while(i > -1 && number.value(i) == 1) {
+				number.value(i, 0);
+				i--;
+			}
+			if(i > -1)
+				number.value(i, 1);
+		});
+	}
+
+	function bin_counter() {
+		var bar_size = 20;
+		var pseudo = "FUNCTION increment(num): \n\ti = num.length - 1 \n\twhile i > -1 and num[i] == 1: \n\t\tnum[i] = 0 \n\t\ti -= 1\n\tif i > -1\n\t\tnum[i] = 1";		
+		var op_costs = [["Increment", 1]/*,["Flip", bar_size]*/];
+		construct_show(bar_size, pseudo, op_costs);
+		begin_bin_counter();
+	}
 	/*******************************
 		Array list template
 	*******************************/
@@ -132,10 +171,12 @@
 	//actual function that gets called initially
 	function array_list() {
 		var bar_size = 20;
-		var set_up = "array_list_set_up(); show_array_list();";
+		var set_up = "";
 		var pseudo = "input: arr_list (array), current_index = 0 \nFUNCTION add(new_element): \n\tif current_index < arrlist.size: \n\t\tarrlist[current_index] = new_element \n\t\tcurrent_index++ \n\telse: \n\t\tarr_list = resize_arrlist() \nFUNCTION resize_arrlist(): \n\t new_arr_list = new Array[arr_list.size*2] \n\tfor(i = 0; i < arr_list.size; i++): \n\t\tnew_arr_list[i] = arr_list[i] \n\treturn new_arr_list";		
 		var op_costs = [["Add", 1],["Resize", bar_size]];
-		construct_show(bar_size, pseudo, op_costs, set_up);
+		construct_show(bar_size, pseudo, op_costs);
+	array_list_set_up(); 
+	show_array_list();
 	}
 
 
