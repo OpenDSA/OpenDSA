@@ -70,6 +70,7 @@
             subtree,
             nodeSelected,
             selectedNode,
+            rotationType = location.hash.indexOf("double") === -1? "single": "double",
             av = new JSAV($("#jsavcontainer"));
 
         JSAV._types.ds.BinaryTree.prototype.insert = function (value) {
@@ -127,7 +128,6 @@
                 this.element.animate({left: left});
                 return $.extend({}, o, {left: left});
             };
-            // jsavTree.root("R").left("A").left("B").left("C").left("").addClass("emptynode").parent().right("").addClass("emptynode").parent().parent().right("").addClass("emptynode").parent().parent().right("").addClass("emptynode").parent().parent().right("D").left("").addClass("emptynode").parent().right("").addClass("emptynode");
             initialArray = unbalancedTree({
                 minNodes: 7,
                 maxNodes: 9,
@@ -162,21 +162,6 @@
         
         function modelSolution(jsav) {
             var modelTree = jsav.ds.bintree({center: false, visible: true, nodegap: 5});
-            // modelTree.origlayout = modelTree.layout;
-            // modelTree.layout = function () {
-            //     var o = this.origlayout();
-            //     this.element.stop(true, true);
-            //     var left;
-            //     if (modelSubtree && !modelSubtree.root().hasClass("emptynode")) {
-            //         //position to the right
-            //         left = jsav.canvas.width() - o.width;
-            //     } else {
-            //         //center tree
-            //         left = jsav.canvas.width() / 2 - o.width / 2;
-            //     }
-            //     this.element.animate({left: left});
-            //     return $.extend({}, o, {left: left});
-            // };
             //insert nodes
             modelTree.insert(initialArray);
             addEmptyNodes(modelTree.root());
@@ -211,59 +196,135 @@
             jsav.stepOption("grade", true);
             jsav.step();
 
-            //move the taller subtree of the root of the modelSubtree back to the modelTree
-            var moveNode;
-            if (height(modelSubtree.root().left()) > height(modelSubtree.root().right())) {
-                moveNode = modelSubtree.root().left();
-            } else {
-                moveNode = modelSubtree.root().right();
+            //move the pivot of the modelSubtree back to the modelTree
+            var tempNode;
+            if (rotationType === "single") {
+                if (height(modelSubtree.root().left()) > height(modelSubtree.root().right())) {
+                    tempNode = modelSubtree.root().left();
+                } else {
+                    tempNode = modelSubtree.root().right();
+                }
+            } else { //double
+                if (height(modelSubtree.root().left()) > height(modelSubtree.root().right())) {
+                    tempNode = modelSubtree.root().left().right(); //LR rotation
+                } else {
+                    tempNode = modelSubtree.root().right().left(); //RL rotation
+                }
             }
-            moveNode.highlight();
+            tempNode.highlight();
             jsav.step();
 
             turnAnimationOff();
-            copySubtree(moveNode, node);
-            removeSubtree(moveNode);
+            copySubtree(tempNode, node);
+            tempNode = removeSubtree(tempNode);
             restoreAnimationState();
             modelTree.css({left: jsav.canvas.width() - modelTree.layout().width});
             modelSubtree.layout();
             jsav.stepOption("grade", true);
             jsav.step();
 
-            //move lower subtree of node under root of modelSubtree if it exists
-            if (height(node.left()) < height(node.right())) {
-                moveNode = node.left();
-            } else {
-                moveNode = node.right();
-            }
-            if (!moveNode.hasClass("emptynode")) {
-                moveNode.highlight();
-                jsav.step();
+            if (rotationType === "single") {
+                if (!node.left().hasClass("emptynode") && !node.right().hasClass("emptynode")) {
 
-                turnAnimationOff();
-                if (moveNode.value() <= modelSubtree.root().value()) {
-                    copySubtree(moveNode, modelSubtree.root().left());
-                } else {
-                    copySubtree(moveNode, modelSubtree.root().right());
+                    turnAnimationOff();
+                    if (tempNode.parent().right() === tempNode) {
+                        node.left().highlight();
+                        jsav.step();
+                        copySubtree(node.left(), tempNode);
+                        removeSubtree(node.left());
+                    } else {
+                        node.right().highlight();
+                        jsav.step();
+                        copySubtree(node.right(), tempNode);
+                        removeSubtree(node.right());
+                    }
+                    restoreAnimationState();
+                    modelTree.css({left: jsav.canvas.width() - modelTree.layout().width});
+                    modelSubtree.layout();
+                    jsav.stepOption("grade", true);
+                    jsav.step();
                 }
-                removeSubtree(moveNode);
+
+            } else { //double
+                if ((tempNode.parent().right() === tempNode &&
+                    !node.left().hasClass("emptynode")) || 
+                    (tempNode.parent().right() === tempNode &&
+                    !node.right().hasClass("emptynode"))) {
+
+                    turnAnimationOff();
+                    if (tempNode.parent().right() === tempNode) {
+                        node.left().highlight();
+                        jsav.step();
+                        copySubtree(node.left(), tempNode);
+                        removeSubtree(node.left());
+                    } else {
+                        node.right().highlight();
+                        jsav.step();
+                        copySubtree(node.right(), tempNode);
+                        removeSubtree(node.right());
+                    }
+                    restoreAnimationState();
+                    modelTree.css({left: jsav.canvas.width() - modelTree.layout().width});
+                    modelSubtree.layout();
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+                }
+
+                //place tempNode.parent() under node
+                tempNode.parent().highlight();
+                jsav.step();
+                turnAnimationOff();
+                if (tempNode.parent().right() === tempNode) {
+                    copySubtree(tempNode.parent(), node.left());
+                } else {
+                    copySubtree(tempNode.parent(), node.right());                    
+                }
+                tempNode = removeSubtree(tempNode.parent());
                 restoreAnimationState();
                 modelTree.css({left: jsav.canvas.width() - modelTree.layout().width});
                 modelSubtree.layout();
                 jsav.stepOption("grade", true);
                 jsav.step();
+
+                //move subtree of node under modelSubtree
+                if ((tempNode.parent().right() === tempNode &&
+                    !node.left().hasClass("emptynode")) || 
+                    (tempNode.parent().right() === tempNode &&
+                    !node.right().hasClass("emptynode"))) {
+
+                    turnAnimationOff();
+                    if (tempNode.parent().right() === tempNode) {
+                        node.left().highlight();
+                        jsav.step();
+                        copySubtree(node.left(), tempNode);
+                        removeSubtree(node.left());
+                    } else {
+                        node.right().highlight();
+                        jsav.step();
+                        copySubtree(node.right(), tempNode);
+                        removeSubtree(node.right());
+                    }
+                    restoreAnimationState();
+                    modelTree.css({left: jsav.canvas.width() - modelTree.layout().width});
+                    modelSubtree.layout();
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+                }
+
+
+
             }
 
             //finally move modelSubtree to the empty child of node
             modelSubtree.root().highlight();
             jsav.step();
-            if (height(node.left()) < height(node.right())) {
-                moveNode = node.left();
+            if (node.left().hasClass("emptynode")) {
+                tempNode = node.left();
             } else {
-                moveNode = node.right();
+                tempNode = node.right();
             }
             turnAnimationOff();
-            copySubtree(modelSubtree.root(), moveNode);
+            copySubtree(modelSubtree.root(), tempNode);
             removeSubtree(modelSubtree.root());
             modelSubtree.hide();
             restoreAnimationState();
@@ -285,8 +346,6 @@
                 turnAnimationOff();
                 subtree.show();
                 copySubtree(this, subtree.root());
-                //remove hidden nodes from the tree
-                // subtree.element.find("div[style*='display: none']").remove();
                 subtree.layout();
                 //remove original subtree and replace with an empty node
                 removeSubtree(this, true);
@@ -396,27 +455,18 @@
         //replaces the calling node with an empty node
         function removeSubtree(root, keep) {
             var val = "";
-            var node;
             if (keep) {
                 val = root.value();
             }
-            if (root.parent() && root.parent().left() === root) {
-                node = root.parent().left(val).addClass("emptynode");
-                root.remove();
-            } else if (root.parent()) {
-                node = root.parent().right(val).addClass("emptynode");
-                root.remove();
-            } else {
-                if (root.left())
-                    root.left().remove();
-                if (root.right())
-                    root.right().remove();
-                root.value(val);
-                root.removeClass("selected");
-                root.addClass("emptynode");
-                node = root;
-            }
-            return node;
+            if (root.left())
+                root.left().remove();
+            if (root.right())
+                root.right().remove();
+            root.value(val);
+            root.removeClass("selected");
+            root.unhighlight();
+            root.addClass("emptynode");
+            return root;
         }
 
         //returns true if child is a child, grandchild, grandgrandchild... of parent
@@ -456,18 +506,18 @@
                         break;
                     }
                     var node = getUnbalancedNode(bt.root(), arr[i]);
-                    if (node && getRotationType(node) === "single") {
+                    if (node && getRotationType(node) === rotationType) {
                         if (i >= options.minNodes) {
                             bt.clear();
-                            return arr;
+                            return arr; //done
                         } else {
                             //too few nodes -> balance tree
-                            balanceTree(bt, arr[i]);
+                            balanceTree(bt, node);
                             treeToArray(bt.root(), arr);
                         }
-                    } else if (node && getRotationType(node) === "double") {
+                    } else if (node) {
                         //wrong kind of rotation needed -> balance tree
-                        balanceTree(bt, arr[i]);
+                        balanceTree(bt, node);
                         treeToArray(bt.root(), arr);
                     }
                     if (i === options.maxNodes - 1) {
@@ -500,6 +550,7 @@
             return undefined;
         }
 
+        //returns single if node can be balanced with a right or left rotation and
         function getRotationType(node) {
             if ((height(node.left()) > height(node.right()) &&
                 height(node.left().left()) > height(node.left().right())) ||
@@ -519,87 +570,74 @@
             return 0;
         }
 
-        //balances the tree
+        //balances the tree by performing an rotation at the given node
         //ONLY to be used when generating trees
         //balanced trees don't seem to work well with layout()
-        function balanceTree(tree, last) {
-            var node = tree.root();
-            //find the last inserted node
-            while (node.left() || node.right()) {
-                if (node.value() >= last) {
-                    node = node.left();
-                } else {
-                    node = node.right();
-                }
+        function balanceTree(tree, node) {
+            var lr;
+            var parent = node.parent()
+            var raisedNode;
+            if (parent) {
+                lr = parent.left() === node? 0: 1;
             }
-            //Find the unbalanced node
-            while (node) {
-                var lr;
-                var parent = node.parent()
-                var raisedNode;
-                if (parent) {
-                    lr = parent.left() === node? 0: 1;
-                }
-                if (height(node.left()) > height(node.right()) + 1) {
-                    if (height(node.left().left()) > height(node.left().right())) {
-                        //single right rotation
-                        if (parent) {
-                            parent.child(lr, node.left().remove());
-                            raisedNode = parent.child(lr)
-                        } else {
-                            tree._setrootnode(node.left().remove());
-                            raisedNode = tree.root();
-                        }
-                        if (raisedNode.right())
-                            node.left(raisedNode.right().remove());
-                        raisedNode.right(node);
+            if (height(node.left()) > height(node.right()) + 1) {
+                if (height(node.left().left()) > height(node.left().right())) {
+                    //single right rotation
+                    if (parent) {
+                        parent.child(lr, node.left().remove());
+                        raisedNode = parent.child(lr)
                     } else {
-                        //double LR rotation
-                        if (parent) {
-                            parent.child(lr, node.left().right().remove());
-                            raisedNode = parent.child(lr)
-                        } else {
-                            tree._setrootnode(node.left().right().remove());
-                            raisedNode = tree.root();
-                        }
-                        if (raisedNode.left())
-                            node.left().right(raisedNode.left().remove());
-                        raisedNode.left(node.left().remove());
-                        if (raisedNode.right())
-                            node.left(raisedNode.right().remove());
-                        raisedNode.right(node);
+                        tree._setrootnode(node.left().remove());
+                        raisedNode = tree.root();
                     }
-                } else if (height(node.right()) > height(node.left()) + 1) {
-                    if (height(node.right().left()) > height(node.right().right())) {
-                        //double RL rotation
-                        if (parent) {
-                            parent.child(lr, node.right().left().remove());
-                            raisedNode = parent.child(lr)
-                        } else {
-                            tree._setrootnode(node.right().left().remove());
-                            raisedNode = tree.root();
-                        }
-                        if (raisedNode.right())
-                            node.right().left(raisedNode.right().remove());
-                        raisedNode.right(node.right().remove());
-                        if (raisedNode.left())
-                            node.right(raisedNode.left().remove());
-                        raisedNode.left(node);
+                    if (raisedNode.right())
+                        node.left(raisedNode.right().remove());
+                    raisedNode.right(node);
+                } else {
+                    //double LR rotation
+                    if (parent) {
+                        parent.child(lr, node.left().right().remove());
+                        raisedNode = parent.child(lr)
                     } else {
-                        //single left rotation
-                        if (parent) {
-                            parent.child(lr, node.right().remove());
-                            raisedNode = parent.child(lr)
-                        } else {
-                            tree._setrootnode(node.right().remove());
-                            raisedNode = tree.root();
-                        }
-                        if (raisedNode.left())
-                            node.right(raisedNode.left().remove());
-                       raisedNode.left(node);
+                        tree._setrootnode(node.left().right().remove());
+                        raisedNode = tree.root();
                     }
+                    if (raisedNode.left())
+                        node.left().right(raisedNode.left().remove());
+                    raisedNode.left(node.left().remove());
+                    if (raisedNode.right())
+                        node.left(raisedNode.right().remove());
+                    raisedNode.right(node);
                 }
-                node = parent;
+            } else if (height(node.right()) > height(node.left()) + 1) {
+                if (height(node.right().left()) > height(node.right().right())) {
+                    //double RL rotation
+                    if (parent) {
+                        parent.child(lr, node.right().left().remove());
+                        raisedNode = parent.child(lr)
+                    } else {
+                        tree._setrootnode(node.right().left().remove());
+                        raisedNode = tree.root();
+                    }
+                    if (raisedNode.right())
+                        node.right().left(raisedNode.right().remove());
+                    raisedNode.right(node.right().remove());
+                    if (raisedNode.left())
+                        node.right(raisedNode.left().remove());
+                    raisedNode.left(node);
+                } else {
+                    //single left rotation
+                    if (parent) {
+                        parent.child(lr, node.right().remove());
+                        raisedNode = parent.child(lr)
+                    } else {
+                        tree._setrootnode(node.right().remove());
+                        raisedNode = tree.root();
+                    }
+                    if (raisedNode.left())
+                        node.right(raisedNode.left().remove());
+                   raisedNode.left(node);
+                }
             }
         }
 
