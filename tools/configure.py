@@ -564,11 +564,10 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
       # Parse the list of prerequisite topics from the module
       requires = [req.strip() for req in mod_data[i].replace(':requires:', '').split(';')]
       
-      # Print and error message and exit if a missing prereq is encountered
+      # Print a warning message if a missing prereq is encountered
       for req in requires:
         if req not in satisfied_requirements:
-          print "ERROR: " + req + " is an unsatisfied prerequisite for " + mod_name
-          sys.exit(1)
+          print ("  " * (depth + 1 )) + "WARNING: " + req + " is an unsatisfied prerequisite for " + mod_name
     elif ':satisfies:' in mod_data[i]:
       # Parse the list of prerequisite topics this module satisfies and add them to the list of satisfied prereqs
       satisfied_requirements += [req.strip() for req in mod_data[i].replace(':satisfies:', '').split(';')]
@@ -861,7 +860,7 @@ def configure(config_file, slides = False):
     settings.EXERCISE_ORIGIN = "%(exercise_origin)s";
     settings.AV_ORIGIN = "%(av_origin)s";
     // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
-    settings.ALLOW_ANON_CREDIT = "%(allow_anon_credit)s";
+    settings.ALLOW_ANON_CREDIT = %(allow_anon_credit)s;
 
     window.ODSA = {};
     window.ODSA.SETTINGS = settings;
