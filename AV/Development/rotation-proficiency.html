@@ -248,7 +248,7 @@
             } else { //double
                 if ((tempNode.parent().right() === tempNode &&
                     !node.left().hasClass("emptynode")) || 
-                    (tempNode.parent().right() === tempNode &&
+                    (tempNode.parent().left() === tempNode &&
                     !node.right().hasClass("emptynode"))) {
 
                     turnAnimationOff();
@@ -289,7 +289,7 @@
                 //move subtree of node under modelSubtree
                 if ((tempNode.parent().right() === tempNode &&
                     !node.left().hasClass("emptynode")) || 
-                    (tempNode.parent().right() === tempNode &&
+                    (tempNode.parent().left() === tempNode &&
                     !node.right().hasClass("emptynode"))) {
 
                     turnAnimationOff();
@@ -339,7 +339,7 @@
 
 
         function clickHandler() {
-            if (subtree.root().hasClass("emptynode")) {
+            if (subtree.root().hasClass("emptynode") && !this.hasClass("emptynode")) {
                 var diff_x = this.element.offset().left;
                 var diff_y = this.element.offset().top;
                 //move this to become the root of subtree
@@ -368,7 +368,6 @@
                 selectedNode = null;
                 this.removeClass("selected");
                 nodeSelected.value(0);
-                return;
             } else if (nodeSelected.value() && this.hasClass("emptynode")) {
                 //don't allow creating loops
                 if (isRelated(selectedNode, this)) {
@@ -453,7 +452,7 @@
 
         //removes the subtree with the calling node as its root
         //replaces the calling node with an empty node
-        function removeSubtree(root, keep) {
+        /*function removeSubtree(root, keep) {
             var val = "";
             if (keep) {
                 val = root.value();
@@ -467,6 +466,32 @@
             root.unhighlight();
             root.addClass("emptynode");
             return root;
+        }*/
+        //works better???
+        function removeSubtree(root, keep) {
+            var val = "";
+            var node;
+            if (keep) {
+                val = root.value();
+            }
+            if (root.parent() && root.parent().left() === root) {
+                node = root.parent().left(val).addClass("emptynode");
+                root.remove();
+            } else if (root.parent()) {
+                node = root.parent().right(val).addClass("emptynode");
+                root.remove();
+            } else {
+                if (root.left())
+                    root.left().remove();
+                if (root.right())
+                    root.right().remove();
+                root.value(val);
+                root.removeClass("selected");
+                root.unhighlight();
+                root.addClass("emptynode");
+                node = root;
+            }
+            return node;
         }
 
         //returns true if child is a child, grandchild, grandgrandchild... of parent
