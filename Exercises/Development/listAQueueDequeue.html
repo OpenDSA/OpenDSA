@@ -167,8 +167,8 @@ var jsav,           // The JSAV object
   copyFrom,
   arrReturn,
   labelReturn,
-  cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
-  jsavCir,        // The array that the user manipulates (JSAV object)
+  cloneArr = [],    // A copy of the (internal) array at the start of the exercise for reset
+  jsavCir,          // The array that the user manipulates (JSAV object)
   selected_pointer,
   front_pointer,
   front_index,
@@ -176,13 +176,14 @@ var jsav,           // The JSAV object
   rear_index,
   status,
   background,
-  userInput,      // Boolean: Tells us if user ever did anything
-  selected_index; // Position that has been selected by user for swap
+  userInput,        // Boolean: Tells us if user ever did anything
+  selected_index;   // Position that has been selected by user for swap
 
 function bindPointerClick(pointer){
   pointer.label.element.css( { 'z-index': 100} );
   pointer.label.element.click(function(){pclick(pointer);});
 }
+
 function resetPointer(pointer,index, type){
   var not_select_pointer = null;
   if(pointer === front_pointer){
@@ -216,7 +217,7 @@ function resetPointer(pointer,index, type){
 }
 
 // pointer click handler
-var pclick = function(pointer){
+function pclick(pointer){
   if(status == 1){
     jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
     pointer.label.element.toggleClass('highlight');
@@ -240,7 +241,7 @@ var pclick = function(pointer){
 }
 
 // JSAV Circular click handler
-var clickHandler = function (index) {
+function clickHandler(index) {
   if(status == 0){
     jsavCir.path[index].rObj.attr({"fill":"yellow", "opacity" : "0.5"});
     selected_index = index;
@@ -264,7 +265,7 @@ var clickHandler = function (index) {
   userInput = true;
 };
 
-var f_copy = function(){
+function f_copy(){
   var val;
   if(status == 1 && selected_index > -1){
     jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
@@ -277,7 +278,7 @@ var f_copy = function(){
 }
 
 // reset function definition
-var f_reset = function (maxSize, front, rear) {
+function f_reset(maxSize, front, rear) {
   selected_index = -1;
   copyFrom = front;
   front_index = front;
@@ -330,7 +331,7 @@ var f_reset = function (maxSize, front, rear) {
 };
 
 // Initialise the exercise
-var initJSAV = function (maxSize, front, rear) {
+function initJSAV(maxSize, front, rear) {
   var i, j;
   userInput = false;
   selected_index = -1;
@@ -359,7 +360,7 @@ var initJSAV = function (maxSize, front, rear) {
 };
 
 // Check user's answer for correctness: User's array must match answer
-var checkAnswer = function (maxSize) {
+function checkAnswer(maxSize) {
   if(front_index !== answFrontPos || rear_index !== answRearPos){
     return false;
   }

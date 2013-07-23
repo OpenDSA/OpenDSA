@@ -67,23 +67,23 @@ Written by Junyang Chen and Cliff Shaffer
 </head>
 <body>
 <script>
-var jsav,         // The JSAV object
-  answerArr = [], // The (internal) array that stores the correct answer
-  listArr = [],   // Stores the jsav list values
-  ptop,           // pointer top
-  selected_pointer,  // pointer that is clicked, which will always be ptop here.
-  status = 0,    // Nothing is currently selected, status = 0;
-				 // List node is selected, status = 1;
-				 // pointer top is selected, status = 2.
-  arrReturn,
-  copyFrom,
-  labelReturn,
-  jsavList,        // JSAV list
-  listSize,        // JSAV list size
-  userInput,      // Boolean: Tells us if user ever did anything
-  selected_node; // Position that has been selected by user for swap
+var jsav,             // The JSAV object
+  answerArr = [],     // The (internal) array that stores the correct answer
+  listArr = [],       // Stores the jsav list values
+  ptop,               // pointer top
+  selected_pointer,   // pointer that is clicked, which will always be ptop here.
+  status = 0,         // Nothing is currently selected, status = 0;
+                      // List node is selected, status = 1;
+                      // pointer top is selected, status = 2.
+  arrReturn,          //
+  copyFrom,           //
+  labelReturn,        //
+  jsavList,           // JSAV list
+  listSize,           // JSAV list size
+  userInput,          // Boolean: Tells us if user ever did anything
+  selected_node;      // Position that has been selected by user for swap
 
-var Edge = JSAV._types.ds.Edge;
+// JSAV extensions
 JSAV._types.ds.ListNode.prototype.odsa_next = {};
 JSAV._types.ds.ListNode.prototype.odsa_tail = {};
 JSAV._types.ds.ListNode.prototype.odsa_edgeToNext = {};
@@ -91,8 +91,9 @@ JSAV._types.Pointer.prototype.click = function(fn){
   var pointer = this;
   this.element.click(function(){fn(pointer)});
 }
+
 // pointer click handler
-var pclick = function(pointer){
+function pclick(pointer){
   if(status == 1){
     selected_node.unhighlight();
     selected_node = null;
@@ -108,7 +109,8 @@ var pclick = function(pointer){
   status = 2;
   userInput = true;
 }
-var copyHandler = function (e) {
+
+function copyHandler(e) {
   if(status == 1){
     selected_node.unhighlight();
     jsav.effects.copyValue(selected_node, arrReturn, 0);
@@ -117,8 +119,9 @@ var copyHandler = function (e) {
     userInput = true;
   }
 };
+
 // Click event handler on the list
-var clickHandler = function (e) {
+function clickHandler(e) {
   var x = parseInt(e.pageX - $('#' + this.id()).offset().left);
   var y = parseInt(e.pageY - $('#' + this.id()).offset().top);
   if(status == 0){
@@ -157,7 +160,7 @@ function addTail(node){
 }
 
 // reset function definition
-var f_reset = function () {
+function f_reset() {
   userInput = false;
   selected_node = null;
   copyFrom = null;
@@ -192,17 +195,17 @@ var f_reset = function () {
   jsavList.click(clickHandler); // Rebind click handler after reset
   userInput = false;
 };
+
 // Initialise the exercise
-var initJSAV = function (size, value) {
-  
-  // Out with the old
+function initJSAV(size, value) {
   answerArr.length = 0;
-    // Give random numbers in range 0..999
+  listSize = size;
+
+  // Give random numbers in range 0..999
   for (i = 0; i < size; i++) {
     answerArr[i] = Math.floor(Math.random() * 1000);
   }
   listArr = answerArr.slice(0);
-  listSize = size;
 
   f_reset();
 
@@ -211,7 +214,7 @@ var initJSAV = function (size, value) {
 };
 
 // Check user's answer for correctness: User's array must match answer
-var checkAnswer = function (arr_size) {
+function checkAnswer(arr_size) {
   if(ptop.target() !== jsavList.get(1)){return false;}
   if(copyFrom !== jsavList.get(0)){return false};
   return true;

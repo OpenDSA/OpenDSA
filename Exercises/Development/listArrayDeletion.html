@@ -80,14 +80,14 @@ Written by Junyang Chen and Cliff Shaffer
     this.element.click(function(){fn(pointer)});
   }
   // Click event handler for pointer
-  var pclick = function(pointer){
+  function pclick(pointer){
     pointer.element.toggleClass('highlight');
     status = 2;
     userInput = true;
   }
  
   // Click event handler for return 'box'
-  var copyHandler = function(){
+  function copyHandler(){
     if(selected_index !== -1){
       jsav.effects.moveValue(jsavArr, selected_index, returnArr, 0);
       jsavArr.unhighlight(selected_index);
@@ -118,7 +118,7 @@ Written by Junyang Chen and Cliff Shaffer
   }
 
   // Click event handler on the array
-  var clickHandler = function (index, e) {
+  function clickHandler(index, e) {
     if (status == 0) { // if nothing currently selected
       jsavArr.css(index, {"font-size": "110%"});
       selected_index = index;
@@ -142,7 +142,7 @@ Written by Junyang Chen and Cliff Shaffer
   };
 
   // reset function definition
-  var f_reset = function () {
+  function f_reset() {
     // Reinitialize global variables.
     selected_index = -1;
     status = 0;
@@ -173,7 +173,7 @@ Written by Junyang Chen and Cliff Shaffer
   };
 
   // Initialise the exercise
-  var initJSAV = function (arr_size, deletePos) {
+  function initJSAV(arr_size, deletePos) {
     var emptyArr = ["","","",""];
     delPosition = deletePos;
     answerArr.length = 0; // Out with the old
@@ -200,7 +200,7 @@ Written by Junyang Chen and Cliff Shaffer
   };
 
   // Check user's answer for correctness: User's array must match answer
-  var checkAnswer = function (arr_size) {
+  function checkAnswer(arr_size) {
     if(delValue !== returnArr.value(0)){ return false;}
     if(copyFrom !== delPosition){return false;}
     if(pointerIndex !== answerPointerIndex){return false;}

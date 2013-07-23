@@ -80,6 +80,9 @@ class to make use of the freelist version of the link class.
 .. codeinclude:: Lists/Freelist.pde
    :tag: Freelist
 
+.. inlineav:: FListInsertCON ss
+   :output: show
+   
 How much time is saved by using freelists depends on the language that
 you are programming in.
 In a language like C++ where the programmer must call ``new`` and

@@ -67,39 +67,40 @@ Written by Junyang Chen and Cliff Shaffer
 </head>
 <body>
 <script>
-var jsav,         // The JSAV object
-  leftMargin,
-  topMargin,
-  answerArr = [], // The (internal) array that stores the correct answer
-  answerOrderArr = [], // The (internal) array that stores the correct order of nodes
-  answFrontNode,
-  answRearNode,
-  answCopyFrom,
-  orderArr = [],  // Stores the node.id() of the jsavList
-  listArr = [],   // Stores the jsav list values
-  front,           // pointer front
-  rear,            // pointer rear
-  front_target,
-  rear_target,
-  selected_pointer,  // pointer that is clicked, which will always be front here.
+var jsav,               // The JSAV object
+  leftMargin,           //
+  topMargin,            //
+  answerArr = [],       // The (internal) array that stores the correct answer
+  answerOrderArr = [],  // The (internal) array that stores the correct order of nodes
+  answFrontNode,        //
+  answRearNode,         //
+  answCopyFrom,         //
+  orderArr = [],        // Stores the node.id() of the jsavList
+  listArr = [],         // Stores the jsav list values
+  front,                // pointer front
+  rear,                 // pointer rear
+  front_target,         //
+  rear_target,          //
+  selected_pointer,     // pointer that is clicked, which will always be front here.
   selected_node,
-  status = 0,    // Nothing is currently selected, status = 0;
-                 // listNode is selected, status = 1;
-				 // pointer area is selected, status = 2;
-				 // pointer is selected, status = 3.
+  status = 0,           // Nothing is currently selected, status = 0;
+                        // listNode is selected, status = 1;
+                        // pointer area is selected, status = 2;
+                        // pointer is selected, status = 3.
   newNodeGen,    
-  newLinkNode,   // New node
-  odsa_head,      // head of the list for correct answer
+  newLinkNode,          // New node
+  odsa_head,            // head of the list for correct answer
   connections = [],
   fromNode,
   toNode,
-  jsavList,        // JSAV list
+  jsavList,             // JSAV list
   returnArr,
   copyFrom,
-  listSize,        // JSAV list size
-  insertValue,     // Value to be inserted
-  userInput;      // Boolean: Tells us if user ever did anything
+  listSize,             // JSAV list size
+  insertValue,          // Value to be inserted
+  userInput;            // Boolean: Tells us if user ever did anything
 
+// JSAV extension
 JSAV._types.ds.ListNode.prototype.pNum = 0;
 JSAV._types.ds.ListNode.prototype.odsa_next = null;
 JSAV._types.ds.ListNode.prototype.odsa_tail = null;
@@ -110,7 +111,7 @@ JSAV._types.Pointer.prototype.click = function(fn){
 }
 
 // pointer click handler
-var pclick = function(pointer){
+function pclick(pointer){
   selected_pointer = pointer;
   selected_pointer.element.toggleClass('highlight');
   status = 3;
@@ -206,7 +207,7 @@ function Connect(obj1, obj2){
     connections.push({from: obj1, to: obj2});  
 }
 
-var copyHandler = function(){
+function copyHandler(){
   if(status == 1){
     copyFrom = selected_node;
     jsav.effects.copyValue(selected_node, returnArr, 0);
@@ -216,7 +217,7 @@ var copyHandler = function(){
 }
 
 // Click event handler on the list
-var clickHandler = function (e) {
+function clickHandler(e) {
   var setright = {anchor: "right top", myAnchor: "left bottom", left: -10, top:-20};
   var setleft = {anchor: "left top", myAnchor: "right bottom", left: 15, top:-20};
   var x = parseInt(e.pageX - $('#' + this.id()).offset().left);
@@ -285,6 +286,7 @@ var clickHandler = function (e) {
   }
 };
 
+// Add a tail for the target node
 function addTail(node){
   var left = node.element.offset().left - jsav.container.find(".jsavcanvas:first").offset().left;
   var top = node.element.offset().top - jsav.container.find(".jsavcanvas:first").offset().top;
@@ -304,17 +306,18 @@ function addTail(node){
   node.odsa_next = null;
 }
 
-//
-
-var f_makenull = function(){
-  if(status == 1){
-    selected_node.unhighlight();
-    addTail(selected_node);
+// Click handler function for makenull button
+function f_makenull(){
+  if(status == 2){
+    fromNode.element.removeClass('bgColor');
+    addTail(fromNode);
+    fromNode = null;
     status = 0;
   }
 }
+
 // reset function definition
-var f_reset = function () {
+function f_reset() {
   leftMargin = 20;
   topMargin = 60;
   userInput = false;
@@ -324,9 +327,12 @@ var f_reset = function () {
   copyFrom = null;
   status = 0;  
 
+  // Clear old JSAV canvas
   if($("#jsav")){
     $("#jsav").empty();
   }
+
+  // Build JSAV Objects
   jsav = new JSAV("jsav");	
   jsavList = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
   returnArr = jsav.ds.array(["null"], {left : leftMargin + 62, top: topMargin + 70});
@@ -339,16 +345,22 @@ var f_reset = function () {
   rear = setPointer("rear", jsavList.get(listSize - 1));
   jsav.recorded();
   jsav.forward();
+
+
   for(var i = 0; i < listSize; i ++)
   {
+    // Store JSAV List orders
     orderArr[i] = jsavList.get(i).id();
+    // Assign .odsa_next the object of the next JSAV node 
     jsavList.get(i).odsa_next = jsavList.get(i).next();
+    // Assign odsa_edgeToNext the edge connecting the JSAV node to the following node
     jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
-    //jsavList.get(i).pNum = 0;
   }
+  // Manually add tail to the last node.
   jsavList.get(listSize - 1).odsa_tail = jsav.g.line(leftMargin + 34 + (listSize - 1)*74, 32 + topMargin,
                           leftMargin + 44 + (listSize - 1)*74, 1 + topMargin,{"opacity": 100,"stroke-width": 1});
 
+  // Correct answer
   answerOrderArr = orderArr.slice(0);
   if(listSize !== 1)
   {
@@ -364,24 +376,27 @@ var f_reset = function () {
   }else{
     answRearNode = jsavList.get(listSize - 1);
   }
+
+  // Bind click event handlers.
   front.click(pclick);
-  rear.click(pclick);
-  
+  rear.click(pclick);  
   returnArr.click(copyHandler);
-  jsavList.click(clickHandler); // Rebind click handler after reset
+  jsavList.click(clickHandler);
+
   userInput = false;
 };
 
 // Initialise the exercise
-var initJSAV = function (size) {
+function initJSAV(size) {
   listSize = size;
-  // Out with the old
   answerArr.length = 0;
-    // Give random numbers in range 0..999
+
   answerArr[0] = "null";
+  // Give random numbers in range 0..999
   for (i = 1; i < size+1; i++) {
     answerArr[i] = Math.floor(Math.random() * 1000);
   }
+  // Make a copy.
   listArr = answerArr.slice(0);
 
   f_reset();
@@ -392,19 +407,22 @@ var initJSAV = function (size) {
     answerArr.splice(1, 1);
     answerArr.length = listSize - 1;
   }
-  // Set up handler for newnode
+
+  // Set up handler for 'makenull'
   $("#makenull").click(function () { f_makenull(); });
   // Set up handler for reset button
   $("#reset").click(function () { f_reset(); });
 };
 
 // Check user's answer for correctness: User's array must match answer
-var checkAnswer = function (arr_size) {
-  var i = 0;
-  var curr = jsavList.get(0);
+function checkAnswer(arr_size) {
+  var i = 0,
+    curr = jsavList.get(0);
+
   if(front.target() !== answFrontNode){ return false;}
   if(rear.target()!== answRearNode) { return false};
   if( answCopyFrom !== copyFrom) {return false;}
+
   while(curr){
     if(curr.value() == answerArr[i] && curr.id() == answerOrderArr[i]){
       curr = curr.odsa_next;
@@ -413,12 +431,14 @@ var checkAnswer = function (arr_size) {
       return false;
     }
   }
+
   if(listSize == 1){
     return true;
   }else if(i == listSize - 1)
   {
     return true;
   }
+
   return false;
 };
 </script>

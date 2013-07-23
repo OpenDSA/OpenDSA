@@ -51,28 +51,28 @@ Written by Junyang Chen and Cliff Shaffer
 </head>
 <body>
 <script>
-var jsav,         // The JSAV object
-  answerArr = [], // The (internal) array that stores the correct answer
-  answerOrderArr = [], // The (internal) array that stores the correct order of nodes
-  orderArr = [],  
-  listArr = [],
-  status = 0,    // Nothing is currently selected, status = 0;
-                 // Data area of the node is selected, status = 1;
-				 // pointer area is selected, status = 2.
-  newNodeGen,
-  newLinkNode,   // New node
-  exe_head,      // head of the list
-  connections = [],
-  fromNode,
-  toNode,
-  jsavList,        // JSAV list
-  listSize,        // JSAV list size
-  insertPosition,  // Position to be inserted
-  insertValue,     // Value to be inserted
-  userInput,      // Boolean: Tells us if user ever did anything
-  selected_node; // Position that has been selected by user for swap
+var jsav,                // The JSAV object
+  answerArr = [],        // The (internal) array that stores the correct answer
+  answerOrderArr = [],   // The (internal) array that stores the correct order of nodes
+  orderArr = [],         // 
+  listArr = [],          //
+  status = 0,            // Nothing is currently selected, status = 0;
+                         // Data area of the node is selected, status = 1;
+                         // pointer area is selected, status = 2.
+  newNodeGen,            //
+  newLinkNode,           // New node
+  exe_head,              // head of the list
+  connections = [],      //
+  fromNode,              //
+  toNode,                //
+  jsavList,              // JSAV list
+  listSize,              // JSAV list size
+  insertPosition,        // Position to be inserted
+  insertValue,           // Value to be inserted
+  userInput,             // Boolean: Tells us if user ever did anything
+  selected_node;         // Position that has been selected by user for swap
 
-var Edge = JSAV._types.ds.Edge;
+// JSAV extensions
 JSAV._types.ds.ListNode.prototype.exe_next = {};
 JSAV._types.ds.ListNode.prototype.exe_tail = {};
 JSAV._types.ds.ListNode.prototype.exe_edgeToNext = {};
@@ -96,34 +96,33 @@ function connection(obj1, obj2){
 	  dx = Math.min(Math.abs(fx - tx), 20);
       dy = Math.min(Math.abs(fx - tx)/3, 50);
       tx += 22;
-	  ty -= 15;
-	  fx1 = fx; 
+      ty -= 15;
+      fx1 = fx; 
       fy1 = fy - dy;
       tx1 = tx - dx;
       ty1 = ty - dy;
   }else{
-	if(disx == 1){
-	  tx += 22;
-	  ty += 15 * disy;
-	  fx1 = fx + dx; 
+    if(disx == 1){
+      tx += 22;
+      ty += 15 * disy;
+      fx1 = fx + dx; 
       fy1 = fy - dy * disy;
       tx1 = tx;
       ty1 = ty + dy * disy;
-	}else if(disx == -1){
-	  fx1 = fx + dx; 
+    }else if(disx == -1){
+      fx1 = fx + dx; 
       fy1 = fy;
       tx1 = tx - dx;
       ty1 = ty;	
-	}
+    }
   }
   
-
   var edge = jsav.g.path(["M", fx, fy , "C", fx1, fy1, tx1 , ty1, tx, ty].join(","),{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2,} );
   if(obj1.exe_next){
-	obj1.exe_edgeToNext.element.remove();	
+    obj1.exe_edgeToNext.element.remove();	
   }else{
     obj1.exe_tail.element.remove();
-	obj1.exe_tail = null;
+    obj1.exe_tail = null;
   }
   
   obj1.exe_edgeToNext = edge;
@@ -137,64 +136,62 @@ function Connect(obj1, obj2){
   obj1._next = obj2;
   for(var i=0; i<connections.length; i++)
   {
-	  if(connections[i].from == obj1 && connections[i].to != obj2){
-	    connections[i].to = obj2;
-		return;
-	  }
+    if(connections[i].from == obj1 && connections[i].to != obj2){
+      connections[i].to = obj2;
+      return;
+    }
   }
     connections.push({from: obj1, to: obj2});  
 }
 
 // Click event handler on the list
-var clickHandler = function (e) {
+function clickHandler(e) {
   var x = parseInt(e.pageX - $('#' + this.id()).offset().left);
   var y = parseInt(e.pageY - $('#' + this.id()).offset().top);
   if(x > 31 && x < 42 && y > 0 && y < 31){	
-	if(status == 1){
+    if(status == 1){
       selected_node.removeClass('bgColor');
-	  selected_node = null;
-	}else if(status == 2){
-	  $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
-	}
+      selected_node = null;
+    }else if(status == 2){
+      $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
+    }
 
     if(status == 0 || status == 1){
-	  $('#' + this.id() + " .jsavpointerarea:first").addClass('bgColor');
-	  fromNode = this;
-	  status = 2;
-    }else if(status == 2){
-		
-	  if(this.id() == fromNode.id()){
-	    $('#' + this.id() + " .jsavpointerarea:first").removeClass('bgColor');
-	    fromNode = null;
-	    status = 0;
-	  }else{
-		$('#' + this.id() + " .jsavpointerarea:first").addClass('bgColor');
-	    fromNode = this;
-	    status = 2;
-	  }
-	  
-	}
+      $('#' + this.id() + " .jsavpointerarea:first").addClass('bgColor');
+      fromNode = this;
+      status = 2;
+    }else if(status == 2){	
+      if(this.id() == fromNode.id()){
+        $('#' + this.id() + " .jsavpointerarea:first").removeClass('bgColor');
+        fromNode = null;
+        status = 0;
+      }else{
+        $('#' + this.id() + " .jsavpointerarea:first").addClass('bgColor');
+        fromNode = this;
+        status = 2;
+      }
+    }
   }else{
-	if(status == 0){
+    if(status == 0){
       this.addClass('bgColor');
-	  selected_node = this;
-	  status = 1;
-	}else if(status == 1){
-	  this.value(selected_node.value());
+      selected_node = this;
+      status = 1;
+    }else if(status == 1){
+      this.value(selected_node.value());
 
       selected_node.removeClass('bgColor');
-	  jsav.effects.copyValue(selected_node, this);
+      jsav.effects.copyValue(selected_node, this);
       selected_node = null;
-	  status = 0;
-	}else if(status == 2){
-	  toNode = this;
-	  Connect(fromNode, toNode);
-	  $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
+      status = 0;
+    }else if(status == 2){
+      toNode = this;
+      Connect(fromNode, toNode);
+      $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
       $('#' + toNode.id()).removeClass('bgColor');
-	  fromNode = null;
-	  toNode = null;
-	  status = 0;
-	}
+      fromNode = null;
+      toNode = null;
+      status = 0;
+    }
     userInput = true;
   }
 };
@@ -211,7 +208,7 @@ function addTail(node){
   }
 }
 
-var f_newnode = function() { 
+function f_newnode() { 
   if (newNodeGen == false) {
     if(status == 2){
       $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
@@ -242,37 +239,37 @@ var f_newnode = function() {
                           x2, y2,{"opacity": 100,"stroke-width": 1});
 
     $("#" + newLinkNode.id()).draggable({
-	  start: function(){
-	    $("#" + newLinkNode.id()).css( 'cursor', 'pointer' );
-		if(status == 2){
-	      $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
-	      fromNode = null;
-	    }else if(status == 1){
+      start: function(){
+        $("#" + newLinkNode.id()).css( 'cursor', 'pointer' );
+        if(status == 2){
+          $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
+          fromNode = null;
+        }else if(status == 1){
           selected_node.removeClass('bgColor');
-	      selected_node = null;
-	    }
-	    status = 0;
-	  },
-	  drag: function(){
+          selected_node = null;
+        }
+        status = 0;
+      },
+      drag: function(){
         var offset = $(this).position();
         var xPos = parseInt(offset.left);
         var yPos = parseInt(offset.top);
-		nodeNum = Math.floor(xPos/73);
-		for (var i = connections.length; i--;) {
+        nodeNum = Math.floor(xPos/73);
+        for (var i = connections.length; i--;) {
           connection(connections[i].from, connections[i].to);
         }
         addTail(newLinkNode);
-	  },
-	  stop: function() {
-	    var offset = $(this).position();
+      },
+      stop: function() {
+        var offset = $(this).position();
         var xPos = parseInt(offset.left);
         var yPos = parseInt(offset.top);
-	    nodeNum = Math.floor(xPos/73);
-		for (var i = connections.length; i--;) {
+        nodeNum = Math.floor(xPos/73);
+        for (var i = connections.length; i--;) {
           connection(connections[i].from, connections[i].to);
         }
-		addTail(newLinkNode);
-	  },
+        addTail(newLinkNode);
+      },
     });
     $("#NewNode").disabled = true;
     newNodeGen = true;
@@ -281,18 +278,17 @@ var f_newnode = function() {
   userInput = true;
 }
 
-var f_insert = function () {
+function f_insert() {
   if(selected_node != null){
-	jsav.effects.copyValue(jsavArr, 0, selected_node);
-	//selected_node.value(insertValue);
-	selected_node.removeClass('bgColor');
-	selected_node = null;
-	status = 0;
+    jsav.effects.copyValue(jsavArr, 0, selected_node);
+    selected_node.removeClass('bgColor');
+    selected_node = null;
+    status = 0;
   }
 };
 
 // reset function definition
-var f_reset = function () {
+function f_reset() {
   userInput = false;
   newNodeGen = false;
   connections = [];
@@ -302,7 +298,7 @@ var f_reset = function () {
     $("#jsav .jsavcanvas").remove();
   }
   if($("#jsav .jsavshutter")){
-	$("#jsav .jsavshutter").remove();
+    $("#jsav .jsavshutter").remove();
   }
   jsav = new JSAV("jsav");	
   jsav.recorded();
@@ -318,7 +314,7 @@ var f_reset = function () {
   jsavList.addFirst("null");
   for(var i = listSize - 2; i > 0; i--)
   {
-	jsavList.addFirst(listArr[i]);
+    jsavList.addFirst(listArr[i]);
   }
   jsavList.addFirst("null");
   jsavList.layout(); 
@@ -326,33 +322,35 @@ var f_reset = function () {
   exe_head = jsavList.get(0);
   for(var i = 0; i < listSize; i ++)
   {
-	orderArr[i] = jsavList.get(i).id();
+    orderArr[i] = jsavList.get(i).id();
     jsavList.get(i).exe_next = jsavList.get(i).next();
-	jsavList.get(i).exe_edgeToNext = jsavList.get(i).edgeToNext();
+    jsavList.get(i).exe_edgeToNext = jsavList.get(i).edgeToNext();
   }
   jsavList.get(listSize - 1).exe_tail = jsav.g.line(34 + (listSize - 1)*74, 32 + 40,
                           44 + (listSize - 1)*74, 1 + 40,{"opacity": 100,"stroke-width": 1});
   
   //Curr Label
   var currLabel = jsav.label("curr",
-	  {left: 60 + insertPosition * 74, top: 0, "font-size":"20px"});
+      {left: 60 + insertPosition * 74, top: 0, "font-size":"20px"});
   var currArrow = jsav.g.line(70 + insertPosition * 74, 20,
                               90 + insertPosition * 74, 40,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
+      {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
   
   //JSAV array for insert animation
   jsavArr = jsav.ds.array([insertValue], {indexed: false, center: false,left: 650, top: -70});
 	
-
   jsavList.click(clickHandler); // Rebind click handler after reset
   userInput = false;
 };
+
 // Initialise the exercise
-var initJSAV = function (size, pos, value) {
-  
-  // Out with the old
+function initJSAV(size, pos, value) {
   answerArr.length = 0;
-    // Give random numbers in range 0..999
+  listSize = size;
+  insertPosition = pos;
+  insertValue = value;
+
+  // Give random numbers in range 0..999
   answerArr[0] = "null";
   for (i = 1; i < size-1; i++) {
     answerArr[i] = Math.floor(Math.random() * 1000);
@@ -360,17 +358,11 @@ var initJSAV = function (size, pos, value) {
   answerArr[size-1] = "null";
   listArr = answerArr.slice(0);
 
-  
-  listSize = size;
-  insertPosition = pos;
-  insertValue = value;
-
   f_reset();
 
   // correct answer
   answerArr.splice(insertPosition + 1, 0, insertValue);
 
-  
   // Set up handler for newnode
   $("#NewNode").click(function () { f_newnode(); });
 
@@ -381,21 +373,24 @@ var initJSAV = function (size, pos, value) {
 };
 
 // Check user's answer for correctness: User's array must match answer
-var checkAnswer = function (arr_size) {
+function checkAnswer(arr_size) {
   var i = 0;
   var curr = exe_head;
+
   while(curr.exe_next){
-	if(curr.value() == answerArr[i] && curr.id() == answerOrderArr[i]){
-	  curr = curr.exe_next;
-	  i++;
-	}else{
-	  return false;
-	}
+    if(curr.value() == answerArr[i] && curr.id() == answerOrderArr[i]){
+      curr = curr.exe_next;
+      i++;
+    }else{
+      return false;
+    }
   }
+
   if(i == listSize)
   {
-	  return true;
+      return true;
   }
+
   return false;
 };
 </script>

@@ -77,7 +77,7 @@ Written by Junyang Chen and Cliff Shaffer
     this.element.click(function(){fn(pointer)});
   }
   // pointer click handler
-  var pclick = function(pointer){
+  function pclick(pointer){
     if(status == 1){
       jsavArr.css(selected_index, {"font-size": "100%"});
       jsavArr.unhighlight(selected_index);
@@ -113,7 +113,7 @@ Written by Junyang Chen and Cliff Shaffer
   }
 
   // Click event handler on the array 'jsavArr'
-  var clickHandler = function (index, e) {
+  function clickHandler(index, e) {
     if (status == 0) { // if nothing currently selected
       jsavArr.css(index, {"font-size": "110%"});
       selected_index = index;
@@ -140,7 +140,7 @@ Written by Junyang Chen and Cliff Shaffer
   };
 
   // Click event handler on the array 'arrMax'
-  var maxClickHandler = function (index, e) {
+  function maxClickHandler(index, e) {
     if (status == 2){
       pointerTop = setPointer("top", arrMax, 0);
       arrMax.value(0, maxSize);
@@ -153,7 +153,7 @@ Written by Junyang Chen and Cliff Shaffer
   }
 
   // reset function definition
-  var f_reset = function (max_size, arr_size) {
+  function f_reset(max_size, arr_size) {
     var leftMargin = 20, topMargin = 50;
     selected_index = -1;
     status = 0; 
@@ -187,7 +187,7 @@ Written by Junyang Chen and Cliff Shaffer
   };
 
   // Initialise the exercise
-  var initJSAV = function (max_size, arr_size, insertValue) {
+  function initJSAV(max_size, arr_size, insertValue) {
     var i, j;
     userInput = false;
     maxSize = max_size;
@@ -231,7 +231,7 @@ Written by Junyang Chen and Cliff Shaffer
   };
 
   // Check user's answer for correctness: User's array must match answer
-  var checkAnswer = function (max_size, arr_size) {
+  function checkAnswer(max_size, arr_size) {
 
     if(max_size === arr_size || max_size === arr_size + 1){  
       if(pointerTop.target() !== arrMax || pointerIndex !== 0){

@@ -160,11 +160,11 @@ Written by Junyang Chen and Cliff Shaffer
 }(jQuery));
 
 var jsav,           // The JSAV object
-  answerArr = [], // The (internal) array that stores the correct answer
+  answerArr = [],   // The (internal) array that stores the correct answer
   answFrontPos,
   answRearPos,
-  cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
-  jsavCir,        // The array that the user manipulates (JSAV object)
+  cloneArr = [],    // A copy of the (internal) array at the start of the exercise for reset
+  jsavCir,          // The array that the user manipulates (JSAV object)
   selected_pointer,
   front_pointer,
   front_index,
@@ -172,14 +172,15 @@ var jsav,           // The JSAV object
   rear_index,
   status,
   background,
-  inValue,        // Enqueue value
-  userInput,      // Boolean: Tells us if user ever did anything
-  selected_index; // Position that has been selected by user for swap
+  inValue,          // Enqueue value
+  userInput,        // Boolean: Tells us if user ever did anything
+  selected_index;   // Position that has been selected by user for swap
 
 function bindPointerClick(pointer){
   pointer.label.element.css( { 'z-index': 100} );
   pointer.label.element.click(function(){pclick(pointer);});
 }
+
 function resetPointer(pointer,index, type){
   var not_select_pointer = null;
   if(pointer === front_pointer){
@@ -213,7 +214,7 @@ function resetPointer(pointer,index, type){
 }
 
 // pointer click handler
-var pclick = function(pointer){
+function pclick(pointer){
   if(status == 1){
     jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
     pointer.label.element.toggleClass('highlight');
@@ -237,7 +238,7 @@ var pclick = function(pointer){
 }
 
 // JSAV Circular click handler
-var clickHandler = function (index) {
+function clickHandler(index) {
   if(status == 0){
     jsavCir.path[index].rObj.attr({"fill":"yellow", "opacity" : "0.5"});
     selected_index = index;
@@ -261,14 +262,14 @@ var clickHandler = function (index) {
   userInput = true;
 };
 
-var f_insert = function(){
+function f_insert(){
   if(status == 1 && selected_index > -1){
     jsavCir.value(selected_index, inValue);
   }
 }
 
 // reset function definition
-var f_reset = function (maxSize, front, rear) {
+function f_reset(maxSize, front, rear) {
   selected_index = -1;
   front_index = front;
   rear_index = rear;
@@ -308,7 +309,7 @@ var f_reset = function (maxSize, front, rear) {
 };
 
 // Initialise the exercise
-var initJSAV = function (maxSize, front, rear, insertValue) {
+function initJSAV(maxSize, front, rear, insertValue) {
   var i, j;
   userInput = false;
   selected_index = -1;
@@ -350,7 +351,7 @@ var initJSAV = function (maxSize, front, rear, insertValue) {
 };
 
 // Check user's answer for correctness: User's array must match answer
-var checkAnswer = function (maxSize) {
+function checkAnswer(maxSize) {
   if(front_index !== answFrontPos || rear_index !== answRearPos){
     return false;
   }

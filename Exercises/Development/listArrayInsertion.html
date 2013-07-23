@@ -41,33 +41,32 @@ Written by Junyang Chen and Cliff Shaffer
 
 <script>
 var jsav,           // The JSAV object
-  answerArr = [], // The (internal) array that stores the correct answer
-  cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
-  jsavArr,        // The array that the user manipulates (JSAV object)
-  inPosision,		// insertion location
-  inValue,        // insertion value
-  userInput,      // Boolean: Tells us if user ever did anything
-  selected_index; // Position that has been selected by user for swap
+  answerArr = [],   // The (internal) array that stores the correct answer
+  cloneArr = [],    // A copy of the (internal) array at the start of the exercise for reset
+  jsavArr,          // The array that the user manipulates (JSAV object)
+  inPosision,       // insertion location
+  inValue,          // insertion value
+  userInput,        // Boolean: Tells us if user ever did anything
+  selected_index;   // Position that has been selected by user for swap
 
 // Click event handler on the array
-var clickHandler = function (index, e) {
+function clickHandler(index, e) {
   if (selected_index === -1) { // if nothing currently selected
     jsavArr.css(index, {"font-size": "110%"});
-	selected_index = index;
-	jsavArr.highlight(index);
+    selected_index = index;
+    jsavArr.highlight(index);
   } 
   else {	
     jsavArr.swap(selected_index, index);	
-	jsavArr.css(index, {"font-size": "100%"});
-	jsavArr.unhighlight(index);
-	selected_index = -1;  // Reset to nothing selected
+    jsavArr.css(index, {"font-size": "100%"});
+    jsavArr.unhighlight(index);
+    selected_index = -1;  // Reset to nothing selected
   }
   userInput = true;
 };
 
-
 // reset function definition
-var f_reset = function () {
+function f_reset() {
   jsavArr.clear();
   // Re-initialize the displayed array object
   jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false});
@@ -77,7 +76,7 @@ var f_reset = function () {
 };
 
 // Initialise the exercise
-var initJSAV = function (arr_size, insertPos, insertValue) {
+function initJSAV(arr_size, insertPos, insertValue) {
   var i, j;
   var emptyArr = ["","","",""]; //for the last 4 elements of the array
   userInput = false;
@@ -113,11 +112,11 @@ var initJSAV = function (arr_size, insertPos, insertValue) {
   $("#insert").click(function () {
     if(selected_index !== -1){
       jsavArr.value(selected_index, inValue);
-	  jsavArr.css(selected_index, { "background-color": "#ddd" });
-	  jsavArr.css(selected_index, {"font-size": "100%"});
-	  jsavArr.unhighlight(selected_index);
-	  selected_index = -1;
-	  userInput = true;
+      jsavArr.css(selected_index, { "background-color": "#ddd" });
+      jsavArr.css(selected_index, {"font-size": "100%"});
+      jsavArr.unhighlight(selected_index);
+      selected_index = -1;
+      userInput = true;
     }
   });
 
@@ -126,7 +125,7 @@ var initJSAV = function (arr_size, insertPos, insertValue) {
 };
 
 // Check user's answer for correctness: User's array must match answer
-var checkAnswer = function (arr_size) {
+function checkAnswer(arr_size) {
   var i;
   for (i = 0; i < arr_size; i++) {
     if (jsavArr.value(i) !== answerArr[i]) {

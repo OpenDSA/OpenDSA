@@ -115,7 +115,7 @@ Written by Junyang Chen and Cliff Shaffer
     var pointer = this;
     this.element.click(function(){fn(pointer)});
   }
-  var pclick = function(pointer){
+  function pclick(pointer){
     if(status == 1){
       selected_node.removeClass('bgColor');
       selected_node = null;
@@ -228,7 +228,7 @@ Written by Junyang Chen and Cliff Shaffer
   }
 
   // Click event handler for 'return' array
-  var copyHandler = function(){
+  function copyHandler(){
     if(status == 1){
       jsav.effects.copyValue(selected_node, jsavCopyArr, 0);
       selected_node.removeClass('bgColor');
@@ -238,7 +238,7 @@ Written by Junyang Chen and Cliff Shaffer
   }
 
   // Click event handler on the list
-  var clickHandler = function (e) {
+  function clickHandler(e) {
     var x = parseInt(e.pageX - $('#' + this.id()).offset().left);
     var y = parseInt(e.pageY - $('#' + this.id()).offset().top);
     if(x > 31 && x < 42 && y > 0 && y < 31){	
@@ -319,7 +319,7 @@ Written by Junyang Chen and Cliff Shaffer
   }
 
   // Click event handler of 'makenull' button.
-  var nullClickHandler = function (index,e) {
+  function nullClickHandler(index,e) {
     if (status == 2) {
       $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
       addTail(fromNode);
@@ -333,7 +333,7 @@ Written by Junyang Chen and Cliff Shaffer
   };
 
   // Reinitialize the exercise.
-  var f_reset = function () {
+  function f_reset() {
     // JSAV-List position.
     var leftMargin = 20,
       topMargin = 50;
@@ -417,7 +417,7 @@ Written by Junyang Chen and Cliff Shaffer
   };
 
   // Initialise the exercise
-  var initJSAV = function (size, pos) {
+  function initJSAV(size, pos) {
     // Out with the old
     answerArr.length = 0;
     answerOrderArr.length = 0;
@@ -446,7 +446,7 @@ Written by Junyang Chen and Cliff Shaffer
   };
 
   // Check user's answer for correctness: User's array must match answer
-  var checkAnswer = function (arr_size, curr_pos) {
+  function checkAnswer(arr_size, curr_pos) {
     var i = 1,
       curr = odsa_head;
     // Check the 'return' array
