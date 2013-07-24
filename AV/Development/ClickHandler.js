@@ -59,6 +59,15 @@
 			return this.ds[index];
 		},
 
+		//returns an object containing selected structure, index and node (if they exist)
+		getSelected : function getSelected() {
+			return {
+				struct: this.getDs(this.selStruct.value()),
+				index: this.selIndex.value(),
+				node: this.selNode
+			};
+		},
+
 		//reset the click handler, but keeps datastructures and settings
 		//should be done when initializing an exercise
 		reset: function reset() {
@@ -75,6 +84,25 @@
 				this.ds.splice(this.getDsIndex(ds), 1);
 				return true;
 			}
+		},
+
+		//tells click handler to select the given index in an array or the given node
+		select: function select(struct, indexOrNode) {
+			//don't do anything if click handler is unaware of structure
+			if (this.getDsIndex(struct) === -1)
+				return;
+			//deselect if something is selected
+			this.deselect();
+
+			if (typeof indexOrNode === "number") {
+				//select array
+				struct.addClass(indexOrNode, this.options.selectedClass);
+				this.selIndex.value(indexOrNode);
+			} else {
+				indexOrNode.addClass(this.options.selectedClass);
+				this.selIndex.value(-1);
+			}
+			this.selStruct.value(this.getDsIndex(struct));
 		},
 
 		//deselect the selected node
@@ -230,23 +258,26 @@
 					if (options.keep && list.size() === 1) {
 						return;
 					}
-					//select
+					//choose possible selected node
+					var sel;
 					switch (options.select) {
 					case "first":
-						ch.selNode = list.first();
+						sel = list.first();
 						break;
 					case "last":
-						ch.selNode = list.last();
+						sel = list.last();
 						break;
 					default: //"click"
-						ch.selNode = this;
+						sel = this;
 					}
 					//call onSelect function
-					var continueSelect = options.onSelect.call(ch.selNode);
+					var continueSelect = options.onSelect.call(sel);
 					//return if onSelect returns false
 					if (typeof continueSelect !== "undefined" && !continueSelect) {
 						return;
 					}
+					//select
+					ch.selNode = sel;
 					//mark as selected
 					ch.selNode.addClass(ch.options.selectedClass);
 					//set sStruct and sIndex values
@@ -334,6 +365,116 @@
 					}
 					//call onDrop function
 					grade = options.onDrop.call(to);
+					if (typeof grade === "undefined") {
+						//set true if nothing was returned
+						grade = true;
+					} else {
+						//convert to boolean
+						grade = !!grade;
+					}
+					//set sStruct and sIndex values					
+					sStruct = -1;
+					sIndex = -1;
+				}
+				//move the values back to the JSAV variables
+				ch.selStruct.value(sStruct);
+				ch.selIndex.value(sIndex);
+				//grade if grade is true
+				if (options.gradeable && grade) {ch.exercise.gradeableStep(); }
+			});
+		},
+
+		//add a (binary) tree to the click handler
+		addTree: function addTree(tree, options) {
+			//push array into ds
+			this.ds.push(tree);
+
+			options = $.extend({}, this.options, options);
+
+			var ch = this;
+
+			//add click handler
+			tree.click(function () {
+				//move the values from the JSAV variables into regulas js vars
+				var sStruct = ch.selStruct.value();
+				var sIndex = ch.selIndex.value();
+				//changed to true if the step should be graded
+				var grade = false;
+
+				if (sStruct === -1) {
+					//select empty nodes only if the options allow it
+					if (!options.selectEmpty && this.value() === "" && options.select === "click") {
+						return;
+					}
+					//don't allow to select the last node if keep is true
+					if (options.keep && tree.height() === 1) {
+						return;
+					}
+					//call onSelect function
+					var continueSelect = options.onSelect.call(this);
+					//return if onSelect returns false
+					if (typeof continueSelect !== "undefined" && !continueSelect) {
+						return;
+					}
+					//select
+					ch.selNode = this;
+					//mark as selected
+					ch.selNode.addClass(ch.options.selectedClass);
+					//set sStruct and sIndex values
+					sStruct = ch.getDsIndex(tree);
+					sIndex = -1;
+				} else if (sStruct === ch.getDsIndex(tree)) {
+					//deselect
+					ch.selNode.removeClass(ch.options.selectedClass);
+					if (this !== ch.selNode) {
+						//move/copy/swap within the tree
+						valueEffect(ch, {
+							from: ch.selNode,
+							to: yhis,
+							effect: options.effect
+						});
+						tree.layout();
+						//call onDrop function
+						grade = options.onDrop.call(this);
+						if (typeof grade === "undefined") {
+							//set true if nothing was returned
+							grade = true;
+						} else {
+							//convert to boolean
+							grade = !!grade;
+						}
+					}
+					//set sStruct and sIndex values
+					sStruct = -1;
+					sIndex = -1;
+				} else {
+					//move/copy/swap from an another structure
+					if (sIndex === -1) {
+						//from node
+						//deselect node
+						ch.selNode.removeClass(ch.options.selectedClass);
+						//move value
+						valueEffect(ch, {
+							from: ch.selNode,
+							to: this,
+							effect: options.effect
+						});
+						tree.layout();
+					} else {
+						//from an array
+						//deselect
+						ch.getDs(sStruct).removeClass(sIndex, ch.options.selectedClass);
+						//move value
+						valueEffect(ch, {
+							from: ch.getDs(sStruct),
+							fromIndex: sIndex,
+							to: this,
+							effect: options.effect
+						});
+						tree.layout();
+					}
+					//call onDrop function
+					grade = options.onDrop.call(this);
 					if (typeof grade === "undefined") {
 						//set true if nothing was returned
 						grade = true;
