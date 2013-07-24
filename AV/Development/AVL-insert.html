@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>AVL Tree Insertion</title>
+        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+    </head>
+
+    <body>
+        <style>
+          #jsavcontainer {
+            width: 740px;
+            height: 650px;
+            background-color: #fff;
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+          }
+          .jsavtreenode {
+            cursor: pointer;
+          }
+          .jsavtreenode.emptynode {
+            border: 1px dashed #777;
+            color: #777;
+          }
+          p.jsavoutput.jsavline {
+            height: 40px;
+          }
+          .jsavscore {
+            text-align: center;
+          }
+          p.instructLabel {
+            margin-top: -5px;
+          }
+          p.instructions {
+            margin-top: -15px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid black;
+          }
+          .selected, .selected .jsavvalue, .jsavarray.jsavbararray .jsavindex.selected .jsavvalue{
+            font-size: 130%;
+            background-color: #ddf !important;
+          }
+        </style>
+        <h1>AVL Tree Insertion</h1>
+        <div id="jsavcontainer">
+            <p class="instructLabel">Instructions:</p>
+            <p class="instructions">
+                    Insert the values in the table into the tree. Balance the tree at the correct node with the correct rotation when it becomes unbalanced.
+            </p>
+            <p align="center" class="jsavexercisecontrols"></p>
+            <ol id="insertValues"></ol>
+            <div class="jsavcanvas">
+                <div style="margin: auto; text-align: center;">
+                    <button id="buttonL">Single Rotation Left</button>
+                    <button id="buttonLR">Double Rotation LR</button>
+                    <button id="buttonRL">Double Rotation RL</button>
+                    <button id="buttonR">Single Rotation Right</button>
+                </div>
+            </div>
+        </div>
+
+        <script
+           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+        <script src="../../JSAV/lib/raphael.js"></script>
+        <script src="../../JSAV/build/JSAV.js"></script>
+        <script src="ClickHandler.js"></script>
+
+        <script>
+
+        var initialArray = [],
+            jsavTree,
+            jsavArray,
+            arraySize = 10,
+            arrayIndex,
+            $array = $('#insertValues'),
+            clickHandler,
+            av = new JSAV($("#jsavcontainer"));
+
+
+        function initialize() {
+
+            turnAnimationOff();
+            initialArray = generateValues(arraySize, 10, 100);
+            var htmldata = "";
+            for (var i = 0; i < arraySize; i++)
+                htmldata += "<li>"+initialArray[i]+"</li>";
+            $array.html(htmldata);
+            jsavArray = av.ds.array($array, {center: true});
+
+            if (typeof clickHandler === "undefined") {
+                clickHandler = new ClickHandler(av, exercise, {selectedClass: "selected", effect: "move"});
+                clickHandler.addArray(jsavArray, {
+                    onSelect: function () {
+                        if (!!clickHandler.selNode) {
+                            clickHandler.selNode.removeClass("selected");
+                            clickHandler.selNode = null;
+                        }
+                    }
+                });
+            }
+            clickHandler.reset();
+
+            //clear old binary tree
+            if (jsavTree) {
+                clickHandler.remove(jsavTree);
+                jsavTree.clear();
+            }
+            //create binary tree
+            jsavTree = av.ds.bintree({center: true, visible: true, nodegap: 5});
+            jsavTree.root("").addClass("emptynode");
+            jsavTree.layout();
+            clickHandler.addTree(jsavTree, {
+                onDrop: function () {
+                    turnAnimationOff();
+                    this.removeClass("emptynode");
+                    if (!this.left())
+                        this.left("").addClass("emptynode");
+                    if (!this.right())
+                        this.right("").addClass("emptynode");
+                    restoreAnimationState();
+                    jsavTree.layout();
+                },
+                onSelect: function () {
+                    //fake select the node
+                    if (clickHandler.selNode) {
+                        clickHandler.selNode.removeClass("selected");
+                        if (clickHandler.selNode === this) {
+                            clickHandler.selNode = null;
+                            return false;
+                        }
+                    }
+                    this.addClass("selected");
+                    clickHandler.selNode = this;
+                    return false;
+                }
+            });
+
+            //jsav variable
+            arrayIndex = av.variable(0);
+            
+            restoreAnimationState();
+
+            return jsavTree;
+        }
+        
+        function modelSolution(jsav) {
+            var modelTree = jsav.ds.bintree({center: false, visible: true, nodegap: 5});
+            //insert nodes
+            modelTree.insert(initialArray);
+            addEmptyNodes(modelTree.root());
+            modelTree.layout();
+            modelTree.element.css({position: "absolute", top: 0, left: jsav.canvas.width() / 2 - modelTree.element.width() / 2});
+
+            jsav.canvas.css({height: 350});
+            jsav._undo = [];
+
+            jsav.stepOption("grade", true);
+            jsav.step();
+
+            return modelTree;
+        }
+
+        //copys the subtree of sourceNode to destNode
+        //overwrites destNode
+        function copySubtree(sourceNode, destNode) {
+            //copy the value of the destNode
+            if (destNode.value() !== sourceNode.value()) {
+                destNode.value(sourceNode.value());
+            }
+            //set the class of the destNode
+            if (sourceNode.hasClass("emptynode")) {
+                destNode.addClass("emptynode");
+            } else {
+                destNode.removeClass("emptynode");
+            }
+            //copy left and right subtree
+            if (sourceNode.left()) {
+                if (!destNode.left())
+                    destNode.left(sourceNode.left().value());
+                copySubtree(sourceNode.left(), destNode.left());
+            }
+            if (sourceNode.right()) {
+                if (!destNode.right())
+                    destNode.right(sourceNode.right().value());
+                copySubtree(sourceNode.right(), destNode.right());
+            }
+        }
+
+        //removes the subtree with the calling node as its root
+        //replaces the calling node with an empty node
+        /*function removeSubtree(root, keep) {
+            var val = "";
+            if (keep) {
+                val = root.value();
+            }
+            if (root.left())
+                root.left().remove();
+            if (root.right())
+                root.right().remove();
+            root.value(val);
+            root.removeClass("selected");
+            root.unhighlight();
+            root.addClass("emptynode");
+            return root;
+        }*/
+        //works better???
+        function removeSubtree(root, keep) {
+            var val = "";
+            var node;
+            if (keep) {
+                val = root.value();
+            }
+            if (root.parent() && root.parent().left() === root) {
+                node = root.parent().left(val).addClass("emptynode");
+                root.remove();
+            } else if (root.parent()) {
+                node = root.parent().right(val).addClass("emptynode");
+                root.remove();
+            } else {
+                if (root.left())
+                    root.left().remove();
+                if (root.right())
+                    root.right().remove();
+                root.value(val);
+                root.removeClass("selected");
+                root.unhighlight();
+                root.addClass("emptynode");
+                node = root;
+            }
+            return node;
+        }
+
+        //returns an unbalanced node if one exists
+        function getUnbalancedNode(root, last) {
+            var node = root;
+            //find the last inserted node
+            while (node.left() || node.right()) {
+                if (node.value() >= last) {
+                    node = node.left();
+                } else {
+                    node = node.right();
+                }
+            }
+            //Check if tree is unbalanced
+            while (node) {
+                if (Math.abs(height(node.left()) - height(node.right())) >= 2) {
+                    return node;
+                }
+                node = node.parent();
+            }
+            return undefined;
+        }
+
+        //balances the tree by performing an rotation at the given node
+        //trees balanced at the root DO NOT seem to work well with layout()
+        function balanceTree(tree, node) {
+            if (height(node.left()) > height(node.right()) + 1) {
+                if (height(node.left().left()) > height(node.left().right())) {
+                    rotateRight(tree, node);
+                } else {
+                    rotateLR(tree, node);
+                }
+            } else if (height(node.right()) > height(node.left()) + 1) {
+                if (height(node.right().left()) > height(node.right().right())) {
+                    rotateRL(tree, node);
+                } else {
+                    rotateLeft(tree, node);
+                }
+            }
+        }
+
+        function rotateLeft(tree, node) {
+            if (node.right().hasClass("emptynode"))
+                return false;
+            var lr;
+            var parent = node.parent()
+            var raisedNode;
+            if (parent) {
+                lr = parent.left() === node? 0: 1;
+            }
+            if (parent) {
+                parent.child(lr, node.right().remove());
+                raisedNode = parent.child(lr)
+            } else {
+                tree._setrootnode(node.right().remove());
+                raisedNode = tree.root();
+            }
+            if (raisedNode.left())
+                node.right(raisedNode.left().remove());
+           raisedNode.left(node);
+           raisedNode.show();
+        }
+
+        function rotateRight(tree, node) {
+            if (node.left().hasClass("emptynode"))
+                return false;
+            var lr;
+            var parent = node.parent()
+            var raisedNode;
+            if (parent) {
+                lr = parent.left() === node? 0: 1;
+            }
+            if (parent) {
+                parent.child(lr, node.left().remove());
+                raisedNode = parent.child(lr)
+            } else {
+                tree._setrootnode(node.left().remove());
+                raisedNode = tree.root();
+            }
+            if (raisedNode.right())
+                node.left(raisedNode.right().remove());
+            raisedNode.right(node);
+            raisedNode.show();
+        }
+
+        function rotateLR(tree, node) {
+            if (node.left().hasClass("emptynode") || node.left().right().hasClass("emptynode"))
+                return false;
+            var lr;
+            var parent = node.parent()
+            var raisedNode;
+            if (parent) {
+                lr = parent.left() === node? 0: 1;
+            }
+            if (parent) {
+                parent.child(lr, node.left().right().remove());
+                raisedNode = parent.child(lr)
+            } else {
+                tree._setrootnode(node.left().right().remove());
+                raisedNode = tree.root();
+            }
+            if (raisedNode.left())
+                node.left().right(raisedNode.left().remove());
+            raisedNode.left(node.left().remove());
+            if (raisedNode.right())
+                node.left(raisedNode.right().remove());
+            raisedNode.right(node);
+            raisedNode.show();
+        }
+
+        function rotateRL(tree, node) {
+            if (node.right().hasClass("emptynode") || node.right().left().hasClass("emptynode"))
+                return false;
+            var lr;
+            var parent = node.parent()
+            var raisedNode;
+            if (parent) {
+                lr = parent.left() === node? 0: 1;
+            }
+            if (parent) {
+                parent.child(lr, node.right().left().remove());
+                raisedNode = parent.child(lr)
+            } else {
+                tree._setrootnode(node.right().left().remove());
+                raisedNode = tree.root();
+            }
+            if (raisedNode.right())
+                node.right().left(raisedNode.right().remove());
+            raisedNode.right(node.right().remove());
+            if (raisedNode.left())
+                node.right(raisedNode.left().remove());
+            raisedNode.left(node);
+            raisedNode.show();
+        }
+
+        //add empty nodes to all the nodes under root
+        function addEmptyNodes(root) {
+            if (!root.left()) {
+                root.left("").addClass("emptynode");
+            } else {
+                addEmptyNodes(root.left());
+            }
+            if (!root.right()) {
+                root.right("").addClass("emptynode");
+            } else {
+                addEmptyNodes(root.right());
+            }
+        }
+
+        //generate values without duplicates
+        function generateValues(n, min, max) {
+            var arr = [];
+            var val;
+            for (var i = 0; i < n; i++) {
+                do {
+                    val = Math.floor(min + Math.random() * (max - min));
+                } while ($.inArray(val, arr) !== -1);
+                arr.push(val);
+            }
+            return arr;
+        }
+
+        var oldfx;
+
+        function turnAnimationOff() {
+            //save the state of fx.off
+            var oldfx = $.fx.off || false;
+            //turn off the jQuery animations
+            $.fx.off = true;
+        }
+
+        function restoreAnimationState() {
+            $.fx.off = oldfx;
+        }
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+        exercise.reset();
+
+        function clickAction(node, rotateFunction) {
+            if (!node) {
+                window.alert("Select an unbalanced node first!");
+                return;
+            }
+            clickHandler.selNode = null;
+            turnAnimationOff();
+            node.removeClass("selected");
+            restoreAnimationState();
+            turnAnimationOff();
+            if (rotateFunction(jsavTree, node) === false) {
+                window.alert("Unable to perform this rotation on the selected node!");
+                return;
+            }
+            restoreAnimationState();
+            jsavTree.layout();
+            exercise.gradeableStep();
+        }
+
+        $("#buttonL").click(function () {
+            clickAction(clickHandler.selNode, rotateLeft);
+        });
+        $("#buttonLR").click(function () {
+            clickAction(clickHandler.selNode, rotateLR);
+        });
+        $("#buttonRL").click(function () {
+            clickAction(clickHandler.selNode, rotateRL);
+        });
+        $("#buttonR").click(function () {
+            clickAction(clickHandler.selNode, rotateRight);
+        });
+        
+        </script>
+    </body>
+</html>
