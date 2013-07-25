@@ -260,7 +260,6 @@
         }
 
         //balances the tree by performing an rotation at the given node
-        //trees balanced at the root DO NOT seem to work well with layout()
         function balanceTree(tree, node) {
             if (height(node.left()) > height(node.right()) + 1) {
                 if (height(node.left().left()) > height(node.left().right())) {
@@ -291,6 +290,7 @@
                 raisedNode = parent.child(lr)
             } else {
                 tree._setrootnode(node.right().remove());
+                tree.root().edgeToParent(null);
                 raisedNode = tree.root();
             }
             if (raisedNode.left())
@@ -313,6 +313,7 @@
                 raisedNode = parent.child(lr)
             } else {
                 tree._setrootnode(node.left().remove());
+                tree.root().edgeToParent(null);
                 raisedNode = tree.root();
             }
             if (raisedNode.right())
@@ -335,6 +336,7 @@
                 raisedNode = parent.child(lr)
             } else {
                 tree._setrootnode(node.left().right().remove());
+                tree.root().edgeToParent(null);
                 raisedNode = tree.root();
             }
             if (raisedNode.left())
@@ -360,6 +362,7 @@
                 raisedNode = parent.child(lr)
             } else {
                 tree._setrootnode(node.right().left().remove());
+                tree.root().edgeToParent(null);
                 raisedNode = tree.root();
             }
             if (raisedNode.right())
@@ -424,10 +427,9 @@
             clickHandler.selNode = null;
             turnAnimationOff();
             node.removeClass("selected");
-            restoreAnimationState();
-            turnAnimationOff();
             if (rotateFunction(jsavTree, node) === false) {
                 window.alert("Unable to perform this rotation on the selected node!");
+                restoreAnimationState();
                 return;
             }
             restoreAnimationState();
