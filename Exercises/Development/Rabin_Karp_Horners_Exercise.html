@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<!--
+  Samuel A. Micka
+-->
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <title>Horner's Method Exercise</title>
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css"
+          media="screen" title="no title" charset="utf-8" /> 
+  </head>
+  <body>
+  <div id="container">
+    <div class="jsavcanvas"></div>
+    <p class="jsavoutput jsavline"></p>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js"></script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="http://algoviz.org/OpenDSA/ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script> 
+  <script src="../../AV/Development/edit.js"></script>
+  <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" /> 
+  <script>
+  /*
+  Samuel A. Micka
+  */
+  /*#################################################################
+    These global constants are set to modify the string generation easily.
+  #################################################################*/
+  //this determines the maximum length of the string
+  var string_max_length = 6;
+  //this determines the minimum length of the string
+  var string_min_length = 4;
+  //this represents the lower bound of randomly generated numbers desired in the ascii table
+  var char_lower_bound = 97;
+  //this represents the upper bound of randomly generated numbers desired in the ascii table
+  var char_upper_bound = 122;
+
+
+  /*#################################################################
+    Global variables used throughout the program
+  #################################################################*/
+  var started; //tells us if anything has been done
+  var str_arr; //global variable for the actual string
+  var q = 131; //the q factor for Horner's Method, this will be generated soon.
+  var c = 123; //size of the alphabet
+  var answer_value; //holds the value of the answer
+
+  //returns a random number between lower_bound and upper_bound
+  function gen_random(lower_bound, upper_bound) {
+    return Math.floor(Math.random() * (upper_bound - lower_bound + 1) + lower_bound);
+  }
+  //converts the ascii_value parameter to character and returns it
+  function get_char(ascii_value) {
+    return String.fromCharCode(ascii_value);
+  }
+
+  //This function generates the string needed for the exercise
+  function generate_strings(){
+    var str_length = gen_random(string_min_length, string_max_length);
+    var the_string = '';
+    for(var i = 0; i < str_length; i++){
+      the_string += get_char(gen_random(char_lower_bound, char_upper_bound));
+    }
+    return the_string.split("");
+  }
+
+
+	function horner(str, q) {
+		var magic_num = str.charCodeAt(0);
+		var C = 123;
+		for(var i = 1; i < str.length; i++){
+			magic_num = ((magic_num * C) + str.charCodeAt(i)) % q;
+		}
+		return magic_num;
+	}
+
+
+
+  function checkAnswer() {
+    var answer = $("#user_answer").val();
+    if(answer == answer_value) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //This function initializes the arrays, and handles the clicks on the specific indexes, see comments in method for more information
+  function initExercise(){
+    started = true;
+    //figure out how to reset the JSAV container if it is already set
+    if(rk != null){
+        rk.reset();
+    }
+    var rk = new JSAV("jsav_area", {"animationMode": "none"});
+
+	//generate the string
+    var str = generate_strings();
+
+	//generate the answer
+	answer_value = horner(str.join(""), q); 
+
+	//create the array to display to the user
+    str_arr = rk.ds.array(str);
+
+	//give the user some pseudo code to make it easier
+	var pseudo = rk.code("MagicNumber = ascii value at String[0] \nfor k = 1 to String.length \n\tMagicNumber = ((MagicNumber * C) + String[k].ascii_value) % Q \nreturn MagicNumber", {before: str_arr});
+
+	//make a variable 'c' that holds c's value
+	var c_var = rk.variable([c], {visible: true, label: "C = ", before:pseudo});
+
+	//make a variable 'q' that holds q's value
+	var q_var = rk.variable([10], {visible: true, label: "Q = ", before:c_var});
+
+	//label the String
+    var str_label = rk.label("String:", {top: "155px", left:"200px"}).css({"font-size":"23px"});
+  }
+  // reset function definition
+  var f_reset = function () {
+    started = null;
+    rk_arr = null;
+    str_arr = null;
+    answer_value = null;    
+  };
+  </script>
+  <style>
+    .jsavarray .jsavindex {
+      min-height: 30px;
+      height: 30px;
+      min-width: 25px;
+      width: 25px;
+      font-size: 15px;
+    }
+  </style>
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">initExercise()</var>
+      </div> <!-- vars -->
+
+      <div class="problems">
+        <div>
+          <div class="question">
+            The exercise below will test your newly acquired knowledge on the Rabin-Karp Horner's Method. You will be provided with a Q and a random string. Please use the text field to fill in the 'Magic Number' of the given string. When you are finished hit <b>Check Answer</b> to see if you are correct. Use the provided pseudo code to help you find your answer, a calculator may be necessary.
+            <p><b>Your solution:</b> <input type = "text" id = "user_answer" size = "2"/> </p>
+            <div id="jsav_area"></div>
+          </div> <!-- question -->
+          <div class="solution" data-type="custom">
+            <div class="guess">
+              [started]
+            </div>
+            <div class="validator-function">
+              if (!checkAnswer() && !guess[0])
+                return "";
+              else return checkAnswer();
+            </div>
+          </div>
+          <div class="hints">
+            <p>1. Use the pseudo code and trace through the steps.</p> 
+            </var></b>.</p>
+          </div>
+          <div class = "model"></div>
+        </div>
+      </div> <!-- problems -->
+    </div> <!--exercises-->
+  </body>
+</html>
