@@ -140,7 +140,7 @@
 	*/
 	function potential_function_dynamic_arrays(size, cap) {
 		if(size > cap/2)
-			return size - cap/2;
+			return 2 * (size - cap/2);
 		else
 			return 0;
 	}
@@ -158,7 +158,7 @@
 	function dynamic_array() {
 		var operations = [["Add", "add_element(arr, element, current_index)", "check_add_use(arr, current_index)"],["Resize","resize(arr, element, current_index)", "check_resize_use(arr, current_index)"]];
 
-		construct_show(operations, "potential_function_dynamic_arrays(current_index+1,arr.size())",0,0,0,1,0);
+		construct_show(operations, "potential_function_dynamic_arrays(current_index,arr.size())",0,0,0,1,0);
 		/*****************************
 			Here I am setting up the button that we will use to add another element to the array list
 		******************************/
