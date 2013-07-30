@@ -47,7 +47,7 @@
 	/**********************************
 		GLOBAL VARIABLES
 	**********************************/
-	var visualization, pot_before, pot_after, actual_time, amortized_time, next_step;
+	var visualization, pot_before, pot_after, actual_time, amortized_time, next_step, potent_function_val;
 
 
 	//operations is a 2D array containing the operation name, the name of the function to call for it, and a function returning true if you should use this operation at this time
@@ -56,14 +56,24 @@
 	var construct_show = (function(operations, potential_function, pb, pa, change_p, actual, amort, developer_defined_backstep){
 		visualization = new JSAV("container");
 
-		//get the div I want the button and checkbox in
+		//get the div I want the buttons in
 		var the_div = document.getElementById('container');
-		//create a checkbox to show pseudo code
+		//create back button and change potential function button
 		var back_button = document.createElement('button');
+		var change_potential_function = document.createElement('button');
+		var pot_text = document.createElement('textarea');
+		pot_text.id = 'pot_text';
 		back_button.id = 'back_button';
+		change_potential_function.id = 'change_pot';
+		the_div.appendChild(pot_text);
+		the_div.appendChild(change_potential_function);
 		the_div.appendChild(back_button);
-		//Add the text 'Back' to our dynamically created button
+		//Add the text 'Back' and 'Change' to our dynamically created buttons
 		$("#back_button").html("Back One Step");
+		$("#change_pot").html("Change Potential Function");
+		$("#pot_text").val(potential_function_val.toString());
+		$("#pot_text").attr('cols','50');
+		$("#pot_text").attr('rows','8');
 
 
 		var blank_arr = ['','','','','','','','','','','','','','','','','','','',''];
@@ -82,6 +92,12 @@
 		var change_in_pot_var = change_p;
 		var actual_time_var = actual;    
 		var amortized_time_var = amort;
+
+		//JSAV variables for visualization
+		var pot_before_visual_var = visualization.variable([""], {visible:true,label:"Pot Before: ",relativeTo:pot_before,left:"350px"});
+		var pot_after_visual_var = visualization.variable([""], {visible:true,label:"Pot After: ",relativeTo:pot_after,left:"350px"});
+		var actual_time_visual_var = visualization.variable([""], {visible:true,label:"Actual Time: ",relativeTo:actual_time,left:"350px"});
+		var amortized_time_visual_var = visualization.variable([""], {visible:true,label:"Amortized Time: ",relativeTo:amortized_time,left:"350px"});
 
 
 		//array to act as a stack and hold the values of all the variables at each step
@@ -105,9 +121,14 @@
 						pseudo.clear();
 					//show the pseudo code for the operation that was just performed
 					var pseudo_string = operations[i][3];
-					pseudo = visualization.code(pseudo_string, {relativeTo: pot_after, left:"600px"});
+					pseudo = visualization.code(pseudo_string, {relativeTo: pot_after, left:"700px"});
 
-					
+					//assign the variables in the visualization
+					pot_before_visual_var.value(pot_before_var);
+					pot_after_visual_var.value(pot_after_var);
+					actual_time_visual_var.value(actual_time_var);
+					amortized_time_visual_var.value("("+pot_after_var+"-"+pot_before_var+")"+"+"+actual_time_var);
+
 					//unhighlight all of the bars
 					pot_before.unhighlight();
 					pot_after.unhighlight();
@@ -140,7 +161,13 @@
 
 				//clear the pseudo code
 				pseudo.clear();
-				pseudo = visualization.code(each_step_arr[each_step_arr.length-1][5], {relativeTo: pot_after, left:"600px"});
+				pseudo = visualization.code(each_step_arr[each_step_arr.length-1][5], {relativeTo: pot_after, left:"700px"});
+
+				//assign the variables in the visualization
+				pot_before_visual_var.value(each_step_arr[each_step_arr.length-1][0]);
+				pot_after_visual_var.value(each_step_arr[each_step_arr.length-1][1]);
+				actual_time_visual_var.value(each_step_arr[each_step_arr.length-1][2]);
+				amortized_time_visual_var.value("("+each_step_arr[each_step_arr.length-1][0]+"-"+each_step_arr[each_step_arr.length-1][1]+")"+"+"+each_step_arr[each_step_arr.length-1][2]);
 
 				//unhighlight all of the bars
 				pot_before.unhighlight();
@@ -159,6 +186,11 @@
 
 				eval(developer_defined_backstep);
 			}
+		});
+
+		$("#change_pot").click(function() {
+			potential_function_val = eval("("+$("#pot_text").val()+");");
+			alert(potential_function_val.toString());
 		});
 
 	});
@@ -201,12 +233,12 @@
 		Potential { size - cap/2     if size > cap/2  }
 				  { 0                otherwise        }
 	*/
-	function potential_function_dynamic_arrays(size, cap) {
+	potential_function_val = (function(size, cap) {
 		if(size > cap/2)
 			return 2 * (size - cap/2);
 		else
 			return 0;
-	}
+	});
 	//lets you know if you should use the add function
 	function check_add_use(arr, current_index){
 		if(current_index != arr.size()) return true;
@@ -242,7 +274,7 @@
 
 		var operations = [["Add", "add_element(arr, gen_random(0,100), current_index)", "check_add_use(arr, current_index)",add_pseudo],["Resize","resize(arr, gen_random(0,100), current_index)", "check_resize_use(arr, current_index)", resize_pseudo]];
 
-		construct_show(operations, "potential_function_dynamic_arrays(current_index,arr.size())",0,0,0,1,0, "dynamic_array_backstep(arr)");
+		construct_show(operations, "potential_function_val(current_index,arr.size())",0,0,0,1,0, "dynamic_array_backstep(arr)");
 		/*****************************
 			Here I am setting up the button that we will use to add another element to the array list
 		******************************/
@@ -255,8 +287,7 @@
 		//Add the text 'Add' to our dynamically created button
 		$("#add_button").html("Add another element");
 	
-		arr = visualization.ds.array(['','','','']);
-		element = gen_random(0, 100);
+		arr = visualization.ds.array(['','','',''], {center:false});
 		current_index = 0;
 
 		$("#add_button").click(function() {
@@ -269,10 +300,11 @@
 	//You don't need to modify this function if you are adding a new template.
 	//Make sure your option value matches your method name...
 	$("#begin").click(function(){
-	var container = document.getElementById('container');
-	while(container.firstChild){
-		container.removeChild(container.firstChild);
-	}
+		//clear everything associated with container in case they already clicked it.
+		var container = document.getElementById('container');
+		while(container.firstChild){
+			container.removeChild(container.firstChild);
+		}
 		eval($("#choices").val()); 
 	});
 
