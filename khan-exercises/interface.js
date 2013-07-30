@@ -260,10 +260,10 @@ function handleAttempt(data) {
         fast: !localMode && userExercise.secondsPerFastProblem >= timeTaken
     });
 
-    if (localMode || Exercises.currentCard.get("preview")) {
+    //if (localMode || Exercises.currentCard.get("preview")) {
         // Skip the server; just pretend we have success
-        return false;
-    }
+    //    return false;
+    //}
 
     if (previewingItem) {
         $("#next-question-button").prop("disabled", true);
@@ -278,7 +278,7 @@ function handleAttempt(data) {
             score.correct, ++attempts, stringifiedGuess, timeTaken, skipped);
 
     // Save the problem results to the server
-    var requestUrl = "problems/" + problemNum + "/attempt";
+    var requestUrl = "/attempt";
     request(requestUrl, attemptData).fail(function(xhr) {
         // Alert any listeners of the error before reload
         $(Exercises).trigger("attemptError");
@@ -433,16 +433,16 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
         card: JSON.stringify(Exercises.currentCard),
 
         // Unique ID of the cached stack
-        stack_uid: Exercises.completeStack.getUid(),
+        stack_uid: Exercises.completeStack? Exercises.completeStack.getUid() : null,
 
         // The current topic, if any
         topic_slug: Exercises.topic && Exercises.topic.get("slug"),
 
         // How many cards the user has already done
-        cards_done: Exercises.completeStack.length,
+        cards_done: Exercises.completeStack? Exercises.completeStack.length : 0,
 
         // How many cards the user has left to do
-        cards_left: Exercises.incompleteStack.length - 1,
+        cards_left: Exercises.incompleteStack? Exercises.incompleteStack.length - 1 : 1000,
 
         // The user assessment key if in assessmentMode
         user_assessment_key: Exercises.userAssessmentKey,
@@ -468,11 +468,11 @@ $(window).unload(function() {
 
 function request(method, data) {
     var apiBaseUrl = (Exercises.assessmentMode ?
-            "/api/v1/user/assessment/exercises" : "/api/v1/user/exercises");
-
+            "/api/v1/user/assessment/exercises" : "http://localhost:8000/api/v1/user/exercise");
+    alert(apiBaseUrl + method);
     var params = {
         // Do a request to the server API
-        url: apiBaseUrl + "/" + userExercise.exerciseModel.name + "/" + method,
+        url: apiBaseUrl + method,
         type: "POST",
         data: data,
         dataType: "json"
