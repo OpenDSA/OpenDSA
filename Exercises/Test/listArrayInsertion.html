@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Array-Based List Insertion Proficiency Exercise</title>
+  <script>urlBaseOverride = "../../khan-exercises/";</script>
+  <script src="../../khan-exercises/khan-exercise.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <style>
+    .jsavcontainer {
+	  height: 125px;
+      border: 0px;
+    }
+	.jsavcanvas{
+	  height: 125px;
+	}
+	.jsavnode {
+      line-height: 30px !important;
+      min-width: 30px !important;
+      max-width: 30px !important;
+      min-height: 30px !important;
+      max-height: 30px !important;
+    }
+    #reset { margin-right: 20px;}
+  </style>
+</head>
+<body>
+
+<script>
+(function() {
+  "use strict";
+  var JSAV = function() {
+    create.apply(this, arguments);
+  };
+  JSAV.position = function(elem) {
+    var $el = $(elem),
+      offset = $el.position(),
+      translate = $el.css("transform").translate; // requires jquery.transform.light.js!!
+    if (translate) {
+      return {left: offset.left + translate[0], top: offset.top + translate[1]};
+    } else { return offset; }
+  };
+  var jsavproto = JSAV.prototype;
+  jsavproto.getSvg = function() {
+    if (!this.svg) { // lazily create the SVG overlay only when needed
+      this.svg = Raphael(this.canvas[0]);
+//      this.svg.renderfix();
+      var style = this.svg.canvas.style;
+      style.position = "absolute";
+    }
+    return this.svg;
+  };
+  jsavproto.id = function() {
+    var id = this.container[0].id;
+    if (!id) {
+      id = JSAV.utils.createUUID();
+      this.container[0].id = id;
+    }
+    return id;
+  };
+  JSAV._types = {}; // for exposing types of JSAV for customization
+  JSAV.ext = {}; // for extensions
+  JSAV.init = function(f) { // for initialization functions
+    JSAV.init.functions.push(f);
+  };
+  JSAV.init.functions = [];
+  
+  var AV = function() {},
+    create = function() {
+      if (typeof arguments[0] === "string") {
+        this.container = $(document.getElementById(arguments[0]));
+      } else {
+        this.container = $(arguments[0]); // make sure it is jQuery object
+      }
+      var initialHTML = this.container.clone().wrap("<p/>").parent().html();
+      this.container.addClass("jsavcontainer");
+      this.canvas = this.container.find(".jsavcanvas");
+      if (this.canvas.size() === 0) {
+        this.canvas = $("<div />").addClass("jsavcanvas").appendTo(this.container);
+      }
+      // element used to block events when animating
+      var shutter = $("<div class='jsavshutter' />").appendTo(this.container);
+      this._shutter = shutter;
+
+      this.options = $.extend({}, window.JSAV_OPTIONS, arguments[1]);
+      this.RECORD = true;
+      jQuery.fx.off = true; // by default we are recording changes, not animating them
+      var options = arguments[1] || { }; // TODO: default options
+      // initialize stuff from init namespace
+      initializations(this, options);
+      // add all plugins from ext namespace
+      extensions(this, this, JSAV.ext);
+    };
+  function initializations(jsav, options) {
+    var fs = JSAV.init.functions;
+    for (var i = 0; i < fs.length; i++) {
+      if ($.isFunction(fs[i])) {
+        fs[i].call(jsav, options);
+      }
+    }
+  }
+  function extensions(jsav, con, add) {
+    for (var prop in add) {
+      if (add.hasOwnProperty(prop) && !(prop in con)) {
+        switch (typeof add[prop]) {
+          case "function":
+            (function (f) {
+              con[prop] = con === jsav ? f : function () { return f.apply(jsav, arguments); };
+            }(add[prop]));
+            break;
+          case "object":
+            con[prop] = con[prop] || {};
+            extensions(jsav, con[prop], add[prop]);
+            break;
+          default:
+            con[prop] = add[prop];
+            break;
+        }
+      }
+    }
+  }
+  if (window) {
+    window.JSAV = JSAV;
+  }
+}());
+
+"use strict";
+window.odsaExer = {};
+var userInput = true;
+(function() {
+function initJSAV(arr_size, insert_pos,insert_value){
+  var container = $(document.getElementById("jsav"));
+  var initialHTML = container.clone().wrap("<p/>").parent().html();
+  container.addClass("jsavcontainer");
+  var canvas = container.find(".jsavcanvas");
+  if (canvas.size() === 0) {
+      canvas = $("<div />").addClass("jsavcanvas").appendTo(container);
+  }
+  // element used to block events when animating
+  var shutter = $("<div class='jsavshutter' />").appendTo(container);
+  var options = $.extend({}, window.JSAV_OPTIONS, arguments[1]);
+  var RECORD = true;
+  jQuery.fx.off = false; // by default we are recording changes, not animating them
+  //var options = arguments[1] || { }; // TODO: default options
+  // initialize stuff from init namespace
+  //initializations(this, options);
+  // add all plugins from ext namespace
+  //extensions(this, this, JSAV.ext);
+}
+
+// Check user's answer for correctness: User's array must match answer
+function checkAnswer(arr_size) {
+  return false;
+};
+
+odsaExer.init = initJSAV;
+odsaExer.checkAnswer = checkAnswer;
+}());
+
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="arr_size">randRange(4, 6)</var>
+	<var id="insert_value">randRange(0, 999)</var>
+	<var id="insert_pos">randRange(0, arr_size-1)</var>
+    <var id="JSAV">odsaExer.init(arr_size, insert_pos,insert_value)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem">Your task in this exercise is to show the
+        behavior for array-based list insertion.
+        In the array displayed below, the "current" position is <b><var>insert_pos</var></b>.</p>
+      <div class="question">
+        <p>The value to insert is  <b><var>insert_value</var></b>,
+	  and it is to be inserted into position <b><var>insert_pos</var></b>.</p>
+        <p>To move an element, click on it (to highlight it), then click on where you
+        want it to go. You can insert the new
+        value <b><var>insert_value</var></b> into a highlighted
+        array position by clicking the "Insert" button.</p>
+        <input id="reset" type="button" value="Reset" />
+		<input id="insert" type="button" value="Insert" />
+        <div id="jsav"></div>
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [userInput]
+        </div>
+        <div class="validator-function">
+          if (!odsaExer.checkAnswer(arr_size) && !guess[0])
+            return ""; // User did not click, and correct answer is not
+	               // initial array state
+          else return odsaExer.checkAnswer(arr_size);
+        </div>
+      </div>
+      <div class="hints">
+        <p>To shift elements after "current" one position to the right, the first step could be swapping element <var>arr_size - 1</var> with position <var>arr_size</var></p> 
+	<p>Then, keep swapping element i with i+1 until you make "current" empty for insertion </p>
+        <p>Insert value to "current" position</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
