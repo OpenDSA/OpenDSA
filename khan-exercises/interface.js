@@ -221,7 +221,7 @@ function handleAttempt(data) {
 
         $("#check-answer-button")
             .parent()  // .check-answer-wrapper makes shake behave
-            .effect("shake", {times: 3, distance: 5}, 480)
+            .effect("shake", {times: 3, distance: 8}, 50)
             .val($._("Try Again"));
 
         // Is this a message to be shown?
