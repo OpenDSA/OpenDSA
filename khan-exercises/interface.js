@@ -68,7 +68,7 @@ function problemTemplateRendered() {
         $("#positive-reinforcement > img").attr("src",
                 Exercises.khanExercisesUrlBase + "images/face-smiley.png");
     }
-
+    
     // 'Check Answer' or 'Submit Answer'
     originalCheckAnswerText = $("#check-answer-button").val();
 

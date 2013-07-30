@@ -4,7 +4,7 @@
 var Exercises = {
     localMode: true,
 
-    khanExercisesUrlBase: "../",
+    khanExercisesUrlBase: "../../khan-exercises/",
 
     getCurrentFramework: function() {
         return "khan-exercises";
