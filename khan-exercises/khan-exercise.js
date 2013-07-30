@@ -216,8 +216,8 @@ var Khan = (function() {
     // Promise that gets resolved when MathJax is loaded
     mathJaxLoaded,
 
-    urlBase = localMode ? "../" : "/khan-exercises/",
-
+    // urlBase = localMode ? "../" : "/khan-exercises/",
+    urlBase = typeof urlBaseOverride !== "undefined" ? urlBaseOverride : localMode ? "../" : "/khan-exercises/",
     // In local mode, we use khan-exercises local copy of the /images
     // directory.  But in production (on www.khanacademy.org), we use
     // the canonical location of images, which is under '/'.
@@ -233,7 +233,6 @@ var Khan = (function() {
 
     // The ul#examples (keep in a global because we need to modify it even when it's out of the DOM)
     examples = null;
-
     // Add in the site stylesheets
     if (localMode) {
         (function() {
@@ -811,30 +810,30 @@ var Khan = (function() {
         // Load in jQuery and underscore, as well as the interface glue code
         // TODO(cbhl): Don't load history.js if we aren't in readOnly mode.
         var initScripts = [
-                "../local-only/jquery.js",
-                "../local-only/jquery-migrate-1.1.1.js",
-                "../local-only/jquery.ui.core.js",
-                "../local-only/jquery.ui.widget.js",
-                "../local-only/jquery.ui.mouse.js",
-                "../local-only/jquery.ui.position.js",
-                "../local-only/jquery.ui.effect.js",
-                "../local-only/jquery.ui.effect-shake.js",
-                "../local-only/jquery.ui.button.js",
-                "../local-only/jquery.ui.draggable.js",
-                "../local-only/jquery.ui.resizable.js",
-                "../local-only/jquery.ui.dialog.js",
-                "../local-only/jquery.qtip.js",
-                "../local-only/underscore.js",
-                "../local-only/kas.js",
-                "../local-only/jed.js",
-                "../local-only/i18n.js",
+                //"../local-only/jquery.js",
+                //"../local-only/jquery-migrate-1.1.1.js",
+                //"../local-only/jquery.ui.core.js",
+                //"../local-only/jquery.ui.widget.js",
+                //"../local-only/jquery.ui.mouse.js",
+                //"../local-only/jquery.ui.position.js",
+                //"../local-only/jquery.ui.effect.js",
+                //"../local-only/jquery.ui.effect-shake.js",
+                //"../local-only/jquery.ui.button.js",
+                //"../local-only/jquery.ui.draggable.js",
+                //"../local-only/jquery.ui.resizable.js",
+                //"../local-only/jquery.ui.dialog.js",
+                //"../local-only/jquery.qtip.js",
+                urlBase + "local-only/underscore.js",
+                urlBase + "local-only/kas.js",
+                urlBase + "local-only/jed.js",
+                urlBase + "local-only/i18n.js",
                 // TODO(csilvers): I18N: pick the file based on lang=XX param
-                "../local-only/localeplanet/icu.en-US.js",
-                "../local-only/i18n.js",
-                "../exercises-stub.js",
-                "../history.js",
-                "../interface.js",
-                "../related-videos.js"
+                urlBase + "local-only/localeplanet/icu.en-US.js",
+                urlBase + "local-only/i18n.js",
+                urlBase + "exercises-stub.js",
+                urlBase + "history.js",
+                urlBase + "interface.js",
+                urlBase + "related-videos.js"
             ];
 
         (function loadInitScripts() {
@@ -1960,7 +1959,6 @@ var Khan = (function() {
 
         // Promises for remote exercises contained within this one
         var subpromises = [];
-
         // Packing occurs on the server but at the same "exercises/" URL
         $.get(urlBase + "exercises/" + fileName, function(data, status, xhr) {
             if (!(/success|notmodified/).test(status)) {
@@ -2056,7 +2054,6 @@ var Khan = (function() {
 
     function loadModule(modNameOrObject) {
         var src, deps = [];
-
         if (typeof modNameOrObject === "string") {
             src = urlBase + "utils/" + modNameOrObject + ".js";
             deps = Khan.moduleDependencies[modNameOrObject] || [];
