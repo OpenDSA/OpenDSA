@@ -269,7 +269,7 @@ var Khan = (function() {
         startLoadingExercise: startLoadingExercise,
 
         moduleDependencies: {
-            "math": ["raphael"],
+            //"math": ["raphael"],
 
             // Load Raphael locally because IE8 has a problem with the 1.5.2 minified release
             // http://groups.google.com/group/raphaeljs/browse_thread/thread/c34c75ad8d431544
@@ -810,19 +810,19 @@ var Khan = (function() {
         // Load in jQuery and underscore, as well as the interface glue code
         // TODO(cbhl): Don't load history.js if we aren't in readOnly mode.
         var initScripts = [
-                //"../local-only/jquery.js",
-                //"../local-only/jquery-migrate-1.1.1.js",
-                //"../local-only/jquery.ui.core.js",
-                //"../local-only/jquery.ui.widget.js",
-                //"../local-only/jquery.ui.mouse.js",
-                //"../local-only/jquery.ui.position.js",
-                //"../local-only/jquery.ui.effect.js",
-                //"../local-only/jquery.ui.effect-shake.js",
-                //"../local-only/jquery.ui.button.js",
-                //"../local-only/jquery.ui.draggable.js",
-                //"../local-only/jquery.ui.resizable.js",
-                //"../local-only/jquery.ui.dialog.js",
-                //"../local-only/jquery.qtip.js",
+                urlBase + "local-only/jquery.js",
+                urlBase + "local-only/jquery-migrate-1.1.1.js",
+                urlBase + "local-only/jquery.ui.core.js",
+                urlBase + "local-only/jquery.ui.widget.js",
+                urlBase + "local-only/jquery.ui.mouse.js",
+                urlBase + "local-only/jquery.ui.position.js",
+                urlBase + "local-only/jquery.ui.effect.js",
+                urlBase + "local-only/jquery.ui.effect-shake.js",
+                urlBase + "local-only/jquery.ui.button.js",
+                urlBase + "local-only/jquery.ui.draggable.js",
+                urlBase + "local-only/jquery.ui.resizable.js",
+                urlBase + "local-only/jquery.ui.dialog.js",
+                urlBase + "local-only/jquery.qtip.js",
                 urlBase + "local-only/underscore.js",
                 urlBase + "local-only/kas.js",
                 urlBase + "local-only/jed.js",
