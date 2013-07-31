@@ -104,6 +104,10 @@
 		var each_step_arr = new Array();
 		//variable to hold the pseudo code
 		var pseudo;
+
+		/***************************
+			Function for next step action (triggered by the developer)
+		**************************/
 		next_step = (function() {
 			//for every operation we have
 			for(var i = 0; i < operations.length; i++) {
@@ -151,7 +155,13 @@
 				}
 			}			
 		});
+
 		//back button function
+		/********************************
+			If the developer needs anything to happen when we go backwards:
+				send in a function call for the developer_defined_backstep parameter
+				This function handles everything with the 4 bars, variables, and pseudo code
+		********************************/
 		$("#back_button").click(function() {
 			//alert(each_step_arr);
 			//make sure they have done at least 2 steps
@@ -188,9 +198,12 @@
 			}
 		});
 
+		/*****************************
+			Function for changing the potential function
+		*****************************/
 		$("#change_pot").click(function() {
 			potential_function_val = eval("("+$("#pot_text").val()+");");
-			alert(potential_function_val.toString());
+			console.log(potential_function_val.toString());
 		});
 
 	});
