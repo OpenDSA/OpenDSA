@@ -42,6 +42,45 @@ var PerseusBridge = Exercises.PerseusBridge,
     hintsUsed,
     lastAttemptOrHint,
     firstProblem = true;
+/**
+ * Extracts, decodes and returns the given parameter from the URL
+ *   - Based on http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
+ */
+function getURLParam(name) {
+  var param = new RegExp('[?|&]' + name + '=' + '(.+?)(&|$)').exec(location.href)
+
+  return (param) ? decodeURIComponent(param[1]) : "";
+}
+
+
+//
+var server = "http://127.0.0.1:8000";
+// The name of the module in which the KA exercises is embedded
+var MODULE_NAME = getURLParam('module');
+
+// The name of the book
+var BOOK_NAME = getURLParam('bookName');
+var jsonData = {};
+jsonData.book = BOOK_NAME;
+jsonData.module = MODULE_NAME;
+jsonData.key = 'phantom-key';
+var exerciseName = Khan.getSeedInfo().sha1;
+if (localStorage.session) {
+   var session = JSON.parse(localStorage.session);
+   jsonData.key = session.key;
+}
+
+// Load in the exercise data from the server
+jQuery.ajax({
+   // Do a request to the server API
+   url: server + "/api/v1/exercises/?name=" + exerciseName,
+   type: "GET",
+   data: jsonData,
+   dataType: "json",
+
+   // Make sure cookies are passed along
+   xhrFields: { withCredentials: true }
+});
 
 $(Exercises)
     .bind("problemTemplateRendered", problemTemplateRendered)
@@ -279,8 +318,29 @@ function handleAttempt(data) {
 
     // Save the problem results to the server
     var requestUrl = "/attempt/";
-    request(requestUrl, attemptData).fail(function(xhr) {
-        // Alert any listeners of the error before reload
+    var respondpromise = request(requestUrl,attemptData);
+    //request(requestUrl, attemptData).fail(function(xhr) {
+    respondpromise.done(function(data){
+      data = jQuery.parseJSON(data);
+      if (data) {
+        if (parseInt(data.progress._sign) != 0) {
+          progress = 0;
+        }else {
+          if (parseInt(data.progress._exp) == 0) {
+              progress = parseFloat(data.progress._int);
+          }else {
+              progress = parseFloat(data.progress._int) *  Math.pow(10,parseInt(data.progress._exp));
+          }
+        }
+      }
+      var  total =  progress*100;   //parseInt(streak) + 1;
+      if (total >=100.00){
+        total = 100;
+      }
+      $('#pointsrecieve').text(total);
+    });
+    respondpromise.fail(function(xhr) { 
+        //Alert any listeners of the error before reload
         $(Exercises).trigger("attemptError");
 
         if (xhr && xhr.readyState === 0) {
@@ -391,16 +451,6 @@ function updateHintButtonText() {
     }
 }
 
-/**
- * Extracts, decodes and returns the given parameter from the URL
- *   - Based on http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
- */
-function getURLParam(name) {
-  var param = new RegExp('[?|&]' + name + '=' + '(.+?)(&|$)').exec(location.href)
- 
-  return (param) ? decodeURIComponent(param[1]) : "";
-}
-
 // Build the data to pass to the server
 function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
                           skipped) {
@@ -419,12 +469,6 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
       var session = JSON.parse(localStorage.session);
       key = session.key;
     }
-    // The name of the module in which the KA exercises is embedded
-    var MODULE_NAME = getURLParam('module');
-
-    // The name of the book
-    var BOOK_NAME = getURLParam('bookName');
-
     _.extend(data, {
         key: key,
         book: BOOK_NAME,
