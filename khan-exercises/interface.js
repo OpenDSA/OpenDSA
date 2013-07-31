@@ -278,7 +278,7 @@ function handleAttempt(data) {
             score.correct, ++attempts, stringifiedGuess, timeTaken, skipped);
 
     // Save the problem results to the server
-    var requestUrl = "/attempt";
+    var requestUrl = "/attempt/";
     request(requestUrl, attemptData).fail(function(xhr) {
         // Alert any listeners of the error before reload
         $(Exercises).trigger("attemptError");
@@ -391,6 +391,16 @@ function updateHintButtonText() {
     }
 }
 
+/**
+ * Extracts, decodes and returns the given parameter from the URL
+ *   - Based on http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
+ */
+function getURLParam(name) {
+  var param = new RegExp('[?|&]' + name + '=' + '(.+?)(&|$)').exec(location.href)
+ 
+  return (param) ? decodeURIComponent(param[1]) : "";
+}
+
 // Build the data to pass to the server
 function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
                           skipped) {
@@ -403,8 +413,24 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
         data = Khan.getSeedInfo();
     }
 
+    var key = 'phantom-key';
+
+    if (localStorage.session) {
+      var session = JSON.parse(localStorage.session);
+      key = session.key;
+    }
+    // The name of the module in which the KA exercises is embedded
+    var MODULE_NAME = getURLParam('module');
+
+    // The name of the book
+    var BOOK_NAME = getURLParam('bookName');
+
     _.extend(data, {
-        // Ask for camel casing in returned response
+        key: key,
+        book: BOOK_NAME,
+        
+        // The module name. If the exercise is embedded in one
+        module_name: MODULE_NAME,
         casing: "camel",
 
         // Whether we're moving to the next problem (i.e., correctness)
@@ -468,8 +494,7 @@ $(window).unload(function() {
 
 function request(method, data) {
     var apiBaseUrl = (Exercises.assessmentMode ?
-            "/api/v1/user/assessment/exercises" : "http://localhost:8000/api/v1/user/exercise");
-    alert(apiBaseUrl + method);
+            "/api/v1/user/assessment/exercises" : "http://127.0.0.1:8000/api/v1/user/exercise");
     var params = {
         // Do a request to the server API
         url: apiBaseUrl + method,
