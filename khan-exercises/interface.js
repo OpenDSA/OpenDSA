@@ -319,7 +319,6 @@ function handleAttempt(data) {
     // Save the problem results to the server
     var requestUrl = "/attempt/";
     var respondpromise = request(requestUrl,attemptData);
-    //request(requestUrl, attemptData).fail(function(xhr) {
     respondpromise.done(function(data){
       data = jQuery.parseJSON(data);
       if (data) {
@@ -409,7 +408,6 @@ function onHintButtonClicked() {
 function onHintShown(e, data) {
     // Grow the scratchpad to cover the new hint
     Khan.scratchpad.resize();
-
     hintsUsed++;
     updateHintButtonText();
 
@@ -425,11 +423,10 @@ function onHintShown(e, data) {
     lastAttemptOrHint = curTime;
 
     Exercises.userActivityLog.push(["hint-activity", "0", timeTaken]);
-
-    if (!previewingItem && !localMode && !userExercise.readOnly &&
-            !Exercises.currentCard.get("preview") && canAttempt) {
+    if (!previewingItem && !(userExercise&&userExercise.readOnly) &&
+            !(Exercises.currentCard && Exercises.currentCard.get("preview")) && canAttempt) {
         // Don't do anything on success or failure; silently failing is ok here
-        request("problems/" + problemNum + "/hint",
+        request("/hint/",
                 buildAttemptData(false, attempts, "hint", timeTaken, false));
     }
 }
@@ -538,7 +535,7 @@ $(window).unload(function() {
 
 function request(method, data) {
     var apiBaseUrl = (Exercises.assessmentMode ?
-            "/api/v1/user/assessment/exercises" : "http://127.0.0.1:8000/api/v1/user/exercise");
+            "/api/v1/user/assessment/exercises" : server + "/api/v1/user/exercise");
     var params = {
         // Do a request to the server API
         url: apiBaseUrl + method,
