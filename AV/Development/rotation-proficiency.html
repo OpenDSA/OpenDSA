@@ -596,74 +596,110 @@
         }
 
         //balances the tree by performing an rotation at the given node
-        //ONLY to be used when generating trees
-        //balanced trees don't seem to work well with layout()
         function balanceTree(tree, node) {
+            if (height(node.left()) > height(node.right()) + 1) {
+                if (height(node.left().left()) > height(node.left().right())) {
+                    rotateRight(tree, node);
+                } else {
+                    rotateLR(tree, node);
+                }
+            } else if (height(node.right()) > height(node.left()) + 1) {
+                if (height(node.right().left()) > height(node.right().right())) {
+                    rotateRL(tree, node);
+                } else {
+                    rotateLeft(tree, node);
+                }
+            }
+        }
+
+        function rotateLeft(tree, node) {
+            if (node.right().hasClass("emptynode"))
+                return false;
             var lr;
             var parent = node.parent()
             var raisedNode;
             if (parent) {
                 lr = parent.left() === node? 0: 1;
             }
-            if (height(node.left()) > height(node.right()) + 1) {
-                if (height(node.left().left()) > height(node.left().right())) {
-                    //single right rotation
-                    if (parent) {
-                        parent.child(lr, node.left().remove());
-                        raisedNode = parent.child(lr)
-                    } else {
-                        tree._setrootnode(node.left().remove());
-                        raisedNode = tree.root();
-                    }
-                    if (raisedNode.right())
-                        node.left(raisedNode.right().remove());
-                    raisedNode.right(node);
-                } else {
-                    //double LR rotation
-                    if (parent) {
-                        parent.child(lr, node.left().right().remove());
-                        raisedNode = parent.child(lr)
-                    } else {
-                        tree._setrootnode(node.left().right().remove());
-                        raisedNode = tree.root();
-                    }
-                    if (raisedNode.left())
-                        node.left().right(raisedNode.left().remove());
-                    raisedNode.left(node.left().remove());
-                    if (raisedNode.right())
-                        node.left(raisedNode.right().remove());
-                    raisedNode.right(node);
-                }
-            } else if (height(node.right()) > height(node.left()) + 1) {
-                if (height(node.right().left()) > height(node.right().right())) {
-                    //double RL rotation
-                    if (parent) {
-                        parent.child(lr, node.right().left().remove());
-                        raisedNode = parent.child(lr)
-                    } else {
-                        tree._setrootnode(node.right().left().remove());
-                        raisedNode = tree.root();
-                    }
-                    if (raisedNode.right())
-                        node.right().left(raisedNode.right().remove());
-                    raisedNode.right(node.right().remove());
-                    if (raisedNode.left())
-                        node.right(raisedNode.left().remove());
-                    raisedNode.left(node);
-                } else {
-                    //single left rotation
-                    if (parent) {
-                        parent.child(lr, node.right().remove());
-                        raisedNode = parent.child(lr)
-                    } else {
-                        tree._setrootnode(node.right().remove());
-                        raisedNode = tree.root();
-                    }
-                    if (raisedNode.left())
-                        node.right(raisedNode.left().remove());
-                   raisedNode.left(node);
-                }
+            if (parent) {
+                parent.child(lr, node.right().remove({hide: false}), {hide: false});
+                raisedNode = parent.child(lr)
+            } else {
+                tree.root(node.right().remove({hide: false}), {hide: false});
+                raisedNode = tree.root();
             }
+            if (raisedNode.left())
+                node.right(raisedNode.left().remove({hide: false}));
+           raisedNode.left(node);
+        }
+
+        function rotateRight(tree, node) {
+            if (node.left().hasClass("emptynode"))
+                return false;
+            var lr;
+            var parent = node.parent()
+            var raisedNode;
+            if (parent) {
+                lr = parent.left() === node? 0: 1;
+            }
+            if (parent) {
+                parent.child(lr, node.left().remove({hide: false}), {hide: false});
+                raisedNode = parent.child(lr)
+            } else {
+                tree.root(node.left().remove({hide: false}), {hide: false});
+                raisedNode = tree.root();
+            }
+            if (raisedNode.right())
+                node.left(raisedNode.right().remove({hide: false}));
+            raisedNode.right(node);
+        }
+
+        function rotateLR(tree, node) {
+            if (node.left().hasClass("emptynode") || node.left().right().hasClass("emptynode"))
+                return false;
+            var lr;
+            var parent = node.parent()
+            var raisedNode;
+            if (parent) {
+                lr = parent.left() === node? 0: 1;
+            }
+            if (parent) {
+                parent.child(lr, node.left().right().remove({hide: false}), {hide: false});
+                raisedNode = parent.child(lr)
+            } else {
+                tree.root(node.left().right().remove({hide: false}), {hide: false});
+                raisedNode = tree.root();
+            }
+            if (raisedNode.left())
+                node.left().right(raisedNode.left().remove({hide: false}));
+            raisedNode.left(node.left().remove({hide: false}));
+            if (raisedNode.right())
+                node.left(raisedNode.right().remove({hide: false}));
+            raisedNode.right(node);
+        }
+
+        function rotateRL(tree, node) {
+            if (node.right().hasClass("emptynode") || node.right().left().hasClass("emptynode"))
+                return false;
+            var lr;
+            var parent = node.parent()
+            var raisedNode;
+            if (parent) {
+                lr = parent.left() === node? 0: 1;
+            }
+            if (parent) {
+                parent.child(lr, node.right().left().remove({hide: false}), {hide: false});
+                raisedNode = parent.child(lr)
+            } else {
+                tree.root(node.right().left().remove({hide: false}), {hide: false});
+                raisedNode = tree.root();
+            }
+            if (raisedNode.right())
+                node.right().left(raisedNode.right().remove({hide: false}));
+            raisedNode.right(node.right().remove({hide: false}));
+            if (raisedNode.left())
+                node.right(raisedNode.left().remove({hide: false}));
+            raisedNode.left(node);
         }
 
         //writes the tree in preorder
