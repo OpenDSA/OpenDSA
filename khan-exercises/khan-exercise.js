@@ -57,6 +57,25 @@
       history mode
 */
 
+/**
+ * Extracts, decodes and returns the given parameter from the URL
+ *   - Based on http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
+**/
+function getURLParam(name) {
+  var param = new RegExp('[?|&]' + name + '=' + '(.+?)(&|$)').exec(location.href)
+
+  return (param) ? decodeURIComponent(param[1]) : "";
+}
+
+// The domain where the OpenDSA modules are hosted, used by postMessage to send data to the parent module page
+var MODULE_ORIGIN = getURLParam('moduleOrigin');
+
+// The name of the module in which the KA exercises is embedded
+var MODULE_NAME = getURLParam('module');
+
+// The name of the book
+var BOOK_NAME = getURLParam('bookName');
+
 var Khan = (function() {
     // Numbers which are coprime to the number of bins, used for jumping through
     // exercises.  To quickly test a number in python use code like:
@@ -1960,7 +1979,7 @@ var Khan = (function() {
         // Promises for remote exercises contained within this one
         var subpromises = [];
         // Packing occurs on the server but at the same "exercises/" URL
-        $.get(urlBase + "exercises/" + fileName, function(data, status, xhr) {
+        $.get(fileName, function(data, status, xhr) {
             if (!(/success|notmodified/).test(status)) {
                 // Maybe loading from a file:// URL?
                 Khan.error("Error loading exercise from file " + fileName +

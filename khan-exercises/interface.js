@@ -42,28 +42,10 @@ var PerseusBridge = Exercises.PerseusBridge,
     hintsUsed,
     lastAttemptOrHint,
     firstProblem = true;
-/**
- * Extracts, decodes and returns the given parameter from the URL
- *   - Based on http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
- */
-function getURLParam(name) {
-  var param = new RegExp('[?|&]' + name + '=' + '(.+?)(&|$)').exec(location.href)
-
-  return (param) ? decodeURIComponent(param[1]) : "";
-}
-
 
 //
 var server = "http://127.0.0.1:8000";
 
-// The domain where the OpenDSA modules are hosted, used by postMessage to send data to the parent module page
-var MODULE_ORIGIN = getURLParam('moduleOrigin');
-
-// The name of the module in which the KA exercises is embedded
-var MODULE_NAME = getURLParam('module');
-
-// The name of the book
-var BOOK_NAME = getURLParam('bookName');
 var jsonData = {};
 jsonData.book = BOOK_NAME;
 jsonData.module = MODULE_NAME;
@@ -74,6 +56,7 @@ if (localStorage.session) {
    jsonData.key = session.key;
 }
 
+
 // Load in the exercise data from the server
 jQuery.ajax({
    // Do a request to the server API
@@ -81,7 +64,6 @@ jQuery.ajax({
    type: "GET",
    data: jsonData,
    dataType: "json",
-
    // Make sure cookies are passed along
    xhrFields: { withCredentials: true }
 });
@@ -556,7 +538,6 @@ function request(method, data) {
     attemptHintQueue.queue(function(next) {
         $.ajax(params).then(function(data, textStatus, jqXHR) {
             deferred.resolve(data, textStatus, jqXHR);
-
             // Tell any listeners that we now have new userExercise data
             $(Exercises).trigger("updateUserExercise", {
                 userExercise: data,
