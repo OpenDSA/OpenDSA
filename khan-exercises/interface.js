@@ -55,6 +55,10 @@ function getURLParam(name) {
 
 //
 var server = "http://127.0.0.1:8000";
+
+// The domain where the OpenDSA modules are hosted, used by postMessage to send data to the parent module page
+var MODULE_ORIGIN = getURLParam('moduleOrigin');
+
 // The name of the module in which the KA exercises is embedded
 var MODULE_NAME = getURLParam('module');
 
@@ -334,8 +338,11 @@ function handleAttempt(data) {
       }
       var  total =  progress*100;   //parseInt(streak) + 1;
       if (total >=100.00){
-        total = 100;
+         total = 100;
+         parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}', MODULE_ORIGIN);
+
       }
+
       $('#pointsrecieve').text(total);
     });
     respondpromise.fail(function(xhr) { 
