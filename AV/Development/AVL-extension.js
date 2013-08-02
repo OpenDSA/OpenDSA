@@ -25,10 +25,11 @@
 	// by default duplicates go to the left side
 	// this can be changed with option: {toRight: true}
 	JSAV._types.ds.BinaryTree.prototype.insert = function (value, options) {
+		var opts = $.extend({toRight: false}, options);
         function toLeft(value, insertValue) {
         	if (insertValue < value) {
         		return true;
-        	} else if (value === insertValue && !options.toRight) {
+        	} else if (value === insertValue && !opts.toRight) {
         		return true;
         	} else {
         		return false;
