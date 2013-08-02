@@ -62,6 +62,7 @@
         <script src="../../JSAV/lib/jquery.transform.light.js"></script>
         <script src="../../JSAV/lib/raphael.js"></script>
         <script src="../../JSAV/build/JSAV.js"></script>
+        <script src="AVL-extension.js"></script>
 
         <script>
 
@@ -72,36 +73,6 @@
             selectedNode,
             rotationType = location.hash.indexOf("double") === -1? "single": "double",
             av = new JSAV($("#jsavcontainer"));
-
-        JSAV._types.ds.BinaryTree.prototype.insert = function (value) {
-            // helper function to recursively insert
-            var ins = function(node, insval) {
-              var val = node.value();
-              if (!val || val === "jsavnull") { // no value in node
-                node.value(insval);
-              } else if (val - insval >= 0) { // go left
-                if (node.left()) {
-                  ins(node.left(), insval);
-                } else {
-                  node.left(insval);
-                }
-              } else { // go right
-                if (node.right()) {
-                  ins(node.right(), insval);
-                } else {
-                  node.right(insval);
-                }
-              }
-            };
-            if ($.isArray(value)) { // array of values
-              for (var i = 0, l = value.length; i < l; i++) {
-                ins(this.root(), value[i]);
-              }
-            } else {
-              ins(this.root(), value);
-            }
-            return this;
-        };
 
         function initialize() {
 
@@ -134,7 +105,7 @@
                 maxHeight: 6
             });
             jsavTree.insert(initialArray);
-            addEmptyNodes(jsavTree.root());
+            jsavTree.root().addEmptyNodes();
             jsavTree.click(clickHandler);
             jsavTree.layout();
 
@@ -145,7 +116,7 @@
             //create empty sub tree
             subtree = av.ds.bintree({center: false, visible: true, nodegap: 5});
             subtree.element.css({position: "absolute", top: 0});
-            subtree.root("").addClass("emptynode");
+            subtree.root().addClass("emptynode");
             subtree.click(clickHandler);
             subtree.layout();
             subtree.hide();
@@ -164,7 +135,7 @@
             var modelTree = jsav.ds.bintree({center: false, visible: true, nodegap: 5});
             //insert nodes
             modelTree.insert(initialArray);
-            addEmptyNodes(modelTree.root());
+            modelTree.addEmptyNodes();
             modelTree.layout();
             modelTree.element.css({position: "absolute", top: 0, left: jsav.canvas.width() / 2 - modelTree.element.width() / 2});
 
@@ -178,10 +149,7 @@
             jsav._undo = [];
 
             //find and highlight unbalanced node
-            var node = getUnbalancedNode(
-                modelTree.root(),
-                initialArray[initialArray.length - 1]
-                );
+            var node = modelTree.getUnbalancedNode( initialArray[initialArray.length - 1] );
             node.highlight();
             jsav.step();
 
@@ -530,19 +498,19 @@
                         bt.clear();
                         break;
                     }
-                    var node = getUnbalancedNode(bt.root(), arr[i]);
+                    var node = bt.getUnbalancedNode(arr[i]);
                     if (node && getRotationType(node) === rotationType) {
                         if (i >= options.minNodes) {
                             bt.clear();
                             return arr; //done
                         } else {
                             //too few nodes -> balance tree
-                            balanceTree(bt, node);
+                            node.balance();
                             treeToArray(bt.root(), arr);
                         }
                     } else if (node) {
                         //wrong kind of rotation needed -> balance tree
-                        balanceTree(bt, node);
+                        node.balance();
                         treeToArray(bt.root(), arr);
                     }
                     if (i === options.maxNodes - 1) {
@@ -552,27 +520,6 @@
                 }
             }
 
-        }
-
-        //returns an unbalanced node if one exists
-        function getUnbalancedNode(root, last) {
-            var node = root;
-            //find the last inserted node
-            while (node.left() || node.right()) {
-                if (node.value() >= last) {
-                    node = node.left();
-                } else {
-                    node = node.right();
-                }
-            }
-            //Check if tree is unbalanced
-            while (node) {
-                if (Math.abs(height(node.left()) - height(node.right())) >= 2) {
-                    return node;
-                }
-                node = node.parent();
-            }
-            return undefined;
         }
 
         //returns single if node can be balanced with a right or left rotation and
@@ -595,113 +542,6 @@
             return 0;
         }
 
-        //balances the tree by performing an rotation at the given node
-        function balanceTree(tree, node) {
-            if (height(node.left()) > height(node.right()) + 1) {
-                if (height(node.left().left()) > height(node.left().right())) {
-                    rotateRight(tree, node);
-                } else {
-                    rotateLR(tree, node);
-                }
-            } else if (height(node.right()) > height(node.left()) + 1) {
-                if (height(node.right().left()) > height(node.right().right())) {
-                    rotateRL(tree, node);
-                } else {
-                    rotateLeft(tree, node);
-                }
-            }
-        }
-
-        function rotateLeft(tree, node) {
-            if (node.right().hasClass("emptynode"))
-                return false;
-            var lr;
-            var parent = node.parent()
-            var raisedNode;
-            if (parent) {
-                lr = parent.left() === node? 0: 1;
-            }
-            if (parent) {
-                parent.child(lr, node.right().remove({hide: false}), {hide: false});
-                raisedNode = parent.child(lr)
-            } else {
-                tree.root(node.right().remove({hide: false}), {hide: false});
-                raisedNode = tree.root();
-            }
-            if (raisedNode.left())
-                node.right(raisedNode.left().remove({hide: false}));
-           raisedNode.left(node);
-        }
-
-        function rotateRight(tree, node) {
-            if (node.left().hasClass("emptynode"))
-                return false;
-            var lr;
-            var parent = node.parent()
-            var raisedNode;
-            if (parent) {
-                lr = parent.left() === node? 0: 1;
-            }
-            if (parent) {
-                parent.child(lr, node.left().remove({hide: false}), {hide: false});
-                raisedNode = parent.child(lr)
-            } else {
-                tree.root(node.left().remove({hide: false}), {hide: false});
-                raisedNode = tree.root();
-            }
-            if (raisedNode.right())
-                node.left(raisedNode.right().remove({hide: false}));
-            raisedNode.right(node);
-        }
-
-        function rotateLR(tree, node) {
-            if (node.left().hasClass("emptynode") || node.left().right().hasClass("emptynode"))
-                return false;
-            var lr;
-            var parent = node.parent()
-            var raisedNode;
-            if (parent) {
-                lr = parent.left() === node? 0: 1;
-            }
-            if (parent) {
-                parent.child(lr, node.left().right().remove({hide: false}), {hide: false});
-                raisedNode = parent.child(lr)
-            } else {
-                tree.root(node.left().right().remove({hide: false}), {hide: false});
-                raisedNode = tree.root();
-            }
-            if (raisedNode.left())
-                node.left().right(raisedNode.left().remove({hide: false}));
-            raisedNode.left(node.left().remove({hide: false}));
-            if (raisedNode.right())
-                node.left(raisedNode.right().remove({hide: false}));
-            raisedNode.right(node);
-        }
-
-        function rotateRL(tree, node) {
-            if (node.right().hasClass("emptynode") || node.right().left().hasClass("emptynode"))
-                return false;
-            var lr;
-            var parent = node.parent()
-            var raisedNode;
-            if (parent) {
-                lr = parent.left() === node? 0: 1;
-            }
-            if (parent) {
-                parent.child(lr, node.right().left().remove({hide: false}), {hide: false});
-                raisedNode = parent.child(lr)
-            } else {
-                tree.root(node.right().left().remove({hide: false}), {hide: false});
-                raisedNode = tree.root();
-            }
-            if (raisedNode.right())
-                node.right().left(raisedNode.right().remove({hide: false}));
-            raisedNode.right(node.right().remove({hide: false}));
-            if (raisedNode.left())
-                node.right(raisedNode.left().remove({hide: false}));
-            raisedNode.left(node);
-        }
-
         //writes the tree in preorder
         function treeToArray(root, arr, index) {
             index = index || 0;
@@ -711,19 +551,6 @@
             if (root.right())
                 index = treeToArray(root.right(), arr, index + 1);
             return index;
-        }
-
-        function addEmptyNodes(root) {
-            if (!root.left()) {
-                root.left("").addClass("emptynode");
-            } else {
-                addEmptyNodes(root.left());
-            }
-            if (!root.right()) {
-                root.right("").addClass("emptynode");
-            } else {
-                addEmptyNodes(root.right());
-            }
         }
 
         var oldfx;
