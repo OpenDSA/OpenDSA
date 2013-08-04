@@ -18,6 +18,7 @@
 	-->
 	<select id = "choices">
 		<option value = "dynamic_array()">Dynamic Array</option>
+		<option value = "binary_counter()">Binary Counter</option>
 	</select>
 	<button id = "begin">Visualize!</button>
 
@@ -45,6 +46,7 @@
 
 	<!-- INCLUDE the js file you created here -->
 	<script src="amortized_dynamic_arrays_template.js"></script>
+	<script src="amortized_binary_counter_template.js"></script>
     <script>
 
 	/**********************************
@@ -57,6 +59,7 @@
 	//the next five variables refer to potential before (pb), potential after(pa), change in potential (change_p, really just pa-pb), actual cost (acutal), amortized time (amort), these only refer to the starting values.
 	//developer_defined_backstep: a string that is the function call to the function that should be called when we take a step back in the algorithm
 	var construct_show = (function(operations, potential_function, pb, pa, change_p, actual, amort, developer_defined_backstep){
+
 		visualization = new JSAV("container");
 
 		//get the div I want the buttons in
