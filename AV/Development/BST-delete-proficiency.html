@@ -148,10 +148,10 @@
                     }
                 }
                 var node = root.left()
-                if (!node || node.value() === "jsavnull") {
+                if (!node) {
                     return undefined;
                 }
-                while (node.right() && node.right().value() !== "jsavnull") {
+                while (node.right()) {
                     node = node.right();
                 }
                 return node;
@@ -204,15 +204,11 @@
                         highlightPath(empty, node, true);
                         if (!empty.right() !== !empty.left()) {
                             //replace node with node
-                            //turn animation off, because all children of empty will be hidden using animation, which will prevent calling show()
-                            turnAnimationOff();
                             if (empty.parent().left() === empty) {
-                                empty.parent().left(node);
+                                empty.parent().left(node.remove({hide: false}));
                             } else {
-                                empty.parent().right(node);
+                                empty.parent().right(node.remove({hide: false}));
                             }
-                            node.show();
-                            restoreAnimationState();
                             modelTree.layout();
                             jsav.stepOption("grade", true);
                             jsav.step();
@@ -234,11 +230,8 @@
                         var rep = findReplacingNode(node);
                         if (rep) {
                             highlightPath(node, rep);
-                            node = rep;
-                        } else {
-                            highlightPath(node, node.right());
-                            node = node.right();
                         }
+                        node = rep;
                     }
                     jsav.stepOption("grade", true);
                     jsav.step();
