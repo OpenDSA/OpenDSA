@@ -2123,7 +2123,7 @@ var Khan = (function() {
 
     function injectTestModeSite(html, htmlExercise) {
         $("body").prepend(html);
-        $("#container .exercises-header h2").append(document.title);
+        $("#container .exercises-header span").eq(1).append(document.title);
         $("#container .exercises-body .current-card-contents").html(
                 htmlExercise);
 

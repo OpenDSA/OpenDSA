@@ -324,7 +324,7 @@ function handleAttempt(data) {
          parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}', MODULE_ORIGIN);
 
       }
-
+      total = parseInt(total, 10);
       $('#pointsrecieve').text(total);
     });
     respondpromise.fail(function(xhr) { 

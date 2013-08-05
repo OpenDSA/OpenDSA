@@ -188,7 +188,7 @@ jQuery.tmpl = {
 
 					// Stick the processing request onto the queue
 					if ( typeof MathJax !== "undefined" ) {
-						MathJax.Hub.Queue([ "Typeset", MathJax.Hub, elem ]);
+                                            MathJax.Hub.Queue([ "Typeset", MathJax.Hub, elem ]);
 					}
 				} else {
 					MathJax.Hub.Queue([ "Reprocess", MathJax.Hub, elem ]);
@@ -265,7 +265,7 @@ jQuery.fn.tmplLoad = function( problem, info ) {
 };
 
 jQuery.fn.tmplCleanup = function() {
-	this.find( "code" ).each( function() {
+        this.find( "code" ).each( function() {
 		MathJax.Hub.getJaxFor( this ).Remove();
 	} );
 };

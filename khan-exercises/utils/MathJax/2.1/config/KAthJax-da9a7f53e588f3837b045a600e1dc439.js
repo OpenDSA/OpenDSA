@@ -39,7 +39,7 @@ notation: MathJax.ElementJax.mml.NOTATION.UPDIAGONALSTRIKE
 }
 },
 "HTML-CSS": {
-scale: 100,
+scale: 140,
 showMathMenu: !1,
 availableFonts: [ "TeX" ],
 imageFont: null
@@ -422,7 +422,7 @@ cursor: "default",
 "z-index": 201,
 "border-radius": "15px",
 "-webkit-border-radius": "15px",
-"-moz-border-radius": "15px",
+"-moz-border-radius": "55px",
 "-khtml-border-radius": "15px",
 "box-shadow": "0px 10px 20px #808080",
 "-webkit-box-shadow": "0px 10px 20px #808080",

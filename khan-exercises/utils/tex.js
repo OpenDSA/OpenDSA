@@ -1,5 +1,4 @@
 (function() {
-
 $.fn.tex = function() {
     var pendingTypeset = 0;
 
@@ -38,7 +37,7 @@ $.fn.tex = function() {
             $this.append("<script type='math/tex'>" +
                     text.replace(/<\//g, "< /") + "</script>");
         }
-
+      
         pendingTypeset++;
     });
 
