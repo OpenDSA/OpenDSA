@@ -5,32 +5,13 @@
         <title>Selection Sort</title>
         <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
         <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+        <link rel="stylesheet" href="proficiency.css" type="text/css" />
     </head>
 
     <body>
         <style>
           #jsavcontainer {
-            width: 740px;
             height: 500px;
-            background-color: #fff;
-          }
-          p.jsavoutput.jsavline {
-            height: 40px;
-          }
-          .jsavscore {
-            text-align: center;
-          }
-          p.instructLabel {
-            margin-top: -5px;
-          }
-          p.instructions {
-            margin-top: -15px;
-            padding: 10px;
-            margin-right: 10px;
-            border: 1px solid black;
-          }
-          .greenbackground, .greenbackground .jsavvalue, .jsavarray.jsavbararray .jsavindex.greenbackground .jsavvalue{
-            background-color: #5f5 !important;
           }
         </style>
         <h1>Selection Sort</h1>
@@ -118,7 +99,7 @@
                     // modelArray.paintGreen(i);
                 } else {
                     modelArray.unhighlight(i);
-                    modelArray.addClass(i, "greenbackground");
+                    modelArray.addClass(i, "greenbg");
                     // if (i + 1 !== arraySize - 1) {
                     //     modelArray.highlight(i + 1);
                     // }
@@ -127,12 +108,12 @@
                 var oldfx = $.fx.off || false;
                 //turn off the animations when painting the bars green
                 //because it doesn't work well with the swap
-                modelArray.addClass(i, "greenbackground");
+                modelArray.addClass(i, "greenbg");
                 if (i + 1 !== arraySize - 1) {
                     modelArray.highlight(i + 1);
                 } else {
                     // modelArray.paintGreen(arraySize - 1);
-                    modelArray.addClass(arraySize - 1, "greenbackground");
+                    modelArray.addClass(arraySize - 1, "greenbg");
                 }
                 //restore the state of fx.off
                 $.fx.off = oldfx;
@@ -152,12 +133,12 @@
             if (sorted.value() === index) {
                 // clicking on the highlighted bar will turn it green and highlight the next bar
                 this.unhighlight(index);
-                this.addClass(index, "greenbackground");
+                this.addClass(index, "greenbg");
                 sorted.value(sorted.value() + 1);
                 if (sorted.value() !== arraySize - 1) {
                     this.highlight(index +1);
                 } else {
-                    this.addClass(index + 1, "greenbackground");
+                    this.addClass(index + 1, "greenbg");
                 }
                 exercise.gradeableStep();
             } else if (index > sorted.value()){
@@ -171,12 +152,12 @@
                 //turn off the animations when painting the bars green
                 //because it doesn't work well with the swap
                 $.fx.off = true;
-                this.addClass(sorted.value(), "greenbackground");
+                this.addClass(sorted.value(), "greenbg");
                 sorted.value(sorted.value() + 1);
                 if (sorted.value() !== arraySize - 1) {
                     this.highlight(sorted.value());
                 } else {
-                    this.addClass(arraySize - 1, "greenbackground");
+                    this.addClass(arraySize - 1, "greenbg");
                 }
                 //restore the state of fx.off
                 $.fx.off = oldfx;
@@ -189,7 +170,7 @@
                 //because it doesn't work well with the swap
                 $.fx.off = true;
                 this.unhighlight(sorted.value());
-                this.addClass(sorted.value(), "greenbackground");
+                this.addClass(sorted.value(), "greenbg");
                 //restore the state of fx.off
                 $.fx.off = oldfx;
                 this.swap(index, sorted.value());

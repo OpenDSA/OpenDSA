@@ -1,0 +1,34 @@
+#jsavcontainer {
+  width: 740px;
+  height: 650px;
+  background-color: #fff;
+}
+p.jsavoutput.jsavline {
+  height: 40px;
+}
+.jsavscore {
+  text-align: center;
+}
+p.instructLabel {
+  margin-top: -5px;
+}
+p.instructions {
+  margin-top: -15px;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid black;
+}
+.jsavtreenode.emptynode {
+  border: 1px dashed #777;
+  color: #777;
+}
+.selected, .selected .jsavvalue, .jsavarray.jsavbararray .jsavindex.selected .jsavvalue{
+  font-size: 130%;
+  background-color: #ddf !important;
+}
+.greybg, .greybg .jsavvalue, .jsavarray.jsavbararray .jsavindex.greybg .jsavvalue{
+  background-color: #eee;
+}
+.greenbg, .greenbg .jsavvalue, .jsavarray.jsavbararray .jsavindex.greenbg .jsavvalue{
+  background-color: #5f5;
+}

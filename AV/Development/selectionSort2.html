@@ -5,35 +5,13 @@
         <title>Selection Sort</title>
         <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
         <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+        <link rel="stylesheet" href="proficiency.css" type="text/css" />
     </head>
 
     <body>
         <style>
           #jsavcontainer {
-            width: 740px;
             height: 500px;
-            background-color: #fff;
-          }
-          p.jsavoutput.jsavline {
-            height: 40px;
-          }
-          .jsavscore {
-            text-align: center;
-          }
-          p.instructLabel {
-            margin-top: -5px;
-          }
-          p.instructions {
-            margin-top: -15px;
-            padding: 10px;
-            margin-right: 10px;
-            border: 1px solid black;
-          }
-          .bluebackground, .bluebackground .jsavvalue, .jsavarray.jsavbararray .jsavindex.bluebackground .jsavvalue{
-            background-color: #ddf !important;
-          }
-          .greenbackground, .greenbackground .jsavvalue, .jsavarray.jsavbararray .jsavindex.greenbackground .jsavvalue{
-            background-color: #5f5 !important;
           }
         </style>
         <h1>Selection Sort</h1>
@@ -124,7 +102,7 @@
                     if (modelArray.value(j) < modelArray.value(min)) {
                         modelArray.toggleLine(min);
                         min = j;
-                        modelArray.addClass(min, "bluebackground");
+                        modelArray.addClass(min, "selected");
                         modelArray.toggleLine(min, {startIndex: min});
                         jsav.stepOption("grade", true);
                         jsav.step();
@@ -133,16 +111,16 @@
                 }
                 //remove highlights, blue backgrounds and lines
                 modelArray.unhighlight(i);
-                modelArray.removeClass(true, "bluebackground");
+                modelArray.removeClass(true, "selected");
                 modelArray.toggleLine(min);
                 if (min !== i) {
                     modelArray.swap(min, i);
                     jsav.step(); // animate swap first and then color the bars green
                 }
                 if (i !== arraySize - 2) {
-                    modelArray.addClass(function(ind) {return ind <= i}, "greenbackground");
+                    modelArray.addClass(function(ind) {return ind <= i}, "greenbg");
                 } else {
-                    modelArray.addClass(function(ind) {return ind <= arraySize - 1}, "greenbackground");                
+                    modelArray.addClass(function(ind) {return ind <= arraySize - 1}, "greenbg");                
                 }
                 jsav.stepOption("grade", true);
                 jsav.step();
@@ -166,20 +144,20 @@
                 av.umsg("Now select all the bars corresponding to the indices min gets in the for loop. When all bars have been selected, click on a selected bar to swap it with the highlighted bar.");
                 exercise.gradeableStep();
             } else {
-                if (!this.hasClass(index, "bluebackground") && !this.isHighlight(index)) {
-                    this.addClass(index, "bluebackground");
+                if (!this.hasClass(index, "selected") && !this.isHighlight(index)) {
+                    this.addClass(index, "selected");
                     this.toggleLine(lineIndex.value());
                     this.toggleLine(lineIndex.value(index).value(), {startIndex: index});
                     exercise.gradeableStep();
                 } else {
-                    this.removeClass(true, "bluebackground");
+                    this.removeClass(true, "selected");
                     this.unhighlight(sorted.value())
                     this.toggleLine(lineIndex.value());
                     lineIndex.value(-1);
                     if (sorted.value() !== index)
                         this.swap(sorted.value(), index);
                     turnAnimationOff()
-                    this.addClass(function(ind) {return ind <= (sorted.value() !== arraySize - 2? sorted.value() : sorted.value() + 1)}, "greenbackground");
+                    this.addClass(function(ind) {return ind <= (sorted.value() !== arraySize - 2? sorted.value() : sorted.value() + 1)}, "greenbg");
                     restoreAnimationState();
                     av.umsg("Continue by highlighting the next bar at index min, assuming line #2 has just been run.");
                     exercise.gradeableStep();

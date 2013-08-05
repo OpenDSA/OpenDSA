@@ -5,43 +5,16 @@
         <title>BST Delete</title>
         <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
         <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+        <link rel="stylesheet" href="proficiency.css" type="text/css" />
     </head>
 
     <body>
         <style>
-          #jsavcontainer {
-            width: 740px;
-            height: 650px;
-            background-color: #fff;
-            -moz-user-select: -moz-none;
-            -khtml-user-select: none;
-            -webkit-user-select: none;
-            -o-user-select: none;
-            user-select: none;
-          }
           .jsavtreenode {
             cursor: pointer;
           }
           .jsavtreenode.jsavnullnode, .jsavnode.jsavindex{
             cursor: default;
-          }
-          p.jsavoutput.jsavline {
-            height: 40px;
-          }
-          .jsavscore {
-            text-align: center;
-          }
-          p.instructLabel {
-            margin-top: -5px;
-          }
-          p.instructions {
-            margin-top: -15px;
-            padding: 10px;
-            margin-right: 10px;
-            border: 1px solid black;
-          }
-          .greybackground, .greybackground .jsavvalue, .jsavarray.jsavbararray .jsavindex.greybackground .jsavvalue{
-            background-color: #eee !important;
           }
         </style>
         <h1>BST Delete</h1>
@@ -175,10 +148,10 @@
                     }
                 }
                 var node = root.left()
-                if (!node || node.value() === "jsavnull") {
+                if (!node) {
                     return undefined;
                 }
-                while (node.right() && node.right().value() !== "jsavnull") {
+                while (node.right()) {
                     node = node.right();
                 }
                 return node;
@@ -231,15 +204,11 @@
                         highlightPath(empty, node, true);
                         if (!empty.right() !== !empty.left()) {
                             //replace node with node
-                            //turn animation off, because all children of empty will be hidden using animation, which will prevent calling show()
-                            turnAnimationOff();
                             if (empty.parent().left() === empty) {
-                                empty.parent().left(node);
+                                empty.parent().left(node.remove({hide: false}));
                             } else {
-                                empty.parent().right(node);
+                                empty.parent().right(node.remove({hide: false}));
                             }
-                            node.show();
-                            restoreAnimationState();
                             modelTree.layout();
                             jsav.stepOption("grade", true);
                             jsav.step();
@@ -261,11 +230,8 @@
                         var rep = findReplacingNode(node);
                         if (rep) {
                             highlightPath(node, rep);
-                            node = rep;
-                        } else {
-                            highlightPath(node, node.right());
-                            node = node.right();
                         }
+                        node = rep;
                     }
                     jsav.stepOption("grade", true);
                     jsav.step();
