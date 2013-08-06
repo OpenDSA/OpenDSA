@@ -249,6 +249,9 @@ NOTES
     The ODSA preprocessor creates a table of all referenced objects
     with numbers and writes it into a file that is read by the ``numref``
     role.
+    When referencing equation (declared with ``math`` directive), 'equation-' 
+    need to be added in front of the label to work, eg to reference the equation with label 'sum2' you write
+    ``:numref:`<equation-sum2>``` 
 
 
 .. _chap:
