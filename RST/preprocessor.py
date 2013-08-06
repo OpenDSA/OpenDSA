@@ -101,6 +101,7 @@ class modPreReq:
       tab = 1
       exp = 1
       thr = 1 
+      eq = 1
       label = ''
       anonym_fig = 0
       fls = open(filename,'r')
@@ -128,7 +129,14 @@ class modPreReq:
          if ':topic:' in line:
             str =  re.split('topic:', line, re.IGNORECASE)[1]
             self.covers =  p.sub('',str).split(',')
-         #label = ''
+        
+         if '.. math::' in line:
+             if ':label:' in data[cpt]:
+                 equation = re.split(':label:', data[cpt], re.IGNORECASE)[1]
+                 tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
+                 config.table['equation-'+equation.strip()] = tb + '.%s#' %eq
+                 eq+=1
+
          if line.startswith('.. _'):
             label =  re.split(':', re.split('.. _', line, re.IGNORECASE)[1], re.IGNORECASE)[0]
             if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. odsafig::') or data[cpt+1].startswith('.. inlineav::'): 
