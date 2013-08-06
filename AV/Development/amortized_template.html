@@ -49,19 +49,17 @@
 	<script src="amortized_binary_counter_template.js"></script>
     <script>
 
-	/**********************************
-		GLOBAL VARIABLES
-	**********************************/
-	var visualization, pot_before, pot_after, actual_time, amortized_time, next_step, potential_function_val;
-
 
 	//operations is a 2D array containing the operation name, the name of the function to call for it, and a function returning true if you should use this operation at this time
 	//the next five variables refer to potential before (pb), potential after(pa), change in potential (change_p, really just pa-pb), actual cost (acutal), amortized time (amort), these only refer to the starting values.
 	//developer_defined_backstep: a string that is the function call to the function that should be called when we take a step back in the algorithm
+	var next_step;
 	var construct_show = (function(operations, potential_function, pb, pa, change_p, actual, amort, developer_defined_backstep){
+		var visualization, potential_function_val, pot_before, pot_after, actual_time, amortized_time;
 
 		visualization = new JSAV("container");
 
+		potential_function_val = potential_function;
 		//get the div I want the buttons in
 		var the_div = document.getElementById('container');
 		//make a new div for storing buttons and other things developers may want to dynamically create
@@ -100,7 +98,7 @@
 		$("#back_button").html("Back One Step");
 		$("#change_pot").html("Change Potential Function");
 		$("#pot_text").val(potential_function_val.toString());
-		$("#pot_text").attr('cols','50');
+		$("#pot_text").attr('cols','90');
 		$("#pot_text").attr('rows','8');
 
 
@@ -140,10 +138,10 @@
 			//for every operation we have
 			for(var i = 0; i < operations.length; i++) {
 				//if we can perform the operation we do, then break
-				if(eval(operations[i][2])) {
-					pot_before_var = eval(potential_function);
-					actual_time_var = eval(operations[i][1]);
-					pot_after_var = eval(potential_function);
+				if(operations[i][2]()) {
+					pot_before_var = potential_function_val();
+					actual_time_var = operations[i][1]();
+					pot_after_var = potential_function_val();
 					change_in_pot_var = pot_after_var - pot_before_var;
 					amortized_time_var = change_in_pot_var + actual_time_var;
 					console.log("pot before: "+pot_before_var+" pot after: "+pot_after_var+" actual: "+actual_time_var+" amortized: "+ amortized_time_var);
@@ -205,7 +203,7 @@
 				pot_before_visual_var.value(each_step_arr[each_step_arr.length-1][0]);
 				pot_after_visual_var.value(each_step_arr[each_step_arr.length-1][1]);
 				actual_time_visual_var.value(each_step_arr[each_step_arr.length-1][2]);
-				amortized_time_visual_var.value("("+each_step_arr[each_step_arr.length-1][0]+"-"+each_step_arr[each_step_arr.length-1][1]+")"+"+"+each_step_arr[each_step_arr.length-1][2]);
+				amortized_time_visual_var.value("("+each_step_arr[each_step_arr.length-1][1]+"-"+each_step_arr[each_step_arr.length-1][0]+")"+"+"+each_step_arr[each_step_arr.length-1][2]);
 
 				//unhighlight all of the bars
 				pot_before.unhighlight();
@@ -222,7 +220,7 @@
 				for(var i = 0;i<each_step_arr[each_step_arr.length-1][3];i++)
 					amortized_time.highlight(i);
 
-				eval(developer_defined_backstep);
+				developer_defined_backstep();
 			}
 		});
 
@@ -233,6 +231,8 @@
 			potential_function_val = eval("("+$("#pot_text").val()+");");
 			console.log(potential_function_val.toString());
 		});
+
+		return visualization;
 
 	});
 
