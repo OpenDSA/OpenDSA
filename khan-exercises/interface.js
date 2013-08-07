@@ -44,7 +44,7 @@ var PerseusBridge = Exercises.PerseusBridge,
     firstProblem = true;
 
 //
-var server = "http://127.0.0.1:8000";
+var server = typeof serverOverride !== "undefined"? serverOverride : "http://127.0.0.1:8000";
 
 var jsonData = {};
 jsonData.book = BOOK_NAME;
@@ -459,6 +459,10 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
       var session = JSON.parse(localStorage.session);
       key = session.key;
     }
+
+    var OpenPop_code = typeof $('#codeTextarea').val() !== "undefined" ? $('#codeTextarea').val(): null; 
+    var OpenPop_genlist = typeof generatedList !== "undefined" ? generatedList : null;
+    
     _.extend(data, {
         key: key,
         book: BOOK_NAME,
@@ -508,12 +512,18 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
         user_assessment_key: Exercises.userAssessmentKey,
 
         // Whether the user is skipping the question
-        skipped: skipped ? 1 : 0
+        skipped: skipped ? 1 : 0,
+       
+        // OpenPop code
+        code : OpenPop_code,
+
+        // OpenPop random list
+        genlist : OpenPop_genlist
+
     });
 
     return data;
 }
-
 
 var attemptHintQueue = jQuery({});
 
