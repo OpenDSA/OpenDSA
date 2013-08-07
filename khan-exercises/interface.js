@@ -187,6 +187,49 @@ function handleSkippedQuestion() {
     return handleAttempt({skipped: true});
 }
 
+// Update DOM elements when getting correct anwser
+function correctAnswerEffect(){
+    // Correct answer, so show the next question button.
+    $("#check-answer-button").hide();
+    $("#check-answer-results > p").hide();
+    $("#next-question-button")
+        .prop("disabled", false)
+        .removeClass("buttonDisabled")
+        .show()
+        .focus();
+    $("#positive-reinforcement").show();
+    $("#skip-question-button").prop("disabled", true);
+}
+
+// Update DOM elements when the answer is wrong
+function wrongAnswerEffect(){
+    // Wrong answer. Enable all the input elements
+
+    $("#check-answer-button")
+        .parent()  // .check-answer-wrapper makes shake behave
+        .effect("shake", {times: 3, distance: 8}, 50)
+        .val($._("Try Again"));
+
+    // Is this a message to be shown?
+    if (score.message != null) {
+        $("#check-answer-results > p").html(score.message).show().tex();
+    } else {
+        $("#check-answer-results > p").hide();
+    }
+
+    if (framework === "perseus") {
+        // TODO(alpert)?
+    } else if (framework === "khan-exercises") {
+        $(Khan).trigger("refocusSolutionInput");
+    }
+
+}
+
+// Show feed-back message from the back end
+function feedbackEffect(){
+
+}
+
 function handleAttempt(data) {
     var framework = Exercises.getCurrentFramework();
     var skipped = data.skipped;
@@ -237,36 +280,9 @@ function handleAttempt(data) {
     if (skipped || Exercises.assessmentMode) {
         disableCheckAnswer();
     } else if (score.correct) {
-        // Correct answer, so show the next question button.
-        $("#check-answer-button").hide();
-        $("#check-answer-results > p").hide();
-        $("#next-question-button")
-            .prop("disabled", false)
-            .removeClass("buttonDisabled")
-            .show()
-            .focus();
-        $("#positive-reinforcement").show();
-        $("#skip-question-button").prop("disabled", true);
+       correctAnswerEffect();
     } else {
-        // Wrong answer. Enable all the input elements
-
-        $("#check-answer-button")
-            .parent()  // .check-answer-wrapper makes shake behave
-            .effect("shake", {times: 3, distance: 8}, 50)
-            .val($._("Try Again"));
-
-        // Is this a message to be shown?
-        if (score.message != null) {
-            $("#check-answer-results > p").html(score.message).show().tex();
-        } else {
-            $("#check-answer-results > p").hide();
-        }
-
-        if (framework === "perseus") {
-            // TODO(alpert)?
-        } else if (framework === "khan-exercises") {
-            $(Khan).trigger("refocusSolutionInput");
-        }
+       wrongAnswerEffect();
     }
 
     if (!hintsAreFree) {
