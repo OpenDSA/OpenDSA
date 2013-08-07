@@ -41,6 +41,15 @@ def isTheorem(topic):
         return False
 
 
+def isFigure(item):
+    if item.startswith('.. figure::') or item.startswith('.. odsafig::') or item.startswith('.. inlineav::'):
+        if item.startswith('.. inlineav::') and 'dgm' not in item:
+            return False
+        return True
+    else:
+        return False
+
+
 #defines the color of output text (warnings, errors, and info)
 class bcolors:
     HEADER = '\033[95m'
@@ -92,7 +101,9 @@ class modPreReq:
       tab = 1
       exp = 1
       thr = 1 
+      eq = 1
       label = ''
+      anonym_fig = 0
       fls = open(filename,'r')
       data = fls.readlines()
       new_data = []
@@ -118,7 +129,14 @@ class modPreReq:
          if ':topic:' in line:
             str =  re.split('topic:', line, re.IGNORECASE)[1]
             self.covers =  p.sub('',str).split(',')
-         #label = ''
+        
+         if '.. math::' in line:
+             if ':label:' in data[cpt]:
+                 equation = re.split(':label:', data[cpt], re.IGNORECASE)[1]
+                 tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
+                 config.table['equation-'+equation.strip()] = tb + '.%s#' %eq
+                 eq+=1
+
          if line.startswith('.. _'):
             label =  re.split(':', re.split('.. _', line, re.IGNORECASE)[1], re.IGNORECASE)[0]
             if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. odsafig::') or data[cpt+1].startswith('.. inlineav::'): 
@@ -126,6 +144,7 @@ class modPreReq:
                  tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                  config.table[label] = tb + '.%s#' %fig
                  fig+=1
+               label = 'label_used'
             if data[cpt+1].startswith('.. table::') or data[cpt+1].startswith('.. odsatab') or isTable(data[cpt+1]):
                 if os.path.splitext(os.path.basename(filename))[0] in config.table:
                   tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
@@ -157,6 +176,12 @@ class modPreReq:
              else:
                  thr+=1
    
+         if isFigure(line):
+             if label != 'label_used':    
+                 fig_label = 'anon_fig%s' %anonym_fig
+                 config.table[fig_label] = fig 
+                 fig+=1
+                 anonym_fig+=1
 
          if ':target:' in line:
              trgt =  re.split('target:', line, re.IGNORECASE)[1]

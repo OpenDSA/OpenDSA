@@ -131,13 +131,13 @@
                         node = node.right();
                     }
                 }
-                node.removeClass("emptynode");
                 node.value(val);
                 node.left("");
-                node.left().addClass("emptynode");
                 node.right("");
-                node.right().addClass("emptynode");
                 modelTree.layout();
+                node.removeClass("emptynode");
+                node.left().addClass("emptynode");
+                node.right().addClass("emptynode");
 
                 modelArray.unhighlight(i);
                 modelArray.value(i, "");
@@ -153,12 +153,8 @@
 
         function clickHandler() {
             if (arrayIndex.value() < arraySize) {
-                //turn off animations for a while to avoid extra edges being drawn
-                turnAnimationOff();
                 //insert value into this node
                 this.value(initialArray[arrayIndex.value()]);
-                //remove class for dashed border
-                this.removeClass("emptynode");
                 //remove value from the array
                 jsavArray.value(arrayIndex.value(), "");
                 //unhighlight array
@@ -179,26 +175,16 @@
                     this.right("");
                     this.right().addClass("emptynode");
                 }
-                restoreAnimationState();
                 //update tree
                 jsavBinaryTree.layout();
+                //remove class for dashed border
+                this.removeClass("emptynode");
                 //gradeable step
                 exercise.gradeableStep();
             }
         }
 
         var oldfx;
-
-        function turnAnimationOff() {
-            //save the state of fx.off
-            var oldfx = $.fx.off || false;
-            //turn off the jQuery animations
-            $.fx.off = true;
-        }
-
-        function restoreAnimationState() {
-            $.fx.off = oldfx;
-        }
 
         var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
         exercise.reset();
