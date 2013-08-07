@@ -202,14 +202,13 @@ function correctAnswerEffect(){
 }
 
 // Update DOM elements when the answer is wrong
-function wrongAnswerEffect(){
+function wrongAnswerEffect(score, framework){
     // Wrong answer. Enable all the input elements
 
     $("#check-answer-button")
         .parent()  // .check-answer-wrapper makes shake behave
         .effect("shake", {times: 3, distance: 8}, 50)
         .val($._("Try Again"));
-
     // Is this a message to be shown?
     if (score.message != null) {
         $("#check-answer-results > p").html(score.message).show().tex();
@@ -252,7 +251,7 @@ function handleAttempt(data) {
         // has been called or sometimes the server gets confused.
         return false;
     }
-
+    
     if (score.correct || skipped) {
         // Once we receive a correct answer or a skip, that's it; further
         // attempts are disallowed.
@@ -282,7 +281,7 @@ function handleAttempt(data) {
     } else if (score.correct) {
        correctAnswerEffect();
     } else {
-       wrongAnswerEffect();
+       wrongAnswerEffect(score, framework);
     }
 
     if (!hintsAreFree) {
