@@ -3349,7 +3349,6 @@ span.youTube:hover {
 #container.single-exercise {
     overflow: visible;
     min-width: 900px;
-    width:auto;
 }
 #container .dashboard-header.single-exercise {
     border: 1px solid #ccc;

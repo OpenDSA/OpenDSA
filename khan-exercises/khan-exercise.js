@@ -2105,7 +2105,8 @@ var Khan = (function() {
         modulePromises[src] = selfPromise;
         return selfPromise;
     }
-
+    var tempdeff = $.Deferred();
+    window.testdeffer = tempdeff.promise(); 
     function loadTestModeSite() {
         // TODO(alpert): Is the DOM really not yet ready?
         $(function() {
@@ -2143,11 +2144,11 @@ var Khan = (function() {
             weighExercises(problems);
             problemBag = makeProblemBag(problems, 10);
         }
-
+        tempdeff.resolve();
         // Generate the initial problem when dependencies are done being loaded
         makeProblem();
     }
-
+    
     return Khan;
 
 })();

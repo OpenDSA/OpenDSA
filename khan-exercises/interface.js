@@ -65,7 +65,13 @@ jQuery.ajax({
    data: jsonData,
    dataType: "json",
    // Make sure cookies are passed along
-   xhrFields: { withCredentials: true }
+   xhrFields: { withCredentials: true },
+   success: function(data){
+     var streakval= data.objects[0].streak;
+     testdeffer.done(function(){
+       console.log(streakval); $('#pointstotal').text(parseInt(streakval));
+     });
+   }
 });
 
 $(Exercises)
@@ -307,20 +313,18 @@ function handleAttempt(data) {
     var respondpromise = request(requestUrl,attemptData);
     respondpromise.done(function(data){
       data = jQuery.parseJSON(data);
+      var progress = 0;
+      var streakNum = 0;
       if (data) {
+        progress = data.streak;
         if (parseInt(data.progress._sign) != 0) {
           progress = 0;
-        }else {
-          if (parseInt(data.progress._exp) == 0) {
-              progress = parseFloat(data.progress._int);
-          }else {
-              progress = parseFloat(data.progress._int) *  Math.pow(10,parseInt(data.progress._exp));
-          }
-        }
+        }  
+        streakNum = parseFloat(data._exercise_cache.streak._int) *  Math.pow(10,parseInt(data._exercise_cache.streak._exp));
       }
-      var  total =  progress*100;   //parseInt(streak) + 1;
-      if (total >=100.00){
-         total = 100;
+      var  total =  progress;   //parseInt(streak) + 1;
+      if (total >= streakNum){
+         total = streakNum;
          parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}', MODULE_ORIGIN);
 
       }
