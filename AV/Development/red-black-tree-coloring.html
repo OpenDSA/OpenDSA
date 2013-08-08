@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Coloring of Red-Black Tree</title>
+        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+        <link rel="stylesheet" href="proficiency.css" type="text/css" />
+    </head>
+
+    <body>
+        <style>
+          .jsavtreenode {
+            cursor: pointer;
+          }
+        </style>
+        <h1>Coloring of Red-Black Tree</h1>
+        <div id="jsavcontainer">
+            <p class="instructLabel">Instructions:</p>
+            <p class="instructions">
+                    Click on a node to toggle the color. When the tree fulfills all the requirments of a red-black tree click the grade button.  
+            </p>
+            <p align="center" class="jsavexercisecontrols"></p>
+            <div class="jsavcanvas"></div>
+        </div>
+
+        <script
+           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+        <script src="../../JSAV/lib/raphael.js"></script>
+        <script src="../../JSAV/build/JSAV.js"></script>
+        <script src="AVL-extension.js"></script>
+        <script src="Red-black-tree.js"></script>
+
+        <script>
+
+        var initialArray = [],
+            jsavTree,
+            treeSize = 20,
+            clickHandler,
+            av = new JSAV($("#jsavcontainer"));
+
+
+        function initialize() {
+
+            turnAnimationOff();
+            initialArray = generateValues(treeSize, 10, 100); //No duplicates!
+
+            //clear old binary tree
+            if (jsavTree) {
+                jsavTree.clear();
+            }
+            //create binary tree
+            jsavTree = av.ds.rbtree({center: true, visible: true, nodegap: 5});
+            for (var i = 0; i < treeSize; i++) {
+                //find emptynode where the value will be inserted
+                var node = jsavTree.insert(initialArray[i]);
+                // fix the tree by recoloring nodes and performing rotations
+                node.insert_case1();
+            }
+            colorTreeRed(jsavTree.root());
+            jsavTree.layout();
+            jsavTree.click( function () {
+                this.toggleColor();
+            });
+            
+            restoreAnimationState();
+
+            return jsavTree;
+        }
+        
+        function modelSolution(jsav) {
+            var modelTree = jsav.ds.rbtree({center: true, visible: true, nodegap: 5});
+
+            jsav._undo = [];
+
+            for (var i = 0; i < treeSize; i++) {
+                //find emptynode where the value will be inserted
+                var node = modelTree.insert(initialArray[i]);
+                // fix the tree by recoloring nodes and performing rotations
+                node.insert_case1();
+                modelTree.layout();
+                if (i === treeSize - 1) {
+                    jsav.stepOption("grade", true);
+                    jsav.step();
+                }
+            }
+            jsav.displayInit();
+
+            return modelTree;
+        }
+
+        //generate values without duplicates
+        function generateValues(n, min, max) {
+            var arr = [];
+            var val;
+            for (var i = 0; i < n; i++) {
+                do {
+                    val = Math.floor(min + Math.random() * (max - min));
+                } while ($.inArray(val, arr) !== -1);
+                arr.push(val);
+            }
+            return arr;
+        }
+
+        function colorTreeRed(node) {
+            if (!node)
+                return;
+            node.colorRed();
+            colorTreeRed(node.left());
+            colorTreeRed(node.right());
+        }
+
+        function blackNodesBetweenRootAndLeaves(root) {
+            if (!root)
+                return 0;
+            var left = blackNodesBetweenRootAndLeaves(root.left());
+            var right = blackNodesBetweenRootAndLeaves(root.right());
+            if (left === right && left !== -1) {
+                return left + (root.hasClass("blacknode")? 1:0);
+            } else {
+                return -1;
+            }
+        }
+
+        function redHaveOnlyBlackChildren(root) {
+            if (!root)
+                return true;
+            if (!redHaveOnlyBlackChildren(root.left()))
+                return false;
+            if (!redHaveOnlyBlackChildren(root.right()))
+                return false;
+            if (root.isRed() &&
+                (   
+                    (root.left() && root.left().isRed()) || 
+                    (root.right() && root.right().isRed())
+                )
+               )
+                return false;
+            return true;
+        }
+
+        var oldfx;
+
+        function turnAnimationOff() {
+            //save the state of fx.off
+            var oldfx = $.fx.off || false;
+            //turn off the jQuery animations
+            $.fx.off = true;
+        }
+
+        function restoreAnimationState() {
+            $.fx.off = oldfx;
+        }
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        JSAV._types.Exercise.prototype.grade = function () {
+            var score = 0;
+            //black root
+            score += jsavTree.root().hasClass("blacknode")? 1:0;
+            //paths from the leaves to the roots have an equal amount of black nodes
+            score += blackNodesBetweenRootAndLeaves(jsavTree.root()) > 0? 1:0;
+            //red nodes only have black children 
+            score += redHaveOnlyBlackChildren(jsavTree.root())? 1:0;
+            
+            this.score = {
+                correct: score,
+                fix: 0,
+                student: score,
+                total: 3,
+                undo: 0
+            };
+            return this.score;
+        };
+
+        var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+        exercise.reset();
+
+        
+        </script>
+    </body>
+</html>
