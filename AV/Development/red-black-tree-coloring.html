@@ -165,12 +165,14 @@
             score += blackNodesBetweenRootAndLeaves(jsavTree.root()) > 0? 1:0;
             //red nodes only have black children 
             score += redHaveOnlyBlackChildren(jsavTree.root())? 1:0;
+
+            score = score === 3? 1: 0;
             
             this.score = {
                 correct: score,
                 fix: 0,
                 student: score,
-                total: 3,
+                total: 1,
                 undo: 0
             };
             return this.score;
