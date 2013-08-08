@@ -68,8 +68,11 @@ jQuery.ajax({
    xhrFields: { withCredentials: true },
    success: function(data){
      var streakval= data.objects[0].streak;
+     var progress = data.objects[0].progress_streak;
      testdeffer.done(function(){
-       console.log(streakval); $('#pointstotal').text(parseInt(streakval));
+        console.log(progress);
+        $('#pointstotal').text(parseInt(streakval));
+        $('#pointsrecieve').text(parseInt(progress));
      });
    }
 });
