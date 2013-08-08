@@ -44,8 +44,8 @@ var PerseusBridge = Exercises.PerseusBridge,
     firstProblem = true;
 
 //
-var server = typeof serverOverride !== "undefined"? serverOverride : "http://opendsa.cc.vt.edu/openpop/backend"; 
-//"http://127.0.0.1:8000";
+//var server = typeof serverOverride !== "undefined"? serverOverride : "http://opendsa.cc.vt.edu/openpop/backend"; 
+var server = typeof serverOverride !== "undefined"? serverOverride : "http://127.0.0.1:8000";
 
 var jsonData = {};
 jsonData.book = BOOK_NAME;
@@ -214,7 +214,7 @@ function wrongAnswerEffect(score, framework){
         .effect("shake", {times: 3, distance: 8}, 50)
         .val($._("Try Again"));
     // Is this a message to be shown?
-    if (score.message != null) {
+    if (score.message != null && score.message !== "openPop") {
         $("#check-answer-results > p").html(score.message).show().tex();
     } else {
         $("#check-answer-results > p").hide();
@@ -282,9 +282,9 @@ function handleAttempt(data) {
     // Update interface corresponding to correctness
     if (skipped || Exercises.assessmentMode) {
         disableCheckAnswer();
-    } else if (score.correct) {
+    } else if (score.correct && score.message !== "openPop") {
        correctAnswerEffect();
-    } else {
+    } else if(score.message !== "openPop"){
        wrongAnswerEffect(score, framework);
     }
 
@@ -337,7 +337,14 @@ function handleAttempt(data) {
       if(data && data.openPop){
          progress = data.progress;
          streakNum = data.streak;
-         feedbackEffect(data.message);
+         if(data.correct){
+             correctAnswerEffect();
+         }else {
+             wrongAnswerEffect(score, framework);
+             if(data.message !== null){
+                 feedbackEffect(data.message);
+             }
+         }
       }else if (data) {
         progress = data.streak;
         if (parseInt(data.progress._sign) != 0) {
