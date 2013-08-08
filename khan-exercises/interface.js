@@ -44,7 +44,8 @@ var PerseusBridge = Exercises.PerseusBridge,
     firstProblem = true;
 
 //
-var server = typeof serverOverride !== "undefined"? serverOverride : "http://127.0.0.1:8000";
+var server = typeof serverOverride !== "undefined"? serverOverride : "http://opendsa.cc.vt.edu/openpop/backend"; 
+//"http://127.0.0.1:8000";
 
 var jsonData = {};
 jsonData.book = BOOK_NAME;
@@ -228,8 +229,8 @@ function wrongAnswerEffect(score, framework){
 }
 
 // Show feed-back message from the back end
-function feedbackEffect(){
-
+function feedbackEffect(msg){
+    $('#solutionarea').text(msg);
 }
 
 function handleAttempt(data) {
@@ -333,7 +334,11 @@ function handleAttempt(data) {
       data = jQuery.parseJSON(data);
       var progress = 0;
       var streakNum = 0;
-      if (data) {
+      if(data && data.openPop){
+         progress = data.progress;
+         streakNum = data.streak;
+         feedbackEffect(data.message);
+      }else if (data) {
         progress = data.streak;
         if (parseInt(data.progress._sign) != 0) {
           progress = 0;
