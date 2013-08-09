@@ -12,8 +12,10 @@ Written by Junyang Chen and Cliff Shaffer
   <script src="../../JSAV/lib/jquery.transform.light.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
   <script type="text/javascript"
-  <script>urlBaseOverride = "../../khan-exercises/";</script>
-  <script src="../../khan-exercises/khan-exercise.js"></script>
+    src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js">
+  </script>
+  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
+  <script src="../../lib/khan-exercise-min.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
 
@@ -94,8 +96,7 @@ function initJSAV(arr_size, insertPos, insertValue) {
   cloneArr = answerArr.slice(0);
 
   jsav = new JSAV("jsav");
-  jsav.recorded();
-  jsav.SPEED = 80;
+  //jsav.recorded();
   jsavArr = jsav.ds.array(answerArr, {indexed: true, center: false});
   jsavArr.css({top:50});
   var arrowCurr = jsav.g.line(18 + inPosision * 31, 30, 18 + inPosision * 31, 52,{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
