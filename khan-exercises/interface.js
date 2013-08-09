@@ -57,7 +57,6 @@ if (localStorage.session) {
    jsonData.key = session.key;
 }
 
-
 // Load in the exercise data from the server
 jQuery.ajax({
    // Do a request to the server API
@@ -381,13 +380,15 @@ function handleAttempt(data) {
 
         // Hide the page so users don't continue, then warn the user about the
         // problem and encourage reloading the page
-        $("#problem-and-answer").css("visibility", "hidden");
+        //$("#problem-and-answer").css("visibility", "hidden");
         if(attemptData.key === 'phantom-key'){
-            $(Exercises).trigger("warning",
-               $._("You need to login to get credit. "
-                )
-            );
+            //$(Exercises).trigger("warning",
+               //$._("You need to login to get credit. "
+                //)
+            //);
+            return;
         }else {
+            $("#problem-and-answer").css("visibility", "hidden");
             $(Exercises).trigger("warning",
                 $._("This page is out of date. You need to " +
                     "<a href='%(refresh)s'>refresh</a>, but don't " +
