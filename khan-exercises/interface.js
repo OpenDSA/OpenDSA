@@ -214,7 +214,7 @@ function wrongAnswerEffect(score, framework){
         .effect("shake", {times: 3, distance: 8}, 50)
         .val($._("Try Again"));
     // Is this a message to be shown?
-    if (score.message != null && score.message !== "openPop") {
+    if (score.message != null) {
         $("#check-answer-results > p").html(score.message).show().tex();
     } else {
         $("#check-answer-results > p").hide();
@@ -246,7 +246,7 @@ function handleAttempt(data) {
 
     // Stop if the user didn't try to skip the question and also didn't yet
     // enter a response
-    if (score.empty && !skipped) {
+    if (score.empty && !skipped && typeof OpenPopKa === "undefined") {
         return false;
     }
 
@@ -282,9 +282,9 @@ function handleAttempt(data) {
     // Update interface corresponding to correctness
     if (skipped || Exercises.assessmentMode) {
         disableCheckAnswer();
-    } else if (score.correct && score.message !== "openPop") {
+    } else if (score.correct && typeof OpenPopKa === "undefined") {
        correctAnswerEffect();
-    } else if(score.message !== "openPop"){
+    } else if(typeof OpenPopKa === "undefined"){
        wrongAnswerEffect(score, framework);
     }
 
@@ -334,7 +334,9 @@ function handleAttempt(data) {
       data = jQuery.parseJSON(data);
       var progress = 0;
       var streakNum = 0;
-      if(data && data.openPop){
+
+      // Update DOM elements according to the feedback from OpenPop
+      if(data && typeof OpenPopKa !== "undefined"){
          progress = data.progress;
          streakNum = data.streak;
          if(data.correct){
@@ -345,6 +347,7 @@ function handleAttempt(data) {
                  feedbackEffect(data.message);
              }
          }
+      // Update DOM elements if this is not a OpenPop exersices
       }else if (data) {
         progress = data.streak;
         if (parseInt(data.progress._sign) != 0) {
@@ -361,7 +364,8 @@ function handleAttempt(data) {
       total = parseInt(total, 10);
       $('#pointsrecieve').text(total);
     });
-    respondpromise.fail(function(xhr) { 
+    
+    respondpromise.fail(function(xhr) {
         //Alert any listeners of the error before reload
         $(Exercises).trigger("attemptError");
 
@@ -378,7 +382,13 @@ function handleAttempt(data) {
         // Hide the page so users don't continue, then warn the user about the
         // problem and encourage reloading the page
         $("#problem-and-answer").css("visibility", "hidden");
-        $(Exercises).trigger("warning",
+        if(attemptData.key === 'phantom-key'){
+            $(Exercises).trigger("warning",
+               $._("You need to login to get credit. "
+                )
+            );
+        }else {
+            $(Exercises).trigger("warning",
                 $._("This page is out of date. You need to " +
                     "<a href='%(refresh)s'>refresh</a>, but don't " +
                     "worry, you haven't lost progress. If you think " +
@@ -387,7 +397,8 @@ function handleAttempt(data) {
                     "type=Defect'>tell us</a>.",
                     {refresh: _.escape(window.location.href)}
                 )
-        );
+            );
+        }
     });
 
     if (skipped && !Exercises.assessmentMode) {
