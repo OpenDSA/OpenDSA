@@ -50,3 +50,16 @@ p.instructions {
 .greenbg, .greenbg.jsavvalue, .jsavarray.jsavbararray .jsavvalue.greenbg {
   background-color: #5f5;
 }
+
+.jsavstack {
+  position: relative;
+  background-color: inherit;
+}
+.jsavstacknode {
+  position: absolute;
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5em;
+  z-index: 100;
+}
