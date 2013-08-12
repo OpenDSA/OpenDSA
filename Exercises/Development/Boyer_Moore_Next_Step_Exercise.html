@@ -309,9 +309,6 @@ function boyer_moore(ma, su, mmc, align_table) {
     var align_temp = compute_align_table(sub_temp);
 
 
-
-
-
     boyer_moore(master_temp, sub_temp, mmc_temp, align_temp);
 
     master_temp = master_temp.split("");
@@ -345,6 +342,10 @@ function boyer_moore(ma, su, mmc, align_table) {
     mmc = bm.ds.array(mmc_temp, {center: false});
     align = bm.ds.array(align_temp, {center: false});
 
+	var master_label = bm.label("Master:",{before: master_str});
+	var sub_label = bm.label("Substring:",{before: sub_str});
+	var mmc_label = bm.label("MMC:",{before: mmc});
+	var align_label = bm.label("Align Array:",{before: align});
 
     master_str.click(clickHandler);
     sub_str.click(clickHandlerSub);
@@ -375,7 +376,7 @@ function boyer_moore(ma, su, mmc, align_table) {
       <div class="problems">
         <div>
           <div class="question">
-                   The exercise below will test your newly acquired knowledge on the Boyer-Moore algorithm. Assume the two characters highlighted in red were just compared and it is discovered they don't match. Please click the index of the master string that will be compared <b>after the current mismatch</b> and then the index of the substring that will be compared to it. When you are finished hit <b>Check Answer</b> to see if you are correct. The values in the strings that have already been compared are highlighted in green so there is no confusion, and the characters that were just mismatched are in red. The idea is to trace the string <b><var>sub_temp.join("")</var></b> through the string <b><var>master_temp.join("")</var></b> using the KMP Algorithm for just one step.
+                   The exercise below will test your newly acquired knowledge on the Boyer-Moore algorithm. Assume the two characters highlighted in red were just compared and it is discovered they don't match. Please click the index of the master string that will be compared <b>after the current mismatch</b> and then the index of the substring that will be compared to it. When you are finished hit <b>Check Answer</b> to see if you are correct. The values in the strings that have already been compared are highlighted in green so there is no confusion, and the characters that were just mismatched are in red. In effect, what you are doing is tracing the string <b><var>sub_temp.join("")</var></b> through the string <b><var>master_temp.join("")</var></b> using the KMP Algorithm for just one step.
             <div id="jsav_area"></div>
           </div> <!-- question -->
           <div class="solution" data-type="custom">
