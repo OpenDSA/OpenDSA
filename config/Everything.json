@@ -1109,6 +1109,20 @@
         }
       }
     },
+    "Indexing": {
+      "Development/IndexIntro": {
+        "long_name": "Introduction to Indexing",
+        "exercises": {}
+      },
+      "Development/LinearIndex": {
+        "long_name": "Linear Indexing",
+        "exercises": {}
+      },
+      "Development/BTree": {
+        "long_name": "B-Trees",
+        "exercises": {}
+      }
+    },
     "Graphs": {
       "Development/GraphIntro": {
         "long_name": "Introduction and Terminology",
@@ -1168,20 +1182,6 @@
             "threshold": 1.0
           }
         }
-      }
-    },
-    "Indexing": {
-      "Development/IndexIntro": {
-        "long_name": "Introduction to Indexing",
-        "exercises": {}
-      },
-      "Development/LinearIndex": {
-        "long_name": "Linear Indexing",
-        "exercises": {}
-      },
-      "Development/BTree": {
-        "long_name": "B-Trees",
-        "exercises": {}
       }
     },
     "Advanced Analysis": {

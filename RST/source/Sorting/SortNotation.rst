@@ -15,7 +15,7 @@ Sorting Terminology and Notation
 
 Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`
 with associated key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
-the :dfn:`Sorting Problem` is to
+the :term:`Sorting Problem` is to
 arrange the records into any order :math:`s` such that records
 :math:`r_{s_1}`, :math:`r_{s_2}`, ..., :math:`r_{s_n}`
 have keys obeying the property
@@ -40,7 +40,7 @@ ordering to the duplicates, typically based on their order of
 occurrence within the input.
 It might be desirable to maintain this initial ordering among
 duplicates.
-A sorting algorithm is said to be :dfn:`stable` if it does not
+A sorting algorithm is said to be :term:`stable` if it does not
 change the relative ordering of records with identical key values.
 Many, but not all, of the sorting algorithms presented in this chapter
 are stable, or can be made stable with minor changes.

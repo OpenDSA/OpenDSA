@@ -58,50 +58,6 @@ efficient.
 .. inlineav:: AQueueCircularCON ss
    :output: show 
    
-.. TODO::
-   :type: Slideshow
-
-   Implement these paragraphs using a slideshow.
-
-   There remains one more serious, though subtle, problem to the
-   array-based queue implementation.
-   How can we recognize when the queue is empty or full?
-   Assume that ``front`` stores the array index for the front element
-   in the queue, and ``rear`` stores the array index for the rear
-   element.
-   If both ``front`` and ``rear`` have the same position, then
-   with this scheme there must be one element in the queue.
-   Thus, an empty queue would be recognized by having ``rear`` be
-   *one less* than ``front`` (taking into account the fact that
-   the queue is circular, so position ``size-1`` is actually
-   considered to be one less than position 0).
-   But what if the queue is completely full?
-   In other words, what is the situation when a queue with :math:`n`
-   array positions available contains :math:`n` elements?
-   In this case, if the front element is in position 0, then the rear
-   element is in position ``size-1``.
-   But this means that the value for ``rear`` is one less than the
-   value for ``front`` when the circular nature of the queue is taken
-   into account.
-   In other words, the full queue is indistinguishable from the empty
-   queue!
-
-   You might think that the problem is in the assumption about
-   ``front`` and ``rear`` being defined to store the array indices
-   of the front and rear elements, respectively, and that some
-   modification in this definition will allow a solution.
-   Unfortunately, the problem cannot be remedied by a simple change to
-   the definition for ``front`` and ``rear``, because of
-   the number of conditions or ``states`` that the queue can be in.
-   Ignoring the actual position of the first element, and ignoring the
-   actual values of the elements stored in the queue, how many different
-   states are there?
-   There can be no elements in the queue, one element, two, and so on.
-   At most there can be :math:`n` elements in the queue if there are
-   :math:`n` array positions.
-   This means that there are :math:`n+1` different states for the queue
-   (0 through :math:`n` elements are possible).
-
 .. inlineav:: AQueueEmptyFullCON ss
    :output: show 
    
@@ -138,16 +94,15 @@ Here is an array-based queue implementation.
    
 In this implementation, the front of the queue is defined to be toward
 the lower numbered positions in the array (in the counter-clockwise
-direction in Figure :num:`Figure #GoodQueue`), and the rear is
+direction in the circular array), and the rear is
 defined to be toward the higher-numbered positions.
 Thus, ``enqueue`` increments the rear pointer (modulus ``size``),
 and ``dequeue`` increments the front pointer.
 Implementation of all member functions is straightforward.
 
-.. TODO::
-   :type: Exercise
+.. avembed:: Exercises/Development/listAQueueEnqueue.html ka
 
-   Need exercises for pushing and popping on array-based queues.
+.. avembed:: Exercises/Development/listAQueueDequeue.html ka
 
 Linked Queues
 -------------
@@ -168,6 +123,10 @@ Here is the linked queue class declaration.
 .. inlineav:: LQueueDequeueCON ss
    :output: show 
    
+.. avembed:: Exercises/Development/listLQueueEnqueue.html ka
+
+.. avembed:: Exercises/Development/listLQueueDequeue.html ka
+
 .. TODO::
    :type: Exercise
 

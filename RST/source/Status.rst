@@ -29,7 +29,7 @@ If you are looking at the "Dev" book, then you are seeing everything
 **execept** the modules that are considered complete.
 (We maintain this version to speed up compilation a bit for the
 developers.)
-If you are looking at the "OpenDSA" book, are are seeing the modules
+If you are looking at the "OpenDSA" book, you are seeing the modules
 that we consider "ready for use", perhaps with some stub modules to
 make the cross-referencing work.
 

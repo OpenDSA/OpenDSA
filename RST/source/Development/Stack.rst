@@ -76,12 +76,9 @@ array should represent the top of the stack.
 .. inlineav:: AStackPopCON ss
    :output: show
    
-.. TODO::
-   :type: Exercise
-
-   Need exercises for pushing and popping on array-based stacks.
-   
 .. avembed:: Exercises/Development/listAStackPush.html ka
+
+.. avembed:: Exercises/Development/listAStackPop.html ka
 
 Linked Stacks
 -------------
@@ -97,6 +94,8 @@ Here is the complete linked stack implementation.
 .. codeinclude:: Lists/LStack.pde
    :tag: LStack1,LStack2
 
+.. _LStackDiagram:
+
 .. inlineav:: LStackDiagramCON dgm
    :align: center   
    
@@ -108,11 +107,9 @@ Here is the complete linked stack implementation.
 .. inlineav:: LStackPopCON ss
    :output: show
    
-.. TODO::
-   :type: Exercise
+.. avembed:: Exercises/Development/listLStackPush.html ka
 
-   Need exercises for pushing and popping on linked stacks.
-   
+.. avembed:: Exercises/Development/listLStackPop.html ka
 
    
 Comparison of Array-Based and Linked Stacks
@@ -144,6 +141,8 @@ one stack and given to the other.
 If instead both stacks grow at the same time, then the free space
 in the middle of the array will be exhausted
 quickly.
+
+.. _TwoArrayStacks:
 
 .. inlineav:: LStackTwostacksCON dgm
    :align: center     
