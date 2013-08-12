@@ -166,6 +166,9 @@
 	var c = rk_slideshow.variable([c_val], {visible: true, label: "C = "});
 	var equation = rk_slideshow.variable(['Magic_M = (Magic_M * C - (M[p].ascii_val * CP) + (Q * C + M[p+S.length].ascii_val)) mod Q'], {visible: true, label: "Equation: "});
 
+	var master_label = rk_slideshow.label("Master:",{before:master_str});
+	var sub_label = rk_slideshow.label("Sub:",{before:sub_str});
+
 
   });
 
@@ -194,7 +197,7 @@
       <div class="problems">
         <div>
           <div class="question">
-             The exercise below will test your newly acquired knowledge on the Rabin-Karp algorithm. The Magic_M has been computed for the first step comparison of the algorithm, this exercise requires that you use the modified Horner's Method to compute Magic_M at the next step. The strings have two values at each index, the actual character, and the character ascii value (use the ascii values in the equation). The necessary variables and equation have been provided, a calcualtor may be necessary.
+             The exercise below will test your newly acquired knowledge on the Rabin-Karp algorithm. The value for Magic_M has been computed for the first step comparison of the algorithm. This exercise requires that you use the modified Horner's Method to compute Magic_M at the next step. The strings have two values at each index, the actual character, and the character's ascii value (which will be used in the equation). The necessary variables and equation have been provided. (A calcualtor may be necessary.)
 			<p><b>Your solution:</b> <input type = "text" id = "user_answer" size = "4"/> </p>
             <div id="jsav_area"></div>
           </div> <!-- question -->
