@@ -10,21 +10,20 @@
 
     <body>
         <style>
-          .jsavnode {
-            cursor: default;
-          }
           .jsavtreenode {
             cursor: pointer;
+          }
+          .jsavstacknode {
+            font-size: 1.5em;
           }
         </style>
         <h1>BST Insert</h1>
         <div id="jsavcontainer">
             <p class="instructLabel">Instructions:</p>
             <p class="instructions">
-                    Use the BST Insert algorith to insert the values from the array. Click on a node to move the highlighted value from the array into the binary tree.
+                    Use the BST Insert algorith to insert the values from the stack. Click on a node to move the highlighted value into the binary tree.
             </p>
             <p align="center" class="jsavexercisecontrols"></p>
-            <ol id="insertValues"></ol>
         </div>
 
         <script
@@ -34,15 +33,14 @@
         <script src="../../JSAV/lib/jquery.transform.light.js"></script>
         <script src="../../JSAV/lib/raphael.js"></script>
         <script src="../../JSAV/build/JSAV.js"></script>
+        <script src="stack.js"></script>
 
         <script>
 
-        var initialArray = [],
-            jsavBinaryTree,
-            jsavArray,
-            arraySize = 10,
-            arrayIndex,
-            $array = $('#insertValues'),
+        var insertArray = [],
+            binaryTree,
+            stack,
+            insertSize = 10,
             av = new JSAV($("#jsavcontainer"));
 
         JSAV._types.ds.BinaryTree.prototype.insert = function(value) {
@@ -78,16 +76,25 @@
         av.recorded(); // we are not recording an AV with an algorithm
 
         function initialize() {
-            if (jsavBinaryTree) {
-                jsavBinaryTree.clear();
+            insertArray = JSAV.utils.rand.numKeys(10, 100, insertSize, {test: dataTest, tries: 10});
+            if (stack) {
+                stack.clear();
             }
-            jsavBinaryTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
-            jsavBinaryTree.root("");
-            jsavBinaryTree.root().addClass("emptynode");
-            jsavBinaryTree.click(clickHandler);
-            jsavBinaryTree.layout();
+            stack = av.ds.stack({center: true});
+            for (var i = 0; i < insertSize; i++) {
+                stack.addLast(insertArray[i]);
+            }
+            stack.layout();
+            stack.first().highlight();
 
-            arrayIndex = av.variable(0);
+            if (binaryTree) {
+                binaryTree.clear();
+            }
+            binaryTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
+            binaryTree.root("");
+            binaryTree.root().addClass("emptynode");
+            binaryTree.click(clickHandler);
+            binaryTree.layout();
 
             function dataTest(array) {
                 var bst = av.ds.bintree();
@@ -97,32 +104,28 @@
                 return result;
             } 
 
-            initialArray = JSAV.utils.rand.numKeys(10, 100, arraySize, {test: dataTest, tries: 10});
-            var htmldata = "";
-            for (var i = 0; i < arraySize; i++)
-                htmldata += "<li>"+initialArray[i]+"</li>";
-            $array.html(htmldata);
-            jsavArray = av.ds.array($array, {indexed: true});
-            jsavArray.highlight(0);
-
-            return jsavBinaryTree;
+            return binaryTree;
         }
         
         function modelSolution(jsav) {
-            var modelArray = jsav.ds.array(initialArray, {indexed: true});
-            var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 10});
-
             jsav._undo = [];
 
+            var modelStack = jsav.ds.stack({center: true});
+            for (var i = 0; i < insertSize; i++) {
+                modelStack.addLast(insertArray[i]);
+            }
+            modelStack.layout();
+            modelStack.first().highlight();
+
+            var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 10});
             modelTree.root("");
             modelTree.root().addClass("emptynode");
             modelTree.layout();
 
-            modelArray.highlight(0);
             jsav.displayInit();
 
-            for (var i = 0; i < arraySize; i++) {
-                var val = initialArray[i];
+            for (var i = 0; i < insertSize; i++) {
+                var val = insertArray[i];
                 var node = modelTree.root();
                 while (node.value() !== "") {
                     if (val <= node.value()) {
@@ -133,16 +136,17 @@
                 }
                 node.value(val);
                 node.left("");
+                node.left().element.addClass("emptynode");
                 node.right("");
+                node.right().element.addClass("emptynode");
                 modelTree.layout();
                 node.removeClass("emptynode");
-                node.left().addClass("emptynode");
-                node.right().addClass("emptynode");
 
-                modelArray.unhighlight(i);
-                modelArray.value(i, "");
-                if (i + 1 < arraySize)
-                    modelArray.highlight(i + 1);
+                modelStack.removeFirst();
+                modelStack.layout();
+                if (modelStack.first()) {
+                    modelStack.first().highlight();
+                }
 
                 jsav.stepOption("grade", true);
                 jsav.step();
@@ -152,31 +156,28 @@
         }
 
         function clickHandler() {
-            if (arrayIndex.value() < arraySize) {
+            if (stack.size()) {
                 //insert value into this node
-                this.value(initialArray[arrayIndex.value()]);
-                //remove value from the array
-                jsavArray.value(arrayIndex.value(), "");
-                //unhighlight array
-                jsavArray.unhighlight(arrayIndex.value());
-                //increase value of arrayIndex
-                arrayIndex.value(arrayIndex.value() + 1);
-                //highlight next value
-                if (arrayIndex.value() < arraySize) {
-                    jsavArray.highlight(arrayIndex.value());
+                this.value(stack.first().value());
+                //remove value from the stack
+                stack.removeFirst();
+                stack.layout();
+                //highlight the next value
+                if (stack.first()) {
+                    stack.first().highlight();
                 }
                 if (!this.left()) {
                     //add empty node on the left side
                     this.left("");
-                    this.left().addClass("emptynode");
+                    this.left().element.addClass("emptynode");
                 }
                 if (!this.right()) {
                     //add empty node on the right side
                     this.right("");
-                    this.right().addClass("emptynode");
+                    this.right().element.addClass("emptynode");
                 }
                 //update tree
-                jsavBinaryTree.layout();
+                binaryTree.layout();
                 //remove class for dashed border
                 this.removeClass("emptynode");
                 //gradeable step
