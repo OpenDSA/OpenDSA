@@ -298,7 +298,7 @@
 
       kmp_real(master_str.split(""), sub_str.split(""), align_table_temp, 1);
 
-      $("#number1").html("Number 1 (compares): "+compares);
+      $("#number1").html("Number 1 (comparisons): "+compares);
       $("#number2").html("Number 2 (shifts): "+shifts);
       started = true;
     }
@@ -324,7 +324,7 @@
       <div class="problems">
         <div>
           <div class="question">
-             This exercise will provide you with 2 numbers. The first number is the number of comparisons, the second number is the number of shifts. Shifts can be defined as when the sub string realigns itself with the master string using the alignment array (any shift larger than 1). Comparisons can be defined as comparing 2 characters between the master and sub string. Start by entering a string you which to search (Max length: 14 chars), then enter the string you would like
+             This exercise will provide you with 2 numbers. The first number is the number of comparisons, the second number is the number of shifts. Shifts can be defined as when the substring realigns itself with the master string using the alignment array (that is, any shift larger than 1). Comparisons can be defined as comparing 2 characters between the master and substring. Start by entering a string you which to search (Max length: 14 chars), then enter the string you would like
               to search for in the first string you entered. <br /> <br />
 
               <p id = "number1"> </p>
