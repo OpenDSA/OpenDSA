@@ -2,8 +2,8 @@
   "title": "Lists",
   "book_dir": "Books",
   "code_dir": "SourceCode/Processing",
-  "module_origin": "http://localhost",
-  "backend_address": "http://127.0.0.1:8000/",
+  "module_origin": "http://algoviz.org",
+  "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
   "build_ODSA": true,
   "allow_anonymous_credit": true,
@@ -72,6 +72,12 @@
           },
           "listArrayDeletion": {
             "long_name": "Array-based List Delete Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "LinkedListKAEx": {
+            "long_name": "LinkedList KA OpenPop",
             "required": true,
             "points": 1,
             "threshold": 5

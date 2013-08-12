@@ -44,14 +44,16 @@ var PerseusBridge = Exercises.PerseusBridge,
     firstProblem = true;
 
 //
-//var server = typeof serverOverride !== "undefined"? serverOverride : "http://opendsa.cc.vt.edu/openpop/backend"; 
-var server = typeof serverOverride !== "undefined"? serverOverride : "http://127.0.0.1:8000";
+var server = serverOverride ? serverOverride : SERVER_URL;
+console.log(server);
 
 var jsonData = {};
 jsonData.book = BOOK_NAME;
 jsonData.module = MODULE_NAME;
 jsonData.key = 'phantom-key';
+
 var exerciseName = Khan.getSeedInfo().sha1;
+
 if (localStorage.session) {
    var session = JSON.parse(localStorage.session);
    jsonData.key = session.key;
@@ -67,13 +69,25 @@ jQuery.ajax({
    // Make sure cookies are passed along
    xhrFields: { withCredentials: true },
    success: function(data){
-     var streakval= data.objects[0].streak;
-     var progress = data.objects[0].progress_streak;
+     var streakval= data.objects[0] && data.objects[0].streak? data.objects[0].streak : 0;
+     var progress = data.objects[0] && data.objects[0].progress_streak ? data.objects[0].progress_streak : 0;
      testdeffer.done(function(){
-        console.log(progress);
-        $('#pointstotal').text(parseInt(streakval));
-        $('#pointsrecieve').text(parseInt(progress));
+        $('#points-area').empty();
+        var points_progress_text = $("<span style = 'font-size:60%'>Current score:  </span>");
+        var points_progress = $("<span id = 'points-progress' style = 'font-size : 65%; font-weight : bold;'></span>").text(Math.min(parseInt(progress), parseInt(streakval)));
+         var points_total_text = $("<span style = 'font-size:60%'> out of  </span>");
+        var points_total = $("<span id = 'points-total' style = 'font-size : 65%; font-weight : bold;'></span>").text(parseInt(streakval));
+        $('#points-area').append(points_progress_text);
+        $('#points-area').append(points_progress);
+        $('#points-area').append(points_total_text);
+        $('#points-area').append(points_total);
      });
+   },
+   error: function(){
+        testdeffer.done(function(){
+            $('#points-area').empty();
+            $('#points-area').text(" Back end is not running!");
+        });
    }
 });
 
@@ -361,7 +375,7 @@ function handleAttempt(data) {
 
       }
       total = parseInt(total, 10);
-      $('#pointsrecieve').text(total);
+      $('#points-progress').text(total);
     });
     
     respondpromise.fail(function(xhr) {

@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-
-<head>
-   <style type="text/css">
-   #codeTextarea{
+  <title> Linked List KA Exercise</title>
+  <script src="../../lib/jquery.min.js">
+  </script>
+  <script src="../../lib/jquery-ui.min.js">
+  </script>
+  <script src = "../../lib/odsaLoadKhan.js"></script>
+  <style>
+    #codeTextarea{
       width:400px;
       height:200px;
-   }
-   .textAreaWithLines{
+    }
+    .textAreaWithLines{
       font-family:courier;      
       border:1px solid #000;
       
-   }
-   .textAreaWithLines textarea,.textAreaWithLines div{
+    }
+    .textAreaWithLines textarea,.textAreaWithLines div{
       border:0px;
       line-height:120%;
       font-size:12px;
-   }
-   .lineObj{
+    }
+    .lineObj{
       color: #787878 ;
       background-color: #E8E8E8;
-   }
-   </style>
-   
-   <script type="text/javascript">
+    }
+  </style>
+</head>
+<body>
+   <script>
    // Indicate that this is a OpenPop exercise
    window.OpenPopKa = true;
-  
    var lineObjOffsetTop = 2;
    
    function createTextAreaWithLines(id)
@@ -75,21 +79,12 @@
    
       
    }
-   
+   $(document).ready(function() {  
+       console.log('donedone');
+       createTextAreaWithLines('codeTextarea');
+    });
+ 
    </script>
-   
-<title> Linked List KA Exercise</title>
-<script src="../../lib/jquery.min.js">
-</script>
-<script src="../../lib/jquery-ui.min.js">
-</script>
-<script>urlBaseOverride = "../../khan-exercises/";</script>
-<script src="../../khan-exercises/khan-exercise.js">
-<script src="css/khan-site.css">
-<script src="css/khan-exercise.css">
-</script>
-</head>
-<body>
 
 <div class="exercise">
   <div class="vars">
@@ -117,9 +112,6 @@
  } 
 </textarea></p>
 
-<script type="text/javascript">
-   createTextAreaWithLines('codeTextarea');
-   </script>
       <div class="question">
 	
       </div>
@@ -142,5 +134,4 @@
 </div>
  
 </body>
-<script src="../../khan-exercises/utils/tmpl.js"></script>
 </html>

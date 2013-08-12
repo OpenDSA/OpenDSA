@@ -67,6 +67,9 @@ function getURLParam(name) {
   return (param) ? decodeURIComponent(param[1]) : "";
 }
 
+// The address of the server where the data is sent
+var SERVER_URL = getURLParam('serverURL');
+
 // The domain where the OpenDSA modules are hosted, used by postMessage to send data to the parent module page
 var MODULE_ORIGIN = getURLParam('moduleOrigin');
 
