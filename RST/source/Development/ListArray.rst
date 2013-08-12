@@ -60,7 +60,9 @@ They all require :math:`\Theta(1)` time.
 
 Now try for yourself to see if you understand how Array-Based
 Insertion and Deletion work.
-   
+ 
+.. avembed:: Exercises/Development/LinkedListKAEx.html ka
+  
 .. avembed:: Exercises/Development/listArrayInsertion.html ka
   
 .. avembed:: Exercises/Development/listArrayDeletion.html ka

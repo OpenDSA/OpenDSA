@@ -75,6 +75,12 @@
             "required": true,
             "points": 1,
             "threshold": 5
+          },
+          "LinkedListKAEx": {
+            "long_name": "LinkedList KA OpenPop",
+            "required": true,
+            "points": 1,
+            "threshold": 5
           }
         }
       },
