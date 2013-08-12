@@ -16,6 +16,9 @@
           .jsavtreenode.jsavnullnode, .jsavnode.jsavindex{
             cursor: default;
           }
+          .jsavstacknode {
+            font-size: 1.5em;
+          }
         </style>
         <h1>BST Delete</h1>
         <div id="jsavcontainer">
@@ -24,7 +27,6 @@
                     Use the BST Delete algorith to delete the values in the array. Click on a node to erase its value, or if there is a previously erased value, to move the value into the erased node or replace the node. 
             </p>
             <p align="center" class="jsavexercisecontrols"></p>
-            <ol id="deleteValues"></ol>
         </div>
 
         <script
@@ -34,18 +36,17 @@
         <script src="../../JSAV/lib/jquery.transform.light.js"></script>
         <script src="../../JSAV/lib/raphael.js"></script>
         <script src="../../JSAV/build/JSAV.js"></script>
+        <script src="stack.js"></script>
 
         <script>
 
         var initialArray = [],
             deleteValues = [],
             jsavTree,
-            jsavArray,
-            arraySize = 5,          //delete 5 values/nodes
+            stack,
+            deleteSize = 5,          //delete 5 values/nodes
             treeSize = 20,          //20 nodes
             maxHeight = 6,
-            arrayIndex,
-            $array = $('#deleteValues'),
             av = new JSAV($("#jsavcontainer"));
 
         JSAV._types.ds.BinaryTree.prototype.insert = function (value) {
@@ -81,7 +82,11 @@
         av.recorded(); // we are not recording an AV with an algorithm
 
         function initialize() {
-
+            turnAnimationOff();
+            if (stack) {
+                stack.clear();
+            }
+            stack = av.ds.stack({center: true});
 
             function dataTest(array) {
                 var bst = av.ds.bintree();
@@ -89,7 +94,7 @@
                 var result = bst.height() <= maxHeight;
                 bst.clear();
                 return result;
-            } 
+            }
 
             //clear old binary tree
             if (jsavTree) {
@@ -106,19 +111,16 @@
             jsavTree.click(clickHandler);
             jsavTree.layout();
 
-            //pick the values to delete and insert them in the array
-            var htmldata = "";
-            for (var i = 0; i < arraySize; i++) {
-                deleteValues[i] = initialArray[Math.floor(treeSize - 1 - i * (treeSize - 1) / (arraySize - 1))];
-                htmldata += "<li>"+deleteValues[i]+"</li>";
+            //pick the values to delete and push them in the stack
+            for (var i = 0; i < deleteSize; i++) {
+                deleteValues[i] = initialArray[Math.floor(treeSize - 1 - i * (treeSize - 1) / (deleteSize - 1))];
+                stack.addLast(deleteValues[i]);
             }
-            $array.html(htmldata);
-            jsavArray = av.ds.array($array, {indexed: false});
-            jsavArray.highlight(0);
-
-            //create variable to store current index
-            arrayIndex = av.variable(0);
+            stack.first().highlight();
+            stack.layout();
             
+            restoreAnimationState();
+
             return jsavTree;
         }
         
@@ -172,7 +174,12 @@
                 }
             }
 
-            var modelArray = jsav.ds.array(deleteValues, {indexed: false});
+            var modelStack = jsav.ds.stack({center: true});
+            for (var i = 0; i < deleteSize; i++) {
+                modelStack.addLast(deleteValues[i]);
+            }
+            modelStack.layout();
+
             var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 10});
 
             modelTree.insert(initialArray);
@@ -180,9 +187,9 @@
 
             jsav._undo = [];
 
-            for (var i = 0; i < arraySize; i++) {
+            for (var i = 0; i < deleteSize; i++) {
                 //highlight the value which should be deleted
-                modelArray.highlight(i);
+                modelStack.first().highlight();
                 //node which should be deleted
                 var node = find(deleteValues[i]);
                 //highlight node
@@ -238,8 +245,8 @@
 
                 }
 
-                //unhighlight
-                modelArray.unhighlight(i);
+                //remove node from stack
+                modelStack.removeFirst();
             }
 
             return modelTree;
@@ -251,19 +258,16 @@
 
 
         function highlightNext() {
-            //unhighlight the current one
-            if (arrayIndex.value() < arraySize) {
-                jsavArray.unhighlight(arrayIndex.value());
-                arrayIndex.value(arrayIndex.value() + 1);
-            }
+            stack.removeFirst();
+            stack.layout();
             //higlight the next one
-            if (arrayIndex.value() < arraySize) {
-                jsavArray.highlight(arrayIndex.value());
+            if (stack.size()) {
+                stack.first().highlight();
             }
         }
 
         function clickHandler() {
-            if (arrayIndex.value() < arraySize && !this.hasClass("jsavnullnode")) {
+            if (stack.size() && !this.hasClass("jsavnullnode")) {
                 //find possible empty node between this and root
                 var empty = this;
                 while (empty !== null && empty.value() !== "") {
@@ -275,7 +279,6 @@
                 if (empty) {
                     if (!empty.right() !== !empty.left()) {
                         //replace node with this
-                        //turn animation off, because all children of empty will be hidden using animation, which will prevent calling show()
                         turnAnimationOff();
                         if (empty.parent().left() === empty) {
                             empty.parent().left(this);

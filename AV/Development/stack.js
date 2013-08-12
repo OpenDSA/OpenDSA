@@ -99,12 +99,11 @@
       if (prevNode) {
         pos = {
           left: pos.left + xTrans,
-          top: pos.top + yTrans,
+          top: pos.top + yTrans
         };
         zPos -= 1;
         width += Math.abs(xTrans);
         if ((yTrans < 0 && pos.top < posData[0].nodePos.top) || (yTrans > 0 && pos.top > posData[0].nodePos.top)) {
-          console.log("asd");
           height += Math.abs(yTrans);
         }
         if (stack.options.ytransition < 0) {
@@ -113,7 +112,7 @@
       } else {
         pos = {
           left: (xTrans < 0? stack.size(): 0) * -xTrans,
-          top: (yTrans < 0? Math.min(stack.size(), -yTrans): 0) * -(yTrans - 1)/2,
+          top: (yTrans < 0? Math.min(stack.size(), -yTrans): 0) * -(yTrans - 1)/2
         };
         zPos = stack.size();
         width = curNode.element.outerWidth();
@@ -123,6 +122,12 @@
 
       prevNode = curNode;
       curNode = curNode.next();
+    }
+    if (stack.size() === 0) {
+      var tmpNode = stack.newNode("");
+      width = tmpNode.element.outerWidth();
+      height = tmpNode.element.outerHeight();
+      tmpNode.clear();
     }
 
     if (stack.options.center) {
