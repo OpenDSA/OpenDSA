@@ -54,14 +54,14 @@
     var align_array_label = b_m_slideshow.label("align", {before: align_array});
     b_m_slideshow.step();
 
-    b_m_slideshow.umsg("The pseudo code that is now shown will serve as the guidelines for how the value at a specific index is computed, there are really only two cases...");
+    b_m_slideshow.umsg("The pseudocode that is now shown will serve as the guidelines for how the value at a specific index is computed, there are really only two cases...");
     var align_pseudo = b_m_slideshow.code("p = current_index \nsuffix_length = length of the suffix of string beginning at p+1 \noffset = least amount that the suffix must be moved left to match another occurance of itself without matching character in string[p] \nif p = string.length()-1 then: \n\talign[p] = 1 \nelse \n\talign[p] = suffix_length + offset", {before: the_string_label});
     b_m_slideshow.step();
 
     b_m_slideshow.umsg("Let it also be known that p decrements throughout this algorithm, working its way from string.length()-1 to 0.");
     b_m_slideshow.step();
 
-    b_m_slideshow.umsg("The first value of the alignment array is filled in with ease given this pseudo code...");
+    b_m_slideshow.umsg("The first value of the alignment array is filled in with ease given this pseudocode...");
     align_array.value(4, '1');
     align_array.highlight(4);
     align_pseudo.highlight(4);
