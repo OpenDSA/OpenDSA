@@ -136,12 +136,13 @@
                 jsav.stepOption("grade", true);
                 jsav.step();
                 // fix the tree by recoloring nodes and performing rotations
-                node.insert_case1();
-                modelTree.layout();
-                if (i === insertSize - 1) {
-                    jsav.stepOption("grade", true);
+                if (node.repair() !== false) {
+                    modelTree.layout();
+                    if (i === insertSize - 1) {
+                        jsav.stepOption("grade", true);
+                    }
+                    jsav.step();
                 }
-                jsav.step();
             }
 
             return modelTree;
