@@ -179,6 +179,9 @@
       alignment_table.value(i, align_table_temp[i]);
     }
     alignment_table.highlight(answer_index);
+
+	var str_label = kmp_exercise.label("String:", {before:str_arr, "left":"0px"});
+	var align_label = kmp_exercise.label("Alignment Table:",{before:alignment_table, "left":"0px"});
   }
   // reset function definition
   var f_reset = function () {
@@ -197,7 +200,7 @@
       <div class="problems">
         <div>
           <div class="question">
-            The exercise below will test your newly acquired knowledge on the KMP Alignment Array. Please use the text field to fill in the correct value that is missing from the alignment array. When you are finished hit <b>Check Answer</b> to see if you are correct.
+            The exercise below will test your newly acquired knowledge on the KMP Alignment Array. Please use the text field to fill in the correct value that is missing from the alignment array below. When you are finished hit <b>Check Answer</b> to see if you are correct.
             <p><b>Your solution:</b> <input type = "text" id = "user_answer" size = "2"/> </p>
             <div id="jsav_area"></div>
           </div> <!-- question -->

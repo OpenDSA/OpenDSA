@@ -95,3 +95,19 @@ DESCRIPTION
    html file has been modified by Sphinx.
    The file ``count.txt`` stores the latest modification times for the
    html files.
+
+Where things are
+----------------
+
+There are many files that affect the eventual HTML output.
+Here is a list of places to look if you are trying to make changes.
+
+  OpenDSA/RST/source/_themes/haiku/basic/layout.html
+
+  OpenDSA/RST/source/_themes/haiku/static/haiku.css_t
+
+  OpenDSA/RST/preprocessor.py
+
+  OpenDSA/RST/ODSAextensions
+
+  OpenDSA/tools/configure.py

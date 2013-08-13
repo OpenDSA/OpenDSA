@@ -361,7 +361,7 @@ jQuery.fn.rotate = function(degrees) {
   // radius
   var r1 = 50, r2 = 100;
   var cir = jsav.circular(cx, cy, r1, r2, {"stroke-width" : 2});
-  jsav.umsg("How can we recognize when the queue is empty or full? ");
+  jsav.umsg("There remains one more serious, though subtle, problem to the array-based queue implementation. How can we recognize when the queue is empty or full?");
   jsav.displayInit();
   cir.value(10, "12");
   cir.highlight(10);
@@ -374,7 +374,7 @@ jQuery.fn.rotate = function(degrees) {
   frontP.label.hide();
   var frontP1 = cir.pointer("front", 11);
   var rearP1 = cir.pointer("rear", 10);
-  jsav.umsg("Thus, an empty queue would be recognized by having rear be one less than front (taking into account the fact that the queue is circular, so position size-1 is actually considered to be one less than position 0).");
+  jsav.umsg("Thus, an empty queue would be recognized by having rear be <i>one less</i> than front (taking into account the fact that the queue is circular, so position size-1 is actually considered to be one less than position 0).");
   jsav.step();
   jsav.umsg("But what if the queue is completely full? In other words, what is the situation when a queue with n array positions available contains n elements? In this case, if the front element is in position 0, then the rear element is in position size-1.");
   frontP1.arrow.hide();

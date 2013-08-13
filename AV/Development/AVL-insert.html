@@ -18,11 +18,11 @@
         <div id="jsavcontainer">
             <p class="instructLabel">Instructions:</p>
             <p class="instructions">
-                    Insert the values in the table into the tree. Balance the tree at the correct node with the correct rotation when it becomes unbalanced.
+                    Insert the values in the stack into the tree. Balance the tree at the correct node with the correct rotation when it becomes unbalanced.
             </p>
             <p align="center" class="jsavexercisecontrols"></p>
-            <ol id="insertValues"></ol>
             <div class="jsavcanvas">
+                <div id="stackcontainer" style="margin: auto; padding: 15px"></div>
                 <div style="margin: auto; text-align: center; padding: 15px">
                     <button id="buttonL">Single Rotation Left</button>
                     <button id="buttonLR">Double Rotation LR</button>
@@ -35,20 +35,21 @@
         <script
            src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
         </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
+        </script>
         <script src="../../JSAV/lib/jquery.transform.light.js"></script>
         <script src="../../JSAV/lib/raphael.js"></script>
         <script src="../../JSAV/build/JSAV.js"></script>
         <script src="ClickHandler.js"></script>
         <script src="AVL-extension.js"></script>
+        <script src="stack.js"></script>
 
         <script>
 
-        var initialArray = [],
+        var insertValues = [],
             jsavTree,
-            jsavArray,
-            arraySize = 10,
-            $array = $('#insertValues'),
+            stack,
+            insertSize = 10,
             clickHandler,
             av = new JSAV($("#jsavcontainer"));
 
@@ -56,25 +57,30 @@
         function initialize() {
 
             turnAnimationOff();
-            initialArray = generateValues(arraySize, 10, 100); //No duplicates!
-            var htmldata = "";
-            for (var i = 0; i < arraySize; i++)
-                htmldata += "<li>"+initialArray[i]+"</li>";
-            $array.html(htmldata);
-            jsavArray = av.ds.array($array, {center: true});
 
             if (typeof clickHandler === "undefined") {
                 clickHandler = new ClickHandler(av, exercise, {selectedClass: "selected", effect: "move"});
-                clickHandler.addArray(jsavArray, {
-                    onSelect: function () {
-                        if (clickHandler.selNode) {
-                            clickHandler.selNode.removeClass("selected");
-                            clickHandler.selNode = null;
-                        }
-                    }
-                });
             }
             clickHandler.reset();
+
+            insertValues = generateValues(insertSize, 10, 100); //No duplicates!
+            if (stack) {
+                stack.clear();
+            }
+            stack = av.ds.stack({center: true, element: $("#stackcontainer").append("<div></div>").find("div")});
+            for (var i = 0; i < insertSize; i++) {
+                stack.addLast(insertValues[i])
+            }
+            stack.layout();
+            clickHandler.addList(stack, {
+                select: "first",
+                drop: "first",
+                onSelect: function () {
+                    if (clickHandler.selNode) {
+                        clickHandler.selNode.removeClass("selected");
+                    }
+                }
+            });
 
             //clear old binary tree
             if (jsavTree) {
@@ -88,6 +94,7 @@
             clickHandler.addTree(jsavTree, {
                 onDrop: function () {
                     turnAnimationOff();
+                    //add empty nodes and remove emptynode class
                     this.removeClass("emptynode");
                     this.addEmptyNodes();
                     restoreAnimationState();
@@ -120,10 +127,10 @@
 
             jsav._undo = [];
 
-            for (var i = 0; i < arraySize; i++) {
+            for (var i = 0; i < insertSize; i++) {
                 //find emptynode where the value will be inserted
                 var node = modelTree.root();
-                var val = initialArray[i].toString(10);
+                var val = insertValues[i];
                 while (!node.hasClass("emptynode")) {
                     if (val <= node.value()) {
                         node = node.left();
@@ -188,7 +195,7 @@
         exercise.reset();
 
         function clickAction(node, rotateFunction) {
-            if (!node) {
+            if (!node || node.container !== jsavTree) {
                 window.alert("Select an unbalanced node first!");
                 return;
             }

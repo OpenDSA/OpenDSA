@@ -38,12 +38,6 @@ If so, the node is taken from the freelist.
 If the freelist is empty, the standard ``new`` operator must then
 be called.
 
-.. TODO::
-   :type: Slideshow
-
-   Slideshow to illustrate using a freelist in conjunction with a
-   linked list.
-
 .. inlineav:: listFreeCON ss
    :output: show
 

@@ -73,118 +73,15 @@ While the code for these methods might be a little longer than their
 singly linked list counterparts (since there is an exra pointer in
 each node to deal with), they tend to be simpler.
 
-.. TODO::
-   :type: Code
-
-   This following code display will be removed, replaced by the four
-   slideshows for these methods.
-
-.. codeinclude:: Lists/Dlist.pde
-   :tag: Dlist
-
-.. TODO::
-   :type: Slideshow
-
-   Slideshow to display the ``insert`` method and do a walkthrough of
-   inserting a node into the doubly linked list. This will replace the
-   following text and the image.
-
 .. inlineav:: DLlistInsertCON ss
    :output: show   
    
-The ``insert`` method is especially simple for our doubly linked
-list implementation, because most of the work is done by the node's
-constructor.
-Figure :num:`Figure #DblListInsert` shows the list before and after
-insertion of a node with value 10.
-
-.. _DblListInsert:
-
-.. odsafig:: Images/DblListI.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Doubly linked list insertion
-
-   Insertion for doubly linked lists.
-   The labels :math:`\fbox{1}`, :math:`\fbox{2}`, and :math:`\fbox{3}`
-   correspond to assignments done by the linked list node constructor.
-   :math:`\fbox{4}` marks the assignment to ``curr->next``.
-   :math:`\fbox{5}` marks the assignment to the ``prev`` pointer
-   of the node following the newly inserted node.
-
-The three parameters to the ``new`` operator allow the list node
-class constructor to set the :math:`element`, :math:`prev`, and
-:math:`next` fields, respectively, for the new link node.
-The :math:`new` operator returns a pointer to the newly created node.
-The nodes to either side have their pointers updated to point to the
-newly created node.
-The existence of the header and tailer nodes mean that there are no
-special cases to worry about when inserting into an empty list.
-
-.. TODO::
-   :type: Slideshow
-
-   Slideshow to display the ``append`` method and do a walkthrough of
-   appending a node at the end of a doubly linked list. This will
-   replace the following text.
-
 .. inlineav:: DLlistAppendCON ss
    :output: show  
    
-The :math:`append` method is also simple.
-Again, the ``Link`` class constructor sets the ``element``,
-``prev``, and ``next`` fields of the node when the ``new``
-operator is executed.
-
-.. TODO::
-   :type: Slideshow
-
-   Slideshow to display the ``remove`` method and do a walkthrough of
-   removing a node from a doubly linked list. This will
-   replace the following text and image.
-
 .. inlineav:: DLlistRemoveCON ss
    :output: show
    
-.. _DblListRemove:
-
-.. odsafig:: Images/DblListD.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Doubly linked list removal
-
-   Doubly linked list removal.
-   Element ``it`` stores the element of the node being removed.
-   Then the nodes to either side have their pointers adjusted.
-
-Method ``remove`` (illustrated by Figure :num:`Figure #DblListRemove`)
-is straightforward, though the code is somewhat longer.
-First, the variable ``it`` is assigned the value being removed.
-Note that we must separate the element, which is returned to the
-caller, from the link object.
-The following lines then adjust the list.
-
-.. codeinclude:: Lists/DoubleTest.pde
-   :tag: Adjust
-
-The first line stores the value of the node being removed.
-The second line makes the next node's ``prev`` pointer point to the
-left of the node being removed.
-Finally, the ``next`` field of the node preceding the one being
-deleted is adjusted.
-The final steps of method ``remove`` are to update the
-list length and return the value of the deleted element.
-
-.. TODO::
-   :type: Slideshow
-
-   Slideshow to display the ``prev`` method and do a walkthrough of
-   calling ``prev`` on doubly linked list.
-
 .. inlineav:: DLlistPrevCON ss
    :output: show
    

@@ -2,12 +2,27 @@
 	"use strict";
 
 	/*
-	*	Red-black tree
+	*	RED-BLACK TREE
 	*
-	*	REQUIRES AVL-extension!!!
+	*	REQUIRES AVL-extension and
+    *            proficiency.css
     *
+    *   Red-black trees have the same functions as binary trees with AVL extension
     *
-    *   
+    *   Red-black nodes are extended binary tree nodes that are red by default.
+    *   They also have the following functions:
+    *
+    *   .isRed()        Returns true if the node is red
+    *   .isBlack()      Returns true if the node is black
+    *   .colorRed()     Changes the color of the node to red
+    *   .colorBlack()   Changes the color of the node to black
+    *   .toggleColor()  Toggles the color of the node between red and black
+    *   .grandparent()  Returns the grandpa of the node if it exists
+    *   .uncle()        Returns the uncle of the node if it exists
+    *   .repair()       Should be called on the last inserted node.
+    *                   Changes the colors of the nodes in the tree
+    *                   and performs necessary rotations.
+    *                   Note: Different from balance() in AVL extension
 	*
 	*/
 
@@ -18,7 +33,7 @@
     };
     JSAV.utils.extend(RedBlackTree, JSAV._types.ds.BinaryTree);
     var rbtreeproto = RedBlackTree.prototype;
-    // JSAV._types.ds.RedBlackTree = RedBlackTree;
+    JSAV._types.ds.RedBlackTree = RedBlackTree;
     
     rbtreeproto.newNode = function(value, parent, options) {
         return new RedBlackTreeNode(this, value, parent, options);
@@ -32,7 +47,7 @@
     };
     JSAV.utils.extend(RedBlackTreeNode, JSAV._types.ds.BinaryTreeNode);
     var rbnodeproto = RedBlackTreeNode.prototype;
-
+    JSAV._types.ds.RedBlackTreeNode = RedBlackTreeNode;
 
     rbnodeproto.isRed = function () {
         return this.element.hasClass("rednode");
@@ -77,19 +92,23 @@
         }
     };
 
+    rbnodeproto.repair = function () {
+        return this.insert_case1();
+    };
+
     //Insert cases from Wikipedia:
     //http://en.wikipedia.org/wiki/Red-black_tree
     rbnodeproto.insert_case1 = function () {
         if (!this.parent()) {
             this.colorBlack();
         } else {
-            this.insert_case2();
+            return this.insert_case2();
         }
     };
 
     rbnodeproto.insert_case2 = function () {
         if (this.parent().isBlack()) {
-            return;
+            return false; //did nothing
         } else {
             this.insert_case3();
         }
@@ -135,7 +154,7 @@
 
     JSAV.ext.ds.rbtree = function(element, options) {
         return new RedBlackTree(this, element, options);
-    }
+    };
 
 
 }(jQuery));
