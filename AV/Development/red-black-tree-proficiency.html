@@ -10,7 +10,7 @@
 
     <body>
         <style>
-          .jsavtreenode {
+          .treenode {
             cursor: pointer;
           }
         </style>
@@ -18,16 +18,17 @@
         <div id="jsavcontainer">
             <p class="instructLabel">Instructions:</p>
             <p class="instructions">
-                    Insert the values in the table into the tree. Balance the tree at the correct node with the correct rotation when it becomes unbalanced.
+                    Move the values from the stack to the tree. Color the nodes and balance the tree using rotations when it becomes necessary.
             </p>
             <p align="center" class="jsavexercisecontrols"></p>
-            <ol id="insertValues"></ol>
             <div class="jsavcanvas">
+                <div id="stackcontainer" style="margin: auto; padding: 15px"></div>
                 <div style="margin: auto; text-align: center; padding: 15px">
                     <button id="buttonL">Single Rotation Left</button>
                     <button id="buttonLR">Double Rotation LR</button>
                     <button id="buttonRL">Double Rotation RL</button>
                     <button id="buttonR">Single Rotation Right</button>
+                    <br>
                     <button id="buttonColor">Toggle Color</button>
                 </div>
             </div>
@@ -43,14 +44,14 @@
         <script src="ClickHandler.js"></script>
         <script src="AVL-extension.js"></script>
         <script src="Red-black-tree.js"></script>
+        <script src="stack.js"></script>
 
         <script>
 
-        var initialArray = [],
-            jsavTree,
-            jsavArray,
-            arraySize = 10,
-            $array = $('#insertValues'),
+        var insertValues = [],
+            tree,
+            stack,
+            insertSize = 10,
             clickHandler,
             av = new JSAV($("#jsavcontainer"));
 
@@ -58,42 +59,46 @@
         function initialize() {
 
             turnAnimationOff();
-            initialArray = generateValues(arraySize, 10, 100); //No duplicates!
-            var htmldata = "";
-            for (var i = 0; i < arraySize; i++)
-                htmldata += "<li>"+initialArray[i]+"</li>";
-            $array.html(htmldata);
-            jsavArray = av.ds.array($array, {center: true});
-
             if (typeof clickHandler === "undefined") {
                 clickHandler = new ClickHandler(av, exercise, {selectedClass: "selected", effect: "move"});
-                clickHandler.addArray(jsavArray, {
-                    onSelect: function () {
-                        if (clickHandler.selNode) {
-                            clickHandler.selNode.removeClass("selected");
-                            clickHandler.selNode = null;
-                        }
-                    }
-                });
             }
+
             clickHandler.reset();
+            insertValues = generateValues(insertSize, 10, 100); //No duplicates!
+            if (stack) {
+                stack.clear();
+            }
+            stack = av.ds.stack({center: true, element: $("#stackcontainer").append("<div></div>").find("div")});
+            for (var i = 0; i < insertSize; i++) {
+                stack.addLast(insertValues[i])
+            }
+            stack.layout();
+            clickHandler.addList(stack, {
+                select: "first",
+                drop: "first",
+                onSelect: function () {
+                    if (clickHandler.selNode) {
+                        clickHandler.selNode.removeClass("selected");
+                    }
+                }
+            });
 
             //clear old binary tree
-            if (jsavTree) {
-                clickHandler.remove(jsavTree);
-                jsavTree.clear();
+            if (tree) {
+                clickHandler.remove(tree);
+                tree.clear();
             }
             //create binary tree
-            jsavTree = av.ds.rbtree({center: true, visible: true, nodegap: 5});
-            jsavTree.root().addClass("emptynode");
-            jsavTree.layout();
-            clickHandler.addTree(jsavTree, {
+            tree = av.ds.rbtree({center: true, visible: true, nodegap: 5});
+            tree.root().addClass("emptynode");
+            tree.layout();
+            clickHandler.addTree(tree, {
                 onDrop: function () {
                     turnAnimationOff();
                     this.removeClass("emptynode");
                     this.addEmptyNodes();
                     restoreAnimationState();
-                    jsavTree.layout();
+                    tree.layout();
                 },
                 onSelect: function () {
                     //fake select the node
@@ -113,7 +118,7 @@
             
             restoreAnimationState();
 
-            return jsavTree;
+            return tree;
         }
         
         function modelSolution(jsav) {
@@ -123,9 +128,9 @@
 
             jsav._undo = [];
 
-            for (var i = 0; i < arraySize; i++) {
+            for (var i = 0; i < insertSize; i++) {
                 //find emptynode where the value will be inserted
-                var node = modelTree.insert(initialArray[i].toString()).removeClass("emptynode");
+                var node = modelTree.insert(insertValues[i]).removeClass("emptynode");
                 modelTree.addEmptyNodes();
                 modelTree.layout();
                 jsav.stepOption("grade", true);
@@ -133,7 +138,7 @@
                 // fix the tree by recoloring nodes and performing rotations
                 node.insert_case1();
                 modelTree.layout();
-                if (i === arraySize - 1) {
+                if (i === insertSize - 1) {
                     jsav.stepOption("grade", true);
                 }
                 jsav.step();
@@ -174,7 +179,7 @@
         exercise.reset();
 
         function clickAction(node, rotateFunction) {
-            if (!node) {
+            if (!node || node.container !== tree) {
                 window.alert("Select a node first!");
                 return;
             }
@@ -187,7 +192,7 @@
             clickHandler.selNode = null;
             node.removeClass("selected");
             restoreAnimationState();
-            jsavTree.layout();
+            tree.layout();
             av.step();
             // exercise.gradeableStep();
         }
