@@ -10,7 +10,7 @@
 
     <body>
         <style>
-          .jsavtreenode {
+          .treenode {
             cursor: pointer;
           }
         </style>
@@ -37,7 +37,7 @@
         <script>
 
         var initialArray = [],
-            jsavTree,
+            tree,
             treeSize = 20,
             clickHandler,
             av = new JSAV($("#jsavcontainer"));
@@ -49,26 +49,26 @@
             initialArray = generateValues(treeSize, 10, 100); //No duplicates!
 
             //clear old binary tree
-            if (jsavTree) {
-                jsavTree.clear();
+            if (tree) {
+                tree.clear();
             }
             //create binary tree
-            jsavTree = av.ds.rbtree({center: true, visible: true, nodegap: 5});
+            tree = av.ds.rbtree({center: true, visible: true, nodegap: 5});
             for (var i = 0; i < treeSize; i++) {
                 //find emptynode where the value will be inserted
-                var node = jsavTree.insert(initialArray[i]);
+                var node = tree.insert(initialArray[i]);
                 // fix the tree by recoloring nodes and performing rotations
-                node.insert_case1();
+                node.repair();
             }
-            colorTreeRed(jsavTree.root());
-            jsavTree.layout();
-            jsavTree.click( function () {
+            colorTreeRed(tree.root());
+            tree.layout();
+            tree.click( function () {
                 this.toggleColor();
             });
             
             restoreAnimationState();
 
-            return jsavTree;
+            return tree;
         }
         
         function modelSolution(jsav) {
@@ -80,7 +80,7 @@
                 //find emptynode where the value will be inserted
                 var node = modelTree.insert(initialArray[i]);
                 // fix the tree by recoloring nodes and performing rotations
-                node.insert_case1();
+                node.repair();
                 modelTree.layout();
                 if (i === treeSize - 1) {
                     jsav.stepOption("grade", true);
@@ -160,11 +160,11 @@
         JSAV._types.Exercise.prototype.grade = function () {
             var score = 0;
             //black root
-            score += jsavTree.root().hasClass("blacknode")? 1:0;
+            score += tree.root().hasClass("blacknode")? 1:0;
             //paths from the leaves to the roots have an equal amount of black nodes
-            score += blackNodesBetweenRootAndLeaves(jsavTree.root()) > 0? 1:0;
+            score += blackNodesBetweenRootAndLeaves(tree.root()) > 0? 1:0;
             //red nodes only have black children 
-            score += redHaveOnlyBlackChildren(jsavTree.root())? 1:0;
+            score += redHaveOnlyBlackChildren(tree.root())? 1:0;
 
             score = score === 3? 1: 0;
             
