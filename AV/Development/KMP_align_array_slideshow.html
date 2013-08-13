@@ -55,7 +55,7 @@
 
     //var align = alignment_slideshow.ds.array(['-1','0','1','2','3','0','0','1','2']);
     var align = alignment_slideshow.ds.array([' ',' ',' ',' ',' ',' ',' ',' ',' '], {indexed: true});
-    var align_label = alignment_slideshow.label("Alignment Array for Sub String", {before: align});
+    var align_label = alignment_slideshow.label("Alignment Array for Substring", {before: align});
 
     alignment_slideshow.umsg("The contents of the alignment array are calculated based on the longest proper substring that occurs at the beginning of the string and directly preceding the current character being analyzed.");
 
@@ -63,7 +63,7 @@
     alignment_slideshow.umsg("This doesn't apply to the first two spots in the alignment array because in the case of a mismatch at the first character: the pointer in the master string will be increase by one, and in the case of a mismatch at the second character: the string will simply be moved ahead exactly one character (with 0 offset).");
 
     alignment_slideshow.step();
-    alignment_slideshow.umsg("This means that we can assign the first array index to -1 to signify that we are at the first spot in the array. The second index can be set to 0 because that is the offset from the front of the string that we will have to travel upon a realignment.");
+    alignment_slideshow.umsg("This means that we can assign the first array index to -1 to signify that we are at the first spot in the array. The second index can be set to 0 because that is the offset from the front of the string that we will have to use upon a realignment.");
     var pseudo_alg = alignment_slideshow.code("align[0] = -1 \nalign[1] = 0 \nL = string.length \nfor(p = 2; p < L; p++): \n\tq = align[p-1] \n\twhile((q>= 0) and (string[q] != string[p-1])): \n\t\tq = align[q] \n\talign[p] = q+1", {before: str_label});
     align.value(0, "-1");
     align.value(1, "0");
