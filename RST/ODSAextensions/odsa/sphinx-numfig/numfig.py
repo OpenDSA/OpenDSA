@@ -1,6 +1,6 @@
 from docutils.nodes import figure, caption, Text, reference, raw, SkipNode, Element, topic
 from sphinx.roles import XRefRole
-from inlineav import av_dgm 
+from inlineav import av_dgm, av_ss
 import json
 
 # Element classes
@@ -106,6 +106,9 @@ def doctree_read(app, doctree):
                     figid_docname_map[id] = env.docname
                 i += 1
             if isinstance( figure_info, av_dgm ): 
+                module = env.docname
+                i += 1
+            if isinstance( figure_info, av_ss ) and len(figure_info.attributes['ids']) > 0:
                 module = env.docname
                 i += 1
             if isinstance( figure_info, topic):

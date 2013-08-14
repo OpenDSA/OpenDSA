@@ -12,7 +12,7 @@
 #
 #
 
-__author__ = 'breakid'
+__author__ = 'breakid, efouh'
 
 from docutils import nodes
 from docutils.nodes import General, Element, caption, Text, figure
@@ -30,6 +30,7 @@ import json
 #InlineAV diagram Element class
 class av_dgm(Element): pass
 class av_anchor(Element): pass
+class av_ss(Element):pass
 
 
 def visit_av_dgm_html(self, node):
@@ -38,6 +39,14 @@ def visit_av_dgm_html(self, node):
 
 def depart_av_dgm_html(self, node):
     self.body.append('</div>\n')
+
+def visit_av_ss_html(self, node):
+    self.body.append(self.starttag(node, 'div', CLASS='' ))
+    self.body.append(node['res'])
+
+def depart_av_ss_html(self, node):
+    self.body.append('</div>\n')
+
 
 def visit_av_anchor_html(self, node):
     self.body.append(self.starttag(node, 'div', CLASS=''))
@@ -62,10 +71,9 @@ def doctree_read(app, doctree):
         if  env.docname in json_data:
             module = env.docname
             num_module = json_data[env.docname]
-        if isinstance( avdgm_info, av_dgm ):
+        if isinstance( avdgm_info, av_dgm ) or ( isinstance( avdgm_info, av_ss ) and len(avdgm_info['ids'])>0 ):
             for cap in avdgm_info.traverse(caption):
                 cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
-                #figids_1[env.docname]= '%s.%d' %(num_module, i)
             for id in avdgm_info['ids']:
                 figids[id] = i
                 figid_docname_map[id] = env.docname
@@ -80,7 +88,8 @@ def doctree_read(app, doctree):
 def setup(app):
     app.connect('doctree-read', doctree_read)
     app.add_node(av_dgm,html=(visit_av_dgm_html, depart_av_dgm_html))
-    app.add_node(av_anchor,html=(visit_av_anchor_html, depart_av_anchor_html))
+    app.add_node(av_anchor,html=(visit_av_anchor_html, depart_av_anchor_html)) 
+    app.add_node(av_ss,html=(visit_av_ss_html, depart_av_ss_html))
     app.add_directive('inlineav',inlineav)
 
 def loadTable():
@@ -179,9 +188,21 @@ class inlineav(Directive):
                 avdgm_node += caption
 
           return [avdgm_node]
+        elif self.options['type'] == "ss" and self.content:
+          avss_node = av_ss()
+          avss_node['res'] = SLIDESHOW % self.options
+          node = nodes.Element()          # anonymous container for parsing
+          self.state.nested_parse(self.content, self.content_offset, node)
+          first_node = node[0]
+          if isinstance(first_node, nodes.paragraph):
+             caption = nodes.caption(first_node.rawsource, '',
+                                     *first_node.children)
+             caption['align']= self.options['align']
+             avss_node += caption
+          return [avss_node]
         else:
           res = SLIDESHOW % self.options
-          return [nodes.raw('', res, format='html')]
+          return [nodes.raw('', res, format='html')] 
 
 
 source = """\
