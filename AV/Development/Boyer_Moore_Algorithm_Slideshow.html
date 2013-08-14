@@ -55,7 +55,7 @@
 
     var bm = new JSAV("container");
 
-    bm.umsg("This exercise will demonstrate how the Boyer-Moore String searching algorithm works as a whole. Below you will find a master string and sub string (Master and Sub respectively) and the pseudo code you will need.");
+    bm.umsg("This exercise will demonstrate how the Boyer-Moore String searching algorithm works as a whole. Below you will find a master string and substring (Master and Sub respectively) and the pseudo code you will need.");
     var master = bm.ds.array(['c','d','b','a','d','a','d','b','b','b','a','b','j','c','d','b','a','b','a']);
     var master_label = bm.label("Master", {left: "40px", top: "160px"});
     var sub = master.clone();
@@ -89,7 +89,7 @@
     var s = bm.variable(["0"], {visible: true, label: "s = ", left: "150px", top: "230px"});
     bm.step();
 
-    bm.umsg("The first important thing we want to note is where m and s start, they start at the length of Sub - 1, meaning our comparisons will start at the end of the sub string and work towards the beginning.");
+    bm.umsg("The first important thing we want to note is where m and s start, they start at the length of Sub - 1, meaning our comparisons will start at the end of the substring and work towards the beginning.");
     pseudo.highlight([0,2]);
     m.value("5");
     s.value("5");
@@ -176,7 +176,7 @@
     bm.umsg("We note they are both 1, so it doesn't really matter which one we choose because m = m + 1 either way.");
     bm.step();
 
-    bm.umsg("We now increment m and realign the sub string with the correct index of master.");
+    bm.umsg("We now increment m and realign the substring with the correct index of master.");
     m.value("10");
     mmc.unhighlight(1);
     alignment_table.unhighlight(5);

@@ -9,7 +9,7 @@
 </head>
 
 <style>
-#container {
+#container {0
   width: 800px;
   height: 550px;
 }
@@ -307,6 +307,12 @@
         //bind click events to the handler functions
         str.click(str_click_handler);
         sub_str.click(sub_str_click_handler);
+		
+
+		var master_label = bm.label("Master:",{before:str,"left": "0px"});
+		var sub_label = bm.label("Substring:",{before:sub_str,"left": "0px"});
+		var mmc_label = bm.label("MMC:",{before:mmc_arr,"left":"0px"});
+		var align_label = bm.label("Align Array:",{before:align_arr,"left":"0px"});
 
         return [str, sub_str, mmc_arr, align_arr];
       }

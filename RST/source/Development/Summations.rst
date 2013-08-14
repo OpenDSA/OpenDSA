@@ -59,6 +59,7 @@ along with their closed-form solutions.
    These equations need numbers. Some of them need HTML target labels.
 
 .. math::
+   :label: summation1
 
    \begin{eqnarray}
    \sum_{i = 1}^{n} i &=& \frac{n (n+1)}{2}.\\
@@ -74,22 +75,24 @@ along with their closed-form solutions.
 As special cases to this last summation, we have the following two:
 
 .. math::
+   :label: sum2
 
    \begin{eqnarray}
    \sum_{i = 1}^{n} \frac{1}{2^i} &=& 1 - \frac{1}{2^n},\\
    \sum_{i = 0}^{n} 2^i &=& 2^{n+1} - 1.\\
    \end{eqnarray}
 
-
-As a corollary to this last,
+As a corollary to :eq:`sum2`,
 
 .. math::
+   :label: sum3
 
    \sum_{i = 0}^{\log n} 2^i &=& 2^{\log n + 1} - 1 = 2n - 1.
 
 Finally,
 
 .. math::
+   :label: sum4
 
    \sum_{i=1}^{n} \frac{i}{2^i} &=& 2 - \frac{n+2}{2^n}.
 

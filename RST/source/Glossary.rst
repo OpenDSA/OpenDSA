@@ -14,6 +14,16 @@ Glossary
 
 .. glossary::
 
+   asymptotic analysis
+      A method for estimating the efficiency of an algorithm or
+      computer program. Asymptotic analysis also gives a way to define
+      the inherent difficulty of a problem.
+
+   basic operations
+      Examples of basic operations include inserting a data
+      item into the data structure, deleting a data item from the
+      data structure, and finding a specified data item.
+
    comparable
       The concept that two objects can be compared to determine if they
       are equal or not, or to determine which one is greater than the other.
@@ -36,8 +46,24 @@ Glossary
       sorting routine pass in a comparator function
       to define how records in the collection are to be compared.
 
+   cost
+      The :dfn:`cost` of a solution is the
+      amount of resources that the solution consumes.
+
    diminishing increment sort
       Another name for Shellsort.
+
+   efficient
+      A solution is said to be :dfn:`efficient`
+      if it solves the problem within the required
+      :dfn:`resource constraints`.
+      A solution is sometimes said to be
+      efficient if it requires fewer resources than known
+      alternatives, regardless of whether it meets any particular
+      requirements.
+
+   exact-match query
+      Records are accessed by unique identifier.
 
    key
       A field or part of a larger record used to represent that record
@@ -53,6 +79,16 @@ Glossary
       along with a reference to the record.
       The other standard solution to this problem is to pass a
       comparator function to the index methods.
+
+   range query
+      Records are returned if their relevant key value falls with a
+      specified range.
+
+   resource constraints
+      Examples of resource constraints include the total space
+      available to store the data |---| possibly divided into separate
+      main memory and disk space constraints |---| and the time
+      allowed to perform each subtask.
 
    sorting problem
       Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`

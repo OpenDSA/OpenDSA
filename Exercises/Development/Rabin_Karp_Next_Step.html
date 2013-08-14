@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<!--
+  Samuel A. Micka
+-->
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <title>Rabin-Karp Next Step Exercise</title>
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css"
+          media="screen" title="no title" charset="utf-8" /> 
+  </head>
+  <body>
+
+
+<!--
+  <div> <p> <button type="button" id="go_button" onclick="make_arrays()">Generate!</button> </p> </div>
+-->
+  <div id="container">
+    <div class="jsavcanvas"></div>
+    <p class="jsavoutput jsavline"></p>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="http://algoviz.org/OpenDSA/ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script> 
+  <script src="../../AV/Development/edit.js"></script>
+  <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" /> 
+
+  <script>
+ /*#################################################################
+    These global constants are set to modify the strings easily.
+  #################################################################*/
+  //this determines the maximum length of the string
+  var string_max_length = 7;
+  //this determines the minimum length of the string
+  var string_min_length = 4;
+  //this represents the lower bound of randomly generated numbers desired in the ascii table
+  var char_lower_bound = 97;
+  //this represents the upper bound of randomly generated numbers desired in the ascii table
+  var char_upper_bound = 122;
+
+  /*#################################################################
+    Global variables used throughout the program
+  #################################################################*/
+  var sub_str; //the actual sub string array for the visualization
+  var master_str; //the actual master string array for the visualization
+  var sub_temp;
+  var master_temp;
+  var starting_value;
+  var cp_val;
+	var c_val = 123;
+	var p_val;
+
+  var started; //tells us if anything has been done
+
+  var solution;
+
+
+  var rk_slideshow = null;
+
+	//returns a random number between lower_bound and upper_bound
+	function gen_random(lower_bound, upper_bound) {
+	  return Math.floor(Math.random() * (upper_bound - lower_bound + 1) + lower_bound);
+	}
+	//converts the ascii_value parameter to character and returns it
+	function get_char(ascii_value) {
+	  return String.fromCharCode(ascii_value);
+	}
+
+	function generate_strings() {
+	  var sub ='', master='';
+		var str_len = gen_random(string_min_length, string_max_length);
+	
+		for(var i = 0; i < str_len; i++) {
+			sub+=get_char(gen_random(97,122));
+		}
+		for(var i = 0; i < str_len-2;i++) {
+			master += get_char(gen_random(97,122));
+		}
+		master+= sub;
+	  return [master, sub];
+	}
+
+	function horner(str, q) {
+		var magic_num = str.charCodeAt(0);
+		var C = 123;
+		for(var i = 1; i < str.length; i++){
+			magic_num = ((magic_num * C) + str.charCodeAt(i)) % q;
+		}
+		return magic_num;
+	}
+
+	function rabin_karp(master, sub, q) {
+		var CP = 1;
+		var C = 123;
+		var p = 0;
+		for(var i = 1; i <= sub.length; ++i){
+			CP = (CP * C) % q;
+		}
+		cp_val = CP;
+		var Magic_S = horner(sub, q);
+		var Magic_M = horner(master.substring(0, sub.length), q);
+		starting_value = Magic_M;
+		while(p <= (master.length - sub.length)) {
+			p_val = p;
+			Magic_M = ( Magic_M * C - master.charCodeAt(p) * CP + q * C + master.charCodeAt(p+sub.length) ) % q;
+			solution = Magic_M; //make the solution the next step
+			break;
+		}
+	}
+
+
+  function checkAnswer() {
+    if (solution == $("#user_answer").val()) {
+		return true;
+    }
+    return false;
+  }
+
+
+  //This function initializes the arrays, and handles the clicks on the specific indexes, see comments in method for more information
+  var initExercise = (function() {
+    started = false;
+
+    rk_slideshow = new JSAV("jsav_area", {"animationMode": "none"});
+
+    //local variables for the initialization of the exercise
+    var strs = generate_strings();
+    master_temp = strs[0];       //first index of returned array has master string
+    sub_temp = strs[1];          //second index of returned array has substring    
+
+	rabin_karp(master_temp, sub_temp, 131);
+
+
+    master_temp = master_temp.split("");
+    sub_temp = sub_temp.split("");
+
+    //initialize the master and sub string arrays
+    master_str = rk_slideshow.ds.array(master_temp, {center: false});
+	for(var i = 0; i < master_str.size(); i++) {
+		master_str.value(i, master_temp[i] + ","+master_temp[i].charCodeAt(0));
+	}
+    //initialize sub_str with the master_temp array so that they are the same length, we will fill in appropriate data below
+    sub_str = rk_slideshow.ds.array(master_temp, {center: false});
+
+	//filling in appropriate data from sub string
+	for(var i = 0; i < master_temp.length; i++) {
+		if(i < sub_temp.length) {
+			sub_str.value(i, sub_temp[i]+","+sub_temp[i].charCodeAt(0));
+		} else {
+			sub_str.value(i, ' ');
+		}
+	}
+	
+	var q = rk_slideshow.variable([131], {visible: true, label: "Q = "});
+	var curr_magic_m_val = rk_slideshow.variable([starting_value], {visible: true, label: "Magic_M = "});
+	var cp = rk_slideshow.variable([cp_val], {visible: true, label: "CP = "});
+	var p = rk_slideshow.variable([p_val], {visible: true, label: "p = "});
+	var c = rk_slideshow.variable([c_val], {visible: true, label: "C = "});
+	var equation = rk_slideshow.variable(['Magic_M = (Magic_M * C - (M[p].ascii_val * CP) + (Q * C + M[p+S.length].ascii_val)) mod Q'], {visible: true, label: "Equation: "});
+
+	var master_label = rk_slideshow.label("Master:",{before:master_str});
+	var sub_label = rk_slideshow.label("Sub:",{before:sub_str});
+
+
+  });
+
+
+  // reset function definition
+  var f_reset = function () {
+    rk_slideshow.reset();
+  };
+  </script>
+
+  <style>
+    .jsavarray .jsavindex {
+      min-height: 30px;
+      height: 30px;
+      min-width: 45px;
+      width: 45px;
+      font-size: 14px;
+    }
+  </style>
+
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">initExercise()</var>
+      </div> <!-- vars -->
+
+      <div class="problems">
+        <div>
+          <div class="question">
+             The exercise below will test your newly acquired knowledge on the Rabin-Karp algorithm. The value for Magic_M has been computed for the first step comparison of the algorithm. This exercise requires that you use the modified Horner's Method to compute Magic_M at the next step. The strings have two values at each index, the actual character, and the character's ascii value (which will be used in the equation). The necessary variables and equation have been provided. (A calcualtor may be necessary.)
+			<p><b>Your solution:</b> <input type = "text" id = "user_answer" size = "4"/> </p>
+            <div id="jsav_area"></div>
+          </div> <!-- question -->
+          <div class="solution" data-type="custom">
+            <div class="guess">
+              [started]
+            </div>
+            <div class="validator-function">
+              if (!checkAnswer() && !guess[0])
+                return "";
+              else return checkAnswer();
+            </div>
+          </div>
+          <div class="hints">
+            <p>1. Check out the pseudo code above.</p> 
+          </div>
+          <div class = "model"></div>
+        </div>
+      </div>
+    </div> 
+  </body>
+</html>

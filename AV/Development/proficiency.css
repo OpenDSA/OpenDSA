@@ -19,16 +19,46 @@ p.instructions {
   border: 1px solid black;
 }
 .jsavtreenode.emptynode {
-  border: 1px dashed #777;
-  color: #777;
+  border: 1px dashed #777 !important;
+  background-color: #fff !important;
+  color: #777 !important;
 }
-.selected, .selected .jsavvalue, .jsavarray.jsavbararray .jsavindex.selected .jsavvalue{
+.jsavtreenode.rednode {
+  background-color: #f00;
+  color: #fff;
+}
+.jsavtreenode.blacknode {
+  background-color: #000;
+  color: #fff;
+}
+.selected, .selected.jsavvalue, .jsavarray.jsavbararray .jsavvalue.selected {
   font-size: 130%;
-  background-color: #ddf !important;
+  background-color: #ddf;
 }
-.greybg, .greybg .jsavvalue, .jsavarray.jsavbararray .jsavindex.greybg .jsavvalue{
+.jsavtreenode.jsavredblacknode.rednode.selected {
+  background-color: #f00;
+}
+.jsavtreenode.jsavredblacknode.blacknode.selected {
+  background-color: #000;
+}
+.jsavtreenode.jsavredblacknode.selected {
+  box-shadow: 0px 0px 5px 10px #ddf;  
+}
+.greybg, .greybg.jsavvalue, .jsavarray.jsavbararray .jsavvalue.greybg {
   background-color: #eee;
 }
-.greenbg, .greenbg .jsavvalue, .jsavarray.jsavbararray .jsavindex.greenbg .jsavvalue{
+.greenbg, .greenbg.jsavvalue, .jsavarray.jsavbararray .jsavvalue.greenbg {
   background-color: #5f5;
+}
+
+.jsavstack {
+  position: relative;
+  background-color: inherit;
+}
+.jsavstacknode {
+  position: absolute;
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
+  z-index: 100;
 }

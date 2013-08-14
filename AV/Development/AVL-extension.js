@@ -24,33 +24,34 @@
 	// inserts a value or array of values into the binary trees
 	// by default duplicates go to the left side
 	// this can be changed with option: {toRight: true}
+	// returns the node if only a value was inserted, and the tree if an array was inserted
 	JSAV._types.ds.BinaryTree.prototype.insert = function (value, options) {
-		var opts = $.extend({toRight: false}, options);
+        var opts = $.extend({toRight: false}, options);
         function toLeft(value, insertValue) {
-        	if (insertValue < value) {
-        		return true;
-        	} else if (value === insertValue && !opts.toRight) {
-        		return true;
-        	} else {
-        		return false;
-        	}
+            if (insertValue < value) {
+                return true;
+            } else if (value === insertValue && !opts.toRight) {
+                return true;
+            } else {
+                return false;
+            }
         }
         // helper function to recursively insert
         var ins = function(node, insval) {
           var val = node.value();
           if (!val || val === "jsavnull") { // no value in node
-            node.value(insval);
+            return node.value(insval);
           } else if (toLeft(val, insval)) { // go left
             if (node.left()) {
-              ins(node.left(), insval);
+              return ins(node.left(), insval);
             } else {
-              node.left(insval);
+              return node.left(insval);
             }
           } else { // go right
             if (node.right()) {
-              ins(node.right(), insval);
+              return ins(node.right(), insval);
             } else {
-              node.right(insval);
+              return node.right(insval);
             }
           }
         };
@@ -59,7 +60,7 @@
             ins(this.root(), value[i]);
           }
         } else {
-          ins(this.root(), value);
+          return ins(this.root(), value);
         }
         return this;
     };
@@ -97,13 +98,13 @@
     //add empty nodes to all the nodes under this node
     JSAV._types.ds.BinaryTreeNode.prototype.addEmptyNodes = function() {
         if (!this.left()) {
-            this.left("").addClass("emptynode");
-        } else {
+            this.left("").element.addClass("emptynode");
+        } else if (!this.left().hasClass("emptynode")) {
             this.left().addEmptyNodes();
         }
         if (!this.right()) {
-            this.right("").addClass("emptynode");
-        } else {
+            this.right("").element.addClass("emptynode");
+        } else if (!this.right().hasClass("emptynode")) {
             this.right().addEmptyNodes();
         }
     }

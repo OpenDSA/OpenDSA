@@ -63,9 +63,9 @@
     kmp_slideshow.umsg("First we have the Master string (indexed [0-n]), the Sub string (indexed [0-m]) and the alignment array for the Sub string.");
 
     kmp_slideshow.step();
-    kmp_slideshow.umsg("We can now take a look at the pseudo-code and notice a few key variables... m, which will default to 0, s, which will default to 0, and also note that our strings are called master and sub, and the alignment array is called align.");
+    kmp_slideshow.umsg("We can now take a look at the pseudocode and notice a few key variables... m, which will default to 0, s, which will default to 0, and also note that our strings are called master and sub, and the alignment array is called align.");
     /*
-        Setting up the two variables and the pseudo code used throughout the slideshow.
+        Setting up the two variables and the pseudocode used throughout the slideshow.
     */
     var kmp_pseudo = kmp_slideshow.code("input: master string, sub string, align array\nm = 0\ns = 0\nwhile((s < sub.length) and (sub.length - s <= master.length - m)):\n\tif(master[m] == sub[s]): m++, s++\n\telse if(s == 0): m++\n\telse: s = align[s]\nif(s == sub.length): return m - sub.length\nelse: return -1", {before: master_label});
     var m = kmp_slideshow.variable(["0"],{visible: true, label: "m = ", left: "150px", top: "230px"});

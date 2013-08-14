@@ -55,7 +55,7 @@
 	var alphabet = rk_slideshow.ds.array(['a, 0','b, 1','c, 2','d, 3','e, 4','f, 5','g, 6','h, 7','i, 8','j, 9','k, 10','l, 11','m, 12','n, 13','o, 14','p, 15','q, 16','r, 17','s, 18','t, 19','u, 20','v, 21','w, 22','x, 23','y, 24','z, 25']);
 	rk_slideshow.step();
 
-	rk_slideshow.umsg("We will now introduce the pseudo code.");
+	rk_slideshow.umsg("We will now introduce the pseudocode.");
 	var pseudo = rk_slideshow.code("MagicNumber = numeric value at String[0] \nC = size of alphabet (26 in this example) \nfor k = 1 to String.length \n\tMagicNumber = (MagicNumber * C) + String[k].numeric_value \nreturn MagicNumber");
 	rk_slideshow.step();
 
@@ -145,7 +145,7 @@
 	var q = rk_slideshow.variable(["29"], {visible: true, label: "Q = ", left: "250px", top: "440px"});
 	rk_slideshow.step();
 	
-	rk_slideshow.umsg("We now need to make a slight modification to the pseudo code to implement the new Horner's Method for the Rabin-Karp algorithm. We need to change the operation MagicNumber = (MagicNumber * C) + String[k] to MagicNumber = ((MagicNumber * C) + String[k]) % Q.");
+	rk_slideshow.umsg("We now need to make a slight modification to the pseudocode to implement the new Horner's Method for the Rabin-Karp algorithm. We need to change the operation MagicNumber = (MagicNumber * C) + String[k] to MagicNumber = ((MagicNumber * C) + String[k]) % Q.");
 
 	pseudo.hide();
 	var pseudo2 = rk_slideshow.code("MagicNumber = numeric value at String[0] \nC = size of alphabet (26 in this example) \nfor k = 1 to String.length \n\tMagicNumber = ((MagicNumber * C) + String[k].numeric_value) % Q \nreturn MagicNumber", {before: the_string});

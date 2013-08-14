@@ -65,16 +65,16 @@
 	rk_slideshow.umsg("The shown array is not actually used in the algorithm, it has been computed to make the algorithm easier to understand when tracing through it. We will simply call the ascii value of each character. With that noted, lets introduce our master string and search string...");
 	rk_slideshow.step();
 
-	rk_slideshow.umsg("We can now see our two strings 'lookforsomestr' and 'somestr', We will now introduce the pseudo code and then get started");
+	rk_slideshow.umsg("We can now see our two strings 'lookforsomestr' and 'somestr', We will now introduce the pseudocode and then get started");
 	var master = rk_slideshow.ds.array("lookforsomestr".split(""), {indexed: true});
 	var sub = rk_slideshow.ds.array("somestr       ".split(""), {indexed: true});
 	rk_slideshow.step();
 
-	rk_slideshow.umsg("The pseudo code below can be difficult to follow when we don't have a match, we will keep track of a couple of key variables to make it easier.");
+	rk_slideshow.umsg("The pseudocode below can be difficult to follow when we don't have a match, we will keep track of a couple of key variables to make it easier.");
     var pseudo = rk_slideshow.code("Input: Two Strings M and S and appropriate mod factor Q \nOutput: Position of the first match of S in M or -1 \nCP = 1, p = 0 \nfor i = 1 to S.length: \n\tCP = CP * C mod Q \nMagic_S = Horner(S) \nMagic_M = Horner(M[0] ... M[S.length-1]) \nWhile p < M.length - S.length+1: \n\tif Magic_S == Magic_M: \n\t\t if S == M(M[0] ... M[S.length-1]): \n\t\t\treturn p \n\tMagic_M = (Magic_M * C - (M[p].ascii_val * CP) + (Q * C + M[p+S.length].ascii_val)) mod Q  \n\tp+=1 \nreturn -1", {before: alphabet, center: false});
 	rk_slideshow.step();
 
-	rk_slideshow.umsg("Pictured to the right of the pseudo code are 6 important variables that we will keep up to date as a reference.");	
+	rk_slideshow.umsg("Pictured to the right of the pseudocode are 6 important variables that we will keep up to date as a reference.");	
 	var q = rk_slideshow.variable([0], {visible: true, label: "Q = ", left: "750px", top:"200px"});
 	var c = rk_slideshow.variable([0], {visible: true, label: "C = ", left: "750px", top: "230px"});
     var cp = rk_slideshow.variable([0], {visible: true, label: "CP = ", left: "750px", top: "260px"});

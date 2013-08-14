@@ -109,7 +109,7 @@
       //this determines the maximum length of the substring
       var substring_max_length = 8;
       //this determines the maximum length of the master string
-      var master_string_max_length = 16;
+      var master_string_max_length = 14;
       //this represents the lower bound of randomly generated numbers desired in the ascii table
       var char_lower_bound = 97;
       //this represents the upper bound of randomly generated numbers desired in the ascii table
@@ -289,6 +289,10 @@
         //bind click events to the handler functions
         str.click(str_click_handler);
         sub_str.click(sub_str_click_handler);
+
+		var master_label = kmp_jsav.label("Master:",{before:str,"left":"0px"});
+		var sub_label = kmp_jsav.label("Sub:",{before:sub_str,"left":"0px"});
+		var align_label = kmp_jsav.label("Align Arr:",{before:align_arr,"left":"0px"});
 
         return [str, sub_str, align_arr];
       }

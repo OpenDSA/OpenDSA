@@ -25,17 +25,14 @@
       text-align: center;
     }
   </style>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transform.light.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../lib/odsaLoadKhan.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=http://algoviz.org/OpenDSA/dev/OpenDSA/ODSAkhan-exercises/KAthJax-77111459c7d82564a705f9c5480e2c88.js"></script>
-  <script>urlBaseOverride = "../../ODSAkhan-exercises/";</script>
-  <script src="http://algoviz.org/OpenDSA/ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="http://algoviz.org/OpenDSA/JSAV/build/JSAV-min.js"></script> 
   <script src="../../AV/Development/edit.js"></script>
-  <link rel="stylesheet" href="http://algoviz.org/OpenDSA/JSAV/css/JSAV.css" type="text/css" /> 
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
 
   <script>
   /*#################################################################
@@ -179,6 +176,9 @@
       alignment_table.value(i, align_table_temp[i]);
     }
     alignment_table.highlight(answer_index);
+
+	var str_label = kmp_exercise.label("String:", {before:str_arr, "left":"0px"});
+	var align_label = kmp_exercise.label("Alignment Table:",{before:alignment_table, "left":"0px"});
   }
   // reset function definition
   var f_reset = function () {
@@ -197,7 +197,7 @@
       <div class="problems">
         <div>
           <div class="question">
-            The exercise below will test your newly acquired knowledge on the KMP Alignment Array. Please use the text field to fill in the correct value that is missing from the alignment array. When you are finished hit <b>Check Answer</b> to see if you are correct.
+            The exercise below will test your newly acquired knowledge on the KMP Alignment Array. Please use the text field to fill in the correct value that is missing from the alignment array below. When you are finished hit <b>Check Answer</b> to see if you are correct.
             <p><b>Your solution:</b> <input type = "text" id = "user_answer" size = "2"/> </p>
             <div id="jsav_area"></div>
           </div> <!-- question -->
