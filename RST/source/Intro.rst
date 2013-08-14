@@ -75,21 +75,27 @@ and graphics.
 There are short slideshows that help explain steps of an
 algorithm,
 there are full Algorithm Visualizations that go through a complete
-example of the algorithm,
+example of the algorithm (these will usually let you set the input
+data if you like),
 there are "proficiency exercises" where you show the steps 
 taken by an algorithm, there are sets of questions, there are
 calculators, and there are other interactive exercises.
 
 **Getting credit:**
-You can get completion credit for the following:
-Going through a slideshow, completing a proficiency exercise,
+You can get "completion" for doing the various activities.
+The following activities can be completed:
+going through a slideshow, completing a proficiency exercise,
 completing a question set, or fulfilling the requirements of the a
 calculator or other exercise.
-You must be logged in for the system to remember your credit, but you
-will usually receive visual feedback if you have completed the
+You must be logged in for the system to remember your completion,
+but you will usually receive visual feedback if you have completed the
 exercise even when you are not logged in.
 If you go through the exercise and *then* log in, the system will
-hopefully retroactively register your credit (but don't tempt fate!).
+hopefully retroactively register your completion
+(but don't tempt fate!).
+Depending on how your book is configured, completing an activity might
+or might not give credit points, as shown in the "student view"
+screen.
 
 **Seeing your credit and seeing your current score:**
 Usually an exercise or slideshow will give you visual confirmation
@@ -119,7 +125,7 @@ step at a time).
 A green checkmark should show up on the right when you get credit.
 
 **Visualizations:**
-The slideshows demonstrate a part of an algorithm on a fixed input.
+Slideshows demonstrate a part of an algorithm on a fixed input.
 The visualizations let you run the whole algorithm, typically on
 input that you can choose.
 The visualizations will have some parameters that you can set
@@ -143,9 +149,11 @@ Once you have credit, the "hide/show" button above the exercise turns
 green.
 You can still get more questions at that point if you would like more
 practice.
-There is also a "streak" bar that shows your current progress.
+Above the question on the right-hand side is a counter to indicate
+your current number of questions correct out of the total number
+needed to complete the exercise.
 If you answer a question wrong, your progress toward the completion
-streak threshold will go backwards by one point. (And you will still
+threshold will go backwards by one point. (And you will still
 have to answer that question before you can continue!)
 Note that once you have been given credit for the question set,
 you cannot lose it by answering more questions, even if you get some
@@ -160,14 +168,14 @@ The questions will have "hints" that you can get to help you
 figure out the answer.
 If you take a hint, you will not get credit for that question toward
 completing the exercise.
-However, you will not have your progress on the current streak set
-back, either.
+However, you will not lose a point on that question, either.
 
 **Interactive Question Sets:** Some of the question sets are
 interactive, in that that you will click on an array or other visual
 element to answer the question.
 They work the same way as the multiple choice sets,
-in that there is a required streak number to complete successfully.
+in that there is a required number that you must get right to complete
+the exercise successfully.
 
 **Proficiency Exercises:**
 Proficiency exercises are graded on a point system.

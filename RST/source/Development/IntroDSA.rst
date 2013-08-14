@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Introduction
 
-Data Structures and Algorithms [Storyboard]
-===========================================
+Data Structures and Algorithms
+==============================
 
 How many cities with more than 250,000 people lie within 500 miles of
 Dallas, Texas?
@@ -70,15 +70,15 @@ it is not the purpose of this course to explicitly treat issues related
 to goal (1).
 These are primarily concerns of the discipline of
 Software Engineering.
-Rather, we will mostly focus on issues relating to goal (2).
+Rather, we mostly focus on issues relating to goal (2).
 
 How do we measure efficiency?
 Our method for evaluating the efficiency of an algorithm or computer
-program is called :dfn:`asymptotic analysis`
-Asymptotic analysis also allows you to measure the inherent difficulty
+program is called :term:`asymptotic analysis`.
+Asymptotic analysis also gives a way to define the inherent difficulty
 of a problem.
-The remaining chapters use asymptotic analysis techniques to estimate
-the time cost for every algorithm presented.
+Throughout the course we use asymptotic analysis techniques to
+estimate the time cost for every algorithm presented.
 This allows you to see how each algorithm compares to other
 algorithms for solving the same problem in terms of its
 efficiency.
@@ -126,16 +126,16 @@ However, using the proper data structure can make the difference
 between a program running in a few seconds and one requiring many
 days.
 
-A solution is said to be :dfn:`efficient`
+A solution is said to be :term:`efficient`
 if it solves the problem within the required
-:dfn:`resource constraints`.
+:term:`resource constraints`.
 Examples of resource constraints include the total space available to
 store the data |---| possibly divided into separate main memory and disk
 space constraints |---| and the time allowed to perform each subtask.
 A solution is sometimes said to be
 efficient if it requires fewer resources than known alternatives,
 regardless of whether it meets any particular requirements.
-The :dfn:`cost` of a solution is the
+The :term:`cost` of a solution is the
 amount of resources that the solution consumes.
 Most often, cost is measured in terms of one key resource such as
 time, with the implied assumption that the solution meets the other
@@ -163,7 +163,7 @@ implemented using a simpler design.
 When selecting a data structure to solve a problem, you should follow
 these steps.
 
-1. Analyze your problem to determine the :dfn:`basic operations` that
+1. Analyze your problem to determine the :term:`basic operations` that
    must be supported. 
    Examples of basic operations include inserting a data
    item into the data structure, deleting a data item from the
@@ -205,7 +205,8 @@ In practice, it is hardly ever true that one data structure is
 better than another for use in all situations.
 If one data structure or algorithm is superior to another in all
 respects, the inferior one will usually have long been forgotten.
-For nearly every data structure and algorithm presented in this book,
+For nearly every data structure and algorithm presented in this
+course,
 you will see examples of where it is the best choice.
 Some of the examples might surprise you.
 
@@ -233,10 +234,10 @@ you determine the best data structure for the task.
 
    The typical customer opens and closes accounts far less often than he
    or she accesses the account.
-   Customers are willing to wait many minutes while accounts are
-   created or deleted but are typically not willing to wait more than a
-   brief time for individual account transactions such as a
-   deposit or withdrawal.
+   Customers are willing to spend many minutes during the process of
+   opening or closing the account, but are typically not willing to
+   wait more than a brief time for individual account transactions
+   such as a deposit or withdrawal.
    These observations can be considered as informal specifications for
    the time constraints on the problem.
 
@@ -270,7 +271,7 @@ you determine the best data structure for the task.
    insertion, should meet the resource constraints imposed by this
    problem.
    Records are accessible by unique account number (sometimes called
-   an :dfn:`exact-match query`).
+   an :term:`exact-match query`).
    One data structure that meets these requirements is the hash
    table described in Module :numref:`<HashIntro>`.
    Hash tables allow for extremely fast exact-match search.
@@ -294,7 +295,7 @@ you determine the best data structure for the task.
    Users should also be able to find all places that match a
    particularvalue or range of values for attributes such as location
    or population size.
-   This is known as a :dfn:`range query`.
+   This is known as a :term:`range query`.
 
    A reasonable database system must answer queries quickly enough to
    satisfy the patience of a typical user.
@@ -320,7 +321,4 @@ you determine the best data structure for the task.
    changed, such as an atlas distributed on a CD or accessed from a
    website.
 
-.. TODO::
-   :type: Exercise
-
-   Create a battery of summary questions.
+.. avembed:: Exercises/Development/IntroSumm.html ka

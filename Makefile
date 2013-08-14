@@ -4,7 +4,7 @@ TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
-.PHONY: all clean lint csslint jshint min CS223 CS3114a CS3114b OpenDSA T1061220 allBooks nomin pull
+.PHONY: all clean lint csslint jshint min CS223 CS3114 OpenDSA T1061220 allBooks nomin pull
 
 all: lint
 
@@ -42,11 +42,8 @@ min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css 
 CS223: min
 	python $(CONFIG_SCRIPT) config/CS223.json
 
-CS3114a: min
-	python $(CONFIG_SCRIPT) config/CS3114a.json
-
-CS3114b: min
-	python $(CONFIG_SCRIPT) config/CS3114b.json
+CS3114: min
+	python $(CONFIG_SCRIPT) config/CS3114.json
 
 OpenDSA: min
 	python $(CONFIG_SCRIPT) config/OpenDSA.json

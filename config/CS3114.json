@@ -1,0 +1,91 @@
+{
+  "title": "CS3114 Fall 2013",
+  "book_dir": "Books",
+  "code_dir": "SourceCode/Processing",
+  "module_origin": "http://algoviz.org",
+  "backend_address": "https://opendsa.cc.vt.edu/",
+  "build_JSAV": false,
+  "build_ODSA": true,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "chapters": {
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "exercises": {}
+      }
+    },
+    "Introduction": {
+      "Development/IntroDSA.rst": {
+        "long_name": "Introduction to Data Structures and Algorithms",
+        "exercises": {
+          "IntroSumm": {
+            "long_name": "Introduction Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
+    "Mathematical Background": {
+      "Development/SetDef": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/MiscMath": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Logarithms": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Summations": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Development/Recursion": {
+        "long_name": "Recursion",
+        "exercises": {}
+      },
+      "Development/Proofs": {
+        "long_name": "Proofs",
+        "exercises": {}
+      },
+      "Development/Estimation": {
+        "long_name": "Estimation",
+        "exercises": {}
+      }
+    },
+    "Stubs": {
+      "Stubs": {
+        "long_name": "Stubs Chapter",
+        "exercises": {}
+      },
+      "Development/Multilists": {
+        "long_name": "Multilists",
+        "exercises": {}
+      },
+      "Development/AdvSumm": {
+        "long_name": "Advanced Summations",
+        "exercises": {}
+      },
+      "Development/Recurrence": {
+        "long_name": "Solving Recurrence Relations",
+        "exercises": {}
+      }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "exercises": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "exercises": {}
+      }
+    }
+  }
+}
+
