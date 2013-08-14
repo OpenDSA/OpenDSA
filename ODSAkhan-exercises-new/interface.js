@@ -352,6 +352,10 @@ function handleAttempt(data) {
       if(data && typeof OpenPopKa !== "undefined"){
          progress = data.progress;
          streakNum = data.streak;
+
+         // Empty the message area.
+         feedbackEffect('');
+
          if(data.correct){
              correctAnswerEffect();
          }else {
@@ -368,14 +372,17 @@ function handleAttempt(data) {
         }  
         streakNum = parseFloat(data._exercise_cache.streak._int) *  Math.pow(10,parseInt(data._exercise_cache.streak._exp));
       }
+
       var  total =  progress;   //parseInt(streak) + 1;
       if (total >= streakNum){
          total = streakNum;
          parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}', MODULE_ORIGIN);
 
       }
+
       total = parseInt(total, 10);
       $('#points-progress').text(total);
+
     });
     
     respondpromise.fail(function(xhr) {
