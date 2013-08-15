@@ -43,8 +43,8 @@ var PerseusBridge = Exercises.PerseusBridge,
     lastAttemptOrHint,
     firstProblem = true;
 
-//
-var server = serverOverride ? serverOverride : SERVER_URL;
+//  
+var server = SERVER_URL? SERVER_URL : null;
 console.log(server);
 
 var jsonData = {};
@@ -199,6 +199,7 @@ function newProblem(e, data) {
 function handleCheckAnswer() {
     return handleAttempt({skipped: false});
 }
+
 
 function handleSkippedQuestion() {
     return handleAttempt({skipped: true});
