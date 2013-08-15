@@ -44,34 +44,6 @@
             insertSize = 10,
             av = new JSAV($("#jsavcontainer"));
 
-        JSAV._types.Label.prototype.layout = function () {
-            var target = this.getTarget();
-            if (!target) {
-                this.hide();
-            } else {
-                var el = target.element,
-                    offset = 0;
-                if (target instanceof JSAV._types.ds.Node) {
-                    offset = 5;
-                }
-                this.css({
-                    left: el.offset().left - this.jsav.canvas.offset().left - offset + el.outerWidth(),
-                    top: el.offset().top  - this.jsav.canvas.offset().top + offset - this.element.outerHeight()
-                });
-            }
-        };
-
-        JSAV._types.Label.prototype.setTarget = function (target) {
-            this.target = target;
-        };
-
-        JSAV._types.Label.prototype.getTarget = function () {
-            if (typeof this.target === "function") {
-                return this.target.call(this);
-            }
-            return this.target;
-        };
-
         av.recorded(); // we are not recording an AV with an algorithm
 
         function initialize() {
