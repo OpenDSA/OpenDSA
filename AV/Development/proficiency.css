@@ -18,6 +18,16 @@ p.instructions {
   margin-right: 10px;
   border: 1px solid black;
 }
+.jsavlabel {
+  border: 1px solid #eca;
+  border-radius: 3px;
+  padding: 1px 3px;
+  background-color: #fe8;
+  color: #975;
+  position: absolute;
+  z-index: 101;
+  line-height: normal;
+}
 .jsavtreenode.emptynode {
   border: 1px dashed #777 !important;
   background-color: #fff !important;
