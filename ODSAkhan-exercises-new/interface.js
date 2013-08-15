@@ -238,12 +238,45 @@ function wrongAnswerEffect(score, framework){
     } else if (framework === "khan-exercises") {
         $(Khan).trigger("refocusSolutionInput");
     }
+}
 
+// Process the message data coming from OpenPop Back end
+function handleMsg(message){
+
+    var newmessage= message.join('\n');;
+    console.log(newmessage);
+
+    newmessage= newmessage.replace(/studentlisttest.java:/gi, "Error:line# ");
+    newmessage=newmessage.replace("class studentlisttest" , "");
+    newmessage = newmessage.replace(/\^/gi, "");
+          
+    var numbers = newmessage.match(/\d+\.?\d*/g);
+           
+    for (var i=numbers.length-2 ; i>=0 ; i--){
+        var newnumber = numbers[i]-333;
+      
+        var stringnum = numbers[i]+'';
+        var newstringnumber =  newnumber +'';
+        newmessage=newmessage.replace(stringnum , newstringnumber);
+    }
+    
+    return newmessage;
+}
+
+// Empty Message area
+function emptyMsgArea(){
+    $('#solutionarea').empty();
 }
 
 // Show feed-back message from the back end
-function feedbackEffect(msg){
-    $('#solutionarea').text(msg);
+function feedbackEffect(message){
+    
+    var msg = handleMsg(message);
+
+    for (var i = 0; i < msg.length; i++) {
+        var msgLine = $("<span>" + msg[i] + "</span>")
+        $('#solutionarea').append(msgLine);
+    }
 }
 
 function handleAttempt(data) {
@@ -341,8 +374,9 @@ function handleAttempt(data) {
             score.correct, ++attempts, stringifiedGuess, timeTaken, skipped);
 
     // Save the problem results to the server
-    var requestUrl = "/attempt/";
+    var requestUrl = OpenPopKa !== "undefined"? "/attemptpop/" : "/attempt/";
     var respondpromise = request(requestUrl,attemptData);
+
     respondpromise.done(function(data){
       data = jQuery.parseJSON(data);
       var progress = 0;
@@ -354,7 +388,7 @@ function handleAttempt(data) {
          streakNum = data.streak;
 
          // Empty the message area.
-         feedbackEffect('');
+         emptyMsgArea();
 
          if(data.correct){
              correctAnswerEffect();
