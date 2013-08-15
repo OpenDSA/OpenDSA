@@ -245,21 +245,23 @@ function wrongAnswerEffect(score, framework){
 function handleMsg(message){
 
     var newmessage= message.join(',');
+    var re = "Try Again";
     newmessage = newmessage.replace(/\n/gi, "");
 
-    newmessage= newmessage.replace(/studentlisttest.java:/gi, "Error:line# ");
-    newmessage=newmessage.replace("class studentlisttest" , "");
-    newmessage = newmessage.replace(/\^/gi, "");
-    console.log(newmessage);
+    if(newmessage.indexOf(re) == -1){
+        newmessage= newmessage.replace(/studentlisttest.java:/gi, "Error:line# ");
+        newmessage=newmessage.replace("class studentlisttest" , "");
+        newmessage = newmessage.replace(/\^/gi, "");
+        console.log(newmessage);
 
-    var numbers = newmessage.match(/\d+\.?\d*/g);
+        var numbers = newmessage.match(/\d+\.?\d*/g);
            
-    for (var i=numbers.length-2 ; i>=0 ; i--){
-        var newnumber = numbers[i]-333;
-      
-        var stringnum = numbers[i]+'';
-        var newstringnumber =  newnumber +'';
-        newmessage=newmessage.replace(stringnum , newstringnumber);
+        for (var i=numbers.length-2 ; i>=0 ; i--){
+            var newnumber = numbers[i]-333;
+            var stringnum = numbers[i]+'';
+            var newstringnumber =  newnumber +'';
+            newmessage=newmessage.replace(stringnum , newstringnumber);
+        }
     }
     
     var result =  newmessage.split(",");
@@ -378,13 +380,40 @@ function handleAttempt(data) {
 
     // Save the problem results to the server
     var requestUrl = OpenPopKa !== "undefined"? "/attemptpop/" : "/attempt/";
+    
+    if(OpenPopKa !== "undefined"){
+        /*$('div#answercontent').block({ css: { 
+            border: 'none', 
+            padding: '15px', 
+            backgroundColor: '#000', 
+            '-webkit-border-radius': '10px', 
+            '-moz-border-radius': '10px', 
+            opacity: .5, 
+            color: '#fff' 
+        } });*/
+        $.blockUI({message:"Waiting for the server to evaluate you code...", css: { 
+            border: 'none', 
+            padding: '15px', 
+            backgroundColor: '#000', 
+            '-webkit-border-radius': '10px', 
+            '-moz-border-radius': '10px', 
+            opacity: .5, 
+            color: '#fff' 
+        } });
+
+    }
+
     var respondpromise = request(requestUrl,attemptData);
+
 
     respondpromise.done(function(data){
       data = jQuery.parseJSON(data);
       var progress = 0;
       var streakNum = 0;
-
+    
+      if(OpenPopKa !== "undefined"){
+        $.unblockUI();
+      }
       // Update DOM elements according to the feedback from OpenPop
       if(data && typeof OpenPopKa !== "undefined"){
          progress = data.progress;
@@ -423,6 +452,11 @@ function handleAttempt(data) {
     });
     
     respondpromise.fail(function(xhr) {
+        // unblock the page
+        if(OpenPopKa !== "undefined"){
+            $.unblockUI();
+        }
+
         //Alert any listeners of the error before reload
         $(Exercises).trigger("attemptError");
 
