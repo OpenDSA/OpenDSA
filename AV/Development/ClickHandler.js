@@ -430,7 +430,7 @@
 						//move/copy/swap within the tree
 						valueEffect(ch, {
 							from: ch.selNode,
-							to: yhis,
+							to: this,
 							effect: options.effect
 						});
 						tree.layout();
