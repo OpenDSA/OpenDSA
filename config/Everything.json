@@ -26,6 +26,10 @@
       }
     },
     "Mathematical Background": {
+      "Development/MathpreIntro": {
+        "long_name": "Chapter Introduction",
+        "exercises": {}
+      },
       "Development/SetDef": {
         "long_name": "Set Definitions",
         "exercises": {}

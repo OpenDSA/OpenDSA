@@ -20,7 +20,7 @@
         "long_name": "Introduction to Data Structures and Algorithms",
         "exercises": {
           "IntroSumm": {
-            "long_name": "Introduction Summary Exercise",
+            "long_name": "Introduction Summary Questions",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -29,6 +29,10 @@
       }
     },
     "Mathematical Background": {
+      "Development/MathpreIntro": {
+        "long_name": "Chapter Introduction",
+        "exercises": {}
+      },
       "Development/SetDef": {
         "long_name": "Set Definitions",
         "exercises": {}

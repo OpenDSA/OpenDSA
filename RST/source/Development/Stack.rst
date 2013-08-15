@@ -50,6 +50,23 @@ The two approaches presented here are :dfn:`array-based` and
 :dfn:`linked stacks`, 
 which are analogous to array-based and linked lists, respectively.
 
+.. TODO::
+   :type: Exercise
+
+   Need to create an exercise for stacks as follows.
+
+   Following sequence of operations is performed on a stack: push(1),
+   push(2), pop, push(1), push(2), pop, pop, pop, push(2), pop. The
+   values will be output in this order: [Here, the student will type the
+   values in the proper order.]
+
+   We need to have a way to randomly generate random number of operations
+   like push and pop. We might also consider using random numbers (not
+   only 1 and 2). We need a way to generate the correct answer for the
+   randomly generated problem instance. It is important to make sure
+   that we do not generate a pop operation on an empty stack.
+
+
 Array-Based Stacks
 ------------------
 

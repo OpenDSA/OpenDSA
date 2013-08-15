@@ -8,15 +8,15 @@
    :prerequisites:
    :topic: Math Background
 
-Summations and Recurrence Relations [Text]
-==========================================
+Summations and Recurrence Relations
+===================================
 
 Most programs contain loop constructs.
 When analyzing running time costs for programs with loops, we
 need to add up the costs for each time the loop is executed.
-This is an example of a :dfn:`summation`.
+This is an example of a :term:`summation`.
 Summations are simply the sum of costs for some function applied to a
-range of parameter values.\index{summation!notation}
+range of parameter values.
 Summations are typically written with the following "Sigma"
 notation:
 
@@ -41,9 +41,9 @@ Within a sentence, Sigma notation is typeset as
 
 Given a summation, you often wish to replace it with an algebraic
 equation with the same value as the summation.
-This is known as a :dfn:`closed-form solution`,
+This is known as a :term:`closed-form solution`,
 and the process of replacing the summation with its closed-form
-solution is known as :dfn:`solving` the summation.
+solution is known as solving the summation.
 For example, the summation
 :math:`\sum_{i=1}^{n} 1`
 is simply the expression "1" summed :math:`n` times
@@ -53,56 +53,68 @@ the closed-form solution is :math:`n`.
 The following is a list of useful summations,
 along with their closed-form solutions.
 
-.. TODO::
-   :type: Text
-
-   These equations need numbers. Some of them need HTML target labels.
-
 .. math::
-   :label: summation1
+   :label: sum1
 
-   \begin{eqnarray}
-   \sum_{i = 1}^{n} i &=& \frac{n (n+1)}{2}.\\
-   \sum_{i = 1}^{n} i^2 &=& \frac{2 n^3 + 3 n^2 + n}{6} =
-   \frac{n(2n + 1)(n + 1)}{6}.\\
-   \sum_{i = 1}^{\log n} n &=& n \log n.\\
-   \sum_{i = 0}^\infty a^i &=& \frac{1}{1-a}\ \mbox{for}
-   \ 0 < a < 1.\\
-   \sum_{i=0}^{n} a^i &=& \frac{a^{n+1} - 1}{a - 1}\ \mbox{for}
-   \ a \neq 1.\\
-   \end{eqnarray}
-
-As special cases to this last summation, we have the following two:
+   \sum_{i = 1}^{n} i &=& \frac{n (n+1)}{2}.
 
 .. math::
    :label: sum2
 
-   \begin{eqnarray}
-   \sum_{i = 1}^{n} \frac{1}{2^i} &=& 1 - \frac{1}{2^n},\\
-   \sum_{i = 0}^{n} 2^i &=& 2^{n+1} - 1.\\
-   \end{eqnarray}
-
-As a corollary to :eq:`sum2`,
+   \sum_{i = 1}^{n} i^2 &=& \frac{2 n^3 + 3 n^2 + n}{6} =
+   \frac{n(2n + 1)(n + 1)}{6}.
 
 .. math::
    :label: sum3
+
+   \sum_{i = 1}^{\log n} n &=& n \log n.
+
+.. math::
+   :label: sum4
+
+   \sum_{i = 0}^\infty a^i &=& \frac{1}{1-a}\ \mbox{for}
+   \ 0 < a < 1.
+
+.. math::
+   :label: sum5
+
+   \sum_{i=0}^{n} a^i &=& \frac{a^{n+1} - 1}{a - 1}\ \mbox{for}
+   \ a \neq 1.
+
+As special cases to this last summation, we have the following two:
+
+.. math::
+   :label: sum6
+
+   \sum_{i = 1}^{n} \frac{1}{2^i} &=& 1 - \frac{1}{2^n},
+
+.. math::
+   :label: sum7
+
+   \sum_{i = 0}^{n} 2^i &=& 2^{n+1} - 1.
+
+As a corollary to :eq:`sum7`,
+
+.. math::
+   :label: sum8
 
    \sum_{i = 0}^{\log n} 2^i &=& 2^{\log n + 1} - 1 = 2n - 1.
 
 Finally,
 
 .. math::
-   :label: sum4
+   :label: sum9
 
    \sum_{i=1}^{n} \frac{i}{2^i} &=& 2 - \frac{n+2}{2^n}.
 
 The sum of reciprocals from 1 to :math:`n`, called the
-:dfn:`Harmonic Series` and written :math:`{\cal H}_n`, has a value
+:term:`Harmonic Series` and written :math:`{\cal H}_n`, has a value
 between :math:`\log_e n` and :math:`\log_e n + 1`.
 To be more precise, as :math:`n` grows,
 the summation grows closer to
 
 .. math::
+   :label: sum10
 
    {\cal H}_n \approx \log_e n + \gamma + \frac{1}{2n},
 
@@ -120,7 +132,7 @@ The running time for a recursive algorithm is most easily expressed by
 a recursive expression because the total time for the recursive
 algorithm includes the time to run the recursive
 call(s).
-A :dfn:`recurrence relation` defines a function by means of an
+A :term:`recurrence relation` defines a function by means of an
 expression that includes one or more (smaller) instances of itself.
 A classic example is the recursive definition for the
 factorial function:
@@ -166,7 +178,7 @@ This can be defined using the following recurrence:
 
 As with summations, we typically wish to replace the recurrence
 relation with a closed-form solution.
-One approach is to :dfn:`expand` the recurrence by replacing any
+One approach is to expand the recurrence by replacing any
 occurrences of :math:`\mathbf{T}` on the right-hand side with its
 definition.
 
@@ -251,8 +263,3 @@ definition.
 
 Techniques to find closed-form solutions for recurrence relations are
 discussed in Module :numref:`<Recurrence>`.
-
-.. TODO::
-   :type: Exercise
-
-   Create a battery of summary questions.

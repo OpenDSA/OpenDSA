@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Math Background
 
-Estimation [Text]
-=================
+Estimation
+==========
 
 One of the most useful life skills that you can gain from your
 computer science training is the ability to perform quick estimates.
@@ -108,8 +108,3 @@ purpose.
    item in your shopping cart.
    This will likely give an answer within a couple of dollars of the true
    total.
-
-.. TODO::
-   :type: Exercise
-
-   Need some sort of exercise for this

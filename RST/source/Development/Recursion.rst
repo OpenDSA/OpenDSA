@@ -8,15 +8,17 @@
    :prerequisites:
    :topic: Math Background
 
-Recursion [Text]
-================
+.. odsalink:: AV/Development/recursionCON.css
 
-An algorithm is :dfn:`recursive` if it calls itself to do part of
+Recursion
+=========
+
+An algorithm is :term:`recursive` if it calls itself to do part of
 its work.
 For this approach to be successful, the "call to itself" must be on
 a smaller problem then the one originally attempted.
 In general, a recursive algorithm must have two parts:
-the :dfn:`base case`, which handles
+the :term:`base case`, which handles
 a simple input that can be solved without resorting to a recursive
 call, and the recursive part which contains one or more recursive
 calls to the algorithm where the parameters are in some sense
@@ -75,19 +77,10 @@ Here is another example of recursion, based on a famous puzzle called
 The natural algorithm to solve this problem has multiple recursive calls.
 It cannot be rewritten easily using ``while`` loops.
 
-.. TODO::
-   :type: Figure
-
-   Replace figure with JSAV version
-
 .. _TOH:
 
-.. odsafig:: Images/TOH.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Towers of Hanoi Example
+.. inlineav:: recursionCONTOH dgm
+   :align: justify
 
    Towers of Hanoi example.
    (a) The initial conditions for a problem with six rings.
@@ -165,7 +158,7 @@ Tree structures are an example of this.
 Thus, the algorithms to manipulate such data structures are often
 presented recursively.
 Many searching and sorting algorithms are based on a strategy of
-:dfn:`divide and conquer`.
+:term:`divide and conquer`.
 That is, a solution is found by breaking the problem into smaller
 (similar) subproblems, solving the subproblems, then combining the
 subproblem solutions to form the solution to the original problem.
@@ -173,7 +166,4 @@ This process is often implemented using recursion.
 Thus, recursion plays an important role throughout this book,
 and many more examples of recursive functions will be given.
 
-.. TODO::
-   :type: Programming Exercise
-
-   Create a series of programming exercises.
+.. odsascript:: AV/Development/recursionCON.js

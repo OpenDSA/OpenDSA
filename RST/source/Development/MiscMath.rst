@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Math Background
 
-Miscellaneous Notation [Text]
-=============================
+Miscellaneous Notation
+======================
 
 This module collects together definitions for a number of mathematical
 terms and concepts, as a place for reference when needed.
@@ -34,8 +34,8 @@ Note that in this book large amounts of storage are nearly always
 measured in powers of two and times in powers of
 ten.
 
-*Factorial function:*
-The :dfn:`factorial` function, written :math:`n!` for :math:`n` an
+**Factorial function:**
+The :term:`factorial` function, written :math:`n!` for :math:`n` an
 integer greater than 0, is the product of
 the integers between 1 and :math:`n`, inclusive.
 Thus, :math:`5! = 1 \cdot 2 \cdot 3 \cdot 4 \cdot 5 = 120`.
@@ -54,7 +54,7 @@ it grows faster than :math:`c^n` for any positive integer constant
 :math:`c`.
 
 **Permutations:**
-A :dfn:`permutation` of a sequence :math:`\mathbf{S}`
+A :term:`permutation` of a sequence :math:`\mathbf{S}`
 is simply the members of :math:`\mathbf{S}` arranged in some order.
 For example, a permutation of the integers 1 through :math:`n` would
 be those values arranged in some order.
@@ -63,7 +63,7 @@ If the sequence contains :math:`n` distinct members, then there are
 This is because there are :math:`n` choices for the first member in
 the permutation; for each choice of first member there are :math:`n-1`
 choices for the second member, and so on.
-Sometimes one would like to obtain a :dfn:`random permutation` for a
+Sometimes one would like to obtain a :term:`random permutation` for a
 sequence, that is, one of the :math:`n!` possible permutations is
 selected in such a way that each permutation has equal probability of
 being selected.
@@ -80,7 +80,7 @@ and ``Random(n)`` returns an integer value in the range 0 to
    :tag: Permute
 
 **Boolean variables:**
-A :dfn:`Boolean variable`
+A :term:`Boolean variable`
 is a variable that takes on one of the two values ``True`` and
 ``False``.
 These two values are often associated with the values 1 and 0,
@@ -105,14 +105,14 @@ logic or when performing a Boolean operation).
 the negation of :math:`A` where :math:`A` is a Boolean variable.
 
 **Floor and ceiling:**
-The :dfn:`floor` of :math:`x` (written :math:`\lfloor x \rfloor`)
+The :term:`floor` of :math:`x` (written :math:`\lfloor x \rfloor`)
 takes real value :math:`x` and returns the greatest 
 integer :math:`\leq x`.
 For example, :math:`\lfloor 3.4 \rfloor = 3`,
 as does :math:`\lfloor 3.0 \rfloor`, 
 while :math:`\lfloor -3.4 \rfloor = -4` and
 :math:`\lfloor -3.0 \rfloor = -3`.
-The :dfn:`ceiling` of :math:`x` (written
+The :term:`ceiling` of :math:`x` (written
 :math:`\lceil x \rceil`) takes real value :math:`x` and returns the
 least integer :math:`\geq x`.
 For example, :math:`\lceil 3.4 \rceil = 4`, as does
@@ -120,7 +120,7 @@ For example, :math:`\lceil 3.4 \rceil = 4`, as does
 while :math:`\lceil -3.4 \rceil = \lceil -3.0 \rceil = -3`.
 
 **Modulus operator:**
-The :dfn:`modulus` (or :dfn:`mod`) function returns the remainder of
+The :term:`modulus` (or :term:`mod`) function returns the remainder of
 an integer division.
 Sometimes written :math:`n \bmod m` in mathematical expressions,
 the syntax in many programming languages is ``n % m``.
@@ -155,11 +155,6 @@ Implementers of hash functions must either insure that the
 result of the computation is always positive, or else add the hash
 table size to the result of the modulo function when that result is
 negative.
-
-.. TODO::
-   :type: Exercise
-
-   Create a battery of summary questions.
 
 Notes
 -----

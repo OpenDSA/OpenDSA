@@ -8,8 +8,10 @@
    :prerequisites:
    :topic: Math Background
 
-Mathematical Proof Techniques [Text]
-====================================
+.. odsalink:: AV/Development/proofCON.css
+
+Mathematical Proof Techniques
+=============================
 
 Solving any problem has two distinct parts:
 the investigation and the argument.
@@ -52,7 +54,7 @@ This section briefly introduces three commonly used proof techniques:
 Direct Proof
 ------------
 
-In general, a :dfn:`direct proof` is just a "logical explanation".
+In general, a :term:`direct proof` is just a "logical explanation".
 A direct proof is sometimes referred to as an argument by deduction.
 This is simply an argument in terms of logic.
 Often written in English with words such as "if ... then",
@@ -156,7 +158,7 @@ small value such as 1 be substituted for :math:`n` in the theorem and
 applying simple algebra or logic as necessary to verify the theorem.
 Proving the induction step is sometimes easy, and sometimes difficult.
 An alternative formulation of the induction step is known as
-:dfn:`strong induction`.
+:term:`strong induction`.
 The induction step for strong induction is:
 
 2a. **Induction Step:**
@@ -180,7 +182,7 @@ most people at first) is that we can take advantage of the
 *assumption* that **Thrm** holds for all values less
 than :math:`n` as a tool to help us prove that **Thrm** holds
 for :math:`n`.
-This is known as the :dfn:`induction hypothesis`.
+This is known as the :term:`induction hypothesis`.
 Having this assumption to work with makes the induction step
 easier to prove than tackling the original theorem itself.
 Being able to rely on the induction hypothesis provides extra
@@ -389,12 +391,8 @@ induction hypothesis.
 
 .. _TwoColor:
 
-.. odsafig:: Images/TwoColor.png
-   :width: 400
+.. inlineav:: proofCON1 dgm
    :align: center
-   :capalign: center
-   :figwidth: 90%
-   :alt: A two-coloring for three lines in the plane
 
    A two-coloring for the regions formed by three lines in the plane.
 
@@ -402,7 +400,7 @@ induction hypothesis.
 
 .. topic:: Example
 
-   Define a :dfn:`two-coloring` for a
+   Define a :term:`two-coloring` for a
    set of regions as a way of assigning one of two colors to each region
    such that no two regions sharing a side have the same color.
    For example, a chessboard is two-colored.
@@ -515,9 +513,4 @@ also produces the correct result.
 Prior to this, we must prove that the function always terminates,
 which might also be done using an induction proof.
 
-.. TODO::
-   :type: Exercise
-
-   Need a battery of summary questions.
-
-   It would be nice if we could do something else as well.
+.. odsascript:: AV/Development/proofCON.js

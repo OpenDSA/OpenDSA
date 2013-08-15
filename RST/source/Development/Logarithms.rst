@@ -8,11 +8,11 @@
    :prerequisites:
    :topic: Math Background
 
-Logarithms [Text]
-=================
+Logarithms
+==========
 
-A :dfn:`logarithm` of base :math:`b` for value :math:`y` is the power
-to which :math:`b` is raised to get :math:`y`.
+The :term:`logarithm` of base :math:`b` for value :math:`y` is the
+power to which :math:`b` is raised to get :math:`y`.
 Normally, this is written as :math:`\log_b y = x`.
 Thus, if :math:`\log_b y = x` then :math:`b^x = y`,
 and :math:`b^{log_b y} = y`.
@@ -95,15 +95,10 @@ A special notation is used in the rare case when we need to know how
 many times we must take the log of a number before we reach a
 value :math:`\leq 1`.
 This quantity is written :math:`\log^* n`.
-For example, :math:`\log^* 1024 = 4 because
+For example, :math:`\log^* 1024 = 4` because
 :math:`\log 1024 = 10`, :math:`\log 10 \approx 3.33`,
 :math:`\log 3.33 \approx 1.74`,
 and :math:`\log 1.74 < 1`, which is a total of 4 log operations.
-
-.. TODO::
-   :type: Exercise
-
-   Create a battery of summary questions.
 
 Notes
 -----
