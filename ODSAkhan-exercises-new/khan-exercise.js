@@ -357,7 +357,7 @@ var Khan = (function() {
             // we load a khan-exercises problem that needs it. Previously it
             // was a dependency of 'math' so this isn't really any different.
             mods.push(
-                "answer-types", "tmpl", "tex", "jquery.adhesion",
+                "answer-types", "tmpl", "tex", "jquery.adhesion","jquery.blockUI",
                 "calculator",
                 {
                     src: urlBase + "utils/MathJax/2.1/MathJax.js?config=KAthJax-da9a7f53e588f3837b045a600e1dc439"

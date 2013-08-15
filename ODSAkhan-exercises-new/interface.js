@@ -379,9 +379,9 @@ function handleAttempt(data) {
             score.correct, ++attempts, stringifiedGuess, timeTaken, skipped);
 
     // Save the problem results to the server
-    var requestUrl = OpenPopKa !== "undefined"? "/attemptpop/" : "/attempt/";
+    var requestUrl = typeof OpenPopKa !== "undefined"? "/attemptpop/" : "/attempt/";
     
-    if(OpenPopKa !== "undefined"){
+    if(typeof OpenPopKa !== "undefined"){
         /*$('div#answercontent').block({ css: { 
             border: 'none', 
             padding: '15px', 
@@ -391,15 +391,7 @@ function handleAttempt(data) {
             opacity: .5, 
             color: '#fff' 
         } });*/
-        $.blockUI({message:"Waiting for the server to evaluate you code...", css: { 
-            border: 'none', 
-            padding: '15px', 
-            backgroundColor: '#000', 
-            '-webkit-border-radius': '10px', 
-            '-moz-border-radius': '10px', 
-            opacity: .5, 
-            color: '#fff' 
-        } });
+        $.blockUI({message:"Waiting for the server to evaluate your code ..."});
 
     }
 
@@ -411,7 +403,7 @@ function handleAttempt(data) {
       var progress = 0;
       var streakNum = 0;
     
-      if(OpenPopKa !== "undefined"){
+      if(typeof OpenPopKa !== "undefined"){
         $.unblockUI();
       }
       // Update DOM elements according to the feedback from OpenPop
@@ -453,7 +445,7 @@ function handleAttempt(data) {
     
     respondpromise.fail(function(xhr) {
         // unblock the page
-        if(OpenPopKa !== "undefined"){
+        if(typeof OpenPopKa !== "undefined"){
             $.unblockUI();
         }
 
