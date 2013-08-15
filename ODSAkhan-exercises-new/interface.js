@@ -244,13 +244,14 @@ function wrongAnswerEffect(score, framework){
 // Process the message data coming from OpenPop Back end
 function handleMsg(message){
 
-    var newmessage= message.join('\n');;
-    console.log(newmessage);
+    var newmessage= message.join(',');
+    newmessage = newmessage.replace(/\n/gi, "");
 
     newmessage= newmessage.replace(/studentlisttest.java:/gi, "Error:line# ");
     newmessage=newmessage.replace("class studentlisttest" , "");
     newmessage = newmessage.replace(/\^/gi, "");
-          
+    console.log(newmessage);
+
     var numbers = newmessage.match(/\d+\.?\d*/g);
            
     for (var i=numbers.length-2 ; i>=0 ; i--){
@@ -261,7 +262,8 @@ function handleMsg(message){
         newmessage=newmessage.replace(stringnum , newstringnumber);
     }
     
-    return newmessage;
+    var result =  newmessage.split(",");
+    return result;
 }
 
 // Empty Message area
@@ -275,7 +277,7 @@ function feedbackEffect(message){
     var msg = handleMsg(message);
 
     for (var i = 0; i < msg.length; i++) {
-        var msgLine = $("<span>" + msg[i] + "</span>")
+        var msgLine = $("<div>" + msg[i] + "</div>")
         $('#solutionarea').append(msgLine);
     }
 }
