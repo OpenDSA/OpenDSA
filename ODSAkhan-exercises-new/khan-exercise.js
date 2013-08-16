@@ -1147,6 +1147,30 @@ var Khan = (function() {
         return $.trim(guess) === "" || (guess instanceof Array &&
                  $.trim(guess.join("").replace(/,/g, "")) === "");
     }
+    
+    //+ Jonas Raoni Soares Silva
+    //@ http://jsfromhell.com/array/shuffle [v1.0]
+    // Added by Junyang Chen
+    function shuffle(o){ //v1.0
+        for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+            return o;
+    };
+     
+    // TODO Should not fix the array size to 10. Should make it more flexible.
+    // Added by Junyang Chen
+    function reMakeProblemBag(problems, n){
+        var arr = [0,1,2,3,4,5,6,7,8,9];
+        var problembag = [];
+        arr = shuffle(arr);
+     
+        for(var i = 0; i < 10; i ++){
+            problembag.push((function(){
+             return problems[arr[i]];  
+            })());
+        }
+ 
+        return problembag;
+    }
 
     function makeProblem(id, seed) {
         debugLog("start of makeProblem");
@@ -1185,8 +1209,14 @@ var Khan = (function() {
         // we made earlier to ensure that every problem gets shown the
         // appropriate number of times
         } else if (problemBag.length > 0) {
+            // Modified by Junyang Chen
+            // 
             problem = problemBag[problemBagIndex];
             id = problem.data("id");
+            if(problemBagIndex === 9){
+                problemBag = reMakeProblemBag(problemBag, 10);
+            }
+
 
         // No valid problem was found, bail out
         } else {

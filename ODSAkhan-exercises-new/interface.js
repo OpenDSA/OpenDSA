@@ -361,10 +361,15 @@ function handleAttempt(data) {
         fast: !localMode && userExercise.secondsPerFastProblem >= timeTaken
     });
 
+    // Modified by Junyang Chen
     //if (localMode || Exercises.currentCard.get("preview")) {
         // Skip the server; just pretend we have success
     //    return false;
     //}
+    if(!server && typeof OpenPopKa === "undefined"){
+          // Skip the server
+          return false;     
+    }
 
     if (previewingItem) {
         $("#next-question-button").prop("disabled", true);
