@@ -190,11 +190,11 @@ function resetPointer(pointer,index, type){
     not_select_pointer = front_pointer;
   }
   pointer.label.element.remove();
-  pointer.arrow.rObj.node.remove();
+  pointer.arrow.rObj.remove();
 
   if(front_index === rear_index){
     not_select_pointer.label.element.remove();
-    not_select_pointer.arrow.rObj.node.remove();
+    not_select_pointer.arrow.rObj.remove();
     front_pointer = jsavCir.pointer("front", index, 0.3);
     rear_pointer = jsavCir.pointer("rear", index, 0.7);
     bindPointerClick(front_pointer);

@@ -61,7 +61,7 @@ Written by Junyang Chen and Cliff Shaffer
   }
   var Circular = function(jsav, cx, cy, r1, r2, size, options){
     this.front = null;
-    this. rear = null;
+    this.rear = null;
     this.jsav = jsav;
     this.cx = cx;
     this.cy = cy;
@@ -186,12 +186,13 @@ function resetPointer(pointer,index, type){
     rear_index = index
     not_select_pointer = front_pointer;
   }
+  console.log(pointer);
   pointer.label.element.remove();
-  pointer.arrow.rObj.node.remove();
+  pointer.arrow.rObj.remove();
 
   if(front_index === rear_index){
     not_select_pointer.label.element.remove();
-    not_select_pointer.arrow.rObj.node.remove();
+    not_select_pointer.arrow.rObj.remove();
     front_pointer = jsavCir.pointer("front", index, 0.3);
     rear_pointer = jsavCir.pointer("rear", index, 0.7);
     bindPointerClick(front_pointer);
