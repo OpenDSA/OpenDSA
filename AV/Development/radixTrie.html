@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Radix Trie</title>
+        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+        <link rel="stylesheet" href="proficiency.css" type="text/css" />
+    </head>
+
+    <body>
+        <style>
+          .jsavtreenode {
+            cursor: pointer;
+          }
+          .jsavstack {
+            margin-top: 30px;
+          }
+        </style>
+        <h1>Radix Trie</h1>
+        <div id="jsavcontainer">
+            <p class="instructLabel">Instructions:</p>
+            <p class="instructions">
+                    Use the values in the stack to form a radix trie.
+            </p>
+            <p align="center" class="jsavexercisecontrols"></p>
+        </div>
+
+        <script
+           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+        <script src="../../JSAV/lib/raphael.js"></script>
+        <script src="../../JSAV/build/JSAV.js"></script>
+        <script src="ClickHandler.js"></script>
+        <script src="stack.js"></script>
+
+        <script>
+
+        JSAV._types.ds.BinaryTreeNode.prototype.createLabel = function (val) {
+            if (this.label) {
+                this.label.clear();
+            }
+            this.label = this.jsav.label(val, {container: this.element});
+            this.label.element.css({
+                left: this.element.outerWidth() - 10,
+                top: - this.label.element.outerHeight() + 10
+            });
+        };
+
+        JSAV._types.ds.BinaryTreeNode.prototype.clearLabel = function () {
+            if (!this.label) { return; }
+            this.label.clear();
+        };
+
+        JSAV._types.ds.BinaryTreeNode.prototype.getLabel = function () {
+            return this.label;
+        };
+
+        //modified to remove label when value is empty and create label when it's not empty
+        JSAV._types.ds.BinaryTreeNode.prototype._setvalue = JSAV.anim(function(newValue) {
+            var oldVal = this.value(),
+                valtype = typeof(newValue);
+            if (typeof oldVal === "undefined") {oldVal = ""};
+            if (valtype === "object") { valtype = "string"; }
+            this.element
+                .removeClass("jsavnullnode")
+                .find(".jsavvalue")
+                .html(this._valstring(newValue))
+                .end()
+                .attr({"data-value": newValue, "data-value-type": valtype});
+            if (newValue === "") {
+                this.clearLabel();
+            } else if (newValue !== "jsavnull") {
+                this.createLabel(getBinary(newValue));
+            }
+            if (newValue === "jsavnull") {
+              this.element.addClass("jsavnullnode");
+            }
+            return [oldVal];
+          });
+
+        var insertArray = [],
+            tree,
+            stack,
+            stackLabels = [],
+            insertSize = 6,
+            clickHandler,
+            av = new JSAV($("#jsavcontainer"));
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        function initialize() {
+            turnAnimationOff();
+
+            //generate values. 65 = A, 80 = 0
+            insertArray = generateValues(insertSize, 65, 80);
+
+            if (typeof clickHandler === "undefined") {
+                clickHandler = new ClickHandler(av, exercise, {
+                    selectedClass: "selected",
+                    removeNodes: false
+                });
+            }
+            clickHandler.reset();
+
+            //clear the old stack
+            if (stack) {
+                clickHandler.remove(stack);
+                stack.clear();
+            }
+            //create a new stack
+            stack = av.ds.stack({center: true});
+            //convert the values into characters and push them into the stack
+            for (var i = 0; i < insertSize; i++) {
+                insertArray[i] = String.fromCharCode(insertArray[i]);
+                stack.addLast(insertArray[i]);
+            }
+            stack.layout();
+            clickHandler.addList(stack, {
+                select: "first",
+                drop: "first",
+                keep: false
+            });
+
+            //contains references to the labels of the stack nodes
+            stackLabels = [];
+            //put labels on the stack nodes and hide all except the first one by default
+            for (var i = 0; i < insertSize; i++) {
+                var l = av.label(getBinary(insertArray[i]), {container: stack.get(i).element, visible: i === 0});
+                l.element.css({
+                    left: stack.last().element.outerWidth() - 10,
+                    top: - l.element.outerHeight() + 10
+                });
+                stackLabels.push(l);
+            }
+
+            //clear the old tree
+            if (tree) {
+                clickHandler.remove(tree);
+                tree.clear();
+            }
+            //create a new tree
+            tree = av.ds.bintree({center: true, visible: true, nodegap: 15});
+            tree.root("");
+            tree.root().addClass("emptynode");
+            tree.layout();
+            clickHandler.addTree(tree, {
+                onDrop: function () {
+                    this.removeClass("emptynode");
+                    if (!this.left()) {
+                        //add empty node on the left side
+                        this.left("");
+                        this.left().element.addClass("emptynode");
+                    }
+                    if (!this.right()) {
+                        //add empty node on the right side
+                        this.right("");
+                        this.right().element.addClass("emptynode");
+                    }
+                    this.container.layout();
+                    if (!stack.first().value())
+                        stack.removeFirst();
+                    if (stack.size())
+                        stackLabels[insertSize - stack.size()].show();
+                    stack.layout();
+                }
+            });
+
+            restoreAnimationState();
+
+            return tree;
+        }
+        
+        function modelSolution(jsav) {
+            jsav._undo = [];
+
+            var modelStack = jsav.ds.stack({center: true});
+            for (var i = 0; i < insertSize; i++) {
+                modelStack.addLast(insertArray[i]);
+            }
+            modelStack.layout();
+            var l = jsav.label(getBinary(insertArray[0]),{container: modelStack.first().element});
+            l.element.css({
+                left: modelStack.first().element.outerWidth() - 10,
+                top: - l.element.outerHeight() + 10
+            });
+
+            var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 10});
+            modelTree.root("");
+            modelTree.root().addClass("emptynode");
+            modelTree.layout();
+
+            jsav.displayInit();
+
+            for (var i = 0; i < insertSize; i++) {
+                var val = getBinary( insertArray[i] );
+                var level = 0;
+                var node = modelTree.root();
+                //find the node where the value should be inserted
+                while (!node.hasClass("emptynode") && node.value() === "") {
+                    if (val.charAt(level) === "0") {
+                        node = node.left();
+                    } else {
+                        node = node.right();
+                    }
+                    level += 1;
+                }
+                if (node.hasClass("emptynode")) {
+                    //insert value and add empty nodes
+                    node.value(insertArray[i]);
+                    node.left("");
+                    node.left().element.addClass("emptynode");
+                    node.right("");
+                    node.right().element.addClass("emptynode");
+                    node.removeClass("emptynode");
+                } else {
+                    // level += 1;
+                    while (val.charAt(level) === getBinary( node.value() ).charAt(level)) {
+                        node = node.child(parseInt(val.charAt(level)))
+                            .removeClass("emptynode")
+                            .value(node.value());
+                        node.parent().value("");
+                        node.left("");
+                        node.left().element.addClass("emptynode");
+                        node.right("");
+                        node.right().element.addClass("emptynode");
+                        level += 1;
+                    }
+                    //insert value
+                    node.child(parseInt(val.charAt(level)))
+                        .removeClass("emptynode")
+                        .value(insertArray[i])
+                        .left("")
+                        .element.addClass("emptynode");
+                    node.child(parseInt(val.charAt(level)))
+                        .right("")
+                        .element.addClass("emptynode");
+                    //move value from node to the sibling of the newly inserted node
+                    node.child( 1 - parseInt(val.charAt(level)))
+                        .removeClass("emptynode")
+                        .value(node.value())
+                        .left("")
+                        .element.addClass("emptynode");
+                    node.child( 1 - parseInt(val.charAt(level)))
+                        .right("")
+                        .element.addClass("emptynode");
+                    node.value("");
+                }
+
+                modelTree.layout();
+                modelStack.removeFirst();
+                modelStack.layout();
+                if (modelStack.first()) {
+                    //add label to stack node
+                    l = jsav.label(getBinary(insertArray[i + 1]), {container: modelStack.first().element});
+                    l.element.css({
+                        left: modelStack.first().element.outerWidth() - 10,
+                        top: - l.element.outerHeight() + 10
+                    });
+                }
+
+                jsav.stepOption("grade", true);
+                jsav.step();
+            }
+
+            return modelTree;
+        }
+
+        //generate values without duplicates
+        function generateValues(n, min, max) {
+            var arr = [];
+            var val;
+            for (var i = 0; i < n; i++) {
+                do {
+                    val = Math.floor(min + Math.random() * (max - min));
+                } while ($.inArray(val, arr) !== -1);
+                arr.push(val);
+            }
+            return arr;
+        }
+
+        function getBinary(char) {
+            var binLen = 4;
+            if (typeof char === "string") {
+                char = char.charCodeAt(0);
+            }
+            return Array(binLen + 1 - (char % 64).toString(2).length).join("0") + (char % 64).toString(2);
+        }
+
+        var oldfx;
+
+        function turnAnimationOff() {
+            //save the state of fx.off
+            var oldfx = $.fx.off || false;
+            //turn off the jQuery animations
+            $.fx.off = true;
+        }
+
+        function restoreAnimationState() {
+            $.fx.off = oldfx;
+        }
+
+        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+        exercise.reset();
+
+        </script>
+    </body>
+</html>
