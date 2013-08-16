@@ -1070,7 +1070,8 @@ var Khan = (function() {
             }).children(".problems").children();
 
             // ...and create a new problem bag with problems of our new exercise type.
-            problemBag = makeProblemBag(problems, 10);
+            // Changed from 10 to 20. Modified by Junyang Chen.
+            problemBag = makeProblemBag(problems, 20);
 
             // Make scratchpad persistent per-user
             if (user) {
@@ -1159,11 +1160,21 @@ var Khan = (function() {
     // TODO Should not fix the array size to 10. Should make it more flexible.
     // Added by Junyang Chen
     function reMakeProblemBag(problems, n){
-        var arr = [0,1,2,3,4,5,6,7,8,9];
-        var problembag = [];
+        var i, 
+            arrSize = problems.length,
+            arr = [],
+            problembag = [];
+
+        for(i = 0; i < arrSize; i ++){
+            arr.push((function(){
+                return i;          
+            })());
+        }
+            
+        console.log(arr);
         arr = shuffle(arr);
-     
-        for(var i = 0; i < 10; i ++){
+        console.log(arr);   
+        for(var i = 0; i < n; i ++){
             problembag.push((function(){
              return problems[arr[i]];  
             })());
@@ -1213,8 +1224,8 @@ var Khan = (function() {
             // 
             problem = problemBag[problemBagIndex];
             id = problem.data("id");
-            if(problemBagIndex === 9){
-                problemBag = reMakeProblemBag(problemBag, 10);
+            if(problemBagIndex > 0 && problemBagIndex % 19 === 0){
+                problemBag = reMakeProblemBag(problemBag, 20);
             }
 
 
@@ -2106,8 +2117,9 @@ var Khan = (function() {
     function loadModule(modNameOrObject) {
         
         var src, deps = [];
+        // Modified by Junyang Chen
         if (typeof modNameOrObject === "string") {
-            if(/\([a-zA-Z0-9\.\/]*\)/.test(modNameOrObject)){
+            if(/\([a-zA-Z0-9\.\/\_]*\)/.test(modNameOrObject)){
                 modNameOrObject = modNameOrObject.replace(/\(|\)/g, "");
                 src = modNameOrObject;
             }else{
@@ -2181,7 +2193,8 @@ var Khan = (function() {
         // calls KhanUtil.random() and changes the seed)
         if (Khan.query.problem == null) {
             weighExercises(problems);
-            problemBag = makeProblemBag(problems, 10);
+            // Change the number from 10 to 20. By Junyang Chen.
+            problemBag = makeProblemBag(problems, 20);
         }
         tempdeff.resolve();
         // Generate the initial problem when dependencies are done being loaded
