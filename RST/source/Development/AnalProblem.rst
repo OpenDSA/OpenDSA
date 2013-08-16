@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Analyzing Problems [Text]
-=========================
+Analyzing Problems
+==================
 
 You most often use the techniques of "algorithm" analysis to analyze
 an algorithm, or the instantiation of an algorithm as a program.

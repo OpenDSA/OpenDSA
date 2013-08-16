@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Code Tuning and Empirical Analysis [Text]
-=========================================
+Code Tuning and Empirical Analysis
+==================================
 
 In practice, there is not such a big difference in running time
 between an algorithm with growth rate :math:`\Theta(n)` and another
@@ -82,7 +82,7 @@ fraction of the time.
    Directly testing whether a given complex object contains the point
    in question is relatively expensive.
    Instead, we can screen for whether the point is contained within a
-   :dfn:`bounding box` for the object.
+   :term:`bounding box` for the object.
    The bounding box is simply the smallest rectangle (usually defined
    to have sides perpendicular to the :math:`x` and :math:`y` axes)
    that contains the object.

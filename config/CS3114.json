@@ -51,14 +51,72 @@
       },
       "Development/Recursion": {
         "long_name": "Recursion",
-        "exercises": {}
+        "exercises": {
+          "recursionCONTOH": {}
+        }
       },
       "Development/Proofs": {
         "long_name": "Proofs",
-        "exercises": {}
+        "exercises": {
+          "proofCON1": {}
+        }
       },
       "Development/Estimation": {
         "long_name": "Estimation",
+        "exercises": {}
+      },
+      "Development/MathpreSumm": {
+        "long_name": "Chapter Summary",
+        "exercises": {}
+      }
+    },
+    "Algorithm Analysis": {
+      "Development/AnalChap": {
+        "long_name": "Chapter Intro: Algorithm Analysis",
+        "exercises": {}
+      },
+      "Development/AnalPrelim": {
+        "long_name": "Problems, Algorithms, and Programs",
+        "exercises": {}
+      },
+      "Development/AnalIntro": {
+        "long_name": "Comparing Algorithms",
+        "exercises": {}
+      },
+      "Development/AnalCases": {
+        "long_name": "Best, Average, and Worst Cases",
+        "exercises": {}
+      },
+      "Development/AnalCompvsAlg": {
+        "long_name": "A Faster Computer, or a Faster Algorithm?",
+        "exercises": {}
+      },
+      "Development/AnalAsymptotic": {
+        "long_name": "Asymptotic Analysis",
+        "exercises": {}
+      },
+      "Development/AnalProgram": {
+        "long_name": "Calculating the Running Time of a Program",
+        "exercises": {}
+      },
+      "Development/AnalProblem": {
+        "long_name": "Analyzing Problems",
+        "exercises": {}
+      },
+      "Development/AnalMisunderstanding": {
+        "long_name": "Common Misunderstandings",
+        "exercises": {}
+      },
+      "Development/AnalMultiple": {
+        "long_name": "Multiple Parameters",
+        "exercises": {}
+      },
+      "Development/AnalSpace": {
+        "long_name": "Space Bounds",
+        "exercises": {}
+      },
+      "Development/AnalTuning": {
+        "long_name": "Speeding Up Your Programs",
         "exercises": {}
       }
     },

@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Space Bounds [Text]
-===================
+Space Bounds
+============
 
 Besides time, space is the other computing resource that is commonly
 of concern to programmers.
@@ -56,14 +56,14 @@ structure.
 For example, each node of a linked list must store a pointer to the
 next value on the list.
 All such information stored in addition to the actual data values is
-referred to as :dfn:`overhead`.
+referred to as :term:`overhead`.
 Ideally, overhead should be kept to a minimum while allowing maximum
 access.
 The need to maintain a balance between these opposing goals is what
 makes the study of data structures so interesting.
 
 One important aspect of algorithm design is referred to as
-the :dfn:`space/time tradeoff` principle.
+the :term:`space/time tradeoff` principle.
 The space/time tradeoff principle says that one can often achieve a
 reduction in time if one is willing to sacrifice space or
 vice versa.
@@ -79,7 +79,7 @@ Typically, such changes in time and space are both by a constant
 factor.
 
 A classic example of a space/time tradeoff is the
-:dfn:`lookup table`.
+:term:`lookup table`.
 A lookup table pre-stores the value of a function that would
 otherwise be computed each time it is needed.
 For example, 12! is the greatest value for the factorial function that
@@ -155,7 +155,7 @@ Strangely enough, the disk-based space/time tradeoff principle is
 almost the reverse of the space/time tradeoff principle for programs
 using main memory.
 
-The :dfn:`disk-based space/time tradeoff` principle states that the
+The :term:`disk-based space/time tradeoff` principle states that the
 smaller you can make your disk storage requirements, the faster your
 program will run.
 This is because the time to read information from disk is enormous

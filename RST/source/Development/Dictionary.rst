@@ -196,8 +196,8 @@ an (unsorted) array-based list.
 .. codeinclude:: Lists/UALDictionary.pde
    :tag: UALDictionary
 
-Examining class ``UALdict`` (UAL stands for ``unsorted array-based
-list), we can easily see that ``insert``
+Examining class ``UALdict`` (UAL stands for "unsorted array-based
+list"), we can easily see that ``insert``
 is a constant-time operation, because it simply inserts the new record
 at the end of the list.
 However, ``find``, and ``remove`` both require :math:`\Theta(n)` time

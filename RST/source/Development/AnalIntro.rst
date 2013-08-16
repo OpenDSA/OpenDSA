@@ -98,9 +98,8 @@ Basic Operations and Input Size
 -------------------------------
 
 Of primary consideration when estimating an algorithm's performance
-is the number of :dfn:`basic operations` required by
-the algorithm to process an input of a certain
-:dfn:`size`.
+is the number of :term:`basic operations` required by
+the algorithm to process an input of a certain size.
 The terms "basic operations" and "size" are both
 rather vague and depend on the algorithm being analyzed.
 Size is often the number of inputs processed.
@@ -191,7 +190,7 @@ because the cost depends on the value of :math:`n`
 
    indicating that the size of the input :math:`n` has no effect on
    the running time.
-   This is called a :dfn:`constant` running time.
+   This is called a :term:`constant running time`.
 
 .. topic:: Example
 
@@ -217,7 +216,7 @@ because the cost depends on the value of :math:`n`
 Growth Rates
 ------------
 
-The :dfn:`growth rate` for an algorithm is the rate at which the cost
+The :term:`growth rate` for an algorithm is the rate at which the cost
 of the algorithm grows as the size of its input grows.
 Figure :num:`Figure #RunTimeGraph` shows a graph for six equations,
 each meant to describe the running time for a particular program or
@@ -245,17 +244,17 @@ algorithms are shown.
 The two equations labeled :math:`10n` and :math:`20n` are graphed by
 straight lines.
 A growth rate of :math:`cn` (for :math:`c` any positive constant) is
-often referred to as a :dfn:`linear` growth rate or running time. 
-This means that as the value of :dfn:`n` grows, the running time of
+often referred to as a :term:`linear growth rate` or running time. 
+This means that as the value of :math:`n` grows, the running time of
 the algorithm grows in the same proportion.
 Doubling the value of :math:`n` roughly doubles the running time.
 An algorithm whose running-time equation has a highest-order term
-containing a factor of :math:`n^2` is said to have a :dfn:`quadratic`
-growth rate.
+containing a factor of :math:`n^2` is said to have a
+:term:`quadratic growth rate`.
 In Figure :num:`Figure #RunTimeGraph`, the line labeled :math:`2n^2`
 represents a quadratic growth rate.
-The line labeled :math:`2^n` represents an :dfn:`exponential`
-growth rate.
+The line labeled :math:`2^n` represents an
+:term:`exponential growth rate`.
 This name comes from the fact that :math:`n` appears in the exponent.
 The line labeled :math:`n!` also grows exponentially.
 

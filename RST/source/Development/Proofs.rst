@@ -10,6 +10,8 @@
 
 .. odsalink:: AV/Development/proofCON.css
 
+.. index:: !proof
+
 Mathematical Proof Techniques
 =============================
 
@@ -53,6 +55,7 @@ This section briefly introduces three commonly used proof techniques:
 
 Direct Proof
 ------------
+.. index:: ! proof; direct
 
 In general, a :term:`direct proof` is just a "logical explanation".
 A direct proof is sometimes referred to as an argument by deduction.
@@ -76,6 +79,8 @@ on the route to the destination.
 Symbolic manipulations to solve integration problems in introductory
 calculus classes are similar in spirit, as are high school geometry
 proofs.
+
+.. index:: ! proof; by contradiction
 
 Proof by Contradiction
 ----------------------
@@ -119,6 +124,8 @@ That is, we conclude that the theorem must be true.
 A related proof technique is proving the contrapositive.
 We can prove that :math:`P \Rightarrow Q` by proving
 :math:`(\mathrm{not}\ Q) \Rightarrow (\mathrm{not}\ P)`.
+
+.. index:: ! proof; by induction
 
 Proof by Mathematical Induction
 -------------------------------

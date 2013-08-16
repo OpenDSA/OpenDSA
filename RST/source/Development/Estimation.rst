@@ -8,6 +8,8 @@
    :prerequisites:
    :topic: Math Background
 
+.. index:: ! estimation
+
 Estimation
 ==========
 

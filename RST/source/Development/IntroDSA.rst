@@ -144,6 +144,8 @@ resource constraints.
 Selecting a Data Structure
 --------------------------
 
+.. index:: data structure; selecting
+
 It should go without saying that people write programs to
 solve problems.
 However, sometimes people forget this.
@@ -163,15 +165,15 @@ implemented using a simpler design.
 When selecting a data structure to solve a problem, you should follow
 these steps.
 
-1. Analyze your problem to determine the :term:`basic operations` that
+#. Analyze your problem to determine the :term:`basic operations` that
    must be supported. 
    Examples of basic operations include inserting a data
    item into the data structure, deleting a data item from the
    data structure, and finding a specified data item.
 
-2. Quantify the resource constraints for each operation.
+#. Quantify the resource constraints for each operation.
 
-3. Select the data structure that best meets these requirements.
+#. Select the data structure that best meets these requirements.
 
 This three-step approach to selecting a data structure operationalizes
 a data-centered view of the design process.

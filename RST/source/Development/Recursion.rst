@@ -10,6 +10,8 @@
 
 .. odsalink:: AV/Development/recursionCON.css
 
+.. index:: ! recursion
+
 Recursion
 =========
 

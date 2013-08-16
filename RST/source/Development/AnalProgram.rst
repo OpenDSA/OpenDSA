@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Calculating Program Running Time [Text]
-=======================================
+Calculating Program Running Time
+================================
 
 This modules discusses the analysis for several simple code
 fragments.
@@ -190,7 +190,7 @@ an array where the search value :math:`K` is equally likely to appear
 in any location is :math:`\Theta(n)` in both the average and worst
 cases.
 We would like to compare this running time to that required to perform
-a :dfn:`binary search` on an array whose values are stored in order
+a :term:`binary search` on an array whose values are stored in order
 from lowest to highest.
 
 Binary search begins by examining the value in the middle

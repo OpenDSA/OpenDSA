@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Best, Worst, and Average Cases [Text]
-=====================================
+Best, Worst, and Average Cases
+==============================
 
 Consider the problem of finding the factorial of :math:`n`.
 For this problem, there is only one input of a given "size" (that
@@ -28,7 +28,7 @@ different amounts of time.
 For example, consider the problem of searching an array containing
 :math:`n` integers to find the one with a particular value :math:`K`
 (assume that :math:`K` appears exactly once in the array).
-The :dfn:`sequential search` algorithm begins
+The :term:`sequential search` algorithm begins
 at the first position in the array and looks at each value in turn
 until :math:`K` is found.
 Once :math:`K` is found, the algorithm stops.
@@ -41,12 +41,12 @@ times for the sequential search algorithm.
 The first integer in the array could have value :math:`K`,
 and so only one integer is examined.
 In this case the running time is short.
-This is the :dfn:`best case` for this algorithm, because it is not
+This is the :term:`best case` for this algorithm, because it is not
 possible for sequential search to look at less than one value.
 Alternatively, if the last position in the array contains :math:`K`,
 then the running time is relatively long, because the algorithm
 must examine :math:`n` values.
-This is the :dfn:`worst case` for this algorithm, because sequential
+This is the :term:`worst case` for this algorithm, because sequential
 search never looks at more than each of the :math:`n` values in the
 array.
 If we implement sequential search as a program and run it many times
@@ -55,7 +55,7 @@ or search for many different values of :math:`K` within the same
 array, we expect the algorithm on average to go halfway through the
 array before finding the value we seek.
 On average, the algorithm examines about :math:`n/2` values.
-We call this the :math:`average case` for this algorithm.
+We call this the :term:`average case` for this algorithm.
 
 When analyzing an algorithm, should we study the best, worst, or
 average case?
