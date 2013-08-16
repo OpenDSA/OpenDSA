@@ -45,7 +45,6 @@ var PerseusBridge = Exercises.PerseusBridge,
 
 //  
 var server = SERVER_URL? SERVER_URL : null;
-console.log(server);
 
 var jsonData = {};
 jsonData.book = BOOK_NAME;
@@ -252,7 +251,6 @@ function handleMsg(message){
         newmessage= newmessage.replace(/studentlisttest.java:/gi, "Error:line# ");
         newmessage=newmessage.replace("class studentlisttest" , "");
         newmessage = newmessage.replace(/\^/gi, "");
-        console.log(newmessage);
 
         var numbers = newmessage.match(/\d+\.?\d*/g);
            

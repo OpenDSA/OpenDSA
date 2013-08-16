@@ -1171,9 +1171,8 @@ var Khan = (function() {
             })());
         }
             
-        console.log(arr);
         arr = shuffle(arr);
-        console.log(arr);   
+
         for(var i = 0; i < n; i ++){
             problembag.push((function(){
              return problems[arr[i]];  
