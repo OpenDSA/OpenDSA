@@ -1995,7 +1995,6 @@ var Khan = (function() {
             // scripts otherwise.
             // See https://github.com/Khan/khan-exercises/issues/10957
             data = data.replace(/<script(\s)+src=([^<])*<\/script>/, "");
-
             var newContents = $(data).filter(".exercise");
 
             // Name of the top-most ancestor exercise
@@ -2075,9 +2074,16 @@ var Khan = (function() {
     }
 
     function loadModule(modNameOrObject) {
+        
         var src, deps = [];
         if (typeof modNameOrObject === "string") {
-            src = urlBase + "utils/" + modNameOrObject + ".js";
+            if(/\([a-zA-Z0-9\.\/]*\)/.test(modNameOrObject)){
+                modNameOrObject = modNameOrObject.replace(/\(|\)/g, "");
+                src = modNameOrObject;
+            }else{
+                src = urlBase + "utils/" + modNameOrObject + ".js";
+            }
+
             deps = Khan.moduleDependencies[modNameOrObject] || [];
         } else {
             src = modNameOrObject.src;
