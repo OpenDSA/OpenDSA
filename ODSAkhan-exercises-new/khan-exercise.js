@@ -67,6 +67,9 @@ function getURLParam(name) {
   return (param) ? decodeURIComponent(param[1]) : "";
 }
 
+// The path of khan-exercise.js. By Junyang Chen
+window.urlBaseOverride = "../../ODSAkhan-exercises-new/";
+
 // The address of the server where the data is sent
 var SERVER_URL = getURLParam('serverURL');
 
@@ -238,8 +241,9 @@ var Khan = (function() {
     // Promise that gets resolved when MathJax is loaded
     mathJaxLoaded,
 
-    // urlBase = localMode ? "../" : "/khan-exercises/",
+    // Modified by Junyang Chen.
     urlBase = typeof urlBaseOverride !== "undefined" ? urlBaseOverride : localMode ? "../" : "/khan-exercises/",
+
     // In local mode, we use khan-exercises local copy of the /images
     // directory.  But in production (on www.khanacademy.org), we use
     // the canonical location of images, which is under '/'.
@@ -357,7 +361,7 @@ var Khan = (function() {
             // we load a khan-exercises problem that needs it. Previously it
             // was a dependency of 'math' so this isn't really any different.
             mods.push(
-                "answer-types", "tmpl", "tex", "jquery.adhesion","jquery.blockUI",
+                "answer-types", "tmpl", "tex", "jquery.adhesion",
                 "calculator",
                 {
                     src: urlBase + "utils/MathJax/2.1/MathJax.js?config=KAthJax-da9a7f53e588f3837b045a600e1dc439"
@@ -832,6 +836,7 @@ var Khan = (function() {
         // Load in jQuery and underscore, as well as the interface glue code
         // TODO(cbhl): Don't load history.js if we aren't in readOnly mode.
         var initScripts = [
+                // Modified by Junyang Chen 
                 //urlBase + "local-only/jquery.js",
                 //urlBase + "local-only/jquery-migrate-1.1.1.js",
                 //urlBase + "local-only/jquery.ui.core.js",
@@ -845,6 +850,9 @@ var Khan = (function() {
                 //urlBase + "local-only/jquery.ui.resizable.js",
                 //urlBase + "local-only/jquery.ui.dialog.js",
                 //urlBase + "local-only/jquery.qtip.js",
+                
+                // Add blockUI for OpenPop KA exercises. By Junyang Chen.
+                urlBase + "local-only/jquery.blockUI.js",
                 urlBase + "local-only/underscore.js",
                 urlBase + "local-only/kas.js",
                 urlBase + "local-only/jed.js",
@@ -854,8 +862,8 @@ var Khan = (function() {
                 urlBase + "local-only/i18n.js",
                 urlBase + "exercises-stub.js",
                 urlBase + "history.js",
-                urlBase + "interface.js",
-                urlBase + "related-videos.js"
+                urlBase + "interface.js"
+                //urlBase + "related-videos.js"
             ];
 
         (function loadInitScripts() {
