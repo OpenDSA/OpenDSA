@@ -216,10 +216,13 @@ var Khan = (function() {
 
     // Where we are in the shuffled list of problem types
     problemBag,
+    // Size of the bag. By Junyang Chen.
+    problemBagSize = 0,
     problemBagIndex = 0,
 
     // How many problems are we doing? (For the fair shuffle bag.)
-    problemCount = 10,
+    // Change the number from 10 to 0. By Junyang Chen.
+    problemCount = 0,
 
     hintsUsed,
 
@@ -1088,7 +1091,9 @@ var Khan = (function() {
 
             // ...and create a new problem bag with problems of our new exercise type.
             // Changed from 10 to 20. Modified by Junyang Chen.
-            problemBag = makeProblemBag(problems, 20);
+            problemBagSize = Math.min(problems.length, 20);
+            problemCount = problemBagSize;
+            problemBag = makeProblemBag(problems, problemBagSize);
 
             // Make scratchpad persistent per-user
             if (user) {
@@ -1239,9 +1244,18 @@ var Khan = (function() {
             // Modified by Junyang Chen
             // 
             problem = problemBag[problemBagIndex];
+            //console.log(problemBagIndex);
             id = problem.data("id");
-            if(problemBagIndex > 0 && problemBagIndex % 19 === 0){
-                problemBag = reMakeProblemBag(problemBag, 20);
+            if(problemBagIndex > 0 && problemBagIndex % (problemBagSize-1)  === 0){
+                problemBag = reMakeProblemBag(problemBag, problemBagSize);
+
+                /*for(var i= 0; i< problemBag.length; i++) {
+                    // Modified by Junyang Chen
+                    problem = problemBag[i];
+                    var testid = problem.find('.solution').html();
+                    console.log(testid);
+                }*/
+
             }
 
 
@@ -1314,11 +1328,13 @@ var Khan = (function() {
         hints = problem.children(".hints").remove();
 
         // Only show the calculator if it's specifically allowed for this problem
+        /* Remove calculator. By Junyang Chen
         if (problem.data("calculator") == null) {
             $("#calculator").hide();
         } else {
             $("#calculator").show();
         }
+        */
 
         debugLog("removed hints from DOM");
 
@@ -1426,9 +1442,10 @@ var Khan = (function() {
             // Focus the first input
             // Use .select() and on a delay to make IE happy
             var firstInput = solutionarea.find(":input").first();
+            /* Since we removed calculator, the following condition will always false. By Junyang Chen
             if ($(".calculator input:visible").length) {
                 firstInput = $(".calculator input");
-            }
+            }*/
 
             setTimeout(function() {
                 if (!firstInput.is(":disabled")) {
@@ -2212,9 +2229,15 @@ var Khan = (function() {
         if (Khan.query.problem == null) {
             weighExercises(problems);
             // Change the number from 10 to 20. By Junyang Chen.
-            problemBag = makeProblemBag(problems, 20);
+            problemBagSize = Math.min(problems.length, 20);
+            problemCount = problemBagSize;
+            problemBag = makeProblemBag(problems, problemBagSize);
+
         }
+
+        // Khan site has been finished loading. By Junyang Chen 
         tempdeff.resolve();
+
         // Generate the initial problem when dependencies are done being loaded
         makeProblem();
     }
