@@ -81,12 +81,6 @@ Here, it would not be acceptable to use an algorithm that can handle
 fails to perform quickly enough when all :math:`n` airplanes are coming
 from the same direction.
 
-.. TODO::
-   :type: Text
-
-   Find a more realistic real-time example than this one with the
-   airplanes.
-
 For other applications |---| particularly when we wish to aggregate
 the cost of running the program many times on many different inputs
 |---| worst-case analysis might not be a representative measure of the

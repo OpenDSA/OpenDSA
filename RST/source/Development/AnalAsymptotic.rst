@@ -288,15 +288,12 @@ we can almost always give a :math:`\Theta` analysis for them.
 However, Chapter :numref:`<LimComp>` discusses a whole class of
 algorithms for which we have no :math:`\Theta` analysis, just some
 unsatisfying big-Oh and :math:`\Omega` analyses.
+Even some "simple" programs are hard to analyze.
+Nobody currently knows the true upper or lower bounds for the
+following code fragment.
 
-.. TODO::
-   :type: text
-
-   Figure out what to do about the following:
-
-   Exercise~\ref{AlgAnal}.\ref{Collatz}
-   presents a short, simple program fragment
-   for which nobody currently knows the true upper or lower bounds.
+   .. codeinclude:: Misc/Collatz.pde 
+      :tag: Collatz
 
 While some textbooks and programmers will casually say that an
 algorithm is "order of" or "big-Oh" of some cost function,

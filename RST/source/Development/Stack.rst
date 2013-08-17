@@ -167,9 +167,4 @@ quickly.
    Two stacks implemented within in a single array, both growing
    toward the middle.
    
-.. TODO::
-   :type: Exercise
-
-   Need a battery of summary multiple choice questions.
-
 .. odsascript:: AV/Development/listStackCON.js
