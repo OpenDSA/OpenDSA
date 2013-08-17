@@ -58,37 +58,39 @@ if (localStorage.session) {
    jsonData.key = session.key;
 }
 
-// Load in the exercise data from the server
-jQuery.ajax({
-   // Do a request to the server API
-   url: server + "/api/v1/exercises/?name=" + exerciseName,
-   type: "GET",
-   data: jsonData,
-   dataType: "json",
-   // Make sure cookies are passed along
-   xhrFields: { withCredentials: true },
-   success: function(data){
-     var streakval= data.objects[0] && data.objects[0].streak? data.objects[0].streak : 0;
-     var progress = data.objects[0] && data.objects[0].progress_streak ? data.objects[0].progress_streak : 0;
-     testdeffer.done(function(){
-        $('#points-area').empty();
-        var points_progress_text = $("<span style = 'font-size:60%'>Current score:  </span>");
-        var points_progress = $("<span id = 'points-progress' style = 'font-size : 65%; font-weight : bold;'></span>").text(Math.min(parseInt(progress), parseInt(streakval)));
-         var points_total_text = $("<span style = 'font-size:60%'> out of  </span>");
-        var points_total = $("<span id = 'points-total' style = 'font-size : 65%; font-weight : bold;'></span>").text(parseInt(streakval));
-        $('#points-area').append(points_progress_text);
-        $('#points-area').append(points_progress);
-        $('#points-area').append(points_total_text);
-        $('#points-area').append(points_total);
-     });
-   },
-   error: function(){
-        testdeffer.done(function(){
-            $('#points-area').empty();
-            $('#points-area').text(" Back end is not running!");
-        });
-   }
-});
+if(server !== null){
+    // Load in the exercise data from the server
+    jQuery.ajax({
+       // Do a request to the server API
+       url: server + "/api/v1/exercises/?name=" + exerciseName,
+       type: "GET",
+       data: jsonData,
+       dataType: "json",
+       // Make sure cookies are passed along
+       xhrFields: { withCredentials: true },
+       success: function(data){
+           var streakval= data.objects[0] && data.objects[0].streak? data.objects[0].streak : 0;
+           var progress = data.objects[0] && data.objects[0].progress_streak ? data.objects[0].progress_streak : 0;
+           testdeffer.done(function(){
+               $('#points-area').empty();
+               var points_progress_text = $("<span style = 'font-size:60%'>Current score:  </span>");
+               var points_progress = $("<span id = 'points-progress' style = 'font-size : 65%; font-weight : bold;'></span>").text(Math.min(parseInt(progress), parseInt(streakval)));
+               var points_total_text = $("<span style = 'font-size:60%'> out of  </span>");
+               var points_total = $("<span id = 'points-total' style = 'font-size : 65%; font-weight : bold;'></span>").text(parseInt(streakval));
+               $('#points-area').append(points_progress_text);
+               $('#points-area').append(points_progress);
+               $('#points-area').append(points_total_text);
+               $('#points-area').append(points_total);
+           });
+        },
+        error: function(){
+            testdeffer.done(function(){
+                $('#points-area').empty();
+                $('#points-area').text(" Back end is not running!");
+            });
+       }
+    });
+}
 
 $(Exercises)
     .bind("problemTemplateRendered", problemTemplateRendered)
