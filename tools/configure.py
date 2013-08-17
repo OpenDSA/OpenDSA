@@ -592,19 +592,23 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
       av_name = mod_data[i].split(' ')[2].rstrip()
       type = mod_data[i].split(' ')[3].rstrip()
 
-      if av_name not in exercises:
-        # If the AV is not listed in the config file, add its name to a list of missing exercises
-        missing_exercises.append(av_name)
-      elif type == 'ss':
-        # Add the necessary information from the slideshow from the configuration file
-        # Diagrams (type == 'dgm') do not require this extra information
-        exer_conf = exercises[av_name]
+      if type == 'ss':
+        if av_name not in exercises:
+          # If the SS is not listed in the config file, add its name to a list of missing exercises, ignore missing diagrams
+          missing_exercises.append(av_name)
+        else:
+          # Add the necessary information from the slideshow from the configuration file
+          # Diagrams (type == 'dgm') do not require this extra information
+          exer_conf = exercises[av_name]
 
-        # List of valid options for inlineav directive
-        options = ['long_name', 'points', 'required', 'threshold']
+          # List of valid options for inlineav directive
+          options = ['long_name', 'points', 'required', 'threshold']
 
-        rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
-        mod_data[i] += ''.join(rst_options)
+          rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+          mod_data[i] += ''.join(rst_options)
+      elif type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
+        # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
+        print ("  " * (depth + 1 )) + "WARNING: " + av_name + " is a diagram (attributes are not supported)"
     elif '.. avembed::' in mod_data[i]:
       # Parse the exercise name from the line
       av_name = mod_data[i].split(' ')[2].rstrip()
