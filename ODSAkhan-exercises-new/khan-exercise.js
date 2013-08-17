@@ -879,6 +879,7 @@ var Khan = (function() {
     }
 
     function onjQueryLoaded() {
+
         initEvents();
 
         // Initialize to an empty jQuery set
@@ -918,6 +919,16 @@ var Khan = (function() {
 
             // All remote exercises (if any) have now been loaded
             $.when.apply($, promises).then(function() {
+                // Enable to redefine the MathJax font size of exercise.
+                Khan.mathJaxLoaded.then(function(){
+                   if(typeof window.MathJaxFontSize !== "undefined"){
+                        alert("defined");
+                        MathJax.Hub.Config({
+                            extensions: ["tex2jax.js"],
+                            "HTML-CSS": { scale: window.MathJaxFontSize}
+                        });
+                    }
+                }); 
                 loadTestModeSite();
             });
         });
