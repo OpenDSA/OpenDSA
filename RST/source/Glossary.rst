@@ -155,7 +155,7 @@ Glossary
       :math:`P \Rightarrow Q`.
 
    disk-based space/time tradeoff
-      In contrast to the standard :term:`space-time tradeoff`, this
+      In contrast to the standard :term:`space/time tradeoff`, this
       principle states that the smaller you can make your disk storage
       requirements, the faster your program will run.
       This is because the time to read information from disk is
@@ -266,7 +266,7 @@ Glossary
       time when the values are going to be viewed many times. The
       costs to this approach are the space required for the table and
       the time required to compute the table. This is an example of a
-      :term:`space-time tradeoff`.
+      :term:`space/time tradeoff`.
 
    lower bound
       In algorithm analysis, the lowest growth rate that
