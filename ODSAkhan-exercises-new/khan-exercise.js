@@ -1773,6 +1773,7 @@ var Khan = (function() {
 
         assessmentMode = !localMode && Exercises.assessmentMode;
 
+        /* Remove the Calculator, since we don't need it. By Junyang Chen.
         function initializeCalculator() {
             var calculator = $(".calculator"),
                 history = calculator.children(".history"),
@@ -1860,6 +1861,7 @@ var Khan = (function() {
         };
 
         initializeCalculator();
+        */
         Khan.initReportIssueLink("#report, #extras .report-issue-link");
 
         $("#answer_area").delegate("input.button, select", "keydown", function(e) {
