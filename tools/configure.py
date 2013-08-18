@@ -442,9 +442,6 @@ todo_include_todos = True
 
 #---- OpenDSA variables ---------------------------------------
 
-# Name used to uniquely identify
-book_name = '%(book_name)s'
-
 # Protocol and domain of the backend server
 server_url = '%(server_url)s'
 
@@ -812,7 +809,6 @@ def configure(config_file, slides = False):
   # Initialize options for conf.py
   options = {}
   options['title'] = conf_data['title']
-  options['book_name'] = conf_data['name']
   options['server_url'] = conf_data['backend_address']
   options['module_origin'] = conf_data['module_origin']
   options['odsa_root'] = odsa_dir
@@ -855,8 +851,6 @@ def configure(config_file, slides = False):
   "use strict";
   (function () {
     var settings = {};
-    // Stores the name of the book, used to uniquely identify a book in the database
-    settings.BOOK_NAME = "%(book_name)s";
     // The (protocol and) domain address of the backend server
     // Set SERVER_URL = "" in order to disable server communication and logging
     settings.SERVER_URL = "%(server_url)s";
@@ -875,7 +869,6 @@ def configure(config_file, slides = False):
   # Used to set global settings for the client-side framework
   with open(src_dir + '_static/config.js','w') as config_js:
     conf_js_data = {}
-    conf_js_data['book_name'] = conf_data['name']
     conf_js_data['server_url'] = conf_data['backend_address']
     conf_js_data['module_origin'] = conf_data['module_origin']
     conf_js_data['exercise_origin'] = conf_data['exercise_origin']
