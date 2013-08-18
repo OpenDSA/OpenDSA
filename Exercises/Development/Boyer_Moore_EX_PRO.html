@@ -339,7 +339,6 @@
       }
       function compute_align_array( sub ) {
         var align = new Array();
-        //console.log(sub);
         var offset, suffix_length, index_of_sub;
         align[sub.length-1] = 1;
         for(var i = sub.length-2; i >=0; i--){
@@ -451,8 +450,6 @@
               temp_jsav.step();
               indexes_checked++;              
             }
-
-            //console.log("Comparing characters: "+master[m] + " "+sub[s]);
           }
           if(s < 0){
             return m+1;
@@ -465,8 +462,6 @@
             m = m + parseInt(amount_to_move);
             //real_master_answer = m;
             amount_to_shift = amount_to_move - indexes_checked;
-            console.log("M: "+m);
-            console.log("AMount to shift: " + amount_to_shift);
 
             for(var i = sub.size()-1; i >= amount_to_shift; i--) {
               sub.value(i, sub.value(i - amount_to_shift));
@@ -481,7 +476,6 @@
             sub.highlight(m);
             temp_jsav.stepOption("grade", true);      
             temp_jsav.step();
-            //console.log("Master answer index: "+ m +" Sub answer index: " + (sub_temp.length-1));
           }
         }
         return -1;
@@ -510,7 +504,6 @@
 
      
         var x = boyer_moore(temp_jsav, temp_str, temp_sub_str, temp_mmc, temp_align_arr);
-        console.log(x);
         return [temp_str, temp_sub_str, temp_mmc, temp_align_arr]; 
       }
 
@@ -584,11 +577,7 @@
             
             sub_str_curr = str_curr;
             sub_str.highlight(sub_str_curr); 
-            console.log(sub_str_curr);
-            num_into_sub = 0; 
-            for(var i = 0; i < sub_str.size(); i++){
-              console.log(sub_str.isHighlight(i));
-            }          
+            num_into_sub = 0;        
           }         
         } else {
           num_into_sub++;
