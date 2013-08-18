@@ -100,7 +100,6 @@
   function find_best_solution(align){
     for(var i = 1; i < align.length; i++){
       if(align[i-1] - align[i] > 1){
-        console.log(align[i-1]);
         answer_value = align[i-1];
         answer_index = i-1;
         align[i-1] = '';
@@ -122,7 +121,6 @@
   }
   function compute_align_table( sub ) {
     var align = new Array();
-    //console.log(sub);
     var offset, suffix_length, index_of_sub;
     align[sub.length-1] = 1;
     for(var i = sub.length-2; i >=0; i--){
