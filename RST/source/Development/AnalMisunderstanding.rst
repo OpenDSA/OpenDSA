@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Common Misunderstandings [Text]
-===============================
+Common Misunderstandings
+========================
 
 Asymptotic analysis is one of the most intellectually difficult topics
 that undergraduate computer science majors are confronted with.

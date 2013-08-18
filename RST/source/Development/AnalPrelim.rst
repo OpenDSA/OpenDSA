@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Problems, Algorithms, and Programs [Storyboard]
-===============================================
+Problems, Algorithms, and Programs
+==================================
 
 Programmers commonly deal with problems, algorithms, and
 computer programs.
@@ -18,7 +18,7 @@ These are three distinct concepts.
 Problems
 --------
 
-As your intuition would suggest, a :dfn:`problem` is
+As your intuition would suggest, a :term:`problem` is
 a task to be performed.
 It is best thought of in terms of inputs and matching outputs.
 A problem definition should not include any constraints on
@@ -35,14 +35,14 @@ and disk space available, and it must run in a "reasonable" amount
 of time.
 
 Problems can be viewed as functions in the mathematical sense.
-A :dfn:`function` is a matching
-between inputs (the :dfn:`domain`) and outputs (the :dfn:`range`).
+A :term:`function` is a matching
+between inputs (the :term:`domain`) and outputs (the :term:`range`).
 An input to a function might be a single value or a
 collection of information.
 The values making up an input are called the
-:dfn:`parameters` of the function.
+:term:`parameters` of the function.
 A specific selection of values for the parameters is called an
-:dfn:`instance` of the problem.
+:term:`instance` of the problem.
 For example, the input parameter to a sorting function might be an
 array of integers.
 A particular array of integers, with a given size and specific values
@@ -78,7 +78,7 @@ Module :numref:`<Computability>`.
 Algorithms
 ----------
 
-An :dfn:`algorithm` is a method or a process followed to
+An :term:`algorithm` is a method or a process followed to
 solve a problem.
 If the problem is viewed as a function, then an algorithm is an
 implementation for the function
@@ -157,7 +157,7 @@ of the following properties.
 Programs
 --------
 
-We often think of a :dfn:`computer program` as an
+We often think of a :term:`computer program` as an
 instance, or concrete representation, of an algorithm in some
 programming language.
 Algorithms are usually presented in terms of programs,
@@ -174,7 +174,7 @@ detail that it can be converted into a program when needed.
 
 The requirement that an algorithm must terminate means that not all
 computer programs meet the technical definition of an algorithm.
-Your operating system\index{operating system} is one such program.
+Your operating system is one such program.
 However, you can think of the various tasks for an operating system
 (each with associated inputs and outputs) as individual problems,
 each solved by specific algorithms implemented by a part of the
@@ -182,13 +182,13 @@ operating system program, and each one of which terminates once its
 output is produced.
 
 To summarize:
-A :dfn:`problem` is a function or a mapping of
+A :term:`problem` is a function or a mapping of
 inputs to outputs.
-An :dfn:`algorithm` is a recipe for
+An :term:`algorithm` is a recipe for
 solving a problem whose steps are concrete and unambiguous.
 Algorithms must be correct, of finite length, and must terminate
 for all inputs.
-A :dfn:`program` is an instantiation of an algorithm
+A :term:`program` is an instantiation of an algorithm
 in a programming language.
 
 .. TODO::

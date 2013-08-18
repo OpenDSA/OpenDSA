@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>OpenDSA Math Bacground Chapter Summary: Annual growth rate</title>
+
+</script> 
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises-new/khan-exercise.js"></script>
+</script>
+</head>
+
+
+<body>
+<div class="exercise">
+<div class="vars">
+      <var id="M"> 8</var>
+      <var id="N"> 2</var>
+</div>
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">An investor places <var>N</var>,000 into a stock fund. 10 years later the account has a value of <var>M</var>,000. Using logarithms and  antilogarithms, determine the average annual growth rate for this fund.(Round to the nearest two digits) </p>
+      <p class="solution" data-type="text">1.15</p>
+      <div class="hints">
+       <p> If you start with N and in 10 years you get M, then you want to solve for X in the equation  N * X^10 = M.</p>
+       <p> You will need to use logs/antilogs. Fortunately, you can use whatever base you want for the logarithm. Since many calculators will
+calculate the natural log (base e) and will also give you e^x, this might be the easiest base to work with.</p>
+
+<p> Solving for X gives us:
+10 ln X = ln M/N </ br>
+ln X = (ln M/N)/10</ br>
+X = e^((ln M/N)/10)</p>
+         </div> 
+
+  </div>
+</div>
+</body>
+</html>

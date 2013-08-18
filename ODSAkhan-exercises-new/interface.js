@@ -43,9 +43,8 @@ var PerseusBridge = Exercises.PerseusBridge,
     lastAttemptOrHint,
     firstProblem = true;
 
-//
-var server = serverOverride ? serverOverride : SERVER_URL;
-console.log(server);
+//  
+var server = SERVER_URL? SERVER_URL : null;
 
 var jsonData = {};
 jsonData.book = BOOK_NAME;
@@ -59,37 +58,39 @@ if (localStorage.session) {
    jsonData.key = session.key;
 }
 
-// Load in the exercise data from the server
-jQuery.ajax({
-   // Do a request to the server API
-   url: server + "/api/v1/exercises/?name=" + exerciseName,
-   type: "GET",
-   data: jsonData,
-   dataType: "json",
-   // Make sure cookies are passed along
-   xhrFields: { withCredentials: true },
-   success: function(data){
-     var streakval= data.objects[0] && data.objects[0].streak? data.objects[0].streak : 0;
-     var progress = data.objects[0] && data.objects[0].progress_streak ? data.objects[0].progress_streak : 0;
-     testdeffer.done(function(){
-        $('#points-area').empty();
-        var points_progress_text = $("<span style = 'font-size:60%'>Current score:  </span>");
-        var points_progress = $("<span id = 'points-progress' style = 'font-size : 65%; font-weight : bold;'></span>").text(Math.min(parseInt(progress), parseInt(streakval)));
-         var points_total_text = $("<span style = 'font-size:60%'> out of  </span>");
-        var points_total = $("<span id = 'points-total' style = 'font-size : 65%; font-weight : bold;'></span>").text(parseInt(streakval));
-        $('#points-area').append(points_progress_text);
-        $('#points-area').append(points_progress);
-        $('#points-area').append(points_total_text);
-        $('#points-area').append(points_total);
-     });
-   },
-   error: function(){
-        testdeffer.done(function(){
-            $('#points-area').empty();
-            $('#points-area').text(" Back end is not running!");
-        });
-   }
-});
+if(server !== null){
+    // Load in the exercise data from the server
+    jQuery.ajax({
+       // Do a request to the server API
+       url: server + "/api/v1/exercises/?name=" + exerciseName,
+       type: "GET",
+       data: jsonData,
+       dataType: "json",
+       // Make sure cookies are passed along
+       xhrFields: { withCredentials: true },
+       success: function(data){
+           var streakval= data.objects[0] && data.objects[0].streak? data.objects[0].streak : 0;
+           var progress = data.objects[0] && data.objects[0].progress_streak ? data.objects[0].progress_streak : 0;
+           testdeffer.done(function(){
+               $('#points-area').empty();
+               var points_progress_text = $("<span style = 'font-size:60%'>Current score:  </span>");
+               var points_progress = $("<span id = 'points-progress' style = 'font-size : 65%; font-weight : bold;'></span>").text(Math.min(parseInt(progress), parseInt(streakval)));
+               var points_total_text = $("<span style = 'font-size:60%'> out of  </span>");
+               var points_total = $("<span id = 'points-total' style = 'font-size : 65%; font-weight : bold;'></span>").text(parseInt(streakval));
+               $('#points-area').append(points_progress_text);
+               $('#points-area').append(points_progress);
+               $('#points-area').append(points_total_text);
+               $('#points-area').append(points_total);
+           });
+        },
+        error: function(){
+            testdeffer.done(function(){
+                $('#points-area').empty();
+                $('#points-area').text(" Back end is not running!");
+            });
+       }
+    });
+}
 
 $(Exercises)
     .bind("problemTemplateRendered", problemTemplateRendered)
@@ -200,6 +201,7 @@ function handleCheckAnswer() {
     return handleAttempt({skipped: false});
 }
 
+
 function handleSkippedQuestion() {
     return handleAttempt({skipped: true});
 }
@@ -238,12 +240,48 @@ function wrongAnswerEffect(score, framework){
     } else if (framework === "khan-exercises") {
         $(Khan).trigger("refocusSolutionInput");
     }
+}
 
+// Process the message data coming from OpenPop Back end
+function handleMsg(message){
+
+    var newmessage= message.join(',');
+    var re = "Try Again";
+    newmessage = newmessage.replace(/\n/gi, "");
+
+    if(newmessage.indexOf(re) == -1){
+        newmessage= newmessage.replace(/studentlisttest.java:/gi, "Error:line# ");
+        newmessage=newmessage.replace("class studentlisttest" , "");
+        newmessage = newmessage.replace(/\^/gi, "");
+
+        var numbers = newmessage.match(/\d+\.?\d*/g);
+           
+        for (var i=numbers.length-2 ; i>=0 ; i--){
+            var newnumber = numbers[i]-333;
+            var stringnum = numbers[i]+'';
+            var newstringnumber =  newnumber +'';
+            newmessage=newmessage.replace(stringnum , newstringnumber);
+        }
+    }
+    
+    var result =  newmessage.split(",");
+    return result;
+}
+
+// Empty Message area
+function emptyMsgArea(){
+    $('#solutionarea').empty();
 }
 
 // Show feed-back message from the back end
-function feedbackEffect(msg){
-    $('#solutionarea').text(msg);
+function feedbackEffect(message){
+    
+    var msg = handleMsg(message);
+
+    for (var i = 0; i < msg.length; i++) {
+        var msgLine = $("<div>" + msg[i] + "</div>")
+        $('#solutionarea').append(msgLine);
+    }
 }
 
 function handleAttempt(data) {
@@ -323,10 +361,15 @@ function handleAttempt(data) {
         fast: !localMode && userExercise.secondsPerFastProblem >= timeTaken
     });
 
+    // Modified by Junyang Chen
     //if (localMode || Exercises.currentCard.get("preview")) {
         // Skip the server; just pretend we have success
     //    return false;
     //}
+    if(!server && typeof OpenPopKa === "undefined"){
+          // Skip the server
+          return false;     
+    }
 
     if (previewingItem) {
         $("#next-question-button").prop("disabled", true);
@@ -341,20 +384,40 @@ function handleAttempt(data) {
             score.correct, ++attempts, stringifiedGuess, timeTaken, skipped);
 
     // Save the problem results to the server
-    var requestUrl = "/attempt/";
+    var requestUrl = typeof OpenPopKa !== "undefined"? "/attemptpop/" : "/attempt/";
+    
+    if(typeof OpenPopKa !== "undefined"){
+        /*$('div#answercontent').block({ css: { 
+            border: 'none', 
+            padding: '15px', 
+            backgroundColor: '#000', 
+            '-webkit-border-radius': '10px', 
+            '-moz-border-radius': '10px', 
+            opacity: .5, 
+            color: '#fff' 
+        } });*/
+        $.blockUI({message:"Waiting for the server to evaluate your code ..."});
+
+    }
+
     var respondpromise = request(requestUrl,attemptData);
+
+
     respondpromise.done(function(data){
       data = jQuery.parseJSON(data);
       var progress = 0;
       var streakNum = 0;
-
+    
+      if(typeof OpenPopKa !== "undefined"){
+        $.unblockUI();
+      }
       // Update DOM elements according to the feedback from OpenPop
       if(data && typeof OpenPopKa !== "undefined"){
          progress = data.progress;
          streakNum = data.streak;
 
          // Empty the message area.
-         feedbackEffect('');
+         emptyMsgArea();
 
          if(data.correct){
              correctAnswerEffect();
@@ -386,6 +449,11 @@ function handleAttempt(data) {
     });
     
     respondpromise.fail(function(xhr) {
+        // unblock the page
+        if(typeof OpenPopKa !== "undefined"){
+            $.unblockUI();
+        }
+
         //Alert any listeners of the error before reload
         $(Exercises).trigger("attemptError");
 

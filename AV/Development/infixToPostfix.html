@@ -80,7 +80,9 @@
             if (typeof clickHandler === "undefined") {
                 clickHandler = new ClickHandler(av, exercise, {selectedClass: "selected"});
                 clickHandler.addArray(jsavArray);
-                clickHandler.addArray(resultArray, {onDrop: function(){restoreInfix(jsavArray).call(this)}});
+                clickHandler.addArray(resultArray, {
+                    onDrop: function(){restoreInfix(jsavArray).call(this)}
+                });
             }
             clickHandler.reset();
 
@@ -90,7 +92,12 @@
                 stack.clear();
             }
             stack = av.ds.list({nodegap: 15, center: false});
-            clickHandler.addList(stack, {keep: true, select: "first", drop: "first", onDrop: function(){restoreInfix(jsavArray).call(this)}});
+            clickHandler.addList(stack, {
+                keep: true,
+                select: "first",
+                drop: "first",
+                onDrop: function(){ restoreInfix(jsavArray).call(this) }
+            });
             stack.addFirst("");
             stack.first().addClass("greybg");
             stack.css({top: 30, left: 200});
@@ -100,7 +107,11 @@
             if (typeof bitBucket === "undefined") {
                 bitBucket = av.ds.array(["Bit Bucket"], {indexed: false, center: false});
                 bitBucket.element.css({"top": 0, "left": 60 , "position": "absolute"});
-                clickHandler.addArray(bitBucket, {onDrop: restoreInfix(jsavArray), effect: "toss"});
+                clickHandler.addArray(bitBucket, {
+                    onSelect: function () { return false; },
+                    onDrop: restoreInfix(jsavArray),
+                    effect: "toss"
+                });
             }
 
             av.displayInit();

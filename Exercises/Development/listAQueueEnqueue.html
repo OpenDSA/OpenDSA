@@ -11,14 +11,13 @@ Written by Junyang Chen and Cliff Shaffer
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transform.light.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../lib/odsaLoadKhan.js"></script>
+  <script src="../../ODSAkhan-exercises-new/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
 
   <style>
     .jsavcontainer {
-	  height: 350px;
-      border: 1px solid red;
+      height: 350px;
     }
     .jsavcontainer svg{
       pointer-events: all;
@@ -61,7 +60,7 @@ Written by Junyang Chen and Cliff Shaffer
   }
   var Circular = function(jsav, cx, cy, r1, r2, size, options){
     this.front = null;
-    this. rear = null;
+    this.rear = null;
     this.jsav = jsav;
     this.cx = cx;
     this.cy = cy;
@@ -187,11 +186,11 @@ function resetPointer(pointer,index, type){
     not_select_pointer = front_pointer;
   }
   pointer.label.element.remove();
-  pointer.arrow.rObj.node.remove();
+  pointer.arrow.rObj.remove();
 
   if(front_index === rear_index){
     not_select_pointer.label.element.remove();
-    not_select_pointer.arrow.rObj.node.remove();
+    not_select_pointer.arrow.rObj.remove();
     front_pointer = jsavCir.pointer("front", index, 0.3);
     rear_pointer = jsavCir.pointer("rear", index, 0.7);
     bindPointerClick(front_pointer);
@@ -270,7 +269,7 @@ function f_reset(maxSize, front, rear) {
   front_index = front;
   rear_index = rear;
   status = 0; 
-  var cx = 400, cy = 150; 
+  var cx = 250, cy = 150; 
   if($("#jsav")){
     $("#jsav").empty();
   }

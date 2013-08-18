@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Asymptotic Analysis [Text]
-==========================
+Asymptotic Analysis
+===================
 
 Despite the larger constant for the curve labeled :math:`10 n` in
 Figure :num:`Figure #RunTimeGraph`, :math:`2 n^2` crosses it at the
@@ -37,7 +37,7 @@ estimate of the growth rate for the running time or other resource
 requirements of an algorithm.
 This simplifies the analysis and keeps us thinking about the most
 important aspect: the growth rate.
-This is called :dfn:`asymptotic algorithm analysis`.
+This is called :term:`asymptotic algorithm analysis`.
 To be precise, asymptotic analysis refers to the study of an
 algorithm as the input size "gets big" or reaches
 a limit (in the calculus sense).
@@ -71,7 +71,7 @@ Several terms are used to describe the running-time equation for an
 algorithm.
 These terms |---| and their associated symbols |---| indicate
 precisely what aspect of the algorithm's behavior is being described.
-One is the :dfn:`upper bound` for the growth of the algorithm's
+One is the :term:`upper bound` for the growth of the algorithm's
 running time.
 It indicates the upper or highest growth rate that
 the algorithm can have.
@@ -79,7 +79,7 @@ the algorithm can have.
 Because the phrase
 "has an upper bound to its growth rate of :math:`f(n)`"
 is long and often used when discussing algorithms, we adopt a
-special notation, called :dfn:`big-Oh notation`.
+special notation, called :term:`big-Oh notation`.
 If the upper bound for an algorithm's growth rate (for, say, the
 worst case) is \(f(n)\), then we would write that this algorithm is
 "in the set :math:`O(f(n))` in the worst case"
@@ -210,7 +210,8 @@ And again, like big-Oh notation, we are measuring the resource
 required for some particular class of inputs: the worst-, average-,
 or best-case input of size :math:`n`.
 
-The lower bound for an algorithm (or a problem, as explained later)
+The :term:`lower bound` for an algorithm
+(or a problem, as explained later) 
 is denoted by the symbol :math:`\Omega`, pronounced "big-Omega" or
 just "Omega".
 The following definition for :math:`\Omega` is symmetric with the
@@ -287,15 +288,12 @@ we can almost always give a :math:`\Theta` analysis for them.
 However, Chapter :numref:`<LimComp>` discusses a whole class of
 algorithms for which we have no :math:`\Theta` analysis, just some
 unsatisfying big-Oh and :math:`\Omega` analyses.
+Even some "simple" programs are hard to analyze.
+Nobody currently knows the true upper or lower bounds for the
+following code fragment.
 
-.. TODO::
-   :type: text
-
-   Figure out what to do about the following:
-
-   Exercise~\ref{AlgAnal}.\ref{Collatz}
-   presents a short, simple program fragment
-   for which nobody currently knows the true upper or lower bounds.
+   .. codeinclude:: Misc/Collatz.pde 
+      :tag: Collatz
 
 While some textbooks and programmers will casually say that an
 algorithm is "order of" or "big-Oh" of some cost function,

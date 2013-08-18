@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Faster Computer, or Faster Algorithm? [Text]
-============================================
+Faster Computer, or Faster Algorithm?
+=====================================
 
 Imagine that you have a problem to solve, and you know of an algorithm
 whose running time is proportional to :math:`n^2`.

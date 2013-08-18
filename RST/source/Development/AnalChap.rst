@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Chapter Introduction: Algorithm Analysis [Text]
-===============================================
+Chapter Introduction
+====================
 
 How long will it take to process the company payroll once we complete
 our planned merger?
@@ -23,8 +23,8 @@ problem.
 This chapter introduces the motivation, basic notation, and
 fundamental techniques of algorithm analysis.
 We focus on a methodology known as
-:dfn:`asymptotic algorithm analysis`, or simply
-:dfn:`asymptotic analysis`.
+:term:`asymptotic algorithm analysis`, or simply
+:term:`asymptotic analysis`.
 Asymptotic analysis attempts to estimate the resource
 consumption of an algorithm.
 It allows us to compare the relative costs of two or more

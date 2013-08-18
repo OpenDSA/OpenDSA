@@ -8,8 +8,8 @@
    :prerequisites: Sets
    :topic: Sets
 
-Sets and Relations [Text]
-=========================
+Sets and Relations
+==================
 
 The concept of a set in the mathematical sense has wide
 application in computer science.
@@ -18,11 +18,11 @@ when describing and implementing algorithms because the abstractions
 associated with sets often help to clarify and simplify algorithm
 design.
 
-A :dfn:`set` is a collection of distinguishable
-:dfn:`members` or :dfn:`elements`.
+A :term:`set` is a collection of distinguishable
+:term:`members` or :term:`elements`.
 The members are typically drawn from some larger population known as
-the :dfn:`base type`.
-Each member of a set is either a :dfn:`primitive element` of the
+the :term:`base type`.
+Each member of a set is either a :term:`primitive element` of the
 base type or is a set itself.
 There is no concept of duplication in a set.
 Each value from the base type is either in the set or not in the set.
@@ -100,7 +100,7 @@ Note that the set {4, 3, 5} is indistinguishable from set
 Likewise, set {4, 3, 4, 5} is also indistinguishable from 
 :math:`\mathbf{P}`, because sets have no concept of duplicate elements.
 
-The :dfn:`powerset` of a set :math:`\mathbf{S}` is the set of all
+The :term:`powerset` of a set :math:`\mathbf{S}` is the set of all
 possible subsets for :math:`\mathbf{S}`.
 Consider the set :math:`\mathbf{S} = \{ a, b, c \}`.
 The powerset of :math:`\mathbf{S}` is
@@ -112,7 +112,7 @@ The powerset of :math:`\mathbf{S}` is
 
 A collection of elements with no order (like a set), but with
 duplicate-valued elements is called a
-:dfn:`bag`. [#]_
+:term:`bag`. [#]_
 To distinguish bags from sets, we will use square brackets [] around
 a bag's elements.
 For example, bag [3, 4, 5, 4] is distinct from bag [3, 4, 5],
@@ -121,10 +121,10 @@ while set {3, 4, 5, 4} is indistinguishable from set
 However, bag [3, 4, 5, 4] is indistinguishable from bag
 [3, 4, 4, 5].
 
-A :dfn:`sequence` is a collection of elements with an order, and
+A :term:`sequence` is a collection of elements with an order, and
 which may contain duplicate-valued elements.
-A sequence is also sometimes called a :dfn:`tuple` or a
-:dfn:`vector`.
+A sequence is also sometimes called a :term:`tuple` or a
+:term:`vector`.
 In a sequence, there is a 0th element, a 1st element, 2nd element, and
 so on.
 We will use angle brackets :math:`\langle\rangle` to enclose the
@@ -134,7 +134,7 @@ Note that sequence :math:`\langle3, 5, 4, 4\rangle` is distinct from
 sequence :math:`\langle3, 4, 5, 4\rangle`, and both are distinct from
 sequence :math:`\langle3, 4, 5\rangle`. 
 
-A :dfn:`relation` :math:`R` over set :math:`\mathbf{S}` is a set of
+A :term:`relation` :math:`R` over set :math:`\mathbf{S}` is a set of
 ordered pairs from :math:`\mathbf{S}`.
 As an example of a relation, if :math:`\mathbf{S}` is
 :math:`\{a, b, c\}`, then
@@ -164,17 +164,17 @@ typically use an infix notation for such relations, writing :math:`1<3`.
 Define the properties of relations as follows, with :math:`R` a
 binary relation over set :math:`\mathbf{S}`.
 
-* :math:`R` is :dfn:`reflexive` if :math:`aRa`
+* :math:`R` is :term:`reflexive` if :math:`aRa`
   for all :math:`a \in \mathbf{S}`.
 
-* :math:`R` is :dfn:`symmetric` if whenever :math:`aRb`,
+* :math:`R` is :term:`symmetric` if whenever :math:`aRb`,
   then :math:`bRa`, for all :math:`a, b \in \mathbf{S}`.
 
-* :math:`R` is :dfn:`antisymmetric` if whenever :math:`aRb`
+* :math:`R` is :term:`antisymmetric` if whenever :math:`aRb`
   and :math:`bRa`, then :math:`a = b`, for all
   :math:`a, b \in \mathbf{S}`.
 
-* :math:`R` is :dfn:`transitive` if whenever :math:`aRb` and
+* :math:`R` is :term:`transitive` if whenever :math:`aRb` and
   :math:`bRc`, then :math:`aRc`, for all
   :math:`a, b, c \in \mathbf{S}`.
 
@@ -189,10 +189,10 @@ If we define a person to be a sibling of himself, then it is
 reflexive; if we define a person not to be a sibling of himself, then
 it is not reflexive.
 
-:math:`R` is an :dfn:`equivalence relation` on set :math:`\mathbf{S}`
+:math:`R` is an :term:`equivalence relation` on set :math:`\mathbf{S}`
 if it is reflexive, symmetric, and transitive.
 An equivalence relation can be used to partition a set into
-:dfn:`equivalence classes`.
+:term:`equivalence classes`.
 If two elements :math:`a` and :math:`b` are equivalent to each other,
 we write :math:`a \equiv b`.
 A :math:`partition` of a set :math:`\mathbf{S}` is a collection of
@@ -257,13 +257,13 @@ Module :numref:`MCST`.
       :math:`x \bmod m = z \bmod m`.
 
 A binary relation is called a
-:dfn:`partial order` if it is antisymmetric and transitive. [#]_
+:term:`partial order` if it is antisymmetric and transitive. [#]_
 The set on which the partial order is defined is called a
-:dfn:`partially ordered set` or a :dfn:`poset`.
-Elements :math:`x` and :math:`y` of a set are :dfn:`comparable` under
-a given relation if either :dfn:`xRy` or :dfn:`yRx`.
+:term:`partially ordered set` or a :term:`poset`.
+Elements :math:`x` and :math:`y` of a set are :term:`comparable` under
+a given relation :math:`R` if either :math:`xRy` or :math:`yRx`.
 If every pair of distinct elements in a partial order are comparable,
-then the order is called a :dfn:`total order` or :dfn:`linear order`.
+then the order is called a :term:`total order` or :term:`linear order`.
 
 .. topic:: Example
 
@@ -296,7 +296,7 @@ Notes
 -----
 
 .. [#] The object referred to here as a
-       bag is sometimes called a :dfn:`multilist`.
+       bag is sometimes called a :term:`multilist`.
        But, multilist is also refers to a list that may contain
        sublists (see Module :numref:`<Multilists>`).
 

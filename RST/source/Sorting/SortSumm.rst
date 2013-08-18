@@ -8,8 +8,8 @@
    :prerequisites: Sorting
    :topic: Sorting
 
-Sorting Chapter Summary Exercises
-=================================
+Sorting Summary Exercises
+=========================
 
 Here is a complete set of review questions, taken from all of the
 questions in the modules of this chapter.

@@ -22,10 +22,21 @@
     "Introduction": {
       "Development/IntroDSA.rst": {
         "long_name": "Introduction to Data Structures and Algorithms",
-        "exercises": {}
+        "exercises": {
+          "IntroSumm": {
+            "long_name": "Introduction Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       }
     },
     "Mathematical Background": {
+      "Development/MathpreIntro": {
+        "long_name": "Chapter Introduction",
+        "exercises": {}
+      },
       "Development/SetDef": {
         "long_name": "Set Definitions",
         "exercises": {}
@@ -52,6 +63,10 @@
       },
       "Development/Estimation": {
         "long_name": "Estimation",
+        "exercises": {}
+      },
+      "Development/MathpreSumm": {
+        "long_name": "Chapter Summary",
         "exercises": {}
       }
     },
@@ -205,6 +220,10 @@
       },
       "Development/Queue": {
         "long_name": "Queues",
+        "exercises": {}
+      },
+      "Development/ListSumm": {
+        "long_name": "List Chapter Summary",
         "exercises": {}
       }
     },

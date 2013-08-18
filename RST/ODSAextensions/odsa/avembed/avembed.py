@@ -33,18 +33,17 @@ ANCHOR_HTML = '''\
 <a id="%(exer_name)s_exer"></a>
 '''
 
-IFRAME_HTML = '''\
-<div id="%(exer_name)s" class="embedContainer">
-  <iframe id="%(exer_name)s_iframe" data-exer-name="%(exer_name)s" data-points="%(points)s" data-required="%(required)s" data-threshold="%(threshold)s" data-long-name="%(long_name)s" data-type="%(type)s" src="%(av_address)s" width="%(width)s" height="%(height)s" scrolling="no">Your browser does not support iframes.</iframe>
-</div>
-<p></p>
-'''
-
-
 BUTTON_HTML = '''\
 <input type="button"
     id="%(exer_name)s_showhide_btn"
     class="showHideLink"
+    value="%(show_hide_text)s %(long_name)s"/>
+'''
+
+CONTAINER_HTML= '''\
+<div 
+    id="%(exer_name)s"
+    class="embedContainer"
     data-exer-name="%(exer_name)s"
     data-long-name="%(long_name)s"
     data-frame-src="%(av_address)s"
@@ -53,8 +52,14 @@ BUTTON_HTML = '''\
     data-points="%(points)s"
     data-required="%(required)s"
     data-threshold="%(threshold)s"
-    data-type="%(type)s"
-    value="%(show_hide_text)s %(long_name)s"/>
+    data-type="%(type)s">
+  %(content)s
+</div>
+<p></p>
+'''
+
+IFRAME_HTML = '''\
+<iframe id="%(exer_name)s_iframe" src="%(av_address)s" width="%(width)s" height="%(height)s" scrolling="no">Your browser does not support iframes.</iframe>
 '''
 
 
@@ -122,16 +127,17 @@ class avembed(Directive):
     self.options['type'] = self.arguments[1]
 
     url_params = {}
-    url_params['bookName'] = conf.book_name
     url_params['serverURL'] = conf.server_url
     url_params['moduleOrigin'] = conf.module_origin
     url_params['module'] = self.options['module']
+    url_params['selfLoggingEnabled'] = 'false'
 
     embed = embedlocal(self.arguments[0])
     self.options['exer_name'] = embed[0]
     self.options['av_address'] = embed[1] + '?' + urllib.urlencode(url_params).replace('&', '&amp;')
     self.options['width'] = embed[2]
     self.options['height'] = embed[3]
+    self.options['content'] = ''
 
     if 'required' not in self.options:
       self.options['required'] = False
@@ -148,15 +154,16 @@ class avembed(Directive):
     res = ANCHOR_HTML % self.options
     
     if 'showhide' in self.options and self.options['showhide'] == "none":
-      res += IFRAME_HTML % self.options
+      self.options['content'] = IFRAME_HTML % (self.options)
     elif 'showhide' in self.options and self.options['showhide'] == "show":
       self.options['show_hide_text'] = "Hide"
+      self.options['content'] = IFRAME_HTML % (self.options)
       res += BUTTON_HTML % (self.options)
-      res += IFRAME_HTML % (self.options)
     else:
       self.options['show_hide_text'] = "Show"
       res += BUTTON_HTML % (self.options)
-      res += '<p></p>'
+      
+    res += CONTAINER_HTML % (self.options)
 
     return [nodes.raw('', res, format='html')]
 

@@ -67,6 +67,9 @@ function getURLParam(name) {
   return (param) ? decodeURIComponent(param[1]) : "";
 }
 
+// The path of khan-exercise.js. By Junyang Chen
+window.urlBaseOverride = "../../ODSAkhan-exercises-new/";
+
 // The address of the server where the data is sent
 var SERVER_URL = getURLParam('serverURL');
 
@@ -213,10 +216,13 @@ var Khan = (function() {
 
     // Where we are in the shuffled list of problem types
     problemBag,
+    // Size of the bag. By Junyang Chen.
+    problemBagSize = 0,
     problemBagIndex = 0,
 
     // How many problems are we doing? (For the fair shuffle bag.)
-    problemCount = 10,
+    // Change the number from 10 to 0. By Junyang Chen.
+    problemCount = 0,
 
     hintsUsed,
 
@@ -238,8 +244,9 @@ var Khan = (function() {
     // Promise that gets resolved when MathJax is loaded
     mathJaxLoaded,
 
-    // urlBase = localMode ? "../" : "/khan-exercises/",
+    // Modified by Junyang Chen.
     urlBase = typeof urlBaseOverride !== "undefined" ? urlBaseOverride : localMode ? "../" : "/khan-exercises/",
+
     // In local mode, we use khan-exercises local copy of the /images
     // directory.  But in production (on www.khanacademy.org), we use
     // the canonical location of images, which is under '/'.
@@ -358,7 +365,6 @@ var Khan = (function() {
             // was a dependency of 'math' so this isn't really any different.
             mods.push(
                 "answer-types", "tmpl", "tex", "jquery.adhesion",
-                "calculator",
                 {
                     src: urlBase + "utils/MathJax/2.1/MathJax.js?config=KAthJax-da9a7f53e588f3837b045a600e1dc439"
                 });
@@ -832,6 +838,7 @@ var Khan = (function() {
         // Load in jQuery and underscore, as well as the interface glue code
         // TODO(cbhl): Don't load history.js if we aren't in readOnly mode.
         var initScripts = [
+                // Modified by Junyang Chen 
                 //urlBase + "local-only/jquery.js",
                 //urlBase + "local-only/jquery-migrate-1.1.1.js",
                 //urlBase + "local-only/jquery.ui.core.js",
@@ -845,6 +852,9 @@ var Khan = (function() {
                 //urlBase + "local-only/jquery.ui.resizable.js",
                 //urlBase + "local-only/jquery.ui.dialog.js",
                 //urlBase + "local-only/jquery.qtip.js",
+                
+                // Add blockUI for OpenPop KA exercises. By Junyang Chen.
+                urlBase + "local-only/jquery.blockUI.js",
                 urlBase + "local-only/underscore.js",
                 urlBase + "local-only/kas.js",
                 urlBase + "local-only/jed.js",
@@ -853,9 +863,9 @@ var Khan = (function() {
                 urlBase + "local-only/localeplanet/icu.en-US.js",
                 urlBase + "local-only/i18n.js",
                 urlBase + "exercises-stub.js",
-                urlBase + "history.js",
-                urlBase + "interface.js",
-                urlBase + "related-videos.js"
+                //urlBase + "history.js",
+                urlBase + "interface.js"
+                //urlBase + "related-videos.js"
             ];
 
         (function loadInitScripts() {
@@ -871,6 +881,7 @@ var Khan = (function() {
     }
 
     function onjQueryLoaded() {
+
         initEvents();
 
         // Initialize to an empty jQuery set
@@ -910,6 +921,15 @@ var Khan = (function() {
 
             // All remote exercises (if any) have now been loaded
             $.when.apply($, promises).then(function() {
+                // Enable to redefine the MathJax font size for exercises.
+                Khan.mathJaxLoaded.then(function(){
+                   if(typeof window.MathJaxFontSize !== "undefined"){
+                        MathJax.Hub.Config({
+                            "HTML-CSS": { scale: window.MathJaxFontSize}
+                        });
+                    }
+                }); 
+
                 loadTestModeSite();
             });
         });
@@ -1070,7 +1090,10 @@ var Khan = (function() {
             }).children(".problems").children();
 
             // ...and create a new problem bag with problems of our new exercise type.
-            problemBag = makeProblemBag(problems, 10);
+            // Changed from 10 to 20. Modified by Junyang Chen.
+            problemBagSize = Math.min(problems.length, 20);
+            problemCount = problemBagSize;
+            problemBag = makeProblemBag(problems, problemBagSize);
 
             // Make scratchpad persistent per-user
             if (user) {
@@ -1147,6 +1170,39 @@ var Khan = (function() {
         return $.trim(guess) === "" || (guess instanceof Array &&
                  $.trim(guess.join("").replace(/,/g, "")) === "");
     }
+    
+    //+ Jonas Raoni Soares Silva
+    //@ http://jsfromhell.com/array/shuffle [v1.0]
+    // Added by Junyang Chen
+    function shuffle(o){ //v1.0
+        for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+            return o;
+    };
+     
+    // TODO Should not fix the array size to 10. Should make it more flexible.
+    // Added by Junyang Chen
+    function reMakeProblemBag(problems, n){
+        var i, 
+            arrSize = problems.length,
+            arr = [],
+            problembag = [];
+
+        for(i = 0; i < arrSize; i ++){
+            arr.push((function(){
+                return i;          
+            })());
+        }
+            
+        arr = shuffle(arr);
+
+        for(var i = 0; i < n; i ++){
+            problembag.push((function(){
+             return problems[arr[i]];  
+            })());
+        }
+ 
+        return problembag;
+    }
 
     function makeProblem(id, seed) {
         debugLog("start of makeProblem");
@@ -1185,8 +1241,23 @@ var Khan = (function() {
         // we made earlier to ensure that every problem gets shown the
         // appropriate number of times
         } else if (problemBag.length > 0) {
+            // Modified by Junyang Chen
+            // 
             problem = problemBag[problemBagIndex];
+            //console.log(problemBagIndex);
             id = problem.data("id");
+            if(problemBagIndex > 0 && problemBagIndex % (problemBagSize-1)  === 0){
+                problemBag = reMakeProblemBag(problemBag, problemBagSize);
+
+                /*for(var i= 0; i< problemBag.length; i++) {
+                    // Modified by Junyang Chen
+                    problem = problemBag[i];
+                    var testid = problem.find('.solution').html();
+                    console.log(testid);
+                }*/
+
+            }
+
 
         // No valid problem was found, bail out
         } else {
@@ -1257,11 +1328,13 @@ var Khan = (function() {
         hints = problem.children(".hints").remove();
 
         // Only show the calculator if it's specifically allowed for this problem
+        /* Remove calculator. By Junyang Chen
         if (problem.data("calculator") == null) {
             $("#calculator").hide();
         } else {
             $("#calculator").show();
         }
+        */
 
         debugLog("removed hints from DOM");
 
@@ -1369,9 +1442,10 @@ var Khan = (function() {
             // Focus the first input
             // Use .select() and on a delay to make IE happy
             var firstInput = solutionarea.find(":input").first();
+            /* Since we removed calculator, the following condition will always false. By Junyang Chen
             if ($(".calculator input:visible").length) {
                 firstInput = $(".calculator input");
-            }
+            }*/
 
             setTimeout(function() {
                 if (!firstInput.is(":disabled")) {
@@ -1716,6 +1790,7 @@ var Khan = (function() {
 
         assessmentMode = !localMode && Exercises.assessmentMode;
 
+        /* Remove the Calculator, since we don't need it. By Junyang Chen.
         function initializeCalculator() {
             var calculator = $(".calculator"),
                 history = calculator.children(".history"),
@@ -1803,6 +1878,7 @@ var Khan = (function() {
         };
 
         initializeCalculator();
+        */
         Khan.initReportIssueLink("#report, #extras .report-issue-link");
 
         $("#answer_area").delegate("input.button, select", "keydown", function(e) {
@@ -1995,7 +2071,6 @@ var Khan = (function() {
             // scripts otherwise.
             // See https://github.com/Khan/khan-exercises/issues/10957
             data = data.replace(/<script(\s)+src=([^<])*<\/script>/, "");
-
             var newContents = $(data).filter(".exercise");
 
             // Name of the top-most ancestor exercise
@@ -2075,9 +2150,17 @@ var Khan = (function() {
     }
 
     function loadModule(modNameOrObject) {
+        
         var src, deps = [];
+        // Modified by Junyang Chen
         if (typeof modNameOrObject === "string") {
-            src = urlBase + "utils/" + modNameOrObject + ".js";
+            if(/\([a-zA-Z0-9\.\/\_]*\)/.test(modNameOrObject)){
+                modNameOrObject = modNameOrObject.replace(/\(|\)/g, "");
+                src = modNameOrObject;
+            }else{
+                src = urlBase + "utils/" + modNameOrObject + ".js";
+            }
+
             deps = Khan.moduleDependencies[modNameOrObject] || [];
         } else {
             src = modNameOrObject.src;
@@ -2145,9 +2228,16 @@ var Khan = (function() {
         // calls KhanUtil.random() and changes the seed)
         if (Khan.query.problem == null) {
             weighExercises(problems);
-            problemBag = makeProblemBag(problems, 10);
+            // Change the number from 10 to 20. By Junyang Chen.
+            problemBagSize = Math.min(problems.length, 20);
+            problemCount = problemBagSize;
+            problemBag = makeProblemBag(problems, problemBagSize);
+
         }
+
+        // Khan site has been finished loading. By Junyang Chen 
         tempdeff.resolve();
+
         // Generate the initial problem when dependencies are done being loaded
         makeProblem();
     }

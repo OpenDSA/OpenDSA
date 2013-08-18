@@ -116,11 +116,6 @@ work on an array that stores key-record pairs.
 .. codeinclude:: Sorting/InssortKV.pde 
    :tag: InssortKV
 
-You can see a complete implementation supporting this version of
-Insertion Sort here_.
-
-.. _here: ../../../SourceCode/Processing/Sorting/InssortKV.pde
-
 Here are some review questions to test your knowledge from this module.
 
 .. avembed:: Exercises/Sorting/SortCompareSumm.html ka

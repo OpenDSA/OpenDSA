@@ -39,6 +39,25 @@ the array-based queue and the linked queue.
 .. codeinclude:: Lists/Queue.pde
    :tag: Queue
 
+.. TODO::
+   :type: Exercise
+
+   Need to create an exercise for queues as follows.
+
+   Following sequence of operations is performed on a queue:
+   enqueue(1), enqueue(2), dequeue, enqueue(1), enqueue(2), dequeue,
+   dequeue, dequeue, enqueue(2), dequeue. The values will be output in
+   this order: [Here, the student will type the values in the proper
+   order.]
+
+   We need to have a way to randomly generate random number of operations
+   like enqueue and dequeue. We might also consider using random
+   numbers (not only 1 and 2). We need a way to generate the correct
+   answer for the randomly generated problem instance. It is important
+   to make sure that we do not generate a dequeue operation on an
+   empty queue.
+
+
 Array-Based Queues
 ------------------
 
@@ -127,10 +146,8 @@ Here is the linked queue class declaration.
 
 .. avembed:: Exercises/Development/listLQueueDequeue.html ka
 
-.. TODO::
-   :type: Exercise
+.. avembed:: Exercises/Development/StckQSumm.html ka
 
-   Need exercises for pushing and popping on linked queues.
 
 Comparison of Array-Based and Linked Queues
 -------------------------------------------
@@ -142,10 +159,5 @@ implementations.
 Unlike the array-based stack implementation, there is no convenient
 way to store two queues in the same array,
 unless items are always transferred directly from one queue to the other.
-
-.. TODO::
-   :type: Exercise
-
-   Add a battery of summary questions.
 
 .. odsascript:: AV/Development/listQueueCON.js

@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Algorithm Analysis
 
-Multiple Parameters [Text]
-==========================
+Multiple Parameters
+===================
 
 Sometimes the proper analysis for an algorithm requires
 multiple parameters to describe the cost.
