@@ -137,8 +137,8 @@ If ``move`` were to print the values of its parameters,
 then the result of calling ``TOH`` would be a list of
 ring-moving instructions that solves the problem.
 
-.. codeinclude:: Misc/Fact.pde 
-   :tag: RFact
+.. codeinclude:: Misc/TOH.pde 
+   :tag: TOH
 
 Those who are unfamiliar with recursion might find it hard to
 accept that it is used primarily as a tool for simplifying the design

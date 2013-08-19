@@ -31,16 +31,15 @@ void move(Pole start, Pole goal) {
 // start: The start pole
 // goal: The goal pole
 // temp: The other pole
-void TOHr(int n, Pole start, Pole goal, Pole temp) {
+void TOH(int n, Pole start, Pole goal, Pole temp) {
   if (n == 0) return;          // Base case
-  TOHr(n-1, start, temp, goal); // Recursive call: n-1 rings
+  TOH(n-1, start, temp, goal); // Recursive call: n-1 rings
   move(start, goal);            // Move bottom disk to goal
-  TOHr(n-1, temp, goal, start); // Recursive call: n-1 rings
+  TOH(n-1, temp, goal, start); // Recursive call: n-1 rings
 }
 /* *** ODSAendTag: TOH *** */
 
 /* *** ODSATag: TOHstack *** */
-
 class TOHobj {
   int op;
   int num;
@@ -80,7 +79,7 @@ void setup() {
   Pole temp = new Pole(3);
 
   counter = 1;
-  TOHr(4, start, goal, temp);
+  TOH(4, start, goal, temp);
   counter = 1;
   TOHs(4, start, goal, temp);
 
