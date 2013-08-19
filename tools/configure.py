@@ -566,7 +566,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
       # Print a warning message if a missing prereq is encountered
       for req in requires:
         if req not in satisfied_requirements:
-          print ("  " * (depth + 1 )) + "WARNING: " + req + " is an unsatisfied prerequisite for " + mod_name
+          print ("  " * (depth + 1 )) + "WARNING: " + req + " is an unsatisfied prerequisite for " + mod_name + ", line " + str(i + 1)
     elif ':satisfies:' in mod_data[i]:
       # Parse the list of prerequisite topics this module satisfies and add them to the list of satisfied prereqs
       satisfied_requirements += [req.strip() for req in mod_data[i].replace(':satisfies:', '').split(';')]
@@ -587,57 +587,72 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
         # Increment the TODO directive counter
         todo_count += 1
     elif '.. inlineav::' in mod_data[i]:
-      # Parse the AV name from the line
-      av_name = mod_data[i].split(' ')[2].rstrip()
-      type = mod_data[i].split(' ')[3].rstrip()
-
-      if type == 'ss':
-        if av_name not in exercises:
-          # If the SS is not listed in the config file, add its name to a list of missing exercises, ignore missing diagrams
-          missing_exercises.append(av_name)
-        else:
-          # Add the necessary information from the slideshow from the configuration file
-          # Diagrams (type == 'dgm') do not require this extra information
-          exer_conf = exercises[av_name]
-
-          # List of valid options for inlineav directive
-          options = ['long_name', 'points', 'required', 'threshold']
-
-          rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
-          mod_data[i] += ''.join(rst_options)
-      elif type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
-        # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
-        print ("  " * (depth + 1 )) + "WARNING: " + av_name + " is a diagram (attributes are not supported)"
-    elif '.. avembed::' in mod_data[i]:
-      # Parse the exercise name from the line
-      av_name = mod_data[i].split(' ')[2].rstrip()
-      av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
-      type = mod_data[i].split(' ')[3].rstrip()
-
-      # If the config file states the exercise should be removed, remove it
-      if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
-        print ("  " * (depth + 1 )) + 'Removing: ' + av_name
-
-        # Config file states exercise should be removed, remove it from the RST file
-        while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-          mod_data[i] = ''
-          i += 1
+      # Parse the arguments from the directive
+      args = mod_data[i].strip().split(' ')
+      
+      if len(args) < 4:
+        # Print a warning if inlineav is invoked without the minimum number of arguments
+        print ("  " * (depth + 1 )) + "ERROR: Invalid directive arguments for object on line " + str(i + 1) + ", skipping object"
       else:
-        # Append module name to embedded exercise
-        mod_data[i] += '   :module: %s\n' % mod_name
-        
-        if av_name not in exercises:
-          # Add the name to a list of missing exercises
-          missing_exercises.append(av_name)
+        av_name = args[2].rstrip()
+        type = args[3].rstrip()
+
+        if type == 'ss':
+          if av_name not in exercises:
+            # If the SS is not listed in the config file, add its name to a list of missing exercises, ignore missing diagrams
+            missing_exercises.append(av_name)
+          else:
+            # Add the necessary information from the slideshow from the configuration file
+            # Diagrams (type == 'dgm') do not require this extra information
+            exer_conf = exercises[av_name]
+
+            # List of valid options for inlineav directive
+            options = ['long_name', 'points', 'required', 'threshold']
+
+            rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+            mod_data[i] += ''.join(rst_options)
+        elif type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
+          # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
+          print ("  " * (depth + 1 )) + "WARNING: " + av_name + " is a diagram (attributes are not supported), line " + str(i + 1)
+        elif type not in ['ss', 'dgm']:
+          # If a warning if the exercise type doesn't match something we expect 
+          print ("  " * (depth + 1 )) + "WARNING: Unsupported type '" + type + "' specified for " + av_name + ", line " + str(i + 1)
+    elif '.. avembed::' in mod_data[i]:
+      # Parse the arguments from the directive
+      args = mod_data[i].strip().split(' ')
+      
+      if len(args) < 4:
+        # Print a warning if avembed is invoked without the minimum number of arguments
+        print ("  " * (depth + 1 )) + "ERROR: Invalid directive arguments for embedded object on line " + str(i + 1) + ", skipping object"
+      else:
+        av_name = args[2].rstrip()
+        av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
+        type = args[3].rstrip()
+
+        # If the config file states the exercise should be removed, remove it
+        if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
+          print ("  " * (depth + 1 )) + 'Removing: ' + av_name
+
+          # Config file states exercise should be removed, remove it from the RST file
+          while (i < len(mod_data) and mod_data[i].rstrip() != ''):
+            mod_data[i] = ''
+            i += 1
         else:
-          # Add the necessary information from the configuration file
-          exer_conf = exercises[av_name]
+          # Append module name to embedded exercise
+          mod_data[i] += '   :module: %s\n' % mod_name
+          
+          if av_name not in exercises:
+            # Add the name to a list of missing exercises
+            missing_exercises.append(av_name)
+          else:
+            # Add the necessary information from the configuration file
+            exer_conf = exercises[av_name]
 
-          # List of valid options for avembed directive
-          options = ['long_name', 'points', 'required', 'showhide', 'threshold']
+            # List of valid options for avembed directive
+            options = ['long_name', 'points', 'required', 'showhide', 'threshold']
 
-          rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
-          mod_data[i] += ''.join(rst_options)
+            rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+            mod_data[i] += ''.join(rst_options)
     elif '.. avmetadata::' in mod_data[i]:
       avmetadata_found = True
 
