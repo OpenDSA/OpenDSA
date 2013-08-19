@@ -256,6 +256,10 @@ Module :numref:`MCST`.
       :math:`y \bmod m = z \bmod m`, then
       :math:`x \bmod m = z \bmod m`.
 
+.. avembed:: Exercises/Development/StTFreltn.html ka
+
+.. avembed:: Exercises/Development/StTFeqvlnc.html ka
+
 A binary relation is called a
 :term:`partial order` if it is antisymmetric and transitive. [#]_
 The set on which the partial order is defined is called a
@@ -287,10 +291,7 @@ then the order is called a :term:`total order` or :term:`linear order`.
    Therefore, the subset operator does not define a total order on the
    powerset of the integers.
 
-.. TODO::
-   :type: Exercise
-
-   Create a battery of summary questions.
+.. avembed:: Exercises/Development/StTFprtlordr.html ka
 
 Notes
 -----

@@ -39,7 +39,7 @@ notation: MathJax.ElementJax.mml.NOTATION.UPDIAGONALSTRIKE
 }
 },
 "HTML-CSS": {
-scale: 140,
+scale: 110,
 showMathMenu: !1,
 availableFonts: [ "TeX" ],
 imageFont: null

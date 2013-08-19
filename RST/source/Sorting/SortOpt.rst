@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :requires: code tuning
-   :statisfies: sort code tuning
+   :satisfies: sort code tuning
    :topic: Sorting, Code Tuning
 
 Optimizing Sort Algorithms with Code Tuning

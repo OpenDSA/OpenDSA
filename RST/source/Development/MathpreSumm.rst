@@ -14,7 +14,5 @@ Math Background Summary Exercises
 Here are some practice questions for modules :numref:`<MiscMath>`
 through :numref:`<Estimation>`.
 
-.. TODO::
-   :type: Exercise
+.. avembed:: Exercises/Development/MthBgSumm.html ka
 
-   Create a battery of summary questions.

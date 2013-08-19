@@ -35,7 +35,26 @@
       },
       "Development/SetDef": {
         "long_name": "Set Definitions",
-        "exercises": {}
+        "exercises": {
+          "StTFreltn": {
+            "long_name": "Relations Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "StTFeqvlnc": {
+            "long_name": "Equivalence Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          },
+          "StTFprtlordr": {
+            "long_name": "PartialOrder Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
       },
       "Development/MiscMath": {
         "long_name": "Set Definitions",
@@ -67,7 +86,14 @@
       },
       "Development/MathpreSumm": {
         "long_name": "Chapter Summary",
-        "exercises": {}
+        "exercises": {
+          "MthBgSumm": {
+            "long_name": "Math Background Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       }
     },
     "Algorithm Analysis": {
