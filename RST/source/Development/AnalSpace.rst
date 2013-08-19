@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: algorithm analysis
+   :satisfies: space analysis introduction; overhead; space/time tradeoff
    :topic: Algorithm Analysis
 
 Space Bounds

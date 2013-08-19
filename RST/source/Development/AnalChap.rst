@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: algorithm analysis chapter introduction
    :topic: Algorithm Analysis
 
 Chapter Introduction

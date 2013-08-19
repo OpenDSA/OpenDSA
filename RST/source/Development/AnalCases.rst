@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: best and worst case
    :topic: Algorithm Analysis
 
 Best, Worst, and Average Cases

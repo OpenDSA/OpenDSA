@@ -5,7 +5,7 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: factorial; permuation; modulus
    :topic: Math Background
 
 Miscellaneous Notation

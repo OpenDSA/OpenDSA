@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: algorithm analysis
+   :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
 
 Asymptotic Analysis

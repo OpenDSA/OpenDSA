@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: algorithm analysis
+   :satisfies: analysis multiple parameters
    :topic: Algorithm Analysis
 
 Multiple Parameters

@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: algorithm analysis
+   :satisfies: analyzing problems
    :topic: Algorithm Analysis
 
 Analyzing Problems

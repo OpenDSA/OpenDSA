@@ -5,7 +5,7 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: induction proofs
    :topic: Math Background
 
 .. odsalink:: AV/Development/proofCON.css

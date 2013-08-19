@@ -5,7 +5,7 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites: Sets
+   :satisfies: set notation; relations
    :topic: Sets
 
 Sets and Relations
