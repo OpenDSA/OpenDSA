@@ -99,6 +99,21 @@ for (k=1; k<=n; k*=2)    // Do log n times
 /* *** ODSAendTag: c3p16 *** */
 }
 
+// return TRUE iff the value n is odd
+boolean ODD(int n) {
+  return (n % 2) == 1;
+}
+
+void collatz(int n) {
+/* *** ODSATag: Collatz *** */
+while (n > 1)
+  if (ODD(n))
+    n = 3 * n + 1;
+   else
+     n = n / 2;
+/* *** ODSAendTag: Collatz *** */
+}
+
 void setup() {
   int myarray[] = {5, 20, 3, 11};
 
@@ -115,6 +130,9 @@ void setup() {
   } else {
     println("Testing failed");
   }
+
+  collatz(5);
+  collatz(15);
 
   exit();
 }
