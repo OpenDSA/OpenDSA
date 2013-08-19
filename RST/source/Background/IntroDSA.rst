@@ -323,4 +323,4 @@ you determine the best data structure for the task.
    changed, such as an atlas distributed on a CD or accessed from a
    website.
 
-.. avembed:: Exercises/Development/IntroSumm.html ka
+.. avembed:: Exercises/Background/IntroSumm.html ka

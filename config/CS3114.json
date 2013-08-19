@@ -16,7 +16,7 @@
       }
     },
     "Introduction": {
-      "Development/IntroDSA.rst": {
+      "Background/IntroDSA.rst": {
         "long_name": "Introduction to Data Structures and Algorithms",
         "exercises": {
           "IntroSumm": {
@@ -29,11 +29,11 @@
       }
     },
     "Mathematical Background": {
-      "Development/MathpreIntro": {
+      "Background/MathpreIntro": {
         "long_name": "Chapter Introduction",
         "exercises": {}
       },
-      "Development/SetDef": {
+      "Background/SetDef": {
         "long_name": "Set Definitions",
         "exercises": {
           "StTFreltn": {
@@ -56,35 +56,35 @@
           }
         }
       },
-      "Development/MiscMath": {
+      "Background/MiscMath": {
         "long_name": "Set Definitions",
         "exercises": {}
       },
-      "Development/Logarithms": {
+      "Background/Logarithms": {
         "long_name": "Set Definitions",
         "exercises": {}
       },
-      "Development/Summations": {
+      "Background/Summations": {
         "long_name": "Set Definitions",
         "exercises": {}
       },
-      "Development/Recursion": {
+      "Background/Recursion": {
         "long_name": "Recursion",
         "exercises": {
           "recursionCONTOH": {}
         }
       },
-      "Development/Proofs": {
+      "Background/Proofs": {
         "long_name": "Proofs",
         "exercises": {
           "proofCON1": {}
         }
       },
-      "Development/Estimation": {
+      "Background/Estimation": {
         "long_name": "Estimation",
         "exercises": {}
       },
-      "Development/MathpreSumm": {
+      "Background/MathpreSumm": {
         "long_name": "Chapter Summary",
         "exercises": {
           "MthBgSumm": {

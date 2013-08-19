@@ -750,7 +750,7 @@
       }
     },
     "Stubs": {
-      "Development/SetDef": {
+      "Background/SetDef": {
         "long_name": "Set Definitions",
         "exercises": {}
       },
