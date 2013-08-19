@@ -80,7 +80,7 @@ var MODULE_ORIGIN = getURLParam('moduleOrigin');
 var MODULE_NAME = getURLParam('module');
 
 // The name of the book
-var BOOK_NAME = getURLParam('bookName');
+var BOOK_NAME = getURLParam('book');
 
 var Khan = (function() {
     // Numbers which are coprime to the number of bins, used for jumping through
