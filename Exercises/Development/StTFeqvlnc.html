@@ -1,48 +1,44 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>OpenDSA Set Definition Exercise: Equivalence</title>
+  <title>Equivalence Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../lib/odsaLoadKhan.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <script src="../../ODSAkhan-exercises-new/khan-exercise.js"></script>
 </head>
-
-
 
 <body>
 <div class="exercise">
   <div class="vars">
-      <var id="CHOICESINDEX">randRange(0,5)</var>
-      <var id="CHOICES">[ "For integers a and b, a &equiv; b if and only if a &#43; b is even." ,
-                         "For integers a and b, a &equiv; b if and only if a &#43; b is odd." ,
-                         "For non-zero rational numbers a and b, a &equiv; b if and only if a \&#88; b &gt; 0." ,
-                         "For non-zero rational numbers a and b, a &equiv; b if and only if a &#47; b is an integer.",
-                         "For rational numbers a and b, a &equiv; b if and only if a &#45; b is an integer." ,
-                         "For rational numbers a and b, a &equiv; b if and only if   &#124; a &#45; b &#124;  &le; 2." ]
-                         </var>
-      <var id="ANSWER">[ "True", "False", "True", "False", "True", "False" ]</var>
-    </div>
-    <div class="problems">
-      <div id="problem-type-or-description">
-        <p class="problem">Is this relation an equivalence relation?
-        <p class="question">
-	   <var>CHOICES[CHOICESINDEX]</var>
-	</p>
-        <div class="solution"><var>ANSWER[CHOICESINDEX]</var></div>
+    <var id="CHOICESINDEX">randRange(0,5)</var>
+    <var id="CHOICES">["For integers a and b, a &equiv; b if and only if a &#43; b is even",
+                       "For integers a and b, a &equiv; b if and only if a &#43; b is odd",
+                       "For non-zero rational numbers a and b, a &equiv; b if and only if a \&#88; b &gt; 0",
+                       "For non-zero rational numbers a and b, a &equiv; b if and only if a &#47; b is an integer",
+                       "For rational numbers a and b, a &equiv; b if and only if a &#45; b is an integer",
+                       "For rational numbers a and b, a &equiv; b if and only if &#124; a &#45; b &#124; &le; 2"]
+    </var>
+    <var id="ANSWER">[ "True", "False", "True", "False", "True", "False" ]</var>
+  </div>
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="problem">Is this relation an equivalence relation?
+      <p class="question"><var>CHOICES[CHOICESINDEX]</var></p>
+      <div class="solution"><var>ANSWER[CHOICESINDEX]</var></div>
       <ul class="choices" data-category="true">
 	<li><var>"True"</var></li>
 	<li><var>"False"</var></li>			  	  	 
       </ul>
-
-
       <div class="hints">
-	<p> Is the relation reflexive? That is, for every element A in the set, is (A, A) in the relation?</p>
-        <p> Is the relation symmetric? That is, for every pair A, B of distinct elements in the set, if (A, B) is in the relation, is (B, A) also in 
-            the relation?</p>
-        <p>Is the relation transitive? That is, for every triple A, B, and C of distinct elements in the set, if (A, B) is in the relation and (B, C) 
-           is in the relation, is (A, C) also in the relation?</p>
+	<p> Is the relation reflexive? That is, for every element A in
+	the set, is (A, A) in the relation?</p>
+        <p> Is the relation symmetric? That is, for every pair A, B of
+            distinct elements in the set, if (A, B) is in the
+            relation, is (B, A) also in the relation?</p>
+        <p>Is the relation transitive? That is, for every triple A, B,
+           and C of distinct elements in the set, if (A, B) is in the
+           relation and (B, C) is in the relation, is (A, C) also in
+           the relation?</p>
       </div>
     </div>
   </div>

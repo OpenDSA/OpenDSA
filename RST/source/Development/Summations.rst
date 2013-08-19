@@ -5,7 +5,7 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: summation; recurrence
    :topic: Math Background
 
 Summations and Recurrence Relations

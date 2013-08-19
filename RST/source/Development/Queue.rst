@@ -146,10 +146,8 @@ Here is the linked queue class declaration.
 
 .. avembed:: Exercises/Development/listLQueueDequeue.html ka
 
-.. TODO::
-   :type: Exercise
+.. avembed:: Exercises/Development/StckQSumm.html ka
 
-   Need exercises for pushing and popping on linked queues.
 
 Comparison of Array-Based and Linked Queues
 -------------------------------------------
@@ -161,10 +159,5 @@ implementations.
 Unlike the array-based stack implementation, there is no convenient
 way to store two queues in the same array,
 unless items are always transferred directly from one queue to the other.
-
-.. TODO::
-   :type: Exercise
-
-   Add a battery of summary questions.
 
 .. odsascript:: AV/Development/listQueueCON.js

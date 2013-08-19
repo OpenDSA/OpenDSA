@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: analyzing programs
+   :satisfies: code tuning; empirical analysis
    :topic: Algorithm Analysis
 
 Code Tuning and Empirical Analysis

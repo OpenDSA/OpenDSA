@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: best and worst case
    :topic: Algorithm Analysis
 
 Best, Worst, and Average Cases
@@ -80,12 +80,6 @@ Here, it would not be acceptable to use an algorithm that can handle
 :math:`n` airplanes quickly enough *most of the time*, but which
 fails to perform quickly enough when all :math:`n` airplanes are coming
 from the same direction.
-
-.. TODO::
-   :type: Text
-
-   Find a more realistic real-time example than this one with the
-   airplanes.
 
 For other applications |---| particularly when we wish to aggregate
 the cost of running the program many times on many different inputs

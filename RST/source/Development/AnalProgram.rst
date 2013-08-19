@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: algorithm analysis
+   :satisfies: analyzing programs
    :topic: Algorithm Analysis
 
 Calculating Program Running Time
@@ -141,7 +142,7 @@ the costs for the ``then`` and ``else`` clauses.
 This is also true for the average case, assuming that
 the size of :math:`n` does not affect the probability of executing one
 of the clauses (which is usually, but not necessarily, true).
-For :math:`switch` statements, the worst-case cost is that of the most
+For ``switch`` statements, the worst-case cost is that of the most
 expensive branch.
 For subroutine calls, simply add the cost of executing the subroutine.
 

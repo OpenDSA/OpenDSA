@@ -5,7 +5,7 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: recursion
    :topic: Math Background
 
 .. odsalink:: AV/Development/recursionCON.css

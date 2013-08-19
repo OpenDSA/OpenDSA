@@ -21,7 +21,7 @@
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transform.light.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../lib/odsaLoadKhan.js"></script>
+  <script src="../../ODSAkhan-exercises-new/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <script src="../../AV/Development/edit.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
@@ -156,7 +156,6 @@
       var s = 0;
       while((s < sub.length) && (sub.length - s <= master.length -m)) {
         if(master[m] == sub[s]){   
-        console.log("comparing "+master[m] +" to "+sub[s]); 
           m+=1;
           s+=1;
         } else if (s == 0 ){
@@ -178,7 +177,6 @@
       if(s == sub.length) {
         return m-s;
       } else {
-        console.log(-1);
         return -1;
       }
     }
@@ -262,7 +260,6 @@
       var user_sub = $("#user_sub_id").val();
       var user_align = compute_align_array(user_sub.split(""));
       kmp_real(user_master.split(""), user_sub.split(""), user_align, 2);
-      console.log("user compares: " + user_compares + " user shifts: "+user_shifts);
       if(user_compares == compares && user_shifts == shifts) {
         user_compares = 0;
         user_shifts = 0;

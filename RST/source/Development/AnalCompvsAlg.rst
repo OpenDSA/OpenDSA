@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: growth rate
    :topic: Algorithm Analysis
 
 Faster Computer, or Faster Algorithm?

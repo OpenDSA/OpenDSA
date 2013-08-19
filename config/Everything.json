@@ -22,7 +22,14 @@
     "Introduction": {
       "Development/IntroDSA.rst": {
         "long_name": "Introduction to Data Structures and Algorithms",
-        "exercises": {}
+        "exercises": {
+          "IntroSumm": {
+            "long_name": "Introduction Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       }
     },
     "Mathematical Background": {
@@ -56,6 +63,10 @@
       },
       "Development/Estimation": {
         "long_name": "Estimation",
+        "exercises": {}
+      },
+      "Development/MathpreSumm": {
+        "long_name": "Chapter Summary",
         "exercises": {}
       }
     },
@@ -113,12 +124,6 @@
       "Development/ADT": {
         "long_name": "Abstract Data Types",
         "exercises": {
-          "ADTCON1": {
-            "long_name": "ADT Slideshow 1",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          }
         }
       },
       "Development/DesignPatterns": {
@@ -128,6 +133,17 @@
       "Development/DesignAltList": {
         "long_name": "Alternate List ADT Design",
         "exercises": {}
+      },
+      "Development/Comparison": {
+        "long_name": "Comparing Records",
+        "exercises": {
+          "SortCompareSumm": {
+            "long_name": "Record Comparison Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
       },
       "Development/Dictionary": {
         "long_name": "The Dictionary ADT",
@@ -209,6 +225,10 @@
       },
       "Development/Queue": {
         "long_name": "Queues",
+        "exercises": {}
+      },
+      "Development/ListSumm": {
+        "long_name": "List Chapter Summary",
         "exercises": {}
       }
     },
@@ -479,17 +499,6 @@
           },
           "SelsortSumm": {
             "long_name": "Selection Sort Summary",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "Sorting/SortCompare": {
-        "long_name": "Comparing Records",
-        "exercises": {
-          "SortCompareSumm": {
-            "long_name": "Record Comparison Summary",
             "required": true,
             "points": 1,
             "threshold": 5

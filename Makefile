@@ -69,7 +69,7 @@ invalid: min
 slides: min
 	python $(CONFIG_SCRIPT) s config/slides.json
 
-allBooks: OpenDSA Dev Everything test List slides
+allBooks: CS3114 OpenDSA Dev Everything test List slides
 
 nomin:
 	cp lib/odsaUtils.js lib/odsaUtils-min.js

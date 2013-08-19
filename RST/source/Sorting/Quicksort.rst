@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
+   :requires: sort code tuning
    :topic: Sorting
 
 .. odsascript:: AV/Sorting/quicksortCODE.js

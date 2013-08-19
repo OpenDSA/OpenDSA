@@ -180,8 +180,10 @@ Similar functions to find and return a composite element based on a
 key value can be created using the list implementation, but to do so
 requires some agreement between the list ADT and the ``find``
 function on the concept of a key, and on how keys may be compared.
-This topic is discussed in Module :numref:`<SortCompare>`.
+This topic is discussed in Module :numref:`<Comparison>`.
 
+.. avembed:: Exercises/Development/LinkedListKAEx.html ka
+  
 Implementing Lists
 ------------------
 
@@ -192,10 +194,5 @@ Module :numref:`<ListArray>`.
 The linked list is presented in Module :numref:`<ListLinked>`.
 Time and space efficiency comparisons for the two are discussed in
 Module :numref:`<ListAnalysis>`.
-
-.. TODO::
-   :type: Exercise
-
-   Need a battery of summary questions.
 
 .. odsascript:: AV/Development/listADTCON.js

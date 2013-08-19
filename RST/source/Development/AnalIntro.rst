@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: growth rate
    :topic: Algorithm Analysis
 
 Comparing Algorithms

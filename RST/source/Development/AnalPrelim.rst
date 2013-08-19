@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: problems; algorithms; functions
    :topic: Algorithm Analysis
 
 Problems, Algorithms, and Programs

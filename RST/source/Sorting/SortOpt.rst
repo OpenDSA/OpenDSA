@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: ExchangeSort
+   :requires: code tuning
+   :satisfies: sort code tuning
    :topic: Sorting, Code Tuning
 
 Optimizing Sort Algorithms with Code Tuning

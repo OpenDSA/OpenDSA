@@ -149,6 +149,7 @@ class inlineav(Directive):
         self.options['type'] = self.arguments[1]
         self.options['odsa_path'] = os.path.relpath(conf.odsa_path,conf.ebook_path)
  
+        # Set defaults for any values that aren't configured
         if 'required' not in self.options:
           self.options['required'] = False
         
@@ -163,7 +164,6 @@ class inlineav(Directive):
         
         if 'align' not in self.options:
           self.options['align'] = 'center'
-        
  
         if 'output' in self.options and self.options['output'] == "show":
           self.options['output_code'] = '<p class="jsavoutput jsavline"></p>'

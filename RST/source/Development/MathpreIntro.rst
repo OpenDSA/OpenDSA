@@ -5,7 +5,7 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: math introduction
    :topic: Math Background
 
 Chapter Introduction

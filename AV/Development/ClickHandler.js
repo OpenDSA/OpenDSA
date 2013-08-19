@@ -18,13 +18,13 @@
 			selectEmpty: false,			//don't allow selecting empty nodes
 			effect: "move",				//move, copy, swap, toss
 			removeNodes: true,			//remove nodes when they become empty
-			gradeable: true,
+			gradeable: true,			//tells click handler if action should be graded. Can be overridden with return value of onDrop
 			bgDeselect: true,			//allow deselecting by clicking on the background
 			select: "click",			//click, first, last
 			drop: "click",				//click, first, last
 			keep: false,				//don't allow selecting the last node
-			onSelect: function () {},	//called by structure when something is selected
-			onDrop: function () {}		//called by structure when value has been changed
+			onSelect: function () {},	//called by structure when something is selected. If the function returns false, the selection is cancelled
+			onDrop: function () {}		//called by structure when value has been changed. The return value determins if the step is gradeable. If nothing is returned options.gradeable will be used.
 		};
 
 		this.jsav = jsav;
@@ -86,6 +86,14 @@
 			}
 		},
 
+		step: function step(grade) {
+			if (grade) {
+				this.exercise.gradeableStep();
+			} else {
+				this.jsav.step();
+			}
+		},
+
 		//tells click handler to select the given index in an array or the given node
 		select: function select(struct, indexOrNode) {
 			//don't do anything if click handler is unaware of structure
@@ -99,7 +107,9 @@
 				struct.addClass(indexOrNode, this.options.selectedClass);
 				this.selIndex.value(indexOrNode);
 			} else {
+				//select node
 				indexOrNode.addClass(this.options.selectedClass);
+				this.selNode = indexOrNode;
 				this.selIndex.value(-1);
 			}
 			this.selStruct.value(this.getDsIndex(struct));
@@ -110,7 +120,9 @@
 			if (this.selStruct.value() !== -1) {
 				if (this.selIndex.value() === -1) {
 					//deselect node
-					this.selNode.removeClass(this.options.selectedClass);
+					if (this.selNode) {
+						this.selNode.removeClass(this.options.selectedClass);
+					}
 				} else {
 					//deselect from array
 					this.getDs(this.selStruct.value()).removeClass(this.selIndex.value(), this.options.selectedClass);
@@ -133,8 +145,6 @@
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
-				//changed to true if the step should be graded
-				var grade = false;
 
 				if (sStruct === -1) {
 					//select empty nodes only if the options allow it
@@ -148,17 +158,12 @@
 						return;
 					}
 					//mark as selected
-					this.addClass(index, ch.options.selectedClass);
-					//set sStruct and sIndex values
-					sStruct = ch.getDsIndex(this);
-					sIndex = index;
+					ch.select(array, index);
 				} else if (sStruct === ch.getDsIndex(this)) {
 					//swap with empty nodes only if the options allow it
 					if (!options.selectEmpty && this.value(index) === "" && ch.options.effect === "swap") {
 						return;
 					}
-					//deselect
-					this.removeClass(sIndex, ch.options.selectedClass);
 					if (sIndex !== index) {
 						//move/copy/swap within the array
 						valueEffect(ch, {
@@ -169,66 +174,49 @@
 							effect: options.effect
 						});
 						//call onDrop function
-						grade = options.onDrop.call(this, index);
+						var grade = options.onDrop.call(this, index);
 						if (typeof grade === "undefined") {
-							//set true if nothing was returned
-							grade = true;
+							//use default if nothing is returned
+							grade = options.gradeable;
 						} else {
 							//convert to boolean
 							grade = !!grade;
 						}
 					}
-					//set sStruct and sIndex values
-					sStruct = -1;
-					sIndex = -1;
+					//deselect
+					ch.deselect();
+					//mark step unless we were deselecting
+					if (sIndex !== index) {
+						ch.step(grade);
+					}
 				} else {
 					//move/copy/swap from an another structure
 					//swap with empty nodes only if the options allow it
 					if (!options.selectEmpty && this.value(index) === "" && ch.options.effect === "swap") {
 						return;
 					}
-					if (sIndex === -1) {
-						//from node
-						//deselect node
-						ch.selNode.removeClass(ch.options.selectedClass);
-						//move value
-						valueEffect(ch, {
-							from: ch.selNode,
-							to: this,
-							toIndex: index,
-							effect: options.effect
-						});
-					} else {
-						//from another array
-						//deselect
-						ch.getDs(sStruct).removeClass(sIndex, ch.options.selectedClass);
-						//move value
-						valueEffect(ch, {
-							from: ch.getDs(sStruct),
-							fromIndex: sIndex,
-							to: this,
-							toIndex: index,
-							effect: options.effect
-						});
-					}
+					//move value from node (sIndex === -1) or another array
+					valueEffect(ch, {
+						from: sIndex === -1? ch.selNode: ch.getDs(sStruct),
+						fromIndex: sIndex === -1? undefined: sIndex,
+						to: this,
+						toIndex: index,
+						effect: options.effect
+					});
 					//call onDrop function
-					grade = options.onDrop.call(this, index);
+					var grade = options.onDrop.call(this, index);
 					if (typeof grade === "undefined") {
-						//set true if nothing was returned
-						grade = true;
+						//use default if nothing is returned
+						grade = options.gradeable;
 					} else {
 						//convert to boolean
 						grade = !!grade;
 					}
-					//set sStruct and sIndex values					
-					sStruct = -1;
-					sIndex = -1;
+					//deselect
+					ch.deselect();
+					//mark step
+					ch.step(grade);
 				}
-				//move the values back to the JSAV variables
-				ch.selStruct.value(sStruct);
-				ch.selIndex.value(sIndex);
-				//grade if grade is true
-				if (options.gradeable && grade) {ch.exercise.gradeableStep(); }
 			});
 		},
 
@@ -246,8 +234,6 @@
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
-				//changed to true if the step should be graded
-				var grade = false;
 
 				if (sStruct === -1) {
 					//select empty nodes only if the options allow it
@@ -277,15 +263,8 @@
 						return;
 					}
 					//select
-					ch.selNode = sel;
-					//mark as selected
-					ch.selNode.addClass(ch.options.selectedClass);
-					//set sStruct and sIndex values
-					sStruct = ch.getDsIndex(list);
-					sIndex = -1;
+					ch.select(list, sel);
 				} else if (sStruct === ch.getDsIndex(list)) {
-					//deselect
-					ch.selNode.removeClass(ch.options.selectedClass);
 					var to;
 					switch (options.drop) {
 					case "first":
@@ -314,18 +293,21 @@
 						});
 						list.layout();
 						//call onDrop function
-						grade = options.onDrop.call(to);
+						var grade = options.onDrop.call(to);
 						if (typeof grade === "undefined") {
-							//set true if nothing was returned
-							grade = true;
+							//use default if nothing is returned
+							grade = options.gradeable;
 						} else {
 							//convert to boolean
 							grade = !!grade;
 						}
 					}
-					//set sStruct and sIndex values
-					sStruct = -1;
-					sIndex = -1;
+					//deselect
+					ch.deselect();
+					//mark step unless only deselecting
+					if (typeof grade !== "undefined") {
+						ch.step(grade);
+					}
 				} else {
 					//move/copy/swap from an another structure
 					var to;
@@ -339,48 +321,28 @@
 					default: //"click"
 						to = this;
 					}
-					if (sIndex === -1) {
-						//from node
-						//deselect node
-						ch.selNode.removeClass(ch.options.selectedClass);
-						//move value
-						valueEffect(ch, {
-							from: ch.selNode,
-							to: to,
-							effect: options.effect
-						});
-						list.layout();
-					} else {
-						//from an array
-						//deselect
-						ch.getDs(sStruct).removeClass(sIndex, ch.options.selectedClass);
-						//move value
-						valueEffect(ch, {
-							from: ch.getDs(sStruct),
-							fromIndex: sIndex,
-							to: to,
-							effect: options.effect
-						});
-						list.layout();
-					}
+					//move value from node (sIndex === -1) or an array
+					valueEffect(ch, {
+						from: sIndex === -1? ch.selNode: ch.getDs(sStruct),
+						fromIndex: sIndex === -1? undefined: sIndex,
+						to: to,
+						effect: options.effect
+					});
+					list.layout();
 					//call onDrop function
-					grade = options.onDrop.call(to);
+					var grade = options.onDrop.call(to);
 					if (typeof grade === "undefined") {
-						//set true if nothing was returned
-						grade = true;
+						//use default if nothing is returned
+						grade = options.gradeable;
 					} else {
 						//convert to boolean
 						grade = !!grade;
 					}
-					//set sStruct and sIndex values					
-					sStruct = -1;
-					sIndex = -1;
+					//deselect
+					ch.deselect();
+					//mark step
+					ch.step(grade);
 				}
-				//move the values back to the JSAV variables
-				ch.selStruct.value(sStruct);
-				ch.selIndex.value(sIndex);
-				//grade if grade is true
-				if (options.gradeable && grade) {ch.exercise.gradeableStep(); }
 			});
 		},
 
@@ -398,8 +360,6 @@
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
-				//changed to true if the step should be graded
-				var grade = false;
 
 				if (sStruct === -1) {
 					//select empty nodes only if the options allow it
@@ -417,15 +377,8 @@
 						return;
 					}
 					//select
-					ch.selNode = this;
-					//mark as selected
-					ch.selNode.addClass(ch.options.selectedClass);
-					//set sStruct and sIndex values
-					sStruct = ch.getDsIndex(tree);
-					sIndex = -1;
+					ch.select(tree, this);
 				} else if (sStruct === ch.getDsIndex(tree)) {
-					//deselect
-					ch.selNode.removeClass(ch.options.selectedClass);
 					if (this !== ch.selNode) {
 						//move/copy/swap within the tree
 						valueEffect(ch, {
@@ -435,69 +388,51 @@
 						});
 						tree.layout();
 						//call onDrop function
-						grade = options.onDrop.call(this);
+						var grade = options.onDrop.call(this);
 						if (typeof grade === "undefined") {
-							//set true if nothing was returned
-							grade = true;
+							//use default if nothing is returned
+							grade = options.gradeable;
 						} else {
 							//convert to boolean
 							grade = !!grade;
 						}
 					}
-					//set sStruct and sIndex values
-					sStruct = -1;
-					sIndex = -1;
+					//deselect
+					ch.deselect();
+					if (typeof grade !== "undefined") {
+						ch.step(grade);
+					}
 				} else {
 					//move/copy/swap from an another structure
-					if (sIndex === -1) {
-						//from node
-						//deselect node
-						ch.selNode.removeClass(ch.options.selectedClass);
-						//move value
-						valueEffect(ch, {
-							from: ch.selNode,
-							to: this,
-							effect: options.effect
-						});
-						tree.layout();
-					} else {
-						//from an array
-						//deselect
-						ch.getDs(sStruct).removeClass(sIndex, ch.options.selectedClass);
-						//move value
-						valueEffect(ch, {
-							from: ch.getDs(sStruct),
-							fromIndex: sIndex,
-							to: this,
-							effect: options.effect
-						});
-						tree.layout();
-					}
+					//move value from node (sIndex === -1) or an array
+					valueEffect(ch, {
+						from: sIndex === -1? ch.selNode: ch.getDs(sStruct),
+						fromIndex: sIndex === -1? undefined: sIndex,
+						to: this,
+						effect: options.effect
+					});
+					tree.layout();
 					//call onDrop function
-					grade = options.onDrop.call(this);
+					var grade = options.onDrop.call(this);
 					if (typeof grade === "undefined") {
-						//set true if nothing was returned
-						grade = true;
+						//use default if nothing is returned
+						grade = options.gradeable;
 					} else {
 						//convert to boolean
 						grade = !!grade;
 					}
-					//set sStruct and sIndex values					
-					sStruct = -1;
-					sIndex = -1;
+					//deselect
+					ch.deselect();
+					//mark step
+					ch.step(grade);
 				}
-				//move the values back to the JSAV variables
-				ch.selStruct.value(sStruct);
-				ch.selIndex.value(sIndex);
-				//grade if grade is true
-				if (options.gradeable && grade) {ch.exercise.gradeableStep(); }
 			});
 		}
 	};
 
 	/*
 	 * moves, copies or swaps the elements
-	*/
+	 */
 	function valueEffect(ch, options) {
 		//create an argument array for apply()
 		var args = valueEffectArguments(options);

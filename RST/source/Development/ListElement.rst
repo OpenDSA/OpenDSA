@@ -49,10 +49,7 @@ object.
 .. inlineav:: listElementDeleteCON ss
    :output: show 
    
-.. TODO::
-   :type: Exercise
-
-   Need a battery of summary questions.
+.. avembed:: Exercises/Development/LstSumm.html ka
    
 .. odsascript:: AV/Development/dlist.js   
 .. odsascript:: AV/Development/listElementCON.js

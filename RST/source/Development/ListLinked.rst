@@ -139,9 +139,6 @@ Implementations for the remaining operations each require
 
 .. avembed:: Exercises/Development/listLinkedDeletion.html ka
 
-.. TODO::
-   :type: Exercise
-
-   Add a battery of summary questions.
+.. avembed:: Exercises/Development/LstLnkdSumm.html ka
 
 .. odsascript:: AV/Development/listLinkedCON.js

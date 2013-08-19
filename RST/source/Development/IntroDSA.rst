@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: DSA Introduction
    :topic: Introduction
 
 Data Structures and Algorithms

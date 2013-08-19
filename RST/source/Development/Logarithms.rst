@@ -5,7 +5,7 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: logarithms
    :topic: Math Background
 
 Logarithms

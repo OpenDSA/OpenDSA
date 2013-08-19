@@ -370,7 +370,6 @@
         }
         temp_jsav.displayInit();      
         var x = kmp(temp_jsav, temp_str, temp_sub_str, temp_align_arr);
-        console.log(x);
         return [temp_str, temp_sub_str, temp_align_arr]; 
       }
 
@@ -446,7 +445,6 @@
           if(num_comp > 1) {       //if num_comp == 1 we want to keep it at 1 because it will be moving over 1 position and will be on comparison "1"
             num_comp = num_comp - (str_curr - sub_str_curr); //number compared is now number compared - the shift offset
           }
-          console.log(num_comp);
           if(((str_curr - sub_str_curr) + str_curr) < sub_str.size()) {
             for(var i = sub_str.size()-1; i >= (str_curr-sub_str_curr); i--){
               sub_str.value(i, sub_str.value(i - (str_curr - sub_str_curr)));

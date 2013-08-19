@@ -154,7 +154,7 @@
           }
         }
       },
-      "Sorting/SortCompare": {
+      "Development/Comparison": {
         "long_name": "Comparing Records",
         "exercises": {
           "SortCompareSumm": {
@@ -746,7 +746,7 @@
             "points": 0,
             "threshold": 1.0
           }
-	}
+        }
       }
     },
     "Stubs": {

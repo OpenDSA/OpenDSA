@@ -442,9 +442,6 @@ todo_include_todos = True
 
 #---- OpenDSA variables ---------------------------------------
 
-# Name used to uniquely identify
-book_name = '%(book_name)s'
-
 # Protocol and domain of the backend server
 server_url = '%(server_url)s'
 
@@ -592,19 +589,23 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
       av_name = mod_data[i].split(' ')[2].rstrip()
       type = mod_data[i].split(' ')[3].rstrip()
 
-      if av_name not in exercises:
-        # If the AV is not listed in the config file, add its name to a list of missing exercises
-        missing_exercises.append(av_name)
-      elif type == 'ss':
-        # Add the necessary information from the slideshow from the configuration file
-        # Diagrams (type == 'dgm') do not require this extra information
-        exer_conf = exercises[av_name]
+      if type == 'ss':
+        if av_name not in exercises:
+          # If the SS is not listed in the config file, add its name to a list of missing exercises, ignore missing diagrams
+          missing_exercises.append(av_name)
+        else:
+          # Add the necessary information from the slideshow from the configuration file
+          # Diagrams (type == 'dgm') do not require this extra information
+          exer_conf = exercises[av_name]
 
-        # List of valid options for inlineav directive
-        options = ['long_name', 'points', 'required', 'threshold']
+          # List of valid options for inlineav directive
+          options = ['long_name', 'points', 'required', 'threshold']
 
-        rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
-        mod_data[i] += ''.join(rst_options)
+          rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+          mod_data[i] += ''.join(rst_options)
+      elif type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
+        # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
+        print ("  " * (depth + 1 )) + "WARNING: " + av_name + " is a diagram (attributes are not supported)"
     elif '.. avembed::' in mod_data[i]:
       # Parse the exercise name from the line
       av_name = mod_data[i].split(' ')[2].rstrip()
@@ -683,6 +684,14 @@ def set_defaults(conf_data):
   # 'exercises_root_dir' should default to the OpenDSA root directory
   if 'exercises_root_dir' not in conf_data:
     conf_data['exercises_root_dir'] = odsa_dir
+    
+  # Require slideshows to be fully completed for credit by default
+  if 'req_full_ss' not in conf_data:
+    conf_data['req_full_ss'] = True
+    
+  # Allow anonymous credit by default
+  if 'allow_anonymous_credit' not in conf_data:
+    conf_data['allow_anonymous_credit'] = True
 
 
 def get_odsa_dir():
@@ -808,7 +817,6 @@ def configure(config_file, slides = False):
   # Initialize options for conf.py
   options = {}
   options['title'] = conf_data['title']
-  options['book_name'] = conf_data['name']
   options['server_url'] = conf_data['backend_address']
   options['module_origin'] = conf_data['module_origin']
   options['odsa_root'] = odsa_dir
@@ -851,8 +859,6 @@ def configure(config_file, slides = False):
   "use strict";
   (function () {
     var settings = {};
-    // Stores the name of the book, used to uniquely identify a book in the database
-    settings.BOOK_NAME = "%(book_name)s";
     // The (protocol and) domain address of the backend server
     // Set SERVER_URL = "" in order to disable server communication and logging
     settings.SERVER_URL = "%(server_url)s";
@@ -861,6 +867,7 @@ def configure(config_file, slides = False):
     settings.AV_ORIGIN = "%(av_origin)s";
     // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
     settings.ALLOW_ANON_CREDIT = %(allow_anon_credit)s;
+    settings.REQ_FULL_SS = %(req_full_ss)s;
 
     window.ODSA = {};
     window.ODSA.SETTINGS = settings;
@@ -871,16 +878,12 @@ def configure(config_file, slides = False):
   # Used to set global settings for the client-side framework
   with open(src_dir + '_static/config.js','w') as config_js:
     conf_js_data = {}
-    conf_js_data['book_name'] = conf_data['name']
     conf_js_data['server_url'] = conf_data['backend_address']
     conf_js_data['module_origin'] = conf_data['module_origin']
     conf_js_data['exercise_origin'] = conf_data['exercise_origin']
     conf_js_data['av_origin'] = conf_data['av_origin']
-
-    if 'allow_anonymous_credit' in conf_data:
-      conf_js_data['allow_anon_credit'] = str(conf_data['allow_anonymous_credit']).lower()
-    else:
-      conf_js_data['allow_anon_credit'] = 'true'
+    conf_js_data['allow_anon_credit'] = str(conf_data['allow_anonymous_credit']).lower()
+    conf_js_data['req_full_ss'] = str(conf_data['req_full_ss']).lower()
 
     config_js.writelines(config_js_template % conf_js_data)
 

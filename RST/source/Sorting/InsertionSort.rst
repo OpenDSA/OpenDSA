@@ -41,10 +41,10 @@ But you should realize that in practice, there is not usually much
 use to sorting an array of simple integers.
 Nearly always we want to sort more complex records that each have an
 integer :dfn:`key` value.
-You will see how to deal with more complex records in
-Module :numref:`<SortCompare>`.)
+Module :numref:`<Comparison>` discusses ways to associate a key value
+with a record.)
 
-Consider this start to the process.
+Here is the start to the Insertion Sort process.
 
 .. inlineav:: InssortCON1 ss
    :output: show

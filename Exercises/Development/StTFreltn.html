@@ -1,38 +1,35 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>OpenDSA Set Definition Exercise: Set Relations</title>
+  <title>Set Relations</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../lib/odsaLoadKhan.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <script src="../../ODSAkhan-exercises-new/khan-exercise.js"></script>
 </head>
-
 
 <body>
 <div class="exercise">
   <div class="vars">
-      <var id= "RELTYPE">["reflexive" , "symmetric" ,"antisymmetric","transitive"]</var>
-      <var id="RELTYPEINDEX"> randRange(0,3)</var>
-      <var id="CHOICESINDEX">randRange(0,6)</var>
-      <var id="CHOICES">["isBrotherOf on the set of people " ,
-                         "isFatherOf on the set of people ",
-                         "the relation R={&lt; x,y &gt; | x^2 + y^2 =1  } for real numbers x and y " ,
-                         "the relation R={&lt; x,y &gt; | x^2 = y^2  } for real numbers x and y ",
-                         "the relation R={&lt; x,y &gt; | x mod y =0 } for x,y &#8712; {1,2,3,4} ",
-                         "the empty relation &#8709; (i.e., the relation with no ordered pairs for which it is true) on the set of integers ",
-                         "the empty relation &#8709; (i.e., the relation with no ordered pairs for which it is true) on the empty set "] </var>
+    <var id= "RELTYPE">["reflexive", "symmetric", "antisymmetric", "transitive"]</var>
+    <var id="RELTYPEINDEX"> randRange(0,3)</var>
+    <var id="CHOICESINDEX">randRange(0,6)</var>
+    <var id="CHOICES">["Relation isBrotherOf on the set of people " ,
+                       "Relation isFatherOf on the set of people ",
+                       "Relation R = {&lt; x, y &gt; | x^2 + y^2 = 1  } for real numbers x and y " ,
+                       "Relation R = {&lt; x, y &gt; | x^2 = y^2  } for real numbers x and y ",
+                       "Relation R = {&lt; x, y &gt; | x mod y =0 } for x,y &#8712; {1,2,3,4} ",
+                       "Empty relation &#8709; (i.e., the relation with no ordered pairs for which it is true) on the set of integers ",
+                       "Empty relation &#8709; (i.e., the relation with no ordered pairs for which it is true) on the empty set "] </var>
       
-       <var id="ANSWER"> [ ["False", "False", "False" , "True"], ["False", "False", "True" , "False"], ["False", "True", "False" , "True"], ["True", "True" , "False" ,"True"], ["True","False","True","True"],["False","True", "True" , "True"] ,["True","True", "True" , "True"] ] </var>
-    </div>
-    <div class="problems">
-      <div id="problem-type-or-description">
-        <p class="problem">
-        <p class="question">
-	    Is <var>CHOICES[CHOICESINDEX]</var>  <var> RELTYPE[RELTYPEINDEX]</var> ?
-	</p>
-       <div class="solution"><var>ANSWER[CHOICESINDEX][RELTYPEINDEX]</var></div>
+    <var id="ANSWER"> [ ["False", "False", "False" , "True"], ["False", "False", "True" , "False"], ["False", "True", "False" , "True"], ["True", "True" , "False" ,"True"], ["True","False","True","True"],["False","True", "True" , "True"] ,["True","True", "True" , "True"] ] </var>
+  </div>
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="problem">Answer TRUE or FALSE.</p>
+      <p class="question">
+	<var>CHOICES[CHOICESINDEX]</var> is <var> RELTYPE[RELTYPEINDEX]</var>
+      </p>
+      <div class="solution"><var>ANSWER[CHOICESINDEX][RELTYPEINDEX]</var></div>
       <ul class="choices" data-category="true">
 	<li><var>"True"</var></li>
 	<li><var>"False"</var></li>			  	  	 
