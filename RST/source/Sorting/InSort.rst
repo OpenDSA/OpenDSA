@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: key comparison; record comparison
+   :satisfies: sorting introduction
    :topic: Sorting
 
 Chapter Introduction: Sorting
@@ -90,4 +91,3 @@ The final sorting method presented requires only
 The chapter concludes with a proof that sorting in general
 requires :math:`\Omega(n \log n)` time in the worst case
 (Module :numref:`<SortingLowerBound>`).
-
