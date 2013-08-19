@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting, InsertionSort
+   :satisfies: key comparison; record comparison
    :topic: Sorting
 
 .. index::
@@ -87,12 +87,18 @@ record now using one field as the key, and later using another field?
 Or search sometimes on one key, and at other times on another?
 The problem is that the "keyness" of a given field is not an inherent
 property within the record, but rather depends on the context.
+Another, more general approach is to supply a class whose job is to
+extract the key from the record.
+Unfortunately, this solution also does not work in all situations,
+because there are record types for which it is not possible to write
+a key extraction method. [#]_
 
 Some languages like Java and C++ have special infrastructure for
 supporting this (such as the ``Comparable`` interface in Java,
 which has the ``.compareTo()`` method for defining the exact process
 by which two objects are compared).
 But many languages like Processing and JavaScript do not.
+
 One good general-purpose solution is to explicitly store
 :index:`key-record pairs` in the data structure.
 For example, if we want to sort a bunch of records, we can store them
@@ -102,9 +108,16 @@ This might seem like a lot of extra space required, but remember that
 we can then store pointers to the records in another array with
 another field as the key for another purpose.
 The records themselves do not need to be duplicated.
+A simple class for representing key-value pairs is shown here.
 
-To keep them clear and simple, this tutorial presents sorting algorithms
-as operating on integer values stored in an array.
+.. codeinclude:: Utils/KVPair.pde
+   :tag: KVpair
+
+The main places where we will need to be concerned with comparing
+records and extracting keys is for various dictionary implementations
+and sorting algorithms.
+To keep them clear and simple, OpenDSA will usually show sorting
+algorithms as operating on integer values stored in an array.
 But to be generally useful, a real sorting algorithm typically has to
 deal with the fact that it is sorting a collection of records.
 A general-purpose sorting routine meant to operate on multiple record
@@ -119,3 +132,21 @@ work on an array that stores key-record pairs.
 Here are some review questions to test your knowledge from this module.
 
 .. avembed:: Exercises/Sorting/SortCompareSumm.html ka
+
+Notes
+-----
+
+.. [#] One example of a situation where it is not possible to write a
+       function that extracts a key from a record is when we have a
+       collection of records that describe books in a library. 
+       One of the fields for such a record might be a list of subject
+       keywords, where the typical record stores a few keywords.
+       Our dictionary might be implemented as a list of records sorted
+       by keyword.
+       If a book contains three keywords, it would appear three times
+       on the list, once for each associated keyword.
+       However, given the record, there is no simple way to determine
+       which keyword on the keyword list triggered this appearance of
+       the record.
+       Thus, we cannot write a function that extracts the key from
+       such a record.

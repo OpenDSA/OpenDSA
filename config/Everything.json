@@ -124,12 +124,6 @@
       "Development/ADT": {
         "long_name": "Abstract Data Types",
         "exercises": {
-          "ADTCON1": {
-            "long_name": "ADT Slideshow 1",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          }
         }
       },
       "Development/DesignPatterns": {
@@ -139,6 +133,17 @@
       "Development/DesignAltList": {
         "long_name": "Alternate List ADT Design",
         "exercises": {}
+      },
+      "Development/Comparison": {
+        "long_name": "Comparing Records",
+        "exercises": {
+          "SortCompareSumm": {
+            "long_name": "Record Comparison Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
       },
       "Development/Dictionary": {
         "long_name": "The Dictionary ADT",
@@ -494,17 +499,6 @@
           },
           "SelsortSumm": {
             "long_name": "Selection Sort Summary",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "Sorting/SortCompare": {
-        "long_name": "Comparing Records",
-        "exercises": {
-          "SortCompareSumm": {
-            "long_name": "Record Comparison Summary",
             "required": true,
             "points": 1,
             "threshold": 5
