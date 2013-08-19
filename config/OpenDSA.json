@@ -154,7 +154,7 @@
           }
         }
       },
-      "Sorting/SortCompare": {
+      "Development/Comparison": {
         "long_name": "Comparing Records",
         "exercises": {
           "SortCompareSumm": {
