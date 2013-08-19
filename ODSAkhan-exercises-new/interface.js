@@ -477,6 +477,8 @@ function handleAttempt(data) {
             //);
             return;
         }else {
+            return;
+
             $("#problem-and-answer").css("visibility", "hidden");
             $(Exercises).trigger("warning",
                 $._("This page is out of date. You need to " +

@@ -923,9 +923,9 @@ var Khan = (function() {
             $.when.apply($, promises).then(function() {
                 // Enable to redefine the MathJax font size for exercises.
                 Khan.mathJaxLoaded.then(function(){
-                   if(typeof window.MathJaxFontSize !== "undefined"){
+                   if(typeof MathJaxFontSize !== "undefined"){
                         MathJax.Hub.Config({
-                            "HTML-CSS": { scale: window.MathJaxFontSize}
+                            "HTML-CSS": { scale: MathJaxFontSize}
                         });
                     }
                 }); 
