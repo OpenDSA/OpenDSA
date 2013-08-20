@@ -120,40 +120,25 @@
             
             if (selectedIndex.value() === -2) {
                 // first click will select an index and save it
+                this.addClass(index, "selected");
                 selectedIndex.value(index);
-                paintBlue(this, index);
-                av.step(); // add a step to the animation
             } else if (selectedIndex.value() === index) {
                 //deselect
-                paintGrey(this, index);
+                this.removeClass(index, "selected");
                 //reset select index
                 selectedIndex.value(-2);
-                av.step(); // add a step to the animation
             } else if (selectedIndex.value() > -1) {
                 // move value within the array
-                // change the CSS property back to normal
-                paintGrey(this, index);
-                paintGrey(this, selectedIndex.value());
-                // av.effects.copyValue(this, selectedIndex.value(), this, index);
-                // this.value(index, this.value(selectedIndex.value()));
-                // this.layout();
+                this.removeClass(selectedIndex.value(), "selected");
                 copyValue(this, selectedIndex.value(), this, index);
-                // $(".jsavvaluelabel").attr("style", "");
                 selectedIndex.value(-2);
-                av.step(); // add a step to the animation   
                 exercise.gradeableStep();
             } else if (selectedIndex.value() === -1) {
                 // move value from the temporary variable to the array
-                // change the CSS property back to normal
-                paintGrey(this, index);
-                paintWhite(jsavTempArray, 0);
-                // av.effects.copyValue(jsavTempArray, 0, this, index);
-                // this.value(index, jsavTempArray.value(0));
+                jsavTempArray.removeClass(0, "selected");
                 copyValue(jsavTempArray, 0, this, index);
-                // this.layout();
                 //reset select index
                 selectedIndex.value(-2);
-                av.step(); // add a step to the animation   
                 exercise.gradeableStep();
             }
         });
@@ -161,42 +146,21 @@
         jsavTempArray.click(function(index) {
             if (selectedIndex.value() === -2) {
                 // select temporary variable if nothing else is selected
+                this.addClass(index, "selected");
                 selectedIndex.value(-1);
-                // apply the CSS property change to index
-                paintBlue(this, index);
-                av.step();
             } else if (selectedIndex.value() === -1) {
                 // deselect temporary variable
+                this.removeClass(index, "selected");
                 selectedIndex.value(-2);
-                // change the CSS property back to normal
-                paintWhite(this, index);
-                av.step();
             } else {
                 // move the value from the array into the temporary variable
-                // change the CSS property back to normal
-                paintGrey(jsavArray, selectedIndex.value());
-                paintWhite(this, index);
-                // av.effects.copyValue(jsavArray, selectedIndex.value(), this, index);
-                // this.value(0, jsavArray.value(selectedIndex.value()));
+                jsavArray.removeClass(selectedIndex.value(), "selected");
                 copyValue(jsavArray, selectedIndex.value(), this, index);
                 //reset select index
                 selectedIndex.value(-2);
-                av.step(); // add a step to the animation   
                 exercise.gradeableStep();
             }
         });
-
-        function paintBlue(array, index) {
-            array.css(index, {"font-size": "130%", "background-color": "#ddf"});
-        }
-
-        function paintGrey(array, index) {
-            array.css(index, {"font-size": "100%", "background-color": "#ddd"});
-        }
-        
-        function paintWhite(array, index) {
-            array.css(index, {"font-size": "100%", "background-color": "#fff"});
-        }
 
         //fixes problem in the JSAV copyValue effect
         function copyValue(array1, fromIndex, array2, toIndex) {
