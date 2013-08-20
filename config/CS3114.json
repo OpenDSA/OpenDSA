@@ -57,15 +57,15 @@
         }
       },
       "Background/MiscMath": {
-        "long_name": "Set Definitions",
+        "long_name": "Miscellaneous Notation",
         "exercises": {}
       },
       "Background/Logarithms": {
-        "long_name": "Set Definitions",
+        "long_name": "Logarithms",
         "exercises": {}
       },
       "Background/Summations": {
-        "long_name": "Set Definitions",
+        "long_name": "Summations",
         "exercises": {}
       },
       "Background/Recursion": {
@@ -143,6 +143,36 @@
       },
       "Development/AnalTuning": {
         "long_name": "Speeding Up Your Programs",
+        "exercises": {}
+      }
+    },
+    "Design": {
+      "Development/ADT": {
+        "long_name": "Abstract Data Types",
+        "exercises": {
+        }
+      },
+      "Development/DesignPatterns": {
+        "long_name": "Design Patterns",
+        "exercises": {}
+      },
+      "Development/DesignAltList": {
+        "long_name": "Alternate List ADT Design",
+        "exercises": {}
+      },
+      "Development/Comparison": {
+        "long_name": "Comparing Records",
+        "exercises": {
+          "SortCompareSumm": {
+            "long_name": "Record Comparison Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "Development/Dictionary": {
+        "long_name": "The Dictionary ADT",
         "exercises": {}
       }
     },
