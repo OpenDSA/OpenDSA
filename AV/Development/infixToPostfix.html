@@ -172,6 +172,7 @@
                         //move operand into the expression
                         jsav.effects.moveValue(modelArray, i, modelResultArray, postfixInd++);
                         restoreInfix(modelArray).call(this);
+                        jsav.umsg("The operands go directly into the postfix expression");
                         jsav.stepOption("grade", true);
                         jsav.step();
                         break;
@@ -181,6 +182,7 @@
                         jsav.effects.moveValue(modelArray, i, modelStack.first());
                         restoreInfix(modelArray).call(this);
                         modelStack.layout();
+                        jsav.umsg("The left parenthesis is pushed to the stack.");
                         jsav.stepOption("grade", true);
                         jsav.step();
                         break;
@@ -188,6 +190,7 @@
                         //throw the right parenthesis into the bit bucket and pop operators into the expression
                         modelArray.value(i, "");
                         restoreInfix(modelArray).call(this);
+                        jsav.umsg("After we have read a right parenthesis, we pop the operators from the stack and put them into the postfix expression, until we find a left parenthesis.");
                         // jsav.stepOption("grade", true);
                         jsav.step();
                         var node = modelStack.first();
@@ -212,6 +215,7 @@
                             jsav.effects.moveValue(node, modelResultArray, postfixInd++);
                             modelStack.removeFirst();
                             modelStack.layout();
+                            jsav.umsg('"*" has the same presendence as the read value("*"), so we pop it from the stack and put it in the postfix expression.');
                             jsav.stepOption("grade", true);
                             jsav.step();
                             node = modelStack.first();
@@ -221,6 +225,7 @@
                         jsav.effects.moveValue(modelArray, i, modelStack.first());
                         restoreInfix(modelArray).call(this);
                         modelStack.layout();
+                        jsav.umsg('The "*" operator is pushed into the stack.');
                         jsav.stepOption("grade", true);
                         jsav.step();
                         break;
@@ -228,6 +233,7 @@
                         //pop possible * and + from the stack into the expression
                         var node = modelStack.first();
                         while (node.value() === "*" || node.value() === "+") {
+                            jsav.umsg('"'+node.value()+'"'+' has greater or equal presendence than the read value("+"), so we pop it from the stack and put it in the postfix expression.');
                             jsav.effects.moveValue(node, modelResultArray, postfixInd++);
                             modelStack.removeFirst();
                             modelStack.layout();
@@ -240,6 +246,7 @@
                         jsav.effects.moveValue(modelArray, i, modelStack.first());
                         restoreInfix(modelArray).call(this);
                         modelStack.layout();
+                        jsav.umsg('The "+" operator is pushed into the stack.');
                         jsav.stepOption("grade", true);
                         jsav.step();
                         break;
@@ -252,6 +259,7 @@
                 jsav.effects.moveValue(node, modelResultArray, postfixInd++);
                 modelStack.removeFirst();
                 modelStack.layout();
+                jsav.umsg("Pop the rest of the operators from the stack and put them in the postfix expression.");
                 jsav.stepOption("grade", true);
                 jsav.step();
                 node = modelStack.first();
