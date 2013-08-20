@@ -84,6 +84,7 @@
             for (var i = 1; i < arraySize; i++) {
                 var j = i;
                 while (j > 0 && modelArray.value(j-1) > modelArray.value(j)) {
+                    jsav.umsg('Shift "'+modelArray.value(j)+'" to the left.')
                     modelArray.swap(j, j-1);
                     jsav.stepOption("grade", true);
                     jsav.step();
@@ -94,7 +95,7 @@
           return modelArray;
         }
         
-        var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
         exercise.reset();
         
         // bind a function to handle all click events on the array
@@ -103,20 +104,14 @@
             // the first click will select an index and save it
             if (swapIndex.value() === -1) {
                 swapIndex.value(index);
-                // apply the CSS property change to index
-                this.css(index, {"font-size": "130%", "background-color": "#ddf"});
-                av.step(); // add a step to the animation
+                this.addClass(index, "selected");
             } else if (swapIndex.value() === index) {
-                // change the CSS property back to normal
-                this.css(index, {"font-size": "100%", "background-color": "#ddd"});
+                this.removeClass(swapIndex.value(), "selected");
                 swapIndex.value(-1);
-                av.step(); // add a step to the animation   
             } else { // swap
-                // change the CSS property back to normal
-                this.css([swapIndex.value(), index], {"font-size": "100%", "background-color": "#ddd"});
                 this.swap(index, swapIndex.value());
                 swapIndex.value(-1);
-                av.step(); // add a step to the animation   
+                this.removeClass(index, "selected");
                 exercise.gradeableStep();
             }
         });
