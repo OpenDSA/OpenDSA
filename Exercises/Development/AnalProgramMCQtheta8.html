@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Analysis Program: Compute Theta </title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises-new/khan-exercise.js"></script>
+</head>
+
+
+
+<body>
+<div class="exercise">
+  
+  <div class="problems">
+    <div id="problem-type-or-description">
+      
+      <p class="question"> Determine <code>\Theta</code> for the following code fragments in the average case. Assume that all variables are of type <code>int</code>. Assume array A contains a random permutation of the values from 0 to <code> n-1</code>.
+       <pre>
+       sum = 0; 
+       for (i=0; i &lt; n; i++) {
+           for (j=0; A[j]!=i; j++)
+               sum++; 
+       }
+        </pre>
+      </p>
+            
+      <div class="solution"><var><code> \Theta(n^2)</code></var></div>
+      <ul class="choices" >
+	<li><var> <code>\Theta(\log n)</code></var> </li>
+	<li><var> <code>\Theta(n^2 \log n)</code></var></li>	  	 
+	<li><var><code>\Theta(1)</code></var></li>
+	<li><var><code>\Theta(n)</code></var></li>
+	<li><var><code>\Theta(n \log n)</code></var></li>
+	<li><var><code>\Theta(n^3)</code></var></li>
+	<li><var><code>\Theta(2^n)</code></var></li>			  	  	 
+      </ul>
+      <div class="hints">
+	
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
