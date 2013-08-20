@@ -12,7 +12,7 @@
  
 
 <script>
-function checkAnswer(FUNCLWRVL ,FUNCUPPRVL , FUNCINDX ){
+function checkAnswer(FUNCLWRVL ,FUNCUPPRVL , FUNCINDX ,FUNCNAME){
 
 
 if (FUNCLWRVL[FUNCINDX] == "none")
@@ -26,7 +26,17 @@ else
    return false;}
 
 }
-
+if(FUNCNAME == "10n")
+{
+  if(parseInt(inputform.elements["answerTextArea"].value) >= parseInt(FUNCLWRVL[FUNCINDX])){
+           inputform.elements["answerTextArea"].value = inputform.elements["answerTextArea"].defaultValue; 
+          return true;
+         }
+         else {
+           inputform.elements["answerTextArea"].value = inputform.elements["answerTextArea"].defaultValue;
+           return false;
+       }
+}
 if((parseInt(inputform.elements["answerTextArea"].value) >= parseInt(FUNCLWRVL[FUNCINDX])) && (parseInt(inputform.elements["answerTextArea"].value) <=  parseInt(FUNCUPPRVL[FUNCINDX])) ){
            inputform.elements["answerTextArea"].value = inputform.elements["answerTextArea"].defaultValue; 
           return true;
@@ -43,8 +53,8 @@ if((parseInt(inputform.elements["answerTextArea"].value) >= parseInt(FUNCLWRVL[F
 <div class="exercise">
 <div class="vars">
       <var id= "FUNCNAME">["n!" , "2^n" ,"2n^2","5nlogn","20n", "10n"]</var>
-      <var id= "FUNCLWRVL"> ["none" ,     "none" ,    "2",     "1",      "none",     "0"]</var>
-      <var id= "FUNCUPPRVL">["none" ,    "none" ,    "4",     "1",      "none",     "5"]</var>     
+      <var id= "FUNCLWRVL"> ["2" ,     "4" ,    "none",     "1",      "none",     "6"]</var>
+      <var id= "FUNCUPPRVL">["3" ,    "5" ,    "none",     "1",      "none",     "enf"]</var>     
       <var id="FUNCINDX"> randRange(0,5)</var>
 </div>
   <div class="problems">
@@ -55,7 +65,7 @@ if((parseInt(inputform.elements["answerTextArea"].value) >= parseInt(FUNCLWRVL[F
       <div class="solution" data-type="custom">
           <div class="guess"> [ "list" ] </div>
         <div class="validator-function">
-         return checkAnswer(FUNCLWRVL ,FUNCUPPRVL , FUNCINDX );
+         return checkAnswer(FUNCLWRVL ,FUNCUPPRVL , FUNCINDX ,FUNCNAME[FUNCINDX] );
         </div>
       </div>
  
