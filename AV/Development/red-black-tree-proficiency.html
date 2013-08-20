@@ -176,7 +176,7 @@
 
         av.recorded(); // we are not recording an AV with an algorithm
 
-        var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+        var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend", grader: "finder"});
         exercise.reset();
 
         function clickAction(node, rotateFunction) {
@@ -194,8 +194,7 @@
             node.removeClass("selected");
             restoreAnimationState();
             tree.layout();
-            av.step();
-            // exercise.gradeableStep();
+            exercise.gradeableStep();
         }
 
         var btn = JSAV._types.ds.BinaryTreeNode.prototype;
@@ -217,7 +216,7 @@
                 return;
             }
             clickHandler.selNode.toggleColor();
-            av.step();
+            exercise.gradeableStep();
         });
         av.container.find(".jsavexercisecontrols input[name='undo']").click(function () {
             clickHandler.selNode = null;
