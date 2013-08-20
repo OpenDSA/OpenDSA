@@ -71,7 +71,7 @@ build/Anal/success: Misc/Anal.pde
 	@cp Misc/Anal.pde build/Anal
 	@$(PROCESS) --run --sketch="$(BUILD)/Anal" --output="build/build" --force
 
-Lists: ListTest FreeList DoubleTest StackTest QueueTest
+Lists: ListTest ListAlt FreeList DoubleTest StackTest QueueTest
 
 ListTest: build/ListTest/success
 
@@ -85,6 +85,18 @@ build/ListTest/success: Lists/ListADT.pde Lists/AList.pde Lists/Link.pde Lists/L
 	@cp Lists/Link.pde build/ListTest/
 	@cp Lists/ListTest.pde build/ListTest/
 	@$(PROCESS) --run --sketch="$(BUILD)/ListTest" --output="$(BUILD)/build" --force
+
+ListAlt: build/ListAlt/success
+
+build/ListAlt/success: ListAlt/ListAlt.pde ListAlt/ListIndex.pde ListAlt/ListADT.pde ListAlt/AList.pde
+	@echo "Alternate list implementation test"
+	-@rm -rf build/ListAlt
+	@mkdir build/ListAlt
+	@cp ListAlt/ListADT.pde build/ListAlt
+	@cp ListAlt/AList.pde build/ListAlt/
+	@cp ListAlt/ListAlt.pde build/ListAlt/
+	@cp ListAlt/ListIndex.pde build/ListAlt/
+	@$(PROCESS) --run --sketch="$(BUILD)/ListAlt" --output="$(BUILD)/build" --force
 
 FreeList: build/FreeList/success
 
