@@ -14,6 +14,17 @@ Glossary
 
 .. glossary::
 
+   ADT
+      Abbreviation for :term:`abstract data type`.
+
+   abstract data type
+      Abreviated ADT. The realization of a data type as a software
+      component.
+
+   aggregate type
+      A type whose members have subparts. For example, a typical
+      database record. Another term for this is :term:`composite type`.
+
    antisymmetric
       In set notation, relation :math:`R` is antisymmetric if whenever
       :math:`aRb` and :math:`bRa`, then :math:`a = b`, for all
@@ -78,7 +89,7 @@ Glossary
 
    Boolean variable
       A variable that takes on one of the two values ``True`` and
-     ``False``.
+      ``False``.
 
    bounding box
       A box (usually aligned to the coordinate axes of the reference
@@ -97,6 +108,10 @@ Glossary
    ceiling
       Written :math:`\lceil x \rceil`, for real value :math:`x` the
       ceiling is the least integer :math:`\geq x`.
+
+   class
+      In an object-oriented language, an ADT and its implementation
+      together make up a class. 
 
    closed-form solution
       An algebraic equation with the same value as a summation or
@@ -118,6 +133,11 @@ Glossary
       In set notation, elements :math:`x` and :math:`y` of a set are
       comparable under a given relation :math:`R` if either
       :math:`xRy` or :math:`yRx`.
+      In programming, the property of a data type such that two
+      elements of the type can be compared to determine if they the
+      same (a weaker version), or which of the two is larger (a
+      stronger version). This stronger version requires that the type
+      define a :term:`total order`.
 
    comparator (or comparator function)
       A function given as a parameter to a method of a library
@@ -131,6 +151,10 @@ Glossary
       sorting routine pass in a comparator function
       to define how records in the collection are to be compared.
 
+   composite type
+      A type whose members have subparts. For example, a typical
+      database record. Another term for this is :term:`aggregate type`.
+
    computer program
       An instance, or concrete representation, of an algorithm in some
       programming language.
@@ -142,6 +166,32 @@ Glossary
    cost
       The :dfn:`cost` of a solution is the
       amount of resources that the solution consumes.
+
+   data item
+      A piece of information or a record whose value is drawn from a type.
+
+   data members
+      The variables that together define the space required by a data
+      item are referred to as data members.
+
+   data structure
+      The implementation for an :term:`ADT`.
+
+   data type
+      A type together with a collection of operations to manipulate
+      the type.
+
+   design patterns
+      Abstractions for describing the design of programs |---| that is,
+      the interactions of objects and classes.
+      Experienced software designers learn and reuse patterns
+      for combining software components, and design patterns allow
+      this design knowledge to be passed on to new programmers more quickly.
+
+   dictionary
+      An abstract data type or interface for a data structure or
+      software subsystem that supports insertion, search, and deletion
+      of records.
 
    diminishing increment sort
       Another name for Shellsort.
@@ -186,6 +236,11 @@ Glossary
    elements
       One value or member in a set.
 
+   encapsulation
+      In programming, the concept of hiding implementation details
+      from the user of an ADT, and protecting data members of an
+      object from outside access.
+
    equivalence classes
       An :term:`equivalence relation` can be used to partition a set
       into equivalence classes.
@@ -205,6 +260,10 @@ Glossary
    factorial
       The factorial function is defined as :math:`f(n) = n f(n-1)` for
       :math:`n > 0`.
+
+   file structure
+      The organization of data on peripheral storage, such
+      as a disk drive or CD.
 
    floor
       Written :math:`\lfloor x \rfloor`, for real value :math:`x` the
@@ -234,9 +293,15 @@ Glossary
       A specific selection of values for the parameters to a problem.
       In other words, a specific set of inputs to a problem.
 
+   iterator
+      In a container such as a List, a separate class that indicates
+      position within the container, with support for traversing
+      through all elements in the container.
+
    key
       A field or part of a larger record used to represent that record
-      for the purpose of searching or comparing.
+      for the purpose of searching or comparing. Another term for
+      :term:`search key`.
 
    key-record pair
       A standard solution for solving the problem of how to relate a
@@ -261,6 +326,10 @@ Glossary
       The `logarithm` of base :math:`b` for value :math:`y` is the power
       to which :math:`b` is raised to get :math:`y`.
 
+   logical form
+      The definition for a data type in terms of an ADT. Contrast to
+      the :term:`physical form` for the data type.
+
    lookup table
       A table of pre-calculated values, used to speed up processing
       time when the values are going to be viewed many times. The
@@ -275,10 +344,26 @@ Glossary
       constant number of inputs. It could be a gross under-estimate of
       the truth.
 
+   member
    members
-      In a set, this is another term for an element. In an
-      object-oriented language, data members are data fields in an
+      In set notation, this is another term for elements. 
+      In abstract design, a :term:`data item` is a member of a :term:`type`.
+      In an object-oriented language, data members are data fields in an
       object.
+
+   member function
+      Each operation associated with the ADT is implemented by a
+      member function or :term:`method`.
+
+   metaphor
+      Humans deal with complexity by assigning a label to an assembly of
+      objects or concepts and then manipulating the label in place of the
+      assembly. Cognitive psychologists call such a label a
+      metaphor.
+
+   method
+      In an objectect-oriented class, a method is an operation on a class.
+      A synonym for :term:`member function`.
 
    mod
       Another name for the :term:`modulus` function.
@@ -290,16 +375,20 @@ Glossary
       the syntax in many programming languages is ``n % m``.
 
    multilist
-       A list that may contain sublists.
-       This term is sometimes used as a synonym to the term
-       :term:`bag`.
+      A list that may contain sublists.
+      This term is sometimes used as a synonym to the term
+      :term:`bag`.
+
+   object
+      An instance of a class, that is, something that is created and
+      takes up storage during the execution of a computer program.
 
    overhead
-     All information stored by a data structure aside from the actual
-     data. For example, the pointer fields in a linked list or BST.
+      All information stored by a data structure aside from the actual
+      data. For example, the pointer fields in a linked list or BST.
 
    parameters
-     The values making up an input to a function.
+      The values making up an input to a function.
 
    partial order
       A binary relation is called a partial order if it is
@@ -312,6 +401,10 @@ Glossary
    permutation
       A permutation of a sequence :math:`\mathbf{S}`
       is the members of :math:`\mathbf{S}` arranged in some order.
+
+   physical form
+      The implementation of a data type as a data structure.
+      Contrast to the :term:`physical form` for the data type.
 
    poset
       Another name for a :term:`partially ordered set`.
@@ -394,6 +487,9 @@ Glossary
    set
       A collection of distinguishable :term:`members` or :term:`elements`.
 
+   simple type
+      A type whose values contain no subparts. An example is the integers.
+
    sorting problem
       Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`
       with key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
@@ -444,6 +540,9 @@ Glossary
    two-coloring
       An assignment from two colors to regions in an image
       such that no two regions sharing a side have the same color.
+
+   type
+      A collection of values.
 
    upper bound
       In algorithm analysis, the upper or highest growth rate that

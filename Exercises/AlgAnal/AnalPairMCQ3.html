@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Asymptotic Analysis: Relationship</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises-new/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question"> Determine the proper relationship between
+	the following pair of functions.</p>
+      <p><code> f(n) =  \log^2 n </code> <br> <code>g(n) = \log n </code></p>
+      <div class="solution"><var><code> f(n) </code>is <code>\Omega(g(n))</code></var></div>
+      <ul class="choices" >
+	<li><var> <code>f(n) </code>is in <code>\Theta(g(n))</code></var></li>	  	 
+	<li><var><code> f(n)</code> is in <code>O(g(n))</code></var></li>
+      </ul>
+      <div class="hints">
+	<p> if <code>\lim \frac{f(n)}{g(n)} \rightarrow 0</code>,
+	then <code>f(n)</code> is in <code>O(g(n))</code>.</p>
+	<p> if <code>\lim \frac{f(n)}{g(n)} \rightarrow</code> constant,
+	then <code>f(n)</code> is <code>\Theta(g(n))</code>.</p>
+	<p> if <code>\lim \frac{f(n)}{g(n)} \rightarrow \infty</code>,
+	then <code>f(n)</code> is in <code>\Omega(g(n))</code>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -5,11 +5,11 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: ADT; array-based list
    :topic: Search
 
-Alternative List ADT Designs [Text]
-===================================
+Alternative List ADT Designs
+============================
 
 The list ADT of Module :numref:`<ListADT>` specifies that a List
 comprises not only a collection of objects in linear order,
@@ -23,7 +23,7 @@ An alternative design is to separate the "current position" as a
 separate object.
 In the following ADT, we will call this a ``ListIndex``.
 This is a simple form of a concept that is sometimes called an
-:dfn:`iterator`.
+:term:`iterator`.
 The ``ListIndex`` interface abstracts the notion of a position in a
 list.
 

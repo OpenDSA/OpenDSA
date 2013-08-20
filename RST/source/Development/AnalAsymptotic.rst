@@ -419,16 +419,7 @@ If the limit goes to some constant other than zero, then
    because :math:`n` grows faster than :math:`2\log n`.
    Thus, :math:`n^2` is in :math:`\Omega(2n\log n)`.
 
-.. TODO::
-   :type: Exercise
-
-   Given two functions, determine the relative growth rates (see
-   Exercise 3.11 in the book).
-
-.. TODO::
-   :type: Exercise
-
-   Write a battery of summary questions
+.. avembed:: Exercises/AlgAnal/AnalPairSumm.html ka
 
 Notes
 -----

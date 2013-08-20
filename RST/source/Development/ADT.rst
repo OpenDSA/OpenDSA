@@ -5,37 +5,36 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: ADT; metaphor
    :topic: Abstract Data Types
 
 .. odsalink:: AV/Development/ADTCON.css
 
-Abstract Data Types [Storyboard]
-================================
+Abstract Data Types
+===================
 
 This module presents terminology and definitions related to techniques
-for managing the tremendouscomplexity of computer programs.
-As part of this we will define the fundamental but somewhat slippery
-terms "data item" and "data structure".
-We will begin with the basic elements on which data structures are
-built.
+for managing the tremendous complexity of computer programs.
+It also presents working definitions for the fundamental but somewhat
+slippery terms "data item" and "data structure".
+We begin with the basic elements on which data structures are built.
 
-A :dfn:`type` is a collection of values.
+A :term:`type` is a collection of values.
 For example, the Boolean type consists of the values ``true`` and
 ``false``.
 The integers also form a type.
-An integer is a :dfn:`simple type`
+An integer is a :term:`simple type`
 because its values contain no subparts.
 A bank account record will typically contain several pieces of
 information such as name, address, account number, and account
 balance.
-Such a record is an example of an :dfn:`aggregate type` or
-:dfn:`composite type`.
-A :dfn:`data item` is a piece of information
+Such a record is an example of an :term:`aggregate type` or
+:term:`composite type`.
+A :term:`data item` is a piece of information
 or a record whose value is drawn from a type.
-A data item is said to be a :dfn:`member` of a type.
+A data item is said to be a :term:`member` of a type.
 
-A :dfn:`data type` is a type together with a collection of operations
+A :term:`data type` is a type together with a collection of operations
 to manipulate the type.
 For example, an integer variable is a member of the integer data
 type.
@@ -49,10 +48,10 @@ for the list data type:
 the linked list and the array-based list.
 The list data type can therefore be implemented using a linked list or
 an array.
-But we should also realize that an implementation in one context might
-be a data type in another.
-A list might be used to help implement a graph data structure
-(as described in Module :numref:`<GraphImpl>`).
+But we don't need to know how the list is implemented when we wish to
+use a list to help in a more complex design.
+For example, a list might be used to help implement a graph data
+structure (as described in Module :numref:`<GraphImpl>`).
 
 As another example, the term "array" could refer either
 to a data type or an implementation.
@@ -70,7 +69,7 @@ structure used to implement a sparse matrix, a large
 two-dimensional array that stores only a relatively few non-zero
 values.
 
-An :dfn:`abstract data type` (ADT) is the realization of a data type
+An :term:`abstract data type` (ADT) is the realization of a data type
 as a software component.
 The interface of the ADT is defined in terms of a type and a set of
 operations on that type.
@@ -78,23 +77,22 @@ The behavior of each operation is determined by its inputs and outputs.
 An ADT does not specify \emph{how} the data type is implemented.
 These implementation details are hidden from the user of the ADT and
 protected from outside access, a concept referred to as
-:dfn:`encapsulation`.
+:term:`encapsulation`.
 
-A :dfn:`data structure` is the implementation for an ADT.
+A :term:`data structure` is the implementation for an ADT.
 In an object-oriented language,
-an ADT and its implementation together make up a
-:dfn:`class`.
+an ADT and its implementation together make up a :term:`class`.
 Each operation associated with the ADT is implemented by a
-:dfn:`member function` or :dfn:`method`.
+:term:`member function` or :term:`method`.
 The variables that define the space required by a data item are
-referred to as :dfn:`data members`.
-An :dfn:`object` is an instance of a class, that is, something that
+referred to as :term:`data members`.
+An :term:`object` is an instance of a class, that is, something that
 is created and takes up storage during the execution of a
 computer program.
 
-The term :dfn:`data structure` often refers to data
+The term :term:`data structure` often refers to data
 stored in a computer's main memory.
-The related term  :dfn:`file structure`
+The related term  :term:`file structure`
 often refers to the organization of data on peripheral storage, such
 as a disk drive or CD.
 
@@ -189,7 +187,7 @@ Humans deal with complexity by assigning a label to an assembly of
 objects or concepts and then manipulating the label in place of the
 assembly.
 Cognitive psychologists call such a label a
-:dfn:`metaphor`.
+:term:`metaphor`.
 A particular label might be related to other pieces of information or
 other labels.
 This collection can in turn be given a label,
@@ -248,7 +246,7 @@ program, you would have no hope of understanding or implementing it.
    In object-oriented programming,
    such abstraction is handled using classes.
 
-Data types have both a :dfn:`logical` and a :dfn:`physical` form.
+Data types have both a :term:`logical form` and a :term:`physical form`.
 The definition of the data type in terms of an ADT is its logical
 form.
 The implementation of the data type as a data structure
@@ -288,7 +286,6 @@ context of a higher-level task.
    Several are described in Module :numref:`<ListIntro>`.
 
 .. odsascript:: AV/Development/ADTCON.js
-
 
 .. TODO::
    :type: Exercise

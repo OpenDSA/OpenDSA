@@ -5,19 +5,19 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :requires: key comparison; record comparison
+   :requires: comparison; list
    :satisfies: dictionary
    :topic: Design
 
-The Dictionary ADT [Text]
-=========================
+The Dictionary ADT
+==================
 
 The most common objective of computer programs is to store and
 retrieve data.
 Much of this book is about efficient ways to organize collections of
 data records so that they can be stored and retrieved quickly.
 In this section we describe a simple interface for such a collection,
-called a :dfn:`dictionary`.
+called a :term:`dictionary`.
 The dictionary ADT provides operations for storing records, finding
 records, and removing records from the collection.
 This ADT gives us a standard basis for comparing various data
@@ -26,7 +26,7 @@ Loosly speaking, we can say that any data structure that supports
 insert, search, and deletion is a "dictionary".
 
 As discussed in Module :numref:`<Comparison>`, dictionaries depend on
-the concepts of a :dfn:`search key` and :dfn`comparable` objects.
+the concepts of a :term:`search key` and :term:`comparable` objects.
 To implement the dictionary's search function, we will require that
 keys be totally ordered.
 Ordering fields that are naturally multi-dimensional, such as a point

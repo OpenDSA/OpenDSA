@@ -119,11 +119,25 @@
       },
       "Development/AnalAsymptotic": {
         "long_name": "Asymptotic Analysis",
-        "exercises": {}
+        "exercises": {
+          "AnalPairSumm": {
+            "long_name": "Function Pairs",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
       },
       "Development/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
-        "exercises": {}
+        "exercises": {
+          "AnalProgramSumm": {
+            "long_name": "Program Code Analysis",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       },
       "Development/AnalProblem": {
         "long_name": "Analyzing Problems",
@@ -144,6 +158,17 @@
       "Development/AnalTuning": {
         "long_name": "Speeding Up Your Programs",
         "exercises": {}
+      },
+      "Development/AlgAnalSumm": {
+        "long_name": "Algorithm Analysis Chapter Summary",
+        "exercises": {
+          "AlgAnalSumm": {
+            "long_name": "Algorithm Analysis Summary",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       }
     },
     "Design": {

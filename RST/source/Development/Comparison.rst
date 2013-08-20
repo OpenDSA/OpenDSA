@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :satisfies: key comparison; record comparison
+   :requires: relations
+   :satisfies: comparison
    :topic: Sorting
 
 .. index::
@@ -34,7 +35,7 @@ Nearly always in this situation, we actually are interested in sorting
 the records based on the values of one particular field used to
 represent the record,
 which itself is something simple like an integer.
-This field is referred to as the :dfn:`key` for the record.
+This field is referred to as the :term:`key` for the record.
 
 .. index:: ! key
 
@@ -51,19 +52,19 @@ Instead, we typically define what record we want in terms of a
 key value.
 For example, if searching for payroll records, we might wish to
 search for the record that matches a particular ID number.
-In this example the ID number is the :dfn:`search key`.
+In this example the ID number is the :term:`search key`.
 
 .. index:: ! search key
 
 .. index:: ! comparable
 
-To implement sorting or searching, we require that keys be :dfn:`comparable`.
+To implement sorting or searching, we require that keys be :term:`comparable`.
 At a minimum, we must be able to take two keys and reliably determine
 whether they are equal or not.
 That is enough to enable a sequential search through a database of
 records and find one that matches a given key.
 However, we typically would like for the keys to define a
-:dfn:`total order` (see Module :ref:`Set Definitions <SetDef>`), which means
+:term:`total order` (see Module :ref:`Set Definitions <SetDef>`), which means
 that we can always tell which of two keys is greater than the other.
 Using key types with total orderings gives the database
 implementor the opportunity to organize a collection of records in

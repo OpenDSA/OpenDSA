@@ -5,18 +5,19 @@ ss.. This file is part of the OpenDSA eTextbook project. See
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: ADT
+   :satisfies: design patterns
    :topic: Design Patterns
 
-Design Patterns [Storyboard]
-============================
+Design Patterns
+===============
 
 At a higher level of abstraction than ADTs
 are abstractions for describing the design of programs |---| that is,
 the interactions of objects and classes.
 Experienced software designers learn and reuse patterns
 for combining software components.
-These have come to be referred to as :dfn:`design patterns`.
+These have come to be referred to as :term:`design patterns`.
 
 A design pattern embodies and generalizes important design concepts
 for a recurring problem.
