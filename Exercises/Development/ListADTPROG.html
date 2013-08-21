@@ -23,6 +23,7 @@
     .textAreaWithLines textarea,.textAreaWithLines div{
       border:0px;
       line-height:120%;
+      height:200px;
       font-size:12px;
     }
     .lineObj{
@@ -45,13 +46,21 @@
       el.appendChild(ta);
       
       el.className='textAreaWithLines';
-      el.style.width = (ta.offsetWidth + 30) + 'px';
       ta.style.position = 'absolute';
       ta.style.left = '30px';
-      el.style.height = (ta.offsetHeight + 2) + 'px';
+      var currHeight=200;
+      var currWidth=400;
+      console.log(navigator.appCodeName);
+       if ($.browser.mozilla) //if (navigator.appCodeName== "Mozilla" )
+       {
+         var currHeight=30;
+         var currWidth=70;
+      
+       }
+      el.style.height = (ta.offsetHeight + currHeight) + 'px';
       el.style.overflow='hidden';
-      el.style.position = 'relative';
-      el.style.width = (ta.offsetWidth + 30) + 'px';
+      el.style.position = 'absolute';
+      el.style.width = (ta.offsetWidth + currWidth) + 'px';
       var lineObj = document.createElement('DIV');
       lineObj.style.position = 'absolute';
       lineObj.style.top = lineObjOffsetTop + 'px';
@@ -98,10 +107,10 @@
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test">Add appropriate lines of code to the following function skeleton so that it make method calls on the List ADT to  create the following list: <b> "&lt;<var>listel1</var> <var>listel2</var> | <var>listel3</var> <var>listel4</var> &gt;" </b> <br>You should assume that L is passed to the function as an empty list. <br />
+      <p class="problem" id = "test">Add appropriate lines of code to the following function skeleton so that it make method calls on the List ADT to  create the following list: <b> "&lt;<var>listel1</var> <var>listel2</var> | <var>listel3</var> <var>listel4</var> &gt;" </b> <br>You should assume that L is passed to the function as an empty list.  <br />
     </h4>
 
-    <textarea cols="50" rows="20" id="codeTextarea" >
+    <textarea  id="codeTextarea">
  void exercise1(List L) { 
  // Your code goes between these lines
 
