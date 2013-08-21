@@ -51,7 +51,8 @@
         av.recorded(); // we are not recording an AV with an algorithm
 
         function initialize() {
-          
+            turnAnimationOff();
+
             var htmldata = "";
             for (var i = 0; i < arraySize; i++) {
                 randomVal = Math.floor(Math.random()*100) + 10;
@@ -71,6 +72,8 @@
 
             jsavArray = av.ds.array($array, {indexed: true, layout: "bar"});
             jsavTempArray = av.ds.array($temparray, {indexed: false});
+
+            restoreAnimationState();
             return jsavArray;
         }
         
@@ -112,9 +115,43 @@
           return modelArray;
         }
         
+        
+
+        //fixes problem in the JSAV copyValue effect
+        function copyValue(array1, fromIndex, array2, toIndex) {
+            $fromValElem = array1.element.find("li:eq("+fromIndex+") .jsavvaluelabel");
+            $toValElem = array2.element.find("li:eq("+toIndex+") .jsavvaluelabel");
+
+            array2.value(toIndex, array1.value(fromIndex));
+            array2.layout();
+
+            $toValElem.position({of: $fromValElem});
+            if (array2.options.layout === "bar") {
+                var bottom = array2.element.find("li:eq("+toIndex+") .jsavvalue").height() - $toValElem.position().top - 20;
+                $toValElem.css("top","").css("bottom", bottom);
+
+                $toValElem.animate({"left": 0, "bottom": 0}, 400, "linear");
+            } else {
+                $toValElem.animate({"left": 0, "top": 0}, 400, "linear");
+            }
+        }
+
+        var oldfx;
+
+        function turnAnimationOff() {
+            //save the state of fx.off
+            var oldfx = $.fx.off || false;
+            //turn off the jQuery animations
+            $.fx.off = true;
+        }
+
+        function restoreAnimationState() {
+            $.fx.off = oldfx;
+        }
+
         var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
         exercise.reset();
-        
+
         // bind a function to handle all click events on the array
         jsavArray.click(function(index) {
             
@@ -161,25 +198,6 @@
                 exercise.gradeableStep();
             }
         });
-
-        //fixes problem in the JSAV copyValue effect
-        function copyValue(array1, fromIndex, array2, toIndex) {
-            $fromValElem = array1.element.find("li:eq("+fromIndex+") .jsavvaluelabel");
-            $toValElem = array2.element.find("li:eq("+toIndex+") .jsavvaluelabel");
-
-            array2.value(toIndex, array1.value(fromIndex));
-            array2.layout();
-
-            $toValElem.position({of: $fromValElem});
-            if (array2.options.layout === "bar") {
-                var bottom = array2.element.find("li:eq("+toIndex+") .jsavvalue").height() - $toValElem.position().top - 20;
-                $toValElem.css("top","").css("bottom", bottom);
-
-                $toValElem.animate({"left": 0, "bottom": 0}, 400, "linear");
-            } else {
-                $toValElem.animate({"left": 0, "top": 0}, 400, "linear");
-            }
-        }
 
         </script>
     </body>
