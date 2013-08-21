@@ -6,14 +6,14 @@
         <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
         <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
         <link rel="stylesheet" href="proficiency.css" type="text/css" />
-    </head>
-
-    <body>
         <style>
           #jsavcontainer {
             height: 500px;
           }
         </style>
+    </head>
+
+    <body>
         <h1>Selection Sort</h1>
         <div id="jsavcontainer">
             <!-- <a class="jsavsettings" href="#">Settings</a> -->
@@ -52,7 +52,8 @@
         av.recorded(); // we are not recording an AV with an algorithm
 
         function initialize() {
-          
+            turnAnimationOff();
+
             var htmldata = "";
             for (var i = 0; i < arraySize; i++) {
                 randomVal = Math.floor(Math.random()*100) + 10;
@@ -69,6 +70,9 @@
             jsavArray.highlight(0);
             code.show();
             code.highlight(5);
+            
+            restoreAnimationState();
+
             return jsavArray;
         }
         
@@ -124,9 +128,23 @@
           return modelArray;
         }
         
+
+        var oldfx;
+
+        function turnAnimationOff() {
+            //save the state of fx.off
+            var oldfx = $.fx.off || false;
+            //turn off the jQuery animations
+            $.fx.off = true;
+        }
+
+        function restoreAnimationState() {
+            $.fx.off = oldfx;
+        }
+
         var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
         exercise.reset();
-        
+
         // bind a function to handle all click events on the array
         jsavArray.click(function(index) {
             
