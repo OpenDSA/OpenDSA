@@ -9,7 +9,7 @@
    :satisfies: linked list
    :topic: Lists
    
-.. odsalink:: AV/Development/listLinkedCON.css
+.. odsalink:: AV/List/listLinkedCON.css
 
 Linked Lists
 ============
@@ -136,10 +136,10 @@ Special case for Linked list insertion
 Implementations for the remaining operations each require
 :math:`\Theta(1)` time.
 
-.. avembed:: Exercises/Development/listLinkedInsertion.html ka
+.. avembed:: Exercises/List/listLinkedInsertion.html ka
 
-.. avembed:: Exercises/Development/listLinkedDeletion.html ka
+.. avembed:: Exercises/List/listLinkedDeletion.html ka
 
-.. avembed:: Exercises/Development/LstLnkdSumm.html ka
+.. avembed:: Exercises/List/LstLnkdSumm.html ka
 
-.. odsascript:: AV/Development/listLinkedCON.js
+.. odsascript:: AV/List/listLinkedCON.js

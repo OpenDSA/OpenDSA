@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <entry>
-<id>http://localhost/OpenDSA/Exercises/Development/listLinkedDeletion.html</id>
+<id>http://localhost/OpenDSA/Exercises/List/listLinkedDeletion.html</id>
 <title type='text'>Linked List Deletion Proficiency Exercise</title>
 <description type='text'>Linked List Deletion Proficiency Exercise</description>
 <type>ka</type>
 <width>950</width>
-<height>750</height>
+<height>790</height>
 <author>
 <name>OpenDSA</name>
 <uri>http://algoviz.org/OpenDSA/</uri>

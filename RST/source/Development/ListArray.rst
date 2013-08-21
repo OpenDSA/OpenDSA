@@ -9,8 +9,8 @@
    :satisfies: array-based list
    :topic: Lists
    
-.. odsalink:: AV/Development/listArrayCON.css
-.. odsalink:: AV/Development/listArrayVizCON.css
+.. odsalink:: AV/List/listArrayCON.css
+.. odsalink:: AV/List/listArrayVizCON.css
 
 Array-Based List Implementation
 ===============================
@@ -62,11 +62,11 @@ They all require :math:`\Theta(1)` time.
 Now try for yourself to see if you understand how Array-Based
 Insertion and Deletion work.
  
-.. avembed:: Exercises/Development/listArrayInsertion.html ka
+.. avembed:: Exercises/List/listArrayInsertion.html ka
   
-.. avembed:: Exercises/Development/listArrayDeletion.html ka
+.. avembed:: Exercises/List/listArrayDeletion.html ka
 
-.. avembed:: Exercises/Development/ArryLstSumm.html ka
+.. avembed:: Exercises/List/ArryLstSumm.html ka
 
-.. odsascript:: AV/Development/listArrayCON.js
-.. odsascript:: AV/Development/listArrayVizCON.js
+.. odsascript:: AV/List/listArrayCON.js
+.. odsascript:: AV/List/listArrayVizCON.js
