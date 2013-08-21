@@ -158,8 +158,4 @@
     return new Stack(this, options);
   };
 
-  JSAV.ext.ds.stack = function(options) {
-    return new Stack(this, options);
-  };
-
 }(jQuery));
