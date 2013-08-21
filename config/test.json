@@ -10,15 +10,9 @@
   "suppress_todo": false,
   "chapters": {
     "Algorithm Analysis": {
-      "AlgAnal/AnalProgram": {
+      "Test/AnalProgram": {
         "long_name": "Calculating",
         "exercises": {
-          "AnalProgramSumm": {
-            "long_name": "Program Code Analysis",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
         }
       }
     },
