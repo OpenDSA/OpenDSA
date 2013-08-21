@@ -11,8 +11,9 @@
           .jsavnode {
             cursor: pointer;
           }
-          .jsavnode.jsavlistnode {
+          .jsavnode.jsavstacknode {
             width: 180px;
+            box-shadow: 5px 5px 5px #666;
           }
           span.jsavvaluelabel {
             padding: 0px 5px;
@@ -56,6 +57,7 @@
         <script src="../../JSAV/lib/jquery.transform.light.js"></script>
         <script src="../../JSAV/lib/raphael.js"></script>
         <script src="../../JSAV/build/JSAV.js"></script>
+        <script src="stack.js"></script>
         <script src="ClickHandler.js"></script>
 
         <script>
@@ -131,7 +133,8 @@
             if (stack) {
                 stack.clear();
             }
-            stack = av.ds.list({nodegap: 15, layout: "vertical", center: false, autoresize: false});
+            stack = av.ds.stack({xtransition: 5, ytransition: 25, center: false});
+            // stack = av.ds.list({nodegap: 15, layout: "vertical", center: false, autoresize: false});
             stack.element.css({width: 180, position: "absolute"});
             stack.element.css({top: 0, left: av.canvas.width() / 2 - 90});
             stack.addFirst("Bit: "+(bits - 1)+", Left: 0, Right: "+(arraySize - 1));
