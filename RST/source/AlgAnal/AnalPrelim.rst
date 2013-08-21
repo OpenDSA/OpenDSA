@@ -190,8 +190,3 @@ Algorithms must be correct, of finite length, and must terminate
 for all inputs.
 A :term:`program` is an instantiation of an algorithm
 in a programming language.
-
-.. TODO::
-   :type: Exercise
-
-   Create a battery of summary questions.

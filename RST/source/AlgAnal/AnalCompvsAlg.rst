@@ -171,8 +171,3 @@ buying a computer ten times faster.
 Furthermore, when you do buy a faster computer, an algorithm with a
 slower growth rate provides a greater benefit in terms of larger
 problem size that can run in a certain time on the new computer.
-
-.. TODO::
-   :type: Exercise
-
-   Write a battery of summary questions

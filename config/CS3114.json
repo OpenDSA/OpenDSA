@@ -171,6 +171,13 @@
         }
       }
     },
+    "Design 1": {
+      "Design/ADT": {
+        "long_name": "Abstract Data Types",
+        "exercises": {
+        }
+      }
+    },
     "Linear Structures": {
       "Development/ListIntro": {
         "long_name": "Chapter Introduction: Linear Structures",
@@ -567,12 +574,7 @@
         }
       }
     },
-    "Design": {
-      "Design/ADT": {
-        "long_name": "Abstract Data Types",
-        "exercises": {
-        }
-      },
+    "Design 2": {
       "Design/DesignPatterns": {
         "long_name": "Design Patterns",
         "exercises": {}

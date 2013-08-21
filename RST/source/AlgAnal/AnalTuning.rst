@@ -194,8 +194,3 @@ hashing alternatives.
 Instead, the purpose is to analyze the proper loading factor that
 would be used in an efficient hashing system to balance time cost
 versus hash table size (space cost).
-
-.. TODO::
-   :type: Exercise
-
-   Write a battery of summary questions

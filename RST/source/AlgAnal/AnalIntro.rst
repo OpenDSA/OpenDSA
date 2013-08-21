@@ -322,13 +322,3 @@ resources consumed by an algorithm.
       \mathsf{30 \cdot 2^{30} \approx 2^{35}} &
       \mathsf{2^{60}} & \mathsf{2^{90}} & \mathsf{2^{1 {\rm G}}}\\
       \end{array}
-
-.. TODO::
-   :type: Exercise
-
-   Take a bunch of functions and put them in order of growth rate.
-
-.. TODO::
-   :type: Exercise
-
-   Write a battery of summary questions
