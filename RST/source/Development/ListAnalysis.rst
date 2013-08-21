@@ -5,11 +5,12 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: array-based list; linked list
+   :satisfies: list implementation analysis; overhead
    :topic: Lists
 
-Comparison of List Implementations [Storyboard]
-===============================================
+Comparison of List Implementations
+==================================
 
 Now that you have seen two substantially different implementations for
 lists, it is natural to ask which is better.
@@ -24,7 +25,7 @@ space whether they are simple integers or large objects with many
 fields.
 Any container data structure like a list then requires some additional
 space to organize the elements being stored.
-This additional space is called :dfn`overhead`.
+This additional space is called :term`overhead`.
 
 Array-based lists have the disadvantage that their size must be
 predetermined before the array can be allocated.
@@ -136,8 +137,7 @@ lists.
 When implementing the array-based list, an implementor could
 allow the size of the array to grow and shrink depending on the number 
 of elements that are actually stored.
-This data structure is known as a
-:dfn:`dynamic array`.
+This data structure is known as a :term:`dynamic array`.
 For example, both the Java and C++/STL ``Vector`` classes implement a
 dynamic array,
 and JavaScript arrays are always dynamic.
@@ -158,7 +158,7 @@ becomes full, and to cut the array size in half when it becomes one
 quarter full.
 To analyze the overall cost of dynamic array operations over time,
 we need to use a technique known as
-:dfn:`amortized analysis`
+:term:`amortized analysis`
 which is discussed in Module :numref:`<AmortAnal>`.
 
 .. TODO::

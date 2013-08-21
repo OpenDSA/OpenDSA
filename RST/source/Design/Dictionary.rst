@@ -5,7 +5,7 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :requires: comparison; list
+   :requires: comparison; list ADT
    :satisfies: dictionary
    :topic: Design
 

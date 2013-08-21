@@ -71,7 +71,7 @@ values.
 
 An :term:`abstract data type` (ADT) is the realization of a data type
 as a software component.
-The interface of the ADT is defined in terms of a type and a set of
+The interface for the ADT is defined in terms of a type and a set of
 operations on that type.
 The behavior of each operation is determined by its inputs and outputs.
 An ADT does not specify \emph{how} the data type is implemented.

@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: key comparison; record comparison
+   :requires: comparison
    :satisfies: sorting introduction
    :topic: Sorting
 

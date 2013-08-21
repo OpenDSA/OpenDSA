@@ -5,7 +5,8 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: list ADT
+   :satisfies: array-based list
    :topic: Lists
    
 .. odsalink:: AV/Development/listArrayCON.css

@@ -154,17 +154,6 @@
           }
         }
       },
-      "Development/Comparison": {
-        "long_name": "Comparing Records",
-        "exercises": {
-          "SortCompareSumm": {
-            "long_name": "Record Comparison Summary",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
       "Sorting/ExchangeSort": {
         "long_name": "The Cost of Exchange Sorting",
         "exercises": {
@@ -467,10 +456,6 @@
             "threshold": 10
           }
         }
-      },
-      "Development/SortProgExer.rst": {
-        "long_name": "Sorting Chapter Programming Exercises",
-        "exercises": {}
       }
     },
     "Hashing": {
@@ -733,18 +718,6 @@
             "required": true,
             "points": 1,
             "threshold": 10
-          }
-        }
-      },
-      "Development/PerfectHash": {
-        "long_name": "Perfect Hashing",
-        "exercises": {
-          "perfectHashAV": {
-            "long_name": "Perfect Hashing Visualization",
-            "required": false,
-            "showhide": "none",
-            "points": 0,
-            "threshold": 1.0
           }
         }
       }

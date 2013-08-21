@@ -13,6 +13,7 @@ Glossary
 ========
 
 .. glossary::
+   :sorted:
 
    ADT
       Abbreviation for :term:`abstract data type`.
@@ -20,6 +21,13 @@ Glossary
    abstract data type
       Abreviated ADT. The realization of a data type as a software
       component.
+
+   activation record
+      The entity that is stored on the :term:`runtime stack` during
+      program execution.
+      It stores any active local variable and the return address from
+      which a new subroutine is being called, so that this information
+      can be recovered when the subroutine terminates.
 
    aggregate type
       A type whose members have subparts. For example, a typical
@@ -35,6 +43,28 @@ Glossary
 
    algorithm analysis
       A less formal term for :term:`asymptotic analysis`.
+
+   amortized analysis
+      An analysis techique that looks at the total cost for a series
+      of operations and amortizes this total cost over the full series.
+      This is as opposed to considering only the worst case cost for an
+      individual operation, which might well be an overestimate of the
+      total cost.
+
+   amortized cost
+      The total cost for a series of operations to be used in an
+      :term:`amortized analysis`.
+
+   array-based list
+      An implementation for the list ADT that uses an array to store
+      the list elements. Typical implementations fix the array size at
+      creation of the list, and the amount of :term:`overhead` or
+      unused space is the number of array positions that are presently
+      unused.
+
+   array-based stack
+      Analogous to an :term:`array-based list`, this uses an array to
+      store the elements when implementing the stack ADT.
 
    asymptotic algorithm analysis
       A more formal term for :term:`asymptotic analysis`.
@@ -109,6 +139,10 @@ Glossary
       Written :math:`\lceil x \rceil`, for real value :math:`x` the
       ceiling is the least integer :math:`\geq x`.
 
+   circular list
+      A :term:`list` ADT implementation variant where the last element of the
+      list provides access to the first element of the list.
+
    class
       In an object-oriented language, an ADT and its implementation
       together make up a class. 
@@ -151,6 +185,18 @@ Glossary
       sorting routine pass in a comparator function
       to define how records in the collection are to be compared.
 
+   complete binary tree
+      A binary tree where the nodes are filled in row by row, with the
+      bottom row filled in left to right.
+      Due to this requirement, there is only one tree of :math:`n`
+      nodes for any value of :math:`n`.
+      Since storing the records in an array in row order leads to a
+      simple mapping from a node's position in the array to its
+      parent, siblings, and children, the array representation is most
+      commonly used to implement the complete binary tree.
+      The :term:`heap` data structure is a complete binary tree with
+      partial ordering constraints on the node values.
+
    composite type
       A type whose members have subparts. For example, a typical
       database record. Another term for this is :term:`aggregate type`.
@@ -167,6 +213,10 @@ Glossary
       The :dfn:`cost` of a solution is the
       amount of resources that the solution consumes.
 
+   current position
+      A property of some list ADTs, where there is maintained a
+      "current position" state that can be referred to later.
+
    data item
       A piece of information or a record whose value is drawn from a type.
 
@@ -180,6 +230,9 @@ Glossary
    data type
       A type together with a collection of operations to manipulate
       the type.
+
+   dequeue
+      A specialized term used to indicate removing an element from a queue.
 
    design patterns
       Abstractions for describing the design of programs |---| that is,
@@ -224,6 +277,33 @@ Glossary
    domain
       The set of possible inputs to a function.
 
+   doubly linked list
+      A :term:`linked list` implementation variant where each list
+      node contains access pointers to both the previous element and
+      the next element on the list.
+
+   dynamic allocation
+      The act of creating an object from :term:`free store`.
+      In C++, Java, and JavaScript, this is done using the ``new``
+      operator.
+
+   dynamic array
+      Arrays, once allocated, are of fixed size. A dynamic array puts
+      an interface around the array so as to appear to allow the array
+      to grow and shrink in size as necessary. Typically this is done
+      by allocating a new copy, copying the contents of the old array,
+      and then returning the old array to :term:`free store`.
+      If done correctly, the :term:`amortized cost` for dynamically
+      resizing the array can be made constant.
+      In some programming languages such as Java, the term
+      :term:`vector` is used as a synonym for dynamic array.
+
+   dynamic memory allocation
+      A programming technique where linked objects in a data structure
+      are created from :term:`free store` as needed. When no longer
+      needed, the object is either returned to :term:`free store` or
+      left as :term:`garbage`, depending on the programming language.
+
    efficient
       A solution is said to be efficient
       if it solves the problem within the required
@@ -236,10 +316,16 @@ Glossary
    elements
       One value or member in a set.
 
+   empty
+      For a container class, the state of containing no elements.
+
    encapsulation
       In programming, the concept of hiding implementation details
       from the user of an ADT, and protecting data members of an
       object from outside access.
+
+   enqueue
+      A specialized term used to indicate inserting an element onto a queue.
 
    equivalence classes
       An :term:`equivalence relation` can be used to partition a set
@@ -269,9 +355,45 @@ Glossary
       Written :math:`\lfloor x \rfloor`, for real value :math:`x` the
       floor is the greatest integer :math:`\leq x`.
 
+   free store
+      Space available to a program during runtime to be used for
+      :term:`dynamic allocation` of objects.
+      The free store is distinct from the :term:`runtime stack`.
+      The free store is sometimes referred to as the :term:`heap`,
+      which can be confusing because :term:`heap` more often refers to
+      a specific data structure. Most programming languages provide
+      functions to allocate (and maybe to deallocate) objects from the
+      free store, such as ``new`` in C++ and Java.
+
+   freelist
+      A simple and faster alternative to using :term:`free store` when
+      the objects being dynamically allocated are all of the same size
+      (and thus are interchangeable).
+      Typically implemented as a linked stack, released objects are
+      put on the front of the freelist.
+      When a request is made to allocate an object, the freelist is
+      checked first and it provides the object if possible.
+      If the freelist is empty, then a new object is allocated from
+      :term:`free store`.
+
    function
       A matching between inputs (the :term:`domain`) and outputs
       (the :term:`range`). 
+
+   garbage
+      In programming, any memory that was previously (dynamically)
+      allocated by the program during runtime, but which is no longer
+      accessible since all pointers to the memory have been deleted or
+      overwritten. In some languages, garbage can be recovered by
+      :term:`garbage collection`.
+      In languages such as C and C++ that do not support garbage
+      collection, creating garbage is considered a
+      :term:`memory leak`.
+
+   garbage collection
+       Languages with garbage collection such
+      Java, JavaScript, Lisp, and Scheme will periodically reclaim
+      :term:`garbage` and return it to :term:`free store`.
 
    growth rate
       The rate at which the cost
@@ -282,6 +404,28 @@ Glossary
       Harmonic Series, and is written :math:`{\cal H}_n`.
       This sum has a value between :math:`\log_e n` and
       :math:`\log_e n + 1`. 
+
+   head
+      The beginning of a :term:`list`.
+
+   header node
+      Commonly used in implementations for a :term:`linked list` or
+      related structure, this node preceeds the first element of the
+      list. Its purpose is to simplify the code implementation by
+      reducing the number of special cases that must be programmed
+      for.
+
+   heap
+      This term has two different meanings. Uncommonly, it is a
+      synonym for :term:`free store`.
+      Most often it is used to refer to a particular data structure.
+      This data structure is a :term:`complete binary tree` with the
+      requirement that every node has a value greater than its
+      children (called a :term:`max heap`), or else the 
+      requirement that every node has a value less than its
+      children (called a :term:`min heap`).
+      Due to its space and time efficiency, the heap is a
+      popular choice for implementing a :term:`priority queue`.
 
    induction hypothesis
       The key assumption used in an induction proof, that the theorem
@@ -314,6 +458,10 @@ Glossary
       The other standard solution to this problem is to pass a
       comparator function to the index methods.
 
+   length
+      In a :term:`list`, the number of elements. In a string, the
+      number of characters.
+
    linear growth rate
       For input size :math:`n`, a growth rate of :math:`cn` (for
       :math:`c` any positive constant). In other words, the cost of
@@ -321,6 +469,23 @@ Glossary
 
    linear order
       Another term for :term:`total order`.
+
+   linked list
+      An implementation for the list ADT that uses
+      :term:`dynamic allocation`
+      of link nodes to store the list elements. Common variants are the
+      :term:`singly linked list`, :term:`doubly linked list` and
+      :term:`circular list`.
+      The :term:`overhead` required is the pointers in each link node.
+
+   linked stack
+      Analogous to a :term:`linked list`, this uses
+      :term:`dynamic allocation` of nodes to
+      store the elements when implementing the stack ADT.
+
+   list
+      A finite, ordered sequence of data items known as :term:`elements`.
+      This is close to the mathematical concept of a :term:`sequence`.
 
    logarithm
       The `logarithm` of base :math:`b` for value :math:`y` is the power
@@ -344,6 +509,11 @@ Glossary
       constant number of inputs. It could be a gross under-estimate of
       the truth.
 
+   max heap
+      A :term:`heap` where every node has a key value greater than its
+      children. As a consequence, the node with maximum key value is
+      at the root.
+
    member
    members
       In set notation, this is another term for elements. 
@@ -355,6 +525,12 @@ Glossary
       Each operation associated with the ADT is implemented by a
       member function or :term:`method`.
 
+   memory leak
+      In programming, the act of creating :term:`garbage`.
+      In languages such as C and C++ that do not support
+      :term:`garbage collection`, repeated memory leaks will evenually
+      cause the program to terminate.
+
    metaphor
       Humans deal with complexity by assigning a label to an assembly of
       objects or concepts and then manipulating the label in place of the
@@ -364,6 +540,11 @@ Glossary
    method
       In an objectect-oriented class, a method is an operation on a class.
       A synonym for :term:`member function`.
+
+   min heap
+      A :term:`heap` where every node has a key value less than its
+      children. As a consequence, the node with minimum key value is
+      at the root.
 
    mod
       Another name for the :term:`modulus` function.
@@ -379,9 +560,18 @@ Glossary
       This term is sometimes used as a synonym to the term
       :term:`bag`.
 
+   node
+   nodes
+      The objects that make up a linked structure such as a linked
+      list or binary tree. Typically, nodes are allocated using
+      :term:`dynamic memory allocation`.
+
    object
       An instance of a class, that is, something that is created and
       takes up storage during the execution of a computer program.
+
+   one-way list
+      A synonym for a :term:`singly linked list`.
 
    overhead
       All information stored by a data structure aside from the actual
@@ -406,8 +596,22 @@ Glossary
       The implementation of a data type as a data structure.
       Contrast to the :term:`physical form` for the data type.
 
+   Pigeonhole Principle
+      A commonly used lemma in Mathematics. A typical variant states:
+      When :math:`n+1` objects are stored in :math:`n` locations, at
+      least one of the locations must store two or more of the objects.
+
+   pop
+   popped
+      A specialized term used to indicate removing an element from a stack.
+
    poset
       Another name for a :term:`partially ordered set`.
+
+   position
+      The defining property of the list ADT, this is the concept that
+      list elements are in a position. Many list ADTs support access
+      by position.
 
    powerset
       For a set :math:`\mathbf{S}`, the power set is the set of all
@@ -418,6 +622,12 @@ Glossary
       the base type for the set. This is as opposed to an element of
       the set being another set.
 
+   priority queue
+      An ADT whose primary operations of insert of records, and
+      deletion of the greatest (or, in an alternative implementation,
+      the least) valued record. Most often implemented using the
+      :term:`heap` data structure.
+
    problem
       A task to be performed.
       It is best thought of as a function or a mapping of
@@ -427,9 +637,17 @@ Glossary
       An instance, or concrete representation, of an algorithm in some
       programming language.
 
+   push
+   pushed
+      A specialized term used to indicate inserting an element onto a stack.
+
    quadratic growth rate
       A growth rate function of the form :math:`cn^2` where :math:`n`
       is the input size and :math:`c` is a constant.
+
+   queue
+      A list-like structure in which elements are inserted only at one
+      end, and removed only from the other one end.
 
    random permutation
       One of the :math:`n!` possible permutations for a set of
@@ -468,6 +686,10 @@ Glossary
       main memory and disk space constraints |---| and the time
       allowed to perform each subtask.
 
+   runtime stack
+      The place where an :term:`activation record` is stored when a
+      subroutine is called during a program's runtime.
+
    search key
       A field or part of a record that is used to represent the record
       when searching. For example, in a database of customer records,
@@ -490,10 +712,14 @@ Glossary
    simple type
       A type whose values contain no subparts. An example is the integers.
 
+   singly linked list
+      A :term:`linked list` implementation variant where each list
+      node contains access an pointer only to the next element in the list.
+
    sorting problem
       Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`
       with key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
-      the :dfn:`Sorting Problem` is to
+      the Sorting Problem is to
       arrange the records into any order :math:`s` such that records
       :math:`r_{s_1}`, :math:`r_{s_2}`, ..., :math:`r_{s_n}`
       have keys obeying the property
@@ -510,6 +736,10 @@ Glossary
       A sorting algorithm is said to be stable if it does not
       change the relative ordering of records with identical key values.
 
+   stack
+      A list-like structure in which elements may be inserted or
+      removed from only one end.
+
    strong induction
       An alternative formulation for the induction step in an
       inductive proof.
@@ -524,6 +754,9 @@ Glossary
    symmetric
       In set notation, relation :math:`R` is symmetric if whenever
       :math:`aRb`, then :math:`bRa`, for all :math:`a, b \in \mathbf{S}`.
+
+   tail
+      The end of a :term:`list`.
 
    total order
       A binary relation on a set where every pair of distinct elements
@@ -553,9 +786,8 @@ Glossary
 
    vector
       In set notation, another term for a :term:`sequence`.
-      As a data structure, a vector usually refers to an array that
-      grows and shrinks to accomodate the number of elements being
-      stored.
+      As a data structure, the term vector usually used as a synonym
+      for a :term:`dynamic array`.
 
    worst case
       In algorithm analysis, the problem instance from among all

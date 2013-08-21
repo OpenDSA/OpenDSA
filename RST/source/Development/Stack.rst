@@ -5,18 +5,19 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: list ADT
+   :satisfies: stack
    :topic: Lists
 
 .. odsalink:: AV/Development/listStackCON.css      
 
-Stacks [Storyboard]
-===================
+Stacks
+======
 
 Stack terminology
 -----------------
 
-The :dfn:`stack` is a list-like structure
+The :term:`stack` is a list-like structure
 in which elements may be inserted or removed from only one end.
 While this restriction makes stacks less flexible than lists,
 it also makes stacks both efficient (for those operations they can do)
@@ -37,17 +38,17 @@ Note that one implication of the LIFO policy is that stacks
 remove elements in reverse order of their arrival.
 
 The accessible element of the stack is called the ``top`` element.
-Elements are not said to be inserted, they are :dfn:`pushed` onto the
+Elements are not said to be inserted, they are :term:`pushed` onto the
 stack.
-When removed, an element is said to be :dfn:`popped` from the stack.
+When removed, an element is said to be :term:`popped` from the stack.
 Here is a simple stack ADT.
 
 .. codeinclude:: Lists/Stack.pde
    :tag: Stack
 
 As with lists, there are many variations on stack implementation.
-The two approaches presented here are :dfn:`array-based` and
-:dfn:`linked stacks`, 
+The two approaches presented here are the :term:`array-based stack`
+and the :term:`linked stack`, 
 which are analogous to array-based and linked lists, respectively.
 
 .. TODO::

@@ -5,7 +5,8 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: ADT
+   :satisfies: list introduction
    :topic: Lists
 
 Chapter Introduction: Lists

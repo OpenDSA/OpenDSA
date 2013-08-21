@@ -5,7 +5,8 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: list ADT
+   :satisfies: linked list
    :topic: Lists
    
 .. odsalink:: AV/Development/listLinkedCON.css
@@ -16,8 +17,8 @@ Linked Lists
 Besides the array-based list presented in
 Module :numref:`<ListArray>`,
 the other traditional approach to implementing lists makes use of
-pointers and is usually called a :dfn:`linked list`.
-The linked list uses :dfn:`dynamic memory allocation`,
+pointers and is usually called a :term:`linked list`.
+The linked list uses :term:`dynamic memory allocation`,
 that is, it allocates memory for new list elements as needed.
 
 .. _LinkedListNodes:
@@ -26,7 +27,7 @@ that is, it allocates memory for new list elements as needed.
    :align: center
    
    A linked list is made up of a series of objects, called the
-   :dfn:`nodes` of the list. You can see that the nodes are "linked"
+   :term:`nodes` of the list. You can see that the nodes are "linked"
    together.
 
 Because a list node is a distinct object (as opposed to simply a cell
@@ -38,8 +39,8 @@ Here is an implementation for list nodes, called the ``Link`` class.
 Objects in the ``Link`` class contain an ``element`` field to
 store the element value, and a ``next`` field to store a pointer to
 the next node on the list.
-The list built from such nodes is called a :dfn:`singly linked list`,
-or a :dfn:`one-way list`, because each list node
+The list built from such nodes is called a :term:`singly linked list`,
+or a :term:`one-way list`, because each list node
 has a single pointer to the next node on the list.
 
 .. codeinclude:: Lists/Link.pde
@@ -70,7 +71,7 @@ and thus increases the chance of introducing bugs.
 Fortunately, there is a fairly easy way to deal with all of the
 special cases, as well as the problem with deleting the last node.
 Many special cases can be eliminated by implementing
-linked lists with an additional :dfn:`header node`
+linked lists with an additional :term:`header node`
 as the first node of the list.
 This header node is a link node like any other, but its value is
 ignored and it is not considered to be an actual element of the list.

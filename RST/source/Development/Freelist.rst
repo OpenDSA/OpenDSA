@@ -5,7 +5,8 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: linked list
+   :satisfies: freelist
    :topic: Lists
    
 .. odsalink:: AV/Development/listFreeCON.css
@@ -28,7 +29,7 @@ List nodes are created and deleted in a linked list implementation in
 a way that allows the ``Link`` class programmer
 to provide simple but efficient memory management routines.
 Instead of making repeated calls to ``new``, 
-the ``Link`` class can handle its own :dfn:`freelist`.
+the ``Link`` class can handle its own :term:`freelist`.
 A freelist holds those list nodes that are not currently being used.
 When a node is deleted from a linked list, it is placed at the
 head of the freelist.

@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: sorting introduction; key comparison; record comparison
+   :requires: sorting introduction; comparison
    :topic: Sorting
 
 Sorting Terminology and Notation

@@ -5,22 +5,23 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: list ADT
+   :satisfies: queue
    :topic: Lists
 
 .. odsalink:: AV/Development/listQueueCON.css   
    
-Queues [Storyboard]
-===================
+Queues
+======
 
 Queue Terminology
 -----------------
 
-Like the stack, the :dfn:`queue` is a list-like structure that
+Like the stack, the :term:`queue` is a list-like structure that
 provides restricted access to its elements.
 Queue elements may only be inserted at the back (called an
-:dfn:`enqueue` operation) and removed from the
-front (called a :dfn:`dequeue` operation).
+:term:`enqueue` operation) and removed from the
+front (called a :term:`dequeue` operation).
 Queues operate like standing in line at a movie theater ticket
 counter.
 If nobody cheats, then newcomers go to the back of the line.
@@ -85,7 +86,7 @@ values for ``rear`` are needed to distinguish among the :math:`n+1`
 states.
 However, there are only :math:`n` possible values for ``rear`` unless
 we invent a special case for, say, empty queues.
-This is an example of the :dfn:`Pigeonhole Principle`
+This is an example of the :term:`Pigeonhole Principle`
 The Pigeonhole Principle states that, given :math:`n` pigeonholes
 and :math:`n+1` pigeons, when all of the pigeons go into the holes we
 can be sure that at least one hole contains more than one pigeon.

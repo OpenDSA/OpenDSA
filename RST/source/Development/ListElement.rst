@@ -5,13 +5,15 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: list ADT
+   :satisfies: list element implementation
    :topic: Lists
+
 .. odsalink:: AV/Development/dlist.css
 .. odsalink:: AV/Development/listElementCON.css   
 
-List Element Implementations [Storyboard]
-=========================================
+List Element Implementations
+============================
 
 .. inlineav:: listElementDataCON ss
    :output: show

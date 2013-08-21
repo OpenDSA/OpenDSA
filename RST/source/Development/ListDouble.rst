@@ -5,19 +5,21 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: linked list
+   :satisfies: doubly linked list
    :topic: Lists
+
 .. odsalink:: AV/Development/dlist.css
 .. odsalink:: AV/Development/listDLinkedCON.css
 
 
-Doubly Linked Lists [Storyboard]
-================================
+Doubly Linked Lists
+===================
 
 The singly linked list
 presented in Module :numref:`<ListLinked>` allows
 for direct access from a list node only to the next node in the list.
-A :dfn:`doubly linked list` allows convenient access from a list node
+A :term:`doubly linked list` allows convenient access from a list node
 to the next node and also to the preceding node on the list.
 The doubly linked list node accomplishes this in the obvious way by
 storing two pointers: one to the node following it (as in the singly

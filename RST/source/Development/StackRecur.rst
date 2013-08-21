@@ -5,11 +5,12 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: stack
+   :satisfies: implementing recursion
    :topic: Lists
 
-Implementing Recursion [Storyboard]
-===================================
+Implementing Recursion
+======================
 
 WARNING! You should not read this section unless you are already
 comfortable with implementing recursive functions.
@@ -31,7 +32,7 @@ A subroutine call is normally implemented by placing necessary
 information about the subroutine (including the return address,
 parameters, and local variables) onto a stack.
 This information is called an
-:dfn:`activation record`.
+:term:`activation record`.
 Further subroutine calls add to the stack.
 Each return from a subroutine pops the top activation record
 off the stack.

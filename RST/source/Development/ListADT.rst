@@ -5,7 +5,8 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: ADT; list introduction
+   :satisfies: list ADT
    :topic: Lists
 
 .. odsalink:: AV/Development/listADTCON.css
@@ -20,13 +21,13 @@ We all have an intuitive understanding of what we mean by a "list".
 We want to turn this intuitive understanding into a concrete data
 structure with implementations for its operations.
 The most important concept related to lists is that of
-:dfn:`position`.
+:term:`position`.
 In other words, we perceive that there is a first element in the list,
 a second element, and so on.
-So, define a :dfn:`list` to be a finite, ordered
-sequence of data items known as :dfn:`elements`.
+So, define a :term:`list` to be a finite, ordered
+sequence of data items known as :term:`elements`.
 This is close to the mathematical concept of
-a sequence, as defined in Module :numref:`<SetDef>`.
+a :term:`sequence`, as defined in Module :numref:`<SetDef>`.
 
 "Ordered" in this definition means that each element has a
 position in the list.
@@ -50,11 +51,11 @@ depend on the elemental data type.
 For example, the list ADT can be used for lists of integers, lists of
 characters, lists of payroll records, even lists of lists.
 
-A list is said to be :dfn:`empty` when it contains no elements.
+A list is said to be :term:`empty` when it contains no elements.
 The number of elements currently stored is called the
-:dfn:`length` of the list.
-The beginning of the list is called the :dfn:`head`,
-the end of the list is called the :dfn:`tail`.
+:term:`length` of the list.
+The beginning of the list is called the :term:`head`,
+the end of the list is called the :term:`tail`.
 
 We need some notation to show the contents of a list,
 so we will use the same angle bracket
@@ -111,7 +112,7 @@ Given that we wish to support the concept of a sequence, with access
 to any position in the list, the need for many of the member
 functions such as ``insert`` and ``moveToPos`` is clear.
 The key design decision embodied in this ADT is support for the
-concept of a :dfn:`current position`.
+concept of a :term:`current position`.
 For example, member ``moveToStart`` sets
 the current position to be the first element on the list, while
 methods ``next`` and ``prev`` move the current position
@@ -182,13 +183,13 @@ requires some agreement between the list ADT and the ``find``
 function on the concept of a key, and on how keys may be compared.
 This topic is discussed in Module :numref:`<Comparison>`.
 
-.. avembed:: Exercises/Development/LinkedListKAEx.html ka
+.. avembed:: Exercises/Development/ListADTPROG.html ka
   
 Implementing Lists
 ------------------
 
 There are two standard approaches to implementing lists, the
-:dfn:`array-based` list, and the :dfn:`linked` list.
+:term:`array-based list`, and the :term:`linked list`.
 The array-based list implementation is presented in
 Module :numref:`<ListArray>`.
 The linked list is presented in Module :numref:`<ListLinked>`.
