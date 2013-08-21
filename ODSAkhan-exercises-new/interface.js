@@ -413,8 +413,8 @@ function handleAttempt(data) {
       }
       // Update DOM elements according to the feedback from OpenPop
       if(data && typeof OpenPopKa !== "undefined"){
-         progress = data.progress;
-         streakNum = data.streak;
+         //progress = data.progress;
+         //streakNum = data.streak;
 
          // Empty the message area.
          emptyMsgArea();
@@ -427,8 +427,9 @@ function handleAttempt(data) {
                  feedbackEffect(data.message);
              }
          }
-      // Update DOM elements if this is not a OpenPop exersices
-      }else if (data) {
+      }
+      // Update DOM elements for the scores.
+      if(data) {
         progress = data.streak;
         if (parseInt(data.progress._sign) != 0) {
           progress = 0;
@@ -442,7 +443,7 @@ function handleAttempt(data) {
          parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}', MODULE_ORIGIN);
 
       }
-
+      
       total = parseInt(total, 10);
       $('#points-progress').text(total);
 
