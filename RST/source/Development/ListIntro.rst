@@ -20,7 +20,7 @@ things do more sophisticated data structures like search trees become
 necessary.
 (We will see how to organize and search through medium amounts of
 data when we study :chap:`Binary Trees`,
-:chap:`Sorting`, and :chap:`Searching`.
+:chap:`Sorting`, and :chap:`Search`.
 How to deal with large amounts of data is covered in the chapters on
 :chap:`File Processing` through
 :chap:`Indexing`.)

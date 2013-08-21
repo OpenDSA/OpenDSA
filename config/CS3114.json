@@ -254,8 +254,8 @@
           "ArryLstSumm": {
             "long_name": "Array-based List Summary",
             "required": true,
-            "points": 1,
-            "threshold": 5
+            "points": 0.5,
+            "threshold": 3
           }
         }
       },
@@ -608,6 +608,48 @@
             "threshold": 5
           }
         }
+      }
+    },
+    "Binary Trees": {
+      "Development/BinTreeStub": {
+        "long_name": "Binary Trees Chapter Stub",
+        "exercises": {}
+      }
+    },
+    "General Trees": {
+      "Development/GenTreeStub": {
+        "long_name": "General Trees Chapter Stub",
+        "exercises": {}
+      }
+    },
+    "Sorting": {
+      "Development/SortingStub": {
+        "long_name": "Sorting Chapter Stub",
+        "exercises": {}
+      }
+    },
+    "File Processing": {
+      "Development/FileProc": {
+        "long_name": "File Processing Chapter Stub",
+        "exercises": {}
+      }
+    },
+    "Search": {
+      "Development/SearchStub": {
+        "long_name": "Search Chapter Stub",
+        "exercises": {}
+      }
+    },
+    "Hashing": {
+      "Development/HashStub": {
+        "long_name": "Hashing Chapter Stub",
+        "exercises": {}
+      }
+    },
+    "Indexing": {
+      "Development/IndexIntro": {
+        "long_name": "Indexing Chapter Stub",
+        "exercises": {}
       }
     },
     "Stubs": {
