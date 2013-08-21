@@ -124,7 +124,7 @@ Recursion, or some imitation of it, is necessary when implementing
 algorithms that require multiple branching such as in the Towers of
 Hanoi algorithm, or when traversing a binary tree.
 The Mergesort and Quicksort algorithms of
-Chapter :ref:`Sorting <InSort>` are also examples in which recursion
+Chapter :chap:`Sorting` are also examples in which recursion
 is required.
 Fortunately, it is always possible to imitate recursion with a stack.
 Let us now turn to a non-recursive version of the Towers of
