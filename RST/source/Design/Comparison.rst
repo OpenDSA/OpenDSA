@@ -132,7 +132,7 @@ work on an array that stores key-record pairs.
 
 Here are some review questions to test your knowledge from this module.
 
-.. avembed:: Exercises/Sorting/SortCompareSumm.html ka
+.. avembed:: Exercises/Design/CompareSumm.html ka
 
 Notes
 -----

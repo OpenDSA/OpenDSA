@@ -179,11 +179,11 @@
       }
     },
     "Linear Structures": {
-      "Development/ListIntro": {
+      "List/ListIntro": {
         "long_name": "Chapter Introduction: Linear Structures",
         "exercises": {}
       },
-      "Development/ListADT": {
+      "List/ListADT": {
         "long_name": "List ADT",
         "exercises": {
           "listADTCON1": {
@@ -206,7 +206,7 @@
           }
         }
       },
-      "Development/ListArray": {
+      "List/ListArray": {
         "long_name": "Array-based Lists",
         "exercises": {
           "AlistVarsCON": {
@@ -259,7 +259,7 @@
           }
         }
       },
-      "Development/ListLinked": {
+      "List/ListLinked": {
         "long_name": "Linked Lists",
         "exercises": {
           "LlistBadCON": {
@@ -326,15 +326,15 @@
             "long_name": "Linked List Summary",
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 6
           }
         }
       },
-      "Development/ListAnalysis": {
+      "List/ListAnalysis": {
         "long_name": "Comparison of List Implementations",
         "exercises": {}
       },
-      "Development/Freelist": {
+      "List/Freelist": {
         "long_name": "Freelists",
         "exercises": {
           "listFreeCON": {
@@ -351,7 +351,7 @@
           }
         }
       },
-      "Development/ListDouble": {
+      "List/ListDouble": {
         "long_name": "Doubly Linked Lists",
         "exercises": {
           "DLlistInsertCON": {
@@ -386,7 +386,7 @@
           }
         }
       },
-      "Development/ListElement": {
+      "List/ListElement": {
         "long_name": "List Element Implementations",
         "exercises": {
           "listElementDataCON": {
@@ -408,14 +408,14 @@
             "threshold": 1.0
           },
           "LstSumm": {
-            "long_name": "List Element Summary",
+            "long_name": "List Summary Questions",
             "required": true,
-            "points": 1,
-            "threshold": 5
+            "points": 0.5,
+            "threshold": 3
           }
         }
       },
-      "Development/Stack": {
+      "List/Stack": {
         "long_name": "Stacks",
         "exercises": {
           "AStackVarCON": {
@@ -480,11 +480,11 @@
           }
         }
       },
-      "Development/StackRecur": {
+      "List/StackRecur": {
         "long_name": "Implementing Recursion",
         "exercises": {}
       },
-      "Development/Queue": {
+      "List/Queue": {
         "long_name": "Queues",
         "exercises": {
           "AQueueFirstNposCON": {
@@ -567,6 +567,17 @@
           },
           "StckQSumm": {
             "long_name": "Stack/Queue Summary Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "List/ListSumm": {
+        "long_name": "List Chapter Summary",
+        "exercises": {
+          "ListSumm": {
+            "long_name": "List Chapter Summary Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
