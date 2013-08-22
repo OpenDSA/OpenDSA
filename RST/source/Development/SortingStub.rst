@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Stubs
 
-Soriing Chapter Stub
+Sorting Chapter Stub
 ====================
 
 Stub.

@@ -9,40 +9,35 @@
  
 <body>
 <script>
-var answer=0;
 function checkAnswer(answer) {
-
- if ( answer>= 6 ) {
-     
-      return true;
+  if ( answer >= 6) {
+    return true;
   } else {
-      
-      return false;
-    }
+    return false;
   }
-
+}
 </script>
   
 <div class="exercise">
-
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question"> Given this set of growth functions: <code> n!, 2^n, 2n^2, 5 n \log n, 20n, 10n </code></ br>
-      For the growth function <code> 10n</code>, what is the input value that considered to be the most efficient? (if not applicable please type "none".) </ br> 
+      <p class="question"> You are given this set of growth functions:
+        <code>n!, 2^n, 2n^2, 5 n \log n, 20n, 10n</code></p>
+      <p>For the growth function <code>10n</code>, type a value (an
+      integer) for which this function is the most efficient of the
+      six. If there is no integer value for which it is most
+      efficent, type "none".</p>
       <br> <textarea rows="1" cols="9" style="resize:none"  id="answerTextarea" ></textarea></p>
       <div class="solution" data-type="custom">
-          <div class="guess"> [ "list" ] </div>
+        <div class="guess"> [ "list" ] </div>
         <div class="validator-function">
          answer = parseInt($('#answerTextarea').val());
          return checkAnswer(answer );
         </div>
       </div>
- 
       <div class="hints">
       </div> 
-
   </div>
-</div>
 </div>
 </body>
 </html>
