@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<entry>
+<id>http://algoviz.org/OpenDSA/Exercises/List/StckQSumm.html</id>
+<title type='text'>Stack/Queue Summary Questions</title>
+<description type='text'>Stack/Qusue Summary Questions</description>
+<type>ka</type> 
+<width>950</width>
+<height>650</height>
+<author>
+<name>OpenDSA</name>
+<uri>http://algoviz.org/OpenDSA/</uri>
+</author>
+<covers>linear structures</covers>
+<streak>5</streak>  
+</entry>

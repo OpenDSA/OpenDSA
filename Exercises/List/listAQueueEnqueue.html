@@ -1,0 +1,399 @@
+<!--
+Array-Based Queue Enqueue Proficiency Exercise.
+Written by Junyang Chen and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Array-Based Queue Enqueue Proficiency Exercise</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../ODSAkhan-exercises-new/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+
+  <style>
+    .jsavcontainer {
+      height: 350px;
+    }
+    .jsavcontainer svg{
+      pointer-events: all;
+    }
+	.jsavcanvas{
+     -moz-user-select: none;
+	  -webkit-user-select: none;
+	  height: 350px;
+	}
+	.jsavnode {
+      line-height: 30px !important;
+      min-width: 30px !important;
+      max-width: 30px !important;
+      min-height: 30px !important;
+      max-height: 30px !important;
+    }
+    .jsavpointer{
+      width: 40px;
+      border: 1px solid #bbb;
+      text-align: center;
+	  cursor: pointer;
+    }
+    #reset { margin-right: 20px;}
+    .highlight{
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+//"use strict";
+// JSAV extension for circular queue.
+(function($){
+  function sin(x){
+    return Math.sin(x*Math.PI/180);
+  }
+  function cos(x){
+    return Math.cos(x*Math.PI/180);
+  }
+  var Circular = function(jsav, cx, cy, r1, r2, size, options){
+    this.front = null;
+    this.rear = null;
+    this.jsav = jsav;
+    this.cx = cx;
+    this.cy = cy;
+    this.r1 = r1;
+    this.r2 = r2;
+    this.step = 360/size;
+    var defaultOptions = {};
+    this.options = $.extend(defaultOptions, options);
+    var x1, y1, x2, y2, x3, y3, x4, y4, label,
+		i = 0, theta = 0, pathString;
+    this.path = [];
+	this.labels = [];
+    while(theta < 360){
+      x1 = cx + r1 * cos(theta);
+      y1 = cy + r1 * sin(theta);
+      x2 = cx + r2 * cos(theta);
+      y2 = cy + r2 * sin(theta);
+      theta += this.step;
+      x3 = cx + r2 * cos(theta);
+      y3 = cy + r2 * sin(theta);
+      x4 = cx + r1 * cos(theta);
+      y4 = cy + r1 * sin(theta);
+      theta -= this.step;
+      pathString = "M" + x2 + "," + y2;
+      pathString += " A" + r2 + "," + r2 + " 1 0,1 " + x3 + "," + y3;
+      pathString += " L" + x4 + "," + y4;
+      pathString += " A" + r1 + "," + r1 + " 1 0,0 " + x1 + "," + y1;
+      this.path[i] = this.jsav.g.path(pathString, this.options);
+
+      label = this.jsav.label(" ");
+      label.css({'position' : 'absolute', 
+                 left : cx + (r1+r2)/2 * cos(theta + this.step/2) - 20 + 'px', 
+                 top : cy + (r1+r2)/2 * sin(theta + this.step/2) - 10 + 'px', width : '40px', height:'20px', 'text-align': 'center'});
+      this.labels[i] = label;
+      var test = this.jsav.label(i);
+      test.css({'position' : 'absolute', 
+                 left : cx + (r1)/100*78 * cos(theta + this.step/2) - 20 + 'px', 
+                 top : cy + (r1)/100*78 * sin(theta + this.step/2) - 10 + 'px', width : '40px', height:'20px', 'text-align': 'center'});
+  
+      i++;
+      theta += this.step;
+	}
+  };
+
+  Circular.prototype.value = JSAV.anim(function(index, value){
+    var oldval = this.labels[index].element.html();
+    this.labels[index].element.html(value);
+    return [index, oldval];
+  });
+  Circular.prototype.highlight = function(index){
+    this.path[index]._setattrs({"fill" : "yellow", "opacity" : "0.5"});
+  }
+  Circular.prototype.unhighlight = function(index){
+    this.path[index]._setattrs({"fill" : "none", "opacity" : "1.0"});
+  }
+  Circular.prototype.pointer = function(name, index, pos){
+    if(typeof pos === 'undefined'){
+      pos = 0.5;
+    }
+    var degree = this.step*pos + this.step * index;
+    var left = cos(degree)*((this.r2 - this.r1)/2*1.8);
+    var top = sin(degree)*((this.r2 - this.r1)/2*1.8);
+    var fx, fy; 
+    var tx = this.r2*cos(degree) + this.cx;
+    var ty = this.r2*sin(degree) + this.cy;
+    left = tx + 25 * cos(degree + this.step*pos) -20;
+    if(degree + 15 < 180){
+      top = ty + 25 * sin(degree + this.step*pos);
+    }else{
+      top = ty + 25 * sin(degree + this.step*pos) - 22;
+    }
+    var pointer = {};
+    pointer.label = this.jsav.label(name,{relativeTo: this.labels[index], anchor: "center",
+                            myAnchor: "center",
+                            left: 0,
+                            top: 0});
+    pointer.label.element.css({left : left, top : top});
+    pointer.label.element.addClass("jsavpointer");
+    //this.value(index, tx.toFixed() + "," + ty.toFixed());
+    fx = pointer.label.element.position().left + 20;
+    if(degree + this.step*pos < 180){
+      fy = pointer.label.element.position().top;
+    }else{
+      fy = pointer.label.element.position().top + pointer.label.element.outerHeight();
+    }
+    pointer.arrow = this.jsav.g.line(fx, fy, tx, ty, {"stroke-width" : 2, "arrow-end":"classic-wide-long"});
+    return pointer;
+  }
+  JSAV.ext.circular = function(cx, cy, r1, r2, size,options) {
+    return new Circular(this, cx, cy, r1, r2, size, $.extend({}, options));
+  }; 
+}(jQuery));
+
+var jsav,           // The JSAV object
+  answerArr = [],   // The (internal) array that stores the correct answer
+  answFrontPos,
+  answRearPos,
+  cloneArr = [],    // A copy of the (internal) array at the start of the exercise for reset
+  jsavCir,          // The array that the user manipulates (JSAV object)
+  selected_pointer,
+  front_pointer,
+  front_index,
+  rear_pointer,
+  rear_index,
+  status,
+  background,
+  inValue,          // Enqueue value
+  userInput,        // Boolean: Tells us if user ever did anything
+  selected_index;   // Position that has been selected by user for swap
+
+function bindPointerClick(pointer){
+  pointer.label.element.css( { 'z-index': 100} );
+  pointer.label.element.click(function(){pclick(pointer);});
+}
+
+function resetPointer(pointer,index, type){
+  var not_select_pointer = null;
+  if(pointer === front_pointer){
+    front_index = index;
+    not_select_pointer = rear_pointer;
+  }else if(pointer === rear_pointer){
+    rear_index = index
+    not_select_pointer = front_pointer;
+  }
+  pointer.label.element.remove();
+  pointer.arrow.rObj.remove();
+
+  if(front_index === rear_index){
+    not_select_pointer.label.element.remove();
+    not_select_pointer.arrow.rObj.remove();
+    front_pointer = jsavCir.pointer("front", index, 0.3);
+    rear_pointer = jsavCir.pointer("rear", index, 0.7);
+    bindPointerClick(front_pointer);
+    bindPointerClick(rear_pointer);
+  }else{
+    if(type === "front"){
+      front_pointer = jsavCir.pointer("front", index);
+      bindPointerClick(front_pointer);
+      front_index = index;
+    }else if(type === "rear"){
+      rear_pointer = jsavCir.pointer("rear", index);
+      bindPointerClick(rear_pointer);
+      rear_index = index;
+    }
+  }
+}
+
+// pointer click handler
+function pclick(pointer){
+  if(status == 1){
+    jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
+    pointer.label.element.toggleClass('highlight');
+    selected_pointer = pointer;
+    status = 2;
+  }else if (status == 2){
+    if(selected_pointer !== pointer){
+      selected_pointer.label.element.removeClass('highlight');
+      pointer.label.element.addClass('highlight');
+      selected_pointer = pointer;
+    }else {
+      pointer.label.element.removeClass('highlight');
+      status = 0;
+	}
+  }else if(status == 0){
+    pointer.label.element.addClass('highlight');
+    selected_pointer = pointer;
+    status = 2;
+  }
+  userInput = true;
+}
+
+// JSAV Circular click handler
+function clickHandler(index) {
+  if(status == 0){
+    jsavCir.path[index].rObj.attr({"fill":"yellow", "opacity" : "0.5"});
+    selected_index = index;
+    status = 1;
+  }else if(status == 1){
+    if(selected_index === index){
+      jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
+      status = 0;
+    }else{
+      jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
+      jsavCir.path[index].rObj.attr({"fill":"yellow", "opacity" : "0.5"});
+	  selected_index = index;
+	}
+  }else if (status == 2){
+    resetPointer(selected_pointer, index, selected_pointer.label.element.html());
+    selected_pointer.label.element.removeClass('highlight');
+    selected_pointer = null;
+    selected_index = -1;
+    status = 0;
+  }
+  userInput = true;
+};
+
+function f_insert(){
+  if(status == 1 && selected_index > -1){
+    jsavCir.value(selected_index, inValue);
+  }
+}
+
+// reset function definition
+function f_reset(maxSize, front, rear) {
+  selected_index = -1;
+  front_index = front;
+  rear_index = rear;
+  status = 0; 
+  var cx = 250, cy = 150; 
+  if($("#jsav")){
+    $("#jsav").empty();
+  }
+  jsav = new JSAV("jsav");	
+  jsavCir = jsav.circular(cx, cy, 50, 100, maxSize,{"stroke-width" : 2});
+  if(front === rear){
+    front_pointer = jsavCir.pointer("front", front, 0.3);
+    rear_pointer = jsavCir.pointer("rear", rear, 0.7);
+  }else{
+    front_pointer = jsavCir.pointer("front", front);
+    rear_pointer = jsavCir.pointer("rear", rear);
+  }
+  var i = 0;
+  for(i = 0; i < maxSize; i++){
+    jsavCir.value(i, cloneArr[i]);
+  }
+ 
+  jsav.displayInit();
+  jsav.recorded();
+  jsav.forward();
+
+  for(i = 0; i < maxSize; i++){
+    jsavCir.path[i].rObj.node.onclick = function (j){ 
+      return function(){clickHandler(j);}
+    }(i); 
+  }
+  
+
+  bindPointerClick(front_pointer);
+  bindPointerClick(rear_pointer);
+  userInput = false;
+};
+
+// Initialise the exercise
+function initJSAV(maxSize, front, rear, insertValue) {
+  var i, j;
+  userInput = false;
+  selected_index = -1;
+  status = 0;
+  inValue = insertValue; 
+  answerArr.length = 0; // Out with the old
+
+  // Give random numbers in range 0..999
+  for (i = 0; i < maxSize; i++) {
+    answerArr[i] = "";
+  }
+  var frontIndex = front;
+  var rearIndex = rear;
+  if( ( (rear+maxSize) - front + 1) % maxSize !== 0){
+    while( frontIndex !== rear + 1){
+      answerArr[frontIndex] = Math.floor(Math.random() * 1000);
+      frontIndex =(frontIndex + 1)%maxSize;
+    }
+  }
+  // Now make a copy
+  cloneArr = answerArr.slice(0);
+
+  f_reset(maxSize, front, rear);
+
+  // correct answer
+  answFrontPos = front;
+  answRearPos = rear;
+  if (((rear+2) % maxSize) !== front){
+    rearIndex = (rearIndex+1) % maxSize; // Circular increment
+    answerArr[rearIndex] = inValue;
+    answRearPos = rearIndex;
+  }
+  // Set up handler for insert button
+  $("#insert").click(function () {
+    f_insert();
+  });
+  // Set up handler for reset button
+  $("#reset").click(function () { f_reset(maxSize, front, rear); });
+};
+
+// Check user's answer for correctness: User's array must match answer
+function checkAnswer(maxSize) {
+  if(front_index !== answFrontPos || rear_index !== answRearPos){
+    return false;
+  }
+  for(var i = 0; i < maxSize; i ++){
+    if(jsavCir.labels[i].element.html() != answerArr[i]){
+      return false;
+	};
+  }
+  return true;
+};
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="maxSize">randRange(5, 10)</var>
+    <var id="front">randRange(0, maxSize-1)</var>
+    <var id="rear">randRange(0, maxSize-1)</var>
+	<var id="insert_value">randRange(0, 999)</var>
+    <var id="JSAV">initJSAV(maxSize, front, rear, insert_value)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem">
+      <div class="question"><p>Show how the enqueue operation works by
+      selecting a position for where the new item goes, and update
+      "rear" and "front" if appropriate.</p>
+        
+        <input id="reset" type="button" value="Reset" />
+		<input id="insert" type="button" value="Insert" />
+        <div id="jsav"></div>
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [userInput]
+        </div>
+        <div class="validator-function">
+          if (!checkAnswer(maxSize) && !guess[0])
+            return ""; // User did not click, and correct answer is not
+	               // initial array state
+          else return checkAnswer(maxSize);
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
