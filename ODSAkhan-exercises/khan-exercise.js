@@ -68,7 +68,7 @@ function getURLParam(name) {
 }
 
 // The path of khan-exercise.js. By Junyang Chen
-window.urlBaseOverride = "../../ODSAkhan-exercises-new/";
+window.urlBaseOverride = "../../ODSAkhan-exercises/";
 
 // The address of the server where the data is sent
 var SERVER_URL = getURLParam('serverURL');
