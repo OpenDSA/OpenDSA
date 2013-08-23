@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Math Background Chapter Summary: Annual growth rate</title>
+
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises-new/khan-exercise.js"></script>
+</head>
+
+<body>
+<script>
+var answer=0;
+function checkAnswer(answer, M , N) {
+var firstPart= M/N ;
+//var modelAnswer= Math.pow(Math.LOG2E ,(Math.log(2,M/N)/10)).toFixed(2);
+//X=e^(lnM/N)/10
+var modelAnswer= Math.exp(Math.log(firstPart)/10).toFixed(2);
+
+console.log("mans "+ modelAnswer);
+console.log("ans "+ answer);
+ if ( answer== modelAnswer) {
+     
+      return true;
+  } else {
+      
+      return false;
+    }
+  }
+
+</script>
+
+<div class="exercise">
+<div class="vars">
+  <var id="N"> randRange(1,9)</var>
+  <var id="MULTPL"> randRange(2,4)</var>
+  <var id="M"> MULTPL* N</var>
+</div>
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">An investor places <var>N</var>,000 into a
+        stock fund. 10 years later the account has a value
+        of <var>M</var>,000. Using logarithms and  antilogarithms,
+        determine the average annual growth rate for this fund.
+	(Round to the nearest integer.) 
+      <br> <textarea rows="1" cols="9" style="resize:none"  id="answerTextarea" ></textarea></p>
+      <div class="solution" data-type="custom">
+          <div class="guess"> [ $('#answerTextarea').val() ] </div>
+        <div class="validator-function">
+         answer = parseFloat($('#answerTextarea').val());
+         return checkAnswer(answer, M , N);
+        </div>
+      </div>
+      <div class="hints">
+	<p> If you start with <code>N</code> and in 10 years you
+          get <code>M</code>, then you want to solve
+          for <code>X</code> in the equation <code>N * X^{10} = M</code>.
+	</p> 
+	<p> You will need to use logs/antilogs. Fortunately, you can
+	  use whatever base you want for the logarithm. Since many
+	  scientific calculators will calculate the natural log
+	  (base <code>e</code>) and will also give
+	  you <code>e^x</code>, this might be the easiest base to work
+	  with.
+	</p>
+	<p> Solving for <code>X</code> gives us:<br/>
+	  <code>10 ln X = \ln M/N</code> <br/>
+	  <code>ln X = (\ln M/N)/10</code><br/>
+          <code>X = e^{(\ln M/N)/10}</code><br/>
+	  Find a calculator that can solve this for you.
+	</p>
+      </div> 
+    </div>
+  </div>
+</div>
+</body>
+</html>
