@@ -5,11 +5,12 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: binary tree terminology
+   :satisfies: full binary tree theorem
    :topic: Binary Trees
 
-The Full Binary Tree Theorem [Text]
-===================================
+The Full Binary Tree Theorem
+============================
 
 Some binary tree implementations store data only at the leaf nodes,
 using the internal nodes to provide structure to the tree.

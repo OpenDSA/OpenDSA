@@ -5,11 +5,12 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: binary tree terminology
+   :satisfies: binary tree node implementation
    :topic: Binary Trees
 
-Binary Tree Node Implementations [Text]
-=======================================
+Binary Tree Node Implementations
+================================
 
 In this module we examine various ways to implement binary tree
 nodes.

@@ -86,6 +86,9 @@ Glossary
       (like a set), but which allows for duplicate-valued elements
       (unlike a set).
 
+   base
+      Synonym for :term:`radix`.
+
    base case
       In recursion or inductive proofs, the base case is the
       termination condition. This ois a simple input or value that can
@@ -109,13 +112,19 @@ Glossary
       small, since we are referring to the best from a class of inputs
       (i.e, those inputs of size :math:`n`).
 
+   big-Oh notation
+      In algorithm analysis, a shorthand notation for describing the
+      upper bound for an algorithm or problem.
+
    binary search
       A standard recursive search algorithm for a sorted list. It runs
       in :math:O(\log n): time.
       
-   big-Oh notation
-      In algorithm analysis, a shorthand notation for describing the
-      upper bound for an algorithm or problem.
+   binsort
+      A sort that works by taking each record and placing it into a
+      bin based on its value. The bins are then gathered up in order
+      to sort the list. It is generally not practical in this form,
+      but it is the conceptual underpinning of the :term:`radix sort`.
 
    Boolean variable
       A variable that takes on one of the two values ``True`` and
@@ -134,6 +143,17 @@ Glossary
       save time. But if most objects are outside of the area of
       interest, then checking bounding boxes first can save a lot of
       time.
+
+   bubble sort
+      A simple sort that requires :math:`Theta(n^2)` time in best,
+      average, and worst cases. Even an optimized version will
+      normally run slower than insertion sort, so it has little to
+      recommend it.
+
+   bucket sort
+      A variation on the :term:`binsort`, where each bin is associated
+      with a range of key values. This will require some method of
+      sorting the records placed into each bin.
 
    ceiling
       Written :math:`\lceil x \rceil`, for real value :math:`x` the
@@ -230,6 +250,14 @@ Glossary
    data type
       A type together with a collection of operations to manipulate
       the type.
+
+   decision tree
+      A theoretical construct for modeling the behavior of algorithms.
+      Each point at which the algorithm makes a decision (such as an
+      if statement) is modeled by a branch in the tree that represents
+      the algorithms behavior. Decision trees can be used in lower
+      bounds proofs, such as the proof that sorting requires
+      :math:`\Omega(n \log n)` comparisons in the worst case.
 
    dequeue
       A specialized term used to indicate removing an element from a queue.
@@ -339,6 +367,15 @@ Glossary
    exact-match query
       Records are accessed by unique identifier.
 
+   exchange
+      A swap of adjacent records in an array.
+
+   exchange sort
+      A sort that relies solely on exchanges (swaps of adjacent
+      records) to reorder the list. Insertion sort and bubble sort are
+      examples of exchange sorts. All exchange sorts require
+      :math:`\Theta(n^2)` time in the worst case.
+
    exponential growth rate
       A growth rate function where :math:`n` (the input size) appears
       in the exponent. For example, :math:`2^n`.
@@ -427,15 +464,36 @@ Glossary
       Due to its space and time efficiency, the heap is a
       popular choice for implementing a :term:`priority queue`.
 
+   heapsort
+      A sorting algorithm that costs :math:`\Theta(n \log n)` time in
+      the best, average, and worst cases. It tends to be slower than
+      Mergesort and Quicksort. It works by building a max heap, and
+      then repeatedly removing the maximum item (moving it to the end
+      of the heap) until all elements have been removed (and replaced
+      at their proper location in the array).
+
    induction hypothesis
       The key assumption used in an induction proof, that the theorem
       to be proved holds for smaller instances of the theorem.
       The induction hypothesis is equivalent to the recursive call in
       a recursive function.
 
+   insertion sort
+      A sorting algorithm with :math:`\Theta(n^2)` average and worst
+      case cost, and :math:`Theta(n)` best case cost.
+      This best-case cost makes it useful when we have reason to
+      expect the input to be nearly sorted.
+
    instance
       A specific selection of values for the parameters to a problem.
       In other words, a specific set of inputs to a problem.
+
+   inversion
+      A measure of how disordered a series of values is. For each
+      element :math:`X` in the series, count one inversion for each
+      element to left of :math:`X` that is greater than the value of
+      :math:`X` (and so must ultimately be moved to the right of
+      :math:`X` during a sorting process.
 
    iterator
       In a container such as a List, a separate class that indicates
@@ -514,6 +572,12 @@ Glossary
       children. As a consequence, the node with maximum key value is
       at the root.
 
+   mergesort
+      A sort that requires :math:`\Theta(n \log n)` in the best,
+      average, and worst cases. Conceptually it is simple: Split the
+      list in half, sort the halves, then merge them together. It is a
+      bit complicated to implement effiently on an array.
+
    member
    members
       In set notation, this is another term for elements. 
@@ -566,6 +630,16 @@ Glossary
       list or binary tree. Typically, nodes are allocated using
       :term:`dynamic memory allocation`.
 
+   NP Complete
+      A class of problems that are related to each other in this way:
+      If ever one such problem is proved to be solvable in
+      polynomial time, or proved to require exponential time,
+      then all other NP Complete problems will cost likewise.
+      Since so many real-world problems have been proved to be
+      NP Complete, it would be extremely useful to determine if they
+      have polynomial or exponential cost. But so far, nobody has
+      been able to determine the truth of the situation.
+
    object
       An instance of a class, that is, something that is created and
       takes up storage during the execution of a computer program.
@@ -588,6 +662,13 @@ Glossary
       The set on which a :term:`partial order` is defined is called a
       partially ordered set.
 
+   partition
+      In :term:`quicksort`, the process of splitting a list into two
+      sublists, such that one sublist has values less than the
+      :term:`pivot` value, and the other with values greater than the
+      pivot. This process takes :math:`\Theta(i)` time on a sublist of
+      length :math:`i`.
+
    permutation
       A permutation of a sequence :math:`\mathbf{S}`
       is the members of :math:`\mathbf{S}` arranged in some order.
@@ -600,6 +681,11 @@ Glossary
       A commonly used lemma in Mathematics. A typical variant states:
       When :math:`n+1` objects are stored in :math:`n` locations, at
       least one of the locations must store two or more of the objects.
+
+   pivot
+      In :term:`quicksort`, the value that is used to split the list
+      into sublists, one with lesser values than the pivot, the other
+      with greater values than the pivot.
 
    pop
    popped
@@ -649,6 +735,34 @@ Glossary
       A list-like structure in which elements are inserted only at one
       end, and removed only from the other one end.
 
+   quicksort
+      A sort that is :math:`\Theta(n \log n)` in the best and average
+      cases, though :math:`\Theta(n^2)` in the worst case. However, a
+      reasonable implmentation will make the worst case occur under
+      exceedingly rare circumstances. Due to its tight inner loop, it
+      tends to run better than any other known sort in general
+      cases. Thus, it is a popular sort to use in code libraries. It
+      works by divide and conquor, by selecting a :term:`pivot` value,
+      splitting the list into parts that are either less than or
+      greater than the pivot, and then sorting the two parts.
+
+   radix
+      Synonym for :term:`base`. The number of digits in a number
+      representation. For example, we typically represent numbers in
+      base (or radix) 10. Hexidecimal is base (or radix) 16.
+
+   radix sort
+      A sorting algorithm that works by processing records with
+      :math:`k` digit keys in :math:`k` passes, where each pass sorts
+      the records according to the current digit. At the end of the
+      process, the records will be sorted. This can be efficient if
+      the number of digits is small compared to the number of
+      records. However, if the :math:`n` records all have unique key
+      valuse, than at least :math:`\Omega(\log n)` digits are required,
+      leading to an :math:`\Omega(n \log n)` sorting algorithm that
+      tends to be much slower than other sorting algorithms like
+      :term:`quicksort` or :term:`mergesort`.
+
    random permutation
       One of the :math:`n!` possible permutations for a set of
       :math:`n` element is selected in such a way that each
@@ -670,6 +784,15 @@ Glossary
    recursive
       An algorithm is recursive if it calls itself to do part of
       its work.
+
+   reduction
+      In algorithm analysis, the process of deriving asymptotic bounds
+      for one problem from the asymptotic bounds of another. In
+      particular, if problem A can be used to solve problem B, and
+      problem A is proved to be in :math:`O(f(n))`, then problem B
+      must also be in :math:`O(f(n)`. Reductions are often used to
+      show that certain problems are at least as expensive as sorting,
+      or that certain problems are :term:`NP Complete`.
 
    reflexive
       In set notation, relation :math:`R` is reflexive if :math:`aRa`
@@ -696,6 +819,14 @@ Glossary
       we might want to search by name.
       In this case the name field is used as the search key.
 
+   selection sort
+      While this sort requires :math:`\Theta(n^2)` time in the best,
+      average, and worst cases, it requires only :math:`\Theta(n)`
+      swap operations. Thus, it does relatively well in cases where
+      swaps are expensive. It can be viewed as an optimization on
+      bubble sort where swaps are deferred until the end of each
+      iteration.
+
    sequence
       In set notation, a collection of elements with an order, and
       which may contain duplicate-valued elements.
@@ -708,6 +839,11 @@ Glossary
 
    set
       A collection of distinguishable :term:`members` or :term:`elements`.
+
+   Shellsort
+      A sort that relies on the best-case cost of
+      :term:`insertion sort` to improve over :math:`\Theta(n^2)` worst
+      case cost. 
 
    simple type
       A type whose values contain no subparts. An example is the integers.

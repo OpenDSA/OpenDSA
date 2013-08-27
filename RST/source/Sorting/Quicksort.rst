@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: sort code tuning
+   :requires: sorting terminology; sort code tuning; insertion sort
+   :satisfies: quicksort
    :topic: Sorting
 
 .. odsascript:: AV/Sorting/quicksortCODE.js
@@ -25,7 +26,7 @@ implementation is not so easy.
 So perhaps a different divide and conquer strategy might turn out to
 be more efficient?
 
-:dfn:`Quicksort` is aptly named because, when properly
+:term:`Quicksort` is aptly named because, when properly
 implemented, it is the fastest known general-purpose in-memory sorting
 algorithm in the average case.
 It does not require the extra array needed by Mergesort, so it is
@@ -56,7 +57,7 @@ Quicksort implements this same concept in a much more efficient way.
 
 .. index:: ! pivot
 
-Quicksort first selects a value called the :dfn:`pivot`.
+Quicksort first selects a value called the :term:`pivot`.
 (This is conceptually like the root node's value in the BST.)
 Assume that the input array contains :math:`k` records with key values
 less than the pivot.
@@ -65,7 +66,7 @@ values less than the pivot are placed in the first, or leftmost,
 :math:`k` positions in the array, and the values greater than or equal
 to the pivot are placed in the last, or rightmost, :math:`n-k`
 positions.
-This is called a :dfn:`partition` of the array.
+This is called a :term:`partition` of the array.
 The values placed in a given partition need not (and typically will
 not) be sorted with respect to each other.
 All that is required is that all values end up in the correct

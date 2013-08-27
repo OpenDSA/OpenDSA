@@ -5,11 +5,12 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: binary tree terminology; overhead; binary tree node implementation
+   :satisfies: binary tree space requirements
    :topic: Binary Trees
 
-Binary Tree Space Requirements [Text]
-=====================================
+Binary Tree Space Requirements
+==============================
 
 This module presents techniques for calculating the amount of
 overhead required by a binary tree, based on its node implementation.

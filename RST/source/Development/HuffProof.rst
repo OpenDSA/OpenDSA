@@ -5,12 +5,13 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites: Huffman
+   :requires: Huffman coding tree
+   :satisfies: Huffman proof
    :topic: Huffman Coding Trees
 
 
-Proof of Optimality for Huffman Coding [Text]
-=============================================
+Proof of Optimality for Huffman Coding
+======================================
 
 Huffman tree building is an example of a
 :dfn:`greedy algorithm`.

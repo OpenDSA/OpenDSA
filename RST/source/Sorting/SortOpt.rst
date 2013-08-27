@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: code tuning
+   :requires: insertion sort; bubble sort; selection sort; code tuning
    :satisfies: sort code tuning
    :topic: Sorting, Code Tuning
 

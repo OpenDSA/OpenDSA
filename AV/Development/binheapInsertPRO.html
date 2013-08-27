@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Heapsort</title>
+    <title>Binary Heap Insert</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
     <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
-    <link rel="stylesheet" href="heapsortProficiency.css" />
+    <link rel="stylesheet" href="binheapInsertPRO.css" type="text/css" />
   </head>
   <body>
     <div id="container">
@@ -25,18 +25,20 @@
       </table>
       <form class="avcontainer">
         <div class="jsavcanvas">
-          <p class="instructLabel">Instructions:</p>
-          <p class="instructions">
-            Reproduce the behavior of heapsort for the maximum heap
-            below. You can swap keys by clicking the first one and
-            then the second one in either of the representations
-            (array or binary tree). Begin by swapping the last key
-            with the largest key, and reducing the size of the heap by
-            one (by clicking the "Decrement heap size" button). After
-            that, restore the heap property again.
-          </p>
+	  <p class="instructLabel">Instructions:</p>
+	  <p class="instructions">
+	    Insert the stream of keys shown
+	    on the upper-left corner into an originally empty minimum binary
+	    heap. The heap is also depicted in binary tree representation
+	    even though the implementation is an array starting from index 1
+	    (the root node). Each record stored into Heap is represented by
+	    a key that shows its priority. You can insert a key by clicking
+	    an empty index/node and restore heap property after each
+	    insertion by making swaps. You can swap two records by first
+	    clicking one, then the other.
+	  </p>
           <p id="procontrols">
-            <input id="decrement" type="button" value="Decrement heap size" />
+	    <p id="insert">Insert</p>
             <span class="jsavscore"></span>
           </p>
         </div>
@@ -50,6 +52,6 @@
     <script src="../../JSAV/extras/binaryheap.js"></script>
     <script src="../../lib/odsaUtils-min.js"></script>
     <script src="../../lib/odsaAV-min.js"></script>
-    <script src="heapsortProficiency.js"></script>
+    <script src="binheapInsertPRO.js"></script>
   </body>
 </html>
