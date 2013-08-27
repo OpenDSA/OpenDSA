@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting, InsertionSort, BubbleSort, SelectionSort
+   :requires: insertion sort; bubble sort; selection sort
    :topic: Sorting
 
 .. index:: ! exchange sorting
@@ -40,13 +40,12 @@ The remaining sorting algorithms presented in this tutorial are
 significantly better than these three under typical conditions.
 But before continuing on, it is instructive to investigate what makes
 these three sorts so slow.
-The crucial bottleneck is that only *adjacent*
-records are compared.
-Thus, comparisons and moves (in all but Selection Sort) are by single
-steps.
-Swapping adjacent records is called an :dfn:`exchange`.
-Thus, these sorts are sometimes referred to as
-:dfn:`exchange sorts`.
+The crucial bottleneck is that only *adjacent* records are compared.
+Thus, comparisons and moves (for Insertion and Bubble Sort) are by
+single steps.
+Swapping adjacent records is called an :term:`exchange`.
+Thus, these sorts are sometimes referred to as an
+:term:`exchange sort`.
 The cost of any exchange sort can be at best the total number of
 steps that the records in the array must move to reach their
 "correct" location.

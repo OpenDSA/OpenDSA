@@ -50,7 +50,6 @@ var jsav,           // The JSAV object
   cloneArr = [],    // A copy of the (internal) array at the start of the exercise for reset
   returnVal,
   jsavArr,          // The array that the user manipulates (JSAV object)
-  arrMax,
   arrReturn,
   labelReturn,
   selected_pointer,
@@ -106,17 +105,20 @@ function clickHandler(index, e) {
   userInput = true;
 };
 
-// Click event handler on the array 'arrMax'
-function maxClickHandler(index, e) {
-  if (status == 2){
-    selected_pointer.target(arrMax, {relativeIndex : 0,targetIndex : 0});
-    jsav.container.trigger("jsav-updaterelative");
-    selected_pointer.element.removeClass('highlight');
-    pointerIndex = 0;
-    status = 0;
-  }
-  userInput = true;
+// Click event handler on the array 'returnArr'
+function copyHandler(index, e) {
+  if(selected_index !== -1){
+      jsav.effects.moveValue(jsavArr, selected_index, this, 0);
+      jsavArr.css(selected_index, { "background-color": "#ddd" });
+      jsavArr.css(selected_index, {"font-size": "100%"});
+      jsavArr.unhighlight(selected_index);
+      selected_index = -1;
+      status = 0;
+      userInput = true;
+  } 
+
 }
+
 
 // reset function definition
 function f_reset(max_size, arr_size) {
@@ -127,23 +129,20 @@ function f_reset(max_size, arr_size) {
     $("#jsav").empty();
   }
   jsav = new JSAV("jsav");	
+  jsav.SPEED = 80;
   jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false, top : 50});
-  arrMax = jsav.ds.array([max_size], {left:jsavArr.element.outerWidth() + 20, top : 50});
   arrReturn = jsav.ds.array([""], {left:31 * arr_size - ((arr_size>0)?31:0), top : 120});
   labelReturn = jsav.label("return", {left:arrReturn.element.position().left - 45, top : 125});
-  if(arr_size === max_size){
-    pointerTop = jsav.pointer("top", arrMax, {targetIndex:0});
-    pointerIndex = 0;
-  }else{
-     pointerTop = jsav.pointer("top", jsavArr, {targetIndex:arr_size});
-     pointerIndex = arr_size;
-  }
+
+  pointerTop = jsav.pointer("top", jsavArr, {targetIndex:arr_size});
+  pointerIndex = arr_size;
+
   pointerTop.click(pclick);
   jsav.recorded();
   jsav.forward();
   // Bind the clickHandler to handle click events on the array
   jsavArr.click(clickHandler);
-  arrMax.click(maxClickHandler);
+  arrReturn.click(copyHandler);
   userInput = false;
 };
 
@@ -170,22 +169,15 @@ function initJSAV(max_size, arr_size, insertValue) {
   f_reset(max_size, arr_size);
 
   // correct answer
-  returnVal = answerArr[arr_size - 1];
+  if(arr_size === 0){
+    returnVal = "";
+  }else{
+    returnVal = answerArr[arr_size - 1];
+  }
+
   answerArr.splice(arr_size - 1, 0, ""); 
   answerArr.splice(arr_size, 1); 
   console.log(answerArr);
-  // Set up handler for insert button
-  $("#remove").click(function () {
-    if(selected_index !== -1){
-      jsav.effects.moveValue(jsavArr, selected_index, arrReturn, 0);
-      jsavArr.css(selected_index, { "background-color": "#ddd" });
-      jsavArr.css(selected_index, {"font-size": "100%"});
-      jsavArr.unhighlight(selected_index);
-      selected_index = -1;
-      status = 0;
-      userInput = true;
-    }
-  });
 
   // Set up handler for reset button
   $("#reset").click(function () { f_reset(max_size, arr_size); });
@@ -193,10 +185,12 @@ function initJSAV(max_size, arr_size, insertValue) {
 
 // Check user's answer for correctness: User's array must match answer
 function checkAnswer(max_size, arr_size) {
+
   if (arrReturn.value(0) !== returnVal)
-  {
+  { 
     return false;
   }
+
   if(arr_size === 0){
     if(pointerTop.target() !== jsavArr || pointerIndex !== 0){
       return false;	
@@ -219,7 +213,7 @@ function checkAnswer(max_size, arr_size) {
 <div class="exercise">
   <div class="vars">
     <var id="max_size">randRange(6, 8)</var>
-    <var id="arr_size">randRange(max_size, max_size)</var>
+    <var id="arr_size">randRange(0, max_size - 1)</var>
 	<var id="insert_value">randRange(0, 999)</var>
     <var id="JSAV">initJSAV(max_size, arr_size, insert_value)</var>
   </div>
@@ -230,7 +224,6 @@ function checkAnswer(max_size, arr_size) {
       <div class="question">
         
         <input id="reset" type="button" value="Reset" />
-		<input id="remove" type="button" value="Remove" />
         <div id="jsav"></div>
       </div>
       <div class="solution" data-type="custom">

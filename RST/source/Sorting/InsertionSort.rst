@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
+   :requires: sorting terminology; comparison
+   :satisfies: insertion sort
    :topic: Sorting
 
 .. index:: ! Insertion Sort
@@ -22,7 +23,7 @@ respect to the first two, and so on.
 As you take each bill, you would add it to the sorted pile that you
 have already made.
 This simple approach is the inspiration for
-our first sorting algorithm, called :dfn:`Insertion Sort`.
+our first sorting algorithm, called :term:`Insertion Sort`.
 
 Insertion Sort iterates through a list of records.
 For each iteration, the current record is inserted in turn at the
@@ -40,7 +41,7 @@ integer array rather than an array of more complex records.
 But you should realize that in practice, there is not usually much
 use to sorting an array of simple integers.
 Nearly always we want to sort more complex records that each have an
-integer :dfn:`key` value.
+integer :term:`key` value.
 Module :numref:`<Comparison>` discusses ways to associate a key value
 with a record.)
 
@@ -118,7 +119,7 @@ each value greater than the value of record :math:`i` that appears in
 array positions 0 through :math:`i-1`.
 For example, in the slideshows above the value 14 is initially
 preceded by six values greater than it.
-Each such occurrence is called an :dfn:`inversion`.
+Each such occurrence is called an :term:`inversion`.
 The number of inversions (i.e., the number of values greater than a
 given value that occur prior to it in the array) will determine the
 number of comparisons and swaps that must take place.

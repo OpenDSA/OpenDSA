@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
+   :requires: analyzing problems; sorting terminology
+   :satisfies: sorting lower bound
    :topic: Sorting
 
 .. index:: ! sorting; lower bounds proof
@@ -72,7 +73,7 @@ Finally, knowing a lower bound for sorting gives us a lower
 bound in turn for other problems whose solution could be made to work
 as the basis for a sorting algorithm.
 The process of deriving asymptotic bounds for one problem from the
-asymptotic bounds of another is called a :dfn:`reduction`,
+asymptotic bounds of another is called a :term:`reduction`,
 a concept further explored in Module :numref:`<Reductions>`.
 
 Except for the Radix Sort and Binsort, all of the sorting algorithms
@@ -111,7 +112,7 @@ to be in :math:`\Omega(n \log n)`.
 
 Before presenting the proof of an :math:`\Omega(n \log n)` lower bound
 for sorting, we first must define the concept of a
-:dfn:`decision tree`.
+:term:`decision tree`.
 A decision tree is a binary tree that can model the processing for any
 algorithm that makes binary decisions.
 Each (binary) decision is represented by a branch in the tree.

@@ -5,12 +5,13 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: binary tree terminology; binary tree space requirements
+   :satisfies: complete tree
    :topic: Binary Trees
 
 
-Array Implementation for Complete Binary Trees [Text]
-=====================================================
+Array Implementation for Complete Binary Trees
+==============================================
 
 Module :numref:`<BinaryTreeImpl>` explains how a large
 fraction of the space in a typical binary tree node implementation is

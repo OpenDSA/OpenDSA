@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting, InsertionSort
+   :requires: sorting terminology; comparison; insertion sort
+   :satisfies: bubble sort
    :topic: Sorting
 
 .. index:: ! Bubble Sort
@@ -13,7 +14,7 @@
 Bubble Sort
 ===========
 
-Our next sorting algorithm is called :dfn:`Bubble Sort`.
+Our next sorting algorithm is called :term:`Bubble Sort`.
 Bubble Sort is often taught to novice programmers in
 introductory computer science courses.
 This is unfortunate, because Bubble Sort has no redeeming features

@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
+   :requires: heap
+   :satisfies: heapsort
    :topic: Sorting
 
 .. odsascript:: JSAV/extras/binaryheap.js
@@ -39,7 +40,7 @@ available at the start.
 This means that we do not necessarily need to insert one value at a
 time into the tree structure.
 
-Heapsort is based on the heap data structure presented in
+:term:`Heapsort` is based on the :term:`heap` data structure presented in
 Module :numref:`Heaps <Heaps>`.
 Heapsort has all of the advantages just listed.
 The complete binary tree is balanced, its array representation is

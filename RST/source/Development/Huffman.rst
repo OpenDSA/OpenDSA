@@ -5,15 +5,16 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites: BinTreeImp, SpaceBounds
+   :requires: BST
+   :satisfies: Huffman coding tree
    :topic: BinTreeImp
 
 .. odsalink:: AV/Development/HuffmanCodingExamp.css
 
 .. index:: ! Huffman
 
-Huffman Coding Trees [Text]
-===========================
+Huffman Coding Trees
+====================
 
 The space/time tradeoff principle presented in
 Module :numref:`<AnalSpace>` states that one can often gain an

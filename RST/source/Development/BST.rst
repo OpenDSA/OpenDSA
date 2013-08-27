@@ -5,12 +5,13 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: dictionary
+   :requires: binary tree terminology; binary tree traversal; dictionary
+   :satisfies: BST
    :topic: Binary Trees
 
 
-Binary Search Trees [Text]
-==========================
+Binary Search Trees
+===================
 
 Module :numref:`<Dictionary>` presented the dictionary ADT,
 along with dictionary implementations based on sorted and unsorted
@@ -129,6 +130,8 @@ Once the desired record is found, it is passed through
 return values up the chain of recursive calls.
 If a suitable record is not found, NULL is returned.
 
+.. avembed:: AV/Development/BST-search-proficiency.html pe
+
 Inserting a record with key value :math:`K` requires that we first
 find where that record would have been if it were in the tree.
 This takes us to either a leaf node, or to an internal node with no
@@ -197,6 +200,8 @@ In general, it is preferable for a BST to be as shallow as
 possible.
 This keeps the average cost of a BST operation low.
 
+.. avembed:: AV/Development/BST-insert-proficiency.html pe
+
 Removing a node from a BST is a bit trickier than inserting a node,
 but it is not complicated if all of the possible cases are considered
 individually.
@@ -247,6 +252,8 @@ Here is an example
    of the root.
    Thus, the root's ``left`` pointer is changed to point to 5's
    right child.
+
+.. avembed:: AV/Development/BST-delete.html pe
 
 A pointer to the node containing the minimum-valued element is stored
 in parameter ``S``.
@@ -317,7 +324,7 @@ then the BST property is maintained.
    We replace value 37 with the least value from the
    node's right subtree, in this case 40.
 
-.. avembed:: AV/Development/BST-delete.html ss
+.. avembed:: AV/Development/BST-delete-proficiency.html ss
 
 .. TODO::
    :type: Slideshow

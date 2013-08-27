@@ -6,9 +6,9 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
-   :topic: Search
+   :topic: Stubs
 
-Self-organizing Lists [STUB]
+Self Organizing Lists [STUB]
 ============================
 
-Placeholder for cross-reference.
+Stub.
