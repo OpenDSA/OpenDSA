@@ -5,38 +5,15 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: binary tree intro
+   :satisfies: binary tree terminology
    :topic: Binary Trees
 
-Binary Trees [Text]
-===================
-
-Tree structures enable efficient access and efficient update to
-large collections of data.
-Binary trees in particular are widely used and relatively easy to
-implement.
-But binary trees are useful for many things besides searching.
-Just a few examples of applications that trees can speed up include
-prioritizing jobs, describing mathematical expressions and the
-syntactic elements of computer programs,
-or organizing the information needed to drive data compression
-algorithms.
+Binary Trees
+============
 
 This module presents definitions and some key properties
 for binary trees.
-Module :numref:`<BinaryTreeTraversal>`
-discusses how to process all nodes of the
-binary tree in an organized manner.
-Module :numref:`<BinaryTreeImpl>`
-presents various methods for implementing binary
-trees and their nodes.
-Other modules present examples of binary trees used in specific
-applications.
-The Binary Search Tree (BST) is used for implementing dictionaries.
-Heaps are used for implementing priority queues.
-Huffman coding trees are used for text compression.
-Each of these representations has distinctive
-structural features that affect their implementation and use.
 
 Definitions and Properties
 --------------------------
@@ -105,12 +82,6 @@ any node that has at least one non-empty child.
    The depth of :math:`I` is 3.
    The height of this tree is 4.
 
-.. TODO::
-   :type: Slideshow
-
-   Replace the figure above with a series of slides that show each of
-   the defitions.
-
 .. _BinDiff:
 
 .. odsafig:: Images/BinDiff.png
@@ -170,11 +141,6 @@ The heap data structure (Module :numref:`<Heaps>`) is an example
 of a complete binary tree.
 The Huffman coding tree (Module :numref:`<Huffman>`)
 is an example of a full binary tree.
-
-.. TODO::
-   :type: Summary Exercise
-
-   Battary of multiple choice questions to test knowledge of terminology.
 
 Notes
 -----

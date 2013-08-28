@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: BinSort
+   :satisfies: radix sort
+   :requires: binsort
    :topic: Sorting
 
 .. index:: ! Radix Sort
@@ -48,9 +49,9 @@ Records were placed into bins based on the value of first the
 rightmost and then the leftmost decimal digits.
 Any number of bins would have worked if we interpret the key values in
 terms of the corresponding base.
-This is an example of a :dfn:`Radix Sort`, so called because the
-bin computations are based on the :dfn:`radix` or the
-:dfn:`base` of the key values.
+This is an example of a :term:`Radix Sort`, so called because the
+bin computations are based on the :term:`radix` or the
+:term:`base` of the key values.
 This sorting algorithm can be extended to any number of
 keys in any key range.
 We simply assign records to bins based on the

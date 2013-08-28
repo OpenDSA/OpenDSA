@@ -6,6 +6,25 @@
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+
+<script>
+var answer=0;
+function checkAnswer(answer, M , N) {
+var firstPart= M/N ;
+var modelAnswer= Math.exp(Math.log(firstPart)/10).toFixed(2);
+
+
+ if ( answer== modelAnswer) {
+     
+      return true;
+  } else {
+      
+      return false;
+    }
+  }
+
+</script>
+
 </head>
 
 <body>
@@ -14,7 +33,6 @@
   <var id="N"> randRange(1,9)</var>
   <var id="MULTPL"> randRange(2,4)</var>
   <var id="M"> MULTPL* N</var>
-  <var id="Answer"> Math.pow(Math.LOG10E , (Math.log(M/N)/10)).toFixed() </var>
 </div>
   <div class="problems">
     <div id="problem-type-or-description">
@@ -23,8 +41,14 @@
         of <var>M</var>,000. Using logarithms and  antilogarithms,
         determine the average annual growth rate for this fund.
 	(Round to the nearest integer.) 
-      </p>
-      <p class="solution" data-type="text"><var>Answer</var></p>
+      <br> <textarea rows="1" cols="9" style="resize:none"  id="answerTextarea" ></textarea></p>
+      <div class="solution" data-type="custom">
+          <div class="guess"> [ $('#answerTextarea').val() ] </div>
+        <div class="validator-function">
+         answer = parseFloat($('#answerTextarea').val());
+         return checkAnswer(answer, M , N);
+        </div>
+      </div>
       <div class="hints">
 	<p> If you start with <code>N</code> and in 10 years you
           get <code>M</code>, then you want to solve

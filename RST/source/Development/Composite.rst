@@ -5,11 +5,12 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: binary tree terminology; design patterns
+   :satisfies: composite
    :topic: Binary Trees, Design Patterns
 
-Composite Design Pattern [Text]
-===============================
+Composite Design Pattern
+========================
 
 There is another approach that we can take to represent separate leaf
 and internal nodes, also using a virtual base class and separate node

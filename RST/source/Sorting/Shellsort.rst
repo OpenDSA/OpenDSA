@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting, InsertionSort
+   :requires: comparison; insertion sort
+   :satisfies: shellsort
    :topic: Sorting
 
 .. index:: ! Shellsort
@@ -14,7 +15,7 @@
 Shellsort
 =========
 
-When properly implemented, Shellsort will give
+When properly implemented, :term:`Shellsort` will give
 substantially better performance than any of the :math:`\theta(n^2)`
 sorts like Insertion Sort or Selection Sort.
 But it is also a bit more complicated than those simple
@@ -221,7 +222,7 @@ Notes
 Shellsort was named for its inventor, D.L. Shell, who first published
 it in 1959.
 
-It is also sometimes called the :dfn:`diminishing increment sort`.
+It is also sometimes called the :term:`diminishing increment sort`.
 
 If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good

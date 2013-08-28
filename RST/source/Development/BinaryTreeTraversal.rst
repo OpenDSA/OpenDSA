@@ -5,11 +5,12 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: binary tree terminology; recursion
+   :satisfies: binary tree traversal
    :topic: Binary Trees
 
-Binary Tree Traversals [Text]
-=============================
+Binary Tree Traversals
+======================
 
 Often we wish to process a binary tree by "visiting" each of its
 nodes, each time performing a specific action such as printing the

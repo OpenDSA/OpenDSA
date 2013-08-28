@@ -5,11 +5,12 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: binary tree terminology; BST; complete tree
+   :satisfies: heap; priority queue
    :topic: Heaps
 
-Heaps and Priority Queues [Draft]
-=================================
+Heaps and Priority Queues
+=========================
 
 There are many situations, both in real life and in computing
 applications, where we wish to choose the next "most important"
@@ -151,7 +152,7 @@ the two elements swap positions.
 From here, the process of comparing :math:`V` to its (current)
 parent continues until :math:`V` reaches its correct position.
 
-.. avembed:: AV/Development/binaryheap-insert-proficiency.html pe
+.. avembed:: AV/Development/binheapInsertPRO.html pe
 
 Since the heap is a complete binary tree, its height is guaranteed to
 be the minimum possible.
@@ -278,7 +279,7 @@ The exchanges shown in Figure :num:`Figure #HeapBuild` (b) result from
 this process.
 Method ``buildHeap`` implements the building algorithm.
 
-.. avembed:: AV/Development/binaryheap-buildheap-proficiency.html pe
+.. avembed:: AV/Development/binheapBuildPRO.html pe
 
 What is the cost of ``buildHeap``?
 Clearly it is the sum of the costs for the calls to ``siftdown``.
@@ -324,7 +325,7 @@ Because the heap is :math:`\log n` levels deep, the cost of deleting
 the maximum element is :math:`\Theta(\log n)` in the average and worst
 cases.
 
-.. avembed:: AV/Development/binaryheap-delete-proficiency.html pe
+.. avembed:: AV/Development/binheapDeletePRO.html pe
 
 The heap is a natural implementation for the priority queue discussed
 at the beginning of this section.

@@ -19,64 +19,6 @@
         "exercises": {}
       }
     },
-    "Introduction": {
-      "Development/IntroDSA.rst": {
-        "long_name": "Introduction to Data Structures and Algorithms",
-        "exercises": {}
-      }
-    },
-    "Mathematical Background": {
-      "Development/SetDef": {
-        "long_name": "Set Definitions",
-        "exercises": {}
-      },
-      "Development/MiscMath": {
-        "long_name": "Set Definitions",
-        "exercises": {}
-      },
-      "Development/Logarithms": {
-        "long_name": "Set Definitions",
-        "exercises": {}
-      },
-      "Development/Summations": {
-        "long_name": "Set Definitions",
-        "exercises": {}
-      },
-      "Development/Recursion": {
-        "long_name": "Set Definitions",
-        "exercises": {}
-      },
-      "Development/Proofs": {
-        "long_name": "Set Definitions",
-        "exercises": {}
-      },
-      "Development/Estimation": {
-        "long_name": "Set Definitions",
-        "exercises": {}
-      }
-    },
-    "Algorithm Analysis": {
-      "Development/AnalPrelim": {
-        "long_name": "Problems, Algorithms, and Programs",
-        "exercises": {}
-      }
-    },
-    "Design": {
-      "Development/ADT": {
-        "long_name": "Abstract Data Types",
-        "exercises": {}
-      },
-      "Development/DesignPatterns": {
-        "long_name": "Design Patterns",
-        "exercises": {}
-      }
-    },
-    "Linear Structures": {
-      "Development/ListIntro": {
-        "long_name": "Instroduction to Lists",
-        "exercises": {}
-      }
-    },
     "BinaryTrees": {
       "Development/BinaryTree": {
         "long_name": "Binary Tree Introduction",

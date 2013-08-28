@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting, Mergesort
+   :requires: mergesort
    :topic: Sorting
 
 .. odsalink:: AV/Sorting/mergeCON.css

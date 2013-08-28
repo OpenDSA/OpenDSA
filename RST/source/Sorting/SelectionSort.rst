@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting, Bubble Sort
+   :requires: sorting terminology; comparison; bubble sort
+   :satisfies: selection sort
    :topic: Sorting
 
 .. index:: ! Selection Sort
@@ -23,7 +24,7 @@ Proceed through the ever-shrinking pile of bills to select the next
 one in order until you are done.
 This is the inspiration for
 our last :math:`\Theta(n^2)` sort,
-called :dfn:`Selection Sort`.
+called :term:`Selection Sort`.
 The :math:`i`'th pass of Selection Sort "selects" the :math:`i`'th
 largest key in the array, placing that record at the end of the array.
 In other words, Selection Sort first finds the largest key in an

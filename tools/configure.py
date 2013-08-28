@@ -80,7 +80,7 @@ rst_header = '''\
 
 .. raw:: html
 
-   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";</script>
+   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s";</script>
 
 %(unicode_directive)s
 
@@ -482,10 +482,10 @@ def process_path(path, abs_prefix):
 
   return path
 
-def process_section(conf_data, section, index_rst, depth):
+def process_section(conf_data, section, index_rst, depth, chap=None):
   for subsect in section:
     if 'exercises' in section[subsect]:
-      process_module(conf_data, index_rst, subsect, section[subsect], depth)
+      process_module(conf_data, index_rst, subsect, section[subsect], depth, chap)
     else:
       print ("  " * depth) + subsect
       index_rst.write(subsect + '\n')
@@ -493,11 +493,11 @@ def process_section(conf_data, section, index_rst, depth):
       index_rst.write(".. toctree::\n")
       index_rst.write("   :numbered:\n")
       index_rst.write("   :maxdepth: 3\n\n")
-      process_section(conf_data, section[subsect], index_rst, depth + 1)
+      process_section(conf_data, section[subsect], index_rst, depth + 1, subsect)
 
   index_rst.write("\n")
 
-def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0):
+def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0, chap=None):
   global todo_count
   global satisfied_requirements
   
@@ -505,6 +505,9 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   
   mod_path = mod_path.replace('.rst', '')
   mod_name = os.path.basename(mod_path)
+  mod_chapter = ''
+  if chap:
+     mod_chapter = chap
 
   # Print error message and exit if duplicate module name is detected
   if mod_name in processed_modules:
@@ -546,6 +549,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   header_data['mod_name'] = mod_name
   header_data['dispModComp'] = str(dispModComp).lower()
   header_data['long_name'] = long_name
+  header_data['mod_chapter'] = mod_chapter
   #no unicode directive when building ourse notes
   if os.environ.get('SLIDES', None) == "yes":
     header_data['unicode_directive'] = ''
@@ -797,6 +801,7 @@ def configure(config_file, slides = False):
     header_data['dispModComp'] = 'false'
     header_data['long_name'] = 'Contents'
     header_data['orig_data'] = index_header
+    header_data['mod_chapter'] = ''
     slides_lib = ''
     if slides:
       header_data['unicode_directive'] = ''

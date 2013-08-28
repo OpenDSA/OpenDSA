@@ -54,9 +54,8 @@ Written by Junyang Chen and Cliff Shaffer
   var jsav,           // The JSAV object
     answerArr = [],   // The (internal) array that stores the correct answer
     cloneArr = [],    // A copy of the (internal) array at the start of the exercise for reset
-    maxSize,          // Size of the array.
+    maxSize,          // Size of the JSAV array.
     jsavArr,          // The JSAV array that the user manipulates
-    arrMax,           // JSAV array recording 'top' pointer's index.
     pointerTop,       // 'top' pointer
     selected_pointer, // Pointer that has been highlighted
     selected_index,   // Position that has been selected by user for swap
@@ -126,7 +125,6 @@ Written by Junyang Chen and Cliff Shaffer
     } else if (status == 2){
       pointerTop = setPointer("top", jsavArr, index);
       //selected_pointer.target(jsavArr, {relativeIndex : index,targetIndex : index});
-      arrMax.value(0, index);
       jsav.container.trigger("jsav-updaterelative");
       selected_pointer.element.removeClass('highlight');
       pointerIndex = index;
@@ -135,18 +133,6 @@ Written by Junyang Chen and Cliff Shaffer
     userInput = true;
   };
 
-  // Click event handler on the array 'arrMax'
-  function maxClickHandler(index, e) {
-    if (status == 2){
-      pointerTop = setPointer("top", arrMax, 0);
-      arrMax.value(0, maxSize);
-      jsav.container.trigger("jsav-updaterelative");
-      selected_pointer.element.removeClass('highlight');
-      pointerIndex = 0;
-      status = 0;
-    }
-    userInput = true;
-  }
 
   // reset function definition
   function f_reset(max_size, arr_size) {
@@ -161,30 +147,27 @@ Written by Junyang Chen and Cliff Shaffer
     // Sets the speed of animation.
     jsav.SPEED = 120;
     jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false, left: leftMargin, top : topMargin});
-    arrMax = jsav.ds.array([""], {left:jsavArr.element.outerWidth() + 20, top : 50});
-    if(arr_size === max_size){
-      pointerTop = setPointer("top", arrMax, 0);
-      //pointerTop = jsav.pointer("top", arrMax, {targetIndex:0});
-      arrMax.value(0, max_size);
-      pointerIndex = 0;
-    }else{
-      pointerTop = setPointer("top", jsavArr, arr_size);
-      //pointerTop = jsav.pointer("top", jsavArr, {targetIndex:arr_size});
-      arrMax.value(0, arr_size);
-      pointerIndex = arr_size;
-    }
+
+    
+    pointerTop = setPointer("top", jsavArr, arr_size);
+    //pointerTop = jsav.pointer("top", jsavArr, {targetIndex:arr_size});
+    pointerIndex = arr_size;
+   
+
     //pointerTop.click(pclick);
     jsav.recorded();
     jsav.forward();
+
     // Bind the clickHandler to handle click events on the array
     jsavArr.click(clickHandler);
-    arrMax.click(maxClickHandler);
     userInput = false;
   };
 
   // Initialise the exercise
   function initJSAV(max_size, arr_size, insertValue) {
     var i, j;
+
+    //global variables
     userInput = false;
     maxSize = max_size;
     selected_index = -1;
@@ -229,14 +212,8 @@ Written by Junyang Chen and Cliff Shaffer
   // Check user's answer for correctness: User's array must match answer
   function checkAnswer(max_size, arr_size) {
 
-    if(max_size === arr_size || max_size === arr_size + 1){  
-      if(pointerTop.target() !== arrMax || pointerIndex !== 0){
-        return false;
-      }
-    }else {
-      if(pointerTop.target() !== jsavArr || pointerIndex !== arr_size + 1){
-        return false;
-      }
+    if(pointerTop.target() !== jsavArr || pointerIndex !== arr_size + 1){
+      return false;
     }
     for (var i = 0; i < max_size; i++) {
       if (jsavArr.value(i) !== answerArr[i]) {
@@ -250,7 +227,7 @@ Written by Junyang Chen and Cliff Shaffer
 <div class="exercise">
   <div class="vars">
     <var id="max_size">randRange(6, 8)</var>
-    <var id="arr_size">randRange(0, max_size)</var>
+    <var id="arr_size">randRange(0, max_size - 2)</var>
 	<var id="insert_value">randRange(0, 999)</var>
     <var id="JSAV">initJSAV(max_size, arr_size, insert_value)</var>
   </div>

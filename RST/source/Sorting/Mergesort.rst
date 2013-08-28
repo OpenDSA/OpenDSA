@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
+   :requires: comparison; sorting terminology
+   :satisfies: mergesort
    :topic: Sorting
 
 .. odsalink:: AV/Sorting/mergeCON.css
@@ -21,7 +22,7 @@ list to be sorted into pieces, process the pieces, and then put them
 back together somehow.
 A simple way to do this would be to split the list in half, sort
 the halves, and then merge the sorted halves together.
-This is the idea behind Mergesort.
+This is the idea behind :term:`Mergesort`.
 
 Mergesort is one of the simplest sorting algorithms conceptually,
 and has good performance both in the asymptotic 

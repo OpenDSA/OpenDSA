@@ -243,21 +243,22 @@ function wrongAnswerEffect(score, framework){
 }
 
 // Process the message data coming from OpenPop Back end
-function handleMsg(message){
+function handleMsg(message , lineNum, fileName , className){
 
     var newmessage= message.join(',');
     var re = "Try Again";
     newmessage = newmessage.replace(/\n/gi, "");
 
-    if(newmessage.indexOf(re) == -1){
-        newmessage= newmessage.replace(/studentlisttest.java:/gi, "Error:line# ");
-        newmessage=newmessage.replace("class studentlisttest" , "");
+    if(newmessage.indexOf(re) == -1){ // /studentlisttest.java:/gi
+        var re = new RegExp(fileName, 'g');
+        newmessage= newmessage.replace( re, "Error:line# ");
+        newmessage=newmessage.replace(className , "");
         newmessage = newmessage.replace(/\^/gi, "");
 
         var numbers = newmessage.match(/\d+\.?\d*/g);
            
         for (var i=numbers.length-2 ; i>=0 ; i--){
-            var newnumber = numbers[i]-333;
+            var newnumber = numbers[i]-lineNum;
             var stringnum = numbers[i]+'';
             var newstringnumber =  newnumber +'';
             newmessage=newmessage.replace(stringnum , newstringnumber);
@@ -274,9 +275,9 @@ function emptyMsgArea(){
 }
 
 // Show feed-back message from the back end
-function feedbackEffect(message){
+function feedbackEffect(message,lineNum, fileName , className){
     
-    var msg = handleMsg(message);
+    var msg = handleMsg(message ,lineNum, fileName , className);
 
     for (var i = 0; i < msg.length; i++) {
         var msgLine = $("<div>" + msg[i] + "</div>")
@@ -424,7 +425,7 @@ function handleAttempt(data) {
          }else {
              wrongAnswerEffect(score, framework);
              if(data.message !== null){
-                 feedbackEffect(data.message);
+                 feedbackEffect(data.message ,data.lineNum, data.fileName , data.className  );
              }
          }
       }

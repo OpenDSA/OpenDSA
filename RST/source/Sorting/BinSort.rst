@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
+   :requires: sorting terminology
+   :satisfies: binsort
    :topic: Sorting
 
 .. index:: ! Binsort
@@ -38,8 +39,8 @@ numbers 0 through :math:`n-1`.
 
 Here the key value is used to determine the
 position for a record in the final sorted array.
-This is the most basic example of a :dfn:`Binsort`,
-where key values are used to assign records to :dfn:`bins`.
+This is the most basic example of a :term:`Binsort`,
+where key values are used to assign records to bins.
 This algorithm is extremely efficient,
 always taking :math:`\Theta(n)` time
 regardless of the initial ordering of the keys.
@@ -105,7 +106,7 @@ In addition, a large key range requires an unacceptably large array
 Thus, even the extended Binsort is useful only for a limited key
 range.
 
-A further generalization to Binsort would yield a :dfn:`bucket sort`.
+A further generalization to Binsort would yield a :term:`bucket sort`.
 Here, each bin (now called a bucket) is associated with not just one
 key, but rather a range of key values.
 A bucket sort assigns records to buckets and then relies on some
