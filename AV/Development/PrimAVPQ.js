@@ -15,25 +15,91 @@
     jsav = new JSAV($('.avcontainer'));
     graph = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: false});
     mst = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: true});
-    mst.hide();
     initGraph();
     graph.layout();
     size=graph.nodeCount();
     var startArray=[];
 	for(var i=0;i<graph.nodeCount();i++)
 	{
-		startArray.push(Infinity);
+		 startArray.push(Infinity);		 
 	}
-    bh = jsav.ds.binheap(startArray,{left: 400, height: 500, stats: true, tree: true});
-    jsav.displayInit();	
+    bh = jsav.ds.binheap(startArray,{left: 400, height: 500, stats: false, tree: true, heapify: true});
+	
+	//Assigning a graphNode for each heapNode
+	for(var i=0;i<graph.nodeCount();i++)
+	{
+		bh._treenodes[i].graphNode = gnodes[i];
+		gnodes[i].heapNode = bh._treenodes[i];
+	}
+	
+	jsav.displayInit();	
     prim(gnodes[0]);            // Run Prim's algorithm from start node.
-    //displayMST();
+    displayMST();
     jsav.recorded();
+  } 
+  function heapifyUp(index)
+  {
+	//Pushing up a value up through the heap
+    if(index > 0)
+	{
+		var j = Math.floor(index/2);
+		if(bh.value(index) < bh.value(j))
+		{
+			swap(index,j);
+			heapifyUp(j);
+		}
+	}  	
   }
-
+  function heapifyDown(index)
+  {
+	//Pushing a value down through the heap
+	var j;
+	if(2*index+1 > size-1)
+	{
+		return;
+	}
+	else if (2*index+1 < size-1)
+	{
+		var left=2*index+1;
+		var right=2*index+2;
+		if(bh.value(left)>=bh.value(right))
+		{
+			j=right;
+		}
+		else
+		{
+			j=left;
+		}
+	}
+	else if(2*index+1==size-1)
+	{
+		j=2*index+1;
+	}
+	if(bh.value(index)>bh.value(j))
+	{
+		swap(index,j);
+		heapifyDown(j);
+	}
+  }
+  function swap(index1,index2)
+  {
+	//This swap function swaps the values (keys) stored inside the heap as well as any references between heapNodes and graphNodes
+	var temp = bh.value(index1);
+	bh.value(index1,bh.value(index2));
+	bh.value(index2,temp);	
+	
+	var graphNode1=bh._treenodes[index1].graphNode;
+	var graphNode2=bh._treenodes[index2].graphNode;
+	
+	temp=bh._treenodes[index1].graphNode;
+	bh._treenodes[index1].graphNode=bh._treenodes[index2].graphNode;
+	bh._treenodes[index2].graphNode=temp;
+	
+	graphNode1.heapNode=bh._treenodes[index2];
+	graphNode2.heapNode=bh._treenodes[index1];
+  }
   function displayMST() {
-    var next;
-    var edges = mst.edges();
+    mst.show();
     graph.hide();
     mst.layout();
     jsav.umsg("Complete minimum spanning tree");
@@ -49,102 +115,84 @@
   
   function deleteMin()
   {
-    var minHeapNodeValue = bh._treenodes[0].graphNode.value();
-	bh.swap(0,size-1);
-	
+    var minHeapGraphNode = bh._treenodes[0].graphNode;
+	swap(0,size-1);
 	bh.css(size-1, {"opacity": "0"});
-    bh._treenodes[size-1].edgeToParent().css("stroke", "white");
-	size--;
-	for (var i = Math.floor(size / 2); i > 0; i--) {
-		bh.heapify(i, {noAnimation: true, steps: false});
+	if(size > 1)
+	{
+		bh._treenodes[size-1].edgeToParent().css("stroke", "white");
 	}
+	size--;
 	bh.heapsize(bh.heapsize()-1);
-	return minHeapNodeValue;    //Return the graph Node with minimum distance
+	return minHeapGraphNode;    //Return the graph Node with minimum distance
   }
 
-  // Compute Prim's algorithm and return edges
+  //Compute Prim's algorithm and return edges
   function prim(s)
   {
-	var neighbors;
+	var neighbors = [];
 	var weight;
+	var next;
 	var v;
 	var heapNode;
-	bh.heapsize(0);     //To inserting adding at the begining of the heap
-	markIt(s); //Add the start node to the MST
-	neighbors = s.neighbors();
-	for (var j = 0; j < neighbors.length; j++) {
-		if (!neighbors[j].hasClass("visited")) {
-			var w = neighbors[j];
-			weight = s.edgeTo(w).weight();
-			//Add Distances Of neighbors not in the minimum spanning tree to the heap
-			jsav.umsg("Adding the weight of edge ("+s.value()+","+w.value()+") to the heap");
-			bh.insert(weight);
-			var heapNode = bh._treenodes[bh.heapsize()-1];
-			heapNode.graphNode = w;
-		}
-	}
-	 //Extracting the minimum distance node from the heap
-	 jsav.umsg("Extracting the minimum distance from the heap");
-	 v = deleteMin();
-	 alert(v);
-	 //v = deleteMin();
-	 //alert(v);
-  }
-  /*
-  function prim(s) {
-    var v;         // The current node added to the MST
-    var neighbors = []; // The neighbors of a specific node
-    var weight;         // Weight of current edge
-    var next, i;
-
-  // Initialize the MST "parents" to dummy values
+	
+	// Initialize the MST "parents" to dummy values
     for (next = gnodes.next(); next; next = gnodes.next()) {
       next.parent = next;
     }
-    distances.value(s.index, 0);
-    jsav.umsg("Update the distance value of node " + s.value());
-    jsav.step();
-    for (i = 0; i < graph.nodeCount(); i++) {
-      v = minVertex();
-      markIt(v);
-      if (distances.value(v.index) === Infinity) {
-        jsav.umsg("No other nodes are reachable, so quit.");
-        jsav.step();
-        return;
-      }
-      if (v !== s) {
-        //Add an edge to the MST
-        var edge = graph.getEdge(v.parent, v);
-        edge.css({"stroke-width": "4", "stroke": "red"});
-        var mstedge = mst.addEdge(mstnodes[v.parent.index], mstnodes[v.index], {"weight": edge.weight()});
-        mstedge.css({"stroke-width": "2", "stroke": "red"});
-        jsav.umsg("Add edge (" + v.parent.value() + "," + v.value() + ") to the MST");
-        jsav.step();
-      }
-      neighbors = v.neighbors();
-      for (var j = 0; j < neighbors.length; j++) {
-        if (!neighbors[j].hasClass("visited")) {
-          var w = neighbors[j];
-          weight = v.edgeTo(w).weight();
-          //Update Distances Of neighbors not in the minimum spanning tree
-          var msg = "<u>Processing edge (" + v.value() + "," + w.value() + "): </u>";
-          if (distances.value(w.index) > weight) {
-            w.parent = v;
-            distances.value(w.index, weight);
-            msg += "Update the distance value of node (" + w.value() + ")";
-          }
-          else {
-            msg += "Leave the distance value of node (" + w.value() + ") unchanged";
-          }
-          jsav.umsg(msg);
-          jsav.step();
+	jsav.umsg("Adding the distance value of node ("+s.value()+") to the heap");
+	bh.value(bh._treenodes.indexOf(s.heapNode),0);
+	heapifyUp(bh._treenodes.indexOf(s.heapNode));
+	jsav.step();
+	
+	for (var i = 0; i < graph.nodeCount(); i++) {
+	    jsav.umsg("Extracting the minimum distance Node from the heap");
+		v = deleteMin();
+		if(size > 0)
+		{
+			heapifyDown(0);
+		}
+		jsav.umsg("The distance value of Node ("+v.value()+") extracted");
+		jsav.step();
+		markIt(v);
+
+		if (v !== s) {
+			//Add an edge to the MST
+			var edge = graph.getEdge(v.parent, v);
+			edge.css({"stroke-width": "4", "stroke": "red"});
+			var mstedge = mst.addEdge(mstnodes[v.parent.index], mstnodes[v.index], {"weight": edge.weight()});
+			mstedge.css({"stroke-width": "2", "stroke": "red"});
+			jsav.umsg("Adding edge (" + v.parent.value() + "," + v.value() + ") to the MST");
+			jsav.step();
         }
-      }
-    }
+		neighbors = v.neighbors();
+		for (var j = 0; j < neighbors.length; j++) {
+			if (!neighbors[j].hasClass("visited")) {
+				var w = neighbors[j];
+				weight = v.edgeTo(w).weight();
+				//Add Distances Of neighbours not in the minimum spanning tree to the heap In Case It is minimum than existing
+				var msg = "<u>Processing edge (" + v.value() + "," + w.value() + "): </u>";
+				if(weight < bh.value(bh._treenodes.indexOf(w.heapNode)))
+				{
+					bh.value(bh._treenodes.indexOf(w.heapNode),weight);
+					w.parent = v;
+					heapifyUp(bh._treenodes.indexOf(w.heapNode));
+					msg += " Update the distance value of node (" + w.value() + ")";
+				}
+				else
+				{
+					msg += " Leave the distance value of node (" + w.value() + ") unchanged";
+				}
+				jsav.umsg(msg);
+				jsav.step();
+			}
+	}
+   }
   }
-*/
+  
+  
   function about() {
-    var mystring = "Prim's Algorithm Visualization\nWritten by Mohammed Fawzy and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2013\nLast update: March, 2013\nJSAV library version " + JSAV.version();
+    var mystring = "Prim's Algorithm (The Priority Queue Version) Visualization\nWritten by Mohammed Fawzi and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Fall, 2013\nLast update: March, 2013\nJSAV library version " + JSAV.version();
     alert(mystring);
   }
 
@@ -177,11 +225,12 @@
 
     gnodes = graph.nodes();
     mstnodes = mst.nodes();
-    /*
+    
 	for (var i = 0; i < mstnodes.length; i++) {
       gnodes[i].index = i;
     }
-	*/
+	mst.hide();
+	
   }
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
