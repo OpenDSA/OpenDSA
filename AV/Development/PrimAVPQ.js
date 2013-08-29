@@ -31,7 +31,6 @@
 		bh._treenodes[i].graphNode = gnodes[i];
 		gnodes[i].heapNode = bh._treenodes[i];
 	}
-	
 	jsav.displayInit();	
     prim(gnodes[0]);            // Run Prim's algorithm from start node.
     displayMST();
@@ -42,7 +41,7 @@
 	//Pushing up a value up through the heap
     if(index > 0)
 	{
-		var j = Math.floor(index/2);
+		var j = Math.floor((index-1)/2);
 		if(bh.value(index) < bh.value(j))
 		{
 			swap(index,j);
@@ -84,6 +83,14 @@
   function swap(index1,index2)
   {
 	//This swap function swaps the values (keys) stored inside the heap as well as any references between heapNodes and graphNodes
+	
+	jsav.umsg("Swap the distance values of GraphNodes ("+bh._treenodes[index1].graphNode.value()
+	              +") and ("+bh._treenodes[index2].graphNode.value()+")");
+	var treeswap = function(index1, index2) {
+        bh.jsav.effects.swap(bh._treenodes[index1].element, bh._treenodes[index2].element, true);
+      };
+      JSAV.anim(treeswap, treeswap).call(bh, index1, index2);
+	
 	var temp = bh.value(index1);
 	bh.value(index1,bh.value(index2));
 	bh.value(index2,temp);	
@@ -97,6 +104,7 @@
 	
 	graphNode1.heapNode=bh._treenodes[index2];
 	graphNode2.heapNode=bh._treenodes[index1];
+	jsav.step();
   }
   function displayMST() {
     mst.show();
@@ -116,7 +124,10 @@
   function deleteMin()
   {
     var minHeapGraphNode = bh._treenodes[0].graphNode;
-	swap(0,size-1);
+	if(size > 1)
+	{
+		swap(0,size-1);
+	}
 	bh.css(size-1, {"opacity": "0"});
 	if(size > 1)
 	{
@@ -142,13 +153,15 @@
     }
 	jsav.umsg("Adding the distance value of node ("+s.value()+") to the heap");
 	bh.value(bh._treenodes.indexOf(s.heapNode),0);
-	heapifyUp(bh._treenodes.indexOf(s.heapNode));
+	//bh._treenodes[bh._treenodes.indexOf(s.heapNode)].value(10);
+	//heapifyUp(bh._treenodes.indexOf(s.heapNode));
 	jsav.step();
 	
 	for (var i = 0; i < graph.nodeCount(); i++) {
 	    jsav.umsg("Extracting the minimum distance Node from the heap");
+		jsav.step();
 		v = deleteMin();
-		if(size > 0)
+		if(size > 1)
 		{
 			heapifyDown(0);
 		}
@@ -174,17 +187,21 @@
 				var msg = "<u>Processing edge (" + v.value() + "," + w.value() + "): </u>";
 				if(weight < bh.value(bh._treenodes.indexOf(w.heapNode)))
 				{
+					msg += " Update the distance value of node (" + w.value() + ")";
+					jsav.umsg(msg);
 					bh.value(bh._treenodes.indexOf(w.heapNode),weight);
 					w.parent = v;
+					jsav.step();
 					heapifyUp(bh._treenodes.indexOf(w.heapNode));
-					msg += " Update the distance value of node (" + w.value() + ")";
+					
 				}
 				else
 				{
 					msg += " Leave the distance value of node (" + w.value() + ") unchanged";
+					jsav.umsg(msg);
+					jsav.step();
 				}
-				jsav.umsg(msg);
-				jsav.step();
+				
 			}
 	}
    }
