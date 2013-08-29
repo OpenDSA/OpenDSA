@@ -41,15 +41,6 @@ position within the tree.
 Figure :num:`Figure #BinArray` (b) lists the array indices for the
 children, parent, and siblings of each node in
 Figure :num:`Figure #BinArray` (a).
-From Figure :num:`Figure #BinArray` (b), you should see a pattern
-regarding the positions of a node's relatives within the array.
-Simple formulas can be derived for calculating the array index
-for each relative of a node :math:`R` from :math:`R`'s index.
-No explicit pointers are necessary to reach a node's left or
-right child.
-This means there is no overhead to the array implementation if the
-array is selected to be of size :math:`n` for a tree of :math:`n`
-nodes.
 
 .. _BinArray:
 
@@ -58,19 +49,45 @@ nodes.
    :align: center
    :capalign: justify
    :figwidth: 90%
-   :alt: Complete binary tree stored in an array
+   :alt: Complete binary tree node numbering
 
-   A complete binary tree and its array implementation.
-   (a) The complete binary tree with twelve nodes.
-   Each node has been labeled with its position in the tree.
-   (b) The positions for the relatives of each node.
-   A dash indicates that the relative does not exist.
+   A complete binary tree of 12 nodes, numbered starting from 0.
 
-.. TODO::
-   :type: Figure
+Here is a table that lists, for each node position, the positions of
+the parent, sibling, and children of the node.
 
-   Generate image for Figure 5.12(b) from table.
+.. math::
 
+   \begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+   \hline
+   \textrm{Position} & 0  & 1 & 2 & 3 &  4 &  5 & 6 & 7 & 8 &  9 & 10 & 11\\
+   \hline
+   \hline
+   \textrm{Parent} & \,--\, & 0 & 0 & 1 &  1 &  2 &  2 & 3 & 3 & 4 & 4 & 5\\
+   \hline
+   \textrm{Left Child} & 1  & 3 & 5 & 7 &  9 & 11 & \,--\, & \,--\, & \,--\, &
+   \,--\, & \,--\, &  \,--\,\\
+   \hline
+   \textrm{Right Child} & 2  & 4 & 6 & 8 & 10 & \,--\, & \,--\, & \,--\, &
+   \,--\, & \,--\, & \,--\, &  \,--\,\\
+   \hline
+   \textrm{Left Sibling} & \,--\, & \,--\, & 1 & \,--\, &  3 & \,--\, & 5 &
+   \,--\, & 7 & \,--\, &  9 &  \,--\,\\
+   \hline
+   \textrm{Right Sibling} & \,--\, & 2 & \,--\, & 4 & \,--\, &  6 & \,--\, & 8 &
+   \,--\, & 10 & \,--\, & \,--\,\\
+   \hline
+   \end{array}
+
+Looking at the table, you should see a pattern
+regarding the positions of a node's relatives within the array.
+Simple formulas can be derived for calculating the array index
+for each relative of a node :math:`R` from :math:`R`'s index.
+No explicit pointers are necessary to reach a node's left or
+right child.
+This means there is no overhead to the array implementation if the
+array is selected to be of size :math:`n` for a tree of :math:`n`
+nodes.
 
 The formulae for calculating the array indices of the various
 relatives of a node are as follows.

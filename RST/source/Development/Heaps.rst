@@ -88,12 +88,15 @@ while the Replacement Selection algorithm used for external sorting
 uses a min-heap.
 The examples in the rest of this section will use a max-heap.
 
-Be careful not to confuse the logical representation of a heap
+Be sure not to confuse the logical representation of a heap
 with its physical implementation by means of the array-based complete
 binary tree.
 The two are not synonymous because the logical view of the heap is
 actually a tree structure, while the typical physical implementation
 uses an array.
+
+.. inlineav:: heapinsertCON ss
+   :output: show
 
 Here is an implementation for max-heaps.
 The class uses KVPairs to support arbitrary data payloads.
@@ -142,7 +145,7 @@ it must take up the first :math:`n+1` positions after.
 To accomplish this, ``insert`` first places :math:`V` at
 position :math:`n` of the array.
 Of course, :math:`V` is unlikely to be in the correct position.
-To move <var>V</var> to the right place, it is compared to its
+To move :math:`V` to the right place, it is compared to its
 parent's value.
 If the value of :math:`V` is less than or equal to the value of its
 parent, then it is in the correct place and the insert routine is
@@ -192,20 +195,6 @@ worst case.
 If all :math:`n` values are available at the beginning of the
 building process, we can build the heap faster than just
 inserting the values into the heap one by one.
-Consider Figure :num:`Figure #HeapBuild` (a), which shows one series of
-exchanges that could be used to build the heap.
-All exchanges are between a node and one of its children.
-The heap is formed as a result of this exchange process.
-The array for the right-hand tree of
-Figure :num:`Figure #HeapBuild` (a) would appear as follows::
-
-   7 4 6 1 2 3 5
-
-Figure :num:`Figure #HeapBuild` (b) shows an alternate series of
-exchanges that also forms a heap, but much more efficiently.
-The equivalent array representation would be::
-
-   7 5 6 4 2 1 3
 
 From this example, it is clear that the heap for any given
 set of numbers is not unique, and we see that some rearrangements of
@@ -247,23 +236,6 @@ In this case, we simply continue the process of "pushing down"
 children, or is a leaf node.
 This process is implemented by the private method
 ``siftdown``.
-The siftdown operation is illustrated by
-Figure :num:`Figure #SiftPic`.
-
-.. _SiftPic:
-
-.. odsafig:: Images/SiftPic.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: The siftdown operation
-
-   The siftdown operation.
-   The subtrees of the root are assumed to be heaps.
-   (a) The partially completed heap.
-   (b) Values 1 and 7 are swapped.
-   (c) Values 1 and 6 are swapped to form the final heap.
 
 This approach assumes that the subtrees are already heaps,
 suggesting that a complete algorithm can be obtained by visiting
@@ -275,8 +247,12 @@ Actually, the build process need not visit the leaf nodes
 (they can never move down because they are already at the bottom), so
 the building algorithm can start in the middle of the array, with the
 first internal node.
-The exchanges shown in Figure :num:`Figure #HeapBuild` (b) result from
-this process.
+
+Here is a visualization of the heap build process.
+
+.. inlineav:: heapbuildCON ss
+   :output: show
+
 Method ``buildHeap`` implements the building algorithm.
 
 .. avembed:: AV/Development/binheapBuildPRO.html pe
@@ -309,23 +285,17 @@ It is also faster than the :math:`\Theta(n \log n)` average-case
 time and :math:`\Theta(n^2)` worst-case time required to build the
 BST.
 
-Removing the maximum (root) value from a heap
-containing :math:`n` elements requires that we maintain the complete
-binary tree shape, and that the remaining :math:`n-1` node values
-conform to the heap property.
-We can maintain the proper shape by moving the element in the last
-position in the heap (the current last element in the array) to the
-root position.
-We now consider the heap to be one element smaller.
-Unfortunately, the new root value is probably
-*not* the maximum value in the new heap.
-This problem is easily solved by using ``siftdown`` to reorder
-the heap.
+.. inlineav:: heapmaxCON ss
+   :output: show
+
 Because the heap is :math:`\log n` levels deep, the cost of deleting
 the maximum element is :math:`\Theta(\log n)` in the average and worst
 cases.
 
 .. avembed:: AV/Development/binheapDeletePRO.html pe
+
+.. inlineav:: heapdeleteCON ss
+   :output: show
 
 The heap is a natural implementation for the priority queue discussed
 at the beginning of this section.
@@ -354,11 +324,6 @@ deleted from the heap and reinserted with its new priority.
 Modules :numref:`<GraphShortest>` and :numref:`<MCST>` present
 applications for a priority queue with priority updating.
 
-.. TODO::
-   :type: Exercise
-
-   Add summary questions
-
 Notes
 -----
 
@@ -369,3 +334,6 @@ For a story on Priority Queues and dragons, see
 `Computational Fairy Tales: Stacks, Queues, Priority Queues, and the
 Prince's Complaint Line
 <http://computationaltales.blogspot.com/2011/04/stacks-queues-priority-queues-and.html>`_.
+
+.. odsascript:: JSAV/extras/binaryheap.js
+.. odsascript:: AV/Development/heapsCON.js

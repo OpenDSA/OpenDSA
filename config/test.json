@@ -9,10 +9,32 @@
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "chapters": {
-    "Algorithm Analysis": {
-      "Test/AnalProgram": {
-        "long_name": "Calculating",
+    "Binary Trees": {
+      "Development/CompleteTree": {
+        "long_name": "Array Implementation for Complete Trees",
+        "exercises": {}
+      },
+      "Development/Heaps": {
+        "long_name": "Heaps and Priority Queues",
         "exercises": {
+          "binheapInsertPRO": {
+            "long_name": "Heap Insert Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          },
+          "binheapBuildPRO": {
+            "long_name": "Heap Build Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "binheapDeletePRO": {
+            "long_name": "Heap Delete Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          }
         }
       }
     },

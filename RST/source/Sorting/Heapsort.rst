@@ -9,8 +9,6 @@
    :satisfies: heapsort
    :topic: Sorting
 
-.. odsascript:: JSAV/extras/binaryheap.js
-
 .. index:: ! Heapsort
 
 Heapsort
@@ -104,4 +102,5 @@ Now here are summary questions.
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
 
+.. odsascript:: JSAV/extras/binaryheap.js
 .. odsascript:: AV/Sorting/heapsortCON.js
