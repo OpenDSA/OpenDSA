@@ -30,6 +30,7 @@
 	{
 		bh._treenodes[i].graphNode = gnodes[i];
 		gnodes[i].heapNode = bh._treenodes[i];
+		bh._treenodes[i].value(gnodes[i].value()+":"+Infinity);
 	}
 	jsav.displayInit();	
     prim(gnodes[0]);            // Run Prim's algorithm from start node.
@@ -104,6 +105,13 @@
 	
 	graphNode1.heapNode=bh._treenodes[index2];
 	graphNode2.heapNode=bh._treenodes[index1];
+	
+	////To display graphNodes along with their distance values on heapNodes
+	for(var i=0;i<gnodes.length;i++)
+	{
+		bh._treenodes[bh._treenodes.indexOf(gnodes[i].heapNode)].value(gnodes[i].value()+":"+bh.value(bh._treenodes.indexOf(gnodes[i].heapNode)));
+	}
+	
 	jsav.step();
   }
   function displayMST() {
@@ -153,8 +161,12 @@
     }
 	jsav.umsg("Adding the distance value of node ("+s.value()+") to the heap");
 	bh.value(bh._treenodes.indexOf(s.heapNode),0);
-	//bh._treenodes[bh._treenodes.indexOf(s.heapNode)].value(10);
-	//heapifyUp(bh._treenodes.indexOf(s.heapNode));
+	
+	//To display graphNodes along with their distance values on heapNodes
+	for(var i=0;i<gnodes.length;i++)
+	{
+		bh._treenodes[bh._treenodes.indexOf(gnodes[i].heapNode)].value(gnodes[i].value()+":"+bh.value(bh._treenodes.indexOf(gnodes[i].heapNode)));
+	}
 	jsav.step();
 	
 	for (var i = 0; i < graph.nodeCount(); i++) {
@@ -190,6 +202,13 @@
 					msg += " Update the distance value of node (" + w.value() + ")";
 					jsav.umsg(msg);
 					bh.value(bh._treenodes.indexOf(w.heapNode),weight);
+					bh._treenodes[bh._treenodes.indexOf(w.heapNode)].value(w.value()+":"+weight);
+					
+					//To display graphNodes along with their distance values on heapNodes
+					for(var k=0;k<gnodes.length;k++)
+					{
+						bh._treenodes[bh._treenodes.indexOf(gnodes[k].heapNode)].value(gnodes[k].value()+":"+bh.value(bh._treenodes.indexOf(gnodes[k].heapNode)));
+					}
 					w.parent = v;
 					jsav.step();
 					heapifyUp(bh._treenodes.indexOf(w.heapNode));

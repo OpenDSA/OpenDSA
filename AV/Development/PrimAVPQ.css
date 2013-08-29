@@ -16,11 +16,11 @@
 }
 
 .jsavtree .jsavnode {
-  line-height: 45px !important;
-  min-width: 45px !important;
-  max-width: 45px !important;
-  min-height: 45px !important;
-  max-height: 45px !important;
+  line-height: 55px !important;
+  min-width: 55px !important;
+  max-width: 55px !important;
+  min-height: 55px !important;
+  max-height: 55px !important;
 }
 
 .jsavarray {
