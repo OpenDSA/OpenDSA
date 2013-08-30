@@ -10,21 +10,19 @@
 <script>
 var answer=0;
 function checkAnswer(answer, M , N) {
-var firstPart= M/N ;
-var modelAnswer= Math.exp(Math.log(firstPart)/10).toFixed(2);
+  var firstPart= M/N ;
+  var modelAnswer= Math.exp(Math.log(firstPart)/10).toFixed(2);
+  // Convert to integer growth rate
+  modelAnswer = Math.round((modelAnswer - 1.0) * 100.0);
+  console.log(modelAnswer);
 
-
- if ( answer== modelAnswer) {
-     
-      return true;
+  if ( answer== modelAnswer) {
+    return true;
   } else {
-      
       return false;
-    }
   }
-
+}
 </script>
-
 </head>
 
 <body>
