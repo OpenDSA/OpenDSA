@@ -44,8 +44,16 @@ Client-side API
 ODSA.AV
 =======
 
-* **logExerciseInit** - generates an event used to log the initial state of an AV or exercise
+* **logExerciseInit** - generates an event which is used to log the initial state of an AV or exercise
+  
+  * Captures the state of the exercise at the beginning (such as the numbers in an array) which allows us to put the later operations we log in context.  For example, its all well and great to know the user clicked on index 4 of an array but if we don't know the randomly generated numbers in the array the operations we log won't make much sense.
+  * The generated event uses the same channel as JSAV events and is therefore received by the existing listener.  This function is NOT dependent on the JSAV framework. 
+  
 * **awardCompletionCredit** - generates an event which triggers the framework to give a user credit for an exercise
+  
+  * This function is designed to be used when an exercise doesn't really have a score but must be completed (like the calculator or performance exercises).  Developers should call this function in their code when a student has reached a state where the developer believes they should receive credit.
+  * The generated event uses the same channel as JSAV events and is therefore received by the existing listener.  This function is NOT dependent on the JSAV framework. 
+  
 * **initArraySize(min, max, selected)** - initializes the arraysize drop down list with the range of numbers from ``min`` to ``max`` with ``selected`` selected
 * **reset(flag)** - resets the AV to its original state
 
@@ -58,6 +66,8 @@ ODSA.MOD
 ========
 
 * **serverEnabled()** - returns whether or not the backend server is enabled
+* **inDebugMode()** - returns true if localStorage.DEBUG_MODE is set to true
+* **getBookID()** - returns a SHA1 hash of the book URL as a unique identifier
 * **getUsername()** - returns the username stored in local storage
 * **getSessionKey()** - returns the session key stored in local storage
 * **userLoggedIn()** - returns whether or not a user is logged in
@@ -65,6 +75,7 @@ ODSA.MOD
 * **logUserAction(type, desc, exerName, eventUiid)** - logging function that takes the event type, a description of the event and the name and uiid of the exercise with which the event is associated
 * **logEvent(data)** - flexible logging function that appends whatever data is specified to the event log, provided it meets the criteria for a valid event
 * **sendEventData()** - flushes the buffered event data to the server
+* **getType()** - returns correct object type information (replaces broken functionality of 'typeof')
 * **roundPercent(number)** - rounds the given number to a max of 2 decimal places
 
 ODSA.UTILS
@@ -175,6 +186,11 @@ public.
 ---------------
 Troubleshooting
 ---------------
+
+Verbose Logging
+===============
+
+Are you new to the client-side framework and just want to see a trace of its execution to understand what's really going on?  Do you have to debug a problem on a student's computer that doesn't have all your nifty developer tools installed?  Then DEBUG_MODE is your new best friend.  Simply run ``localStorage.DEBUG_MODE = 'true'`` from the JavaScript console and the framework will begin printing (very) verbose logs of exactly what is happening, along with state information.  The logs are grouped by function call and can be collapsed or expanded to provide more or less information as necessary.  Each time a function calls another function, the logs are indented to indicate scope.  To disable verbose logging, run: ``delete localStorage.DEBUG_MODE`` from the JavaScript console.
 
 jQuery Selectors
 ================
