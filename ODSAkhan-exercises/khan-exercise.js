@@ -1220,7 +1220,8 @@ var Khan = (function() {
         }
 
         // Set randomSeed to what problemSeed is (save problemSeed for recall later)
-        randomSeed = problemSeed;
+        // Fix random generator problem. By Junyang Chen. Side effect: When redering problem fail(low possiblity), we just render another problem instead of the same one.
+        //randomSeed = problemSeed;
 
         // Check to see if we want to test a specific problem
         if (localMode) {
