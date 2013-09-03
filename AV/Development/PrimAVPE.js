@@ -6,15 +6,11 @@
         settings = new JSAV.utils.Settings($(".jsavsettings")),
         jsav = new JSAV($('.avcontainer'), {settings: settings}),
         exercise,
-        swapIndex;
-		
-		var graph;
-
+        swapIndex, graph, modelGraph;
 		jsav.recorded();
 
     function init() {
-		graph = jsav.ds.graph({width: 200, height: 300, layout: "manual", directed: false});
-		
+		graph = jsav.ds.graph({width: 600, height: 600, layout: "manual", directed: false});
 		initGraph();
 		graph.layout();
 
@@ -38,6 +34,7 @@
     }
     
     function fixState(modelHeap) {
+	  /*
       var size = modelHeap.size();
       swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step
       for (var i = 0; i < size; i++) {
@@ -46,10 +43,24 @@
       }
       bh.heapsize(modelHeap.heapsize());
       exercise.gradeableStep();
+	  */
     }
    
     function model(modeljsav) {
-      var modelbh = modeljsav.ds.binheap(initData, {nodegap: 20, compare: function (a, b) { return b - a; }});
+		modelGraph = modeljsav.ds.graph({width: 600, height: 600, layout: "manual", directed: false});
+		initModelGraph();
+		modelGraph.layout();
+		//alert(modelGraph.nodes()[0].value());
+		modeljsav._undo = [];
+		for(var i=0;i<modelGraph.nodeCount;i++)
+		{
+			modeljsav.umsg("Highlighting node "+modelGraph.nodes()[i].value());
+			modelGraph.nodes()[i].highlight();
+			modeljsav.stepOption("grade", true);
+			modeljsav.step();
+		}
+      /*
+	  var modelbh = modeljsav.ds.binheap(initData, {nodegap: 20, compare: function (a, b) { return b - a; }});
       modelbh.origswap = modelbh.swap; // store original heap grade function
       // set all steps gradeable that include a swap
       modelbh.swap = function (ind1, ind2, opts) {
@@ -82,6 +93,9 @@
       modeljsav.stepOption("grade", true);
       modeljsav.step();
       return modelbh;
+	 */
+	  return modelGraph;
+	  
     }
 
     function clickHandler(index) {
@@ -124,6 +138,26 @@ function initGraph() {
     graph.addEdge(f, b, {"weight": 6});
     graph.addEdge(d, f, {"weight": 2});
     graph.addEdge(e, f, {"weight": 1});
+    }
+	
+function initModelGraph() {
+
+    //Nodes of the original graph
+    var a = modelGraph.addNode("A", {"left": 25, "top": 50});
+    var b = modelGraph.addNode("B", {"left": 325, "top": 50});
+    var c = modelGraph.addNode("C", {"left": 145, "top": 75});
+    var d = modelGraph.addNode("D", {"left": 145, "top": 200});
+    var e = modelGraph.addNode("E", {"left": 0, "top": 300});
+    var f = modelGraph.addNode("F", {"left": 325, "top": 250});
+    //Original graph edges
+    modelGraph.addEdge(a, c, {"weight": 7});
+    modelGraph.addEdge(a, e, {"weight": 9});
+    modelGraph.addEdge(c, b, {"weight": 5});
+    modelGraph.addEdge(c, d, {"weight": 1});
+    modelGraph.addEdge(c, f, {"weight": 2});
+    modelGraph.addEdge(f, b, {"weight": 6});
+    modelGraph.addEdge(d, f, {"weight": 2});
+    modelGraph.addEdge(e, f, {"weight": 1});
     }
 	
       // Process About button: Pop up a message with an Alert
