@@ -29,14 +29,13 @@ function checkAnswer(answer, M , N) {
 <div class="exercise">
 <div class="vars">
   <var id="N"> randRange(1,9)</var>
-  <var id="MULTPL"> randRange(2,4)</var>
-  <var id="M"> MULTPL* N</var>
+  <var id="M"> randRange(2*N,4*N)</var>
 </div>
   <div class="problems">
     <div id="problem-type-or-description">
-      <p class="question">An investor places <var>N</var>,000 into a
+      <p class="question">An investor places $<var>N</var>,000 into a
         stock fund. 10 years later the account has a value
-        of <var>M</var>,000. Using logarithms and  antilogarithms,
+        of $<var>M</var>,000. Using logarithms and  antilogarithms,
         determine the average annual growth rate for this fund.
 	(Round to the nearest integer.) 
       <br> <textarea rows="1" cols="9" style="resize:none"  id="answerTextarea" ></textarea></p>
@@ -65,6 +64,8 @@ function checkAnswer(answer, M , N) {
           <code>X = e^{(\ln M/N)/10}</code><br/>
 	  Find a calculator that can solve this for you.
 	</p>
+        <p>If <code>X</code> is a number like 1.123, then the annual
+        percentage increase is 12.3%, which to the nearest integer is 12%.
       </div> 
     </div>
   </div>

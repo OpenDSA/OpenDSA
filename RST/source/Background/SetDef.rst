@@ -95,9 +95,9 @@ but in general
 :math:`\mathbf{P} - \mathbf{Q} \neq \mathbf{Q} - \mathbf{P}`.
 In this example,
 :math:`\mathbf{Q} - \mathbf{P}  = \{10\}`.
-Note that the set {4, 3, 5} is indistinguishable from set
+Finally, the set {5, 3, 2} is indistinguishable from set
 :math:`\mathbf{P}`, because sets have no concept of order.
-Likewise, set {4, 3, 4, 5} is also indistinguishable from 
+Likewise, set {2, 3, 2, 5} is also indistinguishable from 
 :math:`\mathbf{P}`, because sets have no concept of duplicate elements.
 
 The :term:`powerset` of a set :math:`\mathbf{S}` is the set of all

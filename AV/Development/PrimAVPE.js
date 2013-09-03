@@ -9,13 +9,15 @@
         swapIndex;
 		
 		var graph;
-		graph = jsav.ds.graph({width: 200, height: 300, layout: "manual", directed: false});
+
 		jsav.recorded();
-	
+
+    function init() {
+		graph = jsav.ds.graph({width: 200, height: 300, layout: "manual", directed: false});
 		
 		initGraph();
 		graph.layout();
-    function init() {
+
 	  /*
       var nodeNum = 10;
       if (bh) {
@@ -104,7 +106,7 @@
       }
     }
 	
-	function initGraph() {
+function initGraph() {
 
     //Nodes of the original graph
     var a = graph.addNode("A", {"left": 25, "top": 50});

@@ -215,6 +215,9 @@ that we communicate information back up the tree to the end user.
    .. codeinclude:: Trees/Traverse.pde
       :tag: count
 
+.. avembed:: Exercises/Development/BTLeafPROG.html ka
+
+
 Another problem that occurs when recursively processing data
 collections is controlling which members of the collection will be
 visited.
