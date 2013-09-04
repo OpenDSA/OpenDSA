@@ -47,7 +47,7 @@ var PerseusBridge = Exercises.PerseusBridge,
 var server = SERVER_URL? SERVER_URL : typeof OpenPopKa !== "undefined"? "https://opendsa.cc.vt.edu": null;
 
 var jsonData = {};
-jsonData.book = BOOK_NAME;
+jsonData.book = BOOK_NAME? BOOK_NAME : typeof OpenPopKa !== "undefined"? "CS3114": null;
 jsonData.module = MODULE_NAME;
 jsonData.key = 'phantom-key';
 
