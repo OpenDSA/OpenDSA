@@ -31,10 +31,6 @@
 		modelGraph.layout();
 		//modeljsav._undo = [];
 		modeljsav.displayInit();
-		modelGraph.nodes()[0].highlight();
-		modeljsav.stepOption("grade",true);
-		modeljsav.step();
-		/*
 		for(var i=0;i<modelGraph.nodeCount();i++)
 		{	
 			modeljsav.umsg("Highlighting node "+modelGraph.nodes()[i].value());
@@ -42,7 +38,6 @@
 			modeljsav.stepOption("grade", true);
 			modeljsav.step();
 		}
-		*/
 	  return modelGraph;
     }
 	
@@ -99,7 +94,8 @@ function initModelGraph() {
     exercise.reset();
     $(".jsavcontainer").on("click",".jsavgraphnode", function () {
        var nodeIndex=$(this).parent(".jsavgraph").find(".jsavgraphnode").index(this);
-	   graph.nodes()[0].highlight();
+	   graph.nodes()[nodeIndex].highlight();
+	   jsav.step();
 	   exercise.gradeableStep();
     });
     $("#about").click(about);
