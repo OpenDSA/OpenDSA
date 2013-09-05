@@ -1,4 +1,4 @@
-/**
+/*
  * Interface glue to handle events from 'Exercises' and talk to 'Khan' or some
  * Perseus object, whichever is appropriate for the current exercise.
  *
@@ -44,10 +44,11 @@ var PerseusBridge = Exercises.PerseusBridge,
     firstProblem = true;
 
 //  
-var server = SERVER_URL? SERVER_URL : null;
+var server = SERVER_URL? SERVER_URL : typeof OpenPopKa !== "undefined"? "https://opendsa.cc.vt.edu": null;
+BOOK_NAME =  BOOK_NAME? BOOK_NAME : typeof OpenPopKa !== "undefined"? "CS3114": null;
 
 var jsonData = {};
-jsonData.book = BOOK_NAME;
+jsonData.book = BOOK_NAME? BOOK_NAME : typeof OpenPopKa !== "undefined"? "CS3114": null;
 jsonData.module = MODULE_NAME;
 jsonData.key = 'phantom-key';
 
