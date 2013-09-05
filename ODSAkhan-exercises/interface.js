@@ -440,7 +440,7 @@ function handleAttempt(data) {
       }
 
       var  total =  progress;   //parseInt(streak) + 1;
-      if (total >= streakNum){
+      if (total >= streakNum && MODULE_ORIGIN !== ""){
          total = streakNum;
          parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}', MODULE_ORIGIN);
 
