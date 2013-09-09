@@ -322,3 +322,13 @@ resources consumed by an algorithm.
       \mathsf{30 \cdot 2^{30} \approx 2^{35}} &
       \mathsf{2^{60}} & \mathsf{2^{90}} & \mathsf{2^{1 {\rm G}}}\\
       \end{array}
+
+.. todo::
+   :type: Exercise
+
+   From a large list of growth rate functions, select six and provide
+   these to the student in random order. The student will then put these
+   in order of growth rate. There should be KA exercises (NOT OpenDSA
+   exercises) already that do "put in order", with librarary support.
+   Alternative implementation: Use an invisible JSAV array to store the
+   strings.

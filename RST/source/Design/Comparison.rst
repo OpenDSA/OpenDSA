@@ -81,6 +81,13 @@ function, we need a general way to get the key for the record.
 We could insist that every record have a particular method called
 ``.key()``.
 That seems like a good name for it!
+
+Some languages like Java and C++ have special infrastructure for
+supporting this (such as the ``Comparable`` interface in Java,
+which has the ``.compareTo()`` method for defining the exact process
+by which two objects are compared).
+But many languages like Processing and JavaScript do not.
+
 But what if the programmer had already used that method name for
 another purpose?
 An even bigger problem is, what if the programmer wants to sort the
@@ -88,17 +95,30 @@ record now using one field as the key, and later using another field?
 Or search sometimes on one key, and at other times on another?
 The problem is that the "keyness" of a given field is not an inherent
 property within the record, but rather depends on the context.
-Another, more general approach is to supply a class whose job is to
-extract the key from the record.
-Unfortunately, this solution also does not work in all situations,
-because there are record types for which it is not possible to write
-a key extraction method. [#]_
+So, you cannot always count on being able to use your favorite method
+name (or even the comparable interface) to extract the desired key
+value.
 
-Some languages like Java and C++ have special infrastructure for
-supporting this (such as the ``Comparable`` interface in Java,
-which has the ``.compareTo()`` method for defining the exact process
-by which two objects are compared).
-But many languages like Processing and JavaScript do not.
+Another, more general approach is to supply a function or class
+|---| called a :term:`comparator` |---|
+whose job is to extract the key from the record.
+A comparator function can be passed in as a parameter, such as in a
+call to a sorting function.
+In this case, the comparator function would be invoked on two records
+whenever they need to be compared.
+In this way, different comparator functions can be passed in to handle
+different record types or different fields within a record.
+In Java (with generics) or C++ (with templates), a comparator class
+can be a parameter for another class definition.
+For example, a BST could take a comparator class as a generics
+parameter in Java.
+This comparator class would be responsible for dealing with the
+comparison of two records.
+
+Unfortunately, while flexible and able to handle nearly all
+situations, there are a few situations for which it is not possible to
+write a key extraction method.
+In that case, a comparator will not work. [#]_
 
 One good general-purpose solution is to explicitly store
 :index:`key-record pairs` in the data structure.

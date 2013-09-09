@@ -10,7 +10,7 @@
 <body>
 <script>
 function checkAnswer(answer) {
-  if ( (answer === 2) || (answer === 3)) {
+  if ((answer === 2) || (answer === 3)) {
     return true;
   } else {
     return false;
@@ -31,8 +31,8 @@ function checkAnswer(answer) {
       <div class="solution" data-type="custom">
         <div class="guess"> [ "list" ] </div>
         <div class="validator-function">
-         answer = $('#answerTextarea').val();
-         return checkAnswer(answer );
+         answer = parseInt($('#answerTextarea').val());
+         return checkAnswer(answer);
         </div>
       </div>
       <div class="hints">
