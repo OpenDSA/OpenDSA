@@ -21,7 +21,7 @@
 		return graph;
     }
     
-    function fixState(modelHeap) {
+    function fixState(mGraph) {
 		
     }
    
@@ -29,8 +29,11 @@
 		modelGraph = modeljsav.ds.graph({width: 600, height: 600, layout: "manual", directed: false});
 		initModelGraph();
 		modelGraph.layout();
-		//modeljsav._undo = [];
+		modeljsav._undo = [];
 		modeljsav.displayInit();
+		modelGraph.nodes()[0].highlight();
+		modeljsav.stepOption("grade", true);
+		/*
 		for(var i=0;i<modelGraph.nodeCount();i++)
 		{	
 			modeljsav.umsg("Highlighting node "+modelGraph.nodes()[i].value());
@@ -38,6 +41,7 @@
 			modeljsav.stepOption("grade", true);
 			modeljsav.step();
 		}
+		*/
 	  return modelGraph;
     }
 	
@@ -81,13 +85,13 @@ function initModelGraph() {
     modelGraph.addEdge(e, f, {"weight": 1});
     }
 	
-      // Process About button: Pop up a message with an Alert
+    // Process About button: Pop up a message with an Alert
     function about() {
       alert("Heapsort Proficiency Exercise\nWritten by Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
 
     exercise = jsav.exercise(model, init, { css: "background-color" },
-                            { feedback: "continuous",
+                            {feedback: "continuous",
                              controls: $('.jsavexercisecontrols'),
                               fixmode: "fix",
                              fix: fixState });
@@ -95,7 +99,7 @@ function initModelGraph() {
     $(".jsavcontainer").on("click",".jsavgraphnode", function () {
        var nodeIndex=$(this).parent(".jsavgraph").find(".jsavgraphnode").index(this);
 	   graph.nodes()[nodeIndex].highlight();
-	   jsav.step();
+	   //jsav.step();
 	   exercise.gradeableStep();
     });
     $("#about").click(about);
