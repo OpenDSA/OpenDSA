@@ -67,5 +67,5 @@ Heaps
    .. inlineav:: heapdeleteCON ss
       :output: show
 
-.. odsascript:: JSAV/extras/binaryheap.js
-.. odsascript:: AV/Development/heapsCON.js
+   .. odsascript:: JSAV/extras/binaryheap.js
+   .. odsascript:: AV/Development/heapsCON.js
