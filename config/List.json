@@ -10,124 +10,76 @@
   "suppress_todo": false,
   "chapters": {
     "Linear Structures": {
-      "Development/ListIntro": {
-        "long_name": "Chapter Introduction: Linear Structures",
-        "exercises": {}
-      },
-      "Development/ListADT": {
-        "long_name": "List ADT",
-        "exercises": {
-          "listADTCON1": {
-            "long_name": "List ADT Slideshow 1",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "listADTCON2": {
-            "long_name": "List ADT Slideshow 2",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          }
-        }
-      },
-      "Development/ListArray": {
-        "long_name": "Array-based Lists",
-        "exercises": {
-          "AlistVarsCON": {
-            "long_name": "Array-based List Variables",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "AlistIntroCON": {
-            "long_name": "Array-based List Intro",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "AlistInsertCON": {
-            "long_name": "Array-based List Insertion",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "AlistAppendCON": {
-            "long_name": "Array-based List Append",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "AlistRemoveCON": {
-            "long_name": "Array-based List Remove",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "listArrayInsertion": {
-            "long_name": "Array-based List Insert Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "listArrayDeletion": {
-            "long_name": "Array-based List Delete Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "LinkedListKAEx": {
-            "long_name": "LinkedList KA OpenPop",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "Development/ListLinked": {
+      "List/ListLinked": {
         "long_name": "Linked Lists",
         "exercises": {
-          "listLinkedCON1": {
-            "long_name": "Array List Slideshow 1",
+          "LlistBadCON": {
+            "long_name": "Linked List Slideshow 1",
             "required": true,
-            "points": 0.1,
+            "points": 0.0,
             "threshold": 1.0
           },
-          "listLinkedCON2": {
-            "long_name": "Array List Slideshow 2",
+          "LlistBadReasonCON": {
+            "long_name": "Linked List Slideshow 2",
             "required": true,
-            "points": 0.1,
+            "points": 0.0,
             "threshold": 1.0
+          },
+          "LlistVarsCON": {
+            "long_name": "Linked List Variables",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LListCons": {
+            "long_name": "Linked List Constructors",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LlistInsertCON": {
+            "long_name": "Linked List Insert",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LlistSpecInsertCON": {
+            "long_name": "Linked List Special Insert",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LlistRemoveCON": {
+            "long_name": "Linked List Remove",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LlistPosCON": {
+            "long_name": "Linked List Position",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "listLinkedInsertion": {
+            "long_name": "Linked List Insert Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "listLinkedDeletion": {
+            "long_name": "Linked List Delete Exercise",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          },
+          "LstLnkdSumm": {
+            "long_name": "Linked List Summary",
+            "required": true,
+            "points": 2,
+            "threshold": 6
           }
         }
-      },
-      "Development/ListAnalysis": {
-        "long_name": "Comparison of List Implementations",
-        "exercises": {}
-      },
-      "Development/Freelist": {
-        "long_name": "Freelists",
-        "exercises": {}
-      },
-      "Development/ListDouble": {
-        "long_name": "Doubly Linked Lists",
-        "exercises": {}
-      },
-      "Development/ListElement": {
-        "long_name": "List Element Implementations",
-        "exercises": {}
-      },
-      "Development/Stack": {
-        "long_name": "Stacks",
-        "exercises": {}
-      },
-      "Development/StackRecur": {
-        "long_name": "Implementing Recursion",
-        "exercises": {}
-      },
-      "Development/Queue": {
-        "long_name": "Queues",
-        "exercises": {}
       }
     }
   }

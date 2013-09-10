@@ -65,20 +65,8 @@ function setPointer(name, node, opt){
   var labelLeftMargin = 350;
   var labelTopMargin = 10;
 
-  var nodeLabel = jsav.label("nodes",
-                    {before: l, left: labelLeftMargin + 70, top: labelTopMargin});
-  var node1Arrow = jsav.g.line(labelLeftMargin + 75, labelTopMargin + 20,
-                              labelLeftMargin + 15, labelTopMargin + 35,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 1});
-
-  var node2Arrow = jsav.g.line(labelLeftMargin + 90, labelTopMargin + 20,
-                              labelLeftMargin + 90, labelTopMargin + 35,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 1});
-
-  var node3Arrow = jsav.g.line(labelLeftMargin + 105, labelTopMargin + 20,
-                              labelLeftMargin + 165, labelTopMargin + 35,
-	  {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 1});
-
+  var nodeLabel = jsav.label("3 nodes, joined by links",
+                    {before: l, left: labelLeftMargin + 25, top: labelTopMargin});
   l.addFirst("").addFirst("").addFirst("");
   l.layout();
 }(jQuery));

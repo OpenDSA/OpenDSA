@@ -64,7 +64,7 @@ test: min
 	python $(CONFIG_SCRIPT) config/test.json
 
 List: min
-	python $(CONFIG_SCRIPT) config/List.json
+	python $(CONFIG_SCRIPT) s config/List.json
 
 Dev: min
 	python $(CONFIG_SCRIPT) config/Dev.json
