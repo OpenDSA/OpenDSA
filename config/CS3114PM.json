@@ -332,7 +332,14 @@
       },
       "List/ListAnalysis": {
         "long_name": "Comparison of List Implementations",
-        "exercises": {}
+        "exercises": {
+          "ListOverhead": {
+            "long_name": "Breakeven Point",
+            "required": true,
+            "points": 1,
+            "threshold": 3
+          }
+	}
       },
       "List/Freelist": {
         "long_name": "Freelists",

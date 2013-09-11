@@ -66,7 +66,7 @@ function setPointer(name, node, opt){
   var labelTopMargin = 10;
 
   var nodeLabel = jsav.label("3 nodes, joined by links",
-                    {before: l, left: labelLeftMargin + 25, top: labelTopMargin});
+                    {before: l, left: labelLeftMargin + 5, top: labelTopMargin});
   l.addFirst("").addFirst("").addFirst("");
   l.layout();
 }(jQuery));
