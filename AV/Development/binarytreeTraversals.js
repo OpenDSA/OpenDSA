@@ -150,9 +150,9 @@
       return modelBst;
     };
   };
+  var bt;
   var initWrapper = function (tt) {
     return function() {
-      var bt;
       var nodeNum = 9;
       if (bt) {
         bt.clear();
