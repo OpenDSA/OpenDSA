@@ -183,9 +183,11 @@
     console.log(this.modelFunction);
     this.jsav = new JSAV($(".avcontainer"));
     this.jsav.recorded();
-    this.exercise = this.jsav.exercise(modelWrapper(this), initWrapper(this), {"css": "background-color"}, {
-      controls: $(".jsavexercisecontrols")
-    });
+    this.exercise = this.jsav.exercise(modelWrapper(this), initWrapper(this),
+		       { "css": "background-color" },
+		       { controls: $(".jsavexercisecontrols"),
+			 feedback: "continuous",
+			 fixmode: "undo" });
     this.exercise.reset();
   };
   TreeTraversal.prototype.nodeClick = function(exercise) {

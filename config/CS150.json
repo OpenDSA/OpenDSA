@@ -1,5 +1,5 @@
 {
-  "title": "CS3114 Fall 2013",
+  "title": "CS150 Fall 2013",
   "book_dir": "Books",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
@@ -13,19 +13,6 @@
       "Intro": {
         "long_name": "How to Use this System",
         "exercises": {}
-      }
-    },
-    "Introduction": {
-      "Background/IntroDSA.rst": {
-        "long_name": "Introduction to Data Structures and Algorithms",
-        "exercises": {
-          "IntroSumm": {
-            "long_name": "Introduction Summary Questions",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
       }
     },
     "Mathematical Background": {
@@ -644,34 +631,28 @@
       "Development/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-	  "BTLeafPROG": {
-            "long_name": "Node Count Function",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1
-          },
           "binarytree-inorder": {
             "long_name": "Binary Tree Inorder Traversal",
             "required": true,
-            "points": 1.0,
+            "points": 1,
             "threshold": 0.90
           },
           "binarytree-levelorder": {
             "long_name": "Binary Tree Level Order Traversal",
             "required": true,
-            "points": 1.0,
+            "points": 1,
             "threshold": 0.90
           },
           "binarytree-preorder": {
             "long_name": "Binary Tree Preorder Traversal",
             "required": true,
-            "points": 1.0,
+            "points": 1,
             "threshold": 0.90
           },
           "binarytree-postorder": {
             "long_name": "Binary Tree Postorder Traversal",
             "required": true,
-            "points": 1.0,
+            "points": 1,
             "threshold": 0.90
           }
         }
@@ -730,22 +711,18 @@
       "Development/Heaps": {
         "long_name": "Heaps and Priority Queues",
         "exercises": {
-          "heapinsertCON": {},
           "binheapInsertPRO": {
             "long_name": "Heap Insert Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 0.90
           },
-          "heapbuildCON": {},
           "binheapBuildPRO": {
             "long_name": "Heap Build Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
-          "heapmaxCON": {},
-          "heapdeleteCON": {},
           "binheapDeletePRO": {
             "long_name": "Heap Delete Exercise",
             "required": true,
@@ -774,16 +751,6 @@
       },
       "Development/HuffProof": {
         "long_name": "Proof for Huffman Coding",
-        "exercises": {}
-      }
-    },
-    "General Trees": {
-      "Stubs/GenTree": {
-        "long_name": "General Trees",
-        "exercises": {}
-      },
-      "Stubs/UnionFind": {
-        "long_name": "Union/Find",
         "exercises": {}
       }
     },
@@ -1227,30 +1194,6 @@
         }
       }
     },
-    "File Processing": {
-      "Stubs/FileProc": {
-        "long_name": "File Processing",
-        "exercises": {}
-      },
-      "Stubs/BuffPool": {
-        "long_name": "Buffer Pools",
-        "exercises": {}
-      },
-      "Stubs/ExternalSort": {
-        "long_name": "External Sorting",
-        "exercises": {}
-      }
-    },
-    "Search": {
-      "Stubs/Searching": {
-        "long_name": "Search Chapter Introduction",
-        "exercises": {}
-      },
-      "Stubs/SelfOrg": {
-        "long_name": "Self Organizing Lists Stub",
-        "exercises": {}
-      }
-    },
     "Hashing": {
       "Hashing/HashIntro": {
         "long_name": "Introduction",
@@ -1516,84 +1459,44 @@
         }
       }
     },
-    "Indexing": {
-      "Stubs/IndexChap": {
-        "long_name": "Indexing Chapter Stub",
-        "exercises": {}
-      },
-      "Stubs/LinearIndex": {
-        "long_name": "Linear Indexing",
-        "exercises": {}
-      },
-      "Stubs/BTree": {
-        "long_name": "B-Trees",
-        "exercises": {}
-      }
-    },
-    "Graphs": {
-      "Stubs/GraphImpl": {
-        "long_name": "Graph Implementations",
-        "exercises": {}
-      },
-      "Stubs/GraphTraversal": {
-        "long_name": "Graph Traversals",
-        "exercises": {}
-      },
-      "Stubs/GraphShortest": {
-        "long_name": "Graph Shortest Paths",
-        "exercises": {}
-      },
-      "Stubs/MCST": {
-        "long_name": "Minimum Cost Spanning Trees",
-        "exercises": {}
-      }
-    },
     "Stubs": {
       "Stubs": {
         "long_name": "Stubs Chapter",
         "exercises": {}
       },
-      "Stubs/MemoryMan": {
-        "long_name": "Memory Managers",
-        "exercises": {}
-      },
-      "Stubs/Multilists": {
+      "Development/Multilists": {
         "long_name": "Multilists",
         "exercises": {}
       },
-      "Stubs/Trie": {
-        "long_name": "Tries",
-        "exercises": {}
-      },
-      "Stubs/SparseMatrix": {
+      "Development/SparseMatrix": {
         "long_name": "Sparse Matrix",
         "exercises": {}
       },
-      "Stubs/Spatial": {
+      "Development/Spatial": {
         "long_name": "Spatial Data Structures",
         "exercises": {}
       },
-      "Stubs/AdvSumm": {
+      "Development/AdvSumm": {
         "long_name": "Advanced Summations",
         "exercises": {}
       },
-      "Stubs/Recurrence": {
+      "Development/Recurrence": {
         "long_name": "Solving Recurrence Relations",
         "exercises": {}
       },
-      "Stubs/AmortAnal": {
+      "Development/AmortAnal": {
         "long_name": "Amortized Analysis",
         "exercises": {}
       },
-      "Stubs/Reductions": {
+      "Development/Reductions": {
         "long_name": "Reductions",
         "exercises": {}
       },
-      "Stubs/Computability": {
+      "Development/Computability": {
         "long_name": "Computability",
         "exercises": {}
       },
-      "Stubs/LimComp": {
+      "Development/LimComp": {
         "long_name": "Limits to Computing",
         "exercises": {}
       }

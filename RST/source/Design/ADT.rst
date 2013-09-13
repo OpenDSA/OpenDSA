@@ -228,7 +228,7 @@ program, you would have no hope of understanding or implementing it.
    memory manager (see Module :numref:`<MemoryMan>`) to
    find an appropriate location within the disk file to place the
    record.
-   Multiple index structures (see Module :numref:`<IndexIntro>`)
+   Multiple index structures (see Module :numref:`<Indexing>`)
    will typically be used to access records in various ways.
    Thus, we have a chain of classes, each with its own responsibilities
    and access privileges.

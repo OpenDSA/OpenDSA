@@ -18,40 +18,40 @@ for binary trees.
 Definitions and Properties
 --------------------------
 
-A :dfn:`binary tree` is made up of a finite set of elements
-called :dfn:`nodes`.
+A :term:`binary tree` is made up of a finite set of elements
+called :term:`nodes`.
 This set either is empty or consists of a node called the
-:dfn:`root` together with two binary trees, called the left and
+:term:`root` together with two binary trees, called the left and
 right 
-:dfn:`subtrees`, which are disjoint from each other and from the
+:term:`subtrees`, which are disjoint from each other and from the
 root.
 (Disjoint means that they have no nodes in common.)
 The roots of these subtrees are
-:dfn:`children` of the root.
-There is an :dfn:`edge` from a node to each of its children,
-and a node is said to be the :dfn:`parent` of its children.
+:term:`children` of the root.
+There is an :term:`edge` from a node to each of its children,
+and a node is said to be the :term:`parent` of its children.
 
 If :math:`n_1, n_2, ..., n_k`
 is a sequence of nodes in the tree such
 that :math:`n_i` is the parent of
 :math:`n_i+1` for :math:`1 \leq i < k`,
-then this sequence is called a :dfn:`path` from
+then this sequence is called a :term:`path` from
 :math:`n_1` to :math:`n_k`.
-The :dfn:`length` of the path is :math:`k-1`.
+The :term:`length` of the path is :math:`k-1`.
 If there is a path from node :math:`R` to node :math:`M`,
-then :math:`R` is an :dfn:`ancestor` of :math:`M`, and
-:math:`M` is a :dfn:`descendant` of :math:`R`.
+then :math:`R` is an :term:`ancestor` of :math:`M`, and
+:math:`M` is a :term:`descendant` of :math:`R`.
 Thus, all nodes in the tree are descendants of the root of the tree,
 while the root is the ancestor of all nodes.
-The :dfn:`depth` of a node :math:`M` in the tree is the length
+The :term:`depth` of a node :math:`M` in the tree is the length
 of the path from the root of the tree to :math:`M`.
-The :dfn:`height` of a tree is one more than the depth of the
+The :term:`height` of a tree is one more than the depth of the
 deepest node in the tree.
 All nodes of depth :math:`d` are at
-:dfn:`level` :math:`d` in the tree.
+:term:`level` :math:`d` in the tree.
 The root is the only node at level 0, and its depth is 0.
-A :dfn:`leaf` node is any node that has two empty children.
-An :dfn:`internal` node is
+A :term:`leaf` node is any node that has two empty children.
+An :term:`internal node` is
 any node that has at least one non-empty child.
 
 .. _BinExample:
@@ -107,10 +107,10 @@ trees of Figure :num:`Figure #BinDiff` are *not* the same.
 
 Two restricted forms of binary tree are sufficiently
 important to warrant special names.
-Each node in a :dfn:`full` binary tree
+Each node in a :term:`full` binary tree
 is either (1) an internal node with exactly two non-empty children or
 (2) a leaf.
-A :dfn:`complete` binary tree has
+A :term:`complete` binary tree has
 a restricted shape obtained by starting at the root and filling the
 tree by levels from left to right.
 In the complete binary tree of height :math:`d`, all levels

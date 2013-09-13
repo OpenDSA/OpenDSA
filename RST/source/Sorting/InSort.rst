@@ -73,8 +73,8 @@ We will see that special case behavior by some algorithms makes them a
 good solution for special niche applications (:ref:`Heapsort <Heapsort>`).
 Sorting provides an example of a significant technique for
 analyzing the lower bound for a problem.
-Sorting also motivates the the study of file processing
-(Chapter :numchap:`File Processing`).
+:ref:`External Sorting <ExternalSort>` introduces techniques for
+sorting large files stored on disk.
 
 This chapter covers several standard algorithms appropriate
 for sorting a collection of records that fit into the computer's

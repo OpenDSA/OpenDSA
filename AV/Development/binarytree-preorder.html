@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Binary Tree Preorder Traversal</title>
-    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
-  </head>
-  <body>
-    <div id="container">
-      <form class="avcontainer">
-        <div class="jsavcanvas">
-          <p class="instructLabel">Instructions:</p>
-          <p class="instructions">
-            Reproduce the behavior of binary tree preorder traversal. Click nodes to indicate the order in
-            which the traversal algorithm would visit them.
-          </p>
-          <p align="center">
-            <span class="jsavexercisecontrols"></span>
-            <span class="jsavscore"></span>
-          </p>
-        </div>
-      </form>
-    </div>
-    <script src="../../lib/jquery.min.js"></script>
-    <script src="../../lib/jquery-ui.min.js"></script>
-    <script src="../../JSAV/lib/jquery.transform.light.js"></script>
-    <script src="../../JSAV/lib/raphael.js"></script>
-    <script src="../../JSAV/build/JSAV-min.js"></script>
-    <script src="../../lib/odsaUtils.js"></script>
-    <script src="../../lib/odsaAV.js"></script>
-    <script src="binarytreeTraversals.js"></script>
-    <script>
+<head>
+  <title>Binary Tree Preorder Traversal</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <style>
+    .instructLabel {
+    padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <form class="avcontainer">
+      <div class="jsavcanvas">
+        <p class="instructLabel">Instructions:</p>
+        <p class="instructions">
+          Reproduce the behavior of binary tree preorder
+          traversal. Click nodes to indicate the order in 
+          which the traversal algorithm would visit them.
+        </p>
+        <p align="center">
+          <span class="jsavexercisecontrols"></span>
+          <span class="jsavscore"></span>
+        </p>
+      </div>
+    </form>
+  </div>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="../../lib/odsaUtils.js"></script>
+  <script src="../../lib/odsaAV.js"></script>
+  <script src="binarytreeTraversals.js"></script>
+  <script>
     new TreeTraversal(JSAV._types.ds.BinaryTree.prototype.preOrderTraversal);
-    </script>
-  </body>
+  </script>
+</body>
 </html>

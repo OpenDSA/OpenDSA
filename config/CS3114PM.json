@@ -768,8 +768,12 @@
       }
     },
     "General Trees": {
-      "Development/GenTreeStub": {
-        "long_name": "General Trees Chapter Stub",
+      "Stubs/GenTree": {
+        "long_name": "General Trees",
+        "exercises": {}
+      },
+      "Stubs/UnionFind": {
+        "long_name": "Union/Find",
         "exercises": {}
       }
     },
@@ -1214,17 +1218,25 @@
       }
     },
     "File Processing": {
-      "Development/FileProc": {
-        "long_name": "File Processing Chapter Stub",
+      "Stubs/FileProc": {
+        "long_name": "File Processing",
+        "exercises": {}
+      },
+      "Stubs/BuffPool": {
+        "long_name": "Buffer Pools",
+        "exercises": {}
+      },
+      "Stubs/ExternalSort": {
+        "long_name": "External Sorting",
         "exercises": {}
       }
     },
     "Search": {
-      "Development/SearchStub": {
-        "long_name": "Search Chapter Stub",
+      "Stubs/Searching": {
+        "long_name": "Search Chapter Introduction",
         "exercises": {}
       },
-      "Development/SelfOrg": {
+      "Stubs/SelfOrg": {
         "long_name": "Self Organizing Lists Stub",
         "exercises": {}
       }
@@ -1495,8 +1507,34 @@
       }
     },
     "Indexing": {
-      "Development/IndexIntro": {
+      "Stubs/IndexChap": {
         "long_name": "Indexing Chapter Stub",
+        "exercises": {}
+      },
+      "Stubs/LinearIndex": {
+        "long_name": "Linear Indexing",
+        "exercises": {}
+      },
+      "Stubs/BTree": {
+        "long_name": "B-Trees",
+        "exercises": {}
+      }
+    },
+    "Graphs": {
+      "Stubs/GraphImpl": {
+        "long_name": "Graph Implementations",
+        "exercises": {}
+      },
+      "Stubs/GraphTraversal": {
+        "long_name": "Graph Traversals",
+        "exercises": {}
+      },
+      "Stubs/GraphShortest": {
+        "long_name": "Graph Shortest Paths",
+        "exercises": {}
+      },
+      "Stubs/MCST": {
+        "long_name": "Minimum Cost Spanning Trees",
         "exercises": {}
       }
     },
@@ -1505,39 +1543,47 @@
         "long_name": "Stubs Chapter",
         "exercises": {}
       },
-      "Development/Multilists": {
+      "Stubs/MemoryMan": {
+        "long_name": "Memory Managers",
+        "exercises": {}
+      },
+      "Stubs/Multilists": {
         "long_name": "Multilists",
         "exercises": {}
       },
-      "Development/SparseMatrix": {
+      "Stubs/Trie": {
+        "long_name": "Tries",
+        "exercises": {}
+      },
+      "Stubs/SparseMatrix": {
         "long_name": "Sparse Matrix",
         "exercises": {}
       },
-      "Development/Spatial": {
+      "Stubs/Spatial": {
         "long_name": "Spatial Data Structures",
         "exercises": {}
       },
-      "Development/AdvSumm": {
+      "Stubs/AdvSumm": {
         "long_name": "Advanced Summations",
         "exercises": {}
       },
-      "Development/Recurrence": {
+      "Stubs/Recurrence": {
         "long_name": "Solving Recurrence Relations",
         "exercises": {}
       },
-      "Development/AmortAnal": {
+      "Stubs/AmortAnal": {
         "long_name": "Amortized Analysis",
         "exercises": {}
       },
-      "Development/Reductions": {
+      "Stubs/Reductions": {
         "long_name": "Reductions",
         "exercises": {}
       },
-      "Development/Computability": {
+      "Stubs/Computability": {
         "long_name": "Computability",
         "exercises": {}
       },
-      "Development/LimComp": {
+      "Stubs/LimComp": {
         "long_name": "Limits to Computing",
         "exercises": {}
       }

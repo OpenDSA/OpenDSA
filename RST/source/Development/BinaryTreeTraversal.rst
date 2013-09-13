@@ -16,16 +16,16 @@ Often we wish to process a binary tree by "visiting" each of its
 nodes, each time performing a specific action such as printing the
 contents of the node.
 Any process for visiting all of the nodes in some order is
-called a :dfn:`traversal`.
+called a :term:`traversal`.
 Any traversal that lists every node in the tree exactly once is
-called an :dfn:`enumeration` of the tree's nodes.
+called an :term:`enumeration` of the tree's nodes.
 Some applications do not require that the nodes be visited in any
 particular order as long as each node is visited precisely once.
 For other applications, nodes must be visited in an order that
 preserves some relationship.
 For example, we might wish to make sure that we visit any given node
 *before* we visit its children.
-This is called a :dfn:`preorder traversal`.
+This is called a :term:`preorder traversal`.
 
 .. topic:: Example
 
@@ -45,7 +45,7 @@ We would like to delete the children of a node before deleting the
 node itself.
 But to do that requires that the children's children be deleted
 first, and so on.
-This is called a :dfn:`postorder traversal`.
+This is called a :term:`postorder traversal`.
 
 .. topic:: Example
 
@@ -53,7 +53,7 @@ This is called a :dfn:`postorder traversal`.
    Figure :num:`Figure #BinExample` is
    **D B G E H I F C A**.
 
-An :dfn:`inorder traversal` first visits the left child
+An :term:`inorder traversal` first visits the left child
 (including its entire subtree), then visits the node, and finally
 visits the right child (including its entire
 subtree).
@@ -65,11 +65,6 @@ traversal to print all nodes in ascending order of value.
    The inorder enumeration for the tree of
    Figure :num:`Figure #BinExample` is
    **B D A G E C H F I**.
-
-.. TODO::
-   :type: Exercise
-
-   Add the exercises like what Ville did for traversals.
 
 Now we will discuss some implementations for the traversals, but we
 need to define a node ADT to work with.
@@ -139,12 +134,6 @@ On the other hand, ``preorder2`` must access the left and right
 child pointers twice as often.
 The net result is little or no performance improvement.
 
-.. TODO::
-   :type: Exercise
-
-   Why does ``preorder2`` make only half as many recursive calls?
-   Answer: Because half the pointers are null.
-
 In reality, the design of ``preorder2`` is inferior to
 that of ``preorder`` for two reasons.
 First, while it is not apparent in this simple example,
@@ -178,11 +167,11 @@ It is probably better design to permit only the tree class to have
 access to the ``BinNode`` class.
 
 Another approach is for the tree class to supply a generic traversal
-function which takes the visitor as a function parameter.
+function that takes the visitor as a function parameter.
 This is known as the
-:dfn:`visitor design pattern`.
+:term:`visitor design pattern`.
 A major constraint on this approach is that the
-:dfn:`signature` for all visitor functions, that is,
+:term:`signature` for all visitor functions, that is,
 their return type and parameters, must be fixed in advance.
 Thus, the designer of the generic traversal function must be able to
 adequately judge what parameters and return type will likely be needed

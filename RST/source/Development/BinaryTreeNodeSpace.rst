@@ -122,3 +122,8 @@ success and failure.
 In any other situation, such "bit packing" tricks should be
 avoided because they are difficult to debug and understand at
 best, and are often machine dependent at worst.
+
+.. TODO::
+   :type: Exercise
+
+   Overhead computation exercise

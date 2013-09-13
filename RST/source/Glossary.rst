@@ -55,6 +55,10 @@ Glossary
       The total cost for a series of operations to be used in an
       :term:`amortized analysis`.
 
+   ancestor
+      In a tree, for a given node :math:`A`, any node on a :term:`path` from
+      :math:`A` up to the root is an ancestor of :math:`A`.
+
    array-based list
       An implementation for the list ADT that uses an array to store
       the list elements. Typical implementations fix the array size at
@@ -120,6 +124,22 @@ Glossary
       A standard recursive search algorithm for a sorted list. It runs
       in :math:O(\log n): time.
       
+   binary search tree
+   BST
+      A binary tree that imposes the following constraint on its node
+      values: The (key) value for any node :math:`A` must be greater
+      than the (key) values for all nodes in the left :term:`subtree`
+      of :math:`A`, and less than the (key) values for all nodes in the
+      right subtree of :math:`A`. Some convention must be adopted if
+      multiple nodes with the same key value are permitted, typically
+      these are required to be in the right subtree.
+
+   binary tree
+      A finite set of nodes which is either empty, or else has a root
+      node together two binary trees, called the left and right
+      :term:`subtrees`,  which are disjoint from each other and from
+      the root.
+
    binsort
       A sort that works by taking each record and placing it into a
       bin based on its value. The bins are then gathered up in order
@@ -159,6 +179,11 @@ Glossary
       Written :math:`\lceil x \rceil`, for real value :math:`x` the
       ceiling is the least integer :math:`\geq x`.
 
+   child
+   children
+      In a tree, the set of :math:`nodes` directly pointed to by a node
+      :math:`R` are the children of :math:`R`.
+
    circular list
       A :term:`list` ADT implementation variant where the last element of the
       list provides access to the first element of the list.
@@ -193,7 +218,8 @@ Glossary
       stronger version). This stronger version requires that the type
       define a :term:`total order`.
 
-   comparator (or comparator function)
+   comparator
+   comparator function
       A function given as a parameter to a method of a library
       (or alternatively, a parameter for a C++ template or a Java
       generic).
@@ -205,6 +231,7 @@ Glossary
       sorting routine pass in a comparator function
       to define how records in the collection are to be compared.
 
+   complete
    complete binary tree
       A binary tree where the nodes are filled in row by row, with the
       bottom row filled in left to right.
@@ -259,9 +286,23 @@ Glossary
       bounds proofs, such as the proof that sorting requires
       :math:`\Omega(n \log n)` comparisons in the worst case.
 
+   depth
+     The depth of a node :math:`M` in a tree is the length
+     of the path from the root of the tree to :math:`M`.
+
    dequeue
       A specialized term used to indicate removing an element from a queue.
 
+   descendant
+   descendants
+      In a tree, the set of all nodes that have a node :math:`A` as an
+      :term:`ancestor` are the descendants of :math:`A`.
+      In other words, all of the nodes that can be reached from
+      :math:`A` by progressing downwards in tree.
+      Another way to say it is: The
+      :term:`children` of :math:`A`, their children, and so on.
+
+   design pattern
    design patterns
       Abstractions for describing the design of programs |---| that is,
       the interactions of objects and classes.
@@ -332,6 +373,10 @@ Glossary
       needed, the object is either returned to :term:`free store` or
       left as :term:`garbage`, depending on the programming language.
 
+   edge
+      The connection that links two :term:`nodes` in a tree, linked
+      list, or graph.
+
    efficient
       A solution is said to be efficient
       if it solves the problem within the required
@@ -354,6 +399,14 @@ Glossary
 
    enqueue
       A specialized term used to indicate inserting an element onto a queue.
+
+   enumeration
+   enumerate
+      The process by which a :term:`traversal` lists every object in
+      the container exactly once. Thus, a traversal that prints the
+      nodes is said to enumerate the nodes. An enumeration can also
+      refer to the actual listing that is produced by the traversal
+      (as well as the process that created that listing).
 
    equivalence classes
       An :term:`equivalence relation` can be used to partition a set
@@ -412,6 +465,12 @@ Glossary
       checked first and it provides the object if possible.
       If the freelist is empty, then a new object is allocated from
       :term:`free store`.
+
+   full
+   full tree
+      A binary tree is full if every node is either a
+      :term:`leaf node` or else it is an internal node with two
+      non-empty children.
 
    function
       A matching between inputs (the :term:`domain`) and outputs
@@ -472,11 +531,22 @@ Glossary
       of the heap) until all elements have been removed (and replaced
       at their proper location in the array).
 
+   height
+      The height of a tree is one more than the :term:`depth` of the
+      deepest :term:`node` in the tree.
+
    induction hypothesis
       The key assumption used in an induction proof, that the theorem
       to be proved holds for smaller instances of the theorem.
       The induction hypothesis is equivalent to the recursive call in
       a recursive function.
+
+   inorder traversal
+      In a binary tree, a :term:`traversal` that first
+      recursively visits the left child, then visits the
+      root, an then recursively visits the right child.
+      In a :term:`binary search tree`, this traversal will
+      :term:`enumerate` the nodes in sorted order.
 
    insertion sort
       A sorting algorithm with :math:`\Theta(n^2)` average and worst
@@ -487,6 +557,10 @@ Glossary
    instance
       A specific selection of values for the parameters to a problem.
       In other words, a specific set of inputs to a problem.
+
+   internal node
+      In a tree, any node that has at least one non-empty
+      :term:`child` is an  internal node.
 
    inversion
       A measure of how disordered a series of values is. For each
@@ -516,9 +590,23 @@ Glossary
       The other standard solution to this problem is to pass a
       comparator function to the index methods.
 
+   leaf
+   leaf node
+      In a binary tree, A leaf node is any node that has two empty
+      children.
+      (Note that in a binary tree is defined so that every
+      node has two children, and that is why the leaf node has to have
+      two empty children, rather than no children.)
+      In a general tree, any node is a leaf node if it has no children.
+
    length
       In a :term:`list`, the number of elements. In a string, the
       number of characters.
+
+   level
+      In a tree, all nodes of :term:`depth` :math:`d` are at
+      level :math:`d` in the tree.
+      The root is the only node at level 0, and its depth is 0.
 
    linear growth rate
       For input size :math:`n`, a growth rate of :math:`cn` (for
@@ -654,6 +742,11 @@ Glossary
    parameters
       The values making up an input to a function.
 
+   parent
+      In a tree, the :term:`node` :math:`P` that directly links to a
+      node :math:`A` is the parent of :math:`A`. :math:`A` is the
+      :term:`child` of :math:`P`.
+
    partial order
       A binary relation is called a partial order if it is
       antisymmetric and transitive.
@@ -668,6 +761,11 @@ Glossary
       :term:`pivot` value, and the other with values greater than the
       pivot. This process takes :math:`\Theta(i)` time on a sublist of
       length :math:`i`.
+
+   path
+      A sequence of vertices :math:`v_1, v_2, ..., v_n`
+      forms a path of length :math:`n-1` if there exist edges from
+      :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
 
    permutation
       A permutation of a sequence :math:`\mathbf{S}`
@@ -699,9 +797,19 @@ Glossary
       list elements are in a position. Many list ADTs support access
       by position.
 
+   postorder traversal
+      In a binary tree, a :term:`traversal` that first
+      recursively visits the left child, then recursively
+      visits the right child, and then visits the root.
+
    powerset
       For a set :math:`\mathbf{S}`, the power set is the set of all
       possible subsets for :math:`\mathbf{S}`.
+
+   preorder traversal
+      In a binary tree, a :term:`traversal` that first visits the
+      root, then recursively visits the left child, then recursively
+      visits the right child.
 
    primitive element
       In set notation, this is a single element that is a member of
@@ -809,6 +917,10 @@ Glossary
       main memory and disk space constraints |---| and the time
       allowed to perform each subtask.
 
+   root
+      In a tree, the topmost :term:`node` of the tree. All other nodes
+      in the tree are :term:`descendants` of the root.
+
    runtime stack
       The place where an :term:`activation record` is stored when a
       subroutine is called during a program's runtime.
@@ -844,6 +956,10 @@ Glossary
       A sort that relies on the best-case cost of
       :term:`insertion sort` to improve over :math:`\Theta(n^2)` worst
       case cost. 
+
+   signature
+      In a programming language, the signature for a function is its
+      return type and its list of parameters and their types.
 
    simple type
       A type whose values contain no subparts. An example is the integers.
@@ -883,6 +999,13 @@ Glossary
       If **Thrm** holds for all :math:`k, c \leq k < n`, then
       **Thrm** holds for :math:`n`.
 
+   subtree
+   subtrees
+      A subtree is a subset of the nodes of a binary tree that
+      includes some node :math:`R` of the tree as the subtree root
+      along with all the :term:`descendants` of :math:`R`.
+
+
    summation
       The sum of costs for some function applied to a
       range of parameter values.
@@ -902,6 +1025,10 @@ Glossary
    transitive
       In set notation, relation :math:`R` is transitive if whenever
       :math:`aRb`, then :math:`bRa`, for all :math:`a, b \in \mathbf{S}`.
+
+   traversal
+      Any process for visiting all of the objects in a collection
+      (such as a tree or graph) in some order.
 
    tuple
       In set notation, another term for a :term:`sequence`.
@@ -924,6 +1051,14 @@ Glossary
       In set notation, another term for a :term:`sequence`.
       As a data structure, the term vector usually used as a synonym
       for a :term:`dynamic array`.
+
+   visitor
+   visitor design pattern
+      A :term:`design pattern` where a traversal process is given a
+      function (known as the visitor) that is applied to every object
+      in the collection being traversed. For example, a generic tree
+      or graph traversal might be designed such that it takes a
+      function parameter, where that function is applied to each node.
 
    worst case
       In algorithm analysis, the problem instance from among all

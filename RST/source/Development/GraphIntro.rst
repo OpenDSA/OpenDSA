@@ -116,7 +116,7 @@ are said to be :dfn:`weighted`.
    word.
 
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
-forms a :dfn:`path` of length :math:`n-1` if there exist edges from
+forms a :term:`path` of length :math:`n-1` if there exist edges from
 :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
 A path is :dfn:`simple` if all vertices on the path are distinct.
 The :dfn:`length` of a path is the number of edges it contains.

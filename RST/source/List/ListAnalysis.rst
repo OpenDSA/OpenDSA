@@ -25,7 +25,7 @@ space whether they are simple integers or large objects with many
 fields.
 Any container data structure like a list then requires some additional
 space to organize the elements being stored.
-This additional space is called :term`overhead`.
+This additional space is called :term:`overhead`.
 
 Array-based lists have the disadvantage that their size must be
 predetermined before the array can be allocated.

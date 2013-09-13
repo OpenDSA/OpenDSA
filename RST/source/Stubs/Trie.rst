@@ -3,12 +3,13 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata::
-   :author: Cliff Shaffer
-   :prerequisites: BST
-   :topic: Search Trees
+.. avmetadata:: 
+   :author:
+   :prerequisites: GraphShortest
+   :topic: Graphs
 
 Tries [STUB]
 ============
 
-Placeholder for Crossreference
+This module has not yet been written.
+This is a placeholder to avoid a dangling crossreference

@@ -3,12 +3,13 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata::
-   :author: Cliff Shaffer
-   :prerequisites:
-   :topic: Search
+.. avmetadata:: 
+   :author:
+   :prerequisites: GraphShortest
+   :topic: Graphs
 
-Chapter Introduction: Search [STUB]
-===================================
+Union/Find [STUB]
+=================
 
-Placeholder for cross-reference.
+This module has not yet been written.
+This is a placeholder to avoid a dangling crossreference
