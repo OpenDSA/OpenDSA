@@ -6,65 +6,77 @@
 	var tree;
     var parents;
     var labels;
-    var arr;     //Used to initialize the parents and labels arrays.
-    var graph;   //To hold the nodes and edges before running the union find
+    var arr;                   //Used to initialize the parents and labels arrays.
+    var graph;                 //To hold the nodes and edges before running the union find
+	var treeNodes              //To hold references to each array index treeNode
+	var rootNumberOfChildren;    //To keep track of the number of children so far in the root
 
     function runit() {
       var i;
       ODSA.AV.reset(true);
       jsav = new JSAV($('.avcontainer'));
+	  
       arr = new Array(10);
-      //Initializing the parent pointers
-      for (i = 0; i < arr.length; i++) {
-        arr[i] = null;
-      }
-      parents = jsav.ds.array(arr, {left: 300, top: -30});
-      //Initializing the labels
+	  rootNumberOfChildren = arr.length;
+	  //Initializing the labels
       for (i = 0; i < arr.length; i++) {
         arr[i] = String.fromCharCode(i + 65);
       }
       labels = jsav.ds.array(arr, {left: 300, top: 17});
-
-      //Rendering the trees on the container
+	 //Rendering the tree on the container
       initTree();
       //Defining the graph
       initGraph();
+      //Initializing the parent pointer
+      for (i = 0; i < arr.length; i++) {
+        arr[i] = null;
+      }
+	  parents = jsav.ds.array(arr, {left: 300, top: -30});
 	  
-	  var a = graph.nodes()[0].treeNode;
-	  var b = graph.nodes()[1].treeNode;
-	  var c = graph.nodes()[2].treeNode;
-	  var d = graph.nodes()[3].treeNode;
-	  var e = graph.nodes()[4].treeNode;
-	  var f = graph.nodes()[5].treeNode;
-	  var g = graph.nodes()[6].treeNode;
-	  var h = graph.nodes()[7].treeNode;
-	  var i = graph.nodes()[8].treeNode;
-	  var j = graph.nodes()[9].treeNode;
+	  treeNodes = new Array(arr.length);
+	  for (i = 0; i < treeNodes.length; i++){
+	    treeNodes[i] = tree.root().child(i);    //At first
+		treeNodes[i].indexFromRoot = i;
+	  }
 	  
-	  var aa = cloneChild(a, 0);
-	  var dd = cloneChild(d, 3);
-	  var jj = cloneChild(j, 9);
-	  var ii = cloneChild(i, 8);
-	 
+	  var aa = cloneChild(0);
+	  var ii = cloneChild(8);
+	  var gg = cloneChild(6);
+	  
+	  var a = treeNodes[0];
+	  var b = treeNodes[1];
+	  var j = treeNodes[9];
 	  b.addChild(aa);
-	  b.addChild(dd);
-	  
-	  a = graph.nodes()[0].treeNode;
-	  d = graph.nodes()[3].treeNode;
-	  a.addChild(jj);
-	  d.addChild(ii);
-	  
+	  a.addChild(ii);
+	  j.addChild(gg);
+	  //var bb = cloneChild(1);
+	  //j.addChild(bb);
 	  tree.layout();
 	  
 	}
-	function cloneChild(child, graphNodeIndex){
-	  //var child = tree.root().child(index);
-	  var newNode = tree.newNode(child.value());
-	  newNode.size = child.size;
-	  newNode.graphNode = child.graphNode;
-	  graph.nodes()[graphNodeIndex].treeNode = newNode;
-	  //tree.root().child(index, null);
-	  child.hide();
+	function cloneChild(index){
+	  var child = treeNodes[index];
+	  var newNode = tree.newNode(treeNodes[index].value());
+	  newNode.size = treeNodes[index].size;
+	  
+	  //Copy the Children of the node
+	  //var k = 0;
+	  //while (true){
+	    //if(treeNodes[index].child(k)){
+	      //var newChild = tree.newNode(treeNodes[index].child(k).value());
+		  
+	    //}
+      //}
+	  
+	  //Update the index within the root for the other nodes
+	  var i = index + 1;
+	  for (var j = child.indexFromRoot + 1; j < rootNumberOfChildren; j++){
+	    treeNodes[i].indexFromRoot--;
+		i++;
+	  }
+	  tree.root().child(child.indexFromRoot, null);
+	  rootNumberOfChildren--;
+	  treeNodes[index] = newNode;
 	  return newNode;	  
 	}
     function find(graphNode) {
@@ -129,17 +141,12 @@
       graph.addEdge(f, g);
       graph.addEdge(f, i);
       graph.addEdge(h, e);
-
-      //Matching the graphNode to a treeNode to be used in the Find and Union Operations
-      for (var k = 0; k < graph.nodeCount(); k++) {
-        graph.nodes()[k].treeNode = tree.root().child(k);
-		(tree.root().child(k)).graphNode = graph.nodes()[k];
-      }
+	  
       //Make the Graph invisible
       graph.hide();
     }
 	function processGraph(){
-	  
+
 	}
 
     function about() {
