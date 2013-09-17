@@ -14,6 +14,10 @@
         "long_name": "Array Implementation for Complete Trees",
         "exercises": {}
       },
+      "Development/Bintree": {
+        "long_name": "Bintrees",
+        "exercises": {}
+      },
       "Development/Heaps": {
         "long_name": "Heaps and Priority Queues",
         "exercises": {

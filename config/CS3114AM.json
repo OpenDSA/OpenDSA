@@ -656,12 +656,6 @@
             "points": 1.0,
             "threshold": 0.90
           },
-          "binarytree-levelorder": {
-            "long_name": "Binary Tree Level Order Traversal",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90
-          },
           "binarytree-preorder": {
             "long_name": "Binary Tree Preorder Traversal",
             "required": true,
@@ -686,7 +680,14 @@
       },
       "Development/BinaryTreeNodeSpace": {
         "long_name": "Full Binary Tree Node Space Requirements",
-        "exercises": {}
+        "exercises": {
+          "TreeOverheadSumm": {
+            "long_name": "Tree Overhead",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          }
+	}
       },
       "Development/BST": {
         "long_name": "Binary Search Trees",
@@ -753,6 +754,10 @@
             "threshold": 0.90
           }
         }
+      },
+      "Development/Bintree": {
+        "long_name": "Bintrees",
+        "exercises": {}
       },
       "Development/Huffman": {
         "long_name": "Huffman Coding Trees",

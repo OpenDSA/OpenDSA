@@ -1464,39 +1464,39 @@
         "long_name": "Stubs Chapter",
         "exercises": {}
       },
-      "Development/Multilists": {
+      "Stubs/Multilists": {
         "long_name": "Multilists",
         "exercises": {}
       },
-      "Development/SparseMatrix": {
+      "Stubs/SparseMatrix": {
         "long_name": "Sparse Matrix",
         "exercises": {}
       },
-      "Development/Spatial": {
+      "Stubs/Spatial": {
         "long_name": "Spatial Data Structures",
         "exercises": {}
       },
-      "Development/AdvSumm": {
+      "Stubs/AdvSumm": {
         "long_name": "Advanced Summations",
         "exercises": {}
       },
-      "Development/Recurrence": {
+      "Stubs/Recurrence": {
         "long_name": "Solving Recurrence Relations",
         "exercises": {}
       },
-      "Development/AmortAnal": {
+      "Stubs/AmortAnal": {
         "long_name": "Amortized Analysis",
         "exercises": {}
       },
-      "Development/Reductions": {
+      "Stubs/Reductions": {
         "long_name": "Reductions",
         "exercises": {}
       },
-      "Development/Computability": {
+      "Stubs/Computability": {
         "long_name": "Computability",
         "exercises": {}
       },
-      "Development/LimComp": {
+      "Stubs/LimComp": {
         "long_name": "Limits to Computing",
         "exercises": {}
       }

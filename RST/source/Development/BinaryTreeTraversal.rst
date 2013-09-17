@@ -257,44 +257,11 @@ We can implement this function as follows.
 .. codeinclude:: Trees/Traverse.pde
    :tag: checkBST
 
-Inorder Traversal Exercise.
+Here are some exercises to practice the traversals.
 
 .. avembed:: AV/Development/binarytree-inorder.html pe
 
-Level order Traversal Exercise.
-
-.. avembed:: AV/Development/binarytree-levelorder.html pe
-
-Postorder Traversal Exercise.
 
 .. avembed:: AV/Development/binarytree-postorder.html pe
 
-Preorder Traversal Exercise.
-
 .. avembed:: AV/Development/binarytree-preorder.html pe
-
-.. TODO::
-   :type: Exercise
-
-   Given one of the three traversals (randomly selected), and a random
-   tree, give the enumeration.
-
-.. TODO::
-   :type: Exercise
-
-   Given the three lines of code related to
-   doing any of the traversals, arrange them in proper order to get the
-   desired traversal. The answer can easily be checked, either by
-   examining the resulting code (since it is so constrained) or by
-   examining a computed output.
-
-.. TODO::
-   :type: Exercise
-
-   Given an enumeration from a tree, determine if it is pre-order,
-   post-order, in-order, or none of the above.
-
-.. TODO::
-   :type: Exercise
-
-   Need a battery of MCQ questions on content
