@@ -40,13 +40,17 @@ boolean find(List L, int k) {
 void testAppend(List L2) {
   L2.append(10);
   String temp = toString(L2);
-  if (!temp.equals("< | 10 >"))
+  if (!temp.equals("< | 10 >")) {
     SUCCESS = false;
+    println("Expected " + "< | 10 >" + ", got " + temp);
+  }
   L2.append(20);
   L2.append(15);
   temp = toString(L2);
-  if (!temp.equals("< | 10 20 15 >"))
+  if (!temp.equals("< | 10 20 15 >")) {
     SUCCESS = false;
+    println("Expected " + "< | 10 20 15 >" + ", got " + temp);
+  }
 }
 
 void test(List L) {

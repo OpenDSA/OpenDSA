@@ -35,6 +35,7 @@ void insert(Object it) {
 void append(Object it) {
   tail.setPrev(new Link(it, tail.prev(), tail));
   tail.prev().prev().setNext(tail.prev());
+  if (curr == tail) curr = tail.prev();
   listSize++;
 }
 /* *** ODSAendTag: DListAppend *** */
