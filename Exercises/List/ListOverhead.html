@@ -11,11 +11,11 @@
 <script>
 function genAnswer(p, d) {
   sum = p + d;
-  while ((sum % 2 === 0) && (p % 2 === 0)) {
-    p = p/2;
+  while ((sum % 2 === 0) && (d % 2 === 0)) {
+    d = d/2;
     sum = sum/2;
   }
-  return p.toString() + "/" + sum.toString();
+  return d.toString() + "/" + sum.toString();
 }
 </script>
 
@@ -43,10 +43,11 @@ function genAnswer(p, d) {
          <p>The overhead is <var>P</var> and the total space needed
          is <var>SUM</var>.</p>
 	 <p>As the array fills up, its overhead decreases.</p>
-	 <p>The bigger the overhead, the less the array needs to be
-	 better. The bigger the data field, the more the array needs
+	 <p>The pointer space (<var>P</var> bytes) is overhead.
+	 <p>The bigger the overhead fraction, the less the array needs
+	 to be better. The bigger the data field, the more the array needs
 	 to be better.</p>
-	 <p>The breakeven point is at <var>P</var>/<var>SUM</var>.</p>
+	 <p>The breakeven point is at <var>D</var>/<var>SUM</var>.</p>
 	 <p>If you have values like 4/8, reduce to 1/2.</p>
       </div> 
     </div>

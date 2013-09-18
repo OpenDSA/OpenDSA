@@ -146,6 +146,8 @@ types would have to be written in a way to deal with the generic
 comparison problem.
 To illustrate, here is an example of Insertion Sort implemented to
 work on an array that stores key-record pairs.
+Note that the records can be of any type, and the keys can be of any
+type that implements the ``Comparable`` interface.
 
 .. codeinclude:: Sorting/InssortKV.pde 
    :tag: InssortKV
