@@ -1,15 +1,21 @@
 /* *** ODSATag: KVpair *** */
 // KVPair class definition
-class KVPair {
-  int theKey;
+class KVPair implements Comparable {
+  Comparable theKey;
   Object theVal;
 
-  KVPair(int k, Object v) {
+  KVPair(Comparable k, Object v) {
     theKey = k;
     theVal = v;
   }
 
-  int key() {
+  int compareTo(Object it) throws ClassCastException {
+    if (!(it instanceof KVPair))
+      throw new ClassCastException("A KVPair object expected.");
+    return theKey.compareTo(((KVPair)it).key());
+  }
+
+  Comparable key() {
     return theKey;
   }
 

@@ -12,7 +12,7 @@ void setup() {
       A[i] = new KVPair(int(random(1000))+1, i);
     sorttest(A);
     for (i=1; i<A.length; i++)
-      if (A[i].key() < A[i-1].key()) {
+      if (A[i].compareTo(A[i-1]) < 0) {
         println("Error! Value " + A[i].key() + " at position " + i +
                 " was less than " + A[i-1].key() + " at position " + (i-1));
         SUCCESS = false;

@@ -13,7 +13,7 @@ PROCESS = ~/processing-2.0b9/processing-java
 BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
-all: Demo Misc Lists Trees Sorting Graphs
+all: Demo Misc Lists Design Trees Sorting Graphs
 # Use "sorttest" if you want to run sorting timings
 
 clean:
@@ -149,6 +149,22 @@ build/QueueTest/success: Lists/Queue.pde Lists/AQueue.pde Lists/Link.pde Lists/L
 	@cp Lists/Link.pde build/QueueTest/
 	@cp Lists/QueueTest.pde build/QueueTest/
 	@$(PROCESS) --run --sketch="$(BUILD)/QueueTest" --output="$(BUILD)/build" --force
+
+Design: Dictionary
+
+Dictionary: build/DictionaryTest/success
+
+build/DictionaryTest/success: Design/Dictionary.pde Design/DictionaryTest.pde Design/Payroll.pde Design/UALDictionary.pde Utils/KVPair.pde Lists/AList.pde
+	@echo "Dictionary Test"
+	-@rm -rf build/DictionaryTest
+	@mkdir build/DictionaryTest
+	@cp Design/Dictionary.pde build/DictionaryTest
+	@cp Design/DictionaryTest.pde build/DictionaryTest
+	@cp Design/Payroll.pde build/DictionaryTest
+	@cp Design/UALDictionary.pde build/DictionaryTest
+	@cp Utils/KVPair.pde build/DictionaryTest
+	@cp Lists/AList.pde build/DictionaryTest
+	@$(PROCESS) --run --sketch="$(BUILD)/DictionaryTest" --output="$(BUILD)/build" --force
 
 Trees: GenTree UFTest
 
