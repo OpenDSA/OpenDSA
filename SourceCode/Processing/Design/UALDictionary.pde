@@ -1,55 +1,53 @@
 /* *** ODSATag: UALDictionary *** */
-/** Dictionary implemented by unsorted array-based list. */
-class UALdictionary<Key, E> implements Dictionary<Key, E> {
+// Dictionary implemented by unsorted array-based list.
+class UALdictionary implements Dictionary {
   private static final int defaultSize = 10; // Default size
-  private AList<KVpair<Key,E>> list;  // To store dictionary
+  private AList list;                        // To store dictionary
 
-  /** Constructors */
+  // Constructors
   UALdictionary() { this(defaultSize); }
-  UALdictionary(int sz)
-    { list = new AList<KVpair<Key, E>>(sz); }
+  UALdictionary(int sz) { list = new AList(sz); }
 
-  /** Reinitialize */
+  // Reinitialize
   public void clear() { list.clear(); }
 
-  /** Insert an element: append to list */
-  public void insert(Key k, E e) {
-    KVpair<Key,E> temp = new KVpair<Key,E>(k, e);
+  // Insert an element: append to list
+  public void insert(Comparable k, Object e) {
+    KVPair temp = new KVPair(k, e);
     list.append(temp);
   }
 
-  /** Use sequential search to find the element to remove */
-  public E remove(Key k) {
-    E temp = find(k);
+  // Use sequential search to find the element to remove
+  public Object remove(Comparable k) {
+    Object temp = find(k);
     if (temp != null) list.remove();
     return temp;
   }
 
-  /** Remove the last element */
-  public E removeAny() {
+  // Remove the last element
+  public Object removeAny() {
     if (size() != 0) {
       list.moveToEnd();
       list.prev();
-      KVpair<Key,E> e = list.remove();
+      KVPair e = (KVPair)list.remove();
       return e.value();
     }
     else return null;
   }
 
-  /** Find k using sequential search
-      @return Record with key value k */
-  public E find(Key k) {
+  // Find k using sequential search
+  // Return the record with key value k
+  public Object find(Comparable k) {
     for(list.moveToStart(); list.currPos() < list.length();
         list.next()) {
-      KVpair<Key,E> temp = list.getValue();
+      KVPair temp = (KVPair)list.getValue();
       if (k == temp.key())
         return temp.value();
     }
     return null; // "k" does not appear in dictionary
   }
 
-  /** @return List size */
-  public int size()
-    { return list.length(); }
+  // Return list size
+  public int size() { return list.length(); }
 }
 /* *** ODSAendTag: UALDictionary *** */

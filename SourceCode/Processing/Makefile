@@ -8,9 +8,9 @@
 PROCESS = ~/processing-2.0b9/processing-java
 
 # Use this one on Linux
-# BUILD = build
+BUILD = build
 # On Windows, I can't make it work without an absolute path
-BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+# BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
 all: Demo Misc Lists Design Trees Sorting Graphs
@@ -154,7 +154,7 @@ Design: Dictionary
 
 Dictionary: build/DictionaryTest/success
 
-build/DictionaryTest/success: Design/Dictionary.pde Design/DictionaryTest.pde Design/Payroll.pde Design/UALDictionary.pde Utils/KVPair.pde Lists/AList.pde
+build/DictionaryTest/success: Design/Dictionary.pde Design/DictionaryTest.pde Design/Payroll.pde Design/UALDictionary.pde Utils/KVPair.pde Lists/AList.pde Lists/ListADT.pde
 	@echo "Dictionary Test"
 	-@rm -rf build/DictionaryTest
 	@mkdir build/DictionaryTest
@@ -164,6 +164,7 @@ build/DictionaryTest/success: Design/Dictionary.pde Design/DictionaryTest.pde De
 	@cp Design/UALDictionary.pde build/DictionaryTest
 	@cp Utils/KVPair.pde build/DictionaryTest
 	@cp Lists/AList.pde build/DictionaryTest
+	@cp Lists/ListADT.pde build/DictionaryTest
 	@$(PROCESS) --run --sketch="$(BUILD)/DictionaryTest" --output="$(BUILD)/build" --force
 
 Trees: GenTree UFTest
