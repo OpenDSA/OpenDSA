@@ -9,7 +9,7 @@
     var arr;                   //Used to initialize the parents and labels arrays.
     var graph;                 //To hold the nodes and edges before running the union find
 	var treeNodes              //To hold references to each array index treeNode
-	var rootNumberOfChildren;    //To keep track of the number of children so far in the root
+	var gnodes = [];                //GraphNodes 
 
     function runit() {
       var i;
@@ -17,7 +17,6 @@
       jsav = new JSAV($('.avcontainer'));
 	  
       arr = new Array(10);
-	  rootNumberOfChildren = arr.length;
 	  //Initializing the labels
       for (i = 0; i < arr.length; i++) {
         arr[i] = String.fromCharCode(i + 65);
@@ -29,7 +28,7 @@
       initGraph();
       //Initializing the parent pointer
       for (i = 0; i < arr.length; i++) {
-        arr[i] = null;
+        arr[i] = "/";
       }
 	  parents = jsav.ds.array(arr, {left: 300, top: -30});
 	  
@@ -39,71 +38,55 @@
 		treeNodes[i].indexFromRoot = i;
 	  }
 	  
-	  var aa = cloneChild(0);
-	  var ii = cloneChild(8);
-	  var gg = cloneChild(6);
+	  jsav.displayInit();
+	  processGraph();
+	  jsav.recorded();
+	  // var a = treeNodes[0];
+	  // var b = treeNodes[1];
+	  // var c = treeNodes[2];
+	  // var d = treeNodes[3];
+	  // var e = treeNodes[4];
+	  // var f = treeNodes[5];
+	  // var g = treeNodes[6];
+	  // var h = treeNodes[7];
 	  
-	  var a = treeNodes[0];
-	  var b = treeNodes[1];
-	  var j = treeNodes[9];
-	  b.addChild(aa);
-	  a.addChild(ii);
-	  j.addChild(gg);
-	  //var bb = cloneChild(1);
-	  //j.addChild(bb);
-	  tree.layout();
-	  
-	}
-	function cloneChild(index){
-	  var child = treeNodes[index];
-	  var newNode = tree.newNode(treeNodes[index].value());
-	  newNode.size = treeNodes[index].size;
-	  
-	  //Copy the Children of the node
-	  //var k = 0;
-	  //while (true){
-	    //if(treeNodes[index].child(k)){
-	      //var newChild = tree.newNode(treeNodes[index].child(k).value());
-		  
-	    //}
-      //}
-	  
-	  //Update the index within the root for the other nodes
-	  var i = index + 1;
-	  for (var j = child.indexFromRoot + 1; j < rootNumberOfChildren; j++){
-	    treeNodes[i].indexFromRoot--;
-		i++;
-	  }
-	  tree.root().child(child.indexFromRoot, null);
-	  rootNumberOfChildren--;
-	  treeNodes[index] = newNode;
-	  return newNode;	  
-	}
-    function find(graphNode) {
-      if (graphNode.treeNode.parent() === tree.root()) {
-      //In this case the node is the root of its tree and we return it as its containing tree
-        return graphNode.treeNode;
+	  // union(find(a), find(b));
+	  // union(find(c), find(a));
+	  // union(find(b), find(d));
+	  // union(find(e),find(b));
+	  // union(find(g),find(f));
+	  // union(find(f),find(b));
+	  // union(find(f),find(h));
+	  // tree.layout();
+	}	
+    function find(treeNode) {
+      if (treeNode.parent() === tree.root()){
+        return treeNode;
       }
-      else {
-        var currentNode = graphNode.treeNode;
-        while (currentNode.parent() != tree.root()) {
-          currentNode = currentNode.parent();
-        }
-        return currentNode;
-      }
+      else{
+	    var currentNode = treeNode;
+		while (currentNode.parent() != tree.root()){
+		  currentNode = currentNode.parent();
+		}
+		return currentNode;
+      }	  
     }
     function union(node1, node2) {
       //First we have to find which one has the least size
+	  var index1 = treeNodes.indexOf(node1);
+	  var index2 = treeNodes.indexOf(node2);
       if (node1.size >= node2.size) {
         node1.addChild(node2);
+		node1.size++;
+		parents.value(index2, node1.value());
       }
       else {
         node2.addChild(node1);
-
+		node2.size++;
+		parents.value(index1, node2.value());
       }
     }
     function initTree() {
-	  var pixelOffset = 0;
 	  var newNode;
 	  tree = jsav.ds.tree({left: 20, top: 90, nodegap: 20});
 	  var root = tree.newNode("X");
@@ -144,9 +127,42 @@
 	  
       //Make the Graph invisible
       graph.hide();
+	  gnodes = graph.nodes();
     }
 	function processGraph(){
-
+      var currentEdge;
+	  var startGraphNode;
+	  var endGraphNode;
+	  var startTreeNode;
+	  var endTreeNode;
+	  var startNodeIndex;
+	  var endNodeIndex;
+	  var c1, c2;
+	  for (var i = 0; i < graph.edges().length; i++) {
+	    currentEdge = graph.edges()[i];
+		startGraphNode = currentEdge.start();
+		endGraphNode = currentEdge.end();
+		startNodeIndex = gnodes.indexOf(startGraphNode);
+		endNodeIndex = gnodes.indexOf(endGraphNode);
+		startTreeNode = treeNodes[startNodeIndex];
+		endTreeNode = treeNodes[endNodeIndex];
+		
+		jsav.umsg("<b><u>Processing Graph Edge (" +startGraphNode.value()+ ", " +endGraphNode.value()+ ")</b></u><br>");
+		jsav.step();
+		c1 = find(startTreeNode);
+		c2 = find(endTreeNode);
+		
+		if (c1 !== c2) {
+		  jsav.umsg("Union Nodes ("+ startGraphNode.value()+", "+endGraphNode.value()+")", {"preserve": true});
+		  union(c1, c2);
+		  tree.layout();
+		}
+		else {
+		  jsav.umsg("Nodes ("+startGraphNode.value()+", "+endGraphNode.value()+") are already unioned", {"preserve": true});
+		}
+		jsav.step();
+	  }
+	  jsav.umsg("Final UnionFind Data Structure")
 	}
 
     function about() {
