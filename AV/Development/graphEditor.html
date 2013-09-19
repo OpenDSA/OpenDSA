@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Custom Graph Editor</title>
-  
-   <meta charset="utf-8" />
+  <title>Custom Graph Editor</title>  
+  <meta charset="utf-8" />    
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
   <link rel="stylesheet" href="graphEditor.css" type="text/css" />
-  
-  
- <!-- <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="Custom Graph Editor" charset="utf-8" />
-  <link href="../../lib/odsaAV-min.css" title="CSS" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="graphEditor.css" type="text/css" />
- -->
 </head>
 <body>
- <!-- 
-	<div style="float:left; width:95%; height:1500px;" id="av">
-	<p class="jsavoutput jsavline"></p> 
-	</div> 
- -->   
+   
+ 
+ 
  <div id="container">
-  <table class="headerTable">
+  <table>
     <tr>
       <td class="headerLeft">
         <input type="button" id="help" name="help" value="Help" />
+		
       </td>
       <td class="headerCenter">
         <h1>Custom Graph Editor</h1>
@@ -35,23 +27,38 @@
     </tr>
   </table>
   
-  <form id="ssperform">
   
-    <p>
-      <input type="button" id="addNodeMode" name="addNodeMode" onclick="addNodeMode" value="Add Nodes" />
-	  <input type="button" id="addEdgeMode" name="addEdges" onclick="addEdgeMode" value="Add Egdes" />
-	  <input type="button" id ="addWeightedEdgeMode" name ="addWeightedEdgeMode" onclick="addWeightedEdgeMode" value="Add Weighted Edges" />
-	  <input type="button" id="moveNodeMode" name="moveNodeMode" onclick="moveNodeMode" value="Move a Node" />
-	  <input type="checkbox" id ="chkbox" name="chkbox" value="directed"/><label for = "chkbox">Directed</label>
-	  
-	</p>
-  </form>
+ <div class="createGraphs">
+ <input type="button" id="createGraph"  value="Create Graph"> </input>
+ <input type="button" id="reshowGraph" value="Reshow Graph"> </input>
+</div>
+
   
-  
-  <div class="avcontainer">
-    <p class="jsavoutput jsavline"></p>
-	<p class="jsavcanvas"></p>
-  </div>
+    <div id="graphControls">
+      <input type="button" id="addNodeMode" name="addNodeMode" value="Add Nodes" /input>
+	  <input type="button" id="addEdgeMode" name="addEdges" value="Add Egdes" /input>
+	  <input type="button" id ="addWeightedEdgeMode" name ="addWeightedEdgeMode" value="Add Weighted Edges" /input>
+	  <input type="button" id="moveNodeMode" name="moveNodeMode" value="Move a Node" /input>
+	  <input type="button" id="done" name="done" value="Done" /input>
+	  <input type="checkbox" id ="chkbox" name="chkbox" value="directed"/><label for = "chkbox">Directed</label>	
+	</div>
+	
+
+ 
+
+<div class="avcontainer">
+
+      <p class="jsavoutput jsavline"></p>  
+</div>
+
+
+
+<div class="avcontainer2">
+
+      <p class="jsavoutput jsavline"></p>  
+</div>
+
+
   
   
  
@@ -73,6 +80,7 @@
 <script src="../../lib/odsaUtils.js"></script>
 <script src="../../lib/odsaAV.js"></script>
 <script src="graphEditor.js"></script>
+
   
 <!--<script src="../../lib/jquery.min.js"></script>
 <script src="../../lib/jquery-ui.min.js"></script>

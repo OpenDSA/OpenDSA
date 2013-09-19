@@ -1,38 +1,46 @@
 #container {
-  width: 900px;
-  height: 800px;
+  width: 800px;
+  height: 650px;
   border: solid green;
 }
-
-
-.jsavcontainer {
-
-	height: 1500px;
-	padding: 0px;
-	overflow: visible;
-	border: solid red;
+#custom {
+     visibility: hidden;
+     
 }
-.avcontainer{
-  overflow: visible;
-  width: auto;
-  height: auto;
-  border: solid red;
+
+#graphControls {
+	display: none;
+	height:40px;
 }
+.createGraphs {
+	height:40px;
+	padding:0;
+}
+.avcontainer {
+	width:600px;
+	height:500px;
+	padding:0;
+}
+.avcontainer2 {
+ display:none;
+width:600px;
+height:500px;
+}
+
+.jsavgraph .jsavautoresize .jsavcenter {
+	width:600px;
+	height:500px;
+}
+.jsavcanvas {
+	height:500px;
+	width:600px;
+}
+
 
 .jsavline{
   height: 50px;
 }
 
-.jsavcanvas {
-	  border: solid blue;
-      width: auto;
-      height: auto;
-}
 
-.jsavgraph {
-	width: auto;
-	height: auto;
-	padding: 0px;
-}
 
 
