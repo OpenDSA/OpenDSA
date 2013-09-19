@@ -1,3 +1,7 @@
+boolean SUCCESS = true;
+
+void visit(BinNode rt) { }
+
 /* *** ODSATag: preorder *** */
 void preorder(BinNode rt) {
   if (rt == null) return; // Empty subtree - do nothing
@@ -23,9 +27,9 @@ int count(BinNode rt) {
 /* *** ODSAendTag: count *** */
 
 /* *** ODSATag: checkBST *** */
-boolean checkBST(BinNode<Integer> rt, int low, int high) {
+boolean checkBST(BSTNode rt, int low, int high) {
   if (rt == null) return true; // Empty subtree
-  int rootkey = rt.element();
+  int rootkey = (Integer)((KVPair)rt.element()).key();
   if ((rootkey < low) || (rootkey > high))
     return false; // Out of range
   if (!checkBST(rt.left(), low, rootkey))
@@ -33,3 +37,22 @@ boolean checkBST(BinNode<Integer> rt, int low, int high) {
   return checkBST(rt.right(), rootkey, high);
 }
 /* *** ODSAendTag: checkBST *** */
+
+void setup() {
+  BinNode rt1 = null;
+  BSTNode rt2 = new BSTNode(new KVPair(5, "John"));
+
+  int temp = count(rt1);
+  if(!checkBST(rt2, -1, 999999)) SUCCESS = false;
+  rt2.setLeft(new BSTNode(new KVPair(10, "Jack")));
+  if(checkBST(rt2, -1, 999999)) SUCCESS = false;
+
+  if (SUCCESS) {
+    PrintWriter output = createWriter("success");
+    output.println("Success");
+    output.flush();
+    output.close();
+    println("Success!");
+  }
+  exit();
+}

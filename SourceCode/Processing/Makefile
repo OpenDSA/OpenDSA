@@ -13,7 +13,7 @@ BUILD = build
 # BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
-all: Demo Misc Lists Design Trees Sorting Graphs
+all: Demo Misc Lists Design Binary General Sorting Graphs
 # Use "sorttest" if you want to run sorting timings
 
 clean:
@@ -167,15 +167,22 @@ build/DictionaryTest/success: Design/Dictionary.pde Design/DictionaryTest.pde De
 	@cp Lists/ListADT.pde build/DictionaryTest
 	@$(PROCESS) --run --sketch="$(BUILD)/DictionaryTest" --output="$(BUILD)/build" --force
 
-Trees: GenTree UFTest
+Binary: Traverse
 
-Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
+Traverse: build/Traverse/success
 
-# This will do timing tests. The "Sorting" target tests for errors.
-Sorttime: InssortTime BubblesortTime SelsortTime
+build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Traverse.pde Utils/KVPair.pde
+	@echo "Traversal Test"
+	-@rm -rf build/Traverse
+	@mkdir build/Traverse
+	@cp Binary/BinNode.pde build/Traverse
+	@cp Binary/BSTNode.pde build/Traverse
+	@cp Utils/KVPair.pde build/Traverse
+	@cp Binary/Traverse.pde build/Traverse
+	@$(PROCESS) --run --sketch="$(BUILD)/Traverse" --output="$(BUILD)/build" --force
 
-Graphs: GraphDummy GraphTrav GraphTop GraphDijk GraphMCST
 
+General: GenTree UFTest
 
 GenTree: build/GenTree/success
 
@@ -195,6 +202,11 @@ build/UFTest/success: Trees/ParPtrTree.pde Trees/UFTest.pde
 	@cp Trees/ParPtrTree.pde build/UFTest
 	@cp Trees/UFTest.pde build/UFTest
 	@$(PROCESS) --run --sketch="$(BUILD)/UFTest" --output="build/build" --force
+
+Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
+
+# This will do timing tests. The "Sorting" target tests for errors.
+Sorttime: InssortTime BubblesortTime SelsortTime
 
 Inssort: build/InssortTest/success
 
@@ -344,6 +356,9 @@ BubblesortTime:
 	@cp Sorting/Bubblesort.pde build/BubblesortTime
 	@cp Utils/Swap.pde build/BubblesortTime
 	@$(PROCESS) --run --sketch="$(BUILD)/BubblesortTime" --output="build/build" --force
+
+
+Graphs: GraphDummy GraphTrav GraphTop GraphDijk GraphMCST
 
 GraphDummy: build/GraphDummy/success
 
