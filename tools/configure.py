@@ -52,6 +52,7 @@ import json
 import collections
 import re
 import subprocess
+import datetime
 from config_validator import validate_config_file
 
 # The location in the output directory where the built HTML files go
@@ -80,7 +81,7 @@ rst_header = '''\
 
 .. raw:: html
 
-   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s";</script>
+   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s";</script>
 
 %(unicode_directive)s
 
@@ -509,6 +510,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   if chap:
      mod_chapter = chap
 
+  mod_date = str(datetime.datetime.now()).split('.')[0]
   # Print error message and exit if duplicate module name is detected
   if mod_name in processed_modules:
     print 'ERROR: Duplicate module name detected, module: ' + mod_name
@@ -550,6 +552,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   header_data['dispModComp'] = str(dispModComp).lower()
   header_data['long_name'] = long_name
   header_data['mod_chapter'] = mod_chapter
+  header_data['mod_date'] = mod_date
   #no unicode directive when building ourse notes
   if os.environ.get('SLIDES', None) == "yes":
     header_data['unicode_directive'] = ''
@@ -802,6 +805,7 @@ def configure(config_file, slides = False):
     header_data['long_name'] = 'Contents'
     header_data['orig_data'] = index_header
     header_data['mod_chapter'] = ''
+    header_data['mod_date'] = ''
     slides_lib = ''
     if slides:
       header_data['unicode_directive'] = ''
