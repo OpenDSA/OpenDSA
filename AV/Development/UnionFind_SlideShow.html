@@ -57,7 +57,7 @@
     for (i = 0; i < arr.length; i++) {
       arr[i] = String.fromCharCode(i + 65);
     }
-    labels = jsav.ds.array(arr, {left: 450, top: -10});
+    labels = jsav.ds.array(arr, {left: 450, top: -10, indexed: true});
     //Rendering the tree on the container
     //initTree();
     //Initializing the parent pointer
@@ -110,7 +110,7 @@
 	a.css('background-color', 'white');
 	b.css('background-color', 'white');
 	tree.layout();
-	parents.value(1, a.value());
+	parents.value(1, 0);
 	jsav.step();
 	
 	//Edge (C, H)
@@ -127,7 +127,7 @@
 	c.css('background-color', 'white');
 	h.css('background-color', 'white');
 	tree.layout();
-	parents.value(7, c.value());
+	parents.value(7, 2);
 	jsav.step();
 	
 	//Edge (G, F)
@@ -144,7 +144,7 @@
 	f.css('background-color', 'white');
 	g.css('background-color', 'white');
 	tree.layout();
-	parents.value(6, f.value());
+	parents.value(6, 5);
 	jsav.step();
 	
 	//Edge (F, I)
@@ -161,7 +161,7 @@
 	f.css('background-color', 'white');
 	i.css('background-color', 'white');
 	tree.layout();
-	parents.value(8, f.value());
+	parents.value(8, 5);
 	jsav.step();
 	
 	//Edge (D, E)
@@ -178,7 +178,7 @@
 	d.css('background-color', 'white');
 	e.css('background-color', 'white');
 	tree.layout();
-	parents.value(4, d.value());
+	parents.value(4, 3);
 	jsav.step();
 	
 	//Edge (H, A)
@@ -195,7 +195,7 @@
 	a.css('background-color', 'white');
 	c.css('background-color', 'white');
 	tree.layout();
-	parents.value(2, a.value());
+	parents.value(2, 0);
 	jsav.step();
 	
 	//Edge (E, G)
@@ -212,7 +212,7 @@
 	f.css('background-color', 'white');
 	d.css('background-color', 'white');
 	tree.layout();
-	parents.value(3, f.value());
+	parents.value(3, 5);
 	jsav.step();
 	
     //Edge (H, E)
@@ -229,7 +229,7 @@
 	a.css('background-color', 'white');
 	f.css('background-color', 'white');
 	tree.layout();
-	parents.value(0, f.value());
+	parents.value(0, 5);
 	jsav.step();
 	jsav.umsg("<br><b>Final UnionFind Data Structure</b>", {'preserve': true});
 	jsav.recorded();
