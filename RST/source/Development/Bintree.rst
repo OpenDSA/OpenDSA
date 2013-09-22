@@ -43,8 +43,8 @@ view search in a two-dimensional space.
 Another option is to combine the :math:`xy` coordinates into a single
 key, say by concatenating the two coordinates, and
 index cities by the resulting key in a BST.
-That would allow search by coordinate, but would not allow for
-efficient two-dimensional :term:`range queries` such as searching for
+That would allow search by coordinate, but would not allow for an
+efficient two-dimensional :term:`range query` such as searching for
 all cities within a given distance of a specified point.
 The problem is that the BST only works well for one-dimensional keys,
 while a coordinate is a two-dimensional key where neither dimension
@@ -54,8 +54,8 @@ Multidimensional range queries are the defining feature
 of a :term:`spatial application`.
 Because a coordinate gives a position in space, it is called
 a :term:`spatial attribute`.
-To implement spatial applications efficiently requires the use of
-:term:`spatial data structures`.
+To implement spatial applications efficiently requires the use of a
+:term:`spatial data structure`.
 Spatial data structures store data objects organized by position and
 are an important class of data structures used in geographic
 information systems, computer graphics, robotics, and many other
@@ -137,7 +137,7 @@ that many splits are required.
 Deleting from a Bintree requires that sibling leaf nodes be merged
 together if they are empty.
 Just like an insert operation can cause many levels of splitting, a
-delete operation can cause many levels of merging..
+delete operation can cause many levels of merging.
 
 Assume that we want to print out a list of all records that are within
 a certain distance :math:`d` of a given point :math:`P`.

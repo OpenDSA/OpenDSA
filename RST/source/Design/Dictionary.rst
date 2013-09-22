@@ -107,6 +107,15 @@ ID field as the key and the other using the name field as the key.
 .. codeinclude:: Design/DictionaryTest.pde
    :tag: PayrollTest
 
+One problem with the example as it is written is that the dictionary
+relies on the programmer to be reasonable about being consistent with
+the keys.
+Nothing stops the programmer from inserting an integer key into the
+names dictionary, or searching with an integer search key.
+This problem can be handled by using C++ templates or Java generics.
+Module :numref:`<ListElement>` discusses in more detail the concept of
+container class :term:`homogeneity`.
+
 The fundamental operation for a dictionary is finding a record that
 matches a given key.
 This raises the issue of how to extract the key from a record.

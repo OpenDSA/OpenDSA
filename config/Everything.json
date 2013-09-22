@@ -336,7 +336,14 @@
       },
       "List/ListAnalysis": {
         "long_name": "Comparison of List Implementations",
-        "exercises": {}
+        "exercises": {
+          "ListOverhead": {
+            "long_name": "Breakeven Point",
+            "required": true,
+            "points": 1,
+            "threshold": 3
+          }
+	}
       },
       "List/Freelist": {
         "long_name": "Freelists",
@@ -626,8 +633,12 @@
       }
     },
     "Binary Trees": {
+      "Development/BinaryTreeIntro": {
+        "long_name": "Binary Trees Chapter Introduction",
+        "exercises": {}
+      },
       "Development/BinaryTree": {
-        "long_name": "Binary Tree Introduction",
+        "long_name": "Binary Tree Terminology",
         "exercises": {}
       },
       "Development/BinaryTreeFullThm": {
@@ -637,28 +648,28 @@
       "Development/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
+	  "BTLeafPROG": {
+            "long_name": "Node Count Function",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1
+          },
           "binarytree-inorder": {
             "long_name": "Binary Tree Inorder Traversal",
             "required": true,
-            "points": 1,
-            "threshold": 0.90
-          },
-          "binarytree-levelorder": {
-            "long_name": "Binary Tree Level Order Traversal",
-            "required": true,
-            "points": 1,
+            "points": 1.0,
             "threshold": 0.90
           },
           "binarytree-preorder": {
             "long_name": "Binary Tree Preorder Traversal",
             "required": true,
-            "points": 1,
+            "points": 1.0,
             "threshold": 0.90
           },
           "binarytree-postorder": {
             "long_name": "Binary Tree Postorder Traversal",
             "required": true,
-            "points": 1,
+            "points": 1.0,
             "threshold": 0.90
           }
         }
@@ -673,51 +684,84 @@
       },
       "Development/BinaryTreeNodeSpace": {
         "long_name": "Full Binary Tree Node Space Requirements",
-        "exercises": {}
+        "exercises": {
+          "TreeOverheadSumm": {
+            "long_name": "Tree Overhead",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          }
+	}
+      },
+      "Development/BST": {
+        "long_name": "Binary Search Trees",
+        "exercises": {
+          "BST-search-proficiency": {
+            "long_name": "BST Search Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "BST-insert": {
+            "long_name": "BST Insert Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BST-insert-proficiency": {
+            "long_name": "BST Insert Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "BST-delete": {
+            "long_name": "BST Delete Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BST-delete-proficiency": {
+            "long_name": "BST Delete Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          }
+        }
       },
       "Development/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
         "exercises": {}
       },
-      "Development/BST": {
-        "long_name": "Binary Search Trees",
+      "Development/Heaps": {
+        "long_name": "Heaps and Priority Queues",
         "exercises": {
-          "BST-insert": {
-            "long_name": "Binary Tree Insertion",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
+          "heapinsertCON": {},
+          "binheapInsertPRO": {
+            "long_name": "Heap Insert Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
           },
-          "BST-delete": {
-            "long_name": "Binary Tree Deletion",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
+          "heapbuildCON": {},
+          "binheapBuildPRO": {
+            "long_name": "Heap Build Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "heapmaxCON": {},
+          "heapdeleteCON": {},
+          "binheapDeletePRO": {
+            "long_name": "Heap Delete Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
           }
         }
       },
-      "Development/Heaps": {
-        "long_name": "Heaps",
-        "exercises": {
-          "binaryheap-insert-proficiency": {
-            "long_name": "Binary Heap Insertion Exercise",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "binaryheap-buildheap-proficiency": {
-            "long_name": "Binary Heap Building Exercise",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "binaryheap-delete-proficiency": {
-            "long_name": "Binary Heap Deletion Exercise",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
+      "Development/Bintree": {
+        "long_name": "Bintrees",
+        "exercises": {}
       },
       "Development/Huffman": {
         "long_name": "Huffman Coding Trees",
@@ -725,13 +769,13 @@
           "huffmanCON1": {
             "long_name": "Huffman Coding Tree Slideshow",
             "required": true,
-            "points": 0.1,
+            "points": 0.0,
             "threshold": 1.0
           },
           "HuffmanCoding": {
             "long_name": "Huffman Coding Tree Visualization",
             "required": true,
-            "points": 0.1,
+            "points": 0.0,
             "showhide": "show",
             "threshold": 1.0
           }
@@ -739,10 +783,6 @@
       },
       "Development/HuffProof": {
         "long_name": "Proof for Huffman Coding",
-        "exercises": {}
-      },
-      "Development/BinaryTreeSumm": {
-        "long_name": "Binary Tree Chapter Summary",
         "exercises": {}
       }
     },
@@ -1212,30 +1252,26 @@
       }
     },
     "File Processing": {
-      "Development/FileProc": {
+      "Stubs/FileProc": {
         "long_name": "File Processing",
         "exercises": {}
       },
-      "Development/BuffPool": {
+      "Stubs/BuffPool": {
         "long_name": "Buffer Pools",
         "exercises": {}
       },
-      "Development/MemoryMan": {
-        "long_name": "Memory Management",
-        "exercises": {}
-      },
-      "Development/ExternalSort": {
+      "Stubs/ExternalSort": {
         "long_name": "External Sorting",
         "exercises": {}
       }
     },
     "Search": {
-      "Development/SearchIntro": {
-        "long_name": "Searching",
+      "Stubs/Searching": {
+        "long_name": "Search Chapter Introduction",
         "exercises": {}
       },
-      "Development/SelfOrg": {
-        "long_name": "Self-organizing Lists",
+      "Stubs/SelfOrg": {
+        "long_name": "Self Organizing Lists Stub",
         "exercises": {}
       }
     },
@@ -1502,7 +1538,7 @@
           }
         }
       },
-      "Development/PerfectHash": {
+      "Stubs/PerfectHash": {
         "long_name": "Perfect Hashing",
         "exercises": {
           "perfectHashAV": {
@@ -1516,15 +1552,15 @@
       }
     },
     "Indexing": {
-      "Development/IndexIntro": {
-        "long_name": "Introduction to Indexing",
+      "Stubs/IndexChap": {
+        "long_name": "Indexing Chapter Stub",
         "exercises": {}
       },
-      "Development/LinearIndex": {
+      "Stubs/LinearIndex": {
         "long_name": "Linear Indexing",
         "exercises": {}
       },
-      "Development/BTree": {
+      "Stubs/BTree": {
         "long_name": "B-Trees",
         "exercises": {}
       }
@@ -1591,35 +1627,39 @@
       }
     },
     "Advanced Analysis": {
-      "Development/AdvSumm": {
+      "Stubs/AdvSumm": {
         "long_name": "Advanced Summations",
         "exercises": {}
       },
-      "Development/Recurrence": {
+      "Stubs/Recurrence": {
         "long_name": "Solving Recurrence Relations",
         "exercises": {}
       },
-      "Development/AmortAnal": {
+      "Stubs/AmortAnal": {
         "long_name": "Amortized Analysis",
         "exercises": {}
       }
     },
     "Advanced Linear Structures": {
-      "Development/Multilists": {
+      "Stubs/MemoryMan": {
+        "long_name": "Memory Managers",
+        "exercises": {}
+      },
+      "Stubs/Multilists": {
         "long_name": "Multilists",
         "exercises": {}
       },
-      "Development/SparseMatrix": {
+      "Stubs/SparseMatrix": {
         "long_name": "Sparse Matrices",
         "exercises": {}
       }
     },
     "Advanced Trees": {
-      "Development/Spatial": {
+      "Stubs/Spatial": {
         "long_name": "Spatial Data Structures",
         "exercises": {}
       },
-      "Development/Trie": {
+      "Stubs/Trie": {
         "long_name": "Tries",
         "exercises": {}
       }
@@ -1710,15 +1750,15 @@
       }
     },
     "Limits to Computing": {
-      "Development/LimComp": {
+      "Stubs/LimComp": {
         "long_name": "Chapter Intro: Limits to Computing",
         "exercises": {}
       },
-      "Development/Reductions": {
+      "Stubs/Reductions": {
         "long_name": "Reductions",
         "exercises": {}
       },
-      "Development/Computability": {
+      "Stubs/Computability": {
         "long_name": "Computability",
         "exercises": {}
       }
