@@ -30,7 +30,7 @@ Tree, the node will typically store a Key-Value pair
 Every ``BSTNode`` object also has two pointers,
 one to its left child and another to its right child.
 
-.. codeinclude:: Trees/BSTNode.pde
+.. codeinclude:: Binary/BSTNode.pde
    :tag: BSTNode
 
 .. _BinLink:
@@ -124,7 +124,7 @@ they do not distinguish their children's actual subclass.
 Whenever a node is examined, its version of ``isLeaf`` indicates
 the node's subclass.
 
-.. codeinclude:: Trees/ExpressionTree.pde
+.. codeinclude:: Binary/ExpressionTree.pde
    :tag: ExpressionTree
 
 The Expression Tree implementation includes two subclasses derived

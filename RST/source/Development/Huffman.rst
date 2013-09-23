@@ -170,7 +170,7 @@ Here is a complete visualization of building the Huffman tree.
 
 Here is the implementation for Huffman tree nodes.
 
-.. codeinclude:: Trees/Huffman.pde
+.. codeinclude:: Binary/Huffman.pde
    :tag: HuffmanNode 
 
 This implementation is similar to the ``VarBinNode``
@@ -182,12 +182,12 @@ internal nodes contain distinctly different information.
 
 Here is the implementation for the Huffman Tree class.
 
-.. codeinclude:: Trees/Huffman.pde
+.. codeinclude:: Binary/Huffman.pde
    :tag: HuffmanTree
 
 Here is the implementation for the tree-building process.
 
-.. codeinclude:: Trees/Huffman.pde
+.. codeinclude:: Binary/Huffman.pde
    :tag: HuffmanTreeBuild
 
 ``buildHuff`` takes as input ``fl``, the min-heap of partial

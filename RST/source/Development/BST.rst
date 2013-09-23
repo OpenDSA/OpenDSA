@@ -81,7 +81,7 @@ and passing in a comparator function).
 Our BST implementation will handle comparison by explicitly storing
 a key separate from the data value at each node of the tree.
 
-.. codeinclude:: Trees/BST.pde
+.. codeinclude:: Binary/BST.pde
    :tag: BST
 
 To find a record with key value :math:`K` in a BST, begin at the root.
@@ -123,7 +123,7 @@ subtree and the search key.
 Member ``findhelp`` has the desired form for this recursive
 subroutine and is implemented as follows.
 
-.. codeinclude:: Trees/BST.pde
+.. codeinclude:: Binary/BST.pde
    :tag: findhelp
 
 Once the desired record is found, it is passed through
@@ -159,7 +159,7 @@ Figure :num:`Figure #BSTAdd` illustrates this operation.
 The value 35 is added as the right child of the node with value 32.
 Here is the implementation for ``inserthelp``.
 
-.. codeinclude:: Trees/BST.pde
+.. codeinclude:: Binary/BST.pde
    :tag: inserthelp
 
 You should pay careful attention to the implementation for
@@ -222,7 +222,7 @@ Thus, changing the pointer as described will maintain a BST, with
 :math:`S` removed.
 The code for this method, named ``deletemin``, is as follows
 
-.. codeinclude:: Trees/BST.pde
+.. codeinclude:: Binary/BST.pde
    :tag: deletemin
 
 Here is an example
@@ -266,7 +266,7 @@ from its call to the ``deletemin`` method.
 A useful companion method is ``getmin`` which returns a
 pointer to the node containing the minimum value in the subtree.
 
-.. codeinclude:: Trees/BST.pde
+.. codeinclude:: Binary/BST.pde
    :tag: getmin
 
 Removing a node with given key value :math:`R` from the BST
@@ -354,7 +354,7 @@ the node's right subtree and substitute the record returned for the
 record being removed.
 Here is an implementation for ``removehelp``.
 
-.. codeinclude:: Trees/BST.pde
+.. codeinclude:: Binary/BST.pde
    :tag: removehelp
 
 The cost for ``findhelp`` and ``inserthelp`` is the depth of
@@ -395,7 +395,7 @@ Below is an example traversal, named :math:`printhelp`.
 It performs an inorder traversal on the BST to print the node values
 in ascending order.
 
-.. codeinclude:: Trees/BST.pde
+.. codeinclude:: Binary/BST.pde
    :tag: printhelp
 
 While the BST is simple to implement and efficient when the tree is

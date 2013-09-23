@@ -30,7 +30,7 @@ better approach.
 The simple list implementations presented in this chapter use elements
 of type ``Object``.
 Thus, the compiler will not enforce any restrictions regarding
-homogeneity of the elements.
+:term:`homogeneity` of the elements.
 There are various techniques that implementors of a
 list class can use to ensure that the element type for a given list
 remains fixed.

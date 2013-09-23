@@ -78,7 +78,7 @@ set or return a pointer to the left child,
 set or return a pointer to the right child,
 or indicate whether the node is a leaf.
 
-.. codeinclude:: Trees/BinNode.pde
+.. codeinclude:: Binary/BinNode.pde
    :tag: BinNode
 
 A traversal routine is naturally written as a recursive
@@ -94,7 +94,7 @@ For example, a preorder traversal specifies that ``rt`` be
 visited before its children.
 This can easily be implemented as follows.
 
-.. codeinclude:: Trees/Traverse.pde
+.. codeinclude:: Binary/Traverse.pde
    :tag: preorder
 
 Function ``preorder`` first checks that the tree is not
@@ -124,15 +124,15 @@ right pointers of the current node are checked so that the recursive
 call is made only on non-empty children.
 Such a design typically looks as follows
 
-.. codeinclude:: Trees/Traverse.pde
+.. codeinclude:: Binary/Traverse.pde
    :tag: preorder2
 
 At first it might appear that ``preorder2`` is more efficient
 than ``preorder``, because it makes only half as many recursive
-calls.
+calls (since it won't try to call on a null pointer).
 On the other hand, ``preorder2`` must access the left and right
 child pointers twice as often.
-The net result is little or no performance improvement.
+The net result is that there is no performance improvement.
 
 In reality, the design of ``preorder2`` is inferior to
 that of ``preorder`` for two reasons.
@@ -201,7 +201,7 @@ that we communicate information back up the tree to the end user.
    us.
    Thus, we can implement ``count`` as follows.
 
-   .. codeinclude:: Trees/Traverse.pde
+   .. codeinclude:: Binary/Traverse.pde
       :tag: count
 
 .. avembed:: Exercises/Development/BTLeafPROG.html ka
@@ -254,7 +254,7 @@ That information might come from any of the node's ancestors.
 Thus, relevant range information must be passed down the tree.
 We can implement this function as follows.
 
-.. codeinclude:: Trees/Traverse.pde
+.. codeinclude:: Binary/Traverse.pde
    :tag: checkBST
 
 Here are some exercises to practice the traversals.

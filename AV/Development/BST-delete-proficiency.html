@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>BST Delete</title>
-        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
-        <link rel="stylesheet" href="proficiency.css" type="text/css" />
-        <style>
-          .jsavtreenode {
-            cursor: pointer;
-          }
-          .jsavtreenode.jsavnullnode, .jsavnode.jsavindex{
-            cursor: default;
-          }
-          .jsavstacknode {
-            font-size: 1.5em;
-          }
-        </style>
-    </head>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>BST Delete</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+  <link rel="stylesheet" href="proficiency.css" type="text/css" />
+  <style>
+    .jsavtreenode {
+      cursor: pointer;
+    }
+    .jsavtreenode.jsavnullnode, .jsavnode.jsavindex{
+      cursor: default;
+    }
+    .jsavstacknode {
+       font-size: 1.5em;
+     }
+  </style>
+</head>
 
-    <body>
-        <h1>BST Delete</h1>
-        <div id="jsavcontainer">
-            <p class="instructLabel">Instructions:</p>
-            <p class="instructions">
-                    Use the BST Delete algorith to delete the values in the stack. Click on a node to erase its value, or if there is a previously erased value, to move the value into the erased node or replace the node. 
-            </p>
-            <p align="center" class="jsavexercisecontrols"></p>
-        </div>
+<body>
+  <h1>BST Delete</h1>
+  <div id="jsavcontainer">
+    <p class="instructLabel">Instructions:</p>
+    <p class="instructions">
+      Use the BST Delete algorithm to delete the values in the
+      stack. Click on a node to erase its value, or if there is a
+      previously erased value, to move the value into the erased node
+      or replace the node.
+    </p>
+    <p align="center" class="jsavexercisecontrols"></p>
+    <p class="jsavscore"></p>
+  </div>
 
-        <script
-           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
-        <script src="../../JSAV/lib/raphael.js"></script>
-        <script src="../../JSAV/build/JSAV.js"></script>
-        <script src="stack.js"></script>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="../../lib/odsaUtils.js"></script>
+  <script src="../../lib/odsaAV.js"></script>
+  <script src="stack.js"></script>
 
-        <script>
-
+  <script>
         var initialArray = [],
             deleteValues = [],
             jsavTree,
@@ -253,7 +256,11 @@
         }
 
 
-        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+        var exercise = av.exercise(modelSolution, initialize,
+                                   {  }, // no CSS needs to be compared
+                                   { controls: $(".jsavexercisecontrols"),
+                                     feedback: "continuous",
+                                     fixmode: "undo" });
         exercise.reset();
 
 

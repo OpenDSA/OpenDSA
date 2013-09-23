@@ -1,121 +1,121 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>BST Search</title>
-        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
-        <link rel="stylesheet" href="proficiency.css" type="text/css" />
-        <style>
-          .jsavnode {
-            cursor: default;
-          }
-          .jsavtreenode.emptynode {
-            color: #777;
-            cursor: pointer;
-          }
-        </style>
-    </head>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>BST Search</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+  <link rel="stylesheet" href="proficiency.css" type="text/css" />
+  <style>
+    .jsavnode {
+    cursor: default;
+    }
+    .jsavtreenode.emptynode {
+    color: #777;
+    cursor: pointer;
+    }
+  </style>
+</head>
 
-    <body>
-        <h1>BST Search</h1>
-        <div id="jsavcontainer">
-            <!-- <a class="jsavsettings" href="#">Settings</a> -->
-            <p class="instructLabel">Instructions:</p>
-            <p class="instructions">
-                    Use the BST Search algorith to find the key given in the excercise. Click on a node to reveal the value and its children.
-            </p>
-            <p align="center" class="jsavexercisecontrols"></p>
-            <p class="jsavscore"></p>
-            <p style="text-align:center">Find</p>
-            <ol id="keyToFind"></ol>
-            <!-- <p class="jsavoutput jsavline"></p> -->
-        </div>
+<body>
+  <h1>BST Search</h1>
+  <div id="jsavcontainer">
+    <!-- <a class="jsavsettings" href="#">Settings</a> -->
+    <p class="instructLabel">Instructions:</p>
+    <p class="instructions">
+      Use the BST Search algorith to find the key given in the
+      excercise. Click on a node to reveal the value and its
+      children.
+    </p>
+    <p align="center" class="jsavexercisecontrols"></p>
+    <p class="jsavscore"></p>
+    <p style="text-align:center">Find</p>
+    <ol id="keyToFind"></ol>
+    <!-- <p class="jsavoutput jsavline"></p> -->
+  </div>
 
-        <script
-           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-        <script src="../../JSAV/lib/jquery.transform.light.js"></script>
-        <script src="../../JSAV/lib/raphael.js"></script>
-        <script src="../../JSAV/build/JSAV.js"></script>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="../../lib/odsaUtils.js"></script>
+  <script src="../../lib/odsaAV.js"></script>
+  <script>
+    var levels = 6,
+      nodeNum = Math.pow(2, levels) - 1,
+      keyToFind,
+      initialData = [],
+      jsavBinaryTree,
+      $key = $('#keyToFind'),
+      av = new JSAV($("#jsavcontainer"));
 
-        <script>
-
-        var levels = 6,
-            nodeNum = Math.pow(2, levels) - 1,
-            keyToFind,
-            initialData = [],
-            jsavBinaryTree,
-            $key = $('#keyToFind'),
-            av = new JSAV($("#jsavcontainer"));
-
-        JSAV._types.ds.BinaryTree.prototype.insert = function(value) {
-            // helper function to recursively insert
-            var ins = function(node, insval) {
-              var val = node.value();
-              if (!val || val === "jsavnull") { // no value in node
-                node.value(insval);
-              } else if (val - insval >= 0) { // go left
-                if (node.left()) {
-                  ins(node.left(), insval);
-                } else {
-                  node.left(insval);
-                }
-              } else { // go right
-                if (node.right()) {
-                  ins(node.right(), insval);
-                } else {
-                  node.right(insval);
-                }
-              }
-            };
-            if ($.isArray(value)) { // array of values
-              for (var i = 0, l = value.length; i < l; i++) {
-                ins(this.root(), value[i]);
-              }
-            } else {
-              ins(this.root(), value);
-            }
-            return this;
-        };
-
-        // auxillary function for creating a perfect binary tree
-        // inserts the values in the initialData[] array in level order
-        function calculateInitialData(level, min, max, levelsInTotal, arrayIndex) {
-            diff = max - min;
-            var value = JSAV.utils.rand.numKey(min + Math.floor(diff / 3), max - Math.floor(diff / 3))
-            initialData[arrayIndex - 1] = value;
-            if (level < levelsInTotal) {
-                calculateInitialData(level + 1, min, value - 1, levelsInTotal, 2 * arrayIndex);
-                calculateInitialData(level + 1, value + 1, max, levelsInTotal, 2 * arrayIndex + 1);
-            }
+    JSAV._types.ds.BinaryTree.prototype.insert = function(value) {
+    // helper function to recursively insert
+    var ins = function(node, insval) {
+      var val = node.value();
+      if (!val || val === "jsavnull") { // no value in node
+        node.value(insval);
+      } else if (val - insval >= 0) { // go left
+        if (node.left()) {
+           ins(node.left(), insval);
+        } else {
+          node.left(insval);
         }
-
-        function getIndex(node, root) {
-            if (node === root) {
-                return 0;
-            }
-
-            if (node.parent().left() === node) {
-                return (getIndex(node.parent(), root) + 1) * 2 - 1;
-            } else {
-                return (getIndex(node.parent(), root) + 1) * 2;
-            }
+      } else { // go right
+        if (node.right()) {
+          ins(node.right(), insval);
+        } else {
+          node.right(insval);
         }
+      }
+    };
+    if ($.isArray(value)) { // array of values
+      for (var i = 0, l = value.length; i < l; i++) {
+        ins(this.root(), value[i]);
+      }
+    } else {
+      ins(this.root(), value);
+    }
+    return this;
+  };
 
-        av.recorded(); // we are not recording an AV with an algorithm
+  // auxillary function for creating a perfect binary tree
+  // inserts the values in the initialData[] array in level order
+  function calculateInitialData(level, min, max, levelsInTotal, arrayIndex) {
+    diff = max - min;
+    var value = JSAV.utils.rand.numKey(min + Math.floor(diff / 3), max - Math.floor(diff / 3))
+    initialData[arrayIndex - 1] = value;
+    if (level < levelsInTotal) {
+      calculateInitialData(level + 1, min, value - 1, levelsInTotal, 2 * arrayIndex);
+      calculateInitialData(level + 1, value + 1, max, levelsInTotal, 2 * arrayIndex + 1);
+    }
+  }
 
-        function initialize() {
-            turnAnimationOff();
+  function getIndex(node, root) {
+    if (node === root) {
+      return 0;
+    }
 
-            if (jsavBinaryTree) {
-                jsavBinaryTree.clear();
-            }
-            jsavBinaryTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
-            jsavBinaryTree.root("?");
-            jsavBinaryTree.root().addClass("emptynode");
-            jsavBinaryTree.click(clickHandler);
+    if (node.parent().left() === node) {
+      return (getIndex(node.parent(), root) + 1) * 2 - 1;
+    } else {
+      return (getIndex(node.parent(), root) + 1) * 2;
+    }
+  }
+
+  av.recorded(); // we are not recording an AV with an algorithm
+
+  function initialize() {
+    turnAnimationOff();
+
+    if (jsavBinaryTree) {
+      jsavBinaryTree.clear();
+    }
+    jsavBinaryTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
+    jsavBinaryTree.root("?");
+    jsavBinaryTree.root().addClass("emptynode");
+    jsavBinaryTree.click(clickHandler);
             jsavBinaryTree.layout();
 
             calculateInitialData(1, 100, 1000, levels, 1);
@@ -199,7 +199,11 @@
         }
 
 
-        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+        var exercise = av.exercise(modelSolution, initialize,
+                                   { "css": "background-color" },
+                                   { controls: $(".jsavexercisecontrols"),
+                                     feedback: "continuous",
+                                     fixmode: "undo" });
         exercise.reset();
 
         </script>

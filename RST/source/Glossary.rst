@@ -535,6 +535,13 @@ Glossary
       The height of a tree is one more than the :term:`depth` of the
       deepest :term:`node` in the tree.
 
+   homogeneity
+      In a container class, this is the property that all objects
+      stored in the container are of the same class. For example, if
+      you have a list intended to store Payroll records, is it
+      possible for the programmer to insert an integer onto the list
+      instead?
+
    induction hypothesis
       The key assumption used in an induction proof, that the theorem
       to be proved holds for smaller instances of the theorem.
@@ -983,6 +990,21 @@ Glossary
       Many programs can be designed to either speed processing at the
       cost of additional storage, or reduce storage at the cost of
       additional processing time.
+
+   spatial application
+      An application what has spatial aspects. In particular, an
+      application that stores records that need to be searched by
+      location.
+
+   spatial attribute
+      An attribute of a record that has a position in space, such as
+      the coordinate.
+
+   spatial data structure
+      A data structure designed to support efficient processing when a
+      :term:`spatial attribute` is used as the key. In particular, a
+      data structure that supports efficient search by location, or
+      finds all records within a given region.
 
    stable
       A sorting algorithm is said to be stable if it does not

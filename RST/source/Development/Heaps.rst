@@ -101,7 +101,7 @@ uses an array.
 Here is an implementation for max-heaps.
 The class uses KVPairs to support arbitrary data payloads.
 
-.. codeinclude:: Trees/Maxheap.pde
+.. codeinclude:: Binary/Maxheap.pde
    :tag: Maxheap
 
 This class definition makes two concessions to the fact that an

@@ -14,6 +14,14 @@
         "long_name": "Array Implementation for Complete Trees",
         "exercises": {}
       },
+	   "Development/UnionFind_test": {
+        "long_name": "UnionFind",
+        "exercises": {}
+      },
+	   "Development/UnionFind": {
+        "long_name": "UnionFind",
+        "exercises": {}
+      },
       "Development/Bintree": {
         "long_name": "Bintrees",
         "exercises": {}
