@@ -18,6 +18,10 @@
         "long_name": "UnionFind",
         "exercises": {}
       },
+	   "Development/UnionFind": {
+        "long_name": "UnionFind",
+        "exercises": {}
+      },
       "Development/Bintree": {
         "long_name": "Bintrees",
         "exercises": {}
