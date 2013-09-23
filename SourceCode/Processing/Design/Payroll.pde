@@ -14,8 +14,8 @@ class Payroll {
   }
 
   /** Data member access functions */
-  public Integer getID() { return ID; }
-  public String getname() { return name; }
-  public String getaddr() { return address; }
+  Integer getID() { return ID; }
+  String getname() { return name; }
+  String getaddr() { return address; }
 }
 /* *** ODSAendTag: Payroll *** */

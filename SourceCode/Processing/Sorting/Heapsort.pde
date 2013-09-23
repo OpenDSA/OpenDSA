@@ -1,9 +1,9 @@
-void sorttest(int[] A) {
+void sorttest(Integer[] A) {
   heapsort(A);
 }
 
 /* *** ODSATag: Heapsort *** */
-void heapsort(int[] A) {
+void heapsort(Integer[] A) {
   // The heap constructor invokes the buildheap method
   MaxHeap H = new MaxHeap(A, A.length, A.length);
   for (int i=0; i<A.length; i++)  // Now sort

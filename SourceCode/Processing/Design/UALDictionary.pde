@@ -9,23 +9,23 @@ class UALdictionary implements Dictionary {
   UALdictionary(int sz) { list = new AList(sz); }
 
   // Reinitialize
-  public void clear() { list.clear(); }
+  void clear() { list.clear(); }
 
   // Insert an element: append to list
-  public void insert(Comparable k, Object e) {
+  void insert(Comparable k, Object e) {
     KVPair temp = new KVPair(k, e);
     list.append(temp);
   }
 
   // Use sequential search to find the element to remove
-  public Object remove(Comparable k) {
+  Object remove(Comparable k) {
     Object temp = find(k);
     if (temp != null) list.remove();
     return temp;
   }
 
   // Remove the last element
-  public Object removeAny() {
+  Object removeAny() {
     if (size() != 0) {
       list.moveToEnd();
       list.prev();
@@ -37,7 +37,7 @@ class UALdictionary implements Dictionary {
 
   // Find k using sequential search
   // Return the record with key value k
-  public Object find(Comparable k) {
+  Object find(Comparable k) {
     for(list.moveToStart(); list.currPos() < list.length();
         list.next()) {
       KVPair temp = (KVPair)list.getValue();
@@ -48,6 +48,6 @@ class UALdictionary implements Dictionary {
   }
 
   // Return list size
-  public int size() { return list.length(); }
+  int size() { return list.length(); }
 }
 /* *** ODSAendTag: UALDictionary *** */

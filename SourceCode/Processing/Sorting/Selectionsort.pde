@@ -1,6 +1,6 @@
-void sorttime(int[] B) {
+void sorttime(Integer[] B) {
   int i;
-  int[] A = new int[B.length];
+  Integer[] A = new Integer[B.length];
   int totaltime, runs;
   int numruns = 20;
 
@@ -28,7 +28,7 @@ totaltime += (time2-time1);
 }
 
 // Same as selsort, but check if the swap is necessary
-void selsortcheck(int[] A) {
+void selsortcheck(Integer[] A) {
   for (int i=0; i<A.length-1; i++) { // Select i'th biggest record
     int bigindex = 0;                // Current biggest index
     for (int j=1; j<A.length-i; j++) // Find the max value
@@ -39,12 +39,12 @@ void selsortcheck(int[] A) {
   }
 }
 
-void sorttest(int[] A) {
+void sorttest(Integer[] A) {
   selsort(A);
 }
 
 /* *** ODSATag: Selectionsort *** */
-void selsort(int[] A) {
+void selsort(Integer[] A) {
   for (int i=0; i<A.length-1; i++) { // Select i'th biggest record
     int bigindex = 0;                // Current biggest index
     for (int j=1; j<A.length-i; j++) // Find the max value

@@ -1,8 +1,8 @@
 /* *** ODSATag: HuffmanNode *** */
 /** Huffman tree node implementation: Base class */
-public interface HuffBaseNode {
-  public boolean isLeaf(); 
-  public int weight();
+interface HuffBaseNode {
+  boolean isLeaf(); 
+  int weight();
 }
 
 
@@ -12,17 +12,17 @@ class HuffLeafNode implements HuffBaseNode {
   private int weight;        // Weight for this node
 
   /** Constructor */
-  public HuffLeafNode(E el, int wt)
+  HuffLeafNode(E el, int wt)
     { element = el; weight = wt; }
 
   /** @return The element value */
-  public E element() { return element; }
+  E element() { return element; }
 
   /** @return The weight */
-  public int weight() { return weight; }
+  int weight() { return weight; }
 
   /** Return true */
-  public boolean isLeaf() { return true; }
+  boolean isLeaf() { return true; }
 }
 
 
@@ -33,21 +33,21 @@ class HuffInternalNode implements HuffBaseNode {
   private HuffBaseNode right; 
 
   /** Constructor */
-  public HuffInternalNode(HuffBaseNode l,
+  HuffInternalNode(HuffBaseNode l,
                           HuffBaseNode r, int wt)
     { left = l; right = r; weight = wt; }
 
   /** @return The left child */
-  public HuffBaseNode left() { return left; }
+  HuffBaseNode left() { return left; }
 
   /** @return The right child */
-  public HuffBaseNode right() { return right; }
+  HuffBaseNode right() { return right; }
 
   /** @return The weight */
-  public int weight() { return weight; }
+  int weight() { return weight; }
 
   /** Return false */
-  public boolean isLeaf() { return false; }
+  boolean isLeaf() { return false; }
 }
 /* *** ODSAendTag: HuffmanNode *** */
 
@@ -57,16 +57,16 @@ class HuffTree implements Comparable>{
   private HuffBaseNode root;  
 
   /** Constructors */
-  public HuffTree(E el, int wt)
+  HuffTree(E el, int wt)
     { root = new HuffLeafNode(el, wt); }
-  public HuffTree(HuffBaseNode l,
+  HuffTree(HuffBaseNode l,
                   HuffBaseNode r, int wt)
     { root = new HuffInternalNode(l, r, wt); }
 
-  public HuffBaseNode root() { return root; }
-  public int weight() // Weight of tree is weight of root
+  HuffBaseNode root() { return root; }
+  int weight() // Weight of tree is weight of root
     { return root.weight(); }
-  public int compareTo(HuffTree that) {
+  int compareTo(HuffTree that) {
     if (root.weight() < that.weight()) return -1;
     else if (root.weight() == that.weight()) return 0;
     else return 1;

@@ -1,3 +1,4 @@
+boolean SUCCESS = true;
 final long runs = 1000;
 
 void setup() {
@@ -50,6 +51,14 @@ void setup() {
   println("Sum1 is " + sum1 + ", sum2 is " + sum2 + ", sum 3 is " + sum3);
   println("Sum4 is " + sum4);
   println("Sum5 is " + sum5);
+
+  if (SUCCESS) {
+    PrintWriter output = createWriter("success");
+    output.println("Success");
+    output.flush();
+    output.close();
+    println("Success!");
+  }
   exit();
 }
 

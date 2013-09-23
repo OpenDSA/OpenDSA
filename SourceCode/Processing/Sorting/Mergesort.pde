@@ -1,11 +1,11 @@
-void sorttest(int[] A) {
-  int[] temp = new int[A.length];
+void sorttest(Integer[] A) {
+  Integer[] temp = new Integer[A.length];
   mergesort(A, temp, 0, A.length-1);
 }
 
 
 /* *** ODSATag: Mergesort *** */
-void mergesort(int[] A, int[] temp, int left, int right) {
+void mergesort(Integer[] A, Integer[] temp, int left, int right) {
   if (left == right) return;         // List has one record
   int mid = (left+right)/2;          // Select midpoint
   mergesort(A, temp, left, mid);     // Mergesort first half

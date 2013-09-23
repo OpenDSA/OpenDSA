@@ -2,7 +2,7 @@
 // Array-based list implementation
 class AList implements List {
   private class AListIndex implements ListIndex {
-    public int pos;
+    int pos;
 
     AListIndex(int posit) { pos = posit; }
     void prev() { if (pos != 0) pos--; }
@@ -24,7 +24,7 @@ class AList implements List {
   // Create a list with the default capacity
   AList() { this(defaultSize); }          // Just call the other constructor
 
-  public void clear()                     // Reinitialize the list
+  void clear()                     // Reinitialize the list
     { listSize = 0; }              // Simply reinitialize values
 
   // Insert "it" at current position

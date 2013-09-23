@@ -1,4 +1,4 @@
-void sorttest(int[] A) {
+void sorttest(Integer[] A) {
   quicksort(A, 0, A.length-1);
 }
 
@@ -7,7 +7,7 @@ void sorttest(int[] A) {
    to work right when there is only one element in the partition
    (i.e., a list of 2 elements). */
 /* *** ODSATag: partition *** */
-int partition(int[] A, int left, int right, int pivot) {
+int partition(Integer[] A, int left, int right, int pivot) {
   while (left <= right) { // Move bounds inward until they meet
     while (A[left] < pivot) left++;
     while ((right >= left) && (A[right] >= pivot)) right--;
@@ -18,12 +18,12 @@ int partition(int[] A, int left, int right, int pivot) {
 /* *** ODSAendTag: partition *** */
 
 /* *** ODSATag: findpivot *** */
-int findpivot(int[] A, int i, int j)
+int findpivot(Integer[] A, int i, int j)
   { return (i+j)/2; }
 /* *** ODSAendTag: findpivot *** */
 
 /* *** ODSATag: Quicksort *** */
-void quicksort(int[] A, int i, int j) { // Quicksort
+void quicksort(Integer[] A, int i, int j) { // Quicksort
   int pivotindex = findpivot(A, i, j);  // Pick a pivot
   swap(A, pivotindex, j);               // Stick pivot at end
   // k will be the first position in the right subarray

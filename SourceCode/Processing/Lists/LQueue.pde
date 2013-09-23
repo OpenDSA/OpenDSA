@@ -16,7 +16,7 @@ class LQueue implements Queue {
   }
 
   // Reinitialize queue
-  public void clear() { init(); }
+  void clear() { init(); }
 /* *** ODSAendTag: LQueue1 *** */
 
   String toString() {
@@ -31,7 +31,7 @@ class LQueue implements Queue {
 
 /* *** ODSATag: LQueueEnqueue *** */
   // Put element on rear
-  public void enqueue(Object it) {
+  void enqueue(Object it) {
     rear.setnext(new Link(it, null));
     rear = rear.next();
     size++;
@@ -40,7 +40,7 @@ class LQueue implements Queue {
 
 /* *** ODSATag: LQueueDequeue *** */
   // Remove and return element from front
-  public Object dequeue() {
+  Object dequeue() {
     if (size == 0) return null;
     Object it = front.next().element(); // Store dequeued value
     front.setnext(front.next().next()); // Advance front
@@ -51,12 +51,12 @@ class LQueue implements Queue {
 /* *** ODSAendTag: LQueueDequeue *** */
 
   // Return front element
-  public Object frontValue() {
+  Object frontValue() {
     if (size == 0) return null;
     return front.next().element();
   }
 
   // Return queue size
-  public int length() { return size; }
+  int length() { return size; }
 }
 /* *** ODSAendTag: LQueue2 *** */

@@ -1,6 +1,6 @@
-void sorttime(int[] B) {
+void sorttime(Integer[] B) {
   int i;
-  int[] A = new int[B.length];
+  Integer[] A = new Integer[B.length];
   int totaltime, runs;
   int numruns = 20;
 
@@ -52,7 +52,7 @@ totaltime += (time2-time1);
 
 // Same as inssortsuffle, but try != instead of < for the zero test
 // This will only matter to JavaScript
-void inssortshift2(int[] A) {
+void inssortshift2(Integer[] A) {
   for (int i=1; i!=A.length; i++) { // Insert i'th record
     int j;
     int temp = A[i];
@@ -63,7 +63,7 @@ void inssortshift2(int[] A) {
 }
 
 // Instead of swapping, "shift" the values down the array
-void inssortshift(int[] A) {
+void inssortshift(Integer[] A) {
   for (int i=1; i<A.length; i++) { // Insert i'th record
     int j;
     int temp = A[i];
@@ -75,7 +75,7 @@ void inssortshift(int[] A) {
 
 // Same as standard insertion sort, except get rid of the swap
 // function call
-void inssort2(int[] A) {
+void inssort2(Integer[] A) {
   int temp;
   for (int i=1; i<A.length; i++) // Insert i'th record
     for (int j=i; (j>0) && (A[j] < A[j-1]); j--) {
@@ -83,12 +83,12 @@ void inssort2(int[] A) {
     }
 }
 
-void sorttest(int[] A) {
+void sorttest(Integer[] A) {
   inssort(A);
 }
 
 /* *** ODSATag: Insertionsort *** */
-void inssort(int[] A) {
+void inssort(Integer[] A) {
   for (int i=1; i<A.length; i++) // Insert i'th record
     for (int j=i; (j>0) && (A[j] < A[j-1]); j--)
       swap(A, j, j-1);

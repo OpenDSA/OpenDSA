@@ -1,16 +1,16 @@
-void sorttest(int[] A) {
-  int[] temp = new int[A.length];
+void sorttest(Integer[] A) {
+  Integer[] temp = new Integer[A.length];
   mergesort(A, temp, 0, A.length-1);
 }
 
-void inssort(int[] A, int left, int right) {
+void inssort(Integer[] A, int left, int right) {
   for (int i=left+1; i<=right; i++)        // Insert i'th record
     for (int j=i; (j>left) && (A[j] < A[j-1]); j--)
       swap(A, j, j-1);
 }
 
 /* *** ODSATag: MergesortOpt *** */
-void mergesort(int[] A, int[] temp, int left, int right) {
+void mergesort(Integer[] A, Integer[] temp, int left, int right) {
   int i, j, k, mid = (left+right)/2;  // Select the midpoint
   if (left == right) return;          // List has one record
   if ((mid-left) >= THRESHOLD) mergesort(A, temp, left, mid);

@@ -1,10 +1,10 @@
-void sorttest(int[] A) {
+void sorttest(Integer[] A) {
   radix(A, 4, 256);
 }
 
 /* *** ODSATag: Radixsort *** */
-static void radix(int[] A, int k, int r) {
-  int[] B = new int[A.length];
+static void radix(Integer[] A, int k, int r) {
+  Integer[] B = new Integer[A.length];
   int[] count = new int[r];     // Count[i] stores number of records with digit value i
   int i, j, rtok;
 

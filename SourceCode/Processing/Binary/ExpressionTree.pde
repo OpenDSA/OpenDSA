@@ -1,16 +1,16 @@
 /* *** ODSATag: ExpressionTree *** */
 // Base class for expression tree nodes
-public interface VarBinNode {
-  public boolean isLeaf(); // All subclasses must implement
+interface VarBinNode {
+  boolean isLeaf(); // All subclasses must implement
 }
 
 /** Leaf node */
    class VarLeafNode implements VarBinNode {
      private String operand;                 // Operand value
 
-     public VarLeafNode(String val) { operand = val; }
-     public boolean isLeaf() { return true; }
-     public String value() { return operand; }
+     VarLeafNode(String val) { operand = val; }
+     boolean isLeaf() { return true; }
+     String value() { return operand; }
    };
 
    /** Internal node */
@@ -19,16 +19,16 @@ public interface VarBinNode {
      private VarBinNode right;               // Right child
      private Character operator;             // Operator value
 
-     public VarIntlNode(Character op, VarBinNode l, VarBinNode r)
+     VarIntlNode(Character op, VarBinNode l, VarBinNode r)
        { operator = op; left = l; right = r; }
-     public boolean isLeaf() { return false; }
-     public VarBinNode leftchild() { return left; }
-     public VarBinNode rightchild() { return right; }
-     public Character value() { return operator; }
+     boolean isLeaf() { return false; }
+     VarBinNode leftchild() { return left; }
+     VarBinNode rightchild() { return right; }
+     Character value() { return operator; }
    }
 
    /** Preorder traversal */
-   public static void traverse(VarBinNode rt) {
+   static void traverse(VarBinNode rt) {
      if (rt == null) return;          // Nothing to visit
      if (rt.isLeaf())                 // Process leaf node
        Visit.VisitLeafNode(((VarLeafNode)rt).value());

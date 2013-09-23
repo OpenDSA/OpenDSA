@@ -19,7 +19,7 @@ class AList implements List {
   // Create a list with the default capacity
   AList() { this(defaultSize); }          // Just call the other constructor
 
-  public void clear()                     // Reinitialize the list
+  void clear()                            // Reinitialize the list
     { listSize = curr = 0; }              // Simply reinitialize values
 
 /* *** ODSATag: AListInsert *** */

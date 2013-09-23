@@ -5,16 +5,18 @@
 # (Bash) export DISPLAY=:0.0
 # (csh/tcsh) setenv DISPLAY :0.0
 
-PROCESS = ~/processing-2.0b8/processing-java
+PROCESS = ~/processing-2.0b9/processing-java
 
 # Use this one on Linux
-# BUILD = build
+BUILD = build
 # On Windows, I can't make it work without an absolute path
-BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+# BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
 all: Demo Misc Lists Design Binary General Sorting Graphs
-# Use "sorttest" if you want to run sorting timings
+
+# Note: Doing "all" (which happens when you just type "make") will NOT run "Sortime".
+# Do "make Sorttime" if you want to run sorting timings
 
 clean:
 	-rm -rf build
@@ -22,7 +24,9 @@ clean:
 
 Demo: UpDown
 
-UpDown: 
+UpDown: build/UpDown/success
+
+build/UpDown/success:
 	@echo "UpDown Test"
 	-@rm -rf build/UpDown
 	@mkdir build/UpDown
@@ -167,11 +171,11 @@ build/DictionaryTest/success: Design/Dictionary.pde Design/DictionaryTest.pde De
 	@cp Lists/ListADT.pde build/DictionaryTest
 	@$(PROCESS) --run --sketch="$(BUILD)/DictionaryTest" --output="$(BUILD)/build" --force
 
-Binary: Traverse
+Binary: Traverse ExpTree ExpTreeC BST BSTDict Minheap Maxheap Huffman
 
 Traverse: build/Traverse/success
 
-build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Traverse.pde Utils/KVPair.pde
+build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Preorder.pde Binary/Traverse.pde Utils/KVPair.pde
 	@echo "Traversal Test"
 	-@rm -rf build/Traverse
 	@mkdir build/Traverse
@@ -179,28 +183,116 @@ build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Traverse.pd
 	@cp Binary/BSTNode.pde build/Traverse
 	@cp Utils/KVPair.pde build/Traverse
 	@cp Binary/Traverse.pde build/Traverse
+	@cp Binary/Preorder.pde build/Traverse
 	@$(PROCESS) --run --sketch="$(BUILD)/Traverse" --output="$(BUILD)/build" --force
 
+ExpTree: build/ExpTree/success
+
+build/ExpTree/success: Binary/ExpressionTree.pde Binary/Visit.pde Binary/ExpTreeTest.pde
+	@echo "Expression Tree Test"
+	-@rm -rf build/ExpTree
+	@mkdir build/ExpTree
+	@cp Binary/ExpTreeTest.pde build/ExpTree/ExpTree.pde
+	@cp Binary/ExpressionTree.pde build/ExpTree
+	@cp Binary/Visit.pde build/ExpTree
+	@$(PROCESS) --run --sketch="$(BUILD)/ExpTree" --output="$(BUILD)/build" --force
+
+ExpTreeC: build/ExpTreeC/success
+
+build/ExpTreeC/success: Binary/ExpressionTreeC.pde Binary/Visit.pde Binary/ExpTreeTest.pde
+	@echo "Expression Tree Test: Composite"
+	-@rm -rf build/ExpTreeC
+	@mkdir build/ExpTreeC
+	@cp Binary/ExpTreeTest.pde build/ExpTreeC/ExpTreeC.pde
+	@cp Binary/ExpressionTreeC.pde build/ExpTreeC
+	@cp Binary/Visit.pde build/ExpTreeC
+	@$(PROCESS) --run --sketch="$(BUILD)/ExpTreeC" --output="$(BUILD)/build" --force
+
+BST: build/BSTTest/success
+
+build/BSTTest/success: Binary/BST.pde Binary/BSTTest.pde Binary/BSTNode.pde Binary/BinNode.pde Utils/Permute.pde Utils/Swap.pde Binary/Preorder.pde Utils/KVPair.pde
+	@echo "BST Test"
+	-@rm -rf build/BSTTest
+	@mkdir build/BSTTest
+	@cp Binary/BST.pde build/BSTTest
+	@cp Binary/BSTNode.pde build/BSTTest
+	@cp Binary/BinNode.pde build/BSTTest
+	@cp Binary/BSTTest.pde build/BSTTest
+	@cp Binary/Preorder.pde build/BSTTest
+	@cp Utils/Permute.pde build/BSTTest
+	@cp Utils/Swap.pde build/BSTTest
+	@cp Utils/KVPair.pde build/BSTTest
+	@$(PROCESS) --run --sketch="$(BUILD)/BSTTest" --output="$(BUILD)/build" --force
+
+BSTDict: build/BSTDictTest/success
+
+build/BSTDictTest/success: Binary/BST.pde Binary/BSTDict.pde Binary/BSTDictTest.pde Binary/BSTNode.pde Binary/BinNode.pde Utils/Permute.pde Utils/Swap.pde Utils/KVPair.pde
+	@echo "BST Dictionary Test"
+	-@rm -rf build/BSTDictTest
+	@mkdir build/BSTDictTest
+	@cp Binary/BST.pde build/BSTDictTest
+	@cp Binary/BSTNode.pde build/BSTDictTest
+	@cp Binary/BinNode.pde build/BSTDictTest
+	@cp Design/Dictionary.pde build/BSTDictTest
+	@cp Binary/BSTDictTest.pde build/BSTDictTest
+	@cp Binary/BSTDict.pde build/BSTDictTest
+	@cp Utils/Permute.pde build/BSTDictTest
+	@cp Utils/Swap.pde build/BSTDictTest
+	@cp Utils/KVPair.pde build/BSTDictTest
+	@$(PROCESS) --run --sketch="$(BUILD)/BSTDictTest" --output="$(BUILD)/build" --force
+
+Minheap: build/MinheapTest/success
+
+build/MinheapTest/success: Binary/Minheap.pde Binary/MinheapTest.pde Utils/Permute.pde Utils/Swap.pde
+	@echo "Minheap Test"
+	-@rm -rf build/MinheapTest
+	@mkdir build/MinheapTest
+	@cp Binary/Minheap.pde build/MinheapTest
+	@cp Binary/MinheapTest.pde build/MinheapTest
+	@cp Utils/Permute.pde build/MinheapTest
+	@cp Utils/Swap.pde build/MinheapTest
+	@$(PROCESS) --run --sketch="$(BUILD)/MinheapTest" --output="$(BUILD)/build" --force
+
+Maxheap: build/MaxheapTest/success
+
+build/MaxheapTest/success: Binary/Maxheap.pde Binary/MaxheapTest.pde Utils/Permute.pde Utils/Swap.pde
+	@echo "Maxheap Test"
+	-@rm -rf build/MaxheapTest
+	@mkdir build/MaxheapTest
+	@cp Binary/Maxheap.pde build/MaxheapTest
+	@cp Binary/MaxheapTest.pde build/MaxheapTest
+	@cp Utils/Permute.pde build/MaxheapTest
+	@cp Utils/Swap.pde build/MaxheapTest
+	@$(PROCESS) --run --sketch="$(BUILD)/MaxheapTest" --output="$(BUILD)/build" --force
+
+Huffman: build/Huffman/success
+
+build/Huffman/success: Binary/Huffman.pde
+	@echo "Huffman Test"
+	-@rm -rf build/Huffman
+	@mkdir build/HuffmanTest
+	@cp Binary/Huffman.pde build/Huffman
+	@$(PROCESS) --run --sketch="$(BUILD)/Huffman" --output="$(BUILD)/build" --force
 
 General: GenTree UFTest
 
 GenTree: build/GenTree/success
 
-build/GenTree/success: Trees/GenTree.pde
+build/GenTree/success: General/GenTree.pde
 	@echo "GenTree Test"
 	-@rm -rf build/GenTree
 	@mkdir build/GenTree
-	@cp Trees/GenTree.pde build/GenTree
+	@cp General/GenTree.pde build/GenTree
 	@$(PROCESS) --run --sketch="$(BUILD)/GenTree" --output="build/build" --force
 
 UFTest: build/UFTest/success
 
-build/UFTest/success: Trees/ParPtrTree.pde Trees/UFTest.pde
+build/UFTest/success: General/ParPtrTree.pde General/UFTest.pde
 	@echo "UFTest Test"
 	-@rm -rf build/UFTest
 	@mkdir build/UFTest
-	@cp Trees/ParPtrTree.pde build/UFTest
-	@cp Trees/UFTest.pde build/UFTest
+	@cp General/ParPtrTree.pde build/UFTest
+	@cp General/UFTest.pde build/UFTest
 	@$(PROCESS) --run --sketch="$(BUILD)/UFTest" --output="build/build" --force
 
 Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
@@ -298,13 +390,13 @@ build/QuicksortTest/success: Sorting/Quicksort.pde Sorting/SortTest.pde Utils/Sw
 
 Heapsort: build/HeapsortTest/success
 
-build/HeapsortTest/success: Sorting/Heapsort.pde Sorting/SortTest.pde Trees/Maxheap.pde Utils/Swap.pde
+build/HeapsortTest/success: Sorting/Heapsort.pde Sorting/SortTest.pde Binary/Maxheap.pde Utils/Swap.pde
 	@echo "Heapsort Test"
 	-@rm -rf build/HeapsortTest
 	@mkdir build/HeapsortTest
 	@cp Sorting/Heapsort.pde build/HeapsortTest
 	@cp Sorting/SortTest.pde build/HeapsortTest/HeapsortTest.pde
-	@cp Trees/Maxheap.pde build/HeapsortTest
+	@cp Binary/Maxheap.pde build/HeapsortTest
 	@cp Utils/Swap.pde build/HeapsortTest
 	@$(PROCESS) --run --sketch="$(BUILD)/HeapsortTest" --output="$(BUILD)/build" --force
 
@@ -411,7 +503,7 @@ build/GraphTop/success: Graphs/TopsortBFS.pde Graphs/TopsortDFS.pde Graphs/Graph
 
 GraphDijk: build/GraphDijk/success
 
-build/GraphDijk/success: Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Graphs/GraphDijk.pde Graphs/GraphCreate.pde Lists/Queue.pde Lists/LQueue.pde Lists/Link.pde Graphs/GraphDijk.gph Graphs/Dijkstra.pde Graphs/DijkstraPQ.pde Utils/KVPair.pde Trees/MinheapKV.pde
+build/GraphDijk/success: Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Graphs/GraphDijk.pde Graphs/GraphCreate.pde Lists/Queue.pde Lists/LQueue.pde Lists/Link.pde Graphs/GraphDijk.gph Graphs/Dijkstra.pde Graphs/DijkstraPQ.pde Utils/KVPair.pde Binary/Minheap.pde
 	@echo "GraphDijk Test"
 	-@rm -rf build/GraphDijk
 	-@mkdir build/GraphDijk
@@ -427,12 +519,12 @@ build/GraphDijk/success: Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Gr
 	@cp Graphs/Dijkstra.pde build/GraphDijk
 	@cp Graphs/DijkstraPQ.pde build/GraphDijk
 	@cp Utils/KVPair.pde build/GraphDijk
-	@cp Trees/MinheapKV.pde build/GraphDijk
+	@cp Binary/Minheap.pde build/GraphDijk
 	@$(PROCESS) --run --sketch="$(BUILD)/GraphDijk" --output="build/build" --force
 
 GraphMCST: build/GraphMCST/success
 
-build/GraphMCST/success: Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Graphs/GraphMCST.pde Graphs/GraphCreate.pde Lists/Queue.pde Lists/LQueue.pde Lists/Link.pde Graphs/GraphTrav.gph Graphs/Prim.pde Graphs/PrimPQ.pde Graphs/Kruskal.pde Utils/KVPair.pde Trees/MinheapKV.pde
+build/GraphMCST/success: Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Graphs/GraphMCST.pde Graphs/GraphCreate.pde Lists/Queue.pde Lists/LQueue.pde Lists/Link.pde Graphs/GraphTrav.gph Graphs/Prim.pde Graphs/PrimPQ.pde Graphs/Kruskal.pde Utils/KVPair.pde Binary/Minheap.pde
 	@echo "GraphMCST Test"
 	-@rm -rf build/GraphMCST
 	@mkdir build/GraphMCST
@@ -449,6 +541,6 @@ build/GraphMCST/success: Graphs/Graph.pde Graphs/GraphM.pde Graphs/GraphL.pde Gr
 	@cp Graphs/PrimPQ.pde build/GraphMCST
 	@cp Graphs/Kruskal.pde build/GraphMCST
 	@cp Utils/KVPair.pde build/GraphMCST
-	@cp Trees/MinheapKV.pde build/GraphMCST
-	@cp Trees/ParPtrTree.pde build/GraphMCST
+	@cp Binary/Minheap.pde build/GraphMCST
+	@cp General/ParPtrTree.pde build/GraphMCST
 	@$(PROCESS) --run --sketch="$(BUILD)/GraphMCST" --output="build/build" --force

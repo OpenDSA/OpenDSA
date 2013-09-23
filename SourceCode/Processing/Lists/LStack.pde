@@ -5,8 +5,8 @@ class LStack implements Stack {
   private int size;               // Number of elements
 
   // Constructors
-  public LStack() { top = null; size = 0; }
-  public LStack(int size) { top = null; size = 0; }
+  LStack() { top = null; size = 0; }
+  LStack(int size) { top = null; size = 0; }
 /* *** ODSAendTag: LStack1 *** */
 
   String toString() {
@@ -20,11 +20,11 @@ class LStack implements Stack {
 /* *** ODSATag: LStack2 *** */
 
   // Reinitialize stack
-  public void clear() { top = null; size = 0; }
+  void clear() { top = null; size = 0; }
 
 // Put "it" on stack
 /* *** ODSATag: LStackPush *** */  
-  public void push(Object it) {  
+  void push(Object it) {  
     top = new Link(it, top);
     size++;
   }
@@ -32,7 +32,7 @@ class LStack implements Stack {
 
 // Remove "it" from stack
 /* *** ODSATag: LStackPop *** */    
-  public Object pop() {           
+  Object pop() {           
     if (top == null) return null;
     Object it = top.element();
     top = top.next();
@@ -41,12 +41,12 @@ class LStack implements Stack {
   }
 /* *** ODSAendTag: LStackPop *** */
 
-  public Object topValue() {      // Return top value
+  Object topValue() {      // Return top value
     if (top == null) return null;
     return top.element();
   }
 
   // Return stack length
-  public int length() { return size; }
+  int length() { return size; }
 }
 /* *** ODSAendTag: LStack2 *** */

@@ -31,7 +31,7 @@ class LinkedList implements List {
 void output(Object x) {}
 
 /* *** ODSATag: Binsort *** */
-void binsort(int[] A) {
+void binsort(Integer[] A) {
   List[] B = new LinkedList[MaxKeyValue+1];
   Object item;
   for (int i=0; i<=MaxKeyValue; i++)
@@ -45,7 +45,7 @@ void binsort(int[] A) {
 /* *** ODSAendTag: Binsort *** */
 
 
-void simplebinsort(int[] A, int[] B) {
+void simplebinsort(Integer[] A, Integer[] B) {
   int i;
 /* *** ODSATag: simplebinsort *** */
   for (i=0; i<A.length; i++)
@@ -54,7 +54,7 @@ void simplebinsort(int[] A, int[] B) {
 }
 
 
-void simplebinsort2(int[] A) {
+void simplebinsort2(Integer[] A) {
   int i;
 /* *** ODSATag: simplebinsort2 *** */
 for (i=0; i<A.length; i++)
@@ -64,8 +64,8 @@ for (i=0; i<A.length; i++)
 }
 
 void setup() {
-  int[] A = new int[testsize];
-  int[] B = new int[testsize];
+  Integer[] A = new Integer[testsize];
+  Integer[] B = new Integer[testsize];
   int i;
 
   // Perform numtests trials to test this

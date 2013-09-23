@@ -1,6 +1,6 @@
 boolean SUCCESS = true;
 
-public void testUF() {
+void testUF() {
   String out;
   ParPtrTree it = new ParPtrTree(10);
 

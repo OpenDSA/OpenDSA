@@ -10,7 +10,7 @@ interface Queue { // Queue class ADT
   Object dequeue();
 
   // Return front element
-  public Object frontValue();
+  Object frontValue();
 
   // Return queue size
   int length();

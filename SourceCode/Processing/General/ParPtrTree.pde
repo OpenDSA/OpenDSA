@@ -4,21 +4,21 @@ class ParPtrTree {
   private int[] array;      // Node array
   private int[] weights;
 
-  public ParPtrTree(int size) {
+  ParPtrTree(int size) {
     array = new int[size];   // Create node array
     for (int i=0; i<size; i++) array[i] = -1;
     weights = new int[size]; // Create node array
   }
 
   // Determine if nodes are in different trees
-  public boolean differ(int a, int b) {
+  boolean differ(int a, int b) {
     Integer root1 = FIND(a);     // Find root of node a
     Integer root2 = FIND(b);     // Find root of node b
     return root1 != root2;       // Compare roots
   }
 
   // Merge two subtrees
-  public void UNION(int a, int b) {
+  void UNION(int a, int b) {
     Integer root1 = FIND(a);     // Find root of node a
     Integer root2 = FIND(b);     // Find root of node b
     if (root1 != root2)          // Merge with weighted union
@@ -32,7 +32,7 @@ class ParPtrTree {
   }
 
   // Return the root of curr's tree with path compression
-  public Integer FIND(Integer curr) {
+  Integer FIND(Integer curr) {
     if (array[curr] == -1) return curr; // At root
     array[curr] = FIND(array[curr]);
     return array[curr];

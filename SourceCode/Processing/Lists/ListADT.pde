@@ -18,7 +18,7 @@ interface List { // List class ADT
   void moveToStart();
 
   // Set the current position to the end of the list
-  public void moveToEnd();
+  void moveToEnd();
 
   // Move the current position one step left, no change if already at beginning
   void prev();

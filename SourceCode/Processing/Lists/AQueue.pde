@@ -28,17 +28,17 @@ class AQueue implements Queue {
 /* *** ODSATag: AQueue2 *** */
 
   // Reinitialize
-  public void clear() { rear = 0; front = 1; }
+  void clear() { rear = 0; front = 1; }
 
   // Put "it" in queue
-  public void enqueue(Object it) {
+  void enqueue(Object it) {
     if (((rear+2) % maxSize) == front) return;  // Full
     rear = (rear+1) % maxSize; // Circular increment
     listArray[rear] = it;
   }
 
   // Remove and return front value
-  public Object dequeue() {
+  Object dequeue() {
     if(length() == 0) return null;
     Object it = listArray[front];
     front = (front+1) % maxSize; // Circular increment
@@ -46,12 +46,12 @@ class AQueue implements Queue {
   }
 
   // Return front value
-  public Object frontValue() {
+  Object frontValue() {
     if (length() == 0) return null;
     return listArray[front];
   }
 
   // Return queue size
-  public int length() { return ((rear+maxSize) - front + 1) % maxSize; }
+  int length() { return ((rear+maxSize) - front + 1) % maxSize; }
 }
 /* *** ODSAendTag: AQueue2 *** */

@@ -1,6 +1,6 @@
-void sorttime(int[] B) {
+void sorttime(Integer[] B) {
   int i;
-  int[] A = new int[B.length];
+  Integer[] A = new Integer[B.length];
   int totaltime, runs;
   int numruns = 20;
 
@@ -58,7 +58,7 @@ totaltime += (time2-time1);
 }
 
 // A flag check if a pass did not have any swaps, which lets us quit
-void bubblesortcheck(int[] A) {
+void bubblesortcheck(Integer[] A) {
   for (int i=0; i<A.length-1; i++) {// Insert i'th record
     boolean swaps = false;
     for (int j=1; j<A.length-i; j++)
@@ -71,7 +71,7 @@ void bubblesortcheck(int[] A) {
 }
 
 // Modify the flag to check position of last swap taken
-void bubblesortcheck2(int[] A) {
+void bubblesortcheck2(Integer[] A) {
   for (int i=0; i<A.length-1; i++) {// Insert i'th record
     int lastseen = 0;
     int top = A.length;
@@ -87,7 +87,7 @@ void bubblesortcheck2(int[] A) {
 
 // Wikipedia article "optimization" to only swap up to the last swap seen
 /* *** ODSATag: BubblesortCheck *** */
-void bubblecheckswap(int[] A) {
+void bubblecheckswap(Integer[] A) {
   int n = A.length-1;
   while (n>0) {
     int newn = 0;
@@ -103,7 +103,7 @@ void bubblecheckswap(int[] A) {
 /* *** ODSAendTag: BubblesortCheck *** */
 
 // Wikipedia article "optimization" rewritten with a for loop
-void wikipedia2(int[] A) {
+void wikipedia2(Integer[] A) {
   int newn;
   int loopcnt = 0;
   for(int n=A.length-1; n>0; n=newn) {
@@ -120,7 +120,7 @@ void wikipedia2(int[] A) {
 }
 
 // Wikipedia article-compatible version without swap checking
-void unwikipedia(int[] A) {
+void unwikipedia(Integer[] A) {
   int n = A.length-1;
   while (n>0) {
     for (int i=0; i<n; i++)
@@ -133,12 +133,12 @@ void unwikipedia(int[] A) {
 }
 
 
-void sorttest(int[] A) {
+void sorttest(Integer[] A) {
   bubblesort(A);
 }
 
 /* *** ODSATag: Bubblesort *** */
-void bubblesort(int[] A) {
+void bubblesort(Integer[] A) {
   for (int i=0; i<A.length-1; i++) // Insert i'th record
     for (int j=1; j<A.length-i; j++)
       if (A[j-1] > A[j])
