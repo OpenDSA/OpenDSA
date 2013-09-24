@@ -9,6 +9,7 @@
    :topic: Union/Find
    
 .. odsalink:: AV/Development/UnionFind_SlideShow.css
+.. odsalink:: AV/Development/UnionFind_SlideShow_PathCompression.css
 
 Union/Find and the Parent Pointer Implementation (Test Version)[Text]
 =======================================================
@@ -295,34 +296,10 @@ to the root.
 
    Example of Path Compression
 
-.. TODO::
-   :type: Slideshow
-
-   Demonstration of Path Compression.
-
-   Figure :num:`Figure #EquivEx` (d) shows the result of processing
-   equivalence pair :math:`(H, E)` on the the representation
-   shown in Figure :num:`Figure #EquivEx` (c) using the standard
-   weighted union rule without path compression.
-   Figure :num:`Figure #PathCompFig` illustrates the path compression
-   process for the same equivalence pair.
-   After locating the root for node :math:`H`, we can perform path
-   compression to make :math:`H` point directly to root object
-   :math:`A`.
-   Likewise, :math:`E` is set to point directly to its root,
-   :math:`F`.
-   Finally, object :math:`A` is set to point to root object
-   :math:`F`.
-
-   Note that path compression takes place during the
-   FIND operation, *not* during the UNION operation.
-   In Figure :num:`Figure #PathCompFig`, this means that nodes
-   :math:`B`, :math:`C`, and :math:`H` have node :math:`A` remain as
-   their parent, rather than changing their parent to be :math:`F`.
-   While we might prefer to have these nodes point to :math:`F`, to
-   accomplish this would require that additional information from the
-   FIND operation be passed back to the UNION operation.
-   This would not be practical.
+The following slide show illustrates path compression using the last step in the previous example 
+   
+.. inlineav:: container_compression ss
+   :output: show
 
 Path compression keeps the cost of each FIND operation very
 close to constant.
@@ -367,3 +344,4 @@ Problems" by Galil and Italiano \cite{UFind} covers many aspects of the
 equivalence class problem.
 
 .. odsascript:: AV/Development/UnionFind_SlideShow.js
+.. odsascript:: AV/Development/UnionFind_SlideShow_PathCompression.js

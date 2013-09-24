@@ -1,6 +1,7 @@
 #container {
       width: 800px;
-	  height: 650px;
+	  height: 550px;
+	  padding: 50px;
     }
 .jsavcounter {
       position: absolute;
