@@ -1,0 +1,9 @@
+DprobsAll.html is an extention of Dprobs.html includes all of the
+questions that start with "D" and "T", even though it would be better to make
+them separate. The problem is that it uses JSAV. We don't properly
+load the support files in this case when we use a JSAV-based exercise
+in a summary.
+
+So, for now, I have put a copy of the individual problems into the
+DprobsAll.html file, and load that as the exercise, rather than use a
+proper summary exercise (DefSumm.html) that references Dprobs.html.

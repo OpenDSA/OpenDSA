@@ -142,6 +142,8 @@ of a complete binary tree.
 The Huffman coding tree (Module :numref:`<Huffman>`)
 is an example of a full binary tree.
 
+.. avembed:: Exercises/Binary/DprobsAll.html ka
+
 Notes
 -----
 

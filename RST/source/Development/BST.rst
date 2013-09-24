@@ -13,32 +13,6 @@
 Binary Search Trees
 ===================
 
-Module :numref:`<Dictionary>` presented the dictionary ADT,
-along with dictionary implementations based on sorted and unsorted
-lists.
-When implementing the dictionary with an unsorted list,
-inserting a new record into the dictionary can be performed quickly by
-putting it at the end of the list.
-However, searching an unsorted list for a particular record
-requires :math:`\Theta(n)` time in the average case.
-For a large database, this is probably much too slow.
-Alternatively, the records can be stored in a sorted list.
-If the list is implemented using a linked list, then no speedup to the
-search operation will result from storing the records in sorted order.
-On the other hand, if we use a sorted array-based list to implement
-the dictionary, then binary search can be used to find a record in
-only :math:`\Theta(\log n)` time.
-However, insertion will now require :math:`\Theta(n)` time on average
-because, once the proper location for the new record in the sorted
-list has been found, many records might be shifted to make room for
-the new record.
-
-Is there some way to organize a collection of records so
-that inserting records and searching for records can both be done
-quickly?
-This module presents the binary search tree (BST),
-which allows an improved solution to this problem.
-
 A BST is a binary tree that conforms to the following condition, known
 as the :dfn:`Binary Search Tree Property`.
 All nodes stored in the left
