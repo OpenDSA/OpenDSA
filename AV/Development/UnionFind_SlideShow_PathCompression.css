@@ -1,0 +1,25 @@
+#container_compression {
+      width: 800px;
+	  height: 550px;
+	  padding: 50px;
+    }
+.jsavcounter {
+      position: absolute;
+      top: 15px;
+    }
+.jsavcanvas { height: 500px; }
+
+    }
+.jsavoutput {
+      height: 75px;
+    }
+.jsavline {
+      height: 80px;
+    }
+#root, path[data-endnode="root"] {
+    opacity: 0 !important;
+    pointer-events: none;
+    }
+.highlight{
+  background-color: yellow;
+}
