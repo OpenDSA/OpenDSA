@@ -54,7 +54,7 @@ class BST {
   // Return the current subtree, modified to contain the new item
   private BSTNode inserthelp(BSTNode rt, Comparable e) {
     if (rt == null) return new BSTNode(e);
-    if (rt.element().compareTo(e) > 0)
+    if (rt.element().compareTo(e) >= 0)
       rt.setLeft(inserthelp(rt.left(), e));
     else
       rt.setRight(inserthelp(rt.right(), e));
@@ -62,22 +62,22 @@ class BST {
   }
 /* *** ODSAendTag: inserthelp *** */
 
-/* *** ODSATag: deletemin *** */
-  // Delete the minimum value'd element in a subtree
-  private BSTNode deletemin(BSTNode rt) {
-    if (rt.left() == null) return rt.right();
-    rt.setLeft(deletemin(rt.left()));
+/* *** ODSATag: deletemax *** */
+  // Delete the maximum value'd element in a subtree
+  private BSTNode deletemax(BSTNode rt) {
+    if (rt.right() == null) return rt.left();
+    rt.setRight(deletemax(rt.right()));
     return rt;
   }
-/* *** ODSAendTag: deletemin *** */
+/* *** ODSAendTag: deletemax *** */
 
-/* *** ODSATag: getmin *** */
-  // Get the minimum value'd element in a subtree
-  private BSTNode getmin(BSTNode rt) {
-    if (rt.left() == null) return rt;
-    return getmin(rt.left());
+/* *** ODSATag: getmax *** */
+  // Get the maximum value'd element in a subtree
+  private BSTNode getmax(BSTNode rt) {
+    if (rt.right() == null) return rt;
+    return getmax(rt.right());
   }
-/* *** ODSAendTag: getmin *** */
+/* *** ODSAendTag: getmax *** */
 
 /* *** ODSATag: removehelp *** */
   // Remove a node with key value k
@@ -92,9 +92,9 @@ class BST {
       if (rt.left() == null) return rt.right();
       else if (rt.right() == null) return rt.left();
       else { // Two children
-        BSTNode temp = getmin(rt.right());
+        BSTNode temp = getmax(rt.left());
         rt.setElement(temp.element());
-        rt.setRight(deletemin(rt.right()));
+        rt.setLeft(deletemax(rt.left()));
       }
     }
     return rt;

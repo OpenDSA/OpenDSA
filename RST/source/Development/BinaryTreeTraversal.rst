@@ -94,7 +94,7 @@ For example, a preorder traversal specifies that ``rt`` be
 visited before its children.
 This can easily be implemented as follows.
 
-.. codeinclude:: Binary/Traverse.pde
+.. codeinclude:: Binary/Preorder.pde
    :tag: preorder
 
 Function ``preorder`` first checks that the tree is not
@@ -124,7 +124,7 @@ right pointers of the current node are checked so that the recursive
 call is made only on non-empty children.
 Such a design typically looks as follows
 
-.. codeinclude:: Binary/Traverse.pde
+.. codeinclude:: Binary/Preorder.pde
    :tag: preorder2
 
 At first it might appear that ``preorder2`` is more efficient

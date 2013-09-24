@@ -639,8 +639,8 @@
           "DprobsAll": {
             "long_name": "Tree Definition Summary",
             "required": true,
-            "points": 2,
-            "threshold": 5
+            "points": 3,
+            "threshold": 8
           }
         }
       },
@@ -691,8 +691,8 @@
           "TreeOverheadSumm": {
             "long_name": "Tree Overhead",
             "required": true,
-            "points": 3,
-            "threshold": 8
+            "points": 2,
+            "threshold": 5
           }
 	}
       },
@@ -730,6 +730,10 @@
             "threshold": 0.90
           }
         }
+      },
+      "Development/BSTDict": {
+        "long_name": "Dictionary Implementation with BST",
+        "exercises": {}
       },
       "Development/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
