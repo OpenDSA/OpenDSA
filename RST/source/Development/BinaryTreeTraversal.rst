@@ -254,7 +254,7 @@ That information might come from any of the node's ancestors.
 Thus, relevant range information must be passed down the tree.
 We can implement this function as follows.
 
-.. codeinclude:: Binary/Traverse.pde
+.. codeinclude:: Binary/checkBST.pde
    :tag: checkBST
 
 Here are some exercises to practice the traversals.

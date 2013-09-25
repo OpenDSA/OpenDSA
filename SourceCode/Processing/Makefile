@@ -175,7 +175,7 @@ Binary: Traverse ExpTree ExpTreeC BST BSTDict Minheap Maxheap Huffman
 
 Traverse: build/Traverse/success
 
-build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Preorder.pde Binary/Traverse.pde Utils/KVPair.pde
+build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Preorder.pde Binary/Traverse.pde Utils/KVPair.pde Binary/checkBST.pde
 	@echo "Traversal Test"
 	-@rm -rf build/Traverse
 	@mkdir build/Traverse
@@ -183,6 +183,7 @@ build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Preorder.pd
 	@cp Binary/BSTNode.pde build/Traverse
 	@cp Utils/KVPair.pde build/Traverse
 	@cp Binary/Traverse.pde build/Traverse
+	@cp Binary/checkBST.pde build/Traverse
 	@cp Binary/Preorder.pde build/Traverse
 	@$(PROCESS) --run --sketch="$(BUILD)/Traverse" --output="$(BUILD)/build" --force
 
@@ -210,7 +211,7 @@ build/ExpTreeC/success: Binary/ExpressionTreeC.pde Binary/Visit.pde Binary/ExpTr
 
 BST: build/BSTTest/success
 
-build/BSTTest/success: Binary/BST.pde Binary/BSTTest.pde Binary/BSTNode.pde Binary/BinNode.pde Utils/Permute.pde Utils/Swap.pde Binary/Preorder.pde Utils/KVPair.pde
+build/BSTTest/success: Binary/BST.pde Binary/BSTTest.pde Binary/BSTNode.pde Binary/BinNode.pde Utils/Permute.pde Utils/Swap.pde Binary/Preorder.pde Utils/KVPair.pde Binary/checkBST.pde
 	@echo "BST Test"
 	-@rm -rf build/BSTTest
 	@mkdir build/BSTTest
@@ -219,6 +220,7 @@ build/BSTTest/success: Binary/BST.pde Binary/BSTTest.pde Binary/BSTNode.pde Bina
 	@cp Binary/BinNode.pde build/BSTTest
 	@cp Binary/BSTTest.pde build/BSTTest
 	@cp Binary/Preorder.pde build/BSTTest
+	@cp Binary/checkBST.pde build/BSTTest
 	@cp Utils/Permute.pde build/BSTTest
 	@cp Utils/Swap.pde build/BSTTest
 	@cp Utils/KVPair.pde build/BSTTest

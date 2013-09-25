@@ -24,6 +24,12 @@ void setup() {
   for (i=0; i<A.length; i++)
     b.insert(new KVPair(A[i], i + OFFSET));
 
+  // Make sure that the thing is really a BST
+  if (!checkBST(b.root, 0, testsize)) {
+    println("Oops! It was not a BST!");
+    SUCCESS = false;
+  }
+
   // Now, let's test delete by randomly removing all the keys
   permute(A);
   for (i=0; i<A.length; i++) {
