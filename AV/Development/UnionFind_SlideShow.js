@@ -14,18 +14,18 @@
     for (i = 0; i < arr.length; i++) {
       arr[i] = String.fromCharCode(i + 65);
     }
-    labels = jsav.ds.array(arr, {left: 280, top: -10, indexed: true});
+    labels = jsav.ds.array(arr, {left: 280, top: 0, indexed: true});
     //Rendering the tree on the container
     //initTree();
     //Initializing the parent pointer
     for (i = 0; i < arr.length; i++) {
       arr[i] = "/";
     }
-    parents = jsav.ds.array(arr, {left: 280, top: -57});
+    parents = jsav.ds.array(arr, {left: 280, top: -47});
     
 	//Displaying Tree Nodes
 	var newNode;
-    tree = jsav.ds.tree({left: 100, top: 90, nodegap: 20});
+    tree = jsav.ds.tree({left: 100, top: 70, nodegap: 20});
     var root = tree.newNode("X");
     tree.root(root);
     root.id("root");

@@ -1,6 +1,6 @@
 #container {
-      width: 800px;
-	  height: 550px;
+      width: 700px;
+	  height: 450px;
 	  padding: 50px;
     }
 .jsavcounter {
@@ -22,4 +22,11 @@
     }
 .highlight{
   background-color: yellow;
+}
+.jsavtree .jsavnode {
+  line-height: 35px !important;
+  min-width: 35px !important;
+  max-width: 35px !important;
+  min-height: 35px !important;
+  max-height: 35px !important;
 }
