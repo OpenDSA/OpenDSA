@@ -1,0 +1,19 @@
+#searchCON {
+  height: 400px;
+}
+
+#searchCON .jsavcode{
+  border: 1px solid;
+  border-color: white;
+  margin-left: 320px;
+  width: 530px;
+}
+
+#insertCON {
+  height: 620px;
+}
+
+#insertCON .jsavcode{
+  border: 1px solid;
+  border-color: white;
+}

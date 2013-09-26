@@ -324,6 +324,8 @@ deleted from the heap and reinserted with its new priority.
 Modules :numref:`<GraphShortest>` and :numref:`<MCST>` present
 applications for a priority queue with priority updating.
 
+.. avembed:: Exercises/Binary/HeapSumm.html ka
+
 Notes
 -----
 

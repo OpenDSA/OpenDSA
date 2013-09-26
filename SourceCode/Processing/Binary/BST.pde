@@ -40,18 +40,21 @@ class BST {
   int size() { return nodecount; }
 /* *** ODSAendTag: BST *** */
 
+  // Return a record that matches key value k
 /* *** ODSATag: findhelp *** */
   private Comparable findhelp(BSTNode rt, Comparable k) {
     if (rt == null) return null;
     if (rt.element().compareTo(k) > 0)
       return findhelp(rt.left(), k);
-    else if (rt.element().compareTo(k) == 0) return rt.element();
+    else if (rt.element().compareTo(k) == 0)
+      return rt.element();
     else return findhelp(rt.right(), k);
   }
 /* *** ODSAendTag: findhelp *** */
 
+  // Return the current subtree,
+  // modified to contain the new item
 /* *** ODSATag: inserthelp *** */
-  // Return the current subtree, modified to contain the new item
   private BSTNode inserthelp(BSTNode rt, Comparable e) {
     if (rt == null) return new BSTNode(e);
     if (rt.element().compareTo(e) >= 0)

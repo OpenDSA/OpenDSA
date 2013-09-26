@@ -9,6 +9,7 @@
    :satisfies: BST
    :topic: Binary Trees
 
+.. odsalink:: AV/Development/BSTCON.css
 
 Binary Search Trees
 ===================
@@ -61,34 +62,8 @@ BST.
 .. codeinclude:: Binary/BST.pde
    :tag: BST
 
-To find a record with key value :math:`K` in a BST, begin at the root.
-If the root stores a record with key value :math:`K`,
-then the search is over.
-If not, then we must search deeper in the tree.
-What makes the BST efficient during search is that we need search only
-one of the node's two subtrees.
-If :math:`K` is less than the root node's key value,
-we search only the left subtree.
-If :math:`K` is greater than the root node's key value, we search only
-the right subtree.
-This process continues until a record with key value :math:`K` is
-found, or we reach a leaf node.
-If we reach a leaf node without encountering :math:`K`, then
-no record exists in the BST whose key value is :math:`K`.
-
-.. topic:: Example
-
-   Consider searching for the node with key value 32 in the tree of
-   Figure :num:`Figure #BSTShape` (a).
-   Because 32 is less than the root value of 37, the search
-   proceeds to the left subtree.
-   Because 32 is greater than 24, we search in 24's right subtree.
-   At this point the node containing 32 is found.
-   If the search value were 35, the same path would be followed to the
-   node containing 32.
-   Because this node has no children, we know that 35 is not
-   in the BST.
-
+The first operation that we will look at in detail will find the
+record that matches a given key.
 Notice that in the BST class, public member function
 ``find`` calls private member function ``findhelp``.
 Method ``find`` takes the search key as an explicit parameter
@@ -100,24 +75,27 @@ subtree and the search key.
 Member ``findhelp`` has the desired form for this recursive
 subroutine and is implemented as follows.
 
-.. codeinclude:: Binary/BST.pde
-   :tag: findhelp
-
-Once the desired record is found, it is passed through
-return values up the chain of recursive calls.
-If a suitable record is not found, NULL is returned.
+.. inlineav:: searchCON ss
+   :output: show
 
 .. avembed:: AV/Development/BST-search-proficiency.html pe
 
-.. TODO::
-   :type: Slideshow
+Now we look at how to insert a new node into the BST.
 
-   Put a slideshow here to illustrate findhelp.
+.. inlineav:: insertCON ss
+   :output: show
 
 Inserting a record with key value :math:`K` requires that we first
 find where that record would have been if it were in the tree.
 This takes us to either a leaf node, or to an internal node with no
 child in the appropriate direction. [#]_
+Call this node :math:`R'`.
+We then add a new node containing the new record as a child
+of :math:`R'`.
+Figure :num:`Figure #BSTAdd` illustrates this operation.
+The value 30 is added as the left child of the node with value 32.
+Here is the implementation for ``inserthelp``.
+
 
 .. _BSTAdd:
 
@@ -134,12 +112,7 @@ child in the appropriate direction. [#]_
    The node with value 32 becomes the parent of the new node
    containing 30.
 
-Call this node :math:`R'`.
-We then add a new node containing the new record as a child
-of :math:`R'`.
-Figure :num:`Figure #BSTAdd` illustrates this operation.
-The value 30 is added as the left child of the node with value 32.
-Here is the implementation for ``inserthelp``.
+
 
 .. codeinclude:: Binary/BST.pde
    :tag: inserthelp
@@ -400,3 +373,5 @@ Notes
 .. [#] Alternatively, if we prefer to store duplicate values in the
        right subtree, then we must replace a deleted node with the
        least value from its right subtree.
+
+.. odsascript:: AV/Development/BSTCON.js

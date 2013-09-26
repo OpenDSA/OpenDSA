@@ -68,7 +68,7 @@ This makes it easy to merge trees together with UNION operations.
 
 Here is the implementation for parent pointer trees and UNION/FIND.
 
-.. codeinclude:: Trees/ParPtrTree.pde
+.. codeinclude:: General/ParPtrTree.pde
    :tag: UnionFind
 
 This class is greatly simplified from the declarations of

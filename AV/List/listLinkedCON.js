@@ -3,7 +3,7 @@
 // following sections of the tutorial.
 
 // Helper function for seting pointer
-function setPointer(name, node, opt){
+function setPointer(name, node, opt) {
   var pointerRight = {anchor: "right top",
     myAnchor: "left bottom",
     left: -10,
@@ -168,7 +168,7 @@ function setPointer(name, node, opt){
   l.get(1).highlight();
   l.layout();
 
-  //Hiddent JSAV array for animation
+  // Hidden JSAV array for animation
   var arr = jsav.ds.array([""], 
             {indexed: false, layout: "array", left:0}).hide();
   // Head
@@ -183,7 +183,7 @@ function setPointer(name, node, opt){
   // Another vertical line
   var bar2 = l.get(3).odsa_addVLine({visible : 0});
 
-  //Diagonal slash
+  // Diagonal slash
   var slash = l.get(4).odsa_addTail( );
   //dash line in step 4
   var dashlineLeftMargin = 452

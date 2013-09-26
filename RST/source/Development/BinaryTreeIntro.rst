@@ -29,6 +29,4 @@ Modue :numref:`<Composite>' discusses alternate designs for
 implementing tree structures, whild Module :numref:`<TreeNodeSpaace>`
 shows how to compute space requirements depending on the node
 implementation.
-The chapter then treats three examples of binary trees: The
-:ref:`Binary Search Tree <BST>`, the :ref:`Heap <Heaps>`, and the
-:ref:`Huffman Coding Tree <Huffman>`.
+The chapter then treats various examples of binary trees.
