@@ -1,4 +1,4 @@
-/* *** ODSATag: UnionFind *** */
+
 // General Tree class implementation for UNION/FIND
 class ParPtrTree {
   private int[] array;      // Node array
@@ -19,6 +19,7 @@ class ParPtrTree {
 
   // Merge two subtrees
   void UNION(int a, int b) {
+    /* *** ODSATag: UnionFind *** */
     Integer root1 = FIND(a);     // Find root of node a
     Integer root2 = FIND(b);     // Find root of node b
     if (root1 != root2)          // Merge with weighted union
@@ -29,6 +30,7 @@ class ParPtrTree {
         array[root2] = root1;
         weights[root1] += weights[root2] + 1;
       }
+	/* *** ODSAendTag: UnionFind *** */
   }
 
   // Return the root of curr's tree with path compression
@@ -45,4 +47,4 @@ class ParPtrTree {
     return out;
   }
 }
-/* *** ODSAendTag: UnionFind *** */
+

@@ -1,7 +1,7 @@
 #container {
-      width: 700px;
-	  height: 450px;
-	  padding: 50px;
+      width: 800px;
+	  height: 600px;
+	  padding: 40px;
     }
 .jsavcounter {
       position: absolute;
@@ -9,7 +9,6 @@
     }
 .jsavcanvas { height: 500px; }
 
-    }
 .jsavoutput {
       height: 75px;
     }
@@ -29,4 +28,9 @@
   max-width: 35px !important;
   min-height: 35px !important;
   max-height: 35px !important;
+}
+.jsavcode {
+  font-family: monospace;
+  font-size: 12px;
+  width: 500px;
 }
