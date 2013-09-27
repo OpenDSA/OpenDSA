@@ -699,13 +699,19 @@
       "Development/BST": {
         "long_name": "Binary Search Trees",
         "exercises": {
+          "searchCON": {
+            "long_name": "BST Search Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "BST-search-proficiency": {
             "long_name": "BST Search Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
-          "BST-insert": {
+          "insertCON": {
             "long_name": "BST Insert Slideshow",
             "required": false,
             "points": 0.0,
