@@ -1,7 +1,7 @@
 #container {
-      width: 800px;
-	  height: 600px;
-	  padding: 40px;
+      width: 720px;
+	  height: 650px;
+	  padding: 25px;
     }
 .jsavcounter {
       position: absolute;
@@ -32,5 +32,28 @@
 .jsavcode {
   font-family: monospace;
   font-size: 12px;
-  width: 500px;
+}
+.jsavverticalarray .jsavindex:first-of-type, .jsavverticalarray .jsavindex:first-of-type .jsavvalue {
+  -ms-border-top-left-radius: 0px;
+  -moz-border-top-left-radius: 0px;
+  -o-border-top-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  border-top-left-radius: 0px;
+  -ms-border-top-right-radius: 0px;
+  -moz-border-top-right-radius: 0px;
+  -o-border-top-right-radius: 0px;
+  -webkit-border-top-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+.jsavverticalarray .jsavindex:last-of-type, .jsavverticalarray .jsavindex:last-of-type .jsavvalue {
+  -ms-border-bottom-left-radius: 0px;
+  -moz-border-bottom-left-radius: 0px;
+  -o-border-bottom-left-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  -ms-border-bottom-right-radius: 0px;
+  -moz-border-bottom-right-radius: 0px;
+  -o-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
