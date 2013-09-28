@@ -126,52 +126,9 @@ Before tackling the general node removal process, we will first see
 how to remove from a given subtree the node with the largest key
 value.
 This routine will be used later by the general node removal function.
-To remove the node with the maximum key value from a subtree,
-first find that node by starting at the subtree root and continuously
-move down the right link until there is no further right link to
-follow.
-Call this node :math:`G`.
-To remove :math:`G`, simply have the parent of :math:`G` change
-its right pointer to point to the left child of :math:`G`.
-We know that :math:`G` has no right child (because if :math:`G`
-did have a right child, :math:`G` would not be the node with maximum
-key value).
-Thus, changing the pointer as described will maintain a BST, with
-:math:`G` removed.
-The code for this method, named ``deletemax``, is as follows
 
-.. codeinclude:: Binary/BST.pde
-   :tag: deletemax
-
-Here is an example
-
-.. topic:: Example
-
-   Figure :num:`Figure #DelMax` illustrates the ``deletemax``
-   process.
-   Beginning at the root node with value 10,
-   ``deletemax`` follows the right link until there is no further
-   right link, in this case reaching the node with value 20.
-   The node with value 10 is changed to point to the left child of the
-   node containing the maximum value.
-   This is indicated in Figure :num:`Figure #DelMax` by a dashed line.
-
-.. _DelMax:
-
-.. odsafig:: Images/DelMax2.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Deleting the node with maximum value
-
-   An example of deleting the node with maximum value.
-   In this tree, the node with maximum value, 20, is the right child
-   of the root.
-   Thus, the root's ``right`` pointer is changed to point to 20's
-   left child.
-
-.. avembed:: AV/Development/BST-delete.html pe
+.. inlineav:: deletemaxCON ss
+   :output: show
 
 The return value of the ``deletemax`` method is the subtree of
 the current node with the maximum-valued node in the subtree removed.
@@ -185,6 +142,7 @@ pointer to the node containing the maximum value in the subtree.
 .. codeinclude:: Binary/BST.pde
    :tag: getmax
 
+Now we are ready for the ``removehelp`` method.
 Removing a node with given key value :math:`R` from the BST
 requires that we first find :math:`R` and then remove it from the
 tree.
@@ -241,7 +199,7 @@ then the BST property is maintained.
    node's left subtree, in this case 32. This in turn must be replaced
    with 30.
 
-.. avembed:: AV/Development/BST-delete-proficiency.html ss
+.. avembed:: AV/Development/BST-delete.html pe
 
 .. TODO::
    :type: Slideshow
@@ -270,6 +228,8 @@ Here is an implementation for ``removehelp``.
 
 .. codeinclude:: Binary/BST.pde
    :tag: removehelp
+
+.. avembed:: AV/Development/BST-delete-proficiency.html ss
 
 The cost for ``findhelp`` and ``inserthelp`` is the depth of
 the node found or inserted.

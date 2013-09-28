@@ -17,3 +17,14 @@
   border: 1px solid;
   border-color: white;
 }
+
+#deletemaxCON {
+  height: 400px;
+}
+
+#deletemaxCON .jsavcode{
+  border: 1px solid;
+  border-color: white;
+  margin-left: 320px;
+  width: 530px;
+}

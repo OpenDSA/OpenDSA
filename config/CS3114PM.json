@@ -782,6 +782,10 @@
         "long_name": "Bintrees",
         "exercises": {}
       }
+      "Stubs/Huffman": {
+        "long_name": "Huffman Coding",
+        "exercises": {}
+      }
     },
     "General Trees": {
       "Stubs/GenTree": {

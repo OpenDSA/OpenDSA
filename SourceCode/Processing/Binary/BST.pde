@@ -66,7 +66,7 @@ class BST {
 /* *** ODSAendTag: inserthelp *** */
 
 /* *** ODSATag: deletemax *** */
-  // Delete the maximum value'd element in a subtree
+  // Delete the maximum valued element in a subtree
   private BSTNode deletemax(BSTNode rt) {
     if (rt.right() == null) return rt.left();
     rt.setRight(deletemax(rt.right()));
@@ -75,7 +75,7 @@ class BST {
 /* *** ODSAendTag: deletemax *** */
 
 /* *** ODSATag: getmax *** */
-  // Get the maximum value'd element in a subtree
+  // Get the maximum valued element in a subtree
   private BSTNode getmax(BSTNode rt) {
     if (rt.right() == null) return rt;
     return getmax(rt.right());
