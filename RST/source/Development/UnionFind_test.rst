@@ -7,9 +7,9 @@
    :author: Cliff Shaffer
    :prerequisites: GenTreeIntro
    :topic: Union/Find
-   
+
+.. odsalink:: AV/Development/UnionFind_SlideShow_PathCompression.css   
 .. odsalink:: AV/Development/UnionFind_SlideShow.css
-.. odsalink:: AV/Development/UnionFind_SlideShow_PathCompression.css
 
 Union/Find and the Parent Pointer Implementation (Test Version)[Text]
 =======================================================
