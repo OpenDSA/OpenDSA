@@ -50,16 +50,18 @@
   rt.css("background-color", "red");
   jsav.step();
 
-  jsav.umsg("Here comes trouble: Set the color of the line to the left child");
-  var leftedge = rt.edgeToLeft();
-  etemp.css("color", "red");
-  etemp.css("border-color", "red");
-  etemp.css("stroke-color", "red");
+  jsav.umsg("Set the color of the line to the left child");
+  var etemp = rt.edgeToLeft();
+  etemp.css("stroke", "red");
   etemp.css("stroke-width", 3);
   jsav.step();
 
-  jsav.umsg("Calling layout doesn't help.");
-  bt.layout();
+  jsav.umsg("Now make that edge invisible.");
+  etemp.hide();
+  jsav.step();
+
+  jsav.umsg("Make the child invisible too. Interesting... it hides the whole subtree!");
+  rt.left().hide();
   jsav.step();
 
   jsav.recorded();

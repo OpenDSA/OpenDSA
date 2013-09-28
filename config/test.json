@@ -10,7 +10,7 @@
   "suppress_todo": false,
   "chapters": {
     "Binary Trees": {
-      "Development/BSTtest": {
+      "Development/BST": {
         "long_name": "Binary Search Trees",
         "exercises": {}
       },

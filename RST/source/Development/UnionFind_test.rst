@@ -12,7 +12,7 @@
 .. odsalink:: AV/Development/UnionFind_SlideShow.css
 
 Union/Find and the Parent Pointer Implementation (Test Version)[Text]
-=======================================================
+=====================================================================
 
 A simple way to represent a general trees would be to store for each
 node only a pointer to that node's parent.
