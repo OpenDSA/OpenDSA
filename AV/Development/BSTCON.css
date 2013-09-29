@@ -28,3 +28,13 @@
   margin-left: 320px;
   width: 530px;
 }
+
+#removeCON {
+  height: 850px;
+}
+
+#removeCON .jsavcode{
+  border: 1px solid;
+  border-color: white;
+}
+

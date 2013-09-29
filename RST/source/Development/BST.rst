@@ -171,40 +171,8 @@ the one being removed.
 If either of these values replace the one being removed,
 then the BST property is maintained.
 
-.. topic:: Example
-
-   Assume that we wish to remove the value 37 from the BST
-   of Figure :num:`Figure #BSTShape` (a).
-   Instead of removing the root node, we remove the node with the
-   least value in the right subtree (using the ``deletemin`` 
-   operation).
-   This value can then replace the value in the root.
-   In this example we first remove the node with value 40,
-   because it contains the least value in the right subtree.
-   We then substitute 40 as the new value for the root node.
-   Figure :num:`Figure #Remove` illustrates this process.
-
-.. _Remove:
-
-.. odsafig:: Images/BSTDel2.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Removing a node from the BST
-
-   An example of removing the value 37 from the BST.
-   The node containing this value has two children.
-   We replace value 37 with the greatest value from the
-   node's left subtree, in this case 32. This in turn must be replaced
-   with 30.
-
-.. avembed:: AV/Development/BST-delete.html pe
-
-.. TODO::
-   :type: Slideshow
-
-   Get this AV working.
+.. inlineav:: removeCON ss
+   :output: show
 
 When duplicate node values do not appear in the tree, it makes no
 difference whether the replacement is the greatest value from the
@@ -219,15 +187,6 @@ node now containing :math:`L`.
 Selecting the greatest value from the left subtree does not
 have a similar problem, because it does not violate the Binary Search
 Tree Property if equal values appear in the left subtree.
-
-From the above, we see that if we want to remove the record stored in
-a node with two children, then we simply call ``deletemax`` on
-the node's left subtree and substitute the record returned for the
-record being removed.
-Here is an implementation for ``removehelp``.
-
-.. codeinclude:: Binary/BST.pde
-   :tag: removehelp
 
 .. avembed:: AV/Development/BST-delete-proficiency.html ss
 

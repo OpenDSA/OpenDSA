@@ -723,8 +723,14 @@
             "points": 1.0,
             "threshold": 0.90
           },
-          "BST-delete": {
-            "long_name": "BST Delete Slideshow",
+          "deletemaxCON": {
+            "long_name": "BST deletemax Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "removeCON": {
+            "long_name": "BST remove Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
@@ -781,7 +787,7 @@
       "Development/Bintree": {
         "long_name": "Bintrees",
         "exercises": {}
-      }
+      },
       "Stubs/Huffman": {
         "long_name": "Huffman Coding",
         "exercises": {}

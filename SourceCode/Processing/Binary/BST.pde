@@ -82,9 +82,9 @@ class BST {
   }
 /* *** ODSAendTag: getmax *** */
 
-/* *** ODSATag: removehelp *** */
   // Remove a node with key value k
   // Return the tree with the node removed
+/* *** ODSATag: removehelp *** */
   private BSTNode removehelp(BSTNode rt, Comparable k) {
     if (rt == null) return null;
     if (rt.element().compareTo(k) > 0)

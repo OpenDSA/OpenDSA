@@ -11,7 +11,7 @@
 Union/Find and the Parent Pointer Implementation [Text]
 =======================================================
 
-A simple way to represent a general trees would be to store for each
+A simple way to represent a general tree would be to store for each
 node only a pointer to that node's parent.
 We will call this the :dfn:`parent pointer` implementation.
 Clearly this implementation is not general purpose, because it is
