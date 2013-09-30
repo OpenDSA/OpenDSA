@@ -14,11 +14,11 @@
         "long_name": "Binary Search Trees",
         "exercises": {}
       },
-      "Development/UnionFind_test": {
+      "Development/UnionFind": {
         "long_name": "UnionFind",
         "exercises": {}
       },
-      "Development/UnionFind": {
+      "Development/UnionFindOld": {
         "long_name": "UnionFind",
         "exercises": {}
       }
