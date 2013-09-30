@@ -19,6 +19,7 @@ Written by Junyang Chen and Cliff Shaffer
     .jsavcontainer {
       height: 130px;
       border: 0px;
+	  margin-top: 30px;
     }
     .jsavcanvas{
       height: 130px;
@@ -325,7 +326,7 @@ function f_reset() {
   jsavList.get(listSize - 1).odsa_tail = jsav.g.line(34 + (listSize - 1)*74, 32 + 40,
                           44 + (listSize - 1)*74, 1 + 40,{"opacity": 100,"stroke-width": 1});
   // 'top' pointer
-  ptop = jsav.pointer("top", jsavList.get(0));
+  ptop = jsav.pointer("top", jsavList.get(0),{fixed: "true",});
   ptop.click(pclick);
 
   // Hidden JSAV array for insert animation
