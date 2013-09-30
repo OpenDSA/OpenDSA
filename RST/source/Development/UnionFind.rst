@@ -8,8 +8,11 @@
    :prerequisites: GenTreeIntro
    :topic: Union/Find
 
-Union/Find and the Parent Pointer Implementation [Text]
-=======================================================
+.. odsalink:: AV/Development/UnionFind_SlideShow_PathCompression.css   
+.. odsalink:: AV/Development/UnionFind_SlideShow.css
+
+Union/Find and the Parent Pointer Implementation (Test Version)[Text]
+=====================================================================
 
 A simple way to represent a general tree would be to store for each
 node only a pointer to that node's parent.
@@ -188,50 +191,13 @@ Otherwise, the two equivalence classes should be merged by the
    :figwidth: 90%
 
    An example of equivalence processing.
-
-.. TODO::
-   :type: Slideshow
-
-   Build this around the figure above.
-
-   An example of equivalence processing.
-   (a) Initial configuration for the ten nodes of the graph in
-   Figure :num:`Figure #UFexamp`.
-   The nodes are placed into ten independent equivalence classes.
-   (b) The result of processing five edges:
-   :math:`(A, B)`, :math:`(C, H)`, :math:`(G, F)`,
-   :math:`(D, E)`, and :math:`(I, F)`.
-   (c) The result of processing two more edges:
-   :math:`(H, A)` and :math:`(E, G)`.
-   (d) The result of processing edge :math:`(H, E)`.}
+   
+Here is a SlideShow that allows you better understand the operation above.
 
 
-   As an example of solving the equivalence class problem, consider the
-   graph of Figure :num:`Figure #UFexamp`.
-   Initially, we assume that each node of the graph is in a distinct
-   equivalence class.
-   This is represented by storing each as the root of its own tree.
-   Figure Figure :num:`Figure #EquivEx` (a) shows this initial
-   configuration using the parent pointer array representation.
-   Now, consider what happens when equivalence relationship
-   :math:`(A, B)` is processed.
-   The root of the tree containing :math:`A` is :math:`A`, and the
-   root of the tree containing :math:`B` is :math:`B`.
-   To make them equivalent, one of these two roots is set to be the
-   parent of the other.
-   In this case it is irrelevant which points to which, so we
-   arbitrarily select the first in alphabetical order to be the root.
-   This is represented in the parent pointer array by setting the
-   parent field of :math:`B` (the node in array position 1 of the
-   array) to store a pointer to :math:`A`.
-   Equivalence pairs :math:`(C, H)`, :math:`(G, F)`, and
-   :math:`(D, E)` are processed in similar fashion.
-   When processing the equivalence pair :math:`(I, F)`,
-   because :math:`I` and :math:`F` are both their own roots,
-   :math:`I` is set to point to :math:`F`.
-   Note that this also makes :math:`G` equivalent to :math:`I`.
-   The result of processing these five equivalences is shown in
-   Figure :num:`Figure #EquivEx` (b).
+
+.. inlineav:: container ss
+   :output: show
 
 The parent pointer representation places no limit on the number of
 nodes that can share a parent.
@@ -330,34 +296,10 @@ to the root.
 
    Example of Path Compression
 
-.. TODO::
-   :type: Slideshow
-
-   Demonstration of Path Compression.
-
-   Figure :num:`Figure #EquivEx` (d) shows the result of processing
-   equivalence pair :math:`(H, E)` on the the representation
-   shown in Figure :num:`Figure #EquivEx` (c) using the standard
-   weighted union rule without path compression.
-   Figure :num:`Figure #PathCompFig` illustrates the path compression
-   process for the same equivalence pair.
-   After locating the root for node :math:`H`, we can perform path
-   compression to make :math:`H` point directly to root object
-   :math:`A`.
-   Likewise, :math:`E` is set to point directly to its root,
-   :math:`F`.
-   Finally, object :math:`A` is set to point to root object
-   :math:`F`.
-
-   Note that path compression takes place during the
-   FIND operation, *not* during the UNION operation.
-   In Figure :num:`Figure #PathCompFig`, this means that nodes
-   :math:`B`, :math:`C`, and :math:`H` have node :math:`A` remain as
-   their parent, rather than changing their parent to be :math:`F`.
-   While we might prefer to have these nodes point to :math:`F`, to
-   accomplish this would require that additional information from the
-   FIND operation be passed back to the UNION operation.
-   This would not be practical.
+The following slide show illustrates path compression using the last step in the previous example 
+   
+.. inlineav:: container_compression ss
+   :output: show
 
 Path compression keeps the cost of each FIND operation very
 close to constant.
@@ -400,3 +342,6 @@ compression for UNION/FIND, see Robert E. Tarjan's paper
 The article "Data Structures and Algorithms for Disjoint Set Union
 Problems" by Galil and Italiano \cite{UFind} covers many aspects of the
 equivalence class problem.
+
+.. odsascript:: AV/Development/UnionFind_SlideShow.js
+.. odsascript:: AV/Development/UnionFind_SlideShow_PathCompression.js
