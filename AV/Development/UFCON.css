@@ -1,6 +1,11 @@
-#container {
+#ufCON {
       width: 720px;
 	  height: 650px;
+	  padding: 25px;
+    }
+#pathcompCON {
+      width: 750px;
+	  height: 400px;
 	  padding: 25px;
     }
 .jsavcounter {
