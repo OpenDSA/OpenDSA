@@ -7,9 +7,8 @@
    :author: Cliff Shaffer
    :prerequisites: GenTreeIntro
    :topic: Union/Find
-
-.. odsalink:: AV/Development/UnionFind_SlideShow_PathCompression.css   
-.. odsalink:: AV/Development/UnionFind_SlideShow.css
+   
+.. odsalink:: AV/Development/UFCON.css
 
 Union/Find and the Parent Pointer Implementation (Test Version)[Text]
 =====================================================================
@@ -196,7 +195,7 @@ Here is a SlideShow that allows you better understand the operation above.
 
 
 
-.. inlineav:: container ss
+.. inlineav:: ufCON ss
    :output: show
 
 The parent pointer representation places no limit on the number of
@@ -298,7 +297,7 @@ to the root.
 
 The following slide show illustrates path compression using the last step in the previous example 
    
-.. inlineav:: container_compression ss
+.. inlineav:: pathcompCON ss
    :output: show
 
 Path compression keeps the cost of each FIND operation very
@@ -343,5 +342,4 @@ The article "Data Structures and Algorithms for Disjoint Set Union
 Problems" by Galil and Italiano \cite{UFind} covers many aspects of the
 equivalence class problem.
 
-.. odsascript:: AV/Development/UnionFind_SlideShow.js
-.. odsascript:: AV/Development/UnionFind_SlideShow_PathCompression.js
+.. odsascript:: AV/Development/UFCON.js
