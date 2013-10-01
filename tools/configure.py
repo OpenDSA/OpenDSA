@@ -161,7 +161,7 @@ html: preprocessor
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
 	#rm -rf html/_sources/
-	python "%(odsa_root)sRST/preprocessor.py" -p source/ $(HTMLDIR) 
+	python "%(odsa_root)sRST/preprocessor.py" -p source/ $(HTMLDIR)
 	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
 	rm *.json
 	@echo
@@ -173,7 +173,7 @@ slides: preprocessor
 	$(SPHINXBUILD) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
 	#rm -rf html/_sources/
-	#python "%(odsa_root)sRST/preprocessor.py" -p source/ $(HTMLDIR) 
+	#python "%(odsa_root)sRST/preprocessor.py" -p source/ $(HTMLDIR)
 	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
 	rm *.json
 	@echo
@@ -233,7 +233,7 @@ slides_lib = '%(slides_lib)s'
 
 #only import hieroglyph when building course notes
 if slides_lib == 'hieroglyph':
-  extensions.append('hieroglyph') 
+  extensions.append('hieroglyph')
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -303,7 +303,7 @@ slide_theme_path = ['%(odsa_root)sRST/source/_themes/']
 slide_theme = 'slidess' #'single-level'
 #slide_theme_options = {'custom_css':'custom.css'}
 
-slide_link_html_to_slides = not on_slides 
+slide_link_html_to_slides = not on_slides
 slide_link_html_sections_to_slides = not on_slides
 #slide_relative_path = "./slides/"
 
@@ -314,7 +314,7 @@ slide_html_relative_path = "../"
 # -- Options for HTML output ---------------------------------------------------
 #The fully-qualified name of a HTML Translator, that is used to translate document
 #trees to HTML.
-html_translator_class = 'html5.HTMLTranslator' 
+html_translator_class = 'html5.HTMLTranslator'
 
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -358,13 +358,13 @@ html_static_path = ['_static']
 # Manipulates the lists of scripts that jQuery automatically loads
 # The Sphinx-generated search page is dependent on certain files being loaded in the head element whereas
 # we normally want to load these scripts in the body to make the page load faster
-# 'script_files' will be loaded in the head element on search.html and in the body on all other pages 
+# 'script_files' will be loaded in the head element on search.html and in the body on all other pages
 # (setting this value here overrides Sphinx's default script files, so we have to add 'underscore.js' and 'doctools.js')
 # 'search_scripts' are only loaded on the search page
 # 'odsa_scripts' will be loaded as part of the body on all pages
-# 'css_files' adds our custom CSS files to be loaded in the head element so that page doesn't have to re-render 
+# 'css_files' adds our custom CSS files to be loaded in the head element so that page doesn't have to re-render
 # all the content that loaded before the CSS files
-# 'odsa_root_path' specifies the relative path from the HTML output directory to the ODSA root directory and is used 
+# 'odsa_root_path' specifies the relative path from the HTML output directory to the ODSA root directory and is used
 # to properly link to Privacy.html
 # The code that appends these scripts can be found in RST/source/_themes/haiku/layout.html and basic/layout.html
 html_context = {"script_files": [
@@ -376,16 +376,16 @@ html_context = {"script_files": [
                   '_static/doctools.js'
                 ],
                 "odsa_scripts": [
-                  '%(eb2root)slib/jquery-ui.min.js', 
-                  '%(eb2root)sJSAV/lib/jquery.transform.light.js', 
-                  '%(eb2root)sJSAV/lib/raphael.js', 
-                  '%(eb2root)sJSAV/build/JSAV-min.js', 
-                  '_static/config.js', 
-                  '%(eb2root)slib/odsaUtils-min.js', 
-                  '%(eb2root)slib/odsaMOD-min.js' 
-                ], 
+                  '%(eb2root)slib/jquery-ui.min.js',
+                  '%(eb2root)sJSAV/lib/jquery.transform.light.js',
+                  '%(eb2root)sJSAV/lib/raphael.js',
+                  '%(eb2root)sJSAV/build/JSAV-min.js',
+                  '_static/config.js',
+                  '%(eb2root)slib/odsaUtils-min.js',
+                  '%(eb2root)slib/odsaMOD-min.js'
+                ],
                 "css_files": [
-                  '%(eb2root)sJSAV/css/JSAV.css', 
+                  '%(eb2root)sJSAV/css/JSAV.css',
                   '%(eb2root)slib/odsaMOD-min.css',
                   '%(eb2root)sAV/slideCON.css'
                 ],
@@ -444,7 +444,7 @@ todo_include_todos = True
 #---- OpenDSA variables ---------------------------------------
 
 # @efouh: despise the fact that we are using an url hash, gradebook still needs book name
-book_name = '%(book_name)s' 
+book_name = '%(book_name)s'
 # Protocol and domain of the backend server
 server_url = '%(server_url)s'
 
@@ -470,7 +470,7 @@ exercises_dir = '%(exercises_dir)s'
 
 def process_path(path, abs_prefix):
   """Converts relative to absolute paths and all paths to Unix-style paths"""
-  
+
   # If the path is relative, make it absolute
   if not os.path.isabs(path):
     path = ''.join([abs_prefix, path])
@@ -501,9 +501,9 @@ def process_section(conf_data, section, index_rst, depth, chap=None):
 def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0, chap=None):
   global todo_count
   global satisfied_requirements
-  
+
   odsa_dir = get_odsa_dir()
-  
+
   mod_path = mod_path.replace('.rst', '')
   mod_name = os.path.basename(mod_path)
   mod_chapter = ''
@@ -521,7 +521,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
 
   print ("  " * depth) + mod_name
   index_rst.write("   %s\n" % mod_name)
-  
+
   if mod_name == 'ToDo':
     return
 
@@ -532,20 +532,20 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
     mod_data = mod_file.readlines()
 
   long_name = mod_attrib['long_name'] if 'long_name' in mod_attrib else mod_name
-  
+
   # Set a JS flag on the page, indicating whether or not the module can be completed
   if 'dispModComp' in mod_attrib:
     # Use the value specified in the configuration file to override the calculated value
     dispModComp = mod_attrib['dispModComp']
   else:
     dispModComp = False
-    
+
     # Display 'Module Complete' only if the module contains at least one required exercise
     for exer_name, exer_obj in exercises.items():
       if 'required' in exer_obj and exer_obj['required']:
         dispModComp = True
         break
-  
+
   # If these JavaScript variables are changed, be sure to change them in the index.rst file (above) and ToDo.rst file (preprocessor.py)
   header_data = {}
   header_data['mod_name'] = mod_name
@@ -560,7 +560,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
     header_data['unicode_directive'] = rst_header_unicode
   header_data['orig_data'] = mod_data[0]
   mod_data[0] = rst_header % header_data
-  
+
   avmetadata_found = False
 
   # Alter the contents of the module based on the config file
@@ -569,7 +569,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
     if ':requires:' in mod_data[i]:
       # Parse the list of prerequisite topics from the module
       requires = [req.strip() for req in mod_data[i].replace(':requires:', '').split(';')]
-      
+
       # Print a warning message if a missing prereq is encountered
       for req in requires:
         if req not in satisfied_requirements:
@@ -586,7 +586,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
         # Remove TODO directives from the RST file
         mod_data[i] = ''
         i += 1
-        
+
         while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
           mod_data[i] = ''
           i += 1
@@ -596,7 +596,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
     elif '.. inlineav::' in mod_data[i]:
       # Parse the arguments from the directive
       args = mod_data[i].strip().split(' ')
-      
+
       if len(args) < 4:
         # Print a warning if inlineav is invoked without the minimum number of arguments
         print ("  " * (depth + 1 )) + "ERROR: Invalid directive arguments for object on line " + str(i + 1) + ", skipping object"
@@ -622,12 +622,12 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
           # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
           print ("  " * (depth + 1 )) + "WARNING: " + av_name + " is a diagram (attributes are not supported), line " + str(i + 1)
         elif type not in ['ss', 'dgm']:
-          # If a warning if the exercise type doesn't match something we expect 
+          # If a warning if the exercise type doesn't match something we expect
           print ("  " * (depth + 1 )) + "WARNING: Unsupported type '" + type + "' specified for " + av_name + ", line " + str(i + 1)
     elif '.. avembed::' in mod_data[i]:
       # Parse the arguments from the directive
       args = mod_data[i].strip().split(' ')
-      
+
       if len(args) < 4:
         # Print a warning if avembed is invoked without the minimum number of arguments
         print ("  " * (depth + 1 )) + "ERROR: Invalid directive arguments for embedded object on line " + str(i + 1) + ", skipping object"
@@ -647,7 +647,7 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
         else:
           # Append module name to embedded exercise
           mod_data[i] += '   :module: %s\n' % mod_name
-          
+
           if av_name not in exercises:
             # Add the name to a list of missing exercises
             missing_exercises.append(av_name)
@@ -659,6 +659,19 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
             options = ['long_name', 'points', 'required', 'showhide', 'threshold']
 
             rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+
+            # JSAV grading options are not applicable to Khan Academy exercises and will be ignored for those exercises
+            if type != 'ka':
+              # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
+              if 'jsav_exer_options' in exer_conf:
+                jxops = dict(conf_data['glob_jsav_exer_options'].items() + exer_conf['jsav_exer_options'].items())
+              else:
+                jxops = conf_data['glob_jsav_exer_options']
+
+              # URL-encode the string and append it to the RST options
+              jxop_str = '&amp;'.join(['JXOP-%s=%s' % (opt, str(jxops[opt])) for opt in jxops])
+              rst_options.append('   :jsav_exer_opt: %s\n' % jxop_str)
+
             mod_data[i] += ''.join(rst_options)
     elif '.. avmetadata::' in mod_data[i]:
       avmetadata_found = True
@@ -667,22 +680,22 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
 
   if not avmetadata_found:
     print ("  " * (depth + 1)) + 'WARNING: %s does not contain an ..avmetadata:: directive' % mod_name
-  
+
   # Write the contents of the module file to the output src directory
   with open('{0}{1}.rst'.format(get_src_dir(conf_data), mod_name),'w') as mod_file:
     mod_file.writelines(mod_data)
 
 def set_defaults(conf_data):
   """Assign default values to optional config attributes"""
-  
+
   odsa_dir = get_odsa_dir()
-  
+
   # Parse the name of the config file to use as the book name
   conf_data['name'] = os.path.basename(config_file).replace('.json', '')
-  
+
   if 'book_dir' not in conf_data:
     conf_data['book_dir'] = 'Books'
-  
+
   # If no backend address is specified, use an empty string to specify a disabled server
   if 'backend_address' not in conf_data:
     conf_data['backend_address'] = ''
@@ -701,6 +714,10 @@ def set_defaults(conf_data):
   if 'exercise_origin' not in conf_data:
     conf_data['exercise_origin'] = conf_data['module_origin']
 
+  # If not global exercise options are specified, defer to exercise-specific options or the defaults in odsaAV.js
+  if 'glob_jsav_exer_options' not in conf_data:
+    conf_data['glob_jsav_exer_options'] = {}
+
   # 'exercises_root_dir' should default to the OpenDSA root directory
   if 'av_root_dir' not in conf_data:
     conf_data['av_root_dir'] = odsa_dir
@@ -708,11 +725,11 @@ def set_defaults(conf_data):
   # 'exercises_root_dir' should default to the OpenDSA root directory
   if 'exercises_root_dir' not in conf_data:
     conf_data['exercises_root_dir'] = odsa_dir
-    
+
   # Require slideshows to be fully completed for credit by default
   if 'req_full_ss' not in conf_data:
     conf_data['req_full_ss'] = True
-    
+
   # Allow anonymous credit by default
   if 'allow_anonymous_credit' not in conf_data:
     conf_data['allow_anonymous_credit'] = True
@@ -720,11 +737,11 @@ def set_defaults(conf_data):
 
 def get_odsa_dir():
   """Calculate the path to the OpenDSA root directory based on the location of this file"""
-  
+
   # Auto-detect ODSA directory
   (odsa_dir, script) = os.path.split( os.path.abspath(__file__))
-  
-  # Convert to Unix-style path and move up a directory 
+
+  # Convert to Unix-style path and move up a directory
   # (assumes configure.py is one level below root OpenDSA directory)
   return os.path.abspath(odsa_dir.replace("\\", "/") + '/..') + '/'
 
@@ -739,7 +756,7 @@ def get_src_dir(conf_data):
 def configure(config_file, slides = False):
   """Configure an OpenDSA textbook based on a validated configuration file"""
   global satisfied_requirements
-  
+
   print "Configuring OpenDSA, using " + config_file + '\n'
 
   # Read the configuration data
@@ -751,7 +768,7 @@ def configure(config_file, slides = False):
 
   # Assign defaults to optional settings
   set_defaults(conf_data)
-  
+
   # Add the list of topics the book assumes students know to the list of fulfilled prereqs
   if 'assumes' in conf_data:
     satisfied_requirements += [a.strip() for a in conf_data['assumes'].split(';')]
@@ -764,7 +781,7 @@ def configure(config_file, slides = False):
   if code_lang =='processing':
     code_lang = 'java'
 
-  # Prevent user from setting the output directory where the configuration process 
+  # Prevent user from setting the output directory where the configuration process
   # would overwrite important things
   if output_dir == odsa_dir or output_dir == (odsa_dir + "RST/"):
     print "Unable to build in this location, please select a different directory"
@@ -798,7 +815,7 @@ def configure(config_file, slides = False):
   with open(src_dir + 'index.rst', 'w+') as index_rst:
     print "Generating index.rst\n"
     print "Processing..."
-    
+
     header_data = {}
     header_data['mod_name'] = 'index'
     header_data['dispModComp'] = 'false'
@@ -814,20 +831,20 @@ def configure(config_file, slides = False):
       header_data['unicode_directive'] = rst_header_unicode
 
     index_rst.write(rst_header % header_data)
-    
+
     # Process all the chapter and module information
     process_section(conf_data, conf_data['chapters'], index_rst, 0)
 
     index_rst.write(".. toctree::\n")
     index_rst.write("   :maxdepth: 3\n\n")
-    
+
     # Process the Gradebook as well
     if not slides:
       process_module(conf_data, mod_path='Gradebook', index_rst=index_rst)
-    
+
     if todo_count > 0:
       index_rst.write("   ToDo\n")
-    
+
     index_rst.write("\n")
     index_rst.write("* :ref:`genindex`\n")
     index_rst.write("* :ref:`search`\n")
@@ -843,7 +860,7 @@ def configure(config_file, slides = False):
   # Initialize options for conf.py
   options = {}
   options['title'] = conf_data['title']
-  options['book_name'] = conf_data['name'] 
+  options['book_name'] = conf_data['name']
   options['server_url'] = conf_data['backend_address']
   options['module_origin'] = conf_data['module_origin']
   options['odsa_root'] = odsa_dir
@@ -887,7 +904,7 @@ def configure(config_file, slides = False):
   (function () {
     var settings = {};
     //@efouh: added this variable back because it is needed by gradebook.html
-    settings.BOOK_NAME = "%(book_name)s"; 
+    settings.BOOK_NAME = "%(book_name)s";
     // The (protocol and) domain address of the backend server
     // Set SERVER_URL = "" in order to disable server communication and logging
     settings.SERVER_URL = "%(server_url)s";
@@ -956,9 +973,9 @@ if __name__ == "__main__":
     print "Usage: " + sys.argv[0] + " [s] config_file"
     sys.exit(1)
 
-  slides = False 
+  slides = False
   #building book
-  if len(sys.argv) == 2: 
+  if len(sys.argv) == 2:
     config_file = sys.argv[1]
     os.environ['SLIDES'] = 'no'
   #building slides
@@ -972,5 +989,5 @@ if __name__ == "__main__":
     config_file = sys.argv[2]
 
   validate_config_file(config_file)
-  
+
   configure(config_file, slides)

@@ -109,6 +109,8 @@ Settings (all are required unless otherwise specified)
   * Used on module pages to allow HTML5 post messages from this origin, allows embedded AVs to communicate with the parent module page
   * Ex: "av_origin": "http://algoviz.org",
 
+* **glob_jsav_exer_options** - (optional) a JSON object containing the global grading options that will be applied to all JSAV exercises in the book, unless overridden by exercise-specific options.
+  
 * **exercises_root_dir** - (optional) allows the user to change the default location where the Exercises/ directory can be found, defaults to OpenDSA root directory if omitted
 
   * This can point to another location on the same machine that hosts the module files (as long as it is web-accessible) or it can point to a remote location (not fully supported yet)
@@ -165,6 +167,8 @@ Settings (all are required unless otherwise specified)
 
       * Omitting an exercise from the module's "exercises" object will cause the exercise to be removed from the configured module
       * Each exercise object contains required information about that exercise including:
+
+        * **jsav_exer_options** - (optional) a JSON object containing exercise-specific grading options for JSAV.  Can be used to override the options set using ``glob_jsav_exer_options``. The string 'JXOP-' is prepended to every option name so that the client can determine which values should be applied to the ``JSAV_EXERCISE_OPTIONS`` global variable in ``odsaAV.js``
 
         * **long_name** - (optional) a long form, human-readable name used to identify the exercise in the GUI, defaults to short exercise name if omitted
         * **points** - (optional) the number of points the exercise is worth, defaults to ``0`` if omitted

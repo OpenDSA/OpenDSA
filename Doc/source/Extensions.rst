@@ -27,6 +27,7 @@ NAME
 SYNOPSIS::
 
     .. avembed:: {relative_path} {type}
+       [:jsav_exer_opt: {string}]
        [:long_name: {string}]
        [:module: {string}]
        [:points: {number}]
@@ -45,9 +46,9 @@ DESCRIPTION
         * **ss** - slideshows
         * **dgm** - JSAV-based diagram
 
-    ``:module: {string}``
+    ``:jsav_exer_opt: {string}``
 
-      The name of the module on which the AV is embedded.
+      A URL-encoded string of grading options for JSAV exercises.
       **Added automatically by the configuration process, do NOT add manually.**
 
     ``:long_name: {string}``
@@ -55,6 +56,11 @@ DESCRIPTION
       Long name for the embedded object. The "short" name is the file name.
       **Added automatically by the configuration process, do NOT add manually.**
 
+    ``:module: {string}``
+
+      The name of the module on which the AV is embedded.
+      **Added automatically by the configuration process, do NOT add manually.**
+      
     ``:points: {number}``
 
       Number of points this activity is worth.

@@ -41,7 +41,7 @@ BUTTON_HTML = '''\
 '''
 
 CONTAINER_HTML= '''\
-<div 
+<div
     id="%(exer_name)s"
     class="embedContainer"
     data-exer-name="%(exer_name)s"
@@ -67,7 +67,7 @@ def embedlocal(av_path):
   embed=[]
   av_fullname = os.path.basename(av_path)
   av_name = av_fullname.partition('.')[0]
-  
+
   xmlfile = conf.av_dir + os.path.dirname(av_path) + '/xml/' + av_name + '.xml'
 
   avwidth = 0
@@ -108,10 +108,11 @@ def showhide(argument):
 
 class avembed(Directive):
   required_arguments = 2
-  optional_arguments = 6
+  optional_arguments = 7
   final_argument_whitespace = True
   has_content = True
   option_spec = {
+                 'jsav_exer_opt': directives.unchanged,
                  'long_name': directives.unchanged,
                  'module': directives.unchanged,
                  'points': directives.unchanged,
@@ -139,6 +140,10 @@ class avembed(Directive):
     self.options['height'] = embed[3]
     self.options['content'] = ''
 
+    # Add the JSAV exercise options to the AV address
+    if 'jsav_exer_opt' in self.options and self.options['jsav_exer_opt'] != '':
+      self.options['av_address'] += '&amp;' + self.options['jsav_exer_opt']
+
     if 'required' not in self.options:
       self.options['required'] = False
 
@@ -152,7 +157,7 @@ class avembed(Directive):
       self.options['long_name'] = self.options['exer_name']
 
     res = ANCHOR_HTML % self.options
-    
+
     if 'showhide' in self.options and self.options['showhide'] == "none":
       self.options['content'] = IFRAME_HTML % (self.options)
     elif 'showhide' in self.options and self.options['showhide'] == "show":
@@ -162,7 +167,7 @@ class avembed(Directive):
     else:
       self.options['show_hide_text'] = "Show"
       res += BUTTON_HTML % (self.options)
-      
+
     res += CONTAINER_HTML % (self.options)
 
     return [nodes.raw('', res, format='html')]
