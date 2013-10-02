@@ -88,13 +88,13 @@
       jsav.end();
       jsav.displayInit(); // remove old animation
       initData = randomizeData();
-      
+
       // Log inital state of the exercise
       var exInitData = {};
       exInitData.gen_array = initData.array;
       exInitData.gen_input = initData.input;
       ODSA.AV.logExerciseInit(exInitData);
-      
+
       inputData = initData.input;
       task = jsav.label((inputData[0][0] === "delete" ? "Delete key ":"Insert key ") + inputData[0][1]);
       jsavArr = jsav.ds.array(initData.array, {indexed: true});
@@ -170,7 +170,7 @@
       }
       return [modelArr, inputPos];
     }
-    exercise = jsav.exercise(model, init, [{css: "background-color"}, {}], 
+    exercise = jsav.exercise(model, init, [{css: "background-color"}, {}],
       { controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
 
