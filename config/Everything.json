@@ -639,7 +639,14 @@
       },
       "Development/BinaryTree": {
         "long_name": "Binary Tree Terminology",
-        "exercises": {}
+        "exercises": {
+          "DprobsAll": {
+            "long_name": "Tree Definition Summary",
+            "required": true,
+            "points": 3,
+            "threshold": 8
+          }
+        }
       },
       "Development/BinaryTreeFullThm": {
         "long_name": "Full Binary Tree Theorem",
@@ -696,13 +703,19 @@
       "Development/BST": {
         "long_name": "Binary Search Trees",
         "exercises": {
+          "searchCON": {
+            "long_name": "BST Search Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "BST-search-proficiency": {
             "long_name": "BST Search Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
-          "BST-insert": {
+          "insertCON": {
             "long_name": "BST Insert Slideshow",
             "required": false,
             "points": 0.0,
@@ -714,8 +727,14 @@
             "points": 1.0,
             "threshold": 0.90
           },
-          "BST-delete": {
-            "long_name": "BST Delete Slideshow",
+          "deletemaxCON": {
+            "long_name": "BST deletemax Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "removeCON": {
+            "long_name": "BST remove Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
@@ -727,6 +746,10 @@
             "threshold": 0.90
           }
         }
+      },
+      "Development/BSTDict": {
+        "long_name": "Dictionary Implementation with BST",
+        "exercises": {}
       },
       "Development/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
@@ -756,6 +779,12 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.90
+          },
+          "HeapSumm": {
+            "long_name": "BST/Heap Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 3
           }
         }
       },
@@ -788,7 +817,7 @@
     },
     "GeneralTrees": {
       "Development/GenTreeIntro": {
-        "long_name": "General Tree Intrduction",
+        "long_name": "General Trees",
         "exercises": {}
       },
       "Development/UnionFind": {
