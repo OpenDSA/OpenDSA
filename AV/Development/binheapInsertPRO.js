@@ -7,10 +7,10 @@
         jsav = new JSAV($('.avcontainer'), {settings: settings}),
         swapIndex,
         insertPos,
-        insertValue;
-    var nodeNum = 10,
+        insertData,
+        insertValue,
+        nodeNum = 10,
         initNum = 0;
-    var insertData;
 
     jsav.recorded();
     function init() {
@@ -52,7 +52,7 @@
       insertData = initData.slice(initNum, nodeNum);
       swapIndex = jsav.variable(-1);
       insertPos = jsav.variable(0);
-      insertValue = jsav.variable(insertData[0], {visible: true});
+      insertValue = jsav.variable("Insert " + insertData[0], {visible: true});
       $.fx.off = false;
       return bh;
     }
@@ -74,7 +74,7 @@
       return modelbh;
     }
 
-      // Process About button: Pop up a message with an Alert
+    // Process About button: Pop up a message with an Alert
     function about() {
       alert("Heap Insert Proficiency Exercise\nWritten by Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
@@ -84,7 +84,7 @@
       var size = modelHeap.size();
       swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step                                                    
       for (var i = 0; i < size; i++) {
-	bh.css(i, {"background-color": modelHeap.css(i, "background-color")});
+        bh.css(i, {"background-color": modelHeap.css(i, "background-color")});
         bh.value(i, modelHeap.value(i));
       }
       bh.heapsize(modelHeap.heapsize());
@@ -93,11 +93,7 @@
 
 
     var exercise = jsav.exercise(model, init, { css: "background-color" },
-                             { feedback: "continuous",
-                               controls: $('.jsavexercisecontrols'),
-                               fixmode: "fix",
-                               fix: fixState });
-//    var exercise = jsav.exercise(model, init, {}/*, {feedback: "continuous"}*/);
+        { controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
     
     function clickHandler(index) {
@@ -108,7 +104,7 @@
           bh.value(index, insertData[inspos]);
           insertPos.value(inspos + 1);
           if (inspos < insertData.length - 1) {
-            insertValue.value(insertData[inspos + 1]);
+            insertValue.value("Insert " + insertData[inspos + 1]);
           } else {
             insertValue.value("No more data");
           }
@@ -128,14 +124,17 @@
         exercise.gradeableStep();
       }
     }
+    
     $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
       var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
       clickHandler(index);
     });
+    
     $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
       var index = $(this).data("jsav-heap-index") - 1;
       clickHandler(index);
     });
+    
     $("#about").click(about);
   });
 }(jQuery));

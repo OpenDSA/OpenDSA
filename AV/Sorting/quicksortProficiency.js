@@ -407,15 +407,12 @@
      *        - Defines how to grade each value returned from 'initialize' and 'modelSolution'
      *            - The values and the background-color css properties of both array will be compared
      *            - Each of the state variables will only be compared by value
-     *    {fix: fixState, feedback: "continuous", fixmode: "fix"}
-     *        - Defines the name of the function to call to fix the state of the exercise if the user makes a mistake in fixmode
-     *        - Defaults to giving the user feedback after each step
-     *        - Defaults to fixing the exercise for the user rather than undoing their last step
+     *    {fix: fixState}
+     *        - Defines the name of the function to call to fix the state of the exercise if the user makes a mistake in 'fix' mode
      */
     var exercise = av.exercise(modelSolution, initialize,
                    [{css: "background-color"}, {}, {}, {}, {}, {}],
-                   {controls: $('.jsavexercisecontrols'), fix: fixState,
-                   feedback:  "continuous", fixmode: "fix"});
+                   {controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
   });
 }(jQuery));

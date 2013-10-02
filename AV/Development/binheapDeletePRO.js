@@ -79,11 +79,7 @@
       return modelbh;
     }
     var exercise = jsav.exercise(model, init, { css: "background-color" },
-                             { feedback: "continuous",
-                               controls: $('.jsavexercisecontrols'),
-                               fixmode: "fix",
-                               fix: fixState });
-//    var exercise = jsav.exercise(model, init, {css: "opacity"}/*, {feedback: "continuous"}*/);
+        { controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
     
     function clickHandler(index) {
@@ -109,7 +105,7 @@
       var size = modelHeap.size();
       swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step                                                    
       for (var i = 0; i < size; i++) {
-	bh.css(i, {"background-color": modelHeap.css(i, "background-color")});
+        bh.css(i, {"background-color": modelHeap.css(i, "background-color")});
         bh.value(i, modelHeap.value(i));
       }
       bh.heapsize(modelHeap.heapsize());
@@ -120,10 +116,12 @@
       var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
       clickHandler(index);
     });
+    
     $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
       var index = $(this).data("jsav-heap-index") - 1;
       clickHandler(index);
     });
+    
     $("#decrement").click(function() {
         bh.heapsize(bh.heapsize() - 1);
         bh.css(bh.heapsize(), {"opacity": "0"});

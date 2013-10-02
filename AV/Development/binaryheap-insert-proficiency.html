@@ -2,135 +2,169 @@
 <html>
   <head>
     <title>Binary Heap Insert</title>
-    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-    <style>
-    #av { width: auto;}
-    .jsavoutput.jsavline { height: 20px; margin: 0 0 0 20px;}
-    .jsavcontrols a { margin-left: 0;}
-    #decrement { margin-right: 20px;}
-    #insert {float: left; font-size: 150%;}
-    .jsavvariable { position: absolute; top: 190px; left: 35px; font-size: 150%;}
-    </style>
-  </head>
-  <body>
-    <div id="av">
-      <p style="margin-top:-5px">Instructions:</p>
-      <p style="margin-top: -15px; padding: 10px; 10px; margin-right: 10px; border: 1px solid black">Insert the stream of keys shown on the upper-left corner into an originally empty minimum binary heap. The heap is also depicted in binary tree representation even though the implementation is an array starting from index 1 (the root node). Each record stored into Heap is represented by a key that shows its priority. You can insert a key by clicking an empty index/node and restore heap property after each insertion by making swaps. You can swap two records by first clicking one, then the other. </p>
-      <div id="insert">Insert</div>
-      <p align="center" class="jsavexercisecontrols"></p>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <style>
+    #container {
+      width: 780px;
+    }
+    
+    .jsavvariable {
+      position: absolute;
+      top: 190px;
+      /*left: 35px;*/
+      font-size: 150%;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <table class="proHeaderTable">
+    <tr>
+      <td class="headerLeft">
+        <input type="button" id="help" name="help" value="Help" />
+      </td>
+      <td class="headerCenter">
+        <p class="jsavexercisecontrols"></p>
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+        <a id="settings" class="jsavsettings" href="#">Settings</a>
+      </td>
+    </tr>
+  </table>
+  <form class="avcontainer">
+    <p class="instructLabel">Instructions:</p>
+    <p class="instructions">
+      Insert the stream of keys shown on the upper-left corner into an originally empty minimum binary heap. The heap is also depicted in binary tree representation even though the implementation is an array starting from index 1 (the root node). Each record stored into Heap is represented by a key that shows its priority. You can insert a key by clicking an empty index/node and restore heap property after each insertion by making swaps. You can swap two records by first clicking one, then the other.
+    </p>
+    <p>
+      <span class="jsavscore"></span>
+    </p>
+    
+    <div id="av" class="jsavcanvas">
     </div>
-    <script
-       src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  </form>
+</div>
+  
+<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../../JSAV/lib/raphael.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../JSAV/extras/binaryheap.js"></script>
+<script src="../../lib/odsaUtils-min.js"></script>
+<script src="../../lib/odsaAV-min.js"></script>
 
-    <script src="../../JSAV/lib/jquery.transform.light.js"></script>
-    <script src="../../JSAV/lib/raphael.js"></script>
-    <script src="../../JSAV/build/JSAV-min.js"></script>
-    <script src="../../JSAV/extras/binaryheap.js"></script>
-    <script>
-    var initData, bh,
-        jsav = new JSAV("av"),
-        swapIndex,
-        insertPos,
-        insertValue;
-    var nodeNum = 10,
-        initNum = 0;
+<script>
+  var initData, bh,
+      // Initialize the settings for the AV
+      settings = new JSAV.utils.Settings($(".jsavsettings")),
+      jsav = new JSAV($('.avcontainer'), {settings: settings}),
+      swapIndex,
+      insertPos,
+      insertValue,
+      nodeNum = 10,
+      initNum = 0;
 
-    jsav.recorded();
-    function init() {
-      if (bh) {
-        bh.clear();
-        insertPos.element.remove();
-        insertValue.element.remove();
+  jsav.recorded();
+  function init() {
+    if (bh) {
+      bh.clear();
+      insertPos.element.remove();
+      insertValue.element.remove();
+    }
+    var step = 0;
+    $.fx.off = true;
+    var test = function(data) {
+      var min = 1000,
+          mmin = Math.min;
+      for (var i = 0; i < nodeNum; i++) {
+        min = mmin(data[i], min);
       }
-      var step = 0;
-      $.fx.off = true;
-      var test = function(data) {
-        var min = 1000,
-            mmin = Math.min;
-        for (var i = 0; i < nodeNum; i++) {
-          min = mmin(data[i], min);
-        }
-        // make sure we get a collision
-        if (data[nodeNum-1] !== min) {
-          data[nodeNum-1] = min;
+      // make sure we get a collision
+      if (data[nodeNum-1] !== min) {
+        data[nodeNum-1] = min;
+      } else {
+        data[nodeNum/2] = min;
+      }
+      bh = jsav.ds.binheap(data.slice(0, initNum), {size: nodeNum, stats: true, tree: false});
+      for (var i = 0; i < nodeNum; i++) {
+        bh.insert(data[i]);
+      }
+      var swaps = bh.stats.swaps;
+      bh.clear();
+      return !(swaps < nodeNum + 1 || swaps > nodeNum + 3);
+    };
+    initData = JSAV.utils.rand.numKeys(10, 100, nodeNum, {test: test, tries: 50});
+    bh = jsav.ds.binheap(initData.slice(0, initNum), {size: nodeNum});
+    insertData = initData.slice(initNum, nodeNum);
+    swapIndex = jsav.variable(-1);
+    insertPos = jsav.variable(0);
+    insertValue = jsav.variable("Insert " + insertData[0], {visible: true});
+    $.fx.off = false;
+    return bh;
+  }
+  
+  function model(modeljsav) {
+    var modelbh = modeljsav.ds.binheap(initData.slice(0, initNum), {size: initData.length, nodegap: 20});
+    modelbh.origswap = modelbh.swap; // store original heap grade function
+    // set all steps gradeable that include a swap
+    modelbh.swap = function (ind1, ind2, opts) {
+      this.origswap(ind1, ind2, opts);
+      this.jsav.stepOption("grade", true);
+    };
+    modeljsav._undo = [];
+    for (var i = initNum; i < initData.length; i++) {
+      modeljsav.umsg("Inserting " + initData[i]);
+      modeljsav.step();
+      modelbh.insert(initData[i]);
+    }
+    return modelbh;
+  }
+  
+  var exercise = jsav.exercise(model, init, {}, {controls: $('.jsavexercisecontrols')});
+  exercise.reset();
+  
+  function clickHandler(index) {
+    jsav._redo = []; // clear the forward stack, should add a method for this in lib
+    if (bh.value(index) === "") {
+      var inspos = insertPos.value();
+      if (inspos < insertData.length) {
+        bh.value(index, insertData[inspos]);
+        insertPos.value(inspos + 1);
+        if (inspos < insertData.length - 1) {
+          insertValue.value("Insert " + insertData[inspos + 1]);
         } else {
-          data[nodeNum/2] = min;
+          insertValue.value("No more data");
         }
-        bh = jsav.ds.binheap(data.slice(0, initNum), {size: nodeNum, stats: true, tree: false});
-        for (var i = 0; i < nodeNum; i++) {
-          bh.insert(data[i]);
-        }
-        var swaps = bh.stats.swaps;
-        bh.clear();
-        return !(swaps < nodeNum + 1 || swaps > nodeNum + 3);
-      };
-      initData = JSAV.utils.rand.numKeys(10, 100, nodeNum, {test: test, tries: 50});
-      bh = jsav.ds.binheap(initData.slice(0, initNum), {size: nodeNum});
-      insertData = initData.slice(initNum, nodeNum);
-      swapIndex = jsav.variable(-1);
-      insertPos = jsav.variable(0);
-      insertValue = jsav.variable(insertData[0], {visible: true});
-      $.fx.off = false;
-      return bh;
-    }
-    
-    function model(modeljsav) {
-      var modelbh = modeljsav.ds.binheap(initData.slice(0, initNum), {size: initData.length, nodegap: 20});
-      modelbh.origswap = modelbh.swap; // store original heap grade function
-      // set all steps gradeable that include a swap
-      modelbh.swap = function (ind1, ind2, opts) {
-        this.origswap(ind1, ind2, opts);
-        this.jsav.stepOption("grade", true);
-      };
-      modeljsav._undo = [];
-      for (var i = initNum; i < initData.length; i++) {
-        modeljsav.umsg("Inserting " + initData[i]);
-        modeljsav.step();
-        modelbh.insert(initData[i]);
-      }
-      return modelbh;
-    }
-    var exercise = jsav.exercise(model, init, {}/*, {feedback: "continuous"}*/);
-    exercise.reset();
-    
-    function clickHandler(index) {
-      jsav._redo = []; // clear the forward stack, should add a method for this in lib
-      if (bh.value(index) === "") {
-        var inspos = insertPos.value();
-        if (inspos < insertData.length) {
-          bh.value(index, insertData[inspos]);
-          insertPos.value(inspos + 1);
-          if (inspos < insertData.length - 1) {
-            insertValue.value(insertData[inspos + 1]);
-          } else {
-            insertValue.value("No more data");
-          }
-          exercise.gradeableStep();
-        }
-        return;
-      }
-      var sIndex = swapIndex.value();
-      if (sIndex === -1) { // if first click
-        bh.css(index, {"font-size": "145%"});
-        swapIndex.value(index);
-        jsav.step();
-      } else { // second click will swap
-        bh.swap(sIndex, index, {});
-        bh.css([sIndex, index], {"font-size": "100%"});
-        swapIndex.value(-1);
         exercise.gradeableStep();
       }
+      return;
     }
-    $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
-      var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
-      clickHandler(index);
-    });
-    $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
-      var index = $(this).data("jsav-heap-index") - 1;
-      clickHandler(index);
-    });
-    </script>
-  </body>
+    var sIndex = swapIndex.value();
+    if (sIndex === -1) { // if first click
+      bh.css(index, {"font-size": "145%"});
+      swapIndex.value(index);
+      jsav.step();
+    } else { // second click will swap
+      bh.swap(sIndex, index, {});
+      bh.css([sIndex, index], {"font-size": "100%"});
+      swapIndex.value(-1);
+      exercise.gradeableStep();
+    }
+  }
+  
+  $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
+    var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
+    clickHandler(index);
+  });
+  
+  $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
+    var index = $(this).data("jsav-heap-index") - 1;
+    clickHandler(index);
+  });
+</script>
+</body>
 </html>

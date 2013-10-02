@@ -170,12 +170,8 @@
       }
       return [modelArr, inputPos];
     }
-    exercise = jsav.exercise(model, init, [{css: "background-color"}, {}], {
-      controls: $('.jsavexercisecontrols'),
-      feedback: "continuous",
-      fixmode: "fix",
-      fix: fixState
-    });
+    exercise = jsav.exercise(model, init, [{css: "background-color"}, {}], 
+      { controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
 
     function updateStepTask() {

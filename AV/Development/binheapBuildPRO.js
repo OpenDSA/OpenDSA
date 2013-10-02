@@ -71,13 +71,9 @@
     }
 
     var exercise = jsav.exercise(model, init, { css: "background-color" },
-                             { feedback: "continuous",
-                               controls: $('.jsavexercisecontrols'),
-                               fixmode: "fix",
-                               fix: fixState });
-
-//    var exercise = jsav.exercise(model, init, {}/*, {feedback: "continuous"}*/);
+        { controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
+    
     function clickHandler(index) {
       jsav._redo = []; // clear the forward stack, should add a method for this in lib
       var sIndex = swapIndex.value();
@@ -85,7 +81,7 @@
         bh.css(index, {"font-size": "145%"});
         swapIndex.value(index);
         jsav.step();
-    } else if (sIndex === index) { // 2nd click on same index -> unselect
+      } else if (sIndex === index) { // 2nd click on same index -> unselect
         bh.css(index, {"font-size": "100%"});
         swapIndex.value(-1);
         jsav.step();
@@ -96,6 +92,7 @@
         exercise.gradeableStep();
       }
     }
+    
     $(".jsavcontainer").on("click", ".jsavindex", function() {
       var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
       clickHandler(index);
@@ -103,6 +100,7 @@
       var index = $(this).data("jsav-heap-index") - 1;
       clickHandler(index);
     });
+    
     $("#about").click(about);
   });
 }(jQuery));

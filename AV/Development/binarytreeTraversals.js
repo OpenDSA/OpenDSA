@@ -36,6 +36,7 @@
     }
     return this;
   };
+  
   JSAV._types.ds.BinaryTree.prototype.postOrderTraversal = function() {
     var i = 0,
         jsav = this.jsav;
@@ -54,6 +55,7 @@
     };
     postorderNode(this.root());
   };
+  
   JSAV._types.ds.BinaryTree.prototype.preOrderTraversal = function() {
     var i = 0,
         jsav = this.jsav;
@@ -72,6 +74,7 @@
     };
     preorderNode(this.root());
   };
+  
   JSAV._types.ds.BinaryTree.prototype.inOrderTraversal = function() {
     var i = 0,
         jsav = this.jsav;
@@ -90,6 +93,7 @@
     };
     inorderNode(this.root());
   };
+  
   JSAV._types.ds.BinaryTree.prototype.levelOrderTraversal = function() {
     var i = 0,
         jsav = this.jsav,
@@ -110,6 +114,7 @@
       }
     }
   };
+  
   JSAV._types.ds.BinaryTree.prototype.state = function(newState) {
     var state,
         i,
@@ -141,7 +146,7 @@
     }
   };
 
-    
+  
   var modelWrapper = function(tt) {
     return function model(modeljsav) {
       var modelBst = modeljsav.ds.bintree({center: true, nodegap: 15});
@@ -185,13 +190,15 @@
   var TreeTraversal = function (modelFunction) {
     this.modelFunction = modelFunction;
     console.log(this.modelFunction);
-    this.jsav = new JSAV($(".avcontainer"));
+    var settings = new JSAV.utils.Settings($(".jsavsettings"));
+    this.jsav = new JSAV($(".avcontainer"), {settings: settings});
     this.jsav.recorded();
     this.exercise = this.jsav.exercise(modelWrapper(this), initWrapper(this),
       { "css": "background-color" },
       { controls: $(".jsavexercisecontrols")});
     this.exercise.reset();
   };
+  
   TreeTraversal.prototype.nodeClick = function(exercise) {
     return function() {
       if (this.element.hasClass("jsavnullnode") || this.isHighlight()) { return; }
@@ -201,5 +208,6 @@
       exercise.gradeableStep();
     };
   };
+  
   window.TreeTraversal = TreeTraversal;
 }(jQuery));

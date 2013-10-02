@@ -62,16 +62,13 @@
     }
 
     exercise = jsav.exercise(model, init, { css: "background-color" },
-        {feedback: "continuous",
-        controls: $('.jsavexercisecontrols'),
-        fixmode: "fix",
-        fix: fixState });
+        { controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
     $(".jsavcontainer").on("click", ".jsavtreenode", function () {
       var value = $(this).data('value');
-	  alert(value);
+      alert(value);
     });
-	$(".jsavcontainer").on("click", ".jsavarray .jsavindex", function () {
+    $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function () {
       var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
       alert(index);
     });

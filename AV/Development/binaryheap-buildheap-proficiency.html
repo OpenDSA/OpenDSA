@@ -1,101 +1,135 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Binary Heap - Build Heap</title>
-    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-    <style>
-    #av { width: auto;}
-    .jsavoutput.jsavline { height: 20px; margin: 0 0 0 20px;}
-    .jsavcontrols a { margin-left: 0;}
-    #decrement { margin-right: 20px;}
-    </style>
-  </head>
-  <body>
-    <div id="av">
-      <p style="margin-top:-5px">Instructions:</p>
-  <p style="margin-top: -15px; padding: 10px; 10px; margin-right: 10px; border: 1px solid black">In this exercise, your task is to run the build-heap algorithm on the heap. The min-heap is visualized both as a binary tree and array and the exercise can be completed by swapping keys in either visualization. You can swap two elements by first clicking on one element and then another.</p>
-      <p align="center" class="jsavexercisecontrols"></p>
+<head>
+  <title>Binary Heap - Build Heap</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <style>
+    #container {
+      width: 780px;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <table class="proHeaderTable">
+    <tr>
+      <td class="headerLeft">
+        <input type="button" id="help" name="help" value="Help" />
+      </td>
+      <td class="headerCenter">
+        <p class="jsavexercisecontrols"></p>
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+        <a id="settings" class="jsavsettings" href="#">Settings</a>
+      </td>
+    </tr>
+  </table>
+  <form class="avcontainer">
+    <p class="instructLabel">Instructions:</p>
+    <p class="instructions">
+      In this exercise, your task is to run the build-heap algorithm on the heap. The min-heap is visualized both as a binary tree and array and the exercise can be completed by swapping keys in either visualization. You can swap two elements by first clicking on one element and then another.
+    </p>
+    <p>
+      <span class="jsavscore"></span>
+    </p>
+    
+    <div id="av" class="jsavcanvas">
     </div>
-    <script
-       src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <script src="../../JSAV/lib/jquery.transform.light.js"></script>
-    <script src="../../JSAV/lib/raphael.js"></script>
-    <script src="../../JSAV/build/JSAV-min.js"></script>
-    <script src="../../JSAV/extras/binaryheap.js"></script>
-    <script>
-    var initData, bh,
-        jsav = new JSAV("av"),
-        swapIndex;
+  </form>
+</div>
+  
+<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../JSAV/lib/jquery.transform.light.js"></script>
+<script src="../../JSAV/lib/raphael.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../JSAV/extras/binaryheap.js"></script>
+<script src="../../lib/odsaUtils-min.js"></script>
+<script src="../../lib/odsaAV-min.js"></script>
+<script>
+  var initData, bh,
+      // Initialize the settings for the AV
+      settings = new JSAV.utils.Settings($(".jsavsettings")),
+      jsav = new JSAV($('.avcontainer'), {settings: settings}),
+      swapIndex;
 
-    jsav.recorded();
-    function init() {
-      var nodeNum = 10;
-      if (bh) {
-        bh.clear();
-      }
-     $.fx.off = true;
-     var test = function(data) {
-        bh = jsav.ds.binheap(data, {size: nodeNum, stats: true, tree: false});
-        var stats = bh.stats;
-        bh.clear();
-        return (stats.swaps > 3 && stats.recursiveswaps > 0 && stats.leftswaps > 0
-                && stats.rightswaps > 0 && stats.partlyrecursiveswaps > 0);
-      };
-      initData = JSAV.utils.rand.numKeys(10, 100, nodeNum, {test: test, tries: 50});
-      bh = jsav.ds.binheap(initData, {heapify: false});
-      swapIndex = jsav.variable(-1);
-      jsav._undo = [];
-      $.fx.off = false;
-      return bh;
+  jsav.recorded();
+  
+  function init() {
+    var nodeNum = 10;
+    
+    if (bh) {
+      bh.clear();
     }
     
-    function model(modeljsav) {
-      var modelbh = modeljsav.ds.binheap(initData, {heapify: false, nodegap: 20});
-      modelbh.origswap = modelbh.swap; // store original heap grade function
-      // set all steps gradeable that include a swap
-      modelbh.swap = function (ind1, ind2, opts) {
-        this.origswap(ind1, ind2, opts);
-        this.jsav.stepOption("grade", true);
-      };
-      modeljsav._undo = [];
-      for (var i = Math.floor(modelbh.size() / 2); i > 0; i--) {
-        modeljsav.umsg("Calling Min-Heapify(A, " + i + ")");
-        modeljsav.step();
-        modeljsav.umsg("");
-        modelbh.heapify(i);
-      }
-      return modelbh;
+    $.fx.off = true;
+    
+    var test = function(data) {
+      bh = jsav.ds.binheap(data, {size: nodeNum, stats: true, tree: false});
+      var stats = bh.stats;
+      bh.clear();
+      return (stats.swaps > 3 && stats.recursiveswaps > 0 && stats.leftswaps > 0
+              && stats.rightswaps > 0 && stats.partlyrecursiveswaps > 0);
+    };
+    
+    initData = JSAV.utils.rand.numKeys(10, 100, nodeNum, {test: test, tries: 50});
+    bh = jsav.ds.binheap(initData, {heapify: false});
+    swapIndex = jsav.variable(-1);
+    jsav._undo = [];
+    $.fx.off = false;
+    return bh;
+  }
+  
+  function model(modeljsav) {
+    var modelbh = modeljsav.ds.binheap(initData, {heapify: false, nodegap: 20});
+    modelbh.origswap = modelbh.swap; // store original heap grade function
+    // set all steps gradeable that include a swap
+    modelbh.swap = function (ind1, ind2, opts) {
+      this.origswap(ind1, ind2, opts);
+      this.jsav.stepOption("grade", true);
+    };
+    modeljsav._undo = [];
+    for (var i = Math.floor(modelbh.size() / 2); i > 0; i--) {
+      modeljsav.umsg("Calling Min-Heapify(A, " + i + ")");
+      modeljsav.step();
+      modeljsav.umsg("");
+      modelbh.heapify(i);
     }
-    var exercise = jsav.exercise(model, init, {}/*, {feedback: "continuous"}*/);
-    exercise.reset();
-    function clickHandler(index) {
-      jsav._redo = []; // clear the forward stack, should add a method for this in lib
-      var sIndex = swapIndex.value();
-      if (sIndex === -1) { // if first click
-        bh.css(index, {"font-size": "145%"});
-        swapIndex.value(index);
-        jsav.step();
-    } else if (sIndex === index) { // 2nd click on same index -> unselect
-        bh.css(index, {"font-size": "100%"});
-        swapIndex.value(-1);
-        jsav.step();
-      } else { // second click will swap
-        bh.swap(sIndex, index, {});
-        bh.css([sIndex, index], {"font-size": "100%"});
-        swapIndex.value(-1);
-        exercise.gradeableStep();
-      }
+    return modelbh;
+  }
+  var exercise = jsav.exercise(model, init, [], {controls: $('.jsavexercisecontrols')});
+  exercise.reset();
+  
+  function clickHandler(index) {
+    jsav._redo = []; // clear the forward stack, should add a method for this in lib
+    var sIndex = swapIndex.value();
+    if (sIndex === -1) { // if first click
+      bh.css(index, {"font-size": "145%"});
+      swapIndex.value(index);
+      jsav.step();
+  } else if (sIndex === index) { // 2nd click on same index -> unselect
+      bh.css(index, {"font-size": "100%"});
+      swapIndex.value(-1);
+      jsav.step();
+    } else { // second click will swap
+      bh.swap(sIndex, index, {});
+      bh.css([sIndex, index], {"font-size": "100%"});
+      swapIndex.value(-1);
+      exercise.gradeableStep();
     }
-    $(".jsavcontainer").on("click", ".jsavindex", function() {
-      var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
-      clickHandler(index);
-    }).on("click", ".jsavbinarynode", function() {
-      var index = $(this).data("jsav-heap-index") - 1;
-      clickHandler(index);
-    });
-    </script>
-
-  </body>
+  }
+  
+  // TODO: Add these through JSAV so that click logging works
+  $(".jsavcontainer").on("click", ".jsavindex", function() {
+    var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
+    clickHandler(index);
+  }).on("click", ".jsavbinarynode", function() {
+    var index = $(this).data("jsav-heap-index") - 1;
+    clickHandler(index);
+  });
+</script>
+</body>
 </html>

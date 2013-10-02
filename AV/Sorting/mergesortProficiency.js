@@ -425,8 +425,7 @@
     // (probably because it has to check that all the arrays are correct)
     var exercise = av.exercise(modelSolution, initialize,
                      [{css: "background-color"}, {}], {controls:
-                     $('.jsavexercisecontrols'), fix: fixState,
-                     feedback: "continuous", fixmode: "fix"});
+                     $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
 
   //*****************************************************************************
