@@ -108,16 +108,65 @@
     }   
   }
 
-  //this is a recursive function to find the real last index of the suffix
   function find_last_match(str, p, sub) {
-    var local_answer = str.lastIndexOf(sub.substring(p+1, sub.length));
+   /* var added_amount = i;
+    var local_answer = str.lastIndexOf(sub.substring(p+added_amount, sub.length));
     if(local_answer == -1) { //base case, suffix not found 
-      return -1;
-    } else if(str.charAt(local_answer - 1) != sub.charAt(p)) { //we found our match
+      return find_last_match(str.substring(0,str.length), p, sub, added_amount++);
+    //} else if(str.charAt(local_answer) != sub.charAt(p)) { //we found our match
+    } else if(local_answer != p) { //we found our match we just want to make sure that it isn't matching the character we are at
       return local_answer;
     } else { //shorten the string and try again so we don't get the same sub string
-      return find_last_match(str.substring(0, str.length-1), p, sub); 
-    }       
+      return find_last_match(str.substring(0, str.length-1), p, sub, added_amount); 
+    }   
+    return -1;
+    /*if(local_answer == -1)
+      return -1;
+    else
+      return local_answer;   
+    var local_answer;
+    var added_amount = i;
+    var subtract_amount = 1;
+    while((p+added_amount) != (sub.length - subtract_amount)){ 
+      local_answer = str.lastIndexOf(sub.substring(p+added_amount, sub.length - subtract_amount));
+      if(local_answer == -1) {
+        added_amount++;
+        subtract_amount = 0;
+      }
+      else if(str.charAt(local_answer) != sub.charAt(p))
+        return local_answer;
+      else if (str.charAt(local_answer) == sub.charAt(p)) {
+        subtract_amount++;
+      }
+
+    }
+    return -1;
+    */
+
+    //local variables
+    var not_found = true;
+    var check_first = false;
+    var added_amount = 1;
+    var subtract_amount = 0;
+    var local_answer;
+    while(not_found) {
+      if(!check_first){
+        local_answer = str.lastIndexOf(sub.substring(p+1, sub.length - subtract_amount));
+        if(local_answer == -1) { //case that it wasn't initially found, we need to check the front of the string for p+n
+          check_first = true;
+        } else if(local_answer != p){ //index was found
+          return local_answer;
+        } else if(local_answer == p) { //index was found but at a bad location, so we subtract from the end of the string
+          subtract_amount++;
+        }
+      } else {
+        added_amount++;               //increment the amount we reduce the substring by
+        if(str.indexOf(sub.substring(p+added_amount, sub.length)) == 0) {  //if it matched at the beginning of the string then we return 1 - the amount we had to add which was by default 1
+          return (1 - added_amount);
+        }
+      }
+    }
+	return "not_found";
   }
   function compute_align_table( sub ) {
     var align = new Array();
@@ -135,7 +184,7 @@
       index_of_sub = find_last_match(sub_temp, p, sub);
 
       offset = sub.length;
-      if(index_of_sub != -1){
+      if(index_of_sub != "not found"){
         offset = (p+1) - index_of_sub;
       }
 
