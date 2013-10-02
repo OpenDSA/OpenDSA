@@ -30,8 +30,11 @@
         modelGraph.layout();
         modeljsav._undo = [];
         modeljsav.displayInit();
-        modelGraph.nodes()[0].highlight();
-        modeljsav.stepOption("grade", true);
+		for(var i = 0;i < graph.nodes().length; i++){
+		  modelGraph.nodes()[i].highlight(); 
+		  modeljsav.stepOption("grade", true);
+		  modeljsav.step();
+		}
         return modelGraph;
       }
 

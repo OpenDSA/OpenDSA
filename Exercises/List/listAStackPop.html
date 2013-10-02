@@ -96,7 +96,7 @@ function clickHandler(index, e) {
 	jsavArr.unhighlight(selected_index);
 	selected_index = index;  // Reset to nothing selected
   } else if (status == 2){
-    selected_pointer.target(jsavArr, {relativeIndex : index,targetIndex : index});
+    selected_pointer.target(jsavArr, {targetIndex : index});
     jsav.container.trigger("jsav-updaterelative");
     selected_pointer.element.removeClass('highlight');
     pointerIndex = index;
@@ -140,6 +140,7 @@ function f_reset(max_size, arr_size) {
   pointerIndex = arr_size;
 
   pointerTop.click(pclick);
+  jsav.displayInit();
   jsav.recorded();
   jsav.forward();
   // Bind the clickHandler to handle click events on the array

@@ -1,0 +1,27 @@
+#container {
+  width: 800px;
+  height: 595px;
+}
+.avcontainer {
+  width: 800px;
+  height: 400px;
+}
+.jsavline {
+  height: 45px;
+  margin: 0 0 0 20px;
+}
+
+#procontrols {
+  text-align: center;
+}
+.jsavtree .jsavnode {
+  line-height: 35px !important;
+  min-width: 35px !important;
+  max-width: 35px !important;
+  min-height: 35px !important;
+  max-height: 35px !important;
+}
+#root, path[data-endnode="root"] {
+    opacity: 0 !important;
+    pointer-events: none;
+}
