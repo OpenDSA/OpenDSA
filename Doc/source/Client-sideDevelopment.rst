@@ -22,6 +22,11 @@ The OpenDSA client-side framework automatically handles as much logging as possi
   * The framework will automatically attach loggers to buttons and links (unless they appear inside a contain with a class that matches '.*jsav\w*control.*') and the data these loggers collect identifies interactive elements based on their ID.  Using descriptive IDs will make data analysis much easier.
   * Do not place elements inside a contain with a class that matches ``'.*jsav\w*control.*'``.  JSAV controls appear within these containers but are logged by a different mechanism so the automatic button and link loggers ignore the contents of these containers.
 
+* Make JSAV exercise options configurable (if necessary and desired)
+
+  * If you do not change the default values of ``JSAV_EXERCISE_OPTIONS``, you do not have to do anything.
+  * However, if you do change the default values of ``JSAV_EXERCISE_OPTIONS``, you must call ``ODSA.AV.updateJSAVExerOptions()`` in order to make the exercise options configurable from the config file.  Conversely, if you want to prevent the configuration process from overriding the grading options for your exercise, you can reset the defaults and not call this function.
+  
 * Attach JSAV array click handlers through JSAV rather than jQuery
 
   * Example: ``theArray.click(function(index){...});`` rather than ``$('#arrayId').on('click', ".jsavindex", function(){...});``
@@ -61,6 +66,8 @@ ODSA.AV
   * The ``runit()`` method should call ``ODSA.AV.reset(true)`` to ensure the avcontainer is cleared and ready for the next instance.
 
 * **processArrayValues(upperLimit)** - validates the array values a user enters or generates an array of random numbers if none are provided
+
+* **updateJSAVExerOptions()** - parses JSAV exercise grading options from the URL and applies them to ``JSAV_EXERCISE_OPTIONS``, overriding the default values.  Calling this function allows the grading options for an exercise to be set in the configuration file.  This function is called by default in ``odsaAV.js`` and does not need to be called directly by exercises unless the exercise alters ``JSAV_EXERCISE_OPTIONS``.  In order for the update to take effect, this function must be called before the JSAV object is initialized.
 
 ODSA.MOD
 ========

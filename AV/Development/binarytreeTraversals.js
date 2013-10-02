@@ -1,4 +1,8 @@
 (function($) {
+  // TODO: This block can be removed if / when a fixstate function is created
+  window.JSAV_EXERCISE_OPTIONS.fixmode = "undo";
+  ODSA.AV.updateJSAVExerOptions();
+
   var comp = function(a, b) {
     return a - b;
   };
@@ -184,10 +188,8 @@
     this.jsav = new JSAV($(".avcontainer"));
     this.jsav.recorded();
     this.exercise = this.jsav.exercise(modelWrapper(this), initWrapper(this),
-		       { "css": "background-color" },
-		       { controls: $(".jsavexercisecontrols"),
-			 feedback: "continuous",
-			 fixmode: "undo" });
+      { "css": "background-color" },
+      { controls: $(".jsavexercisecontrols")});
     this.exercise.reset();
   };
   TreeTraversal.prototype.nodeClick = function(exercise) {

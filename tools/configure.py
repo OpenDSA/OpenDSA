@@ -660,8 +660,8 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
 
             rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
-            # JSAV grading options are not applicable to Khan Academy exercises and will be ignored for those exercises
-            if type != 'ka':
+            # JSAV grading options are not applicable to Khan Academy exercises or slideshows and will be ignored
+            if type not in ['ka', 'ss']:
               # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
               if 'jsav_exer_options' in exer_conf:
                 jxops = dict(conf_data['glob_jsav_exer_options'].items() + exer_conf['jsav_exer_options'].items())

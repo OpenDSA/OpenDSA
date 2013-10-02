@@ -655,7 +655,7 @@
       "Development/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-	  "BTLeafPROG": {
+          "BTLeafPROG": {
             "long_name": "Node Count Function",
             "required": true,
             "points": 1.0,
