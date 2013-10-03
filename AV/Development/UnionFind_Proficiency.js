@@ -35,7 +35,22 @@
     }
 
     function model(modeljsav) {
-        
+      modelTree = modeljsav.ds.tree({nodegap: 20});
+	  var newNode;
+      var root = modelTree.newNode("X");
+      modelTree.root(root);
+      root.id("root");
+      for (var j = 0; j < arr.length; j++) {
+        newNode = modelTree.newNode(labels.value(j));
+        newNode.size = 1;   //To maintain the size of each connected component
+        root.addChild(newNode);
+      }
+	  modeljsav.displayInit();
+	  modelTree.layout();
+	  root.child(0).addChild(root.child(1));
+	  modelTree.layout();
+	  modeljsav.step();
+      return modelTree;   
     }
 	  
 	function initTree() {

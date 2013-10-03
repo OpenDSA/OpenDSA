@@ -27,7 +27,7 @@
     for (i = 0; i < arr.length; i++) {
       arr[i] = gnodes[i].value();
     }
-    labels = jsav.ds.array(arr, {layout: "vertical", left: 555, top: 20});
+    labels = jsav.ds.array(arr, {layout: "vertical", left: 553, top: 20});
     jsav.displayInit();
     prim(gnodes[0]);            // Run Prim's algorithm from start node.
     displayMST();
