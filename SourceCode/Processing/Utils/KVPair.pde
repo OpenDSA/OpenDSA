@@ -26,11 +26,3 @@ class KVPair implements Comparable {
     return theVal;
   }
 }
-/* *** ODSAendTag: KVpair *** */
-
-// Swap for KVPair arrays
-void swap(KVPair[] A, int i, int j) {
-  KVPair temp = A[i];
-  A[i] = A[j];
-  A[j] = temp;
-}

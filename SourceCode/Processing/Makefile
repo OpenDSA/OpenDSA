@@ -5,12 +5,12 @@
 # (Bash) export DISPLAY=:0.0
 # (csh/tcsh) setenv DISPLAY :0.0
 
-PROCESS = ~/processing-2.0b9/processing-java
+PROCESS = ~/processing-2.0b8/processing-java
 
 # Use this one on Linux
-BUILD = build
+# BUILD = build
 # On Windows, I can't make it work without an absolute path
-# BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
 all: Demo Misc Lists Design Binary General Sorting Graphs
@@ -272,7 +272,7 @@ Huffman: build/Huffman/success
 build/Huffman/success: Binary/Huffman.pde
 	@echo "Huffman Test"
 	-@rm -rf build/Huffman
-	@mkdir build/HuffmanTest
+	@mkdir build/Huffman
 	@cp Binary/Huffman.pde build/Huffman
 	@$(PROCESS) --run --sketch="$(BUILD)/Huffman" --output="$(BUILD)/build" --force
 
@@ -315,12 +315,13 @@ build/InssortTest/success: Sorting/Insertionsort.pde Sorting/SortTest.pde Utils/
 
 InssortKV: build/InssortKVTest/success
 
-build/InssortKVTest/success: Sorting/InssortKV.pde Sorting/SortTestKV.pde Utils/KVPair.pde
+build/InssortKVTest/success: Sorting/InssortKV.pde Sorting/SortTestKV.pde Utils/KVPair.pde Utils/Swap.pde
 	@echo "InssortKV Test"
 	-@rm -rf build/InssortKVTest
 	@mkdir build/InssortKVTest
 	@cp Sorting/InssortKV.pde build/InssortKVTest
 	@cp Utils/KVPair.pde build/InssortKVTest
+	@cp Utils/Swap.pde build/InssortKVTest
 	@cp Sorting/SortTestKV.pde build/InssortKVTest/InssortKVTest.pde
 	@$(PROCESS) --run --sketch="$(BUILD)/InssortKVTest" --output="$(BUILD)/build" --force
 

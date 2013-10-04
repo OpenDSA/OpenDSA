@@ -1,4 +1,4 @@
-void sorttest(Integer[] A) {
+void sorttest(Comparable[] A) {
   quicksort(A, 0, A.length-1);
 }
 
@@ -7,10 +7,10 @@ void sorttest(Integer[] A) {
    to work right when there is only one element in the partition
    (i.e., a list of 2 elements). */
 /* *** ODSATag: partition *** */
-int partition(Integer[] A, int left, int right, int pivot) {
+int partition(Comparable[] A, int left, int right, Comparable pivot) {
   while (left <= right) { // Move bounds inward until they meet
-    while (A[left] < pivot) left++;
-    while ((right >= left) && (A[right] >= pivot)) right--;
+    while (A[left].compareTo(pivot) < 0) left++;
+    while ((right >= left) && (A[right].compareTo(pivot) >= 0)) right--;
     if (right > left) swap(A, left, right); // Swap out-of-place values
   }
   return left;            // Return first position in right partition
@@ -18,12 +18,12 @@ int partition(Integer[] A, int left, int right, int pivot) {
 /* *** ODSAendTag: partition *** */
 
 /* *** ODSATag: findpivot *** */
-int findpivot(Integer[] A, int i, int j)
+int findpivot(Comparable[] A, int i, int j)
   { return (i+j)/2; }
 /* *** ODSAendTag: findpivot *** */
 
 /* *** ODSATag: Quicksort *** */
-void quicksort(Integer[] A, int i, int j) { // Quicksort
+void quicksort(Comparable[] A, int i, int j) { // Quicksort
   int pivotindex = findpivot(A, i, j);  // Pick a pivot
   swap(A, pivotindex, j);               // Stick pivot at end
   // k will be the first position in the right subarray
