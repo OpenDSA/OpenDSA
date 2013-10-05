@@ -297,33 +297,22 @@ build/UFTest/success: General/ParPtrTree.pde General/UFTest.pde
 	@cp General/UFTest.pde build/UFTest
 	@$(PROCESS) --run --sketch="$(BUILD)/UFTest" --output="build/build" --force
 
-Sorting: Inssort InssortKV Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
+Sorting: Inssort Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
 
 # This will do timing tests. The "Sorting" target tests for errors.
 Sorttime: InssortTime BubblesortTime SelsortTime
 
 Inssort: build/InssortTest/success
 
-build/InssortTest/success: Sorting/Insertionsort.pde Sorting/SortTest.pde Utils/Swap.pde
+build/InssortTest/success: Sorting/Insertionsort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/KVPair.pde
 	@echo "Inssort Test"
 	-@rm -rf build/InssortTest
 	@mkdir build/InssortTest
 	@cp Sorting/Insertionsort.pde build/InssortTest
 	@cp Sorting/SortTest.pde build/InssortTest/InssortTest.pde
 	@cp Utils/Swap.pde build/InssortTest
+	@cp Utils/KVPair.pde build/InssortTest
 	@$(PROCESS) --run --sketch="$(BUILD)/InssortTest" --output="$(BUILD)/build" --force
-
-InssortKV: build/InssortKVTest/success
-
-build/InssortKVTest/success: Sorting/InssortKV.pde Sorting/SortTestKV.pde Utils/KVPair.pde Utils/Swap.pde
-	@echo "InssortKV Test"
-	-@rm -rf build/InssortKVTest
-	@mkdir build/InssortKVTest
-	@cp Sorting/InssortKV.pde build/InssortKVTest
-	@cp Utils/KVPair.pde build/InssortKVTest
-	@cp Utils/Swap.pde build/InssortKVTest
-	@cp Sorting/SortTestKV.pde build/InssortKVTest/InssortKVTest.pde
-	@$(PROCESS) --run --sketch="$(BUILD)/InssortKVTest" --output="$(BUILD)/build" --force
 
 Bubblesort: build/BubblesortTest/success
 
@@ -425,13 +414,14 @@ build/RadixsortTest/success: Sorting/Radixsort.pde Sorting/SortTest.pde
 	@$(PROCESS) --run --sketch="$(BUILD)/RadixsortTest" --output="$(BUILD)/build" --force
 
 
-InssortTime:
+InssortTime: Sorting/Insertionsort.pde Sorting/SortTime.pde Utils/Swap.pde Utils/KVPair.pde
 	@echo "Insertion Sort Timer"
 	-@rm -rf build/InssortTime
 	@mkdir build/InssortTime
 	@cp Sorting/SortTime.pde build/InssortTime/InssortTime.pde
 	@cp Sorting/Insertionsort.pde build/InssortTime
 	@cp Utils/Swap.pde build/InssortTime
+	@cp Utils/KVPair.pde build/InssortTime
 	@$(PROCESS) --run --sketch="$(BUILD)/InssortTime" --output="$(BUILD)/build" --force
 
 SelsortTime:

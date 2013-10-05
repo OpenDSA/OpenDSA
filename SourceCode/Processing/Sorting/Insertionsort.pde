@@ -75,7 +75,19 @@ for (runs=0; runs<numruns; runs++) {
   checkorderint(Aint);
 totaltime += (time2-time1);
 }
-  println("Straight integer Insertion Sort 2 for " + numruns + " runs: Size " + testsize + ", Time: " + totaltime);
+  println("Straight integer Insertion Sort for " + numruns + " runs: Size " + testsize + ", Time: " + totaltime);
+
+totaltime = 0;
+KVPair[] AKV = new KVPair[B.length];
+for (runs=0; runs<numruns; runs++) {
+  for(i=0; i<B.length; i++) AKV[i] = new KVPair(B[i], (Integer)B[i]);
+  time1 = millis();
+  inssort(AKV);
+  time2 = millis();
+  checkorder(AKV);
+  totaltime += (time2-time1);
+}
+  println("KVPairs Insertion Sort for " + numruns + " runs: Size " + testsize + ", Time: " + totaltime);
 }
 
 
