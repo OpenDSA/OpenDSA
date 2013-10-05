@@ -793,16 +793,6 @@
         "exercises": {}
       }
     },
-    "General Trees": {
-      "Stubs/GenTree": {
-        "long_name": "General Trees",
-        "exercises": {}
-      },
-      "Stubs/UnionFind": {
-        "long_name": "Union/Find",
-        "exercises": {}
-      }
-    },
     "Sorting": {
       "Sorting/InSort": {
         "long_name": "Chapter Introduction: Sorting",
@@ -1257,16 +1247,6 @@
         "exercises": {}
       }
     },
-    "Search": {
-      "Stubs/Searching": {
-        "long_name": "Search Chapter Introduction",
-        "exercises": {}
-      },
-      "Stubs/SelfOrg": {
-        "long_name": "Self Organizing Lists Stub",
-        "exercises": {}
-      }
-    },
     "Hashing": {
       "Hashing/HashIntro": {
         "long_name": "Introduction",
@@ -1530,6 +1510,26 @@
             "threshold": 10
           }
         }
+      }
+    },
+    "General Trees": {
+      "Stubs/GenTree": {
+        "long_name": "General Trees",
+        "exercises": {}
+      },
+      "Stubs/UnionFind": {
+        "long_name": "Union/Find",
+        "exercises": {}
+      }
+    },
+    "Search": {
+      "Stubs/Searching": {
+        "long_name": "Search Chapter Introduction",
+        "exercises": {}
+      },
+      "Stubs/SelfOrg": {
+        "long_name": "Self Organizing Lists Stub",
+        "exercises": {}
       }
     },
     "Indexing": {

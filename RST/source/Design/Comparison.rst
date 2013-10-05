@@ -145,12 +145,14 @@ A general-purpose sorting routine meant to operate on multiple record
 types would have to be written in a way to deal with the generic
 comparison problem.
 To illustrate, here is an example of Insertion Sort implemented to
-work on an array that stores key-record pairs.
-Note that the records can be of any type, and the keys can be of any
-type that implements the ``Comparable`` interface.
+work on an array that stores records that support the ``Comparable``
+interface.
+Note that since ``KVPair`` is implemented to implement the
+``Comparable`` interface, an array of ``KVPair`` could be used by this
+sort function.
 
-.. codeinclude:: Sorting/InssortKV.pde 
-   :tag: InssortKV
+.. codeinclude:: Sorting/Insertionsort.pde
+   :tag: Insertionsort
 
 Here are some review questions to test your knowledge from this module.
 

@@ -32,8 +32,8 @@ already processed.
 Here is an implementation.
 The input is an array named ``A`` that stores :math:`n` records.
 
-.. codeinclude:: Sorting/Insertionsort.pde 
-   :tag: Insertionsort        
+.. codeinclude:: Sorting/Insertionsort.pde
+   :tag: Insertionsort
 
 (Note that to make the explanation for these sorting algorithms as
 simple as possible, we will usually assume that our input is an

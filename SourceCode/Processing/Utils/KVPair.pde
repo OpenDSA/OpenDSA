@@ -26,3 +26,4 @@ class KVPair implements Comparable {
     return theVal;
   }
 }
+/* *** ODSAendTag: KVpair *** */

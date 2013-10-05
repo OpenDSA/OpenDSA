@@ -17,14 +17,18 @@ Status Report
 -------------
 
 OpenDSA is rapidly evolving and adding new content.
-At the present time, the chapters on Sorting and Hashing are
-considered complete (though some polishing and minor additions are
-still being made), and they are actively maintained.
-This amounts to roughly three weeks worth of material in a typical
-post-CS2-level class.
+At the present time, the chapters on Linear Structures, Binary Trees,
+Sorting, and Hashing are considered complete (though some polishing
+and minor additions are still being made), and they are actively
+maintained.
+There is also complete text for the Algorithm Analysis chapter, but we
+are hoping to develop new material to provide a more visual approach
+to this topic.
+This amounts to roughly 8-9 weeks worth of material in a typical
+CS2- or post-CS2-level class.
 If you are looking at the "Everything" book, you will see these as
 well as all modules that are in various stages of perparation.
-You will also see the "TODO" list items.
+There you will also see the "TODO" list items.
 If you are looking at the "Dev" book, then you are seeing everything
 **execept** the modules that are considered complete.
 (We maintain this version to speed up compilation a bit for the
