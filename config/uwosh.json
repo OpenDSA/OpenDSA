@@ -1,0 +1,28 @@
+{
+  "title": "UWOsh",
+  "book_dir": "Books",
+  "code_dir": "SourceCode/JavaScript",
+  "module_origin": "http://algoviz.org",
+  "backend_address": "https://opendsa.cc.vt.edu/",
+  "build_JSAV": false,
+  "build_ODSA": true,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "chapters": {
+    "UWO Algorithms": {
+      "Development/StringSearchKMP": {
+        "long_name": "Current Work on KMP String Search",
+        "exercises": {
+	}
+      },
+      "Development/StringSearchBoyerMoore": {
+        "long_name": "Current Work on Boyer Moore String Search",
+        "exercises": {}
+      },
+      "Development/StringSearchRabinKarp": {
+        "long_name": "Current Work on Rabin Karp String Search",
+        "exercises": {}
+      }
+    } 
+  }
+}

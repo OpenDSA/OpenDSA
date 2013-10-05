@@ -63,6 +63,9 @@ OpenDSA: min
 test: min
 	python $(CONFIG_SCRIPT) config/test.json
 
+uwosh: min
+	python $(CONFIG_SCRIPT) config/uwosh.json
+
 List: min
 	python $(CONFIG_SCRIPT) s config/List.json
 
