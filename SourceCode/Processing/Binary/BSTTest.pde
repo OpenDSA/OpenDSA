@@ -25,7 +25,7 @@ void setup() {
     b.insert(new KVPair(A[i], i + OFFSET));
 
   // Make sure that the thing is really a BST
-  if (!checkBST(b.root, 0, testsize)) {
+  if (!checkBST(b.root, new KVPair(-1,-1), new KVPair(testsize,testsize))) {
     println("Oops! It was not a BST!");
     SUCCESS = false;
   }
@@ -59,6 +59,31 @@ void setup() {
   time2 = millis();
   totaltime = (time2-time1);
   println("Preorder2 time: " + totaltime);
+
+  // Finally, let's test with equal values
+  Integer[] AA = new Integer[testsize];
+  BST bb = new BST();
+
+  // Initialize to simply be the values from 0 to testsize-1
+  // Ultimately, these are going to be our random keys
+  int newlen = (int)testsize/10;
+  for (i=0; i<AA.length; i++)
+    AA[i] = (int)random(newlen);
+  // Now, generate a permuation on the numbers
+  permute(AA);
+
+  // Now, build the BST
+  // Each record will have a random key value from the permuation.
+  // Since we actually store KVPairs, we will give it a "data" value
+  // That is simply the count + OFFSET (so we can distinguish "data" from keys)
+  for (i=0; i<AA.length; i++)
+    bb.insert(new KVPair(AA[i], i + OFFSET));
+
+  // Make sure that the thing is really a BST
+  if (!checkBST(bb.root, new KVPair(-1,-1), new KVPair(testsize,testsize))) {
+    println("Oops! It was not a BST!");
+    SUCCESS = false;
+  }
 
   if (SUCCESS) {
     PrintWriter output = createWriter("success");

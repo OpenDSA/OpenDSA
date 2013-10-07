@@ -1,12 +1,12 @@
+// Assumes that equal values go to the left
 /* *** ODSATag: checkBST *** */
-// Assumes that the nodes contain KVPair object
-boolean checkBST(BSTNode rt, int low, int high) {
+boolean checkBST(BSTNode rt, Comparable low, Comparable high) {
   if (rt == null) return true; // Empty subtree
-  int rootkey = (Integer)((KVPair)rt.element()).key();
-  if ((rootkey < low) || (rootkey > high))
+  Comparable rootval = rt.element();
+  if ((rootval.compareTo(low) <= 0) || (rootval.compareTo(high) > 0))
     return false; // Out of range
-  if (!checkBST(rt.left(), low, rootkey))
+  if (!checkBST(rt.left(), low, rootval))
     return false; // Left side failed
-  return checkBST(rt.right(), rootkey, high);
+  return checkBST(rt.right(), rootval, high);
 }
 /* *** ODSAendTag: checkBST *** */
