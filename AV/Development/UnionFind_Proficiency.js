@@ -7,7 +7,7 @@
     jsav = new JSAV($('.avcontainer'), {settings: settings}),
     exercise, tree, modelTree, 
 	arr, labels, parents;
-	var i, treeNodes = [];
+	var i, treeNodes = [], parentIndex=-1;
     jsav.recorded();
 	
 	arr = new Array(10);
@@ -15,7 +15,7 @@
     for (i = 0; i < arr.length; i++) {
       arr[i] = String.fromCharCode(i + 65);
     }
-    labels = jsav.ds.array(arr, {left: 300, top: 150});
+    labels = jsav.ds.array(arr, {left: 300, top: 150, indexed: true});
     //Initializing the parent pointer
     for (i = 0; i < arr.length; i++) {
       arr[i] = "/";
@@ -79,14 +79,54 @@
     exercise = jsav.exercise(model, init, { css: "background-color" },
         { controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
+	
+	function getNodeByValue(value){
+	  for (var j = 0; j <treeNodes.length; j++){
+	    if (treeNodes[j].value() === value)
+		  return treeNodes[j];
+	  }
+	}
+	function clickHandler(index){
+	  var node = treeNodes[index];
+	  if (parentIndex === -1){
+	      node.addClass('selected');
+	      labels.addClass(index, 'selected');
+		  parentIndex = index;
+	  }
+	  else{
+	    treeNodes[parentIndex].addChild(node);
+		tree.layout();
+		treeNodes[parentIndex].removeClass('selected');
+		parents.value(index, parentIndex);
+		labels.removeClass(parentIndex, 'selected');
+		parentIndex=-1;
+	  }
+	}
     $(".jsavcontainer").on("click", ".jsavtreenode", function () {
       var value = $(this).data('value');
-      alert(value);
-    });
+	  var node = getNodeByValue(value);
+	  var index = treeNodes.indexOf(node);
+	  if (index === parentIndex){
+	    treeNodes[parentIndex].removeClass('selected');
+		labels.removeClass(parentIndex, 'selected');
+		parentIndex=-1;
+	  }
+	  else{
+	    clickHandler(index);
+	  }
+	});  
+	 
     $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function () {
       var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
-      alert(index);
-    });
+	  if (index === parentIndex){
+	    treeNodes[parentIndex].removeClass('selected');
+		labels.removeClass(parentIndex, 'selected');
+		parentIndex=-1;
+	  }
+	  else{
+	    clickHandler(index);
+	  }
+	});
     $("#about").click(about);
     });
   }(jQuery));
