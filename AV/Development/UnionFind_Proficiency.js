@@ -29,45 +29,46 @@
 	    tree.clear();
 	  }
 	  initTree();
-	  
-	  //Generate  random pairs
+	  generateRandomPairs();	 	  
+	  return tree;        
+    }
+	
+	
+	function generateRandomPairs(){
 	  var count = 0;
 	  currentParent = new Array(pairCount);
 	  currentChild = new Array(pairCount);
-	  
-	  //Initialize
-	  // for (var k = 0; k < pairCount; k++){
-	    // currentParent[k] = -1;
-		// currentChild[k] = -1;
-	  // }
-	  
 	  var index1;
 	  var index2;
 	  while(true){
 	    index1 = Math.floor((Math.random() * 10));
 	    index2 = Math.floor((Math.random() * 10));
 		console.log(index1+"   "+index2);
-		if(index1 === index2){
+		
+		//Cannot pair a node to itself and cannot add child to different parents
+		if((index1 === index2)||(isInCurrentChild(index2, count))){
 		  continue;
 		}
-		//Child can't be picked up for two times
 		else{
-		  for (var j = 0; j < count; j++){
-	        if(index2 === currentChild[j]){
-			  console.log("asd");
-		      continue;
-		    }
-	      }
-		}
-		currentParent[count] = index1;
-		currentChild[count] = index2;
-		count++;
-		if(count === pairCount){
-		  break;
-		}
+		  currentParent[count] = index1;
+		  currentChild[count] = index2;
+		  console.log("added:"+currentParent[count]+"  "+currentChild[count]);
+		  count++;
+		  if(count === pairCount){
+		    break;
+		  }
+	    }
 	  }
-	  return tree;        
-    }
+	}
+	
+	function isInCurrentChild(index, count){
+	  for (var j = 0; j < count; j++){
+	      if(index === currentChild[j]){
+			  return true;
+		  }
+	  }
+	  return false;
+	}
 
     function fixState(mGraph) {
       treeNodes[0].addChild(treeNodes[1]);
