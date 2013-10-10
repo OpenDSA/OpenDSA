@@ -8,6 +8,8 @@
     exercise, tree, modelTree, 
 	arr, labels, parents;
 	var i, treeNodes = [], modelTreeNodes = [], parentIndex=-1;
+	var currentParent = [], currentChild = [];
+	var pairCount = 5;  //Number of pairs
     jsav.recorded();
 	
 	arr = new Array(10);
@@ -27,6 +29,43 @@
 	    tree.clear();
 	  }
 	  initTree();
+	  
+	  //Generate  random pairs
+	  var count = 0;
+	  currentParent = new Array(pairCount);
+	  currentChild = new Array(pairCount);
+	  
+	  //Initialize
+	  // for (var k = 0; k < pairCount; k++){
+	    // currentParent[k] = -1;
+		// currentChild[k] = -1;
+	  // }
+	  
+	  var index1;
+	  var index2;
+	  while(true){
+	    index1 = Math.floor((Math.random() * 10));
+	    index2 = Math.floor((Math.random() * 10));
+		console.log(index1+"   "+index2);
+		if(index1 === index2){
+		  continue;
+		}
+		//Child can't be picked up for two times
+		else{
+		  for (var j = 0; j < count; j++){
+	        if(index2 === currentChild[j]){
+			  console.log("asd");
+		      continue;
+		    }
+	      }
+		}
+		currentParent[count] = index1;
+		currentChild[count] = index2;
+		count++;
+		if(count === pairCount){
+		  break;
+		}
+	  }
 	  return tree;        
     }
 
@@ -53,14 +92,13 @@
 	  modeljsav.displayInit();
 	  modelTree.layout();
 	  
-	  //You may stuck into a problem here when the parent is the same as the child
-	  var parent = JSAV.utils.rand.numKeys(0, 10, 1);
-	  var child = JSAV.utils.rand.numKeys(0, 10, 1);
-      modeljsav.umsg("Union Nodes ("+modelTreeNodes[parent].value()+") And ("+modelTreeNodes[child].value()+")");	  
-	  modelTreeNodes[parent].addChild(modelTreeNodes[child]);
-	  modeljsav.stepOption("grade",true);
-	  modelTree.layout();
-	  modeljsav.step();
+	  for(var k = 0; k < pairCount; k++){
+	    modeljsav.umsg("Union Nodes ("+modelTreeNodes[currentParent[k]].value()+") And ("+modelTreeNodes[currentChild[k]].value()+")");	  
+	    modelTreeNodes[currentParent[k]].addChild(modelTreeNodes[currentChild[k]]);
+	    modeljsav.stepOption("grade",true);
+	    modelTree.layout();
+	    modeljsav.step();  
+	  }	       
       return modelTree;   
     }
 	  
