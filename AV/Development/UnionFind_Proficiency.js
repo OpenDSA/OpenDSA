@@ -7,7 +7,7 @@
     jsav = new JSAV($('.avcontainer'), {settings: settings}),
     exercise, tree, modelTree, 
 	arr, labels, parents;
-	var i, treeNodes = [], parentIndex=-1;
+	var i, treeNodes = [], modelTreeNodes = [], parentIndex=-1;
     jsav.recorded();
 	
 	arr = new Array(10);
@@ -31,7 +31,8 @@
     }
 
     function fixState(mGraph) {
-        
+      treeNodes[0].addChild(treeNodes[1]);
+	  tree.layout();
     }
 
     function model(modeljsav) {
@@ -45,9 +46,19 @@
         newNode.size = 1;   //To maintain the size of each connected component
         root.addChild(newNode);
       }
+	  modelTreeNodes = new Array(arr.length);
+      for (i = 0; i < modelTreeNodes.length; i++) {
+        modelTreeNodes[i] = modelTree.root().child(i);    //At first
+      }
 	  modeljsav.displayInit();
 	  modelTree.layout();
-	  root.child(0).addChild(root.child(1));
+	  
+	  //You may stuck into a problem here when the parent is the same as the child
+	  var parent = JSAV.utils.rand.numKeys(0, 10, 1);
+	  var child = JSAV.utils.rand.numKeys(0, 10, 1);
+      modeljsav.umsg("Union Nodes ("+modelTreeNodes[parent].value()+") And ("+modelTreeNodes[child].value()+")");	  
+	  modelTreeNodes[parent].addChild(modelTreeNodes[child]);
+	  modeljsav.stepOption("grade",true);
 	  modelTree.layout();
 	  modeljsav.step();
       return modelTree;   
@@ -100,6 +111,7 @@
 		parents.value(index, parentIndex);
 		labels.removeClass(parentIndex, 'selected');
 		parentIndex=-1;
+		exercise.gradeableStep();
 	  }
 	}
     $(".jsavcontainer").on("click", ".jsavtreenode", function () {
