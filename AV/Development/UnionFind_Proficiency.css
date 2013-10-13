@@ -6,8 +6,8 @@
   width: 800px;
   height: 600px;
 }
-.jsavline {
-  height: 45px;
+.jsavoutput .jsavline {
+  height: 200px;
   margin: 0 0 0 20px;
 }
 

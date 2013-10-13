@@ -2,20 +2,28 @@
     "use strict";
     /*global alert: true, ODSA */
     $(document).ready(function () {
-      var initData, bh,
-      settings = new JSAV.utils.Settings($(".jsavsettings")),
+      var settings = new JSAV.utils.Settings($(".jsavsettings")),
       jsav = new JSAV($('.avcontainer'), {settings: settings}),
-      exercise,
-      swapIndex, graph, modelGraph;
+      exercise, graph, modelGraph, arr = [], labels, distances;
       jsav.recorded();
 
       function init() {
+	    var i;
         if (graph) {
           graph.clear();
         }
         graph = jsav.ds.graph({width: 600, height: 600, layout: "manual", directed: false});
         initGraph("orig");
         graph.layout();
+		arr = new Array(graph.nodeCount());
+        for (i = 0; i < arr.length; i++) {
+          arr[i] = Infinity;
+        }
+        distances = jsav.ds.array(arr, {layout: "vertical", left: 600, top: 150});
+        for (i = 0; i < arr.length; i++) {
+          arr[i] = graph.nodes()[i].value();
+        }
+        labels = jsav.ds.array(arr, {layout: "vertical", left: 553, top: 150});
         jsav.displayInit();
         return graph;
       }

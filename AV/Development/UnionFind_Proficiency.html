@@ -22,17 +22,23 @@
             <a id="settings" class="jsavsettings" href="#">Settings</a>
           </td>
         </tr>
-      </table>
+      </table> 
       <form class="avcontainer">
         <div class="jsavcanvas">
           <p class="instructLabel">Instructions:</p>
           <p class="instructions">
             Reproduce the behavior of the Union/Find Data Structure according to the presented instructions. You can add a child node 
-            to a parent node by	first clicking on the child node then the parent node.
+            to a parent node by	first clicking on the parent node then the child node. Press Already unioned for no action.
           </p>
           <p id="procontrols">
-            <span class="jsavscore"></span>
+            <span class="jsavscore"></span><br>
           </p>
+		  <table>
+		  <tr>
+		  <td><p class="jsavoutput jsavline" readonly="readonly"></p></td>
+		  <td><input id="noaction" type="button" value="Already Unioned"></td>
+		  </tr>
+		  </table>
         </div>
       </form>
     </div>
