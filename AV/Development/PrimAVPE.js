@@ -4,7 +4,7 @@
     $(document).ready(function () {
       var settings = new JSAV.utils.Settings($(".jsavsettings")),
       jsav = new JSAV($('.avcontainer'), {settings: settings}),
-      exercise, graph, modelGraph, arr = [], labels, distances;
+      exercise, graph, modelGraph, randomWeights = [], arr = [], labels, distances, edgeCount = 8;
       jsav.recorded();
 
       function init() {
@@ -12,6 +12,23 @@
         if (graph) {
           graph.clear();
         }
+		var count = 0;
+		var weight;
+		randomWeights = new Array(edgeCount);
+		while (true){
+		  weight = Math.floor((Math.random() * 10));
+		  if (weight === 0){
+		    continue;
+		  }
+		  else{
+		    randomWeights[count] = weight;
+			console.log(weight);
+			count++;
+		  }
+		  if (count === edgeCount){
+		    break;
+		  }
+		}
         graph = jsav.ds.graph({width: 600, height: 600, layout: "manual", directed: false});
         initGraph("orig");
         graph.layout();
@@ -57,14 +74,14 @@
           e = graph.addNode("E", {"left": 0, "top": 300});
           f = graph.addNode("F", {"left": 325, "top": 250});
           //Original graph edges
-          graph.addEdge(a, c, {"weight": 7});
-          graph.addEdge(a, e, {"weight": 9});
-          graph.addEdge(c, b, {"weight": 5});
-          graph.addEdge(c, d, {"weight": 1});
-          graph.addEdge(c, f, {"weight": 2});
-          graph.addEdge(f, b, {"weight": 6});
-          graph.addEdge(d, f, {"weight": 2});
-          graph.addEdge(e, f, {"weight": 1});
+          graph.addEdge(a, c, {"weight": randomWeights[0]});
+          graph.addEdge(a, e, {"weight": randomWeights[1]});
+          graph.addEdge(c, b, {"weight": randomWeights[2]});
+          graph.addEdge(c, d, {"weight": randomWeights[3]});
+          graph.addEdge(c, f, {"weight": randomWeights[4]});
+          graph.addEdge(f, b, {"weight": randomWeights[5]});
+          graph.addEdge(d, f, {"weight": randomWeights[6]});
+          graph.addEdge(e, f, {"weight": randomWeights[7]});
         }
 		else {
           //Nodes of the model Graph
@@ -75,14 +92,14 @@
           e = modelGraph.addNode("E", {"left": 0, "top": 300});
           f = modelGraph.addNode("F", {"left": 325, "top": 250});
           //Model graph edges
-          modelGraph.addEdge(a, c, {"weight": 7});
-          modelGraph.addEdge(a, e, {"weight": 9});
-          modelGraph.addEdge(c, b, {"weight": 5});
-          modelGraph.addEdge(c, d, {"weight": 1});
-          modelGraph.addEdge(c, f, {"weight": 2});
-          modelGraph.addEdge(f, b, {"weight": 6});
-          modelGraph.addEdge(d, f, {"weight": 2});
-          modelGraph.addEdge(e, f, {"weight": 1});
+          modelGraph.addEdge(a, c, {"weight": randomWeights[0]});
+          modelGraph.addEdge(a, e, {"weight": randomWeights[1]});
+          modelGraph.addEdge(c, b, {"weight": randomWeights[2]});
+          modelGraph.addEdge(c, d, {"weight": randomWeights[3]});
+          modelGraph.addEdge(c, f, {"weight": randomWeights[4]});
+          modelGraph.addEdge(f, b, {"weight": randomWeights[5]});
+          modelGraph.addEdge(d, f, {"weight": randomWeights[6]});
+          modelGraph.addEdge(e, f, {"weight": randomWeights[7]});
         }
       }
 
