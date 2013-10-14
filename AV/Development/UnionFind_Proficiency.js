@@ -17,6 +17,16 @@
 	  parentIndex = -1;
 	  pairCount = 6;
 	  step = 0;
+	  if (tree) {
+	    tree.clear();
+	  }
+	  if (labels){
+	    labels.clear();
+	  }
+	  if (parents){
+	    parents.clear();
+	  }
+	  
 	  arr = new Array(10);
       //Initializing the labels
       for (i = 0; i < arr.length; i++) {
@@ -28,9 +38,6 @@
         arr[i] = "/";
       }
       parents = jsav.ds.array(arr, {left: 320, top: 103});
-	  if(tree) {
-	    tree.clear();
-	  }
 	  initTree();
 	  generateRandomPairs();
       jsav.displayInit();
