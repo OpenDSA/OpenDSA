@@ -5,10 +5,12 @@
       var settings = new JSAV.utils.Settings($(".jsavsettings")),
       jsav = new JSAV($('.avcontainer'), {settings: settings}),
       exercise, graph, modelGraph, randomWeights = [], arr = [], labels, distances, mst, 
-	  modelDistances, modelLabels, modelMst, edgeCount = 8, gnodes = [], mstnodes = [];
+	  modelDistances, modelLabels, modelMst, edgeCount = 8, graphNodes = [], gnodes = [], mstnodes = [];
+	  var step;
       jsav.recorded();
 
       function init() {
+	    step = 0;
 	    var i;
         if (graph) {
           graph.clear();
@@ -117,10 +119,12 @@
           modelGraph.addEdge(d, f, {"weight": randomWeights[6]});
           modelGraph.addEdge(e, f, {"weight": randomWeights[7]});
 		  
+		  graphNodes = graph.nodes();
 		  gnodes = modelGraph.nodes();
 		  mstnodes = modelMst.nodes();
 		  for (var i = 0; i < mstnodes.length; i++) {
             gnodes[i].index = i;
+			graphNodes[i].index = i;
           }
         }
       }
@@ -223,12 +227,43 @@
       }
 
       exercise = jsav.exercise(model, init, { css: "background-color" },
-        { controls: $('.jsavexercisecontrols'), fix: fixState });
+        {controls: $('.jsavexercisecontrols'), fix: fixState });
       exercise.reset();
       $(".jsavcontainer").on("click", ".jsavgraphnode", function () {
         var nodeIndex = $(this).parent(".jsavgraph").find(".jsavgraphnode").index(this);
-        graph.nodes()[nodeIndex].highlight();
-        exercise.gradeableStep();
+		var node = graphNodes[nodeIndex];
+		if (!node.hasClass('visited')){
+		  var neighbors = [];
+		  var weight;
+		  var edge;
+		  if (step === 0){
+            distances.value(nodeIndex, 0);  
+		  }
+		  //update neighbors distances
+		  neighbors = node.neighbors();
+          for (var j = 0; j < neighbors.length; j++) {
+            if (!neighbors[j].hasClass("visited")) {
+              var w = neighbors[j];
+              weight = node.edgeTo(w).weight();
+              //Update Distances Of neighbors not in the minimum spanning tree
+              if (distances.value(w.index) > weight) {
+                w.parent = node;
+                distances.value(w.index, weight);
+			  }
+		    }
+		  }
+		  node.addClass('visited');
+          node.highlight();
+		  labels.highlight(nodeIndex);
+		  distances.highlight(nodeIndex);
+          exercise.gradeableStep();		 
+		  if (step !== 0){
+            edge = graph.getEdge(node.parent, node);
+            edge.css({"stroke-width": "4", "stroke": "red"});
+		  }
+		  step++;
+          console.log(step);		  
+		}
       });
       $("#about").click(about);
     });
