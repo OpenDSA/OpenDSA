@@ -1,0 +1,14 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdftex 2013.10.3)  3 OCT 2013 00:36
+entering extended mode
+**F:/Git*Repositories/OpenDSA/Doc/OpenDSA.bib
+("F:/Git Repositories/OpenDSA/Doc/OpenDSA.bib"
+! Undefined control sequence.
+l.7 url={\url
+             {http://www.nosignificantdifference.org}},
+? 
+! Emergency stop.
+l.7 url={\url
+             {http://www.nosignificantdifference.org}},
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!
