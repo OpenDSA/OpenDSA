@@ -32,21 +32,22 @@
       for (i = 0; i < arr.length; i++) {
         arr[i] = String.fromCharCode(i + 65);
       }
-      labels = jsav.ds.array(arr, {left: 320, top: 150, indexed: true});
+      labels = jsav.ds.array(arr, {left: 250, top: 200, indexed: true});
       //Initializing the parent pointer
       for (i = 0; i < arr.length; i++) {
         arr[i] = "/";
       }
-      parents = jsav.ds.array(arr, {left: 320, top: 103});
+      parents = jsav.ds.array(arr, {left: 250, top: 153});
 	  initTree();
 	  generateRandomPairs();
       jsav.displayInit();
 	  //Print instructions
 	  jsav.umsg("Instructions<br>");
-	  jsav.umsg("-----------------<br>", {'preserve': true});
-	  for (var j = 0; j <pairCount; j++){
-	    jsav.umsg((j+1)+"- Union Nodes ("+treeNodes[nodes1[j]].value()+") and ("+treeNodes[nodes2[j]].value()+")<br>", {'preserve': true});
-	  }	  
+	  // jsav.umsg("-----------------<br>", {'preserve': true});
+	  // for (var j = 0; j <pairCount; j++){
+	    // jsav.umsg((j+1)+"- Union Nodes ("+treeNodes[nodes1[j]].value()+") and ("+treeNodes[nodes2[j]].value()+")<br>", {'preserve': true});
+	  // }	  
+	  jsav.umsg((step + 1)+"- Union Nodes ("+treeNodes[nodes1[step]].value()+") and ("+treeNodes[nodes2[step]].value()+")<br>");
 	  return tree;        
     }
 	function generateRandomPairs(){
@@ -154,6 +155,12 @@
 	  if (alreadyUnioned){
 		tree.noAction = true;
 	  }
+	  if (step < pairCount){
+		  jsav.umsg((step + 1)+"- Union Nodes ("+treeNodes[nodes1[step]].value()+") and ("+treeNodes[nodes2[step]].value()+")<br>");
+	  }
+      else {
+		  jsav.umsg("Finished...");
+	  }
 	  tree.layout();
 	  //exercise.gradeableStep();
     }
@@ -194,7 +201,7 @@
 	  
 	function initTree() {
 	  var newNode;
-      tree = jsav.ds.tree({left: 20, top: 300, nodegap: 20});
+      tree = jsav.ds.tree({left: 90, top: 300, nodegap: 20});
       var root = tree.newNode("X");
       tree.root(root);
       root.id("root");
@@ -241,6 +248,12 @@
 		parentIndex=-1;
 		tree.noAction = false;
 		step++;
+		if (step < pairCount){
+		  jsav.umsg((step + 1)+"- Union Nodes ("+treeNodes[nodes1[step]].value()+") and ("+treeNodes[nodes2[step]].value()+")<br>");
+		}
+		else {
+		  jsav.umsg("Finished...");
+		}
 		exercise.gradeableStep();
 		console.log(step);
 	  }
@@ -273,6 +286,12 @@
 	$('#noaction').click(function(){
 	  tree.noAction = true;
 	  step++;
+	  if (step < pairCount){
+		  jsav.umsg((step + 1)+"- Union Nodes ("+treeNodes[nodes1[step]].value()+") and ("+treeNodes[nodes2[step]].value()+")<br>");
+	  }
+	  else {
+		  jsav.umsg("Finished...");
+	  }
 	  exercise.gradeableStep();
 	  console.log(step);
 	});
