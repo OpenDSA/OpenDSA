@@ -155,7 +155,7 @@
 		tree.noAction = true;
 	  }
 	  tree.layout();
-	  exercise.gradeableStep();
+	  //exercise.gradeableStep();
     }
 
     function model(modeljsav) {

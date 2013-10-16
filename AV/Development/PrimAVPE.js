@@ -6,11 +6,12 @@
       jsav = new JSAV($('.avcontainer'), {settings: settings}),
       exercise, graph, modelGraph, randomWeights = [], arr = [], labels, distances, mst, 
 	  modelDistances, modelLabels, modelMst, edgeCount = 8, graphNodes = [], gnodes = [], mstnodes = [];
-	  var step;
+	  var exerciseStep, modelStep;
       jsav.recorded();
 
       function init() {
-	    step = 0;
+	    exerciseStep = 0;
+		modelStep = 1;
 	    var i;
         if (graph) {
           graph.clear();
@@ -25,7 +26,6 @@
 		  }
 		  else{
 		    randomWeights[count] = weight;
-			console.log(weight);
 			count++;
 		  }
 		  if (count === edgeCount){
@@ -47,9 +47,96 @@
         jsav.displayInit();
         return graph;
       }
+	  
+	  /////////////////////////////
+	function minVertexExercise() {
+        var v;    // The closest node seen so far
+        var next; // Current node being looked at
+        graphNodes.reset();
+        for (next = graphNodes.next(); next; next = graphNodes.next()) {
+          if (!next.hasClass("visited")) {
+            v = next;
+            break;
+          }
+        }
+        for (next = graphNodes.next(); next; next = graphNodes.next()) {
+          if (!(next.hasClass("visited")) && distances.value(next.index) < distances.value(v.index)) {
+            v = next;
+          }
+        }
+        //console.log("v is " + v.value() + ", Distance for v is " + distances.value(v.index));
+        return v;
+    }
+	function primExercise(s) {
+      var v;         // The current node added to the MST
+      var neighbors = []; // The neighbors of a specific node
+      var weight;         // Weight of current edge
+      var next, i;
 
+      // Initialize the MST "parents" to dummy values
+      for (next = gnodes.next(); next; next = gnodes.next()) {
+        next.parent = next;
+      }
+      distances.value(s.index, 0);
+      for (i = 0; i < exerciseStep; i++) {
+        v = minVertexExercise();
+        v.addClass("visited");
+        distances.highlight(graphNodes.indexOf(v));
+        labels.highlight(graphNodes.indexOf(v));
+        v.highlight();
+        // if (distances.value(v.index) === Infinity) {
+          // modeljsav.umsg("No other nodes are reachable, so quit.");
+          // modeljsav.step();
+          // return;
+        // }
+        if (v !== s) {
+          //Add an edge to the MST
+          var edge = graph.getEdge(v.parent, v);
+          edge.css({"stroke-width": "4", "stroke": "red"});
+        }
+        neighbors = v.neighbors();
+        for (var j = 0; j < neighbors.length; j++) {
+          if (!neighbors[j].hasClass("visited")) {
+            var w = neighbors[j];
+            weight = v.edgeTo(w).weight(); 
+            if (distances.value(w.index) > weight) {
+              w.parent = v;
+              distances.value(w.index, weight);
+            }
+          }
+        }
+      }
+    }
+	  /////////////////////////////
       function fixState(mGraph) {
-        graph.nodes()[0].highlight();
+	    var i;
+        //Removing all highlights from nodes and edges in the exercise graph
+		for (i = 0; i < graphNodes.length; i++){
+		  graphNodes[i].unhighlight();
+		  graphNodes[i].removeClass('visited');
+		  labels.unhighlight(i);
+		  distances.unhighlight(i);
+		  distances.value(i, Infinity);
+		}
+		for (i = 0;i < graph.edges().length;i++){
+		  graph.edges()[i].css({"stroke-width": "1", "stroke": "black"});
+		}
+		//Take the current state of the model graph
+		// for (i = 0; i < gnodes.length; i++){
+		  // if (gnodes[i].addedStep <= exerciseStep){
+		    // graphNodes[i].addClass('visited');
+            // graphNodes[i].highlight();
+		    // labels.highlight(i);
+		    // distances.highlight(i);
+		  // }
+		// }
+		// for (i = 0; i < modelGraph.edges().length; i++){
+		  // if (modelGraph.edges()[i].addedStep <= exerciseStep){
+		    // graph.edges()[i].css({"stroke-width": "4", "stroke": "red"});
+		  // }
+		// }
+		primExercise(graphNodes[0]);
+		//exercise.gradeableStep();
       }
 
       function model(modeljsav) {
@@ -140,6 +227,7 @@
       // Mark a node in the graph.
       function markIt(node, modeljsav) {
         node.addClass("visited");
+		node.addedStep = modelStep;     //The step this node was added to the MST (Used in fixState)
         modeljsav.umsg("Add node " + node.value() + " to the MST");
         modelDistances.highlight(gnodes.indexOf(node));
         modelLabels.highlight(gnodes.indexOf(node));
@@ -183,6 +271,8 @@
       for (i = 0; i < modelGraph.nodeCount(); i++) {
         v = minVertex();
         markIt(v, modeljsav);
+	    modelStep++;
+		console.log(v.value()+"  "+v.addedStep)
         if (modelDistances.value(v.index) === Infinity) {
           modeljsav.umsg("No other nodes are reachable, so quit.");
           modeljsav.step();
@@ -191,8 +281,8 @@
         if (v !== s) {
           //Add an edge to the MST
           var edge = modelGraph.getEdge(v.parent, v);
-		  console.log("--"+edge.weight());
           edge.css({"stroke-width": "4", "stroke": "red"});
+		  edge.addedStep = modelStep - 1;
           var mstedge = modelMst.addEdge(mstnodes[v.parent.index], mstnodes[v.index], {"weight": edge.weight()});
           mstedge.css({"stroke-width": "2", "stroke": "red"});
           modeljsav.umsg("Add edge (" + v.parent.value() + "," + v.value() + ") to the MST");
@@ -236,7 +326,7 @@
 		  var neighbors = [];
 		  var weight;
 		  var edge;
-		  if (step === 0){
+		  if (exerciseStep === 0){
             distances.value(nodeIndex, 0);  
 		  }
 		  //update neighbors distances
@@ -256,13 +346,14 @@
           node.highlight();
 		  labels.highlight(nodeIndex);
 		  distances.highlight(nodeIndex);
+		  exerciseStep++;
+		  console.log("Exercise Step:"+exerciseStep);
           exercise.gradeableStep();		 
-		  if (step !== 0){
-            edge = graph.getEdge(node.parent, node);
-            edge.css({"stroke-width": "4", "stroke": "red"});
-		  }
-		  step++;
-          console.log(step);		  
+		 
+         edge = graph.getEdge(node.parent, node);
+		 if (edge){
+           edge.css({"stroke-width": "4", "stroke": "red"});
+		 }
 		}
       });
       $("#about").click(about);
