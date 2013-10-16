@@ -471,7 +471,7 @@
       //actual boyer-moore algorithm
       function boyer_moore(temp_jsav, master, sub, mmc, align) {
         var m = sub_str_size - 1;
-        var s;
+        var s = 0;
         var s_set = false;
         if(started) {
           m = str_curr; //they already started so we start the visualization from there
@@ -656,9 +656,11 @@
       // Initialize the exercise
       // Defines the function to call on reset (initialize())
       var exercise = bm.exercise(modelSolution, initialize,
-                       [{css: "background-color"}, {}], {controls:
-                       $('.jsavexercisecontrols'), fix: fixState /*,
-                       feedback: "continuous", fixmode: "fix" */});
+                       [{css: "background-color"}, {}], 
+						{controls: $('.jsavexercisecontrols'), 
+						fix: fixState,
+                        feedback: "continuous",
+						fixmode: "fix" });
       exercise.reset();
 
 
