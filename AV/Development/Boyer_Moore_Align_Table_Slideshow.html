@@ -55,7 +55,7 @@
     b_m_slideshow.step();
 
     b_m_slideshow.umsg("The pseudocode that is now shown will serve as the guidelines for how the value at a specific index is computed, there are really only two cases...");
-    var align_pseudo = b_m_slideshow.code("p = current_index \nsuffix_length = length of the suffix of string beginning at p+1 \noffset = least amount that the suffix must be moved left to match another occurance of itself without matching character in string[p] \nif p = string.length()-1 then: \n\talign[p] = 1 \nelse \n\talign[p] = suffix_length + offset", {before: the_string_label});
+    var align_pseudo = b_m_slideshow.code("p = current_index \nsuffix_length = length of the suffix of string beginning at p+1 \noffset = least amount that the suffix must be moved left to match another occurance of itself that isn't preceded by the same character at string[p] \nif p = string.length()-1 then: \n\talign[p] = 1 \nelse \n\talign[p] = suffix_length + offset", {before: the_string_label});
     b_m_slideshow.step();
 
     b_m_slideshow.umsg("Let it also be known that p decrements throughout this algorithm, working its way from string.length()-1 to 0.");
@@ -165,13 +165,18 @@
     align_pseudo.highlight(6);
     b_m_slideshow.step();
 
-    b_m_slideshow.umsg("We now note that suffix = 4 because the length of 'baba' is 4. We also note that offset = 5 because 'baba' doesn't occur earlier in the string so you must shift it all the way over.");
+    b_m_slideshow.umsg("We now note that suffix = 4 because the length of 'baba' is 4. We also note that offset = 2 because the substring 'aba' can be matched at the beginning of the string if we slide 'b' off the end.");
     align_array.unhighlight(1);
     align_pseudo.unhighlight(6);
     b_m_slideshow.step();
 
-    b_m_slideshow.umsg("align[0] = 4 + 5");
-    align_array.value(0, '9');
+
+    b_m_slideshow.umsg("It may seem confusing that the offset is 2 and not 5. The reason is because you can match a substring of the suffix to the beginning of the original string if a valid shift isn't found that matches the entire suffix in the rest of the string. This ensures that we don't skip over potential matches at the beginning of the string.");
+    b_m_slideshow.step();
+
+
+    b_m_slideshow.umsg("align[0] = 4 + 2");
+    align_array.value(0, '6');
     align_array.highlight(0);
     align_pseudo.highlight(6);
     b_m_slideshow.step();
