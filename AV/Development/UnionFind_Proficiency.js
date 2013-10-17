@@ -162,7 +162,7 @@
 		  jsav.umsg("Finished...");
 	  }
 	  tree.layout();
-	  //exercise.gradeableStep();
+	  exercise.gradeableStep();
     }
 
     function model(modeljsav) {
