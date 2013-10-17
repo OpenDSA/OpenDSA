@@ -1,7 +1,7 @@
 "use strict";
 /*global alert: true, ODSA */
 (function ($) {
-  var jsav;
+  var jsav; 
   var graph;
   var mst;   //A graph representing the resulted MST
   var tree;  //Union/Find Tree
@@ -17,39 +17,39 @@
     ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
     graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});
-    mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
+    mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});
     initGraph();
-	initTree();
+    initTree();
     graph.layout();
     arr = new Array(graph.edges().length);
     for (i = 0; i < arr.length; i++) {
       arr[i] = "("+graph.edges()[i].start().value()+","+graph.edges()[i].end().value()+")";
     }
-	labels = jsav.ds.array(arr, {layout: "vertical", left: 573, top: -40});
+    labels = jsav.ds.array(arr, {layout: "vertical", left: 573, top: -40});
     for (i = 0; i < arr.length; i++) {
       arr[i] = graph.edges()[i].weight();
     }
-	weights = jsav.ds.array(arr, {layout: "vertical", left: 620, top: -40});
+    weights = jsav.ds.array(arr, {layout: "vertical", left: 620, top: -40});
     jsav.displayInit();
-	kruskal();
-    //displayMST();
+    kruskal();
+    displayMST();
     jsav.recorded();
   }
   function findMinimumEdge() {
     var minEdge;
-	var i;
+    var i;
     for (i = 0; i < graph.edges().length; i++) {
-	  if (!graph.edges()[i].hasClass('visited')) {
-	    minEdge = graph.edges()[i]; 
-	    break;
-	  }
-	}
-	for (i = 0; i < graph.edges().length; i++) {
-	  if ((graph.edges()[i].weight() <= minEdge.weight()) && !graph.edges()[i].hasClass('visited')) {
-	    minEdge = graph.edges()[i]; 
-	  }
-	}
-	return minEdge;
+      if (!graph.edges()[i].hasClass('visited')) {
+        minEdge = graph.edges()[i]; 
+        break;
+      }
+    }
+    for (i = 0; i < graph.edges().length; i++) {
+      if ((graph.edges()[i].weight() <= minEdge.weight()) && !graph.edges()[i].hasClass('visited')) {
+        minEdge = graph.edges()[i]; 
+      }
+    }
+    return minEdge;
   }
   function displayMST() {
     graph.hide();
@@ -60,31 +60,51 @@
   // Mark a node in the graph.
   function markIt(node) {
     node.addClass("visited");
-    jsav.umsg("Add node " + node.value() + " to the MST");
-    weights.highlight(gnodes.indexOf(node));
-    labels.highlight(gnodes.indexOf(node));
+    //jsav.umsg("Add node " + node.value() + " to the MST");
     node.highlight();
-    jsav.step();
+    //jsav.step();
   }
-  
+
   function kruskal() {
     var i;
-	var minEdge;
-	var startNode;
-	var endNode;
-	var startTreeNode;
-	var endTreeNode;
-	var alreadyUnioned;
-	for (i = 0; i < graph.edges().length; i++) {
-	  minEdge = findMinimumEdge();
-	  startNode = minEdge.start();
-	  endNode = minEdge.end();
-	  startTreeNode = treeNodes[gnodes.indexOf(startNode)];
-	  endTreeNode = treeNodes[gnodes.indexOf(endNode)];
-	  alreadyUnioned = union(startTreeNode, endTreeNode);
-	  alert(startNode.value()+"   "+endNode.value()+alreadyUnioned);
-	  minEdge.addClass('visited');
-	}
+    var minEdge;
+    var startNode;
+    var endNode;
+    var startTreeNode;
+    var endTreeNode;
+    var alreadyUnioned;
+    var msg;
+    var mstedge;
+    for (i = 0; i < graph.edges().length; i++) {
+      msg = "";
+      minEdge = findMinimumEdge();
+      startNode = minEdge.start();
+      endNode = minEdge.end();
+      startTreeNode = treeNodes[gnodes.indexOf(startNode)];
+      endTreeNode = treeNodes[gnodes.indexOf(endNode)];
+      alreadyUnioned = union(startTreeNode, endTreeNode);
+      msg = "<b><u>Processing Edge ("+startNode.value()+","+endNode.value()+"):</b></u>";
+      if (alreadyUnioned === false) {
+        //Add to MST
+        msg += " Adding edge to the MST";
+        minEdge.css({"stroke-width": "4", "stroke": "red"});
+        weights.css(graph.edges().indexOf(minEdge), {'background-color':'red'});
+        labels.css(graph.edges().indexOf(minEdge), {'background-color':'red'});
+        markIt(startNode);
+        markIt(endNode);
+        mstedge = mst.addEdge(mstnodes[gnodes.indexOf(startNode)], mstnodes[gnodes.indexOf(endNode)], {"weight": minEdge.weight()});
+        mstedge.css({"stroke-width": "2", "stroke": "red"});
+      }
+      else {
+        msg += " Dismiss edge";
+        minEdge.css({"stroke-width": "4", "stroke": "orange"});
+        weights.css(graph.edges().indexOf(minEdge), {'background-color':'orange'});
+        labels.css(graph.edges().indexOf(minEdge), {'background-color':'orange'});
+      }
+      jsav.umsg(msg);
+      minEdge.addClass('visited');
+      jsav.step();
+    }
   }
   function find(treeNode) {
     if (treeNode.parent() === tree.root()) {
@@ -101,29 +121,29 @@
   function union(node1, node2) {
     //First we have to find which one has the least size
     var parent1 = find(node1);
-	var parent2 = find(node2);
+    var parent2 = find(node2);
     if (parent1 === parent2) {
-	  return true;
-	}
-	else if (parent1.size === parent2.size) {
-	  if (parent1.value().charCodeAt(0) < parent2.value().charCodeAt(0)) {
-	    parent1.addChild(parent2);
+      return true;
+    }
+    else if (parent1.size === parent2.size) {
+      if (parent1.value().charCodeAt(0) < parent2.value().charCodeAt(0)) {
+        parent1.addChild(parent2);
         parent1.size++; 
       }
-	  else {
-	    parent2.addChild(parent1);
-        parent2.size++;
-	  } 
-	}
-    else if (parent1.size > parent2.size) {
-        parent1.addChild(parent2);
-        parent1.size++;
-    }
-    else {
+      else {
         parent2.addChild(parent1);
         parent2.size++;
+      } 
     }
-	return false;
+    else if (parent1.size > parent2.size) {
+      parent1.addChild(parent2);
+      parent1.size++;
+    }
+    else {
+      parent2.addChild(parent1);
+      parent2.size++;
+    }
+    return false;
   }
   function initTree() {
     var newNode;
