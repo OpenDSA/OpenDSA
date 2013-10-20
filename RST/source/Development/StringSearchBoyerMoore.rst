@@ -14,7 +14,7 @@ and Moore in 1977 initially examines the structure of the string :math:`sub`
 to see if it can be realigned a considerable distance to the right,
 when a mismatch occurs.  Unlike the KMP algorithm, the Boyer‑Moore
 algorithm compares the characters of the string :math:`sub` to that of the
-:math: master string in a right‑to‑left fashion.  The hope is that
+:math:`master` string in a right‑to‑left fashion.  The hope is that
 this will allow realignments of considerable magnitude when a mismatch
 occurs early in the comparison of :math:`sub` against a portion of
 :math:`master`.  For instance, suppose that, at the beginning of a
@@ -50,8 +50,12 @@ where :math:`suffix\_length` is the length of the suffix of the string
 beginning at position :math:`p + 1` and :math:`offset` is the least
 amount this suffix must be moved to the left to match another
 occurrence of itself in :math:`sub` without matching the character in
-position in :math:`p`.  The computation of the :math:`align` array can
-be tricky.  It somewhat resembles the computation of the KMP
+position in :math:`p`.  This motion to the left may involve the
+leftmost characters "sliding off the end of the master string".  When
+this occurs, those characters that have slid off the end of the master
+string are viewed as matching the non-existent characters to which
+they would be compared.  The computation of the :math:`align` array
+can be tricky.  It somewhat resembles the computation of the KMP
 :math:`align` array but is done "in reverse" because of the
 right-to-left scan done by Boyer-Moore.  We will further study the
 computation of the :math:`align` array later in this module.  However,
@@ -108,7 +112,8 @@ And the algorithm to compute the reverse-KMP alignment table:::
 
   p = current_index 
   suffix_length = length of the suffix of string beginning at p+1 
-  offset = least amount that the suffix must be moved left to match another occurrence of itself without matching character in string[p] 
+  offset = least amount that the suffix must be moved left to match another occurrence of itself 
+                      that isn't preceded by the same character that is at string[p] 
   if p = string.length()-1 then: 
     align[p] = 1 
   else 
