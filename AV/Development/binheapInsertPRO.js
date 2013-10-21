@@ -88,7 +88,6 @@
         bh.value(i, modelHeap.value(i));
       }
       bh.heapsize(modelHeap.heapsize());
-      exercise.gradeableStep();
     }
 
 

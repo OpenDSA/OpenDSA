@@ -237,9 +237,6 @@
       partitioned.value(part.value());
       left.value(l.value());
       right.value(r.value());
-
-      // Mark the step so that JSAV moves on and expects a new step, not the one we just corrected for the user
-      exercise.gradeableStep();
     }
 
     /**
