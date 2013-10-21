@@ -319,12 +319,12 @@ html_translator_class = 'html5.HTMLTranslator'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-sys.path.append(os.path.abspath('_themes'))
-html_theme_path = ['%(odsa_root)sRST/source/_themes']
+sys.path.append('%(theme_dir)s')
+html_theme_path = ['%(theme_dir)s']
 if on_slides:
    html_theme = 'slides'
 else:
-   html_theme = 'haiku'
+   html_theme = '%(theme)s'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -696,6 +696,11 @@ def set_defaults(conf_data):
   if 'book_dir' not in conf_data:
     conf_data['book_dir'] = 'Books'
 
+  if 'theme_dir' not in conf_data:
+    conf_data['theme_dir'] = '%sRST/source/_themes'%odsa_dir
+  if 'theme' not in conf_data:
+    conf_data['theme'] = 'haiku'
+
   # If no backend address is specified, use an empty string to specify a disabled server
   if 'backend_address' not in conf_data:
     conf_data['backend_address'] = ''
@@ -863,6 +868,8 @@ def configure(config_file, slides = False):
   options['book_name'] = conf_data['name']
   options['server_url'] = conf_data['backend_address']
   options['module_origin'] = conf_data['module_origin']
+  options['theme_dir'] = conf_data['theme_dir']
+  options['theme'] = conf_data['theme']
   options['odsa_root'] = odsa_dir
   options['output_dir'] = output_dir
   options['rel_ebook_path'] = rel_ebook_path
