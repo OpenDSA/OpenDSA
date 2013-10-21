@@ -1010,7 +1010,10 @@
             "long_name": "Shellsort Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 0.90,
+	    "jsav_exer_options": {
+              "fixmode": "undo"
+             }
           },
           "ShellsortPerformance": {
             "long_name": "Shellsort Performance Activity",
@@ -1234,16 +1237,24 @@
       }
     },
     "File Processing": {
-      "Stubs/FileProc": {
-        "long_name": "File Processing",
+      "Development/FileProc": {
+        "long_name": "File Processing Chapter Introduction",
         "exercises": {}
       },
-      "Stubs/BuffPool": {
+      "Development/Secondary": {
+        "long_name": "Primary versus Secondary Storage",
+        "exercises": {}
+      },
+      "Development/Diskdrive": {
+        "long_name": "Disk Drives",
+        "exercises": {}
+      },
+      "Development/BuffPool": {
         "long_name": "Buffer Pools",
         "exercises": {}
       },
-      "Stubs/ExternalSort": {
-        "long_name": "External Sorting",
+      "Development/FileProg": {
+        "long_name": "Programmer's View of Files",
         "exercises": {}
       }
     },
