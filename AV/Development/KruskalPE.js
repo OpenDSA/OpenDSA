@@ -11,6 +11,8 @@
 	
     function init() {
 	  var i;
+	  modelStep = 0;
+	  exerciseStep = 0;
       if (graph) {
         graph.clear();
       }
@@ -50,7 +52,30 @@
       return graph;
     }
     function fixState(mGraph) {
-      
+	  var edge;
+	  var startNode;
+	  var endNode;
+	  var index;
+	  console.log(exerciseStep);
+	  for (var i = 0; i < edgeCount; i++) {
+	    if (mGraph.edges()[i].addedStep === exerciseStep) {
+		  edge = graph.edges()[i];
+		  console.log(mGraph.edges()[i].start().value()+"  "+mGraph.edges()[i].end().value()+"  "+mGraph.edges()[i].addedStep);
+		  index = i;
+		  break;
+		}
+	  }
+	  startNode = edge.start();
+	  endNode = edge.end();
+	  edge.css({"stroke-width": "4", "stroke": "red"});
+	  edge.addClass('visited');
+	  startNode.addClass('visited');
+	  startNode.highlight();
+	  endNode.addClass('visited');
+	  endNode.highlight();
+      weights.css(index, {'background-color':'red'});
+      labels.css(index, {'background-color':'red'});
+	  //exerciseStep--;
     }
     function model(modeljsav) {
       var i;
@@ -172,17 +197,20 @@
           //Add to MST
           msg += " Adding edge to the MST";
           minEdge.css({"stroke-width": "4", "stroke": "red"});
-          modelWeights.css(modelGraph.edges().indexOf(minEdge), {'background-color':'red'});
-          modelLabels.css(modelGraph.edges().indexOf(minEdge), {'background-color':'red'});
+		  modelStep++;
+		  minEdge.addedStep = modelStep;
           markIt(startNode, modeljsav);
           markIt(endNode, modeljsav);
+		  modeljsav.stepOption('grade', true);
+		  modelWeights.css(modelGraph.edges().indexOf(minEdge), {'background-color':'red'});
+          modelLabels.css(modelGraph.edges().indexOf(minEdge), {'background-color':'red'});
           mstedge = modelMst.addEdge(mstnodes[gnodes.indexOf(startNode)], mstnodes[gnodes.indexOf(endNode)], {"weight": minEdge.weight()});
           mstedge.css({"stroke-width": "2", "stroke": "red"});
-		  modeljsav.stepOption('grade', true);
         }
         else {
           msg += " Dismiss edge";
           minEdge.css({"stroke-width": "4", "stroke": "orange"});
+		  minEdge.addedStep = -1;
           modelWeights.css(modelGraph.edges().indexOf(minEdge), {'background-color':'orange'});
           modelLabels.css(modelGraph.edges().indexOf(minEdge), {'background-color':'orange'});
         }
@@ -270,18 +298,19 @@
 	  var startNode;
 	  var endNode;
       var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
+	  exerciseStep++;
 	  edge = graph.edges()[index];
 	  startNode = edge.start();
 	  endNode = edge.end();
 	  edge.css({"stroke-width": "4", "stroke": "red"});
 	  edge.addClass('visited');
-      weights.css(index, {'background-color':'red'});
-      labels.css(index, {'background-color':'red'});
 	  startNode.addClass('visited');
 	  startNode.highlight();
 	  endNode.addClass('visited');
 	  endNode.highlight();
 	  exercise.gradeableStep();
+      weights.css(index, {'background-color':'red'});
+      labels.css(index, {'background-color':'red'});
 	});
     $(".jsavcontainer").on("click", ".jsavgraphnode", function () {
       
