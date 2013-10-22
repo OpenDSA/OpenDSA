@@ -17,9 +17,14 @@
 	padding:0;
 }
 .avcontainer {
+//	width:600px;
+//	height:500px;
+//	padding:0;
+}
+
+.message {
 	width:600px;
-	height:500px;
-	padding:0;
+	height:50px;
 }
 .avcontainer2 {
  display:none;
@@ -27,13 +32,25 @@ width:600px;
 height:500px;
 }
 
-.jsavgraph .jsavautoresize .jsavcenter {
+.jsavgraph  {
 	width:600px;
 	height:500px;
+	margin:0;
 }
+.jsavautoresize {
+	margin:0;
+}
+
+.jsavcenter {
+	margin:0;
+
+}
+
 .jsavcanvas {
 	height:500px;
 	width:600px;
+border:1px solid black;
+padding:0;
 }
 
 

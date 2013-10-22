@@ -1,0 +1,787 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata:: 
+   :author: Cliff Shaffer
+   :prerequisites: FileProc
+   :topic: External Sorting
+
+External Sorting
+================
+
+We now consider the problem of sorting collections of
+records too large to fit in main memory.
+Because the records must reside in peripheral or external memory,
+such sorting methods are called \defit{external sorts}.
+This is in contrast to the internal sorts discussed in
+Chapter~\ref{InSort} which assume that the records to be sorted are
+stored in main memory.
+Sorting large collections of records is central to many applications,
+such as processing payrolls and other large business databases.
+As a consequence, many external sorting algorithms have been devised.
+Years ago, sorting algorithm designers sought to optimize
+the use of specific hardware configurations, such as multiple
+tape\index{tape drive} or disk drives.
+Most computing today is done on personal computers and low-end
+workstations with relatively powerful CPUs, but only one or at most
+two disk drives.
+The techniques presented here are geared toward
+optimized processing on a single disk drive.
+This approach allows us to cover the most important issues in
+external sorting while skipping many less important machine-dependent
+details.
+Readers who have a need to implement efficient external sorting
+algorithms that take advantage of more sophisticated hardware
+configurations should consult the references in
+Section~\ref{ESFurRead}.
+
+When a collection of records is too large to fit in main memory,
+the only practical way to sort it is to read some records from disk,
+do some rearranging, then write them back to disk.
+This process is repeated until the file is sorted, with each record
+read perhaps many times.
+Given the high cost of disk I/O, it should come as no surprise that
+the primary goal of an external sorting algorithm is to minimize the
+number of times information must be read from or written to disk.
+A certain amount of additional CPU processing can profitably be traded
+for reduced disk access.\index{tradeoff}
+
+Before discussing external sorting techniques, consider again the
+basic model for accessing information from disk.
+The file to be sorted is viewed by the programmer as a sequential
+series of fixed-size \defit{blocks}.\index{block}
+Assume (for simplicity) that each block contains the same
+number of fixed-size data records.
+Depending on the application, a record might be only a few bytes ---
+composed of little or nothing more than the key --- or might be
+hundreds of bytes with a relatively small key field.
+Records are assumed not to cross block boundaries.
+These assumptions can be relaxed for special-purpose sorting
+applications, but ignoring such complications makes the principles
+clearer.
+
+As explained in Section~\ref{DDrive}, a sector is the basic unit
+of~I/O.\index{sector}
+In other words, all disk reads and writes are for one or more complete
+sectors.
+Sector sizes are typically a power of two, in the range 512 to 16K
+bytes, depending on the operating system and the size and speed of
+the disk drive.
+The block size used for external sorting algorithms should be equal to
+or a multiple of the sector size.
+
+Under this model, a sorting algorithm reads a block of data into a
+buffer in main memory, performs some processing on it, and at some
+future time writes it back to disk.
+From Section~\ref{PrimVsSec} we see that reading or writing a block
+from disk takes on the order of one million times longer than a
+memory access.
+Based on this fact, we can reasonably expect that the records
+contained in a single block can be sorted by an internal
+sorting algorithm such as Quicksort\index{quicksort@Quicksort}
+in less time than is required to read or write the block.
+
+Under good conditions, reading from a file in sequential
+order is more efficient than reading blocks in random order.
+Given the significant impact of seek time on disk access, it
+might seem obvious that sequential processing is faster.
+However, it is important to understand precisely under what
+circumstances sequential file processing is actually faster than
+random access, because it affects our approach to designing an external
+sorting algorithm.
+
+Efficient sequential access relies on seek time being kept to a minimum.
+The first requirement is that the blocks making up a file are in
+fact stored on disk in sequential order and close together,
+preferably filling a small number of contiguous tracks.
+At the very least, the number of extents making up the file should be
+small.
+Users typically do not have much control over the layout of their file
+on disk, but writing a file all at once in sequential order to a disk
+drive with a high percentage of free space increases the likelihood of
+such an arrangement.
+
+The second requirement is that the disk drive's I/O head remain
+positioned over the file throughout sequential processing.
+This will not happen if there is competition of any kind for the I/O
+head.
+For example, on a multi-user time-shared computer the sorting process
+might compete for the I/O head with the processes of other users.
+Even when the sorting process has sole control of the I/O head, it is
+still likely that sequential processing will not be efficient.
+Imagine the situation where all processing is done on a single disk
+drive, with the typical arrangement of a single bank of read/write
+heads that move together over a stack of platters.
+If the sorting process involves reading from an input file,
+alternated with writing to an output file, then the I/O head will
+continuously seek between the input file and the output file.
+Similarly, if two input files are being processed simultaneously
+(such as during a merge process), then the I/O head will
+continuously seek between these two files.
+
+\ifthenelse{\boolean{java}}{\newpage}{}
+
+The moral is that, with a single disk drive, there often is
+no such thing as efficient sequential processing of a data file.
+Thus, a sorting algorithm might be more efficient if it performs a
+smaller number of non-sequential disk operations rather than a larger
+number of logically sequential disk operations that require a large
+number of seeks in practice.
+
+As mentioned previously, the record size might be quite large compared
+to the size of the key.
+For example, payroll entries for a large business might each store
+hundreds of bytes of information including the name, ID, address, and
+job title for each employee.
+The sort key might be the ID number, requiring only a few bytes.
+The simplest sorting algorithm might be to process such records as a
+whole, reading the entire record whenever it is processed.
+However, this will greatly increase the amount of I/O required,
+because only a relatively few records will fit into a single disk
+block.
+Another alternative is to do a \defit{key sort}.
+Under this method, the keys are all read and stored together in an
+\defit{index file},\index{index!file} where each key is stored along
+with a pointer indicating the position of the corresponding record in
+the original data file.
+The key and pointer combination should be substantially smaller than
+the size of the original record; thus, the index file will be much
+smaller than the complete data file.
+The index file will then be sorted, requiring much less I/O because
+the index records are smaller than the complete records.
+
+Once the index file is sorted, it is possible to reorder the records
+in the original database file.
+This is typically not done for two reasons.
+First, reading the records in sorted order from the record file
+requires a random access for each record.
+This can take a substantial amount of time and is only of value if
+the complete collection of records needs to be viewed or processed in
+sorted order (as opposed to a search for selected records).
+Second, database systems typically allow searches to be
+done on multiple keys.
+For example, today's processing might be done in order of ID numbers.
+Tomorrow, the boss might want information sorted by salary.
+Thus, there might be no single ``sorted'' order for the full record.
+Instead, multiple index files are often maintained, one for each sort
+key.
+These ideas are explored further in Chapter~\ref{Indexing}.
+
+\ifthenelse{\boolean{cpp}}{\newpage}{}
+
+\subsection{Simple Approaches to External Sorting}
+\label{SimpleExSort}
+
+If your operating system\index{operating system}
+supports virtual memory, the simplest
+``external'' sort is to read the entire file into
+virtual memory\index{virtual memory} and run an internal sorting
+method such as Quicksort.\index{quicksort@Quicksort}
+This approach allows the virtual memory manager to use its normal
+buffer pool mechanism to control disk accesses.
+Unfortunately, this might not always be a viable option.
+One potential drawback is that the size of virtual memory is
+usually limited to something much smaller than the disk space
+available.
+Thus, your input file might not fit into virtual memory.
+Limited virtual memory can be overcome by adapting an internal sorting
+method to make use of your own buffer pool.
+
+A more general problem with adapting an internal sorting algorithm
+to external sorting is that it is not likely to be as efficient as
+designing a new algorithm with the specific goal of minimizing
+disk I/O.
+Consider the simple adaptation of Quicksort\index{quicksort@Quicksort}
+to use a buffer pool.
+Quicksort begins by processing the entire array of records, with the
+first partition step moving indices inward from the two ends.
+This can be implemented efficiently using a buffer pool.
+However, the next step is to process each of the subarrays,
+followed by processing of sub-subarrays, and so on.
+As the subarrays get smaller, processing quickly approaches
+random access to the disk drive.
+Even with maximum use of the buffer pool, Quicksort still must read
+and write each record \(\log n\) times on average.
+We can do much better.
+Finally, even if the virtual memory manager can give good performance
+using a standard Quicksort, this will come at the cost of using a lot
+of the system's working memory, which will mean that the system cannot
+use this space for other work.
+Better methods can save time while also using less memory.
+
+\index{mergesort@Mergesort!external|(}
+Our approach to external sorting is derived from the
+Mergesort algorithm.
+The simplest form of external Mergesort performs a series
+of sequential passes over the records, merging larger and larger
+sublists on each pass.
+The first pass merges sublists of size 1 into sublists of
+size 2; the second pass merges the sublists of size 2 into
+sublists of size 4; and so on.
+A sorted sublist is called a \defit{run}.\index{run (in sorting)}
+Thus, each pass is merging pairs of runs to form longer runs.
+Each pass copies the contents of the file to
+another file.
+Here is a sketch of the algorithm, as illustrated by
+Figure~\ref{ExMerge}.
+
+\begin{figure}
+\pdffig{ExMerge}
+\vspace{-\smallskipamount}
+
+\capt{4.5in}{A simple external Mergesort algorithm}
+{A simple external Mergesort
+algorithm.\index{mergesort@Mergesort!external}
+Input records are divided equally between two input files.
+The first runs from each input file are merged and placed into the
+first output file.
+The second runs from each input file are merged and placed in the
+second output file.
+Merging alternates between the two output files until the input files
+are empty.
+The roles of input and output files are then reversed, allowing  the
+runlength to be doubled with each pass.}{ExMerge}
+\bigskip
+\end{figure}
+
+\begin{enumerate}
+
+\item Split the original file into two equal-sized
+\defit{run files}.\index{run file}
+
+\item Read one block from each run file into input buffers.
+
+\item Take the first record from each input buffer, and write a run of
+length two to an output buffer in sorted order.
+
+\item Take the next record from each input buffer, and write a run of
+length two to a second output buffer in sorted order.
+
+\item Repeat until finished, alternating output between the two output
+run buffers.
+Whenever the end of an input block is reached, read the next block
+from the appropriate input file.
+When an output buffer is full, write it to the appropriate output
+file.
+
+\item Repeat steps~2 through~5, using the original output files as
+input files.
+On the second pass, the first two records of each input run file are
+already in sorted order.
+Thus, these two runs may be merged and output as a single run of
+four elements.
+
+\item Each pass through the run files provides larger and larger runs
+until only one run remains.
+\end{enumerate}
+
+\begin{example}
+Using the input of Figure~\ref{ExMerge}, we first create runs of
+length one split between two input files.
+We then process these two input files sequentially, making runs of
+length two.
+The first run has the values 20 and 36, which are output to the first
+output file.
+The next run has 13 and 17, which is output to the second file.
+The run 14, 28 is sent to the first file, then run 15, 23 is sent to
+the second file, and so on.
+Once this pass has completed, the roles of the input files and output
+files are reversed.
+The next pass will merge runs of length two into runs of length four.
+Runs 20, 36 and 13, 17 are merged to send 13, 17, 20, 36 to the first
+output file.
+Then runs 14, 28 and 15, 23 are merged to send run 14, 15, 23, 28 to
+the second output file.
+In the final pass, these runs are merged to form the final run 13, 14,
+15, 17, 20, 23, 28, 36.
+\end{example}
+
+This algorithm can easily take advantage of the
+double buffering\index{double buffering}
+techniques described in Section~\ref{BuffPool}.
+Note that the various passes read the input run files\index{run file}
+sequentially and write the output run files sequentially.
+For sequential processing and double buffering to be effective,
+however, it is necessary that there be a separate I/O head available
+for each file.
+This typically means that each of the input and output files must be
+on separate disk drives, requiring a total of four disk drives for
+maximum efficiency.
+
+The external Mergesort algorithm just described requires that
+\(\log n\) passes be made to sort a file of \(n\) records.
+Thus, each record must be read from disk and written to disk \(\log n\)
+times.
+The number of passes can be significantly reduced by observing that
+it is not necessary to use Mergesort on small runs.
+A simple modification is to read in a block of data, sort it in
+memory (perhaps using Quicksort), and then output it as a single
+sorted run.
+
+\begin{example}
+Assume that we have blocks of size 4KB, and records are eight bytes
+with four bytes of data and a 4-byte key.
+Thus, each block contains 512~records.
+Standard Mergesort would require nine passes to generate runs of
+512~records, whereas processing each block as a unit can be done
+in one pass with an internal sort.
+These runs can then be merged by Mergesort.
+Standard Mergesort requires eighteen passes to process 256K~records.
+Using an internal sort to create initial runs of 512~records reduces
+this to one initial pass to create the runs and nine merge passes to
+put them all together, approximately half as many passes.
+\end{example}
+
+We can extend this concept to improve performance even
+further.\index{block}
+Available main memory is usually much more than one block in size.
+If we process larger initial runs, then the number of passes
+required by Mergesort is further reduced.
+For example, most modern computers can provide tens or even hundreds
+of megabytes of RAM to the sorting program.
+If all of this memory (excepting a small amount for buffers
+and local variables) is devoted to building initial runs as large as
+possible, then quite large files can be processed in few passes.
+The next section presents a technique for producing large runs,
+typically twice as large as could fit directly into main memory.
+
+Another way to reduce the number of passes required is to increase
+the number of runs that are merged together during each pass.
+While the standard Mergesort algorithm merges two runs at a time,
+there is no reason why merging needs to be limited in this way.
+Section~\ref{MultiMerge} discusses the technique of multiway merging.
+
+Over the years, many variants on external sorting have been
+presented, but all are based on the following two steps:
+
+\begin{enumerate}
+\item
+Break the file into large initial runs.
+
+\item
+Merge the runs together to form a single sorted file.
+\index{mergesort@Mergesort!external|)}
+\end{enumerate}
+
+\subsection{Replacement Selection}
+\label{RepSelSec}
+
+\index{replacement selection|(}
+This section treats the problem of creating initial runs as large as
+possible from a disk file, assuming a fixed amount of RAM is available
+for processing.
+As mentioned previously, a simple approach is to
+allocate as much RAM as possible to a large array, fill this array
+from disk, and sort the array using
+Quicksort.\index{quicksort@Quicksort}
+Thus, if the size of memory available for the array is \(M\) records,
+then the input file can be broken into initial runs of length \(M\).
+A better approach is to use an algorithm called
+\defit{replacement selection}
+that, on average, creates runs of \(2M\) records in length.
+Replacement selection is actually a slight variation on the Heapsort
+algorithm.\index{heapsort@Heapsort}
+The fact that Heapsort is slower than Quicksort is
+irrelevant in this context because I/O time will dominate the total
+running time of any reasonable external sorting algorithm.
+Building longer initial runs will reduce the total I/O time required.
+
+Replacement selection views RAM as consisting of an array of
+size~\(M\) in addition to an input buffer and an output buffer.
+(Additional I/O buffers might be desirable if the
+operating system\index{operating system}
+supports double buffering,\index{double buffering}
+because replacement selection does sequential
+processing on both its input and its output.)
+Imagine that the input and output files are streams of records.
+Replacement selection takes the next record in sequential order from the
+input stream when needed, and outputs runs one record at a
+time to the output stream.
+Buffering is used so that disk I/O is performed one block at a time.
+A block of records is initially read and held in the input buffer.
+Replacement selection removes records from the input buffer one at a 
+time until the buffer is empty.
+At this point the next block of records is read in.
+Output to a buffer is similar:
+Once the buffer fills up it is written to disk as a unit.
+This process is illustrated by Figure~\ref{RSOver}.
+
+\begin{figure}
+\pdffig{RSOver}
+\vspace{-\smallskipamount}
+
+\capt{4.5in}{Overview of replacement selection}
+{Overview of replacement selection.
+Input records are processed sequentially.
+Initially RAM is filled with \(M\) records.
+As records are processed, they are written to an output buffer.
+When this buffer becomes full, it is written to disk.
+Meanwhile, as replacement selection needs records, it reads them from
+the input buffer.
+Whenever this buffer becomes empty, the next block of records is read
+from disk.}{RSOver}
+\bigskip\smallskip
+\end{figure}
+
+Replacement selection works as follows.
+Assume that the main processing is done in an array of size \(M\)~records.
+
+\begin{enumerate}
+
+\item Fill the array from disk.  Set \(\mbox{LAST} = M-1\).
+
+\item Build a min-heap.\index{heap!min-heap}
+(Recall that a min-heap is defined such that the
+record at each node has a key value \emph{less} than the key values of
+its children.)
+
+\item Repeat until the array is empty:
+
+\begin{enumerate}
+
+\item Send the record with the minimum key value (the root) to the
+output buffer.
+
+\item Let \svar{R} be the next record in the input buffer.
+If \svar{R}'s key value is greater than the key value just output ...
+
+\begin{enumerate}
+\item Then place \svar{R} at the root.
+
+\item Else replace the root with the record in array position
+LAST, and place \svar{R} at position LAST.
+Set \(\mbox{LAST} = \mbox{LAST} - 1\).
+
+\end{enumerate}
+
+\item Sift down the root to reorder the heap.
+
+\end{enumerate}
+
+\end{enumerate}
+
+When the test at step 3(b) is successful, a new record is added
+to the heap, eventually to be output as part of the run.
+As long as records coming from the input file have key values
+greater than the last key value output to the run, they can be safely
+added to the heap.
+Records with smaller key values cannot be output as
+part of the current run because they would not be in sorted order.
+Such values must be stored somewhere for future processing as part of
+another run.
+However, because the heap will shrink by one element in this case,
+there is now a free space where the last element of the heap used to
+be!
+Thus, replacement selection will slowly shrink the heap and at the
+same time use the discarded heap space to store records for the next
+run.
+Once the first run is complete (i.e., the heap becomes empty), the
+array will be filled with records ready to be processed for the second
+run.
+Figure~\ref{RepSel} illustrates part of a run being created by
+replacement selection.
+
+\begin{figure}
+\pdffig{RepSel}
+\smallskip
+\capt{4.5in}{Replacement selection}
+{Replacement selection example.
+After building the heap, root value~12
+is output and incoming value~16 replaces it.
+Value~16 is output next, replaced with incoming value~29.
+The heap is reordered, with 19 rising to the root.
+Value~19 is output next.
+Incoming value~14 is too small for this run and is placed at end
+of the array, moving value~40 to the root.
+Reordering the heap results in 21 rising to the root, which
+is output next.}{RepSel}
+\end{figure}
+
+It should be clear that the minimum length of a run will be \(M\)
+records if the size of the heap is \(M\), because at least those
+records originally in the heap will be part of the run.
+Under good conditions (e.g., if the input is sorted), then an
+arbitrarily long run is possible.
+In fact, the entire file could be processed as one run.
+If conditions are bad (e.g., if the input is reverse sorted),
+then runs of only size \(M\) result.
+
+What is the expected length of a run generated by replacement
+selection?
+It can be deduced from an analogy called the
+\defit{snowplow argument}.
+Imagine that a snowplow is going around a circular track during a
+heavy, but steady, snowstorm.
+After the plow has been around at least once, snow on 
+the track must be as follows.
+Immediately behind the plow, the track is empty because it was just
+plowed.
+The greatest level of snow on the track is immediately in front of the
+plow, because this is the place least recently plowed.
+At any instant, there is a certain amount of snow~\(S\) on the
+track.
+Snow is constantly falling throughout the track at a steady rate,
+with some snow falling ``in front'' of the plow and some ``behind''
+the plow.
+(On a circular track, everything is actually ``in front'' of
+the plow, but Figure~\ref{SnowPlow} illustrates the idea.)
+During the next revolution of the plow, all snow~\(S\) on the track is
+removed, plus half of what falls.
+Because everything is assumed to be in steady state, after one
+revolution \(S\)~snow is still on the track, so \(2S\)~snow must fall
+during a revolution, and \(2S\)~snow is removed during a revolution
+(leaving \(S\)~snow behind).
+
+\begin{figure}
+\pdffig{SnowPlow}
+\vspace{1pt}
+
+\capt{4.5in}{The snowplow analogy}
+{The snowplow analogy showing the action during one
+revolution of the snowplow.
+A circular track is laid out straight for purposes of illustration,
+and is shown in cross section.
+At any time \(T\), the most snow is directly in front of the snowplow.
+As the plow moves around the track, the same amount of snow is always
+in front of the plow.
+As the plow moves forward, less of this is snow that was in
+the track at time \(T\); more is snow that has fallen since.}{SnowPlow}
+\bigskip
+\medskip
+\end{figure}
+
+At the beginning of replacement selection, nearly all values coming
+from the input file are greater (i.e., ``in front of the plow'')
+than the latest key value output for
+this run, because the run's initial key values should be small.
+As the run progresses, the latest key value output becomes greater and
+so new key values coming from the input file are more likely to be too
+small (i.e., ``after the plow''); such records go to the bottom of
+the array.
+The total length of the run is expected to be twice the size of the
+array.
+Of course, this assumes that incoming key values are evenly distributed
+within the key range (in terms of the snowplow analogy, we assume that
+snow falls evenly throughout the track).
+Sorted and reverse sorted inputs do not meet this expectation and so
+change the length of the run.\index{replacement selection|)}
+
+\subsection{Multiway Merging}
+\label{MultiMerge}
+
+The\index{mergesort@Mergesort!multiway merging|(}
+second stage of a typical external sorting algorithm merges the
+runs created by the first stage.
+Assume that we have \(R\)~runs to merge.
+If a simple two-way merge is used, then \(R\)~runs (regardless of their
+sizes) will require \(\log R\) passes through the file.
+While \(R\) should be much less than the total number of records
+(because the initial runs should each contain many records),
+we would like to reduce still further the number of passes required
+to merge the runs together.
+Note that two-way merging does not make good use of available memory.
+Because merging is a sequential process on the two runs, only one block
+of records per run need be in memory at a time.
+Keeping more than one block of a run in memory at any time will
+not reduce the disk I/O required by the merge process
+(though if several blocks are read from a file at once time,
+at least they take advantage of sequential access).
+Thus, most of the space just used by the heap for replacement
+selection (typically many blocks in length) is not being used by the
+merge process.
+
+We can make better use of this space and at the same time greatly
+reduce the number of passes needed to merge the runs if we merge
+several runs at a time.
+Multiway merging is similar to two-way merging.
+If we have \(B\)~runs to merge, with a block from each run available in
+memory, then the \(B\)-way merge algorithm simply looks at
+\(B\)~values (the front-most value for each input run) and selects the
+smallest one to output.
+This value is removed from its run, and the process is repeated.
+When the current block for any run is exhausted, the next block from
+that run is read from disk.
+Figure~\ref{MultiMrg} illustrates a multiway merge.
+
+\begin{figure}
+\pdffig{MultiMrg}
+\vspace{1pt}
+
+\capt{4.5in}{Multiway merge}
+{Illustration of multiway merge.
+The first value in each input run is examined and the smallest sent to
+the output.
+This value is removed from the input and the process repeated.
+In this example, values~5, 6, and~12 are compared first.
+Value~5  is removed from the first run and sent to the output.
+Values~10, 6, and~12 will be compared next.
+After the first five values have been output, the ``current'' value of
+each block is the one underlined.}{MultiMrg}
+\bigskip
+\end{figure}
+
+Conceptually, multiway merge assumes that each run is stored in a
+separate file.
+However, this is not necessary in practice.
+We only need to know the position of each run within a single file,
+and use\ifthenelse{\boolean{cpp}}{\Cref{seekg}}{}
+\ifthenelse{\boolean{java}}{\Cref{seek}}{} to move to the appropriate
+block whenever we need new data from a particular run.
+Naturally, this approach destroys the ability to do sequential
+processing on the input file.
+However, if all runs were stored on a single disk drive,
+then processing would not be truly sequential anyway because the
+I/O head would be alternating between the runs.
+Thus, multiway merging replaces several (potentially) sequential
+passes with a single random access pass.
+If the processing would not be sequential anyway (such as when all
+processing is on a single disk drive), no time is lost by doing so.
+
+Multiway merging can greatly reduce the number of passes required.
+If there is room in memory to store one block for each run, then all
+runs can be merged in a single pass.
+Thus, replacement selection\index{replacement selection} can build
+initial runs in one pass, and multiway merging can merge all runs in
+one pass, yielding a total cost of two passes.
+However, for truly large files, there might be too many runs for each
+to get a block in memory.
+If there is room to allocate \(B\)~blocks for a \(B\)-way merge, and
+the number of runs~\(R\) is greater than~\(B\), then it will be
+necessary to do multiple merge passes.
+In other words, the first \(B\)~runs are merged, then the next~\(B\),
+and so on.
+These super-runs are then merged by subsequent passes,
+\(B\)~super-runs at a time.
+
+\ifthenelse{\boolean{cpp}}{\newpage}{}
+
+How big a file can be merged in one pass?
+Assuming \(B\) blocks were allocated to the heap for
+replacement selection (resulting in runs of average length \(2B\)
+blocks), followed by a \(B\)-way merge, we can process
+on average a file of size \(2B^2\) blocks in a single multiway merge.
+\(2B^{k+1}\) blocks on average can be processed in \(k\)~\(B\)-way
+merges.
+To gain some appreciation for how quickly this grows, assume that we
+have available 0.5MB of working memory, and that a block is
+4KB, yielding 128~blocks in working memory.
+The average run size is 1MB (twice the working memory size).
+In one pass, 128~runs can be merged.
+Thus, a file of size 128MB can, on average, be processed in two
+passes (one to build the runs, one to do the merge) with only
+0.5MB of working memory.
+As another example, assume blocks are 1KB long and working memory
+is 1MB \(=\) 1024 blocks.
+Then 1024 runs of average length 2MB (which is about 2GB) can be
+combined in a single merge pass.
+A larger block size would reduce the size of the file that can be
+processed in one merge pass for a fixed-size working memory; a smaller
+block size or larger working memory would increase the file size that
+can be processed in one merge pass.
+Two merge passes allow much bigger files to be processed.
+With 0.5MB of working memory and 4KB blocks,
+a file of size 16~gigabytes could be processed in two merge passes,
+which is big enough for most applications.
+Thus, this is a very effective algorithm for single disk drive
+external sorting.
+
+\index{sorting!comparing algorithms}
+Figure~\ref{ExSortTimes} shows a comparison of the running time to
+sort various-sized files for the following implementations:
+(1)~standard Mergesort with two input runs and two output runs,
+(2)~two-way Mergesort with large initial runs (limited by the size of
+available memory),
+and (3)~\(R\)-way Mergesort performed after generating large initial
+runs.
+In each case, the file was composed of a series of four-byte records
+(a two-byte key and a two-byte data value),
+or 256K records per megabyte of file size.
+We can see from this table that using even a modest memory size (two
+blocks) to create initial runs results in a tremendous savings in
+time.
+Doing 4-way merges of the runs provides another considerable speedup,
+however large-scale multi-way merges for \(R\) beyond about 4 or 8 runs
+does not help much because a lot of time is spent determining which is
+the next smallest element among the \(R\) runs.
+
+\begin{mytable}
+\begin{center}
+{\small
+\begin{tabular}{|r|c|cccc|ccc|}
+\hline
+\multicolumn{1}{|c|}{\textbf{File}}&
+\multicolumn{1}{c|}{\textbf{Sort 1}}&
+\multicolumn{4}{c|}{\textbf{Sort 2}}&
+\multicolumn{3}{c|}{\textbf{Sort 3}}\\
+\multicolumn{1}{|c|}{\textbf{Size}}&&
+\multicolumn{4}{c|}{\textbf{Memory size (in blocks)}}&
+\multicolumn{3}{c|}{\textbf{Memory size (in blocks)}}\\
+(Mb)&&\multicolumn{1}{c}{\textbf{2}} &
+\multicolumn{1}{c}{\textbf{4}} &
+\multicolumn{1}{c}{\textbf{16}} &
+\multicolumn{1}{c|}{\textbf{256}} &
+\multicolumn{1}{c}{\textbf{2}} &
+\multicolumn{1}{c}{\textbf{4}} &
+\multicolumn{1}{c|}{\textbf{16}}\\
+\hline
+  1&   0.61 &   0.27 &   0.24 &   0.19 &   0.10 &   0.21 &   0.15 &   0.13\\
+   &  4,864 &  2,048 &  1,792 &  1,280 &    256 &  2,048 &  1,024 &    512\\
+\hline
+  4&   2.56 &   1.30 &   1.19 &   0.96 &   0.61 &   1.15 &   0.68 &   0.66*\\
+   & 21,504 & 10,240 &  9,216 &  7,168 &  3,072 & 10,240 &  5,120 &  2,048\\
+\hline
+ 16&  11.28 &   6.12 &   5.63 &   4.78 &   3.36 &   5.42 &   3.19 &   3.10\\
+   & 94,208 & 49,152 & 45,056 & 36,864 & 20,480 & 49,152 & 24,516 & 12,288\\
+\hline
+256& 220.39 & 132.47 & 123.68 & 110.01 &  86.66 & 115.73 &  69.31 &  68.71\\
+   &  1,769K&  1,048K&    983K&    852K&    589K&  1,049K&    524K&   262K\\
+\hline
+\end{tabular}}
+\end{center}
+\vspace{-\smallskipamount}
+
+\capt{4.5in}{A comparison of three external sorts}
+{A comparison of three external sorts on a collection of small
+records for files of various sizes.
+Each entry in the table shows time in seconds and total number of
+blocks read and written by the program.
+File sizes are in Megabytes.
+For the third sorting algorithm, on a file size of 4MB, the time and
+blocks shown in the last column are for a 32-way merge (marked with an
+asterisk).
+32 is used instead of 16 because 32 is a root of the number of blocks
+in the file (while 16 is not), thus allowing the same number of runs
+to be merged at every pass.}
+{ExSortTimes}
+\bigskip
+\end{mytable}
+
+We see from this experiment that building large initial runs reduces
+the running time to slightly more than one third that of standard
+Mergesort, depending on file and memory sizes.
+Using a multi\-way merge further cuts the time nearly in half.
+\index{sorting!comparing algorithms}
+\index{mergesort@Mergesort!multiway merging|)}
+
+In summary, a good external sorting algorithm will seek to do the
+following:
+
+\begin{itemize}
+
+\item Make the initial runs as long as possible.
+
+\item At all stages, overlap input, processing, and output as much as
+possible.
+
+\item Use as much working memory as possible.
+Applying more memory usually speeds processing.
+In fact, more memory will have a greater effect than a faster disk.
+A faster CPU is unlikely to yield much improvement in running time for
+external sorting, because disk I/O speed is the limiting factor.
+
+\item If possible, use additional disk drives for more overlapping of
+processing with I/O, and to allow for sequential file
+processing.\index{sorting!external|)}\index{disk drive|)}
+\end{itemize}

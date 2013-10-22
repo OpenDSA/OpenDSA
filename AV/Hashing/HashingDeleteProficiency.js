@@ -119,7 +119,6 @@
         }
       }
       updateStepTask();
-      exercise.gradeableStep();
     }
 
     function model(modeljsav) {

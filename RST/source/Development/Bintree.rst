@@ -84,6 +84,18 @@ arbitrary set of keys such as name and zipcode.
 But in practice, it is nearly always used to support search on
 multidimensional coordinates, such as locations in 2D or 3D space.
 
+.. _BintreeFig:
+
+.. odsafig:: Images/Bintree.png
+   :width: 500
+   :align: center
+   :capalign: center
+   :figwidth: 90%
+   :alt: Example of a Bintree.
+
+   Example of a Bintree.
+
+
 We define the discriminator at level :math:`i` to be :math:`i \bmod k`
 for :math:`k` dimensions.
 For example, assume that we store data organized by :math:`xy`

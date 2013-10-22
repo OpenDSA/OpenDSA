@@ -107,9 +107,9 @@ peculiarities that it pays to be aware of.
 It turns out that there is a big difference in JavaScript between
 using ``i < n`` or ``i != n`` to test termination of a loop.
 
-Turning to Bubble Sort, the first think we should notice from this
+Turning to Bubble Sort, the first thing we should notice from this
 table is that it is far slower on random input than Insertion Sort.
-Let's consider a possible improvement that is often suggested
+Let's consider a possible improvement that is sometimes suggested
 for Bubble Sort.
 That is to check during each iteration of the outer loop to see if any
 swaps took place during that iteration, and quit if not
@@ -173,12 +173,12 @@ The table also shows that Selection Sort is faster in the average case
 than Insertion Sort when implemented in Python.
 Evidently, the cost to swap is high for Python.
 
-The way our original Selection Sort code is written, a call to
-``swap`` will be made even if the current record is already in its
-correct location.
+Our original Selection Sort implementation is written to make a call
+to ``swap`` even if the current record is already in its correct
+location.
 For example, if the record with the largest value is already in the
-rightmost array position, ``selsort`` will still call ``swap`` with
-both position parameters being the same.
+rightmost array position, then ``selsort`` will still call ``swap``
+with the two position parameters being the same.
 The net effect is that the work done by ``swap`` will not change
 anything in the array, and this is a waste of time.
 Thus, the total number of swaps done by Selection Sort is always
@@ -196,7 +196,7 @@ Doing the check to see if a swap is necessary also takes some time.
 It is only worthwhile to test if the time required by the test is more
 than made up for by the work saved when the unnecessary swap was
 avoided.
-For randomly ordered input, it is probably  more expensive to test
+For randomly ordered input, it is probably more expensive to test
 this condition before every swap than to just do the swap.
 If the input records are already sorted, then all of the swaps are
 unnecessary and it would be (trivially) faster to test.

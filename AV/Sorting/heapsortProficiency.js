@@ -35,7 +35,6 @@
         bh.value(i, modelHeap.value(i));
       }
       bh.heapsize(modelHeap.heapsize());
-      exercise.gradeableStep();
     }
 
     function model(modeljsav) {

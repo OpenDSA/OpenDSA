@@ -109,7 +109,6 @@
         bh.value(i, modelHeap.value(i));
       }
       bh.heapsize(modelHeap.heapsize());
-      exercise.gradeableStep();
     }
 
     $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {

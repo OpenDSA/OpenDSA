@@ -23,6 +23,28 @@
         "exercises": {}
       }
     },
+    "File Processing": {
+      "Development/FileProc": {
+        "long_name": "File Processing Chapter Introduction",
+        "exercises": {}
+      },
+      "Development/Secondary": {
+        "long_name": "Primary versus Secondary Storage",
+        "exercises": {}
+      },
+      "Development/Diskdrive": {
+        "long_name": "Disk Drives",
+        "exercises": {}
+      },
+      "Development/BuffPool": {
+        "long_name": "Buffer Pools",
+        "exercises": {}
+      },
+      "Development/FileProg": {
+        "long_name": "Programmer's View of Files",
+        "exercises": {}
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",

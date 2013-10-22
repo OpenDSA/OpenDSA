@@ -67,7 +67,6 @@
         bh.value(i, modelHeap.value(i));
       }
       bh.heapsize(modelHeap.heapsize());
-      exercise.gradeableStep();
     }
 
     var exercise = jsav.exercise(model, init, { css: "background-color" },
