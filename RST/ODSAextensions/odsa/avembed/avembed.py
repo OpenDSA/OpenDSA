@@ -89,7 +89,7 @@ def embedlocal(av_path):
         if node.nodeType == node.TEXT_NODE:
           avheight=node.data
     embed.append(av_name)
-    embed.append(os.path.relpath(conf.odsa_path,conf.ebook_path) + '/' + av_path)
+    embed.append(os.path.relpath(conf.av_dir,conf.ebook_path) + '/' + av_path)
     embed.append(avwidth)
     embed.append(avheight)
     return embed
