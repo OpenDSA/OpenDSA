@@ -7,9 +7,6 @@ rst_header = '''\
    <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s";</script>
 
 %(unicode_directive)s
-
-%(orig_data)s
-
 '''
 
 rst_header_unicode = '''\
@@ -49,8 +46,8 @@ makefile_template = '''\
 #
 # You can set these variables from the command line.
 SPHINXBUILD   = sphinx-build
-HTMLDIR       = %(rel_ebook_path)s
-MINIMIZE      = java -jar "%(odsa_root)stools/yuicompressor-2.4.7.jar"
+HTMLDIR       = %(rel_book_output_path)s
+MINIMIZE      = java -jar "%(odsa_dir)stools/yuicompressor-2.4.7.jar"
 
 .PHONY: clean html
 
@@ -77,15 +74,14 @@ min-searchtools:
 	-@$(MINIMIZE) $(HTMLDIR)_static/searchtools.js -o $(HTMLDIR)_static/searchtools.js
 
 preprocessor:
-	python "%(odsa_root)sRST/preprocessor.py" source/ $(HTMLDIR)
+	python "%(odsa_dir)sRST/preprocessor.py" source/ $(HTMLDIR)
 
 html: preprocessor
 	%(remove_todo)s
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
-	#rm -rf html/_sources/
-	python "%(odsa_root)stools/postprocessor.py" source/ $(HTMLDIR)
-	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
+	python "%(odsa_dir)stools/postprocessor.py" source/ $(HTMLDIR)
+	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
@@ -96,9 +92,8 @@ slides: preprocessor
 	@SLIDES=yes \
 	$(SPHINXBUILD) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
-	#rm -rf html/_sources/
-	#python "%(odsa_root)sRST/preprocessor.py" -p source/ $(HTMLDIR)
-	cp "%(odsa_root)slib/.htaccess" $(HTMLDIR)
+	python "%(odsa_dir)stools/postprocessor.py" source/ $(HTMLDIR)
+	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
@@ -138,19 +133,19 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/avembed'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/avmetadata'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/codeinclude'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/numref'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/chapnum'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsalink'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsascript'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/sphinx-numfig'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/inlineav'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/html5'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsafig'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/odsatable'))
-sys.path.append(os.path.abspath('%(odsa_root)sRST/ODSAextensions/odsa/chapref'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/avembed'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/avmetadata'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/codeinclude'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/numref'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/chapnum'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/odsalink'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/odsascript'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/sphinx-numfig'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/inlineav'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/html5'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/odsafig'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/odsatable'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/chapref'))
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'numfig', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref']
 
 slides_lib = '%(slides_lib)s'
@@ -370,25 +365,25 @@ todo_include_todos = True
 # @efouh: despise the fact that we are using an url hash, gradebook still needs book name
 book_name = '%(book_name)s'
 # Protocol and domain of the backend server
-server_url = '%(server_url)s'
+server_url = '%(backend_address)s'
 
 # Protocol and domain of the server hosting the module files
 module_origin = '%(module_origin)s'
 
 #Absolute path to OpenDSA directory
-odsa_path = '%(odsa_root)s'
+odsa_path = '%(odsa_dir)s'
 
 #Absolute path of eTextbook (build) directory
-ebook_path = '%(output_dir)s%(rel_ebook_path)s'
+ebook_path = '%(book_dir)s%(rel_book_output_path)s'
 
 #path (from the RST home) to the sourcecode directory that I want to use
 sourcecode_path = '%(code_dir)s'
 
 # Path to AV/ directory (local or remote)
-av_dir = '%(av_dir)s'
+av_dir = '%(av_root_dir)s'
 
 # Path to Exercises/ directory (local or remote)
-exercises_dir = '%(exercises_dir)s'
+exercises_dir = '%(exercises_root_dir)s'
 
 '''
 
@@ -400,12 +395,12 @@ config_js_template = '''\
   settings.BOOK_NAME = "%(book_name)s";
   // The (protocol and) domain address of the backend server
   // Set SERVER_URL = "" in order to disable server communication and logging
-  settings.SERVER_URL = "%(server_url)s";
+  settings.SERVER_URL = "%(backend_address)s";
   settings.MODULE_ORIGIN = "%(module_origin)s";
   settings.EXERCISE_ORIGIN = "%(exercise_origin)s";
   settings.AV_ORIGIN = "%(av_origin)s";
   // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
-  settings.ALLOW_ANON_CREDIT = %(allow_anon_credit)s;
+  settings.ALLOW_ANON_CREDIT = %(allow_anonymous_credit)s;
   settings.REQ_FULL_SS = %(req_full_ss)s;
 
   window.ODSA = {};

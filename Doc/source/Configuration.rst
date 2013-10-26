@@ -79,13 +79,13 @@ Settings (all are required unless otherwise specified)
 
 * **title** - the title of the OpenDSA textbook
 
-* **book_dir** - (optional) the directory where the configured book directory will be created, defaults to 'Books' if omitted 
+* **build_dir** - (optional) the directory where the configured book directory will be created, defaults to 'Books' if omitted
 
   * A new directory, named after the book, will be created at this location and serve as the output directory for the configuration process.  Files required to compile the book will be copied / written to the output directory, including modified version of the source RST files
-  
-    * Example: Assume "book_dir": "Books" and the name of the configuration file used is "CS3114.json", the output directory would be "Books/CS3114/"
-  
-  * The compiled textbook will appear in ``[book_dir]/[book name]/html``
+
+    * Example: Assume "build_dir": "Books" and the name of the configuration file used is "CS3114.json", the output directory would be "Books/CS3114/"
+
+  * The compiled textbook will appear in ``[build_dir]/[book name]/html``
   * This directory must be web accessible
 
 * **code_dir** - specifies the directory containing the source code to be used in textbook examples
@@ -103,14 +103,14 @@ Settings (all are required unless otherwise specified)
   * If this attribute is not present, the OpenDSA root directory will be used as the default
   * Ex: "av_root_dir": "/home/algoviz/OpenDSA/test/",
   * Ex: "av_root_dir": "http://algoviz.org/OpenDSA/", // This directory contains an AV/ directory
-  
+
 * **av_origin** - (optional, unless **av_root_dir** is defined) the protocol and domain where the AV files are hosted, defaults to match ``module_origin`` if omitted
 
   * Used on module pages to allow HTML5 post messages from this origin, allows embedded AVs to communicate with the parent module page
   * Ex: "av_origin": "http://algoviz.org",
 
 * **glob_jsav_exer_options** - (optional) a JSON object containing the global grading options that will be applied to all JSAV exercises in the book, unless overridden by exercise-specific options.
-  
+
 * **exercises_root_dir** - (optional) allows the user to change the default location where the Exercises/ directory can be found, defaults to OpenDSA root directory if omitted
 
   * This can point to another location on the same machine that hosts the module files (as long as it is web-accessible) or it can point to a remote location (not fully supported yet)

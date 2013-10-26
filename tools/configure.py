@@ -54,14 +54,12 @@ import re
 import subprocess
 import datetime
 from optparse import OptionParser
-from config_validator import validate_config_file
 from config_templates import *
+from ODSA_RST_Module import ODSA_RST_Module
+from ODSA_Config import ODSA_Config
 
 # The location in the output directory where the built HTML files go
 rel_ebook_path = 'html/'
-
-# List of characters Sphinx uses for headers, the depth of a section header determines which character to use
-sphinx_header_chars = ['=', '-', '`', "'", '.', '*', '+', '^']
 
 # List of exercises encountered in RST files that do not appear in the configuration file
 missing_exercises = []
@@ -79,49 +77,31 @@ todo_count = 0
 satisfied_requirements = []
 
 
-def process_path(path, abs_prefix):
-  """Converts relative to absolute paths and all paths to Unix-style paths"""
-
-  # If the path is relative, make it absolute
-  if not os.path.isabs(path):
-    path = ''.join([abs_prefix, path])
-
-  # Convert to Unix path
-  path = path.replace("\\", "/")
-  # Ensure path ends with '/'
-  if not path.endswith('/'):
-    path += '/'
-
-  return path
-
-def process_section(conf_data, section, index_rst, depth, chap=None):
+def process_section(config, section, index_rst, depth, chap=None):
   for subsect in section:
     if 'exercises' in section[subsect]:
-      process_module(conf_data, index_rst, subsect, section[subsect], depth, chap)
+      process_module(config, index_rst, subsect, section[subsect], depth, chap)
     else:
+      # List of characters Sphinx uses for headers, the depth of a section header determines which character to use
+      sphinx_header_chars = ['=', '-', '`', "'", '.', '*', '+', '^']
+
       print ("  " * depth) + subsect
       index_rst.write(subsect + '\n')
       index_rst.write((sphinx_header_chars[depth] * len(subsect)) + "\n\n")
       index_rst.write(".. toctree::\n")
       index_rst.write("   :numbered:\n")
       index_rst.write("   :maxdepth: 3\n\n")
-      process_section(conf_data, section[subsect], index_rst, depth + 1, subsect)
+      process_section(config, section[subsect], index_rst, depth + 1, subsect)
 
   index_rst.write("\n")
 
-def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0, chap=None):
-  global todo_count
+def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0, chap=None):
+  global images
+  global missing_exercises
   global satisfied_requirements
 
-  odsa_dir = get_odsa_dir()
+  mod_name = os.path.splitext(os.path.basename(mod_path))[0]
 
-  mod_path = os.path.splitext(mod_path)[0]
-  mod_name = os.path.basename(mod_path)
-  mod_chapter = ''
-  if chap:
-     mod_chapter = chap
-
-  mod_date = str(datetime.datetime.now()).split('.')[0]
   # Print error message and exit if duplicate module name is detected
   if mod_name in processed_modules:
     print 'ERROR: Duplicate module name detected, module: ' + mod_name
@@ -136,327 +116,39 @@ def process_module(conf_data, index_rst, mod_path, mod_attrib={'exercises':{}}, 
   if mod_name == 'ToDo':
     return
 
-  exercises = mod_attrib['exercises']
+  module = ODSA_RST_Module(config, mod_path, mod_attrib, satisfied_requirements, chap, depth)
 
-  # Read the contents of the module file from the RST source directory
-  with open('{0}RST/source/{1}.rst'.format(odsa_dir, mod_path),'r') as mod_file:
-    mod_data = mod_file.readlines()
+  images += module.images
+  missing_exercises += module.missing_exercises
+  satisfied_requirements += module.requirements_satisfied
 
-  long_name = mod_attrib['long_name'] if 'long_name' in mod_attrib else mod_name
 
-  # Set a JS flag on the page, indicating whether or not the module can be completed
-  if 'dispModComp' in mod_attrib:
-    # Use the value specified in the configuration file to override the calculated value
-    dispModComp = mod_attrib['dispModComp']
-  else:
-    dispModComp = False
+def generate_index_rst(config, slides = False):
+  print "Generating index.rst\n"
+  print "Processing..."
 
-    # Display 'Module Complete' only if the module contains at least one required exercise
-    for exer_name, exer_obj in exercises.items():
-      if 'required' in exer_obj and exer_obj['required']:
-        dispModComp = True
-        break
-
-  # If these JavaScript variables are changed, be sure to change them in the index.rst file (above) and ToDo.rst file (preprocessor.py)
   header_data = {}
-  header_data['mod_name'] = mod_name
-  header_data['dispModComp'] = str(dispModComp).lower()
-  header_data['long_name'] = long_name
-  header_data['mod_chapter'] = mod_chapter
-  header_data['mod_date'] = mod_date
-  #no unicode directive when building course notes
-  if os.environ.get('SLIDES', None) == "yes":
-    header_data['unicode_directive'] = ''
-  else:
-    header_data['unicode_directive'] = rst_header_unicode
-  header_data['orig_data'] = mod_data[0]
-  mod_data[0] = rst_header % header_data
-
-  avmetadata_found = False
-
-  # Alter the contents of the module based on the config file
-  i = 0
-  while i < len(mod_data):
-    if ':requires:' in mod_data[i]:
-      # Parse the list of prerequisite topics from the module
-      requires = [req.strip() for req in mod_data[i].replace(':requires:', '').split(';')]
-
-      # Print a warning message if a missing prereq is encountered
-      for req in requires:
-        if req not in satisfied_requirements:
-          print ("  " * (depth + 1 )) + "WARNING: " + req + " is an unsatisfied prerequisite for " + mod_name + ", line " + str(i + 1)
-    elif ':satisfies:' in mod_data[i]:
-      # Parse the list of prerequisite topics this module satisfies and add them to the list of satisfied prereqs
-      satisfied_requirements += [req.strip() for req in mod_data[i].replace(':satisfies:', '').split(';')]
-    elif '.. figure::' in mod_data[i] or '.. odsafig::' in mod_data[i]:
-      l_image = len(mod_data[i].split(' '))
-      image_path = mod_data[i].split(' ')[l_image-1].rstrip()
-      images.append(os.path.basename(image_path))
-    elif '.. TODO::' in mod_data[i]:
-      if conf_data['suppress_todo']:
-        # Remove TODO directives from the RST file
-        mod_data[i] = ''
-        i += 1
-
-        while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
-          mod_data[i] = ''
-          i += 1
-      else:
-        # Increment the TODO directive counter
-        todo_count += 1
-    elif '.. inlineav::' in mod_data[i]:
-      # Parse the arguments from the directive
-      args = mod_data[i].strip().split(' ')
-
-      if len(args) < 4:
-        # Print a warning if inlineav is invoked without the minimum number of arguments
-        print ("  " * (depth + 1 )) + "ERROR: Invalid directive arguments for object on line " + str(i + 1) + ", skipping object"
-      else:
-        av_name = args[2].rstrip()
-        type = args[3].rstrip()
-
-        if type == 'ss':
-          if av_name not in exercises:
-            # If the SS is not listed in the config file, add its name to a list of missing exercises, ignore missing diagrams
-            missing_exercises.append(av_name)
-          else:
-            # Add the necessary information from the slideshow from the configuration file
-            # Diagrams (type == 'dgm') do not require this extra information
-            exer_conf = exercises[av_name]
-
-            # List of valid options for inlineav directive
-            options = ['long_name', 'points', 'required', 'threshold']
-
-            rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
-            mod_data[i] += ''.join(rst_options)
-        elif type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
-          # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
-          print ("  " * (depth + 1 )) + "WARNING: " + av_name + " is a diagram (attributes are not supported), line " + str(i + 1)
-        elif type not in ['ss', 'dgm']:
-          # If a warning if the exercise type doesn't match something we expect
-          print ("  " * (depth + 1 )) + "WARNING: Unsupported type '" + type + "' specified for " + av_name + ", line " + str(i + 1)
-    elif '.. avembed::' in mod_data[i]:
-      # Parse the arguments from the directive
-      args = mod_data[i].strip().split(' ')
-
-      if len(args) < 4:
-        # Print a warning if avembed is invoked without the minimum number of arguments
-        print ("  " * (depth + 1 )) + "ERROR: Invalid directive arguments for embedded object on line " + str(i + 1) + ", skipping object"
-      else:
-        av_name = args[2].rstrip()
-        av_name = av_name[av_name.rfind('/') + 1:].replace('.html', '')
-        type = args[3].rstrip()
-
-        # If the config file states the exercise should be removed, remove it
-        if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
-          print ("  " * (depth + 1 )) + 'Removing: ' + av_name
-
-          # Config file states exercise should be removed, remove it from the RST file
-          while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-            mod_data[i] = ''
-            i += 1
-        else:
-          # Append module name to embedded exercise
-          mod_data[i] += '   :module: %s\n' % mod_name
-
-          if av_name not in exercises:
-            # Add the name to a list of missing exercises
-            missing_exercises.append(av_name)
-          else:
-            # Add the necessary information from the configuration file
-            exer_conf = exercises[av_name]
-
-            # List of valid options for avembed directive
-            options = ['long_name', 'points', 'required', 'showhide', 'threshold']
-
-            rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
-
-            # JSAV grading options are not applicable to Khan Academy exercises or slideshows and will be ignored
-            if type not in ['ka', 'ss']:
-              # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
-              if 'jsav_exer_options' in exer_conf:
-                jxops = dict(conf_data['glob_jsav_exer_options'].items() + exer_conf['jsav_exer_options'].items())
-              else:
-                jxops = conf_data['glob_jsav_exer_options']
-
-              # URL-encode the string and append it to the RST options
-              jxop_str = '&amp;'.join(['JXOP-%s=%s' % (opt, str(jxops[opt])) for opt in jxops])
-              rst_options.append('   :jsav_exer_opt: %s\n' % jxop_str)
-
-            mod_data[i] += ''.join(rst_options)
-    elif '.. avmetadata::' in mod_data[i]:
-      avmetadata_found = True
-
-    i = i + 1
-
-  if not avmetadata_found:
-    print ("  " * (depth + 1)) + 'WARNING: %s does not contain an ..avmetadata:: directive' % mod_name
-
-  # Write the contents of the module file to the output src directory
-  with open('{0}{1}.rst'.format(get_src_dir(conf_data), mod_name),'w') as mod_file:
-    mod_file.writelines(mod_data)
-
-def set_defaults(conf_data):
-  """Assign default values to optional config attributes"""
-
-  odsa_dir = get_odsa_dir()
-
-  # Parse the name of the config file to use as the book name
-  conf_data['name'] = os.path.basename(config_file).replace('.json', '')
-
-  if 'book_dir' not in conf_data:
-    conf_data['book_dir'] = 'Books'
-
-  if 'theme_dir' not in conf_data:
-    conf_data['theme_dir'] = '%sRST/source/_themes' % odsa_dir
-  if 'theme' not in conf_data:
-    conf_data['theme'] = 'haiku'
-
-  # If no backend address is specified, use an empty string to specify a disabled server
-  if 'backend_address' not in conf_data:
-    conf_data['backend_address'] = ''
-
-  # Strip the '/' from the end of the SERVER_URL
-  conf_data['backend_address'] = conf_data['backend_address'].rstrip('/')
-
-  if 'suppress_todo' not in conf_data:
-    conf_data['suppress_todo'] = False
-
-  # Assume exercises are hosted on same domain as modules
-  if 'av_origin' not in conf_data:
-    conf_data['av_origin'] = conf_data['module_origin']
-
-  # Assume exercises are hosted on same domain as modules
-  if 'exercise_origin' not in conf_data:
-    conf_data['exercise_origin'] = conf_data['module_origin']
-
-  # If not global exercise options are specified, defer to exercise-specific options or the defaults in odsaAV.js
-  if 'glob_jsav_exer_options' not in conf_data:
-    conf_data['glob_jsav_exer_options'] = {}
-
-  # 'exercises_root_dir' should default to the OpenDSA root directory
-  if 'av_root_dir' not in conf_data:
-    conf_data['av_root_dir'] = odsa_dir
-
-  # 'exercises_root_dir' should default to the OpenDSA root directory
-  if 'exercises_root_dir' not in conf_data:
-    conf_data['exercises_root_dir'] = odsa_dir
-
-  # Require slideshows to be fully completed for credit by default
-  if 'req_full_ss' not in conf_data:
-    conf_data['req_full_ss'] = True
-
-  # Allow anonymous credit by default
-  if 'allow_anonymous_credit' not in conf_data:
-    conf_data['allow_anonymous_credit'] = True
-
-
-def get_odsa_dir():
-  """Calculate the path to the OpenDSA root directory based on the location of this file"""
-
-  # Auto-detect ODSA directory
-  (odsa_dir, script) = os.path.split(os.path.abspath(__file__))
-
-  # Convert to Unix-style path and move up a directory
-  # (assumes configure.py is one level below root OpenDSA directory)
-  return os.path.abspath(odsa_dir.replace("\\", "/") + '/..') + '/'
-
-def get_output_dir(conf_data):
-  odsa_dir = get_odsa_dir()
-  return '%s%s/' % (process_path(conf_data['book_dir'], odsa_dir), conf_data['name'])
-
-def get_src_dir(conf_data):
-  return get_output_dir(conf_data) + 'source/'
-
-
-def configure(config_file, slides = False):
-  """Configure an OpenDSA textbook based on a validated configuration file"""
-  global satisfied_requirements
-
-  print "Configuring OpenDSA, using " + config_file + '\n'
-
-  # Read the configuration data
-  with open(config_file) as config:
-    # Force python to maintain original order of JSON objects
-    conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
-
-  odsa_dir = get_odsa_dir()
-
-  # Assign defaults to optional settings
-  set_defaults(conf_data)
-
-  # Add the list of topics the book assumes students know to the list of fulfilled prereqs
-  if 'assumes' in conf_data:
-    satisfied_requirements += [a.strip() for a in conf_data['assumes'].split(';')]
-
-  # Process the code and output directory paths, get code language
-  code_dir = process_path(conf_data['code_dir'], odsa_dir)
-  output_dir = get_output_dir(conf_data)
-  code_lang = conf_data['code_dir'].rsplit('/',1)[1].lower()
-  #special case treats Processing as Java
-  if code_lang =='processing':
-    code_lang = 'java'
-
-  # Prevent user from setting the output directory where the configuration process
-  # would overwrite important things
-  if output_dir == odsa_dir or output_dir == (odsa_dir + "RST/"):
-    print "Unable to build in this location, please select a different directory"
-    sys.exit(1)
-
-  cwd = os.getcwd()
-
-  if 'build_JSAV' in conf_data and conf_data['build_JSAV']:
-    # Rebuild JSAV
-    print "Building JSAV\n"
-    status = 0
-    try:
-      os.chdir(odsa_dir + 'JSAV/')
-      with open(os.devnull, "w") as fnull:
-        status = subprocess.check_call('make', shell=True, stdout=fnull)
-    finally:
-      os.chdir(cwd)
-
-    if status != 0:
-      print "JSAV make failed"
-      print status
-      sys.exit(1)
-
-  print "Writing files to " + output_dir + "\n"
-
-  # Initialize output directory
-  src_dir = get_src_dir(conf_data)
-  distutils.dir_util.mkpath(src_dir)
+  header_data['mod_name'] = 'index'
+  header_data['dispModComp'] = 'false'
+  header_data['long_name'] = 'Contents'
+  header_data['mod_chapter'] = ''
+  header_data['mod_date'] = ''
+  header_data['unicode_directive'] = rst_header_unicode if not slides else ''
 
   # Generate the index.rst file
-  with open(src_dir + 'index.rst', 'w+') as index_rst:
-    print "Generating index.rst\n"
-    print "Processing..."
-
-    header_data = {}
-    header_data['mod_name'] = 'index'
-    header_data['dispModComp'] = 'false'
-    header_data['long_name'] = 'Contents'
-    header_data['orig_data'] = index_header
-    header_data['mod_chapter'] = ''
-    header_data['mod_date'] = ''
-    slides_lib = ''
-    if slides:
-      header_data['unicode_directive'] = ''
-      slides_lib = 'hieroglyph'
-    else:
-      header_data['unicode_directive'] = rst_header_unicode
-
+  with open(config.book_src_dir + 'index.rst', 'w+') as index_rst:
+    index_rst.write(index_header)
     index_rst.write(rst_header % header_data)
 
     # Process all the chapter and module information
-    process_section(conf_data, conf_data['chapters'], index_rst, 0)
+    process_section(config, config.chapters, index_rst, 0)
 
     index_rst.write(".. toctree::\n")
     index_rst.write("   :maxdepth: 3\n\n")
 
     # Process the Gradebook as well
     if not slides:
-      process_module(conf_data, mod_path='Gradebook', index_rst=index_rst)
+      process_module(config, mod_path='Gradebook', index_rst=index_rst)
 
     if todo_count > 0:
       index_rst.write("   ToDo\n")
@@ -465,6 +157,60 @@ def configure(config_file, slides = False):
     index_rst.write("* :ref:`genindex`\n")
     index_rst.write("* :ref:`search`\n")
 
+
+def initialize_output_directory(config):
+  """Creates the output directory (if applicable) and copies the necesssary files to it"""
+  # Create the output directory if it doesn't exist
+  # Will actually create '<build_dir>/<book_name>/source/Images/'
+  distutils.dir_util.mkpath(config.book_src_dir + 'Images/')
+
+  # Copy _static and select images from RST/source/Images/ to the book source directory
+  distutils.dir_util.copy_tree(config.odsa_dir + 'RST/source/_static/', config.book_src_dir + '_static', update=1)
+
+  # Copy config file to _static directory
+  distutils.file_util.copy_file(config.config_file_path, config.book_src_dir + '_static/')
+
+  # Create source/_static/config.js in the output directory
+  # Used to set global settings for the client-side framework
+  with open(config.book_src_dir + '_static/config.js','w') as config_js:
+    config_js.writelines(config_js_template % config)
+
+  # Create an index.html page in the book directory that redirects the user to the book_output_dir
+  with open(config.book_dir + 'index.html','w') as index_html:
+    index_html.writelines(index_html_template % config.rel_book_output_path)
+
+
+def configure(config_file_path, slides = False):
+  """Configure an OpenDSA textbook based on a validated configuration file"""
+  global satisfied_requirements
+
+  print "Configuring OpenDSA, using " + config_file_path + '\n'
+
+  # Load the configuration
+  config = ODSA_Config(config_file_path)
+
+  # Add the list of topics the book assumes students know to the list of fulfilled prereqs
+  if config.assumes:
+    satisfied_requirements += [a.strip() for a in config.assumes.split(';')]
+
+  # Optionall rebuild JSAV
+  if config.build_JSAV:
+    print "Building JSAV\n"
+    status = 0
+
+    with open(os.devnull, "w") as fnull:
+      status = subprocess.check_call('make -C %s' % (config.odsa_dir + 'JSAV/'), shell=True, stdout=fnull)
+
+    if status != 0:
+      print "JSAV make failed"
+      print status
+      sys.exit(1)
+
+  print "Writing files to " + config.book_dir + "\n"
+
+  # Initialize output directory, create index.rst, and process all of the modules
+  initialize_output_directory(config)
+  generate_index_rst(config, slides)
 
   # Print out a list of any exercises found in RST files that do not appear in the config file
   if len(missing_exercises) > 0:
@@ -475,81 +221,47 @@ def configure(config_file, slides = False):
 
   # Initialize options for conf.py
   options = {}
-  options['title'] = conf_data['title']
-  options['book_name'] = conf_data['name']
-  options['server_url'] = conf_data['backend_address']
-  options['module_origin'] = conf_data['module_origin']
-  options['theme_dir'] = conf_data['theme_dir']
-  options['theme'] = conf_data['theme']
-  options['odsa_root'] = odsa_dir
-  options['output_dir'] = output_dir
-  options['rel_ebook_path'] = rel_ebook_path
-  options['code_dir'] = code_dir
-  options['code_lang'] = code_lang
-  options['av_dir'] = conf_data['av_root_dir']
-  options['exercises_dir'] = conf_data['exercises_root_dir']
-  # TODO: Temporary fix until preprocessor.py stops creating a ToDo.rst file when were are no TODO directives
-  options['remove_todo'] = 'rm source/ToDo.rst'
+  options['title'] = config.title
+  options['book_name'] = config.book_name
+  options['backend_address'] = config.backend_address
+  options['module_origin'] = config.module_origin
+  options['theme_dir'] = config.theme_dir
+  options['theme'] = config.theme
+  options['odsa_dir'] = config.odsa_dir
+  options['book_dir'] = config.book_dir
+  options['code_dir'] = config.code_dir
+  options['code_lang'] = config.code_lang
+  options['av_root_dir'] = config.av_root_dir
+  options['exercises_root_dir'] = config.exercises_root_dir
+  # TODO: Temporary fix until preprocessor.py stops creating a ToDo.rst file when there are no TODO directives
+  options['remove_todo'] = 'rm source/ToDo.rst' if todo_count == 0 else ''
   # The relative path between the ebook output directory (where the HTML files are generated) and the root ODSA directory
-  options['eb2root'] = os.path.relpath(odsa_dir, output_dir + rel_ebook_path) + '/'
-  options['slides_lib'] = slides_lib
-
-  if todo_count > 0:
-    options['remove_todo'] = ''
+  options['eb2root'] = os.path.relpath(config.odsa_dir, config.book_dir + config.rel_book_output_path) + '/'
+  options['rel_book_output_path'] = config.rel_book_output_path
+  options['slides_lib'] = 'hieroglyph' if slides else ''
 
   # Create a Makefile in the output directory
-  with open(output_dir + 'Makefile','w') as makefile:
+  with open(config.book_dir + 'Makefile','w') as makefile:
     makefile.writelines(makefile_template % options)
 
   # Create conf.py file in output source directory
-  with open(src_dir + 'conf.py','w') as conf_py:
+  with open(config.book_src_dir + 'conf.py','w') as conf_py:
     conf_py.writelines(conf % options)
 
-  # Copy _static and select images from RST/source/Images/ to the output source directory
-  distutils.dir_util.copy_tree(odsa_dir + 'RST/source/_static/', src_dir + '_static', update=1)
-
-  distutils.dir_util.mkpath(src_dir + 'Images/')
-
+  # Copy only the images used by the book from RST/source/Images/ to the book source directory
   for image in images:
-    distutils.file_util.copy_file(odsa_dir + 'RST/source/Images/' + image, src_dir + 'Images/')
-
-  # Copy config file to _static directory
-  distutils.file_util.copy_file(config_file, src_dir + '_static/')
-
-
-  # Create source/_static/config.js in the output directory
-  # Used to set global settings for the client-side framework
-  with open(src_dir + '_static/config.js','w') as config_js:
-    conf_js_data = {}
-    conf_js_data['book_name'] = conf_data['name']
-    conf_js_data['server_url'] = conf_data['backend_address']
-    conf_js_data['module_origin'] = conf_data['module_origin']
-    conf_js_data['exercise_origin'] = conf_data['exercise_origin']
-    conf_js_data['av_origin'] = conf_data['av_origin']
-    conf_js_data['allow_anon_credit'] = str(conf_data['allow_anonymous_credit']).lower()
-    conf_js_data['req_full_ss'] = str(conf_data['req_full_ss']).lower()
-
-    config_js.writelines(config_js_template % conf_js_data)
-
-
-  with open(output_dir + 'index.html','w') as index_html:
-    index_html.writelines(index_html_template % rel_ebook_path)
+    distutils.file_util.copy_file(config.odsa_dir + 'RST/source/Images/' + image, config.book_src_dir + 'Images/')
 
   # Optionally run make on the output directory
-  if 'build_ODSA' not in conf_data or conf_data['build_ODSA']:
+  if config.build_ODSA:
     print '\nBuilding textbook...'
 
-    try:
-      os.chdir(output_dir)
-      if slides:
-        proc = subprocess.Popen(['make','slides'], stdout=subprocess.PIPE)
-      else:
-        proc = subprocess.Popen('make', stdout=subprocess.PIPE)
-      for line in iter(proc.stdout.readline,''):
-        print line.rstrip()
-    finally:
-      os.chdir(cwd)
-
+    if slides:
+      proc = subprocess.Popen(['make', '-C', config.book_dir, 'slides'], stdout=subprocess.PIPE)
+    else:
+      proc = subprocess.Popen(['make', '-C', config.book_dir], stdout=subprocess.PIPE)
+    for line in iter(proc.stdout.readline,''):
+      print line.rstrip()
 
 
 # Code to execute when run as a standalone program
@@ -566,11 +278,7 @@ if __name__ == "__main__":
   # Process script arguments
   if len(sys.argv) > 3:
     print "Invalid config filename"
-    print "Usage: " + sys.argv[0] + " [-s] config_file"
+    print "Usage: " + sys.argv[0] + " [-s] config_file_path"
     sys.exit(1)
 
-  config_file = args[0]
-
-  validate_config_file(config_file)
-
-  configure(config_file, options.slides)
+  configure(args[0], options.slides)
