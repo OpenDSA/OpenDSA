@@ -79,7 +79,7 @@ invalid: min
 	python $(CONFIG_SCRIPT) config/invalid.json
 
 slides: min
-	python $(CONFIG_SCRIPT) s config/slides.json
+	python $(CONFIG_SCRIPT) -s config/slides.json
 
 allBooks: CS3114 OpenDSA Dev Everything test List slides
 
