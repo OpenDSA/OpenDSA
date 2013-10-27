@@ -12,7 +12,7 @@ error_count = 0
 
 required_fields = ['chapters', 'code_dir', 'module_origin', 'title']
 
-optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'build_ODSA', 'exercise_origin', 'exercises_root_dir', 'glob_jsav_exer_options', 'req_full_ss', 'suppress_todo', 'theme', 'theme_dir']
+optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'build_ODSA', 'exercise_origin', 'exercises_root_dir', 'glob_jsav_exer_options', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'theme', 'theme_dir']
 
 
 def process_path(path, abs_prefix):
@@ -270,6 +270,9 @@ def set_defaults(conf_data):
   # If not global exercise options are specified, defer to exercise-specific options or the defaults in odsaAV.js
   if 'glob_jsav_exer_options' not in conf_data:
     conf_data['glob_jsav_exer_options'] = {}
+
+  if 'start_chap_num' not in conf_data:
+    conf_data['start_chap_num'] = 0 #1
 
   if 'suppress_todo' not in conf_data:
     conf_data['suppress_todo'] = False

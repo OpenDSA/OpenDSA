@@ -144,6 +144,8 @@ Settings (all are required unless otherwise specified)
 
 * **req_full_ss** - (optional) a boolean controlling whether students must view every step of a slideshow in order to obtain credit, defaults to ``true`` if omitted
 
+* **start_chap_num** - (optional) specifies at which number to start numbering chapters, defaults to 0 if omitted
+
 * **suppress_todo** - (optional) a boolean controlling whether or not the TODO directives are removed from the RST source files, if this attribute is not present, defaults to ``false`` if omitted
 
   * **Note**: When changing from ``false`` to ``true``, you must run ``make clean`` to completely remove any references to ``ToDo``

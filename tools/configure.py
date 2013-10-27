@@ -57,9 +57,7 @@ from optparse import OptionParser
 from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config
-
-# The location in the output directory where the built HTML files go
-rel_ebook_path = 'html/'
+from postprocessor import update_TOC
 
 # List of exercises encountered in RST files that do not appear in the configuration file
 missing_exercises = []
@@ -76,11 +74,17 @@ todo_count = 0
 # List of fulfilled prerequisite topics
 satisfied_requirements = []
 
+# Maps the chapter name and number to each module, used for correcting the numbers during postprocessing
+module_chap_map = {}
 
-def process_section(config, section, index_rst, depth, chap=None):
+def process_section(config, section, index_rst, depth, current_section_numbers = [], chap=None):
+  # Initialize the section number for the current depth
+  if depth >= len(current_section_numbers):
+    current_section_numbers.append(config.start_chap_num)
+
   for subsect in section:
     if 'exercises' in section[subsect]:
-      process_module(config, index_rst, subsect, section[subsect], depth, chap)
+      process_module(config, index_rst, subsect, section[subsect], depth, current_section_numbers, chap)
     else:
       # List of characters Sphinx uses for headers, the depth of a section header determines which character to use
       sphinx_header_chars = ['=', '-', '`', "'", '.', '*', '+', '^']
@@ -91,14 +95,22 @@ def process_section(config, section, index_rst, depth, chap=None):
       index_rst.write(".. toctree::\n")
       index_rst.write("   :numbered:\n")
       index_rst.write("   :maxdepth: 3\n\n")
-      process_section(config, section[subsect], index_rst, depth + 1, subsect)
+      process_section(config, section[subsect], index_rst, depth + 1, current_section_numbers, chap=subsect)
+
+    # Increments the section count at the current depth
+    current_section_numbers[depth] += 1
+
+  # Reset the section number when done processing the current level
+  if depth >= 0:
+    current_section_numbers[depth] = config.start_chap_num
 
   index_rst.write("\n")
 
-def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0, chap=None):
+def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0, current_section_numbers=[], chap=None):
   global images
   global missing_exercises
   global satisfied_requirements
+  global module_chap_map
 
   mod_name = os.path.splitext(os.path.basename(mod_path))[0]
 
@@ -122,6 +134,10 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, dep
   missing_exercises += module.missing_exercises
   satisfied_requirements += module.requirements_satisfied
 
+  # Maps the chapter name and number to each module, used for correcting the numbers during postprocessing
+  # Have to ignore the last number because that is the module number (which is already provided by Sphinx)
+  module_chap_map[mod_name] = [chap, '.'.join(str(i) for i in current_section_numbers[:-1])]
+
 
 def generate_index_rst(config, slides = False):
   print "Generating index.rst\n"
@@ -137,7 +153,7 @@ def generate_index_rst(config, slides = False):
 
   # Generate the index.rst file
   with open(config.book_src_dir + 'index.rst', 'w+') as index_rst:
-    index_rst.write(index_header)
+    index_rst.write(index_header.format(config.start_chap_num))
     index_rst.write(rst_header % header_data)
 
     # Process all the chapter and module information
@@ -262,6 +278,9 @@ def configure(config_file_path, slides = False):
       proc = subprocess.Popen(['make', '-C', config.book_dir], stdout=subprocess.PIPE)
     for line in iter(proc.stdout.readline,''):
       print line.rstrip()
+
+    # Calls the postprocessor to update chapter, section, and module numbers
+    update_TOC(config.book_src_dir, config.book_dir + config.rel_book_output_path, module_chap_map)
 
 
 # Code to execute when run as a standalone program

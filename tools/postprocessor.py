@@ -1,7 +1,7 @@
 # postprocessor.py is a refactored version of the OpenDSA preprocessor created by efouh.
 # This script is designed to be run after Sphinx has generated all the HTML files.
-# It corrects the chapter and section numbers for titles and hyperlinks using the data 
-# contained in page_chapter.json 
+# It corrects the chapter and section numbers for titles and hyperlinks using the data
+# contained in page_chapter.json
 
 import sys
 import os
@@ -32,10 +32,10 @@ def parse_index_rst(source_dir):
   if not directive:
     print 'Error: No .. sectnum:: or .. chapnum:: directive in index.rst. Please include the directive and try again.'
     sys.exit(1)
-    
+
   return (sectnum, prefix)
-  
-  
+
+
 # Updates the index.html page
 def update_index_html(dest_dir, sectnum):
   # Process index.html separately from the modules files
@@ -57,7 +57,7 @@ def update_index_html(dest_dir, sectnum):
   with open(dest_dir + 'index.html', 'wb') as index_html_file:
     index_html_file.writelines(index_html)
 
-    
+
 # Update the headers and navigation hyperlinks in module HTML files
 def update_mod_html(file_path, data, prefix):
   # Read contents of module HTML file
@@ -74,7 +74,7 @@ def update_mod_html(file_path, data, prefix):
       if 'id="prevmod"' in line or 'id="nextmod"' in line or 'id="prevmod1"' in line or 'id="nextmod1"' in line:
         link_text = re.split('">',re.split('</a>', line, re.IGNORECASE)[0],re.IGNORECASE)[1]
         link_mod = os.path.splitext(re.split('href="',re.split('">', line, re.IGNORECASE)[0],re.IGNORECASE)[1])[0]
-        
+
         if link_mod in data and link_mod not in ['index', 'Gradebook', 'ToDo']:
           new_link_text = '%s.' % data[link_mod][1] + link_text
           html[line_num] = line.replace(link_text, new_link_text)
@@ -97,16 +97,17 @@ def update_mod_html(file_path, data, prefix):
   # Replace original HTML file with modified contents
   with open(file_path, 'wb') as html_file:
     html_file.writelines(html)
-    
 
-def update_TOC(source_dir, dest_dir):
+
+def update_TOC(source_dir, dest_dir, data = None):
   (sectnum, prefix) = parse_index_rst(source_dir)
 
   update_index_html(dest_dir, sectnum)
 
-  # Load the JSON data used to store chapter number and title information
-  with open('page_chapter.json', 'r') as page_chapter_file:
-    data = json.load(page_chapter_file)
+  if not data:
+    # Load the JSON data used to store chapter number and title information
+    with open('page_chapter.json', 'r') as page_chapter_file:
+      data = json.load(page_chapter_file)
 
   html_files = [file for file in os.listdir(dest_dir) if file.endswith('.html')]
   html_files.remove('index.html')
