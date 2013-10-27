@@ -1,6 +1,6 @@
 {
   "title": "OpenDSA: All Modules + TODO List",
-  "book_dir": "Books",
+  "build_dir": "Books",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",

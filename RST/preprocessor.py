@@ -1,7 +1,7 @@
-#The preprocessor role is to create a dictionary of book objects and 
+#The preprocessor role is to create a dictionary of book objects and
 #a number representing their order of appearance in the document.
 #The number is used as hyperlink text for cross referencing.
-#The preprocessor also edit the html page to insert correct chapter and section numbers. 
+#The preprocessor also edit the html page to insert correct chapter and section numbers.
 
 __author__ = 'efouh'
 
@@ -100,7 +100,7 @@ class modPreReq:
       fig = 1
       tab = 1
       exp = 1
-      thr = 1 
+      thr = 1
       eq = 1
       label = ''
       anonym_fig = 0
@@ -129,7 +129,7 @@ class modPreReq:
          if ':topic:' in line:
             str =  re.split('topic:', line, re.IGNORECASE)[1]
             self.covers =  p.sub('',str).split(',')
-        
+
          if '.. math::' in line:
              if ':label:' in data[cpt]:
                  equation = re.split(':label:', data[cpt], re.IGNORECASE)[1]
@@ -139,7 +139,7 @@ class modPreReq:
 
          if line.startswith('.. _'):
             label =  re.split(':', re.split('.. _', line, re.IGNORECASE)[1], re.IGNORECASE)[0]
-            if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. odsafig::') or data[cpt+1].startswith('.. inlineav::'): 
+            if data[cpt+1].startswith('.. figure::') or data[cpt+1].startswith('.. odsafig::') or data[cpt+1].startswith('.. inlineav::'):
                if os.path.splitext(os.path.basename(filename))[0] in config.table:
                  tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                  config.table[label] = tb + '.%s#' %fig
@@ -150,7 +150,7 @@ class modPreReq:
                   tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                   config.table[label] = tb + '.%s#' %tab
                   tab+=1
-                label = '-1' 
+                label = '-1'
             if isExample(data[cpt+1]):
                 if os.path.splitext(os.path.basename(filename))[0] in config.table:
                    tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
@@ -163,23 +163,23 @@ class modPreReq:
                    config.table[label] = tb + '.%s#' %thr
                    thr+=1
                 label = '-3'
- 
+
          if isExample(line):
              if label == '-2':
                  label = ''
              else:
                  exp+=1
-                    
+
          if isTheorem(line):
              if label == '-3':
                  label = ''
              else:
                  thr+=1
-   
+
          if isFigure(line):
-             if label != 'label_used':    
+             if label != 'label_used':
                  fig_label = 'anon_fig%s' %anonym_fig
-                 config.table[fig_label] = fig 
+                 config.table[fig_label] = fig
                  fig+=1
                  anonym_fig+=1
 
@@ -189,8 +189,8 @@ class modPreReq:
              if os.path.splitext(os.path.basename(filename))[0] in config.table:
                  tb = config.table[os.path.splitext(os.path.basename(filename))[0]]
                  config.table[trgt] = tb + '.%s#' %fig
-                 fig+=1 
- 
+                 fig+=1
+
          if ('.. TODO::' in line  or '.. todo::' in line) and len_wthsp==-1 and start==-1 and end==-1:
             start = cpt+1
          if start==cpt:
@@ -395,10 +395,10 @@ def is_file_modified(dict, dir, file, run_number):
      else:
          return False
 
-#This method is run after Sphinx has created all html files. 
+#This method is run after Sphinx has created all html files.
 #It loads the correct chapter and section numbers of each section and hyperlink from page_chapter.json file created
 # by enumFile method before running Sphinx. The method also writes in count.txt the modification date of the file to avoid
-#parsing non modified files  
+#parsing non modified files
 def updateTOC(args):
     iFile = open(args[0]+'index.rst','r')
     iLine = iFile.readlines()
@@ -447,8 +447,8 @@ def updateTOC(args):
           modIndex =[]
           for idxLine in idxL:
              #inject css rule to remove haiku's orange bullets
-             if '</head>' in idxLine:      
-                 idxLine = idxLine.replace('</head>','<style>\nul li {\n\tbackground: none;\n\tlist-style-type: none;\n}\n</style>\n</head>')      
+             if '</head>' in idxLine:
+                 idxLine = idxLine.replace('</head>','<style>\nul li {\n\tbackground: none;\n\tlist-style-type: none;\n}\n</style>\n</head>')
              if 'class="section"' in idxLine:
                 if not start:
                     sectnum+=1
@@ -554,12 +554,12 @@ def todoHTML(todolst):
 def control(argv, args):
    if len(args)==2:
       if not os.path.exists(args[0]):
-         sys.stderr.write("ERROR: <module directory> %s does not exist! \n" % (args[0],))
+         sys.stderr.write("ERROR: <module directory> %s does not exist! \n" % args[0])
          sys.exit(0)
       if not os.path.exists(args[1]):
          os.mkdir(args[1])
    else:
-      print bcolors.FAIL +"ERROR. Usage: %s [-p]  <source directory>  <destination directory>\n" % (argv[0],)  + bcolors.ENDC
+      print bcolors.FAIL +"ERROR. Usage: %s [-p]  <source directory>  <destination directory>\n" % argv[0] + bcolors.ENDC
       sys.exit(0)
 
 
@@ -591,9 +591,9 @@ def getSectionStartNumb(indexfile):
    return 0
 
 
-#Parses all modules files in index.rst and associates each section to their chaper and section numbers 
+#Parses all module files in index.rst and associates each section to their chapter and section numbers
 # in the following format "chapter_number.section_number". The dictionary created is dumped into a file.
-#the file will be used after all html files are created to replace sphinx hyperlink text with numbers. 
+#the file will be used after all html files are created to replace sphinx hyperlink text with numbers.
 def enumFile(folder, folder1):
 
    filelist = []
@@ -623,7 +623,7 @@ def enumFile(folder, folder1):
         if isSection(iLine1[t+1]):
            flag = 1
            chap = iLine[t]
-           config.table[chap.rstrip('\n')] = -1 
+           config.table[chap.rstrip('\n')] = -1
         if flnm in dirlist and not isSection(iLine1[t+1]):
            chaplist =[]
            filelist.append(folder+flnm+'.rst')
@@ -668,11 +668,11 @@ def enumFile(folder, folder1):
 
 def main(argv):
   parser = OptionParser()
-  parser.add_option("-p", "--postprocess", help="updates the table of content after the book is built", dest="postp", action="store_true")
+  parser.add_option("-p", "--postprocess", help="updates the table of contents after the book is built", dest="postp", action="store_true")
   (options, args) = parser.parse_args()
   control(argv,args)
 
-  if options.postp is not None:
+  if options.postp:
      updateTOC(args)
   else:
      modDir=''
