@@ -11,12 +11,12 @@
 Primary versus Secondary Storage
 ================================
 
-Computer storage devices are typically classified into :term:`primary
-memory` or :term:`main memory` on the one hand, and
+Computer storage devices are typically classified into
+:term:`primary memory` or :term:`main memory` on the one hand, and
 :term:`secondary storage` or :term:`peripheral storage` on the other.
 Primary memory usually refers to :term:`Random Access Memory` (RAM),
 while secondary storage refers to devices such as
-hard disk drives, solid state drives, removable ``USB'' drives,
+hard disk drives, solid state drives, removable "USB" drives,
 CDs, and DVDs.
 Primary memory also includes registers, cache, and video memories,
 but we will ignore them for this discussion because their existence

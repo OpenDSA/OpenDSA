@@ -1,6 +1,6 @@
 {
   "title": "CS3114 Fall 2013",
-  "book_dir": "Books",
+  "build_dir": "Books",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
@@ -1255,6 +1255,10 @@
       },
       "Development/FileProg": {
         "long_name": "Programmer's View of Files",
+        "exercises": {}
+      }
+      "Stubs/ExternalSort": {
+        "long_name": "ExternalSort",
         "exercises": {}
       }
     },

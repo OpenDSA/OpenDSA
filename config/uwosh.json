@@ -1,6 +1,6 @@
 {
   "title": "UWOsh",
-  "book_dir": "Books",
+  "build_dir": "Books",
   "code_dir": "SourceCode/JavaScript",
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
@@ -23,6 +23,6 @@
         "long_name": "Current Work on Rabin Karp String Search",
         "exercises": {}
       }
-    } 
+    }
   }
 }

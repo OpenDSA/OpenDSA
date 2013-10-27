@@ -1,6 +1,6 @@
 {
   "title": "OpenDSA Completed Modules",
-  "book_dir": "Books",
+  "build_dir": "Books",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
@@ -13,173 +13,6 @@
       "Intro": {
         "long_name": "How to Use this System",
         "exercises": {}
-      },
-      "Status": {
-        "long_name": "OpenDSA Content Status",
-        "exercises": {}
-      }
-    },
-    "Introduction": {
-      "Background/IntroDSA.rst": {
-        "long_name": "Introduction to Data Structures and Algorithms",
-        "exercises": {
-          "IntroSumm": {
-            "long_name": "Introduction Summary Questions",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      }
-    },
-    "Mathematical Background": {
-      "Background/MathpreIntro": {
-        "long_name": "Chapter Introduction",
-        "exercises": {}
-      },
-      "Background/SetDef": {
-        "long_name": "Set Definitions",
-        "exercises": {
-          "StTFreltn": {
-            "long_name": "Relations Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          },
-          "StTFeqvlnc": {
-            "long_name": "Equivalence Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 3
-          },
-          "StTFprtlordr": {
-            "long_name": "PartialOrder Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 3
-          }
-        }
-      },
-      "Background/MiscMath": {
-        "long_name": "Miscellaneous Notation",
-        "exercises": {}
-      },
-      "Background/Logarithms": {
-        "long_name": "Logarithms",
-        "exercises": {}
-      },
-      "Background/Summations": {
-        "long_name": "Summations",
-        "exercises": {}
-      },
-      "Background/Recursion": {
-        "long_name": "Recursion",
-        "exercises": {
-          "recursionCONTOH": {}
-        }
-      },
-      "Background/Proofs": {
-        "long_name": "Proofs",
-        "exercises": {
-          "proofCON1": {}
-        }
-      },
-      "Background/Estimation": {
-        "long_name": "Estimation",
-        "exercises": {}
-      },
-      "Background/MathpreSumm": {
-        "long_name": "Chapter Summary",
-        "exercises": {
-          "MthBgSumm": {
-            "long_name": "Math Background Summary Questions",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      }
-    },
-    "Algorithm Analysis": {
-      "AlgAnal/AnalChap": {
-        "long_name": "Chapter Intro: Algorithm Analysis",
-        "exercises": {}
-      },
-      "AlgAnal/AnalPrelim": {
-        "long_name": "Problems, Algorithms, and Programs",
-        "exercises": {}
-      },
-      "AlgAnal/AnalIntro": {
-        "long_name": "Comparing Algorithms",
-        "exercises": {}
-      },
-      "AlgAnal/AnalCases": {
-        "long_name": "Best, Average, and Worst Cases",
-        "exercises": {}
-      },
-      "AlgAnal/AnalCompvsAlg": {
-        "long_name": "A Faster Computer, or a Faster Algorithm?",
-        "exercises": {}
-      },
-      "AlgAnal/AnalAsymptotic": {
-        "long_name": "Asymptotic Analysis",
-        "exercises": {
-          "AnalPairSumm": {
-            "long_name": "Function Pairs",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          }
-        }
-      },
-      "AlgAnal/AnalProgram": {
-        "long_name": "Calculating the Running Time of a Program",
-        "exercises": {
-          "AnalProgramSumm": {
-            "long_name": "Program Code Analysis",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      },
-      "AlgAnal/AnalProblem": {
-        "long_name": "Analyzing Problems",
-        "exercises": {}
-      },
-      "AlgAnal/AnalMisunderstanding": {
-        "long_name": "Common Misunderstandings",
-        "exercises": {}
-      },
-      "AlgAnal/AnalMultiple": {
-        "long_name": "Multiple Parameters",
-        "exercises": {}
-      },
-      "AlgAnal/AnalSpace": {
-        "long_name": "Space Bounds",
-        "exercises": {}
-      },
-      "AlgAnal/AnalTuning": {
-        "long_name": "Speeding Up Your Programs",
-        "exercises": {}
-      },
-      "AlgAnal/AlgAnalSumm": {
-        "long_name": "Algorithm Analysis Chapter Summary",
-        "exercises": {
-          "AlgAnalSumm": {
-            "long_name": "Algorithm Analysis Summary",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      }
-    },
-    "Design 1": {
-      "Design/ADT": {
-        "long_name": "Abstract Data Types",
-        "exercises": {
-        }
       }
     },
     "Linear Structures": {
@@ -596,42 +429,6 @@
         }
       }
     },
-    "Design 2": {
-      "Design/DesignPatterns": {
-        "long_name": "Design Patterns",
-        "exercises": {}
-      },
-      "Design/DesignAltList": {
-        "long_name": "Alternate List ADT Design",
-        "exercises": {}
-      },
-      "Design/Comparison": {
-        "long_name": "Comparing Records",
-        "exercises": {
-          "CompareSumm": {
-            "long_name": "Record Comparison Summary",
-            "required": true,
-            "points": 2,
-            "threshold": 5
-          }
-        }
-      },
-      "Design/Dictionary": {
-        "long_name": "The Dictionary ADT",
-        "exercises": {}
-      },
-      "Design/DesignSumm": {
-        "long_name": "The Dictionary ADT",
-        "exercises": {
-          "DesignSumm": {
-            "long_name": "Design Summary",
-            "required": true,
-            "points": 2,
-            "threshold": 5
-          }
-        }
-      }
-    },
     "Binary Trees": {
       "Development/BinaryTreeIntro": {
         "long_name": "Binary Trees Chapter Introduction",
@@ -787,14 +584,6 @@
             "threshold": 3
           }
         }
-      },
-      "Development/Bintree": {
-        "long_name": "Bintrees",
-        "exercises": {}
-      },
-      "Stubs/Huffman": {
-        "long_name": "Huffman Coding",
-        "exercises": {}
       }
     },
     "Sorting": {
@@ -1014,7 +803,10 @@
             "long_name": "Shellsort Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 0.90,
+	    "jsav_exer_options": {
+              "fixmode": "undo"
+             }
           },
           "ShellsortPerformance": {
             "long_name": "Shellsort Performance Activity",
@@ -1500,6 +1292,98 @@
             "threshold": 10
           }
         }
+      }
+    },
+    "Stubs": {
+      "Stubs": {
+        "long_name": "Stubs Chapter",
+        "exercises": {}
+      },
+      "Stubs/SetDef": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Stubs/Recursion": {
+        "long_name": "Recursion",
+        "exercises": {}
+      },
+      "Stubs/AnalProblem": {
+        "long_name": "Analyzing Problems",
+        "exercises": {}
+      },
+      "Stubs/Dictionary": {
+        "long_name": "The Dictionary ADT",
+        "exercises": {}
+      },
+      "Stubs/Comparison": {
+        "long_name": "Comparisons",
+        "exercises": {}
+      },
+      "Stubs/DesignPatterns": {
+        "long_name": "Design Patterns",
+        "exercises": {}
+      },
+      "Stubs/MemoryMan": {
+        "long_name": "Memory Management",
+        "exercises": {}
+      },
+      "Stubs/Multilists": {
+        "long_name": "Multilists",
+        "exercises": {}
+      },
+      "Stubs/Huffman": {
+        "long_name": "Huffman Coding",
+        "exercises": {}
+      },
+      "Stubs/Trie": {
+        "long_name": "Tries",
+        "exercises": {}
+      },
+      "Stubs/GraphShortest": {
+        "long_name": "Shortest Paths Algorithms",
+        "exercises": {}
+      },
+      "Stubs/MCST": {
+        "long_name": "Minimal Cost Spanning Trees",
+        "exercises": {}
+      },
+      "Stubs/Recurrence": {
+        "long_name": "Recurrence Relations",
+        "exercises": {}
+      },
+      "Stubs/AmortAnal": {
+        "long_name": "Amortized Analysis",
+        "exercises": {}
+      },
+      "Stubs/Reductions": {
+        "long_name": "Reductions",
+        "exercises": {}
+      },
+      "Stubs/LimComp": {
+        "long_name": "Limits to Computing",
+        "exercises": {}
+      }
+    },
+    "Search": {
+      "Stubs/Searching": {
+        "long_name": "Searching",
+        "exercises": {}
+      }
+    },
+    "File Processing": {
+      "Stubs/FileProc": {
+        "long_name": "File Processing",
+        "exercises": {}
+      },
+      "Stubs/ExternalSort": {
+        "long_name": "External Sorting",
+        "exercises": {}
+      }
+    },
+    "Indexing": {
+      "Stubs/BTree": {
+        "long_name": "B-Trees",
+        "exercises": {}
       }
     },
     "Appendix": {
