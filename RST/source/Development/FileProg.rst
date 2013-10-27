@@ -53,5 +53,5 @@ file.
   written.
 * ``close()``: Close a file at the end of processing.
 
-Note that the spirit if this ADT is similar to the ``message passing''
+Note that the spirit if this ADT is similar to the "message passing"
 version of the ADT for buffer pools described in Module :numref:`<BuffPool>`.
