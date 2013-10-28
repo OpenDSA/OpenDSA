@@ -13,8 +13,8 @@
   },
   "chapters": {
     "Binary Trees": {
-      "Development/BST": {
-        "long_name": "Binary Search Trees",
+      "Development/ExternalSort": {
+        "long_name": "External Sorting",
         "exercises": {}
       },
       "Development/UnionFind": {
