@@ -18,10 +18,10 @@ def parse_directive_args(line, line_num, expected_args, console_msg_prefix = '')
   args = args[2:]
 
   # Ensure the expected number of arguments was parsed
-  if len(args) < expected_args:
+  if expected_args > -1 and len(args) != expected_args:
     # Print a warning if inlineav is invoked without the minimum number of arguments
     print console_msg_prefix + "ERROR: Invalid directive arguments for object on line " + str(line_num) + ", skipping object"
-    return None
+    return []
 
   return args
 
@@ -74,7 +74,7 @@ class ODSA_RST_Module:
     avmetadata_found = False
 
     # Alter the contents of the module based on the config file
-    i = 1
+    i = 0
     while i < len(mod_data):
       if ':requires:' in mod_data[i]:
         # Parse the list of prerequisite topics from the module
@@ -88,7 +88,9 @@ class ODSA_RST_Module:
         # Parse the list of prerequisite topics this module satisfies and add them to a list of satisfied prereqs
         requirements_satisfied = [req.strip() for req in mod_data[i].replace(':satisfies:', '').split(';')]
       elif '.. figure::' in mod_data[i] or '.. odsafig::' in mod_data[i]:
-        args = parse_directive_args(mod_data[i], i + 1, 0, console_msg_prefix)
+        # Pass -1 as the expected number of arguments because different directives have different numbers of args (-1 will ignore the check)
+        args = parse_directive_args(mod_data[i], i, -1, console_msg_prefix)
+
         image_path = args[-1]
         images.append(os.path.basename(image_path))
       elif '.. TODO::' in mod_data[i]:
@@ -105,7 +107,7 @@ class ODSA_RST_Module:
           todo_count += 1
       elif '.. inlineav::' in mod_data[i]:
         # Parse the arguments from the directive
-        args = parse_directive_args(mod_data[i], i + 1, 2, console_msg_prefix)
+        args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
 
         if args:
           (av_name, av_type) = args
@@ -132,7 +134,7 @@ class ODSA_RST_Module:
             print console_msg_prefix + "WARNING: Unsupported type '" + av_type + "' specified for " + av_name + ", line " + str(i + 1)
       elif '.. avembed::' in mod_data[i]:
         # Parse the arguments from the directive
-        args = parse_directive_args(mod_data[i], i + 1, 2, console_msg_prefix)
+        args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
 
         if args:
           (av_name, av_type) = args
