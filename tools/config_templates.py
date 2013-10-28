@@ -36,7 +36,7 @@ index_header = '''\
    :topic: Data Structures
 
 .. chapnum::
-   :start: 0
+   :start: {0}
    :prefix: Chapter
 
 '''
@@ -80,7 +80,6 @@ html: preprocessor
 	%(remove_todo)s
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
-	python "%(odsa_dir)stools/postprocessor.py" source/ $(HTMLDIR)
 	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
 	rm *.json
 	@echo
@@ -92,7 +91,6 @@ slides: preprocessor
 	@SLIDES=yes \
 	$(SPHINXBUILD) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
-	python "%(odsa_dir)stools/postprocessor.py" source/ $(HTMLDIR)
 	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
 	rm *.json
 	@echo

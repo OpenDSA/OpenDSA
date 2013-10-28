@@ -90,6 +90,7 @@ are in a particular position.
    :figwidth: 90%
    :alt: Disk drive platters
 
+   Disk drive schematic.
    (a) A typical disk drive arranged as a stack of platters.
    (b) One track on a disk drive platter.
 
@@ -125,7 +126,7 @@ This arrangement is shown in Figure :num:`Figure #Diskfig` (b).
    Dots indicate density of information.
    (a) Nominal arrangement of tracks showing decreasing data density
    when moving outward from the center of the disk.
-   (b) A ``zoned'' arrangement with the sector size and density
+   (b) A "zoned" arrangement with the sector size and density
    periodically reset in tracks further away from the center.
 
 In contrast to the physical layout of a hard disk, a CD-ROM consists

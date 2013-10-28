@@ -288,7 +288,7 @@ This is storage space, provided by the bufferpool client and at least
 ``sz`` bytes long, which the 
 buffer pool can take information from (the ``insert`` function) or
 put information into (the ``getbytes`` function).
-Parameter \Cref{pos} indicates where the information will be placed
+Parameter ``pos`` indicates where the information will be placed
 in the buffer pool's logical storage space.
 Physically, it will actually be copied to the appropriate byte
 position in some buffer in the buffer pool.
@@ -408,11 +408,11 @@ and then its contents will be overwritten.
 This inefficiency can be avoided (at least in the buffer-passing
 version) by separating the assignment of
 blocks to buffers from actually reading in data for the block.
-in particular, the following revised buffer-passing ADT does not
+In particular, the following revised buffer-passing ADT does not
 actually read data in the ``acquireBuffer`` method.
 Users who wish to see the old contents must then issue a
-\Cref{readBlock} request to read the data from disk into the buffer,
-and then a \Cref{getDataPointer} request to gain direct access to the
+``readBlock`` request to read the data from disk into the buffer,
+and then a ``getDataPointer`` request to gain direct access to the
 buffer's data contents.
 
 .. codeinclude:: BufferPool/BufferADT.pde
@@ -461,5 +461,5 @@ In a buffer pool, the user decides where a given record will be stored
 but has no control over the precise mechanism by which data are
 transferred to the backing storage.
 This is in contrast to the memory manager described in
-Module :numref:`MemMan` in which the user passes a record to the manager
+Module :numref:`MemoryMan` in which the user passes a record to the manager
 and has no control at all over where the record is stored.

@@ -8,10 +8,13 @@
   "build_ODSA": true,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
+  "glob_jsav_exer_options": {
+    "debug": "true"
+  },
   "chapters": {
     "Binary Trees": {
-      "Development/BST": {
-        "long_name": "Binary Search Trees",
+      "Development/ExternalSort": {
+        "long_name": "External Sorting",
         "exercises": {}
       },
       "Development/UnionFind": {

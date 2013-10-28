@@ -6,9 +6,9 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
-   :topic: Stubs
 
-Search Chapter [STUB]
-=====================
+Set Definitions [STUB]
+======================
 
-Stub.
+Placeholder for Crossreference
+

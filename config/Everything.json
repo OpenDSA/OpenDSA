@@ -8,6 +8,9 @@
   "build_ODSA": true,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
+  "glob_jsav_exer_options": {
+    "debug": "true"
+  },
   "chapters": {
     "Preface": {
       "Intro": {
@@ -1281,12 +1284,24 @@
       }
     },
     "File Processing": {
-      "Stubs/FileProc": {
-        "long_name": "File Processing",
+      "Development/FileProc": {
+        "long_name": "File Processing Chapter Introduction",
         "exercises": {}
       },
-      "Stubs/BuffPool": {
+      "Development/Secondary": {
+        "long_name": "Primary versus Secondary Storage",
+        "exercises": {}
+      },
+      "Development/Diskdrive": {
+        "long_name": "Disk Drives",
+        "exercises": {}
+      },
+      "Development/BuffPool": {
         "long_name": "Buffer Pools",
+        "exercises": {}
+      },
+      "Development/FileProg": {
+        "long_name": "Programmer's View of Files",
         "exercises": {}
       },
       "Stubs/ExternalSort": {
@@ -1776,6 +1791,18 @@
             "threshold": 5
           }
         }
+      },
+      "Development/StringSearchKMP": {
+        "long_name": "KMP String Search Algorithm",
+        "exercises": {}
+      },
+      "Development/StringSearchBoyerMoore": {
+        "long_name": "Boyer-Moore String Search Algorithm",
+        "exercises": {}
+      },
+      "Development/StringSearchRabinKarp": {
+        "long_name": "Rabin-Karp String Search Algorithm",
+        "exercises": {}
       }
     },
     "Limits to Computing": {
