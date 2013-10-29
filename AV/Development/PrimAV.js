@@ -87,6 +87,14 @@
     jsav.umsg("Update the distance value of node " + s.value());
     jsav.step();
     for (i = 0; i < graph.nodeCount(); i++) {
+	  if (i === 3) {
+	    //jsav.step();
+	    var q = jsav.question("MC", "Which Node will be added next to the MST?");
+        q.addChoice("E", {correct: true});
+        q.addChoice("F");
+        q.addChoice("B");
+        q.show();
+	  }
       v = minVertex();
       markIt(v);
       if (distances.value(v.index) === Infinity) {
