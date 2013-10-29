@@ -72,7 +72,7 @@ progress by trying the following exercise.
 
 .. Slideshow for creation of alignment array
 .. 
-.. .. avembed:: AV/Development/Align_Table_Slideshow.html ss
+.. avembed:: AV/Development/Align_Table_Slideshow.html ss
 .. 
 
 
