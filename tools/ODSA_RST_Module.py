@@ -4,24 +4,27 @@ import re
 from string import whitespace as ws
 from config_templates import *
 
-
-def parse_directive_args(line, line_num, expected_args, console_msg_prefix = ''):
+# Parses the arguments from a Sphinx directive, prints error messages if the directive doesn't match the expected format
+def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_prefix = ''):
   # Create a RegEx pattern that will match 1 or more whitespace characters
   p = re.compile('(%s)+' % ('|'.join([c for c in ws])))
 
   # Collapse multiple whitespaces inside the directive to ensure args will be split properly
-  line = p.sub(' ', line.strip())
+  line = p.sub(' ', line).strip()
+  
+  # Print an error if the directive doesn't match what we expect
+  directive = line[:line.find(':: ')].strip().split(' ')
+  if len(directive) != 2 and directive[0] != '..':
+    print console_msg_prefix + "ERROR: Invalid Sphinx directive declaration"
+  
+  # Isolates the arguments to the directive
+  args = line[line.find(':: ') + 3:].split(' ')
+  
 
-  args = line.split(' ')
-
-  # Eliminiate the '..' and directive name
-  args = args[2:]
-
-  # Ensure the expected number of arguments was parsed
-  if expected_args > -1 and len(args) != expected_args:
+  # Ensure the expected number of arguments was parsed (skip the check if -1)
+  if expected_num_args > -1 and len(args) != expected_num_args:
     # Print a warning if inlineav is invoked without the minimum number of arguments
     print console_msg_prefix + "ERROR: Invalid directive arguments for object on line " + str(line_num) + ", skipping object"
-    return []
 
   return args
 
