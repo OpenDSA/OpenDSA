@@ -1,5 +1,5 @@
 (function ($) { 
-// Global variables?????
+// Global variable
 	var click = true;
 	var cll = isChecked();
 	var cll = true;	
@@ -66,7 +66,8 @@ function reshow() {
 	jsav2.displayInit();     
 }
 
-
+//Get a node in the graph based on the x and y coordinates(where the user clicks)
+//Returns the node or null
 function getGraphNode(x, y) {
 	var realX;
 	var realY;
@@ -77,7 +78,6 @@ function getGraphNode(x, y) {
 		realY = node.options.top;
 
 		if(realX + 25 >= x && realX - 25 <= x && realY + 25 >= y && realY - 25 <= y) {		
-			console.log("Node   x: " + node.options.left + " y: " + node.options.top);   
 			node.highlight(); 
 			return node;
 		}
@@ -85,6 +85,8 @@ function getGraphNode(x, y) {
 	return null;		
 }
 
+//Checks if the user is attempting to add node on top of another node
+//
 function isOverlapping(x, y) {
 	var realX;
 	var realY;
@@ -94,9 +96,7 @@ function isOverlapping(x, y) {
 		realX = node.options.left;
 		realY = node.options.top;
 
-		if(realX + 50 >= x && realX - 50 <= x && realY + 50 >= y && realY - 50 <= y) {		
-		//	console.log("Node   x: " + node.options.left + " y: " + node.options.top);   
-			//node.highlight(); 
+		if(((realX + 50) >= x) && ((realX - 50) <= x) && ((realY + 50) >= y) && ((realY - 50) <= y) {		
 			return node;
 		}
 	}	
@@ -116,6 +116,8 @@ function isChecked(){
 	}
 	return $('#chkbox').checked;
 }
+
+
 //Sets variables to enable adding nodes
 function addNodeMode() {
 	addNodes = true;
@@ -124,7 +126,8 @@ function addNodeMode() {
 	addWeights = false;
 	move = false;    
 	message.umsg("You are currently in add node mode");
-}	
+}
+va	
 //Sets variables to enable removing nodes
 function removeNodeMode() {
 	removeNode = true;
@@ -186,12 +189,6 @@ function moveNodeMode() {
 }
 
 
-function validateNodeClick(nodeOne, nodeTwo) {
-	if(nodeOne === null || nodeTwo === null) {
-		alert("Must click on a node -- Try again");
-		click = !click;	
-	}
-}		
 
 //Check if click is inside the canvas
 function inside(x, y){
@@ -265,8 +262,6 @@ if(move) {
   		jsav.step();
   		return;   	
  	}
-// 	return;
-//	click = !click;
  }
 
 /* Add Edges */
@@ -326,9 +321,7 @@ if(addWeights && g.nodeCount() > 1) {
 		} else {
 			var weight = window.prompt("Input weight of edge","");
 			console.log("weight " + weight);
-			g.addEdge(nodeOne,nodeTwo,{"weight": weight});	
-			//Removed this step 2nd
-			//jsav.step();				
+			g.addEdge(nodeOne,nodeTwo,{"weight": weight});							
 			message.umsg("Connected node " + nodeOne.value() + " to node " + nodeTwo.value() + " with an edge weight of "  + weight);
 			g.layout();
 
