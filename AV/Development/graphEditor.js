@@ -5,7 +5,7 @@
 	var cll = true;	
 	var message = new JSAV($('.avcontainer'));
 	var jsav = new JSAV($('.jsavcanvas')); 
-	var g = jsav.ds.graph({layout: "manual", directed: cll, height:"450px", width:"600px"});
+	var g = jsav.ds.graph({layout: "manual", directed: cll, height:"450px", width:"776px"});
 	var g2 = jsav.ds.graph(); 
 	var size; 
 	var i = g.nodeCount(); 
@@ -195,7 +195,7 @@ function validateNodeClick(nodeOne, nodeTwo) {
 
 //Check if click is inside the canvas
 function inside(x, y){
-	if(x > 0 && x < 550 && y > 0 && y < 400 ){
+	if(x > 0 && x < 730 && y > 0 && y < 400 ){
 		insideCanvas = true;	
 	} else {
 		insideCanvas = false;
@@ -213,17 +213,19 @@ var y = e.pageY - 220; 		// y click coordinate   190
 inside(x, y);
 console.log('x ' + x);
  console.log('y ' + y);
-if(removeNode) {
-	moveNode = getGraphNode(x, y);
-	if(moveNode!=null) {
-		g.removeNode(moveNode);
 
-		g.layout();
-		return;
-	} else {
+
+if(removeNode) {	
+	moveNode = getGraphNode(x, y);
+	g.removeNode(moveNode);
+	g.layout();
+	jsav.step();
+	click = !click;
+	return;
+} else {
 		message.umsg("You must select a node before attempting to remove it");
-	}
 }
+
 
 /* Add the node to the canvas and store the id (i) and coordinates (x and y) in an array. */
 if(addNodes && insideCanvas) {
@@ -232,8 +234,10 @@ if(addNodes && insideCanvas) {
 		message.umsg("Adding node " + i + " to graph");
 		g.addNode(i, {"left": x, "top": y}); 
 		i++;
+		click = !click;
 	} else {
 		message.umsg("You can not add a node on top of another node");
+		click = !click;
 	}
 }
 /*Move does not work correctly now -- disconnected handler */
@@ -285,7 +289,7 @@ if(addEdges && g.nodeCount() > 1) {
 			jsav.umsg("Can not connect a node to itself");
 			click = !click;
 			return;
-		}	else if (g.hasEdge(nodeOne,nodeTwo)) {
+		} else if (g.hasEdge(nodeOne,nodeTwo)) {
 			alert("Graph already has a edge between " + nodeOne.value() +
 				" and " + nodeTwo.value());
 			click = !click;
@@ -295,7 +299,6 @@ if(addEdges && g.nodeCount() > 1) {
 			message.umsg("Connected node " + nodeOne.value() + " to node " + nodeTwo.value());	
 	//		jsav.displayInit();	
 			g.layout();
-
 			click = !click;		
 			return;			
 		}
