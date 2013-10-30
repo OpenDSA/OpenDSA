@@ -218,12 +218,10 @@ another file.
 Here is a sketch of the algorithm, as illustrated by
 Figure :num:`Figure #ExMerge`.
 
-ExMerge.png
-
 .. _ExMerge:
 
-.. odsafig:: Images/Plat.png
-   :width: 300
+.. odsafig:: Images/ExMerge.png
+   :width: 500
    :align: center
    :capalign: justify
    :figwidth: 90%
@@ -396,12 +394,10 @@ Output to a buffer is similar:
 Once the buffer fills up it is written to disk as a unit.
 This process is illustrated by Figure :num:`Figure #RSOver`.
 
-Images/RSOver.png
-
 .. _RSOver:
 
-.. odsafig:: Images/Plat.png
-   :width: 300
+.. odsafig:: Images/RSOver.png
+   :width: 500
    :align: center
    :capalign: justify
    :figwidth: 90%
@@ -465,11 +461,9 @@ run.
 Figure :num:`Figure #RepSel` illustrates part of a run being created
 by replacement selection.
 
-Images/ExMerge.png
-
 .. _RepSel:
 
-.. odsafig:: Images/Plat.png
+.. odsafig:: Images/RepSel.png
    :width: 300
    :align: center
    :capalign: justify
@@ -522,12 +516,10 @@ revolution :math:`S` snow is still on the track, so :math:`2S` snow
 must fall during a revolution, and :math:`2S` snow is removed during a
 revolution (leaving :math:`S` snow behind).
 
-Images/SnowPlow.png
-
 .. _SnowPlow:
 
-.. odsafig:: Images/Plat.png
-   :width: 300
+.. odsafig:: Images/SnowPlow.png
+   :width: 250
    :align: center
    :capalign: justify
    :figwidth: 90%
@@ -598,11 +590,10 @@ When the current block for any run is exhausted, the next block from
 that run is read from disk.
 Figure :num:`Figure #MultiMrg` illustrates a multiway merge.
 
-Images/MultiMrg.png
 .. _MultiMrg:
 
-.. odsafig:: Images/Plat.png
-   :width: 300
+.. odsafig:: Images/MultiMrg.png
+   :width: 350
    :align: center
    :capalign: justify
    :figwidth: 90%
