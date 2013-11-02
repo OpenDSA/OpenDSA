@@ -1257,7 +1257,7 @@
         "long_name": "Programmer's View of Files",
         "exercises": {}
       },
-      "Stubs/ExternalSort": {
+      "Development/ExternalSort": {
         "long_name": "ExternalSort",
         "exercises": {}
       }
