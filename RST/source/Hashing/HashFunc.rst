@@ -22,7 +22,7 @@ If we are careful -- or lucky -- when selecting a hash function, then
 the actual number of collisions will be few.
 Unfortunately, even under the best of circumstances, collisions are
 nearly unavoidable.
-To illuastrate, consider a classroom full of students.
+To illustrate, consider a classroom full of students.
 What is the probability that some pair of students
 shares the same birthday (i.e., the same day of the year, not
 necessarily the same year)?

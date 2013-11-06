@@ -1527,6 +1527,48 @@
         }
       }
     },
+    "Memory Management": {
+      "Development/MemmanIntro": {
+        "long_name": "Chapter Introduction: Memory Management",
+        "exercises": {}
+      },
+      "Development/Dynamic": {
+        "long_name": "Dynamic Memory Allocation",
+        "exercises": {}
+      },
+      "Development/SequentialFit": {
+        "long_name": "Sequential-Fit Methods",
+        "exercises": {}
+      },
+      "Development/FirstFit": {
+        "long_name": "First Fit",
+        "exercises": {}
+      },
+      "Development/CircularFit": {
+        "long_name": "Circular First Fit",
+        "exercises": {}
+      },
+      "Development/BestFit": {
+        "long_name": "Best Fit",
+        "exercises": {}
+      },
+      "Development/WorstFit": {
+        "long_name": "Worst Fit",
+        "exercises": {}
+      },
+      "Development/MMPerformance": {
+        "long_name": "Sequential-Fit Performance",
+        "exercises": {}
+      },
+      "Development/Buddy": {
+        "long_name": "Other Memory Allocation Methods",
+        "exercises": {}
+      },
+      "Development/Garbage": {
+        "long_name": "Failure Policies and Garbage Collection",
+        "exercises": {}
+      }
+    },
     "General Trees": {
       "Stubs/GenTree": {
         "long_name": "General Trees",
@@ -1534,16 +1576,6 @@
       },
       "Stubs/UnionFind": {
         "long_name": "Union/Find",
-        "exercises": {}
-      }
-    },
-    "Search": {
-      "Stubs/Searching": {
-        "long_name": "Search Chapter Introduction",
-        "exercises": {}
-      },
-      "Stubs/SelfOrg": {
-        "long_name": "Self Organizing Lists Stub",
         "exercises": {}
       }
     },
