@@ -10,30 +10,46 @@
   var distances;
   var labels;
   var arr;     //Used to initialize the distance and labels arrays.
-
+  var userCreated;
+  var gg;      //Serialized graph  
+  $('#create').click(function () {
+    window.open('graphEditor.html', '', 'width = 800, height = 600, screenX = 300, screenY = 50');
+  });
+  $('#show').click(function () {
+    var g = localStorage['graph'];
+	gg = jQuery.parseJSON(g);
+	userCreated = true;
+	init();
+  });
   function runit() {
+    userCreated = false;
+	init();
+  }
+  function init() {
     var i;
     ODSA.AV.reset(true);
+	if (jsav) {
+	  jsav.clear();
+	}
     jsav = new JSAV($('.avcontainer'));
-    graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});
-    mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
-    initGraph();
-    graph.layout();
-    arr = new Array(graph.nodeCount());
+    graph = jsav.ds.graph({width: 776, height: 450, layout: "manual", directed: false});
+	mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
+	initGraph();
+	graph.layout();
+	arr = new Array(graph.nodeCount());
     for (i = 0; i < arr.length; i++) {
       arr[i] = Infinity;
     }
-    distances = jsav.ds.array(arr, {layout: "vertical", left: 600, top: 20});
+    distances = jsav.ds.array(arr, {layout: "vertical", left: 650, top: -25});
     for (i = 0; i < arr.length; i++) {
       arr[i] = gnodes[i].value();
     }
-    labels = jsav.ds.array(arr, {layout: "vertical", left: 553, top: 20});
+    labels = jsav.ds.array(arr, {layout: "vertical", left: 603, top: -25});
     jsav.displayInit();
     prim(gnodes[0]);            // Run Prim's algorithm from start node.
     displayMST();
     jsav.recorded();
   }
-
   function displayMST() {
     var next;
     var edges = mst.edges();
@@ -68,10 +84,9 @@
         v = next;
       }
     }
-    //console.log("v is " + v.value() + ", Distance for v is " + distances.value(v.index));
+    console.log("v is " + v.value() + ", Distance for v is " + distances.value(v.index));
     return v;
   }
-
   // Compute Prim's algorithm and return edges
   function prim(s) {
     var v;         // The current node added to the MST
@@ -97,6 +112,7 @@
       if (v !== s) {
         //Add an edge to the MST
         var edge = graph.getEdge(v.parent, v);
+		console.log(v.parent.value()+'    '+v.value());
         edge.css({"stroke-width": "4", "stroke": "red"});
         var mstedge = mst.addEdge(mstnodes[v.parent.index], mstnodes[v.index], {"weight": edge.weight()});
         mstedge.css({"stroke-width": "2", "stroke": "red"});
@@ -132,31 +148,45 @@
 
   // Initialize the graph.
   function initGraph() {
-
-    //Nodes of the original graph
-    var a = graph.addNode("A", {"left": 25, "top": 50});
-    var b = graph.addNode("B", {"left": 325, "top": 50});
-    var c = graph.addNode("C", {"left": 145, "top": 75});
-    var d = graph.addNode("D", {"left": 145, "top": 200});
-    var e = graph.addNode("E", {"left": 0, "top": 300});
-    var f = graph.addNode("F", {"left": 325, "top": 250});
-    //Nodes of the MST
-    mst.addNode("A", {"left": 25, "top": 50});
-    mst.addNode("B", {"left": 325, "top": 50});
-    mst.addNode("C", {"left": 145, "top": 75});
-    mst.addNode("D", {"left": 145, "top": 200});
-    mst.addNode("E", {"left": 0, "top": 300});
-    mst.addNode("F", {"left": 325, "top": 250});
-    //Original graph edges
-    graph.addEdge(a, c, {"weight": 7});
-    graph.addEdge(a, e, {"weight": 9});
-    graph.addEdge(c, b, {"weight": 5});
-    graph.addEdge(c, d, {"weight": 1});
-    graph.addEdge(c, f, {"weight": 2});
-    graph.addEdge(f, b, {"weight": 6});
-    graph.addEdge(d, f, {"weight": 2});
-    graph.addEdge(e, f, {"weight": 1});
-
+    if (!userCreated) {
+      //Nodes of the original graph
+      var a = graph.addNode("A", {"left": 25, "top": 50});
+      var b = graph.addNode("B", {"left": 325, "top": 50});
+      var c = graph.addNode("C", {"left": 145, "top": 75});
+      var d = graph.addNode("D", {"left": 145, "top": 200});
+      var e = graph.addNode("E", {"left": 0, "top": 300});
+      var f = graph.addNode("F", {"left": 325, "top": 250});
+      //Nodes of the MST
+      mst.addNode("A", {"left": 25, "top": 50});
+      mst.addNode("B", {"left": 325, "top": 50});
+      mst.addNode("C", {"left": 145, "top": 75});
+      mst.addNode("D", {"left": 145, "top": 200});
+      mst.addNode("E", {"left": 0, "top": 300});
+      mst.addNode("F", {"left": 325, "top": 250});
+      //Original graph edges
+      graph.addEdge(a, c, {"weight": 7});
+      graph.addEdge(a, e, {"weight": 9});
+      graph.addEdge(c, b, {"weight": 5});
+      graph.addEdge(c, d, {"weight": 1});
+      graph.addEdge(c, f, {"weight": 2});
+      graph.addEdge(f, b, {"weight": 6});
+      graph.addEdge(d, f, {"weight": 2});
+      graph.addEdge(e, f, {"weight": 1});
+	}
+	else {
+	  for (var i = 0; i < gg.nodes.length; i++) {
+	    graph.addNode(String.fromCharCode(i + 65), {"left": parseInt(gg.nodes[i].left), "top": parseInt(gg.nodes[i].top)});
+	    mst.addNode(String.fromCharCode(i + 65), {"left": parseInt(gg.nodes[i].left), "top": parseInt(gg.nodes[i].top)});
+	  }
+	  for (var i = 0; i < gg.edges.length; i++) {
+	    if (gg.edges[i].weight !== undefined) {
+	      graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {"weight": parseInt(gg.edges[i].weight)});
+        }
+	    else {
+	      graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
+	    }
+	  }
+	}
     gnodes = graph.nodes();
     mstnodes = mst.nodes();
     for (var i = 0; i < mstnodes.length; i++) {
