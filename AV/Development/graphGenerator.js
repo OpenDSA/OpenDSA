@@ -25,7 +25,6 @@
       }
       else {
         randomWeights[count] = weight;
-		console.log('--'+ randomWeights[count]);
         count++;
       }
       if (count === nEdges){
@@ -91,26 +90,25 @@
 	generateRandomPairs();
 	generateRandomWeights();
 	generateGraph();
-	return graph;
   }
   function generateGraph () {
     if (graph) {
 	  graph.clear();
 	}
-    graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});
+    graph = jsav.ds.graph({width: 600, height: 400, layout: "automatic", directed: false});
 	for (var i = 0; i < nNodes; i++) {
-	  graph.addNode(nodes[i], {"left":(Math.random() * 350), "top":(Math.random() * 350)});
+	  graph.addNode(nodes[i]);
 	}
 	for (var i = 0; i < nEdges; i++) {
 	  console.log(edgeStarts[i]+"  "+edgeEnds[i]);
 	  graph.addEdge(graph.nodes()[edgeStarts[i]], graph.nodes()[edgeEnds[i]]
-	  ,{"weight": randomWeights[i]});
+	  ,{"weight": parseInt(randomWeights[i])});
 	}
   }
   function handler () {
     nNodes = parseInt($('#nodeCount').find(":selected").text());
     nEdges = parseInt($('#edgeCount').find(":selected").text());
-    graph = generate (nNodes, nEdges);
+    generate (nNodes, nEdges);
     graph.layout();
   }
   function about() {
