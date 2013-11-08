@@ -203,7 +203,7 @@ together without cycles,
 such as the Unix file system where files can only be organized
 as a Directed Acyclic Graph.
 
-.. _MemMode:
+.. _LISPdang:
 
 .. odsafig:: Images/LISPdang.png
    :width: 200
