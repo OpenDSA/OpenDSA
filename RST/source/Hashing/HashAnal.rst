@@ -56,7 +56,7 @@ table.
 Assuming that every slot in the table has equal probability of being
 the home slot for the next record,
 the probability of finding the home position occupied is
-&alpha;.
+:math:`\alpha`.
 The probability of finding both the home position occupied and the
 next slot on the probe sequence occupied is :math:`(N(N-1))/(M(M-1))`.
 The probability of :math:`i` collisions is
@@ -126,7 +126,7 @@ record access.
 This is extraordinarily efficient, much better than
 binary search which requires :math:`\log n` record accesses.
 As :math:`\alpha` increases, so does the expected cost.
-For small values of &alpha;, the expected cost is low.
+For small values of :math:`\alpha`, the expected cost is low.
 It remains below two until the hash table is about half full.
 When the table is nearly empty, adding a new record to the table
 does not increase the cost of future search operations by much.
