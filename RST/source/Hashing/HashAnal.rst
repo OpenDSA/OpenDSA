@@ -82,17 +82,22 @@ the insertion costs) by integrating from 0 to the current value of
 :math:`(1/\alpha) \log_e 1/(1-\alpha).`
 
 It is important to realize that these equations represent the expected
-cost for operations using the unrealistic assumption that the
-probe sequence is based on a random
-permutation of the slots in the hash
-table (thus avoiding all expense resulting from clustering).
-Thus, these costs are lower-bound estimates in the
-average case.
+cost for operations when using the unrealistic assumption that the
+probe sequence is based on a random permutation of the slots in the
+hash table.
+We thereby avoid all the expense that results from a less-than-perfect
+collision resolution policy.
+Thus, these costs are lower-bound estimates in the average case.
 The true average cost under linear
 probing is :math:`.5(1 + 1/(1-\alpha)^2)` for
 insertions or unsuccessful searches and
 :math:`.5(1 + 1/(1-\alpha))` for deletions or successful
 searches.
+
+.. TODO::
+   :type: Text
+
+   Where did that last claim about the linear probing cost come from?
 
 .. _HashPlot:
 
