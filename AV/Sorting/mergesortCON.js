@@ -20,15 +20,23 @@
 
   var jsavarr_answer = av.ds.array(empty, {indexed: true, center: true, // let this auto-center
                                          layout: "array"});
-  // calculate the position of the jsavarr_answer element
-  var answerLeftPosition = jsavarr_answer.element.position().left;
-  // position the left array absolutely
+  // position the left array relative to the answer array
   var jsavarr_left = av.ds.array(leftArray, {indexed: true, center: false,
                                               layout: "array",
-                                              left: answerLeftPosition - blockWidth / 2});
+                                              relativeTo: jsavarr_answer,
+                                              left: - (blockWidth / 2),
+                                              top: 20,
+                                              myAnchor: "left top",
+                                              anchor: "left bottom"
+                                            });
   var jsavarr_right = av.ds.array(rightArray, {indexed: true, center: false,
                                                 layout: "array",
-                                                left: blockWidth * 5.5 + answerLeftPosition });
+                                                relativeTo: jsavarr_answer,
+                                                left: blockWidth * 5.5,
+                                                top: 20,
+                                                myAnchor: "left top",
+                                                anchor: "left bottom"
+                                              });
   av.umsg("We now merge two sorted lists into one.");
   av.displayInit();
   av.umsg("First compare the smallest values in each list");
