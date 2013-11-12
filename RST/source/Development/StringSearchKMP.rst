@@ -70,10 +70,6 @@ progress by trying the following exercise.
 
 .. avembed:: Exercises/Development/KMP_Exercise.html ka
 
-.. Slideshow for creation of alignment array
-.. 
-.. avembed:: AV/Development/Align_Table_Slideshow.html ss
-.. 
 
 
 The creation of the :math:`align` is itself an interesting algorithm
