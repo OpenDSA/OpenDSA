@@ -13,10 +13,6 @@
   },
   "chapters": {
     "Binary Trees": {
-      "Development/ExternalSort": {
-        "long_name": "External Sorting",
-        "exercises": {}
-      },
       "Development/UnionFind": {
         "long_name": "UnionFind",
         "exercises": {}
@@ -26,25 +22,49 @@
         "exercises": {}
       }
     },
-    "File Processing": {
-      "Development/FileProc": {
-        "long_name": "File Processing Chapter Introduction",
+    "Memory Management": {
+      "Development/MemmanIntro": {
+        "long_name": "Chapter Introduction: Memory Management",
         "exercises": {}
       },
-      "Development/Secondary": {
-        "long_name": "Primary versus Secondary Storage",
+      "Development/Dynamic": {
+        "long_name": "Dynamic Memory Allocation",
         "exercises": {}
       },
-      "Development/Diskdrive": {
-        "long_name": "Disk Drives",
+      "Development/SequentialFit": {
+        "long_name": "Sequential-Fit Methods",
         "exercises": {}
       },
-      "Development/BuffPool": {
-        "long_name": "Buffer Pools",
+      "Development/FirstFit": {
+        "long_name": "First Fit",
         "exercises": {}
       },
-      "Development/FileProg": {
-        "long_name": "Programmer's View of Files",
+      "Development/CircularFit": {
+        "long_name": "Circular First Fit",
+        "exercises": {}
+      },
+      "Development/BestFit": {
+        "long_name": "Best Fit",
+        "exercises": {}
+      },
+      "Development/WorstFit": {
+        "long_name": "Worst Fit",
+        "exercises": {}
+      },
+      "Development/MMPerformance": {
+        "long_name": "Sequential-Fit Performance",
+        "exercises": {}
+      },
+      "Development/MMPerformance2": {
+        "long_name": "Sequential-Fit Performance (cont)",
+        "exercises": {}
+      },
+      "Development/Buddy": {
+        "long_name": "Other Memory Allocation Methods",
+        "exercises": {}
+      },
+      "Development/Garbage": {
+        "long_name": "Failure Policies and Garbage Collection",
         "exercises": {}
       }
     },

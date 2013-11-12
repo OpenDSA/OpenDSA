@@ -34,7 +34,7 @@ height:500px;
 
 .jsavgraph  {
 	width:600px;
-	height:500px;
+	height:450px;
 	margin:0;
 }
 .jsavautoresize {
@@ -47,9 +47,9 @@ height:500px;
 }
 
 .jsavcanvas {
-	height:500px;
-	width:600px;
+	
 border:1px solid black;
+height: 450px;
 padding:0;
 }
 

@@ -339,7 +339,7 @@
             "points": 1,
             "threshold": 3
           }
-	}
+        }
       },
       "List/Freelist": {
         "long_name": "Freelists",
@@ -1600,4 +1600,3 @@
     }
   }
 }
-

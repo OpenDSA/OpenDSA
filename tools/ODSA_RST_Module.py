@@ -4,24 +4,27 @@ import re
 from string import whitespace as ws
 from config_templates import *
 
-
-def parse_directive_args(line, line_num, expected_args, console_msg_prefix = ''):
+# Parses the arguments from a Sphinx directive, prints error messages if the directive doesn't match the expected format
+def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_prefix = ''):
   # Create a RegEx pattern that will match 1 or more whitespace characters
   p = re.compile('(%s)+' % ('|'.join([c for c in ws])))
 
   # Collapse multiple whitespaces inside the directive to ensure args will be split properly
-  line = p.sub(' ', line.strip())
+  line = p.sub(' ', line).strip()
+  
+  # Print an error if the directive doesn't match what we expect
+  directive = line[:line.find(':: ')].strip().split(' ')
+  if len(directive) != 2 and directive[0] != '..':
+    print console_msg_prefix + "ERROR: Invalid Sphinx directive declaration"
+  
+  # Isolates the arguments to the directive
+  args = line[line.find(':: ') + 3:].split(' ')
+  
 
-  args = line.split(' ')
-
-  # Eliminiate the '..' and directive name
-  args = args[2:]
-
-  # Ensure the expected number of arguments was parsed
-  if len(args) < expected_args:
+  # Ensure the expected number of arguments was parsed (skip the check if -1)
+  if expected_num_args > -1 and len(args) != expected_num_args:
     # Print a warning if inlineav is invoked without the minimum number of arguments
     print console_msg_prefix + "ERROR: Invalid directive arguments for object on line " + str(line_num) + ", skipping object"
-    return None
 
   return args
 
@@ -74,7 +77,7 @@ class ODSA_RST_Module:
     avmetadata_found = False
 
     # Alter the contents of the module based on the config file
-    i = 1
+    i = 0
     while i < len(mod_data):
       if ':requires:' in mod_data[i]:
         # Parse the list of prerequisite topics from the module
@@ -88,7 +91,9 @@ class ODSA_RST_Module:
         # Parse the list of prerequisite topics this module satisfies and add them to a list of satisfied prereqs
         requirements_satisfied = [req.strip() for req in mod_data[i].replace(':satisfies:', '').split(';')]
       elif '.. figure::' in mod_data[i] or '.. odsafig::' in mod_data[i]:
-        args = parse_directive_args(mod_data[i], i + 1, 0, console_msg_prefix)
+        # Pass -1 as the expected number of arguments because different directives have different numbers of args (-1 will ignore the check)
+        args = parse_directive_args(mod_data[i], i, -1, console_msg_prefix)
+
         image_path = args[-1]
         images.append(os.path.basename(image_path))
       elif '.. TODO::' in mod_data[i]:
@@ -105,7 +110,7 @@ class ODSA_RST_Module:
           todo_count += 1
       elif '.. inlineav::' in mod_data[i]:
         # Parse the arguments from the directive
-        args = parse_directive_args(mod_data[i], i + 1, 2, console_msg_prefix)
+        args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
 
         if args:
           (av_name, av_type) = args
@@ -132,7 +137,7 @@ class ODSA_RST_Module:
             print console_msg_prefix + "WARNING: Unsupported type '" + av_type + "' specified for " + av_name + ", line " + str(i + 1)
       elif '.. avembed::' in mod_data[i]:
         # Parse the arguments from the directive
-        args = parse_directive_args(mod_data[i], i + 1, 2, console_msg_prefix)
+        args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
 
         if args:
           (av_name, av_type) = args

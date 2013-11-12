@@ -1309,13 +1309,30 @@
         "exercises": {}
       }
     },
-    "Search": {
-      "Stubs/Searching": {
+    "Searching": {
+      "Development/Searching": {
         "long_name": "Search Chapter Introduction",
+        "dispModComp": true,
         "exercises": {}
       },
-      "Stubs/SelfOrg": {
-        "long_name": "Self Organizing Lists Stub",
+      "Development/UnsortedSearch": {
+        "long_name": "Analyzing Search in Unsorted Arrays",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "Development/SortedSearch": {
+        "long_name": "Search in sorted Arrays",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "Development/SelfOrg": {
+        "long_name": "Self-Organizing Lists",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "Development/SetSearch": {
+        "long_name": "Bit Vectors for Representing Sets",
+        "dispModComp": true,
         "exercises": {}
       }
     },

@@ -94,11 +94,11 @@
 
   av.umsg("Here are the probabilities for each empty slot of getting the next record. Obviously, they are not balanced.");
   arr.unhighlight(3);
-  av.label("60%", {left: 379, top: -20});
-  av.label("10%", {left: 425, top: -20});
-  av.label("10%", {left: 471, top: -20});
-  av.label("10%", {left: 517, top: -20});
-  av.label("10%", {left: 563, top: -20});
+  av.label("60%", {left: 294, top: -20});
+  av.label("10%", {left: 341, top: -20});
+  av.label("10%", {left: 386, top: -20});
+  av.label("10%", {left: 432, top: -20});
+  av.label("10%", {left: 478, top: -20});
   av.step();
 
   av.umsg("In other words, clustering tends to lead to more clustering, because we tend to put new records next to old ones.");

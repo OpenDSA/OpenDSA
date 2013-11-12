@@ -41,6 +41,7 @@ var setRed = function (arr, index) {
 
   av.umsg("A record that hashes to slot 3...");
   arr.unhighlight([0, 2, 4, 6, 8]);
+  arr.css(4, {"background-color": "#fff" }); // Why doesn't this unhighlight?
   setBlue(arr, 3);
   av.step();
 

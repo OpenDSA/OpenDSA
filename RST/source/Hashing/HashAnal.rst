@@ -56,7 +56,7 @@ table.
 Assuming that every slot in the table has equal probability of being
 the home slot for the next record,
 the probability of finding the home position occupied is
-&alpha;.
+:math:`\alpha`.
 The probability of finding both the home position occupied and the
 next slot on the probe sequence occupied is :math:`(N(N-1))/(M(M-1))`.
 The probability of :math:`i` collisions is
@@ -82,17 +82,22 @@ the insertion costs) by integrating from 0 to the current value of
 :math:`(1/\alpha) \log_e 1/(1-\alpha).`
 
 It is important to realize that these equations represent the expected
-cost for operations using the unrealistic assumption that the
-probe sequence is based on a random
-permutation of the slots in the hash
-table (thus avoiding all expense resulting from clustering).
-Thus, these costs are lower-bound estimates in the
-average case.
+cost for operations when using the unrealistic assumption that the
+probe sequence is based on a random permutation of the slots in the
+hash table.
+We thereby avoid all the expense that results from a less-than-perfect
+collision resolution policy.
+Thus, these costs are lower-bound estimates in the average case.
 The true average cost under linear
 probing is :math:`.5(1 + 1/(1-\alpha)^2)` for
 insertions or unsuccessful searches and
 :math:`.5(1 + 1/(1-\alpha))` for deletions or successful
 searches.
+
+.. TODO::
+   :type: Text
+
+   Where did that last claim about the linear probing cost come from?
 
 .. _HashPlot:
 
@@ -126,7 +131,7 @@ record access.
 This is extraordinarily efficient, much better than
 binary search which requires :math:`\log n` record accesses.
 As :math:`\alpha` increases, so does the expected cost.
-For small values of &alpha;, the expected cost is low.
+For small values of :math:`\alpha`, the expected cost is low.
 It remains below two until the hash table is about half full.
 When the table is nearly empty, adding a new record to the table
 does not increase the cost of future search operations by much.

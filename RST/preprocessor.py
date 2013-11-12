@@ -637,17 +637,13 @@ def enumFile(folder, folder1):
               if isIncludeChapter(mod):
                  if is_first_chapter:
                     config.table[flnm]='%s.%s'%(section,chapter)
-                    if config.table[chap.rstrip('\n')] == -1:
-                        config.table[chap.rstrip('\n')]=flnm
-                    chaplist.append(chap.rstrip('\n'))
-                    chaplist.append(section)
-                    chap_mod[flnm]= chaplist
+                    if config.table[chap.rstrip()] == -1:
+                        config.table[chap.rstrip()]=flnm
+                    chap_mod[flnm]= [chap.rstrip(), section]
                     is_first_chapter = False
                  else:
-                    config.table[flnm+'#'+iLine2[line_number-1].rstrip('\n').replace(' ','-').lower()]='%s.%s'%(section,chapter)
-                    chaplist.append(chap.rstrip('\n'))
-                    chaplist.append(section)
-                    chap_mod[flnm+'#'+iLine2[line_number].rstrip('\n').replace(' ','-').lower()]= chaplist
+                    config.table[flnm+'#'+iLine2[line_number-1].rstrip().replace(' ','-').lower()]='%s.%s'%(section,chapter)
+                    chap_mod[flnm+'#'+iLine2[line_number-1].rstrip().replace(' ','-').lower()]= [chap.rstrip(), section]
                  chapter+=1
               line_number +=1
      if isSection(flnm):
