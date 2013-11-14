@@ -12,6 +12,10 @@
   var arr;     //Used to initialize the distance and labels arrays.
   var userCreated;
   var gg;      //Serialized graph  
+  var nodesOrdered = [];  //Holding the ordered nodes added to the MST
+  var step;               //A counter of the nodes added so far  
+  var q;                  //Question
+  
   $('#create').click(function () {
     window.open('graphEditor.html', '', 'width = 800, height = 600, screenX = 300, screenY = 50');
   });
@@ -21,17 +25,23 @@
 	userCreated = true;
 	init();
   });
+  function logEventHandler(eventData) {
+    if(eventData.type === 'jsav-question-answer') {
+      alert(eventData.correct);
+	}
+  }
   function runit() {
     userCreated = false;
 	init();
   }
   function init() {
     var i;
+	step = 0;
     ODSA.AV.reset(true);
 	if (jsav) {
 	  jsav.clear();
 	}
-    jsav = new JSAV($('.avcontainer'));
+    jsav = new JSAV($('.avcontainer'), {logEvent: logEventHandler});
     graph = jsav.ds.graph({width: 776, height: 450, layout: "manual", directed: false});
 	mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
 	initGraph();
@@ -60,11 +70,35 @@
 
   // Mark a node in the graph.
   function markIt(node) {
+    if(step === 3) {
+	  var notVisitedNodes = [];
+	  var j = 0;
+	  for (var i = 0; i < gnodes.length; i++) {
+	    if (!gnodes[i].hasClass('visited')) {
+		  notVisitedNodes[j] = gnodes[i];
+		  alert('Not Visisted: '+notVisitedNodes[j].value());
+		  j++;
+		}
+		else
+		{
+		  alert('Visisted'+ gnodes[i].value());
+		}
+	  }
+	  q = jsav.question("MC", "Which Node will be added Next to the MST?")
+                .addChoice("D", {correct: true})
+                .addChoice("E")
+                .addChoice("F")
+                .show();
+	  jsav.step();
+	}
     node.addClass("visited");
     jsav.umsg("Add node " + node.value() + " to the MST");
     distances.highlight(gnodes.indexOf(node));
     labels.highlight(gnodes.indexOf(node));
     node.highlight();
+	nodesOrdered[step] = node; 
+	step++;
+	//console.log("Nodes added so far: "+step);
     jsav.step();
   }
 
