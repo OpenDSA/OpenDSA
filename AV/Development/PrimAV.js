@@ -70,24 +70,20 @@
 
   // Mark a node in the graph.
   function markIt(node) {
-    if(step === 3) {
+    if(step === 2) {
+	  var minNode = minVertex();
 	  var notVisitedNodes = [];
 	  var j = 0;
 	  for (var i = 0; i < gnodes.length; i++) {
-	    if (!gnodes[i].hasClass('visited')) {
+	    if (!gnodes[i].hasClass('visited') && gnodes[i]!== minNode) {
 		  notVisitedNodes[j] = gnodes[i];
-		  alert('Not Visisted: '+notVisitedNodes[j].value());
 		  j++;
-		}
-		else
-		{
-		  alert('Visisted'+ gnodes[i].value());
 		}
 	  }
 	  q = jsav.question("MC", "Which Node will be added Next to the MST?")
-                .addChoice("D", {correct: true})
-                .addChoice("E")
-                .addChoice("F")
+                .addChoice(minNode.value(), {correct: true})
+                .addChoice(notVisitedNodes[0].value())
+                .addChoice(notVisitedNodes[1].value())
                 .show();
 	  jsav.step();
 	}
