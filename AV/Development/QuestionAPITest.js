@@ -6,9 +6,9 @@
 
   function runit() {
     var i;
-    jsav = new JSAV("avcontainer", {logEvent: function(eventData) {
-      console.log(eventData); 
-    }});
+	var answer;
+    jsav = new JSAV($('.avcontainer'), {logEvent: eventHandler});
+	//jsav.logEvent({type: "jsav-question-answer"});
   	jsav.umsg('In slide 1');
     jsav.displayInit();
     jsav.umsg('In slide 2, multiple-select question');
@@ -17,7 +17,6 @@
                 .addChoice("Certainly", {correct: true})
                 .addChoice("No way!")
                 .show();
-	jsav.logEvent({type: "jsav-question-answer"});
     jsav.step();
     jsav.umsg('In slide 3, true/false question');
     var q2 = jsav.question("TF", "True or false?", {correct: true})
@@ -34,6 +33,11 @@
         .show();
 
     jsav.recorded();
+  }
+  function eventHandler(eventData) {
+	if(eventData.type === 'jsav-question-answer') {
+	  alert(eventData.correct);
+	}
   }
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
