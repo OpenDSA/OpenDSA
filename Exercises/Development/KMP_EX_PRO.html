@@ -50,7 +50,7 @@
   <form class="avcontainer">
     <p class="instructLabel">Instructions:</p>
       <p class="instructions">
-        For this exercise you will trace the KMP algorithm in its entirity. You will start by highlighting the index from both the master string and substring that is currently being compared (simply click the index you want). Then you can click the <b>Next</b> button to move onto the next step. When you have found a match or made it to the end of the master string (whenever you think the algorithm has ended) you can click the <b>Grade</b> button. The alignment array has been precomputed for your convenience.
+        For this exercise you will trace the KMP algorithm in its entirity. You will start by highlighting the index from both the master string and substring that is currently being compared (simply click the index you want). Then you can click the <b>Next</b> button to move onto the next step. Your score is kept track for you above the master string and the alignment array has been precomputed for your convenience.
       </p>
     <p><span class="jsavscore"></span></p>
     <div id="arrays" class="jsavcanvas"></div>
@@ -69,6 +69,7 @@
 <script src="../../lib/odsaUtils-min.js"></script>
 <script src="../../lib/odsaAV-min.js"></script>
 <script>
+	var exercise;
   "use strict";
   /*global alert: true, ODSA */
   (function ($) {
@@ -93,6 +94,7 @@
 
       var kmp_jsav = new JSAV($('.avcontainer'), {settings: settings});
       kmp_jsav.recorded();
+
 
       // Create a convenience function named tell for writing to the
       // output buffer
@@ -282,7 +284,7 @@
         
         var align_table_temp = compute_align_array(sub_arr);
         align_arr = kmp_jsav.ds.array(align_table_temp, {indexed: true});
-        num_comp = 0;
+        num_comp = kmp_jsav.variable(0);
         str_curr = 0;
         sub_str_curr = 0;
 
@@ -298,12 +300,26 @@
       }
 
       //This function is the KMP algorithm, implemented in the way described in the pseudo code in the slideshow
-      function kmp(temp_jsav, master, sub, align) {
+      function kmp(temp_jsav/*temp_jsav, master, sub, align*/) {
+
+        var master = temp_jsav.ds.array([' '], {indexed: true});
+        var sub = temp_jsav.ds.array([' ']);
+        var align = temp_jsav.ds.array([' '], {indexed: true});
+        for(var i = 0; i < str.size(); i++){
+          master.value(i, str.value(i));
+          sub.value(i, sub_str.value(i));
+          if(i < align_arr.size()) {
+            align.value(i, align_arr.value(i));
+          }
+        }
+        temp_jsav.displayInit();      
+
+
         var m = str_curr;
-        if(num_comp != 0) {
-          var s = num_comp-1;
+        if(num_comp.value() != 0) {
+          var s = num_comp.value()-1;
         } else {
-          s = 0;
+          s = num_comp.value();
         }
         //highlight the first spots
         master.highlight(m);
@@ -350,14 +366,18 @@
           temp_jsav.stepOption("grade", true);
           temp_jsav.step();
         }
+		return [master, sub, align];
+		/*
         if(s == sub_str_size-1 || found) {
           return m - s;
         } else {
           return -1;
         }
+		*/
       }
 
       function modelSolution(temp_jsav) {
+		/*
         var temp_str = temp_jsav.ds.array([' '], {indexed: true});
         var temp_sub_str = temp_jsav.ds.array([' ']);
         var temp_align_arr = temp_jsav.ds.array([' ', {indexed: true}]);
@@ -370,7 +390,9 @@
         }
         temp_jsav.displayInit();      
         var x = kmp(temp_jsav, temp_str, temp_sub_str, temp_align_arr);
-        return [temp_str, temp_sub_str, temp_align_arr]; 
+		*/
+		var x = kmp(temp_jsav);
+        return x;//[temp_str, temp_sub_str, temp_align_arr]; 
       }
 
 
@@ -409,7 +431,7 @@
             break;
           }
         }
-        num_comp = (sub_str_curr - spot) + 1;
+        num_comp.value((sub_str_curr - spot) + 1);
       }
 
       $('#help').click(function() {
@@ -422,28 +444,19 @@
 
       // Initialize the exercise
       // Defines the function to call on reset (initialize())
-      var exercise = kmp_jsav.exercise(modelSolution, initialize,
-                       [{css: "background-color"}, {}], {controls:
-                       $('.jsavexercisecontrols'), fix: fixState,
-                       feedback: "continuous", fixmode: "fix"});
+      exercise = kmp_jsav.exercise(kmp, initialize,
+                       [{css: "background-color"}, {}], 
+						{controls:$('.jsavexercisecontrols'), 
+						fix: fixState ,
+                        feedback: "continuous",
+						fixmode: "fix"});
       exercise.reset();
-  /*
-      str.click(function(index) {
-        str_curr = index;
-        str.unhighlight();
-        str.highlight(index);
-      });
-      sub_str.click(function(index) {
-        sub_str_curr = index;
-        sub_str.unhighlight();
-        sub_str.highlight(index);
-      });
-  */
+
       $('#next').click(function() {
         if(str_curr != sub_str_curr){
           sub_str.unhighlight(sub_str_curr); 
-          if(num_comp > 1) {       //if num_comp == 1 we want to keep it at 1 because it will be moving over 1 position and will be on comparison "1"
-            num_comp = num_comp - (str_curr - sub_str_curr); //number compared is now number compared - the shift offset
+          if(num_comp.value() > 1) {       //if num_comp == 1 we want to keep it at 1 because it will be moving over 1 position and will be on comparison "1"
+            num_comp.value(num_comp.value() - (str_curr - sub_str_curr)); //number compared is now number compared - the shift offset
           }
           if(((str_curr - sub_str_curr) + str_curr) < sub_str.size()) {
             for(var i = sub_str.size()-1; i >= (str_curr-sub_str_curr); i--){
@@ -457,22 +470,22 @@
                   break;
                 }
               }
-             if(num_comp > 0){
-                for(var i = 0; i <= (str_curr - num_comp); i++){
+             if(num_comp.value() > 0){
+                for(var i = 0; i <= (str_curr - num_comp.value()); i++){
                   sub_str.value(i, " ");
                 }
               } else {
-                for(var i = 0; i < (str_curr - num_comp); i++){
+                for(var i = 0; i < (str_curr - num_comp.value()); i++){
                   sub_str.value(i, " ");
                 }              
               }
             } else {
-              if(num_comp > 0) {
-                for(var i = 0; i <= (str_curr - num_comp); i++){
+              if(num_comp.value() > 0) {
+                for(var i = 0; i <= (str_curr - num_comp.value()); i++){
                   sub_str.value(i, " ");
                 } 
               } else {
-                 for(var i = 0; i < (str_curr - num_comp); i++){
+                 for(var i = 0; i < (str_curr - num_comp.value()); i++){
                   sub_str.value(i, " ");               
                 } 
               }           
@@ -482,7 +495,7 @@
           
           }       
         } else {
-          num_comp++;
+          num_comp.value(num_comp.value()+1);
         }
        exercise.gradeableStep()
       });
