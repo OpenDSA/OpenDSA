@@ -318,7 +318,7 @@ you determine the best data structure for the task.
    supports large databases,
    insertion and deletion of data records, and range queries.
    However, a simple linear index
-   as described in Module :numref:`<LinearIndex>` would be more
+   as described in Module :numref:`<LinearIndexing>` would be more
    appropriate if the database is created once, and then never
    changed, such as an atlas distributed on a CD or accessed from a
    website.

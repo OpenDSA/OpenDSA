@@ -143,5 +143,8 @@ half full, because beyond that point performance will degrade rapidly.
 This requires that the implementor have some idea of how many records
 are likely to be in the table at maximum loading, and select the
 table size accordingly.
+The goal should be to make the table small enough so that it does not
+waste a lot of space on the one hand, while making it big enough to
+keep performance good on the other.
 
 .. avembed:: Exercises/Hashing/HashAnalSumm.html ka

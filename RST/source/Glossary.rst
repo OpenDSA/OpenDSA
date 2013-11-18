@@ -400,6 +400,10 @@ Glossary
    enqueue
       A specialized term used to indicate inserting an element onto a queue.
 
+   entry-sequenced file
+      A file that stores records in the order that they were added to
+      the file.
+
    enumeration
    enumerate
       The process by which a :term:`traversal` lists every object in
@@ -542,6 +546,15 @@ Glossary
       possible for the programmer to insert an integer onto the list
       instead?
 
+   index file
+      A file whose records consist of key/pointer pairs where the
+      pointers are referencing the complete records stored in another
+      file.
+
+   indexing
+      The process of associating a key with the location
+      of a corresponding data record.
+
    induction hypothesis
       The key assumption used in an induction proof, that the theorem
       to be proved holds for smaller instances of the theorem.
@@ -575,6 +588,13 @@ Glossary
       element to left of :math:`X` that is greater than the value of
       :math:`X` (and so must ultimately be moved to the right of
       :math:`X` during a sorting process.
+
+   ISAM
+      Indexed Sequential Access Method: an obsolete method for
+      indexing data for (at the time) fast retrieval. More generally,
+      the term is used also to generically refer to an index that
+      supports both sequential and keyed access to data records.
+      Today, that would nearly always be implemented using a :term:`B-Tree`.
 
    iterator
       In a container such as a List, a separate class that indicates
@@ -818,6 +838,14 @@ Glossary
       root, then recursively visits the left child, then recursively
       visits the right child.
 
+   primary index
+   primary key index
+      Relates each primary key value with a pointer to the actual
+      record on disk.
+
+   primary key
+      A unique identifier for a record.
+
    primitive element
       In set notation, this is a single element that is a member of
       the base type for the set. This is as opposed to an element of
@@ -937,6 +965,17 @@ Glossary
       when searching. For example, in a database of customer records,
       we might want to search by name.
       In this case the name field is used as the search key.
+
+   secondary key
+      A key field in a record such as salary, where a particular key
+      value might be duplicated in multiple records. A secondary key
+      is more likely to be used by a user as a search key than is the
+      record's :term:`primary key`.
+
+   secondary index
+   secondary key index
+      Associates a secondary key value with the primary key of each
+      record having that secondary key value.
 
    selection sort
       While this sort requires :math:`\Theta(n^2)` time in the best,

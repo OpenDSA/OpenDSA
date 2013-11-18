@@ -1580,15 +1580,27 @@
       }
     },
     "Indexing": {
-      "Stubs/IndexChap": {
-        "long_name": "Indexing Chapter Stub",
+      "Development/IndexIntro": {
+        "long_name": "Indexing Chapter Introduction",
         "exercises": {}
       },
-      "Stubs/LinearIndex": {
+      "Development/LinearIndexing": {
         "long_name": "Linear Indexing",
         "exercises": {}
       },
-      "Stubs/BTree": {
+      "Development/ISAM": {
+        "long_name": "ISAM",
+        "exercises": {}
+      },
+      "Development/TreeIndexing": {
+        "long_name": "Linear Indexing",
+        "exercises": {}
+      },
+      "Development/TwoThreeTree": {
+        "long_name": "2-3 Trees",
+        "exercises": {}
+      },
+      "Development/BTree": {
         "long_name": "B-Trees",
         "exercises": {}
       }
@@ -1616,8 +1628,8 @@
         "long_name": "Stubs Chapter",
         "exercises": {}
       },
-      "Stubs/MemoryMan": {
-        "long_name": "Memory Managers",
+      "Stubs/Kary": {
+        "long_name": "K-ary Trees",
         "exercises": {}
       },
       "Stubs/Multilists": {
