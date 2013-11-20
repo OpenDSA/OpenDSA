@@ -276,7 +276,7 @@ build/Huffman/success: Binary/Huffman.pde
 	@cp Binary/Huffman.pde build/Huffman
 	@$(PROCESS) --run --sketch="$(BUILD)/Huffman" --output="$(BUILD)/build" --force
 
-General: GenTree UFTest
+General: GenTree UFTest1 UFTest2
 
 GenTree: build/GenTree/success
 
@@ -287,15 +287,25 @@ build/GenTree/success: General/GenTree.pde
 	@cp General/GenTree.pde build/GenTree
 	@$(PROCESS) --run --sketch="$(BUILD)/GenTree" --output="build/build" --force
 
-UFTest: build/UFTest/success
+UFTest1: build/UFTest1/success
 
-build/UFTest/success: General/ParPtrTree.pde General/UFTest.pde
-	@echo "UFTest Test"
-	-@rm -rf build/UFTest
-	@mkdir build/UFTest
-	@cp General/ParPtrTree.pde build/UFTest
-	@cp General/UFTest.pde build/UFTest
-	@$(PROCESS) --run --sketch="$(BUILD)/UFTest" --output="build/build" --force
+build/UFTest1/success: General/ParPtrTree1.pde General/UFTest.pde
+	@echo "UFTest1 Test"
+	-@rm -rf build/UFTest1
+	@mkdir build/UFTest1
+	@cp General/ParPtrTree1.pde build/UFTest1
+	@cat General/output1.txt General/UFTest.pde > build/UFTest1/UFTest1.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/UFTest1" --output="build/build" --force
+
+UFTest2: build/UFTest2/success
+
+build/UFTest2/success: General/ParPtrTree2.pde General/UFTest.pde
+	@echo "UFTest2 Test"
+	-@rm -rf build/UFTest2
+	@mkdir build/UFTest2
+	@cp General/ParPtrTree2.pde build/UFTest2
+	@cat General/output2.txt General/UFTest.pde > build/UFTest2/UFTest2.pde
+	@$(PROCESS) --run --sketch="$(BUILD)/UFTest2" --output="build/build" --force
 
 Sorting: Inssort Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
 

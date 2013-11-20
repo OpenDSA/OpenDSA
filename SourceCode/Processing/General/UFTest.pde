@@ -14,7 +14,7 @@ void testUF() {
   it.UNION(7, 4);
 
   out = it.print();
-  if (out.equals("2 0 6 6 6 6 -1 2 6 -1 ") != true) {
+  if (out.equals(output) != true) {
     SUCCESS = false;
     println("Error in Union/FIND!! " + out);
   }
