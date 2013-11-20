@@ -10,12 +10,26 @@
    
 .. odsalink:: AV/Development/UFCON.css
 
-Union/Find and the Parent Pointer Implementation (Test Version)[Text]
-=====================================================================
+Union/Find and the Parent Pointer Implementation
+================================================
 
-A simple way to represent a general tree would be to store for each
-node only a pointer to that node's parent.
-We will call this the :dfn:`parent pointer` implementation.
+:term:`General trees` are trees whose internal nodes have no fixed
+number of children.
+Compared to general trees, binary trees are fairly easy to implement
+because each internal node of a binary tree can just store two
+pointers to reach its (potential) children.
+In a general tree, we have to deal with the fact that a given node
+might have no children or 100 children.
+
+In contrast, even in a general tree, each node can have only one
+parent.
+If we didn't need to go from a node to its children, but instead only
+needed to go from a node to its parent, then implementing a node would
+be easy.
+A simple way to represent such a general tree would be to store for
+each node only a pointer to that node's parent.
+We will call this the :term:`parent pointer implementation` for
+general trees.
 Clearly this implementation is not general purpose, because it is
 inadequate for such important operations as finding
 the leftmost child or the right sibling for a node.
@@ -24,13 +38,13 @@ tree in this way.
 However, the parent pointer implementation stores precisely the
 information required to answer the following, useful question:
 **Given two nodes, are they in the same tree?**
-To answer the question, we need only follow the series of parent
+To answer this question, we need only follow the series of parent
 pointers from each node to its respective root.
 If both nodes reach the same root, then they must be in the same tree.
 If the roots are different, then the two nodes are not in the same
 tree.
 The process of finding the ultimate root for a given node we will call
-:dfn:`FIND`.
+:term:`FIND`.
 
 The parent pointer representation is most often used to maintain a
 collection of disjoint sets.
@@ -40,7 +54,7 @@ A collection of disjoint sets partitions some objects
 such that every object is in exactly one of the disjoint sets.
 There are two basic operations that we wish to support:
 
-1. Determine if two objects are in the same set, and
+1. Determine if two objects are in the same set (the FIND operation), and
 2. Merge two sets together.
 
 Because two merged sets are united, the merging operation is
@@ -55,7 +69,7 @@ Every node of the tree (except for the root) has precisely one parent.
 Thus, each node requires the same space to represent it.
 The collection of objects is typically stored in an array, where each
 element of the array corresponds to one object, and each element
-stores the object's value.
+stores the object's value (or a pointer to the object).
 The objects also correspond to nodes in the various disjoint trees
 (one tree for each disjoint set), so we also store the parent value
 with each object in the array.
@@ -67,79 +81,60 @@ This makes it easy to merge trees together with UNION operations.
 
 Here is the implementation for parent pointer trees and UNION/FIND.
 
-.. codeinclude:: General/ParPtrTree.pde
-   :tag: UnionFind
+.. codeinclude:: General/ParPtrTree1.pde
+   :tag: UF1, UF2
 
-This class is greatly simplified from the declarations of
-``GenTreeADT`` because we need only a subset of the general
-tree operations.
-Instead of implementing a separate node class, ``ParPtrTree``
-simply stores an array where each array element corresponds to
-a node of the tree.
-Each position :math:`i` of the array stores the value for node
-:math:`i` and the array position for the parent of node :math:`i`.
-Class ``ParPtrTree`` is given two new methods, ``differ`` and
-``UNION``.
-Method ``differ`` checks if two objects are in different sets,
-and method ``UNION`` merges two sets together.
-A private method ``FIND`` is used to find the ultimate root for
-an object.
+This class simply has an array where each position stores the array
+index for its parent.
+There are two main methods to implement.
+Method ``UNION`` merges two sets together, where the two sets are each
+defined by a node.
+Method ``FIND`` is used to find the ultimate root for a node.
 
 An application using the UNION/FIND operations
 should store a set of :math:`n` objects, where each object is assigned
 a unique index in the range 0 to :math:`n-1`.
 The indices refer to the corresponding parent pointers in the array.
 Class ``ParPtrTree`` creates and initializes the
-UNION/FIND array, and methods ``differ`` and
-``UNION`` take array indices as inputs.
+UNION/FIND array, and methods ``UNION`` and
+``FIND`` take array indices as inputs.
 
-.. TODO::
-   :type: Slideshow
+.. _UFfig:
 
-   Illustration of the parent pointer implementation.
-   Note that the nodes can appear in any order within the array, and
-   the array can store up to n separate trees.
-   For example, we show two trees stored in the same
-   array.
-   Thus, a single array can store a collection of items distributed among
-   an arbitrary (and changing) number of disjoint subsets.
+.. inlineav:: UFfigCON dgm
+   :align: fill
 
    The parent pointer array implementation.
    Each node corresponds to a position in the node array,
    which stores its value and a pointer to its parent.
    The parent pointers are represented by the position in the array
    of the parent.
-   The root of any tree stores ``ROOT``, represented graphically by a
+   The root of any tree stores -1, represented graphically by a
    slash in the "Parent's Index" box.
    This figure shows two trees stored in the same parent pointer array,
    one rooted at :math:`R`, and the other rooted at :math:`W`.
 
 Consider the problem of assigning the members of a set to
 disjoint subsets called
-:dfn:`equivalence classes`.
+:term:`equivalence classes`.
 Recall from Section :numref:`<SetDef>` that an equivalence relation is
 reflexive, symmetric, and transitive.
 Thus, if objects :math:`A` and :math:`B` are equivalent, and objects
 :math:`B` and :math:`C` are equivalent, we must be able to recognize
 that objects :math:`A` and :math:`C` are also equivalent.
 
-.. TODO::
-   :type: Figure
+There are many practical uses for disjoint sets and representing
+equivalences.
+For example, consider the graph of ten nodes labeled :math:`A` through
+:math:`J`.
 
-.. _UFexamp:
+.. _UFconcom:
 
-.. odsafig:: Images/UFexamp.png
-   :width: 250
+.. inlineav:: UFconcomCON dgm
    :align: center
-   :capalign: center
-   :figwidth: 90%
 
    A graph with two connected components.
 
-There are many practical uses for disjoint sets and representing
-equivalences.
-For example, consider Figure :num:`Figure #UFexamp` which shows a
-graph of ten nodes labeled :math:`A` through :math:`J`.
 Notice that for nodes :math:`A` through :math:`I`, there is some
 series of edges that connects any pair of the nodes, but node
 :math:`J` is disconnected from the rest of the nodes.
@@ -151,7 +146,7 @@ Thus, nodes :math:`A`, :math:`H`, and :math:`E` would
 be equivalent in Figure :num:`Figure #UFexamp`, but :math:`J` is not
 equivalent to any other.
 A subset of equivalent (connected) edges in a graph is called a
-:dfn:`connected component`.
+:term:`connected component`.
 The goal is to quickly classify the objects
 into disjoint sets that correspond to the connected components.
 
@@ -175,25 +170,13 @@ Equivalence classes can be managed efficiently with the UNION/FIND
 algorithm.
 Initially, each object is at the root of its own tree.
 An equivalence pair is processed by checking to see if both objects
-of the pair are in the same tree using method ``differ``.
-If they are in the same tree, then no change need be made because the
+of the pair are in the same tree by calling  ``FIND`` on each of them.
+If their roots are the same, then no change need be made because the
 objects are already in the same equivalence class.
 Otherwise, the two equivalence classes should be merged by the
 ``UNION`` method.
 
-.. _EquivEx:
-
-.. odsafig:: Images/EquivEx.png
-   :width: 500
-   :align: center
-   :capalign: center
-   :figwidth: 90%
-
-   An example of equivalence processing.
-   
-Here is a SlideShow that allows you better understand the operation above.
-
-
+Here is a slideShow to illustrate a series of UNION operations.
 
 .. inlineav:: ufCON ss
    :output: show
