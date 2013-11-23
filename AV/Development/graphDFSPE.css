@@ -1,0 +1,12 @@
+#container {
+  width: 800px;
+  height: 595px;
+}
+.jsavline {
+  height: 45px;
+  margin: 0 0 0 20px;
+}
+
+#procontrols {
+  text-align: center;
+}
