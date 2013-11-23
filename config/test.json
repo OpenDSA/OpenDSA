@@ -15,7 +15,20 @@
     "General Trees": {
       "Development/UnionFind": {
         "long_name": "UnionFind",
-        "exercises": {}
+        "exercises": {
+          "ufCON": {
+            "long_name": "Union/Find Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "pathcompCON": {
+            "long_name": "Union/Find Path Compression Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       }
     },
     "Appendix": {

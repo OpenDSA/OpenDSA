@@ -1,32 +1,51 @@
+#UFfigCON {
+  width: 700px;
+  height: 410px;
+  padding: 25px;
+}
+
+#UFconcomCON {
+  width: 445px;
+  height: 250px;
+  padding: 25px;
+}
+
 #ufCON {
-      width: 720px;
-	  height: 650px;
-	  padding: 25px;
-    }
+  width: 720px;
+  height: 655px;
+  padding: 30px;
+}
+
 #pathcompCON {
-      width: 750px;
-	  height: 400px;
-	  padding: 25px;
-    }
+  width: 750px;
+  height: 405px;
+  padding: 30px;
+}
+
 .jsavcounter {
-      position: absolute;
-      top: 15px;
-    }
+  position: absolute;
+  top: 15px;
+}
+
 .jsavcanvas { height: 500px; }
 
 .jsavoutput {
-      height: 75px;
-    }
+  height: 75px;
+}
+
 .jsavline {
-      height: 80px;
-    }
+  height: 80px;
+}
+
 #root, path[data-endnode="root"] {
-    opacity: 0 !important;
-    pointer-events: none;
-    }
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
 .highlight{
   background-color: yellow;
 }
+
 .jsavtree .jsavnode {
   line-height: 35px !important;
   min-width: 35px !important;
@@ -34,10 +53,12 @@
   min-height: 35px !important;
   max-height: 35px !important;
 }
+
 .jsavcode {
   font-family: monospace;
   font-size: 12px;
 }
+
 .jsavverticalarray .jsavindex:first-of-type, .jsavverticalarray .jsavindex:first-of-type .jsavvalue {
   -ms-border-top-left-radius: 0px;
   -moz-border-top-left-radius: 0px;
@@ -50,6 +71,7 @@
   -webkit-border-top-right-radius: 0px;
   border-top-right-radius: 0px;
 }
+
 .jsavverticalarray .jsavindex:last-of-type, .jsavverticalarray .jsavindex:last-of-type .jsavvalue {
   -ms-border-bottom-left-radius: 0px;
   -moz-border-bottom-left-radius: 0px;
@@ -62,6 +84,7 @@
   -webkit-border-bottom-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
+
 .jsavhorizontalarray .jsavindex:first-of-type, .jsavhorizontalarray .jsavindex:first-of-type .jsavvalue {
   -ms-border-top-left-radius: 0px;
   -ms-border-bottom-left-radius: 0px;
@@ -74,6 +97,7 @@
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
+
 .jsavhorizontalarray .jsavindex:last-of-type, .jsavhorizontalarray .jsavindex:last-of-type .jsavvalue {
   -ms-border-top-right-radius: 0px;
   -ms-border-bottom-right-radius: 0px;

@@ -334,7 +334,7 @@
         "long_name": "Comparison of List Implementations",
         "exercises": {
           "ListOverhead": {
-            "long_name": "Breakeven Point",
+            "long_name": "Breakeven Point Exercise",
             "required": true,
             "points": 1,
             "threshold": 3

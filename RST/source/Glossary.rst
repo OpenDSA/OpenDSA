@@ -252,6 +252,11 @@ Glossary
       An instance, or concrete representation, of an algorithm in some
       programming language.
 
+   connected component
+      In an :term:`undirected graph`, a subset of the nodes such that
+      each node in the subset can be reached from any other node in
+      that subset.
+
    constant running time
       The cost of a function whose running time is not related to its
       input size.
@@ -336,6 +341,13 @@ Glossary
       less than the disk-reading time saved by reducing the storage
       requirements.
 
+   disjoint set
+   disjoint sets
+      A collection of sets any pair of which share no elements in
+      common.
+      A collection of disjoint sets partitions some objects
+      such that every object is in exactly one of the disjoint sets.
+
    divide and conquer
       A technique for designing algorithms where a solution is found
       by breaking the problem into smaller (similar) subproblems,
@@ -412,6 +424,7 @@ Glossary
       refer to the actual listing that is produced by the traversal
       (as well as the process that created that listing).
 
+   equivalence class
    equivalence classes
       An :term:`equivalence relation` can be used to partition a set
       into equivalence classes.
@@ -444,6 +457,11 @@ Glossary
    file structure
       The organization of data on peripheral storage, such
       as a disk drive or CD.
+
+   FIND
+      One half of the :term:`UNION/FIND` algorithm for managing
+      :term:`disjoint sets`. It is the process of moving upwards in a
+      tree to find the tree's root.
 
    floor
       Written :math:`\lfloor x \rfloor`, for real value :math:`x` the
@@ -494,6 +512,13 @@ Glossary
        Languages with garbage collection such
       Java, JavaScript, Lisp, and Scheme will periodically reclaim
       :term:`garbage` and return it to :term:`free store`.
+
+   general tree
+   general trees
+      A tree in which any given node can have any number of children.
+      This is in contrast to, for example, a :term:`binary tree` where
+      each node has a fixed number of children. General tree nodes
+      tend to be harder to implement for this reason.
 
    growth rate
       The rate at which the cost
@@ -773,6 +798,13 @@ Glossary
       In a tree, the :term:`node` :math:`P` that directly links to a
       node :math:`A` is the parent of :math:`A`. :math:`A` is the
       :term:`child` of :math:`P`.
+
+   parent pointer representation
+      For trees, a node implementation where each node stores only a
+      pointer to its parent, rather than to its children. This makes
+      it easy to go up the tree toward the root, but not down the tree
+      toward the leaves. This is most appropriate for solving the
+      :term:`UNION/FIND` problem.
 
    partial order
       A binary relation is called a partial order if it is
@@ -1101,6 +1133,24 @@ Glossary
    type
       A collection of values.
 
+   undirected graph
+      A graph whose edges do not have a direction.
+
+   UNION
+      One half of the :term:`UNION/FIND` algorithm for managing
+      :term:`disjoint sets`. It is the process of merging two trees
+      that are represented using the
+      :term:`parent pointer representation` by making the root for one
+      of the trees set its parent pointer to the root of the other
+      tree.
+
+   UNION/FIND
+      A process for mainining a collection of disjoint sets.
+      The :term:`FIND` operation determines which disjoint set a given
+      object resides in, and the :term:`UNION` operation combines two
+      disjoint sets when it is determined that they are members of the
+      same :term:`equivalence class` under some :term:`equivalence relation`.
+
    upper bound
       In algorithm analysis, the upper or highest growth rate that
       an algorithm can have. In practice, this is the smallest-growing
@@ -1120,6 +1170,16 @@ Glossary
       in the collection being traversed. For example, a generic tree
       or graph traversal might be designed such that it takes a
       function parameter, where that function is applied to each node.
+
+   weighted union rule
+      When merging two disjoint sets using the :term:`UNION/FIND`
+      algorithm, the weighted union rule is used to determine which
+      subtree's root points to the other.
+      The root of the subtree with fewer nodes will be set to point to
+      the root of the subtree with more nodes.
+      In this way, the average depth of nodes in the resulting tree
+      will be less than if the assignment had been made in the other
+      direction.
 
    worst case
       In algorithm analysis, the problem instance from among all
