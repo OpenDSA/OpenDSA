@@ -264,7 +264,7 @@ step in the previous example.
 Path compression keeps the cost of each FIND operation very
 close to constant. [#]_
 
-.. avembed:: AV/Development/UnionFind_Proficiency.html pe
+.. avembed:: AV/Development/UnionFindPRO.html pe
 
 Notes
 -----

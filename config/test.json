@@ -27,7 +27,13 @@
             "required": false,
             "points": 0.0,
             "threshold": 1.0
-          }
+          },
+          "UnionFindPRO": {
+            "long_name": "Union/Find Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+	  }
         }
       }
     },
