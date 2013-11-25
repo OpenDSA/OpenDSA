@@ -16,6 +16,38 @@
   var step;               //A counter of the nodes added so far  
   var q;                  //Question
   
+  $('#email').click(function () {
+    var email = window.prompt("Enter Email Please","");
+	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	if (regex.test(email)) {
+	  //Code for Sending the Email
+	  // create a new instance of the Mandrill class with your API key
+      // This is my API key, create an account in Mandrill and replace this with your API key. (or you can use my key for now)
+      var m = new mandrill.Mandrill('pAZhClsfhO14ZATWaDh0MQ');
+	  // create a variable for the API call parameters
+      var params = {
+        "message": {
+          "from_email":"naresh.iiita@gmail.com",
+          "to":[{"email":"chanduiiit@gmail.com"}],
+          "subject": "Prim's Algorithm Visualization",
+          "text": "I'm learning the Mandrill API at Codecademy."
+        }
+      };
+	  // Send the email!
+      var text = document.URL;
+      params.message.to[0].email = email;
+      params.message.text = 
+	  "Please take a look at this link "+text+"\n It contains Prim's AV";
+      m.messages.send(params, function(res) {
+      alert("Success, email sent to " + email);
+      }, function(err) {
+        alert("Failure, email cannot be sent to " + sendToEmail + ", Please check the email!");
+      });
+	}
+	else {
+	  alert('Incorrect email!');
+	}
+  });
   $('#create').click(function () {
     window.open('graphEditor.html', '', 'width = 800, height = 600, screenX = 300, screenY = 50');
   });
