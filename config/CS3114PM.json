@@ -334,7 +334,7 @@
         "long_name": "Comparison of List Implementations",
         "exercises": {
           "ListOverhead": {
-            "long_name": "Breakeven Point",
+            "long_name": "Breakeven Point Exercise",
             "required": true,
             "points": 1,
             "threshold": 3
@@ -1603,6 +1603,31 @@
       "Development/BTree": {
         "long_name": "B-Trees",
         "exercises": {}
+      }
+    },
+    "General Trees": {
+      "Development/UnionFind": {
+        "long_name": "UnionFind",
+        "exercises": {
+          "ufCON": {
+            "long_name": "Union/Find Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "pathcompCON": {
+            "long_name": "Union/Find Path Compression Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "UnionFindPRO": {
+            "long_name": "Union/Find Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+	  }
+        }
       }
     },
     "Graphs": {

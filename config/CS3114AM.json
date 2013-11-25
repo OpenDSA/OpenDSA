@@ -1605,6 +1605,31 @@
         "exercises": {}
       }
     },
+    "General Trees": {
+      "Development/UnionFind": {
+        "long_name": "UnionFind",
+        "exercises": {
+          "ufCON": {
+            "long_name": "Union/Find Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "pathcompCON": {
+            "long_name": "Union/Find Path Compression Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "UnionFindPRO": {
+            "long_name": "Union/Find Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+	  }
+        }
+      }
+    },
     "Graphs": {
       "Stubs/GraphImpl": {
         "long_name": "Graph Implementations",

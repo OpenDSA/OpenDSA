@@ -8,36 +8,40 @@
    :prerequisites:
    :topic: Graphs
 
-Introduction [Storyboard]
-=========================
+Graphs Chapter Introduction
+===========================
 
 Graphs provide the ultimate in data structure flexibility.
+Each graph consists of a set of nodes, and a set of edges where an
+edge connects two nodes.
+Trees and lists can be viewed as special cases of graphs.
+
 Graphs are used to model both real-world systems and abstract
-problems, so they are the data structure of choice in many
+problems, and are the data structure of choice in many
 applications.
 Here is a small sampling of the types of problems that graphs are
 routinely used for.
 
-1. Modeling connectivity in computer and communications networks.
+#. Modeling connectivity in computer and communications networks.
 
-2. Representing an abstract map as a set of locations with distances
+#. Representing an abstract map as a set of locations with distances
    between locations. This can used to compute shortest routes between
    locations such as in a GPS routefinder.
 
-3. Modeling flow capacities in transportation networks to find which
+#. Modeling flow capacities in transportation networks to find which
    links create the bottlenecks.
 
-4. Finding a path from a starting condition to a goal condition.
+#. Finding a path from a starting condition to a goal condition.
    This is a common way to model problems in artificial intelligence
    applications and computerized game players.
 
-5. Modeling computer algorithms, to show transitions from one program
+#. Modeling computer algorithms, to show transitions from one program
    state to another.
 
-6. Finding an acceptable order for finishing subtasks in a complex
+#. Finding an acceptable order for finishing subtasks in a complex
    activity, such as constructing large buildings.
 
-7. Modeling relationships such as family trees, business or military
+#. Modeling relationships such as family trees, business or military
    organizations, and scientific taxonomies.
 
 The rest of this module covers some basic graph terminology.
@@ -53,38 +57,41 @@ throughout the course.
 Terminology and Representations
 -------------------------------
 
-A graph :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists of a set of
-vertices :math:`\mathbf{V}` and a set of edges :math:`\mathbf{E}`, such
-that each edge in :math:`\mathbf{E}` is a connection between a pair of
-vertices in :math:`\mathbf{V}`. [#]_
+A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
+of a set of :term:`vertices` :math:`\mathbf{V}` and a set of
+:term:`edges` :math:`\mathbf{E}`,
+such that each edge in :math:`\mathbf{E}` is a connection between a
+pair of vertices in :math:`\mathbf{V}`. [#]_
 
 The number of vertices is written :math:`|\mathbf{V}|`, and the number
 of edges is written :math:`|\mathbf{E}|`.
 :math:`|\mathbf{E}|` can range from zero to a maximum of
 :math:`|\mathbf{V}|^2 - |\mathbf{V}|`.
-A graph with relatively few edges is called :dfn:`sparse`, while a
-graph with many edges is called :dfn:`dense`.
-A graph containing all possible edges is said to be :dfn:`complete`.
+A graph with relatively few edges is called :term:`sparse`, while a
+graph with many edges is called :term:`dense`.
+A graph containing all possible edges is said to be :term:`complete`.
+Any subset of :math:`V` where all vertices in the subset connect to
+all other vertices in the subset is called a :term:`clique`.
 
 A graph with edges directed from one vertex to another
 (as in Figure :num:`Figure #GraphTerms` (b)) is
-called a :dfn:`directed graph` or :dfn:`digraph`.
+called a :term:`directed graph` or :term:`digraph`.
 A graph whose edges are not directed is called an
-:dfn:`undirected graph`
+:term:`undirected graph`
 (as illustrated by Figure :num:`Figure #GraphTerms` (a)).
 A graph with labels associated with its vertices
 (as in Figure :num:`Figure #GraphTerms` (c)) is called a
-:dfn:`labeled graph`.
-Two vertices are :dfn:`adjacent` if they are joined by an edge.
-Such vertices are also called :dfn:`neighbors`.
+:term:`labeled graph`.
+Two vertices are :term:`adjacent` if they are joined by an edge.
+Such vertices are also called :term:`neighbors`.
 An edge connecting Vertices :math:`u` and :math:`v` is written
 :math:`(u, v)`.
-Such an edge is said to be :dfn:`incident` on Vertices :math:`u`
+Such an edge is said to be :term:`incident` on Vertices :math:`u`
 and :math:`v`.
-Associated with each edge may be a cost or :dfn:`weight`.
-Graphs whose edges have weights
+Associated with each edge may be a cost or :term:`weight`.
+A graph whose edges have weights
 (as in Figure :num:`Figure #GraphTerms` (c))
-are said to be :dfn:`weighted`.
+is said to be a :term:`weighted graph`.
 
 .. _GraphTerms:
 
@@ -119,23 +126,23 @@ A sequence of vertices :math:`v_1, v_2, ..., v_n`
 forms a :term:`path` of length :math:`n-1` if there exist edges from
 :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
 A path is :dfn:`simple` if all vertices on the path are distinct.
-The :dfn:`length` of a path is the number of edges it contains.
-A :dfn:`cycle` is a path of length three or more that connects
+The :term:`length` of a path is the number of edges it contains.
+A :term:`cycle` is a path of length three or more that connects
 some vertex :math:`v_1` to itself.
-A cycle is :dfn:`simple` if the path is simple, except for the first
+A cycle is a :term:`simple cycle` if the path is simple, except for the first
 and last vertices being the same.
 
-A :dfn:`subgraph` :math:\mathbf{S}` is formed from graph
+A :term:`subgraph` :math:\mathbf{S}` is formed from graph
 :math:`\mathbf{G}` by selecting a subset :math:`\mathbf{V}_s` of
 :math:`\mathbf{G}`'s vertices and a subset 
 :math:`\mathbf{E}_s` of :math:`\mathbf{G}` 's edges such that for every
 edge :math:`e  \in \mathbf{E}_s`,
 both of :math:`e` 's vertices are in :math:`\mathbf{V}_s`.
 
-An undirected graph is :dfn:`connected` if there is at least one path
-from any vertex to any other.
+An undirected graph is a :term:`connected graph` if there is at least
+one path from any vertex to any other.
 The maximally connected subgraphs of an undirected graph are called
-:dfn:`connected components`.
+:term:`connected components`.
 For example, Figure :num:`Figure #ConCom` shows an undirected graph
 with three connected components.
 
@@ -158,11 +165,11 @@ with three connected components.
 
    Replace image above with a JSAV diagram
 
-A graph without cycles is called :dfn:`acyclic`.
+A graph without cycles is called an :term:`acyclic graph`.
 Thus, a directed graph without cycles is called a
-:dfn:`directed acyclic graph` or DAG.
+:term:`directed acyclic graph` or :term:`DAG`.
 
-A :dfn:`free tree` is a connected, undirected graph with no simple
+A :term:`free tree` is a connected, undirected graph with no simple
 cycles.
 An equivalent definition is that
 a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
@@ -188,7 +195,7 @@ a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
    slideshow to illustrate the various representation issues.
 
 There are two commonly used methods for representing graphs.
-The :dfn:`adjacency matrix`
+The :term:`adjacency matrix`
 is illustrated by Figure :num:`Figure #GraphRep` (b).
 The adjacency matrix for a graph is a
 :math:`|\mathbf{V}| \times |\mathbf{V}|` array.
@@ -221,7 +228,7 @@ In either case, the space requirements for the adjacency matrix are
    (c) The adjacency list for the graph of (a).
 
 The second common representation for graphs is the
-:dfn:`adjacency list`,
+:term:`adjacency list`,
 illustrated by Figure :num:`Figure #GraphRep` (c).
 The adjacency list is an array of linked lists.
 The array is :math:`|\mathbf{V}|` items long, with position :math:`i`
@@ -229,8 +236,10 @@ storing a pointer to the linked list of edges for Vertex :math:`v_i`.
 This linked list represents the edges by the vertices that are
 adjacent to Vertex :math:`v_i`.
 
-   **Example:** The entry for Vertex 0 in Figure :num:`Figure
-   #GraphRep` (c) stores 1 and 4 because there are two edges in the
+.. topic:: Example
+
+   The entry for Vertex 0 in Figure :num:`Figure #GraphRep` (c)
+   stores 1 and 4 because there are two edges in the
    graph leaving Vertex 0, with one going to Vertex 1 and one going to
    Vertex 4.
    The list for Vertex 2 stores an entry for Vertex 4 because there is
@@ -266,7 +275,9 @@ relatively more space efficient.
 Sparse graphs are likely to have their adjacency list representation
 be more space efficient.:
 
-   **Example:** Assume that a vertex index requires two bytes, a pointer requires
+.. topic:: Example
+
+   Assume that a vertex index requires two bytes, a pointer requires
    four bytes, and an edge weight requires two bytes.
    Then the adjacency matrix for the graph of
    Figure :num:`Figure #GraphRep` 
@@ -313,5 +324,5 @@ Notes
        vertex can have an edge to itself.
        However, the applications discussed here do not require
        either of these special cases.
-       To simplify our graph API, we will assume that they cannot
-       occur.
+       To simplify our graph API, we will assume that there are no
+       dupicate edges, and no edges that connect a node to itself.

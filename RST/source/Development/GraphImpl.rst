@@ -8,12 +8,17 @@
    :prerequisites: GraphIntro
    :topic: Graphs
 
-Graph Implementations [StoryBoard]
-==================================
+Graph Implementations
+=====================
 
 We next turn to the problem of implementing a general-purpose graph
 class.
-Here is an abstract class defining an ADT for graphs.
+From Module :numref:`<GraphIntro>` we know that there are two
+traditional approaches to representing graphs: The adjacency matrix
+and the adjacency list.
+In this module we will show actual implementations for each approach.
+We will begin with an abstract class defining an ADT for graphs that a
+given implementation must meet.
 
 .. codeinclude:: Graphs/Graph.pde 
    :tag: GraphADT

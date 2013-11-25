@@ -1,5 +1,4 @@
 /* *** ODSATag: GraphL *** */
-// PLACEHOLDER FOR ADJACENCY LIST IMPLEMENTATION
 class GraphL implements Graph {
 
   private class Edge { // Doubly linked list node
