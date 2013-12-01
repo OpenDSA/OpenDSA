@@ -53,15 +53,27 @@
             "long_name": "Depth First Search Visualization",
             "required": false,
             "points": 0,
-            "showhide": "show",
+            "showhide": "none",
             "threshold": 1.0
+          },
+          "graphDFSPE": {
+            "long_name": "DFS Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
           },
           "graphBFS": {
             "long_name": "Breadth First Search Visualization",
             "required": false,
             "points": 0,
-            "showhide": "show",
+            "showhide": "none",
             "threshold": 1.0
+          },
+          "graphBFSPE": {
+            "long_name": "BFS Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
           }
         }
       },

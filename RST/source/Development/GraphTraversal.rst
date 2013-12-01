@@ -8,12 +8,12 @@
    :prerequisites: GraphImpl
    :topic: Graphs
 
-Graph Traversals [Storyboard]
-=============================
+Graph Traversals
+================
 
 Many graph applications need to visit the vertices of a graph in some
 specific order based on the graph's topology.
-This is known as a :dfn:`graph traversal` and is similar in concept
+This is known as a :term:`graph traversal` and is similar in concept
 to a tree traversal.
 Recall that tree traversals visit every node exactly once, in some
 specified order such as preorder, inorder, or postorder.
@@ -76,24 +76,24 @@ Depth-First Search
 .. TODO::
    :type: Slideshow
 
-   Replace this description with a slideshow.
+   Replace the following paragraph with a slideshow.
 
-   The first method of organized graph traversal is called
-   :dfn:`depth-first search` (DFS).
-   Whenever a :math:`v` is visited during the search,
-   DFS will recursively visit all of :math:`v` 's unvisited neighbors.
-   Equivalently, DFS will add all edges leading out of :math:`v` to a
-   stack.
-   The next vertex to be visited is determined by popping the stack and
-   following that edge.
-   The effect is to follow one branch through the graph to its
-   conclusion, then it will back up and follow another branch, and so on.
-   The DFS process can be used to define a
-   :dfn:`depth-first search tree`.
-   This tree is composed of the edges that were followed to any new
-   (unvisited) vertex during the traversal, and leaves out the edges that
-   lead to already visited vertices.
-   DFS can be applied to directed or undirected graphs.
+The first method of organized graph traversal is called
+:term:`depth-first search` (DFS).
+Whenever a :math:`v` is visited during the search,
+DFS will recursively visit all of :math:`v` 's unvisited neighbors.
+Equivalently, DFS will add all edges leading out of :math:`v` to a
+stack.
+The next vertex to be visited is determined by popping the stack and
+following that edge.
+The effect is to follow one branch through the graph to its
+conclusion, then it will back up and follow another branch, and so on.
+The DFS process can be used to define a
+:term:`depth-first search tree`.
+This tree is composed of the edges that were followed to any new
+(unvisited) vertex during the traversal, and leaves out the edges that
+lead to already visited vertices.
+DFS can be applied to directed or undirected graphs.
 
 Here is an implementation for the DFS algorithm.
 
@@ -124,12 +124,16 @@ directions.
 Each vertex must be visited, but only once, so the total cost is
 :math:`\Theta(|\mathbf{V}| + |\mathbf{E}|)`.
 
+Here is an exercise to practice DFS.
+
+.. avembed:: AV/Development/graphDFSPE.html pe
+
 
 Breadth-First Search
 --------------------
 
 Our second graph traversal algorithm is known as a
-:dfn:`breadth-first search` (BFS).
+:term:`breadth-first search` (BFS).
 BFS examines all vertices connected to the start vertex
 before visiting vertices further away.
 BFS is implemented similarly to DFS, except that a queue
@@ -151,6 +155,10 @@ Here is an implementation for BFS.
 Here is an AV for you to try it on other graphs.
 
 .. avembed:: AV/Development/graphBFS.html ss
+
+Here is an exercise to practice BFS.
+
+.. avembed:: AV/Development/graphBFSPE.html pe
 
 .. TODO::
    :type: Exercise
