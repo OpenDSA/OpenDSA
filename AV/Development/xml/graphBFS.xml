@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <entry>
-<id>http://algoviz.org/OpenDSA/AV/Development/graphDFS.html</id>
-<title type='text'>Depth First Search Visualization</title>
+<id>http://algoviz.org/OpenDSA/AV/Development/graphBFS.html</id>
+<title type='text'>Breadth First Search Visualization</title>
 <width>822</width>
 <height>822</height>
 <author>

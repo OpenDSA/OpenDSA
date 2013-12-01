@@ -10,8 +10,8 @@
 
 .. odsalink:: AV/slideCON.css
 
-Shortest-Paths Problems [Storyboard]
-====================================
+Shortest-Paths Problems
+=======================
 
 On a road map, a road connecting two towns is typically
 labeled with its distance.
@@ -19,8 +19,8 @@ We can model a road network as a directed graph whose edges are
 labeled with real numbers.
 These numbers represent the distance (or other cost metric, such as
 travel time) between two vertices.
-These labels may be called :dfn:`weights`, :dfn:`costs`, or
-:dfn:`distances`, depending on the application.
+These labels may be called :term:`weights`, :term:`costs`, or
+:term:`distances`, depending on the application.
 Given such a graph, a typical problem is to find the total
 length of the shortest path between two specified vertices.
 This is not a trivial problem, because the shortest path may not be
@@ -30,28 +30,28 @@ along a path involving one or more intermediate vertices.
 .. TODO::
    :type: Slideshow
 
-   Incorporate the following into a slideshow with the figure below.
+   Incorporate the following paragraph into a slideshow with the
+   figure below it.
 
-   For example, in Figure :num:`Figure #DistExamp`,
-   the cost of the path from :math:`A` to :math:`B` to :math:`D` is 15.
-   The cost of the edge directly from :math:`A` to :math:`D` is 20.
-   The cost of the path from :math:`A` to :math:`C` to :math:`B` to
-   :math:`D` is 10.
-   Thus, the shortest path from :math:`A` to :math:`D` is 10
-   (rather than along the edge connecting :math:`A` to :math:`D`).
-   We use the notation :math:`\mathbf{d}(A, D) = 10` to indicate that
-   the
-   shortest distance from :math:`A` to :math:`D` is 10.
-   In Figure :num:`Figure #DistExamp`, there is no path from :math:`E` to
-   :math:`B`, so we set :math:`\mathbf{d}(E, B) = \infty`.
-   We define :math:`\mathbf{w}(A, D) = 20` to be the weight of edge
-   :math:`(A, D)`, that is, the weight of the direct connection
-   from :math:`A` to :math:`D`. 
-   Because there is no edge from :math:`E` to :math:`B`,
-   :math:`\mathbf{w}(E, B) = \infty`.
-   Note that :math:`\mathbf{w}(D, A) = \infty` because the graph of
-   Figure :num:`Figure #DistExamp` is directed.
-   We assume that all weights are positive.
+For example, in Figure :num:`Figure #DistExamp`,
+the cost of the path from :math:`A` to :math:`B` to :math:`D` is 15.
+The cost of the edge directly from :math:`A` to :math:`D` is 20.
+The cost of the path from :math:`A` to :math:`C` to :math:`B` to
+:math:`D` is 10.
+Thus, the shortest path from :math:`A` to :math:`D` is 10
+(rather than along the edge connecting :math:`A` to :math:`D`).
+We use the notation :math:`\mathbf{d}(A, D) = 10` to indicate that the
+shortest distance from :math:`A` to :math:`D` is 10.
+In Figure :num:`Figure #DistExamp`, there is no path from :math:`E` to
+:math:`B`, so we set :math:`\mathbf{d}(E, B) = \infty`.
+We define :math:`\mathbf{w}(A, D) = 20` to be the weight of edge
+:math:`(A, D)`, that is, the weight of the direct connection
+from :math:`A` to :math:`D`. 
+Because there is no edge from :math:`E` to :math:`B`,
+:math:`\mathbf{w}(E, B) = \infty`.
+Note that :math:`\mathbf{w}(D, A) = \infty` because the graph of
+Figure :num:`Figure #DistExamp` is directed.
+We assume that all weights are positive.
 
 .. _DistExamp:
 
@@ -64,7 +64,7 @@ Single-Source Shortest Paths
 ----------------------------
 
 We will now present an algorithm to solve the
-:dfn:`single-source shortest-paths` problem.
+:term:`single-source shortest-paths` problem.
 Given Vertex :math:`S` in Graph :math:`\mathbf{G}`,
 find a shortest path from :math:`S` to every other vertex in
 :math:`\mathbf{G}`.
@@ -96,31 +96,31 @@ When weights are added, BFS will not give the correct answer.
 .. TODO::
    :type: Slideshow
 
-   Provide a slideshow to demonstrate the following.
+   Provide a slideshow to demonstrate the following example.
 
-   One approach to solving this problem when the edges have
-   differing weights might be to process the
-   vertices in a fixed order.
-   Label the vertices :math:`v_0` to :math:`v_{n-1}`, with
-   :math:`S = v_0`.
-   When processing Vertex :math:`v_1`, we take the edge connecting
-   :math:`v_0` and :math:`v_1`.
-   When processing :math:`v_2`, we consider the shortest distance from
-   :math:`v_0` to :math:`v_2` and compare that to the shortest
-   distance from :math:`v_0` to :math:`v_1` to :math:`v_2`.
-   When processing Vertex :math:`v_i`, we consider the shortest
-   path for Vertices :math:`v_0` through :math:`v_{i-1}` that have
-   already been processed.
-   Unfortunately, the true shortest path to :math:`v_i` might go
-   through Vertex `v_j` for :math:`j > i`.
-   Such a path will not be considered by this algorithm.
-   However, the problem would not occur if we process the vertices in
-   order of distance from :math:`S`.
-   Assume that we have processed in order of distance from :math:`S` to
-   the first :math:`i-1` vertices that are closest to :math:`S`;
-   call this set of vertices :math:`\mathbf{S}`.
-   We are now about to process the :math:`i` th closest vertex; call
-   it :math:`X`.
+One approach to solving this problem when the edges have
+differing weights might be to process the
+vertices in a fixed order.
+Label the vertices :math:`v_0` to :math:`v_{n-1}`, with
+:math:`S = v_0`.
+When processing Vertex :math:`v_1`, we take the edge connecting
+:math:`v_0` and :math:`v_1`.
+When processing :math:`v_2`, we consider the shortest distance from
+:math:`v_0` to :math:`v_2` and compare that to the shortest
+distance from :math:`v_0` to :math:`v_1` to :math:`v_2`.
+When processing Vertex :math:`v_i`, we consider the shortest
+path for Vertices :math:`v_0` through :math:`v_{i-1}` that have
+already been processed.
+Unfortunately, the true shortest path to :math:`v_i` might go
+through Vertex `v_j` for :math:`j > i`.
+Such a path will not be considered by this algorithm.
+However, the problem would not occur if we process the vertices in
+order of distance from :math:`S`.
+Assume that we have processed in order of distance from :math:`S` to
+the first :math:`i-1` vertices that are closest to :math:`S`;
+call this set of vertices :math:`\mathbf{S}`.
+We are now about to process the :math:`i` th closest vertex; call
+it :math:`X`.
 
 A shortest path from :math:`S` to :math:`X` must have its next-to-last
 vertex in :math:`S`. 
@@ -147,13 +147,10 @@ Here is an implementation for Dijkstra's
 algorithm.
 At the end, array ``D`` will contain the shortest distance values.
 
-.. TODO::
-   :type: Slideshow
-
-   Slideshow here to demonstrate the concept of Dijkstra's algorithm
-
 .. codeinclude:: Graphs/Dijkstra.pde 
    :tag: GraphDijk1
+
+.. avembed:: AV/Development/DijkstraAV.html ss
 
 There are two reasonable solutions to the key issue of finding the
 unvisited vertex with minimum distance value during each pass through
@@ -245,10 +242,9 @@ However, when the graph is dense, this cost can become as great as
 
    Slideshow to demonstrate the relative costs of the two algorithms.
 
-.. TODO::
-   :type: Exercise
+Now you can practice using Dijkstra's algorithm.
 
-   Proficiency exercise for Dijkstra's algorithm
+.. avembed:: AV/Development/DijkstraPE.html pe
 
 .. TODO::
    :type: Exercise

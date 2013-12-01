@@ -10,8 +10,8 @@
 
 .. odsalink:: AV/slideCON.css
 
-Topological Sort [Storyboard]
-=============================
+Topological Sort
+================
 
 Assume that we need to schedule a series of tasks, such as classes or
 construction jobs, where we cannot start one task until after its
@@ -25,7 +25,7 @@ It is acyclic because a cycle would indicate a conflicting series of
 prerequisites that could not be completed without violating at least
 one prerequisite.
 The process of laying out the vertices of a DAG in a linear order to
-meet the prerequisite rules is called a :dfn:`topological sort`.
+meet the prerequisite rules is called a :term:`topological sort`.
 
 .. _TopSort:
 
@@ -39,12 +39,12 @@ meet the prerequisite rules is called a :dfn:`topological sort`.
    :type: Slideshow
 
    Replace the above figure with a slideshow that incorporates the
-   following:
+   following paragraph.
 
-   Figure :num:`Figure #TopSort` illustrates the problem.
-   An acceptable topological sort for this example is J1,
-   J2, J3, J4, J5, J6, J7. However, other orders are also acceptable,
-   such as J1, J3, J2, J6, J4, J5, J7.
+Figure :num:`Figure #TopSort` illustrates the problem.
+An acceptable topological sort for this example is J1,
+J2, J3, J4, J5, J6, J7. However, other orders are also acceptable,
+such as J1, J3, J2, J6, J4, J5, J7.
 
 A topological sort may be found by performing a DFS on the graph.
 When a vertex is visited, no action is taken (i.e., function
@@ -62,14 +62,16 @@ Here is implementation for the DFS-based algorithm.
 .. TODO::
    :type: Slideshow
 
-   Replace this with a slideshow:
+   Replace the following paragraph with a slideshow.
 
-   Using this algorithm starting at J1 and visiting adjacent
-   neighbors in alphabetic order, vertices of the graph in
-   Figure :num:`Figure #TopSort` are printed out in the order J7,
-   J5, J4, J6, J2, J3, J1.
-   Reversing this yields the topological sort
-   J1, J3, J2, J6, J4, J5, J7.
+Using this algorithm starting at J1 and visiting adjacent
+neighbors in alphabetic order, vertices of the graph in
+Figure :num:`Figure #TopSort` are printed out in the order J7,
+J5, J4, J6, J2, J3, J1.
+Reversing this yields the topological sort
+J1, J3, J2, J6, J4, J5, J7.
+
+Here is another example.
 
 .. avembed:: AV/Development/topSort.html ss
 
@@ -79,24 +81,24 @@ instead of recursion, as follows.
 .. TODO::
    :type: Slideshow
 
-   Incorporate the following into a slideshow:
+   Incorporate the following into a slideshow.
 
-   First visit all edges, counting the number of
-   edges that lead to each vertex (i.e., count the number of
-   prerequisites for each vertex).
-   All vertices with no prerequisites are placed on the queue.
-   We then begin processing the queue.
-   When Vertex :math:`v` is taken off of the queue, it is printed, and all
-   neighbors of :math:`v` (that is, all vertices that have :math:`v` as a
-   prerequisite) have their counts decremented by one.
-   Place on the queue any neighbor whose count becomes zero.
-   If the queue becomes empty without printing all of the vertices, then
-   the graph contains a cycle (i.e., there is no possible ordering
-   for the tasks that does not violate some prerequisite).
-   The printed order for the vertices of the graph in
-   Figure :num:`Figure #TopSort` using the queue version of topological
-   sort is J1, J2, J3, J6, J4, J5, J7.
-   Here is an implementation for the algorithm.
+First visit all edges, counting the number of
+edges that lead to each vertex (i.e., count the number of
+prerequisites for each vertex).
+All vertices with no prerequisites are placed on the queue.
+We then begin processing the queue.
+When Vertex :math:`v` is taken off of the queue, it is printed, and all
+neighbors of :math:`v` (that is, all vertices that have :math:`v` as a
+prerequisite) have their counts decremented by one.
+Place on the queue any neighbor whose count becomes zero.
+If the queue becomes empty without printing all of the vertices, then
+the graph contains a cycle (i.e., there is no possible ordering
+for the tasks that does not violate some prerequisite).
+The printed order for the vertices of the graph in
+Applying the queue version of topological sort to the graph of
+Figure :num:`Figure #TopSort` produces J1, J2, J3, J6, J4, J5, J7.
+Here is an implementation for the algorithm.
 
 Here is the code to implement the queue-based topological sort:
 
