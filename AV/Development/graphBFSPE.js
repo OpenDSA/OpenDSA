@@ -16,7 +16,7 @@
       if (graph) {
         graph.clear();
       }
-      graph = jsav.ds.graph({width: 600, height: 600, layout: "manual", directed: true});
+      graph = jsav.ds.graph({width: 600, height: 600, layout: "manual", directed: false});
       initGraph("orig");
       graph.layout();
       jsav.displayInit();
@@ -39,7 +39,7 @@
     }
     function model(modeljsav) {
       var i;
-      modelGraph = modeljsav.ds.graph({width: 600, height: 600, layout: "manual", directed: true});
+      modelGraph = modeljsav.ds.graph({width: 600, height: 600, layout: "manual", directed: false});
       initGraph("model");
       modelGraph.layout();
 	  modeljsav.displayInit();
