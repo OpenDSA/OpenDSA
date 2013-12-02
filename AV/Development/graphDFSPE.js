@@ -4,8 +4,7 @@
   $(document).ready(function () {
     var settings = new JSAV.utils.Settings($(".jsavsettings")),
     jsav = new JSAV($('.avcontainer'), {settings: settings}),
-    exercise, graph, modelGraph,
-    edgeCount = 9, graphNodes = [], gnodes = [], mstnodes = [];
+    exercise, graph, modelGraph, graphNodes = [], gnodes = [];
     var exerciseStep, step;
     jsav.recorded();
 	
@@ -16,9 +15,14 @@
       if (graph) {
         graph.clear();
       }
-      graph = jsav.ds.graph({width: 600, height: 600, layout: "manual", directed: true});
-      initGraph("orig");
+      graph = jsav.ds.graph({width: 400, height: 400, layout: "automatic", directed: false});
+	  generate(graph, false);  //Randomly generate the graph without weights
+      //initGraph("orig");
       graph.layout();
+	  graphNodes = graph.nodes();
+	  for (i = 0;i < graph.edges().length; i++) {
+	    console.log(graph.edges()[i].start().value()+"  "+graph.edges()[i].end().value());
+	  }
       jsav.displayInit();
       return graph;
     }
@@ -39,13 +43,21 @@
     }
     function model(modeljsav) {
       var i;
-      modelGraph = modeljsav.ds.graph({width: 600, height: 600, layout: "manual", directed: true});
-      initGraph("model");
+      modelGraph = modeljsav.ds.graph({width: 400, height: 400, layout: "automatic", directed: false});
+	  for (var i = 0; i < graph.nodeCount(); i++) {
+	    modelGraph.addNode(graph.nodes()[i].value());
+	  }
+	  for (var i = 0; i < graph.edges().length; i++) {
+	    modelGraph.addEdge(modelGraph.nodes()[graph.nodes().indexOf(graph.edges()[i].start())],
+	    modelGraph.nodes()[graph.nodes().indexOf(graph.edges()[i].end())]);
+	  }
+      //initGraph("model");
       modelGraph.layout();
 	  modeljsav.displayInit();
+	  gnodes = modelGraph.nodes();
 	  dfs(gnodes[0], modeljsav);
 	  modeljsav.umsg("Final DFS graph");
-	  for (i = 0; i < edgeCount; i++) {
+	  for (i = 0; i < modelGraph.edges().length; i++) {
 	    if (!modelGraph.edges()[i].added) {
 		  modelGraph.edges()[i].hide();
 		}
