@@ -85,7 +85,7 @@
             "long_name": "Topological Sort (DFS) visualization",
             "required": false,
             "points": 0,
-            "showhide": "show",
+            "showhide": "none",
             "threshold": 1.0
           }
         }
@@ -93,7 +93,20 @@
       "Development/GraphShortest": {
         "long_name": "Shortest Paths Problems",
         "exercises": {
-          "dijkstraCON1": {}
+          "dijkstraCON1": {},
+          "DijkstraAV": {
+            "long_name": "Dijkstra's Algorithm Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "DijkstraPE": {
+            "long_name": "Dijkstra's Algorithm Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          }
         }
       },
       "Development/MCST": {
@@ -104,7 +117,7 @@
             "long_name": "Prim's Algorithm Visualization",
             "required": false,
             "points": 0,
-            "showhide": "show",
+            "showhide": "none",
             "threshold": 1.0
           }
         }
