@@ -8,8 +8,8 @@
    :prerequisites: GraphShortest
    :topic: Graphs
 
-Minimal Cost Spanning Trees [Storyboard]
-========================================
+Minimal Cost Spanning Trees
+===========================
 
 The :dfn:`minimum-cost spanning tree` (MST)
 problem takes as input a connected, undirected graph
@@ -106,32 +106,7 @@ The implementation above also contains calls to
 ``AddEdgetoMST`` to indicate which edges are actually added to the
 MST.
 
-.. TODO::
-   :type: Slideshow
-
-   Put this example into a slideshow:
-
-   For the graph of Figure :num:`Figure #MCSTdgm`, assume that we
-   begin by marking Vertex :math:`A`.
-   From :math:`A`, the least-cost edge leads to Vertex :math:`C`.
-   Vertex :math:`C` and edge :math:`(A, C)` are added to the MST.
-   At this point, our candidate edges connecting the MST
-   (Vertices :math:`A` and :math:`C`) with the rest of the graph are
-   :math:`(A, E), (C, B), (C, D)`, and :math:`(C, F)`.
-   From these choices, the least-cost edge from the MST is
-   :math:`(C, D)`. 
-   So we add Vertex :math:`D` to the MST.
-   For the next iteration, our edge choices are
-   :math:`(A, E), (C, B), (C, F)`, and :math:`(D, F)`.
-   Because edges :math:`(C, F)` and :math:`(D, F)` happen to
-   have equal cost, it is an arbitrary decision as to which gets
-   selected.
-   Say we pick :math:`(C, F)`.
-   The next step marks Vertex :math:`E` and adds edge
-   :math:`(F, E)` to the MST.
-   Following in this manner, Vertex :math:`B`
-   (through edge :math:`(C, B)`) is marked.
-   At this point, the algorithm terminates.
+.. avembed:: AV/Development/PrimAV.html ss
 
 Alternatively, we can implement Prim's algorithm using a priority
 queue to find the next closest vertex, as
@@ -150,7 +125,7 @@ stores ``DijkElem`` objects.
 
 Here is an AV that lets you try Prim's algorithm on other graphs.
 
-.. avembed:: AV/Development/PrimAV.html ss
+.. avembed:: AV/Development/PrimAVPQ.html ss
 
 Prim's algorithm is an example of a greedy
 algorithm.
@@ -219,10 +194,12 @@ cost?
    include any marked vertex :math:`v_i, i \leq j`, because to do so
    would form a cycle.
 
+.. avembed:: AV/Development/PrimAVPE.html pe
+
 .. TODO::
    :type: Exercise
 
-   Proficiency exercise for Kruskal's algorithm.
+   Proficiency exercise for Prim's algorithm.
 
 Kruskal's Algorithm
 -------------------
@@ -238,38 +215,7 @@ An edge is added to the MST, and two equivalence classes combined,
 if the edge connects two vertices in different equivalence classes.
 This process is repeated until only one equivalence class remains.
 
-.. TODO::
-   :type: Slideshow
-
-   Put this example into a slideshow:
-
-   Figure :num:`Figure #KruskalFig` shows the first three steps of
-   Kruskal's Algorithm for the graph of
-   Figure :num:`Figure #MCSTdgm`.
-   Edge (C, D) has the least cost, and because
-   C and D are currently in separate MSTs, they are combined.
-   We next select edge (E, F) to process, and combine these
-   vertices into a single MST.
-   The third edge we process is (C, F), which causes the
-   MST containing Vertices C and D to merge with the MST
-   containing Vertices E and F.
-   The next edge to process is (D, F).
-   But because Vertices D and F are currently in the same
-   MST, this edge is rejected.
-   The algorithm will continue on to accept edges (B, C)
-   and (A, C) into the MST.
-
-.. _KruskalFig:
-
-.. odsafig:: Images/Kruskal.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Illustration of Kruskal's MST algorithm
-
-   Illustration of the first three steps of Kruskal's MST algorithm as
-   applied to the graph of Figure :num:`Figure #MCSTdgm`.
+.. avembed:: AV/Development/KruskalUFAV.html ss
 
 The edges can be processed in order of weight by using a
 min-heap.
@@ -291,11 +237,6 @@ Class ``KruskalElem`` is used to store the edges on the min-heap.
 .. codeinclude:: Graphs/Kruskal.pde
    :tag: Kruskal
 
-.. TODO::
-   :type: AV
-
-   Provide AV to demonstrate Kruskal's algorithm
-
 Kruskal's algorithm is dominated by the time required to
 process the edges.
 The ``differ`` and ``UNION`` functions are nearly
@@ -309,10 +250,7 @@ only about :math:`|\mathbf{V}|` edges must be processed.
 If so, the cost is often close to
 :math:`\Theta(|\mathbf{V}| \log |\mathbf{E}|)` in the average case.
 
-.. TODO::
-   :type: Exercise
-
-   Proficiency exercise for Kruskal's algorithm.
+.. avembed:: AV/Development/KruskalPE.html pe
 
 .. TODO::
    :type: Exercise
