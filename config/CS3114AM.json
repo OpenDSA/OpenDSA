@@ -1569,16 +1569,6 @@
         "exercises": {}
       }
     },
-    "General Trees": {
-      "Stubs/GenTree": {
-        "long_name": "General Trees",
-        "exercises": {}
-      },
-      "Stubs/UnionFind": {
-        "long_name": "Union/Find",
-        "exercises": {}
-      }
-    },
     "Indexing": {
       "Development/IndexIntro": {
         "long_name": "Indexing Chapter Introduction",
