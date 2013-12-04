@@ -113,6 +113,7 @@
 	//Already unioned
 	return true;
       } else if (parent1.size === parent2.size){
+	  console.log(parent1.value() +' is Equal to '+ parent2.value());
 	//Alphabetical order
 	if (parent1.value().charCodeAt(0) <= parent2.value().charCodeAt(0)){
 	  parent1.addChild(parent2);
@@ -128,6 +129,7 @@
 	  }
 	}
       } else if (parent1.size >= parent2.size) {
+	    console.log(parent1.value()+" is greater than "+parent2.value());
         parent1.addChild(parent2);
         parent1.size++;
         if (treeType === 'exercise'){
@@ -135,6 +137,7 @@
 	}
       }
       else {
+	    console.log(parent2.value()+" is greater than "+parent1.value());
         parent2.addChild(parent1);
         parent2.size++;
         if (treeType === 'exercise'){
@@ -202,7 +205,7 @@
       root.id("root");
       for (i = 0; i < arr.length; i++) {
         newNode = tree.newNode(labels.value(i));
-        newNode.size = 1;   //To maintain the size of each connected component
+        newNode.size = 1;  //To maintain the size of each connected component
         root.addChild(newNode);
       }
       treeNodes = new Array(arr.length);
@@ -236,6 +239,7 @@
 	parentIndex = index;
       } else {
 	treeNodes[parentIndex].addChild(node);
+	treeNodes[parentIndex].size++;
 	treeNodes[parentIndex].removeClass('selected');
 	parents.value(index, parentIndex);
 	labels.removeClass(parentIndex, 'selected');
@@ -253,7 +257,6 @@
 	console.log(step);
       }
     }
-
     $(".jsavcontainer").on("click", ".jsavtreenode", function () {
       var value = $(this).data('value');
       var node = getNodeByValue(value);
