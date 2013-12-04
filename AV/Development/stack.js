@@ -2,8 +2,12 @@
   "use strict";
   if (typeof JSAV === "undefined") { return; }
 
-  var Stack = function (jsav, options) {
+  var Stack = function (jsav, values, options) {
     this.jsav = jsav;
+    if (!$.isArray(values)) {
+      options = values;
+      values = [];
+    }
     this.options = $.extend({visible: true, xtransition: 10, ytransition: -5, autoresize: true}, options);
     var el = this.options.element || $("<div/>");
     el.addClass("jsavstack");
@@ -20,6 +24,12 @@
     this.element.attr({"id": this.id()});
     if (this.options.autoresize) {
       el.addClass("jsavautoresize");
+    }
+    for (var i = values.length; i--; ) {
+      this.addFirst(values[i]);
+    }
+    if (values.length > 0) {
+      this.layout();
     }
     JSAV.utils._helpers.handlePosition(this);
     JSAV.utils._helpers.handleVisibility(this, this.options);
@@ -151,11 +161,11 @@
   };
 
   JSAV.ext.ds.layout.stack = {
-    "_default": stackLayout,
+    "_default": stackLayout
   };
 
-  JSAV.ext.ds.stack = function(options) {
-    return new Stack(this, options);
+  JSAV.ext.ds.stack = function(values, options) {
+    return new Stack(this, values, options);
   };
 
 }(jQuery));

@@ -60,13 +60,15 @@
       // set all steps gradeable that include a swap
       modelbh.swap = function (ind1, ind2, opts) {
         this.origswap(ind1, ind2, opts);
+        // function is executed as function of the heap instance, which
+        // has jsav variable (pointing to modeljsav var of this closure)
         this.jsav.stepOption("grade", true);
       };
       modeljsav._undo = [];
       var count = 3;
       while (count > 0) {
         modelbh.swap(0, modelbh.heapsize() - 1);
-        modelbh.element.attr("data-jsav-heap-size", modelbh.heapsize() - 1);
+        modelbh.heapsize(modelbh.heapsize() - 1);
         modeljsav.step();
 
         modelbh.css(modelbh.heapsize(), {"opacity": "0"})
@@ -78,7 +80,7 @@
       }
       return modelbh;
     }
-    var exercise = jsav.exercise(model, init, { css: "background-color" },
+    var exercise = jsav.exercise(model, init, { css: "opacity" },
         { controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
     
@@ -86,16 +88,16 @@
       jsav._redo = []; // clear the forward stack, should add a method for this in lib
       var sIndex = swapIndex.value();
       if (sIndex === -1) { // if first click
-        bh.css(index, {"font-size": "145%"});
+        bh.highlight(index);
         swapIndex.value(index);
         jsav.step();
       } else if (index === sIndex) { // second click on same
-        bh.css(index, {"font-size": "100%"});
+        bh.unhighlight(index);
         swapIndex.value(-1);
         jsav.step();
       } else { // second click will swap
         bh.swap(sIndex, index, {});
-        bh.css([sIndex, index], {"font-size": "100%"});
+        bh.unhighlight([sIndex, index]);
         swapIndex.value(-1);
         exercise.gradeableStep();
       }
@@ -105,7 +107,7 @@
       var size = modelHeap.size();
       swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step                                                    
       for (var i = 0; i < size; i++) {
-        bh.css(i, {"background-color": modelHeap.css(i, "background-color")});
+        bh.css(i, {"opacity": modelHeap.css(i, "opacity")});
         bh.value(i, modelHeap.value(i));
       }
       bh.heapsize(modelHeap.heapsize());
@@ -122,9 +124,11 @@
     });
     
     $("#decrement").click(function() {
-        bh.heapsize(bh.heapsize() - 1);
-        bh.css(bh.heapsize(), {"opacity": "0"});
-        bh._treenodes[bh.heapsize()].edgeToParent().css("stroke", "white");
+        var heapsize = bh.heapsize() - 1; // decrement by one
+        bh.heapsize(heapsize); // set heapsize
+        // hide last item and the edge in the tree
+        bh.css(heapsize, {"opacity": "0"});
+        bh._treenodes[heapsize].edgeToParent().css({stroke: "white"});
         if (swapIndex.value() !== -1) {
           swapIndex.value(-1);
         }

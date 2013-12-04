@@ -6,18 +6,18 @@
         settings = new JSAV.utils.Settings($(".jsavsettings")),
         jsav = new JSAV($('.avcontainer'), {settings: settings}),
         swapIndex,
-        insertPos,
-        insertData,
-        insertValue,
         nodeNum = 10,
-        initNum = 0;
+        initNum = 0,
+        stack,
+        insertLabel;
 
     jsav.recorded();
     function init() {
       if (bh) {
         bh.clear();
-        insertPos.element.remove();
-        insertValue.element.remove();
+        stack.element.remove();
+        swapIndex.element.remove();
+        insertLabel.element.remove();
       }
       var step = 0;
       $.fx.off = true;
@@ -49,10 +49,13 @@
       ODSA.AV.logExerciseInit(exInitData);
 
       bh = jsav.ds.binheap(initData.slice(0, initNum), {size: nodeNum});
-      insertData = initData.slice(initNum, nodeNum);
+      var insertData = initData.slice(initNum, nodeNum);
       swapIndex = jsav.variable(-1);
-      insertPos = jsav.variable(0);
-      insertValue = jsav.variable("Insert " + insertData[0], {visible: true});
+
+      stack = jsav.ds.stack(insertData, {relativeTo: bh, left: "-30px", anchor: "left top", myAnchor: "right top", top: "0px"});
+      stack.layout();
+      insertLabel = jsav.label("Insert values", {relativeTo: stack, top: "15px", anchor: "center bottom"});
+      jsav.displayInit();
       $.fx.off = false;
       return bh;
     }
@@ -81,44 +84,50 @@
 
    
     function fixState(modelHeap) {
-      var size = modelHeap.size();
-      swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step                                                    
-      for (var i = 0; i < size; i++) {
-        bh.css(i, {"background-color": modelHeap.css(i, "background-color")});
-        bh.value(i, modelHeap.value(i));
+      swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step
+      var items = 0;
+      for (var i = 0, size = modelHeap.size(); i < size; i++) {
+        //bh.css(i, {"background-color": modelHeap.css(i, "background-color")});
+        if (bh.value(i) !== modelHeap.value(i)) {
+          bh.value(i, modelHeap.value(i));
+        }
+        if (bh.value(i)) { // count the items inserted
+          items++;
+        }
+      }
+      // remove first item from stack if there are more items in stack then should be left
+      if (nodeNum - items !== stack.size()) {
+        stack.removeFirst();
       }
       bh.heapsize(modelHeap.heapsize());
     }
 
 
-    var exercise = jsav.exercise(model, init, { css: "background-color" },
+    var exercise = jsav.exercise(model, init, { },
         { controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
     
     function clickHandler(index) {
       jsav._redo = []; // clear the forward stack, should add a method for this in lib
       if (bh.value(index) === "") {
-        var inspos = insertPos.value();
-        if (inspos < insertData.length) {
-          bh.value(index, insertData[inspos]);
-          insertPos.value(inspos + 1);
-          if (inspos < insertData.length - 1) {
-            insertValue.value("Insert " + insertData[inspos + 1]);
-          } else {
-            insertValue.value("No more data");
-          }
+        if (stack.size() > 0) {
+          bh.value(index, stack.first().value());
+          stack.removeFirst();
           exercise.gradeableStep();
         }
         return;
       }
       var sIndex = swapIndex.value();
       if (sIndex === -1) { // if first click
-        bh.css(index, {"font-size": "145%"});
+        bh.highlight(index);
         swapIndex.value(index);
         jsav.step();
+      } else if (sIndex === index) {
+        bh.unhighlight(index);
+        swapIndex.value(-1);
       } else { // second click will swap
         bh.swap(sIndex, index, {});
-        bh.css([sIndex, index], {"font-size": "100%"});
+        bh.unhighlight([sIndex, index]);
         swapIndex.value(-1);
         exercise.gradeableStep();
       }
