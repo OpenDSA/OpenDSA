@@ -143,7 +143,7 @@
     jsav = new JSAV($('.avcontainer'), {settings: settings}),
     exercise, graph, modelGraph, graphNodes = [], gnodes = [];
     var exerciseStep, step;
-    jsav.recorded();
+    //jsav.recorded();
 	
     function init() {
       exerciseStep = 0;
