@@ -161,7 +161,7 @@
   };
 
   JSAV.ext.ds.layout.stack = {
-    "_default": stackLayout,
+    "_default": stackLayout
   };
 
   JSAV.ext.ds.stack = function(values, options) {
