@@ -10,6 +10,17 @@
   var adjacencyMatrix = [,];
   var randomWeights = [];
   
+  function sort(nodes) {
+    for (var i = 0;i < nodes.length-1;i++) {
+	  for (var j = i + 1;j < nodes.length; j++) {
+	    if (nodes[i].value().charAt(0) > nodes[j].value().charAt(0)) {
+		  var temp = nodes[i];
+		  nodes[i] = nodes[j];
+		  nodes[j] = temp;
+		}
+	  }
+	}
+  }
   function generateNodeEdgeCounts() {
     //generate the number of nodes and edges
     var n;
@@ -224,6 +235,7 @@
       var next;
       markIt(start, av);
       adjacent = start.neighbors();
+	  sort(adjacent); //Sort the neighbors according to their value 
       for (next = adjacent.next(); next; next = adjacent.next()) {
         av.umsg("Process edge (" + start.value() + "," + next.value() + ")");
         if (next.hasClass("visited")) {

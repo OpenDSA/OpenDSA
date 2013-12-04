@@ -119,6 +119,32 @@
             "points": 0,
             "showhide": "none",
             "threshold": 1.0
+          },
+          "PrimAVPQ": {
+            "long_name": "Prim's with Priority Queue Algorithm Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "PrimAVPE": {
+            "long_name": "Prim's Algorithm Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          },
+          "KruskalUFAV": {
+            "long_name": "Kruskal's Algorithm Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "KruskalPE": {
+            "long_name": "Kruskal's Algorithm Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
           }
         }
       }

@@ -1631,21 +1631,115 @@
       }
     },
     "Graphs": {
-      "Stubs/GraphImpl": {
-        "long_name": "Graph Implementations",
+      "Development/GraphIntro": {
+        "long_name": "Introduction and Terminology",
         "exercises": {}
       },
-      "Stubs/GraphTraversal": {
-        "long_name": "Graph Traversals",
+      "Development/GraphImpl": {
+        "long_name": "Graph Implementation",
         "exercises": {}
       },
-      "Stubs/GraphShortest": {
-        "long_name": "Graph Shortest Paths",
-        "exercises": {}
+      "Development/GraphTraversal": {
+        "long_name": "Graph Traversal",
+        "exercises": {
+          "graphDFS": {
+            "long_name": "Depth First Search Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "graphDFSPE": {
+            "long_name": "DFS Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          },
+          "graphBFS": {
+            "long_name": "Breadth First Search Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "graphBFSPE": {
+            "long_name": "BFS Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          }
+        }
       },
-      "Stubs/MCST": {
-        "long_name": "Minimum Cost Spanning Trees",
-        "exercises": {}
+      "Development/GraphTopsort": {
+        "long_name": "Topological Sort",
+        "exercises": {
+          "topsortCON1": {},
+          "topSort": {
+            "long_name": "Topological Sort (DFS) visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
+      },
+      "Development/GraphShortest": {
+        "long_name": "Shortest Paths Problems",
+        "exercises": {
+          "dijkstraCON1": {},
+          "DijkstraAV": {
+            "long_name": "Dijkstra's Algorithm Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "DijkstraPE": {
+            "long_name": "Dijkstra's Algorithm Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          }
+        }
+      },
+      "Development/MCST": {
+        "long_name": "Minimal Cost Spanning Trees",
+        "exercises": {
+          "MCSTCON1": {},
+          "PrimAV": {
+            "long_name": "Prim's Algorithm Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "PrimAVPQ": {
+            "long_name": "Prim's with Priority Queue Algorithm Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "PrimAVPE": {
+            "long_name": "Prim's Algorithm Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          },
+          "KruskalUFAV": {
+            "long_name": "Kruskal's Algorithm Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "KruskalPE": {
+            "long_name": "Kruskal's Algorithm Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          }
+        }
       }
     },
     "Stubs": {
