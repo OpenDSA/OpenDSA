@@ -165,13 +165,13 @@
     var max = 0;
     //handles the actual click on an index and highlights the specified index
     var str = generate_strings();
-    str_arr = kmp_exercise.ds.array([' '], {indexed: true});
+    str_arr = kmp_exercise.ds.array([' '], {indexed: false});
     for(var i = 0; i < str.length; i++){
       str_arr.value(i, str[i]);
     }
     //initializing the alignment array
     var align_table_temp = compute_align_array(str);
-    alignment_table = kmp_exercise.ds.array([' '], {indexed: true});
+    alignment_table = kmp_exercise.ds.array([' '], {indexed: false});
     for(var i = 0; i < align_table_temp.length; i++){
       alignment_table.value(i, align_table_temp[i]);
     }
