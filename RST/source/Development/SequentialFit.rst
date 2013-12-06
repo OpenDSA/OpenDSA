@@ -109,10 +109,10 @@ possible size.
 Merging is easily done due to the tag and size fields stored at the
 ends of each block, as illustrated by the figure below.
 Here, the memory manager first checks the unit of memory immediately
-preceding block <i>F</i> to see if the preceding block (call
+preceding block :math:`F` to see if the preceding block (call
 it :math:`P`) is also free.
 If it is, then the memory unit before :math:`P` 's tag bit stores
-the size of <i>P</i>, thus indicating the position for the beginning
+the size of :math:`P`, thus indicating the position for the beginning
 of the block in memory.
 :math:`P` can then simply have its size extended to include
 block :math:`F`.

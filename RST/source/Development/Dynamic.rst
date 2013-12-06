@@ -53,7 +53,7 @@ larger than the request.
 This is because saving a tiny block that is too small to be useful for
 a future memory request might not be worthwhile.
 Alternatively, for a free block of size :math:`k`,
-with :math`k > m`, up to :math:`k - m` space may be
+with :math:`k > m`, up to :math:`k - m` space may be
 retained by the memory manager to form a new free 
 block, while the rest is used to service the request.
 
