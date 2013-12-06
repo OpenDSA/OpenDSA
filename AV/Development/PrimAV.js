@@ -59,7 +59,7 @@
   });
   function logEventHandler(eventData) {
     if(eventData.type === 'jsav-question-answer') {
-      alert(eventData.correct);
+      //alert(eventData.correct);
 	}
   }
   function runit() {
