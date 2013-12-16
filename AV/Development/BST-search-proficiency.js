@@ -5,7 +5,7 @@
       initialData = [],
       jsavBinaryTree,
       $key = $('#keyToFind'),
-      av = new JSAV($("#jsavcontainer"));
+      av = new JSAV($(".avcontainer"));
 
 
   // auxillary function for creating a perfect binary tree

@@ -3,12 +3,11 @@
       binaryTree,
       stack,
       insertSize = 10,
-      av = new JSAV($("#jsavcontainer"));
+      av = new JSAV($(".avcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
-    BST.turnAnimationOff();
 
     insertArray = JSAV.utils.rand.numKeys(10, 100, insertSize, {test: dataTest, tries: 10});
     if (stack) {
@@ -31,21 +30,19 @@
     binaryTree.layout();
 
     function dataTest(array) {
-      var bst = av.ds.bintree();
+      var bst = av.ds.bintree({visible: false});
       bst.insert(array);
       var result = bst.height() <= 5;
       bst.clear();
       return result;
     }
-
-    BST.restoreAnimationState(); 
+    av.displayInit();
 
     return binaryTree;
   }
       
   function modelSolution(jsav) {
     jsav._undo = [];
-
     var modelStack = jsav.ds.stack({center: true});
     for (var i = 0; i < insertSize; i++) {
       modelStack.addLast(insertArray[i]);
@@ -105,17 +102,17 @@
       if (!this.left()) {
         //add empty node on the left side
         this.left("");
-        this.left().element.addClass("emptynode");
+        this.left().addClass("emptynode");
       }
       if (!this.right()) {
         //add empty node on the right side
         this.right("");
-        this.right().element.addClass("emptynode");
+        this.right().addClass("emptynode");
       }
-      //update tree
-      binaryTree.layout();
       //remove class for dashed border
       this.removeClass("emptynode");
+      //update tree
+      binaryTree.layout();
       //gradeable step
       exercise.gradeableStep();
     }

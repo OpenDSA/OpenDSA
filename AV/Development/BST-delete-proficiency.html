@@ -4,7 +4,7 @@
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
   <title>BST Delete</title>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
   <link rel="stylesheet" href="proficiency.css" type="text/css" />
   <style>
     .jsavtreenode {
@@ -20,17 +20,36 @@
 </head>
 
 <body>
-  <h1>BST Delete</h1>
-  <div id="jsavcontainer">
-    <p class="instructLabel">Instructions:</p>
-    <p class="instructions">
-      Use the BST Delete algorithm to delete the values in the
-      stack. Click on a node to erase its value, or if there is a
-      previously erased value, to move the value into the erased node
-      or replace the node.
-    </p>
-    <p align="center" class="jsavexercisecontrols"></p>
-    <p class="jsavscore"></p>
+  <div id="container">
+    <table class="proHeaderTable">
+      <tr>
+        <td class="headerLeft">
+          <input type="button" id="help" name="help" value="Help" />
+        </td>
+        <td class="headerCenter">
+          <p class="jsavexercisecontrols"></p>
+        </td>
+        <td class="headerRight">
+          <input type="button" id="about" name="about" value="About" />
+          <a id="settings" class="jsavsettings" href="#">Settings</a>
+        </td>
+      </tr>
+    </table>
+    <form class="avcontainer">
+      <p class="instructLabel">Instructions:</p>
+      <p class="instructions">
+        Use the BST Delete algorithm to delete the values in the
+        stack. Click on a node to erase its value, or if there is a
+        previously erased value, to move the value into the erased node
+        or replace the node.
+      </p>
+      <p align="center">
+        <span class="jsavscore"></span>
+      </p>
+
+      <div id="av" class="jsavcanvas">
+      </div>
+    </form>
   </div>
 
   <script src="../../lib/jquery.min.js"></script>

@@ -4,7 +4,7 @@
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
   <title>BST Insert</title>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
   <link rel="stylesheet" href="proficiency.css" type="text/css" />
   <style>
     .jsavtreenode {
@@ -16,16 +16,35 @@
   </style>
 </head>
 <body>
-  <h1>BST Insert</h1>
-  <div id="jsavcontainer">
-    <p class="instructLabel">Instructions:</p>
-    <p class="instructions">
-      Use the BST Insert algorithm to insert the values from the
-      stack. Click on a node to move the highlighted value into the
-      binary tree.
-    </p>
-    <p align="center" class="jsavexercisecontrols"></p>
-    <p class="jsavscore"></p>
+  <div id="container">
+    <table class="proHeaderTable">
+      <tr>
+        <td class="headerLeft">
+          <input type="button" id="help" name="help" value="Help" />
+        </td>
+        <td class="headerCenter">
+          <p class="jsavexercisecontrols"></p>
+        </td>
+        <td class="headerRight">
+          <input type="button" id="about" name="about" value="About" />
+          <a id="settings" class="jsavsettings" href="#">Settings</a>
+        </td>
+      </tr>
+    </table>
+    <form class="avcontainer">
+      <p class="instructLabel">Instructions:</p>
+      <p class="instructions">
+          Use the BST Insert algorithm to insert the values from the
+          stack. Click on a node to move the highlighted value into the
+          binary tree.
+      </p>
+      <p align="center">
+        <span class="jsavscore"></span>
+      </p>
+
+      <div id="av" class="jsavcanvas">
+      </div>
+    </form>
   </div>
 
   <script src="../../lib/jquery.min.js"></script>

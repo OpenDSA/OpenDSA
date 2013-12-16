@@ -6,7 +6,7 @@
       deleteSize = 5,          //delete 5 values/nodes
       treeSize = 20,          //20 nodes
       maxHeight = 6,
-      av = new JSAV($("#jsavcontainer"));
+      av = new JSAV($(".avcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
