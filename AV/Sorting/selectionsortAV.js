@@ -81,6 +81,8 @@
       jsav.step();
       if (bigindex !== (arr.size() - i - 1)) {
         arr.swap(bigindex, arr.size() - i - 1); // swap the two indices
+        setGray(bigindex);
+        setGreen(arr.size() - i - 1);
       }
       jsav.step();
       jsav.umsg("Done this pass");
@@ -117,5 +119,10 @@
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
   $('#run').click(runIt);
+  $('#ssperform').submit(function(evt) { // pressing return in 'Your values:' box -> runIt
+    evt.stopPropagation();
+    evt.preventDefault();
+    runIt();
+  });
   $('#reset').click(ODSA.AV.reset);
 }(jQuery));

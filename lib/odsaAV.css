@@ -136,7 +136,10 @@ form {
   padding-left: 5px;
 }
 
+.jsavnode.sorted {
+  background-color: #ffffcc;
+}
 
-.jsavvalue.processing {
+.jsavnode.processing {
   background-color: #ddf;
 }

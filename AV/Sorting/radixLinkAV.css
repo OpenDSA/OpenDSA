@@ -12,6 +12,9 @@
   max-height: 30px !important;
   line-height: 30px;
 }
+.jsavlist .jsavvalue {
+  height: 30px;
+}
 
 .jsavlist .jsavedge {
   stroke-width: 2;

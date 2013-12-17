@@ -294,7 +294,7 @@ html_context = {"script_files": [
                 ],
                 "odsa_scripts": [
                   '%(eb2root)slib/jquery-ui.min.js',
-                  '%(eb2root)sJSAV/lib/jquery.transform.light.js',
+                  '%(eb2root)sJSAV/lib/jquery.transit.js',
                   '%(eb2root)sJSAV/lib/raphael.js',
                   '%(eb2root)sJSAV/build/JSAV-min.js',
                   '_static/config.js',

@@ -107,3 +107,6 @@ iframe {
   margin: 0;
   overflow: hidden;
 }
+.light {
+  color: rgb(215, 215, 215);
+}
