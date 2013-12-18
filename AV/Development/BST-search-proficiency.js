@@ -35,8 +35,6 @@
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
-    BST.turnAnimationOff();
-
     if (jsavBinaryTree) {
       jsavBinaryTree.clear();
     }
@@ -50,8 +48,6 @@
     keyToFind = initialData[JSAV.utils.rand.numKey(Math.floor(nodeNum / 2), nodeNum)];
     $key.html("<li>" + keyToFind + "</li>");
     av.ds.array($key, {indexed: false}).css(0, {"background-color": "#ddf"}).toggleArrow(0);
-
-    BST.restoreAnimationState();
 
     return jsavBinaryTree;
   }
