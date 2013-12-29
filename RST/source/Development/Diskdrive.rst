@@ -357,25 +357,41 @@ is to be read, this will require a trivial amount of time
 
    .. math::
 
-      9.5 + 11.1 \times 1.5 = 26.2 \mathrm{ms.}
+      9.5\mathrm{ms.} + 11.1\mathrm{ms.} \times 1.5 = 26.2 \mathrm{ms.}
 
-   At this point, because we assume that the next seven tracks
-   require only
-   a track-to-track seek because they are adjacent.
-   Each requires
+   In this equation, 9.5ms. is the average seek time for a (random)
+   track on the disk. 11.1ms. is the time for one rotation of a disk
+   spinning at 5400RPM.
+   Since we need to wait for rotational delay (one half rotation) and
+   then read all of the contents of the track (one full rotation), we
+   multiply 11.1ms. by 1.5.
+   Thus, the total time to read a random track from the disk is 26.2ms.
+
+   After reading the first track, we can then assume that the next
+   seven tracks require only a track-to-track seek because they are
+   adjacent.
+   Therefore, each requires
 
    .. math::
 
-      2.2 + 11.1 \times 1.5 = 18.9 \mathrm{ms.}
+      2.2\mathrm{ms.} + 11.1\mathrm{ms.} \times 1.5 = 18.9 \mathrm{ms.}
 
-   The total time required is therefore
+   Here, 2.2ms. is the time to seek to an adjacent track.
+   Again we must wait for rotational delay (one half rotation)
+   followed by a full rotation to read the track, so we multiply the
+   rotation time (11.1ms.) times 1.5 for the disk rotation.
+   Thus, we get a total of 18.9ms. to read the data from an adjacent
+   track.
+
+   The total time required to read all 8 adjacent tracks is therefore
 
    .. math::
 
       26.2 \mathrm{ms} + 7 \times 18.9 \mathrm{ms} = 158.5 \mathrm{ms}.
 
-   If the file's clusters are spread randomly across the
-   disk, then we must perform a seek for each cluster, followed by the
+   In contrast, what would the time be if the file's clusters are
+   spread randomly across the disk?
+   Then we must perform a seek for each cluster, followed by the
    time for rotational delay.
    Once the first sector of the cluster comes under the I/O head, very
    little time is needed to read the cluster because only 8/256 of the
@@ -385,11 +401,16 @@ is to be read, this will require a trivial amount of time
 
    .. math::
 
-      256 (9.5 + 5.9) \approx 3942 \mathrm{ms}
+      256 (9.5\mathrm{ms.} + 5.9\mathrm{ms.}) \approx 3942 \mathrm{ms}
 
    or close to 4 seconds.
    This is much longer than the time required when the file is all
    together on disk!
+   That is, 256 times we must perform a seek to a random track
+   (9.5ms.).
+   Then we wait on average one half of a disk rotation
+   followed by reading the actual data which requires a further 8/256
+   of a rotation, for a total of 5.9ms.
 
    This example illustrates why it is important to keep disk files from
    becoming fragmented,
@@ -413,3 +434,6 @@ Notes
        is a simplified version of the reality.
        But this is a useful working model to understand what is going
        on.
+
+       To complicate matters further, Solid State Drives (SSD) work
+       rather differently.

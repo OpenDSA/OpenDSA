@@ -824,8 +824,27 @@
         "exercises": {}
       },
       "Development/UnionFind": {
-        "long_name": "Union/Find",
-        "exercises": {}
+        "long_name": "UnionFind",
+        "exercises": {
+          "ufCON": {
+            "long_name": "Union/Find Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "pathcompCON": {
+            "long_name": "Union/Find Path Compression Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "UnionFindPRO": {
+            "long_name": "Union/Find Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+	  }
+        }
       },
       "Development/GenTreeImplement": {
         "long_name": "General Tree Implementations",
@@ -1612,16 +1631,70 @@
         }
       }
     },
-    "Indexing": {
-      "Stubs/IndexChap": {
-        "long_name": "Indexing Chapter Stub",
+    "Memory Management": {
+      "Development/MemmanIntro": {
+        "long_name": "Chapter Introduction: Memory Management",
         "exercises": {}
       },
-      "Stubs/LinearIndex": {
+      "Development/Dynamic": {
+        "long_name": "Dynamic Memory Allocation",
+        "exercises": {}
+      },
+      "Development/SequentialFit": {
+        "long_name": "Sequential-Fit Methods",
+        "exercises": {}
+      },
+      "Development/FirstFit": {
+        "long_name": "First Fit",
+        "exercises": {}
+      },
+      "Development/CircularFit": {
+        "long_name": "Circular First Fit",
+        "exercises": {}
+      },
+      "Development/BestFit": {
+        "long_name": "Best Fit",
+        "exercises": {}
+      },
+      "Development/WorstFit": {
+        "long_name": "Worst Fit",
+        "exercises": {}
+      },
+      "Development/MMPerformance": {
+        "long_name": "Sequential-Fit Performance",
+        "exercises": {}
+      },
+      "Development/Buddy": {
+        "long_name": "Other Memory Allocation Methods",
+        "exercises": {}
+      },
+      "Development/Garbage": {
+        "long_name": "Failure Policies and Garbage Collection",
+        "exercises": {}
+      }
+    },
+    "Indexing": {
+      "Development/IndexIntro": {
+        "long_name": "Indexing Chapter Introduction",
+        "exercises": {}
+      },
+      "Development/LinearIndexing": {
         "long_name": "Linear Indexing",
         "exercises": {}
       },
-      "Stubs/BTree": {
+      "Development/ISAM": {
+        "long_name": "ISAM",
+        "exercises": {}
+      },
+      "Development/TreeIndexing": {
+        "long_name": "Linear Indexing",
+        "exercises": {}
+      },
+      "Development/TwoThreeTree": {
+        "long_name": "2-3 Trees",
+        "exercises": {}
+      },
+      "Development/BTree": {
         "long_name": "B-Trees",
         "exercises": {}
       }
@@ -1702,10 +1775,6 @@
       }
     },
     "Advanced Linear Structures": {
-      "Stubs/MemoryMan": {
-        "long_name": "Memory Managers",
-        "exercises": {}
-      },
       "Stubs/Multilists": {
         "long_name": "Multilists",
         "exercises": {}

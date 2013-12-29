@@ -256,3 +256,8 @@ setting.
 	scrolling="no">
    </iframe>
    </center>
+
+This visualization was written by David Galles of the University of
+San Francisco as part of his
+`Data Structure Visualizations
+<http://www.cs.usfca.edu/~galles/visualization/Algorithms.html>`_ package.
