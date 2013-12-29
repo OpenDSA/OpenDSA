@@ -39,11 +39,11 @@ jshint:
 
 min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css
 
-CS223: min
-	python $(CONFIG_SCRIPT) config/CS223.json
-
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
+
+CSCI204: min
+	python $(CONFIG_SCRIPT) config/CSCI204.json
 
 CS3114AM: min
 	python $(CONFIG_SCRIPT) config/CS3114AM.json
@@ -81,7 +81,7 @@ invalid: min
 slides: min
 	python $(CONFIG_SCRIPT) -s config/slides.json
 
-allBooks: CS3114 OpenDSA Dev Everything test List slides
+allBooks: CS3114 CSCI204 OpenDSA Everything test slides uwosh
 
 nomin:
 	cp lib/odsaUtils.js lib/odsaUtils-min.js
