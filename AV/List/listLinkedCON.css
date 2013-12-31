@@ -45,7 +45,7 @@
 }
 
 #LlistInsertCON {
-  height: 450px;
+  height: 455px;
 }
 #LlistInsertCON .jsavcode{
   border: 1px solid;
@@ -56,7 +56,7 @@
 }
 
 #LlistSpecInsertCON {
-  height: 290px;
+  height: 305px;
 }
 #LlistSpecInsertCON .jsavcode{
   border: 1px solid;
@@ -65,7 +65,7 @@
   width: 510px;
 }
 #LlistRemoveCON {
-  height: 515px;
+  height: 500px;
 }
 
 #LlistRemoveCON .jsavcode{

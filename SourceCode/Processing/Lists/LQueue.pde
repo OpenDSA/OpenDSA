@@ -43,7 +43,7 @@ class LQueue implements Queue {
   // Remove and return element from front
   Object dequeue() {
     if (size == 0) return null;
-    Object it = front.next().element(); // Store dequeued value
+    Object it = front.next().element(); // Store the value
     front.setnext(front.next().next()); // Advance front
     if (front.next() == null) rear = front; // Last Object
     size--;
