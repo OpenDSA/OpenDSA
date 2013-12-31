@@ -6,7 +6,7 @@ Written by Junyang Chen and Cliff Shaffer
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>List-based stack push Proficiency Exercise</title>
+  <title>List-based Stack Push Proficiency Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transit.js"></script>
@@ -396,8 +396,15 @@ function checkAnswer(arr_size) {
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test"></p>
+      <p class="problem">Your task in this exercise is to show the
+        behavior for the linked stack's push operation.</p>
       <div class="question">
+        <p>Push <b><var>insert_value</var></b> into the stack.</p>
+	<p>You can create a new link node by clicking the "NewNode"
+        button. You can insert a value into the node by clicking the
+        "Insert" button. To change a pointer, click its start point
+        (in the right-hand side of its start node), and then click on
+        the node that you want it to point to.</p>
         <input id="reset" type="button" value="Reset" />
 		<input id="NewNode" type="button" value="NewNode" />		
 		<input id="insert" type="button" value="Insert" />
@@ -415,6 +422,13 @@ function checkAnswer(arr_size) {
         </div>
       </div>
       <div class="hints">
+        <p>The first step would be to create a new link node.
+           Then insert the new value into the new node.</p>
+	<p>Next, click the right section of the new node so that you
+           can change where it points to. Then click the first node on
+           the list.</p>
+        <p>Finally, click "top" and then click the new node to change
+           where "top" points to.</p>
       </div>
     </div>
   </div>

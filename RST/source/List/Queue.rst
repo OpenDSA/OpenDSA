@@ -97,7 +97,7 @@ In this implementation, the front of the queue is defined to be toward
 the lower numbered positions in the array (in the counter-clockwise
 direction in the circular array), and the rear is
 defined to be toward the higher-numbered positions.
-Thus, ``enqueue`` increments the rear pointer (modulus ``size``),
+Thus, ``enqueue`` increments the rear pointer (modulus ``maxSize``),
 and ``dequeue`` increments the front pointer.
 Implementation of all member functions is straightforward.
 

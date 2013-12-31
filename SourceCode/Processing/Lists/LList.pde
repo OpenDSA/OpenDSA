@@ -98,9 +98,8 @@ class LList implements List {
   // Return true if current position is at end of the list
   Boolean isAtEnd() { return curr == tail; }
 
-  // Return current element value
+  // Return current element value. Note that null gets returned if curr is at the tail
   Object getValue() {
-    if(curr == tail) return null;
     return curr.element();
   }
 }

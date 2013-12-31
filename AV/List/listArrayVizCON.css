@@ -1,3 +1,7 @@
+.jsavnode .jsavvalue { /* This will get the array cell values to center vertically */
+  height: 30px;
+}
+
 .jsavnode {
   line-height: 30px !important;
   min-width: 30px !important;

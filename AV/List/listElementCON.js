@@ -102,39 +102,19 @@ function connect(objFrom, objTo, options){
   listP1.show();
   jsav.umsg("If the elements are payroll records, it might be desirable for the list node to store a pointer to the record rather than store a copy of the record itself. This change would allow multiple list nodes (or other data structures) to point to the same record, rather than make repeated copies of the record. Not only might this save space, but it also means that a modification to an element's value is automatically reflected at all locations where it is referenced.");
   jsav.step();
+
   l.hide();
   listP1.hide();
   listP2.hide();
   listP3.hide();
   listP4.hide();
-  dl.show();  
-  dl.get(1).value("");
-  dl.get(2).value("");
-  dl.get(3).value("");
-  dl.get(4).value("");
-  dl.css({top : 50});
-  var dlistP1 = connect(dl.get(1), bigData);
-  var dlistP2 = connect(dl.get(2), bigData);
-  var dlistP3 = connect(dl.get(3), bigData1);
-  var dlistP4 = connect(dl.get(4), bigData1);
-  jsav.step();
 
-  dl.hide();
-  dlistP1.hide();
-  dlistP2.hide();
-  dlistP3.hide();
-  dlistP4.hide();
   arr.show(); 
   arr.css({top : 20});
   arr.value(0, " ");
   arr.value(1, " ");
   arr.value(2, " ");
   arr.value(3, " ");
-  var arrP1 = connect(arr, bigData, {index : 0});
-  var arrP2 = connect(arr, bigData, {index : 1});
-  var arrP3 = connect(arr, bigData1, {index : 2});
-  var arrP4 = connect(arr, bigData1, {index : 3});
-  jsav.step();
 
   bigData2.show();
   bigData3.show();
@@ -142,10 +122,6 @@ function connect(objFrom, objTo, options){
   bigData1.css({left : 210});
   bigData2.css({left : 410});
   bigData3.css({left : 610});
-  arrP1.hide();
-  arrP2.hide();
-  arrP3.hide();
-  arrP4.hide();
   var arrP5 = connect(arr, bigData, {index : 0});
   var arrP6 = connect(arr, bigData1, {index : 1});
   var arrP7 = connect(arr, bigData2, {index : 2});

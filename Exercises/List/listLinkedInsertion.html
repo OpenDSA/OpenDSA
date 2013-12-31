@@ -35,6 +35,9 @@ Written by Junyang Chen and Cliff Shaffer
       font-size: 130%;
       background-color: yellow;
     }
+    .jsavlist .jsavvalue { /* This will get the linked list cell values to center vertically */
+      height: 30px;
+    }
     .jsavlist.jsavautoresize.jsavhorizontallist{
       height: 150px;
     }
@@ -404,13 +407,16 @@ function checkAnswer(arr_size) {
       <div id = "xx"></div>
       <div id = "yy"></div>
       <p class="problem" id = "test">Your task in this exercise is to show the
-        behavior for Linked list insertion.
-	You must insert the element to the current position.
+        behavior for linked list insertion.
+	You must insert the value <b><var>insert_value</var></b> to
+        the current position.
+	In the process, you will need to create a new node and move
+        some node values and pointers.
       </p>
       <div class="question">
-        <p>To move an element, click on it (to highlight it), then
-          click on the element position in the node where you want it to
-          go.
+        <p>To move an element value from one node to another, click on it
+          (to highlight it), then click on the element position in the
+          node where you want it to go.
 	  You can insert the new value <b><var>insert_value</var></b>
           into a highlighted node by clicking the "Insert" button.
 	  You can create a new link node by clicking the "NewNode"

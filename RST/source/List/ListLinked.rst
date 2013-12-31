@@ -97,12 +97,14 @@ Adding the trailer node also solves our problem with deleting the last
 node on the list, as we will see when we take a closer look at the
 remove method's implementation.
 
-Here is what the list looks like with the header and trailer nodes
-added.
-   
+.. _LinkedListTailer:
+
 .. inlineav:: listLinkedHeaderTailerCON dgm
    :align: center
 
+   Here is what the list looks like with the header and trailer nodes
+   added.
+   
 Here is the implementation for the linked list class,
 named ``LList``.
 

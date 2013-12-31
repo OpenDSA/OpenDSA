@@ -1,3 +1,7 @@
+    .jsavlist .jsavvalue { /* This will get the linked list cell values to center vertically */
+      height: 30px;
+    }
+
 #listLinkedNodeCON {
   height: 100px;
 }

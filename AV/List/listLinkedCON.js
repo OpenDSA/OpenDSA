@@ -302,10 +302,10 @@ function setPointer(name, node, opt) {
   jsav.step();
   pseudo.unhighlight(3);
   pseudo.highlight(4);
-  jsav.umsg(" Since there is no simple way to compute the length of the list simply from these three pointers, the list length will be stored explicitly, and updated by every operation that modifies the list size. The value cnt stores the length of the list.");
+  jsav.umsg(" Since there is no simple way to compute the length of the list simply from these three pointers, the list length will be stored explicitly, and updated by every operation that modifies the list size. The value <code>listSize</code> stores the length of the list.");
   jsav.step();
   pseudo.unhighlight(4);
-  jsav.umsg("Because <code>head</code>, <code>tail</code>, <code>curr</code>, and <code>cnt</code> are all declared to be <code>private</code>, they may only be accessed by methods of Class <code>LList</code>.");
+  jsav.umsg("Because <code>head</code>, <code>tail</code>, <code>curr</code>, and <code>listSize</code> are all declared to be <code>private</code>, they may only be accessed by methods of Class <code>LList</code>.");
   jsav.recorded();
 }(jQuery));
 

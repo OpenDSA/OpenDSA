@@ -45,8 +45,8 @@ void append(Object it) {
 Object remove() {
   if (curr == tail) return null;        // Nothing to remove
   Object it = curr.element();           // Remember value
-  curr.next().setPrev(curr.prev());     // Remove from list
-  curr.prev().setNext(curr.next());
+  curr.prev().setNext(curr.next());     // Remove from list
+  curr.next().setPrev(curr.prev());
   curr = curr.next();
   listSize--;                           // Decrement node count
   return it;                            // Return value removed
