@@ -30,9 +30,10 @@ class AStack implements Stack {
 
 // Push "it" onto stack
 /* *** ODSATag: AStackPush *** */
-  void push(Object it) {
-    if (top >= maxSize) return;
+  boolean push(Object it) {
+    if (top >= maxSize) return false;
     listArray[top++] = it;
+    return true;
   }
 /* *** ODSAendTag: AStackPush *** */
 

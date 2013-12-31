@@ -31,10 +31,11 @@ class LQueue implements Queue {
 
 /* *** ODSATag: LQueueEnqueue *** */
   // Put element on rear
-  void enqueue(Object it) {
+  boolean enqueue(Object it) {
     rear.setnext(new Link(it, null));
     rear = rear.next();
     size++;
+    return true;
   }
 /* *** ODSAendTag: LQueueEnqueue *** */
 

@@ -24,20 +24,22 @@ class AList implements List {
 
 /* *** ODSATag: AListInsert *** */
   // Insert "it" at current position
-  void insert(Object it) {
-    if (listSize >= maxSize) return;
+  boolean insert(Object it) {
+    if (listSize >= maxSize) return false;
     for (int i=listSize; i>curr; i--)  // Shift elements up
       listArray[i] = listArray[i-1];   //   to make room
     listArray[curr] = it;
     listSize++;                        // Increment list size
+    return true;
   }
 /* *** ODSAendTag: AListInsert *** */
 
 /* *** ODSATag: AListAppend *** */
   // Append "it" to list
-  void append(Object it) {
-    if (listSize >= maxSize) return;
+  boolean append(Object it) {
+    if (listSize >= maxSize) return false;
     listArray[listSize++] = it;
+    return true;
   }
 /* *** ODSAendTag: AListAppend *** */
 
@@ -62,9 +64,10 @@ class AList implements List {
   int currPos() { return curr; }         // Return current position
   
   // Set current list position to "pos"
-  void moveToPos(int pos) {
-    if ((pos < 0) || (pos > listSize)) return;
+  boolean moveToPos(int pos) {
+    if ((pos < 0) || (pos > listSize)) return false;
     curr = pos;
+    return true;
   }
 
   // Return true if current position is at end of the list

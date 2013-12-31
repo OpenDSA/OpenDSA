@@ -24,9 +24,10 @@ class LStack implements Stack {
 
 // Put "it" on stack
 /* *** ODSATag: LStackPush *** */  
-  void push(Object it) {  
+  boolean push(Object it) {  
     top = new Link(it, top);
     size++;
+    return true;
   }
 /* *** ODSAendTag: LStackPush *** */
 
