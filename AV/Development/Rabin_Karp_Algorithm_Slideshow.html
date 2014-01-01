@@ -75,26 +75,26 @@
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("Pictured to the right of the pseudocode are 6 important variables that we will keep up to date as a reference.");	
-	var q = rk_slideshow.variable([0], {visible: true, label: "Q = ", left: "750px", top:"200px"});
-	var c = rk_slideshow.variable([0], {visible: true, label: "C = ", left: "750px", top: "230px"});
-    var cp = rk_slideshow.variable([0], {visible: true, label: "CP = ", left: "750px", top: "260px"});
-	var magic_m = rk_slideshow.variable([0], {visible: true, label: "Magic_M = ", left: "750px", top:"290px"});
-	var magic_s = rk_slideshow.variable([0], {visible: true, label: "Magic_S = ", left: "750px", top:"320px"});
-	var p = rk_slideshow.variable([0], {visible: true, label: "p = ", left: "750px", top:"350px"});
+	var q = rk_slideshow.variable(["Q = 0"], {visible: true, left: "750px", top:"200px"});
+	var c = rk_slideshow.variable(["C = 0"], {visible: true, left: "750px", top: "230px"});
+    var cp = rk_slideshow.variable(["CP = 0"], {visible: true, left: "750px", top: "260px"});
+	var magic_m = rk_slideshow.variable(["Magic_M = 0"], {visible: true, left: "750px", top:"290px"});
+	var magic_s = rk_slideshow.variable(["Magic_S = 0"], {visible: true, left: "750px", top:"320px"});
+	var p = rk_slideshow.variable(["p = 0"], {visible: true, left: "750px", top:"350px"});
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We can start by assigning values to a couple of them... We know we need Q as an input, we also know Q need to be larger than C and a prime number. We can assign C = 123 because our alphabet is that size (0-122). We can then pick an appropriate Q, lets say 131.");
-	q.value(131);
-	c.value(123);
+	q.value("Q = 131");
+	c.value("C = 123");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We then assign CP = 1 and enter our for loop on line 4, calculating it's final value. The loop is simple, every iteration is just CP = CP * C % Q and it runs S.length times. This ends up being: 27");
-	cp.value(27);
+	cp.value("CP = 27");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We then calculate the Horner method value for M and S, giving us Magic_M and Magic_S. We only calculate the Horner value for the substring of the master string that will first be compared to S (M(M[0]...M[S.length-1]). These values end up being: Magic_M: 111 and Magic_S: 66.");
-	magic_m.value(111);
-	magic_s.value(66);
+	magic_m.value("Magic_M = 111");
+	magic_s.value("Magic_S = 66");
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We are now ready to start the algorithm since we have all of our important variables calculated.");
@@ -112,7 +112,7 @@
 	master.unhighlight(0);
 	master.css(0, {"background-color":"red"});
 	master.css(7, {"background-color":"green"});
-	magic_m.value(110);
+	magic_m.value("Magic_M = 110");
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We now compare Magic_S to Magic_M again and realize that they don't match, which means we recalculate Magic_M using the same technique found on line 12.");
@@ -122,7 +122,7 @@
 	sub.value(0, '');
 	sub.unhighlight(0);
 	sub.highlight(7);
-	p.value(1);
+	p.value("p = 1");
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We find that Magic_M is now equal to 33 after the next operation and we start the loop over again...");
@@ -131,7 +131,7 @@
 	master.highlight(7);
 	master.css(1, {"background-color":"red"});
 	master.css(8, {"background-color":"green"});
-	magic_m.value(33);
+	magic_m.value("Magic_M = 33");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We now compare Magic_S to Magic_M again and realize that they don't match, which means we recalculate Magic_M using the same technique found on line 12.");
@@ -140,7 +140,7 @@
 	}
 	sub.unhighlight(1);
 	sub.highlight(8);
-	p.value(2);
+	p.value("p = 2");
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We find that Magic_M is now equal to 123 after the next operation and we start the loop over again...");
@@ -149,7 +149,7 @@
 	master.highlight(8);
 	master.css(2, {"background-color":"red"});
 	master.css(9, {"background-color":"green"});
-	magic_m.value(123);
+	magic_m.value("Magic_M = 123");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We now compare Magic_S to Magic_M again and realize that they don't match, which means we recalculate Magic_M using the same technique found on line 12.");
@@ -158,7 +158,7 @@
 	}
 	sub.unhighlight(2);
 	sub.highlight(9);
-	p.value(3);
+	p.value("p = 3");
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We find that Magic_M is now equal to 27 after the next operation and we start the loop over again...");
@@ -167,7 +167,7 @@
 	master.highlight(9);
 	master.css(3, {"background-color":"red"});
 	master.css(10, {"background-color":"green"});
-	magic_m.value(27);
+	magic_m.value("Magic_M = 27");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We now compare Magic_S to Magic_M again and realize that they don't match, which means we recalculate Magic_M using the same technique found on line 12.");
@@ -176,7 +176,7 @@
 	}
 	sub.unhighlight(3);
 	sub.highlight(10);
-	p.value(4);
+	p.value("p = 4");
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We find that Magic_M is now equal to 27 after the next operation, this is a perfect example of a collision in the algorithm and why we have an extra check before returning p. We start the loop over again...");
@@ -185,7 +185,7 @@
 	master.highlight(10);
 	master.css(4, {"background-color":"red"});
 	master.css(11, {"background-color":"green"});
-	magic_m.value(27);
+	magic_m.value("Magic_M = 27");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We now compare Magic_S to Magic_M again and realize that they don't match, which means we recalculate Magic_M using the same technique found on line 12.");
@@ -194,7 +194,7 @@
 	}
 	sub.unhighlight(4);
 	sub.highlight(11);
-	p.value(5);
+	p.value("p = 5");
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We find that Magic_M is now equal to 47 after the next operation and we start the loop over again...");
@@ -203,7 +203,7 @@
 	master.highlight(11);
 	master.css(5, {"background-color":"red"});
 	master.css(12, {"background-color":"green"});
-	magic_m.value(47);
+	magic_m.value("Magic_M = 47");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We now compare Magic_S to Magic_M again and realize that they don't match, which means we recalculate Magic_M using the same technique found on line 12.");
@@ -212,7 +212,7 @@
 	}
 	sub.unhighlight(5);
 	sub.highlight(12);
-	p.value(6);
+	p.value("p = 6");
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We find that Magic_M is now equal to 66 after the next operation and we start the loop over again...");
@@ -221,7 +221,7 @@
 	master.highlight(12);
 	master.css(6, {"background-color":"red"});
 	master.css(13, {"background-color":"green"});
-	magic_m.value(66);
+	magic_m.value("Magic_M = 66");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We now compare Magic_S to Magic_M again and realize that they match (66==66), which means we go on to the next if statement checking to see if S == M(M[p]...M[p+S.length-1]), which they do.");
@@ -230,7 +230,7 @@
 	}
 	sub.unhighlight(6);
 	sub.highlight(13);
-	p.value(7);
+	p.value("p = 7");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We then return p, which is 7, indicating that there was a match found at 7 and completeing our algorithm!");
