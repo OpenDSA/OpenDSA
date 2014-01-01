@@ -156,12 +156,12 @@
 		}
 	}
 	
-	var q = rk_slideshow.variable([131], {visible: true, label: "Q = "});
-	var curr_magic_m_val = rk_slideshow.variable([starting_value], {visible: true, label: "Magic_M = "});
-	var cp = rk_slideshow.variable([cp_val], {visible: true, label: "CP = "});
-	var p = rk_slideshow.variable([p_val], {visible: true, label: "p = "});
-	var c = rk_slideshow.variable([c_val], {visible: true, label: "C = "});
-	var equation = rk_slideshow.variable(['Magic_M = (Magic_M * C - (M[p].ascii_val * CP) + (Q * C + M[p+S.length].ascii_val)) mod Q'], {visible: true, label: "Equation: "});
+	var q = rk_slideshow.variable(["Q = 131"], {visible: true});
+	var curr_magic_m_val = rk_slideshow.variable(["Magic_M = "+starting_value], {visible: true});
+	var cp = rk_slideshow.variable(["CP = "+cp_val], {visible: true});
+	var p = rk_slideshow.variable(["p = "+p_val], {visible: true});
+	var c = rk_slideshow.variable(["C = "+c_val], {visible: true});
+	var equation = rk_slideshow.variable(['Equation: Magic_M = (Magic_M * C - (M[p].ascii_val * CP) + (Q * C + M[p+S.length].ascii_val)) mod Q'], {visible: true});
 
 	var master_label = rk_slideshow.label("Master:",{before:master_str});
 	var sub_label = rk_slideshow.label("Sub:",{before:sub_str});
