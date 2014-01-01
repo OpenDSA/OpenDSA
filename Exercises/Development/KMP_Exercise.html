@@ -342,9 +342,9 @@
     }
     search_start_index = 0;
 
-	var master_label = kmp_exercise.label("Master:",{before:main_text,"left":"0px"});
-	var sub_label = kmp_exercise.label("Sub:",{before:search_string,"left":"0px"});
-	var align_label = kmp_exercise.label("Align Arr:",{before:alignment_table,"left":"0px"});
+	var master_label = kmp_exercise.label("Master String",{before:main_text});
+	var sub_label = kmp_exercise.label("Substring",{before:search_string});
+	var align_label = kmp_exercise.label("Align Array",{before:alignment_table});
 
     main_text.click(clickHandler);
     search_string.click(clickHandlerSub);
