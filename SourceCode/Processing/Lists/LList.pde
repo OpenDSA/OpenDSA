@@ -23,20 +23,22 @@ class LList implements List {
   
 /* *** ODSATag: LListInsert *** */
   // Insert "it" at current position
-  void insert(Object it) {
+  boolean insert(Object it) {
     curr.setnext(new Link(curr.element(), curr.next()));
     curr.setelement(it);
     if (tail == curr) tail = curr.next();  // New tail
     listSize++;
+    return true;
   }
 /* *** ODSAendTag: LListInsert *** */
   
   // Append "it" to list
-  void append(Object it) {
+  boolean append(Object it) {
     tail.setnext(new Link(null));
     tail.setelement(it);
     tail = tail.next();
     listSize++;
+    return true;
   }
 
 /* *** ODSATag: LListRemove *** */
@@ -85,22 +87,19 @@ class LList implements List {
   
 /* *** ODSATag: LListPos *** */
   // Move down list to "pos" position
-  void moveToPos(int pos) {
-    if ((pos < 0) || (pos > listSize)) {
-      println("Pos out of range, current position unchanged");
-      return;
-    }
+  boolean moveToPos(int pos) {
+    if ((pos < 0) || (pos > listSize)) return false;
     curr = head.next();
     for(int i=0; i<pos; i++) curr = curr.next();
+    return true;
   }
 /* *** ODSAendTag: LListPos *** */
 
   // Return true if current position is at end of the list
   Boolean isAtEnd() { return curr == tail; }
 
-  // Return current element value
+  // Return current element value. Note that null gets returned if curr is at the tail
   Object getValue() {
-    if(curr == tail) return null;
     return curr.element();
   }
 }

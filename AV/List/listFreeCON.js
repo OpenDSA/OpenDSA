@@ -114,7 +114,7 @@ function delPointer(pointer){
   curr.target(l.get(1));
   jsav.step();
 
-  jsav.umsg("Now remove the current node from the list. The deleted node is moved to the head of freelist for later reuse.");
+  jsav.umsg("Now remove the current node from the list. Set its value to be <code>null</code>. The deleted node is moved to the head of freelist for later reuse.");
   l.remove(1);
   l.layout();
   nullLabel.hide();

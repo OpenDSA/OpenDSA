@@ -173,7 +173,7 @@
       jsav.umsg("Add the selected value to the sorted array");
       jsav.step();
 
-      origArr.markSorted(index);
+      origArr.unhighlightBlue(index).markSorted(index);
       index++;
     }
 
@@ -223,5 +223,10 @@
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
   $('#run').click(runIt);
+  $('#ssperform').submit(function(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    runIt();
+  });
   $('#reset').click(ODSA.AV.reset);
 }(jQuery));

@@ -449,7 +449,7 @@ function addEdge(node1, node2){
   jsav.step();
 
   // Step 6
-  jsav.umsg("Set the pointer <code>curr</code> pointing to next node of the node what <code>curr</code> points to.");
+  jsav.umsg("Change <code>curr</code> to point to the next node.");
   curr.target(l.get(3));
   Vline1.show();
   pseudo.unhighlight(4);

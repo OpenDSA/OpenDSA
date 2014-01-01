@@ -6,10 +6,10 @@ Written by Junyang Chen and Cliff Shaffer
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>List-based stack push Proficiency Exercise</title>
+  <title>List-based Stack Pop Proficiency Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV.js"></script>
@@ -226,8 +226,15 @@ function checkAnswer(arr_size) {
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test"></p>
+      <p class="problem" id = "test">Your task in this exercise is to show the
+        behavior for the linked stack's pop operation.</p>
       <div class="question">
+        <p>Pop the top value from the stack.</p>
+        <p>To move a value from one node to another, or to the return
+        value, click first on the value that you want to move and then
+        on the destination. To change a pointer, first click on where
+        it starts, and then click on the node that you want it to
+        point to.</p>
         <input id="reset" type="button" value="Reset" />
         <div id="jsav" style = "{background-color : #333}"></div>
       </div>
@@ -243,6 +250,12 @@ function checkAnswer(arr_size) {
         </div>
       </div>
       <div class="hints">
+        <p>You first want to pop off the value where "top" is
+          pointing.</p>
+	<p>Click on the node with value <var>insert_value</var>. Then
+           click the box marked "return".</p>
+        <p>Next, update the top pointer. Click on "top" and then click
+           the second node on the linked list.</p>
       </div>
     </div>
   </div>

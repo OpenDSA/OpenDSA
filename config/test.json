@@ -12,6 +12,12 @@
     "debug": "true"
   },
   "chapters": {
+    "Indexing": {
+      "Development/BTree": {
+        "long_name": "B-Trees",
+        "exercises": {}
+      }
+    },
     "General Trees": {
       "Development/UnionFind": {
         "long_name": "UnionFind",

@@ -1,7 +1,7 @@
 .. _Overview:
 
-OpenDSA System Documentation
-============================
+Introduction
+============
 
 This documentation describes various components of the OpenDSA system.
 This includes the support infrastructure for authoring OpenDSA

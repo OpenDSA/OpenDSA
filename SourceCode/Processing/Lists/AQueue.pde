@@ -31,10 +31,11 @@ class AQueue implements Queue {
   void clear() { rear = 0; front = 1; }
 
   // Put "it" in queue
-  void enqueue(Object it) {
-    if (((rear+2) % maxSize) == front) return;  // Full
+  boolean enqueue(Object it) {
+    if (((rear+2) % maxSize) == front) return false;  // Full
     rear = (rear+1) % maxSize; // Circular increment
     listArray[rear] = it;
+    return true;
   }
 
   // Remove and return front value

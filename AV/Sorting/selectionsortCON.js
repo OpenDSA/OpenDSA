@@ -55,6 +55,8 @@ var setWhite = function (arr, index) {
   av.umsg("Now swap the next biggest element into place");
   av.step();
   arr.swap(bigindex, arr.size() - 1); // swap the two indices
+  setWhite(arr, bigindex);
+  setGreen(arr, arr.size() - 1);
   av.step();
   av.umsg("Done this pass");
   setWhite(arr, arr.size() - 1);
@@ -93,6 +95,8 @@ var setWhite = function (arr, index) {
   av.umsg("Now swap the next biggest element into place");
   av.step();
   arr.swap(bigindex, arr.size() - 2); // swap the two indices
+  setWhite(arr, bigindex);
+  setGreen(arr, arr.size() - 2);
   av.step();
   av.umsg("Done this pass");
   setWhite(arr, arr.size() - 2);

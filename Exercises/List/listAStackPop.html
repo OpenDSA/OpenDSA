@@ -9,7 +9,7 @@ Written by Junyang Chen and Cliff Shaffer
   <title>Array-Based Stacks Pop Proficiency Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV.js"></script>
@@ -223,9 +223,16 @@ function checkAnswer(max_size, arr_size) {
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem">
+      <p class="problem">Your task in this exercise is to show the
+        behavior for array-based stack's pop operation.
+        In the array displayed below, the "top" position
+        is <b><var>arr_size </var></b>.</p>
       <div class="question">
-        
+        <p>You can copy a value from the stack to the "return" box by
+        first clicking on the value in the array, then clicking on the
+        "return" box.</p>        
+	<p>You can change the position of "top" by clicking it and
+        then clicking on the desired position in the stack.</p>
         <input id="reset" type="button" value="Reset" />
         <div id="jsav"></div>
       </div>
@@ -241,6 +248,11 @@ function checkAnswer(max_size, arr_size) {
         </div>
       </div>
       <div class="hints">
+        <p>If the index of 'top' is 0, then the stack is empty and
+        nothing can be pop'ed. In this case, just click 'check answer'.</p>
+        <p>Otherwise, the first step would be to copy the top value into the
+        'return' box.</p>
+        <p>Finally, decrease the 'top' index by 1.</p>
       </div>
     </div>
   </div>

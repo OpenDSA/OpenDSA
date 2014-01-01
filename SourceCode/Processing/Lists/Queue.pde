@@ -4,7 +4,7 @@ interface Queue { // Queue class ADT
   void clear();
 
   // Put element on rear
-  void enqueue(Object it);
+  boolean enqueue(Object it);
 
   // Remove and return element from front
   Object dequeue();

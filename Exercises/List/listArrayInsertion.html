@@ -9,7 +9,7 @@ Written by Junyang Chen and Cliff Shaffer
   <title>Array-Based List Insertion Proficiency Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
@@ -20,10 +20,13 @@ Written by Junyang Chen and Cliff Shaffer
 	  height: 125px;
       border: 0px;
     }
-	.jsavcanvas{
-	  height: 125px;
-	}
-	.jsavnode {
+    .jsavcanvas{
+       height: 125px;
+    }
+    .jsavnode .jsavvalue { /* This will get the array cell values to center vertically */
+      height: 30px;
+    }
+    .jsavnode {
       line-height: 30px !important;
       min-width: 30px !important;
       max-width: 30px !important;
@@ -124,7 +127,7 @@ function initJSAV(arr_size, insertPos, insertValue) {
 // Check user's answer for correctness: User's array must match answer
 function checkAnswer(arr_size) {
   var i;
-  for (i = 0; i < arr_size; i++) {
+  for (i = 0; i < jsavArr.size(); i++) {
     if (jsavArr.value(i) !== answerArr[i]) {
       return false;
     }

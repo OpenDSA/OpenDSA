@@ -30,6 +30,7 @@ var unsetProcessing = function (arr, index) {
 
   av.umsg("Since this is smaller than the value to its left, swap them");
   arr.swap(0, 1);
+  arr.unhighlight(1).highlight(0);
   av.step();
 
   av.umsg("Now we are done with this record since it cannot move further left");
@@ -52,6 +53,7 @@ var unsetProcessing = function (arr, index) {
   av.step();
 
   arr.swap(1, 2);
+  arr.highlight(1).unhighlight(2);
   av.umsg("Since the record in position 2 is smaller, swap them");
   unsetProcessing(arr, 2);
   av.step();
@@ -62,7 +64,7 @@ var unsetProcessing = function (arr, index) {
 
   av.umsg("Since the record currently in position 1 is not smaller than the one in position 0, we are done with it");
   arr.unhighlight(1);
-  unsetProcessing(arr, 0);
+  unsetProcessing(arr, [0, 1]);
   av.recorded();
 }(jQuery));
 

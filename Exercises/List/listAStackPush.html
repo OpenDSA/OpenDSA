@@ -9,7 +9,7 @@ Written by Junyang Chen and Cliff Shaffer
   <title>Array-Based Stacks Push Proficiency Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transform.light.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV.js"></script>
@@ -234,8 +234,9 @@ Written by Junyang Chen and Cliff Shaffer
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <p class="problem">Your task in this exercise is to show the
-        behavior for array-based Stacks push.
-        In the array displayed below, the "top" position is <b><var>arr_size </var></b>. </p>
+        behavior for array-based stack's push operation.
+        In the array displayed below, the "top" position
+        is <b><var>arr_size </var></b>.</p>
       <div class="question">
         <p>Push <b><var>insert_value</var></b> into the stack.</p>
         <p>Click on a value of the array to highlight it, then click on the "Insert" button to insert <b><var>insert_value</var></b> to the highlighted element. To move the 'top' label, you should click the label to highlight it, then click the element of the array you want to move to.</p>
@@ -256,10 +257,11 @@ Written by Junyang Chen and Cliff Shaffer
       </div>
       <div class="hints">
         <p>If the index of 'top' is greater than or equal to array
-        size, then the default status is a correct answer.</p>
-        <p>Otherwise, the first step could be inserting a value into
+        size, then the stack is full and nothing can be added. In
+        this case, just click 'check answer'.</p>
+        <p>Otherwise, the first step would be to insert a value into the
         'top' position of the stack.</p>
-        <p>Increase the 'top' index by 1.</p>
+        <p>Finally, increase the 'top' index by 1.</p>
       </div>
     </div>
   </div>

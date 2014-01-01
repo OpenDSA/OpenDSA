@@ -42,10 +42,24 @@ function bgColor(array) {
   var arrow3 = jsav.g.line(arrow1_x+90, -10, arrow1_x+90, 20,
 			   {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
   arrow3.hide();
-  // Create an array object under control of JSAV library
+  // Create the array object
   var arr = jsav.ds.array(arrValues,
         {indexed: true, layout: "array", left:leftMargin}).hide();
 	
+  // Create the graphics for maxSize and listSize variables
+  var arrMS = jsav.ds.array([8], {indexed: false, layout: "array",
+					  left: 100, top: 70});
+  arrMS.hide();
+  var labelMaxSize = jsav.label("maxSize", {before: arrMS, left: 33, top: 89});
+  labelMaxSize.hide();
+
+  var arrLS = jsav.ds.array([5], {indexed: false, layout: "array",
+					  left: 100, top: 105});
+  arrLS.hide();
+  var labelListSize =jsav.label("listSize", {before: arrLS, left: 42, top: 124});
+  labelListSize.hide();
+
+
   //set the background of empty elements to gray
   bgColor(arr);
   jsav.umsg("Inserting an element at the head of an array-based list requires shifting all existing elements in the array by one position toward the tail.");
@@ -55,6 +69,10 @@ function bgColor(array) {
   label.show();
   jsav.umsg("Here is an array-based list with five elements. We will insert an element with value 23 to position 0");
   pseudo.highlight(1);
+  arrMS.show();
+  labelMaxSize.show();
+  arrLS.show();
+  labelListSize.show();
   jsav.step();
 
 // shift all existing elements one position to the right
@@ -89,6 +107,8 @@ function bgColor(array) {
   pseudo.unhighlight(5);
   pseudo.highlight(6);
   arr.unhighlight([0]);
+  arrLS.highlight(0);
+  arrLS.value(0, 6);
   jsav.umsg(" Increase list size by 1");
   jsav.recorded();
 }(jQuery));

@@ -5,7 +5,7 @@ interface Stack { // Stack class ADT
   void clear();
 
   // Push "it" onto the top of the stack
-  void push(Object it);
+  boolean push(Object it);
 
   // Remove and return the element at the top of the stack
   Object pop();

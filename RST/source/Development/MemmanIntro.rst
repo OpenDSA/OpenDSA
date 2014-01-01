@@ -60,7 +60,7 @@ holds some message to be stored or retrieved.
 This is similar to the C++ basic file read/write methods.
 The fundamental idea is that the client gives messages to the memory
 manager for safe keeping.
-The memory manager returns a ``receipt'' for the message in the form
+The memory manager returns a ``receipt`` for the message in the form
 of a ``MemHandle`` object.
 The client holds the ``MemHandle`` until it wishes to get the
 message back.
