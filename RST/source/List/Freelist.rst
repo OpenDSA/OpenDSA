@@ -16,7 +16,7 @@ Freelists
 
 The ``new`` operator is relatively expensive to use.
 Garbage collection is also expensive.
-If you want to know why, Module :numref:`MemoryMan` discusses how
+If you want to know why, Chapter :chap:`Memory Management` discusses how
 general-purpose memory managers are implemented.
 The expense comes from the fact that free-store routines must be
 capable of handling requests to and from free store with no particular

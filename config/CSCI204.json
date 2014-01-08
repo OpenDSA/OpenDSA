@@ -1782,6 +1782,12 @@
         "exercises": {}
       }
     },
+    "Searching": {
+      "Stubs/SelfOrg": {
+        "long_name": "Self-organizing Lists",
+        "exercises": {}
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",

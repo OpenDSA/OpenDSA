@@ -36,6 +36,8 @@ However, the cost per unit of disk drive storage is about two
 orders of magnitude less than RAM and has been for
 many years.
 
+.. _Price:
+
 .. topic:: Table
 
    Price comparison table for some writable electronic data storage

@@ -20,10 +20,9 @@ things do more sophisticated data structures like search trees become
 necessary.
 (We will see how to organize and search through medium amounts of
 data when we study :chap:`Binary Trees`,
-:chap:`Sorting`, and :chap:`Search`.
+:chap:`Sorting`, and :chap:`Searching`.
 How to deal with large amounts of data is covered in the chapters on
-:chap:`File Processing` through
-:chap:`Indexing`.)
+:chap:`File Processing` through :chap:`Indexing`.)
 Many applications don't require any form of search,
 and they do not require that any ordering be placed on the objects
 being stored.

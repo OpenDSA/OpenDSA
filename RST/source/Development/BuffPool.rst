@@ -461,5 +461,5 @@ In a buffer pool, the user decides where a given record will be stored
 but has no control over the precise mechanism by which data are
 transferred to the backing storage.
 This is in contrast to the memory manager described in
-Module :numref:`MemoryMan` in which the user passes a record to the manager
-and has no control at all over where the record is stored.
+Module :numref:`<MemmanIntro>` in which the user passes a record to
+the manager and has no control at all over where the record is stored.

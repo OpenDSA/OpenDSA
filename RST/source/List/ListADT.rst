@@ -36,7 +36,7 @@ elements are sorted by value.
 (Of course, we can always choose to sort the elements on the list if
 we want, its just that keeping the elements sorted is not an inherent
 property of being a list.
-Chapters :chap:`Sorting` and :chap:`Search`
+Chapters :chap:`Sorting` and :chap:`Searching`
 treat the problems of how to create and search sorted lists
 efficiently.)
 

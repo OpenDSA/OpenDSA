@@ -1329,7 +1329,7 @@
       }
     },
     "Searching": {
-      "Development/Searching": {
+      "Development/SearchIntro": {
         "long_name": "Search Chapter Introduction",
         "dispModComp": true,
         "exercises": {}

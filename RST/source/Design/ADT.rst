@@ -225,7 +225,7 @@ program, you would have no hope of understanding or implementing it.
    buffer pool (see Section :numref:`<BuffPool>`) rather
    than directly.
    Variable length records might use a
-   memory manager (see Module :numref:`<MemoryMan>`) to
+   memory manager (see Module :numref:`<MemmanIntro>`) to
    find an appropriate location within the disk file to place the
    record.
    Multiple index structures (see Module :numref:`<Indexing>`)

@@ -21,7 +21,7 @@ The more common view of searching is an attempt to
 find the record within a collection of records that has
 a particular key value, or those records in a collection whose key
 values meet some criterion such as falling within a range of
-values.\index{search!range query}
+values.
 
 We can define searching formally as follows.
 Suppose that we have a collection **L** of :math:`n` records of the
@@ -79,7 +79,7 @@ within the array is a function of its key value.
 Hashing is appropriate when records are stored either in RAM or on
 disk.
 
-Chapter :chap:`<Indexing>` discusses tree-based methods for organizing
+Chapter :chap:`Indexing` discusses tree-based methods for organizing
 information on disk, including a commonly used file structure called
 the B-tree.
 Nearly all programs that must organize large collections of records

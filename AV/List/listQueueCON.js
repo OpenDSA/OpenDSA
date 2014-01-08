@@ -519,7 +519,7 @@ jQuery.fn.rotate = function(degrees) {
   pseudo.highlight(3);
   jsav.step();
 
-  jsav.umsg("Increases <code>size</code> by 1.");
+  jsav.umsg("Increase <code>size</code> by 1.");
   pseudo.unhighlight(3);
   pseudo.highlight(4);
   jsav.step();
