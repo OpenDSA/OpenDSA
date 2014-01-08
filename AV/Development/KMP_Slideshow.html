@@ -68,8 +68,11 @@
         Setting up the two variables and the pseudocode used throughout the slideshow.
     */
     var kmp_pseudo = kmp_slideshow.code("input: master string, sub string, align array\nm = 0\ns = 0\nwhile((s < sub.length) and (sub.length - s <= master.length - m)):\n\tif(master[m] == sub[s]): m++, s++\n\telse if(s == 0): m++\n\telse: s = align[s]\nif(s == sub.length): return m - sub.length\nelse: return -1", {before: master_label});
-    var m = kmp_slideshow.variable(["0"],{visible: true, label: "m = ", left: "150px", top: "230px"});
-    var s = kmp_slideshow.variable(["0"], {visible: true, label: "s = ", left: "150px", top: "260px"});
+    var m = kmp_slideshow.variable(["0"],{visible: true, left: "150px", top: "230px"});
+    var s = kmp_slideshow.variable(["0"], {visible: true, left: "150px", top: "260px"});
+
+	m.value("m = 0");
+	s.value("s = 0");
 
     kmp_slideshow.step();
     kmp_slideshow.umsg("We will also notice the termination condition of our loop, that s is less than the length of our sub string and that the length of the substring - s is <= length of the master - m.");
@@ -94,7 +97,7 @@
     }
     align.value(0, ' ');
     kmp_pseudo.setCurrentLine(5);
-    m.value("1");
+    m.value("m = 1");
 
     kmp_slideshow.step();
     kmp_slideshow.umsg("We jump back to the beginning of the loop and notice that, once again, the first characters of each string (y and a) do not match...");    
@@ -113,13 +116,13 @@
       align.value(i, align.value(i-1));
     }
     kmp_pseudo.setCurrentLine(5);
-    m.value("2");  
+    m.value("m = 2");  
 
     kmp_slideshow.step();
     kmp_slideshow.umsg("We can now observe that the next 4 characters match, meaning our loop ran smoothly 4 times, entering the first if statement and incrementing m and s ahead by 4 each.");
     kmp_pseudo.setCurrentLine(4);
-    m.value("6");
-    s.value("4");
+    m.value("m = 6");
+    s.value("s = 4");
     master.highlight([2,3,4,5]);
     sub.highlight([2,3,4,5]);
 
@@ -135,7 +138,7 @@
     kmp_slideshow.step();
     kmp_slideshow.umsg("We now utilize the alignment array to figure out what index in the our substring we can jump to. We note that align[s] (align[4]) is 2, that means we shift our substring over so that the current index in the master string is aligned with sub[2]. Then this also resets our s value to 2.");    
     align.highlight(6);
-    s.value("2");
+    s.value("s = 2");
 
     kmp_slideshow.step();
     kmp_slideshow.umsg("Note now that we still don't have a match at master[m] and sub[s] (master[6] != sub[2]).");    
@@ -154,7 +157,7 @@
     kmp_slideshow.umsg("s is still > 0 so we head down to our else statement and reassign s to align[s] (align[2]) which is just 0.");    
     align.highlight(6);
     kmp_pseudo.setCurrentLine(6);
-    s.value("0");
+    s.value("s = 0");
 
     kmp_slideshow.step();
     kmp_slideshow.umsg("Now we end up back in the same situation after the jump, the mistmatch occurs at master[6] and sub[0] now.");    
@@ -172,7 +175,7 @@
 
     kmp_slideshow.step();    
     kmp_slideshow.umsg("We enter the second if statement this time because s == 0, so we just increment m by 1...");
-    m.value("7");
+    m.value("m = 7");
     kmp_pseudo.setCurrentLine(5);
 
     kmp_slideshow.step();
@@ -194,8 +197,8 @@
     sub.highlight([7,8,9,10,11,12,13,14]);
     sub.css(15, {"background-color": "red"});
     master.css(15, {"background-color": "red"});      
-    m.value("15");
-    s.value("8");
+    m.value("m = 15");
+    s.value("s = 8");
 
 
 
@@ -206,7 +209,7 @@
 
     kmp_slideshow.step();
     kmp_slideshow.umsg("We now get to see why KMP is such a cool algorithm. We look back at our alignment array and see that at align[s] (align[8]) we get to reassign s to 1!");
-    s.value("1");
+    s.value("s = 1");
     align.highlight(15);
 
 
@@ -235,7 +238,7 @@
     kmp_slideshow.step();
     kmp_slideshow.umsg("We go back into our else statement because s != 0 and we reset s to align[s] (align[1]) which is 0.");
     kmp_pseudo.setCurrentLine(6);
-    s.value("0");
+    s.value("s = 0");
 
 
     kmp_slideshow.step();
@@ -246,7 +249,7 @@
     for(i = align.size()-1; i > 0; i--){
       align.value(i, align.value(i-1));
     }
-    m.value("16");
+    m.value("m = 16");
     align.unhighlight(15);
     kmp_pseudo.setCurrentLine(5);
 
@@ -261,8 +264,8 @@
       sub.highlight(i);
       master.highlight(i);      
     }
-    s.value("8");
-    m.value("24");
+    s.value("s = 8");
+    m.value("m = 24");
     kmp_pseudo.setCurrentLine(4);
     sub.css(15, {"background-color": "white"});
     master.css(15, {"background-color": "white"});  

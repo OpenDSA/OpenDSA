@@ -85,14 +85,16 @@
     bm.step();
 
     bm.umsg("We will also introduce some important variables that we will keep track of throughout the algorithm: m and s (located to the left of the pseudo code).");
-    var m = bm.variable(["0"],{visible: true, label: "m = ", left: "150px", top: "200px"});
-    var s = bm.variable(["0"], {visible: true, label: "s = ", left: "150px", top: "230px"});
+    var m = bm.variable(["0"],{visible: true, left: "150px", top: "200px"});
+    var s = bm.variable(["0"], {visible: true, left: "150px", top: "230px"});
+	m.value("m = 0");
+	s.value("s = 0");
     bm.step();
 
     bm.umsg("The first important thing we want to note is where m and s start, they start at the length of Sub - 1, meaning our comparisons will start at the end of the substring and work towards the beginning.");
     pseudo.highlight([0,2]);
-    m.value("5");
-    s.value("5");
+    m.value("m = 5");
+    s.value("s = 5");
     bm.step();
 
     bm.umsg("Lets get started...");
@@ -100,8 +102,8 @@
     bm.step();
 
     bm.umsg("We first notice that s >= 0 and Master[5] == Sub[5] (a == a), therefore we enter our while loop and decrement m and s by one.");
-    s.value("4");
-    m.value("4");
+    s.value("s = 4");
+    m.value("m = 4");
     master.highlight(5);
     sub.highlight(5);
     pseudo.setCurrentLine(3);
@@ -122,11 +124,11 @@
 
     bm.umsg("We see that MMC[d] is 4, which is larger than Align[4] which is only 3. This means we take the value we got from MMC and add it to m: 4+4 = 8.");
     alignment_table.unhighlight(4);
-    m.value("8");
+    m.value("m = 8");
     bm.step();
 
     bm.umsg("We now shift to compare our new values... We also must note that s is reset to the length of Sub - 1.");
-    s.value("5");
+    s.value("s = 5");
     mmc.unhighlight(3);
     sub.unhighlight(4);
     master.unhighlight(4);
@@ -156,7 +158,7 @@
     master.highlight(9);
     sub.highlight(9);
     mmc.unhighlight(0);
-    m.value("9");
+    m.value("m = 9");
     for(var x = sub.size()-1; x > 0; x--){
         sub.value(x, sub.value(x-1));
     }
@@ -177,7 +179,7 @@
     bm.step();
 
     bm.umsg("We now increment m and realign the substring with the correct index of master.");
-    m.value("10");
+    m.value("m = 10");
     mmc.unhighlight(1);
     alignment_table.unhighlight(5);
     sub.unhighlight(9);
@@ -194,8 +196,8 @@
     bm.step();
 
     bm.umsg("m is now 9 and s is now 4...");
-    s.value("4");
-    m.value("9");
+    s.value("s = 4");
+    m.value("m = 9");
     master.unhighlight(10);
     sub.unhighlight(10);
     master.highlight(9);
@@ -206,8 +208,8 @@
     bm.step();
 
     bm.umsg("m is now 8 and s is now 3...");
-    s.value("3");
-    m.value("8");
+    s.value("s = 3");
+    m.value("m = 8");
     master.unhighlight(9);
     sub.unhighlight(9);
     master.highlight(8);
@@ -228,8 +230,8 @@
     bm.step();
 
     bm.umsg("We reset m to 12, and we note that we end up back at the beginning of our loop, reseting s to Sub length - 1.");
-    s.value("5");
-    m.value("12");
+    s.value("s = 5");
+    m.value("m = 12");
     alignment_table.unhighlight(3);
     for(var x = sub.size()-1; x > 1; x--){
         sub.value(x, sub.value(x-2));
@@ -255,7 +257,7 @@
     bm.step();
 
     bm.umsg("m = 12 + 6, we realign Sub and start the loop over...");
-    m.value("18");
+    m.value("m = 18");
     mmc.unhighlight(9);
     for(var x = sub.size()-1; x > 5; x--){
         sub.value(x, sub.value(x-6));
@@ -272,8 +274,8 @@
     bm.step();
 
     bm.umsg("m = 17, s = 4");
-    s.value("4");
-    m.value("17");
+    s.value("s = 4");
+    m.value("m = 17");
     master.unhighlight(18);
     sub.unhighlight(18);
     master.highlight(17);
@@ -284,8 +286,8 @@
     bm.step();
 
     bm.umsg("m = 16, s = 3");
-    s.value("3");
-    m.value("16");
+    s.value("s = 3");
+    m.value("m = 16");
     master.unhighlight(17);
     sub.unhighlight(17);
     master.highlight(16);
@@ -296,8 +298,8 @@
     bm.step();
 
     bm.umsg("m = 15, s = 2");
-    s.value("2");
-    m.value("15");
+    s.value("s = 2");
+    m.value("m = 15");
     master.unhighlight(16);
     sub.unhighlight(16);
     master.highlight(15);
@@ -308,8 +310,8 @@
     bm.step();
 
     bm.umsg("m = 14, s = 1");
-    s.value("1");
-    m.value("14");
+    s.value("s = 1");
+    m.value("m = 14");
     master.unhighlight(15);
     sub.unhighlight(15);
     master.highlight(14);
@@ -320,8 +322,8 @@
     bm.step();
 
     bm.umsg("m = 13, s = 0");
-    s.value("0");
-    m.value("13");
+    s.value("s = 0");
+    m.value("m = 13");
     master.unhighlight(14);
     sub.unhighlight(14);
     master.highlight(13);
@@ -332,8 +334,8 @@
     bm.step();
 
     bm.umsg("m = 12, s = -1");
-    s.value("-1");
-    m.value("12");
+    s.value("s = -1");
+    m.value("m = 12");
     master.unhighlight(13);
     sub.unhighlight(13);
     bm.step();

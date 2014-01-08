@@ -64,7 +64,7 @@
 
 	rk_slideshow.umsg("So how does this work? We will introduce a string and use this algorithm to compute a 'Magic Number' for it. We will take a look at the string: 'somestr'. We will also keep track of the MagicNumber variable below the string.");
 	var the_string = rk_slideshow.ds.array("somestr".split(""));
-	var num = rk_slideshow.variable(["NULL"], {visible: true, label: "MagicNumber = ", left: "250px", top: "415px"});
+	var num = rk_slideshow.variable(["MagicNumber = NULL"], {visible: true, left: "250px", top: "415px"});
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We look at the first line in the algorithm and see that MagicNumber is assigned the numeric value of the first character in the String. We need to look in our lookup table to figure out what that value for the letter 's' amounts to.");
@@ -74,7 +74,7 @@
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("It's obvious that the value is 18, therefore MagicNumber starts at 18.");
-	num.value("18");
+	num.value("MagicNumber = 18");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("Now we enter our for loop, note that the indexing starts at 1, so we look at the second character in the string first.");
@@ -87,7 +87,7 @@
 	the_string.highlight(1);
 	pseudo.setCurrentLine(3);
 	alphabet.highlight(14);
-	num.value("482");
+	num.value("MagicNumber = 482");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We are now looking at the character 'm', which has a value of 12. We add 12 to the current value of (MagicNumber * C). Since our C is 26, and our MagicNumber is currently 482: MagicNumber = (482 * 26) + 12");
@@ -95,7 +95,7 @@
 	alphabet.unhighlight(14);
 	the_string.highlight(2);
 	alphabet.highlight(12);
-	num.value("12,544");
+	num.value("MagicNumber = 12,544");
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We are now looking at the character 'e', which has a value of 4. We add 4 to the current value of (MagicNumber * C). Since our C is 26, and our MagicNumber is currently 12,544: MagicNumber = (12,544 * 26) + 4");
@@ -103,7 +103,7 @@
 	alphabet.unhighlight(12);
 	the_string.highlight(3);
 	alphabet.highlight(4);
-	num.value("326,148");
+	num.value("MagicNumber = 326,148");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We are now looking at the character 's', which has a value of 18. We add 18 to the current value of (MagicNumber * C). Since our C is 26, and our MagicNumber is currently 326,148: MagicNumber = (326,148 * 26) + 18");
@@ -111,7 +111,7 @@
 	alphabet.unhighlight(4);
 	the_string.highlight(4);
 	alphabet.highlight(18);
-	num.value("8,479,866");	
+	num.value("MagicNumber = 8,479,866");	
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We are now looking at the character 't', which has a value of 19. We add 19 to the current value of (MagicNumber * C). Since our C is 26, and our MagicNumber is currently 8,479,866: MagicNumber = (8,479,866 * 26) + 19");
@@ -119,7 +119,7 @@
 	alphabet.unhighlight(18);
 	the_string.highlight(5);
 	alphabet.highlight(19);
-	num.value("220,476,535");	
+	num.value("MagicNumber = 220,476,535");	
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We are now looking at the character 'r', which has a value of 17. We add 17 to the current value of (MagicNumber * C). Since our C is 26, and our MagicNumber is currently 220,476,535: MagicNumber = (220,476,535 * 26) + 17");
@@ -127,7 +127,7 @@
 	alphabet.unhighlight(19);
 	the_string.highlight(6);
 	alphabet.highlight(17);
-	num.value("5,732,389,927");
+	num.value("MagicNumber = 5,732,389,927");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("It is obvious that these numbers, though unique, add up very quickly. This isn't ideal because we have limited memory and could very easily overflow if we have a long enough string.");
@@ -142,7 +142,7 @@
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We know that our C is 26, so we will just choose a generic prime number > 26 that we know will prevent an overflow when creating the MagicNumber: we will choose 29. It would be ideal to choose a larger number to get less collisions but this number will work fine for our demonstration. We also know that (29 + 1) * 26 will not cause an overflow, so 29 satisfies all of our requirements.");
-	var q = rk_slideshow.variable(["29"], {visible: true, label: "Q = ", left: "250px", top: "440px"});
+	var q = rk_slideshow.variable(["Q = 29"], {visible: true, left: "250px", top: "440px"});
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We now need to make a slight modification to the pseudocode to implement the new Horner's Method for the Rabin-Karp algorithm. We need to change the operation MagicNumber = (MagicNumber * C) + String[k] to MagicNumber = ((MagicNumber * C) + String[k]) % Q.");
@@ -152,7 +152,7 @@
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We will now walk through the algorithm once more to see what our new value for 'somestr' will be");
-	num.value("NULL");
+	num.value("MagicNumber = NULL");
 	rk_slideshow.step();
 
 
@@ -175,7 +175,7 @@
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("It's obvious that the value is 18, therefore MagicNumber starts at 18.");
-	num.value("18");
+	num.value("MagicNumber = 18");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("Now we enter our for loop, note that the indexing starts at 1, so we look at the second character in the string first.");
@@ -188,7 +188,7 @@
 	the_string.highlight(1);
 	pseudo.setCurrentLine(3);
 	alphabet.highlight(14);
-	num.value("18");
+	num.value("MagicNumber = 18");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We are now looking at the character 'm', which has a value of 12. We add 12 to the current value of (MagicNumber * C). Since our C is 26, our Q is 29, and our MagicNumber is currently 18: MagicNumber = ((18 * 26) + 12) % 29");
@@ -196,7 +196,7 @@
 	alphabet.unhighlight(14);
 	the_string.highlight(2);
 	alphabet.highlight(12);
-	num.value("16");
+	num.value("MagicNumber = 16");
 	rk_slideshow.step();
 	
 	rk_slideshow.umsg("We are now looking at the character 'e', which has a value of 4. We add 4 to the current value of (MagicNumber * C). Since our C is 26, and our MagicNumber is currently 16: MagicNumber = ((16 * 26) + 4) % 29");
@@ -204,7 +204,7 @@
 	alphabet.unhighlight(12);
 	the_string.highlight(3);
 	alphabet.highlight(4);
-	num.value("14");
+	num.value("MagicNumber = 14");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We are now looking at the character 's', which has a value of 18. We add 18 to the current value of (MagicNumber * C). Since our C is 26, and our MagicNumber is currently 14: MagicNumber = ((14 * 26) + 18) % 29");
@@ -212,7 +212,7 @@
 	alphabet.unhighlight(4);
 	the_string.highlight(4);
 	alphabet.highlight(18);
-	num.value("5");	
+	num.value("MagicNumber = 5");	
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We are now looking at the character 't', which has a value of 19. We add 19 to the current value of (MagicNumber * C). Since our C is 26, and our MagicNumber is currently 5: MagicNumber = ((5 * 26) + 19) % 29");
@@ -220,7 +220,7 @@
 	alphabet.unhighlight(18);
 	the_string.highlight(5);
 	alphabet.highlight(19);
-	num.value("4");	
+	num.value("MagicNumber = 4");	
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("We are now looking at the character 'r', which has a value of 17. We add 17 to the current value of (MagicNumber * C). Since our C is 26, and our MagicNumber is currently 4: MagicNumber = ((4 * 26) + 17) % 29");
@@ -228,7 +228,7 @@
 	alphabet.unhighlight(19);
 	the_string.highlight(6);
 	alphabet.highlight(17);
-	num.value("5");
+	num.value("MagicNumber = 5");
 	rk_slideshow.step();
 
 	rk_slideshow.umsg("This leaves us with MagicNumber = 5, which is much easier to handle, unfortunately now we will have a lot of collisions when doing the actual Rabin-Karp algorithm. The Q is very important and we will talk more about choosing an optimal Q later on.");

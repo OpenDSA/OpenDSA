@@ -112,13 +112,13 @@
 	var pseudo = rk.code("MagicNumber = ascii value at String[0] \nfor k = 1 to String.length \n\tMagicNumber = ((MagicNumber * C) + String[k].ascii_value) % Q \nreturn MagicNumber", {before: str_arr});
 
 	//make a variable 'c' that holds c's value
-	var c_var = rk.variable([c], {visible: true, label: "C = ", before:pseudo});
+	var c_var = rk.variable(["C = "+c], {visible: true, before:pseudo});
 
 	//make a variable 'q' that holds q's value
-	var q_var = rk.variable([q], {visible: true, label: "Q = ", before:c_var});
+	var q_var = rk.variable(["Q = " + q], {visible: true, before:c_var});
 
 	//label the String
-    var str_label = rk.label("String:", {top: "155px", left:"200px"}).css({"font-size":"23px"});
+    var str_label = rk.label("String:", {top: "200px", left:"200px"}).css({"font-size":"23px"});
   }
   // reset function definition
   var f_reset = function () {
