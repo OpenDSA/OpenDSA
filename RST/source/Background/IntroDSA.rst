@@ -295,7 +295,7 @@ you determine the best data structure for the task.
    program should allow users to find information about a particular
    place by name (another example of an exact-match query).
    Users should also be able to find all places that match a
-   particularvalue or range of values for attributes such as location
+   particular value or range of values for attributes such as location
    or population size.
    This is known as a :term:`range query`.
 

@@ -74,7 +74,7 @@ Property (4) tells us that, for variable :math:`n` and any two integer
 constants :math:`a` and :math:`b`, :math:`\log_a n` and
 :math:`\log_b n` differ by the constant factor :math:`\log_b a`,
 regardless of the value of :math:`n`.
-Most runtime analyses we user are of a type that ignores
+Most runtime analyses we use are of a type that ignores
 constant factors in costs.
 Property (4) says that such analyses need not be concerned with the
 base of the logarithm, because this can change the total cost only by

@@ -96,8 +96,9 @@ Figure :num:`Figure #TOH` (a).
 The problem is to move the rings from the leftmost pole to the
 rightmost pole (labeled Pole 3) in a series of steps.
 At each step the top ring on some pole is moved to another pole.
-There is one limitation on where rings may be moved:
-A ring can never be moved on top of a smaller ring.
+What makes this puzzle interesting is the limitation on where rings
+may be moved:
+A ring may never be moved on top of a smaller ring.
 
 How can you solve this problem?
 It is easy if you don't think too hard about the details.

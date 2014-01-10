@@ -26,6 +26,13 @@
   av.g.rect(390, 80, 25, 10).css({"fill": "gray"});
   av.g.rect(395, 70, 15, 10).css({"fill": "gray"});
 
+  av.label("1",  {"top": "0px", "left": "39px"});
+  av.label("2",  {"top": "0px", "left": "119px"});
+  av.label("3",  {"top": "0px", "left": "199px"});
+  av.label("1",  {"top": "0px", "left": "319px"});
+  av.label("2",  {"top": "0px", "left": "399px"});
+  av.label("3",  {"top": "0px", "left": "479px"});
+
   av.label("(a)",  {"top": "140px", "left": "113px"});
   av.label("(b)",  {"top": "140px", "left": "392px"});
 

@@ -42,6 +42,9 @@ min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css 
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
 
+CSCI102: min
+	python $(CONFIG_SCRIPT) config/CSCI102.json
+
 CSCI204: min
 	python $(CONFIG_SCRIPT) config/CSCI204.json
 
