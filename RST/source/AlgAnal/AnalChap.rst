@@ -35,11 +35,11 @@ constraints for a problem before they implement an actual
 program.
 After reading this chapter, you should understand
 
-* the concept of a growth rate
+* the concept of a :term:`growth rate`,
   the rate at which the cost of an algorithm grows
   as the size of its input grows;
 
-* the concept of upper and lower bounds for a
+* the concept of an :term:`upper bound` and :term:`lower bound` for a
   growth rate, and how to estimate these bounds for a simple program,
   algorithm, or problem; and
 

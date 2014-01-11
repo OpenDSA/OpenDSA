@@ -40,7 +40,7 @@ The best, worst, or average cases each give us a concrete input
 instance (or concrete set of instances)
 that we can apply to an algorithm description to get a cost measure.
 The upper and lower bounds describe our understanding of the
-\emph{growth rate} for that cost measure.
+growth rate for that cost measure.
 So to define the growth rate for an algorithm or problem, we need to
 determine what we are measuring (the best, worst, or average case) and
 also our description for what we know about the growth rate of that

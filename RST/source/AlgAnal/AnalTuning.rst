@@ -120,7 +120,7 @@ suitable benchmark set of input.
 Many times I have been wrong about the positive effects of code
 tuning in my own programs.
 Most often I am wrong when I try to optimize an expression.
-It~is hard to do better than the compiler.
+It is hard to do better than the compiler.
 
 The greatest time and space improvements come from a better
 data structure or algorithm.

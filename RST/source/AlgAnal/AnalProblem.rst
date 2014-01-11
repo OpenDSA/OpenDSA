@@ -39,7 +39,7 @@ algorithm that solves the problem is in :math:`\Omega(f(n))`,
 even algorithms that we have not thought of!
 
 So far all of our examples of algorithm analysis
-give :obvious: results, with big-Oh always matching :math:`\Omega`.
+give "obvious" results, with big-Oh always matching :math:`\Omega`.
 To understand how big-Oh, :math:`\Omega`, and :math:`\Theta` notations
 are properly used to describe our understanding of a problem or an
 algorithm, it is best to consider an example where you do not already
@@ -53,7 +53,7 @@ The algorithm must at least look at every element in the input, just
 to determine that the input is truly sorted.
 Thus, any sorting algorithm must take at least :math:`cn` time.
 For many problems, this observation that each of the :math:`n` inputs
-must be looked at leads to an easy :math:`Omega(n)` lower bound.
+must be looked at leads to an easy :math:`\Omega(n)` lower bound.
 
 In your previous study of computer science, you have probably
 seen an example of a sorting algorithm whose running time is in
@@ -63,7 +63,7 @@ typically given as examples in a first year programming course have
 worst case running times in :math:`O(n^2)`.
 Thus, the problem of sorting can be said to have an upper bound
 in :math:`O(n^2)`.
-How do we close the gap between :math`\Omega(n)` and :math:`O(n^2)`?
+How do we close the gap between :math:`\Omega(n)` and :math:`O(n^2)`?
 Can there be a better sorting algorithm?
 If you can think of no algorithm whose worst-case growth rate is
 better than :math:`O(n^2)`, and if you have discovered no

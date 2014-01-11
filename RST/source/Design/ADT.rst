@@ -74,7 +74,7 @@ as a software component.
 The interface for the ADT is defined in terms of a type and a set of
 operations on that type.
 The behavior of each operation is determined by its inputs and outputs.
-An ADT does not specify \emph{how} the data type is implemented.
+An ADT does not specify *how* the data type is implemented.
 These implementation details are hidden from the user of the ADT and
 protected from outside access, a concept referred to as
 :term:`encapsulation`.
@@ -228,7 +228,7 @@ program, you would have no hope of understanding or implementing it.
    memory manager (see Module :numref:`<MemmanIntro>`) to
    find an appropriate location within the disk file to place the
    record.
-   Multiple index structures (see Module :numref:`<Indexing>`)
+   Multiple index structures (see Chapter :chap:`Indexing`)
    will typically be used to access records in various ways.
    Thus, we have a chain of classes, each with its own responsibilities
    and access privileges.

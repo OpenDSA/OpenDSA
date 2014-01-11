@@ -158,7 +158,7 @@ because the cost depends on the value of :math:`n`
    :math:`cn`, because we must make :math:`n` comparisons,
    with each comparison costing :math:`c` time.
    We say that function ``largest``
-   (and by extension ,the largest-value sequential search algorithm for
+   (and by extension, the largest-value sequential search algorithm for
    any typical implementation) has a running time expressed
    by the equation
 
@@ -202,7 +202,7 @@ because the cost depends on the value of :math:`n`
    What is the running time for this code fragment?
    Clearly it takes longer to run when :math:`n` is larger.
    The basic operation in this example is the 
-   increment operation for variable \emph{sum}.
+   increment operation for variable ``sum``.
    We can assume that incrementing takes constant time;
    call this time :math:`c_2`.
    (We can ignore the time required to initialize ``sum``,
