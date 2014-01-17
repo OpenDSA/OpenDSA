@@ -58,6 +58,13 @@ are included for credit, and various other aspects of module use are
 defined with the
 :ref:`Configuration system <Configuration>`.
 
+Register Book Instance
+======================
+
+To send over to the data server all information (chapters, modules, exercises, points, etc.) 
+related to a newly created book instance, it is necessary to register the book instance.
+The rigistration can be done on the `RegisterBook` page at `Book_Base_URL/html/RegisterBook.html`.
+
 Teacher View Configuration
 ==========================
 To configure a view for a specific course/book instance, it is required to 

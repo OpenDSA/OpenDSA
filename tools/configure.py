@@ -195,6 +195,9 @@ def initialize_output_directory(config):
   with open(config.book_dir + 'index.html','w') as index_html:
     index_html.writelines(index_html_template % config.rel_book_output_path)
 
+  #Save the config file in the book directory, it will be use to send book components to the server
+  with open(config.book_dir + 'bookdata.json1','w') as book_json:
+    book_json.writelines(json.dumps(config, default=lambda o: o.__dict__))
 
 def configure(config_file_path, slides = False):
   """Configure an OpenDSA textbook based on a validated configuration file"""
@@ -282,6 +285,8 @@ def configure(config_file_path, slides = False):
     # Calls the postprocessor to update chapter, section, and module numbers
     update_TOC(config.book_src_dir, config.book_dir + config.rel_book_output_path, module_chap_map)
 
+    # Copy the registration page in the html directory
+    distutils.file_util.copy_file(config.odsa_dir + 'lib/RegisterBook.html' , config.book_dir + config.rel_book_output_path )
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
