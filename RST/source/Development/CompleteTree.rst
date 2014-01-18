@@ -34,13 +34,13 @@ and for external sorting algorithms.
 
 We begin by assigning numbers to the node positions in the complete
 binary tree, level by level, from left to right as shown in
-Figure :num:`Figure #BinArray` (a). 
+Figure :num:`Figure #BinArray`.
 An array can store the tree's data values efficiently, placing
 each data value in the array position corresponding to that node's
 position within the tree.
-Figure :num:`Figure #BinArray` (b) lists the array indices for the
+The table lists the array indices for the
 children, parent, and siblings of each node in
-Figure :num:`Figure #BinArray` (a).
+Figure :num:`Figure #BinArray`.
 
 .. _BinArray:
 

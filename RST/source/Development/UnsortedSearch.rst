@@ -26,7 +26,7 @@ Thus, we have :math:`n+1` distinct possible events:
 That :math:`K` is in one of positions 0 to :math:`n-1` in **L**
 (each position having its own probability), or that it is not in
 :math:`L` at all.
-We can express the probability that :math`K` is not in **L** as
+We can express the probability that :math:`K` is not in **L** as
 
 .. math::
 
@@ -52,7 +52,7 @@ Then the average cost :math:`\mathbf{T}(n)` will be
    \mathbf{T}(n) = n p_n + \sum_{i=0}^{n-1} (i+1) p_i.
 
 What happens to the equation if we assume all the :math:`p_i` 's
-are equal (except :math:`p_0`)?
+are equal (except :math:`p_n`)?
 
 .. math::
 

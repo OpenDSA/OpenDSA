@@ -190,7 +190,7 @@ var setRed = function (arr, index) {
   arr.value(1, 110);
   av.step();
 
-  av.umsg("Be aware that potentially any permutation is possible. Even one that gives us a bad probe sequence, such as the same as we would get from linear probing. But this will almost never happen in practice, since any given permutation can only appear once in n! systems.");
+  av.umsg("Be aware that potentially any permutation is possible. Even one that gives us a bad probe sequence, such as the same as we would get from linear probing. But this will almost never happen in practice, since any given permutation is expected to appear once in n! tries.");
   var i;
   arr.unhighlight(1);
   for (i = 0; i < 10; i++) { arr.value(i, ""); }

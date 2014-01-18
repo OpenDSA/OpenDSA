@@ -160,7 +160,7 @@ parent continues until :math:`V` reaches its correct position.
 Since the heap is a complete binary tree, its height is guaranteed to
 be the minimum possible.
 In particular, a heap containing :math:`n` nodes will have a height of
-:math:`\Theta(n \log n)`.
+:math:`\Theta(\log n)`.
 Intuitively, we can see that this must be true because each level that
 we add will slightly more than double the number of nodes in the tree
 (the :math:`i` th level has :math:`2^i` nodes,
@@ -276,7 +276,7 @@ therefore
    \sum_{i=1}^{\log n} (i-1)\frac{n}{2^i}
    = \frac{n}{2}\sum_{i=1}^{\log n} \frac{i-1}{2^{i-1}}.
 
-From Equation :num:`Equation IHalvesSum` we know that this summation
+From Equation :numref:`equation-IHalvesSum` we know that this summation
 has a closed-form solution of approximately 2,
 so this algorithm takes :math:`\Theta(n)` time in the worst case.
 This is far better than building the heap one element at a time,

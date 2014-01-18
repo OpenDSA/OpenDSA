@@ -90,8 +90,8 @@ objects.
 Here is an implementation for Quicksort.
 Parameters ``i`` and ``j`` define the left and right
 indices, respectively, for the subarray being sorted.
-The initial call to Quicksort would be
-``quicksort(array, 0, n-1)``.
+The initial call to ``quicksort`` would be
+``quicksort(array, 0, n-1)``. 
 
 .. codeinclude:: Sorting/Quicksort.pde
    :tag: Quicksort
@@ -138,7 +138,7 @@ the pivot,
 we use a clever algorithm that moves indices inwards from the
 ends of the subarray, swapping values as necessary until the two
 indices meet.
-Here is a Java implementation for the partition step.
+Here is an implementation for the partition step.
 
 .. codeinclude:: Sorting/Quicksort.pde
    :tag: partition

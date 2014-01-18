@@ -33,7 +33,7 @@ The total overhead space will be :math:`2Pn` for the entire tree.
 Thus, the overhead fraction will be :math:`2P/(2P + D)`.
 The actual value for this expression depends on the relative size of
 pointers versus data fields.
-If we arbitrarily assume that :math:`P = D`, then a full tree
+If we arbitrarily assume that :math:`P = D`, then a binary tree
 has about two thirds of its total space taken up in overhead.
 Worse yet, the Full Binary Tree Theorem tells us that about half of
 the pointers are "wasted" NULL values that serve only to indicate tree
@@ -83,7 +83,7 @@ This implementation requires
 
 .. math::
 
-   \frac{n}{2}2P + \frac{n}{2}(p+d)
+   \frac{n}{2}2P + \frac{n}{2}(P+D)
 
 units of space.
 If :math:`P = D`, then the overhead is

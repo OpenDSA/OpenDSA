@@ -47,7 +47,7 @@ equally often in many applications.
 For example, the various letters in an English language document have
 greatly different frequencies of use.
 
-Figure <ODSAref "Freq" /> shows the relative frequencies of the
+Table :num:`#Freq` shows the relative frequencies of the
 letters of the alphabet. From this table we can see that the letter
 'E' appears about 60 times more often than the letter 'Z'. In normal
 ASCII, the words "DEED" and "MUCK" require the same amount of space

@@ -63,7 +63,7 @@ Now you can try it yourself.
 A simple variation on bucket hashing is to hash a key value to some slot
 in the hash table as though bucketing were not being used.
 If the home position is full, then we search through the rest of the
-bucket to find an empty slot
+bucket to find an empty slot.
 If all slots in this bucket are full, then the record is assigned
 to the overflow bucket.
 The advantage of this approach is that initial collisions are reduced,

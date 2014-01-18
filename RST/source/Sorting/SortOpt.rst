@@ -15,14 +15,14 @@ Optimizing Sort Algorithms with Code Tuning
 Since sorting is such an important application,
 it is natural for programmers to want
 to optimize their sorting code to run faster.
-Of course all quadratics sorts (Insertion Sort, Bubble Sort and
+Of course all quadratic sorts (Insertion Sort, Bubble Sort and
 Selection Sort) are relatively slow.
 Each has (as the name "quadratic suggests)
 :math:`\Theta(n^2)` worst case running time.
 The best way to speed them up is to find a better sorting algorithm.
 Nonetheless, there have been many suggestions given over the years
 about how to speed up one or another of these particular algorithms.
-There are useful lessons to be learned about code tuninga by
+There are useful lessons to be learned about code tuning by
 seeing which of these ideas actually turn out to give better
 performance.
 It is also interesting to see the relative performance of the three

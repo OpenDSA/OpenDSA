@@ -103,7 +103,7 @@ As a corollary to :eq:`sum7`,
 Finally,
 
 .. math::
-   :label: sum9
+   :label: IHalvesSum
 
    \sum_{i=1}^{n} \frac{i}{2^i} &=& 2 - \frac{n+2}{2^n}.
 

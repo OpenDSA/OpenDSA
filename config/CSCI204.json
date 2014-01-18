@@ -811,6 +811,47 @@
         "exercises": {}
       }
     },
+    "GeneralTrees": {
+      "Development/GenTreeIntro": {
+        "long_name": "General Trees",
+        "exercises": {}
+      },
+      "Development/UnionFind": {
+        "long_name": "UnionFind",
+        "exercises": {
+          "ufCON": {
+            "long_name": "Union/Find Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "pathcompCON": {
+            "long_name": "Union/Find Path Compression Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "UnionFindPRO": {
+            "long_name": "Union/Find Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+	  }
+        }
+      },
+      "Development/GenTreeImplement": {
+        "long_name": "General Tree Implementations",
+        "exercises": {}
+      },
+      "Development/Kary": {
+        "long_name": "K-ary Trees",
+        "exercises": {}
+      },
+      "Development/SequentialRep": {
+        "long_name": "Sequential Tree Representations",
+        "exercises": {}
+      }
+    },
     "Sorting": {
       "Sorting/InSort": {
         "long_name": "Chapter Introduction: Sorting",
@@ -1252,47 +1293,6 @@
             "threshold": 10
           }
         }
-      }
-    },
-    "GeneralTrees": {
-      "Development/GenTreeIntro": {
-        "long_name": "General Trees",
-        "exercises": {}
-      },
-      "Development/UnionFind": {
-        "long_name": "UnionFind",
-        "exercises": {
-          "ufCON": {
-            "long_name": "Union/Find Example",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "pathcompCON": {
-            "long_name": "Union/Find Path Compression Example",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "UnionFindPRO": {
-            "long_name": "Union/Find Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 0.90
-	  }
-        }
-      },
-      "Development/GenTreeImplement": {
-        "long_name": "General Tree Implementations",
-        "exercises": {}
-      },
-      "Development/Kary": {
-        "long_name": "K-ary Trees",
-        "exercises": {}
-      },
-      "Development/SequentialRep": {
-        "long_name": "Sequential Tree Representations",
-        "exercises": {}
       }
     },
     "File Processing": {

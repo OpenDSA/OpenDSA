@@ -153,7 +153,7 @@ Now, test your understanding of the sublist concept.
 
 There is a lot of flexibility to picking the increment series.
 It does not need to start with the greatest power of less than
-:math`n` and cut in half each time.
+:math:`n` and cut in half each time.
 In fact that is not even a good choice for the increment series.
 We will come back to this later.
 For now, just realize that so long as each increment is smaller than the
@@ -206,7 +206,7 @@ Thus, Shellsort is substantially better than Insertion Sort,
 or any of the other :math:`\theta(n^2)` sorts presented earlier.
 In fact, Shellsort is not so much worse than the
 asymptotically better sorts to be presented later,
-whenever :math:`n` is of medium size (thought is tends to be a little
+whenever :math:`n` is of medium size (though it tends to be a little
 slower than these other algorithms if they are well implemented).
 Shellsort illustrates how we can sometimes exploit the special properties
 of an algorithm (in this case Insertion Sort) even if in general that

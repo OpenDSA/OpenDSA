@@ -62,8 +62,16 @@ With some difficulty, an algorithm can be
 devised that alternates between two arrays.  A much simpler approach
 is to copy the sorted sublists to the auxiliary array first, and then
 merge them back to the original array.
+
 Here is a complete implementation for mergesort following this
 approach.
+The input records are in array ``A``.
+Array ``temp`` is used as a place to temporarily copy records during
+the merge process.
+Parameters ``left`` and ``right`` define the left and right
+indices, respectively, for the subarray being sorted.
+The initial call to ``mergesort`` would be
+``mergesort(array, temparray, 0, n-1)``.
 
 .. codeinclude:: Sorting/Mergesort.pde
    :tag: Mergesort

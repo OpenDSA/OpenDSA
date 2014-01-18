@@ -13,17 +13,21 @@
     <div id="problem-type-or-description">
       <p class="question"> What is the running time of Heapsort
 	when the input is an array where all record values are equal? </p> 
-      <div class="solution"><var><code>\Theta(n \log n)</code></var></div>
+      <div class="solution"><var><code>\Theta(n)</code></var></div>
       <ul class="choices">
 	<li><var><code>\Theta(n^2)</code></var></li>
 	<li><var><code>\Theta(\log n)</code></var></li>
 	<li><var><code>\Theta(n ^ n)</code></var></li>	 	 
-	<li><var><code>\Theta(n)</code></var></li>	 	 
+	<li><var><code>\Theta(n \log n)</code></var></li>	 	 
       </ul>
       <div class="hints">
 	<p>Heapsort has the same asymptotic cost in the best, average,
-	and worst cases.</p>
-	<p>Processing each record costs <code>\Theta(\log n)</code> time.</p>
+	and worst cases, but only if the key values are all unique.</p>
+	<p>If you have a heap with all equal key values, what will the
+          siftdown operation do?</p>
+        <p>In that case, siftdown will always return immediately,
+          resulting in a constant time operation. Since Heapsort calls
+          siftdown <code>n</code> times, the total cost is <code>\Theta(n)</code>.
       </div>
     </div> 	  
   </div>

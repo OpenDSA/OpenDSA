@@ -70,8 +70,8 @@ Certain probability distributions give easily computed results.
    .. math::
 
       (1-p_n) \frac{n+1}{2} + p_n n = 
-      \frac{n + 1 - n p_n n - p_n + 2 p_n}{2} =
-      \frac{n + 1 + p_0 (n - 1)}{2}.
+      \frac{n + 1 - n p_n n - p_n + 2 p_n n}{2} =
+      \frac{n + 1 + p_n (n - 1)}{2}.
 
    Thus, :math:`\frac{n+1}{2} \leq \overline{C}_n \leq n`,
    depending on the value of \(p_0\).
@@ -170,7 +170,7 @@ most database systems, this is to be expected).
 Self-organizing lists modify the order of records within the
 list based on the actual pattern of record access.
 Self-organizing lists use a heuristic for
-deciding how to to reorder the list.
+deciding how to reorder the list.
 These heuristics are similar to the rules for managing buffer
 pools (see Module :numref:`<BuffPool>`).
 In fact, a buffer pool is a form of self-organizing list.

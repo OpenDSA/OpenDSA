@@ -118,7 +118,7 @@ In particular, the inner ``for`` loop is executed once for
 each value greater than the value of record :math:`i` that appears in
 array positions 0 through :math:`i-1`.
 For example, in the slideshows above the value 14 is initially
-preceded by six values greater than it.
+preceded by five values greater than it.
 Each such occurrence is called an :term:`inversion`.
 The number of inversions (i.e., the number of values greater than a
 given value that occur prior to it in the array) will determine the

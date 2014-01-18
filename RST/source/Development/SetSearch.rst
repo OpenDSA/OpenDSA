@@ -9,7 +9,7 @@
    :satisfies:
    :topic: Search
 
-Bit Vectores for Representing Sets
+Bit Vectors for Representing Sets
 ==================================
 
 Determining whether a value is a member of a particular set is a

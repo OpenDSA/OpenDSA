@@ -526,8 +526,9 @@ Glossary
    general trees
       A tree in which any given node can have any number of children.
       This is in contrast to, for example, a :term:`binary tree` where
-      each node has a fixed number of children. General tree nodes
-      tend to be harder to implement for this reason.
+      each node has a fixed number of children (some of which might be
+      ``null``).
+      General tree nodes tend to be harder to implement for this reason.
 
    growth rate
       The rate at which the cost

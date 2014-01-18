@@ -94,7 +94,7 @@ Because the key range is larger than the size of the table,
 at least some of the slots must be mapped to from multiple key values.
 Given a hash function **h** and two keys :math:`k_1` and
 :math:`k_2`, if
-:math:`\mathbf{h}(k_1) = \beta = \mathbf{h}>(k_2)`
+:math:`\mathbf{h}(k_1) = \beta = \mathbf{h}(k_2)`
 where :math:`\beta` is a slot in
 the table, then we say that :math:`k_1` and :math:`k_2` have a
 :dfn:`collision` at slot :math:`\beta` under hash function **h**.

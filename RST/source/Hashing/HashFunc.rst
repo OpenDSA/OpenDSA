@@ -18,8 +18,8 @@ large range and stores those records in a table
 with a relatively small number of slots.
 Collisions occur when two records hash to the same slot in the
 table.
-If we are careful -- or lucky -- when selecting a hash function, then
-the actual number of collisions will be few.
+If we are careful |---| or lucky |---| when selecting a hash function,
+then the actual number of collisions will be few.
 Unfortunately, even under the best of circumstances, collisions are
 nearly unavoidable.
 To illustrate, consider a classroom full of students.
@@ -49,7 +49,7 @@ To get credit for the exercise, answer the following two questions:
   the probability to be at least 60% that two share a birthday?
 
 - In a hash table of 1000 slots, what is the smallest number of records
-  must be inserted before the probability of a collision reaches 50%?
+  that must be inserted before the probability of a collision reaches 50%?
 
 .. avembed:: AV/Hashing/Birthday.html pe
 
@@ -139,6 +139,3 @@ situations:
 
 In the next module, you will see several examples of hash functions
 that illustrate these points. 
-
-First, here are some review questions for what has been covered so
-far.

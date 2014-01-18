@@ -92,7 +92,6 @@
     }
     jsav.umsg("Done Sorting!");
     pseudo.setCurrentLine(8);
-    jsav.step();
   }
 
   // Execute the "Run" button function

@@ -788,8 +788,26 @@
         "long_name": "Bintrees",
         "exercises": {}
       },
-      "Stubs/Huffman": {
-        "long_name": "Huffman Coding",
+      "Development/Huffman": {
+        "long_name": "Huffman Coding Trees",
+        "exercises": {
+          "huffmanCON1": {
+            "long_name": "Huffman Coding Tree Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "HuffmanCoding": {
+            "long_name": "Huffman Coding Tree Visualization",
+            "required": true,
+            "points": 0.0,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+        }
+      },
+      "Development/HuffProof": {
+        "long_name": "Proof for Huffman Coding",
         "exercises": {}
       }
     },
@@ -1737,6 +1755,10 @@
         "long_name": "Stubs Chapter",
         "exercises": {}
       },
+      "Stubs/SelfOrg": {
+        "long_name": "Self-organizing Lists",
+        "exercises": {}
+      },
       "Stubs/Kary": {
         "long_name": "K-ary Trees",
         "exercises": {}
@@ -1779,6 +1801,12 @@
       },
       "Stubs/LimComp": {
         "long_name": "Limits to Computing",
+        "exercises": {}
+      }
+    },
+    "Searching": {
+      "Stubs/SearchIntro": {
+        "long_name": "Searching",
         "exercises": {}
       }
     },

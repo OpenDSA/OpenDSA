@@ -27,7 +27,7 @@ We can also observe that if we look first at position 1 in sorted
 array **L** and find that `K` is bigger, then we rule out
 position 0 as well as position 1.
 Because more is often better, what if we look at position 2 in
-**L** and find that :math`K` is bigger yet?
+**L** and find that :math:`K` is bigger yet?
 This rules out positions 0, 1, and 2 with one comparison.
 What if we carry this to the extreme and look first at the last
 position in **L** and find that :math:`K` is bigger?
@@ -212,9 +212,9 @@ We require at least two probes to set the bounds, so the cost is
 
    2 + \sum_{i=3}^{\sqrt{n}} \mathbf{P}(\mbox{need at least \(i\) probes}).
 
-We now make take advantage of a useful fact known as \v{C}eby\v{s}ev's
+We now make take advantage of a useful fact known as Chebyshev's
 Inequality.
-\v{C}eby\v{s}ev's inequality states that
+Chebyshev's inequality states that
 :math:`\mathbf{P}(\mbox{need exactly}\ i\ \mbox{probes})`,
 or :math:`\mathbf{P}_i`, is
 

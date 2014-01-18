@@ -39,7 +39,7 @@ We can do this with a BST.
 The advantage of using the BST is that all major operations (insert,
 search, and remove) are :math:`\Theta(\log n)` in the average case.
 Of course, if the tree is badly balenced, then the cost can be as bad
-as :math`\Theta(n)`.
+as :math:`\Theta(n)`.
 
 Here is an implementation for the Dictionary interface, using a BST to
 store the records.

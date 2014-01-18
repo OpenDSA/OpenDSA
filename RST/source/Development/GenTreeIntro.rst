@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: General Trees
 
-Non-Binary Trees
-================
+General Trees
+=============
 
 Many organizations are hierarchical in nature, such as the military
 and most businesses.
@@ -37,7 +37,7 @@ we use the term :dfn:`general tree`.
 In this module we will examine general tree terminology and define a
 basic ADT for general trees.
 
-Module :numref:`Union/Find <UnionFind>` presents a simple
+Module :numref:`<UnionFind>` presents a simple
 representation for solving the important problem of processing
 equivalence classes.
 Several pointer-based implementations for general trees are covered in
@@ -49,7 +49,7 @@ Such trees are known as :dfn:`K-ary` trees.
 Module :numref:`<Kary>` generalizes the properties of
 binary trees to :math:`K`-ary trees.
 Sequential representations, useful for applications such as storing
-trees on disk, are covered in Module numref`<SequentialRep>`.
+trees on disk, are covered in Module :numref:`<SequentialRep>`.
 
 General Tree Definitions and Terminology
 ----------------------------------------
@@ -85,7 +85,7 @@ generalized from the notation for binary trees.
    Notation for general trees.
    Node :math:`P` is the parent of nodes :math:`V`, :math:`S1`,
    and :math:`S2`.
-   Thus, :math:`V`, :math:`S1, and :math:`S2` are children
+   Thus, :math:`V`, :math:`S1`, and :math:`S2` are children
    of :math:`P`.
    Nodes :math:`R` and :math:`P` are ancestors of :math:`V`.
    Nodes :math:`V`, :math:`S1`, and :math:`S2` are called
@@ -143,7 +143,7 @@ General Tree Traversals
 -----------------------
 
 
-In Module numref`<BinTravers>`, three tree traversals were presented
+In Module :numref:`<BinaryTreeTraversal>`, three tree traversals were presented
 for binary trees: preorder, postorder, and inorder.
 For general trees, preorder and postorder traversals are defined with
 meanings similar to their binary tree
@@ -156,9 +156,9 @@ of the root's subtrees from left to right, then visits the root.
 Inorder traversal does not have a natural definition for the
 general tree, because there is no particular number of children for an
 internal node.
-An arbitrary definition --- such as visit the leftmost subtree in
+An arbitrary definition |---| such as visit the leftmost subtree in
 inorder, then the root, then visit the remaining subtrees in inorder
---- can be invented.
+|---| can be invented.
 However, inorder traversals are generally not useful with
 general trees.
 

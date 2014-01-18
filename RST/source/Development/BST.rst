@@ -152,7 +152,7 @@ Once :math:`R` is found, there are several possibilities.
 If :math:`R` has no children, then :math:`R`'s parent has its
 pointer set to NULL.
 If :math:`R` has one child, then :math:`R`'s parent has
-its pointer set to :math:`R`'s child (similar to ``deletemin``).
+its pointer set to :math:`R`'s child (similar to ``deletemax``).
 The problem comes if :math:`R` has two children.
 One simple approach, though expensive, is to set :math:`R`'s parent to
 point to one of :math:`R`'s subtrees, and then reinsert the remaining
@@ -179,7 +179,7 @@ difference whether the replacement is the greatest value from the
 left subtree or the least value from the right subtree.
 If duplicates are stored in the left subtree, then we must select
 the replacement from the *left* subtree. [#]_
-To see why, call the leat value in the right subtree :math:`L`.
+To see why, call the least value in the right subtree :math:`L`.
 If multiple nodes in the right subtree have value :math:`L`,
 selecting :math:`L` as the replacement value for the root of the
 subtree will result in a tree with equal values to the right of the
