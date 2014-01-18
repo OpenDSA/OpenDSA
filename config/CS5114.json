@@ -1,0 +1,38 @@
+{
+  "title": "CS5114 Spring 2014",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/Processing",
+  "module_origin": "http://algoviz.org",
+  "backend_address": "https://opendsa.cc.vt.edu/",
+  "build_JSAV": false,
+  "build_ODSA": true,
+  "allow_anonymous_credit": true,
+  "suppress_todo": true,
+  "chapters": {
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "exercises": {}
+      }
+    },
+    "Proofs": {
+      "Background/Proofs": {
+        "long_name": "Proofs",
+        "exercises": {
+          "proofCON1": {}
+        }
+      }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "exercises": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "exercises": {}
+      }
+    }
+  }
+}
+

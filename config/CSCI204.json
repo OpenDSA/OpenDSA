@@ -121,7 +121,7 @@
         "long_name": "Asymptotic Analysis",
         "exercises": {
           "AnalPairSumm": {
-            "long_name": "Function Pairs",
+            "long_name": "Function Pairs Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 5
@@ -132,7 +132,7 @@
         "long_name": "Calculating the Running Time of a Program",
         "exercises": {
           "AnalProgramSumm": {
-            "long_name": "Program Code Analysis",
+            "long_name": "Program Code Analysis Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -788,8 +788,26 @@
         "long_name": "Bintrees",
         "exercises": {}
       },
-      "Stubs/Huffman": {
-        "long_name": "Huffman Coding",
+      "Development/Huffman": {
+        "long_name": "Huffman Coding Trees",
+        "exercises": {
+          "huffmanCON1": {
+            "long_name": "Huffman Coding Tree Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "HuffmanCoding": {
+            "long_name": "Huffman Coding Tree Visualization",
+            "required": true,
+            "points": 0.0,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+        }
+      },
+      "Development/HuffProof": {
+        "long_name": "Proof for Huffman Coding",
         "exercises": {}
       }
     },
@@ -1236,6 +1254,47 @@
         }
       }
     },
+    "GeneralTrees": {
+      "Development/GenTreeIntro": {
+        "long_name": "General Trees",
+        "exercises": {}
+      },
+      "Development/UnionFind": {
+        "long_name": "UnionFind",
+        "exercises": {
+          "ufCON": {
+            "long_name": "Union/Find Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "pathcompCON": {
+            "long_name": "Union/Find Path Compression Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "UnionFindPRO": {
+            "long_name": "Union/Find Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+	  }
+        }
+      },
+      "Development/GenTreeImplement": {
+        "long_name": "General Tree Implementations",
+        "exercises": {}
+      },
+      "Development/Kary": {
+        "long_name": "K-ary Trees",
+        "exercises": {}
+      },
+      "Development/SequentialRep": {
+        "long_name": "Sequential Tree Representations",
+        "exercises": {}
+      }
+    },
     "File Processing": {
       "Development/FileProc": {
         "long_name": "File Processing Chapter Introduction",
@@ -1595,31 +1654,6 @@
         "exercises": {}
       }
     },
-    "General Trees": {
-      "Development/UnionFind": {
-        "long_name": "UnionFind",
-        "exercises": {
-          "ufCON": {
-            "long_name": "Union/Find Example",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "pathcompCON": {
-            "long_name": "Union/Find Path Compression Example",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "UnionFindPRO": {
-            "long_name": "Union/Find Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 0.90
-	  }
-        }
-      }
-    },
     "Graphs": {
       "Development/GraphIntro": {
         "long_name": "Introduction and Terminology",
@@ -1735,10 +1769,6 @@
     "Stubs": {
       "Stubs": {
         "long_name": "Stubs Chapter",
-        "exercises": {}
-      },
-      "Stubs/Kary": {
-        "long_name": "K-ary Trees",
         "exercises": {}
       },
       "Stubs/Multilists": {

@@ -8,8 +8,8 @@
    :prerequisites: GenTreeIntro
    :topic: General Trees
 
-:math:`K`-ary Trees [Text]
-==========================
+:math:`K`-ary Trees
+===================
 
 :math:`K`-ary trees are trees whose internal nodes all have exactly
 :math:`K` children.

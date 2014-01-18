@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: General Trees
 
-Non-Binary Trees [Text]
-=======================
+Non-Binary Trees
+================
 
 Many organizations are hierarchical in nature, such as the military
 and most businesses.

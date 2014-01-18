@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: General Trees
 
-Sequential Tree Representations [Text]
-======================================
+Sequential Tree Representations
+===============================
 
 Next we consider a fundamentally different approach to implementing
 trees.

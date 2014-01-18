@@ -3,12 +3,12 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata::
+.. avmetadata:: 
    :author: Cliff Shaffer
    :prerequisites:
-   :topic: Stubs
+   :topic: Indexing
 
-Search Chapter [STUB]
-=====================
+Binary Trees [STUB]
+===================
 
-Stub.
+Placeholder for Crossreference

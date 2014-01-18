@@ -1365,7 +1365,7 @@
       }
     },
     "Searching": {
-      "Stubs/Searching": {
+      "Stubs/SearchIntro": {
         "long_name": "Searching",
         "exercises": {}
       }
@@ -1377,6 +1377,12 @@
       },
       "Stubs/ExternalSort": {
         "long_name": "External Sorting",
+        "exercises": {}
+      }
+    },
+    "Memory Management": {
+      "Stubs/MemmanIntro": {
+        "long_name": "Memory Management Intro",
         "exercises": {}
       }
     },

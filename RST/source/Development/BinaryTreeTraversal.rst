@@ -27,10 +27,21 @@ For example, we might wish to make sure that we visit any given node
 *before* we visit its children.
 This is called a :term:`preorder traversal`.
 
+.. _BinTravExample:
+
+.. odsafig:: Images/BinExamp.png
+   :width: 200
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: An example binary tree
+
+   A binary tree for traversal examples.
+
 .. topic:: Example
 
    The preorder enumeration for the tree of
-   Figure :num:`Figure #BinExample` is
+   Figure :num:`Figure #BinTravExample` is
    **A B D C E G F H I**.
 
    The first node printed is the root.
@@ -50,7 +61,7 @@ This is called a :term:`postorder traversal`.
 .. topic:: Example
 
    The postorder enumeration for the tree of
-   Figure :num:`Figure #BinExample` is
+   Figure :num:`Figure #BinTravExample` is
    **D B G E H I F C A**.
 
 An :term:`inorder traversal` first visits the left child
@@ -63,7 +74,7 @@ traversal to print all nodes in ascending order of value.
 .. topic:: Example
 
    The inorder enumeration for the tree of
-   Figure :num:`Figure #BinExample` is
+   Figure :num:`Figure #BinTravExample` is
    **B D A G E C H F I**.
 
 Now we will discuss some implementations for the traversals, but we

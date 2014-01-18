@@ -85,6 +85,15 @@ Glossary
       instances have equal probability of occurring, then average case
       must be calculated using a weighted average.
 
+   B-tree
+      A method for :term:`indexing` a large collection of records.
+      A B-tree is a tree balanced typically with high branching factor
+      (commonly as much as 100 children per internal node), causing
+      the tree to very shallow. When stored on disk, the node size is
+      selected to be same as the desired unit of I/O (so some multiple
+      of the disk :term:`sector` size). This makes it easy to find a record
+      key stored in the tree with few disk fetches.
+
    bag
       In set notation, a bag is a collection of elements with no order
       (like a set), but which allows for duplicate-valued elements
@@ -1008,6 +1017,11 @@ Glossary
    secondary key index
       Associates a secondary key value with the primary key of each
       record having that secondary key value.
+
+   sector
+      A unit of space on a disk drive that is the amount of data that
+      will be read or written at one time by the disk drive hardware.
+      This is typically 512 bytes.
 
    selection sort
       While this sort requires :math:`\Theta(n^2)` time in the best,

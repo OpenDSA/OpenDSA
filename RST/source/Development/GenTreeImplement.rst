@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: General Trees
 
-General Tree Implementations [Text]
-===================================
+General Tree Implementations
+============================
 
 We now tackle the problem of devising an implementation for general
 trees that allows efficient processing for all member functions of the

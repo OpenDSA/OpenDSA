@@ -74,7 +74,7 @@ space from its internal nodes.
    i) **Base Cases:** The non-empty tree with zero internal nodes has
       one leaf node.
       A full binary tree with one internal node has two leaf nodes.
-      Thus, the base cases for <i>n</i> = 0 and <i>n</i> = 1 conform
+      Thus, the base cases for :math:`n = 0` and :math:`n = 1` conform
       to the theorem.
 
    ii) **Induction Hypothesis:** Assume that any full binary
