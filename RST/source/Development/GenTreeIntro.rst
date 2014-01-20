@@ -142,7 +142,6 @@ Trying to find the next sibling of the rightmost sibling would return
 General Tree Traversals
 -----------------------
 
-
 In Module :numref:`<BinaryTreeTraversal>`, three tree traversals were presented
 for binary trees: preorder, postorder, and inorder.
 For general trees, preorder and postorder traversals are defined with

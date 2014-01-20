@@ -68,7 +68,7 @@ The expected number of probes is one plus the sum over
 which is approximately
 
 .. math::
-   1 \sum_{i=1}^\infty (N/M)^i = 1/(1-\alpha).
+   1 + \sum_{i=1}^\infty (N/M)^i = 1/(1-\alpha).
 
 
 The cost for a successful search (or a deletion) has the same cost as

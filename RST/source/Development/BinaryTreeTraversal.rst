@@ -85,8 +85,8 @@ Here is an ADT for binary tree nodes, called ``BinNode``.
 This class will be used by some of the binary tree structures
 presented later.
 Member functions are provided that set or return the element value,
-set or return a pointer to the left child,
-set or return a pointer to the right child,
+return a pointer to the left child,
+return a pointer to the right child,
 or indicate whether the node is a leaf.
 
 .. codeinclude:: Binary/BinNode.pde
