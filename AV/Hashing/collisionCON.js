@@ -245,6 +245,7 @@ var setRed = function (arr, index) {
   av.step();
 
   av.umsg("However, the probe sequence extending out of slot 6 first goes to slot 6 + 1 = 7...");
+  arr.unhighlight(7);
   setRed(arr, 7);
   av.step();
 
