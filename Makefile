@@ -39,7 +39,8 @@ jshint:
 
 min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css
 
-Recursion: min	python $(CONFIG_SCRIPT) config/Recursion.json
+Recursion: min
+	python $(CONFIG_SCRIPT) config/Recursion.json
 
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json
