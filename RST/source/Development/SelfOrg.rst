@@ -70,7 +70,7 @@ Certain probability distributions give easily computed results.
    .. math::
 
       (1-p_n) \frac{n+1}{2} + p_n n = 
-      \frac{n + 1 - n p_n n - p_n + 2 p_n n}{2} =
+      \frac{n + 1 - p_n n - p_n + 2 p_n n}{2} =
       \frac{n + 1 + p_n (n - 1)}{2}.
 
    Thus, :math:`\frac{n+1}{2} \leq \overline{C}_n \leq n`,
