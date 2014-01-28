@@ -83,6 +83,26 @@ As you can see from Figure :num:`Figure #Rebalance`,
 adopting a rule such as requiring the BST to be complete can cause a
 great deal of rearranging of data within the tree.
 
+.. _PagedBST_AV:
+
+.. inlineav:: pagedBSTCON1 dgm
+   :align: center
+
+   Breaking the BST into blocks.
+   The BST is divided among disk blocks, each with space for three nodes.
+   The path from the root to any leaf is contained on two blocks.
+
+.. _BalancedBST:
+
+.. inlineav:: balanceBSTCON2 dgm
+   :align: center
+
+   An attempt to re-balance a BST after insertion can be expensive.
+   (a) A BST with six nodes in the shape of a complete binary tree.
+   (b) A node with value 1 is inserted into the BST of (a).
+   To maintain both the complete binary tree shape and the BST property,
+   a major reorganization of the tree is required.
+
 .. _PagedBST:
 
 .. odsafig:: Images/PagedBST.png
@@ -125,3 +145,5 @@ The main reason for discussing the 2-3 Tree here in preference to the
 other balanced search trees is that it naturally
 leads to the B-tree of Module :numref:`<BTree>`, which is by far the
 most widely used indexing method today.
+
+.. odsascript:: AV/Development/treeIndexingCON.js
