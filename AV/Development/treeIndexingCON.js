@@ -1,13 +1,6 @@
 "use strict";
 
 (function ($) {
-  var jsav = new JSAV("pagedBSTCON1", {"animationMode": "none"});
-
-  var bst = jsav.ds.bintree({width: 500, height: 500, nodegap: 40, anchor: "left top"});
-  bst.css("padding-bottom", "20px");
-
-  bst.root("");
-  genNodes(bst.root(), 0)
 
   function genNodes(root, level) {
     if (level > 2) {
@@ -19,12 +12,20 @@
     }
   }
 
+  var jsav = new JSAV("pagedBSTCON1", {"animationMode": "none"});
+
+  var bst = jsav.ds.bintree({width: 500, height: 500, nodegap: 40, anchor: "left top"});
+  bst.css("padding-bottom", "20px");
+
+  bst.root("");
+  genNodes(bst.root(), 0);
+
   bst.layout();
 
   var x_base = Math.floor(parseInt(bst.css("left")));
   var y_base = 45;
   jsav.g.rect(x_base + 70, y_base - 5, 520, 150, 30, {"stroke-width": 2});
-  jsav.g.rect(x_base - 15 , y_base + 160, 160, 165, 30, {"stroke-width": 2});
+  jsav.g.rect(x_base - 15, y_base + 160, 160, 165, 30, {"stroke-width": 2});
   jsav.g.rect(x_base + 160, y_base + 160, 160, 165, 30, {"stroke-width": 2});
   jsav.g.rect(x_base + 335, y_base + 160, 160, 165, 30, {"stroke-width": 2});
   jsav.g.rect(x_base + 510, y_base + 160, 160, 165, 30, {"stroke-width": 2});
