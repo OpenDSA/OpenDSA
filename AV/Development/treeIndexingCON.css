@@ -1,0 +1,56 @@
+/* Create styling for the pagedBSTCON diagram */
+
+/* Set size for the jsav container */
+#pagedBSTCON {
+  width: 300px;
+  height: 120px;
+  padding: 25px;
+}
+
+/* Add offset to the top of the tree container */
+#pagedBSTCON .jsavtree {
+	margin-top: -35px;
+}
+
+/* Change the size of the tree nodes */
+#pagedBSTCON .jsavtree .jsavnode {
+  line-height: 15px;
+  min-width: 15px;
+  max-width: 15px;
+  min-height: 15px;
+  max-height: 15px;
+}
+
+/* Add padding to the rectangle container to show the all the rectangles */
+#pagedBSTCON .jsavcanvas > svg {
+	height: 200px;
+	width: 320px;
+}
+
+/* Create styling for the balanceBSTCON diagram */
+
+/* Set size for the jsav container */
+#balanceBSTCON {
+  width: 380px;
+  height: 100px;
+  padding: 25px;
+}
+
+/* Add offset to the top of the tree container */
+#balanceBSTCON .jsavtree {
+	margin-top: -40px;
+}
+
+/* Change the size of the tree nodes */
+#balanceBSTCON .jsavtree .jsavnode {
+	line-height: 20px;
+  min-width: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  max-height: 20px;
+}
+
+/* Add ofset to the top of the number labels of the tree to place number in center of tree node */
+#balanceBSTCON .jsavtree .jsavnode .jsavvalue {
+	margin-top: -12px;
+}
