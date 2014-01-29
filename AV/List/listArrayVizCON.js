@@ -8,8 +8,8 @@ var itemsSize = 5;
 //sets the backgroud of the array elements according to their values
 function bgColor(array) {
   var i;
-  for(i=0; i<array.size();i++) {
-    if(array.value(i)=="") {
+  for (i = 0; i < array.size();i++) {
+    if (array.value(i) == "") {
       array.css([i], {"background-color": "#eee"});
     } else {
       array.css([i], {"background-color": "#fff"});
@@ -25,11 +25,11 @@ function bgColor(array) {
   bgColor(arr);
 
   jsav.umsg("Class <code>AList</code> stores the list elements in the first <code>listSize</code> contiguous array positions");
-  arr.highlight([0, 1, 2, 3, 4]);  
+  arr.highlight([0, 1, 2, 3, 4]);
   jsav.displayInit();
 
   jsav.umsg("Array positions correspond to list positions. In other words, the element at position <i>i</i> in the list is stored at array cell <i>i</i>. Here, the element at position 3 in the list (and index 3 in the array) is highlighted.");
-  arr.unhighlight([0, 1, 2, 3, 4]);  
+  arr.unhighlight([0, 1, 2, 3, 4]);
   arr.highlight(3);
   jsav.step();
 
@@ -49,7 +49,7 @@ function bgColor(array) {
 
 // Show off the private data members
 (function ($) {
-  var jsav = new JSAV("AlistVarsCON");	
+  var jsav = new JSAV("AlistVarsCON");
   var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/AList.pde",
                         lineNumbers: false,
                         startAfter: "/* *** ODSATag: AListVars *** */",
@@ -64,7 +64,7 @@ function bgColor(array) {
   pseudo.unhighlight(0);
   pseudo.highlight(1);
   jsav.umsg("The first of the private data members is <code>listArray</code>, the array which holds the list elements. Because <code>listArray</code> must be allocated at some fixed size, the size of the array must be known when the list object is created.");
-  jsav.step(); 
+  jsav.step();
   pseudo.unhighlight(1);
   pseudo.highlight(2);
   jsav.umsg("An optional parameter is declared for the <code>AList</code> constructor. With this parameter, the user can indicate the maximum number of elements permitted in the list. If no parameter is given, then it takes the value <code>defaultSize</code>, which is assumed to be a suitably defined constant value.");
