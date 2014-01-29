@@ -1,0 +1,29 @@
+#twoThreeTreeCON {
+	width: 530px;
+}
+
+#twoThreeTreeCON .jsavcanvas {
+	height: 200px;
+	width: 530px;
+}
+
+.jsavarray {
+	margin-top: 0px; 
+}
+
+/* Change the size of each array box */
+.jsavarray .jsavindex {
+  min-width: 23px;
+  max-width: 23px;
+  min-height: 20px;
+  max-height: 20px;
+}
+
+/* Center text inside of array cell by making height equal to the container height */
+.jsavnode .jsavvalue {
+	height: 20px;
+}
+
+.jsavarray .jsavvaluelabel {
+	font-size: .8em;
+}
