@@ -1,14 +1,14 @@
-#pagedBSTCON1 {
+#pagedBSTCON {
   width: 300px;
   height: 120px;
   padding: 25px;
 }
 
-#pagedBSTCON1 .jsavtree {
+#pagedBSTCON .jsavtree {
 	margin-top: -35px;
 }
 
-#pagedBSTCON1 .jsavtree .jsavnode {
+#pagedBSTCON .jsavtree .jsavnode {
   line-height: 15px;
   min-width: 15px;
   max-width: 15px;
@@ -16,21 +16,21 @@
   max-height: 15px;
 }
 
-#pagedBSTCON1 .jsavcanvas > svg {
+#pagedBSTCON .jsavcanvas > svg {
 	padding-right: 20px;
 }
 
-#balanceBSTCON2 {
+#balanceBSTCON {
   width: 330px;
   height: 100px;
   padding: 25px;
 }
 
-#balanceBSTCON2 .jsavtree {
+#balanceBSTCON .jsavtree {
 	margin-top: -40px;
 }
 
-#balanceBSTCON2 .jsavtree .jsavnode {
+#balanceBSTCON .jsavtree .jsavnode {
 	line-height: 20px;
   min-width: 20px;
   max-width: 20px;
@@ -38,6 +38,6 @@
   max-height: 20px;
 }
 
-#balanceBSTCON2 .jsavtree .jsavnode .jsavvalue {
+#balanceBSTCON .jsavtree .jsavnode .jsavvalue {
 	margin-top: -12px;
 }

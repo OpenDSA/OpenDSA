@@ -8,6 +8,8 @@
    :prerequisites:
    :topic: Indexing
 
+.. odsalink:: AV/Development/treeIndexingCON.css
+
 Tree-based Indexing
 ===================
 
@@ -85,26 +87,17 @@ great deal of rearranging of data within the tree.
 
 .. _PagedBST:
 
-.. odsafig:: Images/PagedBST.png
-   :width: 200
+.. inlineav:: pagedBSTCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Breaking the BST into blocks
 
    Breaking the BST into blocks.
    The BST is divided among disk blocks, each with space for three nodes.
    The path from the root to any leaf is contained on two blocks.
 
-
 .. _Rebalance:
 
-.. odsafig:: Images/BSTBal.png
-   :width: 300
+.. inlineav:: balanceBSTCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Re-balancing a BST after insertion can be expensive
 
    An attempt to re-balance a BST after insertion can be expensive.
    (a) A BST with six nodes in the shape of a complete binary tree.
@@ -125,3 +118,5 @@ The main reason for discussing the 2-3 Tree here in preference to the
 other balanced search trees is that it naturally
 leads to the B-tree of Module :numref:`<BTree>`, which is by far the
 most widely used indexing method today.
+
+.. odsascript:: AV/Development/treeIndexingCON.js

@@ -1,7 +1,7 @@
 "use strict";
 
 (function ($) {
-  var jsav = new JSAV("pagedBSTCON1", {"animationMode": "none"});
+  var jsav = new JSAV("pagedBSTCON", {"animationMode": "none"});
 
   var x_base = 10;
   var y_base = 30;
@@ -34,7 +34,7 @@
 
 (function ($) {
   // Intialize JSAV object.
-  var jsav = new JSAV("balanceBSTCON2", {"animationMode": "none"});
+  var jsav = new JSAV("balanceBSTCON", {"animationMode": "none"});
   // Initialize BST and the balanced BST object.
   var bst = jsav.ds.bintree({left: "0%", nodegap: 20});
   var bbst = jsav.ds.bintree({left: "50%", nodegap: 20});
