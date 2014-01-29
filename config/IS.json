@@ -16,6 +16,10 @@
       "IS/TreeIndexing": {
         "long_name": "Tree Indexing",
         "exercises": {}
+      },
+      "IS/Bintree": {
+        "long_name": "Bintree",
+        "exercises": {}
       }
     },
     "Appendix": {
