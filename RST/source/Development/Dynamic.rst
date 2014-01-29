@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :prerequisites: 
    :topic: Memory Management
+   
+.. odsalink:: AV/Development/dynamicCON.css
 
 Dynamic Storage Allocation
 ==========================
@@ -22,13 +24,9 @@ a series of memory allocations and deallocations.
 
 .. _MemMode:
 
-.. odsafig:: Images/MemModel.png
-   :width: 300
+.. inlineav:: freelistCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: The results of a series of memory allocations and deallocations.
-
+   
    The results from a series of memory allocations and
    deallocations.
    Memory is made up of a series of variable-size blocks, some allocated
@@ -94,3 +92,5 @@ described later in this chapter.
 The process of searching the memory pool for a block large enough to
 service the request, possibly reserving the remaining space as a free
 block, is referred to as a :term:`sequential fit` method.
+
+.. odsascript:: AV/Development/dynamicCON.js
