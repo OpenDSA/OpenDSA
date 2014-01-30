@@ -20,6 +20,10 @@
       "IS/Bintree": {
         "long_name": "Bintree",
         "exercises": {}
+      },
+      "IS/TwoThreeTree.rst": {
+        "long_name": "2-3 Trees",
+        "exercises": {}
       }
     },
     "Appendix": {
