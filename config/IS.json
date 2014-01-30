@@ -20,6 +20,10 @@
       "IS/Bintree": {
         "long_name": "Bintree",
         "exercises": {}
+      },
+      "IS/Dynamic": {
+        "long_name": "Bintree",
+        "exercises": {}
       }
     },
     "Appendix": {
