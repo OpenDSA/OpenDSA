@@ -21,8 +21,8 @@
         "long_name": "Bintree",
         "exercises": {}
       },
-      "IS/TwoThreeTree.rst": {
-        "long_name": "2-3 Trees",
+      "IS/Dynamic": {
+        "long_name": "Bintree",
         "exercises": {}
       }
     },
