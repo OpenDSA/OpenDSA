@@ -2,6 +2,7 @@
 	"use strict";
 	var jsav = new JSAV("twoThreeTreeCON");
 
+	// Create all the arrays that represent the nodes in the 2-3 tree.
 	var arr1 = jsav.ds.array([18, 13], {left: "240px", top: "0px"});
 	var arr2 = jsav.ds.array([12, ""], {left: "40px", top: "80px"});
 	var arr3 = jsav.ds.array([23, 30], {left: "240px", top: "80px"});
@@ -14,6 +15,7 @@
 	var arr10 = jsav.ds.array([45, 47], {left: "400px", top: "160px"});
 	var arr11 = jsav.ds.array([50, 52], {left: "480px", top: "160px"});
 
+	// Create lines that connect all the nodes.
 	var properties = {"stroke-width": 1.5};
 	jsav.g.line(243, 18, 63, 80, properties);
 	jsav.g.line(264, 21, 264, 80, properties);
