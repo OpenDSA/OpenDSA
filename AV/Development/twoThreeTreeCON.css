@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-/* Styling for the twoThreeTreeCON diagram */
+/* Styling for the twoThreeTreeCON diagram ***********************************/
 
-=======
->>>>>>> 78ff9218df58bb7e3032918811200565679309f3
 /* Sets maximum width to JSAV container */
 #twoThreeTreeCON {
 	width: 530px;
@@ -37,22 +34,26 @@
 	font-size: .9em;
 }
 
-/* Sytling for the simpleInsertCON slide show */
+/* Sytling for the simpleInsertCON slide show ********************************/
 
+/* Set maximun width for the JSAV container */
 #simpleInsertCON, #simpleInsertCON .jsavoutput {
 	width: 700px;
 }
 
+/* Set width and height for the JSAV canvas */
 #simpleInsertCON .jsavcanvas {
 	height: 250px;
 	width: 700px;
 	margin-left: 70px;
 }
 
+/* Reset margin for the JSAV slideshow controls (They had a -35px top margin for some reason) */
 #simpleInsertCON .jsavcontrols {
 	margin-top: 0px;
 }
 
+/* Align and give a little padding to the output messages of each slide */
 #simpleInsertCON .jsavoutput {
 	padding-top: 20px;
 	text-align: center;
