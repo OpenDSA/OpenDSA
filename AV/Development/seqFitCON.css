@@ -1,0 +1,10 @@
+.jsavcanvas {
+ margin-left: auto;
+ margin-right: auto;
+ height: 100px;
+ width: 470px;
+}
+
+svg{
+  stroke-width: 1;
+}
