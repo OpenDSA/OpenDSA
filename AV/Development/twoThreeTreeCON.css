@@ -1,12 +1,15 @@
+/* Sets maximum width to JSAV container */
 #twoThreeTreeCON {
 	width: 530px;
 }
 
+/* Sets width and height to the JSAV canvas */
 #twoThreeTreeCON .jsavcanvas {
 	height: 200px;
 	width: 530px;
 }
 
+/* Removes top margin from array objects to make the diagram a litle more compact */
 .jsavarray {
 	margin-top: 0px; 
 }
@@ -24,6 +27,7 @@
 	height: 20px;
 }
 
+/* Make the font of the labels inside of the arrays smaller */
 .jsavarray .jsavvaluelabel {
 	font-size: .8em;
 }
