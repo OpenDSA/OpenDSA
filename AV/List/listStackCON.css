@@ -27,6 +27,11 @@
   max-height: 30px;
   line-height: 30px;
 }
+
+.jsavnode .jsavvalue {
+  height: 30px;
+}
+
 #AStackVarCON {
   height: 480px;
 }
@@ -103,5 +108,3 @@
 #LStackTwostacksCON {
   height: 120px;
 }
-
-
