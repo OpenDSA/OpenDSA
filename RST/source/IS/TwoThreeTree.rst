@@ -112,12 +112,8 @@ rightmost position).
 
 .. _TTEasyIn:
 
-.. odsafig:: Images/TTEasyIn.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Simple insert into a 2-3 tree
+.. inlineav:: simpleInsertCON ss
+   :output: show
 
    Simple insert into the 2-3 tree of Figure :num:`Figure #TTexamp`.
    The value 14 is inserted into the tree at the leaf node containing 15.

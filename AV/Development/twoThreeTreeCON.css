@@ -1,3 +1,5 @@
+/* Styling for the twoThreeTreeCON diagram */
+
 /* Sets maximum width to JSAV container */
 #twoThreeTreeCON {
 	width: 530px;
@@ -16,10 +18,10 @@
 
 /* Change the size of each array box */
 .jsavarray .jsavindex {
-  min-width: 23px;
-  max-width: 23px;
-  min-height: 20px;
-  max-height: 20px;
+  min-width: 33px;
+  max-width: 33px;
+  min-height: 30px;
+  max-height: 30px;
 }
 
 /* Center text inside of array cell by making height equal to the container height */
@@ -29,5 +31,26 @@
 
 /* Make the font of the labels inside of the arrays smaller */
 .jsavarray .jsavvaluelabel {
-	font-size: .8em;
+	font-size: .9em;
+}
+
+/* Sytling for the simpleInsertCON slide show */
+
+#simpleInsertCON, #simpleInsertCON .jsavoutput {
+	width: 700px;
+}
+
+#simpleInsertCON .jsavcanvas {
+	height: 250px;
+	width: 700px;
+	margin-left: 70px;
+}
+
+#simpleInsertCON .jsavcontrols {
+	margin-top: 0px;
+}
+
+#simpleInsertCON .jsavoutput {
+	padding-top: 20px;
+	text-align: center;
 }
