@@ -1,7 +1,14 @@
-.jsavcanvas {
+#freelistCON .jsavcanvas {
  margin-left: auto;
  margin-right: auto;
- height: 135px;
+ height: 105px;
+ width: 470px;
+}
+
+#fragCON .jsavcanvas {
+ margin-left: auto;
+ margin-right: auto;
+ height: 125px;
  width: 470px;
 }
 
