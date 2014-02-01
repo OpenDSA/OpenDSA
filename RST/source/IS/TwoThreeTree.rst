@@ -114,6 +114,7 @@ rightmost position).
 
 .. inlineav:: simpleInsertCON ss
    :output: show
+   :align: justify
 
    Simple insert into the 2-3 tree of Figure :num:`Figure #TTexamp`.
    The value 14 is inserted into the tree at the leaf node containing 15.
