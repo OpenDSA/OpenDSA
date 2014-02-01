@@ -2,13 +2,14 @@
 
 /* Sets maximum width to JSAV container */
 #twoThreeTreeCON {
-	width: 530px;
+	padding-top: 20px;
+	width: 560px;
 }
 
 /* Sets width and height to the JSAV canvas */
 #twoThreeTreeCON .jsavcanvas {
 	height: 200px;
-	width: 530px;
+	width: 560px;
 }
 
 /* Removes top margin from array objects to make the diagram a litle more compact */
