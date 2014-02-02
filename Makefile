@@ -23,6 +23,7 @@ csslint:
 	@echo 'running csslint'
 	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
 	@csslint $(CSSLINTFLAGS) AV/Hashing/*.css
+	@csslint $(CSSLINTFLAGS) AV/List/*.css
 	@csslint $(CSSLINTFLAGS) AV/*.css
 	@csslint $(CSSLINTFLAGS) Doc/*.css
 	@csslint $(CSSLINTFLAGS) lib/*.css
@@ -31,6 +32,7 @@ jshint:
 	@echo 'running jshint'
 	-@jshint AV/Sorting/*.js
 	-@jshint AV/Hashing/*.js
+	-@jshint AV/List/*.js
 	-@jshint Exercises/Hashing/*.js
 	-@jshint lib/odsaUtils.js
 	-@jshint lib/odsaAV.js
