@@ -28,6 +28,10 @@
       "IS/TwoThreeTree.rst": {
         "long_name": "2-3 Trees",
         "exercises": {}
+      },
+       "IS/BuffPool": {
+        "long_name": "Buffer Pool",
+        "exercises": {}
       }
     },
     "Appendix": {
