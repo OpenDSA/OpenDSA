@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, ODSA */
+/*global alert: true, ODSA, console */
 (function ($) {
   var jsav;   // for JSAV library object
 
@@ -32,8 +32,6 @@
       // Save the left edge of the original array so sublists can be positioned relative to it
 //      leftEdge = parseFloat(arr.element.css("left"));
       leftEdge = 200; // Hack because arr.element.css is returning "auto" instead of position
-console.log("Original leftEdge is " + leftEdge);
-console.log(arr.element.css("left"));
       var level = 1;
       var leftOffset = 0;
       quicksort(arr, level, leftOffset);
@@ -185,7 +183,7 @@ console.log(arr.element.css("left"));
     var rowHeight = 80;
     var left = leftEdge + leftOffset * blockWidth;
     var top = rowHeight * (level - 1);
-console.log("Position for array: " + left + ", " + top);
+    console.log("Position for array: " + left + ", " + top);
     // Set the top and left values so that all arrays are spaced properly
     arr.element.css({"left": left, "top": top});
   }

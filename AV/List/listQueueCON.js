@@ -1,46 +1,49 @@
 "use strict";
 // Helper function for creating a pointer
-function setPointer(name, obj, index){
-  return obj.jsav.pointer(name, obj,{
-                targetIndex : index,
-                visible: true, 
-                anchor: "left top",
-                myAnchor: "right bottom",
-                left: 15,
-                top: -20});
+function setPointer(name, obj, index) {
+  return obj.jsav.pointer(name, obj, {
+    targetIndex : index,
+    visible: true,
+    anchor: "left top",
+    myAnchor: "right bottom",
+    left: 15,
+    top: -20
+  });
 }
 
 // Helper function for drawing arrow around the node
-function arrowAround(node, options){
+function arrowAround(node, options) {
   var jsav = node.jsav;
   var arrow;
   var nodeWidth = node.element.outerWidth();
   var nodeHeight = node.element.outerHeight();
   var nodegap = 40;
   var nextnode = node.next();
-  if(nextnode){
+  if (nextnode) {
     nodegap = nextnode.element.offset().left - node.element.offset().left - nodeWidth;
   }
   var left = node.element.offset().left - jsav.container.find(".jsavcanvas:first").offset().left;
   var top = node.element.offset().top - jsav.container.find(".jsavcanvas:first").offset().top;
-  var opts = $.extend({leftOffset: nodegap/2,
-                       rightOffset: nodegap/2, topOffset: 15, nodeGap: nodegap, nodeWidth: nodeWidth, nodeHeight: nodeHeight}, options);
+  var opts = $.extend({leftOffset: nodegap / 2,
+                       rightOffset: nodegap / 2, topOffset: 15,
+                       nodeGap: nodegap, nodeWidth: nodeWidth,
+                       nodeHeight: nodeHeight}, options);
 
-  arrow = jsav.g.polyline([[left - opts.nodeGap - 6, top + opts.nodeHeight/2], 
-      [left - opts.leftOffset, top + opts.nodeHeight/2], 
-	  [left - opts.leftOffset, top - opts.topOffset],
-	  [left + opts.nodeWidth + opts.rightOffset, top - opts.topOffset],
-	  [left + opts.nodeWidth + opts.rightOffset, top + opts.nodeHeight/2],
-	  [left + opts.nodeWidth + opts.nodeGap + 1,top + opts.nodeHeight/2]],
-	  {"arrow-end":"classic-wide-long","stroke-width":2,"stroke-dasharray":"-"});
+  arrow = jsav.g.polyline([[left - opts.nodeGap - 6, top + opts.nodeHeight / 2],
+                           [left - opts.leftOffset, top + opts.nodeHeight / 2],
+                           [left - opts.leftOffset, top - opts.topOffset],
+                           [left + opts.nodeWidth + opts.rightOffset, top - opts.topOffset],
+                           [left + opts.nodeWidth + opts.rightOffset, top + opts.nodeHeight / 2],
+                           [left + opts.nodeWidth + opts.nodeGap + 1, top + opts.nodeHeight / 2]],
+                           {"arrow-end": "classic-wide-long", "stroke-width": 2, "stroke-dasharray": "-"});
   return arrow;
 }
 
-jQuery.fn.rotate = function(degrees) {
-    $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
-                 '-moz-transform' : 'rotate('+ degrees +'deg)',
-                 '-ms-transform' : 'rotate('+ degrees +'deg)',
-                 'transform' : 'rotate('+ degrees +'deg)'});
+jQuery.fn.rotate = function (degrees) {
+  $(this).css({'-webkit-transform' : 'rotate(' + degrees + 'deg)',
+               '-moz-transform' : 'rotate(' + degrees + 'deg)',
+               '-ms-transform' : 'rotate(' + degrees + 'deg)',
+               'transform' : 'rotate(' + degrees + 'deg)'});
 };
 
 // Elements of the queue are stored in the first n positions of the array..
@@ -48,15 +51,16 @@ jQuery.fn.rotate = function(degrees) {
   var jsav = new JSAV("AQueueFirstNposCON");
   // Relative offsets
   var leftMargin = 300;
-  var topMargin = 35; 
-  var minusOne = jsav.ds.array(["-1"],{top: topMargin + 70, left: leftMargin + 30});
+  var topMargin = 35;
+  var minusOne = jsav.ds.array(["-1"], {top: topMargin + 70, left: leftMargin + 30});
   minusOne.hide();
-  var arr = jsav.ds.array([12,45,5,81,"", "", "", ""],{indexed:true, top: topMargin, left: leftMargin});
+  var arr = jsav.ds.array([12, 45, 5, 81, "", "", "", ""],
+                          {indexed: true, top: topMargin, left: leftMargin});
   jsav.umsg("Assume that there are <i>n</i> elements in the queue. By analogy to the array-based list implementation, we could require that all elements of the queue be stored in the first <i>n</i> positions of the array.");
   jsav.displayInit();
 
-  var rearPointer = setPointer("rear",arr, 0);
-  var frontPointer = setPointer("front",arr, 3);
+  var rearPointer = setPointer("rear", arr, 0);
+  var frontPointer = setPointer("front", arr, 3);
   arr.highlight(3);
   jsav.umsg(" If we choose the rear element of the queue to be in position 0, then dequeue operations require only &theta;(1) time because the front element of the queue (the one being removed) is the last element in the array.");
   jsav.step();
@@ -81,12 +85,13 @@ jQuery.fn.rotate = function(degrees) {
 
   // Relative offsets
   var leftMargin = 250;
-  var topMargin = 25; 
+  var topMargin = 25;
   jsav.umsg("A far more efficient implementation can be obtained by relaxing the requirement that all elements of the queue must be in the first <i>n</i> positions of the array. We will still require that the queue be stored be in contiguous array positions, but the contents of the queue will be permitted to drift within the array, as illustrated by the following slides ");
   jsav.displayInit();
-  var arr = jsav.ds.array([20,5,12,17, "", "", "", "", "", "", "", ""],{left:leftMargin, top:topMargin});
-  var rearPointer =  setPointer("rear",arr, 3);
-  var frontPointer =  setPointer("front",arr, 0);
+  var arr = jsav.ds.array([20, 5, 12, 17, "", "", "", "", "", "", "", ""],
+                          {left: leftMargin, top: topMargin});
+  var rearPointer =  setPointer("rear", arr, 3);
+  var frontPointer =  setPointer("front", arr, 0);
   jsav.umsg(" The queue after the initial four numbers 20, 5, 12, and 17 have been inserted");
   jsav.step();
   frontPointer.target(arr, {relativeIndex : 1, targetIndex : 1});
@@ -133,10 +138,11 @@ jQuery.fn.rotate = function(degrees) {
 
   // Relative offsets
   var leftMargin = 250;
-  var topMargin = 25; 
-  var arr = jsav.ds.array([20,5,12,17, "", "", "", "", "", "", "", ""],{left:leftMargin, top:topMargin});
-  var rearPointer =  setPointer("rear",arr, 3);
-  var frontPointer =  setPointer("front",arr, 0);
+  var topMargin = 25;
+  var arr = jsav.ds.array([20, 5, 12, 17, "", "", "", "", "", "", "", ""],
+                          {left: leftMargin, top: topMargin});
+  var rearPointer =  setPointer("rear", arr, 3);
+  var frontPointer =  setPointer("front", arr, 0);
   jsav.umsg("This implementation raises a new problem. Assume that the front element of the queue is initially at position 0, and that elements are added to successively higher-numbered positions in the array.");
   jsav.displayInit();
   frontPointer.target(arr, {relativeIndex : 1, targetIndex : 1});
@@ -202,14 +208,14 @@ jQuery.fn.rotate = function(degrees) {
 }(jQuery));
 
 // JSAV extension for circular queue.
-(function($){
-  function sin(x){
-    return Math.sin(x*Math.PI/180);
+(function ($) {
+  function sin(x) {
+    return Math.sin(x * Math.PI / 180);
   }
-  function cos(x){
-    return Math.cos(x*Math.PI/180);
+  function cos(x) {
+    return Math.cos(x * Math.PI / 180);
   }
-  var Circular = function(jsav, cx, cy, r1, r2, options){
+  var Circular = function (jsav, cx, cy, r1, r2, options) {
     this.jsav = jsav;
     this.cx = cx;
     this.cy = cy;
@@ -218,10 +224,10 @@ jQuery.fn.rotate = function(degrees) {
     var defaultOptions = {};
     this.options = $.extend(defaultOptions, options);
     var x1, y1, x2, y2, x3, y3, x4, y4, label,
-		i = 0, theta = 0, step = 30, pathString;
+        i = 0, theta = 0, step = 30, pathString;
     this.path = [];
-	this.labels = [];
-    while(theta < 360){
+    this.labels = [];
+    while (theta < 360) {
       x1 = cx + r1 * cos(theta);
       y1 = cy + r1 * sin(theta);
       x2 = cx + r2 * cos(theta);
@@ -238,81 +244,83 @@ jQuery.fn.rotate = function(degrees) {
       pathString += " A" + r1 + "," + r1 + " 1 0,0 " + x1 + "," + y1;
       this.path[i] = this.jsav.g.path(pathString, this.options);
       label = this.jsav.label(" ");
-      label.css({'position' : 'absolute', 
-                 left : cx + (r1+r2)/2 * cos(theta + 15) - 20 + 'px', 
-                 top : cy + (r1+r2)/2 * sin(theta + 15) - 10 + 'px', width : '40px', height:'20px', 'text-align': 'center'});
+      label.css({'position' : 'absolute',
+                 left: cx + (r1 + r2) / 2 * cos(theta + 15) - 20 + 'px',
+                 top: cy + (r1 + r2) / 2 * sin(theta + 15) - 10 + 'px',
+                 width: '40px', height: '20px', 'text-align': 'center'});
       this.labels[i] = label;
       var test = this.jsav.label(i);
-      test.css({'position' : 'absolute', 
-                 left : cx + (r1)/100*78 * cos(theta + 15) - 20 + 'px', 
-                 top : cy + (r1)/100*78 * sin(theta + 15) - 10 + 'px', width : '40px', height:'20px', 'text-align': 'center'});
+      test.css({'position' : 'absolute',
+                 left: cx + (r1) / 100 * 78 * cos(theta + 15) - 20 + 'px',
+                 top: cy + (r1) / 100 * 78 * sin(theta + 15) - 10 + 'px',
+                 width: '40px', height: '20px', 'text-align': 'center'});
   
       i++;
       theta += 30;
-	}
+    }
   };
 
-  Circular.prototype.value = JSAV.anim(function(index, value){
+  Circular.prototype.value = JSAV.anim(function (index, value) {
     var oldval = this.labels[index].element.html();
     this.labels[index].element.html(value);
     return [index, oldval];
   });
-  Circular.prototype.highlight = function(index){
-    this.path[index]._setattrs({"fill" : "yellow", "opacity" : "0.5"});
-  }
-  Circular.prototype.unhighlight = function(index){
-    this.path[index]._setattrs({"fill" : "none", "opacity" : "1.0"});
-  }
-  Circular.prototype.pointer = function(name, index){
+  Circular.prototype.highlight = function (index) {
+    this.path[index]._setattrs({"fill": "yellow", "opacity": "0.5"});
+  };
+  Circular.prototype.unhighlight = function (index) {
+    this.path[index]._setattrs({"fill": "none", "opacity": "1.0"});
+  };
+  Circular.prototype.pointer = function (name, index) {
     var degree = 15 + 30 * index;
-    var left = cos(degree)*((this.r2 - this.r1)/2*1.8);
-    var top = sin(degree)*((this.r2 - this.r1)/2*1.8);
-    var fx, fy; 
-    var tx = this.r2*cos(degree) + this.cx;
-    var ty = this.r2*sin(degree) + this.cy;
-    left = tx + 32 * cos(degree + 15) -20;
-    if(degree + 15 < 180){
+    var left = cos(degree) * ((this.r2 - this.r1) / 2 * 1.8);
+    var top = sin(degree) * ((this.r2 - this.r1) / 2 * 1.8);
+    var fx, fy;
+    var tx = this.r2 * cos(degree) + this.cx;
+    var ty = this.r2 * sin(degree) + this.cy;
+    left = tx + 32 * cos(degree + 15) - 20;
+    if (degree + 15 < 180) {
       top = ty + 32 * sin(degree + 15);
-    }else{
+    } else {
       top = ty + 32 * sin(degree + 15) - 22;
     }
     var pointer = {};
-    pointer.label = this.jsav.label(name,{relativeTo: this.labels[index], anchor: "center",
-                            myAnchor: "center",
-                            left: 0,
-                            top: 0, width : 40});
+    pointer.label = this.jsav.label(name,
+      {relativeTo: this.labels[index], anchor: "center",
+       myAnchor: "center", left: 0, top: 0, width : 40});
     pointer.label.element.css({left : left, top : top});
     //this.value(index, tx.toFixed() + "," + ty.toFixed());
-    fx = pointer.label.element.position().left + pointer.label.element.outerWidth()/2;
-    if(degree + 15 < 180){
+    fx = pointer.label.element.position().left +
+         pointer.label.element.outerWidth() / 2;
+    if (degree + 15 < 180) {
       fy = pointer.label.element.position().top;
-    }else{
+    } else {
       fy = pointer.label.element.position().top + pointer.label.element.outerHeight();
     }
-    pointer.arrow = this.jsav.g.line(fx, fy, tx, ty, {"stroke-width" : 2, "arrow-end":"classic-wide-long"});
+    pointer.arrow = this.jsav.g.line(fx, fy, tx, ty, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
     return pointer;
-  }
+  };
 
-  JSAV.ext.circular = function(cx, cy, r1, r2, options) {
+  JSAV.ext.circular = function (cx, cy, r1, r2, options) {
     return new Circular(this, cx, cy, r1, r2, $.extend({}, options));
-  }; 
+  };
 }(jQuery));
 
 // Array-based circular queue
-(function($){
+(function ($) {
   var jsav = new JSAV("AQueueCircularCON");
 
   // center coordinate
-  var cx = 400, cy = 130; 
+  var cx = 400, cy = 130;
   // radius
   var r1 = 50, r2 = 100;
   var fx = cx, fy = cy - r2 - 15;
   var tx = cx + r2 + 15, ty = cy;
   var fx1 = fx + 70, ty2 = ty - 70;
   var path = "M" + fx + "," + fy;
-      path += " C" + fx1 + "," + fy;
-      path += " " + tx + "," + ty2;
-      path += " " + tx + "," + ty;
+  path += " C" + fx1 + "," + fy;
+  path += " " + tx + "," + ty2;
+  path += " " + tx + "," + ty;
   var curve = jsav.g.path(path, {"stroke-width" : 2, "arrow-end" : "classic-wide-long"});
   var cir = jsav.circular(cx, cy, r1, r2, {"stroke-width" : 2});
   curve.hide();
@@ -351,11 +359,11 @@ jQuery.fn.rotate = function(degrees) {
 }(jQuery));
 
 // How to recognize when the queue is empty or full.
-(function($){
+(function ($) {
   var jsav = new JSAV("AQueueEmptyFullCON");
 
   // center coordinate
-  var cx = 400, cy = 120; 
+  var cx = 400, cy = 120;
   // radius
   var r1 = 50, r2 = 100;
   var cir = jsav.circular(cx, cy, r1, r2, {"stroke-width" : 2});
@@ -385,7 +393,7 @@ jQuery.fn.rotate = function(degrees) {
   cir.highlight(11);
   cir.highlight(0);
   jsav.step();
-  jsav.umsg("But this means that the value for rear is one less than the value for front when the circular nature of the queue is taken into account. In other words, the full queue is indistinguishable from the empty queue!")
+  jsav.umsg("But this means that the value for rear is one less than the value for front when the circular nature of the queue is taken into account. In other words, the full queue is indistinguishable from the empty queue!");
   jsav.step();
   jsav.umsg("You might think that the problem is in the assumption about front and rear being defined to store the array indices of the front and rear elements, respectively, and that some modification in this definition will allow a solution. ");
   jsav.step();
@@ -397,7 +405,7 @@ jQuery.fn.rotate = function(degrees) {
 }(jQuery));
 
 // Show the AQueue code.
-(function($){
+(function ($) {
   var jsav = new JSAV("AQueueVarCON");
   var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/AQueue.pde",
                        lineNumbers: false,
@@ -413,7 +421,7 @@ jQuery.fn.rotate = function(degrees) {
   pseudo.unhighlight(8);
   pseudo.highlight(9);
   jsav.umsg("The array as created is actually large enough to hold one element more than the queue will allow, so that empty queues can be distinguished from full queues.");
-  jsav.step(); 
+  jsav.step();
   pseudo.unhighlight(9);
   pseudo.highlight(2);
   jsav.umsg("Member <code>maxSize</code> is used to control the circular motion of the queue (it is the base for the modulus operator).");
@@ -425,7 +433,7 @@ jQuery.fn.rotate = function(degrees) {
 }(jQuery));
 
 // List Queue Introduction.
-(function($){
+(function ($) {
   var jsav = new JSAV("LQueueIntroCON");
   var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LQueue.pde",
                        lineNumbers: false,
@@ -452,8 +460,8 @@ jQuery.fn.rotate = function(degrees) {
   pseudo.unhighlight(3);
 
   jsav.umsg("On initialization, the front and rear pointers will point to the header node.");
-  frontP.target(list.get(0),{left : -10});
-  rearP.target(list.get(0),{left: 30});
+  frontP.target(list.get(0), {left : -10});
+  rearP.target(list.get(0), {left: 30});
   list.get(0).edgeToNext().hide();
   list.get(1).edgeToNext().hide();
   list.get(2).edgeToNext().hide();
@@ -471,7 +479,7 @@ jQuery.fn.rotate = function(degrees) {
   list.get(2).show();
   list.get(3).show();
   list.get(3).highlight();
-  rearP.target(list.get(3),{left: -10});
+  rearP.target(list.get(3), {left: -10});
   pseudo.unhighlight(12);
   pseudo.highlight(2);
   pseudo.highlight(3);
@@ -480,7 +488,7 @@ jQuery.fn.rotate = function(degrees) {
 }(jQuery));
 
 // List Queue enqueue method.
-(function($){
+(function ($) {
   var jsav = new JSAV("LQueueEnqueueCON");
   var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LQueue.pde",
                        lineNumbers: false,
@@ -488,7 +496,7 @@ jQuery.fn.rotate = function(degrees) {
                        endBefore: "/* *** ODSAendTag: LQueueEnqueue *** */"});
   var leftMargin = 10;
   var topMargin = 40;
-  var list = jsav.ds.list({nodegap:30, left:leftMargin, top:topMargin});
+  var list = jsav.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
   list.addFirst(30)
       .addFirst(21)
       .addFirst(3)
@@ -508,7 +516,7 @@ jQuery.fn.rotate = function(degrees) {
 
   jsav.umsg("The next field of the <code>rear</code> node is assigned to point to the new node.");
   list.get(3).next(newNode);
-  list.layout({updateTop:false});
+  list.layout({updateTop: false});
   jsav.step();
 
   jsav.umsg("Advances <code>rear</code> to point to the new link node.");
@@ -527,7 +535,7 @@ jQuery.fn.rotate = function(degrees) {
 }(jQuery));
 
 // List Queue dequeue method.
-(function($){
+(function ($) {
   var jsav = new JSAV("LQueueDequeueCON");
   var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LQueue.pde",
                        lineNumbers: false,
@@ -535,9 +543,9 @@ jQuery.fn.rotate = function(degrees) {
                        endBefore: "/* *** ODSAendTag: LQueueDequeue *** */"});
   var leftMargin = 10;
   var topMargin = 50;
-  var labelIt = jsav.label("it",{left:leftMargin - 5, top:topMargin + 70}).hide();
-  var arrIt = jsav.ds.array([" "], {left:leftMargin + 30, top:topMargin + 50}).hide();
-  var list = jsav.ds.list({nodegap:30, left:leftMargin, top:topMargin});
+  var labelIt = jsav.label("it", {left: leftMargin - 5, top: topMargin + 70}).hide();
+  var arrIt = jsav.ds.array([" "], {left: leftMargin + 30, top: topMargin + 50}).hide();
+  var list = jsav.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
   list.addFirst(30)
       .addFirst(21)
       .addFirst(3)
