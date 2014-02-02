@@ -12,7 +12,7 @@ Solving Recurrence Relations
 
 Recurrence relations are often used to model the cost of recursive
 functions.
-For example, the standard Mergesort\index{mergesort@Mergesort}
+For example, the standard Mergesort
 (Section~\ref{MergeSort}) takes a
 list of size~\(n\), splits it in half, performs Mergesort on each half,
 and finally merges the two sublists in \(n\)~steps.
