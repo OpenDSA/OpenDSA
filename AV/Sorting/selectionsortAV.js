@@ -118,7 +118,8 @@
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#ssperform').submit(function(evt) { // pressing return in 'Your values:' box -> runIt
+  $('#ssperform').submit(function (evt) {
+    // pressing return in 'Your values:' box -> runIt
     evt.stopPropagation();
     evt.preventDefault();
     runIt();
