@@ -1,8 +1,8 @@
-.jsavcanvas {
+#seqFitCON .jsavcanvas {
  margin-left: auto;
  margin-right: auto;
- height: 100px;
- width: 470px;
+ height: 105px;
+ width: 500px;
 }
 
 svg{
