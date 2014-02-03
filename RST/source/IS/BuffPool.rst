@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: File Processing
 
-.. odsalink:: RST/source/IS/BuffPoolTestCON.css      
+.. odsalink:: AV/Development/BuffPoolTestCON.css      
 
 Buffer Pools
 ============
@@ -275,11 +275,17 @@ modifying the program.
    currently in main memory must be replaced.
 
 .. inlineav:: TestCON ss
-   :long_name: Testing
-   :points: 0.0
-   :required: True
-   :threshold: 1.0
-   :output: show
+   :align: center
+
+   An illustration of virtual memory.
+   The complete collection of information resides in the slower, secondary
+   storage (on disk).
+   Those sectors recently accessed are held in the fast main memory
+   (in RAM).
+   In this example, copies of Sectors 1, 7, 5, 3, and 8 from
+   secondary storage are currently stored in the main memory.
+   If a memory access to Sector 9 is received, one of the sectors
+   currently in main memory must be replaced.
 
 When implementing buffer pools, there are two basic approaches that can 
 be taken regarding the transfer of information between the user of the 
@@ -473,4 +479,4 @@ This is in contrast to the memory manager described in
 Module :numref:`<MemmanIntro>` in which the user passes a record to
 the manager and has no control at all over where the record is stored.
 
-.. odsascript:: RST/source/IS/BuffPoolTestCON.js  
+.. odsascript:: AV/Development/BuffPoolTestCON.js

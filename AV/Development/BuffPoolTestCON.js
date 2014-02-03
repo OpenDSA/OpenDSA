@@ -25,5 +25,6 @@
   
   jsav.step();
   buffer_pool.value(0, 6);
+  jsav.recorded();
 
 }(jQuery));
