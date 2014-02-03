@@ -47,8 +47,8 @@
   var bst = jsav.ds.bintree({left: "5%", nodegap: 20});
   var bbst = jsav.ds.bintree({left: "58%", nodegap: 20});
   // Add labels
-  jsav.label("(a)", {visible: true, left: "5%", top: "0%"});
-  jsav.label("(b)", {visible: true, left: "53%", top: "0%"});
+  jsav.label("(a)", {visible: true, left: "95px", top: "100px"});
+  jsav.label("(b)", {visible: true, left: "295px", top: "100px"});
 
   // Add nodes for the BST.
   bst.root("5");

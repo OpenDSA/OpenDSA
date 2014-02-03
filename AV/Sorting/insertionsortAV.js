@@ -48,8 +48,8 @@
       for (j = i; (j > 0) && (arr.value(j) < arr.value(j - 1)); j--) {
         setProcessing(j);
         arr.swap(j, j - 1); // swap the two indices
-        arr.highlight(j).unhighlight(j-1); // set highlights correctly
-        setProcessing(j-1);
+        arr.highlight(j).unhighlight(j - 1); // set highlights correctly
+        setProcessing(j - 1);
         jsav.umsg("Swap");
         pseudo.setCurrentLine(3);
         jsav.step();
@@ -86,7 +86,7 @@
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#ssperform').submit(function(evt) {
+  $('#ssperform').submit(function (evt) {
     evt.stopPropagation();
     evt.preventDefault();
     runIt();

@@ -25,7 +25,7 @@ a series of memory allocations and deallocations.
 .. _MemMode:
 
 .. inlineav:: freelistCON dgm
-   :align: center
+   :align: justify
    
    The results from a series of memory allocations and
    deallocations.

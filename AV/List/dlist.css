@@ -1,7 +1,7 @@
 .jsavleftpointerarea {
   border-right: 1px solid black;
   position: absolute;
-  left: 0px;
+  left: 0;
   top: 0;
   width: 10px;
   height: 100%;
@@ -10,7 +10,7 @@
 .jsavrightpointerarea {
   border-left: 1px solid black;
   position: absolute;
-  right: 0px;
+  right: 0;
   top: 0;
   width: 10px;
   height: 100%;
@@ -21,5 +21,5 @@
   min-height: 30px; 
   max-height: 45px;
   line-height: 30px;
-  padding-right: 0px;
+  padding-right: 0;
 }

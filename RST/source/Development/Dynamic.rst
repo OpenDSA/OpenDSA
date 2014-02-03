@@ -25,7 +25,7 @@ a series of memory allocations and deallocations.
 .. _MemMode:
 
 .. inlineav:: freelistCON dgm
-   :align: center
+   :align: justify
    
    The results from a series of memory allocations and
    deallocations.
@@ -71,12 +71,8 @@ information.
 
 .. _CompFrag:
 
-.. odsafig:: Images/CompFrag.png
-   :width: 400
+.. inlineav:: fragCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Examples of internal and external fragmentation
 
    An illustration of internal and external fragmentation.
 

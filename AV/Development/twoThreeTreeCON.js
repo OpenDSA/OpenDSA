@@ -18,16 +18,16 @@
 
 	// Create lines that connect all the nodes.
 	var properties = {"stroke-width": 1.5};
-	jsav.g.line(243, 18, 63, 80, properties);
-	jsav.g.line(264, 21, 264, 80, properties);
-	jsav.g.line(286, 18, 458, 80, properties);
-	jsav.g.line(44, 100, 24, 160, properties);
-	jsav.g.line(64, 101, 104, 160, properties);
-	jsav.g.line(244, 100, 184, 160, properties);
-	jsav.g.line(264, 101, 264, 160, properties);
-	jsav.g.line(284, 100, 344, 160, properties);
-	jsav.g.line(437, 100, 424, 160, properties);
-	jsav.g.line(458, 101, 504, 160, properties);
+	jsav.g.line(243, 28, 73, 81, properties);
+	jsav.g.line(274, 31, 274, 80, properties);
+	jsav.g.line(306, 28, 469, 81, properties);
+	jsav.g.line(44, 110, 24, 160, properties);
+	jsav.g.line(74, 111, 114, 160, properties);
+	jsav.g.line(244, 110, 194, 160, properties);
+	jsav.g.line(274, 111, 274, 160, properties);
+	jsav.g.line(304, 110, 354, 160, properties);
+	jsav.g.line(437, 110, 434, 160, properties);
+	jsav.g.line(468, 111, 514, 160, properties);
 
 }(jQuery));
 

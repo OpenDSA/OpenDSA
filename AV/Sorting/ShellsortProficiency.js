@@ -200,12 +200,10 @@
     // function that will be called by the exercise if continuous feedback mode
     // is used and the fix errors mode is on.
     function fixState(modelState) {
-console.log("FIXSTATE");
       var modelArray = modelState[0],
           size = modelArray.size(),
           modelMode = modelState[1];
       for (var i = 0; i < size; i++) {
-console.log("Element " + i);
         var val = modelArray.value(i),
             hl = modelArray.isHighlight(i);
         if (theArray.isHighlight(i) !== hl) { // fix highlights
@@ -219,15 +217,12 @@ console.log("Element " + i);
       // every gradable step changes the mode, so we can use it to deduce the
       // action we should take. this will set the state of the exercise correctly
       if (modelModeVal === "SORTING") {
-console.log("modelModeVal is SORTING");
         // if the mode in model answer is sorting, we should call selecting
         // since after selecting(), the mode will be sorting
         selecting();
       } else if (modelModeVal === "SELECTING") {
-console.log("modelModeVal is SELECTING");
         sorting();
       } else if (modelModeVal === "FIRSTSELECTING") {
-console.log("modelModeVal is FIRSTSELECTING");
         incrementing();
       }
     }

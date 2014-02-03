@@ -223,7 +223,7 @@
   // Connect action callbacks to the HTML entities
   $('#about').click(about);
   $('#run').click(runIt);
-  $('#ssperform').submit(function(evt) {
+  $('#ssperform').submit(function (evt) {
     evt.stopPropagation();
     evt.preventDefault();
     runIt();
