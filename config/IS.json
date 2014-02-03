@@ -38,7 +38,13 @@
       "Bibliography": {
         "long_name": "Bibliography",
         "exercises": {}
-      }
+      },
+      "Test Chapter 1": {
+	"/Development/test_rich_episcopo.rst": {
+	"long_name": "This is a test",
+	"exercises": {}
+      }      
+    }
     }
   }
 }
