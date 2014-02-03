@@ -54,7 +54,7 @@
   border: 1px solid;
   border-color: white;
   position: relative;
-  top: 0px;
+  top: 0;
   left: 170px;
   width: 500px;
 }
@@ -86,7 +86,7 @@
   border: 1px solid;
   border-color: white;  
   position: relative;
-  top: 0px;
+  top: 0;
   left: 190px;
   width: 450px;
 }

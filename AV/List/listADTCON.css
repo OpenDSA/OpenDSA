@@ -2,23 +2,23 @@
   height: 200px;
 }
 #listADTCON1 .jsavnode{
-  border: 0px;
+  border: 0;
   background-color: #eed;
   line-height: 60px;
   font-size: 20px;
   min-width: 65px;
-  box-shadow:0px 0px 0px;
+  box-shadow: 0 0 0;
 }
 #listADTCON2 { 
   height: 200px;
 }
 #listADTCON2 .jsavnode{
-  border: 0px solid;
+  border: 0 solid;
   background-color: #eed;
   line-height: 50px;
   font-size: 20px;
   min-width: 40px;
-  box-shadow:0px 0px 0px;
+  box-shadow: 0 0 0;
 }
 
 
