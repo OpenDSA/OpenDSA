@@ -207,7 +207,7 @@ therefore is reliable within the proof context.
 Using the induction hypothesis it do work is exactly the same as using
 a recursive call to do work.
 
-.. :SumIEx_
+.. _SumIEx:
 
 .. topic:: Example
 
@@ -263,7 +263,7 @@ From here, it is simple algebra to prove that
 :math:`\mathbf{S}(n-1) + n` equals the 
 right-hand side of the original theorem.
 
-.. :nOdds_
+.. _nOdds:
 
 .. topic:: Example
 

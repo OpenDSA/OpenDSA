@@ -27,11 +27,11 @@
         "long_name": "Summation Techniques",
         "exercises": {}
       },
-      "Stubs/Recurrence": {
+      "Development/Recurrence": {
         "long_name": "Solving Recurrence Relations",
         "exercises": {}
       },
-      "Stubs/AmortAnal": {
+      "Development/AmortAnal": {
         "long_name": "Amortized Analysis",
         "exercises": {}
       }
