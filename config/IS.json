@@ -18,7 +18,11 @@
         "exercises": {}
       },
       "IS/Dynamic": {
-        "long_name": "Bintree",
+        "long_name": "Dynamic",
+        "exercises": {}
+      },
+      "IS/SequentialFit": {
+        "long_name": "Sequential Fit",
         "exercises": {}
       },
       "IS/TwoThreeTree.rst": {
