@@ -44,8 +44,8 @@
   // Intialize JSAV object.
   var jsav = new JSAV("balanceBSTCON", {"animationMode": "none"});
   // Initialize BST and the balanced BST object.
-  var bst = jsav.ds.bintree({left: "5%", nodegap: 20});
-  var bbst = jsav.ds.bintree({left: "58%", nodegap: 20});
+  var bst = jsav.ds.bintree({left: "10px", nodegap: 20});
+  var bbst = jsav.ds.bintree({left: "220px", nodegap: 20});
   // Add labels
   jsav.label("(a)", {visible: true, left: "95px", top: "100px"});
   jsav.label("(b)", {visible: true, left: "295px", top: "100px"});
