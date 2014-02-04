@@ -262,7 +262,7 @@ fragmentation.
 .. _Layout:
 
 .. inlineav:: disk dgm
-   :align: justify
+   :align: center
 
    An illustration of sector gaps within a track.
    Each sector begins with a sector header containing the sector address
