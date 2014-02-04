@@ -28,6 +28,10 @@
        "IS/BuffPool": {
         "long_name": "Buffer Pool",
         "exercises": {}
+      },
+      "IS/Diskdrive": {
+	"long_name": "Disk Drive",
+	"exercises": {}
       }
     },
     "Appendix": {
