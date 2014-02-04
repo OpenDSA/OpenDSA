@@ -32,6 +32,18 @@
        "IS/BuffPool": {
         "long_name": "Buffer Pool",
         "exercises": {}
+      },
+      "IS/Diskdrive": {
+	     "long_name": "Disk Drive",
+	     "exercises": {}
+      },
+       "IS/HuffProof.rst": {
+        "long_name": "Huffman Coding Trees",
+        "exercises": {}
+      },
+      "IS/SetSearch": {
+        "long_name": "Set Search",
+        "exercises": {}
       }
     },
     "Appendix": {

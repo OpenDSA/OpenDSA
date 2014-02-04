@@ -1,12 +1,15 @@
 "use strict";
 
 (function ($) {
-  var av = new JSAV("sectorCON", {"animationMode": "none"});
+  var av = new JSAV("disk", {"animationMode": "none"});
 
   av.g.rect(0, 25, 75, 50);
   av.g.rect(100, 25, 100, 50);
   av.g.rect(250, 25, 75, 50);
   av.g.rect(350, 25, 100, 50);
+
+
+  
   av.label("Sector", {"top": "30px", "left": "10px"});
   av.label("Header", {"top": "45px", "left": "10px"});
   av.label("Sector", {"top": "30px", "left": "260px"});
@@ -23,8 +26,9 @@
   av.g.line(87,  80,  87, 50, {'arrow-end': 'classic-wide-long', 'stroke-width' : 2});
   av.g.line(225,  20,  225, 50, {'arrow-end': 'classic-wide-long', 'stroke-width' : 2});
 
-//  av.label("(b)",  {"top": "140px", "left": "392px"});
-
-
 
 }(jQuery));
+
+
+
+
