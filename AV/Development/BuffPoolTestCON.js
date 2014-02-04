@@ -9,9 +9,11 @@
   var buffer_pool = jsav.ds.array(["", "", "", "", ""], {layout: "vertical", left: 600, top: 40});
   jsav.label("Secondary Storage (On Disk)", {left: 120, top: 475});
   jsav.label("Main Memory (in RAM)", {left: 550, top: 300});
+  jsav.umsg("Using LRU replacement scheme. The following series of memory request occurs.\n9 0 1 7 6 6");
   jsav.displayInit();
 
   jsav.step();
+  jsav.umsg("As with the array-based list implementation, listArray must be declared of fixed size when the stack is created. ");
   buffer_pool.value(4, 9);
   
   jsav.step();
