@@ -8,8 +8,8 @@
    :prerequisites:
    :topic:
 
-Dynamic Programming [Text]
-==========================
+Dynamic Programming
+===================
 
 Computing Fibonnaci Numbers
 ---------------------------
