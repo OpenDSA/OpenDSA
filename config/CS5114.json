@@ -1128,6 +1128,26 @@
         }
       }
     },
+    "Advanced Analysis": {
+      "Development/AdvSumm": {
+        "long_name": "Summation Techniques",
+        "exercises": {}
+      },
+      "Development/Recurrence": {
+        "long_name": "Solving Recurrence Relations",
+        "exercises": {}
+      },
+      "Development/AmortAnal": {
+        "long_name": "Amortized Analysis",
+        "exercises": {}
+      }
+    },
+    "Algorithms": {
+      "Development/DynamicProgramming": {
+        "long_name": "Dynamic Programming",
+        "exercises": {}
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
