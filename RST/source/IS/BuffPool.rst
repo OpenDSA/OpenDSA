@@ -234,6 +234,10 @@ modifying the program.
    Processing the remaining requests results in the buffer pool as shown
    in Figure :num:`Figure #VirtMem`.
 
+.. inlineav:: TestCON ss
+   :align: center
+   :output: show
+
 .. topic:: Example
 
    Figure :num:`Figure #VirtMem` illustrates a buffer pool of five blocks 
@@ -273,9 +277,6 @@ modifying the program.
    secondary storage are currently stored in the main memory.
    If a memory access to Sector 9 is received, one of the sectors
    currently in main memory must be replaced.
-
-.. inlineav:: TestCON ss
-   :align: center
 
 When implementing buffer pools, there are two basic approaches that can 
 be taken regarding the transfer of information between the user of the 
