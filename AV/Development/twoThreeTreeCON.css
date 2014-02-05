@@ -49,11 +49,6 @@
 	margin-left: 70px;
 }
 
-/* Reset margin for the JSAV slideshow controls (They had a -35px top margin for some reason) */
-#simpleInsertCON .jsavcontrols {
-	margin-top: 0px;
-}
-
 /* Align and give a little padding to the output messages of each slide */
 #simpleInsertCON .jsavoutput {
 	padding-top: 20px;
