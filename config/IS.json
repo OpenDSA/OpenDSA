@@ -18,7 +18,11 @@
         "exercises": {}
       },
       "IS/Dynamic": {
-        "long_name": "Bintree",
+        "long_name": "Dynamic",
+        "exercises": {}
+      },
+      "IS/SequentialFit": {
+        "long_name": "Sequential Fit",
         "exercises": {}
       },
       "IS/TwoThreeTree.rst": {
@@ -32,6 +36,18 @@
       },
        "IS/BuffPool": {
         "long_name": "Buffer Pool",
+        "exercises": {}
+      },
+      "IS/Diskdrive": {
+	     "long_name": "Disk Drive",
+	     "exercises": {}
+      },
+       "IS/HuffProof.rst": {
+        "long_name": "Huffman Coding Trees",
+        "exercises": {}
+      },
+      "IS/SetSearch": {
+        "long_name": "Set Search",
         "exercises": {}
       }
     },

@@ -277,16 +277,6 @@ modifying the program.
 .. inlineav:: TestCON ss
    :align: center
 
-   An illustration of virtual memory.
-   The complete collection of information resides in the slower, secondary
-   storage (on disk).
-   Those sectors recently accessed are held in the fast main memory
-   (in RAM).
-   In this example, copies of Sectors 1, 7, 5, 3, and 8 from
-   secondary storage are currently stored in the main memory.
-   If a memory access to Sector 9 is received, one of the sectors
-   currently in main memory must be replaced.
-
 When implementing buffer pools, there are two basic approaches that can 
 be taken regarding the transfer of information between the user of the 
 buffer pool and the buffer pool class itself.

@@ -1,8 +1,8 @@
-#seqFitCON .jsavcanvas {
+#bitArray .jsavcanvas{
  margin-left: auto;
  margin-right: auto;
- height: 105px;
- width: 500px;
+ height: 75px;
+ width: 800px;
 }
 
 svg{
