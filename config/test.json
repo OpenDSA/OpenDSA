@@ -13,26 +13,16 @@
   },
   "chapters": {
     "Background": {
-      "Background/Summations": {
-        "long_name": "Background Summation",
+      "List/Freelist": {
+        "long_name": "Freelists",
         "exercises": {}
       },
-      "Background/Proofs": {
-        "long_name": "Background Proofs",
-        "exercises": {}
-      }
-    },
-    "Advanced Analysis": {
-      "Development/AdvSumm": {
-        "long_name": "Summation Techniques",
+      "List/StackArray": {
+        "long_name": "Array Stacks",
         "exercises": {}
       },
-      "Development/Recurrence": {
-        "long_name": "Solving Recurrence Relations",
-        "exercises": {}
-      },
-      "Development/AmortAnal": {
-        "long_name": "Amortized Analysis",
+      "List/StackLinked": {
+        "long_name": "Linked Stacks",
         "exercises": {}
       }
     },
