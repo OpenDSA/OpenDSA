@@ -1,0 +1,26 @@
+/* Styling for the twoThreeTreeCON diagram ***********************************/
+
+/* Sets maximum width to JSAV container */
+#SortedsearchCON1 {
+	padding-top: 35px;
+
+}
+
+/* Sets width and height to the JSAV canvas */
+
+
+.jsavindex.jsavarrow.leftarrow::before {
+  left: 7px;
+  border-color: blue transparent transparent;
+}
+
+.jsavindex.jsavarrow.rightarrow::before {
+  left: 27px;
+  border-color: red transparent transparent;
+}
+
+.jsavindex.jsavarrow.leftrightarrow::before {
+  border-color: #CC00FF transparent transparent;
+}
+
+
