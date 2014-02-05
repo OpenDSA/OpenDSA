@@ -9,6 +9,7 @@
    :satisfies: Huffman proof
    :topic: Huffman Coding Trees
 
+.. odsalink:: AV/Development/HuffProofCON.css
 
 Proof of Optimality for Huffman Coding
 ======================================
@@ -50,7 +51,9 @@ However, this is impossible because :math:`l_1` and
 
 .. _HProof:
 
-.. inlineav:: InvalidTree ss
+.. inlineav:: InvalidTree dgm 
+   :output: show
+   :align: center
 
    An impossible Huffman tree, showing the situation where the two
    nodes with least weight, :math:`l_1` and
