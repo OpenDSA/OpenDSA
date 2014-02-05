@@ -14,7 +14,7 @@ function runit() {
   jsav = new JSAV($('.avcontainer'));
   g = jsav.ds.graph({width: 500, height: 500, layout: "manual", directed: true});
   arr = jsav.ds.array([" "," "," ", " ", " "],{layout: "vertical"});
-  arr.css({"left": "600px", "bottom": "500px", "width": "30px"}); 
+  arr.css({"left": "300px", "bottom": "500px", "width": "30px"}); 
   size = 4;
   initGraph();
   g.layout();
