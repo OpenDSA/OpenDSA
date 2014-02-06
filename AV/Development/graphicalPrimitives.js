@@ -2,19 +2,18 @@
 /*global alert: true, ODSA, console */
 
 (function ($) {
-  var jsav;
+  var av;
   var rect;
   function runit() {
-    // jsav = new JSAV($('avcontainer'));
-    // rect = jsav.g.rect(70, 60, 50, 40);
-    // rect.show();
-    // jsav.displayInit();
-    // jsav.recorded();
-
-    var av = new JSAV($(".avcontainer"));
-
+  
+    av = new JSAV($(".avcontainer"));
     rect = av.g.rect(0, 120, 245, 10);
-    console.log(rect.isVisible());
+	
+	av.displayInit();
+	rect.translate(50,50);
+	av.step();
+	rect.translate(-50,-50);
+	
     av.g.rect(40, 30, 5, 90);
     av.g.rect(120, 30, 5, 90);
     av.g.rect(200, 30, 5, 90);
@@ -46,7 +45,6 @@
 
     av.label("(a)",  {"top": "140px", "left": "113px"});
     av.label("(b)",  {"top": "140px", "left": "392px"});
-    av.displayInit();
     av.recorded();
   }
 
