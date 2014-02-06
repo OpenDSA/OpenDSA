@@ -35,7 +35,7 @@ Currently not in use, will be replaced at some point.
 
 JSAV: The JavaScript Algorithm Visualization library (JSAV). This is a submodule
 for the OpenDSA repository, linked to: https://github.com/vkaravir/JSAV. Thus,
-when you check out OpenDSA, you must get the JSAV submodule by doing the following:
+when you check out OpenDSA, you must get the JSAV submodule by either running the command "make pull" or by doing the following:
   git submodule init
   git submodule update
 
@@ -53,8 +53,8 @@ be removed.
 ODSAkhan-exercises: Our somewhat modified version of the khan-exercises
 distribution (the original is also available at GitHub). Note that you can view
 and run the exercises with just this distribution. However, you must be running
-a webserver on the machine from which you access the exercises. So most people using their own personal computer won't
-see the exercises, it will either be a blank page or some gibberish. You can always see the exercises within their
+a webserver on the machine from which you access the exercises. So most people
+using their own personal computer won't see the exercises, it will either be a blank page or some gibberish. You can always see the exercises within their
 proper context from our mirror site at:
 http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises.
 
@@ -66,8 +66,8 @@ README.txt: This file
 RST: The source for tutorial content, in reStructuredText (RST) format.
 
 SourceCode: The sourcecode for code snippits contained in the tutorials.
-Ultimately, we hope to support code snippits in Processing (a Java dialect), Python, and JavaScript. In this way, instructors would be able to generate versions of
-tutorials that support any of these three languages.
+Ultimately, we hope to support code snippits in Processing (a Java dialect),
+Python, and JavaScript. In this way, instructors would be able to generate versions of tutorials that support any of these three languages.
 
 **Storyboard: Materials related to "storyboarding" designs for tutorials. This
 concept never gained much traction, and this might be removed at some point.
