@@ -29,6 +29,7 @@
 	var stateCount = 0;
 	var stateCountTwo = 0;
 	var insideCanvas = false;
+	var canvasOffset = $("div.jsavcanvas").offset();
 	
 // Struct type container to hold id and x,y position of nodes   
 function node(id, x, y) {   
@@ -209,9 +210,9 @@ function inside(x, y){
 
 jQuery(document).ready(function(){$('.jsavgraph').click(function(e)
 {
- 
-var x = e.pageX - 50;       //x click coordinate 150
-var y = e.pageY - 220; 		// y click coordinate   190
+
+var x = e.pageX - canvasOffset.left - 22;       //x click coordinate 150
+var y = e.pageY - canvasOffset.top - 22; 		// y click coordinate   190
 inside(x, y);
 console.log('x ' + x);
  console.log('y ' + y);
