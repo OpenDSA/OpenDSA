@@ -57,7 +57,8 @@ distribution (the original is also available at GitHub). Note that you can view
 and run the exercises with just this distribution. However, you must be running
 a webserver on the machine from which you access the exercises. So most people
 using their own personal computer won't see the exercises, it will either be a
-blank page or some gibberish. You can always see the exercises within their proper context from our mirror site at:
+blank page or some gibberish. You can always see the exercises within their
+proper context from our mirror site at:
 http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises.
 
 QBank: A question bank system under development. This is a submodule maintained
