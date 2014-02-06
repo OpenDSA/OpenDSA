@@ -120,3 +120,4 @@ leads to the B-tree of Module :numref:`<BTree>`, which is by far the
 most widely used indexing method today.
 
 .. odsascript:: AV/Development/treeIndexingCON.js
+.. odsascript:: AV/Development/balanceBSTCON.js

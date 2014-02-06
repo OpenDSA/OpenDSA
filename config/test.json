@@ -13,16 +13,24 @@
   },
   "chapters": {
     "Background": {
-      "List/Freelist": {
-        "long_name": "Freelists",
+      "Development/TreeIndexing": {
+        "long_name": "TreeIndexing",
         "exercises": {}
       },
-      "List/StackArray": {
-        "long_name": "Array Stacks",
+      "Development/BalancedTree": {
+        "long_name": "Balanced Trees",
         "exercises": {}
       },
-      "List/StackLinked": {
-        "long_name": "Linked Stacks",
+      "Development/AVL": {
+        "long_name": "The AVL Tree",
+        "exercises": {}
+      },
+      "Development/Splay": {
+        "long_name": "The Splay Tree",
+        "exercises": {}
+      },
+      "Development/RedBlack": {
+        "long_name": "The Red-Black Tree",
         "exercises": {}
       }
     },
