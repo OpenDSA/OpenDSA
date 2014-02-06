@@ -14,7 +14,8 @@ compile some of the libraries. Do the following:
   make pull
 
 System documentation is found in the "Doc" directory. One consequence of doing
-"make pull" is to compile this documentation. You can also view it at our mirror site: http://algoviz.org/OpenDSA/Doc/manual/
+"make pull" is to compile this documentation. You can also view it at our mirror
+site: http://algoviz.org/OpenDSA/Doc/manual/
 
 The major components in the directory structure is as follows:
 
