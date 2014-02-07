@@ -117,8 +117,8 @@ Figure :num:`Figure #Poset`.
 
 .. _Poset:
 
-.. odsafig:: Images/Handle.png
-   :width: 500
+.. odsafig:: Images/Poset.png
+   :width: 200
    :align: center
    :capalign: justify
    :figwidth: 90%
@@ -166,7 +166,7 @@ Clearly no, but why not?
 Because we have additional information to work with that we do not
 have when the list is unsorted.
 We know that the standard binary search algorithm has a worst case cost
-of :math:`O(\log n).
+of :math:`O(\log n)`.
 Can we do better than this?
 We can prove that this is the best possible in the worst case with a
 proof similar to that used to show the lower bound on sorting.
