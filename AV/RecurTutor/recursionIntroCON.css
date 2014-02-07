@@ -1,0 +1,27 @@
+.jsavlabel { 
+width: 100px;
+height: 100px;
+color: blue;
+background-image: url(Icons/person.png);
+background-size: cover;
+}
+
+.jsavlabel.forward {
+background-image: url(Icons/person2.png);
+}	
+
+
+.jsavcanvas {
+ margin-left: auto;
+ margin-right: auto;
+ height: 300px;
+ width: 540px;
+}
+
+#pseudo2style{
+margin-left: 0;
+margin-top: 0;
+}
+.svg{
+  stroke-width: 1;
+}

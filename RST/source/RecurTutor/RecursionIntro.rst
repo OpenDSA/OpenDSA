@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Recursion Chapter
 
-.. odsalink:: AV/Development/recursionIntroCON.css
+.. odsalink:: AV/RecurTutor/recursionIntroCON.css
 
 
 Recursion Chapter
@@ -122,4 +122,4 @@ This process is often implemented using recursion.
 Thus, recursion plays an important role throughout this book,
 and many more examples of recursive functions will be given.
 
-.. odsascript:: AV/Development/RecursionIntroCON.js
+.. odsascript:: AV/RecurTutor/RecursionIntroCON.js

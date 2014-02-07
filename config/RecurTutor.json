@@ -1,5 +1,5 @@
 {
-  "title": "Test",
+  "title": "Recursion Tutor",
   "build_dir": "Books",
   "code_dir": "SourceCode/Processing",
   "module_origin": "http://algoviz.org",
@@ -13,7 +13,7 @@
   },
   "chapters": {
     "Recursion Chapter": {
-      "Development/RecursionIntro": {
+      "RecurTutor/RecursionIntro": {
         "long_name": "Recursion Chapter Introduction",
         "exercises": {}
       }

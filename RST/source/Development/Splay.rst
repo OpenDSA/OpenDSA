@@ -71,11 +71,9 @@ While Figure :num:`Figure #SingProm` is slightly different from
 Figure :num:`Figure #AVLsingle`, in fact the splay tree single
 rotation is identical to the AVL tree single rotation.
 
-.. _AVLsingle:
+.. _SingProm:
 
-.. SingRot.png
-
-.. odsafig:: Images/Handle.png
+.. odsafig:: Images/SingRot.png
    :width: 500
    :align: center
    :capalign: justify
@@ -119,13 +117,11 @@ It takes place when either of the following two conditions are met:
 
 In other words, a zigzag rotation is used when :math:`G`,
 :math:`P`, and :math:`S` form a zigzag.
-The zigzag rotation is illustrated by Figure :num:`Figure #Zigzag`.
+The zigzag rotation is illustrated by Figure :num:`Figure #ZigZag`.
 
 .. _ZigZag:
 
-.. ZigZag.png
-
-.. odsafig:: Images/Handle.png
+.. odsafig:: Images/ZigZag.png
    :width: 500
    :align: center
    :capalign: justify
@@ -152,16 +148,14 @@ conditions are met:
 
 Thus, a zigzig rotation takes place in those
 situations where a zigzag rotation is not appropriate.
-The zigzig rotation is illustrated by Figure :num:`Figure #Zigzig`.
-While Figure :num:`Figure #Zigzig` appears somewhat different from
+The zigzig rotation is illustrated by Figure :num:`Figure #ZigZig`.
+While Figure :num:`Figure #ZigZig` appears somewhat different from
 Figure :num:`Figure #AVLdouble`, in fact the zigzig rotation is
 identical to the AVL tree double rotation.
 
 .. _ZigZig:
 
-.. ZigZig.png
-
-.. odsafig:: Images/Handle.png
+.. odsafig:: Images/ZigZig.png
    :width: 500
    :align: center
    :capalign: justify
@@ -206,14 +200,12 @@ Proof that the splay tree meets the guarantee of
    The second is a zigzag rotation, whose result is shown in
    Figure :num:`Figure #SplayEx` (c).
    The final step is a single rotation resulting in the tree of
-   Figure :num:`Figure #SplayEx' (d).
+   Figure :num:`Figure #SplayEx` (d).
    Notice that the splaying process has made the tree shallower.
 
 .. _SplayEx:
 
-.. SplayEx.png
-
-.. odsafig:: Images/Handle.png
+.. odsafig:: Images/SplayEx.png
    :width: 500
    :align: center
    :capalign: justify
