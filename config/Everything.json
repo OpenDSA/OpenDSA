@@ -1760,6 +1760,25 @@
         }
       }
     },
+    
+    "Balanced Trees": {
+      "Development/BalancedTree": {
+        "long_name": "Balanced Trees",
+        "exercises": {}
+      },
+      "Development/AVL": {
+        "long_name": "The AVL Tree",
+        "exercises": {}
+      },
+      "Development/Splay": {
+        "long_name": "The Splay Tree",
+        "exercises": {}
+      },
+      "Development/RedBlack": {
+        "long_name": "The Red-Black Tree",
+        "exercises": {}
+      }
+    },
     "Advanced Analysis": {
       "Development/AdvSumm": {
         "long_name": "Summation Techniques",

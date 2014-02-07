@@ -148,7 +148,7 @@ conditions are met:
     left child of :math:`G`.
 
 (#) :math:`S` is the right child of :math:`P`, which is in turn the
-right child of :math:`G`.
+    right child of :math:`G`.
 
 Thus, a zigzig rotation takes place in those
 situations where a zigzag rotation is not appropriate.
