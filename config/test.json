@@ -12,25 +12,13 @@
     "debug": "true"
   },
   "chapters": {
-    "Background": {
-      "Development/TreeIndexing": {
-        "long_name": "TreeIndexing",
+    "Lower Bounds": {
+      "Development/LowerBound": {
+        "long_name": "Introduction to Lower Bounds",
         "exercises": {}
       },
-      "Development/BalancedTree": {
-        "long_name": "Balanced Trees",
-        "exercises": {}
-      },
-      "Development/AVL": {
-        "long_name": "The AVL Tree",
-        "exercises": {}
-      },
-      "Development/Splay": {
-        "long_name": "The Splay Tree",
-        "exercises": {}
-      },
-      "Development/RedBlack": {
-        "long_name": "The Red-Black Tree",
+      "Development/SearchBound": {
+        "long_name": "Lower Bounds on Search",
         "exercises": {}
       }
     },
