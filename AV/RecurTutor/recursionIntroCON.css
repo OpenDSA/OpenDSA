@@ -18,10 +18,17 @@ background-image: url(Icons/person2.png);
  width: 540px;
 }
 
-#pseudo2style{
-margin-left: 0;
-margin-top: 0;
+
+#RecursionIntroCON3 .jsavcanvas{
+ height: 500px;
+ width: 700px;
 }
+
+#RecursionIntroCON3 .jsavcode{
+ 
+ width: 250px;
+}
+
 .svg{
   stroke-width: 1;
 }
