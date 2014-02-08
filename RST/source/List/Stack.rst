@@ -10,6 +10,7 @@
    :topic: Lists
 
 .. odsalink:: AV/List/listStackCON.css      
+.. odsalink:: AV/List/listStackLCON.css      
 
 Stacks
 ======
@@ -152,3 +153,4 @@ quickly.
    toward the middle.
    
 .. odsascript:: AV/List/listStackCON.js
+.. odsascript:: AV/List/listStackLCON.js

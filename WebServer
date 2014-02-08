@@ -1,9 +1,8 @@
-# You cannot see the Khan Academy exercises locally unless
-# you run a web server. In case you are on a machine (such as
-# your own PC) without a web server running, 
-# this is a little local web server that will let you test
-# Khan Academy exercises locally. You only need to have Python
-# installed to run this.
-# After running this from ~OpenDSA, point web browser to:
+# You cannot see the Khan Academy exercises or JSAV code objects
+# in a browser directed to a local file unless you run a web
+# server. In case you are on a machine (such as your own PC) without a
+# web server running, here is a little python-based web server.
+# You only need to have Python installed to run this.
+# After invoking this script from ~OpenDSA, point your web browser to:
 # http://127.0.0.1:8000/
 python -m SimpleHTTPServer

@@ -14,6 +14,9 @@
 Linked Stacks
 =============
 
+Linked Stack Implementation
+---------------------------
+
 The linked stack implementation is quite simple.
 The freelist of Module :numref:`<Freelist>` is an example
 of a linked stack.

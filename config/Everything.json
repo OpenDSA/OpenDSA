@@ -429,7 +429,7 @@
           }
         }
       },
-      "List/Stack": {
+      "List/StackArray": {
         "long_name": "Stacks",
         "exercises": {
           "AStackVarCON": {
@@ -467,7 +467,12 @@
             "required": true,
             "points": 1,
             "threshold": 5
-          },
+          }
+        }
+      },
+      "List/Stacklinked": {
+        "long_name": "Linked Stacks",
+        "exercises": {
           "LStackPushCON": {
             "long_name": "Linked stack push",
             "required": true,
@@ -1323,7 +1328,7 @@
         "long_name": "Programmer's View of Files",
         "exercises": {}
       },
-      "Stubs/ExternalSort": {
+      "Development/ExternalSort": {
         "long_name": "External Sorting",
         "exercises": {}
       }
@@ -1662,6 +1667,10 @@
       },
       "Development/MMPerformance": {
         "long_name": "Sequential-Fit Performance",
+        "exercises": {}
+      },
+      "Development/MMPerformance2": {
+        "long_name": "Sequential-Fit Performance 2",
         "exercises": {}
       },
       "Development/Buddy": {
