@@ -97,7 +97,7 @@ Here is a warmup practice exercise for Heapsort.
 Now test yourself to see how well you understand Heapsort.
 Can you reproduce its behavior?
 
-.. avembed:: AV/Sorting/heapsortProficiency.html pe
+.. avembed:: AV/Sorting/heapsortPRO.html pe
 
 Now here are summary questions.
 

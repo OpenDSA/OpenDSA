@@ -30,9 +30,7 @@ update routines in :math:`\Theta(\log n)` time.
 
 .. _AVLinsert:
 
-.. AVLins.png
-
-.. odsafig:: Images/Handle.png
+.. odsafig:: Images/AVLins.png
    :width: 500
    :align: center
    :capalign: justify
@@ -81,9 +79,7 @@ in Figure :num:`Figure #AVLdouble`.
 
 .. _AVLsingle:
 
-.. AVLSingRot.png
-
-.. odsafig:: Images/Handle.png
+.. odsafig:: Images/AVLSingRot.png
    :width: 500
    :align: center
    :capalign: justify
@@ -103,9 +99,7 @@ in Figure :num:`Figure #AVLdouble`.
 
 .. _AVLdouble:
 
-.. AVLDblRot.png
-
-.. odsafig:: Images/Handle.png
+.. odsafig:: Images/AVLDblRot.png
    :width: 500
    :align: center
    :capalign: justify

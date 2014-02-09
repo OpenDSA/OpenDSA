@@ -41,8 +41,8 @@ jshint:
 
 min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css
 
-Recursion: min
-	python $(CONFIG_SCRIPT) config/Recursion.json
+RecurTutor: min
+	python $(CONFIG_SCRIPT) config/RecurTutor.json
 
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json
@@ -98,7 +98,7 @@ invalid: min
 slides: min
 	python $(CONFIG_SCRIPT) -s config/slides.json
 
-allBooks: CS3114 CSCI204 OpenDSA Everything test slides uwosh
+allBooks: CS3114 CSCI204 CSCI102 CS5114 CS2114 OpenDSA Everything test slides uwosh
 
 nomin:
 	cp lib/odsaUtils.js lib/odsaUtils-min.js

@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Recursion Chapter
 
-.. odsalink:: AV/Development/recursionCON.css
+.. odsalink:: AV/Development/recursionIntroCON.css
 
 
 Recursion Chapter
@@ -25,6 +25,9 @@ call, and the recursive part which contains one or more recursive
 calls to the algorithm where the parameters are in some sense
 "closer" to the base case than those of the original call.
 
+Let's think about recursion in a different way. Think about recursion as if you have a big task and you will delegate it to another one to help you on doing this task. Suppose that you have the task of multiplying two numbers x and y. You would like to delegate this task to some friend. You will ask the friend to multiply x-1 and y. When your friend send you back the result, you will only add y to that result. Your friend will do exactly the same with another friend who will do exactly the same with a third one and so on. x will be decremented till eventually it will reach to one at the last friend. The last friend will send back the result of multiplying a one and y. The last friend willl be returning back the result to the previous friend. This friend will add x to the result. This process will continue all the way back till the result of x-1 multiplied by y is back to you. You will simply add y to the result and you will be done with your task. Next visualization shows this delegation process:
+
+
 .. inlineav:: RecursionIntroCON1 ss
    :long_name: Recursion Introduction Slideshow 1
    :points: 0.1
@@ -36,13 +39,27 @@ calls to the algorithm where the parameters are in some sense
 
    <p></p>
 
-Here is a recursive function to compute the factorial
-of :math:`n`.
-A trace of ``fact``'s execution for a small value
-of :math:`n` is presented in Module :numref:`<StackRecur>`.
+.. inlineav:: RecursionIntroCON2 ss
+   :long_name: Recursion Introduction Slideshow 2
+   :points: 0.1
+   :required: True
+   :threshold: 1.0
+   :output: show  
 
-.. codeinclude:: Misc/Fact.pde 
-   :tag: RFact
+.. raw:: html
+
+   <p></p>
+
+ A well known simple recursive example is to compute the factorial of a number :math:`n`. Next visualization will show you how factorial is implemented by tracing the way factorial of 5 is computed. In this example we will think about recursion as if the code has a new instance/copy for each recursive code.
+
+.. inlineav:: RecursionIntroCON3 ss
+   :long_name: Recursion Introduction Slideshow 3
+   :points: 0.1
+   :required: True
+   :threshold: 1.0
+   :output: show  
+
+.. raw:: html
 
 The first two lines of the function constitute the base cases.
 If :math:`n \leq 1`, then one of the base cases computes a solution
@@ -73,83 +90,11 @@ Simply accept that it *will* solve it correctly, and use this
 result to in turn correctly solve the original problem.
 What could be simpler?
 
-Recursion has no counterpart in everyday, physical-world problem solving.
-The concept can be difficult to grasp because it requires you to think
-about problems in a new way.
 To use recursion effectively, it is necessary to train yourself to
 stop analyzing the recursive process beyond the recursive call.
 The subproblems will take care of themselves.
 You just worry about the base cases and how to recombine the
 subproblems.
-
-The recursive version of the factorial function might seem
-unnecessarily complicated to you because the same effect can be
-achieved by using a ``while`` loop.
-Here is another example of recursion, based on a famous puzzle called
-"Towers of Hanoi".
-The natural algorithm to solve this problem has multiple recursive calls.
-It cannot be rewritten easily using ``while`` loops.
-
-.. _TOH:
-
-.. inlineav:: recursionCONTOH dgm
-   :align: justify
-
-   Towers of Hanoi example.
-   (a) The initial conditions for a problem with six rings.
-   (b) A necessary intermediate step on the road to a solution.
-
-The Towers of Hanoi puzzle begins with three poles and :math:`n`
-rings, where all rings start on the leftmost pole (labeled Pole 1).
-The rings each have a different size, and are stacked in order of
-decreasing size with the largest ring at the bottom, as shown in
-Figure :num:`Figure #TOH` (a).
-The problem is to move the rings from the leftmost pole to the
-rightmost pole (labeled Pole 3) in a series of steps.
-At each step the top ring on some pole is moved to another pole.
-There is one limitation on where rings may be moved:
-A ring can never be moved on top of a smaller ring.
-
-How can you solve this problem?
-It is easy if you don't think too hard about the details.
-Instead, consider that all rings are to be moved from Pole 1 to Pole 3.
-It is not possible to do this without first moving the bottom
-(largest) ring to Pole 3.
-To do that, Pole 3 must be empty, and only the bottom ring can be on
-Pole 1.
-The remaining :math:`n-1` rings must be stacked up in order
-on Pole 2, as shown in Figure :num:`Figure #TOH` (b).
-How can you do this?
-Assume that a function :math:`X` is available to solve the
-problem of moving the top :math:`n-1` rings from Pole 1 to Pole 2.
-Then move the bottom ring from Pole 1 to Pole 3.
-Finally, again use function :math:`X` to move the
-remaining :math:`n-1` rings from Pole 2 to Pole 3.
-In both cases, "function :math:`X`" is simply the Towers of Hanoi
-function called on a smaller version of the problem.
-
-The secret to success is relying on the Towers of Hanoi
-algorithm to do the work for you.
-You need not be concerned about the gory details of *how* the
-Towers of Hanoi subproblem will be solved.
-That will take care of itself provided that two things are done.
-First, there must be a base case (what to do if there is only one
-ring) so that the recursive process will not go on forever.
-Second, the recursive call to Towers of Hanoi can only be used to
-solve a smaller problem, and then only one of the proper form (one
-that meets the original definition for the Towers of Hanoi problem,
-assuming appropriate renaming of the poles).
-
-Here is an implementation for the recursive Towers of Hanoi
-algorithm.
-Function ``move(start, goal)`` takes the top ring from Pole
-``start`` and moves it to Pole ``goal``.
-If ``move`` were to print the values of its parameters,
-then the result of calling ``TOH`` would be a list of
-ring-moving instructions that solves the problem.
-
-.. codeinclude:: Misc/TOH.pde 
-   :tag: TOH
 
 Those who are unfamiliar with recursion might find it hard to
 accept that it is used primarily as a tool for simplifying the design
@@ -159,11 +104,9 @@ computer program for solving the problem because recursion involves
 function calls, which are typically more expensive than other
 alternatives such as a ``while`` loop.
 However, the recursive approach usually provides an algorithm that is
-reasonably efficient in the sense discussed in Module
-:numref:`<AnalAsymptotic>`.
+reasonably efficient.
 If necessary, the clear, recursive solution can later be modified to
-yield a faster implementation, as described in Module
-:numref:`<StackRecur>`.
+yield a faster implementation.
 
 Many data structures are naturally recursive, in that they can be
 defined as being made up of self-similar parts.

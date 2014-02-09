@@ -174,7 +174,7 @@ Next, let's review what makes for a legal increment series.
 Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
-.. avembed:: AV/Sorting/ShellsortProficiency.html pe
+.. avembed:: AV/Sorting/shellsortPRO.html pe
 
 Some choices for the series of increments will make Shellsort
 run more efficiently than others.
@@ -196,7 +196,7 @@ various increment sizes.
 Now you are ready to try out some different increment series to see
 how they affect the cost of Shellsort.
 
-.. avembed:: AV/Sorting/ShellsortPerformance.html pe
+.. avembed:: AV/Sorting/shellsortPerf.html pe
 
 A theoretical analysis of Shellsort is difficult, so we must accept
 without proof that the average-case performance of Shellsort

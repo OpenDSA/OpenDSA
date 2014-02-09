@@ -429,7 +429,7 @@
           }
         }
       },
-      "List/Stack": {
+      "List/StackArray": {
         "long_name": "Stacks",
         "exercises": {
           "AStackVarCON": {
@@ -467,7 +467,12 @@
             "required": true,
             "points": 1,
             "threshold": 5
-          },
+          }
+        }
+      },
+      "List/Stacklinked": {
+        "long_name": "Linked Stacks",
+        "exercises": {
           "LStackPushCON": {
             "long_name": "Linked stack push",
             "required": true,
@@ -1072,13 +1077,13 @@
             "points": 1,
             "threshold": 5
           },
-          "ShellsortProficiency": {
+          "shellsortPRO": {
             "long_name": "Shellsort Proficiency",
             "required": true,
             "points": 1,
             "threshold": 0.90
           },
-          "ShellsortPerformance": {
+          "shellsortPerf": {
             "long_name": "Shellsort Performance",
             "required": true,
             "points": 1,
@@ -1202,7 +1207,7 @@
             "points": 1,
             "threshold": 5
           },
-          "heapsortProficiency": {
+          "heapsortPRO": {
             "long_name": "Heapsort Proficiency 2",
             "required": true,
             "points": 1,
@@ -1323,7 +1328,7 @@
         "long_name": "Programmer's View of Files",
         "exercises": {}
       },
-      "Stubs/ExternalSort": {
+      "Development/ExternalSort": {
         "long_name": "External Sorting",
         "exercises": {}
       }
@@ -1664,6 +1669,10 @@
         "long_name": "Sequential-Fit Performance",
         "exercises": {}
       },
+      "Development/MMPerformance2": {
+        "long_name": "Sequential-Fit Performance 2",
+        "exercises": {}
+      },
       "Development/Buddy": {
         "long_name": "Other Memory Allocation Methods",
         "exercises": {}
@@ -1758,6 +1767,25 @@
             "threshold": 1.0
           }
         }
+      }
+    },
+    
+    "Balanced Trees": {
+      "Development/BalancedTree": {
+        "long_name": "Balanced Trees",
+        "exercises": {}
+      },
+      "Development/AVL": {
+        "long_name": "The AVL Tree",
+        "exercises": {}
+      },
+      "Development/Splay": {
+        "long_name": "The Splay Tree",
+        "exercises": {}
+      },
+      "Development/RedBlack": {
+        "long_name": "The Red-Black Tree",
+        "exercises": {}
       }
     },
     "Advanced Analysis": {
@@ -1888,6 +1916,36 @@
       },
       "Development/StringSearchRabinKarp": {
         "long_name": "Rabin-Karp String Search Algorithm",
+        "exercises": {}
+      }
+    },
+    "Lower Bounds": {
+      "Development/BoundLower": {
+        "long_name": "Introduction to Lower Bounds",
+        "exercises": {}
+      },
+      "Development/BoundSearch": {
+        "long_name": "Lower Bounds on Search",
+        "exercises": {}
+      },
+      "Development/BoundMax": {
+        "long_name": "Lower Bounds on Search",
+        "exercises": {}
+      },
+      "Development/BoundAdversary": {
+        "long_name": "Adversary Lower Bounds",
+        "exercises": {}
+      },
+      "Development/BoundState": {
+        "long_name": "State Space Lower Bounds",
+        "exercises": {}
+      },
+      "Development/BoundiBest": {
+        "long_name": "Finding ith Best Element",
+        "exercises": {}
+      },
+      "Development/SortingOptimal": {
+        "long_name": "Optimal Sorting",
         "exercises": {}
       }
     },

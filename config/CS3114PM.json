@@ -1006,16 +1006,13 @@
             "points": 1.0,
             "threshold": 5
           },
-          "ShellsortProficiency": {
+          "shellsortPRO": {
             "long_name": "Shellsort Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90,
-	    "jsav_exer_options": {
-              "fixmode": "undo"
-             }
+            "threshold": 0.90
           },
-          "ShellsortPerformance": {
+          "shellsortPerf": {
             "long_name": "Shellsort Performance Activity",
             "required": true,
             "points": 2.0,
@@ -1139,7 +1136,7 @@
             "points": 2.0,
             "threshold": 5
           },
-          "heapsortProficiency": {
+          "heapsortPRO": {
             "long_name": "Heapsort Proficiency Exercise",
             "required": true,
             "points": 2.0,
