@@ -1195,7 +1195,7 @@
             "points": 2.0,
             "threshold": 5
           },
-          "heapsortProficiency": {
+          "heapsortPRO": {
             "long_name": "Heapsort Proficiency Exercise",
             "required": true,
             "points": 2.0,
