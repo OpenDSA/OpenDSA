@@ -145,7 +145,7 @@
     // Process help button: Give a full help page for this activity
     // We might give them another HTML page to look at.
     function help() {
-      window.open("SSprofHelp.html", 'helpwindow');
+      window.open("shellsorthelpPRO.html", 'helpwindow');
     }
 
     // Process About button: Pop up a message with an Alert

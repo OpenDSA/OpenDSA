@@ -1077,13 +1077,13 @@
             "points": 1,
             "threshold": 5
           },
-          "ShellsortProficiency": {
+          "shellsortPRO": {
             "long_name": "Shellsort Proficiency",
             "required": true,
             "points": 1,
             "threshold": 0.90
           },
-          "ShellsortPerformance": {
+          "shellsortPerf": {
             "long_name": "Shellsort Performance",
             "required": true,
             "points": 1,
