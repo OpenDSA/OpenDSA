@@ -20,7 +20,7 @@
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    alert("Bubble Sort Algorithm Visualization\nWritten by Cliff Shaffer and Brandon Watkins\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+    alert("Bubble Sort Algorithm Visualization\nWritten by Cliff Shaffer and Brandon Watkins\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
 
   // Bubble Sort
