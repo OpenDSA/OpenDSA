@@ -15,13 +15,13 @@
 	{
 		arr.push("");		 
 	}
-    bh = av.ds.binheap(arr,{left: 320, top:-20, nodegap: 15, stats: false, tree: true, array: false});
-	av.label("depth 4",  {"top": "132px", "left": "270px"});
-	av.label("depth 3",  {"top": "102px", "left": "270px"});
-	av.label("depth 2",  {"top": "70px", "left": "270px"});
-	av.label("depth 1",  {"top": "38px", "left": "270px"});
-	av.label("depth 0",  {"top": "6px", "left": "270px"});
-	slider1 = av.g.rect(320, 132, 525, 20).css({"fill": "green"});
+    bh = av.ds.binheap(arr,{left: 287, top:-20, nodegap: 15});
+	av.label("depth 4",  {"top": "132px", "left": "240px"});
+	av.label("depth 3",  {"top": "102px", "left": "240px"});
+	av.label("depth 2",  {"top": "70px", "left": "240px"});
+	av.label("depth 1",  {"top": "38px", "left": "240px"});
+	av.label("depth 0",  {"top": "6px", "left": "240px"});
+	slider1 = av.g.rect(297, 132, 620, 20).css({"fill": "green"});
 	slider1.css({"opacity": 0.3});
 	av.displayInit();
 	av.umsg("At depth 4 there are 2^4 nodes requires no work since all the nodes are leaves");
@@ -108,7 +108,7 @@
   }
 
   function about() {
-    var mystring = "Prim's Algorithm Visualization\nWritten by Mohammed Fawzy and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2013\nLast update: March, 2013\nJSAV library version " + JSAV.version();
+    var mystring = "Build heap running time visual proof\nWritten by Mohammed Fawzy and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Spring, 2013\nLast update: Febraury, 2014\nJSAV library version " + JSAV.version();
     alert(mystring);
   }
   // Connect action callbacks to the HTML entities
