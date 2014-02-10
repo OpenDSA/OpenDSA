@@ -2,14 +2,17 @@
   width: 850px;
   height: 600px;
 }
+
 .avcontainer{
   width: 800px;
   height: 600px;
 }
+
 .jsavcanvas {
   height: 600px;
   width:1000px;
 }
+
 .jsavtree .jsavnode {
   line-height: 15px !important;
   min-width: 15px !important;
@@ -17,9 +20,8 @@
   min-height: 15px !important;
   max-height: 15px !important;
 }
+
 .jsavoutput {
-    width: 200px;
-	height: 50px;
+  width: 700px;
+  height: 50px;
 }
-
-
