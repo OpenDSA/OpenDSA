@@ -5,7 +5,7 @@
     // Process help button: Give a full help page for this activity
     // We might give them another HTML page to look at.
     function help() {
-      window.open("MSprofHelp.html", 'helpwindow');
+      window.open("mergesortHelpPRO.html", 'helpwindow');
     }
 
     // Process about button: Pop up a message with an Alert

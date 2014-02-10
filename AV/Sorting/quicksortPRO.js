@@ -6,13 +6,12 @@
     // Process help button: Give a full help page for this activity
     // We might give them another HTML page to look at.
     function help() {
-      window.open("QSprofHelp.html", 'helpwindow');
+      window.open("quicksortHelpPRO.html", 'helpwindow');
     }
 
     // Process about button: Pop up a message with an Alert
     function about() {
-      var mystring = "Quicksort Proficiency Exercise\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/eBook\nWritten August, 2012\nLast update: September 6, 2012\nJSAV library version " + JSAV.version();
-      alert(mystring);
+      alert("Insertion Sort Algorithm Visualization\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
 
     $('#help').click(help);
