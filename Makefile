@@ -98,7 +98,7 @@ invalid: min
 slides: min
 	python $(CONFIG_SCRIPT) -s config/slides.json
 
-allBooks: CS3114 CSCI204 CSCI102 CS5114 CS2114 OpenDSA Everything test slides uwosh
+allBooks: CS150 CS3114 CSCI204 CSCI102 CS5114 CS2114 OpenDSA Everything test slides uwosh
 
 nomin:
 	cp lib/odsaUtils.js lib/odsaUtils-min.js

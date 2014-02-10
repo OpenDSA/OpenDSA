@@ -175,7 +175,7 @@ the proficiency exercise that follows the visualization).
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.
 
-.. avembed:: AV/Sorting/quicksortProficiency.html pe
+.. avembed:: AV/Sorting/quicksortPRO.html pe
 
 To analyze Quicksort, we first analyze the ``findpivot`` and
 ``partition`` functions when operating on a subarray of length
