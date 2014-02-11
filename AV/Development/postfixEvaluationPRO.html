@@ -172,11 +172,13 @@
                     modelStack.addFirst();
                     jsav.effects.moveValue(modelArray, i, modelStack.first());
                     modelStack.layout();
+                    jsav.umsg("The operands go into the operand stack");
                     jsav.stepOption("grade", true);
                     jsav.step();
                 } else {
                     //move the operator to the evaluator
                     jsav.effects.moveValue(modelArray, i, modelEvalAr[1], 0);
+                    jsav.umsg("The operator goes into the evaluator.");
                     jsav.step();
                     //"run the evaluator"
                     //move the first value
@@ -187,12 +189,12 @@
                     jsav.effects.moveValue(modelStack.first(), modelEvalAr[2], 0);
                     modelStack.removeFirst();
                     modelStack.layout();
+                    jsav.umsg("The two topmost values from the stack are popped.")
                     jsav.step();
                     //animate operator
-                    if ($.fx.off === false) {
-                        console.log("asd")
-                        animateOperator(modelEvalAr[1], jsav);
-                    }
+                    // if ($.fx.off === false) {
+                    //     animateOperator(modelEvalAr[1], jsav);
+                    // }
                     //caluculate result
                     var result;
                     if (modelEvalAr[1].value(0) === "+") {
@@ -204,12 +206,14 @@
                     modelEvalAr[0].value(0, "");
                     modelEvalAr[1].value(0, result);
                     modelEvalAr[2].value(0, "");
+                    jsav.umsg("The evaluator calculates the value.");
                     jsav.stepOption("grade", true);
                     jsav.step();
                     //move the value back into the stack
                     modelStack.addFirst();
                     jsav.effects.moveValue(modelEvalAr[1], 0, modelStack.first());
                     modelStack.layout();
+                    jsav.umsg("<br/>And the value is pushed back onto the stack.", {preserve: true});
                     jsav.stepOption("grade", true);
                     jsav.step();
                 }
