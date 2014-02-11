@@ -57,7 +57,6 @@
         av.recorded(); // we are not recording an AV with an algorithm
 
         function initialize() {
-            turnAnimationOff();
 
             var htmldata = "";
             for (var i = 0; i < arraySize; i++) {
@@ -74,8 +73,6 @@
             jsavArray = av.ds.array($array, {indexed: true, layout: "bar"});
             code.show();
             code.highlight(4);
-
-            restoreAnimationState();
 
             return jsavArray;
         }
@@ -99,18 +96,6 @@
           return modelArray;
         }
 
-        var oldfx;
-
-        function turnAnimationOff() {
-            //save the state of fx.off
-            var oldfx = $.fx.off || false;
-            //turn off the jQuery animations
-            $.fx.off = true;
-        }
-
-        function restoreAnimationState() {
-            $.fx.off = oldfx;
-        }
 
         var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
         exercise.reset();
@@ -126,9 +111,9 @@
                 this.removeClass(swapIndex.value(), "selected");
                 swapIndex.value(-1);
             } else { // swap
+                this.removeClass(swapIndex.value(), "selected");
                 this.swap(index, swapIndex.value());
                 swapIndex.value(-1);
-                this.removeClass(index, "selected");
                 exercise.gradeableStep();
             }
         });
