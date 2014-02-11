@@ -63,6 +63,10 @@
         "long_name": "Huffman Coding Trees",
         "exercises": {}
       },
+	  "IS/LinearIndexing.rst": {
+        "long_name": "LinearIndexing",
+        "exercises": {}
+	  },
       "IS/SetSearch": {
         "long_name": "Set Search",
         "exercises": {}
