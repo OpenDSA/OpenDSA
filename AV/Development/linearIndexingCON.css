@@ -1,0 +1,21 @@
+#varindexCON .jsavcanvas {
+ margin-left: auto;
+ margin-right: auto;
+ height: 105px;
+ width: 540px;
+}
+
+#linindexCON .jsavcanvas {
+ margin-left: auto;
+ margin-right: auto;
+ height: 125px;
+ width: 580px;
+}
+
+svg{
+  stroke-width: 1;
+}
+
+.jsavcanvas  > .jsavlabel {
+	z-index: 100;
+}
