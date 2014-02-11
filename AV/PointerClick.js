@@ -6,10 +6,10 @@
   var leftMargin = 160;
   var topMargin = 45;
 
-  var labeOne = jsav.label("labelOne",{top : 150, left: 0});
+  var labelOne = jsav.label("labelOne",{top : 150, left: 0});
   var labelTwo = jsav.label("labelTwo",{top : 150, left: 700});
 
-  var curr = jsav.pointer("click me", labeOne);
+  var curr = jsav.pointer("click me", labelOne, {fixed: false});
   jsav.displayInit();
 
   curr.element.click(function () {
