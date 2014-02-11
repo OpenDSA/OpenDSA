@@ -70,14 +70,6 @@
         "long_name": "Multiple Parameters",
         "exercises": {}
       },
-      "AlgAnal/AnalSpace": {
-        "long_name": "Space Bounds",
-        "exercises": {}
-      },
-      "AlgAnal/AnalTuning": {
-        "long_name": "Speeding Up Your Programs",
-        "exercises": {}
-      },
       "AlgAnal/AlgAnalSumm": {
         "long_name": "Algorithm Analysis Chapter Summary",
         "exercises": {
