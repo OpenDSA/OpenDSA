@@ -468,9 +468,6 @@
 				for (i = 0; i < list.size(); i++) {
 					if (list.get(i) === options.from) {
 						list.remove(i);
-						if (i !== 0) {
-							options.from.hide();
-						}
 						break;
 					}
 				}
