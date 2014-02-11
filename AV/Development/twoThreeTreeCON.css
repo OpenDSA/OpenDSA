@@ -13,7 +13,7 @@
 }
 
 /* Removes top margin from array objects to make the diagram a litle more compact */
-#twoThreeTreeCON .jsavarray {
+.jsavarray {
 	margin-top: 0; 
 }
 
