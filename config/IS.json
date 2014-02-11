@@ -49,6 +49,10 @@
       "IS/SetSearch": {
         "long_name": "Set Search",
         "exercises": {}
+      },
+      "IS/SelfOrg": {
+        "long_name": "Self Organizing Lists",
+        "exercises": {}
       }
     },
     "Appendix": {
