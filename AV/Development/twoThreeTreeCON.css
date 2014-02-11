@@ -54,3 +54,43 @@
 	padding-top: 20px;
 	text-align: center;
 }
+
+/* Sytling for the promoteCON slide show ********************************/
+
+/* Set maximun width for the JSAV container */
+#promoteCON, #promoteCON .jsavoutput {
+	width: 800px;
+}
+
+/* Set width and height for the JSAV canvas */
+#promoteCON .jsavcanvas {
+	height: 250px;
+	width: 800px;
+	margin-left: 70px;
+}
+
+/* Align and give a little padding to the output messages of each slide */
+#promoteCON .jsavoutput {
+	padding-top: 20px;
+	text-align: center;
+}
+
+/* Sytling for the splitCON slide show ********************************/
+
+/* Set maximun width for the JSAV container */
+#splitCON, #splitCON .jsavoutput {
+	width: 800px;
+}
+
+/* Set width and height for the JSAV canvas */
+#splitCON .jsavcanvas {
+	height: 250px;
+	width: 800px;
+	margin-left: 70px;
+}
+
+/* Align and give a little padding to the output messages of each slide */
+#splitCON .jsavoutput {
+	padding-top: 20px;
+	text-align: center;
+}

@@ -75,3 +75,53 @@
   av.recorded();
   console.log("END");
 }(jQuery));
+
+(function ($) {
+  console.log("BEGIN");
+  var av = new JSAV("finalHuffmanTree");
+  var circOpt = {fill:"white"};
+
+  // edges
+  // level 0 to 1
+  av.g.line(200, 20, 150, 70);
+  av.g.line(200, 20, 250, 70);
+  // level 1 to 2
+  av.g.line(250, 70, 180, 120);
+  av.g.line(250, 70, 320, 120);
+  // level 2 to 3
+  av.g.line(180, 120, 140, 170);
+  av.g.line(180, 120, 220, 170);
+  av.g.line(320, 120, 280, 170);
+  av.g.line(320, 120, 360, 170);
+  // level 3 to 4
+  av.g.line(360, 170, 320, 220);
+  av.g.line(360, 170, 400, 220);
+  // level 4 to 5
+  av.g.line(400, 220, 440, 270);
+  av.g.line(400, 220, 360, 270);
+  // level 5 to 6
+  av.g.line(440, 270, 480, 320);
+
+  // root
+  av.g.circle(200, 20, 19, circOpt);
+  // level 1
+  av.g.circle(150, 70, 19, circOpt);  // root.left
+  av.g.circle(250, 70, 19, circOpt);  // root.right
+  // level 2
+  av.g.circle(180, 120, 19, circOpt); // root.right.left
+  av.g.circle(320, 120, 19, circOpt); // root.right.right
+  // level 3
+  av.g.circle(140, 170, 19, circOpt); // root.right.left.left
+  av.g.circle(220, 170, 19, circOpt); // root.right.left.right
+  av.g.circle(280, 170, 19, circOpt); // root.right.right.left
+  av.g.circle(360, 170, 19, circOpt); // root.right.right.right
+  // level 4
+  av.g.circle(320, 220, 19, circOpt); // root.right.right.right.left
+  av.g.circle(400, 220, 19, circOpt); // root.right.right.right.right
+  // level 5
+  av.g.circle(440, 270, 19, circOpt); // root.right.right.right.right.right.right
+  av.g.circle(360, 270, 19, circOpt); // root.right.right.right.right.right.left  
+  // level 6   
+  av.g.circle(480, 320, 19, circOpt);
+
+}(jQuery));

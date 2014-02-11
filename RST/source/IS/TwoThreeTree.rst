@@ -121,6 +121,12 @@ rightmost position).
    Because there is room in the node for a second key, it is simply added
    to the left position with 15 moved to the right position.
 
+.. inlineav:: testCON ss
+   :output: show
+
+.. inlineav:: test2CON ss
+   :output: show
+
 If we insert the new record into a leaf node :math:`L` that already
 contains two records, then more space must be created.
 Consider the two records of node :math:`L` and the record to be
@@ -146,12 +152,9 @@ In either case, all leaf nodes continue to have equal depth.
 
 .. _TTPromote:
 
-.. odsafig:: Images/TTPromot.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Node-splitting insert for a 2-3 tree.
+.. inlineav:: promoteCON ss
+   :output: show
+   :align: justify
 
    A simple node-splitting insert for a 2-3 tree.
    The value 55 is added to the 2-3 tree of Figure :num:`Figure #TTexamp`.
@@ -159,6 +162,21 @@ In either case, all leaf nodes continue to have equal depth.
    value 52 to the parent node.
 
 .. _TTSplit:
+
+.. inlineav:: splitCON ss
+   :output: show
+   :align: justify
+
+   Example of inserting a record that causes the 2-3 tree root to
+   split.
+   (a) The value 19 is added to the 2-3 tree of
+   Figure :num:`Figure #TTexamp`.
+   This causes the node containing 20 and 21 to split, promoting 20.
+   (b) This in turn causes the internal node containing 23 and 30 to
+   split, promoting 23.
+   (c) Finally, the root node splits, promoting 23
+   to become the left record in the new root.
+   The result is that the tree becomes one level higher.
 
 .. odsafig:: Images/TTSplit.png
    :width: 400
