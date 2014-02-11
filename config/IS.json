@@ -41,7 +41,7 @@
       "IS/Diskdrive": {
 	     "long_name": "Disk Drive",
 	     "exercises": {}
-      }, "Development/Huffman": {
+      }, "IS/Huffman": {
         "long_name": "Huffman Coding Trees",
         "exercises": {
           "huffmanCON1": {
