@@ -41,8 +41,25 @@
       "IS/Diskdrive": {
 	     "long_name": "Disk Drive",
 	     "exercises": {}
-      },
-       "IS/HuffProof.rst": {
+      }, "Development/Huffman": {
+        "long_name": "Huffman Coding Trees",
+        "exercises": {
+          "huffmanCON1": {
+            "long_name": "Huffman Coding Tree Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "HuffmanCoding": {
+            "long_name": "Huffman Coding Tree Visualization",
+            "required": true,
+            "points": 0.0,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+        }
+      }, 
+      "IS/HuffProof.rst": {
         "long_name": "Huffman Coding Trees",
         "exercises": {}
       },
