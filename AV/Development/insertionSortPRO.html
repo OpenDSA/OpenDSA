@@ -45,7 +45,7 @@
             av = new JSAV($("#jsavcontainer")),
             code = av.code(
                 "public static void insertionSort(int[] table) {\n"+
-                "   for (int i = 0; i < table.length; i++) {\n"+
+                "   for (int i = 1; i < table.length; i++) {\n"+
                 "       int j = i;\n"+
                 "       while (j > 0 && table[j - 1] > table[j]) {\n"+
                 "           swap(table, j - 1, j);\n"+
@@ -57,7 +57,6 @@
         av.recorded(); // we are not recording an AV with an algorithm
 
         function initialize() {
-            turnAnimationOff();
 
             var htmldata = "";
             for (var i = 0; i < arraySize; i++) {
@@ -75,8 +74,6 @@
             code.show();
             code.highlight(4);
 
-            restoreAnimationState();
-
             return jsavArray;
         }
         
@@ -88,7 +85,7 @@
             for (var i = 1; i < arraySize; i++) {
                 var j = i;
                 while (j > 0 && modelArray.value(j-1) > modelArray.value(j)) {
-                    jsav.umsg('Shift "'+modelArray.value(j)+'" to the left.')
+                    jsav.umsg('Shift "'+modelArray.value(j)+'" to the left.<br/>&nbsp;&nbsp;i: ' + i + '<br/>&nbsp;&nbsp;j: ' + j)
                     modelArray.swap(j, j-1);
                     jsav.stepOption("grade", true);
                     jsav.step();
@@ -99,18 +96,6 @@
           return modelArray;
         }
 
-        var oldfx;
-
-        function turnAnimationOff() {
-            //save the state of fx.off
-            var oldfx = $.fx.off || false;
-            //turn off the jQuery animations
-            $.fx.off = true;
-        }
-
-        function restoreAnimationState() {
-            $.fx.off = oldfx;
-        }
 
         var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
         exercise.reset();
@@ -126,9 +111,9 @@
                 this.removeClass(swapIndex.value(), "selected");
                 swapIndex.value(-1);
             } else { // swap
+                this.removeClass(swapIndex.value(), "selected");
                 this.swap(index, swapIndex.value());
                 swapIndex.value(-1);
-                this.removeClass(index, "selected");
                 exercise.gradeableStep();
             }
         });

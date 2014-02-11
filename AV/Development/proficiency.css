@@ -22,8 +22,8 @@
   background-color: #000;
   color: #fff;
 }
-.selected, .selected.jsavvalue, .jsavarray.jsavbararray .jsavvalue.selected {
-  font-size: 130%;
+.selected, .selected .jsavvalue, .jsavarray.jsavbararray .jsavvalue.selected {
+  font-size: 110%;
   background-color: #ddf;
 }
 .jsavtreenode.jsavredblacknode.rednode.selected {

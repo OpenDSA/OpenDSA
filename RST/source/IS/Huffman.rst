@@ -401,6 +401,9 @@ its Huffman code).
 
    Display the final Huffman tree for the example.
 
+.. inlineav:: finalHuffmanTree dgm
+   :output: show
+
 We see that all letters with codes beginning with
 '0' are stored in the left branch, while all letters with codes
 beginning with '1' are stored in the right branch.
