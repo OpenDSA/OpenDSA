@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>Testing Buffer Pool Stand Alone HTML</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="BufferPoolAV.css" type="text/css" />
+</head>
+
+<body>
+  <div id="container">
+    <table class="headerTable">
+      <tr>
+        <td class="headerCenter">
+          <h1>Buffer Pool Visualization</h1>
+        </td>
+      </tr>
+    </table>
+    <div class="avcontainer">
+      <p class="jsavoutput jsavscroll"></p>
+      <ol id="hashTable"></ol>
+    </div>
+  </div>
+        
+  <!-- Bottom Container -->
+  <div id="bottom">
+    <form id="ssperform">
+      <p id="procontrols">
+        <!-- Replacement strategy -->
+        <select id="function">
+          <option selected="selected" value="0"> Choose Replacement Strategy</option>
+          <option value="1">LRU</option>
+          <option value="2">FIFO</option>
+          <option value="3">LFU</option>
+        </select>
+
+        <!-- Amount of sector in main memory -->
+        <select id="mainmemory_size">
+          <option selected="selected" value="0">Amount of Sectors</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+        </select>
+
+        <!-- Size of Buffer Pool -->
+        <select id="bufferpool_size">
+          <option selected="selected" value="0">Size of Buffer Pool</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+        </select>
+      </p>
+      <p>
+        <!-- Input Text Field -->
+        <label for="input">Input:</label>
+        <input size="10" name="input" id="input" type="text" />
+
+        <!-- Buttons -->
+        <input type="button" id="next" name="next" value="Next" />
+        <input type="button" id="reset" name="reset" value="Restart" />
+      <!-- Hidden controls -->
+        <select id="keyrange">
+          <option selected value="0">Key Range</option>
+          <option value="1">0 - 99</option>
+          <option value="2">0 - 999</option>
+        </select>
+        <span id="mValue">
+          <label>M-value:</label>
+          <input size="12" name="M" id="M" type="text" />
+        </span>
+      </p>
+    </form>
+  </div>
+
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
+
+</body>
+</html>
