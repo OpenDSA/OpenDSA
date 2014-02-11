@@ -112,7 +112,9 @@
                 evaluatorArrays[i] = av.ds.array([""], {indexed: false, center: false});
                 evaluatorArrays[i].element.css({"top": rect_y + 30, "left": rect_x + 15 + 60 * i, "position": "absolute"});
                 if (i === 0 || i === 2) {
-                    evaluatorArrays[i].element.children().css("border", "none");
+                    evaluatorArrays[i].element.children().css({
+                        "border": "none",
+                        "box-shadow": "none"});
                 }
                 evaluatorArrays[i].layout();
             }
@@ -154,7 +156,9 @@
                 modelEvalAr[i] = jsav.ds.array([""], {indexed: false, center: false});
                 modelEvalAr[i].element.css({"top": rect_y + 30, "left": rect_x + 15 + 60 * i, "position": "absolute"});
                 if (i === 0 || i === 2) {
-                    modelEvalAr[i].element.children().css("border", "none");
+                    modelEvalAr[i].element.children().css({
+                        "border": "none",
+                        "box-shadow": "none"});
                 }
                 modelEvalAr[i].layout();
             }
