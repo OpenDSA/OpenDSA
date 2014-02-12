@@ -1,5 +1,5 @@
 "use strict";
-// Shared code for Shellsort
+// Shared code for Shellsort: Shared between shellsortAV and shellsortCON
 
 // Convenience function for setting another type of highlight
 // (will be used for showing which elements will be compared during sort)
