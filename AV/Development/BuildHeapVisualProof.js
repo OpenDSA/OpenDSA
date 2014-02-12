@@ -23,7 +23,7 @@
     av.label("depth 0",  {"top": "6px", "left": "100px"});
     slider1 = av.g.rect(160, 132, 515, 20).css({"fill": "green"});
     slider1.hide();
-    av.umsg("Let's look at a visualization to explain why the cost for buildheap should be O(n).");
+    av.umsg("Let's look at a visualization to explain why the cost for buildheap should be &theta;(n).");
     av.displayInit();
 
     slider1.show();
@@ -106,7 +106,7 @@
     av.step();
     av.umsg("The total area of the resulting shape is bounded by 2 X (8+4+2+1) = 30 = 2 X (2<sup>4</sup> - 1).");
     av.step();
-    av.umsg("We have n=31 nodes, and so the total amount of work required is O(n)");
+    av.umsg("We have n=31 nodes, and so the total amount of work required is  &theta;(n).");
 	
     av.recorded();
   }
