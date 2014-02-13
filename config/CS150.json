@@ -70,14 +70,6 @@
         "long_name": "Multiple Parameters",
         "exercises": {}
       },
-      "AlgAnal/AnalSpace": {
-        "long_name": "Space Bounds",
-        "exercises": {}
-      },
-      "AlgAnal/AnalTuning": {
-        "long_name": "Speeding Up Your Programs",
-        "exercises": {}
-      },
       "AlgAnal/AlgAnalSumm": {
         "long_name": "Algorithm Analysis Chapter Summary",
         "exercises": {
@@ -953,7 +945,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "MergesortPRO": {
+          "MergesortMergePRO": {
             "long_name": "Mergesort Merging Proficiency Exercise",
             "required": true,
             "points": 1.0,
@@ -1044,7 +1036,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HeapsortPRO": {
+          "HeapsortStepPRO": {
             "long_name": "Heapsort RemoveMax Proficiency Exercise",
             "required": true,
             "points": 2.0,

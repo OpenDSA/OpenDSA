@@ -99,4 +99,13 @@
       }
     });
   });
+
+  /**
+   * Extends the standard swap function to also swap the highlighting associated with each array element
+   */
+  JSAV._types.ds.AVArray.prototype.swapWithStyle = function (index1, index2) {
+    this.swap(index1, index2);
+    this.unhighlightBlue(index1);
+    this.highlightBlue(index2);
+  };
 }(jQuery));

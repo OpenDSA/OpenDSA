@@ -173,6 +173,7 @@
 							toIndex: index,
 							effect: options.effect
 						});
+						array.layout();
 						//call onDrop function
 						var grade = options.onDrop.call(this, index);
 						if (typeof grade === "undefined") {
@@ -203,6 +204,7 @@
 						toIndex: index,
 						effect: options.effect
 					});
+					array.layout();
 					//call onDrop function
 					var grade = options.onDrop.call(this, index);
 					if (typeof grade === "undefined") {

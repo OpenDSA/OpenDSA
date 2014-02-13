@@ -1060,7 +1060,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "MergesortPRO": {
+          "MergesortMergePRO": {
             "long_name": "Mergesort Merging Proficiency Exercise",
             "required": true,
             "points": 1.0,
@@ -1151,7 +1151,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HeapsortPRO": {
+          "HeapsortStepPRO": {
             "long_name": "Heapsort RemoveMax Proficiency Exercise",
             "required": true,
             "points": 2.0,
