@@ -3,7 +3,6 @@
   var arraySize = 15, // size needs to be odd
     initialArray = [],
     jsavArray,
-    $array = $("#exerArray"),
     evaluatorArrays = [],
     stack,
     clickHandler,
