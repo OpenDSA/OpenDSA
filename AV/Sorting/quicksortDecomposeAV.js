@@ -5,10 +5,6 @@
 
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
-  // add the layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select",
-    "options": {"bar": "Bar", "array": "Array"},
-    "label": "Array layout: ", "value": "array"});
 
   // Initialize the arraysize dropdown list
   ODSA.AV.initArraySize(5, 12, 8);
@@ -26,14 +22,19 @@
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       ODSA.AV.reset(true);
-      jsav = new JSAV($('.avcontainer'), {settings: settings});
+      jsav = new JSAV($('.avcontainer'));
 
       // Initialize the original array
-      var arr = jsav.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
+      var arr = jsav.ds.array(arrValues, {indexed: true});
       jsav.displayInit();
       // BEGIN QUICKSORT IMPLEMENTATION
 
-      quicksort(arr, 0, arr.size() - 1);
+      // Save the left edge of the original array so sublists can be positioned relative to it
+//      leftEdge = parseFloat(arr.element.css("left"));
+      leftEdge = 200; // Hack because arr.element.css is returning "auto" instead of position
+      var level = 1;
+      var leftOffset = 0;
+      quicksort(arr, level, leftOffset);
 
       // END QUICKSORT IMPLEMENTATION
 
@@ -42,8 +43,17 @@
     }
   }
 
-  function quicksort(arr, left, right)
+  // The space required for each row to be displayed
+  var leftEdge = 0;
+
+  function quicksort(arr, level, leftOffset)
   {
+    var left = 0;
+    var right = arr.size() - 1;
+
+    // Correctly position the array
+    setPosition(arr, level, leftOffset);
+
     jsav.umsg("Select the pivot");
     var pivotIndex = Math.floor((left + right) / 2);
     arr.highlightBlue(pivotIndex);
@@ -69,6 +79,8 @@
     arr.markSorted(finalPivotIndex);
     jsav.step();
 
+    // Create and display sub-arrays
+
     // Sort left partition
     var subArr1 = arr.slice(left, finalPivotIndex);
     if (subArr1.length === 1) {
@@ -79,9 +91,10 @@
       arr.markSorted(left);
     }
     else if (subArr1.length > 1) {
+      var avSubArr1 = jsav.ds.array(subArr1, {indexed: true, center: false});
       jsav.umsg("Call quicksort on the left sublist");
       jsav.step();
-      quicksort(arr, left, finalPivotIndex - 1);
+      quicksort(avSubArr1, level + 1, leftOffset);
     }
 
     // Sort right partition
@@ -94,9 +107,10 @@
       arr.markSorted(finalPivotIndex + 1);
     }
     else if (subArr2.length > 1) {
+      var avSubArr2 = jsav.ds.array(subArr2, {indexed: true, center: false});
       jsav.umsg("Call quicksort on the right sublist");
       jsav.step();
-      quicksort(arr, finalPivotIndex + 1, right);
+      quicksort(avSubArr2, level + 1, leftOffset + finalPivotIndex + 1);
     }
   }
 
@@ -156,6 +170,25 @@
 
     // Return first position in right partition
     return left;
+  }
+
+  /**
+   * Calculates and sets the appropriate 'top' and 'left' CSS values based
+   * on the specified array's level of recursion and number of blocks the array should be offset from the left
+   *
+   * arr - the JSAV array to set the 'top' and 'left' values for
+   * level - the level of recursion, the full-size array is level 1
+   * leftOffset - the number of blocks from the left the array should be positioned
+   */
+  function setPosition(arr, level, leftOffset) {
+    console.log("In setPosition with level " + level + " and leftOffset " + leftOffset + ". Also, leftEdge is " + leftEdge);
+    var blockWidth = 46;
+    var rowHeight = 80;
+    var left = leftEdge + leftOffset * blockWidth;
+    var top = rowHeight * (level - 1);
+    console.log("Position for array: " + left + ", " + top);
+    // Set the top and left values so that all arrays are spaced properly
+    arr.element.css({"left": left, "top": top});
   }
 
   // Connect action callbacks to the HTML entities
