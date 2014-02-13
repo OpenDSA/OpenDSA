@@ -87,14 +87,17 @@
             modelArray.layout();
             jsav.displayInit();
             
+            var j = 0;
             for (var i = 1; i < arraySize; i++) {
                 jsav.effects.copyValue(modelArray, i, modelTempArray, 0);
+                jsav.umsg("Copy " + modelArray.value(i) + " from the array into the temp variable.<br/>&nbsp;&nbsp;i: " + i + ",&nbsp;&nbsp;j: " + j);
                 jsav.stepOption("grade", true);
                 jsav.step();
-                var j = i;
+                j = i;
                 while (j > 0 && modelArray.value(j - 1) > modelTempArray.value(0)) {
                     jsav.effects.copyValue(modelArray, j - 1, modelArray, j);
                     modelArray.layout();
+                    jsav.umsg("Shift all the elements, whose values are larger than " + modelTempArray.value(0) + " (temp) and whose indices are smaller than " + i + " (i), one step to the right.<br/>&nbsp;&nbsp;i: " + i + ",&nbsp;&nbsp;j: " + j);
                     jsav.stepOption("grade", true);
                     jsav.step();
                     j--;
@@ -102,6 +105,7 @@
                 if (j !== i) {
                     jsav.effects.copyValue(modelTempArray, 0, modelArray, j);
                     modelArray.layout();
+                    jsav.umsg("Copy " + modelTempArray.value(0) + " back into its right place in the array. The array is now sorted between indices 0 and " + i + "<br/>&nbsp;&nbsp;i: " + i + ",&nbsp;&nbsp;j: " + j);
                     jsav.stepOption("grade", true);
                     jsav.step();
                 }
