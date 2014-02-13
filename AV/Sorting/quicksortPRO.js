@@ -57,7 +57,7 @@
       for (var i = 0; i < arraySize; i++) {
         initialArray[i] = Math.floor(Math.random() * 100);
       }
-      
+
       // Log the initial state of the exercise
       var initData = {};
       initData.gen_array = initialArray;
@@ -111,14 +111,14 @@
      */
     function quicksort(jsav, arr, i, j, msPivotIndex, msPivotMoved, msPartitioned, msLeft, msRight) {
       // Select the pivot
-      var pivotIndex = Math.floor((i + j) / 2);
-      arr.highlightBlue(pivotIndex);
+      var pIndex = Math.floor((i + j) / 2);
+      arr.highlightBlue(pIndex);
       jsav.umsg("Select the pivot");
       jsav.step();
 
       // Move the pivot to the end of the list being sorted
       jsav.umsg("Move the pivot to the end");
-      arr.swap(pivotIndex, j);
+      arr.swapWithStyle(pIndex, j);
       msPivotIndex.value(j);
       msPivotMoved.value(true);
       jsav.stepOption("grade", true);
@@ -138,7 +138,7 @@
       jsav.umsg("Put the pivot value into its correct location");
       // If the pivot is already in its final location, don't need to swap it
       if (k !== j) {
-        arr.swap(k, j);
+        arr.swapWithStyle(j, k);
         msPivotMoved.value(true);
         msPivotIndex.value(k);
         jsav.stepOption("grade", true);
@@ -212,18 +212,16 @@
       var l = modelState[4];
       var r = modelState[5];
 
+      // Get the raw array elements so we can access their list of class names
+      var modArrElems = JSAV.utils._helpers.getIndices($(modelArray.element).find("li"));
+      var userArrElems = JSAV.utils._helpers.getIndices($(userArr.element).find("li"));
+
       for (var i = 0; i < modelArray.size(); i++) {
         // Fix any incorrect values
-        var val = modelArray.value(i);
-        if (val !== userArr.value(i)) {
-          userArr.value(i, val);
-        }
+        userArr.value(i, modelArray.value(i));
 
-        // Make the CSS background-color property of each element in the model array match the background-color of each element in the user array
-        var bgColor = modelArray.css(i, "background-color");
-        if (userArr.css(i, "background-color") !== bgColor) {
-          userArr.css(i, {"background-color": modelArray.css(i, "background-color")});
-        }
+        // Ensure the classes of each element in the user array match those in the model solution
+        userArrElems[i].className = modArrElems[i].className;
 
         // Clear any arrows the user put in the wrong place
         userArr.clearLeftArrow(i);
@@ -250,7 +248,7 @@
         } else if (pivotIndex.value() === index && !pivotMoved.value()) {
           // Deselect the pivot unless it has already been moved
           pivotIndex.value(-1);
-          arr.unhighlight(index);
+          arr.unhighlightBlue(index);
         } else if (!pivotMoved.value()) {
           // Move the selected pivot to the specified index
           swapPivot(pivotIndex.value(), index);
@@ -259,11 +257,11 @@
           // Select the left end of the range to partition
           left.value(index);
           arr.setLeftArrow(index);
-          
+
           if (right.value() === -1) {
             av.umsg("Select the partition\'s right endpoint, then click on 'Partition'.");
           } else {
-            av.umsg("");
+            av.umsg("Click 'Partition'");
           }
         } else if (right.value() === -1) {
           // Select the right end of the range to partition
@@ -293,7 +291,7 @@
         } else if (pivotIndex.value() === index) {
           // Deselect the pivot
           pivotIndex.value(-1);
-          arr.unhighlight(index);
+          arr.unhighlightBlue(index);
         } else {
           // Move the pivot to its final location
           swapPivot(pivotIndex.value(), index);
@@ -307,7 +305,7 @@
      */
     function swapPivot(pIndex, newPIndex) {
       // Move the selected pivot to the specified index
-      userArr.swap(pIndex, newPIndex);
+      userArr.swapWithStyle(pIndex, newPIndex);
       pivotIndex.value(newPIndex);
       pivotMoved.value(true);
 
