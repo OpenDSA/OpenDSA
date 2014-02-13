@@ -1,6 +1,7 @@
 // Create diagram for twoThreeTreeCON.
 (function ($) {
   "use strict";
+
   var jsav = new JSAV("twoThreeTreeCON");
 
   // Create all the arrays that represent the nodes in the 2-3 tree.
@@ -325,6 +326,13 @@
   // Mark the slide show as finished.
   jsav.recorded();
 
+}(jQuery));
+
+// Tree array testing function
+(function ($) {
+  var jsav = new JSAV("arrayTree");
+
+  var tree = new ODSA.ArrayTree(jsav, 2, 3);
 }(jQuery));
 
 // Create slide show for simpleInsertCON
