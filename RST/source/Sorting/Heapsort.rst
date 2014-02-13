@@ -92,7 +92,7 @@ Thus, only a relatively small fraction of the edges need be sorted.
 
 Here is a warmup practice exercise for Heapsort.
 
-.. avembed:: Exercises/Sorting/HeapsortPRO.html ka
+.. avembed:: Exercises/Sorting/HeapsortStepPRO.html ka
 
 Now test yourself to see how well you understand Heapsort.
 Can you reproduce its behavior?

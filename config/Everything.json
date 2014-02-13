@@ -1113,13 +1113,13 @@
             "points": 0.1,
             "threshold": 1.0
           },
-          "MergesortPRO": {
+          "MergesortMergePRO": {
             "long_name": "Mergesort Merging Proficiency",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "mergesortProficiency": {
+          "mergesortPRO": {
             "long_name": "Mergesort Proficiency",
             "required": true,
             "points": 1,
@@ -1178,7 +1178,7 @@
             "points": 1,
             "threshold": 5
           },
-          "quicksortProficiency": {
+          "quicksortPRO": {
             "long_name": "Quicksort Proficiency",
             "required": true,
             "points": 1,
@@ -1201,7 +1201,7 @@
             "points": 0.1,
             "threshold": 1.0
           },
-          "HeapsortPRO": {
+          "HeapsortStepPRO": {
             "long_name": "Heapsort Proficiency 1",
             "required": true,
             "points": 1,

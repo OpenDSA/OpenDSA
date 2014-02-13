@@ -83,7 +83,7 @@ Here is a visualization for the merge operation.
 
 Here is a mergesort warmup exercise to practice merging.
 
-.. avembed:: Exercises/Sorting/MergesortPRO.html ka
+.. avembed:: Exercises/Sorting/MergesortMergePRO.html ka
 
 Now here is a full proficiency exercise to put it all together.
 
