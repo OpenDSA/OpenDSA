@@ -128,12 +128,17 @@
       // k will be the first position in the right subarray
       jsav.umsg("Partition the subarray");
       var k = partition(arr, i, j - 1, arr.value(j));
+      arr.setLeftArrow(i);
+      arr.setRightArrow(j - 1);
       msLeft.value(i);
       msRight.value(j - 1);
       msPartitioned.value(true);
       msPivotMoved.value(false);
       jsav.stepOption("grade", true);
       jsav.step();
+
+      arr.clearLeftArrow(i);
+      arr.clearRightArrow(j - 1);
 
       jsav.umsg("Put the pivot value into its correct location");
       // If the pivot is already in its final location, don't need to swap it

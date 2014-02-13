@@ -1,6 +1,6 @@
 #container {
   width: 800px;
-  height: 765px;
+  height: 480px;
   overflow-y: visible;
   overflow-x: hidden;
 }
@@ -11,11 +11,10 @@
 
 .jsavarray {
   padding-left: 0;
-  position: absolute;
 }
 
 .jsavline {
-  height: 50px;
+  height: 40px;
 }
 
 /* Deprecated, should be removed once quicksort has been rewritten to use annotations */
