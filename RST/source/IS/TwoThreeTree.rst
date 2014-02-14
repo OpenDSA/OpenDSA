@@ -124,12 +124,6 @@ rightmost position).
    Because there is room in the node for a second key, it is simply added
    to the left position with 15 moved to the right position.
 
-.. inlineav:: testCON ss
-   :output: show
-
-.. inlineav:: test2CON ss
-   :output: show
-
 If we insert the new record into a leaf node :math:`L` that already
 contains two records, then more space must be created.
 Consider the two records of node :math:`L` and the record to be
