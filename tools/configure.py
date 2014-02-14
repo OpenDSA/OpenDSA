@@ -176,6 +176,8 @@ def generate_index_rst(config, slides = False):
     index_rst.write("* :ref:`search`\n")
 
 def generate_todo_rst(config, slides = False):
+  print '\nGenerating ToDo file...'
+
   # Sort the list of todo items by type (module_name, type, todo_directive)
   sorted_todo_list = sorted(todo_list, key=lambda todo: todo[1])
 

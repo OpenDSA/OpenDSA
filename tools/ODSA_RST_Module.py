@@ -94,7 +94,7 @@ class ODSA_RST_Module:
 
         image_path = args[-1]
         images.append(os.path.basename(image_path))
-      elif '.. TODO::' in mod_data[i]:
+      elif '.. todo::' in mod_data[i].lower():
         if config.suppress_todo:
           # Remove TODO directives from the RST file
           mod_data[i] = ''
