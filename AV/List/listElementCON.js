@@ -87,12 +87,15 @@ function connect(objFrom, objTo, options){
   // Step 2
   arr.hide();
   dl.hide();
+  dhead.hide();
+  dcurr.hide();
+  dtail.hide();
   l.show();
   l.get(1).value("");
   l.get(2).value("");
   l.get(3).value("");
   l.get(4).value("");
-  l.css({top : 50});
+  l.translateY(-80);
   bigData.show();
   bigData1.show();
   var listP1 = connect(l.get(1), bigData);
@@ -104,6 +107,9 @@ function connect(objFrom, objTo, options){
   jsav.step();
 
   l.hide();
+  head.hide();
+  curr.hide();
+  tail.hide();
   listP1.hide();
   listP2.hide();
   listP3.hide();
