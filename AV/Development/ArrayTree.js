@@ -27,6 +27,7 @@
     this.layers = height;
     // This is a two dimensional array that stores at each index all the array nodes for each layer.
     this.node_layers = [];
+    this.edges = [];
     // Default vertical gap between array layers expressed in percentage.
     this.v_gap = 2.0;
     // Default horizontal gap between each array node in the bottom most layer expressed in percentage.
@@ -34,6 +35,7 @@
     // Generate all the array nodes for each array layer.
     generateArrays(this);
     position_arrays(this);
+    add_edges(this);
   };
 
   /**
@@ -145,9 +147,8 @@
         else if (!last_layer && j != 0) {
           left_pos += Math.round((array_width * (1 + tree.h_gap)) + (left_increase * 2));
         }
-
-        console.log("i: " + i + ", j: " + j + ", top: " + top_pos + ", left: " + left_pos);
-        tree.node_layers[i][j].css({"top" : top_pos + "px", "left" : left_pos + "px"});
+        // Set the top and left offsets for the array node.
+        tree.node_layers[i][j].css({"top" : top_pos + "px", "left" : left_pos + "px", "z-index": 100});
       }
       // Get the top offset percent increase.
       var top_percent_inc = (tree.v_gap + (tree.layers - (i + 2))/3);
@@ -158,15 +159,89 @@
 
   /**
    * Gets the total width of the bottom layer of an ArrayTree object.
+   *
    * @param tree The tree object.
    * @param array_node_width The width of each array node.
    * @returns {number} The total width of the last layer of nodes in the ArrayTree.
    */
   function get_bottom_layer_width(tree, array_node_width) {
-    var nodes_count = Math.pow((tree.node_length + 1), tree.layers - 1);
+    var layer_count = tree.node_layers.length;
+    var nodes_count = tree.node_layers[layer_count - 1].length;
     var bottom_width = nodes_count * (array_node_width * (1 + tree.h_gap));
     return Math.round(bottom_width);
   }
+
+  function add_edges(tree) {
+    var node_length = tree.node_length
+    var links_per_parent = node_length + 1;
+    var layer_count = tree.node_layers.length;
+    for (var i = layer_count - 1; i > 0; i--) {
+      var node_count = tree.node_layers[i].length;
+      var edge_layer = [];
+      for (var j = 0; j < node_count; j++) {
+        var parent = [i-1, Math.floor(j/links_per_parent)];
+        var child = [i, j];
+        var child_index = j % links_per_parent;
+        var edge = new Edge(tree, parent, child, child_index, node_length);
+        edge_layer.push(edge);
+      }
+      tree.edges.push(edge_layer);
+    }
+  }
+
+  var Edge = function(tree, parent, child, index, node_length) {
+    var parent_node = tree.node_layers[parent[0]][parent[1]];
+    var parent_top = parseInt(parent_node.css("top"));
+    var parent_left = parseInt(parent_node.css("left"));
+    var parent_height = parseInt(parent_node.css("height"));
+    var parent_width = parseInt(parent_node.css("width"));
+    var node_step = parent_width / node_length;
+    var y1 = parent_top + parent_height;
+    var x1 = parent_left + (index * node_step);
+    var child_node = tree.node_layers[child[0]][child[1]];
+    var child_top = parseInt(child_node.css("top"));
+    var child_left = parseInt(child_node.css("left"));
+    var y2 = child_top;
+    var x2 = child_left + (parent_width / 2);
+    console.log("x1: " + x1 + ", y1: " + y1 + ", x2: " + x2 + ", y2: " + y2);
+    tree.jsav.g.line(x1, y1, x2, y2, {"stroke-width": 1.5});
+  }
+
+  ODSA.ArrayTree.prototype = {
+    /**
+     * Sets the value of an element in the array node.
+     *
+     * @param value The new value for the element in the array node.
+     * @param layer The layer where the array node is located at.
+     * @param node  The index of the node where the value is to be set.
+     * @param index The index of the node element where the value is to be set.
+     */
+    set_value: function (value, layer, node, index) {
+      this.node_layers[layer][node].value(index, value);
+    },
+    /**
+     * Removes the specified node from the Array Tree.
+     *
+     * @param layer The layer where the node to be removed is at.
+     * @param node  The index of the node to be removed.
+     */
+    delete_array_node: function (layer, node) {
+      // Delete the JSAV array object, so that it is removed from the canvas.
+      this.node_layers[layer][node].clear();
+      // Delete the array node from the node layer.
+      this.node_layers[layer].splice(node, 1);
+      // Check if the layer is now empty.
+      if (this.node_layers[layer].length == 0) {
+        this.node_layers.splice(layer, 1);
+      }
+    },
+    /**
+     * Forces the Array Tree to reposition all of the array nodes.
+     */
+    layout: function() {
+      position_arrays(this);
+    }
+  };
 
   /**
    * Add the ODSA variable to the window object to make everything
