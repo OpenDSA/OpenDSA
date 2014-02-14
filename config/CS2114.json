@@ -650,6 +650,10 @@
         "long_name": "Stubs Chapter",
         "exercises": {}
       },
+      "Stubs/SetDef": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
       "Stubs/SelfOrg": {
         "long_name": "Self-organizing Lists",
         "exercises": {}
