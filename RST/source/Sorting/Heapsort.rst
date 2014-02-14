@@ -66,10 +66,15 @@ Because building the heap takes :math:`\Theta(n)` time
 and because :math:`n` deletions
 of the maximum-valued record each take :math:`\Theta(\log n)` time,
 we see that the entire Heapsort operation takes
-:math:`\Theta(n \log n)` time in the worst, average, and best cases.
+:math:`\Theta(n \log n)` time in the worst and average cases.
+If all key values were equal, then Heapsort would cost
+:math:`\Theta(n)` in be best case because every call  to ``removemax``
+would result in calls to ``siftdown`` that complete in constant time
+because the new root value never swaps with its children.
+
 While typically slower than Quicksort by a constant factor
-(because loading and unloading the heap is somewhat slower than
-Quicksort's series of partitions), Heapsort
+(because unloading the heap using ``removemax`` is somewhat slower
+than Quicksort's series of partitions), Heapsort
 has one special advantage over the other sorts studied so far.
 Building the heap is relatively cheap, requiring
 :math:`\Theta(n)` time.
