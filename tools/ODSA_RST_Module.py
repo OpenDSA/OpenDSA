@@ -11,15 +11,14 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
 
   # Collapse multiple whitespaces inside the directive to ensure args will be split properly
   line = p.sub(' ', line).strip()
-  
+
   # Print an error if the directive doesn't match what we expect
   directive = line[:line.find(':: ')].strip().split(' ')
   if len(directive) != 2 and directive[0] != '..':
     print console_msg_prefix + "ERROR: Invalid Sphinx directive declaration"
-  
+
   # Isolates the arguments to the directive
   args = line[line.find(':: ') + 3:].split(' ')
-  
 
   # Ensure the expected number of arguments was parsed (skip the check if -1)
   if expected_num_args > -1 and len(args) != expected_num_args:
@@ -32,8 +31,6 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
 class ODSA_RST_Module:
 
   def __init__(self, config, mod_path, mod_attrib = {'exercises': {} }, satisfied_requirements = [], chap = None, depth = 0):
-    todo_count = 0 # TODO: figure out what to do with TODOs
-
     console_msg_prefix = '  ' * (depth + 1)
 
     mod_path = os.path.splitext(mod_path)[0]
@@ -42,6 +39,7 @@ class ODSA_RST_Module:
     images = []
     missing_exercises = []
     requirements_satisfied = []
+    todo = []
 
     exercises = mod_attrib['exercises']
 
@@ -106,8 +104,20 @@ class ODSA_RST_Module:
             mod_data[i] = ''
             i += 1
         else:
-          # Increment the TODO directive counter
-          todo_count += 1
+          # Process the TODO directive and save it as an entry in 'todo'
+          todo_type = ''
+          todo_directive = [mod_data[i]]
+          i += 1
+
+          while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
+            if ':type:' in mod_data[i]:
+              todo_type = mod_data[i].split(': ')[1].strip()
+
+            todo_directive.append(mod_data[i])
+
+            i += 1
+
+          todo.append((mod_name, todo_type, todo_directive))
       elif '.. inlineav::' in mod_data[i]:
         # Parse the arguments from the directive
         args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
@@ -196,3 +206,4 @@ class ODSA_RST_Module:
     self.images = images
     self.missing_exercises = missing_exercises
     self.requirements_satisfied = requirements_satisfied
+    self.todo_list = todo

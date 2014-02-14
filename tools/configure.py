@@ -68,8 +68,8 @@ processed_modules = []
 # List of images encountered while processing module files, these will be copied from the source/Images to Images in the output source directory
 images = []
 
-# Keeps a count of how many ToDo directives are encountered
-todo_count = 0
+# Stores information about ToDo directives
+todo_list = []
 
 # List of fulfilled prerequisite topics
 satisfied_requirements = []
@@ -107,6 +107,7 @@ def process_section(config, section, index_rst, depth, current_section_numbers =
   index_rst.write("\n")
 
 def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0, current_section_numbers=[], chap=None):
+  global todo_list
   global images
   global missing_exercises
   global satisfied_requirements
@@ -130,6 +131,7 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, dep
 
   module = ODSA_RST_Module(config, mod_path, mod_attrib, satisfied_requirements, chap, depth)
 
+  todo_list += module.todo_list
   images += module.images
   missing_exercises += module.missing_exercises
   satisfied_requirements += module.requirements_satisfied
@@ -166,12 +168,46 @@ def generate_index_rst(config, slides = False):
     if not slides:
       process_module(config, mod_path='Gradebook', index_rst=index_rst)
 
-    if todo_count > 0:
+    if len(todo_list) > 0:
       index_rst.write("   ToDo\n")
 
     index_rst.write("\n")
     index_rst.write("* :ref:`genindex`\n")
     index_rst.write("* :ref:`search`\n")
+
+def generate_todo_rst(config, slides = False):
+  # Sort the list of todo items by type (module_name, type, todo_directive)
+  sorted_todo_list = sorted(todo_list, key=lambda todo: todo[1])
+
+  with open(''.join([config.book_src_dir, 'ToDo.rst']), 'w') as todo_file:
+    header_data = {}
+    header_data['mod_name'] = 'ToDo'
+    header_data['long_name'] = 'ToDo'
+    header_data['dispModComp'] = False
+    header_data['mod_chapter'] = ''
+    header_data['mod_date'] = ''
+    header_data['unicode_directive'] = rst_header_unicode if not slides else ''
+    todo_file.write(rst_header % header_data)
+    todo_file.write(todo_rst_template)
+
+    # RST syntax for a horizontal rule (<hr />)
+    hr = '\n----\n'
+    current_type = ''
+
+    for (mod_name, todo_type, todo_directive) in sorted_todo_list:
+      if todo_type == '':
+        todo_type ='No Category'
+
+      # Whenever a new type is encountered, print a header for that type (using RST syntax)
+      if current_type != todo_type:
+        todo_file.writelines('\n'.join([hr, todo_type, '=' * len(todo_type), hr, '\n']))
+        current_type = todo_type
+
+      # Write a header with the name of the file where the ToDo originated (using RST syntax)
+      todo_file.writelines('\n'.join(['source: ' + mod_name, '-' * len(mod_name), '\n']))
+
+      # Write the TODO directive itself
+      todo_file.writelines(todo_directive)
 
 
 def initialize_output_directory(config):
@@ -212,13 +248,13 @@ def configure(config_file_path, slides = False):
   if config.assumes:
     satisfied_requirements += [a.strip() for a in config.assumes.split(';')]
 
-  # Optionall rebuild JSAV
+  # Optionally rebuild JSAV
   if config.build_JSAV:
     print "Building JSAV\n"
     status = 0
 
     with open(os.devnull, "w") as fnull:
-      status = subprocess.check_call('make -C %s' % (config.odsa_dir + 'JSAV/'), shell=True, stdout=fnull)
+      status = subprocess.check_call('make -s -C %s' % (config.odsa_dir + 'JSAV/'), shell=True, stdout=fnull)
 
     if status != 0:
       print "JSAV make failed"
@@ -230,6 +266,10 @@ def configure(config_file_path, slides = False):
   # Initialize output directory, create index.rst, and process all of the modules
   initialize_output_directory(config)
   generate_index_rst(config, slides)
+
+  # Entries are only added to todo_list if config.suppress_todo is False
+  if len(todo_list) > 0:
+    generate_todo_rst(config, slides)
 
   # Print out a list of any exercises found in RST files that do not appear in the config file
   if len(missing_exercises) > 0:
@@ -252,8 +292,6 @@ def configure(config_file_path, slides = False):
   options['code_lang'] = config.code_lang
   options['av_root_dir'] = config.av_root_dir
   options['exercises_root_dir'] = config.exercises_root_dir
-  # TODO: Temporary fix until preprocessor.py stops creating a ToDo.rst file when there are no TODO directives
-  options['remove_todo'] = 'rm source/ToDo.rst' if todo_count == 0 else ''
   # The relative path between the ebook output directory (where the HTML files are generated) and the root ODSA directory
   options['eb2root'] = os.path.relpath(config.odsa_dir, config.book_dir + config.rel_book_output_path) + '/'
   options['rel_book_output_path'] = config.rel_book_output_path

@@ -41,6 +41,16 @@ index_header = '''\
 
 '''
 
+
+todo_rst_template = '''\
+.. index:: ! todo
+
+TODO List
+=========
+
+'''
+
+
 makefile_template = '''\
 # Makefile for Sphinx documentation
 #
@@ -77,7 +87,6 @@ preprocessor:
 	python "%(odsa_dir)sRST/preprocessor.py" source/ $(HTMLDIR)
 
 html: preprocessor
-	%(remove_todo)s
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
 	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
@@ -87,7 +96,6 @@ html: preprocessor
 	rm Makefile
 
 slides: preprocessor
-	%(remove_todo)s
 	@SLIDES=yes \
 	$(SPHINXBUILD) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js

@@ -346,7 +346,7 @@
             "points": 1,
             "threshold": 3
           }
-	}
+        }
       },
       "List/Freelist": {
         "long_name": "Freelists",
@@ -470,7 +470,7 @@
           }
         }
       },
-      "List/Stacklinked": {
+      "List/StackLinked": {
         "long_name": "Linked Stacks",
         "exercises": {
           "LStackPushCON": {
@@ -706,7 +706,7 @@
             "points": 2,
             "threshold": 5
           }
-	}
+        }
       },
       "Development/BST": {
         "long_name": "Binary Search Trees",
@@ -848,7 +848,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.90
-	  }
+          }
         }
       },
       "Development/GenTreeImplement": {
@@ -1769,7 +1769,7 @@
         }
       }
     },
-    
+
     "Balanced Trees": {
       "Development/BalancedTree": {
         "long_name": "Balanced Trees",
