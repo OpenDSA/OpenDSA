@@ -171,40 +171,75 @@
     return Math.round(bottom_width);
   }
 
+  /**
+   * Adds edges to all the parent-child nodes in the tree.
+   * @param tree The tree where the edges will be drawn on.
+   */
   function add_edges(tree) {
-    var node_length = tree.node_length
-    var links_per_parent = node_length + 1;
+    // Get the number of links (children) every parent node can have.
+    var links_per_parent = tree.node_length + 1;
+    // Ge the number of layers in the tree.
     var layer_count = tree.node_layers.length;
+    // Iterate through each layer starting with the last one and ending with the second layer.
     for (var i = layer_count - 1; i > 0; i--) {
+      // Get the number of nodes in this layer.
       var node_count = tree.node_layers[i].length;
+      // Create a new array that will hold all the edges created to connect the nodes in this
+      // layer to their parents in the layer above.
       var edge_layer = [];
+      // Iterate through all the nodes in this layer and create a edge to their parent.
       for (var j = 0; j < node_count; j++) {
+        // Get the coordinates for the parent node.
         var parent = [i-1, Math.floor(j/links_per_parent)];
+        // Get the coordinates for the child node.
         var child = [i, j];
+        // Get the child index for this node realtive to the parent node.
         var child_index = j % links_per_parent;
-        var edge = new Edge(tree, parent, child, child_index, node_length);
+        // Create a new edge.
+        var edge = new Edge(tree, parent, child, child_index);
+        // Add edge to array.
         edge_layer.push(edge);
       }
-      tree.edges.push(edge_layer);
+      // Add all the edges of this layer to the edges array in the Array Tree object.
+      tree.edges.unshift(edge_layer);
     }
   }
 
-  var Edge = function(tree, parent, child, index, node_length) {
+  /**
+   * Draws a line from the parent node to the child node.
+   *
+   * @param tree The ArrayTree object where the edges will be drawn.
+   * @param parent The parent node coordinates(layer, node).
+   * @param child The child node coordinates (layer, node).
+   * @param index The index of the parent node where the edge should come from.
+   * @returns {*} A JSAV Line object.
+   * @constructor Creates a new JSAV Line object.
+   */
+  var Edge = function(tree, parent, child, index) {
+    // Get the lenght of a node.
+    var node_length = tree.node_length;
+    // Get a pointer to the parent node.
     var parent_node = tree.node_layers[parent[0]][parent[1]];
+    // Get all the necessary properties from the parent node.
     var parent_top = parseInt(parent_node.css("top"));
     var parent_left = parseInt(parent_node.css("left"));
     var parent_height = parseInt(parent_node.css("height"));
     var parent_width = parseInt(parent_node.css("width"));
+    // Get the width of each individual index in the node.
     var node_step = parent_width / node_length;
+    // Set the top and left offset of the edge.
     var y1 = parent_top + parent_height;
     var x1 = parent_left + (index * node_step);
+    // Get a pointer to the child node.
     var child_node = tree.node_layers[child[0]][child[1]];
+    // Get all the necessary porpoerties from the child node.
     var child_top = parseInt(child_node.css("top"));
     var child_left = parseInt(child_node.css("left"));
+    // Set the top and left offset of the edge.
     var y2 = child_top;
     var x2 = child_left + (parent_width / 2);
-    console.log("x1: " + x1 + ", y1: " + y1 + ", x2: " + x2 + ", y2: " + y2);
-    tree.jsav.g.line(x1, y1, x2, y2, {"stroke-width": 1.5});
+    var new_edge = tree.jsav.g.line(x1, y1, x2, y2, {"stroke-width": 1.5});
+    return new_edge;
   }
 
   ODSA.ArrayTree.prototype = {
@@ -226,20 +261,16 @@
      * @param node  The index of the node to be removed.
      */
     delete_array_node: function (layer, node) {
-      // Delete the JSAV array object, so that it is removed from the canvas.
-      this.node_layers[layer][node].clear();
-      // Delete the array node from the node layer.
-      this.node_layers[layer].splice(node, 1);
-      // Check if the layer is now empty.
-      if (this.node_layers[layer].length == 0) {
-        this.node_layers.splice(layer, 1);
-      }
+      // Hide the array.
+      this.node_layers[layer][node].hide();
+      // Hide any edge from this node to its parent.
+      this.edges[layer-1][node].hide();
     },
     /**
      * Forces the Array Tree to reposition all of the array nodes.
      */
     layout: function() {
-      position_arrays(this);
+//      position_arrays(this);
     }
   };
 
