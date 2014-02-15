@@ -150,7 +150,7 @@ function setPointer(name, node, opt) {
   jsav.recorded();
 }(jQuery));
 
-// Bad Reason for the problem representation version of linked list
+// The reason why there is a problem with naive representation of linked list
 (function ($) {
   var jsav = new JSAV("LlistBadReasonCON");
 
@@ -408,7 +408,7 @@ function setPointer(name, node, opt) {
   //step 2
   var newNode = l.newNode("");	
   // Set the position for the new node
-  newNode.css({top: 60, left: 187}); 
+  newNode.css({top: 60, left: 222}); 
   var node = l.get(2).next();    
   l.get(2).next(newNode);
   newNode.next(node);
