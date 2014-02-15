@@ -21,8 +21,8 @@
         "long_name": "Dynamic",
         "exercises": {}
       },
-      "IS/SequentialFit": {
-        "long_name": "Sequential Fit",
+      "IS/FirstFit": {
+        "long_name": "First Fit",
         "exercises": {}
       },
       "IS/TwoThreeTree.rst": {
