@@ -27,8 +27,7 @@
     </table>
     <div class="avcontainer">
       <p class="jsavoutput jsavscroll"></p>
-      <ol id="hashTable"></ol>
-      <input type="button" id="showcounts" name="showcounts" value="Show Counts" />
+      <ol id="firstFit"></ol>
     </div>
   </div>
 
@@ -36,6 +35,18 @@
   <div id="bottom">
     <form id="ssperform">
       <p id="procontrols">
+                <!-- Input Text Field -->
+
+        <label for="input">Input:</label>
+        <input size="10" name="input" id="input" type="text" />
+
+        <!-- Buttons -->
+        <input type="button" id="submit" name="submit" value="Submit" />
+        <input type="button" id="next" name="next" value="Next" />
+        <input type="button" id="reset" name="reset" value="Reset" />
+      </p>
+      <p>
+
         <!-- Algorithm Dropdown -->
         <select id="fitAlgorithm">
           <option selected="selected" value="0"> Choose Fit Algorithm</option>
@@ -45,38 +56,7 @@
           <option value="1">Worst Fit</option>
           <option value="1">Sequential Fit</option>
         </select>
-
-        <!-- Array Size Dropdown -->
-        <select id="tablesize">
-          <option selected="selected" value="0">Table Size</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-          <option value="16">16</option>
-        </select>
-      </p>
-      <p>
-        <!-- Input Text Field -->
-        <label for="input">Input:</label>
-        <input size="10" name="input" id="input" type="text" />
-
-        <!-- Buttons -->
-        <input type="button" id="submit" name="submit" value="Next" />
-        <input type="button" id="next" name="next" value="Next" />
-        <input type="button" id="reset" name="reset" value="Restart" />
-      </p>
+       </p>  
     </form>
   </div>
 
