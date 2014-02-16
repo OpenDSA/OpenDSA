@@ -219,7 +219,7 @@ def generate_todo_rst(config, slides = False):
   print '\nGenerating ToDo file...'
 
   # Sort the list of todo items by type (module_name, type, todo_directive)
-  sorted_todo_list = sorted(todo_list, key=lambda todo: todo[1])
+  sorted_todo_list = sorted(todo_list, key=lambda todo: todo[2])
 
   with open(''.join([config.book_src_dir, 'ToDo.rst']), 'w') as todo_file:
     header_data = {}
@@ -232,26 +232,23 @@ def generate_todo_rst(config, slides = False):
     todo_file.write(rst_header % header_data)
     todo_file.write(todo_rst_template)
 
-    # RST syntax for a horizontal rule (<hr />)
-    hr = '\n----\n'
     current_type = ''
 
-    for (mod_name, todo_type, todo_directive) in sorted_todo_list:
+    for (todo_id, mod_name, todo_type, todo_directive) in sorted_todo_list:
       if todo_type == '':
         todo_type ='No Category'
 
       # Whenever a new type is encountered, print a header for that type (using RST syntax)
       if current_type != todo_type:
-        todo_file.writelines('\n'.join([hr, todo_type, '=' * len(todo_type), hr, '\n']))
+        todo_file.writelines('\n'.join([todo_type, '=' * len(todo_type), '\n']))
         current_type = todo_type
 
-      # Write a header with the name of the file where the ToDo originated (using RST syntax)
-      source = 'source: ' + mod_name
-      todo_file.writelines('\n'.join([source, '-' * len(source), '\n']))
+      # Write a header with the name of the file where the ToDo originated that hyperlinks directly to the original ToDo
+      todo_header = '.. raw:: html\n\n   <h2><a href="' + mod_name + '.html#' + todo_id + '">source: ' + mod_name + '</a></h2>\n\n'
+      todo_file.write(todo_header)
 
-      # Write the TODO directive itself
-      todo_file.writelines(todo_directive)
-      todo_file.writelines('\n')
+      # Clean up and write the TODO directive itself
+      todo_file.write('\n'.join(todo_directive).rstrip() + '\n\n')
 
 
 def initialize_output_directory(config):

@@ -193,17 +193,22 @@ class ODSA_RST_Module:
             # Process the TODO directive and save it as an entry in 'todo'
             todo_type = ''
             todo_directive = [mod_data[i]]
+
+            # Prepend an anchor to the todo directive so that we can hyperlink to it from the ToDo page
+            todo_id = 'todo%d' % len(todo_list)
+            mod_data[i] = '.. raw:: html\n\n   <a id="%s"></a>\n\n%s' % (todo_id, mod_data[i])
+
             i += 1
 
             while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
               if ':type:' in mod_data[i]:
                 todo_type = mod_data[i].split(': ')[1].strip()
 
-              todo_directive.append(mod_data[i])
+              todo_directive.append(mod_data[i].rstrip())
 
               i += 1
 
-            todo_list.append((mod_name, todo_type, todo_directive))
+            todo_list.append((todo_id, mod_name, todo_type, todo_directive))
         elif line.startswith('.. inlineav::'):
           # Parse the arguments from the directive
           args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
