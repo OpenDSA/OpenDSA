@@ -77,14 +77,28 @@ satisfied_requirements = []
 # Maps the chapter name and number to each module, used for correcting the numbers during postprocessing
 module_chap_map = {}
 
-def process_section(config, section, index_rst, depth, current_section_numbers = [], chap=None):
+# Dictionary which stores a mapping of sections to modules, modules to their numbers, and figures, tables, theorems, and equations to their numbers
+num_ref_map = {}
+
+# Processes a chapter or section of the book
+#   - config - a dictionary containing all the configuration options
+#   - section - a dictionary where all the keys are sections or modules
+#   - index_rst - the index.rst file being generated
+#   - depth - the depth of the recursion; 0 for the main chapters, 1 for any subsections, ..., N for the modules
+#   - current_section_numbers - a list that contains the numbering scheme for each section or module ([chapter].[section].[...].[module])
+#   - section_name - a string passed to modules for inclusion in the RST header that specifies which chapter / section the module belongs to
+def process_section(config, section, index_rst, depth, current_section_numbers = [], section_name=''):
   # Initialize the section number for the current depth
   if depth >= len(current_section_numbers):
     current_section_numbers.append(config.start_chap_num)
 
   for subsect in section:
+    # Parse the subsection name by eliminating the path and file extension if its a module
+    subsect_name = os.path.splitext(os.path.basename(subsect))[0]
+    num_ref_map[subsect_name] = -1 # Add the section name to num_ref_map
+
     if 'exercises' in section[subsect]:
-      process_module(config, index_rst, subsect, section[subsect], depth, current_section_numbers, chap)
+      process_module(config, index_rst, subsect, section[subsect], depth, current_section_numbers, section_name)
     else:
       # List of characters Sphinx uses for headers, the depth of a section header determines which character to use
       sphinx_header_chars = ['=', '-', '`', "'", '.', '*', '+', '^']
@@ -95,7 +109,7 @@ def process_section(config, section, index_rst, depth, current_section_numbers =
       index_rst.write(".. toctree::\n")
       index_rst.write("   :numbered:\n")
       index_rst.write("   :maxdepth: 3\n\n")
-      process_section(config, section[subsect], index_rst, depth + 1, current_section_numbers, chap=subsect)
+      process_section(config, section[subsect], index_rst, depth + 1, current_section_numbers, subsect_name)
 
     # Increments the section count at the current depth
     current_section_numbers[depth] += 1
@@ -106,14 +120,28 @@ def process_section(config, section, index_rst, depth, current_section_numbers =
 
   index_rst.write("\n")
 
-def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0, current_section_numbers=[], chap=None):
+# Processes a module
+#   - config - a dictionary containing all the configuration options
+#   - index_rst - the index.rst file being generated
+#   - mod_path - the path to the module relative to the RST/source
+#   - mod_attrib - dictionary containing the module data, 'exercises' is a mandatory field (even if its empty)
+#   - depth - the depth of the recursion, used to determine the number of spaces to print before the module name to ensure proper indentation
+#   - current_section_numbers - a list that contains the numbering scheme for each section or module ([chapter].[section].[...].[module])
+#   - section_name - a string passed to modules for inclusion in the RST header that specifies which chapter / section the module belongs to
+def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, depth=0, current_section_numbers=[], section_name=''):
   global todo_list
   global images
   global missing_exercises
   global satisfied_requirements
   global module_chap_map
+  global num_ref_map
 
+  # Parse the name of the module from mod_path and remove the file extension if it exists
   mod_name = os.path.splitext(os.path.basename(mod_path))[0]
+
+  # Update the reference for each section to point to the first module in the section
+  if section_name != '' and num_ref_map[section_name] == -1:
+    num_ref_map[section_name] = mod_name
 
   # Print error message and exit if duplicate module name is detected
   if mod_name in processed_modules:
@@ -126,22 +154,31 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, dep
   print ("  " * depth) + mod_name
   index_rst.write("   %s\n" % mod_name)
 
-  if mod_name == 'ToDo':
-    return
+  # Initialize the module
+  module = ODSA_RST_Module(config, mod_path, mod_attrib, satisfied_requirements, section_name, depth, current_section_numbers)
 
-  module = ODSA_RST_Module(config, mod_path, mod_attrib, satisfied_requirements, chap, depth)
-
+  # Append data from the processed module to the global variables
   todo_list += module.todo_list
   images += module.images
   missing_exercises += module.missing_exercises
   satisfied_requirements += module.requirements_satisfied
+  num_ref_map = dict(num_ref_map.items() + module.num_ref_map.items())
 
   # Maps the chapter name and number to each module, used for correcting the numbers during postprocessing
   # Have to ignore the last number because that is the module number (which is already provided by Sphinx)
-  module_chap_map[mod_name] = [chap, '.'.join(str(i) for i in current_section_numbers[:-1])]
+  module_chap_map[mod_name] = [section_name, '.'.join(str(i) for i in current_section_numbers[:-1])]
+
+  # Hack to maintain the same numbering scheme as the old preprocessor
+  mod_num = ''
+  if len(current_section_numbers) > 0:
+    mod_num = '%s.%d' % ('.'.join(str(j) for j in current_section_numbers[:-1]), (current_section_numbers[-1] + 1))
+
+  num_ref_map[mod_name] = mod_num
 
 
 def generate_index_rst(config, slides = False):
+  """Generates the index.rst file, calls process_section() on config.chapters to recursively process all the modules in the book (in order), as each is processed it is added to the index.rst"""
+
   print "Generating index.rst\n"
   print "Processing..."
 
@@ -150,7 +187,7 @@ def generate_index_rst(config, slides = False):
   header_data['dispModComp'] = 'false'
   header_data['long_name'] = 'Contents'
   header_data['mod_chapter'] = ''
-  header_data['mod_date'] = ''
+  header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
   header_data['unicode_directive'] = rst_header_unicode if not slides else ''
 
   # Generate the index.rst file
@@ -168,6 +205,7 @@ def generate_index_rst(config, slides = False):
     if not slides:
       process_module(config, mod_path='Gradebook', index_rst=index_rst)
 
+    # If a ToDo file will be generated, append it to index.rst
     if len(todo_list) > 0:
       index_rst.write("   ToDo\n")
 
@@ -175,7 +213,9 @@ def generate_index_rst(config, slides = False):
     index_rst.write("* :ref:`genindex`\n")
     index_rst.write("* :ref:`search`\n")
 
+
 def generate_todo_rst(config, slides = False):
+  """Sorts the list of ToDo directives (generated while recursively processing each module) by type and writes them all out to a file"""
   print '\nGenerating ToDo file...'
 
   # Sort the list of todo items by type (module_name, type, todo_directive)
@@ -187,7 +227,7 @@ def generate_todo_rst(config, slides = False):
     header_data['long_name'] = 'ToDo'
     header_data['dispModComp'] = False
     header_data['mod_chapter'] = ''
-    header_data['mod_date'] = ''
+    header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
     header_data['unicode_directive'] = rst_header_unicode if not slides else ''
     todo_file.write(rst_header % header_data)
     todo_file.write(todo_rst_template)
@@ -206,7 +246,8 @@ def generate_todo_rst(config, slides = False):
         current_type = todo_type
 
       # Write a header with the name of the file where the ToDo originated (using RST syntax)
-      todo_file.writelines('\n'.join(['source: ' + mod_name, '-' * len(mod_name), '\n']))
+      source = 'source: ' + mod_name
+      todo_file.writelines('\n'.join([source, '-' * len(source), '\n']))
 
       # Write the TODO directive itself
       todo_file.writelines(todo_directive)
@@ -234,14 +275,39 @@ def initialize_output_directory(config):
     index_html.writelines(index_html_template % config.rel_book_output_path)
 
   #Save the config file in the book directory, it will be use to send book components to the server
+  # TODO: Why are we creating another copy of the config file when we already have it in _static?
   with open(config.book_dir + 'bookdata.json1','w') as book_json:
     book_json.writelines(json.dumps(config, default=lambda o: o.__dict__))
+
+
+def initialize_conf_py_options(config, slides):
+  """Initializes the options used to generate conf.py"""
+  options = {}
+  options['title'] = config.title
+  options['book_name'] = config.book_name
+  options['backend_address'] = config.backend_address
+  options['module_origin'] = config.module_origin
+  options['theme_dir'] = config.theme_dir
+  options['theme'] = config.theme
+  options['odsa_dir'] = config.odsa_dir
+  options['book_dir'] = config.book_dir
+  options['code_dir'] = config.code_dir
+  options['code_lang'] = config.code_lang
+  options['av_root_dir'] = config.av_root_dir
+  options['exercises_root_dir'] = config.exercises_root_dir
+  # The relative path between the ebook output directory (where the HTML files are generated) and the root ODSA directory
+  options['eb2root'] = os.path.relpath(config.odsa_dir, config.book_dir + config.rel_book_output_path) + '/'
+  options['rel_book_output_path'] = config.rel_book_output_path
+  options['slides_lib'] = 'hieroglyph' if slides else ''
+
+  return options
+
 
 def configure(config_file_path, slides = False):
   """Configure an OpenDSA textbook based on a validated configuration file"""
   global satisfied_requirements
 
-  print "Configuring OpenDSA, using " + config_file_path + '\n'
+  print "Configuring OpenDSA, using " + config_file_path# + '\n'
 
   # Load the configuration
   config = ODSA_Config(config_file_path)
@@ -269,10 +335,6 @@ def configure(config_file_path, slides = False):
   initialize_output_directory(config)
   generate_index_rst(config, slides)
 
-  # Entries are only added to todo_list if config.suppress_todo is False
-  if len(todo_list) > 0:
-    generate_todo_rst(config, slides)
-
   # Print out a list of any exercises found in RST files that do not appear in the config file
   if len(missing_exercises) > 0:
     print "\nExercises Not Listed in Config File:"
@@ -280,24 +342,22 @@ def configure(config_file_path, slides = False):
     for exercise in missing_exercises:
       print '  ' + exercise
 
+  # Entries are only added to todo_list if config.suppress_todo is False
+  if len(todo_list) > 0:
+    generate_todo_rst(config, slides)
+
+  # Dump num_ref_map to table.json to be used by the Sphinx directives
+  with open(config.book_dir + 'table.json', 'w') as num_ref_map_file:
+    json.dump(num_ref_map, num_ref_map_file)
+
+  # Dump module_chap_map to page_chapter.json to be used by the avmetadata directive
+  # NOTE: avmetadata is deprecated (it was used to generate the concept map but is no longer used)
+  # If avmetadata is eventually removed, we can stop writing this file
+  with open(config.book_dir + 'page_chapter.json', 'w') as page_chapter_file:
+    json.dump(module_chap_map, page_chapter_file)
+
   # Initialize options for conf.py
-  options = {}
-  options['title'] = config.title
-  options['book_name'] = config.book_name
-  options['backend_address'] = config.backend_address
-  options['module_origin'] = config.module_origin
-  options['theme_dir'] = config.theme_dir
-  options['theme'] = config.theme
-  options['odsa_dir'] = config.odsa_dir
-  options['book_dir'] = config.book_dir
-  options['code_dir'] = config.code_dir
-  options['code_lang'] = config.code_lang
-  options['av_root_dir'] = config.av_root_dir
-  options['exercises_root_dir'] = config.exercises_root_dir
-  # The relative path between the ebook output directory (where the HTML files are generated) and the root ODSA directory
-  options['eb2root'] = os.path.relpath(config.odsa_dir, config.book_dir + config.rel_book_output_path) + '/'
-  options['rel_book_output_path'] = config.rel_book_output_path
-  options['slides_lib'] = 'hieroglyph' if slides else ''
+  options = initialize_conf_py_options(config, slides)
 
   # Create a Makefile in the output directory
   with open(config.book_dir + 'Makefile','w') as makefile:
@@ -326,12 +386,12 @@ def configure(config_file_path, slides = False):
     update_TOC(config.book_src_dir, config.book_dir + config.rel_book_output_path, module_chap_map)
 
     # Copy the registration page in the html directory
-    distutils.file_util.copy_file(config.odsa_dir + 'lib/RegisterBook.html' , config.book_dir + config.rel_book_output_path )
+    distutils.file_util.copy_file(config.odsa_dir + 'lib/RegisterBook.html', config.book_dir + config.rel_book_output_path )
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
   parser = OptionParser()
-  parser.add_option("-s", "--slides", help="causes configure.py to create slides", dest="slides", action="store_true")
+  parser.add_option("-s", "--slides", help="Causes configure.py to create slides", dest="slides", action="store_true")
   (options, args) = parser.parse_args()
 
   if options.slides:
