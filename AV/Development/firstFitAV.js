@@ -1,16 +1,27 @@
 (function ($) {
   "use strict";
+   var arr,				// for the JSAV array
+   	   defCtrlState; 	// Stores the default state of the controls
+
    var av = new JSAV("firstFit", {"animationMode": "none"});
-   arr,  // for the JSAV array
-  
-  var params = JSAV.utils.getQueryParameter();
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
-  
+	
+	function setDefaultControlState() {
+    defCtrlState = {};
+    defCtrlState.fitAlgorithm = 0;
+	
+	var params = JSAV.utils.getQueryParameter();
+
+	if(params.fitAlgorithm) {
+		if(params.fitAlgorithm > 0 && params.fitAlgorithm <= 5) {
+			defCtrlState.fitAlgorithm = params.fitAlgorithm;
+		}
+	}
+
+	var settings = new JSAV.utils.Settings($(".jsavsettings"));
+
   function about() {
     alert("First Fit Algorithm Visualization\nWritten by Cliff Shaffer and Mauricio De La Barra\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
-  
-   
   
   var used1 = av.g.rect(85, 200, 30, 80).css({"fill": "red"});
   var used2 = av.g.rect(220, 200, 75, 80).css({"fill": "red"});

@@ -1608,24 +1608,6 @@
         "exercises": {}
       }
     },
-    "Graphs": {
-      "Stubs/GraphImpl": {
-        "long_name": "Graph Implementations",
-        "exercises": {}
-      },
-      "Stubs/GraphTraversal": {
-        "long_name": "Graph Traversals",
-        "exercises": {}
-      },
-      "Stubs/GraphShortest": {
-        "long_name": "Graph Shortest Paths",
-        "exercises": {}
-      },
-      "Stubs/MCST": {
-        "long_name": "Minimum Cost Spanning Trees",
-        "exercises": {}
-      }
-    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",

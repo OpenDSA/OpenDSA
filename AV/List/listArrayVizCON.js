@@ -1,5 +1,8 @@
 "use strict";
 
+// There does not appear to be any compelling reason to split the list
+// slideshows into two .js files like this.
+
 //array values for examples
 var arrValues = [13, 12, 20, 8, 3, "", "", ""];
 //elements size of array
