@@ -128,172 +128,177 @@ class ODSA_RST_Module:
           dispModComp = True
           break
 
-    # Read the contents of the module file from the RST source directory
-    with open('{0}RST/source/{1}.rst'.format(config.odsa_dir, mod_path),'r') as mod_file:
-      mod_data = mod_file.readlines()
+    filename = '{0}RST/source/{1}.rst'.format(config.odsa_dir, mod_path)
 
-    # Generate the RST header for the module
-    header_data = {}
-    header_data['mod_name'] = mod_name
-    header_data['dispModComp'] = str(dispModComp).lower()
-    header_data['long_name'] = mod_attrib['long_name'] if 'long_name' in mod_attrib else mod_name
-    header_data['mod_chapter'] = chap
-    header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
-    # Include an empty unicode directive when building slides
-    header_data['unicode_directive'] = rst_header_unicode if os.environ.get('SLIDES', None) == "no" else ''
-    # Prepend the header data to the exisiting module data
-    mod_data.insert(0, rst_header % header_data)
+    if not os.path.exists(filename):
+      print 'ERROR: Module does not exist: %s' % mod_path
+    else:
+      # Read the contents of the module file from the RST source directory
+      with open(filename,'r') as mod_file:
+        mod_data = mod_file.readlines()
 
-    avmetadata_found = False
+      # Generate the RST header for the module
+      header_data = {}
+      header_data['mod_name'] = mod_name
+      header_data['dispModComp'] = str(dispModComp).lower()
+      header_data['long_name'] = mod_attrib['long_name'] if 'long_name' in mod_attrib else mod_name
+      header_data['mod_chapter'] = chap
+      header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
+      # Include an empty unicode directive when building slides
+      header_data['unicode_directive'] = rst_header_unicode if os.environ.get('SLIDES', None) == "no" else ''
+      # Prepend the header data to the exisiting module data
+      mod_data.insert(0, rst_header % header_data)
 
-    # Alter the contents of the module based on the config file
-    i = 0
-    while i < len(mod_data):
-      line = mod_data[i].strip().lower()
+      avmetadata_found = False
 
-      # Determine the type of directive
-      dir_type = get_directive_type(line)
+      # Alter the contents of the module based on the config file
+      i = 0
+      while i < len(mod_data):
+        line = mod_data[i].strip().lower()
 
-      # Update figure, equation, theorem, table counters
-      if dir_type in ['table', 'example', 'theorem', 'figure']:
-        (num_ref_map, counters) = update_counters(mod_data[i - 2], dir_type, mod_num, num_ref_map, counters)
+        # Determine the type of directive
+        dir_type = get_directive_type(line)
 
-      if ':requires:' in mod_data[i]:
-        # Parse the list of prerequisite topics from the module
-        requires = [req.strip() for req in line.replace(':requires:', '').split(';')]
+        # Update figure, equation, theorem, table counters
+        if dir_type in ['table', 'example', 'theorem', 'figure']:
+          (num_ref_map, counters) = update_counters(mod_data[i - 2], dir_type, mod_num, num_ref_map, counters)
 
-        # Print a warning message if a missing prereq is encountered
-        for req in requires:
-          if req not in satisfied_requirements:
-            print console_msg_prefix + "WARNING: " + req + " is an unsatisfied prerequisite for " + mod_name + ", line " + str(i + 1)
-      elif line.startswith(':satisfies:'):
-        # Parse the list of prerequisite topics this module satisfies and add them to a list of satisfied prereqs
-        requirements_satisfied = [req.strip() for req in line.replace(':satisfies:', '').split(';')]
-      elif line.startswith('.. figure::') or line.startswith('.. odsafig::'):
-        # Pass -1 as the expected number of arguments because different directives have different numbers of args (-1 will ignore the check)
-        args = parse_directive_args(mod_data[i], i, -1, console_msg_prefix)
+        if ':requires:' in mod_data[i]:
+          # Parse the list of prerequisite topics from the module
+          requires = [req.strip() for req in line.replace(':requires:', '').split(';')]
 
-        image_path = args[-1]
-        images.append(os.path.basename(image_path))
-      elif line.startswith('.. todo::'):
-        if config.suppress_todo:
-          # Remove TODO directives from the RST file
-          mod_data[i] = ''
-          i += 1
+          # Print a warning message if a missing prereq is encountered
+          for req in requires:
+            if req not in satisfied_requirements:
+              print console_msg_prefix + "WARNING: " + req + " is an unsatisfied prerequisite for " + mod_name + ", line " + str(i + 1)
+        elif line.startswith(':satisfies:'):
+          # Parse the list of prerequisite topics this module satisfies and add them to a list of satisfied prereqs
+          requirements_satisfied = [req.strip() for req in line.replace(':satisfies:', '').split(';')]
+        elif line.startswith('.. figure::') or line.startswith('.. odsafig::'):
+          # Pass -1 as the expected number of arguments because different directives have different numbers of args (-1 will ignore the check)
+          args = parse_directive_args(mod_data[i], i, -1, console_msg_prefix)
 
-          while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
+          image_path = args[-1]
+          images.append(os.path.basename(image_path))
+        elif line.startswith('.. todo::'):
+          if config.suppress_todo:
+            # Remove TODO directives from the RST file
             mod_data[i] = ''
             i += 1
-        else:
-          # Process the TODO directive and save it as an entry in 'todo'
-          todo_type = ''
-          todo_directive = [mod_data[i]]
-          i += 1
 
-          while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
-            if ':type:' in mod_data[i]:
-              todo_type = mod_data[i].split(': ')[1].strip()
-
-            todo_directive.append(mod_data[i])
-
-            i += 1
-
-          todo_list.append((mod_name, todo_type, todo_directive))
-      elif line.startswith('.. inlineav::'):
-        # Parse the arguments from the directive
-        args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
-
-        if args:
-          (av_name, av_type) = args
-
-          if av_type == 'ss':
-            if av_name not in exercises:
-              # If the SS is not listed in the config file, add its name to a list of missing exercises, ignore missing diagrams
-              missing_exercises.append(av_name)
-            else:
-              # Add the necessary information from the slideshow from the configuration file
-              # Diagrams (av_type == 'dgm') do not require this extra information
-              exer_conf = exercises[av_name]
-
-              # List of valid options for inlineav directive
-              options = ['long_name', 'points', 'required', 'threshold']
-
-              rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
-              mod_data[i] += ''.join(rst_options)
-          elif av_type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
-            # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
-            print console_msg_prefix + "WARNING: " + av_name + " is a diagram (attributes are not supported), line " + str(i + 1)
-          elif av_type not in ['ss', 'dgm']:
-            # If a warning if the exercise type doesn't match something we expect
-            print console_msg_prefix + "WARNING: Unsupported type '" + av_type + "' specified for " + av_name + ", line " + str(i + 1)
-      elif line.startswith('.. avembed::'):
-        # Parse the arguments from the directive
-        args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
-
-        if args:
-          (av_name, av_type) = args
-          av_name = os.path.splitext(os.path.basename(av_name))[0]
-
-          # If the config file states the exercise should be removed, remove it
-          if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
-            print console_msg_prefix + 'Removing: ' + av_name
-
-            # Config file states exercise should be removed, remove it from the RST file
-            while (i < len(mod_data) and mod_data[i].rstrip() != ''):
+            while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
               mod_data[i] = ''
               i += 1
           else:
-            # Append module name to embedded exercise
-            mod_data[i] += '   :module: %s\n' % mod_name
+            # Process the TODO directive and save it as an entry in 'todo'
+            todo_type = ''
+            todo_directive = [mod_data[i]]
+            i += 1
 
-            if av_name not in exercises:
-              # Add the name to a list of missing exercises
-              missing_exercises.append(av_name)
+            while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
+              if ':type:' in mod_data[i]:
+                todo_type = mod_data[i].split(': ')[1].strip()
+
+              todo_directive.append(mod_data[i])
+
+              i += 1
+
+            todo_list.append((mod_name, todo_type, todo_directive))
+        elif line.startswith('.. inlineav::'):
+          # Parse the arguments from the directive
+          args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
+
+          if args:
+            (av_name, av_type) = args
+
+            if av_type == 'ss':
+              if av_name not in exercises:
+                # If the SS is not listed in the config file, add its name to a list of missing exercises, ignore missing diagrams
+                missing_exercises.append(av_name)
+              else:
+                # Add the necessary information from the slideshow from the configuration file
+                # Diagrams (av_type == 'dgm') do not require this extra information
+                exer_conf = exercises[av_name]
+
+                # List of valid options for inlineav directive
+                options = ['long_name', 'points', 'required', 'threshold']
+
+                rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+                mod_data[i] += ''.join(rst_options)
+            elif av_type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
+              # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
+              print console_msg_prefix + "WARNING: " + av_name + " is a diagram (attributes are not supported), line " + str(i + 1)
+            elif av_type not in ['ss', 'dgm']:
+              # If a warning if the exercise type doesn't match something we expect
+              print console_msg_prefix + "WARNING: Unsupported type '" + av_type + "' specified for " + av_name + ", line " + str(i + 1)
+        elif line.startswith('.. avembed::'):
+          # Parse the arguments from the directive
+          args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
+
+          if args:
+            (av_name, av_type) = args
+            av_name = os.path.splitext(os.path.basename(av_name))[0]
+
+            # If the config file states the exercise should be removed, remove it
+            if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
+              print console_msg_prefix + 'Removing: ' + av_name
+
+              # Config file states exercise should be removed, remove it from the RST file
+              while (i < len(mod_data) and mod_data[i].rstrip() != ''):
+                mod_data[i] = ''
+                i += 1
             else:
-              # Add the necessary information from the configuration file
-              exer_conf = exercises[av_name]
+              # Append module name to embedded exercise
+              mod_data[i] += '   :module: %s\n' % mod_name
 
-              # List of valid options for avembed directive
-              options = ['long_name', 'points', 'required', 'showhide', 'threshold']
+              if av_name not in exercises:
+                # Add the name to a list of missing exercises
+                missing_exercises.append(av_name)
+              else:
+                # Add the necessary information from the configuration file
+                exer_conf = exercises[av_name]
 
-              rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+                # List of valid options for avembed directive
+                options = ['long_name', 'points', 'required', 'showhide', 'threshold']
 
-              # JSAV grading options are not applicable to Khan Academy exercises or slideshows and will be ignored
-              if av_type not in ['ka', 'ss']:
-                # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
-                if 'jsav_exer_options' in exer_conf:
-                  jxops = dict(config.glob_jsav_exer_options.items() + exer_conf['jsav_exer_options'].items())
-                else:
-                  jxops = config.glob_jsav_exer_options
+                rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
-                # URL-encode the string and append it to the RST options
-                jxop_str = '&amp;'.join(['JXOP-%s=%s' % (opt, str(jxops[opt])) for opt in jxops])
-                rst_options.append('   :jsav_exer_opt: %s\n' % jxop_str)
+                # JSAV grading options are not applicable to Khan Academy exercises or slideshows and will be ignored
+                if av_type not in ['ka', 'ss']:
+                  # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
+                  if 'jsav_exer_options' in exer_conf:
+                    jxops = dict(config.glob_jsav_exer_options.items() + exer_conf['jsav_exer_options'].items())
+                  else:
+                    jxops = config.glob_jsav_exer_options
 
-              mod_data[i] += ''.join(rst_options)
-      elif line.startswith('.. avmetadata::'):
-        avmetadata_found = True
-      elif line.startswith('.. math::') and (i + 1) < len(mod_data) and ':label:' in mod_data[i + 1]:
-        # Looks for math equations (with a label on the next line), increments the equation counter, and saves the information in 'num_ref_map'
-        i += 1
-        equation = re.split(':label:', mod_data[i], re.IGNORECASE)[1].strip()
-        num_ref_map['equation-' + equation] = mod_num + '.%s#' % str(counters['equation'])
-        counters['equation'] += 1
-      elif ':target:' in line:
-        trgt =  re.split('target:', mod_data[i], re.IGNORECASE)[1]
-        # Remove all whitespace from the target
-        trgt = "".join(trgt.split())
-        num_ref_map[trgt] = mod_num + '.%s#' % counters['figure']
-        counters['figure'] += 1
+                  # URL-encode the string and append it to the RST options
+                  jxop_str = '&amp;'.join(['JXOP-%s=%s' % (opt, str(jxops[opt])) for opt in jxops])
+                  rst_options.append('   :jsav_exer_opt: %s\n' % jxop_str)
 
-      i = i + 1
+                mod_data[i] += ''.join(rst_options)
+        elif line.startswith('.. avmetadata::'):
+          avmetadata_found = True
+        elif line.startswith('.. math::') and (i + 1) < len(mod_data) and ':label:' in mod_data[i + 1]:
+          # Looks for math equations (with a label on the next line), increments the equation counter, and saves the information in 'num_ref_map'
+          i += 1
+          equation = re.split(':label:', mod_data[i], re.IGNORECASE)[1].strip()
+          num_ref_map['equation-' + equation] = mod_num + '.%s#' % str(counters['equation'])
+          counters['equation'] += 1
+        elif ':target:' in line:
+          trgt =  re.split('target:', mod_data[i], re.IGNORECASE)[1]
+          # Remove all whitespace from the target
+          trgt = "".join(trgt.split())
+          num_ref_map[trgt] = mod_num + '.%s#' % counters['figure']
+          counters['figure'] += 1
 
-    if not avmetadata_found:
-      print console_msg_prefix + 'WARNING: %s does not contain an ..avmetadata:: directive' % mod_name
+        i = i + 1
 
-    # Write the contents of the module file to the output src directory
-    with open(''.join([config.book_src_dir, mod_name, '.rst']),'w') as mod_file:
-      mod_file.writelines(mod_data)
+      if not avmetadata_found:
+        print console_msg_prefix + 'WARNING: %s does not contain an ..avmetadata:: directive' % mod_name
+
+      # Write the contents of the module file to the output src directory
+      with open(''.join([config.book_src_dir, mod_name, '.rst']),'w') as mod_file:
+        mod_file.writelines(mod_data)
 
     # Make public fields accessible
     self.images = images

@@ -251,6 +251,7 @@ def generate_todo_rst(config, slides = False):
 
       # Write the TODO directive itself
       todo_file.writelines(todo_directive)
+      todo_file.writelines('\n')
 
 
 def initialize_output_directory(config):
