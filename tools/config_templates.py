@@ -83,10 +83,7 @@ min-searchtools:
 	@echo 'Minimizing $(HTMLDIR)_static/searchtools.js'
 	-@$(MINIMIZE) $(HTMLDIR)_static/searchtools.js -o $(HTMLDIR)_static/searchtools.js
 
-preprocessor:
-	python "%(odsa_dir)sRST/preprocessor.py" source/ $(HTMLDIR)
-
-html: preprocessor
+html:
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
 	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
@@ -95,7 +92,7 @@ html: preprocessor
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
 	rm Makefile
 
-slides: preprocessor
+slides:
 	@SLIDES=yes \
 	$(SPHINXBUILD) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
