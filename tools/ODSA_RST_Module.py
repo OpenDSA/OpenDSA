@@ -169,7 +169,7 @@ class ODSA_RST_Module:
 
           # Print a warning message if a missing prereq is encountered
           for req in requires:
-            if req not in satisfied_requirements:
+            if req != '' and req not in satisfied_requirements:
               print console_msg_prefix + "WARNING: " + req + " is an unsatisfied prerequisite for " + mod_name + ", line " + str(i + 1)
         elif line.startswith(':satisfies:'):
           # Parse the list of prerequisite topics this module satisfies and add them to a list of satisfied prereqs
