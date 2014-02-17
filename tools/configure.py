@@ -271,10 +271,6 @@ def initialize_output_directory(config):
   with open(config.book_dir + 'index.html','w') as index_html:
     index_html.writelines(index_html_template % config.rel_book_output_path)
 
-  #Save the config file in the book directory, it will be use to send book components to the server
-  # TODO: Why are we creating another copy of the config file when we already have it in _static?
-  with open(config.book_dir + 'bookdata.json1','w') as book_json:
-    book_json.writelines(json.dumps(config, default=lambda o: o.__dict__))
 
 
 def initialize_conf_py_options(config, slides):
