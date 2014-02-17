@@ -238,14 +238,13 @@ def generate_todo_rst(config, slides = False):
       if todo_type == '':
         todo_type ='No Category'
 
-      # Whenever a new type is encountered, print a header for that type (using RST syntax)
+      # Whenever a new type is encountered, print a header for that type
       if current_type != todo_type:
-        todo_file.writelines('\n'.join([todo_type, '=' * len(todo_type), '\n']))
+        todo_file.write('.. raw:: html\n\n   <hr /><h1>%s</h1><hr />\n\n' % todo_type)
         current_type = todo_type
 
       # Write a header with the name of the file where the ToDo originated that hyperlinks directly to the original ToDo
-      todo_header = '.. raw:: html\n\n   <h2><a href="' + mod_name + '.html#' + todo_id + '">source: ' + mod_name + '</a></h2>\n\n'
-      todo_file.write(todo_header)
+      todo_file.write('.. raw:: html\n\n   <h2><a href="' + mod_name + '.html#' + todo_id + '">source: ' + mod_name + '</a></h2>\n\n')
 
       # Clean up and write the TODO directive itself
       todo_file.write('\n'.join(todo_directive).rstrip() + '\n\n')
