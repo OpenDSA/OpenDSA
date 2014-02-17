@@ -269,6 +269,8 @@ Glossary
    constant running time
       The cost of a function whose running time is not related to its
       input size.
+      In Theta notation, this is traditionally written as
+      :math:`\Theta(1)`.
 
    cost
       The :dfn:`cost` of a solution is the
