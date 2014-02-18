@@ -303,6 +303,23 @@ lists:
 .. inlineav:: SelforgCON1 ss
    :output: show
 
+
+Now lets do the move-to-front method
+
+
+.. inlineav:: SelforgCON2 ss
+   :output: show
+
+
+And finally the Transpose method
+
+
+
+
+.. inlineav:: SelforgCON3 ss
+   :output: show
+
+
 While self-organizing lists do not generally perform as well
 as search trees or a sorted list, both of which require
 :math:`O(\log n)` search time, there are many situations in which
