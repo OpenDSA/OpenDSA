@@ -23,101 +23,16 @@
             </p>
             <p align="center" class="jsavexercisecontrols"></p>
             <p class="jsavscore"></p>
-            <ol id="exerArray"></ol>
+            <!-- <ol id="exerArray"></ol> -->
             <!-- <p class="jsavoutput jsavline"></p> -->
         </div>
 
-        <script
-           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
         <script src="../../JSAV/lib/jquery.transit.js"></script>
         <script src="../../JSAV/lib/raphael.js"></script>
         <script src="../../JSAV/build/JSAV.js"></script>
-
-        <script>
-
-        var arraySize = 10,
-            initialArray = [],
-            jsavArray,
-            swapIndex,
-            $array = $("#exerArray"),
-            av = new JSAV($("#jsavcontainer")),
-            code = av.code(
-                "public static void insertionSort(int[] table) {\n"+
-                "   for (int i = 1; i < table.length; i++) {\n"+
-                "       int j = i;\n"+
-                "       while (j > 0 && table[j - 1] > table[j]) {\n"+
-                "           swap(table, j - 1, j);\n"+
-                "           j--;\n"+
-                "       }\n"+
-                "   }\n"+
-                "}");
-
-        av.recorded(); // we are not recording an AV with an algorithm
-
-        function initialize() {
-
-            var htmldata = "";
-            for (var i = 0; i < arraySize; i++) {
-                randomVal = Math.floor(Math.random()*100) + 10;
-                htmldata += "<li>" + randomVal + "</li>";
-                initialArray[i] = randomVal;
-            }
-            $array.html(htmldata);
-
-            swapIndex = av.variable(-1);
-
-            av.forward();
-
-            jsavArray = av.ds.array($array, {indexed: true, layout: "bar"});
-            code.show();
-            code.highlight(4);
-
-            return jsavArray;
-        }
-        
-        function modelSolution(jsav) {
-            var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar"});
-            
-            jsav._undo = [];
-
-            for (var i = 1; i < arraySize; i++) {
-                var j = i;
-                while (j > 0 && modelArray.value(j-1) > modelArray.value(j)) {
-                    jsav.umsg('Shift "'+modelArray.value(j)+'" to the left.<br/>&nbsp;&nbsp;i: ' + i + '<br/>&nbsp;&nbsp;j: ' + j)
-                    modelArray.swap(j, j-1);
-                    jsav.stepOption("grade", true);
-                    jsav.step();
-                    j--;
-                }
-            }
-
-          return modelArray;
-        }
-
-
-        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
-        exercise.reset();
-
-        // bind a function to handle all click events on the array
-        jsavArray.click(function(index) {
-            
-            // the first click will select an index and save it
-            if (swapIndex.value() === -1) {
-                swapIndex.value(index);
-                this.addClass(index, "selected");
-            } else if (swapIndex.value() === index) {
-                this.removeClass(swapIndex.value(), "selected");
-                swapIndex.value(-1);
-            } else { // swap
-                this.removeClass(swapIndex.value(), "selected");
-                this.swap(index, swapIndex.value());
-                swapIndex.value(-1);
-                exercise.gradeableStep();
-            }
-        });
-
-        </script>
+        <script src="ClickHandler.js"></script>
+        <script src="insertionSortPRO.js"></script>
     </body>
 </html>
