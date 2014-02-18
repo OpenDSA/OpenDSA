@@ -42,13 +42,13 @@ exist.
 Often the most effective way to determine the lower bound for a
 problem is to find a reduction to another problem whose lower bound is
 already known.
-This is the subject of Module :numref:`<Reductions>`.
+This is the subject of Module :numref:`<Reduction>`.
 However, this approach does not help us when we cannot find a suitable
 "similar problem".
 Our focus in this chapter is discovering and proving lower bounds
 from first principles.
 Our most  significant example of a lower bounds argument so far is the
-proof from Module :numref:`<SortingLowerBund>` that the problem of
+proof from Module :numref:`<SortingLowerBound>` that the problem of
 sorting is :math:`O(n \log n)` in the worst case.
 
 The lower bound for the problem is the tightest (highest) lower bound

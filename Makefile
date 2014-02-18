@@ -38,8 +38,9 @@ jshint:
 	-@jshint lib/odsaAV.js
 	-@jshint lib/odsaMOD.js
 	-@jshint lib/gradebook.js
+	-@jshint lib/registerbook.js
 
-min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css
+min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
 RecurTutor: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json
@@ -147,3 +148,7 @@ lib/gradebook-min.js: lib/gradebook.js
 lib/gradebook-min.css: lib/gradebook.css
 	@echo 'Minimizing lib/gradebook.css'
 	@$(MINIMIZE) lib/gradebook.css -o lib/gradebook-min.css
+
+lib/registerbook-min.js: lib/registerbook.js
+	@echo 'Minimizing lib/registerbook.js'
+	@$(MINIMIZE) lib/registerbook.js -o lib/registerbook-min.js

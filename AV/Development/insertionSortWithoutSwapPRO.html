@@ -1,122 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>Insertion Sort</title>
-        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
-        <link rel="stylesheet" href="proficiency.css" type="text/css" />
-        <style>
-            #jsavcontainer {
-              height: 450px;
-            }
-        </style>
-    </head>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>Insertion Sort</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+  <link rel="stylesheet" href="proficiency.css" type="text/css" />
+  <style>
+    #jsavcontainer {
+      height: 450px;
+    }
+  </style>
+</head>
 
-    <body>
+<body>
 
-        <h1>Insertion Sort</h1>
-        <div id="jsavcontainer">
-            <p class="instructLabel">Instructions:</p>
-            <p class="instructions">
-                Use Insertion Sort to sort the table given below in ascending order. Click on an item to select it and copy its value to another position by clicking again.
-            </p>
-            <p align="center" class="jsavexercisecontrols"></p>
-            <p class="jsavscore"></p>
-            <ol id="exerArray"></ol>
-            <ol id="tempArray"></ol>
-            <p style="text-align:center">temp</p>
-        </div>
+  <h1>Insertion Sort</h1>
+  <div id="jsavcontainer">
+    <p class="instructLabel">Instructions:</p>
+    <p class="instructions">
+      Use Insertion Sort to sort the table given below in ascending order. Click on an item to select it and copy its value to another position by clicking again.
+    </p>
+    <p align="center" class="jsavexercisecontrols"></p>
+    <p class="jsavscore"></p>
+  </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-        <script src="../../JSAV/lib/jquery.transit.js"></script>
-        <script src="../../JSAV/lib/raphael.js"></script>
-        <script src="../../JSAV/build/JSAV.js"></script>
-        <script src="ClickHandler.js"></script>
-
-        <script>
-
-        var arraySize = 10,
-            initialArray = [],
-            initialTempArray = [],
-            jsavArray,
-            jsavTempArray,
-            $array = $("#exerArray"),
-            $temparray = $("#tempArray"),
-            av = new JSAV($("#jsavcontainer")),
-            clickHandler;
-
-        av.recorded(); // we are not recording an AV with an algorithm
-
-        function initialize() {
-
-            var htmldata = "";
-            for (var i = 0; i < arraySize; i++) {
-                randomVal = Math.floor(Math.random()*100) + 10;
-                htmldata += "<li>" + randomVal + "</li>";
-                initialArray[i] = randomVal;
-            }
-            $array.html(htmldata);
-
-            randomVal = Math.floor(Math.random()*100) + 10;
-            initialTempArray[0] = randomVal;
-            $temparray.html("<li>"+randomVal+"</li>");
-
-            jsavArray = av.ds.array($array, {indexed: true, layout: "bar"});
-            jsavTempArray = av.ds.array($temparray, {indexed: false});
-
-            if (typeof clickHandler === "undefined") {
-                clickHandler = new ClickHandler(av, exercise, {
-                    selectedClass: "selected",
-                    effect: "copy"
-                });
-                clickHandler.addArray(jsavArray);
-                clickHandler.addArray(jsavTempArray);
-            }
-            clickHandler.reset();
-
-            return jsavArray;
-        }
-        
-        function modelSolution(jsav) {
-            var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar"});
-            var modelTempArray = jsav.ds.array(initialTempArray);
-
-            jsav._undo = [];
-            modelArray.layout();
-            jsav.displayInit();
-            
-            var j = 0;
-            for (var i = 1; i < arraySize; i++) {
-                jsav.effects.copyValue(modelArray, i, modelTempArray, 0);
-                jsav.umsg("Copy " + modelArray.value(i) + " from the array into the temp variable.<br/>&nbsp;&nbsp;i: " + i + ",&nbsp;&nbsp;j: " + j);
-                jsav.stepOption("grade", true);
-                jsav.step();
-                j = i;
-                while (j > 0 && modelArray.value(j - 1) > modelTempArray.value(0)) {
-                    jsav.effects.copyValue(modelArray, j - 1, modelArray, j);
-                    modelArray.layout();
-                    jsav.umsg("Shift all the elements, whose values are larger than " + modelTempArray.value(0) + " (temp) and whose indices are smaller than " + i + " (i), one step to the right.<br/>&nbsp;&nbsp;i: " + i + ",&nbsp;&nbsp;j: " + j);
-                    jsav.stepOption("grade", true);
-                    jsav.step();
-                    j--;
-                }
-                if (j !== i) {
-                    jsav.effects.copyValue(modelTempArray, 0, modelArray, j);
-                    modelArray.layout();
-                    jsav.umsg("Copy " + modelTempArray.value(0) + " back into its right place in the array. The array is now sorted between indices 0 and " + i + "<br/>&nbsp;&nbsp;i: " + i + ",&nbsp;&nbsp;j: " + j);
-                    jsav.stepOption("grade", true);
-                    jsav.step();
-                }
-            }
-
-            return modelArray;
-        }
-
-        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
-        exercise.reset();
-
-        </script>
-    </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV.js"></script>
+  <script src="ClickHandler.js"></script>
+  <script src="insertionSortWithoutSwapPRO.js"></script>
+</body>
 </html>

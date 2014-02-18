@@ -1950,12 +1950,20 @@
       }
     },
     "Limits to Computing": {
-      "Stubs/LimComp": {
+      "Development/LimComp": {
         "long_name": "Chapter Intro: Limits to Computing",
         "exercises": {}
       },
-      "Stubs/Reductions": {
+      "Development/Reduction": {
         "long_name": "Reductions",
+        "exercises": {}
+      },
+      "Stubs/NPComplete": {
+        "long_name": "NP-Complete Problems",
+        "exercises": {}
+      },
+      "Stubs/NPCoping": {
+        "long_name": "Coping with NP-complete problems",
         "exercises": {}
       },
       "Stubs/Computability": {
