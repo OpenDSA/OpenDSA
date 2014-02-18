@@ -1,204 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>Selection Sort</title>
-        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
-        <link rel="stylesheet" href="proficiency.css" type="text/css" />
-        <style>
-          #jsavcontainer {
-            height: 500px;
-          }
-        </style>
-    </head>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>Selection Sort</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+  <link rel="stylesheet" href="proficiency.css" type="text/css" />
+  <style>
+    #jsavcontainer {
+      height: 500px;
+    }
+  </style>
+</head>
 
-    <body>
-        <h1>Selection Sort</h1>
-        <div id="jsavcontainer">
-            <!-- <a class="jsavsettings" href="#">Settings</a> -->
-            <p class="instructLabel">Instructions:</p>
-            <p class="instructions">
-                    Use Selection Sort to sort the table given below in ascending order. Click on a bar to swap it with the highlighted bar. If you do not wish to swap, you can highlight the next bar by clicking on the currently highlighted bar.
-            </p>
-            <p align="center" class="jsavexercisecontrols"></p>
-            <p class="jsavscore"></p>
-            <ol id="exerArray"></ol>
-            <!-- <p class="jsavoutput jsavline"></p> -->
-        </div>
+<body>
+  <h1>Selection Sort</h1>
+  <div id="jsavcontainer">
+    <!-- <a class="jsavsettings" href="#">Settings</a> -->
+    <p class="instructLabel">Instructions:</p>
+    <p class="instructions">
+      Use Selection Sort to sort the table given below in ascending order. Click on a bar to swap it with the highlighted bar. If you do not wish to swap, you can highlight the next bar by clicking on the currently highlighted bar.
+    </p>
+    <p align="center" class="jsavexercisecontrols"></p>
+    <p class="jsavscore"></p>
+  </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-        <script src="../../JSAV/lib/jquery.transit.js"></script>
-        <script src="../../JSAV/lib/raphael.js"></script>
-        <script src="../../JSAV/build/JSAV.js"></script>
-
-        <script>
-
-        var arraySize = 10,
-            initialArray = [],
-            jsavArray,
-            sorted,
-            $array = $("#exerArray"),
-            av = new JSAV($("#jsavcontainer")),
-            code = av.code(
-                "for i = 0 to n-2 do\n"+
-                "    min = i\n"+
-                "    for j = i+1 to n-1 do\n"+
-                "        if (a[j] < a[min]) do\n"+
-                "            min = j\n"+
-                "    swap a[i] and a[min]");
-
-        av.recorded(); // we are not recording an AV with an algorithm
-
-        function initialize() {
-            turnAnimationOff();
-
-            var htmldata = "";
-            for (var i = 0; i < arraySize; i++) {
-                randomVal = Math.floor(Math.random()*100) + 10;
-                htmldata += "<li>" + randomVal + "</li>";
-                initialArray[i] = randomVal;
-            }
-            $array.html(htmldata);
-
-            sorted = av.variable(0);
-
-            av.forward();
-
-            jsavArray = av.ds.array($array, {indexed: true, layout: "bar"});
-            jsavArray.highlight(0);
-            code.show();
-            code.highlight(5);
-            
-            restoreAnimationState();
-
-            return jsavArray;
-        }
-        
-        function modelSolution(jsav) {
-            var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar"});
-            
-            // modelArray.paintGreen = function(index) {
-            //     this.css(index, {"background-color": "#5f5"});
-            // }
-
-            jsav._undo = [];
-
-            modelArray.highlight(0);
-            jsav.step();
-            for (var i = 0; i < arraySize - 1; i++) {
-                var j = i + 1;
-                var min = i;
-                while (j < arraySize) {
-                    if (modelArray.value(j) < modelArray.value(min)) {
-                        min = j;
-                    }
-                    j++;
-                }
-                if (min !== i) {
-                    if (i + 1 !== min || i === arraySize - 2)
-                        modelArray.unhighlight(i);
-                    modelArray.swap(min, i);
-                    // modelArray.paintGreen(i);
-                } else {
-                    modelArray.unhighlight(i);
-                    modelArray.addClass(i, "greenbg");
-                    // if (i + 1 !== arraySize - 1) {
-                    //     modelArray.highlight(i + 1);
-                    // }
-                }
-                //save the state of fx.off
-                var oldfx = $.fx.off || false;
-                //turn off the animations when painting the bars green
-                //because it doesn't work well with the swap
-                modelArray.addClass(i, "greenbg");
-                if (i + 1 !== arraySize - 1) {
-                    modelArray.highlight(i + 1);
-                } else {
-                    // modelArray.paintGreen(arraySize - 1);
-                    modelArray.addClass(arraySize - 1, "greenbg");
-                }
-                //restore the state of fx.off
-                $.fx.off = oldfx;
-                jsav.stepOption("grade", true);
-                jsav.step();
-            }
-
-          return modelArray;
-        }
-        
-
-        var oldfx;
-
-        function turnAnimationOff() {
-            //save the state of fx.off
-            var oldfx = $.fx.off || false;
-            //turn off the jQuery animations
-            $.fx.off = true;
-        }
-
-        function restoreAnimationState() {
-            $.fx.off = oldfx;
-        }
-
-        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
-        exercise.reset();
-
-        // bind a function to handle all click events on the array
-        jsavArray.click(function(index) {
-            
-            if (sorted.value() === index) {
-                // clicking on the highlighted bar will turn it green and highlight the next bar
-                this.unhighlight(index);
-                this.addClass(index, "greenbg");
-                sorted.value(sorted.value() + 1);
-                if (sorted.value() !== arraySize - 1) {
-                    this.highlight(index +1);
-                } else {
-                    this.addClass(index + 1, "greenbg");
-                }
-                exercise.gradeableStep();
-            } else if (index > sorted.value()){
-                // clicking on a bar to the right of the highlighted bar will swap these two bars
-                if (sorted.value() + 1 !== index || sorted.value() === arraySize - 2)
-                    this.unhighlight(sorted.value());
-                this.swap(sorted.value(), index);
-                av.step();
-                //save the state of fx.off
-                var oldfx = $.fx.off || false;
-                //turn off the animations when painting the bars green
-                //because it doesn't work well with the swap
-                $.fx.off = true;
-                this.addClass(sorted.value(), "greenbg");
-                sorted.value(sorted.value() + 1);
-                if (sorted.value() !== arraySize - 1) {
-                    this.highlight(sorted.value());
-                } else {
-                    this.addClass(arraySize - 1, "greenbg");
-                }
-                //restore the state of fx.off
-                $.fx.off = oldfx;
-                exercise.gradeableStep();
-            } else {
-                // swap a green bar with the higlighted bar, just because you can
-                //save the state of fx.off
-                var oldfx = $.fx.off || false;
-                //turn off the animations when painting the bars green
-                //because it doesn't work well with the swap
-                $.fx.off = true;
-                this.unhighlight(sorted.value());
-                this.addClass(sorted.value(), "greenbg");
-                //restore the state of fx.off
-                $.fx.off = oldfx;
-                this.swap(index, sorted.value());
-                sorted.value(sorted.value() + 1);
-                this.highlight(sorted.value());
-                exercise.gradeableStep();
-            }
-            
-        });
-
-        </script>
-    </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV.js"></script>
+  <script src="selectionSortPRO.js"></script>
+</body>
 </html>
