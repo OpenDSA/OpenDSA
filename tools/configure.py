@@ -53,6 +53,7 @@ import collections
 import re
 import subprocess
 import datetime
+from collections import Iterable
 from optparse import OptionParser
 from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
@@ -97,6 +98,9 @@ def process_section(config, section, index_rst, depth, current_section_numbers =
     subsect_name = os.path.splitext(os.path.basename(subsect))[0]
     num_ref_map[subsect_name] = -1 # Add the section name to num_ref_map
 
+    if not isinstance(section[subsect], Iterable):
+      continue
+
     if 'exercises' in section[subsect]:
       process_module(config, index_rst, subsect, section[subsect], depth, current_section_numbers, section_name)
     else:
@@ -106,7 +110,13 @@ def process_section(config, section, index_rst, depth, current_section_numbers =
       print ("  " * depth) + subsect
       index_rst.write(subsect + '\n')
       index_rst.write((sphinx_header_chars[depth] * len(subsect)) + "\n\n")
-      index_rst.write(".. toctree::\n")
+      # if the chapter is hidden we use odsatoctree
+      # the div wrapping the chapter and module will have the 
+      # 'hide-from-toc' class and will be deleted from the TOC
+      if 'hidden' in section[subsect]:
+        index_rst.write(".. odsatoctree::\n")
+      else:
+        index_rst.write(".. toctree::\n")
       index_rst.write("   :numbered:\n")
       index_rst.write("   :maxdepth: 3\n\n")
       process_section(config, section[subsect], index_rst, depth + 1, current_section_numbers, subsect_name)

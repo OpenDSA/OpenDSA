@@ -135,6 +135,9 @@ def validate_module(mod_name, module):
 def validate_section(section):
   """Validate a chapter or section"""
   for subsect in section:
+    if 'hidden' in section[subsect]:
+      print 'WARNING: Section ' + subsect + ' will be hidden from the TOC'
+      continue
     is_mod = 'exercises' in section[subsect]
 
     if section[subsect] == {}:

@@ -7,6 +7,10 @@
 .jsavcontainer {
   position: relative;
 }
+/* Hide flagged chapters fom the TOC */
+.hide-from-toc {
+  display: none;
+}
 /* Style for the registration popup window */
 .registration-popup {
   background: none repeat scroll 0 0 #333333;
