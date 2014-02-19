@@ -58,7 +58,8 @@
     if (typeof clickHandler === "undefined") {
       clickHandler = new ClickHandler(av, exercise, {
         selectedClass: "selected",
-        removeNodes: false
+        removeNodes: false,
+        selectEmpty: true
       });
     }
     clickHandler.reset();
@@ -107,6 +108,27 @@
     tree.root().addClass("emptynode");
     tree.layout();
     clickHandler.addTree(tree, {
+      onSelect: function () {
+        // select the value if 
+        if (this.value()) {
+          return true;
+        }
+        // don't continue (and don't select the node) if it doesn't have the class "emptynode" 
+        if (!this.hasClass("emptynode")) {
+          return false;
+        }
+        // The user has clicked on an empty node, so we remove the empty node class and give the node two children
+        this.removeClass("emptynode");
+        this.left("");
+        this.left().element.addClass("emptynode");
+        this.right("");
+        this.right().element.addClass("emptynode");
+        // call layout function for the tree
+        this.container.layout();
+        exercise.gradeableStep();
+        // don't select the node
+        return false;
+      },
       onDrop: function () {
         this.removeClass("emptynode");
         if (!this.left()) {
