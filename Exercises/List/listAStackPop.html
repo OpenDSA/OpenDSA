@@ -131,7 +131,7 @@ function f_reset(max_size, arr_size) {
   jsav = new JSAV("jsav");	
   jsav.SPEED = 80;
   jsavArr = jsav.ds.array(cloneArr, {indexed: true, center: false, top : 50});
-  arrReturn = jsav.ds.array([""], {left:31 * arr_size - ((arr_size>0)?31:0), top : 120});
+  arrReturn = jsav.ds.array([""], {left: 100, top : 120});
   labelReturn = jsav.label("return", {left:arrReturn.element.position().left - 45, top : 125});
 
   pointerTop = jsav.pointer("top", jsavArr, {
@@ -191,24 +191,31 @@ function checkAnswer(max_size, arr_size) {
 
   if (arrReturn.value(0) !== returnVal)
   { 
+console.log("Error 1");
     return false;
   }
 
   if(arr_size === 0){
-    if(pointerTop.target() !== jsavArr || pointerIndex !== 0){
+//    if(pointerTop.target() !== jsavArr || pointerIndex !== 0){
+    if(pointerIndex !== 0){
+console.log("Error 2");
       return false;	
     }
   }else{
-    if(pointerTop.target() !== jsavArr || pointerIndex !== arr_size-1){
+//    if(pointerTop.target() !== jsavArr || pointerIndex !== arr_size-1){
+    if(pointerIndex !== arr_size-1){
+console.log("Error 3");
       return false;
     }
   }
   var i;
   for (i = 0; i < max_size; i++) {
     if (jsavArr.value(i) !== answerArr[i]) {
+console.log("Error 4");
       return false;
     }
   }
+console.log("We are good");
   return true;
 };
 </script>

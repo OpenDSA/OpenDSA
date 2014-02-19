@@ -1,137 +1,56 @@
 "use strict";
-
-  var av = new JSAV("bintreeAV", {"animationMode": "none"});
-
-  JSAV.umsg("This is a test...");
-
-// Setup the tree
-  var bt = av.ds.bintree();
-  bt.root('root');
-  var rt = bt.root();
-
-  rt.left('');
-  rt.left().left('A');
-  rt.left().right('B');
-
-  // Process About button: Pop up a message with an Alert
-function about() {
-  var mystring = "Bintree Visualization\nJSAV library version " + JSAV.version();
-  alert(mystring);
-}
-
-(function($) {
-  var context = $("#ssperform");
-
-  // create a new settings panel and specify the link to show it
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
-  // Connect action callbacks to the HTML entities
-}(jQuery));
-
-/* (function($) {
-  var comp = function(a, b) {
-    return a - b;
-  };
-
-  JSAV._types.ds.BinTree.prototype.insert = function(value) {
-    // helper function to recursively insert
-    var ins = function(node, insval) 
-    {
-      var val = node.value();
-      if (!val || val === "jsavnull") 
-      { // no value in node
-        node.value(insval);
-      } 
-      else if (comp(val, insval) > 0) 
-      { // go left
-        if (node.left()) {
-          ins(node.left(), insval);
-        } else {
-          node.left(insval);
-        }
-      } 
-      else 
-      { // go right
-        if (node.right()) 
-        {
-          ins(node.right(), insval);
-        } else 
-        {
-          node.right(insval);
-        }
-      }
-    };
-    if ($.isArray(value)) 
-    { // array of values
-      for (var i = 0, l = value.length; i < l; i++) 
-      {
-        ins(this.root(), value[i]);
-      }
-    } 
-    else 
-    {
-      ins(this.root(), value);
-    }
-    return this;
-  };
-}*/
-
-/*
-"use strict";
-
+/*global alert: true, ODSA */
+/*global sweep */
 (function ($) {
-  /global alert: true, ODSA /
-  // create a new settings panel and specify the link to show it
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
+  var jsav, // for JSAV library object av
+      arr;  // for the JSAV array
 
-  // add the layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select",
-                      "options": {"bar": "Bar", "array": "Array"},
-                      "label": "Array layout: ", "value": "bar"});
-
-  var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
-  
-
-  $(document).ready(function () {
-    var initData, bh,
-        settings = new JSAV.utils.Settings($(".jsavsettings")),
-        jsav = new JSAV($('.avcontainer'), {settings: settings}),
-        exercise,
-        swapIndex;
-
-    jsav.recorded();
-    function init() {
-      var nodeNum = 10;
-      if (bh) {
-        bh.clear();
-      }
-
-
-  function bintree() {
-    //insert(BINnode rt, INrecord, NodeBounds, level)
-    function insert(rt, ir, nb, level) {
-      if (rt.value == null) {
-        // Return a new leafnode that contains INrecord;
-        rt.value = ir;
-        rt.isLeaf = true;
-        rt.level = level;
-        return rt;
-      }
-      if (rt.isLeaf)
-      {
-        // Need to make a new internal node and insert both points
-        BINnode temp = new BINinternal(EMPTYLEAF, EMPTYLEAF); // Make new internal node
-        rt = insert(temp, rt.record, NodeBounds); // Insert the old point
-      } // Note that we are falling through to the next case
-      // Deal with an internal node
-      if (EVEN(level)) { // Branch on X
-        if (go left)
-          rt.setLeft(insert(rt.left() ...
-        else
-          rt.setRight(insert(rt.right()...
-      } 
-      else // Branch on Y
-        if (go left) ... (repeat same logic)
-    }
+  // check query parameters from URL
+  var params = JSAV.utils.getQueryParameter();
+  if ("increments" in params) { // set value of increments if it is a param
+    $('#increments').val(params.increments).prop("disabled", true);
   }
 
-}*/
+  // create a new settings panel and specify the link to show it
+  var settings = new JSAV.utils.Settings($(".jsavsettings"));
+  // add the layout setting preference
+  var arrayLayout = settings.add("layout",
+    {"type": "select", "options": {"bar": "Bar", "array": "Array"},
+     "label": "Array layout: ", "value": "bar"});
+
+  // Initialize the arraysize dropdown list
+  ODSA.AV.initArraySize(5, 16, 8);
+  
+  // Process help button: Give a full help page for this activity
+  // We might give them another HTML page to look at.
+  function help() {
+    window.open("bintreeHelpAV.html", 'helpwindow');
+  }
+
+  // Process About button: Pop up a message with an Alert
+  function about() {
+    alert("Bintree Visualization\nWritten by Anthony Rinaldi and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+  }
+
+  // Execute the "Run" button function
+  function runIt() {
+    
+    ODSA.AV.reset(true);
+    jsav = new JSAV($('.avcontainer'));
+
+    jsav.umsg("Let's get started");
+    jsav.displayInit();
+
+    jsav.umsg("Step 1");
+    jsav.step();
+
+    jsav.umsg("All Done!");
+    jsav.recorded(); // mark the end
+  }
+
+  // Connect action callbacks to the HTML entities
+  $('#help').click(help);
+  $('#about').click(about);
+  $('#run').click(runIt);
+  $('#reset').click(ODSA.AV.reset);
+}(jQuery));

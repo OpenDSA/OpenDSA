@@ -11,20 +11,7 @@
       height: 480px;
     }
   </style>
-
-
-<script src="../../lib/jquery.min.js"></script>
-<script src="../../lib/jquery-ui.min.js"></script>
-<script src="../../JSAV/lib/jquery.transit.js"></script>
-<script src="../../JSAV/lib/raphael.js"></script>
-<script src="../../JSAV/build/JSAV-min.js"></script>
-<script src="../../lib/odsaUtils-min.js"></script>
-<script src="../../lib/odsaAV-min.js"></script>
-<script src="../sortUtils.js"></script>
-<script src="bintreeAV.js"></script>
-
 </head>
-
 
 <body>
 <div id="container">
@@ -44,29 +31,26 @@
   </table>
 
   <form id="ssperform">
-    <p><label for="increments">Type an increment series or
-                               use the given default:</label>
-       <input id="increments" size="30" name="increments" type="text"
-           value="4 2 1" />
-    </p>
     <p>
       <input type="button" id="run" name="run" value="Run" />
       <input type="button" id="reset" name="reset" value="Reset" />
-      <label for="arraysize">&nbsp;Array size:&nbsp;</label>
-      <select id="arraysize"></select>
-    </p>
-    <p>
-      <label for="arrayValues">&nbsp;Array values:&nbsp;</label>
-      <input size="60" name="arrayValues" id="arrayValues" type="text" 
-         placeholder="Type space-separated values, or hit 'run' to use random values" />
     </p>
   </form>
-  <div class="av">
+  <div class="avcontainer">
     <span class="jsavcounter"></span>
     <div class="jsavcontrols"></div>
     <p class="jsavoutput jsavline"></p>
-  </div> <!--av-->
+  </div> <!--avcontainer-->
 </div> <!--container-->
 
+<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../JSAV/lib/jquery.transit.js"></script>
+<script src="../../JSAV/lib/raphael.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/odsaUtils-min.js"></script>
+<script src="../../lib/odsaAV-min.js"></script>
+<script src="../sortUtils.js"></script>
+<script src="bintreeAV.js"></script>
 </body>
 </html>
