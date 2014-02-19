@@ -243,13 +243,13 @@ In fact, it is exponentially faster!
 But even so, for practical input sizes, the absolute cost difference
 is fairly small.
 Thus, the constant factors might play a role.
-First we compare :math:`\lg \lg n` to :math:`\lg n`.
+First we compare :math:`\log \log n` to :math:`\log n`.
 
 .. math::
 
    \begin{array}{llll}
    &&&{\rm Factor}\\
-   n  &\lg n&\lg \lg n&{\rm Difference}\\
+   n  &\log n&\log \log n&{\rm Difference}\\
    \hline
    16 &4    &2        &2\\
    256&8    &3        &2.7\\
@@ -268,7 +268,7 @@ the input size.
 For our two algorithms, let us look further and check the actual
 number of comparisons used. 
 For binary search, we need about :math:`\log n-1` total comparisons.
-Quadratic binary search requires about :math:`2.4 \lg \lg n`
+Quadratic binary search requires about :math:`2.4 \log \log n`
 comparisons.
 If we incorporate this observation into our table, we get a different
 picture about the relative differences.
@@ -277,7 +277,7 @@ picture about the relative differences.
 
    \begin{array}{llll}
    &&&{\rm Factor}\\
-   n  &\lg n -1&2.4 \lg \lg n&{\rm Difference}\\
+   n  &\log n -1&2.4 \log \log n&{\rm Difference}\\
    \hline
    16&3&4.8&{\rm worse}\\
    256&7&7.2&\approx {\rm same}\\
