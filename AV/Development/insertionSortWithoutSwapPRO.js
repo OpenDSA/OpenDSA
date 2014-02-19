@@ -6,13 +6,21 @@
     barArray,
     tempArray,
     av = new JSAV($("#jsavcontainer")),
-    clickHandler;
+    clickHandler,
+    code =  "for i = 1 to n-1 do\n"+
+            "   tmp = a[i]\n"+
+            "   j = i\n"+
+            "   while j > 0 AND a[j-1] > tmp do\n"+
+            "       a[j] = a[j-1]\n"+
+            "       j = j - 1\n"+
+            "   a[j] = tmp",
+    avCode = av.code(code);
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
 
-    exercise.jsav.container.find(".jsavcanvas").css({height: 280});
+    exercise.jsav.container.find(".jsavcanvas").css({height: 350});
 
     // initialize click handler
     if (typeof clickHandler === "undefined") {
@@ -55,7 +63,11 @@
       "font-weight": "bold"
     };
     var canvasWidth = exercise.jsav.container.find(".jsavcanvas").width();
-    av.getSvg().text(canvasWidth / 2, 270, "temp").attr(font);
+    av.getSvg().text(canvasWidth / 2, 340, "temp").attr(font);
+
+    // show the code
+    avCode.show();
+    avCode.highlight([1, 4, 6]);
 
     return [barArray, tempArray];
   }
@@ -66,12 +78,16 @@
 
     jsav._undo = [];
     modelArray.layout();
+
+    var msCode = jsav.code(code).show();
+
     jsav.displayInit();
     
     var j = 0;
     for (var i = 1; i < arraySize; i++) {
       jsav.effects.copyValue(modelArray, i, modelTempArray, 0);
       jsav.umsg("Copy " + modelArray.value(i) + " from the array into the temp variable.<br/>&nbsp;&nbsp;i: " + i + ",&nbsp;&nbsp;j: " + j);
+      msCode.setCurrentLine(1);
       jsav.stepOption("grade", true);
       jsav.step();
       j = i;
@@ -79,17 +95,17 @@
         jsav.effects.copyValue(modelArray, j - 1, modelArray, j);
         modelArray.layout();
         jsav.umsg("Shift all the elements, whose values are larger than " + modelTempArray.value(0) + " (temp) and whose indices are smaller than " + i + " (i), one step to the right.<br/>&nbsp;&nbsp;i: " + i + ",&nbsp;&nbsp;j: " + j);
+        msCode.setCurrentLine(4);
         jsav.stepOption("grade", true);
         jsav.step();
         j--;
       }
-      if (j !== i) {
-        jsav.effects.copyValue(modelTempArray, 0, modelArray, j);
-        modelArray.layout();
-        jsav.umsg("Copy " + modelTempArray.value(0) + " back into its right place in the array. The array is now sorted between indices 0 and " + i + "<br/>&nbsp;&nbsp;i: " + i + ",&nbsp;&nbsp;j: " + j);
-        jsav.stepOption("grade", true);
-        jsav.step();
-      }
+      jsav.effects.copyValue(modelTempArray, 0, modelArray, j);
+      modelArray.layout();
+      jsav.umsg("Copy " + modelTempArray.value(0) + " back into its right place in the array. The array is now sorted between indices 0 and " + i + "<br/>&nbsp;&nbsp;i: " + i + ",&nbsp;&nbsp;j: " + j);
+      msCode.setCurrentLine(6);
+      jsav.stepOption("grade", true);
+      jsav.step();
     }
 
     return [modelArray, modelTempArray];
