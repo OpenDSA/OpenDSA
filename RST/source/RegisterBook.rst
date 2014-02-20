@@ -12,12 +12,11 @@
 
 .. index:: ! Registerbook
 
-Gradebook
-=========
+Register OpenDSA Book Instance
+==============================
 
 .. raw:: html
 
-   <h1>Register Your OpenDSA Book Instance<a class="headerlink" href="#register-book" title="Permalink to this headline">¶</a></h1>
    <p><strong>Welcome to OpenDSA!</strong></p>
    You will be able to send all the information related to the content of your book instance to the
    backend server.
