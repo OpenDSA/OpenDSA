@@ -211,9 +211,10 @@ def generate_index_rst(config, slides = False):
     index_rst.write(".. toctree::\n")
     index_rst.write("   :maxdepth: 3\n\n")
 
-    # Process the Gradebook as well
+    # Process the Gradebook and Registerbook as well
     if not slides:
       process_module(config, mod_path='Gradebook', index_rst=index_rst)
+      process_module(config, mod_path='RegisterBook', index_rst=index_rst)
 
     # If a ToDo file will be generated, append it to index.rst
     if len(todo_list) > 0:
@@ -387,9 +388,6 @@ def configure(config_file_path, slides = False):
 
     # Calls the postprocessor to update chapter, section, and module numbers
     update_TOC(config.book_src_dir, config.book_dir + config.rel_book_output_path, module_chap_map)
-
-    # Copy the registration page in the html directory
-    distutils.file_util.copy_file(config.odsa_dir + 'lib/RegisterBook.html', config.book_dir + config.rel_book_output_path )
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":

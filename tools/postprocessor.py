@@ -79,7 +79,7 @@ def update_mod_html(file_path, data, prefix):
       link_text = m.group('text')
       link_mod = m.group('href')
 
-      if link_mod in data and link_mod not in ['index', 'Gradebook', 'ToDo']:
+      if link_mod in data and link_mod not in ['index', 'Gradebook', 'ToDo', 'RegisterBook']:
         new_link_text = '%s.' % data[link_mod][1] + link_text
         html[line_num] = line.replace(link_text, new_link_text)
 
