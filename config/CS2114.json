@@ -646,6 +646,7 @@
       }
     },
     "Stubs": {
+      "hidden": true,
       "Stubs": {
         "long_name": "Stubs Chapter",
         "exercises": {}
