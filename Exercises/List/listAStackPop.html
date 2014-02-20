@@ -189,33 +189,25 @@ function initJSAV(max_size, arr_size, insertValue) {
 // Check user's answer for correctness: User's array must match answer
 function checkAnswer(max_size, arr_size) {
 
-  if (arrReturn.value(0) !== returnVal)
-  { 
-console.log("Error 1");
+  if (arrReturn.value(0) !== returnVal) { 
     return false;
   }
 
-  if(arr_size === 0){
-//    if(pointerTop.target() !== jsavArr || pointerIndex !== 0){
-    if(pointerIndex !== 0){
-console.log("Error 2");
+  if (arr_size === 0) {
+    if (pointerIndex !== 0) {
       return false;	
     }
-  }else{
-//    if(pointerTop.target() !== jsavArr || pointerIndex !== arr_size-1){
-    if(pointerIndex !== arr_size-1){
-console.log("Error 3");
+  } else {
+    if(pointerIndex !== arr_size-1) {
       return false;
     }
   }
   var i;
   for (i = 0; i < max_size; i++) {
     if (jsavArr.value(i) !== answerArr[i]) {
-console.log("Error 4");
       return false;
     }
   }
-console.log("We are good");
   return true;
 };
 </script>
