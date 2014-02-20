@@ -339,7 +339,7 @@
             "points": 1,
             "threshold": 3
           }
-	}
+        }
       },
       "List/Freelist": {
         "long_name": "Freelists",
@@ -651,7 +651,7 @@
       "Development/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-	  "BTLeafPROG": {
+          "BTLeafPROG": {
             "long_name": "Node Count Function",
             "required": true,
             "points": 1.0,
@@ -694,7 +694,7 @@
             "points": 2,
             "threshold": 5
           }
-	}
+        }
       },
       "Development/BST": {
         "long_name": "Binary Search Trees",
@@ -1060,7 +1060,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "MergesortPRO": {
+          "MergesortMergePRO": {
             "long_name": "Mergesort Merging Proficiency Exercise",
             "required": true,
             "points": 1.0,
@@ -1129,10 +1129,7 @@
             "long_name": "Quicksort Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90,
-            "jsav_exer_options": {
-              "fixmode": "undo"
-             }
+            "threshold": 0.90
           },
           "QuicksortSumm": {
             "long_name": "Quicksort Summary Exercise",
@@ -1151,7 +1148,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HeapsortPRO": {
+          "HeapsortStepPRO": {
             "long_name": "Heapsort RemoveMax Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -1634,7 +1631,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.90
-	  }
+          }
         }
       }
     },

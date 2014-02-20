@@ -346,7 +346,7 @@
             "points": 1,
             "threshold": 3
           }
-	}
+        }
       },
       "List/Freelist": {
         "long_name": "Freelists",
@@ -470,7 +470,7 @@
           }
         }
       },
-      "List/Stacklinked": {
+      "List/StackLinked": {
         "long_name": "Linked Stacks",
         "exercises": {
           "LStackPushCON": {
@@ -706,7 +706,7 @@
             "points": 2,
             "threshold": 5
           }
-	}
+        }
       },
       "Development/BST": {
         "long_name": "Binary Search Trees",
@@ -848,7 +848,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.90
-	  }
+          }
         }
       },
       "Development/GenTreeImplement": {
@@ -1113,13 +1113,13 @@
             "points": 0.1,
             "threshold": 1.0
           },
-          "MergesortPRO": {
+          "MergesortMergePRO": {
             "long_name": "Mergesort Merging Proficiency",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "mergesortProficiency": {
+          "mergesortPRO": {
             "long_name": "Mergesort Proficiency",
             "required": true,
             "points": 1,
@@ -1178,7 +1178,7 @@
             "points": 1,
             "threshold": 5
           },
-          "quicksortProficiency": {
+          "quicksortPRO": {
             "long_name": "Quicksort Proficiency",
             "required": true,
             "points": 1,
@@ -1201,7 +1201,7 @@
             "points": 0.1,
             "threshold": 1.0
           },
-          "HeapsortPRO": {
+          "HeapsortStepPRO": {
             "long_name": "Heapsort Proficiency 1",
             "required": true,
             "points": 1,
@@ -1769,7 +1769,7 @@
         }
       }
     },
-    
+
     "Balanced Trees": {
       "Development/BalancedTree": {
         "long_name": "Balanced Trees",
@@ -1950,12 +1950,20 @@
       }
     },
     "Limits to Computing": {
-      "Stubs/LimComp": {
+      "Development/LimComp": {
         "long_name": "Chapter Intro: Limits to Computing",
         "exercises": {}
       },
-      "Stubs/Reductions": {
+      "Development/Reduction": {
         "long_name": "Reductions",
+        "exercises": {}
+      },
+      "Stubs/NPComplete": {
+        "long_name": "NP-Complete Problems",
+        "exercises": {}
+      },
+      "Stubs/NPCoping": {
+        "long_name": "Coping with NP-complete problems",
         "exercises": {}
       },
       "Stubs/Computability": {

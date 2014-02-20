@@ -1,20 +1,9 @@
-/* Styling for the twoThreeTreeCON diagram ***********************************/
-
-/* Sets maximum width to JSAV container */
-#twoThreeTreeCON {
-	padding-top: 20px;
-	width: 560px;
-}
-
-/* Sets width and height to the JSAV canvas */
-#twoThreeTreeCON .jsavcanvas {
-	height: 200px;
-	width: 560px;
-}
+/* General styling for the size of arrays */
 
 /* Removes top margin from array objects to make the diagram a litle more compact */
 .jsavarray {
-	margin-top: 0; 
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Change the size of each array box */
@@ -27,12 +16,26 @@
 
 /* Center text inside of array cell by making height equal to the container height */
 .jsavnode .jsavvalue {
-	height: 20px;
+  height: 20px;
 }
 
 /* Make the font of the labels inside of the arrays smaller */
 .jsavarray .jsavvaluelabel {
-	font-size: .9em;
+  font-size: .9em;
+}
+
+/* Styling for the twoThreeTreeCON diagram ***********************************/
+
+/* Sets maximum width to JSAV container */
+#twoThreeTreeCON {
+	padding-top: 20px;
+	width: 560px;
+}
+
+/* Sets width and height to the JSAV canvas */
+#twoThreeTreeCON .jsavcanvas {
+	height: 200px;
+	width: 560px;
 }
 
 /* Sytling for the simpleInsertCON slide show ********************************/
@@ -53,4 +56,71 @@
 #simpleInsertCON .jsavoutput {
 	padding-top: 20px;
 	text-align: center;
+}
+
+/* Sytling for the promoteCON slide show ********************************/
+
+/* Set maximun width for the JSAV container */
+#promoteCON, #promoteCON .jsavoutput {
+	width: 800px;
+}
+
+/* Set width and height for the JSAV canvas */
+#promoteCON .jsavcanvas {
+	height: 250px;
+	width: 800px;
+	margin-left: 70px;
+}
+
+/* Align and give a little padding to the output messages of each slide */
+#promoteCON .jsavoutput {
+	padding-top: 20px;
+	text-align: center;
+}
+
+/* Sytling for the splitCON slide show ********************************/
+
+/* Set maximun width for the JSAV container */
+#splitCON, #splitCON .jsavoutput {
+	width: 800px;
+}
+
+/* Set width and height for the JSAV canvas */
+#splitCON .jsavcanvas {
+	height: 350px;
+	width: 800px;
+	margin-left: 70px;
+}
+
+/* Align and give a little padding to the output messages of each slide */
+#splitCON .jsavoutput {
+	padding-top: 20px;
+	text-align: center;
+}
+
+/* Sytling for the arrayTree slide show ********************************/
+
+/* Set maximun width for the JSAV container */
+#arrayTree, #arrayTree .jsavoutput {
+  width: 1000px;
+}
+
+/* Set width and height for the JSAV canvas */
+#arrayTree .jsavcanvas {
+  height: 1000px;
+  width: 1000px;
+  margin-left: 70px;
+}
+
+/* Change the size of each array box */
+#arrayTree .jsavarray .jsavindex {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+}
+
+#arrayTree .jsavarray {
+  min-height: 32px;
+  max-height: 32px;
 }

@@ -646,8 +646,13 @@
       }
     },
     "Stubs": {
+      "hidden": true,
       "Stubs": {
         "long_name": "Stubs Chapter",
+        "exercises": {}
+      },
+      "Stubs/SetDef": {
+        "long_name": "Set Definitions",
         "exercises": {}
       },
       "Stubs/SelfOrg": {

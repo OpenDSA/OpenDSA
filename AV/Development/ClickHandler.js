@@ -173,6 +173,7 @@
 							toIndex: index,
 							effect: options.effect
 						});
+						array.layout();
 						//call onDrop function
 						var grade = options.onDrop.call(this, index);
 						if (typeof grade === "undefined") {
@@ -203,6 +204,7 @@
 						toIndex: index,
 						effect: options.effect
 					});
+					array.layout();
 					//call onDrop function
 					var grade = options.onDrop.call(this, index);
 					if (typeof grade === "undefined") {
@@ -468,9 +470,6 @@
 				for (i = 0; i < list.size(); i++) {
 					if (list.get(i) === options.from) {
 						list.remove(i);
-						if (i !== 0) {
-							options.from.hide();
-						}
 						break;
 					}
 				}

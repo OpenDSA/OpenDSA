@@ -451,6 +451,13 @@ NOTES
 
 
 
+odsatoctree
+-----------
+
+Specialized version Sphinx ``toctree`` directive.
+It is used when a chapter has the optional ``hidden`` field to ``true``.
+The Modules in the chapter will not be visible in the table of content.
+**It is added automatically by the configuration process, do NOT add manually.**
 
 topic (special case)
 --------------------

@@ -4,7 +4,7 @@ TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
-.PHONY: all clean lint csslint jshint min CS223 CS2114 CS5114 CS3114 CS3114AM CS3114PM CS3114notes CS150 OpenDSA test IS allBooks nomin pull
+.PHONY: all clean lint csslint jshint min CS2114 CS5114 CS3114 CS3114notes CS150 OpenDSA test IS allBooks nomin pull
 
 all: lint
 
@@ -38,8 +38,9 @@ jshint:
 	-@jshint lib/odsaAV.js
 	-@jshint lib/odsaMOD.js
 	-@jshint lib/gradebook.js
+	-@jshint lib/registerbook.js
 
-min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css
+min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
 RecurTutor: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json
@@ -147,3 +148,7 @@ lib/gradebook-min.js: lib/gradebook.js
 lib/gradebook-min.css: lib/gradebook.css
 	@echo 'Minimizing lib/gradebook.css'
 	@$(MINIMIZE) lib/gradebook.css -o lib/gradebook-min.css
+
+lib/registerbook-min.js: lib/registerbook.js
+	@echo 'Minimizing lib/registerbook.js'
+	@$(MINIMIZE) lib/registerbook.js -o lib/registerbook-min.js

@@ -3,7 +3,6 @@
 // following sections of the tutorial.
 
 // Helper function for seting pointer
-/*
 function setPointer(name, node, opt){
   var pointerRight = {anchor: "right top",
     myAnchor: "left bottom",
@@ -20,7 +19,6 @@ function setPointer(name, node, opt){
   }
 }
 
-
 // Helper funciton for deleting a pointer
 function delPointer(pointer){
   if(pointer){
@@ -28,7 +26,6 @@ function delPointer(pointer){
     pointer.arrow.remove();
   }
 }
-*/
 // JSAV extension
 (function ($) {
   JSAV._types.ds.ListNode.prototype.odsa_addTail = function(options){	  
@@ -66,12 +63,13 @@ function delPointer(pointer){
   }
 }(jQuery));
 
-//Linked list insertion
+// SelfOrg frequence heuristic
+///////////////////////////////////////
 (function ($) {
   var jsav = new JSAV("SelforgCON1");
 
   // Offsets
-  var leftMargin = 150;
+  var leftMargin = 217;
   var topMargin =  40;
 
   // Create a list object under control of JSAV library
@@ -90,69 +88,365 @@ function delPointer(pointer){
   var freelist = jsav.ds.list({"nodegap": 30, "top": topMargin + 100, left: leftMargin});
 
   // Create 'null' label
- //var nullLabel = jsav.label("selfOrg", {top: topMargin + 100, left: leftMargin});
- //nullLabel.css({color : "red"});
-  // head
- //var head = setPointer("head", l.get(0));  
-  // curr
-//var curr = setPointer("curr", l.get(1));  
-  // Tail
- //var tail = setPointer("tail", l.get(1), "right");  
-  // freelist poitner
- // var pfreelist = setPointer("freelist", nullLabel);
-  jsav.umsg("We will  illustrate using a Self Organizing List, by showing how Searching for the letters F D F G E G F A D F G E in this order will affect the list");
+  var nullLabel = jsav.label("Counter", {top: topMargin - 55, left: leftMargin - 110});
+  nullLabel.css({color : "red"});
+  // counters for the nodes
+  var Apointer = setPointer("0", l.get(0));
+  var Bpointer = setPointer("0", l.get(1));
+  var Cpointer = setPointer("0", l.get(2));
+  var Dpointer = setPointer("0", l.get(3));
+  var Epointer = setPointer("0", l.get(4));  
+  var Fpointer = setPointer("0", l.get(5));
+  var Gpointer = setPointer("0", l.get(6));
+  var Hpointer = setPointer("0", l.get(7));
+
+  jsav.umsg("We will  illustrate using a Self Organizing list using frequency count by applying F D F G E G F A D F G E. pattern");
   jsav.displayInit();
 
-  // step 3
-  jsav.umsg("Now we are searching for F");
-jsav.step();
-jsav.umsg("Since F has been searched more times then any other elements in the list it will move to the front of the list");
+  // step 1
+  jsav.umsg("We search for F");
   l.remove(5);
   l.add(0, "F");
+  Fpointer = setPointer("1", l.get(0));
   l.layout();
-/*
-  l.layout();
-  curr.target(l.get(1));
-  tail.target(l.get(2), {anchor: "left top",
-    myAnchor: "right bottom",
-    left: 15,
-    top: -20});
-  jsav.umsg("Since the freelist is empty, we must use the <code>new</code> operator to create a new node for insertion.");
   jsav.step();
 
-  jsav.umsg("Here is the list after inserting '20', '6' and '12' into the 'current' position. So far, we have not been able to take advantage of the freelist.");
-  l.add(1, "12");
-  l.add(2, "6");
-  l.add(3, "20");
+
+  // step 2
+  jsav.umsg("We search for D");
+  l.remove(4);
+  l.add(0, "D");
+  Dpointer = setPointer("1", l.get(0));
   l.layout();
-  curr.target(l.get(1));
   jsav.step();
 
-  jsav.umsg("Now remove the current node from the list. Set its value to be <code>null</code>. The deleted node is moved to the head of freelist for later reuse.");
+  // step 3
+  jsav.umsg("We search for F");
   l.remove(1);
+  l.add(0, "F");
+  Fpointer = setPointer("2", l.get(0));
   l.layout();
-  nullLabel.hide();
-  freelist.addFirst("null");
-  freelist.layout();
-  pfreelist.target(freelist.get(0));
   jsav.step();
 
-  jsav.umsg("The list after another delete operation on the 'current' node. Again put the deleted node at the head of the freelist."); 
+  // step 4
+  jsav.umsg("We search for G");
+  l.remove(6);
+  l.add(1, "G");
+  Gpointer = setPointer("1", l.get(1));
+  l.layout();
+  jsav.step();
+
+ // step 5
+  jsav.umsg("We search for E");
+  l.remove(6);
+  l.add(1, "E");
+  Epointer = setPointer("1", l.get(1));
+  l.layout();
+  jsav.step();
+
+ // step 6
+  jsav.umsg("We search for G");
+  l.remove(2);
+  l.add(0, "G");
+  Gpointer = setPointer("2", l.get(0));
+  l.layout();
+  jsav.step();
+
+ // step 7
+  jsav.umsg("We search for F");
   l.remove(1);
+  l.add(0, "F");
+  Fpointer = setPointer("3", l.get(0));
   l.layout();
-  freelist.addFirst("null");
-  freelist.layout();
-  pfreelist.target(freelist.get(0));
   jsav.step();
 
-  jsav.umsg("Now let's insert a node with value '6' into 'current' position again. This time the head node of the freelist is used.");
-  l.add(1, "6");
+
+ // step 7
+  jsav.umsg("We search for A");
+  l.remove(4);
+  l.add(2, "A");
+  Apointer = setPointer("1", l.get(2));
   l.layout();
-  freelist.remove(0);
-  freelist.layout();
-  pfreelist.target(freelist.get(0));
   jsav.step();
-*/
+
+ // step 8
+  jsav.umsg("We search for D");
+  l.remove(4);
+  l.add(2, "D");
+  Dpointer = setPointer("2", l.get(2));
+  l.layout();
+  jsav.step();
+
+ // step 9
+  jsav.umsg("We search for F");
+  l.remove(0);
+  l.add(0, "F");
+  Fpointer = setPointer("4", l.get(0));
+  l.layout();
+  jsav.step();
+
+ // step 11
+  jsav.umsg("We search for G");
+  l.remove(1);
+  l.add(1, "G");
+  Gpointer = setPointer("3", l.get(1));
+  l.layout();
+  jsav.step();
+
+ // step 12
+  jsav.umsg("We search for E");
+  l.remove(4);
+  l.add(3, "E");
+  Epointer = setPointer("2", l.get(3));
+  l.layout();
+  jsav.step();
 
   jsav.recorded();
 }(jQuery));
+
+
+
+
+
+////////////////////////////////////
+///
+//SelfOrg list move-to-front
+///////////////////////////////////////
+(function ($) {
+  var jsav = new JSAV("SelforgCON2");
+
+  // Offsets
+  var leftMargin = 217;
+  var topMargin =  40;
+
+  // Create a list object under control of JSAV library
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
+  l.addFirst("H")
+   .addFirst("G")
+   .addFirst("F")
+   .addFirst("E")
+   .addFirst("D")
+   .addFirst("C")
+   .addFirst("B")
+   .addFirst("A");
+  l.layout();
+
+  // Create freelist
+  var freelist = jsav.ds.list({"nodegap": 30, "top": topMargin + 100, left: leftMargin});
+
+  jsav.umsg("We will  illustrate using a Self Organizing list using move-to-front by applying F D F G E G F A D F G E. pattern");
+  jsav.displayInit();
+
+  // step 1
+  jsav.umsg("We search for F");
+  l.remove(5);
+  l.add(0, "F");
+  l.layout();
+  jsav.step();
+
+  // step 2
+  jsav.umsg("We search for D");
+  l.remove(4);
+  l.add(0, "D");
+  l.layout();
+  jsav.step();
+
+  // step 3
+  jsav.umsg("We search for F");
+  l.remove(1);
+  l.add(0, "F");
+  l.layout();
+  jsav.step();
+
+  // step 4
+  jsav.umsg("We search for G");
+  l.remove(6);
+  l.add(0, "G");
+  l.layout();
+  jsav.step();
+
+  // step 5
+  jsav.umsg("We search for E");
+  l.remove(6);
+  l.add(0, "E");
+  l.layout();
+  jsav.step();
+
+  // step 6
+  jsav.umsg("We search for G");
+  l.remove(1);
+  l.add(0, "G");
+  l.layout();
+  jsav.step();
+
+  // step 7
+  jsav.umsg("We search for F");
+  l.remove(2);
+  l.add(0, "F");
+  l.layout();
+  jsav.step();
+
+
+  // step 8
+  jsav.umsg("We search for A");
+  l.remove(4);
+  l.add(0, "A");
+  l.layout();
+  jsav.step();
+
+  // step 9
+  jsav.umsg("We search for D");
+  l.remove(4);
+  l.add(0, "D");
+  l.layout();
+  jsav.step();
+
+  // step 10
+  jsav.umsg("We search for F");
+  l.remove(2);
+  l.add(0, "F");
+  l.layout();
+  jsav.step();
+
+  // step 11
+  jsav.umsg("We search for G");
+  l.remove(3);
+  l.add(0, "G");
+  l.layout();
+  jsav.step();
+
+  // step 12
+  jsav.umsg("We search for E");
+  l.remove(4);
+  l.add(0, "E");
+  l.layout();
+  jsav.step();
+
+  jsav.recorded();
+}(jQuery));
+
+
+
+
+////////////////////////////////////
+///
+//SelfOrg list Transpose
+///////////////////////////////////////
+(function ($) {
+  var jsav = new JSAV("SelforgCON3");
+
+  // Offsets
+  var leftMargin = 217;
+  var topMargin =  40;
+
+  // Create a list object under control of JSAV library
+  var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
+  l.addFirst("H")
+   .addFirst("G")
+   .addFirst("F")
+   .addFirst("E")
+   .addFirst("D")
+   .addFirst("C")
+   .addFirst("B")
+   .addFirst("A");
+  l.layout();
+
+  // Create freelist
+  var freelist = jsav.ds.list({"nodegap": 30, "top": topMargin + 100, left: leftMargin});
+
+  jsav.umsg("We will  illustrate using a Self Organizing list using Transpose by applying F D F G E G F A D F G E. pattern");
+  jsav.displayInit();
+
+  // step 1
+  jsav.umsg("We search for F");
+  l.remove(5);
+  l.add(4, "F");
+  l.layout();
+  jsav.step();
+
+  // step 2
+  jsav.umsg("We search for D");
+  l.remove(3);
+  l.add(2, "D");
+  l.layout();
+  jsav.step();
+
+  // step 3
+  jsav.umsg("We search for F");
+  l.remove(4);
+  l.add(3, "F");
+  l.layout();
+  jsav.step();
+
+  // step 4
+  jsav.umsg("We search for G");
+  l.remove(6);
+  l.add(5, "G");
+  l.layout();
+  jsav.step();
+
+  // step 5
+  jsav.umsg("We search for E");
+  l.remove(6);
+  l.add(5, "E");
+  l.layout();
+  jsav.step();
+
+  // step 6
+  jsav.umsg("We search for G");
+  l.remove(6);
+  l.add(5, "G");
+  l.layout();
+  jsav.step();
+
+  // step 7
+  jsav.umsg("We search for F");
+  l.remove(3);
+  l.add(2, "F");
+  l.layout();
+  jsav.step();
+
+  // step 8
+  jsav.umsg("We search for A");
+  jsav.step();
+
+
+  // step 9
+  jsav.umsg("We search for D");
+  l.remove(3);
+  l.add(2, "D");
+  l.layout();
+  jsav.step();
+
+
+  // step 10
+  jsav.umsg("We search for F");
+  l.remove(3);
+  l.add(2, "F");
+  l.layout();
+  jsav.step();
+
+
+  // step 11
+  jsav.umsg("We search for G");
+  l.remove(5);
+  l.add(4, "G");
+  l.layout();
+  jsav.step();
+
+  // step 12
+  jsav.umsg("We search for E");
+  l.remove(6);
+  l.add(5, "E");
+  l.layout();
+  jsav.step();
+
+
+  jsav.recorded();
+}(jQuery));
+
+
+
+
+
+

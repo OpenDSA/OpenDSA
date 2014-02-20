@@ -56,7 +56,7 @@
       }
     },
     "Search": {
-      "Stubs/Searching": {
+      "Stubs/SearchIntro": {
         "long_name": "Search Chapter Introduction",
         "exercises": {}
       },
@@ -70,7 +70,7 @@
         "long_name": "Indexing Chapter Stub",
         "exercises": {}
       },
-      "Stubs/LinearIndex": {
+      "Stubs/LinearIndexing": {
         "long_name": "Linear Indexing",
         "exercises": {}
       },

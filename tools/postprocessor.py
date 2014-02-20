@@ -66,33 +66,39 @@ def update_mod_html(file_path, data, prefix):
 
   mod_name = os.path.splitext(os.path.basename(file_path))[0]
 
-  if mod_name in data:
-    (chap_title, chap_num) = data[mod_name]
-    header = '%s %s %s' % (prefix, chap_num, chap_title)
+  ignore_mods = ['index', 'Gradebook', 'search', 'RegisterBook']
 
-    for line_num, line in enumerate(html):
-      if 'id="prevmod"' in line or 'id="nextmod"' in line or 'id="prevmod1"' in line or 'id="nextmod1"' in line:
-        link_text = re.split('">',re.split('</a>', line, re.IGNORECASE)[0],re.IGNORECASE)[1]
-        link_mod = os.path.splitext(re.split('href="',re.split('">', line, re.IGNORECASE)[0],re.IGNORECASE)[1])[0]
+  link_pattern = re.compile('<a.+href="(?P<href>.*).html">(?P<text>.*)</a>')
+  title_pattern = re.compile('<title>(?P<title>.*)</title>')
+  h2_pattern = re.compile('<span>(?P<header>.*)</span>')
+  header_pattern = re.compile('<h\d>(?P<header>.*)<a')
 
-        if link_mod in data and link_mod not in ['index', 'Gradebook', 'ToDo']:
-          new_link_text = '%s.' % data[link_mod][1] + link_text
-          html[line_num] = line.replace(link_text, new_link_text)
+  for line_num, line in enumerate(html):
+    if 'id="prevmod"' in line or 'id="nextmod"' in line or 'id="prevmod1"' in line or 'id="nextmod1"' in line:
+      m = re.search(link_pattern, line)
+      link_text = m.group('text')
+      link_mod = m.group('href')
 
-      if mod_name not in ['index', 'Gradebook']:
-        if '<title>' in line:
-          title = re.split('<title>',re.split('</title>', line, re.IGNORECASE)[0],re.IGNORECASE)[1]
-          numbered_title = '%s.' % chap_num + title
-          html[line_num] = line.replace(title, numbered_title)
-        elif '<h2 class="heading"><span>' in line:
-          heading = re.split('<span>',re.split('</span>', line, re.IGNORECASE)[0],re.IGNORECASE)[1]
-          html[line_num] = line.replace(heading, header)
+      if link_mod in data and link_mod not in ['index', 'Gradebook', 'ToDo']:
+        new_link_text = '%s.' % data[link_mod][1] + link_text
+        html[line_num] = line.replace(link_text, new_link_text)
 
-        for i in range(1, 7):
-          if ('<h%s>' % i) in line:
-            section_title = re.split('<h%s>' % i, re.split('<a', line, re.IGNORECASE)[0],re.IGNORECASE)[1]
-            new_section_title = '%s.' % chap_num + section_title
-            html[line_num] = line.replace(section_title, new_section_title)
+    if mod_name in data and mod_name not in ignore_mods:
+      (chap_title, chap_num) = data[mod_name]
+
+      if '<title>' in line:
+        title = re.search(title_pattern, line).group('title')
+        numbered_title = '%s.' % chap_num + title
+        html[line_num] = line.replace(title, numbered_title)
+      elif '<h2 class="heading"><span>' in line:
+        heading = re.search(h2_pattern, line).group('header')
+        header = '%s %s %s' % (prefix, chap_num, chap_title)
+        html[line_num] = line.replace(heading, header)
+
+      if re.search(header_pattern, line):
+        section_title = re.search(header_pattern, line).group('header')
+        new_section_title = '%s.' % chap_num + section_title
+        html[line_num] = line.replace(section_title, new_section_title)
 
   # Replace original HTML file with modified contents
   with open(file_path, 'wb') as html_file:
@@ -110,7 +116,6 @@ def update_TOC(source_dir, dest_dir, data = None):
       data = json.load(page_chapter_file)
 
   html_files = [file for file in os.listdir(dest_dir) if file.endswith('.html')]
-  html_files.remove('index.html')
 
   for file in html_files:
     update_mod_html(dest_dir + file, data, prefix)

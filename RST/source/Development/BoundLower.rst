@@ -13,7 +13,7 @@ Chapter Introduction: Lower Bounds
 ==================================
 
 How do I know if I have a good algorithm to solve a problem?
-If my algorithm runs in :math:`\Theta(n \log n) time, is that good?
+If my algorithm runs in :math:`\Theta(n \log n)` time, is that good?
 It would be if I were sorting the records stored in an array.
 But it would be terrible if I were searching the array for the largest
 element.
@@ -42,13 +42,13 @@ exist.
 Often the most effective way to determine the lower bound for a
 problem is to find a reduction to another problem whose lower bound is
 already known.
-This is the subject of Module :numref:`<Reductions>`.
+This is the subject of Module :numref:`<Reduction>`.
 However, this approach does not help us when we cannot find a suitable
 "similar problem".
 Our focus in this chapter is discovering and proving lower bounds
 from first principles.
 Our most  significant example of a lower bounds argument so far is the
-proof from Module :numref:`<SortingLowerBund>` that the problem of
+proof from Module :numref:`<SortingLowerBound>` that the problem of
 sorting is :math:`O(n \log n)` in the worst case.
 
 The lower bound for the problem is the tightest (highest) lower bound
@@ -163,7 +163,7 @@ at least :math:`\textbf{T}(n-1)`).
 We then must move the bottom disk (for a cost of at least one).
 After that, we must move the :math:`n-1` remaining disks from the
 middle pole to the third pole (for a cost of at least
-:math:`\textbf{T}(n-1)`). 
+:math:`\textbf{T}(n-1)`).
 Thus, no possible algorithm can solve the problem in less than
 :math:`2^n-1` steps.
 Thus, our algorithm is optimal. [#]_
@@ -183,7 +183,7 @@ The second one does.
 Notes
 -----
 
-.. [#] Throughout this discussion, it should be 
+.. [#] Throughout this discussion, it should be
        understood that any mention of bounds must specify what class
        of inputs are being considered.
        Do we mean the bound for the worst case input?
@@ -196,7 +196,7 @@ Notes
 
 .. [#] Recalling the advice to be suspicious of any lower bounds proof
        that argues a given behavior "must" happen, this proof should
-       be raising red flags. 
+       be raising red flags.
        However, in this particular case the problem is so constrained
        that there really is no (better) alternative to this particular
        sequence of events.
