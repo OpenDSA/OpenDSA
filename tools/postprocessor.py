@@ -49,7 +49,12 @@ def update_index_html(dest_dir, sectnum):
     elif 'class="section"' in line:
       sectnum += 1
     elif 'RegisterBook' in line:
+      #remove registerbook page from TOC
       index_html[line_num] = ''
+    elif 'hide-from-toc' in line:
+      #remove stub chapter title 
+      if '<h1>' in index_html[line_num-1]:
+        index_html[line_num-1] = ''
     elif 'class="toctree-l' in line and 'Gradebook' not in line and 'TODO List' not in line:
       title = re.split('>', re.split('</a>', line, re.IGNORECASE)[0], re.IGNORECASE)[-1]
       new_title = '%s.' % sectnum + title
