@@ -96,7 +96,7 @@
     arr[i] = "/";
   }
   var parents = jsav.ds.array(arr, {left: 675, top: -80, layout: 'vertical'});
-	
+
   var code = jsav.code({url: "../../../SourceCode/Processing/General/ParPtrTree2.pde",
                     lineNumbers: false,
                     startAfter: "/* *** ODSATag: UnionFind *** */",
@@ -117,7 +117,7 @@
     treeNodes[i] = tree.root().child(i);
   }
   tree.layout();
-	
+
   //Processing the Data Structure according to the example in the book
   var a = treeNodes[0];
   var b = treeNodes[1];
@@ -129,9 +129,9 @@
   var h = treeNodes[7];
   var i = treeNodes[8];
   var j = treeNodes[9];
-	
+
   jsav.displayInit();
-	
+
   //Edge (A, B)
   jsav.umsg("<b><u>Processing Pair (A, B)</b></u><br>");
   jsav.step();
@@ -158,7 +158,7 @@
   jsav.umsg("<br>Make size(A) = 2", {'preserve': true});
   code.setCurrentLine(9);
   jsav.step();
-	
+
   //Edge (C, H)
   jsav.umsg("<b><u>Processing Pair (C, H)</b></u><br>");
   jsav.step();
@@ -173,7 +173,7 @@
   code.setCurrentLine(2);
   jsav.step();
   jsav.umsg("Union Nodes (C) and (H) <br> Make second root point to first");
-  c.addChild(h);	
+  c.addChild(h);
   parents.value(7, 2);
   tree.layout();
   c.removeClass('highlight');
@@ -185,22 +185,22 @@
   jsav.umsg("<br>Make size(C) = 2", {'preserve': true});
   code.setCurrentLine(9);
   jsav.step();
-	
+
   //Edge (G, F)
   jsav.umsg("<b><u>Processing Pair (F, G)</b></u><br>");
   jsav.step();
   jsav.umsg("The Root of (F) is (F), size(F) = 1<br>", {'preserve': true});
-  g.addClass('highlight');
-  labels.highlight(6);
+  f.addClass('highlight');
+  labels.highlight(5);
   code.setCurrentLine(1);
   jsav.step();
   jsav.umsg("The Root of (G) is (G), size(G) = 1", {'preserve': true});
-  f.addClass('highlight');
-  labels.highlight(5);
+  g.addClass('highlight');
+  labels.highlight(6);
   code.setCurrentLine(2);
   jsav.step();
   jsav.umsg("Union Nodes (F) and (G) <br> Make second root point to first");
-  f.addChild(g);	
+  f.addChild(g);
   parents.value(6, 5);
   tree.layout();
   f.removeClass('highlight');
@@ -227,7 +227,7 @@
   code.setCurrentLine(2);
   jsav.step();
   jsav.umsg("Union Nodes (F) and (I) <br> Make (F) the root, as size(F) > size(I)");
-  f.addChild(i);	
+  f.addChild(i);
   parents.value(8, 5);
   tree.layout();
   f.removeClass('highlight');
@@ -239,7 +239,7 @@
   jsav.umsg("<br>Make size(F) = 3", {'preserve': true});
   code.setCurrentLine(9);
   jsav.step();
-	
+
   //Edge (D, E)
   jsav.umsg("<b><u>Processing Pair (D, E)</b></u><br>");
   jsav.step();
@@ -254,7 +254,7 @@
   code.setCurrentLine(2);
   jsav.step();
   jsav.umsg("Union Nodes (D) and (E) <br> Since weights are the same, make second root point to first");
-  d.addChild(e);	
+  d.addChild(e);
   parents.value(4, 3);
   tree.layout();
   d.removeClass('highlight');
@@ -266,7 +266,7 @@
   jsav.umsg("<br>Make size(D) = 2", {'preserve': true});
   code.setCurrentLine(9);
   jsav.step();
-	
+
   //Edge (H, A)
   jsav.umsg("<b><u>Processing Pair (A, H)<b><u><br>");
   jsav.step();
@@ -281,19 +281,19 @@
   code.setCurrentLine(2);
   jsav.step();
   jsav.umsg("Union Nodes (A) and (H) <br> Since weights are the same, make second root point to first");
-  a.addChild(c);	
+  a.addChild(c);
   parents.value(2, 0);
   tree.layout();
   a.removeClass('highlight');
   c.removeClass('highlight');
   labels.unhighlight(0);
-  labels.unhighlight(2);	
+  labels.unhighlight(2);
   code.setCurrentLine(8);
   jsav.step();
   jsav.umsg("<br>Make size(A) = 4", {'preserve': true});
   code.setCurrentLine(9);
   jsav.step();
-	
+
   //Edge (E, G)
   jsav.umsg("<b><u>Processing Pair (E, G)</b></u><br>");
   jsav.step();
@@ -308,7 +308,7 @@
   code.setCurrentLine(2);
   jsav.step();
   jsav.umsg("Union Nodes (E) and (G) <br> Make (F) the root, as size(F) > size(D)");
-  f.addChild(d);	
+  f.addChild(d);
   parents.value(3, 5);
   tree.layout();
   f.removeClass('highlight');
@@ -320,7 +320,7 @@
   jsav.umsg("<br>Make size(F) = 5", {'preserve': true});
   code.setCurrentLine(6);
   jsav.step();
-	
+
   //Edge (H, E)
   jsav.umsg("<b><u>Processing Pair (H, E)<b><u><br>");
   jsav.step();
@@ -335,7 +335,7 @@
   code.setCurrentLine(2);
   jsav.step();
   jsav.umsg("Union Nodes (H) and (E) <br> Make (F) the root, as size(F) > size(A)");
-  f.addChild(a);	
+  f.addChild(a);
   parents.value(0, 5);
   tree.layout();
   a.removeClass('highlight');
@@ -350,13 +350,13 @@
   jsav.umsg("<br><b>Final UnionFind Data Structure</b>");
   jsav.recorded();
 }(jQuery));
-	
+
 (function ($) {
   var i;
 
   //UnionFind with pathCompression
   var jsav = new JSAV("pathcompCON");
-	
+
   var arr = new Array(10);
   //Initializing the labels
   for (i = 0; i < arr.length; i++) {
@@ -369,7 +369,7 @@
     arr[i] = "/";
   }
   var parents = jsav.ds.array(arr, {left: 280, top: -47});
-    
+
   //Displaying Tree Nodes
   var newNode;
   var tree = jsav.ds.tree({left: 100, top: 70, nodegap: 20});
@@ -385,7 +385,7 @@
   for (i = 0; i < arr.length; i++) {
     treeNodes[i] = tree.root().child(i);
   }
-	
+
   //Processing the Data Structure according to the example in the book
   var a = treeNodes[0];
   var b = treeNodes[1];
@@ -397,37 +397,37 @@
   var h = treeNodes[7];
   var i = treeNodes[8];
   var j = treeNodes[9];
-	
+
   //Edge (A, B)
   a.addChild(b);
   parents.value(1, 0);
-	
+
   //Edge (C, H)
-  c.addChild(h);	
+  c.addChild(h);
   parents.value(7, 2);
-	
+
   //Edge (G, F)
-  f.addChild(g);	
+  f.addChild(g);
   parents.value(6, 5);
 
   //Edge (F, I)
-  f.addChild(i);	
+  f.addChild(i);
   parents.value(8, 5);
 
   //Edge (D, E)
-  d.addChild(e);	
+  d.addChild(e);
   parents.value(4, 3);
 
   //Edge (H, A)
-  a.addChild(c);	
+  a.addChild(c);
   parents.value(2, 0);
-	
+
   //Edge (E, G)
-  f.addChild(d);	
+  f.addChild(d);
   parents.value(3, 5);
-	
+
   tree.layout();
-	
+
   //Edge (H, E) with path compression
   jsav.umsg("We will show how to union nodes (H) and (E) with path compression");
   jsav.displayInit();
@@ -462,9 +462,9 @@
   jsav.step();
   jsav.umsg("The parent of (D) is already (F)<br>", {preserve: true});
   jsav.step();
-	
+
   jsav.umsg("Union Nodes (H) and (E) <br> Make (F) the root, as size(F) > size(A)");
-  f.addChild(a);	
+  f.addChild(a);
   a.removeClass('highlight');
   f.removeClass('highlight');
   tree.layout();
