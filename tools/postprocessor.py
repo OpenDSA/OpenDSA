@@ -48,6 +48,8 @@ def update_index_html(dest_dir, sectnum):
       index_html[line_num] = line.replace('</head>','<style>\nul li {\n\tbackground: none;\n\tlist-style-type: none;\n}\n</style>\n</head>')
     elif 'class="section"' in line:
       sectnum += 1
+    elif 'RegisterBook' in line:
+      index_html[line_num] = ''
     elif 'class="toctree-l' in line and 'Gradebook' not in line and 'TODO List' not in line:
       title = re.split('>', re.split('</a>', line, re.IGNORECASE)[0], re.IGNORECASE)[-1]
       new_title = '%s.' % sectnum + title
