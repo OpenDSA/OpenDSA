@@ -28,8 +28,21 @@
 .jsavcanvas { height: 500px;} /* set the height of the container */
 
 /* change size and margins of arrays */
-.jsavarray { margin: 0; height: 35px; min-height: 35px; position: absolute}
-.jsavarray li { border-radius: 0 !important; height: 35px; width: 145px; font-size: 15px; line-height: 35px;}
+.jsavarray {
+  margin: 0;
+  height: 35px;
+  min-height: 35px;
+  position: absolute
+}
+
+.jsavarray li {
+  border-radius: 0 !important;
+  height: 35px;
+  width: 145px;
+  font-size: 15px;
+  line-height: 35px;
+}
+
 .jsavarray:nth-of-type(1) {top: 0px;}
 .jsavarray:nth-of-type(2) {top: 50px;}
 .jsavarray:nth-of-type(3) {top: 90px;}
@@ -39,3 +52,9 @@
 .jsavarray:nth-of-type(7) {top: 250px;}
 .jsavarray:nth-of-type(8) {top: 290px;}
 .jsavarray:nth-of-type(9) {top: 330px;}
+
+.jsavarray .jsavnode{
+  border: 0;
+  background-color: #eed;
+  box-shadow: 0 0 0;
+}

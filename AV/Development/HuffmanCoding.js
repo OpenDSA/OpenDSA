@@ -408,7 +408,7 @@
     // Set css properties for the table
     tableDisplay[0].css([0, 1, 2, 3], {"font-family":"Trebuchet MS, Arial, Helvetica, sans-serif", "font-size":"1.2em", "border":"1px #98bf21", "background-color":"#9ACD32", "color":"#fff"});
     for (var i = 1; i < tableDisplay.length; i++) {
-      tableDisplay[i].css([0, 1, 2, 3], {"font-family":"Trebuchet MS, Arial, Helvetica, sans-serif", "font-size":"1.1em", "border":"1px #98bf21", "color":"#000"});
+      tableDisplay[i].css([0, 1, 2, 3], {"font-family":"Trebuchet MS, Arial, Helvetica, sans-serif", "font-size":"1.1em", "border":"0px #98bf21", "background-color": "#efe", "color":"#000"});
     }
   }
 
