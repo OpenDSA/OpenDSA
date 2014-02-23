@@ -7,8 +7,8 @@
 
   av.label("V", {visible: true, left: 66, top: 95});
   av.label("U", {visible: true, left: 185, top: 95});
-  av.label("L1", {visible: true, left: 33, top: 152});
-  av.label("L2", {visible: true, left: 93, top: 152});
+  av.label("L<sub>1</sub>", {visible: true, left: 33, top: 152});
+  av.label("L<sub>2</sub>", {visible: true, left: 93, top: 152});
   av.label("X", {visible: true, left: 216, top: 154});
 
   // lines
