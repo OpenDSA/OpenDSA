@@ -368,7 +368,7 @@
   var createTable = function(valArr, codeArr) {
 
     // Create the title of the table by using jsav array
-    var tableArray = new Array("<b>Character</b>", "<b>Frequency</b>", "<b>Huffman Code</b>", "<b>Bit</b>");
+    var tableArray = new Array("<b>Char</b>", "<b>Freq</b>", "<b>Code</b>", "<b>Bits</b>");
     var index = 4; // used to add value in jsav array.
     var line = valArr.length;
     var list = 3;
