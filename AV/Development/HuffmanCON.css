@@ -3,7 +3,23 @@
   height:540px;
 }
 
+/* Sets maximum width to JSAV container */
 #DecodeExample {
+  padding-top: 20px;
+  width: 650px;
+}
+
+/* Sets width and height to the JSAV canvas */
+#DecodeExample .jsavcanvas {
+  height: 550px;
+  width: 650px;
+}
+
+#DecodeExample .jsavtree {
+  margin-top: -50px;
+}
+
+/*#DecodeExample {
   width:871px;
   height:620px;
 }
@@ -12,17 +28,27 @@
   left:370px;
 }
 
+#DecodeExample .jsavnode {
+  line-height: 30px;
+}*/
+
+.jsavoutput.jsavline {
+  width: 650px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.jsavnode .jsavvalue {
+  height: 30px;
+}
+
+/*.jsavoutput {
+  text-align: center
+}*/
+
 .jsavautoresize .jsavnode {
   min-width:30px;
   min-height:30px;
   width: 30px;
   height: 30px;
-}
-
-#DecodeExample .jsavnode {
-  line-height: 30px;
-}
-
-.jsavoutput {
-  text-align: center
 }
