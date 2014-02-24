@@ -231,7 +231,7 @@ lists:
 
 #. Swap any record found with the record immediately
    preceding it in the list.
-   This heuristic is called ``transpose``.
+   This heuristic is called ``transpose`` or ``move ahead one`.
    Transpose is good for list implementations based on either linked
    lists or arrays.
    Frequently used records will, over time, move to the front of the

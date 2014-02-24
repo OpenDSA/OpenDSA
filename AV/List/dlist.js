@@ -394,7 +394,7 @@
       // doing the size first makes the animation look smoother by reducing some flicker
       for (var i = posData.length - 1; i >= 0; i--) {
         var posItem = posData[i];
-        posItem.node.css(posItem.nodePos);
+        posItem.node.moveTo(posItem.nodePos.left, posItem.nodePos.top);
         if (posItem.edge) {
           posItem.edge.g.movePoints(posItem.edgePos, opts);
 		  //posItem.edge.g.movePoints([[0,42,14],[1,69,74]], opts);

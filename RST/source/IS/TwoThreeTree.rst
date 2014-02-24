@@ -13,6 +13,9 @@
 2-3 Trees
 =========
 
+.. inlineav:: arrayTree ss
+   :output: show
+
 This section presents a data structure
 called the 2-3 tree.
 The 2-3 tree is not a binary tree, but instead its shape
@@ -146,12 +149,9 @@ In either case, all leaf nodes continue to have equal depth.
 
 .. _TTPromote:
 
-.. odsafig:: Images/TTPromot.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Node-splitting insert for a 2-3 tree.
+.. inlineav:: promoteCON ss
+   :output: show
+   :align: justify
 
    A simple node-splitting insert for a 2-3 tree.
    The value 55 is added to the 2-3 tree of Figure :num:`Figure #TTexamp`.
@@ -159,6 +159,21 @@ In either case, all leaf nodes continue to have equal depth.
    value 52 to the parent node.
 
 .. _TTSplit:
+
+.. inlineav:: splitCON ss
+   :output: show
+   :align: justify
+
+   Example of inserting a record that causes the 2-3 tree root to
+   split.
+   (a) The value 19 is added to the 2-3 tree of
+   Figure :num:`Figure #TTexamp`.
+   This causes the node containing 20 and 21 to split, promoting 20.
+   (b) This in turn causes the internal node containing 23 and 30 to
+   split, promoting 23.
+   (c) Finally, the root node splits, promoting 23
+   to become the left record in the new root.
+   The result is that the tree becomes one level higher.
 
 .. odsafig:: Images/TTSplit.png
    :width: 400
@@ -257,4 +272,5 @@ San Francisco as part of his
 `Data Structure Visualizations
 <http://www.cs.usfca.edu/~galles/visualization/Algorithms.html>`_ package.
 
+.. odsascript:: AV/Development/ArrayTree.js
 .. odsascript:: AV/Development/twoThreeTreeCON.js

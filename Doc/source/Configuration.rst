@@ -156,6 +156,8 @@ Settings (all are required unless otherwise specified)
 
   * Each key in "chapters" represents a chapter name, any key values in the associated object represent sections within that chapter.  This concept is applied recursively until a module object is reached.  A module object is one whose key matches the name of an RST file in the ~OpenDSA/RST/source/ directory and which contains the key "exercises".
 
+  * **hidden** - This is an optional field to signal the preprocessor to not display the content of the chapter in the TOC. The configuration script will add the new directive ``odsatoctree``. The flagged chapters entries in the TOC will be of class ``hide-from-toc``, and will be removed by a CSS rule in odsaMOD.css file.
+
   * Modules
 
     * The key relating to each module object must correspond with a path to an RST file found in ~OpenDSA/RST/source/ or a sub-directory

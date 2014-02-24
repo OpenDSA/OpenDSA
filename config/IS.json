@@ -21,8 +21,8 @@
         "long_name": "Dynamic",
         "exercises": {}
       },
-      "IS/SequentialFit": {
-        "long_name": "Sequential Fit",
+      "IS/FirstFit": {
+        "long_name": "First Fit",
         "exercises": {}
       },
       "IS/TwoThreeTree.rst": {
@@ -41,13 +41,38 @@
       "IS/Diskdrive": {
 	     "long_name": "Disk Drive",
 	     "exercises": {}
-      },
-       "IS/HuffProof.rst": {
+      }, "IS/Huffman": {
+        "long_name": "Huffman Coding Trees",
+        "exercises": {
+          "huffmanCON1": {
+            "long_name": "Huffman Coding Tree Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "HuffmanCoding": {
+            "long_name": "Huffman Coding Tree Visualization",
+            "required": true,
+            "points": 0.0,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+        }
+      }, 
+      "IS/HuffProof.rst": {
         "long_name": "Huffman Coding Trees",
         "exercises": {}
       },
+	  "IS/LinearIndexing.rst": {
+        "long_name": "LinearIndexing",
+        "exercises": {}
+	  },
       "IS/SetSearch": {
         "long_name": "Set Search",
+        "exercises": {}
+      },
+      "IS/SelfOrg": {
+        "long_name": "Self Organizing Lists",
         "exercises": {}
       }
     },

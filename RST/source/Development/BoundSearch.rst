@@ -12,7 +12,7 @@
 Lower Bounds on Searching Lists
 ===============================
 
-In Module :numref:`<SortingLowerBund>` we presented an important lower
+In Module :numref:`<SortingLowerBound>` we presented an important lower
 bounds proof to show that the problem of sorting is
 :math:`\Theta(n \log n)` in the worst case. 
 In Chapter :chap:`Searching` we discussed a number of algorithms to

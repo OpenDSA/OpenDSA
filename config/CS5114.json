@@ -15,6 +15,14 @@
         "exercises": {}
       }
     },
+    "Background": {
+      "Background/Recursion": {
+        "long_name": "Recursion",
+        "exercises": {
+          "recursionCONTOH": {}
+        }
+      }
+    },
     "Proofs": {
       "Background/Proofs": {
         "long_name": "Proofs",
@@ -532,13 +540,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "MergesortPRO": {
+          "MergesortMergePRO": {
             "long_name": "Mergesort Merging Proficiency Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
           },
-          "mergesortProficiency": {
+          "mergesortPRO": {
             "long_name": "Mergesort Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -597,7 +605,7 @@
             "points": 1.0,
             "threshold": 5
           },
-          "quicksortProficiency": {
+          "quicksortPRO": {
             "long_name": "Quicksort Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -620,7 +628,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HeapsortPRO": {
+          "HeapsortStepPRO": {
             "long_name": "Heapsort RemoveMax Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -721,6 +729,53 @@
             "threshold": 10
           }
         }
+      }
+    },
+    "Searching": {
+      "Development/SearchIntro": {
+        "long_name": "Search Chapter Introduction",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "Development/UnsortedSearch": {
+        "long_name": "Analyzing Search in Unsorted Arrays",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "Development/SortedSearch": {
+        "long_name": "Search in sorted Arrays",
+        "dispModComp": true,
+        "exercises": {}
+      }
+    },
+    "Lower Bounds": {
+      "Development/BoundLower": {
+        "long_name": "Introduction to Lower Bounds",
+        "exercises": {}
+      },
+      "Development/BoundSearch": {
+        "long_name": "Lower Bounds on Search",
+        "exercises": {}
+      },
+      "Development/BoundMax": {
+        "long_name": "Lower Bounds on Search",
+        "exercises": {}
+      },
+      "Development/BoundAdversary": {
+        "long_name": "Adversary Lower Bounds",
+        "exercises": {}
+      },
+      "Development/BoundState": {
+        "long_name": "State Space Lower Bounds",
+        "exercises": {}
+      },
+      "Development/BoundiBest": {
+        "long_name": "Finding ith Best Element",
+        "exercises": {}
+      },
+      "Development/SortingOptimal": {
+        "long_name": "Optimal Sorting",
+        "exercises": {}
       }
     },
     "Hashing": {
@@ -1142,6 +1197,35 @@
     "Algorithms": {
       "Development/DynamicProgramming": {
         "long_name": "Dynamic Programming",
+        "exercises": {}
+      }
+    },
+    "Limits to Computing": {
+      "Development/LimComp": {
+        "long_name": "Chapter Intro: Limits to Computing",
+        "exercises": {}
+      },
+      "Development/Reduction": {
+        "long_name": "Reductions",
+        "exercises": {}
+      },
+      "Stubs/NPComplete": {
+        "long_name": "NP-Complete Problems",
+        "exercises": {}
+      },
+      "Stubs/NPCoping": {
+        "long_name": "Coping with NP-complete problems",
+        "exercises": {}
+      },
+      "Stubs/Computability": {
+        "long_name": "Computability",
+        "exercises": {}
+      }
+    },
+    "Stubs": {
+      "Stubs/SelfOrg": {
+        "long_name": "Self-Organizing Lists",
+        "dispModComp": true,
         "exercises": {}
       }
     },

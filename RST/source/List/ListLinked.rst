@@ -57,11 +57,10 @@ and ``link`` fields.
 
 There are a number of problems with the representation just
 described.
-First, there are lots of special cases to code up when the list is
-empty, or when the current position is at an end of the list.
-Special cases will occur when the list is empty because then we have
+First, there are lots of special cases to code for.
+For example, when the list is empty we have
 no element for ``head``, ``tail``, and ``curr`` to point to.
-Implementing these special cases for ``insert`` and ``remove``
+Implementing special cases for ``insert`` and ``remove``
 increases code complexity, making it harder to understand,
 and thus increases the chance of introducing bugs.
 

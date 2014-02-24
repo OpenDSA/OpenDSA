@@ -5,30 +5,31 @@
 
   // Draw the rectangles
   var rect_left = 200;
-  var mainrect = av.g.rect(rect_left, 30, 400, 400);
-  av.g.rect(    rect_left,  30, 200, 200);
-  av.g.rect(rect_left+200, 230, 200, 200);
-  av.g.rect(rect_left+200, 130, 100, 200);
-  av.g.rect(rect_left+300, 230, 100, 200);
-  av.g.rect(rect_left+300,  30, 100, 200);
-  av.g.rect(rect_left+200, 230,  50, 100);
+  var mainrect = av.g.rect(rect_left, 15, 200, 200);
+  av.g.rect(    rect_left,  15, 100, 100);
+  av.g.rect(rect_left+100, 115, 100, 100);
+  av.g.rect(rect_left+100,  15,  50, 200);
+  av.g.rect(rect_left+100,  15,  50,  50);
+  av.g.rect(rect_left+125, 115,  25,  50);
+  av.g.rect(rect_left+100, 115,  25,  50);
 
   // Add points
-  av.g.circle(rect_left+120, 160, 5, {fill: 'black'});
-  av.label("A", {left: rect_left+115, top: 165, visible: true}).show;
-  av.g.circle(rect_left+40, 250, 5, {fill: 'black'});
-  av.label("B", {left: rect_left+35, top: 255, visible: true}).show;
-  av.g.circle(rect_left+220, 65, 5, {fill: 'black'});
-  av.label("C", {left: rect_left+215, top: 70, visible: true}).show;
-  av.g.circle(rect_left+215, 185, 5, {fill: 'black'});
-  av.label("D", {left: rect_left+210, top: 190, visible: true}).show;
-  av.g.circle(rect_left+205, 270, 5, {fill: 'black'});
-  av.label("E", {left: rect_left+200, top: 275, visible: true}).show;
-  av.g.circle(rect_left+265, 290, 5, {fill: 'black'});
-  av.label("F", {left: rect_left+260, top: 295, visible: true}).show;
+  av.g.circle(rect_left+60, 80, 5, {fill: 'black'});
+  av.label("A", {left: rect_left+57, top: 82, visible: true}).show;
+  av.g.circle(rect_left+20, 125, 5, {fill: 'black'});
+  av.label("B", {left: rect_left+17, top: 127, visible: true}).show;
+  av.g.circle(rect_left+110, 32, 5, {fill: 'black'});
+  av.label("C", {left: rect_left+107, top: 35, visible: true}).show;
+  av.g.circle(rect_left+107, 92, 5, {fill: 'black'});
+  av.label("D", {left: rect_left+105, top: 95, visible: true}).show;
+  av.g.circle(rect_left+102, 135, 5, {fill: 'black'});
+  av.label("E", {left: rect_left+100, top: 137, visible: true}).show;
+  av.g.circle(rect_left+137, 145, 5, {fill: 'black'});
+  av.label("F", {left: rect_left+130, top: 147, visible: true}).show;
 
   // Setup the tree
-  var bt = av.ds.bintree({top: 450, left: 200});
+  var bintreeTop = 450;
+  var bt = av.ds.bintree({top: bintreeTop, left: 200});
   bt.root('');
   var rt = bt.root();
   rt.left('');

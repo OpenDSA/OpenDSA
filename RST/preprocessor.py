@@ -698,8 +698,8 @@ def main(argv):
      #generateCSV(finalList, modDest)
 
      #ToDO list page
-     todolist1 = sorted(config.todolist, key=lambda todo: todo[1])
-     todoHTML(todolist1)
+     #todolist1 = sorted(config.todolist, key=lambda todo: todo[1]) # DEPRECATED: Operation performed by configure.py
+     #todoHTML(todolist1) # DEPRECATED: Operation performed by configure.py
 
      #Write table to a file
      try:

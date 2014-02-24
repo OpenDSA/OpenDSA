@@ -285,6 +285,9 @@ It is also faster than the :math:`\Theta(n \log n)` average-case
 time and :math:`\Theta(n^2)` worst-case time required to build the
 BST.
 
+.. avembed:: AV/Development/BuildHeapVisualProof.html ss
+   :showhide: none
+
 .. inlineav:: heapmaxCON ss
    :output: show
 

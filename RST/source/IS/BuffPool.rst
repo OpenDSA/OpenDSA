@@ -259,6 +259,9 @@ modifying the program.
    Instead, the buffer already containing Sector 5 would be moved to the
    front of the buffer pool.
 
+.. inlineav:: Test2CON ss
+   :align: center
+   :output: show
 .. _VirtMem:
 
 .. odsafig:: Images/Virtual.png

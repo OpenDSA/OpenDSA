@@ -60,10 +60,12 @@ function bgColor(array) {
   labelListSize.hide();
 
 
-  //set the background of empty elements to gray
+  // Slide 1: set the background of empty elements to gray
   bgColor(arr);
   jsav.umsg("Inserting an element at the head of an array-based list requires shifting all existing elements in the array by one position toward the tail.");
   jsav.displayInit();
+
+  // Slide 2
   arr.show();
   arrow1.show();
   label.show();
@@ -75,7 +77,8 @@ function bgColor(array) {
   labelListSize.show();
   jsav.step();
 
-// shift all existing elements one position to the right
+  // Slide 3
+  // shift all existing elements one position to the right
   var temp, i;
   for(i = arr.size(); i >= 0; i--) {
     if(i < arr.size() - 1) {
@@ -93,7 +96,7 @@ function bgColor(array) {
   jsav.umsg("Shift all existing elements one position to the right to make room.");
   jsav.step();
 	
-  //step 2
+  // Slide 4
   arr.value(0,23);
   arr.highlight([0]);
   arrow2.hide();
@@ -103,13 +106,17 @@ function bgColor(array) {
   jsav.umsg("Insert 23 into array position 0");
   jsav.step();
 
-  //step 3
+  // Slide 5
   pseudo.unhighlight(5);
   pseudo.highlight(6);
   arr.unhighlight([0]);
   arrLS.highlight(0);
   arrLS.value(0, 6);
-  jsav.umsg(" Increase list size by 1");
+  jsav.umsg("Increase list size by 1");
+  jsav.step();
+
+  // Slide 6
+  jsav.umsg("Thus, the cost to insert into an array-based list in the worst case is &theta;(<i>n</i>) when there are <i>n</i> items in the list.");
   jsav.recorded();
 }(jQuery));
 
@@ -194,6 +201,9 @@ function bgColor(array) {
   pseudo.unhighlight(7);
   pseudo.highlight(8);
   jsav.umsg("Return the deleted element");
+  jsav.step();
+
+  jsav.umsg("Since we might have to shift all of the remaining elements, deletion from an array-based list is &theta;(<i>n</i>) in the worst case if there are <i>n</i> elements in the list");
   jsav.recorded();
 
 }(jQuery));
@@ -256,7 +266,7 @@ function bgColor(array) {
   arr.value(5, "23");
   jsav.step();
 
-  jsav.umsg("The append operation requires &theta;(1) time");
+  jsav.umsg("The append operation therefore requires &theta;(1) time");
   arr.unhighlight(5);
   arrLS.unhighlight(0);
   pseudo.unhighlight(3);
