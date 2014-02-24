@@ -5,7 +5,7 @@
    	  defCtrlState, 	// Stores the default state of the controls
    	  nextStep = new Queue();
 
-  jsav = new JSAV($('.avcontainer'));
+//  jsav = new JSAV($('.avcontainer'));
 
 //  var av = new JSAV("firstFit", {"animationMode": "none"});
 
@@ -114,6 +114,12 @@
 
       //repopulate view with original rectangle structure
     }
+    
+    var firstFit = $('#firstFit');
+
+
+
+    OriginalMemBlock();
     nextStep = new Queue();
   }
 
@@ -128,7 +134,7 @@
     // Reset controls to their default state
     $("#fitAlgorithm").val(defCtrlState.fitAlgorithm);
 
-    if(($("#fitAlgorithm").val()) == '0') {
+    if(Number($('#fitAlgorithm').val()) === 0) {
       $('#input').attr("disabled", "disabled");
     }
 
@@ -140,6 +146,17 @@
 
     // Make sure the queue is empty
     nextStep = new Queue();
+  }
+
+    function loadNextSlide() {
+    var step = nextStep.dequeue();
+
+    if (step.canInsert) {
+      if (step.insert) {    // Insertion step
+        jsav.umsg("Inserting " + step.value + " at position " + step.position + ".");
+      } else {    // Highlighting step
+      }
+    }
   }
 
   function OriginalMemBlock() {
@@ -196,8 +213,6 @@
 	  var freeListRect2 = jsav.g.rect(35, 400, 25, 50).css({"fill": "lightgrey"});
 	  var freeListRect3 = jsav.g.rect(60, 400, 25, 50).css({"fill": "lightgrey"});
 	  var freeListRect4 = jsav.g.rect(85, 400, 25, 50).css({"fill": "lightgrey"});
-	  
-	  
 	  
 	  
 	  var block1 = 25;
@@ -320,6 +335,8 @@
   }
 
   $(document).ready(function () {
+
+    jsav = new JSAV($('.avcontainer'));
     
       // If the user hits 'Enter' while the focus is on the textbox,
     // click 'Next' rather than refreshing the page
@@ -351,18 +368,21 @@
         state.user_input = inputVal;
         ODSA.AV.logExerciseInit(state);
 
-        // Disable input field to process it safely
-        $("#input").attr("disabled", "disabled");
-
         switch ($("#fitAlgorithm").val()) {
         case '0':  // No function chosen
-          reset();
+        //  reset();
           break;
         case '1':
-          ret = firstFit(inputVal);
+        jsav.umsg("First Fit Selected")
+         // ret = firstFit(inputVal);
           break;
         }
       }
+    });
+
+    $("#fitAlgorithm").change(function () {
+
+      OriginalMemBlock();
     });
 
     $('#about').click(about);
@@ -373,6 +393,6 @@
 
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
     setDefaultControlState();
-    reset();
+   // reset();
   });
  }(jQuery));
