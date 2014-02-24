@@ -76,7 +76,6 @@
 
   // eight
   av.umsg("We've now decoded '111101' and reached a value of \"K\".");
-  av.step();
 
   // cleanup
   t.layout();
@@ -311,7 +310,7 @@
   av.step();
 
   r.left().left().highlight();
-  av.step();
+  // av.step();
 
   // av.umsg("We then reach a value of U for the second letter");
   // av.step();
