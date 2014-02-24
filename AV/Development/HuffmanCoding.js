@@ -263,7 +263,7 @@
     //trees.css()
     var leftSoFar = 30;
     for (var i = 0; i < trees.length; i++) {
-      trees[i].css({"left": leftSoFar, "top":"-40px"});
+      trees[i].css({"left": leftSoFar, "top":"0px"});
       traverse_color(trees[i].root(), "white");
       trees[i].layout();
       leftSoFar += trees[i].element.width() + 50;
