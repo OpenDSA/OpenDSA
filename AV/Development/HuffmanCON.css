@@ -1,12 +1,3 @@
-#finalHuffmanTree {
-  width:450px;
-  height:490px;
-}
-
-#finalHuffmanTree .jsavtree {
-  margin-top: -40px;
-}
-
 /* Sets maximum width to JSAV container */
 #DecodeExample {
   padding-top: 20px;
@@ -15,7 +6,7 @@
 
 /* Sets width and height to the JSAV canvas */
 #DecodeExample .jsavcanvas {
-  height: 550px;
+  height: 530px;
   width: 650px;
 }
 
@@ -51,7 +42,7 @@
 
 /* Sets width and height to the JSAV canvas */
 #MExample .jsavcanvas {
-  height: 550px;
+  height: 530px;
   width: 650px;
 }
 
@@ -60,7 +51,7 @@
 }
 
 
-/*=================== MExample ===================*/
+/*=================== Con1 ===================*/
 #Con1 {
   padding-top: 20px;
   width: 650px;
@@ -68,7 +59,7 @@
 
 /* Sets width and height to the JSAV canvas */
 #Con1 .jsavcanvas {
-  height: 550px;
+  height: 530px;
   width: 650px;
 }
 
@@ -78,4 +69,23 @@
 
 #Con1 .jsavoutput.jsavline {
   width:650px;
+}
+
+/*=================== finalHuffmanTree ===================*/
+
+#finalHuffmanTree {
+  width:450px;
+  height:490px;
+}
+
+#finalHuffmanTree .jsavtree {
+  margin-top: -40px;
+}
+
+/*#finalHuffmanTree .jsavnode .jsavvalue {
+  height: 30px;
+}*/
+
+.jsavnode.jsavtreenode.jsavbinarynode .jsavvalue {
+  height:30px;
 }
