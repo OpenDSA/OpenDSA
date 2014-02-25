@@ -3,7 +3,7 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Cliff Shaffer
    :requires: BST
    :satisfies: Huffman coding tree
@@ -98,7 +98,7 @@ compression (there are better methods), Huffman coding gives the
 flavor of such coding schemes.
 One motivation for studying Huffman coding is because it provides our
 first opportunity to see a type of tree structure referred to as a
-:dfn:`search trie`. 
+:dfn:`search trie`.
 
 Building Huffman Coding Trees
 --------------------------------
@@ -171,7 +171,7 @@ Here is a complete visualization of building the Huffman tree.
 Here is the implementation for Huffman tree nodes.
 
 .. codeinclude:: Binary/Huffman.pde
-   :tag: HuffmanNode 
+   :tag: HuffmanNode
 
 This implementation is similar to the ``VarBinNode``
 implementation from Module :numref:`<BinaryTreeImpl>`.

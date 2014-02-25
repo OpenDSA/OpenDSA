@@ -275,20 +275,10 @@ used to represent empty leaf nodes.
 It turns out that the Bintree insert and delete methods are easier to
 implement when using the composite design.
 
-Below is a visualization of the Bintree. Be careful when using this.
-You must set "Bucket Capacity" to be 1, otherwise you will not see the
-Bintree as described in this section.
+Below is a visualization of the Bintree. Use this visualization to
+help understand how the Bintree data structure works.
 
-.. raw:: html
-
-   <center> 
-   <iframe id="Bintree_iframe" 
-        src="http://donar.umiacs.umd.edu/quadtree/points/prkdbuck.html"
-        width="800" height="900"
-        frameborder="1" marginwidth="0" marginheight="0"
-   scrolling="no">
-   </iframe>
-   </center>
+.. avembed:: AV/Development/bintreeAV.html ss
 
 Notes
 -----

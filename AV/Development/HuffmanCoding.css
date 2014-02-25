@@ -3,10 +3,6 @@
   height: 635px;
 }
 
-.jsavcanvas {
-  background-color: transparent;
-}
-
 .jsavline {
   height: 40px;
 }
@@ -24,7 +20,7 @@
 .jsavtree:nth-of-type(6) { left:550px;} /* move 7th tree to the right */
 .jsavtree:nth-of-type(7) { left:650px;} /* move 8th tree to the right */
 .jsavtree:nth-of-type(8) { left:750px;} /* move 9th tree to the right */
-.jsavtree:nth-of-type(9) {top: -40px;  left:350px;} /* move 9th tree to the right */
+.jsavtree:nth-of-type(9) { left:350px;} /* move 9th tree to the right */
 .jsavcanvas { height: 500px;} /* set the height of the container */
 
 /* change size and margins of arrays */
