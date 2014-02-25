@@ -105,6 +105,7 @@ function delPointer(pointer){
 
   // step 1
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(5);
   l.add(0, "F");
   Fpointer = setPointer("1", l.get(0));
@@ -114,6 +115,7 @@ function delPointer(pointer){
 
   // step 2
   jsav.umsg("We search for D");
+  jsav.step();
   l.remove(4);
   l.add(0, "D");
   Dpointer = setPointer("1", l.get(0));
@@ -122,6 +124,7 @@ function delPointer(pointer){
 
   // step 3
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(1);
   l.add(0, "F");
   Fpointer = setPointer("2", l.get(0));
@@ -130,6 +133,7 @@ function delPointer(pointer){
 
   // step 4
   jsav.umsg("We search for G");
+  jsav.step();
   l.remove(6);
   l.add(1, "G");
   Gpointer = setPointer("1", l.get(1));
@@ -138,6 +142,7 @@ function delPointer(pointer){
 
  // step 5
   jsav.umsg("We search for E");
+  jsav.step();
   l.remove(6);
   l.add(1, "E");
   Epointer = setPointer("1", l.get(1));
@@ -146,6 +151,7 @@ function delPointer(pointer){
 
  // step 6
   jsav.umsg("We search for G");
+  jsav.step();
   l.remove(2);
   l.add(0, "G");
   Gpointer = setPointer("2", l.get(0));
@@ -154,6 +160,7 @@ function delPointer(pointer){
 
  // step 7
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(1);
   l.add(0, "F");
   Fpointer = setPointer("3", l.get(0));
@@ -163,6 +170,7 @@ function delPointer(pointer){
 
  // step 7
   jsav.umsg("We search for A");
+  jsav.step();
   l.remove(4);
   l.add(2, "A");
   Apointer = setPointer("1", l.get(2));
@@ -171,6 +179,7 @@ function delPointer(pointer){
 
  // step 8
   jsav.umsg("We search for D");
+  jsav.step();
   l.remove(4);
   l.add(2, "D");
   Dpointer = setPointer("2", l.get(2));
@@ -179,6 +188,7 @@ function delPointer(pointer){
 
  // step 9
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(0);
   l.add(0, "F");
   Fpointer = setPointer("4", l.get(0));
@@ -187,6 +197,7 @@ function delPointer(pointer){
 
  // step 11
   jsav.umsg("We search for G");
+  jsav.step();
   l.remove(1);
   l.add(1, "G");
   Gpointer = setPointer("3", l.get(1));
@@ -195,6 +206,7 @@ function delPointer(pointer){
 
  // step 12
   jsav.umsg("We search for E");
+  jsav.step();
   l.remove(4);
   l.add(3, "E");
   Epointer = setPointer("2", l.get(3));
@@ -239,6 +251,7 @@ function delPointer(pointer){
 
   // step 1
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(5);
   l.add(0, "F");
   l.layout();
@@ -246,6 +259,7 @@ function delPointer(pointer){
 
   // step 2
   jsav.umsg("We search for D");
+  jsav.step();
   l.remove(4);
   l.add(0, "D");
   l.layout();
@@ -253,6 +267,7 @@ function delPointer(pointer){
 
   // step 3
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(1);
   l.add(0, "F");
   l.layout();
@@ -260,6 +275,7 @@ function delPointer(pointer){
 
   // step 4
   jsav.umsg("We search for G");
+  jsav.step();
   l.remove(6);
   l.add(0, "G");
   l.layout();
@@ -267,6 +283,7 @@ function delPointer(pointer){
 
   // step 5
   jsav.umsg("We search for E");
+  jsav.step();
   l.remove(6);
   l.add(0, "E");
   l.layout();
@@ -274,6 +291,7 @@ function delPointer(pointer){
 
   // step 6
   jsav.umsg("We search for G");
+  jsav.step();
   l.remove(1);
   l.add(0, "G");
   l.layout();
@@ -281,6 +299,7 @@ function delPointer(pointer){
 
   // step 7
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(2);
   l.add(0, "F");
   l.layout();
@@ -289,6 +308,7 @@ function delPointer(pointer){
 
   // step 8
   jsav.umsg("We search for A");
+  jsav.step();
   l.remove(4);
   l.add(0, "A");
   l.layout();
@@ -296,6 +316,7 @@ function delPointer(pointer){
 
   // step 9
   jsav.umsg("We search for D");
+  jsav.step();
   l.remove(4);
   l.add(0, "D");
   l.layout();
@@ -303,6 +324,7 @@ function delPointer(pointer){
 
   // step 10
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(2);
   l.add(0, "F");
   l.layout();
@@ -310,6 +332,7 @@ function delPointer(pointer){
 
   // step 11
   jsav.umsg("We search for G");
+  jsav.step();
   l.remove(3);
   l.add(0, "G");
   l.layout();
@@ -317,6 +340,7 @@ function delPointer(pointer){
 
   // step 12
   jsav.umsg("We search for E");
+  jsav.step();
   l.remove(4);
   l.add(0, "E");
   l.layout();
@@ -359,6 +383,7 @@ function delPointer(pointer){
 
   // step 1
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(5);
   l.add(4, "F");
   l.layout();
@@ -366,6 +391,7 @@ function delPointer(pointer){
 
   // step 2
   jsav.umsg("We search for D");
+  jsav.step();
   l.remove(3);
   l.add(2, "D");
   l.layout();
@@ -373,6 +399,7 @@ function delPointer(pointer){
 
   // step 3
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(4);
   l.add(3, "F");
   l.layout();
@@ -380,6 +407,7 @@ function delPointer(pointer){
 
   // step 4
   jsav.umsg("We search for G");
+  jsav.step();
   l.remove(6);
   l.add(5, "G");
   l.layout();
@@ -387,6 +415,7 @@ function delPointer(pointer){
 
   // step 5
   jsav.umsg("We search for E");
+  jsav.step();
   l.remove(6);
   l.add(5, "E");
   l.layout();
@@ -394,6 +423,7 @@ function delPointer(pointer){
 
   // step 6
   jsav.umsg("We search for G");
+  jsav.step();
   l.remove(6);
   l.add(5, "G");
   l.layout();
@@ -401,6 +431,7 @@ function delPointer(pointer){
 
   // step 7
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(3);
   l.add(2, "F");
   l.layout();
@@ -413,6 +444,7 @@ function delPointer(pointer){
 
   // step 9
   jsav.umsg("We search for D");
+  jsav.step();
   l.remove(3);
   l.add(2, "D");
   l.layout();
@@ -421,6 +453,7 @@ function delPointer(pointer){
 
   // step 10
   jsav.umsg("We search for F");
+  jsav.step();
   l.remove(3);
   l.add(2, "F");
   l.layout();
@@ -429,6 +462,7 @@ function delPointer(pointer){
 
   // step 11
   jsav.umsg("We search for G");
+  jsav.step();
   l.remove(5);
   l.add(4, "G");
   l.layout();
@@ -436,6 +470,7 @@ function delPointer(pointer){
 
   // step 12
   jsav.umsg("We search for E");
+  jsav.step();
   l.remove(6);
   l.add(5, "E");
   l.layout();
