@@ -10,6 +10,7 @@
 
 <body>
   <div id="container">
+    
     <table class="headerTable">
       <tr>
         <td class="headerCenter">
@@ -17,17 +18,19 @@
         </td>
       </tr>
     </table>
+    
     <div class="avcontainer">
       <p class="jsavoutput jsavscroll"></p>
-      <ol id="buffer_pool"></ol>
-      <ol id="memory"></ol>
     </div>
+
   </div>
         
   <!-- Bottom Container -->
   <div id="bottom">
+
     <form id="ssperform">
       <p id="procontrols">
+
         <!-- Replacement strategy -->
         <select id="function">
           <option selected="selected" value="0"> Choose Replacement Strategy</option>
@@ -63,8 +66,7 @@
           <option value="8">8</option>
           <option value="9">9</option>
         </select>
-      </p>
-      <p>
+
         <!-- Input Text Field -->
         <label for="input">Input:</label>
         <input size="10" name="input" id="input" type="text" />
@@ -72,6 +74,7 @@
         <!-- Buttons -->
         <input type="button" id="next" name="next" value="Next" />
         <input type="button" id="reset" name="reset" value="Restart" />
+
       </p>
     </form>
   </div>

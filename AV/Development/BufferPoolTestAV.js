@@ -1,64 +1,25 @@
 "use strict";
-/*global alert: true, console: true, is, ODSA */
 
-/*
- * For queries & switch cases, follow the numbering below:
- * Hash Functions (hashFunct):
- *  1. Simple Mod Hash
- *  2. Binning Hash
- *  3. Mid-Square Hash
- *  4. Simple Hash for Strings
- *  5. Improved Hash for Strings
- *
- * Collision Resolutions (collision):
- *  1. Linear Probing
- *  2. Linear Probing by Stepsize of 2
- *  3. Linear Probing by Stepsize of 3
- *  4. Pseudo-Random Probing
- *  5. Quadratic Probing
- *  6. Double Hashing (Prime)
- *  7. Double Hashing (Power-of-2)
- *
- * Table Size (tableSize):
- *  Number between 1 and 16
- *
- * Key Range (keyrange):
- *  1. 0-99
- *  2. 0-999
- *
- * M-value (m):
- *  - A prime number (if collision=6)
- *  - A power-of-2 (if collision=7)
- *
- * To handle queries:
- *  Set the hashFunct, collision, tableSize, keyrange and m according to the reference above
- *  For example, to choose Mid-Square Hash with pseudo-random probing, you would use:
- *  hash.html?hashFunct=3&collision=4
- */
-
-/* The fun starts here  */
 (function ($) {
 
   /* Variables */
-  var jsav,                     // JSAV
-      defCtrlState,             // Stores the default state of the controls
-      defTableSizeOptions,      // Stores the HTML of the default table size options
-      main_memory,                      // JSAV Array
-      buffer_pool,   // A queue containing 'steps' to be played when the user clicks 'Next'
-      slotPerm = [0];           // A permutation of slots for pseudo random probing, must be a global so that
-                                // the same permutation is used each time
+  var jsav,                     
+      main_memory,                      
+      buffer_pool
 
-  // Process About button: Pop up a message with an Alert
-  function about() {
-    alert("" + JSAV.version());
+  function array_init() {
+    var empty = [];
+    main_memory = jsav.ds.array(empty, {layout: "vertical", left: 450});
+    buffer_pool = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 800});
   }
 
-  /**
-   * Wrapper class for error messages
-   */
-  function error(message) {
-    jsav.umsg(message, {"color" : "red"});
-    jsav.umsg("<br />");
+  function contains(arg) {
+    var i;
+    for (i = 0; i < buffer_pool.size(); i++) {
+      if (buffer_pool.value(i) == arg)
+        return true;
+    }
+    return false;
   }
 
   /**
@@ -66,6 +27,8 @@
    */
   function resetAV() {
     // Display a message telling them what fields they need to select
+    main_memory.clear();
+    buffer_pool.clear();
     jsav.clearumsg();
     var missingFields = [];
 
@@ -92,7 +55,7 @@
       // Disable the input box if fields are missing
       $("#input").attr("disabled", "disabled");
 
-      var msg = 'Please select a ' + missingFields.join(', ');
+      var msg = 'Please select: ' + missingFields.join(', ');
       var commaIndex = msg.lastIndexOf(",");
 
       if (commaIndex > -1) {
@@ -108,31 +71,25 @@
       jsav.umsg("<br />");
     }
 
-    // Draw new array
-    var size = $('#mainmemory_size').val();
-    var buf_size = $('#bufferpool_size').val();  
-
-    var htmlData = "";
-    for (var i = 0; i < size; i++) {
-      htmlData += "<li></li>";
-    }
-
-    var buffer_pool = $('#buffer_pool');
-    buffer_pool.html(htmlData);
-
     // Create a new JSAV array
-    main_memory = jsav.ds.array(buffer_pool, {indexed: true, layout: "vertical"});
+    var main_memory_size = $('#mainmemory_size').val();
+    if (main_memory_size > 0) {
+      var empty = [];
+      empty.length = main_memory_size;
+      var i;
+      for (i = 0; i < main_memory_size; i++) {
+        empty[i] = i;
+      }
+      main_memory = jsav.ds.array(empty, {layout: "vertical", left: 450});
+    }
     
-    /*var buffData = "";
-    for (var i = 0; i < buf_size; i++) {
-      buffData += "<li></li>";
+    var buf_size = $('#bufferpool_size').val();
+    if (buf_size > 0) {
+      var empty = [];
+      empty.length = buf_size;
+      buffer_pool = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 800});
     }
 
-    var memory = $('#memory');
-    memory.html(buffData);
-
-    buffer_pool = jsav.ds.array(meory, {indexed: true, layout: "vertical"});
-    */
   }
 
   /**
@@ -141,6 +98,7 @@
    */
   $(document).ready(function () {
     jsav = new JSAV($('.avcontainer'));
+    array_init();
     resetAV();
 
     // If the user hits 'Enter' while the focus is on the textbox,
@@ -177,38 +135,67 @@
       resetAV();
     });
 
-    /* Next button pushed.
-     * If no slide show exits, make one.
-     * Else, load next slide
-     */
+    var counter = 0;
+    console.log(buffer_pool.size()); 
+    // Next button pushed.
     $('#next').click(function () {
-      
-    });
-
-    // Connect action callbacks to the HTML entities
-    $('#about').click(about);
-    $('#reset').click(reset);
-    $('#help').click(function () {
-      window.open("hashAVHelp.html", 'helpwindow');
-    });
-    $('#showcounts').click(function () {
-      if ($('.countlabel').css('display') === 'none') {
-        $('.countlabel').show();
-        $('#showcounts').val('Hide Counts');
-      } else {
-        $('.countlabel').hide();
-        $('#showcounts').val('Show Counts');
+      console.log(counter);
+      var input_val = $("#input").val();
+      if (input_val < 0 || input_val >= main_memory.size())
+        jsav.umsg("enter a valid value");
+      else {
+        if (contains(input_val)) {
+          var temp = [];
+          temp.length = buffer_pool.size();
+          temp[0] = input_val;
+          var i;
+          var counter = 1;
+          for (i = 0; i < buffer_pool.size(); i++) {
+            if (buffer_pool.value(i) != input_val) {
+              temp[counter] = buffer_pool.value(i);
+              counter++;
+            }
+          }
+          for (i = 0; i < buffer_pool.size(); i++) {
+            buffer_pool.value(i, temp[i]);
+          }
+          console.log("foo");
+        }
+        else {
+          if (counter > 0 && counter < buffer_pool.size()) {
+            var i;
+            var new_val = buffer_pool.value(0);
+            var old_val = buffer_pool.value(1);
+            for (i = 1; i < counter+1; i++) {
+              buffer_pool.value(i, new_val);
+              new_val = old_val
+              old_val = buffer_pool.value(i+1);
+            }
+            buffer_pool.value(0, input_val);
+            counter++;
+          }
+          else if (counter == 0) {
+            buffer_pool.value(0, input_val);
+            counter++;
+          }
+          else {
+            var i;
+            var new_val = buffer_pool.value(0);
+            var old_val = buffer_pool.value(1);
+            for (i = 1; i < buffer_pool.size(); i++) {
+              buffer_pool.value(i, new_val);
+              new_val = old_val;
+              if (i <= counter-1)
+                old_val = buffer_pool.value(i+1)
+            }
+            buffer_pool.value(0, input_val);
+          }
+        }
       }
     });
-
-    // Set the default state for the controls
-
-    // Get the default HTML for the tablesize dropdown list
-    defTableSizeOptions = $('#tablesize').html();
 
     // Adjust UI element positions
     var contWidth = $('#container').width() - 20; // 20 pixels for padding
     $('.jsavoutput').width(contWidth / 3);
-    $('#buffer_pool').css('left', (3 * contWidth / 4));
   });
 }(jQuery));
