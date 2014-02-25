@@ -2,6 +2,29 @@
 /*global alert: true, ODSA */
 /*global sweep */
 (function ($) {
+
+  
+  
+  function Bintree() {
+
+    //var jsav = new JSAV($('.avcontainer'));
+
+    var root;
+    
+    this.isEmpty = function () {
+      console.log("Bintree isEmpty test: ", root == null);
+      return (root == null);
+    }
+
+    this.insert = function (rootnode, inrecor, nodebounds, level) {
+      if (rootnode == null) {
+        return (root.value = inrecor);
+      }
+    }
+
+
+  }
+
   var jsav, // for JSAV library object av
       arr;  // for the JSAV array
 
@@ -36,16 +59,36 @@
   function runIt() {
     
     ODSA.AV.reset(true);
-    jsav = new JSAV($('.avcontainer'));
+
+    
+  var jsav = new JSAV($('.avcontainer'));
 
     jsav.umsg("Let's get started");
     jsav.displayInit();
 
-    jsav.umsg("Step 1");
-    jsav.step();
+// Setup the tree
+  var bt = jsav.ds.bintree();
+  var bint = new Bintree();
+  bint.isEmpty();
+  bint.insert(bint.root, 100, 0,0);
+   bint.isEmpty();
 
+  bt.root('');
+  var rt = bt.root();
+
+
+    jsav.umsg("Step 1");
+
+    jsav.step();
+rt.left('');
+  
     jsav.umsg("All Done!");
+
+    rt.left().left('A');
+  rt.left().right('B');
+
     jsav.recorded(); // mark the end
+
   }
 
   // Connect action callbacks to the HTML entities
@@ -53,4 +96,7 @@
   $('#about').click(about);
   $('#run').click(runIt);
   $('#reset').click(ODSA.AV.reset);
+
+  
+
 }(jQuery));
