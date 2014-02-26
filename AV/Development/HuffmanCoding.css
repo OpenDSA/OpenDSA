@@ -49,11 +49,11 @@
 .jsavarray:nth-of-type(8) {top: 290px;}
 .jsavarray:nth-of-type(9) {top: 330px;}
 
-/*.jsavarray .jsavnode{
+.jsavarray .jsavnode{
   border: 0;
   background-color: #eed;
   box-shadow: 0 0 0;
-}*/
+}
 
 .huffmanleaf {
   border-radius: 1px;
