@@ -12,48 +12,47 @@ function setPointer(name, node, opt) {
     myAnchor: "right bottom",
     left: 15,
     top: -20};
-  if(opt === "right"){
+  if (opt === "right") {
     return node.jsav.pointer(name, node, pointerRight);
-  }else{
+  } else {
     return node.jsav.pointer(name, node, pointerLeft);
   }
 }
 
 // JSAV extension
 (function ($) {
-  JSAV._types.ds.ListNode.prototype.odsa_addTail = function(options){	  
-	var fx = $('#' + this.id()).position().left + this.container.position().left + 33;
+  JSAV._types.ds.ListNode.prototype.odsa_addTail = function (opts) {
+    var fx = $('#' + this.id()).position().left + this.container.position().left + 33;
     var fy = $('#' + this.id()).position().top + this.container.position().top + 32;
-    var options = options || {};
-	if(options.left){
-	  fx += options.left;
-	}
-	if(options.top){
-	  fy += options.top;
-	}
-	if(options.visible === "undefined"){
-      options.visible = 100;
-	}
-	return this.jsav.g.line(fx, fy, fx + 10, fy - 31,
-      {"opacity": options.visible,"stroke-width": 1});
-  }
+    var options = opts || {};
 
-  JSAV._types.ds.ListNode.prototype.odsa_addVLine = function(options){	  
-	var fx = $('#' + this.id()).position().left + this.container.position().left;
-    var fy = $('#' + this.id()).position().top + this.container.position().top;
-    var options = options || {};
-	if(options.left){
-	  fx += options.left;
-	}
-	if(options.top){
-	  fy += options.top;
-	}	
-	if(options.visible === "undefined"){
+    if (options.left) {
+      fx += options.left;
+    }
+    if (options.top) {
+      fy += options.top;
+    }
+    if (options.visible === "undefined") {
       options.visible = 100;
-	}
-	return this.jsav.g.line(fx - 15, fy - 5 , fx - 15, fy + 35,
-      {"opacity": options.visible, "stroke-width": 1});
-  }
+    }
+    return this.jsav.g.line(fx, fy, fx + 10, fy - 31, {"opacity": options.visible, "stroke-width": 1});
+  };
+
+  JSAV._types.ds.ListNode.prototype.odsa_addVLine = function (opts) {
+    var fx = $('#' + this.id()).position().left + this.container.position().left;
+    var fy = $('#' + this.id()).position().top + this.container.position().top;
+    var options = opts || {};
+    if (options.left) {
+      fx += options.left;
+    }
+    if (options.top) {
+      fy += options.top;
+    }
+    if (options.visible === "undefined") {
+      options.visible = 100;
+    }
+    return this.jsav.g.line(fx - 15, fy - 5, fx - 15, fy + 35, {"opacity": options.visible, "stroke-width": 1});
+  };
 }(jQuery));
 
 // Diagram showing node concept
@@ -74,14 +73,13 @@ function setPointer(name, node, opt) {
 // Initial state of a linked list when using a header node
 (function ($) {
   var jsav = new JSAV("listLinkedInitCON", {"animationMode": "none"});
-  
+
   // Relative offsets
   var leftMargin = 367;
   var topMargin = 50;
-  
+
   var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
-  l.addFirst("null")
-   .addFirst("null");
+  l.addFirst("null").addFirst("null");
   l.layout();
 
   // Head
@@ -92,9 +90,9 @@ function setPointer(name, node, opt) {
   // Tail
   var tail = setPointer("tail", l.get(1), "right");
   // Diagonal slash
-  var slash = l.get(1).odsa_addTail( );
-  // Vertical bar  
-  var bar = l.get(1).odsa_addVLine( );
+  var slash = l.get(1).odsa_addTail();
+  // Vertical bar
+  var bar = l.get(1).odsa_addVLine();
   jsav.recorded();
 }(jQuery));
 
@@ -107,11 +105,7 @@ function setPointer(name, node, opt) {
   var topMargin = 50;
 
   var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
-    l.addFirst(15)
-   .addFirst(12)
-   .addFirst(10)
-   .addFirst(23)
-   .addFirst(20);
+  l.addFirst(15).addFirst(12).addFirst(10).addFirst(23).addFirst(20);
   l.layout();
 
   //head
@@ -123,12 +117,12 @@ function setPointer(name, node, opt) {
   // tail
   var tail = setPointer("tail", l.get(4));
   tail.hide();
-  // Vertical line  
-  var bar = l.get(2).odsa_addVLine( );
+  // Vertical line
+  var bar = l.get(2).odsa_addVLine();
   //Diagonal slash at tail
-  var slash = l.get(4).odsa_addTail( );
+  var slash = l.get(4).odsa_addTail();
   //Diagonal slash in step 3
-  var slash3 = l.get(3).odsa_addTail({visible:0});
+  var slash3 = l.get(3).odsa_addTail({visible: 0});
 
   jsav.umsg("Here is a graphical depiction for a linked list storing five integers. The value stored in a pointer variable is indicated by an arrow \"pointing\" to something. A NULL pointer is indicated graphically by a diagonal slash through a pointer variable's box. The vertical line between the nodes labeled 23 and 10 indicates the current position (immediately to the right of this line).");
   jsav.displayInit();
@@ -169,8 +163,8 @@ function setPointer(name, node, opt) {
   l.layout();
 
   // Hidden JSAV array for animation
-  var arr = jsav.ds.array([""], 
-            {indexed: false, layout: "array", left:0}).hide();
+  var arr = jsav.ds.array([""],
+            {indexed: false, layout: "array", left: 0}).hide();
   // Head
   var head = setPointer("head", l.get(0));
   // Curr
@@ -179,19 +173,19 @@ function setPointer(name, node, opt) {
   var tail = setPointer("tail", l.get(4));
 
   // Vertical line
-  var bar = l.get(2).odsa_addVLine( );
+  var bar = l.get(2).odsa_addVLine();
   // Another vertical line
-  var bar2 = l.get(3).odsa_addVLine({visible : 0});
+  var bar2 = l.get(3).odsa_addVLine({visible: 0});
 
   // Diagonal slash
-  var slash = l.get(4).odsa_addTail( );
+  var slash = l.get(4).odsa_addTail();
   //dash line in step 4
-  var dashlineLeftMargin = 452
-  var dashline = jsav.g.polyline([[dashlineLeftMargin, 66], 
-      [dashlineLeftMargin + 13, 66], [dashlineLeftMargin + 13, 30],[dashlineLeftMargin + 83,30],[dashlineLeftMargin + 83,66],[dashlineLeftMargin + 101,66]], {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
-  
+  var dashlineLeftMargin = 452;
+  var dashline = jsav.g.polyline([[dashlineLeftMargin, 66],
+      [dashlineLeftMargin + 13, 66], [dashlineLeftMargin + 13, 30], [dashlineLeftMargin + 83, 30], [dashlineLeftMargin + 83, 66], [dashlineLeftMargin + 101, 66]], {"arrow-end": "classic-wide-long", "opacity": 0, "stroke-width": 2,"stroke-dasharray": "-"});
+
   //Diagonal slash in step 6
-  var slash5 = l.get(3).odsa_addTail({visible : 0});
+  var slash5 = l.get(3).odsa_addTail({visible: 0});
 
   jsav.umsg("Another problem is that we have no link to get us to the preceding node (shown in yellow). So we have no way to update its <code>next</code> pointer.");
   jsav.displayInit();
@@ -200,13 +194,13 @@ function setPointer(name, node, opt) {
   l.get(3).highlight();
   jsav.umsg("Often we can get around this problem during deletion by copying the value following the current node (in this case the value 12) back into the current node. Let's look again at the example where we delete value 10.");
   jsav.step();
-  
+
   l.get(3).unhighlight();
   l.get(2).value("");
   l.get(2).highlight();
   jsav.umsg("First we remove the value 10 from the current node.");
   jsav.step();
-  
+
   jsav.effects.moveValue(l.get(3), l.get(2));
   jsav.umsg("Now we move the value 12 to the current node).");
   jsav.step();
@@ -216,7 +210,7 @@ function setPointer(name, node, opt) {
   l.get(3).edgeToNext().hide();
   l.get(2).unhighlight();
   l.get(3).highlight();
-  jsav.umsg(" Now we can route around the un-needed node.");
+  jsav.umsg("Now we can route around the un-needed node.");
   jsav.step();
 
   dashline.hide();
@@ -267,16 +261,16 @@ function setPointer(name, node, opt) {
   var tail = setPointer("tail", l.get(6));
 
   // Vertical line
-  var bar = l.get(3).odsa_addVLine( );
+  var bar = l.get(3).odsa_addVLine();
   // Diagonal slash
-  var slash = l.get(6).odsa_addTail( );
+  var slash = l.get(6).odsa_addTail();
 
   jsav.recorded();
 }(jQuery));
 
 // Show off the data members
 (function ($) {
-  var jsav = new JSAV("LlistVarsCON");	
+  var jsav = new JSAV("LlistVarsCON");
   var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
                         lineNumbers: false,
                         startAfter: "/* *** ODSATag: LListVars *** */",
@@ -291,7 +285,7 @@ function setPointer(name, node, opt) {
   pseudo.unhighlight(0);
   pseudo.highlight(1);
   jsav.umsg("The first of the private data members is <code>head</code>, the first node of the list. This header node is a link node like any other, but its value is ignored and it is not considered to be an actual element of the list.");
-  jsav.step(); 
+  jsav.step();
   pseudo.unhighlight(1);
   pseudo.highlight(2);
   jsav.umsg("The second of the private data members is <code>tail</code>, the last node of the list. This trailer node is a link node like any other, but its <code>next</code> field is set to <code>null</code>, pointing to nowhere. Like the header node, the trailer node's value is ignored.");
@@ -311,7 +305,7 @@ function setPointer(name, node, opt) {
 
 // Work through the constructors
 (function ($) {
-  var jsav = new JSAV("LListCons");	
+  var jsav = new JSAV("LListCons");
   var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
                         lineNumbers: false,
                         startAfter: "/* *** ODSATag: LListCons *** */",
@@ -320,7 +314,7 @@ function setPointer(name, node, opt) {
   jsav.umsg("Let's look at the constructors for class <code>LList</code>.");
   pseudo.highlight(0);
   jsav.displayInit();
-  
+
   // Slide
   jsav.umsg("The constructor for LList maintains the optional parameter for minimum list size introduced for Class AList. This is done simply to keep the calls to the constructor consistent for both implementations. The linked list class does not declare a fixed-size array when the list is created, so this parameter is unnecessary for linked lists. It is ignored.");
   pseudo.unhighlight(0);
@@ -328,7 +322,7 @@ function setPointer(name, node, opt) {
   jsav.step();
 
   // Slide
-  jsav.umsg("So the constructor that takes the value just calls the version that does not take a value.")
+  jsav.umsg("So the constructor that takes the value just calls the version that does not take a value.");
   pseudo.highlight(2);
   jsav.step();
 
@@ -341,7 +335,7 @@ function setPointer(name, node, opt) {
   pseudo.highlight(8);
   pseudo.highlight(9);
   jsav.umsg("Both constructors rely on the clear method to do the real work.");
-  jsav.step(); 
+  jsav.step();
 
   // Slide
   jsav.umsg("The <code>clear</code> method initializes the list to just the empty header and trailer nodes as was shown before.");
@@ -370,33 +364,31 @@ function setPointer(name, node, opt) {
    .addFirst("null");
   l.layout();
 
-  // create two hidden arrays for ".copyValue" animation 
-  var arr = jsav.ds.array([""], 
+  // create two hidden arrays for ".copyValue" animation
+  var arr = jsav.ds.array([""],
             {indexed: true, layout: "array"});
-  arr.hide(); 
+  arr.hide();
 
   // head
-  var head = setPointer("head", l.get(0));  
+  var head = setPointer("head", l.get(0));
   // curr
-  var curr = setPointer("curr", l.get(2));  
+  var curr = setPointer("curr", l.get(2));
   // Tail
-  var tail = setPointer("tail", l.get(4));  
+  var tail = setPointer("tail", l.get(4));
 
   //Diagonal slash
   var slash = l.get(4).odsa_addTail();
-  var newSlash = l.get(4).odsa_addTail({left:72, top:0, visible : 0});
+  var newSlash = l.get(4).odsa_addTail({left: 72, top: 0, visible: 0});
 
   //Vertical bar
-  var bar = l.get(2).odsa_addVLine( );
+  var bar = l.get(2).odsa_addVLine();
 
   //Horizontal arrow in step 4 pointing to item 12
-  var longArrow= jsav.g.line(leftMargin + 185, topMargin + 16, leftMargin + 293, topMargin + 16,{"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
- 
+  var longArrow = jsav.g.line(leftMargin + 185, topMargin + 16, leftMargin + 293, topMargin + 16, {"arrow-end": "classic-wide-long", "opacity": 0, "stroke-width": 2});
+
   // Box "it"
-  var itLabel = jsav.label("it",
-	  {before: l, left: 20, top: 0, "font-size":"20px"});
-  var itBox = jsav.ds.array(["15"], 
-            {indexed: false, layout: "array", top: -20, left: 40});
+  var itLabel = jsav.label("it", {before: l, left: 20, top: 0, "font-size": "20px"});
+  var itBox = jsav.ds.array(["15"], {indexed: false, layout: "array", top: -20, left: 40});
 
   //initialize the link list
   jsav.umsg("The linked list before insertion. 15 is the value to be inserted.");
@@ -404,31 +396,31 @@ function setPointer(name, node, opt) {
   itBox.highlight(0);
   pseudo.highlight(1);
   jsav.displayInit();
-    
+
   //step 2
-  var newNode = l.newNode("");	
+  var newNode = l.newNode("");
   // Set the position for the new node
-  newNode.css({top: 60, left: 222}); 
-  var node = l.get(2).next();    
+  newNode.css({top: 60, left: 222});
+  var node = l.get(2).next();
   l.get(2).next(newNode);
   newNode.next(node);
   l.get(2).edgeToNext().hide();
-  l.get(3).edgeToNext().hide();    
+  l.get(3).edgeToNext().hide();
   longArrow.show();
   slash.hide();
   newSlash.show();
   l.layout({updateTop: false});
   jsav.umsg("Create a new link node.");
-  //Copy 23 to the new link node   
+  //Copy 23 to the new link node
   jsav.effects.copyValue(arr, 0, newNode);
   newNode.highlight();
   pseudo.unhighlight(1);
   pseudo.highlight(2);
   jsav.step();
-  
+
   //step 3
   jsav.umsg("Copy <code>current.element()</code> as the new node's value.");
-  //Copy 10 to the new link node   
+  //Copy 10 to the new link node
   jsav.effects.copyValue(l.get(2), newNode);
   jsav.step();
 
@@ -443,7 +435,7 @@ function setPointer(name, node, opt) {
   //step 5
   l.get(2).highlight();
   l.get(3).unhighlight();
-  l.get(2).edgeToNext().show();	
+  l.get(2).edgeToNext().show();
   longArrow.hide();
   jsav.umsg("<code>curr</code>'s <code>next</code> field is assigned to point to the new link node.");
   jsav.step();
@@ -474,7 +466,7 @@ function setPointer(name, node, opt) {
   jsav.recorded();
 }(jQuery));
 
-//Special cases for Linked list insertion 
+//Special cases for Linked list insertion
 (function ($) {
   var jsav =  new JSAV("LlistSpecInsertCON");
   var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LList.pde",
@@ -487,39 +479,39 @@ function setPointer(name, node, opt) {
 
   // Box "it"
   var itLabel = jsav.label("it",
-	  {left: 20, top: 0, "font-size":"20px"});
-  var itBox = jsav.ds.array(["15"], 
+    {left: 20, top: 0, "font-size":"20px"});
+  var itBox = jsav.ds.array(["15"],
             {indexed: false, layout: "array", top: -20, left: 40});
   var l = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
-  l.addFirst("null")
-        .addFirst(20)
-        .addFirst("null");
+  l.addFirst("null").addFirst(20).addFirst("null");
   l.layout();
-  
+
   //Inserting at the tail of the list.
   //DOM elements are created here.
   function InsertTail(jsavSpec){
-	this.jsav = jsavSpec;
-    // Relative offsets
-    this.leftMargin = leftMargin;
-    this.topMargin = topMargin;
-	// Head
-    this.head = setPointer("head", l.get(0));  
-	// Curr
-    this.curr = setPointer("curr", l.get(2));  
-	// Tail
+  this.jsav = jsavSpec;
+
+  // Relative offsets
+  this.leftMargin = leftMargin;
+  this.topMargin = topMargin;
+
+  // Head
+    this.head = setPointer("head", l.get(0));
+  // Curr
+    this.curr = setPointer("curr", l.get(2));
+  // Tail
     this.tail = setPointer("tail", l.get(2), "right");
 
     //Vertical bar
-    this.bar1 = l.get(2).odsa_addVLine( );
+    this.bar1 = l.get(2).odsa_addVLine();
 
     //Diagonal slash
-    this.slash = l.get(2).odsa_addTail( );
+    this.slash = l.get(2).odsa_addTail();
 
     //Diagonal slash for new node
     this.newNodeSlash = this.jsav.g.line(this.leftMargin + 254, this.topMargin + 92,
                           this.leftMargin + 264, this.topMargin + 62,
-	  {"opacity": 0,"stroke-width": 1});
+    {"opacity": 0,"stroke-width": 1});
 
     //Diagonal slash for new tail
     this.newTailSlash = l.get(2).odsa_addTail({left : 74, visible : 0});
@@ -527,45 +519,45 @@ function setPointer(name, node, opt) {
   }
   //Clear DOM elements
   InsertTail.prototype.clear = function(){
-	  l.hide();
-	  this.head.hide();
-	  this.curr.hide();
-	  this.tail.hide();
-	  this.bar1.hide();
-	  this.slash.hide();
-	  this.newNodeSlash.hide();
-	  this.newTailSlash.hide();
+    l.hide();
+    this.head.hide();
+    this.curr.hide();
+    this.tail.hide();
+    this.bar1.hide();
+    this.slash.hide();
+    this.newNodeSlash.hide();
+    this.newTailSlash.hide();
   }
-  
+
   InsertTail.prototype.steps = function(){
-	//step 1
+  //step 1
     this.jsav.umsg("Here is an example showing insertion at the end of the list. 15 is the value to be inserted.");
     itBox.highlight(0);
-	pseudo.highlight(1);
+  pseudo.highlight(1);
     this.jsav.displayInit();
 
     //step 2
-    this.newNode = l.newNode("");	
+    this.newNode = l.newNode("");
     // Set the position for the new node
-    this.newNode.css({top: 60, left: 222}); 
-    this.newNode.highlight();  
+    this.newNode.css({top: 60, left: 222});
+    this.newNode.highlight();
     this.jsav.umsg("Create a new link node.");
     pseudo.unhighlight(1);
     pseudo.highlight(2);
     this.jsav.step();
-	
-	//step 3
+
+  //step 3
     this.jsav.effects.copyValue(l.get(2), this.newNode);
     this.jsav.umsg("Copy current.element() to the new node (this value is <code>null</code>).");
     this.jsav.step();
 
-	//step 4
+  //step 4
     this.newNodeSlash.show();
     this.jsav.umsg("The <code>next</code> field for the new node is assigned to point to what <code>curr.next()</code> points to (which is <code>null</code>).");
     this.jsav.step();
 
-	//step 5
-    var node = l.get(2).next();    
+  //step 5
+    var node = l.get(2).next();
     l.get(2).edgeToNext();
     l.get(2).next(this.newNode);
     this.newNode.next(node);
@@ -578,7 +570,7 @@ function setPointer(name, node, opt) {
 
     //step 6
     this.jsav.effects.copyValue(itBox, 0, l.get(2));
-	itBox.unhighlight(0);
+  itBox.unhighlight(0);
     this.jsav.umsg("The value of the current node is set to 15.");
     pseudo.unhighlight(2);
     pseudo.highlight(3);
@@ -590,92 +582,92 @@ function setPointer(name, node, opt) {
     this.newTailSlash.show();
     this.tail.target(l.get(3),
       {anchor: "left top", myAnchor: "right bottom", left: 15, top: -20});
-	l.get(2).unhighlight();
+  l.get(2).unhighlight();
     l.get(3).highlight();
     this.jsav.umsg(" Update the new tail.");
     pseudo.unhighlight(3);
     pseudo.highlight(4);
     this.jsav.step();
 
-    //step 8	
+    //step 8
     l.get(3).unhighlight();
     this.jsav.umsg("Increase the list size by 1.");
     pseudo.unhighlight(4);
     pseudo.highlight(5);
     this.jsav.step();
   }
-  
+
   //Inserting into empty list
   //DOM elements are created here.
   function InsertEmpty(jsavEmp) {
     this.jsav = jsavEmp;
-	// Relative offsets
+  // Relative offsets
     this.leftMargin = leftMargin -17;
     this.topMargin = topMargin - 40;
-	this.l = this.jsav.ds.list({"nodegap": 30, "top": this.topMargin + 40, left: this.leftMargin + 17});
-	this.l.addFirst("null")
+  this.l = this.jsav.ds.list({"nodegap": 30, "top": this.topMargin + 40, left: this.leftMargin + 17});
+  this.l.addFirst("null")
           .addFirst("null");
     this.l.layout();
-	//Head
-    this.head = setPointer("head", this.l.get(0)); 
-	//Curr
-	this.curr = setPointer("curr", this.l.get(1));
-	//Tail
+  //Head
+    this.head = setPointer("head", this.l.get(0));
+  //Curr
+  this.curr = setPointer("curr", this.l.get(1));
+  //Tail
     this.tail = setPointer("tail", this.l.get(1), "right");
-	//Vertical bar
+  //Vertical bar
     this.bar = this.jsav.g.line(this.leftMargin + 75, this.topMargin + 40, this.leftMargin + 75, this.topMargin + 70,
-		{"stroke-width": 1, "stroke":"#000"});
+    {"stroke-width": 1, "stroke":"#000"});
 
     //Diagonal slash
     this.slash = this.jsav.g.line(this.leftMargin + 125, this.topMargin + 72,
                           this.leftMargin + 135, this.topMargin + 42,
-	  {"opacity": 0,"stroke-width": 1});
+    {"opacity": 0,"stroke-width": 1});
 
     //Diagonal slash for new node
     this.newNodeSlash = this.jsav.g.line(this.leftMargin + 198, this.topMargin + 72 +60,
                           this.leftMargin + 208, this.topMargin + 42 +60,
-	  {"opacity": 0,"stroke-width": 1});
+    {"opacity": 0,"stroke-width": 1});
 
     //Diagonal slash for new tail
     this.newTailSlash = this.jsav.g.line(this.leftMargin + 197, this.topMargin + 72,
                           this.leftMargin + 207, this.topMargin + 42,
-	  {"opacity": 0,"stroke-width": 1});
+    {"opacity": 0,"stroke-width": 1});
   }
   //
   InsertEmpty.prototype.steps = function(){
-	//step 9
+  //step 9
     pseudo.highlight(1);
-	pseudo.unhighlight(5);
+  pseudo.unhighlight(5);
     this.jsav.umsg("Inserting into the empty list is similar to inserting at the end of the list. Here 15 is again being inserted.");
     itBox.highlight(0);
-	this.head.show();
-	this.curr.show();
-	this.tail.show();
-	this.slash.show();
-    this.jsav.step();	
+  this.head.show();
+  this.curr.show();
+  this.tail.show();
+  this.slash.show();
+    this.jsav.step();
 
-	//step 10
-    this.newNode = this.l.newNode("");	
+  //step 10
+    this.newNode = this.l.newNode("");
     // Set the position for the new node
-    this.newNode.css({top: 60, left: 149}); 
-    this.newNode.highlight();  
+    this.newNode.css({top: 60, left: 149});
+    this.newNode.highlight();
     this.jsav.umsg("Create a new link node.");
     pseudo.unhighlight(1);
     pseudo.highlight(2);
     this.jsav.step();
-	
-	//step 11
+
+  //step 11
     this.jsav.effects.copyValue(this.l.get(1), this.newNode);
     this.jsav.umsg("Copy current.element() to the new node, which is null.");
     this.jsav.step();
 
-	//step 12
+  //step 12
     this.newNodeSlash.show();
     this.jsav.umsg("The <code>next</code> field for the new node is assigned to point to what <code>curr.next()</code> points to (which is <code>null</code>).");
     this.jsav.step();
 
-	//step 13
-    var node = this.l.get(1).next();    
+  //step 13
+    var node = this.l.get(1).next();
     this.l.get(1).edgeToNext();
     this.l.get(1).next(this.newNode);
     this.newNode.next(node);
@@ -688,7 +680,7 @@ function setPointer(name, node, opt) {
 
     //step 14
     this.jsav.effects.copyValue(itBox, 0, this.l.get(1));
-	itBox.unhighlight(0);
+  itBox.unhighlight(0);
     this.jsav.umsg("The value of the current node is set to 15.");
     pseudo.unhighlight(2);
     pseudo.highlight(3);
@@ -698,10 +690,10 @@ function setPointer(name, node, opt) {
     this.l.layout();
     this.newNodeSlash.hide();
     this.newTailSlash.show();
-	this.tail.target(this.l.get(2),
+  this.tail.target(this.l.get(2),
       {anchor: "left top", myAnchor: "right bottom", left: 15, top: -20});
-	this.l.get(1).unhighlight();
-	this.l.get(2).highlight();
+  this.l.get(1).unhighlight();
+  this.l.get(2).highlight();
     this.jsav.umsg(" Update the new tail.");
     pseudo.unhighlight(3);
     pseudo.highlight(4);
@@ -713,14 +705,14 @@ function setPointer(name, node, opt) {
     pseudo.unhighlight(4);
     pseudo.highlight(5);
     this.jsav.step();
-	
+
   }
 
   //Inserting at the tail of the list
   var insertTail = new InsertTail(jsav);
   insertTail.steps();
   insertTail.clear();
-   
+
   //Insert into empty list.
   var insertEmpty = new InsertEmpty(jsav);
   insertEmpty.steps();
@@ -757,34 +749,34 @@ function setPointer(name, node, opt) {
   //Tail
   var tail = setPointer("tail", l.get(5));
   // "It"
-  var labelIt = jsav.label("it", 
-	            {before: arr, left: leftMargin + 73, top: topMargin + 58, "font-size":"20px"});
+  var labelIt = jsav.label("it",
+              {before: arr, left: leftMargin + 73, top: topMargin + 58, "font-size":"20px"});
   var arrowIt = jsav.g.line(leftMargin + 89, topMargin + 70,
-	  leftMargin + 129, topMargin + 70,
-	  {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
+    leftMargin + 129, topMargin + 70,
+    {"arrow-end": "classic-wide-long", "opacity": 0,"stroke-width": 2});
   labelIt.hide();
   // Dashline
   var dashline = jsav.g.polyline([[leftMargin + 186, topMargin + 17],[leftMargin + 125 + 74, topMargin + 17],
-	  [leftMargin + 199, topMargin - 12],[leftMargin + 276,topMargin - 12],
-	  [leftMargin + 276,topMargin + 17],[leftMargin + 297,topMargin + 17]], 
-	  {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
+    [leftMargin + 199, topMargin - 12],[leftMargin + 276,topMargin - 12],
+    [leftMargin + 276,topMargin + 17],[leftMargin + 297,topMargin + 17]],
+    {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
   // Vertical bar
-  var verticalBar = l.get(2).odsa_addVLine( );
+  var verticalBar = l.get(2).odsa_addVLine();
   //Diagonal slash
-  var slash = l.get(5).odsa_addTail( );
+  var slash = l.get(5).odsa_addTail();
   // New slash after deletion
   var newSlash = l.get(4).odsa_addTail({visible : 0});
 
   //initialize the linked list
-  jsav.umsg("Now let's look at the <code>remove</code> method.");	
+  jsav.umsg("Now let's look at the <code>remove</code> method.");
   pseudo.highlight(1);
-  jsav.displayInit(); 
+  jsav.displayInit();
 
   //step 2
   l.get(2).highlight();
   l.layout({updateLeft: false});
   jsav.umsg("Here is the linked list before we remove the node with value 8.");
-  jsav.step(); 
+  jsav.step();
 
   //step 3
   arr.show();
@@ -796,8 +788,8 @@ function setPointer(name, node, opt) {
   jsav.umsg("Remember the value of the current node.");
   pseudo.unhighlight(1);
   pseudo.highlight(3);
-  jsav.step();  
-  
+  jsav.step();
+
   //step 4
   jsav.effects.copyValue(l.get(3), l.get(2));
   l.get(2).highlight();
@@ -812,25 +804,25 @@ function setPointer(name, node, opt) {
   l.get(3).edgeToNext().hide();
   dashline.show();
   l.get(4).highlight();
-  jsav.umsg("<code>curr</code>'s next field is set to point to the node following the one being deleted. This removes the node from the linked list.");	
+  jsav.umsg("<code>curr</code>'s next field is set to point to the node following the one being deleted. This removes the node from the linked list.");
   pseudo.unhighlight(4);
   pseudo.highlight(6);
-  jsav.step();	
+  jsav.step();
 
   //step 6
   l.remove(3);
-  dashline.hide(); 
+  dashline.hide();
   l.layout();
   l.get(2).edgeToNext().show();
   slash.hide();
   newSlash.show();
-  l.get(2).unhighlight();  
+  l.get(2).unhighlight();
   l.get(3).unhighlight();
   jsav.umsg("Decrease the list size by 1.");
   pseudo.unhighlight(6);
   pseudo.highlight(7);
   jsav.step();
-  
+
   //step 7
   arr.highlight();
   jsav.umsg(" Return the value of the node that was deleted.");
@@ -882,7 +874,7 @@ function setPointer(name, node, opt) {
   // Tail
   var tail = setPointer("tail", l.get(5));
   // Diagonal slash
-  var slash = l.get(5).odsa_addTail( );
+  var slash = l.get(5).odsa_addTail();
 
   jsav.umsg("Finally, we will look at how a few other methods work.");
   jsav.displayInit();
@@ -892,7 +884,7 @@ function setPointer(name, node, opt) {
   jsav.umsg("Method next simply moves curr one position toward the tail of the list.");
   jsav.step();
 
-  //step 3  
+  //step 3
   l.get(4).highlight();
   curr.hide();
   nextCurr.show();
@@ -906,23 +898,23 @@ function setPointer(name, node, opt) {
   pseudo_prev.highlight(1);
   jsav.umsg("Method prev moves curr one position toward the head of the list, but its implementation is more difficult.");
   jsav.step();
-  
+
   //step 5
   pseudo_next.hide();
   pseudo_prev.show();
   pseudo_prev.unhighlight(1);
   pseudo_prev.highlight(5);
   l.get(0).highlight();
-  l.get(1).highlight();  
-  l.get(2).highlight();  
+  l.get(1).highlight();
+  l.get(2).highlight();
   l.get(3).highlight();
   jsav.umsg("In a singly linked list, there is no pointer to the previous node. Thus, the only alternative is to march down the list from the beginning until we reach the current node (being sure always to remember the node before it, because that is what we really want). ");
   jsav.step();
 
   // Step 6
   l.get(0).unhighlight();
-  l.get(1).unhighlight();  
-  l.get(2).unhighlight(); 
+  l.get(1).unhighlight();
+  l.get(2).unhighlight();
   temp.show();
   jsav.umsg("Once <code>temp.next()</code> is equal to <code>curr</code>, we are at the right place.");
   jsav.step();
@@ -945,10 +937,10 @@ function setPointer(name, node, opt) {
   pseudo_pos.highlight(1);
   jsav.umsg("Method <code>moveToPos</code> moves <code>curr</code> to position <code>pos</code>. Note that 23, as the first element on the list, is at position 0.");
   jsav.step();
-  //step 9  
+  //step 9
   l.get(1).highlight();
   l.get(2).highlight();
-  l.get(3).highlight();  
+  l.get(3).highlight();
   l.get(4).highlight();
   curr.hide();
   nextCurr.show();
@@ -960,7 +952,7 @@ function setPointer(name, node, opt) {
   //step 10
   l.get(1).unhighlight();
   l.get(2).unhighlight();
-  l.get(3).unhighlight();  
+  l.get(3).unhighlight();
   l.get(4).unhighlight();
   jsav.umsg("This takes &Theta;(<i>i</i>) time, where <i>i</i> is the position to move to.");
   jsav.step();

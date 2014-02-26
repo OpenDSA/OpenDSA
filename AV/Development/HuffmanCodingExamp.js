@@ -1,6 +1,6 @@
 "use strict";
 (function($) {
-  // sorting the elements of an array with Insertation Sort
+  // sorting the elements of an array with Insertion Sort
   var sortArray = function (anArray, hfArray) {
     for (var i = 1; i < anArray.length; i++) {
       var key = anArray[i];
@@ -39,26 +39,23 @@
   }
 
   // traverse to reset background color of the entire tree
-  var traverse_color = function(node, col) {
+  var traverse_color = function(node) {
     var val = node.value();
 
     // the node is an empty node
     if (!val || val === "jsavnull") {
       return;
-    }
-    else {
+    } else {
       // if the node is an internal node, then display an circle
       if (node.left()) {
-        node.css("background-color", col);
-        traverse_color(node.left(),col);
+        traverse_color(node.left());
       }
       if (node.right()) {
-        node.css("background-color", col);
-        traverse_color(node.right(),col);
+        traverse_color(node.right());
       }
       // if the node is a leaf node, then display an rectangle
       else {
-        node.css({"height": "46px", "width": "36px", "border-radius":1, "background-color":"orange", "line-height":"22px"});
+        node.addClass('huffmanleaf');
       }
     }
   }
@@ -95,7 +92,7 @@
     var leftSoFar = 30;
     for (var i = 0; i < trees.length; i++) {
       trees[i].css({"left": leftSoFar, "top":"-40px"});
-      traverse_color(trees[i].root(), "white");
+      traverse_color(trees[i].root());
       trees[i].layout();
       leftSoFar += trees[i].element.width() + 50;
     }
@@ -184,8 +181,6 @@
   // hfArray: used for holding the root of several binary trees
   var hfArray = new Array();
 
-
-
   // userArry: an array to store the number and character
   var userArray = new Array();
   userArray[0] = 32;
@@ -216,6 +211,10 @@
     chaArray[j] = userArray[i+1];
   }
 
+  // Initialize the display
+  jsav.umsg("The following letters will be placed in a Huffman tree:");
+  layAll(hfArray);
+  jsav.displayInit();
 
   // Constructing Huffman Coding Tree with animation.
   huffTree_animation(numArray, hfArray);
