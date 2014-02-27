@@ -14,7 +14,7 @@
     for (var i = 0; i < numNodes; i++) {
       arr.push("");
     }
-    bh = av.ds.binheap(arr, {left: 150, top: -20, nodegap: 15});
+    bh = av.ds.binheap(arr, {left: 160, top: 5, nodegap: 15});
 	bh.element.hide();
     av.label("depth 4",  {"top": "132px", "left": "100px"});
     av.label("depth 3",  {"top": "102px", "left": "100px"});

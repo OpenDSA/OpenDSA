@@ -1002,7 +1002,15 @@
       "Sorting/SortOpt": {
         "long_name": "Optimizing Sorts with Code Tuning",
         "dispModComp": false,
-        "exercises": {}
+        "exercises": {
+          "insertionSortWithoutSwapPRO": {
+            "long_name": "Insertion Sort Without Swap Proficiency Exercise",
+            "required": false,
+            "points": 1.0,
+	    "remove": true,
+            "threshold": 5
+          }
+	}
       },
       "Sorting/Shellsort": {
         "long_name": "Shellsort",
