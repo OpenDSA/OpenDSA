@@ -28,6 +28,9 @@
 .jsavarray:nth-of-type(8) {top: 245px;}
 .jsavarray:nth-of-type(9) {top: 280px;}
 
-.jsavcanvas {
-  background-color: rgba(0, 0, 0, 0); /* Hack to fix a bug where the trees where obscuring the text */
+.huffmanleaf {
+  border-radius: 1px;
+  background-color: orange;
+  line-height: 22px;
+  z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
 }
