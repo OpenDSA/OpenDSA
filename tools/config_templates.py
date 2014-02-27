@@ -87,6 +87,10 @@ html:
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
 	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
+	@echo "Overwrite the minified files so we don't have to change the paths"
+	cp "%(odsa_dir)slib/odsaMOD.js" "%(odsa_dir)slib/odsaMOD-min.js"
+	cp "%(odsa_dir)slib/odsaUtils.js" "%(odsa_dir)slib/odsaUtils-min.js"
+	cp "%(odsa_dir)slib/odsaAV.js" "%(odsa_dir)slib/odsaAV-min.js"
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
