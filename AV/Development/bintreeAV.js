@@ -2,6 +2,95 @@
 /*global alert: true, ODSA */
 /*global sweep */
 (function ($) {
+
+  
+  
+  function Bintree() {
+
+    function node(val, lev) {
+
+      var value = val;
+      var level = lev;
+      var internal = false;
+      var leftChild = null;
+      var rightChild = null;
+
+      this.setInternal = function () {
+        internal = true;
+      }
+
+      this.setLeaf = function () {
+        internal = false;
+      }
+
+      this.isInternal = function () {
+        return internal;
+      }
+
+      this.setValue = function (val) {
+        value = val;
+      }
+
+      this.setLevel = function (lev) {
+        level = lev;
+      }
+
+      this.setLeftChild = function (lc) {
+        leftChild = lc;
+        return (leftChild);
+      }
+
+      this.setRightChild = function (rc) {
+        rightChild = rc;
+        return (rightChild);
+      }
+
+      this.getValue = function () {
+        return value;
+      }
+      this.getLevel = function () {
+        return level;
+      }
+
+      this.isLeaf = function () {
+        if (leftChild == null && rightChild == null) {
+          return true;
+        }
+        return false;
+      }
+    }
+
+    //var jsav = new JSAV($('.avcontainer'));
+
+    var root = new node();
+    
+    this.isEmpty = function () {
+      console.log("Bintree isEmpty test: ", root == null);
+      return (root == null);
+    }
+
+    this.insert = function (rootnode, inrecor, nodebounds, level) {
+      console.log("Bintree insert: ", inrecor);
+
+      if (rootnode == null) {
+        console.log("Bintree given rootnode is null, level: ", level);
+        rootnode = new node(inrecor, level);
+        return (rootnode);
+      }
+      
+      if (rootnode.isLeaf()) {
+        console.log("Bintree given rootnode is a leaf. Insert an internal node in it's place and continue.");
+        var temp = new node(null, null);
+        temp.setInternal();
+        rootnode = insert(temp, rt.getValue, nodebounds, null)
+      } // Note, it will continue into the next if statement!
+
+
+    }
+
+
+  }
+
   var jsav, // for JSAV library object av
       arr;  // for the JSAV array
 
@@ -36,16 +125,36 @@
   function runIt() {
     
     ODSA.AV.reset(true);
-    jsav = new JSAV($('.avcontainer'));
+
+    
+  var jsav = new JSAV($('.avcontainer'));
 
     jsav.umsg("Let's get started");
     jsav.displayInit();
 
-    jsav.umsg("Step 1");
-    jsav.step();
+// Setup the tree
+  var bt = jsav.ds.bintree();
+  var bint = new Bintree();
+  bint.isEmpty();
+  bint.insert(bint.root, 100, 0,0);
+   bint.isEmpty();
 
+  bt.root('');
+  var rt = bt.root();
+
+
+    jsav.umsg("Step 1");
+
+    jsav.step();
+rt.left('');
+  
     jsav.umsg("All Done!");
+
+    rt.left().left('A');
+  rt.left().right('B');
+
     jsav.recorded(); // mark the end
+
   }
 
   // Connect action callbacks to the HTML entities
@@ -53,4 +162,7 @@
   $('#about').click(about);
   $('#run').click(runIt);
   $('#reset').click(ODSA.AV.reset);
+
+  
+
 }(jQuery));

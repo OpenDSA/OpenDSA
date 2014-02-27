@@ -705,6 +705,7 @@
       }
     },
     "Searching": {
+      "hidden": true,
       "Stubs/SearchIntro": {
         "long_name": "Searching",
         "exercises": {}

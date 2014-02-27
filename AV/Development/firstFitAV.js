@@ -5,8 +5,8 @@
    	  defCtrlState, 	// Stores the default state of the controls
    	  nextStep = new Queue();
 
-  jsav = new JSAV($('.avcontainer'));
-
+//  jsav = new JSAV($('.avcontainer'));
+ jsav = new JSAV($('.avcontainer'));
 //  var av = new JSAV("firstFit", {"animationMode": "none"});
 
   /*
@@ -85,7 +85,7 @@
     jsav.clearumsg();
     var missingFields = [];
 
-    // Ensure user selected a hash function
+    // Ensure user selected a fit function
     var funct = Number($('#fitAlgorithm').val());
     if (funct === 0) {
       missingFields.push('fit algorithm');
@@ -114,6 +114,12 @@
 
       //repopulate view with original rectangle structure
     }
+    
+    var firstFit = $('#firstFit');
+
+
+
+    OriginalMemBlock();
     nextStep = new Queue();
   }
 
@@ -128,7 +134,7 @@
     // Reset controls to their default state
     $("#fitAlgorithm").val(defCtrlState.fitAlgorithm);
 
-    if(($("#fitAlgorithm").val()) == '0') {
+    if(Number($('#fitAlgorithm').val()) === 0) {
       $('#input').attr("disabled", "disabled");
     }
 
@@ -140,6 +146,17 @@
 
     // Make sure the queue is empty
     nextStep = new Queue();
+  }
+
+    function loadNextSlide() {
+    var step = nextStep.dequeue();
+
+    if (step.canInsert) {
+      if (step.insert) {    // Insertion step
+        jsav.umsg("Inserting " + step.value + " at position " + step.position + ".");
+      } else {    // Highlighting step
+      }
+    }
   }
 
   function OriginalMemBlock() {
@@ -160,10 +177,10 @@
 	  var free4Start = 445;
 	  
 	  var freeStartArray = new Array();
-	  freeArray[0] = free1Start;
-	  freeArray[1] = free2Start;
-	  freeArray[2] = free3Start;
-	  freeArray[3] = free4Start;
+	  freeStartArray[0] = free1Start;
+	  freeStartArray[1] = free2Start;
+	  freeStartArray[2] = free3Start;
+	  freeStartArray[3] = free4Start;
 	  
 	  var free1Finish = 85;
 	  var free2Finish = 220;
@@ -184,11 +201,13 @@
 	  var usedLabel = jsav.label("Used Space", {left :  430, top:  105});
 	  var freeLabel = jsav.label("Free Space", {left :  510, top:  105});
 	  
+	  var usedNum = 63;
+	  var freeNum = 137;
+	  
 	  var usedAmountLabel = jsav.label(usedNum, {left :  450, top:  65});
 	  var freeAmountLabel = jsav.label(freeNum, {left :  530, top:  65});
 	  
-	  var usedNum = 63;
-	  var freeNum = 137;
+	  
 	  
 	   
 	  
@@ -196,8 +215,6 @@
 	  var freeListRect2 = jsav.g.rect(35, 400, 25, 50).css({"fill": "lightgrey"});
 	  var freeListRect3 = jsav.g.rect(60, 400, 25, 50).css({"fill": "lightgrey"});
 	  var freeListRect4 = jsav.g.rect(85, 400, 25, 50).css({"fill": "lightgrey"});
-	  
-	  
 	  
 	  
 	  var block1 = 25;
@@ -246,16 +263,23 @@
     connect4 = jsav.g.line(97.5, 400, (freeStartArray[4] + freeFinArray[4])/2, 280);
   }
  
-  function firstFit() {
+  function firstFit(inputVal) {
 	
-	var input = params;
-	if(i > 0)
+	//var input = params;
+	if (inputVal < 0 || inputVal > 99999 || isNaN(inputVal)) {
+      error("Please enter a number in the range of 0-99999");
+      // Return error
+      return 1;
+	else
 	{
 		jsav.umsg("The request has been scheduled\n Algorithm: First Fit\n Size Required: " + input + "\n");
 		var rec2 = jsav.g.rect(10, 300, input * 3, 80).css({"fill": "lightblue"}); //creates lightblue rectangle
 		jsav.step();
 		rec2 = jsav.g.rect(0, 0, 0, 0).css({"fill": "white"}); //deletes lightblue rectangle after step
+		var stop = 0;
+		var i = 0;
 		for(i = 0; i <= 4; i++)
+		while(i <= 4 && stop != 1)
 		{ 
 			if(i == 0)
 			{
@@ -306,21 +330,24 @@
 				freeNum = freeNum - input;
 				updateLabels();
 				updateLines();
+				stop = 1;
 				jsav.step();
+				
 				
 			}
 			jsav.step();
 		
 		}
 	}
-	else {
-	//posiitve number please
 	
-	}
   }
+ 
+ }
 
   $(document).ready(function () {
-    
+
+    //jsav = new JSAV($('.avcontainer'));
+    OriginalMemBlock();
       // If the user hits 'Enter' while the focus is on the textbox,
     // click 'Next' rather than refreshing the page
     $("#input").keypress(function (event) {
@@ -351,18 +378,21 @@
         state.user_input = inputVal;
         ODSA.AV.logExerciseInit(state);
 
-        // Disable input field to process it safely
-        $("#input").attr("disabled", "disabled");
-
         switch ($("#fitAlgorithm").val()) {
         case '0':  // No function chosen
-          reset();
+        //  reset();
           break;
         case '1':
-          ret = firstFit(inputVal);
+        jsav.umsg("First Fit Selected")
+         // ret = firstFit(inputVal);
           break;
         }
       }
+    });
+
+    $("#fitAlgorithm").change(function () {
+
+      OriginalMemBlock();
     });
 
     $('#about').click(about);
@@ -373,6 +403,6 @@
 
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
     setDefaultControlState();
-    reset();
+   // reset();
   });
  }(jQuery));

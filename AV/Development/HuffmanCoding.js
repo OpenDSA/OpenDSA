@@ -263,7 +263,7 @@
     //trees.css()
     var leftSoFar = 30;
     for (var i = 0; i < trees.length; i++) {
-      trees[i].css({"left": leftSoFar, "top":"-40px"});
+      trees[i].css({"left": leftSoFar, "top":"0px"});
       traverse_color(trees[i].root(), "white");
       trees[i].layout();
       leftSoFar += trees[i].element.width() + 50;
@@ -355,7 +355,7 @@
       jsav.umsg("Merge them together with the sum of them \"" + key + "\", and update the data as follows: ");
       // Restruct the tree array
       shuffle(anArray, hfArray);
-      // Shif the merged tree to the 1st place
+      // Shift the merged tree to the 1st place
       shift(anArray, hfArray);
 
       showAll(hfArray);
@@ -408,7 +408,7 @@
     // Set css properties for the table
     tableDisplay[0].css([0, 1, 2, 3], {"font-family":"Trebuchet MS, Arial, Helvetica, sans-serif", "font-size":"1.2em", "border":"1px #98bf21", "background-color":"#9ACD32", "color":"#fff"});
     for (var i = 1; i < tableDisplay.length; i++) {
-      tableDisplay[i].css([0, 1, 2, 3], {"font-family":"Trebuchet MS, Arial, Helvetica, sans-serif", "font-size":"1.1em", "border":"1px #98bf21", "color":"#000"});
+      tableDisplay[i].css([0, 1, 2, 3], {"font-family":"Trebuchet MS, Arial, Helvetica, sans-serif", "font-size":"1.1em", "border":"0px #98bf21", "background-color": "#efe", "color":"#000"});
     }
   }
 
@@ -422,61 +422,58 @@
     //console.log($(this).attr("d"));
   });
 
-  //var runIt = function() {
-    // userArry: an array to store the number and character
-    var userArray = new Array();
-    userArray[0] = 32;
-    userArray[1] = "C";
-    userArray[2] = 42;
-    userArray[3] = "D";
-    userArray[4] = 120;
-    userArray[5] = "E";
-    userArray[6] = 7;
-    userArray[7] = "K"
-    userArray[8] = 42;
-    userArray[9] = "L"
-    userArray[10] = 24;
-    userArray[11] = "M";
-    userArray[12] = 37;
-    userArray[13] = "U";
-    userArray[14] = 2;
-    userArray[15] = "Z";
+  // userArry: an array to store the number and character
+  var userArray = new Array();
+  userArray[0] = 32;
+  userArray[1] = "C";
+  userArray[2] = 42;
+  userArray[3] = "D";
+  userArray[4] = 120;
+  userArray[5] = "E";
+  userArray[6] = 7;
+  userArray[7] = "K"
+  userArray[8] = 42;
+  userArray[9] = "L"
+  userArray[10] = 24;
+  userArray[11] = "M";
+  userArray[12] = 37;
+  userArray[13] = "U";
+  userArray[14] = 2;
+  userArray[15] = "Z";
 
-    var value;
+  var value;
 
-    // initialization for all the arrays
-    for (var i = 0, j = 0; i < userArray.length - 1; i += 2, j++) {
-      value = userArray[i] + "<br>" + userArray[i + 1];
-      valArray[j] = value;
-      hfArray[j] = jsav.ds.bintree({center: false});
-      hfArray[j].root(value);
-      numArray[j] = userArray[i];
-      chaArray[j] = userArray[i+1];
-    }
+  // initialization for all the arrays
+  for (var i = 0, j = 0; i < userArray.length - 1; i += 2, j++) {
+    value = userArray[i] + "<br>" + userArray[i + 1];
+    valArray[j] = value;
+    hfArray[j] = jsav.ds.bintree({center: false});
+    hfArray[j].root(value);
+    numArray[j] = userArray[i];
+    chaArray[j] = userArray[i+1];
+  }
 
-    jsav.umsg("The initial data is as follows (the first line indicates frequency and the second line is the character): ");
-    layAll(hfArray);
-    jsav.step();
+  jsav.umsg("The initial data is as follows (the first line indicates frequency and the second line is the character): ");
+  layAll(hfArray);
+  jsav.step();
 
-    // Constructing Huffman Coding Tree with animation.
-    huffTree_animation(numArray, hfArray);
-    jsav.umsg("The Huffman Coding Tree is as follows: ");
-    layAll(hfArray);
-    jsav.step();
+  // Constructing Huffman Coding Tree with animation.
+  huffTree_animation(numArray, hfArray);
+  jsav.umsg("The Huffman Coding Tree is as follows: ");
+  layAll(hfArray);
+  jsav.step();
 
-    jsav.umsg("The codes for each node are as follows: ");
-    traverse_code_animation(hfArray[0].root());
+  jsav.umsg("The codes for each node are as follows: ");
+  traverse_code_animation(hfArray[0].root());
 
-    var anLeaf;
-    var code = "";  // used for record Huffman code
-    hfCode_animation(valArray, codeArray, hfArray[0]);
-    jsav.umsg("Huffman codes for all characters are as follows:");
-    hfArray[0].hide();
+  var anLeaf;
+  var code = "";  // used for record Huffman code
+  hfCode_animation(valArray, codeArray, hfArray[0]);
+  jsav.umsg("Huffman codes for all characters are as follows:");
+  hfArray[0].hide();
 
-    // Display a tabel which contains information of each character.
-    createTable(valArray, codeArray);
+  // Display a tabel which contains information of each character.
+  createTable(valArray, codeArray);
 
-    jsav.recorded(); // done recording changes, will rewind
-
-  //}
+  jsav.recorded(); // done recording changes, will rewind
 }(jQuery));

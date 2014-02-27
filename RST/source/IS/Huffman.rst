@@ -9,7 +9,9 @@
    :satisfies: Huffman coding tree
    :topic: BinTreeImp
 
-.. odsalink:: AV/Development/HuffmanCodingExamp.css
+<!=.. odsalink:: AV/Development/HuffmanCodingExamp.css =>
+
+
 .. odsalink:: AV/Development/HuffmanCON.css
 
 .. index:: ! Huffman
@@ -214,7 +216,6 @@ This process is illustrated by the following slideshow.
 
 .. inlineav:: DecodeExample ss 
    :output: show
-   :align: center
 
 .. TODO::
    :type: Slideshow
@@ -282,6 +283,9 @@ A lookup table can be used for this purpose.
    In similar manner we complete the decoding process to find that the
    last two letters are C and K, spelling the word "DUCK."
 
+.. inlineav:: Con1 ss
+   :output: show
+
 A set of codes is said to meet the :dfn:`prefix property` if no
 code in the set is the prefix of another.
 The prefix property guarantees that there will be no ambiguity in how
@@ -302,6 +306,9 @@ correspond to leaf nodes.
    letter can have code '111' because this corresponds to an internal
    node of the tree, and the tree-building process places letters only
    at the leaf nodes.
+
+.. inlineav:: MExample ss
+   :output: show
 
 How efficient is Huffman coding?
 In theory, it is an optimal coding method whenever the true
@@ -402,7 +409,6 @@ its Huffman code).
    Display the final Huffman tree for the example.
 
 .. inlineav:: finalHuffmanTree dgm
-   :output: show
 
 We see that all letters with codes beginning with
 '0' are stored in the left branch, while all letters with codes
@@ -440,4 +446,6 @@ Notes
        priority queue for efficiency.
 
 .. odsascript:: AV/Development/HuffmanCodingExamp.js
+
+
 .. odsascript:: AV/Development/HuffmanCON.js
