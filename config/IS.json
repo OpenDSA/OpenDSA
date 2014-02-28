@@ -74,6 +74,10 @@
       "IS/SelfOrg": {
         "long_name": "Self Organizing Lists",
         "exercises": {}
+      },
+      "IS/Archie": {
+        "long_name": "Insertion Sort Optimization",
+        "exercises": {}
       }
     },
     "Appendix": {
