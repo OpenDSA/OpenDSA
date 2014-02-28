@@ -27,6 +27,16 @@
         }
       }
     },
+    "Randomized Algorithms": {
+      "Development/RandomIntro": {
+        "long_name": "Introduction to Randomized Algorithms",
+        "exercises": {}
+      },
+      "Development/SkipList": {
+        "long_name": "Skip Lists",
+        "exercises": {}
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
@@ -39,3 +49,4 @@
     }
   }
 }
+
