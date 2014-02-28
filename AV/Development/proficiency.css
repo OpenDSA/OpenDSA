@@ -1,17 +1,6 @@
 .jsavcontainer {
   height: 650px;
 }
-.jsavlabel {
-  border: 1px solid #eca;
-  border-radius: 3px;
-  padding: 1px 3px;
-  background-color: #fe8;
-  color: #975;
-  position: absolute;
-  z-index: 101;
-  line-height: normal;
-  font-size: medium;
-}
 .jsavtreenode.emptynode {
   border: 1px dashed #777 !important;
   background-color: #fff !important;
