@@ -1933,6 +1933,10 @@
       "Development/SkipList": {
         "long_name": "Skip Lists",
         "exercises": {}
+      },
+      "Development/RandomNums": {
+        "long_name": "Random Numbers",
+        "exercises": {}
       }
     },
     "Lower Bounds": {
