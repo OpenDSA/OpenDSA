@@ -1206,6 +1206,14 @@
       "Development/DynamicProgramming": {
         "long_name": "Dynamic Programming",
         "exercises": {}
+      },
+      "Development/RandomIntro": {
+        "long_name": "Introduction to Randomized Algorithms",
+        "exercises": {}
+      },
+      "Development/SkipList": {
+        "long_name": "Skip Lists",
+        "exercises": {}
       }
     },
     "Limits to Computing": {

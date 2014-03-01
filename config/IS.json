@@ -77,7 +77,15 @@
       },
       "IS/Archie": {
         "long_name": "Insertion Sort Optimization",
-        "exercises": {}
+        "exercises": {
+          "insertionSortWithoutSwapPRO": {
+            "long_name": "Insertion Sort Without Swap Exercise",
+            "required": true,
+            "points": 1.0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
       }
     },
     "Appendix": {

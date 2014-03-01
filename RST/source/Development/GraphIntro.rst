@@ -132,7 +132,7 @@ some vertex :math:`v_1` to itself.
 A cycle is a :term:`simple cycle` if the path is simple, except for the first
 and last vertices being the same.
 
-A :term:`subgraph` :math:\mathbf{S}` is formed from graph
+A :term:`subgraph` :math:`\mathbf{S}` is formed from graph
 :math:`\mathbf{G}` by selecting a subset :math:`\mathbf{V}_s` of
 :math:`\mathbf{G}`'s vertices and a subset 
 :math:`\mathbf{E}_s` of :math:`\mathbf{G}` 's edges such that for every

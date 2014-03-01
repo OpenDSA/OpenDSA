@@ -1925,6 +1925,14 @@
       "Development/StringSearchRabinKarp": {
         "long_name": "Rabin-Karp String Search Algorithm",
         "exercises": {}
+      },
+      "Development/RandomIntro": {
+        "long_name": "Introduction to Randomized Algorithms",
+        "exercises": {}
+      },
+      "Development/SkipList": {
+        "long_name": "Skip Lists",
+        "exercises": {}
       }
     },
     "Lower Bounds": {
