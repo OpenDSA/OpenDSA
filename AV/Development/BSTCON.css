@@ -13,13 +13,17 @@
   height: 620px;
 }
 
+#insertCON .jsavtree { 
+  top: 20px;
+}
+
 #insertCON .jsavcode{
   border: 1px solid;
   border-color: white;
 }
 
 #deletemaxCON {
-  height: 400px;
+  height: 380px;
 }
 
 #deletemaxCON .jsavcode{
@@ -31,6 +35,10 @@
 
 #removeCON {
   height: 850px;
+}
+
+#removeCON .jsavtree { 
+  top: 20px;
 }
 
 #removeCON .jsavcode{

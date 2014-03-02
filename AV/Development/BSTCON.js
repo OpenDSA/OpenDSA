@@ -110,6 +110,7 @@
                        startAfter: "/* *** ODSATag: inserthelp *** */",
                        endBefore: "/* *** ODSAendTag: inserthelp *** */"});
 
+  //  var bt = jsav.ds.bintree({top: 240, visible: true, nodegap: 15});
   var bt = jsav.ds.bintree({visible: true, nodegap: 15});
   bt.root(37);
   var rt = bt.root();
@@ -122,8 +123,10 @@
   rt.right().left().left(40);
   rt.right().right(120);
   var newnode = rt.left().right().left(30);
+  newnode.css({"background-color": "#eed"});
   newnode.css({"color": "#eed"});
   newnode.css({"border-color": "#eed"});
+  newnode.css({"box-shadow": "2px 2px 2px rgba(120, 120, 120, 0.0)"});
   var parent = newnode.parent();
   var newedge = parent.edgeToLeft();
   newedge.hide();
@@ -201,8 +204,11 @@
   jsav.umsg("Check what rt is pointing to. This time it is null! So make a new node.");
   pseudo.unhighlight(0);
   pseudo.highlight(1);
+  newnode.show();
+  newnode.css({"background-color": "white"});
   newnode.css({"color": "red"});
   newnode.css({"border-color": "red"});
+  newnode.css({"box-shadow": "2px 2px 2px rgba(120, 120, 120, 0.5)"});
   newedge.hide();
   jsav.step();
 
@@ -504,7 +510,7 @@
   var rt2 = jsav.pointer("temp", rt.left().right(), {anchor: "right top", top: 0});
   jsav.step();
 
-  jsav.umsg("Now set the root to what was returned by getmax.");
+  jsav.umsg("Now set the root value to what was returned by getmax.");
   pseudo.unhighlight(10);
   pseudo.highlight(11);
   rt.value(32);
@@ -520,6 +526,7 @@
   temp.css({"stroke": "red"});
   temp1 = rt.edgeToLeft();
   temp1.css({"stroke": "red"});
+  rt2.hide();
   bt.layout();
   jsav.step();
 

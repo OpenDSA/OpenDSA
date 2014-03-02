@@ -652,25 +652,25 @@
         "long_name": "Binary Tree Traversals",
         "exercises": {
           "BTLeafPROG": {
-            "long_name": "Node Count Function",
+            "long_name": "Node Count Programming Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 1
           },
           "binarytree-inorder": {
-            "long_name": "Binary Tree Inorder Traversal",
+            "long_name": "Binary Tree Inorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
           "binarytree-preorder": {
-            "long_name": "Binary Tree Preorder Traversal",
+            "long_name": "Binary Tree Preorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
           "binarytree-postorder": {
-            "long_name": "Binary Tree Postorder Traversal",
+            "long_name": "Binary Tree Postorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -689,7 +689,7 @@
         "long_name": "Full Binary Tree Node Space Requirements",
         "exercises": {
           "TreeOverheadSumm": {
-            "long_name": "Tree Overhead",
+            "long_name": "Tree Overhead Exercise",
             "required": true,
             "points": 2,
             "threshold": 5
