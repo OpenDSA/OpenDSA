@@ -157,15 +157,15 @@
 
   function OriginalMemBlock() {
   
-    var used1 = jsav.g.rect(85, 200, 30, 80).css({"fill": "red"});
-    var used2 = jsav.g.rect(220, 200, 75, 80).css({"fill": "red"});
-    var used3 = jsav.g.rect(391, 200, 54, 80).css({"fill": "red"});
-    var used4 = jsav.g.rect(580, 200, 30, 80).css({"fill": "red"});
+    var used1 = jsav.g.rect(342, 150, 25, 60).css({"fill": "red"});
+    var used2 = jsav.g.rect(455, 150, 62, 60).css({"fill": "red"});
+    var used3 = jsav.g.rect(597, 150, 45, 60).css({"fill": "red"});
+    var used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "red"});
     
-    var free1 = jsav.g.rect(10, 200, 75, 80).css({"fill": "blue"});
-    var free2 = jsav.g.rect(115, 200, 105, 80).css({"fill": "blue"});
-    var free3 = jsav.g.rect(295, 200, 96, 80).css({"fill": "blue"});
-    var free4 = jsav.g.rect(445, 200, 135, 80).css({"fill": "blue"});
+    var free1 = jsav.g.rect(280, 150, 62, 60).css({"fill": "blue"});
+    var free2 = jsav.g.rect(367, 150, 88, 60).css({"fill": "blue"});
+    var free3 = jsav.g.rect(517, 150, 80, 60).css({"fill": "blue"});
+    var free4 = jsav.g.rect(642, 150, 113, 60).css({"fill": "blue"});
     
     var free1Start = 10;
     var free2Start = 115;
@@ -189,28 +189,30 @@
     freeFinArray[2] = free3Finish;
     freeFinArray[3] = free4Finish;
     
+    //var testLabel = jsav.label("???", {left: 410, top: 35});
+    //testLabel.show();
     
+    var usedRec = jsav.g.rect(400, 40, 30, 40).css({"fill": "red"});
+    var freeRec = jsav.g.rect(510, 40, 30, 40).css({"fill": "blue"});
     
-    var usedRec = jsav.g.rect(430, 50, 50, 50).css({"fill": "red"});
-    var freeRec = jsav.g.rect(510, 50, 50, 50).css({"fill": "blue"});
-    
-    var usedLabel = jsav.label("Used Space", {left :  430, top:  105});
-    var freeLabel = jsav.label("Free Space", {left :  510, top:  105});
+    var usedLabel = jsav.label("Used Space", {left :  400, top:  90});
+    var freeLabel = jsav.label("Free Space", {left :  500, top:  90});
     
     var usedNum = 63;
     var freeNum = 137;
     
-    var usedAmountLabel = jsav.label(usedNum, {left :  450, top:  65});
-    var freeAmountLabel = jsav.label(freeNum, {left :  530, top:  65});
+    var usedAmountLabel = jsav.label(usedNum, {left :  415, top:  10});
+    var freeAmountLabel = jsav.label(freeNum, {left :  525, top:  10});
     
     
     
      
     
-    var freeListRect = jsav.g.rect(10, 400, 25, 50).css({"fill": "lightgrey"});
-    var freeListRect2 = jsav.g.rect(35, 400, 25, 50).css({"fill": "lightgrey"});
-    var freeListRect3 = jsav.g.rect(60, 400, 25, 50).css({"fill": "lightgrey"});
-    var freeListRect4 = jsav.g.rect(85, 400, 25, 50).css({"fill": "lightgrey"});
+    var freeListRect = jsav.g.rect(275, 400, 30, 40).css({"fill": "lightgrey"});
+    var freeListRect2 = jsav.g.rect(305, 400, 30, 40).css({"fill": "lightgrey"});
+    var freeListRect3 = jsav.g.rect(335, 400, 30, 40).css({"fill": "lightgrey"});
+    var freeListRect4 = jsav.g.rect(365, 400, 30, 40).css({"fill": "lightgrey"});
+    
     
     
     var block1 = 25;
@@ -224,16 +226,16 @@
     freeArray[2] = block3;
     freeArray[3] = block4;
    
-    var block1Label = jsav.label(block1, {left :  22, top:  420});
-    var block2Label= jsav.label(block2, {left :  47, top:  420});
-    var block3Label = jsav.label(block3, {left :  72, top:  420});
-    var block4Label = jsav.label(block4, {left :  97, top:  420});
-    var freeLabel = jsav.label("Free List", {left : 15, top: 455});
+    var block1Label = jsav.label(block1, {left :  280, top:  440});
+    var block2Label= jsav.label(block2, {left :  310, top:  440});
+    var block3Label = jsav.label(block3, {left :  340, top:  440});
+    var block4Label = jsav.label(block4, {left :  370, top:  440});
+    var freeLabel = jsav.label("Free List", {left : 300, top: 460});
    
-    var connect1 = jsav.g.line(22.5, 400, 47.5, 280);
-    var connect2 = jsav.g.line(47.5, 400, 167.5, 280);
-    var connect3 = jsav.g.line(72.5, 400, 343, 280);
-    var connect4 = jsav.g.line(97.5, 400, 512.5, 280);
+    var connect1 = jsav.g.line(290, 400, 311, 210);
+    var connect2 = jsav.g.line(320, 400, 411, 210);
+    var connect3 = jsav.g.line(350, 400, 557, 210);
+    var connect4 = jsav.g.line(375, 400, 698, 210);
   }
  
   function newRec(startX, sizeX)

@@ -8,7 +8,7 @@ label {
 }
 
 .jsavcanvas > svg { 
-  width: 825px;
+  width: 900px;
   height: 550px;
 }
 
@@ -35,7 +35,7 @@ padding-left: 5px;
 }
 
 .jsavscroll {
-  width: 370px;
+  width: 250px;
   height: 505px;
   font-size: 95%;
   float: left;
