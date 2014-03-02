@@ -1,6 +1,6 @@
+'use strict';
 // The code below comes from JSAV
 (function ($) {
-  'use strict';
   if (typeof JSAV === 'undefined') {
     return;
   }
@@ -17,9 +17,12 @@
     var el = this.options.element || $('<div/>');
     el.addClass('jsavlist');
     for (var key in this.options) {
-      var val = this.options[key];
-      if (this.options.hasOwnProperty(key) && typeof val === 'string' || typeof val === 'number' || typeof val === 'boolean') {
-        el.attr('data-' + key, val);
+      if (this.options.hasOwnProperty(key)) {
+        var val = this.options[key];
+
+        if (typeof val === 'string' || typeof val === 'number' || typeof val === 'boolean') {
+          el.attr('data-' + key, val);
+        }
       }
     }
     if (!this.options.element) {
