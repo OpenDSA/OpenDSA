@@ -7,6 +7,11 @@ label {
   height: 575px;
 }
 
+.jsavcanvas > svg { 
+  width: 825px;
+  height: 550px;
+}
+
 #bottom {
 padding-left: 5px;
   height: 90px;

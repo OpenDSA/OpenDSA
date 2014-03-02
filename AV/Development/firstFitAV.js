@@ -1,13 +1,9 @@
+"use strict";
 (function ($) {
-  "use strict";
   var jsav,              // JSAV
       arr,        // for the JSAV array
       defCtrlState,   // Stores the default state of the controls
       nextStep = new Queue();
-
-//  jsav = new JSAV($('.avcontainer'));
- jsav = new JSAV($('.avcontainer'));
-//  var av = new JSAV("firstFit", {"animationMode": "none"});
 
   /*
    * Queue Data Structure
@@ -344,12 +340,11 @@
   }
  
  
-
   $(document).ready(function () {
+    jsav = new JSAV($('.avcontainer'));
 
-    //jsav = new JSAV($('.avcontainer'));
     OriginalMemBlock();
-      // If the user hits 'Enter' while the focus is on the textbox,
+    // If the user hits 'Enter' while the focus is on the textbox,
     // click 'Next' rather than refreshing the page
     $("#input").keypress(function (event) {
       // Capture 'Enter' press
@@ -359,11 +354,11 @@
 
         // If the user entered a value and inserting is allowed, trigger 'Next'
         if ($("#input").val() !== "" && !$('#next').attr('disabled')) {
-          $('#next').click();
-        }
+	  $('#next').click();
+	}
       } else {
-        // Enable the 'Next' button when the user enters a value
-        $('#next').removeAttr('disabled');
+	// Enable the 'Next' button when the user enters a value
+	$('#next').removeAttr('disabled');
       }
     });
 
@@ -392,7 +387,6 @@
     });
 
     $("#fitAlgorithm").change(function () {
-
       OriginalMemBlock();
     });
 
@@ -404,6 +398,6 @@
 
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
     setDefaultControlState();
-   // reset();
+    // reset();
   });
- }(jQuery));
+}(jQuery));
