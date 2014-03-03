@@ -12,33 +12,28 @@
     "debug": "true"
   },
   "chapters": {
-    "Lower Bounds": {
-      "Development/BoundLower": {
-        "long_name": "Introduction to Lower Bounds",
+    "Sorting": {
+      "Sorting/SortOpt": {
+        "long_name": "Optimizing Sorts with Code Tuning",
+        "dispModComp": false,
+        "exercises": {
+          "insertionSortWithoutSwapPRO": {
+            "long_name": "Insertion Sort Without Swap Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+	    "remove": false,
+            "threshold": 5
+          }
+        }
+      }
+    },
+    "Randomized Algorithms": {
+      "Development/RandomIntro": {
+        "long_name": "Introduction to Randomized Algorithms",
         "exercises": {}
       },
-      "Development/BoundSearch": {
-        "long_name": "Lower Bounds on Search",
-        "exercises": {}
-      },
-      "Development/BoundMax": {
-        "long_name": "Lower Bounds on Search",
-        "exercises": {}
-      },
-      "Development/BoundAdversary": {
-        "long_name": "Adversary Lower Bounds",
-        "exercises": {}
-      },
-      "Development/BoundState": {
-        "long_name": "State Space Lower Bounds",
-        "exercises": {}
-      },
-      "Development/BoundiBest": {
-        "long_name": "Finding ith Best Element",
-        "exercises": {}
-      },
-      "Development/SortingOptimal": {
-        "long_name": "Optimal Sorting",
+      "Development/SkipList": {
+        "long_name": "Skip Lists",
         "exercises": {}
       }
     },
@@ -54,3 +49,4 @@
     }
   }
 }
+

@@ -7,6 +7,11 @@ label {
   height: 575px;
 }
 
+.jsavcanvas > svg { 
+  width: 900px;
+  height: 550px;
+}
+
 #bottom {
 padding-left: 5px;
   height: 90px;
@@ -30,7 +35,7 @@ padding-left: 5px;
 }
 
 .jsavscroll {
-  width: 370px;
+  width: 250px;
   height: 505px;
   font-size: 95%;
   float: left;

@@ -441,7 +441,15 @@
       "Sorting/SortOpt": {
         "long_name": "Optimizing Sorts with Code Tuning",
         "dispModComp": false,
-        "exercises": {}
+        "exercises": {
+          "insertionSortWithoutSwapPRO": {
+            "long_name": "Insertion Sort Without Swap Proficiency Exercise",
+            "required": false,
+            "points": 1.0,
+	    "remove": true,
+            "threshold": 5
+          }
+        }
       },
       "Sorting/Shellsort": {
         "long_name": "Shellsort",
@@ -1197,6 +1205,18 @@
     "Algorithms": {
       "Development/DynamicProgramming": {
         "long_name": "Dynamic Programming",
+        "exercises": {}
+      },
+      "Development/RandomIntro": {
+        "long_name": "Introduction to Randomized Algorithms",
+        "exercises": {}
+      },
+      "Development/SkipList": {
+        "long_name": "Skip Lists",
+        "exercises": {}
+      },
+      "Development/RandomNums": {
+        "long_name": "Random Numbers",
         "exercises": {}
       }
     },

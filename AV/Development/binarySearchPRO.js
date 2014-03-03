@@ -6,6 +6,7 @@
     initialArray = [],
     array,
     keyholder,
+    findLabel,
     av = new JSAV($("#jsavcontainer")),
     code = av.code(
       "int binarySearch(int[] table, int x) {\n"+
@@ -31,6 +32,10 @@
 
   function initialize() {
 
+    // show the code and highlight the row where mid is calculated
+    code.show();
+    code.highlight(8);
+
     //generate random array with ascending values
     var randomVal = 0;
     for (var i = 0; i < arraySize; i++) {
@@ -41,25 +46,26 @@
     //generate a random key, the value of which is between the min and max of the array
     key = Math.ceil(5* (initialArray[0] + initialArray[arraySize -1]) / 7);
     
-    //insert key into the array (the blue box)
+    // clear old elements
     if (keyholder) {
       keyholder.clear();
     }
-    keyholder = av.ds.array([key], {indexed: false});
-    keyholder.css(0, {"background-color": "#ddf"});
-    keyholder.toggleArrow(0);
-
-    // create the empty array
+    if (findLabel) {
+      findLabel.clear();
+    }
     if (array) {
       array.clear();
     }
+
+    //insert key into the array (the blue box)
+    keyholder = av.ds.array([key], {indexed: false});
+    keyholder.css(0, {"background-color": "#ddf"});
+    findLabel = av.label("Find", {relativeTo: keyholder, anchor: "center top", myAnchor: "center bottom"});
+
+    // create the empty array
     array = av.ds.array(new Array(arraySize), {indexed: true, autoresize: false});
     array.click(clickhandler);
     array.layout();
-
-    // show the code and highlight the row where mid is calculated
-    code.show();
-    code.highlight(8);
 
     return array;
   }

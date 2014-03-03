@@ -68,7 +68,7 @@ function call with the code that the function would perform.
       \end{array}
 
 Table :num:`#OptimizeTable` shows the relative costs for
-this and other optimizations in four programming languages: Java,
+a number of optimizations in four programming languages: Java,
 JavaScipt, Processing, and Python.
 Only Python had a noticeable effect from replacing the swap function
 call with inline code.
@@ -85,6 +85,14 @@ Of course, the amount of improvement that we actually get will depend
 on how much movement there is among the records.
 If the list is already nearly sorted, then there will be few swaps
 anyway.
+Here is an implementation for Insertion Sort using this optimization.
+
+.. codeinclude:: Sorting/Insertionsort.pde
+   :tag: InsertionOpt
+
+Now, you can test whether you understand how this works.
+
+.. avembed:: AV/Development/insertionSortWithoutSwapPRO.html pe
 
 The programming language that you use can have a big influence on the
 runtime for a program.
