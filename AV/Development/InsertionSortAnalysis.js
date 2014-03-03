@@ -11,7 +11,7 @@
 	code = av.code({url: "../../../SourceCode/Processing/Sorting/Insertionsort.pde",
                     lineNumbers: true,
                     startAfter: "/* *** ODSATag: Insertionsort *** */",
-                    endBefore: "/* *** ODSAendTag: Insertionsort *** */", top: 20, left: 250});	
+                    endBefore: "/* *** ODSAendTag: Insertionsort *** */", top: 20, left: 200});	
 	av.displayInit();
 	
 	av.umsg("The body of inssort contains of two nested for loops");
