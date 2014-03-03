@@ -14,14 +14,14 @@
     for (var i = 0; i < numNodes; i++) {
       arr.push("");
     }
-    bh = av.ds.binheap(arr, {left: 150, top: -20, nodegap: 15});
+    bh = av.ds.binheap(arr, {left: 150, top: 10, nodegap: 15});
 	bh.element.hide();
-    av.label("depth 4",  {"top": "132px", "left": "100px"});
-    av.label("depth 3",  {"top": "102px", "left": "100px"});
-    av.label("depth 2",  {"top": "70px", "left": "100px"});
-    av.label("depth 1",  {"top": "38px", "left": "100px"});
-    av.label("depth 0",  {"top": "6px", "left": "100px"});
-    slider1 = av.g.rect(160, 132, 515, 20).css({"fill": "green"});
+    av.label("depth 4",  {"top": "140px", "left": "85px"});
+    av.label("depth 3",  {"top": "100px", "left": "85px"});
+    av.label("depth 2",  {"top": "68px", "left": "85px"});
+    av.label("depth 1",  {"top": "36px", "left": "85px"});
+    av.label("depth 0",  {"top": "4px", "left": "85px"});
+    slider1 = av.g.rect(150, 138, 515, 20).css({"fill": "green"});
     slider1.hide();
     av.umsg("Let's look at a visualization to explain why the cost for buildheap should be &theta;(n).");
     av.displayInit();
