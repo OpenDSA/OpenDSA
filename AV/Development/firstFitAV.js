@@ -78,7 +78,7 @@
 
   function resetAV() {
     // Display a message telling them what fields they need to select
-    jsav.clearumsg();
+   // jsav.clearumsg();
     var missingFields = [];
 
     // Ensure user selected a fit function
@@ -91,7 +91,7 @@
       // Craft an appropriate message to the user, telling them what fields they are missing
     if (missingFields.length > 0) {
       // Disable the input box if fields are missing
-      $("#input").attr("disabled", "disabled");
+     // $("#input").attr("disabled", "disabled");
 
       var msg = 'Please select a ' + missingFields.join(', ');
       var commaIndex = msg.lastIndexOf(",");
@@ -103,7 +103,7 @@
       jsav.umsg(msg);
     } else {
       // If all necessary fields are selected, enable the input box and tell the user to begin
-      $("#input").removeAttr("disabled");
+     // $("#input").removeAttr("disabled");
 
       jsav.umsg("Enter a value and click Next");
       jsav.umsg("<br />");
@@ -113,10 +113,8 @@
     
     var firstFit = $('#firstFit');
 
-
-
     OriginalMemBlock();
-    nextStep = new Queue();
+   // nextStep = new Queue();
   }
 
    /**
@@ -125,23 +123,30 @@
   function reset() {
     // Clear any existing messages and hash table data
     jsav.clearumsg();
-    $('#firstFit').html('');
+    //$('#firstFit').html('');
 
     // Reset controls to their default state
-    $("#fitAlgorithm").val(defCtrlState.fitAlgorithm);
+    //$("#fitAlgorithm").val(defCtrlState.fitAlgorithm);
 
-    if(Number($('#fitAlgorithm').val()) === 0) {
-      $('#input').attr("disabled", "disabled");
-    }
+   // if(Number($('#fitAlgorithm').val()) === 0) {
+   //   $('#input').attr("disabled", "disabled");
+   // }
 
-    resetAV();
+    // Ensure user selected a fit function
+      jsav.umsg("Please select a fit algorithm");
+      // If all necessary fields are selected, enable the input box and tell the user to begin
+     // $("#input").removeAttr("disabled");
+  
+    //var firstFit = $('#firstFit');
 
     // Clear input textbox and disable next button
     $("#input").val("");
-    $('#next').attr("disabled", "disabled");
+    OriginalMemBlock();
+
+   // $('#next').attr("disabled", "disabled");
 
     // Make sure the queue is empty
-    nextStep = new Queue();
+   // nextStep = new Queue();
   }
 
     function loadNextSlide() {
@@ -344,8 +349,10 @@
  
   $(document).ready(function () {
     jsav = new JSAV($('.avcontainer'));
-
-    OriginalMemBlock();
+    reset();
+    //OriginalMemBlock();
+   // jsav.umsg("Please Select a Fit Algorithm");
+    //reset();
     // If the user hits 'Enter' while the focus is on the textbox,
     // click 'Next' rather than refreshing the page
     $("#input").keypress(function (event) {
@@ -375,21 +382,21 @@
         state.user_function = $("#fitAlgorithm option:selected").text();
         state.user_input = inputVal;
         ODSA.AV.logExerciseInit(state);
+      }
+  });
 
-        switch ($("#fitAlgorithm").val()) {
+
+    $("#fitAlgorithm").change(function () {
+     // OriginalMemBlock();
+      switch ($("#fitAlgorithm").val()) {
         case '0':  // No function chosen
-        //  reset();
+          reset();
           break;
         case '1':
         jsav.umsg("First Fit Selected")
          // ret = firstFit(inputVal);
           break;
-        }
       }
-    });
-
-    $("#fitAlgorithm").change(function () {
-      OriginalMemBlock();
     });
 
     $('#about').click(about);
