@@ -332,25 +332,9 @@
 (function ($) {
   var jsav = new JSAV("arrayTree");
 
-  var tree = new ODSA.ArrayTree(jsav, 2, 3);
-  tree.delete_array_node(2, 2);
-  tree.delete_array_node(2, 6);
-  tree.set_value(18, 0, 0, 0);
-  tree.set_value(13, 0, 0, 1);
-  tree.set_value(12, 1, 0, 0);
-  tree.set_value(23, 1, 1, 0);
-  tree.set_value(30, 1, 1, 1);
-  tree.set_value(48, 1, 2, 0);
-  tree.set_value(10, 2, 0, 0);
-  tree.set_value(15, 2, 1, 0);
-  tree.set_value(20, 2, 3, 0);
-  tree.set_value(21, 2, 3, 1);
-  tree.set_value(24, 2, 4, 0);
-  tree.set_value(31, 2, 5, 0);
-  tree.set_value(45, 2, 7, 0);
-  tree.set_value(47, 2, 7, 1);
-  tree.set_value(50, 2, 8, 0);
-  tree.set_value(52, 2, 8, 1);
+  var tree = new jsav.ds.arraytree();
+
+  tree.root([10, 1, 5]);
   tree.layout();
 
 }(jQuery));
