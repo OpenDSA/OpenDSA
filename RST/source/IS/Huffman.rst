@@ -10,8 +10,6 @@
    :topic: BinTreeImp
 
 .. odsalink:: AV/Development/HuffmanCodingExamp.css
-
-
 .. odsalink:: AV/Development/HuffmanCON.css
 
 .. index:: ! Huffman
