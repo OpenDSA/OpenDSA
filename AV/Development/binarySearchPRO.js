@@ -109,7 +109,7 @@
     return modelArray;
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", modelDialog: {width: 780}});
   exercise.reset();
 
   // bind a function to handle all click events on the array
