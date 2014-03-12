@@ -1,0 +1,28 @@
+{
+  "en": {
+    "title": "Binary Search",
+    "instructLabel": "Instructions:",
+    "instructions": "Find the key given in the exercise by highlighting the <strong>mid points</strong> used in Binary Search. The values are hidden and in <strong>ascending order</strong>.",
+    "find_label": "Find",
+    "ms_comment1": "Low = {low} and high = {high}, so mid = ( {low} + {high} ) / 2 = <strong>{mid}</strong> (division truncates!)",
+    "ms_comment2": "<br/>Because {arr_at_mid} is less than {key}, the new low will be <strong>{mid_plus_1}</strong>.",
+    "ms_comment3": "<br/>Because {arr_at_mid} is greater than {key}, the new high will be <strong>{mid_minus_1}</strong>.",
+    "ms_comment4": "<br/>The key was found at index {mid}!",
+    "ms_comment5": "<br/>The key was not found in the table.",
+    "code": null,
+    "code_highlight": null
+  },
+  "fi": {
+    "title": "Puolitushaku",
+    "instructLabel": "Ohjeet:",
+    "instructions": "Löydä etsittävä arvo klikkaamalla mid-muuttujan arvoa vastaavia indeksejä annetussa puolitushakualgoritmissa. Taulukon arvot ovat nousevassa järjestyksessä ja piilossa ellei niitä ole klikattu.",
+    "find_label": "Etsi",
+    "ms_comment1": "Low = {low} ja high = {high}, joten mid = ( {low} + {high} ) / 2 = <strong>{mid}</strong> (rivi 9, osamäärä pyöristetään alaspäin!)",
+    "ms_comment2": "<br/>Koska {arr_at_mid} on pienempi kuin {key}, low:n uudeksi arvoksi tulee <strong>{mid_plus_1}</strong>. (rivit 10 ja 11)",
+    "ms_comment3": "<br/>Koska {arr_at_mid} on suurempi kuin {key}, high:n uudeksi arvoksi tulee <strong>{mid_minus_1}</strong>. (rivit 12 ja 13)",
+    "ms_comment4": "<br/>Haettava avain löytyi kohdasta {mid}!",
+    "ms_comment5": "<br/>Avainta ei löytynyt.",
+    "code": {"url": "binarySearch.java"},
+    "code_highlight": [8]
+  }
+}

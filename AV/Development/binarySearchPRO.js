@@ -1,75 +1,37 @@
 (function ($) {
   "use strict";
 
-  var languages = {
-    en: {
-      title: "Binary Search",
-      instructLabel: "Instructions:",
-      instructions: "Find the key given in the exercise by highlighting the <strong>mid points</strong> used in Binary Search. The values are hidden and in <strong>ascending order</strong>.",
-      find_label: "Find",
-      ms_comment1: "Low = {low} and high = {high}, so mid = ( {low} + {high} ) / 2 = <strong>{mid}</strong> (line 9, division truncates!)",
-      ms_comment2: "<br/>Because {arr_at_mid} is less than {key}, the new low will be <strong>{mid_plus_1}</strong>. (line 10 and 11)",
-      ms_comment3: "<br/>Because {arr_at_mid} is greater than {key}, the new high will be <strong>{mid_minus_1}</strong>. (line 12 and 13)",
-      ms_comment4: "<br/>The key was found at index {mid}!",
-      ms_comment5: "<br/>The key was not found in the table."
-    },
-    fi: {
-      title: "Puolitushaku",
-      instructLabel: "Ohjeet:",
-      instructions: "Löydä etsittävä arvo klikkaamalla mid-muuttujan arvoa vastaavia indeksejä annetussa puolitushakualgoritmissa. Klikkaamattomat arvot ovat piilossa. Taulukon arvot ovat nousevassa järjestyksessä.",
-      find_label: "Etsi",
-      ms_comment1: "Low = {low} ja high = {high}, joten mid = ( {low} + {high} ) / 2 = <strong>{mid}</strong> (rivi 9, osamäärä pyöristetään alaspäin!)",
-      ms_comment2: "<br/>Koska {arr_at_mid} on pienempi kuin {key}, low:n uudeksi arvoksi tulee <strong>{mid_plus_1}</strong>. (rivit 10 ja 11)",
-      ms_comment3: "<br/>Koska {arr_at_mid} on suurempi kuin {key}, high:n uudeksi arvoksi tulee <strong>{mid_minus_1}</strong>. (rivit 12 ja 13)",
-      ms_comment4: "<br/>Haettava avain löytyi kohdasta {mid}!",
-      ms_comment5: "<br/>Avainta ei löytynyt."
-    }
-  }
-
   var arraySize = 20,
     key,
     initialArray = [],
     array,
     keyholder,
     findLabel,
-    lang,
+    interpret,
     av = new JSAV($("#jsavcontainer")),
-    code = av.code(
-      "int binarySearch(int[] table, int x) {\n"+
-      "    int low = 0;\n"+
-      "    int high = table.length - 1;\n"+
-      "    int mid;\n"+
-      "\n"+
-      "    while( low <= high )\n"+
-      "    {\n"+
-      "        // Division truncates\n"+
-      "        mid = (low + high) / 2;\n"+
-      "        if( table[mid] < x)\n"+
-      "            low = mid + 1;\n"+
-      "        else if(table[mid] > x)\n"+
-      "            high = mid - 1;\n"+
-      "        else\n"+
-      "            return mid;\n"+
-      "    }\n"+
-      "    return -1;     // Not found\n"+
-      "}");
+    code;
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
 
-    // create language function for the selected language
-    // If exercise.lang is undefined English("en") will be used
-    lang = getLanguageFunction(languages, exercise.options.lang);
-    console.log(exercise.options.lang);
+    // create interpreter function for the selected language
+    if (typeof interpret !== "function") {
+      interpret = getInterpreter("binarySearchPRO.json", exercise.options.lang || "en");
+    }
 
-    av.container.find(".title").html(lang("title"));
-    av.container.find(".instructLabel").html(lang("instructLabel"));
-    av.container.find(".instructions").html(lang("instructions"));
+    av.container.find(".title").html(interpret("title"));
+    av.container.find(".instructLabel").html(interpret("instructLabel"));
+    av.container.find(".instructions").html(interpret("instructions"));
 
     // show the code and highlight the row where mid is calculated
-    code.show();
-    code.highlight(8);
+    if (interpret("code")) {
+      if (!code) {
+        code = av.code( $.extend({after: {element: $(".instructions")}}, interpret("code")) );
+      }
+      code.show();
+      code.highlight(interpret("code_highlight"));
+    }
 
     //generate random array with ascending values
     var randomVal = 0;
@@ -94,8 +56,9 @@
 
     //insert key into the array (the blue box)
     keyholder = av.ds.array([key], {indexed: false});
+    keyholder.element.css("margin-top", 25);
     keyholder.css(0, {"background-color": "#ddf"});
-    findLabel = av.label(lang("find_label"), {relativeTo: keyholder, anchor: "center top", myAnchor: "center bottom"});
+    findLabel = av.label(interpret("find_label"), {relativeTo: keyholder, anchor: "center top", myAnchor: "center bottom"});
 
     // create the empty array
     array = av.ds.array(new Array(arraySize), {indexed: true, autoresize: false});
@@ -115,7 +78,7 @@
 
     while (low <= high) {
       mid = Math.floor( (low + high)/2);
-      jsav.umsg(lang("ms_comment1"), {fill: {
+      jsav.umsg(interpret("ms_comment1"), {fill: {
         low: low,
         high: high,
         mid: mid
@@ -123,25 +86,25 @@
       modelArray.value(mid, initialArray[mid]);
       modelArray.highlight(mid);
       if (modelArray.value(mid) < key) {
-        jsav.umsg(lang("ms_comment2"), {preserve: true, fill: {
-          "arr_at_mid": modelArray.value(mid),
+        jsav.umsg(interpret("ms_comment2"), {preserve: true, fill: {
+          arr_at_mid: modelArray.value(mid),
           key: key,
-          "mid_plus_1": mid + 1
+          mid_plus_1: mid + 1
         }});
         low = mid + 1;
         paintGrey(modelArray, 0, mid);
       }
       if (modelArray.value(mid) > key) {
-        jsav.umsg(lang("ms_comment3"), {preserve: true, fill: {
-          "arr_at_mid": modelArray.value(mid),
+        jsav.umsg(interpret("ms_comment3"), {preserve: true, fill: {
+          arr_at_mid: modelArray.value(mid),
           key: key,
-          "mid_minus_1": mid - 1
+          mid_minus_1: mid - 1
         }});
         high = mid - 1;
         paintGrey(modelArray, mid, arraySize - 1);
       }
       if (modelArray.value(mid) === key) {
-        jsav.umsg(lang("ms_comment4"), {preserve: true, fill: {key: key}});
+        jsav.umsg(interpret("ms_comment4"), {preserve: true, fill: {mid: mid}});
 
         paintGrey(modelArray, 0, arraySize - 1);
       }
@@ -151,14 +114,14 @@
         return modelArray;
       }
     }
-    jsav.umsg(lang("ms_comment5"), {preserve: true});
+    jsav.umsg(interpret("ms_comment5"), {preserve: true});
     return modelArray;
   }
 
   var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", modelDialog: {width: 780}});
   exercise.reset();
 
-  // bind a function to handle all click events on the array
+  // a function to handle all click events on the array
   function clickhandler(index) {
     
     //if the clicked index is not higlighted earlier, highlight it and paint the ones which are outside of the new range
