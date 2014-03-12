@@ -15,20 +15,18 @@
 
   function initialize() {
 
-    // create interpreter function for the selected language
+    // get interpreter function for the selected language
     if (typeof interpret !== "function") {
       interpret = getInterpreter("binarySearchPRO.json", exercise.options.lang || "en");
+      // change the title and the instructions on the page
+      av.container.find(".title").html(interpret("title"));
+      av.container.find(".instructLabel").html(interpret("instructLabel"));
+      av.container.find(".instructions").html(interpret("instructions"));
     }
 
-    av.container.find(".title").html(interpret("title"));
-    av.container.find(".instructLabel").html(interpret("instructLabel"));
-    av.container.find(".instructions").html(interpret("instructions"));
-
     // show the code and highlight the row where mid is calculated
-    if (interpret("code")) {
-      if (!code) {
-        code = av.code( $.extend({after: {element: $(".instructions")}}, interpret("code")) );
-      }
+    if (!code && interpret("code")) {
+      code = av.code( $.extend({after: {element: $(".instructions")}}, interpret("code")) );
       code.show();
       code.highlight(interpret("code_highlight"));
     }
