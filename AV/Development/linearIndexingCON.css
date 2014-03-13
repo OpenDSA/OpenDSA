@@ -1,8 +1,14 @@
-#varindexCON .jsavcanvas {
+#varindexCON .jsavcanvas{
+ overflow:visible;
  margin-left: auto;
  margin-right: auto;
- height: 105px;
+ height: 250px;
  width: 540px;
+}
+#varindexCON .jsavoutput {
+overflow:visible;
+padding-top: 100px;
+text-align: center;
 }
 
 #linindexCON .jsavcanvas {
