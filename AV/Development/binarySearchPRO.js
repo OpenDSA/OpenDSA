@@ -7,9 +7,11 @@
     array,
     keyholder,
     findLabel,
+    selectedCode,
+    pseudo,
     interpret,
-    av = new JSAV($("#jsavcontainer")),
-    code;
+    config = getJSON("binarySearchPRO.json"),
+    av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
@@ -17,7 +19,7 @@
 
     // get interpreter function for the selected language
     if (typeof interpret !== "function") {
-      interpret = getInterpreter("binarySearchPRO.json", exercise.options.lang || "en");
+      interpret = getInterpreter(config.translations, exercise.options.lang || "en");
       // change the title and the instructions on the page
       av.container.find(".title").html(interpret("title"));
       av.container.find(".instructLabel").html(interpret("instructLabel"));
@@ -25,10 +27,11 @@
     }
 
     // show the code and highlight the row where mid is calculated
-    if (!code && interpret("code")) {
-      code = av.code( $.extend({after: {element: $(".instructions")}}, interpret("code")) );
-      code.show();
-      code.highlight(interpret("code_highlight"));
+    if (!pseudo && exercise.options.code) {
+      selectedCode = config.code[exercise.options.code];
+      pseudo = av.code( $.extend({after: {element: $(".instructions")}}, selectedCode) );
+      pseudo.show();
+      pseudo.highlight(selectedCode.tags.highlight);
     }
 
     //generate random array with ascending values
@@ -81,6 +84,8 @@
         high: high,
         mid: mid
       }});
+      if (selectedCode)
+        refLines(jsav, selectedCode.tags.highlight);
       modelArray.value(mid, initialArray[mid]);
       modelArray.highlight(mid);
       if (modelArray.value(mid) < key) {
@@ -89,6 +94,8 @@
           key: key,
           mid_plus_1: mid + 1
         }});
+        if (selectedCode)
+          refLines(jsav, selectedCode.tags.tbl_mid_lt_key);
         low = mid + 1;
         paintGrey(modelArray, 0, mid);
       }
@@ -98,6 +105,8 @@
           key: key,
           mid_minus_1: mid - 1
         }});
+        if (selectedCode)
+          refLines(jsav, selectedCode.tags.tbl_mid_gt_key);
         high = mid - 1;
         paintGrey(modelArray, mid, arraySize - 1);
       }
@@ -145,6 +154,14 @@
       function(index) {return index >= first && index <= last},
       "greybg"
       );
+  }
+
+  function refLines(av, lines) {
+    if (typeof lines === "number") {
+      av.umsg(" " + interpret("line"), {preserve: true, fill: {first: lines + 1}});
+    } else if (typeof lines === "object") {
+      av.umsg(" " + interpret("lines"), {preserve: true, fill: {first: lines[0] + 1, second: lines[1] + 1}});
+    }
   }
 
 }(jQuery));
