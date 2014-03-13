@@ -1,9 +1,12 @@
 "use strict";
 (function ($) {
   var jsav,              // JSAV
-      arr,        // for the JSAV array
       defCtrlState,   // Stores the default state of the controls
-      submitRec;
+      submitRec,      //the rectanlge that's created when the user hits submit
+      free1,
+      connect1,
+      freeListRect,
+      rectNumber = 0;
 
   function setDefaultControlState() {
     defCtrlState = {};
@@ -28,7 +31,6 @@
   function reset() {
     // Clear any existing messages and hash table data
     jsav.clearumsg();
-    //$('#firstFit').html('');
 
     // Reset controls to their default state
     $("#fitAlgorithm").val(0);
@@ -103,7 +105,6 @@
     var freeAmountLabel = jsav.label(freeNum, {left :  720, top:  30});
     freeAmountLabel.css({"z-index": 500});
 
-
     var block1 = 25;
     var block2 = 35;
     var block3 = 32;
@@ -119,7 +120,7 @@
     block3Label.css({"z-index": 500});
     block4Label.css({"z-index": 500});
     
-    var freeListRect = jsav.g.rect(275, 400, 30, 40).css({"fill": "lightgrey"});
+    freeListRect = jsav.g.rect(275, 400, 30, 40).css({"fill": "lightgrey"});
     var freeListRect2 = jsav.g.rect(305, 400, 30, 40).css({"fill": "lightgrey"});
     var freeListRect3 = jsav.g.rect(335, 400, 30, 40).css({"fill": "lightgrey"});
     var freeListRect4 = jsav.g.rect(365, 400, 30, 40).css({"fill": "lightgrey"});
@@ -132,7 +133,7 @@
 
     var freeLabel = jsav.label("Free List", {left : 300, top: 460});
    
-    var connect1 = jsav.g.line(290, 400, 311, 210);
+    connect1 = jsav.g.line(290, 400, 311, 210);
     var connect2 = jsav.g.line(320, 400, 411, 210);
     var connect3 = jsav.g.line(350, 400, 557, 210);
     var connect4 = jsav.g.line(375, 400, 698, 210);
@@ -259,29 +260,58 @@
     });
 
     $('#submit').click(function () {
-      // Input field value
       var inputVal = $("#input").val();
 
       jsav.umsg("The request is scheduled.");
       jsav.umsg("Size Request: " + inputVal);
 
       newRec(inputVal);
+      $('#submit').attr("disabled", "disabled");
+
     });
 
     $('#next').click(function () {
 
       submitRec.css({"opacity": "0"});
-
-      var ret = 1;
-        // Input field value
+      // Input field value
       var inputVal = $("#input").val();
-        
-        // Log the state of the exercise
-        var state = {};
-        state.user_function = $("#fitAlgorithm option:selected").text();
-        state.user_input = inputVal;
-        ODSA.AV.logExerciseInit(state);
-  });
+      if(rectNumber == 0) {
+
+        if (inputVal <= 25) {
+          connect1.css({"stroke-width": 3});
+          freeListRect.css({"fill": "yellow"}); //sets 1 to yellow
+          var newUsedRect = jsav.g.rect(280, 150, inputVal, 60).css({"fill": "coral"});
+        } else {
+          rectNumber++;
+
+          if(rectNumber == 1) {
+            if (inputVal <= 25) {
+              //connect2 stuff here
+              newUsedRect = jsav.g.rect(280, 150, inputVal, 60).css({"fill": "coral"});
+            } else {
+              rectNumber++;
+              if(rectNumber == 2) {
+                if (inputVal <= 25) {
+                  //connect3 stuff here
+                  newUsedRect = jsav.g.rect(280, 150, inputVal, 60).css({"fill": "coral"});
+                } else {
+                  rectNumber++;
+                  if(rectNumber == 3) {
+                    if (inputVal <= 25) {
+                      //connect4 stuff here
+                      newUsedRect = jsav.g.rect(280, 150, inputVal, 60).css({"fill": "coral"});
+                    } else {
+                      jsav.umsg("VALUE IS TOO BIG!");
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      $("#submit").removeAttr("disabled");
+    });
 
 
     $("#fitAlgorithm").change(function () {
