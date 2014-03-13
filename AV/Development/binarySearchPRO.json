@@ -22,7 +22,7 @@
     "ms_comment3": "<br/>Koska {arr_at_mid} on suurempi kuin {key}, high:n uudeksi arvoksi tulee <strong>{mid_minus_1}</strong>. (rivit 12 ja 13)",
     "ms_comment4": "<br/>Haettava avain löytyi kohdasta {mid}!",
     "ms_comment5": "<br/>Avainta ei löytynyt.",
-    "code": {"url": "binarySearch.java"},
+    "code": {"url": "../../SourceCode/Java/Search/binarySearch.java"},
     "code_highlight": [8]
   }
 }
