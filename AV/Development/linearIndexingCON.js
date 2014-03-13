@@ -14,6 +14,7 @@
   var rect14 = jsav.g.rect(320, 72, 30, 20).css({"fill": "white"});
   var rect15 = jsav.g.rect(350, 72, 170, 20).css({"fill": "white"});
   
+  
   var inFragLabel = jsav.label("Database Records", {left :  0, top:  92});
   var fragLabel = jsav.label("73", {left : 2, top:  72});
   var fragLabel = jsav.label("52", {left : 122, top:  72});
@@ -105,22 +106,22 @@ arr.css(index, {"background-color": "#FFFF00" });
   av.step();
   
   
-  var rect5 = av2.g.rect(0, 75, 143, 20).css({"fill": "white"});
-  var rect6 = av2.g.rect(143, 75, 143, 20).css({"fill": "#FFFF00"});
-  var rect7 = av2.g.rect(286, 75, 143, 20).css({"fill": "white"});
-  var rect8 = av2.g.rect(429, 75, 143, 20).css({"fill": "white"});
+  var rect5 = av.g.rect(0, 75, 143, 20).css({"fill": "white"});
+  var rect6 = av.g.rect(143, 75, 143, 20).css({"fill": "#FFFF00"});
+  var rect7 = av.g.rect(286, 75, 143, 20).css({"fill": "white"});
+  var rect8 = av.g.rect(429, 75, 143, 20).css({"fill": "white"});
   
   
   
-  var fragLabel = av2.label("1", {left : 2, top:  75});
-  var fragLabel = av2.label("2001", {left : 108, top:  75});
-  var fragLabel = av2.label("2003", {left : 145, top:  75});
-  var fragLabel = av2.label("5688", {left : 251, top:  75});
-  var fragLabel = av2.label("5894", {left : 288, top:  75});
-  var fragLabel = av2.label("9942", {left : 394, top:  75});
-  var fragLabel = av2.label("10528", {left : 431, top:  75});
-  var fragLabel = av2.label("10984", {left : 530, top:  75});
-  var fragLabel = av2.label("Linear Index: Disk Blocks", {left :  0, top:  95});
+  var fragLabel = av.label("1", {left : 2, top:  75});
+  var fragLabel = av.label("2001", {left : 108, top:  75});
+  var fragLabel = av.label("2003", {left : 145, top:  75});
+  var fragLabel = av.label("5688", {left : 251, top:  75});
+  var fragLabel = av.label("5894", {left : 288, top:  75});
+  var fragLabel = av.label("9942", {left : 394, top:  75});
+  var fragLabel = av.label("10528", {left : 431, top:  75});
+  var fragLabel = av.label("10984", {left : 530, top:  75});
+  var fragLabel = av.label("Linear Index: Disk Blocks", {left :  0, top:  95});
   
   av.umsg("The search is directed to the proper block in the index file, which is read into memory");
   av.step();
@@ -128,25 +129,6 @@ arr.css(index, {"background-color": "#FFFF00" });
   av.umsg(" At this point, a binary search within this block will produce a pointer to the actual record in the database");
   av.recorded();
 
-
-
-
-
- 
-
-
-
-
-  
-  
-
-
-  
-  //var point = av2.pointer(xFrag, rect2);
-  //var xFragLabel = av.g.label("37", {left :  110, top:  0});
-  //var xFragArrow = av2.g.line(105,  10,  90, 28, {'arrow-end': 'classic-wide-long', 'stroke-width' : 100});
-  //var inFragLabel = av2.label("Unused space in allocated block: Internal fragmentation", {left :  20, top:  100});
-  //var inFragArrow = av2.g.line(315, 100,  330, 82, {'arrow-end': 'classic-wide-long', 'stroke-width' : 2});
   
 }(jQuery));
   

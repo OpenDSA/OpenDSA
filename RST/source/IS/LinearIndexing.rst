@@ -32,7 +32,8 @@ binary search.
 
 .. _LinVar:
 
-.. inlineav:: varindexCON dgm
+.. inlineav:: varindexCON ss
+   :output: show
    :align: justify
 
    Linear indexing for variable-length records.
@@ -72,7 +73,8 @@ record.
 
 .. _LinIndex:
 
-.. inlineav:: linindexCON dgm
+.. inlineav:: linindexCON ss
+   :output: show
    :align: justify
 
    A simple two-level linear index.
