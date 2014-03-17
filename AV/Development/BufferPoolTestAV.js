@@ -5,12 +5,16 @@
   /* Variables */
   var jsav,                     
       main_memory,                      
-      buffer_pool
+      buffer_pool,
+      freq_counter
+      
+  var counter = 0;
 
   function array_init() {
     var empty = [];
     main_memory = jsav.ds.array(empty, {layout: "vertical", left: 450});
     buffer_pool = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 800});
+    freq_counter = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 600});
   }
 
   function contains(arg) {
@@ -27,6 +31,7 @@
    */
   function resetAV() {
     // Display a message telling them what fields they need to select
+    counter = 0;
     main_memory.clear();
     buffer_pool.clear();
     jsav.clearumsg();
@@ -82,14 +87,168 @@
       }
       main_memory = jsav.ds.array(empty, {layout: "vertical", left: 450});
     }
-    
+
     var buf_size = $('#bufferpool_size').val();
     if (buf_size > 0) {
       var empty = [];
+      var temp = [];
+
       empty.length = buf_size;
+      temp.length = buf_size;
+
+      var i;
+      for (i = 0; i < buf_size; i++) {
+        temp[i] = 0;
+      }
       buffer_pool = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 800});
+      freq_counter = jsav.ds.array(temp, {layout: "vertical", left: 630});
     }
 
+  }
+
+  function LRU(input_val, counter) {
+    console.log("counter " + counter);
+    if (contains(input_val)) {
+      var i;
+      var temp = [];
+      temp.length = buffer_pool.size();
+      var old_first = buffer_pool.value(0);
+      temp[0] = input_val;
+      var counter = 1;
+      for (i = 0; i < buffer_pool.size(); i++) {
+        if (buffer_pool.value(i) != input_val) {
+          temp[counter] = buffer_pool.value(i);
+          counter++;
+        }
+      }
+      for (i = 0; i < buffer_pool.size(); i++) {
+        buffer_pool.value(i, temp[i]);
+      }
+    }
+    else {
+      if (counter == 0) {
+        buffer_pool.value(0, input_val);
+      }
+      else if (counter < buffer_pool.size()) {
+        var temp = [];
+        temp.length = buffer_pool.size();
+        temp[0] = input_val;
+
+        var i;
+        for (i = 0; i < counter; i++) {
+          temp[i+1] = buffer_pool.value(i);
+        }
+
+        for (i = 0; i < buffer_pool.size(); i++) {
+          buffer_pool.value(i, temp[i]);
+        }
+      }
+      else {
+        var temp = [];
+        temp.length = buffer_pool.size();
+        temp[0] = input_val;
+
+        var i;
+        for (i = 0; i < buffer_pool.size()-1; i++) {
+          temp[i+1] = buffer_pool.value(i);
+        }
+
+        for (i = 0; i < buffer_pool.size(); i++) {
+          buffer_pool.value(i, temp[i]);
+        }
+      }
+    }
+  }
+
+  function FIFO(input_val, counter) {
+    if (counter == 0) {
+      buffer_pool.value(0, input_val);
+    }
+    else if (counter < buffer_pool.size()) {
+      var temp = [];
+      temp.length = buffer_pool.size();
+      temp[0] = input_val;
+
+      var i;
+      for (i = 0; i < counter; i++) {
+        temp[i+1] = buffer_pool.value(i);
+      }
+
+      for (i = 0; i < buffer_pool.size(); i++) {
+        buffer_pool.value(i, temp[i]);
+      }
+    }
+    else {
+      var temp = [];
+      temp.length = buffer_pool.size();
+      temp[0] = input_val;
+
+      var i;
+      for (i = 0; i < buffer_pool.size()-1; i++) {
+        temp[i+1] = buffer_pool.value(i);
+      }
+
+      for (i = 0; i < buffer_pool.size(); i++) {
+        buffer_pool.value(i, temp[i]);
+      }
+    }
+  }
+
+  function LFU(input_val, counter) {
+    if (contains(input_val)) {
+      var i;
+      var temp = [];
+      temp.length = buffer_pool.size();
+      for (i = 0; i < buffer_pool.size(); i++) {
+        if (buffer_pool.value(i) == input_val) {
+          freq_counter.value(i, freq_counter.value(i) + 1);
+        }
+      }
+      var x, y, max;
+      for (x = 0; x < buffer_pool.size()-1; x++) {
+        max = x;
+        for ( y = x + 1; y < buffer_pool.size(); y++) {
+          if (freq_counter.value(y) > freq_counter.value(max)) {
+            max = y;
+          }
+        }
+        if (max != x) {
+          var old;
+          old = freq_counter.value(x);
+          freq_counter.value(x, freq_counter.value(max));
+          freq_counter.value(max, old);
+
+          old = buffer_pool.value(x);
+          buffer_pool.value(x, buffer_pool.value(max));
+          buffer_pool.value(max, old);
+        }
+      }
+    }
+    else {
+      if (counter == 0) {
+        buffer_pool.value(0, input_val);
+      }
+      else if (counter < buffer_pool.size()) {
+        var temp = [];
+        temp.length = buffer_pool.size();
+        temp[0] = input_val;
+
+        var i;
+        for (i = 0; i < counter; i++) {
+          temp[i+1] = buffer_pool.value(i);
+        }
+
+        for (i = 0; i < buffer_pool.size(); i++) {
+          buffer_pool.value(i, temp[i]);
+        }
+
+      }
+      else {
+        buffer_pool.value(buffer_pool.size()-1, input_val);
+        freq_counter.value(buffer_pool.size()-1, 0);
+      }
+    }
+    console.log(buffer_pool.size());
   }
 
   /**
@@ -99,7 +258,11 @@
   $(document).ready(function () {
     jsav = new JSAV($('.avcontainer'));
     array_init();
+    counter = 0;
     resetAV();
+
+    //var properties = {"stroke-width": 1.5};
+    //var line1 = jsav.g.line(243, 28, 73, 81, properties);
 
     // If the user hits 'Enter' while the focus is on the textbox,
     // click 'Next' rather than refreshing the page
@@ -135,62 +298,26 @@
       resetAV();
     });
 
-    var counter = 0;
-    console.log(buffer_pool.size()); 
+    console.log("buffer size:" + buffer_pool.size()); 
+
     // Next button pushed.
     $('#next').click(function () {
-      console.log(counter);
+      var replacement = $("#function").val();
+      console.log("replacement" + replacement);
       var input_val = $("#input").val();
       if (input_val < 0 || input_val >= main_memory.size())
         jsav.umsg("enter a valid value");
       else {
-        if (contains(input_val)) {
-          var temp = [];
-          temp.length = buffer_pool.size();
-          temp[0] = input_val;
-          var i;
-          var counter = 1;
-          for (i = 0; i < buffer_pool.size(); i++) {
-            if (buffer_pool.value(i) != input_val) {
-              temp[counter] = buffer_pool.value(i);
-              counter++;
-            }
-          }
-          for (i = 0; i < buffer_pool.size(); i++) {
-            buffer_pool.value(i, temp[i]);
-          }
-          console.log("foo");
+        if (replacement == 1) {
+          LRU(input_val, counter);
+        }
+        else if (replacement == 2){
+          FIFO(input_val, counter);
         }
         else {
-          if (counter > 0 && counter < buffer_pool.size()) {
-            var i;
-            var new_val = buffer_pool.value(0);
-            var old_val = buffer_pool.value(1);
-            for (i = 1; i < counter+1; i++) {
-              buffer_pool.value(i, new_val);
-              new_val = old_val
-              old_val = buffer_pool.value(i+1);
-            }
-            buffer_pool.value(0, input_val);
-            counter++;
-          }
-          else if (counter == 0) {
-            buffer_pool.value(0, input_val);
-            counter++;
-          }
-          else {
-            var i;
-            var new_val = buffer_pool.value(0);
-            var old_val = buffer_pool.value(1);
-            for (i = 1; i < buffer_pool.size(); i++) {
-              buffer_pool.value(i, new_val);
-              new_val = old_val;
-              if (i <= counter-1)
-                old_val = buffer_pool.value(i+1)
-            }
-            buffer_pool.value(0, input_val);
-          }
+          LFU(input_val, counter);
         }
+        counter++;
       }
     });
 
