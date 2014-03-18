@@ -6,12 +6,14 @@
   var jsav,                     
       main_memory,                      
       buffer_pool,
-      freq_counter
+      freq_counter,
+      lines
       
   var counter = 0;
 
   function array_init() {
     var empty = [];
+    lines = [];
     main_memory = jsav.ds.array(empty, {layout: "vertical", left: 450});
     buffer_pool = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 800});
     freq_counter = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 600});
@@ -75,6 +77,7 @@
       jsav.umsg("Enter a value and click Next");
       jsav.umsg("<br />");
     }
+    var replacement = $("#function").val();
 
     // Create a new JSAV array
     var main_memory_size = $('#mainmemory_size').val();
@@ -100,8 +103,13 @@
       for (i = 0; i < buf_size; i++) {
         temp[i] = 0;
       }
+      lines.size = buf_size;
       buffer_pool = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 800});
-      freq_counter = jsav.ds.array(temp, {layout: "vertical", left: 630});
+      freq_counter = jsav.ds.array(temp, {layout: "vertical", left: 950});
+      freq_counter.hide();
+    }
+    if (replacement == 3) {
+      freq_counter.show();  
     }
 
   }
@@ -121,22 +129,34 @@
           counter++;
         }
       }
+      for (i = 0; i< buffer_pool.size(); i++) {
+        lines[i].hide();
+      }      
       for (i = 0; i < buffer_pool.size(); i++) {
         buffer_pool.value(i, temp[i]);
+        lines[0] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
       }
     }
     else {
       if (counter == 0) {
         buffer_pool.value(0, input_val);
+        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        jsav.displayInit();
       }
       else if (counter < buffer_pool.size()) {
+        for (i = 0; i< counter; i++) {
+          lines[i].hide();
+        }
+
         var temp = [];
         temp.length = buffer_pool.size();
         temp[0] = input_val;
+        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
 
         var i;
         for (i = 0; i < counter; i++) {
           temp[i+1] = buffer_pool.value(i);
+          lines[i+1] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
@@ -144,13 +164,19 @@
         }
       }
       else {
+        for (i = 0; i< buffer_pool.size(); i++) {
+          lines[i].hide();
+        }
+
         var temp = [];
         temp.length = buffer_pool.size();
         temp[0] = input_val;
+        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
 
         var i;
         for (i = 0; i < buffer_pool.size()-1; i++) {
           temp[i+1] = buffer_pool.value(i);
+          lines[i+1] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
@@ -161,41 +187,64 @@
   }
 
   function FIFO(input_val, counter) {
-    if (counter == 0) {
-      buffer_pool.value(0, input_val);
-    }
-    else if (counter < buffer_pool.size()) {
-      var temp = [];
-      temp.length = buffer_pool.size();
-      temp[0] = input_val;
-
-      var i;
-      for (i = 0; i < counter; i++) {
-        temp[i+1] = buffer_pool.value(i);
-      }
-
-      for (i = 0; i < buffer_pool.size(); i++) {
-        buffer_pool.value(i, temp[i]);
-      }
+    if (contains(input_val)) {
     }
     else {
-      var temp = [];
-      temp.length = buffer_pool.size();
-      temp[0] = input_val;
-
-      var i;
-      for (i = 0; i < buffer_pool.size()-1; i++) {
-        temp[i+1] = buffer_pool.value(i);
+      if (counter == 0) {
+        buffer_pool.value(0, input_val);
+        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        jsav.displayInit();
       }
+      else if (counter < buffer_pool.size()) {
+        for (i = 0; i< counter; i++) {
+          lines[i].hide();
+        }
 
-      for (i = 0; i < buffer_pool.size(); i++) {
-        buffer_pool.value(i, temp[i]);
+        var temp = [];
+        temp.length = buffer_pool.size();
+        temp[0] = input_val;
+        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+
+        var i;
+        for (i = 0; i < counter; i++) {
+          temp[i+1] = buffer_pool.value(i);
+          lines[i+1] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        }
+
+        for (i = 0; i < buffer_pool.size(); i++) {
+          buffer_pool.value(i, temp[i]);
+        }
+
+      }
+      else {
+        
+        for (i = 0; i< buffer_pool.size(); i++) {
+          lines[i].hide();
+        }
+
+        var temp = [];
+        temp.length = buffer_pool.size();
+        temp[0] = input_val;
+        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+
+        var i;
+        for (i = 0; i < buffer_pool.size()-1; i++) {
+          temp[i+1] = buffer_pool.value(i);
+          lines[i+1] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        }
+
+        for (i = 0; i < buffer_pool.size(); i++) {
+          buffer_pool.value(i, temp[i]);
+        }
       }
     }
   }
-
   function LFU(input_val, counter) {
     if (contains(input_val)) {
+      for (i = 0; i< buffer_pool.size(); i++) {
+        lines[i].hide();
+      } 
+
       var i;
       var temp = [];
       temp.length = buffer_pool.size();
@@ -223,19 +272,30 @@
           buffer_pool.value(max, old);
         }
       }
+      for (i = 0; i < buffer_pool.size(); i++) {
+        lines[i] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+      }
     }
     else {
       if (counter == 0) {
         buffer_pool.value(0, input_val);
+        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        jsav.displayInit();
       }
       else if (counter < buffer_pool.size()) {
+        for (i = 0; i< counter; i++) {
+          lines[i].hide();
+        }
+
         var temp = [];
         temp.length = buffer_pool.size();
         temp[0] = input_val;
+        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
 
         var i;
         for (i = 0; i < counter; i++) {
           temp[i+1] = buffer_pool.value(i);
+          lines[i+1] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
@@ -244,8 +304,14 @@
 
       }
       else {
+        for (i = 0; i< buffer_pool.size(); i++) {
+          lines[i].hide();
+        }
         buffer_pool.value(buffer_pool.size()-1, input_val);
         freq_counter.value(buffer_pool.size()-1, 0);
+        for (i = 0; i < buffer_pool.size(); i++) {
+          lines[i] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        }
       }
     }
     console.log(buffer_pool.size());
@@ -258,11 +324,18 @@
   $(document).ready(function () {
     jsav = new JSAV($('.avcontainer'));
     array_init();
+    jsav.displayInit();
     counter = 0;
     resetAV();
 
     //var properties = {"stroke-width": 1.5};
-    //var line1 = jsav.g.line(243, 28, 73, 81, properties);
+    //var z1FragArrow = jsav.g.line(560,  45,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+    //var z1FragArrow = jsav.g.line(560,  90,  775, 90, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+    //var z1FragArrow = jsav.g.line(560,  45,  775, 135, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+    //var z1FragArrow = jsav.g.line(560,  45,  775, 180, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+    //var z1FragArrow = jsav.g.line(560,  45,  775, 225, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+    //var z1FragArrow = jsav.g.line(560,  45,  775, 270, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+
 
     // If the user hits 'Enter' while the focus is on the textbox,
     // click 'Next' rather than refreshing the page
