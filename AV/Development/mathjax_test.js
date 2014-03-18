@@ -9,6 +9,7 @@
       // invoke MathJax to do conversion again
       MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     });
+	av.umsg('Test with JSAV: The running time is $n\\log{n}$');
 	av.displayInit();
 	av.umsg('Test with JSAV: The running time is $\\theta(n^2)$');
 	av.recorded();
