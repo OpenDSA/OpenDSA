@@ -96,6 +96,58 @@
 
     } // insert
 
+    this.delete = function(BINnode rt, INx, INy, Bx, By, Bwid, Bhgt, level) {
+      console.assert( !(rt.leaf == true && rt.empty == true), "Cannot be an empty leaf during delete");
+
+      if (rt.leaf) {
+        if (rt.x == INx && rt.y == INy)
+        {
+          var temp = tree.newNode('');
+          temp.leaf = true;
+          temp.empty = true;
+          return temp;
+        }
+        // else ERROR: THIS IS IMPOSSIBLE;
+      }
+
+      // We have an internal node
+      if (level % 2 == 0) // Branch on X
+      {
+        if (INx < (Bx + Bwid/2)) // Insert left
+        {
+          rt.left(delete(rt.left(), INx, INy, Bx, By, Bwid/2, Bhgt, level+1));
+        }
+        else
+        {
+          rt.right(delete(rt.right(), INx, INy, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
+        }
+      }
+        
+      else // Branch on Y
+      {
+        if (INy < (By + Bhgt/2)) // Insert left
+        {
+          rt.left(delete(rt.left(), INx, INy, Bx, By, Bwid, Bhgt/2, level+1));
+        }
+        else
+          rt.right(delete(rt.right(), INx, INy, Bx, By + Bhgt/2, Bwid, Bhgt/2, level+1));
+      }
+    
+      tree.layout();
+
+      // Now, check to see if there should be a merge
+      if ((rt.left().leaf == true && rt.left().empty == true) && (rt.right().leaf))
+      {
+        return rt.right();
+      }
+      if ((rt.left().leaf) && (rt.right().leaf && rt.left.empty))
+      {
+        return rt.left();
+      }
+      // Otherwise, return just the rt subtree without a merge
+      return rt;
+}
+
 
   } // bintree
   
