@@ -7,34 +7,32 @@
     array,
     keyholder,
     findLabel,
-    av = new JSAV($("#jsavcontainer")),
-    code = av.code(
-      "int binarySearch(int[] table, int x) {\n"+
-      "    int low = 0;\n"+
-      "    int high = table.length - 1;\n"+
-      "    int mid;\n"+
-      "\n"+
-      "    while( low <= high )\n"+
-      "    {\n"+
-      "        // Division truncates\n"+
-      "        mid = (low + high) / 2;\n"+
-      "        if( table[mid] < x)\n"+
-      "            low = mid + 1;\n"+
-      "        else if(table[mid] > x)\n"+
-      "            high = mid - 1;\n"+
-      "        else\n"+
-      "            return mid;\n"+
-      "    }\n"+
-      "    return -1;     // Not found\n"+
-      "}");
+    selectedCode,
+    pseudo,
+    interpret,
+    config = getJSON("binarySearchPRO.json"),
+    av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
 
+    // get interpreter function for the selected language
+    if (typeof interpret !== "function") {
+      interpret = getInterpreter(config.translations, exercise.options.lang || "en");
+      // change the title and the instructions on the page
+      av.container.find(".title").html(interpret("title"));
+      av.container.find(".instructLabel").html(interpret("instructLabel"));
+      av.container.find(".instructions").html(interpret("instructions"));
+    }
+
     // show the code and highlight the row where mid is calculated
-    code.show();
-    code.highlight(8);
+    if (!pseudo && exercise.options.code) {
+      selectedCode = config.code[exercise.options.code];
+      pseudo = av.code( $.extend({after: {element: $(".instructions")}}, selectedCode) );
+      pseudo.show();
+      pseudo.highlight(selectedCode.tags.highlight);
+    }
 
     //generate random array with ascending values
     var randomVal = 0;
@@ -59,8 +57,9 @@
 
     //insert key into the array (the blue box)
     keyholder = av.ds.array([key], {indexed: false});
+    keyholder.element.css("margin-top", 25);
     keyholder.css(0, {"background-color": "#ddf"});
-    findLabel = av.label("Find", {relativeTo: keyholder, anchor: "center top", myAnchor: "center bottom"});
+    findLabel = av.label(interpret("find_label"), {relativeTo: keyholder, anchor: "center top", myAnchor: "center bottom"});
 
     // create the empty array
     array = av.ds.array(new Array(arraySize), {indexed: true, autoresize: false});
@@ -80,22 +79,39 @@
 
     while (low <= high) {
       mid = Math.floor( (low + high)/2);
-      jsav.umsg("Low = " + low + " and high = " + high +
-        ", so mid = ( " + low + " + " + high + " ) / 2 = <strong>" + mid + "</strong> (line 9, division truncates!)");
+      jsav.umsg(interpret("ms_comment1"), {fill: {
+        low: low,
+        high: high,
+        mid: mid
+      }});
+      if (selectedCode)
+        refLines(jsav, selectedCode.tags.highlight);
       modelArray.value(mid, initialArray[mid]);
       modelArray.highlight(mid);
       if (modelArray.value(mid) < key) {
-        jsav.umsg("<br/>Because " + modelArray.value(mid) + " is less than " + key + ", the new low will be <strong>" + (mid + 1) + "</strong>. (line 10 and 11)", {preserve: true});
+        jsav.umsg(interpret("ms_comment2"), {preserve: true, fill: {
+          arr_at_mid: modelArray.value(mid),
+          key: key,
+          mid_plus_1: mid + 1
+        }});
+        if (selectedCode)
+          refLines(jsav, selectedCode.tags.tbl_mid_lt_key);
         low = mid + 1;
         paintGrey(modelArray, 0, mid);
       }
       if (modelArray.value(mid) > key) {
-        jsav.umsg("<br/>Because " + modelArray.value(mid) + " is greater than " + key + ", the new high will be <strong>" + (mid - 1) + "</strong>. (line 12 and 13)", {preserve: true});
+        jsav.umsg(interpret("ms_comment3"), {preserve: true, fill: {
+          arr_at_mid: modelArray.value(mid),
+          key: key,
+          mid_minus_1: mid - 1
+        }});
+        if (selectedCode)
+          refLines(jsav, selectedCode.tags.tbl_mid_gt_key);
         high = mid - 1;
         paintGrey(modelArray, mid, arraySize - 1);
       }
       if (modelArray.value(mid) === key) {
-        jsav.umsg("<br/>The key was found at index " + mid + "!", {preserve: true});
+        jsav.umsg(interpret("ms_comment4"), {preserve: true, fill: {mid: mid}});
 
         paintGrey(modelArray, 0, arraySize - 1);
       }
@@ -105,14 +121,14 @@
         return modelArray;
       }
     }
-    jsav.umsg("<br/>The key wasn't found in the table.", {preserve: true});
+    jsav.umsg(interpret("ms_comment5"), {preserve: true});
     return modelArray;
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", modelDialog: {width: 780}});
   exercise.reset();
 
-  // bind a function to handle all click events on the array
+  // a function to handle all click events on the array
   function clickhandler(index) {
     
     //if the clicked index is not higlighted earlier, highlight it and paint the ones which are outside of the new range
@@ -138,6 +154,14 @@
       function(index) {return index >= first && index <= last},
       "greybg"
       );
+  }
+
+  function refLines(av, lines) {
+    if (typeof lines === "number") {
+      av.umsg(" " + interpret("line"), {preserve: true, fill: {first: lines + 1}});
+    } else if (typeof lines === "object") {
+      av.umsg(" " + interpret("lines"), {preserve: true, fill: {first: lines[0] + 1, second: lines[1] + 1}});
+    }
   }
 
 }(jQuery));

@@ -13,8 +13,7 @@
 2-3 Trees
 =========
 
-.. inlineav:: arrayTree ss
-   :output: show
+.. inlineav:: arrayTree dgm
 
 This section presents a data structure
 called the 2-3 tree.

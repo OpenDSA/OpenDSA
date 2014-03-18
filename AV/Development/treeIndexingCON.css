@@ -7,11 +7,6 @@
   padding: 25px;
 }
 
-/* Add offset to the top of the tree container */
-#pagedBSTCON .jsavtree {
-	margin-top: -35px;
-}
-
 /* Change the size of the tree nodes */
 #pagedBSTCON .jsavtree .jsavnode {
   line-height: 15px;
@@ -23,7 +18,8 @@
 
 /* Add padding to the rectangle container to show the all the rectangles */
 #pagedBSTCON .jsavcanvas > svg {
-	height: 200px;
+  margin-top: -10px;
+	height: 150px;
 	width: 320px;
 }
 
@@ -32,13 +28,8 @@
 /* Set size for the jsav container */
 #balanceBSTCON {
   width: 380px;
-  height: 105px;
+  height: 115px;
   padding: 25px;
-}
-
-/* Add offset to the top of the tree container */
-#balanceBSTCON .jsavtree {
-	margin-top: -40px;
 }
 
 /* Change the size of the tree nodes */

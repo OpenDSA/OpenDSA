@@ -100,14 +100,50 @@ function delPointer(pointer){
   var Gpointer = setPointer("0", l.get(6));
   var Hpointer = setPointer("0", l.get(7));
 
-  jsav.umsg("We will  illustrate using a Self Organizing list using frequency count by applying F D F G E G F A D F G E. pattern");
+
+
+// Declaring our DashLine
+function DashLine(dashlineHeight) {
+    this.setMargin = function (dashlineLeftMargin) {
+    return jsav.g.polyline([[dashlineLeftMargin, dashlineHeight], 
+      [dashlineLeftMargin + 13, dashlineHeight], [dashlineLeftMargin + 13, dashlineHeight + 36],	   [dashlineLeftMargin + 	    83,dashlineHeight + 36],[dashlineLeftMargin + 83, dashlineHeight],[dashlineLeftMargin + 101, dashlineHeight]], 	   {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
+    }  
+
+    return this;
+};
+
+
+/////////////////////////
+var margin1 = 264;
+var margin2 = 338;
+var margin3 = 412
+var margin4 = 486;
+var margin5 = 560;
+var margin6 = 634;
+var dashObject = new DashLine(58);
+var dashline = dashObject.setMargin(margin5);
+
+
+
+  jsav.umsg("We will illustrate using a Self Organizing list using frequency count by applying F D F G E G F A D F G E. pattern");
   jsav.displayInit();
 
   // step 1
   jsav.umsg("We search for F");
+  l.get(5).highlight();
   jsav.step();
+
+  dashline.show();
+  l.get(4).edgeToNext().hide();
+  l.get(5).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(5);
   l.add(0, "F");
+  l.get(0).highlight();
+  l.get(5).edgeToNext().show();
   Fpointer = setPointer("1", l.get(0));
   l.layout();
   jsav.step();
@@ -115,54 +151,126 @@ function delPointer(pointer){
 
   // step 2
   jsav.umsg("We search for D");
+  l.get(0).unhighlight();
+  l.get(4).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin4);
+  dashline.show();
+  l.get(3).edgeToNext().hide();
+  l.get(4).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(4);
   l.add(0, "D");
+  l.get(0).highlight();
+  l.get(4).edgeToNext().show();
   Dpointer = setPointer("1", l.get(0));
   l.layout();
   jsav.step();
 
   // step 3
-  jsav.umsg("We search for F");
+  jsav.umsg("We search for F"); 
+  l.get(0).unhighlight();
+  l.get(1).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin1);
+  dashline.show();
+  l.get(0).edgeToNext().hide();
+  l.get(1).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(1);
   l.add(0, "F");
+  l.get(0).highlight();
+  l.get(1).edgeToNext().show();
   Fpointer = setPointer("2", l.get(0));
   l.layout();
   jsav.step();
 
   // step 4
   jsav.umsg("We search for G");
+  l.get(0).unhighlight();
+  l.get(6).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin6);
+  dashline.show();
+  l.get(5).edgeToNext().hide();
+  l.get(6).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(6);
   l.add(1, "G");
+  l.get(1).highlight();
+  l.get(6).edgeToNext().show();
   Gpointer = setPointer("1", l.get(1));
   l.layout();
   jsav.step();
 
  // step 5
   jsav.umsg("We search for E");
+  l.get(1).unhighlight();
+  l.get(6).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin6);
+  dashline.show();
+  l.get(5).edgeToNext().hide();
+  l.get(6).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(6);
   l.add(1, "E");
+  l.get(1).highlight();
+  l.get(6).edgeToNext().show();
   Epointer = setPointer("1", l.get(1));
   l.layout();
   jsav.step();
 
  // step 6
   jsav.umsg("We search for G");
+  l.get(1).unhighlight();
+  l.get(2).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin2);
+  dashline.show();
+  l.get(1).edgeToNext().hide();
+  l.get(2).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(2);
   l.add(0, "G");
+  l.get(0).highlight();
+  l.get(2).edgeToNext().show();
   Gpointer = setPointer("2", l.get(0));
   l.layout();
   jsav.step();
 
  // step 7
   jsav.umsg("We search for F");
+  l.get(0).unhighlight();
+  l.get(1).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin1);
+  dashline.show();
+  l.get(0).edgeToNext().hide();
+  l.get(1).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(1);
   l.add(0, "F");
+  l.get(0).highlight();
+  l.get(1).edgeToNext().show();
   Fpointer = setPointer("3", l.get(0));
   l.layout();
   jsav.step();
@@ -170,48 +278,99 @@ function delPointer(pointer){
 
  // step 7
   jsav.umsg("We search for A");
+  l.get(4).highlight();
+  l.get(0).unhighlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin4);
+  dashline.show();
+  l.get(3).edgeToNext().hide();
+  l.get(4).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(4);
   l.add(2, "A");
+  l.get(2).highlight();
+  l.get(4).edgeToNext().show();
   Apointer = setPointer("1", l.get(2));
   l.layout();
   jsav.step();
 
  // step 8
   jsav.umsg("We search for D");
+  l.get(2).unhighlight();
+  l.get(4).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin4);
+  dashline.show();
+  l.get(3).edgeToNext().hide();
+  l.get(4).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(4);
   l.add(2, "D");
+  l.get(2).highlight();
+  l.get(4).edgeToNext().show();
   Dpointer = setPointer("2", l.get(2));
   l.layout();
   jsav.step();
 
  // step 9
   jsav.umsg("We search for F");
+  l.get(2).unhighlight();
+  l.get(0).highlight();
   jsav.step();
+  jsav.umsg("F stays in the same position");
   l.remove(0);
   l.add(0, "F");
+  l.get(0).highlight();
   Fpointer = setPointer("4", l.get(0));
   l.layout();
   jsav.step();
 
  // step 11
   jsav.umsg("We search for G");
+  l.get(1).highlight();
+  l.get(0).unhighlight();
   jsav.step();
   l.remove(1);
   l.add(1, "G");
+  jsav.umsg("G stays in the same position");
+  l.get(1).highlight();
   Gpointer = setPointer("3", l.get(1));
   l.layout();
   jsav.step();
 
  // step 12
   jsav.umsg("We search for E");
+  l.get(1).unhighlight();
+  l.get(4).highlight();
   jsav.step();
+
+  dashline = dashObject.setMargin(margin4);
+  dashline.show();
+  l.get(3).edgeToNext().hide();
+  l.get(4).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
+
   l.remove(4);
   l.add(3, "E");
+  l.get(3).highlight();
+  l.get(4).edgeToNext().show();
   Epointer = setPointer("2", l.get(3));
   l.layout();
   jsav.step();
+
+  jsav.step();
+  jsav.umsg("And we are done");
+  l.get(3).unhighlight();
 
   jsav.recorded();
 }(jQuery));
@@ -226,6 +385,27 @@ function delPointer(pointer){
 ///////////////////////////////////////
 (function ($) {
   var jsav = new JSAV("SelforgCON2");
+
+// Declaring our DashLine
+function DashLine(dashlineHeight) {
+    this.setMargin = function (dashlineLeftMargin) {
+    return jsav.g.polyline([[dashlineLeftMargin, dashlineHeight], 
+      [dashlineLeftMargin + 13, dashlineHeight], [dashlineLeftMargin + 13, dashlineHeight + 36],	   [dashlineLeftMargin + 	    83,dashlineHeight + 36],[dashlineLeftMargin + 83, dashlineHeight],[dashlineLeftMargin + 101, dashlineHeight]], 	   {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
+    }  
+
+    return this;
+};
+
+
+/////////////////////////
+var margin1 = 264;
+var margin2 = 338;
+var margin3 = 412
+var margin4 = 486;
+var margin5 = 560;
+var margin6 = 634;
+var dashObject = new DashLine(58);
+var dashline = dashObject.setMargin(margin5);
 
   // Offsets
   var leftMargin = 217;
@@ -251,100 +431,245 @@ function delPointer(pointer){
 
   // step 1
   jsav.umsg("We search for F");
+  l.get(5).highlight();
   jsav.step();
+  dashline.show();
+  l.get(4).edgeToNext().hide();
+  l.get(5).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(5);
   l.add(0, "F");
+  l.get(0).highlight();
+  l.get(5).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 2
   jsav.umsg("We search for D");
+  l.get(0).unhighlight();
+  l.get(4).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin4);
+  dashline.show();
+  l.get(3).edgeToNext().hide();
+  l.get(4).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(4);
   l.add(0, "D");
+  l.get(0).highlight();
+  l.get(4).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 3
   jsav.umsg("We search for F");
+  l.get(0).unhighlight();
+  l.get(1).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin1);
+  dashline.show();
+  l.get(0).edgeToNext().hide();
+  l.get(1).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(1);
   l.add(0, "F");
+  l.get(0).highlight();
+  l.get(1).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 4
   jsav.umsg("We search for G");
+  l.get(0).unhighlight();
+  l.get(6).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin6);
+  dashline.show();
+  l.get(5).edgeToNext().hide();
+  l.get(6).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(6);
   l.add(0, "G");
+  l.get(0).highlight();
+  l.get(6).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 5
   jsav.umsg("We search for E");
+  l.get(0).unhighlight();
+  l.get(6).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin6);
+  dashline.show();
+  l.get(5).edgeToNext().hide();
+  l.get(6).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(6);
   l.add(0, "E");
+  l.get(0).highlight();
+  l.get(6).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 6
   jsav.umsg("We search for G");
+  l.get(0).unhighlight();
+  l.get(1).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin1);
+  dashline.show();
+  l.get(0).edgeToNext().hide();
+  l.get(1).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(1);
   l.add(0, "G");
+  l.get(0).highlight();
+  l.get(1).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 7
   jsav.umsg("We search for F");
+  l.get(0).unhighlight();
+  l.get(2).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin2);
+  dashline.show();
+  l.get(1).edgeToNext().hide();
+  l.get(2).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(2);
   l.add(0, "F");
+  l.get(0).highlight();
+  l.get(2).edgeToNext().show();
   l.layout();
   jsav.step();
 
 
   // step 8
   jsav.umsg("We search for A");
+  l.get(0).unhighlight();
+  l.get(4).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin4);
+  dashline.show();
+  l.get(3).edgeToNext().hide();
+  l.get(4).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(4);
   l.add(0, "A");
+  l.get(0).highlight();
+  l.get(4).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 9
   jsav.umsg("We search for D");
+  l.get(0).unhighlight();
+  l.get(4).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin4);
+  dashline.show();
+  l.get(3).edgeToNext().hide();
+  l.get(4).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(4);
   l.add(0, "D");
+  l.get(0).highlight();
+  l.get(4).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 10
   jsav.umsg("We search for F");
+  l.get(0).unhighlight();
+  l.get(2).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin2);
+  dashline.show();
+  l.get(1).edgeToNext().hide();
+  l.get(2).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(2);
   l.add(0, "F");
+  l.get(0).highlight();
+  l.get(2).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 11
   jsav.umsg("We search for G");
+  l.get(0).unhighlight();
+  l.get(3).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin3);
+  dashline.show();
+  l.get(2).edgeToNext().hide();
+  l.get(3).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(3);
   l.add(0, "G");
+  l.get(0).highlight();
+  l.get(3).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 12
   jsav.umsg("We search for E");
+  l.get(0).unhighlight();
+  l.get(4).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin4);
+  dashline.show();
+  l.get(3).edgeToNext().hide();
+  l.get(4).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(4);
   l.add(0, "E");
+  l.get(0).highlight();
+  l.get(4).edgeToNext().show();
   l.layout();
   jsav.step();
+
+  jsav.umsg("And we are done");
+  l.get(0).unhighlight();
 
   jsav.recorded();
 }(jQuery));
@@ -358,6 +683,27 @@ function delPointer(pointer){
 ///////////////////////////////////////
 (function ($) {
   var jsav = new JSAV("SelforgCON3");
+
+// Declaring our DashLine
+function DashLine(dashlineHeight) {
+    this.setMargin = function (dashlineLeftMargin) {
+    return jsav.g.polyline([[dashlineLeftMargin, dashlineHeight], 
+      [dashlineLeftMargin + 13, dashlineHeight], [dashlineLeftMargin + 13, dashlineHeight + 36],	   [dashlineLeftMargin + 	    83,dashlineHeight + 36],[dashlineLeftMargin + 83, dashlineHeight],[dashlineLeftMargin + 101, dashlineHeight]], 	   {"arrow-end":"classic-wide-long", "opacity":0, "stroke-width":2,"stroke-dasharray":"-"});
+    }  
+
+    return this;
+};
+
+
+/////////////////////////
+var margin1 = 264;
+var margin2 = 338;
+var margin3 = 412
+var margin4 = 486;
+var margin5 = 560;
+var margin6 = 634;
+var dashObject = new DashLine(58);
+var dashline = dashObject.setMargin(margin5);
 
   // Offsets
   var leftMargin = 217;
@@ -383,98 +729,235 @@ function delPointer(pointer){
 
   // step 1
   jsav.umsg("We search for F");
+  l.get(5).highlight();
   jsav.step();
+  dashline.show();
+  l.get(4).edgeToNext().hide();
+  l.get(5).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(5);
   l.add(4, "F");
+  l.get(4).highlight();
+  l.get(5).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 2
   jsav.umsg("We search for D");
+  l.get(4).unhighlight();
+  l.get(3).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin3);
+  dashline.show();
+  l.get(2).edgeToNext().hide();
+  l.get(3).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(3);
   l.add(2, "D");
+  l.get(2).highlight();
+  l.get(3).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 3
   jsav.umsg("We search for F");
+  l.get(2).unhighlight();
+  l.get(4).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin4);
+  dashline.show();
+  l.get(3).edgeToNext().hide();
+  l.get(4).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(4);
   l.add(3, "F");
+  l.get(3).highlight();
+  l.get(4).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 4
   jsav.umsg("We search for G");
+  l.get(3).unhighlight();
+  l.get(6).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin6);
+  dashline.show();
+  l.get(5).edgeToNext().hide();
+  l.get(6).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(6);
   l.add(5, "G");
+  l.get(5).highlight();
+  l.get(6).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 5
   jsav.umsg("We search for E");
+  l.get(5).unhighlight();
+  l.get(6).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin6);
+  dashline.show();
+  l.get(5).edgeToNext().hide();
+  l.get(6).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(6);
   l.add(5, "E");
+  l.get(5).highlight();
+  l.get(6).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 6
   jsav.umsg("We search for G");
+  l.get(5).unhighlight();
+  l.get(6).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin6);
+  dashline.show();
+  l.get(5).edgeToNext().hide();
+  l.get(6).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(6);
   l.add(5, "G");
+  l.get(5).highlight();
+  l.get(6).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 7
   jsav.umsg("We search for F");
+  l.get(5).unhighlight();
+  l.get(3).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin3);
+  dashline.show();
+  l.get(2).edgeToNext().hide();
+  l.get(3).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(3);
   l.add(2, "F");
+  l.get(2).highlight();
+  l.get(3).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 8
   jsav.umsg("We search for A");
+  l.get(2).unhighlight();
+  l.get(0).highlight();
   jsav.step();
-
+  jsav.umsg("A stays in the same position");
+  jsav.step();
 
   // step 9
   jsav.umsg("We search for D");
+  l.get(0).unhighlight();
+  l.get(3).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin3);
+  dashline.show();
+  l.get(2).edgeToNext().hide();
+  l.get(3).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(3);
   l.add(2, "D");
+  l.get(2).highlight();
+  l.get(3).edgeToNext().show();
   l.layout();
   jsav.step();
 
 
   // step 10
   jsav.umsg("We search for F");
+  l.get(2).unhighlight();
+  l.get(3).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin3);
+  dashline.show();
+  l.get(2).edgeToNext().hide();
+  l.get(3).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(3);
   l.add(2, "F");
+  l.get(2).highlight();
+  l.get(3).edgeToNext().show();
   l.layout();
   jsav.step();
 
 
   // step 11
   jsav.umsg("We search for G");
+  l.get(2).unhighlight();
+  l.get(5).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin5);
+  dashline.show();
+  l.get(4).edgeToNext().hide();
+  l.get(5).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(5);
   l.add(4, "G");
+  l.get(4).highlight();
+  l.get(5).edgeToNext().show();
   l.layout();
   jsav.step();
 
   // step 12
   jsav.umsg("We search for E");
+  l.get(4).unhighlight();
+  l.get(6).highlight();
   jsav.step();
+  dashline = dashObject.setMargin(margin6);
+  dashline.show();
+  l.get(5).edgeToNext().hide();
+  l.get(6).edgeToNext().hide();
+  jsav.umsg("Now we can route around the un-needed node.");
+  jsav.step();
+  jsav.umsg("The node goes to the According position");
+  dashline.hide();
   l.remove(6);
   l.add(5, "E");
+  l.get(5).highlight();
+  l.get(6).edgeToNext().show();  
+
   l.layout();
+
   jsav.step();
+  jsav.umsg("And we are done");
+  l.get(5).unhighlight();
 
 
   jsav.recorded();

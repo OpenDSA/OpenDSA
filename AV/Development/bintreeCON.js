@@ -28,8 +28,8 @@
   av.label("F", {left: rect_left+130, top: 147, visible: true}).show;
 
   // Setup the tree
-  var bintreeTop = 450;
-  var bt = av.ds.bintree({top: bintreeTop, left: 200});
+  var bintreeTop = 275;
+  var bt = av.ds.bintree({nodegap: 10, top: bintreeTop, left: 200});
   bt.root('');
   var rt = bt.root();
   rt.left('');
@@ -51,22 +51,22 @@
   rt.right().right().left().left().right('F');
 
   bt.layout();
-  var alabel = av.label("(a)", {left: 250, top: 450}).show;
-  var blabel = av.label("(b)", {left: 250, top: 985}).show;
+  var alabel = av.label("(a)", {left: 250, top: bintreeTop - 40}).show;
+  var blabel = av.label("(b)", {left: 250, top: bintreeTop + 370}).show;
 
   // Mark tree levels
   //av.g.rect( 460,  30, 200, 200);
-  av.label("x", {left: 20, top: 510}).show;
-  av.g.line(40, 520, 340, 520);
-  av.label("y", {left: 20, top: 600}).show;
-  av.g.line(40, 610, 210, 610);
-  av.label("x", {left: 20, top: 690}).show;
-  av.g.line(40, 700, 170, 700);
-  av.label("y", {left: 20, top: 770}).show;
-  av.g.line(40, 780, 300, 780);
-  av.label("x", {left: 20, top: 865}).show;
-  av.g.line(40, 875, 250, 875);
-  av.label("y", {left: 20, top: 950}).show;
-  av.g.line(40, 960, 460, 960);
+  av.label("x", {left: 20, top: bintreeTop + 35}).show;
+  av.g.line(40, bintreeTop + 45, 300, bintreeTop + 45);
+  av.label("y", {left: 20, top: bintreeTop + 90}).show;
+  av.g.line(40, bintreeTop + 100, 210, bintreeTop + 100);
+  av.label("x", {left: 20, top: bintreeTop + 150}).show;
+  av.g.line(40, bintreeTop + 160, 185, bintreeTop + 160);
+  av.label("y", {left: 20, top: bintreeTop + 205}).show;
+  av.g.line(40, bintreeTop + 215, 270, bintreeTop + 215);
+  av.label("x", {left: 20, top: bintreeTop + 260}).show;
+  av.g.line(40, bintreeTop + 270, 245, bintreeTop + 270);
+  av.label("y", {left: 20, top: bintreeTop + 320}).show;
+  av.g.line(40, bintreeTop + 330, 385, bintreeTop + 330);
 
 }(jQuery));
