@@ -53,6 +53,7 @@
 
     // Clear input textbox and disable next button
     $("#input").val("");
+    
     OriginalMemBlock();
 
     $('#submit').attr("disabled", "disabled");
@@ -333,8 +334,10 @@
             freeStartArray[rectNumber] = freeStartArray[rectNumber] + inputVal * 2.5;
 
             freeArray[rectNumber] = freeArray[rectNumber] - inputVal;
+
             blockLabelArray[rectNumber].text(freeArray[rectNumber]);
 
+           
             linesArray[rectNumber].css({"stroke-width": 1});
             freeListArray[rectNumber].css({"fill": "lightgrey"});
             nextCount = 0;
@@ -364,6 +367,12 @@
     });
 
     $('#reset').click(function () {
+          var i = 0;
+          while(i < 4)
+          {
+            blockLabelArray[i].clear();
+            i++;
+          }
         reset();
         submitRec.css({"opacity": "0"});
     });
