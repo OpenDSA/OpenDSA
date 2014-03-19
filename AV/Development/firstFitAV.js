@@ -407,6 +407,7 @@
           while(i < 4)
           {
             blockLabelArray[i].clear();
+            linesArray[i].hide();
             i++;
           }
         reset();
