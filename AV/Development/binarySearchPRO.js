@@ -84,8 +84,7 @@
         high: high,
         mid: mid
       }});
-      if (selectedCode)
-        refLines(jsav, selectedCode.tags.highlight);
+      refLines(jsav, selectedCode, "highlight");
       modelArray.value(mid, initialArray[mid]);
       modelArray.highlight(mid);
       if (modelArray.value(mid) < key) {
@@ -94,8 +93,7 @@
           key: key,
           mid_plus_1: mid + 1
         }});
-        if (selectedCode)
-          refLines(jsav, selectedCode.tags.tbl_mid_lt_key);
+        refLines(jsav, selectedCode, "tbl_mid_lt_key");
         low = mid + 1;
         paintGrey(modelArray, 0, mid);
       }
@@ -105,8 +103,7 @@
           key: key,
           mid_minus_1: mid - 1
         }});
-        if (selectedCode)
-          refLines(jsav, selectedCode.tags.tbl_mid_gt_key);
+        refLines(jsav, selectedCode, "tbl_mid_gt_key");
         high = mid - 1;
         paintGrey(modelArray, mid, arraySize - 1);
       }
@@ -156,7 +153,10 @@
       );
   }
 
-  function refLines(av, lines) {
+  function refLines(av, code, lineTag) {
+    if (!code)
+      return;
+    var lines = code.tags[lineTag];
     if (typeof lines === "number") {
       av.umsg(" " + interpret("line"), {preserve: true, fill: {first: lines + 1}});
     } else if (typeof lines === "object") {
