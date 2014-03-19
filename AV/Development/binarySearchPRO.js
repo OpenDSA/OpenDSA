@@ -7,10 +7,9 @@
     array,
     keyholder,
     findLabel,
-    selectedCode,
     pseudo,
     interpret,
-    config = getJSON("binarySearchPRO.json"),
+    config = ODSA.UTILS.getConfig("binarySearchPRO.json"),
     av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
@@ -19,19 +18,16 @@
 
     // get interpreter function for the selected language
     if (typeof interpret !== "function") {
-      interpret = getInterpreter(config.translations, exercise.options.lang || "en");
+      interpret = JSAV.utils.getInterpreter(config.language);
       // change the title and the instructions on the page
-      av.container.find(".title").html(interpret("title"));
-      av.container.find(".instructLabel").html(interpret("instructLabel"));
-      av.container.find(".instructions").html(interpret("instructions"));
+      ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
     }
 
     // show the code and highlight the row where mid is calculated
-    if (!pseudo && exercise.options.code) {
-      selectedCode = config.code[exercise.options.code];
-      pseudo = av.code( $.extend({after: {element: $(".instructions")}}, selectedCode) );
+    if (!pseudo && config.code) {
+      pseudo = av.code( $.extend({after: {element: $(".ODSAinstructions")}}, config.code) );
       pseudo.show();
-      pseudo.highlight(selectedCode.tags.highlight);
+      pseudo.highlight(config.code.tags.highlight);
     }
 
     //generate random array with ascending values
@@ -73,6 +69,9 @@
     jsav.ds.array([key], {indexed: false}).css(0, {"background-color": "#ddf"});
     var modelArray = jsav.ds.array(Array(arraySize), {indexed: true, autoresize: false});
 
+    if (config.code)
+      jsav.code(config.code).highlight(config.code.tags.highlight);
+
     jsav._undo = [];
 
     var low = 0, high = arraySize - 1, mid;
@@ -84,8 +83,7 @@
         high: high,
         mid: mid
       }});
-      if (selectedCode)
-        refLines(jsav, selectedCode.tags.highlight);
+      refLines(jsav, config.code, "highlight");
       modelArray.value(mid, initialArray[mid]);
       modelArray.highlight(mid);
       if (modelArray.value(mid) < key) {
@@ -94,8 +92,7 @@
           key: key,
           mid_plus_1: mid + 1
         }});
-        if (selectedCode)
-          refLines(jsav, selectedCode.tags.tbl_mid_lt_key);
+        refLines(jsav, config.code, "tbl_mid_lt_key");
         low = mid + 1;
         paintGrey(modelArray, 0, mid);
       }
@@ -105,8 +102,7 @@
           key: key,
           mid_minus_1: mid - 1
         }});
-        if (selectedCode)
-          refLines(jsav, selectedCode.tags.tbl_mid_gt_key);
+        refLines(jsav, config.code, "tbl_mid_gt_key");
         high = mid - 1;
         paintGrey(modelArray, mid, arraySize - 1);
       }
@@ -156,7 +152,10 @@
       );
   }
 
-  function refLines(av, lines) {
+  function refLines(av, code, lineTag) {
+    if (!code)
+      return;
+    var lines = code.tags[lineTag];
     if (typeof lines === "number") {
       av.umsg(" " + interpret("line"), {preserve: true, fill: {first: lines + 1}});
     } else if (typeof lines === "object") {
