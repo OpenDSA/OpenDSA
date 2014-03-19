@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmap xmlns:dcterms="http://purl.org/dc/terms/" xmlns="http://cmap.ihmc.us/xml/cmap/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
+    <res-meta>
+        <dc:title>animals.cmap</dc:title>
+        <dcterms:created>2014-02-24T20:23:25-05:00</dcterms:created>
+        <dcterms:modified>2014-02-24T21:16:06-05:00</dcterms:modified>
+        <dc:language>en</dc:language>
+        <dc:format>x-cmap/x-storable</dc:format>
+        <dc:publisher>FIHMC CmapTools 5.05.01</dc:publisher>
+        <dc:extent>4112 bytes</dc:extent>
+        <dc:source>cmap:1MM72RF4Y-16RTMLT-1:external-folder:file://///Users/thom7100/Documents/My Cmaps/animals.cmap</dc:source>
+    </res-meta>
+    <map width="777" height="438">
+        <tag> Tommy </tag>
+        <concept-list>
+            <concept id="1MMWZJYSH-9R75SY-10X" label="Bird"><concept/>
+            <concept id="1MMT6P4QB-2818BY3-SH" label="robin"/>
+            <concept id="1MMT6PZ56-12918BJ-V9" label="cardinal"/>
+            <concept id="1MMT6PWKD-2CTNYKM-TT" label="canary"/>
+            <concept id="1MMT6CQ04-1SR677N-5D" label="Animal"/>
+        </concept-list>
+        <linking-phrase-list>
+            <linking-phrase id="1MMWZJYSM-R2ZNKQ-110" label="is a"/>
+            <linking-phrase id="1MMWZKYJM-N55R17-133" label="type of"/>
+        </linking-phrase-list>
+        <connection-list>
+            <connection id="1MMWZKYJQ-1C0J9WB-13D" from-id="1MMWZKYJM-N55R17-133" to-id="1MMT6CQ04-1SR677N-5D"/>
+            <connection id="1MMWZKCFG-MCGZ05-122" from-id="1MMT6PZ56-12918BJ-V9" to-id="1MMWZJYSM-R2ZNKQ-110"/>
+            <connection id="1MMWZJYSP-1HJR7T-113" from-id="1MMT6PWKD-2CTNYKM-TT" to-id="1MMWZJYSM-R2ZNKQ-110"/>
+            <connection id="1MMWZKYJQ-298BRDV-136" from-id="1MMWZJYSH-9R75SY-10X" to-id="1MMWZKYJM-N55R17-133"/>
+            <connection id="1MMWZK6LP-DWNHN1-11Q" from-id="1MMT6P4QB-2818BY3-SH" to-id="1MMWZJYSM-R2ZNKQ-110"/>
+            <connection id="1MMWZJYSP-XVZ9KZ-118" from-id="1MMWZJYSM-R2ZNKQ-110" to-id="1MMWZJYSH-9R75SY-10X"/>
+        </connection-list>
+        <concept-appearance-list>
+            <concept-appearance id="1MMWZJYSH-9R75SY-10X" x="502" y="461" width="40" height="25"/>
+            <concept-appearance id="1MMT6P4QB-2818BY3-SH" x="468" y="648" width="47" height="25"/>
+            <concept-appearance id="1MMT6PZ56-12918BJ-V9" x="766" y="630" width="63" height="25"/>
+            <concept-appearance id="1MMT6PWKD-2CTNYKM-TT" x="64" y="651" width="82" min-width="74" height="25" min-height="5"/>
+            <concept-appearance id="1MMT6CQ04-1SR677N-5D" x="609" y="272" width="276" min-width="268" height="87" min-height="79"/>
+        </concept-appearance-list>
+        <linking-phrase-appearance-list>
+            <linking-phrase-appearance id="1MMWZJYSM-R2ZNKQ-110" x="477" y="543" width="23" height="11"/>
+            <linking-phrase-appearance id="1MMWZKYJM-N55R17-133" x="540" y="384" width="44" height="14"/>
+        </linking-phrase-appearance-list>
+        <connection-appearance-list>
+            <connection-appearance id="1MMWZKYJQ-1C0J9WB-13D" from-pos="center" to-pos="center"/>
+            <connection-appearance id="1MMWZKCFG-MCGZ05-122" from-pos="center" to-pos="center"/>
+            <connection-appearance id="1MMWZJYSP-1HJR7T-113" from-pos="center" to-pos="center"/>
+            <connection-appearance id="1MMWZKYJQ-298BRDV-136" from-pos="center" to-pos="center"/>
+            <connection-appearance id="1MMWZK6LP-DWNHN1-11Q" from-pos="center" to-pos="center"/>
+            <connection-appearance id="1MMWZJYSP-XVZ9KZ-118" from-pos="center" to-pos="center"/>
+        </connection-appearance-list>
+        <style-sheet-list>
+            <style-sheet id="_Default_">
+                <map-style background-color="255,255,255,0" image-style="full" image-top-left="0,0"/>
+                <concept-style font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="237,244,246,255" background-image-style="full" border-color="0,0,0,255" border-style="solid" border-thickness="1"
+                    border-shape="rounded-rectangle" text-alignment="center" shadow-color="none"/>
+                <linking-phrase-style font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" background-image-style="full" border-color="0,0,0,0" border-style="solid" border-thickness="1"
+                    border-shape="rectangle" text-alignment="center" shadow-color="none"/>
+                <connection-style color="0,0,0,255" style="solid" thickness="1" type="straight" arrowhead="if-to-concept-and-slopes-up"/>
+                <resource-style font-name="SanSerif" font-size="12" font-style="plain" font-color="0,0,0,255" background-color="192,192,192,255"/>
+            </style-sheet>
+        </style-sheet-list>
+        <extra-graphical-properties-list>
+            <properties-list id="file://///Users/thom7100/Documents/My Cmaps/animals.cmap">
+                <property key="StyleSheetGroup_0" value="//*@!#$%%^&amp;*()() No Grouped StyleSheets @"/>
+            </properties-list>
+        </extra-graphical-properties-list>
+    </map>
+</cmap>
