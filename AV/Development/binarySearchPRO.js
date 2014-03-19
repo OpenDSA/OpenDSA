@@ -69,7 +69,8 @@
     jsav.ds.array([key], {indexed: false}).css(0, {"background-color": "#ddf"});
     var modelArray = jsav.ds.array(Array(arraySize), {indexed: true, autoresize: false});
 
-    jsav.code(config.code).highlight(config.code.tags.highlight);
+    if (config.code)
+      jsav.code(config.code).highlight(config.code.tags.highlight);
 
     jsav._undo = [];
 
