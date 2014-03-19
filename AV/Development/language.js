@@ -4,6 +4,7 @@ if (typeof JSAV_EXERCISE_OPTIONS === "undefined")
 if (typeof window.JSAV_OPTIONS === "undefined")
   window.JSAV_OPTIONS = {};
 
+
 // same as updateJSAVExerOptions, except that it uses the flag JOP instead of
 // JXOP and sets JSAV_OPTIONS instead of JSAV_EXERCISE_OPTIONS
 function updateJSAVOptions() {
@@ -48,16 +49,14 @@ ODSA.UTILS.getConfig = function (url) {
   } else if (typeof configurationFile.translations[lang] === "string") {
     // download the language object from the url
     var langData;
+    // create a url with the same path as in the "url" string
     var langUrl = url.split("/");
-    console.log(langUrl);
     langUrl.pop();
-    console.log(langUrl);
     langUrl = langUrl.join("/");
     if (langUrl !== "") {
       langUrl += "/"
     }
     langUrl += configurationFile.translations[lang];
-    console.log(langUrl);
 
     $.ajax({
       url: langUrl,
@@ -74,4 +73,22 @@ ODSA.UTILS.getConfig = function (url) {
   }
 
   return result;
-}
+};
+
+
+ODSA.UTILS.setTitleAndInstructions = function (container, translation) {
+  container = $(container);
+  var $title = container.find(".ODSAtitle");
+  var $instructLabel = container.find(".ODSAinstructlabel");
+  var $instructions = container.find(".ODSAinstructions");
+
+  if ($title.length !== 0) {
+    $title.html(translation.ODSAtitle);
+  }
+  if ($instructLabel.length !== 0) {
+    $instructLabel.html(translation.ODSAinstructlabel);
+  }
+  if ($instructions.length !== 0) {
+    $instructions.html(translation.ODSAinstructions);
+  }
+};

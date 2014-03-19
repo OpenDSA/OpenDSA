@@ -20,14 +20,12 @@
     if (typeof interpret !== "function") {
       interpret = JSAV.utils.getInterpreter(config.language);
       // change the title and the instructions on the page
-      av.container.find(".title").html(interpret("title"));
-      av.container.find(".instructLabel").html(interpret("instructLabel"));
-      av.container.find(".instructions").html(interpret("instructions"));
+      ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
     }
 
     // show the code and highlight the row where mid is calculated
     if (!pseudo && config.code) {
-      pseudo = av.code( $.extend({after: {element: $(".instructions")}}, config.code) );
+      pseudo = av.code( $.extend({after: {element: $(".ODSAinstructions")}}, config.code) );
       pseudo.show();
       pseudo.highlight(config.code.tags.highlight);
     }
