@@ -59,7 +59,6 @@
 
     // Clear input textbox and disable next button
     $("#input").val("");
-
     OriginalMemBlock();
 
     $('#submit').attr("disabled", "disabled");
@@ -319,6 +318,14 @@
     $('#reset').click(function () {
       reset();
       submitRec.css({"opacity": "0"});
+          var i = 0;
+          while(i < 4)
+          {
+            blockLabelArray[i].clear();
+            i++;
+          }
+        reset();
+        submitRec.css({"opacity": "0"});
     });
 
 

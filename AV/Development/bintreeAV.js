@@ -2,97 +2,157 @@
 /*global alert: true, ODSA */
 /*global sweep */
 (function ($) {
-
+  var comp = function(a, b) {
+    return a - b;
+  };
   
-  
-  function Bintree() {
+  function Bintree(jsav, xrange, yrange) {
 
-    function node(val, lev) {
+    var tree;
+    var root;
+    
+    tree = jsav.ds.bintree({nodegap: 10});
+    root = tree.root('');
+    root.leaf = true;
+    root.empty = true;
+    root.level = 0;
 
-      var value = val;
-      var level = lev;
-      var internal = false;
-      var leftChild = null;
-      var rightChild = null;
+    // The bintree starts with a root node, and two empty leafnodes
+    var newL1  = tree.newNode('');
+    var newR1 = tree.newNode('');
+    newL1.leaf = newR1.leaf = true;
+    newR1.empty = newL1.empty = true;
+    root.left(newL1);
+    root.right(newR1);
 
-      this.setInternal = function () {
-        internal = true;
-      }
-
-      this.setLeaf = function () {
-        internal = false;
-      }
-
-      this.isInternal = function () {
-        return internal;
-      }
-
-      this.setValue = function (val) {
-        value = val;
-      }
-
-      this.setLevel = function (lev) {
-        level = lev;
-      }
-
-      this.setLeftChild = function (lc) {
-        leftChild = lc;
-        return (leftChild);
-      }
-
-      this.setRightChild = function (rc) {
-        rightChild = rc;
-        return (rightChild);
-      }
-
-      this.getValue = function () {
-        return value;
-      }
-      this.getLevel = function () {
-        return level;
-      }
-
-      this.isLeaf = function () {
-        if (leftChild == null && rightChild == null) {
-          return true;
-        }
-        return false;
-      }
-    }
-
-    //var jsav = new JSAV($('.avcontainer'));
-
-    var root = new node();
+    // DON't FORGET THIS!!!
+    tree.layout();
     
     this.isEmpty = function () {
-      console.log("Bintree isEmpty test: ", root == null);
-      return (root == null);
+      var returning = (root.left().empty && root.left().leaf && root.right().empty && root.right().leaf);
+      console.log("Bintree isEmpty test: ", returning);
+      return (returning);
     }
-
-    this.insert = function (rootnode, inrecor, nodebounds, level) {
-      console.log("Bintree insert: ", inrecor);
-
-      if (rootnode == null) {
-        console.log("Bintree given rootnode is null, level: ", level);
-        rootnode = new node(inrecor, level);
-        return (rootnode);
-      }
       
-      if (rootnode.isLeaf()) {
-        console.log("Bintree given rootnode is a leaf. Insert an internal node in it's place and continue.");
-        var temp = new node(null, null);
-        temp.setInternal();
-        rootnode = insert(temp, rt.getValue, nodebounds, null)
-      } // Note, it will continue into the next if statement!
+    // returns a node!
+    this.insert = function(rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level) {
 
+      jsav.step();
+      tree.layout();
+      console.log("Bintree insert: ", INrec);
+      
+      console.assert(rt != null, "rt not defined");
 
-    }
+      if (rt.leaf == true && rt.empty == true) {
+        console.log("insert: encountered empty leaf node: insert data and return")
+        jsav.umsg("Insert: Encountered an empty leaf node: Now insert data and return!");
+        var temp = tree.newNode(INRec);
+        temp.x = INx;
+        temp.y = INy;
+        
+        jsav.step();
+        return temp;
+      }
+        
+      if (rt.leaf == true) {
+        var temp = tree.newNode('');
+        var newLeft  = tree.newNode('');
+        var newRight = tree.newNode('');
+        newLeft.leaf = newRight.leaf = true;
+        newRight.empty = newLeft.empty = true;
+        temp.setLeftNode(newLeft);
+        temp.setRightNode(newRight);
+        rt = insert(temp, rt.x, rt.y, rt.value(), Bx, By, Bwid, Bhgt, level);
 
+        // NO Return: Rolls through to next if statement
+      }
 
-  }
+      // If here, we have an internal node to insert into
+      if (level % 2 == 0) // Branch on X
+      {
+        if (rt.x < (Bx + Bwid/2)) // Insert left
+        {
+          rt.left(insert(rt.left(), INx, INy, INrec, Bx, By, Bwid/2, Bhgt, level+1));
+        }
+        else
+        {
+          rt.right(insert(rt.right(), INx, INy, INrec, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
+        }
+      }
 
-  var jsav, // for JSAV library object av
-      arr;  // for the JSAV array
+      else // Branch on Y
+      {
+        if (rt.y < (By + Bhgt/2)) // Insert left
+        {
+          rt.left(insert(rt.left(), INx, INy, INrec, Bx, By, Bwid, Bhgt/2, level+1));
+        }
+        else
+        {
+          rt.right(insert(rt.right(), INx, INy, INrec, Bx, By + Bhgt/2, Bwid, Bhgt/2, level+1));
+        }
+      }
+
+      tree.layout();
+      return rt;
+    } // insert
+
+    this.delete = function (rt, INx, INy, Bx, By, Bwid, Bhgt, level) {
+      console.assert( !(rt.leaf == true && rt.empty == true), "Cannot be an empty leaf during delete");
+
+      if (rt.leaf) {
+        if (rt.x == INx && rt.y == INy)
+        {
+          var temp = tree.newNode('');
+          temp.leaf = true;
+          temp.empty = true;
+          return temp;
+        }
+        // else ERROR: THIS IS IMPOSSIBLE;
+      }
+
+      // We have an internal node
+      if (level % 2 == 0) // Branch on X
+      {
+        if (INx < (Bx + Bwid/2)) // Insert left
+        {
+          rt.left(delete(rt.left(), INx, INy, Bx, By, Bwid/2, Bhgt, level+1));
+        }
+        else
+        {
+          rt.right(delete(rt.right(), INx, INy, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
+        }
+      }
+        
+      else // Branch on Y
+      {
+        if (INy < (By + Bhgt/2)) // Insert left
+        {
+          rt.left(delete(rt.left(), INx, INy, Bx, By, Bwid, Bhgt/2, level+1));
+        }
+        else
+          rt.right(delete(rt.right(), INx, INy, Bx, By + Bhgt/2, Bwid, Bhgt/2, level+1));
+      }
+    
+      tree.layout();
+
+      // Now, check to see if there should be a merge
+      if ((rt.left().leaf == true && rt.left().empty == true) && (rt.right().leaf))
+      {
+        return rt.right();
+      }
+      if ((rt.left().leaf) && (rt.right().leaf && rt.left.empty))
+      {
+        return rt.left();
+      }
+
+      // Otherwise, return just the rt subtree without a merge
+      return rt;
+    
+    } // delete
+
+  } // bintree
+  
+  var arr;
 
   // check query parameters from URL
   var params = JSAV.utils.getQueryParameter();
@@ -126,32 +186,26 @@
     
     ODSA.AV.reset(true);
 
-    
-  var jsav = new JSAV($('.avcontainer'));
+    var jsav = new JSAV($('.avcontainer'));
 
     jsav.umsg("Let's get started");
+    var bint = new Bintree(jsav);
+    bint.isEmpty();
     jsav.displayInit();
 
-// Setup the tree
-  var bt = jsav.ds.bintree();
-  var bint = new Bintree();
-  bint.isEmpty();
-  bint.insert(bint.root, 100, 0,0);
-   bint.isEmpty();
-
-  bt.root('');
-  var rt = bt.root();
-
-
-    jsav.umsg("Step 1");
-
     jsav.step();
-rt.left('');
   
-    jsav.umsg("All Done!");
+    // Setup the tree
+    jsav.umsg("Step 1: insert node with value \"A\" @ 10, 10");
+    // rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level
+    bint.insert(bint.root, 10, 10, "A", 100, 100, 200, 200, 0);
+    bint.isEmpty();
+  
+    jsav.step();
 
-    rt.left().left('A');
-  rt.left().right('B');
+  
+  // Done
+    jsav.umsg("All Done!");
 
     jsav.recorded(); // mark the end
 
@@ -162,7 +216,5 @@ rt.left('');
   $('#about').click(about);
   $('#run').click(runIt);
   $('#reset').click(ODSA.AV.reset);
-
-  
 
 }(jQuery));
