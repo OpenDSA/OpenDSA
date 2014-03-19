@@ -189,9 +189,6 @@ class ODSA_RST_Module:
             while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
               mod_data[i] = ''
               i += 1
-
-            # Back up one line so that when 'i' is incremented at the end of the loop it will point to the next directive
-            i -= 1
           else:
             # Process the TODO directive and save it as an entry in 'todo'
             todo_type = ''
@@ -212,6 +209,9 @@ class ODSA_RST_Module:
               i += 1
 
             todo_list.append((todo_id, mod_name, todo_type, todo_directive))
+
+          # Back up one line so that when 'i' is incremented at the end of the loop it will point to the next directive
+          i -= 1
         elif line.startswith('.. inlineav::'):
           # Parse the arguments from the directive
           args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
