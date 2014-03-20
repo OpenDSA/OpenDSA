@@ -270,7 +270,7 @@
   var rt = bt.root();
   rt.left(5);
   rt.right(20);
-  rt.right().left(9);
+  rt.right().left(12);
   rt.right().left().right(15);
   bt.layout();
 
@@ -294,7 +294,7 @@
   pseudo.highlight(2);
   jsav.step();
 
-  jsav.umsg("Unwinding the recursion a level, we are back to the node with root 10, who has its right pointer changed to point to the result of its call to deletemax. This has the effect of setting it to point to the node with value 9.");
+  jsav.umsg("Unwinding the recursion a level, we are back to the node with root 10, who has its right pointer changed to point to the result of its call to deletemax. This has the effect of setting it to point to the node with value 12.");
   pseudo.unhighlight(2);
   pseudo.highlight(3);
   rt1.target(rt, {anchor: "left top"});
