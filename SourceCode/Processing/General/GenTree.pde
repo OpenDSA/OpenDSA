@@ -1,37 +1,36 @@
 /* *** ODSATag: GenTreeADT *** */
-/** General tree node ADT */
-interface GTNode<E> {
-  E value();
+// General tree node ADT
+interface GTNode {
+  Object value();
   boolean isLeaf();
-  GTNode<E> parent();
-  GTNode<E> leftmostChild();
-  GTNode<E> rightSibling();
-  void setValue(E value);
-  void setParent(GTNode<E> par);
-  void insertFirst(GTNode<E> n);
-  void insertNext(GTNode<E> n);
+  GTNode parent();
+  GTNode leftmostChild();
+  GTNode rightSibling();
+  void setValue(Object value);
+  void setParent(GTNode par);
+  void insertFirst(GTNode n);
+  void insertNext(GTNode n);
   void removeFirst();
   void removeNext();
 }
 
-/** General tree ADT */
-interface GenTree<E> {
+// General tree ADT
+interface GenTree {
   void clear();      // Clear the tree
-  GTNode<E> root();  // Return the root
+  GTNode root();     // Return the root
   // Make the tree have a new root, give first child and sib
-  void newroot(E value, GTNode<E> first,
-                               GTNode<E> sib);
+  void newroot(Object value, GTNode first, GTNode sib);
   void newleftchild(E value); // Add left child
 }
 /* *** ODSAendTag: GenTreeADT *** */
 
 
 /* *** ODSATag: GenTreePrint *** */
-/** Preorder traversal for general trees */
-static <E> void preorder(GTNode<E> rt) {
+// Preorder traversal for general trees
+static void preorder(GTNode rt) {
   PrintNode(rt);
   if (!rt.isLeaf()) {
-    GTNode<E> temp = rt.leftmostChild();
+    GTNode temp = rt.leftmostChild();
     while (temp != null) {
       preorder(temp);
       temp = temp.rightSibling();
