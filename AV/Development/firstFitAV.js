@@ -159,7 +159,7 @@
 
   }
  
-  function updadateLabels()
+  function updateLabels()
   {
     block1Label = jsav.label(freeArray[0], {left :  22, top:  420});
     block2Label= jsav.label(freeArray[1], {left :  47, top:  420});
@@ -175,6 +175,35 @@
     connect2 = jsav.g.line(47.5, 400, (freeStartArray[2] + freeFinArray[2])/2, 280);
     connect3 = jsav.g.line(72.5, 400, (freeStartArray[3] + freeFinArray[3])/2, 280);
     connect4 = jsav.g.line(97.5, 400, (freeStartArray[4] + freeFinArray[4])/2, 280);
+  }
+
+  function enableAllButtons() {
+    $("#input").removeAttr("disabled");
+    $("#submit").removeAttr("disabled");
+    $("#next").removeAttr("disabled");
+  }
+
+  function insertIntoBlock(inputVal) {
+      var newUsedRect = jsav.g.rect(freeStartArray[rectNumber], 150, inputVal * 2.5, 60).css({"fill": "coral"});
+      freeStartArray[rectNumber] = freeStartArray[rectNumber] + inputVal * 2.5;
+      freeArray[rectNumber] = freeArray[rectNumber] - inputVal;
+      blockLabelArray[rectNumber].text(freeArray[rectNumber]);
+
+      freeListArray[rectNumber].css({"fill": "lightgrey"});
+      jsav.umsg(((freeStartArray[rectNumber] + freeFinArray[rectNumber])/2));
+      jsav.umsg(freeStartArray[rectNumber]);
+      jsav.umsg(freeFinArray[rectNumber]);
+
+      linesArray[rectNumber].movePoints([[0, connectStartArray[rectNumber], 400], [1, ((freeStartArray[rectNumber] + freeFinArray[rectNumber])/2), 210]]).css({"stroke-width": 1});
+
+      usedNum = usedNum + inputVal;
+      freeNum = usedNum - inputVal;
+      freeAmountLabel.text(freeNum);
+      usedAmountLabel.text(usedNum);
+
+      nextCount = 0;
+      rectNumber = 0;
+      $('#next').attr("disabled", "disabled");
   }
 
   function firstFit(inputVal) {
@@ -206,30 +235,73 @@
 
     } else if(nextCount == 2) {
 
-      var newUsedRect = jsav.g.rect(freeStartArray[rectNumber], 150, inputVal * 2.5, 60).css({"fill": "coral"});
-      freeStartArray[rectNumber] = freeStartArray[rectNumber] + inputVal * 2.5;
-      freeArray[rectNumber] = freeArray[rectNumber] - inputVal;
-      blockLabelArray[rectNumber].text(freeArray[rectNumber]);
-
-      freeListArray[rectNumber].css({"fill": "lightgrey"});
-      jsav.umsg(((freeStartArray[rectNumber] + freeFinArray[rectNumber])/2));
-      jsav.umsg(freeStartArray[rectNumber]);
-      jsav.umsg(freeFinArray[rectNumber]);
-
-      linesArray[rectNumber].movePoints([[0, connectStartArray[rectNumber], 400], [1, ((freeStartArray[rectNumber] + freeFinArray[rectNumber])/2), 210]]).css({"stroke-width": 1});
-
-      usedNum = usedNum + inputVal;
-      freeNum = usedNum - inputVal;
-      freeAmountLabel.text(freeNum);
-      usedAmountLabel.text(usedNum);
-
-      nextCount = 0;
-      rectNumber = 0;
-      $('#next').attr("disabled", "disabled");
+      insertIntoBlock(inputVal);
     }
   }
 
-  function worstFit(inputVal) {}
+  function circularFit(inputVal) {
+
+  }
+
+  function bestFit(inputVal) {
+    var minValue = Math.min.apply(Math, freeArray);
+
+    if(nextCount == 0) {
+      rectNumber = freeArray.indexOf(minValue);
+
+      linesArray[rectNumber].css({"stroke-width": 3});
+      freeListArray[rectNumber].css({"fill": "yellow"});
+
+      if (inputVal <= minValue) {
+        nextCount = 2;
+      } else {
+        nextCount = 1;
+      }
+    } else if(nextCount == 1) {
+
+      linesArray[rectNumber].css({"stroke-width": 1});
+      freeListArray[rectNumber].css({"fill": "lightgrey"});
+      //need to get second smallest!!!
+      minValue = Math.min.apply(Math, freeArray);
+      rectNumber = freeArray.indexOf(minValue);
+
+      linesArray[rectNumber].css({"stroke-width": 3});
+      freeListArray[rectNumber].css({"fill": "yellow"});
+        
+      if (inputVal <= freeArray[rectNumber]) {
+        nextCount = 2;
+      
+      } else {
+        nextCount = 1;
+      }
+
+    } else if(nextCount == 2) {
+        insertIntoBlock(inputVal);
+    }
+  }
+
+  function worstFit(inputVal) {
+    if(nextCount == 0) {
+      var maxValue = Math.max.apply(Math, freeArray);
+      rectNumber = freeArray.indexOf(maxValue);
+
+      linesArray[rectNumber].css({"stroke-width": 3});
+      freeListArray[rectNumber].css({"fill": "yellow"});
+
+      if (inputVal <= maxValue) {
+        nextCount = 2;
+      } else {
+        jsav.umsg("Value entered is too large for the Memory Pool.");
+        $('#next').attr("disabled", "disabled");
+      }
+    } else if(nextCount == 2) {
+        insertIntoBlock(inputVal);
+    }
+  }
+
+  function sequentialFit() {
+
+  }
  
  
   $(document).ready(function () {
@@ -306,22 +378,36 @@
           reset();
           break;
         case '1':
-        jsav.umsg("First Fit Selected")
-         $("#input").removeAttr("disabled");
-         $("#submit").removeAttr("disabled");
-         $("#next").removeAttr("disabled");
-         // ret = firstFit(inputVal);
+          jsav.umsg("First Fit Selected")
+          enableAllButtons(); 
+          break;
+        case '2':
+          jsav.umsg("Circular Fit Selected")
+         enableAllButtons();
+          break;
+        case '3':
+          jsav.umsg("Best Fit Selected")
+          enableAllButtons();
+          break;
+        case '4':
+          jsav.umsg("Worst Fit Selected")
+          enableAllButtons();
+          break;
+        case '5':
+          jsav.umsg("Sequential Fit Selected")
+          enableAllButtons();
           break;
       }
     });
 
     $('#reset').click(function () {
-      reset();
       submitRec.css({"opacity": "0"});
+      requestedBlockLabel.css({"opacity": "0"});
           var i = 0;
           while(i < 4)
           {
             blockLabelArray[i].clear();
+            linesArray[i].hide();
             i++;
           }
         reset();
