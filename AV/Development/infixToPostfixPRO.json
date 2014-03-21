@@ -27,11 +27,11 @@
       "bit_bucket": "Bittiavaruus",
       "ms_com_operand": "Operandit menevät suoraan postfix-lausekkeeseen.",
       "ms_com_leftpar": "Vasen sulkumerkki laitetaan pinoon.",
-      "ms_com_rightpar": "Oikean sulkumerkin jälkeen, operaattorit viedään pinosta postfix-lausekkeeseen, kunnes vastaan tulee vasen sulkumerkki.",
+      "ms_com_rightpar": "Oikean sulkumerkin jälkeen, operaattorit viedään pinosta postfix-lausekkeeseen kunnes vastaan tulee vasen sulkumerkki.",
       "ms_com_mul": "Pinon päällimmäisellä merkillä, \"*\", on sama presendenssi kuin luetulla arvolla, \"*\", joten se viedään postfix-lausekkeeseen.",
-      "ms_com_mulpush": "\"*\" operaattori viedään pinoon.",
+      "ms_com_mulpush": "\"*\"-operaattori viedään pinoon.",
       "ms_com_ge_prec": "Pinon päällimmäisellä merkillä, \"{operator}\", on suurempi tai yhtä suuri presendenssi kuin luetulla arvolla, \"+\", joten se viedään postfix-lausekkeeseen.",
-      "ms_com_pluspush": "\"+\"operaattori viedään pinoon.",
+      "ms_com_pluspush": "\"+\"-operaattori viedään pinoon.",
       "ms_com_rest": "Viedään jäljellä olevat merkit pinosta postfix-lausekkeeseen."
     }
   },
