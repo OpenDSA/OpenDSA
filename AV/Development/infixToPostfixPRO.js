@@ -7,6 +7,7 @@
     resultArray,
     stack,
     bitBucket,
+    pseudo,
     interpret,
     config = ODSA.UTILS.getConfig("infixToPostfixPRO.json"),
     av = new JSAV($("#jsavcontainer")),
@@ -21,6 +22,14 @@
       interpret = JSAV.utils.getInterpreter(config.language);
       // change the title and the instructions on the page
       ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
+    }
+
+    // show the code and highlight the row where mid is calculated
+    if (!pseudo && config.code) {
+      pseudo = av.code( config.code, {after: {element: $(".ODSAinstructions")}} );
+      pseudo.show();
+      pseudo.element.css({width: "auto"});
+      pseudo.css(true, {whiteSpace: "normal"});
     }
 
     // set up click handler
