@@ -17,10 +17,6 @@
         "long_name": "Bintree",
         "exercises": {}
       },
-      "IS/Dynamic": {
-        "long_name": "Dynamic",
-        "exercises": {}
-      },
       "IS/FirstFit": {
         "long_name": "First Fit",
         "exercises": {}
