@@ -1,6 +1,19 @@
 ﻿#! /usr/bin/python
 #
 # Given an OpenDSA config file as a parameter, this script ensures all required fields are present and no invalid options are present
+#   - Reads the configuration information from the specified JSON config file
+#   - Sets sensible defaults for optional configuration settings
+#     - Auto-detects the OpenDSA root directory location
+#   - Converts the OpenDSA root directory and specified code and output directories into Unix-style paths so that relative paths are calculated correctly
+#     - Handles absolute or relative paths for output and code directories (relative paths are rooted at the OpenDSA directory)
+#   - Performs validation
+#     - Ensures all required fields are present
+#     - Ensures all required or optional fields are configured properly
+#       - URLs fit the expected format
+#     - Ensures there are no additional fields other than the expected required or optional ones
+#       - Helps detect mis-spellings when config files are created by hand
+#     - Checks each chapter, module, and exercise to ensure the appropriate fields are present and configured properly
+
 import re
 import sys
 import os
@@ -12,7 +25,7 @@ error_count = 0
 
 required_fields = ['chapters', 'code_dir', 'module_origin', 'title']
 
-optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'build_ODSA', 'exercise_origin', 'exercises_root_dir', 'glob_jsav_exer_options', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'theme', 'theme_dir']
+optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'exercise_origin', 'exercises_root_dir', 'glob_jsav_exer_options', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'theme', 'theme_dir']
 
 
 def process_path(path, abs_prefix):
@@ -259,9 +272,6 @@ def set_defaults(conf_data):
 
   # 'build_JSAV' does not need to be initialized
 
-  if 'build_ODSA' not in conf_data:
-   conf_data['build_ODSA'] = True
-
   # Assume exercises are hosted on same domain as modules
   if 'exercise_origin' not in conf_data:
     conf_data['exercise_origin'] = conf_data['module_origin']
@@ -349,14 +359,14 @@ class ODSA_Config:
     conf_data['allow_anonymous_credit'] = str(conf_data['allow_anonymous_credit']).lower()
     conf_data['req_full_ss'] = str(conf_data['req_full_ss']).lower()
 
-    # Make conf_data publically available
+    # Make conf_data publicly available
     for field in required_fields:
       self[field] = conf_data[field]
 
     for field in optional_fields:
       self[field] = conf_data[field] if field in conf_data else None
 
-    #
+    # Saves the path to the config file used to create the book
     self.config_file_path = config_file_path
 
     # Parse the name of the config file to use as the book name
@@ -366,7 +376,7 @@ class ODSA_Config:
     self.code_lang = os.path.basename(self.code_dir[:-1]).lower()
 
     # Treat Processing as Java (special case)
-    if self.code_lang =='processing':
+    if self.code_lang == 'processing':
       self.code_lang = 'java'
 
     self.odsa_dir = get_odsa_dir()

@@ -48,7 +48,6 @@ Future Features
 
   * Implement support for hosting AVs and exercises on a different domain than modules
 
-* Build in config validator that ensures necessary fields appear in the source config file
 * Ability to optionally include subsections in an RST file - similar to how we include / exclude exercises
 
 
@@ -81,7 +80,7 @@ Settings (all are required unless otherwise specified)
 
 * **build_dir** - (optional) the directory where the configured book directory will be created, defaults to 'Books' if omitted
 
-  * A new directory, named after the book, will be created at this location and serve as the output directory for the configuration process.  Files required to compile the book will be copied / written to the output directory, including modified version of the source RST files
+  * A new directory, named after the configuration file, will be created at this location and serve as the output directory for the configuration process.  Files required to compile the book will be copied / written to the output directory, including modified version of the source RST files
 
     * Example: Assume "build_dir": "Books" and the name of the configuration file used is "CS3114.json", the output directory would be "Books/CS3114/"
 
@@ -109,7 +108,7 @@ Settings (all are required unless otherwise specified)
   * Used on module pages to allow HTML5 post messages from this origin, allows embedded AVs to communicate with the parent module page
   * Ex: "av_origin": "http://algoviz.org",
 
-* **glob_jsav_exer_options** - (optional) a JSON object containing the global grading options that will be applied to all JSAV exercises in the book, unless overridden by exercise-specific options.
+* **glob_jsav_exer_options** - (optional) an object containing options (applied to every JSAV exercise in the book) that control how JSAV handles exercises, can be overridden by exercise-specific options
 
 * **exercises_root_dir** - (optional) allows the user to change the default location where the Exercises/ directory can be found, defaults to OpenDSA root directory if omitted
 
@@ -134,11 +133,6 @@ Settings (all are required unless otherwise specified)
 
   * This value should be set to false for development
   * Instructors may wish to set this to true for production environments when configuration is run infrequently and JSAV is likely to have changed since the last time configuration occurred
-
-* **build_ODSA** - (optional) a boolean controlling whether OpenDSA should be built after the configuration process has occurred, defaults to ``true`` if omitted
-
-  * This can generally be set to true because in most cases it makes sense to build the book immediately after it is configured
-  * If necessary, this value can be set to false and OpenDSA can be built manually by running make from the output directory
 
 * **allow_anonymous_credit** - (optional) a boolean controlling whether credit for exercises completed anonymously (without logging in) will be transferred to the next user to log in, defaults to ``true`` if omitted
 
@@ -172,7 +166,7 @@ Settings (all are required unless otherwise specified)
       * Omitting an exercise from the module's "exercises" object will cause the exercise to be removed from the configured module
       * Each exercise object contains required information about that exercise including:
 
-        * **jsav_exer_options** - (optional) a JSON object containing exercise-specific grading options for JSAV.  Can be used to override the options set using ``glob_jsav_exer_options``. The string 'JXOP-' is prepended to every option name so that the client can determine which values should be applied to the ``JSAV_EXERCISE_OPTIONS`` global variable in ``odsaAV.js``
+        * **jsav_exer_options** - (optional) an object containing exercise-specific configurations options for JSAV.  Can be used to override the options set using ``glob_jsav_exer_options``. The string 'JXOP-' is prepended to every option name so that the client can determine which values should be applied to the ``JSAV_EXERCISE_OPTIONS`` global variable in ``odsaAV.js``
 
         * **long_name** - (optional) a long form, human-readable name used to identify the exercise in the GUI, defaults to short exercise name if omitted
         * **points** - (optional) the number of points the exercise is worth, defaults to ``0`` if omitted
