@@ -1,3 +1,29 @@
+#! /usr/bin/python
+#
+# Defines an object which represents an OpenDSA modules
+#   - Checks to see if the RST module file exists
+#   - Reads in the RST source file
+#   - Appends a common header to all RST modules (based on the template found in config_templates.py) which includes a Sphinx self reference directive (so Sphinx can cross-link the module) and module-specific configuration settings
+#     - Ensures we can reference any module, without relying on the module author to correctly add the reference link
+#     - Optionally, appends a raw JavaScript flag to each module indicating whether or not the module can be completed
+#       - This allows the configuration file to override the default behavior of the client-side framework which is to allow module completion only if the module contains required exercises
+#   - Loops through each line of the RST file
+#     - Keeps a count of labeled and unlabeled tables, examples, theorems, and figures (for numbering during postprocessing)
+#     - Parses the list of prerequisite topics and checks to make sure each is satisfied by a previous module or assumed that the student knows
+#     - Parses the list of topics the current module satisfies
+#     - Records the path to any images loaded by the figure or odsafig directives (so only the images included in the book have to be copied to the final book)
+#     - Identifies TODO directives and either removes them (if TODOs are suppressed) or records them for display on the ToDo.rst page
+#     - Identifies inline and embedded AVs, either:
+#       - Removes the entire directive if the 'remove' attribute is present and "true"
+#       OR
+#       - Appends additional information (specifically adds 'long_name', 'points', 'required' and 'threshold') from the configuration file to the directive
+#       - If the specified exercise does not appear in the configuration file, the Sphinx directive will be included, but no additional information will be included so the defaults (specified in the Sphinx directive file) will be used.  The name of the exercise is added to a list of missing exercises which will be displayed to the user
+#     - Verifies the existence of the avmetadata directive
+#     - Keeps a count of labeled equations (for numbering during postprocessing)
+#     - Increments the figure counter when RST directives with a 'target' parameter are encountered (for numbering during postprocessing)
+#   - Writes the modified contents of the RST file out to the book's source directory
+#   - Makes the various counters and lists publicly accessible so they can be read by 'configure.py'
+
 import os
 import datetime
 import re

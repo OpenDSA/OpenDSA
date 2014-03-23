@@ -180,7 +180,7 @@ to that node's right sibling, and so on.
 Using the General Tree ADT show above, here is an
 implementation to print the nodes of a general tree in
 preorder.
-Note the `for` loop at the end, which processes the list of
+Note the `while` loop at the end, which processes the list of
 children by beginning with the leftmost child, then repeatedly moving
 to the next child until calling	``next`` returns ``null``.
 

@@ -18,7 +18,7 @@ function runit() {
   lastElement = 0;
   initGraph();
   g.layout();
-  jsav.umsg("Let's see what a very long line will look like so that we can tell if this looks good. I guess that was not really good enough, this is a very big AV.");
+  jsav.umsg("Let's look at the details of how a breadth-first seach works.");
   jsav.displayInit();   
   markIt(g.nodes()[0]);
   jsav.step();
