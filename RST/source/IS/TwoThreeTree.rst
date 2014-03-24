@@ -13,8 +13,6 @@
 2-3 Trees
 =========
 
-.. inlineav:: arrayTree dgm
-
 This section presents a data structure
 called the 2-3 tree.
 The 2-3 tree is not a binary tree, but instead its shape
@@ -271,5 +269,4 @@ San Francisco as part of his
 `Data Structure Visualizations
 <http://www.cs.usfca.edu/~galles/visualization/Algorithms.html>`_ package.
 
-.. odsascript:: AV/Development/ArrayTree.js
 .. odsascript:: AV/Development/twoThreeTreeCON.js
