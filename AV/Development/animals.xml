@@ -13,7 +13,7 @@
     <map width="777" height="438">
         <tag> Tommy </tag>
         <concept-list>
-            <concept id="1MMWZJYSH-9R75SY-10X" label="Bird"><concept/>
+            <concept id="1MMWZJYSH-9R75SY-10X" label="Bird"/>
             <concept id="1MMT6P4QB-2818BY3-SH" label="robin"/>
             <concept id="1MMT6PZ56-12918BJ-V9" label="cardinal"/>
             <concept id="1MMT6PWKD-2CTNYKM-TT" label="canary"/>

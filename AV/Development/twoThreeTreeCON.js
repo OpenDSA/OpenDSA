@@ -1,35 +1,102 @@
+(function ($) {
+  "use strict";
+  function positionRow(array_nodes, top, container_width, row_width, left_offset) {
+    var total_width, node_width, offset, left;
+    node_width = extractNumber(array_nodes[0].css("width"));
+    total_width = node_width * array_nodes.length;
+    offset = (row_width - total_width) / (array_nodes.length - 1);
+
+    if (typeof(left_offset) == "undefined") {
+      left_offset = 0;
+    }
+    left = (container_width - row_width)/2 + left_offset;
+
+    for (var i = 0; i < array_nodes.length; i++) {
+      array_nodes[i].css({"left": left + "px", "top": top + "px", "position": "absolute"})
+      left +=  node_width + offset;
+    }
+  }
+
+  function drawEdge(jsav, properties, arrayFrom, arrayTo, edgeIndex, length) {
+    var top, left, height, width, step, x1, y1, x2, y2;
+
+    // Get coordinates for the x1 and y1 of the edge.
+    height = extractNumber(arrayFrom.css("height"));
+    width = extractNumber(arrayFrom.css("width"));
+    top = extractNumber(arrayFrom.css("top"));
+    left = extractNumber(arrayFrom.css("left"));
+    step = width / length;
+
+    x1 = left + (step * edgeIndex);
+    y1 = top + height;
+    if (edgeIndex == 0) {
+      x1 += 2;
+      y1 -= 2;
+    } else if (edgeIndex == length) {
+      x1 -= 2;
+      y1 -= 2;
+    }
+
+    // Get coordinates for the x2 and y2 of the edge.
+    height = extractNumber(arrayTo.css("height"));
+    width = extractNumber(arrayTo.css("width"));
+    top = extractNumber(arrayTo.css("top"));
+    left = extractNumber(arrayTo.css("left"));
+
+    x2 = left  + (width / 2);
+    y2 = top + 1;
+
+    // Create line and return object.
+    return jsav.g.line(x1, y1, x2, y2, properties);
+  }
+
+  function extractNumber(pixels) {
+    return parseFloat(pixels.substring(0, pixels.length - 2));
+  }
+
+  var ODSA = {};
+  ODSA.drawEdge = drawEdge;
+  ODSA.positionRow = positionRow;
+  Window.ODSA = ODSA;
+}(jQuery));
+
 // Create diagram for twoThreeTreeCON.
 (function ($) {
   "use strict";
 
   var jsav = new JSAV("twoThreeTreeCON");
 
+  var arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, arr10, arr11;
   // Create all the arrays that represent the nodes in the 2-3 tree.
-  jsav.ds.array([18, 13], {left: "240px", top: "0px"});
-  jsav.ds.array([12, ""], {left: "40px", top: "80px"});
-  jsav.ds.array([23, 30], {left: "240px", top: "80px"});
-  jsav.ds.array([48, ""], {left: "435px", top: "80px"});
-  jsav.ds.array([10, ""], {left: "0px", top: "160px"});
-  jsav.ds.array([15, ""], {left: "80px", top: "160px"});
-  jsav.ds.array([20, 21], {left: "160px", top: "160px"});
-  jsav.ds.array([24, ""], {left: "240px", top: "160px"});
-  jsav.ds.array([31, ""], {left: "320px", top: "160px"});
-  jsav.ds.array([45, 47], {left: "400px", top: "160px"});
-  jsav.ds.array([50, 52], {left: "480px", top: "160px"});
+  var width = 560;
+  arr1 = jsav.ds.array([18, 13]);
+  Window.ODSA.positionRow([arr1], 0, width, 70);
+  arr2 = jsav.ds.array([12, ""]);
+  arr3 = jsav.ds.array([23, 30]);
+  arr4 = jsav.ds.array([48, ""]);
+  Window.ODSA.positionRow([arr2, arr3, arr4], 80, width, 450);
+  arr5 = jsav.ds.array([10, ""]);
+  arr6 = jsav.ds.array([15, ""]);
+  arr7 = jsav.ds.array([20, 21]);
+  arr8 = jsav.ds.array([24, ""]);
+  arr9 = jsav.ds.array([31, ""]);
+  arr10 = jsav.ds.array([45, 47]);
+  arr11 = jsav.ds.array([50, 52]);
+  Window.ODSA.positionRow([arr5, arr6, arr7, arr8, arr9, arr10, arr11], 160, width, 560);
 
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
-  jsav.g.line(243, 28, 73, 80, properties);
-  jsav.g.line(274, 31, 274, 80, properties);
-  jsav.g.line(306, 28, 469, 80, properties);
-  jsav.g.line(44, 110, 24, 160, properties);
-  jsav.g.line(74, 111, 114, 160, properties);
-  jsav.g.line(244, 110, 194, 160, properties);
-  jsav.g.line(274, 111, 274, 160, properties);
-  jsav.g.line(304, 110, 354, 160, properties);
-  jsav.g.line(437, 110, 434, 160, properties);
-  jsav.g.line(468, 111, 514, 160, properties);
-
+  var length = 2
+  Window.ODSA.drawEdge(jsav, properties, arr1, arr2, 0, length);
+  Window.ODSA.drawEdge(jsav, properties, arr1, arr3, 1, length);
+  Window.ODSA.drawEdge(jsav, properties, arr1, arr4, 2, length);
+  Window.ODSA.drawEdge(jsav, properties, arr2, arr5, 0, length);
+  Window.ODSA.drawEdge(jsav, properties, arr2, arr6, 1, length);
+  Window.ODSA.drawEdge(jsav, properties, arr3, arr7, 0, length);
+  Window.ODSA.drawEdge(jsav, properties, arr3, arr8, 1, length);
+  Window.ODSA.drawEdge(jsav, properties, arr3, arr9, 2, length);
+  Window.ODSA.drawEdge(jsav, properties, arr4, arr10, 0, length);
+  Window.ODSA.drawEdge(jsav, properties, arr4, arr11, 1, length);
 }(jQuery));
 
 // Create slide show for simpleInsertCON
@@ -39,31 +106,38 @@
 
   /* 1st Slide *************************************************************/
   jsav.umsg("Simple insert into the 2-3 tree.");
+  var arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, arr10, arr11, arr12;
   // Create all the arrays that represent the nodes in the 2-3 tree.
-  var arr1 = jsav.ds.array([18, 13], {left: "240px", top: "0px"});
-  var arr2 = jsav.ds.array([12, ""], {left: "40px", top: "80px"});
-  var arr3 = jsav.ds.array([23, 30], {left: "240px", top: "80px"});
-  var arr4 = jsav.ds.array([48, ""], {left: "435px", top: "80px"});
-  var arr5 = jsav.ds.array([10, ""], {left: "0px", top: "160px"});
-  var arr6 = jsav.ds.array([15, ""], {left: "80px", top: "160px"});
-  var arr7 = jsav.ds.array([20, 21], {left: "160px", top: "160px"});
-  var arr8 = jsav.ds.array([24, ""], {left: "240px", top: "160px"});
-  var arr9 = jsav.ds.array([31, ""], {left: "320px", top: "160px"});
-  var arr10 = jsav.ds.array([45, 47], {left: "400px", top: "160px"});
-  var arr11 = jsav.ds.array([50, 52], {left: "480px", top: "160px"});
-  var arr12 = jsav.ds.array([14], {left: "180px", top: "0px", visible: false});
+  var width = 700;
+  arr1 = jsav.ds.array([18, 13]);
+  Window.ODSA.positionRow([arr1], 0, width, 70);
+  arr2 = jsav.ds.array([12, ""]);
+  arr3 = jsav.ds.array([23, 30]);
+  arr4 = jsav.ds.array([48, ""]);
+  Window.ODSA.positionRow([arr2, arr3, arr4], 80, width, 450);
+  arr5 = jsav.ds.array([10, ""]);
+  arr6 = jsav.ds.array([15, ""]);
+  arr7 = jsav.ds.array([20, 21]);
+  arr8 = jsav.ds.array([24, ""]);
+  arr9 = jsav.ds.array([31, ""]);
+  arr10 = jsav.ds.array([45, 47]);
+  arr11 = jsav.ds.array([50, 52]);
+  Window.ODSA.positionRow([arr5, arr6, arr7, arr8, arr9, arr10, arr11], 160, width, 560);
+  arr12 = jsav.ds.array([14], {left: "250px", top: "0px", visible: false});
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
-  var line1 = jsav.g.line(243, 28, 73, 81, properties);
-  jsav.g.line(274, 31, 274, 80, properties);
-  jsav.g.line(306, 28, 469, 81, properties);
-  jsav.g.line(44, 110, 24, 160, properties);
-  var line5 = jsav.g.line(74, 111, 114, 160, properties);
-  jsav.g.line(244, 110, 194, 160, properties);
-  jsav.g.line(274, 111, 274, 160, properties);
-  jsav.g.line(304, 110, 354, 160, properties);
-  jsav.g.line(437, 110, 434, 160, properties);
-  jsav.g.line(468, 111, 514, 160, properties);
+  var length = 2
+  var line1, line5;
+  line1 = Window.ODSA.drawEdge(jsav, properties, arr1, arr2, 0, length);
+  Window.ODSA.drawEdge(jsav, properties, arr1, arr3, 1, length);
+  Window.ODSA.drawEdge(jsav, properties, arr1, arr4, 2, length);
+  Window.ODSA.drawEdge(jsav, properties, arr2, arr5, 0, length);
+  line5 = Window.ODSA.drawEdge(jsav, properties, arr2, arr6, 1, length);
+  Window.ODSA.drawEdge(jsav, properties, arr3, arr7, 0, length);
+  Window.ODSA.drawEdge(jsav, properties, arr3, arr8, 1, length);
+  Window.ODSA.drawEdge(jsav, properties, arr3, arr9, 2, length);
+  Window.ODSA.drawEdge(jsav, properties, arr4, arr10, 0, length);
+  Window.ODSA.drawEdge(jsav, properties, arr4, arr11, 1, length);
   // set initial display for first slide.
   jsav.displayInit();
 
@@ -78,7 +152,7 @@
   jsav.umsg("This node has only one element, and 14 is greater than 12 so the center child is followed next.");
   line1.css({"stroke": "black"});
   arr1.unhighlight(0);
-  arr12.css({left: "40px", top: "40px"});
+  arr12.css({left: "110px", top: "40px"});
   arr2.highlight(0);
   line5.css({"stroke": "red"});
   jsav.step();
@@ -87,7 +161,7 @@
   jsav.umsg("A leaf node has being reached. Since the leaf node has an empty space the new node can be inserted here.");
   line5.css({"stroke": "black"});
   arr2.unhighlight(0);
-  arr12.css({left: "80px", top: "200px"});
+  arr12.css({left: "150px", top: "200px"});
   arr6.highlight(0);
   jsav.step();
 
@@ -113,32 +187,39 @@
 
   /* 1st Slide *************************************************************/
   jsav.umsg("A simple node-splitting insert for a 2-3 tree.");
+  var arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, arr10, arr11, arr12, arr13;
   // Create all the arrays that represent the nodes in the 2-3 tree.
-  var arr1 = jsav.ds.array([18, 13], {left: "240px", top: "0px"});
-  var arr2 = jsav.ds.array([12, ""], {left: "40px", top: "80px"});
-  var arr3 = jsav.ds.array([23, 30], {left: "240px", top: "80px"});
-  var arr4 = jsav.ds.array([48, ""], {left: "480px", top: "80px"});
-  var arr5 = jsav.ds.array([10, ""], {left: "0px", top: "160px"});
-  var arr6 = jsav.ds.array([15, ""], {left: "80px", top: "160px"});
-  var arr7 = jsav.ds.array([20, 21], {left: "160px", top: "160px"});
-  var arr8 = jsav.ds.array([24, ""], {left: "240px", top: "160px"});
-  var arr9 = jsav.ds.array([31, ""], {left: "320px", top: "160px"});
-  var arr10 = jsav.ds.array([45, 47], {left: "400px", top: "160px"});
-  var arr11 = jsav.ds.array([50, 52], {left: "480px", top: "160px"});
-  var arr12 = jsav.ds.array([55], {left: "340px", top: "0px", visible: false});
-  var arr13 = jsav.ds.array(["", ""], {left: "560px", top: "160px", visible: false});
+  var width = 780;
+  arr1 = jsav.ds.array([18, 13]);
+  Window.ODSA.positionRow([arr1], 0, width, 70);
+  arr2 = jsav.ds.array([12, ""]);
+  arr3 = jsav.ds.array([23, 30]);
+  arr4 = jsav.ds.array([48, ""]);
+  Window.ODSA.positionRow([arr2, arr3, arr4], 80, width, 450);
+  arr5 = jsav.ds.array([10, ""]);
+  arr6 = jsav.ds.array([15, ""]);
+  arr7 = jsav.ds.array([20, 21]);
+  arr8 = jsav.ds.array([24, ""]);
+  arr9 = jsav.ds.array([31, ""]);
+  arr10 = jsav.ds.array([45, 47]);
+  arr11 = jsav.ds.array([50, 52]);
+  Window.ODSA.positionRow([arr5, arr6, arr7, arr8, arr9, arr10, arr11], 160, width, 560);
+  arr12 = jsav.ds.array([55], {left: "340px", top: "0px", visible: false});
+  arr13 = jsav.ds.array(["", ""], {left: "560px", top: "160px", visible: false});
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
-  jsav.g.line(243, 28, 73, 80, properties);
-  jsav.g.line(274, 31, 274, 80, properties);
-  var line3 = jsav.g.line(306, 28, 514, 80, properties);
-  jsav.g.line(44, 110, 24, 160, properties);
-  jsav.g.line(74, 111, 114, 160, properties);
-  jsav.g.line(244, 110, 194, 160, properties);
-  jsav.g.line(274, 111, 274, 160, properties);
-  jsav.g.line(304, 110, 354, 160, properties);
-  jsav.g.line(482, 109, 434, 160, properties);
-  var line10 = jsav.g.line(514, 111, 514, 160, properties);
+  var length = 2
+  var line3, line10;
+  Window.ODSA.drawEdge(jsav, properties, arr1, arr2, 0, length);
+  Window.ODSA.drawEdge(jsav, properties, arr1, arr3, 1, length);
+  line3 = Window.ODSA.drawEdge(jsav, properties, arr1, arr4, 2, length);
+  Window.ODSA.drawEdge(jsav, properties, arr2, arr5, 0, length);
+  Window.ODSA.drawEdge(jsav, properties, arr2, arr6, 1, length);
+  Window.ODSA.drawEdge(jsav, properties, arr3, arr7, 0, length);
+  Window.ODSA.drawEdge(jsav, properties, arr3, arr8, 1, length);
+  Window.ODSA.drawEdge(jsav, properties, arr3, arr9, 2, length);
+  Window.ODSA.drawEdge(jsav, properties, arr4, arr10, 0, length);
+  line10 = Window.ODSA.drawEdge(jsav, properties, arr4, arr11, 1, length);
   // set initial display for first slide.
   jsav.displayInit();
 
@@ -194,7 +275,7 @@
   jsav.umsg("The new value has being inserted into the tree.");
   arr12.hide();
   arr4.value(1, 52);
-  jsav.g.line(548, 109, 595, 161, properties);
+  Window.ODSA.drawEdge(jsav, properties, arr4, arr13, 2, length);
   jsav.step();
   // Mark the slide show as finished.
   jsav.recorded();
@@ -209,33 +290,38 @@
   /* 1st Slide *************************************************************/
   jsav.umsg("Example of inserting a record that causes the 2-3 tree root to split.");
   // Create all the arrays that represent the nodes in the 2-3 tree.
-  var arr1 = jsav.ds.array([18, 13], {left: "290px", top: "80px"});
-  var arr2 = jsav.ds.array([12, ""], {left: "50px", top: "160px"});
-  var arr3 = jsav.ds.array([23, 30], {left: "290px", top: "160px"});
-  var arr4 = jsav.ds.array([48, ""], {left: "530px", top: "160px"});
-  var arr5 = jsav.ds.array([10, ""], {left: "-40px", top: "240px"});
-  var arr6 = jsav.ds.array([15, ""], {left: "50px", top: "240px"});
-  var arr7 = jsav.ds.array([20, 21], {left: "210px", top: "240px"});
-  var arr8 = jsav.ds.array([24, ""], {left: "290px", top: "240px"});
-  var arr9 = jsav.ds.array([31, ""], {left: "370px", top: "240px"});
-  var arr10 = jsav.ds.array([45, 47], {left: "530px", top: "240px"});
-  var arr11 = jsav.ds.array([50, 52], {left: "610px", top: "240px"});
+  var arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, arr10, arr11, arr12, arr13, arr14;
+  arr1 = jsav.ds.array([18, 13], {left: "290px", top: "80px"});
+  arr2 = jsav.ds.array([12, ""], {left: "50px", top: "160px"});
+  arr3 = jsav.ds.array([23, 30], {left: "290px", top: "160px"});
+  arr4 = jsav.ds.array([48, ""], {left: "530px", top: "160px"});
+  arr5 = jsav.ds.array([10, ""], {left: "-40px", top: "240px"});
+  arr6 = jsav.ds.array([15, ""], {left: "50px", top: "240px"});
+  arr7 = jsav.ds.array([20, 21], {left: "210px", top: "240px"});
+  arr8 = jsav.ds.array([24, ""], {left: "290px", top: "240px"});
+  arr9 = jsav.ds.array([31, ""], {left: "370px", top: "240px"});
+  arr10 = jsav.ds.array([45, 47], {left: "450px", top: "240px"});
+  arr11 = jsav.ds.array([50, 52], {left: "530px", top: "240px"});
 
-  var arr12 = jsav.ds.array([19], {left: "240px", top: "50px", visible: false});
-  var arr13 = jsav.ds.array(["", ""], {left: "210px", top: "240px", visible: false});
-  var arr14 = jsav.ds.array(["", ""], {left: "330px", top: "160px", visible: false});
+  arr12 = jsav.ds.array([19], {left: "240px", top: "50px", visible: false});
+  arr13 = jsav.ds.array(["", ""], {left: "210px", top: "240px", visible: false});
+  arr14 = jsav.ds.array(["", ""], {left: "330px", top: "160px", visible: false});
+
+
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
-  var line1 = jsav.g.line(293, 108, 83, 160, properties);
-  var line2 = jsav.g.line(324, 111, 324, 160, properties);
-  var line3 = jsav.g.line(356, 108, 564, 160, properties);
-  var line4 = jsav.g.line(63, 190, 0, 240, properties);
-  var line5 = jsav.g.line(83, 191, 83, 240, properties);
-  var line6 = jsav.g.line(294, 190, 244, 240, properties);
-  var line7 = jsav.g.line(324, 191, 324, 240, properties);
-  var line8 = jsav.g.line(354, 190, 404, 240, properties);
-  var line9 = jsav.g.line(564, 191, 564, 240, properties);
-  var line10 = jsav.g.line(598, 189, 645, 241, properties);
+  var length = 2
+  var line2, line3, line6, line7, line8, line10;
+  Window.ODSA.drawEdge(jsav, properties, arr1, arr2, 0, length);
+  line2 = Window.ODSA.drawEdge(jsav, properties, arr1, arr3, 1, length);
+  line3 = Window.ODSA.drawEdge(jsav, properties, arr1, arr4, 2, length);
+  Window.ODSA.drawEdge(jsav, properties, arr2, arr5, 0, length);
+  Window.ODSA.drawEdge(jsav, properties, arr2, arr6, 1, length);
+  line6 = Window.ODSA.drawEdge(jsav, properties, arr3, arr7, 0, length);
+  line7 = Window.ODSA.drawEdge(jsav, properties, arr3, arr8, 1, length);
+  line8 = Window.ODSA.drawEdge(jsav, properties, arr3, arr9, 2, length);
+  Window.ODSA.drawEdge(jsav, properties, arr4, arr10, 0, length);
+  line10 = Window.ODSA.drawEdge(jsav, properties, arr4, arr11, 1, length);
   // set initial display for first slide.
   jsav.displayInit();
 
@@ -267,74 +353,7 @@
   arr7.highlight(1);
   jsav.step();
 
-  /* 5th Slide *************************************************************/
-  jsav.umsg("Now that the leaf node has being split, the largest key will go on the newly created node. The smallest key will go on the old node, and the middle value will be promoted.");
-  var tempLine = jsav.g.line(294, 190, 164, 240, properties);
-  line6.css({"stroke": "black"});
-  line6.hide();
-  arr7.css({left: "130px"});
-  arr7.unhighlight(1);
-  arr7.unhighlight(0);
-  arr13.show();
-  arr6.unhighlight(0);
-  jsav.step();
-
-  /* 6th Slide *************************************************************/
-  jsav.umsg("The middle value, 19, is now promoted to the parent node.");
-  arr7.value(1, "");
-  arr7.value(0, 19);
-  arr12.value(0, 20);
-  arr13.value(0, 21);
-  arr12.highlight(0);
-  arr11.unhighlight(0);
-  arr11.unhighlight(1);
-  jsav.step();
-
-  /* 7th Slide *************************************************************/
-  jsav.umsg("The parent node is also full, so it has to be split.");
-  arr12.css({left: "260px", top: "120px"});
-  arr12.unhighlight(0);
-  jsav.step();
-
-  /* 8th Slide *************************************************************/
-  jsav.umsg("Again, the largest value goes into the newly created node. The smalles in the old node, and the middle value is promoted.");
-  tempLine.hide();
-  jsav.g.line(214, 190, 184, 240, properties);
-  var tempLine2 = jsav.g.line(244, 191, 324, 240, properties);
-  var tempLine3 = jsav.g.line(264, 190, 404, 239, properties);
-  jsav.g.line(324, 111, 244, 160, properties);
-  arr14.show();
-  arr12.css({left: "300px"});
-  arr3.css({left: "210px"});
-  line2.hide();
-  line6.hide();
-  line7.hide();
-  line8.hide();
-  jsav.step();
-
-  /* 8th Slide *************************************************************/
-  jsav.umsg("The links to the child nodes are updated.");
-  tempLine2.hide();
-  tempLine3.hide();
-  jsav.g.line(244, 190, 244, 240, properties);
-  jsav.g.line(334, 191, 324, 240, properties);
-  jsav.g.line(364, 190, 404, 239, properties);
-  arr3.value(0, 20);
-  arr3.value(1, "");
-  arr14.value(0, 30);
-  arr12.value(0, 23);
   // Mark the slide show as finished.
   jsav.recorded();
-
-}(jQuery));
-
-// Tree array testing function
-(function ($) {
-  var jsav = new JSAV("arrayTree");
-
-  var tree = new jsav.ds.arraytree();
-
-  tree.root([10, 1, 5]);
-  tree.layout();
 
 }(jQuery));
