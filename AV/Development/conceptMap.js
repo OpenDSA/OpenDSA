@@ -1,38 +1,61 @@
 (function ($) {
 
 var nodes = new Array();
+var connections = new Array();
+var linking_phrase = new Array();
 
 
 
 var Parser = function() {
+  console.log("parser");
 xmlhttp=new XMLHttpRequest();
 if (xmlhttp) {
   xmlhttp.open("GET","animals.xml",false);
-  xmlhttp.setRequestHeader('Content-Type', 'text/xml');
+//  xmlhttp.setRequestHeader('Content-Type', 'text/xml');
   xmlhttp.send();
+  xmlDoc=xmlhttp.responseXML;
+  console.log("xml Doc " + xmlDoc);
 }
-console.log("ready state " + xmlhttp.readyState);
- if (xmlhttp.readyState == 4) {
-xmlDoc=xmlhttp.responseXML;
+
+//  var parser = new DOMParser();
+//var xmlDoc = parser.parseFromString(xmlhttp.responseText, "text/xml");
+
  //xmlDoc=loadXMLDoc("animals.xml");
 //parser = new DOMParser(); // new Parser
 //xmlDoc = parser.parseFromString(xmlDoc,"text/xml"); // Parse string
-console.log(xmlDoc);
-x=xmlDoc.getElementsByTagName('concept');
-console.log("x " + x.length);
-}
+
+concept=xmlDoc.getElementsByTagName('concept');
+
+console.log("x " + concept.length);
+
 
 var id = 0;
 var label = null;
-for (i=0;i<x.length;i++)
+for (i=0;i<concept.length;i++)
 {
-  id = x[i].getAttribute('id');
-  label = x[i].getAttribute('label');
-  console.log(x[i].getAttribute('id'));
-  console.log(x[i].getAttribute('label'));
+  id = concept[i].getAttribute('id');
+  label = concept[i].getAttribute('label');
+  console.log(concept[i].getAttribute('id'));
+  console.log(concept[i].getAttribute('label'));
   //list.add(id, label);
   nodes.push(new Node(id, label));
 } 
+connection=xmlDoc.getElementsByTagName('connection');
+for (i=0; i < connection.length; i++) {
+  id = connection[i].getAttribute('id');
+  from_id = connection[i].getAttribute('from-id');
+  to_id = connection[i].getAttribute('to-id');
+ 
+  connections.push(new Connection(id, from_id, to_id));
+}
+
+phrase = xmlDoc.getElementsByTagName('linking-phrase');
+for (i = 0; i < phrase.length; i++) {
+  id = phrase[i].getAttribute('id');
+  label = phrase[i].getAttribute('label');
+
+  linking_phrase.push(new Phrase(id, label));
+}
 };
 
 
@@ -87,6 +110,16 @@ var Node = function(id, label) {
       this.label = label;
       this.next = null;
     };
+var Connection = function(id, from_id, to_id){
+  this.id = id;
+  this.from_id = from_id; 
+  this.to_id = to_id;
+}
+
+var Phrase = function(id, label) {
+  this.id = id;
+  this.label = label;
+}
 
 var addNode = function(node) {
 
