@@ -1,47 +1,33 @@
 #! /usr/bin/python
 #
 # This script builds an OpenDSA textbook according to a specified configuration file
-#   - Runs config_validator.py on the specified config file to detect and inform the user of any errors
-#   - Reads the configuration information from the specified JSON config file
-#   - Auto-detects the OpenDSA root directory location
-#   - Sets sensible defaults for optional configuration settings
-#   - Converts the OpenDSA root directory and specified code and output directories into Unix-style paths so that relative paths are calculated correctly
-#     - Handles absolute or relative paths for output and code directories (relative paths are rooted at the OpenDSA directory)
+#   - Creates an ODSA_Config object from the specified configuration file
+#     - Validates the configuration file and sets appropriate defaults for omitted fields (see ODSA_Config.py for more information)
+#     - Makes it easy to reference configuration options
 #   - Optionally builds JSAV to make sure the library is up-to-date, if specified in the configuration file
-#   - Creates a source directory in the output directory and generates a Makefile and conf.py file
+#   - Initializes the output directory
+#     - Creates the output directory and a source directory inside it
+#     - Copies _static directory to the source directory
+#     - Creates a copy of the config file in the _static directory for use by the gradebook page
+#   - Generates an index.html file in the output directory of the new book which redirects (via JavaScript) to the book_output_dir (html/)
+#   - Traverses the 'chapters' section of the configuration file
+#     - For each chapter and module, maps the name to its chapter or module number (used for numbering during postprocessing)
+#     - Keeps track of modules encountered and prints an error message if a duplicate module name is detected
+#     - Creates an ODSA_RST_Module object for each module (see ODSA_RST_Module for more information)
+#     - Keeps track of the ToDo directives, images, and missing exercises encountered, as well as requirements that are satisfied
+#     - Maps the module name and number to the chapter its part of (used for correcting the chapter number during postprocessing)
+#   - Prints out a list of any exercises encountered in RST source files that did not appear in the config file
+#   - Generates ToDo.rst, if any TODO directives were encountered when processing the book AND if the configuration file does not suppress them
+#   - Creates table.json and page_chapter.json which are used by Sphinx during the building process
+#   - Generates a Makefile and conf.py based on templates found in config_templates.py
 #     - Makefile is configured to copy the original .htaccess file from lib to the html output directory
 #     - conf.py is configured to point to the original ODSAextensions and _themes directories
 #     - CONTROLLING INCLUSION OF GLOBAL JS AND CSS FILES - conf.py contains a dictionary called html_context
 #       which controls what JS and CSS files are included on ALL module pages, please see the assoicated comment
 #       for more information
-#   - Reads the RST source file for each module which appears in the configuration file
-#     - Appends the list of external JavaScript and CSS links and a Sphinx self reference directive to every module
-#       - Ensures we can reference any module, without relying on the module author to correctly add the reference link
-#     - Optionally, appends a raw JavaScript flag to each module indicating whether or not the module can be completed
-#       This allows the configuration file to override the default behavior of the client-side framework which is to allow
-#       module completion only if the module contains required exercises
-#     - For each figure encountered in the RST file, adds the name to a list so that we only copy the images used in the book
-#       to the output directory
-#     - For each inlineav directive encountered, configure.py attempts to append additional information from the configuration file
-#       - If the specified exercise does not appear in the configuration file, the Sphinx directive will be included, but no
-#         additional information will be included so the defaults (specified in the Sphinx directive file) will be used.  The
-#         name of the exercise is added to a list of missing exercises which will be displayed to the user
-#       - Specifically adds 'long_name', 'points', 'required' and 'threshold'
-#     - For each avembed directive encountered, configure.py attempts to append additional information from the configuration file
-#       - UNLESS the 'remove' attribute is present and "true", in which case the entire avembed directive is removed
-#       - If the specified exercise does not appear in the configuration file, the Sphinx directive will be included, but no
-#         additional information will be included so the defaults (specified in the Sphinx directive file) will be used.  The
-#         name of the exercise is added to a list of missing exercises which will be displayed to the user
-#       - Specifically adds 'long_name', 'points', 'required', 'showhide' and 'threshold'
-#     - The configured module RST file is written to the source directory in the output file
-#   - Generates an index.rst file based on which modules were specified in the config file
-#   - Prints out a list of any exercises encountered in RST source files that did not appear in the config file
-#   - Copies _static directory and the images contained in the list of encountered images to the output source directory, also
-#     creates a copy of the config file in the _static directory for use by the gradebook page
-#   - Generates _static/config.js which contains settings needed by the client-side framework that can be configured
-#     using the config file
-#   - Generates an index.html file in the output directory of the new book which redirects (via JavaScript) to the html/ directory
-#   - Optionally runs make on the output directory to build the textbook, if specified in the configuration file
+#   - Copies the images encountered while processing the book to the output source directory
+#   - Runs 'make' on the output directory to build the book using Sphinx
+#   - Calls update_TOC in postprocessor.py to update the chapter, section and module numbers
 
 import sys
 import os
@@ -111,7 +97,7 @@ def process_section(config, section, index_rst, depth, current_section_numbers =
       index_rst.write(subsect + '\n')
       index_rst.write((sphinx_header_chars[depth] * len(subsect)) + "\n\n")
       # if the chapter is hidden we use odsatoctree
-      # the div wrapping the chapter and module will have the 
+      # the div wrapping the chapter and module will have the
       # 'hide-from-toc' class and will be deleted from the TOC
       if 'hidden' in section[subsect]:
         index_rst.write(".. odsatoctree::\n")
@@ -267,7 +253,7 @@ def initialize_output_directory(config):
   # Will actually create '<build_dir>/<book_name>/source/Images/'
   distutils.dir_util.mkpath(config.book_src_dir + 'Images/')
 
-  # Copy _static and select images from RST/source/Images/ to the book source directory
+  # Copy _static from RST/source/Images/ to the book source directory
   distutils.dir_util.copy_tree(config.odsa_dir + 'RST/source/_static/', config.book_src_dir + '_static', update=1)
 
   # Copy config file to _static directory
@@ -375,19 +361,18 @@ def configure(config_file_path, slides = False):
   for image in images:
     distutils.file_util.copy_file(config.odsa_dir + 'RST/source/Images/' + image, config.book_src_dir + 'Images/')
 
-  # Optionally run make on the output directory
-  if config.build_ODSA:
-    print '\nBuilding textbook...'
+  # Run make on the output directory
+  print '\nBuilding textbook...'
 
-    if slides:
-      proc = subprocess.Popen(['make', '-C', config.book_dir, 'slides'], stdout=subprocess.PIPE)
-    else:
-      proc = subprocess.Popen(['make', '-C', config.book_dir], stdout=subprocess.PIPE)
-    for line in iter(proc.stdout.readline,''):
-      print line.rstrip()
+  if slides:
+    proc = subprocess.Popen(['make', '-C', config.book_dir, 'slides'], stdout=subprocess.PIPE)
+  else:
+    proc = subprocess.Popen(['make', '-C', config.book_dir], stdout=subprocess.PIPE)
+  for line in iter(proc.stdout.readline,''):
+    print line.rstrip()
 
-    # Calls the postprocessor to update chapter, section, and module numbers
-    update_TOC(config.book_src_dir, config.book_dir + config.rel_book_output_path, module_chap_map)
+  # Calls the postprocessor to update chapter, section, and module numbers
+  update_TOC(config.book_src_dir, config.book_dir + config.rel_book_output_path, module_chap_map)
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":

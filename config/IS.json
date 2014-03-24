@@ -5,7 +5,6 @@
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
-  "build_ODSA": true,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "glob_jsav_exer_options": {
@@ -15,10 +14,6 @@
     "Testing": {
       "IS/Bintree": {
         "long_name": "Bintree",
-        "exercises": {}
-      },
-      "IS/Dynamic": {
-        "long_name": "Dynamic",
         "exercises": {}
       },
       "IS/FirstFit": {
@@ -39,8 +34,8 @@
         "exercises": {}
       },
       "IS/Diskdrive": {
-	     "long_name": "Disk Drive",
-	     "exercises": {}
+       "long_name": "Disk Drive",
+       "exercises": {}
       }, "IS/Huffman": {
         "long_name": "Huffman Coding Trees",
         "exercises": {
@@ -58,15 +53,15 @@
             "threshold": 1.0
           }
         }
-      }, 
+      },
       "IS/HuffProof.rst": {
         "long_name": "Huffman Coding Trees",
         "exercises": {}
       },
-	  "IS/LinearIndexing.rst": {
+    "IS/LinearIndexing.rst": {
         "long_name": "LinearIndexing",
         "exercises": {}
-	  },
+    },
       "IS/SetSearch": {
         "long_name": "Set Search",
         "exercises": {}

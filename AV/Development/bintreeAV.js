@@ -37,6 +37,8 @@
     // returns a node!
     this.insert = function(rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level) {
 
+      console.assert(rt != null, "rt not defined");
+
       jsav.step();
       tree.layout();
       console.log("Bintree insert: ", INrec);
@@ -190,6 +192,7 @@
 
     jsav.umsg("Let's get started");
     var bint = new Bintree(jsav);
+    console.log("I just made a new Bintree, and bint.root is: ", bint.root);
     bint.isEmpty();
     jsav.displayInit();
 
@@ -198,6 +201,7 @@
     // Setup the tree
     jsav.umsg("Step 1: insert node with value \"A\" @ 10, 10");
     // rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level
+    console.log("Let's call insert. bint.root is now: ", bint.root);
     bint.insert(bint.root, 10, 10, "A", 100, 100, 200, 200, 0);
     bint.isEmpty();
   

@@ -7,6 +7,9 @@
     resultArray,
     stack,
     bitBucket,
+    pseudo,
+    interpret,
+    config = ODSA.UTILS.getConfig("infixToPostfixPRO.json"),
     av = new JSAV($("#jsavcontainer")),
     clickHandler;
 
@@ -14,7 +17,20 @@
 
   function initialize() {
     
-    exercise.jsav.container.find(".jsavcanvas").css({height: 300});
+    // get interpreter function for the selected language
+    if (typeof interpret !== "function") {
+      interpret = JSAV.utils.getInterpreter(config.language);
+      // change the title and the instructions on the page
+      ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
+    }
+
+    // show the code and highlight the row where mid is calculated
+    if (!pseudo && config.code) {
+      pseudo = av.code( config.code, {after: {element: $(".ODSAinstructions")}} );
+      pseudo.show();
+      pseudo.element.css({width: "auto"});
+      pseudo.css(true, {whiteSpace: "normal"});
+    }
 
     // set up click handler
     if (typeof clickHandler === "undefined") {
@@ -31,7 +47,7 @@
       infixArray.clear();
     }
     infixArray = av.ds.array(initialInfix, {indexed: false, center: true});
-    infixArray.element.css({"top": 50});
+    infixArray.css({"top": 50});
     infixArray.layout();
     clickHandler.addArray(infixArray);
 
@@ -41,7 +57,7 @@
       resultArray.clear();
     }
     resultArray = av.ds.array(new Array(arraySize - 4), {indexed: false, center: true});
-    resultArray.element.css({"top": 250});
+    resultArray.css({"top": 240});
     resultArray.layout();
     clickHandler.addArray(resultArray, 
       { onDrop: function () { restoreInfix(infixArray).call(this); }
@@ -66,8 +82,9 @@
 
     // create the bit bucket
     if (typeof bitBucket === "undefined") {
-      bitBucket = av.ds.array(["Bit Bucket"], {indexed: false, center: false});
-      bitBucket.element.css({"top": 150, "left": 60 , "position": "absolute", "width": "auto"});
+      bitBucket = av.ds.array([interpret("bit_bucket")], {indexed: false, center: false});
+      bitBucket.element.css({top: 140, left: 60 , position: "absolute", width: "auto"});
+      bitBucket.css(0, {padding: 5} );
       clickHandler.addArray(bitBucket, {
         onSelect: function () { return false; },
         onDrop: restoreInfix(infixArray),
@@ -85,46 +102,36 @@
       "font-weight": "bold"
     };
     var canvasWidth = exercise.jsav.container.find(".jsavcanvas").width();
-    av.getSvg().text(canvasWidth / 2, 20, "Infix Expression").attr(font);
-    av.getSvg().text(canvasWidth / 2, 140, "Stack").attr(font);
-    av.getSvg().text(canvasWidth / 2, 280, "Postfix Expression").attr(font);
+    av.getSvg().text(canvasWidth / 2, 20, interpret("infix_expression")).attr(font);
+    av.getSvg().text(canvasWidth / 2, 140, interpret("stack")).attr(font);
+    av.getSvg().text(canvasWidth / 2, 280, interpret("postfix_expression")).attr(font);
 
     return resultArray;
   }
 
   function modelSolution(jsav) {
-    // array
+    // initialize infix array
     var modelArray = jsav.ds.array(initialInfix);
-    // stack
+    // initialize stack
     var modelStack = jsav.ds.list({nodegap: 15, layout: "horizontal", center: false});
     modelStack.addFirst("");
     modelStack.first().addClass("greybg");
     modelStack.css({top: 30, left: 200});
     modelStack.layout();
-
+    // initialize result array
     var modelResultArray = jsav.ds.array(new Array(arraySize - 4));
     modelResultArray.element.css(
       {top: 165,
       left: (jsav.canvas.outerWidth() - modelResultArray.element.outerWidth()) / 2,
       "position": "absolute"});
-    
-    var modelBitBucket = jsav.ds.array(["Bit Bucket"], {indexed: false, center: false});
-    modelBitBucket.element.css({"top": 60, "left": 60 , "position": "absolute"});
+    // initialize bit bucket
+    var modelBitBucket = jsav.ds.array([interpret("bit_bucket")], {indexed: false, center: false});
+    modelBitBucket.element.css({top: 75, left: 60 , position: "absolute", width: "auto"});
+    modelBitBucket.css(0, {padding: 5} );
 
     jsav.canvas.css({height: 250});
 
     jsav._undo = [];
-
-    $(".jsavforward").click(function() {
-      if (jsav.container.hasClass("jsavplaying")) {
-        jsav.container.removeClass("jsavplaying");
-      }
-    });
-    $(".jsavbackward").click(function() {
-      if (jsav.container.hasClass("jsavplaying")) {
-        jsav.container.removeClass("jsavplaying");
-      }
-    });
 
     // postfix index
     var postfixInd = 0;
@@ -143,7 +150,7 @@
           // move operand into the expression
           jsav.effects.moveValue(modelArray, i, modelResultArray, postfixInd++);
           restoreInfix(modelArray).call(this);
-          jsav.umsg("The operands go directly into the postfix expression");
+          jsav.umsg(interpret("ms_com_operand"));
           jsav.stepOption("grade", true);
           jsav.step();
           break;
@@ -153,7 +160,7 @@
           jsav.effects.moveValue(modelArray, i, modelStack.first());
           restoreInfix(modelArray).call(this);
           modelStack.layout();
-          jsav.umsg("The left parenthesis is pushed to the stack.");
+          jsav.umsg(interpret("ms_com_leftpar"));
           jsav.stepOption("grade", true);
           jsav.step();
           break;
@@ -161,7 +168,7 @@
           // throw the right parenthesis into the bit bucket and pop operators into the expression
           modelArray.value(i, "");
           restoreInfix(modelArray).call(this);
-          jsav.umsg("After we have read a right parenthesis, we pop the operators from the stack and put them into the postfix expression, until we find a left parenthesis.");
+          jsav.umsg(interpret("ms_com_rightpar"));
           //  jsav.stepOption("grade", true);
           jsav.step();
           var node = modelStack.first();
@@ -186,7 +193,7 @@
             jsav.effects.moveValue(node, modelResultArray, postfixInd++);
             modelStack.removeFirst();
             modelStack.layout();
-            jsav.umsg('"*" has the same presendence as the read value("*"), so we pop it from the stack and put it in the postfix expression.');
+            jsav.umsg(interpret("ms_com_mul"));
             jsav.stepOption("grade", true);
             jsav.step();
             node = modelStack.first();
@@ -196,7 +203,7 @@
           jsav.effects.moveValue(modelArray, i, modelStack.first());
           restoreInfix(modelArray).call(this);
           modelStack.layout();
-          jsav.umsg('The "*" operator is pushed into the stack.');
+          jsav.umsg(interpret("ms_com_mulpush"));
           jsav.stepOption("grade", true);
           jsav.step();
           break;
@@ -204,7 +211,9 @@
           // pop possible * and + from the stack into the expression
           var node = modelStack.first();
           while (node.value() === "*" || node.value() === "+") {
-            jsav.umsg('"'+node.value()+'"'+' has greater or equal presendence than the read value("+"), so we pop it from the stack and put it in the postfix expression.');
+            jsav.umsg(interpret("ms_com_ge_prec"), { fill: {
+              operator: node.value()
+            } });
             jsav.effects.moveValue(node, modelResultArray, postfixInd++);
             modelStack.removeFirst();
             modelStack.layout();
@@ -217,7 +226,7 @@
           jsav.effects.moveValue(modelArray, i, modelStack.first());
           restoreInfix(modelArray).call(this);
           modelStack.layout();
-          jsav.umsg('The "+" operator is pushed into the stack.');
+          jsav.umsg(interpret("ms_com_pluspush"));
           jsav.stepOption("grade", true);
           jsav.step();
           break;
@@ -230,7 +239,7 @@
       jsav.effects.moveValue(node, modelResultArray, postfixInd++);
       modelStack.removeFirst();
       modelStack.layout();
-      jsav.umsg("Pop the rest of the operators from the stack and put them in the postfix expression.");
+      jsav.umsg(interpret("ms_com_rest"));
       jsav.stepOption("grade", true);
       jsav.step();
       node = modelStack.first();
@@ -239,7 +248,7 @@
     return modelResultArray;
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", modelDialog: {width: 780}});
   exercise.reset();
 
   // generates a random infix expression
