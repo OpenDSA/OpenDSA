@@ -16,8 +16,8 @@
     var i;
     ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
-    graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});
-    mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});
+    graph = jsav.ds.graph({width: 776, height: 450, layout: "manual", directed: false});
+    mst = jsav.ds.graph({width: 776, height: 450, layout: "manual", directed: false});
     initGraph();
     initTree();
     graph.layout();
