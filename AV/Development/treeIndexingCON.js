@@ -6,15 +6,15 @@
 
   // Create rectangles.
   // Set the starting x and y positions.
-  var x_base = 6;
-  var y_base = 10;
+  var x_offset = 6;
+  var y_offset = 10;
   // Add a store to the rectangles.
   var properties = {"stroke-width": 1};
-  jsav.g.rect(x_base + 46, y_base - 5, 200, 65, 0, properties);   // Top rectangle.
-  jsav.g.rect(x_base + 0, y_base + 70, 63, 65, 0, properties);    // First rectangle on second row.
-  jsav.g.rect(x_base + 76, y_base + 70, 63, 65, 0, properties);   // Second rectangle on second row.
-  jsav.g.rect(x_base + 152, y_base + 70, 63, 65, 0, properties);  // Third rectangle on second row.
-  jsav.g.rect(x_base + 229, y_base + 70, 63, 65, 0, properties);  // Fourth rectangle on second row.
+  jsav.g.rect(x_offset + 46, y_offset - 5, 200, 65, 0, properties);   // Top rectangle.
+  jsav.g.rect(x_offset + 0, y_offset + 70, 63, 65, 0, properties);    // First rectangle on second row.
+  jsav.g.rect(x_offset + 76, y_offset + 70, 63, 65, 0, properties);   // Second rectangle on second row.
+  jsav.g.rect(x_offset + 152, y_offset + 70, 63, 65, 0, properties);  // Third rectangle on second row.
+  jsav.g.rect(x_offset + 229, y_offset + 70, 63, 65, 0, properties);  // Fourth rectangle on second row.
 
   // Recursive function to create a binary tree of height 4.
   function genNodes(root, level) {

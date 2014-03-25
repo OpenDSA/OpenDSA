@@ -4,6 +4,17 @@
 .jsavarray {
   margin-top: 0;
   margin-bottom: 0;
+  min-height: 30px;
+}
+
+.jsavoutput.jsavline {
+  width: 600px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.jsavoutput {
+  margin: -5px auto 15px auto;
 }
 
 /* Change the size of each array box */
@@ -41,7 +52,7 @@
 /* Sytling for the simpleInsertCON slide show ********************************/
 
 /* Set maximun width for the JSAV container */
-#simpleInsertCON, #simpleInsertCON .jsavoutput {
+#simpleInsertCON {
 	width: 700px;
 }
 
@@ -49,39 +60,25 @@
 #simpleInsertCON .jsavcanvas {
 	height: 250px;
 	width: 700px;
-	margin-left: 70px;
-}
-
-/* Align and give a little padding to the output messages of each slide */
-#simpleInsertCON .jsavoutput {
-	padding-top: 20px;
-	text-align: center;
 }
 
 /* Sytling for the promoteCON slide show ********************************/
 
 /* Set maximun width for the JSAV container */
-#promoteCON, #promoteCON .jsavoutput {
+#promoteCON {
 	width: 800px;
 }
 
 /* Set width and height for the JSAV canvas */
 #promoteCON .jsavcanvas {
 	height: 250px;
-	width: 800px;
-	margin-left: 70px;
-}
-
-/* Align and give a little padding to the output messages of each slide */
-#promoteCON .jsavoutput {
-	padding-top: 20px;
-	text-align: center;
+	width: 780px;
 }
 
 /* Sytling for the splitCON slide show ********************************/
 
 /* Set maximun width for the JSAV container */
-#splitCON, #splitCON .jsavoutput {
+#splitCON {
 	width: 800px;
 }
 
@@ -89,38 +86,4 @@
 #splitCON .jsavcanvas {
 	height: 350px;
 	width: 800px;
-	margin-left: 70px;
-}
-
-/* Align and give a little padding to the output messages of each slide */
-#splitCON .jsavoutput {
-	padding-top: 20px;
-	text-align: center;
-}
-
-/* Sytling for the arrayTree slide show ********************************/
-
-/* Set maximun width for the JSAV container */
-#arrayTree, #arrayTree .jsavoutput {
-  width: 1000px;
-}
-
-/* Set width and height for the JSAV canvas */
-#arrayTree .jsavcanvas {
-  height: 1000px;
-  width: 1000px;
-  margin-left: 70px;
-}
-
-/* Change the size of each array box */
-#arrayTree .jsavarray .jsavindex {
-  min-width: 30px;
-  max-width: 30px;
-  min-height: 30px;
-  max-height: 30px;
-}
-
-#arrayTree .jsavarray {
-  min-height: 32px;
-  max-height: 32px;
 }

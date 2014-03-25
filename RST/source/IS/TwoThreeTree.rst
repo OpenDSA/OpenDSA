@@ -13,8 +13,6 @@
 2-3 Trees
 =========
 
-.. inlineav:: arrayTree dgm
-
 This section presents a data structure
 called the 2-3 tree.
 The 2-3 tree is not a binary tree, but instead its shape
@@ -49,8 +47,6 @@ Figure :num:`Figure #TTexamp` illustrates the 2-3 tree.
 
 .. inlineav:: twoThreeTreeCON dgm
    :align: center
-
-   A 2-3 tree.
 
 Nodes are shown as rectangular boxes with two key fields.
 (These nodes actually would contain complete records or pointers to
@@ -118,11 +114,6 @@ rightmost position).
    :output: show
    :align: justify
 
-   Simple insert into the 2-3 tree of Figure :num:`Figure #TTexamp`.
-   The value 14 is inserted into the tree at the leaf node containing 15.
-   Because there is room in the node for a second key, it is simply added
-   to the left position with 15 moved to the right position.
-
 If we insert the new record into a leaf node :math:`L` that already
 contains two records, then more space must be created.
 Consider the two records of node :math:`L` and the record to be
@@ -152,45 +143,11 @@ In either case, all leaf nodes continue to have equal depth.
    :output: show
    :align: justify
 
-   A simple node-splitting insert for a 2-3 tree.
-   The value 55 is added to the 2-3 tree of Figure :num:`Figure #TTexamp`.
-   This makes the node containing values 50 and 52 split, promoting
-   value 52 to the parent node.
-
 .. _TTSplit:
 
 .. inlineav:: splitCON ss
    :output: show
    :align: justify
-
-   Example of inserting a record that causes the 2-3 tree root to
-   split.
-   (a) The value 19 is added to the 2-3 tree of
-   Figure :num:`Figure #TTexamp`.
-   This causes the node containing 20 and 21 to split, promoting 20.
-   (b) This in turn causes the internal node containing 23 and 30 to
-   split, promoting 23.
-   (c) Finally, the root node splits, promoting 23
-   to become the left record in the new root.
-   The result is that the tree becomes one level higher.
-
-.. odsafig:: Images/TTSplit.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Splitting the 2-3 tree root.
-
-   Example of inserting a record that causes the 2-3 tree root to
-   split.
-   (a) The value 19 is added to the 2-3 tree of
-   Figure :num:`Figure #TTexamp`.
-   This causes the node containing 20 and 21 to split, promoting 20.
-   (b) This in turn causes the internal node containing 23 and 30 to
-   split, promoting 23.
-   (c) Finally, the root node splits, promoting 23
-   to become the left record in the new root.
-   The result is that the tree becomes one level higher.
 
 Here is an implementation for the insertion process.
 
@@ -271,5 +228,4 @@ San Francisco as part of his
 `Data Structure Visualizations
 <http://www.cs.usfca.edu/~galles/visualization/Algorithms.html>`_ package.
 
-.. odsascript:: AV/Development/ArrayTree.js
 .. odsascript:: AV/Development/twoThreeTreeCON.js
