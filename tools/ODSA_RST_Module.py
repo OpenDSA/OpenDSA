@@ -30,6 +30,44 @@ import re
 from string import whitespace as ws
 from config_templates import *
 
+# Generates a string that will be appended to the RST module header that sets the module options appropriately
+def format_mod_options(options):
+  option_str = ''
+
+  for option, value in options.iteritems():
+    # Convert Python booleans to JavaScript booleans and quote strings
+    if str(value) in ['True', 'False']:
+      value = str(value).lower()
+    elif isinstance(value, basestring):
+      value = "'%s'" % value;
+
+    # Set JSAV options as necessary and set all others as standard variables
+    if option.startswith('JXOP-'):
+      option_str += "JSAV_EXERCISE_OPTIONS['%s']=%s;" % (option[5:], value)
+    elif option.startswith('JOP-'):
+      option_str += "JSAV_OPTIONS['%s']=%s;" % (option[4:], value)
+    else:
+      option_str += "var %s=%s;" % (option, value)
+
+  return option_str
+
+# Returns a boolean indicating whether or not the module can be completed
+def determine_module_completable(mod_attrib):
+  # Set a JS flag on the page, indicating whether or not the module can be completed
+  if 'dispModComp' in mod_attrib:
+    # Use the value specified in the configuration file to override the calculated value
+    dispModComp = mod_attrib['dispModComp']
+  else:
+    dispModComp = False
+
+    # Display 'Module Complete' only if the module contains at least one required exercise
+    for exer_name, exer_obj in mod_attrib['exercises'].items():
+      if 'required' in exer_obj and exer_obj['required']:
+        dispModComp = True
+        break
+
+  return dispModComp
+
 # Parses the arguments from a Sphinx directive, prints error messages if the directive doesn't match the expected format
 def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_prefix = ''):
   # Create a RegEx pattern that will match 1 or more whitespace characters
@@ -141,18 +179,7 @@ class ODSA_RST_Module:
 
     exercises = mod_attrib['exercises']
 
-    # Set a JS flag on the page, indicating whether or not the module can be completed
-    if 'dispModComp' in mod_attrib:
-      # Use the value specified in the configuration file to override the calculated value
-      dispModComp = mod_attrib['dispModComp']
-    else:
-      dispModComp = False
-
-      # Display 'Module Complete' only if the module contains at least one required exercise
-      for exer_name, exer_obj in exercises.items():
-        if 'required' in exer_obj and exer_obj['required']:
-          dispModComp = True
-          break
+    dispModComp = determine_module_completable(mod_attrib)
 
     filename = '{0}RST/source/{1}.rst'.format(config.odsa_dir, mod_path)
 
@@ -163,6 +190,12 @@ class ODSA_RST_Module:
       with open(filename,'r') as mod_file:
         mod_data = mod_file.readlines()
 
+      # Merge global module options with local modules options, if applicable, so that local options override the global options
+      if 'mod_options' in mod_attrib:
+        mod_options = dict(config.glob_mod_options.items() + mod_attrib['mod_options'].items())
+      else:
+        mod_options = config.glob_mod_options
+
       # Generate the RST header for the module
       header_data = {}
       header_data['mod_name'] = mod_name
@@ -170,6 +203,7 @@ class ODSA_RST_Module:
       header_data['long_name'] = mod_attrib['long_name'] if 'long_name' in mod_attrib else mod_name
       header_data['mod_chapter'] = chap
       header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
+      header_data['mod_options'] = format_mod_options(mod_options)
       # Include an empty unicode directive when building slides
       header_data['unicode_directive'] = rst_header_unicode if os.environ.get('SLIDES', None) == "no" else ''
       # Prepend the header data to the exisiting module data
@@ -298,16 +332,16 @@ class ODSA_RST_Module:
                 rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
                 # JSAV grading options are not applicable to Khan Academy exercises or slideshows and will be ignored
-                if av_type not in ['ka', 'ss']:
-                  # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
-                  if 'jsav_exer_options' in exer_conf:
-                    jxops = dict(config.glob_jsav_exer_options.items() + exer_conf['jsav_exer_options'].items())
-                  else:
-                    jxops = config.glob_jsav_exer_options
+                #if av_type not in ['ka', 'ss']:
+                # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
+                if 'exer_options' in exer_conf:
+                  xops = dict(config.glob_exer_options.items() + exer_conf['exer_options'].items())
+                else:
+                  xops = config.glob_exer_options
 
-                  # URL-encode the string and append it to the RST options
-                  jxop_str = '&amp;'.join(['JXOP-%s=%s' % (opt, str(jxops[opt])) for opt in jxops])
-                  rst_options.append('   :jsav_exer_opt: %s\n' % jxop_str)
+                # Convert python booleans to JavaScript booleans, URL-encode the string and append it to the RST options
+                xop_str = '&amp;'.join(['%s=%s' % (option, value) if str(value) not in ['True', 'False'] else '%s=%s' % (option, str(value).lower()) for option, value in xops.iteritems()])
+                rst_options.append('   :exer_opts: %s\n' % xop_str)
 
                 mod_data[i] += ''.join(rst_options)
         elif line.startswith('.. avmetadata::'):

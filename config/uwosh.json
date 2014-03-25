@@ -1,7 +1,8 @@
 {
   "title": "UWOsh",
   "build_dir": "Books",
-  "code_dir": "SourceCode/JavaScript",
+  "code_dir": "SourceCode/",
+  "code_lang": "javascript",
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,

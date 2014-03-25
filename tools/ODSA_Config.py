@@ -23,9 +23,9 @@ from urlparse import urlparse
 
 error_count = 0
 
-required_fields = ['chapters', 'code_dir', 'module_origin', 'title']
+required_fields = ['chapters', 'code_dir', 'code_lang', 'module_origin', 'title']
 
-optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'exercise_origin', 'exercises_root_dir', 'glob_jsav_exer_options', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'theme', 'theme_dir']
+optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'theme', 'theme_dir']
 
 
 def process_path(path, abs_prefix):
@@ -103,7 +103,7 @@ def validate_exercise(exer_name, exercise):
     error_count += 1
 
   required_fields = []
-  optional_fields = ['jsav_exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold']
+  optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold']
 
   # Ensure required fields are present
   for field in required_fields:
@@ -124,7 +124,7 @@ def validate_module(mod_name, module):
   global error_count
 
   required_fields = ['exercises']
-  optional_fields = ['long_name', 'dispModComp']
+  optional_fields = ['long_name', 'dispModComp', 'mod_options']
 
   # Ensure required fields are present
   for field in required_fields:
@@ -245,6 +245,7 @@ def set_defaults(conf_data):
   odsa_dir = get_odsa_dir()
 
   conf_data['code_dir'] = process_path(conf_data['code_dir'], odsa_dir)
+  conf_data['code_dir'] += conf_data['code_lang'] + '/'
 
   # Allow anonymous credit by default
   if 'allow_anonymous_credit' not in conf_data:
@@ -280,9 +281,13 @@ def set_defaults(conf_data):
   if 'exercises_root_dir' not in conf_data:
     conf_data['exercises_root_dir'] = odsa_dir
 
-  # If not global exercise options are specified, defer to exercise-specific options or the defaults in odsaAV.js
-  if 'glob_jsav_exer_options' not in conf_data:
-    conf_data['glob_jsav_exer_options'] = {}
+  # If no global module options are specified, defer to module-specific options or the defaults in odsaUtils.js
+  if 'glob_mod_options' not in conf_data:
+    conf_data['glob_mod_options'] = {}
+
+  # If no global exercise options are specified, defer to exercise-specific options or the defaults in odsaUtils.js
+  if 'glob_exer_options' not in conf_data:
+    conf_data['glob_exer_options'] = {}
 
   if 'start_chap_num' not in conf_data:
     conf_data['start_chap_num'] = 0 #1
@@ -373,9 +378,10 @@ class ODSA_Config:
     self.book_name = os.path.basename(config_file_path).replace('.json', '')
 
     # Parse the code language from the code directory path
-    self.code_lang = os.path.basename(self.code_dir[:-1]).lower()
+    #self.code_lang = os.path.basename(self.code_dir[:-1]).lower()
 
     # Treat Processing as Java (special case)
+    # This must be done after code_lang is appended to code_dir in order for the correct code to be referenced
     if self.code_lang == 'processing':
       self.code_lang = 'java'
 
