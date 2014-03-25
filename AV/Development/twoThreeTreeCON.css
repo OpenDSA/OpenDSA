@@ -7,6 +7,16 @@
   min-height: 30px;
 }
 
+.jsavoutput.jsavline {
+  width: 600px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.jsavoutput {
+  margin: -5px auto 15px auto;
+}
+
 /* Change the size of each array box */
 .jsavarray .jsavindex {
   min-width: 33px;
@@ -42,7 +52,7 @@
 /* Sytling for the simpleInsertCON slide show ********************************/
 
 /* Set maximun width for the JSAV container */
-#simpleInsertCON, #simpleInsertCON .jsavoutput {
+#simpleInsertCON {
 	width: 700px;
 }
 
@@ -52,16 +62,10 @@
 	width: 700px;
 }
 
-/* Align and give a little padding to the output messages of each slide */
-#simpleInsertCON .jsavoutput {
-	padding-top: 20px;
-	text-align: center;
-}
-
 /* Sytling for the promoteCON slide show ********************************/
 
 /* Set maximun width for the JSAV container */
-#promoteCON, #promoteCON .jsavoutput {
+#promoteCON {
 	width: 800px;
 }
 
@@ -71,16 +75,10 @@
 	width: 780px;
 }
 
-/* Align and give a little padding to the output messages of each slide */
-#promoteCON .jsavoutput {
-	padding-top: 20px;
-	text-align: center;
-}
-
 /* Sytling for the splitCON slide show ********************************/
 
 /* Set maximun width for the JSAV container */
-#splitCON, #splitCON .jsavoutput {
+#splitCON {
 	width: 800px;
 }
 
@@ -88,11 +86,4 @@
 #splitCON .jsavcanvas {
 	height: 350px;
 	width: 800px;
-	margin-left: 70px;
-}
-
-/* Align and give a little padding to the output messages of each slide */
-#splitCON .jsavoutput {
-	padding-top: 20px;
-	text-align: center;
 }

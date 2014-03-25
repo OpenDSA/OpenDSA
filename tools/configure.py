@@ -184,6 +184,7 @@ def generate_index_rst(config, slides = False):
   header_data['long_name'] = 'Contents'
   header_data['mod_chapter'] = ''
   header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
+  header_data['mod_options'] = ''
   header_data['unicode_directive'] = rst_header_unicode if not slides else ''
 
   # Generate the index.rst file

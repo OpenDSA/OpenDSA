@@ -112,7 +112,7 @@ class avembed(Directive):
   final_argument_whitespace = True
   has_content = True
   option_spec = {
-                 'jsav_exer_opt': directives.unchanged,
+                 'exer_opts': directives.unchanged,
                  'long_name': directives.unchanged,
                  'module': directives.unchanged,
                  'points': directives.unchanged,
@@ -141,8 +141,8 @@ class avembed(Directive):
     self.options['content'] = ''
 
     # Add the JSAV exercise options to the AV address
-    if 'jsav_exer_opt' in self.options and self.options['jsav_exer_opt'] != '':
-      self.options['av_address'] += '&amp;' + self.options['jsav_exer_opt']
+    if 'exer_opts' in self.options and self.options['exer_opts'] != '':
+      self.options['av_address'] += '&amp;' + self.options['exer_opts']
 
     if 'required' not in self.options:
       self.options['required'] = False
