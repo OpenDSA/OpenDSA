@@ -8,8 +8,8 @@
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
-  "glob_jsav_exer_options": {
-    "debug": "true"
+  "glob_exer_options": {
+    "JXOP-debug": "true"
   },
   "chapters": {
     "Recursion Chapter": {

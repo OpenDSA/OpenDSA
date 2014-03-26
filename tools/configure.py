@@ -226,6 +226,7 @@ def generate_todo_rst(config, slides = False):
     header_data['dispModComp'] = False
     header_data['mod_chapter'] = ''
     header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
+    header_data['mod_options'] = ''
     header_data['unicode_directive'] = rst_header_unicode if not slides else ''
     todo_file.write(rst_header % header_data)
     todo_file.write(todo_rst_template)
