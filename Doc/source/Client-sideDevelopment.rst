@@ -25,8 +25,9 @@ The OpenDSA client-side framework automatically handles as much logging as possi
 * Make JSAV exercise options configurable (if necessary and desired)
 
   * If you do not change the default values of ``JSAV_EXERCISE_OPTIONS``, you do not have to do anything.
-  * However, if you do change the default values of ``JSAV_EXERCISE_OPTIONS``, you must call ``ODSA.AV.updateJSAVExerOptions()`` in order to make the exercise options configurable from the config file.  Conversely, if you want to prevent the configuration process from overriding the grading options for your exercise, you can reset the defaults and not call this function.
-  
+  * However, if you do change the default values of ``JSAV_EXERCISE_OPTIONS``, you must call ``ODSA.UTILS.parseURLParams()`` in order to make the exercise options configurable from the config file.  Conversely, if you want to prevent the configuration process from overriding the grading options for your exercise, you can change or reset the defaults and not call this function.
+  * Developers should initialize configurable variables like this: ``var variable = (params.<variable>) ? params.<variable> : default_value;``, so that if the appropriate parameter is passed to the exercise it will be used, otherwise the exercise will default to a reasonable value
+
 * Attach JSAV array click handlers through JSAV rather than jQuery
 
   * Example: ``theArray.click(function(index){...});`` rather than ``$('#arrayId').on('click', ".jsavindex", function(){...});``
@@ -38,7 +39,7 @@ The OpenDSA client-side framework automatically handles as much logging as possi
 
 * Take advantage of macro-logging
 
-  * As a developer, if you feel something is important to log (whether its the state of the exercise, some sort of interaction or simply a comment) you can use either ``ODSA.UTILS.logUserAction()`` or ``ODSA.UTILS.logEvent()``.  Refer to the function documentation in ``odsaUtils.js`` for more information on how to use these functions.  
+  * As a developer, if you feel something is important to log (whether its the state of the exercise, some sort of interaction or simply a comment) you can use either ``ODSA.UTILS.logUserAction()`` or ``ODSA.UTILS.logEvent()``.  Refer to the function documentation in ``odsaUtils.js`` for more information on how to use these functions.
   * Allows developers to describe what is happening at a given step to make it easier when analyzing problem steps to identify what step the students are missing
 
 
@@ -50,15 +51,15 @@ ODSA.AV
 =======
 
 * **logExerciseInit** - generates an event which is used to log the initial state of an AV or exercise
-  
+
   * Captures the state of the exercise at the beginning (such as the numbers in an array) which allows us to put the later operations we log in context.  For example, its all well and great to know the user clicked on index 4 of an array but if we don't know the randomly generated numbers in the array the operations we log won't make much sense.
-  * The generated event uses the same channel as JSAV events and is therefore received by the existing listener.  This function is NOT dependent on the JSAV framework. 
-  
+  * The generated event uses the same channel as JSAV events and is therefore received by the existing listener.  This function is NOT dependent on the JSAV framework.
+
 * **awardCompletionCredit** - generates an event which triggers the framework to give a user credit for an exercise
-  
+
   * This function is designed to be used when an exercise doesn't really have a score but must be completed (like the calculator or performance exercises).  Developers should call this function in their code when a student has reached a state where the developer believes they should receive credit.
-  * The generated event uses the same channel as JSAV events and is therefore received by the existing listener.  This function is NOT dependent on the JSAV framework. 
-  
+  * The generated event uses the same channel as JSAV events and is therefore received by the existing listener.  This function is NOT dependent on the JSAV framework.
+
 * **initArraySize(min, max, selected)** - initializes the arraysize drop down list with the range of numbers from ``min`` to ``max`` with ``selected`` selected
 * **reset(flag)** - resets the AV to its original state
 
@@ -95,6 +96,7 @@ ODSA.UTILS
   with the given exercise or module in the given book
 * **syncProficiency()** - queries ``getgrade`` endpoint to obtain
   proficiency status for all exercises and modules
+* **parseURLParams()** - parses parameters from the URL, sets ``JSAV_OPTIONS`` and ``JSAV_EXERCISE_OPTIONS`` if applicable and stores the remaining options in a ``params`` object for use by the module or exercise
 
 ---------------
 Tips and Tricks
@@ -146,15 +148,15 @@ Please refer to the example below::
 
   (function() {
     var privateData = 0;
-    
+
     function privFunct() {
       alert('ODSA private function');
     }
-    
+
     function publicFunct() {
       privFunct();
     }
-    
+
     var ODSA = {};
     ODSA.publicFunct = publicFunct;
     window.ODSA = ODSA;
@@ -164,20 +166,20 @@ Another alternative is::
 
   (function() {
     var ODSA = {};
-    
+
     function privFunct() {
       alert('ODSA private function');
       ODSA.publicFunct();
     }
-    
+
     ODSA.publicFunct = function() {
       alert('ODSA publicFunct');
     }
-    
+
     ODSA.callPrivFunct = function() {
       privFunct();
     }
-    
+
     window.ODSA = ODSA;
   }(jQuery));
 
@@ -214,7 +216,7 @@ Proficiency Exercises
 =====================
 
 * If your AV doesn't show up immediately but shows up as soon as you
-  advance the slideshow, make sure you ran: ``jsav.displayInit();`` 
+  advance the slideshow, make sure you ran: ``jsav.displayInit();``
 * If you are having difficulties with variables managed by JSAV
 
   * Make sure you use ``.value()`` to access the variables value,
