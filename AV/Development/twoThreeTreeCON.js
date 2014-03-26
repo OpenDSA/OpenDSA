@@ -1,5 +1,52 @@
-(function ($) {
+/**
+ * Creates global functions that serve to facilitate the creation and manipulation of 2-3 trees.
+ */
+(function () {
   "use strict";
+
+  /**
+   * Creates a new array tree. The values are hard coded, this method only work for this instance.
+   * @param jsav The JSAV that will draw the array nodes.
+   * @returns {Array} A list of all the array nodes that were created.
+   */
+  function getArrayNodes(jsav) {
+    var arrays = [];
+    arrays.push(jsav.ds.array([18, 13]));
+    arrays.push(jsav.ds.array([12, ""]));
+    arrays.push(jsav.ds.array([23, 30]));
+    arrays.push(jsav.ds.array([48, ""]));
+    arrays.push(jsav.ds.array([10, ""]));
+    arrays.push(jsav.ds.array([15, ""]));
+    arrays.push(jsav.ds.array([20, 21]));
+    arrays.push(jsav.ds.array([24, ""]));
+    arrays.push(jsav.ds.array([31, ""]));
+    arrays.push(jsav.ds.array([45, 47]));
+    arrays.push(jsav.ds.array([50, 52]));
+    return arrays;
+  }
+
+  /**
+   * Draws the edges between array nodes. The edges are hard coded, this function only works for this instance.
+   * @param jsav The JSAV that will draw the edges.
+   * @param array_nodes The array nodes where the edges will be drawn from and to.
+   * @param array_node_length The length of each array node.
+   * @param edge_properties The properties of each edge.
+   * @returns {Array} A list of all the lines that were created.
+   */
+  function getArrayNodesEdges(jsav, array_nodes, array_node_length, edge_properties) {
+    var lines = [];
+    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[0], array_nodes[1], 0, array_node_length));
+    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[0], array_nodes[2], 1, array_node_length));
+    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[0], array_nodes[3], 2, array_node_length));
+    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[1], array_nodes[4], 0, array_node_length));
+    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[1], array_nodes[5], 1, array_node_length));
+    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[2], array_nodes[6], 0, array_node_length));
+    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[2], array_nodes[7], 1, array_node_length));
+    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[2], array_nodes[8], 2, array_node_length));
+    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[3], array_nodes[9], 0, array_node_length));
+    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[3], array_nodes[10], 1, array_node_length));
+    return lines;
+  }
 
   /**
    * This function positions a row of arrays.
@@ -48,13 +95,6 @@
 
     x1 = left + (step * edgeIndex);
     y1 = top + height;
-    if (edgeIndex === 0) {
-      x1 += 2;
-      y1 -= 2;
-    } else if (edgeIndex === length) {
-      x1 -= 2;
-      y1 -= 2;
-    }
 
     // Get coordinates for the x2 and y2 of the edge.
     height = extractNumber(arrayTo.css("height"));
@@ -81,438 +121,430 @@
   var ODSA = {};
   ODSA.drawEdge = drawEdge;
   ODSA.positionRow = positionRow;
-  Window.ODSA = ODSA;
-}(jQuery));
+  ODSA.getArrayNodes = getArrayNodes;
+  ODSA.getArrayNodesEdges = getArrayNodesEdges;
+  window.ODSA = ODSA;
+}());
 
-// Create diagram for twoThreeTreeCON.
-(function ($) {
+/**
+ * Creates a diagram that illustrates what a 2-3 tree looks likes.
+ *
+ * Container ID: twoThreeTreeCON
+ */
+(function () {
   "use strict";
 
   var jsav = new JSAV("twoThreeTreeCON");
 
-  var arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, arr10, arr11;
   // Create all the arrays that represent the nodes in the 2-3 tree.
+  var arrays = window.ODSA.getArrayNodes(jsav);
+  // Position the array nodes.
   var width = 560;
-  arr1 = jsav.ds.array([18, 13]);
-  Window.ODSA.positionRow([arr1], 0, width, 70);
-  arr2 = jsav.ds.array([12, ""]);
-  arr3 = jsav.ds.array([23, 30]);
-  arr4 = jsav.ds.array([48, ""]);
-  Window.ODSA.positionRow([arr2, arr3, arr4], 80, width, 450);
-  arr5 = jsav.ds.array([10, ""]);
-  arr6 = jsav.ds.array([15, ""]);
-  arr7 = jsav.ds.array([20, 21]);
-  arr8 = jsav.ds.array([24, ""]);
-  arr9 = jsav.ds.array([31, ""]);
-  arr10 = jsav.ds.array([45, 47]);
-  arr11 = jsav.ds.array([50, 52]);
-  Window.ODSA.positionRow([arr5, arr6, arr7, arr8, arr9, arr10, arr11], 160, width, 560);
+  window.ODSA.positionRow(arrays.slice(0, 1), 0, width, 70);
+  window.ODSA.positionRow(arrays.slice(1, 4), 80, width, 450);
+  window.ODSA.positionRow(arrays.slice(4), 160, width, 560);
 
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
   var length = 2;
-  console.log("Diagram");
-  Window.ODSA.drawEdge(jsav, properties, arr1, arr2, 0, length);
-  Window.ODSA.drawEdge(jsav, properties, arr1, arr3, 1, length);
-  Window.ODSA.drawEdge(jsav, properties, arr1, arr4, 2, length);
-  Window.ODSA.drawEdge(jsav, properties, arr2, arr5, 0, length);
-  Window.ODSA.drawEdge(jsav, properties, arr2, arr6, 1, length);
-  Window.ODSA.drawEdge(jsav, properties, arr3, arr7, 0, length);
-  Window.ODSA.drawEdge(jsav, properties, arr3, arr8, 1, length);
-  Window.ODSA.drawEdge(jsav, properties, arr3, arr9, 2, length);
-  Window.ODSA.drawEdge(jsav, properties, arr4, arr10, 0, length);
-  Window.ODSA.drawEdge(jsav, properties, arr4, arr11, 1, length);
+  window.ODSA.getArrayNodesEdges(jsav, arrays, length, properties);
+}());
 
-  jsav.ds.array(["", ""], {visible: false, left: "0px", top: "0px"});
-}(jQuery));
-
-// Create slide show for simpleInsertCON
-(function ($) {
+/**
+ * Creates a slide show that demonstrates a simple insertion to a 2-3 tree.
+ *
+ * Container ID: simpleInsertCON
+ */
+(function () {
   "use strict";
   var jsav = new JSAV("simpleInsertCON");
 
-//  jsav.ds.array(["", ""], {visible: false, left: "0px", top: "0px"});
-
-  jsav.label("Insert:", {left: "55px", top: "5px"});
-
-  var insert = jsav.ds.array([14], {left: "100px", top: "0px"});
-
-  /* 1st Slide *************************************************************/
-  jsav.umsg("Simple insert into the 2-3 tree.");
-
   // Create all the arrays that represent the nodes in the 2-3 tree.
-  var arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, arr10, arr11, arr12;
+  var arrays = window.ODSA.getArrayNodes(jsav);
+  // Position the array nodes.
   var width = 700;
-  arr1 = jsav.ds.array([18, 13]);
-  Window.ODSA.positionRow([arr1], 0, width, 70);
-  arr2 = jsav.ds.array([12, ""]);
-  arr3 = jsav.ds.array([23, 30]);
-  arr4 = jsav.ds.array([48, ""]);
-  Window.ODSA.positionRow([arr2, arr3, arr4], 80, width, 450);
-  arr5 = jsav.ds.array([10, ""]);
-  arr6 = jsav.ds.array([15, ""]);
-  arr7 = jsav.ds.array([20, 21]);
-  arr8 = jsav.ds.array([24, ""]);
-  arr9 = jsav.ds.array([31, ""]);
-  arr10 = jsav.ds.array([45, 47]);
-  arr11 = jsav.ds.array([50, 52]);
-  Window.ODSA.positionRow([arr5, arr6, arr7, arr8, arr9, arr10, arr11], 160, width, 560);
+  window.ODSA.positionRow(arrays.slice(0, 1), 0, width, 70);
+  window.ODSA.positionRow(arrays.slice(1, 4), 80, width, 450);
+  window.ODSA.positionRow(arrays.slice(4), 160, width, 560);
 
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
   var length = 2;
-  var line1, line5;
-  console.log("simple insert");
-  line1 = Window.ODSA.drawEdge(jsav, properties, arr1, arr2, 0, length);
-  Window.ODSA.drawEdge(jsav, properties, arr1, arr3, 1, length);
-  Window.ODSA.drawEdge(jsav, properties, arr1, arr4, 2, length);
-  Window.ODSA.drawEdge(jsav, properties, arr2, arr5, 0, length);
-  line5 = Window.ODSA.drawEdge(jsav, properties, arr2, arr6, 1, length);
-  Window.ODSA.drawEdge(jsav, properties, arr3, arr7, 0, length);
-  Window.ODSA.drawEdge(jsav, properties, arr3, arr8, 1, length);
-  Window.ODSA.drawEdge(jsav, properties, arr3, arr9, 2, length);
-  Window.ODSA.drawEdge(jsav, properties, arr4, arr10, 0, length);
-  Window.ODSA.drawEdge(jsav, properties, arr4, arr11, 1, length);
+  var lines = window.ODSA.getArrayNodesEdges(jsav, arrays, length, properties);
 
-  // set initial display for first slide.
+  var messages = [
+    "Simple insert into the 2-3 tree. We want to insert the key 14 into the tree.",
+    "The value is first compared against the root node. Since 14 is less than the left value of the root node, the left child node is followed next.",
+    "This node has only one element, and 14 is greater than 12 so the center child is followed next.",
+    "A leaf node has being reached. Since the leaf node has an empty space the new node can be inserted here. The key 15 has to be shifted to the right to make room for the new key (14).",
+    "Now the key 14 can be inserted into the tree.",
+    "The insertion is complete."
+  ];
+
+  var highlight_property = {"box-shadow": "0 0 15px 5px rgb(237, 98, 83)"};
+  var reset_property = {"box-shadow": "none"};
+
+  /* 1st Slide *************************************************************/
+  jsav.umsg(messages.shift());
+  jsav.label("Insert:", {left: "55px", top: "5px"});
+  var insert = jsav.ds.array([14], {left: "100px", top: "0px"});
   jsav.displayInit();
 
   /* 2nd Slide *************************************************************/
-  jsav.umsg("The value 14 is inserted into the tree. The value is first compared agains the root node.\n" +
-    "Since 14 is less than the left value of the root node it follows the left child node.");
-  arr1.highlight(0);
-  line1.css({"stroke": "red"});
+  jsav.umsg(messages.shift());
+  arrays[0].css(highlight_property);
+  arrays[0].highlight(0);
+  lines[0].css({"stroke": "red", "stoke-width": "2.5"});
   jsav.step();
 
   /* 3rd Slide *************************************************************/
-  jsav.umsg("This node has only one element, and 14 is greater than 12 so the center child is followed next.");
-  line1.css({"stroke": "black"});
-  arr1.unhighlight(0);
-  arr2.highlight(0);
-  line5.css({"stroke": "red"});
+  jsav.umsg(messages.shift());
+  arrays[1].css(highlight_property);
+  arrays[0].css(reset_property);
+  lines[0].css({"stroke": "black", "stoke-width": "1.5"});
+  arrays[0].unhighlight(0);
+  arrays[1].highlight(0);
+  lines[4].css({"stroke": "red", "stoke-width": "2.5"});
   jsav.step();
 
   /* 4th Slide *************************************************************/
-  jsav.umsg("A leaf node has being reached. Since the leaf node has an empty space the new node can be inserted here. " +
-    "The key 15 has to be shifted to the right to make room for the new key (14)");
-  line5.css({"stroke": "black"});
-  arr2.unhighlight(0);
-  arr6.highlight(0);
+  jsav.umsg(messages.shift());
+  arrays[5].css(highlight_property);
+  arrays[1].css(reset_property);
+  lines[4].css({"stroke": "black", "stoke-width": "1.5"});
+  arrays[1].unhighlight(0);
   jsav.step();
 
   /* 5th Slide *************************************************************/
-  jsav.umsg("The new key 14 was inserted into the tree.");
-  arr6.unhighlight(0);
-  arr6.swap(0, 1, {arrow: false});
-  jsav.effects.moveValue(insert, 0, arr6, 0);
+  jsav.umsg(messages.shift());
+  arrays[5].swap(0, 1, {arrow: false});
+  jsav.step();
+
+  /* 5th Slide *************************************************************/
+  jsav.umsg(messages.shift());
+  arrays[5].css(reset_property);
+  jsav.effects.moveValue(insert, 0, arrays[5], 0);
   jsav.step();
 
   jsav.recorded();
 
-}(jQuery));
+}());
 
-// Create slide show for promoteCON
-(function ($) {
+
+/**
+ * Creates a slide show that demonstrates how a key can be promoted in a 2-3 tree.
+ *
+ * Container ID: promoteCON
+ */
+(function () {
   "use strict";
   var jsav = new JSAV("promoteCON");
 
-  /* 1st Slide *************************************************************/
-  jsav.umsg("A simple node-splitting insert for a 2-3 tree.");
-
-  jsav.label("Insert:", {left: "55px", top: "5px"});
-
-  var insert = jsav.ds.array([55], {left: "100px", top: "0px"});
-
   // Create all the arrays that represent the nodes in the 2-3 tree.
-  var arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, arr10, arr11, arr12;
+  var arrays = window.ODSA.getArrayNodes(jsav);
+  // Position the array nodes.
   var width = 700;
-  arr1 = jsav.ds.array([18, 13]);
-  Window.ODSA.positionRow([arr1], 0, width, 70);
-  arr2 = jsav.ds.array([12, ""]);
-  arr3 = jsav.ds.array([23, 30]);
-  arr4 = jsav.ds.array([48, ""]);
-  Window.ODSA.positionRow([arr2, arr3, arr4], 80, width, 480);
-  arr5 = jsav.ds.array([10, ""]);
-  arr6 = jsav.ds.array([15, ""]);
-  arr7 = jsav.ds.array([20, 21]);
-  arr8 = jsav.ds.array([24, ""]);
-  arr9 = jsav.ds.array([31, ""]);
-  arr10 = jsav.ds.array([45, 47]);
-  arr11 = jsav.ds.array([50, 52]);
-  Window.ODSA.positionRow([arr5, arr6, arr7, arr8, arr9, arr10, arr11], 160, width, 560);
+  window.ODSA.positionRow(arrays.slice(0, 1), 0, width, 70);
+  window.ODSA.positionRow(arrays.slice(1, 4), 80, width, 450);
+  window.ODSA.positionRow(arrays.slice(4), 160, width, 560);
 
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
   var length = 2;
-  var line3, line10;
-  console.log("promote");
-  Window.ODSA.drawEdge(jsav, properties, arr1, arr2, 0, length);
-  Window.ODSA.drawEdge(jsav, properties, arr1, arr3, 1, length);
-  line3 = Window.ODSA.drawEdge(jsav, properties, arr1, arr4, 2, length);
-  Window.ODSA.drawEdge(jsav, properties, arr2, arr5, 0, length);
-  Window.ODSA.drawEdge(jsav, properties, arr2, arr6, 1, length);
-  Window.ODSA.drawEdge(jsav, properties, arr3, arr7, 0, length);
-  Window.ODSA.drawEdge(jsav, properties, arr3, arr8, 1, length);
-  Window.ODSA.drawEdge(jsav, properties, arr3, arr9, 2, length);
-  Window.ODSA.drawEdge(jsav, properties, arr4, arr10, 0, length);
-  line10 = Window.ODSA.drawEdge(jsav, properties, arr4, arr11, 1, length);
+  var lines = window.ODSA.getArrayNodesEdges(jsav, arrays, length, properties);
 
-  // set initial display for first slide.
+  var messages = [
+    "A simple node-splitting insert for a 2-3 tree. We want to insert the key 55 into the tree. ",
+    "The key is first compared against the root node. Since 55 is more than the right key of the root node, the right child node if followed.",
+    "This node has only one element, and 55 is greater than 48 so the center child is followed next.",
+    "A leaf node has being reached. Since the leaf node has no empty spaces it will have to be split.",
+    "Next we have to rearrange the keys. First the largest key 55 goes to the new node.",
+    "The smallest key 50 goes to the old node. In this case it stays in the same place.",
+    "The middle key 52 gets promoted. Because the parent node has space available, the key can just be inserted in the parent node.",
+    "The pointers can be updated now.",
+    "The insertion is complete"
+  ];
+
+  var highlight_property = {"box-shadow": "0 0 15px 5px rgb(237, 98, 83)"};
+  var reset_property = {"box-shadow": "none"};
+
+  /* 1st Slide *************************************************************/
+  jsav.umsg(messages.shift());
+  jsav.label("Insert:", {left: "55px", top: "5px"});
+  var insert = jsav.ds.array([55], {left: "100px", top: "0px"});
   jsav.displayInit();
 
   /* 2nd Slide *************************************************************/
-  jsav.umsg("The value 55 is inserted into the tree. The value is first compared against the root node.\n" +
-    "Since 55 is more than the right key of the root node it follows the right child node.");
-  arr1.highlight(1);
-  line3.css({"stroke": "red"});
+  jsav.umsg(messages.shift());
+  arrays[0].css(highlight_property);
+  arrays[0].highlight(1);
+  lines[2].css({"stroke": "red"});
   jsav.step();
 
   /* 3rd Slide *************************************************************/
-  jsav.umsg("This node has only one element, and 55 is greater than 48 so the center child is followed next.");
-  line3.css({"stroke": "black"});
-  arr1.unhighlight(1);
-  arr4.highlight(0);
-  line10.css({"stroke": "red"});
+  jsav.umsg(messages.shift());
+  arrays[3].css(highlight_property);
+  arrays[0].css(reset_property);
+  lines[2].css({"stroke": "black"});
+  arrays[0].unhighlight(1);
+  arrays[3].highlight(0);
+  lines[9].css({"stroke": "red"});
   jsav.step();
 
   /* 4th Slide *************************************************************/
-  jsav.umsg("A leaf node has being reached. Since the leaf node has no empty spaces it will have to be split.");
-  line10.css({"stroke": "black"});
-  arr4.unhighlight(0);
-  arr11.highlight(0);
-  arr11.highlight(1);
+  jsav.umsg(messages.shift());
+  arrays[10].css(highlight_property);
+  arrays[3].css(reset_property);
+  lines[9].css({"stroke": "black"});
+  arrays[3].unhighlight(0);
   jsav.step();
 
   /* 5th Slide *************************************************************/
-  jsav.umsg("Now the values are split. The largest key (55) goes to the new node, the smallest key (50) goes to the " +
-    "old node, and the middle key (52) gets promoted.");
-  arr12 = jsav.ds.array(["", ""], {visible: false});
-  Window.ODSA.positionRow([arr5, arr6, arr7, arr8, arr9, arr10, arr11, arr12], 160, width + 80, 639);
-  arr12.show();
-  arr12.unhighlight(0);
-  arr12.unhighlight(1);
-  arr11.unhighlight(0);
-  arr11.unhighlight(1);
+  jsav.umsg(messages.shift());
+  arrays.push(jsav.ds.array(["", ""], {visible: false}));
+  window.ODSA.positionRow(arrays.slice(4), 160, width + 80, 639);
+  arrays[11].show();
+  arrays[11].css(highlight_property);
   jsav.step();
 
   /* 6th Slide *************************************************************/
-  jsav.umsg("The pointers can be updated now.");
-  jsav.effects.moveValue(arr11, 1, arr4, 1);
-  jsav.effects.moveValue(insert, 0, arr12, 0);
-  arr4.highlight(1);
+  jsav.umsg(messages.shift());
+  jsav.effects.moveValue(insert, 0, arrays[11], 0);
   jsav.step();
 
   /* 7th Slide *************************************************************/
-  jsav.umsg("The key 55 was inserted to the tree.");
-  arr4.unhighlight(1);
-  Window.ODSA.drawEdge(jsav, properties, arr4, arr12, 2, length);
+  jsav.umsg(messages.shift());
+  jsav.step();
+
+  /* 8th Slide *************************************************************/
+  jsav.umsg(messages.shift());
+  arrays[3].css(highlight_property);
+  arrays[11].css(reset_property);
+  arrays[10].css(reset_property);
+  jsav.effects.moveValue(arrays[10], 1, arrays[3], 1);
+  arrays[3].highlight(1);
+  jsav.step();
+
+  /* 9th Slide *************************************************************/
+  jsav.umsg(messages.shift());
+  window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[11], 2, length);
+  arrays[3].unhighlight(1);
+  arrays[3].css(reset_property);
   jsav.step();
 
   // Mark the slide show as finished.
   jsav.recorded();
 
-}(jQuery));
+}());
 
-// Create slide show for splitCON
-(function ($) {
+
+/**
+ * Creates a slide show that demonstrates how a node can be split in a 2-3 tree.
+ *
+ * Container ID: splitCON
+ */
+(function () {
   "use strict";
-  var jsav = new JSAV("splitCON"), i;
-
-  /* 1st Slide *************************************************************/
-  jsav.umsg("Example of inserting a record that causes the 2-3 tree root to split.");
-
-  jsav.label("Insert:", {left: "55px", top: "5px"});
-  jsav.label("Promote:", {left: "35px", top: "55px"});
-
-  var insert = jsav.ds.array([19], {left: "100px", top: "0px"});
-  var promote = jsav.ds.array([""], {left: "100px", top: "50px"});
+  var jsav = new JSAV("splitCON");
 
   // Create all the arrays that represent the nodes in the 2-3 tree.
-  var arrays = [];
+  var arrays = window.ODSA.getArrayNodes(jsav);
+  // Position the array nodes.
   var width = 800;
-  arrays.push(jsav.ds.array([18, 13]));
-  Window.ODSA.positionRow(arrays.slice(0, 1), 80, width, 70);
-  arrays.push(jsav.ds.array([12, ""]));
-  arrays.push(jsav.ds.array([23, 30]));
-  arrays.push(jsav.ds.array([48, ""]));
-  Window.ODSA.positionRow(arrays.slice(1), 160, width, 480);
-  arrays.push(jsav.ds.array([48, ""]));
-  arrays.push(jsav.ds.array([10, ""]));
-  arrays.push(jsav.ds.array([20, 21]));
-  arrays.push(jsav.ds.array([24, ""]));
-  arrays.push(jsav.ds.array([31, ""]));
-  arrays.push(jsav.ds.array([45, 47]));
-  arrays.push(jsav.ds.array([50, 52]));
-  Window.ODSA.positionRow(arrays.slice(4), 240, width, 560);
-
+  window.ODSA.positionRow(arrays.slice(0, 1), 80, width, 70);
+  window.ODSA.positionRow(arrays.slice(1, 4), 160, width, 480);
+  window.ODSA.positionRow(arrays.slice(4), 240, width, 560);
 
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
   var length = 2;
-  var lines = [];
-  console.log("split");
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[1], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[2], 1, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[3], 2, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[4], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[5], 1, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[6], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[7], 1, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[8], 2, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[9], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[10], 1, length));
+  var lines = window.ODSA.getArrayNodesEdges(jsav, arrays, length, properties);
 
-  // set initial display for first slide.
+  var messages = [
+    "Example of inserting a record that causes the 2-3 tree root to split. We want to insert the key 19 into the tree.",
+    "The key is first compared against the root node. Since 19 is more than the left key and less than the right key of the root node, the center child node is followed next.",
+    "This node has only two elements, and 19 is less than 23 so the left child is followed next.",
+    "A leaf node has being reached. Since the leaf node has no empty spaces it will have to be split.",
+    "Next we have to rearrange the keys. First the largest key (21) goes in the new node.",
+    "The middle key (20) has to be promoted.",
+    "The smallest key (19) goes is the old node",
+    "The parent node is full, so the promoted element cannot be inserted. Therefore the parent node has to be split.",
+    "Again, the largest key (30) goes in the new node, the smallest key (20) goes is the old node, and the middle key (23) is promoted",
+    "The pointers can now be updated",
+    "The parent node is full so the promoted element cannot be inserted. Therefore the parent node has to be split. Because the parent node is the root node, a new root has to be created as well.",
+    "Again, the largest key (23) goes in the new node, the smallest key (13) goes is the old node, and the middle key (18) is promoted.",
+    "The pointers can now be updated.",
+    "The insertion is complete."
+  ];
+
+  var highlight_property = {"box-shadow": "0 0 15px 5px rgb(237, 98, 83)"};
+  var reset_property = {"box-shadow": "none"};
+
+  /* 1st Slide *************************************************************/
+  jsav.umsg(messages.shift());
+  jsav.label("Insert:", {left: "55px", top: "5px"});
+  jsav.label("Promote:", {left: "35px", top: "55px"});
+  var insert = jsav.ds.array([19], {left: "100px", top: "0px"});
+  var promote = jsav.ds.array([""], {left: "100px", top: "50px"});
   jsav.displayInit();
 
   /* 2nd Slide *************************************************************/
-  jsav.umsg("The value 19 is inserted into the tree. The value is first compared against the root node.\n" +
-    "Since 19 is more than the left value and less than the right value of the root node it follows the " +
-    "center child node.");
-  arrays[0].highlight(1);
-  arrays[0].highlight(0);
+  jsav.umsg(messages.shift());
+  arrays[0].css(highlight_property);
   lines[1].css({"stroke": "red"});
   jsav.step();
 
   /* 3rd Slide *************************************************************/
-  jsav.umsg("This node has only two elements, and 19 is less than 23 so the left child is inspected next.");
+  jsav.umsg(messages.shift());
+  arrays[2].css(highlight_property);
+  arrays[0].css(reset_property);
   lines[2].css({"stroke": "black"});
   lines[1].css({"stroke": "black"});
-  arrays[0].unhighlight(1);
-  arrays[0].unhighlight(0);
   arrays[2].highlight(0);
   lines[5].css({"stroke": "red"});
   jsav.step();
 
   /* 4th Slide *************************************************************/
-  jsav.umsg("A leaf node has being reached. Since the leaf node has no empty spaces it will have to be split.");
+  jsav.umsg(messages.shift());
+  arrays[6].css(highlight_property);
+  arrays[2].css(reset_property);
   lines[5].css({"stroke": "black"});
   arrays[2].unhighlight(0);
-  arrays[6].highlight(0);
-  arrays[6].highlight(1);
   jsav.step();
 
   /* 5th Slide *************************************************************/
-  jsav.umsg("The largest key (21) goes in the new node, the smallest key (19) goes is the old node, and " +
-    "the middle key (20) has to be promoted. ");
+  jsav.umsg(messages.shift());
   arrays.splice(7, 0, jsav.ds.array(["", ""], {visible: false}));
-  Window.ODSA.positionRow(arrays.slice(4), 240, width, 640);
+  window.ODSA.positionRow(arrays.slice(4), 240, width, 640);
   arrays[7].show();
-  for (i = 3; i < lines.length; i += 1) {
+  for (var i = 3; i < lines.length; i += 1) {
     lines[i].hide();
   }
-  lines.splice(3, 1, Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[4], 0, length));
-  lines.splice(4, 1, Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[5], 1, length));
-  lines.splice(5, 1, Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[6], 0, length));
-  lines.splice(6, 1, Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[8], 1, length));
-  lines.splice(7, 1, Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[9], 2, length));
-  lines.splice(8, 1, Window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[10], 0, length));
-  lines.splice(9, 1, Window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[11], 1, length));
-  arrays[6].unhighlight(0);
-  arrays[6].unhighlight(1);
+  lines.splice(3, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[4], 0, length));
+  lines.splice(4, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[5], 1, length));
+  lines.splice(5, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[6], 0, length));
+  lines.splice(6, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[8], 1, length));
+  lines.splice(7, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[9], 2, length));
+  lines.splice(8, 1, window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[10], 0, length));
+  lines.splice(9, 1, window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[11], 1, length));
+  arrays[7].css(highlight_property);
   jsav.step();
 
   /* 6th Slide *************************************************************/
-  jsav.umsg("The parent node is full, so the promoted element cannot be inserted. Therefore the parent" +
-    " node has to be split.");
+  jsav.umsg(messages.shift());
   jsav.effects.moveValue(arrays[6], 1, arrays[7], 0);
-  jsav.effects.moveValue(arrays[6], 0, promote, 0);
-  jsav.effects.moveValue(insert, 0, arrays[6], 0);
   jsav.step();
 
   /* 7th Slide *************************************************************/
-  jsav.umsg("Again, the largest key (30) goes in the new node, the smallest key (20) goes is the old node, and " +
-    "the middle key (23) is promoted");
-  arrays.splice(3, 0, jsav.ds.array(["", ""], {visible: false}));
-  Window.ODSA.positionRow(arrays.slice(1, 5), 160, width, 550);
-  arrays[3].show();
-  for (i = 0; i < lines.length; i += 1) {
-    lines[i].hide();
-  }
-  lines.splice(0, 1, Window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[1], 0, length));
-  lines.splice(1, 1, Window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[2], 1, length));
-  lines.splice(2, 1, Window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[4], 2, length));
-
-  lines.splice(3, 1, Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[5], 0, length));
-  lines.splice(4, 1, Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[6], 1, length));
-  lines.splice(5, 1, Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[7], 0, length));
-  lines.splice(6, 1, Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[9], 1, length));
-  lines.splice(7, 1, Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[10], 2, length));
-  lines.splice(8, 1, Window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[11], 0, length));
-  lines.splice(9, 1, Window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[12], 1, length));
+  jsav.umsg(messages.shift());
+  jsav.effects.moveValue(arrays[6], 0, promote, 0);
   jsav.step();
 
   /* 8th Slide *************************************************************/
-  jsav.umsg("The pointers can now be updated");
+  jsav.umsg(messages.shift());
+  jsav.effects.moveValue(insert, 0, arrays[6], 0);
+  jsav.step();
+
+  /* 9th Slide *************************************************************/
+  jsav.umsg(messages.shift());
+  arrays[6].css(reset_property);
+  arrays[7].css(reset_property);
+  arrays.splice(3, 0, jsav.ds.array(["", ""], {visible: false}));
+  window.ODSA.positionRow(arrays.slice(1, 5), 160, width, 550);
+  arrays[3].show();
+  arrays[2].css(highlight_property);
+  arrays[3].css(highlight_property);
+  for (i = 0; i < lines.length; i += 1) {
+    lines[i].hide();
+  }
+  lines.splice(0, 1, window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[1], 0, length));
+  lines.splice(1, 1, window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[2], 1, length));
+  lines.splice(2, 1, window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[4], 2, length));
+  lines.splice(3, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[5], 0, length));
+  lines.splice(4, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[6], 1, length));
+  lines.splice(5, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[7], 0, length));
+  lines.splice(6, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[9], 1, length));
+  lines.splice(7, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[10], 2, length));
+  lines.splice(8, 1, window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[11], 0, length));
+  lines.splice(9, 1, window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[12], 1, length));
+  jsav.step();
+
+  /* 10th Slide *************************************************************/
+  jsav.umsg(messages.shift());
   jsav.effects.moveValue(arrays[2], 1, arrays[3], 0);
   jsav.effects.moveValue(promote, 0, arrays[2], 0);
   promote.value(0, 23);
   jsav.step();
 
-  /* 9th Slide *************************************************************/
-  jsav.umsg("The parent node is full so the promoted element cannot be inserted. " +
-    "Therefore the parent node has to be split. Because the parent node is the root node, a new root has to be " +
-    "created as well.");
+  /* 11th Slide *************************************************************/
+  jsav.umsg(messages.shift());
   for (i = 3; i < lines.length; i += 1) {
     lines[i].hide();
   }
-  lines.splice(3, 1, Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[5], 0, length));
-  lines.splice(4, 1, Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[6], 1, length));
-  lines.splice(5, 1, Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[7], 0, length));
-  lines.splice(6, 1, Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[8], 1, length));
-  lines.splice(7, 1, Window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[9], 0, length));
-  lines.splice(8, 1, Window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[10], 1, length));
-  lines.splice(9, 1, Window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[11], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[12], 1, length));
+  lines.splice(3, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[5], 0, length));
+  lines.splice(4, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[6], 1, length));
+  lines.splice(5, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[7], 0, length));
+  lines.splice(6, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[8], 1, length));
+  lines.splice(7, 1, window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[9], 0, length));
+  lines.splice(8, 1, window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[10], 1, length));
+  lines.splice(9, 1, window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[11], 0, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[12], 1, length));
   jsav.step();
 
-  /* 10th Slide *************************************************************/
-  jsav.umsg("Again, the largest key (23) goes in the new node, the smallest key (13) goes is the old node, and " +
-    "the middle key (18) is promoted.");
+  /* 12th Slide *************************************************************/
+  jsav.umsg(messages.shift());
+  arrays[2].css(reset_property);
+  arrays[3].css(reset_property);
   arrays.splice(0, 0, jsav.ds.array(["", ""], {visible: false}));
   arrays.splice(2, 0, jsav.ds.array(["", ""], {visible: false}));
-  Window.ODSA.positionRow(arrays.slice(0, 1), 0, width, 80);
-  Window.ODSA.positionRow(arrays.slice(1, 3), 80, width, 400);
+  window.ODSA.positionRow(arrays.slice(0, 1), 0, width, 80);
+  window.ODSA.positionRow(arrays.slice(1, 3), 80, width, 400);
   arrays[0].show();
   arrays[2].show();
+  arrays[0].css(highlight_property);
+  arrays[1].css(highlight_property);
+  arrays[2].css(highlight_property);
   for (i = 0; i < 3; i += 1) {
     lines[i].hide();
   }
-  lines.splice(0, 1, Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[3], 0, length));
-  lines.splice(1, 1, Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[4], 1, length));
-  lines.splice(2, 1, Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[6], 2, length));
+  lines.splice(0, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[3], 0, length));
+  lines.splice(1, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[4], 1, length));
+  lines.splice(2, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[6], 2, length));
   jsav.step();
 
-  /* 8th Slide *************************************************************/
-  jsav.umsg("The pointers can now be updated.");
+  /* 13th Slide *************************************************************/
+  jsav.umsg(messages.shift());
   jsav.effects.moveValue(promote, 0, arrays[2], 0);
   jsav.effects.moveValue(arrays[1], 1, arrays[1], 0);
   arrays[0].value(0, 18);
   jsav.step();
 
-  /* 11th Slide *************************************************************/
-  jsav.umsg("The key 19 has now being inserted into the tree.");
+  /* 14th Slide *************************************************************/
+  jsav.umsg(messages.shift());
   for (i = 0; i < lines.length; i += 1) {
     lines[i].hide();
   }
   lines = [];
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[1], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[2], 1, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[3], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[4], 1, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[5], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[6], 1, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[7], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[8], 1, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[9], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[10], 1, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[5], arrays[11], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[5], arrays[12], 1, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[6], arrays[13], 0, length));
-  lines.push(Window.ODSA.drawEdge(jsav, properties, arrays[6], arrays[14], 1, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[1], 0, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[2], 1, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[3], 0, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[4], 1, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[5], 0, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[6], 1, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[7], 0, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[8], 1, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[9], 0, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[10], 1, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[5], arrays[11], 0, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[5], arrays[12], 1, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[6], arrays[13], 0, length));
+  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[6], arrays[14], 1, length));
+  arrays[0].css(reset_property);
+  arrays[1].css(reset_property);
+  arrays[2].css(reset_property);
   jsav.step();
 
   // Mark the slide show as finished.
   jsav.recorded();
 
-}(jQuery));
+}());
