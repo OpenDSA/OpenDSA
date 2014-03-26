@@ -1,5 +1,5 @@
 // Create the pagedBSTCON diagram
-(function ($) {
+(function () {
   "use strict";
   // Create JSAV object
   var jsav = new JSAV("pagedBSTCON", {"animationMode": "none"});
@@ -18,10 +18,7 @@
 
   // Recursive function to create a binary tree of height 4.
   function genNodes(root, level) {
-    if (level > 2) {
-      // Base case
-      return;
-    } else {
+    if (level <= 2) {
       // Create left and right child nodes.
       genNodes(root.left(""), level + 1);
       genNodes(root.right(""), level + 1);
@@ -36,12 +33,12 @@
   genNodes(bst.root(), 0);
   // Redraw binary tree to dislay newly created children nodes.
   bst.layout();
-}(jQuery));
+}());
 
 // Create the balanceBSTCON diagram.
-(function ($) {
+(function () {
   "use strict";
-  // Intialize JSAV object.
+  // Initialize JSAV object.
   var jsav = new JSAV("balanceBSTCON", {"animationMode": "none"});
   // Initialize BST and the balanced BST object.
   var bst = jsav.ds.bintree({left: "10px", nodegap: 20});
@@ -75,5 +72,5 @@
   bst.layout();
   bbst.layout();
 
-}(jQuery));
+}());
 
