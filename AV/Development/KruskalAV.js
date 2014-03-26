@@ -105,9 +105,9 @@
       minEdge.addClass('visited');
       jsav.step();
       //End Algorithm when all Nodes are added to MST
-      if (mst.edges().length === gnodes.length-1) {
-        break;
-      }
+      //if (mst.edges().length === gnodes.length-1) {
+        //break;
+      //}
     }
   }
   function find(treeNode) {
