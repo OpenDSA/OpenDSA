@@ -11,9 +11,9 @@
 Binary Trees Chapter Introduction
 =================================
 
-Tree structures enable efficient access and efficient update to
+:term:`Tree` structures enable efficient access and efficient update to
 large collections of data.
-Binary trees in particular are widely used and relatively easy to
+:term:`Binary trees` in particular are widely used and relatively easy to
 implement.
 But binary trees are useful for many things besides searching.
 Just a few examples of applications that trees can speed up include
