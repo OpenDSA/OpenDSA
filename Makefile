@@ -40,7 +40,8 @@ jshint:
 	-@jshint lib/gradebook.js
 	-@jshint lib/registerbook.js
 
-min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
+min: nomin
+#lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
 RecurTutor: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json
@@ -105,9 +106,17 @@ slides: min
 allBooks: CS150 CS3114 CSCI204 CSCI102 CS5114 CS2114 OpenDSA Everything test slides uwosh
 
 nomin:
+	cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	cp lib/odsaUtils.js lib/odsaUtils-min.js
+	cp lib/odsaMOD.js lib/odsaMOD-min.js
 	cp lib/odsaAV.js lib/odsaAV-min.js
+	cp lib/gradebook.js lib/gradebook-min.js
+	cp ODSAkhan-exercises/khan-exercise.js lib/khan-exercise-min.js
+	cp lib/registerbook.js lib/registerbook-min.js
+	cp lib/site.css lib/site-min.css
 	cp lib/odsaAV.css lib/odsaAV-min.css
+	cp lib/odsaMOD.css lib/odsaMOD-min.css
+	cp lib/gradebook.css lib/gradebook-min.css
 
 pull:
 	git pull
