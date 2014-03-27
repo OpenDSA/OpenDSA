@@ -170,7 +170,7 @@
   var bst = jsav.ds.bintree({nodegap: 15});
 
   // Create color array
-  var colors = ["#00FF31", "#269BFF", "#FF2100", "#FFDE00", "#E351CF"];
+  var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];
 
   // Create disk rectangles.
   var width = 100;
