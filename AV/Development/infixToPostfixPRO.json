@@ -1,9 +1,9 @@
 {
   "translations" :{
     "en": {
-      "ODSAtitle": "Infix To Postfix",
-      "ODSAinstructlabel": "Instructions:",
-      "ODSAinstructions": "Convert the infix expression into a postfix expression in the table below. You can move elements to the Bit Bucket to make them disappear.",
+      "exerciseTitle": "Infix To Postfix",
+      "instructLabel": "Instructions:",
+      "instructions": "Convert the infix expression into a postfix expression in the table below. You can move elements to the Bit Bucket to make them disappear.",
       "infix_expression": "Infix Expression",
       "stack": "Stack",
       "postfix_expression": "Postfix Expression",
@@ -18,9 +18,9 @@
       "ms_com_rest": "Pop the rest of the operators from the stack and put them in the postfix expression."
     },
     "fi": {
-      "ODSAtitle": "Infix-Postfix muunnos",
-      "ODSAinstructlabel": "Ohjeet:",
-      "ODSAinstructions": "Luo ylemmässä taulukossa olevaa infix-lauseketta vastaava postfix-muoto alempaan taulukkoon simuloimalla algoritmia. Arvoja voi siirtää paikasta toiseen klikkaamalla. Halutessaan arvot saa katoamaan siirtämällä ne bittiavaruuteen.",
+      "exerciseTitle": "Infix-Postfix muunnos",
+      "instructLabel": "Ohjeet:",
+      "instructions": "Luo ylemmässä taulukossa olevaa infix-lauseketta vastaava postfix-muoto alempaan taulukkoon simuloimalla algoritmia. Arvoja voi siirtää paikasta toiseen klikkaamalla. Halutessaan arvot saa katoamaan siirtämällä ne bittiavaruuteen.",
       "infix_expression": "Infix-lauseke",
       "stack": "Pino",
       "postfix_expression": "Postfix-lauseke",

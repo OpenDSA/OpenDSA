@@ -5,27 +5,6 @@ if (typeof window.JSAV_OPTIONS === "undefined")
   window.JSAV_OPTIONS = {};
 
 
-// same as updateJSAVExerOptions, except that it uses the flag JOP instead of
-// JXOP and sets JSAV_OPTIONS instead of JSAV_EXERCISE_OPTIONS
-function updateJSAVOptions() {
-  // Parse the querystring from the URL
-  var urlParamList = location.href.substring(location.href.indexOf("?") + 1).split('&');
-  var kvPair;
-
-  // Loop through all arguments in the querystring
-  for (var i in urlParamList) {
-    // Arguments that begin with the prefix 'JOP-' are JSAV exercise option settings
-    if (urlParamList[i].indexOf('JOP-') === 0) {
-      kvPair = urlParamList[i].split('=');
-      // Strip the 'JOP-' flag from the setting name and apply the specified value
-      window.JSAV_EXERCISE_OPTIONS[kvPair[0].replace('JOP-', '')] = kvPair[1];
-    }
-  }
-}
-
-updateJSAVOptions();
-
-
 ODSA.UTILS.getConfig = function (url) {
   var configurationFile;
   var result = {};
@@ -78,17 +57,17 @@ ODSA.UTILS.getConfig = function (url) {
 
 ODSA.UTILS.setTitleAndInstructions = function (container, translation) {
   container = $(container);
-  var $title = container.find(".ODSAtitle");
-  var $instructLabel = container.find(".ODSAinstructlabel");
-  var $instructions = container.find(".ODSAinstructions");
+  var $title = container.find(".exerciseTitle");
+  var $instructLabel = container.find(".instructLabel");
+  var $instructions = container.find(".instructions");
 
   if ($title.length !== 0) {
-    $title.html(translation.ODSAtitle);
+    $title.html(translation.exerciseTitle);
   }
   if ($instructLabel.length !== 0) {
-    $instructLabel.html(translation.ODSAinstructlabel);
+    $instructLabel.html(translation.instructLabel);
   }
   if ($instructions.length !== 0) {
-    $instructions.html(translation.ODSAinstructions);
+    $instructions.html(translation.instructions);
   }
 };

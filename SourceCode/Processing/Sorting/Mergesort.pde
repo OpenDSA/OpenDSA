@@ -20,7 +20,7 @@ void mergesort(Comparable[] A, Comparable[] temp, int left, int right) {
       A[curr] = temp[i2++];
     else if (i2 > right)             // Right sublist exhausted
       A[curr] = temp[i1++];
-    else if (temp[i1].compareTo(temp[i2]) < 0)    // Get smaller value
+    else if (temp[i1].compareTo(temp[i2]) <= 0)  // Get smaller value
       A[curr] = temp[i1++];
     else A[curr] = temp[i2++];
   }

@@ -25,7 +25,8 @@
 
     // show the code and highlight the row where mid is calculated
     if (!pseudo && config.code) {
-      pseudo = av.code( $.extend({after: {element: $(".ODSAinstructions")}}, config.code) );
+      console.log(config);
+      pseudo = av.code( $.extend({after: {element: $(".instructions")}}, config.code) );
       pseudo.show();
       pseudo.highlight(config.code.tags.highlight);
     }
