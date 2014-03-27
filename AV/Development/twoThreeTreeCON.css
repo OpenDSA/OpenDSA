@@ -35,6 +35,15 @@
   font-size: .9em;
 }
 
+/* Make corners of arrays square */
+.jsavarray .jsavnode.jsavindex {
+  -ms-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
 /* Styling for the twoThreeTreeCON diagram ***********************************/
 
 /* Sets maximum width to JSAV container */

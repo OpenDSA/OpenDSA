@@ -87,7 +87,11 @@ Settings (all are required unless otherwise specified)
   * The compiled textbook will appear in ``[build_dir]/[book name]/html``
   * This directory must be web accessible
 
-* **code_dir** - specifies the directory containing the source code to be used in textbook examples
+* **code_dir** - specifies the directory which contains another directory whose name matches ``code_lang`` (see below) which contains the source code used in examples
+
+  * Ex: If ``{"code_dir": "SourceCode/", "code_lang": "python"}`` then the book would look for example Python source code in ``~OpenDSA/SourceCode/python``
+
+* **code_lang** - specifies the programming language used for examples and exercises throughout the book
 
 * **module_origin** - the protocol and domain where the module files are hosted
 
@@ -108,7 +112,9 @@ Settings (all are required unless otherwise specified)
   * Used on module pages to allow HTML5 post messages from this origin, allows embedded AVs to communicate with the parent module page
   * Ex: "av_origin": "http://algoviz.org",
 
-* **glob_jsav_exer_options** - (optional) an object containing options (applied to every JSAV exercise in the book) that control how JSAV handles exercises, can be overridden by exercise-specific options
+* **glob_mod_options** - (optional) an object containing options applied to every module in the book, allow settings specific to a certain module to be passed to that module alone, can be overridden by module-specific options
+
+* **glob_exer_options** - (optional) an object containing options applied to every exercise in the book, can be used to control the behavior of the exercise, can be overridden by exercise-specific options
 
 * **exercises_root_dir** - (optional) allows the user to change the default location where the Exercises/ directory can be found, defaults to OpenDSA root directory if omitted
 
@@ -161,12 +167,14 @@ Settings (all are required unless otherwise specified)
 
     * **dispModComp** - (optional) a flag which if set to "true" will force the "Module Complete" message to appear even if the module contains no required exercises, if set to "false", the "Module Complete" message will not appear even if the module DOES contain required exercises
 
+    * **mod_options** - (optional) overrides ``glob_mod_options``, allows modules to be configured independently from one another.  Can be used to override the options set using ``glob_mod_options``. Options that should be stored in ``JSAV_OPTIONS`` should be prepended with ``JOP-`` and options that should be stored in ``JSAV_EXERCISE_OPTIONS`` should be prepended with ``JXOP-`` (can be used to override the defaults set in ``odsaUtils.js``).  All other options will be made directly available to modules in the form of a parameters object created automatically by the client-side framework (specifically whn ``parseURLParams()`` is called in ``odsaUtils.js``)
+
     * **exercises** - a collection of exercise objects representing the exercises found in the module's RST file
 
       * Omitting an exercise from the module's "exercises" object will cause the exercise to be removed from the configured module
       * Each exercise object contains required information about that exercise including:
 
-        * **jsav_exer_options** - (optional) an object containing exercise-specific configurations options for JSAV.  Can be used to override the options set using ``glob_jsav_exer_options``. The string 'JXOP-' is prepended to every option name so that the client can determine which values should be applied to the ``JSAV_EXERCISE_OPTIONS`` global variable in ``odsaAV.js``
+        * **exer_options** - (optional) an object containing exercise-specific configuration options for JSAV.  Can be used to override the options set using ``glob_exer_options``. Options that should be stored in ``JSAV_OPTIONS`` should be prepended with ``JOP-`` and options that should be stored in ``JSAV_EXERCISE_OPTIONS`` should be prepended with ``JXOP-`` (can be used to override the defaults set in ``odsaUtils.js``).  All other options will be made directly available to exercises in the form of a parameters object created automatically by the client-side framework (specifically whn ``parseURLParams()`` is called in ``odsaUtils.js``)
 
         * **long_name** - (optional) a long form, human-readable name used to identify the exercise in the GUI, defaults to short exercise name if omitted
         * **points** - (optional) the number of points the exercise is worth, defaults to ``0`` if omitted

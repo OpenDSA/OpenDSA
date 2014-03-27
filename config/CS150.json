@@ -1023,8 +1023,8 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.90,
-            "jsav_exer_options": {
-              "fixmode": "undo"
+            "exer_options": {
+              "JXOP-fixmode": "undo"
              }
           },
           "QuicksortSumm": {

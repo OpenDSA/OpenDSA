@@ -144,6 +144,7 @@ Glossary
       these are required to be in the right subtree.
 
    binary tree
+   binary trees
       A finite set of nodes which is either empty, or else has a root
       node together two binary trees, called the left and right
       :term:`subtrees`,  which are disjoint from each other and from
@@ -397,8 +398,8 @@ Glossary
       left as :term:`garbage`, depending on the programming language.
 
    edge
-      The connection that links two :term:`nodes` in a tree, linked
-      list, or graph.
+      The connection that links two :term:`nodes` in a :term:`tree`,
+      :term:`linked list`, or :term:`graph`.
 
    efficient
       A solution is said to be efficient
