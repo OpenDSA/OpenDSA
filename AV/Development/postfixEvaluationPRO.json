@@ -17,7 +17,7 @@
       "exerciseTitle": "Postfix lausekkeen evaluointi",
       "instructLabel": "Ohjeet:",
       "instructions": "Evaluoi taulukossa näkyvä postfix lauseke viemällä operandit pinoon ja operaattorit laskimelle. Arvoja voi siirtää paikasta toiseen klikkaamalla. Laskuoperaatio suoritetaan pinon kahdelle ylimmälle alkiolle kun operaattori viedään laskimeen.",
-      "postfix_expression": "Postfix lauseke",
+      "postfix_expression": "Postfix-lauseke",
       "operand_stack": "Operandipino",
       "evaluator": "Laskin 2.0",
       "ms_com_operand": "Operandi viedään pinoon.",
