@@ -46,7 +46,7 @@
 	av.umsg("And since this had to be done for the records from $1$ to $n-1$, then we have the total cost as:");
 	eq.text
 ("\\begin{eqnarray*}\\displaystyle\\sum_{i=1}^{n-1}\\frac{\\displaystyle\\sum_{j=1}^{i}j}{i} \\end{eqnarray*}");
-	var label = av.label("|____________________|",  {"top": "85px", "left": "315px"}).css({'font-size': '20px', "text-align": "center"});
+	var label = av.label("|____________________|",  {"top": "85px", "left": "365px"}).css({'font-size': '20px', "text-align": "center"});
 	rect = av.g.rect(263, 235, 170, 15).css({"fill": "green","opacity":0.3});
 	arr.unhighlight(4);
 	arr.css([0,1,2,3],{"background-color":"white"});
