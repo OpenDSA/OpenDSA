@@ -22,7 +22,7 @@ void mergesort(Comparable[] A, Comparable[] temp, int left, int right) {
   for (j=right; j>mid; j--) temp[i++] = A[j];
   // Merge sublists back to array
   for (i=left,j=right,k=left; k<=right; k++)
-    if (temp[i].compareTo(temp[j]) < 0) A[k] = temp[i++];
+    if (temp[i].compareTo(temp[j]) <= 0) A[k] = temp[i++];
     else A[k] = temp[j--];
 }
 /* *** ODSAendTag: MergesortOpt *** */

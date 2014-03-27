@@ -64,7 +64,7 @@ Here is pseudocode for merge on lists::
           answer.append(L1);
           L1 = NULL;
         }
-        else if (L1.value() < L2.value()) {
+        else if (L1.value() <= L2.value()) {
           answer.append(L1.value());
           L1 = L1.next();
         }
