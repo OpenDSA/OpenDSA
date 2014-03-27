@@ -1,5 +1,84 @@
-// Create the pagedBSTCON diagram
-(function ($) {
+(function () {
+  "use strict";
+
+  function generateBSTNodes(root, max_level, level, colors) {
+    if (level <= max_level) {
+      var color_index;
+      // Determine if left node will be created.
+      if (Math.random() > window.ODSA.probability_threshold) {
+        // Create new node.
+        var new_left = root.left("");
+        // Determine node background color.
+        color_index = Math.floor((Math.random() * 100) % colors.length);
+        new_left.css({"background-color": colors[color_index]});
+        // Give node chosen property
+        new_left.is_chosen = false;
+        // Add node to bottom layer if level is last.
+        if (level === max_level) {
+          window.ODSA.bottom_layer.push(new_left);
+        }
+        generateBSTNodes(new_left, max_level, level + 1, colors);
+      }
+
+      // Determine if right node will be created.
+      if (Math.random() > window.ODSA.probability_threshold) {
+        // Determine if left node will be created.
+        var new_right = root.right("");
+        // Determine node background color.
+        color_index = Math.floor((Math.random() * 100) % colors.length);
+        new_right.css({"background-color": colors[color_index]});
+        // Give node chosen property
+        new_right.is_chosen = false;
+        // Add node to bottom layer if level is last.
+        if (level === max_level) {
+          window.ODSA.bottom_layer.push(new_right);
+        }
+        generateBSTNodes(new_right, max_level, level + 1, colors);
+      }
+    } else {
+      return null;
+    }
+  }
+
+  function getAnswer(root, disk_accesses) {
+    if (root.is_chosen === true) {
+      window.ODSA.disk_accesses = disk_accesses;
+    } else {
+      // Explore left child.
+      if (typeof(root.left()) !== "undefined" && root.left() !== null) {
+        if (root.css("background-color") !== root.left().css("background-color")) {
+          getAnswer(root.left(), disk_accesses + 1);
+        } else {
+          getAnswer(root.left(), disk_accesses);
+        }
+      }
+
+      // Explore right child.
+      if (typeof(root.right()) !== "undefined" && root.right() !== null) {
+        if (root.css("background-color") !== root.right().css("background-color")) {
+          getAnswer(root.right(), disk_accesses + 1);
+        } else {
+          getAnswer(root.right(), disk_accesses);
+        }
+      }
+    }
+  }
+
+  var ODSA = {};
+  ODSA.generateBSTNodes = generateBSTNodes;
+  ODSA.getAnswer = getAnswer;
+  ODSA.bottom_layer = [];
+  ODSA.disk_accesses = 0;
+  ODSA.probability_threshold = 0.3;
+  window.ODSA = ODSA;
+}());
+
+/**
+ * Creates a diagram to demonstrate how a binary search tree might be laid out on disk.
+ *
+ * Container ID: pagedBSTCON
+ */
+(function () {
   "use strict";
   // Create JSAV object
   var jsav = new JSAV("pagedBSTCON", {"animationMode": "none"});
@@ -18,10 +97,7 @@
 
   // Recursive function to create a binary tree of height 4.
   function genNodes(root, level) {
-    if (level > 2) {
-      // Base case
-      return;
-    } else {
+    if (level <= 2) {
       // Create left and right child nodes.
       genNodes(root.left(""), level + 1);
       genNodes(root.right(""), level + 1);
@@ -34,14 +110,18 @@
   bst.root("");
   // Generate child nodes.
   genNodes(bst.root(), 0);
-  // Redraw binary tree to dislay newly created children nodes.
+  // Redraw binary tree to display newly created children nodes.
   bst.layout();
-}(jQuery));
+}());
 
-// Create the balanceBSTCON diagram.
-(function ($) {
+/**
+ * Creates a diagram to demonstrate the changes made to a binary search tree when it is balanced.
+ *
+ * Container ID: balanceBSTCON
+ */
+(function () {
   "use strict";
-  // Intialize JSAV object.
+  // Initialize JSAV object.
   var jsav = new JSAV("balanceBSTCON", {"animationMode": "none"});
   // Initialize BST and the balanced BST object.
   var bst = jsav.ds.bintree({left: "10px", nodegap: 20});
@@ -75,5 +155,60 @@
   bst.layout();
   bbst.layout();
 
-}(jQuery));
+}());
+
+/**
+ * Demo: Randomized creation of a colorized binary search tree.
+ *
+ * Container ID: colorizedCON
+ */
+(function () {
+  "use strict";
+
+  var jsav = new JSAV("colorizedBST");
+
+  var bst = jsav.ds.bintree({nodegap: 15});
+
+  // Create color array
+  var colors = ["#00FF31", "#269BFF", "#FF2100", "#FFDE00", "#E351CF"];
+
+  // Create disk rectangles.
+  var width = 100;
+  var height = 50;
+  var x = 50;
+  var y = 210;
+  for (var i = 0; i < colors.length; i++) {
+    jsav.g.rect(x, y, width, height, {"fill": colors[i]});
+    x += width;
+  }
+
+  // Get color for right and level 1 nodes.
+  var color_root = Math.floor((Math.random() * 100) % colors.length);
+  var color_right = Math.floor((Math.random() * 100) % colors.length);
+  var color_left = Math.floor((Math.random() * 100) % colors.length);
+
+  // Create tree.
+  bst.root("").css({"background-color": colors[color_root]});
+  bst.root().right("").css({"background-color": colors[color_right]});
+  bst.root().left("").css({"background-color": colors[color_left]});
+  // Randomly generate three more levels of nodes.
+  while (window.ODSA.bottom_layer.length === 0) {
+    window.ODSA.generateBSTNodes(bst.root().left(), 2, 0, colors);
+    window.ODSA.generateBSTNodes(bst.root().right(), 2, 0, colors);
+    console.log("try again");
+  }
+  bst.layout();
+
+  // Pick bottom layer node to be chosen one.
+  var chosen_index = Math.floor((Math.random() * 100) % window.ODSA.bottom_layer.length);
+  var chosen_node = window.ODSA.bottom_layer[chosen_index];
+  chosen_node.css({"border": "1px solid white"});
+  chosen_node.css({"box-shadow": "0 0 10px 5px black"});
+  chosen_node.is_chosen = true;
+
+  // Find the number of accesses to get to chosen one.
+  window.ODSA.getAnswer(bst.root(), 1);
+  jsav.label("Number of disk accesses: " + window.ODSA.disk_accesses, {top: "280px", left: "220px"});
+
+}());
 

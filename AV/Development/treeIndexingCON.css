@@ -45,3 +45,26 @@
 #balanceBSTCON .jsavtree .jsavnode .jsavvalue {
 	margin-top: -12px;
 }
+
+/* Create styling for the colorizedBST diagram */
+
+#colorizedBST {
+  width: 600px;
+}
+
+#colorizedBST .jsavcanvas {
+  width: 600px;
+  height: 300px;
+}
+
+#colorizedBST .jsavtree .jsavnode {
+  min-width: 20px;
+  min-height: 20px;
+  max-width: 20px;
+  max-height: 20px;
+  line-height: 20px;
+}
+
+#colorizedBST .jsavvalue {
+  height: 20px;
+}

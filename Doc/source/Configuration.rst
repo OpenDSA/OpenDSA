@@ -93,8 +93,6 @@ Settings (all are required unless otherwise specified)
 
 * **code_lang** - specifies the programming language used for examples and exercises throughout the book
 
- directory containing the source code to be used in textbook examples
-
 * **module_origin** - the protocol and domain where the module files are hosted
 
   * Used by embedded exercises as the target of HTML5 post messages which send information to the parent (module) page
