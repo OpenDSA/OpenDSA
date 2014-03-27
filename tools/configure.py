@@ -67,6 +67,10 @@ module_chap_map = {}
 # Dictionary which stores a mapping of sections to modules, modules to their numbers, and figures, tables, theorems, and equations to their numbers
 num_ref_map = {}
 
+# Prints the given string to standard error
+def print_err(err_msg):
+  sys.stderr.write('%s\n' % err_msg)
+
 # Processes a chapter or section of the book
 #   - config - a dictionary containing all the configuration options
 #   - section - a dictionary where all the keys are sections or modules
@@ -141,7 +145,7 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, dep
 
   # Print error message and exit if duplicate module name is detected
   if mod_name in processed_modules:
-    print 'ERROR: Duplicate module name detected, module: ' + mod_name
+    print_err('ERROR: Duplicate module name detected, module: %s' % mod_name)
     sys.exit(1)
 
   # Add module to list of modules processed
@@ -317,8 +321,8 @@ def configure(config_file_path, slides = False):
       status = subprocess.check_call('make -s -C %s' % (config.odsa_dir + 'JSAV/'), shell=True, stdout=fnull)
 
     if status != 0:
-      print "JSAV make failed"
-      print status
+      print_err("JSAV make failed")
+      print_err(status)
       sys.exit(1)
 
   print "Writing files to " + config.book_dir + "\n"
@@ -329,10 +333,13 @@ def configure(config_file_path, slides = False):
 
   # Print out a list of any exercises found in RST files that do not appear in the config file
   if len(missing_exercises) > 0:
-    print "\nExercises Not Listed in Config File:"
+    print_err("\nExercises Not Listed in Config File:")
 
     for exercise in missing_exercises:
-      print '  ' + exercise
+      print_err('  ' + exercise)
+
+    # Print an extra line to separate this section from any additional errors
+    print_err('')
 
   # Entries are only added to todo_list if config.suppress_todo is False
   if len(todo_list) > 0:
@@ -389,8 +396,8 @@ if __name__ == "__main__":
 
   # Process script arguments
   if len(sys.argv) > 3:
-    print "Invalid config filename"
-    print "Usage: " + sys.argv[0] + " [-s] config_file_path"
+    print_err("Invalid config filename")
+    print_err("Usage: " + sys.argv[0] + " [-s] config_file_path")
     sys.exit(1)
 
   configure(args[0], options.slides)
