@@ -24,11 +24,16 @@
 #   - Writes the modified contents of the RST file out to the book's source directory
 #   - Makes the various counters and lists publicly accessible so they can be read by 'configure.py'
 
+import sys
 import os
 import datetime
 import re
 from string import whitespace as ws
 from config_templates import *
+
+# Prints the given string to standard error
+def print_err(err_msg):
+  sys.stderr.write('%s\n' % err_msg)
 
 # Generates a string that will be appended to the RST module header that sets the module options appropriately
 def format_mod_options(options):
@@ -79,7 +84,7 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
   # Print an error if the directive doesn't match what we expect
   directive = line[:line.find(':: ')].strip().split(' ')
   if len(directive) != 2 and directive[0] != '..':
-    print console_msg_prefix + "ERROR: Invalid Sphinx directive declaration"
+    print_err("%sERROR: Invalid Sphinx directive declaration" % console_msg_prefix)
 
   # Isolates the arguments to the directive
   args = line[line.find(':: ') + 3:].split(' ')
@@ -87,7 +92,7 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
   # Ensure the expected number of arguments was parsed (skip the check if -1)
   if expected_num_args > -1 and len(args) != expected_num_args:
     # Print a warning if inlineav is invoked without the minimum number of arguments
-    print console_msg_prefix + "ERROR: Invalid directive arguments for object on line " + str(line_num) + ", skipping object"
+    print_err("%sERROR: Invalid directive arguments for object on line %d, skipping object" % (console_msg_prefix, line_num))
 
   return args
 
@@ -184,7 +189,7 @@ class ODSA_RST_Module:
     filename = '{0}RST/source/{1}.rst'.format(config.odsa_dir, mod_path)
 
     if not os.path.exists(filename):
-      print 'ERROR: Module does not exist: %s' % mod_path
+      print_err('ERROR: Module does not exist: %s' % mod_path)
     else:
       # Read the contents of the module file from the RST source directory
       with open(filename,'r') as mod_file:
@@ -230,7 +235,7 @@ class ODSA_RST_Module:
           # Print a warning message if a missing prereq is encountered
           for req in requires:
             if req != '' and req not in satisfied_requirements:
-              print console_msg_prefix + "WARNING: " + req + " is an unsatisfied prerequisite for " + mod_name + ", line " + str(i + 1)
+              print_err("%sWARNING: %s is an unsatisfied prerequisite for %s, line %d" % (console_msg_prefix, req, mod_name, i + 1))
         elif line.startswith(':satisfies:'):
           # Parse the list of prerequisite topics this module satisfies and add them to a list of satisfied prereqs
           requirements_satisfied = [req.strip() for req in line.replace(':satisfies:', '').split(';')]
@@ -295,10 +300,10 @@ class ODSA_RST_Module:
                 mod_data[i] += ''.join(rst_options)
             elif av_type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
               # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
-              print console_msg_prefix + "WARNING: " + av_name + " is a diagram (attributes are not supported), line " + str(i + 1)
+              print_err("%sWARNING: %s is a diagram (attributes are not supported), line %d" %(console_msg_prefix, av_name, i + 1))
             elif av_type not in ['ss', 'dgm']:
               # If a warning if the exercise type doesn't match something we expect
-              print console_msg_prefix + "WARNING: Unsupported type '" + av_type + "' specified for " + av_name + ", line " + str(i + 1)
+              print_err("%sWARNING: Unsupported type '%s' specified for %s, line %d" % (console_msg_prefix, av_type, av_name, i + 1))
         elif line.startswith('.. avembed::'):
           # Parse the arguments from the directive
           args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
@@ -309,7 +314,7 @@ class ODSA_RST_Module:
 
             # If the config file states the exercise should be removed, remove it
             if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
-              print console_msg_prefix + 'Removing: ' + av_name
+              print '%sRemoving: %s' % (console_msg_prefix, av_name)
 
               # Config file states exercise should be removed, remove it from the RST file
               while (i < len(mod_data) and mod_data[i].rstrip() != ''):
@@ -362,7 +367,7 @@ class ODSA_RST_Module:
         i = i + 1
 
       if not avmetadata_found:
-        print console_msg_prefix + 'WARNING: %s does not contain an ..avmetadata:: directive' % mod_name
+        print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
 
       # Write the contents of the module file to the output src directory
       with open(''.join([config.book_src_dir, mod_name, '.rst']),'w') as mod_file:

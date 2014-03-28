@@ -2,36 +2,8 @@
   var av = new JSAV("DecodeExample");
   av.umsg("Here is a Huffman tree for C, D, E, K, L, M, N.");
 
-  var t = av.ds.bintree({nodegap: 25});
-  var r = t.root(10);
-
-
-  // constructs tree
-  r.left("E");
-  r.right("").right("").right("").right("").right("M");
-  r.right().left("").left("U");
-  r.right().left().right("D");
-  r.right().right().left("L");
-  r.right().right().right().left("C");
-  r.right().right().right().right().left("");
-  r.right().right().right().right().left().left("Z");
-  r.right().right().right().right().left().right("K");
-
-  // then adds edge labels
-  r.edgeToLeft().label("0");
-  r.edgeToRight().label("1");
-  r.right().edgeToLeft().label("0");
-  r.right().left().edgeToLeft().label("0");
-  r.right().left().edgeToRight().label("1");
-  r.right().edgeToRight().label("1");
-  r.right().right().edgeToLeft().label("0");
-  r.right().right().edgeToRight().label("1");
-  r.right().right().right().edgeToLeft().label("0");
-  r.right().right().right().edgeToRight().label("1");
-  r.right().right().right().right().edgeToRight().label("1");
-  r.right().right().right().right().edgeToLeft().label("0");
-  r.right().right().right().right().left().edgeToLeft().label("0");
-  r.right().right().right().right().left().edgeToRight().label("1");
+  var t = construct_tree(av);
+  var r = t.root();
 
   // initial display
   t.layout();
@@ -85,117 +57,17 @@
 
 (function ($) {
   var av = new JSAV("finalHuffmanTree");
-  var t = av.ds.bintree({nodegap: 25});
+  var t = construct_tree(av);
   var r = t.root("");
-
-  // constructs tree
-  r.left("E");
-  r.right("").right("").right("").right("").right("M");
-  r.right().left("").left("U");
-  r.right().left().right("D");
-  r.right().right().left("L");
-  r.right().right().right().left("C");
-  r.right().right().right().right().left("");
-  r.right().right().right().right().left().left("Z");
-  r.right().right().right().right().left().right("K");
-
-  // then adds edge labels
-  r.edgeToLeft().label("0");
-  r.edgeToRight().label("1");
-  r.right().edgeToLeft().label("0");
-  r.right().left().edgeToLeft().label("0");
-  r.right().left().edgeToRight().label("1");
-  r.right().edgeToRight().label("1");
-  r.right().right().edgeToLeft().label("0");
-  r.right().right().edgeToRight().label("1");
-  r.right().right().right().edgeToLeft().label("0");
-  r.right().right().right().edgeToRight().label("1");
-  r.right().right().right().right().edgeToRight().label("1");
-  r.right().right().right().right().edgeToLeft().label("0");
-  r.right().right().right().right().left().edgeToLeft().label("0");
-  r.right().right().right().right().left().edgeToRight().label("1");
 
   // initial display
   t.layout();
-
-  /*
-  var circOpt = {fill:"white"};
-  // edges
-  // level 0 to 1
-  av.g.line(200, 20, 150, 70);
-  av.g.line(200, 20, 250, 70);
-  // level 1 to 2
-  av.g.line(250, 70, 180, 120);
-  av.g.line(250, 70, 320, 120);
-  // level 2 to 3
-  av.g.line(180, 120, 140, 170);
-  av.g.line(180, 120, 220, 170);
-  av.g.line(320, 120, 280, 170);
-  av.g.line(320, 120, 360, 170);
-  // level 3 to 4
-  av.g.line(360, 170, 320, 220);
-  av.g.line(360, 170, 400, 220);
-  // level 4 to 5
-  av.g.line(400, 220, 440, 270);
-  av.g.line(400, 220, 360, 270);
-  // level 5 to 6
-  av.g.line(440, 270, 480, 320);
-
-  // root
-  av.g.circle(200, 20, 19, circOpt);
-  // level 1
-  av.g.circle(150, 70, 19, circOpt);  // root.left
-  av.g.circle(250, 70, 19, circOpt);  // root.right
-  // level 2
-  av.g.circle(180, 120, 19, circOpt); // root.right.left
-  av.g.circle(320, 120, 19, circOpt); // root.right.right
-  // level 3
-  av.g.circle(140, 170, 19, circOpt); // root.right.left.left
-  av.g.circle(220, 170, 19, circOpt); // root.right.left.right
-  av.g.circle(280, 170, 19, circOpt); // root.right.right.left
-  av.g.circle(360, 170, 19, circOpt); // root.right.right.right
-  // level 4
-  av.g.circle(320, 220, 19, circOpt); // root.right.right.right.left
-  av.g.circle(400, 220, 19, circOpt); // root.right.right.right.right
-  // level 5
-  av.g.circle(440, 270, 19, circOpt); // root.right.right.right.right.right.right
-  av.g.circle(360, 270, 19, circOpt); // root.right.right.right.right.right.left  
-  // level 6   
-  av.g.circle(480, 320, 19, circOpt);
-  */
 }(jQuery));
 
 (function ($) {
   var av = new JSAV("MExample");
-  var t = av.ds.bintree({nodegap: 25});
+  var t = construct_tree(av);
   var r = t.root("");
-
-  // constructs tree
-  r.left("E");
-  r.right("").right("").right("").right("").right("M");
-  r.right().left("").left("U");
-  r.right().left().right("D");
-  r.right().right().left("L");
-  r.right().right().right().left("C");
-  r.right().right().right().right().left("");
-  r.right().right().right().right().left().left("Z");
-  r.right().right().right().right().left().right("K");
-
-  // then adds edge labels
-  r.edgeToLeft().label("0");
-  r.edgeToRight().label("1");
-  r.right().edgeToLeft().label("0");
-  r.right().left().edgeToLeft().label("0");
-  r.right().left().edgeToRight().label("1");
-  r.right().edgeToRight().label("1");
-  r.right().right().edgeToLeft().label("0");
-  r.right().right().edgeToRight().label("1");
-  r.right().right().right().edgeToLeft().label("0");
-  r.right().right().right().edgeToRight().label("1");
-  r.right().right().right().right().edgeToRight().label("1");
-  r.right().right().right().right().edgeToLeft().label("0");
-  r.right().right().right().right().left().edgeToLeft().label("0");
-  r.right().right().right().right().left().edgeToRight().label("1");
 
   t.layout();
 
@@ -236,35 +108,9 @@
 
 (function ($) {
   var av = new JSAV("Con1");
-  var t = av.ds.bintree({nodegap: 25});
+  
+  var t = construct_tree(av);
   var r = t.root("");
-
-  // constructs tree
-  r.left("E");
-  r.right("").right("").right("").right("").right("M");
-  r.right().left("").left("U");
-  r.right().left().right("D");
-  r.right().right().left("L");
-  r.right().right().right().left("C");
-  r.right().right().right().right().left("");
-  r.right().right().right().right().left().left("Z");
-  r.right().right().right().right().left().right("K");
-
-  // then adds edge labels
-  r.edgeToLeft().label("0");
-  r.edgeToRight().label("1");
-  r.right().edgeToLeft().label("0");
-  r.right().left().edgeToLeft().label("0");
-  r.right().left().edgeToRight().label("1");
-  r.right().edgeToRight().label("1");
-  r.right().right().edgeToLeft().label("0");
-  r.right().right().edgeToRight().label("1");
-  r.right().right().right().edgeToLeft().label("0");
-  r.right().right().right().edgeToRight().label("1");
-  r.right().right().right().right().edgeToRight().label("1");
-  r.right().right().right().right().edgeToLeft().label("0");
-  r.right().right().right().right().left().edgeToLeft().label("0");
-  r.right().right().right().right().left().edgeToRight().label("1");
 
   t.layout();
 
@@ -336,3 +182,90 @@
   av.recorded();
 
 }(jQuery));
+
+(function ($) {
+
+  var av = new JSAV("timeline");
+
+  var t = construct_tree(av);
+  var r = t.root("");
+
+  t.layout();
+
+  av.umsg("To demonstrate to characteristics of a trie, we will display this on a number line.");
+  var tl = new_timeline(av, 60, 450, 450, undefined);
+  timeline_line(av, tl, 100, "A");
+  timeline_line(av, tl, 150, "B");
+  timeline_line(av, tl, 275, "Q")
+  av.displayInit();
+
+}(jQuery));
+
+function new_timeline(av, x, y, len, prop) { 
+  
+  if (prop == undefined) {
+    // make line
+    av.g.rect(x, y, len, 3, {fill: "black", "stroke-width": 0});
+  }
+  else {
+    // make line
+    av.g.rect(x, y, len, 3, prop);
+  }
+
+  // arrows
+  av.g.polyline([[x, y + 11], [x, y - 9], [x - 10, y + 1]], 
+    {"stroke-width": 0, fill: "black"});
+  av.g.polyline([[x + len, y + 11], [x + len, y - 9], [x + 10 + len, y + 1]], 
+    {"stroke-width": 0, fill: "black"});
+
+  return {x: x, y: y, len: len, splits: 0};
+}
+
+function timeline_line(av, tl, x, label) {
+  av.g.rect(tl.x + x, tl.y - 25, 2, 50, {fill: "red", "stroke-width": 0});
+  av.label(label, {left: tl.x + x - 5, top: tl.y - 45});
+}
+
+function construct_tree(av) {
+
+  var t = av.ds.bintree({nodegap: 25});
+  var r = t.root("");
+
+  // constructs tree
+  r.left("E");
+  r.right("").right("").right("").right("").right("M<br>24");
+  r.right().left("").left("U<br>37");
+  r.right().left().right("D<br>42");
+  r.right().right().left("L<br>42");
+  r.right().right().right().left("C<br>32");
+  r.right().right().right().right().left("");
+  r.right().right().right().right().left().left("Z<br>2");
+  r.right().right().right().right().left().right("K<br>7");
+
+  // add more classes for leaf nodes for css styling
+  r.right().right().right().right().right().addClass("huffmanleaf");
+  r.right().left().left().addClass("huffmanleaf");
+  r.right().left().right().addClass("huffmanleaf");
+  r.right().right().left().addClass("huffmanleaf");
+  r.right().right().right().left().addClass("huffmanleaf");
+  r.right().right().right().right().left().left().addClass("huffmanleaf");
+  r.right().right().right().right().left().right().addClass("huffmanleaf");
+
+  // then adds edge labels
+  r.edgeToLeft().label("0");
+  r.edgeToRight().label("1");
+  r.right().edgeToLeft().label("0");
+  r.right().left().edgeToLeft().label("0");
+  r.right().left().edgeToRight().label("1");
+  r.right().edgeToRight().label("1");
+  r.right().right().edgeToLeft().label("0");
+  r.right().right().edgeToRight().label("1");
+  r.right().right().right().edgeToLeft().label("0");
+  r.right().right().right().edgeToRight().label("1");
+  r.right().right().right().right().edgeToRight().label("1");
+  r.right().right().right().right().edgeToLeft().label("0");
+  r.right().right().right().right().left().edgeToLeft().label("0");
+  r.right().right().right().right().left().edgeToRight().label("1");
+
+  return t;
+}

@@ -421,6 +421,8 @@ root are stored in the right branch.
 
    Need a figure to illustrate the following paragraph.
 
+.. inlineav:: timeline ss
+
 If we view all records stored in either of these structures as
 appearing at some point on a number line representing the key space,
 we can see that the splitting behavior of these two structures is very
@@ -444,6 +446,4 @@ Notes
        priority queue for efficiency.
 
 .. odsascript:: AV/Development/HuffmanCodingExamp.js
-
-
 .. odsascript:: AV/Development/HuffmanCON.js
