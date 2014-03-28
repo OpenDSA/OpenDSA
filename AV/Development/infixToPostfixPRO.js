@@ -61,7 +61,7 @@
     stack = av.ds.list({nodegap: 15, center: false});
     stack.addFirst("");
     stack.first().addClass("greybg");
-    stack.css("left", 200});
+    stack.css("left", 200);
     stack.layout();
     clickHandler.addList(stack, {
       keep: true,
