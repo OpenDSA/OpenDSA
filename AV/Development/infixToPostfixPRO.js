@@ -8,6 +8,9 @@
     stack,
     bitBucket,
     pseudo,
+    $infixLabel,
+    $stackLabel,
+    $postfixLabel,
     interpret,
     config = ODSA.UTILS.getConfig("infixToPostfixPRO.json"),
     av = new JSAV($("#jsavcontainer")),
@@ -47,21 +50,8 @@
       infixArray.clear();
     }
     infixArray = av.ds.array(initialInfix, {indexed: false, center: true});
-    infixArray.css({"top": 50});
     infixArray.layout();
     clickHandler.addArray(infixArray);
-
-    // create empty array for the result
-    if (resultArray) {
-      clickHandler.remove(resultArray);
-      resultArray.clear();
-    }
-    resultArray = av.ds.array(new Array(arraySize - 4), {indexed: false, center: true});
-    resultArray.css({"top": 240});
-    resultArray.layout();
-    clickHandler.addArray(resultArray, 
-      { onDrop: function () { restoreInfix(infixArray).call(this); }
-    });
 
     // add stack and set click handler
     if (stack) {
@@ -71,7 +61,7 @@
     stack = av.ds.list({nodegap: 15, center: false});
     stack.addFirst("");
     stack.first().addClass("greybg");
-    stack.css({top: 30, left: 200});
+    stack.css("left", 200});
     stack.layout();
     clickHandler.addList(stack, {
       keep: true,
@@ -80,10 +70,21 @@
       onDrop: function (){ restoreInfix(infixArray).call(this) }
     });
 
+    // create empty array for the result
+    if (resultArray) {
+      clickHandler.remove(resultArray);
+      resultArray.clear();
+    }
+    resultArray = av.ds.array(new Array(arraySize - 4), {indexed: false, center: true});
+    resultArray.layout();
+    clickHandler.addArray(resultArray, 
+      { onDrop: function () { restoreInfix(infixArray).call(this); }
+    });
+
     // create the bit bucket
     if (typeof bitBucket === "undefined") {
       bitBucket = av.ds.array([interpret("bit_bucket")], {indexed: false, center: false});
-      bitBucket.element.css({top: 140, left: 60 , position: "absolute", width: "auto"});
+      bitBucket.element.css({top: 115, left: 60 , position: "absolute", width: "auto"});
       bitBucket.css(0, {padding: 5} );
       clickHandler.addArray(bitBucket, {
         onSelect: function () { return false; },
@@ -92,19 +93,23 @@
       });
     }
 
-    // clear all the Raphael elements (text)
-    av.getSvg().clear();
+    // remove all old labels
+    av.container.find(".exerciseLabel").remove();
 
-    // add text
-    var font = {
-      "font-size": 16,
-      "font-family": "Times New Roman",
-      "font-weight": "bold"
-    };
-    var canvasWidth = exercise.jsav.container.find(".jsavcanvas").width();
-    av.getSvg().text(canvasWidth / 2, 20, interpret("infix_expression")).attr(font);
-    av.getSvg().text(canvasWidth / 2, 140, interpret("stack")).attr(font);
-    av.getSvg().text(canvasWidth / 2, 280, interpret("postfix_expression")).attr(font);
+    // create new labels
+    $infixLabel = $("<p class='exerciseLabel'>" + interpret("infix_expression") + "</p>");
+    $stackLabel = $("<p class='exerciseLabel'>" + interpret("stack") + "</p>");
+    $postfixLabel = $("<p class='exerciseLabel'>" + interpret("postfix_expression") + "</p>");
+
+    // style the labels
+    $infixLabel.add($stackLabel).add($postfixLabel)
+      .css("text-align", "center")
+      .css("font-weight", "bold");
+
+    // insert the labels
+    $infixLabel.insertBefore(infixArray.element);
+    $stackLabel.insertBefore(stack.element);
+    $postfixLabel.insertBefore(resultArray.element);
 
     return resultArray;
   }
