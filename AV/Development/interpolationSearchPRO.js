@@ -11,37 +11,29 @@
     lowIndex,
     highIndex,
     interLine,
-    av = new JSAV($("#jsavcontainer")),
-    code = av.code(
-      "int interpolationSearch(int[] table, int x) {\n"+
-      "    int low = 0;\n"+
-      "    int high = table.length - 1;\n"+
-      "    int mid;\n"+
-      "\n"+
-      "    while( table[low] < x && table[high] >= x )\n"+
-      "    {\n"+
-      "        // Division truncates\n"+
-      "        mid = low + ((x-table[low]) * (high-low)) / (table[high] - table[low]);\n"+
-      "        if( table[mid] < x)\n"+
-      "            low = mid + 1;\n"+
-      "        else if(table[mid] > x)\n"+
-      "            high = mid - 1;\n"+
-      "        else\n"+
-      "            return mid;\n"+
-      "    }\n"+
-      "    if (table[low] == x)\n"+
-      "        return low;\n"+
-      "    return -1;     // Not found\n"+
-      "}");
+    pseudo,
+    interpret,
+    config = ODSA.UTILS.getConfig("interpolationSearchPRO.json"),
+    av = new JSAV($("#jsavcontainer"));
 
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
 
+    // get interpreter function for the selected language
+    if (typeof interpret !== "function") {
+      interpret = JSAV.utils.getInterpreter(config.language);
+      // change the title and the instructions on the page
+      ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
+    }
+
     // show the code and highlight the row where mid is calculated
-    code.show();
-    code.highlight(8);
+    if (!pseudo && config.code) {
+      pseudo = av.code( $.extend({after: {element: $(".instructions")}}, config.code) );
+      pseudo.show();
+      pseudo.highlight(config.code.tags.highlight);
+    }
 
     //generate random array with ascending values
     var randomVal = 10;
@@ -76,7 +68,7 @@
     // insert key into the array (the blue box)
     keyholder = av.ds.array([key], {indexed: false});
     keyholder.css(0, {"background-color": "#ddf"});
-    findLabel = av.label("Find", {relativeTo: keyholder, anchor: "center top", myAnchor: "center bottom"});
+    findLabel = av.label(interpret("find_label"), {relativeTo: keyholder, anchor: "center top", myAnchor: "center bottom"});
 
     // create the array
     array = av.ds.array(initialArray, {indexed: true, layout: "bar", autoresize: false});
@@ -103,7 +95,7 @@
     lowIndex = av.variable(0);
     highIndex = av.variable(arraySize - 1);
 
-    av.umsg("Select bar at index <strong>low</strong>");
+    av.umsg(interpret("select_low"));
     av.forward();
 
     return [array, lowIndex, highIndex];
@@ -211,15 +203,15 @@
       lowIndex.value(index);
       array.toggleArrow(index);
       stateVar.value(1);
-      av.umsg("Select bar at index <strong>high</strong>");
+      av.umsg(interpret("select_high"));
       exercise.gradeableStep();
     } else if (stateVar.value() === 1) {
       highIndex.value(index);
       array.toggleArrow(index);
       drawLine(array, lowIndex.value(), highIndex.value(), interLine);
       stateVar.value(2);
-      av.umsg("Select the guesstimate for the location of the key");
-      av.umsg("</br>Lines intersect at ( " + intersectionX(lowIndex.value(), highIndex.value()) + ", " + key + " )", {preserve: true} );
+      av.umsg(interpret("select_guess"));
+      av.umsg("</br>" + interpret("lines_intersect") + " ( " + intersectionX(lowIndex.value(), highIndex.value()) + ", " + key + " )", {preserve: true} );
       exercise.gradeableStep();
     } else if (stateVar.value() === 2) {
       array.highlight(index);
@@ -227,7 +219,7 @@
       array.toggleArrow(highIndex.value());
       hideLine(interLine);
       stateVar.value(0);
-      av.umsg("Select bar at index <strong>low</strong>, if needed");
+      av.umsg(interpret("select_low_if"));
       exercise.gradeableStep();
     }
   }
