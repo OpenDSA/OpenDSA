@@ -20,7 +20,15 @@ function bgColor(array) {
 
 // Array-Based list insertion
 (function ($) {
-  var jsav = new JSAV('AlistInsertCON');
+  var jsav = new JSAV('AlistInsertCON'),
+      leftMargin = 7;
+
+  // Create the array object
+  var arr = jsav.ds.array(arrValues, {
+      indexed: true,
+      layout: 'array',
+      left: leftMargin
+    }).hide();
 
   //pseudocode
   var pseudo = jsav.code({
@@ -29,7 +37,7 @@ function bgColor(array) {
       startAfter: '/* *** ODSATag: AListInsert *** */',
       endBefore: '/* *** ODSAendTag: AListInsert *** */'
     });
-  var leftMargin = 7;
+
   //vertical arrow in step 1
   var arrow1_x = leftMargin + 15;
   var arrow1 = jsav.g.line(arrow1_x, -10, arrow1_x, 20, {
@@ -38,12 +46,14 @@ function bgColor(array) {
       'stroke-width': 2
     });
   arrow1.hide();
+
   //label in step 1
   var label = jsav.label('Insert 23', {
       before: arr,
       left: arrow1_x - 16,
       top: -20
     }).hide();
+
   //horizontal arrow in step 2
   var arrow2 = jsav.g.line(leftMargin + 50, 5, leftMargin + 150, 5, {
       'arrow-end': 'classic-wide-long',
@@ -51,18 +61,13 @@ function bgColor(array) {
       'stroke-width': 2
     });
   arrow2.hide();
+
   var arrow3 = jsav.g.line(arrow1_x + 90, -10, arrow1_x + 90, 20, {
       'arrow-end': 'classic-wide-long',
       'opacity': 100,
       'stroke-width': 2
     });
   arrow3.hide();
-  // Create the array object
-  var arr = jsav.ds.array(arrValues, {
-      indexed: true,
-      layout: 'array',
-      left: leftMargin
-    }).hide();
 
   // Create the graphics for maxSize and listSize variables
   var arrMS = jsav.ds.array([8], {
@@ -156,37 +161,11 @@ function bgColor(array) {
 
 //Array-Based list deletion
 (function ($) {
-  var jsav = new JSAV('AlistRemoveCON');
-  var pseudo = jsav.code({
-      url: '../../../SourceCode/Processing/Lists/AList.pde',
-      lineNumbers: false,
-      startAfter: '/* *** ODSATag: AListRemove *** */',
-      endBefore: '/* *** ODSAendTag: AListRemove *** */'
-    });
+  var jsav = new JSAV('AlistRemoveCON'),
+      leftMargin = 5,
+      nodeWidth = 30,
+      arrow1_x = 25 + nodeWidth;
 
-  var leftMargin = 5;
-  var nodeWidth = 30;
-  var arrow1_x = 25 + nodeWidth;
-
-  //vertical arrow pointing to current position
-  var arrow1 = jsav.g.line(arrow1_x, 10, arrow1_x, 35, {
-      'arrow-end': 'classic-wide-long',
-      'opacity': 0,
-      'stroke-width': 2
-    });
-  //horizontal arrow in step 4
-  var arrow2 = jsav.g.line(arrow1_x + 100, 20, arrow1_x + 20, 20, {
-      'arrow-end': 'classic-wide-long',
-      'opacity': 0,
-      'stroke-width': 2
-    });
-  //label for current position in step 1
-  var label = jsav.label('curr', {
-      before: arr,
-      left: arrow1_x - 10,
-      top: -10
-    });
-  label.hide();
 
   // Create an array object under control of JSAV library
   var arr = jsav.ds.array(arrValues, {
@@ -195,19 +174,50 @@ function bgColor(array) {
       left: leftMargin,
       top: 20
     });
+
+  var pseudo = jsav.code({
+      url: '../../../SourceCode/Processing/Lists/AList.pde',
+      lineNumbers: false,
+      startAfter: '/* *** ODSATag: AListRemove *** */',
+      endBefore: '/* *** ODSAendTag: AListRemove *** */'
+    });
+
+  //vertical arrow pointing to current position
+  var arrow1 = jsav.g.line(arrow1_x, 10, arrow1_x, 35, {
+      'arrow-end': 'classic-wide-long',
+      'opacity': 0,
+      'stroke-width': 2
+    });
+
+  //horizontal arrow in step 4
+  var arrow2 = jsav.g.line(arrow1_x + 100, 20, arrow1_x + 20, 20, {
+      'arrow-end': 'classic-wide-long',
+      'opacity': 0,
+      'stroke-width': 2
+    });
+
+  //label for current position in step 1
+  var label = jsav.label('curr', {
+      before: arr,
+      left: arrow1_x - 10,
+      top: -10
+    });
+  label.hide();
+
   //array "it" for holding the copied element
   var arrItValues = [''];
-  var labelIt = jsav.label('it', {
-      before: arrIt,
-      left: 85,
-      top: 110
-    });
   var arrIt = jsav.ds.array(arrItValues, {
       indexed: false,
       layout: 'array',
       left: leftMargin + (nodeWidth + 2) * 3,
       top: 90
     });
+  var labelIt = jsav.label('it', {
+      before: arrIt,
+      left: 85,
+      top: 110
+    });
+
   arrIt.hide();
   labelIt.hide();
 
