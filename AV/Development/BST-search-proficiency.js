@@ -12,7 +12,7 @@
   // auxillary function for creating a perfect binary tree
   // inserts the values in the initialData[] array in level order
   function calculateInitialData(level, min, max, levelsInTotal, arrayIndex) {
-    diff = max - min;
+    var diff = max - min;
     var value = JSAV.utils.rand.numKey(min + Math.floor(diff / 3), max - Math.floor(diff / 3))
     initialData[arrayIndex - 1] = value;
     if (level < levelsInTotal) {
