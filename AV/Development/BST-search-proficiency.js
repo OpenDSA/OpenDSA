@@ -1,4 +1,5 @@
-﻿(function($) {
+﻿"use strict";
+(function($) {
   var levels = 6,
       nodeNum = Math.pow(2, levels) - 1,
       keyToFind,
