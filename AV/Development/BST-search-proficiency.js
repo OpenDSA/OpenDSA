@@ -49,6 +49,9 @@
     $key.html("<li>" + keyToFind + "</li>");
     av.ds.array($key, {indexed: false}).css(0, {"background-color": "#ddf"}).toggleArrow(0);
 
+    av.forward();
+    av._undo = [];
+
     return jsavBinaryTree;
   }
 
@@ -107,7 +110,7 @@
   }
 
   var exercise = av.exercise(modelSolution, initialize,
-    { "css": "background-color" },
+    [{ "css": "background-color" }, {}],
     { controls: $(".jsavexercisecontrols") });
   exercise.reset();
 }(jQuery));
