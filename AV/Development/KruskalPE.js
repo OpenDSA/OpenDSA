@@ -35,7 +35,7 @@
 	  if (tree) {
 	    tree.clear();
 	  }
-	  graph = jsav.ds.graph({width: 600, height: 600, layout: "manual", directed: false});
+	  graph = jsav.ds.graph({width: 720, height: 600, layout: "manual", directed: false});
       initGraph("orig");
       graph.layout();
 	  initTree();
@@ -314,7 +314,7 @@
 	  }
 	});
     $(".jsavcontainer").on("click", ".jsavgraphnode", function () {
-      
+      alert("Please click on graph edges from the array to the left NOT graph nodes");
     });
     $("#about").click(about);
   });
