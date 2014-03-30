@@ -92,7 +92,8 @@ great deal of rearranging of data within the tree.
 
 .. _PagedBST:
 
-.. inlineav:: pagedBSTCON dgm
+.. inlineav:: pagedBSTCON ss
+   :output: show
    :align: justify
 
    Breaking the BST into blocks.
