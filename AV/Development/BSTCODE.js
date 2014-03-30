@@ -1,7 +1,7 @@
 (function($) {
   // TODO: This block can be removed if / when a fixstate function is created
   window.JSAV_EXERCISE_OPTIONS.fixmode = "undo";
-  ODSA.AV.updateJSAVExerOptions();
+  ODSA.UTILS.parseURLParams();
 
   JSAV._types.ds.BinaryTree.prototype.insert = function (value) {
     // helper function to recursively insert
@@ -32,7 +32,7 @@
     }
     return this;
   };
-  
+
   var oldfx;
 
   function turnAnimationOff() {
@@ -45,7 +45,7 @@
   function restoreAnimationState() {
     $.fx.off = oldfx;
   }
-  
+
   var bst = {};
   bst.turnAnimationOff = turnAnimationOff;
   bst.restoreAnimationState = restoreAnimationState;
