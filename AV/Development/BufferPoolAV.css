@@ -3,14 +3,14 @@ label {
 }
 
 #container {
-  width: 1100px;
-  height: 550px;
+  width: 800px;
+  height: 540px;
 }
 
 #bottom {
 padding-left: 5px;
   height: 90px;
-  width: 1005px;
+  width: 805px;
   border: 1px solid black;
   background-color: #ddd;
   overflow: hidden;
@@ -41,8 +41,9 @@ padding-left: 5px;
 }
 
 .jsavarray .jsavindex {
-  min-height: 1px;
-  min-width: 100px;
+  height: 10px;
+  width: 100px;
+  border-radius: 0 !important;
 }
 
 .jsavnode {
@@ -52,11 +53,33 @@ padding-left: 5px;
 .jsavscroll {
   width: 370px;
   height: 460px;
-  font-size: 95%;
+  font-size: 100%;
   float: left;
   margin-left: -10px;
   margin-top: 5px;
   padding-left: 5px;
+}
+
+.jsavcanvas {
+  margin-left: 300px;
+  height: 550px;
+  width: 500px;
+}
+
+#temp {
+  margin-top: -550px;
+  margin-left: 740px;
+}
+
+#temp .jsavcanvas{
+  margin-top: 0px;
+  margin-left: 0px;
+}
+
+#temp .jsavarray .jsavindex{
+  height: 10px;
+  width: 30px;
+  border-radius: 0 !important;
 }
 
 #procontrols{
