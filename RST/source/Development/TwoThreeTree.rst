@@ -8,6 +8,8 @@
    :prerequisites:
    :topic: Indexing
 
+.. odsalink:: AV/Development/twoThreeTreeCON.css
+
 2-3 Trees
 =========
 
@@ -43,14 +45,8 @@ Figure :num:`Figure #TTexamp` illustrates the 2-3 tree.
 
 .. _TTexamp:
 
-.. odsafig:: Images/TTExamp.png
-   :width: 400
+.. inlineav:: twoThreeTreeCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: A 2-3 tree.
-
-   A 2-3 tree.
 
 Nodes are shown as rectangular boxes with two key fields.
 (These nodes actually would contain complete records or pointers to
@@ -114,17 +110,9 @@ rightmost position).
 
 .. _TTEasyIn:
 
-.. odsafig:: Images/TTEasyIn.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Simple insert into a 2-3 tree
-
-   Simple insert into the 2-3 tree of Figure :num:`Figure #TTexamp`.
-   The value 14 is inserted into the tree at the leaf node containing 15.
-   Because there is room in the node for a second key, it is simply added
-   to the left position with 15 moved to the right position.
+.. inlineav:: simpleInsertCON ss
+   :output: show
+   :align: justify
 
 If we insert the new record into a leaf node :math:`L` that already
 contains two records, then more space must be created.
@@ -151,37 +139,15 @@ In either case, all leaf nodes continue to have equal depth.
 
 .. _TTPromote:
 
-.. odsafig:: Images/TTPromot.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Node-splitting insert for a 2-3 tree.
-
-   A simple node-splitting insert for a 2-3 tree.
-   The value 55 is added to the 2-3 tree of Figure :num:`Figure #TTexamp`.
-   This makes the node containing values 50 and 52 split, promoting
-   value 52 to the parent node.
+.. inlineav:: promoteCON ss
+   :output: show
+   :align: justify
 
 .. _TTSplit:
 
-.. odsafig:: Images/TTSplit.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Splitting the 2-3 tree root.
-
-   Example of inserting a record that causes the 2-3 tree root to
-   split.
-   (a) The value 19 is added to the 2-3 tree of
-   Figure :num:`Figure #TTexamp`.
-   This causes the node containing 20 and 21 to split, promoting 20.
-   (b) This in turn causes the internal node containing 23 and 30 to
-   split, promoting 23.
-   (c) Finally, the root node splits, promoting 23
-   to become the left record in the new root.
-   The result is that the tree becomes one level higher.
+.. inlineav:: splitCON ss
+   :output: show
+   :align: justify
 
 Here is an implementation for the insertion process.
 
@@ -261,3 +227,5 @@ This visualization was written by David Galles of the University of
 San Francisco as part of his
 `Data Structure Visualizations
 <http://www.cs.usfca.edu/~galles/visualization/Algorithms.html>`_ package.
+
+.. odsascript:: AV/Development/twoThreeTreeCON.js

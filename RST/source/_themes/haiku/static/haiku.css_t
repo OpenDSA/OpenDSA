@@ -409,7 +409,7 @@ div.viewcode-block:target {
   background-color:#FFC0CB;
 }
 
-/* Login window layout */
+/* Login and Bug window layout */
 
 /* Mask for background, by default is not display */
 #mask {
@@ -422,7 +422,7 @@ div.viewcode-block:target {
         z-index: 999;
 }
 /* You can customize to your needs  */
-.login-popup, .registration-popup {
+.login-popup, .registration-popup, .bugreport-popup {
         display:none;
         background: #333;
         padding: 10px;
@@ -440,6 +440,13 @@ div.viewcode-block:target {
         -webkit-border-radius: 3px; /* Safari, Chrome */
 }
 
+.bugreport-popup {
+        top: 10%;
+}
+.bugreport-link {
+        display: none;
+}
+
 img.btn_close { /* Position the close button */
         float: right;
         margin: -28px -28px 0 0;
@@ -454,7 +461,16 @@ form.signin .textbox label {
         padding-bottom:7px;
 }
 
+form.report .textbox label {
+        display:block;
+        padding-bottom:7px;
+}
+
 form.signin .textbox span {
+        display:block;
+}
+
+form.report .textbox span {
         display:block;
 }
 
@@ -463,6 +479,13 @@ form.signin p, form.signin span {
         font-size:11px;
         line-height:18px;
 }
+
+form.report p, form.report span {
+        color:#999;
+        font-size:11px;
+        line-height:18px;
+}
+
 form.signin .textbox input {
         background:#666666;
         border-bottom:1px solid #333;
@@ -478,9 +501,27 @@ form.signin .textbox input {
         width:200px;
 }
 
+form.report .textbox input {
+        background:#666666;
+        border-bottom:1px solid #333;
+        border-left:1px solid #000;
+        border-right:1px solid #333;
+        border-top:1px solid #000;
+        color:#fff;
+        border-radius: 3px 3px 3px 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        font:13px Arial, Helvetica, sans-serif;
+        padding:6px 6px 4px;
+        width:200px;
+}
+
+
 form.signin input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
 form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
 
+form.report input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
+form.report input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
 
 /* student page rules */  
 #pointsBox {

@@ -47,12 +47,12 @@
     }
     stack.first().highlight();
     stack.layout();
-    
+
     BST.restoreAnimationState();
 
     return jsavTree;
   }
-  
+
   function modelSolution(jsav) {
     //helper function for finding the node
     //naive because path and node are guaranteed to exist
@@ -67,7 +67,7 @@
       }
       return node;
     }
-    
+
     //helper function for finding replacing node
     //if no left child the function will return undefined
     function findReplacingNode(root) {
@@ -94,10 +94,10 @@
       var n = node;
       var css;
       if (undo) {
-        css = {"stroke-width":"1", "stroke":"black"};  
+        css = {"stroke-width":"1", "stroke":"black"};
       } else {
-        css = {"stroke-width":"4", "stroke":"blue"};  
-      } 
+        css = {"stroke-width":"4", "stroke":"blue"};
+      }
       while (n !== root) {
         n.edgeToParent().css(css);
         n = n.parent();
