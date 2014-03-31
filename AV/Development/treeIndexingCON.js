@@ -117,40 +117,29 @@
 (function () {
   "use strict";
   var jsav = new JSAV("pagedBSTCON");
-  var n = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 
-  var bst = jsav.ds.bintree({nodegap: 20});
+  var n = [10, 5, 15, 3, 8, 13, 18, 2, 4, 7, 9, 12, 14, 17, 19];
+  var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];
+
+  var bst = jsav.ds.bintree({nodegap: 30});
   var nodes = [
     bst.root(n[0]),
   ];
+  nodes[0].css({"background-color": colors[0]});
 
-//  nodes.push(nodes[0].left(n[1]));
-//  nodes.push(nodes[0].right(n[2]));
-//  nodes.push(nodes[1].left(n[3]));
-//  nodes.push(nodes[1].right(n[4]));
-//  nodes.push(nodes[2].left(n[5]));
-//  nodes.push(nodes[2].right(n[6]));
-//  nodes.push(nodes[3].left(n[7]));
-//  nodes.push(nodes[3].right(n[8]));
-//  nodes.push(nodes[4].left(n[9]));
-//  nodes.push(nodes[4].right(n[10]));
-//  nodes.push(nodes[5].left(n[11]));
-//  nodes.push(nodes[5].right(n[12]));
-//  nodes.push(nodes[6].left(n[13]));
-//  nodes.push(nodes[6].right(n[14]));
   bst.layout();
 
   var recs = [];
 
   // Create rectangles
-  var x = 20, y = 300, w = 120, h = 50, p = {"stroke-width": 2, "fill": "#FFFFFF"}, num = 5;
+  var x = 20, y = 300, w = 120, h = 50, num = 5;
   for (var i = 0; i < num; i++) {
-    recs.push(jsav.g.rect(x, y, w, h, p));
+    recs.push(jsav.g.rect(x, y, w, h, {"stroke-width": 2, "fill": colors[i]}));
     x += w;
   }
 
   // Create labels
-  var t = 310, l = 25, v = false, offset = 50;
+  var t = 310, l = 30, v = false;
   var labels = [
     jsav.label(n[0], {visible: v, left: (l + 0) + "px", top: (t + 0) + "px"}),
     jsav.label(n[1], {visible: v, left: (l + 40) + "px", top: (t + 0) + "px"}),
@@ -171,7 +160,7 @@
 
   var messages = [
     "Paged BST demo. The bottom square represents blocks on disk.",
-    "Insert " + n[0] + " into BST."
+      "Insert " + n[0] + " into BST."
   ];
   jsav.umsg(messages.shift());
   nodes[0].hide();
@@ -185,11 +174,16 @@
   var node = 0, flag = true;
   for (i = 1; i < n.length; i++) {
     jsav.umsg("Insert " + n[i] + " into the tree.");
+    var new_node;
     if (flag) {
-      nodes.push(nodes[node].left(n[i]));
+      new_node = nodes[node].left(n[i]);
+      new_node.css({"background-color": colors[Math.floor(i / 3)]});
+      nodes.push(new_node);
       flag = false;
     } else {
-      nodes.push(nodes[node].right(n[i]));
+      new_node = nodes[node].right(n[i])
+      new_node.css({"background-color": colors[Math.floor(i / 3)]});
+      nodes.push(new_node);
       flag = true;
       node++;
     }
@@ -290,7 +284,7 @@
   var chosen_index = Math.floor((Math.random() * 100) % window.ODSA.bottom_layer.length);
   var chosen_node = window.ODSA.bottom_layer[chosen_index];
   chosen_node.css({"border": "1px solid white"});
-  chosen_node.css({"box-shadow": "0 0 10px 5px black"});
+  chosen_node.css({"box-shadow": "0 0 10px 3px black"});
   chosen_node.is_chosen = true;
 
   // Find the number of accesses to get to chosen one.
