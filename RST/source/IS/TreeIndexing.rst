@@ -43,7 +43,7 @@ Unfortunately, the BST can become unbalanced.
 Even under relatively good conditions, the depth of leaf nodes
 can easily vary by a factor of two.
 This might not be a significant concern when the tree is stored in
-main memory because the time required is still :math:`\Theta(\log n`
+main memory because the time required is still :math:`\Theta(\log n)`
 for search and update.
 When the tree is stored on disk, however, the depth of nodes in the
 tree becomes crucial.

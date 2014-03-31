@@ -1,6 +1,6 @@
 #container {
   width: 800px;
-  height: 635px;
+  height: 655px;
 }
 
 .jsavline {
@@ -60,4 +60,22 @@
   background-color: orange;
   line-height: 22px;
   z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
+}
+
+.jsavmatrix .jsavarray {
+  position: relative;
+  top: 0;
+}
+.jsavmatrix .jsavarray li.jsavnode {
+  width: 65px;
+  background-color: transparent;
+  color: inherit;
+}
+.jsavmatrix .jsavarray:nth-of-type(1) {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #fff;
+  border:1px #98bf21;
+  background-color:#9ACD32;
 }
