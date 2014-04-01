@@ -193,15 +193,12 @@
   t.layout();
 
   av.umsg("To demonstrate to characteristics of a trie, we will display this on a number line.");
-  var tl = new_timeline(av, 60, 450, 450, undefined);
-  timeline_line(av, tl, 100, "A");
-  timeline_line(av, tl, 150, "B");
-  timeline_line(av, tl, 275, "Q")
+  var tl = new_timeline(av, 60, 450, 450, 0, 100, undefined);
   av.displayInit();
 
 }(jQuery));
 
-function new_timeline(av, x, y, len, prop) { 
+function new_timeline(av, x, y, len, min, max, prop) { 
   
   if (prop == undefined) {
     // make line
@@ -218,12 +215,20 @@ function new_timeline(av, x, y, len, prop) {
   av.g.polyline([[x + len, y + 11], [x + len, y - 9], [x + 10 + len, y + 1]], 
     {"stroke-width": 0, fill: "black"});
 
-  return {x: x, y: y, len: len, splits: 0};
+  return {x: x, y: y, len: len, min: min, max: max};
 }
 
 function timeline_line(av, tl, x, label) {
   av.g.rect(tl.x + x, tl.y - 25, 2, 50, {fill: "red", "stroke-width": 0});
-  av.label(label, {left: tl.x + x - 5, top: tl.y - 45});
+  av.label(label, {left: tl.x + x - 4, top: tl.y - 45});
+}
+
+function timeline_value(av, tl, val, label) {
+  var range = tl.max - tl.min;
+  var pxPerInc = tl.len / range;
+  var pos = pxPerInc * val;
+
+  timeline_line(av, tl, pos, label);
 }
 
 function construct_tree(av) {
