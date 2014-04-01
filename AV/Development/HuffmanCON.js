@@ -188,7 +188,7 @@
   var av = new JSAV("timeline");
   var t = av.ds.bintree({nodegap: 25});
   var r = t.root("19");
-  var tl = new_timeline(av, 40, 350, 500, 0, 65);
+  var tl = new timeline(av, 40, 350, 500, 0, 65);
   t.layout();
 
   av.umsg("To demonstrate to characteristics of a tree, we will display this on a number line. We first insert 19.");
@@ -196,12 +196,13 @@
 
   // step 1
   av.umsg("19 is now displayed on the numberline. Notice the numberline is split at 19");
-  timeline_value(av, tl, 19, "19");
+  var split1 = tl.add_value(19, "19");
+  split1.highlight();
   av.step();
 
   // step 2
   av.umsg("We now add 14 to the tree. A split is made at 14.");
-  timeline_value(av, tl, 14, "14");
+  tl.add_value(14, "14");
   r.left("14");
   r.left().highlight();
   t.layout();
@@ -209,7 +210,7 @@
 
   // step 3
   av.umsg("9 is added to the tree.");
-  timeline_value(av, tl, 9, "9");
+  tl.add_value(9, "9");
   r.left().left("9");
   r.left().unhighlight();
   r.left().left().highlight();
@@ -218,7 +219,7 @@
 
   // step 4
   av.umsg("Now 50 is added. As before, we split at 50.");
-  timeline_value(av, tl, 50, "50");
+  tl.add_value(50, "50");
   r.right("50");
   r.left().left().unhighlight();
   r.right().highlight();
@@ -227,7 +228,7 @@
 
   // step 5
   av.umsg("Now 54 is added.");
-  timeline_value(av, tl, 54, "54");
+  tl.add_value(54, "54");
   r.right().right("54");
   r.right().unhighlight();
   r.right().right().highlight();
@@ -236,7 +237,7 @@
 
   // step 6
   av.umsg("Now we add 63.");
-  timeline_value(av, tl, 63, "63");
+  tl.add_value(63, "63");
   r.right().right().right("63");
   r.right().right().unhighlight();
   r.right().right().right().highlight();
@@ -245,7 +246,7 @@
 
   // step 7
   av.umsg("Now add 12.");
-  timeline_value(av, tl, 12, "12");
+  tl.add_value(12, "12");
   r.left().left().right("12");
   r.right().right().right().unhighlight()
   r.left().left().right().highlight();
@@ -254,7 +255,7 @@
 
   // step 8
   av.umsg("Now add 17 and note the corresponding split.");
-  timeline_value(av, tl, 17, "17");
+  tl.add_value(17, "17");
   r.left().right("17");
   r.left().left().right().unhighlight();
   r.left().right().highlight();
@@ -263,7 +264,7 @@
 
   // step 9
   av.umsg("Now add 56.");
-  timeline_value(av, tl, 56, "56");
+  tl.add_value(56, "56");
   r.right().right().right().left("56");
   r.left().right().unhighlight();
   r.right().right().right().left().highlight();
@@ -272,7 +273,7 @@
 
   // step 10
   av.umsg("Now add 59.");
-  timeline_value(av, tl, 59, "59");
+  tl.add_value(59, "59");
   r.right().right().right().left().right("59");
   r.right().right().right().left().unhighlight();
   r.right().right().right().left().right().highlight();
@@ -281,7 +282,7 @@
 
   // step 11
   av.umsg("Our last number to add is 23.");
-  timeline_value(av, tl, 23, "23");
+  tl.add_value(23, "23");
   r.right().left("23");
   r.right().right().right().left().right().unhighlight();
   r.right().left().highlight();
@@ -293,38 +294,39 @@
 
 }(jQuery));
 
-// ------------ TIMELINE --------------
+function split (av, x, x1, y, label) {
+  this.x = x;
+  this.label = label;
 
-function new_timeline(av, x, y, len, min, max) { 
+  this.rec = av.g.rect(x + x1, y - 25, 2, 50, {fill: "red", "stroke-width": 0});
+  this.label = av.label(label, {left: x + x1 - 4, top: y - 45});
+
+  this.highlight = function () {
+    // this.rec.css("background-color:black");
+  };
+}
+
+/* Timeline Constructor */
+function timeline(av, x, y, len, min, max) { 
   
   // make line
   av.g.rect(x, y, len, 3, {fill: "black", "stroke-width": 0});
-
   // arrows
   av.g.polyline([[x, y + 11], [x, y - 9], [x - 10, y + 1]], 
     {"stroke-width": 0, fill: "black"});
   av.g.polyline([[x + len, y + 11], [x + len, y - 9], [x + 10 + len, y + 1]], 
     {"stroke-width": 0, fill: "black"});
 
-  return {x: x, y: y, len: len, min: min, max: max};
-}
+  this.add_line = function (x1, label) {
+    return new split (av, x, x1, y, label);
+  };
 
-/* Constructor */
-function timeline_line(av, tl, x, label) {
-  this.rec = av.g.rect(tl.x + x, tl.y - 25, 2, 50, {fill: "red", "stroke-width": 0});
-  this.label = av.label(label, {left: tl.x + x - 4, top: tl.y - 45});
-
-  function highlight() {
-    console.log("Hi");
-  }
-}
-
-/* Helper method */
-function timeline_value(av, tl, val, label) {
-  var range = tl.max - tl.min;
-  var pxPerInc = tl.len / range;
-  var pos = pxPerInc * val;
-  timeline_line(av, tl, pos, label);
+  this.add_value = function (val, label) {
+    var range = max - min;
+    var pxPerInc = len / range;
+    var pos = pxPerInc * val;
+    return this.add_line(pos, label);
+  };
 }
 
 function construct_tree(av) {
