@@ -43,7 +43,11 @@
     }
 
     // generate a random key, the value of which is between the min and max of the array
-    key = Math.ceil(5* (initialArray[0] + initialArray[arraySize -1]) / 7);
+    if (Math.random() > 0.5) {
+      key = Math.ceil(5* (initialArray[0] + initialArray[arraySize -1]) / 7);
+    } else {
+      key = Math.floor(2* (initialArray[0] + initialArray[arraySize -1]) / 7)
+    }
     
     // clear old elements
     if (keyholder) {
@@ -105,6 +109,9 @@
     jsav.ds.array([key], {indexed: false}).css(0, {"background-color": "#ddf"});
     var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar", autoresize: false});
 
+    if (config.code)
+      jsav.code(config.code).highlight(config.code.tags.highlight);
+
     var modelLow = jsav.variable(0);
     var modelHigh = jsav.variable(arraySize - 1);
     var low = 0,
@@ -124,28 +131,51 @@
 
     jsav._undo = [];
 
-    while (modelArray.value(low) < key && modelArray.value(high) >= key) {
+    while (initialArray[low] < key && initialArray[high] >= key) {
       // show arrow on low
       modelArray.toggleArrow(low);
       modelLow.value(low);
+      jsav.umsg(interpret("ms_low"), {fill: {low: low}});
       jsav.stepOption("grade", true);
       jsav.step();
       // show arrow on high
       modelArray.toggleArrow(high);
       modelHigh.value(high);
+      jsav.umsg(interpret("ms_high"), {fill: {high: high}});
+      jsav.stepOption("grade", true);
       // draw Line
       drawLine(modelArray, low, high, interLine);
-      jsav.stepOption("grade", true);
       jsav.step();
       // highlight guesstimate
-      mid = Math.floor( low + ((key - modelArray.value(low)) * (high - low)) / (modelArray.value(high) - modelArray.value(low)));
-      modelArray.value(mid, initialArray[mid]);
+      mid = intersectionX(low, high);
+      mid = Math.floor( mid * 100 ) / 100;
+      jsav.umsg(interpret("ms_intersect"), {fill: {
+        inter: mid,
+        key: key,
+        newmid: Math.floor(mid)
+      }});
+      refLines(jsav, config.code, "highlight");
+      jsav.step();
+      mid = Math.floor( mid );
       modelArray.highlight(mid);
-      if (modelArray.value(mid) < key) {
+      if (initialArray[mid] < key) {
         low = mid + 1;
-      }
-      if (modelArray.value(mid) > key) {
+        jsav.umsg(interpret("ms_arr_mid_lt_key"), {fill: {
+          arr_at_mid: initialArray[mid],
+          key: key,
+          mid_plus_1: mid + 1
+        }});
+        refLines(jsav, config.code, "tbl_mid_lt_key");
+      } else if (initialArray[mid] > key) {
         high = mid - 1;
+        jsav.umsg(interpret("ms_arr_mid_gt_key"), {fill: {
+          arr_at_mid: initialArray[mid],
+          key: key,
+          mid_minus_1: mid - 1
+        }});
+        refLines(jsav, config.code, "tbl_mid_gt_key");
+      } else {
+        jsav.umsg("<br/>" + interpret("ms_found"), {preserve: true, fill: {mid: mid}});
       }
       // hide arrows and line
       modelArray.toggleArrow(modelLow.value());
@@ -157,6 +187,17 @@
       if (modelArray.value(mid) === key) {
         return [modelArray, modelLow, modelHigh];
       }
+    }
+    if (initialArray[low] >= key) {
+      jsav.umsg(interpret("ms_loop_stopped_1"), {fill: { low: low }});
+      if (initialArray[low] === key) {
+        jsav.umsg("<br/>" + interpret("ms_found"), {preserve: true, fill: { mid: low }});
+      } else {
+        jsav.umsg("<br/>" + interpret("ms_not_found"), {preserve: true});
+      }
+    } else {
+      jsav.umsg(interpret("ms_loop_stopped_2"), {fill: { high: high }});
+      jsav.umsg("<br/>" + interpret("ms_not_found"), {preserve: true});
     }
     return [modelArray, modelLow, modelHigh];
   }
@@ -211,6 +252,7 @@
       drawLine(array, lowIndex.value(), highIndex.value(), interLine);
       stateVar.value(2);
       av.umsg(interpret("select_guess"));
+      refLines(av, config.code, "highlight");
       av.umsg("</br>" + interpret("lines_intersect") + " ( " + intersectionX(lowIndex.value(), highIndex.value()) + ", " + key + " )", {preserve: true} );
       exercise.gradeableStep();
     } else if (stateVar.value() === 2) {
@@ -224,5 +266,15 @@
     }
   }
 
+  function refLines(av, code, lineTag) {
+    if (!code)
+      return;
+    var lines = code.tags[lineTag];
+    if (typeof lines === "number") {
+      av.umsg(" " + interpret("line"), {preserve: true, fill: {first: lines + 1}});
+    } else if (typeof lines === "object") {
+      av.umsg(" " + interpret("lines"), {preserve: true, fill: {first: lines[0] + 1, second: lines[1] + 1}});
+    }
+  }
 
 }(jQuery));
