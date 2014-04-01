@@ -185,7 +185,10 @@
 
   var exercise = av.exercise(modelSolution, initialize,
     {}, // no CSS needs to be compared
-    { controls: $(".jsavexercisecontrols") });
+    {
+      controls: $(".jsavexercisecontrols"),
+      modelDialog: {width: 700}  
+    });
   exercise.reset();
 
   function highlightNext() {
