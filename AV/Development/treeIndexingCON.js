@@ -78,40 +78,121 @@
  *
  * Container ID: pagedBSTCON
  */
+//(function () {
+//  "use strict";
+//  // Create JSAV object
+//  var jsav = new JSAV("pagedBSTCON", {"animationMode": "none"});
+//
+//  // Create rectangles.
+//  // Set the starting x and y positions.
+//  var x_offset = 6;
+//  var y_offset = 10;
+//  // Add a store to the rectangles.
+//  var properties = {"stroke-width": 1};
+//  jsav.g.rect(x_offset + 46, y_offset - 5, 200, 65, 0, properties);   // Top rectangle.
+//  jsav.g.rect(x_offset + 0, y_offset + 70, 63, 65, 0, properties);    // First rectangle on second row.
+//  jsav.g.rect(x_offset + 76, y_offset + 70, 63, 65, 0, properties);   // Second rectangle on second row.
+//  jsav.g.rect(x_offset + 152, y_offset + 70, 63, 65, 0, properties);  // Third rectangle on second row.
+//  jsav.g.rect(x_offset + 229, y_offset + 70, 63, 65, 0, properties);  // Fourth rectangle on second row.
+//
+//  // Recursive function to create a binary tree of height 4.
+//  function genNodes(root, level) {
+//    if (level <= 2) {
+//      // Create left and right child nodes.
+//      genNodes(root.left(""), level + 1);
+//      genNodes(root.right(""), level + 1);
+//    }
+//  }
+//
+//  // Create binary tree object.
+//  var bst = jsav.ds.bintree({width: 500, height: 520, nodegap: 20, anchor: "left top"});
+//  // Set root node.
+//  bst.root("");
+//  // Generate child nodes.
+//  genNodes(bst.root(), 0);
+//  // Redraw binary tree to display newly created children nodes.
+//  bst.layout();
+//}());
+
 (function () {
   "use strict";
-  // Create JSAV object
-  var jsav = new JSAV("pagedBSTCON", {"animationMode": "none"});
+  var jsav = new JSAV("pagedBSTCON");
 
-  // Create rectangles.
-  // Set the starting x and y positions.
-  var x_offset = 6;
-  var y_offset = 10;
-  // Add a store to the rectangles.
-  var properties = {"stroke-width": 1};
-  jsav.g.rect(x_offset + 46, y_offset - 5, 200, 65, 0, properties);   // Top rectangle.
-  jsav.g.rect(x_offset + 0, y_offset + 70, 63, 65, 0, properties);    // First rectangle on second row.
-  jsav.g.rect(x_offset + 76, y_offset + 70, 63, 65, 0, properties);   // Second rectangle on second row.
-  jsav.g.rect(x_offset + 152, y_offset + 70, 63, 65, 0, properties);  // Third rectangle on second row.
-  jsav.g.rect(x_offset + 229, y_offset + 70, 63, 65, 0, properties);  // Fourth rectangle on second row.
+  var n = [10, 5, 15, 3, 8, 13, 18, 2, 4, 7, 9, 12, 14, 17, 19];
+  var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];
 
-  // Recursive function to create a binary tree of height 4.
-  function genNodes(root, level) {
-    if (level <= 2) {
-      // Create left and right child nodes.
-      genNodes(root.left(""), level + 1);
-      genNodes(root.right(""), level + 1);
-    }
+  var bst = jsav.ds.bintree({nodegap: 30});
+  var nodes = [
+    bst.root(n[0]),
+  ];
+  nodes[0].css({"background-color": colors[0]});
+
+  bst.layout();
+
+  var recs = [];
+
+  // Create rectangles
+  var x = 20, y = 300, w = 120, h = 50, num = 5;
+  for (var i = 0; i < num; i++) {
+    recs.push(jsav.g.rect(x, y, w, h, {"stroke-width": 2, "fill": colors[i]}));
+    x += w;
   }
 
-  // Create binary tree object.
-  var bst = jsav.ds.bintree({width: 500, height: 520, nodegap: 20, anchor: "left top"});
-  // Set root node.
-  bst.root("");
-  // Generate child nodes.
-  genNodes(bst.root(), 0);
-  // Redraw binary tree to display newly created children nodes.
-  bst.layout();
+  // Create labels
+  var t = 310, l = 30, v = false;
+  var labels = [
+    jsav.label(n[0], {visible: v, left: (l + 0) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[1], {visible: v, left: (l + 40) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[2], {visible: v, left: (l + 80) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[3], {visible: v, left: (l + 120) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[4], {visible: v, left: (l + 160) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[5], {visible: v, left: (l + 200) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[6], {visible: v, left: (l + 240) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[7], {visible: v, left: (l + 280) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[8], {visible: v, left: (l + 320) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[9], {visible: v, left: (l + 360) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[10], {visible: v, left: (l + 400) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[11], {visible: v, left: (l + 440) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[12], {visible: v, left: (l + 480) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[13], {visible: v, left: (l + 520) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[14], {visible: v, left: (l + 560) + "px", top: (t + 0) + "px"})
+  ];
+
+  var messages = [
+    "Paged BST demo. The bottom square represents blocks on disk.",
+      "Insert " + n[0] + " into BST."
+  ];
+  jsav.umsg(messages.shift());
+  nodes[0].hide();
+  jsav.displayInit();
+
+  jsav.umsg(messages.shift());
+  nodes[0].show();
+  labels[0].show();
+  jsav.step();
+
+  var node = 0, flag = true;
+  for (i = 1; i < n.length; i++) {
+    jsav.umsg("Insert " + n[i] + " into the tree.");
+    var new_node;
+    if (flag) {
+      new_node = nodes[node].left(n[i]);
+      new_node.css({"background-color": colors[Math.floor(i / 3)]});
+      nodes.push(new_node);
+      flag = false;
+    } else {
+      new_node = nodes[node].right(n[i])
+      new_node.css({"background-color": colors[Math.floor(i / 3)]});
+      nodes.push(new_node);
+      flag = true;
+      node++;
+    }
+    bst.layout();
+    labels[i].show();
+    jsav.step();
+  }
+
+  jsav.recorded();
 }());
 
 /**
@@ -191,11 +272,11 @@
   bst.root("").css({"background-color": colors[color_root]});
   bst.root().right("").css({"background-color": colors[color_right]});
   bst.root().left("").css({"background-color": colors[color_left]});
+
   // Randomly generate three more levels of nodes.
   while (window.ODSA.bottom_layer.length === 0) {
     window.ODSA.generateBSTNodes(bst.root().left(), 2, 0, colors);
     window.ODSA.generateBSTNodes(bst.root().right(), 2, 0, colors);
-    console.log("try again");
   }
   bst.layout();
 
@@ -203,7 +284,7 @@
   var chosen_index = Math.floor((Math.random() * 100) % window.ODSA.bottom_layer.length);
   var chosen_node = window.ODSA.bottom_layer[chosen_index];
   chosen_node.css({"border": "1px solid white"});
-  chosen_node.css({"box-shadow": "0 0 10px 5px black"});
+  chosen_node.css({"box-shadow": "0 0 10px 3px black"});
   chosen_node.is_chosen = true;
 
   // Find the number of accesses to get to chosen one.

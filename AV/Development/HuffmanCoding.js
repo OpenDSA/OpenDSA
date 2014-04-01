@@ -364,51 +364,20 @@
     }
   }
 
-  // Create a table with all information about the character
+  // Create a table showing the letters and their huffman codes
   var createTable = function(valArr, codeArr) {
-
-    // Create the title of the table by using jsav array
-    var tableArray = new Array("<b>Char</b>", "<b>Freq</b>", "<b>Code</b>", "<b>Bits</b>");
-    var index = 4; // used to add value in jsav array.
-    var line = valArr.length;
-    var list = 3;
-    for(var i = 1; i <= line; i++) {
-      for(var j = 0; j <= list; j++) {
-        switch(j) {
-          case 0:
-          tableArray[index] = valArr[i - 1].split("<br>")[1];
-          index++;
-          break;
-          case 1:
-          tableArray[index] = valArr[i - 1].split("<br>")[0];
-          index++;
-          break;
-          case 2:
-          tableArray[index] = codeArr[i - 1];
-          index++;
-          break;
-          default:
-          tableArray[index] = codeArr[i - 1].length;
-          index++;
-        }
-      }
-    }
-
-    // Create 9 jsav arrays to construct a table
-    var tableDisplay = new Array(); // an array used for display the table
-    for(var i = 0, j = 0; i < tableArray.length; i += 4, j++) {
-      var tmpArr = new Array();
-
-      if (i % 4 == 0) {
-        tmpArr[j] = new Array(tableArray[i], tableArray[i + 1], tableArray[i + 2], tableArray[i + 3]);
-      }
-      tableDisplay[j] = jsav.ds.array(tmpArr[j]);
-    }
-
-    // Set css properties for the table
-    tableDisplay[0].css([0, 1, 2, 3], {"font-family":"Trebuchet MS, Arial, Helvetica, sans-serif", "font-size":"1.2em", "border":"1px #98bf21", "background-color":"#9ACD32", "color":"#fff"});
-    for (var i = 1; i < tableDisplay.length; i++) {
-      tableDisplay[i].css([0, 1, 2, 3], {"font-family":"Trebuchet MS, Arial, Helvetica, sans-serif", "font-size":"1.1em", "border":"0px #98bf21", "background-color": "#efe", "color":"#000"});
+    var theMatrix = new jsav.ds.matrix({rows: 10, columns: 4, style: "plain"});
+    // Why doesn't this line with the array work?
+    // theMatrix.value(0, ["<b>Char</b>", "<b>Freq</b>", "<b>Code</b>", "<b>Bits</b>"]);
+    theMatrix.value(0, 0, "<b>Char</b>");
+    theMatrix.value(0, 1, "<b>Freq</b>");
+    theMatrix.value(0, 2, "<b>Code</b>");
+    theMatrix.value(0, 3, "<b>Bits</b>");
+    for (var i = 1; i <= valArr.length; i++) {
+      theMatrix.value(i, 0, valArr[i - 1].split("<br>")[1]);
+      theMatrix.value(i, 1, valArr[i - 1].split("<br>")[0]);
+      theMatrix.value(i, 2, codeArr[i - 1]);
+      theMatrix.value(i, 3, codeArr[i - 1].length);
     }
   }
 

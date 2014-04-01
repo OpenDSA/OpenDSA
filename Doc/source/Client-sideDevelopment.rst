@@ -68,7 +68,6 @@ ODSA.AV
 
 * **processArrayValues(upperLimit)** - validates the array values a user enters or generates an array of random numbers if none are provided
 
-* **updateJSAVExerOptions()** - parses JSAV exercise grading options from the URL and applies them to ``JSAV_EXERCISE_OPTIONS``, overriding the default values.  Calling this function allows the grading options for an exercise to be set in the configuration file.  This function is called by default in ``odsaAV.js`` and does not need to be called directly by exercises unless the exercise alters ``JSAV_EXERCISE_OPTIONS``.  In order for the update to take effect, this function must be called before the JSAV object is initialized.
 
 ODSA.MOD
 ========
@@ -96,7 +95,7 @@ ODSA.UTILS
   with the given exercise or module in the given book
 * **syncProficiency()** - queries ``getgrade`` endpoint to obtain
   proficiency status for all exercises and modules
-* **parseURLParams()** - parses parameters from the URL, sets ``JSAV_OPTIONS`` and ``JSAV_EXERCISE_OPTIONS`` if applicable and stores the remaining options in a ``params`` object for use by the module or exercise
+* **parseURLParams()** - parses parameters from the URL, sets ``JSAV_OPTIONS`` and ``JSAV_EXERCISE_OPTIONS`` if applicable and stores the remaining options in a global ``PARAMS`` object for use by the module or exercise
 
 ---------------
 Tips and Tricks

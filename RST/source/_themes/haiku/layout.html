@@ -31,8 +31,8 @@
 {% endmacro %}
 
 {% macro login() %}
-<a id="username-link" style="float:right;color:red;margin:10px 0 auto; display: none" class="username-link" href="Gradebook.html"></a>
-<a id="login-link" style="float:right;color:red;margin:10px 10px auto" class="login-link" href="#">Login</a>
+<a id="username-link" style="float:right;color:red;margin:10px 20px auto; display: none" class="username-link" href="Gradebook.html"></a>
+<a id="login-link" style="float:right;color:red;margin:10px 20px auto" class="login-link" href="#">Login</a>
 <div id="login-box" class="login-popup">
   <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
   <form method="post" class="signin" action="#">
@@ -59,7 +59,7 @@
 {% endmacro %}
 
 {% macro registration() %}
-<a id="registration-link" style="float:right;color:red;margin:10px 10px auto" class="registration-link" href="#">Register</a>
+<a id="registration-link" style="float:right;color:red;margin:10px 20px auto" class="registration-link" href="#">Register</a>
 <div id="registration-box" class="registration-popup ">
   <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
   <form method="post" class="signin" action="#">
@@ -92,6 +92,46 @@
   </form>
 </div>
 {% endmacro %}
+
+{% macro bugreport() %}
+<a id="bugreport-link" style="float:right;color:red;margin:10px 20px auto" class="bugreport-link" href="#">Report a bug</a>
+<div id="bugreport-box" class="bugreport-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  <form method="post" class="report" action="#">
+    <fieldset class="textbox">
+      <div id="bug_error" class="error"></div>
+        <span>Title*:</span>
+        <input type="text" id="b_title" placeholder="Title" />
+      </label>
+
+      <label class="os">
+        <span>Operating system*:</span>
+        <input type="text" id="b_os" placeholder="Operating system" />
+      </label>
+
+      <label class="browser">
+        <span>Browser*:</span>
+        <input type="text" id="b_browser" placeholder="Browser" />
+      </label>
+
+      <label class="description">
+        <span>Description*:</span><br>
+        <textarea id="b_derscription" rows="5" cols="25" placeholder="***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug"></textarea>
+      </label>
+
+      <label class="screenshot">
+        <span>Attach a screenshot (optional):</span>
+        <input type="file" id="b_screenshot" accept="image/*" placeholder="Screenshot">
+      </label>
+
+      <p>
+        <input type="submit" id="bug-submit-button" value="Submit &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+{% endmacro %}
+
 
 {% macro nav() %}
         {%- block haikurel1 %}
@@ -135,6 +175,7 @@
         {{ scripts() }}
         {{ login() }}
         {{ registration() }}
+        {{ bugreport() }}
         {%- if theme_full_logo != "false" %}
         <a href="{{ pathto('index') }}">
           <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>

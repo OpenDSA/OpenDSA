@@ -422,6 +422,7 @@ root are stored in the right branch.
    Need a figure to illustrate the following paragraph.
 
 .. inlineav:: timeline ss
+   :output: show
 
 If we view all records stored in either of these structures as
 appearing at some point on a number line representing the key space,

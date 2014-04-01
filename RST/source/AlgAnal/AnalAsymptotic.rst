@@ -184,8 +184,8 @@ is not true for some other algorithms in :math:`O(n^2)`.
 We always seek to define the running time of an algorithm
 with the tightest (lowest) possible upper bound.
 Thus, we prefer to say that sequential search is in :math:`O(n)`.
-This also explains why the phrase "is in :math:`O(f(n))` or the
-notation ":math:`\in O(f(n))`" is used instead of " is :math:`O(f(n))`
+This also explains why the phrase "is in :math:`O(f(n))`" or the
+notation ":math:`\in O(f(n))`" is used instead of "is :math:`O(f(n))`"
 or ":math:`= O(f(n))`".
 There is no strict equality to the use of big-Oh notation.
 :math:`O(n)` is in :math:`O(n^2)`, but :math:`O(n^2)` is not in

@@ -8,32 +8,36 @@
   
   function Bintree(jsav, xrange, yrange) {
 
-    var tree;
-    var root;
     
-    tree = jsav.ds.bintree({nodegap: 10});
-    root = tree.root('');
-    root.leaf = true;
-    root.empty = true;
-    root.level = 0;
+    var tree = jsav.ds.bintree({nodegap: 10});
+    var vrt = tree.root('ROOT');
+    var root = vrt;
+    console.log("I'm making a new Bintree object. root = ", root);
+    vrt.leaf = true;
+    vrt.empty = true;
+    vrt.level = 0;
 
     // The bintree starts with a root node, and two empty leafnodes
     var newL1  = tree.newNode('');
     var newR1 = tree.newNode('');
     newL1.leaf = newR1.leaf = true;
     newR1.empty = newL1.empty = true;
-    root.left(newL1);
-    root.right(newR1);
+    vrt.left(newL1);
+    vrt.right(newR1);
 
     // DON't FORGET THIS!!!
     tree.layout();
+
+    this.getRoot = function () {
+      return tree.root;
+    }
     
     this.isEmpty = function () {
       var returning = (root.left().empty && root.left().leaf && root.right().empty && root.right().leaf);
       console.log("Bintree isEmpty test: ", returning);
       return (returning);
     }
-      
+    
     // returns a node!
     this.insert = function(rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level) {
 
@@ -64,8 +68,7 @@
         newRight.empty = newLeft.empty = true;
         temp.setLeftNode(newLeft);
         temp.setRightNode(newRight);
-        rt = insert(temp, rt.x, rt.y, rt.value(), Bx, By, Bwid, Bhgt, level);
-
+        rt = insert(temp, rt.x, rt.y, '', Bx, By, Bwid, Bhgt, level);
         // NO Return: Rolls through to next if statement
       }
 
@@ -74,11 +77,11 @@
       {
         if (rt.x < (Bx + Bwid/2)) // Insert left
         {
-          rt.left(insert(rt.left(), INx, INy, INrec, Bx, By, Bwid/2, Bhgt, level+1));
+          rt.left(this.insert(rt.left(), INx, INy, INrec, Bx, By, Bwid/2, Bhgt, level+1));
         }
         else
         {
-          rt.right(insert(rt.right(), INx, INy, INrec, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
+          rt.right(this.insert(rt.right(), INx, INy, INrec, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
         }
       }
 
@@ -86,11 +89,11 @@
       {
         if (rt.y < (By + Bhgt/2)) // Insert left
         {
-          rt.left(insert(rt.left(), INx, INy, INrec, Bx, By, Bwid, Bhgt/2, level+1));
+          rt.left(this.insert(rt.left(), INx, INy, INrec, Bx, By, Bwid, Bhgt/2, level+1));
         }
         else
         {
-          rt.right(insert(rt.right(), INx, INy, INrec, Bx, By + Bhgt/2, Bwid, Bhgt/2, level+1));
+          rt.right(this.insert(rt.right(), INx, INy, INrec, Bx, By + Bhgt/2, Bwid, Bhgt/2, level+1));
         }
       }
 
@@ -191,8 +194,9 @@
     var jsav = new JSAV($('.avcontainer'));
 
     jsav.umsg("Let's get started");
-    var bint = new Bintree(jsav);
-    console.log("I just made a new Bintree, and bint.root is: ", bint.root);
+    console.log("Create the Bintree object");
+    var bint = new Bintree(jsav, 200, 200);
+    console.log("I just made a new Bintree, and bint.root is: ", bint.getRoot());
     bint.isEmpty();
     jsav.displayInit();
 
@@ -201,8 +205,8 @@
     // Setup the tree
     jsav.umsg("Step 1: insert node with value \"A\" @ 10, 10");
     // rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level
-    console.log("Let's call insert. bint.root is now: ", bint.root);
-    bint.insert(bint.root, 10, 10, "A", 100, 100, 200, 200, 0);
+    console.log("Let's call insert. bint.root is now: ", bint.getRoot());
+    bint.insert(bint.getRoot(), 10, 10, "A", 100, 100, 200, 200, 0);
     bint.isEmpty();
   
     jsav.step();
