@@ -186,28 +186,119 @@
 (function ($) {
 
   var av = new JSAV("timeline");
-
-  var t = construct_tree(av);
-  var r = t.root("");
-
+  var t = av.ds.bintree({nodegap: 25});
+  var r = t.root("19");
+  var tl = new_timeline(av, 40, 350, 500, 0, 65);
   t.layout();
 
-  av.umsg("To demonstrate to characteristics of a trie, we will display this on a number line.");
-  var tl = new_timeline(av, 60, 450, 450, 0, 100, undefined);
+  av.umsg("To demonstrate to characteristics of a tree, we will display this on a number line. We first insert 19.");
   av.displayInit();
+
+  // step 1
+  av.umsg("19 is now displayed on the numberline. Notice the numberline is split at 19");
+  timeline_value(av, tl, 19, "19");
+  av.step();
+
+  // step 2
+  av.umsg("We now add 14 to the tree. A split is made at 14.");
+  timeline_value(av, tl, 14, "14");
+  r.left("14");
+  r.left().highlight();
+  t.layout();
+  av.step();
+
+  // step 3
+  av.umsg("9 is added to the tree.");
+  timeline_value(av, tl, 9, "9");
+  r.left().left("9");
+  r.left().unhighlight();
+  r.left().left().highlight();
+  t.layout();
+  av.step();
+
+  // step 4
+  av.umsg("Now 50 is added. As before, we split at 50.");
+  timeline_value(av, tl, 50, "50");
+  r.right("50");
+  r.left().left().unhighlight();
+  r.right().highlight();
+  t.layout();
+  av.step();
+
+  // step 5
+  av.umsg("Now 54 is added.");
+  timeline_value(av, tl, 54, "54");
+  r.right().right("54");
+  r.right().unhighlight();
+  r.right().right().highlight();
+  t.layout();
+  av.step();
+
+  // step 6
+  av.umsg("Now we add 63.");
+  timeline_value(av, tl, 63, "63");
+  r.right().right().right("63");
+  r.right().right().unhighlight();
+  r.right().right().right().highlight();
+  t.layout();
+  av.step();
+
+  // step 7
+  av.umsg("Now add 12.");
+  timeline_value(av, tl, 12, "12");
+  r.left().left().right("12");
+  r.right().right().right().unhighlight()
+  r.left().left().right().highlight();
+  t.layout();
+  av.step();
+
+  // step 8
+  av.umsg("Now add 17 and note the corresponding split.");
+  timeline_value(av, tl, 17, "17");
+  r.left().right("17");
+  r.left().left().right().unhighlight();
+  r.left().right().highlight();
+  t.layout();
+  av.step();
+
+  // step 9
+  av.umsg("Now add 56.");
+  timeline_value(av, tl, 56, "56");
+  r.right().right().right().left("56");
+  r.left().right().unhighlight();
+  r.right().right().right().left().highlight();
+  t.layout();
+  av.step();
+
+  // step 10
+  av.umsg("Now add 59.");
+  timeline_value(av, tl, 59, "59");
+  r.right().right().right().left().right("59");
+  r.right().right().right().left().unhighlight();
+  r.right().right().right().left().right().highlight();
+  t.layout();
+  av.step();
+
+  // step 11
+  av.umsg("Our last number to add is 23.");
+  timeline_value(av, tl, 23, "23");
+  r.right().left("23");
+  r.right().right().right().left().right().unhighlight();
+  r.right().left().highlight();
+  t.layout();
+  av.step();
+
+  // cleanup
+  av.recorded();
 
 }(jQuery));
 
-function new_timeline(av, x, y, len, min, max, prop) { 
+// ------------ TIMELINE --------------
+
+function new_timeline(av, x, y, len, min, max) { 
   
-  if (prop == undefined) {
-    // make line
-    av.g.rect(x, y, len, 3, {fill: "black", "stroke-width": 0});
-  }
-  else {
-    // make line
-    av.g.rect(x, y, len, 3, prop);
-  }
+  // make line
+  av.g.rect(x, y, len, 3, {fill: "black", "stroke-width": 0});
 
   // arrows
   av.g.polyline([[x, y + 11], [x, y - 9], [x - 10, y + 1]], 
@@ -218,16 +309,21 @@ function new_timeline(av, x, y, len, min, max, prop) {
   return {x: x, y: y, len: len, min: min, max: max};
 }
 
+/* Constructor */
 function timeline_line(av, tl, x, label) {
-  av.g.rect(tl.x + x, tl.y - 25, 2, 50, {fill: "red", "stroke-width": 0});
-  av.label(label, {left: tl.x + x - 4, top: tl.y - 45});
+  this.rec = av.g.rect(tl.x + x, tl.y - 25, 2, 50, {fill: "red", "stroke-width": 0});
+  this.label = av.label(label, {left: tl.x + x - 4, top: tl.y - 45});
+
+  function highlight() {
+    console.log("Hi");
+  }
 }
 
+/* Helper method */
 function timeline_value(av, tl, val, label) {
   var range = tl.max - tl.min;
   var pxPerInc = tl.len / range;
   var pos = pxPerInc * val;
-
   timeline_line(av, tl, pos, label);
 }
 

@@ -110,6 +110,10 @@
 }
 
 #timeline .jsavtree {
-  margin-left: 55px;
-  margin-top: 10px;
+  /*margin-left: 55px;*/
+  margin-top: -20px;
+}
+
+#timeline .jsavoutput {
+  width: 590px;
 }
