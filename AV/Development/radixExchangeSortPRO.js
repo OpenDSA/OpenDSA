@@ -1,6 +1,6 @@
 (function ($) {
   "use strict";
-  var arraySize = 10, //size needs to be odd
+  var arraySize = 10,
     bits = 3,
     colorBits = true,
     initialArray,
