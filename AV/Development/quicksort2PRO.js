@@ -1,14 +1,12 @@
 (function ($) {
   "use strict";
   var arraySize = 10,
-    bits = 3,
-    colorBits = true,
     initialArray,
     array,
     stack,
     mode,
-    av = new JSAV($("#jsavcontainer")),
-    clickHandler;
+    clickHandler,
+    av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
@@ -23,29 +21,22 @@
     clickHandler.reset();
 
     //generate random infix and insert in the array
-    initialArray = JSAV.utils.rand.numKeys(0, Math.pow(2, bits), arraySize);
-    for (var i = 0; i < arraySize; i++) {
-      //convert into binary
-      initialArray[i] = initialArray[i].toString(2);
-      //add leading zeros
-      initialArray[i] =
-        new Array( bits + 1 - initialArray[i].length).join("0") + initialArray[i];
-      if (colorBits) {
-        //add <span class="bit"> around all bits
-        initialArray[i] = '<span class="bit">' + initialArray[i].split("").join('</span><span class="bit">') + '</span>';
-      }
-    }
+    initialArray = JSAV.utils.rand.numKeys(10, 125, arraySize);
 
     // initialize array
     if (array) {
       clickHandler.remove(array);
       array.clear();
     }
-    array = av.ds.array(initialArray, {indexed: true});
+    array = av.ds.array(initialArray, {indexed: true, layout: "bar"});
     array.element.css({top: 40});
     array.layout();
-    clickHandler.addArray(array, {onSelect:
-      function (index) {
+    clickHandler.addArray(array, {
+      onSelect: function (index) {
+        // don't allow selection of inactive values
+        if (array.hasClass(index, "inactive"))
+          return false;
+
         switch (mode.value()) {
           case 0:
             //return true to tell clickHandler to select the item
@@ -60,13 +51,25 @@
           case 2:
             extendStackValue("Right", index);
             av.umsg("");
-            focusOn(array, getCurrentValue("Left", stack), index, getCurrentValue("Bit", stack));
+            focusOn(array, getCurrentValue("Left", stack), index);
+            if (index - getCurrentValue("Left", stack) >= 3)
+              array.addClass(index, "pivot");
             mode.value(0);
             exercise.gradeableStep();
             break;
         }
         //disable selecting
         return false;
+      },
+      onDrop: function (index) {
+        var index2 = clickHandler.getSelected().index;
+        if (array.hasClass(index, "pivot")) {
+          array.removeClass(index, "pivot");
+          array.addClass(index2, "pivot");
+        } else if (array.hasClass(index2, "pivot")) {
+          array.removeClass(index2, "pivot");
+          array.addClass(index, "pivot");
+        }
       }
     });
 
@@ -79,8 +82,8 @@
     stack = av.ds.stack({xtransition: 5, ytransition: 25, center: false});
     // stack = av.ds.list({nodegap: 15, layout: "vertical", center: false, autoresize: false});
     stack.element.css({width: 180, position: "absolute"});
-    stack.element.css({top: 200, left: av.canvas.width() / 2 - 90});
-    stack.addFirst("Bit: "+(bits - 1)+", Left: 0, Right: "+(arraySize - 1));
+    stack.element.css({top: 250, left: av.canvas.width() / 2 - 90});
+    stack.addFirst("Left: 0, Right: "+(arraySize - 1));
     stack.layout();
     
     //mode variable
@@ -103,12 +106,13 @@
     };
     var canvasWidth = exercise.jsav.container.find(".jsavcanvas").width();
     av.getSvg().text(canvasWidth / 2, 20, "Table to be sorted").attr(font);
-    av.getSvg().text(canvasWidth / 2, 180, "Call Stack").attr(font);
+    av.getSvg().text(canvasWidth / 2, 230, "Call Stack").attr(font);
 
     //hide old umsg messages
     av.umsg("");
 
-    focusOn(array, 0, arraySize - 1, bits - 1);
+    focusOn(array, 0, arraySize - 1);
+    array.addClass(arraySize - 1, "pivot");
 
     return array;
   }
@@ -126,28 +130,11 @@
 
     jsav._undo = [];
 
-    // $(".jsavforward").click(function () {
-    //   if (jsav.container.hasClass("jsavplaying")) {
-    //     jsav.container.removeClass("jsavplaying");
-    //   }
-    // });
-    // $(".jsavbackward").click(function () {
-    //   if (jsav.container.hasClass("jsavplaying")) {
-    //     jsav.container.removeClass("jsavplaying");
-    //   }
-    // });
-
-    //get the bit from the array at index
-    //removes possible spans
-    function getBit(arr, index, bit) {
-      return parseInt(arr.value(index).replace(/<\/?span[^>]*>/g,"").charAt(bits - 1 - bit));
-    }
-
     function modelRadix(bit, left, right) {
-      modelStack.addFirst("Bit: " + bit + ", Left: " + left + ", Right: " + right);
+      modelStack.addFirst("Left: " + left + ", Right: " + right);
       modelStack.layout();
 
-      focusOn(modelArray, left, right, bit);
+      focusOn(modelArray, left, right);
 
       //add a step if not first call
       if (left !== 0 || right !== arraySize - 1) {
@@ -210,13 +197,13 @@
   }
 
   //position buttons
-  $callButton.css({position: "absolute", left: 50, top: 200, width: 100});
-  $returnButton.css({position: "absolute", left: 50, top: 230, width: 100});
+  $callButton.css({position: "absolute", left: 50, top: 250, width: 100});
+  $returnButton.css({position: "absolute", left: 50, top: 280, width: 100});
   //add click handlers
   $callButton.click(function () {
     mode.value(1);
     clickHandler.deselect();
-    stack.addFirst("Bit: " + (getCurrentValue("Bit", stack) - 1));
+    stack.addFirst("");
     stack.layout();
     av.umsg("Select the <strong>left endpoint</strong>.");
     av.step();
@@ -228,14 +215,14 @@
 
 
 
-  //returns the value of Bit, Left or Right of the topmost item of the stack
+  //returns the value of Left or Right of the topmost item of the stack
   function getCurrentValue(name, stack) {
     var result;
     var value;
     if (stack.first()) {
       value = stack.first().value();
     } else {
-      value = "Bit: " + bits + ", Left: " + 0 + ", Right: " + (arraySize - 1);
+      value = "Left: " + 0 + ", Right: " + (arraySize - 1);
     }
     var parts = value.split(", ");
     parts.forEach(function (val) {
@@ -250,50 +237,48 @@
   //extends the value of the topmost element on the stack
   function extendStackValue(name, value) {
     var oldvalue = stack.first().value();
-    oldvalue += ", " + name + ": " + value;
+    if (!oldvalue) {
+      oldvalue = name + ": " + value;
+    } else {
+      oldvalue += ", " + name + ": " + value;
+    }
     stack.first().value(oldvalue);
   }
 
   //paints all the squares outside of [first, last] grey
-  function focusOn(arr, first, last, bit) {
-    arr.removeClass(true, "greybg");
+  function focusOn(arr, first, last) {
+    arr.removeClass(function (index) {
+      return index >= first && index <= last;
+    },
+    "inactive");
     arr.addClass(function (index) {
       return index < first || index > last;
     },
-    "greybg");
-    if (colorBits && typeof bit === "number") {
-      //uncolor all bits
-      arr.element.find(".bit").removeClass("coloredbit");
-      //color the wanted bits
-      arr.element.find(".jsavvalue").find(".bit:eq("+(bits - 1 - bit)+")").addClass("coloredbit");
-      if (bit === bits) {
-        //remove all bit classes
-        for (var i = 0; i < arraySize; i++) {
-          var $temp = arr.element.find(".jsavvaluelabel:eq("+i+")");
-          $temp.html($temp.text());
-        }
-      }
-      //update the real values of the elements
-      for (var i = 0; i < arraySize; i++) {
-        var v = arr.element.find("li:eq("+i+") .jsavvaluelabel").html();
-        arr.value(i, v);
-      }
-    } 
+    "inactive");
   }
 
   //pops the stack and focuses on the previous range
   function returnClick(array, stack) {
     if (stack.size()) {
+      // remove pivots from the range
+      array.removeClass(function (index) {
+        return index >= getCurrentValue("Left", stack) && index <= getCurrentValue("Right", stack);
+      }, "pivot");
+
+      // add green background
+      array.addClass(function (index) {
+        return index >= getCurrentValue("Left", stack) && index <= getCurrentValue("Right", stack);
+      }, "greenbg");
+
       stack.removeFirst();
       stack.layout();
     }
     if (stack.size()) {
       focusOn(array,
         getCurrentValue("Left", stack),
-        getCurrentValue("Right", stack),
-        getCurrentValue("Bit", stack));
+        getCurrentValue("Right", stack));
     } else {
-      focusOn(array, 0, arraySize - 1, bits);
+      focusOn(array, 0, arraySize - 1);
     }
   }
 
