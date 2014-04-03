@@ -366,9 +366,9 @@ def configure(config_file_path, slides = False):
   with open(config.book_src_dir + 'conf.py','w') as conf_py:
     conf_py.writelines(conf % options)
 
-  # Copy only the images used by the book from RST/en/Images/ to the book source directory
+  # Copy only the images used by the book from RST/Images/ to the book source directory
   for image in images:
-    distutils.file_util.copy_file('%sRST/en/Images/%s' % (config.odsa_dir, image), config.book_src_dir + 'Images/')
+    distutils.file_util.copy_file('%sRST/Images/%s' % (config.odsa_dir, image), config.book_src_dir + 'Images/')
 
   # Run make on the output directory
   print '\nBuilding textbook...'
