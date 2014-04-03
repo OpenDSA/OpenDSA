@@ -8,18 +8,18 @@
 }
 
 /* Sets maximum width to JSAV container */
-#DecodeExample {
+#HuffmanCon2 {
   padding-top: 30px;
   width: 650px;
 }
 
 /* Sets width and height to the JSAV canvas */
-#DecodeExample .jsavcanvas {
+#HuffmanCon2 .jsavcanvas {
   height: 330px;
   width: 620px;
 }
 
-#DecodeExample .jsavtree {
+#HuffmanCon2 .jsavtree {
   margin-top: -25px;
   margin-left: 210px;
   left: 190px;
@@ -42,58 +42,58 @@
   height: 25px;
 }
 
-/*=================== MExample ===================*/
+/*=================== HuffmanCon4 ===================*/
 /* Sets maximum width to JSAV container */
-#MExample {
+#HuffmanCon4 {
   padding-top: 30px;
   width: 650px;
 }
 
 /* Sets width and height to the JSAV canvas */
-#MExample .jsavcanvas {
+#HuffmanCon4 .jsavcanvas {
   height: 330px;
   width: 600px;
 }
 
-#MExample .jsavtree {
+#HuffmanCon4 .jsavtree {
   margin-top: -25px;
 }
 
-#MExample .jsavtree.jsavcommontree.jsavautoresize.jsavbinarytree {
+#HuffmanCon4 .jsavtree.jsavcommontree.jsavautoresize.jsavbinarytree {
   margin-left: 100px;
 }
 
-/*=================== Con1 ===================*/
-#Con1 {
+/*=================== HuffmanCon3 ===================*/
+#HuffmanCon3 {
   padding-top: 30px;
   width: 650px;
 }
 
 /* Sets width and height to the JSAV canvas */
-#Con1 .jsavcanvas {
+#HuffmanCon3 .jsavcanvas {
   margin-top:20px;
   height: 335px;
   width: 300px;
 }
 
-#Con1 .jsavtree {
+#HuffmanCon3 .jsavtree {
   margin-top: -15px;
   top: 0px;
   margin-left: 250px;
 }
 
-#Con1 .jsavoutput.jsavline {
+#HuffmanCon3 .jsavoutput.jsavline {
   width:650px;
 }
 
-/*=================== finalHuffmanTree ===================*/
+/*=================== HuffmanCon5 ===================*/
 
-#finalHuffmanTree {
+#HuffmanCon5 {
   width:370px;
   height:350px;
 }
 
-#finalHuffmanTree .jsavtree {
+#HuffmanCon5 .jsavtree {
   margin-top: 1px;
   margin-left: 51px;
 }
@@ -102,18 +102,18 @@
   height:25px;
 }
 
-/*=================== timeline ===================*/
+/*=================== TreeTimeline ===================*/
 
-#timeline {
+#TreeTimeline {
   width: 600px;
   height: 520px;
 }
 
-#timeline .jsavtree {
+#TreeTimeline .jsavtree {
   /*margin-left: 55px;*/
   margin-top: -20px;
 }
 
-#timeline .jsavoutput {
+#TreeTimeline .jsavoutput {
   width: 590px;
 }
