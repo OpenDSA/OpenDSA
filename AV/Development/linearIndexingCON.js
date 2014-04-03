@@ -5,6 +5,10 @@
 
   var jsav = new JSAV("varindexCON");
   
+var setYellow = function (index) {
+arr.css(index, {"background-color": "#FFFF00" });
+};
+  
   jsav.umsg("So here is the variable length array of database records");
   
   //Lower rectangles
@@ -15,66 +19,83 @@
   var rect15 = jsav.g.rect(350, 72, 170, 20).css({"fill": "white"});
   
   
-  var inFragLabel = jsav.label("Database Records", {left :  0, top:  92});
-  var fragLabel = jsav.label("73", {left : 2, top:  72});
-  var fragLabel = jsav.label("52", {left : 122, top:  72});
-  var fragLabel = jsav.label("98", {left : 182, top:  72});
-  var fragLabel = jsav.label("37", {left : 322, top:  72});
-  var fragLabel = jsav.label("42", {left : 352, top:  72});
+  var fragLabel1 = jsav.label("73", {left : 2, top:  72});
+  var fragLabel2 = jsav.label("52", {left : 122, top:  72});
+  var fragLabel3 = jsav.label("98", {left : 182, top:  72});
+  var fragLabel4 = jsav.label("37", {left : 322, top:  72});
+  var fragLabel5 = jsav.label("42", {left : 352, top:  72});
   
   
   jsav.displayInit();
   
-  var rect1 = jsav.g.rect(0, 13, 30, 20).css({"fill": "white"});
-  var rect2 = jsav.g.rect(30, 13, 30, 20).css({"fill": "white"});
-  var rect3 = jsav.g.rect(60, 13, 30, 20).css({"fill": "white"});
-  var rect4 = jsav.g.rect(90, 13, 30, 20).css({"fill": "white"});
-  var rect5 = jsav.g.rect(120, 13, 30, 20).css({"fill": "white"});
-  var rect6 = jsav.g.rect(150, 13, 30, 20).css({"fill": "white"});
-  var rect7 = jsav.g.rect(180, 13, 30, 20).css({"fill": "white"});
-  var rect8 = jsav.g.rect(210, 13, 30, 20).css({"fill": "white"});
-  var rect9 = jsav.g.rect(240, 13, 30, 20).css({"fill": "white"});
-  var rect10 = jsav.g.rect(270, 13, 30, 20).css({"fill": "white"});
+  var theArray = [];
+  theArray.length = 10;
+  var arr = jsav.ds.array(theArray);
+  //var fragLabel = jsav.label("37", {left : 8, top:  12});
+  //var fragLabel = jsav.label("42", {left : 68, top:  12});
+  //var fragLabel = jsav.label("52", {left : 128, top:  12});
+  //var fragLabel = jsav.label("73", {left : 188, top:  12});
+  //var fragLabel = jsav.label("98", {left : 248, top:  12});
   
-  var fragLabel = jsav.label("37", {left : 8, top:  12});
-  var fragLabel = jsav.label("42", {left : 68, top:  12});
-  var fragLabel = jsav.label("52", {left : 128, top:  12});
-  var fragLabel = jsav.label("73", {left : 188, top:  12});
-  var fragLabel = jsav.label("98", {left : 248, top:  12});
-  
-  jsav.umsg("This is the Linear Index array which is organized as a sequence of key/pointer pairs");
+  jsav.umsg("This is the Linear Index array");
   jsav.step();
   
-  var rect1 = jsav.g.rect(0, 13, 30, 20).css({"fill": "white"});
-  var rect2 = jsav.g.rect(30, 13, 30, 20).css({"fill": "#FFFF00"});
-  var rect3 = jsav.g.rect(60, 13, 30, 20).css({"fill": "white"});
-  var rect4 = jsav.g.rect(90, 13, 30, 20).css({"fill": "#FFFF00"});
-  var rect5 = jsav.g.rect(120, 13, 30, 20).css({"fill": "white"});
-  var rect6 = jsav.g.rect(150, 13, 30, 20).css({"fill": "#FFFF00"});
-  var rect7 = jsav.g.rect(180, 13, 30, 20).css({"fill": "white"});
-  var rect8 = jsav.g.rect(210, 13, 30, 20).css({"fill": "#FFFF00"});
-  var rect9 = jsav.g.rect(240, 13, 30, 20).css({"fill": "white"});
-  var rect10 = jsav.g.rect(270, 13, 30, 20).css({"fill": "#FFFF00"});
+  //var fragLabel = jsav.label("73", {left : 8, top:  12});
+  jsav.effects.copyValue(fragLabel1, arr, 0);
+  jsav.umsg("Every block in the variable length array has a corresponding key in the Linear Index Array");
+  jsav.step();
   
-  var xFragArrow = jsav.g.line(45,  20,  45, 45, {'stroke-width' : 1});
-  var yFragArrow = jsav.g.line(45,  45,  325, 45, {'stroke-width' : 1});
+  //var fragLabel = jsav.label("52", {left : 68, top:  12});
+  jsav.effects.copyValue(fragLabel2, arr, 2);
+  jsav.step();
+  
+  //var fragLabel = jsav.label("98", {left : 128, top:  12});
+  jsav.effects.copyValue(fragLabel3, arr, 4);
+  jsav.step();
+  
+  //var fragLabel = jsav.label("37", {left : 188, top:  12});
+  jsav.effects.copyValue(fragLabel4, arr, 6);
+  jsav.step();
+  
+  //var fragLabel = jsav.label("42", {left : 248, top:  12});
+  jsav.effects.copyValue(fragLabel5, arr, 8);
+  jsav.step();
+  arr.swap(0,6);
+  arr.swap(4,8);
+  arr.swap(2,4);
+  jsav.umsg("Here is the Linear Index Array with all keys in sorted order");
+  jsav.step();
+  
+  var xFragArrow = jsav.g.line(160,  20,  160, 45, {'stroke-width' : 1});
+  var yFragArrow = jsav.g.line(160,  45,  325, 45, {'stroke-width' : 1});
   var zFragArrow = jsav.g.line(325,  45,  325, 70, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
   
-  var x1FragArrow = jsav.g.line(105,  20,  105, 39, {'stroke-width' : 1});
-  var y1FragArrow = jsav.g.line(105,  39,  355, 39, {'stroke-width' : 1});
+  setYellow(1);
+  jsav.umsg("Every key has a pointer to the beginning of the corresponding record in the database file");
+  jsav.step();
+  
+  var x1FragArrow = jsav.g.line(226,  20,  226, 39, {'stroke-width' : 1});
+  var y1FragArrow = jsav.g.line(226,  39,  355, 39, {'stroke-width' : 1});
   var z1FragArrow = jsav.g.line(355,  39,  355, 70, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
-   
-  var x2FragArrow = jsav.g.line(165,  20,  165, 62, {'stroke-width' : 1});
-  var y2FragArrow = jsav.g.line(165,  62,  127, 62, {'stroke-width' : 1});
+  setYellow(3);
+  jsav.step();
+  
+  var x2FragArrow = jsav.g.line(289,  20,  289, 62, {'stroke-width' : 1});
+  var y2FragArrow = jsav.g.line(289,  62,  127, 62, {'stroke-width' : 1});
   var z2FragArrow = jsav.g.line(127,  62,  127, 70, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+  setYellow(5);
+  jsav.step();
   
-  var x3FragArrow = jsav.g.line(225,  20,  225, 57, {'stroke-width' : 1});
-  var y3FragArrow = jsav.g.line(225,  57,  7, 57, {'stroke-width' : 1});
+  var x3FragArrow = jsav.g.line(351,  20, 351, 57, {'stroke-width' : 1});
+  var y3FragArrow = jsav.g.line(351,  57,  7, 57, {'stroke-width' : 1});
   var z3FragArrow = jsav.g.line(7,  57,  7, 70, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
-  
-  var x4FragArrow = jsav.g.line(285,  20,  285, 51, {'stroke-width' : 1});
-  var y4FragArrow = jsav.g.line(285,  51,  184, 51, {'stroke-width' : 1});
-  var z4FragArrow = jsav.g.line(184,  51,  184, 70, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+  setYellow(7);
+  jsav.step();
+  var x4FragArrow = jsav.g.line(412,  20,  412, 51, {'stroke-width' : 1});
+  var y4FragArrow = jsav.g.line(412,  51,  184, 51, {'stroke-width' : 1});
+  var z4FragArrow = jsav.g.line(184,  51,  184, 70, {'arrow-end': 'classic-wide-long','stroke-width' : 1});  
+  setYellow(9);
+  jsav.step();
   
   jsav.umsg("Each record in the index file is of fixed length and contains a pointer to the beginning of the corresponding record in the database file");
   //End of slideshow

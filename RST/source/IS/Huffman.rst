@@ -212,7 +212,7 @@ the tree. '0' is assigned to edges connecting a node with its left
 child, and '1' to edges connecting a node with its right child.
 This process is illustrated by the following slideshow.
 
-.. inlineav:: DecodeExample ss 
+.. inlineav:: HuffmanCon2 ss 
    :output: show
 
 .. TODO::
@@ -281,7 +281,7 @@ A lookup table can be used for this purpose.
    In similar manner we complete the decoding process to find that the
    last two letters are C and K, spelling the word "DUCK."
 
-.. inlineav:: Con1 ss
+.. inlineav:: HuffmanCon3 ss
    :output: show
 
 A set of codes is said to meet the :dfn:`prefix property` if no
@@ -305,7 +305,7 @@ correspond to leaf nodes.
    node of the tree, and the tree-building process places letters only
    at the leaf nodes.
 
-.. inlineav:: MExample ss
+.. inlineav:: HuffmanCon4 ss
    :output: show
 
 How efficient is Huffman coding?
@@ -406,7 +406,7 @@ its Huffman code).
 
    Display the final Huffman tree for the example.
 
-.. inlineav:: finalHuffmanTree dgm
+.. inlineav:: HuffmanCon5 dgm
 
 We see that all letters with codes beginning with
 '0' are stored in the left branch, while all letters with codes
@@ -421,7 +421,7 @@ root are stored in the right branch.
 
    Need a figure to illustrate the following paragraph.
 
-.. inlineav:: timeline ss
+.. inlineav:: TreeTimeline ss
    :output: show
 
 If we view all records stored in either of these structures as
