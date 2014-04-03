@@ -88,8 +88,8 @@
     
     var free1Finish = 342;
     var free2Finish = 455;
-    var free3Finish = 517;
-    var free4Finish = 642;
+    var free3Finish = 597;
+    var free4Finish = 755;
     
     freeFinArray = new Array(free1Finish, free2Finish, free3Finish, free4Finish);
     
@@ -159,24 +159,6 @@
 
   }
  
-  function updateLabels()
-  {
-    block1Label = jsav.label(freeArray[0], {left :  22, top:  420});
-    block2Label= jsav.label(freeArray[1], {left :  47, top:  420});
-    block3Label = jsav.label(freeArray[2], {left :  72, top:  420});
-    block4Label = jsav.label(freeArray[3], {left :  97, top:  420});
-    usedAmountLabel = jsav.label(usedNum, {left :  450, top:  65});
-    freeAmountLabel = jsav.label(freeNum, {left :  530, top:  65});
-  }
- 
-  function updateLines()
-  {
-    connect1 = jsav.g.line(22.5, 400, (freeStartArray[1] + freeFinArray[1])/2, 280);
-    connect2 = jsav.g.line(47.5, 400, (freeStartArray[2] + freeFinArray[2])/2, 280);
-    connect3 = jsav.g.line(72.5, 400, (freeStartArray[3] + freeFinArray[3])/2, 280);
-    connect4 = jsav.g.line(97.5, 400, (freeStartArray[4] + freeFinArray[4])/2, 280);
-  }
-
   function enableAllButtons() {
     $("#input").removeAttr("disabled");
     $("#submit").removeAttr("disabled");
@@ -194,15 +176,17 @@
       //jsav.umsg(freeStartArray[rectNumber]);
       //jsav.umsg(freeFinArray[rectNumber]);
 
+     
       linesArray[rectNumber].movePoints([[0, connectStartArray[rectNumber], 400], [1, ((freeStartArray[rectNumber] + freeFinArray[rectNumber])/2), 210]]).css({"stroke-width": 1});
 
-      jsav.umsg("free = " + freeNum + " used = " + usedNum + " input = " + inputVal)
+
       
-      inputVal = inputVal * -1;
-      usedNum = usedNum - inputVal;
-      inputVal = inputVal * -1;
+      
+      inputVal = inputVal * -1; //multiplied by -1 becuase using '+' was joining the 2 values
+      usedNum = usedNum - inputVal; //minus a negitive is equivlent to adding
+      inputVal = inputVal * -1;  //multiplied by -1 again to make posiitve
       freeNum = freeNum - inputVal;
-      jsav.umsg(" free2 = " + freeNum + " used2 = " + usedNum + " input2 = " + inputVal)
+      
       freeAmountLabel.text(freeNum);
       usedAmountLabel.text(usedNum);
 
@@ -214,7 +198,6 @@
 
   function firstFit(inputVal) {
     
-
     if(nextCount == 0) {
       linesArray[rectNumber].css({"stroke-width": 3});
       freeListArray[rectNumber].css({"fill": "yellow"});
@@ -236,14 +219,24 @@
       linesArray[rectNumber].css({"stroke-width": 3});
       freeListArray[rectNumber].css({"fill": "yellow"});
       jsav.umsg("Free list " + rectNumber + " block size = " + freeArray[rectNumber])
+        if(rectNumber == 3 && inputVal > 45)
+        {
+          jsav.umsg("The value you have entered can not be allocated")
+          jsav.umsg("Please enter a smaller value")
+          $('#next').attr("disabled", "disabled");
+         
 
-        
-      if (inputVal <= freeArray[rectNumber]) {
-        nextCount = 2;
-      
-      } else {
-        nextCount = 1;
-      }
+        }
+
+          
+            if (inputVal <= freeArray[rectNumber]) {
+              nextCount = 2;
+            
+            } 
+            
+            else {
+              nextCount = 1;
+            }
 
     } else if(nextCount == 2) {
 
@@ -253,6 +246,7 @@
         jsav.umsg("Please schedule another request")
       insertIntoBlock(inputVal);
     }
+    
   }
 
   function circularFit(inputVal) {
@@ -379,9 +373,17 @@
     });
 
     $('#submit').click(function () {
+      var i = 0;
+      for(i = 0; i < 4; i++)
+      {
+        linesArray[i].css({"stroke-width": 1});
+      freeListArray[i].css({"fill": "lightgrey"});
+      }
+      nextCount = 0;
+      rectNumber = 0;
       var inputVal = $("#input").val();
-      if (inputVal < 0 || inputVal > 99999 || isNaN(inputVal)) {
-        jsav.umsg("Please enter a number in the range of 0-99999");
+      if (inputVal < 2 || inputVal > 100 || isNaN(inputVal)) {
+        jsav.umsg("Please enter a number in the range of 1-100");
         $('#next').attr("disabled", "disabled");
 
 
