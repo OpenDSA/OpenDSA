@@ -1,12 +1,19 @@
 (function ($) {
   "use strict";
   var arraySize = 10,
+    pivotSelectionMethod = PARAMS.pivot || "last",     // use the last element in the bound as the pivot
+    noPivotSize = PARAMS.partsize? parseInt(PARAMS.partsize): 3,
     initialArray,
     array,
     stack,
     mode,
     clickHandler,
     av = new JSAV($("#jsavcontainer"));
+
+  var pivotFunction = {
+    last: function (left, right) { return right; },
+    middle: function (left, right) { return Math.floor((right + left) / 2); }
+  }
 
   av.recorded(); // we are not recording an AV with an algorithm
 
@@ -51,25 +58,17 @@
           case 2:
             extendStackValue("Right", index);
             av.umsg("");
-            focusOn(array, getCurrentValue("Left", stack), index);
-            if (index - getCurrentValue("Left", stack) >= 3)
-              array.addClass(index, "pivot");
+            var left = getCurrentValue("Left", stack);
+            var right = index;
+            focusOn(array, left, right);
+            if (right - left >= noPivotSize)
+              highlightAndSwapPivot(array, left, right);
             mode.value(0);
             exercise.gradeableStep();
             break;
         }
         //disable selecting
         return false;
-      },
-      onDrop: function (index) {
-        var index2 = clickHandler.getSelected().index;
-        if (array.hasClass(index, "pivot")) {
-          array.removeClass(index, "pivot");
-          array.addClass(index2, "pivot");
-        } else if (array.hasClass(index2, "pivot")) {
-          array.removeClass(index2, "pivot");
-          array.addClass(index, "pivot");
-        }
       }
     });
 
@@ -112,7 +111,6 @@
     av.umsg("");
 
     focusOn(array, 0, arraySize - 1);
-    array.addClass(arraySize - 1, "pivot");
 
     return array;
   }
@@ -180,6 +178,13 @@
 
   //create excercise
   var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+  // edit reset function so that it calls highlightAndSwapPivot when done
+  var origreset = exercise.reset;
+  exercise.reset = function () {
+    origreset.apply(this);
+    highlightAndSwapPivot(array, 0, arraySize - 1);
+    av.displayInit();
+  };
   exercise.reset();
 
 
@@ -245,7 +250,17 @@
     stack.first().value(oldvalue);
   }
 
-  //paints all the squares outside of [first, last] grey
+  function highlightAndSwapPivot(arr, first, last) {
+    var index = pivotFunction[pivotSelectionMethod](first, last);
+
+    arr.addClass(index, "pivot");
+
+    if (index !== last) {
+      arr.swap(index, last, {arrow: false, highlight: false});
+    }
+  }
+
+  // fades out all the squares outside of [first, last]
   function focusOn(arr, first, last) {
     arr.removeClass(function (index) {
       return index >= first && index <= last;

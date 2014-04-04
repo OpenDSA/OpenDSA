@@ -40,6 +40,10 @@
       font-size: 100%;
       background-color: #ddf;
     }
+    .selected.pivot, .selected.pivot.jsavvalue, .jsavarray.jsavbararray .jsavindex.selected.pivot .jsavvalue {
+      background-image: repeating-linear-gradient(45deg, #ddf, #ddf 5px, #fa2 5px, #fa2 10px, #ddf 10px);
+    }
+
   </style>
 </head>
 
@@ -60,6 +64,7 @@
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../JSAV/build/JSAV.js"></script>
   <script src="../../JSAV/extras/stack.js"></script>
+  <script src="../../lib/odsaUtils.js"></script>
   <script src="ClickHandler.js"></script>
   <script src="quicksort2PRO.js"></script>
 </body>
