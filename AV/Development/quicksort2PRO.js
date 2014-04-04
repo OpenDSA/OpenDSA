@@ -2,7 +2,8 @@
   "use strict";
   var arraySize = 10,
     pivotSelectionMethod = PARAMS.pivot || "last",     // use the last element in the bound as the pivot
-    noPivotSize = PARAMS.partsize? parseInt(PARAMS.partsize): 3,
+    noPivotSize = PARAMS.nopivotifle? parseInt(PARAMS.nopivotifle): 1,
+    swapOptions = {arrow: false, highlight: false},
     initialArray,
     array,
     stack,
@@ -117,22 +118,28 @@
 
   function modelSolution(jsav) {
     //array
-    var modelArray = jsav.ds.array(initialArray, {indexed: true});
+    var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar"});
 
     // var modelStack = jsav.ds.list({nodegap: 15, layout: "vertical", center: false, autoresize: false});
     var modelStack = jsav.ds.stack({xtransition: 5, ytransition: 25, center: false});
     modelStack.element.css({width: 180, position: "absolute"});
-    modelStack.element.css({top: 100, left: jsav.canvas.width() / 2 - 90});
+    modelStack.element.css({top: 200, left: jsav.canvas.width() / 2 - 90});
 
     jsav.canvas.css({height: 350});
 
     jsav._undo = [];
 
-    function modelRadix(bit, left, right) {
+    function modelRadix(left, right) {
+      var partitionHasPivot = false;
+
       modelStack.addFirst("Left: " + left + ", Right: " + right);
       modelStack.layout();
 
       focusOn(modelArray, left, right);
+      if (right - left >= noPivotSize) {
+        highlightAndSwapPivot(modelArray, left, right);
+        partitionHasPivot = true;
+      }
 
       //add a step if not first call
       if (left !== 0 || right !== arraySize - 1) {
@@ -142,27 +149,36 @@
         jsav.displayInit();
       }
 
-      var i = left;
-      var j = right;
+      if (partitionHasPivot) {
+        var i = left;
+        var j = right - 1;
 
-      while (i < j) {
-        while ( i <= right && getBit(modelArray, i, bit) === 0)
-          i++;
-        while ( j >= left && getBit(modelArray, j, bit) === 1)
-          j--;
-        if (i < j) {
-          modelArray.swap(i, j);
+        do {
+          while ( modelArray.value(i) < modelArray.value(right))
+            i++;
+          while ( j >= left && modelArray.value(j) >= modelArray.value(right))
+            j--;
+          if (i < j) {
+            modelArray.swap(i, j, swapOptions);
+            jsav.stepOption("grade", true);
+            jsav.step();
+          }
+        } while (i < j);
+
+        // swap i and right
+        if (i !== right) {
+          modelArray.swap(i, right, swapOptions);
           jsav.stepOption("grade", true);
           jsav.step();
         }
-      }
 
-      //call function recursivley for both sides
-      if (bit > 0) {
-        if (left < j)
-          modelRadix(bit - 1, left, j);
-        if (right > i)
-          modelRadix(bit - 1, i, right);
+        //call function recursivley for both sides
+        if (i - left > 1)
+          modelRadix(left, i - 1);
+        if (right - i > 1)
+          modelRadix(i + 1, right);
+      } else {
+        //TODO
       }
 
       //return
@@ -171,7 +187,7 @@
       jsav.step();
     }
 
-    modelRadix(bits - 1, 0, arraySize - 1);
+    modelRadix(0, arraySize - 1);
 
     return modelArray;
   }
@@ -256,7 +272,7 @@
     arr.addClass(index, "pivot");
 
     if (index !== last) {
-      arr.swap(index, last, {arrow: false, highlight: false});
+      arr.swap(index, last, swapOptions);
     }
   }
 
