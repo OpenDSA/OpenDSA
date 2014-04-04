@@ -91,6 +91,8 @@ Settings (all are required unless otherwise specified)
 
   * Ex: If ``{"code_dir": "SourceCode/", "code_lang": "python"}`` then the book would look for example Python source code in ``~OpenDSA/SourceCode/python``
 
+* **lang** (optional) - specifies the native language of the book using the official ISO 639-1 or 639-2 standard abbreviation, defaults to ``en`` if omitted
+
 * **code_lang** - specifies the programming language used for examples and exercises throughout the book
 
 * **module_origin** - the protocol and domain where the module files are hosted

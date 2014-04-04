@@ -43,7 +43,7 @@ Unfortunately, the BST can become unbalanced.
 Even under relatively good conditions, the depth of leaf nodes
 can easily vary by a factor of two.
 This might not be a significant concern when the tree is stored in
-main memory because the time required is still :math:`\Theta(\log n`
+main memory because the time required is still :math:`\Theta(\log n)`
 for search and update.
 When the tree is stored on disk, however, the depth of nodes in the
 tree becomes crucial.
@@ -72,11 +72,6 @@ The second is how to arrange the nodes on blocks so as to keep the
 number of blocks encountered on any path from the root to the leaves at
 a minimum.
 
-.. _ColorizedBST
-
-.. inlineav:: colorizedBST dgm
-   :align: justify
-
 We could select a scheme for balancing the BST and allocating BST
 nodes to blocks in a way that minimizes disk I/O, as illustrated by
 Figure :num:`Figure #PagedBST`.
@@ -92,8 +87,7 @@ great deal of rearranging of data within the tree.
 
 .. _PagedBST:
 
-.. inlineav:: pagedBSTCON ss
-   :output: show
+.. inlineav:: pagedBSTCON dgm
    :align: justify
 
    Breaking the BST into blocks.

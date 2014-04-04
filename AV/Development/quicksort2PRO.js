@@ -1,14 +1,20 @@
 (function ($) {
   "use strict";
   var arraySize = 10,
-    bits = 3,
-    colorBits = true,
+    pivotSelectionMethod = PARAMS.pivot || "last",     // use the last element in the bound as the pivot
+    noPivotSize = PARAMS.nopivotifle? parseInt(PARAMS.nopivotifle): 1,
+    swapOptions = {arrow: false, highlight: false},
     initialArray,
     array,
     stack,
     mode,
-    av = new JSAV($("#jsavcontainer")),
-    clickHandler;
+    clickHandler,
+    av = new JSAV($("#jsavcontainer"));
+
+  var pivotFunction = {
+    last: function (left, right) { return right; },
+    middle: function (left, right) { return Math.floor((right + left) / 2); }
+  }
 
   av.recorded(); // we are not recording an AV with an algorithm
 
@@ -23,29 +29,22 @@
     clickHandler.reset();
 
     //generate random infix and insert in the array
-    initialArray = JSAV.utils.rand.numKeys(0, Math.pow(2, bits), arraySize);
-    for (var i = 0; i < arraySize; i++) {
-      //convert into binary
-      initialArray[i] = initialArray[i].toString(2);
-      //add leading zeros
-      initialArray[i] =
-        new Array( bits + 1 - initialArray[i].length).join("0") + initialArray[i];
-      if (colorBits) {
-        //add <span class="bit"> around all bits
-        initialArray[i] = '<span class="bit">' + initialArray[i].split("").join('</span><span class="bit">') + '</span>';
-      }
-    }
+    initialArray = JSAV.utils.rand.numKeys(10, 125, arraySize);
 
     // initialize array
     if (array) {
       clickHandler.remove(array);
       array.clear();
     }
-    array = av.ds.array(initialArray, {indexed: true});
+    array = av.ds.array(initialArray, {indexed: true, layout: "bar"});
     array.element.css({top: 40});
     array.layout();
-    clickHandler.addArray(array, {onSelect:
-      function (index) {
+    clickHandler.addArray(array, {
+      onSelect: function (index) {
+        // don't allow selection of inactive values
+        if (array.hasClass(index, "inactive"))
+          return false;
+
         switch (mode.value()) {
           case 0:
             //return true to tell clickHandler to select the item
@@ -60,7 +59,11 @@
           case 2:
             extendStackValue("Right", index);
             av.umsg("");
-            focusOn(array, getCurrentValue("Left", stack), index, getCurrentValue("Bit", stack));
+            var left = getCurrentValue("Left", stack);
+            var right = index;
+            focusOn(array, left, right);
+            if (right - left >= noPivotSize)
+              highlightAndSwapPivot(array, left, right);
             mode.value(0);
             exercise.gradeableStep();
             break;
@@ -79,8 +82,8 @@
     stack = av.ds.stack({xtransition: 5, ytransition: 25, center: false});
     // stack = av.ds.list({nodegap: 15, layout: "vertical", center: false, autoresize: false});
     stack.element.css({width: 180, position: "absolute"});
-    stack.element.css({top: 200, left: av.canvas.width() / 2 - 90});
-    stack.addFirst("Bit: "+(bits - 1)+", Left: 0, Right: "+(arraySize - 1));
+    stack.element.css({top: 250, left: av.canvas.width() / 2 - 90});
+    stack.addFirst("Left: 0, Right: "+(arraySize - 1));
     stack.layout();
     
     //mode variable
@@ -103,51 +106,40 @@
     };
     var canvasWidth = exercise.jsav.container.find(".jsavcanvas").width();
     av.getSvg().text(canvasWidth / 2, 20, "Table to be sorted").attr(font);
-    av.getSvg().text(canvasWidth / 2, 180, "Call Stack").attr(font);
+    av.getSvg().text(canvasWidth / 2, 230, "Call Stack").attr(font);
 
     //hide old umsg messages
     av.umsg("");
 
-    focusOn(array, 0, arraySize - 1, bits - 1);
+    focusOn(array, 0, arraySize - 1);
 
     return array;
   }
 
   function modelSolution(jsav) {
     //array
-    var modelArray = jsav.ds.array(initialArray, {indexed: true});
+    var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar"});
 
     // var modelStack = jsav.ds.list({nodegap: 15, layout: "vertical", center: false, autoresize: false});
     var modelStack = jsav.ds.stack({xtransition: 5, ytransition: 25, center: false});
     modelStack.element.css({width: 180, position: "absolute"});
-    modelStack.element.css({top: 100, left: jsav.canvas.width() / 2 - 90});
+    modelStack.element.css({top: 200, left: jsav.canvas.width() / 2 - 90});
 
     jsav.canvas.css({height: 350});
 
     jsav._undo = [];
 
-    // $(".jsavforward").click(function () {
-    //   if (jsav.container.hasClass("jsavplaying")) {
-    //     jsav.container.removeClass("jsavplaying");
-    //   }
-    // });
-    // $(".jsavbackward").click(function () {
-    //   if (jsav.container.hasClass("jsavplaying")) {
-    //     jsav.container.removeClass("jsavplaying");
-    //   }
-    // });
+    function modelRadix(left, right) {
+      var partitionHasPivot = false;
 
-    //get the bit from the array at index
-    //removes possible spans
-    function getBit(arr, index, bit) {
-      return parseInt(arr.value(index).replace(/<\/?span[^>]*>/g,"").charAt(bits - 1 - bit));
-    }
-
-    function modelRadix(bit, left, right) {
-      modelStack.addFirst("Bit: " + bit + ", Left: " + left + ", Right: " + right);
+      modelStack.addFirst("Left: " + left + ", Right: " + right);
       modelStack.layout();
 
-      focusOn(modelArray, left, right, bit);
+      focusOn(modelArray, left, right);
+      if (right - left >= noPivotSize) {
+        highlightAndSwapPivot(modelArray, left, right);
+        partitionHasPivot = true;
+      }
 
       //add a step if not first call
       if (left !== 0 || right !== arraySize - 1) {
@@ -157,27 +149,36 @@
         jsav.displayInit();
       }
 
-      var i = left;
-      var j = right;
+      if (partitionHasPivot) {
+        var i = left;
+        var j = right - 1;
 
-      while (i < j) {
-        while ( i <= right && getBit(modelArray, i, bit) === 0)
-          i++;
-        while ( j >= left && getBit(modelArray, j, bit) === 1)
-          j--;
-        if (i < j) {
-          modelArray.swap(i, j);
+        do {
+          while ( modelArray.value(i) < modelArray.value(right))
+            i++;
+          while ( j >= left && modelArray.value(j) >= modelArray.value(right))
+            j--;
+          if (i < j) {
+            modelArray.swap(i, j, swapOptions);
+            jsav.stepOption("grade", true);
+            jsav.step();
+          }
+        } while (i < j);
+
+        // swap i and right
+        if (i !== right) {
+          modelArray.swap(i, right, swapOptions);
           jsav.stepOption("grade", true);
           jsav.step();
         }
-      }
 
-      //call function recursivley for both sides
-      if (bit > 0) {
-        if (left < j)
-          modelRadix(bit - 1, left, j);
-        if (right > i)
-          modelRadix(bit - 1, i, right);
+        //call function recursivley for both sides
+        if (i - left > 1)
+          modelRadix(left, i - 1);
+        if (right - i > 1)
+          modelRadix(i + 1, right);
+      } else {
+        //TODO
       }
 
       //return
@@ -186,13 +187,20 @@
       jsav.step();
     }
 
-    modelRadix(bits - 1, 0, arraySize - 1);
+    modelRadix(0, arraySize - 1);
 
     return modelArray;
   }
 
   //create excercise
   var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+  // edit reset function so that it calls highlightAndSwapPivot when done
+  var origreset = exercise.reset;
+  exercise.reset = function () {
+    origreset.apply(this);
+    highlightAndSwapPivot(array, 0, arraySize - 1);
+    av.displayInit();
+  };
   exercise.reset();
 
 
@@ -210,13 +218,13 @@
   }
 
   //position buttons
-  $callButton.css({position: "absolute", left: 50, top: 200, width: 100});
-  $returnButton.css({position: "absolute", left: 50, top: 230, width: 100});
+  $callButton.css({position: "absolute", left: 50, top: 250, width: 100});
+  $returnButton.css({position: "absolute", left: 50, top: 280, width: 100});
   //add click handlers
   $callButton.click(function () {
     mode.value(1);
     clickHandler.deselect();
-    stack.addFirst("Bit: " + (getCurrentValue("Bit", stack) - 1));
+    stack.addFirst("");
     stack.layout();
     av.umsg("Select the <strong>left endpoint</strong>.");
     av.step();
@@ -228,14 +236,14 @@
 
 
 
-  //returns the value of Bit, Left or Right of the topmost item of the stack
+  //returns the value of Left or Right of the topmost item of the stack
   function getCurrentValue(name, stack) {
     var result;
     var value;
     if (stack.first()) {
       value = stack.first().value();
     } else {
-      value = "Bit: " + bits + ", Left: " + 0 + ", Right: " + (arraySize - 1);
+      value = "Left: " + 0 + ", Right: " + (arraySize - 1);
     }
     var parts = value.split(", ");
     parts.forEach(function (val) {
@@ -250,50 +258,58 @@
   //extends the value of the topmost element on the stack
   function extendStackValue(name, value) {
     var oldvalue = stack.first().value();
-    oldvalue += ", " + name + ": " + value;
+    if (!oldvalue) {
+      oldvalue = name + ": " + value;
+    } else {
+      oldvalue += ", " + name + ": " + value;
+    }
     stack.first().value(oldvalue);
   }
 
-  //paints all the squares outside of [first, last] grey
-  function focusOn(arr, first, last, bit) {
-    arr.removeClass(true, "greybg");
+  function highlightAndSwapPivot(arr, first, last) {
+    var index = pivotFunction[pivotSelectionMethod](first, last);
+
+    arr.addClass(index, "pivot");
+
+    if (index !== last) {
+      arr.swap(index, last, swapOptions);
+    }
+  }
+
+  // fades out all the squares outside of [first, last]
+  function focusOn(arr, first, last) {
+    arr.removeClass(function (index) {
+      return index >= first && index <= last;
+    },
+    "inactive");
     arr.addClass(function (index) {
       return index < first || index > last;
     },
-    "greybg");
-    if (colorBits && typeof bit === "number") {
-      //uncolor all bits
-      arr.element.find(".bit").removeClass("coloredbit");
-      //color the wanted bits
-      arr.element.find(".jsavvalue").find(".bit:eq("+(bits - 1 - bit)+")").addClass("coloredbit");
-      if (bit === bits) {
-        //remove all bit classes
-        for (var i = 0; i < arraySize; i++) {
-          var $temp = arr.element.find(".jsavvaluelabel:eq("+i+")");
-          $temp.html($temp.text());
-        }
-      }
-      //update the real values of the elements
-      for (var i = 0; i < arraySize; i++) {
-        var v = arr.element.find("li:eq("+i+") .jsavvaluelabel").html();
-        arr.value(i, v);
-      }
-    } 
+    "inactive");
   }
 
   //pops the stack and focuses on the previous range
   function returnClick(array, stack) {
     if (stack.size()) {
+      // remove pivots from the range
+      array.removeClass(function (index) {
+        return index >= getCurrentValue("Left", stack) && index <= getCurrentValue("Right", stack);
+      }, "pivot");
+
+      // add green background
+      array.addClass(function (index) {
+        return index >= getCurrentValue("Left", stack) && index <= getCurrentValue("Right", stack);
+      }, "greenbg");
+
       stack.removeFirst();
       stack.layout();
     }
     if (stack.size()) {
       focusOn(array,
         getCurrentValue("Left", stack),
-        getCurrentValue("Right", stack),
-        getCurrentValue("Bit", stack));
+        getCurrentValue("Right", stack));
     } else {
-      focusOn(array, 0, arraySize - 1, bits);
+      focusOn(array, 0, arraySize - 1);
     }
   }
 

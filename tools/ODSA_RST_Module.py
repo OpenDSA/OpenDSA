@@ -186,7 +186,11 @@ class ODSA_RST_Module:
 
     dispModComp = determine_module_completable(mod_attrib)
 
-    filename = '{0}RST/source/{1}.rst'.format(config.odsa_dir, mod_path)
+    filename = '{0}RST/{1}/{2}.rst'.format(config.odsa_dir, config.lang, mod_path)
+
+    # If the specified RST file doesn't exist in the specified language, default to English
+    if config.lang != 'en' and not os.path.exists(filename):
+      filename = '{0}RST/en/{1}.rst'.format(config.odsa_dir, mod_path)
 
     if not os.path.exists(filename):
       print_err('ERROR: Module does not exist: %s' % mod_path)

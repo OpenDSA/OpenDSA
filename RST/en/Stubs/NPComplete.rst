@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Computability
 
-NP-COmplete Problems [STUB]
+NP-Complete Problems [STUB]
 ===========================
 
 Placeholder for Crossreference

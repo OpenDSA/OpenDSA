@@ -3,7 +3,8 @@
 (function ($) {
 
   /* Variables */
-  var jsav,                     
+  var jsav,
+      jsav_counter,                     
       main_memory,                      
       buffer_pool,
       freq_counter,
@@ -16,7 +17,7 @@
     lines = [];
     main_memory = jsav.ds.array(empty, {layout: "vertical", left: 450});
     buffer_pool = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 800});
-    freq_counter = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 600});
+    freq_counter = jsav_counter.ds.array(empty, {indexed: true, layout: "vertical", left: 0});
   }
 
   function contains(arg) {
@@ -43,8 +44,6 @@
     var funct = Number($('#function').val());
     if (funct === 0) {
       missingFields.push('replacement strategy');
-    } else {
-      jsav.umsg('Replacement Strategy Selected: ' + $("#function option:selected").text());
     }
 
     // Ensure user selected main memory size
@@ -62,17 +61,12 @@
       // Disable the input box if fields are missing
       $("#input").attr("disabled", "disabled");
 
-      var msg = 'Please select: ' + missingFields.join(', ');
-      var commaIndex = msg.lastIndexOf(",");
-
-      if (commaIndex > -1) {
-        msg = msg.substring(0, commaIndex) + ' and' + msg.substring(commaIndex + 1, msg.length);
-      }
-
-      jsav.umsg(msg);
     } else {
       // If all necessary fields are selected, enable the input box and tell the user to begin
       $("#input").removeAttr("disabled");
+      $("#function").attr("disabled", "disabled");
+      $("#mainmemory_size").attr("disabled", "disabled");
+      $("#bufferpool_size").attr("disabled", "disabled");
 
       jsav.umsg("Enter a value and click Next");
       jsav.umsg("<br />");
@@ -88,7 +82,7 @@
       for (i = 0; i < main_memory_size; i++) {
         empty[i] = i;
       }
-      main_memory = jsav.ds.array(empty, {layout: "vertical", left: 450});
+      main_memory = jsav.ds.array(empty, {layout: "vertical", left: 0});
     }
 
     var buf_size = $('#bufferpool_size').val();
@@ -104,8 +98,8 @@
         temp[i] = 0;
       }
       lines.size = buf_size;
-      buffer_pool = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 800});
-      freq_counter = jsav.ds.array(temp, {layout: "vertical", left: 950});
+      buffer_pool = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 315});
+      freq_counter = jsav_counter.ds.array(temp, {layout: "vertical", left: 0, top: -21});
       freq_counter.hide();
     }
     if (replacement == 3) {
@@ -115,35 +109,46 @@
   }
 
   function LRU(input_val, counter) {
-    console.log("counter " + counter);
     if (contains(input_val)) {
       var i;
       var temp = [];
       temp.length = buffer_pool.size();
       var old_first = buffer_pool.value(0);
       temp[0] = input_val;
-      var counter = 1;
-      for (i = 0; i < buffer_pool.size(); i++) {
+      var curr_index = 1;
+      var size;
+      if (counter < buffer_pool.size()) {
+        size = counter;
+      }
+      else {
+        size = buffer_pool.size();
+      }
+      for (i = 0; i < size; i++) {
         if (buffer_pool.value(i) != input_val) {
-          temp[counter] = buffer_pool.value(i);
-          counter++;
+          temp[curr_index] = buffer_pool.value(i);
+          curr_index++;
         }
       }
-      for (i = 0; i< buffer_pool.size(); i++) {
+      for (i = 0; i< size; i++) {
         lines[i].hide();
       }      
-      for (i = 0; i < buffer_pool.size(); i++) {
+      for (i = 0; i < size; i++) {
         buffer_pool.value(i, temp[i]);
-        lines[0] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[i] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
       }
+      jsav.umsg("sector " + input_val + " already in buffer pool");
+      jsav.umsg("moving buffer holding sector " + input_val + " to the front");
+      return true;
     }
     else {
       if (counter == 0) {
+        jsav.umsg("storing sector " + input_val + " in buffer pool");
         buffer_pool.value(0, input_val);
-        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
         jsav.displayInit();
       }
       else if (counter < buffer_pool.size()) {
+        jsav.umsg("storing sector " + input_val + " in buffer pool");
         for (i = 0; i< counter; i++) {
           lines[i].hide();
         }
@@ -151,12 +156,12 @@
         var temp = [];
         temp.length = buffer_pool.size();
         temp[0] = input_val;
-        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
 
         var i;
         for (i = 0; i < counter; i++) {
           temp[i+1] = buffer_pool.value(i);
-          lines[i+1] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+          lines[i+1] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
@@ -164,6 +169,7 @@
         }
       }
       else {
+        jsav.umsg("request to sector " + input_val + " requires emptying least recently used buffer");
         for (i = 0; i< buffer_pool.size(); i++) {
           lines[i].hide();
         }
@@ -171,18 +177,19 @@
         var temp = [];
         temp.length = buffer_pool.size();
         temp[0] = input_val;
-        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
 
         var i;
         for (i = 0; i < buffer_pool.size()-1; i++) {
           temp[i+1] = buffer_pool.value(i);
-          lines[i+1] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+          lines[i+1] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
           buffer_pool.value(i, temp[i]);
         }
       }
+      return false;
     }
   }
 
@@ -191,11 +198,13 @@
     }
     else {
       if (counter == 0) {
+        jsav.umsg("storing sector " + input_val + " in buffer pool");
         buffer_pool.value(0, input_val);
-        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
         jsav.displayInit();
       }
       else if (counter < buffer_pool.size()) {
+        jsav.umsg("storing sector " + input_val + " in buffer pool");
         for (i = 0; i< counter; i++) {
           lines[i].hide();
         }
@@ -203,12 +212,12 @@
         var temp = [];
         temp.length = buffer_pool.size();
         temp[0] = input_val;
-        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
 
         var i;
         for (i = 0; i < counter; i++) {
           temp[i+1] = buffer_pool.value(i);
-          lines[i+1] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+          lines[i+1] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
@@ -217,7 +226,7 @@
 
       }
       else {
-        
+        jsav.umsg("emptying buffer at the end of the queue");
         for (i = 0; i< buffer_pool.size(); i++) {
           lines[i].hide();
         }
@@ -225,12 +234,12 @@
         var temp = [];
         temp.length = buffer_pool.size();
         temp[0] = input_val;
-        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
 
         var i;
         for (i = 0; i < buffer_pool.size()-1; i++) {
           temp[i+1] = buffer_pool.value(i);
-          lines[i+1] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+          lines[i+1] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
@@ -241,22 +250,30 @@
   }
   function LFU(input_val, counter) {
     if (contains(input_val)) {
-      for (i = 0; i< buffer_pool.size(); i++) {
+      jsav.umsg("sector " + input_val + " already in buffer pool");
+      jsav.umsg("incrementing counter for sector " + input_val);
+      var size;
+      if (counter < buffer_pool.size()) {
+        size = counter;
+      }
+      else {
+        size = buffer_pool.size();
+      }
+      for (i = 0; i< size; i++) {
         lines[i].hide();
       } 
-
       var i;
       var temp = [];
       temp.length = buffer_pool.size();
-      for (i = 0; i < buffer_pool.size(); i++) {
+      for (i = 0; i < size; i++) {
         if (buffer_pool.value(i) == input_val) {
           freq_counter.value(i, freq_counter.value(i) + 1);
         }
       }
       var x, y, max;
-      for (x = 0; x < buffer_pool.size()-1; x++) {
+      for (x = 0; x < size-1; x++) {
         max = x;
-        for ( y = x + 1; y < buffer_pool.size(); y++) {
+        for ( y = x + 1; y < size; y++) {
           if (freq_counter.value(y) > freq_counter.value(max)) {
             max = y;
           }
@@ -272,49 +289,53 @@
           buffer_pool.value(max, old);
         }
       }
-      for (i = 0; i < buffer_pool.size(); i++) {
-        lines[i] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+      for (i = 0; i < size; i++) {
+        lines[i] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
       }
+      return true;
     }
     else {
       if (counter == 0) {
+        jsav.umsg("storing sector " + input_val + " in buffer pool");
         buffer_pool.value(0, input_val);
-        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
         jsav.displayInit();
       }
       else if (counter < buffer_pool.size()) {
+        jsav.umsg("storing sector " + input_val + " in buffer pool");
         for (i = 0; i< counter; i++) {
           lines[i].hide();
         }
 
         var temp = [];
         temp.length = buffer_pool.size();
-        temp[0] = input_val;
-        lines[0] = jsav.g.line(560,  45 + 45 * input_val,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        temp[counter] = input_val;
 
         var i;
-        for (i = 0; i < counter; i++) {
-          temp[i+1] = buffer_pool.value(i);
-          lines[i+1] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        for (i = 0; i < counter-1; i++) {
+          temp[i] = buffer_pool.value(i);
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
           buffer_pool.value(i, temp[i]);
         }
-
+        for (i = 0; i < counter+1; i++) {
+          lines[i] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        }
       }
       else {
+        jsav.umsg("request to sector " + input_val + " requires emptying least frequently used buffer");
         for (i = 0; i< buffer_pool.size(); i++) {
           lines[i].hide();
         }
         buffer_pool.value(buffer_pool.size()-1, input_val);
         freq_counter.value(buffer_pool.size()-1, 0);
         for (i = 0; i < buffer_pool.size(); i++) {
-          lines[i] = jsav.g.line(560,  45 + 45 * buffer_pool.value(i),  775, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+          lines[i] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
         }
       }
+      return false;
     }
-    console.log(buffer_pool.size());
   }
 
   /**
@@ -323,19 +344,11 @@
    */
   $(document).ready(function () {
     jsav = new JSAV($('.avcontainer'));
+    jsav_counter = new JSAV($('.av'));
     array_init();
     jsav.displayInit();
     counter = 0;
     resetAV();
-
-    //var properties = {"stroke-width": 1.5};
-    //var z1FragArrow = jsav.g.line(560,  45,  775, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
-    //var z1FragArrow = jsav.g.line(560,  90,  775, 90, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
-    //var z1FragArrow = jsav.g.line(560,  45,  775, 135, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
-    //var z1FragArrow = jsav.g.line(560,  45,  775, 180, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
-    //var z1FragArrow = jsav.g.line(560,  45,  775, 225, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
-    //var z1FragArrow = jsav.g.line(560,  45,  775, 270, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
-
 
     // If the user hits 'Enter' while the focus is on the textbox,
     // click 'Next' rather than refreshing the page
@@ -371,27 +384,38 @@
       resetAV();
     });
 
-    console.log("buffer size:" + buffer_pool.size()); 
-
+    $('#reset').click(function () {
+      location.reload(true);
+    });
     // Next button pushed.
     $('#next').click(function () {
       var replacement = $("#function").val();
-      console.log("replacement" + replacement);
       var input_val = $("#input").val();
       if (input_val < 0 || input_val >= main_memory.size())
         jsav.umsg("enter a valid value");
       else {
+        jsav.umsg("requesting sector " + input_val);
         if (replacement == 1) {
-          LRU(input_val, counter);
+          if (!LRU(input_val, counter))
+            counter++;
         }
         else if (replacement == 2){
           FIFO(input_val, counter);
+          counter++;
         }
         else {
-          LFU(input_val, counter);
+          if (!LFU(input_val, counter))
+            counter++;
         }
-        counter++;
+        var i;
+        for (i = 0; i < main_memory.size(); i++) {
+          main_memory.unhighlight(i);
+        }
+        for (i = 0; i < buffer_pool.size(); i++) {
+          main_memory.highlight(buffer_pool.value(i));
+        }
       }
+      jsav.umsg("<p></p>");
     });
 
     // Adjust UI element positions

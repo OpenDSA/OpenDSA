@@ -1,5 +1,8 @@
+/*
+ * Shows how to decode the string '11101' to reach the character "K".
+ */
 (function ($) {
-  var av = new JSAV("DecodeExample");
+  var av = new JSAV("HuffmanCon2");
   av.umsg("Here is a Huffman tree for C, D, E, K, L, M, N.");
 
   var t = construct_tree(av);
@@ -55,8 +58,11 @@
 
 }(jQuery));
 
+/*
+ * A static image of the huffman tree. This is used for a "dgm" not an "ss"
+ */
 (function ($) {
-  var av = new JSAV("finalHuffmanTree");
+  var av = new JSAV("HuffmanCon5");
   var t = construct_tree(av);
   var r = t.root("");
 
@@ -64,8 +70,12 @@
   t.layout();
 }(jQuery));
 
+/*
+ * Shows how we derived a code of '11111' for the character "M"
+ * in the given huffman tree.
+ */
 (function ($) {
-  var av = new JSAV("MExample");
+  var av = new JSAV("HuffmanCon4");
   var t = construct_tree(av);
   var r = t.root("");
 
@@ -106,8 +116,12 @@
 
 }(jQuery));
 
+/*
+ * Shows an example huffman tree and shows how to decode the word "DEED"
+ * using that tree.
+ */
 (function ($) {
-  var av = new JSAV("Con1");
+  var av = new JSAV("HuffmanCon3");
   
   var t = construct_tree(av);
   var r = t.root("");
@@ -183,49 +197,10 @@
 
 }(jQuery));
 
-(function ($) {
-
-  var av = new JSAV("timeline");
-
-  var t = construct_tree(av);
-  var r = t.root("");
-
-  t.layout();
-
-  av.umsg("To demonstrate to characteristics of a trie, we will display this on a number line.");
-  var tl = new_timeline(av, 60, 450, 450, undefined);
-  timeline_line(av, tl, 100, "A");
-  timeline_line(av, tl, 150, "B");
-  timeline_line(av, tl, 275, "Q")
-  av.displayInit();
-
-}(jQuery));
-
-function new_timeline(av, x, y, len, prop) { 
-  
-  if (prop == undefined) {
-    // make line
-    av.g.rect(x, y, len, 3, {fill: "black", "stroke-width": 0});
-  }
-  else {
-    // make line
-    av.g.rect(x, y, len, 3, prop);
-  }
-
-  // arrows
-  av.g.polyline([[x, y + 11], [x, y - 9], [x - 10, y + 1]], 
-    {"stroke-width": 0, fill: "black"});
-  av.g.polyline([[x + len, y + 11], [x + len, y - 9], [x + 10 + len, y + 1]], 
-    {"stroke-width": 0, fill: "black"});
-
-  return {x: x, y: y, len: len, splits: 0};
-}
-
-function timeline_line(av, tl, x, label) {
-  av.g.rect(tl.x + x, tl.y - 25, 2, 50, {fill: "red", "stroke-width": 0});
-  av.label(label, {left: tl.x + x - 5, top: tl.y - 45});
-}
-
+/* 
+ * Constructs the standard tree used in HuffmanCon1 - HuffmanCon5
+ * AVs in this file.
+ */
 function construct_tree(av) {
 
   var t = av.ds.bintree({nodegap: 25});
@@ -268,4 +243,214 @@ function construct_tree(av) {
   r.right().right().right().right().left().edgeToRight().label("1");
 
   return t;
+}
+
+
+/*
+ * This is the AV for the timeline visulization for showing how a tree (NOT trie)
+ * splits space. 
+ */
+(function ($) {
+  var av = new JSAV("TreeTimeline");
+  var t = av.ds.bintree({nodegap: 25});
+  var r = t.root("19");
+  t.layout();
+  var tl = new timeline(av, 40, 325, 500, 0, 65, 10);
+  
+  // These vars correspond the the height of each line corresponding
+  // to the level of the tree. For example, ht1 is the height of the
+  // split (on the timeline) for a node in the first level of the 
+  // tree (the root node). To make the split longer, increase the
+  // value of ht1 and so on.
+  var ht1 = 20;
+  var ht2 = 35;
+  var ht3 = 50;
+  var ht4 = 65;
+  var ht5 = 80;
+  var ht6 = 95;
+
+  av.umsg("To demonstrate to characteristics of a tree, we will display this on a number line. We first insert 19.");
+  t.layout(); // multiple layout() calls to fix off center tree issue
+  av.displayInit();
+  t.layout();
+  // step 1
+  av.umsg("19 is now displayed on the numberline. Notice the numberline is split at 19");
+  var split19 = tl.add_value(19, "19", ht1);
+  r.highlight();
+  split19.highlight();
+  av.step();
+
+  // step 2
+  av.umsg("We now add 14 to the tree. A split is made at 14.");
+  var split14 = tl.add_value(14, "14", ht2);
+  split14.highlight();
+  r.left("14");
+  r.left().highlight();
+  r.unhighlight();
+  split19.unhighlight();
+  t.layout();
+  av.step();
+
+  // step 3
+  av.umsg("9 is added to the tree.");
+  var split9 = tl.add_value(9, "9", ht3);
+  split9.highlight();
+  split14.unhighlight();
+  r.left().left("9");
+  r.left().unhighlight();
+  r.left().left().highlight();
+  t.layout();
+  av.step();
+
+  // step 4
+  av.umsg("Now 50 is added. As before, we split at 50.");
+  var split50 = tl.add_value(50, "50", ht2);
+  split50.highlight();
+  split9.unhighlight();
+  r.right("50");
+  r.left().left().unhighlight();
+  r.right().highlight();
+  t.layout();
+  av.step();
+
+  // step 5
+  av.umsg("Now 54 is added.");
+  var split54 = tl.add_value(54, "54", ht3);
+  split54.highlight();
+  split50.unhighlight();
+  r.right().right("54");
+  r.right().unhighlight();
+  r.right().right().highlight();
+  t.layout();
+  av.step();
+
+  // step 6
+  av.umsg("Now we add 63.");
+  var split63 = tl.add_value(63, "63", ht4);
+  split63.highlight();
+  split54.unhighlight();
+  r.right().right().right("63");
+  r.right().right().unhighlight();
+  r.right().right().right().highlight();
+  t.layout();
+  av.step();
+
+  // step 7
+  av.umsg("Now add 12.");
+  var split12 = tl.add_value(12, "12", ht4);
+  split12.highlight();
+  split63.unhighlight();
+  r.left().left().right("12");
+  r.right().right().right().unhighlight()
+  r.left().left().right().highlight();
+  t.layout();
+  av.step();
+
+  // step 8
+  av.umsg("Now add 17 and note the corresponding split.");
+  var split17 = tl.add_value(17, "17", ht3);
+  split17.highlight();
+  split12.unhighlight();
+  r.left().right("17");
+  r.left().left().right().unhighlight();
+  r.left().right().highlight();
+  t.layout();
+  av.step();
+
+  // step 9
+  av.umsg("Now add 56.");
+  var split56 = tl.add_value(56, "56", ht5);
+  split56.highlight()
+  split17.unhighlight();
+  r.right().right().right().left("56");
+  r.left().right().unhighlight();
+  r.right().right().right().left().highlight();
+  t.layout();
+  av.step();
+
+  // step 10
+  av.umsg("Now add 59.");
+  var split59 = tl.add_value(59, "59", ht6);
+  split59.highlight();
+  split56.unhighlight();
+  r.right().right().right().left().right("59");
+  r.right().right().right().left().unhighlight();
+  r.right().right().right().left().right().highlight();
+  t.layout();
+  av.step();
+
+  // step 11
+  av.umsg("Our last number to add is 23.");
+  var split23 = tl.add_value(23, "23", ht3);
+  split23.highlight();
+  split59.unhighlight();
+  r.right().left("23");
+  r.right().right().right().left().right().unhighlight();
+  r.right().left().highlight();
+  t.layout();
+  av.step();
+
+  // step 12
+  av.umsg("We have reached our final tree and corresponding number line.")
+  split23.unhighlight();
+  r.right().left().unhighlight();
+  t.layout();
+  av.step();
+
+  // cleanup
+  av.recorded();
+
+}(jQuery));
+
+function split (av, x, x1, y, label, height) {
+  this.x = x;
+  this.label = label;
+
+  this.rec = av.g.rect(x + x1, y - (height / 2), 2, height, {fill: "red", "stroke-width": 0});
+  this.label = av.label(label, {left: x + x1 - 4, top: y - (height/2) - 20});
+
+  this.highlight = function () {
+    this.rec.css({"fill": "yellow"});
+  };
+
+  this.unhighlight = function () {
+    this.rec.css({"fill": "red"});
+  };
+}
+
+/* Timeline Constructor */
+function timeline(av, x, y, len, min, max, inc) { 
+  
+  var buffer = 15; // 15 px buffer on each inside edge of arrow
+
+  // make line
+  av.g.rect(x, y, len, 3, {fill: "black", "stroke-width": 0});
+  // arrows
+  av.g.polyline([[x, y + 11], [x, y - 9], [x - 10, y + 1]], 
+    {"stroke-width": 0, fill: "black"});
+  av.g.polyline([[x + len, y + 11], [x + len, y - 9], [x + 10 + len, y + 1]], 
+    {"stroke-width": 0, fill: "black"});
+
+  av.g.rect(x + 4, y - 3, 1, 10, {fill: "black", "stroke-width":0});
+  av.g.rect(x + len - 10, y - 3, 1, 10, {fill: "black", "stroke-width":0});
+
+  // var range = max - min;
+  // var pxPerInc = len / range;
+  // var pxCounter = x;
+  // for (var i = 0; i < inc; i++) {
+  //   var value = 1 / (pxPerInc / pxCounter);
+  //   av.g.rect(pxCounter, y - 3, 1, 6, {fill: "black", "stroke-width": 0});
+  //   pxCounter += pxPerInc * inc;
+  // }
+
+  this.add_line = function (x1, label, height) {
+    return new split (av, x, x1, y, label, height);
+  };
+
+  this.add_value = function (val, label, height) {
+    var range = max - min;
+    var pxPerInc = (len - buffer) / range; // 5px buff on each inner side of arrow
+    var pos = pxPerInc * val + buffer; // add 5 because must account for 5 px buffer
+    return this.add_line(pos, label, height);
+  };
 }

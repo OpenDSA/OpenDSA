@@ -75,6 +75,10 @@
         "long_name": "Self Organizing Lists",
         "exercises": {}
       },
+      "IS/Reduction.rst": {
+        "long_name": "Reductions",
+        "exercises": {}
+      },
       "IS/Archie": {
         "long_name": "Insertion Sort Optimization",
         "exercises": {
