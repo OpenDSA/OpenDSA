@@ -220,12 +220,12 @@
   // Initialize the graph.
   function initGraph() {
     //Nodes of the original graph
-    var a = graph.addNode("A", {"left": 240, "top": -15});
-    var b = graph.addNode("B", {"left": 540, "top": -15});
-    var c = graph.addNode("C", {"left": 360, "top": 10});
-    var d = graph.addNode("D", {"left": 360, "top": 125});
-    var e = graph.addNode("E", {"left": 215, "top": 225});
-    var f = graph.addNode("F", {"left": 540, "top": 175});
+    var a = graph.addNode("A", {"left": 50, "top": -15});
+    var b = graph.addNode("B", {"left": 350, "top": -15});
+    var c = graph.addNode("C", {"left": 190, "top": 10});
+    var d = graph.addNode("D", {"left": 190, "top": 125});
+    var e = graph.addNode("E", {"left": 50, "top": 225});
+    var f = graph.addNode("F", {"left": 350, "top": 175});
     //Nodes of the MST
     mst.addNode("A", {"left": 25, "top": -15});
     mst.addNode("B", {"left": 325, "top": -15});

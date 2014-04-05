@@ -1,9 +1,9 @@
 {
   "translations" :{
     "en": {
-      "ODSAtitle": "Binary Search",
-      "ODSAinstructlabel": "Instructions:",
-      "ODSAinstructions": "Find the key given in the exercise by highlighting the <strong>mid points</strong> used in Binary Search. The values are hidden and in <strong>ascending order</strong>.",
+      "exerciseTitle": "Binary Search",
+      "instructLabel": "Instructions:",
+      "instructions": "Find the key given in the exercise by highlighting the <strong>mid points</strong> used in Binary Search. The values are hidden and in <strong>ascending order</strong>.",
       "find_label": "Find",
       "ms_comment1": "Low = {low} and high = {high}, so mid = ( {low} + {high} ) / 2 = <strong>{mid}</strong> (division truncates!)",
       "ms_comment2": "<br/>Because {arr_at_mid} is less than {key}, the new low will be <strong>{mid_plus_1}</strong>.",
@@ -14,9 +14,9 @@
       "lines": "(lines {first} and {second})"
     },
     "fi": {
-      "ODSAtitle": "Puolitushaku",
-      "ODSAinstructlabel": "Ohjeet:",
-      "ODSAinstructions": "Löydä etsittävä arvo klikkaamalla mid-muuttujan arvoa vastaavia indeksejä annetussa puolitushakualgoritmissa. Taulukon arvot ovat nousevassa järjestyksessä ja piilossa ellei niitä ole klikattu.",
+      "exerciseTitle": "Puolitushaku",
+      "instructLabel": "Ohjeet:",
+      "instructions": "Löydä etsittävä arvo klikkaamalla mid-muuttujan arvoa vastaavia indeksejä annetussa puolitushakualgoritmissa. Taulukon arvot ovat nousevassa järjestyksessä ja piilossa ellei niitä ole klikattu.",
       "find_label": "Etsi",
       "ms_comment1": "Low = {low} ja high = {high}, joten mid = ( {low} + {high} ) / 2 = <strong>{mid}</strong> (osamäärä pyöristetään alaspäin!)",
       "ms_comment2": "<br/>Koska {arr_at_mid} on pienempi kuin {key}, low:n uudeksi arvoksi tulee <strong>{mid_plus_1}</strong>.",

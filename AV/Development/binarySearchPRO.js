@@ -6,7 +6,7 @@
     initialArray = [],
     array,
     keyholder,
-    findLabel,
+    $findLabel,
     pseudo,
     interpret,
     config = ODSA.UTILS.getConfig("binarySearchPRO.json"),
@@ -25,7 +25,7 @@
 
     // show the code and highlight the row where mid is calculated
     if (!pseudo && config.code) {
-      pseudo = av.code( $.extend({after: {element: $(".ODSAinstructions")}}, config.code) );
+      pseudo = av.code( $.extend({after: {element: $(".instructions")}}, config.code) );
       pseudo.show();
       pseudo.highlight(config.code.tags.highlight);
     }
@@ -44,8 +44,8 @@
     if (keyholder) {
       keyholder.clear();
     }
-    if (findLabel) {
-      findLabel.clear();
+    if ($findLabel) {
+      $findLabel.remove();
     }
     if (array) {
       array.clear();
@@ -55,7 +55,11 @@
     keyholder = av.ds.array([key], {indexed: false});
     keyholder.element.css("margin-top", 25);
     keyholder.css(0, {"background-color": "#ddf"});
-    findLabel = av.label(interpret("find_label"), {relativeTo: keyholder, anchor: "center top", myAnchor: "center bottom"});
+    $findLabel = $("<p>" + interpret("find_label") + "</p>")
+      .css("text-align", "center")
+      .css("font-weight", "bold")
+      .css("margin-bottom", -15)
+      .insertBefore(keyholder.element);
 
     // create the empty array
     array = av.ds.array(new Array(arraySize), {indexed: true, autoresize: false});

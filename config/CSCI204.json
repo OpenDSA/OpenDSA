@@ -1,11 +1,11 @@
 {
   "title": "CSCI204 Spring 2014",
   "build_dir": "Books",
-  "code_dir": "SourceCode/Processing",
+  "code_dir": "SourceCode/",
+  "code_lang": "processing",
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
-  "build_ODSA": true,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
   "chapters": {
@@ -339,7 +339,7 @@
             "points": 1,
             "threshold": 3
           }
-	}
+  }
       },
       "List/Freelist": {
         "long_name": "Freelists",
@@ -651,7 +651,7 @@
       "Development/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-	  "BTLeafPROG": {
+    "BTLeafPROG": {
             "long_name": "Node Count Function",
             "required": true,
             "points": 1.0,
@@ -694,7 +694,7 @@
             "points": 2,
             "threshold": 5
           }
-	}
+  }
       },
       "Development/BST": {
         "long_name": "Binary Search Trees",
@@ -836,7 +836,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.90
-	  }
+    }
         }
       },
       "Development/GenTreeImplement": {
@@ -1007,10 +1007,10 @@
             "long_name": "Insertion Sort Without Swap Proficiency Exercise",
             "required": false,
             "points": 1.0,
-	    "remove": true,
+      "remove": true,
             "threshold": 5
           }
-	}
+  }
       },
       "Sorting/Shellsort": {
         "long_name": "Shellsort",

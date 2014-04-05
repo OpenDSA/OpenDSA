@@ -1,167 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>Interpolation Search</title>
-        <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
-        <link rel="stylesheet" href="proficiency.css" type="text/css" />
-        <style>
-          .jsavautoresize .jsavnode {  
-            width: auto;
-            min-width: 36px;
-            height: auto;
-            min-height: 36px;
-            line-height: 36px;
-          }
-          #jsavcontainer {
-            height: 700px;
-          }
-        </style>
-    </head>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>Interpolation Search</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+  <link rel="stylesheet" href="proficiency.css" type="text/css" />
+  <style>
+    .jsavcontainer {
+      height: auto;
+    }
+    .jsavbararray .jsavnode {
+      width: 35px;
+    }
+  </style>
+</head>
 
-    <body>
-        <div id="jsavcontainer">
-            <!-- <a class="jsavsettings" href="#">Settings</a> -->
-            <p class="instructLabel">Instructions:</p>
-            <p class="instructions">
-                    Find the key given in the exercise by highlighting the <strong>mid points</strong> used in Interpolation Search.
-            </p>
-            <p align="center" class="jsavexercisecontrols"></p>
-            <p style="text-align:center">Find</p>
-            <ol id="keyToFind"></ol>
-            <ol id="exerArray"></ol>
-            <div class="jsavcanvas"></div>
-            <!-- <p class="jsavoutput jsavline"></p> -->
-        </div>
+<body>
+  <div id="jsavcontainer">
+    <h1 class="exerciseTitle"></h1>
+    <p class="instructLabel"></p>
+    <p class="instructions"></p>
+    <p align="center" class="jsavexercisecontrols"></p>
+    <p class="jsavoutput jsavline"></p>
+    <div class="jsavcanvas"></div>
+  </div>
 
-        <script
-           src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-        <script src="../../JSAV/lib/jquery.transit.js"></script>
-        <script src="../../JSAV/lib/raphael.js"></script>
-        <script src="../../JSAV/build/JSAV.js"></script>
-
-        <script>
-
-        var arraySize = 20,
-            keyToFind,
-            initialArray = [],
-            jsavArray,
-            $array = $("#exerArray"),
-            $key = $('#keyToFind'),
-            av = new JSAV($("#jsavcontainer")),
-            code = av.code(
-                "int interpolationSearch(int table[],int x) {\n"+
-                "    int low = 0;\n"+
-                "    int high = table.length - 1;\n"+
-                "    int mid;\n"+
-                "\n"+
-                "    while( table[low] < x && table[high] >= x )\n"+
-                "    {\n"+
-                "        // Division truncates\n"+
-                "        mid = low + ((x-table[low]) * (high-low)) / (table[high] - table[low]);\n"+
-                "        if( table[mid] < x)\n"+
-                "            low = mid + 1;\n"+
-                "        else if(table[mid] > x)\n"+
-                "            high = mid - 1;\n"+
-                "        else\n"+
-                "            return mid;\n"+
-                "    }\n"+
-                "    if (table[low] == x)\n"+
-                "        return low;\n"+
-                "    return -1;     // Not found\n"+
-                "}");
-
-        av.recorded(); // we are not recording an AV with an algorithm
-
-        function initialize() {
-            
-            //initialize the array
-            var htmldata = "";
-            var randomVal = Math.floor(Math.random()*10);
-            for (var i = 0; i < arraySize; i++) {
-                randomVal += Math.floor(Math.random()*(2 + i));
-                htmldata += "<li>" + randomVal + "</li>";            
-                initialArray[i] = randomVal;
-            }
-            $array.html(htmldata);
-
-            //generate the key which should be found and initialize the small array
-            keyToFind = Math.ceil(5* (initialArray[0] + initialArray[arraySize -1]) / 7);
-            $key.html("<li>" + keyToFind + "</li>");
-            // av.umsg("Find the key " + keyToFind + "."); 
-            // av.forward();
-
-            av.ds.array($key, {indexed: false}).css(0, {"background-color": "#ddf"}).toggleArrow(0);
-            jsavArray = av.ds.array($array, {indexed: true});
-            
-            //make the code visible and highlight the line where mid is calculated
-            code.show();
-            code.highlight(8);
-
-            return jsavArray;
-        }
-        
-        function modelSolution(jsav) {
-            var modelArray = jsav.ds.array(initialArray);
-
-            jsav._undo = [];
-
-            var low = 0, high = arraySize - 1, mid;
-
-            while (modelArray.value(low) < keyToFind && modelArray.value(high) >= keyToFind) {
-                mid = Math.floor( low + ((keyToFind - modelArray.value(low)) * (high - low)) / (modelArray.value(high) - modelArray.value(low)));
-                if (modelArray.value(mid) < keyToFind) {
-                    low = mid + 1;
-                    paintGrey(modelArray, 0, mid);
-                } else if (modelArray.value(mid) > keyToFind) {
-                    high = mid - 1;
-                    paintGrey(modelArray, mid, arraySize - 1);
-                } else {
-                    paintGrey(modelArray, 0 , arraySize - 1);
-                }
-                modelArray.highlight(mid);
-                jsav.stepOption("grade", true);
-                jsav.step();
-                if (modelArray.value(mid) === keyToFind) {
-                    return modelArray;
-                }
-            }
-          return modelArray;
-        }
-        
-        var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
-        exercise.reset();
-        
-        // bind a function to handle all click events on the array
-        jsavArray.click(function(index) {
-            
-            //if the clicked index is not higlighted earlier, highlight it and paint the ones which are outside of the new range
-            if (!this.isHighlight(index)) {
-                // if (this.value(index) > keyToFind) {
-                //     paintGrey(this, index, arraySize - 1);
-                // } else if (this.value(index) < keyToFind) {
-                //     paintGrey(this, 0, index);
-                // }
-                // if (this.value(index) === keyToFind) {
-                //     paintGrey(this, 0, arraySize - 1);
-                // }
-                // highlight the index
-                this.highlight(index);
-                exercise.gradeableStep();
-            }
-        });
-
-        // paints the background gray for indices [first, last].
-        function paintGrey(array, first, last) {
-            array.addClass(
-                function(index) {return index >= first && index <= last},
-                "greybackground"
-                );
-        }
-
-        </script>
-    </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV.js"></script>
+  <script src="../../lib/odsaUtils.js"></script>
+  <script src="language.js"></script>
+  <script src="interpolationSearchPRO.js"></script>
+</body>
 </html>

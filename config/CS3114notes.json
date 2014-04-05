@@ -1,11 +1,11 @@
 {
   "title": "CS3114 Fall Coursenotes",
   "build_dir": "Books",
-  "code_dir": "SourceCode/Processing",
+  "code_dir": "SourceCode/",
+  "code_lang": "processing",
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
-  "build_ODSA": true,
   "allow_anonymous_credit": false,
   "suppress_todo": false,
   "chapters": {

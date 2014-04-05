@@ -4,7 +4,7 @@ rst_header = '''\
 
 .. raw:: html
 
-   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s";</script>
+   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s";%(mod_options)s</script>
 
 %(unicode_directive)s
 '''
@@ -87,10 +87,6 @@ html:
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
 	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
-	@echo "Overwrite the minified files so we don't have to change the paths"
-	cp "%(odsa_dir)slib/odsaMOD.js" "%(odsa_dir)slib/odsaMOD-min.js"
-	cp "%(odsa_dir)slib/odsaUtils.js" "%(odsa_dir)slib/odsaUtils-min.js"
-	cp "%(odsa_dir)slib/odsaAV.js" "%(odsa_dir)slib/odsaAV-min.js"
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
@@ -293,7 +289,7 @@ html_static_path = ['_static']
 # all the content that loaded before the CSS files
 # 'odsa_root_path' specifies the relative path from the HTML output directory to the ODSA root directory and is used
 # to properly link to Privacy.html
-# The code that appends these scripts can be found in RST/source/_themes/haiku/layout.html and basic/layout.html
+# The code that appends these scripts can be found in RST/_themes/haiku/layout.html and basic/layout.html
 html_context = {"script_files": [
                   '%(eb2root)slib/jquery.min.js',
                   'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML.js'

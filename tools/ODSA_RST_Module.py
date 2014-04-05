@@ -1,8 +1,77 @@
+#! /usr/bin/python
+#
+# Defines an object which represents an OpenDSA modules
+#   - Checks to see if the RST module file exists
+#   - Reads in the RST source file
+#   - Appends a common header to all RST modules (based on the template found in config_templates.py) which includes a Sphinx self reference directive (so Sphinx can cross-link the module) and module-specific configuration settings
+#     - Ensures we can reference any module, without relying on the module author to correctly add the reference link
+#     - Optionally, appends a raw JavaScript flag to each module indicating whether or not the module can be completed
+#       - This allows the configuration file to override the default behavior of the client-side framework which is to allow module completion only if the module contains required exercises
+#   - Loops through each line of the RST file
+#     - Keeps a count of labeled and unlabeled tables, examples, theorems, and figures (for numbering during postprocessing)
+#     - Parses the list of prerequisite topics and checks to make sure each is satisfied by a previous module or assumed that the student knows
+#     - Parses the list of topics the current module satisfies
+#     - Records the path to any images loaded by the figure or odsafig directives (so only the images included in the book have to be copied to the final book)
+#     - Identifies TODO directives and either removes them (if TODOs are suppressed) or records them for display on the ToDo.rst page
+#     - Identifies inline and embedded AVs, either:
+#       - Removes the entire directive if the 'remove' attribute is present and "true"
+#       OR
+#       - Appends additional information (specifically adds 'long_name', 'points', 'required' and 'threshold') from the configuration file to the directive
+#       - If the specified exercise does not appear in the configuration file, the Sphinx directive will be included, but no additional information will be included so the defaults (specified in the Sphinx directive file) will be used.  The name of the exercise is added to a list of missing exercises which will be displayed to the user
+#     - Verifies the existence of the avmetadata directive
+#     - Keeps a count of labeled equations (for numbering during postprocessing)
+#     - Increments the figure counter when RST directives with a 'target' parameter are encountered (for numbering during postprocessing)
+#   - Writes the modified contents of the RST file out to the book's source directory
+#   - Makes the various counters and lists publicly accessible so they can be read by 'configure.py'
+
+import sys
 import os
 import datetime
 import re
 from string import whitespace as ws
 from config_templates import *
+
+# Prints the given string to standard error
+def print_err(err_msg):
+  sys.stderr.write('%s\n' % err_msg)
+
+# Generates a string that will be appended to the RST module header that sets the module options appropriately
+def format_mod_options(options):
+  option_str = ''
+
+  for option, value in options.iteritems():
+    # Convert Python booleans to JavaScript booleans and quote strings
+    if str(value) in ['True', 'False']:
+      value = str(value).lower()
+    elif isinstance(value, basestring):
+      value = "'%s'" % value;
+
+    # Set JSAV options as necessary and set all others as standard variables
+    if option.startswith('JXOP-'):
+      option_str += "JSAV_EXERCISE_OPTIONS['%s']=%s;" % (option[5:], value)
+    elif option.startswith('JOP-'):
+      option_str += "JSAV_OPTIONS['%s']=%s;" % (option[4:], value)
+    else:
+      option_str += "var %s=%s;" % (option, value)
+
+  return option_str
+
+# Returns a boolean indicating whether or not the module can be completed
+def determine_module_completable(mod_attrib):
+  # Set a JS flag on the page, indicating whether or not the module can be completed
+  if 'dispModComp' in mod_attrib:
+    # Use the value specified in the configuration file to override the calculated value
+    dispModComp = mod_attrib['dispModComp']
+  else:
+    dispModComp = False
+
+    # Display 'Module Complete' only if the module contains at least one required exercise
+    for exer_name, exer_obj in mod_attrib['exercises'].items():
+      if 'required' in exer_obj and exer_obj['required']:
+        dispModComp = True
+        break
+
+  return dispModComp
 
 # Parses the arguments from a Sphinx directive, prints error messages if the directive doesn't match the expected format
 def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_prefix = ''):
@@ -15,7 +84,7 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
   # Print an error if the directive doesn't match what we expect
   directive = line[:line.find(':: ')].strip().split(' ')
   if len(directive) != 2 and directive[0] != '..':
-    print console_msg_prefix + "ERROR: Invalid Sphinx directive declaration"
+    print_err("%sERROR: Invalid Sphinx directive declaration" % console_msg_prefix)
 
   # Isolates the arguments to the directive
   args = line[line.find(':: ') + 3:].split(' ')
@@ -23,7 +92,7 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
   # Ensure the expected number of arguments was parsed (skip the check if -1)
   if expected_num_args > -1 and len(args) != expected_num_args:
     # Print a warning if inlineav is invoked without the minimum number of arguments
-    print console_msg_prefix + "ERROR: Invalid directive arguments for object on line " + str(line_num) + ", skipping object"
+    print_err("%sERROR: Invalid directive arguments for object on line %d, skipping object" % (console_msg_prefix, line_num))
 
   return args
 
@@ -115,27 +184,26 @@ class ODSA_RST_Module:
 
     exercises = mod_attrib['exercises']
 
-    # Set a JS flag on the page, indicating whether or not the module can be completed
-    if 'dispModComp' in mod_attrib:
-      # Use the value specified in the configuration file to override the calculated value
-      dispModComp = mod_attrib['dispModComp']
-    else:
-      dispModComp = False
+    dispModComp = determine_module_completable(mod_attrib)
 
-      # Display 'Module Complete' only if the module contains at least one required exercise
-      for exer_name, exer_obj in exercises.items():
-        if 'required' in exer_obj and exer_obj['required']:
-          dispModComp = True
-          break
+    filename = '{0}RST/{1}/{2}.rst'.format(config.odsa_dir, config.lang, mod_path)
 
-    filename = '{0}RST/source/{1}.rst'.format(config.odsa_dir, mod_path)
+    # If the specified RST file doesn't exist in the specified language, default to English
+    if config.lang != 'en' and not os.path.exists(filename):
+      filename = '{0}RST/en/{1}.rst'.format(config.odsa_dir, mod_path)
 
     if not os.path.exists(filename):
-      print 'ERROR: Module does not exist: %s' % mod_path
+      print_err('ERROR: Module does not exist: %s' % mod_path)
     else:
       # Read the contents of the module file from the RST source directory
       with open(filename,'r') as mod_file:
         mod_data = mod_file.readlines()
+
+      # Merge global module options with local modules options, if applicable, so that local options override the global options
+      if 'mod_options' in mod_attrib:
+        mod_options = dict(config.glob_mod_options.items() + mod_attrib['mod_options'].items())
+      else:
+        mod_options = config.glob_mod_options
 
       # Generate the RST header for the module
       header_data = {}
@@ -144,6 +212,7 @@ class ODSA_RST_Module:
       header_data['long_name'] = mod_attrib['long_name'] if 'long_name' in mod_attrib else mod_name
       header_data['mod_chapter'] = chap
       header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
+      header_data['mod_options'] = format_mod_options(mod_options)
       # Include an empty unicode directive when building slides
       header_data['unicode_directive'] = rst_header_unicode if os.environ.get('SLIDES', None) == "no" else ''
       # Prepend the header data to the exisiting module data
@@ -170,7 +239,7 @@ class ODSA_RST_Module:
           # Print a warning message if a missing prereq is encountered
           for req in requires:
             if req != '' and req not in satisfied_requirements:
-              print console_msg_prefix + "WARNING: " + req + " is an unsatisfied prerequisite for " + mod_name + ", line " + str(i + 1)
+              print_err("%sWARNING: %s is an unsatisfied prerequisite for %s, line %d" % (console_msg_prefix, req, mod_name, i + 1))
         elif line.startswith(':satisfies:'):
           # Parse the list of prerequisite topics this module satisfies and add them to a list of satisfied prereqs
           requirements_satisfied = [req.strip() for req in line.replace(':satisfies:', '').split(';')]
@@ -235,10 +304,10 @@ class ODSA_RST_Module:
                 mod_data[i] += ''.join(rst_options)
             elif av_type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
               # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
-              print console_msg_prefix + "WARNING: " + av_name + " is a diagram (attributes are not supported), line " + str(i + 1)
+              print_err("%sWARNING: %s is a diagram (attributes are not supported), line %d" %(console_msg_prefix, av_name, i + 1))
             elif av_type not in ['ss', 'dgm']:
               # If a warning if the exercise type doesn't match something we expect
-              print console_msg_prefix + "WARNING: Unsupported type '" + av_type + "' specified for " + av_name + ", line " + str(i + 1)
+              print_err("%sWARNING: Unsupported type '%s' specified for %s, line %d" % (console_msg_prefix, av_type, av_name, i + 1))
         elif line.startswith('.. avembed::'):
           # Parse the arguments from the directive
           args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
@@ -249,7 +318,7 @@ class ODSA_RST_Module:
 
             # If the config file states the exercise should be removed, remove it
             if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
-              print console_msg_prefix + 'Removing: ' + av_name
+              print '%sRemoving: %s' % (console_msg_prefix, av_name)
 
               # Config file states exercise should be removed, remove it from the RST file
               while (i < len(mod_data) and mod_data[i].rstrip() != ''):
@@ -272,16 +341,16 @@ class ODSA_RST_Module:
                 rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
                 # JSAV grading options are not applicable to Khan Academy exercises or slideshows and will be ignored
-                if av_type not in ['ka', 'ss']:
-                  # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
-                  if 'jsav_exer_options' in exer_conf:
-                    jxops = dict(config.glob_jsav_exer_options.items() + exer_conf['jsav_exer_options'].items())
-                  else:
-                    jxops = config.glob_jsav_exer_options
+                #if av_type not in ['ka', 'ss']:
+                # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
+                if 'exer_options' in exer_conf:
+                  xops = dict(config.glob_exer_options.items() + exer_conf['exer_options'].items())
+                else:
+                  xops = config.glob_exer_options
 
-                  # URL-encode the string and append it to the RST options
-                  jxop_str = '&amp;'.join(['JXOP-%s=%s' % (opt, str(jxops[opt])) for opt in jxops])
-                  rst_options.append('   :jsav_exer_opt: %s\n' % jxop_str)
+                # Convert python booleans to JavaScript booleans, URL-encode the string and append it to the RST options
+                xop_str = '&amp;'.join(['%s=%s' % (option, value) if str(value) not in ['True', 'False'] else '%s=%s' % (option, str(value).lower()) for option, value in xops.iteritems()])
+                rst_options.append('   :exer_opts: %s\n' % xop_str)
 
                 mod_data[i] += ''.join(rst_options)
         elif line.startswith('.. avmetadata::'):
@@ -302,7 +371,7 @@ class ODSA_RST_Module:
         i = i + 1
 
       if not avmetadata_found:
-        print console_msg_prefix + 'WARNING: %s does not contain an ..avmetadata:: directive' % mod_name
+        print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
 
       # Write the contents of the module file to the output src directory
       with open(''.join([config.book_src_dir, mod_name, '.rst']),'w') as mod_file:

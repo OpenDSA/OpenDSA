@@ -1,6 +1,5 @@
-"use strict";
-
 (function ($) {
+	"use strict";
 
 	/*
 	 * JSAV click handler for handling moving and copying between different structures
@@ -15,16 +14,21 @@
 	var ClickHandler = function ClickHandler(jsav, exercise, options) {
 		var defaults = {
 			selectedClass: "jsavhighlight",
-			selectEmpty: false,			//don't allow selecting empty nodes
-			effect: "move",				//move, copy, swap, toss
-			removeNodes: true,			//remove nodes when they become empty
-			gradeable: true,			//tells click handler if action should be graded. Can be overridden with return value of onDrop
-			bgDeselect: true,			//allow deselecting by clicking on the background
-			select: "click",			//click, first, last
-			drop: "click",				//click, first, last
-			keep: false,				//don't allow selecting the last node
-			onSelect: function () {},	//called by structure when something is selected. If the function returns false, the selection is cancelled
-			onDrop: function () {}		//called by structure when value has been changed. The return value determins if the step is gradeable. If nothing is returned options.gradeable will be used.
+			selectEmpty: false,			// don't allow selecting empty nodes
+			effect: "move",				// move, copy, swap, toss
+			arraySwapOptions: {			// options for array swap
+				use: true,				// use array swap by default
+				arrow: false,			// turn array swap arrow off by default
+				highlight: false,		// do not use pink highlighting when swapping
+			},
+			removeNodes: true,			// remove nodes when they become empty
+			gradeable: true,			// tells click handler if action should be graded. Can be overridden with return value of onDrop
+			bgDeselect: true,			// allow deselecting by clicking on the background
+			select: "click",			// click, first, last
+			drop: "click",				// click, first, last
+			keep: false,				// don't allow selecting the last node
+			onSelect: function () {},	// called by structure when something is selected. If the function returns false, the selection is cancelled
+			onDrop: function () {}		// called by structure when value has been changed. The return value determins if the step is gradeable. If nothing is returned options.gradeable will be used.
 		};
 
 		this.jsav = jsav;
@@ -50,17 +54,17 @@
 
 	ClickHandler.prototype = {
 		//get the index of a structure
-		getDsIndex: function getDsIndex(ds) {
+		getDsIndex: function (ds) {
 			return $.inArray(ds, this.ds);
 		},
 
 		//get a structure 
-		getDs: function getDs(index) {
+		getDs: function (index) {
 			return this.ds[index];
 		},
 
 		//returns an object containing selected structure, index and node (if they exist)
-		getSelected : function getSelected() {
+		getSelected : function () {
 			return {
 				struct: this.getDs(this.selStruct.value()),
 				index: this.selIndex.value(),
@@ -70,14 +74,14 @@
 
 		//reset the click handler, but keeps datastructures and settings
 		//should be done when initializing an exercise
-		reset: function reset() {
+		reset: function () {
 			this.selStruct.value(-1);
 			this.selIndex.value(-1);
 			this.selNode = null;
 		},
 
 		//remove structure from click handler
-		remove: function remove(ds) {
+		remove: function (ds) {
 			if (this.getDsIndex(ds) === -1) {
 				return false;
 			} else {
@@ -86,7 +90,7 @@
 			}
 		},
 
-		step: function step(grade) {
+		step: function (grade) {
 			if (grade) {
 				this.exercise.gradeableStep();
 			} else {
@@ -95,7 +99,7 @@
 		},
 
 		//tells click handler to select the given index in an array or the given node
-		select: function select(struct, indexOrNode) {
+		select: function (struct, indexOrNode) {
 			//don't do anything if click handler is unaware of structure
 			if (this.getDsIndex(struct) === -1)
 				return;
@@ -116,7 +120,7 @@
 		},
 
 		//deselect the selected node
-		deselect: function deselect() {
+		deselect: function () {
 			if (this.selStruct.value() !== -1) {
 				if (this.selIndex.value() === -1) {
 					//deselect node
@@ -132,7 +136,7 @@
 		},
 
 		//add an array to the click handler
-		addArray: function addArray(array, options) {
+		addArray: function (array, options) {
 			//push array into ds
 			this.ds.push(array);
 
@@ -223,7 +227,7 @@
 		},
 
 		//add a list to the click handler
-		addList: function addList(list, options) {
+		addList: function (list, options) {
 			//push array into ds
 			this.ds.push(list);
 
@@ -349,7 +353,7 @@
 		},
 
 		//add a (binary) tree to the click handler
-		addTree: function addTree(tree, options) {
+		addTree: function (tree, options) {
 			//push array into ds
 			this.ds.push(tree);
 
@@ -447,7 +451,17 @@
 			ch.jsav.effects.copyValue.apply(this, args);
 			break;
 		case "swap":
-			ch.jsav.effects.swapValues.apply(this, args);
+			if (options.from === options.to &&
+				options.to instanceof JSAV._types.ds.AVArray &&
+				ch.options.arraySwapOptions &&
+				ch.options.arraySwapOptions.use === true)
+			{
+				// remove selected class before swapping, in case the classes are swapped
+				options.from.removeClass(options.fromIndex, ch.options.selectedClass);
+				options.from.swap(options.fromIndex, options.toIndex, ch.options.arraySwapOptions);
+			} else {
+				ch.jsav.effects.swapValues.apply(this, args);
+			}
 			break;
 		case "toss":
 			//remove value from "from structure"

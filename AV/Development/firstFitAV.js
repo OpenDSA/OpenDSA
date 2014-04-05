@@ -88,8 +88,8 @@
     
     var free1Finish = 342;
     var free2Finish = 455;
-    var free3Finish = 517;
-    var free4Finish = 642;
+    var free3Finish = 597;
+    var free4Finish = 755;
     
     freeFinArray = new Array(free1Finish, free2Finish, free3Finish, free4Finish);
     
@@ -159,24 +159,6 @@
 
   }
  
-  function updateLabels()
-  {
-    block1Label = jsav.label(freeArray[0], {left :  22, top:  420});
-    block2Label= jsav.label(freeArray[1], {left :  47, top:  420});
-    block3Label = jsav.label(freeArray[2], {left :  72, top:  420});
-    block4Label = jsav.label(freeArray[3], {left :  97, top:  420});
-    usedAmountLabel = jsav.label(usedNum, {left :  450, top:  65});
-    freeAmountLabel = jsav.label(freeNum, {left :  530, top:  65});
-  }
- 
-  function updateLines()
-  {
-    connect1 = jsav.g.line(22.5, 400, (freeStartArray[1] + freeFinArray[1])/2, 280);
-    connect2 = jsav.g.line(47.5, 400, (freeStartArray[2] + freeFinArray[2])/2, 280);
-    connect3 = jsav.g.line(72.5, 400, (freeStartArray[3] + freeFinArray[3])/2, 280);
-    connect4 = jsav.g.line(97.5, 400, (freeStartArray[4] + freeFinArray[4])/2, 280);
-  }
-
   function enableAllButtons() {
     $("#input").removeAttr("disabled");
     $("#submit").removeAttr("disabled");
@@ -190,16 +172,24 @@
       blockLabelArray[rectNumber].text(freeArray[rectNumber]);
 
       freeListArray[rectNumber].css({"fill": "lightgrey"});
-      jsav.umsg(((freeStartArray[rectNumber] + freeFinArray[rectNumber])/2));
-      jsav.umsg(freeStartArray[rectNumber]);
-      jsav.umsg(freeFinArray[rectNumber]);
+      //jsav.umsg(((freeStartArray[rectNumber] + freeFinArray[rectNumber])/2));
+      //jsav.umsg(freeStartArray[rectNumber]);
+      //jsav.umsg(freeFinArray[rectNumber]);
 
+     
       linesArray[rectNumber].movePoints([[0, connectStartArray[rectNumber], 400], [1, ((freeStartArray[rectNumber] + freeFinArray[rectNumber])/2), 210]]).css({"stroke-width": 1});
 
-      usedNum = usedNum + inputVal;
-      freeNum = usedNum - inputVal;
+
+      
+      
+      inputVal = inputVal * -1; //multiplied by -1 becuase using '+' was joining the 2 values
+      usedNum = usedNum - inputVal; //minus a negitive is equivlent to adding
+      inputVal = inputVal * -1;  //multiplied by -1 again to make posiitve
+      freeNum = freeNum - inputVal;
+      
       freeAmountLabel.text(freeNum);
       usedAmountLabel.text(usedNum);
+
 
       nextCount = 0;
       rectNumber = 0;
@@ -207,9 +197,11 @@
   }
 
   function firstFit(inputVal) {
+    
     if(nextCount == 0) {
       linesArray[rectNumber].css({"stroke-width": 3});
       freeListArray[rectNumber].css({"fill": "yellow"});
+      jsav.umsg("Free list " + rectNumber + " block size = " + freeArray[rectNumber])
 
       if (inputVal <= freeArray[rectNumber]) {
         nextCount = 2;
@@ -222,21 +214,39 @@
 
       linesArray[rectNumber].css({"stroke-width": 1});
       freeListArray[rectNumber].css({"fill": "lightgrey"});
+
       rectNumber++;
       linesArray[rectNumber].css({"stroke-width": 3});
       freeListArray[rectNumber].css({"fill": "yellow"});
-        
-      if (inputVal <= freeArray[rectNumber]) {
-        nextCount = 2;
-      
-      } else {
-        nextCount = 1;
-      }
+      jsav.umsg("Free list " + rectNumber + " block size = " + freeArray[rectNumber])
+        if(rectNumber == 3 && inputVal > 45)
+        {
+          jsav.umsg("The value you have entered can not be allocated")
+          jsav.umsg("Please enter a smaller value")
+          $('#next').attr("disabled", "disabled");
+          
+
+        }
+
+          
+            if (inputVal <= freeArray[rectNumber]) {
+              nextCount = 2;
+            
+            } 
+            
+            else {
+              nextCount = 1;
+            }
 
     } else if(nextCount == 2) {
 
+
+        jsav.umsg("We have a fit")
+        jsav.umsg("Allocation Complete")
+        jsav.umsg("Please schedule another request")
       insertIntoBlock(inputVal);
     }
+    
   }
 
   function circularFit(inputVal) {
@@ -244,46 +254,133 @@
   }
 
   function bestFit(inputVal) {
+
+
     var minValue = Math.min.apply(Math, freeArray);
+    jsav.umsg(minValue)
+    var dist0 = freeArray[0] - inputVal;
+    var dist1 = freeArray[1] - inputVal;
+    var dist2 = freeArray[2] - inputVal;
+    var dist3 = freeArray[3] - inputVal;
 
-    if(nextCount == 0) {
-      rectNumber = freeArray.indexOf(minValue);
-
-      linesArray[rectNumber].css({"stroke-width": 3});
-      freeListArray[rectNumber].css({"fill": "yellow"});
-
-      if (inputVal <= minValue) {
-        nextCount = 2;
-      } else {
-        nextCount = 1;
+    var distArray = new Array(dist0, dist1, dist2, dist3);
+    var i = 0;
+    for(i =0; i < 4; i++)
+    {
+      if( distArray[i] < 0)
+      {
+        distArray[i] = 100;
       }
-    } else if(nextCount == 1) {
-
-      linesArray[rectNumber].css({"stroke-width": 1});
-      freeListArray[rectNumber].css({"fill": "lightgrey"});
-      //need to get second smallest!!!
-      minValue = Math.min.apply(Math, freeArray);
-      rectNumber = freeArray.indexOf(minValue);
-
-      linesArray[rectNumber].css({"stroke-width": 3});
-      freeListArray[rectNumber].css({"fill": "yellow"});
-        
-      if (inputVal <= freeArray[rectNumber]) {
-        nextCount = 2;
-      
-      } else {
-        nextCount = 1;
-      }
-
-    } else if(nextCount == 2) {
-        insertIntoBlock(inputVal);
     }
+
+
+
+    var best = Math.min.apply(Math, distArray);
+    var bestBlock;
+    //var count = 0;
+
+    if(best == dist0)
+    {
+      bestBlock = 0;
+    }
+     else if(best == dist1)
+    {
+       bestBlock = 1;
+    }
+     else if(best == dist2)
+    {
+       bestBlock = 2;
+    }
+     else if(best == dist3)
+    {
+       bestBlock = 3;
+    }
+    else
+    {
+      bestBlock = 4;
+    }
+
+    jsav.umsg("best: " + bestBlock)
+
+    if(rectNumber != 0)
+    {
+      linesArray[rectNumber - 1].css({"stroke-width": 1});
+        freeListArray[rectNumber - 1].css({"fill": "lightgrey"});
+    }
+    if(inputVal > 45)
+    {
+        linesArray[rectNumber].css({"stroke-width": 3});
+        freeListArray[rectNumber].css({"fill": "yellow"});
+    }
+    if(inputVal > 45 && rectNumber == 3)
+    {
+          jsav.umsg("The value you have entered can not be allocated")
+          jsav.umsg("Please enter a smaller value")
+          $('#next').attr("disabled", "disabled");
+    }
+     else if(bestBlock > rectNumber)
+    {
+        jsav.umsg("count = " + rectNumber)
+        linesArray[rectNumber].css({"stroke-width": 3});
+        freeListArray[rectNumber].css({"fill": "yellow"});
+        //rectNumber++;
+
+    }
+    else if(bestBlock == rectNumber)
+    {   
+        jsav.umsg("Best Block found")
+        jsav.umsg("Best Block is Block  " + bestBlock)
+        linesArray[rectNumber].css({"stroke-width": 3});
+        freeListArray[rectNumber].css({"fill": "yellow"});
+        
+
+    }
+    else if(rectNumber > bestBlock)
+    {
+      rectNumber--;
+      insertIntoBlock(inputVal);
+    }
+
+    
+    // if(nextCount == 0) {
+    //   rectNumber = freeArray.indexOf(minValue);
+
+    //   linesArray[rectNumber].css({"stroke-width": 3});
+    //   freeListArray[rectNumber].css({"fill": "yellow"});
+
+    //   if (inputVal <= minValue) {
+    //     nextCount = 2;
+    //   } else {
+    //     nextCount = 1;
+    //   }
+    // } else if(nextCount == 1) {
+
+    //   linesArray[rectNumber].css({"stroke-width": 1});
+    //   freeListArray[rectNumber].css({"fill": "lightgrey"});
+    //   //need to get second smallest!!!
+    //   minValue = Math.min.apply(Math, freeArray);
+    //   rectNumber = freeArray.indexOf(minValue);
+
+    //   linesArray[rectNumber].css({"stroke-width": 3});
+    //   freeListArray[rectNumber].css({"fill": "yellow"});
+        
+    //   if (inputVal <= freeArray[rectNumber]) {
+    //     nextCount = 2;
+      
+    //   } else {
+    //     nextCount = 1;
+    //   }
+
+    // } else if(nextCount == 2) {
+    //     insertIntoBlock(inputVal);
+    // }
   }
 
   function worstFit(inputVal) {
     if(nextCount == 0) {
-      var maxValue = Math.max.apply(Math, freeArray);
-      rectNumber = freeArray.indexOf(maxValue);
+    var maxValue = Math.max.apply(Math, freeArray);
+     rectNumber = freeArray.indexOf(maxValue);
+
 
       linesArray[rectNumber].css({"stroke-width": 3});
       freeListArray[rectNumber].css({"fill": "yellow"});
@@ -299,9 +396,7 @@
     }
   }
 
-  function sequentialFit() {
-
-  }
+ 
  
  
   $(document).ready(function () {
@@ -324,14 +419,22 @@
     });
 
     $('#submit').click(function () {
+      var i = 0;
+      for(i = 0; i < 4; i++)
+      {
+        linesArray[i].css({"stroke-width": 1});
+      freeListArray[i].css({"fill": "lightgrey"});
+      }
+      nextCount = 0;
+      rectNumber = 0;
       var inputVal = $("#input").val();
-      if (inputVal < 0 || inputVal > 99999 || isNaN(inputVal)) {
-        jsav.umsg("Please enter a number in the range of 0-99999");
+      if (inputVal < 2 || inputVal > 100 || isNaN(inputVal)) {
+        jsav.umsg("Please enter a number in the range of 1-100");
         $('#next').attr("disabled", "disabled");
 
 
       } else { 
-        jsav.umsg("The request is scheduled.");
+        jsav.umsg("The request has been scheduled.");
         jsav.umsg("Size Request: " + inputVal);
 
         newRec(inputVal);
@@ -359,13 +462,14 @@
           break;
         case '3':
           bestFit(inputValue);
+          rectNumber++;
           break;
         case '4':
           worstFit(inputValue);
           break;
-        case '5':
-          sequentialFit(inputValue);
-          break;
+        // case '5':
+        //   sequentialFit(inputValue);
+        //   break;
       }
       $("#submit").removeAttr("disabled");
     });
@@ -378,25 +482,36 @@
           reset();
           break;
         case '1':
+          jsav.clearumsg();
           jsav.umsg("First Fit Selected")
+          
+          jsav.umsg("To allocate a block, enter a size and click submit")
           enableAllButtons(); 
           break;
         case '2':
+          jsav.clearumsg();
           jsav.umsg("Circular Fit Selected")
+          jsav.umsg("To allocate a block, enter a size and click submit")
          enableAllButtons();
           break;
         case '3':
+          jsav.clearumsg();
           jsav.umsg("Best Fit Selected")
+          jsav.umsg("To allocate a block, enter a size and click submit")
           enableAllButtons();
           break;
         case '4':
+          jsav.clearumsg();
           jsav.umsg("Worst Fit Selected")
+          jsav.umsg("To allocate a block, enter a size and click submit")
           enableAllButtons();
           break;
-        case '5':
-          jsav.umsg("Sequential Fit Selected")
-          enableAllButtons();
-          break;
+        // case '5':
+        //   jsav.umsg("Sequential Fit Selected")
+        //   jsav.umsg("")
+        //   jsav.umsg("To allocate a block, enter a size and click submit")
+        //   enableAllButtons();
+        //   break;
       }
     });
 
@@ -407,8 +522,11 @@
           while(i < 4)
           {
             blockLabelArray[i].clear();
+            linesArray[i].hide();
             i++;
           }
+          freeAmountLabel.clear();
+          usedAmountLabel.clear();
         reset();
         submitRec.css({"opacity": "0"});
     });

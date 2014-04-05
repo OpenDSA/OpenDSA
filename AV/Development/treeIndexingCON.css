@@ -2,46 +2,111 @@
 
 /* Set size for the jsav container */
 #pagedBSTCON {
-  width: 300px;
-  height: 120px;
-  padding: 25px;
+	width: 700px;
+	height: 500px;
 }
 
 /* Change the size of the tree nodes */
-#pagedBSTCON .jsavtree .jsavnode {
-  line-height: 15px;
-  min-width: 15px;
-  max-width: 15px;
-  min-height: 15px;
-  max-height: 15px;
+#pagedBSTCON .jsavtree .jsavnode, #pagedBSTCON .jsavtree .jsavvalue {
+	line-height: 30px;
+	min-width: 30px;
+	max-width: 30px;
+	min-height: 30px;
+	max-height: 30px;
+}
+
+#pagedBSTCON .jsavoutput.jsavline {
+	text-align: center;
+	width: 700px;
+}
+
+#pagedBSTCON .jsavlabel {
+	z-index: 900;
+	font-size: 1.3em;
 }
 
 /* Add padding to the rectangle container to show the all the rectangles */
 #pagedBSTCON .jsavcanvas > svg {
-  margin-top: -10px;
-	height: 150px;
-	width: 320px;
+	/*margin-top: -10px;*/
+	/*height: 150px;*/
+	/*width: 320px;*/
 }
 
 /* Create styling for the balanceBSTCON diagram */
 
 /* Set size for the jsav container */
 #balanceBSTCON {
-  width: 380px;
-  height: 115px;
-  padding: 25px;
+	width: 380px;
+	height: 115px;
+	padding: 25px;
 }
 
 /* Change the size of the tree nodes */
 #balanceBSTCON .jsavtree .jsavnode {
 	line-height: 20px;
-  min-width: 20px;
-  max-width: 20px;
-  min-height: 20px;
-  max-height: 20px;
+	min-width: 20px;
+	max-width: 20px;
+	min-height: 20px;
+	max-height: 20px;
 }
 
 /* Add ofset to the top of the number labels of the tree to place number in center of tree node */
 #balanceBSTCON .jsavtree .jsavnode .jsavvalue {
 	margin-top: -12px;
+}
+
+/* Create styling for the colorizedBST diagram */
+
+#colorizedBST {
+	width: 600px;
+}
+
+#colorizedBST .jsavcanvas {
+	width: 600px;
+	height: 300px;
+}
+
+#colorizedBST .jsavtree .jsavnode {
+	min-width: 20px;
+	min-height: 20px;
+	max-width: 20px;
+	max-height: 20px;
+	line-height: 20px;
+}
+
+#colorizedBST .jsavvalue {
+	height: 20px;
+}
+
+/* Create styling for the colorizedBST diagram */
+
+#rectangleBST {
+	width: 600px;
+	margin-bottom: 30px;
+}
+
+#rectangleBST .jsavcanvas {
+	width: 600px;
+	height: 300px;
+}
+
+#rectangleBST .jsavtree {
+	margin-top: 20px;
+}
+
+#rectangleBST .jsavtree .jsavnode {
+	min-width: 20px;
+	min-height: 20px;
+	max-width: 20px;
+	max-height: 20px;
+	line-height: 20px;
+}
+
+#rectangleBST .jsavvalue {
+	height: 20px;
+}
+
+/* Add padding to the rectangle container to show the all the rectangles */
+#rectangleBST .jsavcanvas > svg {
+	margin-top: -20px;
 }

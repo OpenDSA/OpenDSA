@@ -6,13 +6,20 @@
     evaluatorArrays = [],
     stack,
     clickHandler,
+    interpret,
+    config = ODSA.UTILS.getConfig("postfixEvaluationPRO.json"),
     av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
     
-    exercise.jsav.container.find(".jsavcanvas").css({height: 350});
+    // get interpreter function for the selected language
+    if (typeof interpret !== "function") {
+      interpret = JSAV.utils.getInterpreter(config.language);
+      // change the title and the instructions on the page
+      ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
+    }
 
     // create ClickHandler
     if (typeof clickHandler === "undefined") {
@@ -67,14 +74,14 @@
       "font-weight": "bold"
     };
     var canvasWidth = exercise.jsav.container.find(".jsavcanvas").width();
-    av.getSvg().text(canvasWidth / 2, 20, "Postfix Expression").attr(font);
-    av.getSvg().text(canvasWidth / 2, 200, "Operand Stack").attr(font);
+    av.getSvg().text(canvasWidth / 2, 20, interpret("postfix_expression")).attr(font);
+    av.getSvg().text(canvasWidth / 2, 200, interpret("operand_stack")).attr(font);
 
     // draw the Evaluator
     var rect_x = 50;
     var rect_y = 220;
     av.g.rect(rect_x, rect_y, 200, 120, {r: 20});
-    av.getSvg().text(rect_x + 100, rect_y + 15, "Evaluator 2.0");
+    av.getSvg().text(rect_x + 100, rect_y + 15, interpret("evaluator"));
 
     for (var i = 0; i < 3; i++) {
       if (evaluatorArrays[i]) {
@@ -119,7 +126,7 @@
     var rect_x = 50;
     var rect_y = 100;
     jsav.g.rect(rect_x, rect_y, 200, 120, {r: 20});
-    jsav.svg.text(rect_x + 100, rect_y + 15, "Evaluator 2.0");
+    jsav.svg.text(rect_x + 100, rect_y + 15, interpret("evaluator"));
     var modelEvalAr = [];
 
     for (var i = 0; i < 3; i++) {
@@ -142,13 +149,13 @@
         modelStack.addFirst();
         jsav.effects.moveValue(modelArray, i, modelStack.first());
         modelStack.layout();
-        jsav.umsg("The operands go into the operand stack");
+        jsav.umsg(interpret("ms_com_operand"));
         jsav.stepOption("grade", true);
         jsav.step();
       } else {
         // move the operator to the evaluator
         jsav.effects.moveValue(modelArray, i, modelEvalAr[1], 0);
-        jsav.umsg("The operator goes into the evaluator.");
+        jsav.umsg(interpret("ms_com_operator"));
         jsav.step();
         // "run the evaluator"
         // move the first value
@@ -159,7 +166,7 @@
         jsav.effects.moveValue(modelStack.first(), modelEvalAr[2], 0);
         modelStack.removeFirst();
         modelStack.layout();
-        jsav.umsg("The two topmost values from the stack are popped.")
+        jsav.umsg(interpret("ms_com_pop"));
         jsav.step();
         // animate operator
         //  if ($.fx.off === false) {
@@ -176,14 +183,14 @@
         modelEvalAr[0].value(0, "");
         modelEvalAr[1].value(0, result);
         modelEvalAr[2].value(0, "");
-        jsav.umsg("The evaluator calculates the value.");
+        jsav.umsg(interpret("ms_com_eval"));
         jsav.stepOption("grade", true);
         jsav.step();
         // move the value back into the stack
         modelStack.addFirst();
         jsav.effects.moveValue(modelEvalAr[1], 0, modelStack.first());
         modelStack.layout();
-        jsav.umsg("<br/>And the value is pushed back onto the stack.", {preserve: true});
+        jsav.umsg(interpret("ms_com_push"), {preserve: true});
         jsav.stepOption("grade", true);
         jsav.step();
       }
@@ -192,7 +199,7 @@
     return [modelArray, modelEvalAr[1]];
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", modelDialog: {width: 780}});
   exercise.reset();
 
   function runEvaluator(arr, stack, jsav) {
@@ -266,11 +273,11 @@
     // var arr = av.getSvg().path("M" + x1 + "," + y1 + "C" + cx1 + "," + cy1 + " " + cx2 + "," + cy2 + " " + x2 + "," + y2).attr({"arrow-end": arrowStyle, "stroke-width": 10, "stroke":"pink"});
     var arr = drawpath(
       jsav.svg,
-      "M" + x1 + "," + y1 + "C" + cx1 + "," + cy1 + " " + cx2 + "," + cy2 + " " + x2 + "," + y2,
+      "M" + x1 + "," + y1 + " C" + cx1 + "," + cy1 + " " + cx2 + "," + cy2 + " " + x2 + "," + y2,
       500,
       {"arrow-end": arrowStyle, "stroke-width": 10, "stroke":"pink"},
-      function() {arr.remove}
-      );
+      function() {arr.remove()}
+    );
 
     // remove the arrow
     setTimeout(function() {arr.remove()}, 700);
@@ -279,7 +286,7 @@
 
   function drawpath( canvas, pathstr, duration, attr, callback ) {
     var guide_path = canvas.path( pathstr ).attr( { stroke: "none", fill: "none" } );
-    var path = canvas.path( guide_path.getSubpath( 0, 1 ) ).attr( attr );
+    var path = canvas.path( guide_path.getSubpath( 0, 30 ) ).attr( attr );
     var total_length = guide_path.getTotalLength( guide_path );
     var last_point = guide_path.getPointAtLength( 0 );
     var start_time = new Date().getTime();
@@ -289,7 +296,7 @@
     var interval_id = setInterval( function()
     {
       var elapsed_time = new Date().getTime() - start_time;
-      var this_length = elapsed_time / duration * total_length;
+      var this_length = Math.max( 30, elapsed_time / duration * total_length);
       var subpathstr = guide_path.getSubpath( 0, this_length );            
       attr.path = subpathstr;
       path.animate( attr, interval_length - 1 );

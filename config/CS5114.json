@@ -1,13 +1,13 @@
 {
   "title": "CS5114 Spring 2014",
   "build_dir": "Books",
-  "code_dir": "SourceCode/Processing",
+  "code_dir": "SourceCode/",
+  "code_lang": "processing",
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
-  "build_ODSA": true,
   "allow_anonymous_credit": true,
-o  "suppress_todo": true,
+  "suppress_todo": true,
   "chapters": {
     "Preface": {
       "Intro": {
@@ -135,7 +135,7 @@ o  "suppress_todo": true,
       "Development/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-	  "BTLeafPROG": {
+    "BTLeafPROG": {
             "long_name": "Node Count Function",
             "required": true,
             "points": 1.0,
@@ -178,7 +178,7 @@ o  "suppress_todo": true,
             "points": 2,
             "threshold": 5
           }
-	}
+  }
       },
       "Development/BST": {
         "long_name": "Binary Search Trees",
@@ -446,7 +446,7 @@ o  "suppress_todo": true,
             "long_name": "Insertion Sort Without Swap Proficiency Exercise",
             "required": false,
             "points": 1.0,
-	    "remove": true,
+      "remove": true,
             "threshold": 5
           }
         }
@@ -1072,7 +1072,7 @@ o  "suppress_todo": true,
             "required": true,
             "points": 2.0,
             "threshold": 0.90
-	  }
+    }
         }
       }
     },
