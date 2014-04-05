@@ -224,7 +224,7 @@
           jsav.umsg("The value you have entered can not be allocated")
           jsav.umsg("Please enter a smaller value")
           $('#next').attr("disabled", "disabled");
-         
+          
 
         }
 
@@ -277,6 +277,7 @@
 
     var best = Math.min.apply(Math, distArray);
     var bestBlock;
+    //var count = 0;
 
     if(best == dist0)
     {
@@ -294,47 +295,92 @@
     {
        bestBlock = 3;
     }
+    else
+    {
+      bestBlock = 4;
+    }
 
     jsav.umsg("best: " + bestBlock)
-    
-    if(nextCount == 0) {
-      rectNumber = freeArray.indexOf(minValue);
 
-      linesArray[rectNumber].css({"stroke-width": 3});
-      freeListArray[rectNumber].css({"fill": "yellow"});
-
-      if (inputVal <= minValue) {
-        nextCount = 2;
-      } else {
-        nextCount = 1;
-      }
-    } else if(nextCount == 1) {
-
-      linesArray[rectNumber].css({"stroke-width": 1});
-      freeListArray[rectNumber].css({"fill": "lightgrey"});
-      //need to get second smallest!!!
-      minValue = Math.min.apply(Math, freeArray);
-      rectNumber = freeArray.indexOf(minValue);
-
-      linesArray[rectNumber].css({"stroke-width": 3});
-      freeListArray[rectNumber].css({"fill": "yellow"});
-        
-      if (inputVal <= freeArray[rectNumber]) {
-        nextCount = 2;
-      
-      } else {
-        nextCount = 1;
-      }
-
-    } else if(nextCount == 2) {
-        insertIntoBlock(inputVal);
+    if(rectNumber != 0)
+    {
+      linesArray[rectNumber - 1].css({"stroke-width": 1});
+        freeListArray[rectNumber - 1].css({"fill": "lightgrey"});
     }
+    if(inputVal > 45)
+    {
+        linesArray[rectNumber].css({"stroke-width": 3});
+        freeListArray[rectNumber].css({"fill": "yellow"});
+    }
+    if(inputVal > 45 && rectNumber == 3)
+    {
+          jsav.umsg("The value you have entered can not be allocated")
+          jsav.umsg("Please enter a smaller value")
+          $('#next').attr("disabled", "disabled");
+    }
+     else if(bestBlock > rectNumber)
+    {
+        jsav.umsg("count = " + rectNumber)
+        linesArray[rectNumber].css({"stroke-width": 3});
+        freeListArray[rectNumber].css({"fill": "yellow"});
+        //rectNumber++;
+
+    }
+    else if(bestBlock == rectNumber)
+    {   
+        jsav.umsg("Best Block found")
+        jsav.umsg("Best Block is Block  " + bestBlock)
+        linesArray[rectNumber].css({"stroke-width": 3});
+        freeListArray[rectNumber].css({"fill": "yellow"});
+        
+
+    }
+    else if(rectNumber > bestBlock)
+    {
+      rectNumber--;
+      insertIntoBlock(inputVal);
+    }
+
+    
+    // if(nextCount == 0) {
+    //   rectNumber = freeArray.indexOf(minValue);
+
+    //   linesArray[rectNumber].css({"stroke-width": 3});
+    //   freeListArray[rectNumber].css({"fill": "yellow"});
+
+    //   if (inputVal <= minValue) {
+    //     nextCount = 2;
+    //   } else {
+    //     nextCount = 1;
+    //   }
+    // } else if(nextCount == 1) {
+
+    //   linesArray[rectNumber].css({"stroke-width": 1});
+    //   freeListArray[rectNumber].css({"fill": "lightgrey"});
+    //   //need to get second smallest!!!
+    //   minValue = Math.min.apply(Math, freeArray);
+    //   rectNumber = freeArray.indexOf(minValue);
+
+    //   linesArray[rectNumber].css({"stroke-width": 3});
+    //   freeListArray[rectNumber].css({"fill": "yellow"});
+        
+    //   if (inputVal <= freeArray[rectNumber]) {
+    //     nextCount = 2;
+      
+    //   } else {
+    //     nextCount = 1;
+    //   }
+
+    // } else if(nextCount == 2) {
+    //     insertIntoBlock(inputVal);
+    // }
   }
 
   function worstFit(inputVal) {
     if(nextCount == 0) {
-      var maxValue = Math.max.apply(Math, freeArray);
-      rectNumber = freeArray.indexOf(maxValue);
+    var maxValue = Math.max.apply(Math, freeArray);
+     rectNumber = freeArray.indexOf(maxValue);
+
 
       linesArray[rectNumber].css({"stroke-width": 3});
       freeListArray[rectNumber].css({"fill": "yellow"});
@@ -416,6 +462,7 @@
           break;
         case '3':
           bestFit(inputValue);
+          rectNumber++;
           break;
         case '4':
           worstFit(inputValue);
