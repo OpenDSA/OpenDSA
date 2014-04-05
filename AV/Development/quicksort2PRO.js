@@ -1,12 +1,20 @@
 (function ($) {
   "use strict";
   var arraySize = 10,
+    pivotSelectionMethod = PARAMS.pivot || "last",     // use the last element in the bound as the pivot
+    noPivotSize = PARAMS.nopivotifle? parseInt(PARAMS.nopivotifle): 1,
+    swapOptions = {arrow: false, highlight: false},
     initialArray,
     array,
     stack,
     mode,
     clickHandler,
     av = new JSAV($("#jsavcontainer"));
+
+  var pivotFunction = {
+    last: function (left, right) { return right; },
+    middle: function (left, right) { return Math.floor((right + left) / 2); }
+  }
 
   av.recorded(); // we are not recording an AV with an algorithm
 
@@ -51,25 +59,17 @@
           case 2:
             extendStackValue("Right", index);
             av.umsg("");
-            focusOn(array, getCurrentValue("Left", stack), index);
-            if (index - getCurrentValue("Left", stack) >= 3)
-              array.addClass(index, "pivot");
+            var left = getCurrentValue("Left", stack);
+            var right = index;
+            focusOn(array, left, right);
+            if (right - left >= noPivotSize)
+              highlightAndSwapPivot(array, left, right);
             mode.value(0);
             exercise.gradeableStep();
             break;
         }
         //disable selecting
         return false;
-      },
-      onDrop: function (index) {
-        var index2 = clickHandler.getSelected().index;
-        if (array.hasClass(index, "pivot")) {
-          array.removeClass(index, "pivot");
-          array.addClass(index2, "pivot");
-        } else if (array.hasClass(index2, "pivot")) {
-          array.removeClass(index2, "pivot");
-          array.addClass(index, "pivot");
-        }
       }
     });
 
@@ -112,29 +112,34 @@
     av.umsg("");
 
     focusOn(array, 0, arraySize - 1);
-    array.addClass(arraySize - 1, "pivot");
 
     return array;
   }
 
   function modelSolution(jsav) {
     //array
-    var modelArray = jsav.ds.array(initialArray, {indexed: true});
+    var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar"});
 
     // var modelStack = jsav.ds.list({nodegap: 15, layout: "vertical", center: false, autoresize: false});
     var modelStack = jsav.ds.stack({xtransition: 5, ytransition: 25, center: false});
     modelStack.element.css({width: 180, position: "absolute"});
-    modelStack.element.css({top: 100, left: jsav.canvas.width() / 2 - 90});
+    modelStack.element.css({top: 200, left: jsav.canvas.width() / 2 - 90});
 
     jsav.canvas.css({height: 350});
 
     jsav._undo = [];
 
-    function modelRadix(bit, left, right) {
+    function modelRadix(left, right) {
+      var partitionHasPivot = false;
+
       modelStack.addFirst("Left: " + left + ", Right: " + right);
       modelStack.layout();
 
       focusOn(modelArray, left, right);
+      if (right - left >= noPivotSize) {
+        highlightAndSwapPivot(modelArray, left, right);
+        partitionHasPivot = true;
+      }
 
       //add a step if not first call
       if (left !== 0 || right !== arraySize - 1) {
@@ -144,27 +149,36 @@
         jsav.displayInit();
       }
 
-      var i = left;
-      var j = right;
+      if (partitionHasPivot) {
+        var i = left;
+        var j = right - 1;
 
-      while (i < j) {
-        while ( i <= right && getBit(modelArray, i, bit) === 0)
-          i++;
-        while ( j >= left && getBit(modelArray, j, bit) === 1)
-          j--;
-        if (i < j) {
-          modelArray.swap(i, j);
+        do {
+          while ( modelArray.value(i) < modelArray.value(right))
+            i++;
+          while ( j >= left && modelArray.value(j) >= modelArray.value(right))
+            j--;
+          if (i < j) {
+            modelArray.swap(i, j, swapOptions);
+            jsav.stepOption("grade", true);
+            jsav.step();
+          }
+        } while (i < j);
+
+        // swap i and right
+        if (i !== right) {
+          modelArray.swap(i, right, swapOptions);
           jsav.stepOption("grade", true);
           jsav.step();
         }
-      }
 
-      //call function recursivley for both sides
-      if (bit > 0) {
-        if (left < j)
-          modelRadix(bit - 1, left, j);
-        if (right > i)
-          modelRadix(bit - 1, i, right);
+        //call function recursivley for both sides
+        if (i - left > 1)
+          modelRadix(left, i - 1);
+        if (right - i > 1)
+          modelRadix(i + 1, right);
+      } else {
+        //TODO
       }
 
       //return
@@ -173,13 +187,20 @@
       jsav.step();
     }
 
-    modelRadix(bits - 1, 0, arraySize - 1);
+    modelRadix(0, arraySize - 1);
 
     return modelArray;
   }
 
   //create excercise
   var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+  // edit reset function so that it calls highlightAndSwapPivot when done
+  var origreset = exercise.reset;
+  exercise.reset = function () {
+    origreset.apply(this);
+    highlightAndSwapPivot(array, 0, arraySize - 1);
+    av.displayInit();
+  };
   exercise.reset();
 
 
@@ -245,7 +266,17 @@
     stack.first().value(oldvalue);
   }
 
-  //paints all the squares outside of [first, last] grey
+  function highlightAndSwapPivot(arr, first, last) {
+    var index = pivotFunction[pivotSelectionMethod](first, last);
+
+    arr.addClass(index, "pivot");
+
+    if (index !== last) {
+      arr.swap(index, last, swapOptions);
+    }
+  }
+
+  // fades out all the squares outside of [first, last]
   function focusOn(arr, first, last) {
     arr.removeClass(function (index) {
       return index >= first && index <= last;

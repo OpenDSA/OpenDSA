@@ -11,6 +11,15 @@
   var slider2;
   function runit() {
     av = new JSAV($(".avcontainer"));
+	MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	$(".avcontainer").on("jsav-message", function() {
+      // invoke MathJax to do conversion again
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    });
+	$(".avcontainer").on("jsav-updatecounter", function(){ 
+      // invoke MathJax to do conversion again 
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
+    });
     for (var i = 0; i < numNodes; i++) {
       arr.push("");
     }
@@ -35,14 +44,14 @@
     av.umsg("At depth 3 there are 2<sup>3</sup> = 8 nodes. Each requires 1 unit of work, since each is 1 step from the bottom.");
     av.g.rect(10, 300, 200, 20);
     av.label("1",  {"top": "300px", "left": "0px"});
-    av.label("2^3",  {"top": "320px", "left": "100px"});
+    av.label("$2^3$",  {"top": "320px", "left": "100px"});
     av.step();
 	
     slider1.translate(0, -32);
     av.umsg("At depth 2 there are 2<sup>2</sup> = 4 nodes. Each requires 2 units of work, since each is 2 steps from the bottom.");
     av.g.rect(210, 300, 100, 20);
     av.g.rect(210, 280, 100, 20);
-    av.label("2^2",  {"top": "320px", "left": "250px"});
+    av.label("$2^2$",  {"top": "320px", "left": "250px"});
     av.step();
 	
     slider1.translate(0, -32);
@@ -50,7 +59,7 @@
     av.g.rect(310, 300, 50, 20);
     av.g.rect(310, 280, 50, 20);
     av.g.rect(310, 260, 50, 20);
-    av.label("2",  {"top": "320px", "left": "330px"});
+    av.label("$2$",  {"top": "320px", "left": "330px"});
     av.step();
 	
     slider1.translate(0, -32);
@@ -59,7 +68,7 @@
     av.g.rect(360, 280, 25, 20);
     av.g.rect(360, 260, 25, 20);
     av.g.rect(360, 240, 25, 20);
-    av.label("1",  {"top": "320px", "left": "370px"});
+    av.label("$1$",  {"top": "320px", "left": "370px"});
     av.label("}",  {"top": "235px", "left": "390px"}).css({'font-size': '70px', "text-align": "center"});
     av.label("depth",  {"top": "240px", "left": "410px"});
 
@@ -72,18 +81,18 @@
     av.g.rect(630, 300, 100, 20);
     av.g.rect(730, 300, 50, 20);
     av.g.rect(780, 300, 25, 20);
-    av.label("2^3",  {"top": "320px", "left": "520px"});
-    av.label("2^2",  {"top": "320px", "left": "670px"});
-    av.label("2",  {"top": "320px", "left": "750px"});
-    av.label("1",  {"top": "320px", "left": "790px"});
-    av.label("1",  {"top": "300px", "left": "420px"});
+    av.label("$2^3$",  {"top": "320px", "left": "520px"});
+    av.label("$2^2$",  {"top": "320px", "left": "670px"});
+    av.label("$2$",  {"top": "320px", "left": "750px"});
+    av.label("$1$",  {"top": "320px", "left": "790px"});
+    av.label("$1$",  {"top": "300px", "left": "420px"});
     av.step();
 	
     slider2.translate(0, -20);
     av.g.rect(430, 280, 100, 20);
     av.g.rect(530, 280, 50, 20);
     av.g.rect(580, 280, 25, 20);
-    av.label("1",  {"top": "280px", "left": "420px"});
+    av.label("$1$",  {"top": "280px", "left": "420px"});
     av.step();
 	
     slider2.translate(0, -20);
@@ -106,7 +115,7 @@
     av.step();
     av.umsg("The total area of the resulting shape is bounded by 2 X (8+4+2+1) = 30 = 2 X (2<sup>4</sup> - 1).");
     av.step();
-    av.umsg("We have n=31 nodes, and so the total amount of work required is  &theta;(n).");
+    av.umsg("We have n=31 nodes, and so the total amount of work required is $\\theta(n)$.");
 	
     av.recorded();
   }

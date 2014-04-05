@@ -52,7 +52,7 @@ missing_exercises = []
 # List of modules that have been processed, do not allow multiple modules with the same name (would cause a conflict in the database)
 processed_modules = []
 
-# List of images encountered while processing module files, these will be copied from the source/Images to Images in the output source directory
+# List of images encountered while processing module files, these will be copied from the RST/Images to Images in the output source directory
 images = []
 
 # Stores information about ToDo directives
@@ -123,7 +123,7 @@ def process_section(config, section, index_rst, depth, current_section_numbers =
 # Processes a module
 #   - config - a dictionary containing all the configuration options
 #   - index_rst - the index.rst file being generated
-#   - mod_path - the path to the module relative to the RST/source
+#   - mod_path - the path to the module relative to the RST/<lang> directory
 #   - mod_attrib - dictionary containing the module data, 'exercises' is a mandatory field (even if its empty)
 #   - depth - the depth of the recursion, used to determine the number of spaces to print before the module name to ensure proper indentation
 #   - current_section_numbers - a list that contains the numbering scheme for each section or module ([chapter].[section].[...].[module])
@@ -259,8 +259,8 @@ def initialize_output_directory(config):
   # Will actually create '<build_dir>/<book_name>/source/Images/'
   distutils.dir_util.mkpath(config.book_src_dir + 'Images/')
 
-  # Copy _static from RST/source/Images/ to the book source directory
-  distutils.dir_util.copy_tree(config.odsa_dir + 'RST/source/_static/', config.book_src_dir + '_static', update=1)
+  # Copy _static from RST/ to the book source directory
+  distutils.dir_util.copy_tree(config.odsa_dir + 'RST/_static/', config.book_src_dir + '_static', update=1)
 
   # Copy config file to _static directory
   distutils.file_util.copy_file(config.config_file_path, config.book_src_dir + '_static/')
@@ -366,9 +366,9 @@ def configure(config_file_path, slides = False):
   with open(config.book_src_dir + 'conf.py','w') as conf_py:
     conf_py.writelines(conf % options)
 
-  # Copy only the images used by the book from RST/source/Images/ to the book source directory
+  # Copy only the images used by the book from RST/Images/ to the book source directory
   for image in images:
-    distutils.file_util.copy_file(config.odsa_dir + 'RST/source/Images/' + image, config.book_src_dir + 'Images/')
+    distutils.file_util.copy_file('%sRST/Images/%s' % (config.odsa_dir, image), config.book_src_dir + 'Images/')
 
   # Run make on the output directory
   print '\nBuilding textbook...'

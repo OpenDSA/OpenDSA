@@ -289,7 +289,7 @@ html_static_path = ['_static']
 # all the content that loaded before the CSS files
 # 'odsa_root_path' specifies the relative path from the HTML output directory to the ODSA root directory and is used
 # to properly link to Privacy.html
-# The code that appends these scripts can be found in RST/source/_themes/haiku/layout.html and basic/layout.html
+# The code that appends these scripts can be found in RST/_themes/haiku/layout.html and basic/layout.html
 html_context = {"script_files": [
                   '%(eb2root)slib/jquery.min.js',
                   'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML.js'
