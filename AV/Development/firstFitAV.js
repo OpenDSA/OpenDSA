@@ -17,7 +17,9 @@
       usedAmountLabel,
       usedNum,
       nextCount = 0,
-      rectNumber = 0;
+      rectNumber = 0,
+      current,
+      fit = 0;
 
   function setDefaultControlState() {
     defCtrlState = {};
@@ -149,6 +151,7 @@
     var connect4 = jsav.g.line(connect4Start, 400, 698, 210);
 
     linesArray = new Array(connect1, connect2, connect3, connect4);
+    current = 0;
   }
  
   function newRec(sizeX)
@@ -221,6 +224,7 @@
       jsav.umsg("Free list " + rectNumber + " block size = " + freeArray[rectNumber])
         if(rectNumber == 3 && inputVal > 45)
         {
+          freeListArray[rectNumber].css({"fill": "red"});
           jsav.umsg("The value you have entered can not be allocated")
           jsav.umsg("Please enter a smaller value")
           $('#next').attr("disabled", "disabled");
@@ -251,11 +255,65 @@
 
   function circularFit(inputVal) {
 
+    var max = Math.max.apply(Math, freeArray);
+    jsav.umsg("max: " + max)
+    rectNumber = current;
+    var i;
+    for(i = 0; i < 4; i++)
+    {
+          linesArray[i].css({"stroke-width": 1});
+        freeListArray[i].css({"fill": "lightgrey"});
+    }
+  if(fit != 1)
+  {
+    if(inputVal <= 45)
+    {
+        linesArray[rectNumber].css({"stroke-width": 3});
+        freeListArray[rectNumber].css({"fill": "yellow"});
+    }
+    else if(inputVal > 45)
+    {
+
+        linesArray[rectNumber].css({"stroke-width": 3});
+        freeListArray[rectNumber].css({"fill": "yellow"});
+        nextCount++;
+        current++;
+        if(nextCount == 4)
+        {
+          freeListArray[rectNumber].css({"fill": "red"});
+          jsav.umsg("The value you have entered can not be allocated")
+          jsav.umsg("Please enter a smaller value")
+          $('#next').attr("disabled", "disabled");
+
+        }
+    }
+    if(inputVal <= freeArray[rectNumber])
+    {
+      fit = 1;
+    }
+    else if(inputVal > freeArray[rectNumber] && inputVal <= 45) 
+    {
+          
+          current++;
+    }
+    
   }
+  else if(fit == 1)
+  {
+    insertIntoBlock(inputVal);
+    fit = 0;
+  }
+  if (current == 4)
+  {
+    current = 0;
+  }
+    
+
+}
 
   function bestFit(inputVal) {
 
-
+    var max = Math.max.apply(Math, freeArray);
     var minValue = Math.min.apply(Math, freeArray);
     jsav.umsg(minValue)
     var dist0 = freeArray[0] - inputVal;
@@ -300,27 +358,25 @@
       bestBlock = 4;
     }
 
-    jsav.umsg("best: " + bestBlock)
-
     if(rectNumber != 0)
     {
       linesArray[rectNumber - 1].css({"stroke-width": 1});
         freeListArray[rectNumber - 1].css({"fill": "lightgrey"});
     }
-    if(inputVal > 45)
+    if(inputVal > max)
     {
         linesArray[rectNumber].css({"stroke-width": 3});
         freeListArray[rectNumber].css({"fill": "yellow"});
     }
-    if(inputVal > 45 && rectNumber == 3)
+    if(inputVal > max && rectNumber == 3)
     {
+          freeListArray[rectNumber].css({"fill": "red"});
           jsav.umsg("The value you have entered can not be allocated")
           jsav.umsg("Please enter a smaller value")
           $('#next').attr("disabled", "disabled");
     }
      else if(bestBlock > rectNumber)
     {
-        jsav.umsg("count = " + rectNumber)
         linesArray[rectNumber].css({"stroke-width": 3});
         freeListArray[rectNumber].css({"fill": "yellow"});
         //rectNumber++;
@@ -342,58 +398,66 @@
     }
 
     
-    // if(nextCount == 0) {
-    //   rectNumber = freeArray.indexOf(minValue);
-
-    //   linesArray[rectNumber].css({"stroke-width": 3});
-    //   freeListArray[rectNumber].css({"fill": "yellow"});
-
-    //   if (inputVal <= minValue) {
-    //     nextCount = 2;
-    //   } else {
-    //     nextCount = 1;
-    //   }
-    // } else if(nextCount == 1) {
-
-    //   linesArray[rectNumber].css({"stroke-width": 1});
-    //   freeListArray[rectNumber].css({"fill": "lightgrey"});
-    //   //need to get second smallest!!!
-    //   minValue = Math.min.apply(Math, freeArray);
-    //   rectNumber = freeArray.indexOf(minValue);
-
-    //   linesArray[rectNumber].css({"stroke-width": 3});
-    //   freeListArray[rectNumber].css({"fill": "yellow"});
-        
-    //   if (inputVal <= freeArray[rectNumber]) {
-    //     nextCount = 2;
-      
-    //   } else {
-    //     nextCount = 1;
-    //   }
-
-    // } else if(nextCount == 2) {
-    //     insertIntoBlock(inputVal);
-    // }
   }
 
   function worstFit(inputVal) {
-    if(nextCount == 0) {
-    var maxValue = Math.max.apply(Math, freeArray);
-     rectNumber = freeArray.indexOf(maxValue);
+    var max = Math.max.apply(Math, freeArray);
+    if(inputVal <= max)
+    {
+      if(nextCount == 0) {
+      var maxValue = Math.max.apply(Math, freeArray);
+       rectNumber = freeArray.indexOf(maxValue);
 
 
-      linesArray[rectNumber].css({"stroke-width": 3});
-      freeListArray[rectNumber].css({"fill": "yellow"});
-
-      if (inputVal <= maxValue) {
-        nextCount = 2;
-      } else {
-        jsav.umsg("Value entered is too large for the Memory Pool.");
-        $('#next').attr("disabled", "disabled");
+        linesArray[rectNumber].css({"stroke-width": 3});
+        freeListArray[rectNumber].css({"fill": "yellow"});
+      
+        if (inputVal <= maxValue) {
+          nextCount = 2;
+        } else {
+          jsav.umsg("Value entered is too large for the Memory Pool.");
+          $('#next').attr("disabled", "disabled");
+        }
+      } else if(nextCount == 2) {
+          insertIntoBlock(inputVal);
       }
-    } else if(nextCount == 2) {
-        insertIntoBlock(inputVal);
     }
+    else
+    {
+
+        var i;
+        
+        for(i = 0; i < 3; i++)
+        {
+           linesArray[i].css({"stroke-width": 1});
+           freeListArray[i].css({"fill": "lightgrey"});
+        }
+
+           linesArray[current].css({"stroke-width": 3});
+           freeListArray[current].css({"fill": "yellow"});
+           current++;
+
+
+
+        // for(i = 0; i < 3; i++)
+        // {
+        //   linesArray[i].css({"stroke-width": 1});
+        //   freeListArray[i].css({"fill": "lightgrey"});
+        // }
+        // linesArray[rectNumber].css({"stroke-width": 3});
+        // freeListArray[rectNumber].css({"fill": "yellow"});
+        // //rectNumber++;
+        if(current == 4)
+        {
+          //linesArray[rectNumber].css({"stroke-width": 3});
+          freeListArray[i].css({"fill": "red"});
+           jsav.umsg("The value you have entered can not be allocated")
+          jsav.umsg("Please enter a smaller value")
+          $('#next').attr("disabled", "disabled");
+        }
+      
+    }
+
   }
 
  
@@ -428,7 +492,7 @@
       nextCount = 0;
       rectNumber = 0;
       var inputVal = $("#input").val();
-      if (inputVal < 2 || inputVal > 100 || isNaN(inputVal)) {
+      if (inputVal < 1 || inputVal > 100 || isNaN(inputVal)) {
         jsav.umsg("Please enter a number in the range of 1-100");
         $('#next').attr("disabled", "disabled");
 
