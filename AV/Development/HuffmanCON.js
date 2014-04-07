@@ -253,7 +253,7 @@ function construct_tree(av) {
 (function ($) {
   var av = new JSAV("TreeTimeline");
   var t = av.ds.bintree({nodegap: 25});
-  var r = t.root("19");
+  var r = t.root("36");
   t.layout();
   var tl = new timeline(av, 40, 325, 500, 0, 65, 10);
   
@@ -262,32 +262,32 @@ function construct_tree(av) {
   // split (on the timeline) for a node in the first level of the 
   // tree (the root node). To make the split longer, increase the
   // value of ht1 and so on.
-  var ht1 = 20;
-  var ht2 = 35;
-  var ht3 = 50;
-  var ht4 = 65;
-  var ht5 = 80;
-  var ht6 = 95;
-
-  av.umsg("To demonstrate to characteristics of a tree, we will display this on a number line. We first insert 19.");
+  var ht1 = 95;
+  var ht2 = 80;
+  var ht3 = 65;
+  var ht4 = 50;
+  var ht5 = 35;
+  var ht6 = 20;
+  
+  av.umsg("To demonstrate to characteristics of a tree, we will display this on a number line. We first insert 36.");
   t.layout(); // multiple layout() calls to fix off center tree issue
   av.displayInit();
   t.layout();
   // step 1
-  av.umsg("19 is now displayed on the numberline. Notice the numberline is split at 19");
-  var split19 = tl.add_value(19, "19", ht1);
+  av.umsg("36 is now displayed on the numberline. Notice the numberline is split at 36");
+  var split36 = tl.add_value(36, "36", ht1);
   r.highlight();
-  split19.highlight();
+  split36.highlight();
   av.step();
 
   // step 2
-  av.umsg("We now add 14 to the tree. A split is made at 14.");
-  var split14 = tl.add_value(14, "14", ht2);
-  split14.highlight();
-  r.left("14");
+  av.umsg("We now add 18 to the tree. A split is made at 18.");
+  var split18 = tl.add_value(18, "18", ht2);
+  split18.highlight();
+  r.left("18");
   r.left().highlight();
   r.unhighlight();
-  split19.unhighlight();
+  split36.unhighlight();
   t.layout();
   av.step();
 
@@ -295,7 +295,7 @@ function construct_tree(av) {
   av.umsg("9 is added to the tree.");
   var split9 = tl.add_value(9, "9", ht3);
   split9.highlight();
-  split14.unhighlight();
+  split18.unhighlight();
   r.left().left("9");
   r.left().unhighlight();
   r.left().left().highlight();
@@ -303,22 +303,22 @@ function construct_tree(av) {
   av.step();
 
   // step 4
-  av.umsg("Now 50 is added. As before, we split at 50.");
-  var split50 = tl.add_value(50, "50", ht2);
-  split50.highlight();
+  av.umsg("Now 43 is added. As before, we split at 43.");
+  var split43 = tl.add_value(43, "43", ht2);
+  split43.highlight();
   split9.unhighlight();
-  r.right("50");
+  r.right("43");
   r.left().left().unhighlight();
   r.right().highlight();
   t.layout();
   av.step();
 
   // step 5
-  av.umsg("Now 54 is added.");
-  var split54 = tl.add_value(54, "54", ht3);
-  split54.highlight();
-  split50.unhighlight();
-  r.right().right("54");
+  av.umsg("Now 50 is added.");
+  var split50 = tl.add_value(50, "50", ht3);
+  split50.highlight();
+  split43.unhighlight();
+  r.right().right("50");
   r.right().unhighlight();
   r.right().right().highlight();
   t.layout();
@@ -328,7 +328,7 @@ function construct_tree(av) {
   av.umsg("Now we add 63.");
   var split63 = tl.add_value(63, "63", ht4);
   split63.highlight();
-  split54.unhighlight();
+  split50.unhighlight();
   r.right().right().right("63");
   r.right().right().unhighlight();
   r.right().right().right().highlight();
@@ -347,22 +347,22 @@ function construct_tree(av) {
   av.step();
 
   // step 8
-  av.umsg("Now add 17 and note the corresponding split.");
-  var split17 = tl.add_value(17, "17", ht3);
-  split17.highlight();
+  av.umsg("Now add 30 and note the corresponding split.");
+  var split30 = tl.add_value(30, "30", ht3);
+  split30.highlight();
   split12.unhighlight();
-  r.left().right("17");
+  r.left().right("30");
   r.left().left().right().unhighlight();
   r.left().right().highlight();
   t.layout();
   av.step();
 
   // step 9
-  av.umsg("Now add 56.");
-  var split56 = tl.add_value(56, "56", ht5);
-  split56.highlight()
-  split17.unhighlight();
-  r.right().right().right().left("56");
+  av.umsg("Now add 55.");
+  var split55 = tl.add_value(55, "55", ht5);
+  split55.highlight()
+  split30.unhighlight();
+  r.right().right().right().left("55");
   r.left().right().unhighlight();
   r.right().right().right().left().highlight();
   t.layout();
@@ -372,7 +372,7 @@ function construct_tree(av) {
   av.umsg("Now add 59.");
   var split59 = tl.add_value(59, "59", ht6);
   split59.highlight();
-  split56.unhighlight();
+  split55.unhighlight();
   r.right().right().right().left().right("59");
   r.right().right().right().left().unhighlight();
   r.right().right().right().left().right().highlight();
