@@ -299,7 +299,7 @@ function construct_tree(av) {
 
   // step 3
   av.umsg("9 is added to the tree.");
-  var split9 = tl.add_value(9, "9", ht3);
+  var split9 = tl.add_value(9, "<div id='ninelabel'>9</div>", ht3);
   split9.css({"fill": highlight_background_color});
   split18.css({"fill": unhighlight_background_split_color});
   r.left().left("9");
@@ -416,8 +416,14 @@ function construct_tree(av) {
   var av = new JSAV("TrieTimeline");
   var t = new window.tree.Bintree(av, 10, 0, 50);
 
-  av.umsg("To demonstrate to characteristics of a tree, we will display this on a number line. We first insert 36.");
+  av.umsg("We first insert 36.");
   av.displayInit();
+
+  t.insert(50);
+  t.insert(60);
+
+  t.layout();
+  av.step();
 
   // cleanup
   av.recorded();
@@ -429,7 +435,7 @@ function split (av, x, x1, y, label, height) {
   this.label = label;
 
   this.rec = av.g.rect(x + x1, y - (height / 2), 2, height, {fill: "red", "stroke-width": 0});
-  this.label = av.label(label, {left: x + x1 - 4, top: y - (height/2) - 20});
+  this.label = av.label(label, {left: x + x1 - 9, top: y - (height/2) - 20});
 
   this.highlight = function () {
     this.rec.css({"fill": "#2B44CF"});
