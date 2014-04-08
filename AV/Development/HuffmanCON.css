@@ -140,3 +140,8 @@
 #TrieTimeline .jsavoutput {
   width: 590px;
 }
+
+/*====================== Misc. =======================*/
+#ninelabel {
+  padding-left: 5px;
+}
