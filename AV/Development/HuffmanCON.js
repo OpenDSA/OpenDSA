@@ -268,7 +268,13 @@ function construct_tree(av) {
   var ht4 = 50;
   var ht5 = 35;
   var ht6 = 20;
-  
+
+  // colors for animation
+  var highlight_background_color = "#2B44CF";
+  var highlight_text_color = "white";
+  var unhighlight_background_color = "white";
+  var unhighlight_background_split_color = "black";
+
   av.umsg("To demonstrate to characteristics of a tree, we will display this on a number line. We first insert 36.");
   t.layout(); // multiple layout() calls to fix off center tree issue
   av.displayInit();
@@ -276,126 +282,142 @@ function construct_tree(av) {
   // step 1
   av.umsg("36 is now displayed on the numberline. Notice the numberline is split at 36");
   var split36 = tl.add_value(36, "36", ht1);
-  r.highlight();
-  split36.highlight();
+  r.css({"background-color": highlight_background_color, "color": "white"});
+  split36.css({"fill": highlight_background_color});
   av.step();
 
   // step 2
   av.umsg("We now add 18 to the tree. A split is made at 18.");
   var split18 = tl.add_value(18, "18", ht2);
-  split18.highlight();
+  split18.css({"fill": highlight_background_color});
   r.left("18");
-  r.left().highlight();
-  r.unhighlight();
-  split36.unhighlight();
+  r.left().css({"background-color": highlight_background_color, "color": "white"});
+  r.css({"background-color": unhighlight_background_color, "color": "black"});
+  split36.css({"fill": unhighlight_background_split_color});
   t.layout();
   av.step();
 
   // step 3
   av.umsg("9 is added to the tree.");
   var split9 = tl.add_value(9, "9", ht3);
-  split9.highlight();
-  split18.unhighlight();
+  split9.css({"fill": highlight_background_color});
+  split18.css({"fill": unhighlight_background_split_color});
   r.left().left("9");
-  r.left().unhighlight();
-  r.left().left().highlight();
+  r.left().css({"background-color": unhighlight_background_color, "color": "black"});
+  r.left().left().css({"background-color": highlight_background_color, "color": "white"});
   t.layout();
   av.step();
 
   // step 4
   av.umsg("Now 43 is added. As before, we split at 43.");
   var split43 = tl.add_value(43, "43", ht2);
-  split43.highlight();
-  split9.unhighlight();
+  split43.css({"fill": highlight_background_color});
+  split9.css({"fill": unhighlight_background_split_color});
   r.right("43");
-  r.left().left().unhighlight();
-  r.right().highlight();
+  r.left().left().css({"background-color": unhighlight_background_color, "color": "black"});
+  r.right().css({"background-color": highlight_background_color, "color": "white"});
   t.layout();
   av.step();
 
   // step 5
   av.umsg("Now 50 is added.");
   var split50 = tl.add_value(50, "50", ht3);
-  split50.highlight();
-  split43.unhighlight();
+  split50.css({"fill": highlight_background_color});
+  split43.css({"fill": unhighlight_background_split_color});
   r.right().right("50");
-  r.right().unhighlight();
-  r.right().right().highlight();
+  r.right().css({"background-color": unhighlight_background_color, "color": "black"});
+  r.right().right().css({"background-color": highlight_background_color, "color": "white"});
   t.layout();
   av.step();
 
   // step 6
   av.umsg("Now we add 63.");
   var split63 = tl.add_value(63, "63", ht4);
-  split63.highlight();
-  split50.unhighlight();
+  split63.css({"fill": highlight_background_color});
+  split50.css({"fill": unhighlight_background_split_color});
   r.right().right().right("63");
-  r.right().right().unhighlight();
-  r.right().right().right().highlight();
+  r.right().right().css({"background-color": unhighlight_background_color, "color": "black"});
+  r.right().right().right().css({"background-color": highlight_background_color, "color": "white"});
   t.layout();
   av.step();
 
   // step 7
   av.umsg("Now add 12.");
   var split12 = tl.add_value(12, "12", ht4);
-  split12.highlight();
-  split63.unhighlight();
+  split12.css({"fill": highlight_background_color});
+  split63.css({"fill": unhighlight_background_split_color});
   r.left().left().right("12");
-  r.right().right().right().unhighlight()
-  r.left().left().right().highlight();
+  r.right().right().right().css({"background-color": unhighlight_background_color, "color": "black"})
+  r.left().left().right().css({"background-color": highlight_background_color, "color": "white"});
   t.layout();
   av.step();
 
   // step 8
   av.umsg("Now add 30 and note the corresponding split.");
   var split30 = tl.add_value(30, "30", ht3);
-  split30.highlight();
-  split12.unhighlight();
+  split30.css({"fill": highlight_background_color});
+  split12.css({"fill": unhighlight_background_split_color});
   r.left().right("30");
-  r.left().left().right().unhighlight();
-  r.left().right().highlight();
+  r.left().left().right().css({"background-color": unhighlight_background_color, "color": "black"});
+  r.left().right().css({"background-color": highlight_background_color, "color": "white"});
   t.layout();
   av.step();
 
   // step 9
   av.umsg("Now add 55.");
   var split55 = tl.add_value(55, "55", ht5);
-  split55.highlight()
-  split30.unhighlight();
+  split55.css({"fill": highlight_background_color});
+  split30.css({"fill": unhighlight_background_split_color});
   r.right().right().right().left("55");
-  r.left().right().unhighlight();
-  r.right().right().right().left().highlight();
+  r.left().right().css({"background-color": unhighlight_background_color, "color": "black"});
+  r.right().right().right().left().css({"background-color": highlight_background_color, "color": "white"});
   t.layout();
   av.step();
 
   // step 10
   av.umsg("Now add 59.");
   var split59 = tl.add_value(59, "59", ht6);
-  split59.highlight();
-  split55.unhighlight();
+  split59.css({"fill": highlight_background_color});
+  split55.css({"fill": unhighlight_background_split_color});
   r.right().right().right().left().right("59");
-  r.right().right().right().left().unhighlight();
-  r.right().right().right().left().right().highlight();
+  r.right().right().right().left().css({"background-color": unhighlight_background_color, "color": "black"});
+  r.right().right().right().left().right().css({"background-color": highlight_background_color, "color": "white"});
   t.layout();
   av.step();
 
   // step 11
   av.umsg("Our last number to add is 23.");
   var split23 = tl.add_value(23, "23", ht3);
-  split23.highlight();
-  split59.unhighlight();
+  split23.css({"fill": highlight_background_color});
+  split59.css({"fill": unhighlight_background_split_color});
   r.right().left("23");
-  r.right().right().right().left().right().unhighlight();
-  r.right().left().highlight();
+  r.right().right().right().left().right().css({"background-color": unhighlight_background_color, "color": "black"});
+  r.right().left().css({"background-color": highlight_background_color, "color": "white"});
   t.layout();
   av.step();
 
   // step 12
   av.umsg("We have reached our final tree and corresponding number line.")
-  split23.unhighlight();
-  r.right().left().unhighlight();
+  split23.css({"fill": unhighlight_background_split_color});
+  r.right().left().css({"background-color": unhighlight_background_color, "color": "black"});
   t.layout();
   av.step();
+
+  // cleanup
+  av.recorded();
+
+}(jQuery));
+
+/*
+ * This is the AV for the timeline visulization for showing how a tree (NOT trie)
+ * splits space. 
+ */
+(function ($) {
+  var av = new JSAV("TrieTimeline");
+  var t = new window.tree.Bintree(av, 10, 0, 50);
+
+  av.umsg("To demonstrate to characteristics of a tree, we will display this on a number line. We first insert 36.");
+  av.displayInit();
 
   // cleanup
   av.recorded();
@@ -410,12 +432,16 @@ function split (av, x, x1, y, label, height) {
   this.label = av.label(label, {left: x + x1 - 4, top: y - (height/2) - 20});
 
   this.highlight = function () {
-    this.rec.css({"fill": "yellow"});
+    this.rec.css({"fill": "#2B44CF"});
   };
 
   this.unhighlight = function () {
     this.rec.css({"fill": "red"});
   };
+
+  this.css = function (css) {
+    this.rec.css(css);
+  }
 }
 
 /* Timeline Constructor */
@@ -431,26 +457,29 @@ function timeline(av, x, y, len, min, max, inc) {
   av.g.polyline([[x + len, y + 11], [x + len, y - 9], [x + 10 + len, y + 1]], 
     {"stroke-width": 0, fill: "black"});
 
-  av.g.rect(x + 4, y - 3, 1, 10, {fill: "black", "stroke-width":0});
-  av.g.rect(x + len - 10, y - 3, 1, 10, {fill: "black", "stroke-width":0});
+  // first and last tick marks
+  av.g.rect(x + buffer, y - 6, 1, 16, {fill: "black", "stroke-width":0});
+  av.g.rect(x + len - buffer, y - 6, 1, 15, {fill: "black", "stroke-width":0});
 
-  // var range = max - min;
-  // var pxPerInc = len / range;
-  // var pxCounter = x;
-  // for (var i = 0; i < inc; i++) {
-  //   var value = 1 / (pxPerInc / pxCounter);
-  //   av.g.rect(pxCounter, y - 3, 1, 6, {fill: "black", "stroke-width": 0});
-  //   pxCounter += pxPerInc * inc;
-  // }
-
+  /* 
+   * Splits the timeline at 'x1' pixels from the rigth side with a line with 
+   * label 'label' and height 'height'.
+   *
+   * Returns: The split object.
+   */
   this.add_line = function (x1, label, height) {
     return new split (av, x, x1, y, label, height);
   };
 
+  /* Inserts a split at the numebr 'val' with label 'label' and 
+   * height 'height'.
+   *
+   * Returns: The split obejct. 
+   */
   this.add_value = function (val, label, height) {
     var range = max - min;
-    var pxPerInc = (len - buffer) / range; // 5px buff on each inner side of arrow
-    var pos = pxPerInc * val + buffer; // add 5 because must account for 5 px buffer
+    var pxPerInc = (len - buffer * 2) / range; // 5px buff on each inner side of arrow
+    var pos = pxPerInc * val; // add 5 because must account for 5 px buffer
     return this.add_line(pos, label, height);
   };
 }

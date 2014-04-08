@@ -1,3 +1,7 @@
+.jsavvaluelabel {
+  line-height: 27px;
+}
+
 .jsavnode.jsavtreenode.jsavbinarynode.huffmanleaf {
   height:32px;
   width:32px;
@@ -32,7 +36,10 @@
 }
 
 .jsavnode .jsavvalue {
-  height: 25px;
+  min-height: 25px;
+  max-height: 25px;
+  min-width: 25px;
+  max-width: 25px;
 }
 
 .jsavautoresize .jsavnode {
@@ -115,5 +122,21 @@
 }
 
 #TreeTimeline .jsavoutput {
+  width: 590px;
+}
+
+/*=================== TrieTimeline ===================*/
+
+#TrieTimeline {
+  width: 600px;
+  height: 520px;
+}
+
+#TrieTimeline .jsavtree {
+  /*margin-left: 55px;*/
+  margin-top: -20px;
+}
+
+#TrieTimeline .jsavoutput {
   width: 590px;
 }
