@@ -467,6 +467,12 @@ function timeline(av, x, y, len, min, max, inc) {
   av.g.rect(x + buffer, y - 6, 1, 16, {fill: "black", "stroke-width":0});
   av.g.rect(x + len - buffer, y - 6, 1, 15, {fill: "black", "stroke-width":0});
 
+  // labels under those tick marks
+  var firstLab = av.label(min, {"left": x + buffer - 3, "top": y + 7});
+  firstLab.css({"font-size": 13});
+
+  var secLab = av.label(max, {"left": x - buffer - 5 + len, "top": y + 7});
+  secLab.css({"font-size": 13});
   /* 
    * Splits the timeline at 'x1' pixels from the rigth side with a line with 
    * label 'label' and height 'height'.
