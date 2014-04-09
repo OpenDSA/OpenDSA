@@ -186,7 +186,7 @@
           }
           if (i < j) {
             modelArray.swap(i, j, swapOptions);
-            jsav.umsg(interpret("ms_swap"));
+            jsav.umsg(interpret("ms_partition"));
             jsav.stepOption("grade", true);
             jsav.step();
           }
