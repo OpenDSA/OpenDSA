@@ -14,6 +14,7 @@
 	var ClickHandler = function ClickHandler(jsav, exercise, options) {
 		var defaults = {
 			selectedClass: "jsavhighlight",
+			inactiveClass: undefined,	// ignore all clicks on nodes with this class
 			selectEmpty: false,			// don't allow selecting empty nodes
 			effect: "move",				// move, copy, swap, toss
 			arraySwapOptions: {			// options for array swap
@@ -148,6 +149,10 @@
 
 			//add click handler
 			array.click(function (index) {
+				// ignore the click if the node has the inactive class
+				if (options.inactiveClass && array.hasClass(index, options.inactiveClass)) {
+					return;
+				}
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
@@ -240,6 +245,10 @@
 
 			//add click handler
 			list.click(function () {
+				// ignore the click if the node has the inactive class
+				if (options.inactiveClass && this.hasClass(options.inactiveClass)) {
+					return;
+				}
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
@@ -365,6 +374,10 @@
 
 			//add click handler
 			tree.click(function () {
+				// ignore the click if the node has the inactive class
+				if (options.inactiveClass && this.hasClass(options.inactiveClass)) {
+					return;
+				}
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
