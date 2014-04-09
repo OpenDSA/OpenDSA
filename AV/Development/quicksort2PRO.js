@@ -159,7 +159,9 @@
 
       focusOn(modelArray, left, right);
       if (right - left >= noPivotSize) {
-        highlightAndSwapPivot(modelArray, left, right);
+        if (highlightAndSwapPivot(modelArray, left, right) !== right) {
+          jsav.umsg(interpret("ms_put_pivot_to_the_right"), {preserve: true});
+        }
         partitionHasPivot = true;
       }
 
@@ -184,6 +186,7 @@
           }
           if (i < j) {
             modelArray.swap(i, j, swapOptions);
+            jsav.umsg(interpret("ms_swap"));
             jsav.stepOption("grade", true);
             jsav.step();
           }
@@ -192,19 +195,23 @@
         // swap i and right
         if (i !== right) {
           modelArray.swap(i, right, swapOptions);
+          jsav.umsg(interpret("ms_put_pivot_into_correct_position"));
           jsav.stepOption("grade", true);
           jsav.step();
         }
 
         // call function recursivley for both sides
         if (i - left > 1) {
+          jsav.umsg(interpret("ms_call_left"));
           modelRadix(left, i - 1);
         }
         if (right - i > 1) {
+          jsav.umsg(interpret("ms_call_right"));
           modelRadix(i + 1, right);
         }
       } else {
         // sort it in one step
+        jsav.umsg(interpret("ms_no_pivot"), {fill: {size: noPivotSize}});
         for (var k = left; k < right; k++) {
           var min = k;
           for (var l = k + 1; l <= right; l++) {
@@ -221,6 +228,7 @@
 
       // return
       returnClick(modelArray, modelStack);
+      jsav.umsg(interpret("ms_return"), {fill: {left: left, right: right}});
       jsav.stepOption("grade", true);
       jsav.step();
     }
@@ -317,6 +325,7 @@
     if (index !== last) {
       arr.swap(index, last, swapOptions);
     }
+    return index;
   }
 
   // fades out all the squares outside of [first, last]

@@ -3,13 +3,20 @@
     "en": {
       "exerciseTitle": "Quicksort",
       "instructLabel": "Instructions:",
-      "instructions": "Sort the table below by simulating the Quicksort algorithm. You can click on a bar to select it, and click on another bar to swap it with the selected bar. The recursive Quicksort call can be made by clicking the <strong>call</strong> button and selecting the bounds for the function. Return from the function by clicking the <strong>return</strong> button.",
+      "instructions": "Sort the table below by simulating the Quicksort algorithm. You can click on a bar to select it. Click on another bar to swap it with the selected bar. The recursive Quicksort call can be made by clicking the <strong>call</strong> button and selecting the bounds for the function. Return from the function by clicking the <strong>return</strong> button.",
       "table_to_be_sorted": "Table to be sorted",
       "call_stack": "Call Stack",
       "call": "Call",
       "return": "Return",
       "left_endpoint": "Select the <strong>left endpoint</strong>.",
-      "right_endpoint": "Select the <strong>right endpoint</strong>."
+      "right_endpoint": "Select the <strong>right endpoint</strong>.",
+      "ms_put_pivot_to_the_right": "The pivot is placed on the right side of the bound.",
+      "ms_swap": "The values on the left side of the pivot are partitioned, so that values smaller than the pivot will end on the left side of values that are larger or equal to the pivot.",
+      "ms_put_pivot_into_correct_position": "The pivot is swapped with the first value which is greater or equal to the pivot. Now the smaller values are on the left side and the larger values on the right side of the pivot. The pivot is in its final sorted position.",
+      "ms_call_left": "The Quicksort function is called for the values on the left side of the pivot. ",
+      "ms_call_right": "The Quicksort function is for the values on the right side of the pivot. ",
+      "ms_no_pivot": "Sublists of size {size} or less are sorted using another algorithm.",
+      "ms_return": "The function is done sorting the values between the indices {left} and {right}."
     }
   },
   "code" : {}
