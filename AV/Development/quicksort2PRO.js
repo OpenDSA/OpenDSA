@@ -1,20 +1,22 @@
+/*global PARAMS, ClickHandler */
 (function ($) {
   "use strict";
   var arraySize = 10,
     pivotSelectionMethod = PARAMS.pivot || "last",     // use the last element in the bound as the pivot
-    noPivotSize = PARAMS.nopivotifle? parseInt(PARAMS.nopivotifle): 1,
-    swapOptions = {arrow: false, highlight: false},
+    noPivotSize = PARAMS.nopivotsize ? parseInt(PARAMS.nopivotsize, 10): 1,
+    swapOptions = {arrow: false, highlight: false, swapClasses: true},
     initialArray,
     array,
     stack,
     mode,
+    pivotInBound,
     clickHandler,
     av = new JSAV($("#jsavcontainer"));
 
   var pivotFunction = {
     last: function (left, right) { return right; },
     middle: function (left, right) { return Math.floor((right + left) / 2); }
-  }
+  };
 
   av.recorded(); // we are not recording an AV with an algorithm
 
@@ -42,34 +44,47 @@
     clickHandler.addArray(array, {
       onSelect: function (index) {
         // don't allow selection of inactive values
-        if (array.hasClass(index, "inactive"))
+        if (array.hasClass(index, "inactive")) {
           return false;
+        }
 
         switch (mode.value()) {
-          case 0:
-            //return true to tell clickHandler to select the item
-            return true;
-            break;
-          case 1:
-            extendStackValue("Left", index);
-            av.umsg("Select the <strong>right endpoint</strong>.");
-            mode.value(2);
-            av.step();
-            break;
-          case 2:
-            extendStackValue("Right", index);
-            av.umsg("");
-            var left = getCurrentValue("Left", stack);
-            var right = index;
-            focusOn(array, left, right);
-            if (right - left >= noPivotSize)
-              highlightAndSwapPivot(array, left, right);
-            mode.value(0);
-            exercise.gradeableStep();
-            break;
+        case 0:
+          //return true to tell clickHandler to select the item
+          return true;
+        case 1:
+          extendStackValue("Left", index);
+          array.toggleArrow(index);
+          av.umsg("Select the <strong>right endpoint</strong>.");
+          mode.value(2);
+          av.step();
+          break;
+        case 2:
+          extendStackValue("Right", index);
+          av.umsg("");
+          var left = getCurrentValue("Left", stack);
+          var right = index;
+          array.toggleArrow(left);
+          focusOn(array, left, right);
+          if (right - left >= noPivotSize) {
+            highlightAndSwapPivot(array, left, right);
+            pivotInBound.value(1);
+          } else {
+            pivotInBound.value(0);
+          }
+          mode.value(0);
+          exercise.gradeableStep();
+          break;
         }
         //disable selecting
         return false;
+      },
+      onDrop: function (index) {
+        // don't grade steps when there is no pivot
+        // in other words let the user sort the highlighted area in any way
+        if (!pivotInBound.value()) {
+          return false;
+        }
       }
     });
 
@@ -83,17 +98,25 @@
     // stack = av.ds.list({nodegap: 15, layout: "vertical", center: false, autoresize: false});
     stack.element.css({width: 180, position: "absolute"});
     stack.element.css({top: 250, left: av.canvas.width() / 2 - 90});
-    stack.addFirst("Left: 0, Right: "+(arraySize - 1));
+    stack.addFirst("Left: 0, Right: " + (arraySize - 1));
     stack.layout();
     
-    //mode variable
-    //0 when swapping
-    //1 when selecting left endpoint
-    //2 when selecting right endpoint
+    // mode variable
+    // 0 when swapping
+    // 1 when selecting left endpoint
+    // 2 when selecting right endpoint
     if (mode) {
       mode.clear();
     }
     mode = av.variable(0);
+
+    // pivot in bound variable
+    // 0 no pivot in the selected bound
+    // 1 pivot in selected bound
+    if (pivotInBound) {
+      pivotInBound.clear();
+    }
+    pivotInBound = av.variable(1);
 
     // clear all the Raphael elements
     av.getSvg().clear();
@@ -141,7 +164,7 @@
         partitionHasPivot = true;
       }
 
-      //add a step if not first call
+      // add a step if not first call
       if (left !== 0 || right !== arraySize - 1) {
         jsav.stepOption("grade", true);
         jsav.step();
@@ -154,10 +177,12 @@
         var j = right - 1;
 
         do {
-          while ( modelArray.value(i) < modelArray.value(right))
+          while (modelArray.value(i) < modelArray.value(right)) {
             i++;
-          while ( j >= left && modelArray.value(j) >= modelArray.value(right))
+          }
+          while (j >= left && modelArray.value(j) >= modelArray.value(right)) {
             j--;
+          }
           if (i < j) {
             modelArray.swap(i, j, swapOptions);
             jsav.stepOption("grade", true);
@@ -172,16 +197,30 @@
           jsav.step();
         }
 
-        //call function recursivley for both sides
-        if (i - left > 1)
+        // call function recursivley for both sides
+        if (i - left > 1) {
           modelRadix(left, i - 1);
-        if (right - i > 1)
+        }
+        if (right - i > 1) {
           modelRadix(i + 1, right);
+        }
       } else {
-        //TODO
+        // sort it in one step
+        for (var k = left; k < right; k++) {
+          var min = k;
+          for (var l = k + 1; l <= right; l++) {
+            if (modelArray.value(l) < modelArray.value(min)) {
+              min = l;
+            }
+          }
+          if (min !== k) {
+            modelArray.swap(k, min, swapOptions);
+          }
+        }
+        jsav.step();
       }
 
-      //return
+      // return
       returnClick(modelArray, modelStack);
       jsav.stepOption("grade", true);
       jsav.step();
@@ -192,7 +231,7 @@
     return modelArray;
   }
 
-  //create excercise
+  // create excercise
   var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
   // edit reset function so that it calls highlightAndSwapPivot when done
   var origreset = exercise.reset;
@@ -209,11 +248,11 @@
   
   // add buttons if they don't exist
   if ($callButton.length === 0) {
-    $callButton = $("<button>Call</button>");
+    $callButton = $("<button id='#callButton'>Call</button>");
     $("#jsavcontainer .jsavcanvas").append($callButton);
   }
   if ($returnButton.length === 0) {
-    $returnButton = $("<button>Return</button>")
+    $returnButton = $("<button id='#returnButton'>Return</button>");
     $("#jsavcontainer .jsavcanvas").append($returnButton);
   }
 
@@ -231,6 +270,11 @@
   });
   $returnButton.click(function () {
     returnClick(array, stack);
+    if (getCurrentValue("Right", stack) - getCurrentValue("Left", stack) >= noPivotSize) {
+      pivotInBound.value(1);
+    } else {
+      pivotInBound.value(0);
+    }
     exercise.gradeableStep();
   });
 
@@ -247,12 +291,12 @@
     }
     var parts = value.split(", ");
     parts.forEach(function (val) {
-      var newparts = val.split(": ")
-      if (newparts[0] === name){
+      var newparts = val.split(": ");
+      if (newparts[0] === name) {
         result = newparts[1];
       }
     });
-    return parseInt(result);
+    return parseInt(result, 10);
   }
 
   //extends the value of the topmost element on the stack
