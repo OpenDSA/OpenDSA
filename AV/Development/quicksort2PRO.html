@@ -6,54 +6,14 @@
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
   <link rel="stylesheet" href="proficiency.css" type="text/css" />
-
-  <style>
-    .jsavoutput.jsavline {
-      margin-bottom: -15px;
-      height: 40px;
-    }
-    .jsavnode {
-      cursor: pointer;
-    }
-    .jsavnode.jsavstacknode {
-      width: 180px;
-      box-shadow: 5px 5px 5px #666;
-    }
-    .pivot, .pivot.jsavvalue, .jsavarray.jsavbararray .jsavindex.pivot .jsavvalue {
-      background-color: #fa2;
-    }
-    .inactive, .inactive.jsavvalue, .jsavarray.jsavbararray .jsavindex.inactive .jsavvalue {
-      background-color: #f5f5f5;
-      color: #ccc;
-      box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.2);
-    }
-    .jsavarray.jsavbararray .jsavindex.inactive .jsavindexlabel {
-      color: #aaa;
-    }
-    .pivot.inactive, .pivot.inactive.jsavvalue, .jsavarray.jsavbararray .jsavindex.pivot.inactive .jsavvalue {
-      background-color: #fec;
-    }
-    .greenbg.inactive, .greenbg.inactive.jsavvalue, .jsavarray.jsavbararray .jsavindex.greenbg.inactive .jsavvalue {
-      background-color: #cfd;
-    }
-    .selected, .selected.jsavvalue, .jsavarray.jsavbararray .jsavindex.selected .jsavvalue {
-      font-size: 100%;
-      background-color: #ddf;
-    }
-    .selected.pivot, .selected.pivot.jsavvalue, .jsavarray.jsavbararray .jsavindex.selected.pivot .jsavvalue {
-      background-image: repeating-linear-gradient(45deg, #ddf, #ddf 5px, #fa2 5px, #fa2 10px, #ddf 10px);
-    }
-
-  </style>
+  <link rel="stylesheet" href="quicksort2PRO.css" type="text/css" />
 </head>
 
 <body>
   <div id="jsavcontainer">
-    <h1 class="exerciseTitle">Quicksort</h1>
-    <p class="instructLabel">Instructions:</p>
-    <p class="instructions">
-      Click on two elements to swap their values. Make the recursive Quicksort call by clicking the <strong>call</strong> button and selecting the bounds for the function. Return from the function by clicking the <strong>return</strong> button.
-    </p>
+    <h1 class="exerciseTitle"></h1>
+    <p class="instructLabel"></p>
+    <p class="instructions"></p>
     <p align="center" class="jsavexercisecontrols"></p>
     <p class="jsavoutput jsavline"></p>
   </div>
@@ -65,6 +25,7 @@
   <script src="../../JSAV/build/JSAV.js"></script>
   <script src="../../JSAV/extras/stack.js"></script>
   <script src="../../lib/odsaUtils.js"></script>
+  <script src="language.js"></script>
   <script src="ClickHandler.js"></script>
   <script src="quicksort2PRO.js"></script>
 </body>

@@ -1,4 +1,4 @@
-/*global PARAMS, ClickHandler */
+/*global ODSA, PARAMS, ClickHandler */
 (function ($) {
   "use strict";
   var arraySize = 10,
@@ -11,12 +11,16 @@
     mode,
     pivotInBound,
     clickHandler,
+    config = ODSA.UTILS.getConfig("quicksort2PRO.json"),
+    interpret = JSAV.utils.getInterpreter(config.language),
     av = new JSAV($("#jsavcontainer"));
 
   var pivotFunction = {
     last: function (left, right) { return right; },
     middle: function (left, right) { return Math.floor((right + left) / 2); }
   };
+
+  ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
 
   av.recorded(); // we are not recording an AV with an algorithm
 
@@ -26,7 +30,7 @@
 
     //set up click handler
     if (typeof clickHandler === "undefined") {
-      clickHandler = new ClickHandler(av, exercise, {effect: "swap", selectedClass: "selected"});
+      clickHandler = new ClickHandler(av, exercise, {effect: "swap", selectedClass: "selected", inactiveClass: "inactive"});
     }
     clickHandler.reset();
 
@@ -43,11 +47,6 @@
     array.layout();
     clickHandler.addArray(array, {
       onSelect: function (index) {
-        // don't allow selection of inactive values
-        if (array.hasClass(index, "inactive")) {
-          return false;
-        }
-
         switch (mode.value()) {
         case 0:
           //return true to tell clickHandler to select the item
@@ -55,7 +54,7 @@
         case 1:
           extendStackValue("Left", index);
           array.toggleArrow(index);
-          av.umsg("Select the <strong>right endpoint</strong>.");
+          av.umsg(interpret("right_endpoint"));
           mode.value(2);
           av.step();
           break;
@@ -128,8 +127,8 @@
       "font-weight": "bold"
     };
     var canvasWidth = exercise.jsav.container.find(".jsavcanvas").width();
-    av.getSvg().text(canvasWidth / 2, 20, "Table to be sorted").attr(font);
-    av.getSvg().text(canvasWidth / 2, 230, "Call Stack").attr(font);
+    av.getSvg().text(canvasWidth / 2, 20, interpret("table_to_be_sorted")).attr(font);
+    av.getSvg().text(canvasWidth / 2, 230, interpret("call_stack")).attr(font);
 
     //hide old umsg messages
     av.umsg("");
@@ -248,11 +247,11 @@
   
   // add buttons if they don't exist
   if ($callButton.length === 0) {
-    $callButton = $("<button id='#callButton'>Call</button>");
+    $callButton = $("<button id='callButton'>" + interpret("call") + "</button>");
     $("#jsavcontainer .jsavcanvas").append($callButton);
   }
   if ($returnButton.length === 0) {
-    $returnButton = $("<button id='#returnButton'>Return</button>");
+    $returnButton = $("<button id='returnButton'>" + interpret("return") + "</button>");
     $("#jsavcontainer .jsavcanvas").append($returnButton);
   }
 
@@ -265,7 +264,7 @@
     clickHandler.deselect();
     stack.addFirst("");
     stack.layout();
-    av.umsg("Select the <strong>left endpoint</strong>.");
+    av.umsg(interpret("left_endpoint"));
     av.step();
   });
   $returnButton.click(function () {
