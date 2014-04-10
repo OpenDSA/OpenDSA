@@ -43,7 +43,7 @@
       tree.clear();
     }
     //create binary tree
-    tree = av.ds.bintree({center: true, visible: true, nodegap: 5});
+    tree = av.ds.binarytree({center: true, visible: true, nodegap: 5});
     tree.root().addClass("emptynode");
     tree.layout();
     clickHandler.addTree(tree, {
@@ -73,7 +73,7 @@
   }
 
   function modelSolution(jsav) {
-    var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 5});
+    var modelTree = jsav.ds.binarytree({center: true, visible: true, nodegap: 5});
     modelTree.root().addClass("emptynode");
     modelTree.layout();
 

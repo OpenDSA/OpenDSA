@@ -23,14 +23,14 @@
     if (binaryTree) {
       binaryTree.clear();
     }
-    binaryTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
+    binaryTree = av.ds.binarytree({center: true, visible: true, nodegap: 15});
     binaryTree.root("");
     binaryTree.root().addClass("emptynode");
     binaryTree.click(clickHandler);
     binaryTree.layout();
 
     function dataTest(array) {
-      var bst = av.ds.bintree({visible: false});
+      var bst = av.ds.binarytree({visible: false});
       bst.insert(array);
       var result = bst.height() <= 5;
       bst.clear();
@@ -50,7 +50,7 @@
     modelStack.layout();
     modelStack.first().highlight();
 
-    var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 10});
+    var modelTree = jsav.ds.binarytree({center: true, visible: true, nodegap: 10});
     modelTree.root("");
     modelTree.root().addClass("emptynode");
     modelTree.layout();

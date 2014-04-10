@@ -146,7 +146,7 @@
 
   var modelWrapper = function(tt) {
     return function model(modeljsav) {
-      var modelBst = modeljsav.ds.bintree({center: true, nodegap: 15});
+      var modelBst = modeljsav.ds.binarytree({center: true, nodegap: 15});
       for (var i = 0, l = tt.initData.length; i < l; i++) {
         modelBst.insert(tt.initData[i]);
       }
@@ -165,7 +165,7 @@
       }
       var dataTest = (function() {
         return function(dataArr) {
-          var bst = tt.jsav.ds.bintree();
+          var bst = tt.jsav.ds.binarytree();
           bst.insert(dataArr);
           var result = bst.height() <= 4;
           bst.clear();
@@ -174,7 +174,7 @@
       })();
       tt.jsav.canvas.find(".jsavlabel").remove();
       initData = JSAV.utils.rand.numKeys(10, 100, nodeNum, {test: dataTest, tries: 30});
-      bt = tt.jsav.ds.bintree({center: true, visible: true, nodegap: 15});
+      bt = tt.jsav.ds.binarytree({center: true, visible: true, nodegap: 15});
       bt.insert(initData);
       bt.layout();
       bt.click(tt.nodeClick(tt.exercise));
