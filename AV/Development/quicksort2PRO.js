@@ -10,6 +10,7 @@
     stack,
     mode,
     pivotInBound,
+    pseudo,
     clickHandler,
     config = ODSA.UTILS.getConfig("quicksort2PRO.json"),
     interpret = JSAV.utils.getInterpreter(config.language),
@@ -22,11 +23,17 @@
 
   ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
 
+
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
     
     exercise.jsav.container.find(".jsavcanvas").css({height: 350});
+
+    if (!pseudo && config.code) {
+      pseudo = av.code($.extend({after: {element: $(".instructions")}, visible: true}, config.code));
+      pseudo.hide(config.code.tags.comments_and_findpivot);
+    }
 
     //set up click handler
     if (typeof clickHandler === "undefined") {
