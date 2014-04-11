@@ -33,7 +33,7 @@ ODSA.UTILS.getConfig = function (url) {
     langUrl.pop();
     langUrl = langUrl.join("/");
     if (langUrl !== "") {
-      langUrl += "/"
+      langUrl += "/";
     }
     langUrl += configurationFile.translations[lang];
 
