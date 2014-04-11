@@ -20,6 +20,11 @@
      *  MERGESORT PROFICIENCY EXERCISE CODE       *
      ******************************************* */
 
+    // Language and code configurations
+    var config = ODSA.UTILS.getConfig("mergesortPRO.json");
+    var interpret = JSAV.utils.getInterpreter(config.language);
+    ODSA.UTILS.setTitleAndInstructions($('#container'), config.language);
+
     // Variables used by "setPosition()"
     var canvasWidth = $('#container').width();     // The width of the display
     var rowHeight = 80;        // Space required for each row to be displayed
