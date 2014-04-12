@@ -12,7 +12,7 @@
     pivotInBound,
     pseudo,
     clickHandler,
-    config = ODSA.UTILS.getConfig("quicksort2PRO.json"),
+    config = ODSA.AV.getConfig("quicksort2PRO.json"),
     interpret = JSAV.utils.getInterpreter(config.language),
     av = new JSAV($("#jsavcontainer"));
 
@@ -21,13 +21,13 @@
     middle: function (left, right) { return Math.floor((right + left) / 2); }
   };
 
-  ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
+  ODSA.AV.setTitleAndInstructions(av.container, config.language);
 
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
-    
+
     exercise.jsav.container.find(".jsavcanvas").css({height: 350});
 
     if (!pseudo && config.code) {
@@ -106,7 +106,7 @@
     stack.element.css({top: 250, left: av.canvas.width() / 2 - 90});
     stack.addFirst("Left: 0, Right: " + (arraySize - 1));
     stack.layout();
-    
+
     // mode variable
     // 0 when swapping
     // 1 when selecting left endpoint
@@ -259,7 +259,7 @@
 
   var $callButton = $("#callButton");
   var $returnButton = $("#returnButton");
-  
+
   // add buttons if they don't exist
   if ($callButton.length === 0) {
     $callButton = $("<button id='callButton'>" + interpret("call") + "</button>");

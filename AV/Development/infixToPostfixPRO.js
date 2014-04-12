@@ -12,19 +12,19 @@
     $stackLabel,
     $postfixLabel,
     interpret,
-    config = ODSA.UTILS.getConfig("infixToPostfixPRO.json"),
+    config = ODSA.AV.getConfig("infixToPostfixPRO.json"),
     av = new JSAV($("#jsavcontainer")),
     clickHandler;
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
-    
+
     // get interpreter function for the selected language
     if (typeof interpret !== "function") {
       interpret = JSAV.utils.getInterpreter(config.language);
       // change the title and the instructions on the page
-      ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
+      ODSA.AV.setTitleAndInstructions(av.container, config.language);
     }
 
     // show the code and highlight the row where mid is calculated
@@ -77,7 +77,7 @@
     }
     resultArray = av.ds.array(new Array(arraySize - 4), {indexed: false, center: true});
     resultArray.layout();
-    clickHandler.addArray(resultArray, 
+    clickHandler.addArray(resultArray,
       { onDrop: function () { restoreInfix(infixArray).call(this); }
     });
 
@@ -272,7 +272,7 @@
     }
 
     var minLengthForParentheses = parentheses * 5 + parentheses - 1 + (endWithOperator && parentheses?1:0);
-    
+
     if (Math.random() < minLengthForParentheses / length) {
       // return array with parentheses
       if (    parentheses - 1 > 0 &&
@@ -300,7 +300,7 @@
         return ["("].concat(generateRandomInfix(parInside, 0, false),
                   [")"],
                   generateRandomInfix(1, 0, true),
-                  generateRandomInfix(length - parInside - 3, parentheses - 1, endWithOperator));  
+                  generateRandomInfix(length - parInside - 3, parentheses - 1, endWithOperator));
       }
     }
 
