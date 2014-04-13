@@ -1,16 +1,16 @@
 #container {
-  width: 1200px !important;
+  width: 1000px !important;
   height: 600px;
 }
 
 .avcontainer{
-  width: 1200px;
+  width: 1000px;
   height: 600px;
 }
 
 .jsavcanvas {
   height: 600px;
-  width:1200px;
+  width:1000px;
 }
 .jsavline {
   width:600px;

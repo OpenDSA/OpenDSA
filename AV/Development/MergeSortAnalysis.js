@@ -38,10 +38,10 @@
 	av.step();
 	arr11 = av.ds.array([arr_values[0],arr_values[1],arr_values[2],arr_values[3]], {"left":60, "top":100,"indexed":false});
 	arr12 = av.ds.array([arr_values[4],arr_values[5],arr_values[6],arr_values[7]], {"left":320, "top":100,"indexed":false});
-	av.label("<b>Amount of work (Splitting)</b>",  {"top": "-5px", "left": "585px"}).css({'font-size': '16px', "text-align": "center"});
-	var label = av.label("|------------ $n$ ------------|",  {"top": "20px", "left": "605px"});
+	av.label("<b>Amount of work (Splitting)</b>",  {"top": "-5px", "left": "535px"}).css({'font-size': '16px', "text-align": "center"});
+	var label = av.label("|------------ $n$ ------------|",  {"top": "20px", "left": "555px"});
 	for (var i = 0; i < 8; i++){
-	  av.g.rect(600 + (i*20), 50, 20, 20);
+	  av.g.rect(550 + (i*20), 50, 20, 20);
 	}
 	av.step();
 	
@@ -51,9 +51,9 @@
 	av.step();
 	arr21 = av.ds.array([arr_values[0],arr_values[1]], {"left":40, "top":200,"indexed":false});
 	arr22 = av.ds.array([arr_values[2],arr_values[3]], {"left":165, "top":200,"indexed":false});
-	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "120px", "left": "605px"});
+	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "120px", "left": "555px"});
 	for (var i = 0; i < 4; i++){
-	  av.g.rect(600 + (i*20), 150, 20, 20);
+	  av.g.rect(550 + (i*20), 150, 20, 20);
 	}
 	av.step();
 	
@@ -63,9 +63,9 @@
 	av.step();
 	arr31 = av.ds.array([arr_values[0]], {"left":30, "top":300,"indexed":false});
 	arr32 = av.ds.array([arr_values[1]], {"left":95, "top":300,"indexed":false});
-	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "600px"});
+	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "550px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(600 + (i*20), 250, 20, 20);
+	  av.g.rect(550 + (i*20), 250, 20, 20);
 	}
 	av.step();
 	
@@ -76,11 +76,11 @@
 	merge(arr31, arr32, arr21);
 	arr31.hide();
 	arr32.hide();
-	av.label("<b>Amount of work (Merging)</b>",  {"top": "-5px", "left": "870px"}).css({'font-size': '16px', "text-align": "center"});
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "890px"});
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "920px"});
+	av.label("<b>Amount of work (Merging)</b>",  {"top": "-5px", "left": "740px"}).css({'font-size': '16px', "text-align": "center"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "760px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "790px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(890 + (i*20+i*10), 350, 20, 20);
+	  av.g.rect(760 + (i*20+i*10), 350, 20, 20);
 	}
 	arr21.unhighlight();
 	av.clearumsg();
@@ -91,9 +91,9 @@
 	av.step();
 	arr33 = av.ds.array([arr_values[2]], {"left":155, "top":300,"indexed":false});
 	arr34 = av.ds.array([arr_values[3]], {"left":220, "top":300,"indexed":false});
-	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "650px"});
+	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "600px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(650 + (i*20), 250, 20, 20);
+	  av.g.rect(600 + (i*20), 250, 20, 20);
 	}
 	av.step();
 	
@@ -104,10 +104,10 @@
 	merge(arr33, arr34, arr22);
 	arr33.hide();
 	arr34.hide();
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "950px"});
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "980px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "820px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "850px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(950 + (i*20+i*10), 350, 20, 20);
+	  av.g.rect(820 + (i*20+i*10), 350, 20, 20);
 	}
 	arr22.unhighlight();
 	av.clearumsg();
@@ -120,9 +120,9 @@
 	merge(arr21, arr22, arr11);
     arr21.hide();
 	arr22.hide();
-	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "220px", "left": "892px"});
+	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "220px", "left": "762px"});
 	for (var i = 0; i < 4; i++){
-	  av.g.rect(890 + (i*20), 250, 20, 20);
+	  av.g.rect(760 + (i*20), 250, 20, 20);
 	}
 	av.step();
 	
@@ -131,9 +131,9 @@
 	av.step();
 	arr23 = av.ds.array([arr_values[4],arr_values[5]], {"left":300, "top":200,"indexed":false});
 	arr24 = av.ds.array([arr_values[6],arr_values[7]], {"left":430, "top":200,"indexed":false});
-	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "120px", "left": "695px"});
+	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "120px", "left": "645px"});
 	for (var i = 0; i < 4; i++){
-	  av.g.rect(690 + (i*20), 150, 20, 20);
+	  av.g.rect(640 + (i*20), 150, 20, 20);
 	}
 	av.step();
 	
@@ -143,9 +143,9 @@
 	av.step();
 	arr35 = av.ds.array([arr_values[4]], {"left":290, "top":300,"indexed":false});
 	arr36 = av.ds.array([arr_values[5]], {"left":355, "top":300,"indexed":false});
-	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "700px"});
+	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "650px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(700 + (i*20), 250, 20, 20);
+	  av.g.rect(650 + (i*20), 250, 20, 20);
 	}
 	av.step();
 	
@@ -156,10 +156,10 @@
 	merge(arr35, arr36, arr23);
 	arr35.hide();
 	arr36.hide();
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "1010px"});
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "1040px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "880px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "910px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(1010 + (i*20+i*10), 350, 20, 20);
+	  av.g.rect(880 + (i*20+i*10), 350, 20, 20);
 	}
 	arr23.unhighlight();
 	av.clearumsg();
@@ -170,9 +170,9 @@
 	av.step();
 	arr37 = av.ds.array([arr_values[6]], {"left":420, "top":300,"indexed":false});
 	arr38 = av.ds.array([arr_values[7]], {"left":485, "top":300,"indexed":false});
-	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "750px"});
+	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "700px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(750 + (i*20), 250, 20, 20);
+	  av.g.rect(700 + (i*20), 250, 20, 20);
 	}
 	av.step();
 	
@@ -183,10 +183,10 @@
 	merge(arr37, arr38, arr24);
 	arr37.hide();
 	arr38.hide();
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "1070px"});
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "1100px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "940px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "970px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(1070 + (i*20+i*10), 350, 20, 20);
+	  av.g.rect(940 + (i*20+i*10), 350, 20, 20);
 	}
 	arr24.unhighlight();
 	av.clearumsg();
@@ -199,9 +199,9 @@
 	merge(arr23, arr24, arr12);
     arr23.hide();
 	arr24.hide();
-	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "220px", "left": "982px"});
+	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "220px", "left": "852px"});
 	for (var i = 0; i < 4; i++){
-	  av.g.rect(980 + (i*20), 250, 20, 20);
+	  av.g.rect(850 + (i*20), 250, 20, 20);
 	}
 	av.step();
 	
@@ -212,16 +212,16 @@
 	merge(arr11, arr12, arr);
     arr11.hide();
 	arr12.hide();
-	var label = av.label("|------------ $n$ ------------|",  {"top": "120px", "left": "890px"});
+	var label = av.label("|------------ $n$ ------------|",  {"top": "120px", "left": "760px"});
 	for (var i = 0; i < 8; i++){
-	  av.g.rect(890 + (i*20), 150, 20, 20);
+	  av.g.rect(760 + (i*20), 150, 20, 20);
 	}
 	av.clearumsg();
 	av.step();
 	
 	av.umsg("Thus, we have $\\log{n+1}$ levels each of which requires $\\theta(n)$ amount of work");
 	av.label("|---------------------- $\\log{n+1}$----------------------|", 
-	{"top": "200px", "left": "420px"}).css({'font-size': '16px', "text-align": "center"})
+	{"top": "200px", "left": "370px"}).css({'font-size': '16px', "text-align": "center"})
 	.addClass("rotated");
 	av.step();
 	av.umsg("Therefore, the total running time of merge sort is $\\theta(n\\log{n})$");
