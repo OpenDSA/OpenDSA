@@ -9,7 +9,7 @@
   var Bintree = function (jsav, xrange, yrange) {
 
     
-    this.tree = jsav.ds.bintree({nodegap: 10});
+    this.tree = jsav.ds.binarytree({nodegap: 10});
     this.vrt = this.tree.root('ROOT');
     this.root = this.vrt;
     console.log("I'm making a new Bintree object. root = ", this.root);

@@ -2,7 +2,7 @@
 (function () {
     function Bintree(av, root, min, max) {
 
-        this.t = av.ds.bintree({nodegap: 25});
+        this.t = av.ds.binarytree({nodegap: 25});
         this.t.layout();
         this.r = this.t.root(root);
         this.r.type = "leaf";

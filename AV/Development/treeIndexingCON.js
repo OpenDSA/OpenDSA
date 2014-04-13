@@ -105,7 +105,7 @@
 //  }
 //
 //  // Create binary tree object.
-//  var bst = jsav.ds.bintree({width: 500, height: 520, nodegap: 20, anchor: "left top"});
+//  var bst = jsav.ds.binarytree({width: 500, height: 520, nodegap: 20, anchor: "left top"});
 //  // Set root node.
 //  bst.root("");
 //  // Generate child nodes.
@@ -121,7 +121,7 @@
   var n = [10, 5, 15, 3, 8, 13, 18, 2, 4, 7, 9, 12, 14, 17, 19];
   var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];
 
-  var bst = jsav.ds.bintree({nodegap: 30});
+  var bst = jsav.ds.binarytree({nodegap: 30});
   var nodes = [
     bst.root(n[0]),
   ];
@@ -205,8 +205,8 @@
   // Initialize JSAV object.
   var jsav = new JSAV("balanceBSTCON", {"animationMode": "none"});
   // Initialize BST and the balanced BST object.
-  var bst = jsav.ds.bintree({left: "10px", nodegap: 20});
-  var bbst = jsav.ds.bintree({left: "220px", nodegap: 20});
+  var bst = jsav.ds.binarytree({left: "10px", nodegap: 20});
+  var bbst = jsav.ds.binarytree({left: "220px", nodegap: 20});
   // Add labels
   jsav.label("(a)", {visible: true, left: "75px", top: "110px"});
   jsav.label("(b)", {visible: true, left: "285px", top: "110px"});
@@ -248,7 +248,7 @@
 
   var jsav = new JSAV("colorizedBST");
 
-  var bst = jsav.ds.bintree({nodegap: 15});
+  var bst = jsav.ds.binarytree({nodegap: 15});
 
   // Create color array
   var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];

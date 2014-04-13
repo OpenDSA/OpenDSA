@@ -39,7 +39,7 @@
     if (jsavBinaryTree) {
       jsavBinaryTree.clear();
     }
-    jsavBinaryTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
+    jsavBinaryTree = av.ds.binarytree({center: true, visible: true, nodegap: 15});
     jsavBinaryTree.root("?");
     jsavBinaryTree.root().addClass("emptynode");
     jsavBinaryTree.click(clickHandler);
@@ -58,7 +58,7 @@
 
   function modelSolution(jsav) {
     jsav.ds.array([keyToFind], {indexed: false}).css(0, {"background-color": "#ddf"});
-    var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 15});
+    var modelTree = jsav.ds.binarytree({center: true, visible: true, nodegap: 15});
     jsav._undo = [];
 
     modelTree.root("?");

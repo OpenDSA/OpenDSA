@@ -100,23 +100,36 @@
   <form method="post" class="report" action="#">
     <fieldset class="textbox">
       <div id="bug_error" class="error"></div>
-        <span>Title*:</span>
-        <input type="text" id="b_title" placeholder="Title" />
+        <span>Summary*:</span>
+        <input type="text" id="b_title" placeholder="Summary of the bug" />
       </label>
 
       <label class="os">
         <span>Operating system*:</span>
-        <input type="text" id="b_os" placeholder="Operating system" />
+        <select id="b_os">
+          <option value="windows">Windows</option>
+          <option value="macos">Mac OS</option>
+          <option value="linux">Linux</option>
+          <option value="ios">iOS</option>
+          <option value="android">Android</option>
+          <option value="other">Other</option>
+        </select>
       </label>
 
       <label class="browser">
         <span>Browser*:</span>
-        <input type="text" id="b_browser" placeholder="Browser" />
+        <select id="b_browser">
+          <option value="chrome">Chrome</option>
+          <option value="safari">Safari</option>
+          <option value="internetexplorer">Internet Explorer</option>
+          <option value="opera">Opera</option>
+          <option value="other">Other</option>
+        </select>
       </label>
 
       <label class="description">
         <span>Description*:</span><br>
-        <textarea id="b_derscription" rows="5" cols="25" placeholder="***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug"></textarea>
+        <textarea id="b_description" rows="5" cols="25" placeholder="***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."></textarea>
       </label>
 
       <label class="screenshot">

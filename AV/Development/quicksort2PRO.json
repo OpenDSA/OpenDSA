@@ -37,5 +37,14 @@
       "ms_return": "Funktio on järjestänyt taulukon indeksien {left} ja {right} välillä."
     }
   },
-  "code" : {}
+  "code" : {
+    "processing": {
+      "url": "../../SourceCode/Processing/Sorting/Quicksort.pde",
+      "startAfter": "/* *** ODSATag: partition *** */",
+      "endBefore": "/* *** ODSAendTag: Quicksort *** */",
+      "tags": {
+        "comments_and_findpivot": [8, 10, 11, 12, 13, 14, 15]
+      }
+    }
+  }
 }

@@ -203,7 +203,7 @@
  */
 function construct_tree(av) {
 
-  var t = av.ds.bintree({nodegap: 25});
+  var t = av.ds.binarytree({nodegap: 25});
   var r = t.root("");
 
   // constructs tree
@@ -252,7 +252,7 @@ function construct_tree(av) {
  */
 (function ($) {
   var av = new JSAV("TreeTimeline");
-  var t = av.ds.bintree({nodegap: 25});
+  var t = av.ds.binarytree({nodegap: 25});
   var r = t.root("36");
   t.layout();
   var tl = new timeline(av, 40, 325, 500, 0, 65, 10);

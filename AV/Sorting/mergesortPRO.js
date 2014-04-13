@@ -20,6 +20,11 @@
      *  MERGESORT PROFICIENCY EXERCISE CODE       *
      ******************************************* */
 
+    // Language and code configurations
+    var config = ODSA.AV.getConfig("mergesortPRO.json");
+    var interpret = JSAV.utils.getInterpreter(config.language);
+    ODSA.AV.setTitleAndInstructions($('#container'), config.language);
+
     // Variables used by "setPosition()"
     var canvasWidth = $('#container').width();     // The width of the display
     var rowHeight = 80;        // Space required for each row to be displayed
@@ -63,7 +68,7 @@
         initialArray[i] = randomVal;
         userAnswerValue[i] = randomVal;
       }
-      
+
       // Log the initial state of the exercise
       var initData = {};
       initData.gen_array = initialArray;
@@ -126,15 +131,15 @@
       // Dynamically create and position arrays
       var arr = av.ds.array(contents, {indexed: true, center: false,
                                         layout: "array"});
-      
+
       var id = "array_" + level + "_" + column;
       arrays[id] = arr;
-      
+
       // Set array attributes
       arr.element.attr("id", id);
       arr.element.attr("data-offset", left);
       setPosition(arr, level, column);
-      
+
       // Attach the click handler to the array
       arr.click(function (index) { clickHandler(this, index); });
 
@@ -291,9 +296,9 @@
 
         //console.log("destColumn: " + destColumn + ", left: " + left + ", right: " + right);  // FOR DEBUGGING
       }
-      
+
       destIndex -= left;
-      
+
       //console.log("destDepth: " + destDepth + ", destColumn: " + destColumn + ", destIndex: " + destIndex);  // FOR TESTING
 
       // Get the sub arrays from the hash of JSAV arrays
