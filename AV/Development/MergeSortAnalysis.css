@@ -1,0 +1,41 @@
+#container {
+  width: 1200px !important;
+  height: 600px;
+}
+
+.avcontainer{
+  width: 1200px;
+  height: 600px;
+}
+
+.jsavcanvas {
+  height: 600px;
+  width:1200px;
+}
+.jsavline {
+  width:600px;
+  height:50px;
+}
+.jsavscroll {
+  width: 250px; 
+  height: 200px;
+}
+.jsavlabel {
+    display: inline-block;
+}
+.rotated {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+
+
+
+
+
+
+
+
