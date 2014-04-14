@@ -207,7 +207,7 @@ function construct_tree(av) {
   var r = t.root("");
 
   // constructs tree
-  r.left("E");
+  r.left("E<br>120");
   r.right("").right("").right("").right("").right("M<br>24");
   r.right().left("").left("U<br>37");
   r.right().left().right("D<br>42");
@@ -218,6 +218,7 @@ function construct_tree(av) {
   r.right().right().right().right().left().right("K<br>7");
 
   // add more classes for leaf nodes for css styling
+  r.left().addClass("huffmanleaf");
   r.right().right().right().right().right().addClass("huffmanleaf");
   r.right().left().left().addClass("huffmanleaf");
   r.right().left().right().addClass("huffmanleaf");
