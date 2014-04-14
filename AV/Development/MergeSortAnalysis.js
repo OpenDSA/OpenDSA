@@ -30,18 +30,18 @@
     for (var i = 0;i < 8;i++){
 	  arr_values[i] = parseInt(Math.random()*20);
 	}
-	arr = av.ds.array(arr_values, {"left":100, "top":0,"indexed":false});
+	arr = av.ds.array(arr_values, {"left":60, "top":0,"indexed":false});
 	av.step();
 	
 	av.umsg("Splitting the array into two halves requires 8 units of work");
 	arr.highlight();
 	av.step();
-	arr11 = av.ds.array([arr_values[0],arr_values[1],arr_values[2],arr_values[3]], {"left":60, "top":100,"indexed":false});
-	arr12 = av.ds.array([arr_values[4],arr_values[5],arr_values[6],arr_values[7]], {"left":320, "top":100,"indexed":false});
-	av.label("<b>Amount of work (Splitting)</b>",  {"top": "-5px", "left": "535px"}).css({'font-size': '16px', "text-align": "center"});
-	var label = av.label("|------------ $n$ ------------|",  {"top": "20px", "left": "555px"});
+	arr11 = av.ds.array([arr_values[0],arr_values[1],arr_values[2],arr_values[3]], {"left":40, "top":75,"indexed":false});
+	arr12 = av.ds.array([arr_values[4],arr_values[5],arr_values[6],arr_values[7]], {"left":200, "top":75,"indexed":false});
+	av.label("<b><u>Splitting Work</u></b>",  {"top": "-20px", "left": "430px"}).css({'font-size': '16px', "text-align": "center"});
+	var label = av.label("|------------ $n$ ------------|",  {"top": "0px", "left": "405px"});
 	for (var i = 0; i < 8; i++){
-	  av.g.rect(550 + (i*20), 50, 20, 20);
+	  av.g.rect(400 + (i*20), 30, 20, 20);
 	}
 	av.step();
 	
@@ -49,11 +49,11 @@
 	arr11.highlight();
 	arr.unhighlight();
 	av.step();
-	arr21 = av.ds.array([arr_values[0],arr_values[1]], {"left":40, "top":200,"indexed":false});
-	arr22 = av.ds.array([arr_values[2],arr_values[3]], {"left":165, "top":200,"indexed":false});
-	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "120px", "left": "555px"});
+	arr21 = av.ds.array([arr_values[0],arr_values[1]], {"left":20, "top":150,"indexed":false});
+	arr22 = av.ds.array([arr_values[2],arr_values[3]], {"left":120, "top":150,"indexed":false});
+	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "75px", "left": "405px"});
 	for (var i = 0; i < 4; i++){
-	  av.g.rect(550 + (i*20), 150, 20, 20);
+	  av.g.rect(400 + (i*20), 105, 20, 20);
 	}
 	av.step();
 	
@@ -61,11 +61,11 @@
 	arr21.highlight();
 	arr11.unhighlight();
 	av.step();
-	arr31 = av.ds.array([arr_values[0]], {"left":30, "top":300,"indexed":false});
-	arr32 = av.ds.array([arr_values[1]], {"left":95, "top":300,"indexed":false});
-	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "550px"});
+	arr31 = av.ds.array([arr_values[0]], {"left":0, "top":225,"indexed":false});
+	arr32 = av.ds.array([arr_values[1]], {"left":70, "top":225,"indexed":false});
+	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "150px", "left": "400px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(550 + (i*20), 250, 20, 20);
+	  av.g.rect(400 + (i*20), 180, 20, 20);
 	}
 	av.step();
 	
@@ -76,11 +76,11 @@
 	merge(arr31, arr32, arr21);
 	arr31.hide();
 	arr32.hide();
-	av.label("<b>Amount of work (Merging)</b>",  {"top": "-5px", "left": "740px"}).css({'font-size': '16px', "text-align": "center"});
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "760px"});
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "790px"});
+	av.label("<b><u>Merging Work</u></b>",  {"top": "-20px", "left": "640px"}).css({'font-size': '16px', "text-align": "center"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "225px", "left": "560px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "225px", "left": "590px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(760 + (i*20+i*10), 350, 20, 20);
+	  av.g.rect(560 + (i*20+i*10), 255, 20, 20);
 	}
 	arr21.unhighlight();
 	av.clearumsg();
@@ -89,11 +89,11 @@
 	av.umsg("Splitting the selected array into two halves requires 2 units of work");
 	arr22.highlight();
 	av.step();
-	arr33 = av.ds.array([arr_values[2]], {"left":155, "top":300,"indexed":false});
-	arr34 = av.ds.array([arr_values[3]], {"left":220, "top":300,"indexed":false});
-	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "600px"});
+	arr33 = av.ds.array([arr_values[2]], {"left":100, "top":225,"indexed":false});
+	arr34 = av.ds.array([arr_values[3]], {"left":170, "top":225,"indexed":false});
+	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "150px", "left": "450px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(600 + (i*20), 250, 20, 20);
+	  av.g.rect(450 + (i*20), 180, 20, 20);
 	}
 	av.step();
 	
@@ -104,10 +104,10 @@
 	merge(arr33, arr34, arr22);
 	arr33.hide();
 	arr34.hide();
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "820px"});
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "850px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "225px", "left": "620px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "225px", "left": "650px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(820 + (i*20+i*10), 350, 20, 20);
+	  av.g.rect(620 + (i*20+i*10), 255, 20, 20);
 	}
 	arr22.unhighlight();
 	av.clearumsg();
@@ -120,20 +120,20 @@
 	merge(arr21, arr22, arr11);
     arr21.hide();
 	arr22.hide();
-	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "220px", "left": "762px"});
+	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "150px", "left": "612px"});
 	for (var i = 0; i < 4; i++){
-	  av.g.rect(760 + (i*20), 250, 20, 20);
+	  av.g.rect(610 + (i*20), 180, 20, 20);
 	}
 	av.step();
 	
 	av.umsg("Splitting the selected array into two halves requires 4 units of work");
 	arr12.highlight();
 	av.step();
-	arr23 = av.ds.array([arr_values[4],arr_values[5]], {"left":300, "top":200,"indexed":false});
-	arr24 = av.ds.array([arr_values[6],arr_values[7]], {"left":430, "top":200,"indexed":false});
-	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "120px", "left": "645px"});
+	arr23 = av.ds.array([arr_values[4],arr_values[5]], {"left":180, "top":150,"indexed":false});
+	arr24 = av.ds.array([arr_values[6],arr_values[7]], {"left":280, "top":150,"indexed":false});
+	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "75px", "left": "495px"});
 	for (var i = 0; i < 4; i++){
-	  av.g.rect(640 + (i*20), 150, 20, 20);
+	  av.g.rect(490 + (i*20), 105, 20, 20);
 	}
 	av.step();
 	
@@ -141,11 +141,11 @@
 	arr23.highlight();
 	arr12.unhighlight();
 	av.step();
-	arr35 = av.ds.array([arr_values[4]], {"left":290, "top":300,"indexed":false});
-	arr36 = av.ds.array([arr_values[5]], {"left":355, "top":300,"indexed":false});
-	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "650px"});
+	arr35 = av.ds.array([arr_values[4]], {"left":160, "top":225,"indexed":false});
+	arr36 = av.ds.array([arr_values[5]], {"left":230, "top":225,"indexed":false});
+	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "150px", "left": "500px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(650 + (i*20), 250, 20, 20);
+	  av.g.rect(500 + (i*20), 180, 20, 20);
 	}
 	av.step();
 	
@@ -156,10 +156,10 @@
 	merge(arr35, arr36, arr23);
 	arr35.hide();
 	arr36.hide();
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "880px"});
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "910px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "225px", "left": "680px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "225px", "left": "710px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(880 + (i*20+i*10), 350, 20, 20);
+	  av.g.rect(680 + (i*20+i*10), 255, 20, 20);
 	}
 	arr23.unhighlight();
 	av.clearumsg();
@@ -168,11 +168,11 @@
 	av.umsg("Splitting the selected array into two halves requires 2 units of work");
 	arr24.highlight();
 	av.step();
-	arr37 = av.ds.array([arr_values[6]], {"left":420, "top":300,"indexed":false});
-	arr38 = av.ds.array([arr_values[7]], {"left":485, "top":300,"indexed":false});
-	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "220px", "left": "700px"});
+	arr37 = av.ds.array([arr_values[6]], {"left":260, "top":225,"indexed":false});
+	arr38 = av.ds.array([arr_values[7]], {"left":330, "top":225,"indexed":false});
+	var label = av.label("|- $\\frac{n}{4}$ -|",  {"top": "150px", "left": "550px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(700 + (i*20), 250, 20, 20);
+	  av.g.rect(550 + (i*20), 180, 20, 20);
 	}
 	av.step();
 	
@@ -183,10 +183,10 @@
 	merge(arr37, arr38, arr24);
 	arr37.hide();
 	arr38.hide();
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "940px"});
-	var label = av.label("$\\frac{n}{8}$ ",  {"top": "320px", "left": "970px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "225px", "left": "740px"});
+	var label = av.label("$\\frac{n}{8}$ ",  {"top": "225px", "left": "770px"});
 	for (var i = 0; i < 2; i++){
-	  av.g.rect(940 + (i*20+i*10), 350, 20, 20);
+	  av.g.rect(740 + (i*20+i*10), 255, 20, 20);
 	}
 	arr24.unhighlight();
 	av.clearumsg();
@@ -199,9 +199,9 @@
 	merge(arr23, arr24, arr12);
     arr23.hide();
 	arr24.hide();
-	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "220px", "left": "852px"});
+	var label = av.label("|---- $\\frac{n}{2}$ ----|",  {"top": "150px", "left": "702px"});
 	for (var i = 0; i < 4; i++){
-	  av.g.rect(850 + (i*20), 250, 20, 20);
+	  av.g.rect(700 + (i*20), 180, 20, 20);
 	}
 	av.step();
 	
@@ -212,16 +212,16 @@
 	merge(arr11, arr12, arr);
     arr11.hide();
 	arr12.hide();
-	var label = av.label("|------------ $n$ ------------|",  {"top": "120px", "left": "760px"});
+	var label = av.label("|------------ $n$ ------------|",  {"top": "75px", "left": "610px"});
 	for (var i = 0; i < 8; i++){
-	  av.g.rect(760 + (i*20), 150, 20, 20);
+	  av.g.rect(610 + (i*20), 105, 20, 20);
 	}
 	av.clearumsg();
 	av.step();
 	
 	av.umsg("Thus, we have $\\log{n+1}$ levels each of which requires $\\theta(n)$ amount of work");
-	av.label("|---------------------- $\\log{n+1}$----------------------|", 
-	{"top": "200px", "left": "370px"}).css({'font-size': '16px', "text-align": "center"})
+	av.label("|--------------- $\\log{n+1}$---------------|", 
+	{"top": "145px", "left": "250px"}).css({'font-size': '16px', "text-align": "center"})
 	.addClass("rotated");
 	av.step();
 	av.umsg("Therefore, the total running time of merge sort is $\\theta(n\\log{n})$");
