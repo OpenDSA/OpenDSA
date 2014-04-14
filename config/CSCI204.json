@@ -1109,7 +1109,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "MergesortPRO": {
+          "mergesortPRO": {
             "long_name": "Mergesort Merging Proficiency Exercise",
             "required": true,
             "points": 1.0,

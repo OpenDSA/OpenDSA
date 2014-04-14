@@ -3,12 +3,14 @@
     "en": {
       "exerciseTitle": "Mergesort",
       "instructLabel": "Instructions:",
-      "instructions": "Start at the bottom left. Merge two single element arrays to sort a sorted two-element array. Continue merging until you reach an array whose child arrays have not BOTH been sorted. Return to single element arrays and repeat the merging process as necessary until all elements have been merged into a single, sorted array. To merge an element into another array, click the element to select it, then click the position where it should be in the sorted, merged array. Remember, the order in which blocks are merged matters so be sure to select the smallest blocks first, starting at the left."
+      "instructions": "Start at the bottom left. Merge two single element arrays to sort a sorted two-element array. Continue merging until you reach an array whose child arrays have not BOTH been sorted. Return to single element arrays and repeat the merging process as necessary until all elements have been merged into a single, sorted array. To merge an element into another array, click the element to select it, then click the position where it should be in the sorted, merged array. Remember, the order in which blocks are merged matters so be sure to select the smallest blocks first, starting at the left.",
+      "about": "Mergesort Proficiency Exercise\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA.\nCompiled with JSAV library version "
     },
     "fi": {
       "exerciseTitle": "Lomitusjärjestäminen",
       "instructLabel": "Ohjeet:",
-      "instructions": "Aloita vasemmasta alakulmasta yhdistämällä kaksi yhden alkion kokoista taulukkoa järjesteltyyn kahden alkion kokoiseen taulukkoon. Jatka yhdistelyä kunnes saavut taulukkoon, jonka <strong>molempia</strong> osataulukoita ei vielä ole järjestelty. Tässä tapauksessa palaa yhden alkion kokoisiin taulukkoihin ja toista yhdistämisprosessia kunnes kaikki alkiot on yhdistetty yhteen järjesteltyyn taulukkoon. Voit valita alkion klikkaamalla sitä. Klikkaa tämän jälkeen sijaintia, johon haluat siirtää valitun alkion. Muista, että järjestyksellä on väliä! Liitä aina pienin alkio ensin, aloittaen vasemmalta."
+      "instructions": "Aloita vasemmasta alakulmasta yhdistämällä kaksi yhden alkion kokoista taulukkoa järjesteltyyn kahden alkion kokoiseen taulukkoon. Jatka yhdistelyä kunnes saavut taulukkoon, jonka <strong>molempia</strong> osataulukoita ei vielä ole järjestelty. Tässä tapauksessa palaa yhden alkion kokoisiin taulukkoihin ja toista yhdistämisprosessia kunnes kaikki alkiot on yhdistetty yhteen järjesteltyyn taulukkoon. Voit valita alkion klikkaamalla sitä. Klikkaa tämän jälkeen sijaintia, johon haluat siirtää valitun alkion. Muista, että järjestyksellä on väliä! Liitä aina pienin alkio ensin, aloittaen vasemmalta.",
+      "about": "Say it in Finnish "
     }
   },
   "code" : {}
