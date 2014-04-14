@@ -1,5 +1,5 @@
 "use strict";
-
+// explain LRU swapping
 (function ($) {
 
   /* Variables */
@@ -11,6 +11,8 @@
       lines
       
   var counter = 0;
+  var index = [];
+  var index_size = 0;
 
   function array_init() {
     var empty = [];
@@ -37,6 +39,13 @@
     counter = 0;
     main_memory.clear();
     buffer_pool.clear();
+    freq_counter.clear();
+    if (index_size != 0) {
+      var i;
+      for (i = 0; i < index_size; i++) {
+        index[i].hide();
+      }
+    }
     jsav.clearumsg();
     var missingFields = [];
 
@@ -83,6 +92,7 @@
         empty[i] = i;
       }
       main_memory = jsav.ds.array(empty, {layout: "vertical", left: 0});
+      jsav.label("main memory", {"top": 0, "left": "19px"});    
     }
 
     var buf_size = $('#bufferpool_size').val();
@@ -98,14 +108,20 @@
         temp[i] = 0;
       }
       lines.size = buf_size;
-      buffer_pool = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 315});
-      freq_counter = jsav_counter.ds.array(temp, {layout: "vertical", left: 0, top: -21});
+      buffer_pool = jsav.ds.array(empty, {layout: "vertical", left: 250});
+      jsav.label("buffer pool", {"top": 0, "left": "280px"});    
+      freq_counter = jsav_counter.ds.array(temp, {layout: "vertical", left: -10, top: -21});
       freq_counter.hide();
     }
     if (replacement == 3) {
       freq_counter.show();  
     }
-
+    index.length = buf_size;
+    index_size = buf_size;
+    var i;
+    for (i = 0; i < index.length; i++) {
+      index[i] = jsav.label(i, {"top": 35 + 45 * i, "left": "400px"});
+    }
   }
 
   function LRU(input_val, counter) {
@@ -134,7 +150,7 @@
       }      
       for (i = 0; i < size; i++) {
         buffer_pool.value(i, temp[i]);
-        lines[i] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[i] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 3});
       }
       jsav.umsg("sector " + input_val + " already in buffer pool");
       jsav.umsg("moving buffer holding sector " + input_val + " to the front");
@@ -144,7 +160,7 @@
       if (counter == 0) {
         jsav.umsg("storing sector " + input_val + " in buffer pool");
         buffer_pool.value(0, input_val);
-        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 3});
         jsav.displayInit();
       }
       else if (counter < buffer_pool.size()) {
@@ -156,12 +172,12 @@
         var temp = [];
         temp.length = buffer_pool.size();
         temp[0] = input_val;
-        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 3});
 
         var i;
         for (i = 0; i < counter; i++) {
           temp[i+1] = buffer_pool.value(i);
-          lines[i+1] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+          lines[i+1] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 3});
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
@@ -177,12 +193,12 @@
         var temp = [];
         temp.length = buffer_pool.size();
         temp[0] = input_val;
-        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 3});
 
         var i;
         for (i = 0; i < buffer_pool.size()-1; i++) {
           temp[i+1] = buffer_pool.value(i);
-          lines[i+1] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+          lines[i+1] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 3});
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
@@ -200,7 +216,7 @@
       if (counter == 0) {
         jsav.umsg("storing sector " + input_val + " in buffer pool");
         buffer_pool.value(0, input_val);
-        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 3});
         jsav.displayInit();
       }
       else if (counter < buffer_pool.size()) {
@@ -212,12 +228,12 @@
         var temp = [];
         temp.length = buffer_pool.size();
         temp[0] = input_val;
-        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 3});
 
         var i;
         for (i = 0; i < counter; i++) {
           temp[i+1] = buffer_pool.value(i);
-          lines[i+1] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+          lines[i+1] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 3});
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
@@ -234,12 +250,12 @@
         var temp = [];
         temp.length = buffer_pool.size();
         temp[0] = input_val;
-        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 3});
 
         var i;
         for (i = 0; i < buffer_pool.size()-1; i++) {
           temp[i+1] = buffer_pool.value(i);
-          lines[i+1] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+          lines[i+1] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * (i+1), {'arrow-end': 'classic-wide-long','stroke-width' : 3});
         }
 
         for (i = 0; i < buffer_pool.size(); i++) {
@@ -290,7 +306,7 @@
         }
       }
       for (i = 0; i < size; i++) {
-        lines[i] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[i] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 3});
       }
       return true;
     }
@@ -298,7 +314,7 @@
       if (counter == 0) {
         jsav.umsg("storing sector " + input_val + " in buffer pool");
         buffer_pool.value(0, input_val);
-        lines[0] = jsav.g.line(105,  45 + 45 * input_val,  320, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+        lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, {'arrow-end': 'classic-wide-long','stroke-width' : 3});
         jsav.displayInit();
       }
       else if (counter < buffer_pool.size()) {
@@ -320,7 +336,7 @@
           buffer_pool.value(i, temp[i]);
         }
         for (i = 0; i < counter+1; i++) {
-          lines[i] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+          lines[i] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 3});
         }
       }
       else {
@@ -331,7 +347,7 @@
         buffer_pool.value(buffer_pool.size()-1, input_val);
         freq_counter.value(buffer_pool.size()-1, 0);
         for (i = 0; i < buffer_pool.size(); i++) {
-          lines[i] = jsav.g.line(105,  45 + 45 * buffer_pool.value(i),  320, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+          lines[i] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * i, {'arrow-end': 'classic-wide-long','stroke-width' : 3});
         }
       }
       return false;
