@@ -250,7 +250,9 @@
     "This is one possible layout.",
     "Lets find the key 9 again.",
     "This time it only takes 2 disk accesses.",
-    "The proble with this layout is that it is difficult to maintain."
+    "The problem with this layout is that it is difficult to maintain, especially when trying to maintain a complete tree. For example, lets try to remove the root node.",
+    "Next we need to rearrange the remaining nodes.",
+    "As you can see a simple node removal may require access to several nodes."
   ];
 
   jsav.label("Disk Accesses:", {visible: true, left: "0px", top: "16px"});
@@ -338,6 +340,33 @@
   da_array.value(0, "");
   jsav.step();
 
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[0]);
+  nodes[0].value("");
+  da_array.value(0, 1);
+  jsav.step();
+
+  window.ODSA.toggleNodeHighlight(nodes[2]);
+  window.ODSA.toggleNodeHighlight(nodes[0]);
+  jsav.effects.moveValue(nodes[2], nodes[0]);
+  da_array.value(0, 1);
+  jsav.step();
+
+  window.ODSA.toggleNodeHighlight(nodes[6]);
+  window.ODSA.toggleNodeHighlight(nodes[2]);
+  jsav.effects.moveValue(nodes[6], nodes[2]);
+  da_array.value(0, 2);
+  jsav.step();
+
+  window.ODSA.toggleNodeHighlight(nodes[14]);
+  window.ODSA.toggleNodeHighlight(nodes[6]);
+  jsav.effects.moveValue(nodes[14], nodes[6]);
+  da_array.value(0, 2);
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[14]);
+  nodes[14].remove();
   jsav.step();
 
   jsav.recorded();
