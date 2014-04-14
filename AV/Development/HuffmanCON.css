@@ -1,7 +1,3 @@
-.jsavvaluelabel {
-  line-height: 27px;
-}
-
 .jsavnode.jsavtreenode.jsavbinarynode.huffmanleaf {
   height:32px;
   width:32px;
@@ -40,6 +36,7 @@
   max-height: 25px;
   min-width: 25px;
   max-width: 25px;
+  margin: 0 auto;
 }
 
 .jsavautoresize .jsavnode {
@@ -96,13 +93,13 @@
 /*=================== HuffmanCon5 ===================*/
 
 #HuffmanCon5 {
-  width:370px;
+  width:385px;
   height:350px;
 }
 
 #HuffmanCon5 .jsavtree {
   margin-top: 1px;
-  margin-left: 51px;
+  margin-left: 48px;
 }
 
 .jsavnode.jsavtreenode.jsavbinarynode .jsavvalue {
