@@ -394,7 +394,7 @@ class ODSA_Config:
 
     # Treat Processing as Java (special case)
     # This must be done after code_lang is appended to code_dir in order for the correct code to be referenced
-    if self.code_lang == 'processing':
+    if self.code_lang.lower() == 'processing':
       self.code_lang = 'java'
 
     self.odsa_dir = get_odsa_dir()
