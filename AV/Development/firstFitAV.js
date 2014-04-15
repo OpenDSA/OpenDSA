@@ -76,13 +76,10 @@
     var memPoolLabel = jsav.label("Memory Pool (Size: 200)", {"left": 280, "top": 130});
 
     used1 = jsav.g.rect(342, 150, 25, 60).css({"fill": "coral"});
-    $("rect").on("click", changeUsed);
     used2 = jsav.g.rect(455, 150, 62, 60).css({"fill": "coral"});
-    $("rect").on("click", changeUsed2);
     used3 = jsav.g.rect(597, 150, 45, 60).css({"fill": "coral"});
-    $("rect").on("click", changeUsed3);
     used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "coral"});
-    $("rect").on("click", changeUsed4);
+    $("rect").on("click", changeUsed);
     
 
     var free1Start = 280;
@@ -174,7 +171,9 @@
 
   function changeUsed(event)
   {
-     used1 = jsav.g.rect(342, 150, 25, 60).css({"fill": "black"});
+    console.log("this: " + this + ", event: " + event);
+    used1 = this.setAttribute("fill", "black");
+//     used1 = jsav.g.rect(342, 150, 25, 60).css({"fill": "black"});
      
   }
 
