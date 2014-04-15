@@ -11,6 +11,10 @@
       blockLabelArray,
       requestedBlockLabel,
       connectStartArray,
+      used1,
+      used2,
+      used3,
+      used4,
       freeFinArray,
       freeAmountLabel,
       freeNum,
@@ -44,7 +48,7 @@
   function reset() {
     // Clear any existing messages and hash table data
     jsav.clearumsg();
-
+    
     // Reset controls to their default state
     $("#fitAlgorithm").val(0);
 
@@ -71,10 +75,15 @@
 
     var memPoolLabel = jsav.label("Memory Pool (Size: 200)", {"left": 280, "top": 130});
 
-    var used1 = jsav.g.rect(342, 150, 25, 60).css({"fill": "coral"});
-    var used2 = jsav.g.rect(455, 150, 62, 60).css({"fill": "coral"});
-    var used3 = jsav.g.rect(597, 150, 45, 60).css({"fill": "coral"});
-    var used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "coral"});
+    used1 = jsav.g.rect(342, 150, 25, 60).css({"fill": "coral"});
+    $("rect").on("click", changeUsed);
+    used2 = jsav.g.rect(455, 150, 62, 60).css({"fill": "coral"});
+    $("rect").on("click", changeUsed2);
+    used3 = jsav.g.rect(597, 150, 45, 60).css({"fill": "coral"});
+    $("rect").on("click", changeUsed3);
+    used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "coral"});
+    $("rect").on("click", changeUsed4);
+    
 
     var free1Start = 280;
     var free2Start = 367;
@@ -153,6 +162,7 @@
     linesArray = new Array(connect1, connect2, connect3, connect4);
     current = 0;
   }
+
  
   function newRec(sizeX)
   {
@@ -161,6 +171,28 @@
     requestedBlockLabel = jsav.label("Requested Block", {"left": 280, "top": 270}).css({"font-weight": "bold"});
 
   }
+
+  function changeUsed(event)
+  {
+     used1 = jsav.g.rect(342, 150, 25, 60).css({"fill": "black"});
+     
+  }
+
+  function changeUsed2()
+  {
+    jsav.g.rect(455, 150, 62, 60).css({"fill": "black"});
+  }
+
+  function changeUsed3()
+  {
+    used3 = jsav.g.rect(597, 150, 45, 60).css({"fill": "black"});
+  }
+
+  function changeUsed4()
+  {
+      used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "black"});
+  }
+
  
   function enableAllButtons() {
     $("#input").removeAttr("disabled");
@@ -466,6 +498,8 @@
   $(document).ready(function () {
     jsav = new JSAV($('.avcontainer'));
     reset();
+
+    
 
     // If the user hits 'Enter' while the focus is on the textbox,
     // click 'Next' rather than refreshing the page
