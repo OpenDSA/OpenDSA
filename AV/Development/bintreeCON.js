@@ -29,7 +29,7 @@
 
   // Setup the tree
   var bintreeTop = 275;
-  var bt = av.ds.bintree({nodegap: 10, top: bintreeTop, left: 200});
+  var bt = av.ds.binarytree({nodegap: 10, top: bintreeTop, left: 200});
   bt.root('');
   var rt = bt.root();
   rt.left('');

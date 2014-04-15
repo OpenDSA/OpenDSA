@@ -7,18 +7,18 @@
     stack,
     clickHandler,
     interpret,
-    config = ODSA.UTILS.getConfig("postfixEvaluationPRO.json"),
+    config = ODSA.AV.getConfig("postfixEvaluationPRO.json"),
     av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
-    
+
     // get interpreter function for the selected language
     if (typeof interpret !== "function") {
       interpret = JSAV.utils.getInterpreter(config.language);
       // change the title and the instructions on the page
-      ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
+      ODSA.AV.setTitleAndInstructions(av.container, config.language);
     }
 
     // create ClickHandler
@@ -63,7 +63,7 @@
     stack.css("top", 150);
     clickHandler.addList(stack, {select: "first", drop: "first", keep: true});
     stack.layout();
-    
+
     // clear all the Raphael elements
     av.getSvg().clear();
 
@@ -248,7 +248,7 @@
       }
 
     }, 1400);
-    
+
   }
 
 
@@ -291,13 +291,13 @@
     var last_point = guide_path.getPointAtLength( 0 );
     var start_time = new Date().getTime();
     var interval_length = 10;
-    var result = path;        
+    var result = path;
 
     var interval_id = setInterval( function()
     {
       var elapsed_time = new Date().getTime() - start_time;
       var this_length = Math.max( 30, elapsed_time / duration * total_length);
-      var subpathstr = guide_path.getSubpath( 0, this_length );            
+      var subpathstr = guide_path.getSubpath( 0, this_length );
       attr.path = subpathstr;
       path.animate( attr, interval_length - 1 );
       if ( elapsed_time >= duration )
@@ -305,8 +305,8 @@
         clearInterval( interval_id );
         if ( typeof callback !== "undefined" ) callback();
           guide_path.remove();
-      }                                       
-    }, interval_length );  
+      }
+    }, interval_length );
     return result;
   }
 

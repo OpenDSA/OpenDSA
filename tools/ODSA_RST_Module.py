@@ -199,6 +199,12 @@ class ODSA_RST_Module:
       with open(filename,'r') as mod_file:
         mod_data = mod_file.readlines()
 
+      if 'JOP-lang' not in config.glob_mod_options:
+        config.glob_mod_options['JOP-lang'] = config.lang
+
+      if 'JOP-lang' not in config.glob_exer_options:
+        config.glob_exer_options['JOP-lang'] = config.lang
+
       # Merge global module options with local modules options, if applicable, so that local options override the global options
       if 'mod_options' in mod_attrib:
         mod_options = dict(config.glob_mod_options.items() + mod_attrib['mod_options'].items())

@@ -1,0 +1,26 @@
+{
+  "translations" :{
+    "en": {
+      "exerciseTitle": "Insertion Sort",
+      "instructLabel": "Instructions:",
+      "instructions": "Use Insertion Sort to sort the table given below in ascending order. Click on an item to select it and copy its value to another position by clicking again.",
+      "array_label": "Table to be sorted",
+      "temp_label": "temp variable",
+      "ms_copy": "Copy {arr_at_i} from the array into the temp variable.",
+      "ms_shift": "Shift all the elements, whose values are larger than {temp} (temp) and whose indices are smaller than {i} (i), one step to the right.",
+      "ms_copy_back": "Copy {temp} back into its right place in the array. The array is now sorted between indices 0 and {i}"
+    }
+  },
+  "code" : {
+    "python": {
+      "url": "../../SourceCode/Python/Sorting/Insertionsort.py",
+      "startAfter": "# Try to make it more \"native\" python",
+      "tags": {
+        "highlight": [2, 6, 7],
+        "copy_to_tmp": 2,
+        "shift": 6,
+        "copy_back": 7
+      }
+    }
+  }
+}

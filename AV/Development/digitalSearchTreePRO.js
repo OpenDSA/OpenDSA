@@ -43,7 +43,7 @@
       tree.clear();
     }
     //create a new tree
-    tree = av.ds.bintree({center: true, visible: true, nodegap: 15});
+    tree = av.ds.binarytree({center: true, visible: true, nodegap: 15});
     tree.root("");
     tree.root().addClass("emptynode");
     tree.click(clickHandler);
@@ -66,7 +66,7 @@
       top: - l.element.outerHeight() + 10
     });
 
-    var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 10});
+    var modelTree = jsav.ds.binarytree({center: true, visible: true, nodegap: 10});
     modelTree.root("");
     modelTree.root().addClass("emptynode");
     modelTree.layout();

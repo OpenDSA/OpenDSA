@@ -22,7 +22,7 @@
   initJSAV = function(a, b) {
     jsav = new JSAV("jsav");
     arr = jsav.ds.array([a, b]);
-    tree = jsav.ds.bintree();
+    tree = jsav.ds.binarytree();
     tree.root(a);
     tree.root().left(b);
     tree.layout();

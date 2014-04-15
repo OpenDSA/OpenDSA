@@ -64,12 +64,32 @@
     }
   }
 
+  function toggleNodeHighlight(node) {
+    if (node.css(node_highlight_property) === node_highlight_default) {
+      node.css(node_highlight_add);
+    } else {
+      node.css(node_highlight_remove);
+    }
+  }
+
+  function setNodeHighlightDefault(node) {
+    node_highlight_default = node.css(node_highlight_property);
+    node_highlight_remove["box-shadow"] = node_highlight_default;
+  }
+
+  var node_highlight_property = "box-shadow";
+  var node_highlight_default;
+  var node_highlight_add = {"box-shadow": "0 0 15px 5px #2B92FF"};
+  var node_highlight_remove = {"box-shadow": "node"};
+
   var ODSA = {};
   ODSA.generateBSTNodes = generateBSTNodes;
   ODSA.getAnswer = getAnswer;
   ODSA.bottom_layer = [];
   ODSA.disk_accesses = 0;
   ODSA.probability_threshold = 0.3;
+  ODSA.toggleNodeHighlight = toggleNodeHighlight;
+  ODSA.setNodeHighlightDefault = setNodeHighlightDefault;
   window.ODSA = ODSA;
 }());
 
@@ -78,42 +98,6 @@
  *
  * Container ID: pagedBSTCON
  */
-//(function () {
-//  "use strict";
-//  // Create JSAV object
-//  var jsav = new JSAV("pagedBSTCON", {"animationMode": "none"});
-//
-//  // Create rectangles.
-//  // Set the starting x and y positions.
-//  var x_offset = 6;
-//  var y_offset = 10;
-//  // Add a store to the rectangles.
-//  var properties = {"stroke-width": 1};
-//  jsav.g.rect(x_offset + 46, y_offset - 5, 200, 65, 0, properties);   // Top rectangle.
-//  jsav.g.rect(x_offset + 0, y_offset + 70, 63, 65, 0, properties);    // First rectangle on second row.
-//  jsav.g.rect(x_offset + 76, y_offset + 70, 63, 65, 0, properties);   // Second rectangle on second row.
-//  jsav.g.rect(x_offset + 152, y_offset + 70, 63, 65, 0, properties);  // Third rectangle on second row.
-//  jsav.g.rect(x_offset + 229, y_offset + 70, 63, 65, 0, properties);  // Fourth rectangle on second row.
-//
-//  // Recursive function to create a binary tree of height 4.
-//  function genNodes(root, level) {
-//    if (level <= 2) {
-//      // Create left and right child nodes.
-//      genNodes(root.left(""), level + 1);
-//      genNodes(root.right(""), level + 1);
-//    }
-//  }
-//
-//  // Create binary tree object.
-//  var bst = jsav.ds.bintree({width: 500, height: 520, nodegap: 20, anchor: "left top"});
-//  // Set root node.
-//  bst.root("");
-//  // Generate child nodes.
-//  genNodes(bst.root(), 0);
-//  // Redraw binary tree to display newly created children nodes.
-//  bst.layout();
-//}());
-
 (function () {
   "use strict";
   var jsav = new JSAV("pagedBSTCON");
@@ -121,9 +105,9 @@
   var n = [10, 5, 15, 3, 8, 13, 18, 2, 4, 7, 9, 12, 14, 17, 19];
   var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];
 
-  var bst = jsav.ds.bintree({nodegap: 30});
+  var bst = jsav.ds.binarytree({nodegap: 30});
   var nodes = [
-    bst.root(n[0]),
+    bst.root(n[0])
   ];
   nodes[0].css({"background-color": colors[0]});
 
@@ -181,7 +165,7 @@
       nodes.push(new_node);
       flag = false;
     } else {
-      new_node = nodes[node].right(n[i])
+      new_node = nodes[node].right(n[i]);
       new_node.css({"background-color": colors[Math.floor(i / 3)]});
       nodes.push(new_node);
       flag = true;
@@ -195,6 +179,200 @@
   jsav.recorded();
 }());
 
+(function () {
+  "use strict";
+  var jsav = new JSAV("pagedBSTCON_2");
+
+  var n = [10, 5, 15, 3, 8, 13, 18, 2, 4, 7, 9, 12, 14, 17, 19];  // Tree node values.
+  var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"]; // Tree node colors.
+
+  // Create bst
+  var bst = jsav.ds.binarytree({nodegap: 40});
+  var nodes = [bst.root(n[0])]; // Node array
+  nodes[0].css({"background-color": colors[0]});  // Color root node.
+
+  // Create tree
+  var node = 0, flag = true, i;
+  for (i = 1; i < n.length; i++) {
+    var new_node;
+    if (flag) {
+      new_node = nodes[node].left(n[i]);
+      new_node.css({"background-color": colors[Math.floor(i / 3)]});
+      nodes.push(new_node);
+      flag = false;
+    } else {
+      new_node = nodes[node].right(n[i]);
+      new_node.css({"background-color": colors[Math.floor(i / 3)]});
+      nodes.push(new_node);
+      flag = true;
+      node++;
+    }
+  }
+
+  bst.layout();
+
+  // Create rectangles
+  var recs = [];
+  var x = 20, y = 300, w = 120, h = 50, num = 5;
+  for (i = 0; i < num; i++) {
+    recs.push(jsav.g.rect(x, y, w, h, {"stroke-width": 2, "fill": colors[i]}));
+    x += w;
+  }
+
+  // Create labels
+  var t = 310, l = 30, v = true;
+  var labels = [
+    jsav.label(n[0], {visible: v, left: (l + 0) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[1], {visible: v, left: (l + 40) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[2], {visible: v, left: (l + 80) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[3], {visible: v, left: (l + 120) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[4], {visible: v, left: (l + 160) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[5], {visible: v, left: (l + 200) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[6], {visible: v, left: (l + 240) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[7], {visible: v, left: (l + 280) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[8], {visible: v, left: (l + 320) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[9], {visible: v, left: (l + 360) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[10], {visible: v, left: (l + 400) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[11], {visible: v, left: (l + 440) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[12], {visible: v, left: (l + 480) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[13], {visible: v, left: (l + 520) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[14], {visible: v, left: (l + 560) + "px", top: (t + 0) + "px"})
+  ];
+
+  var messages = [
+    "This is the same tree as the previous slide show. Lets try to find the key 9.",
+    "First we look at the root. First disk access",
+    "Since 10 is more than 9 we follow the left child.",
+    "Since 5 if less than 9 we follow the right child. Second disk access",
+    "Since 8 is less than 9 we follow the right child. Third disk access",
+    "We found the node.",
+    "This search could be made more efficient if we rearranged the layout of node on disk.",
+    "This is one possible layout.",
+    "Lets find the key 9 again.",
+    "This time it only takes 2 disk accesses.",
+    "The problem with this layout is that it is difficult to maintain, especially when trying to maintain a complete tree. For example, lets try to remove the root node.",
+    "Next we need to rearrange the remaining nodes.",
+    "As you can see a simple node removal may require access to several nodes."
+  ];
+
+  jsav.label("Disk Accesses:", {visible: true, left: "0px", top: "16px"});
+  var da_array = jsav.ds.array([0], {left: "135px", top: "0px"});
+  da_array.css({height: "30px", width: "30px"});
+
+  jsav.umsg(messages.shift());
+  window.ODSA.setNodeHighlightDefault(nodes[0]);
+  jsav.displayInit();
+
+  jsav.umsg(messages.shift());
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[0]);
+  da_array.value(0, 1);
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[0]);
+  window.ODSA.toggleNodeHighlight(nodes[1]);
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[1]);
+  window.ODSA.toggleNodeHighlight(nodes[4]);
+  da_array.value(0, 2);
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[4]);
+  window.ODSA.toggleNodeHighlight(nodes[10]);
+  da_array.value(0, 3);
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[10]);
+  da_array.value(0, "");
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  for (i = 0; i < n.length; i++) {
+    if (i < 3) {
+      nodes[i].css({"background-color": colors[0]});
+    } else if (i < 7) {
+      nodes[i].css({"background-color": colors[i - 2]});
+    } else if (i < 9) {
+      nodes[i].css({"background-color": colors[1]});
+    } else if (i < 11) {
+      nodes[i].css({"background-color": colors[2]});
+    } else if (i < 13) {
+      nodes[i].css({"background-color": colors[3]});
+    }
+  }
+  labels[0].text(n[0]);
+  labels[1].text(n[1]);
+  labels[2].text(n[2]);
+  labels[3].text(n[3]);
+  labels[4].text(n[7]);
+  labels[5].text(n[8]);
+  labels[6].text(n[4]);
+  labels[7].text(n[9]);
+  labels[8].text(n[10]);
+  labels[9].text(n[5]);
+  labels[10].text(n[11]);
+  labels[11].text(n[12]);
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[0]);
+  window.ODSA.toggleNodeHighlight(nodes[1]);
+  window.ODSA.toggleNodeHighlight(nodes[4]);
+  window.ODSA.toggleNodeHighlight(nodes[10]);
+  da_array.value(0, 2);
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[0]);
+  window.ODSA.toggleNodeHighlight(nodes[1]);
+  window.ODSA.toggleNodeHighlight(nodes[4]);
+  window.ODSA.toggleNodeHighlight(nodes[10]);
+  da_array.value(0, "");
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[0]);
+  nodes[0].value("");
+  da_array.value(0, 1);
+  jsav.step();
+
+  window.ODSA.toggleNodeHighlight(nodes[2]);
+  window.ODSA.toggleNodeHighlight(nodes[0]);
+  jsav.effects.moveValue(nodes[2], nodes[0]);
+  da_array.value(0, 1);
+  jsav.step();
+
+  window.ODSA.toggleNodeHighlight(nodes[6]);
+  window.ODSA.toggleNodeHighlight(nodes[2]);
+  jsav.effects.moveValue(nodes[6], nodes[2]);
+  da_array.value(0, 2);
+  jsav.step();
+
+  window.ODSA.toggleNodeHighlight(nodes[14]);
+  window.ODSA.toggleNodeHighlight(nodes[6]);
+  jsav.effects.moveValue(nodes[14], nodes[6]);
+  da_array.value(0, 2);
+  jsav.step();
+
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[14]);
+  nodes[14].remove();
+  jsav.step();
+
+  jsav.recorded();
+
+}());
+
 /**
  * Creates a diagram to demonstrate the changes made to a binary search tree when it is balanced.
  *
@@ -205,8 +383,8 @@
   // Initialize JSAV object.
   var jsav = new JSAV("balanceBSTCON", {"animationMode": "none"});
   // Initialize BST and the balanced BST object.
-  var bst = jsav.ds.bintree({left: "10px", nodegap: 20});
-  var bbst = jsav.ds.bintree({left: "220px", nodegap: 20});
+  var bst = jsav.ds.binarytree({left: "10px", nodegap: 20});
+  var bbst = jsav.ds.binarytree({left: "220px", nodegap: 20});
   // Add labels
   jsav.label("(a)", {visible: true, left: "75px", top: "110px"});
   jsav.label("(b)", {visible: true, left: "285px", top: "110px"});
@@ -248,7 +426,7 @@
 
   var jsav = new JSAV("colorizedBST");
 
-  var bst = jsav.ds.bintree({nodegap: 15});
+  var bst = jsav.ds.binarytree({nodegap: 15});
 
   // Create color array
   var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];

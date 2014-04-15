@@ -50,7 +50,7 @@
                 jsavTree.clear();
             }
             //create binary tree
-            jsavTree = av.ds.bintree({center: false, visible: true, nodegap: 5});
+            jsavTree = av.ds.binarytree({center: false, visible: true, nodegap: 5});
             jsavTree.element.css({position: "absolute", top: 0/*, right: 0*/});
             jsavTree.origlayout = jsavTree.layout;
             jsavTree.layout = function () {
@@ -82,7 +82,7 @@
                 subtree.clear();
             }
             //create empty sub tree
-            subtree = av.ds.bintree({center: false, visible: true, nodegap: 5});
+            subtree = av.ds.binarytree({center: false, visible: true, nodegap: 5});
             subtree.element.css({position: "absolute", top: 0});
             subtree.root().addClass("emptynode");
             subtree.click(clickHandler);
@@ -100,14 +100,14 @@
         }
         
         function modelSolution(jsav) {
-            var modelTree = jsav.ds.bintree({center: false, visible: true, nodegap: 5});
+            var modelTree = jsav.ds.binarytree({center: false, visible: true, nodegap: 5});
             //insert nodes
             modelTree.insert(initialArray);
             modelTree.addEmptyNodes();
             modelTree.layout();
             modelTree.element.css({position: "absolute", top: 0, left: jsav.canvas.width() / 2 - modelTree.element.width() / 2});
 
-            var modelSubtree = jsav.ds.bintree({center: false, visible: true, nodegap: 5});
+            var modelSubtree = jsav.ds.binarytree({center: false, visible: true, nodegap: 5});
             modelSubtree.element.css({position: "absolute", left: 0, top: 0});
             modelSubtree.root("").addClass("emptynode");
             modelSubtree.layout();
@@ -316,7 +316,7 @@
                 pos_y -= av.canvas.offset().top;
                 turnAnimationOff();
                 //create tempTree for animation
-                var tempTree = av.ds.bintree({center: false, visible: true, nodegap: 5});
+                var tempTree = av.ds.binarytree({center: false, visible: true, nodegap: 5});
                 //move selected nodes subtree to this
                 copySubtree(selectedNode, tempTree.root(""));
                 //remove original subtree and replace with an empty node
@@ -454,7 +454,7 @@
             
             while (true) {
                 var arr = [];
-                var bt = av.ds.bintree();
+                var bt = av.ds.binarytree();
                 for (var i = 0; i < options.maxNodes; i++) {
                     var rand;
                     do {

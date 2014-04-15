@@ -296,7 +296,7 @@
 
       // construct a new tree
       hfArray.length += 1;
-      hfArray[newIndex] = jsav.ds.bintree({visible: false, center: false});
+      hfArray[newIndex] = jsav.ds.binarytree({visible: false, center: false});
       hfArray[newIndex].root(key);
 
       // Construct the left subtree by copying the 1st tree
@@ -338,7 +338,7 @@
 
       // construct a new tree
       hfArray.length += 1;
-      hfArray[newIndex] = jsav.ds.bintree({visible: false, center: false, nodegap: 22});
+      hfArray[newIndex] = jsav.ds.binarytree({visible: false, center: false, nodegap: 22});
       hfArray[newIndex].root(key);
 
       // Construct the left subtree by copying the 1st tree
@@ -416,7 +416,7 @@
   for (var i = 0, j = 0; i < userArray.length - 1; i += 2, j++) {
     value = userArray[i] + "<br>" + userArray[i + 1];
     valArray[j] = value;
-    hfArray[j] = jsav.ds.bintree({center: false});
+    hfArray[j] = jsav.ds.binarytree({center: false});
     hfArray[j].root(value);
     numArray[j] = userArray[i];
     chaArray[j] = userArray[i+1];

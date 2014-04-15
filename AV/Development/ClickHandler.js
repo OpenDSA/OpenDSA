@@ -14,12 +14,14 @@
 	var ClickHandler = function ClickHandler(jsav, exercise, options) {
 		var defaults = {
 			selectedClass: "jsavhighlight",
+			inactiveClass: undefined,	// ignore all clicks on nodes with this class
 			selectEmpty: false,			// don't allow selecting empty nodes
 			effect: "move",				// move, copy, swap, toss
 			arraySwapOptions: {			// options for array swap
 				use: true,				// use array swap by default
 				arrow: false,			// turn array swap arrow off by default
 				highlight: false,		// do not use pink highlighting when swapping
+				swapClasses: true
 			},
 			removeNodes: true,			// remove nodes when they become empty
 			gradeable: true,			// tells click handler if action should be graded. Can be overridden with return value of onDrop
@@ -43,7 +45,7 @@
 			var ch = this;
 			this.jsav.container.click(function (event) {
 				var $target = $(event.target);
-				if ($target.is(ch.jsav.container) || 
+				if ($target.is(ch.jsav.container) ||
 					$target.is(ch.jsav.canvas) ||
 					$target.is("p")) {
 					ch.deselect();
@@ -101,8 +103,9 @@
 		//tells click handler to select the given index in an array or the given node
 		select: function (struct, indexOrNode) {
 			//don't do anything if click handler is unaware of structure
-			if (this.getDsIndex(struct) === -1)
+			if (this.getDsIndex(struct) === -1) {
 				return;
+			}
 			//deselect if something is selected
 			this.deselect();
 
@@ -146,9 +149,14 @@
 
 			//add click handler
 			array.click(function (index) {
+				// ignore the click if the node has the inactive class
+				if (options.inactiveClass && array.hasClass(index, options.inactiveClass)) {
+					return;
+				}
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
+				var grade;
 
 				if (sStruct === -1) {
 					//select empty nodes only if the options allow it
@@ -179,7 +187,7 @@
 						});
 						array.layout();
 						//call onDrop function
-						var grade = options.onDrop.call(this, index);
+						grade = options.onDrop.call(this, index);
 						if (typeof grade === "undefined") {
 							//use default if nothing is returned
 							grade = options.gradeable;
@@ -202,15 +210,15 @@
 					}
 					//move value from node (sIndex === -1) or another array
 					valueEffect(ch, {
-						from: sIndex === -1? ch.selNode: ch.getDs(sStruct),
-						fromIndex: sIndex === -1? undefined: sIndex,
+						from: sIndex === -1 ? ch.selNode : ch.getDs(sStruct),
+						fromIndex: sIndex === -1 ? undefined : sIndex,
 						to: this,
 						toIndex: index,
 						effect: options.effect
 					});
 					array.layout();
 					//call onDrop function
-					var grade = options.onDrop.call(this, index);
+					grade = options.onDrop.call(this, index);
 					if (typeof grade === "undefined") {
 						//use default if nothing is returned
 						grade = options.gradeable;
@@ -237,9 +245,14 @@
 
 			//add click handler
 			list.click(function () {
+				// ignore the click if the node has the inactive class
+				if (options.inactiveClass && this.hasClass(options.inactiveClass)) {
+					return;
+				}
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
+				var grade, to;
 
 				if (sStruct === -1) {
 					//select empty nodes only if the options allow it
@@ -271,7 +284,6 @@
 					//select
 					ch.select(list, sel);
 				} else if (sStruct === ch.getDsIndex(list)) {
-					var to;
 					switch (options.drop) {
 					case "first":
 						if (options.select === "first" || this === ch.selNode) {
@@ -299,7 +311,7 @@
 						});
 						list.layout();
 						//call onDrop function
-						var grade = options.onDrop.call(to);
+						grade = options.onDrop.call(to);
 						if (typeof grade === "undefined") {
 							//use default if nothing is returned
 							grade = options.gradeable;
@@ -316,7 +328,6 @@
 					}
 				} else {
 					//move/copy/swap from an another structure
-					var to;
 					switch (options.drop) {
 					case "first":
 						to = list.addFirst().first();
@@ -329,14 +340,14 @@
 					}
 					//move value from node (sIndex === -1) or an array
 					valueEffect(ch, {
-						from: sIndex === -1? ch.selNode: ch.getDs(sStruct),
-						fromIndex: sIndex === -1? undefined: sIndex,
+						from: sIndex === -1 ? ch.selNode : ch.getDs(sStruct),
+						fromIndex: sIndex === -1 ? undefined : sIndex,
 						to: to,
 						effect: options.effect
 					});
 					list.layout();
 					//call onDrop function
-					var grade = options.onDrop.call(to);
+					grade = options.onDrop.call(to);
 					if (typeof grade === "undefined") {
 						//use default if nothing is returned
 						grade = options.gradeable;
@@ -363,9 +374,14 @@
 
 			//add click handler
 			tree.click(function () {
+				// ignore the click if the node has the inactive class
+				if (options.inactiveClass && this.hasClass(options.inactiveClass)) {
+					return;
+				}
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
+				var grade;
 
 				if (sStruct === -1) {
 					//select empty nodes only if the options allow it
@@ -394,7 +410,7 @@
 						});
 						tree.layout();
 						//call onDrop function
-						var grade = options.onDrop.call(this);
+						grade = options.onDrop.call(this);
 						if (typeof grade === "undefined") {
 							//use default if nothing is returned
 							grade = options.gradeable;
@@ -412,14 +428,14 @@
 					//move/copy/swap from an another structure
 					//move value from node (sIndex === -1) or an array
 					valueEffect(ch, {
-						from: sIndex === -1? ch.selNode: ch.getDs(sStruct),
-						fromIndex: sIndex === -1? undefined: sIndex,
+						from: sIndex === -1 ? ch.selNode: ch.getDs(sStruct),
+						fromIndex: sIndex === -1 ? undefined: sIndex,
 						to: this,
 						effect: options.effect
 					});
 					tree.layout();
 					//call onDrop function
-					var grade = options.onDrop.call(this);
+					grade = options.onDrop.call(this);
 					if (typeof grade === "undefined") {
 						//use default if nothing is returned
 						grade = options.gradeable;

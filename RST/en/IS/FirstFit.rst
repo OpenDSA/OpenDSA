@@ -25,4 +25,4 @@ called :term:`first fit`.
 
 Now try it for yourself with the following exercise.
 
-.. avembed:: Exercises/Development/FirstFitPRO.html ka
+.. avembed:: AV/Development/firstFitPRO.html pe

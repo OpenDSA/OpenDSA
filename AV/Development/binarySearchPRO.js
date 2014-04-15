@@ -9,7 +9,7 @@
     $findLabel,
     pseudo,
     interpret,
-    config = ODSA.UTILS.getConfig("binarySearchPRO.json"),
+    config = ODSA.AV.getConfig("binarySearchPRO.json"),
     av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
@@ -20,7 +20,7 @@
     if (typeof interpret !== "function") {
       interpret = JSAV.utils.getInterpreter(config.language);
       // change the title and the instructions on the page
-      ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
+      ODSA.AV.setTitleAndInstructions(av.container, config.language);
     }
 
     // show the code and highlight the row where mid is calculated
@@ -39,7 +39,7 @@
 
     //generate a random key, the value of which is between the min and max of the array
     key = Math.ceil(5* (initialArray[0] + initialArray[arraySize -1]) / 7);
-    
+
     // clear old elements
     if (keyholder) {
       keyholder.clear();
@@ -130,7 +130,7 @@
 
   // a function to handle all click events on the array
   function clickhandler(index) {
-    
+
     //if the clicked index is not higlighted earlier, highlight it and paint the ones which are outside of the new range
     if (!this.isHighlight(index)) {
       this.value(index, initialArray[index]);

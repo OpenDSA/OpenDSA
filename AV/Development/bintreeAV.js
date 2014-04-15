@@ -9,9 +9,10 @@
   var Bintree = function (jsav, xrange, yrange) {
 
     // This is the JSAV base data structure, a binary tree.
-    this.tree = jsav.ds.bintree({nodegap: 10});
+    this.tree = jsav.ds.binarytree({nodegap: 10});
     // This is the root of the tree
-    this.vrt = this.tree.root('');
+    this.vrt = this.tree.root('ROOT');
+
     this.root = this.vrt;
     console.log("I'm making a new Bintree object. root = ", this.root);
     // Set the values of the root node.
