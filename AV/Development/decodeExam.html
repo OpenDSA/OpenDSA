@@ -2,15 +2,14 @@
 <html>
 <head>
 <title>Huffman Trie Decode Example</title>
-<!-- <link href="AeBookAV.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="../css/JSAV.css" type="text/css" /> -->
+<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
 </head>
 
 <body>
 <style>
   #jsavcontainer {
-    width: 500px;
-    height: 250px;
+    width: 550px;
+    height: 450px;
     background-color: #efe;
   }
   p.jsavoutput.jsavline {
@@ -37,71 +36,17 @@
   <script 
   src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
   </script>
-  <!--<script 
-  src="../../lib/jquery.transit.js">
-  </script>-->
+  <script 
+  src="../../JSAV/lib/jquery.transit.js">
+  </script>
   <script 
   src="../../JSAV/build/JSAV.js">
   </script>
+  <script 
+  src="../../JSAV/lib/raphael.js">
+  </script>
 
   <script>
-
-    // vars specific to this exericse
-    var initialTree, workingTree;
-    var av = new JSAV("jsavcontainer"); 
-    
-    av.recorded();
-
-    function initialize() {
-
-      if (workingTree) {
-        workingTree.clear();
-      }
-
-      av.umsg("Demonstrate how the followin Huffman coding trie would decode the binary string '111101'");
-    
-      initialTree = construct_tree(av);
-      workingTree = construct_tree(av);
-
-      workingTree.click(treeClickHandler);
-
-      return workingTree;
-    }
-
-    function modelSolution(modeljsav) {
-      var t = construct_tree(modeljsav);
-      modeljsav.displayInit();
-
-      // first step
-      t.root().highlight();
-      modeljsav.gradeableStep();
-
-      // second step
-      t.root().right().highlight();
-      modeljsav.gradeableStep();
-
-      // third
-      t.root().right().right().highlight();
-      modeljsav.gradeableStep();
-      
-      // fourth
-      t.root().right().right().right().highlight();
-      modeljsav.gradeableStep();
-
-      // fifth
-      t.root().right().right().right().left().highlight();
-      modeljsav.gradeableStep();
-
-      // last one
-      t.root().right().right().right().left().right().highlight();
-      modeljsav.gradeableStep();
-    
-      return t;
-    };
-
-    function arrayClickHandler(index) {
-      console.log(index);
-    };
 
     /* 
      * Constructs the standard tree used in HuffmanCon1 - HuffmanCon5
@@ -151,6 +96,66 @@
 
       return t;
     }
+
+    // vars specific to this exericse
+    var initialTree, workingTree;
+    var av = new JSAV("jsavcontainer"); 
+    
+    av.recorded();
+
+    function initialize() {
+
+      if (workingTree) {
+        workingTree.clear();
+      }
+
+      av.umsg("Demonstrate how the following Huffman coding trie would decode the binary string '111101'");
+    
+      initialTree = [];
+      workingTree = construct_tree(av);
+
+      workingTree.click(treeClickHandler);
+
+      return workingTree;
+    }
+
+    function modelSolution(modeljsav) {
+      var t = construct_tree(modeljsav);
+      modeljsav.displayInit();
+
+      // first step
+      t.root().highlight();
+      modeljsav.gradeableStep();
+
+      // second step
+      t.root().right().highlight();
+      modeljsav.gradeableStep();
+
+      // third
+      t.root().right().right().highlight();
+      modeljsav.gradeableStep();
+      
+      // fourth
+      t.root().right().right().right().highlight();
+      modeljsav.gradeableStep();
+
+      // fifth
+      t.root().right().right().right().left().highlight();
+      modeljsav.gradeableStep();
+
+      // last one
+      t.root().right().right().right().left().right().highlight();
+      modeljsav.gradeableStep();
+    
+      return t;
+    };
+
+    var exercise = av.exercise(modelSolution, initialize, {class: "jsavhighlight"},
+                              { feedback: "continuous"});
+
+    function treeClickHandler(index) {
+      console.log("hi");
+    };
 
   </script>
 
