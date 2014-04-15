@@ -256,7 +256,7 @@ function construct_tree(av) {
   var t = av.ds.binarytree({nodegap: 25});
   var r = t.root("36");
   t.layout();
-  var tl = new timeline(av, 40, 325, 500, 0, 65, 10);
+  var tl = new timeline(av, 49, 325, 500, 0, 70, 10);
   
   // These vars correspond the the height of each line corresponding
   // to the level of the tree. For example, ht1 is the height of the
@@ -410,33 +410,73 @@ function construct_tree(av) {
 }(jQuery));
 
 /*
- * This is the AV for the timeline visulization for showing how a tree (NOT trie)
+ * This is the AV for the timeline visulization for showing how a trie (NOT tree)
  * splits space. 
  */
 (function ($) {
+  
   var av = new JSAV("TrieTimeline");
-  var t = new window.tree.Bintree(av, 10, 0, 50);
-
-  av.umsg("We first insert 36.");
-  av.displayInit();
-
-  t.insert(50);
-  t.insert(60);
-
+  var t = av.ds.binarytree({nodegap: 25});
+  var r = t.root("E");
   t.layout();
+  var tl = new timeline(av, 49, 325, 500, 0, 70, 10);
+  
+  // These vars correspond the the height of each line corresponding
+  // to the level of the tree. For example, ht1 is the height of the
+  // split (on the timeline) for a node in the first level of the 
+  // tree (the root node). To make the split longer, increase the
+  // value of ht1 and so on.
+  var ht1 = 95;
+  var ht2 = 80;
+  var ht3 = 65;
+  var ht4 = 50;
+  var ht5 = 35;
+  var ht6 = 20;
+  var hts = 105; // height of split
+
+  // colors for animation
+  var highlight_background_color = "#2B44CF";
+  var highlight_text_color = "white";
+  var unhighlight_background_color = "white";
+  var unhighlight_background_split_color = "black";
+  var split_color = "#3BC423";
+
+  av.umsg("To demonstrate to characteristics of a trie, we will display this on a number line. We start with an emtpy trie.");
+  t.layout(); // multiple layout() calls to fix off center tree issue
+  av.displayInit();
+  t.layout();
+  
+  // step 1
+  r.value("35");
+  r.left("E");
+  r.right("36");
+  r.right().addClass("huffmanleaf");
+  t.layout();
+  var split35 = tl.add_value(35, "35", hts, {label_top: true});
+  var split36 = tl.add_value(36, "36", ht1);
+  r.css({"fill": split_color});
+  split35.css({"fill": split_color});
+  r.right().css({"background-color": "highlight_background_color"});
   av.step();
+
 
   // cleanup
   av.recorded();
 
 }(jQuery));
 
-function split (av, x, x1, y, label, height) {
+function fill
+
+function split (av, x, x1, y, label, height, top) {
+  
+  var label_ht = y - (height/2) - 20;
+  if (top) { label_ht = y + (height/2) + 5};
+
   this.x = x;
   this.label = label;
 
   this.rec = av.g.rect(x + x1, y - (height / 2), 2, height, {fill: "red", "stroke-width": 0});
-  this.label = av.label(label, {left: x + x1 - 9, top: y - (height/2) - 20});
+  this.label = av.label(label, {left: x + x1 - 9, top: label_ht});
 
   this.highlight = function () {
     this.rec.css({"fill": "#2B44CF"});
@@ -480,8 +520,8 @@ function timeline(av, x, y, len, min, max, inc) {
    *
    * Returns: The split object.
    */
-  this.add_line = function (x1, label, height) {
-    return new split (av, x, x1, y, label, height);
+  this.add_line = function (x1, label, height, top) {
+    return new split (av, x, x1, y, label, height, top);
   };
 
   /* Inserts a split at the numebr 'val' with label 'label' and 
@@ -489,10 +529,14 @@ function timeline(av, x, y, len, min, max, inc) {
    *
    * Returns: The split obejct. 
    */
-  this.add_value = function (val, label, height) {
+  this.add_value = function (val, label, height, prop) {
+    
+    var top = false;
+    if (typeof(prop)!= 'undefined' && typeof(prop.label_top) != 'undefined') { top = true; }
+    
     var range = max - min;
     var pxPerInc = (len - buffer * 2) / range; // 5px buff on each inner side of arrow
     var pos = pxPerInc * val; // add 5 because must account for 5 px buffer
-    return this.add_line(pos, label, height);
+    return this.add_line(pos, label, height, top);
   };
 }
