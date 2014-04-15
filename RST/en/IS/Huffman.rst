@@ -437,6 +437,9 @@ predetermined are given the special name :dfn:`trie` to distinguish
 them from the type of search tree (like the BST) whose splitting
 points are determined by the data.
 
+.. inlineav:: TrieTimeline ss
+   :output: show
+
 Notes
 -----
 
@@ -446,5 +449,6 @@ Notes
        But a real implementation would use a heap to implement the
        priority queue for efficiency.
 
+.. odsascript:: AV/Development/Bintree.js
 .. odsascript:: AV/Development/HuffmanCodingExamp.js
 .. odsascript:: AV/Development/HuffmanCON.js

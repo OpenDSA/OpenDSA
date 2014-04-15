@@ -18,7 +18,7 @@
     stack = av.ds.stack({center: true});
 
     function dataTest(array) {
-      var bst = av.ds.bintree();
+      var bst = av.ds.binarytree();
       bst.insert(array);
       var result = bst.height() <= maxHeight;
       bst.clear();
@@ -30,7 +30,7 @@
       jsavTree.clear();
     }
     //generate random tree
-    jsavTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
+    jsavTree = av.ds.binarytree({center: true, visible: true, nodegap: 15});
     do {
       initialArray = []
       perfectBinTree(initialArray, 1, 10, 100, 3, 1);
@@ -110,7 +110,7 @@
     }
     modelStack.layout();
 
-    var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 10});
+    var modelTree = jsav.ds.binarytree({center: true, visible: true, nodegap: 10});
 
     modelTree.insert(initialArray);
     modelTree.layout();

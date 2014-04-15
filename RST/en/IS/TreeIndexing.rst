@@ -100,6 +100,11 @@ great deal of rearranging of data within the tree.
    The BST is divided among disk blocks, each with space for three nodes.
    The path from the root to any leaf is contained on two blocks.
 
+.. _PagedBST_2:
+
+.. inlineav:: pagedBSTCON_2 ss
+   :output: show
+
 .. _Rebalance:
 
 .. inlineav:: balanceBSTCON dgm

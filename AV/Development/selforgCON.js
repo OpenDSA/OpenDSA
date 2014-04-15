@@ -26,42 +26,6 @@ function delPointer(pointer){
     pointer.arrow.remove();
   }
 }
-// JSAV extension
-(function ($) {
-  JSAV._types.ds.ListNode.prototype.odsa_addTail = function(options){	  
-	var fx = $('#' + this.id()).position().left + this.container.position().left + 33;
-    var fy = $('#' + this.id()).position().top + this.container.position().top + 32;
-    var options = options || {};
-	if(options.left){
-	  fx += options.left;
-	}
-	if(options.top){
-	  fy += options.top;
-	}
-	if(options.visible === "undefined"){
-      options.visible = 100;
-	}
-	return this.jsav.g.line(fx, fy, fx + 10, fy - 31,
-      {"opacity": options.visible,"stroke-width": 1});
-  }
-
-  JSAV._types.ds.ListNode.prototype.odsa_addVLine = function(options){	  
-	var fx = $('#' + this.id()).position().left + this.container.position().left;
-    var fy = $('#' + this.id()).position().top + this.container.position().top;
-    var options = options || {};
-	if(options.left){
-	  fx += options.left;
-	}
-	if(options.top){
-	  fy += options.top;
-	}	
-	if(options.visible === "undefined"){
-      options.visible = 100;
-	}
-	return this.jsav.g.line(fx - 15, fy - 5 , fx - 15, fy + 35,
-      {"opacity": options.visible, "stroke-width": 1});
-  }
-}(jQuery));
 
 // SelfOrg frequence heuristic
 ///////////////////////////////////////

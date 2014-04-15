@@ -8,7 +8,7 @@
                        startAfter: "/* *** ODSATag: findhelp *** */",
                        endBefore: "/* *** ODSAendTag: findhelp *** */"});
 
-  var bt = jsav.ds.bintree({top: 10, left: 10, visible: true, nodegap: 15});
+  var bt = jsav.ds.binarytree({top: 10, left: 10, visible: true, nodegap: 15});
   bt.root(37);
   var rt = bt.root();
   rt.left(24);
@@ -110,8 +110,8 @@
                        startAfter: "/* *** ODSATag: inserthelp *** */",
                        endBefore: "/* *** ODSAendTag: inserthelp *** */"});
 
-  //  var bt = jsav.ds.bintree({top: 240, visible: true, nodegap: 15});
-  var bt = jsav.ds.bintree({visible: true, nodegap: 15});
+  //  var bt = jsav.ds.binarytree({top: 240, visible: true, nodegap: 15});
+  var bt = jsav.ds.binarytree({visible: true, nodegap: 15});
   bt.root(37);
   var rt = bt.root();
   rt.left(24);
@@ -264,7 +264,7 @@
                        startAfter: "/* *** ODSATag: deletemax *** */",
                        endBefore: "/* *** ODSAendTag: deletemax *** */"});
 
-  var bt = jsav.ds.bintree({top: 10, left: 40, visible: true, nodegap: 15});
+  var bt = jsav.ds.binarytree({top: 10, left: 40, visible: true, nodegap: 15});
 
   bt.root(10);
   var rt = bt.root();
@@ -319,7 +319,7 @@
                        startAfter: "/* *** ODSATag: removehelp *** */",
                        endBefore: "/* *** ODSAendTag: removehelp *** */"});
 
-  var bt = jsav.ds.bintree({visible: true, nodegap: 15});
+  var bt = jsav.ds.binarytree({visible: true, nodegap: 15});
   bt.root(37);
   var rt = bt.root();
   rt.left(24);

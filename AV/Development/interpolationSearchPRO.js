@@ -13,7 +13,7 @@
     interLine,
     pseudo,
     interpret,
-    config = ODSA.UTILS.getConfig("interpolationSearchPRO.json"),
+    config = ODSA.AV.getConfig("interpolationSearchPRO.json"),
     av = new JSAV($("#jsavcontainer"));
 
 
@@ -25,7 +25,7 @@
     if (typeof interpret !== "function") {
       interpret = JSAV.utils.getInterpreter(config.language);
       // change the title and the instructions on the page
-      ODSA.UTILS.setTitleAndInstructions(av.container, config.language);
+      ODSA.AV.setTitleAndInstructions(av.container, config.language);
     }
 
     // show the code and highlight the row where mid is calculated
@@ -48,7 +48,7 @@
     } else {
       key = Math.floor(2* (initialArray[0] + initialArray[arraySize -1]) / 7)
     }
-    
+
     // clear old elements
     if (keyholder) {
       keyholder.clear();
@@ -239,7 +239,7 @@
   }
 
   function clickhandler(index) {
-    
+
     if (stateVar.value() === 0) {
       lowIndex.value(index);
       array.toggleArrow(index);

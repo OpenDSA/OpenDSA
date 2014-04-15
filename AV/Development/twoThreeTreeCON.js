@@ -118,11 +118,40 @@
     return parseFloat(pixels.substring(0, pixels.length - 2));
   }
 
+  function toggleArrayHighlight(array_node) {
+    if (array_node.css(array_highlight_property) === "none") {
+      array_node.css(array_highlight_add);
+    } else {
+      array_node.css(array_highlight_remove);
+    }
+  }
+
+  function toggleEdgeHighlight(line) {
+    if (line.css(edge_highlight_property) === "#000") {
+      line.css(edge_highlight_add);
+    } else {
+      line.css(edge_highlight_remove);
+    }
+  }
+
+  // Highlight properties for arrays.
+  var array_highlight_property = "box-shadow";
+  var array_highlight_add = {"box-shadow": "0 0 15px 5px #2B92FF"};
+  var array_highlight_remove = {"box-shadow": "none"};
+
+  // Highlight properties for line edges.
+  var edge_highlight_property = "stroke";
+  var edge_highlight_add = {"stroke": "#2B92FF", "stroke-width": 3.0};
+  var edge_highlight_remove = {"stroke": "black", "stroke-width": 1.0};
+
+
   var ODSA = {};
   ODSA.drawEdge = drawEdge;
   ODSA.positionRow = positionRow;
   ODSA.getArrayNodes = getArrayNodes;
   ODSA.getArrayNodesEdges = getArrayNodesEdges;
+  ODSA.toggleArrayHiglight = toggleArrayHighlight;
+  ODSA.toggleEdgeHiglight = toggleEdgeHighlight;
   window.ODSA = ODSA;
 }());
 
@@ -181,9 +210,6 @@
     "The insertion is complete."
   ];
 
-  var highlight_property = {"box-shadow": "0 0 15px 5px rgb(237, 98, 83)"};
-  var reset_property = {"box-shadow": "none"};
-
   /* 1st Slide *************************************************************/
   jsav.umsg(messages.shift());
   jsav.label("Insert:", {left: "55px", top: "5px"});
@@ -192,26 +218,26 @@
 
   /* 2nd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[0].css(highlight_property);
+  window.ODSA.toggleArrayHiglight(arrays[0]);
   arrays[0].highlight(0);
-  lines[0].css({"stroke": "red", "stoke-width": "2.5"});
+  window.ODSA.toggleEdgeHiglight(lines[0]);
   jsav.step();
 
   /* 3rd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[1].css(highlight_property);
-  arrays[0].css(reset_property);
-  lines[0].css({"stroke": "black", "stoke-width": "1.5"});
+  window.ODSA.toggleArrayHiglight(arrays[1]);
+  window.ODSA.toggleArrayHiglight(arrays[0]);
+  window.ODSA.toggleEdgeHiglight(lines[0]);
   arrays[0].unhighlight(0);
   arrays[1].highlight(0);
-  lines[4].css({"stroke": "red", "stoke-width": "2.5"});
+  window.ODSA.toggleEdgeHiglight(lines[4]);
   jsav.step();
 
   /* 4th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[5].css(highlight_property);
-  arrays[1].css(reset_property);
-  lines[4].css({"stroke": "black", "stoke-width": "1.5"});
+  window.ODSA.toggleArrayHiglight(arrays[5]);
+  window.ODSA.toggleArrayHiglight(arrays[1]);
+  window.ODSA.toggleEdgeHiglight(lines[4]);
   arrays[1].unhighlight(0);
   jsav.step();
 
@@ -222,7 +248,7 @@
 
   /* 5th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[5].css(reset_property);
+  window.ODSA.toggleArrayHiglight(arrays[5]);
   jsav.effects.moveValue(insert, 0, arrays[5], 0);
   jsav.step();
 
@@ -265,9 +291,6 @@
     "The insertion is complete"
   ];
 
-  var highlight_property = {"box-shadow": "0 0 15px 5px rgb(237, 98, 83)"};
-  var reset_property = {"box-shadow": "none"};
-
   /* 1st Slide *************************************************************/
   jsav.umsg(messages.shift());
   jsav.label("Insert:", {left: "55px", top: "5px"});
@@ -276,26 +299,26 @@
 
   /* 2nd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[0].css(highlight_property);
+  window.ODSA.toggleArrayHiglight(arrays[0]);
   arrays[0].highlight(1);
-  lines[2].css({"stroke": "red"});
+  window.ODSA.toggleEdgeHiglight(lines[2]);
   jsav.step();
 
   /* 3rd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[3].css(highlight_property);
-  arrays[0].css(reset_property);
-  lines[2].css({"stroke": "black"});
+  window.ODSA.toggleArrayHiglight(arrays[3]);
+  window.ODSA.toggleArrayHiglight(arrays[0]);
+  window.ODSA.toggleEdgeHiglight(lines[2]);
   arrays[0].unhighlight(1);
   arrays[3].highlight(0);
-  lines[9].css({"stroke": "red"});
+  window.ODSA.toggleEdgeHiglight(lines[9]);
   jsav.step();
 
   /* 4th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[10].css(highlight_property);
-  arrays[3].css(reset_property);
-  lines[9].css({"stroke": "black"});
+  window.ODSA.toggleArrayHiglight(arrays[10]);
+  window.ODSA.toggleArrayHiglight(arrays[3]);
+  window.ODSA.toggleEdgeHiglight(lines[9]);
   arrays[3].unhighlight(0);
   jsav.step();
 
@@ -304,7 +327,7 @@
   arrays.push(jsav.ds.array(["", ""], {visible: false}));
   window.ODSA.positionRow(arrays.slice(4), 160, width + 80, 639);
   arrays[11].show();
-  arrays[11].css(highlight_property);
+  window.ODSA.toggleArrayHiglight(arrays[11]);
   jsav.step();
 
   /* 6th Slide *************************************************************/
@@ -318,9 +341,9 @@
 
   /* 8th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[3].css(highlight_property);
-  arrays[11].css(reset_property);
-  arrays[10].css(reset_property);
+  window.ODSA.toggleArrayHiglight(arrays[3]);
+  window.ODSA.toggleArrayHiglight(arrays[11]);
+  window.ODSA.toggleArrayHiglight(arrays[10]);
   jsav.effects.moveValue(arrays[10], 1, arrays[3], 1);
   arrays[3].highlight(1);
   jsav.step();
@@ -329,7 +352,7 @@
   jsav.umsg(messages.shift());
   window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[11], 2, length);
   arrays[3].unhighlight(1);
-  arrays[3].css(reset_property);
+  window.ODSA.toggleArrayHiglight(arrays[3]);
   jsav.step();
 
   // Mark the slide show as finished.
@@ -377,9 +400,6 @@
     "The insertion is complete."
   ];
 
-  var highlight_property = {"box-shadow": "0 0 15px 5px rgb(237, 98, 83)"};
-  var reset_property = {"box-shadow": "none"};
-
   /* 1st Slide *************************************************************/
   jsav.umsg(messages.shift());
   jsav.label("Insert:", {left: "55px", top: "5px"});
@@ -390,25 +410,24 @@
 
   /* 2nd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[0].css(highlight_property);
-  lines[1].css({"stroke": "red"});
+  window.ODSA.toggleArrayHiglight(arrays[0]);
+  window.ODSA.toggleEdgeHiglight(lines[1]);
   jsav.step();
 
   /* 3rd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[2].css(highlight_property);
-  arrays[0].css(reset_property);
-  lines[2].css({"stroke": "black"});
-  lines[1].css({"stroke": "black"});
+  window.ODSA.toggleArrayHiglight(arrays[2]);
+  window.ODSA.toggleArrayHiglight(arrays[0]);
+  window.ODSA.toggleEdgeHiglight(lines[1]);
   arrays[2].highlight(0);
-  lines[5].css({"stroke": "red"});
+  window.ODSA.toggleEdgeHiglight(lines[5]);
   jsav.step();
 
   /* 4th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[6].css(highlight_property);
-  arrays[2].css(reset_property);
-  lines[5].css({"stroke": "black"});
+  window.ODSA.toggleArrayHiglight(arrays[6]);
+  window.ODSA.toggleArrayHiglight(arrays[2]);
+  window.ODSA.toggleEdgeHiglight(lines[5]);
   arrays[2].unhighlight(0);
   jsav.step();
 
@@ -427,7 +446,7 @@
   lines.splice(7, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[9], 2, length));
   lines.splice(8, 1, window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[10], 0, length));
   lines.splice(9, 1, window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[11], 1, length));
-  arrays[7].css(highlight_property);
+  window.ODSA.toggleArrayHiglight(arrays[7]);
   jsav.step();
 
   /* 6th Slide *************************************************************/
@@ -447,13 +466,13 @@
 
   /* 9th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[6].css(reset_property);
-  arrays[7].css(reset_property);
+  window.ODSA.toggleArrayHiglight(arrays[6]);
+  window.ODSA.toggleArrayHiglight(arrays[7]);
   arrays.splice(3, 0, jsav.ds.array(["", ""], {visible: false}));
   window.ODSA.positionRow(arrays.slice(1, 5), 160, width, 550);
   arrays[3].show();
-  arrays[2].css(highlight_property);
-  arrays[3].css(highlight_property);
+  window.ODSA.toggleArrayHiglight(arrays[2]);
+  window.ODSA.toggleArrayHiglight(arrays[3]);
   for (i = 0; i < lines.length; i += 1) {
     lines[i].hide();
   }
@@ -493,17 +512,17 @@
 
   /* 12th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  arrays[2].css(reset_property);
-  arrays[3].css(reset_property);
+  window.ODSA.toggleArrayHiglight(arrays[2]);
+  window.ODSA.toggleArrayHiglight(arrays[3]);
   arrays.splice(0, 0, jsav.ds.array(["", ""], {visible: false}));
   arrays.splice(2, 0, jsav.ds.array(["", ""], {visible: false}));
   window.ODSA.positionRow(arrays.slice(0, 1), 0, width, 80);
   window.ODSA.positionRow(arrays.slice(1, 3), 80, width, 400);
   arrays[0].show();
   arrays[2].show();
-  arrays[0].css(highlight_property);
-  arrays[1].css(highlight_property);
-  arrays[2].css(highlight_property);
+  window.ODSA.toggleArrayHiglight(arrays[0]);
+  window.ODSA.toggleArrayHiglight(arrays[1]);
+  window.ODSA.toggleArrayHiglight(arrays[2]);
   for (i = 0; i < 3; i += 1) {
     lines[i].hide();
   }
@@ -539,9 +558,9 @@
   lines.push(window.ODSA.drawEdge(jsav, properties, arrays[5], arrays[12], 1, length));
   lines.push(window.ODSA.drawEdge(jsav, properties, arrays[6], arrays[13], 0, length));
   lines.push(window.ODSA.drawEdge(jsav, properties, arrays[6], arrays[14], 1, length));
-  arrays[0].css(reset_property);
-  arrays[1].css(reset_property);
-  arrays[2].css(reset_property);
+  window.ODSA.toggleArrayHiglight(arrays[0]);
+  window.ODSA.toggleArrayHiglight(arrays[1]);
+  window.ODSA.toggleArrayHiglight(arrays[2]);
   jsav.step();
 
   // Mark the slide show as finished.

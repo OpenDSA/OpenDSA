@@ -22,7 +22,7 @@
 var initJSAV = function () {
   var jsav = new JSAV("jsav");
   jsav.recorded();
-  var bt = jsav.ds.bintree({center: true, visible: true, nodegap: 15});
+  var bt = jsav.ds.binarytree({center: true, visible: true, nodegap: 15});
   bt.root(14);
   var rt = bt.root();
   rt.left(2);

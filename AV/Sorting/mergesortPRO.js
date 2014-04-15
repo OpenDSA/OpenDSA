@@ -10,7 +10,8 @@
 
     // Process about button: Pop up a message with an Alert
     function about() {
-      alert("Mergesort Proficiency Exercise\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+      var aboutstring = interpret("about");
+      alert(aboutstring + JSAV.version());
     }
 
     $('#help').click(help);
@@ -19,6 +20,11 @@
     /* ********************************************
      *  MERGESORT PROFICIENCY EXERCISE CODE       *
      ******************************************* */
+
+    // Language and code configurations
+    var config = ODSA.AV.getConfig("mergesortPRO.json");
+    var interpret = JSAV.utils.getInterpreter(config.language);
+    ODSA.AV.setTitleAndInstructions($('#container'), config.language);
 
     // Variables used by "setPosition()"
     var canvasWidth = $('#container').width();     // The width of the display
@@ -63,7 +69,7 @@
         initialArray[i] = randomVal;
         userAnswerValue[i] = randomVal;
       }
-      
+
       // Log the initial state of the exercise
       var initData = {};
       initData.gen_array = initialArray;
@@ -126,15 +132,15 @@
       // Dynamically create and position arrays
       var arr = av.ds.array(contents, {indexed: true, center: false,
                                         layout: "array"});
-      
+
       var id = "array_" + level + "_" + column;
       arrays[id] = arr;
-      
+
       // Set array attributes
       arr.element.attr("id", id);
       arr.element.attr("data-offset", left);
       setPosition(arr, level, column);
-      
+
       // Attach the click handler to the array
       arr.click(function (index) { clickHandler(this, index); });
 
@@ -291,9 +297,9 @@
 
         //console.log("destColumn: " + destColumn + ", left: " + left + ", right: " + right);  // FOR DEBUGGING
       }
-      
+
       destIndex -= left;
-      
+
       //console.log("destDepth: " + destDepth + ", destColumn: " + destColumn + ", destIndex: " + destIndex);  // FOR TESTING
 
       // Get the sub arrays from the hash of JSAV arrays

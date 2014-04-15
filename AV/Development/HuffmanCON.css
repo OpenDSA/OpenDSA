@@ -32,7 +32,11 @@
 }
 
 .jsavnode .jsavvalue {
-  height: 25px;
+  min-height: 25px;
+  max-height: 25px;
+  min-width: 25px;
+  max-width: 25px;
+  margin: 0 auto;
 }
 
 .jsavautoresize .jsavnode {
@@ -89,13 +93,13 @@
 /*=================== HuffmanCon5 ===================*/
 
 #HuffmanCon5 {
-  width:370px;
+  width:385px;
   height:350px;
 }
 
 #HuffmanCon5 .jsavtree {
   margin-top: 1px;
-  margin-left: 51px;
+  margin-left: 48px;
 }
 
 .jsavnode.jsavtreenode.jsavbinarynode .jsavvalue {
@@ -116,4 +120,25 @@
 
 #TreeTimeline .jsavoutput {
   width: 590px;
+}
+
+/*=================== TrieTimeline ===================*/
+
+#TrieTimeline {
+  width: 600px;
+  height: 520px;
+}
+
+#TrieTimeline .jsavtree {
+  /*margin-left: 55px;*/
+  margin-top: -20px;
+}
+
+#TrieTimeline .jsavoutput {
+  width: 590px;
+}
+
+/*====================== Misc. =======================*/
+#ninelabel {
+  padding-left: 5px;
 }
