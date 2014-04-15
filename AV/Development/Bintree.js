@@ -4,36 +4,20 @@
 
         this.t = av.ds.binarytree({nodegap: 25});
         this.t.layout();
-        this.r = this.t.root(root);
+        this.t.root(root);
+        this.r = this.t.root();
         this.r.type = "leaf";
-        this.r.value = root;
         this.t.layout();
 
         this.insertHelp = function(node, val, splitValue) {
-            
-            // if (typeof node === "undefined") {
-            //     return val;
-            // }
-
-            // if (node.value() > val) {
-            //     node.left(this.insertHelp(node.left(), val));
-            // }
-
-            // if (node.value() <= val) {
-            //     node.right(this.insertHelp(node.right(), val));
-            // }        
             
             if (node.type === "leaf") 
             {
                 var newInternal = this.t.newNode(-1);
                 newInternal.type = "internal";
-                newInternal.splitVal = splitValue;
 
-                var newNode = this.t.newNode(val);
-                newInternal.type = "leaf";
-                newNode.splitValue = this.splitValue / 2;
-
-                insertHelp(newNode, )
+                this.insertHelp(newInternal, val, splitValue / 2);
+                this.insertHelp(newInternal, node.value(), splitValue / 2);
             }
             else if (node.type === "internal")
             {
