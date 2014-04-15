@@ -96,36 +96,35 @@
       if (rt.leaf == true && rt.empty == false) {
         console.log("insert: is a leaf and not empty: ", INrec, rt);
         
+        // Create the new nodes and set them as 
         var tp = this.tree.newNode('tp');
-        tp.left(this.tree.newNode('tl'));
-        tp.right(this.tree.newNode('tr'));
-        
-        //this.tree.layout();
+        var tpl = this.tree.newNode('tl');
+        var tpr = this.tree.newNode('tr');
+        tp.left(tpl);
+        tp.right(tpr);
 
         // Set the levels
-        tp.level = level;
-        tp.left().level = level + 1;
-        tp.right().level = level + 1;
+        tp.level = rt.level;
+        tpl.level = rt.level + 1;
+        tpr.level = rt.level + 1;
 
         // Set the internal/external value
         tp.leaf = false;
-        tp.left().leaf = true;
-        tp.right().leaf = true;
+        tpl.leaf = true;
+        tpr.leaf = true;
 
         // Set the emptyness
         tp.empty = true;
-        tp.left().empty = true;
-        tp.right().empty = true;
+        tpl.empty = true;
+        tpr.empty = true;
 
+        // Insert the old data
         var oldval = rt.value();
-        this.insert(tp, rt.x, rt.y, oldval, Bx, By, Bwid, Bhgt, level);
-        this.insert(tp, INx,    INy, INrec, Bx, By, Bwid, Bhgt, level);
+        this.insert(tp, rt.x, rt.y, oldval, Bx, By, Bwid, Bhgt, tp.level);
         console.log("Finished moving down the previous entry");
-        //jsav.umsg("Finished moving down the previous entry ", oldval, ".");
-        //this.tree.layout();
-        //jsav.step();
-        return tp;
-        // NO Return: Rolls through to next if statement
+       
+        // NO Return: Rolls through to next if statement to continue inserting the new data.
+        rt = tp;
       }
 
       // If it isn't a leaf, then we have an internal node to insert into
