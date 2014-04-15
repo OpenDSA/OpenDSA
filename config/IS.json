@@ -19,14 +19,7 @@
       },
       "IS/FirstFit": {
         "long_name": "First Fit",
-        "exercises": {
-          "FirstFitPRO": {
-            "long_name": "First Fit Proficiency Exercise",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
+        "exercises": {}
       },
       "IS/TwoThreeTree.rst": {
         "long_name": "2-3 Trees",
