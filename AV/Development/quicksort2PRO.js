@@ -2,7 +2,7 @@
 (function ($) {
   "use strict";
   var arraySize = 10,
-    pivotSelectionMethod = PARAMS.pivot || "last",     // use the last element in the bound as the pivot
+    pivotSelectionMethod = PARAMS.pivot || "middle",     // use the last element in the bound as the pivot
     noPivotSize = PARAMS.nopivotsize ? parseInt(PARAMS.nopivotsize, 10): 1,
     swapOptions = {arrow: false, highlight: false, swapClasses: true},
     initialArray,
@@ -18,7 +18,17 @@
 
   var pivotFunction = {
     last: function (left, right) { return right; },
-    middle: function (left, right) { return Math.floor((right + left) / 2); }
+    middle: function (left, right) { return Math.floor((right + left) / 2); },
+    medianof3: function (left, right, arr) {
+      var mid = this.middle(left, right);
+      var median = [arr.value(left), arr.value(mid), arr.value(right)].sort(function (a, b) { return a - b; })[1];
+      if (arr.value(right) === median) {
+        return right;
+      } else if (arr.value(mid) === median) {
+        return mid;
+      }
+      return left;
+    }
   };
 
   ODSA.AV.setTitleAndInstructions(av.container, config.language);
@@ -325,7 +335,7 @@
   }
 
   function highlightAndSwapPivot(arr, first, last) {
-    var index = pivotFunction[pivotSelectionMethod](first, last);
+    var index = pivotFunction[pivotSelectionMethod](first, last, arr);
 
     arr.addClass(index, "pivot");
 
