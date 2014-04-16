@@ -1,7 +1,7 @@
 /*global ODSA, PARAMS, ClickHandler */
 (function ($) {
   "use strict";
-  var arraySize = 10,
+  var arraySize = PARAMS.size ? parseInt(PARAMS.size, 10): 10,
     pivotSelectionMethod = PARAMS.pivot || "middle",     // use the last element in the bound as the pivot
     noPivotSize = PARAMS.nopivotsize ? parseInt(PARAMS.nopivotsize, 10): 1,
     swapOptions = {arrow: false, highlight: false, swapClasses: true},
@@ -256,7 +256,10 @@
   }
 
   // create excercise
-  var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+  var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {
+    feedback: "atend",
+    modelDialog: {width: 750}
+  });
   // edit reset function so that it calls highlightAndSwapPivot when done
   var origreset = exercise.reset;
   exercise.reset = function () {
