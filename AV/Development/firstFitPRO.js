@@ -132,7 +132,7 @@
       initData.gen_incrs = incrs;
       ODSA.AV.logExerciseInit(initData);
 
-      theArray = av.ds.array($theArray, {center: false, layout: arrayLayout.val()}).css({"x": "275", "y": "215"});
+      theArray = av.ds.array($theArray, {center: false, layout: arrayLayout.val()}).css({"x": "275", "y": "252"});
       currIncrIndex = av.variable(0);
       currSublist = av.variable(0);
       swapIndex = av.variable(-1);
@@ -180,6 +180,5 @@
     // Connect the action callbacks to the HTML entities
     $('#help').click(help);
     $('#about').click(about);
-    $('#selecting').click(selecting);
   });
 }(jQuery));
