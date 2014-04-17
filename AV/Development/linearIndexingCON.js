@@ -110,10 +110,13 @@ arr.css(index, {"background-color": "#FFFF00" });
   var empty = [];
   empty.length = 4;
   var av = new JSAV("linindexCON");
-  var arr = av.ds.array(theArray, {indexed: true});
-  
+  var arr2 = av.ds.array(theArray);
+  var LIGHT = "rgb(215, 215, 215)"; 
 var setYellow = function (index) {
-arr.css(index, {"background-color": "#FFFF00" });
+arr2.css(index, {"background-color": "#FFFF00" });
+};
+var setLight = function (index) {
+arr3.css(index, {"background-color": "#ddf"});
 };
 
   av.umsg("Here is the Second Level Index Array which stores the first key value in the disk block of the index file");
@@ -126,27 +129,49 @@ arr.css(index, {"background-color": "#FFFF00" });
   av.umsg("The second disk block contains the greatest value less than or equal to the search key");
   av.step();
   
-  
+  av.umsg("Here is a representation of the disk blocks in the Linear Index file");
   var rect5 = av.g.rect(0, 75, 143, 20).css({"fill": "white"});
-  var rect6 = av.g.rect(143, 75, 143, 20).css({"fill": "#FFFF00"});
+  var rect6 = av.g.rect(143, 75, 143, 20).css({"fill": "white"});
   var rect7 = av.g.rect(286, 75, 143, 20).css({"fill": "white"});
   var rect8 = av.g.rect(429, 75, 143, 20).css({"fill": "white"});
   
   
   
-  var fragLabel = av.label("1", {left : 2, top:  75});
-  var fragLabel = av.label("2001", {left : 108, top:  75});
-  var fragLabel = av.label("2003", {left : 145, top:  75});
-  var fragLabel = av.label("5688", {left : 251, top:  75});
-  var fragLabel = av.label("5894", {left : 288, top:  75});
-  var fragLabel = av.label("9942", {left : 394, top:  75});
-  var fragLabel = av.label("10528", {left : 431, top:  75});
-  var fragLabel = av.label("10984", {left : 530, top:  75});
-  var fragLabel = av.label("Linear Index: Disk Blocks", {left :  0, top:  95});
-  
-  av.umsg("The search is directed to the proper block in the index file, which is read into memory");
+  var fragLabel1 = av.label("1", {left : 2, top:  75});
+  var fragLabel2 = av.label("2001", {left : 108, top:  75});
+  var fragLabel3 = av.label("2003", {left : 145, top:  75});
+  var fragLabel4 = av.label("5688", {left : 251, top:  75});
+  var fragLabel5 = av.label("5894", {left : 288, top:  75});
+  var fragLabel6 = av.label("9942", {left : 394, top:  75});
+  var fragLabel7 = av.label("10528", {left : 431, top:  75});
+  var fragLabel8 = av.label("10984", {left : 530, top:  75});
+  var fragLabel9 = av.label("Linear Index: Disk Blocks", {left :  0, top:  95});
   av.step();
   
+  av.umsg("The search is directed to the proper block in the index file, which is read into memory");
+  var rect6 = av.g.rect(143, 75, 143, 20).css({"fill": "#FFFF00"});
+  av.step();
+  
+  var theArray2 = [2003,2260, 2592, 2820, 3000, 3920, 4160, 4880, 5550, 5688];
+  var arr3 = av.ds.array(theArray2, {bottom:30, center: true, right: 0, left: 0, indexed: true});
+  rect5.hide();
+  rect7.hide();
+  rect8.hide();
+  fragLabel1.hide();
+  fragLabel2.hide();
+  fragLabel5.hide();
+  fragLabel6.hide();
+  fragLabel7.hide();
+  fragLabel8.hide();
+  fragLabel9.hide();
+  
+  var x4FragArrow = av.g.line(147,  98,  30, 155, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+  var z5FragArrow = av.g.line(280,  98, 430, 155, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+  setLight(0);
+  
+  av.umsg("Here is the array expansion of the selected block within the index file");
+  av.step();
+  setLight(1);
   av.umsg(" At this point, a binary search within this block will produce a pointer to the actual record in the database");
   av.recorded();
 
