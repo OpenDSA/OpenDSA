@@ -30,6 +30,10 @@ padding-left: 5px;
   margin-top: 0;
 }
 
+.jsavcontainer svg {
+  pointer-events: all;
+}
+
 .jsavnode {
   line-height: 30px;
 }
