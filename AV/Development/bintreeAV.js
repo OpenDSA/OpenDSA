@@ -63,12 +63,10 @@
 
     // returns a node!
     this.insert = function(rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level) {
-      
+
       jsav.step();
       this.tree.layout();
-      console.log("Bintree insert: BEGIN: ", INrec, ", Level:", level);
-      
-      console.assert(rt != null, "rt not defined");
+      console.log("Bintree insert: BEGIN: ", INrec, ", Level: ", level, ", rt Type: ", rt.NodeType);
 
       if (rt.NodeType === NT.EMPTYEXT) {
         console.log("insert: encountered empty leaf node: insert data and return")
@@ -95,11 +93,14 @@
         tp.left(tpl);
         tp.right(tpr);
 
+        // DEBUG
+        console.log("tp: " + tp.NodeType + "| left: " + tp.left().NodeType + "| right: " + tp.right().NodeType);
+
         // Insert the old data
-        this.insert(tp, rt.x, rt.y, rt.value(), Bx, By, Bwid, Bhgt, level);
+        tp = this.insert(tp, rt.x, rt.y, rt.value(), Bx, By, Bwid, Bhgt, level);
 
         // Insert new data
-        this.insert(tp, INx, INy, INrec, Bx, By, Bwid, Bhgt, level);
+        tp = this.insert(tp, INx, INy, INrec, Bx, By, Bwid, Bhgt, level);
 
         // Debug line
         console.log("Finished inserting data for the leaf subtree");
@@ -116,14 +117,14 @@
         if (rt.x < (Bx + Bwid/2)) // Insert left
         {
 
-          console.log("Branch on X, Insert Left");
+          console.log("Branch on X, Insert Left: ", rt.left().NodeType);
           jsav.umsg("Branch on X, Insert Left");
           rt.left(this.insert(rt.left(), INx, INy, INrec, Bx, By, Bwid/2, Bhgt, level+1));
         }
         else
         {
 
-          console.log("Branch on X, Insert Right: ", rt.right());
+          console.log("Branch on X, Insert Right: ", rt.right().NodeType);
           jsav.umsg("Branch on X, Insert Right");
           rt.right(this.insert(rt.right(), INx, INy, INrec, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
         }
@@ -134,14 +135,14 @@
         if (rt.y < (By + Bhgt/2)) // Insert left
         {
 
-          console.log("Branch on Y, Insert Left: ", rt.left());
+          console.log("Branch on Y, Insert Left: ", rt.left().NodeType);
           jsav.umsg("Branch on Y, Insert Left");
           rt.left(this.insert(rt.left(), INx, INy, INrec, Bx, By, Bwid, Bhgt/2, level+1));
         }
         else
         {
 
-          console.log("Branch on Y, Insert Right: ", rt.right());
+          console.log("Branch on Y, Insert Right: ", rt.right().NodeType);
           jsav.umsg("Branch on Y, Insert Right");
           rt.right(this.insert(rt.right(), INx, INy, INrec, Bx, By + Bhgt/2, Bwid, Bhgt/2, level+1));
         }
