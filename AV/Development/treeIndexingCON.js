@@ -1,6 +1,13 @@
 (function () {
   "use strict";
 
+  /**
+   * Generate a colorized binary search tree.
+   * @param root The root of the tree.
+   * @param max_level The level depth to stop at.
+   * @param level The current level of depth.
+   * @param colors Array of colors from which to select the background.
+   */
   function generateBSTNodes(root, max_level, level, colors) {
     if (level <= max_level) {
       var color_index;
@@ -35,11 +42,16 @@
         }
         generateBSTNodes(new_right, max_level, level + 1, colors);
       }
-    } else {
-      return null;
     }
   }
 
+  /**
+   * Examines a colorized binary search tree and determines the number of disk
+   * accesses necessary to reach the selected node.
+   * @param root The root of the tree.
+   * @param disk_accesses The current number of disk access to get to the given
+   *        tree node 'root'.
+   */
   function getAnswer(root, disk_accesses) {
     if (root.is_chosen === true) {
       window.ODSA.disk_accesses = disk_accesses;
@@ -64,6 +76,10 @@
     }
   }
 
+  /**
+   * Toggles the highlighting of a node.
+   * @param node The node to highlight/un-highlight
+   */
   function toggleNodeHighlight(node) {
     if (node.css(node_highlight_property) === node_highlight_default) {
       node.css(node_highlight_add);
@@ -72,14 +88,27 @@
     }
   }
 
+  /**
+   * This function determines the default box shadow effect that JSAV applies to
+   * tree nodes. This is because tree nodes initially have a box shadow around
+   * them. The purpose of this method is so that the toggleNodeHighlight
+   * function can set the box shadow effect back to the original settings.
+   * Otherwise each highlighted node would look different after being toggled
+   * off.
+   * @param node The node to get the default box shadow effect from.
+   */
   function setNodeHighlightDefault(node) {
     node_highlight_default = node.css(node_highlight_property);
     node_highlight_remove["box-shadow"] = node_highlight_default;
   }
 
+  // CSS highlight property to be modified.
   var node_highlight_property = "box-shadow";
+  // The default CSS property.
   var node_highlight_default;
+  // The CSS to add the highlighting effect.
   var node_highlight_add = {"box-shadow": "0 0 15px 5px #2B92FF"};
+  // The CSS to remove the highlighting effect.
   var node_highlight_remove = {"box-shadow": "node"};
 
   var ODSA = {};
@@ -94,13 +123,67 @@
 }());
 
 /**
+ * Demo: Randomized creation of a colorized binary search tree.
+ *
+ * Container ID: colorizedCON
+ */
+(function () {
+  "use strict";
+
+  var jsav = new JSAV("colorizedBST");
+
+  var bst = jsav.ds.binarytree({nodegap: 15});
+
+  // Create color array
+  var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];
+
+  // Create disk rectangles.
+  var width = 100;
+  var height = 50;
+  var x = 50;
+  var y = 210;
+  for (var i = 0; i < colors.length; i++) {
+    jsav.g.rect(x, y, width, height, {"fill": colors[i]});
+    x += width;
+  }
+
+  // Get color for right and level 1 nodes.
+  var color_root = Math.floor((Math.random() * 100) % colors.length);
+  var color_right = Math.floor((Math.random() * 100) % colors.length);
+  var color_left = Math.floor((Math.random() * 100) % colors.length);
+
+  // Create tree.
+  bst.root("").css({"background-color": colors[color_root]});
+  bst.root().right("").css({"background-color": colors[color_right]});
+  bst.root().left("").css({"background-color": colors[color_left]});
+
+  // Randomly generate three more levels of nodes.
+  while (window.ODSA.bottom_layer.length === 0) {
+    window.ODSA.generateBSTNodes(bst.root().left(), 2, 0, colors);
+    window.ODSA.generateBSTNodes(bst.root().right(), 2, 0, colors);
+  }
+  bst.layout();
+
+  // Pick bottom layer node to be chosen one.
+  var chosen_index = Math.floor((Math.random() * 100) % window.ODSA.bottom_layer.length);
+  var chosen_node = window.ODSA.bottom_layer[chosen_index];
+  chosen_node.css({"border": "1px solid white"});
+  chosen_node.css({"box-shadow": "0 0 10px 3px black"});
+  chosen_node.is_chosen = true;
+
+  // Find the number of accesses to get to chosen one.
+  window.ODSA.getAnswer(bst.root(), 1);
+  jsav.label("Number of disk accesses: " + window.ODSA.disk_accesses, {top: "280px", left: "220px"});
+}());
+
+/**
  * Creates a diagram to demonstrate how a binary search tree might be laid out on disk.
  *
  * Container ID: pagedBSTCON
  */
 (function () {
   "use strict";
-  var jsav = new JSAV("pagedBSTCON");
+  var jsav = new JSAV("pagedBST_CON");
 
   var n = [10, 5, 15, 3, 8, 13, 18, 2, 4, 7, 9, 12, 14, 17, 19];
   var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];
@@ -181,7 +264,7 @@
 
 (function () {
   "use strict";
-  var jsav = new JSAV("pagedBSTCON_2");
+  var jsav = new JSAV("rebalanceBST_CON");
 
   var n = [10, 5, 15, 3, 8, 13, 18, 2, 4, 7, 9, 12, 14, 17, 19];  // Tree node values.
   var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"]; // Tree node colors.
@@ -224,7 +307,7 @@
   var labels = [
     jsav.label(n[0], {visible: v, left: (l + 0) + "px", top: (t + 0) + "px"}),
     jsav.label(n[1], {visible: v, left: (l + 40) + "px", top: (t + 0) + "px"}),
-    jsav.label(n[2], {visible: v, left: (l + 80) + "px", top: (t + 0) + "px"}),
+    jsav.label(n[2], {visible: v, left: (l + 75) + "px", top: (t + 0) + "px"}),
     jsav.label(n[3], {visible: v, left: (l + 120) + "px", top: (t + 0) + "px"}),
     jsav.label(n[4], {visible: v, left: (l + 160) + "px", top: (t + 0) + "px"}),
     jsav.label(n[5], {visible: v, left: (l + 200) + "px", top: (t + 0) + "px"}),
@@ -256,43 +339,51 @@
   ];
 
   jsav.label("Disk Accesses:", {visible: true, left: "0px", top: "16px"});
-  var da_array = jsav.ds.array([0], {left: "135px", top: "0px"});
-  da_array.css({height: "30px", width: "30px"});
+  var disk_access_count = jsav.ds.array([0], {left: "135px", top: "0px"});
+  disk_access_count.css({height: "30px", width: "30px"});
 
   jsav.umsg(messages.shift());
   window.ODSA.setNodeHighlightDefault(nodes[0]);
   jsav.displayInit();
+  /* 1st Slide ***************************************************************/
 
+  /* 2nd Slide ***************************************************************/
   jsav.umsg(messages.shift());
   jsav.step();
 
+  /* 3rd Slide ***************************************************************/
   jsav.umsg(messages.shift());
   window.ODSA.toggleNodeHighlight(nodes[0]);
-  da_array.value(0, 1);
+  disk_access_count.value(0, 1);
   jsav.step();
 
+  /* 4th Slide ***************************************************************/
   jsav.umsg(messages.shift());
   window.ODSA.toggleNodeHighlight(nodes[0]);
   window.ODSA.toggleNodeHighlight(nodes[1]);
   jsav.step();
 
+  /* 5th Slide ***************************************************************/
   jsav.umsg(messages.shift());
   window.ODSA.toggleNodeHighlight(nodes[1]);
   window.ODSA.toggleNodeHighlight(nodes[4]);
-  da_array.value(0, 2);
+  disk_access_count.value(0, 2);
   jsav.step();
 
+  /* 6th Slide ***************************************************************/
   jsav.umsg(messages.shift());
   window.ODSA.toggleNodeHighlight(nodes[4]);
   window.ODSA.toggleNodeHighlight(nodes[10]);
-  da_array.value(0, 3);
+  disk_access_count.value(0, 3);
   jsav.step();
 
+  /* 7th Slide ***************************************************************/
   jsav.umsg(messages.shift());
   window.ODSA.toggleNodeHighlight(nodes[10]);
-  da_array.value(0, "");
+  disk_access_count.value(0, "");
   jsav.step();
 
+  /* 8th Slide ***************************************************************/
   jsav.umsg(messages.shift());
   for (i = 0; i < n.length; i++) {
     if (i < 3) {
@@ -319,51 +410,66 @@
   labels[9].text(n[5]);
   labels[10].text(n[11]);
   labels[11].text(n[12]);
+  labels[12].text(n[6]);
+  labels[13].text(n[13]);
+  labels[14].text(n[14]);
   jsav.step();
 
+  /* 9th Slide ***************************************************************/
   jsav.umsg(messages.shift());
   jsav.step();
 
-  jsav.umsg(messages.shift());
-  window.ODSA.toggleNodeHighlight(nodes[0]);
-  window.ODSA.toggleNodeHighlight(nodes[1]);
-  window.ODSA.toggleNodeHighlight(nodes[4]);
-  window.ODSA.toggleNodeHighlight(nodes[10]);
-  da_array.value(0, 2);
-  jsav.step();
-
+  /* 10th Slide ***************************************************************/
   jsav.umsg(messages.shift());
   window.ODSA.toggleNodeHighlight(nodes[0]);
   window.ODSA.toggleNodeHighlight(nodes[1]);
   window.ODSA.toggleNodeHighlight(nodes[4]);
   window.ODSA.toggleNodeHighlight(nodes[10]);
-  da_array.value(0, "");
+  disk_access_count.value(0, 2);
   jsav.step();
 
+  /* 11th Slide ***************************************************************/
+  jsav.umsg(messages.shift());
+  window.ODSA.toggleNodeHighlight(nodes[0]);
+  window.ODSA.toggleNodeHighlight(nodes[1]);
+  window.ODSA.toggleNodeHighlight(nodes[4]);
+  window.ODSA.toggleNodeHighlight(nodes[10]);
+  disk_access_count.value(0, "");
+  jsav.step();
+
+  /* 12th Slide ***************************************************************/
   jsav.umsg(messages.shift());
   window.ODSA.toggleNodeHighlight(nodes[0]);
   nodes[0].value("");
-  da_array.value(0, 1);
+  disk_access_count.value(0, 1);
+  labels[0].text("");
   jsav.step();
 
+  /* 13th Slide ***************************************************************/
   window.ODSA.toggleNodeHighlight(nodes[2]);
   window.ODSA.toggleNodeHighlight(nodes[0]);
   jsav.effects.moveValue(nodes[2], nodes[0]);
-  da_array.value(0, 1);
+  disk_access_count.value(0, 1);
+  labels[2].css({left: "30px"});
   jsav.step();
 
+  /* 14th Slide ***************************************************************/
   window.ODSA.toggleNodeHighlight(nodes[6]);
   window.ODSA.toggleNodeHighlight(nodes[2]);
   jsav.effects.moveValue(nodes[6], nodes[2]);
-  da_array.value(0, 2);
+  disk_access_count.value(0, 2);
+  labels[12].css({left: "105px"});
   jsav.step();
 
+  /* 15th Slide ***************************************************************/
   window.ODSA.toggleNodeHighlight(nodes[14]);
   window.ODSA.toggleNodeHighlight(nodes[6]);
   jsav.effects.moveValue(nodes[14], nodes[6]);
-  da_array.value(0, 2);
+  disk_access_count.value(0, 2);
+  labels[14].css({left: "510px"});
   jsav.step();
 
+  /* 16th Slide ***************************************************************/
   jsav.umsg(messages.shift());
   window.ODSA.toggleNodeHighlight(nodes[14]);
   nodes[14].remove();
@@ -372,102 +478,3 @@
   jsav.recorded();
 
 }());
-
-/**
- * Creates a diagram to demonstrate the changes made to a binary search tree when it is balanced.
- *
- * Container ID: balanceBSTCON
- */
-(function () {
-  "use strict";
-  // Initialize JSAV object.
-  var jsav = new JSAV("balanceBSTCON", {"animationMode": "none"});
-  // Initialize BST and the balanced BST object.
-  var bst = jsav.ds.binarytree({left: "10px", nodegap: 20});
-  var bbst = jsav.ds.binarytree({left: "220px", nodegap: 20});
-  // Add labels
-  jsav.label("(a)", {visible: true, left: "75px", top: "110px"});
-  jsav.label("(b)", {visible: true, left: "285px", top: "110px"});
-
-  // Add nodes for the BST.
-  bst.root("5");
-
-  bst.root().left("3");
-  bst.root().left().left("2");
-  bst.root().left().right("4");
-
-  bst.root().right("7");
-  bst.root().right().left("6");
-
-  // Add nodes for the balanced BST
-  bbst.root("4");
-
-  bbst.root().left("2");
-  bbst.root().left().left("1");
-  bbst.root().left().right("3");
-
-  bbst.root().right("6");
-  bbst.root().right().left("5");
-  bbst.root().right().right("7");
-
-  // Redraw the two trees to display the newly created children nodes.
-  bst.layout();
-  bbst.layout();
-
-}());
-
-/**
- * Demo: Randomized creation of a colorized binary search tree.
- *
- * Container ID: colorizedCON
- */
-(function () {
-  "use strict";
-
-  var jsav = new JSAV("colorizedBST");
-
-  var bst = jsav.ds.binarytree({nodegap: 15});
-
-  // Create color array
-  var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];
-
-  // Create disk rectangles.
-  var width = 100;
-  var height = 50;
-  var x = 50;
-  var y = 210;
-  for (var i = 0; i < colors.length; i++) {
-    jsav.g.rect(x, y, width, height, {"fill": colors[i]});
-    x += width;
-  }
-
-  // Get color for right and level 1 nodes.
-  var color_root = Math.floor((Math.random() * 100) % colors.length);
-  var color_right = Math.floor((Math.random() * 100) % colors.length);
-  var color_left = Math.floor((Math.random() * 100) % colors.length);
-
-  // Create tree.
-  bst.root("").css({"background-color": colors[color_root]});
-  bst.root().right("").css({"background-color": colors[color_right]});
-  bst.root().left("").css({"background-color": colors[color_left]});
-
-  // Randomly generate three more levels of nodes.
-  while (window.ODSA.bottom_layer.length === 0) {
-    window.ODSA.generateBSTNodes(bst.root().left(), 2, 0, colors);
-    window.ODSA.generateBSTNodes(bst.root().right(), 2, 0, colors);
-  }
-  bst.layout();
-
-  // Pick bottom layer node to be chosen one.
-  var chosen_index = Math.floor((Math.random() * 100) % window.ODSA.bottom_layer.length);
-  var chosen_node = window.ODSA.bottom_layer[chosen_index];
-  chosen_node.css({"border": "1px solid white"});
-  chosen_node.css({"box-shadow": "0 0 10px 3px black"});
-  chosen_node.is_chosen = true;
-
-  // Find the number of accesses to get to chosen one.
-  window.ODSA.getAnswer(bst.root(), 1);
-  jsav.label("Number of disk accesses: " + window.ODSA.disk_accesses, {top: "280px", left: "220px"});
-
-}());
-

@@ -92,29 +92,14 @@ great deal of rearranging of data within the tree.
 
 .. _PagedBST:
 
-.. inlineav:: pagedBSTCON ss
+.. inlineav:: pagedBST_CON ss
    :output: show
    :align: justify
 
-   Breaking the BST into blocks.
-   The BST is divided among disk blocks, each with space for three nodes.
-   The path from the root to any leaf is contained on two blocks.
+.. _RebalanceBST:
 
-.. _PagedBST_2:
-
-.. inlineav:: pagedBSTCON_2 ss
+.. inlineav:: rebalanceBST_CON ss
    :output: show
-
-.. _Rebalance:
-
-.. inlineav:: balanceBSTCON dgm
-   :align: justify
-
-   An attempt to re-balance a BST after insertion can be expensive.
-   (a) A BST with six nodes in the shape of a complete binary tree.
-   (b) A node with value 1 is inserted into the BST of (a).
-   To maintain both the complete binary tree shape and the BST property,
-   a major reorganization of the tree is required.
 
 We can solve these problems by selecting another tree structure that
 automatically remains balanced after updates, and which is amenable
