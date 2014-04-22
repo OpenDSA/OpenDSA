@@ -85,6 +85,12 @@ IS: min
 test: min
 	python $(CONFIG_SCRIPT) config/test.json
 
+testfi: min
+	python $(CONFIG_SCRIPT) config/testfi.json
+
+testcpp: min
+	python $(CONFIG_SCRIPT) config/testcpp.json
+
 uwosh: min
 	python $(CONFIG_SCRIPT) config/uwosh.json
 
