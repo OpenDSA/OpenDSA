@@ -14,33 +14,26 @@
   },
   "chapters": {
     "Sorting": {
-      "Sorting/Mergesort": {
-        "long_name": "Mergesort Concepts",
+      "Sorting/MergesortImpl": {
+        "long_name": "Implementing Mergesort",
         "exercises": {
-          "mergesortAV": {
-            "long_name": "Mergesort Visualization",
+          "mergeImplCON1": {
+            "long_name": "Mergesort Implementation Slideshow 1",
             "required": false,
-            "points": 0,
-            "showhide": "show",
+            "points": 0.0,
             "threshold": 1.0
           },
-          "mergesortCON1": {
-            "long_name": "Mergesort Concepts Slideshow 1",
-            "required": true,
-            "points": 0.1,
+          "mergeImplCON2": {
+            "long_name": "Mergesort Implementation Slideshow 2",
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
-          "MergesortMergePRO": {
-            "long_name": "Mergesort Merging Proficiency",
+          "MergesortSumm": {
+            "long_name": "Mergesort Summary Exercise",
             "required": true,
-            "points": 1,
+            "points": 1.0,
             "threshold": 5
-          },
-          "mergesortPRO": {
-            "long_name": "Mergesort Proficiency",
-            "required": true,
-            "points": 1,
-            "threshold": 0.90
           }
         }
       }
