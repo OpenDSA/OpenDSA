@@ -28,7 +28,7 @@
 	av.g.rect(290, 80, 10, 30);
 	av.label("|--------  $< A[pivot]$  --------|",  {"top": "55px", "left": "105px"}).css({'font-size': '1em', "text-align": "center"});
     av.label("|---------  $> A[pivot]$  ---------|",  {"top": "55px", "left": "310px"}).css({'font-size': '1em', "text-align": "center"});
-	av.label("pivot",  {"top": "85px", "left": "283px"}).css({'font-size': '0.8em', "text-align": "center"}).addClass("rotated");
+	av.label("pivot",  {"top": "85px", "left": "283px"}).css({'font-size': '12px', "text-align": "center"}).addClass("rotated");
 	av.label("$\\frac{n}{2}$",  {"top": "82px", "left": "190px"}).css({'font-size': '18px', "text-align": "center"});
 	av.label("$\\frac{n}{2}$",  {"top": "82px", "left": "390px"}).css({'font-size': '18px', "text-align": "center"});
 	av.label("$\\theta(n)$",  {"top": "82px", "left": "600px"}).css({'font-size': '18px', "text-align": "center"});
