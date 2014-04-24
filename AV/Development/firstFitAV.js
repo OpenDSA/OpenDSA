@@ -258,6 +258,7 @@
 
   function merge(clickSpot)
   {
+      //hi
       clickSpot = clickSpot -23; 
       var i = 0;
       while(clickSpot > startArray[i])
