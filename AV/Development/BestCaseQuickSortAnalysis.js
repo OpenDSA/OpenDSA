@@ -26,9 +26,9 @@
 	av.umsg("The pivot partitions the array into two halves of size $\\frac{n}{2}$ each ... This requires $\\theta(n)$ amount of work");
 	av.g.rect(100, 80, 400, 30);
 	av.g.rect(290, 80, 10, 30);
-	av.label("|--------  $< A[pivot]$  --------|",  {"top": "55px", "left": "105px"}).css({'font-size': '14px', "text-align": "center"});
-    av.label("|---------  $> A[pivot]$  ---------|",  {"top": "55px", "left": "310px"}).css({'font-size': '14px', "text-align": "center"});
-	av.label("pivot",  {"top": "85px", "left": "283px"}).css({'font-size': '12px', "text-align": "center"}).addClass("rotated");
+	av.label("|--------  $< A[pivot]$  --------|",  {"top": "55px", "left": "105px"}).css({'font-size': '1em', "text-align": "center"});
+    av.label("|---------  $> A[pivot]$  ---------|",  {"top": "55px", "left": "310px"}).css({'font-size': '1em', "text-align": "center"});
+	av.label("pivot",  {"top": "85px", "left": "283px"}).css({'font-size': '0.8em', "text-align": "center"}).addClass("rotated");
 	av.label("$\\frac{n}{2}$",  {"top": "82px", "left": "190px"}).css({'font-size': '18px', "text-align": "center"});
 	av.label("$\\frac{n}{2}$",  {"top": "82px", "left": "390px"}).css({'font-size': '18px', "text-align": "center"});
 	av.label("$\\theta(n)$",  {"top": "82px", "left": "600px"}).css({'font-size': '18px', "text-align": "center"});
