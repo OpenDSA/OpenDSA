@@ -4,54 +4,60 @@
   <title>List Implementation Overhead</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 </head>
 
 <body>
-<script>
-function genAnswer(p, d) {
-  sum = p + d;
-  while ((sum % 2 === 0) && (d % 2 === 0)) {
-    d = d/2;
-    sum = sum/2;
-  }
-  return d.toString() + "/" + sum.toString();
-}
-</script>
 
+  <script>
+    function genAnswer(p, d) {
+      var sum = p + d;
+      while ((sum % 2 === 0) && (d % 2 === 0)) {
+        d = d/2;
+        sum = sum/2;
+      }
+      return d.toString() + "/" + sum.toString();
+    }
+  </script>
 
-<div class="exercise">
-  <div class="vars">
-    <var id="P">4 * randRange(1,2)</var>
-    <var id="D">randRange(1, 16)</var>
-    <var id="SUM">P+D</var>
-    <var id="ANS">genAnswer(P, D)</var>
-  </div>
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question">Assume that for some list implementation, a
-	pointer requires <var>P</var> bytes and a data object
-	requires <var>D</var> bytes.
-	Type a fraction (like "1/2") to show how full the array should
-	be for the break even point, that is, the point beyond which the
-	array-based list implementation needs less space than the linked
-	list implementation.
-	Give your fraction in lowest terms.
-      </p>
-      <p class="solution" data-type="text"><var>ANS</var></p>
-      <div class="hints">
-         <p>The overhead is <var>P</var> and the total space needed
-         is <var>SUM</var>.</p>
-	 <p>As the array fills up, its overhead decreases.</p>
-	 <p>The pointer space (<var>P</var> bytes) is overhead.
-	 <p>The bigger the overhead fraction, the less the array needs
-	 to be better. The bigger the data field, the more the array needs
-	 to be better.</p>
-	 <p>The breakeven point is at <var>D</var>/<var>SUM</var>.</p>
-	 <p>If you have values like 4/8, reduce to 1/2.</p>
-      </div> 
+  <div class="exercise">
+    <div class="vars">
+      <var id="P">4 * randRange(1,2)</var>
+      <var id="D">randRange(1, 16)</var>
+      <var id="SUM">P+D</var>
+      <var id="ANS">genAnswer(P, D)</var>
+    </div>
+    <div class="problems">
+      <div id="problem-type-or-description">
+        <p class="question">Assume that for some list implementation, a
+          pointer requires <var>P</var> bytes and a data object
+          requires <var>D</var> bytes.
+          Type a fraction (like "1/2") to show how full the array should
+          be for the break even point, that is, the point beyond which the
+          array-based list implementation needs less space than the linked
+          list implementation.
+          Give your fraction in lowest terms.
+        </p>
+        <p class="solution" data-type="text"><var>ANS</var></p>
+
+        <div class="hints">
+           <p>
+              The overhead is <var>P</var> and the total space needed
+              is <var>SUM</var>.
+           </p>
+           <p>As the array fills up, its overhead decreases.</p>
+           <p>The pointer space (<var>P</var> bytes) is overhead.</p>
+           <p>
+             The bigger the overhead fraction, the less the array needs
+             to be better. The bigger the data field, the more the array needs
+             to be better.
+           </p>
+           <p>The break-even point is at <var>D</var>/<var>SUM</var>.</p>
+           <p>If you have values like 4/8, reduce to 1/2.</p>
+        </div>
+
+      </div>
     </div>
   </div>
-</div>
 </body>
 </html>

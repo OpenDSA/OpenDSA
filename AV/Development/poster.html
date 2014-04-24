@@ -22,7 +22,9 @@
 function runit() {
   jsav = new JSAV($('.avcontainer'));
   g = jsav.ds.graph({width: 500, height: 500, layout: "manual", directed: true});
+
   a = g.addNode("Traversals", {"left": 125, "top": 150});
+  a.highlight();
   b = g.addNode("Graph", {"left": 125});
   c = g.addNode("Depth First Search", { "top": 300});
   d = g.addNode("Breadth First Search", {"left":225, "top": 300});
