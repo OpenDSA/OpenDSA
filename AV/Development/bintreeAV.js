@@ -19,24 +19,24 @@
     // This is the JSAV base data structure, a binary tree.
     this.tree = jsav.ds.binarytree({nodegap: 10});
     // This is the root of the tree
-    this.root = this.tree.root('');
+    this.tree.root('');
 
-    console.log("I'm making a new Bintree object. root = ", this.root);
+    console.log("I'm making a new Bintree object. root = ", this.tree.root());
     // Set the root as an empty node
-    this.root.NodeType = NT.EMPTYEXT;
+    this.tree.root().NodeType = NT.EMPTYEXT;
 
     // Don't forget to refresh the tree layout
     this.tree.layout();
 
     // Getter function for the root
     this.getRoot = function () {
-      console.log("getRoot: ", this.root);
-      return this.root;
+      console.log("getRoot: ", this.tree.root());
+      return this.tree.root();
     };
     
     // Tests to see if the tree is empty 
     this.isEmpty = function () {
-      var returning = (this.root.NodeType === NT.EMPTYEXT);
+      var returning = (this.tree.root().NodeType === NT.EMPTYEXT);
       console.log("Bintree isEmpty test: ", returning);
       return (returning);
     };
@@ -56,8 +56,8 @@
     }
     
     // calling function for insertion
-    this.add = function(INx, INy, INrec, Bx, By, Bwid, Bhgt, level) {
-      this.root = this.insert(this.root, INx, INy, INrec, Bx, By, Bwid, Bhgt, level);
+    this.add = function(INx, INy, INrec) {
+      this.tree.root(this.insert(this.tree.root(), INx, INy, INrec, 0, 0, xrange, yrange, 0));
       this.tree.layout();
     }
 
@@ -73,6 +73,8 @@
         jsav.umsg("Insert: Encountered an empty leaf node: Now insert data and return!");
         console.log("Bintree insert: (LEAF) Value = ", INrec);
     
+        //var strtmp = INrec  + "|" + INx + "|" + INys;
+
         var temp = this.tree.newNode(INrec); 
 
         temp.x = INx;
@@ -96,11 +98,21 @@
         // DEBUG
         console.log("tp: " + tp.NodeType + "| left: " + tp.left().NodeType + "| right: " + tp.right().NodeType);
 
-        // Insert the old data
-        tp = this.insert(tp, rt.x, rt.y, rt.value(), Bx, By, Bwid, Bhgt, level);
-
         // Insert new data
         tp = this.insert(tp, INx, INy, INrec, Bx, By, Bwid, Bhgt, level);
+
+
+        // Insert the old data
+        if (tp.left().NodeType === NT.EMPTYEXT)
+        {
+          // Insert the old data to the left
+          tp.left(this.insert(tp.left(), rt.x, rt.y, rt.value(), Bx, By, Bwid, Bhgt, level+1));
+        }
+        else
+        {
+          // Insert the old data to the right
+          tp.right(this.insert(tp.right(), rt.x, rt.y, rt.value(), Bx, By, Bwid, Bhgt, level+1));
+        }
 
         // Debug line
         console.log("Finished inserting data for the leaf subtree");
@@ -152,64 +164,6 @@
       return rt;
     } // insert
 
-
-
-    this.delete = function (rt, INx, INy, Bx, By, Bwid, Bhgt, level) {
-      console.assert( !(rt.leaf == true && rt.empty == true), "Cannot be an empty leaf during delete");
-
-      if (rt.leaf) {
-        if (rt.x == INx && rt.y == INy)
-        {
-          var temp = tree.newNode('');
-          temp.leaf = true;
-          temp.empty = true;
-          return temp;
-        }
-        // else ERROR: THIS IS IMPOSSIBLE;
-      };
-
-      // We have an internal node
-      if (level % 2 == 0) // Branch on X
-      {
-        if (INx < (Bx + Bwid/2)) // delete left
-        {
-          console.log("Branch on X, Delete Left");
-          rt.left(delete(rt.left(), INx, INy, Bx, By, Bwid/2, Bhgt, level+1));
-        }
-        else
-        {
-          console.log("Branch on X, Delete Right");
-          rt.right(delete(rt.right(), INx, INy, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
-        }
-      }
-        
-      else // Branch on Y
-      {
-        if (INy < (By + Bhgt/2)) // Insert left
-        {
-          rt.left(delete(rt.left(), INx, INy, Bx, By, Bwid, Bhgt/2, level+1));
-        }
-        else
-          rt.right(delete(rt.right(), INx, INy, Bx, By + Bhgt/2, Bwid, Bhgt/2, level+1));
-      }
-    
-      tree.layout();
-
-      // Now, check to see if there should be a merge
-      if ((rt.left().leaf == true && rt.left().empty == true) && (rt.right().leaf))
-      {
-        return rt.right();
-      }
-      if ((rt.left().leaf) && (rt.right().leaf && rt.left.empty))
-      {
-        return rt.left();
-      }
-
-      // Otherwise, return just the rt subtree without a merge
-      return rt;
-    
-    } // delete
-
   } // bintree
   
   var arr;
@@ -258,11 +212,11 @@
     jsav.step();
   
     // Setup the tree
-    jsav.umsg("Step 1: insert node with value \"A\" @ 100, 100");
+    jsav.umsg("Step 1: insert node with value \"A\" @ 125, 125");
     
     // rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level
     console.log("Let's call insert. bint.root is now: ", bint.getRoot());
-    bint.add(100, 100, "A", 100, 100, 200, 200, 0);
+    bint.add(125, 125, "A");
     bint.isEmpty();
   
     jsav.step();
@@ -271,12 +225,12 @@
     jsav.umsg("Step 2: insert node with value \"B\" @ 50, 50");
     // rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level
     console.log("Let's call insert. bint.root is now: ", bint.getRoot());
-    bint.add(50, 50, "B", 100, 100, 200, 200, 0);
+    bint.add(50, 50, "B");
 
     jsav.step();
 
     jsav.umsg("Step 2: insert node with value \"C\" @ 175, 175");
-    //bint.add(175, 175, "C", 100, 100, 200, 200, 0);
+    bint.add(175, 175, "C");
 
     jsav.step();
 
