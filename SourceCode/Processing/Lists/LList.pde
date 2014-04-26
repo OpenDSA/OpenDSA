@@ -96,7 +96,7 @@ class LList implements List {
 /* *** ODSAendTag: LListPos *** */
 
   // Return true if current position is at end of the list
-  Boolean isAtEnd() { return curr == tail; }
+  boolean isAtEnd() { return curr == tail; }
 
   // Return current element value. Note that null gets returned if curr is at the tail
   Object getValue() {

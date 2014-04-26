@@ -1,82 +1,59 @@
 /* Create styling for the pagedBSTCON diagram */
 
 /* Set size for the jsav container */
-#pagedBSTCON {
+#pagedBST_CON {
 	width: 700px;
 	height: 500px;
 }
 
 /* Change the size of the tree nodes */
-#pagedBSTCON .jsavtree .jsavnode {
-	min-width: 30px;
-	max-width: 30px;
-	min-height: 30px;
-	max-height: 30px;
+#pagedBST_CON .jsavtree .jsavnode {
+	min-width: 35px;
+	max-width: 35px;
+	min-height: 35px;
+	max-height: 35px;
 }
 
-#pagedBSTCON .jsavtree .jsavvalue {
+#pagedBST_CON .jsavtree .jsavvalue {
     height: 30px;
 }
 
-#pagedBSTCON .jsavoutput.jsavline {
+#pagedBST_CON .jsavoutput.jsavline {
 	text-align: center;
 	width: 700px;
 }
 
-#pagedBSTCON .jsavlabel {
+#pagedBST_CON .jsavlabel {
 	z-index: 900;
 	font-size: 1.3em;
 }
 
-/* Create styling for the pagedBSTCON_2 diagram */
+/* Create styling for the rebalanceBST_CON diagram */
 
-#pagedBSTCON_2 {
+#rebalanceBST_CON {
     width: 700px;
     height: 500px;
 }
 
-#pagedBSTCON_2 .jsavtree .jsavnode, #pagedBSTCON_2 .jsavarray .jsavnode {
-    min-height: 30px;
-    max-height: 30px;
-    min-width: 30px;
-    max-width: 30px;
+#rebalanceBST_CON .jsavtree .jsavnode, #rebalanceBST_CON .jsavarray .jsavnode {
+    min-height: 35px;
+    max-height: 35px;
+    min-width: 35px;
+    max-width: 35px;
 }
 
-#pagedBSTCON_2 .jsavtree .jsavvalue, #pagedBSTCON_2 .jsavarray .jsavvalue {
+#rebalanceBST_CON .jsavtree .jsavvalue, #rebalanceBST_CON .jsavarray .jsavvalue {
     height: 30px;
 }
 
-#pagedBSTCON_2 .jsavoutput.jsavline {
+#rebalanceBST_CON .jsavoutput.jsavline {
     text-align: center;
     width: 700px;
 }
 
-#pagedBSTCON_2 .jsavlabel {
+#rebalanceBST_CON .jsavlabel {
     z-index: 900;
     font-size: 1.3em;
-}
-
-/* Create styling for the balanceBSTCON diagram */
-
-/* Set size for the jsav container */
-#balanceBSTCON {
-	width: 380px;
-	height: 115px;
-	padding: 25px;
-}
-
-/* Change the size of the tree nodes */
-#balanceBSTCON .jsavtree .jsavnode {
-	line-height: 20px;
-	min-width: 20px;
-	max-width: 20px;
-	min-height: 20px;
-	max-height: 20px;
-}
-
-/* Add ofset to the top of the number labels of the tree to place number in center of tree node */
-#balanceBSTCON .jsavtree .jsavnode .jsavvalue {
-	margin-top: -12px;
 }
 
 /* Create styling for the colorizedBST diagram */
@@ -100,37 +77,4 @@
 
 #colorizedBST .jsavvalue {
 	height: 20px;
-}
-
-/* Create styling for the colorizedBST diagram */
-
-#rectangleBST {
-	width: 600px;
-	margin-bottom: 30px;
-}
-
-#rectangleBST .jsavcanvas {
-	width: 600px;
-	height: 300px;
-}
-
-#rectangleBST .jsavtree {
-	margin-top: 20px;
-}
-
-#rectangleBST .jsavtree .jsavnode {
-	min-width: 20px;
-	min-height: 20px;
-	max-width: 20px;
-	max-height: 20px;
-	line-height: 20px;
-}
-
-#rectangleBST .jsavvalue {
-	height: 20px;
-}
-
-/* Add padding to the rectangle container to show the all the rectangles */
-#rectangleBST .jsavcanvas > svg {
-	margin-top: -20px;
 }
