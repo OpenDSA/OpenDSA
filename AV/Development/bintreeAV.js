@@ -28,6 +28,10 @@
     // Don't forget to refresh the tree layout
     this.tree.layout();
 
+    this.layout = function () {
+      this.tree.layout();
+    }
+
     // Getter function for the root
     this.getRoot = function () {
       console.log("getRoot: ", this.tree.root());
@@ -63,10 +67,12 @@
 
     // returns a node!
     this.insert = function(rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level) {
+      console.log("Bintree insert BEGIN: ", INx, INy, ", Level: ", level, ", Box: ", Bx, By, Bwid, Bhgt, ", rt Type: ", rt.NodeType);
 
-      jsav.step();
-      this.tree.layout();
-      console.log("Bintree insert: BEGIN: ", INrec, ", Level: ", level, ", rt Type: ", rt.NodeType);
+      if (level > 5) {
+        console.log("EMERGENCY STOP");
+        return rt;
+      }
 
       if (rt.NodeType === NT.EMPTYEXT) {
         console.log("insert: encountered empty leaf node: insert data and return")
@@ -79,7 +85,7 @@
 
         temp.x = INx;
         temp.y = INy;
-
+        temp.rec = INrec;
         temp.NodeType = NT.FULLEXT;
         return temp;
       }
@@ -88,6 +94,11 @@
       if (rt.NodeType === NT.FULLEXT) {
         console.log("insert: is a leaf and not empty: ", INrec, rt);
         
+        if ((rt.x === INx) && (rt.y === INy)) {
+          console.log("ERROR: Tried to reinsert duplicate point");
+          jsav.umsg("Error: Tried to reinsert duplicate point");
+          return rt;
+        }
         // Create the new nodes and set them as 
         var tp = this.newInteralNode();
         var tpl = this.newEmptyExtNode();
@@ -95,72 +106,49 @@
         tp.left(tpl);
         tp.right(tpr);
 
-        // DEBUG
         console.log("tp: " + tp.NodeType + "| left: " + tp.left().NodeType + "| right: " + tp.right().NodeType);
+
+        // Insert the old data
+        tp = this.insert(tp, rt.x, rt.y, rt.rec, Bx, By, Bwid, Bhgt, level);
 
         // Insert new data
         tp = this.insert(tp, INx, INy, INrec, Bx, By, Bwid, Bhgt, level);
 
 
-        // Insert the old data
-        if (tp.left().NodeType === NT.EMPTYEXT)
-        {
-          // Insert the old data to the left
-          tp.left(this.insert(tp.left(), rt.x, rt.y, rt.value(), Bx, By, Bwid, Bhgt, level+1));
-        }
-        else
-        {
-          // Insert the old data to the right
-          tp.right(this.insert(tp.right(), rt.x, rt.y, rt.value(), Bx, By, Bwid, Bhgt, level+1));
-        }
-
         // Debug line
         console.log("Finished inserting data for the leaf subtree");
        
-        this.tree.layout();
-
         // Return the new subtree to replace the leaf node
         return tp;
       }
 
       // If it isn't a leaf, then we have an internal node to insert into
-      if (level % 2 == 0) // Branch on X
-      {
-        if (rt.x < (Bx + Bwid/2)) // Insert left
-        {
-
+      if (level % 2 == 0) { // Branch on X
+        if (INx < (Bx + Bwid/2)) { // Insert left
           console.log("Branch on X, Insert Left: ", rt.left().NodeType);
           jsav.umsg("Branch on X, Insert Left");
           rt.left(this.insert(rt.left(), INx, INy, INrec, Bx, By, Bwid/2, Bhgt, level+1));
         }
-        else
-        {
-
+        else {
           console.log("Branch on X, Insert Right: ", rt.right().NodeType);
           jsav.umsg("Branch on X, Insert Right");
           rt.right(this.insert(rt.right(), INx, INy, INrec, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
         }
       }
 
-      else // Branch on Y
-      {
-        if (rt.y < (By + Bhgt/2)) // Insert left
-        {
-
-          console.log("Branch on Y, Insert Left: ", rt.left().NodeType);
-          jsav.umsg("Branch on Y, Insert Left");
+      else { // Branch on Y
+        if (INy < (By + Bhgt/2)) { // Insert up
+          console.log("Branch on Y, Insert up: " + rt.left().NodeType);
+          jsav.umsg("Branch on Y, Insert up");
           rt.left(this.insert(rt.left(), INx, INy, INrec, Bx, By, Bwid, Bhgt/2, level+1));
         }
-        else
-        {
-
-          console.log("Branch on Y, Insert Right: ", rt.right().NodeType);
-          jsav.umsg("Branch on Y, Insert Right");
+        else {
+          console.log("Branch on Y, Insert down: " + rt.right().NodeType);
+          jsav.umsg("Branch on Y, Insert down");
           rt.right(this.insert(rt.right(), INx, INy, INrec, Bx, By + Bhgt/2, Bwid, Bhgt/2, level+1));
         }
       }
 
-      this.tree.layout();
       return rt;
     } // insert
 
@@ -204,7 +192,7 @@
 
     jsav.umsg("Let's get started");
     console.log("Setup the Bintree");
-    var bint = new Bintree(jsav, 200, 200);
+    var bint = new Bintree(jsav, 256, 256);
     console.log("I just made a new Bintree, and bint.root is: ", bint.getRoot());
     bint.isEmpty();
     jsav.displayInit();
@@ -234,7 +222,10 @@
 
     jsav.step();
 
-  
+    jsav.umsg("Lay it out again");
+    bint.layout();
+    jsav.step();
+
   // Done
     jsav.umsg("All Done!");
 
