@@ -511,6 +511,47 @@ function construct_tree(av) {
   t.layout();
   av.step();
 
+  // step 7 -- try to add 50
+  av.umsg("Now we try to add 50. Following the internal nodes, we reach the leaf node 45. We must make a new split at value 47.");
+  r.right().left().right().css({"background-color": "orange"});
+  split45.css({"fill": "black"});
+  av.step();
+
+  // step 7 -- insert the split to add 50
+  av.umsg("The split at 47 replaces the data node at 45.");
+  r.right().left().right(47);
+  var split47 = tl.add_value(47, "47", hts);
+  fillpair(r.right().left().right(), split47, split_color);
+  t.layout();
+  av.step();
+
+  // step 7 -- now add the value we removed
+  av.umsg("We can now add the value of 45 which we temproarily replaced.");
+  r.right().left().right().left(45);
+  // r.right().left().right().left().addClass("huffmanleaf");
+  t.layout();
+  av.step();
+
+  // step 8 -- now add the value we tried to insert orignally (50)
+  av.umsg("With our splits performed, we can now add 50.");
+  r.right().left().right().right(50);
+  r.right().left().right().right().addClass("huffmanleaf");
+  var split50 = tl.add_value(50, "50", ht1, {"label_top": true});
+  fillpair(split50, r.right().left().right().right(), highlight_background_color);
+  t.layout();
+  av.step();
+  
+  // step 9 -- add 63
+  av.umsg("We now attemp to add 63. Looking at the trie confirms there are no splits needed to insert 63.");
+  r.right().right(63);
+  r.right().right().addClass("huffmanleaf");
+  split50.css({"fill": "black"});
+  r.right().left().right().right().css({"background-color": "orange"});
+  var split63 = tl.add_value(63, "63", ht1);
+  fillpair(split63, r.right().right(), highlight_background_color);
+  t.layout();
+  av.step();
+
   // cleanup
   av.recorded();
 
