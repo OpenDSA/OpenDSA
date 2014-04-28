@@ -480,8 +480,10 @@ function construct_tree(av) {
   console.log(r.right().left());
   r.right().left(38);
   console.log(r.right().left());
-  // r.right().left().addClass("huffmanleaf");
-  // r.right().removeClass("huffmanleaf");
+  var temp = r.right().left();
+  console.log("temp is " + temp);
+  temp.addClass("huffmanleaf");
+  temp.removeClass("huffmanleaf");
   var split52 = tl.add_value(52, "52", hts); // the huffman split
   fillpair(split52, r.right(), split_color);
   split7.css({"fill": "black"});
