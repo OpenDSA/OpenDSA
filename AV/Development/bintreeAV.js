@@ -113,27 +113,8 @@
         tp = this.insert(rt, old.x, old.y, old.value(), Bx, By, Bwid, Bhgt, level);
 
         console.log("Insert new data for insert: ", INrec);
-        // Insert new data
-        // tp = this.insert(tp, INx, INy, INrec, Bx, By, Bwid, Bhgt, level);
-
-        // if (tp.left().NodeType === NT.EMPTYEXT)
-        // {
-        //   // Insert the new data to the left
-        //   tp.left(this.insert(tp.left(), INx, INy, INrec, Bx, By, Bwid, Bhgt, level+1));
-        // }
-
-        // else
-        // {
-        //   // Insert the new data to the right
-        //   tp.right(this.insert(tp.right(), INx, INy, INrec, Bx, By, Bwid, Bhgt, level+1));
-        // }
-
-
-        // Debug line
-        // console.log("Finished inserting data for the leaf subtree");
-       
-        // Return the new subtree to replace the leaf node
-        // return tp;
+        
+        // Fall through and continue inserting the data.
       }
 
       // If it isn't a leaf, then we have an internal node to insert into
