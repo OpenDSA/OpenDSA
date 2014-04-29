@@ -6,6 +6,8 @@
     return a - b;
   };
   
+  var theString;
+
   var Bintree = function (jsav, xrange, yrange) {
 
     // Enum for the node type
@@ -24,12 +26,30 @@
     console.log("I'm making a new Bintree object. root = ", this.tree.root());
     // Set the root as an empty node
     this.tree.root().NodeType = NT.EMPTYEXT;
+ 
+    this.doTrav = function(root) {
+      if (root.NodeType === NT.INTERNAL) {
+        theString = theString + "I";
+        this.doTrav(root.left());
+        this.doTrav(root.right());
+      }
+      else if (root.NodeType === NT.EMPTYEXT)
+        theString = theString + "E";
+      else if (root.NodeType === NT.FULLEXT)
+        theString = theString + root.value();
+      else
+        console.log("ERROR WITH TRAVERSING TREE");
+    }
 
-    // Don't forget to refresh the tree layout
-    this.tree.layout();
+    this.logtrav = function() {
+      theString = "";
+      this.doTrav(this.tree.root());
+      console.log(theString);
+    }
 
     this.layout = function () {
       console.log("Layout the tree");
+      this.logtrav();
       this.tree.layout();
     }
 
@@ -63,11 +83,13 @@
     // calling function for insertion
     this.add = function(INx, INy, INrec) {
       console.log("Start Insert: ", INrec, " @ (", INx, ", ", INy, ")");
-      this.tree.root(this.insert(this.tree.root(), INx, INy, INrec, 0, 0, xrange, yrange, 0));
+      var temp = this.insert(this.tree.root(), INx, INy, INrec, 0, 0, xrange, yrange, 0);
+      console.log("Setting the root to be: " + temp);
+      this.tree.root(temp);
       this.layout();
     }
 
-    // returns a node!
+    // returns the root of tree that results from inserting the new record
     this.insert = function(rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level) {
       console.log("Bintree insert BEGIN: ", INx, INy, ", Level: ", level, ", Box: ", Bx, By, Bwid, Bhgt, ", rt Type: ", rt.NodeType);
 
@@ -210,7 +232,7 @@
 
     jsav.step();
 
-    jsav.umsg("Step 2: insert node with value \"C\" @ 175, 175");
+    jsav.umsg("Step 3: insert node with value \"C\" @ 175, 175");
     bint.add(175, 175, "C");
 
     jsav.step();
