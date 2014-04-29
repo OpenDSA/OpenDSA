@@ -29,6 +29,7 @@
     this.tree.layout();
 
     this.layout = function () {
+      console.log("Layout the tree");
       this.tree.layout();
     }
 
@@ -61,15 +62,16 @@
     
     // calling function for insertion
     this.add = function(INx, INy, INrec) {
+      console.log("Start Insert: ", INrec, " @ (", INx, ", ", INy, ")");
       this.tree.root(this.insert(this.tree.root(), INx, INy, INrec, 0, 0, xrange, yrange, 0));
-      this.tree.layout();
+      this.layout();
     }
 
     // returns a node!
     this.insert = function(rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level) {
       console.log("Bintree insert BEGIN: ", INx, INy, ", Level: ", level, ", Box: ", Bx, By, Bwid, Bhgt, ", rt Type: ", rt.NodeType);
 
-      if (level > 5) {
+      if (level > 15) {
         console.log("EMERGENCY STOP");
         return rt;
       }
@@ -79,13 +81,10 @@
         jsav.umsg("Insert: Encountered an empty leaf node: Now insert data and return!");
         console.log("Bintree insert: (LEAF) Value = ", INrec);
     
-        //var strtmp = INrec  + "|" + INx + "|" + INys;
-
         var temp = this.tree.newNode(INrec); 
 
         temp.x = INx;
         temp.y = INy;
-        temp.rec = INrec;
         temp.NodeType = NT.FULLEXT;
         return temp;
       }
@@ -106,20 +105,35 @@
         tp.left(tpl);
         tp.right(tpr);
 
-        console.log("tp: " + tp.NodeType + "| left: " + tp.left().NodeType + "| right: " + tp.right().NodeType);
+        var old = rt; 
+        rt = tp;
 
+        console.log("Insert old data for insert: ", INrec);
         // Insert the old data
-        tp = this.insert(tp, rt.x, rt.y, rt.rec, Bx, By, Bwid, Bhgt, level);
+        tp = this.insert(rt, old.x, old.y, old.value(), Bx, By, Bwid, Bhgt, level);
 
+        console.log("Insert new data for insert: ", INrec);
         // Insert new data
-        tp = this.insert(tp, INx, INy, INrec, Bx, By, Bwid, Bhgt, level);
+        // tp = this.insert(tp, INx, INy, INrec, Bx, By, Bwid, Bhgt, level);
+
+        // if (tp.left().NodeType === NT.EMPTYEXT)
+        // {
+        //   // Insert the new data to the left
+        //   tp.left(this.insert(tp.left(), INx, INy, INrec, Bx, By, Bwid, Bhgt, level+1));
+        // }
+
+        // else
+        // {
+        //   // Insert the new data to the right
+        //   tp.right(this.insert(tp.right(), INx, INy, INrec, Bx, By, Bwid, Bhgt, level+1));
+        // }
 
 
         // Debug line
-        console.log("Finished inserting data for the leaf subtree");
+        // console.log("Finished inserting data for the leaf subtree");
        
         // Return the new subtree to replace the leaf node
-        return tp;
+        // return tp;
       }
 
       // If it isn't a leaf, then we have an internal node to insert into
@@ -153,8 +167,6 @@
     } // insert
 
   } // bintree
-  
-  var arr;
 
   // check query parameters from URL
   var params = JSAV.utils.getQueryParameter();
