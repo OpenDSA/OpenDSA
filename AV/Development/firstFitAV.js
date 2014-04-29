@@ -3,6 +3,7 @@
   var jsav,              // JSAV
       defCtrlState,   // Stores the default state of the controls
       submitRec,      //the rectangle that's created when the user hits submit
+      newRect,
       free1,
       linesArray,
       freeListArray,
@@ -11,6 +12,12 @@
       blockLabelArray,
       requestedBlockLabel,
       connectStartArray,
+      recArray,
+      recArraySize,
+      freeOrNot,
+      attArray,
+      startArray,
+      finArray,
       freeFinArray,
       freeAmountLabel,
       freeNum,
@@ -19,7 +26,9 @@
       nextCount = 0,
       rectNumber = 0,
       current,
+      color,
       fit = 0;
+
 
   function setDefaultControlState() {
     defCtrlState = {};
@@ -44,7 +53,7 @@
   function reset() {
     // Clear any existing messages and hash table data
     jsav.clearumsg();
-
+    
     // Reset controls to their default state
     $("#fitAlgorithm").val(0);
 
@@ -75,6 +84,8 @@
     var used2 = jsav.g.rect(455, 150, 62, 60).css({"fill": "coral"});
     var used3 = jsav.g.rect(597, 150, 45, 60).css({"fill": "coral"});
     var used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "coral"});
+    $("rect").on("click", changeUsed);
+
 
     var free1Start = 280;
     var free2Start = 367;
@@ -85,7 +96,57 @@
     var free2 = jsav.g.rect(free2Start, 150, 88, 60).css({"fill": "cornflowerblue"});
     var free3 = jsav.g.rect(free3Start, 150, 80, 60).css({"fill": "cornflowerblue"});
     var free4 = jsav.g.rect(free4Start, 150, 113, 60).css({"fill": "cornflowerblue"});
-    
+
+    recArray = new Array(30);
+
+    recArray[0] = free1;
+    recArray[1] = used1;
+    recArray[2] = free2;
+    recArray[3] = used2;
+    recArray[4] = free3;
+    recArray[5] = used3;
+    recArray[6] = free4;
+    recArray[7] = used4;
+
+    startArray = new Array(30);
+    finArray = new Array(30);
+    freeOrNot = new Array(30);  //1 indicates free 0 is not
+
+    startArray[0] = 280;
+    startArray[1] = 342;
+    startArray[2] = 367;
+    startArray[3] = 455;
+    startArray[4] = 517;
+    startArray[5] = 597;
+    startArray[6] = 642;
+    startArray[7] = 755;
+
+    finArray[0] = 342;
+    finArray[1] = 390;
+    finArray[2] = 455;
+    finArray[3] = 540;
+    finArray[4] = 597;
+    finArray[5] = 665;
+    finArray[6] = 755;
+    finArray[7] = 804;
+
+    freeOrNot[0] = 1;
+    freeOrNot[1] = 0;
+    freeOrNot[2] = 1;
+    freeOrNot[3] = 0;
+    freeOrNot[4] = 1;
+    freeOrNot[5] = 0;
+    freeOrNot[6] = 1;
+    freeOrNot[7] = 0;
+
+
+
+    // var touch1 = jsav.g.rect(280, 20, 30, 40).css({"fill": "coral"});
+    // var touch2 = jsav.g.rect(620, 20, 30, 40).css({"fill": "coral"});
+    // var touch3 = jsav.g.rect(620, 20, 30, 40).css({"fill": "coral"});
+    // var touch4 = jsav.g.rect(620, 20, 30, 40).css({"fill": "coral"});
+
+
     freeStartArray = new Array(free1Start, free2Start, free3Start, free4Start);
     
     var free1Finish = 342;
@@ -152,7 +213,9 @@
 
     linesArray = new Array(connect1, connect2, connect3, connect4);
     current = 0;
+    recArraySize = 8;
   }
+
  
   function newRec(sizeX)
   {
@@ -161,11 +224,84 @@
     requestedBlockLabel = jsav.label("Requested Block", {"left": 280, "top": 270}).css({"font-weight": "bold"});
 
   }
+
+
+  function changeUsed(event)
+  {
+    var x, y;
+    console.log("this: " + this + ", event: " + event);
+    this.setAttribute("fill", "cornflowerblue");
+    //jsav.umsg(event.pageX)
+    var click = event.pageX;
+    merge(click);
+   
+   
+  }
+
+  function getStart(position)
+  {
+      return startArray[position -1];
+  }
+
+  function getFin(position)
+  {
+      return finArray[position -1];
+  }
+
+ 
  
   function enableAllButtons() {
     $("#input").removeAttr("disabled");
     $("#submit").removeAttr("disabled");
     $("#next").removeAttr("disabled");
+  }
+
+  function merge(clickSpot)
+  {
+      //hi
+      clickSpot = clickSpot -23; 
+      var i = 0;
+      while(clickSpot > startArray[i])
+      {
+        //jsav.umsg("start " + i + " " + startArray[i])
+        i++;
+      }
+      i = i - 1;
+      //jsav.umsg("i = " + i)
+      //jsav.umsg("click = " + clickSpot)
+      if(i != 0 && i != recArraySize)
+      {
+        var diff = finArray[i + 1] -startArray[i-1];
+        var newRect = jsav.g.rect(startArray[i-1], 150, diff, 60).css({"fill": "cornflowerblue"});
+        recArray[i] = newRect;
+        
+        newRect.css({"z-index": 500});
+        var j = recArraySize;
+        i = i +2;
+        jsav.umsg("array size =  " + recArraySize)
+        jsav.umsg("i = " + i)
+        i = i +1
+        for(i; i < recArraySize; i++)
+        {
+          jsav.umsg("in for")
+          recArray[i - 2] = recArray[i];
+          recArray[recArraySize -1] = null;
+          recArray[recArraySize -2] = null;
+
+          startArray[i - 2] = startArray[i];
+          startArray[recArraySize -1] = null;
+          startArray[recArraySize -2] = null;
+
+          finArray[i - 2] = finArray[i];
+          finArray[recArraySize -1] = null;
+          finArray[recArraySize -2] = null;
+          jsav.umsg("array size =  " + recArraySize)
+        }
+        //jsav.umsg("array size =  " + recArraySize)
+        recArraySize = recArraySize - 2;
+        //jsav.umsg("array size =  " + recArraySize)
+      }
+
   }
 
   function insertIntoBlock(inputVal) {
@@ -466,6 +602,8 @@
   $(document).ready(function () {
     jsav = new JSAV($('.avcontainer'));
     reset();
+
+    
 
     // If the user hits 'Enter' while the focus is on the textbox,
     // click 'Next' rather than refreshing the page

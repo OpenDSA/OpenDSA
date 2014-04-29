@@ -418,54 +418,152 @@ function construct_tree(av) {
   var av = new JSAV("TrieTimeline");
   var t = av.ds.binarytree({nodegap: 25});
   var r = t.root("E");
-  t.layout();
+  r.addClass("huffmanleaf");
   var tl = new timeline(av, 49, 325, 500, 0, 70, 10);
-  
-  // These vars correspond the the height of each line corresponding
-  // to the level of the tree. For example, ht1 is the height of the
-  // split (on the timeline) for a node in the first level of the 
-  // tree (the root node). To make the split longer, increase the
-  // value of ht1 and so on.
-  var ht1 = 95;
-  var ht2 = 80;
-  var ht3 = 65;
-  var ht4 = 50;
-  var ht5 = 35;
-  var ht6 = 20;
+
+  var ht1 = 40;
   var hts = 105; // height of split
 
   // colors for animation
-  var highlight_background_color = "#2B44CF";
-  var highlight_text_color = "white";
-  var unhighlight_background_color = "white";
-  var unhighlight_background_split_color = "black";
-  var split_color = "#3BC423";
+  var highlight_background_color = "#2B44CF";       // blue
+  var highlight_text_color = "white";               // white
+  var unhighlight_background_color = "white";       // white
+  var unhighlight_background_split_color = "black"; // black
+  var split_color = "#3BC423";                      // green
 
   av.umsg("To demonstrate to characteristics of a trie, we will display this on a number line. We start with an emtpy trie.");
   t.layout(); // multiple layout() calls to fix off center tree issue
   av.displayInit();
-  t.layout();
-  
+
   // step 1
-  r.value("35");
-  r.left("E");
-  r.right("36");
-  r.right().addClass("huffmanleaf");
-  t.layout();
-  var split35 = tl.add_value(35, "35", hts, {label_top: true});
-  var split36 = tl.add_value(36, "36", ht1);
-  r.css({"fill": split_color});
-  split35.css({"fill": split_color});
-  r.right().css({"background-color": "highlight_background_color"});
+  av.umsg("First we add 38 to the trie. There is no split required.");
+  r.value(38);
+  var split38 = tl.add_value(38, "38", ht1, {label_top: true});
+  fillpair(r, split38, highlight_background_color);
   av.step();
 
+  // step 2
+  av.umsg("We now add 19. A single split is required to split the timeline in half at a value of 35.");
+  r.value(35);
+  r.removeClass("huffmanleaf");
+  r.left(19);
+  r.left().addClass("huffmanleaf");
+  r.right(38);
+  r.right().addClass("huffmanleaf");
+  var split35 = tl.add_value(35, "35", hts); // huffman split (not value)
+  var split19 = tl.add_value(19, "19", ht1, {label_top: true}); // val split
+  fillpair(split19, r.left(), highlight_background_color); // fill the value inserted
+  fillpair(split35, r, split_color);  // fillthe split inserted
+  split38.css({"fill": "black"});
+  t.layout();
+  av.step();
+
+  // step 3 -- add 7
+  av.umsg("We now want to add 7. This requires a single split at a value of 17.");
+  r.left().removeClass("huffmanleaf");
+  r.left(17);
+  r.left().left(7);
+  r.left().left().addClass("huffmanleaf");
+  r.left().right(19);
+  r.left().right().addClass("huffmanleaf");
+  var split17 = tl.add_value(17, "17", hts); // the huffman split
+  var split7 =  tl.add_value(7, "7", ht1, {label_top: true}); // the value split
+  fillpair(split17, r.left(), split_color);
+  fillpair(split7, r.left().left(), highlight_background_color);
+  split19.css({"fill": "black"});
+  t.layout();
+  av.step();
+
+  // step 4 -- add 45 first split
+  av.umsg("We now want to add 45. This requires two splits. The first split is at value 52.");
+  r.right(52);
+  console.log(r.right().left());
+  r.right().left(38);
+  console.log(r.right().left());
+  var temp = r.right().left();
+  console.log("temp is " + temp);
+  temp.addClass("huffmanleaf");
+  temp.removeClass("huffmanleaf");
+  var split52 = tl.add_value(52, "52", hts); // the huffman split
+  fillpair(split52, r.right(), split_color);
+  split7.css({"fill": "black"});
+  r.left().left().css({"background-color": "orange"})
+  t.layout();
+  av.step();
+
+  // step 5 -- add 45 second split
+  av.umsg("We now try to add the original value, 45, again. This brings us to the leaf node of 38 which requires another split at 43.");
+  r.right().left(43);
+  r.right().left().left(38);
+  // r.right().left().removeClass("huffmanleaf");
+  // r.right().left().left().addClass("huffmanleaf");
+  var split43 = tl.add_value(43, "43", hts); // the huffman split
+  fillpair(split43, r.right().left(), split_color);
+  t.layout();
+  av.step();
+
+  // step 6 -- add 45 finally add 45
+  av.umsg("We can now add our original value of 45 since it falls to the right of the split at 43.");
+  r.right().left().right(45);
+  // r.right().left().right().addClass("huffmanleaf");
+  var split45 = tl.add_value(45, "45", ht1, {"label_top": true}); // the value split
+  fillpair(split45, r.right().left().right(), highlight_background_color);
+  t.layout();
+  av.step();
+
+  // step 7 -- try to add 50
+  av.umsg("Now we try to add 50. Following the internal nodes, we reach the leaf node 45. We must make a new split at value 47.");
+  r.right().left().right().css({"background-color": "orange"});
+  split45.css({"fill": "black"});
+  av.step();
+
+  // step 7 -- insert the split to add 50
+  av.umsg("The split at 47 replaces the data node at 45.");
+  r.right().left().right(47);
+  var split47 = tl.add_value(47, "47", hts);
+  fillpair(r.right().left().right(), split47, split_color);
+  t.layout();
+  av.step();
+
+  // step 7 -- now add the value we removed
+  av.umsg("We can now add the value of 45 which we temproarily replaced.");
+  r.right().left().right().left(45);
+  // r.right().left().right().left().addClass("huffmanleaf");
+  t.layout();
+  av.step();
+
+  // step 8 -- now add the value we tried to insert orignally (50)
+  av.umsg("With our splits performed, we can now add 50.");
+  r.right().left().right().right(50);
+  r.right().left().right().right().addClass("huffmanleaf");
+  var split50 = tl.add_value(50, "50", ht1, {"label_top": true});
+  fillpair(split50, r.right().left().right().right(), highlight_background_color);
+  t.layout();
+  av.step();
+  
+  // step 9 -- add 63
+  av.umsg("We now attemp to add 63. Looking at the trie confirms there are no splits needed to insert 63.");
+  r.right().right(63);
+  r.right().right().addClass("huffmanleaf");
+  split50.css({"fill": "black"});
+  r.right().left().right().right().css({"background-color": "orange"});
+  var split63 = tl.add_value(63, "63", ht1);
+  fillpair(split63, r.right().right(), highlight_background_color);
+  t.layout();
+  av.step();
 
   // cleanup
   av.recorded();
 
 }(jQuery));
 
-function fill
+function fillpair(node, split, color)
+{
+  node.css({"fill": color});
+  node.css({"background-color": color});
+  split.css({"background-color": color});
+  split.css({"fill": color});
+}
 
 function split (av, x, x1, y, label, height, top) {
   
@@ -532,7 +630,7 @@ function timeline(av, x, y, len, min, max, inc) {
   this.add_value = function (val, label, height, prop) {
     
     var top = false;
-    if (typeof(prop)!= 'undefined' && typeof(prop.label_top) != 'undefined') { top = true; }
+    if (typeof(prop) != 'undefined' && typeof(prop.label_top) != 'undefined') { top = true; }
     
     var range = max - min;
     var pxPerInc = (len - buffer * 2) / range; // 5px buff on each inner side of arrow

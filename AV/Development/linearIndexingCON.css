@@ -2,7 +2,7 @@
   height: 30px;
 }
 
-.jsavnode {
+#varindexCON .jsavnode{
   line-height: 30px !important;
   min-width: 30px !important;
   max-width: 30px !important;
@@ -11,16 +11,22 @@
 }
 
 #varindexCON .jsavcanvas{
- overflow:visible;
  margin-left: auto;
  margin-right: auto;
  height: 250px;
  width: 540px;
+
 }
+
 #varindexCON .jsavoutput {
-overflow:visible;
 padding-top: 100px;
 text-align: center;
+}
+
+#linindexCON .jsavnode{
+
+ min-height: 30px !important;
+ max-height: 30px !important;
 }
 
 #linindexCON .jsavcanvas {
@@ -28,6 +34,10 @@ text-align: center;
  margin-right: auto;
  height: 250px;
  width: 580px;
+}
+
+.jsavarray .jsavindex {
+border-radius: 0 !important;
 }
 
 svg{

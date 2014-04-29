@@ -33,3 +33,40 @@ void quicksort(Comparable[] A, int i, int j) { // Quicksort
   if ((j-k) > 1) quicksort(A, k+1, j);  // Sort right partition
 }
 /* *** ODSAendTag: Quicksort *** */
+
+// ---------------------------------------------------------------
+
+// Set up and implementations for doing timing runs on certain variations
+
+void sorttime(Comparable[] B) {
+  int i;
+  Comparable[] A = new Comparable[B.length];
+  int totaltime, runs;
+  int numruns = 20;
+
+  // Timing test for standard implementation
+  totaltime = 0;
+  for (runs=0; runs<numruns; runs++) {
+    for(i=0; i<B.length; i++) A[i] = B[i];
+    time1 = millis();
+    quicksort(A, 0, A.length-1);
+    time2 = millis();
+    checkorder(A);
+    totaltime += (time2-time1);
+  }
+  println("Standard Quicksort for " + numruns + " runs: Size " +
+           testsize + ", Time: " + totaltime);
+
+  // Timing test for optimized version
+  totaltime = 0;
+  for (runs=0; runs<numruns; runs++) {
+    for(i=0; i<B.length; i++) A[i] = B[i];
+    time1 = millis();
+    quicksortOpt(A, 0, A.length-1);
+    time2 = millis();
+    checkorder(A);
+    totaltime += (time2-time1);
+  }
+  println("Optimized Quicksort for " + numruns + " runs: Size " +
+           testsize + ", Time: " + totaltime);
+}

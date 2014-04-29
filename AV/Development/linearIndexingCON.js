@@ -110,10 +110,13 @@ arr.css(index, {"background-color": "#FFFF00" });
   var empty = [];
   empty.length = 4;
   var av = new JSAV("linindexCON");
-  var arr = av.ds.array(theArray, {indexed: true});
-  
+  var arr2 = av.ds.array(theArray);
+  var LIGHT = "rgb(215, 215, 215)"; 
 var setYellow = function (index) {
-arr.css(index, {"background-color": "#FFFF00" });
+arr2.css(index, {"background-color": "#FFFF00" });
+};
+var setLight = function (index) {
+arr3.css(index, {"background-color": "#ddf"});
 };
 
   av.umsg("Here is the Second Level Index Array which stores the first key value in the disk block of the index file");
@@ -126,28 +129,67 @@ arr.css(index, {"background-color": "#FFFF00" });
   av.umsg("The second disk block contains the greatest value less than or equal to the search key");
   av.step();
   
+  av.umsg("Here is a representation of the disk blocks in the Linear Index file");
+  var rect5 = av.g.rect(0, 75, 143, 25).css({"fill": "white"});
+  var rect6 = av.g.rect(143, 75, 143, 25).css({"fill": "white"});
+  var rect7 = av.g.rect(286, 75, 143, 25).css({"fill": "white"});
+  var rect8 = av.g.rect(429, 75, 143, 25).css({"fill": "white"});
   
-  var rect5 = av.g.rect(0, 75, 143, 20).css({"fill": "white"});
-  var rect6 = av.g.rect(143, 75, 143, 20).css({"fill": "#FFFF00"});
-  var rect7 = av.g.rect(286, 75, 143, 20).css({"fill": "white"});
-  var rect8 = av.g.rect(429, 75, 143, 20).css({"fill": "white"});
   
   
-  
-  var fragLabel = av.label("1", {left : 2, top:  75});
-  var fragLabel = av.label("2001", {left : 108, top:  75});
-  var fragLabel = av.label("2003", {left : 145, top:  75});
-  var fragLabel = av.label("5688", {left : 251, top:  75});
-  var fragLabel = av.label("5894", {left : 288, top:  75});
-  var fragLabel = av.label("9942", {left : 394, top:  75});
-  var fragLabel = av.label("10528", {left : 431, top:  75});
-  var fragLabel = av.label("10984", {left : 530, top:  75});
-  var fragLabel = av.label("Linear Index: Disk Blocks", {left :  0, top:  95});
-  
-  av.umsg("The search is directed to the proper block in the index file, which is read into memory");
+  var fragLabel1 = av.label("1", {left : 2, top:  78});
+  var fragLabel2 = av.label("2001", {left : 108, top:  78});
+  var fragLabel3 = av.label("2003", {left : 145, top:  78});
+  var fragLabel4 = av.label("5688", {left : 251, top:  78});
+  var fragLabel5 = av.label("5894", {left : 288, top:  78});
+  var fragLabel6 = av.label("9942", {left : 394, top:  78});
+  var fragLabel7 = av.label("10528", {left : 431, top:  78});
+  var fragLabel8 = av.label("10984", {left : 530, top:  78});
+  var fragLabel9 = av.label("Linear Index: Disk Blocks", {left :  0, top:  100});
   av.step();
   
-  av.umsg(" At this point, a binary search within this block will produce a pointer to the actual record in the database");
+  av.umsg("The search is directed to the proper block in the index file, which is read into memory");
+  var rect6 = av.g.rect(143, 75, 143, 25).css({"fill": "#FFFF00"});
+  av.step();
+  
+  var theArray2 = [2003,2260, 2592, 2820, 3000, 3920, 4160, 4880, 5550, 5688];
+  var arr3 = av.ds.array(theArray2, {bottom:30, center: true, right: 0, left: 0, indexed: true});
+  
+  
+  fragLabel9.hide();
+  
+  var x4FragArrow = av.g.line(147,  100,  30, 155, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+  var z5FragArrow = av.g.line(280,  100, 430, 155, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
+  
+  
+  av.umsg("Here is the array expansion of the selected block within the index file");
+  av.step();
+  av.umsg("Now we perform a binary search to look for the record in the array expansion");
+  av.step();
+  
+  av.umsg("We now choose the median value, which is the value at index 5");
+  setLight(5);
+  av.step();
+  arr3.hide();
+  x4FragArrow.hide();
+  z5FragArrow.hide();
+  var theArray3 = [2003, 2260, 2592, 2820, 3000];
+  var arr4 = av.ds.array(theArray3, {bottom:30, center: true, right: 0, left: 0, indexed: true});
+  av.umsg("Since the record 3000 is less than the median value we split the array and look in the lower half");
+  av.step();
+  av.umsg("The element at Index 2 is the new median value");
+  arr4.css(2, {"background-color": "#ddf"});
+  av.step();
+  av.umsg("Since 3000 is greater than the median value we look at the two values at index 3 and 4");
+  arr4.css(2, {"background-color": "white"});
+  arr4.css(3, {"background-color": "#ddf"});
+  arr4.css(4, {"background-color": "#ddf"});
+  av.step();
+  av.umsg("The record that we are looking for is at index 4");
+  arr4.css(3, {"background-color": "white"});
+  arr4.css(4, {"background-color": "#FFFF00"});
+  av.step();
+  av.umsg("A binary search produces a pointer to the actual record in the database");
   av.recorded();
 
   

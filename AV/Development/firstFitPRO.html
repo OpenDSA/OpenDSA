@@ -28,18 +28,13 @@
     <div class="jsavcanvas">
       <p class="instructLabel">Instructions:</p>
       <p class="instructions">
-        For each block size given, place it in the correct free block in the memory pool using the First Fit algorithm.
-        Select a free block space by clicking on the free array that corresponds to the block you wish to insert the specified block size.  Once you have selected the array element, click "Done Selecting".  Click on "Help" for more details.
+        For each block size given, use the first fit algorithm to place it in the a free block in the memory pool.  Select a free block space by clicking on the free list element that corresponds to the block in the memory pool.  Once you have selected the array element, your answer will be evaluated.  Click on "Help" for more details.
       </p>
       <p class="jsavoutput jsavline"></p>
-
       <p>Block sizes to insert:
         <input type="text" readonly="readonly" name="increments" id="increments">
         <span class="jsavscore"></span>
       </p>
-
-      <input type="button" id="selecting" name="selecting"
-        data-desc="Indicates user is done selecting a memory block" value="Done Selecting" />
 
       <ol id="profArray"></ol>
     </div>

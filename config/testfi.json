@@ -3,7 +3,7 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": "Processing",
-  "lang": "en",
+  "lang": "fi",
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,

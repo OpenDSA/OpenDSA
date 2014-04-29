@@ -11,6 +11,11 @@
   height: 50px;
 }
 
+.jsavnode {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
 ul {
 list-style-type: none;
 padding: 0px;

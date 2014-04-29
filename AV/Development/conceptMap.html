@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html> 
 
@@ -8,35 +7,49 @@
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
   <link rel="stylesheet" href="conceptMap.css" type="text/css" />
-
+ 
+  <script src="conceptMap.js"></script>
 
 </head>
 
-<body>
-<p>
+<body onload="runit()">
+
+  
+<!--<p>
       <input type="button" id="runit" name="runit" value="Run" />
-</p>
+      <input type="button" id="run" name="run" value="JSON RUN" />
+</p>-->
+
 
 <div class="avcontainer">
-    <ul>
-    <li><a href="canary.html" target="description">canary <a></li>
+ <!--   <ul>
+    <li><a href="cany.html" target="description">canary <a></li>
     <li><a href="robin.html" target="description"> robin <a></li>
     <li><a href="cardinal.html" target="description"> cardinal <a></li>
+    <li><a href="ArrayTree.html" id="traversal"> Traversal</a></li>
+
     </ul>
+  -->  
 
-    <div><iframe name="description"></iframe></div>
-
+ <!--   <div><iframe srcdoc="<p>Hello world!</p>"> </iframe></div> -->
+    <iframe srcdoc="<p>Hello world!</p>"></iframe>
 </div>
 
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="../../lib/odsaUtils.js"></script>
+  <script src="../../lib/odsaAV.js"></script>
+  <script src="../../lib/jquery.xml2json.js"></script>
+  
 
 
 </body>
-<script src="../../lib/jquery.min.js"></script>
-	<script src="../../lib/jquery-ui.min.js"></script>
-	<script src="../../JSAV/lib/jquery.transit.js"></script>
-	<script src="../../JSAV/lib/raphael.js"></script>
-	<script src="../../JSAV/build/JSAV-min.js"></script>
-	<script src="../../lib/odsaUtils.js"></script>
-	<script src="../../lib/odsaAV.js"></script>
-	<script src="conceptMap.js"></script>
+
+
+
+
 </html> 
+
