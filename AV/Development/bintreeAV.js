@@ -87,6 +87,7 @@
       console.log("Setting the root to be: " + temp);
       this.tree.root(temp);
       this.layout();
+      jsav.step();
     }
 
     // returns the root of tree that results from inserting the new record
@@ -101,6 +102,7 @@
       if (rt.NodeType === NT.EMPTYEXT) {
         console.log("insert: encountered empty leaf node: insert data and return")
         jsav.umsg("Insert: Encountered an empty leaf node: Now insert data and return!");
+        jsav.step();
         console.log("Bintree insert: (LEAF) Value = ", INrec);
     
         var temp = this.tree.newNode(INrec); 
@@ -118,6 +120,7 @@
         if ((rt.x === INx) && (rt.y === INy)) {
           console.log("ERROR: Tried to reinsert duplicate point");
           jsav.umsg("Error: Tried to reinsert duplicate point");
+          jsav.step();
           return rt;
         }
         // Create the new nodes and set them as 
@@ -143,12 +146,10 @@
       if (level % 2 == 0) { // Branch on X
         if (INx < (Bx + Bwid/2)) { // Insert left
           console.log("Branch on X, Insert Left: ", rt.left().NodeType);
-          jsav.umsg("Branch on X, Insert Left");
           rt.left(this.insert(rt.left(), INx, INy, INrec, Bx, By, Bwid/2, Bhgt, level+1));
         }
         else {
           console.log("Branch on X, Insert Right: ", rt.right().NodeType);
-          jsav.umsg("Branch on X, Insert Right");
           rt.right(this.insert(rt.right(), INx, INy, INrec, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
         }
       }
@@ -156,12 +157,10 @@
       else { // Branch on Y
         if (INy < (By + Bhgt/2)) { // Insert up
           console.log("Branch on Y, Insert up: " + rt.left().NodeType);
-          jsav.umsg("Branch on Y, Insert up");
           rt.left(this.insert(rt.left(), INx, INy, INrec, Bx, By, Bwid, Bhgt/2, level+1));
         }
         else {
           console.log("Branch on Y, Insert down: " + rt.right().NodeType);
-          jsav.umsg("Branch on Y, Insert down");
           rt.right(this.insert(rt.right(), INx, INy, INrec, Bx, By + Bhgt/2, Bwid, Bhgt/2, level+1));
         }
       }
@@ -212,29 +211,27 @@
     bint.isEmpty();
     jsav.displayInit();
 
-    jsav.step();
-  
     // Setup the tree
-    jsav.umsg("Step 1: insert node with value \"A\" @ 125, 125");
+    jsav.umsg("Step 1: insert node with value 'A' @ 125, 125");
+    jsav.step();
     
     // rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level
     console.log("Let's call insert. bint.root is now: ", bint.getRoot());
+
     bint.add(125, 125, "A");
-    bint.isEmpty();
-  
-    jsav.step();
 
     // Insert another object
     jsav.umsg("Step 2: insert node with value \"B\" @ 50, 50");
-    // rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level
+    jsav.step();
+
     console.log("Let's call insert. bint.root is now: ", bint.getRoot());
     bint.add(50, 50, "B");
-
     jsav.step();
 
     jsav.umsg("Step 3: insert node with value \"C\" @ 175, 175");
-    bint.add(175, 175, "C");
+    jsav.step();
 
+    bint.add(175, 175, "C");
     jsav.step();
 
     jsav.umsg("Lay it out again");
