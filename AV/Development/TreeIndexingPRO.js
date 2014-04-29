@@ -1,8 +1,6 @@
 (function () {
   "use strict";
 
-  console.log("load global");
-
   /**
    * Generate a colorized binary search tree.
    * @param root The root of the tree.
@@ -110,8 +108,21 @@
     // Pick bottom layer node to be chosen one.
     var chosen_index = Math.floor((Math.random() * 100) % window.ODSA.bottom_layer.length);
     var chosen_node = window.ODSA.bottom_layer[chosen_index];
-    chosen_node.css({"box-shadow": "0 0 8px 6px rgba(0, 0, 0, 0.5)"});
+    chosen_node.css({"box-shadow": "0 0 8px 6px rgba(0, 0, 0, 0.6)"});
     chosen_node.is_chosen = true;
+
+    var left, top, left_offset;
+    left = chosen_node.css("left");
+    top = chosen_node.css("top");
+    left = left.substring(0, left.length - 2);
+    top = top.substring(0, top.length - 2);
+
+    left_offset = bst.css("left");
+    left_offset = left_offset.substring(0, left_offset.length - 2);
+    top = parseInt(top) + 40;
+    left = parseInt(left) + parseInt(left_offset) + 14;
+
+//    jsav.g.line(left, top + 50, left, top, {"arrow-end": "block-wide-long", "stroke-width": 5.0});
 
     // Find the number of accesses to get to the chosen one.
     window.ODSA.getAnswer(bst.root(), 1);
