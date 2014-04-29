@@ -15,7 +15,7 @@
 <style>
   #jsavcontainer {
     width: 550px;
-    height: 650px;
+    height: 570px;
     background-color: #efe;
   }
   p.jsavoutput.jsavline {
@@ -23,6 +23,21 @@
   }
   .jsavscore {
     text-align: center;
+  }
+  .huffmanleaf {
+    border-radius: 1px;
+    background-color: orange;
+    line-height: 16px;
+    z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
+  }
+  .jsavautoresize .jsavnode {
+    min-height: 35px;
+    max-height: 35px;
+    min-width:  35px;
+    max-width:  35px;
+  }
+  .jsavvalue {
+    height: 38px;
   }
 </style>
   
@@ -87,7 +102,7 @@
     }
 
     // vars specific to this exericse
-    var initialTree, workingTree;
+    var workingTree;
     var av = new JSAV("jsavcontainer"); 
 
     av.recorded();
@@ -100,7 +115,6 @@
       console.log("2");
       av.umsg("Demonstrate how the following Huffman coding trie would decode the binary string '111101'");
       console.log("3");
-      initialTree = [];
       workingTree = construct_tree(av);
       console.log("4");
       workingTree.click(treeClickHandler);
@@ -111,30 +125,42 @@
 
     function modelSolution(modeljsav) {
       var t = construct_tree(modeljsav);
+      t.layout();
       modeljsav.displayInit();
 
       // first step
       t.root().highlight();
+      modeljsav.umsg("We start at the root node.");
       modeljsav.gradeableStep();
 
       // second step
       t.root().right().highlight();
+      modeljsav.umsg("Go right because of '1'.");
       modeljsav.gradeableStep();
 
       // third
       t.root().right().right().highlight();
+      modeljsav.umsg("Another '1'.");
       modeljsav.gradeableStep();
       
       // fourth
       t.root().right().right().right().highlight();
+      modeljsav.umsg("Another '1'.");
       modeljsav.gradeableStep();
 
       // fifth
-      t.root().right().right().right().left().highlight();
+      t.root().right().right().right().right().highlight();
+      modeljsav.umsg("One more '1'.");
+      modeljsav.gradeableStep();
+
+      // sixth
+      t.root().right().right().right().right().left().highlight();
+      modeljsav.umsg("Now go left since we have a '1'.");
       modeljsav.gradeableStep();
 
       // last one
       t.root().right().right().right().right().left().right().highlight();
+      modeljsav.umsg("We now reached the value of K.");
       modeljsav.gradeableStep();
     
       return t;
