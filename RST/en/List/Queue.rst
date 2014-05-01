@@ -37,7 +37,7 @@ Here is a sample queue ADT.
 This section presents two implementations for queues:
 the array-based queue and the linked queue.
 
-.. codeinclude:: Lists/Queue.pde
+.. codeinclude:: Lists/Queue
    :tag: Queue
 
 Array-Based Queues
@@ -87,7 +87,7 @@ Our choice here is to use an array of size :math:`n+1`.
 
 Here is an array-based queue implementation.
 
-.. codeinclude:: Lists/AQueue.pde
+.. codeinclude:: Lists/AQueue
    :tag: AQueue1,AQueue2
 
 .. inlineav:: AQueueVarCON ss
@@ -112,7 +112,7 @@ The linked queue implementation is a straightforward adaptation
 of the linked list.
 Here is the linked queue class declaration.
 
-.. codeinclude:: Lists/LQueue.pde
+.. codeinclude:: Lists/LQueue
    :tag: LQueue1,LQueue2
 
 .. inlineav:: LQueueIntroCON ss

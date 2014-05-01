@@ -20,7 +20,7 @@ Here is an implementation for the array-based list, named ``AList``.
 (see Module :numref:`<ListADT>`)
 and so must implement all of the member functions of ``List``.
 
-.. codeinclude:: Lists/AList.pde
+.. codeinclude:: Lists/AList
    :tag: AList
 
 .. inlineav:: AlistVarsCON ss

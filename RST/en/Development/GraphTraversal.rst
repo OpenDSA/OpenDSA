@@ -64,7 +64,7 @@ directed or undirected.
 To ensure visiting all vertices, ``graphTraverse`` could be called
 as follows on a graph :math:`\mathbf{G}`:
 
-.. codeinclude:: Graphs/GraphTrav.pde 
+.. codeinclude:: Graphs/GraphTrav 
    :tag: GraphTrav
 
 Function ``doTraversal`` might be implemented by using
@@ -97,7 +97,7 @@ DFS can be applied to directed or undirected graphs.
 
 Here is an implementation for the DFS algorithm.
 
-.. codeinclude:: Graphs/DFS.pde 
+.. codeinclude:: Graphs/DFS 
    :tag: DFS
 
 This implementation contains calls to functions ``PreVisit`` and
@@ -149,7 +149,7 @@ bottom.
 
 Here is an implementation for BFS.
 
-.. codeinclude:: Graphs/BFS.pde 
+.. codeinclude:: Graphs/BFS 
    :tag: BFS
 
 Here is an AV for you to try it on other graphs.

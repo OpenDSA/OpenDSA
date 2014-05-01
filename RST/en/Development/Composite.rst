@@ -30,7 +30,7 @@ The whole traversal process is called by invoking ``traverse``
 on the root node, which in turn invokes ``traverse`` on its
 children.
 
-.. codeinclude:: Binary/ExpressionTreeC.pde
+.. codeinclude:: Binary/ExpressionTreeC
    :tag: Composite
 
 When comparing the composite implementation to that of

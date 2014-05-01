@@ -36,7 +36,7 @@ This problem is addressed in Module :numref:`<Spatial>`.
 
 Here is code to define a simple abstract dictionary class.
 
-.. codeinclude:: Design/Dictionary.pde
+.. codeinclude:: Design/Dictionary
    :tag: DictionaryADT
 
 The methods ``insert`` and ``find`` are the heart of the class.
@@ -69,7 +69,7 @@ value for.
 With the ``removeAny`` method, the user can process all records
 in the dictionary as shown in the following code fragment.
 
-.. codeinclude:: Design/DictionaryTest.pde
+.. codeinclude:: Design/DictionaryTest
    :tag: Dictp4
 
 There are other approaches that might seem more natural for iterating
@@ -90,7 +90,7 @@ allows us to search by name.
 
 Here is an implementation for a payroll record.
 
-.. codeinclude:: Design/Payroll.pde
+.. codeinclude:: Design/Payroll
    :tag: Payroll
 
 Class ``Payroll`` has multiple fields, each of which might be
@@ -104,7 +104,7 @@ Here is an example where ``Payroll``
 objects are stored in two separate dictionaries, one using the
 ID field as the key and the other using the name field as the key.
 
-.. codeinclude:: Design/DictionaryTest.pde
+.. codeinclude:: Design/DictionaryTest
    :tag: PayrollTest
 
 One problem with the example as it is written is that the dictionary
@@ -136,7 +136,7 @@ Two possibilities would be to use an array-based or linked list.
 Here is an implementation for the dictionary using
 an (unsorted) array-based list.
 
-.. codeinclude:: Design/UALDictionary.pde
+.. codeinclude:: Design/UALDictionary
    :tag: UALDictionary
 
 Examining class ``UALdict`` (UAL stands for "unsorted array-based

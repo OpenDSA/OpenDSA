@@ -78,7 +78,7 @@ Exactly this approach is taken by the following implementation.
 At the end of each pass, the records are copied back to the original
 array.
 
-.. codeinclude:: Sorting/Radixsort.pde
+.. codeinclude:: Sorting/Radixsort
    :tag: Radixsort
 
 The first inner ``for`` loop initializes array ``cnt``.

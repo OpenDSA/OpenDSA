@@ -20,7 +20,7 @@ fragments.
    We begin with an analysis of a simple assignment to an integer
    variable.
 
-   .. codeinclude:: Misc/Anal.pde 
+   .. codeinclude:: Misc/Anal 
       :tag: c3p2
 
    Because the assignment statement takes constant time, it is
@@ -33,7 +33,7 @@ fragments.
 
    Consider a simple ``for`` loop.
 
-   .. codeinclude:: Misc/Anal.pde 
+   .. codeinclude:: Misc/Anal 
       :tag: c3p3
 
    The first line is :math:`Theta(1)`.
@@ -49,7 +49,7 @@ fragments.
    We now analyze a code fragment with several ``for``
    loops, some of which are nested.
 
-   .. codeinclude:: Misc/Anal.pde 
+   .. codeinclude:: Misc/Anal 
       :tag: c3p4
 
    This code fragment has three separate statements: the
@@ -91,7 +91,7 @@ fragments.
    Compare the asymptotic analysis for the following two code
    fragments.
 
-   .. codeinclude:: Misc/Anal.pde 
+   .. codeinclude:: Misc/Anal 
       :tag: c3p5
 
    In the first double loop, the inner ``for`` loop always executes
@@ -110,7 +110,7 @@ fragments.
    Not all doubly nested ``for`` loops are :math:`\Theta(n^2)`.
    The following pair of nested loops illustrates this fact.
 
-   .. codeinclude:: Misc/Anal.pde
+   .. codeinclude:: Misc/Anal
       :tag: c3p6
 
      When analyzing these two code fragments, we will assume that
@@ -253,7 +253,7 @@ Figure :num:`Figure #BinSchFig` illustrates the binary search method.
 
 Here is an implementation for binary search.
 
-   .. codeinclude:: Misc/Anal.pde 
+   .. codeinclude:: Misc/Anal 
       :tag: bsearch
 
 To find the cost of this algorithm in the worst case, we can model the

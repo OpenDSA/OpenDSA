@@ -138,6 +138,11 @@
   width: 590px;
 }
 
+/* There are no numbers in these leaf nodes, so have to adjust. */
+#TrieTimeline .jsavnode.jsavtreenode.jsavbinarynode.huffmanleaf {
+  line-height: 32px;
+}
+
 /*====================== Misc. =======================*/
 #ninelabel {
   padding-left: 5px;

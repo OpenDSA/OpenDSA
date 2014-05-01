@@ -92,7 +92,7 @@ in Prim's algorithm.
 The following code shows an implementation for Prim's algorithm
 that searches the distance matrix for the next closest vertex.
 
-.. codeinclude:: Graphs/Prim.pde
+.. codeinclude:: Graphs/Prim
    :tag: Prims
 
 For each vertex :math:`I`, when :math:`I` is processed by Prim's
@@ -114,7 +114,7 @@ shown next.
 As with the priority queue version of Dijkstra's algorithm, the heap
 stores ``DijkElem`` objects.
 
-.. codeinclude:: Graphs/PrimPQ.pde
+.. codeinclude:: Graphs/PrimPQ
    :tag: PrimsPQ
 
 .. TODO::
@@ -234,7 +234,7 @@ Module :numref:`<UnionFind>`.
 Here is an implementation for the algorithm.
 Class ``KruskalElem`` is used to store the edges on the min-heap.
 
-.. codeinclude:: Graphs/Kruskal.pde
+.. codeinclude:: Graphs/Kruskal
    :tag: Kruskal
 
 Kruskal's algorithm is dominated by the time required to

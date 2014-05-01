@@ -188,7 +188,7 @@ Here is a Java-like pseudocode representation for the
 :math:`\mathrm{B}^+` tree node interface.
 Leaf node and internal node subclasses would implement this interface.
 
-.. codeinclude:: Indexing/BPNode.pde
+.. codeinclude:: Indexing/BPNode
 
 An important implementation detail to note is that while
 Figure :num:`Figure #BTexamp` shows internal nodes containing three
@@ -243,7 +243,7 @@ record) with key value 33.
 Here is a pseudocode sketch of the :math:`\mathrm{B}^+` tree search
 algorithm.
 
-.. codeinclude:: Indexing/BPfind.pde
+.. codeinclude:: Indexing/BPfind
 
 :math:`\mathrm{B}^+` tree insertion is similar to B-tree insertion.
 First, the leaf :math:`L` that should contain the record is found.
@@ -286,7 +286,7 @@ several examples.
 Here is a a Java-like pseudocode sketch of the :math:`\mathrm{B}^+`
 tree insert algorithm.
 
-.. codeinclude:: Indexing/BPinsert.pde
+.. codeinclude:: Indexing/BPinsert
 
 To delete record :math:`R` from the :math:`\mathrm{B}^+` tree,
 first locate the leaf :math:`L` that contains :math:`R`.
@@ -385,7 +385,7 @@ process.
 Here is a Java-like pseudocode for the :math:`\mathrm{B}^+` tree
 delete algorithm.
 
-.. codeinclude:: Indexing/BPremove.pde
+.. codeinclude:: Indexing/BPremove
 
 The :math:`\mathrm{B}^+` tree requires that all nodes be at least half
 full (except for the root).

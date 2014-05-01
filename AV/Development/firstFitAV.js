@@ -3,6 +3,7 @@
   var jsav,              // JSAV
       defCtrlState,   // Stores the default state of the controls
       submitRec,      //the rectangle that's created when the user hits submit
+      newRect,
       free1,
       linesArray,
       freeListArray,
@@ -11,10 +12,12 @@
       blockLabelArray,
       requestedBlockLabel,
       connectStartArray,
-      used1,
-      used2,
-      used3,
-      used4,
+      recArray,
+      recArraySize,
+      freeOrNot,
+      attArray,
+      startArray,
+      finArray,
       freeFinArray,
       freeAmountLabel,
       freeNum,
@@ -23,7 +26,9 @@
       nextCount = 0,
       rectNumber = 0,
       current,
+      color,
       fit = 0;
+
 
   function setDefaultControlState() {
     defCtrlState = {};
@@ -75,12 +80,12 @@
 
     var memPoolLabel = jsav.label("Memory Pool (Size: 200)", {"left": 280, "top": 130});
 
-    used1 = jsav.g.rect(342, 150, 25, 60).css({"fill": "coral"});
-    used2 = jsav.g.rect(455, 150, 62, 60).css({"fill": "coral"});
-    used3 = jsav.g.rect(597, 150, 45, 60).css({"fill": "coral"});
-    used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "coral"});
+    var used1 = jsav.g.rect(342, 150, 25, 60).css({"fill": "coral"});
+    var used2 = jsav.g.rect(455, 150, 62, 60).css({"fill": "coral"});
+    var used3 = jsav.g.rect(597, 150, 45, 60).css({"fill": "coral"});
+    var used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "coral"});
     $("rect").on("click", changeUsed);
-    
+
 
     var free1Start = 280;
     var free2Start = 367;
@@ -91,7 +96,57 @@
     var free2 = jsav.g.rect(free2Start, 150, 88, 60).css({"fill": "cornflowerblue"});
     var free3 = jsav.g.rect(free3Start, 150, 80, 60).css({"fill": "cornflowerblue"});
     var free4 = jsav.g.rect(free4Start, 150, 113, 60).css({"fill": "cornflowerblue"});
-    
+
+    recArray = new Array(30);
+
+    recArray[0] = free1;
+    recArray[1] = used1;
+    recArray[2] = free2;
+    recArray[3] = used2;
+    recArray[4] = free3;
+    recArray[5] = used3;
+    recArray[6] = free4;
+    recArray[7] = used4;
+
+    startArray = new Array(30);
+    finArray = new Array(30);
+    freeOrNot = new Array(30);  //1 indicates free 0 is not
+
+    startArray[0] = 280;
+    startArray[1] = 342;
+    startArray[2] = 367;
+    startArray[3] = 455; //517
+    startArray[4] = 517;
+    startArray[5] = 597; //642
+    startArray[6] = 642;
+    startArray[7] = 755; //780
+
+    finArray[0] = 342;
+    finArray[1] = 390;
+    finArray[2] = 455;
+    finArray[3] = 540;
+    finArray[4] = 597;
+    finArray[5] = 665;
+    finArray[6] = 755;
+    finArray[7] = 804;
+
+    freeOrNot[0] = 1;
+    freeOrNot[1] = 0;
+    freeOrNot[2] = 1;
+    freeOrNot[3] = 0;
+    freeOrNot[4] = 1;
+    freeOrNot[5] = 0;
+    freeOrNot[6] = 1;
+    freeOrNot[7] = 0;
+
+
+
+    // var touch1 = jsav.g.rect(280, 20, 30, 40).css({"fill": "coral"});
+    // var touch2 = jsav.g.rect(620, 20, 30, 40).css({"fill": "coral"});
+    // var touch3 = jsav.g.rect(620, 20, 30, 40).css({"fill": "coral"});
+    // var touch4 = jsav.g.rect(620, 20, 30, 40).css({"fill": "coral"});
+
+
     freeStartArray = new Array(free1Start, free2Start, free3Start, free4Start);
     
     var free1Finish = 342;
@@ -158,6 +213,7 @@
 
     linesArray = new Array(connect1, connect2, connect3, connect4);
     current = 0;
+    recArraySize = 8;
   }
 
  
@@ -169,35 +225,122 @@
 
   }
 
+
   function changeUsed(event)
   {
+    var x, y;
     console.log("this: " + this + ", event: " + event);
-    used1 = this.setAttribute("fill", "black");
-//     used1 = jsav.g.rect(342, 150, 25, 60).css({"fill": "black"});
-     
+    this.setAttribute("fill", "cornflowerblue");
+    //jsav.umsg(event.pageX)
+    var click = event.pageX;
+    merge(click);
+   
+   
   }
 
-  function changeUsed2()
+  function getStart(position)
   {
-    jsav.g.rect(455, 150, 62, 60).css({"fill": "black"});
+      return startArray[position -1];
   }
 
-  function changeUsed3()
+  function getFin(position)
   {
-    used3 = jsav.g.rect(597, 150, 45, 60).css({"fill": "black"});
+      return finArray[position -1];
   }
 
-  function changeUsed4()
-  {
-      used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "black"});
-  }
-
+ 
  
   function enableAllButtons() {
     $("#input").removeAttr("disabled");
     $("#submit").removeAttr("disabled");
     $("#next").removeAttr("disabled");
   }
+
+  function merge(clickSpot)
+  {
+          jsav.umsg("startArray0: " + startArray[0])
+          jsav.umsg("startArray1: " + startArray[1])
+          jsav.umsg("startArray2: " + startArray[2])
+          jsav.umsg("startArray3: " + startArray[3])
+          jsav.umsg("startArray4: " + startArray[4])
+          jsav.umsg("startArray5: " + startArray[5])
+          jsav.umsg("startArray6: " + startArray[6])
+          jsav.umsg("startArray7: " + startArray[7])
+
+      clickSpot = clickSpot -23; 
+      jsav.umsg("click at " + clickSpot)
+      var i = 0;
+      while(clickSpot > startArray[i])
+      {
+        i++;
+      }
+      jsav.umsg
+      
+      i = i - 1;
+      var end = recArraySize -1;
+      jsav.umsg("size " + recArraySize)
+      if(i == end)
+      {
+        
+        var start = startArray[end-1];
+        var diff = 780 - start;
+        var newrec = jsav.g.rect(start, 150, diff, 60).css({"fill": "cornflowerblue"});
+        newrec.css({"z-index": 500});
+        jsav.umsg("start = " + start + "diff = " + diff)
+        recArray[i-1] = recArray[i];
+        startArray[i-1] = startArray[i];
+        startArray[end] = null;
+        recArray[end] = null;  
+        recArraySize--;
+      
+
+      }
+      else if(i == 0)
+      {
+        //to do
+      }
+      //jsav.umsg("end = " + end)
+      else
+      {  
+        var diff = finArray[i + 1] -startArray[i-1];
+       
+        
+        var newRect = jsav.g.rect(startArray[i-1], 150, diff, 60).css({"fill": "cornflowerblue"});
+        
+      
+        finArray[i -1] = startArray[i -1] + diff;
+        
+        if(recArraySize > 2)
+        {
+          recArraySize = recArraySize - 2;
+        }
+        else if(recArraySize == 2)
+        {
+          recArraySize = recArraySize -1;
+        }
+        newRect.css({"z-index": 500});
+        var j = recArraySize;
+        var z = j -1;
+        jsav.umsg("j = " + j)
+        jsav.umsg("i = " + i)
+        for(i; i < j; i++)
+        {
+          recArray[i] = recArray[i + 2];
+          startArray[i] = startArray[i + 2];
+          finArray[i] = finArray[i + 2];
+       }
+
+       startArray[recArraySize +1] = null;
+       startArray[recArraySize] = null;
+       recArray[recArraySize +1] = null;
+       recArray[recArraySize] = null;
+       finArray[recArraySize] = null;
+       finArray[recArraySize + 1] = null;
+     }
+       
+}
+
+  
 
   function insertIntoBlock(inputVal) {
       var newUsedRect = jsav.g.rect(freeStartArray[rectNumber], 150, inputVal * 2.5, 60).css({"fill": "coral"});
@@ -232,57 +375,58 @@
 
   function firstFit(inputVal) {
     
-    if(nextCount == 0) {
-      linesArray[rectNumber].css({"stroke-width": 3});
-      freeListArray[rectNumber].css({"fill": "yellow"});
-      jsav.umsg("Free list " + rectNumber + " block size = " + freeArray[rectNumber])
+    var newRect2 = jsav.g.rect(280, 150, 50, 60).css({"fill": "coral"});
+  //   if(nextCount == 0) {
+  //     linesArray[rectNumber].css({"stroke-width": 3});
+  //     freeListArray[rectNumber].css({"fill": "yellow"});
+  //     jsav.umsg("Free list " + rectNumber + " block size = " + freeArray[rectNumber])
 
-      if (inputVal <= freeArray[rectNumber]) {
-        nextCount = 2;
+  //     if (inputVal <= freeArray[rectNumber]) {
+  //       nextCount = 2;
 
-      } else {
-        nextCount = 1;
-      }
+  //     } else {
+  //       nextCount = 1;
+  //     }
 
-    } else if(nextCount == 1) {
+  //   } else if(nextCount == 1) {
 
-      linesArray[rectNumber].css({"stroke-width": 1});
-      freeListArray[rectNumber].css({"fill": "lightgrey"});
+  //     linesArray[rectNumber].css({"stroke-width": 1});
+  //     freeListArray[rectNumber].css({"fill": "lightgrey"});
 
-      rectNumber++;
-      linesArray[rectNumber].css({"stroke-width": 3});
-      freeListArray[rectNumber].css({"fill": "yellow"});
-      jsav.umsg("Free list " + rectNumber + " block size = " + freeArray[rectNumber])
-        if(rectNumber == 3 && inputVal > 45)
-        {
-          freeListArray[rectNumber].css({"fill": "red"});
-          jsav.umsg("The value you have entered can not be allocated")
-          jsav.umsg("Please enter a smaller value")
-          $('#next').attr("disabled", "disabled");
+  //     rectNumber++;
+  //     linesArray[rectNumber].css({"stroke-width": 3});
+  //     freeListArray[rectNumber].css({"fill": "yellow"});
+  //     jsav.umsg("Free list " + rectNumber + " block size = " + freeArray[rectNumber])
+  //       if(rectNumber == 3 && inputVal > 45)
+  //       {
+  //         freeListArray[rectNumber].css({"fill": "red"});
+  //         jsav.umsg("The value you have entered can not be allocated")
+  //         jsav.umsg("Please enter a smaller value")
+  //         $('#next').attr("disabled", "disabled");
           
 
-        }
+  //       }
 
           
-            if (inputVal <= freeArray[rectNumber]) {
-              nextCount = 2;
+  //           if (inputVal <= freeArray[rectNumber]) {
+  //             nextCount = 2;
             
-            } 
+  //           } 
             
-            else {
-              nextCount = 1;
-            }
+  //           else {
+  //             nextCount = 1;
+  //           }
 
-    } else if(nextCount == 2) {
+  //   } else if(nextCount == 2) {
 
 
-        jsav.umsg("We have a fit")
-        jsav.umsg("Allocation Complete")
-        jsav.umsg("Please schedule another request")
-      insertIntoBlock(inputVal);
-    }
+  //       jsav.umsg("We have a fit")
+  //       jsav.umsg("Allocation Complete")
+  //       jsav.umsg("Please schedule another request")
+  //     insertIntoBlock(inputVal);
+  //   }
     
-  }
+   }
 
   function circularFit(inputVal) {
 
