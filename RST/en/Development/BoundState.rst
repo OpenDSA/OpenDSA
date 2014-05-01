@@ -47,7 +47,7 @@ Then compare the two minimums and maximums to each other with a
 further two comparisons to get the final result.
 The algorithm is as follows:
 
-.. codeinclude:: Misc/MinMax.pde
+.. codeinclude:: Misc/MinMax
 
 The cost of this algorithm can be modeled by the following recurrence.
 

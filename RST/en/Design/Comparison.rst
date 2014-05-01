@@ -131,7 +131,7 @@ another field as the key for another purpose.
 The records themselves do not need to be duplicated.
 A simple class for representing key-value pairs is shown here.
 
-.. codeinclude:: Utils/KVPair.pde
+.. codeinclude:: Utils/KVPair
    :tag: KVpair
 
 The main places where we will need to be concerned with comparing
@@ -151,7 +151,7 @@ Note that since ``KVPair`` is implemented to implement the
 ``Comparable`` interface, an array of ``KVPair`` could be used by this
 sort function.
 
-.. codeinclude:: Sorting/Insertionsort.pde
+.. codeinclude:: Sorting/Insertionsort
    :tag: Insertionsort
 
 Here are some review questions to test your knowledge from this module.

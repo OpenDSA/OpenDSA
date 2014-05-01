@@ -43,7 +43,7 @@ The list built from such nodes is called a :term:`singly linked list`,
 or a :term:`one-way list`, because each list node
 has a single pointer to the next node on the list.
 
-.. codeinclude:: Lists/Link.pde
+.. codeinclude:: Lists/Link
    :tag: Link
 
 The ``Link`` class is quite simple.
@@ -107,7 +107,7 @@ remove method's implementation.
 Here is the implementation for the linked list class,
 named ``LList``.
 
-.. codeinclude:: Lists/LList.pde
+.. codeinclude:: Lists/LList
    :tag: LList
 
 .. inlineav:: LlistVarsCON ss

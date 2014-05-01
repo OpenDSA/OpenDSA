@@ -212,7 +212,7 @@ exclude_patterns = []
 #show_authors = False
 
 #language to highlight source code in
-highlight_language = '%(code_lang)s'
+highlight_language = 'guess' #'%(code_lang)s'
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'borland' #'sphinx'
@@ -382,6 +382,9 @@ ebook_path = '%(book_dir)s%(rel_book_output_path)s'
 
 #path (from the RST home) to the sourcecode directory that I want to use
 sourcecode_path = '%(code_dir)s'
+
+# Dictionary containing code_lang to extension mapping
+code_lang = '%(code_lang)s'
 
 # Path to AV/ directory (local or remote)
 av_dir = '%(av_root_dir)s'

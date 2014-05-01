@@ -38,7 +38,7 @@ Thus, the total number of swaps required will be :math:`n-1`
 
 Here is an implementation for Selection Sort.
 
-.. codeinclude:: Sorting/Selectionsort.pde 
+.. codeinclude:: Sorting/Selectionsort 
    :tag: Selectionsort
 
 Consider the example of the following array.

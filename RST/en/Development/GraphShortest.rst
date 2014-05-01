@@ -147,7 +147,7 @@ Here is an implementation for Dijkstra's
 algorithm.
 At the end, array ``D`` will contain the shortest distance values.
 
-.. codeinclude:: Graphs/Dijkstra.pde 
+.. codeinclude:: Graphs/Dijkstra 
    :tag: GraphDijk1
 
 .. avembed:: AV/Development/DijkstraAV.html ss
@@ -159,7 +159,7 @@ The first method is simply to scan through the list of
 :math:`|\mathbf{V}|` vertices searching for the minimum value, as
 follows:
 
-.. codeinclude:: Graphs/Dijkstra.pde 
+.. codeinclude:: Graphs/Dijkstra 
    :tag: MinVertex
 
 .. TODO::
@@ -210,7 +210,7 @@ We use the ``KVPair`` class to store key-value pairs in the heap, with
 the edge weight as the key and the target vertex as the value.
 here is the implementation for Dijkstra's algorithm using a heap.
 
-.. codeinclude:: Graphs/DijkstraPQ.pde 
+.. codeinclude:: Graphs/DijkstraPQ 
    :tag: DijkstraPQ
 
 .. TODO::

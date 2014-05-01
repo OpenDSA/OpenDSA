@@ -52,7 +52,7 @@ This is called a :term:`memory deallocation`.
 We can define an ADT for a simple memory manager for storing variable
 length arrays of integers as follows.
 
-.. codeinclude:: Memman/MemmanADT.pde
+.. codeinclude:: Memman/MemmanADT
 
 The user of the ``MemManager`` ADT provides a pointer
 (in parameter ``info``) to space that

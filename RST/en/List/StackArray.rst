@@ -43,7 +43,7 @@ stack.
 When removed, an element is said to be :term:`popped` from the stack.
 Here is a simple stack ADT.
 
-.. codeinclude:: Lists/Stack.pde
+.. codeinclude:: Lists/Stack
    :tag: Stack
 
 As with lists, there are many variations on stack implementation.
@@ -57,7 +57,7 @@ Array-Based Stacks
 Here is a complete implementation for
 the array-based stack class.
 
-.. codeinclude:: Lists/AStack.pde
+.. codeinclude:: Lists/AStack
    :tag: AStack1,AStack2
 
 .. inlineav:: AStackVarCON ss

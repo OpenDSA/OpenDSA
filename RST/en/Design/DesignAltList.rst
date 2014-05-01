@@ -27,9 +27,9 @@ This is a simple form of a concept that is sometimes called an
 The ``ListIndex`` interface abstracts the notion of a position in a
 list.
 
-.. codeinclude:: ListAlt/ListIndex.pde
+.. codeinclude:: ListAlt/ListIndex
 
-.. codeinclude:: ListAlt/ListADT.pde
+.. codeinclude:: ListAlt/ListADT
 
 There is the issue in an implementation of how the two classes will
 communicate.
@@ -49,4 +49,4 @@ implementation.
 This approach is used in the following implmentation for the
 Array-based list.
 
-.. codeinclude:: ListAlt/AList.pde
+.. codeinclude:: ListAlt/AList

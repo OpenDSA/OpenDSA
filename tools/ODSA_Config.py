@@ -249,9 +249,6 @@ def set_defaults(conf_data):
   else:
     conf_data['code_dir'] = 'SourceCode/'
 
-  if 'code_lang' in conf_data:
-    conf_data['code_dir'] += conf_data['code_lang'] + '/'
-
   # Allow anonymous credit by default
   if 'allow_anonymous_credit' not in conf_data:
     conf_data['allow_anonymous_credit'] = True
@@ -388,14 +385,6 @@ class ODSA_Config:
 
     # Parse the name of the config file to use as the book name
     self.book_name = os.path.basename(config_file_path).replace('.json', '')
-
-    # Parse the code language from the code directory path
-    #self.code_lang = os.path.basename(self.code_dir[:-1]).lower()
-
-    # Treat Processing as Java (special case)
-    # This must be done after code_lang is appended to code_dir in order for the correct code to be referenced
-    if self.code_lang.lower() == 'processing':
-      self.code_lang = 'java'
 
     self.odsa_dir = get_odsa_dir()
 

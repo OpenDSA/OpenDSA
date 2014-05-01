@@ -20,7 +20,7 @@ In this module we will show actual implementations for each approach.
 We will begin with an abstract class defining an ADT for graphs that a
 given implementation must meet.
 
-.. codeinclude:: Graphs/Graph.pde 
+.. codeinclude:: Graphs/Graph 
    :tag: GraphADT
 
 This ADT assumes that the number of vertices is fixed
@@ -71,7 +71,7 @@ The ``neighbors`` method returns an array containing the indices for
 the neighboring vertices, in ascending order.
 The following lines appear in many graph algorithms.
 
-.. codeinclude:: Graphs/GraphDummy.pde 
+.. codeinclude:: Graphs/GraphDummy 
    :tag: GraphNeighbor
 
 First, an array is generated that contains the indices of the nodes
@@ -90,7 +90,7 @@ provided by the ADT.
 
 Here is an implementation for the adjacency matrix.
 
-.. codeinclude:: Graphs/GraphM.pde 
+.. codeinclude:: Graphs/GraphM 
    :tag: GraphM
 
 Array ``nodeValues`` stores the information manipulated by the
@@ -119,7 +119,7 @@ These linked lists store objects of type ``Edge``, which merely
 stores the index for the vertex pointed to by the edge, along with the
 weight of the edge.
 
-.. codeinclude:: Graphs/GraphL.pde 
+.. codeinclude:: Graphs/GraphL 
    :tag: GraphL
 
 Implementation for ``Graphl`` member functions is straightforward

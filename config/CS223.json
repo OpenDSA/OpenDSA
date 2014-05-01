@@ -2,7 +2,7 @@
   "title": "CS223 Spring 2014",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": "Processing",
+  "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,

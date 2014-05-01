@@ -32,7 +32,7 @@ already processed.
 Here is an implementation.
 The input is an array named ``A`` that stores :math:`n` records.
 
-.. codeinclude:: Sorting/Insertionsort.pde
+.. codeinclude:: Sorting/Insertionsort
    :tag: Insertionsort
 
 (Note that to make the explanation for these sorting algorithms as

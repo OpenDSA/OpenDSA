@@ -56,7 +56,7 @@ It does not matter where the sort starts, as long as all vertices
 are visited in the end.
 Here is implementation for the DFS-based algorithm.
 
-.. codeinclude:: Graphs/TopsortDFS.pde 
+.. codeinclude:: Graphs/TopsortDFS 
    :tag: TopsortDFS
 
 .. TODO::
@@ -102,7 +102,7 @@ Here is an implementation for the algorithm.
 
 Here is the code to implement the queue-based topological sort:
 
-.. codeinclude:: Graphs/TopsortBFS.pde 
+.. codeinclude:: Graphs/TopsortBFS 
    :tag: TopsortBFS
 
 .. TODO::

@@ -93,7 +93,10 @@ Settings (all are required unless otherwise specified)
 
 * **lang** (optional) - specifies the native language of the book using the official ISO 639-1 or 639-2 standard abbreviation, defaults to ``en`` if omitted
 
-* **code_lang** - specifies the programming language used for examples and exercises throughout the book
+* **code_lang** - a dictionary where each key is the name of a programming language (supported by Pygments and matching a directory name in ``code_dir``) and each value is a list of file extensions.  The order in which the languages and extensions are provided determines their precedence.
+
+  * Ex: ``"code_lang": {"C++": ["cpp", "h"], "Java": ["java"], "Processing": ["pde"]}``
+  * In this example, the system would search for ``.cpp`` files, followed by ``.h`` files, ``.java`` files, and finally ``.pde`` files
 
 * **module_origin** - the protocol and domain where the module files are hosted
 

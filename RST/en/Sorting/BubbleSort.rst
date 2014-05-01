@@ -47,7 +47,7 @@ records, looking at one less record toward the end than did the
 preceding pass.
 Here is an implementation.
 
-.. codeinclude:: Sorting/Bubblesort.pde 
+.. codeinclude:: Sorting/Bubblesort 
    :tag: Bubblesort        
 
 Consider the following array.
