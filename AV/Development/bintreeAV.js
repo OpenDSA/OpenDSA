@@ -21,7 +21,7 @@
     // This is the JSAV base data structure, a binary tree.
     this.tree = jsav.ds.binarytree({nodegap: 10});
     // This is the root of the tree
-    this.tree.root('');
+    this.tree.root('').hide();
 
     console.log("I'm making a new Bintree object. root = ", this.tree.root());
     // Set the root as an empty node
@@ -69,13 +69,13 @@
     // Helper function for creating a new internal node
 
     this.newInteralNode = function() {
-      var ret = this.tree.newNode('');
+      var ret = this.tree.newNode('').hide();
       ret.NodeType = NT.INTERNAL;
       return ret;
     }
 
     this.newEmptyExtNode = function() {
-      var ret = this.tree.newNode('');
+      var ret = this.tree.newNode('').hide();
       ret.NodeType = NT.EMPTYEXT;
       return ret;
     }
@@ -83,9 +83,11 @@
     // calling function for insertion
     this.add = function(INx, INy, INrec) {
       console.log("Start Insert: ", INrec, " @ (", INx, ", ", INy, ")");
+      this.tree.root().hide();
       var temp = this.insert(this.tree.root(), INx, INy, INrec, 0, 0, xrange, yrange, 0);
       console.log("Setting the root to be: " + temp);
-      this.tree.root(temp);
+      this.tree.root(temp, {hide: false});
+      this.tree.root().show();
       this.layout();
       jsav.step();
     }
@@ -105,7 +107,7 @@
         jsav.step();
         console.log("Bintree insert: (LEAF) Value = ", INrec);
     
-        var temp = this.tree.newNode(INrec); 
+        var temp = this.tree.newNode(INrec).hide(); 
 
         temp.x = INx;
         temp.y = INy;
@@ -199,7 +201,6 @@
 
   // Execute the "Run" button function
   function runIt() {
-    
     ODSA.AV.reset(true);
 
     var jsav = new JSAV($('.avcontainer'));
@@ -208,7 +209,6 @@
     console.log("Setup the Bintree");
     var bint = new Bintree(jsav, 256, 256);
     console.log("I just made a new Bintree, and bint.root is: ", bint.getRoot());
-    bint.isEmpty();
     jsav.displayInit();
 
     // Setup the tree
@@ -232,13 +232,8 @@
     jsav.step();
 
     bint.add(175, 175, "C");
-    jsav.step();
 
-    jsav.umsg("Lay it out again");
-    bint.layout();
     jsav.step();
-
-  // Done
     jsav.umsg("All Done!");
 
     jsav.recorded(); // mark the end
