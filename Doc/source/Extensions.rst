@@ -132,8 +132,7 @@ SYNOPSIS::
 DESCRIPTION
     ``.. codeinclude:: {relative_path}``
 
-      Include the contents of the file located at
-      ``{relative_path}``.
+      Include the contents of the file located at ``{relative_path}`` (relative to ``code_dir`` and not including a file extension)
 
     ``:tag: {my_tag}``
 

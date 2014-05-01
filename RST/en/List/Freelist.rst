@@ -56,7 +56,7 @@ let link nodes move between the lists.
 In the implementation shown here, the ``Link`` class is augmented with
 methods ``get`` and ``release``. [#]_
 
-.. codeinclude:: Lists/Freelink.pde
+.. codeinclude:: Lists/Freelink
    :tag: Freelink
 
 The ``freelist`` variable declaration uses the keyword ``static``.
@@ -72,7 +72,7 @@ exhausted and the ``new`` operation must be called.
 Here are the necessary modifications to members of the linked list
 class to make use of the freelist version of the link class.
 
-.. codeinclude:: Lists/Freelist.pde
+.. codeinclude:: Lists/Freelist
    :tag: Freelist
 
 How much time is saved by using freelists depends on the language that

@@ -26,7 +26,7 @@ A header node is not used because no special-case code is required
 for lists of zero or one elements.
 Here is the complete linked stack implementation.
 
-.. codeinclude:: Lists/LStack.pde
+.. codeinclude:: Lists/LStack
    :tag: LStack1,LStack2
 
 .. _LStackDiagram:

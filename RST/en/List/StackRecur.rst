@@ -110,7 +110,7 @@ iteration.
    As a simple example of replacing recursion with a stack, consider
    the following non-recursive version of the factorial function.
 
-   .. codeinclude:: Misc/Fact.pde
+   .. codeinclude:: Misc/Fact
       :tag: Sfact
 
    Here, we simply push successively smaller values of :math:`n` onto
@@ -144,7 +144,7 @@ Hanoi function, which cannot be done iteratively.
    various operations, implemented as a class whose objects will be
    stored on the stack.
 
-   .. codeinclude:: Misc/TOH.pde
+   .. codeinclude:: Misc/TOH
       :tag: TOHstack
 
    We first enumerate the possible operations MOVE and TOH, to

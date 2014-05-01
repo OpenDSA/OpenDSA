@@ -293,7 +293,7 @@ Even some "simple" programs are hard to analyze.
 Nobody currently knows the true upper or lower bounds for the
 following code fragment.
 
-   .. codeinclude:: Misc/Anal.pde 
+   .. codeinclude:: Misc/Anal 
       :tag: Collatz
 
 While some textbooks and programmers will casually say that an

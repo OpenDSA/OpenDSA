@@ -55,7 +55,7 @@ Internal nodes with only two children have an empty right key field.
 Leaf nodes might contain either one or two keys.
 Here is an implementation for the 2-3 tree node class.
 
-.. codeinclude:: Indexing/TTNode.pde
+.. codeinclude:: Indexing/TTNode
 
 Note that this sample declaration does not distinguish
 between leaf and internal nodes and so is space inefficient, because
@@ -92,7 +92,7 @@ If the search key were 16, then upon encountering the leaf
 containing 15 we would find that the search key is not in the tree.
 Here is an implementation for the 2-3 tree search method.
 
-.. codeinclude:: Indexing/TTfind.pde
+.. codeinclude:: Indexing/TTfind
 
 Insertion into a 2-3 tree is similar to insertion into a BST to the
 extent that the new record is placed in the appropriate leaf node.
@@ -151,7 +151,7 @@ In either case, all leaf nodes continue to have equal depth.
 
 Here is an implementation for the insertion process.
 
-.. codeinclude:: Indexing/TTins.pde
+.. codeinclude:: Indexing/TTins
 
 
 Note that ``inserthelp`` takes three parameters.

@@ -12,7 +12,7 @@
 Insertion Sort Optimization
 ===========================
 
-.. codeinclude:: Sorting/Insertionsort.pde
+.. codeinclude:: Sorting/Insertionsort
    :tag: InsertionOpt
 
 .. avembed:: AV/Development/insertionSortWithoutSwapPRO.html pe

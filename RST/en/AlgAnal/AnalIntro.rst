@@ -125,7 +125,7 @@ because the cost depends on the value of :math:`n`
    This algorithm is called the *largest-value sequential search*
    and is illustrated by the following function:
 
-   .. codeinclude:: Misc/Anal.pde 
+   .. codeinclude:: Misc/Anal 
       :tag: Largest
 
    Here, the size of the problem is ``A.length``,
@@ -196,7 +196,7 @@ because the cost depends on the value of :math:`n`
 
    Consider the following code:
 
-   .. codeinclude:: Misc/Anal.pde 
+   .. codeinclude:: Misc/Anal 
       :tag: Analp1
 
    What is the running time for this code fragment?

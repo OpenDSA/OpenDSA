@@ -288,7 +288,7 @@ def initialize_conf_py_options(config, slides):
   options['odsa_dir'] = config.odsa_dir
   options['book_dir'] = config.book_dir
   options['code_dir'] = config.code_dir
-  options['code_lang'] = config.code_lang
+  options['code_lang'] = json.dumps(config.code_lang)
   options['av_root_dir'] = config.av_root_dir
   options['exercises_root_dir'] = config.exercises_root_dir
   # The relative path between the ebook output directory (where the HTML files are generated) and the root ODSA directory

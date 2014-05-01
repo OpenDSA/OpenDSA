@@ -136,7 +136,7 @@ traversed like a list.
 Trying to find the next sibling of the rightmost sibling would return
 ``null``.
 
-.. codeinclude:: General/GenTree.pde
+.. codeinclude:: General/GenTree
    :tag: GenTreeADT
 
 General Tree Traversals
@@ -184,5 +184,5 @@ Note the `while` loop at the end, which processes the list of
 children by beginning with the leftmost child, then repeatedly moving
 to the next child until calling	``next`` returns ``null``.
 
-.. codeinclude:: General/GenTree.pde
+.. codeinclude:: General/GenTree
    :tag: GenTreePrint

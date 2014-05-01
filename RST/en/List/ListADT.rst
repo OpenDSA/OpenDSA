@@ -122,7 +122,7 @@ concept of a current position.
 The current position is where any action such as insertion or deletion
 will take place.
 
-.. codeinclude:: Lists/ListADT.pde
+.. codeinclude:: Lists/ListADT
    :tag: ListADT
 
 .. inlineav:: listADTCON1 ss
@@ -143,7 +143,7 @@ member functions in the same asymptotic time.
 
 A list can be iterated through follows:
 
-.. codeinclude:: Lists/ListTest.pde
+.. codeinclude:: Lists/ListTest
    :tag: listiter
 
 In this example, each element of the list in turn is stored
@@ -162,7 +162,7 @@ list, and ``false`` otherwise.
 The ``find`` method needs no knowledge about the specific list
 implementation, just the list ADT.
 
-.. codeinclude:: Lists/ListTest.pde
+.. codeinclude:: Lists/ListTest
    :tag: listfind
 
 In languages that support it, this implementation for ``find`` could

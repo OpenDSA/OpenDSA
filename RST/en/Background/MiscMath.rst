@@ -76,7 +76,7 @@ exchanges elements ``i`` and ``j`` in array ``A``,
 and ``Random(n)`` returns an integer value in the range 0 to
 :math:`n-1`.
 
-.. codeinclude:: Utils/Permute.pde 
+.. codeinclude:: Utils/Permute 
    :tag: Permute
 
 **Boolean variables:**
