@@ -132,7 +132,8 @@ SYNOPSIS::
 DESCRIPTION
     ``.. codeinclude:: {relative_path}``
 
-      Include the contents of the file located at ``{relative_path}`` (relative to ``code_dir`` and not including a file extension)
+      Include the contents of the file located at ``{relative_path}``.  If the path is relative to ``code_dir``, that specific file will be loaded.  
+      However, if the path is relative to a code language directory in ``code_dir``, the directive will attempt to load the file in the language (specified in ``code_lang``) with highest precedence.  Convention dictates that the file extension be omitted when using the second option, however, the directive will automatically strip the file extension if one is provided.
 
     ``:tag: {my_tag}``
 

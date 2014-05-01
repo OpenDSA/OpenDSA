@@ -61,25 +61,36 @@ class codeinclude(Directive):
     rel_filename = self.arguments[0]
     file_found = False
 
-    # Load the code_lang object from conf.py and maintain the order so that the preferred languages and extensions come first
-    code_lang = json.loads(conf.code_lang, object_pairs_hook=collections.OrderedDict)
+    filename = conf.sourcecode_path + rel_filename
 
-    # Loop through each language and associated extension (in order)
-    for lang in code_lang:
-      for ext in code_lang[lang]:
-        filename = '%s%s/%s.%s' % (conf.sourcecode_path, lang, rel_filename, ext)
+    # If the codeinclude has the full path to the file override the global language precedence and load the specified file
+    if os.path.isfile(filename):
+      file_found = True
 
-        if os.path.exists(filename) and os.path.isfile(filename):
-          file_found = True
+      # Parse the code language from the relative filename
+      path_components = rel_filename.split('/')
+      lang = path_components[0] if len(path_components) > 0 and os.path.isdir(path_components[0]) else 'guess'
+    else:
+      # Load the code_lang object from conf.py and maintain the order so that the preferred languages and extensions come first
+      code_lang = json.loads(conf.code_lang, object_pairs_hook=collections.OrderedDict)
+
+      # Loop through each language and associated extension (in order)
+      for lang in code_lang:
+        for ext in code_lang[lang]:
+          # Craft the filename given the code_dir, code_lang, rel_path (with any existing extension stripped), and a file extension
+          filename = '%s%s/%s.%s' % (conf.sourcecode_path, lang, os.path.splitext(rel_filename)[0], ext)
+
+          if os.path.isfile(filename):
+            file_found = True
+            break
+
+        if file_found:
           break
 
-      if file_found:
-        break
-
-    # Print an error message if no file is found for any language
-    if not file_found:
-      return [document.reporter.warning(
-        'Include file %r not found for any language' % filename, line=self.lineno)]
+      # Print an error message if no file is found for any language
+      if not file_found:
+        return [document.reporter.warning(
+          'Include file %r not found for any language' % filename, line=self.lineno)]
 
     # Read the contents of the file to include
     encoding = self.options.get('encoding', env.config.source_encoding)
