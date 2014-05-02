@@ -176,6 +176,7 @@
       var i;
       var j;
 
+      console.log("Starting modelSolution. incrs.length: " + incrs.length + ", modelarr.size(): " + modelarr.size());
       jsav.displayInit();
 
       for (i = 0; i < incrs.length; i += 1) {
@@ -184,6 +185,7 @@
             modelarr.highlight(j);
             modelarr[j] -= incrs[i];
             jsav.stepOption("grade", true);
+      console.log("modelSolution Step: " + incrs[i]);
             jsav.step();
             modelarr.unhighlight(j);
             jsav.step();
