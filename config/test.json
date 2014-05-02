@@ -2,7 +2,7 @@
   "title": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"Processing": ["pde"]},
+  "code_lang": {"C++": ["cpp", "h"], "Processing": ["pde"]},
   "lang": "en",
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
@@ -54,6 +54,29 @@
             "required": true,
             "points": 1,
             "threshold": 0.90
+          }
+        }
+      },
+      "Sorting/MergesortImpl": {
+        "long_name": "Implementing Mergesort",
+        "exercises": {
+          "mergeImplCON1": {
+            "long_name": "Mergesort Implementation Slideshow 1",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "mergeImplCON2": {
+            "long_name": "Mergesort Implementation Slideshow 2",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "MergesortSumm": {
+            "long_name": "Mergesort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
           }
         }
       }
