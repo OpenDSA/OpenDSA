@@ -1,3 +1,4 @@
+/*global ODSA, ClickHandler*/
 (function ($) {
   "use strict";
   var arraySize = 15, // size needs to be odd
@@ -29,12 +30,13 @@
 
     // generate random postfix expression and put it in the array
     var numbersInArray = 0,
-        randomVal;
-    for (var i = 0; i < arraySize; i++) {
+        randomVal,
+        i;
+    for (i = 0; i < arraySize; i++) {
       // determine if the next character should be an operand or an operator.
       if (numbersInArray < i - numbersInArray + 2 || Math.random() < (Math.ceil(arraySize / 2) - numbersInArray) / (arraySize - i))
       {
-        randomVal = JSAV.utils.rand.numKey(1,10);
+        randomVal = JSAV.utils.rand.numKey(1, 10);
         numbersInArray++;
       } else {
         randomVal = Math.random() < 0.5 ? "+" : "*";
@@ -74,16 +76,16 @@
       "font-weight": "bold"
     };
     var canvasWidth = exercise.jsav.container.find(".jsavcanvas").width();
-    av.getSvg().text(canvasWidth / 2, 20, interpret("postfix_expression")).attr(font);
-    av.getSvg().text(canvasWidth / 2, 200, interpret("operand_stack")).attr(font);
+    av.getSvg().text(canvasWidth / 2, 20, interpret("av_postfix_expression")).attr(font);
+    av.getSvg().text(canvasWidth / 2, 200, interpret("av_operand_stack")).attr(font);
 
     // draw the Evaluator
     var rect_x = 50;
     var rect_y = 220;
     av.g.rect(rect_x, rect_y, 200, 120, {r: 20});
-    av.getSvg().text(rect_x + 100, rect_y + 15, interpret("evaluator"));
+    av.getSvg().text(rect_x + 100, rect_y + 15, interpret("av_evaluator"));
 
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
       if (evaluatorArrays[i]) {
         clickHandler.remove(evaluatorArrays[i]);
         evaluatorArrays[i].clear();
@@ -93,13 +95,14 @@
       if (i === 0 || i === 2) {
         evaluatorArrays[i].element.children().css({
           "border": "none",
-          "box-shadow": "none"});
+          "box-shadow": "none"
+        });
       }
       evaluatorArrays[i].layout();
     }
     clickHandler.addArray(
       evaluatorArrays[1],
-      {onDrop: function() {
+      {onDrop: function () {
         // grade using the clickHandler only if the evaluator won't run
         // if the evaluator does run, it will mark the steps as gradeable
         // clickHandler won't grade if the returned value is false
@@ -126,16 +129,18 @@
     var rect_x = 50;
     var rect_y = 100;
     jsav.g.rect(rect_x, rect_y, 200, 120, {r: 20});
-    jsav.svg.text(rect_x + 100, rect_y + 15, interpret("evaluator"));
+    jsav.svg.text(rect_x + 100, rect_y + 15, interpret("av_evaluator"));
     var modelEvalAr = [];
+    var i;
 
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
       modelEvalAr[i] = jsav.ds.array([""], {indexed: false, center: false});
       modelEvalAr[i].element.css({"top": rect_y + 30, "left": rect_x + 15 + 60 * i, "position": "absolute"});
       if (i === 0 || i === 2) {
         modelEvalAr[i].element.children().css({
           "border": "none",
-          "box-shadow": "none"});
+          "box-shadow": "none"
+        });
       }
       modelEvalAr[i].layout();
     }
@@ -143,19 +148,19 @@
     jsav._undo = [];
 
     // model solution
-    for (var i = 0; i < arraySize; i++) {
+    for (i = 0; i < arraySize; i++) {
       if ("+*".indexOf(modelArray.value(i)) === -1) {
         // move the operand into the stack
         modelStack.addFirst();
         jsav.effects.moveValue(modelArray, i, modelStack.first());
         modelStack.layout();
-        jsav.umsg(interpret("ms_com_operand"));
+        jsav.umsg(interpret("av_ms_com_operand"));
         jsav.stepOption("grade", true);
         jsav.step();
       } else {
         // move the operator to the evaluator
         jsav.effects.moveValue(modelArray, i, modelEvalAr[1], 0);
-        jsav.umsg(interpret("ms_com_operator"));
+        jsav.umsg(interpret("av_ms_com_operator"));
         jsav.step();
         // "run the evaluator"
         // move the first value
@@ -166,7 +171,7 @@
         jsav.effects.moveValue(modelStack.first(), modelEvalAr[2], 0);
         modelStack.removeFirst();
         modelStack.layout();
-        jsav.umsg(interpret("ms_com_pop"));
+        jsav.umsg(interpret("av_ms_com_pop"));
         jsav.step();
         // animate operator
         //  if ($.fx.off === false) {
@@ -175,22 +180,22 @@
         // caluculate result
         var result;
         if (modelEvalAr[1].value(0) === "+") {
-          result = parseInt(modelEvalAr[0].value(0)) + parseInt(modelEvalAr[2].value(0));
+          result = parseInt(modelEvalAr[0].value(0), 10) + parseInt(modelEvalAr[2].value(0), 10);
         } else {
-          result = parseInt(modelEvalAr[0].value(0)) * parseInt(modelEvalAr[2].value(0));
+          result = parseInt(modelEvalAr[0].value(0), 10) * parseInt(modelEvalAr[2].value(0), 10);
         }
         // clear the evaluator and show the result
         modelEvalAr[0].value(0, "");
         modelEvalAr[1].value(0, result);
         modelEvalAr[2].value(0, "");
-        jsav.umsg(interpret("ms_com_eval"));
+        jsav.umsg(interpret("av_ms_com_eval"));
         jsav.stepOption("grade", true);
         jsav.step();
         // move the value back into the stack
         modelStack.addFirst();
         jsav.effects.moveValue(modelEvalAr[1], 0, modelStack.first());
         modelStack.layout();
-        jsav.umsg(interpret("ms_com_push"), {preserve: true});
+        jsav.umsg(interpret("av_ms_com_push"), {preserve: true});
         jsav.stepOption("grade", true);
         jsav.step();
       }
@@ -260,8 +265,8 @@
       off2 = $val2.offset(),
       coff = jsav.canvas.offset(),
       x1 = off1.left - coff.left,
-      x2 = off2.left - coff.left + $val2.outerWidth()/2,
-      y1 = off1.top - coff.top + $val1.outerHeight()/2,
+      x2 = off2.left - coff.left + $val2.outerWidth() / 2,
+      y1 = off1.top - coff.top + $val1.outerHeight() / 2,
       y2 = off2.top - coff.top,
       curve = 20,
       cx1 = x1 - curve,
@@ -271,49 +276,50 @@
       arrowStyle = "classic-wide-long";
 
     // var arr = av.getSvg().path("M" + x1 + "," + y1 + "C" + cx1 + "," + cy1 + " " + cx2 + "," + cy2 + " " + x2 + "," + y2).attr({"arrow-end": arrowStyle, "stroke-width": 10, "stroke":"pink"});
-    var arr = drawpath(
+    arr = drawpath(
       jsav.svg,
       "M" + x1 + "," + y1 + " C" + cx1 + "," + cy1 + " " + cx2 + "," + cy2 + " " + x2 + "," + y2,
       500,
-      {"arrow-end": arrowStyle, "stroke-width": 10, "stroke":"pink"},
-      function() {arr.remove()}
+      {"arrow-end": arrowStyle, "stroke-width": 10, "stroke": "pink"},
+      function () { arr.remove(); }
     );
 
     // remove the arrow
-    setTimeout(function() {arr.remove()}, 700);
+    setTimeout(function () { arr.remove(); }, 700);
   }
 
 
-  function drawpath( canvas, pathstr, duration, attr, callback ) {
-    var guide_path = canvas.path( pathstr ).attr( { stroke: "none", fill: "none" } );
-    var path = canvas.path( guide_path.getSubpath( 0, 30 ) ).attr( attr );
-    var total_length = guide_path.getTotalLength( guide_path );
-    var last_point = guide_path.getPointAtLength( 0 );
+  function drawpath(canvas, pathstr, duration, attr, callback) {
+    var guide_path = canvas.path(pathstr).attr({ stroke: "none", fill: "none" });
+    var path = canvas.path(guide_path.getSubpath(0, 30)).attr(attr);
+    var total_length = guide_path.getTotalLength(guide_path);
+    var last_point = guide_path.getPointAtLength(0);
     var start_time = new Date().getTime();
     var interval_length = 10;
     var result = path;
 
-    var interval_id = setInterval( function()
+    var interval_id = setInterval(function ()
     {
       var elapsed_time = new Date().getTime() - start_time;
-      var this_length = Math.max( 30, elapsed_time / duration * total_length);
-      var subpathstr = guide_path.getSubpath( 0, this_length );
+      var this_length = Math.max(30, elapsed_time / duration * total_length);
+      var subpathstr = guide_path.getSubpath(0, this_length);
       attr.path = subpathstr;
-      path.animate( attr, interval_length - 1 );
-      if ( elapsed_time >= duration )
-      {
-        clearInterval( interval_id );
-        if ( typeof callback !== "undefined" ) callback();
-          guide_path.remove();
+      path.animate(attr, interval_length - 1);
+      if (elapsed_time >= duration) {
+        clearInterval(interval_id);
+        if (typeof callback !== "undefined") {
+          callback();
+        }
+        guide_path.remove();
       }
-    }, interval_length );
+    }, interval_length);
     return result;
   }
 
   function animateOperator(arr, jsav) {
     var opSign = jsav.svg.text(
-      arr.element.offset().left - jsav.canvas.offset().left + arr.element.outerWidth()/2,
-      arr.element.offset().top - jsav.canvas.offset().top + arr.element.outerHeight()/2,
+      arr.element.offset().left - jsav.canvas.offset().left + arr.element.outerWidth() / 2,
+      arr.element.offset().top - jsav.canvas.offset().top + arr.element.outerHeight() / 2,
       arr.value(0)
     );
     opSign.animate({"font-size": 400, "opacity": 0}, 500, "<",

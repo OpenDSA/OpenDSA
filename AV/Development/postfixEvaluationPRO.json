@@ -1,30 +1,30 @@
 {
   "translations" :{
     "en": {
-      "exerciseTitle": "Evaluating Postfix Expression",
-      "instructLabel": "Instructions:",
-      "instructions": "Evaluate the postfix expression. You can performe an operation on the two topmost values in a stack by moving an operator into the evaluator.",
-      "postfix_expression": "Postfix Expression",
-      "operand_stack": "Operand Stack",
-      "evaluator": "Evaluator 2.0",
-      "ms_com_operand": "The operand goes into the operand stack.",
-      "ms_com_operator": "The operator goes into the evaluator.",
-      "ms_com_pop": "The two topmost values from the stack are popped.",
-      "ms_com_eval": "The evaluator calculates the value.",
-      "ms_com_push": "<br/>And the value is pushed back onto the stack."
+      ".exerciseTitle": "Evaluating Postfix Expression",
+      ".instructLabel": "Instructions:",
+      ".instructions": "Evaluate the postfix expression. You can performe an operation on the two topmost values in a stack by moving an operator into the evaluator.",
+      "av_postfix_expression": "Postfix Expression",
+      "av_operand_stack": "Operand Stack",
+      "av_evaluator": "Evaluator 2.0",
+      "av_ms_com_operand": "The operand goes into the operand stack.",
+      "av_ms_com_operator": "The operator goes into the evaluator.",
+      "av_ms_com_pop": "The two topmost values from the stack are popped.",
+      "av_ms_com_eval": "The evaluator calculates the value.",
+      "av_ms_com_push": "<br/>And the value is pushed back onto the stack."
     },
     "fi": {
-      "exerciseTitle": "Postfix lausekkeen evaluointi",
-      "instructLabel": "Ohjeet:",
-      "instructions": "Evaluoi taulukossa näkyvä postfix lauseke viemällä operandit pinoon ja operaattorit laskimelle. Arvoja voi siirtää paikasta toiseen klikkaamalla. Laskuoperaatio suoritetaan pinon kahdelle ylimmälle alkiolle kun operaattori viedään laskimeen.",
-      "postfix_expression": "Postfix-lauseke",
-      "operand_stack": "Operandipino",
-      "evaluator": "Laskin 2.0",
-      "ms_com_operand": "Operandi viedään pinoon.",
-      "ms_com_operator": "Operaattori annetaan laskimelle.",
-      "ms_com_pop": "Kaksi päällimmäistä arvoa viedään pinosta laskimelle.",
-      "ms_com_eval": "Laskin laskee arvon.",
-      "ms_com_push": "<br/>Laskettu arvo viedään pinoon."
+      ".exerciseTitle": "Postfix lausekkeen evaluointi",
+      ".instructLabel": "Ohjeet:",
+      ".instructions": "Evaluoi taulukossa näkyvä postfix lauseke viemällä operandit pinoon ja operaattorit laskimelle. Arvoja voi siirtää paikasta toiseen klikkaamalla. Laskuoperaatio suoritetaan pinon kahdelle ylimmälle alkiolle kun operaattori viedään laskimeen.",
+      "av_postfix_expression": "Postfix-lauseke",
+      "av_operand_stack": "Operandipino",
+      "av_evaluator": "Laskin 2.0",
+      "av_ms_com_operand": "Operandi viedään pinoon.",
+      "av_ms_com_operator": "Operaattori annetaan laskimelle.",
+      "av_ms_com_pop": "Kaksi päällimmäistä arvoa viedään pinosta laskimelle.",
+      "av_ms_com_eval": "Laskin laskee arvon.",
+      "av_ms_com_push": "<br/>Laskettu arvo viedään pinoon."
     }
   },
   "code" : {}
