@@ -51,6 +51,10 @@
           }
         }
       },
+       "IS/TreeTrie": {
+        "long_name": "Trees versus Tries",
+        "exercises": {}
+      },
       "IS/LinearIndexing.rst": {
           "long_name": "LinearIndexing",
           "exercises": {}
