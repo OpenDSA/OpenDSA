@@ -9,6 +9,7 @@
    :satisfies: Huffman proof
    :topic: Huffman Coding Trees
 
+.. odsalink:: AV/Development/HuffProofCON.css
 
 Proof of Optimality for Huffman Coding
 ======================================
@@ -50,12 +51,9 @@ However, this is impossible because :math:`l_1` and
 
 .. _HProof:
 
-.. odsafig:: Images/HProof.png
-   :width: 200
+.. inlineav:: InvalidTree dgm 
+   :output: show
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: An impossible Huffman tree
 
    An impossible Huffman tree, showing the situation where the two
    nodes with least weight, :math:`l_1` and
@@ -106,6 +104,8 @@ Here is the proof.
 
    Thus by mathematical induction, function ``buildHuff`` creates
    the Huffman tree with minimum external path length.
+
+.. odsascript:: AV/Development/HuffProofCON.js
 
 .. TODO::
    :type: Exercise
