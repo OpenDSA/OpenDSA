@@ -310,6 +310,7 @@ html_context = {"script_files": [
                 "css_files": [
                   '%(eb2root)sJSAV/css/JSAV.css',
                   '%(eb2root)slib/odsaMOD-min.css',
+                  '%(eb2root)slib/jquery-ui.css',
                   '%(eb2root)sAV/slideCON.css'
                 ],
                 "odsa_root_path": "%(eb2root)s"}
@@ -385,6 +386,9 @@ sourcecode_path = '%(code_dir)s'
 
 # Dictionary containing code_lang to extension mapping
 code_lang = '%(code_lang)s'
+
+# Boolean that controls whether or not code is displayed in tabs if more than one language is available
+tabbed_codeinc = %(tabbed_code)s
 
 # Path to AV/ directory (local or remote)
 av_dir = '%(av_root_dir)s'

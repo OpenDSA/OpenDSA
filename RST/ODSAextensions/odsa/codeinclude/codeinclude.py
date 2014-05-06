@@ -57,11 +57,11 @@ class codeinclude(Directive):
         'Cannot use both "pyobject" and "lines" options',
         line=self.lineno)]
 
-    env = document.settings.env
     rel_filename = self.arguments[0]
     file_found = False
-
     filename = conf.sourcecode_path + rel_filename
+    rel_path = os.path.splitext(rel_filename)[0]
+    code_nodes = []
 
     # If the codeinclude has the full path to the file override the global language precedence and load the specified file
     if os.path.isfile(filename):
@@ -70,7 +70,13 @@ class codeinclude(Directive):
       # Parse the code language from the relative filename
       path_components = rel_filename.split('/')
       lang = path_components[0] if len(path_components) > 0 and os.path.isdir(path_components[0]) else 'guess'
+
+      code_nodes.append(self.create_node(filename, rel_filename, lang))
     else:
+      html_strs = []
+      tab_id = '%s_code' % os.path.basename(rel_path)
+      tab_header = '<div id="%s"><ul>' % tab_id
+
       # Load the code_lang object from conf.py and maintain the order so that the preferred languages and extensions come first
       code_lang = json.loads(conf.code_lang, object_pairs_hook=collections.OrderedDict)
 
@@ -78,19 +84,61 @@ class codeinclude(Directive):
       for lang in code_lang:
         for ext in code_lang[lang]:
           # Craft the filename given the code_dir, code_lang, rel_path (with any existing extension stripped), and a file extension
-          filename = '%s%s/%s.%s' % (conf.sourcecode_path, lang, os.path.splitext(rel_filename)[0], ext)
+          filename = '%s%s/%s.%s' % (conf.sourcecode_path, lang, rel_path, ext)
 
           if os.path.isfile(filename):
-            file_found = True
-            break
+            block_id = '_'.join([tab_id, lang.replace('+', 'p')])
+            tab_header += '<li><a href="#%s">%s</a></li>' % (block_id, lang.title())
 
-        if file_found:
+            if len(html_strs) == 0:
+              html_strs.append('<div id="%s">' % block_id)
+            else:
+              html_strs[-1] += '<div id="%s">' % block_id
+
+            html_strs.append('</div>')
+
+            code_nodes.append(self.create_node(filename, rel_filename, lang))
+            file_found = True
+
+            # Stop after finding one code file if tabbed code is not enabled
+            if not conf.tabbed_codeinc:
+              break
+
+        # Stop after finding one code file if tabbed code is not enabled
+        if file_found and not conf.tabbed_codeinc:
           break
 
       # Print an error message if no file is found for any language
       if not file_found:
         return [document.reporter.warning(
           'Include file %r not found for any language' % filename, line=self.lineno)]
+
+      if len(html_strs) > 0:
+        html_strs[0] = tab_header + '</ul>' + html_strs[0]
+        html_strs[-1] += '</div><script>$(function() {$( "#%s" ).tabs();});</script>' % tab_id
+
+    # If only one code block exists, print the code normally
+    if len(code_nodes) == 1:
+      return code_nodes
+
+    # If multiple code blocks exist, wrap each one in the HTML nodes that will form the tabbed container
+    node_list = []
+    node_num = 0
+
+    for html_str in html_strs:
+      node_list.append(nodes.raw('', html_str, format='html'))
+
+      if node_num < len(code_nodes):
+        node_list.append(code_nodes[node_num])
+        node_num += 1
+
+    #retnode = self.create_node(filename, rel_filename, lang)
+    return node_list
+
+
+  def create_node(self, filename, rel_filename, lang):
+    document = self.state.document
+    env = document.settings.env
 
     # Read the contents of the file to include
     encoding = self.options.get('encoding', env.config.source_encoding)
@@ -221,8 +269,7 @@ class codeinclude(Directive):
       retnode['highlight_args'] = {'hl_lines': hl_lines}
 
     env.note_dependency(rel_filename)
-    return [retnode]
-
+    return retnode
 
 source = """\
 This is some text.
