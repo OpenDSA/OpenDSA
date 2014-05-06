@@ -77,6 +77,7 @@
     this.newEmptyExtNode = function() {
       var ret = this.tree.newNode('').hide();
       ret.NodeType = NT.EMPTYEXT;
+      ret.addClass('bintreeemptyleaf');
       return ret;
     }
     
@@ -108,7 +109,7 @@
         console.log("Bintree insert: (LEAF) Value = ", INrec);
     
         var temp = this.tree.newNode(INrec).hide(); 
-
+        temp.addClass('bintreefullleaf');
         temp.x = INx;
         temp.y = INy;
         temp.NodeType = NT.FULLEXT;
