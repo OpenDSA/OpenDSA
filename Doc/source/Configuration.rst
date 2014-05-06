@@ -98,6 +98,8 @@ Settings (all are required unless otherwise specified)
   * Ex: ``"code_lang": {"C++": ["cpp", "h"], "Java": ["java"], "Processing": ["pde"]}``
   * In this example, the system would search for ``.cpp`` files, followed by ``.h`` files, ``.java`` files, and finally ``.pde`` files
 
+* **tabbed_codeinc** (optional) - a boolean that controls whether or not code is displayed in a tabbed interface.  If true, it will display the specified code in each of the languages specified in ``code_lang`` (if the code exists) in a tabbed container.  If false, it will display the code in a single language (the first language for which the code exists with the order of precedence determined by the order specified in ``code_lang``).  Defaults to true if omitted
+
 * **module_origin** - the protocol and domain where the module files are hosted
 
   * Used by embedded exercises as the target of HTML5 post messages which send information to the parent (module) page

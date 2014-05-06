@@ -39,10 +39,11 @@ class codeinclude(Directive):
 
   has_content = False
   required_arguments = 1
-  optional_arguments = 0
+  optional_arguments = 1
   final_argument_whitespace = False
   option_spec = {
     'tag': directives.unchanged_required,
+    'lang': directives.unchanged_required,
   }
 
   def run(self):
@@ -58,21 +59,22 @@ class codeinclude(Directive):
         line=self.lineno)]
 
     rel_filename = self.arguments[0]
-    file_found = False
     filename = conf.sourcecode_path + rel_filename
-    rel_path = os.path.splitext(rel_filename)[0]
+    file_found = False
     code_nodes = []
 
-    # If the codeinclude has the full path to the file override the global language precedence and load the specified file
+    # If the codeinclude is given the full path to a specific file load that file rather than attempting to use multiple languages
     if os.path.isfile(filename):
-      file_found = True
-
       # Parse the code language from the relative filename
       path_components = rel_filename.split('/')
       lang = path_components[0] if len(path_components) > 0 and os.path.isdir(path_components[0]) else 'guess'
 
       code_nodes.append(self.create_node(filename, rel_filename, lang))
+      file_found = True
     else:
+      # Search for the code in multiple different languages
+      # Remove the extension from the file, if it exists
+      rel_path = os.path.splitext(rel_filename)[0]
       html_strs = []
       tab_id = '%s_code' % os.path.basename(rel_path)
       tab_header = '<div id="%s"><ul>' % tab_id
@@ -82,11 +84,16 @@ class codeinclude(Directive):
 
       # Loop through each language and associated extension (in order)
       for lang in code_lang:
+        # If a specific language was provided as a parameter, set lang to the language provided before looping through extensions
+        if 'lang' in self.options:
+          lang = self.options['lang']
+
         for ext in code_lang[lang]:
           # Craft the filename given the code_dir, code_lang, rel_path (with any existing extension stripped), and a file extension
           filename = '%s%s/%s.%s' % (conf.sourcecode_path, lang, rel_path, ext)
 
           if os.path.isfile(filename):
+            # Append a list element with a link which will allow switching between the tabs
             block_id = '_'.join([tab_id, lang.replace('+', 'p')])
             tab_header += '<li><a href="#%s">%s</a></li>' % (block_id, lang.title())
 
@@ -100,12 +107,12 @@ class codeinclude(Directive):
             code_nodes.append(self.create_node(filename, rel_filename, lang))
             file_found = True
 
-            # Stop after finding one code file if tabbed code is not enabled
-            if not conf.tabbed_codeinc:
+            # Stop after finding one code file if tabbed code is not enabled or if we are only searching for a single language
+            if not conf.tabbed_codeinc or 'lang' in self.options:
               break
 
-        # Stop after finding one code file if tabbed code is not enabled
-        if file_found and not conf.tabbed_codeinc:
+        # If a file is found and tabbed code is not enabled or if the code language was specified by a parameter to the directive, break out of the loop
+        if (file_found and not conf.tabbed_codeinc) or 'lang' in self.options:
           break
 
       # Print an error message if no file is found for any language
@@ -113,6 +120,7 @@ class codeinclude(Directive):
         return [document.reporter.warning(
           'Include file %r not found for any language' % filename, line=self.lineno)]
 
+      # Append the rest of the HTML for the header of the tabbed container and the JavaScript necessary to create the tabs
       if len(html_strs) > 0:
         html_strs[0] = tab_header + '</ul>' + html_strs[0]
         html_strs[-1] += '</div><script>$(function() {$( "#%s" ).tabs();});</script>' % tab_id
@@ -132,7 +140,6 @@ class codeinclude(Directive):
         node_list.append(code_nodes[node_num])
         node_num += 1
 
-    #retnode = self.create_node(filename, rel_filename, lang)
     return node_list
 
 
@@ -275,6 +282,7 @@ source = """\
 This is some text.
 
 .. codeinclude:: address
+   :lang:
    :tag:
 
 
