@@ -1,0 +1,21 @@
+{
+  "translations" :{
+    "en": {
+      ".exerciseTitle": "Rehashing",
+      ".instructLabel": "Instructions:",
+      ".instructions": "The hash table is too full to allow new values to be inserted. In this exercise your task is to first rehash the hash table. You will do this by moving the values from the old hash table to the new hash table. When the hash table has been rehashed, you need to insert some new values to the hash table.",
+      "av_old_hash": "Old Hash Table",
+      "av_new_hash": "New Hash Table",
+      "av_insert": "Insert"
+    },
+    "fi": {
+      ".exerciseTitle": "Uudelleenhajautus",
+      ".instructLabel": "Ohjeet:",
+      ".instructions": "Uudelleenhajauta.",
+      "av_old_hash": "Vanha hajautustaulukko",
+      "av_new_hash": "Uusi hajautustaulukko",
+      "av_insert": "Lisää"
+    }
+  },
+  "code" : {}
+}
