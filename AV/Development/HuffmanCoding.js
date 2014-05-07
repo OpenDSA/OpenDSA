@@ -366,19 +366,27 @@
 
   // Create a table showing the letters and their huffman codes
   var createTable = function(valArr, codeArr) {
-    var theMatrix = new jsav.ds.matrix({rows: 10, columns: 4, style: "plain"});
-    // Why doesn't this line with the array work?
-    // theMatrix.value(0, ["<b>Char</b>", "<b>Freq</b>", "<b>Code</b>", "<b>Bits</b>"]);
-    theMatrix.value(0, 0, "<b>Char</b>");
-    theMatrix.value(0, 1, "<b>Freq</b>");
-    theMatrix.value(0, 2, "<b>Code</b>");
-    theMatrix.value(0, 3, "<b>Bits</b>");
+    var matrixData = [ ["<b>Char</b>", "<b>Freq</b>", "<b>Code</b>", "<b>Bits</b>"] ];
     for (var i = 1; i <= valArr.length; i++) {
-      theMatrix.value(i, 0, valArr[i - 1].split("<br>")[1]);
-      theMatrix.value(i, 1, valArr[i - 1].split("<br>")[0]);
-      theMatrix.value(i, 2, codeArr[i - 1]);
-      theMatrix.value(i, 3, codeArr[i - 1].length);
+      var x = valArr[i - 1].split("<br>")[1];
+      var y = valArr[i - 1].split("<br>")[0];
+      matrixData.push([x, y, codeArr[i - 1], codeArr[i - 1].length]);
     }
+    var theMatrix = new jsav.ds.matrix(matrixData, {style: "plain"});
+
+
+//    var theMatrix = new jsav.ds.matrix({rows: 10, columns: 4, style: "plain"});
+//    theMatrix.value(0, 0, "<b>Char</b>");
+//    theMatrix.value(0, 1, "<b>Freq</b>");
+//    theMatrix.value(0, 2, "<b>Code</b>");
+//    theMatrix.value(0, 3, "<b>Bits</b>");
+//    for (var i = 1; i <= valArr.length; i++) {
+//      theMatrix.value(i, 0, valArr[i - 1].split("<br>")[1]);
+//      theMatrix.value(i, 1, valArr[i - 1].split("<br>")[0]);
+//      theMatrix.value(i, 2, codeArr[i - 1]);
+//      theMatrix.value(i, 3, codeArr[i - 1].length);
+//    }
+    return theMatrix;
   }
 
   // Connect action callbacks to the HTML entities
@@ -441,8 +449,13 @@
   jsav.umsg("Huffman codes for all characters are as follows:");
   hfArray[0].hide();
 
-  // Display a tabel which contains information of each character.
-  createTable(valArray, codeArray);
+  var matrixData = [ ["<b>Char</b>", "<b>Freq</b>", "<b>Code</b>", "<b>Bits</b>"] ];
+  for (var i = 1; i <= valArray.length; i++) {
+    matrixData.push([valArray[i - 1].split("<br>")[1],
+                     valArray[i - 1].split("<br>")[0],
+                     codeArray[i - 1], codeArray[i - 1].length]);
+  }
+  var theMatrix = new jsav.ds.matrix(matrixData, {style: "plain"});
 
   jsav.recorded(); // done recording changes, will rewind
 }(jQuery));

@@ -25,7 +25,6 @@
         "long_name": "2-3 Trees",
         "exercises": {}
       },
-
       "IS/SortedSearch.rst": {
         "long_name": "Search in Sorted Arrays",
         "exercises": {}
@@ -34,10 +33,7 @@
         "long_name": "Buffer Pool",
         "exercises": {}
       },
-      "IS/Diskdrive": {
-       "long_name": "Disk Drive",
-       "exercises": {}
-      }, "IS/Huffman": {
+      "IS/Huffman": {
         "long_name": "Huffman Coding Trees",
         "exercises": {
           "huffmanCON1": {
@@ -55,8 +51,8 @@
           }
         }
       },
-      "IS/HuffProof.rst": {
-        "long_name": "Huffman Coding Trees",
+       "IS/TreeTrie": {
+        "long_name": "Trees versus Tries",
         "exercises": {}
       },
       "IS/LinearIndexing.rst": {
@@ -65,10 +61,6 @@
       },
       "IS/TreeIndexing.rst": {
         "long_name": "Tree Indexing",
-        "exercises": {}
-      },
-      "IS/SetSearch": {
-        "long_name": "Set Search",
         "exercises": {}
       },
       "IS/SelfOrg": {

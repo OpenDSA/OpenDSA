@@ -23,9 +23,9 @@ from urlparse import urlparse
 
 error_count = 0
 
-required_fields = ['chapters', 'code_dir', 'code_lang', 'module_origin', 'title']
+required_fields = ['chapters', 'code_lang', 'module_origin', 'title']
 
-optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'theme', 'theme_dir']
+optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir']
 
 # Prints the given string to standard error
 def print_err(err_msg):
@@ -123,12 +123,12 @@ def validate_exercise(exer_name, exercise):
 
 
 # Validate a module
-def validate_module(mod_name, module):
+def validate_module(mod_name, module, conf_data):
   """Validate a module object"""
   global error_count
 
   required_fields = ['exercises']
-  optional_fields = ['long_name', 'dispModComp', 'mod_options']
+  optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options']
 
   # Ensure required fields are present
   for field in required_fields:
@@ -147,9 +147,23 @@ def validate_module(mod_name, module):
     for exer in module['exercises']:
       validate_exercise(exer, module['exercises'][exer])
 
+  if 'codeinclude' in module:
+    # Check whether every language specified for a codeinclude is supported in code_lang
+    for lang in module['codeinclude'].values():
+      if lang not in conf_data['code_lang']:
+        print('ERROR: Unsupported language, %s, referenced in codeinclude' % lang)
+        error_count += 1
+
+      lang_dir = conf_data['code_dir'] + lang
+
+      # Ensure the source code directory exists for the specified language
+      if not os.path.isdir(lang_dir):
+        print('ERROR: Language directory %s does not exist' % lang_dir)
+        error_count += 1
+
 
 # Validate a section
-def validate_section(section):
+def validate_section(section, conf_data):
   """Validate a chapter or section"""
   for subsect in section:
     if 'hidden' in section[subsect]:
@@ -168,9 +182,9 @@ def validate_section(section):
 
     if is_mod:
       # Subsect is a module
-      validate_module(subsect, section[subsect])
+      validate_module(subsect, section[subsect], conf_data)
     else:
-      validate_section(section[subsect])
+      validate_section(section[subsect], conf_data)
 
 
 # Validate an OpenDSA configuration file
@@ -232,7 +246,7 @@ def validate_config_file(config_file_path, conf_data):
       print_err('ERROR: Unknown field, %s' % field)
       error_count += 1
 
-  validate_section(conf_data['chapters'])
+  validate_section(conf_data['chapters'], conf_data)
 
   if error_count > 0:
     print_err('Errors found: %d\n' % error_count)
@@ -297,6 +311,13 @@ def set_defaults(conf_data):
 
   if 'lang' not in conf_data:
     conf_data['lang'] = 'en'
+
+  if 'tabbed_codeinc' not in conf_data:
+    conf_data['tabbed_codeinc'] = True
+
+  if not isinstance(conf_data['tabbed_codeinc'], bool):
+    conf_data['tabbed_codeinc'] = True
+    print_err('WARNING: tabbed_codeinc must be a boolean')
 
   if 'start_chap_num' not in conf_data:
     conf_data['start_chap_num'] = 0 #1
