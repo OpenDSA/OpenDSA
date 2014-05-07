@@ -28,6 +28,7 @@
       current,
       color,
       end = false,
+      array,
       fit = 0;
 
 
@@ -81,22 +82,22 @@
 
     var memPoolLabel = jsav.label("Memory Pool (Size: 200)", {"left": 280, "top": 130});
 
-    var used1 = jsav.g.rect(342, 150, 25, 60).css({"fill": "coral"});
-    var used2 = jsav.g.rect(455, 150, 62, 60).css({"fill": "coral"});
-    var used3 = jsav.g.rect(597, 150, 45, 60).css({"fill": "coral"});
+    var used1 = jsav.g.rect(342.5, 150, 25, 60).css({"fill": "coral"});
+    var used2 = jsav.g.rect(455, 150, 62.5, 60).css({"fill": "coral"});
+    var used3 = jsav.g.rect(597.5, 150, 45, 60).css({"fill": "coral"});
     var used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "coral"});
     
 
 
     var free1Start = 280;
-    var free2Start = 367;
-    var free3Start = 517;
-    var free4Start = 642;
+    var free2Start = 367.5;
+    var free3Start = 517.5;
+    var free4Start = 642.5;
     
-    var free1 = jsav.g.rect(free1Start, 150, 62, 60).css({"fill": "cornflowerblue"});
-    var free2 = jsav.g.rect(free2Start, 150, 88, 60).css({"fill": "cornflowerblue"});
+    var free1 = jsav.g.rect(free1Start, 150, 62.5, 60).css({"fill": "cornflowerblue"});
+    var free2 = jsav.g.rect(free2Start, 150, 87.5, 60).css({"fill": "cornflowerblue"});
     var free3 = jsav.g.rect(free3Start, 150, 80, 60).css({"fill": "cornflowerblue"});
-    var free4 = jsav.g.rect(free4Start, 150, 113, 60).css({"fill": "cornflowerblue"});
+    var free4 = jsav.g.rect(free4Start, 150, 112.5, 60).css({"fill": "cornflowerblue"});
     $("rect").on("click", changeUsed);
 
     recArray = new Array(30);
@@ -115,12 +116,12 @@
     freeOrNot = new Array(30);  //1 indicates free 0 is not
 
     startArray[0] = 280;
-    startArray[1] = 342;
-    startArray[2] = 367;
-    startArray[3] = 455; //517
-    startArray[4] = 517;
-    startArray[5] = 597; //642
-    startArray[6] = 642;
+    startArray[1] = 342.5;
+    startArray[2] = 367.5;
+    startArray[3] = 455; // 
+    startArray[4] = 517.5; //was 517
+    startArray[5] = 597.5; //642
+    startArray[6] = 642.5;
     startArray[7] = 755; //780
 
     finArray[0] = 342;
@@ -179,41 +180,46 @@
     var block3 = 32;
     var block4 = 45;
 
-    freeArray = new Array(block1, block2, block3, block4);
+     array = jsav.ds.array([25, 35, 32, 45], {"left": 280, "top": 400, "bottom": 500});
+     //array = jsav.ds.array(5, {"left": 280, "top": 400, "bottom": 500})
 
-    var block1Label = jsav.label(block1, {left :  280, top:  410});
-    var block2Label= jsav.label(block2, {left :  310, top:  410});
-    var block3Label = jsav.label(block3, {left :  340, top:  410});
-    var block4Label = jsav.label(block4, {left :  370, top:  410});
+    //freeArray = new Array(block1, block2, block3, block4);
 
-    block1Label.css({"z-index": 500});
-    block2Label.css({"z-index": 500});
-    block3Label.css({"z-index": 500});
-    block4Label.css({"z-index": 500});
 
-    blockLabelArray = new Array(block1Label, block2Label, block3Label, block4Label);
+
+    // var block1Label = jsav.label(block1, {left :  280, top:  410});
+    // var block2Label= jsav.label(block2, {left :  310, top:  410});
+    // var block3Label = jsav.label(block3, {left :  340, top:  410});
+    // var block4Label = jsav.label(block4, {left :  370, top:  410});
+
+    // block1Label.css({"z-index": 500});
+    // block2Label.css({"z-index": 500});
+    // block3Label.css({"z-index": 500});
+    // block4Label.css({"z-index": 500});
+
+   // blockLabelArray = new Array(block1Label, block2Label, block3Label, block4Label);
     
-    var freeListRect = jsav.g.rect(275, 400, 30, 40).css({"fill": "lightgrey"});
-    var freeListRect2 = jsav.g.rect(305, 400, 30, 40).css({"fill": "lightgrey"});
-    var freeListRect3 = jsav.g.rect(335, 400, 30, 40).css({"fill": "lightgrey"});
-    var freeListRect4 = jsav.g.rect(365, 400, 30, 40).css({"fill": "lightgrey"});
+    // var freeListRect = jsav.g.rect(275, 400, 30, 40).css({"fill": "lightgrey"});
+    // var freeListRect2 = jsav.g.rect(305, 400, 30, 40).css({"fill": "lightgrey"});
+    // var freeListRect3 = jsav.g.rect(335, 400, 30, 40).css({"fill": "lightgrey"});
+    // var freeListRect4 = jsav.g.rect(365, 400, 30, 40).css({"fill": "lightgrey"});
 
-    freeListArray = new Array(freeListRect, freeListRect2, freeListRect3, freeListRect4);
+    //freeListArray = new Array(freeListRect, freeListRect2, freeListRect3, freeListRect4);
 
-    var freeLabel = jsav.label("Free List", {left : 300, top: 460});
+    var freeLabel = jsav.label("Free List", {left : 300, top: 510});
 
-    var connect1Start = 290;
-    var connect2Start = 320;
-    var connect3Start = 350;
-    var connect4Start = 375;
+    var connect1Start = 305;
+    var connect2Start = 350;
+    var connect3Start = 400;
+    var connect4Start = 435;
     connectStartArray = new Array(connect1Start, connect2Start, connect3Start, connect4Start);
   
-    var connect1 = jsav.g.line(connect1Start, 400, 311, 210);
-    var connect2 = jsav.g.line(connect2Start, 400, 411, 210);
-    var connect3 = jsav.g.line(connect3Start, 400, 557, 210);
-    var connect4 = jsav.g.line(connect4Start, 400, 698, 210);
+    // var connect1 = jsav.g.line(connect1Start, 425, 311, 210);
+    // var connect2 = jsav.g.line(connect2Start, 425, 411, 210);
+    // var connect3 = jsav.g.line(connect3Start, 425, 557, 210);
+    // var connect4 = jsav.g.line(connect4Start, 425, 698, 210);
 
-    linesArray = new Array(connect1, connect2, connect3, connect4);
+    // linesArray = new Array(connect1, connect2, connect3, connect4);
     current = 0;
     recArraySize = 8;
   }
@@ -236,6 +242,7 @@
     //jsav.umsg(event.pageX)
     var click = event.pageX;
     merge(click);
+    updateArray();
    
    
   }
@@ -270,9 +277,10 @@
       }
       if(clickSpot <= 780 && clickSpot >= startArray[recArraySize -1])
       {
-        jsav.umsg("trueeee")
-        jsav.umsg("size before = " + recArraySize)
+        
         //var start = startArray[end-1];
+        i--;
+        jsav.umsg("i = " + i)
         var start = startArray[recArraySize-2]
         var diff = 780 - start;
         var newrec = jsav.g.rect(start, 150, diff, 60).css({"fill": "cornflowerblue"});
@@ -280,11 +288,14 @@
         jsav.umsg("start = " + start + "diff = " + diff)
         recArray[i-1] = recArray[i];
         startArray[i-1] = startArray[i];
-        startArray[recArraySize-1] = 755;
-        recArray[recArraySize-1] = null;  
+        //startArray[recArraySize] = 780;
+        //recArray[recArraySize-1] = null;  
+        freeOrNot[recArraySize -1] = null;
+        freeOrNot[recArraySize -2] = 1;
         recArraySize--;
+        
         end = true;
-      
+
       }
 
       else if(i == 0)
@@ -294,15 +305,15 @@
       else
       {  
         i = i - 1;
-        jsav.umsg("i = " + i)
+        //jsav.umsg("i = " + i)
         var diff = startArray[i +2] - startArray[i-1];
-        if (end == true)
-        {
-          diff = 780 - startArray[i-1];
-        }
+        // if (end == true)
+        // {
+        //   diff = 780 - startArray[i-1];
+        // }
         var newRect = jsav.g.rect(startArray[i-1], 150, diff, 60).css({"fill": "cornflowerblue"});
         newRect.css({"z-index": 500});
-        jsav.umsg("diff is " + diff)
+       
         if(recArraySize > 2)
         {
           recArraySize = recArraySize - 2;
@@ -317,15 +328,18 @@
         {
           recArray[i] = recArray[i + 2];
           startArray[i] = startArray[i + 2];
-          finArray[i] = finArray[i + 2];
+          freeOrNot[i] = freeOrNot[i+2];
+          // finArray[i] = finArray[i + 2];
        }
 
        startArray[recArraySize +1] = null;
+       freeOrNot[recArraySize +1 ] = null;
+       freeOrNot[recArraySize] = null;
        startArray[recArraySize] = null;
        recArray[recArraySize +1] = null;
        recArray[recArraySize] = null;
-       finArray[recArraySize] = null;
-       finArray[recArraySize + 1] = null;
+       // finArray[recArraySize] = null;
+       // finArray[recArraySize + 1] = null;
      }
 
           var n = recArraySize;
@@ -336,23 +350,145 @@
             }
             if(end == true)
             {
-              startArray[recArraySize -1] = 780;
+              startArray[recArraySize] = 780;
               if(recArraySize ==1)
                 {
                   startArray[recArraySize -1] = 280;
                 }
             }
-          jsav.umsg("size = " + recArraySize)
-          jsav.umsg("startArray0: " + startArray[0])
-          jsav.umsg("startArray1: " + startArray[1])
-          jsav.umsg("startArray2: " + startArray[2])
-          jsav.umsg("startArray3: " + startArray[3])
-          jsav.umsg("startArray4: " + startArray[4])
-          jsav.umsg("startArray5: " + startArray[5])
-          jsav.umsg("startArray6: " + startArray[6])
-          jsav.umsg("startArray7: " + startArray[7])
+            // jsav.umsg("startArray 0= " + freeOrNot[0])
+            // jsav.umsg("startArray 1= " + freeOrNot[1])
+            // jsav.umsg("startArray 2= " + freeOrNot[2])
+            // jsav.umsg("startArray 3= " + freeOrNot[3])
+            // jsav.umsg("startArray 4= " + freeOrNot[4])
+            // jsav.umsg("startArray 5= " + freeOrNot[5])
+            // jsav.umsg("startArray 6= " + freeOrNot[6])
+            // jsav.umsg("startArray 7= " + freeOrNot[7])
+            jsav.umsg("startArray 0= " + startArray[0])
+            jsav.umsg("startArray 1= " + startArray[1])
+            jsav.umsg("startArray 2= " + startArray[2])
+            jsav.umsg("startArray 3= " + startArray[3])
+            jsav.umsg("startArray 4= " + startArray[4])
+            jsav.umsg("startArray 5= " + startArray[5])
+            jsav.umsg("startArray 6= " + startArray[6])
+            jsav.umsg("startArray 7= " + startArray[7])
 
-}
+    }
+
+    function updateArray()
+    {
+        //var x = array.size();
+        //jsav.umsg("array size = " + x)
+        if(recArraySize == 1 && freeOrNot[0] == 1)
+        {
+          array.hide();
+          array = jsav.ds.array([200], {"left": 280, "top": 400, "bottom": 500});
+        }
+        else
+        {
+          
+          var i;
+          var num = 0;
+          var one;
+          var two;
+          var three; 
+          var four;
+           jsav.umsg("rect array size = " + recArraySize)
+          for(i = 0; i < recArraySize; i++)
+          {
+           
+            if(freeOrNot[i] == 1) 
+            {
+              //jsav.umsg("i = " + i)
+              //array.value(num, startArray[i+1] - startArray[i]);
+              num++;
+              if(num == 1)
+              {
+                //jsav.umsg("startArray +1 = " + startArray[i+1] + "startArray = " + startArray[i])
+                one = startArray[i +1] - startArray[i];
+                one = one/2.5;
+                
+              }
+               else if(num == 2)
+              {
+                //jsav.umsg("startArray +1 = " + startArray[i+1] + "startArray = " + startArray[i])
+                two = startArray[i +1] - startArray[i];
+                two = two/2.5;
+              }
+               else if(num == 3)
+              {
+                //jsav.umsg("startArray +1 = " + startArray[i+1] + "startArray = " + startArray[i])
+                three = startArray[i +1] - startArray[i];
+                three = three/2.5;
+
+              }
+               else if(num == 4)
+              {
+                //jsav.umsg("startArray +1 = " + startArray[i+1] + "startArray = " + startArray[i])
+                four = startArray[i +1] - startArray[i];
+                four = four/2.5;
+                
+              }
+              if(one < 1 || one == null)
+              {
+                  
+                 one = 780 - startArray[i];
+                 one = one/2.5;
+                
+              }
+              else if(two < 1 || two == null)
+              {
+                 
+                 two= 780 - startArray[i];
+                 two = two/2.5;
+                
+              }
+              else if(three < 1 || three == null)
+              {
+                
+                 three = 780 - startArray[i];
+                 three = three/2.5;
+                 
+              }
+              else if(four < 1 || four == null)
+              {
+                 
+                 four = 780 - startArray[i];
+                 four = four/2.5;
+                 
+              }
+              
+            }
+
+          }
+          
+          
+            
+          array.hide();
+         
+              if(num == 1)
+              {
+                array = jsav.ds.array([one], {"left": 280, "top": 400, "bottom": 500});
+              }
+              else if(num ==2)
+              {
+                array = jsav.ds.array([one, two], {"left": 280, "top": 400, "bottom": 500});
+              }
+              else if (num == 3)
+              {
+                array = jsav.ds.array([one, two, three], {"left": 280, "top": 400, "bottom": 500});
+              }
+              else
+              {
+                array = jsav.ds.array([one, two, three, four], {"left": 280, "top": 400, "bottom": 500});
+              }
+
+            
+    
+        }
+        jsav.umsg("size: " + array.size())
+    }
+          
 
   
 
