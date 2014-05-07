@@ -27,6 +27,7 @@
       rectNumber = 0,
       current,
       color,
+      end = false,
       fit = 0;
 
 
@@ -84,7 +85,7 @@
     var used2 = jsav.g.rect(455, 150, 62, 60).css({"fill": "coral"});
     var used3 = jsav.g.rect(597, 150, 45, 60).css({"fill": "coral"});
     var used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "coral"});
-    $("rect").on("click", changeUsed);
+    
 
 
     var free1Start = 280;
@@ -96,6 +97,7 @@
     var free2 = jsav.g.rect(free2Start, 150, 88, 60).css({"fill": "cornflowerblue"});
     var free3 = jsav.g.rect(free3Start, 150, 80, 60).css({"fill": "cornflowerblue"});
     var free4 = jsav.g.rect(free4Start, 150, 113, 60).css({"fill": "cornflowerblue"});
+    $("rect").on("click", changeUsed);
 
     recArray = new Array(30);
 
@@ -258,15 +260,7 @@
 
   function merge(clickSpot)
   {
-          jsav.umsg("startArray0: " + startArray[0])
-          jsav.umsg("startArray1: " + startArray[1])
-          jsav.umsg("startArray2: " + startArray[2])
-          jsav.umsg("startArray3: " + startArray[3])
-          jsav.umsg("startArray4: " + startArray[4])
-          jsav.umsg("startArray5: " + startArray[5])
-          jsav.umsg("startArray6: " + startArray[6])
-          jsav.umsg("startArray7: " + startArray[7])
-
+      
       clickSpot = clickSpot -23; 
       jsav.umsg("click at " + clickSpot)
       var i = 0;
@@ -274,42 +268,41 @@
       {
         i++;
       }
-      jsav.umsg
-      
-      i = i - 1;
-      var end = recArraySize -1;
-      jsav.umsg("size " + recArraySize)
-      if(i == end)
+      if(clickSpot <= 780 && clickSpot >= startArray[recArraySize -1])
       {
-        
-        var start = startArray[end-1];
+        jsav.umsg("trueeee")
+        jsav.umsg("size before = " + recArraySize)
+        //var start = startArray[end-1];
+        var start = startArray[recArraySize-2]
         var diff = 780 - start;
         var newrec = jsav.g.rect(start, 150, diff, 60).css({"fill": "cornflowerblue"});
         newrec.css({"z-index": 500});
         jsav.umsg("start = " + start + "diff = " + diff)
         recArray[i-1] = recArray[i];
         startArray[i-1] = startArray[i];
-        startArray[end] = null;
-        recArray[end] = null;  
+        startArray[recArraySize-1] = 755;
+        recArray[recArraySize-1] = null;  
         recArraySize--;
+        end = true;
       
-
       }
+
       else if(i == 0)
       {
         //to do
       }
-      //jsav.umsg("end = " + end)
       else
       {  
-        var diff = finArray[i + 1] -startArray[i-1];
-       
-        
+        i = i - 1;
+        jsav.umsg("i = " + i)
+        var diff = startArray[i +2] - startArray[i-1];
+        if (end == true)
+        {
+          diff = 780 - startArray[i-1];
+        }
         var newRect = jsav.g.rect(startArray[i-1], 150, diff, 60).css({"fill": "cornflowerblue"});
-        
-      
-        finArray[i -1] = startArray[i -1] + diff;
-        
+        newRect.css({"z-index": 500});
+        jsav.umsg("diff is " + diff)
         if(recArraySize > 2)
         {
           recArraySize = recArraySize - 2;
@@ -318,11 +311,8 @@
         {
           recArraySize = recArraySize -1;
         }
-        newRect.css({"z-index": 500});
         var j = recArraySize;
-        var z = j -1;
-        jsav.umsg("j = " + j)
-        jsav.umsg("i = " + i)
+
         for(i; i < j; i++)
         {
           recArray[i] = recArray[i + 2];
@@ -337,7 +327,31 @@
        finArray[recArraySize] = null;
        finArray[recArraySize + 1] = null;
      }
-       
+
+          var n = recArraySize;
+          for (n; n<30; n++)
+            {
+              startArray[n] = null;
+              recArray[n] = null;
+            }
+            if(end == true)
+            {
+              startArray[recArraySize -1] = 780;
+              if(recArraySize ==1)
+                {
+                  startArray[recArraySize -1] = 280;
+                }
+            }
+          jsav.umsg("size = " + recArraySize)
+          jsav.umsg("startArray0: " + startArray[0])
+          jsav.umsg("startArray1: " + startArray[1])
+          jsav.umsg("startArray2: " + startArray[2])
+          jsav.umsg("startArray3: " + startArray[3])
+          jsav.umsg("startArray4: " + startArray[4])
+          jsav.umsg("startArray5: " + startArray[5])
+          jsav.umsg("startArray6: " + startArray[6])
+          jsav.umsg("startArray7: " + startArray[7])
+
 }
 
   
