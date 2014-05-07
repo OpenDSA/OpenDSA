@@ -107,7 +107,9 @@
 				return;
 			}
 			//deselect if something is selected
-			this.deselect();
+			if (this.getSelected().struct) {
+				this.deselect();
+			}
 
 			if (typeof indexOrNode === "number") {
 				//select array
