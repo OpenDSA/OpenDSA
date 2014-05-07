@@ -87,7 +87,7 @@ Settings (all are required unless otherwise specified)
   * The compiled textbook will appear in ``[build_dir]/[book name]/html``
   * This directory must be web accessible
 
-* **code_dir** - specifies the directory which contains another directory whose name matches ``code_lang`` (see below) which contains the source code used in examples
+* **code_dir** (optional) - specifies the directory which contains another directory whose name matches ``code_lang`` (see below) which contains the source code used in examples, defaults to ``SourceCode`` if omitted
 
   * Ex: If ``{"code_dir": "SourceCode/", "code_lang": "python"}`` then the book would look for example Python source code in ``~OpenDSA/SourceCode/python``
 
@@ -200,3 +200,8 @@ Settings (all are required unless otherwise specified)
         * **threshold** - (optional) the percentage a user needs to score on the exercise to obtain proficiency, defaults to 100% (1 on a 0-1 scale) if omitted
 
       * JSAV-based diagrams do not need to be listed
+
+    * **codeinclude** (optional) - an object that maps the path from a codeinclude to a language which should be used for the code.
+
+      * The following example would set C++ as the language for the codeinclude "Sorting/Mergesort"
+      * Ex: "codeinclude": {"Sorting/Mergesort": "C++"}

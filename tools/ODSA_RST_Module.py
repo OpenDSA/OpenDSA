@@ -359,6 +359,12 @@ class ODSA_RST_Module:
                 rst_options.append('   :exer_opts: %s\n' % xop_str)
 
                 mod_data[i] += ''.join(rst_options)
+        elif line.startswith('.. codeinclude::'):
+          code_name = mod_data[i].split(' ')[2].strip()
+
+          # If the config file specifies a lang argument for this codeinclude, append it to the directive
+          if 'codeinclude' in mod_attrib and code_name in mod_attrib['codeinclude']:
+            mod_data[i] += '   :lang: %s\n' % mod_attrib['codeinclude'][code_name]
         elif line.startswith('.. avmetadata::'):
           avmetadata_found = True
         elif line.startswith('.. math::') and (i + 1) < len(mod_data) and ':label:' in mod_data[i + 1]:
