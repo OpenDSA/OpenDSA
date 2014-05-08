@@ -13,24 +13,39 @@
 	*/
 	var ClickHandler = function ClickHandler(jsav, exercise, options) {
 		var defaults = {
+			// the class which is given to a node/index when it is selected
 			selectedClass: "jsavhighlight",
-			inactiveClass: undefined,	// ignore all clicks on nodes with this class
-			selectEmpty: false,			// don't allow selecting empty nodes
-			effect: "move",				// move, copy, swap, toss
-			arraySwapOptions: {			// options for array swap
+			// ignore all clicks on nodes with this class
+			inactiveClass: undefined,
+			// don't allow selecting empty nodes
+			selectEmpty: false,
+			// move, copy, swap, toss
+			effect: "move",
+			// options for array swap
+			arraySwapOptions: {
 				use: true,				// use array swap by default
 				arrow: false,			// turn array swap arrow off by default
 				highlight: false,		// do not use pink highlighting when swapping
 				swapClasses: true
 			},
-			removeNodes: true,			// remove nodes when they become empty
-			gradeable: true,			// tells click handler if action should be graded. Can be overridden with return value of onDrop
-			bgDeselect: true,			// allow deselecting by clicking on the background
-			select: "click",			// click, first, last
-			drop: "click",				// click, first, last
-			keep: false,				// don't allow selecting the last node
-			onSelect: function () {},	// called by structure when something is selected. If the function returns false, the selection is cancelled
-			onDrop: function () {}		// called by structure when value has been changed. The return value determins if the step is gradeable. If nothing is returned options.gradeable will be used.
+			// remove nodes when they become empty
+			removeNodes: true,
+			// tells click handler if action should be graded. Can be overridden with return value of onDrop.
+			gradeable: true,
+			// allow deselecting by clicking on the background
+			bgDeselect: true,
+			// click, first, last
+			select: "click",
+			// click, first, last
+			drop: "click",
+			// don't allow selecting the last node
+			keep: false,
+			// called by structure when something is selected. If the function returns false, the selection is cancelled
+			onSelect: function () {},
+			// called by structure when something is already selected and another node/index is clicked. If the function returns false, the drop will not take place.
+			beforeDrop: function () {},
+			// called by structure when value has been changed. The return value determins if the step is gradeable. If nothing is returned gradeable will be used.
+			onDrop: function () {}
 		};
 
 		this.jsav = jsav;
@@ -158,7 +173,7 @@
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
-				var grade;
+				var grade, continueDrop;
 
 				if (sStruct === -1) {
 					//select empty nodes only if the options allow it
@@ -179,6 +194,11 @@
 						return;
 					}
 					if (sIndex !== index) {
+						//return if beforeDrop returns false
+						continueDrop = options.beforeDrop.call(this, index);
+						if (typeof continueDrop !== "undefined" && !continueDrop) {
+							return;
+						}
 						//move/copy/swap within the array
 						valueEffect(ch, {
 							from: ch.getDs(sStruct),
@@ -208,6 +228,11 @@
 					//move/copy/swap from an another structure
 					//swap with empty nodes only if the options allow it
 					if (!options.selectEmpty && this.value(index) === "" && ch.options.effect === "swap") {
+						return;
+					}
+					//return if beforeDrop returns false
+					continueDrop = options.beforeDrop.call(this, index);
+					if (typeof continueDrop !== "undefined" && !continueDrop) {
 						return;
 					}
 					//move value from node (sIndex === -1) or another array
@@ -254,7 +279,7 @@
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
-				var grade, to;
+				var grade, continueDrop, to;
 
 				if (sStruct === -1) {
 					//select empty nodes only if the options allow it
@@ -305,6 +330,11 @@
 						to = this;
 					}
 					if (to !== ch.selNode && this !== ch.selNode) {
+						//return if beforeDrop returns false
+						continueDrop = options.beforeDrop.call(to);
+						if (typeof continueDrop !== "undefined" && !continueDrop) {
+							return;
+						}
 						//move/copy/swap within the list
 						valueEffect(ch, {
 							from: ch.selNode,
@@ -339,6 +369,11 @@
 						break;
 					default: //"click"
 						to = this;
+					}
+					//return if beforeDrop returns false
+					continueDrop = options.beforeDrop.call(to);
+					if (typeof continueDrop !== "undefined" && !continueDrop) {
+						return;
 					}
 					//move value from node (sIndex === -1) or an array
 					valueEffect(ch, {
@@ -383,7 +418,7 @@
 				//move the values from the JSAV variables into regulas js vars
 				var sStruct = ch.selStruct.value();
 				var sIndex = ch.selIndex.value();
-				var grade;
+				var grade, continueDrop;
 
 				if (sStruct === -1) {
 					//select empty nodes only if the options allow it
@@ -404,6 +439,11 @@
 					ch.select(tree, this);
 				} else if (sStruct === ch.getDsIndex(tree)) {
 					if (this !== ch.selNode) {
+						//return if beforeDrop returns false
+						continueDrop = options.beforeDrop.call(this);
+						if (typeof continueDrop !== "undefined" && !continueDrop) {
+							return;
+						}
 						//move/copy/swap within the tree
 						valueEffect(ch, {
 							from: ch.selNode,
@@ -428,6 +468,11 @@
 					}
 				} else {
 					//move/copy/swap from an another structure
+					//return if beforeDrop returns false
+					continueDrop = options.beforeDrop.call(this);
+					if (typeof continueDrop !== "undefined" && !continueDrop) {
+						return;
+					}
 					//move value from node (sIndex === -1) or an array
 					valueEffect(ch, {
 						from: sIndex === -1 ? ch.selNode: ch.getDs(sStruct),
