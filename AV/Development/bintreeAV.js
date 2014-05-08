@@ -77,6 +77,7 @@
     this.newEmptyExtNode = function() {
       var ret = this.tree.newNode('').hide();
       ret.NodeType = NT.EMPTYEXT;
+      ret.addClass('bintreeemptyleaf');
       return ret;
     }
     
@@ -89,7 +90,6 @@
       this.tree.root(temp, {hide: false});
       this.tree.root().show();
       this.layout();
-      jsav.step();
     }
 
     // returns the root of tree that results from inserting the new record
@@ -103,12 +103,12 @@
 
       if (rt.NodeType === NT.EMPTYEXT) {
         console.log("insert: encountered empty leaf node: insert data and return")
-        jsav.umsg("Insert: Encountered an empty leaf node: Now insert data and return!");
+        jsav.umsg("Encountered an empty leaf node: Now insert data and return.");
         jsav.step();
         console.log("Bintree insert: (LEAF) Value = ", INrec);
     
         var temp = this.tree.newNode(INrec).hide(); 
-
+        temp.addClass('bintreefullleaf');
         temp.x = INx;
         temp.y = INy;
         temp.NodeType = NT.FULLEXT;
@@ -117,6 +117,9 @@
       
       // If the entry is a full leaf
       if (rt.NodeType === NT.FULLEXT) {
+        jsav.umsg("Enountered a full external node. Now replace " + 
+          "with an internal node and insert both the old and new data.");
+        jsav.step();
         console.log("insert: is a leaf and not empty: ", INrec, rt);
         
         if ((rt.x === INx) && (rt.y === INy)) {
@@ -213,28 +216,35 @@
 
     // Setup the tree
     jsav.umsg("Step 1: insert node with value 'A' @ 125, 125");
-    jsav.step();
     
-    // rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level
-    console.log("Let's call insert. bint.root is now: ", bint.getRoot());
-
+    jsav.step();
     bint.add(125, 125, "A");
+    jsav.step();
+    jsav.umsg("Step 1: Insertion completed");
+    
+    jsav.step();
 
     // Insert another object
     jsav.umsg("Step 2: insert node with value \"B\" @ 50, 50");
+    
+    jsav.step();
+        bint.add(50, 50, "B");
+
+    jsav.step();
+    jsav.umsg("Step 2: Insertion completed");
+
     jsav.step();
 
-    console.log("Let's call insert. bint.root is now: ", bint.getRoot());
-    bint.add(50, 50, "B");
-    jsav.step();
+    
+
 
     jsav.umsg("Step 3: insert node with value \"C\" @ 175, 175");
     jsav.step();
 
     bint.add(175, 175, "C");
-
     jsav.step();
-    jsav.umsg("All Done!");
+    jsav.umsg("Step 3: Insertion completed");
+    jsav.step();
 
     jsav.recorded(); // mark the end
 
