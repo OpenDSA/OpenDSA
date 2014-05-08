@@ -53,6 +53,9 @@
       clickHandler.deselect = function () {
         origdeselect.call(this);
         av.clearumsg();
+        // remove all arrows from the old and new hash table
+        oldHashArray.removeClass(true, "jsavarrow");
+        newHashArray.removeClass(true, "jsavarrow");
       };
     }
     clickHandler.reset();
@@ -82,6 +85,7 @@
     oldHashArray.layout();
     clickHandler.addArray(oldHashArray, {
       onSelect: onSelect,
+      beforeDrop: beforeDrop,
       onDrop: onDrop
     });
 
@@ -103,6 +107,7 @@
     newHashArray.layout();
     clickHandler.addArray(newHashArray, {
       onSelect: onSelect,
+      beforeDrop: beforeDrop,
       onDrop: onDrop
     });
 
@@ -121,7 +126,11 @@
     $newLabel.insertBefore(newHashArray.element);
     $stackLabel.insertBefore(insertStack.element).hide();
 
-    av.clearumsg();
+    
+    // show the used probing type
+    av.umsg(interpret("av_probing") + " <strong style='color: #c00'>{prob}</strong>", {fill: {
+      prob: interpret("av_" + probing)
+    }});
 
     return newHashArray;
   }
@@ -149,16 +158,22 @@
 
     jsav.displayInit();
 
-    var i;
+    var i, ind;
 
     // rehash the values from the old table
     for (i = 0; i < msOldHash.size(); i++) {
       if (msOldHash.value(i) !== "") {
         var t = 0;
-        while (msNewHash.value(hashFunction[probing](msOldHash.value(i), t, newSize))) {
+        while (msNewHash.value(ind = hashFunction[probing](msOldHash.value(i), t, newSize))) {
+          // add arrows on top of 
+          msNewHash.addClass(ind, "jsavarrow");
+          jsav.gradeableStep();
           t++;
         }
-        jsav.effects.moveValue(msOldHash, i, msNewHash, hashFunction[probing](msOldHash.value(i), t, newSize));
+        // move the value from the old hash table to new hash table
+        jsav.effects.moveValue(msOldHash, i, msNewHash, ind);
+        // remove all arrows
+        msNewHash.removeClass(true, "jsavarrow");
         jsav.gradeableStep();
       }
     }
@@ -170,12 +185,16 @@
     // insert the values in the stack to the new hash table
     while (msStack.size()) {
       i = 0;
-      while (msNewHash.value(hashFunction[probing](msStack.first().value(), i, newSize))) {
+      while (msNewHash.value(ind = hashFunction[probing](msStack.first().value(), i, newSize))) {
+        msNewHash.addClass(ind, "jsavarrow");
+        jsav.gradeableStep();
         i++;
       }
-      jsav.effects.moveValue(msStack.first(), msNewHash, hashFunction[probing](msStack.first().value(), i, newSize));
+      jsav.effects.moveValue(msStack.first(), msNewHash, ind);
       msStack.removeFirst();
       msStack.layout();
+      // remove all arrows
+      msNewHash.removeClass(true, "jsavarrow");
       jsav.gradeableStep();
     }
 
@@ -187,7 +206,7 @@
   exercise.reset();
 
 
-  // onSelect functions
+  // onSelect function
   function onSelect(index) {
     var val;
     if (typeof index === "number") {
@@ -202,11 +221,21 @@
     }});
   }
 
-  // onDrop function for the hash tables
+  // beforeDrop function
+  function beforeDrop(index) {
+    if (this.value(index) !== "") {
+      this.addClass(index, "jsavarrow");
+      av.gradeableStep();
+      return false;
+    }
+  }
+
+  // onDrop function
   function onDrop(index) {
+    // clear hash function from the message
     av.clearumsg();
+    // hide old hash table and show the insert stack if the old hash table becomes empty
     if (oldHashArray.isEmpty() && oldHashArray.isVisible()) {
-      // hide old hash table and show the insert stack
       var oldfx = $.fx.off;
       $.fx.off = true;
       hideLabel($oldLabel);
@@ -215,6 +244,9 @@
       showLabel($stackLabel);
       insertStack.show();
     }
+    // remove all arrows from the old and new hash table
+    oldHashArray.removeClass(true, "jsavarrow");
+    newHashArray.removeClass(true, "jsavarrow");
   }
 
   // functions for hiding and showing the labels (jQuery objects)

@@ -3,18 +3,24 @@
     "en": {
       ".exerciseTitle": "Rehashing",
       ".instructLabel": "Instructions:",
-      ".instructions": "The hash table is too full to allow new values to be inserted. In this exercise your task is to first rehash the hash table. You will do this by moving the values from the old hash table to the new hash table. When the hash table has been rehashed, you need to insert some new values to the hash table.",
+      ".instructions": "In this exercise your task is to first rehash the hash table, and then, insert a few keys to the hash table. When the hash table has been rehashed, a stack will appear with the keys that need to be inserted.<br><br>When rehashing and inserting keys, first select the key to be rehashed or inserted, then <strong>mark all the occuring collissions in the correct order before moving the key to its correct location.</strong> The hash function will be shown each time a key is selected. The used type of probing is given in the exercise.",
       "av_old_hash": "Old Hash Table",
       "av_new_hash": "New Hash Table",
-      "av_insert": "Insert"
+      "av_insert": "Insert",
+      "av_probing": "Probe sequence:",
+      "av_linear": "linear probing",
+      "av_quadratic": "quadratic probing"
     },
     "fi": {
       ".exerciseTitle": "Uudelleenhajautus",
       ".instructLabel": "Ohjeet:",
-      ".instructions": "Uudelleenhajauta.",
+      ".instructions": "Uudelleenhajauta ensin annetut avaimet vanhasta hajautustaulukosta alimpana olevaan uuteen hajautustauluun. Lisää tämän jälkeen jonossa olevat avaimet uuteen hajautustauluun.<br><br>Uudelleenhajautettavan tai lisättävän avaimen valinnan jälkeen <strong>klikkaa kaikkia törmäyspaikkoja oikeassa järjestyksessä ennen kuin siirrät avaimen haluttuun paikkaan.</strong> Hajautusfunktio ja siitä saatu arvo näytetään jokaisen avaimen valinnan yhteydessä. Käytetty kokeilujono kerrotaan tehtävän alussa.",
       "av_old_hash": "Vanha hajautustaulukko",
       "av_new_hash": "Uusi hajautustaulukko",
-      "av_insert": "Lisää"
+      "av_insert": "Lisää",
+      "av_probing": "Kokeilujono:",
+      "av_linear": "lineaarinen kokeilu",
+      "av_quadratic": "neliöinen kokeilu"
     }
   },
   "code" : {}
