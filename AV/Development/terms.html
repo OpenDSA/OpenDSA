@@ -4,28 +4,31 @@
 <head>
   <title>Terms</title>
   <script>
-  function store(id)
+ /* function store(id)
   {
     var node = document.getElementById(id).innerHTML
     localStorage.setItem("concept", node);
     javascript:location.href='conceptMap.html'
-  }
+  } */
   </script>
 </head>
 
 <body>
 
-  
+      <script type="text/javascript" src="conceptMap.js"></script>
+
 <div>
     <ul>
-    <li id="traversal" onclick="store(this.id)">Traversals</li>
-    <li id="graph" onclick="store(this.id)">Graph</li>
+    <li id="traversal" onclick="store(this.id)">traversal</li>
+    <li id="graph" onclick="store(this.id)">graph</li>
+    <li id="vector" onclick="store(this.id)">vector</li>
+    <li id="enumerate" onclick="store(this.id)">enumerate</li>
     <li id="shortestpath" onclick="store(this.id)">Shortest Paths</li>
     <li id="topsort" onclick="store(this.id)">Topological Sort</li>
     <li id="mcst" onclick="store(this.id)">Minimal Cost Spanning Tree</li>
     <li id="adjarray" onclick="store(this.id)">Adjacency array</li>
     <li id="adjlist" onclick="store(this.id)">Adjacency list</li>
-    <li id="edges" onclick="store(this.id)">Edges</li>
+    <li id="edge" onclick="store(this.id)">edges</li>
     <li id="vertices" onclick="store(this.id)">vertices</li>
     <li id="bfs" onclick="store(this.id)">Breadth First Search</li>
     <li id="dfs" onclick="store(this.id)">Depth First Search</li>
