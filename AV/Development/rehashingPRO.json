@@ -3,13 +3,15 @@
     "en": {
       ".exerciseTitle": "Rehashing",
       ".instructLabel": "Instructions:",
-      ".instructions": "In this exercise your task is to first rehash the hash table, and then, insert a few keys to the hash table. When the hash table has been rehashed, a stack will appear with the keys that need to be inserted.<br><br>When rehashing and inserting keys, first select the key to be rehashed or inserted, then <strong>mark all the occuring collissions in the correct order before moving the key to its correct location.</strong> The hash function will be shown each time a key is selected. The used type of probing is given in the exercise.",
+      ".instructions": "In this exercise your task is to first rehash the hash table, and then, insert a few keys to the hash table. When the hash table has been rehashed, a stack will appear with the keys that need to be inserted.<br><br>When rehashing and inserting keys, first select the key to be rehashed or inserted, then <strong>mark all the occuring collisions in the correct order before moving the key to its correct location.</strong> The hash function will be shown each time a key is selected. The used type of probing is given in the exercise.",
       "av_old_hash": "Old Hash Table",
       "av_new_hash": "New Hash Table",
       "av_insert": "Insert",
       "av_probing": "Probe sequence:",
       "av_linear": "linear probing",
-      "av_quadratic": "quadratic probing"
+      "av_quadratic": "quadratic probing",
+      "av_ms_collision": "Collision occured at index {index}",
+      "av_ms_insert": "Key inserted at index {index}"
     },
     "fi": {
       ".exerciseTitle": "Uudelleenhajautus",
@@ -20,7 +22,9 @@
       "av_insert": "Lisää",
       "av_probing": "Kokeilujono:",
       "av_linear": "lineaarinen kokeilu",
-      "av_quadratic": "neliöinen kokeilu"
+      "av_quadratic": "neliöllinen kokeilu",
+      "av_ms_collision": "Törmäys indeksissä {index}",
+      "av_ms_insert": "Avain siirretty indeksiin {index}"
     }
   },
   "code" : {}

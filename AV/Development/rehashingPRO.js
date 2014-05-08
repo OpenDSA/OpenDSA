@@ -30,6 +30,15 @@
     }
   };
 
+  var hashFunctionString = {
+    linear: function (key, i, size, hideAns) {
+      return "<em>h(" + key + ", " + i + ") = (" + key + " + " + i + ") mod " + size + (hideAns ? "" : " = " + hashFunction.linear(key, i, size)) + "</em>";
+    },
+    quadratic: function (key, i, size, hideAns) {
+      return "<em>h(" + key + ", " + i + ") = (" + key + " + " + i + "<sup>2</sup>) mod " + size + (hideAns ? "" : " = " + hashFunction.quadratic(key, i, size)) + "</em>";
+    }
+  };
+
   function initialize() {
 
     // get interpreter function for the selected language
@@ -45,6 +54,9 @@
       pseudo.show();
     }
 
+    var probeMessage = interpret("av_probing") + " <strong style='color: #c00'>" +
+      interpret("av_" + probing) + "</strong><br>" + hashFunctionString[probing]("k", "i", newSize, true);
+
     // set up click handler
     if (typeof clickHandler === "undefined") {
       clickHandler = new ClickHandler(av, exercise, {selectedClass: "selected"});
@@ -52,13 +64,14 @@
       var origdeselect = clickHandler.deselect;
       clickHandler.deselect = function () {
         origdeselect.call(this);
-        av.clearumsg();
+        av.umsg(probeMessage);
         // remove all arrows from the old and new hash table
         oldHashArray.removeClass(true, "jsavarrow");
         newHashArray.removeClass(true, "jsavarrow");
       };
     }
     clickHandler.reset();
+
 
     // clear old structures
     if (oldHashArray) {
@@ -77,8 +90,11 @@
     av.container.find(".exerciseLabel").remove();
     
 
+    // generate a collision index
+    var collisionIndex = Math.floor(Math.random() * newSize);
+
     // generate (pseudo) random input
-    initialHash = generateHashValues(oldSize, newSize);
+    initialHash = generateHashValues(oldSize, newSize, collisionIndex);
 
     // create array
     oldHashArray = av.ds.array(initialHash, {indexed: true, center: true, autoresize: false});
@@ -89,8 +105,13 @@
       onDrop: onDrop
     });
 
-    // create insert stack with random input and hide it
+    // generate input with at least one collision
     initialInsert = JSAV.utils.rand.numKeys(100, 900, Math.floor(oldSize / 2));
+    var randomIndex = Math.floor(Math.random() * initialInsert.length);
+    var collisionKey = Math.floor(JSAV.utils.rand.numKey(100, 900) / newSize) * newSize + collisionIndex;
+    initialInsert[randomIndex] = collisionKey;
+
+    // create insert stack with random input and hide it
     insertStack = av.ds.stack(initialInsert, {center: true});
     insertStack.css("min-height", oldHashArray.css("height"));
     insertStack.layout();
@@ -128,9 +149,7 @@
 
     
     // show the used probing type
-    av.umsg(interpret("av_probing") + " <strong style='color: #c00'>{prob}</strong>", {fill: {
-      prob: interpret("av_" + probing)
-    }});
+    av.umsg(probeMessage);
 
     return newHashArray;
   }
@@ -163,15 +182,19 @@
     // rehash the values from the old table
     for (i = 0; i < msOldHash.size(); i++) {
       if (msOldHash.value(i) !== "") {
+        msOldHash.addClass(i, "selected");
         var t = 0;
         while (msNewHash.value(ind = hashFunction[probing](msOldHash.value(i), t, newSize))) {
+          jsav.umsg(hashFunctionString[probing](msOldHash.value(i), t, newSize) + "<br>" + interpret("av_ms_collision"), {fill: {index: ind}});
           // add arrows on top of 
           msNewHash.addClass(ind, "jsavarrow");
           jsav.gradeableStep();
           t++;
         }
+        jsav.umsg(hashFunctionString[probing](msOldHash.value(i), t, newSize) + "<br>" + interpret("av_ms_insert"), {fill: {index: ind}});
         // move the value from the old hash table to new hash table
         jsav.effects.moveValue(msOldHash, i, msNewHash, ind);
+        msOldHash.removeClass(i, "selected");
         // remove all arrows
         msNewHash.removeClass(true, "jsavarrow");
         jsav.gradeableStep();
@@ -184,12 +207,15 @@
 
     // insert the values in the stack to the new hash table
     while (msStack.size()) {
+      msStack.first().addClass("selected");
       i = 0;
       while (msNewHash.value(ind = hashFunction[probing](msStack.first().value(), i, newSize))) {
+        jsav.umsg(hashFunctionString[probing](msStack.first().value(), i, newSize) + "<br>" + interpret("av_ms_collision"), {fill: {index: ind}});
         msNewHash.addClass(ind, "jsavarrow");
         jsav.gradeableStep();
         i++;
       }
+      jsav.umsg(hashFunctionString[probing](msStack.first().value(), i, newSize) + "<br>" + interpret("av_ms_insert"), {fill: {index: ind}});
       jsav.effects.moveValue(msStack.first(), msNewHash, ind);
       msStack.removeFirst();
       msStack.layout();
@@ -268,33 +294,22 @@
   })();
 
   // generate values for the old hash table
-  function generateHashValues(oldSize, newSize) {
+  function generateHashValues(oldSize, newSize, collisionIndex) {
     // size of the generated values
     var size = Math.floor(oldSize / 2);
-    // a number between 0 and newSize, newSize excluded
-    // used to create collissions when rehashing
-    var num = Math.floor(Math.random() * newSize);
 
     var values = [],
       result = new Array(oldSize),
       temp, i;
 
     for (i = 0; i < size; i++) {
-      if (i < Math.min(3, Math.ceil(size / 2))) {
-        temp = Math.floor(JSAV.utils.rand.numKey(100, 900) / newSize) * newSize + num;
+      if (typeof collisionIndex !== "undefined" && i < Math.min(3, Math.ceil(size / 2))) {
+        temp = Math.floor(JSAV.utils.rand.numKey(100, 900) / newSize) * newSize + collisionIndex;
       } else {
         temp = JSAV.utils.rand.numKey(100, 900);
       }
       values.push(temp);
     }
-
-    // // shuffle the values
-    // for (i = 0; i < size; i++) {
-    //   var j = JSAV.utils.rand.numKey(0, size);
-    //   temp = values[i];
-    //   values[i] = values[j];
-    //   values[j] = temp;
-    // }
 
     for (i = 0; i < size; i++) {
       var t = 0;
