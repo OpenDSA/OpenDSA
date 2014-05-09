@@ -1,4 +1,5 @@
-﻿(function($) {
+﻿"use strict";
+(function($) {
   var levels = 6,
       nodeNum = Math.pow(2, levels) - 1,
       keyToFind,
@@ -11,7 +12,7 @@
   // auxillary function for creating a perfect binary tree
   // inserts the values in the initialData[] array in level order
   function calculateInitialData(level, min, max, levelsInTotal, arrayIndex) {
-    diff = max - min;
+    var diff = max - min;
     var value = JSAV.utils.rand.numKey(min + Math.floor(diff / 3), max - Math.floor(diff / 3))
     initialData[arrayIndex - 1] = value;
     if (level < levelsInTotal) {
@@ -38,7 +39,7 @@
     if (jsavBinaryTree) {
       jsavBinaryTree.clear();
     }
-    jsavBinaryTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
+    jsavBinaryTree = av.ds.binarytree({center: true, visible: true, nodegap: 15});
     jsavBinaryTree.root("?");
     jsavBinaryTree.root().addClass("emptynode");
     jsavBinaryTree.click(clickHandler);
@@ -49,12 +50,15 @@
     $key.html("<li>" + keyToFind + "</li>");
     av.ds.array($key, {indexed: false}).css(0, {"background-color": "#ddf"}).toggleArrow(0);
 
+    av.forward();
+    av._undo = [];
+
     return jsavBinaryTree;
   }
 
   function modelSolution(jsav) {
     jsav.ds.array([keyToFind], {indexed: false}).css(0, {"background-color": "#ddf"});
-    var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 15});
+    var modelTree = jsav.ds.binarytree({center: true, visible: true, nodegap: 15});
     jsav._undo = [];
 
     modelTree.root("?");
@@ -107,7 +111,7 @@
   }
 
   var exercise = av.exercise(modelSolution, initialize,
-    { "css": "background-color" },
+    [{ "css": "background-color" }, {}],
     { controls: $(".jsavexercisecontrols") });
   exercise.reset();
 }(jQuery));

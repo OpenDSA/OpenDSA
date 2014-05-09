@@ -1,15 +1,15 @@
 {
   "title": "Recursion Tutor",
   "build_dir": "Books",
-  "code_dir": "SourceCode/Processing",
+  "code_dir": "SourceCode/",
+  "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
-  "build_ODSA": true,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
-  "glob_jsav_exer_options": {
-    "debug": "true"
+  "glob_exer_options": {
+    "JXOP-debug": "true"
   },
   "chapters": {  
     "Recursion Skeleton": {

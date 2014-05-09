@@ -27,7 +27,7 @@ NAME
 SYNOPSIS::
 
     .. avembed:: {relative_path} {type}
-       [:jsav_exer_opt: {string}]
+       [:exer_opts: {string}]
        [:long_name: {string}]
        [:module: {string}]
        [:points: {number}]
@@ -46,9 +46,9 @@ DESCRIPTION
         * **ss** - slideshows
         * **dgm** - JSAV-based diagram
 
-    ``:jsav_exer_opt: {string}``
+    ``:exer_opts: {string}``
 
-      A URL-encoded string of grading options for JSAV exercises.
+      A URL-encoded string of configuration options to pass to exercises.
       **Added automatically by the configuration process, do NOT add manually.**
 
     ``:long_name: {string}``
@@ -60,7 +60,7 @@ DESCRIPTION
 
       The name of the module on which the AV is embedded.
       **Added automatically by the configuration process, do NOT add manually.**
-      
+
     ``:points: {number}``
 
       Number of points this activity is worth.
@@ -132,8 +132,8 @@ SYNOPSIS::
 DESCRIPTION
     ``.. codeinclude:: {relative_path}``
 
-      Include the contents of the file located at
-      ``{relative_path}``.
+      Include the contents of the file located at ``{relative_path}``.  If the path is relative to ``code_dir``, that specific file will be loaded.
+      However, if the path is relative to a code language directory in ``code_dir``, the directive will attempt to load the file in all the languages (specified in ``code_lang``) in a tabbed display if ``tabbed_codeinc`` is ``True`` and only the language with highest precedence if ``tabbed_codeinc`` is ``False``.  Convention dictates that the file extension be omitted when using the second option, however, the directive will automatically strip the file extension if one is provided.
 
     ``:tag: {my_tag}``
 
@@ -153,6 +153,10 @@ DESCRIPTION
 
          /* *** ODSATag: my_tag *** */
          /* *** ODSAendTag: my_tag *** */
+
+    ``:lang: {code_language}``
+
+      Specifies the language of the code to be loaded (overrides multiple language loading).
 
 NOTES
     The ``codeinclude`` directive closely matches the standard ReST
@@ -186,8 +190,8 @@ DESCRIPTION
 
       Create a container for an inline AV with the given ID and type.
       If the type is ``ss`` a slideshow will be created and if it is
-      ``dgm`` a diagram will be created. inlineav diagrams behave like 
-      typicall reStructuredText figures. Cross reference target and 
+      ``dgm`` a diagram will be created. inlineav diagrams behave like
+      typicall reStructuredText figures. Cross reference target and
       caption are declared using the standard syntax.
 
       ``<type>`` **is automatically appended to the inlineav directive
@@ -255,9 +259,9 @@ NOTES
     The ODSA preprocessor creates a table of all referenced objects
     with numbers and writes it into a file that is read by the ``numref``
     role.
-    When referencing equation (declared with ``math`` directive), 'equation-' 
+    When referencing equation (declared with ``math`` directive), 'equation-'
     need to be added in front of the label to work, eg to reference the equation with label 'sum2' you write
-    ``:numref:`<equation-sum2>``` 
+    ``:numref:`<equation-sum2>```
 
 
 .. _chap:
@@ -266,7 +270,7 @@ chap/numchap
 -------------
 NAME
     chap/numchap - adds a reference to the first (introduction) module
-    of a chapter. 
+    of a chapter.
 
 SYNOPSIS::
 
@@ -285,7 +289,7 @@ DESCRIPTION
     for a link to the first module of the indicated chapter.
 
     ``{chapter_name}``
-  
+
     The name of the chapter. It should be identical (case sensitive)
     to the one specified in the json configuration file.
 
@@ -418,7 +422,7 @@ DESCRIPTION
     It allows you to specify the positioning of figure caption on the page
 
     ``:capalign: left|right|center|justify|inherit``
-      The alignment of the caption on the page.  
+      The alignment of the caption on the page.
 
 NOTES
     The directive closely matches the standard ReST ``figure`` directive. The only addition
@@ -432,13 +436,13 @@ NAME
 
 SYNOPSIS::
 
-    .. odsatab:: 
+    .. odsatab::
        :capalign: left|right|center|justify|inherit
        :align: left|right|center
 
 DESCRIPTION
     ``.. odsatab::``
-    The directive allows the user to create tables using ``math`` directives. The directive numbers tables and allows numbered cross refences. 
+    The directive allows the user to create tables using ``math`` directives. The directive numbers tables and allows numbered cross refences.
     It allows users to specify the positioning of the table and the table caption on the page
 
     ``:capalign: left|right|center|justify|inherit``
@@ -451,6 +455,13 @@ NOTES
 
 
 
+odsatoctree
+-----------
+
+Specialized version Sphinx ``toctree`` directive.
+It is used when a chapter has the optional ``hidden`` field to ``true``.
+The Modules in the chapter will not be visible in the table of content.
+**It is added automatically by the configuration process, do NOT add manually.**
 
 topic (special case)
 --------------------
@@ -470,7 +481,7 @@ EXAMPLE::
     .. topic:: Example
 
     This is our first example
-     
+
 
     (2) to reference the example
-    See Example :num: `Example #example1`. 
+    See Example :num: `Example #example1`.

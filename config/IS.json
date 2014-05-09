@@ -1,15 +1,15 @@
 {
   "title": "Test",
   "build_dir": "Books",
-  "code_dir": "SourceCode/Processing",
+  "code_dir": "SourceCode/",
+  "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
-  "build_ODSA": true,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
-  "glob_jsav_exer_options": {
-    "debug": "true"
+  "glob_exer_options": {
+    "JXOP-debug": "true"
   },
   "chapters": {
     "Testing": {
@@ -17,19 +17,14 @@
         "long_name": "Bintree",
         "exercises": {}
       },
-      "IS/Dynamic": {
-        "long_name": "Dynamic",
-        "exercises": {}
-      },
-      "IS/SequentialFit": {
-        "long_name": "Sequential Fit",
+      "IS/FirstFit": {
+        "long_name": "First Fit",
         "exercises": {}
       },
       "IS/TwoThreeTree.rst": {
         "long_name": "2-3 Trees",
         "exercises": {}
       },
-
       "IS/SortedSearch.rst": {
         "long_name": "Search in Sorted Arrays",
         "exercises": {}
@@ -38,17 +33,55 @@
         "long_name": "Buffer Pool",
         "exercises": {}
       },
-      "IS/Diskdrive": {
-	     "long_name": "Disk Drive",
-	     "exercises": {}
-      },
-       "IS/HuffProof.rst": {
+      "IS/Huffman": {
         "long_name": "Huffman Coding Trees",
+        "exercises": {
+          "huffmanCON1": {
+            "long_name": "Huffman Coding Tree Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "HuffmanCoding": {
+            "long_name": "Huffman Coding Tree Visualization",
+            "required": true,
+            "points": 0.0,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+        }
+      },
+       "IS/TreeTrie": {
+        "long_name": "Trees versus Tries",
         "exercises": {}
       },
-      "IS/SetSearch": {
-        "long_name": "Set Search",
+      "IS/LinearIndexing.rst": {
+          "long_name": "LinearIndexing",
+          "exercises": {}
+      },
+      "IS/TreeIndexing.rst": {
+        "long_name": "Tree Indexing",
         "exercises": {}
+      },
+      "IS/SelfOrg": {
+        "long_name": "Self Organizing Lists",
+        "exercises": {}
+      },
+      "IS/Reduction.rst": {
+        "long_name": "Reductions",
+        "exercises": {}
+      },
+      "IS/Archie": {
+        "long_name": "Insertion Sort Optimization",
+        "exercises": {
+          "insertionSortWithoutSwapPRO": {
+            "long_name": "Insertion Sort Without Swap Exercise",
+            "required": true,
+            "points": 1.0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
       }
     },
     "Appendix": {

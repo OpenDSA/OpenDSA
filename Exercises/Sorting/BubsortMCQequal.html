@@ -19,10 +19,12 @@
 	<li><var><code>\Theta(\log n)</code></var></li>
 	<li><var><code>\Theta(n \log n)</code></var></li>	 	 
       </ul>
-	  <div class="hints">
-	   <p>Each test in the inner for loop will fail because the
-	   value at position <code>i</code> is never less than the
-	   value at position <code>i-1</code>.</p>
+      <div class="hints">
+	<p>Each comparison test in the inner for loop will fail
+           because the value at position <code>i</code> is never less
+           than the value at position <code>i-1</code>.</p>
+        <p>However, this observation does not affect the number of
+           comparisons to be made, it only affects the number of swaps</p>
 	   </div>
     </div> 	  
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2012 Eric Fouh 
+# Copyright (C) 2012 Eric Fouh
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the MIT License as published by
@@ -12,7 +12,7 @@
 #
 #
 
-__author__ = 'efouh'
+__author__ = 'breakid, efouh'
 
 from docutils import nodes
 from docutils.parsers.rst import directives
@@ -20,160 +20,269 @@ from docutils.parsers.rst import Directive
 from sphinx import addnodes
 from sphinx.util import parselinenos
 from sphinx.util.nodes import set_source_info
-import random
-import os, sys 
-import re
+import json
+import collections
+import os, sys
 import codecs
 sys.path.append(os.path.abspath('./source'))
-import conf  
-from xml.dom.minidom import parse, parseString
-from string import whitespace as ws
+import conf
 
 
 def setup(app):
-    app.add_directive('codeinclude',codeinclude)
-
+  app.add_directive('codeinclude',codeinclude)
 
 
 class codeinclude(Directive):
-    """
-    The codeinclude directive simply match to ReST directive ``.. literalinclude``.
-    """
+  """
+  The codeinclude directive simply match to ReST directive ``.. literalinclude``.
+  """
 
-    has_content = False
-    required_arguments = 1
-    optional_arguments = 0
-    final_argument_whitespace = False
-    option_spec = {
-        'tag': directives.unchanged_required,
-    }
+  has_content = False
+  required_arguments = 1
+  optional_arguments = 1
+  final_argument_whitespace = False
+  option_spec = {
+    'tag': directives.unchanged_required,
+    'lang': directives.unchanged_required,
+  }
 
-    def run(self):
-        document = self.state.document
-        if not document.settings.file_insertion_enabled:
-            return [document.reporter.warning('File insertion disabled',
-                                              line=self.lineno)]
-        p = re.compile('(%s)' % ('|'.join([c for c in ws]))) 
-        env = document.settings.env
-        rel_filename = self.arguments[0]
-        filename = conf.sourcecode_path + self.arguments[0]
-        if 'pyobject' in self.options and 'lines' in self.options:
-            return [document.reporter.warning(
-                'Cannot use both "pyobject" and "lines" options',
-                line=self.lineno)]
+  def run(self):
+    document = self.state.document
 
-        encoding = self.options.get('encoding', env.config.source_encoding)
-        codec_info = codecs.lookup(encoding)
-        try:
-            f = codecs.StreamReaderWriter(open(filename, 'rb'),
-                    codec_info[2], codec_info[3], 'strict')
-            lines = f.readlines()
-            f.close()
-        except (IOError, OSError):
-            return [document.reporter.warning(
-                'Include file %r not found or reading it failed' % filename,
-                line=self.lineno)]
-        except UnicodeError:
-            return [document.reporter.warning(
-                'Encoding %r used for reading included file %r seems to '
-                'be wrong, try giving an :encoding: option' %
-                (encoding, filename))]
+    if not document.settings.file_insertion_enabled:
+      return [document.reporter.warning('File insertion disabled',
+                        line=self.lineno)]
 
-        objectname = self.options.get('pyobject')
-        if objectname is not None:
-            from sphinx.pycode import ModuleAnalyzer
-            analyzer = ModuleAnalyzer.for_file(filename, '')
-            tags = analyzer.find_tags()
-            if objectname not in tags:
-                return [document.reporter.warning(
-                    'Object named %r not found in include file %r' %
-                    (objectname, filename), line=self.lineno)]
+    if 'pyobject' in self.options and 'lines' in self.options:
+      return [document.reporter.warning(
+        'Cannot use both "pyobject" and "lines" options',
+        line=self.lineno)]
+
+    rel_filename = self.arguments[0]
+    filename = conf.sourcecode_path + rel_filename
+    file_found = False
+    code_nodes = []
+
+    # If the codeinclude is given the full path to a specific file load that file rather than attempting to use multiple languages
+    if os.path.isfile(filename):
+      # Parse the code language from the relative filename
+      path_components = rel_filename.split('/')
+      lang = path_components[0] if len(path_components) > 0 and os.path.isdir(path_components[0]) else 'guess'
+
+      code_nodes.append(self.create_node(filename, rel_filename, lang))
+      file_found = True
+    else:
+      # Search for the code in multiple different languages
+      # Remove the extension from the file, if it exists
+      rel_path = os.path.splitext(rel_filename)[0]
+      html_strs = []
+      tab_id = '%s_code' % os.path.basename(rel_path)
+      tab_header = '<div id="%s"><ul>' % tab_id
+
+      # Load the code_lang object from conf.py and maintain the order so that the preferred languages and extensions come first
+      code_lang = json.loads(conf.code_lang, object_pairs_hook=collections.OrderedDict)
+
+      # Loop through each language and associated extension (in order)
+      for lang in code_lang:
+        # If a specific language was provided as a parameter, set lang to the language provided before looping through extensions
+        if 'lang' in self.options:
+          lang = self.options['lang']
+
+        for ext in code_lang[lang]:
+          # Craft the filename given the code_dir, code_lang, rel_path (with any existing extension stripped), and a file extension
+          filename = '%s%s/%s.%s' % (conf.sourcecode_path, lang, rel_path, ext)
+
+          if os.path.isfile(filename):
+            # Append a list element with a link which will allow switching between the tabs
+            block_id = '_'.join([tab_id, lang.replace('+', 'p')])
+            tab_header += '<li><a href="#%s">%s</a></li>' % (block_id, lang.title())
+
+            if len(html_strs) == 0:
+              html_strs.append('<div id="%s">' % block_id)
             else:
-                lines = lines[tags[objectname][1]-1 : tags[objectname][2]-1]
+              html_strs[-1] += '<div id="%s">' % block_id
 
-        linespec = self.options.get('lines')
-        if linespec is not None:
-            try:
-                linelist = parselinenos(linespec, len(lines))
-            except ValueError, err:
-                return [document.reporter.warning(str(err), line=self.lineno)]
-            # just ignore nonexisting lines
-            nlines = len(lines)
-            lines = [lines[i] for i in linelist if i < nlines]
-            if not lines:
-                return [document.reporter.warning(
-                    'Line spec %r: no lines pulled from include file %r' %
-                    (linespec, filename), line=self.lineno)]
+            html_strs.append('</div>')
 
-        linespec = self.options.get('emphasize-lines')
-        if linespec:
-            try:
-                hl_lines = [x+1 for x in parselinenos(linespec, len(lines))]
-            except ValueError, err:
-                return [document.reporter.warning(str(err), line=self.lineno)]
-        else:
-            hl_lines = None
+            code_nodes.append(self.create_node(filename, rel_filename, lang))
+            file_found = True
 
-        tag_       = self.options.get('tag')
-        tags = []
-        if tag_ is not None:
-            tag_       = tag_.replace(" ","")
-            tags       = tag_.split(',')
-        res        = []
-        prepend    = self.options.get('prepend')
-        append     = self.options.get('append')
-        for tag in tags:
-            startafter = '/* *** ODSATag: %s *** */'%tag 
-            endbefore  = '/* *** ODSAendTag: %s *** */'%tag 
-            if startafter is not None or endbefore is not None:
-                use = not tag    #startafter
-                tags_counter = 0
-                for line in lines:
-                    if not use and startafter and startafter in line:
-                        use = True
-                        tags_counter = tags_counter + 1
-                    elif use and endbefore and endbefore in line:
-                        use = False 
-                        tags_counter = tags_counter + 1
-                        break
-                    elif use and '/* *** ODSA' in line and startafter not in line:
-                        pass 
-                    elif use:
-                        res.append(line)
+            # Stop after finding one code file if tabbed code is not enabled or if we are only searching for a single language
+            if not conf.tabbed_codeinc or 'lang' in self.options:
+              break
 
-                if tags_counter == 0:
-                    return [document.reporter.warning(str("Tag not found. Make sure the tag in your module file matches the delimiter in the source code file."), line=self.lineno)]      
-                elif tags_counter == 1:
-                    return [document.reporter.warning(str("Begin or end tag missing. Please verify your source code file."), line=self.lineno)] 
-        if tag_ is None:
-            for line in lines:
-                if not line.startswith('/* *** ODSA'):
-                    res.append(line)
-        lines = res
-        if prepend:
-           lines.insert(0, prepend + '\n')
-        if append:
-           lines.append(append + '\n')
+        # If a file is found and tabbed code is not enabled or if the code language was specified by a parameter to the directive, break out of the loop
+        if (file_found and not conf.tabbed_codeinc) or 'lang' in self.options:
+          break
 
-        text = ''.join(lines)
-        if self.options.get('tab-width'):
-            text = text.expandtabs(self.options['tab-width'])
-        retnode = nodes.literal_block(text, text, source=filename)
-        set_source_info(self, retnode)
-        if self.options.get('language', ''):
-            retnode['language'] = self.options['language']
-        if 'linenos' in self.options:
-            retnode['linenos'] = True
-        if hl_lines is not None:
-            retnode['highlight_args'] = {'hl_lines': hl_lines}
-        env.note_dependency(rel_filename)
-        return [retnode]
+      # Print an error message if no file is found for any language
+      if not file_found:
+        return [document.reporter.warning(
+          'Include file %r not found for any language' % filename, line=self.lineno)]
 
+      # Append the rest of the HTML for the header of the tabbed container and the JavaScript necessary to create the tabs
+      if len(html_strs) > 0:
+        html_strs[0] = tab_header + '</ul>' + html_strs[0]
+        html_strs[-1] += '</div><script>$(function() {$( "#%s" ).tabs();});</script>' % tab_id
+
+    # If only one code block exists, print the code normally
+    if len(code_nodes) == 1:
+      return code_nodes
+
+    # If multiple code blocks exist, wrap each one in the HTML nodes that will form the tabbed container
+    node_list = []
+    node_num = 0
+
+    for html_str in html_strs:
+      node_list.append(nodes.raw('', html_str, format='html'))
+
+      if node_num < len(code_nodes):
+        node_list.append(code_nodes[node_num])
+        node_num += 1
+
+    return node_list
+
+
+  def create_node(self, filename, rel_filename, lang):
+    document = self.state.document
+    env = document.settings.env
+
+    # Read the contents of the file to include
+    encoding = self.options.get('encoding', env.config.source_encoding)
+    codec_info = codecs.lookup(encoding)
+
+    try:
+      f = codecs.StreamReaderWriter(open(filename, 'rb'),
+          codec_info[2], codec_info[3], 'strict')
+      lines = f.readlines()
+      f.close()
+    except (IOError, OSError):
+      return [document.reporter.warning(
+        'Include file %r not found or reading it failed' % filename,
+        line=self.lineno)]
+    except UnicodeError:
+      return [document.reporter.warning(
+        'Encoding %r used for reading included file %r seems to '
+        'be wrong, try giving an :encoding: option' %
+        (encoding, filename))]
+
+    objectname = self.options.get('pyobject')
+
+    if objectname is not None:
+      from sphinx.pycode import ModuleAnalyzer
+      analyzer = ModuleAnalyzer.for_file(filename, '')
+      tags = analyzer.find_tags()
+
+      if objectname not in tags:
+        return [document.reporter.warning(
+          'Object named %r not found in include file %r' %
+          (objectname, filename), line=self.lineno)]
+      else:
+        lines = lines[tags[objectname][1]-1 : tags[objectname][2]-1]
+
+    linespec = self.options.get('lines')
+    if linespec is not None:
+      try:
+        linelist = parselinenos(linespec, len(lines))
+      except ValueError, err:
+        return [document.reporter.warning(str(err), line=self.lineno)]
+
+      # just ignore nonexisting lines
+      nlines = len(lines)
+      lines = [lines[i] for i in linelist if i < nlines]
+
+      if not lines:
+        return [document.reporter.warning(
+          'Line spec %r: no lines pulled from include file %r' %
+          (linespec, filename), line=self.lineno)]
+
+    linespec = self.options.get('emphasize-lines')
+    if linespec:
+      try:
+        hl_lines = [x+1 for x in parselinenos(linespec, len(lines))]
+      except ValueError, err:
+        return [document.reporter.warning(str(err), line=self.lineno)]
+    else:
+      hl_lines = None
+
+    tag_ = self.options.get('tag')
+    tags = []
+    res  = []
+    prepend = self.options.get('prepend')
+    append  = self.options.get('append')
+
+    if tag_ is None:
+      for line in lines:
+        if not line.startswith('/* *** ODSA'):
+          res.append(line)
+    else:
+      tag_ = tag_.replace(" ","")
+      tags = tag_.split(',')
+
+      # Extract code snippets from the file based on named tag(s)
+      # i.e.
+      # /* *** ODSATag: [tag_name] *** */
+      # [code_to_be_displayed]
+      # /* *** ODSAendTag: [tag_name] *** */
+      for tag in tags:
+        startafter = '/* *** ODSATag: %s *** */' % tag
+        endbefore  = '/* *** ODSAendTag: %s *** */' % tag
+
+        if startafter is not None or endbefore is not None:
+          use = not tag  #startafter
+          tags_counter = 0
+          for line in lines:
+            if not use and startafter and startafter in line:
+              use = True
+              tags_counter = tags_counter + 1
+            elif use and endbefore and endbefore in line:
+              use = False
+              tags_counter = tags_counter + 1
+              break
+            elif use and '/* *** ODSA' in line and startafter not in line:
+              pass
+            elif use:
+              res.append(line)
+
+          if tags_counter == 0:
+            return [document.reporter.warning(str("Tag not found. Make sure the tag in your module file matches the delimiter in the source code file."), line=self.lineno)]
+          elif tags_counter == 1:
+            return [document.reporter.warning(str("Begin or end tag missing. Please verify your source code file."), line=self.lineno)]
+
+    lines = res
+    if prepend:
+       lines.insert(0, prepend + '\n')
+    if append:
+       lines.append(append + '\n')
+
+    text = ''.join(lines)
+
+    if self.options.get('tab-width'):
+      text = text.expandtabs(self.options['tab-width'])
+
+    retnode = nodes.literal_block(text, text, source=filename)
+    set_source_info(self, retnode)
+
+    # Set the highlighting language based on the language of the file that was actually loaded
+    lang = lang.lower()
+    # Pygments doesn't understand 'processing' so set the highlight language to 'java'
+    lang = 'java' if lang == 'processing' else lang
+    retnode['language'] = lang #self.options['language']
+
+    if 'linenos' in self.options:
+      retnode['linenos'] = True
+
+    if hl_lines is not None:
+      retnode['highlight_args'] = {'hl_lines': hl_lines}
+
+    env.note_dependency(rel_filename)
+    return retnode
 
 source = """\
 This is some text.
 
-.. codeinclude:: address 
+.. codeinclude:: address
+   :lang:
    :tag:
 
 
@@ -181,18 +290,13 @@ This is some more text.
 """
 
 if __name__ == '__main__':
-    from docutils.core import publish_parts
+  from docutils.core import publish_parts
 
-    directives.register_directive('codeinclude',codeinclude)
+  directives.register_directive('codeinclude',codeinclude)
 
-    doc_parts = publish_parts(source,
-            settings_overrides={'output_encoding': 'utf8',
-            'initial_header_level': 2},
-            writer_name="html")
+  doc_parts = publish_parts(source,
+      settings_overrides={'output_encoding': 'utf8',
+      'initial_header_level': 2},
+      writer_name="html")
 
-    print doc_parts['html_body']
-
-
-
-
- 
+  print doc_parts['html_body']

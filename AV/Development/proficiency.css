@@ -1,13 +1,7 @@
 .jsavlabel {
-  border: 1px solid #eca;
-  border-radius: 3px;
-  padding: 1px 3px;
-  background-color: #fe8;
-  color: #975;
-  position: absolute;
-  z-index: 101;
-  line-height: normal;
-  font-size: medium;
+  font-size: 16px;
+  font-family: "Times New Roman";
+  font-weight: bold;
 }
 .jsavtreenode.emptynode {
   border: 1px dashed #777 !important;
@@ -22,8 +16,8 @@
   background-color: #000;
   color: #fff;
 }
-.selected, .selected.jsavvalue, .jsavarray.jsavbararray .jsavvalue.selected {
-  font-size: 130%;
+.selected, .selected .jsavvalue, .jsavarray.jsavbararray .jsavindex.selected .jsavvalue {
+  font-size: 110%;
   background-color: #ddf;
 }
 .jsavtreenode.jsavredblacknode.rednode.selected {
@@ -35,11 +29,11 @@
 .jsavtreenode.jsavredblacknode.selected {
   box-shadow: 0px 0px 5px 10px #ddf;  
 }
-.greybg, .greybg.jsavvalue, .jsavarray.jsavbararray .jsavvalue.greybg {
+.greybg, .greybg.jsavvalue, .jsavarray.jsavbararray .jsavindex.greybg .jsavvalue {
   background-color: #eee;
 }
-.greenbg, .greenbg.jsavvalue, .jsavarray.jsavbararray .jsavvalue.greenbg {
-  background-color: #5f5;
+.greenbg, .greenbg.jsavvalue, .jsavarray.jsavbararray .jsavindex.greenbg .jsavvalue {
+  background-color: #3f5;
 }
 
 .jsavstack {

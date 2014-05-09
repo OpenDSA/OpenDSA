@@ -1,0 +1,315 @@
+
+var nodeIndex = 0;
+var nodes = new Array();
+var connections = new Array();
+var linking_phrase = new Array();
+var graph = new Array();
+var adjacents = new Array();
+var array = new Array();
+var list = new Array();
+
+
+function store(id)
+{
+    var node = document.getElementById(id).innerHTML
+    localStorage.setItem("concept", node);
+    console.log("store");
+    var simWindowFeatures = "height=600,width=1200";
+    var myRef = window.open("conceptMap.html", '', simWindowFeatures);
+
+ //   javascript:location.href='conceptMap.html'
+}
+
+function Parser() {
+
+  xmlhttp = new XMLHttpRequest();
+  console.log("parser ");
+    if(xmlhttp) {
+      xmlhttp.open("GET","Graphs.xml",false);
+      xmlhttp.send();
+      xmlDoc=xmlhttp.responseXML;
+  }
+
+  phrase = xmlDoc.getElementsByTagName('linking-phrase');
+    for(var c = 0; c < phrase.length; c++) {
+      id = phrase[c].getAttribute('id').toLowerCase();
+      label = phrase[c].getAttribute('label').toLowerCase();
+      linking_phrase.push(new Phrase(id, label));
+  }
+
+  //Connections between nodes
+  connection = xmlDoc.getElementsByTagName('connection');
+    for(var b = 0; b < connection.length; b++) {
+      id = connection[b].getAttribute('id').toLowerCase();
+      from_id = connection[b].getAttribute('from-id').toLowerCase();
+      to_id = connection[b].getAttribute('to-id').toLowerCase();
+      connections.push(new Connection(id, from_id, to_id));
+  }
+
+//Concepts or Nodes
+  concept = xmlDoc.getElementsByTagName('concept');
+  var id = 0;
+  var label = null;
+  for(var a = 0; a < concept.length; a++) {
+    id = concept[a].getAttribute('id').toLowerCase();
+    label = concept[a].getAttribute('label').toLowerCase();
+    nodes.push(new Node(id, label, null, null));
+  } 
+
+  for(var aa = 0; aa < concept.length; aa++) {
+    thisId = concept[aa].getAttribute('id').toLowerCase();
+    thisLabel = concept[aa].getAttribute('label').toLowerCase();
+    var startNode = new Array();
+    var parentId = getParent(thisId);
+    var parentLabel = getConceptLabel(parentId);
+ 
+    var incomingEdge = getIncomingEdge(thisId);
+    startNode.push(new Node(thisId, thisLabel, incomingEdge, parentLabel));
+    graph.push(startNode);
+  }
+}
+
+function buildGraph() {
+  var to_id = null;
+  var from_id = null;
+  var index = 0;
+  var fromNode = null;
+  var edgeLabel = null;
+  var parent_id = null;
+  var parent_node = null;
+
+  for(var d = 0; d < connections.length; d++) {
+    index = getNodeIndex(connections[d].from_id);
+    if(isNode(connections[d].from_id)) { 
+        
+      var adjacentNodes = graph[index];
+      from_id = connections[d].from_id;
+      to_id = connections[d].to_id;
+
+      for(var e = 0; e < connections.length; e++) {          
+        if(to_id === connections[e].from_id) {
+          toNode = getConceptLabel(connections[e].to_id);
+          edgeLabel = getEdgeLabel(to_id);
+          adjacentNodes.push(new Node(connections[e].to_id, toNode, edgeLabel, null));
+        }
+      }
+     // graph[index].push(adjacentNodes);
+    } 
+/* else {
+
+        var nodeList = graph[index];
+     
+        for(var r = 0; r < connections.length; r++) {
+     
+          if(to_id === connections[r].from_id) {
+            toNode = getConceptLabel(connections[r].to_id);
+            edgeLabel = getEdgeLabel(to_id);
+            nodeList.push(new Node(connections[r].to_id, toNode, edgeLabel)); 
+          }
+        }
+      } */
+    }
+  }
+
+function isInGraph(from_id) {
+  for(var h = 0; h < graph.length; h++) {
+    var list = graph[h];
+    if(list[0].id === from_id) {
+      nodeIndex = h;
+      return true;
+    }
+  }
+  return false; 
+}
+
+
+function getNodeIndex(id) {
+  for(var z = 0; z < graph.length; z++) {
+    var list = graph[z];
+    if(list[0].id === id) {
+      return z;
+    }
+  }
+  return null; 
+}
+
+function getConceptLabel(id) {
+  for(var i = 0; i < nodes.length; i++) {
+    if(nodes[i].id === id) {
+      return nodes[i].label;
+    }
+  }
+    return null;
+}
+
+function getParent(id) {
+  for(var u = 0; u < connections.length; u++) {
+    if(connections[u].to_id === id) {
+       var from_id = connections[u].from_id;
+       for(var v = 0; v < connections.length; v++) {
+        if(connections[v].to_id == from_id){
+          return connections[v].from_id;
+        }
+       }
+    }
+  }
+}
+
+function getEdgeLabel(id) {
+  for(var j = 0; j < linking_phrase.length; j++) {
+    if(linking_phrase[j].id === id) {
+      return linking_phrase[j].label;
+    }
+  }
+    return null;
+}
+
+
+function getIncomingEdge(id) {  
+  for(var bb = 0; bb < connections.length; bb++) {
+    
+    if(connections[bb].to_id === id) {
+      var label = getEdgeLabel(connections[bb].from_id);
+      return label;
+    }
+  }
+  return null;
+}
+
+function isNode(id) {
+  for(var k = 0; k < nodes.length; k++) {
+    if(nodes[k].id === id){
+      return true;
+    }
+  }
+  return false;
+}
+
+function Graph() {
+      this.numOfEdges = 0;
+      this._adjacencyLists = {};
+      this._nodeList={};
+}
+
+function Node(id, label, edge, parent) {
+      this.id = id;
+      this.label = label;
+      this.edge = edge;
+      this.parent = parent;
+}
+
+function Connection(id, from_id, to_id) {
+  this.id = id;
+  this.from_id = from_id; 
+  this.to_id = to_id;
+}
+
+function Phrase(id, label) {
+  this.id = id;
+  this.label = label;
+}
+
+function getText(term) {
+  
+  var frame = document.getElementById("info");
+  $.get( "../../RST/en/Glossary.rst", function( data ) {
+ // var allTextLines = data.split(/\r\n/);
+  myregexp = new RegExp(term + "\n", "gim");
+ // alert(myregexp);
+  var text = data.match(myregexp);
+  if(text != null) {
+      frame.contentWindow.document.write(term);
+  } else {
+   // frame.contentWindow.document.write("The term " + term + " is not in glossary");
+   alert("The term " + term  + " is not in the glossary");
+  }
+  //alert(text.length);  
+});
+} 
+
+function printGraph(concept) {
+
+  console.log("in print graph");
+  var frame = document.getElementById("info");
+  frame.contentWindow.document.close();
+
+  var oldEdge = "";
+  var edgeAsNode = null;
+  var toNode = null;
+  var fromNode = null;
+  var oldEdgeNodeLabel = "";
+  
+  var frameMsg;
+  jsav = new JSAV($('.avcontainer'));
+  g = jsav.ds.graph({width: 800, height: 500, layout: "automatic", directed: true});  
+  
+  for(var l = 0; l < graph.length; l++) {
+    var m = graph.length;
+    var list = graph[l];
+    frameMsg = list[0].label;
+
+    if(list[0].label === concept) {
+      console.log("in print graph for traversal " + list[0].label);
+      fromNode = g.addNode(list[0].label);
+      var parentNodeName = list[0].parent;
+      if(parentNodeName != null) {
+        var parentNode = g.addNode(parentNodeName);
+        var edgeNode = g.addNode(list[0].edge).css({"border-radius": "8px", "border-style":"none"});
+        g.addEdge(parentNode, edgeNode)
+        g.addEdge(edgeNode, fromNode);
+     //  g.addEdge(parentNode, fromNode, {"weight":list[0].edge});
+      }
+      for(var p = 1; p < list.length; p++) {
+        var newEdge = list[p].edge;
+        if(newEdge !== oldEdge) { //need to make a new edge node here
+          edgeAsNode = g.addNode(list[p].edge).css({"border-radius": "8px", "border-style":"none"});;
+          toNode = g.addNode(list[p].label);
+          g.addEdge(fromNode, edgeAsNode);
+          g.addEdge(edgeAsNode, toNode);
+        }
+        else {
+          toNode = g.addNode(list[p].label);
+          g.addEdge(edgeAsNode, toNode);
+
+        }
+      //  oldEdgeLabelAsNode = edgeLabelAsNode;
+        
+      //  g.addEdge(fromNode, toNode, {"weight": list[p].edge});
+         
+          oldEdge = list[p].edge;
+      }
+      g.layout();
+      // This will highlight and unhighlight if needed
+      /*  g.mouseenter(function() { this.highlight();}).click(function() { 
+          var label = this.value();
+          g.clear();
+          reprint(label);
+          }).mouseleave(function() { this.unhighlight();});
+      */
+      g.click(function() {
+        var label = this.value();
+        g.clear();
+        reprint(label);
+      });
+   }
+      
+    }
+
+   // frame.contentWindow.document.write(concept);
+  }
+
+
+function reprint(term) {
+  printGraph(term);
+  getText(term);
+}
+
+function runit(term) {
+  Parser();
+  buildGraph();
+  var term = localStorage.getItem("concept").toLowerCase(); 
+  printGraph(term); 
+  getText(term); 
+}
+
+

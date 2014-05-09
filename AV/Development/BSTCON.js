@@ -8,7 +8,7 @@
                        startAfter: "/* *** ODSATag: findhelp *** */",
                        endBefore: "/* *** ODSAendTag: findhelp *** */"});
 
-  var bt = jsav.ds.bintree({top: 10, left: 10, visible: true, nodegap: 15});
+  var bt = jsav.ds.binarytree({top: 10, left: 10, visible: true, nodegap: 15});
   bt.root(37);
   var rt = bt.root();
   rt.left(24);
@@ -110,7 +110,8 @@
                        startAfter: "/* *** ODSATag: inserthelp *** */",
                        endBefore: "/* *** ODSAendTag: inserthelp *** */"});
 
-  var bt = jsav.ds.bintree({visible: true, nodegap: 15});
+  //  var bt = jsav.ds.binarytree({top: 240, visible: true, nodegap: 15});
+  var bt = jsav.ds.binarytree({visible: true, nodegap: 15});
   bt.root(37);
   var rt = bt.root();
   rt.left(24);
@@ -122,8 +123,10 @@
   rt.right().left().left(40);
   rt.right().right(120);
   var newnode = rt.left().right().left(30);
+  newnode.css({"background-color": "#eed"});
   newnode.css({"color": "#eed"});
   newnode.css({"border-color": "#eed"});
+  newnode.css({"box-shadow": "2px 2px 2px rgba(120, 120, 120, 0.0)"});
   var parent = newnode.parent();
   var newedge = parent.edgeToLeft();
   newedge.hide();
@@ -201,8 +204,11 @@
   jsav.umsg("Check what rt is pointing to. This time it is null! So make a new node.");
   pseudo.unhighlight(0);
   pseudo.highlight(1);
+  newnode.show();
+  newnode.css({"background-color": "white"});
   newnode.css({"color": "red"});
   newnode.css({"border-color": "red"});
+  newnode.css({"box-shadow": "2px 2px 2px rgba(120, 120, 120, 0.5)"});
   newedge.hide();
   jsav.step();
 
@@ -258,13 +264,13 @@
                        startAfter: "/* *** ODSATag: deletemax *** */",
                        endBefore: "/* *** ODSAendTag: deletemax *** */"});
 
-  var bt = jsav.ds.bintree({top: 10, left: 40, visible: true, nodegap: 15});
+  var bt = jsav.ds.binarytree({top: 10, left: 40, visible: true, nodegap: 15});
 
   bt.root(10);
   var rt = bt.root();
   rt.left(5);
   rt.right(20);
-  rt.right().left(9);
+  rt.right().left(12);
   rt.right().left().right(15);
   bt.layout();
 
@@ -288,7 +294,7 @@
   pseudo.highlight(2);
   jsav.step();
 
-  jsav.umsg("Unwinding the recursion a level, we are back to the node with root 10, who has its right pointer changed to point to the result of its call to deletemax. This has the effect of setting it to point to the node with value 9.");
+  jsav.umsg("Unwinding the recursion a level, we are back to the node with root 10, who has its right pointer changed to point to the result of its call to deletemax. This has the effect of setting it to point to the node with value 12.");
   pseudo.unhighlight(2);
   pseudo.highlight(3);
   rt1.target(rt, {anchor: "left top"});
@@ -313,7 +319,7 @@
                        startAfter: "/* *** ODSATag: removehelp *** */",
                        endBefore: "/* *** ODSAendTag: removehelp *** */"});
 
-  var bt = jsav.ds.bintree({visible: true, nodegap: 15});
+  var bt = jsav.ds.binarytree({visible: true, nodegap: 15});
   bt.root(37);
   var rt = bt.root();
   rt.left(24);
@@ -504,7 +510,7 @@
   var rt2 = jsav.pointer("temp", rt.left().right(), {anchor: "right top", top: 0});
   jsav.step();
 
-  jsav.umsg("Now set the root to what was returned by getmax.");
+  jsav.umsg("Now set the root value to what was returned by getmax.");
   pseudo.unhighlight(10);
   pseudo.highlight(11);
   rt.value(32);
@@ -520,6 +526,7 @@
   temp.css({"stroke": "red"});
   temp1 = rt.edgeToLeft();
   temp1.css({"stroke": "red"});
+  rt2.hide();
   bt.layout();
   jsav.step();
 

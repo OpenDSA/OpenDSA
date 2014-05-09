@@ -1,11 +1,11 @@
 {
   "title": "OpenDSA: All Modules + TODO List",
   "build_dir": "Books",
-  "code_dir": "SourceCode/Processing",
+  "code_dir": "SourceCode/",
+  "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
-  "build_ODSA": true,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "chapters": {
@@ -56,7 +56,7 @@
       }
     },
     "Search": {
-      "Stubs/Searching": {
+      "Stubs/SearchIntro": {
         "long_name": "Search Chapter Introduction",
         "exercises": {}
       },
@@ -70,7 +70,7 @@
         "long_name": "Indexing Chapter Stub",
         "exercises": {}
       },
-      "Stubs/LinearIndex": {
+      "Stubs/LinearIndexing": {
         "long_name": "Linear Indexing",
         "exercises": {}
       },

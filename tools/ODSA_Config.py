@@ -1,6 +1,19 @@
 ﻿#! /usr/bin/python
 #
 # Given an OpenDSA config file as a parameter, this script ensures all required fields are present and no invalid options are present
+#   - Reads the configuration information from the specified JSON config file
+#   - Sets sensible defaults for optional configuration settings
+#     - Auto-detects the OpenDSA root directory location
+#   - Converts the OpenDSA root directory and specified code and output directories into Unix-style paths so that relative paths are calculated correctly
+#     - Handles absolute or relative paths for output and code directories (relative paths are rooted at the OpenDSA directory)
+#   - Performs validation
+#     - Ensures all required fields are present
+#     - Ensures all required or optional fields are configured properly
+#       - URLs fit the expected format
+#     - Ensures there are no additional fields other than the expected required or optional ones
+#       - Helps detect mis-spellings when config files are created by hand
+#     - Checks each chapter, module, and exercise to ensure the appropriate fields are present and configured properly
+
 import re
 import sys
 import os
@@ -10,9 +23,13 @@ from urlparse import urlparse
 
 error_count = 0
 
-required_fields = ['chapters', 'code_dir', 'module_origin', 'title']
+required_fields = ['chapters', 'code_lang', 'module_origin', 'title']
 
-optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'build_ODSA', 'exercise_origin', 'exercises_root_dir', 'glob_jsav_exer_options', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'theme', 'theme_dir']
+optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir']
+
+# Prints the given string to standard error
+def print_err(err_msg):
+  sys.stderr.write('%s\n' % err_msg)
 
 
 def process_path(path, abs_prefix):
@@ -67,15 +84,15 @@ def validate_origin(origin, origin_type):
 
   parsed = urlparse(origin)
   if parsed.scheme not in ['http', 'https']:
-    print 'ERROR: Invalid ' + origin_type + '_origin protocol, ' + parsed.scheme
+    print_err('ERROR: Invalid %s_origin protocol, %s' % (origin_type, parsed.scheme))
     error_count += 1
 
   if parsed.netloc == '':
-    print 'ERROR: Invalid ' + origin_type + '_origin domain, ' + parsed.netloc
+    print_err('ERROR: Invalid %s_origin domain, %s' % (origin_type, parsed.netloc))
     error_count += 1
 
   if parsed.path not in ['', '/']:
-    print 'ERROR: Invalid ' + origin_type + '_origin path' + parsed.path
+    print_err('ERROR: Invalid %s_origin path, %s' % (origin_type, parsed.path))
     error_count += 1
 
 
@@ -86,43 +103,43 @@ def validate_exercise(exer_name, exercise):
   # Ensure exercise name is <= the max length of the Exercise name field in the database
   max_length = 50
   if len(exer_name) > max_length:
-    print 'ERROR: ' + exer_name + ' is greater than ' + max_length + ' characters'
+    print_err('ERROR: %s is greater than %d characters' % (exer_name, max_length))
     error_count += 1
 
   required_fields = []
-  optional_fields = ['jsav_exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold']
+  optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold']
 
   # Ensure required fields are present
   for field in required_fields:
     if field not in exercise:
-      print 'ERROR: Exercise, ' + exer_name + ', is missing required field, ' + field
+      print_err('ERROR: Exercise, %s, is missing required field, %s' % (exer_name, field))
       error_count += 1
 
   # Ensure there are no invalid fields in the module
   for field in exercise:
     if field not in (required_fields + optional_fields):
-      print 'ERROR: Unknown field, ' + field + ', found in exercise ' + exer_name
+      print_err('ERROR: Unknown field, %s, found in exercise %s' % (field, exer_name))
       error_count += 1
 
 
 # Validate a module
-def validate_module(mod_name, module):
+def validate_module(mod_name, module, conf_data):
   """Validate a module object"""
   global error_count
 
   required_fields = ['exercises']
-  optional_fields = ['long_name', 'dispModComp']
+  optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options']
 
   # Ensure required fields are present
   for field in required_fields:
     if field not in module:
-      print 'ERROR: Module, ' + mod_name + ', is missing required field, ' + field
+      print_err('ERROR: Module, %s, is missing required field, %s' % (mod_name, field))
       error_count += 1
 
   # Ensure there are no invalid fields in the module
   for field in module:
     if field not in (required_fields + optional_fields):
-      print 'ERROR: Unknown field, ' + field + ', found in module ' + mod_name
+      print_err('ERROR: Unknown field, %s, found in module %s' % (field, mod_name))
       error_count += 1
 
   # Check validity of exercises
@@ -130,15 +147,32 @@ def validate_module(mod_name, module):
     for exer in module['exercises']:
       validate_exercise(exer, module['exercises'][exer])
 
+  if 'codeinclude' in module:
+    # Check whether every language specified for a codeinclude is supported in code_lang
+    for lang in module['codeinclude'].values():
+      if lang not in conf_data['code_lang']:
+        print('ERROR: Unsupported language, %s, referenced in codeinclude' % lang)
+        error_count += 1
+
+      lang_dir = conf_data['code_dir'] + lang
+
+      # Ensure the source code directory exists for the specified language
+      if not os.path.isdir(lang_dir):
+        print('ERROR: Language directory %s does not exist' % lang_dir)
+        error_count += 1
+
 
 # Validate a section
-def validate_section(section):
+def validate_section(section, conf_data):
   """Validate a chapter or section"""
   for subsect in section:
+    if 'hidden' in section[subsect]:
+      print_err('WARNING: Section %s will be hidden from the TOC' % subsect)
+      continue
     is_mod = 'exercises' in section[subsect]
 
     if section[subsect] == {}:
-      print 'WARNING: Section ' + subsect + ' is empty'
+      print_err('WARNING: Section %s is empty' % subsect)
       continue
     elif not is_mod:
       for field in section[subsect]:
@@ -148,9 +182,9 @@ def validate_section(section):
 
     if is_mod:
       # Subsect is a module
-      validate_module(subsect, section[subsect])
+      validate_module(subsect, section[subsect], conf_data)
     else:
-      validate_section(section[subsect])
+      validate_section(section[subsect], conf_data)
 
 
 # Validate an OpenDSA configuration file
@@ -163,33 +197,29 @@ def validate_config_file(config_file_path, conf_data):
   # Ensure all required fields are present
   for field in required_fields:
     if field not in conf_data:
-      print 'ERROR: Required field missing, ' + field
+      print_err('ERROR: Required field missing, %s' % field)
       error_count += 1
 
-  if 'module_origin' in conf_data:
-    validate_origin(conf_data['module_origin'], 'module');
-  else:
-    # Create a default module_origin for later processing
-    conf_data['module_origin'] = ''
+  validate_origin(conf_data['module_origin'], 'module')
 
   # Ensure optional fields are configured properly
   if 'backend_address' in conf_data and not conf_data['backend_address'].startswith('https'):
-    print 'WARNING: "backend_address" should use HTTPS'
+    print_err('WARNING: "backend_address" should use HTTPS')
 
   if 'av_origin' in conf_data:
-    validate_origin(conf_data['av_origin'], 'av');
+    validate_origin(conf_data['av_origin'], 'av')
 
     # av_origin does not match the module origin, but av_root_dir does not point to a remote system
     if ('av_root_dir' not in conf_data or not conf_data['av_root_dir'].startswith('http')) and conf_data['av_origin'] != conf_data['module_origin']:
-      print 'ERROR: av_root_dir is local but av_origin does not match module_origin'
+      print_err('ERROR: av_root_dir is local but av_origin does not match module_origin')
       error_count += 1
 
   if 'exercise_origin' in conf_data:
-    validate_origin(conf_data['exercise_origin'], 'exercise');
+    validate_origin(conf_data['exercise_origin'], 'exercise')
 
     # exercise_origin does not match the module origin, but exercise_root_dir does not point to a remote system
     if ('exercise_root_dir' not in conf_data or not conf_data['exercise_root_dir'].startswith('http')) and conf_data['exercise_origin'] != conf_data['module_origin']:
-      print 'ERROR: exercise_root_dir is local but exercise_origin does not match module_origin'
+      print_err('ERROR: exercise_root_dir is local but exercise_origin does not match module_origin')
       error_count += 1
 
   # Display an error message and exit if 'av_root_dir' is an absolute pathname to a remote system and its domain doesn't match 'module_origin' or 'av_origin' (or 'av_origin' isn't specified)
@@ -197,29 +227,29 @@ def validate_config_file(config_file_path, conf_data):
     error_count += 1
 
     if 'av_origin' not in conf_data:
-      print 'ERROR: "av_origin" not specified when "av_root_dir" points to a remote system'
+      print_err('ERROR: "av_origin" not specified when "av_root_dir" points to a remote system')
     else:
-      print 'ERROR: "av_origin" does not match domain of remote "av_root_dir"'
+      print_err('ERROR: "av_origin" does not match domain of remote "av_root_dir"')
 
   # Display an error message and exit if 'exercises_root_dir' is an absolute pathname to a remote system and its domain doesn't match 'module_origin' or 'exercise_origin' (or 'exercise_origin' isn't specified)
   if 'exercises_root_dir' in conf_data and conf_data['exercises_root_dir'].startswith('http') and not conf_data['exercises_root_dir'].startswith(conf_data['module_origin']) and ('exercise_origin' not in conf_data or not conf_data['exercises_root_dir'].startswith(conf_data['exercise_origin'])):
     error_count += 1
 
     if 'exercise_origin' not in conf_data:
-      print 'ERROR: "exercise_origin" not specified when "exercises_root_dir" points to a remote system'
+      print_err('ERROR: "exercise_origin" not specified when "exercises_root_dir" points to a remote system')
     else:
-      print 'ERROR: "exercise_origin" does not match domain of remote "exercises_root_dir"'
+      print_err('ERROR: "exercise_origin" does not match domain of remote "exercises_root_dir"')
 
   # Ensure the config file doesn't have any unknown fields (catches mis-spelled fields when config file is manually edited)
   for field in conf_data:
     if field not in (required_fields + optional_fields):
-      print 'ERROR: Unknown field, ' + field
+      print_err('ERROR: Unknown field, %s' % field)
       error_count += 1
 
-  validate_section(conf_data['chapters'])
+  validate_section(conf_data['chapters'], conf_data)
 
   if error_count > 0:
-    print 'Errors found: ' + str(error_count) + '\n'
+    print_err('Errors found: %d\n' % error_count)
     sys.exit(1)
 
 
@@ -228,7 +258,10 @@ def set_defaults(conf_data):
 
   odsa_dir = get_odsa_dir()
 
-  conf_data['code_dir'] = process_path(conf_data['code_dir'], odsa_dir)
+  if 'code_dir' in conf_data:
+    conf_data['code_dir'] = process_path(conf_data['code_dir'], odsa_dir)
+  else:
+    conf_data['code_dir'] = 'SourceCode/'
 
   # Allow anonymous credit by default
   if 'allow_anonymous_credit' not in conf_data:
@@ -256,8 +289,9 @@ def set_defaults(conf_data):
 
   # 'build_JSAV' does not need to be initialized
 
-  if 'build_ODSA' not in conf_data:
-   conf_data['build_ODSA'] = True
+  if 'module_origin' not in conf_data:
+    # Create a default module_origin for later processing
+    conf_data['module_origin'] = ''
 
   # Assume exercises are hosted on same domain as modules
   if 'exercise_origin' not in conf_data:
@@ -267,9 +301,23 @@ def set_defaults(conf_data):
   if 'exercises_root_dir' not in conf_data:
     conf_data['exercises_root_dir'] = odsa_dir
 
-  # If not global exercise options are specified, defer to exercise-specific options or the defaults in odsaAV.js
-  if 'glob_jsav_exer_options' not in conf_data:
-    conf_data['glob_jsav_exer_options'] = {}
+  # If no global module options are specified, defer to module-specific options or the defaults in odsaUtils.js
+  if 'glob_mod_options' not in conf_data:
+    conf_data['glob_mod_options'] = {}
+
+  # If no global exercise options are specified, defer to exercise-specific options or the defaults in odsaUtils.js
+  if 'glob_exer_options' not in conf_data:
+    conf_data['glob_exer_options'] = {}
+
+  if 'lang' not in conf_data:
+    conf_data['lang'] = 'en'
+
+  if 'tabbed_codeinc' not in conf_data:
+    conf_data['tabbed_codeinc'] = True
+
+  if not isinstance(conf_data['tabbed_codeinc'], bool):
+    conf_data['tabbed_codeinc'] = True
+    print_err('WARNING: tabbed_codeinc must be a boolean')
 
   if 'start_chap_num' not in conf_data:
     conf_data['start_chap_num'] = 0 #1
@@ -285,7 +333,7 @@ def set_defaults(conf_data):
     conf_data['theme'] = 'haiku'
 
   if 'theme_dir' not in conf_data:
-    conf_data['theme_dir'] = '%sRST/source/_themes' % odsa_dir
+    conf_data['theme_dir'] = '%sRST/_themes' % odsa_dir
 
 
 class ODSA_Config:
@@ -299,7 +347,7 @@ class ODSA_Config:
     """Initializes an ODSA_Config object by reading in the JSON config file, setting default values, and validating the configuration"""
     # Throw an error if the specified config files doesn't exist
     if not os.path.exists(config_file_path):
-      print "ERROR: File " + config_file_path + " doesn't exist\n"
+      print_err("ERROR: File %s doesn't exist\n" % config_file_path)
       sys.exit(1)
 
     # Try to read the configuration file data as JSON
@@ -310,10 +358,10 @@ class ODSA_Config:
     except ValueError, err:
       # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
       msg = err.message
-      print msg
+      print_err(msg)
 
       if msg == 'No JSON object could be decoded':
-        print 'ERROR: ' + config_file_path + ' is not a valid JSON file or does not use a supported encoding\n'
+        print_err('ERROR: %s is not a valid JSON file or does not use a supported encoding\n' % config_file_path)
       else:
         err = parse_error(msg).groupdict()
         # cast int captures to int
@@ -328,10 +376,10 @@ class ODSA_Config:
           if ii == err["lineno"] - 1:
             break
 
-        print """
+        print_err("""
         %s
         %s^-- %s
-        """ % (line.replace("\n", ""), " " * (err["colno"] - 1), err["msg"])
+        """ % (line.replace("\n", ""), " " * (err["colno"] - 1), err["msg"]))
 
       # TODO: Figure out how to get (simple)json to accept different encodings
       sys.exit(1)
@@ -346,25 +394,18 @@ class ODSA_Config:
     conf_data['allow_anonymous_credit'] = str(conf_data['allow_anonymous_credit']).lower()
     conf_data['req_full_ss'] = str(conf_data['req_full_ss']).lower()
 
-    # Make conf_data publically available
+    # Make conf_data publicly available
     for field in required_fields:
       self[field] = conf_data[field]
 
     for field in optional_fields:
       self[field] = conf_data[field] if field in conf_data else None
 
-    #
+    # Saves the path to the config file used to create the book
     self.config_file_path = config_file_path
 
     # Parse the name of the config file to use as the book name
     self.book_name = os.path.basename(config_file_path).replace('.json', '')
-
-    # Parse the code language from the code directory path
-    self.code_lang = os.path.basename(self.code_dir[:-1]).lower()
-
-    # Treat Processing as Java (special case)
-    if self.code_lang =='processing':
-      self.code_lang = 'java'
 
     self.odsa_dir = get_odsa_dir()
 
@@ -383,8 +424,8 @@ class ODSA_Config:
 if __name__ == "__main__":
   # Process script arguments
   if len(sys.argv) != 2:
-    print "Invalid config filename"
-    print "Usage: " + sys.argv[0] + " config_file_path\n"
+    print_err("Invalid config filename")
+    print_err("Usage: %s config_file_path\n" % sys.argv[0])
     sys.exit(1)
 
   ODSA_Config(sys.argv[1])

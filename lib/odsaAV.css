@@ -19,7 +19,7 @@ body, input, select {
 
 /* Left column of the standardized header */
 table .headerLeft {
-  width: 120px;
+  width: 175px;
 }
 
 /* Center column of the standardized header */
@@ -30,7 +30,7 @@ table .headerCenter {
 /* Right column of the standardized header */
 table .headerRight {
   text-align: right;
-  width: 120px;
+  width: 175px;
 }
 
 /* Affects the margin of buttons in the header table */

@@ -18,7 +18,7 @@
     stack = av.ds.stack({center: true});
 
     function dataTest(array) {
-      var bst = av.ds.bintree();
+      var bst = av.ds.binarytree();
       bst.insert(array);
       var result = bst.height() <= maxHeight;
       bst.clear();
@@ -30,7 +30,7 @@
       jsavTree.clear();
     }
     //generate random tree
-    jsavTree = av.ds.bintree({center: true, visible: true, nodegap: 15});
+    jsavTree = av.ds.binarytree({center: true, visible: true, nodegap: 15});
     do {
       initialArray = []
       perfectBinTree(initialArray, 1, 10, 100, 3, 1);
@@ -47,12 +47,12 @@
     }
     stack.first().highlight();
     stack.layout();
-    
+
     BST.restoreAnimationState();
 
     return jsavTree;
   }
-  
+
   function modelSolution(jsav) {
     //helper function for finding the node
     //naive because path and node are guaranteed to exist
@@ -67,7 +67,7 @@
       }
       return node;
     }
-    
+
     //helper function for finding replacing node
     //if no left child the function will return undefined
     function findReplacingNode(root) {
@@ -94,10 +94,10 @@
       var n = node;
       var css;
       if (undo) {
-        css = {"stroke-width":"1", "stroke":"black"};  
+        css = {"stroke-width":"1", "stroke":"black"};
       } else {
-        css = {"stroke-width":"4", "stroke":"blue"};  
-      } 
+        css = {"stroke-width":"4", "stroke":"blue"};
+      }
       while (n !== root) {
         n.edgeToParent().css(css);
         n = n.parent();
@@ -110,7 +110,7 @@
     }
     modelStack.layout();
 
-    var modelTree = jsav.ds.bintree({center: true, visible: true, nodegap: 10});
+    var modelTree = jsav.ds.binarytree({center: true, visible: true, nodegap: 10});
 
     modelTree.insert(initialArray);
     modelTree.layout();
@@ -185,7 +185,10 @@
 
   var exercise = av.exercise(modelSolution, initialize,
     {}, // no CSS needs to be compared
-    { controls: $(".jsavexercisecontrols") });
+    {
+      controls: $(".jsavexercisecontrols"),
+      modelDialog: {width: 700}  
+    });
   exercise.reset();
 
   function highlightNext() {

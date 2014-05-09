@@ -4,7 +4,7 @@ TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
-.PHONY: all clean lint csslint jshint min CS223 CS2114 CS5114 CS3114 CS3114AM CS3114PM CS3114notes CS150 OpenDSA test IS allBooks nomin pull
+.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test IS allBooks nomin pull
 
 all: lint
 
@@ -38,14 +38,19 @@ jshint:
 	-@jshint lib/odsaAV.js
 	-@jshint lib/odsaMOD.js
 	-@jshint lib/gradebook.js
+	-@jshint lib/registerbook.js
 
-min: lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css
+min: nomin
+#lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
 RecurTutor: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json
 
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json
+
+CS223: min
+	python $(CONFIG_SCRIPT) config/CS223.json
 
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
@@ -80,6 +85,12 @@ IS: min
 test: min
 	python $(CONFIG_SCRIPT) config/test.json
 
+testfi: min
+	python $(CONFIG_SCRIPT) config/testfi.json
+
+testcpp: min
+	python $(CONFIG_SCRIPT) config/testcpp.json
+
 uwosh: min
 	python $(CONFIG_SCRIPT) config/uwosh.json
 
@@ -98,12 +109,20 @@ invalid: min
 slides: min
 	python $(CONFIG_SCRIPT) -s config/slides.json
 
-allBooks: CS3114 CSCI204 OpenDSA Everything test slides uwosh
+allBooks: CS150 CS3114 CSCI204 CSCI102 CS5114 CS2114 OpenDSA Everything test slides uwosh
 
 nomin:
-	cp lib/odsaUtils.js lib/odsaUtils-min.js
-	cp lib/odsaAV.js lib/odsaAV-min.js
-	cp lib/odsaAV.css lib/odsaAV-min.css
+	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
+	@cp lib/odsaUtils.js lib/odsaUtils-min.js
+	@cp lib/odsaMOD.js lib/odsaMOD-min.js
+	@cp lib/odsaAV.js lib/odsaAV-min.js
+	@cp lib/gradebook.js lib/gradebook-min.js
+	@cp ODSAkhan-exercises/khan-exercise.js lib/khan-exercise-min.js
+	@cp lib/registerbook.js lib/registerbook-min.js
+	@cp lib/site.css lib/site-min.css
+	@cp lib/odsaAV.css lib/odsaAV-min.css
+	@cp lib/odsaMOD.css lib/odsaMOD-min.css
+	@cp lib/gradebook.css lib/gradebook-min.css
 
 pull:
 	git pull
@@ -147,3 +166,7 @@ lib/gradebook-min.js: lib/gradebook.js
 lib/gradebook-min.css: lib/gradebook.css
 	@echo 'Minimizing lib/gradebook.css'
 	@$(MINIMIZE) lib/gradebook.css -o lib/gradebook-min.css
+
+lib/registerbook-min.js: lib/registerbook.js
+	@echo 'Minimizing lib/registerbook.js'
+	@$(MINIMIZE) lib/registerbook.js -o lib/registerbook-min.js

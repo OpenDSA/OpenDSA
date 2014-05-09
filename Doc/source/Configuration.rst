@@ -48,7 +48,6 @@ Future Features
 
   * Implement support for hosting AVs and exercises on a different domain than modules
 
-* Build in config validator that ensures necessary fields appear in the source config file
 * Ability to optionally include subsections in an RST file - similar to how we include / exclude exercises
 
 
@@ -81,14 +80,25 @@ Settings (all are required unless otherwise specified)
 
 * **build_dir** - (optional) the directory where the configured book directory will be created, defaults to 'Books' if omitted
 
-  * A new directory, named after the book, will be created at this location and serve as the output directory for the configuration process.  Files required to compile the book will be copied / written to the output directory, including modified version of the source RST files
+  * A new directory, named after the configuration file, will be created at this location and serve as the output directory for the configuration process.  Files required to compile the book will be copied / written to the output directory, including modified version of the source RST files
 
     * Example: Assume "build_dir": "Books" and the name of the configuration file used is "CS3114.json", the output directory would be "Books/CS3114/"
 
   * The compiled textbook will appear in ``[build_dir]/[book name]/html``
   * This directory must be web accessible
 
-* **code_dir** - specifies the directory containing the source code to be used in textbook examples
+* **code_dir** (optional) - specifies the directory which contains another directory whose name matches ``code_lang`` (see below) which contains the source code used in examples, defaults to ``SourceCode`` if omitted
+
+  * Ex: If ``{"code_dir": "SourceCode/", "code_lang": "python"}`` then the book would look for example Python source code in ``~OpenDSA/SourceCode/python``
+
+* **lang** (optional) - specifies the native language of the book using the official ISO 639-1 or 639-2 standard abbreviation, defaults to ``en`` if omitted
+
+* **code_lang** - a dictionary where each key is the name of a programming language (supported by Pygments and matching a directory name in ``code_dir``) and each value is a list of file extensions.  The order in which the languages and extensions are provided determines their precedence.
+
+  * Ex: ``"code_lang": {"C++": ["cpp", "h"], "Java": ["java"], "Processing": ["pde"]}``
+  * In this example, the system would search for ``.cpp`` files, followed by ``.h`` files, ``.java`` files, and finally ``.pde`` files
+
+* **tabbed_codeinc** (optional) - a boolean that controls whether or not code is displayed in a tabbed interface.  If true, it will display the specified code in each of the languages specified in ``code_lang`` (if the code exists) in a tabbed container.  If false, it will display the code in a single language (the first language for which the code exists with the order of precedence determined by the order specified in ``code_lang``).  Defaults to true if omitted
 
 * **module_origin** - the protocol and domain where the module files are hosted
 
@@ -109,7 +119,9 @@ Settings (all are required unless otherwise specified)
   * Used on module pages to allow HTML5 post messages from this origin, allows embedded AVs to communicate with the parent module page
   * Ex: "av_origin": "http://algoviz.org",
 
-* **glob_jsav_exer_options** - (optional) a JSON object containing the global grading options that will be applied to all JSAV exercises in the book, unless overridden by exercise-specific options.
+* **glob_mod_options** - (optional) an object containing options applied to every module in the book, allow settings specific to a certain module to be passed to that module alone, can be overridden by module-specific options
+
+* **glob_exer_options** - (optional) an object containing options applied to every exercise in the book, can be used to control the behavior of the exercise, can be overridden by exercise-specific options
 
 * **exercises_root_dir** - (optional) allows the user to change the default location where the Exercises/ directory can be found, defaults to OpenDSA root directory if omitted
 
@@ -135,11 +147,6 @@ Settings (all are required unless otherwise specified)
   * This value should be set to false for development
   * Instructors may wish to set this to true for production environments when configuration is run infrequently and JSAV is likely to have changed since the last time configuration occurred
 
-* **build_ODSA** - (optional) a boolean controlling whether OpenDSA should be built after the configuration process has occurred, defaults to ``true`` if omitted
-
-  * This can generally be set to true because in most cases it makes sense to build the book immediately after it is configured
-  * If necessary, this value can be set to false and OpenDSA can be built manually by running make from the output directory
-
 * **allow_anonymous_credit** - (optional) a boolean controlling whether credit for exercises completed anonymously (without logging in) will be transferred to the next user to log in, defaults to ``true`` if omitted
 
 * **req_full_ss** - (optional) a boolean controlling whether students must view every step of a slideshow in order to obtain credit, defaults to ``true`` if omitted
@@ -156,6 +163,8 @@ Settings (all are required unless otherwise specified)
 
   * Each key in "chapters" represents a chapter name, any key values in the associated object represent sections within that chapter.  This concept is applied recursively until a module object is reached.  A module object is one whose key matches the name of an RST file in the ~OpenDSA/RST/source/ directory and which contains the key "exercises".
 
+  * **hidden** - This is an optional field to signal the preprocessor to not display the content of the chapter in the TOC. The configuration script will add the new directive ``odsatoctree``. The flagged chapters entries in the TOC will be of class ``hide-from-toc``, and will be removed by a CSS rule in odsaMOD.css file.
+
   * Modules
 
     * The key relating to each module object must correspond with a path to an RST file found in ~OpenDSA/RST/source/ or a sub-directory
@@ -165,12 +174,14 @@ Settings (all are required unless otherwise specified)
 
     * **dispModComp** - (optional) a flag which if set to "true" will force the "Module Complete" message to appear even if the module contains no required exercises, if set to "false", the "Module Complete" message will not appear even if the module DOES contain required exercises
 
+    * **mod_options** - (optional) overrides ``glob_mod_options``, allows modules to be configured independently from one another.  Can be used to override the options set using ``glob_mod_options``. Options that should be stored in ``JSAV_OPTIONS`` should be prepended with ``JOP-`` and options that should be stored in ``JSAV_EXERCISE_OPTIONS`` should be prepended with ``JXOP-`` (can be used to override the defaults set in ``odsaUtils.js``).  All other options will be made directly available to modules in the form of a parameters object created automatically by the client-side framework (specifically whn ``parseURLParams()`` is called in ``odsaUtils.js``)
+
     * **exercises** - a collection of exercise objects representing the exercises found in the module's RST file
 
       * Omitting an exercise from the module's "exercises" object will cause the exercise to be removed from the configured module
       * Each exercise object contains required information about that exercise including:
 
-        * **jsav_exer_options** - (optional) a JSON object containing exercise-specific grading options for JSAV.  Can be used to override the options set using ``glob_jsav_exer_options``. The string 'JXOP-' is prepended to every option name so that the client can determine which values should be applied to the ``JSAV_EXERCISE_OPTIONS`` global variable in ``odsaAV.js``
+        * **exer_options** - (optional) an object containing exercise-specific configuration options for JSAV.  Can be used to override the options set using ``glob_exer_options``. Options that should be stored in ``JSAV_OPTIONS`` should be prepended with ``JOP-`` and options that should be stored in ``JSAV_EXERCISE_OPTIONS`` should be prepended with ``JXOP-`` (can be used to override the defaults set in ``odsaUtils.js``).  All other options will be made directly available to exercises in the form of a parameters object created automatically by the client-side framework (specifically whn ``parseURLParams()`` is called in ``odsaUtils.js``)
 
         * **long_name** - (optional) a long form, human-readable name used to identify the exercise in the GUI, defaults to short exercise name if omitted
         * **points** - (optional) the number of points the exercise is worth, defaults to ``0`` if omitted
@@ -189,3 +200,8 @@ Settings (all are required unless otherwise specified)
         * **threshold** - (optional) the percentage a user needs to score on the exercise to obtain proficiency, defaults to 100% (1 on a 0-1 scale) if omitted
 
       * JSAV-based diagrams do not need to be listed
+
+    * **codeinclude** (optional) - an object that maps the path from a codeinclude to a language which should be used for the code.
+
+      * The following example would set C++ as the language for the codeinclude "Sorting/Mergesort"
+      * Ex: "codeinclude": {"Sorting/Mergesort": "C++"}

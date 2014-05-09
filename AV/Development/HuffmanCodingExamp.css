@@ -1,16 +1,8 @@
 #huffmanCON1 {
-	width: 800px;
-	height: 380px;
-	background-color: #efe;
-	border:1px solid #A5B6C8;
-	padding: 10px;
-	 overflow-x: hidden;
-	 overflow-y: hidden;
+  width: 800px;
+  height: 380px;
 }
 
-#av{
-overflow: visible;	
-}
 .jsavtree { position: absolute; } /* position trees absolutely */
 .jsavtree:nth-of-type(1) { left:50px;} /* move 2nd tree to the right */
 .jsavtree:nth-of-type(2) { left:150px;} /* move 3rd tree to the right */
@@ -21,7 +13,7 @@ overflow: visible;
 .jsavtree:nth-of-type(7) { left:650px;} /* move 8th tree to the right */
 .jsavtree:nth-of-type(8) { left:750px;} /* move 9th tree to the right */
 .jsavtree:nth-of-type(9) { left:350px;} /* move 9th tree to the right */
-.jsavcanvas { height: 500px;} /* set the height of the container */			
+.jsavcanvas { height: 500px;} /* set the height of the container */
 
 // change size and margins of arrays
 .jsavarray { margin: 0; height: 40px; min-height: 40px; position: absolute}
@@ -36,33 +28,9 @@ overflow: visible;
 .jsavarray:nth-of-type(8) {top: 245px;}
 .jsavarray:nth-of-type(9) {top: 280px;}
 
-.jsavcontainer {
-	background-color: #efe;
-border: none;
-	padding 0px;
-}
-
-.jsavcounter {
-float: left;
-width: 100px;
-}
-
-.jsavarray {
-	padding-left:0;
-position: absolute;
-}
-
-p.jsavoutput.jsavline {
-height: 30px;
-margin: 0;
-}
-
-#about {
-float: right;
-}
-
-a.jsavsettings {
-display: block;
-	 margin-top: 10px;
-	 margin-left: 10px;
+.huffmanleaf {
+  border-radius: 1px;
+  background-color: orange;
+  line-height: 22px;
+  z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
 }

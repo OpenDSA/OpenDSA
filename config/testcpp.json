@@ -1,0 +1,53 @@
+{
+  "title": "Test",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {"C++": ["cpp", "h"]},
+  "lang": "en",
+  "module_origin": "http://algoviz.org",
+  "backend_address": "https://opendsa.cc.vt.edu/",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Sorting": {
+      "Sorting/MergesortImpl": {
+        "long_name": "Implementing Mergesort",
+        "exercises": {
+          "mergeImplCON1": {
+            "long_name": "Mergesort Implementation Slideshow 1",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "mergeImplCON2": {
+            "long_name": "Mergesort Implementation Slideshow 2",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "MergesortSumm": {
+            "long_name": "Mergesort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "exercises": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "exercises": {}
+      }
+    }
+  }
+}
+
