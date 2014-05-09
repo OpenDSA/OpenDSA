@@ -66,6 +66,7 @@ The following visualization shows three different versions of the Sum recursive 
 
 .. inlineav:: RecursionIntroCON4 ss
    :output: show  
+
 You will never understand recursion well without doing a lot of practice on it. Here are set of practice exercises on recursion, try to practice them all to master recursion.
 
 Practice Exercises
@@ -73,101 +74,84 @@ Practice Exercises
 .. TODO::
    :type: Programming Exercise
 
-    Given the following recursive function write down the missing base case such that this function finds the largest number in the array named numbers.
-    int largest(int[] numbers, int index) {
+   Given the following recursive function write down the missing base
+   case such that this function finds the largest number in the array
+   named numbers.::
 
-    //<<Missing base case>> {
+      int largest(int[] numbers, int index) {
+        // <<Missing base case>> {
+          return numbers[index];
+        }
+        else if(numbers[index] > numbers[index+1]) {
+          numbers[index+1] = numbers[index];
+        }
+        return largest(numbers,index+1);
+      } 
 
-    return numbers[index];
+   The answer::
 
-    }
-
-    else if(numbers[index] > numbers[index+1]) {
-
-    numbers[index+1] = numbers[index];
-
-    }
-
-     return largest(numbers,index+1);
-    } 
-
-    The answer:
-
-     if(index==numbers.length-1)
+      if(index==numbers.length-1)
 
 .. TODO::
    :type: Programming Exercise
    
-    Given the following recursive function  write down the missing action that should be done at the base case so that this function prints the values in an array named list. The values must appear one per line in order of increasing subscript.
+   Given the following recursive function, write down the missing
+   action that should be done at the base case so that this function
+   prints the values in an array named list. The values must appear
+   one per line in order of increasing subscript.::
     
-    void print(String[] list, int index) { 
-    
-    if (index < list.length) 
-   
-     //<<Missing Code>>
+      void print(String[] list, int index) { 
+        if (index < list.length) 
+          //<<Missing Code>>
+        print(list, index+1);
+      }
 
-     print(list, index+1);
-    }
+    The answer::
 
-
-    The answer:
-
-     System.out.println(list[index]);
-
-
+      System.out.println(list[index]);
 
 
 .. TODO::
    :type: Programming Exercise
 
-    Given the following recursive function write down the missing base case condition and recursive call such that this function computes logb n
+   Given the following recursive function write down the missing base
+   case condition and recursive call such that this function computes
+   logb n::
  
-    int log(int b, int n )
-    {
+      int log(int b, int n )
+      {
+        // <<Missing base case condition>>
+          return 0;
+        else
+          return //<<Missing a Recursive call>>
+      }
 
-     //<<Missing base case condition>>
-
-     return 0;
-
-     else
-
-     return //<<Missing a Recursive call>>
-    }
-
-    The answer:
+   The answer:
 
      if (b < n)
-   
-    (1 + log(b, n / b));
-
-
+       (1 + log(b, n / b));
 
 
 
 .. TODO::
    :type: Programming Exercise
-    Given the following recursive function write down the missing recursive call such that this function prints all positive odd numbers less than or equal to i.
 
-    public static void printOddRecursive(int i)
-    {
+   Given the following recursive function write down the missing
+   recursive call such that this function prints all positive odd
+   numbers less than or equal to i.::
 
-     if (i > 0)
-    {
-
-      if (i % 2 == 1)
-     { 
-
-      System.out.println(i);
+     public static void printOddRecursive(int i) {
+       if (i > 0) {
+         if (i % 2 == 1) { 
+           System.out.println(i);
+         }
+         //<<Missing a Recursive call>>
+       }
      }
-   
-     //<<Missing a Recursive call>>
-     }
-    }
  
-    The answer:
+    The answer::
+
      printOddRecursive(i - 1);
-
-
 
 
 .. TODO::
@@ -215,6 +199,7 @@ Practice Exercises
  
 .. TODO::
    :type: Programming Exercise
+
    Given the following recursive function write down the missing recursive call such that this function given 2 numbers, will find the sum of all the integers between them.   
    Example: given 1 and 4, the method should add 1+2+3+4 = 10.
 
@@ -356,8 +341,10 @@ Practice Exercises
 In the previous examples and exercises, all the recursive functions has only
 one base case and one recursive case. A more general structure for recursion
 can have more than one base case and recursive case. The following Figure/Visualization shows how a general structure recursive function look like:
+
 .. TODO::
    :type: Figure/Visualization
+
     if ( base case 1 )
       // return some simple expression
     else if ( base case 2 )
@@ -723,6 +710,7 @@ The following exercises will ask you to write a whole recursive function:
 
 .. TODO::
    :type: Programming Exercise	
+
 	Given the following recursive function signature, write the function code such that this function takes a string and returns true if it is read the
 	same forwards or back-wards (palindrome).
 	
