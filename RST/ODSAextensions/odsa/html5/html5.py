@@ -40,6 +40,13 @@ class HTMLTranslator(SphinxHTMLTranslator):
         '''
         self.body.append('</code>')
 
+    def visit_emphasis(self, node):
+        node['classes'].append('odsa-term')
+        self.body.append(self.starttag(node, 'em', '', CLASS=' '.join(node['classes'])))
+
+
+    def depart_emphasis(self, node):
+        self.body.append('</em>')
 
 
     def visit_desc_name(self, node):
