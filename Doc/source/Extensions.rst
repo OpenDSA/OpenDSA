@@ -132,8 +132,8 @@ SYNOPSIS::
 DESCRIPTION
     ``.. codeinclude:: {relative_path}``
 
-      Include the contents of the file located at ``{relative_path}``.  If the path is relative to ``code_dir``, that specific file will be loaded.  
-      However, if the path is relative to a code language directory in ``code_dir``, the directive will attempt to load the file in the language (specified in ``code_lang``) with highest precedence.  Convention dictates that the file extension be omitted when using the second option, however, the directive will automatically strip the file extension if one is provided.
+      Include the contents of the file located at ``{relative_path}``.  If the path is relative to ``code_dir``, that specific file will be loaded.
+      However, if the path is relative to a code language directory in ``code_dir``, the directive will attempt to load the file in all the languages (specified in ``code_lang``) in a tabbed display if ``tabbed_codeinc`` is ``True`` and only the language with highest precedence if ``tabbed_codeinc`` is ``False``.  Convention dictates that the file extension be omitted when using the second option, however, the directive will automatically strip the file extension if one is provided.
 
     ``:tag: {my_tag}``
 
@@ -153,6 +153,10 @@ DESCRIPTION
 
          /* *** ODSATag: my_tag *** */
          /* *** ODSAendTag: my_tag *** */
+
+    ``:lang: {code_language}``
+
+      Specifies the language of the code to be loaded (overrides multiple language loading).
 
 NOTES
     The ``codeinclude`` directive closely matches the standard ReST

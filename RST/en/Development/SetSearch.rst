@@ -1,3 +1,15 @@
+.. _SetSearch:
+
+.. raw:: html
+
+   <script>ODSA.SETTINGS.DISP_MOD_COMP = true;ODSA.SETTINGS.MODULE_NAME = "SetSearch";ODSA.SETTINGS.MODULE_LONG_NAME = "Bit Vectors for Representing Sets";ODSA.SETTINGS.MODULE_CHAPTER = "Searching"; ODSA.SETTINGS.BUILD_DATE = "2014-02-02 02:15:11";</script>
+
+
+.. |--| unicode:: U+2013   .. en dash
+.. |---| unicode:: U+2014  .. em dash, trimming surrounding whitespace
+   :trim:
+
+
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
@@ -8,6 +20,9 @@
    :requires:
    :satisfies:
    :topic: Search
+
+.. odsalink:: AV/Development/BitArrayCON.css   
+
 
 Bit Vectors for Representing Sets
 ==================================
@@ -37,12 +52,8 @@ Chapter :chap:`Graphs` is an example of such a set representation.
 
 .. _Primes:
 
-.. odsafig:: Images/Primes.png
-   :width: 300
+.. inlineav:: bitArray dgm
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: The bit array for the set of primes in the range 0 to 15
 
    The bit array for the set of primes in the range 0 to 15.
    The bit at position :math:`i` is set to 1 if and only if :math:`i`
@@ -84,3 +95,5 @@ indicate those keywords appearing in the document.
 Such an organization is called a :term:`signature file`.
 The signatures can be manipulated to find documents with desired
 combinations of keywords.
+
+.. odsascript:: AV/Development/BitArrayCON.js
