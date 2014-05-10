@@ -1,3 +1,5 @@
+//(function ($) {
+
 var nodeIndex = 0;
 var nodes = new Array();
 var connections = new Array();
@@ -6,6 +8,14 @@ var graph = new Array();
 var adjacents = new Array();
 var array = new Array();
 var list = new Array();
+
+
+//myLink.onclick = ShowOld(2367,146986,2);
+
+/*$('.odsa-term').click(function (event) {
+    var id = $(event.target).text();
+    console.log("Text " + id);
+}); */
 
 
 function store(id) {
@@ -267,7 +277,7 @@ function reprint(term) {
   getText(term);
 }
 
-function runit(term) {
+function runit() {
   Parser();
   buildGraph();
   var term = localStorage.getItem("concept").toLowerCase(); 
@@ -275,4 +285,14 @@ function runit(term) {
   getText(term); 
 }
 
+
+$('.ODSAterm').click(function (event) {
+  var id = $(event.target).text();
+  localStorage.setItem("concept", id);
+  var simWindowFeatures = "height=600,width=1200";
+  var myRef = window.open("conceptMap.html", '', simWindowFeatures);
+});
+
+
+//}(jQuery));
 
