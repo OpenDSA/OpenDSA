@@ -92,6 +92,17 @@
       this.layout();
     }
 
+    // calling function for insertion
+    this.remove = function(INx, INy) {
+      console.log("Start Delete: (", INx, ", ", INy, ")");
+      this.tree.root().hide();
+      var temp = this.delete(this.tree.root(), INx, INy, 0, 0, xrange, yrange, 0);
+      console.log("Setting the root to be: " + temp);
+      this.tree.root(temp, {hide: false});
+      this.tree.root().show();
+      this.layout();
+    }
+
     // returns the root of tree that results from inserting the new record
     this.insert = function(rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level) {
       console.log("Bintree insert BEGIN: ", INx, INy, ", Level: ", level, ", Box: ", Bx, By, Bwid, Bhgt, ", rt Type: ", rt.NodeType);
@@ -173,6 +184,45 @@
       return rt;
     } // insert
 
+
+    this.delete = function(rt, INx, INy, Bx, By, Bwid, Bhgt, level) {
+
+      // If an external node
+      if (rt.NodeType === NT.FULLEXT) {
+        if (rt.x === INx && rt.y === INy) {
+          return this.newEmptyExtNode();
+        }
+      }
+
+      // We have an internal node
+      if (level % 2 === 0) { // EVEN
+        // Branch on X 
+        if (INx < (Bx + Bwid/2)) {
+            rt.left(delete(rt.left(), INx, INy, Bx, By, Bwid/2, Bhgt, level+1));
+          }
+        else {
+          rt.right(delete(rt.right(), INx, INy, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
+        }
+      }
+      else { // ODD
+        // Branch on Y
+        if (INy < (By + Bhgt/2)) {
+          rt.left(delete(rt.left(), INx, INy, Bx, By, Bwid, Bhgt/2, level+1));
+        }
+        else {
+          rt.right(delete(rt.right(), INx, INy, Bx, By + Bhgt/2, Bwid, Bhgt/2, level+1));
+        }
+      } 
+
+      // Now, check to see if there should be a merge
+      if ((rt.left().NodeType === NT.EMPTYEXT) && (rt.right().NodeType === NT.FULLEXT))
+        return rt.right();
+      if ((rt.left().NodeType === NT.FULLEXT) && (rt.right().NodeType === NT.EMPTYEXT))
+        return rt.left();
+      return rt;
+    } // delete
+
+
   } // bintree
 
   // check query parameters from URL
@@ -245,6 +295,16 @@
     jsav.step();
     jsav.umsg("Step 3: Insertion completed");
     jsav.step();
+
+    jsav.umsg("Step 4: remove node with value \"B\" @ 50, 50");
+    jsav.step();
+
+    bint.remove(50, 50);
+    jsav.step();
+    jsav.umsg("Step 3: Deletion completed");
+    jsav.step();
+
+    
 
     jsav.recorded(); // mark the end
 
