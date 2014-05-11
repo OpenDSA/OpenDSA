@@ -12,25 +12,27 @@ body, input, select {
 
 /* Creates a header which standardizes the layout for AV controls */
 .headerTable {
-  margin-top: -10px;
+  /*margin-top: -10px;*/
   border-bottom: 1px solid black;
   width: 100%;
 }
 
 /* Left column of the standardized header */
 table .headerLeft {
-  width: 175px;
+  width: 142px;
 }
 
 /* Center column of the standardized header */
 table .headerCenter {
+  font-size: 2em;
+  font-weight: bold;
   text-align: center;
 }
 
 /* Right column of the standardized header */
 table .headerRight {
   text-align: right;
-  width: 175px;
+  width: 142px;
 }
 
 /* Affects the margin of buttons in the header table */
