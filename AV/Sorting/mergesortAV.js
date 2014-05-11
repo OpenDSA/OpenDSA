@@ -215,10 +215,9 @@
     var jsav,   // for JSAV library object
     arr;    // for the JSAV array
 
-    // Language and code configurations
-    var config = ODSA.AV.getConfig("mergesortAV.json");
-    var interpret = JSAV.utils.getInterpreter(config.language);
-    ODSA.AV.setTitleAndInstructions($('#container'), config.language);
+    // Load the interpreter created by odsaAV.js
+    var interpret = ODSA.AV.interpreter;
+    $('#arrayValues').attr('placeholder', interpret("av_arrVals_placeholder"));
 
     // create a new settings panel and specify the link to show it
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
