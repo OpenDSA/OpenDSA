@@ -13,6 +13,7 @@ SourceCode/Java/build
 SourceCode/JavaScript/build
 SourceCode/Python/build
 SourceCode/JavaScript/node_modules
+SourceCode/C++/build
 
 #Books directory (these are build targets)
 Books
