@@ -28,7 +28,7 @@ function store(id) {
 function Parser() {
   xmlhttp = new XMLHttpRequest();
     if(xmlhttp) {
-      xmlhttp.open("GET","Graphs.xml",false);
+      xmlhttp.open("GET","GraphDefs.xml",false);
       xmlhttp.send();
       xmlDoc=xmlhttp.responseXML;
     }
@@ -53,21 +53,25 @@ function Parser() {
   concept = xmlDoc.getElementsByTagName('concept');
   var id = 0;
   var label = null;
+  var definition = null;
+  console.log("length of concept size =====> " + concept.length);
   for(var a = 0; a < concept.length; a++) {
     id = concept[a].getAttribute('id').toLowerCase();
     label = concept[a].getAttribute('label').toLowerCase();
-    nodes.push(new Node(id, label, null, null));
+    definition = concept[a].getAttribute('long-comment');
+    nodes.push(new Node(id, label, null, null, definition));
   } 
 
   for(var aa = 0; aa < concept.length; aa++) {
     thisId = concept[aa].getAttribute('id').toLowerCase();
     thisLabel = concept[aa].getAttribute('label').toLowerCase();
+    thisDefinition = concept[aa].getAttribute('long-comment');
     var startNode = new Array();
     var parentId = getParent(thisId);
     var parentLabel = getConceptLabel(parentId);
  
     var incomingEdge = getIncomingEdge(thisId);
-    startNode.push(new Node(thisId, thisLabel, incomingEdge, parentLabel));
+    startNode.push(new Node(thisId, thisLabel, incomingEdge, parentLabel, thisDefinition));
     graph.push(startNode);
   }
 }
@@ -93,7 +97,7 @@ function buildGraph() {
         if(to_id === connections[e].from_id) {
           toNode = getConceptLabel(connections[e].to_id);
           edgeLabel = getEdgeLabel(to_id);
-          adjacentNodes.push(new Node(connections[e].to_id, toNode, edgeLabel, null));
+          adjacentNodes.push(new Node(connections[e].to_id, toNode, edgeLabel, null, null));
         }
       }
     } 
@@ -131,6 +135,27 @@ function getConceptLabel(id) {
     return null;
 }
 
+function getDefinition(term) {
+  for(var tt = 0; tt < nodes.length; tt++) {
+    if(nodes[tt].label === term) {
+      return nodes[tt].comment;
+    }
+  }
+    return null;
+}
+
+
+function printDefinition(term, definition) {
+  var frame = document.getElementById("info");
+ 
+      if(definition !== null) {
+        frame.contentWindow.document.write(definition);
+      } else {
+        alert("The term " + term  + " is not in the glossary");
+      }  
+}
+
+
 function getParent(id) {
   for(var u = 0; u < connections.length; u++) {
     if(connections[u].to_id === id) {
@@ -152,6 +177,7 @@ function getEdgeLabel(id) {
   }
     return null;
 }
+
 
 
 function getIncomingEdge(id) {  
@@ -179,11 +205,12 @@ function Graph() {
       this._nodeList={};
 }
 
-function Node(id, label, edge, parent) {
+function Node(id, label, edge, parent, comment) {
       this.id = id;
       this.label = label;
       this.edge = edge;
       this.parent = parent;
+      this.comment = comment;
 }
 
 function Connection(id, from_id, to_id) {
@@ -197,7 +224,7 @@ function Phrase(id, label) {
   this.label = label;
 }
 
-function getText(term) {  
+/*function getText(term) {  
   var frame = document.getElementById("info");
   $.get( "../../RST/en/Glossary.rst", function( data ) {
     myregexp = new RegExp(term + "\n", "gim");
@@ -208,7 +235,9 @@ function getText(term) {
         alert("The term " + term  + " is not in the glossary");
       }  
   });
-} 
+}  */
+
+
 
 function printGraph(concept) {
   var frame = document.getElementById("info");
@@ -274,7 +303,9 @@ function printGraph(concept) {
 
 function reprint(term) {
   printGraph(term);
-  getText(term);
+  var definition = getDefinition(term);
+  printDefinition(term, definition);
+ // getText(term);
 }
 
 function runit() {
@@ -282,7 +313,9 @@ function runit() {
   buildGraph();
   var term = localStorage.getItem("concept").toLowerCase(); 
   printGraph(term); 
-  getText(term); 
+  var definition = getDefinition(term);
+  printDefinition(term, definition);
+//  getText(term); 
 }
 
 
