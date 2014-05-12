@@ -4,26 +4,26 @@
 
   // Tree array testing function
   function init($) {
-//    createArray();
     createArrayTree();
-  }
-
-  function createArray() {
-    var jsav = new JSAV("array");
-
-//    var arr = new jsav.ds.array([1, 2, 3], {"element": $("#holder")});
-
-    jsav.g.line(0, 0, 100, 100);
-
-    var line = jsav.g.line(0, 0, 100, 100);
-    line.translatePoint(0, 70, 20);
+//    createOther();
   }
 
   function createArrayTree() {
     var jsav = new JSAV("arrayTree");
-    var tree = new jsav.ds.arraytree(jsav, {visible: true});
-    var node = tree.newNode([1, 2, 3], null, 0);
-    tree.newNode([4, 5, 6, 7, 8], node, 0);
+    var tree = new jsav.ds.arraytree();
+    tree.root([1, 2, 3]);
+
+    tree.root().addChild([4, 5, 6]);
+    tree.root().addChild([7, 8, 9]);
+    tree.root().addChild([10, 11, 12]);
+    tree.root().addChild([13, 14, 15]);
+
+    tree.layout();
+  }
+
+  function createOther() {
+    var jsav = new JSAV("other");
+    var arr = new jsav.ds.array([1, 2, 3, 4], {element: $('#hello')});
   }
 }(jQuery));
 
