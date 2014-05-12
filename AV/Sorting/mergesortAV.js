@@ -124,7 +124,7 @@
       // Merge the two arrays together, in sorted order
       while (pos1 < arr1.size() || pos2 < arr2.size()) {
         if (pos1 === arr1.size() || pos2 === arr2.size()) {
-                jsav.umsg("When one list becomes empty, copy all values from the remaining array into the sorted array");
+          jsav.umsg("When one list becomes empty, copy all values from the remaining array into the sorted array");
         } else {
           // Eliminate one step for single element arrays to reduce tedium
           if (arr1.size() > 1) {
@@ -233,6 +233,6 @@
       evt.preventDefault();
       runIt();
     });
-  $('#reset').click(ODSA.AV.reset);
+    $('#reset').click(ODSA.AV.reset);
   });
 }(jQuery));
