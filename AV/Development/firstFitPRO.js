@@ -24,10 +24,6 @@
     var av = new JSAV($('.avcontainer'), {settings: settings});
     av.recorded();
 
-    // Create a convenience function named tell for writing to the
-    // output buffer
-    var tell = function (msg, color) { av.umsg(msg, {color: color}); };
-
     var ArraySize = 4; // Size of the exercise array
 
 
@@ -39,7 +35,7 @@
         $theArray = $("#profArray"),
         initialArray = [], // needed for model answer
         theArray,
-        currIncrIndex, // The index for the student's current increment
+        currIncrIndex = 0, // The index for the student's current increment
         usedNum,
         freeNum,
         usedAmountLabel,
@@ -145,7 +141,6 @@
       ODSA.AV.logExerciseInit(initData);
 
       theArray = av.ds.array($theArray, {center: false, layout: arrayLayout.val()}).css({"x": "275", "y": "252"});
-      currIncrIndex = 0;
       av.forward();
       av._undo = [];
       return theArray;
@@ -154,6 +149,8 @@
     function insertIntoBlock(index) {
 
       var currIncr = incrs[currIncrIndex];
+      console.log(currIncrIndex);
+      console.log(currIncr);
       var newUsedRect = av.g.rect(freeStartArray[index], 250, currIncr*2.5, 60).css({"fill": "coral"});
 
       freeStartArray[index] = freeStartArray[index] + currIncr * 2.5;
@@ -168,35 +165,36 @@
       var newValue = theArray.value(index)-currIncr;
       theArray.value(index, newValue);
 
-      currIncrIndex.value(currIncr + 1);
+      currIncrIndex += 1;
     }
 
     function modelSolution(jsav) {
-      var modelarr = jsav.ds.array(initialArray, {indexed: true, layout: arrayLayout.val()});
+
+      var modelarr = jsav.ds.array([25, 35, 32, 45], {left: 200});
+      jsav.displayInit();
+
       var i;
       var j;
 
-      console.log("Starting modelSolution. incrs.length: " + incrs.length + ", modelarr.size(): " + modelarr.size());
-      jsav.displayInit();
+      for (i = 0; i < 4; i += 1) {
 
-      for (i = 0; i < incrs.length; i += 1) {
-        for(j = 0; j < modelarr.size(); j += 1) {
-          if(incrs[i] <= modelarr[j]) {
+        for(j = 0; j < 4; j += 1) {
+                    
+          if(incrs[i] <= modelarr.value(j)) {
+
             modelarr.highlight(j);
-            modelarr[j] -= incrs[i];
-            jsav.stepOption("grade", true);
-      console.log("modelSolution Step: " + incrs[i]);
-            jsav.step();
+            jsav.gradeableStep();
+
+            var newVal = modelarr.value(j) - incrs[i];
+            modelarr.value(j, newVal);
+
             modelarr.unhighlight(j);
             jsav.step();
             break;
           }
-          if(i == j) {
-            break;
-          }
         }
       }
-      return [modelarr];
+      return modelarr;
     }
 
     // Process help button: Give a full help page for this activity
@@ -219,16 +217,17 @@
     
     // register click handlers for the array indices
     theArray.click(function (index) {
-      av._redo = []; // clear the forward stack, should add a method for this in lib
+      console.log("INDEX: "+index);
+      //av._redo = []; // clear the forward stack, should add a method for this in lib
       if (!theArray.isHighlight(index)) {
         theArray.highlight(index);
-        insertIntoBlock(index);
         exer.gradeableStep();
+        insertIntoBlock(index);
       } else {
+
         theArray.unhighlight(index);
       }
       av.step();
-      currIncrIndex += 1;
     });
 
     // Connect the action callbacks to the HTML entities
