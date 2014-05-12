@@ -3,7 +3,7 @@
     "en": {
       ".avTitle": "Mergesort Visualization",
       "#about": "About",
-      "av_about": "Mergesort Algorithm Visualization\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version ",
+      "aboutString": "Mergesort Algorithm Visualization\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version ",
       "#run": "Run",
       "#reset": "Reset",
       "#arraysize_label": " List size: ",
@@ -11,14 +11,14 @@
       "av_arrVals_placeholder": "Type space-separated values, or hit 'run' to use random values"
     },
     "fi": {
-      ".avTitle": "Lomitusjärjestäminen Visualization",
+      ".avTitle": "Lomitusjärjestäminen",
       "#about": "Lisätietoa",
-      "av_about": "XXMergesort Algorithm Visualization\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version ",
-      "#run": "XRun",
-      "#reset": "XReset",
-      "#arraysize_label": " XXList size: ",
-      "#arrayValues_label": " XXYour values: ",
-      "av_arrVals_placeholder": "XXType space-separated values, or hit 'run' to use random values"
+      "aboutString": "XMergesort Algorithm Visualization\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version ",
+      "#run": "Run",
+      "#reset": "Reset",
+      "#arraysize_label": " List size: ",
+      "#arrayValues_label": " Your values: ",
+      "av_arrVals_placeholder": "XType space-separated values, or hit 'run' to use random values"
     }
   },
   "code" : {}
