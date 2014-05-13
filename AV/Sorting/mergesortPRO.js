@@ -10,7 +10,7 @@
 
     // Process about button: Pop up a message with an Alert
     function about() {
-      var aboutstring = interpret("about");
+      var aboutstring = interpret("aboutString");
       alert(aboutstring + JSAV.version());
     }
 
@@ -22,7 +22,7 @@
      ******************************************* */
 
     // Load the interpreter created by odsaAV.js
-    var interpret = ODSA.AV.interpreter;
+    var interpret = ODSA.UTILs.getInterpreter();
 
     // Variables used by "setPosition()"
     var canvasWidth = $('#container').width();     // The width of the display

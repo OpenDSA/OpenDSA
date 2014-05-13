@@ -16,8 +16,7 @@
       // If arrValues is null, the user gave us junk which they need to fix
       if (arrValues) {
         ODSA.AV.reset(true);
-	jsav = new JSAV($('.avcontainer'), {settings: settings});
-//	jsav = new JSAV($('.avcontainer'));
+        jsav = new JSAV($('.avcontainer'), {settings: settings});
 
         // Create a new array using the layout the user has selected
         arr = jsav.ds.array(arrValues, {indexed: true});
@@ -28,11 +27,11 @@
         var column = 1;
         var arrLen = arr.size();
 
-        jsav.umsg("Select the entire array");
+        jsav.umsg(interpret("c1"));
         mergesort(arr, level, column);
 
         // END MERGESORT IMPLEMENTATION
-        jsav.umsg("Done sorting!");
+        jsav.umsg(interpret("c2"));
         jsav.recorded(); // mark the end
       }
     }
@@ -59,13 +58,13 @@
 
       arr.highlight();
       if (arrLen === 1) {    // Base case
-        jsav.umsg("An array of length 1 cannot be split, ready for merge");
+        jsav.umsg(interpret("c3"));
         jsav.step();
         arr.unhighlight();
       }
       else if (arrLen > 1) { // General recursive case
         jsav.step();
-        jsav.umsg("Split the selected array (as evenly as possible)");
+        jsav.umsg(interpret("c4"));
         arr.unhighlight();
 
         // Find the middle of the array,
@@ -81,11 +80,11 @@
         jsav.step();
 
         // Recurse on both sub-arrays
-        jsav.umsg("Select the left subarray");
+        jsav.umsg(interpret("c5"));
         var childArr1Col = column * 2 - 1;
         var retArr1 = mergesort(avSubArr1, level + 1, childArr1Col);
 
-        jsav.umsg("Select the right subarray");
+        jsav.umsg(interpret("c6"));
         var childArr2Col = column * 2;
         var retArr2 = mergesort(avSubArr2, level + 1, childArr2Col);
 
@@ -103,7 +102,7 @@
      * arr2 - the second array to merge
      */
     function merge(origArr, arr1, arr2) {
-      jsav.umsg("Merge selected arrays back together, in sorted order");
+      jsav.umsg(interpret("c7"));
       // Clear the values from the original array
       for (var i = 0; i < origArr.size(); i++) {
         origArr.value(i, "");
@@ -125,7 +124,7 @@
       // Merge the two arrays together, in sorted order
       while (pos1 < arr1.size() || pos2 < arr2.size()) {
         if (pos1 === arr1.size() || pos2 === arr2.size()) {
-          jsav.umsg("When one list becomes empty, copy all values from the remaining array into the sorted array");
+          jsav.umsg(interpret("c8"));
         } else {
           // Eliminate one step for single element arrays to reduce tedium
           if (arr1.size() > 1) {
@@ -135,10 +134,10 @@
             if (pos2 < arr2.size()) {
               arr2.highlight(pos2);
             }
-            jsav.umsg("Select the smallest value from the front of each list (excluding values already in the sorted array)");
+            jsav.umsg(interpret("c9"));
             jsav.step();
           }
-          jsav.umsg("Select the minimum of the two values");
+          jsav.umsg(interpret("c10"));
         }
 
         if (pos1 < arr1.size() &&
@@ -163,14 +162,14 @@
         }
 
         origArr.highlightBlue(index);
-        jsav.umsg("Add the selected value to the sorted array");
+        jsav.umsg(interpret("c11"));
         jsav.step();
 
         origArr.unhighlightBlue(index).markSorted(index);
         index++;
       }
 
-      jsav.umsg("Finished merging");
+      jsav.umsg(interpret("c12"));
       arr1.hide();
       arr2.hide();
       jsav.step();
@@ -214,11 +213,11 @@
     }
 
     var jsav,   // for JSAV library object
-    arr;    // for the JSAV array
+        arr;    // for the JSAV array
 
     // Load the interpreter created by odsaAV.js
-    var interpret = ODSA.AV.interpreter;
-    $('#arrayValues').attr('placeholder', interpret("av_arrVals_placeholder"));
+    var interpret = ODSA.UTILS.getInterpreter();
+    $('#arrayValues').attr('placeholder', interpret("arrValsPlaceholder"));
 
     // create a new settings panel and specify the link to show it
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
