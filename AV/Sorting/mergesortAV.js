@@ -5,7 +5,7 @@
 
     // Process about button: Pop up a message with an Alert
     function about() {
-      var aboutstring = interpret("aboutString");
+      var aboutstring = interpret("av_aboutString");
       alert(aboutstring + JSAV.version());
     }
 
@@ -27,11 +27,11 @@
         var column = 1;
         var arrLen = arr.size();
 
-        jsav.umsg(interpret("c1"));
+        jsav.umsg(interpret("av_c1"));
         mergesort(arr, level, column);
 
         // END MERGESORT IMPLEMENTATION
-        jsav.umsg(interpret("c2"));
+        jsav.umsg(interpret("av_c2"));
         jsav.recorded(); // mark the end
       }
     }
@@ -58,13 +58,13 @@
 
       arr.highlight();
       if (arrLen === 1) {    // Base case
-        jsav.umsg(interpret("c3"));
+        jsav.umsg(interpret("av_c3"));
         jsav.step();
         arr.unhighlight();
       }
       else if (arrLen > 1) { // General recursive case
         jsav.step();
-        jsav.umsg(interpret("c4"));
+        jsav.umsg(interpret("av_c4"));
         arr.unhighlight();
 
         // Find the middle of the array,
@@ -80,11 +80,11 @@
         jsav.step();
 
         // Recurse on both sub-arrays
-        jsav.umsg(interpret("c5"));
+        jsav.umsg(interpret("av_c5"));
         var childArr1Col = column * 2 - 1;
         var retArr1 = mergesort(avSubArr1, level + 1, childArr1Col);
 
-        jsav.umsg(interpret("c6"));
+        jsav.umsg(interpret("av_c6"));
         var childArr2Col = column * 2;
         var retArr2 = mergesort(avSubArr2, level + 1, childArr2Col);
 
@@ -102,7 +102,7 @@
      * arr2 - the second array to merge
      */
     function merge(origArr, arr1, arr2) {
-      jsav.umsg(interpret("c7"));
+      jsav.umsg(interpret("av_c7"));
       // Clear the values from the original array
       for (var i = 0; i < origArr.size(); i++) {
         origArr.value(i, "");
@@ -124,7 +124,7 @@
       // Merge the two arrays together, in sorted order
       while (pos1 < arr1.size() || pos2 < arr2.size()) {
         if (pos1 === arr1.size() || pos2 === arr2.size()) {
-          jsav.umsg(interpret("c8"));
+          jsav.umsg(interpret("av_c8"));
         } else {
           // Eliminate one step for single element arrays to reduce tedium
           if (arr1.size() > 1) {
@@ -134,10 +134,10 @@
             if (pos2 < arr2.size()) {
               arr2.highlight(pos2);
             }
-            jsav.umsg(interpret("c9"));
+            jsav.umsg(interpret("av_c9"));
             jsav.step();
           }
-          jsav.umsg(interpret("c10"));
+          jsav.umsg(interpret("av_c10"));
         }
 
         if (pos1 < arr1.size() &&
@@ -162,14 +162,14 @@
         }
 
         origArr.highlightBlue(index);
-        jsav.umsg(interpret("c11"));
+        jsav.umsg(interpret("av_c11"));
         jsav.step();
 
         origArr.unhighlightBlue(index).markSorted(index);
         index++;
       }
 
-      jsav.umsg(interpret("c12"));
+      jsav.umsg(interpret("av_c12"));
       arr1.hide();
       arr2.hide();
       jsav.step();
@@ -217,7 +217,7 @@
 
     // Load the interpreter created by odsaAV.js
     var interpret = ODSA.UTILS.getInterpreter();
-    $('#arrayValues').attr('placeholder', interpret("arrValsPlaceholder"));
+    $('#arrayValues').attr('placeholder', interpret("av_arrValsPlaceholder"));
 
     // create a new settings panel and specify the link to show it
     var settings = new JSAV.utils.Settings($(".jsavsettings"));

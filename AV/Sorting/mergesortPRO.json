@@ -19,10 +19,10 @@
     "sv": {
       ".exerciseTitle": "Mergesort",
       ".instructLabel": "Instruktioner:",
-      ".instructions": "Börja längst ned till vänster. Slå samman (merge) två ettelementssekvenser för att skapa en sorterad tvåelementssekvens. Fortsätt sammanslagningen till du stöter på en sekvens vars delsekvenser inte BÅDA har sorterats. Återvänd till ettelementsekvenser och upprepa sammanslagningsproceduren efter behov till alla element har slagits samman till en helt sorterad sekvens. För att infoga ett element i en annan sekvens, klicka på elementet för att välja det och klicka sedan på positionen där det borde vara i den sorterade sammanslagna sekvensen. Kom ihåg att ordningen i vilken blocken slås samman spelar roll, så var noga med välja det minsta blocket först och börja från vänster.",
-      "#help": "Hjälp",
+      ".instructions": "BÃ¶rja lÃ¤ngst ned till vÃ¤nster. SlÃ¥ samman (merge) tvÃ¥ ettelementssekvenser fÃ¶r att skapa en sorterad tvÃ¥elementssekvens. FortsÃ¤tt sammanslagningen till du stÃ¶ter pÃ¥ en sekvens vars delsekvenser inte BÃ…DA har sorterats. Ã…tervÃ¤nd till ettelementsekvenser och upprepa sammanslagningsproceduren efter behov till alla element har slagits samman till en helt sorterad sekvens. FÃ¶r att infoga ett element i en annan sekvens, klicka pÃ¥ elementet fÃ¶r att vÃ¤lja det och klicka sedan pÃ¥ positionen dÃ¤r det borde vara i den sorterade sammanslagna sekvensen. Kom ihÃ¥g att ordningen i vilken blocken slÃ¥s samman spelar roll, sÃ¥ var noga med vÃ¤lja det minsta blocket fÃ¶rst och bÃ¶rja frÃ¥n vÃ¤nster.",
+      "#help": "HjÃ¤lp",
       "#about": "Om",
-      "aboutString": "Mergesort Proficiency Exercise\nSkriven av Daniel Breakiron\nSkapad som del av hypertextbookprojeketet OpenDSA.\nFör mer information, se http://algoviz.org/OpenDSA\nKällkod och utvecklingshistorik tillgänglig på\nhttps://github.com/OpenDSA/OpenDSA.\nKompilerad med JSAV library version "
+      "aboutString": "Mergesort Proficiency Exercise\nSkriven av Daniel Breakiron\nSkapad som del av hypertextbookprojeketet OpenDSA.\nFÃ¶r mer information, se http://algoviz.org/OpenDSA\nKÃ¤llkod och utvecklingshistorik tillgÃ¤nglig pÃ¥\nhttps://github.com/OpenDSA/OpenDSA.\nKompilerad med JSAV library version "
     }
   },
   "code" : {}
