@@ -44,7 +44,7 @@
       "c11": "Add the selected value to the sorted array",
       "c12": "Finished merging"
     },
-        "se": {
+    "se": {
       ".avTitle": "Visualisering av Mergesort",
       "#about": "Om",
       "aboutString": "Visualisering av Mergesortalgoritmen\nSkriven av Daniel Breakiron\nSkapad som del av hypertextboksprojektet OpenDSA.\nFör mer information, se http://algoviz.org/OpenDSA\nKällkod och utvecklingshistorik tillgänglig på\nhttps://github.com/OpenDSA/OpenDSA\nKompilerad med JSAV library version version ",
