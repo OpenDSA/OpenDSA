@@ -43,6 +43,28 @@
       "c10": "Select the minimum of the two values",
       "c11": "Add the selected value to the sorted array",
       "c12": "Finished merging"
+    },
+    "se": {
+      ".avTitle": "Visualisering av Mergesort",
+      "#about": "Om",
+      "aboutString": "Visualisering av Mergesortalgoritmen\nSkriven av Daniel Breakiron\nSkapad som del av hypertextboksprojektet OpenDSA.\nFör mer information, se http://algoviz.org/OpenDSA\nKällkod och utvecklingshistorik tillgänglig på\nhttps://github.com/OpenDSA/OpenDSA\nKompilerad med JSAV library version version ",
+      "#run": "Kör",
+      "#reset": "Återställ",
+      "#arraysizeLabel": " Liststorlek: ",
+      "#arrayValuesLabel": " Dina värden: ",
+      "arrValsPlaceholder": "Skriv in komma-separerade värden, eller tryck på 'Kör' för att använda slumpmässiga värden",
+      "c1": "Välj hela sekvensen",
+      "c2": "Färdigsorterat!",
+      "c3": "En sekvens av längd 1 kan inte delas, redo för merge",
+      "c4": "Dela den valda sekvensen (så jämnt som möjligt)",
+      "c5": "Välj vänster delsekvens",
+      "c6": "Välj höger delsekvens",
+      "c7": "Slå samman (merge) valda sekvenser igen, i sorterad ordning",
+      "c8": "När en av listorna blir tom, kopiera alla värden från den kvarvarande listan till den sorterade sekvensen",
+      "c9": "Välj det minsta värdet längst fram i varje lista (exkludera värden redan i den sorterade sekvensen)",
+      "c10": "Välj det minsta av de två värdena",
+      "c11": "Lägg till det valda värdet i den sorterade sekvensen",
+      "c12": "Färdig med merge"
     }
   },
   "code" : {}
