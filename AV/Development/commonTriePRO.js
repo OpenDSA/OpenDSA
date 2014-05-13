@@ -16,7 +16,8 @@
       commonTrie.clear();
     }
 
-    commonTrie = av.ds.tree({center: true, visible: true, nodegap: 20});
+    commonTrie = av.ds.tree({center: false, visible: true, nodegap: 20});
+    commonTrie.element.addClass("jsavcenter");
     commonTrie.root("");
     commonTrie.root().addClass("emptynode");
     commonTrie.click(clickHandler);
