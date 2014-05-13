@@ -11,12 +11,14 @@
   function createArrayTree() {
     var jsav = new JSAV("arrayTree");
     var tree = new jsav.ds.arraytree();
-    tree.root([1, 2, 3]);
 
-    tree.root().addChild([4, 5, 6]);
-    tree.root().addChild([7, 8, 9]);
-    tree.root().addChild([10, 11, 12]);
-    tree.root().addChild([13, 14, 15]);
+    tree.root([1, 1, 1]);
+
+    var child1 = tree.root().addChild([2, 2, 2]);
+    var child2 = tree.root().addChild([3, 3, 3]);
+    // var child3 = tree.root().addChild([4, 4, 4]);
+
+    // var child4 = tree.root().child(1).addChild([5, 5, 5]);
 
     tree.layout();
   }
