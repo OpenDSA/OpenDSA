@@ -213,10 +213,10 @@
     }
 
     var jsav,   // for JSAV library object
-    arr;    // for the JSAV array
+        arr;    // for the JSAV array
 
     // Load the interpreter created by odsaAV.js
-    var interpret = ODSA.AV.interpreter;
+    var interpret = ODSA.UTILS.getInterpreter();
     $('#arrayValues').attr('placeholder', interpret("arrValsPlaceholder"));
 
     // create a new settings panel and specify the link to show it
