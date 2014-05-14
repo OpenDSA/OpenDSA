@@ -6,11 +6,6 @@
 /*global alert: true, ODSA */
 (function ($) {
   $(document).ready(function () {
-    /* **************************************************************
-    *  This first section is generic initialization that all AVs    *
-    *  will need, including initialization for the OpenDSA library  *
-    *  The first line you need to set to use your form's name       *
-    ************************************************************** */
 
     // settings for the AV
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
@@ -26,17 +21,12 @@
 
     var ArraySize = 4; // Size of the exercise array
 
-
-    /* **************************************************************
-    *        Everything below this is specific to this AV           *
-    ************************************************************** */
-
     var incrs = [], //array of randomly generated blocks to insert
         freeValues = [], //array of free block sizea
         $theArray = $("#profArray"),
         initialArray = [], // needed for model answer
         theArray,
-        currIncrIndex = 0, // The index for the student's current increment
+        currIncrIndex = 0, //index of the current block size array
         usedNum,
         freeNum,
         usedAmountLabel,
@@ -46,7 +36,8 @@
         connectStartArray,
         linesArray;
 
-    //creates the initial visualization of the memory pool
+    //creates the initial visualization of the memory pool, rectangles are created based
+    //on the randomly generated values for the free list.
     function OriginalMemBlock() {
 
       var memPoolLabel = av.label("Memory Pool", {"left": 150, "top": 230});
@@ -71,11 +62,13 @@
       var rectY = 250;
       var rectHeight = 60;
 
+      //used blocks in memory pool
       var used1 = av.g.rect(free1Finish, rectY, used1Size, rectHeight).css({"fill": "coral"});
       var used2 = av.g.rect(free2Finish, rectY, used2Size, rectHeight).css({"fill": "coral"});
       var used3 = av.g.rect(free3Finish, rectY, used3Size, rectHeight).css({"fill": "coral"});
       var used4 = av.g.rect(free4Finish, rectY, used4Size, rectHeight).css({"fill": "coral"});
 
+      //free blocks in memory pool
       var free1 = av.g.rect(free1Start, rectY, freeValues[0]*2, rectHeight).css({"fill": "cornflowerblue"});
       var free2 = av.g.rect(free2Start, rectY, freeValues[1]*2, rectHeight).css({"fill": "cornflowerblue"});
       var free3 = av.g.rect(free3Start, rectY, freeValues[2]*2, rectHeight).css({"fill": "cornflowerblue"});
@@ -114,6 +107,7 @@
       var connect3end = (free3Start + free3Finish)/2;
       var connect4end = (free4Start + free4Finish)/2;
 
+      //lines connecting the free list ot the memry pool (for visualization purposes)
       var connect1 = av.g.line(connect1Start, lineY1, connect1end, lineY2);
       var connect2 = av.g.line(connect2Start, lineY1, connect2end, lineY2);
       var connect3 = av.g.line(connect3Start, lineY1, connect3end, lineY2);
@@ -123,8 +117,8 @@
     }
 
       
-    // Generate a random (but constrained) set of four increments
-    function generateIncrements() {
+    // Generate a random (but constrained) set of four block sizes to insert
+    function generateInsertionBlocks() {
 
       incrs[0] = Math.floor(Math.random() * 3) + 36;
       incrs[1] = Math.floor(Math.random() * 3) + 10; 
@@ -133,24 +127,25 @@
       incrs[3] = Math.floor(Math.random() * 3) + 3;
     }
 
+    //Generate a random (but constrained) set of free blocks in the memory pool
     function generateMemoryValues() {
       freeValues[0] = Math.floor(Math.random() * 3) + 20;
       freeValues[1] = Math.floor(Math.random() * 3) + 40; 
-      // incrs[1] is something between incrs[0] and incrs[2]
+
+      // freeValues[1] is something between incrs[0] and incrs[2]
       freeValues[2] = Math.floor(Math.random() * (incrs[0] - incrs[1] - 1)) + incrs[1] + 1;
       freeValues[3] = Math.floor(Math.random() * 3) + 50;
     }
     
-    // Process reset button: Re-initialize everything, including the increments
+    // Process reset button: Re-initialize everything, including the free blocks to insert
     function initialize() {
-      generateIncrements();
+      generateInsertionBlocks();
       generateMemoryValues();
 
       $('#increments').val(incrs);
     
       var htmldata = "";
       htmldata = "<li>" + freeValues[0] + "</li><li>" + freeValues[1] + "</li><li>" + freeValues[2] + "</li><li>" + freeValues[3] + "</li>";
-      //initialArray[ArraySize - i] = 45;
       $theArray.html(htmldata);
       
       // Log the initial state of the exercise
@@ -185,7 +180,7 @@
       var newValue = theArray.value(index)-currIncr;
       theArray.value(index, newValue);
 
-      currIncrIndex += 1;
+      //currIncrIndex += 1;
     }
 
     function modelSolution(jsav) {
@@ -193,21 +188,21 @@
       var modelarr = jsav.ds.array([freeValues[0], freeValues[1], freeValues[2], freeValues[3]], {left: 200});
       jsav.displayInit();
 
-      var i;
-      var j;
+      var i, j;
 
       for (i = 0; i < 4; i += 1) {
         for(j = 0; j < 4; j += 1) {
-                    
+          
           if(incrs[i] <= modelarr.value(j)) {
 
             modelarr.highlight(j);
             modelarr.unhighlight(j);
-
             jsav.stepOption("grade", true);
+
 
             var newVal = modelarr.value(j) - incrs[i];
             modelarr.value(j, newVal);
+
 
             jsav.step();
             break;
@@ -237,20 +232,17 @@
     
     // register click handlers for the array indices
     theArray.click(function (index) {
-      console.log("INDEX: "+index);
-      //av._redo = []; // clear the forward stack, should add a method for this in lib
+
       if (!theArray.isHighlight(index)) {
         theArray.highlight(index);
         setTimeout(function(){theArray.unhighlight(index)}, 250);
         exer.gradeableStep();
         insertIntoBlock(index);
-
+        currIncrIndex += 1;
       } else {
-
         theArray.unhighlight(index);
       }
       av.step();
-
     });
 
     // Connect the action callbacks to the HTML entities
