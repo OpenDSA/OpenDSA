@@ -7,20 +7,12 @@
     evaluatorArrays = [],
     stack,
     clickHandler,
-    interpret,
-    config = ODSA.AV.getConfig("postfixEvaluationPRO.json"),
+    interpret = ODSA.UTILS.getInterpreter("postfixEvaluationPRO", "#jsavcontainer"),
     av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
-
-    // get interpreter function for the selected language
-    if (typeof interpret !== "function") {
-      interpret = JSAV.utils.getInterpreter(config.language);
-      // change the title and the instructions on the page
-      ODSA.AV.setTitleAndInstructions(av.container, config.language);
-    }
 
     // create ClickHandler
     if (typeof clickHandler === "undefined") {

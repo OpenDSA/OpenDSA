@@ -3,7 +3,7 @@
     "en": {
       ".exerciseTitle": "Quicksort",
       ".instructLabel": "Instructions:",
-      ".instructions": "In this exercise you are supposed to sort the array below by simulating the Quicksort algorithm. The pivot is colored orange, and picked and moved to the end of the sublist automatically. Your task in this exercise is to <strong>perform the partitioning, move the pivot into place after the partitioning and to make the function calls</strong>. To select a bar, simply click on it. You can then click on another bar to swap it with the selected bar. The recursive Quicksort call can be made by clicking the <strong>call</strong> button and selecting the bounds for the function. Return from the function by clicking the <strong>return</strong> button. The call stack under the array shows the bounds for which the Quicksort function has been called.",
+      ".instructions": "In this exercise you are supposed to sort the array below by simulating the Quicksort algorithm. The pivot is colored orange, and picked and moved to the end of the sublist automatically. Your task in this exercise is to <strong>perform the partitioning, move the pivot into place after the partitioning and to make the function calls</strong>.<br><br>To select a bar, simply click on it. You can then click on another bar to swap it with the selected bar. The recursive Quicksort call can be made by clicking the <strong>call</strong> button and selecting the bounds for the function. Return from the function by clicking the <strong>return</strong> button. The call stack under the array shows the bounds for which the Quicksort function has been called.",
       "table_to_be_sorted": "Array to be sorted",
       "call_stack": "Call Stack",
       "call": "Call",
@@ -21,7 +21,7 @@
     "fi": {
       ".exerciseTitle": "Quicksort",
       ".instructLabel": "Ohjeet:",
-      ".instructions": "Järjestä alla oleva taulukko simuloimalla Quicksort-algoritmia. Pivot arvo on värjätty oranssiksi, ja se valitaan ja siiretään oikeaan laitaan puolsetasi. Tehtäväsi on suorittaa <strong>partitiointi, pivotin siirto partitioinnin jälkeen ja funktiokutsut</strong>. Arvoja voi siirtää paikasta toiseen klikkaamalla. Tee funktiokutsu painamalla  <strong>call</strong>-nappia ja valitsemalla tämän jälkeen vasen ja oikea raja. Palaa funktiosta painamalla <strong>return</strong>-nappia. Taulukon alla olevasta kutsupino näyttää mille välille Quicksort-funktiota on kutsuttu.",
+      ".instructions": "Järjestä alla oleva taulukko simuloimalla Quicksort-algoritmia. Pivot arvo on värjätty oranssiksi, ja se valitaan ja siiretään oikeaan laitaan puolsetasi. Tehtäväsi on suorittaa <strong>partitiointi, pivotin siirto partitioinnin jälkeen ja funktiokutsut</strong>.<br><br>Arvoja voi siirtää paikasta toiseen klikkaamalla. Tee funktiokutsu painamalla  <strong>call</strong>-nappia ja valitsemalla tämän jälkeen vasen ja oikea raja. Palaa funktiosta painamalla <strong>return</strong>-nappia. Taulukon alla olevasta kutsupino näyttää mille välille Quicksort-funktiota on kutsuttu.",
       "table_to_be_sorted": "Järjestettävä taulukko",
       "call_stack": "Kutsupino",
       "call": "Call",

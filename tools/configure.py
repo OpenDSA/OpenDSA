@@ -304,10 +304,16 @@ def configure(config_file_path, slides = False):
   """Configure an OpenDSA textbook based on a validated configuration file"""
   global satisfied_requirements
 
-  print "Configuring OpenDSA, using " + config_file_path# + '\n'
+  print "Configuring OpenDSA, using " + config_file_path
 
   # Load the configuration
   config = ODSA_Config(config_file_path)
+
+  # Delete everything in the book's HTML directory, otherwise the post-processor can sometimes append chapter numbers to the existing HTML files, making the numbering incorrect
+  html_dir = config.book_dir + config.rel_book_output_path
+  if os.path.isdir(html_dir):
+    print "Clearing HTML directory"
+    shutil.rmtree(html_dir)
 
   # Add the list of topics the book assumes students know to the list of fulfilled prereqs
   if config.assumes:
