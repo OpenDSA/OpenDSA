@@ -12,8 +12,8 @@
     pivotInBound,
     pseudo,
     clickHandler,
-    config = ODSA.AV.getConfig("quicksort2PRO.json"),
-    interpret = JSAV.utils.getInterpreter(config.language),
+    interpret = ODSA.UTILS.getInterpreter("quicksort2PRO", "#jsavcontainer"),
+    code = ODSA.AV.code,
     av = new JSAV($("#jsavcontainer"));
 
   var pivotFunction = {
@@ -31,18 +31,15 @@
     }
   };
 
-  ODSA.AV.setTitleAndInstructions(av.container, config.language);
-
-
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
 
     exercise.jsav.container.find(".jsavcanvas").css({height: 350});
 
-    if (!pseudo && config.code) {
-      pseudo = av.code($.extend({after: {element: $(".instructions")}, visible: true}, config.code));
-      pseudo.hide(config.code.tags.comments_and_findpivot);
+    if (!pseudo && code) {
+      pseudo = av.code($.extend({after: {element: $(".instructions")}, visible: true}, code));
+      pseudo.hide("comments_and_findpivot");
     }
 
     //set up click handler

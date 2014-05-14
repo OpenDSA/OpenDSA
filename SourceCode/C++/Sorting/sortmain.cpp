@@ -1,3 +1,10 @@
+#include <iostream>
+#include <cstdlib>
+#include <fstream>
+
+using std::fstream;
+using std::ios;
+
 // Sorting main function for running timings.
 // To use: <sortname> [+/-] <array_size> <size_of_test> [<threshold>]
 //  + means increasing values, - means decreasing value and no
@@ -14,12 +21,14 @@
 
 int ELEMSIZE = 32003;
 int THRESHOLD = 0;
+bool SUCCESS = true;
 
 #define print(X, Y)
 
 template <typename Comp>
 int sortmain(int argc, char** argv)
 {
+  fstream successfile;
   int* array;
   int i;
 
@@ -31,10 +40,9 @@ int sortmain(int argc, char** argv)
 // On a 3GHz computer, for the n^2 sorts,
 // the array size should be 10,000,000 for up to 10,000 record lists,
 // and should be 1,000,000 for lists of size 100,000 or 1,000,000.
+
   int arraysize;
   int listsize;
-
-
   int currarg;
   int input = 0;  // Type to sort: -1 -- descending; +1 - ascending;
                   //                0 -- random values
@@ -90,7 +98,19 @@ int sortmain(int argc, char** argv)
 
   for (i=0; i<arraysize; i+=listsize)
     for(int j=i+1; j<i+listsize; j++)
-      if(array[j-1] > array[j])
+      if(array[j-1] > array[j]) {
         cout << "ERROR!!!" << "j=" << j << endl;
+        SUCCESS = false;
+      }
+
+  if (SUCCESS) {
+    successfile.open("success", ios::out);
+    if (!successfile) {
+      cout << "Unable to open SUCCESS file :";
+      exit(-1);
+    }
+    successfile << "Success";
+  }
+
   return 0;
 }

@@ -18,13 +18,23 @@
   <script src="arrayTreeCON.js"></script>
 
   <style>
-    .jsavarraytreenode .jsavnode:first-of-type,
-    .jsavarraytreenode .jsavnode:last-of-type {
-      border-radius: 1px;
+    #arrayTree {
+      height: 300px;
     }
 
     .jsavarraytreenode {
+      border: 0;
+      background-color: rgba(0, 0, 0, 0);
+      box-shadow: none;
+      height: 45px;
+    }
+
+    .jsavarraytreenode .jsavarray {
       margin-top: 0;
+    }
+
+    .jsavarraytreenode .jsavarray .jsavnode {
+      border-radius: 0;
     }
   </style>
 </head>
@@ -34,8 +44,8 @@
 
 <div id="arrayTree"></div>
 
-<div id="array" style="height:200px; width:400px;">
-  <div id="holder"></div>
+<div id="other">
+  <div id="hello"></div>
 </div>
 
 </body>

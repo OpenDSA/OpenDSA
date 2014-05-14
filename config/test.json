@@ -14,6 +14,48 @@
   },
   "chapters": {
     "Sorting": {
+      "Sorting/InsertionSort": {
+        "long_name": "Insertion Sort",
+        "exercises" : {
+          "InssortCON1": {
+            "long_name": "Insertion Sort Slideshow 1",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "InssortCON2": {
+            "long_name": "Insertion Sort Slideshow 2",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "InssortCON3": {
+            "long_name": "Insertion Sort Slideshow 3",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "insertionsortAV": {
+            "long_name": "Insertion Sort Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "InssortPRO": {
+            "long_name": "Insertion Sort Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "InssortSumm": {
+            "long_name": "Insertion Sort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
       "Sorting/SortOpt": {
         "long_name": "Optimizing Sorts with Code Tuning",
         "dispModComp": false,
@@ -79,16 +121,47 @@
             "threshold": 5
           }
         }
+      },
+      "Development/SortProgExer.rst": {
+        "long_name": "Sorting Chapter Programming Exercises",
+        "exercises": {}
       }
     },
-    "Randomized Algorithms": {
-      "Development/RandomIntro": {
-        "long_name": "Introduction to Randomized Algorithms",
-        "exercises": {}
-      },
-      "Development/SkipList": {
-        "long_name": "Skip Lists",
-        "exercises": {}
+    "Recursion Skeleton": {
+      "RecurTutor/RecursionSkeleton": {
+      "long_name": "Recursion Chapter Skeleton",
+      "exercises": {
+          "RecursionIntroCON1": {
+            "long_name": "Recursion Introduction Slideshow 1",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "RecursionIntroCON2": {
+            "long_name": "Recursion Introduction Slideshow 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "RecursionIntroCON3": {
+            "long_name": "Recursion Introduction Slideshow 3",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          },
+          "RecursionIntroCON4": {
+            "long_name": "Recursion Introduction Slideshow 4",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "RecursionIntroCON5": {
+            "long_name": "Recursion Introduction Slideshow 5",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       }
     },
     "Appendix": {

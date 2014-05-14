@@ -35,11 +35,14 @@
 .jsavarray {
    position: absolute;
 }
+*/
 
 .jsavnode {
   line-height: 30px;
+  text-align: left;
+  padding-left: 20px;
 }
-*/
+
 .jsavcanvas {
   height: 550px;
   width: 800px;
