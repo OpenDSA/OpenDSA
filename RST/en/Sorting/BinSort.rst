@@ -31,7 +31,7 @@ Let's start with an especially easy situation.
 Consider the following code fragment to sort a permutation of the
 numbers 0 through :math:`n-1`.
 
-.. codeinclude:: Sorting/Binsort.pde 
+.. codeinclude:: Sorting/Binsort 
    :tag: simplebinsort
 
 .. inlineav:: BinsortCON1 ss
@@ -71,7 +71,7 @@ We assume that we know that the range of possible keys is between
 0 and ``MaxKeyValue``.
 Here is the extended Binsort algorithm.
 
-.. codeinclude:: Sorting/Binsort.pde
+.. codeinclude:: Sorting/Binsort
    :tag: Binsort
 
 This version of Binsort can sort any collection of records whose key

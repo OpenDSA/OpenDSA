@@ -30,7 +30,7 @@ of :math:`n`.
 A trace of ``fact``'s execution for a small value
 of :math:`n` is presented in Module :numref:`<StackRecur>`.
 
-.. codeinclude:: Misc/Fact.pde 
+.. codeinclude:: Misc/Fact 
    :tag: RFact
 
 The first two lines of the function constitute the base cases.
@@ -138,7 +138,7 @@ If ``move`` were to print the values of its parameters,
 then the result of calling ``TOH`` would be a list of
 ring-moving instructions that solves the problem.
 
-.. codeinclude:: Misc/TOH.pde 
+.. codeinclude:: Misc/TOH 
    :tag: TOH
 
 Those who are unfamiliar with recursion might find it hard to

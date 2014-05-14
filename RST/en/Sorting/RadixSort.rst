@@ -78,7 +78,7 @@ Exactly this approach is taken by the following implementation.
 At the end of each pass, the records are copied back to the original
 array.
 
-.. codeinclude:: Sorting/Radixsort.pde
+.. codeinclude:: Sorting/Radixsort
    :tag: Radixsort
 
 The first inner ``for`` loop initializes array ``cnt``.
@@ -151,7 +151,7 @@ represent the :math:`n` distinct key values.
 This means that :math:`k \geq \log_r n`.
 Because it requires *at least* :math:`\log n` digits
 to distinguish between the :math:`n` distinct keys
-(within a constant factor---meaning, the number of digits is
+(within a constant factor |---| meaning, the number of digits is
 :math:`\Omega(\log n)`),
 :math:`k` is in :math:`\Omega(\log n)`.
 **This means that Radix Sort requires**

@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Array Tree Sample</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
-    <link rel="stylesheet" href="firstFit.css" type="text/css" />
+  <title>Array Tree Sample</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="firstFit.css" type="text/css" />
 
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
+  <script src="ArrayTree.js"></script>
+  <script src="arrayTreeCON.js"></script>
+
+  <style>
+    #arrayTree {
+      height: 300px;
+    }
+
+    .jsavarraytreenode {
+      border: 0;
+      background-color: rgba(0, 0, 0, 0);
+      box-shadow: none;
+      height: 45px;
+    }
+
+    .jsavarraytreenode .jsavarray {
+      margin-top: 0;
+    }
+
+    .jsavarraytreenode .jsavarray .jsavnode {
+      border-radius: 0;
+    }
+  </style>
 </head>
 
 <body>
 <!-- Main Container -->
-<style>
-    #arrayTree {
-        width: 800px;
-        margin: 0 auto;
-    }
 
-    #arrayTree .jsavcanvas {
-        height: 800px;
-        width: 800px;
-        margin-left: 70px;
-    }
+<div id="arrayTree"></div>
 
-    #arrayTree .jsavarray .jsavindex {
-        min-width: 30px;
-        max-width: 30px;
-        min-height: 30px;
-        max-height: 30px;
-    }
-
-    #arrayTree .jsavarray {
-        min-height: 32px;
-        max-height: 32px;
-    }
-</style>
-<div id="arrayTree">
-
+<div id="other">
+  <div id="hello"></div>
 </div>
 
-<script src="../../lib/jquery.min.js"></script>
-<script src="../../lib/jquery-ui.min.js"></script>
-<script src="../../JSAV/lib/jquery.transit.js"></script>
-<script src="../../JSAV/lib/raphael.js"></script>
-<script src="../../JSAV/build/JSAV-min.js"></script>
-<script src="../../lib/odsaUtils-min.js"></script>
-<script src="../../lib/odsaAV-min.js"></script>
-<script src="ArrayTree.js"></script>
-<script src="arrayTreeCON.js"></script>
 </body>
 </html>

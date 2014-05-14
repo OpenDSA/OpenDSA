@@ -13,6 +13,7 @@ SourceCode/Java/build
 SourceCode/JavaScript/build
 SourceCode/Python/build
 SourceCode/JavaScript/node_modules
+SourceCode/C++/build
 
 #Books directory (these are build targets)
 Books
@@ -25,3 +26,6 @@ lib/khan-exercises/exercises/khan-site.html
 
 # Minified JS and CSS files
 lib/*-min.*
+
+# File used by webstorm to store project settings.
+.idea

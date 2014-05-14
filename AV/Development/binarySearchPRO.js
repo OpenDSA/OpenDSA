@@ -1,3 +1,4 @@
+/* global ODSA, JSAV */
 (function ($) {
   "use strict";
 
@@ -25,7 +26,7 @@
 
     // show the code and highlight the row where mid is calculated
     if (!pseudo && config.code) {
-      pseudo = av.code( $.extend({after: {element: $(".instructions")}}, config.code) );
+      pseudo = av.code($.extend({after: {element: $(".instructions")}}, config.code));
       pseudo.show();
       pseudo.highlight(config.code.tags.highlight);
     }
@@ -33,12 +34,12 @@
     //generate random array with ascending values
     var randomVal = 0;
     for (var i = 0; i < arraySize; i++) {
-      randomVal += Math.floor(Math.random()*10);
+      randomVal += Math.floor(Math.random() * 10);
       initialArray[i] = randomVal;
     }
 
     //generate a random key, the value of which is between the min and max of the array
-    key = Math.ceil(5* (initialArray[0] + initialArray[arraySize -1]) / 7);
+    key = Math.ceil(5 * (initialArray[0] + initialArray[arraySize - 1]) / 7);
 
     // clear old elements
     if (keyholder) {
@@ -55,7 +56,7 @@
     keyholder = av.ds.array([key], {indexed: false});
     keyholder.element.css("margin-top", 25);
     keyholder.css(0, {"background-color": "#ddf"});
-    $findLabel = $("<p>" + interpret("find_label") + "</p>")
+    $findLabel = $("<p>" + interpret("av_find_label") + "</p>")
       .css("text-align", "center")
       .css("font-weight", "bold")
       .css("margin-bottom", -15)
@@ -71,18 +72,19 @@
 
   function modelSolution(jsav) {
     jsav.ds.array([key], {indexed: false}).css(0, {"background-color": "#ddf"});
-    var modelArray = jsav.ds.array(Array(arraySize), {indexed: true, autoresize: false});
+    var modelArray = jsav.ds.array(new Array(arraySize), {indexed: true, autoresize: false});
 
-    if (config.code)
+    if (config.code) {
       jsav.code(config.code).highlight(config.code.tags.highlight);
+    }
 
     jsav._undo = [];
 
     var low = 0, high = arraySize - 1, mid;
 
     while (low <= high) {
-      mid = Math.floor( (low + high)/2);
-      jsav.umsg(interpret("ms_comment1"), {fill: {
+      mid = Math.floor((low + high) / 2);
+      jsav.umsg(interpret("av_ms_comment1"), {fill: {
         low: low,
         high: high,
         mid: mid
@@ -91,7 +93,7 @@
       modelArray.value(mid, initialArray[mid]);
       modelArray.highlight(mid);
       if (modelArray.value(mid) < key) {
-        jsav.umsg(interpret("ms_comment2"), {preserve: true, fill: {
+        jsav.umsg(interpret("av_ms_comment2"), {preserve: true, fill: {
           arr_at_mid: modelArray.value(mid),
           key: key,
           mid_plus_1: mid + 1
@@ -101,7 +103,7 @@
         paintGrey(modelArray, 0, mid);
       }
       if (modelArray.value(mid) > key) {
-        jsav.umsg(interpret("ms_comment3"), {preserve: true, fill: {
+        jsav.umsg(interpret("av_ms_comment3"), {preserve: true, fill: {
           arr_at_mid: modelArray.value(mid),
           key: key,
           mid_minus_1: mid - 1
@@ -111,7 +113,7 @@
         paintGrey(modelArray, mid, arraySize - 1);
       }
       if (modelArray.value(mid) === key) {
-        jsav.umsg(interpret("ms_comment4"), {preserve: true, fill: {mid: mid}});
+        jsav.umsg(interpret("av_ms_comment4"), {preserve: true, fill: {mid: mid}});
 
         paintGrey(modelArray, 0, arraySize - 1);
       }
@@ -121,7 +123,7 @@
         return modelArray;
       }
     }
-    jsav.umsg(interpret("ms_comment5"), {preserve: true});
+    jsav.umsg(interpret("av_ms_comment5"), {preserve: true});
     return modelArray;
   }
 
@@ -151,19 +153,20 @@
   // paints the background gray for indices [first, last].
   function paintGrey(array, first, last) {
     array.addClass(
-      function(index) {return index >= first && index <= last},
+      function (index) { return index >= first && index <= last; },
       "greybg"
       );
   }
 
   function refLines(av, code, lineTag) {
-    if (!code)
+    if (!code) {
       return;
+    }
     var lines = code.tags[lineTag];
     if (typeof lines === "number") {
-      av.umsg(" " + interpret("line"), {preserve: true, fill: {first: lines + 1}});
+      av.umsg(" " + interpret("av_line"), {preserve: true, fill: {first: lines + 1}});
     } else if (typeof lines === "object") {
-      av.umsg(" " + interpret("lines"), {preserve: true, fill: {first: lines[0] + 1, second: lines[1] + 1}});
+      av.umsg(" " + interpret("av_lines"), {preserve: true, fill: {first: lines[0] + 1, second: lines[1] + 1}});
     }
   }
 

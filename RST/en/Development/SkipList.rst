@@ -101,7 +101,7 @@ The Skip List stores a header node named ``head`` with
 ``level`` pointers.
 The ``find`` function is shown next.
 
-.. codeinclude:: Randomized/SkipList.pde
+.. codeinclude:: Randomized/SkipList
    :tag: SkipFind
 
 Searching for a node with value 62 in the
@@ -141,7 +141,7 @@ probability that it will have two, and so on.
 The following function determines the level based on such a
 distribution:
 
-.. codeinclude:: Randomized/SkipList.pde
+.. codeinclude:: Randomized/SkipList
    :tag: SkipRand
 
 Once the proper level for the node has been determined, the next
@@ -150,7 +150,7 @@ appropriate at all of its levels.
 Here is an implementation for inserting a new
 value into the Skip List.
 
-.. codeinclude:: Randomized/SkipList.pde
+.. codeinclude:: Randomized/SkipList
    :tag: SkipInsert
 
 Figure :num:`Figure #SkipExamp` illustrates the Skip List insertion

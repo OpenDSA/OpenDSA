@@ -1,8 +1,6 @@
 (function () {
   "use strict";
 
-  console.log("load global");
-
   /**
    * Generate a colorized binary search tree.
    * @param root The root of the tree.
@@ -60,7 +58,8 @@
     } else {
       // Explore left child.
       if (typeof(root.left()) !== "undefined" && root.left() !== null) {
-        if (root.css("background-color") !== root.left().css("background-color")) {
+        if (root.css("background-color") !==
+          root.left().css("background-color")) {
           getAnswer(root.left(), disk_accesses + 1);
         } else {
           getAnswer(root.left(), disk_accesses);
@@ -69,7 +68,8 @@
 
       // Explore right child.
       if (typeof(root.right()) !== "undefined" && root.right() !== null) {
-        if (root.css("background-color") !== root.right().css("background-color")) {
+        if (root.css("background-color") !==
+          root.right().css("background-color")) {
           getAnswer(root.right(), disk_accesses + 1);
         } else {
           getAnswer(root.right(), disk_accesses);
@@ -107,10 +107,13 @@
     }
     bst.layout();
 
-    // Pick bottom layer node to be chosen one.
-    var chosen_index = Math.floor((Math.random() * 100) % window.ODSA.bottom_layer.length);
+    // Pick bottom layer node to be the chosen one at random.
+    var chosen_index = Math.floor((Math.random() * 100) %
+      window.ODSA.bottom_layer.length);
     var chosen_node = window.ODSA.bottom_layer[chosen_index];
-    chosen_node.css({"box-shadow": "0 0 8px 6px rgba(0, 0, 0, 0.5)"});
+
+    // Give the chosen node a grey glow to indicate that is has being selected.
+    chosen_node.css({"box-shadow": "0 0 8px 6px rgba(0, 0, 0, 0.8)"});
     chosen_node.is_chosen = true;
 
     // Find the number of accesses to get to the chosen one.

@@ -288,7 +288,8 @@ def initialize_conf_py_options(config, slides):
   options['odsa_dir'] = config.odsa_dir
   options['book_dir'] = config.book_dir
   options['code_dir'] = config.code_dir
-  options['code_lang'] = config.code_lang
+  options['tabbed_code'] = config.tabbed_codeinc
+  options['code_lang'] = json.dumps(config.code_lang)
   options['av_root_dir'] = config.av_root_dir
   options['exercises_root_dir'] = config.exercises_root_dir
   # The relative path between the ebook output directory (where the HTML files are generated) and the root ODSA directory
@@ -303,10 +304,16 @@ def configure(config_file_path, slides = False):
   """Configure an OpenDSA textbook based on a validated configuration file"""
   global satisfied_requirements
 
-  print "Configuring OpenDSA, using " + config_file_path# + '\n'
+  print "Configuring OpenDSA, using " + config_file_path
 
   # Load the configuration
   config = ODSA_Config(config_file_path)
+
+  # Delete everything in the book's HTML directory, otherwise the post-processor can sometimes append chapter numbers to the existing HTML files, making the numbering incorrect
+  html_dir = config.book_dir + config.rel_book_output_path
+  if os.path.isdir(html_dir):
+    print "Clearing HTML directory"
+    shutil.rmtree(html_dir)
 
   # Add the list of topics the book assumes students know to the list of fulfilled prereqs
   if config.assumes:

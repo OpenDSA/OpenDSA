@@ -28,7 +28,7 @@ of times each value appears in the picture.
 Assume that the picture is a rectangle with :math:`P` pixels.
 A pseudocode algorithm to solve the problem follows.
 
-   .. codeinclude:: Misc/Anal.pde 
+   .. codeinclude:: Misc/Anal 
       :tag: c3p16
 
 In this example, ``count`` is an array of size ``C`` that

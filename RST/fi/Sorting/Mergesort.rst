@@ -4,8 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer
-   :coauthors: Ari Korhonen, Kasper Hellström (Finnish translations)
+   :author: Ari Korhonen, Kasper Hellström (Finnish translations)
    :requires: comparison; sorting terminology
    :satisfies: mergesort
    :topic: Sorting

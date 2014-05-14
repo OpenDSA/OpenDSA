@@ -278,7 +278,7 @@ buffer pool and the buffer pool class itself.
 The first approach is to pass "messages" between the two.
 This approach is illustrated by the following abstract class:
 
-.. codeinclude:: BufferPool/BuffMsgADT.pde
+.. codeinclude:: BufferPool/BuffMsgADT
 
 This simple class provides an interface with two member functions,
 ``insert`` and ``getbytes``.
@@ -314,7 +314,7 @@ user a direct pointer to a buffer that contains the requested
 information.
 Such an interface might look as follows:
 
-.. codeinclude:: BufferPool/BuffBuffADT.pde
+.. codeinclude:: BufferPool/BuffBuffADT
 
 In this approach, the buffer pool user is made aware that the
 storage space is divided into blocks of a given size, where each block
@@ -415,9 +415,9 @@ Users who wish to see the old contents must then issue a
 and then a ``getDataPointer`` request to gain direct access to the
 buffer's data contents.
 
-.. codeinclude:: BufferPool/BufferADT.pde
+.. codeinclude:: BufferPool/BufferADT
 
-.. codeinclude:: BufferPool/BufferPoolADT.pde
+.. codeinclude:: BufferPool/BufferPoolADT
 
 Again, a mode parameter could be added to the ``acquireBuffer``
 method, eliminating the need for the ``readBlock`` and

@@ -50,7 +50,7 @@ Below is an implementation for the increment operation,
 assuming that a binary number of length :math:`n` is stored in array
 `A` of length :math:`n`.
 
-.. codeinclude:: Analysis/Increment.pde
+.. codeinclude:: Analysis/Increment
 
 If we count from 0 through :math:`2^n - 1`, (requiring a counter with
 at least "math:`n` bits), what is the average cost for an increment

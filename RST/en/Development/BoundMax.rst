@@ -27,7 +27,7 @@ value in an unsorted list.
 
 Here is a simple algorithm for finding the largest value.
 
-.. codeinclude:: Misc/Largest.pde
+.. codeinclude:: Misc/Largest
 
 Obviously this algorithm requires :math:`n` comparisons.
 Is this optimal?

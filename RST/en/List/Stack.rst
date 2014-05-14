@@ -44,7 +44,7 @@ stack.
 When removed, an element is said to be :term:`popped` from the stack.
 Here is a simple stack ADT.
 
-.. codeinclude:: Lists/Stack.pde
+.. codeinclude:: Lists/Stack
    :tag: Stack
 
 As with lists, there are many variations on stack implementation.
@@ -58,7 +58,7 @@ Array-Based Stacks
 Here is a complete implementation for
 the array-based stack class.
 
-.. codeinclude:: Lists/AStack.pde
+.. codeinclude:: Lists/AStack
    :tag: AStack1,AStack2
 
 .. inlineav:: AStackVarCON ss
@@ -93,7 +93,7 @@ A header node is not used because no special-case code is required
 for lists of zero or one elements.
 Here is the complete linked stack implementation.
 
-.. codeinclude:: Lists/LStack.pde
+.. codeinclude:: Lists/LStack
    :tag: LStack1,LStack2
 
 .. _LStackDiagram:

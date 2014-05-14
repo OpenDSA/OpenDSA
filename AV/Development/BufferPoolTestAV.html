@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-  <title>Testing Buffer Pool Stand Alone HTML</title>
+  <title>Buffer Pool Stand Alone HTML</title>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
   <link rel="stylesheet" href="BufferPoolAV.css" type="text/css" />
@@ -20,11 +20,7 @@
     </table>
     
     <div class="avcontainer">
-      <p class="jsavoutput jsavscroll"></p>
-      <div class="jsavcanvas"></div>
-    </div>
-
-    <div class="av" id = "temp">
+      <p class="jsavoutput jsavline"></p>
       <div class="jsavcanvas"></div>
     </div>
 
@@ -66,10 +62,6 @@
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
         </select>
       </p>
       <p>
@@ -78,7 +70,8 @@
         <input size="10" name="input" id="input" type="text" />
 
         <!-- Buttons -->
-        <input type="button" id="next" name="next" value="Next" />
+        <input type="button" id="read" name="read" value="Read" />
+        <input type="button" id="write" name="write" value="Write" />
         <input type="button" id="reset" name="reset" value="Restart" />
 
       </p>

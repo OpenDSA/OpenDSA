@@ -8,6 +8,8 @@
    :prerequisites: 
    :topic: File Processing
 
+.. odsalink:: AV/Development/sectorLayoutCON.css   
+
 Disk Drives
 ===========
 
@@ -115,12 +117,15 @@ This arrangement is shown in Figure :num:`Figure #Diskfig` (b).
 
 .. _Diskfig:
 
+
 .. odsafig:: Images/Disk.png
    :width: 300
    :align: center
    :capalign: justify
    :figwidth: 90%
    :alt: The organization of a disk platter
+
+  
 
    The organization of a disk platter.
    Dots indicate density of information.
@@ -256,12 +261,8 @@ fragmentation.
 
 .. _Layout:
 
-.. odsafig:: Images/Layout.png
-   :width: 300
+.. inlineav:: disk dgm
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Sector gaps in a track
 
    An illustration of sector gaps within a track.
    Each sector begins with a sector header containing the sector address
@@ -437,3 +438,6 @@ Notes
 
        To complicate matters further, Solid State Drives (SSD) work
        rather differently.
+
+.. odsascript:: AV/Development/sectorLayoutCON.js
+

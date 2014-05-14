@@ -63,7 +63,7 @@ This code is a little longer than that for the singly linked list node
 implementation since
 the doubly linked list nodes have an extra data member.
 
-.. codeinclude:: Lists/DLink.pde
+.. codeinclude:: Lists/DLink
    :tag: DLink
 
 The following slideshows illustrate the ``insert``, ``append``,
@@ -128,7 +128,7 @@ The following code fragment will
 swap the contents of two variables without using a temporary variable
 (at the cost of three arithmetic operations).
 
-.. codeinclude:: Lists/DoubleTest.pde
+.. codeinclude:: Lists/DoubleTest
    :tag: ch4p1
 
 A similar effect can be had by using the exclusive-or operator.

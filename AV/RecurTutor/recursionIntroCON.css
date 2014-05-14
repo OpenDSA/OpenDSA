@@ -29,6 +29,17 @@ background-image: url(Icons/person2.png);
  width: 250px;
 }
 
+#RecursionIntroCON4 .jsavcanvas{
+ height: 500px;
+ width: 700px;
+}
+
+#RecursionIntroCON5 .jsavcanvas{
+ height: 500px;
+ width: 700px;
+}
+
+
 .svg{
   stroke-width: 1;
 }

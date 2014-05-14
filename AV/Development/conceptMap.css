@@ -16,6 +16,11 @@
 	padding-right: 15px;
 }
 
+.jsavnode.edge {
+	border-radius: 8px;
+	border-style: none;
+}
+
 ul {
 list-style-type: none;
 padding: 0px;

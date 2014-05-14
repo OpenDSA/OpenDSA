@@ -17,7 +17,7 @@ Computing Fibonnaci Numbers
 Consider the recursive function for computing the :math:`n`'th
 Fibonacci number.
 
-.. codeinclude:: Misc/Fibonnaci.pde 
+.. codeinclude:: Misc/Fibonnaci 
    :tag: FibR
 
 The cost of this algorithm (in terms of function calls) is the size of
@@ -40,7 +40,7 @@ One way to accomplish this goal is to keep a table of values, and
 first check the table to see if the computation can be avoided.
 Here is a straightforward example of doing so.
 
-.. codeinclude:: Misc/Fibonnaci.pde 
+.. codeinclude:: Misc/Fibonnaci 
    :tag: FibRT
 
 This version of the algorithm will not compute a value more than once,
@@ -53,7 +53,7 @@ Instead, we could build the value by working from 0 and 1 up to
 Going up from the bottom we only need to store the previous two values
 of the function, as is done by our iterative version.
 
-.. codeinclude:: Misc/Fibonnaci.pde 
+.. codeinclude:: Misc/Fibonnaci 
    :tag: FibI
 
 Recomputing of subproblems comes up in many algorithms.
@@ -335,7 +335,7 @@ Here is the implementation for Floyd's algorithm.
 At the end of the algorithm, array ``D`` stores the all-pairs shortest
 distances.
 
-.. codeinclude:: Graphs/Floyd.pde 
+.. codeinclude:: Graphs/Floyd 
    :tag: Floyd
 
 Clearly this algorithm requires :math:`\Theta(|\mathbf{V}|^3)` running

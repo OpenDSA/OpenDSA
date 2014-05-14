@@ -87,7 +87,7 @@ If the list is already nearly sorted, then there will be few swaps
 anyway.
 Here is an implementation for Insertion Sort using this optimization.
 
-.. codeinclude:: Sorting/Insertionsort.pde
+.. codeinclude:: Sorting/Insertionsort
    :tag: InsertionOpt
 
 Now, you can test whether you understand how this works.
@@ -129,7 +129,7 @@ Thus, we never need to check higher-positioned values again, which
 could save many iterations even if there are a few swaps lower down.
 Here is code to implement this approach.
 
-.. codeinclude:: Sorting/Bubblesort.pde 
+.. codeinclude:: Sorting/Bubblesort 
    :tag: BubblesortCheck        
 
 The problem with this idea is that a considerable amount of effort

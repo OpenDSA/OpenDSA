@@ -1,14 +1,10 @@
-label {
-  margin-left: 5px;
-}
-
 #container {
   width: 800px;
   height: 540px;
 }
 
 #bottom {
-padding-left: 5px;
+  padding-left: 5px;
   height: 90px;
   width: 805px;
   border: 1px solid black;
@@ -16,13 +12,13 @@ padding-left: 5px;
   overflow: hidden;
 }
 
+/*
 #showcounts {
   margin-right: -8px;
   float: right;
 }
 
 #input {
-  /* Spacing between the input box and the Next button */
   margin-right: 5px;
 }
 
@@ -39,36 +35,29 @@ padding-left: 5px;
 .jsavarray {
    position: absolute;
 }
-
-.jsavarray .jsavindex {
-  height: 10px;
-  width: 140px;
-  border-radius: 0 !important;
-}
+*/
 
 .jsavnode {
   line-height: 30px;
-}
-
-.jsavscroll {
-  width: 370px;
-  height: 460px;
-  font-size: 100%;
-  float: left;
-  margin-left: -10px;
-  margin-top: 5px;
-  padding-left: 5px;
+  text-align: left;
+  padding-left: 20px;
 }
 
 .jsavcanvas {
-  margin-left: 300px;
   height: 550px;
-  width: 500px;
+  width: 800px;
 }
 
+.jsavarray .jsavindex {
+  height: 10px;
+  width: 110px;
+  border-radius: 0 !important;
+}
+
+/*
 #temp {
   margin-top: -550px;
-  margin-left: 740px;
+  margin-left: 760px;
 }
 
 #temp .jsavcanvas{
@@ -85,3 +74,4 @@ padding-left: 5px;
 #procontrols{
   text-align: left;
 }
+*/

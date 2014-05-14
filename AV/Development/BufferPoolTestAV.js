@@ -1,566 +1,692 @@
 "use strict";
-// bug when move element up, then add
 (function ($) {
+  var jsav,                 // jsav
+      buffer_size = 0,      // number of elements in buffer pool
+      pool,                 // array holding jsav array (for buffers)
+      list,                 // jsav array for list representation
+      memory,               // jsav array for disk
+      lines,                // array holding jsav lines
+      LRU_moveup = 0,
+      LRU_moveup_kai = 0,    
+      LRU_replace = 0,
+      empty_index = 0,
+      into_list = 0,
+      LFU_index = 0;
 
-  /* Variables */
-  var jsav,
-      jsav_counter,                     
-      main_memory,                      
-      buffer_pool,
-      freq_counter,
-      lines
-      
-  var counter = 0;
-  var index = [];
-  var index_size = 0;
-  var LRU_replacement = 0;
-  var LRU_move_up = 0;
-
-  function array_init() {
-    var empty = [];
-    lines = [];
-    main_memory = jsav.ds.array(empty, {layout: "vertical", left: 450});
-    buffer_pool = jsav.ds.array(empty, {indexed: true, layout: "vertical", left: 800});
-    freq_counter = jsav_counter.ds.array(empty, {indexed: true, layout: "vertical", left: 0});
-  }
-
-  function contains(arg) {
-    var i;
-    for (i = 0; i < buffer_pool.size(); i++) {
-      if (buffer_pool.value(i) == arg)
-        return true;
+  var lines_end = [];
+  var LFU_counter = [];
+  var label_array = [];
+  var divider;
+  var dirty_bits = [];
+  var dirty_bit_array = [];
+  // check if one of the buffers contains the sector
+  // returns index if value is found
+  function contains(val) {
+    for (var i = 0; i < pool.length; i++) {
+      if (pool[i].value(0) == val) {
+        return i;
+      }
     }
-    return false;
+    return -1;
+  }
+  // cheks the list for matching secotr
+  // return index if value is found
+  function contains_kai(val) {
+    for (var i = 0; i < buffer_size; i++) {
+      if (list.value(i) == val) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  // unhighlight every buffer
+  function unhighlight_pool() {
+    for (var i = 0; i < pool.length; i++) {
+      pool[i].unhighlight();
+    }
+  }
+  // display counters for LFU
+  function show_counters() {
+    for (var i = 0; i < buffer_size; i++) {
+      if (list.value(i) != "") {
+        label_array[i] = jsav.label(LFU_counter[list.value(i)], {"top": 40 + i * 45, "left": 700});
+      }
+    }
+  }
+  function hide_counters() {
+    for (var i = 0; i < label_array.length; i++) {
+      label_array[i].hide();
+    }
+  }
+  function show_dirty() {
+    for (var i = 0; i < buffer_size; i++) {
+      if (list.value(i) != "") {
+        var temp = dirty_bits[list.value(i)];
+        dirty_bit_array[i] = jsav.label(temp, {"top": 40 + i*45, "left": 650});
+      }
+    }
+  }
+  function hide_dirty() {
+    for (var i = 0; i < dirty_bit_array.length; i++) {
+      dirty_bit_array[i].hide();
+    }
+  }
+  // initalize the visualization
+  function initialize() {
+    //console.log("initialize");
+    jsav = new JSAV($('.avcontainer'));
+    jsav.recorded();
+    jsav.displayInit();
+    var empty = [];
+    pool = [];
+    lines = [];
+
+    lines_end[0] = 43;
+    lines_end[1] = 88;
+    lines_end[2] = 137;
+    lines_end[3] = 180;
+    lines_end[4] = 227;
+
+    list = jsav.ds.array(empty);
+    memory = jsav.ds.array(empty);
+    update();
   }
 
-  function clear_lines() {
-    for (i = 0; i< buffer_pool.size(); i++) {
+  // when read button is clicked
+  function read() {
+    //console.log("width: " + list.css("width"));
+    //list.css({"width": "+=20px"});
+    //list.css({"color": "green"});
+    //list.layout();  
+    //console.log("width after: " + list.css("width"));
+    //console.log("size: " + buffer_size);
+    var input = $("#input").val();
+    var replacement = $("#function").val();
+    //console.log("replacement " + replacement);
+    if (replacement == 1) {
+      LRU(input);
+    }
+    if (replacement == 2) {
+      FIFO(input);
+    }
+    if (replacement == 3) {
+      LFU(input);
+    }
+  }
+
+  function write() {
+    var input = $("#input").val();
+    var replacement = $("#function").val();
+    if (replacement == 1) {
+      LRU_write(input);
+    }
+    if (replacement == 2) {
+      FIFO_write(input);
+    }
+    if (replacement == 3) {
+      LFU_write(input);
+    }
+
+  }
+  function drawlines() {
+    for (var i = 0; i < pool.length; i++) {
+      var endpoint = contains_kai(pool[i].value(0));
+      if (pool[i].value(0) != "") {
+        lines[i] = jsav.g.line(465,  43 + 75 * i, 550,  lines_end[endpoint], {'stroke-width' : 2});
+      }
+    }
+  }
+
+  function clearlines() {
+    for (var i = 0; i < lines.length; i++) {
       lines[i].hide();
     }
   }
 
-  /**
-   * Instruct the user on what fields they are missing and clear and redraw the hash table
-   */
-  function resetAV() {
-    // Display a message telling them what fields they need to select
-    counter = 0;
-    main_memory.clear();
-    buffer_pool.clear();
-    freq_counter.clear();
-    if (index_size != 0) {
-      var i;
-      for (i = 0; i < index_size; i++) {
-        index[i].hide();
+  function LRU(input) {
+    clearlines();
+    hide_dirty();
+    //console.log("LRU");
+    if (contains_kai(input) != -1 && LRU_replace == 0) {
+      var index = contains_kai(input);
+      if (LRU_moveup_kai == 0) {
+        list.unhighlight();
+        $("#input").attr("disabled", "disabled");
+        $("#write").attr("disabled", "disabled");
+        jsav.umsg("a buffer already contains sector " + input);
+        list.highlight(index);
+        LRU_moveup_kai++;
+      }
+      else if (LRU_moveup_kai == 1) {
+        var index = contains_kai(input);
+        empty_index = index;
+        jsav.umsg("the buffer containing secotr " + input + " will be moved to the front of the list");
+        list.unhighlight();
+        list.value(index, "");
+        LRU_moveup_kai++;
       }
     }
-    jsav.clearumsg();
-    var missingFields = [];
+    else if (LRU_moveup_kai == 2) {
+      for (var i = empty_index-1; i > -1; i--) {
+        jsav.effects.moveValue(list, i, list, i+1);
+      }
+      LRU_moveup_kai++;
+    }
+    else if (LRU_moveup_kai == 3) {
+      jsav.umsg("Sector " + input + " moved to front of the list");
+      list.value(0, input);
+      list.highlight(0);
+      LRU_moveup_kai = 0;
+      $("#input").removeAttr("disabled");
+      $("#write").removeAttr("disabled");
+    }
+    else if (buffer_size < pool.length) {
+      if (into_list == 0) {
+        dirty_bits[input] = 0;
+        //console.log(buffer_size);
+        list.unhighlight();
+        memory.highlight(input);
+        pool[buffer_size].highlight();
+        jsav.umsg("Reading sector " + input + ". a buffer stores sector");
+        //jsav.effects.copyValue(memory, input, pool, buffer_size);
+        pool[buffer_size].value(0, input);
+        $("#input").attr("disabled", "disabled");
+        $("#write").attr("disabled", "disabled");
+        into_list = 1;
+      }
+      else if (into_list == 1) {
+        if (buffer_size == 0) {
+          jsav.umsg("buffer is placed into a list");
+          pool[buffer_size].unhighlight();
+          list.highlight(0);
+          list.value(0, input);
+          buffer_size++;
+          into_list = 0;
+          $("#input").removeAttr("disabled");
+          $("#write").removeAttr("disabled");
+        }
+        else if (LRU_moveup == 0) {
+          list.unhighlight();
+          jsav.umsg("buffer is place into a list, the recently used buffer will move up in the list");
+          pool[buffer_size].unhighlight();   
+          list.value(buffer_size, input);
+          list.highlight(buffer_size);
+          LRU_moveup++;
+        }
+        else if (LRU_moveup == 1) {
+          jsav.umsg("moving recently used buffer to front of the list");
+          list.unhighlight();
+          list.value(buffer_size, "");
+          LRU_moveup++;
+        }
+        else if (LRU_moveup == 2) {
+          jsav.umsg("moving recently used buffer to front of the list");
+          list.unhighlight();
+          for (var i = buffer_size-1; i > -1; i--) {
+            jsav.effects.moveValue(list, i, list, i+1);
+          }
+          LRU_moveup++;
+        }
+        else if (LRU_moveup == 3) {
+          jsav.umsg("most recently used buffer moved to front of the list");
+          list.value(0, input);
+          LRU_moveup = 0;
+          into_list = 0;
+          buffer_size++;
+          list.highlight(0);
+          $("#input").removeAttr("disabled");
+          $("#write").removeAttr("disabled");
+        }
+      }
+    }
+    else {
+      if (into_list == 0) {
+        dirty_bits[input] = 0;
+        list.unhighlight();
+        jsav.umsg("buffer pool full, least recently used buffer will be replaced");
+        list.highlight(buffer_size-1);
+        var index = contains(list.value(buffer_size-1));
+        console.log(index);
+        pool[index].highlight();
+        into_list = 1;
+        $("#input").attr("disabled", "disabled");
+        $("#write").attr("disabled", "disabled");
+      }
+      else if (into_list == 1) {
+        if (LRU_replace == 0) {
+          if (dirty_bits[list.value(buffer_size-1)] ==  0) {
+            jsav.umsg("dirty bit = 0, content of buffer will not be written back to disk");
+          }
+          else {
+            jsav.umsg("dirty bit set = 1, contents of buffer written back to disk");
+          }
+          LRU_replace++;
+        }
+        else if (LRU_replace == 1) {
+          list.unhighlight();
+          empty_index = contains(list.value(buffer_size-1));
+          pool[empty_index].unhighlight();
+          memory.unhighlight(list.value(buffer_size-1));
+          dirty_bits[list.value(buffer_size-1)] = -1;
+          list.value(buffer_size-1, "");
+          pool[empty_index].value(0, "");
+          LRU_replace++;
+        }
+        else if (LRU_replace == 2) {
 
-    // Ensure user selected a replacement strategy
-    var funct = Number($('#function').val());
-    if (funct === 0) {
+          memory.highlight(input);
+          list.highlight(buffer_size-1);
+          pool[empty_index].highlight();
+          pool[empty_index].value(0, input);
+          list.value(buffer_size-1, input);
+          LRU_replace++;
+        }
+        else if (LRU_replace == 3) {
+          pool[empty_index].unhighlight();
+          jsav.umsg("moving recently used buffer to front of the list");
+          LRU_replace++;          
+        }
+        else if (LRU_replace == 4) {
+          list.unhighlight();
+          list.value(buffer_size-1, "");
+          LRU_replace++;
+        }
+        else if (LRU_replace == 5) {
+          for (var i = buffer_size-2; i > -1; i--) {
+            jsav.effects.moveValue(list, i, list, i+1);
+          }
+          LRU_replace++;
+        }
+        else if (LRU_replace == 6) {
+          jsav.umsg("most recently used buffer moved to front of the list");
+          list.value(0, input);
+          LRU_replace = 0;
+          into_list = 0;
+          list.highlight(0);
+          $("#input").removeAttr("disabled");
+          $("#write").removeAttr("disabled");
+        }
+      }
+    }
+    drawlines();
+    show_dirty();
+  }
+
+  function LRU_write(input) {
+    clearlines();
+    hide_dirty();
+    if (contains_kai(input) != -1 && LRU_replace == 0) {
+      var index = contains_kai(input);
+      if (LRU_moveup_kai == 0) {
+        jsav.umsg("Writing to sector " + input);
+        list.unhighlight();
+        $("#input").attr("disabled", "disabled");
+        $("#read").attr("disabled", "disabled");
+        jsav.umsg("a buffer already contains sector " + input);
+        list.highlight(index);
+        LRU_moveup_kai++;
+      }
+      else if (LRU_moveup_kai == 1) {
+        jsav.umsg("setting dirty bit");
+        dirty_bits[input] = 1;
+        LRU_moveup_kai++;
+      }
+      else if (LRU_moveup_kai == 2) {
+        var index = contains_kai(input);
+        empty_index = index;
+        jsav.umsg("the buffer containing secotr " + input + " will be moved to the front of the list");
+        list.unhighlight();
+        list.value(index, "");
+        LRU_moveup_kai++;
+      }
+    }
+    else if (LRU_moveup_kai == 3) {
+      for (var i = empty_index-1; i > -1; i--) {
+        jsav.effects.moveValue(list, i, list, i+1);
+      }
+      LRU_moveup_kai++;
+    }
+    else if (LRU_moveup_kai == 4) {
+      jsav.umsg("Sector " + input + " moved to front of the list");
+      list.value(0, input);
+      list.highlight(0);
+      LRU_moveup_kai = 0;
+      $("#input").removeAttr("disabled");
+      $("#read").removeAttr("disabled");
+    }
+    else {
+      jsav.umsg("Can't write to " + input + ", it is not in buffer pool");
+    }
+    drawlines();
+    show_dirty();
+  }
+
+  function FIFO(input) {
+    clearlines();
+    unhighlight_pool();
+    hide_dirty();
+    if (contains_kai(input) != -1) {
+      jsav.umsg("sector " + input + " already in one of the buffers");
+      list.unhighlight();
+      list.highlight(contains_kai(input));
+      pool[contains(input)].highlight();
+    }
+    else if (buffer_size < pool.length) {
+      if (into_list == 0) {
+        dirty_bits[input] = 0;
+        //console.log(buffer_size);
+        list.unhighlight();
+        memory.highlight(input);
+        pool[buffer_size].highlight();
+        jsav.umsg("a buffer stores sector " + input + " from storage");
+        //jsav.effects.copyValue(memory, input, pool, buffer_size);
+        pool[buffer_size].value(0, input);
+        $("#input").attr("disabled", "disabled");
+        $("#write").attr("disabled", "disabled");
+        into_list = 1;
+      }
+      else if (into_list == 1) {
+        jsav.umsg("buffer is placed into a list");
+        pool[buffer_size].unhighlight();
+        list.unhighlight();
+        for (var i = buffer_size-1; i > -1; i--) {
+          jsav.effects.moveValue(list, i, list, i+1);
+        }
+        into_list++;
+      }
+      else if (into_list == 2) {
+        list.highlight(0);
+        list.value(0, input);
+        $("#input").removeAttr("disabled");
+        $("#write").removeAttr("disabled");        
+        into_list = 0;
+        buffer_size++;        
+      }
+    }
+    else {
+      if (into_list == 0) {
+        dirty_bits[input] = 0;
+        jsav.umsg("buffer pool full, buffer at front of queue will be replaced");
+        list.unhighlight();
+        list.highlight(buffer_size-1);
+        var index = contains(list.value(buffer_size-1));
+        console.log(index);
+        pool[index].highlight();
+        into_list = 1;
+        $("#input").attr("disabled", "disabled");
+        $("#write").attr("disabled", "disabled");
+      }
+      else if (into_list == 1) {
+        if (dirty_bits[list.value(buffer_size-1)] ==  0) {
+          jsav.umsg("dirty bit = 0, content of buffer will not be written back to disk");
+        }
+        else {
+          jsav.umsg("dirty bit = 1, contents of buffer written back to disk");
+        }
+        $("#input").attr("disabled", "disabled");
+        $("#write").attr("disabled", "disabled");
+        into_list++;
+      }
+      else if (into_list == 2) {
+        list.unhighlight();
+        empty_index = contains(list.value(buffer_size-1));
+        pool[empty_index].unhighlight();
+        memory.unhighlight(list.value(buffer_size-1));
+        dirty_bits[list.value(buffer_size-1)] = -1;
+        list.value(buffer_size-1, "");
+        pool[empty_index].value(0, "");
+        into_list++;        
+      }
+      else if (into_list == 3) {
+        for (var i = buffer_size-2; i > -1; i--) {
+          jsav.effects.moveValue(list, i, list, i+1);
+        }
+        into_list++;
+      }
+      else if (into_list == 4) {
+        jsav.umsg("contents of sector " + input + " copied into buffer pool");
+        memory.highlight(input);
+        pool[empty_index].value(0, input);
+        list.value(0, input);
+        list.highlight(0);
+        into_list = 0;
+        $("#input").removeAttr("disabled");
+        $("#write").removeAttr("disabled");        
+      }
+    }
+    drawlines();
+    show_dirty();
+  }
+
+  function FIFO_write(input) {
+    clearlines();
+    hide_dirty();
+    if (contains_kai(input) != -1) {
+      if (into_list == 0) {
+        jsav.umsg("Writing to sector " + input);
+        list.unhighlight();
+        list.highlight(contains_kai(input));
+        $("#input").attr("disabled", "disabled");
+        $("#read").attr("disabled", "disabled");        
+        into_list++;
+      }
+      else if (into_list == 1) {
+        jsav.umsg("setting dirty bit");
+        dirty_bits[input] = 1;
+        into_list = 0;
+        $("#input").removeAttr("disabled");
+        $("#read").removeAttr("disabled");        
+      }
+    }
+    else {
+      jsav.umsg("Canot write to " + input + ", it is not in buffer pool");
+    }
+    drawlines();
+    show_dirty();
+  }
+
+  function LFU(input) {
+    hide_counters();
+    clearlines();
+    unhighlight_pool();
+    list.unhighlight();
+    hide_dirty();
+    if (contains_kai(input) != -1) {
+      jsav.umsg("a buffer already contains sector, incrementing counter");
+      list.highlight(contains_kai(input));
+      pool[contains_kai(input)].highlight();
+      LFU_counter[input]++;
+    }
+    else if (buffer_size < pool.length) {
+      if (into_list == 0) {
+        //console.log(buffer_size);
+        list.unhighlight();
+        dirty_bits[input] = 0;
+        memory.highlight(input);
+        pool[buffer_size].highlight();
+        jsav.umsg("a buffer stores sector " + input + " from storage");
+        //jsav.effects.copyValue(memory, input, pool, buffer_size);
+        pool[buffer_size].value(0, input);
+        $("#input").attr("disabled", "disabled");
+        $("#write").attr("disabled", "disabled");
+        into_list = 1;
+      }
+      else if (into_list == 1) {
+        jsav.umsg("buffer is placed into a list");
+        pool[buffer_size].unhighlight();
+        list.unhighlight();
+        list.value(buffer_size, input);
+        list.highlight(buffer_size);
+        into_list = 0;
+        $("#input").removeAttr("disabled");
+        $("#write").removeAttr("disabled");        
+        buffer_size++;
+      }
+    }
+    else {
+      if (into_list == 0) {
+        dirty_bits[input] = 0;
+        jsav.umsg("buffer pool full, least frequently used buffer will be replaced");
+        var min = LFU_counter[list.value(0)];
+        var min_index = 0;
+        for (var i = 1; i < list.size(); i++) {
+          if (LFU_counter[list.value(i)] < min) {
+            min = LFU_counter[list.value(i)];
+            min_index = i;
+          }
+        }
+        list.unhighlight();
+        list.highlight(min_index);
+        empty_index = contains(list.value(min_index));
+        pool[empty_index].highlight();
+        LFU_index = min_index;
+        into_list++;
+        $("#input").attr("disabled", "disabled");
+        $("#write").attr("disabled", "disabled");
+      }
+      else if (into_list == 1) {
+        list.unhighlight();
+        LFU_counter[list.value(LFU_index)] = 0;
+        if (dirty_bits[list.value(LFU_index)] ==  0) {
+          jsav.umsg("dirty bit = 0, content of buffer will not be written back to disk");
+        }
+        else {
+          jsav.umsg("dirty bit set = 1, contents of buffer written back to disk");
+        }
+        dirty_bits[list.value(LFU_index)] = -1;
+        list.value(LFU_index, "");
+        pool[empty_index].unhighlight();
+        pool[empty_index].value(0, "");
+        into_list++;
+      }
+      else if (into_list == 2) {
+        jsav.clearumsg();
+        list.value(LFU_index, input);
+        pool[empty_index].value(0, input);
+        into_list = 0;
+        $("#input").removeAttr("disabled");
+        $("#write").removeAttr("disabled");
+      }
+    }
+    show_counters();
+    drawlines();
+    show_dirty();
+  }
+
+  function LFU_write(input) {
+    hide_counters();
+    clearlines();
+    unhighlight_pool();
+    list.unhighlight();
+    hide_dirty();
+    if (contains_kai(input) != -1) {
+      if (into_list == 0) {
+        jsav.umsg("Writing to sector " + input);
+        list.unhighlight();
+        list.highlight(contains_kai(input));
+        $("#input").attr("disabled", "disabled");
+        $("#read").attr("disabled", "disabled");        
+        into_list++;
+      }
+      else if (into_list == 1) {
+        jsav.umsg("setting dirty bit");
+        dirty_bits[input] = 1;
+        into_list++;     
+      }      
+      else if (into_list == 2) {
+        jsav.umsg("incrementing counter");
+        list.highlight(contains_kai(input));
+        pool[contains_kai(input)].highlight();
+        LFU_counter[input]++;
+        into_list = 0;
+        $("#input").removeAttr("disabled");
+        $("#read").removeAttr("disabled");        
+      }
+    }
+    else {
+      jsav.umsg("Canot write to " + input + ", it is not in buffer pool");
+    }
+    show_counters();
+    drawlines();
+    show_dirty();
+  }
+  // update the arrays to match the parameters
+  function update() {
+    if (divider) {
+      divider.hide();
+    }
+    buffer_size = 0;
+    if (pool) {
+      for (var i = 0; i < pool.length; i++) {
+        pool[i].clear();
+      }
+    }
+    if (list) {
+      list.clear();
+    }
+    if (memory) {
+      memory.clear();
+    }
+    jsav.clearumsg();
+
+    var missingFields = [];
+    // Ensure user selected replacement strategy
+    if ($('#function').val() === '0') {
       missingFields.push('replacement strategy');
     }
-
     // Ensure user selected main memory size
     if ($('#mainmemory_size').val() === '0') {
       missingFields.push('main memory size');
     }
-
+    // create new array for main memory
+    else {
+      var temp = [];
+      for (var i = 0; i < $('#mainmemory_size').val(); i++) {
+        temp[i] = "sector " + i;
+        LFU_counter[i] = 0;
+        dirty_bits[i] = -1;
+      }
+      memory = jsav.ds.array(temp, {layout: "vertical", left: 100});
+    }
     // Ensure user selected buffer pool size
     if ($('#bufferpool_size').val() === '0') {
       missingFields.push('buffer pool size');
     }
-
-    // Craft an appropriate message to the user, telling them what fields they are missing
+    else {
+      var empty = [];
+      empty.length = 1;
+      for (var i = 0; i < $('#bufferpool_size').val(); i++) {
+        pool[i] = jsav.ds.array(empty, {layout: "vertical", left: 330, top: (i* 75)});
+      }
+      empty.length =  $('#bufferpool_size').val();
+      list = jsav.ds.array(empty, {layout: "vertical", left: 550});
+      divider = jsav.g.line(635, 21, 635, 67 + (empty.length-1) * 46.5, {'stroke-width' : 1.5});
+    }
+    // disable input box if fields are missing
     if (missingFields.length > 0) {
-      // Disable the input box if fields are missing
       $("#input").attr("disabled", "disabled");
-
-    } else {
-      // If all necessary fields are selected, enable the input box and tell the user to begin
+      $("#write").attr("disabled", "disabled");
+      $("#read").attr("disabled", "disabled");
+    }
+    // diable parameters once users finished selecting
+    else {
       $("#input").removeAttr("disabled");
+      $("#write").removeAttr("disabled");
+      $("#read").removeAttr("disabled");
       $("#function").attr("disabled", "disabled");
       $("#mainmemory_size").attr("disabled", "disabled");
       $("#bufferpool_size").attr("disabled", "disabled");
-
-      jsav.umsg("Enter a value and click Next");
-      jsav.umsg("<br />");
-    }
-    var replacement = $("#function").val();
-
-    // Create a new JSAV array
-    var main_memory_size = $('#mainmemory_size').val();
-    if (main_memory_size > 0) {
-      var empty = [];
-      empty.length = main_memory_size;
-      var i;
-      for (i = 0; i < main_memory_size; i++) {
-        empty[i] = i;
-      }
-      main_memory = jsav.ds.array(empty, {layout: "vertical", left: 0});
-      jsav.label("main memory", {"top": 0, "left": "19px"});    
-    }
-
-    var buf_size = $('#bufferpool_size').val();
-    if (buf_size > 0) {
-      var empty = [];
-      var temp = [];
-
-      empty.length = buf_size;
-      temp.length = buf_size;
-
-      var i;
-      for (i = 0; i < buf_size; i++) {
-        temp[i] = 0;
-      }
-      lines.size = buf_size;
-      buffer_pool = jsav.ds.array(empty, {layout: "vertical", left: 250});
-      jsav.label("buffer pool", {"top": 0, "left": "280px"});    
-      freq_counter = jsav_counter.ds.array(temp, {layout: "vertical", left: -10, top: -21});
-      freq_counter.hide();
-    }
-    if (replacement == 3) {
-      freq_counter.show();  
-    }
-    index.length = buf_size;
-    index_size = buf_size;
-    var i;
-    for (i = 0; i < index.length; i++) {
-      index[i] = jsav.label(i, {"top": 35 + 45 * i, "left": "400px"});
+      jsav.umsg("Enter a value and click read");
     }
   }
 
-  function LRU(input_val, counter) {
-    if (LRU_replacement != 0) {
-      LRU_full(input_val, counter);
-      if (LRU_replacement == 3) {
-        return false;
-      }
-      return true;
-    }
-    else if (LRU_move_up != 0) {
-      LRU_moveup(input_val, counter);
-      return true;
-    }
-    else {
-      console.log(input_val);
-      if (contains(input_val)) {
-        LRU_contains(input_val, counter);
-        return true;
-      }
-      else {
-        LRU_new(input_val, counter);
-        return false;
-      }
-
-    }
-  }
-
-  function LRU_moveup(input_val, counter) {
-    var size;
-    if (counter < buffer_pool.size()) {
-      size = counter;
-    }
-    else {
-      size = buffer_pool.size();
-    }
-    if (LRU_move_up == 1) {
-      for (i = 0; i< size; i++) {
-        lines[i].hide();
-      }
-      var i;
-      var index = 0;
-      for (i = 0; i < size; i++) {
-        if (buffer_pool.value(i) == input_val) {
-          index = i;
-          buffer_pool.unhighlight(i);
-        }
-      }
-      buffer_pool.value(index, "");
-      for (i = 0; i < size; i++) {
-        if (buffer_pool.value(i) != "") {
-          lines[i] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * i, 
-            {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-        }
-      }
-      LRU_move_up++;
-    }
-
-    else if (LRU_move_up == 2) {
-      for (i = 0; i< size; i++) {
-        lines[i].hide();
-      }      
-      var index;
-      var i;
-      for (i = 0; i < size; i++) {
-        if (buffer_pool.value(i) == "") {
-          index = i;
-        }
-      }
-      for (i = index - 1; i > -1; i--) {
-        jsav.effects.moveValue(buffer_pool, i, buffer_pool, i+1);
-      }
-      for (i = 0; i < buffer_pool.size(); i++) {
-        if (buffer_pool.value(i) != "") {
-          lines[i] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * i, 
-            {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-        }
-      }
-      LRU_move_up++;
-    }
-
-    else if (LRU_move_up == 3) {
-      jsav.umsg("storing sector " + input_val + " in buffer pool");
-      buffer_pool.value(0, input_val);
-      lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, 
-        {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-      LRU_move_up = 0;
-    }
-  }
-
-  function LRU_full(input_val, counter) {
-    if (LRU_replacement == 1) {
-      buffer_pool.unhighlight(buffer_pool.size()-1);
-      clear_lines();
-      var temp = [];
-      temp.length = buffer_pool.size();
-      var i;
-      for (i = 0; i < buffer_pool.size()-1; i++) {
-        temp[i] = buffer_pool.value(i);
-        lines[i] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * i, 
-          {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-      }
-      buffer_pool.value(buffer_pool.size()-1, "");
-      lines[buffer_pool.size()-1].hide();
-      for (i = 0; i < buffer_pool.size()-1; i++) {
-        buffer_pool.value(i, temp[i]);
-      }
-      LRU_replacement++;
-    }
-
-    else if (LRU_replacement == 2) {
-      clear_lines();
-      var i;
-      for (i = buffer_pool.size()-2; i > -1; i--) {
-        jsav.effects.moveValue(buffer_pool, i, buffer_pool, i+1);
-      }
-      var temp = [];
-      temp.length = buffer_pool.size();
-      for (i = 0; i < buffer_pool.size(); i++) {
-        temp[i] = buffer_pool.value(i);
-        if (buffer_pool.value(i) != "") {
-          lines[i] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * i, 
-            {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-        }
-      }
-      LRU_replacement++;
-    }
-    else if (LRU_replacement == 3) {
-      jsav.umsg("storing sector " + input_val + " in buffer pool");
-      buffer_pool.value(0, input_val);
-      lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, 
-        {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-      LRU_replacement = 0;
-    }
-  }
-
-  function LRU_contains(input_val, counter) {
-    var i;
-    if (buffer_pool.value(0) == input_val) {
-      jsav.umsg("sector " + input_val + " already in buffer pool");
-      jsav.umsg("sector " + input_val + " already at front of buffer pool");
-    }
-    else {
-      for (i = 0; i < buffer_pool.size(); i++) {
-        if (buffer_pool.value(i) == input_val) {
-          buffer_pool.highlight(i);
-        }
-      }
-      LRU_move_up++;
-      jsav.umsg("sector " + input_val + " already in buffer pool");
-      jsav.umsg("moving buffer holding sector " + input_val + " to the front");
-    }
-  }
-
-  function LRU_new(input_val, counter) {
-    if (counter == 0) {
-      jsav.umsg("storing sector " + input_val + " in buffer pool");
-      buffer_pool.value(0, input_val);
-      lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, 
-        {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-      jsav.displayInit();
-    }
-    else if (counter < buffer_pool.size()) {
-      jsav.umsg("storing sector " + input_val + " in buffer pool");
-      for (i = 0; i< counter; i++) {
-        lines[i].hide();
-      }
-
-      var temp = [];
-      temp.length = buffer_pool.size();
-      temp[0] = input_val;
-      lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, 
-        {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-
-      var i;
-      for (i = 0; i < counter; i++) {
-        temp[i+1] = buffer_pool.value(i);
-        lines[i+1] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * (i+1), 
-          {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-      }
-
-      for (i = 0; i < buffer_pool.size(); i++) {
-        buffer_pool.value(i, temp[i]);
-      }
-    }
-    else {
-      if (LRU_replacement == 0) {
-        jsav.umsg("request to sector " + input_val + " requires emptying least recently used buffer");
-        buffer_pool.highlight(buffer_pool.size()-1);
-        LRU_replacement++;
-      }
-    }
-  }
-
-
-  function FIFO(input_val, counter) {
-    if (contains(input_val)) {
-    }
-    else {
-      if (counter == 0) {
-        jsav.umsg("storing sector " + input_val + " in buffer pool");
-        buffer_pool.value(0, input_val);
-        lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, 
-          {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-        jsav.displayInit();
-      }
-      else if (counter < buffer_pool.size()) {
-        jsav.umsg("storing sector " + input_val + " in buffer pool");
-        for (i = 0; i< counter; i++) {
-          lines[i].hide();
-        }
-
-        var temp = [];
-        temp.length = buffer_pool.size();
-        temp[0] = input_val;
-        lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, 
-          {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-
-        var i;
-        for (i = 0; i < counter; i++) {
-          temp[i+1] = buffer_pool.value(i);
-          lines[i+1] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * (i+1), 
-            {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-        }
-
-        for (i = 0; i < buffer_pool.size(); i++) {
-          buffer_pool.value(i, temp[i]);
-        }
-
-      }
-      else {
-        jsav.umsg("emptying buffer at the end of the queue");
-        for (i = 0; i< buffer_pool.size(); i++) {
-          lines[i].hide();
-        }
-
-        var temp = [];
-        temp.length = buffer_pool.size();
-        temp[0] = input_val;
-        lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, 
-          {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-
-        var i;
-        for (i = 0; i < buffer_pool.size()-1; i++) {
-          temp[i+1] = buffer_pool.value(i);
-          lines[i+1] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * (i+1), 
-            {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-        }
-
-        for (i = 0; i < buffer_pool.size(); i++) {
-          buffer_pool.value(i, temp[i]);
-        }
-      }
-
-    }
-  }
-  function LFU(input_val, counter) {
-    if (contains(input_val)) {
-      jsav.umsg("sector " + input_val + " already in buffer pool");
-      jsav.umsg("incrementing counter for sector " + input_val);
-      var size;
-      if (counter < buffer_pool.size()) {
-        size = counter;
-      }
-      else {
-        size = buffer_pool.size();
-      }
-      for (i = 0; i< size; i++) {
-        lines[i].hide();
-      } 
-      var i;
-      var temp = [];
-      temp.length = buffer_pool.size();
-      for (i = 0; i < size; i++) {
-        if (buffer_pool.value(i) == input_val) {
-          freq_counter.value(i, freq_counter.value(i) + 1);
-        }
-      }
-      var x, y, max;
-      for (x = 0; x < size-1; x++) {
-        max = x;
-        for ( y = x + 1; y < size; y++) {
-          if (freq_counter.value(y) > freq_counter.value(max)) {
-            max = y;
-          }
-        }
-        if (max != x) {
-          var old;
-          old = freq_counter.value(x);
-          freq_counter.value(x, freq_counter.value(max));
-          freq_counter.value(max, old);
-
-          old = buffer_pool.value(x);
-          buffer_pool.value(x, buffer_pool.value(max));
-          buffer_pool.value(max, old);
-        }
-      }
-      for (i = 0; i < size; i++) {
-        lines[i] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * i, 
-          {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-      }
-      return true;
-    }
-    else {
-      if (counter == 0) {
-        jsav.umsg("storing sector " + input_val + " in buffer pool");
-        buffer_pool.value(0, input_val);
-        lines[0] = jsav.g.line(145,  45 + 45 * input_val,  255, 45, 
-          {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-        jsav.displayInit();
-      }
-      else if (counter < buffer_pool.size()) {
-        jsav.umsg("storing sector " + input_val + " in buffer pool");
-        for (i = 0; i< counter; i++) {
-          lines[i].hide();
-        }
-
-        var temp = [];
-        temp.length = buffer_pool.size();
-        temp[counter] = input_val;
-
-        var i;
-        for (i = 0; i < counter-1; i++) {
-          temp[i] = buffer_pool.value(i);
-        }
-
-        for (i = 0; i < buffer_pool.size(); i++) {
-          buffer_pool.value(i, temp[i]);
-        }
-        for (i = 0; i < counter+1; i++) {
-          lines[i] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * i, 
-            {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-        }
-      }
-      else {
-        jsav.umsg("request to sector " + input_val + " requires emptying least frequently used buffer");
-        for (i = 0; i< buffer_pool.size(); i++) {
-          lines[i].hide();
-        }
-        buffer_pool.value(buffer_pool.size()-1, input_val);
-        freq_counter.value(buffer_pool.size()-1, 0);
-        for (i = 0; i < buffer_pool.size(); i++) {
-          lines[i] = jsav.g.line(145,  45 + 45 * buffer_pool.value(i),  255, 45 + 45 * i, 
-            {'arrow-end': 'classic-wide-long','stroke-width' : 3});
-        }
-      }
-      return false;
-    }
-  }
-
-  /**
-   * Runs when page has finished loading
-   * Anything that triggers an interaction with an HTML element should be done here
-   */
-  $(document).ready(function () {
-    jsav = new JSAV($('.avcontainer'));
-    jsav_counter = new JSAV($('.av'));
-    array_init();
-    jsav.displayInit();
-    counter = 0;
-    resetAV();
-
-    // If the user hits 'Enter' while the focus is on the textbox,
-    // click 'Next' rather than refreshing the page
-    $("#input").keypress(function (event) {
-      // Capture 'Enter' press
-      if (event.which === 13) {
-        // Prevent 'Enter' from posting the form and refreshing the page
-        event.preventDefault();
-        // If the user entered a value and inserting is allowed, trigger 'Next'
-        if ($("#input").val() !== "" && !$('#next').attr('disabled')) {
-          $('#next').click();
-        }
-      } else {
-        // Enable the 'Next' button when the user enters a value
-        $('#next').removeAttr('disabled');
-      }
-    });
-
-    /* Event Triggers */
-
-    // Event trigger change if hashing function option is changed
-    $("#function").change(function () {
-      resetAV();
-    });
-
-    // Event trigger change if collision function option is changed
-    $("#mainmemory_size").change(function () {
-      resetAV();
-    });
-
-    // Event trigger change if size of hash changes
-    $("#bufferpool_size").change(function () {
-      resetAV();
-    });
-
-    $('#reset').click(function () {
-      location.reload(true);
-    });
-    // Next button pushed.
-    $('#next').click(function () {
-      var replacement = $("#function").val();
-      var input_val = $("#input").val();
-      if (input_val < 0 || input_val >= main_memory.size())
-        jsav.umsg("enter a valid value");
-      else {
-        if (replacement == 1) {
-          if (!LRU(input_val, counter))
-            counter++;
-        }
-        else if (replacement == 2){
-          FIFO(input_val, counter);
-          counter++;
-        }
-        else {
-          if (!LFU(input_val, counter))
-            counter++;
-        }
-        var i;
-        for (i = 0; i < main_memory.size(); i++) {
-          main_memory.unhighlight(i);
-        }
-        for (i = 0; i < buffer_pool.size(); i++) {
-          main_memory.highlight(buffer_pool.value(i));
-        }
-      }
-      jsav.umsg("<p></p>");
-    });
-
-    // Adjust UI element positions
-    var contWidth = $('#container').width() - 20; // 20 pixels for padding
-    $('.jsavoutput').width(contWidth / 3);
+  $(document).ready(initialize);
+  $("#function").change(update);
+  $("#mainmemory_size").change(update);
+  $("#bufferpool_size").change(update);
+  $('#read').click(read);
+  $('#write').click(write);
+  $('#reset').click(function () {
+    location.reload(true);
   });
 }(jQuery));

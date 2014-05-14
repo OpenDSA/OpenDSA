@@ -10,7 +10,7 @@
 
     // Process about button: Pop up a message with an Alert
     function about() {
-      var aboutstring = interpret("about");
+      var aboutstring = interpret("aboutString");
       alert(aboutstring + JSAV.version());
     }
 
@@ -21,10 +21,8 @@
      *  MERGESORT PROFICIENCY EXERCISE CODE       *
      ******************************************* */
 
-    // Language and code configurations
-    var config = ODSA.AV.getConfig("mergesortPRO.json");
-    var interpret = JSAV.utils.getInterpreter(config.language);
-    ODSA.AV.setTitleAndInstructions($('#container'), config.language);
+    // Load the interpreter created by odsaAV.js
+    var interpret = ODSA.UTILS.getInterpreter();
 
     // Variables used by "setPosition()"
     var canvasWidth = $('#container').width();     // The width of the display

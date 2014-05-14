@@ -2,7 +2,7 @@
   "title": "Recursion Tutor",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": "Processing",
+  "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
@@ -11,11 +11,42 @@
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
-  "chapters": {
-    "Recursion Chapter": {
-      "RecurTutor/RecursionIntro": {
-        "long_name": "Recursion Chapter Introduction",
-        "exercises": {}
+  "chapters": {  
+    "Recursion Skeleton": {
+      "RecurTutor/RecursionSkeleton": {
+      "long_name": "Recursion Chapter Skeleton",
+      "exercises": {
+          "RecursionIntroCON1": {
+            "long_name": "Recursion Introduction Slideshow 1",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "RecursionIntroCON2": {
+            "long_name": "Recursion Introduction Slideshow 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "RecursionIntroCON3": {
+            "long_name": "Recursion Introduction Slideshow 3",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          },
+          "RecursionIntroCON4": {
+            "long_name": "Recursion Introduction Slideshow 4",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "RecursionIntroCON5": {
+            "long_name": "Recursion Introduction Slideshow 5",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       }
     },
     "Appendix": {

@@ -9,21 +9,10 @@
   function toggleNodeHighlight(node) {
 
     if (node.css(node_highlight_property) === node_highlight_default) {
-//      highlightNode(node);
       node.css(node_highlight_add);
     } else {
       node.css(node_highlight_remove);
     }
-  }
-
-  /**
-   * Adds a box-shadow effect to the node of the same color as the background.
-   * @param node The node to be highlighted.
-   */
-  function highlightNode(node) {
-    var color = node.css("background-color");
-    color = "rgba(" + color.substring(4, color.length - 1) + ", 1.0)";
-    node.css({"box-shadow": "0 0 0 10px " + color});
   }
 
   /**

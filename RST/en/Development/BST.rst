@@ -59,7 +59,7 @@ Module :numref:`BSTDict` discusses using a ``KVPair`` as the
 (``Comparable``) record type in a dictionary implementation of the
 BST.
 
-.. codeinclude:: Binary/BST.pde
+.. codeinclude:: Binary/BST
    :tag: BST
 
 The first operation that we will look at in detail will find the
@@ -139,7 +139,7 @@ resulting from its call to the ``deletemax`` method.
 A useful companion method is ``getmax`` which returns a
 pointer to the node containing the maximum value in the subtree.
 
-.. codeinclude:: Binary/BST.pde
+.. codeinclude:: Binary/BST
    :tag: getmax
 
 Now we are ready for the ``removehelp`` method.
@@ -228,7 +228,7 @@ Below is an example traversal, named ``printhelp``.
 It performs an inorder traversal on the BST to print the node values
 in ascending order.
 
-.. codeinclude:: Binary/BST.pde
+.. codeinclude:: Binary/BST
    :tag: printhelp
 
 While the BST is simple to implement and efficient when the tree is

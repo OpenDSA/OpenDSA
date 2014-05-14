@@ -118,7 +118,7 @@ Module :numref:`<BinSort>`.
 Binsort assigns each value to an array position corresponding to its
 value.
 
-   .. codeinclude:: Sorting/Binsort.pde 
+   .. codeinclude:: Sorting/Binsort 
       :tag: simplebinsort
 
 This is efficient and requires :math:`\Theta(n)` time.
@@ -127,7 +127,7 @@ Next is a code fragment that places the permutation in order but does
 so within the same array (thus it is an example of an "in place"
 sort).
 
-   .. codeinclude:: Sorting/Binsort.pde 
+   .. codeinclude:: Sorting/Binsort 
       :tag: simplebinsort2
 
 Function ``swap(A, i, j)`` exchanges elements ``i``

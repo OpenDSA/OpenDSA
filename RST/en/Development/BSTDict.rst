@@ -44,5 +44,5 @@ as :math:`\Theta(n)`.
 Here is an implementation for the Dictionary interface, using a BST to
 store the records.
 
-.. codeinclude:: Binary/BSTDict.pde
+.. codeinclude:: Binary/BSTDict
 

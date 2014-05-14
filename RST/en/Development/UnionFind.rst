@@ -81,7 +81,7 @@ This makes it easy to merge trees together with UNION operations.
 Here is an implementation for parent pointer trees and the UNION/FIND
 process.
 
-.. codeinclude:: General/ParPtrTree1.pde
+.. codeinclude:: General/ParPtrTree1
    :tag: UF1, UF2
 
 The ``ParPtrTree`` class has an array where each array position
@@ -226,7 +226,7 @@ doubling the size of the tree).
 Here is an implementation for the UNION method when using weighted
 union.
 
-.. codeinclude:: General/ParPtrTree2.pde
+.. codeinclude:: General/ParPtrTree2
    :tag: UnionFind
 
 The following slideshow illustrates a series of UNION operations with
@@ -252,7 +252,7 @@ This version of ``FIND`` not only returns the root of the
 current node, but also makes all ancestors of the current node point
 to the root.
 
-.. codeinclude:: General/ParPtrTree2.pde
+.. codeinclude:: General/ParPtrTree2
    :tag: PathCompress
 
 The following slide show illustrates path compression using the last
