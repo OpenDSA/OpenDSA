@@ -6,7 +6,7 @@
       ".instructions": "Start at the bottom left. Merge two single element arrays to sort a sorted two-element array. Continue merging until you reach an array whose child arrays have not BOTH been sorted. Return to single element arrays and repeat the merging process as necessary until all elements have been merged into a single, sorted array. To merge an element into another array, click the element to select it, then click the position where it should be in the sorted, merged array. Remember, the order in which blocks are merged matters so be sure to select the smallest blocks first, starting at the left.",
       "#help": "Help",
       "#about": "About",
-      "about": "Mergesort Proficiency Exercise\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA.\nCompiled with JSAV library version "
+      "aboutString": "Mergesort Proficiency Exercise\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA.\nCompiled with JSAV library version "
     },
     "fi": {
       ".exerciseTitle": "Lomitusjärjestäminen",
@@ -14,7 +14,15 @@
       ".instructions": "Aloita vasemmasta alakulmasta yhdistämällä kaksi yhden alkion kokoista taulukkoa järjesteltyyn kahden alkion kokoiseen taulukkoon. Jatka yhdistelyä kunnes saavut taulukkoon, jonka <strong>molempia</strong> osataulukoita ei vielä ole järjestelty. Tässä tapauksessa palaa yhden alkion kokoisiin taulukkoihin ja toista yhdistämisprosessia kunnes kaikki alkiot on yhdistetty yhteen järjesteltyyn taulukkoon. Voit valita alkion klikkaamalla sitä. Klikkaa tämän jälkeen sijaintia, johon haluat siirtää valitun alkion. Muista, että järjestyksellä on väliä! Liitä aina pienin alkio ensin, aloittaen vasemmalta.",
       "#help": "Ohje",
       "#about": "Lisätietoa",
-      "about": "Harjoitustehtävä: Lomitusjärjestäminen\nTekijä: Daniel Breakiron\nLuotu osaksi OpenDSA-oppikirjaprojektia.\nLisätietoa osoitteesta http://algoviz.org/OpenDSA\nLähde ja kehityshistoria löytyy osoitteesta https://github.com/OpenDSA/OpenDSA\nJSAV versio: "
+      "aboutString": "Harjoitustehtävä: Lomitusjärjestäminen\nTekijä: Daniel Breakiron\nLuotu osaksi OpenDSA-oppikirjaprojektia.\nLisätietoa osoitteesta http://algoviz.org/OpenDSA\nLähde ja kehityshistoria löytyy osoitteesta https://github.com/OpenDSA/OpenDSA\nJSAV versio: "
+    },
+    "sv": {
+      ".exerciseTitle": "Mergesort",
+      ".instructLabel": "Instruktioner:",
+      ".instructions": "Börja längst ned till vänster. Slå samman (merge) två ettelementssekvenser för att skapa en sorterad tvåelementssekvens. Fortsätt sammanslagningen till du stöter på en sekvens vars delsekvenser inte BÅDA har sorterats. Återvänd till ettelementsekvenser och upprepa sammanslagningsproceduren efter behov till alla element har slagits samman till en helt sorterad sekvens. För att infoga ett element i en annan sekvens, klicka på elementet för att välja det och klicka sedan på positionen där det borde vara i den sorterade sammanslagna sekvensen. Kom ihåg att ordningen i vilken blocken slås samman spelar roll, så var noga med välja det minsta blocket först och börja från vänster.",
+      "#help": "Hjälp",
+      "#about": "Om",
+      "aboutString": "Mergesort Proficiency Exercise\nSkriven av Daniel Breakiron\nSkapad som del av hypertextbookprojeketet OpenDSA.\nFör mer information, se http://algoviz.org/OpenDSA\nKällkod och utvecklingshistorik tillgänglig på\nhttps://github.com/OpenDSA/OpenDSA.\nKompilerad med JSAV library version "
     }
   },
   "code" : {}
