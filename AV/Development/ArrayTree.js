@@ -98,7 +98,11 @@
     // TODO: What does this do? And why can't this be before the root node code?
     JSAV.utils._helpers.handleVisibility(this, this.options);
   };
-
+  
+  /**
+    Creates a new Array Tree Node and sets it as the root node. If the newRoot
+    parameter is not specified then, the current root node is returned.
+    */
   arrayTreeProto.root = function(newRoot, options) {
     var opts = $.extend({hide: true}, options);
     if (typeof newRoot === "undefined") {
@@ -166,10 +170,12 @@
 
     // Generate element where the Array Tree Node will be placed in.
     this.element = this.options.nodeelement ||
-      $("<div></div>");
+      $("<div><div></div></div>");
 
+    // Create array for the Array Tree Node and added to the node element.
+    this.arrayelement = $(this.element).find("div");
     var array_options = $.extend(
-      {element: this.element}, this.options);
+      {element: this.arrayelement}, this.options);
     this.node_array = new this.jsav.ds.array(value, array_options);
 
     var valtype = typeof(value);
@@ -193,14 +199,15 @@
 
     // Add the Array Tree Node element to the Array Tree container.
     this.container.element.append(this.element);
-
-
-
+    
+    // TODO: What does this line do?
     JSAV.utils._helpers.handleVisibility(this, this.options);
 
     // Draw edge from this Array Tree Node to parent Node.
     if (parent) {
-      this._edgetoparent = new JSAV._types.ds.Edge(this.jsav, this, parent);
+      // Draw edge from the parent Array Tree Node to this node.
+      // this._edgetoparent = new JSAV._types.ds.Edge(this.jsav, this, parent);
+      this._edgetoparent = new ArrayEdge(this.jsav, this, parent);
       // Draw edge label if necessary.
       if (this.options.edgeLabel) {
         this._edgetoparent.label(this.options.edgeLabel);
@@ -210,7 +217,11 @@
     // Initialized Array Tree Node children array.
     this.childnodes = [];
   };
-
+  
+  /**
+    Child helper function that had to be reimplemented because it has a
+    reference to the ArrayTreeNode object.
+    */
   var setchildhelper = function(self, pos, node, options) {
     var oldval = self.childnodes[pos],
       opts = $.extend({hide: true}, options);
@@ -248,7 +259,7 @@
 
   arrayTreeNodeProto.value = function (newValue) {
     if (typeof(newValue) === "undefined") {
-      newValue = this.element.data("values");
+      return this.element.data("values");
     }
 
     for (var i = 0; i < newValue.length; i += 1) {
@@ -258,5 +269,55 @@
     return this;
   };
 
+  var ArrayEdge = function(jsav, start, end, options) {
+    this.jsav = jsav;
+    this.startnode = start;
+    this.endnode = end;
+    this.options = $.extend(true, {"display": true}, options);
+    this.container = start.container;
+    // console.lg(bla);
+    // console.log(start.arrayelement.html());
+    var startPos = start?start.element.position():{left:0, top:0},
+        endPos = end?end.element.position():{left:0, top:0};
+    if (startPos.left === endPos.left && startPos.top === endPos.top) {
+      // layout not done yet
+      this.g = this.jsav.g.line(-1, -1, -1, -1, $.extend({container: this.container}, this.options));
+    } else {
+      if (end) {
+        endPos.left += end.element.outerWidth() / 2;
+        endPos.top += end.element.outerHeight();
+      }
+      if (!startPos.left && !startPos.top) {
+        startPos = endPos;
+      }
+      this.g = this.jsav.g.line(startPos.left,
+                              startPos.top,
+                              endPos.left,
+                              endPos.top, $.extend({container: this.container}, this.options));
+    }
 
+    this.element = $(this.g.rObj.node);
+
+    var visible = (typeof this.options.display === "boolean" && this.options.display === true);
+    this.g.rObj.attr({"opacity": 0});
+    this.element.addClass("jsavedge");
+    if (start) {
+      this.element[0].setAttribute("data-startnode", this.startnode.id());
+    }
+    if (end) {
+      this.element[0].setAttribute("data-endnode", this.endnode.id());
+    }
+    this.element[0].setAttribute("data-container", this.container.id());
+    this.element.data("edge", this);
+
+    if (typeof this.options.weight !== "undefined") {
+      this._weight = this.options.weight;
+      this.label(this._weight);
+    }
+    if (visible) {
+      this.g.show();
+    }
+  };
+
+  JSAV.utils.extend(ArrayEdge, JSAV._types.ds.Edge);
 }(jQuery));

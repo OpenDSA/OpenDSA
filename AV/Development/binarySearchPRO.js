@@ -9,26 +9,19 @@
     keyholder,
     $findLabel,
     pseudo,
-    interpret,
-    config = ODSA.AV.getConfig("binarySearchPRO.json"),
+    interpret = ODSA.UTILS.getInterpreter("binarySearchPRO", "#jsavcontainer"),
+    code = ODSA.AV.code,
     av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
 
-    // get interpreter function for the selected language
-    if (typeof interpret !== "function") {
-      interpret = JSAV.utils.getInterpreter(config.language);
-      // change the title and the instructions on the page
-      ODSA.AV.setTitleAndInstructions(av.container, config.language);
-    }
-
     // show the code and highlight the row where mid is calculated
-    if (!pseudo && config.code) {
-      pseudo = av.code($.extend({after: {element: $(".instructions")}}, config.code));
+    if (!pseudo && code) {
+      pseudo = av.code($.extend({after: {element: $(".instructions")}}, code));
       pseudo.show();
-      pseudo.highlight(config.code.tags.highlight);
+      pseudo.highlight("highlight");
     }
 
     //generate random array with ascending values
@@ -74,8 +67,8 @@
     jsav.ds.array([key], {indexed: false}).css(0, {"background-color": "#ddf"});
     var modelArray = jsav.ds.array(new Array(arraySize), {indexed: true, autoresize: false});
 
-    if (config.code) {
-      jsav.code(config.code).highlight(config.code.tags.highlight);
+    if (code) {
+      jsav.code(code).highlight("highlight");
     }
 
     jsav._undo = [];
@@ -89,7 +82,7 @@
         high: high,
         mid: mid
       }});
-      refLines(jsav, config.code, "highlight");
+      refLines(jsav, code, "highlight");
       modelArray.value(mid, initialArray[mid]);
       modelArray.highlight(mid);
       if (modelArray.value(mid) < key) {
@@ -98,7 +91,7 @@
           key: key,
           mid_plus_1: mid + 1
         }});
-        refLines(jsav, config.code, "tbl_mid_lt_key");
+        refLines(jsav, code, "tbl_mid_lt_key");
         low = mid + 1;
         paintGrey(modelArray, 0, mid);
       }
@@ -108,7 +101,7 @@
           key: key,
           mid_minus_1: mid - 1
         }});
-        refLines(jsav, config.code, "tbl_mid_gt_key");
+        refLines(jsav, code, "tbl_mid_gt_key");
         high = mid - 1;
         paintGrey(modelArray, mid, arraySize - 1);
       }

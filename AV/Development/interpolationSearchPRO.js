@@ -13,8 +13,8 @@
     highIndex,
     interLine,
     pseudo,
-    interpret,
-    config = ODSA.AV.getConfig("interpolationSearchPRO.json"),
+    interpret = ODSA.UTILS.getInterpreter("interpolationSearchPRO", "#jsavcontainer"),
+    code = ODSA.AV.code,
     av = new JSAV($("#jsavcontainer"));
 
 
@@ -22,18 +22,11 @@
 
   function initialize() {
 
-    // get interpreter function for the selected language
-    if (typeof interpret !== "function") {
-      interpret = JSAV.utils.getInterpreter(config.language);
-      // change the title and the instructions on the page
-      ODSA.AV.setTitleAndInstructions(av.container, config.language);
-    }
-
     // show the code and highlight the row where mid is calculated
-    if (!pseudo && config.code) {
-      pseudo = av.code($.extend({after: {element: $(".instructions")}}, config.code));
+    if (!pseudo && code) {
+      pseudo = av.code($.extend({after: {element: $(".instructions")}}, code));
       pseudo.show();
-      pseudo.highlight(config.code.tags.highlight);
+      pseudo.highlight(code.tags.highlight);
     }
 
     //generate random array with ascending values
@@ -110,8 +103,8 @@
     jsav.ds.array([key], {indexed: false}).css(0, {"background-color": "#ddf"});
     var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar", autoresize: false});
 
-    if (config.code) {
-      jsav.code(config.code).highlight(config.code.tags.highlight);
+    if (code) {
+      jsav.code(code).highlight(code.tags.highlight);
     }
 
     var modelLow = jsav.variable(0);
@@ -156,7 +149,7 @@
         key: key,
         newmid: Math.floor(mid)
       }});
-      refLines(jsav, config.code, "highlight");
+      refLines(jsav, code, "highlight");
       jsav.step();
       mid = Math.floor(mid);
       modelArray.highlight(mid);
@@ -167,7 +160,7 @@
           key: key,
           mid_plus_1: mid + 1
         }});
-        refLines(jsav, config.code, "tbl_mid_lt_key");
+        refLines(jsav, code, "tbl_mid_lt_key");
       } else if (initialArray[mid] > key) {
         high = mid - 1;
         jsav.umsg(interpret("av_ms_arr_mid_gt_key"), {fill: {
@@ -175,7 +168,7 @@
           key: key,
           mid_minus_1: mid - 1
         }});
-        refLines(jsav, config.code, "tbl_mid_gt_key");
+        refLines(jsav, code, "tbl_mid_gt_key");
       } else {
         jsav.umsg("<br/>" + interpret("av_ms_found"), {preserve: true, fill: {mid: mid}});
       }
@@ -254,7 +247,7 @@
       drawLine(array, lowIndex.value(), highIndex.value(), interLine);
       stateVar.value(2);
       av.umsg(interpret("av_select_guess"));
-      refLines(av, config.code, "highlight");
+      refLines(av, code, "highlight");
       av.umsg("</br>" + interpret("av_lines_intersect") + " ( " + intersectionX(lowIndex.value(), highIndex.value()) + ", " + key + " )", {preserve: true});
       exercise.gradeableStep();
     } else if (stateVar.value() === 2) {

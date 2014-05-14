@@ -22,7 +22,7 @@
      ******************************************* */
 
     // Load the interpreter created by odsaAV.js
-    var interpret = ODSA.UTILs.getInterpreter();
+    var interpret = ODSA.UTILS.getInterpreter();
 
     // Variables used by "setPosition()"
     var canvasWidth = $('#container').width();     // The width of the display

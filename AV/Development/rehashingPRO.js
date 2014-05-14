@@ -14,8 +14,8 @@
     $newLabel,
     $stackLabel,
     pseudo,
-    interpret,
-    config = ODSA.AV.getConfig("rehashingPRO.json"),
+    interpret = ODSA.UTILS.getInterpreter("rehashingPRO", "#jsavcontainer"),
+    code = ODSA.AV.code,
     av = new JSAV($("#jsavcontainer")),
     clickHandler;
 
@@ -41,16 +41,9 @@
 
   function initialize() {
 
-    // get interpreter function for the selected language
-    if (typeof interpret !== "function") {
-      interpret = JSAV.utils.getInterpreter(config.language);
-      // change the title and the instructions on the page
-      ODSA.AV.setTitleAndInstructions(av.container, config.language);
-    }
-
     // show the code and highlight the row where mid is calculated
-    if (!pseudo && config.code) {
-      pseudo = av.code($.extend({after: {element: $(".instructions")}}, config.code));
+    if (!pseudo && code) {
+      pseudo = av.code($.extend({after: {element: $(".instructions")}}, code));
       pseudo.show();
     }
 
