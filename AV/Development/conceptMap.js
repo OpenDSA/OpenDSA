@@ -9,15 +9,6 @@ var adjacents = new Array();
 var array = new Array();
 var list = new Array();
 
-
-//myLink.onclick = ShowOld(2367,146986,2);
-
-/*$('.odsa-term').click(function (event) {
-    var id = $(event.target).text();
-    console.log("Text " + id);
-}); */
-
-
 function store(id) {
   var node = document.getElementById(id).innerHTML
   localStorage.setItem("concept", node);
@@ -54,7 +45,6 @@ function Parser() {
   var id = 0;
   var label = null;
   var definition = null;
-  console.log("length of concept size =====> " + concept.length);
   for(var a = 0; a < concept.length; a++) {
     id = concept[a].getAttribute('id').toLowerCase();
     label = concept[a].getAttribute('label').toLowerCase();
@@ -224,21 +214,6 @@ function Phrase(id, label) {
   this.label = label;
 }
 
-/*function getText(term) {  
-  var frame = document.getElementById("info");
-  $.get( "../../RST/en/Glossary.rst", function( data ) {
-    myregexp = new RegExp(term + "\n", "gim");
-    var text = data.match(myregexp);
-      if(text != null) {
-        frame.contentWindow.document.write(term);
-      } else {
-        alert("The term " + term  + " is not in the glossary");
-      }  
-  });
-}  */
-
-
-
 function printGraph(concept) {
   var frame = document.getElementById("info");
   frame.contentWindow.document.close();
@@ -305,7 +280,6 @@ function reprint(term) {
   printGraph(term);
   var definition = getDefinition(term);
   printDefinition(term, definition);
- // getText(term);
 }
 
 function runit() {
@@ -314,8 +288,7 @@ function runit() {
   var term = localStorage.getItem("concept").toLowerCase(); 
   printGraph(term); 
   var definition = getDefinition(term);
-  printDefinition(term, definition);
-//  getText(term); 
+  printDefinition(term, definition); 
 }
 
 
@@ -326,6 +299,4 @@ $('.ODSAterm').click(function (event) {
   var myRef = window.open("conceptMap.html", '', simWindowFeatures);
 });
 
-
-//}(jQuery));
 
