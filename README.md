@@ -73,7 +73,7 @@ the command "make pull" or by doing the following:
   git submodule init
   git submodule update
 More information about JSAV can be found here:
-http://algoviz.org/OpenDSA/JSAV/doc/api.html
+http://jsav.io/
 
 lib: System-wide library files
 
