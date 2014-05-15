@@ -120,7 +120,7 @@ nomin:
 	@cp ODSAkhan-exercises/khan-exercise.js lib/khan-exercise-min.js
 	@cp lib/registerbook.js lib/registerbook-min.js
 	@cp lib/site.css lib/site-min.css
-	@cp lib/odsaAV.css lib/odsaAV-min.css
+	@cat lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
 	@cp lib/odsaMOD.css lib/odsaMOD-min.css
 	@cp lib/gradebook.css lib/gradebook-min.css
 
