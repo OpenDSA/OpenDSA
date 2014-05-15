@@ -7,9 +7,11 @@ Table of Contents
 =================
 
 .. toctree::
+   :numbered:
    :maxdepth: 3
 
    Overview
+   Backend
    ModAuthor
    Style
    Preprocessor
