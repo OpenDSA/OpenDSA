@@ -58,6 +58,12 @@ are included for credit, and various other aspects of module use are
 defined with the
 :ref:`Configuration system <Configuration>`.
 
+
+Compile a book instance
+=======================
+
+
+
 Register Book Instance
 ======================
 
