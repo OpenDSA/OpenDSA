@@ -102,7 +102,7 @@
      jsav.stepOption("grade", true);
      jsav.step();
 	 
-	 var modelarr = jsav.ds.array([,,,,], {top: 100, left: 300});
+	 var modelarr = jsav.ds.array([,,,,], {top: 100, left: 200});
 	 modelarr.highlight(1);
      jsav.stepOption("grade", true);
      jsav.step();
@@ -135,19 +135,40 @@
     
     // register click handlers for the array indices
     theArray.click(function (index) {
+	
+	  if (theArray.isHighlight(1)){
+	  return;
+	  }
       if (!theArray.isHighlight(index)) {
-        theArray.highlight(index);
+        
+		theArray.highlight(index);
+		if(theArray.isHighlight(1)){
         exer.gradeableStep();
-      } else {
-        theArray.unhighlight(index);
-      }
+		theArray.unhighlight(0);
+		theArray.unhighlight(2);
+		theArray.unhighlight(3);
+		av.step();
+		}
+		}
+        
+     
       av.step();
     });
 	
 	theArrays.click(function (index) {
+	
+	  if (theArrays.isHighlight(1)){
+	  return;
+	  }
       if (!theArrays.isHighlight(index)) {
         theArrays.highlight(index);
+        if(theArrays.isHighlight(1)){
         exer.gradeableStep();
+		theArrays.unhighlight(0);
+		theArrays.unhighlight(2);
+		theArrays.unhighlight(3);
+		av.step();
+		}
       } else {
         theArrays.unhighlight(index);
       }
@@ -155,9 +176,21 @@
     });
 	
 	solArray.click(function (index) {
+	
+	if(solArray.isHighlight(4)){
+	return;
+	}
       if (!solArray.isHighlight(index)) {
         solArray.highlight(index);
+		if (solArray.isHighlight(4)){
         exer.gradeableStep();
+		solArray.unhighlight(0);
+		solArray.unhighlight(1);
+		solArray.unhighlight(2);
+		solArray.unhighlight(3);
+		solArray.unhighlight(5);
+		solArray.unhighlight(6);
+		}
       } else {
         solArray.unhighlight(index);
       }
