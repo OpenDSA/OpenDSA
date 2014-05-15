@@ -33,6 +33,11 @@ In order to pull a more recent copy of JSAV than what is in the submodule:
 
 A similar command will let you pull the up-to-date version of QBank.
 
+The OpenDSA Wiki has a "Getting Started" page
+(http://algoviz.org/algoviz-wiki/index.php/The_OpenDSA_Developer%27s_Getting_Started_Guide)
+that contains useful information for new developers, including what tools are
+necessary and how to install them.
+
 System documentation is found in the "Doc" directory. One consequence of running
 "make pull" is to compile this documentation. You can also view it at our mirror
 site: http://algoviz.org/OpenDSA/Doc/manual/
