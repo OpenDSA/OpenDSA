@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<entry>
+<id>http://algoviz.org/OpenDSA/AV/Development/linearIndexingPRO.html</id>
+<title type='text'>Linear Indexing Proficiency Exercise</title>
+<description type='text'>Linear Indexing Proficiency Exercise</description>
+<type>pe</type>  
+<width>823</width>
+<height>805</height>
+<author>
+<name>OpenDSA</name>
+<uri>http://algoviz.org/OpenDSA/</uri>
+</author>
+<covers>sorting</covers>
+<streak>90</streak>
+</entry>
