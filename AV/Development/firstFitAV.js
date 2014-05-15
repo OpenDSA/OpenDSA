@@ -3,30 +3,19 @@
   var jsav,              // JSAV
       defCtrlState,   // Stores the default state of the controls
       submitRec,      //the rectangle that's created when the user hits submit
-      newRect,
-      free1,
       linesArray,
-      freeListArray,
-      freeArray,
       freeStartArray,
-      blockLabelArray,
       requestedBlockLabel,
       connectStartArray,
-      recArray,
       recArraySize,
       freeOrNot,
-      attArray,
       startArray,
-      finArray,
       freeFinArray,
       freeAmountLabel,
       freeNum,
       usedAmountLabel,
       usedNum,
-      nextCount = 0,
       rectNumber = 0,
-      current,
-      color,
       end = false,
       array,
       insert,
@@ -47,11 +36,16 @@
     var params = JSAV.utils.getQueryParameter();
 
     if(params.fitAlgorithm) {
-      if(params.fitAlgorithm > 0 && params.fitAlgorithm <= 5) {
-      defCtrlState.fitAlgorithm = params.fitAlgorithm;
-    }
-    }
+      if(params.fitAlgorithm > 0 && params.fitAlgorithm <= 4) {
+        defCtrlState.fitAlgorithm = params.fitAlgorithm;
+        // Disable so user can't change the value set by parameter
+        $('#fitAlgorithm').attr('disabled', 'disabled');
+      } else {
+        console.error("Invalid URL parameter method: " + params.hashFunct);
+     }
   }
+}
+  
 
   function about() {
     alert("First Fit Algorithm Visualization\nWritten by Cliff Shaffer and Mauricio De La Barra\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
@@ -67,84 +61,86 @@
     // Reset controls to their default state
     $("#fitAlgorithm").val(0);
 
-   // if(Number($('#fitAlgorithm').val()) === 0) {
-      $('#input').attr("disabled", "disabled");
-   // }
+   
 
     // Ensure user selected a fit function
       jsav.umsg("Please select a fit algorithm");
-      // If all necessary fields are selected, enable the input box and tell the user to begin
-     // $("#input").removeAttr("disabled");
-  
-    //var firstFit = $('#firstFit');
-
-    // Clear input textbox and disable next button
-    $("#input").val("");
-    OriginalMemBlock();
-
-    $('#submit').attr("disabled", "disabled");
-    $('#next').attr("disabled", "disabled");
+      //enable the input box 
+      $("#input").val("");
+      OriginalMemBlock();
+      $("#fitAlgorithm").val(defCtrlState.fitAlgorithm);
+      $('#next').attr("disabled", "disabled");
+      if($("#fitAlgorithm").val() == 0)
+       {
+          $('#submit').attr("disabled", "disabled");
+       }
   }
-
+  //function that declares the original memory blocks
+  //also declares 2 arrays that refrence the memory blocks 
+  //also declare a jsav array for the free array
   function OriginalMemBlock() {
 
     var memPoolLabel = jsav.label("Memory Pool (Size: 200)", {"left": 280, "top": 130});
-
+    //declares rectangles for the used memory blocks
     var used1 = jsav.g.rect(342.5, 150, 25, 60).css({"fill": "coral"});
     var used2 = jsav.g.rect(455, 150, 62.5, 60).css({"fill": "coral"});
     var used3 = jsav.g.rect(597.5, 150, 45, 60).css({"fill": "coral"});
     var used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "coral"});
+    //click handler for used blocks
      $("rect").on("click", changeUsed);
      flag = 0;
      ins = 0;
      fit = 0;
      startIndex = 0;
      index = 0;
-
+    //declares where the free blocks start
     var free1Start = 280;
     var free2Start = 367.5;
     var free3Start = 517.5;
     var free4Start = 642.5;
-    
+    //declares rectangles for the free blocks
     var free1 = jsav.g.rect(free1Start, 150, 62.5, 60).css({"fill": "cornflowerblue"});
     var free2 = jsav.g.rect(free2Start, 150, 87.5, 60).css({"fill": "cornflowerblue"});
     var free3 = jsav.g.rect(free3Start, 150, 80, 60).css({"fill": "cornflowerblue"});
     var free4 = jsav.g.rect(free4Start, 150, 112.5, 60).css({"fill": "cornflowerblue"});
    
 
-    recArray = new Array(30);
+    // recArray = new Array(30);
 
-    recArray[0] = free1;
-    recArray[1] = used1;
-    recArray[2] = free2;
-    recArray[3] = used2;
-    recArray[4] = free3;
-    recArray[5] = used3;
-    recArray[6] = free4;
-    recArray[7] = used4;
+    // recArray[0] = free1;
+    // recArray[1] = used1;
+    // recArray[2] = free2;
+    // recArray[3] = used2;
+    // recArray[4] = free3;
+    // recArray[5] = used3;
+    // recArray[6] = free4;
+    // recArray[7] = used4;
 
+    //array of all of the starting points free or not
     startArray = new Array(30);
-    finArray = new Array(30);
-    freeOrNot = new Array(30);  //1 indicates free 0 is not
 
+    //array inicating if a given block is free
+    //1 indicates free 0 is not
+    freeOrNot = new Array(30);  
+    
     startArray[0] = 280;
     startArray[1] = 342.5;
     startArray[2] = 367.5;
-    startArray[3] = 455; // 
-    startArray[4] = 517.5; //was 517
-    startArray[5] = 597.5; //642
+    startArray[3] = 455; 
+    startArray[4] = 517.5; 
+    startArray[5] = 597.5; 
     startArray[6] = 642.5;
     startArray[7] = 755;
-    startArray[8] = 780; //780
+    startArray[8] = 780; //780 is thhe end of the last block, used as a refrence point
 
-    finArray[0] = 342;
-    finArray[1] = 390;
-    finArray[2] = 455;
-    finArray[3] = 540;
-    finArray[4] = 597;
-    finArray[5] = 665;
-    finArray[6] = 755;
-    finArray[7] = 804;
+    // finArray[0] = 342;
+    // finArray[1] = 390;
+    // finArray[2] = 455;
+    // finArray[3] = 540;
+    // finArray[4] = 597;
+    // finArray[5] = 665;
+    // finArray[6] = 755;
+    // finArray[7] = 804;
 
     freeOrNot[0] = 1;
     freeOrNot[1] = 0;
@@ -155,17 +151,9 @@
     freeOrNot[6] = 1;
     freeOrNot[7] = 0;
 
-
-
-    // var touch1 = jsav.g.rect(280, 20, 30, 40).css({"fill": "coral"});
-    // var touch2 = jsav.g.rect(620, 20, 30, 40).css({"fill": "coral"});
-    // var touch3 = jsav.g.rect(620, 20, 30, 40).css({"fill": "coral"});
-    // var touch4 = jsav.g.rect(620, 20, 30, 40).css({"fill": "coral"});
-
-
     freeStartArray = new Array(free1Start, free2Start, free3Start, free4Start);
 
-    
+    //array of where free blocks finished, used in updating lines
     var free1Finish = 342;
     var free2Finish = 455;
     var free3Finish = 597;
@@ -173,81 +161,74 @@
     
     freeFinArray = new Array(free1Finish, free2Finish, free3Finish, free4Finish);
     
+    //2 rectangles at top of screen that show how much memory is used/remains
     var usedRec = jsav.g.rect(620, 20, 30, 40).css({"fill": "coral"});
     var freeRec = jsav.g.rect(720, 20, 30, 40).css({"fill": "cornflowerblue"});
-    
+    //labels the blocks at the top of the screen
     var usedLabel = jsav.label("Used Space", {left :  600, top:  70});
-
     var freeLabel = jsav.label("Free Space", {left :  700, top:  70});
     
+    //initial new and used nums
     usedNum = 63;
     freeNum = 137;
     
+    //label declaring how much is initially used
     usedAmountLabel = jsav.label(usedNum, {left :  625, top:  30});
     usedAmountLabel.css({"z-index": 500});
 
+    //label declaring how much is initially free
     freeAmountLabel = jsav.label(freeNum, {left :  720, top:  30});
     freeAmountLabel.css({"z-index": 500});
 
+    //initial free block sizes
+    //note that the label on the block * 2.5 is the size of the actual jsav object
     var block1 = 25;
     var block2 = 35;
     var block3 = 32;
     var block4 = 45;
 
-     array = jsav.ds.array([25, 35, 32, 45], {"left": 280, "top": 400, "bottom": 500});
-     //array = jsav.ds.array(5, {"left": 280, "top": 400, "bottom": 500})
+    //jsav array object to act as the free list
+    array = jsav.ds.array([25, 35, 32, 45], {"left": 280, "top": 400, "bottom": 500});
 
-    //freeArray = new Array(block1, block2, block3, block4);
-
-    insert = 0;
-
-    // var block1Label = jsav.label(block1, {left :  280, top:  410});
-    // var block2Label= jsav.label(block2, {left :  310, top:  410});
-    // var block3Label = jsav.label(block3, {left :  340, top:  410});
-    // var block4Label = jsav.label(block4, {left :  370, top:  410});
-
-    // block1Label.css({"z-index": 500});
-    // block2Label.css({"z-index": 500});
-    // block3Label.css({"z-index": 500});
-    // block4Label.css({"z-index": 500});
-
-   // blockLabelArray = new Array(block1Label, block2Label, block3Label, block4Label);
-    
-    // var freeListRect = jsav.g.rect(275, 400, 30, 40).css({"fill": "lightgrey"});
-    // var freeListRect2 = jsav.g.rect(305, 400, 30, 40).css({"fill": "lightgrey"});
-    // var freeListRect3 = jsav.g.rect(335, 400, 30, 40).css({"fill": "lightgrey"});
-    // var freeListRect4 = jsav.g.rect(365, 400, 30, 40).css({"fill": "lightgrey"});
-
-    //freeListArray = new Array(freeListRect, freeListRect2, freeListRect3, freeListRect4);
-
+    //labels the free list
     var freeLabel = jsav.label("Free List", {left : 300, top: 475});
+
 
     var connect1Start = 305;
     var connect2Start = 350;
     var connect3Start = 400;
     var connect4Start = 435;
     connectStartArray = new Array(connect1Start, connect2Start, connect3Start, connect4Start);
-  
+
+    //initial lines connecting free list to mem pool
     var connect1 = jsav.g.line(connect1Start, 422, 311, 210);
     var connect2 = jsav.g.line(connect2Start, 422, 411, 210);
     var connect3 = jsav.g.line(connect3Start, 422, 557, 210);
     var connect4 = jsav.g.line(connect4Start, 422, 698, 210);
 
     linesArray = new Array(connect1, connect2, connect3, connect4);
-    current = 0;
+
+    //initaial size of the rec array
     recArraySize = 8;
+
+    //global var set to 0, used when inserting
+    insert = 0;
   }
 
- 
+  //function makes the rec that appears on your screen right after hitting submit
   function newRec(sizeX)
   {
-    sizeX = sizeX*2.5;
+    sizeX = sizeX*2.5; //note size gets multiplied by 2.5 before going to jsav, original size is too small
     submitRec = jsav.g.rect(280, 300, sizeX, 60).css({"fill": "cyan"});
     requestedBlockLabel = jsav.label("Requested Block", {"left": 280, "top": 270}).css({"font-weight": "bold"});
 
   }
 
-
+  //function that utilizes the click handler
+  //use of flags because after multiple rectangles are added and merged
+  //multiple click handlers can be on the same spot
+  //flag system works by not allowing two back to back
+  //clicks on the same spot unless a rec is inserted between
   function changeUsed(event)
   {
     var x, y;
@@ -255,6 +236,7 @@
     this.setAttribute("fill", "cornflowerblue");
     var click = event.pageX;
      var i = 0;
+     //subtract 23 because of html and jsav difference
      var clickSpot = click -23;
 
       while(clickSpot > startArray[i])
@@ -287,40 +269,30 @@
    
   }
 
-  function getStart(position)
-  {
-      return startArray[position -1];
-  }
-
-  function getFin(position)
-  {
-      return finArray[position -1];
-  }
-
- 
- 
   function enableAllButtons() {
     $("#input").removeAttr("disabled");
     $("#submit").removeAttr("disabled");
     $("#next").removeAttr("disabled");
   }
-
+  //function merges rectangles when a used one is deallocated
   function merge(clickSpot)
   {
-      
+      //subtract 23 because of html and jsav difference
       clickSpot = clickSpot -23; 
       
       var i = 0;
+      //loop - 1 gets the clickspot
       while(clickSpot > startArray[i])
       {
         i++;
       }
        i--;
-     
+      //click occued on block on the right (special case)
       if(clickSpot <= 780 && clickSpot >= startArray[recArraySize -1])
       {
         
-        var start = startArray[recArraySize-2]
+        var start = startArray[recArraySize-2];
+        //calculate size of rec to insert
         var diff = 780 - start;
         var newrec = jsav.g.rect(start, 150, diff, 60).css({"fill": "cornflowerblue"});
         newrec.css({"z-index": 500});
@@ -333,35 +305,40 @@
         end = true;
 
       }
-
+      //click occurs in first block (another special case)
       else if(i == 0 && freeOrNot[0] == 0)
       {
-
+        //calculating size of block
         var diff = startArray[2]-280;
+        //free blocks and used blocks shift
         freeOrNot[0] = 1;
         freeOrNot[1] = 0;
         startArray[1] = startArray[2];
         var j;
+        //all blocks after the first two also shift
         for(j =2; j < recArraySize; j++)
         {
           freeOrNot[j-1] = freeOrNot[j];
           startArray[j-1] = startArray[j];
         }
         freeOrNot[0] = 1;
+        //block 0 always starts at 280
         startArray[0] = 280;
+        //note new recs are not given click handlers because they are free
         var newRect = jsav.g.rect(280, 150, diff, 60).css({"fill": "cornflowerblue"});
         newRect.css({"z-index": 500});
+        //size shrinks when 2 blocks merge
         recArraySize--;
       }
       else if(freeOrNot[i] == 0)
       {  
         
-      
+        //calculating size of block 
         var diff = startArray[i +2] - startArray[i-1];
-        
+        //note new recs are not given click handlers because they are free
         var newRect = jsav.g.rect(startArray[i-1], 150, diff, 60).css({"fill": "cornflowerblue"});
         newRect.css({"z-index": 500});
-       
+        //updating size of the number of blocks in the mem pool
         if(recArraySize > 2)
         {
           recArraySize = recArraySize - 2;
@@ -371,10 +348,10 @@
           recArraySize = recArraySize -1;
         }
         var j = recArraySize;
-
+        //all elements after i shift
         for(i; i < j; i++)
         {
-          recArray[i] = recArray[i + 2];
+          //recArray[i] = recArray[i + 2];
           startArray[i] = startArray[i + 2];
           freeOrNot[i] = freeOrNot[i+2];
           // finArray[i] = finArray[i + 2];
@@ -384,17 +361,17 @@
        freeOrNot[recArraySize +1 ] = null;
        freeOrNot[recArraySize] = null;
        startArray[recArraySize] = null;
-       recArray[recArraySize +1] = null;
-       recArray[recArraySize] = null;
+       // recArray[recArraySize +1] = null;
+       // recArray[recArraySize] = null;
        // finArray[recArraySize] = null;
        // finArray[recArraySize + 1] = null;
      }
-
+          //setting all unused spots in the array to null to prevent miscalculation
           var n = recArraySize;
           for (n; n<30; n++)
             {
               startArray[n] = null;
-              recArray[n] = null;
+              //recArray[n] = null;
             }
             if(end == true)
             {
@@ -404,13 +381,14 @@
                   startArray[recArraySize -1] = 280;
                 }
             }
-
+            //last elemnt in the start array + 1 is always 780
             startArray[recArraySize] = 780;
             freeCheck();
+            //update array and merge lines
             updateArray();
             updateLinesOnMerge();
  }
-
+    //assures the free or not array is correct
     function freeCheck()
     {
       var i = 0;
@@ -430,11 +408,11 @@
       }
       
     
-
+    //updates the jsav array after an insert or merge
     function updateArray()
     {
         
-       
+        //in this case there is only one free rec of size 200
         if(recArraySize == 1 && freeOrNot[0] == 1)
         {
           array.hide();
@@ -454,6 +432,7 @@
             if(freeOrNot[i] == 1) 
             {
               num++;
+              //if statements calculate the size of each free block and divide by 2.5 to put into scale
               if(num == 1)
               {
                 one = startArray[i +1] - startArray[i];
@@ -485,43 +464,44 @@
                
                 
               }
-              if(one < 1 || one == null)
-              {
+              // if(one < 1 || one == null)
+              // {
                  
-                 one = 780 - startArray[i];
-                 one = one/2.5;
-                 one = Math.round(one);
+              //    one = 780 - startArray[i];
+              //    one = one/2.5;
+              //    one = Math.round(one);
                 
-              }
-              else if(two < 1 || two == null)
-              {
+              // }
+              // else if(two < 1 || two == null)
+              // {
                  
-                 two= 780 - startArray[i];
-                 two = two/2.5;
-                two = Math.round(two);
+              //    two= 780 - startArray[i];
+              //    two = two/2.5;
+              //   two = Math.round(two);
                 
-              }
-              else if(three < 1 || three == null)
-              {
+              // }
+              // else if(three < 1 || three == null)
+              // {
                 
-                 three = 780 - startArray[i];
-                 three = three/2.5;
-                three = Math.round(three);
+              //    three = 780 - startArray[i];
+              //    three = three/2.5;
+              //   three = Math.round(three);
                  
-              }
-              else if(four < 1 || four == null)
-              {
+              // }
+              // else if(four < 1 || four == null)
+              // {
                   
                  
-                 four = 780 - startArray[i];
-                 four = four/2.5;
-                 four = Math.round(four);
+              //    four = 780 - startArray[i];
+              //    four = four/2.5;
+              //    four = Math.round(four);
                  
-              }
+              // }
               
             }
 
           }
+          //sees of many free blocks there are
           var count;
           var i;
           for(i=0; i < recArraySize; i++)
@@ -533,7 +513,7 @@
           }
           
           
-            
+           //hides the old array so the new one can be added 
           array.hide();
               if(num == 1)
               {
@@ -561,20 +541,22 @@
             
     
         }
-        var i = 0;
-        while(freeOrNot[i] == 0)
-        {
-          if(i == recArraySize)
-          {
-            array.hide();
-          }
-          i++;
+        // var i = 0;
+        // while(freeOrNot[i] == 0)
+        // {
+        //   if(i == recArraySize)
+        //   {
+        //     array.hide();
+        //   }
+        //   i++;
 
-        }
+        // }
+
+        //updates the labels with the new free amount and used amount
         updateLabels();
         
     }
-
+    //gets the size of a block, not the actual jsav size (jsav/2.5)
     function getSize(rect)
     {
         //var rec = rect -1;
@@ -583,7 +565,7 @@
         return size;
   
   }
-
+  //updates labels of free num and used num
   function updateLabels()
   {
       usedAmountLabel.clear();
@@ -626,6 +608,7 @@
 
       var i = 0;
       var count = 0;
+      //calculates number of free blocks
       for(i; i <recArraySize; i++)
       {
         if(freeOrNot[i]==1)
@@ -633,7 +616,7 @@
           count++;
         }
       }
-
+      //if there are no free blcoks then used num = 200 and free = 0
       if(count == 0)
       {
         usedAmountLabel.clear();
@@ -641,15 +624,18 @@
         usedNum = 200;
         freeNum = 0;
          usedAmountLabel = jsav.label(usedNum, {left :  625, top:  30});
-      usedAmountLabel.css({"z-index": 500});
+        usedAmountLabel.css({"z-index": 500});
 
-      freeAmountLabel = jsav.label(freeNum, {left :  720, top:  30});
-      freeAmountLabel.css({"z-index": 500});
+        freeAmountLabel = jsav.label(freeNum, {left :  720, top:  30});
+        freeAmountLabel.css({"z-index": 500});
        
       }
   }
+  //updates the lines if an add occurs
   function updateLinesOnAdd()
   {   var j = 0;
+      //loop calculates which blocks were effected
+      //finn is the array spot the block was inseerted to
       while(i < recArraySize)
       {
         if(freeOrNot[i] == 1)
@@ -667,6 +653,7 @@
       i = 0;
       while(i < recArraySize)
       { 
+        //calculates where free blocks start and finsih to be used to move lines
         if(freeOrNot[i] == 1)
         {
           freeStartArray[k] = startArray[i];
@@ -684,6 +671,7 @@
         i++;
             
       }
+          //used to check if any free blocks remain
           var count =0;
           for(i = 0; i <recArraySize; i++)
           {
@@ -692,7 +680,7 @@
               count++;
             }
           }
-
+      //group of if/if else statements use previously claculated start and end points to update lines
       if(array.size() == 4)
       {
           linesArray[0].movePoints([[0, connectStartArray[0], 422], [1, ((freeStartArray[0] + freeFinArray[0])/2), 210]]).css({"stroke-width": 1});
@@ -733,7 +721,7 @@
   }
   
 
-
+  //very similar to method above except these line shifts occur on merges
   function updateLinesOnMerge()
   {   var j = 0;
       while(i < recArraySize)
@@ -755,6 +743,8 @@
       { 
         if(freeOrNot[i] == 1)
         {
+          //seperate method needed for add and merge becuase 
+          //on merge 3 blcoks turn to one free block
           freeStartArray[k] = startArray[i-1];
           freeFinArray[k]= startArray[i+1];
           if(i == 0)
@@ -813,13 +803,16 @@
   
 
  
-
+  //method to show users how search for correct block works
+  //the blocks new spot in the array and its size are passed in
+  //used by all algos except circular fit
   function stepsToInsert(fin, size)
   {
       
       var whichRec;
       var i = 0;
       var j = 0;
+      //calculates which free block fin corresponds to
       while(i < recArraySize)
       {
         if(freeOrNot[i] == 1)
@@ -834,38 +827,49 @@
         i++;
       }
       fin = j;
-      //jsav.umsg("steps to insert fin " + fin)
+
       var error = array.size();
+      //cant be a fin greater than the size of the free array
       if(fin > error)
       {
-        jsav.umsg("There is an error")
+        jsav.umsg("There is an error with your allocation")
       }
+      //if fin == insert we have a match
+      //insert starts at 0 and counts up until it reaches fin
+      //each click of next is another step
       if(fin == insert && finn != 30)
       {
-        jsav.umsg("We have a Fit at Free Block " + fin)
-        jsav.umsg("Press Next to allocate")
+        
+        //jsav.umsg("Press Next to allocate")
+        //adds rec to appropriate block
         addRec(finn, size);
+        //next button disabled until next submit is pressed
          $('#next').attr("disabled", "disabled");
         ins = 0;
         insert = 0;
 
       }
-      else if(fin > insert && insert <= 3)
+      else if(fin > insert && insert <= 3) //we do not have a good block yet
       {
           var size = array.value(insert);
           jsav.umsg("Free List Block " + insert + " size " + size)
-          linesArray[insert].css({"stroke-width": 3});    
+          linesArray[insert].css({"stroke-width": 3});  //darken stroke width of current line  
           if(insert != 0)
           {
-            linesArray[insert-1].css({"stroke-width": 1});
+            linesArray[insert-1].css({"stroke-width": 1}); //undarken stroke width of previous line
           }
           array.unhighlight(insert -1);
           array.highlight(insert);
-          insert++;
+          insert++; //increase insert so it moves closer to fin
+          if(fin == insert && finn != 30)
+          {
+            jsav.umsg("We have a Fit at Free Block " + fin)
+            jsav.umsg("Press next to allocate")
+          }
           
 
       }
-      else if(insert == 4)
+      else if(insert == 4)  //insert == 4 only if the size of the allocation is too big
       {
           
           array.unhighlight(insert -1);
@@ -878,7 +882,7 @@
             jsav.umsg("Your allocation is too big  deallocate and try again")
            $('#next').attr("disabled", "disabled");
            ins = 0;
-          insert = 0;
+          insert = 0; //reset insert
       }
 
       
@@ -886,8 +890,9 @@
   }
 
 
-
+  //algorithm for first fit
   function firstFit(inputVal) {
+    //multiply input by 2.5 so it is scaled up to size of mem blocks
     var size = inputVal *2.5;
     var freeAmount = array.size();
     var rec1Size;
@@ -898,6 +903,7 @@
     var freeRecs = new Array(0, 0, 0, 0);
     var i = 0;
     var j = 0;
+    //adds free recs to array of free recs
     for(i; i < recArraySize ; i++)
     {
 
@@ -915,7 +921,8 @@
     var rec4 = freeRecs[3];
 
     var fin;
-
+    //if statements get the size of the free recs
+    //get size returns scaled sclaed down size
     if(rec1 != null)
     {
         rec1Size = getSize(rec1);
@@ -932,7 +939,8 @@
     {
         rec4Size = getSize(rec4);
     }
-
+    //checks if input val is less than the recs size strating with the first
+    //if there is one that fits we have our guy
     if(inputVal <= rec1Size)
     {
         fin = rec1;
@@ -950,37 +958,41 @@
         fin = rec4;
     }
     else{
-      fin = 30;
+      fin = 30; //assign fin to 30 if no match becuase the array of recs can hold a max of 30 elements
     }
 
     finn = fin;
     sizee = size;
     var range = size/2.5;
-  
+    //calls method to insert block
     stepsToInsert(fin, size);
     
   }
+  //method adds newly allocated block to mem pool
 function addRec(fin, size)
 {
 
   var showSize = size /2.5;
   var size1 = size;
+    //if the array position to add is not 0
     if(fin != 0 )
     {
-      
+      //if the size of the allocated blcok and the free block are not the same
       if(getSize(fin) != showSize)
        { 
+        //gets size of block to add
         var add = getSize(fin-1);
         add = add*2.5;
         size1 =size;
         size = add + size;
         var newRect2 = jsav.g.rect(startArray[fin - 1], 150, size, 60).css({"fill": "coral"});
+        //rec gets click handler since it is used
         $("rect").on("click", changeUsed);
         newRect2.css({"z-index": 500});
         startArray[fin] =startArray[fin] + size1;
         var i;
        } 
-      else if(getSize(fin) == showSize)
+      else if(getSize(fin) == showSize) //if the block does match the siz eof th efree space
       {
         var next = startArray[fin+2] - startArray[fin-1];
         if(next < 0)
@@ -996,15 +1008,12 @@ function addRec(fin, size)
         var a = startArray[fin+2] - startArray[fin+1];
         startArray[fin] = a + dif;
         freeOrNot[fin -1] = 0;
-       
+       //loop to update both arrays after new rec has been added
         for(i = fin + 2; i< recArraySize +1; i++)
         {
           if(startArray[i-2] > 0)
           {
-            // if(startArray[i -2] < 0)
-            // {
-
-            // }
+            
             startArray[i-2]= startArray[i];
             freeOrNot[i-2] = freeOrNot[i];
             
@@ -1012,17 +1021,18 @@ function addRec(fin, size)
         }
         recArraySize= recArraySize - 2;
       }
-      else{
-            startArray[fin] = startArray[fin] + size1;
-        }
+        else{
+              startArray[fin] = startArray[fin] + size1;
+          }
       
 
   }
-
+  //if the block is to be added to postiton 0
   else if(fin == 0)
   {
       if(freeOrNot[1] == 0)
       {
+        //if block isnt size of free space
         if(getSize(fin) != showSize)
         {  
           var newRect2 = jsav.g.rect(280, 150, size1, 60).css({"fill": "coral"});
@@ -1086,7 +1096,7 @@ function addRec(fin, size)
             }
 
             
-    }
+    }     //last spot in the array goes to the very end 780
           startArray[recArraySize] =780;
  
             
@@ -1095,10 +1105,13 @@ function addRec(fin, size)
     updateArray();
     updateLabels();
     updateLinesOnAdd();
+    //block has been added so flag is back at 0;
     flag = 0;
+    jsav.umsg("Enter Another Size to Allocate and Click Submit")
+    $("#input").val("");
 
 }
-
+//worst fit algorithm
 function worstFit(inputVal)
 {
     var size = inputVal *2.5;
@@ -1109,6 +1122,7 @@ function worstFit(inputVal)
     var freeRecs = new Array(0, 0, 0, 0);
     var i = 0;
     var j = 0;
+    //free recs are put into freeRecs
     for(i; i < recArraySize ; i++)
     {
 
@@ -1125,7 +1139,7 @@ function worstFit(inputVal)
     var rec3 = freeRecs[2];
     var rec4 = freeRecs[3];
     var fin;
-
+    //if size not null assign
     if(rec1 != null)
     {
         rec1Size = getSize(rec1);
@@ -1144,8 +1158,9 @@ function worstFit(inputVal)
     }
 
     var free = new Array(rec1Size,rec2Size,rec3Size,rec4Size);
+    //takes the max out of the array(worst fit)
     var max = free.indexOf(Math.max.apply(Math, free));
-    fin
+    //make blcok isnt too big
     if(max == 0  && inputVal <= rec1Size)
     {
         fin = freeRecs[0];
@@ -1175,7 +1190,7 @@ function worstFit(inputVal)
 
 
 }
-
+//best fit algorithm
 function bestFit(inputVal)
 {
     var size = inputVal;
@@ -1186,6 +1201,7 @@ function bestFit(inputVal)
     var freeRecs = new Array(0, 0, 0, 0);
     var i = 0;
     var j = 0;
+    //adds free blocks to array
     for(i; i < recArraySize ; i++)
     {
 
@@ -1201,7 +1217,7 @@ function bestFit(inputVal)
     var rec3 = freeRecs[2];
     var rec4 = freeRecs[3];
     var fin;
-
+    //get size of free blocks
     if(rec1 != null)
     {
         rec1Size = getSize(rec1);
@@ -1222,7 +1238,8 @@ function bestFit(inputVal)
    var minArray = new Array(4);
    var arraySize = array.size();
    
-
+   //assure that the blocks are large enough
+   //if not given value of 200 to ensure they wont be min
    if(rec1Size >= size)
     {
         
@@ -1271,7 +1288,9 @@ function bestFit(inputVal)
       {
         minArray[3] = 200;
       }
+      //takes the min of values in the array, the min is th ebest fit
     var min = minArray.indexOf(Math.min.apply(Math, minArray));
+    //assures not all elements are = 200
     if(minArray[0] != 200 || minArray[1] != 200 || minArray[2] != 200 || minArray[3] != 200)
     {
       if(min == 0)
@@ -1301,17 +1320,18 @@ function bestFit(inputVal)
         }
       }
     }
-      else{
-        fin = 30;
+    else{
+          fin = 30;  //fin = 30 if no free blocks are large enough
       }
 finn = fin;
 sizee = size*2.5;
+//insert the block
 stepsToInsert(fin, size);
 
 
 
 }
-
+//circualr fit algorithm
 function circularFit(inputVal)
 {
     //index = 0;
@@ -1324,7 +1344,9 @@ function circularFit(inputVal)
     var freeRecs = new Array(0, 0, 0, 0);
     var i = 0;
     var j = 0;
+    //index is a global variable to keep track of where the search starts from
     var startIndex = index;
+    //add free blocks to list
     for(i; i < recArraySize ; i++)
     {
 
@@ -1357,6 +1379,7 @@ function circularFit(inputVal)
       freeRecs[2] = 0;
       freeRecs[1] = 0;
     }
+    //if index reaches a value equal to the size of the array, it returns to 0
     if(index == arrSize)
     {
       index = 0;
@@ -1364,6 +1387,8 @@ function circularFit(inputVal)
 
     for(index; index < arrSize; i++)
     {
+      //checks the size to make sure it fits
+      //had a bug that would allow 0's to be chosen so added an extra check
       if(size <= getSize(freeRecs[index]) && getSize(freeRecs[index]) != 0)
       {
 
@@ -1378,6 +1403,7 @@ function circularFit(inputVal)
       {
         index = 0;
       }
+      //there is no block that fits
       if(index == startIndex)
       {
         fin = 30;
@@ -1385,11 +1411,14 @@ function circularFit(inputVal)
       }
 
   }
+  //get the size on the free rec
   var rec = getSize(freeRecs[index]);
   if(fin != 30)
   {
+    //index only refrences free blocks this gets the array number for being added to group of all blocks
     if(freeOrNot[0] == 1)
     {
+
       fin = 2*index;
     }
     else
@@ -1398,16 +1427,7 @@ function circularFit(inputVal)
       fin = fin + 1;
     }
     
-    // var i = 0;
-    // for(i = index; i < recArraySize; i++)
-    // {
-    //   if(getSize(i) == rec && freeOrNot[i] == 1)
-    //   {
-    //     fin = i;
-    //     break;
-    //   }
 
-    // }
   }
 
   //size = getSize(i);
@@ -1415,6 +1435,7 @@ function circularFit(inputVal)
   size = inputVal *2.5;
   sizee = size;
   var finish = index;
+  //add block using circle fit insert
   circleFitInsert(fin, size, finish);
   
 
@@ -1423,7 +1444,7 @@ function circularFit(inputVal)
 function circleFitInsert(fin, size, index)
   {
       var arrSize = array.size();
-      jsav.umsg("start index = " + startIndex)
+      //incase array shrunk since last circular fit
       if(startIndex >= arrSize)
       {
         startIndex = 0;
@@ -1431,6 +1452,7 @@ function circleFitInsert(fin, size, index)
       var i = 0;
       var j = 0;
       var tooBig = fin;
+      //we have a match, set insert to 1, and will insert on next next
       if(startIndex == index && tooBig != 30 && insert == 0)
       {
           insert = 1;
@@ -1442,8 +1464,9 @@ function circleFitInsert(fin, size, index)
           }
           else if(startIndex == 0)
           {
-            array.unhighlight(3);
-            linesArray[3].css({"stroke-width": 1});
+            var aSize = array.size();
+            array.unhighlight(aSize-1);
+            linesArray[aSize-1].css({"stroke-width": 1});
           }
           
           array.highlight(startIndex);
@@ -1506,9 +1529,6 @@ function circleFitInsert(fin, size, index)
 
   $(document).ready(function () {
     jsav = new JSAV($('.avcontainer'));
-    reset();
-
-    
 
     // If the user hits 'Enter' while the focus is on the textbox,
     // click 'Next' rather than refreshing the page
@@ -1527,12 +1547,6 @@ function circleFitInsert(fin, size, index)
 
     $('#submit').click(function () {
       var i = 0;
-      // for(i = 0; i < 4; i++)
-      // {
-      // linesArray[i].css({"stroke-width": 1});
-      // freeListArray[i].css({"fill": "lightgrey"});
-      // }
-      nextCount = 0;
       rectNumber = 0;
       var inputVal = $("#input").val();
       if (inputVal < 1 || inputVal > 200 || isNaN(inputVal)) {
@@ -1558,7 +1572,8 @@ function circleFitInsert(fin, size, index)
 
       var inputValue = $("#input").val();
       
-
+      //ins is used to force call to given function
+      //then on remaining next calls steps to insert is called
       switch ($("#fitAlgorithm").val()) {
         case '0':  // No function chosen
           reset();
@@ -1617,7 +1632,7 @@ function circleFitInsert(fin, size, index)
       $("#submit").removeAttr("disabled");
     });
 
-
+    //messages that appear when an algorthim is selected
     $("#fitAlgorithm").change(function () {
      // OriginalMemBlock();
       switch ($("#fitAlgorithm").val()) {
@@ -1688,6 +1703,10 @@ function circleFitInsert(fin, size, index)
 
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
     setDefaultControlState();
-    // reset();
+    reset();
+    if($("#fitAlgorithm").val() == 0)
+    {
+      $('#submit').attr("disabled", "disabled");
+    }
   });
 }(jQuery));
