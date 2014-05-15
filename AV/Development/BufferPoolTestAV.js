@@ -12,7 +12,7 @@
       empty_index = 0,
       into_list = 0,
       LFU_index = 0;
-
+  var letter = ["A", "B", "C", "D", "E", "F", "G", "F", "I"];
   var lines_end = [];
   var LFU_counter = [];
   var label_array = [];
@@ -106,15 +106,21 @@
     //console.log("size: " + buffer_size);
     var input = $("#input").val();
     var replacement = $("#function").val();
-    //console.log("replacement " + replacement);
-    if (replacement == 1) {
-      LRU(input);
+
+    if (input < 0 || input >= memory.size() || input == "") {
+      jsav.umsg("enter a proper input");
     }
-    if (replacement == 2) {
-      FIFO(input);
-    }
-    if (replacement == 3) {
-      LFU(input);
+    else {
+      //console.log("replacement " + replacement);
+      if (replacement == 1) {
+        LRU(input);
+      }
+      if (replacement == 2) {
+        FIFO(input);
+      }
+      if (replacement == 3) {
+        LFU(input);
+      }
     }
   }
 
@@ -127,36 +133,35 @@
     //console.log("size: " + buffer_size);
     var input = $("#input").val();
     var replacement = $("#function").val();
-    //console.log("replacement " + replacement);
-    if (replacement == 1) {
-
-      if (read_write == 0) {
-        LRU(input);
-      }
-      else {
-        LRU_write(input);
-      }
-
+    if (input < 0 || input >= memory.size()) {
+      jsav.umsg("enter a proper input");
     }
-    if (replacement == 2) {
-
-      if (read_write == 0) {
-        FIFO(input);
+    else {
+      //console.log("replacement " + replacement);
+      if (replacement == 1) {
+        if (read_write == 0) {
+          LRU(input);
+        }
+        else {
+          LRU_write(input);
+        }
       }
-      else {
-        FIFO_write(input);
-      }    
-
-    }
-    if (replacement == 3) {
-
-      if (read_write == 0) {
-        LFU(input);
+      if (replacement == 2) {
+        if (read_write == 0) {
+          FIFO(input);
+        }
+        else {
+          FIFO_write(input);
+        }    
       }
-      else {
-        LRU_write(input);
-      }    
-
+      if (replacement == 3) {
+        if (read_write == 0) {
+          LFU(input);
+        }
+        else {
+          LRU_write(input);
+        }    
+      }
     }
   }
 
@@ -164,16 +169,21 @@
     read_write = 1; 
     var input = $("#input").val();
     var replacement = $("#function").val();
-    if (replacement == 1) {
-      LRU_write(input);
-    }
-    if (replacement == 2) {
-      FIFO_write(input);
-    }
-    if (replacement == 3) {
-      LFU_write(input);
-    }
 
+    if (input < 0 || input >= memory.size()) {
+      jsav.umsg("enter a proper input");
+    }
+    else {
+      if (replacement == 1) {
+        LRU_write(input);
+      }
+      if (replacement == 2) {
+        FIFO_write(input);
+      }
+      if (replacement == 3) {
+        LFU_write(input);
+      }      
+    }  
   }
   function drawlines() {
     for (var i = 0; i < pool.length; i++) {
@@ -229,6 +239,7 @@
       $("#input").removeAttr("disabled");
       $("#write").removeAttr("disabled");
       $("#read").removeAttr("disabled");
+      document.getElementById("input").value = '';
       $("#next").attr("disabled", "disabled");
     }
     else if (buffer_size < pool.length) {
@@ -258,6 +269,7 @@
           $("#input").removeAttr("disabled");
           $("#write").removeAttr("disabled");
           $("#read").removeAttr("disabled");
+          document.getElementById("input").value = '';
           $("#next").attr("disabled", "disabled");
         }
         else if (LRU_moveup == 0) {
@@ -292,6 +304,7 @@
           $("#input").removeAttr("disabled");
           $("#write").removeAttr("disabled");
           $("#read").removeAttr("disabled");
+          document.getElementById("input").value = '';          
           $("#next").attr("disabled", "disabled");          
         }
       }
@@ -318,6 +331,10 @@
           }
           else {
             jsav.umsg("dirty bit set = 1, contents of buffer written back to disk");
+            var new_val = "sector " + list.value(buffer_size-1) + " :" +
+            letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0] +
+            letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0];
+            memory.value(list.value(buffer_size-1), new_val);            
           }
           LRU_replace++;
         }
@@ -365,6 +382,7 @@
           $("#input").removeAttr("disabled");
           $("#write").removeAttr("disabled");
           $("#read").removeAttr("disabled");
+          document.getElementById("input").value = '';
           $("#next").attr("disabled", "disabled");
         }
       }
@@ -396,7 +414,7 @@
       else if (LRU_moveup_kai == 2) {
         var index = contains_kai(input);
         empty_index = index;
-        jsav.umsg("the buffer containing secotr " + input + " will be moved to the front of the list");
+        jsav.umsg("the buffer containing sector " + input + " will be moved to the front of the list");
         list.unhighlight();
         list.value(index, "");
         LRU_moveup_kai++;
@@ -417,6 +435,7 @@
       $("#input").removeAttr("disabled");
       $("#write").removeAttr("disabled");
       $("#read").removeAttr("disabled");
+      document.getElementById("input").value = '';
       $("#next").attr("disabled", "disabled");
     }
     else if (buffer_size < pool.length) {
@@ -447,6 +466,7 @@
           $("#input").removeAttr("disabled");
           $("#write").removeAttr("disabled");
           $("#read").removeAttr("disabled");
+          document.getElementById("input").value = '';          
           $("#next").attr("disabled", "disabled");
         }
         else if (LRU_moveup == 0) {
@@ -489,6 +509,7 @@
           $("#input").removeAttr("disabled");
           $("#write").removeAttr("disabled");
           $("#read").removeAttr("disabled");
+          document.getElementById("input").value = '';          
           $("#next").attr("disabled", "disabled");          
         }
       }
@@ -515,6 +536,10 @@
           }
           else {
             jsav.umsg("dirty bit set = 1, contents of buffer written back to disk");
+            var new_val = "sector " + list.value(buffer_size-1) + " :" +
+            letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0] +
+            letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0];
+            memory.value(list.value(buffer_size-1), new_val);                      
           }
           LRU_replace++;
         }
@@ -567,6 +592,7 @@
           $("#input").removeAttr("disabled");
           $("#write").removeAttr("disabled");
           $("#read").removeAttr("disabled");
+          document.getElementById("input").value = '';          
           $("#next").attr("disabled", "disabled");
         }
       }
@@ -616,6 +642,7 @@
         $("#input").removeAttr("disabled");
         $("#write").removeAttr("disabled");
         $("#read").removeAttr("disabled");
+        document.getElementById("input").value = '';        
         $("#next").attr("disabled", "disabled");      
         into_list = 0;
         buffer_size++;        
@@ -642,6 +669,10 @@
         }
         else {
           jsav.umsg("dirty bit = 1, contents of buffer written back to disk");
+          var new_val = "sector " + list.value(buffer_size-1) + " :" +
+          letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0] +
+          letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0];
+          memory.value(list.value(buffer_size-1), new_val);                      
         }
         $("#write").attr("disabled", "disabled");
         $("#read").attr("disabled", "disabled");          
@@ -675,6 +706,7 @@
         $("#input").removeAttr("disabled");
         $("#write").removeAttr("disabled");
         $("#read").removeAttr("disabled");
+        document.getElementById("input").value = '';        
         $("#next").attr("disabled", "disabled");        
       }
     }
@@ -729,6 +761,7 @@
         $("#input").removeAttr("disabled");
         $("#write").removeAttr("disabled");
         $("#read").removeAttr("disabled");
+        document.getElementById("input").value = '';        
         $("#next").attr("disabled", "disabled");            
         into_list = 0;
         buffer_size++;            
@@ -755,6 +788,10 @@
         }
         else {
           jsav.umsg("dirty bit = 1, contents of buffer written back to disk");
+          var new_val = "sector " + list.value(buffer_size-1) + " :" +
+          letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0] +
+          letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0];
+          memory.value(list.value(buffer_size-1), new_val);        
         }
         $("#write").attr("disabled", "disabled");
         $("#read").attr("disabled", "disabled");          
@@ -794,6 +831,7 @@
         $("#input").removeAttr("disabled");
         $("#write").removeAttr("disabled");
         $("#read").removeAttr("disabled");
+        document.getElementById("input").value = '';        
         $("#next").attr("disabled", "disabled");  
       }
     }
@@ -839,6 +877,7 @@
         $("#input").removeAttr("disabled");
         $("#write").removeAttr("disabled");
         $("#read").removeAttr("disabled");
+        document.getElementById("input").value = '';        
         $("#next").attr("disabled", "disabled");     
         buffer_size++;
       }
@@ -874,6 +913,10 @@
         }
         else {
           jsav.umsg("dirty bit set = 1, contents of buffer written back to disk");
+          var new_val = "sector " + list.value(buffer_size-1) + " :" +
+          letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0] +
+          letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0];
+          memory.value(list.value(buffer_size-1), new_val);          
         }
         dirty_bits[list.value(LFU_index)] = -1;
         list.value(LFU_index, "");
@@ -889,6 +932,7 @@
         $("#input").removeAttr("disabled");
         $("#write").removeAttr("disabled");
         $("#read").removeAttr("disabled");
+        document.getElementById("input").value = '';        
         $("#next").attr("disabled", "disabled"); 
       }
     }
@@ -937,6 +981,7 @@
         $("#input").removeAttr("disabled");
         $("#write").removeAttr("disabled");
         $("#read").removeAttr("disabled");
+        document.getElementById("input").value = '';        
         $("#next").attr("disabled", "disabled");    
         buffer_size++;
       }
@@ -972,6 +1017,10 @@
         }
         else {
           jsav.umsg("dirty bit set = 1, contents of buffer written back to disk");
+          var new_val = "sector " + list.value(buffer_size-1) + " :" +
+          letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0] +
+          letter[Math.floor(Math.random() * (memory.size() - 0 + 1)) + 0];
+          memory.value(list.value(buffer_size-1), new_val);        
         }
         dirty_bits[list.value(LFU_index)] = -1;
         list.value(LFU_index, "");
@@ -988,6 +1037,7 @@
         $("#input").removeAttr("disabled");
         $("#write").removeAttr("disabled");
         $("#read").removeAttr("disabled");
+        document.getElementById("input").value = '';        
         $("#next").attr("disabled", "disabled");
       }
     }
@@ -1027,7 +1077,7 @@
     else {
       var temp = [];
       for (var i = 0; i < $('#mainmemory_size').val(); i++) {
-        temp[i] = "sector " + i;
+        temp[i] = "sector " + i + ": " + letter[i] + letter[i];
         LFU_counter[i] = 0;
         dirty_bits[i] = 0;
       }
