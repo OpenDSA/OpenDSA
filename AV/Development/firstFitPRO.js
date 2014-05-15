@@ -26,6 +26,7 @@
         $theArray = $("#profArray"),
         initialArray = [], // needed for model answer
         theArray,
+        stack,
         currIncrIndex = 0, //index of the current block size array
         usedNum,
         freeNum,
@@ -33,14 +34,16 @@
         freeAmountLabel,
         freeStartArray,
         freeFinArray,
+        blocks = [],
+        labels = [],
         connectStartArray,
-        linesArray;
+        linesArray = [];
 
     //creates the initial visualization of the memory pool, rectangles are created based
     //on the randomly generated values for the free list.
     function OriginalMemBlock() {
 
-      var memPoolLabel = av.label("Memory Pool", {"left": 150, "top": 230});
+      var memPoolLabel = av.label("Memory Pool", {"left": 150, "top": 195});
       
       var used1Size = Math.floor(Math.random() * 3) + 25;
       var used2Size = Math.floor(Math.random() * 3) + 58;
@@ -59,7 +62,7 @@
       var free4Start = free3Finish + used3Size;    
       var free4Finish = free4Start + (freeValues[3]*2);
 
-      var rectY = 250;
+      var rectY = 215;
       var rectHeight = 60;
 
       //used blocks in memory pool
@@ -76,20 +79,23 @@
       
       freeStartArray = new Array(free1Start, free2Start, free3Start, free4Start);
       freeFinArray = new Array(free1Finish, free2Finish, free3Finish, free4Finish);
+
+      var smallRectY = 135;
+      var usedRec = av.g.rect(620, smallRectY, 30, 40).css({"fill": "coral"});
+      var freeRec = av.g.rect(720, smallRectY, 30, 40).css({"fill": "cornflowerblue"});
       
-      var usedRec = av.g.rect(620, 185, 30, 40).css({"fill": "coral"});
-      var freeRec = av.g.rect(720, 185, 30, 40).css({"fill": "cornflowerblue"});
-      
-      var usedLabel = av.label("Used Space", {left :  600, top:  225});
-      var freeLabel = av.label("Free Space", {left :  700, top:  225});
+      var labelY = 175;
+      var usedLabel = av.label("Used Space", {left :  600, top:  labelY});
+      var freeLabel = av.label("Free Space", {left :  700, top:  labelY});
       
       usedNum = used1Size + used2Size + used3Size + used4Size;
       freeNum = freeValues[0] + freeValues[1] + freeValues[2] + freeValues[3];
       
-      usedAmountLabel = av.label(usedNum, {left :  622, top:  195});
+      var numLabelY = 145;
+      usedAmountLabel = av.label(usedNum, {left :  622, top:  numLabelY});
       usedAmountLabel.css({"z-index": 500});
 
-      freeAmountLabel = av.label(freeNum, {left :  720, top:  195});
+      freeAmountLabel = av.label(freeNum, {left :  720, top:  numLabelY});
       freeAmountLabel.css({"z-index": 500});
 
       var connect1Start = 300;
@@ -97,8 +103,8 @@
       var connect3Start = 390;
       var connect4Start = 440;
 
-      var lineY1 = 450;
-      var lineY2 = 310; 
+      var lineY1 = 390;
+      var lineY2 = 275; 
 
       connectStartArray = new Array(connect1Start, connect2Start, connect3Start, connect4Start);
 
@@ -114,6 +120,25 @@
       var connect4 = av.g.line(connect4Start, lineY1, connect4end, lineY2);
 
       linesArray = new Array(connect1, connect2, connect3, connect4);
+      labels = new Array(memPoolLabel, usedLabel, freeLabel, usedAmountLabel, freeAmountLabel);
+      blocks = new Array(used1, used2, used3, used4, free1, free2, free3, free4, usedRec, freeRec);
+    }
+
+    //resets the exercise by getting rid of the existing memory pool (part of reset function)
+    function resetAV() {
+      if(blocks.length != 0) {
+        for(i = 0; i < linesArray.length; i++) {
+          linesArray[i].hide();
+        }
+
+        for(i = 0; i < blocks.length; i++) {
+          blocks[i].hide();
+        }
+
+        for(i = 0; i < labels.length; i++) {
+          labels[i].clear();
+        }
+      }
     }
 
       
@@ -136,13 +161,26 @@
       freeValues[2] = Math.floor(Math.random() * (incrs[0] - incrs[1] - 1)) + incrs[1] + 1;
       freeValues[3] = Math.floor(Math.random() * 3) + 50;
     }
-    
+
     // Process reset button: Re-initialize everything, including the free blocks to insert
     function initialize() {
+
+      //reset the exercise
+      resetAV();
       generateInsertionBlocks();
       generateMemoryValues();
 
-      $('#increments').val(incrs);
+      //create stack to store list of block sizes for user to input
+      if (stack) {
+        stack.clear();
+      }
+      stack = av.ds.stack({top: 140, left: 40});
+
+      for (var i = 0; i < ArraySize; i++) {
+        stack.addLast(incrs[i]);
+      }
+      stack.layout();
+      stack.first().highlight();
     
       var htmldata = "";
       htmldata = "<li>" + freeValues[0] + "</li><li>" + freeValues[1] + "</li><li>" + freeValues[2] + "</li><li>" + freeValues[3] + "</li>";
@@ -155,7 +193,7 @@
       initData.gen_incrs = incrs;
       ODSA.AV.logExerciseInit(initData);
 
-      theArray = av.ds.array($theArray, {center: false, layout: arrayLayout.val()}).css({"x": "275", "y": "252"});
+      theArray = av.ds.array($theArray, {center: false, layout: arrayLayout.val()}).css({"x": "275", "y": "202"});
       av.forward();
       av._undo = [];
       return theArray;
@@ -166,12 +204,12 @@
       var currIncr = incrs[currIncrIndex];
       console.log(currIncrIndex);
       console.log(currIncr);
-      var newUsedRect = av.g.rect(freeStartArray[index], 250, currIncr * 2, 60).css({"fill": "coral"});
+      var newUsedRect = av.g.rect(freeStartArray[index], 215, currIncr * 2, 60).css({"fill": "coral"});
 
       freeStartArray[index] = freeStartArray[index] + currIncr * 2;
 
      //move connecting line accordingly
-      linesArray[index].movePoints([[0, connectStartArray[index], 450], [1, ((freeStartArray[index] + freeFinArray[index])/2), 310]]).css({"stroke-width": 1});
+      linesArray[index].movePoints([[0, connectStartArray[index], 390], [1, ((freeStartArray[index] + freeFinArray[index])/2), 275]]).css({"stroke-width": 1});
       
       freeAmountLabel.text(freeNum - currIncr);
       usedNum = usedNum + currIncr;
@@ -180,12 +218,20 @@
       var newValue = theArray.value(index)-currIncr;
       theArray.value(index, newValue);
 
-      //currIncrIndex += 1;
+      currIncrIndex += 1;
     }
 
     function modelSolution(jsav) {
 
-      var modelarr = jsav.ds.array([freeValues[0], freeValues[1], freeValues[2], freeValues[3]], {left: 200});
+      var modelStack = jsav.ds.stack({left: 250, center: true});
+      
+      for (var i = 0; i < ArraySize; i++) {
+        modelStack.addLast(incrs[i]);
+      }
+      modelStack.layout();
+      modelStack.first().highlight();
+
+      var modelarr = jsav.ds.array([freeValues[0], freeValues[1], freeValues[2], freeValues[3]], {top: 50, left: 200});
       jsav.displayInit();
 
       var i, j;
@@ -203,7 +249,11 @@
             var newVal = modelarr.value(j) - incrs[i];
             modelarr.value(j, newVal);
 
-
+            modelStack.removeFirst();
+            modelStack.layout();
+            if (modelStack.first()) {
+              modelStack.first().highlight();
+            }
             jsav.step();
             break;
           }
@@ -234,11 +284,19 @@
     theArray.click(function (index) {
 
       if (!theArray.isHighlight(index)) {
+        
         theArray.highlight(index);
         setTimeout(function(){theArray.unhighlight(index)}, 250);
         exer.gradeableStep();
+        //inserts "used" rectangle in memory pool (visualize using up space)
         insertIntoBlock(index);
-        currIncrIndex += 1;
+        
+        stack.removeFirst();
+        stack.layout();
+        //highlight the next value in the stack
+        if (stack.first()) {
+         stack.first().highlight();
+        }
       } else {
         theArray.unhighlight(index);
       }
