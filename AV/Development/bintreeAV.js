@@ -168,15 +168,14 @@
 
       // If it isn't a leaf, then we have an internal node to insert into
       if (level % 2 == 0) { // Branch on X
-        // Split on Y for map
+        // Split X on Y for map
         //jsav.g.line(mapleft + Bx, maptop + By, Bwid/2, Bhgt);
         jsav.g.rect(mapleft + Bx, maptop + By, Bhgt, Bwid/2); 
         if (INx < (Bx + Bwid/2)) { // Insert left
           console.log("Branch on X, Insert Left: ", rt.left().NodeType);
           rt.left(this.insert(rt.left(), INx, INy, INrec, Bx, By, Bwid/2, Bhgt, level+1));
         }
-        else {
-          console.log("Branch on X, Insert Right: ", rt.right().NodeType);
+        else { // Insert on the right
           rt.right(this.insert(rt.right(), INx, INy, INrec, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
         }
       }
@@ -204,7 +203,10 @@
       // If an external node
       if (rt.NodeType === NT.FULLEXT) {
         if (rt.x === INx && rt.y === INy) {
-          return this.newEmptyExtNode();
+          console.log("External node match found: " + rt.value());
+          var temp = this.newEmptyExtNode();
+          temp.value("DELETED");
+          return temp;
         }
       }
 
@@ -233,6 +235,7 @@
         return rt.right();
       if ((rt.left().NodeType === NT.FULLEXT) && (rt.right().NodeType === NT.EMPTYEXT))
         return rt.left();
+
       return rt;
     } // delete
 
