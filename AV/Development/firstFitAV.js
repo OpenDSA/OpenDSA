@@ -26,7 +26,9 @@
       startIndex = 0,
       sizee,
       ins = 0,
-      fit = 0;
+      fit = 0,
+      total,
+      endOfBlock;
 
 
   function setDefaultControlState() {
@@ -80,67 +82,78 @@
   //also declare a jsav array for the free array
   function OriginalMemBlock() {
 
-    var memPoolLabel = jsav.label("Memory Pool (Size: 200)", {"left": 280, "top": 130});
-    //declares rectangles for the used memory blocks
-    var used1 = jsav.g.rect(342.5, 150, 25, 60).css({"fill": "coral"});
-    var used2 = jsav.g.rect(455, 150, 62.5, 60).css({"fill": "coral"});
-    var used3 = jsav.g.rect(597.5, 150, 45, 60).css({"fill": "coral"});
-    var used4 = jsav.g.rect(755, 150, 25, 60).css({"fill": "coral"});
-    //click handler for used blocks
-     $("rect").on("click", changeUsed);
-     flag = 0;
+
      ins = 0;
      fit = 0;
      startIndex = 0;
      index = 0;
-    //declares where the free blocks start
-    var free1Start = 280;
-    var free2Start = 367.5;
-    var free3Start = 517.5;
-    var free4Start = 642.5;
-    //declares rectangles for the free blocks
-    var free1 = jsav.g.rect(free1Start, 150, 62.5, 60).css({"fill": "cornflowerblue"});
-    var free2 = jsav.g.rect(free2Start, 150, 87.5, 60).css({"fill": "cornflowerblue"});
-    var free3 = jsav.g.rect(free3Start, 150, 80, 60).css({"fill": "cornflowerblue"});
-    var free4 = jsav.g.rect(free4Start, 150, 112.5, 60).css({"fill": "cornflowerblue"});
-   
 
-    // recArray = new Array(30);
+    
+      var free1Size = Math.floor(Math.random() * 5) + 25;
+      var free2Size = Math.floor(Math.random() * 5) + 32;
+      var free3Size = Math.floor(Math.random() * 5) + 35;
+      var free4Size = Math.floor(Math.random() * 5) + 45;
 
-    // recArray[0] = free1;
-    // recArray[1] = used1;
-    // recArray[2] = free2;
-    // recArray[3] = used2;
-    // recArray[4] = free3;
-    // recArray[5] = used3;
-    // recArray[6] = free4;
-    // recArray[7] = used4;
+      
 
-    //array of all of the starting points free or not
+      var used1Size = Math.floor(Math.random() * 5) + 10;
+      var used2Size = Math.floor(Math.random() * 5) + 25;
+      var used3Size = Math.floor(Math.random() * 5) + 18;
+      var used4Size = Math.floor(Math.random() * 5) + 20;
+
+       total = free1Size + free2Size + free3Size + free4Size + used1Size + used2Size + used3Size + used4Size;
+
+      var freeValues = new Array(free1Size, free2Size, free3Size, free4Size);
+
+      var free1Start = 280;
+      var free1Finish = free1Start + (freeValues[0]*2.5);
+
+      var free2Start = free1Finish + used1Size*2.5;
+      var free2Finish = free2Start + (freeValues[1]*2.5);
+
+      var free3Start = free2Finish + used2Size*2.5;
+      var free3Finish = free3Start + (freeValues[2]*2.5);
+
+      var free4Start = free3Finish + used3Size*2.5;    
+      var free4Finish = free4Start + (freeValues[3]*2.5);
+
+      var rectY = 150;
+      var rectHeight = 60;
+
+      endOfBlock = free4Finish + used4Size*2.5;
+
+      //used blocks in memory pool
+      var used1 = jsav.g.rect(free1Finish, rectY, used1Size*2.5, rectHeight).css({"fill": "coral"});
+      var used2 = jsav.g.rect(free2Finish, rectY, used2Size*2.5, rectHeight).css({"fill": "coral"});
+      var used3 = jsav.g.rect(free3Finish, rectY, used3Size*2.5, rectHeight).css({"fill": "coral"});
+      var used4 = jsav.g.rect(free4Finish, rectY, used4Size*2.5, rectHeight).css({"fill": "coral"});
+
+      //click handler for used blocks
+      $("rect").on("click", changeUsed);
+
+      //free blocks in memory pool
+      var free1 = jsav.g.rect(free1Start, rectY, freeValues[0]*2.5, rectHeight).css({"fill": "cornflowerblue"});
+      var free2 = jsav.g.rect(free2Start, rectY, freeValues[1]*2.5, rectHeight).css({"fill": "cornflowerblue"});
+      var free3 = jsav.g.rect(free3Start, rectY, freeValues[2]*2.5, rectHeight).css({"fill": "cornflowerblue"});
+      var free4 = jsav.g.rect(free4Start, rectY, freeValues[3]*2.5, rectHeight).css({"fill": "cornflowerblue"});
+
+      
     startArray = new Array(30);
 
     //array inicating if a given block is free
     //1 indicates free 0 is not
     freeOrNot = new Array(30);  
     
-    startArray[0] = 280;
-    startArray[1] = 342.5;
-    startArray[2] = 367.5;
-    startArray[3] = 455; 
-    startArray[4] = 517.5; 
-    startArray[5] = 597.5; 
-    startArray[6] = 642.5;
-    startArray[7] = 755;
-    startArray[8] = 780; //780 is thhe end of the last block, used as a refrence point
 
-    // finArray[0] = 342;
-    // finArray[1] = 390;
-    // finArray[2] = 455;
-    // finArray[3] = 540;
-    // finArray[4] = 597;
-    // finArray[5] = 665;
-    // finArray[6] = 755;
-    // finArray[7] = 804;
+    startArray[0] = free1Start;
+    startArray[1] = free1Finish;
+    startArray[2] = free2Start;
+    startArray[3] = free2Finish; 
+    startArray[4] = free3Start; 
+    startArray[5] = free3Finish; 
+    startArray[6] = free4Start;
+    startArray[7] = free4Finish;
+    startArray[8] = endOfBlock; 
 
     freeOrNot[0] = 1;
     freeOrNot[1] = 0;
@@ -153,11 +166,6 @@
 
     freeStartArray = new Array(free1Start, free2Start, free3Start, free4Start);
 
-    //array of where free blocks finished, used in updating lines
-    var free1Finish = 342;
-    var free2Finish = 455;
-    var free3Finish = 597;
-    var free4Finish = 755;
     
     freeFinArray = new Array(free1Finish, free2Finish, free3Finish, free4Finish);
     
@@ -169,8 +177,8 @@
     var freeLabel = jsav.label("Free Space", {left :  700, top:  70});
     
     //initial new and used nums
-    usedNum = 63;
-    freeNum = 137;
+    usedNum = used1Size + used2Size + used3Size + used4Size;
+    freeNum = free2Size + free3Size + free1Size + free4Size;
     
     //label declaring how much is initially used
     usedAmountLabel = jsav.label(usedNum, {left :  625, top:  30});
@@ -180,15 +188,9 @@
     freeAmountLabel = jsav.label(freeNum, {left :  720, top:  30});
     freeAmountLabel.css({"z-index": 500});
 
-    //initial free block sizes
-    //note that the label on the block * 2.5 is the size of the actual jsav object
-    var block1 = 25;
-    var block2 = 35;
-    var block3 = 32;
-    var block4 = 45;
-
+  
     //jsav array object to act as the free list
-    array = jsav.ds.array([25, 35, 32, 45], {"left": 280, "top": 400, "bottom": 500});
+    array = jsav.ds.array([free1Size, free2Size, free3Size, free4Size], {"left": 280, "top": 400, "bottom": 500});
 
     //labels the free list
     var freeLabel = jsav.label("Free List", {left : 300, top: 475});
@@ -201,10 +203,10 @@
     connectStartArray = new Array(connect1Start, connect2Start, connect3Start, connect4Start);
 
     //initial lines connecting free list to mem pool
-    var connect1 = jsav.g.line(connect1Start, 422, 311, 210);
-    var connect2 = jsav.g.line(connect2Start, 422, 411, 210);
-    var connect3 = jsav.g.line(connect3Start, 422, 557, 210);
-    var connect4 = jsav.g.line(connect4Start, 422, 698, 210);
+    var connect1 = jsav.g.line(connect1Start, 422, (free1Start + free1Finish)/2, 210);
+    var connect2 = jsav.g.line(connect2Start, 422, (free2Start + free2Finish)/2, 210);
+    var connect3 = jsav.g.line(connect3Start, 422,(free3Start + free3Finish)/2, 210);
+    var connect4 = jsav.g.line(connect4Start, 422, (free4Start + free4Finish)/2, 210);
 
     linesArray = new Array(connect1, connect2, connect3, connect4);
 
@@ -288,15 +290,15 @@
       }
        i--;
       //click occued on block on the right (special case)
-      if(clickSpot <= 780 && clickSpot >= startArray[recArraySize -1])
+      if(clickSpot <= endOfBlock && clickSpot >= startArray[recArraySize -1])
       {
         
         var start = startArray[recArraySize-2];
         //calculate size of rec to insert
-        var diff = 780 - start;
+        var diff = endOfBlock - start;
         var newrec = jsav.g.rect(start, 150, diff, 60).css({"fill": "cornflowerblue"});
         newrec.css({"z-index": 500});
-        startArray[i] = 780;
+        startArray[i] = endOfBlock;
         freeOrNot[recArraySize -1] = null;
         freeOrNot[recArraySize -2] = 1;
         recArraySize--;
@@ -381,8 +383,8 @@
                   startArray[recArraySize -1] = 280;
                 }
             }
-            //last elemnt in the start array + 1 is always 780
-            startArray[recArraySize] = 780;
+            //last elemnt in the start array + 1 is always end of block
+            startArray[recArraySize] = endOfBlock;
             freeCheck();
             //update array and merge lines
             updateArray();
@@ -412,11 +414,11 @@
     function updateArray()
     {
         
-        //in this case there is only one free rec of size 200
+        //in this case there is only one free rec of size the total
         if(recArraySize == 1 && freeOrNot[0] == 1)
         {
           array.hide();
-          array = jsav.ds.array([200], {"left": 280, "top": 400, "bottom": 500});
+          array = jsav.ds.array([total], {"left": 280, "top": 400, "bottom": 500});
         }
         else
         {
@@ -599,7 +601,7 @@
 
      
       freeNum = one + two + three + four;
-      usedNum = 200 - freeNum;
+      usedNum = total - freeNum;
       usedAmountLabel = jsav.label(usedNum, {left :  625, top:  30});
       usedAmountLabel.css({"z-index": 500});
 
@@ -616,12 +618,12 @@
           count++;
         }
       }
-      //if there are no free blcoks then used num = 200 and free = 0
+      //if there are no free blcoks then used num = total and free = 0
       if(count == 0)
       {
         usedAmountLabel.clear();
         freeAmountLabel.clear();
-        usedNum = 200;
+        usedNum = total;
         freeNum = 0;
          usedAmountLabel = jsav.label(usedNum, {left :  625, top:  30});
         usedAmountLabel.css({"z-index": 500});
@@ -997,7 +999,7 @@ function addRec(fin, size)
         var next = startArray[fin+2] - startArray[fin-1];
         if(next < 0)
         {
-          next = 780 - startArray[fin-1];
+          next = endOfBlock - startArray[fin-1];
         }
         var newRect2 = jsav.g.rect(startArray[fin - 1], 150, next, 60).css({"fill": "coral"});
         $("rect").on("click", changeUsed);
@@ -1090,14 +1092,14 @@ function addRec(fin, size)
                 startArray[1] = 280 + size;
                 freeOrNot[0] = 0;
                 freeOrNot[1] = 1;
-                startArray[2] = 780;
+                startArray[2] = endOfBlock;
                 recArraySize++;
                 
             }
 
             
-    }     //last spot in the array goes to the very end 780
-          startArray[recArraySize] =780;
+    }     //last spot in the array goes to the very end 
+          startArray[recArraySize] =endOfBlock;
  
             
 
@@ -1239,7 +1241,7 @@ function bestFit(inputVal)
    var arraySize = array.size();
    
    //assure that the blocks are large enough
-   //if not given value of 200 to ensure they wont be min
+   //if not given value of 300 to ensure they wont be min
    if(rec1Size >= size)
     {
         
@@ -1247,7 +1249,7 @@ function bestFit(inputVal)
     }
       else
       {
-        minArray[0] = 200;
+        minArray[0] = 300;
       }
     if(rec2Size >= size)
     {
@@ -1255,12 +1257,12 @@ function bestFit(inputVal)
         minArray[1] = rec2Size - size;
         if(arraySize < 2)
         {
-          minArray[1] = 200;
+          minArray[1] = 300;
         }
     }
      else
       {
-        minArray[1] = 200;
+        minArray[1] = 300;
       }
     if(rec3Size >= size)
     {
@@ -1268,12 +1270,12 @@ function bestFit(inputVal)
         minArray[2] = rec3Size - size;
         if(arraySize < 3)
         {
-          minArray[2] = 200;
+          minArray[2] = 300;
         }
     }
      else
       {
-        minArray[2] = 200;
+        minArray[2] = 300;
       }
     if(rec4Size >= size)
     {
@@ -1281,17 +1283,17 @@ function bestFit(inputVal)
         minArray[3] = rec4Size - size;
         if(arraySize < 4)
         {
-          minArray[3] = 200;
+          minArray[3] = 300;
         }
     }
      else
       {
-        minArray[3] = 200;
+        minArray[3] = 300;
       }
       //takes the min of values in the array, the min is th ebest fit
     var min = minArray.indexOf(Math.min.apply(Math, minArray));
-    //assures not all elements are = 200
-    if(minArray[0] != 200 || minArray[1] != 200 || minArray[2] != 200 || minArray[3] != 200)
+    //assures not all elements are = 300
+    if(minArray[0] != 300 || minArray[1] != 300 || minArray[2] != 300 || minArray[3] != 300)
     {
       if(min == 0)
       {
@@ -1549,8 +1551,8 @@ function circleFitInsert(fin, size, index)
       var i = 0;
       rectNumber = 0;
       var inputVal = $("#input").val();
-      if (inputVal < 1 || inputVal > 200 || isNaN(inputVal)) {
-        jsav.umsg("Please enter a number in the range of 1-200");
+      if (inputVal < 1 || inputVal > total || isNaN(inputVal)) {
+        jsav.umsg("Please enter a number in the range of 1-" + total);
         $('#next').attr("disabled", "disabled");
 
 
