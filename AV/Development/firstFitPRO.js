@@ -95,7 +95,7 @@
       usedAmountLabel = av.label(usedNum, {left :  622, top:  numLabelY});
       usedAmountLabel.css({"z-index": 500});
 
-      freeAmountLabel = av.label(freeNum, {left :  720, top:  numLabelY});
+      freeAmountLabel = av.label(freeNum, {left :  722, top:  numLabelY});
       freeAmountLabel.css({"z-index": 500});
 
       var connect1Start = 300;
@@ -193,7 +193,7 @@
       initData.gen_incrs = incrs;
       ODSA.AV.logExerciseInit(initData);
 
-      theArray = av.ds.array($theArray, {center: false, layout: arrayLayout.val()}).css({"x": "275", "y": "202"});
+      theArray = av.ds.array($theArray, {center: false, layout: arrayLayout.val()}).css({"x": "275", "y": "180"});
       av.forward();
       av._undo = [];
       return theArray;
