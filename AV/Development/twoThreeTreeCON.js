@@ -11,7 +11,7 @@
    */
   function getArrayNodes(jsav) {
     var arrays = [];
-    arrays.push(jsav.ds.array([18, 13]));
+    arrays.push(jsav.ds.array([18, 31]));
     arrays.push(jsav.ds.array([12, ""]));
     arrays.push(jsav.ds.array([23, 30]));
     arrays.push(jsav.ds.array([48, ""]));

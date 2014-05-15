@@ -24,9 +24,9 @@
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
-/* body {
-  font-family: Arial !important;
-} */
+body {
+  font-family: Arial
+}
 h1{
-  font-size: 1em !important;
+  font-size: 1em
 }
