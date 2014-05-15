@@ -10,6 +10,11 @@
 
   var Bintree = function (jsav, xrange, yrange) {
 
+    // Setup map for viewing the inputs as a map
+    var mapleft = 450;
+    var maptop  = 25;
+    var maprect = jsav.g.rect(mapleft, maptop, xrange, yrange);
+
     // Enum for the node type
     // stored in node.NodeType
     var NT = {
@@ -19,7 +24,7 @@
     };
 
     // This is the JSAV base data structure, a binary tree.
-    this.tree = jsav.ds.binarytree({nodegap: 10});
+    this.tree = jsav.ds.binarytree({nodegap: 10, left: 200});
     // This is the root of the tree
     this.tree.root('').hide();
 
@@ -92,6 +97,17 @@
       this.layout();
     }
 
+    // calling function for insertion
+    this.remove = function(INx, INy) {
+      console.log("Start Delete: (", INx, ", ", INy, ")");
+      this.tree.root().hide();
+      var temp = this.delete(this.tree.root(), INx, INy, 0, 0, xrange, yrange, 0);
+      console.log("Setting the root to be: " + temp);
+      this.tree.root(temp, {hide: false});
+      this.tree.root().show();
+      this.layout();
+    }
+
     // returns the root of tree that results from inserting the new record
     this.insert = function(rt, INx, INy, INrec, Bx, By, Bwid, Bhgt, level) {
       console.log("Bintree insert BEGIN: ", INx, INy, ", Level: ", level, ", Box: ", Bx, By, Bwid, Bhgt, ", rt Type: ", rt.NodeType);
@@ -112,6 +128,9 @@
         temp.x = INx;
         temp.y = INy;
         temp.NodeType = NT.FULLEXT;
+
+        jsav.g.circle(mapleft + INx, maptop + INy, 5, {fill: 'black'});
+
         return temp;
       }
       
@@ -149,17 +168,22 @@
 
       // If it isn't a leaf, then we have an internal node to insert into
       if (level % 2 == 0) { // Branch on X
+        // Split X on Y for map
+        //jsav.g.line(mapleft + Bx, maptop + By, Bwid/2, Bhgt);
+        jsav.g.rect(mapleft + Bx, maptop + By, Bhgt, Bwid/2); 
         if (INx < (Bx + Bwid/2)) { // Insert left
           console.log("Branch on X, Insert Left: ", rt.left().NodeType);
           rt.left(this.insert(rt.left(), INx, INy, INrec, Bx, By, Bwid/2, Bhgt, level+1));
         }
-        else {
-          console.log("Branch on X, Insert Right: ", rt.right().NodeType);
+        else { // Insert on the right
           rt.right(this.insert(rt.right(), INx, INy, INrec, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
         }
       }
 
       else { // Branch on Y
+        // Split on X for map
+        //jsav.g.line(mapleft + Bx + Bwid, maptop + By, mapleft + Bwid, maptop + Bhgt/2);
+        jsav.g.rect(mapleft + Bx, maptop + By, Bhgt/2, Bwid); 
         if (INy < (By + Bhgt/2)) { // Insert up
           console.log("Branch on Y, Insert up: " + rt.left().NodeType);
           rt.left(this.insert(rt.left(), INx, INy, INrec, Bx, By, Bwid, Bhgt/2, level+1));
@@ -172,6 +196,49 @@
 
       return rt;
     } // insert
+
+
+    this.delete = function(rt, INx, INy, Bx, By, Bwid, Bhgt, level) {
+
+      // If an external node
+      if (rt.NodeType === NT.FULLEXT) {
+        if (rt.x === INx && rt.y === INy) {
+          console.log("External node match found: " + rt.value());
+          var temp = this.newEmptyExtNode();
+          temp.value("DELETED");
+          return temp;
+        }
+      }
+
+      // We have an internal node
+      if (level % 2 === 0) { // EVEN
+        // Branch on X 
+        if (INx < (Bx + Bwid/2)) {
+            rt.left(delete(rt.left(), INx, INy, Bx, By, Bwid/2, Bhgt, level+1));
+          }
+        else {
+          rt.right(delete(rt.right(), INx, INy, Bx + Bwid/2, By, Bwid/2, Bhgt, level+1));
+        }
+      }
+      else { // ODD
+        // Branch on Y
+        if (INy < (By + Bhgt/2)) {
+          rt.left(delete(rt.left(), INx, INy, Bx, By, Bwid, Bhgt/2, level+1));
+        }
+        else {
+          rt.right(delete(rt.right(), INx, INy, Bx, By + Bhgt/2, Bwid, Bhgt/2, level+1));
+        }
+      } 
+
+      // Now, check to see if there should be a merge
+      if ((rt.left().NodeType === NT.EMPTYEXT) && (rt.right().NodeType === NT.FULLEXT))
+        return rt.right();
+      if ((rt.left().NodeType === NT.FULLEXT) && (rt.right().NodeType === NT.EMPTYEXT))
+        return rt.left();
+
+      return rt;
+    } // delete
+
 
   } // bintree
 
@@ -245,6 +312,24 @@
     jsav.step();
     jsav.umsg("Step 3: Insertion completed");
     jsav.step();
+
+    jsav.umsg("Step 4: insert node with value \"D\" @ 40, 184");
+    jsav.step();
+
+    bint.add(40, 184, "D");
+    jsav.step();
+    jsav.umsg("Step 4: Insertion completed");
+    jsav.step();
+
+    jsav.umsg("Step 5: remove node with value \"B\" @ 50, 50");
+    jsav.step();
+
+    bint.remove(50, 50);
+    jsav.step();
+    jsav.umsg("Step 5: Deletion completed");
+    jsav.step();
+
+    
 
     jsav.recorded(); // mark the end
 

@@ -22,7 +22,7 @@ h1 {
   background-color: white;
   border-bottom: 1px solid black;
   color: #336299;
-  font-family: Verdana, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 36px;
   margin: -8px -8px 0 -8px;
   padding: 8px 8px 2px 8px;
@@ -38,7 +38,7 @@ h2, h3, h4, h5, h6 {
 html, body {
   background-color: #8596AA;
   color: #000;
-  font-family: Tahoma,Verdana,Arial,Helvetica,sans-serif;;
+  font-family: Arial, sans-serif;
   line-height: 1.5;
   margin: 0 1.5%;
   max-width: 1540px;

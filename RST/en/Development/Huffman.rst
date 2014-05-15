@@ -39,7 +39,7 @@ to represent the 128 symbols of the ASCII character set.
 The requirement for :math:`\left \lceil log\ n \right\rceil` bits to
 represent :math:`n` unique code values assumes that all codes will be
 the same length, as are ASCII codes.
-This is called a :strong:`fixed-length` coding scheme.
+These are called :term:`fixed-length codes`.
 If all characters were used equally often, then a fixed-length coding
 scheme is the most space efficient method.
 However, you are probably aware that not all characters are used
@@ -92,33 +92,33 @@ this might be worthwhile if such characters appear rarely enough.
 This concept is at the heart of file compression techniques in
 common use today.
 The next section presents one such approach to assigning
-:dfn:`variable-length` codes, called Huffman coding.
+:term:`variable-length codes`, called Huffman coding.
 While it is not commonly used in its simplest form for file
 compression (there are better methods), Huffman coding gives the
 flavor of such coding schemes.
 One motivation for studying Huffman coding is because it provides our
 first opportunity to see a type of tree structure referred to as a
-:dfn:`search trie`.
+:term:`search trie`.
 
 Building Huffman Coding Trees
 --------------------------------
 
 Huffman coding assigns codes to characters such that the length of the
-code depends on the relative frequency or :dfn:`weight` of the
+code depends on the relative frequency or :term:`weight` of the
 corresponding character.
 Thus, it is a variable-length code.
 If the estimated frequencies for letters match the actual frequency
 found in an encoded message, then the length of that message will
 typically be less than if a fixed-length code had been used.
 The Huffman code for each letter is derived from a full binary tree
-called the :dfn:`Huffman coding tree`, or simply the
-:dfn:`Huffman tree`.
+called the :term:`Huffman coding tree`, or simply the
+:term:`Huffman tree`.
 Each leaf of the Huffman tree corresponds to a letter, and we
 define the weight of the leaf node to be the weight (frequency) of its
 associated letter.
 The goal is to build a tree with the
-:dfn:`minimum external path weight`.
-Define the :dfn:`weighted path length` of a leaf to be its weight
+:term:`minimum external path weight`.
+Define the :term:`weighted path length` of a leaf to be its weight
 times its depth.
 The binary tree with minimum external path weight is the one with the
 minimum sum of weighted path lengths for the given set of leaves.
@@ -277,7 +277,7 @@ A lookup table can be used for this purpose.
    In similar manner we complete the decoding process to find that the
    last two letters are C and K, spelling the word "DUCK."
 
-A set of codes is said to meet the :dfn:`prefix property` if no
+A set of codes is said to meet the :term:`prefix property` if no
 code in the set is the prefix of another.
 The prefix property guarantees that there will be no ambiguity in how
 a bit string is decoded.
@@ -418,7 +418,7 @@ are encountered when going down the tree.
 But the splits in the key space are predetermined for the Huffman
 tree.
 Search tree structures whose splitting points in the key space are
-predetermined are given the special name :dfn:`trie` to distinguish
+predetermined are given the special name :term:`trie` to distinguish
 them from the type of search tree (like the BST) whose splitting
 points are determined by the data.
 

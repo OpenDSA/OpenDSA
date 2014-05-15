@@ -28,15 +28,12 @@
     <div class="jsavcanvas">
       <p class="instructLabel">Instructions:</p>
       <p class="instructions">
-        For each block size given, use the first fit algorithm to place it in the a free block in the memory pool.  Select a free block space by clicking on the free list element that corresponds to the block in the memory pool.  Once you have selected the array element, your answer will be evaluated.  Click on "Help" for more details.
+        For each block size listed in the stack, use the first fit algorithm to place it in a free block in the memory pool.  Select a free block space by clicking on the free list element that corresponds to the block in the memory pool.  Once you have selected the array element, your answer will be evaluated.  Click on "Help" for more details.
       </p>
-      <p class="jsavoutput jsavline"></p>
-      <p>Block sizes to insert:
-        <input type="text" readonly="readonly" name="increments" id="increments">
+      <p align="center">
         <span class="jsavscore"></span>
       </p>
-
-      <ol id="profArray"></ol>
+      <p class="jsavoutput jsavline"></p>
     </div>
   </form>
 </div> <!-- container -->
@@ -48,6 +45,7 @@
 <script src="../../JSAV/build/JSAV-min.js"></script>
 <script src="../../lib/odsaUtils-min.js"></script>
 <script src="../../lib/odsaAV-min.js"></script>
+<script src="../../JSAV/extras/stack.js"></script>
 <script src="firstFitPRO.js"></script>
 </body>
 </html>

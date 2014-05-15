@@ -1,41 +1,45 @@
 body, input, select {
   font-size: 15px;
-  font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 /* Creates a header which standardizes the layout for proficiency exercise controls and buttons */
 .proHeaderTable {
-  margin-top: -20px;
+  /*margin-top: -20px;*/
+  margin-top: -30px;
   border-bottom: 0 none;
   width: 100%;
 }
 
 /* Creates a header which standardizes the layout for AV controls */
 .headerTable {
-  margin-top: -10px;
+  /*margin-top: -10px;*/
   border-bottom: 1px solid black;
   width: 100%;
 }
 
 /* Left column of the standardized header */
 table .headerLeft {
-  width: 175px;
+  width: 142px;
 }
 
 /* Center column of the standardized header */
 table .headerCenter {
+  font-size: 2em;
+  font-weight: bold;
   text-align: center;
 }
 
 /* Right column of the standardized header */
 table .headerRight {
   text-align: right;
-  width: 175px;
+  width: 142px;
 }
 
 /* Affects the margin of buttons in the header table */
 table td input {
-  margin-top: 10px;
+  /*margin-top: 10px;*/
+  margin-top: 0;
 }
 
 /* AV title */
@@ -58,7 +62,8 @@ form {
   border: 0 none;
 }
 .jsavexercisecontrols {
-  margin-top: 10px;
+  /*margin-top: 10px;*/
+  margin-top: 20px;
   text-align: center;
 }
 .jsavcontrols {
