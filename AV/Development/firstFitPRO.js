@@ -23,7 +23,6 @@
 
     var incrs = [], //array of randomly generated blocks to insert
         freeValues = [], //array of free block sizea
-        $theArray = $("#profArray"),
         initialArray = [], // needed for model answer
         theArray,
         stack,
@@ -139,6 +138,7 @@
           labels[i].clear();
         }
       }
+      currIncrIndex = 0;
     }
 
       
@@ -181,10 +181,6 @@
       }
       stack.layout();
       stack.first().highlight();
-    
-      var htmldata = "";
-      htmldata = "<li>" + freeValues[0] + "</li><li>" + freeValues[1] + "</li><li>" + freeValues[2] + "</li><li>" + freeValues[3] + "</li>";
-      $theArray.html(htmldata);
       
       // Log the initial state of the exercise
       OriginalMemBlock();
@@ -193,7 +189,14 @@
       initData.gen_incrs = incrs;
       ODSA.AV.logExerciseInit(initData);
 
-      theArray = av.ds.array($theArray, {center: false, layout: arrayLayout.val()}).css({"x": "275", "y": "180"});
+      if(!theArray) {
+        theArray = av.ds.array(freeValues, {center: false, layout: arrayLayout.val()}).css({"x": "275", "y": "180"});
+      } else {
+        for(i = 0; i < 4; i++) {
+          theArray.value(i, freeValues[i]);
+          theArray.unhighlight(i);
+        }
+      }
       av.forward();
       av._undo = [];
       return theArray;
@@ -202,8 +205,6 @@
     function insertIntoBlock(index) {
 
       var currIncr = incrs[currIncrIndex];
-      console.log(currIncrIndex);
-      console.log(currIncr);
       var newUsedRect = av.g.rect(freeStartArray[index], 215, currIncr * 2, 60).css({"fill": "coral"});
 
       freeStartArray[index] = freeStartArray[index] + currIncr * 2;
@@ -265,12 +266,12 @@
     // Process help button: Give a full help page for this activity
     // We might give them another HTML page to look at.
     function help() {
-      window.open("shellsorthelpPRO.html", 'helpwindow');
+      //window.open("shellsorthelpPRO.html", 'helpwindow');
     }
 
     // Process About button: Pop up a message with an Alert
     function about() {
-      alert("Shellsort Proficiency Exercise\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+      //alert("Shellsort Proficiency Exercise\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
 
     // Initialize the exercise
