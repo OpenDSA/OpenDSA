@@ -52,7 +52,7 @@
       "#arraysizeLabel": " Liststorlek: ",
       "#arrayValuesLabel": " Dina värden: ",
       "av_aboutString": "Visualisering av Mergesortalgoritmen\nSkriven av Daniel Breakiron\nSkapad som del av hypertextboksprojektet OpenDSA.\nFör mer information, se http://algoviz.org/OpenDSA\nKällkod och utvecklingshistorik tillgänglig på\nhttps://github.com/OpenDSA/OpenDSA\nKompilerad med JSAV library version version ",
-      "av_arrValsPlaceholder": "Skriv in komma-separerade värden, eller tryck på 'Kör' för att använda slumpmässiga värden",
+      "av_arrValsPlaceholder": "Skriv in dina värden eller lämna blankt för att använda slumpmässiga värden",
       "av_c1": "Välj hela sekvensen",
       "av_c2": "Färdigsorterat!",
       "av_c3": "En sekvens av längd 1 kan inte delas, redo för merge",
