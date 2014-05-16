@@ -295,7 +295,7 @@ position in some buffer in the buffer pool.
 This ADT is similar to the ``read`` and ``write`` methods of the
 ``RandomAccessFile`` class discussed in Module :numref:`<FileProg>`.
 
-.. topic:: Exmaple
+.. topic:: Example
 
    Assume each sector of the disk file (and thus each block in the
    buffer pool) stores 1024 bytes.
@@ -330,7 +330,7 @@ storage if it has been modified.
 If the block has not been modified, then it is unnecessary to write it 
 out.
 
-.. topic:: Exmaple
+.. topic:: Example
 
    We wish to write 40 bytes beginning at logical position 6000 in
    the file.

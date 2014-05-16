@@ -308,6 +308,7 @@ html_context = {"script_files": [
                   '%(eb2root)slib/odsaMOD-min.js'
                 ],
                 "css_files": [
+                  '%(eb2root)slib/normalize.css',
                   '%(eb2root)sJSAV/css/JSAV.css',
                   '%(eb2root)slib/odsaMOD-min.css',
                   '%(eb2root)slib/jquery-ui.css',
