@@ -32,4 +32,4 @@ The following slideshows present this in more detail.
 .. inlineav:: TrieTimeline ss
    :output: show
 
-.. odsascript:: AV/Development/HuffmanCON.js
+.. odsascript:: AV/Development/TreeTrieCON.js

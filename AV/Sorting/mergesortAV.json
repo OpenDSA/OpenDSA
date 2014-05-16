@@ -8,7 +8,7 @@
       "#arraysizeLabel": " List size: ",
       "#arrayValuesLabel": " Your values: ",
       "av_aboutString": "Mergesort Algorithm Visualization\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version ",
-      "av_arrValsPlaceholder": "Type space-separated values, or click 'run' to use random values",
+      "av_arrValsPlaceholder": "Type some array values, or click 'run' to use random values",
       "av_c1": "Select the entire array",
       "av_c2": "Done sorting!",
       "av_c3": "An array of length 1 cannot be split, ready for merge",
