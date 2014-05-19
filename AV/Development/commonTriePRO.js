@@ -1,8 +1,9 @@
-﻿/* global ODSA */
+﻿/* global ODSA, PARAMS */
 (function ($) {
   "use strict";
   var initialData = [],
-      size = 7,
+      size = PARAMS.size ? parseInt(PARAMS.size, 10) : 7,
+      length = PARAMS.length ? parseInt(PARAMS.length, 10) : 4,
       stack,
       commonTrie,
       $insertLabel,
@@ -23,7 +24,7 @@
     }
 
     // generate input
-    initialData = generateArrayWithStrings(size);
+    initialData = generateArrayWithStrings(size, length);
 
     stack = av.ds.stack(initialData, {center: true});
     stack.click(function () {
@@ -67,12 +68,27 @@
 
 
   function modelSolution(jsav) {
+    //higlights and unhighlights a path between root and node
+    function highlightPath(root, node, undo) {
+      var n = node;
+      var css;
+      if (undo) {
+        css = {"stroke-width": "1", "stroke": "black"};
+      } else {
+        css = {"stroke-width": "4", "stroke": "blue"};
+      }
+      while (n !== root) {
+        n.edgeToParent().css(css);
+        n = n.parent();
+      }
+    }
+
     var msStack = jsav.ds.stack(initialData, {center: true});
 
-    var msTree = jsav.ds.tree({center: false, visible: true, autoresize: false, nodegap: 15});
+    var msTree = jsav.ds.tree({center: true, visible: true, autoresize: false, nodegap: 15});
 
     showChildren(msTree.root());
-    msTree.element.addClass("jsavcenter");
+    // msTree.element.addClass("jsavcenter");
     msTree.element.css("margin-top", 30);
     msTree.layout();
 
@@ -82,30 +98,32 @@
       var str = msStack.first().value();
       str = str.substring(1, str.length - 1);
       var node = msTree.root();
+      jsav.umsg(interpret("av_add_str"), {fill: {str: str}});
+      jsav.step();
 
       for (var i = 0; i < str.length; i++) {
+        node = node.child("abc".indexOf(str.charAt(i)));
+        highlightPath(msTree.root(), node);
         if (node.hasClass("emptynode")) {
           showChildren(node);
           msTree.layout();
           jsav.step();
         }
-        node = node.child("abc".indexOf(str.charAt(i)));
-      }
-      if (node.hasClass("emptynode")) {
-        showChildren(node);
-        msTree.layout();
-        jsav.step();
       }
       if (!node.value()) {
         node.value(true);
         node.addClass("greenbg");
-        jsav.step();
+        jsav.umsg(interpret("av_set_true"), {fill: {str: str}});
+      } else {
+        jsav.umsg(interpret("av_already_true"), {fill: {str: str}});
       }
+      jsav.step();
+      highlightPath(msTree.root(), node, true);
 
       msStack.removeFirst();
       msStack.layout();
-      jsav.step();
     }
+    jsav.step();
 
     return msTree;
   }
@@ -141,11 +159,16 @@
     }
   }
 
-  function generateArrayWithStrings(size) {
+  // Generates an array of the size given in the first argument.
+  // maxLength is given as the second argument.
+  // Strings consist of the letters a, b and c and are surronded
+  // by quotes (quotes not include in length). There is always
+  // exactly one string which is empty.
+  function generateArrayWithStrings(size, maxLength) {
     var result = [];
 
     for (var i = 0; i < size; i++) {
-      var length = 1 + Math.floor(Math.random() * 4);
+      var length = 1 + Math.floor(Math.random() * maxLength);
       var str = "\"";
       for (var c = 0; c < length; c++) {
         str += ["a", "b", "c"][Math.floor(Math.random() * 3)];
