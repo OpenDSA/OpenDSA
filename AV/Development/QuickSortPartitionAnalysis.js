@@ -24,7 +24,7 @@
 	av.umsg("To analyze Quicksort, we first analyze the findpivot and partition functions when operating on a subarray of length $k$");
 	av.displayInit();
 	av.umsg("Clearly, findpivot takes constant time for any $k$. Here we have $k = 9$");
-	code = av.code({url: "../../../SourceCode/Processing/Sorting/Quicksort.pde",
+	code = av.code({url: "../../SourceCode/Processing/Sorting/Quicksort.pde",
                     lineNumbers: true,
                     startAfter: "/* *** ODSATag: findpivot *** */",
                     endBefore: "/* *** ODSAendTag: findpivot *** */", top: 200, left: 200});
@@ -43,7 +43,7 @@
     pointer3.hide();
     rect.hide();
     av.umsg("Function partition contains an outer while loop with two nested while loops");
-	code = av.code({url: "../../../SourceCode/Processing/Sorting/Quicksort.pde",
+	code = av.code({url: "../../SourceCode/Processing/Sorting/Quicksort.pde",
                     lineNumbers: true,
                     startAfter: "/* *** ODSATag: partition *** */",
                     endBefore: "/* *** ODSAendTag: partition *** */", top: 200, left: 80});

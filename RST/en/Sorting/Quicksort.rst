@@ -158,6 +158,18 @@ bound for the recursive calls to ``qsort`` can be determined.
 
 .. _PartitionFig:
 
+.. TODO::
+   :type: Slideshow
+
+   Explain here why the cost of Partition is linear.
+   The basic idea is that, in the worst case, there is no inward
+   movement of the ``left`` and ``right`` indices until a swap is
+   performed, at which point each has to move inward a step. So at
+   most n/2 iterations of swap and inward movement can
+   occur. Alternatively, a given inner while loop can move its pointer
+   inward multiple steps, but then that will reduce the future
+   movement that is possible.
+
 Now for some partition practice.
 
 .. avembed:: Exercises/Sorting/QuicksortPartitPRO.html ka
