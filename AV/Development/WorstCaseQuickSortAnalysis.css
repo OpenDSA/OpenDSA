@@ -1,6 +1,6 @@
 #container {
   width: 850px;
-  height: 600px;
+  height: 625px;
 }
 
 .avcontainer{
@@ -23,4 +23,7 @@
   -ms-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
+}
+h1{
+  font-size: 1em;
 }
