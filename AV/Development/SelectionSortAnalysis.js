@@ -33,8 +33,8 @@
 	}
 	arr = av.ds.array(arr_values, {"left":250, "top":20,"indexed":true});
 	
-	av.label("<b>Number of Comparisons</b>",  {"top": "172px", "left": "50px"}).css({'font-size': '16px', "text-align": "center"});
-	av.label("<b>Number of Swaps</b>",  {"top": "172px", "left": "500px"}).css({'font-size': '16px', "text-align": "center"});
+	av.label("<b><u>Number of Comparisons</u></b>",  {"top": "172px", "left": "50px"}).css({'font-size': '16px', "text-align": "center"});
+	av.label("<b><u>Number of Swaps</u></b>",  {"top": "172px", "left": "500px"}).css({'font-size': '16px', "text-align": "center"});
 	av.step();
 	
 	av.umsg("At $i=0$");
@@ -317,7 +317,11 @@
 	arr.css(0, {"background-color":"grey"});
 	av.step();
 	
-	av.umsg("Thus, the number of comparisons is $\\theta(n^2)$ while the number of swaps is $\\theta(n)$")
+	av.umsg("Thus, the number of comparisons is determined by the equation $\\displaystyle\\sum_{i=0}^{n-1}i = \\frac{n(n-1)}{2}$  and hence, the number of comparisons is $\\theta(n^2)$, while the number of swaps is $\\theta(n)$");
+	av.label("|--- $n-1$---|",  {"top": "285px", "left": "-30px"}).addClass("rotated");
+	av.label("|--------------- $n-1$ ---------------|",  {"top": "365px", "left": "45px"});
+	av.label("|--------------- $n-1$ ---------------|",  {"top": "365px", "left": "470px"});
+	av.step();
 	
 	av.recorded();
 }
