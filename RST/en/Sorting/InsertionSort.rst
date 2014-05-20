@@ -38,10 +38,10 @@ The input is an array named ``A`` that stores :math:`n` records.
 (Note that to make the explanation for these sorting algorithms as
 simple as possible, we will usually assume that our input is an
 integer array rather than an array of more complex records.
-But you should realize that in practice, there is not usually much
-use to sorting an array of simple integers.
-Nearly always we want to sort more complex records that each have an
-integer :term:`key` value.
+But you should realize that in practice, there is rarely any point
+to sorting an array of simple integers.
+Nearly always we want to sort more complex records that each have a
+:term:`key` value.
 Module :numref:`<Comparison>` discusses ways to associate a key value
 with a record.)
 
@@ -202,4 +202,6 @@ See
 for a discussion on how the relative costs of search and insert can
 affect what is the best sort algorithm to use.
 
-.. odsascript:: AV/Sorting/insertionsortCON.js
+.. odsascript:: AV/Sorting/InsertionSortP1CON.js
+.. odsascript:: AV/Sorting/InsertionSortP2CON.js
+.. odsascript:: AV/Sorting/InsertionSortP3CON.js
