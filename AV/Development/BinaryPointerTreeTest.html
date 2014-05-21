@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Binary Pointer Tree Test</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="proficiency.css" type="text/css" />
+
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
+  <script src="BinaryPointerTree.js"></script>
+
+  <style>
+    .jsavpointerarea {
+      position: absolute;
+      width: 14px;
+      height: 100%;
+      top: 0;
+    }
+    .jsavpointerarea.left {
+      left: 0;
+      border-right: 1px solid #000;
+    }
+    .jsavpointerarea.right {
+      right: 0;
+      border-left: 1px solid #000;
+    }
+    .selected-left .jsavpointerarea.left {
+      background-color: #ff0;
+    }
+    .selected-right .jsavpointerarea.right {
+      background-color: #ff0;
+    }
+    .jsavbinarypointertreenode {
+      overflow: hidden;
+      border-radius: 30px / 23px;
+      width: 60px;
+    }
+    .jsavbinarypointertree .jsavedge {
+      stroke-width: 2;
+    }
+    .jsavautoresize .jsavbinarypointertreenode {
+      min-width: 60px;
+    }
+
+    .jsavnullnode {
+      opacity: 0.2;
+      background-color: #f00;
+      border-radius: 0;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="jsavcontainer" style="height: 500px"></div>
+
+  <script type="text/javascript">
+    var av = new JSAV("jsavcontainer");
+
+    av.recorded();
+
+    var bpt = new av.ds.binarypointertree({center: true});
+
+    bpt.root(7);
+    bpt.root().left(3).left(2).parent().right(5);
+    bpt.root().right(10).right(12).right(15);
+    bpt.layout();
+
+    var selectedNode,
+        selectedPointer;
+    bpt.click(function (event) {
+      if (this.value() === "jsavnull") {
+        return;
+      }
+      if (selectedNode) {
+        if (this !== selectedNode) {
+          selectedNode.child(selectedPointer, this, {hide: false});
+          selectedNode.pointers[selectedPointer].layout();
+        } else if (event.target.className.indexOf(selectedPointer === 0 ? "left" : "right") !== -1 && selectedNode.child(selectedPointer)) {
+          selectedNode.child(selectedPointer, null, {hide: false});
+          selectedNode.pointers[selectedPointer].end(null).hide();
+        }
+        selectedNode.removeClass("selected-left");
+        selectedNode.removeClass("selected-right");
+        selectedNode = null;
+      } else {
+        if (event.target.className.indexOf("jsavpointerarea") !== -1) {
+          selectedNode = this;
+          if (event.target.className.indexOf("left") !== -1) {
+            selectedPointer = 0;
+            this.addClass("selected-left");
+          } else {
+            selectedPointer = 1;
+            this.addClass("selected-right");
+          }
+        }
+      }
+    });
+
+
+    function inline(tree) {
+      var stack = [];
+      var result = "";
+
+      stack.push(tree.root());
+
+      while (stack[0]) {
+        var node = stack.shift();
+        if (node.left()) {
+          stack.push(node.left());
+        }
+        if (node.right()) {
+          stack.push(node.right());
+        }
+        result += node.value() + " ";
+      }
+      console.log(result);
+    }
+
+    var $b1 = $("<input type='button' value='layout'></button>").click(function(){bpt.layout();});
+    var $b2 = $("<input type='button' value='inline'></button>").click(function(){inline(bpt);});
+
+    av.container.prepend($b1);
+    av.container.prepend($b2);
+
+
+  </script>
+</body>
+</html>
