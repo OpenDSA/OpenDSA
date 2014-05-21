@@ -71,6 +71,7 @@ You will never understand recursion well without doing a lot of practice on it. 
 
 Practice Exercises
 -------------------
+
 .. TODO::
    :type: Programming Exercise
 
@@ -79,10 +80,12 @@ Practice Exercises
    named numbers::
 
       int largest(int[] numbers, int index) {
-        // <<Missing base case>> {
+        // <<Missing base case>> 
+        {
           return numbers[index];
         }
-        else if(numbers[index] > numbers[index+1]) {
+        else if(numbers[index] > numbers[index+1]) 
+        {
           numbers[index+1] = numbers[index];
         }
         return largest(numbers,index+1);
@@ -91,6 +94,9 @@ Practice Exercises
    The answer::
 
       if(index==numbers.length-1)
+
+
+.. avembed:: Exercises/RecurTutor/RecWBCProg.html ka
 
 .. TODO::
    :type: Programming Exercise
@@ -591,20 +597,21 @@ The following exercises will ask you to write a whole recursive function:
 
 .. TODO::
    :type: Programming Exercise
-   
-	Pascal’s triangle is a useful recursive definition that tells us the coefficients in the expansion of the polynomial (x + a)n . Each element in the triangle has a coordinate, given by the row it is on and its position in the row (which you could call a column). Every number in Pascals triangle is
-	defined as the sum of the item above it and the item above it and to the left (its position in the row, minus one). If there is a position that does not have an entry, we treat it as if we had a 0 there. The figure belowshows the few rows of this triangle:
-	
-	.. _PascalsTriangle:
 
-	.. odsafig:: Images/PaulHartalPascalTriangle.jpg
-	   :width: 300
-	   :align: center
-	   :capalign: justify
-	   :figwidth: 50%
-	   :alt: Pascal’s triangle
-	   
-	   Pascal’s triangle
+    Pascal’s triangle is a useful recursive definition that tells us the coefficients in the expansion of the polynomial (x + a)n . Each element in the triangle has a   
+    coordinate, given by the row it is on and its position in the row (which you could call a column). Every number in Pascals triangle is defined as the sum of the item above 
+    it and the item above it and to the left (its position in the row, minus one). If there is a position that does not have an entry, we treat it as if we had a 0 there. The 
+    figure below shows the few rows of this triangle.
+    .. _PascalsTriangle:
+
+    .. odsafig:: Images/PascalTriangle.jpg
+       :width: 300
+       :align: center
+       :capalign: justify
+       :figwidth: 50%
+       :alt: Pascal Triangle
+    
+    Pascal triangle
 	
 	 Given the following recursive function signature, write down the recursive function which takes a row and a column and finds the value at that position in the triangle::
 		int pascal(int row, int column)

@@ -32,7 +32,7 @@
 	  arr_values[i] = " ";
 	}
 	arr = av.ds.array(arr_values, {"left":150, "top":30,"indexed":true});
-	var rect = av.g.rect(350, 210, 65, 20).css({"fill": "green","opacity":0.3});
+	code.css(1,{"background-color":"#00CCFF"});
 	pointer1 = av.pointer("i", arr.index(0));
 	pointer2 = av.pointer("j", arr.index(8));	
 	pointer3 = av.pointer("pivot", arr.index(4));
@@ -41,95 +41,59 @@
     pointer1.hide();
     pointer2.hide();
     pointer3.hide();
-    rect.hide();
     av.umsg("Function partition contains an outer while loop with two nested while loops");
 	code = av.code({url: "../../SourceCode/Processing/Sorting/Quicksort.pde",
                     lineNumbers: true,
                     startAfter: "/* *** ODSATag: partition *** */",
                     endBefore: "/* *** ODSAendTag: partition *** */", top: 200, left: 80});
-	rect = av.g.rect(150, 210, 185, 15).css({"fill": "green","opacity":0.3});		
-    var rect1 = av.g.rect(168, 232, 392, 15).css({"fill": "blue","opacity":0.3});		
-    var rect2 = av.g.rect(168, 252, 610, 15).css({"fill": "blue","opacity":0.3});
+    code.css(1,{"background-color":"#99FF66"});
+	code.css(2,{"background-color":"#00CCFF"});
+	code.css(3,{"background-color":"#00CCFF"});
     av.step();
 	av.umsg("The total cost of the partition operation is constrained by how far left and right can move inwards");
-	rect.hide();
-	rect1.hide();
-	rect2.hide();
 	pointer1 = av.pointer("left", arr.index(0));
 	pointer2 = av.pointer("right", arr.index(7),
                              { anchor: "center bottom",
                                myAnchor: "right top",
-                               top: 50,
-                               left: -25,
+                               top: 80,
+                               left: -50,
                                arrowAnchor: "center bottom"
                              });
 	
 	pointer3 = av.pointer("pivot", arr.index(8),
                              { anchor: "center bottom",
                                myAnchor: "right top",
-                               top: 50,
-                               left: -25,
+                               top: 80,
+                               left: -50,
                                arrowAnchor: "center bottom"
                              });
 	av.step();
-	av.umsg("The outer while loop along with its two nested while loops can move left and right a total of $s$ steps for a subarray of length $s$");
-	rect = av.g.rect(150, 210, 185, 15).css({"fill": "green","opacity":0.3});		
-    rect1 = av.g.rect(168, 232, 392, 15).css({"fill": "blue","opacity":0.3});		
-    rect2 = av.g.rect(168, 252, 610, 15).css({"fill": "blue","opacity":0.3});
+	av.umsg("The swap operation in the body of the outer while loop guarantees the movement of left and right at least one step each");
+	code.css(2,{"background-color":"white"});
+	code.css(3,{"background-color":"white"});
+	code.css(4,{"background-color":"#00CCFF"});
 	av.step();
-	av.umsg("Consider a subarray of length $s=9$ as shown");
-	arr.hide();
-	for (var i = 0;i < 9;i++){
-	  arr_values[i] = parseInt(Math.random()*20 + 1);
-	}
-	arr = av.ds.array(arr_values, {"left":150, "top":30,"indexed":false});
-	rect.hide();
-	rect1.hide();
-	rect2.hide();
-	av.label("<b><u>left moves</u></b>", {"top": "-20px", "left": "600px"}).css({'font-size': '14px', "text-align": "center"});
-	av.label("<b><u>right moves</u></b>", {"top": "-20px", "left": "700px"}).css({'font-size': '14px', "text-align": "center"});
-	lmoves = av.label(left_moves, {"top": "10px", "left": "630px"}).css({'font-size': '14px', "text-align": "center"});
-	rmoves = av.label(right_moves, {"top": "10px", "left": "730px"}).css({'font-size': '14px', "text-align": "center"});
+	av.umsg("Thus, the maximum number of times swap can be executed is $\\frac{s-1}{2}$. In this case, left and right will move at most $\\frac{s-1}{2}$ steps each for a total of $s-1$ steps");
 	av.step();
-	partition(arr, 0, 7, arr.value(8));
-	var total_moves = left_moves + right_moves;
-	av.umsg("As we see at the end of the partition function, the sum of left moves and right moves is $"+total_moves+"$, which is bounded by the size of the subarray $s=9$");
-	code.setCurrentLine(6);
+	av.umsg("The first inner while loop can be executed at most $s-1$ times in which case left will end up at the pivot and the outer while loop will end");
+	pointer1.target(arr.index(8));
+	code.css(4,{"background-color":"white"});
+	code.css(2,{"background-color":"#00CCFF"});
 	av.step();
-	av.umsg("Accordingly, the running time of the partition function is $\\theta(s)$, where $s$ is the size of the subarray");
+	av.umsg("The second inner while loop can be executed at most $s-1$ times in which case right will end up at array position $-1$ and the outer while loop will end");
+	pointer1.target(arr.index(0));
+	var a = av.ds.array(["-1"], {"left":103, "top":30,"indexed":false});
+	pointer2.target(a.index(0));
+	code.css(2,{"background-color":"white"});
+	code.css(3,{"background-color":"#00CCFF"});
+	av.step();
+	av.umsg("Accordingly, the outer while loop along with its two inner loops will move left and right a total of $s-1$ steps");
+	code.css(2,{"background-color":"#00CCFF"});
+	a.hide();
+	pointer2.target(arr.index(7));
+	av.step();
+	av.umsg("Thus, the running time of the partition function is $\\theta(s)$, where $s$ is the size of the subarray");
 	av.recorded();
-  }
-  function partition(A, left, right, pivot){
-    while (left <= right) { 
-	  code.setCurrentLine(1);
-	  av.clearumsg();
-	  av.step();
-      while (A.value(left) < pivot){
-	    left++;
-		left_moves++;
-		lmoves.text(left_moves);
-		code.setCurrentLine(2);
-		av.umsg("A[left] is less than pivot. Move left inwards");
-		pointer1.target(arr.index(left));
-		av.step();
-      }
-      while ((right > 0) && (right >= left) && (A.value(right) >= pivot)){
-	    right--;
-		right_moves++;
-		rmoves.text(right_moves);
-		code.setCurrentLine(3);
-		av.umsg("A[right] is greater than or equal to pivot. Move right inwards");
-		pointer2.target(arr.index(right));
-		av.step();
-	  }
-      if (right > left){
-	    A.swap(left, right);
-		code.setCurrentLine(4);
-		av.umsg("Swap left and right");
-		av.step();
-      }
-    }
-    return left;
   }
   function about() {
     var mystring = "Quick Sort Analysis\nWritten by Mohammed Fawzy and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during February, 2014\nJSAV library version " + JSAV.version();
