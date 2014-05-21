@@ -80,10 +80,12 @@ Practice Exercises
    named numbers::
 
       int largest(int[] numbers, int index) {
-        // <<Missing base case>> {
+        // <<Missing base case>> 
+        {
           return numbers[index];
         }
-        else if(numbers[index] > numbers[index+1]) {
+        else if(numbers[index] > numbers[index+1]) 
+        {
           numbers[index+1] = numbers[index];
         }
         return largest(numbers,index+1);
