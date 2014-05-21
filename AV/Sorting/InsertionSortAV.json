@@ -1,8 +1,7 @@
 {
   "translations" :{
     "en": {
-      ".avTitle": "Mergesort Visualization",
-      "av_Authors": "Daniel Breakiron",
+      ".avTitle": "Insertion Sort Visualization",
       "#about": "About",
       "#run": "Run",
       "#reset": "Reset",
@@ -24,7 +23,6 @@
     },
     "fi": {
       ".avTitle": "Lomitusjärjestäminen",
-      "av_Authors": "Daniel Breakiron",
       "#about": "Lisätietoa",
       "#run": "Suorita",
       "#reset": "Alusta",
@@ -46,7 +44,6 @@
     },
     "sv": {
       ".avTitle": "Visualisering av Mergesort",
-      "av_Authors": "Daniel Breakiron",
       "#about": "Om",
       "#run": "Kör",
       "#reset": "Återställ",

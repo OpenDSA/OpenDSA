@@ -1,12 +1,10 @@
 "use strict";
-/*global alert: true, ODSA */
+/* global alert: true, ODSA */
 (function ($) {
   $(document).ready(function () {
-
     // Process about button: Pop up a message with an Alert
     function about() {
-      var aboutstring = interpret("av_aboutString");
-      alert(aboutstring + JSAV.version());
+      alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
     }
 
     // Execute the "Run" button function
@@ -212,23 +210,6 @@
       arr.element.css({"left": left, "top": top});
     }
 
-    //////////////////////////////////////////////////////////////////
-    // Start processing here
-    //////////////////////////////////////////////////////////////////
-
-    var jsav,   // for JSAV library object
-        arr;    // for the JSAV array
-
-    // Load the interpreter created by odsaAV.js
-    var interpret = ODSA.UTILS.loadLangData("mergesortAV").interpreter;
-    $('#arrayValues').attr('placeholder', interpret("av_arrValsPlaceholder"));
-
-    // create a new settings panel and specify the link to show it
-    var settings = new JSAV.utils.Settings($(".jsavsettings"));
-
-    // Initialize the arraysize dropdown list
-    ODSA.AV.initArraySize(5, 12, 8);
-
     // Connect action callbacks to the HTML entities
     $('#about').click(about);
     $('#run').click(runIt);
@@ -238,5 +219,23 @@
       runIt();
     });
     $('#reset').click(ODSA.AV.reset);
+
+    //////////////////////////////////////////////////////////////////
+    // Start processing here
+    //////////////////////////////////////////////////////////////////
+    var jsav,   // for JSAV library object
+        arr;    // for the JSAV array
+
+    // Load the interpreter created by odsaAV.js
+    var interpret = ODSA.UTILS.loadLangData("mergesortAV").interpreter;
+    $('#arrayValues').attr('placeholder', interpret("av_arrValsPlaceholder"));
+
+    // create a new settings panel and specify the link to show it
+    var settings = new JSAV.utils.Settings($(".jsavsettings"));
+    // Note that unlike many sorting AVs, we are not going to let the user
+    // select "bar" display for the array because there is not enough room
+
+    // Initialize the arraysize dropdown list
+    ODSA.AV.initArraySize(5, 12, 8);
   });
 }(jQuery));
