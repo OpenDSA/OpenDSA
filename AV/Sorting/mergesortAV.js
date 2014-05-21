@@ -220,7 +220,7 @@
         arr;    // for the JSAV array
 
     // Load the interpreter created by odsaAV.js
-    var interpret = ODSA.UTILS.loadLangData().interpreter;
+    var interpret = ODSA.UTILS.loadLangData("mergesortAV").interpreter;
     $('#arrayValues').attr('placeholder', interpret("av_arrValsPlaceholder"));
 
     // create a new settings panel and specify the link to show it

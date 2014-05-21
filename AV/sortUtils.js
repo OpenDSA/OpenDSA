@@ -1,23 +1,20 @@
 "use strict";
 /*global alert: true, console: true, ODSA */
 
-/** This file should only be referenced by Sorting AVs */
+// This file should only be referenced by Sorting AVs
 (function ($) {
-  /**
-   * Initializes the arraysize drop down list
-   */
+
+  // Initialize the arraysize drop down list
   function initArraySize(min, max, selected) {
-    // Uses the midpoint between the min and max as a default, if a selected value isn't provided
+    // Use the midpoint between the min and max as a default, if a selected value isn't provided
     selected = (selected) ? selected : Math.round((max + min) / 2);
 
     var html = "";
     for (var i = min; i <= max; i++) {
       html += '<option ';
-
       if (i === selected) {
         html += 'selected="selected" ';
       }
-
       html += 'value="' + i + '">' + i + '</option>';
     }
 
@@ -29,9 +26,7 @@
     $('#arraysize').data('max', max);
   }
   
-  /**
-   * Validates the array values a user enters or generates an array of random numbers if none are provided
-   */
+  // Validate the array values a user enters or generate an array of random numbers if none are provided
   function processArrayValues(upperLimit) {
     upperLimit = (upperLimit) ? upperLimit : 999;
 

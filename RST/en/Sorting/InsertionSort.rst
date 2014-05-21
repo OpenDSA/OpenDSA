@@ -71,7 +71,7 @@ encountered, ``inssort`` is done with that record because all
 records to its left in the array must have smaller keys.
 The following visualization puts it all together.
 
-.. avembed:: AV/Sorting/insertionsortAV.html ss
+.. avembed:: AV/Sorting/InsertionSortAV.html ss
 
 Now try for yourself to see if you understand how Insertion Sort works.
 

@@ -1,24 +1,30 @@
+/* global ODSA */
 "use strict";
 (function ($) {
   $(document).ready(function () {
-  var theArray3 =  [10, 15, 20, 54, 55, 11, 78, 14];
-  var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
-  var av = new JSAV("InssortCON3");
-  // Create an array object under control of JSAV library
-  var arr = av.ds.array(theArray3, {indexed: true});
+    var av_name = "InssortCON3";
+    // Super hack to get the path to the JSON language file relative to this JS file
+    // Find the script tag whose src contains the name of this JS file, get the src and append a 'on' to form '.json'
+    var json_path = $('script[src*="InsertionSortP3CON.js"]')[0].src + 'on';
+    var interpret = ODSA.UTILS.loadLangData(av_name, json_path).interpreter;
 
-  arr.highlight(3);
-  arr.css([4, 5, 6, 7], {"color": LIGHT});
-  av.umsg("Now we are ready to process the record in position 3");
-  av.displayInit();
+    var theArray3 =  [10, 15, 20, 54, 55, 11, 78, 14];
+    var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
+    var av = new JSAV(av_name);
+    var arr = av.ds.array(theArray3, {indexed: true});
 
-  arr.highlightBlue(2);
-  av.umsg("We will compare it to the record in position 2");
-  av.step();
+    arr.highlight(3);
+    arr.css([4, 5, 6, 7], {"color": LIGHT});
+    av.umsg(interpret("av_c1"));
+    av.displayInit();
 
-  av.umsg("Since the record in position 2 is smaller, nothing changes and we are done with the record in position 3");
-  arr.unhighlightBlue(2);
-  arr.unhighlight(3);
-  av.recorded();
+    arr.highlightBlue(2);
+    av.umsg(interpret("av_c2"));
+    av.step();
+
+    av.umsg(interpret("av_c3"));
+    arr.unhighlightBlue(2);
+    arr.unhighlight(3);
+    av.recorded();
   });
 }(jQuery));
