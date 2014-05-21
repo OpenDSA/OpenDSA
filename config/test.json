@@ -10,7 +10,7 @@
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "glob_exer_options": {
-    "JXOP-debug": "true"
+  "JXOP-debug": "true"
   },
   "chapters": {
     "Sorting": {
