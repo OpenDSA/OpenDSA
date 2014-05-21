@@ -8,6 +8,11 @@
   
   function runit() {
     av = new JSAV($(".avcontainer"));
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	$(".avcontainer").on("jsav-message", function() {
+      // invoke MathJax to do conversion again
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    });
 	code = av.code({url: "../../../SourceCode/Processing/Sorting/Insertionsort.pde",
                     lineNumbers: true,
                     startAfter: "/* *** ODSATag: Insertionsort *** */",
@@ -15,19 +20,19 @@
 	av.displayInit();
 	
 	av.umsg("The body of inssort contains of two nested for loops");
-	var rect1 = av.g.rect(318, 30, 267, 15).css({"fill": "green","opacity":0.3});
-    var rect2 = av.g.rect(338, 52, 460, 15).css({"fill": "green","opacity":0.3});
+	var rect1 = av.g.rect(308, 30, 230, 15).css({"fill": "green","opacity":0.3});
+    var rect2 = av.g.rect(322, 52, 480, 15).css({"fill": "green","opacity":0.3});
 	av.step();
 	
 	av.umsg("The outer for loop is executed n-1 times");
 	rect1.hide();
 	rect2.hide();
-	var rect3 = av.g.rect(364, 30, 170, 15).css({"fill": "green","opacity":0.3});
+	var rect3 = av.g.rect(315, 30, 170, 15).css({"fill": "green","opacity":0.3});
 	av.step();
 	
 	av.umsg("The inner loop is harder to analyze since it depends on how many records in positions 0 to i-1 have a value less than that of the record in position i");
 	rect3.hide();
-	var rect4 = av.g.rect(380, 52, 410, 15).css({"fill": "green","opacity":0.3});
+	var rect4 = av.g.rect(335, 52, 455, 15).css({"fill": "green","opacity":0.3});
 	av.step();
 	
 	av.umsg("Let's consider now a worst case example of an array with 6 elements");
@@ -104,9 +109,9 @@
 	av.label("}",  {"top": "240px", "left": "570px"}).css({'font-size': '80px', "text-align": "center"});
 	av.label("n-1",  {"top": "275px", "left": "600px"}).css({'font-size': '20px', "text-align": "center"});
 	
-	av.umsg("So, the total area is (n-1)(n-1)/2 + (n-1)/2 which gives n(n-1)/2");
+	av.umsg("So, the total area is $\\frac{(n-1)(n-1)}{2} + \\frac{(n-1)}{2}$ which gives $\\frac{n(n-1)}{2}$");
 	av.step();
-	av.umsg("And therefore, the worst case running time of insertion sort is &theta;(n<sup>2</sup>)");
+	av.umsg('And therefore, the worst case running time of insertion sort is $\\theta(n^2)$');
 	
 	av.recorded();
 }
