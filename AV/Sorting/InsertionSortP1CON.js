@@ -1,11 +1,16 @@
 "use strict";
 (function ($) {
   $(document).ready(function () {
-    var interpret = ODSA.UTILS.getInterpreter();
-    console.log("Interpreter: " + interpret);
+    var av_name = "InssortCON1";
+
+    // Super hack to get the path to the JSON language file relative to this JS file
+    // Find the script tag whose src contains the name of this JS file, get the src and append a 'on' to form '.json'
+    var json_path = $('script[src*="InsertionSortP1CON.js"]')[0].src + 'on'
+    var interpret = ODSA.UTILS.loadLangData(av_name, json_path).interpreter;
+
     var theArray1 = [20, 10, 15, 54, 55, 11, 78, 14];
     var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
-    var av = new JSAV("InssortCON1");
+    var av = new JSAV(av_name);
     // Create an array object under control of JSAV library
     var arr = av.ds.array(theArray1, {indexed: true});
 
