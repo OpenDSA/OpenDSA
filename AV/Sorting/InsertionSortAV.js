@@ -85,6 +85,7 @@
     var config = ODSA.UTILS.loadLangData(),
         interpret = config.interpreter,       // get the interpreter
         code = config.code;                   // get the code object
+    // Placeholder text translation needs to be set explicitly
     $('#arrayValues').attr('placeholder', interpret("av_arrValsPlaceholder"));
 
     console.log("Code object: " + JSON.stringify(code));
