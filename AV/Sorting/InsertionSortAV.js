@@ -49,9 +49,19 @@
 
         // Create a new array using the layout the user has selected
         arr = jsav.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
-        pseudo = jsav.code({url: "../../SourceCode/Processing/Sorting/Insertionsort.pde",
-                            startAfter: "/* *** ODSATag: Insertionsort *** */",
-                            endBefore: "/* *** ODSAendTag: Insertionsort *** */"});
+        if (code) {
+          // If there is a code object initialize pseudo the regular way
+          pseudo = jsav.code(code);
+        } else {
+          // If there is no code object create a fake object for pseudo
+          // This is done in order to avoid errors when pseudo.setCurrentLine(X) is called
+          // Alternatively, all the lines where pseudo is mentioned could be placed inside
+          // ifs.
+          // It would probably be preferrable if JSAV could create this fake object when you
+          // call jsav.code() or jsav.code(undefined)
+          // In that case we wouldn't even need this if-else
+          pseudo = {setCurrentLine: function () {}};
+        }
         jsav.umsg(interpret("av_c1"));
         jsav.displayInit();
         inssort();
@@ -79,11 +89,13 @@
         arr,    // JSAV array
         pseudo; // pseudocode display
 
-    // Load the interpreter created by odsaAV.js
-    var interpret = ODSA.UTILS.loadLangData().interpreter;
+    // Load the config object with interpreter and code created by odsaUtils.js
+    var config = ODSA.UTILS.loadLangData(),
+        interpret = config.interpreter,       // get the interpreter
+        code = config.code;                   // get the code object
     $('#arrayValues').attr('placeholder', interpret("av_arrValsPlaceholder"));
 
-    console.log("ODSA.AV.code: " + ODSA.AV.code);
+    console.log("Code object: " + JSON.stringify(code));
     // create a new settings panel and specify the link to show it
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
 
