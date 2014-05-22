@@ -92,7 +92,7 @@ This version also has a second optimization:
 It uses Insertion Sort to sort small subarrays whenever the size of
 the array is smaller than a value defined by ``THRESHOLD``.
 
-.. codeinclude:: Sorting/MergesortOpt
+.. codeinclude:: Sorting/Mergesort
    :tag: MergesortOpt
 
 Here is a visualization for the optimized merge step.

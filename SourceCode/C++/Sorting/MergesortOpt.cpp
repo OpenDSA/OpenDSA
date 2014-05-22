@@ -7,13 +7,18 @@
 #include "compare.h"
 
 // Standard insertion sort implementation
-#include "Inssort.cpp"
+template <typename E, typename Comp>
+void inssort(E A[], int n) { // Insertion Sort
+  for (int i=1; i<n; i++)       // Insert i'th record
+    for (int j=i; (j>0) && (Comp::prior(A[j], A[j-1])); j--)
+      swap(A, j, j-1);
+}
 
 extern int THRESHOLD;
 
 /* *** ODSATag: MergesortOpt *** */
 template <typename E, typename Comp>
-void mergesort(E A[], E temp[], int left, int right) {
+void mergesortOpt(E A[], E temp[], int left, int right) {
   if ((right-left) <= THRESHOLD) { // Small list
     inssort<E,Comp>(&A[left], right-left+1);
     return;

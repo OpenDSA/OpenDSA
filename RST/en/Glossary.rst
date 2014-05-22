@@ -360,7 +360,7 @@ Glossary
       A collection of disjoint sets partitions some objects
       such that every object is in exactly one of the disjoint sets.
 
-   divide and conquer
+   divide-and-conquer
       A technique for designing algorithms where a solution is found
       by breaking the problem into smaller (similar) subproblems,
       solving the subproblems, then combining the subproblem solutions
@@ -1064,16 +1064,18 @@ Glossary
       A :term:`linked list` implementation variant where each list
       node contains access an pointer only to the next element in the list.
 
+   sorting
    sorting problem
       Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`
       with key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
-      the Sorting Problem is to
-      arrange the records into any order :math:`s` such that records
+      the sorting problem is to arrange the records into any order
+      :math:`s` such that records
       :math:`r_{s_1}`, :math:`r_{s_2}`, ..., :math:`r_{s_n}`
       have keys obeying the property
       :math:`k_{s_1} \leq k_{s_2} \leq ... \leq k_{s_n}`.
-      In other words, the sorting problem is to arrange a set of records so
-      that the values of their key fields are in non-decreasing order.
+      In other words, the sorting problem is to arrange a set of
+      records so that the values of their key fields are in
+      non-decreasing order.
 
    space/time tradeoff
       Many programs can be designed to either speed processing at the

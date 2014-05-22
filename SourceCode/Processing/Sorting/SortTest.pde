@@ -1,16 +1,8 @@
 final int numtests = 5;
 final int testsize = 100;
-boolean SUCCESS = true;
+boolean SUCCESS = true;    // Indicates successful completion, to
+		  	   // avoid recompilation
 long time1, time2;         // These get set by sorttime()
-
-void checkorder(Comparable[] A) {
-  for (int i=1; i<A.length; i++)
-    if (A[i].compareTo(A[i-1]) < 0) {
-      println("Error! Value " + A[i] + " at position " + i +
-              " was less than " + A[i-1] + " at position " + (i-1));
-      SUCCESS = false;
-    }
-}
 
 void setup() {
   Integer[] A = new Integer[testsize];
