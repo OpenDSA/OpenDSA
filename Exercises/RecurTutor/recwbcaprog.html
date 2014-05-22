@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Recursion Programming Exercise</title>
+  <title> Recursion Programming Exercise 2</title>
   <script src="../../lib/jquery.min.js">
   </script>
   <script src="../../lib/jquery-ui.min.js">
@@ -107,21 +107,18 @@
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test"> Write down the missing base case for the following recursive function such that this function finds the largest number in the array named numbers:
+      <p class="problem" id = "test"> Given the following recursive function, write down the missing action that should be done at the base case so that this function
+   prints the values in an array named list. The values must appear one per line in order of increasing subscript.
       <br />
     </h4>
 
     <textarea  id="codeTextarea">
-int largest(int[] numbers, int index) {
- // <<Missing base case>> 
-   {
-    return numbers[index];
-   }
- else if(numbers[index] > numbers[index+1]) {
-    numbers[index+1] = numbers[index];
-   }
- return largest(numbers,index+1);
+void print(String[] list, int index) { 
+  if (index < list.length) 
+     //<<Missing Code>>
+  print(list, index+1);
 }
+
 </textarea></p>
 
       <div class="question">
@@ -130,7 +127,7 @@ int largest(int[] numbers, int index) {
       <div class="solution" data-type="custom">
        <div class="guess"> [ $('#codeTextarea').val() ] </div>
         <div class="validator-function">
-         window.generatedList =  "< "+listel1 +" "+listel2 + " | " + listel3 +" "+listel4+" >";
+         
          //return "openPop";
         </div>
       </div>

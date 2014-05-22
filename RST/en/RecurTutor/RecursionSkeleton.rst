@@ -96,7 +96,7 @@ Practice Exercises
       if(index==numbers.length-1)
 
 
-.. avembed:: Exercises/RecurTutor/RecWBCProg.html ka
+.. avembed:: Exercises/RecurTutor/recwbcprog.html ka
 
 .. TODO::
    :type: Programming Exercise
@@ -115,6 +115,8 @@ Practice Exercises
    The answer::
 
       System.out.println(list[index]);
+
+.. avembed:: Exercises/RecurTutor/recwbcaprog.html ka
 
 
 .. TODO::
