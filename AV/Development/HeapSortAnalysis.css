@@ -1,0 +1,34 @@
+#container {
+  width: 850px;
+  height: 600px;
+}
+
+.avcontainer{
+  width: 800px;
+  height: 600px;
+}
+
+.jsavcanvas {
+  height: 600px;
+  width: 1000px;
+}
+
+.jsavtree .jsavnode {
+  line-height: 20px !important;
+  min-width: 20px !important;
+  max-width: 20px !important;
+  min-height: 20px !important;
+  max-height: 20px !important;
+}
+
+.jsavoutput {
+  width: 800px;
+  height: 70px;
+}
+.rotated {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
