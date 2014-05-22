@@ -1,5 +1,5 @@
 "use strict";
-/* global alert: true, ODSA */
+/*global alert: true, ODSA */
 (function ($) {
   $(document).ready(function () {
     // Process about button: Pop up a message with an Alert
@@ -219,6 +219,7 @@
       runIt();
     });
     $('#reset').click(ODSA.AV.reset);
+
 
     //////////////////////////////////////////////////////////////////
     // Start processing here
