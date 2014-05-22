@@ -11,17 +11,17 @@
     function inssort() {
       var i, j;
       jsav.umsg(interpret("av_c3"));
-      pseudo.setCurrentLine(0);
+      pseudo.setCurrentLine("sig");
       arr.highlight([0]);
       arr.highlightBlue(1);
       jsav.step();
       for (i = 1; i < arr.size(); i++) { // Insert i'th record
         arr.highlightBlue(i);
         jsav.umsg(interpret("av_c4"));
-        pseudo.setCurrentLine(1);
+        pseudo.setCurrentLine("outloop");
         jsav.step();
         jsav.umsg(interpret("av_c5"));
-        pseudo.setCurrentLine(2);
+        pseudo.setCurrentLine("inloop");
         jsav.step();
         for (j = i; (j > 0) && (arr.value(j) < arr.value(j - 1)); j--) {
           arr.highlightBlue(j);
@@ -29,12 +29,12 @@
           arr.highlight(j).unhighlight(j - 1); // set highlights correctly
           arr.highlightBlue(j - 1);
           jsav.umsg(interpret("av_c6"));
-          pseudo.setCurrentLine(3);
+          pseudo.setCurrentLine("swap");
           jsav.step();
         }
         arr.highlight(j);
       }
-      pseudo.setCurrentLine(4);
+      pseudo.setCurrentLine("end");
       jsav.umsg(interpret("av_c2"));
     }
 
@@ -49,19 +49,11 @@
 
         // Create a new array using the layout the user has selected
         arr = jsav.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
-        if (code) {
-          // If there is a code object initialize pseudo the regular way
-          pseudo = jsav.code(code);
-        } else {
-          // If there is no code object create a fake object for pseudo
-          // This is done in order to avoid errors when pseudo.setCurrentLine(X) is called
-          // Alternatively, all the lines where pseudo is mentioned could be placed inside
-          // ifs.
-          // It would probably be preferrable if JSAV could create this fake object when you
-          // call jsav.code() or jsav.code(undefined)
-          // In that case we wouldn't even need this if-else
-          pseudo = {setCurrentLine: function () {}};
-        }
+
+        console.log("Code: " + code);
+	// Create the pseudocode display object
+	pseudo = jsav.code(code || []);
+
         jsav.umsg(interpret("av_c1"));
         jsav.displayInit();
         inssort();
