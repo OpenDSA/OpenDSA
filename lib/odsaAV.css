@@ -87,6 +87,9 @@ form {
   margin: 0;
   width: 100%;
 }
+.jsavbararray .jsavindex { 
+  background-color: #eee;
+}
 .jsavbararray.jsavindexed {
   margin-bottom: 0;
 }

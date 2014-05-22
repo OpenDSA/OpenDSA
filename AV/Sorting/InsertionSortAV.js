@@ -11,29 +11,29 @@
     // Insertion Sort
     function inssort() {
       var i, j;
-      jsav.umsg("Highlighted yellow records to the left are always sorted. We begin with the record in position 0 in the sorted portion, and we will be moving the record in position 1 (in blue) to the left until it is sorted");
+      jsav.umsg(interpret("av_c3"));
       pseudo.setCurrentLine(0);
       arr.highlight([0]);
       arr.highlightBlue(1);
       jsav.step();
       for (i = 1; i < arr.size(); i++) { // Insert i'th record
-  arr.highlightBlue(i);
-  jsav.umsg("Processing record in position " + i);
-  pseudo.setCurrentLine(1);
-  jsav.step();
-  jsav.umsg("Move the blue record to the left until it reaches the correct position");
-  pseudo.setCurrentLine(2);
-  jsav.step();
-  for (j = i; (j > 0) && (arr.value(j) < arr.value(j - 1)); j--) {
-    arr.highlightBlue(j);
-    arr.swap(j, j - 1); // swap the two indices
-    arr.highlight(j).unhighlight(j - 1); // set highlights correctly
-    arr.highlightBlue(j - 1);
-    jsav.umsg("Swap");
-    pseudo.setCurrentLine(3);
-    jsav.step();
-  }
-  arr.highlight(j);
+	arr.highlightBlue(i);
+	jsav.umsg(interpret("av_c4"));
+	pseudo.setCurrentLine(1);
+	jsav.step();
+	jsav.umsg(interpret("av_c5"));
+	pseudo.setCurrentLine(2);
+	jsav.step();
+	for (j = i; (j > 0) && (arr.value(j) < arr.value(j - 1)); j--) {
+	  arr.highlightBlue(j);
+	  arr.swap(j, j - 1); // swap the two indices
+	  arr.highlight(j).unhighlight(j - 1); // set highlights correctly
+	  arr.highlightBlue(j - 1);
+	  jsav.umsg("Swap");
+	  pseudo.setCurrentLine(3);
+	  jsav.step();
+	}
+	arr.highlight(j);
       }
       pseudo.setCurrentLine(4);
       jsav.umsg("Done sorting!");
@@ -45,20 +45,20 @@
 
       // If arrValues is null, the user gave us junk which they need to fix
       if (arrValues) {
-  ODSA.AV.reset(true);
-  jsav = new JSAV($('.avcontainer'));
+	ODSA.AV.reset(true);
+	jsav = new JSAV($('.avcontainer'));
 
-  // Create a new array using the layout the user has selected
-  arr = jsav.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
-  pseudo = jsav.code({url: "../../SourceCode/Processing/Sorting/Insertionsort.pde",
-          startAfter: "/* *** ODSATag: Insertionsort *** */",
+	// Create a new array using the layout the user has selected
+	arr = jsav.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
+	pseudo = jsav.code({url: "../../SourceCode/Processing/Sorting/Insertionsort.pde",
+			    startAfter: "/* *** ODSATag: Insertionsort *** */",
                             endBefore: "/* *** ODSAendTag: Insertionsort *** */"});
-  jsav.umsg("Starting Insertion Sort");
-  jsav.displayInit();
-  inssort();
-  arr.unhighlight();
-  arr.unhighlightBlue(true);
-  jsav.recorded(); // mark the end
+	jsav.umsg(interpret("av_c1"));
+	jsav.displayInit();
+	inssort();
+	arr.unhighlight();
+	arr.unhighlightBlue(true);
+	jsav.recorded(); // mark the end
       }
     }
 
