@@ -901,7 +901,7 @@
             "points": 0.1,
             "threshold": 1.0
           },
-          "insertionsortAV": {
+          "InsertionSortAV": {
             "long_name": "Insertion Sort Visualization",
             "required": false,
             "points": 0,
