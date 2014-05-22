@@ -47,18 +47,18 @@ with a record.)
 
 Here is the start to the Insertion Sort process.
 
-.. inlineav:: InssortCON1 ss
+.. inlineav:: InsertionSortP1CON ss
    :output: show
 
 Next, process the record in position 2.
 Swap it to the left until it reaches a value smaller than it is.
 
-.. inlineav:: InssortCON2 ss
+.. inlineav:: InsertionSortP2CON ss
    :output: show
 
 And now the record in position 3.
 
-.. inlineav:: InssortCON3 ss
+.. inlineav:: InsertionSortP3CON ss
    :output: show
 
 This continues on with each record in turn.
