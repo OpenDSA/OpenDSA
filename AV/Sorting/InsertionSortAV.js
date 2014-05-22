@@ -28,14 +28,14 @@
           arr.swap(j, j - 1); // swap the two indices
           arr.highlight(j).unhighlight(j - 1); // set highlights correctly
           arr.highlightBlue(j - 1);
-          jsav.umsg("Swap");
+          jsav.umsg(interpret("av_c6"));
           pseudo.setCurrentLine(3);
           jsav.step();
         }
         arr.highlight(j);
       }
       pseudo.setCurrentLine(4);
-      jsav.umsg("Done sorting!");
+      jsav.umsg(interpret("av_c2"));
     }
 
     // Execute the "Run" button function
