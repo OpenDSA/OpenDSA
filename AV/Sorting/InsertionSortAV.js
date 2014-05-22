@@ -83,6 +83,7 @@
     var interpret = ODSA.UTILS.loadLangData().interpreter;
     $('#arrayValues').attr('placeholder', interpret("av_arrValsPlaceholder"));
 
+    console.log("ODSA.AV.code: " + ODSA.AV.code);
     // create a new settings panel and specify the link to show it
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
 
