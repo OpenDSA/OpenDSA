@@ -4,7 +4,7 @@
   "code_dir": "SourceCode/",
   "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
-  "backend_address": "https://opendsa.cc.vt.edu/",
+  "backend_address": "https://opendsa.cc.vt.edu",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -42,6 +42,12 @@
           },
           "RecursionIntroCON5": {
             "long_name": "Recursion Introduction Slideshow 5",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }, 
+          "RecWBCProg": {
+            "long_name": "Recursion Programming Exercise 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
