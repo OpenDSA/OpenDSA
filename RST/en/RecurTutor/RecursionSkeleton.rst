@@ -105,16 +105,22 @@ Practice Exercises
    action that should be done at the base case so that this function
    prints the values in an array named list. The values must appear
    one per line in order of increasing subscript.::
+   
+   Modified:
+   Given the following recursive function, write down the missing action that should be done at the base case so that this function
+   concatenate the values in an array named list and return it in one String. The values must be in the order of increasing subscript and seprated with a space.
+
+    String recursiveprint(String[] list, int index) { 
+     if (index < list.length) 
+      // <<Missing code>> 
+                        
+     return "";      
     
-      void print(String[] list, int index) { 
-        if (index < list.length) 
-          //<<Missing Code>>
-        print(list, index+1);
-      }
+   }
 
    The answer::
 
-      System.out.println(list[index]);
+      return list[index] + " "+ recursiveprint(list, index + 1) ;
 
 .. avembed:: Exercises/RecurTutor/recwbcaprog.html ka
 
@@ -129,17 +135,17 @@ Practice Exercises
       int log(int b, int n )
       {
         // <<Missing base case condition>>
-          return 0;
+          return 1;
         else
           return //<<Missing a Recursive call>>
      }
 
    The answer::
 
-      if (b < n)
+      if (b == n)
        (1 + log(b, n / b));
 
-
+.. avembed:: Exercises/RecurTutor/recwbcrcprog.html ka
 
 .. TODO::
    :type: Programming Exercise

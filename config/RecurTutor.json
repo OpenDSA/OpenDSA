@@ -46,8 +46,20 @@
             "points": 0.0,
             "threshold": 1.0
           }, 
-          "RecWBCProg": {
+          "recwbcprog": {
             "long_name": "Recursion Programming Exercise 1",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "recwbcaprog": {
+            "long_name": "Recursion Programming Exercise 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwbcrcprog": {
+            "long_name": "Recursion Programming Exercise 3",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
