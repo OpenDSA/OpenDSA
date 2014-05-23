@@ -135,17 +135,17 @@ Practice Exercises
       int log(int b, int n )
       {
         // <<Missing base case condition>>
-          return 0;
+          return 1;
         else
           return //<<Missing a Recursive call>>
      }
 
    The answer::
 
-      if (b < n)
+      if (b == n)
        (1 + log(b, n / b));
 
-
+.. avembed:: Exercises/RecurTutor/recwbcrcprog.html ka
 
 .. TODO::
    :type: Programming Exercise
