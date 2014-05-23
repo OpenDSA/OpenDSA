@@ -56,22 +56,22 @@
       "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
       "tags": {
         "sig": 0,
-	"outloop": 1,
-	"inloop": 2,
-	"swap": 3,
-	"end": 4
+        "outloop": 1,
+        "inloop": 2,
+        "swap": 3,
+        "end": 4
       }
     },
-    "cpp": {
+    "c++": {
       "url": "../../SourceCode/C++/Sorting/Insertionsort.cpp",
       "startAfter": "/* *** ODSATag: Insertionsort *** */",
       "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
       "tags": {
         "sig": 1,
-	"outloop": 2,
-	"inloop": 3,
-	"swap": 4,
-	"end": 5
+        "outloop": 2,
+        "inloop": 3,
+        "swap": 4,
+        "end": 5
       }
     }
   }

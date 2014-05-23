@@ -14,8 +14,9 @@
     $newLabel,
     $stackLabel,
     pseudo,
-    interpret = ODSA.UTILS.getInterpreter("rehashingPRO", "#jsavcontainer"),
-    code = ODSA.AV.code,
+    config = ODSA.UTILS.loadLangData(undefined, undefined, "jsavcontainer"),
+    interpret = config.interpreter,
+    code = config.code,
     av = new JSAV($("#jsavcontainer")),
     clickHandler;
 

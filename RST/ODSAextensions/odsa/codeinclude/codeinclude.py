@@ -76,7 +76,15 @@ class codeinclude(Directive):
       # Remove the extension from the file, if it exists
       rel_path = os.path.splitext(rel_filename)[0]
       html_strs = []
-      tab_id = '%s_code' % os.path.basename(rel_path)
+      tag_str = ''
+
+      if 'tag' in self.options:
+        tag_str = '_' + self.options.get('tag').replace(" ", "-").replace(",", "_")
+
+      # Use the name of the code file and the tag name (if it exists) to create a unique ID
+      # The ID must be unique per module page (even if there are other codeincludes
+      # on the same module) so that the jQuery call to tabs() will work properly
+      tab_id = '%s%s_code' % (os.path.basename(rel_path), tag_str)
       tab_header = '<div id="%s"><ul>' % tab_id
 
       # Load the code_lang object from conf.py and maintain the order so that the preferred languages and extensions come first

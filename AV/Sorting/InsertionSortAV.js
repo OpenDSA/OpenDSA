@@ -52,7 +52,7 @@
 
         console.log("Code: " + code);
 	// Create the pseudocode display object
-	pseudo = jsav.code(code || []);
+	pseudo = jsav.code(code);
 
         jsav.umsg(interpret("av_c1"));
         jsav.displayInit();
