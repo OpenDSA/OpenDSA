@@ -50,15 +50,6 @@ void mergesortOpt(E A[], E temp[], int left, int right) {
 }
 /* *** ODSAendTag: MergesortOpt *** */
 
-template <typename E, typename Comp>
-void sort(E* array, int n) {
-  static E* temp = NULL;
-  if (temp == NULL) temp = new E[n];  // Declare temp array
-  mergesort<E,Comp>(array, temp, 0, n-1);
-}
-
-#include "sortmain.cpp"
-
-int main(int argc, char** argv) {
-  return sortmain<minintCompare>(argc, argv);
+bool sorttest(int* array, int n, int threshold) {
+  return true;
 }
