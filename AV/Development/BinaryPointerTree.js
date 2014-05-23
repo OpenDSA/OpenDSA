@@ -144,9 +144,10 @@
       if (node === null) { // node is null, remove child
         if (child && child.value() !== "jsavnull") {
           child.parent(null);
+          if (opts.hide) { child.hide(); }
+          if (self.pointers[pos]) { self.pointers[pos].end(null).hide(); }
           // child exists
           if (!oChild || oChild.value() === "jsavnull") { // ..but no other child
-            if (opts.hide) { child.hide(); }
             if (oChild) { oChild.hide(); }
             self._setchildnodes([]);
           } else { // other child exists
@@ -186,7 +187,11 @@
         newchildnodes = [];
         newchildnodes[pos] = node;
         if (child) {
-          if (opts.hide || child.value() === "jsavnull") { child.hide(); }
+          if (opts.hide || child.value() === "jsavnull") {
+            child.hide();
+          } else {
+            child.parent(null, {oldPos: pos});
+          }
         }
         if (!oChild) {
           other = self.container.newNode("jsavnull", self, nullopts);
@@ -269,29 +274,20 @@
     return [oldVal];
   });
   bptnodeproto._setparent = JSAV.anim(function (newParent, options) {
-    var oldParent = this.parentnode;
-    var pos;
-    if (options && typeof options.pos !== "undefined") {
-      pos = options.pos;
-    }
+    var oldParent = this.parentnode,
+        pos = options.pos,
+        oldPos = options.oldPos;
+    // console.log("this: " + this.value() + "\nnew parent: " + (newParent ? newParent.value() : "") + "\nold parent: " + (oldParent ? oldParent.value() : "") + "\npos: " + pos + ", oldPos: " + oldPos);
     this._edgetoparent.end(newParent, options);
     if (newParent) {
-      if (typeof pos === "undefined") {
-        pos = newParent.left() === this ? 0 : 1;
-      }
-      newParent.pointers[pos].end(this, options).show();
-    }
-    if (oldParent) {
-      if (typeof pos === "undefined") {
-        pos = oldParent.left() === this ? 0 : 1;
-      }
-      oldParent.pointers[pos].hide();
+      newParent.pointers[pos].end(this, options);
     }
     // if (options && options.edgeLabel) {
     //   this._edgetoparent.label(options.edgeLabel, options);
     // }
     this.element.attr("data-parent", newParent ? newParent.id() : "");
     this.parentnode = newParent;
+    options = {pos: oldPos, oldPos: pos};
     return [oldParent, options];
   });
   bptnodeproto.parent = function (newParent, options) {
@@ -302,9 +298,27 @@
       if (!this._edgetoparent) {
         this._setEdgeToParent(new FakeEdge(this.jsav, this, newParent, options));
       }
-      var pos = (options && typeof options.pos !== "undefined") ? options.pos : (newParent.left() === this ? 0 : 1);
+      var pos;
+      if (options && typeof options.pos !== "undefined") {
+        pos = options.pos;
+      } else {
+        pos = (newParent.left() === this ? 0 : 1);
+        options = $.extend(true, {pos: pos}, options ? options : {});
+      }
       if (!newParent.pointers[pos]) {
         newParent.pointers[pos] = getNewPointerEdge(this.jsav, newParent, this, {"arrow-end": "classic-wide-long"});
+      } else {
+        newParent.pointers[pos].show();
+      }
+    }
+    if (this.parentnode && this.parentnode !== newParent) {
+      if (this.parentnode.pointers[0] && this.parentnode.pointers[0].end() === this) {
+        this.parentnode.pointers[0].hide();
+        options = $.extend(true, {oldPos: 0}, options ? options : {});
+      }
+      if (this.parentnode.pointers[1] && this.parentnode.pointers[1].end() === this) {
+        this.parentnode.pointers[1].hide();
+        options = $.extend(true, {oldPos: 1}, options ? options : {});
       }
     }
     return this._setparent(newParent, options);
