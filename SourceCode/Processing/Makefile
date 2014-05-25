@@ -307,14 +307,14 @@ build/UFTest2/success: General/ParPtrTree2.pde General/UFTest.pde
 	@cat General/output2.txt General/UFTest.pde > build/UFTest2/UFTest2.pde
 	@$(PROCESS) --run --sketch="$(BUILD)/UFTest2" --output="build/build" --force
 
-Sorting: Inssort Bubblesort Selsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Binsort Radixsort
+Sorting: Inssort Bubblesort Selsort Shellsort Mergesort Quicksort Heapsort Binsort Radixsort
 
 # This will do timing tests. The "Sorting" target tests for errors.
-Sorttime: InssortTime BubblesortTime SelsortTime
+Sorttime: InssortTime BubblesortTime SelsortTime QuicksortTime MergesortTime RadixsortTime
 
 Inssort: build/InssortTest/success
 
-build/InssortTest/success: Sorting/Insertionsort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/KVPair.pde
+build/InssortTest/success: Sorting/Insertionsort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/KVPair.pde Utils/Checkorder.pde
 	@echo "Inssort Test"
 	-@rm -rf build/InssortTest
 	@mkdir build/InssortTest
@@ -322,77 +322,72 @@ build/InssortTest/success: Sorting/Insertionsort.pde Sorting/SortTest.pde Utils/
 	@cp Sorting/SortTest.pde build/InssortTest/InssortTest.pde
 	@cp Utils/Swap.pde build/InssortTest
 	@cp Utils/KVPair.pde build/InssortTest
+	@cp Utils/Checkorder.pde build/InssortTest
 	@$(PROCESS) --run --sketch="$(BUILD)/InssortTest" --output="$(BUILD)/build" --force
 
 Bubblesort: build/BubblesortTest/success
 
-build/BubblesortTest/success: Sorting/Bubblesort.pde Sorting/SortTest.pde Utils/Swap.pde
+build/BubblesortTest/success: Sorting/Bubblesort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/Checkorder.pde
 	@echo "Bubblesort Test"
 	-@rm -rf build/BubblesortTest
 	@mkdir build/BubblesortTest
 	@cp Sorting/Bubblesort.pde build/BubblesortTest
 	@cp Sorting/SortTest.pde build/BubblesortTest/BubblesortTest.pde
 	@cp Utils/Swap.pde build/BubblesortTest
+	@cp Utils/Checkorder.pde build/BubblesortTest
 	@$(PROCESS) --run --sketch="$(BUILD)/BubblesortTest" --output="$(BUILD)/build" --force
 
 Selsort: build/SelsortTest/success
 
-build/SelsortTest/success: Sorting/Selectionsort.pde Sorting/SortTest.pde Utils/Swap.pde
+build/SelsortTest/success: Sorting/Selectionsort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/Checkorder.pde
 	@echo "Selsort Test"
 	-@rm -rf build/SelsortTest
 	@mkdir build/SelsortTest
 	@cp Sorting/Selectionsort.pde build/SelsortTest
 	@cp Utils/Swap.pde build/SelsortTest
+	@cp Utils/Checkorder.pde build/SelsortTest
 	@cp Sorting/SortTest.pde build/SelsortTest/SelsortTest.pde
 	@$(PROCESS) --run --sketch="$(BUILD)/SelsortTest" --output="$(BUILD)/build" --force
 
 Shellsort: build/ShellsortTest/success
 
-build/ShellsortTest/success: Sorting/Shellsort.pde Sorting/SortTest.pde Utils/Swap.pde
+build/ShellsortTest/success: Sorting/Shellsort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/Checkorder.pde
 	@echo "Shellsort Test"
 	-@rm -rf build/ShellsortTest
 	@mkdir build/ShellsortTest
 	@cp Sorting/Shellsort.pde build/ShellsortTest
 	@cp Utils/Swap.pde build/ShellsortTest
+	@cp Utils/Checkorder.pde build/ShellsortTest
 	@cp Sorting/SortTest.pde build/ShellsortTest/ShellsortTest.pde
 	@$(PROCESS) --run --sketch="$(BUILD)/ShellsortTest" --output="$(BUILD)/build" --force
 
 Mergesort: build/MergesortTest/success
 
-build/MergesortTest/success: Sorting/Mergesort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/Swap.pde
+build/MergesortTest/success: Sorting/Mergesort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/Swap.pde Utils/Checkorder.pde
 	@echo "Mergesort Test"
 	-@rm -rf build/MergesortTest
 	@mkdir build/MergesortTest
 	@cp Sorting/Mergesort.pde build/MergesortTest
 	@cp Utils/Swap.pde build/MergesortTest
+	@cp Utils/Checkorder.pde build/MergesortTest
 	@cp Sorting/SortTest.pde build/MergesortTest/MergesortTest.pde
 	@$(PROCESS) --run --sketch="$(BUILD)/MergesortTest" --output="$(BUILD)/build" --force
 
-MergesortOpt: build/MergesortOptTest/success
-
-build/MergesortOptTest/success: Sorting/MergesortOpt.pde Sorting/SortTest.pde Utils/Swap.pde
-	@echo "MergesortOpt Test"
-	-@rm -rf build/MergesortOptTest
-	@mkdir build/MergesortOptTest
-	@cp Sorting/MergesortOpt.pde build/MergesortOptTest
-	@cp Utils/Swap.pde build/MergesortOptTest
-	@cp Sorting/SortTest.pde build/MergesortOptTest/MergesortOptTest.pde
-	@$(PROCESS) --run --sketch="$(BUILD)/MergesortOptTest" --output="$(BUILD)/build" --force
-
 Quicksort: build/QuicksortTest/success
 
-build/QuicksortTest/success: Sorting/Quicksort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/Swap.pde
+build/QuicksortTest/success: Sorting/Quicksort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/Swap.pde Utils/Checkorder.pde
 	@echo "Quicksort Test"
 	-@rm -rf build/QuicksortTest
 	@mkdir build/QuicksortTest
 	@cp Sorting/Quicksort.pde build/QuicksortTest
 	@cp Utils/Swap.pde build/QuicksortTest
+	@cp Utils/Checkorder.pde build/QuicksortTest
 	@cp Sorting/SortTest.pde build/QuicksortTest/QuicksortTest.pde
 	@$(PROCESS) --run --sketch="$(BUILD)/QuicksortTest" --output="$(BUILD)/build" --force
 
 Heapsort: build/HeapsortTest/success
 
-build/HeapsortTest/success: Sorting/Heapsort.pde Sorting/SortTest.pde Binary/Maxheap.pde Utils/Swap.pde
+build/HeapsortTest/success: Sorting/Heapsort.pde Sorting/SortTest.pde Binary/Maxheap.pde Utils/Swap.pde Utils/Checkorder.pde
 	@echo "Heapsort Test"
 	-@rm -rf build/HeapsortTest
 	@mkdir build/HeapsortTest
@@ -400,31 +395,34 @@ build/HeapsortTest/success: Sorting/Heapsort.pde Sorting/SortTest.pde Binary/Max
 	@cp Sorting/SortTest.pde build/HeapsortTest/HeapsortTest.pde
 	@cp Binary/Maxheap.pde build/HeapsortTest
 	@cp Utils/Swap.pde build/HeapsortTest
+	@cp Utils/Checkorder.pde build/HeapsortTest
 	@$(PROCESS) --run --sketch="$(BUILD)/HeapsortTest" --output="$(BUILD)/build" --force
 
 Binsort: build/Binsort/success
 
-build/Binsort/success: Sorting/Binsort.pde Utils/Swap.pde Utils/Permute.pde
+build/Binsort/success: Sorting/Binsort.pde Utils/Swap.pde Utils/Permute.pde Utils/Checkorder.pde
 	@echo "Binsort Test"
 	-@rm -rf build/Binsort
 	@mkdir build/Binsort
 	@cp Sorting/Binsort.pde build/Binsort
 	@cp Utils/Swap.pde build/Binsort
 	@cp Utils/Permute.pde build/Binsort
+	@cp Utils/Checkorder.pde build/BinsortTest
 	@$(PROCESS) --run --sketch="$(BUILD)/Binsort" --output="$(BUILD)/build" --force
 
 Radixsort: build/RadixsortTest/success
 
-build/RadixsortTest/success: Sorting/Radixsort.pde Sorting/SortTest.pde
+build/RadixsortTest/success: Sorting/Radixsort.pde Sorting/SortTest.pde Utils/Checkorder.pde
 	@echo "Radixsort Test"
 	-@rm -rf build/RadixsortTest
 	@mkdir build/RadixsortTest
 	@cp Sorting/Radixsort.pde build/RadixsortTest
+	@cp Utils/Checkorder.pde build/RadixsortTest
 	@cp Sorting/SortTest.pde build/RadixsortTest/RadixsortTest.pde
 	@$(PROCESS) --run --sketch="$(BUILD)/RadixsortTest" --output="$(BUILD)/build" --force
 
 
-InssortTime: Sorting/Insertionsort.pde Sorting/SortTime.pde Utils/Swap.pde Utils/KVPair.pde
+InssortTime: Sorting/Insertionsort.pde Sorting/SortTime.pde Utils/Swap.pde Utils/KVPair.pde Utils/Checkorder.pde
 	@echo "Insertion Sort Timer"
 	-@rm -rf build/InssortTime
 	@mkdir build/InssortTime
@@ -432,26 +430,57 @@ InssortTime: Sorting/Insertionsort.pde Sorting/SortTime.pde Utils/Swap.pde Utils
 	@cp Sorting/Insertionsort.pde build/InssortTime
 	@cp Utils/Swap.pde build/InssortTime
 	@cp Utils/KVPair.pde build/InssortTime
+	@cp Utils/Checkorder.pde build/InssortTime
 	@$(PROCESS) --run --sketch="$(BUILD)/InssortTime" --output="$(BUILD)/build" --force
 
-SelsortTime:
+SelsortTime: Sorting/Selectionsort.pde Sorting/SortTime.pde Utils/Swap.pde Utils/Checkorder.pde
 	@echo "Selection Sort Timer"
 	-@rm -rf build/SelsortTime
 	@mkdir build/SelsortTime
 	@cp Sorting/SortTime.pde build/SelsortTime/SelsortTime.pde
 	@cp Sorting/Selectionsort.pde build/SelsortTime
 	@cp Utils/Swap.pde build/SelsortTime
+	@cp Utils/Checkorder.pde build/SelsortTime
 	@$(PROCESS) --run --sketch="$(BUILD)/SelsortTime" --output="build/build" --force
 
-BubblesortTime:
+BubblesortTime: Sorting/Bubblesort.pde Sorting/SortTime.pde Utils/Swap.pde Utils/Checkorder.pde
 	@echo "Bubble Sort Timer"
 	-@rm -rf build/BubblesortTime
 	@mkdir build/BubblesortTime
 	@cp Sorting/SortTime.pde build/BubblesortTime/BubblesortTime.pde
 	@cp Sorting/Bubblesort.pde build/BubblesortTime
 	@cp Utils/Swap.pde build/BubblesortTime
+	@cp Utils/Checkorder.pde build/BubblesortTime
 	@$(PROCESS) --run --sketch="$(BUILD)/BubblesortTime" --output="build/build" --force
 
+QuicksortTime: Sorting/Quicksort.pde Sorting/SortTime.pde Utils/Swap.pde Utils/Checkorder.pde
+	@echo "Quicksort Timer"
+	-@rm -rf build/QuicksortTime
+	@mkdir build/QuicksortTime
+	@cp Sorting/SortTime.pde build/QuicksortTime/QuicksortTime.pde
+	@cp Sorting/Quicksort.pde build/QuicksortTime
+	@cp Utils/Swap.pde build/QuicksortTime
+	@cp Utils/Checkorder.pde build/QuicksortTime
+	@$(PROCESS) --run --sketch="$(BUILD)/QuicksortTime" --output="build/build" --force
+
+MergesortTime: Sorting/Mergesort.pde Sorting/SortTime.pde Utils/Swap.pde Utils/Checkorder.pde
+	@echo "Mergesort Timer"
+	-@rm -rf build/MergesortTime
+	@mkdir build/MergesortTime
+	@cp Sorting/SortTime.pde build/MergesortTime/MergesortTime.pde
+	@cp Sorting/Mergesort.pde build/MergesortTime
+	@cp Utils/Swap.pde build/MergesortTime
+	@cp Utils/Checkorder.pde build/MergesortTime
+	@$(PROCESS) --run --sketch="$(BUILD)/MergesortTime" --output="build/build" --force
+
+RadixsortTime: Sorting/Radixsort.pde Sorting/SortTime.pde Utils/Swap.pde Utils/Checkorder.pde
+	@echo "Radixsort Timer"
+	-@rm -rf build/RadixsortTime
+	@mkdir build/RadixsortTime
+	@cp Sorting/SortTime.pde build/RadixsortTime/RadixsortTime.pde
+	@cp Sorting/Radixsort.pde build/RadixsortTime
+	@cp Utils/Checkorder.pde build/RadixsortTime
+	@$(PROCESS) --run --sketch="$(BUILD)/RadixsortTime" --output="build/build" --force
 
 Graphs: GraphDummy GraphTrav GraphTop GraphDijk GraphMCST
 

@@ -1,20 +1,3 @@
-// Special checkorder for int arrays
-void checkorderint(int[] A) {
-  for (int i=1; i<A.length; i++)
-    if (A[i] < A[i-1]) {
-      println("Error! Value " + A[i] + " at position " + i +
-              " was less than " + A[i-1] + " at position " + (i-1));
-    }
-}
-
-
-// Special swap for int arrays
-void swapint(int[] A, int i, int j) {
-  int temp = A[i];
-  A[i] = A[j];
-  A[j] = temp;
-}
-
 void sorttime(Comparable[] B) {
   int i;
   Comparable[] A = new Comparable[B.length];
@@ -72,7 +55,7 @@ for (runs=0; runs<numruns; runs++) {
   time1 = millis();
   inssortint(Aint);
   time2 = millis();
-  checkorderint(Aint);
+  checkorder(Aint);
 totaltime += (time2-time1);
 }
   println("Straight integer Insertion Sort for " + numruns + " runs: Size " + testsize + ", Time: " + totaltime);
@@ -133,7 +116,7 @@ void sorttest(Comparable[] A) {
 void inssortint(int[] A) {
   for (int i=1; i<A.length; i++) // Insert i'th record
     for (int j=i; (j>0) && (A[j] < A[j-1]); j--)
-      swapint(A, j, j-1);
+      swap(A, j, j-1);
 }
 
 /* *** ODSATag: Insertionsort *** */

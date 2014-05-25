@@ -14,8 +14,9 @@
     $newLabel,
     $stackLabel,
     pseudo,
-    interpret = ODSA.UTILS.getInterpreter("rehashingPRO", "#jsavcontainer"),
-    code = ODSA.AV.code,
+    config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
+    interpret = config.interpreter,
+    code = config.code,
     av = new JSAV($("#jsavcontainer")),
     clickHandler;
 
@@ -81,7 +82,7 @@
     }
     // remove all old labels
     av.container.find(".exerciseLabel").remove();
-    
+
 
     // generate a collision index
     var collisionIndex = Math.floor(Math.random() * newSize);
@@ -140,7 +141,7 @@
     $newLabel.insertBefore(newHashArray.element);
     $stackLabel.insertBefore(insertStack.element).hide();
 
-    
+
     // show the used probing type
     av.umsg(probeMessage);
 
@@ -179,7 +180,7 @@
         var t = 0;
         while (msNewHash.value(ind = hashFunction[probing](msOldHash.value(i), t, newSize))) {
           jsav.umsg(hashFunctionString[probing](msOldHash.value(i), t, newSize) + "<br>" + interpret("av_ms_collision"), {fill: {index: ind}});
-          // add arrows on top of 
+          // add arrows on top of
           msNewHash.addClass(ind, "jsavarrow");
           jsav.gradeableStep();
           t++;

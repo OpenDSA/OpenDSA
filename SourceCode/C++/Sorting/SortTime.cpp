@@ -21,13 +21,8 @@ using std::ios;
 
 int ELEMSIZE = 32003;
 int THRESHOLD = 0;
-bool SUCCESS = true;
 
-#define print(X, Y)
-
-template <typename Comp>
-int sortmain(int argc, char** argv)
-{
+int main(int argc, char** argv) {
   fstream successfile;
   int* array;
   int i;
@@ -50,7 +45,7 @@ int sortmain(int argc, char** argv)
   Randomize();
 
   if ((argc < 3) || (argc > 5)) {
-    cout << "Usage: <sortname> [+/-] <array_size> <size> [<threshold>]\n";
+    cout << "Usage: <SortTime> [+/-] <array_size> <size> [<threshold>]\n";
     exit(-1);
   }
   currarg = 1;
@@ -86,31 +81,7 @@ int sortmain(int argc, char** argv)
     for (i=0; i<arraysize; i++)
       array[i] = i;              // Sorted
 
-  Settime();
-  for (i=0; i<arraysize; i+=listsize) {
-    sort<int, Comp>(&array[i], listsize);
-    print(&array[i], listsize);
-  }
-  cout << "Sort with list size " << listsize
-	   << ", array size " << arraysize
-       << ", and threshold " << THRESHOLD << ": "
-       << Gettime() << " seconds\n";
-
-  for (i=0; i<arraysize; i+=listsize)
-    for(int j=i+1; j<i+listsize; j++)
-      if(array[j-1] > array[j]) {
-        cout << "ERROR!!!" << "j=" << j << endl;
-        SUCCESS = false;
-      }
-
-  if (SUCCESS) {
-    successfile.open("success", ios::out);
-    if (!successfile) {
-      cout << "Unable to open SUCCESS file :";
-      exit(-1);
-    }
-    successfile << "Success";
-  }
+  sorttime(&array[i], arraysize, listsize, threshold);
 
   return 0;
 }

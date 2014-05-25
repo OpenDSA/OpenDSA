@@ -69,4 +69,217 @@ void sorttime(Comparable[] B) {
   }
   println("Optimized Quicksort for " + numruns + " runs: Size " +
            testsize + ", Time: " + totaltime);
+
+  // Timing test for Integer type, optimized version
+  totaltime = 0;
+  Integer[] AInteger = new Integer[B.length];
+  Integer[] BInteger = new Integer[B.length];
+  for (i=0; i<B.length; i++)
+    BInteger[i] = (Integer)B[i];
+  for (runs=0; runs<numruns; runs++) {
+    for(i=0; i<B.length; i++) AInteger[i] = BInteger[i];
+    time1 = millis();
+    quicksortOptInt(AInteger, 0, AInteger.length-1);
+    time2 = millis();
+    checkorder(AInteger);
+    totaltime += (time2-time1);
+  }
+  println("Optimized Integer record Quicksort for " + numruns + " runs: Size " +
+           testsize + ", Time: " + totaltime);
+
+  // Timing test for integer-only optimized version
+  totaltime = 0;
+  int[] Aint = new int[B.length];
+  int[] Bint = new int[B.length];
+  for (i=0; i<B.length; i++)
+    Bint[i] = (Integer)B[i];
+  for (runs=0; runs<numruns; runs++) {
+    for(i=0; i<B.length; i++) Aint[i] = Bint[i];
+    time1 = millis();
+    quicksortOptint(Aint, 0, Aint.length-1);
+    time2 = millis();
+    checkorder(Aint);
+    totaltime += (time2-time1);
+  }
+  println("Optimized integer-only Quicksort for " + numruns + " runs: Size " +
+           testsize + ", Time: " + totaltime);
+}
+
+// Insertion sort used by optimized quicksort
+// Instead of swapping, "shift" the values down the array
+void inssortshift(Comparable[] A) {
+  for (int i=1; i<A.length; i++) { // Insert i'th record
+    int j;
+    Comparable temp = A[i];
+    for (j=i; (j>0) && (temp.compareTo(A[j-1]) < 0); j--)
+      A[j] = A[j-1];
+    A[j] = temp;
+  }
+}
+
+// Insertion sort used by optimized quicksort
+// Records are of type Integer
+// Instead of swapping, "shift" the values down the array
+void inssortshiftInt(Integer[] A) {
+  for (int i=1; i<A.length; i++) { // Insert i'th record
+    int j;
+    Integer temp = A[i];
+    for (j=i; (j>0) && (temp < A[j-1]); j--)
+      A[j] = A[j-1];
+    A[j] = temp;
+  }
+}
+
+// Insertion sort used by optimized quicksort
+// Integer-only version
+// Instead of swapping, "shift" the values down the array
+void inssortshiftint(int[] A) {
+  for (int i=1; i<A.length; i++) { // Insert i'th record
+    int j;
+    int temp = A[i];
+    for (j=i; (j>0) && (temp < A[j-1]); j--)
+      A[j] = A[j-1];
+    A[j] = temp;
+  }
+}
+
+int MAXSTACKSIZE = 100;
+
+// Optimized Quicksort: Not recursive, and uses Inssort for small lists
+void quicksortOpt(Comparable[] A, int oi, int oj) { // Quicksort
+  int[] Stack = new int[MAXSTACKSIZE]; // Stack for array bounds
+  int listsize = oj-oi+1;
+  int top = -1;
+  Comparable pivot;
+  int pivotindex, l, r;
+
+  Stack[++top] = oi;  // Initialize stack
+  Stack[++top] = oj;
+
+  while (top > 0) {   // While there are unprocessed subarrays
+    // Pop Stack
+    int j = Stack[top--];
+    int i = Stack[top--];
+
+    // Findpivot
+    pivotindex = (i+j)/2;
+    pivot = A[pivotindex];
+    swap(A, pivotindex, j); // Stick pivot at end
+
+    // Partition
+    l = i-1;
+    r = j;
+    do {
+      while (A[++l].compareTo(pivot)<0);
+      while ((r!=0) && (A[--r].compareTo(pivot)>0));
+      swap(A, l, r);
+    } while (l < r);
+    swap(A, l, r);  // Undo final swap
+    swap(A, l, j);  // Put pivot value in place
+
+    // Put new subarrays onto Stack if they are small
+    if ((l-i) > THRESHOLD) {   // Left partition
+      Stack[++top] = i;
+      Stack[++top] = l-1;
+    }
+    if ((j-l) > THRESHOLD) {   // Right partition
+      Stack[++top] = l+1;
+      Stack[++top] = j;
+    }
+  }
+  inssortshift(A);             // Final Insertion Sort
+}
+
+// Optimized Quicksort: Not recursive, and uses Inssort for small lists
+// Assumes that the record is an Integer
+void quicksortOptInt(Integer[] A, int oi, int oj) { // Quicksort
+  int[] Stack = new int[MAXSTACKSIZE]; // Stack for array bounds
+  int listsize = oj-oi+1;
+  int top = -1;
+  Integer pivot;
+  int pivotindex, l, r;
+
+  Stack[++top] = oi;  // Initialize stack
+  Stack[++top] = oj;
+
+  while (top > 0) {   // While there are unprocessed subarrays
+    // Pop Stack
+    int j = Stack[top--];
+    int i = Stack[top--];
+
+    // Findpivot
+    pivotindex = (i+j)/2;
+    pivot = A[pivotindex];
+    swap(A, pivotindex, j); // Stick pivot at end
+
+    // Partition
+    l = i-1;
+    r = j;
+    do {
+      while (A[++l] < pivot);
+      while ((r!=0) && (A[--r] > pivot));
+      swap(A, l, r);
+    } while (l < r);
+    swap(A, l, r);  // Undo final swap
+    swap(A, l, j);  // Put pivot value in place
+
+    // Put new subarrays onto Stack if they are small
+    if ((l-i) > THRESHOLD) {   // Left partition
+      Stack[++top] = i;
+      Stack[++top] = l-1;
+    }
+    if ((j-l) > THRESHOLD) {   // Right partition
+      Stack[++top] = l+1;
+      Stack[++top] = j;
+    }
+  }
+  inssortshiftInt(A);             // Final Insertion Sort
+}
+
+
+
+// Optimized Quicksort: Not recursive, and uses Inssort for small lists
+// This version uses primitive integer values for the records
+void quicksortOptint(int[] A, int oi, int oj) { // Quicksort
+  int[] Stack = new int[MAXSTACKSIZE]; // Stack for array bounds
+  int listsize = oj-oi+1;
+  int top = -1;
+  int pivot;
+  int pivotindex, l, r;
+
+  Stack[++top] = oi;  // Initialize stack
+  Stack[++top] = oj;
+
+  while (top > 0) {   // While there are unprocessed subarrays
+    // Pop Stack
+    int j = Stack[top--];
+    int i = Stack[top--];
+
+    // Findpivot
+    pivotindex = (i+j)/2;
+    pivot = A[pivotindex];
+    swap(A, pivotindex, j); // Stick pivot at end
+
+    // Partition
+    l = i-1;
+    r = j;
+    do {
+      while (A[++l] < pivot);
+      while ((r!=0) && (A[--r] > pivot));
+      swap(A, l, r);
+    } while (l < r);
+    swap(A, l, r);  // Undo final swap
+    swap(A, l, j);  // Put pivot value in place
+
+    // Put new subarrays onto Stack if they are small
+    if ((l-i) > THRESHOLD) {   // Left partition
+      Stack[++top] = i;
+      Stack[++top] = l-1;
+    }
+    if ((j-l) > THRESHOLD) {   // Right partition
+      Stack[++top] = l+1;
+      Stack[++top] = j;
+    }
+  }
+  inssortshiftint(A);             // Final Insertion Sort
 }

@@ -14,22 +14,26 @@
   },
   "chapters": {
     "Sorting": {
+      "Sorting/InSort": {
+        "long_name": "Chapter Introduction: Sorting",
+        "exercises": {}
+      },
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
         "exercises" : {
-          "InssortCON1": {
+          "InsertionSortP1CON": {
             "long_name": "Insertion Sort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "InssortCON2": {
+          "InsertionSortP2CON": {
             "long_name": "Insertion Sort Slideshow 2",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "InssortCON3": {
+          "InsertionSortP3CON": {
             "long_name": "Insertion Sort Slideshow 3",
             "required": false,
             "points": 0.0,

@@ -73,6 +73,8 @@
     bpt.root().right(10).right(12).right(15);
     bpt.layout();
 
+    av.displayInit();
+
     var selectedNode,
         selectedPointer;
     bpt.click(function (event) {
@@ -85,7 +87,6 @@
           selectedNode.pointers[selectedPointer].layout();
         } else if (event.target.className.indexOf(selectedPointer === 0 ? "left" : "right") !== -1 && selectedNode.child(selectedPointer)) {
           selectedNode.child(selectedPointer, null, {hide: false});
-          selectedNode.pointers[selectedPointer].end(null).hide();
         }
         selectedNode.removeClass("selected-left");
         selectedNode.removeClass("selected-right");
@@ -125,7 +126,7 @@
     }
 
     var $b1 = $("<input type='button' value='layout'></button>").click(function(){bpt.layout();});
-    var $b2 = $("<input type='button' value='inline'></button>").click(function(){inline(bpt);});
+    var $b2 = $("<input type='button' value='back to the beginning'></button>").click(function(){av.backward(); av.backward(); av._redo = [];});
 
     av.container.prepend($b1);
     av.container.prepend($b2);
