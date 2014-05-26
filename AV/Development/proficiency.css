@@ -35,6 +35,11 @@
 .greenbg, .greenbg.jsavvalue, .jsavarray.jsavbararray .jsavindex.greenbg .jsavvalue {
   background-color: #3f5;
 }
+.jsavcodeline:hover {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 1px 10px;
+}
 
 .jsavstack {
   position: relative;
