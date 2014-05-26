@@ -7,7 +7,7 @@
     evaluatorArrays = [],
     stack,
     clickHandler,
-    interpret = ODSA.UTILS.getInterpreter("postfixEvaluationPRO", "#jsavcontainer"),
+    interpret = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}).interpreter,
     av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm

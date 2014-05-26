@@ -9,8 +9,9 @@
     keyholder,
     $findLabel,
     pseudo,
-    interpret = ODSA.UTILS.getInterpreter("binarySearchPRO", "#jsavcontainer"),
-    code = ODSA.AV.code,
+    config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
+    interpret = config.interpreter,
+    code = config.code,
     av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
@@ -157,9 +158,9 @@
     }
     var lines = code.tags[lineTag];
     if (typeof lines === "number") {
-      av.umsg(" " + interpret("av_line"), {preserve: true, fill: {first: lines + 1}});
+      av.umsg(" " + interpret("av_line"), {preserve: true, fill: {first: lines}});
     } else if (typeof lines === "object") {
-      av.umsg(" " + interpret("av_lines"), {preserve: true, fill: {first: lines[0] + 1, second: lines[1] + 1}});
+      av.umsg(" " + interpret("av_lines"), {preserve: true, fill: {first: lines[0], second: lines[1]}});
     }
   }
 

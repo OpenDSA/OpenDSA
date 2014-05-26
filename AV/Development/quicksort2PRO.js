@@ -12,8 +12,9 @@
     pivotInBound,
     pseudo,
     clickHandler,
-    interpret = ODSA.UTILS.getInterpreter("quicksort2PRO", "#jsavcontainer"),
-    code = ODSA.AV.code,
+    config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
+    interpret = config.interpreter,
+    code = config.code,
     av = new JSAV($("#jsavcontainer"));
 
   var pivotFunction = {

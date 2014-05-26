@@ -12,7 +12,9 @@
     $infixLabel,
     $stackLabel,
     $postfixLabel,
-    interpret = ODSA.UTILS.getInterpreter("infixToPostfixPRO", "#jsavcontainer"),
+    config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
+    interpret = config.interpreter,
+    code = config.code,
     av = new JSAV($("#jsavcontainer")),
     clickHandler;
 
@@ -21,8 +23,8 @@
   function initialize() {
 
     // show the code and highlight the row where mid is calculated
-    if (!pseudo && ODSA.AV.code) {
-      pseudo = av.code(ODSA.AV.code, {after: {element: $(".instructions")}});
+    if (!pseudo && code) {
+      pseudo = av.code(code, {after: {element: $(".instructions")}});
       pseudo.show();
       pseudo.element.css({width: "auto"});
       pseudo.css(true, {whiteSpace: "normal"});
