@@ -167,6 +167,7 @@
             if (!self.pointers[pos]) {
               self.pointers[pos] = getNewPointerEdge(self.jsav, self, child, {"arrow-end": "classic-wide-long"});
             }
+            child.parent(self, {pos: pos, oldPos: pos});
             return child;
           } else {
             node = self.container.newNode(node, self, $.extend(opts, {pos: pos}));
