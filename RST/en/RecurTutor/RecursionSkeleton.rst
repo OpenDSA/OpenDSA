@@ -247,6 +247,7 @@ Practice Exercises
 
      Sum(a,b-1) + b;
 
+.. avembed:: Exercises/RecurTutor/recwrcprog7.html ka
 
 .. TODO::
    :type: Programming Exercise
@@ -269,6 +270,8 @@ Practice Exercises
 	
 	The answer::
 	  fact(n-1) * n;
+
+.. avembed:: Exercises/RecurTutor/recwrcprog8.html ka
 	
 .. TODO::
    :type: Programming Exercise
