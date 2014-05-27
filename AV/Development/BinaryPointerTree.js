@@ -180,7 +180,7 @@
             oChild = null;
             self.pointers[oPos].hide();
           }
-          node.parent(self, {pos: pos});
+          node.parent(self, {pos: pos, oldPos: oPos});
         }
         node.element.attr("data-binchildrole", pos ? "right" : "left");
         newchildnodes = [];
