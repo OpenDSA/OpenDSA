@@ -4,7 +4,7 @@
   "code_dir": "SourceCode/",
   "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
-  "backend_address": "http://opendsa.cc.vt.edu:8090",
+  "backend_address": "https://opendsa.cc.vt.edu",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
