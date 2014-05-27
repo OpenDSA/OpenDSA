@@ -398,6 +398,7 @@ Glossary
       left as :term:`garbage`, depending on the programming language.
 
    edge
+   edges
       The connection that links two :term:`nodes` in a :term:`tree`,
       :term:`linked list`, or :term:`graph`.
 
@@ -532,6 +533,13 @@ Glossary
       each node has a fixed number of children (some of which might be
       ``null``).
       General tree nodes tend to be harder to implement for this reason.
+
+   graph
+      A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
+      of a set of :term:`vertices` :math:`\mathbf{V}` and a set of
+      :term:`edges` :math:`\mathbf{E}`,
+      such that each edge in :math:`\mathbf{E}` is a connection between a
+      pair of vertices in :math:`\mathbf{V}`.
 
    growth rate
       The rate at which the cost

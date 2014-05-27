@@ -11,9 +11,16 @@ QBank - Users Manual
 Introduction 
 -----------------
 
-
-
-QBank is a web application that assists Problem Authoring and Publishing. The user interface is intuitive and easy to understand. This document will give you a feel of the overall capabilities and functionality of QBank tool.
+QBank is a web application that assists Problem Authoring and
+Publishing.
+At the present time, this is an experimental system, and is not
+actively being used to create OpenDSA exercise content.
+But its goal is to replace a lot of the current programming required
+to develop our OpenDSA exercises.
+The user interface is meant to be intuitive and easy to
+understand.
+This document will give you a feel of the overall
+capabilities and functionality of QBank tool.
 
 The **key** features of the QBank tool are:
 

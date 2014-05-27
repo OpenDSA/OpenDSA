@@ -11,15 +11,16 @@ Table of Contents
    :maxdepth: 3
 
    Overview
-   Backend
+   Client-sideDevelopment
    ModAuthor
    Style
-   Preprocessor
-   Extensions
    Exercise 
-   BackendSpecs
    Configuration
+   Extensions
+   Preprocessor
+   InstructorTools
+   Backend
+   BackendSpecs
    Client-sideFramework
-   Client-sideDevelopment
    QBankUserManual
    QBankDevManual
