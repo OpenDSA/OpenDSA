@@ -2,6 +2,7 @@
 
 Module Authoring
 ================
+
 OpenDSA modules are authored using 
 `reStructuredText <http://docutils.sourceforge.net/rst.html>`_
 (also known as ReST).  The source files for these modules (which 
@@ -24,16 +25,6 @@ infrastructure is in
 
 The best way to get a sense for how things work is to look at some
 existing modules.
-
-Create Course Notes
--------------------
-OpenDSA uses `hieroglyph <https://github.com/nyergler/hieroglyph/>`_ a Sphinx 
-extension to build HTML slides.
-
-The course notes infrastructures is similar to eTextBook creation, and uses
-``OpenDSA/Makefile``. The only difference is the ``s`` option for slides
-when calling the configuration, for example ``python tools/configure.py s config/OpenDSA.json``.
-
 
 Module Structure
 ----------------
@@ -58,57 +49,43 @@ are included for credit, and various other aspects of module use are
 defined with the
 :ref:`Configuration system <Configuration>`.
 
-
-Compile a book instance
-=======================
-
-
-
-Register Book Instance
-======================
-
-To send over to the data server all information (chapters, modules, exercises, points, etc.) 
-related to a newly created book instance, it is necessary to register the book instance.
-The rigistration can be done on the `RegisterBook` page at `Book_Base_URL/html/RegisterBook.html`.
-
-Teacher View Configuration
-==========================
-To configure a view for a specific course/book instance, it is required to 
-create a course and an assignement for that course through the backend 
-administration `console <http://opendsa.cc.vt.edu/admin/>`_. Only Django
-administration account can perform these tasks.
-
-Course Creation
----------------
-
-Select ``course``, then ``Add course``, and fill in the form and assign teacher(s) to the course.
-
-Select ``course instance`` to create an instance of the course you just created. Fill in the 
-form and eventually assign teaching assistants. 
-
-Select ``Books``, and click on the url of the OpenDSA book instance you want to associate to the
-course. In the book's form select the appropriate course.
-
-Assignment Creation
+Translation Support
 -------------------
 
-At this point it is necessary to create an assignment after configuring a course.
+OpenDSA supports a sophisticated internationalization framework that
+attempts to make it as easy as possible to support compiling textbook
+instances in various (natural) languages.
+The configuration system allows a book compiler to specify the
+language of choice, and the system will take module versions in the
+target language whenever available (the fallback language is
+English).
 
-Select ``Assignments``, then ``Add assignments``. In the creation form, select any course module,
-then the corresponding book. There is no need to add exercises to the assignement at this point, 
-it will be done by the teacher through the teacher view.
-
-
-
-
-
-
-
-
-
-
+AVs and exercises also support internationalization through the use of
+an associated ``.json`` file that provides the various translation
+text for all strings that appear in the AV.
+JSAV provides translations to many languages for its infrastructure
+strings.
 
 
+Compile a book instance
+-----------------------
 
+Here are instructions for how to compile a book instance.
 
+TODO: CREATE INSTRUCTIONS.
 
+If you are responsible for creating content for a specific class that
+has a class instance set up at the OpenDSA backend server, then you
+might be the one responsible for registering the various exercises
+with the backend database.
+See  "Registering a Book Instance" in the
+:ref:`Instructor's Tools  <InstructorTools>` section.
+
+Create Course Notes
+-------------------
+OpenDSA uses `hieroglyph <https://github.com/nyergler/hieroglyph/>`_ a Sphinx 
+extension to build HTML slides.
+
+The course notes infrastructures is similar to eTextBook creation, and uses
+``OpenDSA/Makefile``. The only difference is the ``s`` option for slides
+when calling the configuration, for example ``python tools/configure.py s config/OpenDSA.json``.

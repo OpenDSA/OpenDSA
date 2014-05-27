@@ -44,7 +44,7 @@
             <concept id="1MQS6R794-SRRTHH-G6" label="Edges"/>
             <concept id="1MQS6YBT9-4X84P7-KD" label="Topological Sort" short-comment="" long-comment="A topological sort or topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge uv from vertex u to vertex v, u comes before v in the ordering."/>
             <concept id="1MQS703R6-22R85D2-MZ" label="Minimal Cost Spanning Tree"/>
-            <concept id="1MQS6LDFV-W8P8QQ-6R" label="Graph"/>
+            <concept id="1MQS6LDFV-W8P8QQ-6R" label="Graph" short-comment="" long-comment="A graph G = (V, E) consists of a set of vertices V and a set of edges E, such that each edge in E is a connection between a pair of vertices in V."/>
             <concept id="1MQS712MN-1M8X9XB-PS" label="Single Source"/>
             <concept id="1MQS6PGV9-GVR7JY-CB" label="vertices"/>
             <concept id="1MQS7233X-1QDJS5X-SK" label="All Pairs"/>ad

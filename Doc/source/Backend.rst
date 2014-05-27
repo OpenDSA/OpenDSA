@@ -1,9 +1,14 @@
 .. _Backend:
 
-
-
 OpenDSA Backend Installation and Setup
 ======================================
+
+The OpenDSA "backend" provides support for collecting student scoring
+data (in a MySQL database), logs user interaction details with OpenDSA
+content for analysis purposes, and provides tools for instructors to
+manage the student score data.
+Most OpenDSA developers do **not** need to worry about intalling a
+copy of the OpenDSA back end.
 
 Windows
 -------

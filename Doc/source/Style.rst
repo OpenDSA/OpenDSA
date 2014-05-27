@@ -3,7 +3,7 @@
 House Style Rules
 =================
 
-The following guidelines should be observed with writing content for
+The following guidelines should be observed when writing content for
 the OpenDSA project.
 
 Content Types
@@ -15,7 +15,7 @@ OpenDSA content can generally be divided into the following types:
   OpenDSA/RST/source directory,
 - exercises: implemented using the Khan Academy Infrastructure and
   residing in the OpenDSA/Exercises directory,
-- slideshows and diagrams: directly embedded into modules using the
+- mini-slideshows and diagrams: directly embedded into modules using the
   ``inlineav`` directive and whose source resides in the OpenDSA/AV
   directory, and
 - visualizations and activities: embedded as iframes using the
@@ -87,3 +87,34 @@ It can be a subtle point whether the variable or the quantity is
 intended.
 Having to typeset it (and so make a conscious decision) helps you to
 think through what you are trying to convey.
+
+Code Snippet Support
+--------------------
+
+OpenDSA and JSAV provide an extensive framework for integrating code
+snippets into your modules and visualizations.
+JSAV provides support through the Pseudocode API for displaying and
+manipulating your code snippets within an AV.
+See the JSAV manual for details.
+Within a module, code snippets are meant to be embedded from a
+sourcecode file using the ``codeinclude`` directive.
+
+The OpenDSA framework and configuration support makes it as easy as
+possible to be able to compile book instances with code snippets from
+your desired programming language(s), assuming that the code snippets
+have been provided by a content developer.
+The basic concept for managing code snippets is that they should be 
+taken from working programs that can properly support testing of the
+code that you included into your modules.
+
+All such sourcecode should appear in the ``SourceCode`` directory
+within OpenDSA, with each coding language having its own
+subdirectory.
+A given AV can have an associated ``.json`` file that defines the
+configuration for alternate coding languages, including such things as
+the filename.
+
+Note that in the ``.json`` file, a given section of the ``code`` block
+should match the subdirectory name within the ``SourceCode`` directory
+for that language.
+

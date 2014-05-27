@@ -63,6 +63,12 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "recrcprog": {
+            "long_name": "Recursion Programming Exercise 4",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       }

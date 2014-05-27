@@ -150,23 +150,30 @@ Practice Exercises
 .. TODO::
    :type: Programming Exercise
 
-   Given the following recursive function write down the missing
-   recursive call such that this function prints all positive odd
-   numbers less than or equal to i::
-
-     public static void printOddRecursive(int i) {
-       if (i > 0) {
-         if (i % 2 == 1) { 
-           System.out.println(i);
-         }
-         //<<Missing a Recursive call>>
-       }
-     }
+  Given the following recursive function write down the missing recursive call such that this function returns the sum of all positive odd numbers less than or equal to n.
+   
+      int addodd(int n) {
+  if(n<=0)
+  {
+    return 0;    
+  }
+  if(n%2 != 0)
+  { 
+    return //<<Missing a Recursive call>>
+  }
+  else
+  {
+    return addodd(n-1);
+  }
+      
+}
  
  
    The answer::
 
-     printOddRecursive(i - 1);
+     n+addodd(n-1);
+
+.. avembed:: Exercises/RecurTutor/recrcprog.html ka
 
 
 .. TODO::

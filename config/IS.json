@@ -71,6 +71,10 @@
         "long_name": "Reductions",
         "exercises": {}
       },
+      "IS/ExternalSort": {
+        "long_name": "ExternalSort",
+        "exercises": {}
+      },
       "IS/Archie": {
         "long_name": "Insertion Sort Optimization",
         "exercises": {

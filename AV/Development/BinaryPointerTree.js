@@ -1,9 +1,6 @@
 (function ($) {
   "use strict";
 
-  // constant for the width of the pointer area
-  var POINTER_AREA_WIDTH = 14;
-
   // shortcut to JSAV Edge
   var Edge = JSAV._types.ds.Edge;
 
@@ -115,8 +112,9 @@
           sWidth = sElem.outerWidth(),
           sHeight = sElem.outerHeight() / 2.0,
           eWidth = eElem.outerWidth() / 2.0,
+          pointerWidth = sElem.find(".jsavpointerarea:eq(0)").width(),
           pos = this.start().pointers[0] === this ? 0 : 1,
-          fromX = start.left + POINTER_AREA_WIDTH / 2 + pos * (sWidth - POINTER_AREA_WIDTH),
+          fromX = start.left + pointerWidth / 2 + pos * (sWidth - pointerWidth),
           fromY = start.top + sHeight,
           toX = end.left + eWidth,
           toY = end.top;
@@ -169,6 +167,7 @@
             if (!self.pointers[pos]) {
               self.pointers[pos] = getNewPointerEdge(self.jsav, self, child, {"arrow-end": "classic-wide-long"});
             }
+            child.parent(self, {pos: pos, oldPos: pos});
             return child;
           } else {
             node = self.container.newNode(node, self, $.extend(opts, {pos: pos}));
@@ -181,7 +180,7 @@
             oChild = null;
             self.pointers[oPos].hide();
           }
-          node.parent(self, {pos: pos});
+          node.parent(self, {pos: pos, oldPos: oPos});
         }
         node.element.attr("data-binchildrole", pos ? "right" : "left");
         newchildnodes = [];
