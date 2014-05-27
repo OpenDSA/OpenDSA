@@ -4,11 +4,8 @@
 (function ($) {
   var av;
   var code;
-  var arr;
+  var arr, count, out;
   var arr_values = [];
-  var pointer1, pointer2, pointer3;
-  var left_moves = 0, right_moves = 0;
-  var lmoves, rmoves;
   
   function runit() {
     av = new JSAV($(".avcontainer"));
@@ -22,7 +19,18 @@
       MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
     });  
     
+	av.umsg("Radixsort starts with an input array of $n$ keys with $k$ digits. Here we have $n=12$ and $k=2$");
+	for (var i = 0;i < 12;i++){
+	  arr_values[i] = parseInt(Math.random()*100 + 1);
+	}
+	arr = av.ds.array(arr_values, {"left":10, "top":0,"indexed":true});
+	av.label("|-------------------------------- $n$ ---------------------------------|", {"top": "-5px", "left": "20px"}).css({'font-size': '14px', "text-align": "center"});
     av.displayInit();
+	code = av.code({url: "../../SourceCode/Processing/Sorting/RadixsortNoComments.pde",
+                    lineNumbers: false,
+                    startAfter: "/* *** ODSATag: Radixsort *** */",
+                    endBefore: "/* *** ODSAendTag: Radixsort *** */", top: -40, left: 400});
+	
     av.recorded();    
   }
   function about() {
