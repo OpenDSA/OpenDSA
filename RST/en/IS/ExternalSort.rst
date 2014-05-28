@@ -8,6 +8,8 @@
    :prerequisites: FileProc
    :topic: External Sorting
 
+.. odsalink:: AV/Development/externalsort.css
+
 External Sorting
 ================
 
@@ -396,12 +398,10 @@ This process is illustrated by Figure :num:`Figure #RSOver`.
 
 .. _RSOver:
 
-.. odsafig:: Images/RSOver.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Overview of replacement selection
+.. inlineav:: externalSortOver dgm
+   :align: justify
+
+   Overview of replacement selection.
 
    Overview of replacement selection.
    Input records are processed sequentially.
@@ -518,12 +518,8 @@ revolution (leaving :math:`S` snow behind).
 
 .. _SnowPlow:
 
-.. odsafig:: Images/SnowPlow.png
-   :width: 250
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: The snowplow analogy
+.. inlineav:: externalSortSnow dgm
+   :align: justify
 
    The snowplow analogy showing the action during one
    revolution of the snowplow.
@@ -760,3 +756,6 @@ following:
 * If possible, use additional disk drives for more overlapping of
   processing with I/O, and to allow for sequential file
   processing.
+
+.. odsascript:: AV/Development/externalsort.js
+.. odsascript:: AV/Development/externalsortsnow.js
