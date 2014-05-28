@@ -346,6 +346,7 @@ Practice Exercises
   
      GetDigits(number/ 10, ++digits);
 
+.. avembed:: Exercises/RecurTutor/recwrcprog11.html ka
 
 .. TODO::
    :type: Programming Exercise 
@@ -372,6 +373,9 @@ Practice Exercises
 	
 	The answer::
 	   countChr(str.substring(1)); 
+
+
+.. avembed:: Exercises/RecurTutor/recwrcprog12.html ka
 
 
 In the previous examples and exercises, all the recursive functions has only

@@ -93,6 +93,30 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+         "recwbcbaprog9": {
+            "long_name": "Recursion Programming Exercise 9",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwrcprog10": {
+            "long_name": "Recursion Programming Exercise 10",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwrcprog11": {
+            "long_name": "Recursion Programming Exercise 11",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwrcprog12": {
+            "long_name": "Recursion Programming Exercise 12",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       }
