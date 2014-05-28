@@ -117,8 +117,25 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
-          }
-        }
+          },
+         "recwrcprog13": {
+            "long_name": "Recursion Programming Exercise 13",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "rechwrcprog14": {
+            "long_name": "Recursion Programming Exercise 14",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          },
+         "rechw2bcprog15": {
+            "long_name": "Recursion Programming Exercise 15",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          }        }
       }
     },
     "Appendix": {

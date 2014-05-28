@@ -377,6 +377,28 @@ Practice Exercises
 
 .. avembed:: Exercises/RecurTutor/recwrcprog12.html ka
 
+.. TODO::
+   :type: Programming Exercise
+   
+   Given the following recursive function write down the missing recursive call such that this function takes a non-negative integer and returns the sum of its digits. For  
+   example, sumOfDigits(1234) returns 1+2+3+4 =10::
+	   
+	   int sumOfDigits(int number)
+	   {  
+	    if(number/10 == 0)
+	  
+	   return number; 
+	   
+	   return //<<Missing a Recursive call>>
+	   }
+	 
+   The answer::
+	   
+	    number%10 + sumOfDigits(number/10);
+
+
+.. avembed:: Exercises/RecurTutor/recwrcprog13.html ka
+
 
 In the previous examples and exercises, all the recursive functions has only
 one base case and one recursive case. A more general structure for recursion
@@ -414,25 +436,6 @@ You need to practice harder recursive functions in order to gain more experience
 
 Harder Practice Exercises
 --------------------------
-.. TODO::
-   :type: Programming Exercise
-   
-   Given the following recursive function write down the missing recursive call such that this function takes a non-negative integer in return for the sum of its digits. For  
-   example, sumOfDigits(1234) returns 1+2+3+4 =10::
-	   
-	   int sumOfDigits(int number)
-	   {  
-	    if(number/10 == 0)
-	  
-	   return number; 
-	   
-	   return //<<Missing a Recursive call>>
-	   }
-	 
-   The answer::
-	   
-	    number%10 + sumOfDigits(number/10);
-
 
 .. TODO::
    :type: Programming Exercise
@@ -458,14 +461,16 @@ Harder Practice Exercises
    The answer::
 	  
 	     Fibonacci(n-1) + Fibonacci(n-2);
-	
+
+.. avembed:: Exercises/RecurTutor/rechwrcprog14.html ka
+
 
 .. TODO::
    :type: Programming Exercise
    
 	The following exercise involves two base cases:
 	   
-	Given the following recursive function write down the conditions such that this function determines if an integer N is prime or not::
+	Given the following recursive function write down the base case conditions such that this function determines if an integer N is prime or not::
 	   
 	   public static boolean Prime(int X,int Y)
 	
@@ -494,7 +499,7 @@ Harder Practice Exercises
 	
 	  if ( X%Y == 0)
 
-
+.. avembed:: Exercises/RecurTutor/rechw2bcprog15.html ka
 .. TODO::
    :type: Programming Exercise
    
