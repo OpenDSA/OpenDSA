@@ -27,3 +27,13 @@
 h1{
   font-size: 1em;
 }
+.jsavnode {
+  line-height: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+}
+.jsavnode .jsavvalue { /* This will get the array cell values to center vertically */
+  height: 30px;
+}

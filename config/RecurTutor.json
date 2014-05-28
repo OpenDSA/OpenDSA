@@ -4,7 +4,7 @@
   "code_dir": "SourceCode/",
   "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
-  "backend_address": "http://opendsa.cc.vt.edu:8090",
+  "backend_address": "https://opendsa.cc.vt.edu",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -46,26 +46,74 @@
             "points": 0.0,
             "threshold": 1.0
           }, 
-          "recwbcprog": {
+          "recwbcprog1": {
             "long_name": "Recursion Programming Exercise 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recwbcaprog": {
+          "recwbcaprog2": {
             "long_name": "Recursion Programming Exercise 2",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-         "recwbcrcprog": {
+         "recwbcrcprog3": {
             "long_name": "Recursion Programming Exercise 3",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recrcprog": {
+         "recwrcprog4": {
             "long_name": "Recursion Programming Exercise 4",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwbcbaprog5": {
+            "long_name": "Recursion Programming Exercise 5",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwrcprog6": {
+            "long_name": "Recursion Programming Exercise 6",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwrcprog7": {
+            "long_name": "Recursion Programming Exercise 7",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwrcprog8": {
+            "long_name": "Recursion Programming Exercise 8",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwbcbaprog9": {
+            "long_name": "Recursion Programming Exercise 9",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwrcprog10": {
+            "long_name": "Recursion Programming Exercise 10",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwrcprog11": {
+            "long_name": "Recursion Programming Exercise 11",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "recwrcprog12": {
+            "long_name": "Recursion Programming Exercise 12",
             "required": true,
             "points": 0.0,
             "threshold": 1.0

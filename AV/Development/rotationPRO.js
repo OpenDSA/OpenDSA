@@ -7,20 +7,31 @@
       nodeSelected,
       selectedNode,
       selectedPointer,
+      rotationType = PARAMS.rotation || "single",
+      difficulty = PARAMS.diff || "hard",
       av = new JSAV($("#jsavcontainer"));
 
   function initialize() {
 
-    // clear old  tree
+    // clear old structures
     if (tree) {
       tree.clear();
     }
+    if (nodeSelected) {
+      nodeSelected.clear();
+    }
+    if (selectedPointer) {
+      selectedPointer.clear();
+    }
+
     // create binary pointer tree
     tree = av.ds.binarypointertree({center: true, visible: true, nodegap: 15});
     initialArray = unbalancedTree({
-      minNodes: 7,
-      maxNodes: 9,
-      maxHeight: 6
+      minNodes: 12,
+      maxNodes: 18,
+      maxHeight: 8,
+      rotationType: rotationType,
+      difficulty: difficulty
     });
     tree.insert(initialArray);
     tree.click(clickHandler);
@@ -51,16 +62,14 @@
     return msTree;
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", grader: "finalStep", modelDialog: {width: 780}});
-  exercise.reset();
-
   // generates an array which can be inserted to a tree so that it will be unbalanced tree
   function unbalancedTree(options) {
     var defaults = {
       minNodes: 7,
       maxNodes: 10,
       maxHeight: 6,
-      rotationType: "single"
+      rotationType: "single",
+      difficulty: "hard"
     };
 
     options = $.extend({}, defaults, options);
@@ -80,17 +89,17 @@
           break;
         }
         var node = bt.getUnbalancedNode(arr[i]);
-        if (node && getRotationType(node) === options.rotationType && node !== bt.root()) {
-          if (i >= options.minNodes) {
-            bt.clear();
-            return arr; //done
-          } else {
-            // not enough nodes -> balance tree
-            node.balance();
-            treeToArray(bt.root(), arr);
-          }
+        if (node &&
+            getRotationType(node) === options.rotationType &&
+            node !== bt.root() &&
+            i >= options.minNodes &&
+             ((options.difficulty === "hard" && node.left() && node.right()) ||
+              (options.difficulty === "easy" && !(node.left() && node.right()))))
+        {
+          bt.clear();
+          return arr; //done
         } else if (node) {
-          // wrong kind of rotation -> balance tree
+          // wrong kind of rotation or not enough nodes -> balance tree
           node.balance();
           treeToArray(bt.root(), arr);
         }
@@ -172,12 +181,14 @@
   }
 
   //position buttons
-  $layoutButton.css({position: "absolute", left: 50, top: 50, width: 100});
+  $layoutButton.css({position: "absolute", left: 50, top: 30, width: 100});
   //add click handlers
   $layoutButton.click(function () {
     tree.layout();
     av.step();
   });
 
+  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", grader: "finalStep", modelDialog: {width: 780}});
+  exercise.reset();
 
 }(jQuery));

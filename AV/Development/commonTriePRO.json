@@ -8,8 +8,8 @@
       "av_common_trie": "Common Trie",
       "av_next": "Next",
       "av_add_str": "Adding string \"{str}\"",
-      "av_set_true": "The node corresdoning to \"{str}\" is set to true",
-      "av_already_true": "The node corresdoning to \"{str}\" has already been set to true. The string is already included in the tree."
+      "av_set_true": "The node corresponding to \"{str}\" is set to true",
+      "av_already_true": "The node corresponding to \"{str}\" has already been set to true. The string is already included in the tree."
     },
     "fi": {
       ".exerciseTitle": "Merkkijonopuu",

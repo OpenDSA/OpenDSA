@@ -96,7 +96,7 @@ Practice Exercises
       if(index==numbers.length-1)
 
 
-.. avembed:: Exercises/RecurTutor/recwbcprog.html ka
+.. avembed:: Exercises/RecurTutor/recwbcprog1.html ka
 
 .. TODO::
    :type: Programming Exercise
@@ -122,7 +122,7 @@ Practice Exercises
 
       return list[index] + " "+ recursiveprint(list, index + 1) ;
 
-.. avembed:: Exercises/RecurTutor/recwbcaprog.html ka
+.. avembed:: Exercises/RecurTutor/recwbcaprog2.html ka
 
 
 .. TODO::
@@ -145,7 +145,7 @@ Practice Exercises
       if (b == n)
        (1 + log(b, n / b));
 
-.. avembed:: Exercises/RecurTutor/recwbcrcprog.html ka
+.. avembed:: Exercises/RecurTutor/recwbcrcprog3.html ka
 
 .. TODO::
    :type: Programming Exercise
@@ -173,7 +173,7 @@ Practice Exercises
 
      n+addodd(n-1);
 
-.. avembed:: Exercises/RecurTutor/recrcprog.html ka
+.. avembed:: Exercises/RecurTutor/recwrcprog4.html ka
 
 
 .. TODO::
@@ -199,6 +199,7 @@ Practice Exercises
     
       return y;
       
+.. avembed:: Exercises/RecurTutor/recwbcbaprog5.html ka
 
 .. TODO::
    :type: Programming Exercise
@@ -220,7 +221,9 @@ Practice Exercises
       
     power(x-1, y) * y
 
- 
+
+.. avembed:: Exercises/RecurTutor/recwrcprog6.html ka
+
 .. TODO::
    :type: Programming Exercise
 
@@ -244,6 +247,7 @@ Practice Exercises
 
      Sum(a,b-1) + b;
 
+.. avembed:: Exercises/RecurTutor/recwrcprog7.html ka
 
 .. TODO::
    :type: Programming Exercise
@@ -266,6 +270,8 @@ Practice Exercises
 	
 	The answer::
 	  fact(n-1) * n;
+
+.. avembed:: Exercises/RecurTutor/recwrcprog8.html ka
 	
 .. TODO::
    :type: Programming Exercise
@@ -290,7 +296,8 @@ Practice Exercises
 	   {
 	    return y;
 	   }
-	   
+
+.. avembed:: Exercises/RecurTutor/recwbcbaprog9.html ka	   
 	
 .. TODO::
    :type: Programming Exercise
@@ -317,6 +324,9 @@ Practice Exercises
 	  k + mystery(k - 1)
 
 
+.. avembed:: Exercises/RecurTutor/recwrcprog10.html ka	 
+
+
 .. TODO::
    :type: Programming Exercise
  
@@ -336,6 +346,7 @@ Practice Exercises
   
      GetDigits(number/ 10, ++digits);
 
+.. avembed:: Exercises/RecurTutor/recwrcprog11.html ka
 
 .. TODO::
    :type: Programming Exercise 
@@ -362,6 +373,9 @@ Practice Exercises
 	
 	The answer::
 	   countChr(str.substring(1)); 
+
+
+.. avembed:: Exercises/RecurTutor/recwrcprog12.html ka
 
 
 In the previous examples and exercises, all the recursive functions has only
