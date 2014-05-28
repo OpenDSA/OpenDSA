@@ -296,7 +296,8 @@ Practice Exercises
 	   {
 	    return y;
 	   }
-	   
+
+.. avembed:: Exercises/RecurTutor/recwbcbaprog9.html ka	   
 	
 .. TODO::
    :type: Programming Exercise
@@ -321,6 +322,9 @@ Practice Exercises
    The answer::
 	
 	  k + mystery(k - 1)
+
+
+.. avembed:: Exercises/RecurTutor/recwrcprog10.html ka	 
 
 
 .. TODO::
