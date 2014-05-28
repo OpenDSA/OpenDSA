@@ -529,6 +529,7 @@ Harder Practice Exercises
 	
 	      System.out.print(num%2);
 	
+.. avembed:: Exercises/RecurTutor/rechwrcraprog16.html ka
 
 .. TODO::
    :type: Programming Exercise

@@ -135,7 +135,14 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0 
-          }        }
+          },
+         "rechwrcraprog16": {
+            "long_name": "Recursion Programming Exercise 16",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          }    
+        }
       }
     },
     "Appendix": {
