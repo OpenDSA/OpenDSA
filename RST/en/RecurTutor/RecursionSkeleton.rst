@@ -554,6 +554,8 @@ Harder Practice Exercises
 	   The answer::
 	     recursiveMin(numbers , startIndex+1)
 
+.. avembed:: Exercises/RecurTutor/rechwrcprog17.html ka
+
 .. TODO::
    :type: Programming Exercise
    
@@ -587,6 +589,7 @@ Harder Practice Exercises
 	
 	  (s1.length() == 0 || s2.length() == 0)
 
+.. avembed:: Exercises/RecurTutor/rechw2bcprog18.html ka
 
 Classic recursion involves thinking ”backwards”. Instead of building a solution from nothing, you pretend you are at the solution, and want to take a
 step back and ask how to solve the problem if you were a step back. Here’s an analogy. You are planning a trip from point A to point B. One way to start is
@@ -612,6 +615,20 @@ The following exercises will ask you to write a whole recursive function:
 	   {
 	
 	   }
+           public static int getLast(Stack<Integer> s)
+          {
+            int a = s.pop();
+            if(s.size() == 0)
+           {
+             return a;
+           }
+           else
+           {
+            int k = getLast(s);
+            s.push(a);
+            return k;
+           }
+    }
 
     The answer::
 
@@ -629,6 +646,7 @@ The following exercises will ask you to write a whole recursive function:
 	    s.push(n);
 	   }
 
+.. avembed:: Exercises/RecurTutor/recwprog19.html ka
 
 .. TODO::
    :type: Programming Exercise
