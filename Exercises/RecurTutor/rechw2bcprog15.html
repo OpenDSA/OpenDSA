@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Recursion Programming Exercise 12</title>
+  <title> Recursion Programming Exercise 15</title>
   <script src="../../lib/jquery.min.js">
   </script>
   <script src="../../lib/jquery-ui.min.js">
@@ -107,23 +107,24 @@
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test">  Given the following recursive function write down the missing recursive call such that this function counts the number of As in a given string.
-
-      <br />
+      <p class="problem" id = "test"> Given the following recursive function write down the base case conditions such that this function determines if an integer N is prime or not.
+	  
+    <br />
     </h4>
 
-    <textarea  id="codeTextarea">
-int countChr(String str ) {	
-if (str.length() == 0) {
-  return 0;
+    <textarea  id="codeTextarea"> 
+boolean Prime(int X,int Y)
+{
+  //<<Missing base case condition 1>>
+    return true;
+  else //<<Missing base case condition 2>>
+    return false;	
+   else
+    return Prime(X,Y-1);
 }
-int count = 0;
-if (str.substring(0, 1).equals("A")) {
-  count = 1;
-}
-return count + //<<Missing a Recursive call>>
-}
-</textarea></p>
+	
+	 
+	</textarea></p>
 
       <div class="question">
 	

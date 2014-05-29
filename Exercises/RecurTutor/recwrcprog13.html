@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Recursion Programming Exercise 12</title>
+  <title> Recursion Programming Exercise 13</title>
   <script src="../../lib/jquery.min.js">
   </script>
   <script src="../../lib/jquery-ui.min.js">
@@ -107,22 +107,18 @@
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test">  Given the following recursive function write down the missing recursive call such that this function counts the number of As in a given string.
-
-      <br />
+      <p class="problem" id = "test">   Given the following recursive function write down the missing recursive call such that this function takes a non-negative integer and returns the sum of its digits. For example, sumOfDigits(1234) returns 1+2+3+4 =10.
+    <br />
     </h4>
 
     <textarea  id="codeTextarea">
-int countChr(String str ) {	
-if (str.length() == 0) {
-  return 0;
+int sumOfDigits(int number)
+{  
+  if(number/10 == 0) 
+    return number;    
+  return //<<Missing a Recursive call>>
 }
-int count = 0;
-if (str.substring(0, 1).equals("A")) {
-  count = 1;
-}
-return count + //<<Missing a Recursive call>>
-}
+
 </textarea></p>
 
       <div class="question">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Recursion Programming Exercise 12</title>
+  <title> Recursion Programming Exercise 16</title>
   <script src="../../lib/jquery.min.js">
   </script>
   <script src="../../lib/jquery-ui.min.js">
@@ -107,22 +107,18 @@
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test">  Given the following recursive function write down the missing recursive call such that this function counts the number of As in a given string.
-
-      <br />
+      <p class="problem" id = "test"> Given the following recursive function write down the missing code at the else such that this function returns the binary equivalent of an integer N in a String spaces seprated. Example: the binary equivalent of 13 may be found by repeatedly dividing 13 by 2.So, 13 in base 2 is 1 1 0 1.  
+    <br />
     </h4>
+    <textarea  id="codeTextarea"> 
+String decibinary (int num)
+{
+ if ( num < 2)
+  return Integer.toString(num);
+ else
+  return //<<Missing a Recursive call>> + "  " + //<<Missing a command>>;
+}
 
-    <textarea  id="codeTextarea">
-int countChr(String str ) {	
-if (str.length() == 0) {
-  return 0;
-}
-int count = 0;
-if (str.substring(0, 1).equals("A")) {
-  count = 1;
-}
-return count + //<<Missing a Recursive call>>
-}
 </textarea></p>
 
       <div class="question">
