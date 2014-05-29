@@ -4,6 +4,18 @@
  height: 250px;
 }
 
+#externalSortOver {
+ margin-left: auto;
+ margin-right: auto;
+ height: 120px;
+}
+
+#externalSortSnow {
+ margin-left: auto;
+ margin-right: auto;
+ height: 215px;
+}
+
 svg{
   stroke-width: 1;
 }
