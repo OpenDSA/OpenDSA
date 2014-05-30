@@ -936,39 +936,10 @@ The following exercises will ask you to write a whole recursive function:
 		
 		}
 		
-	
-.. TODO::
-   :type: Programming Exercise	
-	
-	Given the following recursive function signature, write the function code such that this function takes a positive numStairs and returns the number
-	of different ways to climb a staircase of that height taking strides of one or two stairs at a time::
-	
-		int count_stair_ways (int n)
+.. avembed:: Exercises/RecurTutor/recwprog26.html ka
 		
-		{
-		
-		}
-		
-	The answer::
-	
-		int count_stair_ways (int n)
-		
-		{
-		
-		if (n==0)
-		
-		return 1;
-		
-		if (n<0)
-		
-		return 0;
-		
-		else
-		
-		
-		return count_stair_ways(n-1) + count_stair_ways (n-2);
-		
-		}
+
+
 	
 .. TODO::
    :type: Programming Exercise	
@@ -1504,7 +1475,38 @@ The following exercises will ask you to write a whole recursive function:
 		return (CountPins(row-1)+row);
 		
 		}
-
+.. TODO::
+   :type: Programming Exercise	
+	
+	Given the following recursive function signature, write the function code such that this function takes a positive numStairs and returns the number
+	of different ways to climb a staircase of that height taking strides of one or two stairs at a time(same as 26)::
+	
+		int count_stair_ways (int n)
+		
+		{
+		
+		}
+		
+	The answer::
+	
+		int count_stair_ways (int n)
+		
+		{
+		
+		if (n==0)
+		
+		return 1;
+		
+		if (n<0)
+		
+		return 0;
+		
+		else
+		
+		
+		return count_stair_ways(n-1) + count_stair_ways (n-2);
+		
+		}
 
 How to trace a recursive function?
 ----------------------------------
