@@ -165,7 +165,37 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0 
-          }               
+          },
+         "recwprog21": { 
+            "long_name": "Recursion Programming Exercise 21",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          },
+         "recwprog22": { 
+            "long_name": "Recursion Programming Exercise 22",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          },
+         "recwprog23": { 
+            "long_name": "Recursion Programming Exercise 23",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          },
+         "recwprog24": { 
+            "long_name": "Recursion Programming Exercise 24",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          },
+         "recwprog25": { 
+            "long_name": "Recursion Programming Exercise 25",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          }                                  
         }
       }
     },

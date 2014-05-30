@@ -69,8 +69,8 @@ The following visualization shows three different versions of the Sum recursive 
 
 You will never understand recursion well without doing a lot of practice on it. Here are set of practice exercises on recursion, try to practice them all to master recursion.
 
-Practice Exercises
--------------------
+Code Completion Practice Exercises
+----------------------------------
 
 .. TODO::
    :type: Programming Exercise
@@ -434,8 +434,8 @@ can have more than one base case and recursive case. The following Figure/Visual
 
 You need to practice harder recursive functions in order to gain more experience on recursion.
 
-Harder Practice Exercises
---------------------------
+Harder Code Completion Practice Exercises
+-----------------------------------------
 
 .. TODO::
    :type: Programming Exercise
@@ -716,8 +716,7 @@ The following exercises will ask you to write a whole recursive function:
 	   
 	   Cannonballs Pyramid
 
-    Given the following recursive function signature, write the function code such that it takes as its argument the height of a pyramid	of cannonballs and returns the number of cannonballs it contains based::
-	on the height of the stack::
+    Given the following recursive function signature, write the function code such that it takes as its argument the height of a pyramid	of cannonballs and returns the number of cannonballs it contains based	on the height of the stack::
 	
 		int Cannonball(int height)
 		
@@ -748,34 +747,18 @@ The following exercises will ask you to write a whole recursive function:
 		}
 		
 		}
+.. odsafig:: Images/cannonballs.png
+  :width: 300
+  :align: center
+  :capalign: justify
+  :figwidth: 50%
+  :alt: Cannonballs Pyramid
 
-.. TODO::
-   :type: Programming Exercise	
-	
-	We want to count the number of pins in a pyramid of bowling pins, knowing that: The first row has one pin, the second row has 2 pins, the third	row has 3 pins and so on. Given the following recursive function that
-	misses a recursive call. Given the following recursive function signature, write the function code such that this function calculates the total number	of pins in the triangle::
-	
-		int CountPins(int row)
-		
-		{
-		
-		}
-		
-	The answer::
-	
-		int CountPins(int row)
-		
-		{
-		
-		if (row == 1)
-		
-		return 1;
-		
-		else
-		
-		return (CountPins(row-1)+row);
-		
-		}
+  Cannonballs Pyramid
+
+.. avembed:: Exercises/RecurTutor/recwprog21.html ka
+
+
 
 .. TODO::
    :type: Programming Exercise	
@@ -783,7 +766,7 @@ The following exercises will ask you to write a whole recursive function:
 	Given the following recursive function signature, write the function code such that this function takes a string and returns true if it is read the
 	same forwards or back-wards (palindrome)::
 	
-		static boolean CheckPalindrome(String s, int leftSide, int rightSide)
+		static boolean CheckPalindrome(String s)
 		
 		{
 		
@@ -791,24 +774,19 @@ The following exercises will ask you to write a whole recursive function:
 		
 	The answer::
 	
-		static boolean CheckPalindrome(String s, int leftSide, int rightSide)
+		static boolean CheckPalindrome(String s)
 		
 		{
 		
-		if (rightSide <= leftSide)
-		
-		
-		return true;
-		
-		else if (s.charAt(leftSide) != s.charAt(rightSide))
-		
-		return false;
-		
-		else
-		
-		return CheckPalindrome(s,leftSide+1,rightSide-1);
+		if(s.length() < 2) { return true;  }
+                 char first  = s.charAt(0);
+                 char last   = s.charAt(s.length()-1);
+                 if(  first != last  ) { return false; }
+                 else { return CheckPalindrome(s.substring(1,s.length()-1)); }	
 		
 		}
+
+.. avembed:: Exercises/RecurTutor/recwprog22.html ka
 
 .. TODO::
    :type: Programming Exercise	
@@ -835,229 +813,14 @@ The following exercises will ask you to write a whole recursive function:
 		
 		}
 		
-		return ReverseStringRecursive(str.substr(1)) + str[0];
-		
-		}
-	
-.. TODO::
-   :type: Programming Exercise	
-	
-	Given the following recursive function signature, write the function code such that this function prints out all permutations of a given string::
-	
-		void recPermute(String soFar, String remaining) {
-		
-		}
-	
-	The answer::
-	
-		void recPermute(String soFar, String remaining) {
-		
-		if (remaining.length() == 0)
-		
-		System.out.println(soFar);
-		
-		else
-		
-		{
-		
-		for (int i=0; i< remaining.length(); i++) {
-		
-		String nextSoFar = soFar + remaining[i];
-		
-		String nextRemaining = remaining.substring(0,i) +
-		
-		remaining.substring(i+1);
-		
-		recPermute(nextSoFar, nextRemaining);
-		
-		}
-		
-		}
+		ReverseStringRecursive(str.substring(1)) + str.charAt(0);
 		
 		}
 
 
-.. TODO::
-   :type: Programming Exercise	
 
-	Given the following recursive function signature, write the function code such that this function print all subsets of a given string::
+.. avembed:: Exercises/RecurTutor/recwprog23.html ka
 	
-		void recSubsets(String soFar, String remaining) {
-		
-		}
-	
-	The answer::
-	
-		void recSubsets(String soFar, String remaining) {
-		
-		if (remaining.length()==0)
-		
-		System.out.println(soFar);
-		
-		else {
-		
-		recSubsets(soFar+remaining[0], remaining.substring(1);
-		
-		recSubsets(soFar, remaining.substring(1);
-		
-		
-		}
-		
-		}
-
-
-.. TODO::
-   :type: Programming Exercise	
-	
-	Given the following recursive function signature, write the function code such that this function modifies an array 
-	of Strings to remove duplicates. For example, if the list has the values {”recursion”, ”recursion”, ”is”,”is”, ”cool”, ”cool”} 
-	before the method is called, it should have the values {”recursion”, ”is”, ”cool”}. 
-	You may not create any new arrays::
-	
-		public static void removeDuplicates(ArrayList<String> list, int counter)
-		{
-		
-		
-		}
-	
-	The answer::
-	
-		public static void removeDuplicates(ArrayList<String> list, int counter)
-		{
-		
-		if(counter < list.size()){
-		
-		if(list.contains(list.get(counter))){
-		
-		if(list.lastIndexOf(list.get(counter))!=counter)
-		
-		{
-		
-		list.remove(list.lastIndexOf(list.get(counter)));
-		
-		counter--;
-		
-		}
-		
-		}
-		
-		removeDuplicates(list, ++counter);
-		
-		}
-		
-		}
-
-.. TODO::
-   :type: Programming Exercise
-	
-	Given the following recursive function signature, write the function code such that this function takes a string from which all characters except the
-	bracketing operators have been removed. The method should return true	if the bracketing operators in str are balanced, which means that they are
-	correctly nested and aligned. If the string is not balanced, the method	returns false::
-	
-	
-		public static boolean isBalanced(final String str1, finalLinkedList<Character> openedBrackets, 
-		                                 final Map<Character,	Character> closeToOpen) 
-		
-		{
-		
-		}
-		
-	The answer::
-	
-		public static boolean isBalanced(final String str1, final
-		
-		LinkedList<Character> openedBrackets, final Map<Character,
-		
-		Character> closeToOpen) {
-		
-		if ((str1 == null) || str1.isEmpty()) {
-		
-		return openedBrackets.isEmpty();
-		
-		} else if (closeToOpen.containsValue(str1.charAt(0))) {
-		
-		openedBrackets.add(str1.charAt(0));
-		
-		return isBalanced(str1.substring(1), openedBrackets,
-		
-		closeToOpen);
-		
-		} else if (closeToOpen.containsKey(str1.charAt(0))) {
-		
-		if (openedBrackets.getLast() ==
-		
-		closeToOpen.get(str1.charAt(0))) {
-		
-		openedBrackets.removeLast();
-		
-		return isBalanced(str1.substring(1), openedBrackets,
-		
-		closeToOpen);
-		
-		} else {
-		
-		return false;
-		
-		}
-		
-		} 
-		else {
-		
-		return isBalanced(str1.substring(1), openedBrackets,
-		
-		closeToOpen);
-		
-		}
-		
-		}
-
-.. TODO::
-   :type: Programming Exercise	
-	
-	Given the following recursive function signature, write the function code such that this function ,given an integer n, prints the squares of the integers
-	from 1 to n, separated by commas. It should print the squares of the odd integers in descending order first and then following with the squares of
-	the even integers in ascending order. It does not print a newline character::
-	
-	
-		void calculateSquare(int n)
-		
-		{
-		
-		}
-	
-	The answer::
-	
-		void calculateSquare(int n)
-		
-		{
-		
-		int t=n;
-		
-		if(n<=0)
-		
-		return;
-		
-		if(n%2==1)
-		
-		{
-		
-		System.out.println(n*n);
-		
-		calculateSquare(--n);
-		
-		}
-		
-		else
-		
-		{
-		
-		calculateSquare(--n);
-		
-		System.out.println(t*t);
-		}
-		
-		
-		}
 
 
 .. TODO::
@@ -1094,6 +857,8 @@ The following exercises will ask you to write a whole recursive function:
 		
 		}
 		
+.. avembed:: Exercises/RecurTutor/recwprog24.html ka
+
 	
 .. TODO::
    :type: Programming Exercise	
@@ -1133,7 +898,8 @@ The following exercises will ask you to write a whole recursive function:
 		sum-set[n-1]);
 		
 		}
-	
+
+.. avembed:: Exercises/RecurTutor/recwprog25.html ka	
 	
 .. TODO::
    :type: Programming Exercise	
@@ -1493,7 +1259,251 @@ The following exercises will ask you to write a whole recursive function:
 		}
 		
 		}
+.. TODO::
+   :type: Programming Exercise	
 	
+	Given the following recursive function signature, write the function code such that this function prints out all permutations of a given string::
+	
+		void recPermute(String soFar, String remaining) {
+		
+		}
+	
+	The answer::
+	
+		void recPermute(String soFar, String remaining) {
+		
+		if (remaining.length() == 0)
+		
+		System.out.println(soFar);
+		
+		else
+		
+		{
+		
+		for (int i=0; i< remaining.length(); i++) {
+		
+		String nextSoFar = soFar + remaining[i];
+		
+		String nextRemaining = remaining.substring(0,i) +
+		
+		remaining.substring(i+1);
+		
+		recPermute(nextSoFar, nextRemaining);
+		
+		}
+		
+		}
+		
+		}
+
+
+.. TODO::
+   :type: Programming Exercise	
+
+	Given the following recursive function signature, write the function code such that this function print all subsets of a given string::
+	
+		void recSubsets(String soFar, String remaining) {
+		
+		}
+	
+	The answer::
+	
+		void recSubsets(String soFar, String remaining) {
+		
+		if (remaining.length()==0)
+		
+		System.out.println(soFar);
+		
+		else {
+		
+		recSubsets(soFar+remaining[0], remaining.substring(1);
+		
+		recSubsets(soFar, remaining.substring(1);
+		
+		
+		}
+		
+		}
+
+
+.. TODO::
+   :type: Programming Exercise	
+	
+	Given the following recursive function signature, write the function code such that this function modifies an array 
+	of Strings to remove duplicates. For example, if the list has the values {”recursion”, ”recursion”, ”is”,”is”, ”cool”, ”cool”} 
+	before the method is called, it should have the values {”recursion”, ”is”, ”cool”}. 
+	You may not create any new arrays::
+	
+		public static void removeDuplicates(ArrayList<String> list, int counter)
+		{
+		
+		
+		}
+	
+	The answer::
+	
+		public static void removeDuplicates(ArrayList<String> list, int counter)
+		{
+		
+		if(counter < list.size()){
+		
+		if(list.contains(list.get(counter))){
+		
+		if(list.lastIndexOf(list.get(counter))!=counter)
+		
+		{
+		
+		list.remove(list.lastIndexOf(list.get(counter)));
+		
+		counter--;
+		
+		}
+		
+		}
+		
+		removeDuplicates(list, ++counter);
+		
+		}
+		
+		}
+
+.. TODO::
+   :type: Programming Exercise
+	
+	Given the following recursive function signature, write the function code such that this function takes a string from which all characters except the
+	bracketing operators have been removed. The method should return true	if the bracketing operators in str are balanced, which means that they are
+	correctly nested and aligned. If the string is not balanced, the method	returns false::
+	
+	
+		public static boolean isBalanced(final String str1, finalLinkedList<Character> openedBrackets, 
+		                                 final Map<Character,	Character> closeToOpen) 
+		
+		{
+		
+		}
+		
+	The answer::
+	
+		public static boolean isBalanced(final String str1, final
+		
+		LinkedList<Character> openedBrackets, final Map<Character,
+		
+		Character> closeToOpen) {
+		
+		if ((str1 == null) || str1.isEmpty()) {
+		
+		return openedBrackets.isEmpty();
+		
+		} else if (closeToOpen.containsValue(str1.charAt(0))) {
+		
+		openedBrackets.add(str1.charAt(0));
+		
+		return isBalanced(str1.substring(1), openedBrackets,
+		
+		closeToOpen);
+		
+		} else if (closeToOpen.containsKey(str1.charAt(0))) {
+		
+		if (openedBrackets.getLast() ==
+		
+		closeToOpen.get(str1.charAt(0))) {
+		
+		openedBrackets.removeLast();
+		
+		return isBalanced(str1.substring(1), openedBrackets,
+		
+		closeToOpen);
+		
+		} else {
+		
+		return false;
+		
+		}
+		
+		} 
+		else {
+		
+		return isBalanced(str1.substring(1), openedBrackets,
+		
+		closeToOpen);
+		
+		}
+		
+		}
+.. TODO::
+   :type: Programming Exercise	
+	
+	Given the following recursive function signature, write the function code such that this function ,given an integer n, prints the squares of the integers
+	from 1 to n, separated by commas. It should print the squares of the odd integers in descending order first and then following with the squares of
+	the even integers in ascending order. It does not print a newline character::
+	
+	
+		void calculateSquare(int n)
+		
+		{
+		
+		}
+	
+	The answer::
+	
+		void calculateSquare(int n)
+		
+		{
+		
+		int t=n;
+		
+		if(n<=0)
+		
+		return;
+		
+		if(n%2==1)
+		
+		{
+		
+		System.out.println(n*n);
+		
+		calculateSquare(--n);
+		
+		}
+		
+		else
+		
+		{
+		
+		calculateSquare(--n);
+		
+		System.out.println(t*t);
+		}
+		
+		
+		}
+	
+.. TODO::
+   :type: Programming Exercise	
+	
+	We want to count the number of pins in a pyramid of bowling pins, knowing that: The first row has one pin, the second row has 2 pins, the third	row has 3 pins and so on. Given the following recursive function that misses a recursive call. Given the following recursive function signature, write the function code such that this function calculates the total number of pins in the triangle(Like exercise 21)::
+	
+		int CountPins(int row)
+		
+		{
+		
+		}
+		
+	The answer::
+	
+		int CountPins(int row)
+		
+		{
+		
+		if (row == 1)
+		
+		return 1;
+		
+		else
+		
+		return (CountPins(row-1)+row);
+		
+		}
 
 
 How to trace a recursive function?
@@ -1726,8 +1736,8 @@ and you can’t pass rvalues to reference parameters.
 
 
     
-Tracing exercises
------------------
+Tracing Practice Exercises
+--------------------------
 
 .. TODO::
    :type: Programming Exercise
