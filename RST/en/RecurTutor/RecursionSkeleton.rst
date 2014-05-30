@@ -679,21 +679,25 @@ The following exercises will ask you to write a whole recursive function:
 		
 		{
 		
-		if(row<0 and column <0)
-		
-		return 0;
-		
-		else if (row==0 and column== 0 )
-		
-		
-		
-		return 1;
-		
-		else
-		
-		return pascal(row-1, column) + pascal(row-1, column-1);
+		if ((row+1)==1 || (column+1)==1 || row==column)
+                  return 1;
+                else
+                  return pascal(row-1, column-1) + pascal(row-1, column);	
 		
 		}
+
+
+.. odsafig:: Images/PascalTriangle.jpg
+   :width: 300
+   :align: center
+   :capalign: justify
+   :figwidth: 50%
+   :alt: Pascal Triangle
+
+   Pascal triangle
+
+.. avembed:: Exercises/RecurTutor/recwprog20.html ka
+
 
 .. TODO::
    :type: Programming Exercise	

@@ -159,7 +159,13 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0 
-          }           
+          },
+         "recwprog20": { 
+            "long_name": "Recursion Programming Exercise 20",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          }               
         }
       }
     },
