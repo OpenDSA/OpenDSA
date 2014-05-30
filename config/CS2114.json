@@ -2,6 +2,7 @@
   "title": "CS2114 Spring 2014",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
+  "lang": "fr",
   "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
