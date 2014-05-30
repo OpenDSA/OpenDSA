@@ -38,6 +38,7 @@ import json
 import collections
 import re
 import subprocess
+import codecs
 import datetime
 from collections import Iterable
 from optparse import OptionParser
@@ -265,6 +266,9 @@ def initialize_output_directory(config):
   # Copy config file to _static directory
   distutils.file_util.copy_file(config.config_file_path, config.book_src_dir + '_static/')
 
+  #Copy translation file to _static directory
+  distutils.file_util.copy_file(config.lang_file, config.book_src_dir + '_static/')
+
   # Create source/_static/config.js in the output directory
   # Used to set global settings for the client-side framework
   with open(config.book_src_dir + '_static/config.js','w') as config_js:
@@ -290,6 +294,12 @@ def initialize_conf_py_options(config, slides):
   options['code_dir'] = config.code_dir
   options['tabbed_code'] = config.tabbed_codeinc
   options['code_lang'] = json.dumps(config.code_lang)
+  options['text_lang'] = json.dumps(config.lang)
+  #convert the translation text into unicode sstrings
+  tmpSTR = ''
+  for k,v in config.text_translated.iteritems():
+    tmpSTR = tmpSTR + '"%s":u"%s",' %(k,v)
+  options['text_translated'] = tmpSTR
   options['av_root_dir'] = config.av_root_dir
   options['exercises_root_dir'] = config.exercises_root_dir
   # The relative path between the ebook output directory (where the HTML files are generated) and the root ODSA directory
@@ -370,7 +380,7 @@ def configure(config_file_path, slides = False):
     makefile.writelines(makefile_template % options)
 
   # Create conf.py file in output source directory
-  with open(config.book_src_dir + 'conf.py','w') as conf_py:
+  with codecs.open(config.book_src_dir + 'conf.py','w', "utf-8") as conf_py:
     conf_py.writelines(conf % options)
 
   # Copy only the images used by the book from RST/Images/ to the book source directory

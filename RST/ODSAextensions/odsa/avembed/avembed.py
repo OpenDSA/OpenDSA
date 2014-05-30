@@ -24,6 +24,19 @@ sys.path.append(os.path.abspath('./source'))
 import conf
 from xml.dom.minidom import parse, parseString
 import urllib
+import json
+
+#translation_file
+
+def loadTable():
+   try:
+      table=open(conf.translation_file)
+      data = json.load(table)
+      table.close()
+      return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
+   except IOError:
+      print 'ERROR: No table.json file.'
+
 
 def setup(app):
     app.add_directive('avembed',avembed)
@@ -140,6 +153,10 @@ class avembed(Directive):
     self.options['height'] = embed[3]
     self.options['content'] = ''
 
+
+    # Load translation
+    langDict = loadTable()  
+
     # Add the JSAV exercise options to the AV address
     if 'exer_opts' in self.options and self.options['exer_opts'] != '':
       self.options['av_address'] += '&amp;' + self.options['exer_opts']
@@ -161,11 +178,11 @@ class avembed(Directive):
     if 'showhide' in self.options and self.options['showhide'] == "none":
       self.options['content'] = IFRAME_HTML % (self.options)
     elif 'showhide' in self.options and self.options['showhide'] == "show":
-      self.options['show_hide_text'] = "Hide"
+      self.options['show_hide_text'] = langDict["hide"] 
       self.options['content'] = IFRAME_HTML % (self.options)
       res += BUTTON_HTML % (self.options)
     else:
-      self.options['show_hide_text'] = "Show"
+      self.options['show_hide_text'] = langDict["show"] 
       res += BUTTON_HTML % (self.options)
 
     res += CONTAINER_HTML % (self.options)
