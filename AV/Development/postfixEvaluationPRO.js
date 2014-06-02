@@ -196,7 +196,7 @@
     return [modelArray, modelEvalAr[1]];
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", modelDialog: {width: 780}});
+  var exercise = av.exercise(modelSolution, initialize, {feedback: "atend", modelDialog: {width: 780}});
   exercise.reset();
 
   function runEvaluator(arr, stack, jsav) {

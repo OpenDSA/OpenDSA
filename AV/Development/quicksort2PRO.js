@@ -254,10 +254,10 @@
   }
 
   // create excercise
-  var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {
-    feedback: "atend",
-    modelDialog: {width: 750}
-  });
+  var exercise = av.exercise(modelSolution, initialize,
+                             { compare:  {css: "background-color"},
+                               feedback: "atend",
+                               modelDialog: {width: 750}});
   // edit reset function so that it calls highlightAndSwapPivot when done
   var origreset = exercise.reset;
   exercise.reset = function () {

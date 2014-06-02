@@ -149,7 +149,7 @@
   }
 
   // create exercise and reset it
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+  var exercise = av.exercise(modelSolution, initialize, {feedback: "atend"});
   exercise.reset();
 
   // function to be called when a button is clicked

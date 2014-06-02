@@ -108,8 +108,9 @@
       }
       
       // initialize the exercise      
-      var exercise = av.exercise(modelSolution, initialize, [{}, {}],
-                                { feedback: "atend", grader: "finalStep"});
+      var exercise = av.exercise(modelSolution, initialize,
+                                 { compare:  [{}, {}],
+                                   feedback: "atend", grader: "finalStep"});
       exercise.reset();
 
       $("#addHelperVar").click(function() {

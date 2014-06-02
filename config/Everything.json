@@ -1606,7 +1606,7 @@
             "points": 0.1,
             "threshold": 1.0
           },
-          "HashingDeleteProficiency": {
+          "HashingDelPRO": {
             "long_name": "Hash Deletion Proficiency",
             "required": true,
             "points": 1,
