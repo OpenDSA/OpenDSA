@@ -9,8 +9,19 @@
  
 <body>
 <script>
-function checkAnswer(answer) {
-  if ( answer == 2) {
+function f( k , n)
+{
+ if(n==k)
+   return k;
+  else
+    if(n > k)
+      return f(k, n-k);
+  else
+      return f(k-n, n);
+}
+
+function checkAnswer(answer , k , n) {
+  if ( answer == f(k , n)) {
     return true;
   } else {
     return false;
@@ -19,6 +30,10 @@ function checkAnswer(answer) {
 </script>
   
 <div class="exercise">
+<div class="vars">
+    <var id="k">randRange(0, 10)</var>
+    <var id="n">randRange(0, 10)</var>
+  </div>
   <div class="problems">
     <div id="problem-type-or-description">
       <p class="question">     
@@ -35,13 +50,13 @@ function checkAnswer(answer) {
 	  return f(k-n, n);
       }
       </pre>		
-     What value is returned by the call f(6,8)? (Either write a number, or write “infinite recursion”.)</p>
+     What value is returned by the call f(<var>k</var>,<var>n</var>)? (Either write a number, or write “infinite recursion”.)</p>
       <br> <textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>
       <div class="solution" data-type="custom">
         <div class="guess"> [ "list" ] </div>
         <div class="validator-function">
          answer = parseInt($('#answerTextarea').val());
-         return checkAnswer(answer );
+         return checkAnswer(answer, k, n );
         </div>
       </div>
       <div class="hints">

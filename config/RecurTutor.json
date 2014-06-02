@@ -251,6 +251,24 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+        "rectFIBir7": { 
+            "long_name": "Recursion Tracing Exercise 7",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectFIBfwd8": { 
+            "long_name": "Recursion Tracing Exercise 8",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectMCQbwd9": { 
+            "long_name": "Recursion Tracing Exercise 9",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
        }
       },

@@ -21,80 +21,9 @@ Tracing Practice Exercises
 .. avembed:: Exercises/RecurTutor/rectFIBfwd4.html ka	
 .. avembed:: Exercises/RecurTutor/rectFIB2rc5.html ka	
 .. avembed:: Exercises/RecurTutor/rectMCQbwd6.html ka
-	
-
-	
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following function::
-	
-		int mystery(int a, int b) {
-		
-		if (b==1)
-		
-		return a;
-		
-		else
-		
-		return a + mystery(a, b-1);
-		
-		}
-	
-	What is the return of calling mystery(2,0)?
-	
-	The answer:
-	
-	Infinite recursion. Because the limiting case will never be executed in that case.
-	
-.. TODO::
-   :type: Programming Exercise
-   	
-	Consider the following code::
-	
-		public int result(int n)
-		
-		{
-		
-		if(n==1)
-		
-		return 2;
-		
-		else
-		
-		return 2 * result(n-1);
-		
-		}
-		
-	What value does result(5) return? (Either write a number, or write “infinite recursion”.)
-
-
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following code::
-	
-		void function(String[] list, int index) {
-		
-		System.out.println(list[index]);
-		
-		if (index > 1)
-		
-		function(list, index-1);
-		
-		}
-	
-	What will be printed when “function([’a’,’b’,’c’,’d’], 4)”is called? (Either write a sequence of numbers, or write “infinite recursion”.)
-	
-	The answer:
-	
-	d
-	
-	c
-	
-	b
-	
-	a
+.. avembed:: Exercises/RecurTutor/rectFIBir7.html ka	
+.. avembed:: Exercises/RecurTutor/rectFIBfwd8.html ka	
+.. avembed:: Exercises/RecurTutor/rectMCQbwd9.html ka
 
 .. TODO::
    :type: Programming Exercise
@@ -518,7 +447,33 @@ Tracing Practice Exercises
 	(d) number > 10
 	
 	
+
+.. TODO::
+   :type: Programming Exercise	
 	
+	Consider the following code::
+	
+		void function(String[] list, int index) {
+		
+		System.out.println(list[index]);
+		
+		if (index > 1)
+		
+		function(list, index-1);
+		
+		}
+	
+	What will be printed when “function([’a’,’b’,’c’,’d’], 4)”is called? (Either write a sequence of numbers, or write “infinite recursion”.)
+	
+	The answer:
+	
+	d
+	
+	c
+	
+	b
+	
+	a	
 	
 .. TODO::
    :type: Programming Exercise	
