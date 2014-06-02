@@ -215,7 +215,44 @@
       },
       "RecurTutor/TracingEx": {
       "long_name": "Tracing Practice Exercises",
-      "exercises": {}
+      "exercises": {
+       "rectFIBmystbc1": {
+            "long_name": "Recursion Tracing Exercise 1",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+       "rectMCQresrc2": { 
+            "long_name": "Recursion Tracing Exercise 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectFIBbwd3": { 
+            "long_name": "Recursion Tracing Exercise 3",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectFIBfwd4": { 
+            "long_name": "Recursion Tracing Exercise 4",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectFIB2rc5": { 
+            "long_name": "Recursion Tracing Exercise 5",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectMCQbwd6": { 
+            "long_name": "Recursion Tracing Exercise 6",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+       }
       },
       "RecurTutor/SummaryEx": {
       "long_name": "Summary Exercises",

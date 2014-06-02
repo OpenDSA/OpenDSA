@@ -188,7 +188,8 @@
     av.step();
   });
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", grader: "finalStep", modelDialog: {width: 780}});
+  var exercise = av.exercise(modelSolution, initialize,
+                             { feedback: "atend", grader: "finalStep",
+                               modelDialog: {width: 780}});
   exercise.reset();
-
 }(jQuery));

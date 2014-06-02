@@ -266,7 +266,7 @@
     return Array(binLen + 1 - (char % 64).toString(2).length).join("0") + (char % 64).toString(2);
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", grader: "finder"});
+  var exercise = av.exercise(modelSolution, initialize, {feedback: "atend", grader: "finder"});
   exercise.reset();
 
 }(jQuery));

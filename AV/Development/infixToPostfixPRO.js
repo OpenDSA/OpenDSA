@@ -250,7 +250,7 @@
     return modelResultArray;
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", modelDialog: {width: 780}});
+  var exercise = av.exercise(modelSolution, initialize, {feedback: "atend", modelDialog: {width: 780}});
   exercise.reset();
 
   // generates a random infix expression

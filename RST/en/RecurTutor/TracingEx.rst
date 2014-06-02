@@ -14,178 +14,15 @@
 Tracing Practice Exercises
 ===========================
 
-.. TODO::
-   :type: Programming Exercise
 
-    Consider the following function::
-    
-		int mystery(int a, int b) {
-		
-		if (b==1)
-		
-		return a;
-		
-		else
-		
-		return a + mystery(a, b-1);
-		
-		}
-		
-	What is the return of calling mystery(2,1)?
+.. avembed:: Exercises/RecurTutor/rectFIBmystbc1.html ka
+.. avembed:: Exercises/RecurTutor/rectMCQresrc2.html ka	
+.. avembed:: Exercises/RecurTutor/rectFIBbwd3.html ka		
+.. avembed:: Exercises/RecurTutor/rectFIBfwd4.html ka	
+.. avembed:: Exercises/RecurTutor/rectFIB2rc5.html ka	
+.. avembed:: Exercises/RecurTutor/rectMCQbwd6.html ka
 	
-	The answer:
-	
-	It is the value of a which is 2 because the limiting case will be the only
-	
-	executed code in that case.
 
-	
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following code::
-	
-		public int result(int n)
-		
-		{
-		
-		if(n==1)
-		
-		return 2;
-		
-		else
-		
-		return 2 * result(n-1);
-		
-		}
-	
-	If n>0, how many times will result be called to evaluate result(n)( including the initial call)
-	
-	(a) 2
-	
-	(b) 2n
-	
-	(c) 2^n
-	
-	(d) n^2
-	
-	
-.. TODO::
-   :type: Programming Exercise
-   
-	Consider the following code::
-	
-		public void dosomething (int n) {
-		
-		if(n>0) {
-		
-		dosomething(n-1);
-		
-		System.out.print(n);
-		
-		}
-		
-		}
-	
-	What will be printed when “dosomething(5)”is called? (Either write a
-	
-	sequence of numbers, or write “infinite recursion”.)
-	
-	The answer:
-	
-	12345
-	
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following code::
-	
-		public int mystery(int n, int a , int d)
-		
-		{
-		
-		if(n==1)
-		
-		return a;
-		
-		else
-		
-		retun d + mystery(n-1,a,d);
-		
-		}
-	
-	What value is returned by the call mystery(3,2,6)? (Either write a number, or write “infinite recursion”.)
-	
-	
-	
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following code::
-	
-		public int f(int k , int n)
-		
-		{
-		
-		if(n==k)
-		
-		return k;
-		
-		else
-		
-		if(n > k)
-		
-		return f(k, n-k);
-		
-		else
-		
-		return f(k-n, n);
-		
-		}
-	
-	What value is returned by the call f(6,8)?(Either write a number, or write “infinite recursion”.)
-	
-.. TODO::
-   :type: Programming Exercise	
-	
-	What does the following function do?::
-	
-		public int function(int [] x , int n)
-		
-		{ int t;
-		
-		if(n==1)
-		
-		return x[0];
-		
-		else
-		
-		{
-		
-		t= function(x, n-1);
-		
-		if(x[n-1] > t)
-		
-		return x[n-1];
-		
-		else
-		
-		return t;
-		
-		}
-		
-		}
-	
-	(a) It finds the largest value in x and leaves x unchanged.
-	
-	(b) It finds the smallest value in x and leaves x unchanged.
-	
-	(c) It sorts x in ascending order and returns the largest value in x.
-	
-	
-	(d) It sorts x in descending order and returns the largest value in x.
-	
-	(e) It returns x[0] or x[n-1] whichever is larger.
 	
 .. TODO::
    :type: Programming Exercise	
@@ -387,6 +224,7 @@ Tracing Practice Exercises
 	if(num%2==0)
 	
 	writeEven();
+	
 	
 	System.out.print(num+"");
 	

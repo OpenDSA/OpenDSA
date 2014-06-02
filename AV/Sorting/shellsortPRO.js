@@ -230,8 +230,9 @@
     // Initialize the exercise
     // Defines the function to call on reset (initialize()), and the
     //  function to call to generate the model answer (shellsort())
-    var exer = av.exercise(shellsort, initialize, [{css: "background-color"}, {}],
-        { controls: $('.jsavexercisecontrols'), fix: fixState });
+    var exer = av.exercise(shellsort, initialize,
+                  { compare:  [{css: "background-color"}, {}],
+		    controls: $('.jsavexercisecontrols'), fix: fixState });
     exer.reset();
     
     var swapIndex;

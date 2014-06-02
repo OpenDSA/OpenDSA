@@ -277,8 +277,9 @@
     // Initialize the exercise
     // Defines the function to call on reset (initialize()), and the
     //  function to call to generate the model answer (modelSolution())
-    var exer = av.exercise(modelSolution, initialize, [{css: "background-color"}, {}],
-       { controls: $('.jsavexercisecontrols')});
+    var exer = av.exercise(modelSolution, initialize,
+                           { compare:  [{css: "background-color"}, {}],
+                             controls: $('.jsavexercisecontrols')});
     exer.reset();
     
     // register click handlers for the array indices

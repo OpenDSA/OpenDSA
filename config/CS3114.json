@@ -1527,7 +1527,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashingDeleteProficiency": {
+          "HashingDelPRO": {
             "long_name": "Hash Deletion Proficiency Exercise",
             "required": true,
             "points": 2.0,

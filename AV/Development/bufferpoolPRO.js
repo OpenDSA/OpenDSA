@@ -211,8 +211,9 @@
       mode = "delete";
     }
     // initialize the exercise
-    var exer = av.exercise(model_solution, initialize, {css: "background-color"},
-      {feedback: "continuous"});
+    var exer = av.exercise(model_solution, initialize,
+                           { compare: {css: "background-color"}, 
+                             feedback: "continuous"});
     exer.reset();
 
     $('#help').click(help);

@@ -71,7 +71,7 @@
       bh.heapsize(modelHeap.heapsize());
     }
 
-    var exercise = jsav.exercise(model, init, { },
+    var exercise = jsav.exercise(model, init,
         { controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
     
