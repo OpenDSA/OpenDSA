@@ -234,7 +234,7 @@
     } else {
       val = this.value();
     }
-    av.umsg("{key} mod {size} = {result}", {fill: {
+    av.umsg("<br><strong>{key} mod {size} = {result}</strong>", {preserve: true, fill: {
       key: val,
       size: newSize,
       result: val % newSize
