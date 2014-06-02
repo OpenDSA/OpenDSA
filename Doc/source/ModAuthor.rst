@@ -60,6 +60,54 @@ language of choice, and the system will take module versions in the
 target language whenever available (the fallback language is
 English).
 
+
+- Use the 'lang' variable in the configuration file to set up the book language.
+A list of languages supported by sphinx can be found at http://sphinx-doc.org/config.html#confval-language.
+
+- The translation ``.json`` file ``language_msg.json`` is located inside the ``tools`` directory.
+Each language is represented by its code in language_msg.json. Make sure that a translation is 
+available in language_msg.json file before building a book in that language.
+
+- The terms for each language are grouped in two categories in ``language_msg.json``:
+
+* ``jinja`` for the terms that will be added inside the configuration
+file. They will be passed by Sphinx to the templating system (jinja + haiku).
+* ``js`` for the terms processed by odsaMOD.js library and injected while the
+page is loading.
+
+- Structure of language_msg.json::
+  {
+    "en"{
+      "jinja": {
+        "term1": "en_term1",
+        ...
+      },
+      "js": {
+        "term2": "en_term2",
+        ...
+      }
+    },
+    "fi"{
+      "jinja": {
+        "term1": "fi_term1",
+        ...
+      },
+      "js": {
+        "term2": "fi_term2",
+        ...
+      }
+    }
+  }
+
+- The book configuration  program will read the language variable.
+If a translation for the entered language is not available, the default
+language english is used. The configuration process will then insert the language
+inside the onfiguration file and copy the translation file in the
+Book _static directory.
+
+
+
+
 AVs and exercises also support internationalization through the use of
 an associated ``.json`` file that provides the various translation
 text for all strings that appear in the AV.
