@@ -219,8 +219,8 @@
     this.jsav = new JSAV($(".avcontainer"), {settings: settings});
     this.jsav.recorded();
     this.exercise = this.jsav.exercise(modelWrapper(this), initWrapper(this),
-      { "css": "background-color" },
-      { controls: $(".jsavexercisecontrols"), fix: fixFunction});
+       { compare: { "css": "background-color" },
+	 controls: $(".jsavexercisecontrols"), fix: fixFunction});
     this.exercise.reset();
   };
   

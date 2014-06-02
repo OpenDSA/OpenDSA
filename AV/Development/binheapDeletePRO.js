@@ -80,8 +80,9 @@
       }
       return modelbh;
     }
-    var exercise = jsav.exercise(model, init, { css: "opacity" },
-        { controls: $('.jsavexercisecontrols'), fix: fixState });
+    var exercise = jsav.exercise(model, init,
+	   { compare: { css: "opacity" },
+             controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
     
     function clickHandler(index) {

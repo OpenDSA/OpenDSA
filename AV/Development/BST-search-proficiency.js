@@ -111,7 +111,7 @@
   }
 
   var exercise = av.exercise(modelSolution, initialize,
-    [{ "css": "background-color" }, {}],
-    { controls: $(".jsavexercisecontrols") });
+                             { compare: [{ "css": "background-color" }, {}],
+                               controls: $(".jsavexercisecontrols") });
   exercise.reset();
 }(jQuery));

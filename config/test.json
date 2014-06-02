@@ -131,6 +131,28 @@
         "exercises": {}
       }
     },
+    "Graphs": {
+      "Development/GraphTopsort": {
+        "long_name": "Topological Sorting",
+        "exercises": {
+          "topsortCON1": {},
+          "topSort": {
+            "long_name": "Topological Sort (DFS) visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "hide",
+            "threshold": 1.0
+          },
+	  "qTopSort": {
+            "long_name": "Queue-based Topological Sort visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "hide",
+            "threshold": 1.0
+	  }
+        }
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",

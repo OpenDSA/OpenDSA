@@ -410,8 +410,8 @@
      *        - Defines the name of the function to call to fix the state of the exercise if the user makes a mistake in 'fix' mode
      */
     var exercise = av.exercise(modelSolution, initialize,
-                   [{css: "background-color"}, {}, {}, {}, {}, {}],
-                   {controls: $('.jsavexercisecontrols'), fix: fixState });
+           { compare: [{css: "background-color"}, {}, {}, {}, {}, {}],
+	     controls: $('.jsavexercisecontrols'), fix: fixState });
     exercise.reset();
   });
 }(jQuery));

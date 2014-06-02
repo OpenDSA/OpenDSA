@@ -11,16 +11,16 @@
     pseudo,
     interpret,
     clickHandler,
-    config = ODSA.AV.getConfig("insertionSortWithoutSwapPRO.json"),
+    config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
     av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
   // set title and instructions in the chosen language
-  ODSA.AV.setTitleAndInstructions(av.container, config.language);
+// ODSA.AV.setTitleAndInstructions(av.container, config.language);
 
   // create interpreter function
-  interpret = JSAV.utils.getInterpreter(config.language);
+  interpret = config.interpreter;
 
   function initialize() {
 
@@ -132,7 +132,7 @@
     return [modelArray, modelTempArray];
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
+  var exercise = av.exercise(modelSolution, initialize, {feedback: "atend"});
   exercise.reset();
 
 }(jQuery));

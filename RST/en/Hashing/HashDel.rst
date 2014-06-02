@@ -46,7 +46,7 @@ the first tombstone encountered.
 
 Here is a practice exercise.
 
-.. avembed:: AV/Hashing/HashingDeleteProficiency.html pe
+.. avembed:: AV/Hashing/HashingDelPRO.html pe
 
 The use of tombstones allows searches to work correctly and allows
 reuse of deleted slots.

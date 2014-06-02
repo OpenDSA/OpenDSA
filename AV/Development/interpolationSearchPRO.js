@@ -198,7 +198,9 @@
     return [modelArray, modelLow, modelHigh];
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend", modelDialog: {width: 780}});
+  var exercise = av.exercise(modelSolution, initialize,
+                             { compare:  {css: "background-color"},
+                               feedback: "atend", modelDialog: {width: 780}});
   exercise.reset();
 
   function hideLine(interLine) {
