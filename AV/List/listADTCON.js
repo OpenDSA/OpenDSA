@@ -42,7 +42,7 @@
 (function ($) {
 
   var jsav = new JSAV('listADTCON2');
-  var arrPositions = ['<"', 20, ',', 23, '|', 12, ',', 15, '>', '', '', '', ''];
+  var arrPositions = ['<', 20, ',', 23, '|', 12, ',', 15, '>', '', '', '', ''];
   var length = arrPositions.length;
   var curr = 4;
 
