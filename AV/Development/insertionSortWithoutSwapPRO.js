@@ -61,9 +61,9 @@
     clickHandler.addArray(tempArray);
 
     // create labels
-    $tempLabel = $("<p>" + interpret("temp_label") + "</p>")
+    $tempLabel = $("<p>" + interpret("av_temp_label") + "</p>")
       .insertBefore(tempArray.element);
-    $arrayLabel = $("<p>" + interpret("array_label") + "</p>")
+    $arrayLabel = $("<p>" + interpret("av_array_label") + "</p>")
       .insertBefore(barArray.element);
 
     $tempLabel.add($arrayLabel)
@@ -96,7 +96,7 @@
     for (var i = 1; i < arraySize; i++) {
       jsavI.value(i);
       jsav.effects.copyValue(modelArray, i, modelTempArray, 0);
-      jsav.umsg(interpret("ms_copy"), {fill: {arr_at_i: modelArray.value(i)}});
+      jsav.umsg(interpret("av_ms_copy"), {fill: {arr_at_i: modelArray.value(i)}});
       if (config.code) {
         msCode.setCurrentLine(config.code.tags.copy_to_tmp);
       }
@@ -107,7 +107,7 @@
       while (j > 0 && modelArray.value(j - 1) > modelTempArray.value(0)) {
         jsav.effects.copyValue(modelArray, j - 1, modelArray, j);
         modelArray.layout();
-        jsav.umsg(interpret("ms_shift"), {fill: {temp: modelTempArray.value(0), i: i}});
+        jsav.umsg(interpret("av_ms_shift"), {fill: {temp: modelTempArray.value(0), i: i}});
         if (config.code) {
           msCode.setCurrentLine(config.code.tags.shift);
         }
@@ -118,7 +118,7 @@
       }
       jsav.effects.copyValue(modelTempArray, 0, modelArray, j);
       modelArray.layout();
-      jsav.umsg(interpret("ms_copy_back"), {fill: {temp: modelTempArray.value(0), i: i}});
+      jsav.umsg(interpret("av_ms_copy_back"), {fill: {temp: modelTempArray.value(0), i: i}});
       if (config.code) {
         msCode.setCurrentLine(config.code.tags.copy_back);
       }
