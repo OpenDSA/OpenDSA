@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Recursion Tracing Exercise: mystrey return</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+ 
+<body>
+<script>
+
+function mystery (numbers, index) {
+  if(index==numbers.length-1) {	
+   return numbers[index];	
+  }	
+  else if(numbers[index] > numbers[index+1]) {
+  numbers[index+1] = numbers[index];
+  }
+ return mystery(numbers,index+1);		
+}
+
+function checkAnswer(answer , A) {
+  
+  if ( answer == mystery (A, 0)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+</script>
+  
+<div class="exercise">
+<div class="vars">
+   <var id="A">randRange( 0, 99, 10 )</var>
+  </div>
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">     
+      Consider the following function:
+      <pre> 		
+      int mystery (int[] numbers, int index) {
+	if(index==numbers.length-1) {	
+          return numbers[index];	
+	}	
+	else if(numbers[index] > numbers[index+1]) {
+	    numbers[index+1] = numbers[index];
+	}
+        return mystery(numbers,index+1);		
+      }
+      </pre>		
+     If initially numbers= <var> A </var> and index=0 What will be the value returned by this mystery function? </p>
+      <br> <textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>
+      <div class="solution" data-type="custom">
+        <div class="guess"> [ "list" ] </div>
+        <div class="validator-function">
+         answer = parseInt($('#answerTextarea').val());
+         return checkAnswer(answer , A);
+        </div>
+      </div>
+      <div class="hints">
+      </div> 
+  </div>
+</div>
+</body>
+</html>

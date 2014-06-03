@@ -222,7 +222,7 @@
   }
 
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend", modelDialog: {width: 780}});
+  var exercise = av.exercise(modelSolution, initialize, {feedback: "atend", modelDialog: {width: 780}});
   exercise.reset();
 
 
@@ -234,7 +234,7 @@
     } else {
       val = this.value();
     }
-    av.umsg("{key} mod {size} = {result}", {fill: {
+    av.umsg("<br><strong>{key} mod {size} = {result}</strong>", {preserve: true, fill: {
       key: val,
       size: newSize,
       result: val % newSize

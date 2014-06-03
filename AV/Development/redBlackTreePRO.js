@@ -126,7 +126,9 @@
     return arr;
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend", grader: "finder"});
+  var exercise = av.exercise(modelSolution, initialize,
+                             { compare: {css: "background-color"},
+                               feedback: "atend", grader: "finder"});
   exercise.reset();
 
   function clickAction(node, rotateFunction) {

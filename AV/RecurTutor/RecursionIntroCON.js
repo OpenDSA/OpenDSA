@@ -181,81 +181,13 @@
   
 }(jQuery));
 
-//===============================================================================================================================
-// The Four Steps to Write a Recursive code:
-(function ($) {
-
-  var av = new JSAV("RecursionIntroCON3");
-  
-  av.umsg("The Four Steps to Write a Recursive code:");
-  av.step();
-  av.umsg("Step 1: Write and define the prototype of the function. Since functions are the basic unit of recursion, it's important to know what the function does. The prototype you use will dictate how the recursion behaves.Let's look at an example. Here's a function which will sum the first n elements of an array.");
-  av.step();
-  av.umsg("// Sums the first n elements of the array, arr  int sum( int arr[], int n );");
-  av.step();
-  av.umsg("Step 2: Write out a sample function call. Once you've determined what the function does, then we imagine a function call.");
-  av.step();
-  av.umsg("int result = sum( arr, n );");
-  av.step();
-  av.umsg("So, the call is sum( arr, n ). This will sum the first n elements of arr. Pick the most generic function call. For example, you don't want to have a call like:");
-  av.step();
-  av.umsg("int result = sum( arr, 10 );");
-  av.step();
-  av.umsg("That's picking a constant. You want to use variables when possible, because that's the most general way to call the function.");
-  av.step();
-  av.umsg("Step 3: Think of the smallest version of the problem. The smallest version is called the base case. Most people mistakenly pick a base case that's too large. In this case, you will pick a specific value for n.");
-  av.step();
-  av.umsg("So, what is the smallest version of the problem? Here are three choices: sum( arr, 2 ); as Choice 1, sum( arr, 1 ); as  Choice 2 and sum( arr, 0 ); as Choice 3");
-  av.step();  
-  av.umsg("Some people pick choice 1, reasoning that if you are to sum elements of an array, then you must have at least two elements to sum.");
-  av.step(); 
-  av.umsg("However, that is really not necessary. In math, there is something called a  summation. It is perfectly valid to have a summation of only one element. You just return that one element. Some people pick choice 2, because it doesnt make sense to sum an array of size 0, whereas an array of size 1 seems to make sense.");
- av.step();
-av.umsg(" However, it turns out choice 3 is the smallest choice possible. You can sum zero elements of an array. What value should it return? It should return 0. As it turns out, 0 is the additive identity. Anything added to 0 is that number. If we wanted to multiply all elements of an array, we would have picked the multiplicative identity, which is 1.");
- av.step();
- av.umsg("Step 4: Think of smaller versions of the function call. Here's the function call: sum( arr, n )  // sums first n elements of arr");
- av.step();
- av.umsg("It tries to solves a problem of size n. We want to think of a smaller problem which we will assume can be solved correctly. The next smallest problem is to sum n - 1 elements.  sum( arr, n - 1 )  // sums first n - 1 elements of arr");
-av.step();
-av.umsg("Assume this problem has been solved for you. How would you solve the original, larger problem?");
-av.step();
-av.umsg("If the first n - 1 elements have already been summed then only the nth element is left to be summed. The n-th element is actually at index n - 1 (because arrays start at index 0). So, the solution to solving sum(arr,n) is to add sum(arr, n-1) to arr[n-1].Putting it All Together. So, writing a recursive function requires putting the base case and the recursive case together.");
-av.step();
-av.umsg("Here is the usual format: if ( base case ) // return some simple expression else // recursive case   {     // some work before      // recursive call      // some work after }");
- av.step();
- 
-  av.recorded();
-  
-}(jQuery));
-
-//===============================================================================================================================
-(function ($) {
-
-  var av = new JSAV("RecursionIntroCON4");
-  
-  av.umsg("To solve the sum problem, we use the simpler of the two versions.");
-
-   var pseudo = av.code("int sum( int arr[], int size )\n    {\n       if ( size == 0 )  // base case \n          return 0;\n        else\n        {\n            // recursive call\n            int smallResult = sum( arr, size - 1 );\n            // use solution of recursive call to solve this problem\n            return smallResult + arr[ size - 1 ];\n}\n}");
-  av.step();
-  av.umsg("Some people don’t like multiple return statements. That can be easily handled: ");
-   pseudo.hide();
-   var pseudo2 = av.code("int sum( int arr[], int size )\n    {\n       if ( size == 0 )  // base case \n          return 0;\n        else\n        {\n            // recursive call\n            int smallResult = sum( arr, size - 1 );\n            // use solution of recursive call to solve this problem\n            result= smallResult + arr[ size - 1 ];\n}\n return result;\n}");
-  av.step();
-  av.umsg("You may even think there's no reason to declare smallResult and prefer to write:");
-  pseudo2.hide();
-  var pseudo3 = av.code("int sum( int arr[], int size )\n    {\n       if ( size == 0 )   return 0;\n        else\n        {\n      return sum( arr, size - 1 )+ arr[ size - 1 ];\n}\n}");
-  av.step();
-  av.umsg("Certainly, once you gain more experience with recursive functions, this is the preferable version. However, declaring a local variable to store the result of the recursive call might help you in the beginning to think about the small solution and then thinking about how to use that small solution to solve the bigger problem.");
-  av.recorded();
-  
-}(jQuery));
 
 
 //===============================================================================================================================
 // Visualization of factorial with copies model 
 (function ($) {
 
-  var av = new JSAV("RecursionIntroCON5");
+  var av = new JSAV("RecursionIntroCON3");
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/Recfact.java",
                        lineNumbers: false,});
   av.umsg("Suppose we want to compute the value of factorial(5) using the following recursive factorial implementation:");

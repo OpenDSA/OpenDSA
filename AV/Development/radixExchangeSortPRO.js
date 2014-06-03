@@ -192,7 +192,9 @@
   }
 
   //create excercise
-  var exercise = av.exercise(modelSolution, initialize, {css: "background-color"}, {feedback: "atend"});
+  var exercise = av.exercise(modelSolution, initialize,
+                             { compare: {css: "background-color"},
+                               feedback: "atend"});
   exercise.reset();
 
 

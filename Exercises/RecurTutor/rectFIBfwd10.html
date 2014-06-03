@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Recursion Tracing Exercise:exec Return</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+ 
+<body>
+<script>
+function exec1( n){
+		
+  if (n == 0)
+    return 0;
+  else
+    return n + exec1(n - 1);
+}
+
+function checkAnswer(answer , n) {
+  
+  if ( answer == exec1(n)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+</script>
+  
+<div class="exercise">
+<div class="vars">
+    <var id="n">randRange(2, 10)</var>
+  </div>
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">     
+      Consider the following function:
+      <pre> 		
+      public int exec(int n){	
+       if (n == 0)
+	return 0;	
+       else
+	return n + exec(n - 1);
+      }
+      </pre>		
+     What value does exec(<var>n</var>) return? (Either write a number, or write "infinite recursion".) </p>
+      <br> <textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>
+      <div class="solution" data-type="custom">
+        <div class="guess"> [ "list" ] </div>
+        <div class="validator-function">
+         answer = parseInt($('#answerTextarea').val());
+         return checkAnswer(answer ,n );
+        </div>
+      </div>
+      <div class="hints">
+      </div> 
+  </div>
+</div>
+</body>
+</html>

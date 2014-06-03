@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Recursion Tracing Exercise: what the printString method does</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question"> 
+      Which describes what the printString method below does?
+      <pre>	
+      void printString(String s)
+      {
+	if(s.length()>0)
+	{
+	  printString(s.substring(1));
+	  System.out.print(s.substring(0,1));
+		
+	 }
+       }
+	</pre>
+      </p>
+
+      <div class="solution"><var>"It prints s in reverse order."</var></div>
+      <ul class="choices" >
+	<li><var>"It prints s."</var></li>	  	 
+	<li><var>"It prints only the first character of string s."</var></li>
+        <li><var>"It prints only the first two characters of string s."</var></li>
+        <li><var>"It prints only the last character of string s."</var></li>
+      </ul>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

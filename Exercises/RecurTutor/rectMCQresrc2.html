@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Recursion Tracing Exercise: Recursive calls</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question"> 
+      Consider the following code::
+      <pre>	
+      public int result(int n)
+      {
+	if(n==1)	
+	  return 2;
+	else		
+	  return 2 * result(n-1);	
+      }
+	</pre>
+	If n &gt; 0, how many times will result be called to evaluate result(n)( including the initial call)?
+      </p>
+
+      <div class="solution"><var><code>n</code></var></div>
+      <ul class="choices" >
+	<li><var> 2 </var></li>	  	 
+	<li><var><code>2^n</code></var></li>
+        <li><var><code>2*n</code></var></li>
+        <li><var><code>n^2</code></var></li>
+      </ul>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

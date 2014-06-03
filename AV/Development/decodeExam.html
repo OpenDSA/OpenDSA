@@ -166,8 +166,9 @@
       return t;
     };
 
-    var exercise = av.exercise(modelSolution, initialize, {class: "jsavhighlight"},
-                              { feedback: "continuous"});
+    var exercise = av.exercise(modelSolution, initialize,
+                               { compare:  {class: "jsavhighlight"},
+                                 feedback: "continuous"});
 
     function treeClickHandler(index) {
       // console.log(index);

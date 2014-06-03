@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Recursion Tracing Exercise: What does the following function do?</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question"> What does the following function do?
+      <pre>	
+      public int function(int [] x , int n)
+      { 
+       int t;	
+       if(n==1)	
+	 return x[0];	
+       else
+       {
+	t= function(x, n-1);
+	if(x[n-1] > t)
+	 return x[n-1];
+	else
+	 return t;
+	}
+       }	
+      </pre>
+      </p>
+
+      <div class="solution"><var>"It finds the largest value in x and leaves x unchanged."</var></div>
+      <ul class="choices" >
+	<li><var> "It finds the smallest value in x and leaves x unchanged." </var></li>	  	 
+	<li><var>"It sorts x in ascending order and returns the largest value in x."</var></li>
+        <li><var>"It sorts x in descending order and returns the largest value in x."</var></li>
+        <li><var>"It returns x[0] or x[n-1] whichever is larger."</var></li>
+      </ul>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

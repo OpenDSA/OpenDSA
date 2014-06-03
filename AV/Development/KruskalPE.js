@@ -289,8 +289,10 @@
     function about() {
       alert("Heapsort Proficiency Exercise\nWritten by Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
-    exercise = jsav.exercise(model, init, { css: "background-color" },
-    {controls: $('.jsavexercisecontrols'), fix: fixState });
+    exercise = jsav.exercise(model, init,
+                             { compare:  { css: "background-color" },
+                               controls: $('.jsavexercisecontrols'),
+                               fix: fixState });
     exercise.reset();
 	$(".jsavcontainer").on("click", ".jsavarray .jsavindex", function () {
 	  var edge;

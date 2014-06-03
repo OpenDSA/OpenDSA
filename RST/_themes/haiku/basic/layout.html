@@ -96,12 +96,17 @@
   
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
       "HTML-CSS": {
         scale: "80"
       }
     });
   </script>
-  
+
   {%- if pagename=="search" -%}
     {%- for scriptfile in script_files %}
       <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>

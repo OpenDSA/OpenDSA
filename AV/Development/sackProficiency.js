@@ -351,5 +351,5 @@ var dynItemLabel;   //label for item rows on dyn table
 var dynTableLabel;  //labels for item row indicies
 
 jsav.recorded(); //only here because I saw it in an example...
-var exercise = jsav.exercise(modelAnswer, init, {css: "background-color"});
+var exercise = jsav.exercise(modelAnswer, init, {compare: {css: "background-color"}});
 exercise.reset();

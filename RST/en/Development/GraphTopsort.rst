@@ -105,10 +105,7 @@ Here is the code to implement the queue-based topological sort:
 .. codeinclude:: Graphs/TopsortBFS 
    :tag: TopsortBFS
 
-.. TODO::
-   :type: AV
-
-   Provide an AV for Queue-based Topological Sort.
+.. avembed:: AV/Development/qTopSort.html ss
 
 .. TODO::
    :type: Proficiency Exercise

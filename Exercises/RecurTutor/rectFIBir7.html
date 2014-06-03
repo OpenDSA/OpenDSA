@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Recursion Tracing Exercise: Mystery Return</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+ 
+<body>
+<script>
+function checkAnswer(answer) {
+  var modelAnswer = "infinite recursion";
+  if ( answer.toLowerCase() == modelAnswer.toLowerCase()) {
+    return true;
+  } else {
+    return false;
+  }
+}
+</script>
+  
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">     
+      Consider the following function:
+      <pre> 		
+     int mystery(int a, int b) 
+     {
+      if (b==1)	
+	return a;
+      else
+	return a + mystery(a, b-1);
+     }
+      </pre>		
+     What is the return of calling mystery(2,0)? (Either write a number, or write "infinite recursion".) </p>
+      <br> <textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>
+      <div class="solution" data-type="custom">
+        <div class="guess"> [ "list" ] </div>
+        <div class="validator-function">
+         answer = ($('#answerTextarea').val());
+         return checkAnswer(answer );
+        </div>
+      </div>
+      <div class="hints">
+      </div> 
+  </div>
+</div>
+</body>
+</html>
