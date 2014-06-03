@@ -24,12 +24,6 @@ function bgColor(array) {
 //Array-Based list insertion
 (function ($) {
   var jsav = new JSAV('AlistIntroCON');
-
-  $("#AlistIntroCON").on("jsav-message", function() {
-    // invoke MathJax to do conversion again
-    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-  });
-
   var arr = jsav.ds.array(arrValues, {indexed: true, layout: 'array'});
   bgColor(arr);
 
