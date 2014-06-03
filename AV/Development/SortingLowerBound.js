@@ -131,7 +131,76 @@
     av.step();
     hideTree();
     av.umsg("Each Sorting algorithm has its own decision tree with different maximum depths");
-    
+    //First Tree
+    av.g.rect(150, 10, 50, 20);
+    av.g.line(150, 30, 100, 50);
+    av.g.line(200, 30, 250, 50);
+    av.g.rect(75, 50, 50, 20);
+    av.g.rect(225, 50, 50, 20);
+    av.g.line(75, 70, 60, 90);
+    av.g.line(125, 70, 140, 90);
+    av.g.line(225, 70, 210, 90);
+    av.g.line(275, 70, 290, 90);
+    av.g.rect(40, 90, 50, 20);
+    av.g.rect(110, 90, 50, 20).css({"fill":"green", "opacity":"0.5"});
+    av.g.rect(190, 90, 50, 20).css({"fill":"green", "opacity":"0.5"});
+    av.g.rect(260, 90, 50, 20);
+    av.g.line(40, 110, 25, 130);
+    av.g.line(90, 110, 105, 130);
+    av.g.line(260, 110, 245, 130);
+    av.g.line(310, 110, 325, 130);
+    av.g.rect(0, 130, 50, 20).css({"fill":"green", "opacity":"0.5"});
+    av.g.rect(75, 130, 50, 20).css({"fill":"green", "opacity":"0.5"});
+    av.g.rect(220, 130, 50, 20);
+    av.g.rect(300, 130, 50, 20).css({"fill":"green", "opacity":"0.5"});
+    av.g.line(220, 150, 205, 170);
+    av.g.line(270, 150, 285, 170);
+    var n1 = av.g.rect(180, 170, 50, 20).css({"fill":"red", "opacity":"0.5"});
+    var n2 = av.g.rect(260, 170, 50, 20).css({"fill":"red", "opacity":"0.5"});
+    //Second Tree
+    av.g.rect(550, 10, 50, 20);
+    av.g.line(550, 30, 500, 50);
+    av.g.line(600, 30, 650, 50);
+    av.g.rect(475, 50, 50, 20);
+    av.g.rect(625, 50, 50, 20);
+    av.g.line(475, 70, 460, 90);
+    av.g.line(525, 70, 540, 90);
+    av.g.line(625, 70, 610, 90);
+    av.g.line(675, 70, 690, 90);
+    av.g.rect(440, 90, 50, 20);
+    av.g.rect(510, 90, 50, 20).css({"fill":"green", "opacity":"0.5"});
+    av.g.rect(590, 90, 50, 20).css({"fill":"green", "opacity":"0.5"});
+    av.g.rect(660, 90, 50, 20);
+    av.g.line(440, 110, 425, 130);
+    av.g.line(490, 110, 505, 130);
+    av.g.line(660, 110, 645, 130);
+    av.g.line(710, 110, 725, 130);
+    av.g.rect(400, 130, 50, 20).css({"fill":"green", "opacity":"0.5"});
+    av.g.rect(475, 130, 50, 20).css({"fill":"green", "opacity":"0.5"});
+    av.g.rect(620, 130, 50, 20);
+    av.g.rect(700, 130, 50, 20).css({"fill":"green", "opacity":"0.5"});
+    av.g.line(620, 150, 605, 170);
+    av.g.line(670, 150, 685, 170);
+    av.g.rect(580, 170, 50, 20).css({"fill":"green", "opacity":"0.5"});
+    av.g.rect(660, 170, 50, 20);
+    av.g.line(660, 190, 645, 210);
+    av.g.line(710, 190, 725, 210);
+    av.g.rect(620, 210, 50, 20).css({"fill":"red", "opacity":"0.5"});
+    av.g.rect(700, 210, 50, 20).css({"fill":"red", "opacity":"0.5"});
+    av.step();
+    av.umsg("The best algorithm will be the one with the shallowest deepest node");
+    var highlighter = av.g.rect(0, 0, 350, 200).css({"fill":"lightblue", "opacity":"0.5"});
+    av.step();
+    av.umsg("The depth of the shallowest deepest node depends on the number of nodes in the decision tree");
+    highlighter.hide();
+    n1.css({"fill":"blue", "opacity":"0.5"});
+    n2.css({"fill":"blue", "opacity":"0.5"});
+    av.step();
+    av.umsg("The minimum number of nodes that must be in the decision tree for any comparison-based sorting algorithm for $n$ values should be $n!$ since the decision tree must have at least $n!$ leaf nodes representing each input permutation");
+    av.step();
+    av.umsg("Because there are at least $n!$ nodes in the tree, we know that the tree must have $\\Omega(\\log{n!})$ levels");
+    av.step();
+    av.umsg("Accordingly, the decision tree for any comparison-based sorting algorithm must have nodes $\\Omega(n\\log{n})$ levels deep. Thus, in the worst case, any such sorting algorithm must require $\\Omega(n\\log{n})$ comparisons");
     av.recorded();   
   }
   function hideTree(){
@@ -142,7 +211,7 @@
   }
   function about() {
     var mystring =
-    "Sorting Lower Bound Proof\nWritten by Mohammed Fawzy and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more Information, see http://algoviz.org/OpenDSA\nWritten during February, 2014\nJSAV library version " + JSAV.version();
+    "Sorting Lower Bound Proof\nWritten by Mohammed Fawzi and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more Information, see http://algoviz.org/OpenDSA\nWritten during February, 2014\nJSAV library version " + JSAV.version();
     alert(mystring);
   }
 
