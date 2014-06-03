@@ -25,7 +25,6 @@ function bgColor(array) {
 (function ($) {
   var jsav = new JSAV('AlistIntroCON');
 
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
   $("#AlistIntroCON").on("jsav-message", function() {
     // invoke MathJax to do conversion again
     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
