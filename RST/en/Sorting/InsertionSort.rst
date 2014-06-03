@@ -79,7 +79,11 @@ Now try for yourself to see if you understand how Insertion Sort works.
 
 Insertion Sort Analysis
 -----------------------
+The following visualization illustrates the worst case running time analysis of Insertion Sort.
 
+.. inlineav:: InsertionSortWorstCaseCON ss
+   :output: show
+   
 The body of ``inssort`` consists of two nested
 ``for`` loops.
 The outer ``for`` loop is executed :math:`n-1` times.
@@ -205,3 +209,4 @@ affect what is the best sort algorithm to use.
 .. odsascript:: AV/Sorting/InsertionSortP1CON.js
 .. odsascript:: AV/Sorting/InsertionSortP2CON.js
 .. odsascript:: AV/Sorting/InsertionSortP3CON.js
+.. odsascript:: AV/Development/InsertionSortWorstCaseCON.js
