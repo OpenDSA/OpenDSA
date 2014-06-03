@@ -307,7 +307,8 @@ html_context = {"script_files": [
                   '%(eb2root)sJSAV/build/JSAV-min.js',
                   '_static/config.js',
                   '%(eb2root)slib/odsaUtils-min.js',
-                  '%(eb2root)slib/odsaMOD-min.js'
+                  '%(eb2root)slib/odsaMOD-min.js',
+                  '%(eb2root)slib/conceptMap.js'
                 ],
                 "css_files": [
                   '%(eb2root)slib/normalize.css',

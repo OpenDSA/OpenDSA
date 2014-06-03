@@ -269,6 +269,9 @@ def initialize_output_directory(config):
   #Copy translation file to _static directory
   distutils.file_util.copy_file(config.lang_file, config.book_src_dir + '_static/')
 
+  #copy conceptmap XML file to the book directory
+  distutils.file_util.copy_file(config.odsa_dir + 'RST/' + config.lang + '/GraphDefs.xml', config.book_src_dir )
+
   # Create source/_static/config.js in the output directory
   # Used to set global settings for the client-side framework
   with open(config.book_src_dir + '_static/config.js','w') as config_js:
