@@ -16,9 +16,6 @@
 
   av.recorded(); // we are not recording an AV with an algorithm
 
-  // set title and instructions in the chosen language
-// ODSA.AV.setTitleAndInstructions(av.container, config.language);
-
   // create interpreter function
   interpret = config.interpreter;
 
@@ -94,7 +91,7 @@
     }
 
     jsav.displayInit();
-    
+
     var j = 0;
     for (var i = 1; i < arraySize; i++) {
       jsavI.value(i);
