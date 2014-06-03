@@ -64,13 +64,7 @@ not really special to recursion. It occurs with any function.
   that looks like: The top sum makes a call to sum, passing in the same arr pointer (it is a copy of the pointer, but the copy points to the same array). Notice that n has a 
   value of 2.
 
-.. inlineav:: RecursionIntroCON1 ss
-   :output: show 
-
-.. inlineav:: RecursionIntroCON2 ss
-   :output: show 
-
-.. inlineav:: RecursionIntroCON3 ss
+.. inlineav:: RecursionTraceCON1 ss
    :output: show 
 
 As you trace the code, you should observe several things:
@@ -246,4 +240,4 @@ and you can’t pass rvalues to reference parameters.
 
 
  
-.. odsascript:: AV/RecurTutor/RecursionIntroCON.js
+.. odsascript:: AV/RecurTutor/RecursionTraceCON.js

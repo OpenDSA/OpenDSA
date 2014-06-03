@@ -251,6 +251,54 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+        "rectFIBir7": { 
+            "long_name": "Recursion Tracing Exercise 7",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectFIBfwd8": { 
+            "long_name": "Recursion Tracing Exercise 8",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectMCQbwd9": { 
+            "long_name": "Recursion Tracing Exercise 9",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectFIBfwd10": { 
+            "long_name": "Recursion Tracing Exercise 10",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectFIBfwd11": { 
+            "long_name": "Recursion Tracing Exercise 11",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectFIBir12": { 
+            "long_name": "Recursion Tracing Exercise 12",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectFIBfwd13": { 
+            "long_name": "Recursion Tracing Exercise 13",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectMCQfwder14": { 
+            "long_name": "Recursion Tracing Exercise 14",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
        }
       },

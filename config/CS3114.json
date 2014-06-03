@@ -124,7 +124,7 @@
         "long_name": "Asymptotic Analysis",
         "exercises": {
           "AnalPairSumm": {
-            "long_name": "Function Pairs",
+            "long_name": "Function Pairs Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 5

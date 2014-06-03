@@ -21,414 +21,15 @@ Tracing Practice Exercises
 .. avembed:: Exercises/RecurTutor/rectFIBfwd4.html ka	
 .. avembed:: Exercises/RecurTutor/rectFIB2rc5.html ka	
 .. avembed:: Exercises/RecurTutor/rectMCQbwd6.html ka
-	
+.. avembed:: Exercises/RecurTutor/rectFIBir7.html ka	
+.. avembed:: Exercises/RecurTutor/rectFIBfwd8.html ka	
+.. avembed:: Exercises/RecurTutor/rectMCQbwd9.html ka
+.. avembed:: Exercises/RecurTutor/rectFIBfwd10.html ka
+.. avembed:: Exercises/RecurTutor/rectFIBfwd11.html ka
+.. avembed:: Exercises/RecurTutor/rectFIBir12.html ka
+.. avembed:: Exercises/RecurTutor/rectFIBfwd13.html ka
+.. avembed:: Exercises/RecurTutor/rectMCQfwder14.html ka	
 
-	
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following function::
-	
-		int mystery(int a, int b) {
-		
-		if (b==1)
-		
-		return a;
-		
-		else
-		
-		return a + mystery(a, b-1);
-		
-		}
-	
-	What is the return of calling mystery(2,0)?
-	
-	The answer:
-	
-	Infinite recursion. Because the limiting case will never be executed in that case.
-	
-.. TODO::
-   :type: Programming Exercise
-   	
-	Consider the following code::
-	
-		public int result(int n)
-		
-		{
-		
-		if(n==1)
-		
-		return 2;
-		
-		else
-		
-		return 2 * result(n-1);
-		
-		}
-		
-	What value does result(5) return? (Either write a number, or write “infinite recursion”.)
-
-
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following code::
-	
-		void function(String[] list, int index) {
-		
-		System.out.println(list[index]);
-		
-		if (index > 1)
-		
-		function(list, index-1);
-		
-		}
-	
-	What will be printed when “function([’a’,’b’,’c’,’d’], 4)”is called? (Either write a sequence of numbers, or write “infinite recursion”.)
-	
-	The answer:
-	
-	d
-	
-	c
-	
-	b
-	
-	a
-
-.. TODO::
-   :type: Programming Exercise
-	
-	Which describes what the print method below does?::
-	
-		public void print(String s)
-		
-		{
-		
-		if(s.length()>0)
-		
-		{
-		
-		printString(s.substring(1));
-		
-		System.out.print(s.substring(0,1));
-		
-		}
-		
-		}
-	
-	(a) It prints s.
-	
-	(b) It prints s in reverse order.
-	
-	(c) It prints only the first character of string s.
-	
-	(d) It prints only the first two characters of string s.
-	
-	(e) It prints only the last character of string s.
-
-.. TODO::
-   :type: Programming Exercise
-	
-	Consider the following code::
-	
-		public int exec(int n){
-		
-		if (n == 0)
-		
-		return 0;
-		
-		else
-		
-		return n + exec(n - 1);
-		
-		}
-	
-	What is the value that will be returned by the method call exec(5)? (Either write a number, or write “infinite recursion”.)
-	
-	The answer:
-	
-	15.
-	
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following code::
-	
-		public void dosomething (int n) {
-		
-		if(n>0) {
-		
-		System.out.print(n);
-		
-		dosomething(n-1);
-		
-		
-		}
-		
-		}
-	
-	What will be printed when when “dosomething(5)” is called? (Either write a sequence of numbers, or write “infinite recursion”.)
-	
-	The answer:
-	
-	54321
-
-
-.. TODO::
-   :type: Programming Exercise	
-   
-	A user enters several positive integers at the keyboard and terminates the
-	
-	list with a sentinel(-999). A writeEven function reads those integers and
-	
-	outputs the even integers only, in the reverse order that they are read.
-	
-	Thus if the user enters:
-	
-	3 5 14 6 8 -999
-	
-	The output of writeEven will be:
-	
-	8 6 14
-	
-	The code::
-		public static void writeEven()
-		
-		{
-		
-		int num = IO.readInt();
-		
-		if (num!= -999)
-		
-		{
-		
-		// Missing code
-		
-		}
-		
-		}
-		
-		Which //Missingcode satisfies what writeEven does?
-	
-	I)
-	
-	if(num%2==0)
-	
-	System.out.print(num+"");
-	
-	writeEven();
-	
-	II)
-	
-	if(num%2==0)
-	
-	writeEven();
-	
-	
-	System.out.print(num+"");
-	
-	III)
-	
-	writeEven();
-	
-	if(num%2==0)
-	
-	System.out.print(num+"");
-	
-	
-	(a) I only
-	
-	(b) II only
-	
-	(c) III only
-	
-	(d) I and II only
-	
-	(e) I, II and III
-	
-.. TODO::
-   :type: Programming Exercise	
-   	
-	Consider the following code::
-	
-		public static void testa(int n)
-		
-		{
-		
-		System.out.println(n + " ");
-		
-		if (n>0)
-		
-		testa(n-2);
-		
-		}
-		
-	What is printed by the call testa(4)?(Either write a sequence of numbers, or write “infinite recursion”.)
-	
-	
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following code::
-	
-		public static void testb(int n)
-		
-		{
-		
-		if (n>0)
-		
-		testb(n-2);
-		
-		System.out.println(n + " ");
-		
-		}
-		
-	What is printed by the call testb(4)?(Either write a sequence of numbers, or write “infinite recursion”.)
-
-
-.. TODO::
-   :type: Programming Exercise
-   	
-	Consider the following code fragment::
-	
-		public int func(int x, int y) {
-		
-		if (y == 1)
-		
-		return x;
-		
-		else
-		 
-		return x + func(x, y+1);
-		
-		}
-	
-	
-	What is the value of func(2,3)?
-	
-	The answer:
-	
-	Infinite recursion. Because the limiting case will never be executed in that case as y is increasing in the recursive call so it will never reach to the
-	
-	value of 1.
-	
-	
-.. TODO::
-   :type: Programming Exercise		
-	
-	Given the following code::
-	
-		int mystery (int[] numbers, int index) {
-		
-		if(index==numbers.length-1) {
-		
-		
-		return numbers[index];
-		
-		}
-		
-		else if(numbers[index] > numbers[index+1]) {
-		
-		numbers[index+1] = numbers[index];
-		
-		}
-		
-		return mystery(numbers,index+1);
-		
-		}
-	
-	If initially numbers= 5, 9 , 20 , 2, 3 ,12 and index=0 What will be the value returned by this mystery function and what will be the value of index at the time of the last return?
-	
-	The answer:
-	
-	20 and 5.
-	
-.. TODO::
-   :type: Programming Exercise		
-	
-	Find the error(s) in the following recursive function, explain how to correct it (them). This function find the sum of the values from 0 to n::
-	
-		public int sum(int n)
-		
-		{
-		
-		if(n == 0)
-		
-		return 0;
-		
-		else
-		
-		return n+ sum(n);
-		
-		}
-	
-	The answer:
-	
-	The code will result in an infinite recursion, unless the initially passed value is 0. The recursive call should be n+ sum(n-1) instead of n+sum(n).
-
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following code::
-	
-		Public void stringRecur(String s)
-		
-		{
-		
-		if(s.length()<15)
-		
-		System.out.println(s);
-		
-		stringRecur(s + "*");
-		
-		}
-		
-	When will method stringRecur terminates without error?
-	
-	(a) Only when the length of the input string is less than 15
-	
-	(b) Only when the length of the input string is greater than or equal to
-	
-	(c) Only when an empty sting is input
-	
-	(d) For all string inputs
-	
-	(e) For no string inputs
-	
-.. TODO::
-   :type: Programming Exercise		
-	
-	Consider the following code::
-	
-		Public void strRecr(String s)
-		
-		{
-		
-		if(s.length()<15)
-		
-		{
-		
-		System.out.println(s);
-		
-		strRecr(s + "*");
-		
-		}
-		
-		}
-	
-	When will method strRecr terminates without error?
-	
-	(a) Only when the length of the input string is less than 15
-	
-	
-	(b) Only when the length of the input string is greater than or equal to
-	
-	(c) Only when an empty sting is input
-	
-	(d) For all string inputs
-	
-	(e) For no string inputs
 
 .. TODO::
    :type: Programming Exercise	
@@ -518,7 +119,33 @@ Tracing Practice Exercises
 	(d) number > 10
 	
 	
+
+.. TODO::
+   :type: Programming Exercise	
 	
+	Consider the following code::
+	
+		void function(String[] list, int index) {
+		
+		System.out.println(list[index]);
+		
+		if (index > 1)
+		
+		function(list, index-1);
+		
+		}
+	
+	What will be printed when “function([’a’,’b’,’c’,’d’], 4)”is called? (Either write a sequence of numbers, or write “infinite recursion”.)
+	
+	The answer:
+	
+	d
+	
+	c
+	
+	b
+	
+	a	
 	
 .. TODO::
    :type: Programming Exercise	
@@ -764,6 +391,142 @@ Tracing Practice Exercises
 	
 	in the writeWithCommas function.
 
+
+
+.. TODO::
+   :type: Programming Exercise	
+   
+	A user enters several positive integers at the keyboard and terminates the
+	
+	list with a sentinel(-999). A writeEven function reads those integers and
+	
+	outputs the even integers only, in the reverse order that they are read.
+	
+	Thus if the user enters:
+	
+	3 5 14 6 8 -999
+	
+	The output of writeEven will be:
+	
+	8 6 14
+	
+	The code::
+		public static void writeEven()
+		
+		{
+		
+		int num = IO.readInt();
+		
+		if (num!= -999)
+		
+		{
+		
+		// Missing code
+		
+		}
+		
+		}
+		
+		Which //Missingcode satisfies what writeEven does?
+	
+	I)
+	
+	if(num%2==0)
+	
+	System.out.print(num+"");
+	
+	writeEven();
+	
+	II)
+	
+	if(num%2==0)
+	
+	writeEven();
+	
+	
+	System.out.print(num+"");
+	
+	III)
+	
+	writeEven();
+	
+	if(num%2==0)
+	
+	System.out.print(num+"");
+	
+	
+	(a) I only
+	
+	(b) II only
+	
+	(c) III only
+	
+	(d) I and II only
+	
+	(e) I, II and III
+	
+.. TODO::
+   :type: Programming Exercise	
+   	
+	Consider the following code::
+	
+		public static void testa(int n)
+		
+		{
+		
+		System.out.println(n + " ");
+		
+		if (n>0)
+		
+		testa(n-2);
+		
+		}
+		
+	What is printed by the call testa(4)?(Either write a sequence of numbers, or write “infinite recursion”.)
+	
+	
+.. TODO::
+   :type: Programming Exercise	
+	
+	Consider the following code::
+	
+		public static void testb(int n)
+		
+		{
+		
+		if (n>0)
+		
+		testb(n-2);
+		
+		System.out.println(n + " ");
+		
+		}
+		
+	What is printed by the call testb(4)?(Either write a sequence of numbers, or write “infinite recursion”.)
+
+	
+.. TODO::
+   :type: Programming Exercise		
+	
+	Find the error(s) in the following recursive function, explain how to correct it (them). This function find the sum of the values from 0 to n::
+	
+		public int sum(int n)
+		
+		{
+		
+		if(n == 0)
+		
+		return 0;
+		
+		else
+		
+		return n+ sum(n);
+		
+		}
+	
+	The answer:
+	
+	The code will result in an infinite recursion, unless the initially passed value is 0. The recursive call should be n+ sum(n-1) instead of n+sum(n).
 
 
 .. odsascript:: AV/RecurTutor/RecursionIntroCON.js
