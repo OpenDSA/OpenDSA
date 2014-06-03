@@ -196,11 +196,15 @@
     n1.css({"fill":"blue", "opacity":"0.5"});
     n2.css({"fill":"blue", "opacity":"0.5"});
     av.step();
-    av.umsg("The minimum number of nodes that must be in the decision tree for any comparison-based sorting algorithm for $n$ values should be $n!$ since the decision tree must have at least $n!$ leaf nodes representing each input permutation");
+    av.umsg("The minimum number of nodes that must be in the decision tree for any comparison-based sorting algorithm for $n$ values should be $n!$ since the decision tree must have at least $n!$ leaf nodes, since at least one leaf node will correspond to each input permutation");
+    av.step();
+    av.umsg("A tree with $n$ nodes requires a minimum of $\\log n$ levels.");
     av.step();
     av.umsg("Because there are at least $n!$ nodes in the tree, we know that the tree must have $\\Omega(\\log{n!})$ levels");
     av.step();
-    av.umsg("Accordingly, the decision tree for any comparison-based sorting algorithm must have nodes $\\Omega(n\\log{n})$ levels deep. Thus, in the worst case, any such sorting algorithm must require $\\Omega(n\\log{n})$ comparisons");
+    av.umsg("Accordingly, the decision tree for any comparison-based sorting algorithm must have at least one node that is $\\Omega(n\\log{n})$ levels deep. This deepest node represents the algorithm's worst case.");
+    av.step();
+    av.umsg("So in the worst case, any such sorting algorithm must require $\\Omega(n\\log{n})$ comparisons");
     av.recorded();   
   }
   function hideTree(){
