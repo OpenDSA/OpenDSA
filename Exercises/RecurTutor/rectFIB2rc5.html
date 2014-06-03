@@ -9,7 +9,7 @@
  
 <body>
 <script>
-function f( k , n)
+function f(k , n)
 {
  if(n==k)
    return k;
@@ -30,9 +30,9 @@ function checkAnswer(answer , k , n) {
 </script>
   
 <div class="exercise">
-<div class="vars">
-    <var id="k">randRange(0, 10)</var>
-    <var id="n">randRange(0, 10)</var>
+<div class="vars" data-ensure="k != n">
+    <var id="k">randRange(1, 10)</var>
+    <var id="n">randRange(1, 10)</var>
   </div>
   <div class="problems">
     <div id="problem-type-or-description">

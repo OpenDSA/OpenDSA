@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title> Recursion Tracing Exercise: Another Mystrey return</title>
+  <title> Recursion Tracing Exercise:dosomething Print</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
@@ -9,16 +9,11 @@
  
 <body>
 <script>
-function mystery( n,  a , d)
-{
-	if(n==1)
-	 return a;
-	else
-	 return d + mystery(n-1,a,d);
-}
 
-function checkAnswer(answer , n, a , d) {
-  if ( answer == mystery(n, a , d)) {
+
+function checkAnswer(answer) {
+  
+  if ( answer == 54321) {
     return true;
   } else {
     return false;
@@ -28,30 +23,27 @@ function checkAnswer(answer , n, a , d) {
   
 <div class="exercise">
 <div class="vars">
-    <var id="n">randRange(2, 6)</var>
-    <var id="a">randRange(0, 5)</var>
-    <var id="d">randRange(0, 5)</var>
+    <var id="n">randRange(2, 10)</var>
   </div>
   <div class="problems">
     <div id="problem-type-or-description">
       <p class="question">     
       Consider the following function:
       <pre> 		
-      public int mystery(int n, int a , int d)
-      {
-	if(n==1)
-	 return a;
-	else
-	 return d + mystery(n-1,a,d);
-      }
+      void dosomething (int n) {	
+        if(n>0) {
+	 System.out.print(n);
+	 dosomething(n-1);
+	}
+       }
       </pre>		
-     What value is returned by the call mystery(<var>n</var>,<var>a</var>,<var>d</var>)? (Either write a number, or write "infinite recursion".)</p>
+     What value does dosomething(5) return? (Either write a number, or write "infinite recursion".) </p>
       <br> <textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>
       <div class="solution" data-type="custom">
         <div class="guess"> [ "list" ] </div>
         <div class="validator-function">
          answer = parseInt($('#answerTextarea').val());
-         return checkAnswer(answer, n, a, d);
+         return checkAnswer(answer);
         </div>
       </div>
       <div class="hints">
