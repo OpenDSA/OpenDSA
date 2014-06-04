@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<entry>
+<id>http://localhost/OpenDSA/Exercises/RecurTutor/rectFIB2rc18.html</id>
+<title type='text'>Recursion Tracing Exercise 18</title>
+<description type='text'>Recursion Tracing Exercise 18</description>
+<type>ka</type>
+<width>950</width>
+<height>550</height>
+<author>
+<name>OpenDSA</name>
+<uri>http://algoviz.org/OpenDSA/</uri>
+</author>
+<covers>recursion</covers>
+<streak>4</streak>
+</entry>
+

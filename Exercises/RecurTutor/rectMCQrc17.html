@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Recursion Tracing Exercise: Recursive calls</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question"> 
+      Consider the following code::
+      <pre>	
+     void superWriteVertical(int number)
+     // Postcondition: The digits of the number have been written,
+     // stacked vertically. If number is negative, then a negative sign appears on top.
+     {
+      if (number < 0)
+      { System.out.println("-"); 
+        superWriteVertical(-number);
+      }
+      else if (number < 10)
+        System.out.println(number);
+      else
+      {    
+        superWriteVertical(number / 10);
+        System.out.println(number % 10);
+      }
+     }
+	</pre>
+     Which call will result in the most recursive calls?
+      </p>
+
+      <div class="solution"><var>"super_write_vertical(1023);"</var></div>
+      <ul class="choices" >
+	<li><var> "super_write_vertical(-103);" </var></li>	  	 
+	<li><var>"super_write_vertical(0);"</var></li>
+        <li><var>"super_write_vertical(100);"</var></li>
+      </ul>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -29,203 +29,12 @@ Tracing Practice Exercises
 .. avembed:: Exercises/RecurTutor/rectFIBir12.html ka
 .. avembed:: Exercises/RecurTutor/rectFIBfwd13.html ka
 .. avembed:: Exercises/RecurTutor/rectMCQfwder14.html ka	
+.. avembed:: Exercises/RecurTutor/rectMCQmrc15.html ka
+.. avembed:: Exercises/RecurTutor/rectMCQbc16.html ka
+.. avembed:: Exercises/RecurTutor/rectMCQrc17.html ka	
+.. avembed:: Exercises/RecurTutor/rectFIB2rc18.html ka	
+.. avembed:: Exercises/RecurTutor/rectFIBfwd19.html ka		
 
-
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following code::
-	
-		public int foo(int x)
-		
-		{
-		
-		if(x==1 || x==3)
-		
-		return x;
-		
-		
-		else
-		
-		return x * foo(x-1);
-		
-		}
-	
-	Assuming no possibility of integer overflow, what will be the value of z after execution of the following statement:
-	
-	int z = foo(foo(3)+foo(4));
-	
-	(a) (15!)/(2!)
-	
-	(b) 3!+4!
-	
-	
-	(c) (7!)!
-	
-	(d) (3!+4!)!
-	
-	(e) 15
-	
-	
-.. TODO::
-   :type: Programming Exercise		
-	
-	Consider the following code::
-	
-		void superWriteVertical(int number)
-		
-		// Postcondition: The digits of the number have been written,
-		
-		// stacked vertically. If number is negative, then a negative
-		
-		// sign appears on top.
-		
-		{
-		
-		if (number < 0)
-		
-		{
-		
-		System.out.println("-");
-		
-		superWriteVertical(-number);
-		
-		}
-		
-		else if (number < 10)
-		
-		System.out.println(number);
-		
-		else
-		
-		{
-		
-		superWriteVertical(number / 10);
-		
-		System.out.println(number % 10);
-		
-		}
-		
-		}
-	
-	What values of number are directly handled by the stopping case?
-	
-	(a) number < 0
-	
-	(b) number < 10
-	
-	(c) number ≥ 0 and number < 10
-	
-	(d) number > 10
-	
-	
-
-.. TODO::
-   :type: Programming Exercise	
-	
-	Consider the following code::
-	
-		void function(String[] list, int index) {
-		
-		System.out.println(list[index]);
-		
-		if (index > 1)
-		
-		function(list, index-1);
-		
-		}
-	
-	What will be printed when “function([’a’,’b’,’c’,’d’], 4)”is called? (Either write a sequence of numbers, or write “infinite recursion”.)
-	
-	The answer:
-	
-	d
-	
-	c
-	
-	b
-	
-	a	
-	
-.. TODO::
-   :type: Programming Exercise	
-   	
-	
-	Consider the following code::
-	
-	
-		void superWriteVertical(int number)
-		
-		// Postcondition: The digits of the number have been written,
-		
-		// stacked vertically. If number is negative, then a negative
-		
-		// sign appears on top.
-		
-		{
-		
-		if (number < 0)
-		
-		{
-		
-		System.out.println("-");
-		
-		superWriteVertical(-number);
-		
-		
-		}
-		
-		else if (number < 10)
-		
-		System.out.println(number);
-		
-		else
-		
-		{
-		
-		superWriteVertical(number / 10);
-		
-		System.out.println(number % 10);
-		
-		}
-		
-		}
-	
-	Which call will result in the most recursive calls?
-	
-	(a) super_write_vertical(-1023);
-	
-	(b) super_write_vertical(0);
-	
-	(c) super_write_vertical(100);
-	
-	(d) super_write_vertical(1023);
-	
-	
-.. TODO::
-   :type: Programming Exercise
-   		
-	Consider the following code::
-	
-		void quiz(int i)
-		
-		{
-		
-		if (i > 1)
-		
-		{
-		
-		quiz(i / 2);
-		
-		quiz(i / 2);
-		
-		}
-		
-		System.out.print("*");
-		
-		}
-	
-	How many asterisks are printed by the method call quiz(5)?(Either write a number, or write “infinite recursion”.)
 	
 .. TODO::
    :type: Programming Exercise
@@ -528,5 +337,35 @@ Tracing Practice Exercises
 	
 	The code will result in an infinite recursion, unless the initially passed value is 0. The recursive call should be n+ sum(n-1) instead of n+sum(n).
 
+	
+	
+
+.. TODO::
+   :type: Programming Exercise	
+	
+	Consider the following code::
+	
+		void function(String[] list, int index) {
+		
+		System.out.println(list[index]);
+		
+		if (index > 1)
+		
+		function(list, index-1);
+		
+		}
+	
+	What will be printed when “function([’a’,’b’,’c’,’d’], 4)”is called? (Either write a sequence of numbers, or write “infinite recursion”.)
+	
+	The answer:
+	
+	d
+	
+	c
+	
+	b
+	
+	a	
+	
 
 .. odsascript:: AV/RecurTutor/RecursionIntroCON.js

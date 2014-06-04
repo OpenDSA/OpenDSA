@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Recursion Tracing Exercise: Recursive function nested calls</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question"> 
+      Consider the following code::
+      <pre>	
+     public long foo(long x)
+     { 
+      if(x==1 || x==3)
+        return x;
+      else
+        return x * foo(x-1);
+      }
+	</pre>
+      Assuming no possibility of integer overflow, what will be the value of z after execution of the following statement:
+      <pre>
+      long z = foo(foo(3)+foo(4));
+      </pre>
+      </p>
+
+      <div class="solution"><var><code>(15!)/(2!)</code></var></div>
+      <ul class="choices" >
+	<li><var> <code>3!+4!</code> </var></li>	  	 
+	<li><var><code>(7!)!</code></var></li>
+        <li><var><code>(3!+4!)!</code></var></li>
+        <li><var><code>15</code></var></li>
+      </ul>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
