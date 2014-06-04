@@ -9,7 +9,8 @@
    :satisfies: list ADT
    :topic: Lists
 
-.. odsalink:: AV/List/listADTCON.css
+.. odsalink:: AV/List/listADTposCON.css
+.. odsalink:: AV/List/listADTnoteCON.css
 
 The List ADT
 ============
@@ -125,14 +126,14 @@ will take place.
 .. codeinclude:: Lists/ListADT
    :tag: ListADT
 
-.. inlineav:: listADTCON1 ss
+.. inlineav:: listADTposCON ss
    :output: show  
 
 .. raw:: html
 
    <p></p>
    
-.. inlineav:: listADTCON2 ss
+.. inlineav:: listADTnoteCON ss
    :output: show   
 
 The ``List`` member functions allow you to build a list with elements
@@ -196,4 +197,5 @@ The linked list is presented in Module :numref:`<ListLinked>`.
 Time and space efficiency comparisons for the two are discussed in
 Module :numref:`<ListAnalysis>`.
 
-.. odsascript:: AV/List/listADTCON.js
+.. odsascript:: AV/List/listADTposCON.js
+.. odsascript:: AV/List/listADTnoteCON.js

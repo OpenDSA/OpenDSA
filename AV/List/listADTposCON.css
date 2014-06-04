@@ -1,0 +1,12 @@
+#listADTposCON { 
+  height: 200px;
+}
+
+#listADTposCON .jsavnode{
+  border: 0;
+  background-color: #eed;
+  line-height: 60px;
+  font-size: 20px;
+  min-width: 65px;
+  box-shadow: 0 0 0;
+}
