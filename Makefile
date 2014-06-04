@@ -82,6 +82,9 @@ OpenDSA: min
 IS: min
 	python $(CONFIG_SCRIPT) config/IS.json
 
+NP: min
+	python $(CONFIG_SCRIPT) config/NP.json
+
 test: min
 	python $(CONFIG_SCRIPT) config/test.json
 
