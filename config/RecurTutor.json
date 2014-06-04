@@ -205,7 +205,7 @@
       },
       "RecurTutor/Trace": {
       "long_name": "How to trace a recursive function?",
-      "exercises": {"RecursionIntroCON3": {
+      "exercises": {"RecursionTraceCON1": {
             "long_name": "Recursion Introduction Slideshow 3",
             "required": true,
             "points": 0.0,
@@ -296,6 +296,36 @@
           },
         "rectMCQfwder14": { 
             "long_name": "Recursion Tracing Exercise 14",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectMCQmrc15": { 
+            "long_name": "Recursion Tracing Exercise 15",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectMCQbc16": { 
+            "long_name": "Recursion Tracing Exercise 16",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectMCQrc17": { 
+            "long_name": "Recursion Tracing Exercise 17",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectFIB2rc18": { 
+            "long_name": "Recursion Tracing Exercise 18",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectFIBfwd19": { 
+            "long_name": "Recursion Tracing Exercise 19",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
