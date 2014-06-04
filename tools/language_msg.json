@@ -39,7 +39,16 @@
       "credential_warn": "Please enter your username and password",
       "bug_ack": "Your bug/feedback has been successfully submitted.\n Thank You",
       "hide": "Hide",
-      "show": "Show"
+      "show": "Show",
+      "no_reply_server": "The server did not respond.  Please try again later.",
+      "assignment": "Assignment",
+      "due_date": "Due Date",
+      "score": "Score",
+      "total": "Total",
+      "no_exercises":"There are no exercises in this section",
+      "exercises": "Exercises",
+      "points": "Points",  
+      "chapter": "Chapter"
     }
   },
   "fr": {
@@ -82,7 +91,16 @@
       "credential_warn": "Veuillez saisir votre identifiant et mode passe",
       "bug_ack": "Votre bug a été enregistré.\n Merci",
       "hide": "Masquer",
-      "show": "Afficher"
+      "show": "Afficher",
+      "no_reply_server": "Le serveur ne répond pas.  Veuillez essayer plus tard.",
+      "assignment": "Devoir",
+      "due_date": "Date Limite",
+      "score": "Note",
+      "total": "Total",
+      "no_exercises":"Cette section ne contient pas d'exercises",
+      "exercises": "Exercises",
+      "points": "Points",  
+      "chapter": "Chapitre"
     }
   }
 
