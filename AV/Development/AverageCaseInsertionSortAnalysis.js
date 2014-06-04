@@ -7,8 +7,13 @@
   var arr;
   
   function runit() {
-    av = new JSAV($(".avcontainer"));
-	code = av.code({url: "../../../SourceCode/Processing/Sorting/Insertionsort.pde",
+   av = new JSAV($(".avcontainer"));
+   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	$(".avcontainer").on("jsav-message", function() {
+      // invoke MathJax to do conversion again
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }); 
+   code = av.code({url: "../../../SourceCode/Processing/Sorting/Insertionsort.pde",
                     lineNumbers: true,
                     startAfter: "/* *** ODSATag: Insertionsort *** */",
                     endBefore: "/* *** ODSAendTag: Insertionsort *** */", top: 225, left: 150});
