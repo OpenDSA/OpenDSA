@@ -428,9 +428,9 @@
     // Using continuous mode slows the exercise down considerably
     // (probably because it has to check that all the arrays are correct)
     var exercise = av.exercise(modelSolution, initialize,
-			       { compare: [{css: "background-color"}, {}],
-				 controls: $('.jsavexercisecontrols'),
-				 fix: fixState });
+                               { compare: [{css: "background-color"}, {}],
+                                 controls: $('.jsavexercisecontrols'),
+                                 fix: fixState });
     exercise.reset();
 
   //*****************************************************************************

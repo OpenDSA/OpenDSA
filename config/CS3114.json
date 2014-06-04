@@ -74,13 +74,13 @@
       "Background/Recursion": {
         "long_name": "Recursion",
         "exercises": {
-          "recursionCONTOH": {}
+          "TOHfigCON": {}
         }
       },
       "Background/Proofs": {
         "long_name": "Proofs",
         "exercises": {
-          "proofCON1": {}
+          "twoColorCON": {}
         }
       },
       "Background/Estimation": {
@@ -178,7 +178,8 @@
       "Design/ADT": {
         "long_name": "Abstract Data Types",
         "exercises": {
-        }
+          "ADTCON": {}
+	}
       }
     },
     "Linear Structures": {
@@ -608,7 +609,7 @@
         "long_name": "Comparing Records",
         "exercises": {
           "CompareSumm": {
-            "long_name": "Record Comparison Summary",
+            "long_name": "Record Comparison Summary Exercise",
             "required": true,
             "points": 2,
             "threshold": 5

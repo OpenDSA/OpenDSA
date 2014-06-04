@@ -101,9 +101,9 @@
     }
 
     exercise = jsav.exercise(model, init,
-			     { compare:  { css: "background-color" },
-			       controls: $('.jsavexercisecontrols'),
-			       fix: fixState });
+                             { compare:  { css: "background-color" },
+                               controls: $('.jsavexercisecontrols'),
+                               fix: fixState });
     exercise.reset();
 
     $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function () {

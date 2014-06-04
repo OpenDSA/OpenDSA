@@ -8,7 +8,7 @@
    :satisfies: ADT; metaphor
    :topic: Abstract Data Types
 
-.. odsalink:: AV/Development/ADTCON.css
+.. odsalink:: AV/Design/ADTCON.css
 
 Abstract Data Types
 ===================
@@ -285,4 +285,4 @@ context of a higher-level task.
    is possible.
    Several are described in Module :numref:`<ListIntro>`.
 
-.. odsascript:: AV/Development/ADTCON.js
+.. odsascript:: AV/Design/ADTCON.js

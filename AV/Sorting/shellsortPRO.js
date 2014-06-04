@@ -232,7 +232,7 @@
     //  function to call to generate the model answer (shellsort())
     var exer = av.exercise(shellsort, initialize,
                   { compare:  [{css: "background-color"}, {}],
-		    controls: $('.jsavexercisecontrols'), fix: fixState });
+                    controls: $('.jsavexercisecontrols'), fix: fixState });
     exer.reset();
     
     var swapIndex;

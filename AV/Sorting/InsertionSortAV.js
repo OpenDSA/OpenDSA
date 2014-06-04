@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, ODSA */
+/*global alert: true, ODSA, console */
 (function ($) {
   $(document).ready(function () {
     // Process About button: Pop up a message with an Alert
@@ -52,8 +52,7 @@
 
         console.log("Code: " + code);
 	// Create the pseudocode display object
-	pseudo = jsav.code(code);
-
+        pseudo = jsav.code(code);
         jsav.umsg(interpret("av_c1"));
         jsav.displayInit();
         inssort();

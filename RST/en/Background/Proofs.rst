@@ -8,7 +8,7 @@
    :satisfies: induction proofs
    :topic: Math Background
 
-.. odsalink:: AV/Development/proofCON.css
+.. odsalink:: AV/Background/twoColorCON.css
 
 .. index:: !proof
 
@@ -520,4 +520,4 @@ also produces the correct result.
 Prior to this, we must prove that the function always terminates,
 which might also be done using an induction proof.
 
-.. odsascript:: AV/Development/proofCON.js
+.. odsascript:: AV/Background/twoColorCON.js

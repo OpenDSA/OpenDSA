@@ -111,6 +111,16 @@ iframe {
   margin: 0;
   overflow: hidden;
 }
+
 .light {
   color: rgb(215, 215, 215);
+}
+
+svg {
+  stroke-width: 1;
+}
+
+.jsavcanvas {
+ margin-left: auto;
+ margin-right: auto;
 }

@@ -8,7 +8,7 @@
    :satisfies: recursion
    :topic: Math Background
 
-.. odsalink:: AV/Development/recursionCON.css
+.. odsalink:: AV/Background/TOHfigCON.css
 
 .. index:: ! recursion
 
@@ -169,4 +169,4 @@ This process is often implemented using recursion.
 Thus, recursion plays an important role throughout this book,
 and many more examples of recursive functions will be given.
 
-.. odsascript:: AV/Development/recursionCON.js
+.. odsascript:: AV/Background/TOHfigCON.js
