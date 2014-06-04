@@ -8,6 +8,10 @@
   empty.length = 9;
   var av = new JSAV("mergesortCON1");
 
+  // Calculate leftoffset by using the width of the container to find the center
+  // then subtracting half of the 9element long array that is centered
+  var left_offset = ($('#mergesortCON1').width() - blockWidth * 9) / 2;
+
   var move = function (a, o, i) {
     av.step();
     av.umsg("Move the smaller value.");
@@ -23,20 +27,19 @@
   // position the left array relative to the answer array
   var jsavarr_left = av.ds.array(leftArray, {indexed: true, center: false,
                                               layout: "array",
-                                              relativeTo: jsavarr_answer,
-                                              left: - (blockWidth / 2),
-                                              top: 20,
+                                              left: left_offset - (blockWidth / 2),
+                                              top: 75,
                                               myAnchor: "left top",
                                               anchor: "left bottom"
                                             });
   var jsavarr_right = av.ds.array(rightArray, {indexed: true, center: false,
                                                 layout: "array",
-                                                relativeTo: jsavarr_answer,
-                                                left: blockWidth * 5.5,
-                                                top: 20,
+                                                left: left_offset + blockWidth * 5.5,
+                                                top: 75,
                                                 myAnchor: "left top",
                                                 anchor: "left bottom"
                                               });
+
   av.umsg("We now merge two sorted lists into one.");
   av.displayInit();
   av.umsg("First compare the smallest values in each list");
