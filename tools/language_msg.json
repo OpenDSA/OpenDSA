@@ -27,7 +27,8 @@
       "screenshot": "Attach a screenshot (optional)",
       "submit": "Submit",
       "login_warn": "You must be logged in to receive credit",
-      "login_error": "Incorrect username / password combination"
+      "login_error": "Incorrect username / password combination",
+      "bug_desc": "***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."
     },
     "js": {  
       "project_msg": " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nJSAV library version ",
@@ -79,7 +80,8 @@
       "screenshot": "Inclure une capture d écran (facultatif)",
       "submit": "Soummetre",
       "login_warn": "Connectez vous pour sauvegarder votre score",
-      "login_error": "Identifiant ou mot de passe incorrect"
+      "login_error": "Identifiant ou mot de passe incorrect",
+      "bug_desc": "***BUG** Veuillez fournir : (1) une description du probleme. (2) comment reproduire le probleme. (3) les details du navigateur et systeme d'exploitation."
     },  
     "js": {
       "project_msg": " \nProjet OpenDSA hypertextbook.\nPour plus d information visitez http://algoviz.org/OpenDSA\nLibrairie JSAV version ",
