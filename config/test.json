@@ -21,14 +21,14 @@
       "List/ListADT": {
         "long_name": "List ADT",
         "exercises": {
-          "listADTCON1": {
-            "long_name": "List ADT Slideshow 1",
+          "listADTposCON": {
+            "long_name": "List ADT position Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listADTCON2": {
-            "long_name": "List ADT Slideshow 2",
+          "listADTnoteCON": {
+            "long_name": "List ADT notation Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0

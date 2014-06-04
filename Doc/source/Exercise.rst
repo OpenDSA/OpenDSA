@@ -1,7 +1,7 @@
 .. _Exercise:
 
-Using OpenDSA with Khan Academy infrastructure
-==============================================
+Using OpenDSA with the Khan Academy infrastructure
+==================================================
 
 We use the Khan Academy (KA) infrastructure for writing questions.
 KA supplies some documentation at their

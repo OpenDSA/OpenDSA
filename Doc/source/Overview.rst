@@ -25,7 +25,7 @@ but you are probably concerned with only one of several possible roles
 at any given time.
 Those roles include:
 
-#. Content developer: Someone who wants to create ro modify modules,
+#. Content developer: Someone who wants to create or modify modules,
    visualizations, or exercises If so, you want to read the sections on
    creating content.
 

@@ -1,0 +1,16 @@
+#listADTnoteCON { 
+  height: 200px;
+}
+
+#listADTnoteCON .jsavnode {
+  border: 0 solid;
+  background-color: #eed;
+  line-height: 50px;
+  font-size: 20px;
+  min-width: 40px;
+  box-shadow: 0 0 0;
+}
+
+#listADTnoteCON .ssAV .jsavline{
+  height: 30px;
+}

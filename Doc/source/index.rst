@@ -11,11 +11,11 @@ Table of Contents
    :maxdepth: 3
 
    Overview
-   Client-sideDevelopment
    ModAuthor
    Style
    AV
    Exercise 
+   Client-sideDevelopment
    Configuration
    Extensions
    Preprocessor
