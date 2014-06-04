@@ -52,6 +52,12 @@
             "points": 1.0,
             "threshold": 5
           },
+          "InsertionSortWorstCaseCON": {
+            "long_name": "Insertion Sort Worst Case Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "InssortSumm": {
             "long_name": "Insertion Sort Summary Exercise",
             "required": true,

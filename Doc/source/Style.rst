@@ -117,4 +117,3 @@ the filename.
 Note that in the ``.json`` file, a given section of the ``code`` block
 should match the subdirectory name within the ``SourceCode`` directory
 for that language.
-

@@ -88,12 +88,13 @@ purpose.
 
    Is it more economical
    to buy a car that gets 20 miles per gallon, or one that gets 30 miles
-   per gallon but costs $3000 more?
+   per gallon but costs \\$3000 more?
    The typical car is driven about 12,000 miles per year.
-   If gasoline costs \$3/gallon, then the yearly gas bill is
-   $1800 for the less efficient car and $1200 for the more efficient car.
+   If gasoline costs \\$3/gallon, then the yearly gas bill is
+   \\$1800 for the less efficient car and \\$1200 for the more
+   efficient car. 
    If we ignore issues such as the payback that would be received if we
-   invested $3000 in a bank, it would take 5 years to make up the
+   invested \\$3000 in a bank, it would take 5 years to make up the
    difference in price.
    At this point, the buyer must decide if price is the only criterion and
    if a 5-year payback time is acceptable.

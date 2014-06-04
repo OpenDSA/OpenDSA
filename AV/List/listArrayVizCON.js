@@ -31,7 +31,7 @@ function bgColor(array) {
   arr.highlight([0, 1, 2, 3, 4]);
   jsav.displayInit();
 
-  jsav.umsg('Array positions correspond to list positions. In other words, the element at position <i>i</i> in the list is stored at array cell <i>i</i>. Here, the element at position 3 in the list (and index 3 in the array) is highlighted.');
+  jsav.umsg('Array positions correspond to list positions. In other words, the element at position $i$ in the list is stored at array cell $i$. Here, the element at position 3 in the list (and index 3 in the array) is highlighted.');
   arr.unhighlight([0, 1, 2, 3, 4]);
   arr.highlight(3);
   jsav.step();
@@ -59,7 +59,7 @@ function bgColor(array) {
       startAfter: '/* *** ODSATag: AListVars *** */',
       endBefore: '/* *** ODSAendTag: AListVars *** */'
     });
-  jsav.umsg('Let\'s take a look at the private data members for class <code>AList</code>.');
+  jsav.umsg("Let's take a look at the private data members for class <code>AList</code>.");
   jsav.displayInit();
 
   jsav.umsg('First, notice that class <code>AList</code> implements the <code>List</code> interface. This means that <code>AList</code> is required to give implementations for all of the methods listed as part of the <code>List</code> interface.');
