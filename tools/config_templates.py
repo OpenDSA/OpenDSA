@@ -87,6 +87,7 @@ html:
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
 	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
+	cp "%(odsa_dir)slib/conceptMap.html" $(HTMLDIR)
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."

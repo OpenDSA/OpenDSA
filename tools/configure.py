@@ -269,9 +269,6 @@ def initialize_output_directory(config):
   #Copy translation file to _static directory
   distutils.file_util.copy_file(config.lang_file, config.book_src_dir + '_static/')
 
-  #copy conceptmap XML file to the book directory
-  distutils.file_util.copy_file(config.odsa_dir + 'RST/' + config.lang + '/GraphDefs.xml', config.book_src_dir )
-
   # Create source/_static/config.js in the output directory
   # Used to set global settings for the client-side framework
   with open(config.book_src_dir + '_static/config.js','w') as config_js:
@@ -399,6 +396,15 @@ def configure(config_file_path, slides = False):
     proc = subprocess.Popen(['make', '-C', config.book_dir], stdout=subprocess.PIPE)
   for line in iter(proc.stdout.readline,''):
     print line.rstrip()
+
+  #copy conceptmap XML file to the book directory
+  #if there is no graph definition in the language directory, 
+  # use the english one
+  if os.path.isfile(config.odsa_dir + 'RST/' + config.lang + '/GraphDefs.xml'):
+    distutils.file_util.copy_file(config.odsa_dir + 'RST/' + config.lang + '/GraphDefs.xml', config.book_dir + config.rel_book_output_path )
+  else:
+    print_err('WARNING: Graph definition file translation for "' + config.lang + '" not found, the english file will be used')
+    distutils.file_util.copy_file(config.odsa_dir + 'RST/en/GraphDefs.xml', config.book_dir + config.rel_book_output_path )
 
   # Calls the postprocessor to update chapter, section, and module numbers
   update_TOC(config.book_src_dir, config.book_dir + config.rel_book_output_path, module_chap_map)
