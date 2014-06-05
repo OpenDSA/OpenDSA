@@ -24,9 +24,9 @@
   pivot.hide();
   pivot = av.g.rect(220, 50, 30, 30);
   index.hide();
-  index = av.label("k = 0", {"top": "15px", "left": "220px"}).css({'font-size': '14px', "text-align": "center"});
+  index = av.label("k = 0", {"top": "20px", "left": "220px"}).css({'font-size': '11px', "text-align": "center"});
   piv.hide();
-  piv = av.label("pivot", {"top": "30px", "left": "221px"}).css({'font-size': '11px', "text-align": "center"});
+  piv = av.label("pivot", {"top": "45px", "left": "221px"}).css({'font-size': '11px', "text-align": "center"});
   right_side.hide();
   left_side.hide();
   right_side = av.label("|-------------------------------  $n-1$  -----------------------------|",  {"top": "15px", "left": "255px"}).css({'font-size': '14px', "text-align": "center"});
@@ -66,7 +66,7 @@
   piv.hide();
   piv = av.label("pivot", {"top": "45px", "left": "331px"}).css({'font-size': '11px', "text-align": "center"});
   index.hide();
-  index = av.label("$k$", {"top": "30px", "left": "335px"}).css({'font-size': '14px', "text-align": "center"});
+  index = av.label("$k$", {"top": "15px", "left": "335px"}).css({'font-size': '14px', "text-align": "center"});
   right_side.hide();
   left_side.hide();
   right_side = av.label("|----------------  $n-1-k$  ---------------|",  {"top": "15px", "left": "370px"}).css({'font-size': '14px', "text-align": "center"});
