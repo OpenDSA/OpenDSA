@@ -11,6 +11,8 @@
 
 .. index:: ! Selection Sort
 
+.. odsalink:: AV/Development/SelectionSortAnalysisCON.css
+
 Selection Sort
 ==============
 
@@ -71,14 +73,23 @@ This shows that Selection Sort is essentially a Bubble Sort
 except that rather than repeatedly swapping adjacent values to get
 the next-largest record into place, we instead remember the position
 of the record to be selected and do one swap at the end.
-Thus, the number of comparisons is still
-:math:`\Theta(n^2)`,
-but the number of swaps is much less than that required by Bubble Sort.
-Selection Sort is particularly advantageous when the cost to do a swap
-is high, for example, when the record values are long strings or other
-large records.
-Selection Sort is more efficient than Bubble Sort (by a constant
-factor) in most other situations as well.
+
+Here we present a visualization illustrating the number of comparisons and swaps required by Selection Sort.
+
+.. inlineav:: SelectionSortAnalysisCON ss
+   :output: show
+
+.. TODO::
+   :type: Review SelectionSort's analysis discussion
+   
+   Thus, the number of comparisons is still
+   :math:`\Theta(n^2)`,
+   but the number of swaps is much less than that required by Bubble Sort.
+   Selection Sort is particularly advantageous when the cost to do a swap
+   is high, for example, when the record values are long strings or other
+   large records.
+   Selection Sort is more efficient than Bubble Sort (by a constant
+   factor) in most other situations as well.
 
 There is another approach to keeping the cost of swapping records low,
 and it can be used by any sorting algorithm even when the records are
@@ -119,3 +130,4 @@ Selection Sort.
 .. avembed:: Exercises/Sorting/SelsortSumm.html ka
 
 .. odsascript:: AV/Sorting/selectionsortCON.js
+.. odsascript:: AV/Development/SelectionSortAnalysisCON.js
