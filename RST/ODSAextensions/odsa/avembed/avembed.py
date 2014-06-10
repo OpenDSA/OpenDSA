@@ -33,7 +33,10 @@ def loadTable():
       table=open(conf.translation_file)
       data = json.load(table)
       table.close()
-      return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
+      if conf.language in data:
+         return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
+      else:
+         return dict(data['en']['jinja'].items() + data['en']['js'].items())
    except IOError:
       print 'ERROR: No table.json file.'
 
