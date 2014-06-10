@@ -1,12 +1,45 @@
-﻿.. _Configuration:
+.. _Configuration:
 
-================================
-The OpenDSA Configuration System
-================================
+==========================================================
+Compiling Book Instances: the OpenDSA Configuration System
+==========================================================
 
-----------
-Motivation
-----------
+--------
+Overview
+--------
+
+A given OpenDSA eTextbook is called a "book instance".
+The contents of a book instance is defined by a configuration file,
+the detailed syntax for which is defined in this section.
+But in practice, its easiest to start by copying an existing
+configuration file, and then changing it to fit your needs.
+Configuration files are JSON files, normally stored in OpenDSA/config.
+From the top level of an OpenDSA repository, you can compile a book
+instance (given the existance of a configuration file named
+``config/myconfig.json``) by issuing this command:
+
+``python tools/configure.py config/myconfig.json``
+
+A set of ``make`` targets are available within the OpenDSA Makefile.
+If you want to compile one of the existing book instances in the
+Makefile, you can just type:
+
+``make <bookname>``
+
+
+**Note:** If you are responsible for setting up the book instance to
+be used in a specific course, then you will probably want to manage
+the corresponding class instance set up at the OpenDSA backend
+server.
+This involves registering the various exercises with the backend
+database.
+See  "Registering a Book Instance" in the
+:ref:`Instructor's Tools  <InstructorTools>` section.
+
+
+---------------------------------------
+Motivation for the Configuration System
+---------------------------------------
 
 * Allows content to be environment-independent
 
@@ -72,9 +105,8 @@ Format
 
   * The name of the configuration file will be used to uniquely identify this instance of OpenDSA in the backend database
 
-
-Settings (all are required unless otherwise specified)
-======================================================
+Here are the settings definitions.
+All are required unless otherwise specified.
 
 * **title** - the title of the OpenDSA textbook
 

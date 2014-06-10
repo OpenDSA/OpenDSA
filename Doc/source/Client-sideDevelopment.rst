@@ -1,4 +1,4 @@
-﻿.. _Client-sideDevelopment:
+.. _Client-sideDevelopment:
 
 =======================
 Client-side Development
@@ -41,6 +41,94 @@ The OpenDSA client-side framework automatically handles as much logging as possi
 
   * As a developer, if you feel something is important to log (whether its the state of the exercise, some sort of interaction or simply a comment) you can use either ``ODSA.UTILS.logUserAction()`` or ``ODSA.UTILS.logEvent()``.  Refer to the function documentation in ``odsaUtils.js`` for more information on how to use these functions.
   * Allows developers to describe what is happening at a given step to make it easier when analyzing problem steps to identify what step the students are missing
+
+
+----------------------------
+Internationalization Support
+----------------------------
+
+OpenDSA supports a sophisticated internationalization framework that
+attempts to make it as easy as possible to support compiling textbook
+instances in various (natural) languages.
+The configuration system allows a book compiler to specify the
+language of choice, and the system will take module versions in the
+target language whenever available (the fallback language is
+English).
+
+Like every other aspect of internationalization, we define the
+language using the two-letter
+`ISO 639-1 <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_
+language codes.
+
+Someone creating a new book instance would use the 'lang' variable
+in the configuration file to define their book language.
+But if you want to add support to the OpenDSA system to support a new
+language, then you will need to provide the necessary strings in the
+target language.
+Here is a guide to how you would provide that information.
+
+It helps to understand that the Sphinx compiler itself has its own
+translation support, which affects some of the strings that appear on
+an OpenDSA page.
+Just telling Sphinx what language that you want to use will cause
+those strings that Sphinx controls to be translated.
+This is done by the configuration system when the configuration file
+tells it to use a particular language.
+A list of languages supported by sphinx can be found at
+http://sphinx-doc.org/config.html#confval-language.
+
+Translation is controlled by the file ``tools/language_msg.json``.
+Each language is represented by its code in language_msg.json.
+Make sure that a translation is available in language_msg.json file
+before asking the configuration system to create a book in that
+language.
+
+The terms for each language are grouped in two categories within
+``language_msg.json``:
+
+* ``jinja`` for the terms that will be added inside the configuration
+    file. They will be passed by Sphinx to the templating system
+    (jinja + haiku).
+* ``js`` for the terms processed by the ``odsaMOD.js`` library, and
+    injected while the page is loading.
+
+Here is the structure for language_msg.json::
+
+   {
+     "en"{
+       "jinja": {
+         "term1": "en_term1",
+         ...
+       },
+       "js": {
+         "term2": "en_term2",
+         ...
+       }
+     },
+     "fi"{
+       "jinja": {
+         "term1": "fi_term1",
+         ...
+       },
+       "js": {
+         "term2": "fi_term2",
+         ...
+       }
+     }
+   }
+
+The book configuration  program will read the language variable.
+If a translation for the entered language is not available, the
+default language English is used.
+The configuration process will then insert the language inside the
+translation file, and then copy the translation file to the 
+``Books/<bookname>/_static`` directory.
+
+AVs and exercises also support internationalization through the use of
+an associated ``.json`` file that provides the various translation
+text for all strings that appear in the AV.
+JSAV provides translations to many languages for its infrastructure
+strings.
 
 
 ---------------
