@@ -348,6 +348,7 @@ def get_translated_text(lang_):
       print_err("ERROR: File %s doesn't exist\n" % lang_file)
       sys.exit(1)
 
+   final_lang = lang_
    # Try to read the language file data as JSON
    try:
       with open(lang_file, "r") as msg_trans:
@@ -357,7 +358,8 @@ def get_translated_text(lang_):
            lang_text = lang_text_json[lang_]["jinja"]
         else:
            print_err('WARNING: Translation for "' + lang_ + '" not found, the language has been switched to english')
-           lang_text = lang_text_json["en"]
+           lang_text = lang_text_json["en"]["jinja"]
+           final_lang = "en"
    except ValueError, err:
       # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
       msg = err.message
@@ -386,7 +388,7 @@ def get_translated_text(lang_):
 
       # TODO: Figure out how to get (simple)json to accept different encodings
       sys.exit(1)
-   return lang_text
+   return lang_text, final_lang
 
 
 class ODSA_Config:
@@ -455,7 +457,7 @@ class ODSA_Config:
       self[field] = conf_data[field] if field in conf_data else None
 
     #Loads translated text
-    self['text_translated'] = get_translated_text(self['lang'])
+    self['text_translated'], self['lang'] = get_translated_text(self['lang'])
     self['lang_file'] = lang_file
 
     # Saves the path to the config file used to create the book
