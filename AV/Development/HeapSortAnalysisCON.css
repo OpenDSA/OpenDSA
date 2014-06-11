@@ -2,7 +2,7 @@
   width: 850px;
   height: 600px;
 }
-.analheapnode {
+#HeapSortAnalysisCON .jsavnode {
   line-height: 20px !important;
   min-width: 20px !important;
   max-width: 20px !important;

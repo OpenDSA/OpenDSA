@@ -13,9 +13,6 @@
   }
   bh = av.ds.binheap(arr, {left: 100, top: 50, nodegap: 15});
   bh.element.hide();
-  for(var i = 0; i < numNodes; i++){
-    bh._treenodes[i].element.addClass("analheapnode");
-  }
   bh.layout();
   av.displayInit();
   av.umsg("HeapSort swaps the root node containng the maximum key with the last node in the heap");
