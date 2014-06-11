@@ -30,7 +30,7 @@
       "login_error": "Incorrect username / password combination",
       "bug_desc": "***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."
     },
-    "js": {  
+    "js": {
       "project_msg": " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nJSAV library version ",
       "session_expired": "Your current session has expired.",
       "session_invalid": "Your account has been logged in on another computer and the\n current session is no longer valid. Please login again to continue.",
@@ -48,7 +48,7 @@
       "total": "Total",
       "no_exercises":"There are no exercises in this section",
       "exercises": "Exercises",
-      "points": "Points",  
+      "points": "Points",
       "chapter": "Chapter"
     }
   },
@@ -104,6 +104,58 @@
       "points": "Points",  
       "chapter": "Chapitre"
     }
+  },
+  "fi": {
+    "jinja": {
+      "register": "Rekistöröidy",
+      "login": "Kirjaudu sisään",
+      "logout": "Kirjaudu ulos",
+      "about": "Lisätietoa",
+      "close": "Sulje ikkuna",
+      "tofc": "Sisällysluettelo",
+      "the_book": "kirjasta",
+      "username": "Käyttäjätunnus",
+      "password": "Salasana",
+      "password_confirm": "Vahvista salasana",
+      "email": "Sähköposti",
+      "username_email": "Käyttäjätunnus tai sähköposti",
+      "sign_in": "Kirjaudu sisään",
+      "password_forget": "Unohtuiko salasanasi?",
+      "about_msg": "Luotu osaksi OpenDSA-oppikirjaprojektia. Lisätietoa osoitteesta. JSAV versio:",
+      "contact": "Ota yhteyttä",
+      "privacy": "Yksityisyys",
+      "license": "Lisenssi",
+      "report_bug": "Raportoi bugi",
+      "summary": "Lyhyt kuvaus",
+      "os": "Käyttöjärjestelmä",
+      "browser": "Selaa",
+      "description": "Kuvaus",
+      "screenshot": "Liitä kuvankaappaus (valinnainen)",
+      "submit": "Lähetä",
+      "login_warn": "Sinun on kirjauduttava sisään saadaksesi pisteitä",
+      "login_error": "Väärä käyttäjätunnus tai salasana",
+      "bug_desc": "***BUGI** Anna seuraavat tiedot: (1) lyhyt kuvaus ongelmasta. (2) askeleet, joilla ongelma saadan toistettua. (3) versiotiedot käyttämästäsi selaimesta ja käyttöjärjestelmästä."
+    },
+    "js": {
+      "project_msg": " \nLuotu osaksi OpenDSA-oppikirjaprojektia.\nLisätietoa osoitteesta http://algoviz.org/OpenDSA\nJSAV versio: ",
+      "session_expired": "Nykyinen istuntosi on päättynyt.",
+      "session_invalid": "Käyttäjätunnuksillasi on kirjauduttu sisään toisesta tietokoneesta,\n joten nykyinen istuntosi ei enää ole voimassa. Kirjaudu sisään jatkaaksesi.",
+      "account_disabled": "Käyttäjätunnus on poistettu",
+      "server_down": "Sisäänkirjautuminen epäonnistui, koska palvelimeen ei saatu yhteyttä. Jos vika jatkuu, ota yhteyttä OpenDSA-tiimiin.",
+      "login_fail": "Sisäänkirjautuminen epäonnistui",
+      "credential_warn": "Anna käyttäjätunnus ja salasana",
+      "bug_ack": "Bugisi/palautteesi on lähetetty onnistuneesti.\n Kiitos",
+      "hide": "Piilota",
+      "show": "Näytä",
+      "no_reply_server": "Palvelin ei vastannut. Yritä hetken kuluttua uudestaan.",
+      "assignment": "Tehtävä",
+      "due_date": "Aikaraja",
+      "score": "Pistettä",
+      "total": "Kokonaispisteet",
+      "no_exercises": "Tässä osiossa ei ole tehtäviä",
+      "exercises": "Tehtävät",
+      "points": "Pisteet",
+      "chapter": "Kappale"
+    }
   }
-
 }
