@@ -76,6 +76,12 @@ CS3114notes: min
 CS150: min
 	python $(CONFIG_SCRIPT) config/CS150.json
 
+CSE-A1140: min
+	python $(CONFIG_SCRIPT) config/CSE-A1140.json
+
+CSE-A1141: min
+	python $(CONFIG_SCRIPT) config/CSE-A1141.json
+
 OpenDSA: min
 	python $(CONFIG_SCRIPT) config/OpenDSA.json
 
