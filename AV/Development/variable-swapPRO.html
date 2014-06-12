@@ -86,7 +86,6 @@
       }
       
       function modelSolution(modeljsav) {
-        console.log(aInitial, bInitial);
         var modelAVariable = modeljsav.variable(aInitial, {label: "a = ", visible: true});
         var modelBVariable = modeljsav.variable(bInitial, {label: "b = ", visible: true});
         modeljsav.displayInit();
@@ -109,8 +108,7 @@
       
       // initialize the exercise      
       var exercise = av.exercise(modelSolution, initialize,
-                                 { compare:  [{}, {}],
-                                   feedback: "atend", grader: "finalStep"});
+                                 { feedback: "atend", grader: "finalStep"});
       exercise.reset();
 
       $("#addHelperVar").click(function() {
@@ -122,20 +120,19 @@
       // define a variable to hold the currently selected variable
       var selectedVar;
       function varClickHandler() {
-        console.log("click", this);
         // a variable has been previously selected
         if (selectedVar) {
           selectedVar.unhighlight();
           if (selectedVar !== this) {
             av.effects.copyValue(selectedVar, this);
-            av.step();
+            av.gradeableStep();
           }
           selectedVar = null;
         } else { // selecting a variable for swap
           selectedVar = this;
           selectedVar.highlight();
         }
-      };
+      }
     });
     </script>
 </body>
