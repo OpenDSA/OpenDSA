@@ -28,9 +28,9 @@
 	{"stroke-width": "3", "arrow-end": "classic"});
 
   // Draw the labels
-  av.label("Falling Snow", {left: 100 + widthoffset, top: height - 75, visible: true}).show; 
-  av.label("Existing snow", {left: 65 + widthoffset, top: height + 20, visible: true}).show; 
-  av.label("Future snow", {left: 250, top: height - 20, visible: true}).show;
+  av.label("Falling Snow", {left: 100 + widthoffset, top: height - 90, visible: true}).show; 
+  av.label("Existing snow", {left: 65 + widthoffset, top: height + 10, visible: true}).show; 
+  av.label("Future snow", {left: 250, top: height - 30, visible: true}).show;
   av.label("Start time T", {left: 50 + widthoffset, top: height + 110, visible: true}).show;
   av.label("Snowplow Movement", {left: 100 + widthoffset, top: height + 80, visible: true}).show;
 
