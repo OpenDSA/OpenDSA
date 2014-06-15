@@ -36,6 +36,16 @@ Among other things, this will define the module within the
 prerequisite structure, which is important when
 generating a full textbook.
 
+A big reason why we chose to use ReStructuredText for authoring is its
+ability to pass raw HTML through, allowing us to embed dynamic content
+(i.e., JavaScript) into our HTML pages while still having the
+advantage of a markup language for authoring.
+However, we don't ever want to actually use the ``raw`` directive in
+our modules if we can avoid it.
+At this point use of ``raw`` should never be needed, as we have a
+number of directives to use instead:
+``avembed``, ``inlineav``, ``odsalink``, and ``odsascript``.
+
 Most exercises and visualizations are embedded into the module from
 elsewhere  using the ``avembed`` directive, but small slideshows and
 dynamically generated diagrams can be included directly using the
@@ -48,6 +58,65 @@ Defining which modules will be used in a given book, which exercises
 are included for credit, and various other aspects of module use are
 defined with the
 :ref:`Configuration system <Configuration>`.
+
+Style Issues
+------------
+
+One of the hardest things when writing modules is making sure
+that all of the variables and expressions are marked up correctly.
+In nearly all cases, any variable is either "mathy" or "codey". Mathy
+variables and expressions should use LaTeX markup embedded in a
+``:math:`` directive.
+"Codey" variables and expressions should be marked up as::
+
+    ``code``
+
+All variables (and expressions) should always get their appropriate
+typeface.
+Avoid using physical markup such as italics or bold for such things,
+we prefer to use logical markup (that is, math markup or code markup).
+Sometimes it can be difficult to decide which is appropriate.
+For example, you might have a function with a variable ``n`` for the
+array size.
+When it comes time to discuss the analysis of the function, it is
+probably going to be done in terms of :math:`n`, a quantity that
+expresses the array size (as opposed to the function variable ``n``).
+It can be a subtle point whether the variable or the quantity is
+intended.
+Having to typeset it (and so make a conscious decision) helps you to
+think through what you are trying to convey.
+
+
+Code Snippet Support
+--------------------
+
+OpenDSA and JSAV provide an extensive framework for integrating code
+snippets into your modules and visualizations.
+JSAV provides support through the Pseudocode API for displaying and
+manipulating your code snippets within an AV.
+See the JSAV manual for details.
+Within a module, code snippets are meant to be embedded from a
+sourcecode file using the ``codeinclude`` directive.
+
+The OpenDSA framework and configuration support makes it as easy as
+possible to be able to compile book instances with code snippets from
+your desired programming language(s), assuming that the code snippets
+have been provided by a content developer.
+The most important principle for managing code snippets is that they
+should be taken from working programs that can properly support
+testing of the code that you included into your modules.
+
+All such sourcecode should appear in the ``SourceCode`` directory
+within OpenDSA, with each coding language having its own
+subdirectory.
+A given AV can have an associated ``.json`` file that defines the
+configuration for alternate coding languages, including such things as
+the filename.
+
+Note that in the ``.json`` file, a given section of the ``code`` block
+should match the subdirectory name within the ``SourceCode`` directory
+for that language.
+
 
 Math and Symbol Escapes
 -----------------------
@@ -64,8 +133,18 @@ as::
    This costs \\$5.00.
 
 
-Translation Support
--------------------
+Creating Course Notes
+---------------------
+OpenDSA uses `hieroglyph <https://github.com/nyergler/hieroglyph/>`_ a Sphinx 
+extension to build HTML slides.
+
+The course notes infrastructures is similar to eTextBook creation, and uses
+``OpenDSA/Makefile``. The only difference is the ``s`` option for slides
+when calling the configuration, for example ``python tools/configure.py s config/OpenDSA.json``.
+
+
+Internationalization Support
+----------------------------
 
 OpenDSA supports a sophisticated internationalization framework that
 attempts to make it as easy as possible to support compiling textbook
@@ -75,84 +154,12 @@ language of choice, and the system will take module versions in the
 target language whenever available (the fallback language is
 English).
 
-* Use the 'lang' variable in the configuration file to set up the book
-  language. 
-  A list of languages supported by sphinx can be found at
-  http://sphinx-doc.org/config.html#confval-language.
-
-* The translation ``.json`` file ``language_msg.json`` is located
-  inside the ``tools`` directory.
-  Each language is represented by its code in language_msg.json. Make
-  sure that a translation is available in language_msg.json file
-  before building a book in that language.
-
-* The terms for each language are grouped in two categories in
-  ``language_msg.json``:
-
-  - ``jinja`` for the terms that will be added inside the configuration
-    file. They will be passed by Sphinx to the templating system
-    (jinja + haiku).
-  - ``js`` for the terms processed by odsaMOD.js library and injected
-    while the page is loading.
-
-* Structure of language_msg.json::
-
-   {
-     "en"{
-       "jinja": {
-         "term1": "en_term1",
-         ...
-       },
-       "js": {
-         "term2": "en_term2",
-         ...
-       }
-     },
-     "fi"{
-       "jinja": {
-         "term1": "fi_term1",
-         ...
-       },
-       "js": {
-         "term2": "fi_term2",
-         ...
-       }
-     }
-   }
-
-* The book configuration  program will read the language variable.
-  If a translation for the entered language is not available, the
-  default language english is used.
-  The configuration process will then insert the language inside the
-  onfiguration file and copy the translation file in the Book _static
-  directory.
-
-AVs and exercises also support internationalization through the use of
-an associated ``.json`` file that provides the various translation
-text for all strings that appear in the AV.
-JSAV provides translations to many languages for its infrastructure
-strings.
-
-
-Compile a book instance
------------------------
-
-Here are instructions for how to compile a book instance.
-
-TODO: CREATE INSTRUCTIONS.
-
-If you are responsible for creating content for a specific class that
-has a class instance set up at the OpenDSA backend server, then you
-might be the one responsible for registering the various exercises
-with the backend database.
-See  "Registering a Book Instance" in the
-:ref:`Instructor's Tools  <InstructorTools>` section.
-
-Create Course Notes
--------------------
-OpenDSA uses `hieroglyph <https://github.com/nyergler/hieroglyph/>`_ a Sphinx 
-extension to build HTML slides.
-
-The course notes infrastructures is similar to eTextBook creation, and uses
-``OpenDSA/Makefile``. The only difference is the ``s`` option for slides
-when calling the configuration, for example ``python tools/configure.py s config/OpenDSA.json``.
+As a module author, your ``.rst`` files will always appear in a
+subdirectory of the ``RST`` directory coded to the language that you
+are writing for.
+Like every other aspect of internationalization, we define these
+subdirectories using the two-letter
+`ISO 639-1 <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_
+language codes.
+Thus, all English-language RST files appear in the ``RST/en``
+directory.

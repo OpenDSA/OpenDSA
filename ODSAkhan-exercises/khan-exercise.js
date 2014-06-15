@@ -80,7 +80,7 @@ var MODULE_ORIGIN = getURLParam('moduleOrigin');
 var MODULE_NAME = getURLParam('module');
 
 // The name of the book
-var BOOK_NAME = getURLParam('book');
+var BOOK_ID = getURLParam('book');
 
 var Khan = (function() {
     // Numbers which are coprime to the number of bins, used for jumping through
@@ -838,7 +838,7 @@ var Khan = (function() {
         // Load in jQuery and underscore, as well as the interface glue code
         // TODO(cbhl): Don't load history.js if we aren't in readOnly mode.
         var initScripts = [
-                // Modified by Junyang Chen 
+                // Modified by Junyang Chen
                 //urlBase + "local-only/jquery.js",
                 //urlBase + "local-only/jquery-migrate-1.1.1.js",
                 //urlBase + "local-only/jquery.ui.core.js",
@@ -852,7 +852,7 @@ var Khan = (function() {
                 //urlBase + "local-only/jquery.ui.resizable.js",
                 //urlBase + "local-only/jquery.ui.dialog.js",
                 //urlBase + "local-only/jquery.qtip.js",
-                
+
                 // Add blockUI for OpenPop KA exercises. By Junyang Chen.
                 urlBase + "local-only/jquery.blockUI.js",
                 urlBase + "local-only/underscore.js",
@@ -928,7 +928,7 @@ var Khan = (function() {
                             "HTML-CSS": { scale: MathJaxFontSize}
                         });
                     }
-                }); 
+                });
 
                 loadTestModeSite();
             });
@@ -1170,7 +1170,7 @@ var Khan = (function() {
         return $.trim(guess) === "" || (guess instanceof Array &&
                  $.trim(guess.join("").replace(/,/g, "")) === "");
     }
-    
+
     //+ Jonas Raoni Soares Silva
     //@ http://jsfromhell.com/array/shuffle [v1.0]
     // Added by Junyang Chen
@@ -1178,29 +1178,29 @@ var Khan = (function() {
         for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
             return o;
     };
-     
+
     // TODO Should not fix the array size to 10. Should make it more flexible.
     // Added by Junyang Chen
     function reMakeProblemBag(problems, n){
-        var i, 
+        var i,
             arrSize = problems.length,
             arr = [],
             problembag = [];
 
         for(i = 0; i < arrSize; i ++){
             arr.push((function(){
-                return i;          
+                return i;
             })());
         }
-            
+
         arr = shuffle(arr);
 
         for(var i = 0; i < n; i ++){
             problembag.push((function(){
-             return problems[arr[i]];  
+             return problems[arr[i]];
             })());
         }
- 
+
         return problembag;
     }
 
@@ -1243,7 +1243,7 @@ var Khan = (function() {
         // appropriate number of times
         } else if (problemBag.length > 0) {
             // Modified by Junyang Chen
-            // 
+            //
             problem = problemBag[problemBagIndex];
             //console.log(problemBagIndex);
             id = problem.data("id");
@@ -2151,7 +2151,7 @@ var Khan = (function() {
     }
 
     function loadModule(modNameOrObject) {
-        
+
         var src, deps = [];
         // Modified by Junyang Chen
         if (typeof modNameOrObject === "string") {
@@ -2193,7 +2193,7 @@ var Khan = (function() {
         return selfPromise;
     }
     var tempdeff = $.Deferred();
-    window.testdeffer = tempdeff.promise(); 
+    window.testdeffer = tempdeff.promise();
     function loadTestModeSite() {
         // TODO(alpert): Is the DOM really not yet ready?
         $(function() {
@@ -2236,13 +2236,13 @@ var Khan = (function() {
 
         }
 
-        // Khan site has been finished loading. By Junyang Chen 
+        // Khan site has been finished loading. By Junyang Chen
         tempdeff.resolve();
 
         // Generate the initial problem when dependencies are done being loaded
         makeProblem();
     }
-    
+
     return Khan;
 
 })();

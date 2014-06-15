@@ -10,13 +10,13 @@ Table of Contents
    :numbered:
    :maxdepth: 3
 
-   Overview
+   Introduction
+   Configuration
    ModAuthor
    Style
    AV
    Exercise 
    Client-sideDevelopment
-   Configuration
    Extensions
    Preprocessor
    InstructorTools

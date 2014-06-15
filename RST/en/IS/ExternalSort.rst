@@ -222,12 +222,8 @@ Figure :num:`Figure #ExMerge`.
 
 .. _ExMerge:
 
-.. odsafig:: Images/ExMerge.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: A simple external Mergesort algorithm
+.. inlineav:: ExternalMergeSort ss
+   :output: show
 
    A simple external Mergesort algorithm.
    Input records are divided equally between two input files.
@@ -759,3 +755,4 @@ following:
 
 .. odsascript:: AV/Development/externalsort.js
 .. odsascript:: AV/Development/externalsortsnow.js
+.. odsascript:: AV/Development/externalMergeSort.js

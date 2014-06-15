@@ -1,4 +1,4 @@
-.. _Overview:
+.. _Introduction:
 
 Introduction
 ============
@@ -32,7 +32,8 @@ Those roles include:
 #. Instructor: Someone with a class to manage. If so, you want to read
    about the instructor tools. If you want to set up your own book
    instance by picking and choosing from the OpenDSA collection of
-   materials, then look at the configuration system.
+   materials, then look at compiling a book instance and the
+   configuration system.
 
 #. System administrator: Someone who wants to set up their own copy of
    OpenDSA. OpenDSA separates the front end content delivery server

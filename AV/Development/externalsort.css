@@ -16,6 +16,10 @@
  height: 215px;
 }
 
+#ExternalMergeSort {
+ height: 375px;
+}
+
 svg{
   stroke-width: 1;
 }
