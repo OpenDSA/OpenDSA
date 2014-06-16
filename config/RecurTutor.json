@@ -200,7 +200,31 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0 
-          }                                       
+          },
+         "recwprog27": { 
+            "long_name": "Recursion Programming Exercise 27",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          },
+         "recwprog28": { 
+            "long_name": "Recursion Programming Exercise 28",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          },
+         "recwprog29": { 
+            "long_name": "Recursion Programming Exercise 29",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          },
+         "recwprog30": { 
+            "long_name": "Recursion Programming Exercise 30",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0 
+          }                                                             
         }
       },
       "RecurTutor/Trace": {
@@ -329,12 +353,31 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+        "rectMCQerr20": { 
+            "long_name": "Recursion Tracing Exercise 20",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+        "rectMCQerrfx21": { 
+            "long_name": "Recursion Tracing Exercise 21",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
        }
       },
       "RecurTutor/SummaryEx": {
       "long_name": "Summary Exercises",
-      "exercises": {}
+      "exercises": {
+        "recChapterSumm": { 
+            "long_name": "Recursion Summary Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+       }
       },
     "Appendix": {
       "Glossary": {

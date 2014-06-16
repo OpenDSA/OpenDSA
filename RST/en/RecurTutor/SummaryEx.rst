@@ -14,53 +14,7 @@
 Summary Exercises
 ===========================
 
-.. TODO::
-   :type: Summary Exercise
-	
-	A properly written recursive function might have more than one recursive call.
-	
-	(a) True
-	
-	(b) False
-	
-	The answer:
-	
-	True
-	
-.. TODO::
-   :type: Summary Exercise
-	
-	In a recursive function declaration, the maximum number of statements that may be recursive calls is
-	
-	(a) 1
-	
-	(b) 2
-	
-	(c) n (where n is the argument)
-	
-	(d) There is no fixed maximum
-	
-	The answer:
-	
-	There is no fixed maximum
-
-
-.. TODO::
-   :type: Summary Exercise
-	
-    A recursive function causes an infinite recursion (run-time error) if
-     
-    (a) It has no recursive call.
-	
-	(b) The base case is never executed or not exist.
-	
-	(c) Both of the above.
-	
-	(d) Neither of the above.
-	
-	The answer:
-	
-	The base case is never executed or not exist.
+.. avembed:: Exercises/RecurTutor/recChapterSumm.html ka
 
 
 .. odsascript:: AV/RecurTutor/RecursionIntroCON.js

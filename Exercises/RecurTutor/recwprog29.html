@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Recursion Programming Exercise 20</title>
+  <title> Recursion Programming Exercise 29</title>
   <script src="../../lib/jquery.min.js">
   </script>
   <script src="../../lib/jquery-ui.min.js">
@@ -13,7 +13,7 @@
   <style>
     #codeTextarea{
       width:500px;
-      height:125px;
+      height:300px;
     }
     .textAreaWithLines{
       font-family:courier;      
@@ -48,13 +48,13 @@
       el.className='textAreaWithLines';
       ta.style.position = 'absolute';
       ta.style.left = '30px';
-      var currHeight=50;
+      var currHeight=400;
       var currWidth=400;
       console.log(navigator.appCodeName);
        if ($.browser.mozilla) //if (navigator.appCodeName== "Mozilla" )
        {
-         var currHeight=5;
-         var currWidth=50;
+         var currHeight=20;
+         var currWidth=100;
       
        }
       el.style.height = (ta.offsetHeight + currHeight) + 'px';
@@ -70,7 +70,7 @@
       lineObj.style.textAlign = 'right';
       lineObj.className='lineObj';
       var string = '';
-      for(var no=1;no<50;no++){
+      for(var no=1;no<200;no++){
          if(string.length>0)string = string + '<br>';
          string = string + no;
       }
@@ -107,21 +107,25 @@
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
+      <p class="problem" id = "test">
+     Given the following recursive function signature, write the function code such that this function takes a string and should return true if the bracketing operators in str are balanced, which means that they are correctly nested and aligned. If the string is not balanced, the method returns false.
+ <br />
+</h4>
 
-<p class="problem" id = "test"> <p align ="center">
-<img src= "../../RST/Images/PascalTriangle.jpg" width="150" height="100"> </p>
-Pascal’s triangle is a useful recursive definition that tells us the coefficients in the expansion of the polynomial (x + a)n . Each element in the triangle has a coordinate, given by the row it is on and its position in the row (which you could call a column). Every number in Pascals triangle is defined as the sum of the item above it and the item above it and to the left. If there is a position that does not have an entry, we treat it as if we had a 0 there. Given the following recursive function signature, write down the recursive function which takes a row and a column and finds the value at that position in the triangle.
-<textarea  id="codeTextarea">int pascal(int row, int column){
+<textarea  id="codeTextarea">boolean isBalanced(String str)
+{
 
 
 
 
 
-		 
+
+
+
+
+
 }
-</textarea>
-
-</p>
+</textarea></p>
 
       <div class="question">
 	

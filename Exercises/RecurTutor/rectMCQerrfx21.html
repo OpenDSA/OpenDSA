@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Recursion Tracing Exercise: Fix the error in print</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+ 
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question"> 
+      Which of the following change in the previous question code of the given functions will cause function writeWithCommas to work properly:
+      </p>
+
+      <div class="solution"><var>Interchange the line: <pre>writeThreeDigits(n%1000);</pre> With the line:<pre>writeWithCommas(n/1000);</pre>in the writeWithCommas function.</var></div>
+      <ul class="choices" >
+        <li><var>Change the recursive call:<pre>writeWithCommas(n/1000);</pre> With the line: <pre>writeWithCommas(n%1000);</pre> in the writeWithCommas function. </var></li>
+	<li><var>Interchange the line:<pre>System.out.print(n/100);</pre> With the line: <pre>System.out.print(n%10);</pre> in the writeThreeDigits function.</var></li>	 
+	<li><var>Change the test in writeWithCommas function to<pre>if(n>1000)</pre></var></li>
+	<li><var>Interchange the line:<pre>writeThreeDigits(n%1000);</pre> With the line: <pre>writeThreeDigits(n/1000);</pre> in the writeWithCommas function.</var></li>
+      </ul>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
