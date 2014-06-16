@@ -11,6 +11,10 @@
 
 .. index:: ! Insertion Sort
 
+.. odsalink:: AV/Development/InsertionSortWorstCaseCON.css
+.. odsalink:: AV/Development/InsertionSortBestCaseCON.css
+.. odsalink:: AV/Development/InsertionSortAverageCaseCON.css
+
 Insertion Sort
 ==============
 
@@ -79,63 +83,85 @@ Now try for yourself to see if you understand how Insertion Sort works.
 
 Insertion Sort Analysis
 -----------------------
+The following visualization illustrates the worst case running time analysis of Insertion Sort.
 
-The body of ``inssort`` consists of two nested
-``for`` loops.
-The outer ``for`` loop is executed :math:`n-1` times.
-The inner ``for`` loop is harder to analyze because the
-number of times it executes depends on how many records in positions
-0 to :math:`i-1` have a value less than that of the record in
-position :math:`i`.
-In the worst case, each record must make its way to the start of the
-array.
-This would occur if the records are initially arranged from highest to
-lowest, in the reverse of sorted order.
-In this case, the number of comparisons will be one the first time
-through the ``for`` loop, two the second time, and so on.
-Thus, the total number of comparisons will be
+.. inlineav:: InsertionSortWorstCaseCON ss
+   :output: show
+  
+.. TODO::
+   :type: Review the Worst case analysis discussion
+      
+   The body of ``inssort`` consists of two nested
+   ``for`` loops.
+   The outer ``for`` loop is executed :math:`n-1` times.
+   The inner ``for`` loop is harder to analyze because the
+   number of times it executes depends on how many records in positions
+   0 to :math:`i-1` have a value less than that of the record in
+   position :math:`i`.
+   In the worst case, each record must make its way to the start of the
+   array.
+   This would occur if the records are initially arranged from highest to
+   lowest, in the reverse of sorted order.
+   In this case, the number of comparisons will be one the first time
+   through the ``for`` loop, two the second time, and so on.
+   Thus, the total number of comparisons will be
+   .. math::
+      \sum_{i=1}^{n-1} i = \frac{n(n-1)}{2} \approx n^2/2 = \Theta(n^2).
+      
+This visualization illustrates the best case running time analysis of Insertion Sort.
 
-.. math::
-   \sum_{i=1}^{n-1} i = \frac{n(n-1)}{2} \approx n^2/2 = \Theta(n^2).
+.. inlineav:: InsertionSortBestCaseCON ss
+   :output: show
 
-In contrast, consider the best-case cost.
-This occurs when the values occur in sorted order from lowest to
-highest.
-In this case, every test on the inner ``for`` loop will
-fail immediately, and no records will be moved.
-The total number of comparisons will be :math:`n-1`, which is the
-number of times the outer ``for`` loop executes.
-Thus, the cost for Insertion Sort in the best case is
-:math:`\Theta(n)`.
+.. TODO::
+   :type: Review the Best case analysis discussion
+   
+   In contrast, consider the best-case cost.
+   This occurs when the values occur in sorted order from lowest to
+   highest.
+   In this case, every test on the inner ``for`` loop will
+   fail immediately, and no records will be moved.
+   The total number of comparisons will be :math:`n-1`, which is the
+   number of times the outer ``for`` loop executes.
+   Thus, the cost for Insertion Sort in the best case is
+   :math:`\Theta(n)`.
 
-.. index:: ! inversion
+   .. index:: ! inversion
+   
+Finally, the following visualization illustrates the average case running time analysis of Insertion Sort.
 
-What is the average-case cost of Insertion Sort?
-When record :math:`i` is processed, the number
-of times through the inner ``for`` loop depends on how far
-"out of order" the record is.
-In particular, the inner ``for`` loop is executed once for
-each value greater than the value of record :math:`i` that appears in
-array positions 0 through :math:`i-1`.
-For example, in the slideshows above the value 14 is initially
-preceded by five values greater than it.
-Each such occurrence is called an :term:`inversion`.
-The number of inversions (i.e., the number of values greater than a
-given value that occur prior to it in the array) will determine the
-number of comparisons and swaps that must take place.
-So long as all swaps are to adjacent records, 14 will have to swap at
-least six times to get to the right position.
+.. inlineav:: InsertionSortAverageCaseCON ss
+   :output: show
 
-To calculate the average cost, we want to determine what the average
-number of inversions will be for the record in position :math:`i`.
-We expect on average that half of the records in the first
-:math:`i-1` array positions will have a value greater than that of
-the record at position :math:`i`.
-Thus, the average case should be about half the cost of the worst
-case, or around :math:`n^2/4`, which is still
-:math:`\Theta(n^2)`.
-So, the average case is no better than the worst case in
-its growth rate.
+.. TODO::
+   :type: Review the Average case analysis discussion
+
+   What is the average-case cost of Insertion Sort?
+   When record :math:`i` is processed, the number
+   of times through the inner ``for`` loop depends on how far
+   "out of order" the record is.
+   In particular, the inner ``for`` loop is executed once for
+   each value greater than the value of record :math:`i` that appears in
+   array positions 0 through :math:`i-1`.
+   For example, in the slideshows above the value 14 is initially
+   preceded by five values greater than it.
+   Each such occurrence is called an :term:`inversion`.
+   The number of inversions (i.e., the number of values greater than a
+   given value that occur prior to it in the array) will determine the
+   number of comparisons and swaps that must take place.
+   So long as all swaps are to adjacent records, 14 will have to swap at
+   least six times to get to the right position.
+
+   To calculate the average cost, we want to determine what the average
+   number of inversions will be for the record in position :math:`i`.
+   We expect on average that half of the records in the first
+   :math:`i-1` array positions will have a value greater than that of
+   the record at position :math:`i`.
+   Thus, the average case should be about half the cost of the worst
+   case, or around :math:`n^2/4`, which is still
+   :math:`\Theta(n^2)`.
+   So, the average case is no better than the worst case in
+   its growth rate.
 
 While the best case is significantly faster than the average and worst
 cases, the average and worst cases are usually more reliable
@@ -205,3 +231,6 @@ affect what is the best sort algorithm to use.
 .. odsascript:: AV/Sorting/InsertionSortP1CON.js
 .. odsascript:: AV/Sorting/InsertionSortP2CON.js
 .. odsascript:: AV/Sorting/InsertionSortP3CON.js
+.. odsascript:: AV/Development/InsertionSortWorstCaseCON.js
+.. odsascript:: AV/Development/InsertionSortBestCaseCON.js
+.. odsascript:: AV/Development/InsertionSortAverageCaseCON.js

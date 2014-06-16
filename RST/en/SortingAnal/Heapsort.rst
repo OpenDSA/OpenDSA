@@ -11,6 +11,8 @@
 
 .. index:: ! Heapsort
 
+.. odsalink:: AV/Development/HeapSortAnalysisCON.css
+
 Heapsort
 ========
 
@@ -59,18 +61,26 @@ Module :numref:`External Sorting <ExternalSort>`.
 A complete implementation is as follows.
 
 .. codeinclude:: Sorting/Heapsort 
-   :tag: Heapsort        
+   :tag: Heapsort 
+   
+Here is a visualization illustrating the running time analysis of Heap Sort       
 
-Because building the heap takes :math:`\Theta(n)` time
-(see Module :numref:`Heaps <Heaps>`)
-and because :math:`n` deletions
-of the maximum-valued record each take :math:`\Theta(\log n)` time,
-we see that the entire Heapsort operation takes
-:math:`\Theta(n \log n)` time in the worst and average cases.
-If all key values were equal, then Heapsort would cost
-:math:`\Theta(n)` in be best case because every call  to ``removemax``
-would result in calls to ``siftdown`` that complete in constant time
-because the new root value never swaps with its children.
+.. inlineav:: HeapSortAnalysisCON ss
+   :output: show
+
+.. TODO::
+   :type: Review HeapSort's analysis discussion
+   
+   Because building the heap takes :math:`\Theta(n)` time
+   (see Module :numref:`Heaps <Heaps>`)
+   and because :math:`n` deletions
+   of the maximum-valued record each take :math:`\Theta(\log n)` time,
+   we see that the entire Heapsort operation takes
+   :math:`\Theta(n \log n)` time in the worst and average cases.
+   If all key values were equal, then Heapsort would cost
+   :math:`\Theta(n)` in be best case because every call  to ``removemax``
+   would result in calls to ``siftdown`` that complete in constant time
+   because the new root value never swaps with its children.
 
 While typically slower than Quicksort by a constant factor
 (because unloading the heap using ``removemax`` is somewhat slower
@@ -110,3 +120,4 @@ Now here are summary questions.
 
 .. odsascript:: JSAV/extras/binaryheap.js
 .. odsascript:: AV/Sorting/heapsortCON.js
+.. odsascript:: AV/Development/HeapSortAnalysisCON.js

@@ -11,6 +11,7 @@
 
 .. index:: ! sorting; lower bounds proof
 
+.. odsalink:: AV/Development/SortingLowerBoundCON.css
 Lower Bounds for Sorting
 ========================
 
@@ -149,115 +150,122 @@ that might be the eventual result of the algorithm.
    labeled X, Y, and Z, initially stored at positions 0, 1, and 2,
    respectively, in input array ``A``.
 
-When :math:`n = 3`, the first comparison made by Insertion Sort
-is between the second item in the input array (Y) and the first
-item in the array (X).
-There are two possibilities:
-Either the value of Y is less than that
-of X, or the value of Y is *not* less than that of X.
-This decision is modeled by the first branch in the tree.
-If Y is less than X, then the left branch should be taken and
-Y must appear before X in the final output.
-Only three of the original six permutations have this property,
-so the left child of the root lists the three
-permutations where Y appears before X: YXZ, YZX, and ZYX.
-Likewise, if Y were not less than X, then the right branch would be
-taken, and only the three permutations in which Y appears after X are
-possible outcomes: XYZ, XZY, and ZXY.
-These are listed in the right child of the root.
+.. TODO::
+   :type: Review the discussion of Sorting lower bound proof
+   When :math:`n = 3`, the first comparison made by Insertion Sort
+   is between the second item in the input array (Y) and the first
+   item in the array (X).
+   There are two possibilities:
+   Either the value of Y is less than that
+   of X, or the value of Y is *not* less than that of X.
+   This decision is modeled by the first branch in the tree.
+   If Y is less than X, then the left branch should be taken and
+   Y must appear before X in the final output.
+   Only three of the original six permutations have this property,
+   so the left child of the root lists the three
+   permutations where Y appears before X: YXZ, YZX, and ZYX.
+   Likewise, if Y were not less than X, then the right branch would be
+   taken, and only the three permutations in which Y appears after X are
+   possible outcomes: XYZ, XZY, and ZXY.
+   These are listed in the right child of the root.
 
-Let us assume for the moment that Y is less than X and so the
-left branch is taken.
-In this case, Insertion Sort swaps the two values.
-At this point the array stores YXZ.
-Thus, in Figure :num:`Figure #Dectree` the left child of the root
-shows YXZ above the line.
-Next, the third value in the array is compared against the second
-(i.e., Z is compared with X).
-Again, there are two possibilities.
-If Z is less than X, then these items should be swapped (the left
-branch).
-If Z is not less than X, then Insertion Sort is complete (the right
-branch).
+   Let us assume for the moment that Y is less than X and so the
+   left branch is taken.
+   In this case, Insertion Sort swaps the two values.
+   At this point the array stores YXZ.
+   Thus, in Figure :num:`Figure #Dectree` the left child of the root
+   shows YXZ above the line.
+   Next, the third value in the array is compared against the second
+  (i.e., Z is compared with X).
+   Again, there are two possibilities.
+   If Z is less than X, then these items should be swapped (the left
+   branch).
+   If Z is not less than X, then Insertion Sort is complete (the right
+   branch).
 
-Note that the right branch reaches a leaf node, and that this leaf node
-contains only one permutation: YXZ.
-This means that only permutation YXZ can be the outcome based
-on the results of the decisions taken to reach this node.
-In other words, Insertion Sort has "found" the single permutation
-of the original input that yields a sorted list.
-Likewise, if the second decision resulted in taking the left branch,
-a third comparison, regardless of the outcome, yields nodes in the
-decision tree with only single permutations.
-Again, Insertion Sort has "found" the correct
-permutation that yields a sorted list.
+   Note that the right branch reaches a leaf node, and that this leaf node
+   contains only one permutation: YXZ.
+   This means that only permutation YXZ can be the outcome based
+   on the results of the decisions taken to reach this node.
+   In other words, Insertion Sort has "found" the single permutation
+   of the original input that yields a sorted list.
+   Likewise, if the second decision resulted in taking the left branch,
+   a third comparison, regardless of the outcome, yields nodes in the
+   decision tree with only single permutations. 
+   Again, Insertion Sort has "found" the correct
+   permutation that yields a sorted list.
 
-Any sorting algorithm based on comparisons can be modeled by a
-decision tree in this way, regardless of the size of the input.
-Thus, all sorting algorithms can be viewed as algorithms to "find"
-the correct permutation of the input that yields a sorted list.
-Each algorithm based on comparisons can be viewed as proceeding by
-making branches in the tree based on the results of key comparisons,
-and each algorithm can terminate once a node with a single permutation
-has been reached.
+   Any sorting algorithm based on comparisons can be modeled by a
+   decision tree in this way, regardless of the size of the input.
+   Thus, all sorting algorithms can be viewed as algorithms to "find"
+   the correct permutation of the input that yields a sorted list.
+   Each algorithm based on comparisons can be viewed as proceeding by
+   making branches in the tree based on the results of key comparisons,
+   and each algorithm can terminate once a node with a single permutation
+   has been reached.
 
-How is the worst-case cost of an algorithm expressed by the
-decision tree?
-The decision tree shows the decisions made by an algorithm for all
-possible inputs of a given size.
-Each path through the tree from the root to a leaf is one possible
-series of decisions taken by the algorithm.
-The depth of the deepest node represents the longest series of
-decisions required by the algorithm to reach an answer.
+   How is the worst-case cost of an algorithm expressed by the
+   decision tree?
+   The decision tree shows the decisions made by an algorithm for all
+   possible inputs of a given size.
+   Each path through the tree from the root to a leaf is one possible
+   series of decisions taken by the algorithm.
+   The depth of the deepest node represents the longest series of
+   decisions required by the algorithm to reach an answer.
 
-There are many comparison-based sorting algorithms, and each will be
-modeled by a different decision tree.
-Some decision trees might be well-balanced, others might be unbalanced.
-Some trees will have more nodes than others (those with more nodes
-might be making "unnecessary" comparisons).
-In fact, a poor sorting algorithm might have an arbitrarily large
-number of nodes in its decision tree, with leaves of arbitrary depth.
-There is no limit to how slow the "worst" possible sorting
-algorithm could be.
-However, we are interested here in knowing what the *best*
-sorting algorithm could have as its minimum cost in the worst
-case.
-In other words, we would like to know what is the *smallest*
-depth possible for the *deepest* node in the tree for any
-sorting algorithm.
+   There are many comparison-based sorting algorithms, and each will be
+   modeled by a different decision tree.
+   Some decision trees might be well-balanced, others might be unbalanced.
+   Some trees will have more nodes than others (those with more nodes
+   might be making "unnecessary" comparisons).
+   In fact, a poor sorting algorithm might have an arbitrarily large
+   number of nodes in its decision tree, with leaves of arbitrary depth.
+   There is no limit to how slow the "worst" possible sorting
+   algorithm could be.
+   However, we are interested here in knowing what the *best*
+   sorting algorithm could have as its minimum cost in the worst
+   case.
+   In other words, we would like to know what is the *smallest*
+   depth possible for the *deepest* node in the tree for any
+   sorting algorithm.
 
-The smallest depth of the deepest node will depend on the number of
-nodes in the tree.
-Clearly we would like to "push up" the nodes in the tree, but there
-is limited room at the top.
-A tree of height 1 can only store one node (the root);
-the tree of height 2 can store three nodes; the tree of height 3 can
-store seven nodes, and so on.
+   The smallest depth of the deepest node will depend on the number of
+   nodes in the tree.
+   Clearly we would like to "push up" the nodes in the tree, but there
+   is limited room at the top.
+   A tree of height 1 can only store one node (the root);
+   the tree of height 2 can store three nodes; the tree of height 3 can
+   store seven nodes, and so on.
 
-Here are some important facts worth remembering.
+   Here are some important facts worth remembering.
 
-* A binary tree of height :math:`n` can store at most :math:`2^n-1`
-  nodes.
-* Equivalently, a tree with :math:`n` nodes requires at least
-  :math:`\lceil \log (n+1) \rceil` levels.
+   * A binary tree of height :math:`n` can store at most :math:`2^n-1`
+   nodes.
+   * Equivalently, a tree with :math:`n` nodes requires at least
+   :math:`\lceil \log (n+1) \rceil` levels.
 
-What is the minimum number of nodes that must be in the decision tree
-for any comparison-based sorting algorithm for :math:`n` values?
-Because sorting algorithms are in the business of determining which
-unique permutation of the input corresponds to the sorted list,
-the decision tree for any sorting algorithm must contain at least one
-leaf node for each possible permutation.
-There are :math:`n!` permutations for a set of :math:`n` numbers.
+   What is the minimum number of nodes that must be in the decision tree
+   for any comparison-based sorting algorithm for :math:`n` values?
+   Because sorting algorithms are in the business of determining which
+   unique permutation of the input corresponds to the sorted list,
+   the decision tree for any sorting algorithm must contain at least one
+   leaf node for each possible permutation.
+   There are :math:`n!` permutations for a set of :math:`n` numbers.
 
-Because there are at least :math:`n!` nodes in the tree, we know that
-the tree must have :math:`\Omega(\log n!)` levels.
-One way to find the value of :math:`\log n!` is from
-Stirling's approximation, from which we can deduce that
-:math:`\log n!` is in :math:`\Omega(n \log n)`.
-The decision tree for any comparison-based sorting algorithm must
-have nodes :math:`\Omega(n \log n)` levels deep.
-Thus, in the worst case, any such sorting algorithm must require
-:math:`\Omega(n \log n)` comparisons.
+   Because there are at least :math:`n!` nodes in the tree, we know that
+   the tree must have :math:`\Omega(\log n!)` levels.
+   One way to find the value of :math:`\log n!` is from
+   Stirling's approximation, from which we can deduce that
+   :math:`\log n!` is in :math:`\Omega(n \log n)`.
+   The decision tree for any comparison-based sorting algorithm must
+   have nodes :math:`\Omega(n \log n)` levels deep.
+   Thus, in the worst case, any such sorting algorithm must require
+   :math:`\Omega(n \log n)` comparisons.
+   
+Here is a Visualization that illustrates the Sorting Lower Bound proof
+
+.. inlineav:: SortingLowerBoundCON ss
+   :output: show
 
 Any sorting algorithm requiring :math:`\Omega(n \log n)` comparisons
 in the worst case requires :math:`\Omega(n \log n)` running time in
@@ -276,3 +284,4 @@ Here are some review questions to check that you understand
 this proof.
 
 .. avembed:: Exercises/Sorting/SortBoundSumm.html ka
+.. odsascript:: AV/Development/SortingLowerBoundCON.js
