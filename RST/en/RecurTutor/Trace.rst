@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursionIntroCON.css
+.. odsalink:: AV/RecurTutor/recursiontracecon1.css
 
 
 How to trace a recursive code?
@@ -240,4 +240,4 @@ and you can’t pass rvalues to reference parameters.
 
 
  
-.. odsascript:: AV/RecurTutor/RecursionTraceCON.js
+.. odsascript:: AV/RecurTutor/recursiontracecon1.js

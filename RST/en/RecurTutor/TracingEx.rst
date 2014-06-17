@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursionIntroCON.css
+
 Tracing Practice Exercises
 ===========================
 
@@ -35,4 +35,4 @@ Tracing Practice Exercises
 .. avembed:: Exercises/RecurTutor/rectMCQerrfx21.html ka
 	
 
-.. odsascript:: AV/RecurTutor/RecursionIntroCON.js
+

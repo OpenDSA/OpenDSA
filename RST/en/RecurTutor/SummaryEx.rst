@@ -8,8 +8,6 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursionIntroCON.css
-
 
 Summary Exercises
 ===========================
@@ -17,4 +15,4 @@ Summary Exercises
 .. avembed:: Exercises/RecurTutor/recChapterSumm.html ka
 
 
-.. odsascript:: AV/RecurTutor/RecursionIntroCON.js
+
