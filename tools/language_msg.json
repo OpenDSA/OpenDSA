@@ -198,7 +198,7 @@
       "login_fail": "Inloggning misslyckades",
       "credential_warn": "Vänligen ange ditt användarnamn och lösenord",
       "bug_ack": "Din bugg/återkoppling är mottagen.\n Tack",
-      "hide": "Göm",
+      "hide": "Dölj",
       "show": "Visa",
       "no_reply_server": "Servern svarade inte.  Vänligen försök igen senare.",
       "assignment": "Uppgift",

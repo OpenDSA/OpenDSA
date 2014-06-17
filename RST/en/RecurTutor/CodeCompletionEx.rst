@@ -8,7 +8,6 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursionIntroCON.css
 
 
 Code Completion Practice Exercises
@@ -87,4 +86,4 @@ can have more than one base case and recursive case. The following Figure/Visual
 
 You need to practice harder recursive functions in order to gain more experience on recursion.
 
-.. odsascript:: AV/RecurTutor/RecursionIntroCON.js
+

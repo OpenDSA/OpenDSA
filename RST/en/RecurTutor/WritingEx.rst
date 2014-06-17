@@ -8,7 +8,6 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursionIntroCON.css
 
 
 Writing Practice Exercises
@@ -48,4 +47,3 @@ Old merchants measured many commodities using weights and a two-pan balancea pra
 .. avembed:: Exercises/RecurTutor/recwprog30.html ka
 
 
-.. odsascript:: AV/RecurTutor/RecursionIntroCON.js

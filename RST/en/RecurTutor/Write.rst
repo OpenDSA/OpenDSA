@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursionIntroCON.css
+
 
 
 How to write a recursive function?
@@ -129,5 +129,3 @@ However, on occasion, you may need to do some work prior to the recursive functi
 
 
 You will never understand recursion well without doing a lot of practice on it. Here are set of practice exercises on recursion, try to practice them all to master recursion.
-
-.. odsascript:: AV/RecurTutor/RecursionIntroCON.js
