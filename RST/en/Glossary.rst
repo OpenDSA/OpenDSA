@@ -19,8 +19,11 @@ Glossary
       Abbreviation for :term:`abstract data type`.
 
    abstract data type
-      Abreviated ADT. The realization of a data type as a software
+      Abreviated :term:`ADT`.
+      The realization of a data type as the interface to a software
       component.
+      This generally comes in the form of a collection of function
+      names with their associated typed parameters and return values.
 
    activation record
       The entity that is stored on the :term:`runtime stack` during
