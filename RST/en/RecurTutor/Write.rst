@@ -9,7 +9,7 @@
    :topic: Recursion
 
 .. odsalink:: AV/RecurTutor/recursionwritecon1.css
-
+.. odsalink:: AV/RecurTutor/recursionwritecon2.css
 
 How to write a recursive function?
 ==================================
@@ -29,61 +29,14 @@ The following visualization shows the basic four steps you need to write any rec
    :output: show  
 
 The simplest version of a recursive function is an if-else statement where the \lq\lq if" part is the base case, and the "else" part is the recursive case. There are several mistakes people make with a base case. The first one is picking too large a base case. Second, not realizing there may be more than one base case. Finally, thinking that the base case only gets called when the input size is the smallest. In fact, the recursion ALWAYS makes it to some base case. Thus, the base case is where the recursion eventually stops. Don't think of it as merely called when the input is, say, 0. It gets called for all cases (eventually).
-In the recursive case, there is a recursive call. Most recursive functions do something after the call. After all, you often need the solution of the \lq\lq smaller" recursive call to create the solution for the "big" problem.
+In the recursive case, there is a recursive call. Most recursive functions do something after the call. After all, you often need the solution of the \lq\lq smaller" recursive call to create the solution for the "big" problem. However, on occasion, you may need to do some work prior to the recursive function call (e.g., calculating or printing something).
 
-However, on occasion, you may need to do some work prior to the recursive function call (e.g., calculating or printing something).
+The following visualization shows three different versions of the Sum recursive function and the differences between them
 
-.. TODO::
-   :type: Visualization
-   
-   The following visualization shows three different versions of the Sum recursive function and the differences between them
-
-   To solve the sum problem, we use the simpler of the two versions.
-
-   int sum( int arr[], int size )
-    {
-      if ( size == 0 )  // base case 
-          return 0;
-      else{            
-         // recursive call
-          int smallResult = sum( arr, size - 1 );           
-         // use solution of recursive call to solve this problem            
-          return smallResult + arr[ size - 1 ];
-       }
-     }
-
-   Some people don’t like multiple return statements. That can be easily handled
-
-   int sum( int arr[], int size )
-   {
-     if ( size == 0 )  
-      // base case 
-          return 0;
-     else        
-     {            
-      // recursive call            
-      int smallResult = sum( arr, size - 1 );
-      // use solution of recursive call to solve this problem
-      result= smallResult + arr[ size - 1 ];
-     } 
-     return result;
-
-   You may even think there's no reason to declare smallResult and prefer to write
-
-   int sum( int arr[], int size )    
-   {       
-    if ( size == 0 )   
-      return 0;
-    else        
-     {      
-      return sum( arr, size - 1 )+ arr[ size - 1 ];
-     }
-    }
-
-   Certainly, once you gain more experience with recursive functions, this is the preferable version. However, declaring a local variable to store the result of the recursive 
-   call might help you in the beginning to think about the small solution and then thinking about how to use that small solution to solve the bigger problem.
-
+.. inlineav:: RecursionWriteCON2 ss
+   :output: show  
 
 You will never understand recursion well without doing a lot of practice on it. Here are set of practice exercises on recursion, try to practice them all to master recursion.
 
 .. odsascript:: AV/RecurTutor/recursionwritecon1.js
+.. odsascript:: AV/RecurTutor/recursionwritecon2.js

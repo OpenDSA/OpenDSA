@@ -35,7 +35,13 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
-          } 
+          },
+           "RecursionWriteCON2": {
+            "long_name": "Recursion Code Writing Slideshow 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }  
        }
       },
       "RecurTutor/CodeCompletionEx": {
