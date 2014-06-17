@@ -30,7 +30,13 @@
       },
       "RecurTutor/Write": {
       "long_name": "How to write a recursive function",
-      "exercises": { }
+      "exercises": {"RecursionWriteCON1": {
+            "long_name": "Recursion Code Writing Slideshow 1",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          } 
+       }
       },
       "RecurTutor/CodeCompletionEx": {
       "long_name": "Code Completion Exercises",
