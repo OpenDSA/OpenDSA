@@ -96,12 +96,15 @@ NP: min
 
 test: min
 	python $(CONFIG_SCRIPT) config/test.json
-	
+
 testanal: min
 	python $(CONFIG_SCRIPT) config/testanal.json	
 
 testfi: min
 	python $(CONFIG_SCRIPT) config/testfi.json
+
+testsv: min
+	python $(CONFIG_SCRIPT) config/testsv.json
 
 testcpp: min
 	python $(CONFIG_SCRIPT) config/testcpp.json
