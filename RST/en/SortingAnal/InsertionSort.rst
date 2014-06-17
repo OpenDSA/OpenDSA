@@ -105,7 +105,9 @@ The following visualization illustrates the worst case running time analysis of 
    In this case, the number of comparisons will be one the first time
    through the ``for`` loop, two the second time, and so on.
    Thus, the total number of comparisons will be
+
    .. math::
+
       \sum_{i=1}^{n-1} i = \frac{n(n-1)}{2} \approx n^2/2 = \Theta(n^2).
       
 This visualization illustrates the best case running time analysis of Insertion Sort.
