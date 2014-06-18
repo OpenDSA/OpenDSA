@@ -12,6 +12,8 @@
 .. odsalink:: AV/RecurTutor/recursiontracecon2.css
 .. odsalink:: AV/RecurTutor/recursiontracecon3.css
 .. odsalink:: AV/RecurTutor/recursiontracecon4.css
+.. odsalink:: AV/RecurTutor/recursiontracecon5.css
+.. odsalink:: AV/RecurTutor/recursiontracecon6.css
 
 How to trace a recursive code?
 ==============================
@@ -50,6 +52,36 @@ arrived at, having been built up from the base case.
 
 Whenever the return statement of the recursive call has no more work to do
 AFTER the recursive call, the function is said to be tail-recursive.
+
+
+Next Example will model the domino effect recursively:
+
+.. inlineav:: RecursionTraceCON5 ss
+   :output: show 
+
+After modeling the domino effect recursively, the two steps
+in the previous visualization becomes a template solution for general linear
+recursive questions. If we think of tipping over each
+domino as performing a further step of computation toward
+the final solution, then this template is capable of solving
+all linear recursive problems. The rules of thumb toward a
+linear recursive solution can now be summarized as follows:
+
+1. Since the first domino has to be tipped over manually,
+the solution for base case is computed non-recursively.
+
+2. For any other domino, before a domino is tipped over
+all of its preceded dominos have to be tipped over and
+then the current domino will be tipped over
+subsequently. So the solution for a recursive case is
+computed recursively by solving its next smaller case
+first followed by some subsequent computation.
+
+
+Next visualization will show how we can use the previously illustrated Domino effect solving technique to print positive integers from 1 to N recursively. 
+
+.. inlineav:: RecursionTraceCON6 ss
+   :output: show 
 
 
 .. TODO::
@@ -164,20 +196,6 @@ AFTER the recursive call, the function is said to be tail-recursive.
     explored, or that a space has been visited previously and should not be considered again. By traversing the two dimensional array, one can easily draw an overhead view of 
     maze by drawing squares of different colors to represent each of the possible values of a block.
 
-.. TODO::
-   :type: Visualization
-   
-    Possible ideas
-   
-    Binary tree traversals
-   
-    Binary search in an array
-   
-    Binary search tree algorithms
-   
-    Height-balanced binary search tree algorithms for insertion and deletion
-   
-    Merge-sort sorting algorithm
 
 
  
@@ -185,3 +203,5 @@ AFTER the recursive call, the function is said to be tail-recursive.
 .. odsascript:: AV/RecurTutor/recursiontracecon2.js
 .. odsascript:: AV/RecurTutor/recursiontracecon3.js
 .. odsascript:: AV/RecurTutor/recursiontracecon4.js
+.. odsascript:: AV/RecurTutor/recursiontracecon5.js
+.. odsascript:: AV/RecurTutor/recursiontracecon6.js

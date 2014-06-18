@@ -294,6 +294,12 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "RecursionTraceCON5": {
+            "long_name": "Recursion Tracing Slideshow 5",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
 
         }
