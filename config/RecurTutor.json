@@ -276,7 +276,14 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "RecursionTraceCON2": {
+            "long_name": "Recursion Tracing Slideshow 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
+
         }
       },
       "RecurTutor/TracingEx": {

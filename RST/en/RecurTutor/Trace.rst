@@ -9,7 +9,7 @@
    :topic: Recursion
 
 .. odsalink:: AV/RecurTutor/recursiontracecon1.css
-
+.. odsalink:: AV/RecurTutor/recursiontracecon2.css
 
 How to trace a recursive code?
 ==============================
@@ -17,20 +17,13 @@ Tracing recursive functions is a great way to learn how it behave. After you
 become comfortable with tracing, you rarely need to trace again. You begin to
 “trust” that recursion will work.
 When tracing most recursive functions, there is winding and unwinding part.
-The “”winding” part occurs as the recursion heads to the base case. The “un-
+The "winding" part occurs as the recursion heads to the base case. The “un-
 winding” part occurs when the recursion returns back to the original call. Most
-people forget there is the “unwinding” phase. The winding and unwinding is
+people forget there is the "unwinding" phase. The winding and unwinding is
 not really special to recursion. It occurs with any function.
 
-.. TODO::
-   :type: Visualization
-   
-   Suppose function a() has a call to function b(), and function b() has a call to function c(), and function c() has a call to function d(). Once function
-   d() is done, what happens next? It goes back to c(), then to b(), and finally back to a(). So you can think of going from a() to d() as the ”winding” of the recursion,
-   and returning back to a() as the unwinding. The same thing happens with recursive functions, which goes to show you that recursive functions aren’t any more special than   
-   normal functions. If function f() makes a recursive call to function f(), which makes a call to function f(), which makes a call to function f() (which is the base
-   case), then it will eventually go back to f(), then f(), and finally back to the original f(). That may be harder to follow, but it’s really the same principle.
-
+.. inlineav:: RecursionTraceCON2 ss
+   :output: show 
 
 
 .. TODO::
@@ -241,3 +234,4 @@ and you can’t pass rvalues to reference parameters.
 
  
 .. odsascript:: AV/RecurTutor/recursiontracecon1.js
+.. odsascript:: AV/RecurTutor/recursiontracecon2.js
