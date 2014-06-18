@@ -19,11 +19,8 @@ Glossary
       Abbreviation for :term:`abstract data type`.
 
    abstract data type
-      Abreviated :term:`ADT`.
-      The realization of a data type as the interface to a software
+      Abreviated ADT. The realization of a data type as a software
       component.
-      This generally comes in the form of a collection of function
-      names with their associated typed parameters and return values.
 
    activation record
       The entity that is stored on the :term:`runtime stack` during
@@ -178,6 +175,8 @@ Glossary
       time.
 
    bubble sort
+      :to-term: algorithm :label: type of
+
       A simple sort that requires :math:`Theta(n^2)` time in best,
       average, and worst cases. Even an optimized version will
       normally run slower than insertion sort, so it has little to
@@ -538,6 +537,8 @@ Glossary
       General tree nodes tend to be harder to implement for this reason.
 
    graph
+      :to-term: vertices :label: contains
+
       A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
       of a set of :term:`vertices` :math:`\mathbf{V}` and a set of
       :term:`edges` :math:`\mathbf{E}`,
