@@ -43,12 +43,12 @@ var PerseusBridge = Exercises.PerseusBridge,
     lastAttemptOrHint,
     firstProblem = true;
 
-//  
-var server = SERVER_URL? SERVER_URL : typeof OpenPopKa !== "undefined"? "https://opendsa.cc.vt.edu": null;
-BOOK_NAME =  BOOK_NAME? BOOK_NAME : typeof OpenPopKa !== "undefined"? "CS3114": null;
+//
+var server = SERVER_URL ? SERVER_URL : typeof OpenPopKa !== "undefined"? "https://opendsa.cc.vt.edu": null;
+BOOK_ID =  BOOK_ID ? BOOK_ID : typeof OpenPopKa !== "undefined"? "CS3114": null;
 
 var jsonData = {};
-jsonData.book = BOOK_NAME? BOOK_NAME : typeof OpenPopKa !== "undefined"? "CS3114": null;
+jsonData.book = BOOK_ID;
 jsonData.module = MODULE_NAME;
 jsonData.key = 'phantom-key';
 
@@ -118,7 +118,7 @@ function problemTemplateRendered() {
         $("#positive-reinforcement > img").attr("src",
                 Exercises.khanExercisesUrlBase + "images/face-smiley.png");
     }
-    
+
     // 'Check Answer' or 'Submit Answer'
     originalCheckAnswerText = $("#check-answer-button").val();
 
@@ -257,7 +257,7 @@ function handleMsg(message , lineNum, fileName , className){
         newmessage = newmessage.replace(/\^/gi, "");
 
         var numbers = newmessage.match(/\d+\.?\d*/g);
-           
+
         for (var i=numbers.length-2 ; i>=0 ; i--){
             var newnumber = numbers[i]-lineNum;
             var stringnum = numbers[i]+'';
@@ -265,7 +265,7 @@ function handleMsg(message , lineNum, fileName , className){
             newmessage=newmessage.replace(stringnum , newstringnumber);
         }
     }
-    
+
     var result =  newmessage.split(",");
     return result;
 }
@@ -277,7 +277,7 @@ function emptyMsgArea(){
 
 // Show feed-back message from the back end
 function feedbackEffect(message,lineNum, fileName , className){
-    
+
     var msg = handleMsg(message ,lineNum, fileName , className);
 
     for (var i = 0; i < msg.length; i++) {
@@ -308,7 +308,7 @@ function handleAttempt(data) {
         // has been called or sometimes the server gets confused.
         return false;
     }
-    
+
     if (score.correct || skipped) {
         // Once we receive a correct answer or a skip, that's it; further
         // attempts are disallowed.
@@ -370,7 +370,7 @@ function handleAttempt(data) {
     //}
     if(!server && typeof OpenPopKa === "undefined"){
           // Skip the server
-          return false;     
+          return false;
     }
 
     if (previewingItem) {
@@ -387,16 +387,16 @@ function handleAttempt(data) {
 
     // Save the problem results to the server
     var requestUrl = typeof OpenPopKa !== "undefined"? "/attemptpop/" : "/attempt/";
-    
+
     if(typeof OpenPopKa !== "undefined"){
-        /*$('div#answercontent').block({ css: { 
-            border: 'none', 
-            padding: '15px', 
-            backgroundColor: '#000', 
-            '-webkit-border-radius': '10px', 
-            '-moz-border-radius': '10px', 
-            opacity: .5, 
-            color: '#fff' 
+        /*$('div#answercontent').block({ css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
         } });*/
         $.blockUI({message:"Waiting for the server to evaluate your code ..."});
 
@@ -409,7 +409,7 @@ function handleAttempt(data) {
       data = jQuery.parseJSON(data);
       var progress = 0;
       var streakNum = 0;
-    
+
       if(typeof OpenPopKa !== "undefined"){
         $.unblockUI();
       }
@@ -435,7 +435,7 @@ function handleAttempt(data) {
         progress = data.streak;
         if (parseInt(data.progress._sign) != 0) {
           progress = 0;
-        }  
+        }
         streakNum = parseFloat(data._exercise_cache.streak._int) *  Math.pow(10,parseInt(data._exercise_cache.streak._exp));
       }
 
@@ -445,12 +445,12 @@ function handleAttempt(data) {
          parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}', MODULE_ORIGIN);
 
       }
-      
+
       total = parseInt(total, 10);
       $('#points-progress').text(total);
 
     });
-    
+
     respondpromise.fail(function(xhr) {
         // unblock the page
         if(typeof OpenPopKa !== "undefined"){
@@ -596,13 +596,13 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
       key = session.key;
     }
 
-    var OpenPop_code = typeof $('#codeTextarea').val() !== "undefined" ? $('#codeTextarea').val(): null; 
+    var OpenPop_code = typeof $('#codeTextarea').val() !== "undefined" ? $('#codeTextarea').val(): null;
     var OpenPop_genlist = typeof generatedList !== "undefined" ? generatedList : null;
-    
+
     _.extend(data, {
         key: key,
-        book: BOOK_NAME,
-        
+        book: BOOK_ID,
+
         // The module name. If the exercise is embedded in one
         module_name: MODULE_NAME,
         casing: "camel",
@@ -649,7 +649,7 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
 
         // Whether the user is skipping the question
         skipped: skipped ? 1 : 0,
-       
+
         // OpenPop code
         code : OpenPop_code,
 
