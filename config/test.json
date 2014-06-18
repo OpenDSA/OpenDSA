@@ -466,6 +466,7 @@
           },
           "InsertionSortAV": {
             "long_name": "Insertion Sort Visualization",
+            "exer_options": {"JXOP-code": "c++"},
             "required": false,
             "points": 0,
             "showhide": "none",
