@@ -10,99 +10,47 @@
 
 .. odsalink:: AV/RecurTutor/recursiontracecon1.css
 .. odsalink:: AV/RecurTutor/recursiontracecon2.css
+.. odsalink:: AV/RecurTutor/recursiontracecon3.css
+.. odsalink:: AV/RecurTutor/recursiontracecon4.css
 
 How to trace a recursive code?
 ==============================
 Tracing recursive functions is a great way to learn how it behave. After you
 become comfortable with tracing, you rarely need to trace again. You begin to
-“trust” that recursion will work.
+trust that recursion will work.
 When tracing most recursive functions, there is winding and unwinding part.
-The "winding" part occurs as the recursion heads to the base case. The “un-
-winding” part occurs when the recursion returns back to the original call. Most
+The "winding" part occurs as the recursion heads to the base case. The "un-
+winding" part occurs when the recursion returns back to the original call. Most
 people forget there is the "unwinding" phase. The winding and unwinding is
 not really special to recursion. It occurs with any function.
 
 .. inlineav:: RecursionTraceCON2 ss
    :output: show 
 
+Next we will show a tracing example for a simple sum function:
 
-.. TODO::
-   :type: Visualization
-    
-    Let’s consider an easy recursive call. We want to sum the elements of an array. This is the code::
- 
-	    int sum( int arr[], int n )
-	    {
-	     if ( n == 0 )
-	
-	      return 0;
-	
-	    else
-	
-	    {
-	
-	     int smallResult = sum( arr, n - 1 ); // A
-	
-	     return smallResult + arr[ n - 1 ];
-	
-	    }
-	   }
+.. inlineav:: RecursionTraceCON4 ss
+   :output: show
 
-  Assume the array contains: 2, 4, 6 , and that the call to the sum is: sum(arr, 3 ) which will sum the first three elements of the array. The initial call to sum fills in the 
-  block. Since arr is an array and arrays are really pointers, there’s a pointer to the ”global” array. The arrow in the diagram represents a pointer to the array at the top. n, 
-  however, is a value parameter, so a copy of n resides in the box. The letter ”A” lies under the recursive call, and also appears in the code above. The reason for labelling 
-  recursive calls is to make it easier to know where to go back to once the recursive call is done. In this case, there’s only one recursive call, so it’s easy to find. However, 
-  some recursive functions have two calls, so labelling makes it easier to follow. As the initial call to sum is made, the base case is not true (i.e., n is not
-  0), so you go into the ”else” and make a recursive call to sum, this time passing a value of 2 (which is n - 1, where n is 3 at the time of the call. This produces a diagram 
-  that looks like: The top sum makes a call to sum, passing in the same arr pointer (it is a copy of the pointer, but the copy points to the same array). Notice that n has a 
-  value of 2.
+Next we will show a tracing example of a factorial function:
 
 .. inlineav:: RecursionTraceCON1 ss
    :output: show 
 
 As you trace the code, you should observe several things:
-1. The tracing eventually gets down to the base case. Beginners often think
-that the base case only occurs when the initial call is at the base case. Not true!. All calls eventually reach the base case and if there is more than
-one base case, it reaches one of the base cases. Thus, the value returned
-by the base case is important.
 
-2. It’s helpful to label recursive calls. You do this to keep track of what’s go-
-ing on. Recall that a recursive call, like any other function call, eventually
-returns back to the point of being called. However, since you’re calling
-the same function, it’s easy to make mistakes when tracing the code.
+.. inlineav:: RecursionTraceCON3 ss
+   :output: show 
 
-3. Recursion involves a “winding” phase where the calls are progressively
-getting closer to the base case, and you are getting to smaller and smaller
-problems, and an “unwinding” phase, when you begin to return back to
-the original call. It’s usually in the ”unwinding” phase where the solution
-is generated.
 Starting at the base case, you have a value that is then used to solve the call
 from the function that called the base case, which is used to solve the call that
 called the call that called the base case, and so forth. Basically, the solution is
 being built up, until finally, you reach the original call, and the final solution is
 arrived at, having been built up from the base case.
+
 Whenever the return statement of the recursive call has no more work to do
 AFTER the recursive call, the function is said to be tail-recursive.
-The function has to be written a little differently if you use reference param-
-eters, because reference parameters only accept lvalues (i.e., variables or array
-elements) as arguments. So, you’d have to rewrite sum as:
 
-
- void sum( int arr[], int n, int & result )
-    {
-     if ( n == 0 ) // base case 1
-     ; // nothing to do, result has answer
-    else
-    {
-     result += arr[ n - 1 ];
-     return sum( arr, n - 1, result );
-    }
-   }
-
-Notice that the return type is now void, and that you must compute the
-result before passing it to sum, since the third argument of sum needs to be an
-lvalue (so while result is an lvalue, result + arr[ n - 1 ] is not. That’s an rvalue,
-and you can’t pass rvalues to reference parameters.
 
 .. TODO::
    :type: Visualization
@@ -235,3 +183,5 @@ and you can’t pass rvalues to reference parameters.
  
 .. odsascript:: AV/RecurTutor/recursiontracecon1.js
 .. odsascript:: AV/RecurTutor/recursiontracecon2.js
+.. odsascript:: AV/RecurTutor/recursiontracecon3.js
+.. odsascript:: AV/RecurTutor/recursiontracecon4.js

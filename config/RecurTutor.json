@@ -288,6 +288,12 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "RecursionTraceCON3": {
+            "long_name": "Recursion Tracing Slideshow 3",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
 
         }
