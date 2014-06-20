@@ -12,10 +12,6 @@
 .. odsascript:: AV/Sorting/quicksortCODE.js
 
 .. odsalink:: AV/Sorting/quicksortCON.css
-.. odsalink:: AV/Development/QuickSortPartitionAnalysisCON.css
-.. odsalink:: AV/Development/QuickSortWorstCaseCON.css
-.. odsalink:: AV/Development/QuickSortBestCaseCON.css
-.. odsalink:: AV/Development/QuickSortAverageCaseCON.css
 
 .. index:: ! Quicksort
 
@@ -193,70 +189,49 @@ Quicksort.
 
 .. avembed:: AV/Sorting/quicksortPRO.html pe
 
+To analyze Quicksort, we first analyze the ``findpivot`` and
+``partition`` functions when operating on a subarray of length
+:math:`k`.
+Clearly, ``findpivot`` takes constant time.
+Function ``partition`` contains a ``do`` loop with
+two nested ``while`` loops.
+The total cost of the partition operation is constrained by
+how far ``l`` and ``r`` can move inwards.
+In particular, these two bounds variables together can move a total of
+:math:`s` steps for a subarray of length :math:`s`.
+However, this does not directly tell us how much work is done by the
+nested ``while`` loops.
+The ``do`` loop as a whole is guaranteed to move both
+``l`` and ``r`` inward at least one position on each
+first pass.
+Each ``while`` loop moves its variable at least once (except
+in the special case where ``r`` is at the left edge of the
+array, but this can happen only once).
+Thus, we see that the ``do`` loop can be executed at most
+:math:`s` times, the total amount of work done moving ``l`` and
+``r`` is :math:`s`, and
+each ``while`` loop can fail its test at most :math:`s` times.
+The total work for the entire ``partition`` function is
+therefore :math:`\Theta(s)` when the subarray length is :math:`s`.
 
-And here is a visualization illustrating the running time analysis of the partition function
+Knowing the cost of ``findpivot`` and ``partition``,
+we can determine the cost of Quicksort.
+We begin with a worst-case analysis.
+The worst case will occur when the pivot does a poor job of breaking
+the array, that is, when there are no records in one partition, and
+:math:`n-1` records in the other.
+In this case, the divide and conquer
+strategy has done a poor job of
+dividing, so the conquer phase will work on a subproblem only one
+less than the size of the original problem.
+If this happens at each partition step, then the total cost of the
+algorithm will be
 
-.. inlineav:: QuickSortPartitionAnalysisCON ss
-   :output: show
+.. math::
 
+   \sum_{k=1}^n k = \Theta(n^2).
 
-.. TODO::
-   :type: Review QuickSort's Partition analysis discussion
-
-   To analyze Quicksort, we first analyze the ``findpivot`` and
-   ``partition`` functions when operating on a subarray of length
-   :math:`k`.
-   Clearly, ``findpivot`` takes constant time.
-   Function ``partition`` contains a ``do`` loop with
-   two nested ``while`` loops.
-   The total cost of the partition operation is constrained by
-   how far ``l`` and ``r`` can move inwards.
-   In particular, these two bounds variables together can move a total of
-   :math:`s` steps for a subarray of length :math:`s`.
-   However, this does not directly tell us how much work is done by the
-   nested ``while`` loops.
-   The ``do`` loop as a whole is guaranteed to move both
-   ``l`` and ``r`` inward at least one position on each
-   first pass.
-   Each ``while`` loop moves its variable at least once (except
-   in the special case where ``r`` is at the left edge of the
-   array, but this can happen only once).
-   Thus, we see that the ``do`` loop can be executed at most
-   :math:`s` times, the total amount of work done moving ``l`` and
-   ``r`` is :math:`s`, and
-   each ``while`` loop can fail its test at most :math:`s` times.
-   The total work for the entire ``partition`` function is
-   therefore :math:`\Theta(s)` when the subarray length is :math:`s`.
-
-   Knowing the cost of ``findpivot`` and ``partition``,
-   we can determine the cost of Quicksort.
-   We begin with a worst-case analysis.
-   
-Now we present a visualization illustrating the worst case running time of Quick Sort
-   
-.. inlineav:: QuickSortWorstCaseCON ss
-   :output: show
-   
-.. TODO::
-   :type: Review QuickSort's WorstCase analysis discussion
-   
-   The worst case will occur when the pivot does a poor job of breaking
-   the array, that is, when there are no records in one partition, and
-   :math:`n-1` records in the other.
-   In this case, the divide and conquer
-   strategy has done a poor job of
-   dividing, so the conquer phase will work on a subproblem only one
-   less than the size of the original problem.
-   If this happens at each partition step, then the total cost of the
-   algorithm will be
-
-   .. math::
-
-      \sum_{k=1}^n k = \Theta(n^2).
-
-   So in the worst case, Quicksort is :math:`\Theta(n^2)`.
-   
-   
+So in the worst case, Quicksort is :math:`\Theta(n^2)`.
 This is terrible, no better than Bubble Sort.
 When will this worst case occur?
 Only when each pivot yields a bad partitioning of the array.
@@ -267,26 +242,18 @@ still unlikely to happen.
 It does not take many good partitionings for Quicksort to
 work fairly well.
 
-Here is a visualization illustrating the Best case running time of Quick Sort
-
-.. inlineav:: QuickSortBestCaseCON ss
-   :output: show
-
-.. TODO::
-   :type: Review QuickSort's BestCase analysis discussion
-
-   Quicksort's best case occurs when ``findpivot`` always breaks
-   the array into two equal halves.
-   Quicksort repeatedly splits the array into
-   smaller partitions, as shown in the visualization.
-   In the best case, the result will be :math:`\log n` levels of
-   partitions,
-   with the top level having one array of size :math:`n`, the second
-   level two arrays of size :math:`n/2`, the next with four arrays of
-   size :math:`n/4`,  and so on.
-   Thus, at each level, all partition steps for that level do a total of
-   :math:`n` work, for an overall cost of :math:`n \log n` work when
-   Quicksort finds perfect pivots.
+Quicksort's best case occurs when ``findpivot`` always breaks
+the array into two equal halves.
+Quicksort repeatedly splits the array into
+smaller partitions, as shown in the visualization.
+In the best case, the result will be :math:`\log n` levels of
+partitions,
+with the top level having one array of size :math:`n`, the second
+level two arrays of size :math:`n/2`, the next with four arrays of
+size :math:`n/4`,  and so on.
+Thus, at each level, all partition steps for that level do a total of
+:math:`n` work, for an overall cost of :math:`n \log n` work when
+Quicksort finds perfect pivots.
 
 Quicksort's average-case behavior falls somewhere
 between the extremes of worst and best case.
@@ -308,29 +275,21 @@ following equation:
    {\bf T}(n - 1 - k)],
    \quad {\bf T}(0) = {\bf T}(1) = c.
 
-Here is a visualization that will help you understand how this recurrence relation was formed
-
-.. inlineav:: QuickSortAverageCaseCON ss
-   :output: show
-
-.. TODO::
-   :type: Review QuickSort's AverageCase analysis discussion
-
-   This equation is in the form of a recurrence relation.
-   Recurrence relations are discussed in Module :numref:`<Recurrence>`.
-   This equation says that there is one chance in :math:`n` that the
-   pivot breaks the array into subarrays of size 0 and :math:`n-1`,
-   one chance in :math:`n` that the pivot breaks the array into
-   subarrays of size 1 and :math:`n-2`, and so on.
-   The expression ":math:`{\bf T}(k) + {\bf T}(n - 1 - k)`" is the cost
-   for the two recursive calls to Quicksort on two arrays of size
-   :math:`k` and :math:`n-1-k`.
-   The initial :math:`cn` term is the cost of doing the
-   ``findpivot`` and ``partition`` steps, for some
-   constant :math:`c`.
-   The closed-form solution to this recurrence relation is
-   :math:`\Theta(n \log n)`.
-   Thus, Quicksort has average-case cost :math:`\Theta(n \log n)`.
+This equation is in the form of a recurrence relation.
+Recurrence relations are discussed in Module :numref:`<Recurrence>`.
+This equation says that there is one chance in :math:`n` that the
+pivot breaks the array into subarrays of size 0 and :math:`n-1`,
+one chance in :math:`n` that the pivot breaks the array into
+subarrays of size 1 and :math:`n-2`, and so on.
+The expression ":math:`{\bf T}(k) + {\bf T}(n - 1 - k)`" is the cost
+for the two recursive calls to Quicksort on two arrays of size
+:math:`k` and :math:`n-1-k`.
+The initial :math:`cn` term is the cost of doing the
+``findpivot`` and ``partition`` steps, for some
+constant :math:`c`.
+The closed-form solution to this recurrence relation is
+:math:`\Theta(n \log n)`.
+Thus, Quicksort has average-case cost :math:`\Theta(n \log n)`.
 
 This is an unusual situation that the average case cost and the worst
 case cost have asymptotically different growth rates.
@@ -448,7 +407,3 @@ Now for review questions.
 .. avembed:: Exercises/Sorting/QuicksortSumm.html ka
 
 .. odsascript:: AV/Sorting/quicksortCON.js
-.. odsascript:: AV/Development/QuickSortPartitionAnalysisCON.js
-.. odsascript:: AV/Development/QuickSortWorstCaseCON.js
-.. odsascript:: AV/Development/QuickSortBestCaseCON.js
-.. odsascript:: AV/Development/QuickSortAverageCaseCON.js

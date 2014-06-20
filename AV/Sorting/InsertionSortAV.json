@@ -55,11 +55,11 @@
       "startAfter": "/* *** ODSATag: Insertionsort *** */",
       "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
       "tags": {
-        "sig": 0,
-        "outloop": 1,
-        "inloop": 2,
-        "swap": 3,
-        "end": 4
+        "sig": 1,
+        "outloop": 2,
+        "inloop": 3,
+        "swap": 4,
+        "end": 5
       }
     },
     "c++": {

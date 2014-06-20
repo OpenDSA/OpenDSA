@@ -157,5 +157,58 @@
       "points": "Pisteet",
       "chapter": "Kappale"
     }
+  },
+    "sv": {
+    "jinja": {
+      "register": "Registrera",
+      "login": "Logga in",
+      "logout": "Logga ut",
+      "about": "Om",
+      "close": "Stäng fönster",
+      "tofc": "Innehållsförteckning",
+      "the_book": "boken",
+      "username": "Användarnamn",
+      "password": "Lösenord",
+      "password_confirm": "Bekräfta lösenord",
+      "email": "E-post",
+      "username_email": "Användarnamn eller e-post",
+      "sign_in": "Logga in",
+      "password_forget": "Glömt lösenordet?",
+      "about_msg": "Skapad som del av OpenDSA-projektet. För mer information se. JSAV version",
+      "contact": "Kontakta oss",
+      "privacy": "Personlig integritet",
+      "license": "Licens",
+      "report_bug": "Rapportera en bugg",
+      "summary": "Kort beskrivning",
+      "os": "Operativsystem",
+      "browser": "Webbläsare",
+      "description": "Beskrivning",
+      "screenshot": "Bifoga en skärmdump (valfritt)",
+      "submit": "Skicka in",
+      "login_warn": "Du måste vara inloggad för att få poäng",
+      "login_error": "Felaktig kombination av användarnamn / lösenord",
+      "bug_desc": "***BUGG** Fyll i: (1) en kort beskrivning av problemet. (2) steg för att återskapa buggen. (3) webbläsarversion och operativsystem."
+    },
+    "js": {
+      "project_msg": " \nSkapad som del av OpenDSA-projektet.\nFör mer information se http://algoviz.org/OpenDSA\nJSAV version ",
+      "session_expired": "Din nuvarande session har upphört.",
+      "session_invalid": "Ditt konto har loggat in på en annan dator och\n den nuvarande sessionen är ej längre giltig. Vänligen logga in igen för att fortsätta.",
+      "account_disabled": "Detta konto har avaktiverats",
+      "server_down": "Inloggning misslyckades eftersom servern inte kunde kontaktas. Kontakta OpenDSA-teamet om problemet kvarstår.",
+      "login_fail": "Inloggning misslyckades",
+      "credential_warn": "Vänligen ange ditt användarnamn och lösenord",
+      "bug_ack": "Din bugg/återkoppling är mottagen.\n Tack",
+      "hide": "Dölj",
+      "show": "Visa",
+      "no_reply_server": "Servern svarade inte.  Vänligen försök igen senare.",
+      "assignment": "Uppgift",
+      "due_date": "Färdigdatum",
+      "score": "Resultat",
+      "total": "Totalt",
+      "no_exercises":"Det finns inga övningar i denna sektion",
+      "exercises": "Övningar",
+      "points": "Poäng",
+      "chapter": "Kapitel"
+    }
   }
 }

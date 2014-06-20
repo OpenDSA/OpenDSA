@@ -11,8 +11,6 @@
 
 .. index:: ! Radix Sort
 
-.. odsalink:: AV/Development/RadixSortAnalysisCON.css
-
 Radix Sort
 ==========
 
@@ -101,11 +99,6 @@ The following visualization illustrates the process.
 
 .. avembed:: AV/Sorting/radixArrayAV.html ss
 
-And the following visualization illustrates the running time of RadixSort
-
-.. inlineav:: RadixSortAnalysisCON ss
-   :output: show
-
 .. TODO::
    :type: Slideshow
 
@@ -114,32 +107,29 @@ And the following visualization illustrates the running time of RadixSort
    It might work to add more to the slideshow, or another slideshow,
    that explains more clearly why this translates to
    :math:`\Theta(n \log n)`.
-   
-   
-.. TODO::
-   :type: Review the discussion of RadixSort Analysis
-   This algorithm requires :math:`k` passes over the list of :math:`n`
-   numbers in base :math:`r`, with :math:`\Theta(n + r)` work done at
-   each pass.
-   Thus the total work is :math:`\Theta(nk + rk)`.
-   What is this in terms of :math:`n`?
-   Because :math:`r` is the size of the base, it might be rather small.
-   One could use base 2 or 10.
-   Base 26 might be appropriate for sorting character strings.
-   For now, we will treat :math:`r` as a constant value and ignore it
-   for the purpose of determining asymptotic complexity,
-   since this value does not change with the size of :math:`n`.
 
-   Variable :math:`k` is related to the key range:
-   It is the maximum number of digits that a
-   key may have in base :math:`r`.
-   In some applications we can determine :math:`k`
-   to be of limited size and so might wish to consider it a constant.
-   In this case, Radix Sort is :math:`\Theta(n)` in the best, average, and
-   worst cases, making it the sort with best asymptotic complexity that
-   we have studied (though the constant factors are high due to the
-   relatively complex processing involved in extracting digits from the
-   key).
+This algorithm requires :math:`k` passes over the list of :math:`n`
+numbers in base :math:`r`, with :math:`\Theta(n + r)` work done at
+each pass.
+Thus the total work is :math:`\Theta(nk + rk)`.
+What is this in terms of :math:`n`?
+Because :math:`r` is the size of the base, it might be rather small.
+One could use base 2 or 10.
+Base 26 might be appropriate for sorting character strings.
+For now, we will treat :math:`r` as a constant value and ignore it
+for the purpose of determining asymptotic complexity,
+since this value does not change with the size of :math:`n`.
+
+Variable :math:`k` is related to the key range:
+It is the maximum number of digits that a
+key may have in base :math:`r`.
+In some applications we can determine :math:`k`
+to be of limited size and so might wish to consider it a constant.
+In this case, Radix Sort is :math:`\Theta(n)` in the best, average, and
+worst cases, making it the sort with best asymptotic complexity that
+we have studied (though the constant factors are high due to the
+relatively complex processing involved in extracting digits from the
+key).
 
 **Is it really a reasonable assumption to treat** :math:`k` **as a
 constant?**
@@ -165,7 +155,7 @@ to distinguish between the :math:`n` distinct keys
 :math:`\Omega(\log n)`),
 :math:`k` is in :math:`\Omega(\log n)`.
 **This means that Radix Sort requires**
-:math:`\Omega(n \log n)`  
+:math:`\Omega(n \log n)` 
 **time to process** :math:`n` **distinct key values.**
 
 Of course the key range could be much bigger
@@ -215,4 +205,3 @@ situations.
 Now for some review questions.
 
 .. avembed:: Exercises/Sorting/RadixSortSumm.html ka
-.. odsascript:: AV/Development/RadixSortAnalysisCON.js

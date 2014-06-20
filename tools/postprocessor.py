@@ -128,6 +128,31 @@ def update_TOC(source_dir, dest_dir, data = None):
     update_mod_html(dest_dir + file, data, prefix)
 
 
+def update_TermDef(glossary_file, terms_dict):
+  with open(glossary_file, 'r') as html_glossary:
+    mod_data = html_glossary.readlines()
+  i = 0
+  while i < len(mod_data):
+    line = mod_data[i].strip()
+    if line.startswith('<dt'):
+      tokens = re.split('</dt>', line)
+      token = re.split('>', tokens[0])
+      term = token[len(token) -1]
+      if term in terms_dict:
+        term_def = ''
+        i += 1
+        endofdef = False
+        while (i < len(mod_data) and not endofdef):
+          if '</dd>' in  mod_data[i]:  
+            term_def += mod_data[i].split('</dd>')[0] + '</dd>'
+            endofdef = True
+          else:
+            term_def += mod_data[i]
+          i += 1
+        terms_dict[term] = term_def
+        i-= 1
+    i += 1
+
 def main(argv):
   if len(argv) != 3:
     print "ERROR. Usage: %s <source directory> <destination directory>\n" % argv[0]

@@ -175,6 +175,8 @@ Glossary
       time.
 
    bubble sort
+      :to-term: algorithm :label: type of
+
       A simple sort that requires :math:`Theta(n^2)` time in best,
       average, and worst cases. Even an optimized version will
       normally run slower than insertion sort, so it has little to
@@ -535,6 +537,8 @@ Glossary
       General tree nodes tend to be harder to implement for this reason.
 
    graph
+      :to-term: vertices :label: contains
+
       A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
       of a set of :term:`vertices` :math:`\mathbf{V}` and a set of
       :term:`edges` :math:`\mathbf{E}`,

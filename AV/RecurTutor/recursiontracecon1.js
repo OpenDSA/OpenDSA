@@ -52,7 +52,7 @@
   pseudo10.hide();
 
   av.displayInit(); 
-   pseudo2.show();
+  pseudo2.show();
   pseudo2.highlight(0);
   pseudo2.highlight(3);
   

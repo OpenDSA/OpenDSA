@@ -8,8 +8,8 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursionIntroCON.css
-
+.. odsalink:: AV/RecurTutor/recursionintrocon1.css
+.. odsalink:: AV/RecurTutor/recursionintrocon2.css
 
 Introduction
 ==========================
@@ -27,15 +27,17 @@ To use recursion effectively, it is necessary to train yourself to stop analyzin
 Let's think about recursion in a different way. Think about recursion as if you have a big task and you will do a small part of it then delegate it to another one to help you on doing this task. An example similar to the movie theater example  mentioned earlier is, suppose that you have the task of multiplying two numbers x and y. You would like to delegate this task to some friend. You will ask the friend to multiply x-1 and y. When your friend send you back the result, you will only add y to that result. Your friend will do exactly the same with another friend who will do exactly the same with a third one and so on. x will be decremented till eventually it will reach to one at the last friend. The last friend will send back the result of multiplying a one and y. The last friend will be returning back the result to the previous friend. This friend will add x to the result. This process will continue all the way back till the result of x-1 multiplied by y is back to you. You will simply add y to the result and you will be done with your task. Next visualization shows that delegation process:
 
 
-.. inlineav:: RecursionIntroCON1 ss
-   :output: show  
-
 
 .. inlineav:: RecursionIntroCON2 ss
+   :output: show  
+
+.. inlineav:: RecursionIntroCON1 ss
    :output: show  
 
 
 In order to understand recursion, you need to understand and practice how to write and read a recursive function.
 
 
-.. odsascript:: AV/RecurTutor/RecursionIntroCON.js
+
+.. odsascript:: AV/RecurTutor/recursionintrocon2.js
+.. odsascript:: AV/RecurTutor/recursionintrocon1.js
