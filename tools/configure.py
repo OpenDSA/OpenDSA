@@ -404,11 +404,12 @@ def configure(config_file_path, slides = False):
 
   # Calls the postprocessor to update chapter, section, and module numbers, and glossary terms definition
   update_TOC(config.book_src_dir, config.book_dir + config.rel_book_output_path, module_chap_map)
-  update_TermDef(config.book_dir + config.rel_book_output_path + 'Glossary.html', cmap_map['concepts'])
+  if 'Glossary' in processed_modules:
+    update_TermDef(config.book_dir + config.rel_book_output_path + 'Glossary.html', cmap_map['concepts'])
 
-  # Create the concept map definition file in _static html directory
-  with open(config.book_dir + 'html/_static/GraphDefs.json', 'w') as graph_defs_file:
-    json.dump(cmap_map, graph_defs_file)
+    # Create the concept map definition file in _static html directory
+    with open(config.book_dir + 'html/_static/GraphDefs.json', 'w') as graph_defs_file:
+      json.dump(cmap_map, graph_defs_file)
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
