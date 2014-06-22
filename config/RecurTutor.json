@@ -300,6 +300,18 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "RecursionTraceCON6": {
+            "long_name": "Recursion Tracing Slideshow 6",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "RecursionTraceCON7": {
+            "long_name": "Recursion Tracing Slideshow 7",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
 
         }
