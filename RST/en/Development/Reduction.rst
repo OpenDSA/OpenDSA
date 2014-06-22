@@ -73,7 +73,7 @@ To illustrate this, let us consider another problem.
    from each list make a pair, the next smallest values from each list
    make a pair, and so on.
 
-.. avembed:: AV/Developmentp/pairToSortReduction.html ss
+.. avembed:: AV/Development/pairToSortReduction.html ss
 
 Figure :num:`Figure #Pair` illustrates PAIRING.
 One way to solve PAIRING is to use an existing sorting
@@ -224,7 +224,7 @@ reduction of **SORTING** to **PAIRING**.
    A reduction of **SORTING** to **PAIRING** shown as a "blackbox"
    diagram.
 
-.. avembed:: AV/Developmentp/sortToPairReduction.html ss
+.. avembed:: AV/Development/sortToPairReduction.html ss
 
 It is important to note that the reduction process does not give us
 an algorithm for solving either problem by itself.

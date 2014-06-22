@@ -36,7 +36,7 @@ build/InssortTest/success: Sorting/Insertionsort.cpp Sorting/SortTest.cpp Utils/
 	cd build/InssortTest; \
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Insertionsort.o Insertionsort.cpp; \
 	$(CC) $(CFLAGS) Insertionsort.o -o Insertionsort; \
-	./Insertionsort 1000 1000
+	./Insertionsort 20
 
 Mergesort: build/Mergesort/success
 

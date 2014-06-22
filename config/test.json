@@ -10,7 +10,8 @@
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "glob_exer_options": {
-  "JXOP-debug": "true"
+    "JXOP-debug": "true",
+    "JXOP-code": "c++"
   },
   "chapters": {
     "Linear Structures": {
@@ -466,7 +467,6 @@
           },
           "InsertionSortAV": {
             "long_name": "Insertion Sort Visualization",
-            "exer_options": {"JXOP-code": "c++"},
             "required": false,
             "points": 0,
             "showhide": "none",
