@@ -14,6 +14,8 @@
 .. odsalink:: AV/RecurTutor/recursiontracecon4.css
 .. odsalink:: AV/RecurTutor/recursiontracecon5.css
 .. odsalink:: AV/RecurTutor/recursiontracecon6.css
+.. odsalink:: AV/RecurTutor/recursiontracecon7.css
+
 
 How to trace a recursive code?
 ==============================
@@ -84,49 +86,10 @@ Next visualization will show how we can use the previously illustrated Domino ef
    :output: show 
 
 
-.. TODO::
-   :type: Visualization
+Next visualization will show how we can use the previously illustrated Domino effect solving technique to Count the number of digits within an integer n recursively. 
 
-    The Domino Effect Visualization 1
-    
-    Print positive integers from 1 to N recursively. To apply this problem solving technique, it is assumed that there is a sequence of   
-    integers, from 1 to N, hidden behind the dominos, and the only way to see the integer behind a domino is tipping its front domino over.
-       
-      
-    .. _domino1:
-
-	.. odsafig:: Images/printoneton.png
-	   :width: 300
-	   :align: center
-	   :capalign: justify
-	   :figwidth: 50%
-	   :alt: Print One to N recursively using the idea of the Domino Effect
-	   
-	   Print One to N recursively using the idea of the Domino Effect
-	   
-	
-.. TODO::
-   :type: Visualization
-   
-    The Domino Effect Visualization 2   
-
-    Count the number of digits within an integer n recursively, where n greater than 0. To apply the same technique, 
-    it is assumed that the digits within the integer, from most significant to lest significant, are hidden behind the dominos. 
-    In this tryout, the dominos are tipped over from right to left, 
-    so that tipping over dominos can be imagined as counting digits from the least significant to the most significant. 
-
-
-    .. _domino2:
-
-	.. odsafig:: Images/numofdig.png
-	   :width: 300
-	   :align: center
-	   :capalign: justify
-	   :figwidth: 50%
-	   :alt: Counting the number of digits in an integer recursively using  the idea of the Domino Effect.
-	   
-	   Counting the number of digits in an integer recursively using  the idea of the Domino Effect.
-	   
+.. inlineav:: RecursionTraceCON7 ss
+   :output: show 
 
 .. TODO::
    :type: Visualization
@@ -142,6 +105,31 @@ Next visualization will show how we can use the previously illustrated Domino ef
     configurations of black and white disks in poles A, B, and C. The problem is to transform the initial configuration into the final configuration. The already existing 
     problems can be grouped into four categories:  (a) Moving a tower of b/w pairs problem. (b) Splitting a tower of b/w pairs into towers of b/w disks. (c) Merging towers of b/
     w disks into a tower of b/w pairs. (d) Moving towers of b/w disks.
+
+
+.. TODO::
+   :type: Visualization
+   
+    Flood Fill visualization 
+   
+    The flood fill algorithm is used to identify all of the elements in a two dimensional array that are connected to a specific element. One graphical application is the flood 
+    fill or “paint bucket tool that is commonly available in image editing software. This tool changes the color of a connected region in the image to a new color without       
+    impacting other unconnected pixels of that color. It is normally used by clicking on a single pixel in the image. Then the color of that pixel is identified, and all 
+    connected pixels of the same color are replaced with the new color. Flood fill demonstrates that a recursive method may require data beyond what is provided by
+    the parameters specified for the method. In this specific case, one would expect to perform a flood fill by invoking a method that takes three parameters: the x and y    
+    coordinates where the fill will begin, and the new color that should be used. However, these values are not sufficient to implement a recursive solution successfully because 
+    the recursive function needs to know what color is being replaced in order to detect the boundary for the region that is being filled.
+
+.. TODO::
+   :type: Visualization
+    
+    Finding a path through a maze
+    
+    Finding a path through a maze is a component of some computer games. It clearly demonstrates the utility of recursion. We will use a two dimensional array representation for 
+    the maze. Within this array, each element can initially contain one of four possible values: A barrier, an open space, the start of the maze and the exit from the maze. As   
+    the solution progresses, blocks can take on additional values indicating that a space is part of the path from the starting location to the location that is currently being
+    explored, or that a space has been visited previously and should not be considered again. By traversing the two dimensional array, one can easily draw an overhead view of 
+    maze by drawing squares of different colors to represent each of the possible values of a block.
 
 .. TODO::
    :type: Visualization
@@ -172,30 +160,6 @@ Next visualization will show how we can use the previously illustrated Domino ef
    
 	   Chinese Rings Puzzle
 	   
-.. TODO::
-   :type: Visualization
-   
-    Flood Fill visualization 
-   
-    The flood fill algorithm is used to identify all of the elements in a two dimensional array that are connected to a specific element. One graphical application is the flood 
-    fill or “paint bucket tool that is commonly available in image editing software. This tool changes the color of a connected region in the image to a new color without       
-    impacting other unconnected pixels of that color. It is normally used by clicking on a single pixel in the image. Then the color of that pixel is identified, and all 
-    connected pixels of the same color are replaced with the new color. Flood fill demonstrates that a recursive method may require data beyond what is provided by
-    the parameters specified for the method. In this specific case, one would expect to perform a flood fill by invoking a method that takes three parameters: the x and y    
-    coordinates where the fill will begin, and the new color that should be used. However, these values are not sufficient to implement a recursive solution successfully because 
-    the recursive function needs to know what color is being replaced in order to detect the boundary for the region that is being filled.
-
-.. TODO::
-   :type: Visualization
-    
-    Finding a path through a maze
-    
-    Finding a path through a maze is a component of some computer games. It clearly demonstrates the utility of recursion. We will use a two dimensional array representation for 
-    the maze. Within this array, each element can initially contain one of four possible values: A barrier, an open space, the start of the maze and the exit from the maze. As   
-    the solution progresses, blocks can take on additional values indicating that a space is part of the path from the starting location to the location that is currently being
-    explored, or that a space has been visited previously and should not be considered again. By traversing the two dimensional array, one can easily draw an overhead view of 
-    maze by drawing squares of different colors to represent each of the possible values of a block.
-
 
 
  
@@ -205,3 +169,4 @@ Next visualization will show how we can use the previously illustrated Domino ef
 .. odsascript:: AV/RecurTutor/recursiontracecon4.js
 .. odsascript:: AV/RecurTutor/recursiontracecon5.js
 .. odsascript:: AV/RecurTutor/recursiontracecon6.js
+.. odsascript:: AV/RecurTutor/recursiontracecon7.js

@@ -4,7 +4,7 @@
 (function ($) {
 
   var av = new JSAV("RecursionTraceCON3");
-  av.umsg("The tracing eventually gets down to the base case. Not true the base case only occurs when the initial call is at the base case. All calls eventually reach the base case and if there is more than one base case, it reaches one of the base cases.");
+  av.umsg("The tracing eventually gets down to the base case. All calls eventually reach the base case and if there is more than one base case, it reaches one of the base cases.");
  
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/Recsum.java",
                        lineNumbers: false,});
