@@ -877,6 +877,10 @@
       }
     },
     "Graphs": {
+      "Development/GraphIntro": {
+        "long_name": "Introduction and Terminology",
+        "exercises": {}
+      },
       "Development/GraphTopsort": {
         "long_name": "Topological Sorting",
         "exercises": {

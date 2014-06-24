@@ -29,6 +29,20 @@ Glossary
       which a new subroutine is being called, so that this information
       can be recovered when the subroutine terminates.
 
+   adjacency list
+      An implementation for a :term:`graph` that uses an (array-based)
+      :term:`list` to represent the :term:`vertices` of the graph, and
+      each :term:`vertex` is in turn represented by a (linked) list of
+      the vertices that are :term:`neighbors`.
+
+   adjacency matrix
+      An implementation for a :term:`graph` that uses a 2-dimensional
+      array where each row and each column corresponds to a
+      :term:`vertex` in the :term:`graph`. A given row and column in
+      the matrix corresponds to an edge from the :term:`vertex`
+      corresponding to the row to the vertex corresponding to the
+      column.
+
    aggregate type
       A type whose members have subparts. For example, a typical
       database record. Another term for this is :term:`composite type`.
@@ -538,6 +552,8 @@ Glossary
 
    graph
       :to-term: vertices :label: contains
+      :to-term: adjacency matrix :label: implemented by
+      :to-term: adjacency list :label: implemented by
 
       A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
       of a set of :term:`vertices` :math:`\mathbf{V}` and a set of
