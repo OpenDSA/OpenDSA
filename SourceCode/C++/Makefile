@@ -23,15 +23,16 @@ sorting: Inssort Mergesort MergesortOpt
 
 Inssort: build/InssortTest/success
 
-build/InssortTest/success: Sorting/Insertionsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/compare.h Utils/utils.h Utils/KVpair.cpp
+build/InssortTest/success: Sorting/Insertionsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
 	@echo "Inssort Test"
 	-@rm -rf build/InssortTest
 	@mkdir build/InssortTest
 	@cp Sorting/Insertionsort.cpp build/InssortTest
 	@cp Sorting/SortTest.cpp build/InssortTest
 	@cp Utils/Checkorder.cpp build/InssortTest
-	@cp Utils/KVpair.cpp build/InssortTest
-	@cp Utils/compare.h build/InssortTest
+	@cp Utils/KVPair.cpp build/InssortTest
+	@cp Utils/Comparable.cpp build/InssortTest
+	@cp Utils/Int.cpp build/InssortTest
 	@cp Utils/utils.h build/InssortTest
 	cd build/InssortTest; \
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Insertionsort.o Insertionsort.cpp; \

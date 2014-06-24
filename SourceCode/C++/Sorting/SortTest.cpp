@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
   for (i=0; i<arraysize; i++)
     array[i] = Random(ELEMSIZE);  // Random
 
-  SUCCESS = sorttest<int, intintCompare>(array, arraysize, THRESHOLD);
+  SUCCESS = sorttest(array, arraysize, THRESHOLD);
 
   if (SUCCESS) {
     successfile.open("success", ios::out);

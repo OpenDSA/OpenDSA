@@ -28,16 +28,3 @@ inline void swap(int A[], int i, int j) {
   A[i] = A[j];
   A[j] = temp;
 }
-
-// Your basic int type as an object.
-class Int {
- private:
-  int val;
- public:
-  Int(int input=0) { val = input; }
-  // The following is for those times when we actually
-  //   need to get a value, rather than compare objects.
-  int key() const { return val; }
-  // Overload = to support Int foo = 5 syntax
-  Int operator= (int input) { val = input; return val; }
-};
