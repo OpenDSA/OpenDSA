@@ -224,8 +224,8 @@ function printGraph(concept) {
   var fromNode = null; 
    
   jsav = new JSAV($('.avcontainer'));
-  g = jsav.ds.graph({width: 800, height: 500, layout: "automatic", directed: true});   
-  for(var l = 0; l < graph.length; l++) {
+  //  g = jsav.ds.graph({width: 800, height: 500, layout: "automatic", directed: true});   
+  g = jsav.ds.graph({width: 800, height: 500, layout: "layered", directed: true});     for(var l = 0; l < graph.length; l++) {
     var m = graph.length;
     var list = graph[l];    
 
