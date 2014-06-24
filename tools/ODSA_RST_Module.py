@@ -100,7 +100,7 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
 #parses the glossary terms relationships. prints error message if the format is not correct
 #format    :to-term: term1 :lable: label :alt-text: alternate text in case the to-term is not a glossary term
 def parse_term_relationship(line, term, line_num, cmap_dict, console_msg_prefix = ''):
-  if line.startswith(':to-term:') and ':label:' in line.lower():
+  if line.strip().startswith(':to-term:') and ':label:' in line.lower():
     args = re.split(':to-term:|:label:', line)
     term = term.strip()
     cmap_dict['concepts'][term] = ''
@@ -295,7 +295,12 @@ class ODSA_RST_Module:
           i += 1
           #We allow alt-text to span multiple lines
           while (i < len(mod_data) and ( mod_data[i].strip() != '' or mod_data[i] not in ['\n', '\r\n'])):
-            term_rel += mod_data[i]
+            if mod_data[i].strip().startswith(':to-term:'):
+              parse_term_relationship(term_rel, term, line_num, cmap_dict, console_msg_prefix = '')
+              term_rel = mod_data[i]
+              line_num = i
+            else:
+              term_rel += mod_data[i]
             mod_data[i] = ''
             i += 1
 
