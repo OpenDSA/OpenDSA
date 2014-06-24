@@ -197,7 +197,7 @@ def generate_index_rst(config, slides = False):
   header_data['unicode_directive'] = rst_header_unicode if not slides else ''
 
   # Generate the index.rst file
-  with open(config.book_src_dir + 'index.rst', 'w+') as index_rst:
+  with codecs.open(config.book_src_dir + 'index.rst', 'w+', "utf-8") as index_rst:
     index_rst.write(index_header.format(config.start_chap_num))
     index_rst.write(rst_header % header_data)
 
