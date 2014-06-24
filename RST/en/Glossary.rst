@@ -161,8 +161,8 @@ Glossary
    binary trees
       A finite set of nodes which is either empty, or else has a root
       node together two binary trees, called the left and right
-      :term:`subtrees`,  which are disjoint from each other and from
-      the root.
+      :term:`subtrees`,  which are :term:`disjoint` from each other
+      and from the :term:`root`.
 
    binsort
       A sort that works by taking each record and placing it into a
@@ -359,6 +359,21 @@ Glossary
       it could also be written with logic notation such as
       :math:`P \Rightarrow Q`.
 
+   disjoint
+      Two parts of a data structure with no objects in common are
+      disjoint.
+      This term is often used in conjustion with a data structure that
+      has :term:`nodes` (such as a :term:`tree`).
+      Also used in the context of :term:`sets`, where two
+      :term:`subsets` are disjoint if they share no elements.
+
+   disjoint set
+   disjoint sets
+      A collection of sets, any pair of which share no elements in
+      common.
+      A collection of disjoint sets partitions some objects
+      such that every object is in exactly one of the disjoint sets.
+
    disk-based space/time tradeoff
       In contrast to the standard :term:`space/time tradeoff`, this
       principle states that the smaller you can make your disk storage
@@ -368,13 +383,6 @@ Glossary
       additional computation needed to unpack the data is going to be
       less than the disk-reading time saved by reducing the storage
       requirements.
-
-   disjoint set
-   disjoint sets
-      A collection of sets any pair of which share no elements in
-      common.
-      A collection of disjoint sets partitions some objects
-      such that every object is in exactly one of the disjoint sets.
 
    divide-and-conquer
       A technique for designing algorithms where a solution is found
@@ -805,6 +813,12 @@ Glossary
       This term is sometimes used as a synonym to the term
       :term:`bag`.
 
+   neighbor
+   neighbors
+      In a :term:`graph`, a :term:`node` :math:`w` is said to be a
+      neighbor of :term:`node` :math:`v` if there is an :term:`edge`
+      from :math:`v` to :math:`w`.
+
    node
    nodes
       The objects that make up a linked structure such as a linked
@@ -1074,7 +1088,9 @@ Glossary
       array elements in the order that they appear.
 
    set
-      A collection of distinguishable :term:`members` or :term:`elements`.
+   sets
+      A collection of distinguishable :term:`members` or
+      :term:`elements`.
 
    Shellsort
       A sort that relies on the best-case cost of
@@ -1140,16 +1156,31 @@ Glossary
       If **Thrm** holds for all :math:`k, c \leq k < n`, then
       **Thrm** holds for :math:`n`.
 
+   subset
+   subsets
+      In set theory, a set :math:`A` is a subset of a set
+      :math:`B`, or equivalently :math:`B` is a :term:`superset` of
+      :math:`A`, if all elements of :math:`A` are also elements of
+      :math:`B`.
+
    subtree
    subtrees
       A subtree is a subset of the nodes of a binary tree that
       includes some node :math:`R` of the tree as the subtree root
       along with all the :term:`descendants` of :math:`R`.
 
-
    summation
-      The sum of costs for some function applied to a
+      The sum of costs for some :term:`function` applied to a
       range of parameter values.
+      Often written using Sigma notation.
+      For example, the sum of the integers from 1 to :math:`n` can be
+      written as :math:`\sum_{i=1}^{n} i`.
+
+   superset
+      In set theory, a set :math:`A` is a subset of a set
+      :math:`B`, or equivalently :math:`B` is a :term:`superset` of
+      :math:`A`, if all elements of :math:`A` are also elements of
+      :math:`B`.
 
    symmetric
       In set notation, relation :math:`R` is symmetric if whenever
@@ -1157,6 +1188,18 @@ Glossary
 
    tail
       The end of a :term:`list`.
+
+   tree
+      A tree :math:`\mathbf{T}` is a finite set of one or more
+      :term:`nodes` such that there is one designated node :math:`R`,
+      called the :term:`root` of :math:`\mathbf{T}`.
+      If the set :math:`(\mathbf{T} -\{R\})` is not empty, these
+      :term:`nodes` are partitioned into :math:`n > 0`
+      :term:`disjoint sets` :math:`\mathbf{T}_0`,
+      :math:`\mathbf{T}_1`, ..., :math:`\mathbf{T}_{n-1}`, 
+      each of which is a tree, and whose roots
+      :math:`R_1, R_2, ..., R_n`,
+      respectively, are children of :math:`R`.
 
    total order
       A binary relation on a set where every pair of distinct elements
@@ -1210,6 +1253,10 @@ Glossary
       In set notation, another term for a :term:`sequence`.
       As a data structure, the term vector usually used as a synonym
       for a :term:`dynamic array`.
+
+   vertices
+   vertex
+      Another name for a :term:`node` in a :term:`graph`.
 
    visitor
    visitor design pattern

@@ -32,7 +32,7 @@ number of children, they become much harder to implement than binary
 trees.
 We consider such trees in this chapter.
 To distinguish them from binary trees,
-we use the term :dfn:`general tree`.
+we use the term :term:`general tree`.
 
 In this module we will examine general tree terminology and define a
 basic ADT for general trees.
@@ -45,7 +45,7 @@ Module :numref:`<GenTreeImplement>`.
 Aside from general trees and binary trees, there are also uses for
 trees whose internal nodes have a fixed number :math:`K` of
 children where :math:`K` is something other than two.
-Such trees are known as :dfn:`K-ary` trees.
+Such trees are known as :term:`K-ary` trees.
 Module :numref:`<Kary>` generalizes the properties of
 binary trees to :math:`K`-ary trees.
 Sequential representations, useful for applications such as storing
@@ -54,22 +54,22 @@ trees on disk, are covered in Module :numref:`<SequentialRep>`.
 General Tree Definitions and Terminology
 ----------------------------------------
 
-A :dfn:`tree` :math:`\mathbf{T}` is a finite set of one or more nodes
+A :term:`tree` :math:`\mathbf{T}` is a finite set of one or more nodes
 such that there is one designated node :math:`R`, called the root
 of :math:`\mathbf{T}`.
 If the set :math:`(\mathbf{T} -\{R\})` is not empty, these nodes are
-partitioned into :math:`n > 0` disjoint subsets :math:`\mathbf{T}_0`,
-:math:`\mathbf{T}_1, ..., \mathbf{T}_{n-1}`, each of which is a tree,
-and whose roots :math:R_1, R_2, ..., R_n`,
+partitioned into :math:`n > 0` disjoint sets :math:`\mathbf{T}_0`,
+:math:`\mathbf{T}_1`, ..., :math:`\mathbf{T}_{n-1}`, each of which is
+a tree, and whose roots :math:`R_1, R_2, ..., R_n`,
 respectively, are children of :math:`R`.
 The subsets :math:`\mathbf{T}_i (0 \leq i < n)` are said to be
-:dfn:`subtrees` of :math:`\mathbf{T}`.
+:term:`subtrees` of :math:`\mathbf{T}`.
 These subtrees are ordered in that :math:`\mathbf{T}_i` is said to
 come before :math:`\mathbf{T}_j` if :math:`i < j`.
 By convention, the subtrees are arranged from left to right with
 subtree :math:`\mathbf{T}_0` called the leftmost child of :math:`R`.
-A node's :dfn:`out degree` is the number of children for that node.
-A :dfn:`forest` is a collection of one or more trees.
+A node's :term:`out degree` is the number of children for that node.
+A :term:`forest` is a collection of one or more trees.
 Figure :num:`Figure #GenTreeFig` presents further tree notation
 generalized from the notation for binary trees.
 
@@ -89,7 +89,7 @@ generalized from the notation for binary trees.
    of :math:`P`.
    Nodes :math:`R` and :math:`P` are ancestors of :math:`V`.
    Nodes :math:`V`, :math:`S1`, and :math:`S2` are called
-   :dfn:`siblings`.
+   :term:`siblings`.
    The oval surrounds the subtree having :math:`V` as its root.
 
 Each node in a tree has precisely one parent, except for the root,
