@@ -28,6 +28,7 @@ import sys
 import os
 import datetime
 import re
+import codecs
 from string import whitespace as ws
 from config_templates import *
 
@@ -224,7 +225,7 @@ class ODSA_RST_Module:
       print_err('ERROR: Module does not exist: %s' % mod_path)
     else:
       # Read the contents of the module file from the RST source directory
-      with open(filename,'r') as mod_file:
+      with codecs.open(filename,'r', encoding='utf-8') as mod_file:
         mod_data = mod_file.readlines()
 
       if 'JOP-lang' not in config.glob_mod_options:
@@ -432,7 +433,7 @@ class ODSA_RST_Module:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
 
       # Write the contents of the module file to the output src directory
-      with open(''.join([config.book_src_dir, mod_name, '.rst']),'w') as mod_file:
+      with codecs.open(''.join([config.book_src_dir, mod_name, '.rst']),'w', 'utf-8') as mod_file:
         mod_file.writelines(mod_data)
 
     # Make public fields accessible
