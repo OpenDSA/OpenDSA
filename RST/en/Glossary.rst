@@ -19,8 +19,9 @@ Glossary
       Abbreviation for :term:`abstract data type`.
 
    abstract data type
-      Abreviated ADT. The realization of a data type as a software
-      component.
+   abstract data types
+      Abreviated :term:`ADT`. The realization of a :term:`data type`
+      as a software component.
 
    activation record
       The entity that is stored on the :term:`runtime stack` during
@@ -56,42 +57,49 @@ Glossary
       A method or a process followed to solve a problem.
 
    algorithm analysis
-      A less formal term for :term:`asymptotic analysis`.
+      A less formal version of the term
+      :term:`asymptotic algorithm analysis`.
 
    amortized analysis
-      An analysis techique that looks at the total cost for a series
-      of operations and amortizes this total cost over the full series.
-      This is as opposed to considering only the worst case cost for an
-      individual operation, which might well be an overestimate of the
-      total cost.
+      An :term:`algorithm analysis` techique that looks at the total
+      cost for a series of operations and amortizes this total cost
+      over the full series. 
+      This is as opposed to considering every individual operation to
+      independently have the worst case cost, which might lead to an
+      overestimate for the total cost of the series.
 
    amortized cost
       The total cost for a series of operations to be used in an
       :term:`amortized analysis`.
 
    ancestor
-      In a tree, for a given node :math:`A`, any node on a :term:`path` from
-      :math:`A` up to the root is an ancestor of :math:`A`.
+      In a tree, for a given node :math:`A`, any node on a
+      :term:`path` from :math:`A` up to the root is an ancestor of
+      :math:`A`.
 
    array-based list
-      An implementation for the list ADT that uses an array to store
-      the list elements. Typical implementations fix the array size at
-      creation of the list, and the amount of :term:`overhead` or
-      unused space is the number of array positions that are presently
-      unused.
+      An implementation for the :term:`list` ADT that uses an array to
+      store the list elements. Typical implementations fix the array
+      size at creation of the list, and the :term:`overhead`
+      is the number of array positions that are presently unused.
 
    array-based stack
       Analogous to an :term:`array-based list`, this uses an array to
-      store the elements when implementing the stack ADT.
+      store the elements when implementing the :term:`stack` ADT.
+
+   array-based queue
+      Analogous to an :term:`array-based list`, this uses an array to
+      store the elements when implementing the :term:`queue` ADT.
 
    asymptotic algorithm analysis
       A more formal term for :term:`asymptotic analysis`.
 
    asymptotic analysis
       A method for estimating the efficiency of an algorithm or
-      computer program. Asymptotic analysis also gives a way to define
-      the inherent difficulty of a problem. We frequently use the
-      term :term:`algorithm analysis` to mean the same thing.
+      computer program. :dfn:`Asymptotic analysis` also gives a way to
+      define the inherent difficulty of a :term:`problem`.
+      We frequently use the term :term:`algorithm analysis` to mean
+      the same thing.
 
    average case
       In algorithm analysis, the average of the costs for all problem
@@ -224,6 +232,29 @@ Glossary
       recurrence with its closed-form solution is known as solving the
       summation or recurrence.
 
+   closed hash system
+      A :term:`hash system` where all records are stored in slots of
+      the :term:`hash table`.
+      This is in contrast to an :term:`open hash system`.
+
+   collision
+      In a :term:`hash system`, this refers to the case where two
+      search keys are mapped by the :term:`hash function` to the same
+      slot in the :term:`hash table`.
+      This can happen on insertion or search when another record has
+      already been hashed to that slot.
+      In this case, a :term:`closed hash system` will require a
+      process known as :term:`collision resolution` to find the
+      location of the desired record.
+
+   collision resolution
+      In a :term:`closed hash system`, this is the process of finding
+      the proper index in a :term:`hash table` that contains the
+      desired record if the :term:`hash function` did not return the
+      index for that record due to a :term:`collision` with another
+      record.
+
+
    comparable
       The concept that two objects can be compared to determine if they
       are equal or not, or to determine which one is greater than the other.
@@ -298,6 +329,7 @@ Glossary
       "current position" state that can be referred to later.
 
    data item
+   data items
       A piece of information or a record whose value is drawn from a type.
 
    data members
@@ -527,13 +559,18 @@ Glossary
 
    full
    full tree
-      A binary tree is full if every node is either a
-      :term:`leaf node` or else it is an internal node with two
-      non-empty children.
+      A :term:`binary tree` is full if every :term:`node` is either a
+      :term:`leaf node` or else it is an :term:`internal node` with
+      two non-empty :term:`children`.
 
    function
-      A matching between inputs (the :term:`domain`) and outputs
-      (the :term:`range`). 
+      In mathematics, a matching between inputs (the :term:`domain`)
+      and outputs (the :term:`range`).
+      In programming, a subroutine that takes input parameters and
+      uses them to compute and return a value.
+      In this case, it is usually considered bad practice for a
+      function to change any global variables
+      (doing so is called a side effect).
 
    garbage
       In programming, any memory that was previously (dynamically)
@@ -578,6 +615,32 @@ Glossary
       Harmonic Series, and is written :math:`{\cal H}_n`.
       This sum has a value between :math:`\log_e n` and
       :math:`\log_e n + 1`. 
+
+   hash function
+      In a :term:`hash system`, the function that converts a key to an
+      index in the :term:`hash table`.
+      The hope is that this position in the hash table contains the
+      record that matches the key value.
+
+   hash system
+      The implementation for search based on hash lookup in a
+      :term:`hash table`.
+
+   hash table
+      The data structure (usually an array) that stores data
+      records for lookup using :term:`hashing`.
+
+   hashing
+      A search method that uses a :term:`hash function` to convert a
+      key into an index within a :term:`hash table`.
+      In a properly implemented :term:`hash system`, that index in the
+      table will have high probability of containing the record that
+      matches the key value.
+      Sometimes, the hash function will return an index that does not
+      store the desired key, due to a process called
+      :term:`collision`.
+      In that case, the desired record is found through a process
+      known as :term:`collision resolution`.
 
    head
       The beginning of a :term:`list`.
@@ -756,16 +819,27 @@ Glossary
       constant number of inputs. It could be a gross under-estimate of
       the truth.
 
+   map
+      A :term:`data structure` that relates a :term:`key` to a
+      :term:`record`.
+
+   mapping
+      A :term:`function` that maps every element of a given
+      :term:`set` to a unique element of another set; a
+      correspondence.
+
    max heap
       A :term:`heap` where every node has a key value greater than its
       children. As a consequence, the node with maximum key value is
       at the root.
 
    mergesort
-      A sort that requires :math:`\Theta(n \log n)` in the best,
-      average, and worst cases. Conceptually it is simple: Split the
-      list in half, sort the halves, then merge them together. It is a
-      bit complicated to implement effiently on an array.
+      A sorting algorithm that requires :math:`\Theta(n \log n)` in
+      the best, average, and worst cases.
+      Conceptually it is simple:
+      Split the list in half, sort the halves, then merge them
+      together.
+      It is a bit complicated to implement effiently on an array.
 
    member
    members
@@ -842,12 +916,21 @@ Glossary
    one-way list
       A synonym for a :term:`singly linked list`.
 
+   open hash system
+      A :term:`hash system` where multiple records might be associated
+      with the same slot of a :term:`hash table`.
+      Typically this is done using a linked list to store the records.
+      This is in contrast to a :term:`closed hash system`.
+
    overhead
       All information stored by a data structure aside from the actual
-      data. For example, the pointer fields in a linked list or BST.
+      data.
+      For example, the pointer fields in a :term:`linked list` or
+      :term:`BST`, or the unused positions in an
+      :term:`array-based list`. 
 
    parameters
-      The values making up an input to a function.
+      The values making up an input to a :term:`function`.
 
    parent
       In a tree, the :term:`node` :math:`P` that directly links to a
@@ -946,7 +1029,7 @@ Glossary
 
    problem
       A task to be performed.
-      It is best thought of as a function or a mapping of
+      It is best thought of as a :term:`function` or a mapping of
       inputs to outputs.
 
    program
