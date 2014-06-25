@@ -67,9 +67,10 @@ The number of vertices is written :math:`|\mathbf{V}|`, and the number
 of edges is written :math:`|\mathbf{E}|`.
 :math:`|\mathbf{E}|` can range from zero to a maximum of
 :math:`|\mathbf{V}|^2 - |\mathbf{V}|`.
-A graph with relatively few edges is called :term:`sparse`, while a
-graph with many edges is called :term:`dense`.
-A graph containing all possible edges is said to be :term:`complete`.
+A graph with relatively few edges is called a :term:`sparse graph`,
+while a graph with many edges is called a :term:`dense graph`.
+A graph containing all possible edges is said to be a
+:term:`complete graph`.
 Any subset of :math:`V` where all vertices in the subset connect to
 all other vertices in the subset is called a :term:`clique`.
 
@@ -125,19 +126,20 @@ is said to be a :term:`weighted graph`.
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
 forms a :term:`path` of length :math:`n-1` if there exist edges from
 :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
-A path is :dfn:`simple` if all vertices on the path are distinct.
+A path is a :term:`simple path` if all vertices on the path are
+distinct.
 The :term:`length` of a path is the number of edges it contains.
 A :term:`cycle` is a path of length three or more that connects
 some vertex :math:`v_1` to itself.
-A cycle is a :term:`simple cycle` if the path is simple, except for the first
-and last vertices being the same.
+A cycle is a :term:`simple cycle` if the path is simple, except for
+the first and last vertices being the same.
 
 A :term:`subgraph` :math:`\mathbf{S}` is formed from graph
 :math:`\mathbf{G}` by selecting a subset :math:`\mathbf{V}_s` of
 :math:`\mathbf{G}`'s vertices and a subset 
 :math:`\mathbf{E}_s` of :math:`\mathbf{G}` 's edges such that for every
 edge :math:`e  \in \mathbf{E}_s`,
-both of :math:`e` 's vertices are in :math:`\mathbf{V}_s`.
+both vertices of :math:`e` are in :math:`\mathbf{V}_s`.
 
 An undirected graph is a :term:`connected graph` if there is at least
 one path from any vertex to any other.

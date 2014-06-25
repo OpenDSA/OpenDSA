@@ -25,8 +25,8 @@ We might sort customer records by zip code so that when we print an
 advertisement we can then mail them more cheaply.
 We might use sorting to help an algorithm to solve some other
 problem.
-For example, :term:`Kruskal's algorthm` to find
-:ref:`minimum-cost spanning trees <MCST>`
+For example, :term:`Kruskal's algorthm` to find a
+:ref:`minimum-cost spanning tree <MCST>`
 must sort the edges of a graph by their lengths before it can process
 them.
 
@@ -65,7 +65,7 @@ Sorting algorithms can also illustrate a wide variety of
 algorithm analysis techniques.
 We will find that it is possible for an algorithm to have an
 :term:`average case` whose growth rate is significantly smaller than
-its :term:`worse case` (:ref:`Quicksort <Quicksort>`).
+its :term:`worst case` (:ref:`Quicksort <Quicksort>`).
 We will see how it is possible to speed up one sorting algorithm
 (:ref:`Shellsort <Shellsort>` or :ref:`Quicksort <Quicksort>`)
 by taking advantage of the :term:`best case` behavior of another
