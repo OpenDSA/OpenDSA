@@ -110,7 +110,7 @@ def validate_exercise(exer_name, exercise):
     error_count += 1
 
   required_fields = []
-  optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold']
+  optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold', 'oembed_url']
 
   # Ensure required fields are present
   for field in required_fields:
