@@ -20,6 +20,9 @@
  height: 375px;
 }
 
+#ExternalMergeSortExample {
+ height: 300px;
+}
 svg{
   stroke-width: 1;
 }

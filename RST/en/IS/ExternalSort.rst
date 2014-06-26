@@ -308,6 +308,11 @@ A simple modification is to read in a block of data, sort it in
 memory (perhaps using Quicksort), and then output it as a single
 sorted run.
 
+.. _ExMergeExample:
+
+.. inlineav:: ExternalMergeSortExample ss
+   :output: show
+
 .. topic:: Example
 
    Assume that we have blocks of size 4KB, and records are eight bytes
@@ -756,3 +761,4 @@ following:
 .. odsascript:: AV/Development/externalsort.js
 .. odsascript:: AV/Development/externalsortsnow.js
 .. odsascript:: AV/Development/externalMergeSort.js
+.. odsascript:: AV/Development/externalMergeSortExample.js
