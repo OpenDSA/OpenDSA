@@ -11,7 +11,7 @@
 OpenDSA Project Content Status
 ==============================
 
-This status report was last updated on April 28, 2013.
+This status report was last updated on June 24, 2014.
 
 Status Report
 -------------
@@ -37,48 +37,12 @@ If you are looking at the "OpenDSA" book, you are seeing the modules
 that we consider "ready for use", perhaps with some stub modules to
 make the cross-referencing work.
 
-We have a goal of completing enough material for a complete semester
-course by the end of 2013.
-That would contain chapters on mathematical background topics,
-algorithm analysis, lists, binary trees, general trees (with
-Union/FIND), sorting, searching (including hashing),
-file processing basics (including external sorting),
-indexing (including B-trees), and graphs.
-
-Determining Individual Module Status
-------------------------------------
-
-As a quick guide on the status of the materials, modules that are not
-considered complete will show a suffix in the table of contents,
-tagged as follows.
-
-[STUB] means that there is little to no content, and the file is there
-primarily as a target for a crossreference from another module.
-
-[Raw] means that expository text has been written and copied from a
-source that we have rights to, but has not yet been typeset into
-ReST. It will look pretty ugly!
-
-[Text] means that expository text has been written, typically copied
-from one of our textbooks or another source that we have rights to
-use.
-But that text does not yet contain any visualizations or exercises,
-nor any description of how visualizations and exercises should be
-included.
-
-[Storyboard] means that the module is a "storyboard". That includes the
-expository text properly typeset, along with specifications for the
-various visualizations and exercises that yet need to be implemented.
-"Quick prototype" or third party implementations (such as a Java
-applet) might be included to indicate how a visualization is intended.
-
-[Draft] means that the module is nearing completion. It contains text
-and various visualizations and exercises. But the content needs to be
-polished, and additional visualization support or exercise support
-might still be needed.
-
-If the module has no status suffix, then it is considered in usable
-form.
+There are also many chapters that partially complete. These include
+materials related to design, general trees, memory management, file
+processing, indexing, searching, graphs, and NP-completeness. These
+all have text, but not as many visualizations and exercises as we
+plan. A lot of progress is being made on fleshing these out. They
+should be reasonably complete by the end of 2014.
 
 Configuring Your Own Book
 -------------------------

@@ -112,7 +112,14 @@ class codeinclude(Directive):
 
             html_strs.append('</div>')
 
-            code_nodes.append(self.create_node(filename, rel_filename, lang))
+            new_node = self.create_node(filename, rel_filename, lang)
+
+            # If the new_node returned is a list, an error occurred in create_node
+            # Return the list containing the error info
+            if type(new_node) is list:
+              return new_node
+
+            code_nodes.append(new_node)
             file_found = True
 
             # Stop after finding one code file if tabbed code is not enabled or if we are only searching for a single language
@@ -220,6 +227,7 @@ class codeinclude(Directive):
     append  = self.options.get('append')
 
     if tag_ is None:
+      # If no :tag: is specified, print the entire code file
       for line in lines:
         if not line.startswith('/* *** ODSA'):
           res.append(line)
@@ -232,30 +240,30 @@ class codeinclude(Directive):
       # /* *** ODSATag: [tag_name] *** */
       # [code_to_be_displayed]
       # /* *** ODSAendTag: [tag_name] *** */
+      tags_counter = 0
+
       for tag in tags:
+        use = False
         startafter = '/* *** ODSATag: %s *** */' % tag
         endbefore  = '/* *** ODSAendTag: %s *** */' % tag
 
-        if startafter is not None or endbefore is not None:
-          use = not tag  #startafter
-          tags_counter = 0
-          for line in lines:
-            if not use and startafter and startafter in line:
-              use = True
-              tags_counter = tags_counter + 1
-            elif use and endbefore and endbefore in line:
-              use = False
-              tags_counter = tags_counter + 1
-              break
-            elif use and '/* *** ODSA' in line and startafter not in line:
-              pass
-            elif use:
-              res.append(line)
+        for line in lines:
+          if startafter in line:
+            use = True
+            tags_counter += 1
+            continue
+          elif endbefore in line:
+            use = False
+            tags_counter += 1
+            continue
 
-          if tags_counter == 0:
-            return [document.reporter.warning(str("Tag not found. Make sure the tag in your module file matches the delimiter in the source code file."), line=self.lineno)]
-          elif tags_counter == 1:
-            return [document.reporter.warning(str("Begin or end tag missing. Please verify your source code file."), line=self.lineno)]
+          if use:
+            res.append(line)
+
+        if tags_counter == 0:
+          return [document.reporter.warning('Tag "%s" not found in %s. Make sure the tag in your module file matches the delimiter in the source code file.' % (tag, filename), line=self.lineno)]
+        elif tags_counter == 1:
+          return [document.reporter.warning('Begin or end tag (%s) missing from %s. Please verify your source code file.' % (tag, filename), line=self.lineno)]
 
     lines = res
     if prepend:
@@ -284,6 +292,7 @@ class codeinclude(Directive):
       retnode['highlight_args'] = {'hl_lines': hl_lines}
 
     env.note_dependency(rel_filename)
+
     return retnode
 
 source = """\

@@ -64,15 +64,15 @@
         }
       },
       "Background/MiscMath": {
-        "long_name": "Set Definitions",
+        "long_name": "Miscellaneous Notation",
         "exercises": {}
       },
       "Background/Logarithms": {
-        "long_name": "Set Definitions",
+        "long_name": "Logarithms",
         "exercises": {}
       },
       "Background/Summations": {
-        "long_name": "Set Definitions",
+        "long_name": "Summations and Recurrence Relations",
         "exercises": {}
       },
       "Background/Recursion": {

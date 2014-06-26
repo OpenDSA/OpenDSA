@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursionIntroCON.css
+
 
 
 Harder Code Completion Practice Exercises
@@ -32,4 +32,4 @@ However, another approach is to be at B and step back one step towards A (let’
 to B once you reach C. For example, you might be travelling from Atlanta to Boston. You think ”if I were at New York, how would I make it to Boston” and then worry about how to solve the problem of getting from Atlanta to New York. If you learn to think ”backwards” or more accurately, learn to figure out what the correct “smaller” version of the problem is, you’re well on your way to figuring out recursion. 
 
 
-.. odsascript:: AV/RecurTutor/RecursionIntroCON.js
+

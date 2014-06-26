@@ -1,10 +1,3 @@
-#include <iostream>
-#include <cstdlib>
-#include <fstream>
-
-using std::fstream;
-using std::ios;
-
 int ELEMSIZE = 32003;
 int THRESHOLD = 0;
 bool SUCCESS = true;
@@ -15,7 +8,6 @@ int main(int argc, char** argv) {
   int i;
 
   int arraysize;
-  int currarg;
 
   Randomize();
 
@@ -35,7 +27,7 @@ int main(int argc, char** argv) {
   for (i=0; i<arraysize; i++)
     array[i] = Random(ELEMSIZE);  // Random
 
-  SUCCESS = sorttest(&array[i], arraysize, threshold);
+  SUCCESS = sorttest(array, arraysize, THRESHOLD);
 
   if (SUCCESS) {
     successfile.open("success", ios::out);

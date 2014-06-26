@@ -131,6 +131,31 @@ JSAV provides translations to many languages for its infrastructure
 strings.
 
 
+-------------------------------
+Glossary Concept Map Definition
+-------------------------------
+
+OpenDSA supports displaying glossary terms as a **concept map**.
+The relationship between terms are specified in the ``Glossary.rst``
+file, and consist of the following elements added below the term we are defining:
+
+* ``:to-term:`` followed by the related term. Ideally, the related term should be also
+    defined in the glossary file, but is is not mandatory.
+* ``:label:`` followed by the linking phrase decribing the relationship between the two terms.
+
+Here is an example of a relationship definition between the terms ``graph`` and ``vertices``::
+
+  graph
+      :to-term: vertices :label: contains
+
+      A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
+      of a set of :term:`vertices` :math:`\mathbf{V}` and a set of
+      :term:`edges` :math:`\mathbf{E}`,
+      such that each edge in :math:`\mathbf{E}` is a connection between a
+      pair of vertices in :math:`\mathbf{V}`.   
+
+
+
 ---------------
 Client-side API
 ---------------

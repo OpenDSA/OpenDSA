@@ -10,10 +10,25 @@
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "glob_exer_options": {
-  "JXOP-debug": "true"
+    "JXOP-debug": "true",
+    "JXOP-code": "c++"
   },
   "chapters": {
+    "Introduction": {
+      "Background/IntroDSA.rst": {
+        "long_name": "Introduction to Data Structures and Algorithms",
+        "exercises": {
+          "IntroSumm": {
+            "long_name": "Introduction Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
     "Linear Structures": {
+
       "List/ListIntro": {
         "long_name": "Chapter Introduction: Linear Structures",
         "exercises": {}
@@ -876,6 +891,10 @@
       }
     },
     "Graphs": {
+      "Development/GraphIntro": {
+        "long_name": "Introduction and Terminology",
+        "exercises": {}
+      },
       "Development/GraphTopsort": {
         "long_name": "Topological Sorting",
         "exercises": {

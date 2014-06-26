@@ -16,11 +16,13 @@ Glossary
    :sorted:
 
    ADT
+   adt
       Abbreviation for :term:`abstract data type`.
 
    abstract data type
-      Abreviated ADT. The realization of a data type as a software
-      component.
+   abstract data types
+      Abreviated :term:`ADT`. The realization of a :term:`data type`
+      as a software component.
 
    activation record
       The entity that is stored on the :term:`runtime stack` during
@@ -29,55 +31,86 @@ Glossary
       which a new subroutine is being called, so that this information
       can be recovered when the subroutine terminates.
 
+   acyclic graph
+      :to-term: directed acyclic graph :label: types
+      In :term:`graph` terminology, a graph that contains no
+      :term:`cycles`.
+
+   adjacent
+      Two nodes of a :term:`tree` or two :term:`vertices` of a graph
+      are said to be adjacent if they have an :term:`edge` connecting
+      them.
+
+   adjacency list
+      An implementation for a :term:`graph` that uses an (array-based)
+      :term:`list` to represent the :term:`vertices` of the graph, and
+      each :term:`vertex` is in turn represented by a (linked) list of
+      the vertices that are :term:`neighbors`.
+
+   adjacency matrix
+      An implementation for a :term:`graph` that uses a 2-dimensional
+      array where each row and each column corresponds to a
+      :term:`vertex` in the :term:`graph`. A given row and column in
+      the matrix corresponds to an edge from the :term:`vertex`
+      corresponding to the row to the vertex corresponding to the
+      column.
+
    aggregate type
       A type whose members have subparts. For example, a typical
       database record. Another term for this is :term:`composite type`.
-
-   antisymmetric
-      In set notation, relation :math:`R` is antisymmetric if whenever
-      :math:`aRb` and :math:`bRa`, then :math:`a = b`, for all
-      :math:`a, b \in \mathbf{S}`.
 
    algorithm
       A method or a process followed to solve a problem.
 
    algorithm analysis
-      A less formal term for :term:`asymptotic analysis`.
+      A less formal version of the term
+      :term:`asymptotic algorithm analysis`.
 
    amortized analysis
-      An analysis techique that looks at the total cost for a series
-      of operations and amortizes this total cost over the full series.
-      This is as opposed to considering only the worst case cost for an
-      individual operation, which might well be an overestimate of the
-      total cost.
+      An :term:`algorithm analysis` techique that looks at the total
+      cost for a series of operations and amortizes this total cost
+      over the full series. 
+      This is as opposed to considering every individual operation to
+      independently have the worst case cost, which might lead to an
+      overestimate for the total cost of the series.
 
    amortized cost
       The total cost for a series of operations to be used in an
       :term:`amortized analysis`.
 
    ancestor
-      In a tree, for a given node :math:`A`, any node on a :term:`path` from
-      :math:`A` up to the root is an ancestor of :math:`A`.
+      In a tree, for a given node :math:`A`, any node on a
+      :term:`path` from :math:`A` up to the root is an ancestor of
+      :math:`A`.
+
+   antisymmetric
+      In set notation, relation :math:`R` is antisymmetric if whenever
+      :math:`aRb` and :math:`bRa`, then :math:`a = b`, for all
+      :math:`a, b \in \mathbf{S}`.
 
    array-based list
-      An implementation for the list ADT that uses an array to store
-      the list elements. Typical implementations fix the array size at
-      creation of the list, and the amount of :term:`overhead` or
-      unused space is the number of array positions that are presently
-      unused.
+      An implementation for the :term:`list` ADT that uses an array to
+      store the list elements. Typical implementations fix the array
+      size at creation of the list, and the :term:`overhead`
+      is the number of array positions that are presently unused.
 
    array-based stack
       Analogous to an :term:`array-based list`, this uses an array to
-      store the elements when implementing the stack ADT.
+      store the elements when implementing the :term:`stack` ADT.
+
+   array-based queue
+      Analogous to an :term:`array-based list`, this uses an array to
+      store the elements when implementing the :term:`queue` ADT.
 
    asymptotic algorithm analysis
       A more formal term for :term:`asymptotic analysis`.
 
    asymptotic analysis
       A method for estimating the efficiency of an algorithm or
-      computer program. Asymptotic analysis also gives a way to define
-      the inherent difficulty of a problem. We frequently use the
-      term :term:`algorithm analysis` to mean the same thing.
+      computer program. :dfn:`Asymptotic analysis` also gives a way to
+      define the inherent difficulty of a :term:`problem`.
+      We frequently use the term :term:`algorithm analysis` to mean
+      the same thing.
 
    average case
       In algorithm analysis, the average of the costs for all problem
@@ -147,8 +180,8 @@ Glossary
    binary trees
       A finite set of nodes which is either empty, or else has a root
       node together two binary trees, called the left and right
-      :term:`subtrees`,  which are disjoint from each other and from
-      the root.
+      :term:`subtrees`,  which are :term:`disjoint` from each other
+      and from the :term:`root`.
 
    binsort
       A sort that works by taking each record and placing it into a
@@ -175,6 +208,8 @@ Glossary
       time.
 
    bubble sort
+      :to-term: algorithm :label: type of
+
       A simple sort that requires :math:`Theta(n^2)` time in best,
       average, and worst cases. Even an optimized version will
       normally run slower than insertion sort, so it has little to
@@ -202,11 +237,39 @@ Glossary
       In an object-oriented language, an ADT and its implementation
       together make up a class. 
 
+   clique
+      In :term:`graph` terminology, a clique is any subset :math:`U`
+      of the graph's :term:`vertices` such that every vertex in
+      :math:`U` has an :term:`edge` to every other vertex in :math:`U`.
+      The size of the clique is the number of vertices in the clique.
+
    closed-form solution
       An algebraic equation with the same value as a summation or
       recurrence. The process of replacing the summation or
       recurrence with its closed-form solution is known as solving the
       summation or recurrence.
+
+   closed hash system
+      A :term:`hash system` where all records are stored in slots of
+      the :term:`hash table`.
+      This is in contrast to an :term:`open hash system`.
+
+   collision
+      In a :term:`hash system`, this refers to the case where two
+      search keys are mapped by the :term:`hash function` to the same
+      slot in the :term:`hash table`.
+      This can happen on insertion or search when another record has
+      already been hashed to that slot.
+      In this case, a :term:`closed hash system` will require a
+      process known as :term:`collision resolution` to find the
+      location of the desired record.
+
+   collision resolution
+      In a :term:`closed hash system`, this is the process of finding
+      the proper index in a :term:`hash table` that contains the
+      desired record if the :term:`hash function` did not return the
+      index for that record due to a :term:`collision` with another
+      record.
 
    comparable
       The concept that two objects can be compared to determine if they
@@ -241,7 +304,6 @@ Glossary
       sorting routine pass in a comparator function
       to define how records in the collection are to be compared.
 
-   complete
    complete binary tree
       A binary tree where the nodes are filled in row by row, with the
       bottom row filled in left to right.
@@ -254,6 +316,10 @@ Glossary
       The :term:`heap` data structure is a complete binary tree with
       partial ordering constraints on the node values.
 
+   complete graph
+      A :term:`graph` where every :term:`vertex` connects to every
+      other vertex.
+
    composite type
       A type whose members have subparts. For example, a typical
       database record. Another term for this is :term:`aggregate type`.
@@ -263,9 +329,14 @@ Glossary
       programming language.
 
    connected component
+   connected components
       In an :term:`undirected graph`, a subset of the nodes such that
       each node in the subset can be reached from any other node in
       that subset.
+
+   connected graph
+      An :term:`undirected graph` is a connected graph if there is at
+      least one path from any :term:`vertex` to any other.
 
    constant running time
       The cost of a function whose running time is not related to its
@@ -281,7 +352,13 @@ Glossary
       A property of some list ADTs, where there is maintained a
       "current position" state that can be referred to later.
 
+   cycle
+      In :term:`graph` terminology,
+      a :term:`cycle` is a :term:`path` of length three or more that
+      connects some :term:`vertex` :math:`v_1` to itself.
+
    data item
+   data items
       A piece of information or a record whose value is drawn from a type.
 
    data members
@@ -302,6 +379,18 @@ Glossary
       the algorithms behavior. Decision trees can be used in lower
       bounds proofs, such as the proof that sorting requires
       :math:`\Omega(n \log n)` comparisons in the worst case.
+
+   degree
+      In :term:`graph` terminology, the degree for a :term:`vertex` is
+      its number of neighbors.
+      In :term:`tree` terminology, the degree for a :term:`node` is
+      its number of :term:`children`.
+
+   dense graph
+      A :term:`graph` where the actual number of :term:`edges` is a
+      large fraction of the possible number of edges.
+      Generally, this is interpreted to mean that the :term:`degree`
+      for any :term:`vertex` in the graph is relatively high.
 
    depth
      The depth of a node :math:`M` in a tree is the length
@@ -343,6 +432,42 @@ Glossary
       it could also be written with logic notation such as
       :math:`P \Rightarrow Q`.
 
+   DAG
+      Abbreviation for :term:`directed acyclic graph`.
+
+   digraph
+      Abbreviation for :term:`directed graph`.
+
+   directed acyclic graph
+      :to-term: DAG :label: abbreviation
+
+      A :term:`graph` with no cycles.
+      Abbreviated as :term:`DAG`.
+      Note that a DAG is not necessarily a :term:`tree` since a given
+      :term:`node` might have multiple :term:`parents`.
+
+   directed graph
+      :to-term: directed acyclic graph :label: types
+      :to-term: digraph :label: abbreviation
+
+      A :term:`graph` whose :term:`edges` each are directed from
+      one of its defining :term:`vertices` to the other.
+
+   disjoint
+      Two parts of a data structure or two collections with no objects
+      in common are disjoint.
+      This term is often used in conjunction with a data structure
+      that has :term:`nodes` (such as a :term:`tree`).
+      Also used in the context of :term:`sets`, where two
+      :term:`subsets` are disjoint if they share no elements.
+
+   disjoint set
+   disjoint sets
+      A collection of sets, any pair of which share no elements in
+      common.
+      A collection of disjoint sets partitions some objects
+      such that every object is in exactly one of the disjoint sets.
+
    disk-based space/time tradeoff
       In contrast to the standard :term:`space/time tradeoff`, this
       principle states that the smaller you can make your disk storage
@@ -352,13 +477,6 @@ Glossary
       additional computation needed to unpack the data is going to be
       less than the disk-reading time saved by reducing the storage
       requirements.
-
-   disjoint set
-   disjoint sets
-      A collection of sets any pair of which share no elements in
-      common.
-      A collection of disjoint sets partitions some objects
-      such that every object is in exactly one of the disjoint sets.
 
    divide-and-conquer
       A technique for designing algorithms where a solution is found
@@ -447,6 +565,18 @@ Glossary
       :math:`\mathbf{S}` if it is reflexive, symmetric, and
       transitive.
 
+   estimation
+      As a technical skill, this is the process of generating a rough
+      estimate in order to evaluate the feasibility of a proposed
+      solution.
+      This is sometimes known as "back of the napkin" or
+      "back of the envelope" calculation.
+      The estimation process can be formalized as (1) determine the
+      major parameters that affect the problem, (2) derive an equation
+      that relates the parameters to the problem, then (3) select
+      values for the parameters and apply the equation to yield an
+      estimated solution.
+
    exact-match query
       Records are accessed by unique identifier.
 
@@ -501,15 +631,25 @@ Glossary
       If the freelist is empty, then a new object is allocated from
       :term:`free store`.
 
+   free tree
+      A connected, undirected graph with no simple cycles.
+      An equivalent definition is that a free tree is connected and
+      has :math:`|\mathbf{V}| - 1` edges.
+
    full
    full tree
-      A binary tree is full if every node is either a
-      :term:`leaf node` or else it is an internal node with two
-      non-empty children.
+      A :term:`binary tree` is full if every :term:`node` is either a
+      :term:`leaf node` or else it is an :term:`internal node` with
+      two non-empty :term:`children`.
 
    function
-      A matching between inputs (the :term:`domain`) and outputs
-      (the :term:`range`). 
+      In mathematics, a matching between inputs (the :term:`domain`)
+      and outputs (the :term:`range`).
+      In programming, a subroutine that takes input parameters and
+      uses them to compute and return a value.
+      In this case, it is usually considered bad practice for a
+      function to change any global variables
+      (doing so is called a side effect).
 
    garbage
       In programming, any memory that was previously (dynamically)
@@ -535,11 +675,31 @@ Glossary
       General tree nodes tend to be harder to implement for this reason.
 
    graph
+      :to-term: edges :label: contains
+      :to-term: vertices :label: contains
+      :to-term: adjacency matrix :label: implemented by
+      :to-term: adjacency list :label: implemented by
+      :to-term: minimal cost spanning tree :label: problems
+      :to-term: traversal :label: problems
+      :to-term: topological sort :label: problems
+      :to-term: shortest paths :label: problems
+      :to-term: dense :label: types
+      :to-term: sparse graph :label: types
+      :to-term: directed graph :label: types
+      :to-term: acyclic graph :label: types
+      :to-term: labeled graph :label: types
+      :to-term: undirected graph :label: types
+      :to-term: weighted graph :label: types
+      :to-term: unweighted graph :label: types
+
       A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
       of a set of :term:`vertices` :math:`\mathbf{V}` and a set of
       :term:`edges` :math:`\mathbf{E}`,
       such that each edge in :math:`\mathbf{E}` is a connection between a
       pair of vertices in :math:`\mathbf{V}`.
+
+   greedy algorithm
+      An algorithm that makes locally optimal choices at each step.
 
    growth rate
       The rate at which the cost
@@ -550,6 +710,32 @@ Glossary
       Harmonic Series, and is written :math:`{\cal H}_n`.
       This sum has a value between :math:`\log_e n` and
       :math:`\log_e n + 1`. 
+
+   hash function
+      In a :term:`hash system`, the function that converts a key to an
+      index in the :term:`hash table`.
+      The hope is that this position in the hash table contains the
+      record that matches the key value.
+
+   hash system
+      The implementation for search based on hash lookup in a
+      :term:`hash table`.
+
+   hash table
+      The data structure (usually an array) that stores data
+      records for lookup using :term:`hashing`.
+
+   hashing
+      A search method that uses a :term:`hash function` to convert a
+      key into an index within a :term:`hash table`.
+      In a properly implemented :term:`hash system`, that index in the
+      table will have high probability of containing the record that
+      matches the key value.
+      Sometimes, the hash function will return an index that does not
+      store the desired key, due to a process called
+      :term:`collision`.
+      In that case, the desired record is found through a process
+      known as :term:`collision resolution`.
 
    head
       The beginning of a :term:`list`.
@@ -591,6 +777,9 @@ Glossary
       you have a list intended to store Payroll records, is it
       possible for the programmer to insert an integer onto the list
       instead?
+
+   incident
+      In :term:`graph` terminology, a synonym for :term:`adjacent`.
 
    index file
       A file whose records consist of key/pointer pairs where the
@@ -663,6 +852,19 @@ Glossary
       The other standard solution to this problem is to pass a
       comparator function to the index methods.
 
+   Kruskal's algorithm
+   kruskal's algorithm
+      :to-term: UNION/FIND :label: uses
+
+      An algorithm for computing the :term:`MCST` of a
+      :term:`graph`.
+      During processing, it makes use of the :term:`UNION/FIND`
+      process to efficiently determine of two vertices are within the
+      same :term:`subgraph`.
+
+   labeled graph
+      A :term:`graph` with labels associated with the :term:`nodes`.
+
    leaf
    leaf node
       In a binary tree, A leaf node is any node that has two empty
@@ -728,16 +930,27 @@ Glossary
       constant number of inputs. It could be a gross under-estimate of
       the truth.
 
+   map
+      A :term:`data structure` that relates a :term:`key` to a
+      :term:`record`.
+
+   mapping
+      A :term:`function` that maps every element of a given
+      :term:`set` to a unique element of another set; a
+      correspondence.
+
    max heap
       A :term:`heap` where every node has a key value greater than its
       children. As a consequence, the node with maximum key value is
       at the root.
 
    mergesort
-      A sort that requires :math:`\Theta(n \log n)` in the best,
-      average, and worst cases. Conceptually it is simple: Split the
-      list in half, sort the halves, then merge them together. It is a
-      bit complicated to implement effiently on an array.
+      A sorting algorithm that requires :math:`\Theta(n \log n)` in
+      the best, average, and worst cases.
+      Conceptually it is simple:
+      Split the list in half, sort the halves, then merge them
+      together.
+      It is a bit complicated to implement effiently on an array.
 
    member
    members
@@ -766,10 +979,29 @@ Glossary
       In an objectect-oriented class, a method is an operation on a class.
       A synonym for :term:`member function`.
 
+   MCST
+   MST
+   mcst
+   mst
+      Abbreviation for :term:`minimal cost spanning tree`.
+
    min heap
       A :term:`heap` where every node has a key value less than its
       children. As a consequence, the node with minimum key value is
       at the root.
+
+   minimal cost spanning tree
+      :to-term: Kruskal's algorithm :label: algorithms
+      :to-term: Prim's algorithm :label: algorithms
+
+      Abbreviated as MCST, or sometimes as MST.
+      Derived from a :term:`weighted graph`, the MCST is the subset of
+      the graph's :term:`edges` that maintains the connectivitiy of
+      the graph while having lowest total cost (as defined by the sum
+      of the :term:`weights` of the edges in the MCST).
+      The result is referred to as a :term:`tree` because it would
+      never have a :term:`cycle` (since an edge could be removed from
+      the cycle and still preserve connectivity).
 
    mod
       Another name for the :term:`modulus` function.
@@ -784,6 +1016,12 @@ Glossary
       A list that may contain sublists.
       This term is sometimes used as a synonym to the term
       :term:`bag`.
+
+   neighbor
+   neighbors
+      In a :term:`graph`, a :term:`node` :math:`w` is said to be a
+      neighbor of :term:`node` :math:`v` if there is an :term:`edge`
+      from :math:`v` to :math:`w`.
 
    node
    nodes
@@ -808,14 +1046,24 @@ Glossary
    one-way list
       A synonym for a :term:`singly linked list`.
 
+   open hash system
+      A :term:`hash system` where multiple records might be associated
+      with the same slot of a :term:`hash table`.
+      Typically this is done using a linked list to store the records.
+      This is in contrast to a :term:`closed hash system`.
+
    overhead
       All information stored by a data structure aside from the actual
-      data. For example, the pointer fields in a linked list or BST.
+      data.
+      For example, the pointer fields in a :term:`linked list` or
+      :term:`BST`, or the unused positions in an
+      :term:`array-based list`. 
 
    parameters
-      The values making up an input to a function.
+      The values making up an input to a :term:`function`.
 
    parent
+   parents
       In a tree, the :term:`node` :math:`P` that directly links to a
       node :math:`A` is the parent of :math:`A`. :math:`A` is the
       :term:`child` of :math:`P`.
@@ -843,7 +1091,8 @@ Glossary
       length :math:`i`.
 
    path
-      A sequence of vertices :math:`v_1, v_2, ..., v_n`
+      In :term:`tree` or :term:`graph` terminology,
+      a sequence of :term:`vertices` :math:`v_1, v_2, ..., v_n`
       forms a path of length :math:`n-1` if there exist edges from
       :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
 
@@ -904,6 +1153,12 @@ Glossary
       the base type for the set. This is as opposed to an element of
       the set being another set.
 
+   Prim's algorithm
+      :to-term: greedy algorithm :label: is a
+
+      A :term:`greedy algorithm` for computing the :term:`MCST` of a
+      :term:`graph`.
+
    priority queue
       An ADT whose primary operations of insert of records, and
       deletion of the greatest (or, in an alternative implementation,
@@ -912,7 +1167,7 @@ Glossary
 
    problem
       A task to be performed.
-      It is best thought of as a function or a mapping of
+      It is best thought of as a :term:`function` or a mapping of
       inputs to outputs.
 
    program
@@ -970,6 +1225,12 @@ Glossary
    range query
       Records are returned if their relevant key value falls with a
       specified range.
+
+   record
+      A collection of information, typical implemented as an object in
+      an object-oriented programming language.
+      Many data structures are organized containers for a collection
+      of records.
 
    recurrence relation
       A recurrence relation defines a function by means of an
@@ -1054,7 +1315,9 @@ Glossary
       array elements in the order that they appear.
 
    set
-      A collection of distinguishable :term:`members` or :term:`elements`.
+   sets
+      A collection of distinguishable :term:`members` or
+      :term:`elements`.
 
    Shellsort
       A sort that relies on the best-case cost of
@@ -1064,6 +1327,15 @@ Glossary
    signature
       In a programming language, the signature for a function is its
       return type and its list of parameters and their types.
+
+   simple cycle
+      In :term:`graph` terminology, a :term:`cycle` is simple if its
+      corresponding :term:`path` is simple, except that the first and
+      last :term:`vertices` of the cycle are the same.
+
+   simple path
+      In :term:`graph` terminology, a :term:`path` is simple if all
+      vertices on the path are distinct.
 
    simple type
       A type whose values contain no subparts. An example is the integers.
@@ -1089,6 +1361,20 @@ Glossary
       Many programs can be designed to either speed processing at the
       cost of additional storage, or reduce storage at the cost of
       additional processing time.
+
+   sparse matrix
+      A matrix whose values are mostly zero.
+      There are a number of data structures that have been developed
+      to store sparse matrices, with the goal of reducing the amount
+      of space required to represent it as compared to simply using a
+      regular matrix representation that stores a value for every
+      matrix position.
+
+   sparse graph
+      A :term:`graph` where the actual number of :term:`edges` is much
+      less than the possible number of edges.
+      Generally, this is interpreted to mean that the :term:`degree`
+      for any :term:`vertex` in the graph is relatively low.
 
    spatial application
       An application what has spatial aspects. In particular, an
@@ -1120,16 +1406,39 @@ Glossary
       If **Thrm** holds for all :math:`k, c \leq k < n`, then
       **Thrm** holds for :math:`n`.
 
+   subgraph
+      A subgraph :math:`\mathbf{S}` is formed from :term:`graph`
+      :math:`\mathbf{G}` by selecting a subset :math:`\mathbf{V}_s` of
+      :math:`\mathbf{G}`'s :term:`vertices` and a subset 
+      :math:`\mathbf{E}_s` of :math:`\mathbf{G}` 's :term:`edges` such
+      that for every edge :math:`e  \in \mathbf{E}_s`,
+      both vertices of :math:`e` are in :math:`\mathbf{V}_s`.
+
+   subset
+   subsets
+      In set theory, a set :math:`A` is a subset of a set
+      :math:`B`, or equivalently :math:`B` is a :term:`superset` of
+      :math:`A`, if all elements of :math:`A` are also elements of
+      :math:`B`.
+
    subtree
    subtrees
       A subtree is a subset of the nodes of a binary tree that
       includes some node :math:`R` of the tree as the subtree root
       along with all the :term:`descendants` of :math:`R`.
 
-
    summation
-      The sum of costs for some function applied to a
+      The sum of costs for some :term:`function` applied to a
       range of parameter values.
+      Often written using Sigma notation.
+      For example, the sum of the integers from 1 to :math:`n` can be
+      written as :math:`\sum_{i=1}^{n} i`.
+
+   superset
+      In set theory, a set :math:`A` is a subset of a set
+      :math:`B`, or equivalently :math:`B` is a :term:`superset` of
+      :math:`A`, if all elements of :math:`A` are also elements of
+      :math:`B`.
 
    symmetric
       In set notation, relation :math:`R` is symmetric if whenever
@@ -1137,6 +1446,16 @@ Glossary
 
    tail
       The end of a :term:`list`.
+
+   topological sort
+      The process of laying out the :term:`vertices` of a :term:`DAG`
+      in a :term:`linear order` such that no vertex :math:`A` in the
+      order is preceded by a vertex that can be reached by a
+      (directed) :term:`path` from :math:`A`.
+      Usually the (directed) edges in the graph define a
+      prerequisite system, and the goal of the topological sort is
+      to list the vertices in an order such that no prerequisites are
+      violated.
 
    total order
       A binary relation on a set where every pair of distinct elements
@@ -1150,6 +1469,18 @@ Glossary
    traversal
       Any process for visiting all of the objects in a collection
       (such as a tree or graph) in some order.
+
+   tree
+      A tree :math:`\mathbf{T}` is a finite set of one or more
+      :term:`nodes` such that there is one designated node :math:`R`,
+      called the :term:`root` of :math:`\mathbf{T}`.
+      If the set :math:`(\mathbf{T} -\{R\})` is not empty, these
+      :term:`nodes` are partitioned into :math:`n > 0`
+      :term:`disjoint sets` :math:`\mathbf{T}_0`,
+      :math:`\mathbf{T}_1`, ..., :math:`\mathbf{T}_{n-1}`, 
+      each of which is a tree, and whose roots
+      :math:`R_1, R_2, ..., R_n`,
+      respectively, are children of :math:`R`.
 
    tuple
       In set notation, another term for a :term:`sequence`.
@@ -1191,6 +1522,10 @@ Glossary
       As a data structure, the term vector usually used as a synonym
       for a :term:`dynamic array`.
 
+   vertices
+   vertex
+      Another name for a :term:`node` in a :term:`graph`.
+
    visitor
    visitor design pattern
       A :term:`design pattern` where a traversal process is given a
@@ -1198,6 +1533,15 @@ Glossary
       in the collection being traversed. For example, a generic tree
       or graph traversal might be designed such that it takes a
       function parameter, where that function is applied to each node.
+
+   weight
+   weights
+      A cost or distance most often associated with an :term:`edge` in
+      a :term:`graph`.
+
+   weighted graph
+      A :term:`graph` whose :term:`edges` each have an associated
+      weight or cost.
 
    weighted union rule
       When merging two disjoint sets using the :term:`UNION/FIND`

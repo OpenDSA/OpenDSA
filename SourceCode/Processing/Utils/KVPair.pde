@@ -1,4 +1,4 @@
-/* *** ODSATag: KVpair *** */
+/* *** ODSATag: KVPair *** */
 // KVPair class definition
 class KVPair implements Comparable {
   Comparable theKey;
@@ -26,4 +26,4 @@ class KVPair implements Comparable {
     return theVal;
   }
 }
-/* *** ODSAendTag: KVpair *** */
+/* *** ODSAendTag: KVPair *** */

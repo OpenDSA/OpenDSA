@@ -45,7 +45,7 @@ from optparse import OptionParser
 from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config
-from postprocessor import update_TOC
+from postprocessor import update_TOC, update_TermDef
 
 # List of exercises encountered in RST files that do not appear in the configuration file
 missing_exercises = []
@@ -136,6 +136,8 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, dep
   global satisfied_requirements
   global module_chap_map
   global num_ref_map
+  global cmap_map
+
 
   # Parse the name of the module from mod_path and remove the file extension if it exists
   mod_name = os.path.splitext(os.path.basename(mod_path))[0]
@@ -164,6 +166,8 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises':{}}, dep
   missing_exercises += module.missing_exercises
   satisfied_requirements += module.requirements_satisfied
   num_ref_map = dict(num_ref_map.items() + module.num_ref_map.items())
+  if len(module.cmap_dict['concepts']) > 0:
+    cmap_map =  module.cmap_dict
 
   # Maps the chapter name and number to each module, used for correcting the numbers during postprocessing
   # Have to ignore the last number because that is the module number (which is already provided by Sphinx)
@@ -193,7 +197,7 @@ def generate_index_rst(config, slides = False):
   header_data['unicode_directive'] = rst_header_unicode if not slides else ''
 
   # Generate the index.rst file
-  with open(config.book_src_dir + 'index.rst', 'w+') as index_rst:
+  with codecs.open(config.book_src_dir + 'index.rst', 'w+', "utf-8") as index_rst:
     index_rst.write(index_header.format(config.start_chap_num))
     index_rst.write(rst_header % header_data)
 
@@ -387,6 +391,7 @@ def configure(config_file_path, slides = False):
   for image in images:
     distutils.file_util.copy_file('%sRST/Images/%s' % (config.odsa_dir, image), config.book_src_dir + 'Images/')
 
+
   # Run make on the output directory
   print '\nBuilding textbook...'
 
@@ -397,17 +402,14 @@ def configure(config_file_path, slides = False):
   for line in iter(proc.stdout.readline,''):
     print line.rstrip()
 
-  #copy conceptmap XML file to the book directory
-  #if there is no graph definition in the language directory, 
-  # use the english one
-  if os.path.isfile(config.odsa_dir + 'RST/' + config.lang + '/GraphDefs.xml'):
-    distutils.file_util.copy_file(config.odsa_dir + 'RST/' + config.lang + '/GraphDefs.xml', config.book_dir + config.rel_book_output_path )
-  else:
-    print_err('WARNING: Graph definition file translation for "' + config.lang + '" not found, the english file will be used')
-    distutils.file_util.copy_file(config.odsa_dir + 'RST/en/GraphDefs.xml', config.book_dir + config.rel_book_output_path )
-
-  # Calls the postprocessor to update chapter, section, and module numbers
+  # Calls the postprocessor to update chapter, section, and module numbers, and glossary terms definition
   update_TOC(config.book_src_dir, config.book_dir + config.rel_book_output_path, module_chap_map)
+  if 'Glossary' in processed_modules:
+    update_TermDef(config.book_dir + config.rel_book_output_path + 'Glossary.html', cmap_map['concepts'])
+
+    # Create the concept map definition file in _static html directory
+    with codecs.open(config.book_dir + 'html/_static/GraphDefs.json', 'w', 'utf-8') as graph_defs_file:
+      json.dump(cmap_map, graph_defs_file)
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":

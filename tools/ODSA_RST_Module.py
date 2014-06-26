@@ -28,6 +28,7 @@ import sys
 import os
 import datetime
 import re
+import codecs
 from string import whitespace as ws
 from config_templates import *
 
@@ -95,6 +96,29 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
     print_err("%sERROR: Invalid directive arguments for object on line %d, skipping object" % (console_msg_prefix, line_num))
 
   return args
+
+#parses the glossary terms relationships. prints error message if the format is not correct
+#format    :to-term: term1 :lable: label :alt-text: alternate text in case the to-term is not a glossary term
+def parse_term_relationship(line, term, line_num, cmap_dict, console_msg_prefix = ''):
+  if line.strip().startswith(':to-term:') and ':label:' in line.lower():
+    args = re.split(':to-term:|:label:', line)
+    term = term.strip().rstrip('\n')
+    cmap_dict['concepts'][term] = ''
+    
+    if (args[1] not in cmap_dict['concepts']): 
+      if len(args) == 3:   
+        args[1] = args[1].strip().rstrip('\n')
+        cmap_dict['concepts'][args[1]] = ''
+    if args[2].replace(" ", "") not in cmap_dict['linking_phrase']:
+      #size_lp = len(cmap_dict['linking_phrase'])
+      #cmap_dict['linking_phrase']['lp-' + str(size_lp + 1)] = args[2]
+      cmap_dict['linking_phrase'][args[2].replace(" ", "").strip().rstrip('\n')] = args[2]
+    size_c = len(cmap_dict['connections'])
+    #cmap_dict['linking_phrase']['lp-' + str(size_lp + 1)] = args[2]
+    cmap_dict['connections']['con-' + str(size_c + 1)] = {'from': term, 'to': args[2].replace(" ", "").strip().rstrip('\n')} 
+    cmap_dict['connections']['con-' + str(size_c + 2)] = {'from': args[2].replace(" ", "").strip().rstrip('\n'), 'to': args[1]} 
+  else:
+    print_err("%sWARNING: Glossary terms relationship declaration on line %d" % (console_msg_prefix, line_num))
 
 
 def isExample(topic):
@@ -179,6 +203,11 @@ class ODSA_RST_Module:
     requirements_satisfied = []
     todo_list = []
     num_ref_map = {}
+    #concept map dictionary for glossary
+    cmap_dict = {}
+    cmap_dict['concepts'] = {}
+    cmap_dict['linking_phrase'] = {}
+    cmap_dict['connections'] = {}
     # Initialize counters
     counters = {'figure': 1, 'anon_fig': 0, 'table': 1, 'example': 1, 'theorem': 1, 'equation': 1}
 
@@ -196,7 +225,7 @@ class ODSA_RST_Module:
       print_err('ERROR: Module does not exist: %s' % mod_path)
     else:
       # Read the contents of the module file from the RST source directory
-      with open(filename,'r') as mod_file:
+      with codecs.open(filename,'r', encoding='utf-8') as mod_file:
         mod_data = mod_file.readlines()
 
       if 'JOP-lang' not in config.glob_mod_options:
@@ -255,6 +284,29 @@ class ODSA_RST_Module:
 
           image_path = args[-1]
           images.append(os.path.basename(image_path))
+
+        elif line.startswith(':to-term:'):
+          #process concept map relationships
+          term = mod_data[i-1]
+          term_rel = line 
+          line_num = i
+          # Remove concept map config from the RST file
+          mod_data[i] = ''
+          i += 1
+          #We allow alt-text to span multiple lines
+          while (i < len(mod_data) and ( mod_data[i].strip() != '' or mod_data[i] not in ['\n', '\r\n'])):
+            if mod_data[i].strip().startswith(':to-term:'):
+              parse_term_relationship(term_rel, term, line_num, cmap_dict, console_msg_prefix = '')
+              term_rel = mod_data[i]
+              line_num = i
+            else:
+              term_rel += mod_data[i]
+            mod_data[i] = ''
+            i += 1
+
+          parse_term_relationship(term_rel, term, line_num, cmap_dict, console_msg_prefix = '')
+          i-= 1
+
         elif line.startswith('.. todo::'):
           if config.suppress_todo:
             # Remove TODO directives from the RST file
@@ -386,7 +438,7 @@ class ODSA_RST_Module:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
 
       # Write the contents of the module file to the output src directory
-      with open(''.join([config.book_src_dir, mod_name, '.rst']),'w') as mod_file:
+      with codecs.open(''.join([config.book_src_dir, mod_name, '.rst']),'w', 'utf-8') as mod_file:
         mod_file.writelines(mod_data)
 
     # Make public fields accessible
@@ -395,3 +447,4 @@ class ODSA_RST_Module:
     self.requirements_satisfied = requirements_satisfied
     self.todo_list = todo_list
     self.num_ref_map = num_ref_map
+    self.cmap_dict = cmap_dict

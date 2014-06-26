@@ -132,7 +132,7 @@ The records themselves do not need to be duplicated.
 A simple class for representing key-value pairs is shown here.
 
 .. codeinclude:: Utils/KVPair
-   :tag: KVpair
+   :tag: KVPair
 
 The main places where we will need to be concerned with comparing
 records and extracting keys is for various dictionary implementations

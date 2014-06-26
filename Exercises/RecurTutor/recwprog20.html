@@ -12,8 +12,8 @@
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <style>
     #codeTextarea{
-      width:400px;
-      height:200px;
+      width:500px;
+      height:125px;
     }
     .textAreaWithLines{
       font-family:courier;      
@@ -48,12 +48,12 @@
       el.className='textAreaWithLines';
       ta.style.position = 'absolute';
       ta.style.left = '30px';
-      var currHeight=200;
+      var currHeight=50;
       var currWidth=400;
       console.log(navigator.appCodeName);
        if ($.browser.mozilla) //if (navigator.appCodeName== "Mozilla" )
        {
-         var currHeight=15;
+         var currHeight=5;
          var currWidth=50;
       
        }
@@ -70,7 +70,7 @@
       lineObj.style.textAlign = 'right';
       lineObj.className='lineObj';
       var string = '';
-      for(var no=1;no<200;no++){
+      for(var no=1;no<50;no++){
          if(string.length>0)string = string + '<br>';
          string = string + no;
       }
@@ -107,17 +107,21 @@
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test">     Pascal’s triangle is a useful recursive definition that tells us the coefficients in the expansion of the polynomial (x + a)n . Each element in the triangle has a coordinate, given by the row it is on and its position in the row (which you could call a column). Every number in Pascals triangle is defined as the sum of the item above it and the item above it and to the left (its position in the row, minus one). If there is a position that does not have an entry, we treat it as if we had a 0 there. Given the following recursive function signature, write down the recursive function which takes a row and a column and finds the value at that position in the triangle.<br />
-</h4>
 
-<textarea  id="codeTextarea"> 
-int pascal(int row, int column)
-{
+<p class="problem" id = "test"> <p align ="center">
+<img src= "../../RST/Images/PascalTriangle.png" width="150" height="100"> </p>
+Pascal’s triangle is a useful recursive definition that tells us the coefficients in the expansion of the polynomial (x + a)n . Each element in the triangle has a coordinate, given by the row it is on and its position in the row (which you could call a column). Every number in Pascals triangle is defined as the sum of the item above it and the item above it and to the left. If there is a position that does not have an entry, we treat it as if we had a 0 there. Given the following recursive function signature, write down the recursive function which takes a row and a column and finds the value at that position in the triangle.
+<textarea  id="codeTextarea">int pascal(int row, int column){
+
+
+
 
 
 		 
 }
-</textarea></p>
+</textarea>
+
+</p>
 
       <div class="question">
 	

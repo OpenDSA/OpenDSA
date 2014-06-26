@@ -17,8 +17,8 @@ This material is provided primarily for review and reference.
 You might wish to return to the relevant sections when you encounter
 unfamiliar notation or mathematical techniques in later chapters.
 
-Module :numref:`<Estimation>` on estimation might be unfamiliar to many
-readers.
+The concept of :ref:`estimation <Estimation>` might be unfamiliar to
+many readers.
 Estimation is not a mathematical technique, but rather a general
 engineering skill.
 It is enormously useful to computer scientists doing design work,

@@ -79,6 +79,9 @@ CS150: min
 CSE-A1140: min
 	python $(CONFIG_SCRIPT) config/CSE-A1140.json
 
+CSE-A1140p: min
+	python $(CONFIG_SCRIPT) config/CSE-A1140p.json
+
 CSE-A1141: min
 	python $(CONFIG_SCRIPT) config/CSE-A1141.json
 
@@ -94,8 +97,14 @@ NP: min
 test: min
 	python $(CONFIG_SCRIPT) config/test.json
 
+testanal: min
+	python $(CONFIG_SCRIPT) config/testanal.json	
+
 testfi: min
 	python $(CONFIG_SCRIPT) config/testfi.json
+
+testsv: min
+	python $(CONFIG_SCRIPT) config/testsv.json
 
 testcpp: min
 	python $(CONFIG_SCRIPT) config/testcpp.json

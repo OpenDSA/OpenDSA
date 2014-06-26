@@ -31,11 +31,12 @@ integers 7, 11, and 42.
 In this case, :math:`\mathbf{P}`'s members are 7, 11, and 42, and the
 base type is integer.
 
+The following table shows the symbols commonly used to express sets
+and their relationships.
+
 .. _SetNotation:
 
 .. topic:: Table
-
-   SetNotation
 
    .. math::
 
@@ -65,8 +66,6 @@ base type is integer.
         \ \mathbf{P}\ \mbox{NOT in set}\ \mathbf{Q}\\
       \end{array}
 
-Table :num:`#SetNotation` shows the symbols commonly used to express sets
-and their relationships.
 Here are some examples of this notation in use.
 First define two sets, :math:`\mathbf{P}` and :math:`\mathbf{Q}`.
 

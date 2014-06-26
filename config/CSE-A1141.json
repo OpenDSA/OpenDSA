@@ -13,7 +13,7 @@
   "JXOP-debug": "true"
   },
   "chapters": {
-    "Jarjestamisalgoritmit": {
+    "Järjestämisalgoritmit": {
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
         "exercises" : {
