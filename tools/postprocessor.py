@@ -6,6 +6,7 @@
 import sys
 import os
 import re
+import codecs
 import json
 
 __author__ = 'breakid'
@@ -129,7 +130,7 @@ def update_TOC(source_dir, dest_dir, data = None):
 
 
 def update_TermDef(glossary_file, terms_dict):
-  with open(glossary_file, 'r') as html_glossary:
+  with codecs.open(glossary_file, 'r', 'utf-8') as html_glossary:
     mod_data = html_glossary.readlines()
   i = 0
   while i < len(mod_data):
@@ -149,7 +150,7 @@ def update_TermDef(glossary_file, terms_dict):
           else:
             term_def += mod_data[i]
           i += 1
-        terms_dict[term] = term_def
+        terms_dict[term] = str(term_def)
         i-= 1
     i += 1
 

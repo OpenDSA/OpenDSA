@@ -102,21 +102,21 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
 def parse_term_relationship(line, term, line_num, cmap_dict, console_msg_prefix = ''):
   if line.strip().startswith(':to-term:') and ':label:' in line.lower():
     args = re.split(':to-term:|:label:', line)
-    term = term.strip()
+    term = term.strip().rstrip('\n')
     cmap_dict['concepts'][term] = ''
     
     if (args[1] not in cmap_dict['concepts']): 
       if len(args) == 3:   
-        args[1] = args[1].strip()
+        args[1] = args[1].strip().rstrip('\n')
         cmap_dict['concepts'][args[1]] = ''
     if args[2].replace(" ", "") not in cmap_dict['linking_phrase']:
       #size_lp = len(cmap_dict['linking_phrase'])
       #cmap_dict['linking_phrase']['lp-' + str(size_lp + 1)] = args[2]
-      cmap_dict['linking_phrase'][args[2].replace(" ", "")] = args[2]
+      cmap_dict['linking_phrase'][args[2].replace(" ", "").strip().rstrip('\n')] = args[2]
     size_c = len(cmap_dict['connections'])
     #cmap_dict['linking_phrase']['lp-' + str(size_lp + 1)] = args[2]
-    cmap_dict['connections']['con-' + str(size_c + 1)] = {'from': term, 'to': args[2].replace(" ", "")} 
-    cmap_dict['connections']['con-' + str(size_c + 2)] = {'from': args[2].replace(" ", ""), 'to': args[1]} 
+    cmap_dict['connections']['con-' + str(size_c + 1)] = {'from': term, 'to': args[2].replace(" ", "").strip().rstrip('\n')} 
+    cmap_dict['connections']['con-' + str(size_c + 2)] = {'from': args[2].replace(" ", "").strip().rstrip('\n'), 'to': args[1]} 
   else:
     print_err("%sWARNING: Glossary terms relationship declaration on line %d" % (console_msg_prefix, line_num))
 
