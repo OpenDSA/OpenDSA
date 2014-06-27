@@ -1,8 +1,7 @@
 "use strict";
-
 (function ($) {
   $(document).ready(function () {
-    var av = new JSAV("twoColorCON1", {"animationMode": "none"});
+    var av = new JSAV("twoColorCON", {"animationMode": "none"});
 
     av.g.polyline([[60, 30], [110, 80], [30, 80]], {"fill": "gray"});
     av.g.polyline([[110, 80], [240, 80], [175, 145]], {"fill": "gray"});

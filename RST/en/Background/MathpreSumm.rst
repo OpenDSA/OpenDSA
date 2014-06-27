@@ -11,8 +11,6 @@
 Math Background Summary Exercises
 =================================
 
-Here are some practice questions for modules :numref:`<MiscMath>`
-through :numref:`<Estimation>`.
+Here are some practice questions for the modules in this chapter.
 
 .. avembed:: Exercises/Background/MthBgSumm.html ka
-

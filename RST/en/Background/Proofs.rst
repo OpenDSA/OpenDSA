@@ -60,9 +60,27 @@ Direct Proof
 In general, a :term:`direct proof` is just a "logical explanation".
 A direct proof is sometimes referred to as an argument by deduction.
 This is simply an argument in terms of logic.
-Often written in English with words such as "if ... then",
-it could also be written with logic notation such as
-:math:`P \Rightarrow Q`.
+
+.. _SumDirect:
+
+.. topic:: Example
+
+   Here is a direct proof that :math:`\sum_{i=1}^n i = (n+1)n/2`.
+   If we take the first and last terms of the series, since they are 1
+   and :math:`n`, of course they sum to :math:`n+1`.
+   If we take the second term and next-to-last term, since they are 2
+   and :math:`n-1`, they also sum to :math:`n+1`.
+   Likewise for the third term and third-from-the-end term.
+   We can go on and pair up terms like this, such that there are
+   :math:`n/2` pairs that each sum to :math:`n+1`, for a total sum of
+   :math:`(n+1)n/2`.
+   You can check for yourself that this is true even if :math:`n` is
+   odd (and so the middle value of the series has no partner).
+
+Many direct proofs are written in English with words such as
+"if ... then".
+In this case logic notation such as :math:`P \Rightarrow Q` can often
+help express the proof.
 Even if we don't wish to use symbolic logic notation, we can still
 take advantage of fundamental theorems of logic to structure our
 arguments.
@@ -90,7 +108,7 @@ a counter-example to the theorem.
 Unfortunately, no number of examples supporting a theorem is
 sufficient to prove that the theorem is correct.
 However, there is an approach that is vaguely similar to disproving by
-counter-example, called Proof by Contradiction.
+counter-example, called :term:`proof by contradiction`.
 To prove a theorem by contradiction, we first *assume* that the
 theorem is *false*.
 We then find a logical contradiction stemming from this assumption.
@@ -121,9 +139,11 @@ That is, we conclude that the theorem must be true.
    the theorem is false.
    Thus, we conclude that the theorem is correct.
 
-A related proof technique is proving the contrapositive.
+A related proof technique is :term:`proving the contrapositive`.
 We can prove that :math:`P \Rightarrow Q` by proving
 :math:`(\mathrm{not}\ Q) \Rightarrow (\mathrm{not}\ P)`.
+This technique works because the :term:`truth table` for the two
+logical statements are the same.
 
 .. index:: ! proof; by induction
 
@@ -142,8 +162,8 @@ and vice versa, since they work by essentially the same process.
 
 Within the context of algorithm analysis, one of the most important
 uses for mathematical induction is as a method to test a hypothesis.
-As explained in Section~\ref{Sum}, when seeking a closed-form
-solution for a summation or recurrence we might first guess or
+When :ref:`seeking a closed-form solution <Summation>` for a
+:term:`summation` or :term:`recurrence`, we might first guess or
 otherwise acquire evidence that a particular formula is the correct
 solution.
 If the formula is indeed correct, it is often an easy matter to prove
@@ -155,9 +175,9 @@ Mathematical induction states that **Thrm** is true for any value
 of parameter :math:`n` (for :math:`n \geq c`, where `c` is some constant)
 if the following two conditions are true:
 
-#. **Base Case:** **Thrm** holds for :math:`n = c`, and
+#. :term:`Base Case`: **Thrm** holds for :math:`n = c`, and
 
-#. **Induction Step:**
+#. :term:`Induction Step`:
    If **Thrm** holds for :math:`n - 1`, then **Thrm** holds for :math:`n`.
 
 Proving the base case is usually easy, typically requiring that some
@@ -262,6 +282,13 @@ picture, we can  use the induction hypothesis to replace
 From here, it is simple algebra to prove that
 :math:`\mathbf{S}(n-1) + n` equals the 
 right-hand side of the original theorem.
+
+We can compare the induction proof of Example :num:`Example #SumIEx`
+with the direct proof in Example :num:`Example #SumDirect`.
+Different people might think one is easier to understand than the
+other, but certainly the writer of the direct proof version had
+to discover an insight unique to that problem that might
+not be helpful or relevant when proving other summations.
 
 .. _nOdds:
 
@@ -398,7 +425,7 @@ induction hypothesis.
 
 .. _TwoColor:
 
-.. inlineav:: proofCON1 dgm
+.. inlineav:: twoColorCON dgm
    :align: center
 
    A two-coloring for the regions formed by three lines in the plane.
@@ -411,8 +438,7 @@ induction hypothesis.
    set of regions as a way of assigning one of two colors to each region
    such that no two regions sharing a side have the same color.
    For example, a chessboard is two-colored.
-   Figure :num:`Figure #TwoColor` shows a two-coloring for the plane with
-   three lines.
+   The figure shows a two-coloring for the plane with three lines.
    We will assume that the two colors to be used are black and white.
 
    **Theorem:**
@@ -471,6 +497,14 @@ We would have great difficulty justifying that *all* possible
 collections of :math:`n` lines are covered by our building process.
 By reducing from an arbitrary collection of :math:`n` lines to
 something less, we avoid this problem.
+
+Another advantage to thinking in terms of "reducing from :math:`n`"
+rather than "building up from :math:`n-1`" is that reducing is more
+like what we do when we write a recursive function.
+In recursion, we would naturally compute some
+function of :math:`n` by calling the function (recursively) on
+:math:`n-1` and then using the result to compute the value for
+:math:`n`.
 
 This section's final example shows how induction can be used to
 prove that a recursive function produces the correct result.

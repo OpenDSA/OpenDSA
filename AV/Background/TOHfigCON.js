@@ -1,9 +1,7 @@
 "use strict";
 (function ($) {
   $(document).ready(function () {
-    console.log("Hello1");
     var av = new JSAV("TOHfigCON", {"animationMode": "none"});
-    console.log("Hello2");
 
     av.g.rect(0, 120, 245, 10);
     av.g.rect(40, 30, 5, 90);

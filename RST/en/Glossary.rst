@@ -137,6 +137,7 @@ Glossary
       Synonym for :term:`radix`.
 
    base case
+   Base Case
       In :term:`recursion` or :term:`proof by induction`, the base case
       is the termination condition.
       This is a simple input or value that can be solved (or proved in
@@ -569,10 +570,11 @@ Glossary
 
    equivalence relation
       Relation :math:`R` is an equivalence relation on set
-      :math:`\mathbf{S}` if it is reflexive, symmetric, and
-      transitive.
+      :math:`\mathbf{S}` if it is :term:`reflexive`,
+      :term:`symmetric`, and :term:`transitive`.
 
    estimation
+   Estimation
       As a technical skill, this is the process of generating a rough
       estimate in order to evaluate the feasibility of a proposed
       solution.
@@ -805,6 +807,7 @@ Glossary
       a :term:`recursive` function.
 
    induction step
+   Induction Step
       Part of a :term:`proof by induction`.
       In its simplest form, this is a proof of the implication that if
       the theorem holds for $n-1$, then it holds for $n$.
@@ -1205,6 +1208,13 @@ Glossary
       It is best thought of as a :term:`function` or a mapping of
       inputs to outputs.
 
+   proof by contradiction
+      A mathematical proof technique that proves a theorem by first
+      assuming that the theorem is false, and then uses a chain of
+      reasoning to reach a logical contradiction.
+      Since when the theorem is false a logical contradiction arises,
+      the conclusion is that the theorem must be true.
+
    proof by induction
       A mathematical proof technique similar to :term:`recursion`.
       It is used to prove a parameterized theorem $S(n)$, that is,
@@ -1218,6 +1228,10 @@ Glossary
    program
       An instance, or concrete representation, of an algorithm in some
       programming language.
+
+   proving the contrapositive
+      We can prove that :math:`P \Rightarrow Q` by proving
+      :math:`(\mathrm{not}\ Q) \Rightarrow (\mathrm{not}\ P)`.
 
    push
    pushed
@@ -1278,10 +1292,13 @@ Glossary
       of records.
 
    recurrence relation
-      A recurrence relation defines a function by means of an
+   recurrence
+      A :term:`recurrence relation` (or less formally,
+      :term:`recurrence`) defines a function by means of an 
       expression that includes one or more (smaller) instances of
-      itself. A classic example is the recursive definition for the
-      factorial function.
+      itself.
+      A classic example is the recursive definition for the
+      factorial function, :math:`F(n) = n*F(n-1)`.
 
    recursive
    recursion
@@ -1531,6 +1548,12 @@ Glossary
       each of which is a tree, and whose roots
       :math:`R_1, R_2, ..., R_n`,
       respectively, are children of :math:`R`.
+
+   truth table
+      In symbolic logic, a table that contains as rows all possible
+      combinations of the boolean variables, with a column that shows
+      the outcome (true or false) for the expression when given that
+      row's truth assignment for the boolean variables.
 
    tuple
       In set notation, another term for a :term:`sequence`.
