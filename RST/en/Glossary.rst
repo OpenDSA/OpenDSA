@@ -33,6 +33,7 @@ Glossary
 
    acyclic graph
       :to-term: directed acyclic graph :label: types
+
       In :term:`graph` terminology, a graph that contains no
       :term:`cycles`.
 
@@ -136,10 +137,11 @@ Glossary
       Synonym for :term:`radix`.
 
    base case
-      In recursion or inductive proofs, the base case is the
-      termination condition. This ois a simple input or value that can
-      be solved (or proved in the case of induction) without resorting
-      to a recursive call (or induction hypothesis).
+      In :term:`recursion` or :term:`proof by induction`, the base case
+      is the termination condition.
+      This is a simple input or value that can be solved (or proved in
+      the case of induction) without resorting to a recursive call
+      (or the :term:`induction hypothesis`).
 
    base type
       The data type for the elements in a set. For example, the set
@@ -163,8 +165,12 @@ Glossary
       upper bound for an algorithm or problem.
 
    binary search
-      A standard recursive search algorithm for a sorted list. It runs
-      in :math:O(\log n): time.
+      A standard recursive algorithm for finding the record with a
+      given key value within a sorted list. 
+      It runs in :math:`O(\log n)` time.
+      At each step, look at the middle of the current sublist, and throw
+      away the half of the records whose keys are either too small or
+      too large.
       
    binary search tree
    BST
@@ -353,6 +359,7 @@ Glossary
       "current position" state that can be referred to later.
 
    cycle
+   cycles
       In :term:`graph` terminology,
       a :term:`cycle` is a :term:`path` of length three or more that
       connects some :term:`vertex` :math:`v_1` to itself.
@@ -478,12 +485,12 @@ Glossary
       less than the disk-reading time saved by reducing the storage
       requirements.
 
-   divide-and-conquer
+   divide and conquer
       A technique for designing algorithms where a solution is found
       by breaking the problem into smaller (similar) subproblems,
       solving the subproblems, then combining the subproblem solutions
       to form the solution to the original problem.
-      This process is often implemented using recursion.
+      This process is often implemented using :term:`recursion`.
    
    domain
       The set of possible inputs to a function.
@@ -791,10 +798,25 @@ Glossary
       of a corresponding data record.
 
    induction hypothesis
-      The key assumption used in an induction proof, that the theorem
-      to be proved holds for smaller instances of the theorem.
+      The key assumption used in a :term:`proof by induction`,
+      that the theorem to be proved holds for smaller instances of the
+      theorem.
       The induction hypothesis is equivalent to the recursive call in
-      a recursive function.
+      a :term:`recursive` function.
+
+   induction step
+      Part of a :term:`proof by induction`.
+      In its simplest form, this is a proof of the implication that if
+      the theorem holds for $n-1$, then it holds for $n$.
+      As an alternative, see :term:`strong induction`.
+
+   induction variable
+      The variable used to parameterize the theorem being proved by
+      induction.
+      For example, if we seek to prove that the sum of the integers
+      from 1 to $n$ is $n(n+1)/2$, then $n$ is the induction
+      variable.
+      An induction variable must be an integer.
 
    inorder traversal
       In a binary tree, a :term:`traversal` that first
@@ -823,6 +845,11 @@ Glossary
       element to left of :math:`X` that is greater than the value of
       :math:`X` (and so must ultimately be moved to the right of
       :math:`X` during a sorting process.
+
+   irreflexive
+      In set notation, binary relation :math:`R` on set :math:`S` is
+      irreflexive if :math:`aRa` is never in the relation for
+      any :math:`a \in \mathbf{S}`.
 
    ISAM
       Indexed Sequential Access Method: an obsolete method for
@@ -1029,6 +1056,10 @@ Glossary
       list or binary tree. Typically, nodes are allocated using
       :term:`dynamic memory allocation`.
 
+   non-strict partial order
+      In set notation, a relation that is :term:`reflexive`,
+      :term:`antisymmetric`, and :term:`transitive`.
+
    NP Complete
       A class of problems that are related to each other in this way:
       If ever one such problem is proved to be solvable in
@@ -1076,8 +1107,12 @@ Glossary
       :term:`UNION/FIND` problem.
 
    partial order
-      A binary relation is called a partial order if it is
-      antisymmetric and transitive.
+      In set notation, a binary relation is called a partial order if
+      it is :term:`antisymmetric` and :term:`transitive`.
+      If the relation is also :term:`reflexive`, then it is a
+      :term:`non-strict partial order`.
+      Alternatively, if the relation is also :term:`irreflexive`, then
+      it is a :term:`strict partial order`.
 
    partially ordered set
       The set on which a :term:`partial order` is defined is called a
@@ -1170,6 +1205,16 @@ Glossary
       It is best thought of as a :term:`function` or a mapping of
       inputs to outputs.
 
+   proof by induction
+      A mathematical proof technique similar to :term:`recursion`.
+      It is used to prove a parameterized theorem $S(n)$, that is,
+      a theorem where there is a :term:`induction variable` involved
+      (such as the sum of the numbers from 1 to $n$).
+      One first proves that the theorem holds true for a
+      :term:`base case`, then one proves the implication that
+      whenever $S(n)$ is true then $S(n+1)$ is also true.
+      Another variation is :term:`strong induction`.
+
    program
       An instance, or concrete representation, of an algorithm in some
       programming language.
@@ -1239,6 +1284,7 @@ Glossary
       factorial function.
 
    recursive
+   recursion
       An algorithm is recursive if it calls itself to do part of
       its work.
 
@@ -1252,8 +1298,8 @@ Glossary
       or that certain problems are :term:`NP Complete`.
 
    reflexive
-      In set notation, relation :math:`R` is reflexive if :math:`aRa`
-      for all :math:`a \in \mathbf{S}`.
+      In set notation, binary relation :math:`R` on set :math:`S` is
+      reflexive if :math:`aRa` for all :math:`a \in \mathbf{S}`.
 
    relation
       In set notation, a relation :math:`R` over set
@@ -1399,9 +1445,13 @@ Glossary
       A list-like structure in which elements may be inserted or
       removed from only one end.
 
+   strict partial order
+      In set notation, a relation that is :term:`irreflexive`,
+      :term:`antisymmetric`, and :term:`transitive`.
+
    strong induction
-      An alternative formulation for the induction step in an
-      inductive proof.
+      An alternative formulation for the :term:`induction step` in a
+      :term:`proof by induction`.
       The induction step for strong induction is:
       If **Thrm** holds for all :math:`k, c \leq k < n`, then
       **Thrm** holds for :math:`n`.

@@ -14,12 +14,67 @@
     "JXOP-code": "c++"
   },
   "chapters": {
-    "Introduction": {
-      "Background/IntroDSA.rst": {
-        "long_name": "Introduction to Data Structures and Algorithms",
+    "Mathematical Background": {
+      "Background/MathpreIntro": {
+        "long_name": "Chapter Introduction",
+        "exercises": {}
+      },
+      "Background/SetDef": {
+        "long_name": "Set Definitions",
         "exercises": {
-          "IntroSumm": {
-            "long_name": "Introduction Summary Questions",
+          "StTFreltn": {
+            "long_name": "Relations Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "StTFeqvlnc": {
+            "long_name": "Equivalence Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          },
+          "StTFprtlordr": {
+            "long_name": "PartialOrder Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "Background/MiscMath": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Background/Logarithms": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Background/Summations": {
+        "long_name": "Set Definitions",
+        "exercises": {}
+      },
+      "Background/Recursion": {
+        "long_name": "Recursion",
+        "exercises": {
+          "TOHfigCON": {}
+        }
+      },
+      "Background/Proofs": {
+        "long_name": "Proofs",
+        "exercises": {
+          "proofCON1": {}
+        }
+      },
+      "Background/Estimation": {
+        "long_name": "Estimation",
+        "exercises": {}
+      },
+      "Background/MathpreSumm": {
+        "long_name": "Chapter Summary",
+        "exercises": {
+          "MthBgSumm": {
+            "long_name": "Math Background Summary Questions",
             "required": true,
             "points": 1.0,
             "threshold": 5

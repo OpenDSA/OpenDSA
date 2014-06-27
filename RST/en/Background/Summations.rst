@@ -120,13 +120,13 @@ the summation grows closer to
 
 where :math:`\gamma` is Euler's constant and has the value 0.5772...
 
-Most of these equalities can be proved easily by mathematical
-induction (see Module :numref:`<Proofs>`).
+Most of these equalities can be proved easily by a
+:ref:`proof by induction <Proofs>`.
 Unfortunately, induction does not help us derive a closed-form
 solution.
 It only confirms when a proposed closed-form solution is correct.
-Techniques for deriving closed-form solutions are discussed
-in Module :numref:`<AdvSumm>`.
+There are techniques for deriving
+:ref:`closed-form solutions <AdvSumm>`.
 
 The running time for a recursive algorithm is most easily expressed by
 a recursive expression because the total time for the recursive
@@ -226,9 +226,7 @@ definition.
 
    Because we have merely guessed at a pattern and not actually proved
    that this is the correct closed form solution, we should use an
-   induction proof to complete the process
-   (see Example :num:`Example #FactRecurProof`). 
-
+   :ref:`induction proof <FactRecurProof>` to complete the process.
 
 .. topic:: Example
 
@@ -261,5 +259,5 @@ definition.
    This is equivalent to the summation :math:`\sum_{i=1}^n i`,
    for which we already know the closed-form solution.
 
-Techniques to find closed-form solutions for recurrence relations are
-discussed in Module :numref:`<Recurrence>`.
+There are :ref:`many more techniques <Recurrence>` to find closed-form
+solutions for recurrence relations.

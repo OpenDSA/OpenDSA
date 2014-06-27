@@ -27,8 +27,6 @@ calls to the algorithm where the parameters are in some sense
 "closer" to the base case than those of the original call.
 Here is a recursive function to compute the factorial
 of :math:`n`.
-A trace of ``fact``'s execution for a small value
-of :math:`n` is presented in Module :numref:`<StackRecur>`.
 
 .. codeinclude:: Misc/Fact 
    :tag: RFact
@@ -81,7 +79,7 @@ It cannot be rewritten easily using ``while`` loops.
 
 .. _TOH:
 
-.. inlineav:: recursionCONTOH dgm
+.. inlineav:: TOHfigCON dgm
    :align: justify
 
    Towers of Hanoi example.

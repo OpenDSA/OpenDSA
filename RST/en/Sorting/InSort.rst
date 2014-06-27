@@ -25,7 +25,7 @@ We might sort customer records by zip code so that when we print an
 advertisement we can then mail them more cheaply.
 We might use sorting to help an algorithm to solve some other
 problem.
-For example, :term:`Kruskal's algorthm` to find a
+For example, :term:`Kruskal's algorithm` to find a
 :ref:`minimum-cost spanning tree <MCST>`
 must sort the edges of a graph by their lengths before it can process
 them.
@@ -54,7 +54,7 @@ Along with introducing this central problem in computer science,
 studying sorting algorithms helps us to understand
 issues in algorithm design and analysis.
 For example, the sorting algorithms in this chapter show multiple
-approaches to using :term:`divide-and-conquer`.
+approaches to using :term:`divide and conquer`.
 In particular, there are multiple ways to do the dividing.
 :ref:`Mergesort <Mergesort>` divides a list in half.
 :ref:`Quicksort <Quicksort>` divides a list into big values and small
