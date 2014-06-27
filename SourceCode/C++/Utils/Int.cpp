@@ -11,6 +11,15 @@ public:
     const Int& iOther = static_cast<const Int&>(other);
     return n < iOther.n;
   }
+  bool operator>(const Comparable& other) const {
+    const Int& iOther = static_cast<const Int&>(other);
+    return n > iOther.n;
+  }
+  bool operator<=(const Comparable& other) const {
+    const Int& iOther = static_cast<const Int&>(other);
+    return n <= iOther.n;
+  }
+  
 private:
   int n;
 };
