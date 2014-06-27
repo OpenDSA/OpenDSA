@@ -5,37 +5,22 @@
 #include "Checkorder.cpp"
 
 // With KVPair
-/* *** ODSATag: Bubblesort *** */
-void bubblesort(Comparable* A[], int n) {
+/* *** ODSATag: Selectionsort *** */
+void selectionsort(Comparable* A[], int n) {
+  int bigindex;
   for (int i = 0; i < n-1; i++) {
-    for (int j = 0; j < n-1; j++) {
-      if (*A[j] > *A[j+1]) {
-        swap(A, j, j+1);
+    bigindex = i;
+    for (int j = i+1; j < n; j++) {
+      if (*A[j] < *A[bigindex]) { 
+        bigindex = j;
       }
+    }
+    if(bigindex != i) { //I don't know if you think this i necessary?
+      swap(A, bigindex, i);
     }
   }
 }
-/* *** ODSAendTag: Bubblesort *** */
-
-// With KVPair
-/* *** ODSATag: Bubblecheckswap *** */
-
-void bubblecheckswap(Comparable* A[], int n) {
-  n = n-1;
-  while (n > 0) {
-    /* Assume the array is sorted */
-    bool sorted = true;
-    for (int i = 0; i < n; i++) {
-      /* if this pair is out of order */
-      if (*A[i] > *A[i+1]) {
-        swap(A, i, i+1);
-        sorted = false;
-      }
-    }
-    if (sorted) break;
-  }
-}
-/* *** ODSAendTag: Bubblecheckswap *** */
+/* *** ODSAendTag: Selectionsort *** */
 
 bool sorttest(int array[], int n, int threshold) {
   Comparable* A[n];
@@ -51,7 +36,7 @@ bool sorttest(int array[], int n, int threshold) {
   //  }
   //  cout << std::endl;
   
-  bubblesort(A, n);
+  inssort(A, n);
 
   if (!checkorder(A, n)) return false;
 
@@ -65,7 +50,21 @@ bool sorttest(int array[], int n, int threshold) {
     A[i] = new KVPair(array[i], &array[i]);
   }
 
-  bubblesort(A, n);
+  inssort(A, n);
+
+  if (!checkorder(A, n)) return false;
+
+  for (i = 0; i < n; ++i) {
+    delete A[i];
+  }
+  
+  /* Sort an array of KVPairs */
+  
+  for (i = 0; i < n; ++i) {
+    A[i] = new KVPair(array[i], &array[i]);
+  }
+
+  inssortshift(A, n);
 
   if (!checkorder(A, n)) return false;
 
