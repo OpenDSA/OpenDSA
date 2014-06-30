@@ -12,7 +12,8 @@ Faster Computer, or Faster Algorithm?
 =====================================
 
 Imagine that you have a problem to solve, and you know of an algorithm
-whose running time is proportional to :math:`n^2`.
+whose running time is proportional to :math:`n^2` where :math:`n` is a
+measure of the input size.
 Unfortunately, the resulting program takes ten times too long to run.
 If you replace your current computer with a new one that is ten times
 faster, will the :math:`n^2` algorithm become acceptable?
@@ -49,9 +50,8 @@ Say that the old machine could solve a problem of size :math:`n` in an
 hour.
 What is the largest problem that the new machine can solve in one
 hour?
-Table :num:`Figure #Speedups` shows how large a problem can be solved
-on the two machines for five of the running-time functions from
-Figure :num:`Figure #RunTimeGraph`.
+The following table shows how large a problem can be solved
+on the two machines for five running-time functions.
 
 .. _Speedups:
 
@@ -59,8 +59,8 @@ Figure :num:`Figure #RunTimeGraph`.
 
    The increase in problem size that can be run
    in a fixed period of time on a computer that is ten times faster.
-   The first column lists the right-hand sides for each of five
-   growth rate equations from Figure :num:`Figure #RunTimeGraph`.
+   The first column lists the right-hand sides for five growth rate
+   equations.
    For the purpose of this example, arbitrarily assume that the old
    machine can run 10,000 basic operations in one hour.
    The second column shows the maximum value for :math:`n` that can be
@@ -125,10 +125,11 @@ rates.
 
 Note that something special happens in the case of the
 algorithm whose running time grows exponentially.
-In Figure :num:`Figure #RunTimeGraph`, the curve for the algorithm
-whose time is proportional to :math:`2^n` goes up very quickly.
-In Figure :num:`Figure #RunTimeGraph`, the increase in problem size on
-the machine ten times as fast is shown to be about :math:`n + 3`
+If you look at its plot on a graph, the curve for the algorithm
+whose time is proportional to :math:`2^n` goes up very quickly as
+:math:`n` grows.
+The increase in problem size on the machine ten times as fast is 
+about :math:`n + 3` 
 (to be precise, it is :math:`n + \log_2 10`).
 The increase in problem size for an algorithm with exponential growth
 rate is by a constant addition, not by a multiplicative factor.
@@ -142,15 +143,15 @@ which the original computer could run a problem of size 1000 in an hour,
 than a machine ten times faster can run a problem only of size 1003 in
 an hour!
 Thus, an exponential growth rate is radically different than the
-other growth rates shown in Figure :num:`Figure #Speedups`.
-The significance of this difference is explored in
-Module :numref:`<LimComp>`.
+other growth rates shown in the table.
+The significance of this difference is an important topic in
+:ref:`computational complexity theory <LimComp>`.
 
 Instead of buying a faster computer,
 consider what happens if you replace an algorithm whose
 running time is proportional to :math:`n^2` with a new
 algorithm whose running time is proportional to :math:`n \log n`.
-In the graph of Figure :num:`Figure #RunTimeGraph`,
+In a graph relating growth rate functions to input size,
 a fixed amount of time would appear as a horizontal line.
 If the line for the amount of time available to solve your problem
 is above the point at which the curves for the two growth rates in

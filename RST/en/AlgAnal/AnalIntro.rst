@@ -218,7 +218,7 @@ Growth Rates
 
 The :term:`growth rate` for an algorithm is the rate at which the cost
 of the algorithm grows as the size of its input grows.
-Figure :num:`Figure #RunTimeGraph` shows a graph for six equations,
+The following figure shows a graph for six equations,
 each meant to describe the running time for a particular program or
 algorithm.
 A variety of growth rates that are representative of typical
@@ -251,14 +251,14 @@ Doubling the value of :math:`n` roughly doubles the running time.
 An algorithm whose running-time equation has a highest-order term
 containing a factor of :math:`n^2` is said to have a
 :term:`quadratic growth rate`.
-In Figure :num:`Figure #RunTimeGraph`, the line labeled :math:`2n^2`
+In the figure, the line labeled :math:`2n^2`
 represents a quadratic growth rate.
 The line labeled :math:`2^n` represents an
 :term:`exponential growth rate`.
 This name comes from the fact that :math:`n` appears in the exponent.
 The line labeled :math:`n!` also grows exponentially.
 
-As you can see from Figure :num:`Figure #RunTimeGraph`,
+As you can see from the figure,
 the difference between an algorithm whose running time has cost
 :math:`\mathbf{T}(n) = 10n` and another with cost
 :math:`\mathbf{T}(n) = 2n^2` becomes tremendous as :math:`n` grows.
@@ -285,7 +285,7 @@ Note that for constants :math:`a, b \geq 1, a^n` grows faster than
 :math:`n^b`.
 
 We can get some further insight into relative growth rates for various
-algorithms from Table :num:`Figure #GrowthTable`.
+algorithms from the following table.
 Most of the growth rates that appear in typical algorithms are shown,
 along with some representative input sizes.
 Once again, we see that the growth rate has a tremendous effect on the

@@ -20,6 +20,19 @@
 	<li><var><code>n^n</code> </var> </li>
 	<li><var><code>n \log n</code> </var></li>	  	 
       </ul>
+      <div class="hints">
+        <p>How many ways can you pick the first value in the
+          permutation?</p>
+        <p>There are <code>n</code> ways to pick the first value. That
+          will leave <code>n-1</code> values left.</p>
+        <p>This means there are <code>n-1</code> ways to pick the
+          second value, which means that there were <code>n(n-1)</code>
+          ways to pick the first two values.</p>
+        <p>Keep picking remaining values in this way. Each time that
+          you pick a value from <code>i</code> choices, you are
+          multiplying the total number of ways to do things
+          by <code>i</code>.</p>
+      </div>
     </div>
   </div>
 </div>

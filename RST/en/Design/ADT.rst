@@ -85,7 +85,7 @@ an ADT and its implementation together make up a :term:`class`.
 Each operation associated with the ADT is implemented by a
 :term:`member function` or :term:`method`.
 The variables that define the space required by a data item are
-referred to as :term:`data members`.
+referred to as :term:`data members <data member>`.
 An :term:`object` is an instance of a class, that is, something that
 is created and takes up storage during the execution of a
 computer program.

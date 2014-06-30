@@ -18,10 +18,10 @@ computer science training is the ability to perform quick estimates.
 This is sometimes known as "back of the napkin" or
 "back of the envelope" calculation.
 Both nicknames suggest that only a rough estimate is produced.
-Estimation techniques are a standard part of engineering
+:term:`Estimation` techniques are a standard part of engineering
 curricula but are often neglected in computer science.
 Estimation is no substitute for rigorous, detailed analysis
-of a problem, but it can serve to indicate when a rigorous
+of a problem, but it can help to decide when a rigorous
 analysis is warranted:
 If the initial estimate indicates that the solution
 is unworkable, then further analysis is probably unnecessary.

@@ -30,6 +30,19 @@
 	<li><var><code>n+100</code></var></li>
       </ul>
       <div class="hints">
+        <p>If the XYZ Corp. computer runs 100 times faster, then if
+          the Prunes computer does <code>S</code> computations in an
+          hour, the XYZ Corp. computer does <code>100S</code>
+          computations in an hour.</p>
+        <p>Assume that the Prunes computer can solve a problem size of
+          at most <code>P</code> in an hour. This means it makes about
+          <code>P^2 = S</code> computations.</p>
+        <p>How much bigger size than <code>P</code> can run in
+          <code>100S</code>, given that the growth rate of the
+          algorithm on input size <code>P</code> is
+          <code>T(P) = P^2</code>?</p>
+        <p>If <code>P \approx S</code>, then
+          <code>T(10P) = (10P)^2 \approx 100S</code>.</p>
       </div> 
     </div>
   </div>

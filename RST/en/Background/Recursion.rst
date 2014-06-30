@@ -27,8 +27,6 @@ calls to the algorithm where the parameters are in some sense
 "closer" to the base case than those of the original call.
 Here is a recursive function to compute the factorial
 of :math:`n`.
-A trace of ``fact``'s execution for a small value
-of :math:`n` is presented in Module :numref:`<StackRecur>`.
 
 .. codeinclude:: Misc/Fact 
    :tag: RFact
@@ -81,7 +79,7 @@ It cannot be rewritten easily using ``while`` loops.
 
 .. _TOH:
 
-.. inlineav:: recursionCONTOH dgm
+.. inlineav:: TOHfigCON dgm
    :align: justify
 
    Towers of Hanoi example.
@@ -92,7 +90,7 @@ The Towers of Hanoi puzzle begins with three poles and :math:`n`
 rings, where all rings start on the leftmost pole (labeled Pole 1).
 The rings each have a different size, and are stacked in order of
 decreasing size with the largest ring at the bottom, as shown in
-Figure :num:`Figure #TOH` (a).
+part (a) of the figure.
 The problem is to move the rings from the leftmost pole to the
 rightmost pole (labeled Pole 3) in a series of steps.
 At each step the top ring on some pole is moved to another pole.
@@ -108,7 +106,7 @@ It is not possible to do this without first moving the bottom
 To do that, Pole 3 must be empty, and only the bottom ring can be on
 Pole 1.
 The remaining :math:`n-1` rings must be stacked up in order
-on Pole 2, as shown in Figure :num:`Figure #TOH` (b).
+on Pole 2, as shown in part (b) of the figure.
 How can you do this?
 Assume that a function :math:`X` is available to solve the
 problem of moving the top :math:`n-1` rings from Pole 1 to Pole 2.
@@ -149,11 +147,10 @@ computer program for solving the problem because recursion involves
 function calls, which are typically more expensive than other
 alternatives such as a ``while`` loop.
 However, the recursive approach usually provides an algorithm that is
-reasonably efficient in the sense discussed in Module
-:numref:`<AnalAsymptotic>`.
+reasonably efficient an :ref:`asymptotic sense <AnalAsymptotic>`.
 If necessary, the clear, recursive solution can later be modified to
-yield a faster implementation, as described in Module
-:numref:`<StackRecur>`.
+yield a faster implementation, such as by
+:ref:`simulating with a stack <StackRecur>`.
 
 Many data structures are naturally recursive, in that they can be
 defined as being made up of self-similar parts.

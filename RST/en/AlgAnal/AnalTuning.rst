@@ -19,9 +19,10 @@ There is, however, an enormous difference in running time between
 algorithms with growth rates of :math:`\Theta(n \log n)` and
 :math:`\Theta(n^2)`.
 As you shall see during the course of your study of common data
-structures and algorithms, it is not unusual that a problem
-whose obvious solution requires :math:`\Theta(n^2)` time also has a
-solution requiring :math:`\Theta(n \log n)` time.
+structures and algorithms, there are many problems
+whose obvious solution requires :math:`\Theta(n^2)` time,
+but that also have a solution requiring :math:`\Theta(n \log n)`
+time.
 Examples include sorting and searching, two of the most important
 computer problems.
 
@@ -30,8 +31,9 @@ its growth rate, "code tuning" can also lead to dramatic
 improvements in running time.
 Code tuning is the art of hand-optimizing a program to run faster
 or require less storage.
-For many programs, code tuning can reduce running time by a factor of
-ten, or cut the storage requirements by a factor of two or more.
+For many programs, code tuning can reduce running time or cut the
+storage requirements by a factor of two or more.
+Even speedups by a factor of five to ten are not uncommon.
 Occasionally, you can get an even bigger speedup
 by converting from a symbolic representation of the data
 to a numeric coding scheme on which you can do direct computation.
@@ -100,9 +102,6 @@ fraction of the time.
    Typically the amount of work avoided by making this test is greater
    than the cost of making the test on every object.
 
-Module :numref:`<SortingEmpirical>` discusses code tuning for some
-sorting algorithms.
-
 Be careful not to use tricks that make the program unreadable.
 Most code tuning is simply cleaning up a carelessly written program,
 not taking a clear program and adding tricks.
@@ -124,7 +123,7 @@ It is hard to do better than the compiler.
 
 The greatest time and space improvements come from a better
 data structure or algorithm.
-The final thought for this section is:
+The most important rule of code tuning is:
 
    **First tune the algorithm, then tune the code.**
 
@@ -132,12 +131,14 @@ The final thought for this section is:
 Empirical Analysis
 ------------------
 
-This chapter has focused on asymptotic analysis.
-This is an analytic tool, whereby we model the key aspects of an
+:term:`Asymptotic algorithm analysis <algorithm analysis>`
+is an analytic tool, whereby we model the key aspects of an
 algorithm to determine the growth rate of the algorithm as the input
 size grows.
-As pointed out previously, there are many limitations to this
-approach.
+It has proved hugely practical, guiding developers to use more
+efficient algorithms.
+But it is really an :term:`estimation` technique, and it has its
+limitations.
 These include the effects at small problem size, determining the finer
 distinctions between algorithms with the same growth rate, and
 the inherent difficulty of doing mathematical modeling for more
@@ -146,51 +147,60 @@ complex problems.
 An alternative to analytical approaches are empirical ones.
 The most obvious empirical approach is simply to run two competitors
 and see which performs better.
-In this way we might overcome the deficiencies of analytical approaches.
+In this way we might overcome the deficiencies of analytical
+approaches.
 
 Be warned that comparative timing of programs is a difficult
 business, often subject to experimental errors arising from
-uncontrolled factors (system load, the language or
-compiler used, etc.).
-The most important point is not to be biased
-in favor of one of the programs.
+uncontrolled factors (system load, the language or compiler used,
+etc.).
+The most important concern is that you might be biased in favor of one
+of the programs.
 If you are biased, this is certain to be reflected in the timings.
 One look at competing software or hardware vendors' advertisements
 should convince you of this.
 The most common pitfall when writing two programs to compare
 their performance is that one receives more code-tuning effort than
-the other.
-As mentioned above, code tuning can often reduce running time by a
-factor of ten.
+the other, since code tuning can often reduce running time by a
+factor of five to ten.
 If the running times for two programs differ by a constant factor
 regardless of input size (i.e., their growth rates are
 the same), then differences in code tuning might account for any
 difference in running time.
 Be suspicious of empirical comparisons in this situation.
 
-Another approach to analysis is simulation.
+Another approach to analytical analysis is simulation.
 The idea of simulation is to model the problem with a computer program
 and then run it to get a result.
 In the context of algorithm analysis, simulation
 is distinct from empirical comparison of two competitors because the
 purpose of the simulation is to perform analysis that
 might otherwise be too difficult.
-A good example of this appears in Figure :num:`Figure #HashPlot`.
+A good example of this appears in the following figure.
+
+.. _HashPlot2:
+
+.. odsafig:: Images/hashplot.gif
+   :width: 400
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Hashing analysis plot
+
 This figure shows the cost for inserting or deleting a record from a
-hash table under two different assumptions for the policy used to find
-a free slot in the table.
-The :math:`y` axes is the cost in number of hash table slots evaluated,
-and the :math:`x` axes is the percentage of slots in the table that are
-full.
+:ref:`hash table <HashIntro>` under two different assumptions for the
+policy used to find a free slot in the table.
+The :math:`y` axes is the cost in number of hash table slots
+evaluated, and the :math:`x` axes is the percentage of slots in the
+table that are full.
 The mathematical equations for these curves can be determined,
 but this is not so easy.
 A reasonable alternative is to write simple variations on hashing.
 By timing the cost of the program for various loading conditions, it
-is not difficult to construct a plot similar to
-Figure :num:`Figure #HashPlot`.
-The purpose of this analysis is not to determine which approach to
+is not difficult to construct a plot similar to this one.
+The purpose of this analysis was not to determine which approach to
 hashing is most efficient, so we are not doing empirical comparison of
 hashing alternatives.
-Instead, the purpose is to analyze the proper loading factor that
+Instead, the purpose was to analyze the proper loading factor that
 would be used in an efficient hashing system to balance time cost
 versus hash table size (space cost).

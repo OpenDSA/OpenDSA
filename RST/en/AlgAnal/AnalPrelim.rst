@@ -72,8 +72,8 @@ Even a "random number generator" is completely determined by its
 inputs (although some random number generating systems appear to get
 around this by accepting a random input from a physical
 process beyond the user's control).
-The relationship between programs and functions is explored further in
-Module :numref:`<Computability>`.
+The limits to what functions can be implemented by programs is part of
+the domain of :ref:`Computability <Computability>`.
 
 Algorithms
 ----------
@@ -157,7 +157,7 @@ of the following properties.
 Programs
 --------
 
-We often think of a :term:`computer program` as an
+We often think of a computer :term:`program` as an
 instance, or concrete representation, of an algorithm in some
 programming language.
 Algorithms are usually presented in terms of programs,

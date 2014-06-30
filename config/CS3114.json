@@ -135,7 +135,7 @@
         "long_name": "Calculating the Running Time of a Program",
         "exercises": {
           "AnalProgramSumm": {
-            "long_name": "Program Code Analysis",
+            "long_name": "Program Code Analysis Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
