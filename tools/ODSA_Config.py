@@ -30,6 +30,8 @@ optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_di
 
 lang_file = os.path.abspath('tools/language_msg.json')
 
+listed_modules = []
+
 # Prints the given string to standard error
 def print_err(err_msg):
   sys.stderr.write('%s\n' % err_msg)
@@ -49,6 +51,20 @@ def process_path(path, abs_prefix):
     path += '/'
 
   return path
+
+def get_mod_name(mod_config):
+  """ Creates a list of the modules present in the book.
+      The list will be used to convert :ref: directive to
+      :term: directive if the module is not part of the book instance
+  """
+
+  mod_file = mod_config
+  if '/' in mod_config:
+    mod_file = re.split('/', mod_config)[1]
+  if '.rst' in mod_file:
+    mod_file = re.split('.rst', mod_file)[0]  
+
+  listed_modules.append(mod_file)
 
 
 def get_odsa_dir():
@@ -132,6 +148,9 @@ def validate_module(mod_name, module, conf_data):
 
   required_fields = ['exercises']
   optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options']
+
+  #Get module name
+  get_mod_name(mod_name)
 
   # Ensure required fields are present
   for field in required_fields:
@@ -459,6 +478,9 @@ class ODSA_Config:
     #Loads translated text
     self['text_translated'], self['lang'] = get_translated_text(self['lang'])
     self['lang_file'] = lang_file
+
+    #Make the list of modules publicly available
+    self['listed_modules'] = listed_modules
 
     # Saves the path to the config file used to create the book
     self.config_file_path = config_file_path

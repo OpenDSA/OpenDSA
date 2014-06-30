@@ -267,6 +267,25 @@ class ODSA_RST_Module:
         if dir_type in ['table', 'example', 'theorem', 'figure']:
           (num_ref_map, counters) = update_counters(mod_data[i - 2], dir_type, mod_num, num_ref_map, counters)
 
+        if ':ref:' in line:
+          #lower case modules names
+          lower_listed_modules = [x.lower() for x in config.listed_modules]
+          rel_tokens = re.split(':ref:|`', line)
+          if len(rel_tokens) == 4:
+            rel_labels = rel_tokens[2]  
+            rel_tags = re.split('<|>', rel_labels)
+            #We encountered the alternate :ref: syntax
+            if len(rel_tags) == 5:
+              if rel_tags[3].strip() in lower_listed_modules:
+                #module is present swith to standard :rel: syntax
+                line = line.replace('<'+ rel_tags[1] + '>', '')
+              else:
+                #module absent swith to :term:
+                line = line.replace(':ref:',':term:')
+                line = line.replace('<' + rel_tags[3]  + '>','')
+              mod_data[i] = line
+
+
         if ':requires:' in mod_data[i]:
           # Parse the list of prerequisite topics from the module
           requires = [req.strip() for req in line.replace(':requires:', '').split(';')]
