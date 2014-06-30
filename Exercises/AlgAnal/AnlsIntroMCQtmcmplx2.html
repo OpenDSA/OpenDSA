@@ -30,6 +30,19 @@
 	<li><var><code>64n^2</code></var></li>
       </ul>
       <div class="hints">
+        <p>If the slower computer does <code>S</code> computations in
+          time <code>t</code>, then the faster computer does
+          <code>64S</code> computations in time <code>t</code>.</p>
+        <p>Assume that the slower computer can solve a problem size of
+          at most <code>n</code> in time <code>t</code>.
+          This means it makes about
+          <code>n^2 = S</code> computations.</p>
+        <p>How much bigger size than <code>n</code> can run in
+          <code>64S</code>, given that the growth rate of the
+          algorithm on input size <code>n</code> is
+          <code>T(n) = n^2</code>?</p>
+        <p>If <code>n^2 \approx S</code>, then
+          <code>T(8P) = (8P)^2 \approx 64S</code>.</p>
       </div> 
     </div>
   </div>

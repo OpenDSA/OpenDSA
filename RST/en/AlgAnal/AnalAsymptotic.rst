@@ -12,15 +12,33 @@
 Asymptotic Analysis
 ===================
 
+.. _RunTimeGraph2:
+
+.. odsafig:: Images/plot.png
+   :width: 500
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: The growth rates for five equations
+
+   Two views of a graph illustrating the growth rates for
+   six equations.
+   The bottom view shows in detail the lower-left portion
+   of the top view.
+   The horizontal axis represents input size.
+   The vertical axis can represent time, space, or any other measure of
+   cost.
+
+
 Despite the larger constant for the curve labeled :math:`10 n` in
-Figure :num:`Figure #RunTimeGraph`, :math:`2 n^2` crosses it at the
+the figure above, :math:`2 n^2` crosses it at the
 relatively small value of :math:`n = 5`.
 What if we double the value of the constant in front of the linear
 equation?
 As shown in the graph, :math:`20 n` is surpassed by :math:`2 n^2`
 once :math:`n = 10`.
-The additional factor of two for the linear growth rate does not much
-matter.
+The additional factor of two for the linear :term:`growth rate` does
+not much matter.
 It only doubles the :math:`x`-coordinate for the intersection point.
 In general, changes to a constant factor in either equation only
 shift *where* the two curves cross, not *whether*
@@ -45,19 +63,19 @@ a limit (in the calculus sense).
 However, it has proved to be so useful to ignore all constant factors
 that asymptotic analysis is used for most algorithm comparisons.
 
-It is not always reasonable to ignore the constants.
+In rare situations, it is not reasonable to ignore the constants.
 When comparing algorithms meant to run on small values of :math:`n`,
 the constant can have a large effect.
-For example, if the problem is to sort a collection of exactly
-five records, then an algorithm designed for sorting thousands of
-records is probably not appropriate, even if its asymptotic analysis
-indicates good performance.
+For example, if the problem requires you to sort many collections of
+exactly five records, then a sorting algorithm designed for sorting
+thousands of records is probably not appropriate, even if its
+asymptotic analysis indicates good performance.
 There are rare cases where the constants for two algorithms under
 comparison can differ by a factor of 1000 or more, making the one
-with lower growth rate impractical for most purposes due to its large
-constant.
+with lower growth rate impractical for typical problem sizes due to
+its large constant.
 Asymptotic analysis is a form of "back of the envelope"
-estimation for algorithm resource consumption.
+:ref:`estimation <Estimation>` for algorithm resource consumption.
 It provides a simplified model of the running time or
 other resource needs of an algorithm.
 This simplification usually helps you understand the behavior of your
@@ -242,7 +260,7 @@ definition of big-Oh.
    Therefore, :math:`\mathbf{T}(n)` is in :math:`\Omega(n^2)` by the
    definition. 
 
-It is also true that the equation of Example :num:`Example #AAnalEx`
+It is also true that the equation of the example above
 is in :math:`\Omega(n)`.
 However, as with big-Oh notation, we wish to get the "tightest"
 (for :math:`\Omega` notation, the largest) bound possible.
@@ -286,8 +304,8 @@ For many algorithms (or their instantiations as programs), it is easy
 to come up with the equation that defines their runtime behavior.
 The analysis for most commonly used algorithms is well understood and
 we can almost always give a :math:`\Theta` analysis for them.
-However, Chapter :numref:`<LimComp>` discusses a whole class of
-algorithms for which we have no :math:`\Theta` analysis, just some
+However, the class of :ref:`NP Complete <LimComp>` problems all have
+no definitive :math:`\Theta` analysis, just some
 unsatisfying big-Oh and :math:`\Omega` analyses.
 Even some "simple" programs are hard to analyze.
 Nobody currently knows the true upper or lower bounds for the
@@ -314,7 +332,7 @@ Simplifying Rules
 
 Once you determine the running-time equation for an algorithm,
 it really is a simple matter to derive the big-Oh, :math:`\Omega`, and
-:math:`Theta` expressions from the equation.
+:math:`\Theta` expressions from the equation.
 You do not need to resort to the formal definitions of asymptotic
 analysis.
 Instead, you can use the following rules to
@@ -404,7 +422,7 @@ If the limit goes to some constant other than zero, then
 
    If :math:`f(n) = 2n\log n` and :math:`g(n)=n^2`, is :math:`f(n)` in
    :math:`O(g(n))`, :math:`\Omega(g(n))`, or :math:`\Theta(g(n))`?
-   Because
+   Since
 
    .. math::
 

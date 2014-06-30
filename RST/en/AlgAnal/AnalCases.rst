@@ -14,14 +14,13 @@ Best, Worst, and Average Cases
 Consider the problem of finding the factorial of :math:`n`.
 For this problem, there is only one input of a given "size" (that
 is, there is only a single instance for each size of :math:`n`).
-Now consider our largest-value sequential search
-algorithm of Example :num:`Example #SeqMax`, which always examines
-every array value.
+Now consider the largest-value :term:`sequential search`
+algorithm, which always examines every array value.
 This algorithm works on many inputs of a given size :math:`n`.
 That is, there are many possible arrays of any given size.
 However, no matter what array of size :math:`n` that the algorithm
 looks at, its cost will always be the same in that it always looks at
-every element in the array one time.
+every element in the array exactly one time.
 
 For some algorithms, different inputs of a given size require
 different amounts of time.
@@ -32,9 +31,8 @@ The :term:`sequential search` algorithm begins
 at the first position in the array and looks at each value in turn
 until :math:`K` is found.
 Once :math:`K` is found, the algorithm stops.
-This is different from the largest-value sequential search
-algorithm of Example :num:`Example #SeqMax`, which always examines
-every array value.
+This is different from the largest-value sequential search algorithm,
+which always examines every array value.
 
 There is a wide range of possible running
 times for the sequential search algorithm.
@@ -67,9 +65,9 @@ representative of the behavior of the algorithm.
 However, there are rare instances where a best-case analysis is
 useful |---| in particular, when the best case has high probability of
 occurring.
-In Modules :numref:`<Shellsort>` and :numref:`<Quicksort>` you will
-see some examples where taking advantage of the best-case running time
-for one sorting algorithm makes a second more efficient.
+The :ref:`Shellsort <Shellsort>` and :ref:`Quicksort <Quicksort>`
+algorithms both can take advantage of the best-case running time
+of :ref:`Insertion Sort <InsertionSort>` to become more efficient.
 
 How about the worst case?
 The advantage to analyzing the worst case is that you know for
@@ -98,17 +96,17 @@ This is only true if the element with value :math:`K` is
 equally likely to appear in any position in the array.
 If this assumption is not correct, then the algorithm does *not*
 necessarily examine half of the array values in the average case.
-See Module :numref:`<SelfOrg>` for further discussion regarding the
-effects of data distribution on the sequential search algorithm.
+:ref:`Self-organizing lists <SelfOrg>` attempt to take advantage of
+uneven data distribution to improve on sequential search.
 
 The characteristics of a data distribution have a significant effect
 on many search algorithms, such as those based on
-hashing (Module :numref:`<HashIntro>`) and search
-trees (e.g., see Module :numref:`<BST>`).
+:ref:`hashing <HashIntro>` and search trees such as the
+:ref:`BST <BST>`. 
 Incorrect assumptions about data distribution can have disastrous
 consequences on a program's space or time performance.
-Unusual data distributions can also be used to advantage, as shown in
-Module :numref:`<SelfOrg>`.
+Unusual data distributions can also be used to advantage,
+such as is done by :ref:`self-organizing lists <SelfOrg>`.
 
 In summary, for real-time applications
 we are likely to prefer a worst-case analysis of an algorithm.

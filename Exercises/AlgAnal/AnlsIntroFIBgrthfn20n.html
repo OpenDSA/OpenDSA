@@ -10,7 +10,7 @@
 <body>
 <script>
 function checkAnswer(answer) {
-  if ( answer == "none") {
+  if (answer.trim() == "none") {
     return true;
   } else {
     return false;
@@ -36,6 +36,8 @@ function checkAnswer(answer) {
         </div>
       </div>
       <div class="hints">
+        <p>Consider that <code>20n</code> always takes longer than
+          <code>10n</code>.</p>
       </div> 
   </div>
 </div>

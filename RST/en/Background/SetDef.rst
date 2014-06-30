@@ -19,7 +19,7 @@ associated with sets often help to clarify and simplify algorithm
 design.
 
 A :term:`set` is a collection of distinguishable
-:term:`members` or :term:`elements`.
+:term:`members <member>` or :term:`elements <element>`.
 The members are typically drawn from some larger population known as
 the :term:`base type`.
 Each member of a set is either a :term:`primitive element` of the

@@ -12,16 +12,18 @@
 Common Misunderstandings
 ========================
 
-Asymptotic analysis is one of the most intellectually difficult topics
-that undergraduate computer science majors are confronted with.
-Most people find growth rates and asymptotic analysis
-confusing and so develop misconceptions about either the concepts or
-the terminology.
-It helps to know what the standard points of confusion are, in hopes
-of avoiding them.
+:term:`Asymptotic analysis <asymptotic analysis>` is one of the most
+intellectually difficult topics that undergraduate computer science
+majors are confronted with.
+Most people find :term:`growth rates <growth rate>` and asymptotic
+analysis confusing and so develop misconceptions about either the
+concepts or the terminology.
+It helps to know what the standard points of confusion are,
+in hopes of avoiding them.
 
-One problem with differentiating the concepts of upper and lower
-bounds is that, for most algorithms that you will encounter, it is
+One problem with differentiating the concepts of
+:term:`upper <upper bound>` and :term:`lower bounds <lower bound>` is
+that, for most algorithms that you will encounter, it is
 easy to recognize the true growth rate for that algorithm.
 Given complete knowledge about a cost function, the upper and lower
 bound for that cost function are always the same.
@@ -29,18 +31,19 @@ Thus, the distinction between an upper and a lower bound is only
 worthwhile when you have incomplete knowledge about the thing being
 measured.
 If this distinction is still not clear,
-reread Module :numref:`<AnalProblem>`.
+then you should :ref:`read about analyzing problems <AnalProblem>`.
 We use :math:`\Theta`-notation to indicate that there is no meaningful
 difference between what we know about the growth rates of the upper
 and lower bound (which is usually the case for simple algorithms).
 
-It is a common mistake to confuse the concepts of upper bound or lower
-bound on the one hand, and worst case or best case on the other.
-The best, worst, or average cases each give us a concrete input
-instance (or concrete set of instances)
-that we can apply to an algorithm description to get a cost measure.
-The upper and lower bounds describe our understanding of the
-growth rate for that cost measure.
+It is a common mistake to confuse the concepts of upper bound or
+lower bound on the one hand, and :term:`worst case` or
+:term:`best case` on the other.
+The best, worst, or :term:`average cases <average case>` each
+**define a cost** for a specific input instance
+(or specific set of instances for the average case).
+In contrast, upper and lower bounds describe our understanding of the
+**growth rate** for that cost measure.
 So to define the growth rate for an algorithm or problem, we need to
 determine what we are measuring (the best, worst, or average case) and
 also our description for what we know about the growth rate of that
@@ -50,11 +53,11 @@ The upper bound for an algorithm is not the same as the worst case for
 that algorithm for a given input of size :math:`n`.
 What is being bounded is not the actual cost (which you can
 determine for a given value of :math:`n`), but rather the 
-*growth rate* for the cost.
+**growth rate** for the cost.
 There cannot be a growth rate for a single point, such as a particular 
 value of :math:`n`.
-The growth *rate* applies to the *change* in cost as a
-*change* in input size occurs.
+The growth **rate** applies to the **change** in cost as a
+**change** in input size occurs.
 Likewise, the lower bound is not the same as the best case for a given 
 size :math:`n`.
 
