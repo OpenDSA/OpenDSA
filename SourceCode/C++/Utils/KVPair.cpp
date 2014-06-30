@@ -14,11 +14,11 @@ public:
     return k < KVother.k;
   }
   bool operator >(const Comparable& other) const { // > operator
-    const KVpair& KVother = static_cast<const KVpair&>(other);
+    const KVPair& KVother = static_cast<const KVPair&>(other);
     return k > KVother.k;
   }
   bool operator <=(const Comparable& other) const { // <= operator
-    const KVpair& KVother = static_cast<const KVpair&>(other);
+    const KVPair& KVother = static_cast<const KVPair&>(other);
     return k <= KVother.k;
   }
   // Data member access functions

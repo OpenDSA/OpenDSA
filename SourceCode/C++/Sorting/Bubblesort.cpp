@@ -19,7 +19,6 @@ void bubblesort(Comparable* A[], int n) {
 
 // With KVPair
 /* *** ODSATag: Bubblecheckswap *** */
-
 void bubblecheckswap(Comparable* A[], int n) {
   n = n-1;
   while (n > 0) {

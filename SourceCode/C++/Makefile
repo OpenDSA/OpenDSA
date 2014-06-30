@@ -19,7 +19,7 @@ clean:
 	-rm -rf build
 	mkdir build
 
-sorting: Inssort Mergesort MergesortOpt
+sorting: Inssort Bubblesort Mergesort MergesortOpt
 
 Inssort: build/InssortTest/success
 
@@ -37,7 +37,26 @@ build/InssortTest/success: Sorting/Insertionsort.cpp Sorting/SortTest.cpp Utils/
 	cd build/InssortTest; \
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Insertionsort.o Insertionsort.cpp; \
 	$(CC) $(CFLAGS) Insertionsort.o -o Insertionsort; \
-	./Insertionsort 20
+	./Insertionsort 1000
+
+
+Bubblesort: build/BubblesortTest/success
+
+build/BubblesortTest/success: Sorting/Bubblesort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
+	@echo "Bubblesort Test"
+	-@rm -rf build/BubblesortTest
+	@mkdir build/BubblesortTest
+	@cp Sorting/Bubblesort.cpp build/BubblesortTest
+	@cp Sorting/SortTest.cpp build/BubblesortTest
+	@cp Utils/Checkorder.cpp build/BubblesortTest
+	@cp Utils/KVPair.cpp build/BubblesortTest
+	@cp Utils/Comparable.cpp build/BubblesortTest
+	@cp Utils/Int.cpp build/BubblesortTest
+	@cp Utils/utils.h build/BubblesortTest
+	cd build/BubblesortTest; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Bubblesort.o Bubblesort.cpp; \
+	$(CC) $(CFLAGS) Bubblesort.o -o Bubblesort; \
+	./Bubblesort 1000
 
 Mergesort: build/Mergesort/success
 

@@ -20,11 +20,11 @@ void inssortshift(Comparable* A[], int n) { // Insertion Sort
   for (int i=1; i<n; i++) { // Insert i'th record
     int j;
     Comparable* temp = A[i];
-    for (j = i; (j > 0) && (*temp < *A[j-1]); j--){
+    for (j = i; (j > 0) && (*temp < *A[j-1]); j--)
       A[j] = A[j-1];
-      A[j] = temp;
-    }
+    A[j] = temp;
   }
+}
 /* *** ODSAendTag: InsertionOpt *** */
   
 bool sorttest(int array[], int n, int threshold) {
