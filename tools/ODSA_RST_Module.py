@@ -281,7 +281,10 @@ class ODSA_RST_Module:
                 line = line.replace('<'+ rel_tags[1] + '>', '')
               else:
                 #module absent swith to :term:
-                line = line.replace(':ref:',':term:')
+                tmpStr = rel_tags[0]
+                line = line.replace(rel_tags[0], '')
+                line = line.replace(':ref:','<anchor-text>' + tmpStr.strip() + ':' + rel_tags[1].strip()  + '</anchor-text> :term:')
+                line = line.replace('<' + rel_tags[1] + '> ', rel_tags[1].strip())
                 line = line.replace('<' + rel_tags[3]  + '>','')
               mod_data[i] = line
 
