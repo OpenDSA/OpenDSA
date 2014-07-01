@@ -101,7 +101,7 @@ searches.
 
 .. _HashPlot:
 
-.. odsafig:: Images/hashplot.gif
+.. odsafig:: Images/hashplot.png
    :width: 400
    :align: center
    :capalign: justify

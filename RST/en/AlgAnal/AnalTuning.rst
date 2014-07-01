@@ -180,7 +180,7 @@ A good example of this appears in the following figure.
 
 .. _HashPlot2:
 
-.. odsafig:: Images/hashplot.gif
+.. odsafig:: Images/hashplot.png
    :width: 400
    :align: center
    :capalign: justify

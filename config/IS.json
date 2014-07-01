@@ -25,11 +25,7 @@
         "long_name": "2-3 Trees",
         "exercises": {}
       },
-      "IS/SortedSearch.rst": {
-        "long_name": "Search in Sorted Arrays",
-        "exercises": {}
-      },
-       "IS/BuffPool": {
+      "IS/BuffPool": {
         "long_name": "Buffer Pool",
         "exercises": {}
       },

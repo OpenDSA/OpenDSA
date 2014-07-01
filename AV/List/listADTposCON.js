@@ -1,8 +1,11 @@
+/*global ODSA */
 "use strict";
 //Possible positions for Array-Based list
 (function ($) {
   $(document).ready(function () {
-    var jsav = new JSAV("listADTposCON");
+    var av_name = "listADTposCON";
+    var interpret = ODSA.UTILS.loadLangData({'av_name': av_name}).interpreter;
+    var jsav = new JSAV(av_name);
     var arrPositions = [' ', 5, 7, 3, 9, ' '];
 
     //calculate left margin for the JSAV array object
@@ -16,22 +19,22 @@
       layout: 'array'
     }).hide();
 
-    jsav.umsg('Since insertions take place at the current position, and since we want to be able to insert to the front or the back of the list as well as anywhere in between, there are actually $n+1$ possible "current positions" when there are $n$ elements in the list');
+    jsav.umsg(interpret("av_c1"));
     jsav.displayInit();
     arr.show();
     for (i = 0; i < 5; i++) {
       arrowArray[i] = jsav.g.line(leftMargin3 + 65 + 65 * i, 0, leftMargin3 + 65 + 65 * i, 25, {
-	'arrow-end': 'classic-wide-long',
-	'opacity': 0,
-	'stroke-width': 2
+        'arrow-end': 'classic-wide-long',
+        'opacity': 0,
+        'stroke-width': 2
       });
     }
-    jsav.umsg('Here is a list with 4 elements');
+    jsav.umsg(interpret("av_c2"));
     jsav.step();
     for (i = 0; i < 5; i++) {
       arrowArray[i].show();
     }
-    jsav.umsg('The arrows show the five possible positions for "current"');
+    jsav.umsg(interpret("av_c3"));
     jsav.step();
     jsav.recorded();
   });
