@@ -6,7 +6,7 @@ Written by Junyang Chen and Cliff Shaffer
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Self Organinzing Lists Transpose</title>
+  <title>Self Organinzing Lists Move to Front</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transit.js"></script>
@@ -41,6 +41,15 @@ Written by Junyang Chen and Cliff Shaffer
     .jsavlist.jsavautoresize.jsavhorizontallist{
       height: 150px;
     }
+
+    .jsavarray .jsavindex {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+    }
+
+
     .jsavcanvas svg{
       height: 150px;
       overflow: visible;
@@ -65,9 +74,14 @@ Written by Junyang Chen and Cliff Shaffer
     fromNode,              //
     toNode,                //
     jsavList,              // JSAV list
+    jsavCounterArray,          // Counterarray jsav that user manipulates
+    counterArr,              //counter array
+    counterArrReset,
+
     listSize,              // JSAV list size
     userInput,             // Boolean: Tells us if user ever did anything
     selected_node;         // Position that has been selected by user for swap
+
 
   // JSAV extensions
   JSAV._types.ds.ListNode.prototype.exe_next = {};
@@ -206,6 +220,38 @@ Written by Junyang Chen and Cliff Shaffer
   }
 
 
+  function f_increaseCount() {
+
+
+
+    var curr = exe_head;
+    var tempCounterindex = 0;
+    while(curr.exe_next){
+      
+      if(curr == selected_node){
+        break;
+      }
+      curr = curr.exe_next;
+      tempCounterindex++;
+    }
+
+    tempCounterindex--;
+
+
+   //console.log("the selected one is "+tempCounterindex);
+   // counterArr[tempCounterindex]++;
+   // console.log(counterArr[tempCounterindex]);
+    jsavCounterArray[tempCounterindex].hide();
+    var temp = parseInt(jsavCounterArray[tempCounterindex].text())+1;
+    
+    jsavCounterArray[tempCounterindex] = (jsav.label(temp, {left : 90 + tempCounterindex*75, top:  80}));
+    //console.log(counterArr[tempCounterindex]);
+  
+
+  }
+
+
+
   // reset function definition
   function f_reset() {
     userInput = false;
@@ -230,6 +276,7 @@ Written by Junyang Chen and Cliff Shaffer
     }
 
     jsavList = jsav.ds.list({"nodegap": 30, "top": 40, left: 0});
+
     jsavList.addFirst("null");
     for(var i = listSize - 2; i > 0; i--)
     {
@@ -247,6 +294,35 @@ Written by Junyang Chen and Cliff Shaffer
     jsavList.get(listSize - 1).exe_tail = jsav.g.line(34 + (listSize - 1)*74, 32 + 40,
                             44 + (listSize - 1)*74, 1 + 40,{"opacity": 100,"stroke-width": 1});
 
+
+
+    /*
+    for (i = 0; i<listSize-1; i++){
+      var tempArr=new Array(); 
+      tempArr.push(counterArr[i]);
+      //console.log(tempArr[0]);
+        jsavCounterArray = jsav.ds.array(counterArr, {indexed: true, center: false});
+       //jsavCounterArray.css({top:100; right:20*i});
+
+};
+*/
+
+      //need to figure out how to reset to originial
+     // counterArr = counterArrReset.slice(0);
+
+      //rectangles and labels for the visualization
+      jsavCounterArray = new Array();
+    // var usedRec = jsav.g.rect(80, 80, 30, 30).css({"fill": "coral"});
+    var countLabel = jsav.label("Counter", {left : 0, top:  80});
+      //var usedLabel = jsav.label(5, {left :  80, top:  80});
+
+      //create the visualization for the counter array
+    for (i = 0; i < listSize-2; i++) {
+     // var tempArr= [counterArr[i-1]];
+      jsavCounterArray.push(jsav.label(counterArrReset[i], {left : 90 + i*75, top:  80}));
+    }
+
+
     //Curr Label
     /*
     var currLabel = jsav.label("curr",
@@ -257,7 +333,6 @@ Written by Junyang Chen and Cliff Shaffer
 */
 
     //JSAV array for insert animation
-    jsavArr = jsav.ds.array([search_value], {indexed: false, center: false,left: 650, top: -70});
 
     jsavList.click(clickHandler); // Rebind click handler after reset
     userInput = false;
@@ -279,34 +354,105 @@ Written by Junyang Chen and Cliff Shaffer
     search_index = Math.floor((Math.random() * (size - 2)) + 1); 
     search_value = listArr[search_index];
 
+    //initialize the couter 
+
+    counterArr= new Array();
+    counterArrReset= new Array();
+
+    // Give random numbers in range 0..999    
+    var randTop = 6;
+   for (i = 0; i<size-2; i++){
+      counterArr.push(Math.floor((Math.random() * (randTop) + 1)));
+      randTop = counterArr[i];
+   };
+
+   counterArrReset = counterArr.slice(0);
+
+
+      var insertIndex;
+
+// console.log("search index= " + search_index);
+   for(i = 0; i<counterArr.length; i++){
+     // console.log(counterArr[i]);
+    if (counterArr[search_index-1] + 1 >= counterArr[i]){
+      insertIndex = i;
+      break;
+    }
+  
+   }
+
+  //console.log("insertIndex" + insertIndex);
+   
+
+    
     f_reset();
 
     // correct answer
-    if (search_index>1){
-    arrSwap(answerArr, search_index-1, search_index);
-  }
+    if (search_index>1 && insertIndex != null){
+      answerArr.splice(search_index, 1);
+      answerArr.splice(insertIndex+1, 0, search_value);
+    }
 
-      // Set up handler for reset button
+    counterArr[search_index-1]++;
+
+        // Set up handler for reset button
     $("#reset").click(function () { f_reset(); });
+    $("#increaseCount").click(function () { f_increaseCount(); });
+
+
+    /*
+    for (i = 1; i<size-1; i++){
+      console.log(answerArr[i]);
+    };
+    */
   }
-
-  //function that swaps two elements on the array
-  function arrSwap(array, index1, index2) {
-    var temp = array[index1];
-    array[index1] = array[index2];
-    array[index2] = temp;
-  }
-
-
 
   // Check user's answer for correctness: User's array must match answer
   function checkAnswer(arr_size) {
     var i = 0;
     var curr = exe_head;
+
     i = 0;
+
+
+/*
+for (i=0; i<answerArr.length; i++){
+  console.log(answerArr[i]);
+}
+*/
+
+/*
+console.log("now the Counter grapfic");
+
+for (i=0; i<jsavCounterArray.length; i++){
+  console.log(jsavCounterArray[i].text());
+}
+
+
+console.log("now the real one");
+
+for (i=0; i<counterArr.length; i++){
+  console.log(counterArr[i]);
+}
+*/
+
+
+
+
+i=0;
 
     var curr = exe_head;
     while(curr.exe_next){
+    //  console.log(jsavCounterArray[i].text());
+
+
+      /*check if counter incrementation is done correctly*/
+      
+      if(i<counterArr.length)
+      if (counterArr[i]!=parseInt(jsavCounterArray[i].text())){
+        return false;
+      }
+   
       if(curr.value() == answerArr[i]){
         curr = curr.exe_next;
         i++;
@@ -338,24 +484,25 @@ Written by Junyang Chen and Cliff Shaffer
       <div id = "xx"></div>
       <div id = "yy"></div>
       <p class="problem" id = "test">
-        Your task in this exercise is to show the behavior for self organizing lists using the transpose method. You will need to 
-        demonstrate what happens when you serach for th 
+        Your task in this exercise is to show the behavior for self organizing lists using the Counter. You will need to 
+        demonstrate what happens when you serach for the 
        <b><var>search_value</var></b>. 
         you will need to manually rederect the poiters of the nedes 
         to demenstrate what happens when a node that is being searched is found.
+        In addition, you will need to correctly increment the counter in order to 
+        get the correct answer.
       </p>
       <div class="question">
         <p>
-          To move an element value from one node to another, click on it (to
-          highlight it), then click on the element position in the node where
-          you want it to go. You can insert the new value
-          <b><var>search_value</var></b> into a highlighted node by clicking the
-          "Insert" button. You can create a new link node by clicking the
-          "NewNode" button. To change a pointer, click on its box (on the right
+          Make sure you do the counter incrementation first, before you do
+          anything else. To increment the counter
+          click on the according node and press on the increase count button.
+          To change a pointer, click on its box (on the right
           side of the node) to highlight it, then click on the node that you
           want it to point to.
         </p>
         <input id="reset" type="button" value="Reset" />
+        <input id="increaseCount" type="button" value="Increase Count" />
         <div id="jsav" style = "{background-color : #333}"></div>
       </div>
       <div class="solution" data-type="custom">
@@ -374,10 +521,13 @@ Written by Junyang Chen and Cliff Shaffer
       <div class="hints">
         <p>
           You want to reproduce the behavior of the self organizing list's
-          the transpose method. Try starting finding the value in the list.
+          counter method. Start by finding the searched value in the list.
         </p>
         <p>
-          Now you need to make it point to the correct node, and 
+          Increase the counter for that node.
+        </p>
+        <p>
+        	Now you need to make it point to the correct node, and 
           make the rest of the nodes point to the other 
           acconrding nodes.
         </p>
