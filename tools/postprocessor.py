@@ -91,6 +91,15 @@ def update_mod_html(file_path, data, prefix):
         new_link_text = '%s.' % data[link_mod][1] + link_text
         html[line_num] = line.replace(link_text, new_link_text)
 
+    if '&lt;anchor-text&gt;' in line:
+      line_args = re.split('&lt;anchor-text&gt;|&lt;/anchor-text&gt;', line)
+      texts = re.split(':', line_args[1])
+      if len(texts) == 2:
+        html[line_num] = line.replace(texts[1] + '</em>', texts[0] + '</em>')
+      html[line_num] = html[line_num].replace(line_args[1], '')
+      html[line_num] = html[line_num].replace('&lt;anchor-text&gt;', '')
+      html[line_num] = html[line_num].replace('&lt;/anchor-text&gt;', '') 
+
     if mod_name in data and mod_name not in ignore_mods:
       (chap_title, chap_num) = data[mod_name]
 
