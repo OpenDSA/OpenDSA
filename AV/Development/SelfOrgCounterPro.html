@@ -222,8 +222,6 @@ Written by Junyang Chen and Cliff Shaffer
 
   function f_increaseCount() {
 
-
-
     var curr = exe_head;
     var tempCounterindex = 0;
     while(curr.exe_next){
@@ -237,17 +235,10 @@ Written by Junyang Chen and Cliff Shaffer
 
     tempCounterindex--;
 
-
-   //console.log("the selected one is "+tempCounterindex);
-   // counterArr[tempCounterindex]++;
-   // console.log(counterArr[tempCounterindex]);
     jsavCounterArray[tempCounterindex].hide();
     var temp = parseInt(jsavCounterArray[tempCounterindex].text())+1;
     
     jsavCounterArray[tempCounterindex] = (jsav.label(temp, {left : 90 + tempCounterindex*75, top:  80}));
-    //console.log(counterArr[tempCounterindex]);
-  
-
   }
 
 
@@ -439,8 +430,7 @@ for (i=0; i<counterArr.length; i++){
 
 
 
-i=0;
-
+    i=0;
     var curr = exe_head;
     while(curr.exe_next){
     //  console.log(jsavCounterArray[i].text());

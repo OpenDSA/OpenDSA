@@ -17,7 +17,7 @@ Written by Junyang Chen and Cliff Shaffer
 
   <style>
     .jsavcontainer {
-      height: 130px;
+      height: 200px;
       border: 0;
     }
     .jsavcanvas{
@@ -182,6 +182,7 @@ Written by Junyang Chen and Cliff Shaffer
         status = 0;
       }else if(status == 2){
         toNode = this;
+
         Connect(fromNode, toNode);
         $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
         $('#' + toNode.id()).removeClass('bgColor');
@@ -192,6 +193,90 @@ Written by Junyang Chen and Cliff Shaffer
       userInput = true;
     }
   }
+
+
+/////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+  function f_moveUp() {
+    if (selected_node){
+      selected_node.edgeToNext().clear();
+      var prev = findSelectedPrev(selected_node);
+      prev.edgeToNext().hide();
+      var xyPosition = selected_node.position().top - 30;
+      selected_node.css({
+        top: xyPosition,
+      });
+    }  
+  }
+
+    function f_moveDown() {
+      if (selected_node){
+        selected_node.edgeToNext().hide();
+        var prev = findSelectedPrev(selected_node);
+        prev.edgeToNext().hide();
+        var xyPosition = selected_node.position().top + 30;
+        selected_node.css({
+          top: xyPosition,
+        });
+      }
+    }
+
+
+      function f_moveRight() {
+        if (selected_node){
+          selected_node.edgeToNext().hide();
+          var prev = findSelectedPrev(selected_node);
+          prev.edgeToNext().hide();
+
+          var xyPosition = selected_node.position().left + 37;
+          selected_node.css({
+            left: xyPosition,
+          });
+        }
+      }
+
+
+      function f_moveLeft() {
+        if (selected_node){
+          selected_node.edgeToNext().hide();
+          var prev = findSelectedPrev(selected_node);
+          prev.edgeToNext().hide();
+
+          var xyPosition = selected_node.position().left - 37;
+          selected_node.css({
+            left: xyPosition,
+          });
+        }
+      }
+
+
+//finds the previous node
+function findSelectedPrev(selected){
+    var curr = exe_head;
+    var prev = exe_head;
+
+    if (curr.exe_next && curr!=selected){
+      curr = curr.exe_next;
+    }
+
+    while(curr.exe_next && curr!=selected){
+        curr = curr.exe_next;
+        prev = prev.exe_next;
+    }
+    return prev;
+}
+
+///////////////////////////////////////////////////
+////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
 
   function addTail(node){
     if(node.exe_tail){
@@ -289,6 +374,11 @@ Written by Junyang Chen and Cliff Shaffer
 
       // Set up handler for reset button
     $("#reset").click(function () { f_reset(); });
+    $("#MoveUp").click(function () { f_moveUp(); });
+    $("#MoveDown").click(function () { f_moveDown(); });
+    $("#MoveLeft").click(function () { f_moveLeft(); });
+    $("#MoveRight").click(function () { f_moveRight(); });
+
 
   }
 
@@ -296,10 +386,10 @@ Written by Junyang Chen and Cliff Shaffer
   function checkAnswer(arr_size) {
     var i = 0;
     var curr = exe_head;
-    
+    /*
     i = 0;
-
     var curr = exe_head;
+    */
     while(curr.exe_next){
       if(curr.value() == answerArr[i]){
         curr = curr.exe_next;
@@ -333,18 +423,27 @@ Written by Junyang Chen and Cliff Shaffer
       <div id = "yy"></div>
       <p class="problem" id = "test">
         Your task in this exercise is to show the behavior for self organizing lists using the move to front method. You will need to 
-        demonstrate what happens when you serach for the
+        demonstrate what happens when you search for the
        <b><var>search_value</var></b>. 
         you will need to manually rederect the poiters of the nedes 
         to demenstrate what happens when a node that is being searched is found.
       </p>
       <div class="question">
         <p>
+          Move the node to the desired position if you would like to and then
+          redirect the pointers accordingly. To move the node click on the body
+          of the node and then press the buttons accordingly.
           To change a pointer, click on its box (on the right
           side of the node) to highlight it, then click on the node that you
           want it to point to.
         </p>
         <input id="reset" type="button" value="Reset" />
+        <input id="MoveUp" type="button" value="Move Up" />
+        <input id="MoveDown" type="button" value="Move Down" />
+        <input id="MoveLeft" type="button" value="Move Left" />
+        <input id="MoveRight" type="button" value="Move Right" />
+
+
         <div id="jsav" style = "{background-color : #333}"></div>
       </div>
       <div class="solution" data-type="custom">
@@ -366,7 +465,7 @@ Written by Junyang Chen and Cliff Shaffer
           move to front method. Try starting finding the value in the list.
         </p>
         <p>
-        	Now you need to make it point to the correct node, and 
+          Now you need to make it point to the correct node, and 
           make the rest of the nodes point to the other 
           acconrding nodes.
         </p>

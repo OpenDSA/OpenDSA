@@ -17,7 +17,7 @@ Written by Junyang Chen and Cliff Shaffer
 
   <style>
     .jsavcontainer {
-      height: 130px;
+      height: 200px;
       border: 0;
     }
     .jsavcanvas{
@@ -193,6 +193,82 @@ Written by Junyang Chen and Cliff Shaffer
     }
   }
 
+
+  /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+  function f_moveUp() {
+    if (selected_node){
+      selected_node.edgeToNext().clear();
+      var prev = findSelectedPrev(selected_node);
+      prev.edgeToNext().hide();
+      var xyPosition = selected_node.position().top - 30;
+      selected_node.css({
+        top: xyPosition,
+      });
+    }  
+  }
+
+    function f_moveDown() {
+      if (selected_node){
+        selected_node.edgeToNext().hide();
+        var prev = findSelectedPrev(selected_node);
+        prev.edgeToNext().hide();
+        var xyPosition = selected_node.position().top + 30;
+        selected_node.css({
+          top: xyPosition,
+        });
+      }
+    }
+
+
+      function f_moveRight() {
+        if (selected_node){
+          selected_node.edgeToNext().hide();
+          var prev = findSelectedPrev(selected_node);
+          prev.edgeToNext().hide();
+
+          var xyPosition = selected_node.position().left + 37;
+          selected_node.css({
+            left: xyPosition,
+          });
+        }
+      }
+
+
+      function f_moveLeft() {
+        if (selected_node){
+          selected_node.edgeToNext().hide();
+          var prev = findSelectedPrev(selected_node);
+          prev.edgeToNext().hide();
+
+          var xyPosition = selected_node.position().left - 37;
+          selected_node.css({
+            left: xyPosition,
+          });
+        }
+      }
+
+
+//finds the previous node
+function findSelectedPrev(selected){
+    var curr = exe_head;
+    var prev = exe_head;
+
+    if (curr.exe_next && curr!=selected){
+      curr = curr.exe_next;
+    }
+
+    while(curr.exe_next && curr!=selected){
+        curr = curr.exe_next;
+        prev = prev.exe_next;
+    }
+    return prev;
+}
+
+///////////////////////////////////////////////////
+////////////////////////////////////////////////////
+
   function addTail(node){
     if(node.exe_tail){
       node.exe_tail.element.remove();
@@ -288,6 +364,10 @@ Written by Junyang Chen and Cliff Shaffer
 
       // Set up handler for reset button
     $("#reset").click(function () { f_reset(); });
+    $("#MoveUp").click(function () { f_moveUp(); });
+    $("#MoveDown").click(function () { f_moveDown(); });
+    $("#MoveLeft").click(function () { f_moveLeft(); });
+    $("#MoveRight").click(function () { f_moveRight(); });
   }
 
   //function that swaps two elements on the array
@@ -356,6 +436,10 @@ Written by Junyang Chen and Cliff Shaffer
           want it to point to.
         </p>
         <input id="reset" type="button" value="Reset" />
+        <input id="MoveUp" type="button" value="Move Up" />
+        <input id="MoveDown" type="button" value="Move Down" />
+        <input id="MoveLeft" type="button" value="Move Left" />
+        <input id="MoveRight" type="button" value="Move Right" />
         <div id="jsav" style = "{background-color : #333}"></div>
       </div>
       <div class="solution" data-type="custom">
