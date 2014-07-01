@@ -6,6 +6,8 @@ public:
   virtual bool operator<(const Comparable& other) const = 0;
   virtual bool operator>(const Comparable& other) const = 0;
   virtual bool operator<=(const Comparable& other) const = 0;
+  virtual bool operator>=(const Comparable& other) const = 0;
+  virtual Comparable& operator=(const Comparable& other) = 0;
   friend std::ostream& operator<<(std::ostream& ostr, const Comparable& c) {
     c.print(ostr);
     return ostr;
