@@ -9,8 +9,6 @@
    :satisfies:
    :topic: Search
 
-.. odsalink:: AV/Development/sortedsearchCON.css
-
 Search in Sorted Arrays
 =======================
 
@@ -84,9 +82,6 @@ work done while searching a sublist.
 In general, it is a good strategy to make subproblems of equal effort.
 This is an example of a
 :term:`divide and conquer` algorithm.
-
-.. inlineav:: SortedsearchCON1 ss
-   :output: show
 
 What if we extend this idea to three levels?
 We would first make jumps of some size :math:`j` to find a sublist of
@@ -321,5 +316,3 @@ this is not a typical situation.
 Fortunately, algorithm growth rates are usually well behaved, so that
 asymptotic algorithm analysis nearly always gives us a practical
 indication for which of two algorithms is better.
-
-.. odsascript:: AV/Development/sortedsearchCON.js

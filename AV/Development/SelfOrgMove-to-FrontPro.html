@@ -174,10 +174,10 @@ Written by Junyang Chen and Cliff Shaffer
         selected_node = this;
         status = 1;
       }else if(status == 1){
-        this.value(selected_node.value());
+       // this.value(selected_node.value());
 
         selected_node.removeClass('bgColor');
-        jsav.effects.copyValue(selected_node, this);
+      //  jsav.effects.copyValue(selected_node, this);
         selected_node = null;
         status = 0;
       }else if(status == 2){
@@ -287,31 +287,16 @@ Written by Junyang Chen and Cliff Shaffer
     answerArr.splice(1, 0, search_value);
   }
 
+      // Set up handler for reset button
+    $("#reset").click(function () { f_reset(); });
 
-    for (i = 0; i < size; i++) {
-      console.log(answerArr[i]);
-    }
   }
 
   // Check user's answer for correctness: User's array must match answer
   function checkAnswer(arr_size) {
     var i = 0;
     var curr = exe_head;
-
-    while(curr.exe_next){
-      console.log(curr.value());
-      curr=curr.exe_next;
-      i++;
-    }
-
-    console.log(" ");
-
-    for (i = 0; i < arr_size; i++) {
-      console.log(answerArr[i]);
-    }
-
-
-
+    
     i = 0;
 
     var curr = exe_head;
@@ -348,7 +333,7 @@ Written by Junyang Chen and Cliff Shaffer
       <div id = "yy"></div>
       <p class="problem" id = "test">
         Your task in this exercise is to show the behavior for self organizing lists using the move to front method. You will need to 
-        demonstrate what happens when you serach for th 
+        demonstrate what happens when you serach for the
        <b><var>search_value</var></b>. 
         you will need to manually rederect the poiters of the nedes 
         to demenstrate what happens when a node that is being searched is found.

@@ -87,7 +87,7 @@ if(server !== null){
         error: function(){
             testdeffer.done(function(){
                 $('#points-area').empty();
-                $('#points-area').text(" Back end is not running!");
+                $('#points-area').text(" Score server cannot be reached!");
             });
        }
     });

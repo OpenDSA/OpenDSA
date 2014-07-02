@@ -27,8 +27,8 @@ that is, it allocates memory for new list elements as needed.
    :align: center
    
    A linked list is made up of a series of objects, called the
-   :term:`nodes` of the list. You can see that the nodes are "linked"
-   together.
+   :term:`nodes <node>` of the list. You can see that the nodes are
+   "linked" together.
 
 Because a list node is a distinct object (as opposed to simply a cell
 in an array), it is good practice to make a separate list node class.

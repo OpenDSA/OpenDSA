@@ -16,11 +16,9 @@ Glossary
    :sorted:
 
    ADT
-   adt
       Abbreviation for :term:`abstract data type`.
 
    abstract data type
-   abstract data types
       Abreviated :term:`ADT`. The realization of a :term:`data type`
       as a software component.
 
@@ -35,18 +33,19 @@ Glossary
       :to-term: directed acyclic graph :label: types
 
       In :term:`graph` terminology, a graph that contains no
-      :term:`cycles`.
+      :term:`cycles <cycle>`.
 
    adjacent
-      Two nodes of a :term:`tree` or two :term:`vertices` of a graph
-      are said to be adjacent if they have an :term:`edge` connecting
-      them.
+      Two :term:`nodes <node>` of a :term:`tree` or two
+      :term:`vertices <vertex>` of a :term:`graph` are said to be
+      adjacent if they have an :term:`edge` connecting them.
 
    adjacency list
       An implementation for a :term:`graph` that uses an (array-based)
-      :term:`list` to represent the :term:`vertices` of the graph, and
-      each :term:`vertex` is in turn represented by a (linked) list of
-      the vertices that are :term:`neighbors`.
+      :term:`list` to represent the :term:`vertices <vertex>` of the
+      graph, and each vertex is in turn represented by a
+      (linked) list of the vertices that are
+      :term:`neighbors <neighbor>`. 
 
    adjacency matrix
       An implementation for a :term:`graph` that uses a 2-dimensional
@@ -57,11 +56,12 @@ Glossary
       column.
 
    aggregate type
-      A type whose members have subparts. For example, a typical
-      database record. Another term for this is :term:`composite type`.
+      A type whose :term:`members <member>` have subparts.
+      For example, a typical database record.
+      Another term for this is :term:`composite type`. 
 
    algorithm
-      A method or a process followed to solve a problem.
+      A method or a process followed to solve a :term:`problem`.
 
    algorithm analysis
       A less formal version of the term
@@ -119,14 +119,25 @@ Glossary
       instances have equal probability of occurring, then average case
       must be calculated using a weighted average.
 
+   B$^+$-tree
+      The most commonly implemented form of B-tree.
+      A B$^+$-tree does not store data at the internal nodes, but
+      instead only stores :term:`key` values as direction finders for
+      the purpose of searching through the tree.
+      Only the leaf nodes store a reference to the actual data
+      records.
+
    B-tree
       A method for :term:`indexing` a large collection of records.
       A B-tree is a tree balanced typically with high branching factor
-      (commonly as much as 100 children per internal node), causing
-      the tree to very shallow. When stored on disk, the node size is
-      selected to be same as the desired unit of I/O (so some multiple
-      of the disk :term:`sector` size). This makes it easy to find a record
-      key stored in the tree with few disk fetches.
+      (commonly as much as 100 :term:`children <child>` per internal
+      node), causing the tree to very shallow. When stored on disk,
+      the node size is selected to be same as the desired unit of I/O
+      (so some multiple of the disk :term:`sector` size). This makes
+      it easy to find a record key stored in the tree with few disk
+      fetches.
+      The most commonly implemented variant of the B-tree is the
+      :term:`B$^+$-tree`.
 
    bag
       In set notation, a bag is a collection of elements with no order
@@ -137,7 +148,6 @@ Glossary
       Synonym for :term:`radix`.
 
    base case
-   Base Case
       In :term:`recursion` or :term:`proof by induction`, the base case
       is the termination condition.
       This is a simple input or value that can be solved (or proved in
@@ -166,35 +176,40 @@ Glossary
       upper bound for an algorithm or problem.
 
    binary search
-      A standard recursive algorithm for finding the record with a
-      given key value within a sorted list. 
+      A standard :term:`recursive <recursion>` algorithm for finding
+      the :term:`record` with a given :term:`key` value within a
+      sorted list.
       It runs in :math:`O(\log n)` time.
       At each step, look at the middle of the current sublist, and throw
       away the half of the records whose keys are either too small or
       too large.
       
    binary search tree
-   BST
       A binary tree that imposes the following constraint on its node
-      values: The (key) value for any node :math:`A` must be greater
-      than the (key) values for all nodes in the left :term:`subtree`
-      of :math:`A`, and less than the (key) values for all nodes in the
-      right subtree of :math:`A`. Some convention must be adopted if
-      multiple nodes with the same key value are permitted, typically
-      these are required to be in the right subtree.
+      values: The :term:`key` value for any node :math:`A` must be
+      greater than the (key) values for all nodes in the left
+      :term:`subtree` of :math:`A`, and less than the key values for
+      all nodes in the right subtree of :math:`A`.
+      Some convention must be adopted if
+      multiple nodes with the same key value are permitted,
+      typically these are required to be in the right subtree.
 
    binary tree
-   binary trees
       A finite set of nodes which is either empty, or else has a root
       node together two binary trees, called the left and right
-      :term:`subtrees`,  which are :term:`disjoint` from each other
-      and from the :term:`root`.
+      :term:`subtrees <subtree>`, which are :term:`disjoint` from each
+      other and from the :term:`root`.
 
    binsort
       A sort that works by taking each record and placing it into a
       bin based on its value. The bins are then gathered up in order
       to sort the list. It is generally not practical in this form,
       but it is the conceptual underpinning of the :term:`radix sort`.
+
+   block
+      A unit of storage, usually referring to storage on a
+      :term:`disk drive` or other :term:`peripheral storage` device.
+      A block is the basic unit of I/O for that device.
 
    Boolean variable
       A variable that takes on one of the two values ``True`` and
@@ -214,6 +229,9 @@ Glossary
       interest, then checking bounding boxes first can save a lot of
       time.
 
+   BST
+      Abbreviation for :term:`binary search tree`.
+
    bubble sort
       :to-term: algorithm :label: type of
 
@@ -224,35 +242,73 @@ Glossary
 
    bucket sort
       A variation on the :term:`binsort`, where each bin is associated
-      with a range of key values. This will require some method of
+      with a range of :term:`key` values.
+      This will require some method of
       sorting the records placed into each bin.
+
+   buffer
+      A block of memory, most often in :term:`primary storage`.
+      The size of a buffer is typically one or a multiple of the basic
+      unit of I/O that is read or written on each access to
+      :term:`secondary storage` such as a :term:`disk drive`.
+
+   buffer pool
+      A collection of one or more :term:`buffers <buffer>`.
+      The buffer pool is an example of a :term:`cache <caching>`. 
+      It is stored in :term:`primary storage`, and holds data that is
+      expected to be used in the near future.
+      When a data value is requested, the buffer pool is searched
+      first.
+      If the value is found in the buffer pool, then
+      :term:`secondary storage` need not be accessed.
+      If the value is not found in the buffer pool, then it must be
+      fetched from secondary storage.
+      A number of traditional :term:`heuristics <heuristic>`
+      have been developed for deciding which data to :term:`flush`
+      from the buffer pool when new data must be stored,
+      such as :term:`least recently used`.
+
+   caching
+      The concept of keeping selected data in :term:`primary storage`.
+      The goal is to have in primary storage the data values that are
+      most likely to be used in the near future.
+      An example of a caching technique is the use of a
+      :term:`buffer pool`.
 
    ceiling
       Written :math:`\lceil x \rceil`, for real value :math:`x` the
       ceiling is the least integer :math:`\geq x`.
 
    child
-   children
       In a tree, the set of :math:`nodes` directly pointed to by a node
-      :math:`R` are the children of :math:`R`.
+      :math:`R` are the :term:`children <child>` of :math:`R`.
 
    circular list
-      A :term:`list` ADT implementation variant where the last element of the
-      list provides access to the first element of the list.
+      A :term:`list` ADT implementation variant where the last element
+      of the list provides access to the first element of the list.
 
    class
       In an object-oriented language, an ADT and its implementation
       together make up a class. 
 
+   client
+      The user of a service.
+      For example, the object or part of the program that calls a
+      :term:`memory manager` class is the client of that memory
+      manager.
+      Likewise the class or code that calls a :term:`buffer pool`.
+
    clique
-      In :term:`graph` terminology, a clique is any subset :math:`U`
-      of the graph's :term:`vertices` such that every vertex in
-      :math:`U` has an :term:`edge` to every other vertex in :math:`U`.
+      In :term:`graph` terminology, a clique is any :term:`subset`
+      :math:`U` of the graph's :term:`vertices <vertex>` such that
+      every vertex in :math:`U` has an :term:`edge` to every other
+      vertex in :math:`U`.
       The size of the clique is the number of vertices in the clique.
 
    closed-form solution
-      An algebraic equation with the same value as a summation or
-      recurrence. The process of replacing the summation or
+      An algebraic equation with the same value as a :term:`summation`
+      or :term:`recurrence relation`.
+      The process of replacing the summation or
       recurrence with its closed-form solution is known as solving the
       summation or recurrence.
 
@@ -263,7 +319,8 @@ Glossary
 
    collision
       In a :term:`hash system`, this refers to the case where two
-      search keys are mapped by the :term:`hash function` to the same
+      search :term:`keys <key>` are mapped by the
+      :term:`hash function` to the same 
       slot in the :term:`hash table`.
       This can happen on insertion or search when another record has
       already been hashed to that slot.
@@ -273,10 +330,10 @@ Glossary
 
    collision resolution
       In a :term:`closed hash system`, this is the process of finding
-      the proper index in a :term:`hash table` that contains the
+      the proper position in a :term:`hash table` that contains the
       desired record if the :term:`hash function` did not return the
-      index for that record due to a :term:`collision` with another
-      record.
+      correct position for that record due to a :term:`collision` with
+      another record.
 
    comparable
       The concept that two objects can be compared to determine if they
@@ -299,7 +356,6 @@ Glossary
       define a :term:`total order`.
 
    comparator
-   comparator function
       A function given as a parameter to a method of a library
       (or alternatively, a parameter for a C++ template or a Java
       generic).
@@ -318,7 +374,8 @@ Glossary
       nodes for any value of :math:`n`.
       Since storing the records in an array in row order leads to a
       simple mapping from a node's position in the array to its
-      parent, siblings, and children, the array representation is most
+      :term:`parent`, :term:`siblings <sibling>`, and
+      :term:`children <child>`, the array representation is most 
       commonly used to implement the complete binary tree.
       The :term:`heap` data structure is a complete binary tree with
       partial ordering constraints on the node values.
@@ -328,18 +385,29 @@ Glossary
       other vertex.
 
    composite type
-      A type whose members have subparts. For example, a typical
-      database record. Another term for this is :term:`aggregate type`.
+      A type whose :term:`members <member>` have subparts.
+      For example, a typical database record.
+      Another term for this is :term:`aggregate type`.
 
-   computer program
-      An instance, or concrete representation, of an algorithm in some
-      programming language.
+   computability
+      A branch of computer science that deals with the theory of
+      solving problems through computation.
+      More specificially, it deals with the limits to what problems
+      (functions) are computable.
+      An example of a famous problem that cannot in principle be
+      solved by a computer is the :term:`halting problem`.
+
+   computational complexity theory
+      A branch of the theory of computation in theoretical computer
+      science and mathematics that focuses on classifying
+      computational problems according to their inherent difficulty,
+      and relating those classes to each other.
+      An example is the study of :term:`NP Complete` problems.
 
    connected component
-   connected components
-      In an :term:`undirected graph`, a subset of the nodes such that
-      each node in the subset can be reached from any other node in
-      that subset.
+      In an :term:`undirected graph`, a :term:`subset` of the
+      :term:`nodes <node>` such that each node in the subset can be
+      reached from any other node in that subset.
 
    connected graph
       An :term:`undirected graph` is a connected graph if there is at
@@ -351,25 +419,33 @@ Glossary
       In Theta notation, this is traditionally written as
       :math:`\Theta(1)`.
 
+   container
+   container class
+      A :term:`data structure` that stores a collection of
+      :term:`records <record>`.
+      Typical examples are arrays,
+      :term:`search trees <search tree>`, and
+      :term:`hash tables <hash table>`.
+
    cost
-      The :dfn:`cost` of a solution is the
-      amount of resources that the solution consumes.
+      The amount of resources that the solution consumes.
 
    current position
       A property of some list ADTs, where there is maintained a
       "current position" state that can be referred to later.
 
    cycle
-   cycles
       In :term:`graph` terminology,
       a :term:`cycle` is a :term:`path` of length three or more that
       connects some :term:`vertex` :math:`v_1` to itself.
 
+   DAG
+      Abbreviation for :term:`directed acyclic graph`.
+
    data item
-   data items
       A piece of information or a record whose value is drawn from a type.
 
-   data members
+   data member
       The variables that together define the space required by a data
       item are referred to as data members.
 
@@ -390,13 +466,13 @@ Glossary
 
    degree
       In :term:`graph` terminology, the degree for a :term:`vertex` is
-      its number of neighbors.
+      its number of :term:`neighbors <neighbor>`.
       In :term:`tree` terminology, the degree for a :term:`node` is
-      its number of :term:`children`.
+      its number of :term:`children <child>`.
 
    dense graph
-      A :term:`graph` where the actual number of :term:`edges` is a
-      large fraction of the possible number of edges.
+      A :term:`graph` where the actual number of :term:`edges <edge>`
+      is a large fraction of the possible number of edges.
       Generally, this is interpreted to mean that the :term:`degree`
       for any :term:`vertex` in the graph is relatively high.
 
@@ -408,18 +484,17 @@ Glossary
       A specialized term used to indicate removing an element from a queue.
 
    descendant
-   descendants
       In a tree, the set of all nodes that have a node :math:`A` as an
       :term:`ancestor` are the descendants of :math:`A`.
       In other words, all of the nodes that can be reached from
       :math:`A` by progressing downwards in tree.
       Another way to say it is: The
-      :term:`children` of :math:`A`, their children, and so on.
+      :term:`children <child>` of :math:`A`, their children, and so
+      on.
 
    design pattern
-   design patterns
-      Abstractions for describing the design of programs |---| that is,
-      the interactions of objects and classes.
+      An a bstractions for describing the design of programs |---|
+      that is, the interactions of objects and classes.
       Experienced software designers learn and reuse patterns
       for combining software components, and design patterns allow
       this design knowledge to be passed on to new programmers more quickly.
@@ -428,6 +503,9 @@ Glossary
       An abstract data type or interface for a data structure or
       software subsystem that supports insertion, search, and deletion
       of records.
+
+   digraph
+      Abbreviation for :term:`directed graph`.
 
    diminishing increment sort
       Another name for Shellsort.
@@ -440,39 +518,33 @@ Glossary
       it could also be written with logic notation such as
       :math:`P \Rightarrow Q`.
 
-   DAG
-      Abbreviation for :term:`directed acyclic graph`.
-
-   digraph
-      Abbreviation for :term:`directed graph`.
-
    directed acyclic graph
       :to-term: DAG :label: abbreviation
 
       A :term:`graph` with no cycles.
       Abbreviated as :term:`DAG`.
       Note that a DAG is not necessarily a :term:`tree` since a given
-      :term:`node` might have multiple :term:`parents`.
+      :term:`node` might have multiple :term:`parents <parent>`.
 
    directed graph
       :to-term: directed acyclic graph :label: types
       :to-term: digraph :label: abbreviation
 
-      A :term:`graph` whose :term:`edges` each are directed from
-      one of its defining :term:`vertices` to the other.
+      A :term:`graph` whose :term:`edges <edge>` each are directed
+      from one of its defining :term:`vertices <vertex>` to the
+      other.
 
    disjoint
-      Two parts of a data structure or two collections with no objects
-      in common are disjoint.
+      Two parts of a :term:`data structure` or two
+      collections with no objects in common are disjoint.
       This term is often used in conjunction with a data structure
-      that has :term:`nodes` (such as a :term:`tree`).
-      Also used in the context of :term:`sets`, where two
-      :term:`subsets` are disjoint if they share no elements.
+      that has :term:`nodes <node>` (such as a :term:`tree`).
+      Also used in the context of :term:`sets <set>`, where two
+      :term:`subsets <subset>` are disjoint if they share no elements.
 
-   disjoint set
    disjoint sets
-      A collection of sets, any pair of which share no elements in
-      common.
+      A collection of :term:`sets <set>`, any pair of which share no
+      elements in common.
       A collection of disjoint sets partitions some objects
       such that every object is in exactly one of the disjoint sets.
 
@@ -485,6 +557,21 @@ Glossary
       additional computation needed to unpack the data is going to be
       less than the disk-reading time saved by reducing the storage
       requirements.
+
+   disk drive
+      An example of term:`peripheral storage` or
+      :term:`secondary storage`.
+      Data access times are typically measured in thousandths of a
+      second (milliseconds), which
+      is roughly a million times slower than access times for
+      :term:`RAM`, which is an example of a :term:`primary storage`
+      device.
+      Reads from and writes to a disk drive are always done in terms
+      of some minimum size, which is typically called a
+      :term:`block`.
+      The block size is 512 bytes on most disk drives.
+      Disk drives and RAM are typical parts of a computer's
+      :term:`memory hierarchy`.
 
    divide and conquer
       A technique for designing algorithms where a solution is found
@@ -500,6 +587,9 @@ Glossary
       A :term:`linked list` implementation variant where each list
       node contains access pointers to both the previous element and
       the next element on the list.
+
+   DSA
+      Abbreviation for Data Structures and Algorithms.
 
    dynamic allocation
       The act of creating an object from :term:`free store`.
@@ -524,9 +614,8 @@ Glossary
       left as :term:`garbage`, depending on the programming language.
 
    edge
-   edges
-      The connection that links two :term:`nodes` in a :term:`tree`,
-      :term:`linked list`, or :term:`graph`.
+      The connection that links two :term:`nodes <node>` in a
+      :term:`tree`, :term:`linked list`, or :term:`graph`.
 
    efficient
       A solution is said to be efficient
@@ -537,15 +626,17 @@ Glossary
       alternatives, regardless of whether it meets any particular
       requirements.
 
-   elements
+   element
       One value or member in a set.
 
    empty
-      For a container class, the state of containing no elements.
+      For a :term:`container` class, the state of containing no
+      :term:`elements <element>`.
 
    encapsulation
       In programming, the concept of hiding implementation details
-      from the user of an ADT, and protecting data members of an
+      from the user of an ADT, and protecting
+      :term:`data members <data member>` of an
       object from outside access.
 
    enqueue
@@ -556,15 +647,15 @@ Glossary
       the file.
 
    enumeration
-   enumerate
       The process by which a :term:`traversal` lists every object in
-      the container exactly once. Thus, a traversal that prints the
-      nodes is said to enumerate the nodes. An enumeration can also
-      refer to the actual listing that is produced by the traversal
+      the :term:`container` exactly once.
+      Thus, a traversal that prints the :term:`nodes <node>` is said
+      to enumerate the nodes.
+      An enumeration can also refer to the actual listing that is
+      produced by the traversal 
       (as well as the process that created that listing).
 
    equivalence class
-   equivalence classes
       An :term:`equivalence relation` can be used to partition a set
       into equivalence classes.
 
@@ -574,7 +665,6 @@ Glossary
       :term:`symmetric`, and :term:`transitive`.
 
    estimation
-   Estimation
       As a technical skill, this is the process of generating a rough
       estimate in order to evaluate the feasibility of a proposed
       solution.
@@ -602,22 +692,36 @@ Glossary
       A growth rate function where :math:`n` (the input size) appears
       in the exponent. For example, :math:`2^n`.
 
+   external sort
+      A sorting algorithm that is applied to data stored in
+      :term:`peripheral storage` such as on a :term:`disk drive`.
+
    factorial
       The factorial function is defined as :math:`f(n) = n f(n-1)` for
       :math:`n > 0`.
 
    file structure
-      The organization of data on peripheral storage, such
-      as a disk drive or CD.
+      The organization of data on :term:`peripheral storage`,
+      such as a :term:`disk drive` or DVD drive.
 
    FIND
       One half of the :term:`UNION/FIND` algorithm for managing
-      :term:`disjoint sets`. It is the process of moving upwards in a
+      :term:`disjoint sets`.
+      It is the process of moving upwards in a
       tree to find the tree's root.
 
    floor
       Written :math:`\lfloor x \rfloor`, for real value :math:`x` the
       floor is the greatest integer :math:`\leq x`.
+
+   flush
+      The act of removing data from a :term:`cache <caching>`, most
+      typically because other data considered of higher future value
+      must replace it in the cache.
+      If the data being flushed has been modified since it was first
+      read in from :term:`secondary storage` (and the changes are
+      meant to be saved), then it must be written back to that
+      secondary storage.
 
    free store
       Space available to a program during runtime to be used for
@@ -645,11 +749,10 @@ Glossary
       An equivalent definition is that a free tree is connected and
       has :math:`|\mathbf{V}| - 1` edges.
 
-   full
    full tree
       A :term:`binary tree` is full if every :term:`node` is either a
       :term:`leaf node` or else it is an :term:`internal node` with
-      two non-empty :term:`children`.
+      two non-empty :term:`children <child>`.
 
    function
       In mathematics, a matching between inputs (the :term:`domain`)
@@ -676,8 +779,8 @@ Glossary
       :term:`garbage` and return it to :term:`free store`.
 
    general tree
-   general trees
-      A tree in which any given node can have any number of children.
+      A tree in which any given node can have any number of
+      :term:`children <child>`.
       This is in contrast to, for example, a :term:`binary tree` where
       each node has a fixed number of children (some of which might be
       ``null``).
@@ -688,7 +791,7 @@ Glossary
       :to-term: vertices :label: contains
       :to-term: adjacency matrix :label: implemented by
       :to-term: adjacency list :label: implemented by
-      :to-term: minimal cost spanning tree :label: problems
+      :to-term: minimal-cost spanning tree :label: problems
       :to-term: traversal :label: problems
       :to-term: topological sort :label: problems
       :to-term: shortest paths :label: problems
@@ -701,11 +804,11 @@ Glossary
       :to-term: weighted graph :label: types
       :to-term: unweighted graph :label: types
 
-      A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
-      of a set of :term:`vertices` :math:`\mathbf{V}` and a set of
-      :term:`edges` :math:`\mathbf{E}`,
-      such that each edge in :math:`\mathbf{E}` is a connection between a
-      pair of vertices in :math:`\mathbf{V}`.
+      A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})`
+      consists of a set of :term:`vertices <vertex>`
+      :math:`\mathbf{V}` and a set of :term:`edges <edge>`
+      :math:`\mathbf{E}`, such that each edge in :math:`\mathbf{E}` is
+      a connection between a pair of vertices in :math:`\mathbf{V}`.
 
    greedy algorithm
       An algorithm that makes locally optimal choices at each step.
@@ -714,6 +817,25 @@ Glossary
       The rate at which the cost
       of the algorithm grows as the size of its input grows.
 
+   halting problem
+      The halting problem is to answer this question:
+      Given a computer program :math:`P` and an 
+      input :math:`I`, will program :math:`P` halt when executed on
+      input :math:`I`?
+      This problem has been proved impossible to solve in the general
+      case.
+
+   handle
+      When using a :term:`memory manager` to store data, the
+      :term:`client` will pass data to be stored
+      (the :term:`message`) to the memory manager, and the memory
+      manager will return to the client a handle.
+      The handle encodes the necessary information that the memory
+      manager can later use to recover and return the message to the
+      client.
+      This is typically the location and length of the message within
+      the :term:`memory pool`.
+
    harmonic series
       The sum of reciprocals from 1 to :math:`n` is called the
       Harmonic Series, and is written :math:`{\cal H}_n`.
@@ -721,8 +843,8 @@ Glossary
       :math:`\log_e n + 1`. 
 
    hash function
-      In a :term:`hash system`, the function that converts a key to an
-      index in the :term:`hash table`.
+      In a :term:`hash system`, the function that converts a
+      :term:`key` value to a position in the :term:`hash table`.
       The hope is that this position in the hash table contains the
       record that matches the key value.
 
@@ -736,12 +858,12 @@ Glossary
 
    hashing
       A search method that uses a :term:`hash function` to convert a
-      key into an index within a :term:`hash table`.
-      In a properly implemented :term:`hash system`, that index in the
-      table will have high probability of containing the record that
-      matches the key value.
-      Sometimes, the hash function will return an index that does not
-      store the desired key, due to a process called
+      :term:`key` value into a position within a :term:`hash table`.
+      In a properly implemented :term:`hash system`, that position in
+      the table will have high probability of containing the record
+      that matches the key value.
+      Sometimes, the hash function will return an position that does
+      not store the desired key, due to a process called
       :term:`collision`.
       In that case, the desired record is found through a process
       known as :term:`collision resolution`.
@@ -761,9 +883,9 @@ Glossary
       synonym for :term:`free store`.
       Most often it is used to refer to a particular data structure.
       This data structure is a :term:`complete binary tree` with the
-      requirement that every node has a value greater than its
-      children (called a :term:`max heap`), or else the 
-      requirement that every node has a value less than its
+      requirement that every :term:`node` has a value greater than its
+      :term:`children <child>` (called a :term:`max heap`), or else
+      the requirement that every node has a value less than its
       children (called a :term:`min heap`).
       Due to its space and time efficiency, the heap is a
       popular choice for implementing a :term:`priority queue`.
@@ -780,34 +902,47 @@ Glossary
       The height of a tree is one more than the :term:`depth` of the
       deepest :term:`node` in the tree.
 
+   heuristic
+      A way to solve a problem that is not guarenteed to be optimal.
+      While it might not be guarenteed to be optimal, it is generally
+      expected (by the agent employing the heuristic) to provide a
+      reasonably efficient solution.
+
    homogeneity
-      In a container class, this is the property that all objects
-      stored in the container are of the same class. For example, if
-      you have a list intended to store Payroll records, is it
-      possible for the programmer to insert an integer onto the list
-      instead?
+      In a :term:`container` class, this is the property that all
+      objects stored in the container are of the same class.
+      For example, if you have a list intended to store Payroll
+      records, is it possible for the programmer to insert an integer
+      onto the list instead?
 
    incident
       In :term:`graph` terminology, a synonym for :term:`adjacent`.
 
    index file
-      A file whose records consist of key/pointer pairs where the
+      A file whose records consist of
+      :term:`key-record pairs <key-record pair>` where the
       pointers are referencing the complete records stored in another
       file.
 
    indexing
-      The process of associating a key with the location
+      The process of associating a :term:`key` with the location
       of a corresponding data record.
+      The two key points to the concept of an index is the association
+      of key with record, and the fact that the index does not
+      actually store the record itself but rather it stores a
+      reference to the record.
+      In this way, a collection of records can be supported by
+      multiple indices, typically a separate index for each key field
+      in the record.
 
    induction hypothesis
       The key assumption used in a :term:`proof by induction`,
       that the theorem to be proved holds for smaller instances of the
       theorem.
-      The induction hypothesis is equivalent to the recursive call in
-      a :term:`recursive` function.
+      The induction hypothesis is equivalent to the recursive
+      call in a :term:`recursive <recursion>` function.
 
    induction step
-   Induction Step
       Part of a :term:`proof by induction`.
       In its simplest form, this is a proof of the implication that if
       the theorem holds for $n-1$, then it holds for $n$.
@@ -826,7 +961,7 @@ Glossary
       recursively visits the left child, then visits the
       root, an then recursively visits the right child.
       In a :term:`binary search tree`, this traversal will
-      :term:`enumerate` the nodes in sorted order.
+      :term:`enumerate <enumeration>` the nodes in sorted order.
 
    insertion sort
       A sorting algorithm with :math:`\Theta(n^2)` average and worst
@@ -857,24 +992,28 @@ Glossary
    ISAM
       Indexed Sequential Access Method: an obsolete method for
       indexing data for (at the time) fast retrieval. More generally,
-      the term is used also to generically refer to an index that
-      supports both sequential and keyed access to data records.
-      Today, that would nearly always be implemented using a :term:`B-Tree`.
+      the term is used also to generically refer to an
+      :term:`index <indexing>` that supports both sequential and
+      :term:`keyed <key>` access to data records.
+      Today, that would nearly always be implemented using a
+      :term:`B-Tree`.
 
    iterator
-      In a container such as a List, a separate class that indicates
-      position within the container, with support for traversing
-      through all elements in the container.
+      In a :term:`container` such as a List, a separate class that
+      indicates position within the container, with support for
+      :term:`traversing <traversal>` through all
+      :term:`elements <element>` in the container.
 
    key
       A field or part of a larger record used to represent that record
-      for the purpose of searching or comparing. Another term for
-      :term:`search key`.
+      for the purpose of searching or comparing.
+      Another term for :term:`search key`.
 
    key-record pair
       A standard solution for solving the problem of how to relate a
       key value to a record (or how to find the key for a given
-      record) within the context of a particular index.
+      record) within the context of a particular
+      :term:`index <indexing>`.
       The idea is to simply stores as records in the index pairs of
       keys and records.
       Specifically, the index will typically store a copy of the key
@@ -883,7 +1022,6 @@ Glossary
       comparator function to the index methods.
 
    Kruskal's algorithm
-   kruskal's algorithm
       :to-term: UNION/FIND :label: uses
 
       An algorithm for computing the :term:`MCST` of a
@@ -892,17 +1030,38 @@ Glossary
       process to efficiently determine of two vertices are within the
       same :term:`subgraph`.
 
-   labeled graph
-      A :term:`graph` with labels associated with the :term:`nodes`.
+   LFU
+      Abbreviation for :term:`least frequently used`.
 
-   leaf
+   LRU
+      Abbreviation for :term:`least recently used`.
+
+   labeled graph
+      A :term:`graph` with labels associated with the
+      :term:`nodes <node>`.
+
    leaf node
-      In a binary tree, A leaf node is any node that has two empty
-      children.
-      (Note that in a binary tree is defined so that every
+      In a :term:`binary tree`, leaf node is any node that has two
+      empty :term:`children <child>`.
+      (Note that a binary tree is defined so that every
       node has two children, and that is why the leaf node has to have
       two empty children, rather than no children.)
       In a general tree, any node is a leaf node if it has no children.
+
+   least frequently used
+       Abbreviated :term:`LFU`, it is a :term:`heuristic` that can be
+       used to decide which :term:`buffer` in a :term`buffer pool`
+       to :term:`flush` when data in the buffer pool must be
+       replaced by new data being read into a
+       :term:`cache <caching>`.
+       However, :term:`least recently used` is more popular than LFU.
+
+   least recently used
+       Abbreviated :term:`LRU`, it is a popular :term:`heuristic` to
+       use for deciding which :term:`buffer` in a :term`buffer pool`
+       to :term:`flush` when data in the buffer pool must be
+       replaced by new data being read into a :term:`cache
+       <caching>`.
 
    length
       In a :term:`list`, the number of elements. In a string, the
@@ -935,7 +1094,8 @@ Glossary
       store the elements when implementing the stack ADT.
 
    list
-      A finite, ordered sequence of data items known as :term:`elements`.
+      A finite, ordered sequence of data items known as
+      :term:`elements <element>`.
       This is close to the mathematical concept of a :term:`sequence`.
 
    logarithm
@@ -970,9 +1130,10 @@ Glossary
       correspondence.
 
    max heap
-      A :term:`heap` where every node has a key value greater than its
-      children. As a consequence, the node with maximum key value is
-      at the root.
+      A :term:`heap` where every :term:`node` has a :term:`key` value
+      greater than its :term:`children <child>`.
+      As a consequence, the node with maximum key value is
+      at the :term:`root`.
 
    mergesort
       A sorting algorithm that requires :math:`\Theta(n \log n)` in
@@ -983,21 +1144,65 @@ Glossary
       It is a bit complicated to implement effiently on an array.
 
    member
-   members
-      In set notation, this is another term for elements. 
+      In set notation, this is a synonym for :term:`element`. 
       In abstract design, a :term:`data item` is a member of a :term:`type`.
-      In an object-oriented language, data members are data fields in an
+      In an object-oriented language,
+      :term:`data members <data member>` are data fields in an
       object.
 
    member function
       Each operation associated with the ADT is implemented by a
       member function or :term:`method`.
 
+   memory hierarchy
+      The concept that a computer system stores data in a range of
+      storage types that range from fast but expensive
+      (:term:`primary storage`) to slow but cheap
+      (:term`secondary storage`).
+      When there is too much data to store in :term:`primary storage`,
+      the goal is to have the data that is needed soon or
+      most often in the primary storage as much as possible,
+      by using :term:`caching` techniques.
+
    memory leak
       In programming, the act of creating :term:`garbage`.
       In languages such as C and C++ that do not support
       :term:`garbage collection`, repeated memory leaks will evenually
       cause the program to terminate.
+
+   memory manager
+      Functionality for managing a :term:`memory pool`.
+      Typically, the memory pool is viewed as an array of bytes by the
+      memory manager.
+      The :term:`client` of the memory manager will request a
+      collection of (adjacent) bytes of some size, and release the
+      bytes for reuse when the space is no longer needed.
+      The memory manager should not know anything about the
+      interpretation of the data that is being stored by the client
+      into the memory pool.
+      Depending on the precise implementation, the client might pass
+      in the data to be stored, in which case the memory manager will
+      deal with the actual copy of the data into the memory pool.
+      The memory manager will return to the client a :term:`handle`
+      that can later be used by the client to retrieve the data.
+
+   memory pool
+      Memory (usually in :term:`RAM` but possibly on disk or
+      :term:`peripheral storage` device) that is logically viewed as
+      an array of memory positions.
+      A memory pool is usually managed by a :term:`memory manager`.
+
+   message
+      In a :term:`memory manager` implementation (particularly a
+      memory manager implemented with a "message passing" style of
+      interface), the message is the data that the :term:`client` of
+      the memory manager wishes to have stored in the
+      :term:`memory pool`.
+      The memory manager will reply to the client by returning a
+      :term:`handle` that defines the location and size of the message
+      as stored in the memory pool.
+      The client can later recover the message by passing the handle
+      back to the memory manager.
 
    metaphor
       Humans deal with complexity by assigning a label to an assembly of
@@ -1011,24 +1216,24 @@ Glossary
 
    MCST
    MST
-   mcst
-   mst
-      Abbreviation for :term:`minimal cost spanning tree`.
+      Abbreviation for :term:`minimal-cost spanning tree`.
 
    min heap
-      A :term:`heap` where every node has a key value less than its
-      children. As a consequence, the node with minimum key value is
-      at the root.
+      A :term:`heap` where every :term:`node` has a :term:`key` value
+      less than its :term:`children <child>`.
+      As a consequence, the node with minimum key value is
+      at the :term:`root`.
 
-   minimal cost spanning tree
+   minimal-cost spanning tree
       :to-term: Kruskal's algorithm :label: algorithms
       :to-term: Prim's algorithm :label: algorithms
 
       Abbreviated as MCST, or sometimes as MST.
-      Derived from a :term:`weighted graph`, the MCST is the subset of
-      the graph's :term:`edges` that maintains the connectivitiy of
-      the graph while having lowest total cost (as defined by the sum
-      of the :term:`weights` of the edges in the MCST).
+      Derived from a :term:`weighted graph`, the MCST is the
+      :term:`subset` of the graph's :term:`edges <edge>` that
+      maintains the connectivitiy of the graph while having lowest
+      total cost (as defined by the sum of the
+      :term:`weights <weight>` of the edges in the MCST). 
       The result is referred to as a :term:`tree` because it would
       never have a :term:`cycle` (since an edge could be removed from
       the cycle and still preserve connectivity).
@@ -1048,16 +1253,16 @@ Glossary
       :term:`bag`.
 
    neighbor
-   neighbors
       In a :term:`graph`, a :term:`node` :math:`w` is said to be a
       neighbor of :term:`node` :math:`v` if there is an :term:`edge`
       from :math:`v` to :math:`w`.
 
    node
-   nodes
       The objects that make up a linked structure such as a linked
       list or binary tree. Typically, nodes are allocated using
       :term:`dynamic memory allocation`.
+      In :term:`graph` terminology, the nodes are more commonly called
+      :term:`vertices <vertex>`.
 
    non-strict partial order
       In set notation, a relation that is :term:`reflexive`,
@@ -1097,16 +1302,17 @@ Glossary
       The values making up an input to a :term:`function`.
 
    parent
-   parents
       In a tree, the :term:`node` :math:`P` that directly links to a
       node :math:`A` is the parent of :math:`A`. :math:`A` is the
       :term:`child` of :math:`P`.
 
    parent pointer representation
-      For trees, a node implementation where each node stores only a
-      pointer to its parent, rather than to its children. This makes
-      it easy to go up the tree toward the root, but not down the tree
-      toward the leaves. This is most appropriate for solving the
+      For :term:`trees <tree>`, a :term:`node` implementation where
+      each node stores only a pointer to its :term:`parent`, rather
+      than to its :term:`children <child>`.
+      This makes it easy to go up the tree toward the :term:`root`,
+      but not down the tree toward the :term:`leaves <leaf node>`.
+      This is most appropriate for solving the
       :term:`UNION/FIND` problem.
 
    partial order
@@ -1130,13 +1336,20 @@ Glossary
 
    path
       In :term:`tree` or :term:`graph` terminology,
-      a sequence of :term:`vertices` :math:`v_1, v_2, ..., v_n`
+      a sequence of :term:`vertices <vertex>`
+      :math:`v_1, v_2, ..., v_n`
       forms a path of length :math:`n-1` if there exist edges from
       :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
 
+   peripheral storage
+      Any storage device that is not part of the core processing
+      of the computer (that is, :term:`RAM`).
+      A typical example is a :term:`disk drive`.
+
    permutation
       A permutation of a sequence :math:`\mathbf{S}`
-      is the members of :math:`\mathbf{S}` arranged in some order.
+      is the :term:`elements <element>` of :math:`\mathbf{S}` arranged
+      in some order.
 
    physical form
       The implementation of a data type as a data structure.
@@ -1153,8 +1366,8 @@ Glossary
       with greater values than the pivot.
 
    pop
-   popped
-      A specialized term used to indicate removing an element from a stack.
+      A specialized term used to indicate removing an :term:`element`
+      from a :term:`stack`. 
 
    poset
       Another name for a :term:`partially ordered set`.
@@ -1171,20 +1384,26 @@ Glossary
 
    powerset
       For a set :math:`\mathbf{S}`, the power set is the set of all
-      possible subsets for :math:`\mathbf{S}`.
+      possible :term:`subsets <subset>` for :math:`\mathbf{S}`.
 
    preorder traversal
       In a binary tree, a :term:`traversal` that first visits the
       root, then recursively visits the left child, then recursively
       visits the right child.
 
-   primary index
    primary key index
-      Relates each primary key value with a pointer to the actual
-      record on disk.
+      Relates each :term:`primary key` value with a pointer to the
+      actual record on disk.
 
    primary key
       A unique identifier for a record.
+
+   primary storage
+      The faster but more expensive memory in a computer, most often
+      :term:`RAM` in modern computers.
+      This is in contrast to :term:`secondary storage`, which together
+      with primary storage devices make up the computer's
+      :term:`memory hierarchy`.
 
    primitive element
       In set notation, this is a single element that is a member of
@@ -1234,8 +1453,8 @@ Glossary
       :math:`(\mathrm{not}\ Q) \Rightarrow (\mathrm{not}\ P)`.
 
    push
-   pushed
-      A specialized term used to indicate inserting an element onto a stack.
+      A specialized term used to indicate inserting an :term:`element`
+      onto a :term:`stack`.
 
    quadratic growth rate
       A growth rate function of the form :math:`cn^2` where :math:`n`
@@ -1256,6 +1475,9 @@ Glossary
       splitting the list into parts that are either less than or
       greater than the pivot, and then sorting the two parts.
 
+   RAM
+      Abbreviation for :term:`Random Access Memory`.
+
    radix
       Synonym for :term:`base`. The number of digits in a number
       representation. For example, we typically represent numbers in
@@ -1272,6 +1494,17 @@ Glossary
       leading to an :math:`\Omega(n \log n)` sorting algorithm that
       tends to be much slower than other sorting algorithms like
       :term:`quicksort` or :term:`mergesort`.
+
+   random access memory
+      Abbreviated ;term:`RAM`, this is the principle example of
+      :term:`primary storage` in a modern computer.
+      Data access times are typically measured in billionths of a
+      second (microseconds), which is roughly a million times faster
+      than data access from a disk drive.
+      RAM is where data are held for immediate processing, since
+      access times are so much faster than for
+      :term:`secondary storage`. 
+      RAM is a typical part of a computer's :term:`memory hierarchy`.
 
    random permutation
       One of the :math:`n!` possible permutations for a set of
@@ -1292,27 +1525,28 @@ Glossary
       of records.
 
    recurrence relation
-   recurrence
       A :term:`recurrence relation` (or less formally,
-      :term:`recurrence`) defines a function by means of an 
+      recurrence) defines a function by means of an 
       expression that includes one or more (smaller) instances of
       itself.
       A classic example is the recursive definition for the
       factorial function, :math:`F(n) = n*F(n-1)`.
 
-   recursive
    recursion
+      The process of using recursive calls.
       An algorithm is recursive if it calls itself to do part of
       its work.
+      See :term:`recursion`.
 
    reduction
       In algorithm analysis, the process of deriving asymptotic bounds
-      for one problem from the asymptotic bounds of another. In
-      particular, if problem A can be used to solve problem B, and
+      for one :term:`problem` from the asymptotic bounds of another.
+      In particular, if problem A can be used to solve problem B, and
       problem A is proved to be in :math:`O(f(n))`, then problem B
-      must also be in :math:`O(f(n)`. Reductions are often used to
-      show that certain problems are at least as expensive as sorting,
-      or that certain problems are :term:`NP Complete`.
+      must also be in :math:`O(f(n)`.
+      Reductions are often used to show that certain problems are at
+      least as expensive as sorting, or that certain problems are
+      :term:`NP Complete`.
 
    reflexive
       In set notation, binary relation :math:`R` on set :math:`S` is
@@ -1330,8 +1564,9 @@ Glossary
       allowed to perform each subtask.
 
    root
-      In a tree, the topmost :term:`node` of the tree. All other nodes
-      in the tree are :term:`descendants` of the root.
+      In a :term:`tree`, the topmost :term:`node` of the tree.
+      All other nodes in the tree are :term:`descendants <descendant>`
+      of the root.
 
    runtime stack
       The place where an :term:`activation record` is stored when a
@@ -1343,20 +1578,32 @@ Glossary
       we might want to search by name.
       In this case the name field is used as the search key.
 
+   search tree
+      A :term:`tree` data structure that makes search by :term:`key`
+      value more efficient.
+      A type of :term:`container`, it is common to implement an
+      :term:`index <indexing>` using a search tree.
+
    secondary key
       A key field in a record such as salary, where a particular key
       value might be duplicated in multiple records. A secondary key
       is more likely to be used by a user as a search key than is the
       record's :term:`primary key`.
 
-   secondary index
    secondary key index
-      Associates a secondary key value with the primary key of each
-      record having that secondary key value.
+      Associates a :term:`secondary key` value with the
+      :term:`primary key` of each record having that secondary key
+      value.
+
+   secondary storage
+      Refers to slower but cheaper means of storing data.
+      Typical examples include a :term:`disk drive`, a USB memory
+      stick, or a solid state drive.
 
    sector
-      A unit of space on a disk drive that is the amount of data that
-      will be read or written at one time by the disk drive hardware.
+      A unit of space on a :term:`disk drive` that is the amount of
+      data that will be read or written at one time by the disk drive
+      hardware.
       This is typically 512 bytes.
 
    selection sort
@@ -1366,6 +1613,19 @@ Glossary
       swaps are expensive. It can be viewed as an optimization on
       bubble sort where swaps are deferred until the end of each
       iteration.
+
+   self-organizing list
+      A list that, over a series of search operations, will make
+      use of some :term:`heuristic` to re-order its elements in an
+      effort to improve search times.
+      Generally speaking, search is done sequentially from the
+      beginning, but the self-organizing heuristic will attempt to put
+      the records that are most likely to be searched for at or near
+      the front of the list.
+      While typically not as efficient as :term:`binary search` on a
+      sorted list, self-organizing lists do not require that the list
+      be sorted (and so do not pay the cost of doing the sorting
+      operation).
 
    sequence
       In set notation, a collection of elements with an order, and
@@ -1378,14 +1638,17 @@ Glossary
       array elements in the order that they appear.
 
    set
-   sets
-      A collection of distinguishable :term:`members` or
-      :term:`elements`.
+      A collection of distinguishable :term:`members <member>` or
+      :term:`elements <element>`.
 
    Shellsort
       A sort that relies on the best-case cost of
       :term:`insertion sort` to improve over :math:`\Theta(n^2)` worst
       case cost. 
+
+   sibling
+      In a :term:`tree`, a sibling of :term:`node` :math:`A` is any
+      other node with the same :term:`parent` as :math:`A`.
 
    signature
       In a programming language, the signature for a function is its
@@ -1394,7 +1657,7 @@ Glossary
    simple cycle
       In :term:`graph` terminology, a :term:`cycle` is simple if its
       corresponding :term:`path` is simple, except that the first and
-      last :term:`vertices` of the cycle are the same.
+      last :term:`vertices <vertex>` of the cycle are the same.
 
    simple path
       In :term:`graph` terminology, a :term:`path` is simple if all
@@ -1407,7 +1670,6 @@ Glossary
       A :term:`linked list` implementation variant where each list
       node contains access an pointer only to the next element in the list.
 
-   sorting
    sorting problem
       Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`
       with key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
@@ -1434,8 +1696,8 @@ Glossary
       matrix position.
 
    sparse graph
-      A :term:`graph` where the actual number of :term:`edges` is much
-      less than the possible number of edges.
+      A :term:`graph` where the actual number of :term:`edges <edge>`
+      is much less than the possible number of edges.
       Generally, this is interpreted to mean that the :term:`degree`
       for any :term:`vertex` in the graph is relatively low.
 
@@ -1475,24 +1737,24 @@ Glossary
 
    subgraph
       A subgraph :math:`\mathbf{S}` is formed from :term:`graph`
-      :math:`\mathbf{G}` by selecting a subset :math:`\mathbf{V}_s` of
-      :math:`\mathbf{G}`'s :term:`vertices` and a subset 
-      :math:`\mathbf{E}_s` of :math:`\mathbf{G}` 's :term:`edges` such
-      that for every edge :math:`e  \in \mathbf{E}_s`,
+      :math:`\mathbf{G}` by selecting a :term:`subset`
+      :math:`\mathbf{V}_s` of :math:`\mathbf{G}`'s :term:`vertices
+      <vertex>` and a subset :math:`\mathbf{E}_s` of
+      :math:`\mathbf{G}`'s :term:`edges <edge>` such that for every
+      edge :math:`e \in \mathbf{E}_s`, 
       both vertices of :math:`e` are in :math:`\mathbf{V}_s`.
 
    subset
-   subsets
       In set theory, a set :math:`A` is a subset of a set
       :math:`B`, or equivalently :math:`B` is a :term:`superset` of
       :math:`A`, if all elements of :math:`A` are also elements of
       :math:`B`.
 
    subtree
-   subtrees
-      A subtree is a subset of the nodes of a binary tree that
-      includes some node :math:`R` of the tree as the subtree root
-      along with all the :term:`descendants` of :math:`R`.
+      A subtree is a :term:`subset` of the nodes of a binary tree that
+      includes some node :math:`R` of the tree as the subtree
+      :term:`root` along with all the :term:`descendants <descendant>`
+      of :math:`R`.
 
    summation
       The sum of costs for some :term:`function` applied to a
@@ -1502,10 +1764,10 @@ Glossary
       written as :math:`\sum_{i=1}^{n} i`.
 
    superset
-      In set theory, a set :math:`A` is a subset of a set
-      :math:`B`, or equivalently :math:`B` is a :term:`superset` of
-      :math:`A`, if all elements of :math:`A` are also elements of
-      :math:`B`.
+      In set theory, a set :math:`A` is a :term:`subset` of a
+      :term:`set` :math:`B`, or equivalently :math:`B` is a
+      :term:`superset` of :math:`A`, if all :term:`elements <element>`
+      of :math:`A` are also elements of :math:`B`.
 
    symmetric
       In set notation, relation :math:`R` is symmetric if whenever
@@ -1515,10 +1777,10 @@ Glossary
       The end of a :term:`list`.
 
    topological sort
-      The process of laying out the :term:`vertices` of a :term:`DAG`
-      in a :term:`linear order` such that no vertex :math:`A` in the
-      order is preceded by a vertex that can be reached by a
-      (directed) :term:`path` from :math:`A`.
+      The process of laying out the :term:`vertices <vertex>` of a
+      :term:`DAG` in a :term:`linear order` such that no vertex
+      :math:`A` in the order is preceded by a vertex that can be
+      reached by a (directed) :term:`path` from :math:`A`.
       Usually the (directed) edges in the graph define a
       prerequisite system, and the goal of the topological sort is
       to list the vertices in an order such that no prerequisites are
@@ -1539,15 +1801,15 @@ Glossary
 
    tree
       A tree :math:`\mathbf{T}` is a finite set of one or more
-      :term:`nodes` such that there is one designated node :math:`R`,
-      called the :term:`root` of :math:`\mathbf{T}`.
+      :term:`nodes <node>` such that there is one designated node
+      :math:`R`, called the :term:`root` of :math:`\mathbf{T}`.
       If the set :math:`(\mathbf{T} -\{R\})` is not empty, these
-      :term:`nodes` are partitioned into :math:`n > 0`
+      nodes are partitioned into :math:`n > 0`
       :term:`disjoint sets` :math:`\mathbf{T}_0`,
       :math:`\mathbf{T}_1`, ..., :math:`\mathbf{T}_{n-1}`, 
-      each of which is a tree, and whose roots
+      each of which is a tree, and whose :term:`roots <root>`
       :math:`R_1, R_2, ..., R_n`,
-      respectively, are children of :math:`R`.
+      respectively, are :term:`children <child>` of :math:`R`.
 
    truth table
       In symbolic logic, a table that contains as rows all possible
@@ -1581,7 +1843,8 @@ Glossary
       The :term:`FIND` operation determines which disjoint set a given
       object resides in, and the :term:`UNION` operation combines two
       disjoint sets when it is determined that they are members of the
-      same :term:`equivalence class` under some :term:`equivalence relation`.
+      same :term:`equivalence class` under some
+      :term:`equivalence relation`.
 
    upper bound
       In algorithm analysis, the upper or highest growth rate that
@@ -1595,11 +1858,9 @@ Glossary
       As a data structure, the term vector usually used as a synonym
       for a :term:`dynamic array`.
 
-   vertices
    vertex
       Another name for a :term:`node` in a :term:`graph`.
 
-   visitor
    visitor design pattern
       A :term:`design pattern` where a traversal process is given a
       function (known as the visitor) that is applied to every object
@@ -1608,13 +1869,12 @@ Glossary
       function parameter, where that function is applied to each node.
 
    weight
-   weights
       A cost or distance most often associated with an :term:`edge` in
       a :term:`graph`.
 
    weighted graph
-      A :term:`graph` whose :term:`edges` each have an associated
-      weight or cost.
+      A :term:`graph` whose :term:`edges <edge>` each have an
+      associated :term:`weight` or cost.
 
    weighted union rule
       When merging two disjoint sets using the :term:`UNION/FIND`

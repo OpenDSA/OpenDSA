@@ -163,17 +163,17 @@ and vice versa, since they work by essentially the same process.
 Within the context of algorithm analysis, one of the most important
 uses for mathematical induction is as a method to test a hypothesis.
 When :ref:`seeking a closed-form solution <Summation>` for a
-:term:`summation` or :term:`recurrence`, we might first guess or
-otherwise acquire evidence that a particular formula is the correct
-solution.
+:term:`summation` or :term:`recurrence <recurrence relation>`,
+we might first guess or otherwise acquire evidence that a particular
+formula is the correct solution.
 If the formula is indeed correct, it is often an easy matter to prove
 that fact with an induction proof.
 
 Let **Thrm** be a theorem to prove, and express **Thrm** in
 terms of a positive integer parameter :math:`n`.
 Mathematical induction states that **Thrm** is true for any value
-of parameter :math:`n` (for :math:`n \geq c`, where `c` is some constant)
-if the following two conditions are true:
+of parameter :math:`n` (for :math:`n \geq c`, where `c` is some
+constant) if the following two conditions are true:
 
 #. :term:`Base Case`: **Thrm** holds for :math:`n = c`, and
 

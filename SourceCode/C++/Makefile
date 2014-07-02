@@ -19,7 +19,7 @@ clean:
 	-rm -rf build
 	mkdir build
 
-sorting: Inssort Mergesort MergesortOpt
+sorting: Inssort Bubblesort Selectionsort Shellsort Mergesort MergesortOpt
 
 Inssort: build/InssortTest/success
 
@@ -37,7 +37,63 @@ build/InssortTest/success: Sorting/Insertionsort.cpp Sorting/SortTest.cpp Utils/
 	cd build/InssortTest; \
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Insertionsort.o Insertionsort.cpp; \
 	$(CC) $(CFLAGS) Insertionsort.o -o Insertionsort; \
-	./Insertionsort 20
+	./Insertionsort 1000
+
+
+Bubblesort: build/BubblesortTest/success
+
+build/BubblesortTest/success: Sorting/Bubblesort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
+	@echo "Bubblesort Test"
+	-@rm -rf build/BubblesortTest
+	@mkdir build/BubblesortTest
+	@cp Sorting/Bubblesort.cpp build/BubblesortTest
+	@cp Sorting/SortTest.cpp build/BubblesortTest
+	@cp Utils/Checkorder.cpp build/BubblesortTest
+	@cp Utils/KVPair.cpp build/BubblesortTest
+	@cp Utils/Comparable.cpp build/BubblesortTest
+	@cp Utils/Int.cpp build/BubblesortTest
+	@cp Utils/utils.h build/BubblesortTest
+	cd build/BubblesortTest; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Bubblesort.o Bubblesort.cpp; \
+	$(CC) $(CFLAGS) Bubblesort.o -o Bubblesort; \
+	./Bubblesort 1000
+
+Selectionsort: build/SelectionsortTest/success
+
+build/SelectionTest/success: Sorting/Selectionsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
+	@echo "Selectionsort Test"
+	-@rm -rf build/SelectionsortTest
+	@mkdir build/SelectionsortTest
+	@cp Sorting/Selectionsort.cpp build/SelectionsortTest
+	@cp Sorting/SortTest.cpp build/SelectionsortTest
+	@cp Utils/Checkorder.cpp build/SelectionsortTest
+	@cp Utils/KVPair.cpp build/SelectionsortTest
+	@cp Utils/Comparable.cpp build/SelectionsortTest
+	@cp Utils/Int.cpp build/SelectionsortTest
+	@cp Utils/utils.h build/SelectionsortTest
+	cd build/SelectionsortTest; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Selectionsort.o Selectionsort.cpp; \
+	$(CC) $(CFLAGS) Selectionsort.o -o Selectionsort; \
+	./Selectionsort 1000
+
+
+Shellsort: build/ShellsortTest/success
+
+build/ShellsortTest/success: Sorting/Shellsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
+	@echo "Shellsort Test"
+	-@rm -rf build/ShellsortTest
+	@mkdir build/ShellsortTest
+	@cp Sorting/Shellsort.cpp build/ShellsortTest
+	@cp Sorting/SortTest.cpp build/ShellsortTest
+	@cp Utils/Checkorder.cpp build/ShellsortTest
+	@cp Utils/KVPair.cpp build/ShellsortTest
+	@cp Utils/Comparable.cpp build/ShellsortTest
+	@cp Utils/Int.cpp build/ShellsortTest
+	@cp Utils/utils.h build/ShellsortTest
+	cd build/ShellsortTest; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Shellsort.o Shellsort.cpp; \
+	$(CC) $(CFLAGS) Shellsort.o -o Shellsort; \
+	./Shellsort 1000
 
 Mergesort: build/Mergesort/success
 

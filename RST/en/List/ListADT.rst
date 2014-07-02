@@ -26,9 +26,9 @@ The most important concept related to lists is that of
 In other words, we perceive that there is a first element in the list,
 a second element, and so on.
 So, define a :term:`list` to be a finite, ordered
-sequence of data items known as :term:`elements`.
+sequence of data items known as :term:`elements <element>`.
 This is close to the mathematical concept of
-a :term:`sequence`, as defined in Module :numref:`<SetDef>`.
+a :term:`sequence`.
 
 "Ordered" in this definition means that each element has a
 position in the list.
@@ -37,18 +37,14 @@ elements are sorted by value.
 (Of course, we can always choose to sort the elements on the list if
 we want, its just that keeping the elements sorted is not an inherent
 property of being a list.
-Chapters :chap:`Sorting` and :chap:`Searching`
-treat the problems of how to create and search sorted lists
-efficiently.)
 
 Each list element must have some data type.
 In the simple list implementations discussed in this chapter, all
 elements of the list are usually assumed to have the same data type,
 although there is no conceptual objection to lists whose elements have
-differing data types if the application requires it
-(see Module :numref:`<Multilists>`).
-The operations defined as part of the list ADT do not
-depend on the elemental data type.
+differing data types if the application requires it.
+The operations defined as part of the list :term:`ADT` do not
+depend on the elemental :term:`data type`.
 For example, the list ADT can be used for lists of integers, lists of
 characters, lists of payroll records, even lists of lists.
 
@@ -59,9 +55,8 @@ The beginning of the list is called the :term:`head`,
 the end of the list is called the :term:`tail`.
 
 We need some notation to show the contents of a list,
-so we will use the same angle bracket
-notation as was introduced for sequences in Module
-:numref:`<SetDef>`.
+so we will use the same angle bracket notation that is normally used
+to represent :term:`sequences <sequence>`.
 To be consistent with standard array indexing, the first position
 on the list is denoted as 0.
 Thus, if there are :math:`n` elements in the list, they are given
@@ -129,10 +124,6 @@ will take place.
 .. inlineav:: listADTposCON ss
    :output: show  
 
-.. raw:: html
-
-   <p></p>
-   
 .. inlineav:: listADTnoteCON ss
    :output: show   
 
@@ -177,12 +168,12 @@ when the description for the object being searched for (``k`` in the
 function) is of the same type as the objects themselves.
 They also have to be comparable when using the ``==`` operator.
 A more realistic situation is that we are searching for a record that
-contains a key field whose value matches ``k``.
-Similar functions to find and return a composite element based on a
-key value can be created using the list implementation, but to do so
-requires some agreement between the list ADT and the ``find``
-function on the concept of a key, and on how keys may be compared.
-This topic is discussed in Module :numref:`<Comparison>`.
+contains a :term:`key` field whose value matches ``k``.
+Similar functions to find and return a :term:`composite type` based
+on a key value can be created using the list implementation, but to do
+so requires some agreement between the list ADT and the ``find``
+function on the concept of a key, and on
+:ref:`how keys may be compared <comparable> <Comparison>`.
 
 .. avembed:: Exercises/List/ListADTPROG.html ka
   
@@ -190,12 +181,8 @@ Implementing Lists
 ------------------
 
 There are two standard approaches to implementing lists, the
-:term:`array-based list`, and the :term:`linked list`.
-The array-based list implementation is presented in
-Module :numref:`<ListArray>`.
-The linked list is presented in Module :numref:`<ListLinked>`.
-Time and space efficiency comparisons for the two are discussed in
-Module :numref:`<ListAnalysis>`.
+:ref:`array-based list <ListArray>`, and the
+:ref:`linked list <ListLinked>`.
 
 .. odsascript:: AV/List/listADTposCON.js
 .. odsascript:: AV/List/listADTnoteCON.js

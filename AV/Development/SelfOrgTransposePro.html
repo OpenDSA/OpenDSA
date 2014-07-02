@@ -174,10 +174,10 @@ Written by Junyang Chen and Cliff Shaffer
         selected_node = this;
         status = 1;
       }else if(status == 1){
-        this.value(selected_node.value());
+       // this.value(selected_node.value());
 
         selected_node.removeClass('bgColor');
-        jsav.effects.copyValue(selected_node, this);
+       // jsav.effects.copyValue(selected_node, this);
         selected_node = null;
         status = 0;
       }else if(status == 2){
@@ -286,10 +286,8 @@ Written by Junyang Chen and Cliff Shaffer
     arrSwap(answerArr, search_index-1, search_index);
   }
 
-
-    for (i = 0; i < size; i++) {
-      console.log(answerArr[i]);
-    }
+      // Set up handler for reset button
+    $("#reset").click(function () { f_reset(); });
   }
 
   //function that swaps two elements on the array
@@ -305,21 +303,6 @@ Written by Junyang Chen and Cliff Shaffer
   function checkAnswer(arr_size) {
     var i = 0;
     var curr = exe_head;
-
-    while(curr.exe_next){
-      console.log(curr.value());
-      curr=curr.exe_next;
-      i++;
-    }
-
-    console.log(" ");
-
-    for (i = 0; i < arr_size; i++) {
-      console.log(answerArr[i]);
-    }
-
-
-
     i = 0;
 
     var curr = exe_head;
