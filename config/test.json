@@ -65,14 +65,14 @@
             "points": 0.0,
             "threshold": 1.0
           },
-         "AlistInsertCON": {
-            "long_name": "Array-based List Insertion",
+         "alistInsertCON": {
+            "long_name": "Array-based List Insertion Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AlistAppendCON": {
-            "long_name": "Array-based List Append",
+          "alistAppendCON": {
+            "long_name": "Array-based List Append Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0

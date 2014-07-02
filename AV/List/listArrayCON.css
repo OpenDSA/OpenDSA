@@ -1,41 +1,11 @@
-.jsavnode .jsavvalue { /* This will get the array cell values to center vertically */
+.jsavnode .jsavvalue { /* Makes array cell values center vertically */
   height: 30px;
 }
 
-.jsavnode {
+.jsavnode { /* Make the arrays smaller */
   line-height: 30px !important;
   min-width: 30px !important;
   max-width: 30px !important;
   min-height: 30px !important;
   max-height: 30px !important;
-}
-
-.jsavcodeline.jsavhighlight {
-  background-color: #ccc !important;
-}
-
-#AlistInsertCON {
-  height: 350px;
-}
-
-#AlistRemoveCON {
-  height: 375px;
-}
-
-#AlistRemoveCON .jsavcode {
-  margin-left: 290px;
-  width: 560px;
-}
-
-.ssAV .jsavline {
-  height: 45px;
-}
-
-#AlistAppendCON {
-  height: 280px;
-}
-
-#AlistAppendCON .jsavcode {
-  margin-left: 350px;
-  width: 400px;
 }
