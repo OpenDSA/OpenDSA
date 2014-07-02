@@ -199,7 +199,7 @@ Written by Junyang Chen and Cliff Shaffer
 
   function f_moveUp() {
     if (selected_node){
-      selected_node.edgeToNext().clear();
+      selected_node.edgeToNext().hide();
       var prev = findSelectedPrev(selected_node);
       prev.edgeToNext().hide();
       var xyPosition = selected_node.position().top - 30;
@@ -421,17 +421,15 @@ function findSelectedPrev(selected){
         Your task in this exercise is to show the behavior for self organizing lists using the transpose method. You will need to 
         demonstrate what happens when you serach for th 
        <b><var>search_value</var></b>. 
-        you will need to manually rederect the poiters of the nedes 
+        You will need to manually rederect the poiters of the nodes 
         to demenstrate what happens when a node that is being searched is found.
       </p>
       <div class="question">
         <p>
-          To move an element value from one node to another, click on it (to
-          highlight it), then click on the element position in the node where
-          you want it to go. You can insert the new value
-          <b><var>search_value</var></b> into a highlighted node by clicking the
-          "Insert" button. You can create a new link node by clicking the
-          "NewNode" button. To change a pointer, click on its box (on the right
+          Move the node to the desired position if you would like to and then
+          redirect the pointers accordingly. To move the node click on the body
+          of the node and then press the buttons accordingly.
+          To change a pointer, click on its box (on the right
           side of the node) to highlight it, then click on the node that you
           want it to point to.
         </p>
