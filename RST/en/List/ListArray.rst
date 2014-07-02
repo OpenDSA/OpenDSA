@@ -10,6 +10,7 @@
    :topic: Lists
    
 .. odsalink:: AV/List/alistVarsCON.css
+.. odsalink:: AV/List/alistInsertCON.css
 .. odsalink:: AV/List/listArrayCON.css
 
 Array-Based List Implementation
@@ -32,7 +33,7 @@ Because the array-based list implementation is defined to store list
 elements in contiguous cells of the array, the ``insert``, ``append``,
 and ``remove`` methods must maintain this property.
 
-.. inlineav:: AlistInsertCON ss
+.. inlineav:: alistInsertCON ss
    :output: show
 
 .. inlineav:: AlistAppendCON ss
@@ -69,4 +70,5 @@ Insertion and Deletion work.
 
 .. odsascript:: AV/List/alistVarsCON.js
 .. odsascript:: AV/List/alistIntroCON.js
+.. odsascript:: AV/List/alistInsertCON.js
 .. odsascript:: AV/List/listArrayCON.js

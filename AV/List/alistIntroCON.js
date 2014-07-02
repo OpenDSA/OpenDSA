@@ -15,7 +15,7 @@
     av.displayInit();
 
     av.umsg(interpret("av_c2"));
-    arr.unhighlight([0, 1, 2, 3, 4]);
+    arr.unhighlight([0, 1, 2, 4]);
     arr.highlight(3);
     av.step();
 
