@@ -9,31 +9,31 @@
    :satisfies: array-based list
    :topic: Lists
    
+.. odsalink:: AV/List/alistVarsCON.css
+.. odsalink:: AV/List/alistInsertCON.css
 .. odsalink:: AV/List/listArrayCON.css
-.. odsalink:: AV/List/listArrayVizCON.css
 
 Array-Based List Implementation
 ===============================
 
 Here is an implementation for the array-based list, named ``AList``.
-``AList`` inherits from interface ``List``
-(see Module :numref:`<ListADT>`)
+``AList`` inherits from the :ref:`List ADT <ListADT>`,
 and so must implement all of the member functions of ``List``.
 
 .. codeinclude:: Lists/AList
    :tag: AList
 
-.. inlineav:: AlistVarsCON ss
+.. inlineav:: alistVarsCON ss
    :output: show
 
-.. inlineav:: AlistIntroCON ss
+.. inlineav:: alistIntroCON ss
    :output: show
 
 Because the array-based list implementation is defined to store list
 elements in contiguous cells of the array, the ``insert``, ``append``,
 and ``remove`` methods must maintain this property.
 
-.. inlineav:: AlistInsertCON ss
+.. inlineav:: alistInsertCON ss
    :output: show
 
 .. inlineav:: AlistAppendCON ss
@@ -68,5 +68,7 @@ Insertion and Deletion work.
 
 .. avembed:: Exercises/List/ArryLstSumm.html ka
 
+.. odsascript:: AV/List/alistVarsCON.js
+.. odsascript:: AV/List/alistIntroCON.js
+.. odsascript:: AV/List/alistInsertCON.js
 .. odsascript:: AV/List/listArrayCON.js
-.. odsascript:: AV/List/listArrayVizCON.js

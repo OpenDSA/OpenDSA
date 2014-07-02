@@ -119,6 +119,14 @@ Glossary
       instances have equal probability of occurring, then average case
       must be calculated using a weighted average.
 
+   B$^+$-tree
+      The most commonly implemented form of B-tree.
+      A B$^+$-tree does not store data at the internal nodes, but
+      instead only stores :term:`key` values as direction finders for
+      the purpose of searching through the tree.
+      Only the leaf nodes store a reference to the actual data
+      records.
+
    B-tree
       A method for :term:`indexing` a large collection of records.
       A B-tree is a tree balanced typically with high branching factor
@@ -128,6 +136,8 @@ Glossary
       (so some multiple of the disk :term:`sector` size). This makes
       it easy to find a record key stored in the tree with few disk
       fetches.
+      The most commonly implemented variant of the B-tree is the
+      :term:`B$^+$-tree`.
 
    bag
       In set notation, a bag is a collection of elements with no order
@@ -195,6 +205,11 @@ Glossary
       bin based on its value. The bins are then gathered up in order
       to sort the list. It is generally not practical in this form,
       but it is the conceptual underpinning of the :term:`radix sort`.
+
+   block
+      A unit of storage, usually referring to storage on a
+      :term:`disk drive` or other :term:`peripheral storage` device.
+      A block is the basic unit of I/O for that device.
 
    Boolean variable
       A variable that takes on one of the two values ``True`` and
@@ -275,6 +290,13 @@ Glossary
    class
       In an object-oriented language, an ADT and its implementation
       together make up a class. 
+
+   client
+      The user of a service.
+      For example, the object or part of the program that calls a
+      :term:`memory manager` class is the client of that memory
+      manager.
+      Likewise the class or code that calls a :term:`buffer pool`.
 
    clique
       In :term:`graph` terminology, a clique is any :term:`subset`
@@ -401,11 +423,12 @@ Glossary
    container class
       A :term:`data structure` that stores a collection of
       :term:`records <record>`.
-      Typical examples are arrays, search trees, and hash tables.
+      Typical examples are arrays,
+      :term:`search trees <search tree>`, and
+      :term:`hash tables <hash table>`.
 
    cost
-      The :dfn:`cost` of a solution is the
-      amount of resources that the solution consumes.
+      The amount of resources that the solution consumes.
 
    current position
       A property of some list ADTs, where there is maintained a
@@ -565,6 +588,9 @@ Glossary
       node contains access pointers to both the previous element and
       the next element on the list.
 
+   DSA
+      Abbreviation for Data Structures and Algorithms.
+
    dynamic allocation
       The act of creating an object from :term:`free store`.
       In C++, Java, and JavaScript, this is done using the ``new``
@@ -666,17 +692,22 @@ Glossary
       A growth rate function where :math:`n` (the input size) appears
       in the exponent. For example, :math:`2^n`.
 
+   external sort
+      A sorting algorithm that is applied to data stored in
+      :term:`peripheral storage` such as on a :term:`disk drive`.
+
    factorial
       The factorial function is defined as :math:`f(n) = n f(n-1)` for
       :math:`n > 0`.
 
    file structure
-      The organization of data on peripheral storage, such
-      as a disk drive or CD.
+      The organization of data on :term:`peripheral storage`,
+      such as a :term:`disk drive` or DVD drive.
 
    FIND
       One half of the :term:`UNION/FIND` algorithm for managing
-      :term:`disjoint sets`. It is the process of moving upwards in a
+      :term:`disjoint sets`.
+      It is the process of moving upwards in a
       tree to find the tree's root.
 
    floor
@@ -760,7 +791,7 @@ Glossary
       :to-term: vertices :label: contains
       :to-term: adjacency matrix :label: implemented by
       :to-term: adjacency list :label: implemented by
-      :to-term: minimal cost spanning tree :label: problems
+      :to-term: minimal-cost spanning tree :label: problems
       :to-term: traversal :label: problems
       :to-term: topological sort :label: problems
       :to-term: shortest paths :label: problems
@@ -793,6 +824,17 @@ Glossary
       input :math:`I`?
       This problem has been proved impossible to solve in the general
       case.
+
+   handle
+      When using a :term:`memory manager` to store data, the
+      :term:`client` will pass data to be stored
+      (the :term:`message`) to the memory manager, and the memory
+      manager will return to the client a handle.
+      The handle encodes the necessary information that the memory
+      manager can later use to recover and return the message to the
+      client.
+      This is typically the location and length of the message within
+      the :term:`memory pool`.
 
    harmonic series
       The sum of reciprocals from 1 to :math:`n` is called the
@@ -885,6 +927,13 @@ Glossary
    indexing
       The process of associating a :term:`key` with the location
       of a corresponding data record.
+      The two key points to the concept of an index is the association
+      of key with record, and the fact that the index does not
+      actually store the record itself but rather it stores a
+      reference to the record.
+      In this way, a collection of records can be supported by
+      multiple indices, typically a separate index for each key field
+      in the record.
 
    induction hypothesis
       The key assumption used in a :term:`proof by induction`,
@@ -980,6 +1029,9 @@ Glossary
       During processing, it makes use of the :term:`UNION/FIND`
       process to efficiently determine of two vertices are within the
       same :term:`subgraph`.
+
+   LFU
+      Abbreviation for :term:`least frequently used`.
 
    LRU
       Abbreviation for :term:`least recently used`.
@@ -1118,6 +1170,40 @@ Glossary
       :term:`garbage collection`, repeated memory leaks will evenually
       cause the program to terminate.
 
+   memory manager
+      Functionality for managing a :term:`memory pool`.
+      Typically, the memory pool is viewed as an array of bytes by the
+      memory manager.
+      The :term:`client` of the memory manager will request a
+      collection of (adjacent) bytes of some size, and release the
+      bytes for reuse when the space is no longer needed.
+      The memory manager should not know anything about the
+      interpretation of the data that is being stored by the client
+      into the memory pool.
+      Depending on the precise implementation, the client might pass
+      in the data to be stored, in which case the memory manager will
+      deal with the actual copy of the data into the memory pool.
+      The memory manager will return to the client a :term:`handle`
+      that can later be used by the client to retrieve the data.
+
+   memory pool
+      Memory (usually in :term:`RAM` but possibly on disk or
+      :term:`peripheral storage` device) that is logically viewed as
+      an array of memory positions.
+      A memory pool is usually managed by a :term:`memory manager`.
+
+   message
+      In a :term:`memory manager` implementation (particularly a
+      memory manager implemented with a "message passing" style of
+      interface), the message is the data that the :term:`client` of
+      the memory manager wishes to have stored in the
+      :term:`memory pool`.
+      The memory manager will reply to the client by returning a
+      :term:`handle` that defines the location and size of the message
+      as stored in the memory pool.
+      The client can later recover the message by passing the handle
+      back to the memory manager.
+
    metaphor
       Humans deal with complexity by assigning a label to an assembly of
       objects or concepts and then manipulating the label in place of the
@@ -1130,7 +1216,7 @@ Glossary
 
    MCST
    MST
-      Abbreviation for :term:`minimal cost spanning tree`.
+      Abbreviation for :term:`minimal-cost spanning tree`.
 
    min heap
       A :term:`heap` where every :term:`node` has a :term:`key` value
@@ -1138,7 +1224,7 @@ Glossary
       As a consequence, the node with minimum key value is
       at the :term:`root`.
 
-   minimal cost spanning tree
+   minimal-cost spanning tree
       :to-term: Kruskal's algorithm :label: algorithms
       :to-term: Prim's algorithm :label: algorithms
 
@@ -1255,6 +1341,11 @@ Glossary
       forms a path of length :math:`n-1` if there exist edges from
       :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
 
+   peripheral storage
+      Any storage device that is not part of the core processing
+      of the computer (that is, :term:`RAM`).
+      A typical example is a :term:`disk drive`.
+
    permutation
       A permutation of a sequence :math:`\mathbf{S}`
       is the :term:`elements <element>` of :math:`\mathbf{S}` arranged
@@ -1275,7 +1366,8 @@ Glossary
       with greater values than the pivot.
 
    pop
-      A specialized term used to indicate removing an element from a stack.
+      A specialized term used to indicate removing an :term:`element`
+      from a :term:`stack`. 
 
    poset
       Another name for a :term:`partially ordered set`.
@@ -1361,7 +1453,8 @@ Glossary
       :math:`(\mathrm{not}\ Q) \Rightarrow (\mathrm{not}\ P)`.
 
    push
-      A specialized term used to indicate inserting an element onto a stack.
+      A specialized term used to indicate inserting an :term:`element`
+      onto a :term:`stack`.
 
    quadratic growth rate
       A growth rate function of the form :math:`cn^2` where :math:`n`
@@ -1484,6 +1577,12 @@ Glossary
       when searching. For example, in a database of customer records,
       we might want to search by name.
       In this case the name field is used as the search key.
+
+   search tree
+      A :term:`tree` data structure that makes search by :term:`key`
+      value more efficient.
+      A type of :term:`container`, it is common to implement an
+      :term:`index <indexing>` using a search tree.
 
    secondary key
       A key field in a record such as salary, where a particular key

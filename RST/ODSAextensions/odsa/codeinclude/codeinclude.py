@@ -27,6 +27,9 @@ import codecs
 sys.path.append(os.path.abspath('./source'))
 import conf
 
+def print_err(err_msg):
+  sys.stderr.writelines('CODEINCLUDE ERROR: %s\n' % err_msg)
+
 
 def setup(app):
   app.add_directive('codeinclude',codeinclude)
@@ -132,8 +135,9 @@ class codeinclude(Directive):
 
       # Print an error message if no file is found for any language
       if not file_found:
+        print_err('File %r not found for any language' % filename)
         return [document.reporter.warning(
-          'Include file %r not found for any language' % filename, line=self.lineno)]
+          'File %r not found for any language' % filename, line=self.lineno)]
 
       # Append the rest of the HTML for the header of the tabbed container and the JavaScript necessary to create the tabs
       if len(html_strs) > 0:
@@ -172,10 +176,14 @@ class codeinclude(Directive):
       lines = f.readlines()
       f.close()
     except (IOError, OSError):
+      print_err('Failed to read %r' % filename)
       return [document.reporter.warning(
         'Include file %r not found or reading it failed' % filename,
         line=self.lineno)]
     except UnicodeError:
+      print_err('Encoding %r used for reading included file %r seems to '
+        'be wrong, try giving an :encoding: option' %
+        (encoding, filename))
       return [document.reporter.warning(
         'Encoding %r used for reading included file %r seems to '
         'be wrong, try giving an :encoding: option' %
@@ -261,8 +269,10 @@ class codeinclude(Directive):
             res.append(line)
 
         if tags_counter == 0:
+          print_err('Tag "%s" not found in %s. Make sure the tag in your module file matches the delimiter in the source code file.' % (tag, filename))
           return [document.reporter.warning('Tag "%s" not found in %s. Make sure the tag in your module file matches the delimiter in the source code file.' % (tag, filename), line=self.lineno)]
         elif tags_counter == 1:
+          print_err('Begin or end tag (%s) missing from %s. Please verify your source code file.' % (tag, filename))
           return [document.reporter.warning('Begin or end tag (%s) missing from %s. Please verify your source code file.' % (tag, filename), line=self.lineno)]
 
     lines = res

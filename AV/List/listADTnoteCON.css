@@ -1,7 +1,3 @@
-#listADTnoteCON { 
-  height: 200px;
-}
-
 #listADTnoteCON .jsavnode {
   border: 0 solid;
   background-color: #eed;
@@ -13,4 +9,8 @@
 
 #listADTnoteCON .ssAV .jsavline{
   height: 30px;
+}
+
+#listADTnoteCON { 
+  height: 190px;
 }

@@ -16,15 +16,11 @@ If your program needs to store a few things |---| numbers,
 payroll records, or job descriptions for example |---| the simplest
 and most effective approach might be to put them in a list.
 Only when you have to organize and search through a large number of
-things do more sophisticated data structures like search trees become
-necessary.
-(We will see how to organize and search through medium amounts of
-data when we study :chap:`Binary Trees`,
-:chap:`Sorting`, and :chap:`Searching`.
-How to deal with large amounts of data is covered in the chapters on
-:chap:`File Processing` through :chap:`Indexing`.)
+things do more sophisticated data structures like
+:term:`search trees <search tree>`
+become necessary.
 Many applications don't require any form of search,
-and they do not require that any ordering be placed on the objects
+and they do not require that an ordering be placed on the objects
 being stored.
 Some applications require that actions be performed in a strict
 chronological order, 
@@ -48,10 +44,10 @@ goals of the chapter are to:
    analysis works, without the complications that arise when analyzing
    more sophisticated algorithms and data structures.
 
-We begin by defining an ADT for
-lists in Module :numref:`<ListADT>`.
-Two implementations for the list ADT |---| the array-based
-list and the linked list |---| are covered in
+We begin by defining an :ref:`ADT for lists <ListADT>`.
+Two implementations for the list ADT |---| the
+:ref:`array-based list <ListArray>` and the
+:ref:`linked list <ListLinked>` |---| are covered in
 detail and their relative merits discussed.
-Modules :numref:`<Stack>` and :numref:`<Queue>` cover stacks and
-queues, respectively.
+The chapter finishes with implementations for
+:ref:`stacks <Stack>` and :ref:`queues <Queue>`.
