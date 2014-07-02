@@ -226,7 +226,7 @@ program, you would have no hope of understanding or implementing it.
    Variable length records might use a
    :ref:`memory manager <memory manager> <MemmanIntro>` to find an
    appropriate location within the disk file to place the record.
-   Multiple :ref`index structures <IndexIntro>`
+   Multiple :ref:`index structures <IndexIntro>`
    will typically be used to access records in various ways.
    Thus, we have a chain of classes, each with its own responsibilities
    and access privileges.

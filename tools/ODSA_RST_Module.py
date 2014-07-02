@@ -277,6 +277,7 @@ class ODSA_RST_Module:
         if ':ref:' in line:
           #lower case modules names
           lower_listed_modules = [x.lower() for x in config.listed_modules]
+          line = mod_data[i].strip()
           rel_tokens = re.split(':ref:|`', line)
           if len(rel_tokens) == 4:
             rel_labels = rel_tokens[2]  
@@ -295,7 +296,7 @@ class ODSA_RST_Module:
                 line = line.replace('<' + rel_tags[3]  + '>','')
               line = ' ' * start_space + line + '\n'
               mod_data[i] = line 
-
+          line = mod_data[i].strip().lower()
       
         if ':requires:' in mod_data[i]:
           # Parse the list of prerequisite topics from the module
