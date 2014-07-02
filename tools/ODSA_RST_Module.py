@@ -258,6 +258,13 @@ class ODSA_RST_Module:
       # Alter the contents of the module based on the config file
       i = 0
       while i < len(mod_data):
+        start_space = 0
+        for s in mod_data[i]:
+          if s.isspace():
+            start_space += 1
+          else:
+             break
+
         line = mod_data[i].strip().lower()
 
         # Determine the type of directive
@@ -276,7 +283,7 @@ class ODSA_RST_Module:
             rel_tags = re.split('<|>', rel_labels)
             #We encountered the alternate :ref: syntax
             if len(rel_tags) == 5:
-              if rel_tags[3].strip() in lower_listed_modules:
+              if rel_tags[3].strip().lower() in lower_listed_modules:
                 #module is present swith to standard :rel: syntax
                 line = line.replace('<'+ rel_tags[1] + '>', '')
               else:
@@ -286,9 +293,10 @@ class ODSA_RST_Module:
                 line = line.replace(':ref:','<anchor-text>' + tmpStr.strip() + ':' + rel_tags[1].strip()  + '</anchor-text> :term:')
                 line = line.replace('<' + rel_tags[1] + '> ', rel_tags[1].strip())
                 line = line.replace('<' + rel_tags[3]  + '>','')
-              mod_data[i] = line
+              line = ' ' * start_space + line + '\n'
+              mod_data[i] = line 
 
-
+      
         if ':requires:' in mod_data[i]:
           # Parse the list of prerequisite topics from the module
           requires = [req.strip() for req in line.replace(':requires:', '').split(';')]
