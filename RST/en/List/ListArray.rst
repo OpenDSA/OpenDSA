@@ -11,7 +11,9 @@
    
 .. odsalink:: AV/List/alistVarsCON.css
 .. odsalink:: AV/List/alistInsertCON.css
-.. odsalink:: AV/List/listArrayCON.css
+.. odsalink:: AV/List/alistAppendCON.css
+.. odsalink:: AV/List/alistRemoveCON.css
+.. odsalink:: AV/List/alistCON.css
 
 Array-Based List Implementation
 ===============================
@@ -36,7 +38,7 @@ and ``remove`` methods must maintain this property.
 .. inlineav:: alistInsertCON ss
    :output: show
 
-.. inlineav:: AlistAppendCON ss
+.. inlineav:: alistAppendCON ss
    :output: show
 
 Removing an element from the head of the list is
@@ -46,7 +48,7 @@ If we want to remove the element at position :math:`i`, then
 :math:`n - i - 1` elements must shift toward the head, as shown in the
 following slideshow. 
 
-.. inlineav:: AlistRemoveCON ss
+.. inlineav:: alistRemoveCON ss
    :output: show
 
 In the average case, insertion or removal each requires moving half
@@ -71,4 +73,5 @@ Insertion and Deletion work.
 .. odsascript:: AV/List/alistVarsCON.js
 .. odsascript:: AV/List/alistIntroCON.js
 .. odsascript:: AV/List/alistInsertCON.js
-.. odsascript:: AV/List/listArrayCON.js
+.. odsascript:: AV/List/alistAppendCON.js
+.. odsascript:: AV/List/alistRemoveCON.js
