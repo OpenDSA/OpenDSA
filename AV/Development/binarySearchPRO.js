@@ -28,7 +28,7 @@
     //generate random array with ascending values
     var randomVal = 0;
     for (var i = 0; i < arraySize; i++) {
-      randomVal += Math.floor(Math.random() * 10);
+      randomVal += Math.floor(JSAV.utils.rand.random() * 10);
       initialArray[i] = randomVal;
     }
 
