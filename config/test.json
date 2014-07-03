@@ -77,19 +77,19 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "AlistRemoveCON": {
+          "alistRemoveCON": {
             "long_name": "Array-based List Remove",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listArrayInsertion": {
+          "alistInsertPRO": {
             "long_name": "Array-based List Insert Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listArrayDeletion": {
+          "alistDeletePRO": {
             "long_name": "Array-based List Delete Exercise",
             "required": true,
             "points": 1,

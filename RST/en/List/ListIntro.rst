@@ -30,7 +30,8 @@ arrived.
 For all these situations, a simple list structure is appropriate.
 
 This chapter describes representations both for lists and for
-two important list-like structures called the stack and the queue.
+two important list-like structures called the :term:`stack` and the
+:term:`queue`.
 Along with presenting these fundamental data structures, the other
 goals of the chapter are to:
 
