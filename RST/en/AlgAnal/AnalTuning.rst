@@ -188,8 +188,8 @@ A good example of this appears in the following figure.
    :alt: Hashing analysis plot
 
 This figure shows the cost for inserting or deleting a record from a
-:ref:`hash table <HashIntro>` under two different assumptions for the
-policy used to find a free slot in the table.
+:ref:`hash table <hash table> <HashIntro>` under two different
+assumptions for the policy used to find a free slot in the table.
 The :math:`y` axes is the cost in number of hash table slots
 evaluated, and the :math:`x` axes is the percentage of slots in the
 table that are full.

@@ -48,7 +48,8 @@ goals of the chapter are to:
 We begin by defining an :ref:`ADT for lists <ListADT>`.
 Two implementations for the list ADT |---| the
 :ref:`array-based list <ListArray>` and the
-:ref:`linked list <ListLinked>` |---| are covered in
+:ref:`linked list <linked list> <ListLinked>` |---| are covered in
 detail and their relative merits discussed.
 The chapter finishes with implementations for
-:ref:`stacks <Stack>` and :ref:`queues <Queue>`.
+:ref:`stacks <stack> <stack>` and
+:ref:`queues <queue> <Queue>`.

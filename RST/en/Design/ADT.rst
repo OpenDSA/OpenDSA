@@ -226,8 +226,9 @@ program, you would have no hope of understanding or implementing it.
    Variable length records might use a
    :ref:`memory manager <memory manager> <MemmanIntro>` to find an
    appropriate location within the disk file to place the record.
-   Multiple :ref:`index structures <IndexIntro>`
-   will typically be used to access records in various ways.
+   Multiple :ref:`index structures <indexing> <IndexIntro>`
+   will typically be used to support access to a collection of records
+   using multiple :term:`search keys <search key>`.
    Thus, we have a chain of classes, each with its own responsibilities
    and access privileges.
    A database query from a user is implemented by searching an index

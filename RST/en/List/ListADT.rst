@@ -182,7 +182,7 @@ Implementing Lists
 
 There are two standard approaches to implementing lists, the
 :ref:`array-based list <ListArray>`, and the
-:ref:`linked list <ListLinked>`.
+:ref:`linked list <linked list> <ListLinked>`.
 
 .. odsascript:: AV/List/listADTposCON.js
 .. odsascript:: AV/List/listADTnoteCON.js

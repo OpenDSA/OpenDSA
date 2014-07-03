@@ -460,8 +460,10 @@ Glossary
       A theoretical construct for modeling the behavior of algorithms.
       Each point at which the algorithm makes a decision (such as an
       if statement) is modeled by a branch in the tree that represents
-      the algorithms behavior. Decision trees can be used in lower
-      bounds proofs, such as the proof that sorting requires
+      the algorithms behavior.
+      Decision trees can be used in
+      :term:`lower bounds proofs <lower bounds proof>`,
+      such as the proof that sorting requires
       :math:`\Omega(n \log n)` comparisons in the worst case.
 
    degree
@@ -699,6 +701,22 @@ Glossary
    factorial
       The factorial function is defined as :math:`f(n) = n f(n-1)` for
       :math:`n > 0`.
+
+   file processing
+      The domain with Computer Science that deals with processing data
+      stored on a :term:`disk drive` (in a file), or more broadly,
+      dealing with data stored on any :term:`peripheral storage`
+      device.
+      Two fundamental properties make dealing with data on a
+      peripheral device different from dealing with data in main
+      memory:
+      (1) Reading/writing data on a peripheral storage device is far
+      slower than reading/writing data to main memory (for example, a
+      typical disk drive is about a million times slower than
+      :term:`RAM`).
+      (2) All I/O to a peripheral device is typically in terms of a
+      :term:`block` of data (for example, nearly all disk drives do
+      all I/O in terms of blocks of 512 bytes).
 
    file structure
       The organization of data on :term:`peripheral storage`,
@@ -1136,6 +1154,20 @@ Glossary
       function that we know grows no faster than all but a
       constant number of inputs. It could be a gross under-estimate of
       the truth.
+
+   lower bounds proof
+      A proof regarding the lower bound, with this term most typically
+      referring to the lower bound for any possible algorithm to solve
+      a given :term:`problem`.
+      Many problems have a simple lower bound based on the concept
+      that the minimum amount of processing is related to looking at
+      all of the problem's input.
+      However, some problems have a higher lower bound than that.
+      For example, the lower bound for the problem of sorting
+      (:math:`\Omega(n \log n)`) is greater than the input size to
+      sorting (:math:`n`).
+      Proving such "non-trivial" lower bounds for problems is
+      notoriously difficult.
 
    map
       A :term:`data structure` that relates a :term:`key` to a
@@ -1705,6 +1737,16 @@ Glossary
    singly linked list
       A :term:`linked list` implementation variant where each list
       node contains access an pointer only to the next element in the list.
+
+   sorting lower bound
+      The lower bound for the :term:`problem` of
+      :term:sorting <sorting problem>` is :math:`\Omega(n \log n)`.
+      This is traditionally proved using a :term:`decision tree` model
+      for sorting algorithms, and recognizing that the minimum depth
+      of the decision tree for any sorting algorithm is
+      :math:`\Omega(n \log n)` since there are :math:`n!` permutations
+      of the :math:`n` input records to distinguish between during the
+      sorting process. 
 
    sorting problem
       Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`

@@ -85,7 +85,7 @@ We will make use of the algorithm analysis simplifying rules:
    :math:`c_3`.
    Because the inner ``for`` loop is executed :math:`i` times,
    by simplifying rule (4) it has cost :math:`c_3i`.
-   The outer ``for``loop is executed :math:`n` times, but each time
+   The outer ``for`` loop is executed :math:`n` times, but each time
    the cost of the inner loop is different because it costs
    :math:`c_3i` with :math:`i` changing each time.
    You should see that for the first execution of the outer loop,
@@ -183,8 +183,8 @@ To perform an average-case analysis for such programs,
 we cannot simply count the cost of the ``if``
 statement as being the cost of the more expensive branch.
 In such situations, the technique of
-:ref:`amortized analysis <AmortAnal>` can come to the
-rescue.
+:ref:`amortized analysis <amortized analysis> <AmortAnal>` can come to
+the rescue.
 
 Determining the execution time of a recursive
 subroutine can be difficult.

@@ -145,7 +145,7 @@ an hour!
 Thus, an exponential growth rate is radically different than the
 other growth rates shown in the table.
 The significance of this difference is an important topic in
-:ref:`computational complexity theory <LimComp>`.
+:ref:`computational complexity theory <computational complexity theory> <LimComp>`.
 
 Instead of buying a faster computer,
 consider what happens if you replace an algorithm whose
