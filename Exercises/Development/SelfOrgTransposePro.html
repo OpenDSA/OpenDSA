@@ -1,6 +1,6 @@
 <!--
-Self Organizing Lists Move to Front mini-proficiency exercise.
-Written by Junyang Chen and Cliff Shaffer
+Self Organizing Lists Transpose mini-proficiency exercise.
+Written by Pavel Hovhannisyan and Cliff Shaffer
 -->
 
 <!DOCTYPE html>
@@ -79,8 +79,8 @@ Written by Junyang Chen and Cliff Shaffer
     if(obj1 == obj2){ return;}
     var fx = $('#' + obj1.id()).position().left + 37 + 2;
     var tx = $('#' + obj2.id()).position().left  +2;
-    var fy = $('#' + obj1.id()).position().top + 15 + 1 + 40;
-    var ty = $('#' + obj2.id()).position().top + 15 +1 + 40;
+    var fy = $('#' + obj1.id()).position().top + 15 + 1 + 54;
+    var ty = $('#' + obj2.id()).position().top + 15 +1 + 54;
     var fx1 = fx, fy1 = fy, tx1 = tx, ty1 = ty;
 
     var disx = (fx - tx - 22) > 0 ? 1 : (fx - tx - 22) == 0 ? 0 : -1;
@@ -174,10 +174,7 @@ Written by Junyang Chen and Cliff Shaffer
         selected_node = this;
         status = 1;
       }else if(status == 1){
-       // this.value(selected_node.value());
-
         selected_node.removeClass('bgColor');
-       // jsav.effects.copyValue(selected_node, this);
         selected_node = null;
         status = 0;
       }else if(status == 2){
@@ -192,82 +189,6 @@ Written by Junyang Chen and Cliff Shaffer
       userInput = true;
     }
   }
-
-
-  /////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-/*
-  function f_moveUp() {
-    if (selected_node){
-      selected_node.edgeToNext().hide();
-      var prev = findSelectedPrev(selected_node);
-      prev.edgeToNext().hide();
-      var xyPosition = selected_node.position().top - 30;
-      selected_node.css({
-        top: xyPosition,
-      });
-    }  
-  }
-
-    function f_moveDown() {
-      if (selected_node){
-        selected_node.edgeToNext().hide();
-        var prev = findSelectedPrev(selected_node);
-        prev.edgeToNext().hide();
-        var xyPosition = selected_node.position().top + 30;
-        selected_node.css({
-          top: xyPosition,
-        });
-      }
-    }
-
-
-      function f_moveRight() {
-        if (selected_node){
-          selected_node.edgeToNext().hide();
-          var prev = findSelectedPrev(selected_node);
-          prev.edgeToNext().hide();
-
-          var xyPosition = selected_node.position().left + 37;
-          selected_node.css({
-            left: xyPosition,
-          });
-        }
-      }
-
-
-      function f_moveLeft() {
-        if (selected_node){
-          selected_node.edgeToNext().hide();
-          var prev = findSelectedPrev(selected_node);
-          prev.edgeToNext().hide();
-
-          var xyPosition = selected_node.position().left - 37;
-          selected_node.css({
-            left: xyPosition,
-          });
-        }
-      }
-
-
-//finds the previous node
-function findSelectedPrev(selected){
-    var curr = exe_head;
-    var prev = exe_head;
-
-    if (curr.exe_next && curr!=selected){
-      curr = curr.exe_next;
-    }
-
-    while(curr.exe_next && curr!=selected){
-        curr = curr.exe_next;
-        prev = prev.exe_next;
-    }
-    return prev;
-}
-*/
-///////////////////////////////////////////////////
-////////////////////////////////////////////////////
 
   function addTail(node){
     if(node.exe_tail){
@@ -358,12 +279,6 @@ function findSelectedPrev(selected){
 
       // Set up handler for reset button
     $("#reset").click(function () { f_reset(); });
-    /*
-    $("#MoveUp").click(function () { f_moveUp(); });
-    $("#MoveDown").click(function () { f_moveDown(); });
-    $("#MoveLeft").click(function () { f_moveLeft(); });
-    $("#MoveRight").click(function () { f_moveRight(); });
-    */
   }
 
   //function that swaps two elements on the array
