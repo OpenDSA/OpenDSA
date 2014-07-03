@@ -55,6 +55,9 @@ jshint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
+good: min
+	python $(CONFIG_SCRIPT) config/good.json
+
 RecurTutor: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json
 

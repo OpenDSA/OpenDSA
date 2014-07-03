@@ -108,7 +108,7 @@ Glossary
 
    asymptotic analysis
       A method for estimating the efficiency of an algorithm or
-      computer program. :dfn:`Asymptotic analysis` also gives a way to
+      computer program. Asymptotic analysis also gives a way to
       define the inherent difficulty of a :term:`problem`.
       We frequently use the term :term:`algorithm analysis` to mean
       the same thing.
@@ -851,6 +851,10 @@ Glossary
    hash system
       The implementation for search based on hash lookup in a
       :term:`hash table`.
+      The :term:`search key` is processed by a
+      :term:`hash function`, which returns a position in a
+      :term:`hash table`, which hopefully is the correct position in
+      which to find the record corresponding to the search key.
 
    hash table
       The data structure (usually an array) that stores data
@@ -1076,6 +1080,19 @@ Glossary
       For input size :math:`n`, a growth rate of :math:`cn` (for
       :math:`c` any positive constant). In other words, the cost of
       the associated function is linear on the input size.
+
+   linear index
+      A form of :term:`indexing` that stores
+      :term:`key-record pairs <key-record pair>` in a sorted array.
+      Typically this is used for an index to a large collection of
+      records stored on disk, where the linear index itself might be
+      on disk or in main memory.
+      It allows for efficient search (including for
+      :term:`range queries <range query>`, but it is not good for
+      inserting and deleting entries in the array.
+      Therefore, it is an ideal indexing structure when the system
+      needs to do range queries but the collection of records never
+      changes once the linear index has been created.
 
    linear order
       Another term for :term:`total order`.
@@ -1378,25 +1395,27 @@ Glossary
       by position.
 
    postorder traversal
-      In a binary tree, a :term:`traversal` that first
-      recursively visits the left child, then recursively
-      visits the right child, and then visits the root.
+      In a :term:`binary tree`, a :term:`traversal` that first
+      :term:`recursively <recursion>` visits the left :term:`child`,
+      then recursively visits the right child, and then visits the
+      :term:`root`.
 
    powerset
-      For a set :math:`\mathbf{S}`, the power set is the set of all
-      possible :term:`subsets <subset>` for :math:`\mathbf{S}`.
+      For a :term:`set` :math:`\mathbf{S}`, the power set is the set
+      of all possible :term:`subsets <subset>` for :math:`\mathbf{S}`.
 
    preorder traversal
-      In a binary tree, a :term:`traversal` that first visits the
-      root, then recursively visits the left child, then recursively
-      visits the right child.
+      In a :term:`binary tree`, a :term:`traversal` that first visits
+      the :term:`root`, then :term:`recursively <recursion>` visits
+      the left :term:`child`, then recursively visits the right
+      child.
 
    primary key index
       Relates each :term:`primary key` value with a pointer to the
       actual record on disk.
 
    primary key
-      A unique identifier for a record.
+      A unique identifier for a :term:`record`.
 
    primary storage
       The faster but more expensive memory in a computer, most often
@@ -1538,6 +1557,13 @@ Glossary
       its work.
       See :term:`recursion`.
 
+   recursive call
+      Within a :term:`recursive function`, it is a call that the
+      function makes to itself.
+
+   recursive function
+      A function that includes a :term:`recursive call`.
+
    reduction
       In algorithm analysis, the process of deriving asymptotic bounds
       for one :term:`problem` from the asymptotic bounds of another.
@@ -1665,6 +1691,16 @@ Glossary
 
    simple type
       A type whose values contain no subparts. An example is the integers.
+
+   simulating recursion
+      If a programming language does not support recursion, or if you
+      want to implement the effects of recursion more efficiently, you
+      can use a stack to maintain the collection of subproblems that
+      would be waiting for completion during the recursive process.
+      Using a loop, whenever a recursive call would have been made,
+      simply add the necessary program state to the stack.
+      When a return would have been made from the recursive call, pop
+      the previous program state off of the stack.
 
    singly linked list
       A :term:`linked list` implementation variant where each list

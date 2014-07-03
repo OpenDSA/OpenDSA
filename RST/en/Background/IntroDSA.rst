@@ -120,10 +120,10 @@ an organization or structuring for a collection of data items.
 A sorted list of integers stored in an array is an
 example of such a structuring.
 These ideas are explored further in a discussion of
-:ref:`Abstract Data Types <ADT>`.
+:ref:`Abstract Data Types <abstract data type> <ADT>`.
 
-
-Given sufficient space to store a collection of :term:`data items`,
+Given sufficient space to store a collection of
+:term:`data items <data item>`,
 it is always possible to search for specified items within the
 collection, print or otherwise process the data items in any desired
 order, or modify the value of any particular data item.
@@ -286,7 +286,7 @@ you determine the best data structure for the task.
    Records are accessible by unique account number (sometimes called
    an :term:`exact-match query`).
    One data structure that meets these requirements is the
-   :ref:`hash table <HashIntro>`.
+   :ref:`hash table <hash table> <HashIntro>`.
    Hash tables allow for extremely fast exact-match search.
    A record can be modified quickly when the modification does not
    affect its space requirements.
@@ -325,9 +325,10 @@ you determine the best data structure for the task.
    The hash table suggested in the previous example is inappropriate
    for implementing our city database, because it cannot perform
    efficient range queries.
-   The :ref:`B+-tree <BTree>` supports large databases,
+   The :ref:`B+-tree <B$^+$-tree> <BTree>` supports large databases,
    insertion and deletion of data records, and range queries.
-   However, a simple :ref:`linear index <LinearIndexing>` would be
+   However, a simple
+   :ref:`linear index <linear index> <LinearIndexing>` would be 
    more appropriate if the database is created once, and then never
    changed, such as an atlas distributed on a CD or accessed from a
    website.

@@ -32,9 +32,9 @@ Here are two typical uses.
 
 .. topic:: Example
 
-   Consider the :ref:`binary search <AnalProgram>` algorithm for
-   finding a given value within an array sorted by value from lowest
-   to highest.
+   Consider the :ref:`binary search <binary search> <AnalProgram>`
+   algorithm for finding a given value within an array sorted by value
+   from lowest to highest.
    Binary search first looks at the middle element
    and determines if the value being searched for is in the upper half
    or the lower half of the array.

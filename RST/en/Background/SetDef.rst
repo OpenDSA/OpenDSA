@@ -196,7 +196,7 @@ it is not reflexive.
 :math:`R` is an :term:`equivalence relation` on set :math:`\mathbf{S}`
 if it is reflexive, symmetric, and transitive.
 An equivalence relation can be used to partition a set into
-:term:`equivalence classes`.
+:term:`equivalence classes <equivalence class>`.
 If two elements :math:`a` and :math:`b` are equivalent to each other,
 we write :math:`a \equiv b`.
 A :term:`partition` of a set :math:`\mathbf{S}` is a collection of
@@ -204,10 +204,10 @@ subsets that are :term:`disjoint` from each other and whose union is
 :math:`\mathbf{S}`.
 An :term:`equivalence relation` on set :math:`\mathbf{S}` partitions
 the set into disjoint subsets whose elements are equivalent.
-The :ref:`UNION/FIND <UnionFind>` algorithm efficiently maintains
-equivalence classes on a set.
+The :ref:`UNION/FIND <UNION/FIND> <UnionFind>` algorithm efficiently
+maintains equivalence classes on a set.
 One application for such :term:`disjoint sets` 
-computing a :ref:`minimal cost spanning tree <MCST>`.
+computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
 
 .. topic:: Example
 
@@ -302,6 +302,7 @@ Notes
 -----
 
 .. [#] The object referred to here as a
-       bag is sometimes called a :ref:`multilist <Multilists>`.
+       bag is sometimes called a
+       :ref:`multilist <multilist> <Multilists>`.
        But, multilist is also refers to a list that may contain
        sublists.
