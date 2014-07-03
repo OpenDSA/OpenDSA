@@ -320,8 +320,11 @@ function findSelectedPrev(selected){
       jsavList.get(i).exe_next = jsavList.get(i).next();
       jsavList.get(i).exe_edgeToNext = jsavList.get(i).edgeToNext();
     }
-    jsavList.get(listSize - 1).exe_tail = jsav.g.line(34 + (listSize - 1)*74, 32 + 40,
-                            44 + (listSize - 1)*74, 1 + 40,{"opacity": 100,"stroke-width": 1});
+
+    jsavList.get(listSize - 1).exe_tail = jsav.g.line(34 + (listSize - 1)*74, 32 + 55,
+                            44 + (listSize - 1)*74, 1 + 55,{"opacity": 100,"stroke-width": 1});
+
+
 
     //JSAV array for insert animation
     jsavArr = jsav.ds.array([search_value], {indexed: false, center: false,left: 650, top: -70});
