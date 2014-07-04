@@ -13,6 +13,7 @@
     var pseudo = av.code(code);
     var arr = av.ds.array(arrValues, { indexed: true, layout: 'array',
                                        top: 12, left: 10 });
+
     var arrow1 = av.g.line(180, 3, 180, 28, {
           'arrow-end': 'classic-wide-long',
           'opacity': 100, 'stroke-width': 2 });

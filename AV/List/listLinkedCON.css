@@ -1,13 +1,13 @@
-    .jsavlist .jsavvalue { /* This will get the linked list cell values to center vertically */
-      height: 30px;
-    }
-
-#listLinkedNodeCON {
-  height: 100px;
+.jsavlist .jsavvalue { /* Make linked list cell values center vertically */
+  height: 30px;
 }
 
-#listLinkedInitCON {
-  height: 100px;
+#llistRepCON {
+  height: 60px;
+}
+
+#llistInitCON {
+  height: 300px;
 }
 
 #listLinkedHeaderTailerCON {
@@ -115,7 +115,3 @@
   width: 35px;
   text-align: center;
 }
-
-
-
-

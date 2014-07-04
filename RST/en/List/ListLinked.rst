@@ -14,27 +14,28 @@
 Linked Lists
 ============
 
-Besides the array-based list presented in
-Module :numref:`<ListArray>`,
-the other traditional approach to implementing lists makes use of
-pointers and is usually called a :term:`linked list`.
+In this module we present one of the two traditional implementations
+for lists, usually called a :term:`linked list`.
 The linked list uses :term:`dynamic memory allocation`,
 that is, it allocates memory for new list elements as needed.
+The following diagram illustrates the linked list concept.
+Here there are three :term:`nodes <node>` that
+are "linked" together.
+Each node had two boxes.
+The box on the right holds a link to the next node in the list.
+Notice that the rightmost node has a diagonal slash through its link
+box, signifying that there is no link coming out of this box.
 
 .. _LinkedListNodes:
 
-.. inlineav:: listLinkedNodeCON dgm
+.. inlineav:: llistRepCON dgm
    :align: center
-   
-   A linked list is made up of a series of objects, called the
-   :term:`nodes <node>` of the list. You can see that the nodes are
-   "linked" together.
 
 Because a list node is a distinct object (as opposed to simply a cell
 in an array), it is good practice to make a separate list node class.
-(We can also use the list node class for the linked implementations
-for the stack and queue data structures presented later in this
-chapter.)
+(We can also re-use the list node class to implement linked
+implementations for the :ref:`stack <stack> <Stack>` and
+:ref:`queue <queue> <Queue>` data structures.
 Here is an implementation for list nodes, called the ``Link`` class.
 Objects in the ``Link`` class contain an ``element`` field to
 store the element value, and a ``next`` field to store a pointer to
@@ -86,7 +87,7 @@ value.
 
 .. _LinkedListInit:
 
-.. inlineav:: listLinkedInitCON dgm
+.. inlineav:: llistInitCON dgm
    :align: center
 
    Initial conditions for the linked list, with header and trailer
@@ -144,3 +145,5 @@ Implementations for the remaining operations each require
 .. avembed:: Exercises/List/LstLnkdSumm.html ka
 
 .. odsascript:: AV/List/listLinkedCON.js
+.. odsascript:: AV/List/llistRepCON.js
+.. odsascript:: AV/List/llistInitCON.js

@@ -26,8 +26,8 @@ function setPointer(name, node, opt) {
 // JSAV extension
 (function ($) {
   JSAV._types.ds.ListNode.prototype.odsa_addTail = function (opts) {
-    var fx = $('#' + this.id()).position().left + this.container.position().left + 33;
-    var fy = $('#' + this.id()).position().top + this.container.position().top + 32;
+    var fx = $('#' + this.id()).position().left + this.container.position().left + 34;
+    var fy = $('#' + this.id()).position().top + this.container.position().top + 47;
     var options = opts || {};
 
     if (options.left) {
@@ -58,63 +58,11 @@ function setPointer(name, node, opt) {
     if (options.visible === 'undefined') {
       options.visible = 100;
     }
-    return this.jsav.g.line(fx - 15, fy - 5, fx - 15, fy + 35, {
+    return this.jsav.g.line(fx - 15, fy + 10, fx - 15, fy + 50, {
       'opacity': options.visible,
       'stroke-width': 1
     });
   };
-}(jQuery));
-
-// Diagram showing node concept
-(function ($) {
-  var jsav = new JSAV('listLinkedNodeCON', { 'animationMode': 'none' });
-  var l = jsav.ds.list({
-      'nodegap': 30,
-      'top': 50,
-      left: 350
-    });
-
-  // Relative offsets
-  var labelLeftMargin = 350;
-  var labelTopMargin = 10;
-
-  var nodeLabel = jsav.label('3 nodes, joined by links', {
-      before: l,
-      left: labelLeftMargin + 5,
-      top: labelTopMargin
-    });
-  l.addFirst('').addFirst('').addFirst('');
-  l.layout();
-}(jQuery));
-
-// Initial state of a linked list when using a header node
-(function ($) {
-  var jsav = new JSAV('listLinkedInitCON', { 'animationMode': 'none' });
-
-  // Relative offsets
-  var leftMargin = 367;
-  var topMargin = 50;
-
-  var l = jsav.ds.list({
-      'nodegap': 30,
-      'top': topMargin,
-      left: leftMargin
-    });
-  l.addFirst('null').addFirst('null');
-  l.layout();
-
-  // Head
-  var head = setPointer('head', l.get(0));
-
-  // Curr
-  var curr = setPointer('curr', l.get(1));
-  // Tail
-  var tail = setPointer('tail', l.get(1), 'right');
-  // Diagonal slash
-  var slash = l.get(1).odsa_addTail();
-  // Vertical bar
-  var bar = l.get(1).odsa_addVLine();
-  jsav.recorded();
 }(jQuery));
 
 // Bad representation version for linked list
