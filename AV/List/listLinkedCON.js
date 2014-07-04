@@ -1,21 +1,21 @@
-'use strict';
+"use strict";
 // Various functions and variables that will be used by all of the
 // following sections of the tutorial.
 
+// Helper function for setting pointer to the left
+function setPointerL(name, node) {
+  return node.jsav.pointer(name, node, { anchor: 'left top', myAnchor: 'right bottom', left: 15 });
+}
+
+// Helper function for setting pointer to the right
+function setPointerR(name, node) {
+  return node.jsav.pointer(name, node, { anchor: 'right top', myAnchor: 'left bottom', left: -10 });
+}
+
 // Helper function for seting pointer
 function setPointer(name, node, opt) {
-  var pointerRight = {
-      anchor: 'right top',
-      myAnchor: 'left bottom',
-      left: -10,
-      top: -20
-    };
-  var pointerLeft = {
-      anchor: 'left top',
-      myAnchor: 'right bottom',
-      left: 15,
-      top: -20
-    };
+  var pointerRight = { anchor: 'right top', myAnchor: 'left bottom', left: -10 };
+  var pointerLeft = { anchor: 'left top', myAnchor: 'right bottom', left: 15 };
   if (opt === 'right') {
     return node.jsav.pointer(name, node, pointerRight);
   } else {
@@ -25,7 +25,7 @@ function setPointer(name, node, opt) {
 
 // JSAV extension
 (function ($) {
-  JSAV._types.ds.ListNode.prototype.odsa_addTail = function (opts) {
+  JSAV._types.ds.ListNode.prototype.addTail = function (opts) {
     var fx = $('#' + this.id()).position().left + this.container.position().left + 34;
     var fy = $('#' + this.id()).position().top + this.container.position().top + 47;
     var options = opts || {};
@@ -45,7 +45,7 @@ function setPointer(name, node, opt) {
     });
   };
 
-  JSAV._types.ds.ListNode.prototype.odsa_addVLine = function (opts) {
+  JSAV._types.ds.ListNode.prototype.addVLine = function (opts) {
     var fx = $('#' + this.id()).position().left + this.container.position().left;
     var fy = $('#' + this.id()).position().top + this.container.position().top;
     var options = opts || {};
@@ -63,181 +63,6 @@ function setPointer(name, node, opt) {
       'stroke-width': 1
     });
   };
-}(jQuery));
-
-// Bad representation version for linked list
-(function ($) {
-  var jsav = new JSAV('LlistBadCON');
-
-  // Relative offsets
-  var leftMargin = 257;
-  var topMargin = 50;
-
-  var l = jsav.ds.list({
-      'nodegap': 30,
-      'top': topMargin,
-      left: leftMargin
-    });
-  l.addFirst(15).addFirst(12).addFirst(10).addFirst(23).addFirst(20);
-  l.layout();
-
-  //head
-  var head = setPointer('head', l.get(0));
-  head.hide();
-  // curr
-  var curr = setPointer('curr', l.get(2));
-  curr.hide();
-  // tail
-  var tail = setPointer('tail', l.get(4));
-  tail.hide();
-  // Vertical line
-  var bar = l.get(2).odsa_addVLine();
-  //Diagonal slash at tail
-  var slash = l.get(4).odsa_addTail();
-  //Diagonal slash in step 3
-  var slash3 = l.get(3).odsa_addTail({ visible: 0 });
-
-  jsav.umsg('Here is a graphical depiction for a linked list storing five integers. The value stored in a pointer variable is indicated by an arrow "pointing" to something. A NULL pointer is indicated graphically by a diagonal slash through a pointer variable\'s box. The vertical line between the nodes labeled 23 and 10 indicates the current position (immediately to the right of this line).');
-  jsav.displayInit();
-
-  //step 2
-  head.show();
-  curr.show();
-  tail.show();
-  jsav.umsg('The list\'s first node is accessed from a pointer named head. To speed access to the end of the list, and to allow the append method to be performed in constant time, a pointer named tail is also kept to the last link of the list. The position of the current element is indicated by another pointer, named curr.');
-  jsav.step();
-
-  //step 3
-  slash.hide();
-  slash3.show();
-  l.remove(2);
-  l.layout();
-  jsav.umsg('Here is what we would like to have happen when we delete the current node (the one with value 10).');
-  jsav.step();
-  jsav.recorded();
-}(jQuery));
-
-// The reason why there is a problem with naive representation of linked list
-(function ($) {
-  var jsav = new JSAV('LlistBadReasonCON');
-
-  // Relative offsets
-  var leftMargin = 257;
-  var topMargin = 50;
-
-  // Linked list
-  var l = jsav.ds.list({
-      'nodegap': 30,
-      'top': topMargin,
-      left: leftMargin
-    });
-  l.addFirst(15).addFirst(12).addFirst(10).addFirst(23).addFirst(20);
-  l.get(1).highlight();
-  l.layout();
-
-  // Hidden JSAV array for animation
-  var arr = jsav.ds.array([''], {
-      indexed: false,
-      layout: 'array',
-      left: 0
-    }).hide();
-  // Head
-  var head = setPointer('head', l.get(0));
-  // Curr
-  var curr = setPointer('curr', l.get(2));
-  // Tail
-  var tail = setPointer('tail', l.get(4));
-
-  // Vertical line
-  var bar = l.get(2).odsa_addVLine();
-  // Another vertical line
-  var bar2 = l.get(3).odsa_addVLine({ visible: 0 });
-
-  // Diagonal slash
-  var slash = l.get(4).odsa_addTail();
-  //dash line in step 4
-  var dashlineLeftMargin = 452;
-  var dashline = jsav.g.polyline([
-      [
-        dashlineLeftMargin,
-        66
-      ],
-      [
-        dashlineLeftMargin + 13,
-        66
-      ],
-      [
-        dashlineLeftMargin + 13,
-        30
-      ],
-      [
-        dashlineLeftMargin + 83,
-        30
-      ],
-      [
-        dashlineLeftMargin + 83,
-        66
-      ],
-      [
-        dashlineLeftMargin + 101,
-        66
-      ]
-    ], {
-      'arrow-end': 'classic-wide-long',
-      'opacity': 0,
-      'stroke-width': 2,
-      'stroke-dasharray': '-'
-    });
-
-  //Diagonal slash in step 6
-  var slash5 = l.get(3).odsa_addTail({ visible: 0 });
-
-  jsav.umsg('Another problem is that we have no link to get us to the preceding node (shown in yellow). So we have no way to update its <code>next</code> pointer.');
-  jsav.displayInit();
-
-  l.get(1).unhighlight();
-  l.get(3).highlight();
-  jsav.umsg('Often we can get around this problem during deletion by copying the value following the current node (in this case the value 12) back into the current node. Let\'s look again at the example where we delete value 10.');
-  jsav.step();
-
-  l.get(3).unhighlight();
-  l.get(2).value('');
-  l.get(2).highlight();
-  jsav.umsg('First we remove the value 10 from the current node.');
-  jsav.step();
-
-  jsav.effects.moveValue(l.get(3), l.get(2));
-  jsav.umsg('Now we move the value 12 to the current node).');
-  jsav.step();
-
-  dashline.show();
-  l.get(2).edgeToNext().hide();
-  l.get(3).edgeToNext().hide();
-  l.get(2).unhighlight();
-  l.get(3).highlight();
-  jsav.umsg('Now we can route around the un-needed node.');
-  jsav.step();
-
-  dashline.hide();
-  l.remove(3);
-  l.get(2).edgeToNext().show();
-  slash.hide();
-  slash5.show();
-  l.layout();
-  jsav.umsg('The node with a value of 10 is removed from the list.');
-  jsav.step();
-
-
-  curr.hide();
-  tail.hide();
-  var newcurr = setPointer('curr', l.get(3));
-  var newtail = setPointer('tail', l.get(3), 'right');
-  bar.hide();
-  bar2.show();
-  l.get(2).highlight();
-  jsav.umsg('Unfortunately, this approach does not work when the current node is the last one on the list, as in this example. Here we want to delete the node with value 15. But there is no way to update the <code>next</code> pointer of the node with value 12. There is no direct way around this problem with the list as shown here.');
-  jsav.step();
-  jsav.recorded();
 }(jQuery));
 
 // List with header and tailer nodes added
@@ -264,9 +89,9 @@ function setPointer(name, node, opt) {
   var tail = setPointer('tail', l.get(6));
 
   // Vertical line
-  var bar = l.get(3).odsa_addVLine();
+  var bar = l.get(3).addVLine();
   // Diagonal slash
-  var slash = l.get(6).odsa_addTail();
+  var slash = l.get(6).addTail();
 
   jsav.recorded();
 }(jQuery));
@@ -388,15 +213,15 @@ function setPointer(name, node, opt) {
   var tail = setPointer('tail', l.get(4));
 
   //Diagonal slash
-  var slash = l.get(4).odsa_addTail();
-  var newSlash = l.get(4).odsa_addTail({
+  var slash = l.get(4).addTail();
+  var newSlash = l.get(4).addTail({
       left: 72,
       top: 0,
       visible: 0
     });
 
   //Vertical bar
-  var bar = l.get(2).odsa_addVLine();
+  var bar = l.get(2).addVLine();
 
   //Horizontal arrow in step 4 pointing to item 12
   var longArrow = jsav.g.line(leftMargin + 185, topMargin + 16, leftMargin + 293, topMargin + 16, {
@@ -549,10 +374,10 @@ function setPointer(name, node, opt) {
     this.tail = setPointer('tail', l.get(2), 'right');
 
     //Vertical bar
-    this.bar1 = l.get(2).odsa_addVLine();
+    this.bar1 = l.get(2).addVLine();
 
     //Diagonal slash
-    this.slash = l.get(2).odsa_addTail();
+    this.slash = l.get(2).addTail();
 
     //Diagonal slash for new node
     this.newNodeSlash = this.jsav.g.line(this.leftMargin + 254, this.topMargin + 92, this.leftMargin + 264, this.topMargin + 62, {
@@ -561,7 +386,7 @@ function setPointer(name, node, opt) {
     });
 
     //Diagonal slash for new tail
-    this.newTailSlash = l.get(2).odsa_addTail({
+    this.newTailSlash = l.get(2).addTail({
       left: 74,
       visible: 0
     });
@@ -873,11 +698,11 @@ function setPointer(name, node, opt) {
       'stroke-dasharray': '-'
     });
   // Vertical bar
-  var verticalBar = l.get(2).odsa_addVLine();
+  var verticalBar = l.get(2).addVLine();
   //Diagonal slash
-  var slash = l.get(5).odsa_addTail();
+  var slash = l.get(5).addTail();
   // New slash after deletion
-  var newSlash = l.get(4).odsa_addTail({ visible: 0 });
+  var newSlash = l.get(4).addTail({ visible: 0 });
 
   //initialize the linked list
   jsav.umsg('Now let\'s look at the <code>remove</code> method.');
@@ -994,7 +819,7 @@ function setPointer(name, node, opt) {
   // Tail
   var tail = setPointer('tail', l.get(5));
   // Diagonal slash
-  var slash = l.get(5).odsa_addTail();
+  var slash = l.get(5).addTail();
 
   jsav.umsg('Finally, we will look at how a few other methods work.');
   jsav.displayInit();

@@ -53,7 +53,7 @@ an initial element value and one without.
 Member functions allow the link user to get or set the ``element``
 and ``link`` fields.
 
-.. inlineav:: LlistBadCON ss
+.. inlineav:: llistBadCON ss
    :output: show
 
 There are a number of problems with the representation just
@@ -65,7 +65,7 @@ Implementing special cases for ``insert`` and ``remove``
 increases code complexity, making it harder to understand,
 and thus increases the chance of introducing bugs.
 
-.. inlineav:: LlistBadReasonCON ss
+.. inlineav:: llistBadDelCON ss
    :output: show
    
 Fortunately, there is a fairly easy way to deal with all of the
@@ -85,13 +85,14 @@ We get rid of the remaining special cases related to being at the end
 of the list by adding a "trailer" node that also never stores a
 value.
 
+The following diagram shows initial conditions for a linked list
+with header and trailer nodes.
+
+
 .. _LinkedListInit:
 
 .. inlineav:: llistInitCON dgm
    :align: center
-
-   Initial conditions for the linked list, with header and trailer
-   nodes.
 
 Adding the trailer node also solves our problem with deleting the last
 node on the list, as we will see when we take a closer look at the
@@ -146,4 +147,6 @@ Implementations for the remaining operations each require
 
 .. odsascript:: AV/List/listLinkedCON.js
 .. odsascript:: AV/List/llistRepCON.js
+.. odsascript:: AV/List/llistBadCON.js
 .. odsascript:: AV/List/llistInitCON.js
+.. odsascript:: AV/List/llistBadDelCON.js

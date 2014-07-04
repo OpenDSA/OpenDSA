@@ -2,7 +2,10 @@
   "title": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"Processing": ["pde"]},
+  "code_lang": {
+    "Processing": ["pde"],
+    "C++": ["cpp"]
+  },
   "lang": "en",
   "module_origin": "http://algoviz.org",
   "backend_address": "",
@@ -264,6 +267,79 @@
             "required": true,
             "points": 1,
             "threshold": 3
+          }
+        }
+      },
+      "List/ListLinked": {
+        "long_name": "Linked Lists",
+        "exercises": {
+          "llistRepCON": { },
+          "llistBadCON": {
+            "long_name": "Linked List Slideshow 1",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LlistBadReasonCON": {
+            "long_name": "Linked List Slideshow 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistInitCON": { },
+          "LlistVarsCON": {
+            "long_name": "Linked List Variables",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LListCons": {
+            "long_name": "Linked List Constructors",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LlistInsertCON": {
+            "long_name": "Linked List Insert",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LlistSpecInsertCON": {
+            "long_name": "Linked List Special Insert",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LlistRemoveCON": {
+            "long_name": "Linked List Remove",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LlistPosCON": {
+            "long_name": "Linked List Position",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "listLinkedInsertion": {
+            "long_name": "Linked List Insert Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "listLinkedDeletion": {
+            "long_name": "Linked List Delete Exercise",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          },
+          "LstLnkdSumm": {
+            "long_name": "Linked List Summary",
+            "required": true,
+            "points": 2,
+            "threshold": 6
           }
         }
       }

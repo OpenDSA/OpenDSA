@@ -32,7 +32,7 @@
                                                left: 42, top: 109 });
 
     // Slide 1
-    arr.css([5, 6, 7], { 'background-color': '#eee' });
+    arr.addClass([5, 6, 7], "not-in-list");
     av.umsg(interpret("av_c1"));
     av.displayInit();
 
@@ -67,8 +67,8 @@
 
     // Slide 5
     av.umsg(interpret("av_c5"));
-    arr.css([5], { 'background-color': '#fff' });
     arr.unhighlight(5);
+    arr.removeClass([5], "not-in-list");
     arrLS.unhighlight(0);
     pseudo.unhighlight("assign");
     av.recorded();

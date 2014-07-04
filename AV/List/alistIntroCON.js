@@ -9,7 +9,7 @@
     var av = new JSAV(av_name);
     var arr = av.ds.array(arrValues, {indexed: true, layout: 'array'});
 
-    arr.css([5, 6, 7], { 'background-color': '#eee' });
+    arr.addClass([5, 6, 7], "not-in-list");
     av.umsg(interpret("av_c1"));
     arr.highlight([0, 1, 2, 3, 4]);
     av.displayInit();

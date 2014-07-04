@@ -1,3 +1,19 @@
 .jsavcode { 
   margin-bottom: 35px;
 }
+
+.Light {
+  color: #ccc;
+}
+
+.blue {
+  background-color: #ddf;
+}
+
+.pink {
+  background-color: #FFB6C1;
+}
+
+.yellow {
+  background-color: #FFFF00;
+}

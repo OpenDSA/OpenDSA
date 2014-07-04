@@ -44,7 +44,7 @@
     labelIt.hide();
 
     // Slide 1
-    arr.css([5, 6, 7], { 'background-color': '#eee' });
+    arr.addClass([5, 6, 7], "not-in-list");
     av.umsg(interpret("av_c1"));
     arr.highlight([1]);
     label.show();
@@ -84,13 +84,14 @@
     pseudo.unhighlight("forbody");
     pseudo.highlight("dec");
     arr.unhighlight([1, 2, 3]);
-    arr.css([itemsSize - 1], { 'background-color': '#eee' });
+    arr.removeClass([itemsSize - 1], "not-in-list");
     av.umsg(interpret("av_c4"));
     arrow2.hide();
     av.step();
 
     // Slide 5
     arrIt.highlight([0]);
+    arr.addClass([4], "not-in-list");
     pseudo.unhighlight("dec");
     pseudo.highlight("return");
     av.umsg(interpret("av_c5"));

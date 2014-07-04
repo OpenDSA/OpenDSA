@@ -2,29 +2,35 @@
   height: 30px;
 }
 
+.jsavpointer .jsavlabel { 
+  margin-bottom: 2px;
+}
+
 #llistRepCON {
   height: 60px;
 }
 
 #llistInitCON {
-  height: 300px;
+  height: 110px;
 }
 
 #listLinkedHeaderTailerCON {
   height: 100px;
 }
 
-#LlistBadCON {
+#llistBadCON {
   height: 250px;
 }
-#LlistBadCON .jsavoutput.jsavline {
+
+#llistBadCON .jsavoutput.jsavline {
   height: 75px;
 }
 
-#LlistBadReasonCON {
+#llistBadDelCON {
   height: 250px;
 }
-#LlistBadReasonCON .jsavoutput.jsavline {
+
+#llistBadDelCON .jsavoutput.jsavline {
   height: 70px;
 }
 

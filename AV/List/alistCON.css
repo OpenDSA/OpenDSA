@@ -17,3 +17,7 @@
 .ssAV .jsavline {
   height: 45px;
 }
+
+.not-in-list {
+  background-color: #eee;
+}

@@ -107,7 +107,7 @@
         "long_name": "Linked Lists",
         "exercises": {
           "llistRepCON": { },
-          "LlistBadCON": {
+          "llistBadCON": {
             "long_name": "Linked List Slideshow 1",
             "required": true,
             "points": 0.0,

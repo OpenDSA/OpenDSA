@@ -48,7 +48,7 @@
 
 
     // Slide 1: set the background of empty elements to gray
-    arr.css([5, 6, 7], { 'background-color': '#eee' });
+    arr.addClass([5, 6, 7], "not-in-list");
     av.umsg(interpret("av_c1"));
     av.displayInit();
 
@@ -72,7 +72,7 @@
         av.effects.copyValue(arr, i, arr, i + 1);
       }
     }
-    arr.css([5], { 'background-color': '#fff' });
+    arr.removeClass([5], "not-in-list");
     arr.value(0, '');
     arrow1.hide();
     arrow2.show();
