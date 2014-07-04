@@ -19,7 +19,7 @@ clean:
 	-rm -rf build
 	mkdir build
 
-sorting: Inssort Bubblesort Selectionsort Shellsort Mergesort MergesortOpt
+sorting: Inssort Bubblesort Selectionsort Shellsort Mergesort MergesortOpt Quicksort Heapsort
 
 Inssort: build/InssortTest/success
 
@@ -124,3 +124,33 @@ build/MergesortOpt/success: Sorting/MergesortOpt.cpp Sorting/sortmain.cpp Utils/
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o MergesortOpt.o MergesortOpt.cpp; \
 	$(CC) $(CFLAGS) MergesortOpt.o -o MergesortOpt; \
 	./MergesortOpt 1000 1000
+
+Quicksort: build/Quicksort/success
+
+build/Quicksort/success: Sorting/Quicksort.cpp Sorting/sortmain.cpp Utils/book.h Utils/compare.h
+	@echo "Quicksort Test"
+	-@rm -rf build/Quicksort
+	@mkdir build/Quicksort
+	@cp Sorting/Quicksort.cpp build/Quicksort
+	@cp Sorting/sortmain.cpp build/Quicksort
+	@cp Utils/book.h build/Quicksort
+	@cp Utils/compare.h build/Quicksort
+	cd build/Quicksort; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Quicksort.o Quicksort.cpp; \
+	$(CC) $(CFLAGS) Quicksort.o -o Quicksort; \
+	./Quicksort 1000 1000
+
+Heapsort: build/Heapsort/success
+
+build/Heapsort/success: Sorting/Heapsort.cpp Sorting/sortmain.cpp Utils/book.h Utils/compare.h
+	@echo "Heapsort Test"
+	-@rm -rf build/Heapsort
+	@mkdir build/Heapsort
+	@cp Sorting/Heapsort.cpp build/Heapsort
+	@cp Sorting/sortmain.cpp build/Heapsort
+	@cp Utils/book.h build/Heapsort
+	@cp Utils/compare.h build/Heapsort
+	cd build/Heapsort; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Heapsort.o Heapsort.cpp; \
+	$(CC) $(CFLAGS) Heapsort.o -o Heapsort; \
+	./Heapsort 1000 1000
