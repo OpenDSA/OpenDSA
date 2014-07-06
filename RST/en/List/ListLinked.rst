@@ -9,7 +9,7 @@
    :satisfies: linked list
    :topic: Lists
    
-.. odsalink:: AV/List/listLinkedCON.css
+.. odsalink:: AV/List/llistCON.css
 
 Linked Lists
 ============
@@ -94,46 +94,47 @@ with header and trailer nodes.
 .. inlineav:: llistInitCON dgm
    :align: center
 
+Here is what a list with some elements looks like with the header and
+trailer nodes added.
+   
+.. _LinkedListTailer:
+
+.. inlineav:: llistHeaderCON dgm
+   :align: center
+
 Adding the trailer node also solves our problem with deleting the last
 node on the list, as we will see when we take a closer look at the
 remove method's implementation.
 
-.. _LinkedListTailer:
-
-.. inlineav:: listLinkedHeaderTailerCON dgm
-   :align: center
-
-   Here is what the list looks like with the header and trailer nodes
-   added.
-   
 Here is the implementation for the linked list class,
 named ``LList``.
 
 .. codeinclude:: Lists/LList
    :tag: LList
 
-.. inlineav:: LlistVarsCON ss
+.. inlineav:: llistVarsCON ss
    :output: show
 
-.. inlineav:: LListCons ss
+.. inlineav:: llistConsCON ss
    :output: show
 
 Implementations for most member functions of the ``list``
 class are straightforward.
 However, ``insert`` and ``remove`` should be studied carefully.
 
-.. inlineav:: LlistInsertCON ss
+.. inlineav:: llistInsertCON ss
    :output: show
    
-Special case for Linked list insertion 
+Here are some special cases for linked list insertion: Inserting at
+the end, and inserting to an empty list.
 
-.. inlineav:: LlistSpecInsertCON ss
+.. inlineav:: llistSpecialCON ss
    :output: show
    
-.. inlineav:: LlistRemoveCON ss
+.. inlineav:: llistRemoveCON ss
    :output: show
    
-.. inlineav:: LlistPosCON ss
+.. inlineav:: llistOtherCON ss
    :output: show
    
 Implementations for the remaining operations each require
@@ -145,8 +146,15 @@ Implementations for the remaining operations each require
 
 .. avembed:: Exercises/List/LstLnkdSumm.html ka
 
-.. odsascript:: AV/List/listLinkedCON.js
+.. odsascript:: AV/List/llistCON.js
 .. odsascript:: AV/List/llistRepCON.js
 .. odsascript:: AV/List/llistBadCON.js
-.. odsascript:: AV/List/llistInitCON.js
 .. odsascript:: AV/List/llistBadDelCON.js
+.. odsascript:: AV/List/llistInitCON.js
+.. odsascript:: AV/List/llistHeaderCON.js
+.. odsascript:: AV/List/llistVarsCON.js
+.. odsascript:: AV/List/llistConsCON.js
+.. odsascript:: AV/List/llistInsertCON.js
+.. odsascript:: AV/List/llistSpecialCON.js
+.. odsascript:: AV/List/llistRemoveCON.js
+.. odsascript:: AV/List/llistOtherCON.js

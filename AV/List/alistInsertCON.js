@@ -1,5 +1,6 @@
 /*global ODSA */
 "use strict";
+// Written by Jun Yang and Cliff Shaffer
 // Array-Based list insertion
 (function ($) {
   $(document).ready(function () {
@@ -11,38 +12,38 @@
         code = config.code;                   // get the code object
     var av = new JSAV(av_name);
     var leftMargin = 10;
-    var arr = av.ds.array(arrValues, { indexed: true, layout: 'array',
+    var arr = av.ds.array(arrValues, { indexed: true, layout: "array",
                                        left: leftMargin}).hide();
     var pseudo = av.code(code);
 
     // Vertical arrow in step 1
     var arrow1_x = leftMargin + 15;
     var arrow1 = av.g.line(arrow1_x, -10, arrow1_x, 20,
-	  { 'arrow-end': 'classic-wide-long',
-            'opacity': 100, 'stroke-width': 2 });
+	  { "arrow-end": "classic-wide-long",
+            "opacity": 100, "stroke-width": 2 });
     arrow1.hide();
 
     // Label in step 1
-    var label = av.label('Insert 23', { before: arr, left: arrow1_x - 16,
+    var label = av.label("Insert 23", { before: arr, left: arrow1_x - 16,
                                         top: -35 }).hide();
 
     //horizontal arrow in step 2
     var arrow2 = av.g.line(leftMargin + 50, 5, leftMargin + 150, 5,
-          { 'arrow-end': 'classic-wide-long', 'opacity': 0,
-            'stroke-width': 2 });
+          { "arrow-end": "classic-wide-long", "opacity": 0,
+            "stroke-width": 2 });
     arrow2.hide();
 
     // Create the graphics for maxSize and listSize variables
-    var arrMS = av.ds.array([8], { indexed: false, layout: 'array',
+    var arrMS = av.ds.array([8], { indexed: false, layout: "array",
                                    left: 100, top: 70 });
     arrMS.hide();
-    var labelMaxSize = av.label('maxSize', { before: arrMS,
+    var labelMaxSize = av.label("maxSize", { before: arrMS,
                                              left: 33, top: 74 });
     labelMaxSize.hide();
-    var arrLS = av.ds.array([5], { indexed: false, layout: 'array',
+    var arrLS = av.ds.array([5], { indexed: false, layout: "array",
                                    left: 100, top: 105 });
     arrLS.hide();
-    var labelListSize = av.label('listSize', { before: arrLS,
+    var labelListSize = av.label("listSize", { before: arrLS,
                                                left: 42, top: 109 });
     labelListSize.hide();
 
@@ -73,7 +74,7 @@
       }
     }
     arr.removeClass([5], "not-in-list");
-    arr.value(0, '');
+    arr.value(0, "");
     arrow1.hide();
     arrow2.show();
     label.hide();

@@ -1,5 +1,6 @@
 /*global ODSA */
 'use strict';
+// Written by Jun Yang and Cliff Shaffer
 //Array-Based list deletion
 (function ($) {
   $(document).ready(function () {
@@ -7,7 +8,7 @@
     var itemsSize = 5;
     var av_name = "alistRemoveCON";
     // Load the config object with interpreter and code created by odsaUtils.js
-    var config = ODSA.UTILS.loadLangData({'av_name': av_name}),
+    var config = ODSA.UTILS.loadLangData({"av_name": av_name}),
         interpret = config.interpreter,       // get the interpreter
         code = config.code;                   // get the code object
     var av = new JSAV(av_name);
@@ -15,31 +16,31 @@
         nodeWidth = 30,
         arrow1_x = 25 + nodeWidth;
 
-    var arr = av.ds.array(arrValues, { indexed: true, layout: 'array',
+    var arr = av.ds.array(arrValues, { indexed: true, layout: "array",
                                        left: leftMargin, top: 20 });
     var pseudo = av.code(code);
 
     //vertical arrow pointing to current position
     var arrow1 = av.g.line(arrow1_x, 10, arrow1_x, 35, {
-          'arrow-end': 'classic-wide-long',
-          'opacity': 0, 'stroke-width': 2 });
+          "arrow-end": "classic-wide-long",
+          "opacity": 0, "stroke-width": 2 });
 
     //horizontal arrow in step 4
     var arrow2 = av.g.line(arrow1_x + 100, 20, arrow1_x + 20, 20, {
-          'arrow-end': 'classic-wide-long',
-          'opacity': 0, 'stroke-width': 2 });
+          "arrow-end": "classic-wide-long",
+          "opacity": 0, "stroke-width": 2 });
 
     //label for current position in step 1
-    var label = av.label('curr', { before: arr,
+    var label = av.label("curr", { before: arr,
                                    left: arrow1_x - 10, top: -25 });
     label.hide();
 
     //array "it" for holding the deleted record
-    var arrItValues = [''];
+    var arrItValues = [""];
     var arrIt = av.ds.array(arrItValues, {
-          indexed: false, layout: 'array',
+          indexed: false, layout: "array",
           left: leftMargin + (nodeWidth + 2) * 3, top: 90 });
-    var labelIt = av.label('it', { before: arrIt, left: 85, top: 95 });
+    var labelIt = av.label("it", { before: arrIt, left: 85, top: 95 });
     arrIt.hide();
     labelIt.hide();
 
@@ -56,7 +57,7 @@
     arrIt.show();
     labelIt.show();
     av.effects.copyValue(arr, 1, arrIt, 0);
-    arr.value(1, '');
+    arr.value(1, "");
     arr.unhighlight([1]);
     pseudo.unhighlight("sig");
     pseudo.highlight("copy");
@@ -69,7 +70,7 @@
     for (i = 2; i < itemsSize; i++) {
       av.effects.copyValue(arr, i, arr, i - 1);
     }
-    arr.value(itemsSize - 1, '');
+    arr.value(itemsSize - 1, "");
     arrow2.show();
     arr.unhighlight([1]);
     pseudo.unhighlight("copy");

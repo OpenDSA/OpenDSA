@@ -1,25 +1,26 @@
 /*global ODSA */
 "use strict";
+// Written by Jun Yang and Cliff Shaffer
 // The reason why there is a problem with naive representation of linked list
 (function ($) {
   $(document).ready(function () {
     var av_name = "llistBadDelCON";
-    var interpret = ODSA.UTILS.loadLangData({'av_name': av_name}).interpreter;
+    var interpret = ODSA.UTILS.loadLangData({"av_name": av_name}).interpreter;
     var av = new JSAV(av_name);
 
     // Linked list
-    var l = av.ds.list({ 'nodegap': 30, 'top': 50, left: 257 });
+    var l = av.ds.list({nodegap: 30, top: 30, left: 257});
     l.addFirst(15).addFirst(12).addFirst(10).addFirst(23).addFirst(20);
     l.get(1).highlight();
     l.layout();
 
-    var head = setPointerL('head', l.get(0));
-    var curr = setPointerL('curr', l.get(2));
-    var tail = setPointerL('tail', l.get(4));
+    var head = setPointerL("head", l.get(0));
+    var curr = setPointerL("curr", l.get(2));
+    var tail = setPointerL("tail", l.get(4));
     var bar = l.get(2).addVLine();
-    var bar2 = l.get(3).addVLine({ visible: 0 });
+    var bar2 = l.get(3).addVLine({visible: 0});
     var slash = l.get(4).addTail();
-    var slash6 = l.get(3).addTail({ visible: 0 }); // Diagonal slash in step 6
+    var slash6 = l.get(3).addTail({visible: 0}); // Diagonal slash in step 6
     var dashlineLeftMargin = 452;    // Dash line in step 4
     var dashline = av.g.polyline([
           [ dashlineLeftMargin, 66 ],
@@ -28,12 +29,11 @@
           [ dashlineLeftMargin + 83, 30 ],
           [ dashlineLeftMargin + 83, 66 ],
           [ dashlineLeftMargin + 101, 66 ]],
-          { 'arrow-end': 'classic-wide-long',
-            'opacity': 0,
-            'stroke-width': 2,
-            'stroke-dasharray': '-'
+          { "arrow-end": "classic-wide-long",
+            "opacity": 0,
+            "stroke-width": 2,
+            "stroke-dasharray": "-"
           });
-
 
     // Slide 1
     av.umsg(interpret("av_c1"));
@@ -47,7 +47,7 @@
 
     // Slide 3
     l.get(3).unhighlight();
-    l.get(2).value('');
+    l.get(2).value("");
     l.get(2).highlight();
     av.umsg(interpret("av_c3"));
     av.step();
@@ -79,8 +79,8 @@
     // Slide 7
     curr.hide();
     tail.hide();
-    var newcurr = setPointerL('curr', l.get(3));
-    var newtail = setPointerR('tail', l.get(3));
+    var newcurr = setPointerL("curr", l.get(3));
+    var newtail = setPointerR("tail", l.get(3));
     bar.hide();
     bar2.show();
     l.get(2).highlight();
