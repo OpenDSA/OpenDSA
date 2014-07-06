@@ -142,7 +142,10 @@ class codeinclude(Directive):
       # Append the rest of the HTML for the header of the tabbed container and the JavaScript necessary to create the tabs
       if len(html_strs) > 0:
         html_strs[0] = tab_header + '</ul>' + html_strs[0]
-        html_strs[-1] += '</div><script>$(function() {$( "#%s" ).tabs();});</script>' % tab_id
+        # Link to all the necessary jQuery UI
+        jquery_ui_path = os.path.relpath(conf.odsa_path,conf.ebook_path) + '/lib/jquery-ui-1.8.24/ui/'
+
+        html_strs[-1] += '</div><script src="{0}jquery.ui.core.js"></script><script src="{0}jquery.ui.widget.js"></script><script src="{0}jquery.ui.tabs.js"></script>'.format(jquery_ui_path) + '<script>$(function() {$( "#%s" ).tabs();});</script>' % tab_id
 
     # If only one code block exists, print the code normally
     if len(code_nodes) == 1:
