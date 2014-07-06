@@ -62,7 +62,7 @@ def get_mod_name(mod_config):
   if '/' in mod_config:
     mod_file = re.split('/', mod_config)[1]
   if '.rst' in mod_file:
-    mod_file = re.split('.rst', mod_file)[0]  
+    mod_file = re.split('.rst', mod_file)[0]
 
   listed_modules.append(mod_file)
 
@@ -225,7 +225,7 @@ def validate_config_file(config_file_path, conf_data):
   validate_origin(conf_data['module_origin'], 'module')
 
   # Ensure optional fields are configured properly
-  if 'backend_address' in conf_data and not conf_data['backend_address'].startswith('https'):
+  if 'backend_address' in conf_data and conf_data['backend_address'] != '' and not conf_data['backend_address'].startswith('https'):
     print_err('WARNING: "backend_address" should use HTTPS')
 
   if 'av_origin' in conf_data:
