@@ -262,13 +262,13 @@ class codeinclude(Directive):
           if startafter in line:
             use = True
             tags_counter += 1
-            continue
           elif endbefore in line:
             use = False
             tags_counter += 1
-            continue
-
-          if use:
+          elif '/* *** ODSA' in line:
+            # Ignore tag comments
+            pass
+          elif use:
             res.append(line)
 
         if tags_counter == 0:
