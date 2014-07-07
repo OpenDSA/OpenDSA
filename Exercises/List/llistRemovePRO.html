@@ -59,11 +59,10 @@ Written by Junyang Chen and Cliff Shaffer
       max-width: 30px !important;
       min-height: 30px !important;
       max-height: 30px !important;
-	  cursor: pointer;
+      cursor: pointer;
     }
     .jsavpointer{
       width: 40px;
-      border: 1px solid #bbb;
       text-align: center;
       cursor: pointer;
     }
@@ -353,7 +352,7 @@ Written by Junyang Chen and Cliff Shaffer
       $("#jsav").empty();
     }
 
-    jsav = new JSAV("jsav");
+    jsav = new JSAV("llistRemovePRO");
     // JSAV list	
     jsavList = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
     jsavList.addFirst("null");
@@ -507,7 +506,7 @@ Written by Junyang Chen and Cliff Shaffer
           you want it to point to.</p> 
         <input id="reset" type="button" value="Reset" />
 		<input id="makenull" type="button" value="makenull" />
-        <div id="jsav" style = "{background-color : #333}"></div>
+        <div id="llistRemovePRO" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
         <div class="guess">

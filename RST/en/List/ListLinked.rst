@@ -131,18 +131,18 @@ the end, and inserting to an empty list.
 .. inlineav:: llistSpecialCON ss
    :output: show
    
+.. avembed:: Exercises/List/llistInsertPRO.html ka
+
 .. inlineav:: llistRemoveCON ss
    :output: show
    
+.. avembed:: Exercises/List/llistRemovePRO.html ka
+
 .. inlineav:: llistOtherCON ss
    :output: show
    
 Implementations for the remaining operations each require
 :math:`\Theta(1)` time.
-
-.. avembed:: Exercises/List/listLinkedInsertion.html ka
-
-.. avembed:: Exercises/List/listLinkedDeletion.html ka
 
 .. avembed:: Exercises/List/LstLnkdSumm.html ka
 

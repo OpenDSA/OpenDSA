@@ -17,11 +17,11 @@ Written by Junyang Chen and Cliff Shaffer
 
   <style>
     .jsavcontainer {
-      height: 130px;
+      height: 150px;
       border: 0;
     }
     .jsavcanvas{
-      height: 130px;
+      height: 150px;
     }
     .jsavhorizontallist.jsavautoresize .jsavnode {
       min-width: 30px;
@@ -81,8 +81,8 @@ Written by Junyang Chen and Cliff Shaffer
     if(obj1 == obj2){ return;}
     var fx = $('#' + obj1.id()).position().left + 37 + 2;
     var tx = $('#' + obj2.id()).position().left  +2;
-    var fy = $('#' + obj1.id()).position().top + 15 + 1 + 40;
-    var ty = $('#' + obj2.id()).position().top + 15 +1 + 40;
+    var fy = $('#' + obj1.id()).position().top + 15 + 16 + 40;
+    var ty = $('#' + obj2.id()).position().top + 15 +16 + 40;
     var fx1 = fx, fy1 = fy, tx1 = tx, ty1 = ty;
 
     var disx = (fx - tx - 22) > 0 ? 1 : (fx - tx - 22) == 0 ? 0 : -1;
@@ -116,7 +116,7 @@ Written by Junyang Chen and Cliff Shaffer
       }
     }
 
-    var edge = jsav.g.path(["M", fx, fy , "C", fx1, fy1, tx1 , ty1, tx, ty].join(","),{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2} );
+    var edge = jsav.g.path(["M", fx, fy, "C", fx1, fy1, tx1 , ty1, tx, ty].join(","),{"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2} );
     if(obj1.exe_next){
       obj1.exe_edgeToNext.element.remove();
     }else{
@@ -201,8 +201,8 @@ Written by Junyang Chen and Cliff Shaffer
 
       var fx = $('#' + node.id()).position().left + 34;
       var tx = $('#' + node.id()).position().left + 44;
-      var fy = $('#' + node.id()).position().top + 32 +40;
-      var ty = $('#' + node.id()).position().top + 1 +40;
+      var fy = $('#' + node.id()).position().top + 47 +40;
+      var ty = $('#' + node.id()).position().top + 16 +40;
       node.exe_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
     }
   }
@@ -230,9 +230,9 @@ Written by Junyang Chen and Cliff Shaffer
       answerOrderArr.splice(insertPosition + 2, 0, newLinkNode.id());
 
       var x1 = left + 34;
-      var y1 = top + 31 + 40;
-      var x2 = left + 45;
-      var y2 = top + 1 + 40;
+      var y1 = top + 46 + 40;
+      var x2 = left + 44;
+      var y2 = top + 15 + 40;
 
       newLinkNode.exe_tail = jsav.g.line(x1, y1,
                             x2, y2,{"opacity": 100,"stroke-width": 1});
@@ -301,7 +301,7 @@ Written by Junyang Chen and Cliff Shaffer
     if($("#jsav .jsavshutter")){
       $("#jsav .jsavshutter").remove();
     }
-    jsav = new JSAV("jsav");
+    jsav = new JSAV("llistInsertPRO");
     jsav.recorded();
 
     if($("#jsav path")){
@@ -327,14 +327,14 @@ Written by Junyang Chen and Cliff Shaffer
       jsavList.get(i).exe_next = jsavList.get(i).next();
       jsavList.get(i).exe_edgeToNext = jsavList.get(i).edgeToNext();
     }
-    jsavList.get(listSize - 1).exe_tail = jsav.g.line(34 + (listSize - 1)*74, 32 + 40,
-                            44 + (listSize - 1)*74, 1 + 40,{"opacity": 100,"stroke-width": 1});
+    jsavList.get(listSize - 1).exe_tail = jsav.g.line(34 + (listSize - 1)*74, 47 + 40,
+                            44 + (listSize - 1)*74, 16 + 40,{"opacity": 100,"stroke-width": 1});
 
     //Curr Label
     var currLabel = jsav.label("curr",
         {left: 60 + insertPosition * 74, top: 0, "font-size":"20px"});
-    var currArrow = jsav.g.line(70 + insertPosition * 74, 20,
-                                90 + insertPosition * 74, 40,
+    var currArrow = jsav.g.line(70 + insertPosition * 74, 35,
+                                90 + insertPosition * 74, 55,
         {"arrow-end": "classic-wide-long", "opacity": 100,"stroke-width": 2});
 
     //JSAV array for insert animation
@@ -423,7 +423,7 @@ Written by Junyang Chen and Cliff Shaffer
         <input id="reset" type="button" value="Reset" />
 		    <input id="NewNode" type="button" value="NewNode" />
 		    <input id="insert" type="button" value="Insert" />
-        <div id="jsav" style = "{background-color : #333}"></div>
+        <div id="llistInsertPRO" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
         <div class="guess">

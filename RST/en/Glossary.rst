@@ -229,6 +229,23 @@ Glossary
       interest, then checking bounding boxes first can save a lot of
       time.
 
+   break-even point
+      The point at which two costs become even when measured as the
+      function of some variable.
+      In particular, used to compare the space requirements of two
+      implementations.
+      For example, when comparing the space requirements of an
+      :term:`array-based list` implementation versus a
+      :term:`linked list` implementation, the key issue is how full
+      the list is compared to its capacity limit (for the array-based
+      list).
+      The point where the two representations would have the same
+      space cost is the break-even point.
+      As the list becomes more full beyond this point, the array-based
+      list implementation becomes more space efficent, while as the
+      list becomes less full below this point, the linked list
+      implementation becomes more space efficient.
+
    BST
       Abbreviation for :term:`binary search tree`.
 

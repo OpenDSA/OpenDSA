@@ -164,29 +164,29 @@
             "points": 0.0,
             "threshold": 1.0
           },
+          "llistInsertPRO": {
+            "long_name": "Linked List Insert Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
           "llistRemoveCON": {
             "long_name": "Linked List Remove Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
+          "llistRemovePRO": {
+            "long_name": "Linked List Remove Exercise",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          },
           "llistOtherCON": {
             "long_name": "Linked List Position Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "listLinkedInsertion": {
-            "long_name": "Linked List Insert Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "listLinkedDeletion": {
-            "long_name": "Linked List Delete Exercise",
-            "required": true,
-            "points": 2,
-            "threshold": 5
           },
           "LstLnkdSumm": {
             "long_name": "Linked List Summary Exercise",

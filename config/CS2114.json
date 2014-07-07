@@ -80,17 +80,17 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "alistRemoveCON": {
-            "long_name": "Array-based List Remove",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
           "alistInsertPRO": {
             "long_name": "Array-based List Insert Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
+          },
+          "alistRemoveCON": {
+            "long_name": "Array-based List Remove",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           },
           "alistDeletePRO": {
             "long_name": "Array-based List Delete Exercise",
@@ -154,68 +154,71 @@
       "List/ListLinked": {
         "long_name": "Linked Lists",
         "exercises": {
-          "LlistBadCON": {
+          "llistRepCON": { },
+          "llistBadCON": {
             "long_name": "Linked List Slideshow 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistBadReasonCON": {
+          "llistInitCON": { },
+          "llistBadDelCON": {
             "long_name": "Linked List Slideshow 2",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistVarsCON": {
-            "long_name": "Linked List Variables",
+          "llistHeaderCON": { },
+          "llistVarsCON": {
+            "long_name": "Linked List Variables Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LListCons": {
-            "long_name": "Linked List Constructors",
+          "llistConsCON": {
+            "long_name": "Linked List Constructors Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistInsertCON": {
-            "long_name": "Linked List Insert",
+          "llistInsertCON": {
+            "long_name": "Linked List Insert Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistSpecInsertCON": {
-            "long_name": "Linked List Special Insert",
+          "llistSpecialCON": {
+            "long_name": "Linked List Special Insert Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistRemoveCON": {
-            "long_name": "Linked List Remove",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "LlistPosCON": {
-            "long_name": "Linked List Position",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "listLinkedInsertion": {
+          "llistInsertPRO": {
             "long_name": "Linked List Insert Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listLinkedDeletion": {
-            "long_name": "Linked List Delete Exercise",
+          "llistRemoveCON": {
+            "long_name": "Linked List Remove Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistRemovePRO": {
+            "long_name": "Linked List Remove Exercise",
             "required": true,
             "points": 2,
             "threshold": 5
           },
+          "llistOtherCON": {
+            "long_name": "Linked List Position Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "LstLnkdSumm": {
-            "long_name": "Linked List Summary",
+            "long_name": "Linked List Summary Exercise",
             "required": true,
             "points": 2,
             "threshold": 6
