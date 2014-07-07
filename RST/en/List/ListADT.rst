@@ -177,6 +177,12 @@ function on the concept of a key, and on
 
 .. avembed:: Exercises/List/ListADTPROG.html ka
   
+.. TODO::
+   :tag: Exercise
+
+   This exercise ought to get expanded to a much richer set of
+   variantions on the question.
+
 Implementing Lists
 ------------------
 

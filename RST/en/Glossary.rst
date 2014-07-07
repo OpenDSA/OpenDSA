@@ -739,6 +739,11 @@ Glossary
       The organization of data on :term:`peripheral storage`,
       such as a :term:`disk drive` or DVD drive.
 
+   FIFO
+      Abbreviation for "First-In, First-Out".
+      This is the access paradigm for a :term:`queue`,
+      and an old terminolgy for the queue is "FIFO list".
+
    FIND
       One half of the :term:`UNION/FIND` algorithm for managing
       :term:`disjoint sets`.
@@ -931,11 +936,13 @@ Glossary
 
    heapsort
       A sorting algorithm that costs :math:`\Theta(n \log n)` time in
-      the best, average, and worst cases. It tends to be slower than
-      Mergesort and Quicksort. It works by building a max heap, and
-      then repeatedly removing the maximum item (moving it to the end
-      of the heap) until all elements have been removed (and replaced
-      at their proper location in the array).
+      the best, average, and worst cases.
+      It tends to be slower than :term:`Mergesort` and
+      :term:`Quicksort`.
+      It works by building a :term:`max heap`, and
+      then repeatedly removing the item with maximum :term:`key` value
+      (moving it to the end of the heap) until all elements have been
+      removed (and replaced at their proper location in the array).
 
    height
       The height of a tree is one more than the :term:`depth` of the
@@ -1071,6 +1078,11 @@ Glossary
 
    LFU
       Abbreviation for :term:`least frequently used`.
+
+   LIFO
+      Abbreviation for "Last-In, First-Out".
+      This is the access paradigm for a :term:`stack`,
+      and an old terminolgy for the stack is "LIFO list".
 
    LRU
       Abbreviation for :term:`least recently used`.
@@ -1394,7 +1406,7 @@ Glossary
       partially ordered set.
 
    partition
-      In :term:`quicksort`, the process of splitting a list into two
+      In :term:`Quicksort`, the process of splitting a list into two
       sublists, such that one sublist has values less than the
       :term:`pivot` value, and the other with values greater than the
       pivot. This process takes :math:`\Theta(i)` time on a sublist of
@@ -1427,7 +1439,7 @@ Glossary
       least one of the locations must store two or more of the objects.
 
    pivot
-      In :term:`quicksort`, the value that is used to split the list
+      In :term:`Quicksort`, the value that is used to split the list
       into sublists, one with lesser values than the pivot, the other
       with greater values than the pivot.
 
@@ -1532,7 +1544,7 @@ Glossary
       A list-like structure in which elements are inserted only at one
       end, and removed only from the other one end.
 
-   quicksort
+   Quicksort
       A sort that is :math:`\Theta(n \log n)` in the best and average
       cases, though :math:`\Theta(n^2)` in the worst case. However, a
       reasonable implmentation will make the worst case occur under
@@ -1561,7 +1573,7 @@ Glossary
       valuse, than at least :math:`\Omega(\log n)` digits are required,
       leading to an :math:`\Omega(n \log n)` sorting algorithm that
       tends to be much slower than other sorting algorithms like
-      :term:`quicksort` or :term:`mergesort`.
+      :term:`Quicksort` or :term:`mergesort`.
 
    random access memory
       Abbreviated ;term:`RAM`, this is the principle example of

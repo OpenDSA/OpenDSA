@@ -6,7 +6,7 @@
 .. avmetadata:: 
    :author: Cliff Shaffer
    :requires: list ADT
-   :satisfies: stack
+   :satisfies: stack ADT, array-based stack, stack
    :topic: Lists
 
 .. odsalink:: AV/List/listStackCON.css      
@@ -26,29 +26,30 @@ Many applications require only the limited form of
 insert and remove operations that stacks provide.
 In such cases, it is more efficient to use the simpler stack data
 structure rather than the generic list.
-For example, the freelist of Module :numref:`<Freelist>` is really a
+For example, the :ref:`freelist <freelist> <Freelist>` is really a
 stack.
 
 Despite their restrictions, stacks have many uses.
 Thus, a special vocabulary for stacks has developed.
 Accountants used stacks long before the invention of the computer.
-They called the stack a "LIFO" list,
+They called the stack a ":term:`LIFO`" list,
 which stands for "Last-In, First-Out."
 Note that one implication of the LIFO policy is that stacks
 remove elements in reverse order of their arrival.
 
 The accessible element of the stack is called the ``top`` element.
-Elements are not said to be inserted, they are :term:`pushed` onto the
+Elements are not said to be inserted, they are :term:`pushed <push>`
+onto the stack.
+When removed, an element is said to be :term:`popped <pop>` from the
 stack.
-When removed, an element is said to be :term:`popped` from the stack.
-Here is a simple stack ADT.
+Here is a simple stack :term:`ADT`.
 
 .. codeinclude:: Lists/Stack
    :tag: Stack
 
 As with lists, there are many variations on stack implementation.
 The two approaches presented here are the :term:`array-based stack`
-and the :term:`linked stack`, 
+and the :ref:`linked stack <linked stack> <StackLinked>`, 
 which are analogous to array-based and linked lists, respectively.
 
 Array-Based Stacks
@@ -60,7 +61,7 @@ the array-based stack class.
 .. codeinclude:: Lists/AStack
    :tag: AStack1,AStack2
 
-.. inlineav:: AStackVarCON ss
+.. inlineav:: astackVarCON ss
    :output: show
    
 The array-based stack implementation is essentially
@@ -68,7 +69,7 @@ a simplified version of the array-based list.
 The only important design decision to be made is which end of the
 array should represent the top of the stack.
 
-.. inlineav:: AStackTopposCON ss
+.. inlineav:: astackTopCON ss
    :output: show
    
 .. inlineav:: AStackPushCON ss
@@ -82,3 +83,5 @@ array should represent the top of the stack.
 .. avembed:: Exercises/List/listAStackPop.html ka
 
 .. odsascript:: AV/List/listStackCON.js
+.. odsascript:: AV/List/astackVarCON.js
+.. odsascript:: AV/List/astackTopCON.js

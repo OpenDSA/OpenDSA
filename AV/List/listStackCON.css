@@ -1,17 +1,3 @@
-.jsavcanvas{
-  height: 500px;
-}
-
-.jsavpointer{
-  border:1px solid #eee;
-}
-.jsavhorizontallist.jsavautoresize .jsavnode{
-  min-width: 30px;
-  min-height: 30px; 
-  max-height: 45px;
-  line-height: 30px;
-}
-
 .jsavhorizontalarray.jsavautoresize .jsavnode {
   min-width: 30px;
   max-width: 30px;
@@ -20,36 +6,26 @@
   line-height: 30px;
 }
 
-.jsavverticalarray.jsavautoresize .jsavnode {
-  min-width: 30px;
-  max-width: 30px;
-  min-height: 30px;
-  max-height: 30px;
-  line-height: 30px;
-}
-
-.jsavnode .jsavvalue {
+.jsavnode .jsavvalue { /* Make array values center vertically */
   height: 30px;
 }
 
-#AStackVarCON {
-  height: 480px;
+#astackVarCON {
+  height: 460px;
 }
-#AStackVarCON .jsavoutput.jsavline {
-  height: 50px;
+
+#astackTopCON {
+  height: 240px;
 }
-#AStackTopposCON {
-  height: 250px;
-}
-#AStackTopposCON .jsavoutput.jsavline {
-  height: 30px;
-}
+
 #AStackPushCON {
   height: 230px;
 }
+
 #AStackPushCON .jsavoutput.jsavline {
   height: 30px;
 }
+
 #AStackPushCON .jsavcode{
   border: 1px solid;
   border-color: white;
@@ -58,12 +34,15 @@
   left: 170px;
   width: 500px;
 }
+
 #AStackPopCON {
   height: 240px;
 }
+
 #AStackPopCON .jsavoutput.jsavline {
   height: 30px;
 }
+
 #AStackPopCON .jsavcode{
   border: 1px solid;
   border-color: white;  

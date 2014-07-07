@@ -441,9 +441,9 @@
           }
         }
       },
-      "List/Stack": {
-        "long_name": "Stacks",
-        "exercises": {
+      "List/StackArray": {
+        "long_name": "Array-based Stacks",
+          "exercises": {
           "AStackVarCON": {
             "long_name": "Array stack variables",
             "required": true,
@@ -479,7 +479,12 @@
             "required": true,
             "points": 1,
             "threshold": 5
-          },
+          }
+        }
+      },
+      "List/StackLinked": {
+        "long_name": "Linked Stacks",
+        "exercises": {
           "LStackPushCON": {
             "long_name": "Linked stack push",
             "required": true,
