@@ -26,8 +26,8 @@ static void radixsort(int A[], int k, int r, int n) {
     for (j = 0; j < n; j++) A[j] = B[j];  // Copy B back
   }
 }
-
 /* *** ODSAendTag: Radixsort *** */
+
 bool sorttest(int array[], int n, int threshold) {
   int i;
 
