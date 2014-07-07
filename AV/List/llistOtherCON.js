@@ -22,29 +22,12 @@
     nextCurr.hide();
     var slash = l.get(5).addTail(); // Diagonal slash at end
 
-    // pseudocode
-    var pseudo_next = av.code({
-          url: "../../../SourceCode/Processing/Lists/LList.pde",
-          lineNumbers: false,
-          startAfter: "/* *** ODSATag: LListNext *** */",
-          endBefore: "/* *** ODSAendTag: LListNext *** */",
-          top: 150,
-          left: 80
-        }).hide();
-
-    var pseudo_prev = av.code({
-          url: "../../../SourceCode/Processing/Lists/LList.pde",
-          lineNumbers: false,
-          startAfter: "/* *** ODSATag: LListPrev *** */",
-          endBefore: "/* *** ODSAendTag: LListPrev *** */"
-        }).hide();
-
-    var pseudo_pos = av.code({
-          url: "../../../SourceCode/Processing/Lists/LList.pde",
-          lineNumbers: false,
-          startAfter: "/* *** ODSATag: LListPos *** */",
-          endBefore: "/* *** ODSAendTag: LListPos *** */"
-        }).hide();
+    // We would like to have put this at: 
+    //          top: 150,
+    //          left: 80
+    var pseudo_next = av.code(code[0]).hide();
+    var pseudo_prev = av.code(code[1]).hide();
+    var pseudo_pos = av.code(code[2]).hide();
 
     // Slide 1
     av.umsg(interpret("av_c1"));
@@ -52,7 +35,7 @@
 
     // Slide 2
     pseudo_next.show();
-    pseudo_next.highlight(2);
+    pseudo_next.highlight("sig");
     av.umsg(interpret("av_c2"));
     av.step();
 
@@ -67,15 +50,15 @@
     l.get(4).unhighlight();
     pseudo_next.hide();
     pseudo_prev.show();
-    pseudo_prev.highlight(2);
+    pseudo_prev.highlight("sig");
     av.umsg(interpret("av_c4"));
     av.step();
 
     // Slide 5
     pseudo_next.hide();
     pseudo_prev.show();
-    pseudo_prev.unhighlight(2);
-    pseudo_prev.highlight(6);
+    pseudo_prev.unhighlight("sig");
+    pseudo_prev.highlight("while");
     l.get(0).highlight();
     l.get(1).highlight();
     l.get(2).highlight();
@@ -95,8 +78,8 @@
     temp.hide();
     curr.show();
     nextCurr.hide();
-    pseudo_prev.unhighlight(6);
-    pseudo_prev.highlight(7);
+    pseudo_prev.unhighlight("while");
+    pseudo_prev.highlight("curr");
     av.umsg(interpret("av_c7"));
     av.step();
 
@@ -104,7 +87,7 @@
     l.get(3).unhighlight();
     pseudo_prev.hide();
     pseudo_pos.show();
-    pseudo_pos.highlight(2);
+    pseudo_pos.highlight("sig");
     av.umsg(interpret("av_c8"));
     av.step();
 
@@ -115,8 +98,8 @@
     l.get(4).highlight();
     curr.hide();
     nextCurr.show();
-    pseudo_pos.unhighlight(2);
-    pseudo_pos.highlight(8);
+    pseudo_pos.unhighlight("sig");
+    pseudo_pos.highlight("for");
     av.umsg(interpret("av_c9"));
     av.step();
 

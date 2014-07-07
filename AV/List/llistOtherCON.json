@@ -13,5 +13,38 @@
       "av_c10": "This takes $\\Theta(i)$ time, where $i$ is the position to move to."
     }
   },
-  "code" : {}
+  "code" : {
+    "Processing": [
+      {
+        "url": "../../../SourceCode/Processing/Lists/LList.pde",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: LListNext *** */",
+        "endBefore": "/* *** ODSAendTag: LListNext *** */",
+        "tags": {
+          "sig": 2
+        }
+      },
+      {
+        "url": "../../../SourceCode/Processing/Lists/LList.pde",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: LListPrev *** */",
+        "endBefore": "/* *** ODSAendTag: LListPrev *** */",
+        "tags": {
+          "sig": 2,
+          "while": 6,
+          "curr": 7
+        }
+      },
+      {
+        "url": "../../../SourceCode/Processing/Lists/LList.pde",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: LListPos *** */",
+        "endBefore": "/* *** ODSAendTag: LListPos *** */",
+        "tags": {
+          "sig": 2,
+          "for": 5
+        }
+      }
+    ]
+  }
 }
