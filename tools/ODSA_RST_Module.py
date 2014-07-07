@@ -248,6 +248,7 @@ class ODSA_RST_Module:
       header_data['mod_chapter'] = chap
       header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
       header_data['mod_options'] = format_mod_options(mod_options)
+      header_data['build_cmap'] = config.build_cmap
       # Include an empty unicode directive when building slides
       header_data['unicode_directive'] = rst_header_unicode if os.environ.get('SLIDES', None) == "no" else ''
       # Prepend the header data to the exisiting module data
