@@ -1,26 +1,27 @@
 /*global ODSA */
 "use strict";
+// Written by Jun Yang and Cliff Shaffer
 // Bad representation version for linked list
 (function ($) {
   $(document).ready(function () {
     var av_name = "llistBadCON";
-    var interpret = ODSA.UTILS.loadLangData({'av_name': av_name}).interpreter;
+    var interpret = ODSA.UTILS.loadLangData({"av_name": av_name}).interpreter;
     var av = new JSAV(av_name);
 
     // Set up the list
-    var l = av.ds.list({ 'nodegap': 30, 'top': 50, left: 257 });
+    var l = av.ds.list({nodegap: 30, top: 30, left: 257});
     l.addFirst(15).addFirst(12).addFirst(10).addFirst(23).addFirst(20);
     l.layout();
     var bar = l.get(2).addVLine();
     var slash = l.get(4).addTail();
-    var slash3 = l.get(3).addTail({ visible: 0 }); //Diagonal slash in step 3, hide for now
+    var slash3 = l.get(3).addTail({visible: 0}); //Diagonal slash in step 3, hide for now
 
     // Set up the various pointers
-    var head = setPointerL('head', l.get(0));
+    var head = setPointerL("head", l.get(0));
     head.hide();
-    var curr = setPointerL('curr', l.get(2));
+    var curr = setPointerL("curr", l.get(2));
     curr.hide();
-    var tail = setPointerL('tail', l.get(4));
+    var tail = setPointerL("tail", l.get(4));
     tail.hide();
 
     // Slide 1

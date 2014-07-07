@@ -41,6 +41,8 @@ and ``remove`` methods must maintain this property.
 .. inlineav:: alistAppendCON ss
    :output: show
 
+.. avembed:: Exercises/List/alistInsertPRO.html ka
+  
 Removing an element from the head of the list is
 similar to insert in that all remaining elements  must shift toward
 the head by one position to fill in the gap.
@@ -54,6 +56,8 @@ following slideshow.
 In the average case, insertion or removal each requires moving half
 of the elements, which is :math:`\Theta(n)`.
 
+.. avembed:: Exercises/List/alistDeletePRO.html ka
+
 Aside from ``insert`` and ``remove``, the only other operations that
 might require more than constant time are the constructor and
 ``clear``.
@@ -64,10 +68,6 @@ They all require :math:`\Theta(1)` time.
 Now try for yourself to see if you understand how Array-Based
 Insertion and Deletion work.
  
-.. avembed:: Exercises/List/alistInsertPRO.html ka
-  
-.. avembed:: Exercises/List/alistDeletePRO.html ka
-
 .. avembed:: Exercises/List/ArryLstSumm.html ka
 
 .. odsascript:: AV/List/alistVarsCON.js

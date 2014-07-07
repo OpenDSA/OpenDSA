@@ -1,13 +1,14 @@
 /*global ODSA */
 "use strict";
+// Written by Jun Yang and Cliff Shaffer
 //Array-Based list introduction
 (function ($) {
   $(document).ready(function () {
-    var arrValues = [13, 12, 20, 8, 3, '', '', ''];
+    var arrValues = [13, 12, 20, 8, 3, "", "", ""];
     var av_name = "alistIntroCON";
-    var interpret = ODSA.UTILS.loadLangData({'av_name': av_name}).interpreter;
+    var interpret = ODSA.UTILS.loadLangData({"av_name": av_name}).interpreter;
     var av = new JSAV(av_name);
-    var arr = av.ds.array(arrValues, {indexed: true, layout: 'array'});
+    var arr = av.ds.array(arrValues, {indexed: true, layout: "array"});
 
     arr.addClass([5, 6, 7], "not-in-list");
     av.umsg(interpret("av_c1"));

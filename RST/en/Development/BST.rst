@@ -197,7 +197,7 @@ removed, or in the case when this node has two children,
 the depth of the node with smallest value in its right subtree.
 Thus, in the worst case, the cost for any one of these operations is
 the depth of the deepest node in the tree.
-This is why it is desirable to keep BSTs :dfn:`balanced`,
+This is why it is desirable to keep BSTs :term:`balanced`,
 that is, with least possible height.
 If a binary tree is balanced, then the height for a tree of :math:`n`
 nodes is approximately :math:`\log n`.

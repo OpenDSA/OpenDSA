@@ -14,6 +14,25 @@
     "JXOP-code": "c++"
   },
   "chapters": {
+    "Searching": {
+      "Development/BinarySearch": {
+        "long_name": "Binary Search",
+        "exercises": {
+          "binarySearchCON": {
+            "long_name": "Binary Search Algorithm Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binarySearchPRO": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      }
+    },
     "Design 1": {
       "Design/ADT": {
         "long_name": "Abstract Data Types",
@@ -77,17 +96,17 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "alistRemoveCON": {
-            "long_name": "Array-based List Remove",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
           "alistInsertPRO": {
             "long_name": "Array-based List Insert Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
+          },
+          "alistRemoveCON": {
+            "long_name": "Array-based List Remove",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           },
           "alistDeletePRO": {
             "long_name": "Array-based List Delete Exercise",
@@ -114,44 +133,45 @@
             "threshold": 1.0
           },
           "llistInitCON": { },
-          "LlistBadReasonCON": {
+          "llistBadDelCON": {
             "long_name": "Linked List Slideshow 2",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistVarsCON": {
-            "long_name": "Linked List Variables",
+          "llistHeaderCON": { },
+          "llistVarsCON": {
+            "long_name": "Linked List Variables Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LListCons": {
-            "long_name": "Linked List Constructors",
+          "llistConsCON": {
+            "long_name": "Linked List Constructors Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistInsertCON": {
-            "long_name": "Linked List Insert",
+          "llistInsertCON": {
+            "long_name": "Linked List Insert Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistSpecInsertCON": {
-            "long_name": "Linked List Special Insert",
+          "llistSpecialCON": {
+            "long_name": "Linked List Special Insert Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistRemoveCON": {
-            "long_name": "Linked List Remove",
+          "llistRemoveCON": {
+            "long_name": "Linked List Remove Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistPosCON": {
-            "long_name": "Linked List Position",
+          "llistOtherCON": {
+            "long_name": "Linked List Position Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
@@ -169,7 +189,7 @@
             "threshold": 5
           },
           "LstLnkdSumm": {
-            "long_name": "Linked List Summary",
+            "long_name": "Linked List Summary Exercise",
             "required": true,
             "points": 2,
             "threshold": 6

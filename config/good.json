@@ -280,45 +280,46 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistBadReasonCON": {
+          "llistInitCON": { },
+          "llistBadDelCON": {
             "long_name": "Linked List Slideshow 2",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "llistInitCON": { },
-          "LlistVarsCON": {
-            "long_name": "Linked List Variables",
+          "llistHeaderCON": { },
+          "llistVarsCON": {
+            "long_name": "Linked List Variables Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LListCons": {
-            "long_name": "Linked List Constructors",
+          "llistConsCON": {
+            "long_name": "Linked List Constructors Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistInsertCON": {
-            "long_name": "Linked List Insert",
+          "llistInsertCON": {
+            "long_name": "Linked List Insert Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistSpecInsertCON": {
-            "long_name": "Linked List Special Insert",
+          "llistSpecialCON": {
+            "long_name": "Linked List Special Insert Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
           "LlistRemoveCON": {
-            "long_name": "Linked List Remove",
+            "long_name": "Linked List Remove Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
           "LlistPosCON": {
-            "long_name": "Linked List Position",
+            "long_name": "Linked List Position Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
@@ -336,7 +337,7 @@
             "threshold": 5
           },
           "LstLnkdSumm": {
-            "long_name": "Linked List Summary",
+            "long_name": "Linked List Summary Exercise",
             "required": true,
             "points": 2,
             "threshold": 6

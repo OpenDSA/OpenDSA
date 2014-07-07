@@ -418,6 +418,25 @@
         "exercises": {}
       }
     },
+    "Searching": {
+      "Development/BinarySearch": {
+        "long_name": "Binary Search",
+        "exercises": {
+          "binarySearchCON": {
+            "long_name": "Binary Search Algorithm Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binarySearchPRO": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      }
+    },
     "Binary Trees": {
       "Development/BinaryTreeIntro": {
         "long_name": "Binary Trees Chapter Introduction",
@@ -437,7 +456,7 @@
       "Development/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-    "BTLeafPROG": {
+          "BTLeafPROG": {
             "long_name": "Node Count Function",
             "required": true,
             "points": 1.0,
@@ -702,13 +721,6 @@
       },
       "Stubs/LimComp": {
         "long_name": "Limits to Computing",
-        "exercises": {}
-      }
-    },
-    "Searching": {
-      "hidden": true,
-      "Stubs/SearchIntro": {
-        "long_name": "Searching",
         "exercises": {}
       }
     },
