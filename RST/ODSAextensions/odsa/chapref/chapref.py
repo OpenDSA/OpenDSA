@@ -2,6 +2,12 @@ from sphinx.roles import XRefRole
 from docutils.nodes import reference, SkipNode
 import json 
 
+
+# Prints the given string to standard error
+def print_err(err_msg):
+  sys.stderr.write('%s\n' % err_msg)
+
+
 def loadTable():
    try:
       table=open('table.json')
@@ -9,7 +15,9 @@ def loadTable():
       table.close()
       return data
    except IOError:
-      print 'ERROR: No table.json file.'
+      print_err( 'ERROR: No table.json file.')
+
+
 
 class chap_ref(reference):
     pass
@@ -37,7 +45,7 @@ def html_visit_chap_ref(self, node):
         html = '<a href="%s">%s</a>' %(link,  caption)
         self.body.append(html)
     else:
-        print 'WARNING: Missing object reference %s' %target
+        print_err( 'WARNING: Missing object reference %s' %target)
 
     raise SkipNode
 
