@@ -1,7 +1,7 @@
 from sphinx.roles import XRefRole 
 from docutils.nodes import reference, SkipNode
 import json 
-
+import sys
 
 # Prints the given string to standard error
 def print_err(err_msg):
