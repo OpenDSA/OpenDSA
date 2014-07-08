@@ -70,7 +70,7 @@ bool sorttest(int array[], int n, int threshold) {
     A[i] = new KVPair(array[i], &array[i]);
   }
   for (int i = 0; i < n; ++i) {
-      temp[i] = new KVpair(0, 0);
+      temp[i] = new KVPair(0, 0);
    }
 
   mergesort(A, temp, 0, n-1);

@@ -4,14 +4,7 @@
 #include "Int.cpp"
 #include "Checkorder.cpp"
 
-// With KVPair
 
-
-void swap(Comparable *A[], int i, int j) {
-  Comparable* tmp = A[i];
-  A[i] = A[j];
-  A[j] = tmp;
-}
 /* *** ODSATag: findpivot *** */
 int findpivot(int i, int j) { 
   return (i+j)/2;
@@ -19,8 +12,7 @@ int findpivot(int i, int j) {
 /* *** ODSAendTag: findpivot *** */
 
 /* *** ODSATag: partition *** */
-int partition(Comparable* A[], int left, int right, int j) {
-  Comparable* pivot = A[j];
+int partition(Comparable* A[], int left, int right, Comparable* pivot) {
   while (left <= right) { // Move bounds inward until they meet
     while (*A[left] < *pivot) left++;
     while ((right >= left)  && (*A[right] >= *pivot)) right--;
@@ -33,10 +25,9 @@ int partition(Comparable* A[], int left, int right, int j) {
 /* *** ODSATag: Quicksort *** */
 void quicksort(Comparable* A[], int i, int j) {
   int pivotindex = findpivot(i, j);
-
   swap(A, pivotindex, j); // Stick pivot at end
   // k will be the first position in the right subarray
-  int k = partition(A, i, j-1, j);
+  int k = partition(A, i, j-1,A[j]);
   swap(A, k, j);                       // Put pivot in place
   if ((k-i) > 1) quicksort(A, i, k-1); // Sort left partition
   if ((j-k) > 1) quicksort(A, k+1, j); // Sort right partition
