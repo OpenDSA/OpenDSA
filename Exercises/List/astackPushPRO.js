@@ -39,6 +39,10 @@ function clickHandler(index, e) {
   console.log("In array click handler");
   if (selected_index === -1) { // nothing currently selected
     if (selected_pointer) { // He's re-setting the pointer
+      // workaround for pointer update bug
+      // topPointer.element.remove();
+      // topPointer.arrow.element.remove();
+      // topPointer = jsav.pointer("top", jsavArr, {targetIndex: index});
       topPointer.target(jsavArr, {targetIndex: index});
       topPointer.element.removeClass('highlight');
       pointerIndex = index;
