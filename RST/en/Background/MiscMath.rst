@@ -47,7 +47,7 @@ good approximation.
 Stirling's approximation states that
 :math:`n! \approx \sqrt{2\pi n}(\frac{n}{e})^n`,
 where :math:`e \approx 2.71828`
-(:math:`e` is the base for the system of natural logarithms). [#]_
+(:math:`e` is the base for the system of natural logarithms) [#]_.
 Thus we see that while :math:`n!` grows
 slower than :math:`n^n` (because :math:`\sqrt{2\pi n}/e^n < 1`),
 it grows faster than :math:`c^n` for any positive integer constant
@@ -119,7 +119,7 @@ For example, :math:`\lceil 3.4 \rceil = 4`, as does
 :math:`\lceil 4.0 \rceil`,
 while :math:`\lceil -3.4 \rceil = \lceil -3.0 \rceil = -3`.
 
-**Modulus operator:**
+**Modulus function:**
 The :term:`modulus` (or :term:`mod`) function returns the remainder of
 an integer division.
 Sometimes written :math:`n \bmod m` in mathematical expressions,
@@ -146,9 +146,9 @@ Another language might do something different.
 
 Unfortunately, for many applications this is not what the user wants
 or expects.
-For example, many hash systems will perform some
-computation on a record's key value and then take the result modulo
-the hash table size (see Module :numref:`<HashFunc>`).
+For example, many :ref:`hash systems <hash system> <HashFunc>`
+will perform some computation on a record's :term:`key` value and then
+take the result modulo the hash table size.
 The expectation here would be that the result is a legal index into
 the hash table, not a negative number.
 Implementers of hash functions must either insure that the

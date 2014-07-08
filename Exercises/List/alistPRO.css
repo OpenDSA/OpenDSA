@@ -1,0 +1,26 @@
+.jsavcontainer {
+  height: 125px;
+  border: 0;
+}
+
+.jsavnode .jsavvalue { /* Make array cell values center vertically */
+  height: 30px;
+}
+
+.jsavnode {
+  line-height: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+}
+
+#reset { margin-right: 20px;}
+
+#alistInsertPRO.jsavcanvas {
+  height: 125px;
+}
+
+#alistDeletePRO.jsavcanvas{
+  height: 185px;
+}

@@ -2,11 +2,12 @@
   "title": "CS2114 Spring 2014",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "lang": "fr",
+  "lang": "en",
   "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
+  "build_cmap": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
   "chapters": {
@@ -33,14 +34,14 @@
       "List/ListADT": {
         "long_name": "List ADT",
         "exercises": {
-          "listADTCON1": {
-            "long_name": "List ADT Slideshow 1",
+          "listADTposCON": {
+            "long_name": "List ADT Positions Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listADTCON2": {
-            "long_name": "List ADT Slideshow 2",
+          "listADTnoteCON": {
+            "long_name": "List ADT Notation Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
@@ -56,43 +57,43 @@
       "List/ListArray": {
         "long_name": "Array-based Lists",
         "exercises": {
-          "AlistVarsCON": {
-            "long_name": "Array-based List Variables",
+          "alistVarsCON": {
+            "long_name": "Array-based List Variables Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AlistIntroCON": {
-            "long_name": "Array-based List Intro",
+          "alistIntroCON": {
+            "long_name": "Array-based List Intro Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-         "AlistInsertCON": {
-            "long_name": "Array-based List Insertion",
+         "alistInsertCON": {
+            "long_name": "Array-based List Insertion Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AlistAppendCON": {
-            "long_name": "Array-based List Append",
+          "alistAppendCON": {
+            "long_name": "Array-based List Append Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AlistRemoveCON": {
-            "long_name": "Array-based List Remove",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "listArrayInsertion": {
+          "alistInsertPRO": {
             "long_name": "Array-based List Insert Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listArrayDeletion": {
+          "alistRemoveCON": {
+            "long_name": "Array-based List Remove",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "alistDeletePRO": {
             "long_name": "Array-based List Delete Exercise",
             "required": true,
             "points": 1,
@@ -154,68 +155,71 @@
       "List/ListLinked": {
         "long_name": "Linked Lists",
         "exercises": {
-          "LlistBadCON": {
+          "llistRepCON": { },
+          "llistBadCON": {
             "long_name": "Linked List Slideshow 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistBadReasonCON": {
+          "llistInitCON": { },
+          "llistBadDelCON": {
             "long_name": "Linked List Slideshow 2",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistVarsCON": {
-            "long_name": "Linked List Variables",
+          "llistHeaderCON": { },
+          "llistVarsCON": {
+            "long_name": "Linked List Variables Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LListCons": {
-            "long_name": "Linked List Constructors",
+          "llistConsCON": {
+            "long_name": "Linked List Constructors Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistInsertCON": {
-            "long_name": "Linked List Insert",
+          "llistInsertCON": {
+            "long_name": "Linked List Insert Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistSpecInsertCON": {
-            "long_name": "Linked List Special Insert",
+          "llistSpecialCON": {
+            "long_name": "Linked List Special Insert Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistRemoveCON": {
-            "long_name": "Linked List Remove",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "LlistPosCON": {
-            "long_name": "Linked List Position",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "listLinkedInsertion": {
+          "llistInsertPRO": {
             "long_name": "Linked List Insert Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listLinkedDeletion": {
-            "long_name": "Linked List Delete Exercise",
+          "llistRemoveCON": {
+            "long_name": "Linked List Remove Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistRemovePRO": {
+            "long_name": "Linked List Remove Exercise",
             "required": true,
             "points": 2,
             "threshold": 5
           },
+          "llistOtherCON": {
+            "long_name": "Linked List Position Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "LstLnkdSumm": {
-            "long_name": "Linked List Summary",
+            "long_name": "Linked List Summary Exercise",
             "required": true,
             "points": 2,
             "threshold": 6
@@ -410,12 +414,31 @@
       "Background/Recursion": {
         "long_name": "Recursion",
         "exercises": {
-          "recursionCONTOH": {}
+          "TOHfigCON": {}
         }
       },
       "List/StackRecur": {
         "long_name": "Implementing Recursion",
         "exercises": {}
+      }
+    },
+    "Searching": {
+      "Development/BinarySearch": {
+        "long_name": "Binary Search",
+        "exercises": {
+          "binarySearchCON": {
+            "long_name": "Binary Search Algorithm Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binarySearchPRO": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       }
     },
     "Binary Trees": {
@@ -437,7 +460,7 @@
       "Development/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-    "BTLeafPROG": {
+          "BTLeafPROG": {
             "long_name": "Node Count Function",
             "required": true,
             "points": 1.0,
@@ -702,13 +725,6 @@
       },
       "Stubs/LimComp": {
         "long_name": "Limits to Computing",
-        "exercises": {}
-      }
-    },
-    "Searching": {
-      "hidden": true,
-      "Stubs/SearchIntro": {
-        "long_name": "Searching",
         "exercises": {}
       }
     },

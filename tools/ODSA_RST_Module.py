@@ -248,6 +248,7 @@ class ODSA_RST_Module:
       header_data['mod_chapter'] = chap
       header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
       header_data['mod_options'] = format_mod_options(mod_options)
+      header_data['build_cmap'] = config.build_cmap
       # Include an empty unicode directive when building slides
       header_data['unicode_directive'] = rst_header_unicode if os.environ.get('SLIDES', None) == "no" else ''
       # Prepend the header data to the exisiting module data
@@ -258,6 +259,13 @@ class ODSA_RST_Module:
       # Alter the contents of the module based on the config file
       i = 0
       while i < len(mod_data):
+        start_space = 0
+        for s in mod_data[i]:
+          if s.isspace():
+            start_space += 1
+          else:
+             break
+
         line = mod_data[i].strip().lower()
 
         # Determine the type of directive
@@ -267,6 +275,30 @@ class ODSA_RST_Module:
         if dir_type in ['table', 'example', 'theorem', 'figure']:
           (num_ref_map, counters) = update_counters(mod_data[i - 2], dir_type, mod_num, num_ref_map, counters)
 
+        if ':ref:' in line:
+          #lower case modules names
+          lower_listed_modules = [x.lower() for x in config.listed_modules]
+          line = mod_data[i].strip()
+          rel_tokens = re.split(':ref:|`', line)
+          if len(rel_tokens) == 4:
+            rel_labels = rel_tokens[2]  
+            rel_tags = re.split('<|>', rel_labels)
+            #We encountered the alternate :ref: syntax
+            if len(rel_tags) == 5:
+              if rel_tags[3].strip().lower() in lower_listed_modules:
+                #module is present swith to standard :rel: syntax
+                line = line.replace('<'+ rel_tags[1] + '>', '')
+              else:
+                #module absent swith to :term:
+                tmpStr = rel_tags[0]
+                line = line.replace(rel_tags[0], '')
+                line = line.replace(':ref:','<anchor-text>' + tmpStr.strip() + ':' + rel_tags[1].strip()  + '</anchor-text> :term:')
+                line = line.replace('<' + rel_tags[1] + '> ', rel_tags[1].strip())
+                line = line.replace('<' + rel_tags[3]  + '>','')
+              line = ' ' * start_space + line + '\n'
+              mod_data[i] = line 
+          line = mod_data[i].strip().lower()
+      
         if ':requires:' in mod_data[i]:
           # Parse the list of prerequisite topics from the module
           requires = [req.strip() for req in line.replace(':requires:', '').split(';')]

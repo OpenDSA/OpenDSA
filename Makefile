@@ -21,27 +21,42 @@ lint: csslint jshint
 
 csslint:
 	@echo 'running csslint'
+	@csslint $(CSSLINTFLAGS) AV/Background/*.css
+	@csslint $(CSSLINTFLAGS) AV/Design/*.css
+	@csslint $(CSSLINTFLAGS) AV/List/*.css
 	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
 	@csslint $(CSSLINTFLAGS) AV/Hashing/*.css
-	@csslint $(CSSLINTFLAGS) AV/List/*.css
+	@csslint $(CSSLINTFLAGS) AV/Searching/*.css
 	@csslint $(CSSLINTFLAGS) AV/*.css
 	@csslint $(CSSLINTFLAGS) Doc/*.css
 	@csslint $(CSSLINTFLAGS) lib/*.css
 
 jshint:
 	@echo 'running jshint'
-	-@jshint AV/Sorting/*.js
-	-@jshint AV/Hashing/*.js
+	-@jshint AV/Background/*.js
+	-@jshint AV/Design/*.js
+	-@jshint AV/Design/*.json
 	-@jshint AV/List/*.js
+	-@jshint AV/List/*.json
+	-@jshint AV/Sorting/*.js
+	-@jshint AV/Sorting/*.json
+	-@jshint AV/Hashing/*.js
+	-@jshint AV/Hashing/*.json
+	-@jshint AV/Searching/*.js
+	-@jshint AV/Searching/*.json
 	-@jshint Exercises/Hashing/*.js
 	-@jshint lib/odsaUtils.js
 	-@jshint lib/odsaAV.js
 	-@jshint lib/odsaMOD.js
 	-@jshint lib/gradebook.js
 	-@jshint lib/registerbook.js
+	-@jshint lib/conceptMap.js
 
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
+
+good: min
+	python $(CONFIG_SCRIPT) config/good.json
 
 RecurTutor: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json
@@ -127,7 +142,7 @@ invalid: min
 slides: min
 	python $(CONFIG_SCRIPT) -s config/slides.json
 
-allBooks: CS150 CS3114 CSCI204 CSCI102 CS5114 CS2114 OpenDSA Everything test slides uwosh
+allBooks: CS150 CS3114 CSCI204 CSCI102 CS5114 CS2114 OpenDSA Everything test uwosh good slides
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js

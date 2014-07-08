@@ -13,13 +13,14 @@ Analyzing Problems
 ==================
 
 You most often use the techniques of "algorithm" analysis to analyze
-an algorithm, or the instantiation of an algorithm as a program.
+an :term:`algorithm`, or the instantiation of an algorithm as a
+:term:`program`.
 You can also use these same techniques to analyze the cost of a
-problem.
-It should make sense to you to say that the upper bound for a problem
-cannot be worse than the upper bound for the best algorithm that we
-know for that problem.
-But what does it mean to give a lower bound for a problem?
+:term:`problem`.
+It should make sense to you to say that the :term:`upper bound` for a
+problem cannot be worse than the upper bound for the best algorithm
+that we know for that problem.
+But what does it mean to give a :term:`lower bound` for a problem?
 
 Consider a graph of cost over all inputs of a given size :math:`n` for
 some algorithm for a given problem.
@@ -30,6 +31,11 @@ Now, consider the collection of all the graphs for all of the
 (infinitely many) algorithms in :math:`\mathcal{A}`.
 The worst case lower bound is the *least* of all the
 *highest* points on all the graphs.
+
+.. TODO::
+   :tag: Visualization
+
+   Present a visualization of this previous paragraph
 
 It is much easier to show that an algorithm (or program) is in
 :math:`\Omega(f(n))` than it is to show that a problem is in
@@ -72,15 +78,16 @@ sorting in the worst case is greater than :math:`\Omega(n)`,
 then you cannot know for sure whether or not there is a better
 algorithm.
 
-Chapter :numref:`<InSort>` presents sorting algorithms whose
-running time is in :math:`O(n \log n)` for the worst case.
+Many good sorting algorithms have running time that is
+in :math:`O(n \log n)` in the worst case.
 This greatly narrows the gap.
 With this new knowledge, we now have a lower bound in
 :math:`\Omega(n)` and an upper bound in :math:`O(n \log n)`.
 Should we search for a faster algorithm?
 Many have tried, without success.
-Fortunately (or perhaps unfortunately?), Chapter :numref:`<InSort>`
-also includes a proof that any sorting algorithm must have running
+Fortunately (or perhaps unfortunately?),
+:ref:`we can prove that <sorting lower bound> <SortingLowerBound>`
+any sorting algorithm must have running
 time in :math:`\Omega(n \log n)` in the worst case. [#]_
 This proof is one of the most important results in
 the field of algorithm analysis, and it means that no sorting

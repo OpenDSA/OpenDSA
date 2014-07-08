@@ -26,7 +26,7 @@ void inssortshift(Comparable* A[], int n) { // Insertion Sort
   }
 }
 /* *** ODSAendTag: InsertionOpt *** */
-
+  
 bool sorttest(int array[], int n, int threshold) {
   Comparable* A[n];
   int i;

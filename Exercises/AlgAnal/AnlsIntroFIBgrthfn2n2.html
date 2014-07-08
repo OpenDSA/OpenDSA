@@ -10,7 +10,7 @@
 <body>
 <script>
 function checkAnswer(answer) {
-  if ( answer == "none") {
+  if ( answer.trim() == "none") {
     return true;
   } else {
     return false;
@@ -36,7 +36,13 @@ function checkAnswer(answer) {
         </div>
       </div>
       <div class="hints">
+        <p>Since <code>2n^2</code> is a relatively fast growing
+          function, it would only be fastest for relatively small
+          values of <code>n</code>.</p>
+        <p>But other functions on the list might even faster for small
+          values of <code>n</code>.</p>
       </div> 
+    </div>
   </div>
 </div>
 </body>

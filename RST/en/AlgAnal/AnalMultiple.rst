@@ -41,10 +41,9 @@ The time for the second loop (which determines the number of pixels
 with each color) is :math:`\Theta(P)`.
 The time for the final line, the call to ``sort``, depends on the
 cost of the sorting algorithm used.
-From the discussion of Module :numref:`<AnalProblem>`, we can assume
-that the sorting algorithm has cost :math:`\Theta(P \log P)` if
-:math:`P` items are sorted, thus yielding :math:`\Theta(P \log P)` as
-the total algorithm cost.
+We will assume that the sorting algorithm has cost
+:math:`\Theta(P \log P)` if :math:`P` items are sorted,
+thus yielding :math:`\Theta(P \log P)` as the total algorithm cost.
 
 Is this a good representation for the cost of this algorithm?
 What is actually being sorted?

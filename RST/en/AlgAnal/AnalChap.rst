@@ -43,8 +43,8 @@ After reading this chapter, you should understand
   growth rate, and how to estimate these bounds for a simple program,
   algorithm, or problem; and
 
-* the difference between the cost of an algorithm
-  (or program) and the cost of a problem.
+* the difference between the cost of an :term:`algorithm`
+  (or program) and the cost of a :term:`problem`.
 
 The chapter concludes with a brief discussion of the
 practical difficulties encountered when empirically measuring the cost

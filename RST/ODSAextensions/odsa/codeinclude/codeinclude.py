@@ -27,6 +27,9 @@ import codecs
 sys.path.append(os.path.abspath('./source'))
 import conf
 
+def print_err(err_msg):
+  sys.stderr.writelines('CODEINCLUDE ERROR: %s\n' % err_msg)
+
 
 def setup(app):
   app.add_directive('codeinclude',codeinclude)
@@ -132,13 +135,16 @@ class codeinclude(Directive):
 
       # Print an error message if no file is found for any language
       if not file_found:
+        print_err('File %r not found for any language' % filename)
         return [document.reporter.warning(
-          'Include file %r not found for any language' % filename, line=self.lineno)]
+          'File %r not found for any language' % filename, line=self.lineno)]
 
       # Append the rest of the HTML for the header of the tabbed container and the JavaScript necessary to create the tabs
       if len(html_strs) > 0:
         html_strs[0] = tab_header + '</ul>' + html_strs[0]
-        html_strs[-1] += '</div><script>$(function() {$( "#%s" ).tabs();});</script>' % tab_id
+        # Link to additional jQuery UI libraries, so we don't load it on pages where its not needed
+        lib_path = os.path.relpath(conf.odsa_path,conf.ebook_path) + '/lib'
+        html_strs[-1] += '</div><script src="%s/jquery-ui-1.8.24.min.js"></script><script>$(function() {$( "#%s" ).tabs();});</script>' % (lib_path, tab_id)
 
     # If only one code block exists, print the code normally
     if len(code_nodes) == 1:
@@ -172,10 +178,14 @@ class codeinclude(Directive):
       lines = f.readlines()
       f.close()
     except (IOError, OSError):
+      print_err('Failed to read %r' % filename)
       return [document.reporter.warning(
         'Include file %r not found or reading it failed' % filename,
         line=self.lineno)]
     except UnicodeError:
+      print_err('Encoding %r used for reading included file %r seems to '
+        'be wrong, try giving an :encoding: option' %
+        (encoding, filename))
       return [document.reporter.warning(
         'Encoding %r used for reading included file %r seems to '
         'be wrong, try giving an :encoding: option' %
@@ -251,18 +261,20 @@ class codeinclude(Directive):
           if startafter in line:
             use = True
             tags_counter += 1
-            continue
           elif endbefore in line:
             use = False
             tags_counter += 1
-            continue
-
-          if use:
+          elif '/* *** ODSA' in line:
+            # Ignore tag comments
+            pass
+          elif use:
             res.append(line)
 
         if tags_counter == 0:
+          print_err('Tag "%s" not found in %s. Make sure the tag in your module file matches the delimiter in the source code file.' % (tag, filename))
           return [document.reporter.warning('Tag "%s" not found in %s. Make sure the tag in your module file matches the delimiter in the source code file.' % (tag, filename), line=self.lineno)]
         elif tags_counter == 1:
+          print_err('Begin or end tag (%s) missing from %s. Please verify your source code file.' % (tag, filename))
           return [document.reporter.warning('Begin or end tag (%s) missing from %s. Please verify your source code file.' % (tag, filename), line=self.lineno)]
 
     lines = res

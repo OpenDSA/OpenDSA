@@ -9,13 +9,32 @@
    :satisfies: analyzing programs
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/Searching/binarySearchCON.css
+
 Calculating Program Running Time
 ================================
 
 This modules discusses the analysis for several simple code
 fragments.
+We will make use of the algorithm analysis simplifying rules:
 
-.. topic: Example
+#. If :math:`f(n)` is in :math:`O(g(n))` and :math:`g(n)` is in
+   :math:`O(h(n))`, then :math:`f(n)` is in :math:`O(h(n))`.
+
+#. If :math:`f(n)` is in :math:`O(k g(n))` for any constant
+   :math:`k > 0`, then :math:`f(n)` is in :math:`O(g(n))`.
+
+#. If :math:`f_1(n)` is in :math:`O(g_1(n))` and :math:`f_2(n)` is in
+   :math:`O(g_2(n))`, then :math:`f_1(n) + f_2(n)` is in
+   :math:`O(\max(g_1(n), g_2(n)))`.
+
+#. If :math:`f_1(n)` is in :math:`O(g_1(n))` and :math:`f_2(n)` is in
+   :math:`O(g_2(n))`, then :math:`f_1(n) f_2(n)` is in
+   :math:`O(g_1(n) g_2(n))`.
+
+.. _AssignAnal:
+
+.. topic:: Example
 
    We begin with an analysis of a simple assignment to an integer
    variable.
@@ -29,7 +48,7 @@ fragments.
 
 .. _FLAnal:
 
-.. topic: Example
+.. topic:: Example
 
    Consider a simple ``for`` loop.
 
@@ -38,13 +57,13 @@ fragments.
 
    The first line is :math:`Theta(1)`.
    The ``for`` loop is repeated :math:`n` times.
-   The third line takes constant time so, by simplifying rule (4)
-   of Module :numref:`<AnalAsymptotic>`, the total cost for executing
+   The third line takes constant time so, by simplifying rule (4),
+   the total cost for executing
    the two lines making up the ``for`` loop is :math:`\Theta(n)`.
    By rule (3), the cost of the entire code fragment is also
    :math:`\Theta(n)`.
 
-.. topic: Example
+.. topic:: Example
 
    We now analyze a code fragment with several ``for``
    loops, some of which are nested.
@@ -66,7 +85,7 @@ fragments.
    :math:`c_3`.
    Because the inner ``for`` loop is executed :math:`i` times,
    by simplifying rule (4) it has cost :math:`c_3i`.
-   The outer ``for``loop is executed :math:`n` times, but each time
+   The outer ``for`` loop is executed :math:`n` times, but each time
    the cost of the inner loop is different because it costs
    :math:`c_3i` with :math:`i` changing each time.
    You should see that for the first execution of the outer loop,
@@ -76,7 +95,7 @@ fragments.
    until the last time through the loop when :math:`i = n`.
    Thus, the total cost of the loop is :math:`c_3` times the sum of
    the integers 1 through :math:`n`.
-   From Equation  :num:`#Sumi`, we know that
+   We know that
 
    .. math::
 
@@ -86,7 +105,7 @@ fragments.
    By simplifying rule (3), :math:`\Theta(c_1 + c_2 n + c_3 n^2)` is
    simply :math:`\Theta(n^2)`.
 
-.. topic: Example
+.. topic:: Example
 
    Compare the asymptotic analysis for the following two code
    fragments.
@@ -101,11 +120,11 @@ fragments.
    :math:`n^2` times.
    The second loop is similar to the one analyzed in the previous
    example, with cost :math:`\sum_{j = 1}^{n} j`.
-   This is approximately :math:{1 \over 2} n^2`.
-   Thus, both double loops cost :math:`Theta(n^2)`, though the second
+   This is approximately :math:`{1 \over 2} n^2`.
+   Thus, both double loops cost :math:`\Theta(n^2)`, though the second
    requires about half the time of the first.
 
-.. topic: Example
+.. topic:: Example
 
    Not all doubly nested ``for`` loops are :math:`\Theta(n^2)`.
    The following pair of nested loops illustrates this fact.
@@ -113,26 +132,33 @@ fragments.
    .. codeinclude:: Misc/Anal
       :tag: c3p6
 
-     When analyzing these two code fragments, we will assume that
+   When analyzing these two code fragments, we will assume that
    :math:`n` is a power of two.
    The first code fragment has its outer ``for`` loop executed
    :math:`\log n+1` times because on each iteration :math:`k` is
    multiplied by two until it reaches :math:`n`.
    Because the inner loop always executes :math:`n` times,
    the total cost for the first code fragment can be expressed as
-   :math:`\sum_{i=0}^{\log n} n`.
+
+   .. math::
+
+      \sum_{i=0}^{\log n} n = n \log n.
+
+   So the cost of this first double loop is :math:`\Theta(n \log n)`.
    Note that a variable substitution takes place here to create the
    summation, with :math:`k = 2^i`.
-   From Equation~\ref{SumLog}, the solution for this summation is
-   :math:`\Theta(n \log n)`.
+
    In the second code fragment, the outer loop is also executed
    :math:`\log n+1` times.
    The inner loop has cost :math:`k`, which doubles each time.
-   The summation can be expressed as :math:`\sum_{i=0}^{\log n} 2^i`
+   The summation can be expressed as
+
+   .. math::
+
+      \sum_{i=0}^{\log n} 2^i = \Theta(n)
+
    where :math:`n` is assumed to be a power of two and again
    :math:`k = 2^i`.
-   From Equation :num:`#SumExLog`, we know that this summation is
-   simply :math:`Theta(n)`.
 
 What about other control statements?
 ``While`` loops are analyzed in a manner similar to ``for``
@@ -157,16 +183,15 @@ To perform an average-case analysis for such programs,
 we cannot simply count the cost of the ``if``
 statement as being the cost of the more expensive branch.
 In such situations, the technique of
-amortized analysis (see Module :numref:`<AmortAnal>`) can come to the
-rescue.
+:ref:`amortized analysis <amortized analysis> <AmortAnal>` can come to
+the rescue.
 
 Determining the execution time of a recursive
 subroutine can be difficult.
 The running time for a recursive subroutine is
 typically best expressed by a recurrence relation.
-For example, the recursive factorial function ``fact`` of
-Module :numref:`<Recursion>` calls itself with a
-value one less than its input value.
+For example, the recursive factorial function
+calls itself with a value one less than its input value.
 The result of this recursive call is then multiplied by the input
 value, which takes constant time.
 Thus, the cost of the factorial function, if we wish to measure cost
@@ -180,8 +205,7 @@ Thus, the running time for this function can be expressed as
 
    \Theta(n) = \Theta(n-1) + 1 \ \mbox{for}\ n>1;\ \ T(1) = 0.
 
-We know from Examples :num:`#FactRecurSol` and
-:num:`#FactRecurProof` that the closed-form solution for this
+The closed-form solution for this
 recurrence relation is :math:`\Theta(n)`.
 
 The final example of algorithm analysis for this section will compare
@@ -216,45 +240,10 @@ of the remaining positions from consideration.
 This process repeats until either the desired value is found, or
 there are no positions remaining in the array that might contain the
 value :math:`K`.
-Figure :num:`Figure #BinSchFig` illustrates the binary search method.
+Here is an illustration of the binary search method.
 
-.. _BinSchFig:
-
-.. odsafig:: Images/BinSch.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Illustration of binary search
-
-   An illustration of binary search on a sorted array of
-   16 positions. 
-   Consider a search for the position with value :math:`K = 45`.
-   Binary search first checks the value at position 7.
-   Because :math:`41 < K`, the desired value cannot
-   appear in any position below 7 in the array.
-   Next, binary search checks the value at position 11.
-   Because :math:`56 > K`, the desired value (if it exists) must be
-   between positions 7 and 11.
-   Position 9 is checked next.
-   Again, its value is too great.
-   The final search is at position 8, which contains the desired
-   value.
-   Thus, function ``binary`` returns position 8.
-   Alternatively, if :math:`K` were 44, then the same series of record
-   accesses would be made.
-   After checking position 8, ``binary`` would return a value of
-   :math:`n`, indicating that the search is unsuccessful.
-
-.. TODO::
-   :type: Figure
-
-   Redo this figure using JSAV
-
-Here is an implementation for binary search.
-
-   .. codeinclude:: Misc/Anal 
-      :tag: bsearch
+.. inlineav:: binarySearchCON ss
+   :output: show
 
 To find the cost of this algorithm in the worst case, we can model the
 running time as a recurrence and then find the closed-form solution.
@@ -309,3 +298,5 @@ Only in the context of the complete problem to be solved can we know
 whether the advantage outweighs the disadvantage.
 
 .. avembed:: Exercises/AlgAnal/AnalProgramSumm.html ka
+
+.. odsascript:: AV/Searching/binarySearchCON.js

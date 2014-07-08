@@ -16,7 +16,7 @@ Abstract Data Types
 This module presents terminology and definitions related to techniques
 for managing the tremendous complexity of computer programs.
 It also presents working definitions for the fundamental but somewhat
-slippery terms "data item" and "data structure".
+slippery terms ":term:`data item`" and ":term:`data structure`".
 We begin with the basic elements on which data structures are built.
 
 A :term:`type` is a collection of values.
@@ -50,8 +50,8 @@ The list data type can therefore be implemented using a linked list or
 an array.
 But we don't need to know how the list is implemented when we wish to
 use a list to help in a more complex design.
-For example, a list might be used to help implement a graph data
-structure (as described in Module :numref:`<GraphImpl>`).
+For example, a list might be used to help implement a
+:ref:`graph data structure <graph> <GraphImpl>`.
 
 As another example, the term "array" could refer either
 to a data type or an implementation.
@@ -64,10 +64,10 @@ However, array can also mean a logical data type composed of a
 identified by an index number.
 It is possible to implement arrays in many different ways besides as a
 block of contiguous memory location.
-For example, Module :numref:`<SparseMatrix>` describes the data
-structure used to implement a sparse matrix, a large
-two-dimensional array that stores only a relatively few non-zero
-values.
+This is particularly useful when implementing a
+:ref:`sparse matrix <sparse matrix> <SparseMatrix>`,
+a large two-dimensional array
+that stores only a relatively few non-zero values.
 
 An :term:`abstract data type` (ADT) is the realization of a data type
 as a software component.
@@ -85,7 +85,7 @@ an ADT and its implementation together make up a :term:`class`.
 Each operation associated with the ADT is implemented by a
 :term:`member function` or :term:`method`.
 The variables that define the space required by a data item are
-referred to as :term:`data members`.
+referred to as :term:`data members <data member>`.
 An :term:`object` is an instance of a class, that is, something that
 is created and takes up storage during the execution of a
 computer program.
@@ -139,19 +139,19 @@ why a given ADT might be supported by more than one implementation.
 .. topic:: Example
 
    Two popular implementations for large disk-based
-   database applications are hashing (Module :numref:`<HashIntro>`)
-   and the B+-tree (Module :numref:`<BTree>`).
+   database applications are :ref:`hashing <hashing> <HashIntro>`
+   and the :ref:`B-tree <B-tree> <BTree>`.
    Both support efficient insertion and deletion of records, and both
    support exact-match queries.
-   However, hashing is more efficient than the B+-tree for
+   However, hashing is more efficient than the B-tree for
    exact-match queries.
-   On the other hand, the B+-tree can perform range queries
+   On the other hand, the B-tree can perform range queries
    efficiently, while hashing is hopelessly inefficient for
    range queries.
    Thus, if the database application limits searches to exact-match
    queries, hashing is preferred.
    On the other hand, if the application requires support for range
-   queries, the B+-tree is preferred.
+   queries, the B-tree is preferred.
    Despite these performance issues, both implementations solve
    versions of the same problem: updating and searching a large
    collection of records.
@@ -222,14 +222,13 @@ program, you would have no hope of understanding or implementing it.
    Consider the design for a relatively simple database system stored
    on disk.
    Typically, records on disk in such a program are accessed through a
-   buffer pool (see Section :numref:`<BuffPool>`) rather
-   than directly.
+   :ref:`buffer pool <buffer pool> <BuffPool>` rather than directly.
    Variable length records might use a
-   memory manager (see Module :numref:`<MemmanIntro>`) to
-   find an appropriate location within the disk file to place the
-   record.
-   Multiple index structures (see Chapter :chap:`Indexing`)
-   will typically be used to access records in various ways.
+   :ref:`memory manager <memory manager> <MemmanIntro>` to find an
+   appropriate location within the disk file to place the record.
+   Multiple :ref:`index structures <indexing> <IndexIntro>`
+   will typically be used to support access to a collection of records
+   using multiple :term:`search keys <search key>`.
    Thus, we have a chain of classes, each with its own responsibilities
    and access privileges.
    A database query from a user is implemented by searching an index
@@ -251,7 +250,7 @@ The definition of the data type in terms of an ADT is its logical
 form.
 The implementation of the data type as a data structure
 is its physical form.
-Figure :num:`Figure #DataType` illustrates this relationship between logical
+The figure below illustrates this relationship between logical
 and physical forms for data types.
 When you implement an ADT, you are dealing with the physical form of
 the associated data type.
@@ -264,7 +263,7 @@ context of a higher-level task.
 
 .. _DataType:
 
-.. inlineav:: ADTCON1 dgm
+.. inlineav:: ADTCON dgm
    :align: justify
 
    The relationship between data items, abstract data types, and data
@@ -276,13 +275,12 @@ context of a higher-level task.
 .. topic:: Example
 
    A particular programming environment might provide a library that
-   includes a list class.
+   includes a :term:`list` class.
    The logical form of the list is defined by the public 
    functions, their inputs, and their outputs that define the class.
    This might be all that you know about the list class implementation,
    and this should be all you need to know.
    Within the class, a variety of physical implementations for lists
    is possible.
-   Several are described in Module :numref:`<ListIntro>`.
 
 .. odsascript:: AV/Design/ADTCON.js

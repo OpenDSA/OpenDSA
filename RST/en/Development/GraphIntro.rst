@@ -58,8 +58,8 @@ Terminology and Representations
 -------------------------------
 
 A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
-of a set of :term:`vertices` :math:`\mathbf{V}` and a set of
-:term:`edges` :math:`\mathbf{E}`,
+of a set of :term:`vertices <vertex>` :math:`\mathbf{V}` and a set of
+:term:`edges <edge>` :math:`\mathbf{E}`,
 such that each edge in :math:`\mathbf{E}` is a connection between a
 pair of vertices in :math:`\mathbf{V}`. [#]_
 
@@ -84,7 +84,7 @@ A graph with labels associated with its vertices
 (as in Figure :num:`Figure #GraphTerms` (c)) is called a
 :term:`labeled graph`.
 Two vertices are :term:`adjacent` if they are joined by an edge.
-Such vertices are also called :term:`neighbors`.
+Such vertices are also called :term:`neighbors <neighbor>`.
 An edge connecting Vertices :math:`u` and :math:`v` is written
 :math:`(u, v)`.
 Such an edge is said to be :term:`incident` on Vertices :math:`u`
@@ -144,7 +144,7 @@ both vertices of :math:`e` are in :math:`\mathbf{V}_s`.
 An undirected graph is a :term:`connected graph` if there is at least
 one path from any vertex to any other.
 The maximally connected subgraphs of an undirected graph are called
-:term:`connected components`.
+:term:`connected components <connected component>`.
 For example, Figure :num:`Figure #ConCom` shows an undirected graph
 with three connected components.
 

@@ -19,7 +19,7 @@ associated with sets often help to clarify and simplify algorithm
 design.
 
 A :term:`set` is a collection of distinguishable
-:term:`members` or :term:`elements`.
+:term:`members <member>` or :term:`elements <element>`.
 The members are typically drawn from some larger population known as
 the :term:`base type`.
 Each member of a set is either a :term:`primitive element` of the
@@ -111,7 +111,7 @@ The powerset of :math:`\mathbf{S}` is
 
 A collection of elements with no order (like a set), but with
 duplicate-valued elements is called a
-:term:`bag`. [#]_
+:term:`bag` [#]_.
 To distinguish bags from sets, we will use square brackets [] around
 a bag's elements.
 For example, bag [3, 4, 5, 4] is distinct from bag [3, 4, 5],
@@ -166,6 +166,9 @@ binary relation over set :math:`\mathbf{S}`.
 * :math:`R` is :term:`reflexive` if :math:`aRa`
   for all :math:`a \in \mathbf{S}`.
 
+* :math:`R` is :term:`irreflexive` if :math:`aRa` is not true
+  for all :math:`a \in \mathbf{S}`.
+
 * :math:`R` is :term:`symmetric` if whenever :math:`aRb`,
   then :math:`bRa`, for all :math:`a, b \in \mathbf{S}`.
 
@@ -177,10 +180,12 @@ binary relation over set :math:`\mathbf{S}`.
   :math:`bRc`, then :math:`aRc`, for all
   :math:`a, b, c \in \mathbf{S}`.
 
-As examples, for the natural numbers, :math:`<` is antisymmetric
-(because there is no case where :math:`aRb` and :math:`bRa`) and
-transitive; :math:`\leq` is reflexive, antisymmetric, and transitive,
-and :math:`=` is reflexive, symmetric (and antisymmetric!),
+As examples, for the natural numbers, :math:`<` is
+irreflexive (because :math`aRa` is never true),
+antisymmetric (because there is no case where :math:`aRb` and
+:math:`bRa`), and transitive.
+Relation :math:`\leq` is reflexive, antisymmetric, and transitive.
+Relation :math:`=` is reflexive, symmetric (and antisymmetric!),
 and transitive.
 For people, the relation "is a sibling of" is symmetric and
 transitive.
@@ -191,18 +196,18 @@ it is not reflexive.
 :math:`R` is an :term:`equivalence relation` on set :math:`\mathbf{S}`
 if it is reflexive, symmetric, and transitive.
 An equivalence relation can be used to partition a set into
-:term:`equivalence classes`.
+:term:`equivalence classes <equivalence class>`.
 If two elements :math:`a` and :math:`b` are equivalent to each other,
 we write :math:`a \equiv b`.
-A :math:`partition` of a set :math:`\mathbf{S}` is a collection of
-subsets that are disjoint from each other and whose union is
+A :term:`partition` of a set :math:`\mathbf{S}` is a collection of
+subsets that are :term:`disjoint` from each other and whose union is
 :math:`\mathbf{S}`.
-An equivalence relation on set :math:`\mathbf{S}` partitions the set
-into subsets whose elements are equivalent.
-See Module :numref:`<UnionFind>` for a discussion on how to
-represent equivalence classes on a set.
-One application for disjoint sets appears in
-Module :numref:`MCST`.
+An :term:`equivalence relation` on set :math:`\mathbf{S}` partitions
+the set into disjoint subsets whose elements are equivalent.
+The :ref:`UNION/FIND <UNION/FIND> <UnionFind>` algorithm efficiently
+maintains equivalence classes on a set.
+One application for such :term:`disjoint sets` 
+computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
 
 .. topic:: Example
 
@@ -219,11 +224,8 @@ Module :numref:`MCST`.
    Of course, for distinct integers :math:`a`, :math:`b`, and :math:`c`
    there are never cases where :math:`a = b`, :math:`b = a`, or
    :math:`b = c`.
-   So the claims that :math:`=` is symmetric and transitive are
-   vacuously true (there are never examples in the relation where
-   these events occur).
-   But because the requirements for symmetry and transitivity are not
-   violated, the relation is symmetric and transitive.
+   So the requirements for symmetry and transitivity are never
+   violated, and therefore the relation is symmetric and transitive.
 
 .. topic:: Example
 
@@ -233,8 +235,8 @@ Module :numref:`MCST`.
 
 .. topic:: Example
 
-   We can use the modulus function (defined in Module
-   :numref:`<MiscMath>` to define an equivalence relation.
+   We can use the :ref:`modulus <MiscMath>` function
+   to define an equivalence relation.
    For the set of integers, use the modulus function 
    to define a binary relation such that two numbers
    :math:`x` and :math:`y` are in the relation if and only if
@@ -260,7 +262,11 @@ Module :numref:`MCST`.
 .. avembed:: Exercises/Background/StTFeqvlnc.html ka
 
 A binary relation is called a
-:term:`partial order` if it is antisymmetric and transitive. [#]_
+:term:`partial order` if it is antisymmetric and transitive.
+If the relation is reflexive, it is called a
+:term:`non-strict partial order`.
+If the relation is :term:`irreflexive`, it is called a
+:term:`strict partial order`.
 The set on which the partial order is defined is called a
 :term:`partially ordered set` or a :term:`poset`.
 Elements :math:`x` and :math:`y` of a set are :term:`comparable` under
@@ -296,13 +302,7 @@ Notes
 -----
 
 .. [#] The object referred to here as a
-       bag is sometimes called a :term:`multilist`.
+       bag is sometimes called a
+       :ref:`multilist <multilist> <Multilists>`.
        But, multilist is also refers to a list that may contain
-       sublists (see Module :numref:`<Multilists>`).
-
-.. [#] Not all authors use this definition for partial order.
-       I have seen at least three significantly different definitions
-       in the literature.
-       I have selected the one that lets :math:`<` and :math:`\leq`
-       both define partial orders on the integers, because this seems
-       the most natural to me.
+       sublists.

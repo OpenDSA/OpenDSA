@@ -74,13 +74,23 @@
       "Background/Recursion": {
         "long_name": "Recursion",
         "exercises": {
-          "TOHfigCON": {}
+          "TOHfigCON": {
+            "long_name": "TOH Diagram",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
         }
       },
       "Background/Proofs": {
         "long_name": "Proofs",
         "exercises": {
-          "twoColorCON": {}
+          "twoColorCON": {
+            "long_name": "Two-coloring proof Diagram",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
         }
       },
       "Background/Estimation": {
@@ -135,7 +145,7 @@
         "long_name": "Calculating the Running Time of a Program",
         "exercises": {
           "AnalProgramSumm": {
-            "long_name": "Program Code Analysis",
+            "long_name": "Program Code Analysis Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -178,7 +188,12 @@
       "Design/ADT": {
         "long_name": "Abstract Data Types",
         "exercises": {
-          "ADTCON": {}
+          "ADTCON": {
+            "long_name": "ADT Terminology Diagram",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
 	}
       }
     },
@@ -190,14 +205,14 @@
       "List/ListADT": {
         "long_name": "List ADT",
         "exercises": {
-          "listADTCON1": {
-            "long_name": "List ADT Slideshow 1",
+          "listADTposCON": {
+            "long_name": "List ADT Positions Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listADTCON2": {
-            "long_name": "List ADT Slideshow 2",
+          "listADTnoteCON": {
+            "long_name": "List ADT Notation Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
@@ -213,43 +228,43 @@
       "List/ListArray": {
         "long_name": "Array-based Lists",
         "exercises": {
-          "AlistVarsCON": {
-            "long_name": "Array-based List Variables",
+          "alistVarsCON": {
+            "long_name": "Array-based List Variables Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AlistIntroCON": {
-            "long_name": "Array-based List Intro",
+          "alistIntroCON": {
+            "long_name": "Array-based List Intro Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-         "AlistInsertCON": {
-            "long_name": "Array-based List Insertion",
+         "alistInsertCON": {
+            "long_name": "Array-based List Insertion Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AlistAppendCON": {
-            "long_name": "Array-based List Append",
+          "alistAppendCON": {
+            "long_name": "Array-based List Append Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AlistRemoveCON": {
+          "alistRemoveCON": {
             "long_name": "Array-based List Remove",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listArrayInsertion": {
+          "alistInsertPRO": {
             "long_name": "Array-based List Insert Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listArrayDeletion": {
+          "alistDeletePRO": {
             "long_name": "Array-based List Delete Exercise",
             "required": true,
             "points": 1,
@@ -426,9 +441,9 @@
           }
         }
       },
-      "List/Stack": {
-        "long_name": "Stacks",
-        "exercises": {
+      "List/StackArray": {
+        "long_name": "Array-based Stacks",
+          "exercises": {
           "AStackVarCON": {
             "long_name": "Array stack variables",
             "required": true,
@@ -464,7 +479,12 @@
             "required": true,
             "points": 1,
             "threshold": 5
-          },
+          }
+        }
+      },
+      "List/StackLinked": {
+        "long_name": "Linked Stacks",
+        "exercises": {
           "LStackPushCON": {
             "long_name": "Linked stack push",
             "required": true,
@@ -1831,4 +1851,3 @@
     }
   }
 }
-

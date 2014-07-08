@@ -152,8 +152,8 @@
       "due_date": "Aikaraja",
       "score": "Pistettä",
       "total": "Kokonaispisteet",
-      "no_exercises": "Tässä osiossa ei ole tehtäviä",
-      "exercises": "Tehtävät",
+      "no_exercises": "Tässä osiossa ei ole harjoituksia",
+      "exercises": "Harjoitukset",
       "points": "Pisteet",
       "chapter": "Kappale"
     }

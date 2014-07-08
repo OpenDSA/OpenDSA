@@ -27,16 +27,17 @@ Any container data structure like a list then requires some additional
 space to organize the elements being stored.
 This additional space is called :term:`overhead`.
 
-Array-based lists have the disadvantage that their size must be
-predetermined before the array can be allocated.
+:term:`Array-based lists <array-based list>` have the disadvantage
+that their size must be predetermined before the array can be
+allocated.
 Array-based lists cannot grow beyond their predetermined size.
 Whenever the list contains only a few elements, a
 substantial amount of space might be tied up in a largely empty array.
 This empty space is the overhead required by the array-based list.
-Linked lists have the advantage that they only need space for the
-objects actually on the list.
+:term:`Linked lists <linked list>` have the advantage that they only
+need space for the objects actually on the list.
 There is no limit to the number of elements on a linked list,
-as long as there is free-store memory available.
+as long as there is :term:`free store` memory available.
 The amount of space required by a linked list is :math:`\Theta(n)`,
 while the space required by the array-based list implementation is
 :math:`\Omega(n)`, but can be greater.
@@ -76,8 +77,8 @@ list.
 Conversely, the array-based implementation becomes more space
 efficient when the array is close to full.
 Using the equation, we can solve for :math:`n` to determine the
-break-even point beyond which the array-based implementation is more
-space efficient in any particular situation.
+:term:`break-even point` beyond which the array-based implementation
+is more space efficient in any particular situation.
 This occurs when
 
 .. math::
@@ -105,7 +106,7 @@ certain limit.
 Time Comparison
 ---------------
 
-Array-based lists are faster for random access by position.
+Array-based lists are faster for access by position.
 Positions can easily be adjusted forwards or backwards by
 the ``next`` and ``prev`` methods.
 These operations always take :math:`\Theta(1)` time.
@@ -153,5 +154,4 @@ becomes full, and to cut the array size in half when it becomes one
 quarter full.
 To analyze the overall cost of dynamic array operations over time,
 we need to use a technique known as
-:term:`amortized analysis`
-which is discussed in Module :numref:`<AmortAnal>`.
+:ref:`amortized analysis <amortized analysis> <AmortAnal>`.

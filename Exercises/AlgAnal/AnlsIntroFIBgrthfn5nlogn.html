@@ -10,7 +10,7 @@
 <body>
 <script>
 function checkAnswer(answer) {
-  if ( answer === 1) {
+  if (answer === 1) {
     return true;
   } else {
     return false;
@@ -36,6 +36,13 @@ function checkAnswer(answer) {
         </div>
       </div>
       <div class="hints">
+        <p><code>5 n \log n</code> grows slower than some of these
+          functions, but not slower than others.</p>
+        <p>Compared to the other slow-growing functions on the list,
+          it has a relatively large constant factor.</p>
+        <p>But this is a little bit of a trick question, because
+          <code>\log n</code> has a value of 0 when
+          <code>n = 1</code>.</p>
       </div> 
   </div>
 </div>

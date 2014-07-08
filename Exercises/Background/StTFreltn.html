@@ -4,7 +4,7 @@
   <title>Set Relations</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 </head>
 
 <body>
@@ -15,9 +15,9 @@
     <var id="CHOICESINDEX">randRange(0,6)</var>
     <var id="CHOICES">["Relation isBrotherOf on the set of people " ,
                        "Relation isFatherOf on the set of people ",
-                       "Relation R = {&lt; x, y &gt; | x^2 + y^2 = 1} for real numbers x and y " ,
+                       "Relation R = {&lt; x, y&gt; | x^2 + y^2 = 1} for real numbers x and y " ,
                        "Relation R = {&lt; x, y &gt; | x^2 = y^2} for real numbers x and y ",
-                       "Relation R = {&lt; x, y &gt; | x mod y =0} for x,y &#8712; {1,2,3,4} ",
+                       "Relation R = {&lt; x, y &gt; | x mod y = 0} for x, y &#8712; {1,2,3,4} ",
                        "Empty relation &#8709; (i.e., the relation with no ordered pairs for which it is true) on the set of integers ",
                        "Empty relation &#8709; (i.e., the relation with no ordered pairs for which it is true) on the empty set "] </var>
       
@@ -41,7 +41,19 @@
 	<li><var>"False"</var></li>			  	  	 
       </ul>
       <div class="hints">
-	
+        <p>A relation is reflexive if <code>a</code> holds the
+           relationship with itself for all values <code>a</code> in the
+           set.</p>
+        <p>A relation is symmetric if everytime that <code>a</code> is
+           related to <code>b</code>, then <code>b</code> is also
+           related to <code>a</code>.</p>
+        <p>A relation is antisymmetric if everytime that <code>a</code> is
+           related to <code>b</code>, then <code>b</code> is not
+           related to <code>a</code>.</p>
+        <p>A relation is transitive if everytime that <code>a</code> is
+           related to <code>b</code> and also <code>b</code> is related
+           to <code>c</code>, then <code>a</code> is related
+           to <code>c</code>.</p>
       </div>
     </div>
   </div>
