@@ -3,19 +3,24 @@
   "use strict";
   var initialArray = [],
       tree,
-      subtree,
+      treeNodes,
       nodeSelected,
       selectedNode,
       selectedPointer,
       rotationType = PARAMS.rotation || "single",
       difficulty = PARAMS.diff || "hard",
+      $layoutButton = $("#layoutButton"),
+      $nullButton = $("#nullButton"),
+      config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
+      interpret = config.interpreter,
+      code = config.code,
       av = new JSAV($("#jsavcontainer"));
 
   function initialize() {
 
     // clear old structures
     if (tree) {
-      tree.clear();
+      tree.element.remove();
     }
     if (nodeSelected) {
       nodeSelected.clear();
@@ -34,6 +39,7 @@
       difficulty: difficulty
     });
     tree.insert(initialArray);
+    treeNodes = getNodes(tree);
     tree.click(clickHandler);
     tree.layout();
 
@@ -140,7 +146,65 @@
     return index;
   }
 
-  function clickHandler(event) {
+  // returns an array with all the nodes in the tree
+  function getNodes(tree) {
+    var root = tree.root(),
+        stack = [root],
+        i = 0;
+
+    while (stack[i]) {
+      var node = stack[i];
+      if (node.left()) {
+        stack.push(node.left());
+      }
+      if (node.right()) {
+        stack.push(node.right());
+      }
+      i++;
+    }
+    return stack;
+  }
+
+  // returns a string with errors
+  function getErrors(tree) {
+    var root = tree.root(),
+        stack = [root],
+        visited = [],
+        errors = "";
+
+    while (stack[0]) {
+      var node = stack.shift();
+      if (visited.indexOf(node) !== -1) {
+        // multiple parents, possible loop
+        errors += interpret("av_too_many_parents").replace("{val}", node.value()) + "\n";
+        node.addClass("loop");
+      } else {
+        if (node.left()) {
+          stack.push(node.left());
+        }
+        if (node.right()) {
+          stack.push(node.right());
+        }
+        visited.push(node);
+      }
+    }
+    var unvisited = initialArray.length - visited.length;
+    if (unvisited) {
+      if (unvisited === 1) {
+        errors += interpret("av_1_not_part_of_tree") + "\n";
+      } else {
+        errors += interpret("av_not_part_of_tree").replace("{num}", unvisited) + "\n";
+      }
+      for (var i = 0; i < treeNodes.length; i++) {
+        if (visited.indexOf(treeNodes[i]) === -1) {
+          treeNodes[i].addClass("loose");
+        }
+      }
+    }
+    return errors;
+  }
+
+  var clickHandler = function (event) {
     if (this.value() === "jsavnull") {
       return;
     }
@@ -157,10 +221,12 @@
       selectedNode.removeClass("selected-right");
       selectedNode = null;
       nodeSelected.value(0);
+      $nullButton.attr("disabled", true);
     } else {
       if (event.target.className.indexOf("jsavpointerarea") !== -1) {
         selectedNode = this;
         nodeSelected.value(1);
+        $nullButton.attr("disabled", false);
         if (event.target.className.indexOf("left") !== -1) {
           selectedPointer.value(0);
           this.addClass("selected-left");
@@ -170,26 +236,42 @@
         }
       }
     }
-  }
+  };
 
-  var $layoutButton = $("#layoutButton");
+  // change the language on the buttons
+  $layoutButton.html(interpret("av_redraw"));
+  $nullButton.html(interpret("av_null"));
 
-  // add buttons if they don't exist
-  if ($layoutButton.length === 0) {
-    $layoutButton = $("<button id='layoutButton'>Redraw tree</button>");
-    $("#jsavcontainer .jsavcanvas").append($layoutButton);
-  }
-
-  //position buttons
-  $layoutButton.css({position: "absolute", left: 50, top: 30, width: 100});
-  //add click handlers
+  // add click handlers
   $layoutButton.click(function () {
+    for (var i = 0; i < treeNodes.length; i++) {
+      treeNodes[i].removeClass("loop");
+      treeNodes[i].removeClass("loose");
+    }
+    var errors = getErrors(tree);
+    if (errors) {
+      window.alert(interpret("av_error") + "\n" + errors);
+      return;
+    }
     tree.layout();
     av.step();
   });
+  $nullButton.click(function () {
+    if (nodeSelected.value()) {
+      selectedNode.child(selectedPointer.value(), null, {hide: false});
+      av.step();
+      selectedNode.removeClass("selected-left");
+      selectedNode.removeClass("selected-right");
+      selectedNode = null;
+      nodeSelected.value(0);
+      $nullButton.attr("disabled", true);
+    }
+  });
 
-  var exercise = av.exercise(modelSolution, initialize,
-                             { feedback: "atend", grader: "finalStep",
-                               modelDialog: {width: 780}});
+  var exercise = av.exercise(modelSolution, initialize, {
+    feedback: "atend",
+    grader: "finalStep",
+    modelDialog: {width: 780}
+  });
   exercise.reset();
 }(jQuery));

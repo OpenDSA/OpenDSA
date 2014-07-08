@@ -9,8 +9,17 @@
   <link rel="stylesheet" href="BinaryPointerTree.css" type="text/css" />
 
   <style type="text/css">
-    #layoutButton {
+    .exercise-button {
       z-index: 500;
+      position: absolute;
+      left: 10px;
+      width: 170px;
+    }
+    #layoutButton {
+      top: 0px;
+    }
+    #nullButton {
+      top: 25px;
     }
   </style>
 </head>
@@ -22,6 +31,10 @@
     <p class="instructions"></p>
     <p align="center" class="jsavexercisecontrols"></p>
     <p class="jsavoutput jsavline"></p>
+    <div class="jsavcanvas">
+      <button id='layoutButton' class='exercise-button'>Redraw tree</button>
+      <button id='nullButton' class='exercise-button' disabled='disabled'>Set pointer to null</button>
+    </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -29,7 +42,6 @@
   <script src="../../JSAV/lib/jquery.transit.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../JSAV/build/JSAV.js"></script>
-  <script src="../../JSAV/extras/stack.js"></script>
   <script src="../../JSAV/extras/AVLextension.js"></script>
   <script src="../../lib/odsaUtils.js"></script>
   <script src="../../lib/odsaAV-min.js"></script>
