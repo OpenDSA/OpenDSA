@@ -117,6 +117,7 @@
     pseudo.unhighlight("listSize");
     pseudo.highlight("sig");
     av.umsg(interpret("av_c9"));
+    // Why can't I just do l.clear()?
     l.removeFirst();
     l.removeFirst();
     l.removeFirst();

@@ -25,10 +25,10 @@ function pclick(pointer) {
     selected_index = -1;
   }
   if (selected_pointer) { // Clicked again, so unhighlight
-    topPointer.element.removeClass('highlight');
+    topPointer.element.removeClass("highlight");
     selected_pointer = false;
   } else { // Highlight the pointer
-    topPointer.element.addClass('highlight');
+    topPointer.element.addClass("highlight");
     selected_pointer = true;
   }
   userInput = true;
@@ -40,11 +40,12 @@ function clickHandler(index, e) {
   if (selected_index === -1) { // nothing currently selected
     if (selected_pointer) { // He's re-setting the pointer
       // workaround for pointer update bug
-      // topPointer.element.remove();
-      // topPointer.arrow.element.remove();
-      // topPointer = jsav.pointer("top", jsavArr, {targetIndex: index});
-      topPointer.target(jsavArr, {targetIndex: index});
-      topPointer.element.removeClass('highlight');
+      topPointer.element.remove();
+      topPointer.arrow.element.remove();
+      topPointer = jsav.pointer("top", jsavArr, {targetIndex: index});
+      // This is what ought to work, instead of the workaround.
+      // topPointer.target(jsavArr, {targetIndex: index});
+      topPointer.element.removeClass("highlight");
       pointerIndex = index;
       selected_pointer = false;
     } else { // He's selecting the current array index
@@ -124,7 +125,7 @@ function initJSAV(max_size, curr_size, insertValue) {
   $("#insert").click(function () {
     if (selected_pointer) { // Unhighlight the pointer
       selected_pointer = false;
-      topPointer.element.removeClass('highlight');
+      topPointer.element.removeClass("highlight");
     }
     if (selected_index !== -1) {
       jsavArr.value(selected_index, inValue);
