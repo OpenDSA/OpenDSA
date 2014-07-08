@@ -9,19 +9,17 @@
   <link rel="stylesheet" href="BinaryPointerTree.css" type="text/css" />
 
   <style type="text/css">
-    #layoutButton {
+    .exercise-button {
       z-index: 500;
       position: absolute;
+      left: 10px;
+      width: 170px;
+    }
+    #layoutButton {
       top: 0px;
-      left: 50px;
-      width: 130px;
     }
     #nullButton {
-      z-index: 500;
-      position: absolute;
       top: 25px;
-      left: 50px;
-      width: 130px;
     }
   </style>
 </head>
@@ -34,8 +32,8 @@
     <p align="center" class="jsavexercisecontrols"></p>
     <p class="jsavoutput jsavline"></p>
     <div class="jsavcanvas">
-      <button id='layoutButton'>Redraw tree</button>
-      <button id='nullButton' disabled='disabled'>Set pointer to null</button>
+      <button id='layoutButton' class='exercise-button'>Redraw tree</button>
+      <button id='nullButton' class='exercise-button' disabled='disabled'>Set pointer to null</button>
     </div>
   </div>
 

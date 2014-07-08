@@ -1,0 +1,27 @@
+{
+  "translations" :{
+    "en": {
+      ".exerciseTitle": "Rotation",
+      ".instructLabel": "Instructions:",
+      ".instructions": "The AVL-tree below is out of balance after the last insertion (in the model solution you can see the state before and after the insertion). Balance the tree by making a rotation. <br><br>Rotations can be made by modifying edges (pointers), ie. by clicking the edges to point to a new node. An edge can be \"deleted\" by clicking the <strong>Set pointer to null</strong> button. The tree can be redrawn by clicking the <strong>Redraw tree</strong> button. If the tree is invalid, the exercise will inform about the errors instead of redrawing the tree. <br><br>Each node is represented as an oval containing a number (key field). The gray areas and arrows on the node represent pointers.",
+      "av_redraw": "Redraw tree",
+      "av_null":  "Set pointer to null",
+      "av_error": "Unable to draw the tree because of the following errors:",
+      "av_too_many_parents": "Node {val} has more than one parent.",
+      "av_1_not_part_of_tree": "1 node is not part of the tree.",
+      "av_not_part_of_tree": "{num} nodes are not part of the tree."
+    },
+    "fi": {
+      ".exerciseTitle": "Rotaatio",
+      ".instructLabel": "Ohjeet:",
+      ".instructions": "Alla oleva AVL-puu on epätasapainossa viimeisen lisäyksen jälkeen (mallivastauksessa on tilat ennen lisäystä ja lisäyksen jälkeen). Tasapainota puu tekemällä rotaatio. <br><br>Rotaatiot voi tehdä vaihtamalla kaarien (osoittimien) järjestystä, eli klikkaamalla kaari osoittamaan uuteen solmuun. Kaaren voi \"poistaa\" painamalla <strong>Aseta osoittimen arvoksi null</strong> -painiketta. Puun voi piirtää uudestaan painamalla <strong>Piirrä puu</strong> -painiketta. Mikäli puu on virheellinen, kertoo tehtävä virheistä, eikä puuta piirretä. <br><br>Visuaalisessa esityksessä soikio ja sen sisällä oleva numero vastaavat yksittäistä puun solmua, eli tietuetta ja sen avainta. Soikion harmaat alueet ja niistä lähtevät nuolet esittävät osoittimia.",
+      "av_redraw": "Piirrä puu uudestaan",
+      "av_null":  "Aseta osoittimen arvoksi null",
+      "av_error": "Puuta ei pystytty piirtämään seuraavien virheiden takia:",
+      "av_too_many_parents": "Solmulla {val} on liikaa isä-solmuja.",
+      "av_1_not_part_of_tree": "1 solmu ei kuulu puuhun.",
+      "av_not_part_of_tree": "{num} solmua ei kuulu puuhun."
+    }
+  },
+  "code" : {}
+}

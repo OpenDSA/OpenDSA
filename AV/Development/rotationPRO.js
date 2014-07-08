@@ -3,7 +3,7 @@
   "use strict";
   var initialArray = [],
       tree,
-      subtree,
+      treeNodes,
       nodeSelected,
       selectedNode,
       selectedPointer,
@@ -11,6 +11,9 @@
       difficulty = PARAMS.diff || "hard",
       $layoutButton = $("#layoutButton"),
       $nullButton = $("#nullButton"),
+      config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
+      interpret = config.interpreter,
+      code = config.code,
       av = new JSAV($("#jsavcontainer"));
 
   function initialize() {
@@ -36,6 +39,7 @@
       difficulty: difficulty
     });
     tree.insert(initialArray);
+    treeNodes = getNodes(tree);
     tree.click(clickHandler);
     tree.layout();
 
@@ -142,31 +146,62 @@
     return index;
   }
 
-  // makes sure that there are no loops in the tree
-  function isValid(tree) {
+  // returns an array with all the nodes in the tree
+  function getNodes(tree) {
     var root = tree.root(),
         stack = [root],
-        visited = [];
+        i = 0;
 
-    while (stack[0]) {
-      var node = stack.shift();
+    while (stack[i]) {
+      var node = stack[i];
       if (node.left()) {
         stack.push(node.left());
       }
       if (node.right()) {
         stack.push(node.right());
       }
+      i++;
+    }
+    return stack;
+  }
+
+  // returns a string with errors
+  function getErrors(tree) {
+    var root = tree.root(),
+        stack = [root],
+        visited = [],
+        errors = "";
+
+    while (stack[0]) {
+      var node = stack.shift();
       if (visited.indexOf(node) !== -1) {
-        // loop detected
-        return false;
+        // multiple parents, possible loop
+        errors += interpret("av_too_many_parents").replace("{val}", node.value()) + "\n";
+        node.addClass("loop");
+      } else {
+        if (node.left()) {
+          stack.push(node.left());
+        }
+        if (node.right()) {
+          stack.push(node.right());
+        }
+        visited.push(node);
       }
-      visited.push(node);
     }
-    if (visited.length !== initialArray.length) {
-      // all the nodes are not part of the tree
-      return false;
+    var unvisited = initialArray.length - visited.length;
+    if (unvisited) {
+      if (unvisited === 1) {
+        errors += interpret("av_1_not_part_of_tree") + "\n";
+      } else {
+        errors += interpret("av_not_part_of_tree").replace("{num}", unvisited) + "\n";
+      }
+      for (var i = 0; i < treeNodes.length; i++) {
+        if (visited.indexOf(treeNodes[i]) === -1) {
+          treeNodes[i].addClass("loose");
+        }
+      }
     }
-    return true;
+    return errors;
   }
 
   var clickHandler = function (event) {
@@ -201,12 +236,21 @@
         }
       }
     }
-  }
+  };
+
+  // change the language on the buttons
+  $layoutButton.html(interpret("av_redraw"));
+  $nullButton.html(interpret("av_null"));
 
   // add click handlers
   $layoutButton.click(function () {
-    if (!isValid(tree)) {
-      window.alert("The tree is invalid...");
+    for (var i = 0; i < treeNodes.length; i++) {
+      treeNodes[i].removeClass("loop");
+      treeNodes[i].removeClass("loose");
+    }
+    var errors = getErrors(tree);
+    if (errors) {
+      window.alert(interpret("av_error") + "\n" + errors);
       return;
     }
     tree.layout();
