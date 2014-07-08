@@ -68,7 +68,8 @@ CONTAINER_HTML= '''\
     data-points="%(points)s"
     data-required="%(required)s"
     data-threshold="%(threshold)s"
-    data-type="%(type)s">
+    data-type="%(type)s"
+    data-oembed="%(oembed)s">
   %(content)s
 </div>
 <p></p>
@@ -76,6 +77,15 @@ CONTAINER_HTML= '''\
 
 IFRAME_HTML = '''\
 <iframe id="%(exer_name)s_iframe" src="%(av_address)s" width="%(width)s" height="%(height)s" scrolling="no">Your browser does not support iframes.</iframe>
+'''
+
+OEMBED_HTML = '''\
+<div class="warning">
+    <p>Failed to load exercise. Log in to <a href="%(oembed_server)s">%(oembed_server)s</a> to see all the exercises.</p>
+</div>
+<script>
+    ODSA.MOD.initOembedAV($("#%(exer_name)s"));
+</script>
 '''
 
 
@@ -135,6 +145,7 @@ class avembed(Directive):
                  'required': directives.unchanged,
                  'showhide':showhide,
                  'threshold': directives.unchanged,
+                 'oembed_url': directives.unchanged,
                  }
 
   def run(self):
@@ -176,17 +187,36 @@ class avembed(Directive):
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
 
+    if 'oembed_url' not in self.options:
+      self.options['oembed'] = False
+    else:
+      self.options['oembed'] = True
+      self.options['av_address'] = self.options['oembed_url']
+      parts = self.options['oembed_url'].split("//", 1)
+      self.options['oembed_server'] = parts[0] + "//" + parts[1].split("/", 1)[0]
+
     res = ANCHOR_HTML % self.options
 
-    if 'showhide' in self.options and self.options['showhide'] == "none":
-      self.options['content'] = IFRAME_HTML % (self.options)
-    elif 'showhide' in self.options and self.options['showhide'] == "show":
-      self.options['show_hide_text'] = langDict["hide"] 
-      self.options['content'] = IFRAME_HTML % (self.options)
-      res += BUTTON_HTML % (self.options)
+    if self.options['oembed']:
+      if 'showhide' in self.options and self.options['showhide'] == "none":
+        self.options['content'] = OEMBED_HTML % (self.options)
+      elif 'showhide' in self.options and self.options['showhide'] == "show":
+        self.options['show_hide_text'] = langDict["hide"]
+        self.options['content'] = OEMBED_HTML % (self.options)
+        res += BUTTON_HTML % (self.options)
+      else:
+        self.options['show_hide_text'] = langDict["show"]
+        res += BUTTON_HTML % (self.options)
     else:
-      self.options['show_hide_text'] = langDict["show"] 
-      res += BUTTON_HTML % (self.options)
+      if 'showhide' in self.options and self.options['showhide'] == "none":
+        self.options['content'] = IFRAME_HTML % (self.options)
+      elif 'showhide' in self.options and self.options['showhide'] == "show":
+        self.options['show_hide_text'] = langDict["hide"]
+        self.options['content'] = IFRAME_HTML % (self.options)
+        res += BUTTON_HTML % (self.options)
+      else:
+        self.options['show_hide_text'] = langDict["show"]
+        res += BUTTON_HTML % (self.options)
 
     res += CONTAINER_HTML % (self.options)
 
