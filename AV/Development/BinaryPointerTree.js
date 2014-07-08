@@ -337,7 +337,7 @@
         pos = options.pos;
     newParents.push(newParent);
     this.parentnodes = newParents;
-    
+
     // If there is only one parent after adding the parent, we this parent the
     // "real" parent
     if (newParents.length === 1) {

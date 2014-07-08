@@ -9,13 +9,15 @@
       selectedPointer,
       rotationType = PARAMS.rotation || "single",
       difficulty = PARAMS.diff || "hard",
+      $layoutButton = $("#layoutButton"),
+      $nullButton = $("#nullButton"),
       av = new JSAV($("#jsavcontainer"));
 
   function initialize() {
 
     // clear old structures
     if (tree) {
-      tree.clear();
+      tree.element.remove();
     }
     if (nodeSelected) {
       nodeSelected.clear();
@@ -140,7 +142,34 @@
     return index;
   }
 
-  function clickHandler(event) {
+  // makes sure that there are no loops in the tree
+  function isValid(tree) {
+    var root = tree.root(),
+        stack = [root],
+        visited = [];
+
+    while (stack[0]) {
+      var node = stack.shift();
+      if (node.left()) {
+        stack.push(node.left());
+      }
+      if (node.right()) {
+        stack.push(node.right());
+      }
+      if (visited.indexOf(node) !== -1) {
+        // loop detected
+        return false;
+      }
+      visited.push(node);
+    }
+    if (visited.length !== initialArray.length) {
+      // all the nodes are not part of the tree
+      return false;
+    }
+    return true;
+  }
+
+  var clickHandler = function (event) {
     if (this.value() === "jsavnull") {
       return;
     }
@@ -157,10 +186,12 @@
       selectedNode.removeClass("selected-right");
       selectedNode = null;
       nodeSelected.value(0);
+      $nullButton.attr("disabled", true);
     } else {
       if (event.target.className.indexOf("jsavpointerarea") !== -1) {
         selectedNode = this;
         nodeSelected.value(1);
+        $nullButton.attr("disabled", false);
         if (event.target.className.indexOf("left") !== -1) {
           selectedPointer.value(0);
           this.addClass("selected-left");
@@ -172,24 +203,31 @@
     }
   }
 
-  var $layoutButton = $("#layoutButton");
-
-  // add buttons if they don't exist
-  if ($layoutButton.length === 0) {
-    $layoutButton = $("<button id='layoutButton'>Redraw tree</button>");
-    $("#jsavcontainer .jsavcanvas").append($layoutButton);
-  }
-
-  //position buttons
-  $layoutButton.css({position: "absolute", left: 50, top: 30, width: 100});
-  //add click handlers
+  // add click handlers
   $layoutButton.click(function () {
+    if (!isValid(tree)) {
+      window.alert("The tree is invalid...");
+      return;
+    }
     tree.layout();
     av.step();
   });
+  $nullButton.click(function () {
+    if (nodeSelected.value()) {
+      selectedNode.child(selectedPointer.value(), null, {hide: false});
+      av.step();
+      selectedNode.removeClass("selected-left");
+      selectedNode.removeClass("selected-right");
+      selectedNode = null;
+      nodeSelected.value(0);
+      $nullButton.attr("disabled", true);
+    }
+  });
 
-  var exercise = av.exercise(modelSolution, initialize,
-                             { feedback: "atend", grader: "finalStep",
-                               modelDialog: {width: 780}});
+  var exercise = av.exercise(modelSolution, initialize, {
+    feedback: "atend",
+    grader: "finalStep",
+    modelDialog: {width: 780}
+  });
   exercise.reset();
 }(jQuery));
