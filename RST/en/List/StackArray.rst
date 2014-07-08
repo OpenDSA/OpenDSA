@@ -6,10 +6,10 @@
 .. avmetadata:: 
    :author: Cliff Shaffer
    :requires: list ADT
-   :satisfies: stack ADT, array-based stack, stack
+   :satisfies: stack ADT; array-based stack; stack
    :topic: Lists
 
-.. odsalink:: AV/List/listStackCON.css      
+.. odsalink:: AV/List/astackCON.css      
 
 Stacks
 ======
@@ -72,16 +72,17 @@ array should represent the top of the stack.
 .. inlineav:: astackTopCON ss
    :output: show
    
-.. inlineav:: AStackPushCON ss
+.. inlineav:: astackPushCON ss
    :output: show
 
-.. inlineav:: AStackPopCON ss
+.. inlineav:: astackPopCON ss
    :output: show
    
-.. avembed:: Exercises/List/listAStackPush.html ka
+.. avembed:: Exercises/List/astackPushPRO.html ka
 
-.. avembed:: Exercises/List/listAStackPop.html ka
+.. avembed:: Exercises/List/astackPopPRO.html ka
 
-.. odsascript:: AV/List/listStackCON.js
 .. odsascript:: AV/List/astackVarCON.js
 .. odsascript:: AV/List/astackTopCON.js
+.. odsascript:: AV/List/astackPushCON.js
+.. odsascript:: AV/List/astackPopCON.js

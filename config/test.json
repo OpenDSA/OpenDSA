@@ -287,38 +287,38 @@
       "List/StackArray": {
         "long_name": "Array-based Stacks",
           "exercises": {
-          "AStackVarCON": {
-            "long_name": "Array stack variables",
+          "astackVarCON": {
+            "long_name": "Array stack variables slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AStackTopposCON": {
-            "long_name": "Array stack top position",
+          "astackTopCON": {
+            "long_name": "Array stack top position slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AStackPushCON": {
-            "long_name": "Array stack push",
+          "astackPushCON": {
+            "long_name": "Array stack push slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AStackPopCON": {
-            "long_name": "Array stack pop",
+          "astackPopCON": {
+            "long_name": "Array stack pop slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listAStackPush": {
-            "long_name": "Array Stack Push Exercise",
+          "astackPushPRO": {
+            "long_name": "Array-based Stack Push Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listAStackPop": {
-            "long_name": "Array Stack PopExercise",
+          "astackPopPRO": {
+            "long_name": "Array-based Stack Pop Exercise",
             "required": true,
             "points": 1,
             "threshold": 5

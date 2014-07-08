@@ -5,8 +5,8 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :requires: list ADT, stack ADT
-   :satisfies: stack
+   :requires: stack ADT
+   :satisfies: linked stack
    :topic: Lists
 
 .. odsalink:: AV/List/listStackLCON.css      

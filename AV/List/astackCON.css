@@ -18,34 +18,29 @@
   height: 240px;
 }
 
-#AStackPushCON {
-  height: 230px;
+#astackPushCON {
+  height: 235px;
 }
 
-#AStackPushCON .jsavoutput.jsavline {
+#astackPushCON .jsavoutput.jsavline {
   height: 30px;
 }
 
-#AStackPushCON .jsavcode{
-  border: 1px solid;
-  border-color: white;
+#astackPushCON .jsavcode{
   position: relative;
-  top: 0;
   left: 170px;
   width: 500px;
 }
 
-#AStackPopCON {
+#astackPopCON {
   height: 240px;
 }
 
-#AStackPopCON .jsavoutput.jsavline {
+#astackPopCON .jsavoutput.jsavline {
   height: 30px;
 }
 
-#AStackPopCON .jsavcode{
-  border: 1px solid;
-  border-color: white;  
+#astackPopCON .jsavcode{
   position: relative;
   top: 30px;
   left: 170px;

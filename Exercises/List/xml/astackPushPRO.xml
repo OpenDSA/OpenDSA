@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <entry>
-<id>http://localhost/OpenDSA/Exercises/List/listAStackPush.html</id>
-<title type='text'>Array-based Stacks Push Proficiency Exercise</title>
-<description type='text'>Array-based Stacks Push Proficiency Exercise</description>
+<id>http://localhost/OpenDSA/Exercises/List/astackPushPOP.html</id>
+<title type='text'>Array-based Stack Push Proficiency Exercise</title>
+<description type='text'>Array-based Stack Push Proficiency Exercise</description>
 <type>ka</type>
 <width>950</width>
 <height>650</height>
