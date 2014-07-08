@@ -361,8 +361,12 @@
     } else if (this.parentnodes.length === 1) {
       // if there is one parent after removing the parent, we make the remaining
       // parent the "real" parent
-      this._edgetoparent.end(this.parentnodes[0], options);
-      this.element.attr("data-parent", this.parentnodes[0].id());
+      if (this.parentnodes[0]) {
+        this._edgetoparent.end(this.parentnodes[0], options);
+        this.element.attr("data-parent", this.parentnodes[0].id());
+      } else {
+        this._edgetoparent = undefined;
+      }
       this.parentnode = this.parentnodes[0];
     }
   };
