@@ -19,7 +19,7 @@ clean:
 	-rm -rf build
 	mkdir build
 
-sorting: Inssort Bubblesort Selectionsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Radixsort
+sorting: Inssort Bubblesort Selectionsort Shellsort Mergesort MergesortOpt Quicksort Heapsort # Radixsort
 
 Inssort: build/InssortTest/success
 
@@ -169,20 +169,20 @@ build/HeapsortTest/success: Sorting/Heapsort.cpp Sorting/SortTest.cpp Utils/Chec
 	$(CC) $(CFLAGS) Heapsort.o -o Heapsort; \
 	./Heapsort 1000
 
-Radixsort: build/RadixsortTest/success
+#Radixsort: build/RadixsortTest/success
 
-build/RadixsortTest/success: Sorting/Radixsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
-	@echo "Radixsort Test"
-	-@rm -rf build/RadixsortTest
-	@mkdir build/RadixsortTest
-	@cp Sorting/Radixsort.cpp build/RadixsortTest
-	@cp Sorting/SortTest.cpp build/RadixsortTest
-	@cp Utils/Checkorder.cpp build/RadixsortTest
-	@cp Utils/KVPair.cpp build/RadixsortTest
-	@cp Utils/Comparable.cpp build/RadixsortTest
-	@cp Utils/Int.cpp build/RadixsortTest
-	@cp Utils/utils.h build/RadixsortTest
-	cd build/RadixsortTest; \
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Radixsort.o Radixsort.cpp; \
-	$(CC) $(CFLAGS) Radixsort.o -o Radixsort; \
-	./Radixsort 1000
+#build/RadixsortTest/success: Sorting/Radixsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
+#	@echo "Radixsort Test"
+#	-@rm -rf build/RadixsortTest
+#	@mkdir build/RadixsortTest
+#	@cp Sorting/Radixsort.cpp build/RadixsortTest
+#	@cp Sorting/SortTest.cpp build/RadixsortTest
+#	@cp Utils/Checkorder.cpp build/RadixsortTest
+#	@cp Utils/KVPair.cpp build/RadixsortTest
+#	@cp Utils/Comparable.cpp build/RadixsortTest
+#	@cp Utils/Int.cpp build/RadixsortTest
+#	@cp Utils/utils.h build/RadixsortTest
+#	cd build/RadixsortTest; \
+#	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Radixsort.o Radixsort.cpp; \
+#	$(CC) $(CFLAGS) Radixsort.o -o Radixsort; \
+#	./Radixsort 1000
