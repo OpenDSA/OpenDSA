@@ -1,0 +1,17 @@
+#alistInsertCON .jsavcanvas {
+  margin-top: 20px;
+}
+
+#alistInsertCON .jsavarray {
+  position: absolute;
+  top: 4px;
+}
+
+#alistInsertCON .jsavcode {
+  margin-left: 285px;
+  width: 560px;
+}
+
+#alistInsertCON {
+  height: 360px;
+}

@@ -146,9 +146,9 @@ Another language might do something different.
 
 Unfortunately, for many applications this is not what the user wants
 or expects.
-For example, many :ref:`hash systems <HashFunc>` will perform some
-computation on a record's key value and then take the result modulo
-the hash table size.
+For example, many :ref:`hash systems <hash system> <HashFunc>`
+will perform some computation on a record's :term:`key` value and then
+take the result modulo the hash table size.
 The expectation here would be that the result is a legal index into
 the hash table, not a negative number.
 Implementers of hash functions must either insure that the

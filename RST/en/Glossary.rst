@@ -108,7 +108,7 @@ Glossary
 
    asymptotic analysis
       A method for estimating the efficiency of an algorithm or
-      computer program. :dfn:`Asymptotic analysis` also gives a way to
+      computer program. Asymptotic analysis also gives a way to
       define the inherent difficulty of a :term:`problem`.
       We frequently use the term :term:`algorithm analysis` to mean
       the same thing.
@@ -119,6 +119,14 @@ Glossary
       instances have equal probability of occurring, then average case
       must be calculated using a weighted average.
 
+   B$^+$-tree
+      The most commonly implemented form of B-tree.
+      A B$^+$-tree does not store data at the internal nodes, but
+      instead only stores :term:`key` values as direction finders for
+      the purpose of searching through the tree.
+      Only the leaf nodes store a reference to the actual data
+      records.
+
    B-tree
       A method for :term:`indexing` a large collection of records.
       A B-tree is a tree balanced typically with high branching factor
@@ -128,6 +136,8 @@ Glossary
       (so some multiple of the disk :term:`sector` size). This makes
       it easy to find a record key stored in the tree with few disk
       fetches.
+      The most commonly implemented variant of the B-tree is the
+      :term:`B$^+$-tree`.
 
    bag
       In set notation, a bag is a collection of elements with no order
@@ -196,6 +206,11 @@ Glossary
       to sort the list. It is generally not practical in this form,
       but it is the conceptual underpinning of the :term:`radix sort`.
 
+   block
+      A unit of storage, usually referring to storage on a
+      :term:`disk drive` or other :term:`peripheral storage` device.
+      A block is the basic unit of I/O for that device.
+
    Boolean variable
       A variable that takes on one of the two values ``True`` and
       ``False``.
@@ -213,6 +228,23 @@ Glossary
       save time. But if most objects are outside of the area of
       interest, then checking bounding boxes first can save a lot of
       time.
+
+   break-even point
+      The point at which two costs become even when measured as the
+      function of some variable.
+      In particular, used to compare the space requirements of two
+      implementations.
+      For example, when comparing the space requirements of an
+      :term:`array-based list` implementation versus a
+      :term:`linked list` implementation, the key issue is how full
+      the list is compared to its capacity limit (for the array-based
+      list).
+      The point where the two representations would have the same
+      space cost is the break-even point.
+      As the list becomes more full beyond this point, the array-based
+      list implementation becomes more space efficent, while as the
+      list becomes less full below this point, the linked list
+      implementation becomes more space efficient.
 
    BST
       Abbreviation for :term:`binary search tree`.
@@ -275,6 +307,13 @@ Glossary
    class
       In an object-oriented language, an ADT and its implementation
       together make up a class. 
+
+   client
+      The user of a service.
+      For example, the object or part of the program that calls a
+      :term:`memory manager` class is the client of that memory
+      manager.
+      Likewise the class or code that calls a :term:`buffer pool`.
 
    clique
       In :term:`graph` terminology, a clique is any :term:`subset`
@@ -401,11 +440,12 @@ Glossary
    container class
       A :term:`data structure` that stores a collection of
       :term:`records <record>`.
-      Typical examples are arrays, search trees, and hash tables.
+      Typical examples are arrays,
+      :term:`search trees <search tree>`, and
+      :term:`hash tables <hash table>`.
 
    cost
-      The :dfn:`cost` of a solution is the
-      amount of resources that the solution consumes.
+      The amount of resources that the solution consumes.
 
    current position
       A property of some list ADTs, where there is maintained a
@@ -437,8 +477,10 @@ Glossary
       A theoretical construct for modeling the behavior of algorithms.
       Each point at which the algorithm makes a decision (such as an
       if statement) is modeled by a branch in the tree that represents
-      the algorithms behavior. Decision trees can be used in lower
-      bounds proofs, such as the proof that sorting requires
+      the algorithms behavior.
+      Decision trees can be used in
+      :term:`lower bounds proofs <lower bounds proof>`,
+      such as the proof that sorting requires
       :math:`\Omega(n \log n)` comparisons in the worst case.
 
    degree
@@ -565,6 +607,9 @@ Glossary
       node contains access pointers to both the previous element and
       the next element on the list.
 
+   DSA
+      Abbreviation for Data Structures and Algorithms.
+
    dynamic allocation
       The act of creating an object from :term:`free store`.
       In C++, Java, and JavaScript, this is done using the ``new``
@@ -666,17 +711,43 @@ Glossary
       A growth rate function where :math:`n` (the input size) appears
       in the exponent. For example, :math:`2^n`.
 
+   external sort
+      A sorting algorithm that is applied to data stored in
+      :term:`peripheral storage` such as on a :term:`disk drive`.
+
    factorial
       The factorial function is defined as :math:`f(n) = n f(n-1)` for
       :math:`n > 0`.
 
+   file processing
+      The domain with Computer Science that deals with processing data
+      stored on a :term:`disk drive` (in a file), or more broadly,
+      dealing with data stored on any :term:`peripheral storage`
+      device.
+      Two fundamental properties make dealing with data on a
+      peripheral device different from dealing with data in main
+      memory:
+      (1) Reading/writing data on a peripheral storage device is far
+      slower than reading/writing data to main memory (for example, a
+      typical disk drive is about a million times slower than
+      :term:`RAM`).
+      (2) All I/O to a peripheral device is typically in terms of a
+      :term:`block` of data (for example, nearly all disk drives do
+      all I/O in terms of blocks of 512 bytes).
+
    file structure
-      The organization of data on peripheral storage, such
-      as a disk drive or CD.
+      The organization of data on :term:`peripheral storage`,
+      such as a :term:`disk drive` or DVD drive.
+
+   FIFO
+      Abbreviation for "First-In, First-Out".
+      This is the access paradigm for a :term:`queue`,
+      and an old terminolgy for the queue is "FIFO list".
 
    FIND
       One half of the :term:`UNION/FIND` algorithm for managing
-      :term:`disjoint sets`. It is the process of moving upwards in a
+      :term:`disjoint sets`.
+      It is the process of moving upwards in a
       tree to find the tree's root.
 
    floor
@@ -760,7 +831,7 @@ Glossary
       :to-term: vertices :label: contains
       :to-term: adjacency matrix :label: implemented by
       :to-term: adjacency list :label: implemented by
-      :to-term: minimal cost spanning tree :label: problems
+      :to-term: minimal-cost spanning tree :label: problems
       :to-term: traversal :label: problems
       :to-term: topological sort :label: problems
       :to-term: shortest paths :label: problems
@@ -794,6 +865,17 @@ Glossary
       This problem has been proved impossible to solve in the general
       case.
 
+   handle
+      When using a :term:`memory manager` to store data, the
+      :term:`client` will pass data to be stored
+      (the :term:`message`) to the memory manager, and the memory
+      manager will return to the client a handle.
+      The handle encodes the necessary information that the memory
+      manager can later use to recover and return the message to the
+      client.
+      This is typically the location and length of the message within
+      the :term:`memory pool`.
+
    harmonic series
       The sum of reciprocals from 1 to :math:`n` is called the
       Harmonic Series, and is written :math:`{\cal H}_n`.
@@ -809,6 +891,10 @@ Glossary
    hash system
       The implementation for search based on hash lookup in a
       :term:`hash table`.
+      The :term:`search key` is processed by a
+      :term:`hash function`, which returns a position in a
+      :term:`hash table`, which hopefully is the correct position in
+      which to find the record corresponding to the search key.
 
    hash table
       The data structure (usually an array) that stores data
@@ -850,11 +936,13 @@ Glossary
 
    heapsort
       A sorting algorithm that costs :math:`\Theta(n \log n)` time in
-      the best, average, and worst cases. It tends to be slower than
-      Mergesort and Quicksort. It works by building a max heap, and
-      then repeatedly removing the maximum item (moving it to the end
-      of the heap) until all elements have been removed (and replaced
-      at their proper location in the array).
+      the best, average, and worst cases.
+      It tends to be slower than :term:`Mergesort` and
+      :term:`Quicksort`.
+      It works by building a :term:`max heap`, and
+      then repeatedly removing the item with maximum :term:`key` value
+      (moving it to the end of the heap) until all elements have been
+      removed (and replaced at their proper location in the array).
 
    height
       The height of a tree is one more than the :term:`depth` of the
@@ -885,6 +973,13 @@ Glossary
    indexing
       The process of associating a :term:`key` with the location
       of a corresponding data record.
+      The two key points to the concept of an index is the association
+      of key with record, and the fact that the index does not
+      actually store the record itself but rather it stores a
+      reference to the record.
+      In this way, a collection of records can be supported by
+      multiple indices, typically a separate index for each key field
+      in the record.
 
    induction hypothesis
       The key assumption used in a :term:`proof by induction`,
@@ -981,6 +1076,14 @@ Glossary
       process to efficiently determine of two vertices are within the
       same :term:`subgraph`.
 
+   LFU
+      Abbreviation for :term:`least frequently used`.
+
+   LIFO
+      Abbreviation for "Last-In, First-Out".
+      This is the access paradigm for a :term:`stack`,
+      and an old terminolgy for the stack is "LIFO list".
+
    LRU
       Abbreviation for :term:`least recently used`.
 
@@ -1025,6 +1128,19 @@ Glossary
       :math:`c` any positive constant). In other words, the cost of
       the associated function is linear on the input size.
 
+   linear index
+      A form of :term:`indexing` that stores
+      :term:`key-record pairs <key-record pair>` in a sorted array.
+      Typically this is used for an index to a large collection of
+      records stored on disk, where the linear index itself might be
+      on disk or in main memory.
+      It allows for efficient search (including for
+      :term:`range queries <range query>`, but it is not good for
+      inserting and deleting entries in the array.
+      Therefore, it is an ideal indexing structure when the system
+      needs to do range queries but the collection of records never
+      changes once the linear index has been created.
+
    linear order
       Another term for :term:`total order`.
 
@@ -1067,6 +1183,20 @@ Glossary
       function that we know grows no faster than all but a
       constant number of inputs. It could be a gross under-estimate of
       the truth.
+
+   lower bounds proof
+      A proof regarding the lower bound, with this term most typically
+      referring to the lower bound for any possible algorithm to solve
+      a given :term:`problem`.
+      Many problems have a simple lower bound based on the concept
+      that the minimum amount of processing is related to looking at
+      all of the problem's input.
+      However, some problems have a higher lower bound than that.
+      For example, the lower bound for the problem of sorting
+      (:math:`\Omega(n \log n)`) is greater than the input size to
+      sorting (:math:`n`).
+      Proving such "non-trivial" lower bounds for problems is
+      notoriously difficult.
 
    map
       A :term:`data structure` that relates a :term:`key` to a
@@ -1118,6 +1248,40 @@ Glossary
       :term:`garbage collection`, repeated memory leaks will evenually
       cause the program to terminate.
 
+   memory manager
+      Functionality for managing a :term:`memory pool`.
+      Typically, the memory pool is viewed as an array of bytes by the
+      memory manager.
+      The :term:`client` of the memory manager will request a
+      collection of (adjacent) bytes of some size, and release the
+      bytes for reuse when the space is no longer needed.
+      The memory manager should not know anything about the
+      interpretation of the data that is being stored by the client
+      into the memory pool.
+      Depending on the precise implementation, the client might pass
+      in the data to be stored, in which case the memory manager will
+      deal with the actual copy of the data into the memory pool.
+      The memory manager will return to the client a :term:`handle`
+      that can later be used by the client to retrieve the data.
+
+   memory pool
+      Memory (usually in :term:`RAM` but possibly on disk or
+      :term:`peripheral storage` device) that is logically viewed as
+      an array of memory positions.
+      A memory pool is usually managed by a :term:`memory manager`.
+
+   message
+      In a :term:`memory manager` implementation (particularly a
+      memory manager implemented with a "message passing" style of
+      interface), the message is the data that the :term:`client` of
+      the memory manager wishes to have stored in the
+      :term:`memory pool`.
+      The memory manager will reply to the client by returning a
+      :term:`handle` that defines the location and size of the message
+      as stored in the memory pool.
+      The client can later recover the message by passing the handle
+      back to the memory manager.
+
    metaphor
       Humans deal with complexity by assigning a label to an assembly of
       objects or concepts and then manipulating the label in place of the
@@ -1130,7 +1294,7 @@ Glossary
 
    MCST
    MST
-      Abbreviation for :term:`minimal cost spanning tree`.
+      Abbreviation for :term:`minimal-cost spanning tree`.
 
    min heap
       A :term:`heap` where every :term:`node` has a :term:`key` value
@@ -1138,7 +1302,7 @@ Glossary
       As a consequence, the node with minimum key value is
       at the :term:`root`.
 
-   minimal cost spanning tree
+   minimal-cost spanning tree
       :to-term: Kruskal's algorithm :label: algorithms
       :to-term: Prim's algorithm :label: algorithms
 
@@ -1242,7 +1406,7 @@ Glossary
       partially ordered set.
 
    partition
-      In :term:`quicksort`, the process of splitting a list into two
+      In :term:`Quicksort`, the process of splitting a list into two
       sublists, such that one sublist has values less than the
       :term:`pivot` value, and the other with values greater than the
       pivot. This process takes :math:`\Theta(i)` time on a sublist of
@@ -1254,6 +1418,11 @@ Glossary
       :math:`v_1, v_2, ..., v_n`
       forms a path of length :math:`n-1` if there exist edges from
       :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
+
+   peripheral storage
+      Any storage device that is not part of the core processing
+      of the computer (that is, :term:`RAM`).
+      A typical example is a :term:`disk drive`.
 
    permutation
       A permutation of a sequence :math:`\mathbf{S}`
@@ -1270,12 +1439,13 @@ Glossary
       least one of the locations must store two or more of the objects.
 
    pivot
-      In :term:`quicksort`, the value that is used to split the list
+      In :term:`Quicksort`, the value that is used to split the list
       into sublists, one with lesser values than the pivot, the other
       with greater values than the pivot.
 
    pop
-      A specialized term used to indicate removing an element from a stack.
+      A specialized term used to indicate removing an :term:`element`
+      from a :term:`stack`. 
 
    poset
       Another name for a :term:`partially ordered set`.
@@ -1286,25 +1456,27 @@ Glossary
       by position.
 
    postorder traversal
-      In a binary tree, a :term:`traversal` that first
-      recursively visits the left child, then recursively
-      visits the right child, and then visits the root.
+      In a :term:`binary tree`, a :term:`traversal` that first
+      :term:`recursively <recursion>` visits the left :term:`child`,
+      then recursively visits the right child, and then visits the
+      :term:`root`.
 
    powerset
-      For a set :math:`\mathbf{S}`, the power set is the set of all
-      possible :term:`subsets <subset>` for :math:`\mathbf{S}`.
+      For a :term:`set` :math:`\mathbf{S}`, the power set is the set
+      of all possible :term:`subsets <subset>` for :math:`\mathbf{S}`.
 
    preorder traversal
-      In a binary tree, a :term:`traversal` that first visits the
-      root, then recursively visits the left child, then recursively
-      visits the right child.
+      In a :term:`binary tree`, a :term:`traversal` that first visits
+      the :term:`root`, then :term:`recursively <recursion>` visits
+      the left :term:`child`, then recursively visits the right
+      child.
 
    primary key index
       Relates each :term:`primary key` value with a pointer to the
       actual record on disk.
 
    primary key
-      A unique identifier for a record.
+      A unique identifier for a :term:`record`.
 
    primary storage
       The faster but more expensive memory in a computer, most often
@@ -1361,7 +1533,8 @@ Glossary
       :math:`(\mathrm{not}\ Q) \Rightarrow (\mathrm{not}\ P)`.
 
    push
-      A specialized term used to indicate inserting an element onto a stack.
+      A specialized term used to indicate inserting an :term:`element`
+      onto a :term:`stack`.
 
    quadratic growth rate
       A growth rate function of the form :math:`cn^2` where :math:`n`
@@ -1371,7 +1544,7 @@ Glossary
       A list-like structure in which elements are inserted only at one
       end, and removed only from the other one end.
 
-   quicksort
+   Quicksort
       A sort that is :math:`\Theta(n \log n)` in the best and average
       cases, though :math:`\Theta(n^2)` in the worst case. However, a
       reasonable implmentation will make the worst case occur under
@@ -1400,7 +1573,7 @@ Glossary
       valuse, than at least :math:`\Omega(\log n)` digits are required,
       leading to an :math:`\Omega(n \log n)` sorting algorithm that
       tends to be much slower than other sorting algorithms like
-      :term:`quicksort` or :term:`mergesort`.
+      :term:`Quicksort` or :term:`mergesort`.
 
    random access memory
       Abbreviated ;term:`RAM`, this is the principle example of
@@ -1445,6 +1618,13 @@ Glossary
       its work.
       See :term:`recursion`.
 
+   recursive call
+      Within a :term:`recursive function`, it is a call that the
+      function makes to itself.
+
+   recursive function
+      A function that includes a :term:`recursive call`.
+
    reduction
       In algorithm analysis, the process of deriving asymptotic bounds
       for one :term:`problem` from the asymptotic bounds of another.
@@ -1484,6 +1664,12 @@ Glossary
       when searching. For example, in a database of customer records,
       we might want to search by name.
       In this case the name field is used as the search key.
+
+   search tree
+      A :term:`tree` data structure that makes search by :term:`key`
+      value more efficient.
+      A type of :term:`container`, it is common to implement an
+      :term:`index <indexing>` using a search tree.
 
    secondary key
       A key field in a record such as salary, where a particular key
@@ -1567,9 +1753,29 @@ Glossary
    simple type
       A type whose values contain no subparts. An example is the integers.
 
+   simulating recursion
+      If a programming language does not support recursion, or if you
+      want to implement the effects of recursion more efficiently, you
+      can use a stack to maintain the collection of subproblems that
+      would be waiting for completion during the recursive process.
+      Using a loop, whenever a recursive call would have been made,
+      simply add the necessary program state to the stack.
+      When a return would have been made from the recursive call, pop
+      the previous program state off of the stack.
+
    singly linked list
       A :term:`linked list` implementation variant where each list
       node contains access an pointer only to the next element in the list.
+
+   sorting lower bound
+      The lower bound for the :term:`problem` of
+      :term:sorting <sorting problem>` is :math:`\Omega(n \log n)`.
+      This is traditionally proved using a :term:`decision tree` model
+      for sorting algorithms, and recognizing that the minimum depth
+      of the decision tree for any sorting algorithm is
+      :math:`\Omega(n \log n)` since there are :math:`n!` permutations
+      of the :math:`n` input records to distinguish between during the
+      sorting process. 
 
    sorting problem
       Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`

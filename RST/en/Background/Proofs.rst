@@ -162,8 +162,8 @@ and vice versa, since they work by essentially the same process.
 
 Within the context of algorithm analysis, one of the most important
 uses for mathematical induction is as a method to test a hypothesis.
-When :ref:`seeking a closed-form solution <Summation>` for a
-:term:`summation` or :term:`recurrence <recurrence relation>`,
+When :ref:`seeking a closed-form solution <closed-form solution> <Summation>`
+for a :term:`summation` or :term:`recurrence <recurrence relation>`,
 we might first guess or otherwise acquire evidence that a particular
 formula is the correct solution.
 If the formula is indeed correct, it is often an easy matter to prove

@@ -263,20 +263,20 @@
     }
     if (length === 1) {
       if (endWithOperator) {
-        return Math.random() < 0.5 ? ["+"] : ["*"];
+        return JSAV.utils.rand.random() < 0.5 ? ["+"] : ["*"];
       } else {
-        operand = Math.ceil(Math.random() * 15).toString(16);
+        operand = Math.ceil(JSAV.utils.rand.random() * 15).toString(16);
         return [operand];
       }
     }
 
     var minLengthForParentheses = parentheses * 5 + parentheses - 1 + (endWithOperator && parentheses ? 1 : 0);
 
-    if (Math.random() < minLengthForParentheses / length) {
+    if (JSAV.utils.rand.random() < minLengthForParentheses / length) {
       // return array with parentheses
       if (parentheses - 1 > 0 &&
           length >= 11 + (endWithOperator ? 1 : 0) &&
-          Math.random() < 0.5) {
+          JSAV.utils.rand.random() < 0.5) {
         // parentheses inside parentheses
         if (length <= 12) {
           return ["("].concat(generateRandomInfix(9, 1, false),
@@ -289,7 +289,7 @@
                     generateRandomInfix(length - 12, parentheses - 2, endWithOperator));
         }
       }
-      var parInside = Math.min(Math.random() < 0.5 ? 3 : 5, length - 2);
+      var parInside = Math.min(JSAV.utils.rand.random() < 0.5 ? 3 : 5, length - 2);
       if (length <= parInside + 3) {
         return ["("].concat(generateRandomInfix(parInside, 0, false),
                   [")"],
@@ -305,7 +305,7 @@
 
     // no parentheses
     // return operand + operator
-    operand = Math.ceil(Math.random() * 15).toString(16);
+    operand = Math.ceil(JSAV.utils.rand.random() * 15).toString(16);
     return [operand].concat(generateRandomInfix(1, 0, true),
                 generateRandomInfix(length - 2, parentheses, endWithOperator));
 

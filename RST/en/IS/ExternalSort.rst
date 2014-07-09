@@ -462,6 +462,12 @@ run.
 Figure :num:`Figure #RepSel` illustrates part of a run being created
 by replacement selection.
 
+
+.. _ReplacementSelection:
+
+.. inlineav:: ExternalReplacementSelection ss
+   :output: show
+
 .. _RepSel:
 
 .. odsafig:: Images/RepSel.png
@@ -762,3 +768,4 @@ following:
 .. odsascript:: AV/Development/externalsortsnow.js
 .. odsascript:: AV/Development/externalMergeSort.js
 .. odsascript:: AV/Development/externalMergeSortExample.js
+.. odsascript:: AV/Development/externalReplacementSelection.js

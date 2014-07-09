@@ -387,6 +387,15 @@ The codes are stored in a self-organizing list in order to speed
 up the time required to search for a string that has previously been
 seen.
 
+
+.. avembed:: Exercises/Development/SelfOrgMove-to-FrontPro.html ka
+
+.. avembed:: Exercises/Development/SelfOrgTransposePro.html ka
+
+.. avembed:: Exercises/Development/SelfOrgCounterPro.html ka
+
+
+
 Notes
 -----
 

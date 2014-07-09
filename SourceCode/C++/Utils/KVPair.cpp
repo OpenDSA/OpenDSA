@@ -25,9 +25,9 @@ public:
   }
   bool operator >=(const Comparable& other) const { // >= operator
     const KVPair& KVother = static_cast<const KVPair&>(other);
-    return k <= KVother.k;
+    return k >= KVother.k;
     }
-  KVPair& operator=(const Comparable& i) override{
+  KVPair& operator=(const Comparable& i)  {
     auto KV = static_cast<const KVPair&>(i);
     k = KV.k;
     e = KV.e;

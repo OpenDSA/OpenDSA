@@ -77,7 +77,8 @@
             "required": false,
             "points": 0,
             "showhide": "show",
-            "threshold": 1.0
+            "threshold": 1.0,
+            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/88/"
           },
           "mergesortCON1": {
             "long_name": "Mergesort Concepts Slideshow 1",
@@ -95,7 +96,8 @@
             "long_name": "Mergesort Proficiency",
             "required": true,
             "points": 1,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/88/"
           }
         }
       },

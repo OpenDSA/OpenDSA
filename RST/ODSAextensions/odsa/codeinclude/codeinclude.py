@@ -142,7 +142,9 @@ class codeinclude(Directive):
       # Append the rest of the HTML for the header of the tabbed container and the JavaScript necessary to create the tabs
       if len(html_strs) > 0:
         html_strs[0] = tab_header + '</ul>' + html_strs[0]
-        html_strs[-1] += '</div><script>$(function() {$( "#%s" ).tabs();});</script>' % tab_id
+        # Link to additional jQuery UI libraries, so we don't load it on pages where its not needed
+        lib_path = os.path.relpath(conf.odsa_path,conf.ebook_path) + '/lib'
+        html_strs[-1] += '</div><script src="%s/jquery-ui-1.8.24.min.js"></script><script>$(function() {$( "#%s" ).tabs();});</script>' % (lib_path, tab_id)
 
     # If only one code block exists, print the code normally
     if len(code_nodes) == 1:
@@ -259,13 +261,13 @@ class codeinclude(Directive):
           if startafter in line:
             use = True
             tags_counter += 1
-            continue
           elif endbefore in line:
             use = False
             tags_counter += 1
-            continue
-
-          if use:
+          elif '/* *** ODSA' in line:
+            # Ignore tag comments
+            pass
+          elif use:
             res.append(line)
 
         if tags_counter == 0:

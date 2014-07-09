@@ -26,12 +26,12 @@
         i;
     for (i = 0; i < arraySize; i++) {
       // determine if the next character should be an operand or an operator.
-      if (numbersInArray < i - numbersInArray + 2 || Math.random() < (Math.ceil(arraySize / 2) - numbersInArray) / (arraySize - i))
+      if (numbersInArray < i - numbersInArray + 2 || JSAV.utils.rand.random() < (Math.ceil(arraySize / 2) - numbersInArray) / (arraySize - i))
       {
         randomVal = JSAV.utils.rand.numKey(1, 10);
         numbersInArray++;
       } else {
-        randomVal = Math.random() < 0.5 ? "+" : "*";
+        randomVal = JSAV.utils.rand.random() < 0.5 ? "+" : "*";
       }
       initialArray[i] = randomVal;
     }
@@ -315,9 +315,10 @@
       arr.value(0)
     );
     opSign.animate({"font-size": 400, "opacity": 0}, 500, "<",
-      function() {
+      function () {
         // remove the operator sign when the animation is done
         opSign.remove();
-    });
+      }
+    );
   }
 }(jQuery));

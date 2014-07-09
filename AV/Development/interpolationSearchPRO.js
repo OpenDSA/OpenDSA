@@ -33,12 +33,12 @@
     //generate random array with ascending values
     var randomVal = 10;
     for (var i = 0; i < arraySize; i++) {
-      randomVal += Math.floor(Math.random() * (2 + i));
+      randomVal += Math.floor(JSAV.utils.rand.random() * (2 + i));
       initialArray[i] = randomVal;
     }
 
     // generate a random key, the value of which is between the min and max of the array
-    if (Math.random() > 0.5) {
+    if (JSAV.utils.rand.random() > 0.5) {
       key = Math.ceil(5 * (initialArray[0] + initialArray[arraySize - 1]) / 7);
     } else {
       key = Math.floor(2 * (initialArray[0] + initialArray[arraySize - 1]) / 7);

@@ -113,7 +113,7 @@ Here is a simple code fragment for sorting an array of integers.
 We assume that this is a special case where there are :math:`n`
 integers whose values are a permutation
 of the integers from 0 to :math:`n-1`.
-This is an example of a :ref:`Binsort <BinSort>`.
+This is an example of a :ref:`binsort <binsort> <BinSort>`.
 Binsort assigns each value to an array position corresponding to its
 value.
 
@@ -148,7 +148,7 @@ as the first, but it only requires half the space.
 
 A second principle for the relationship between a program's space and
 time requirements applies to programs that process
-information :ref:`stored on disk <FileProc>`.
+information :ref:`stored on disk <file processing> <FileProc>`.
 Strangely enough, the disk-based space/time tradeoff principle is
 almost the reverse of the space/time tradeoff principle for programs
 using main memory.

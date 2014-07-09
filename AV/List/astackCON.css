@@ -1,0 +1,48 @@
+.jsavhorizontalarray.jsavautoresize .jsavnode {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  line-height: 30px;
+}
+
+.jsavnode .jsavvalue { /* Make array values center vertically */
+  height: 30px;
+}
+
+#astackVarCON {
+  height: 460px;
+}
+
+#astackTopCON {
+  height: 240px;
+}
+
+#astackPushCON {
+  height: 235px;
+}
+
+#astackPushCON .jsavoutput.jsavline {
+  height: 30px;
+}
+
+#astackPushCON .jsavcode{
+  position: relative;
+  left: 170px;
+  width: 500px;
+}
+
+#astackPopCON {
+  height: 240px;
+}
+
+#astackPopCON .jsavoutput.jsavline {
+  height: 30px;
+}
+
+#astackPopCON .jsavcode{
+  position: relative;
+  top: 30px;
+  left: 170px;
+  width: 500px;
+}

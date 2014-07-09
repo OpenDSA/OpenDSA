@@ -1,0 +1,23 @@
+.jsavnode .jsavvalue { /* Make array cell values center vertically */
+  height: 30px;
+}
+
+.jsavnode {
+  line-height: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+}
+
+.jsavcodeline.jsavhighlight {
+  background-color: #ccc !important;
+}
+
+.ssAV .jsavline {
+  height: 45px;
+}
+
+.not-in-list {
+  background-color: #eee;
+}

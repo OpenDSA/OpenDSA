@@ -179,6 +179,8 @@ All are required unless otherwise specified.
   * This value should be set to false for development
   * Instructors may wish to set this to true for production environments when configuration is run infrequently and JSAV is likely to have changed since the last time configuration occurred
 
+* **build_cmap** - (optional) a boolean controlling wether or not the glossary terms concept map should be diplayed. Defaults to ``false``.
+
 * **allow_anonymous_credit** - (optional) a boolean controlling whether credit for exercises completed anonymously (without logging in) will be transferred to the next user to log in, defaults to ``true`` if omitted
 
 * **req_full_ss** - (optional) a boolean controlling whether students must view every step of a slideshow in order to obtain credit, defaults to ``true`` if omitted

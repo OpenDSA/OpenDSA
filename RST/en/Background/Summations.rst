@@ -126,7 +126,7 @@ Unfortunately, induction does not help us derive a closed-form
 solution.
 It only confirms when a proposed closed-form solution is correct.
 There are techniques for deriving
-:ref:`closed-form solutions <AdvSumm>`.
+:ref:`closed-form solutions <closed-form solution> <AdvSumm>`.
 
 The running time for a recursive algorithm is most easily expressed by
 a recursive expression because the total time for the recursive
@@ -259,5 +259,6 @@ definition.
    This is equivalent to the summation :math:`\sum_{i=1}^n i`,
    for which we already know the closed-form solution.
 
-There are :ref:`many more techniques <Recurrence>` to find closed-form
-solutions for recurrence relations.
+There are
+:ref:`many more techniques <closed-form solution> <Recurrence>`
+to find closed-form solutions for recurrence relations.

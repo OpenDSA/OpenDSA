@@ -9,36 +9,40 @@
    :satisfies: array-based list
    :topic: Lists
    
-.. odsalink:: AV/List/listArrayCON.css
-.. odsalink:: AV/List/listArrayVizCON.css
+.. odsalink:: AV/List/alistVarsCON.css
+.. odsalink:: AV/List/alistInsertCON.css
+.. odsalink:: AV/List/alistAppendCON.css
+.. odsalink:: AV/List/alistRemoveCON.css
+.. odsalink:: AV/List/alistCON.css
 
 Array-Based List Implementation
 ===============================
 
 Here is an implementation for the array-based list, named ``AList``.
-``AList`` inherits from interface ``List``
-(see Module :numref:`<ListADT>`)
+``AList`` inherits from the :ref:`List ADT <ListADT>`,
 and so must implement all of the member functions of ``List``.
 
 .. codeinclude:: Lists/AList
    :tag: AList
 
-.. inlineav:: AlistVarsCON ss
+.. inlineav:: alistVarsCON ss
    :output: show
 
-.. inlineav:: AlistIntroCON ss
+.. inlineav:: alistIntroCON ss
    :output: show
 
 Because the array-based list implementation is defined to store list
 elements in contiguous cells of the array, the ``insert``, ``append``,
 and ``remove`` methods must maintain this property.
 
-.. inlineav:: AlistInsertCON ss
+.. inlineav:: alistInsertCON ss
    :output: show
 
-.. inlineav:: AlistAppendCON ss
+.. inlineav:: alistAppendCON ss
    :output: show
 
+.. avembed:: Exercises/List/alistInsertPRO.html ka
+  
 Removing an element from the head of the list is
 similar to insert in that all remaining elements  must shift toward
 the head by one position to fill in the gap.
@@ -46,11 +50,13 @@ If we want to remove the element at position :math:`i`, then
 :math:`n - i - 1` elements must shift toward the head, as shown in the
 following slideshow. 
 
-.. inlineav:: AlistRemoveCON ss
+.. inlineav:: alistRemoveCON ss
    :output: show
 
 In the average case, insertion or removal each requires moving half
 of the elements, which is :math:`\Theta(n)`.
+
+.. avembed:: Exercises/List/alistDeletePRO.html ka
 
 Aside from ``insert`` and ``remove``, the only other operations that
 might require more than constant time are the constructor and
@@ -62,11 +68,10 @@ They all require :math:`\Theta(1)` time.
 Now try for yourself to see if you understand how Array-Based
 Insertion and Deletion work.
  
-.. avembed:: Exercises/List/listArrayInsertion.html ka
-  
-.. avembed:: Exercises/List/listArrayDeletion.html ka
-
 .. avembed:: Exercises/List/ArryLstSumm.html ka
 
-.. odsascript:: AV/List/listArrayCON.js
-.. odsascript:: AV/List/listArrayVizCON.js
+.. odsascript:: AV/List/alistVarsCON.js
+.. odsascript:: AV/List/alistIntroCON.js
+.. odsascript:: AV/List/alistInsertCON.js
+.. odsascript:: AV/List/alistAppendCON.js
+.. odsascript:: AV/List/alistRemoveCON.js

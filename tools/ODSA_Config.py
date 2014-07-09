@@ -26,7 +26,7 @@ error_count = 0
 
 required_fields = ['chapters', 'code_lang', 'module_origin', 'title']
 
-optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir']
+optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'build_cmap']
 
 lang_file = os.path.abspath('tools/language_msg.json')
 
@@ -62,7 +62,7 @@ def get_mod_name(mod_config):
   if '/' in mod_config:
     mod_file = re.split('/', mod_config)[1]
   if '.rst' in mod_file:
-    mod_file = re.split('.rst', mod_file)[0]  
+    mod_file = re.split('.rst', mod_file)[0]
 
   listed_modules.append(mod_file)
 
@@ -126,7 +126,7 @@ def validate_exercise(exer_name, exercise):
     error_count += 1
 
   required_fields = []
-  optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold']
+  optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold', 'oembed_url']
 
   # Ensure required fields are present
   for field in required_fields:
@@ -225,7 +225,7 @@ def validate_config_file(config_file_path, conf_data):
   validate_origin(conf_data['module_origin'], 'module')
 
   # Ensure optional fields are configured properly
-  if 'backend_address' in conf_data and not conf_data['backend_address'].startswith('https'):
+  if 'backend_address' in conf_data and conf_data['backend_address'] != '' and not conf_data['backend_address'].startswith('https'):
     print_err('WARNING: "backend_address" should use HTTPS')
 
   if 'av_origin' in conf_data:
@@ -333,6 +333,9 @@ def set_defaults(conf_data):
 
   if 'lang' not in conf_data:
     conf_data['lang'] = 'en'
+
+  if 'build_cmap' not in conf_data:
+    conf_data['build_cmap'] = False
 
   if 'tabbed_codeinc' not in conf_data:
     conf_data['tabbed_codeinc'] = True
@@ -474,7 +477,7 @@ class ODSA_Config:
 
     for field in optional_fields:
       self[field] = conf_data[field] if field in conf_data else None
-
+ 
     #Loads translated text
     self['text_translated'], self['lang'] = get_translated_text(self['lang'])
     self['lang_file'] = lang_file

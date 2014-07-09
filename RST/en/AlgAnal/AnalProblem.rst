@@ -86,7 +86,7 @@ With this new knowledge, we now have a lower bound in
 Should we search for a faster algorithm?
 Many have tried, without success.
 Fortunately (or perhaps unfortunately?),
-:ref:`we can prove that <SortingLowerBound>`
+:ref:`we can prove that <sorting lower bound> <SortingLowerBound>`
 any sorting algorithm must have running
 time in :math:`\Omega(n \log n)` in the worst case. [#]_
 This proof is one of the most important results in

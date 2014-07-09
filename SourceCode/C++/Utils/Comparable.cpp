@@ -19,3 +19,4 @@ void swap(Comparable *A[], int i, int j) {
   A[i] = A[j];
   A[j] = tmp;
 }
+

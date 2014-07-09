@@ -73,7 +73,7 @@ inputs (although some random number generating systems appear to get
 around this by accepting a random input from a physical
 process beyond the user's control).
 The limits to what functions can be implemented by programs is part of
-the domain of :ref:`Computability <Computability>`.
+the domain of :ref:`Computability <computability> <Computability>`.
 
 Algorithms
 ----------

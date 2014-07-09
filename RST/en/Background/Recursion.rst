@@ -15,8 +15,9 @@
 Recursion
 =========
 
-An algorithm is :term:`recursive` if it calls itself to do part of
-its work.
+An :term:`algorithm` (or a function in a computer program) is
+:term:`recursive <recursion>` if it calls itself to do part of its
+work.
 For this approach to be successful, the "call to itself" must be on
 a smaller problem then the one originally attempted.
 In general, a recursive algorithm must have two parts:
@@ -147,10 +148,11 @@ computer program for solving the problem because recursion involves
 function calls, which are typically more expensive than other
 alternatives such as a ``while`` loop.
 However, the recursive approach usually provides an algorithm that is
-reasonably efficient an :ref:`asymptotic sense <AnalAsymptotic>`.
+reasonably efficient in an
+:ref:`asymptotic <asymptotic analysis> <AnalAsymptotic>` sense.
 If necessary, the clear, recursive solution can later be modified to
 yield a faster implementation, such as by
-:ref:`simulating with a stack <StackRecur>`.
+:ref:`simulating with a stack <simulating recursion> <StackRecur>`.
 
 Many data structures are naturally recursive, in that they can be
 defined as being made up of self-similar parts.

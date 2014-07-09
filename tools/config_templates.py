@@ -4,7 +4,7 @@ rst_header = '''\
 
 .. raw:: html
 
-   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s";%(mod_options)s</script>
+   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s"; ODSA.SETTINGS.BUILD_CMAP = "%(build_cmap)s";%(mod_options)s</script>
 
 %(unicode_directive)s
 '''
@@ -316,7 +316,8 @@ html_context = {"script_files": [
                   '%(eb2root)slib/normalize.css',
                   '%(eb2root)sJSAV/css/JSAV.css',
                   '%(eb2root)slib/odsaMOD-min.css',
-                  '%(eb2root)slib/jquery-ui.css',
+                  '%(eb2root)slib/jquery-ui-1.8.24/themes/base/jquery.ui.all.css',
+                  #'%(eb2root)slib/jquery-ui.css',
                   '%(eb2root)sAV/slideCON.css'
                 ],
                 "odsa_root_path": "%(eb2root)s",

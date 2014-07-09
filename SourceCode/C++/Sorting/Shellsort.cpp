@@ -7,12 +7,10 @@
 // With KVPair
 /* *** ODSATag: Inssort2 *** */
 // Insertion sort for varying increment
-void inssort2(Comparable* A[], int n, int start, int incr) {
-  for (int i = start+incr; i < n; i += incr) {
-    for (int j = i; (j >= incr) && (*A[j] < *A[j-incr]); j -= incr) {
+void inssort2(Comparable* A[], int start, int incr, int n) {
+  for (int i = start+incr; i < n; i += incr)
+    for (int j = i; ((j >= incr) && (*A[j] < *A[j-incr])); j -= incr) 
       swap(A, j, j-incr);
-    }
-  }
 }
 /* *** ODSAendTag: Inssort2 *** */
 
@@ -20,12 +18,10 @@ void inssort2(Comparable* A[], int n, int start, int incr) {
 
 // Shellsort n/2 increment
 void shellsort(Comparable* A[], int n) {
-  for (int i = n/2; i > 2; i /= 2) { //For each increment
-    for (int j = 0; j < i; j++) { //Sort each sublist
-      inssort2(A, n, j, i);
-    }
-  }
-  inssort2(A, n, 0, 1);
+  for (int i = n/2; i > 2; i /= 2)  //For each increment
+    for (int j = 0; j < i; j++)  //Sort each sublist
+      inssort2(A, j, i, n);
+    inssort2(A, 0, 1, n);
 }
 /* *** ODSAendTag: Shellsort *** */
 
@@ -43,7 +39,7 @@ bool sorttest(int array[], int n, int threshold) {
   //  }
   //  cout << std::endl;
   
-  inssort(A, n);
+  shellsort(A, n);
 
   if (!checkorder(A, n)) return false;
 
@@ -57,21 +53,7 @@ bool sorttest(int array[], int n, int threshold) {
     A[i] = new KVPair(array[i], &array[i]);
   }
 
-  inssort(A, n);
-
-  if (!checkorder(A, n)) return false;
-
-  for (i = 0; i < n; ++i) {
-    delete A[i];
-  }
-  
-  /* Sort an array of KVPairs */
-  
-  for (i = 0; i < n; ++i) {
-    A[i] = new KVPair(array[i], &array[i]);
-  }
-
-  inssortshift(A, n);
+  shellsort(A, n);
 
   if (!checkorder(A, n)) return false;
 

@@ -9,32 +9,33 @@
    :satisfies: linked list
    :topic: Lists
    
-.. odsalink:: AV/List/listLinkedCON.css
+.. odsalink:: AV/List/llistCON.css
 
 Linked Lists
 ============
 
-Besides the array-based list presented in
-Module :numref:`<ListArray>`,
-the other traditional approach to implementing lists makes use of
-pointers and is usually called a :term:`linked list`.
+In this module we present one of the two traditional implementations
+for lists, usually called a :term:`linked list`.
 The linked list uses :term:`dynamic memory allocation`,
 that is, it allocates memory for new list elements as needed.
+The following diagram illustrates the linked list concept.
+Here there are three :term:`nodes <node>` that
+are "linked" together.
+Each node had two boxes.
+The box on the right holds a link to the next node in the list.
+Notice that the rightmost node has a diagonal slash through its link
+box, signifying that there is no link coming out of this box.
 
 .. _LinkedListNodes:
 
-.. inlineav:: listLinkedNodeCON dgm
+.. inlineav:: llistRepCON dgm
    :align: center
-   
-   A linked list is made up of a series of objects, called the
-   :term:`nodes` of the list. You can see that the nodes are "linked"
-   together.
 
 Because a list node is a distinct object (as opposed to simply a cell
 in an array), it is good practice to make a separate list node class.
-(We can also use the list node class for the linked implementations
-for the stack and queue data structures presented later in this
-chapter.)
+(We can also re-use the list node class to implement linked
+implementations for the :ref:`stack <stack> <Stack>` and
+:ref:`queue <queue> <Queue>` data structures.
 Here is an implementation for list nodes, called the ``Link`` class.
 Objects in the ``Link`` class contain an ``element`` field to
 store the element value, and a ``next`` field to store a pointer to
@@ -52,7 +53,7 @@ an initial element value and one without.
 Member functions allow the link user to get or set the ``element``
 and ``link`` fields.
 
-.. inlineav:: LlistBadCON ss
+.. inlineav:: llistBadCON ss
    :output: show
 
 There are a number of problems with the representation just
@@ -64,7 +65,7 @@ Implementing special cases for ``insert`` and ``remove``
 increases code complexity, making it harder to understand,
 and thus increases the chance of introducing bugs.
 
-.. inlineav:: LlistBadReasonCON ss
+.. inlineav:: llistBadDelCON ss
    :output: show
    
 Fortunately, there is a fairly easy way to deal with all of the
@@ -84,63 +85,76 @@ We get rid of the remaining special cases related to being at the end
 of the list by adding a "trailer" node that also never stores a
 value.
 
+The following diagram shows initial conditions for a linked list
+with header and trailer nodes.
+
+
 .. _LinkedListInit:
 
-.. inlineav:: listLinkedInitCON dgm
+.. inlineav:: llistInitCON dgm
    :align: center
 
-   Initial conditions for the linked list, with header and trailer
-   nodes.
+Here is what a list with some elements looks like with the header and
+trailer nodes added.
+   
+.. _LinkedListTailer:
+
+.. inlineav:: llistHeaderCON dgm
+   :align: center
 
 Adding the trailer node also solves our problem with deleting the last
 node on the list, as we will see when we take a closer look at the
 remove method's implementation.
 
-.. _LinkedListTailer:
-
-.. inlineav:: listLinkedHeaderTailerCON dgm
-   :align: center
-
-   Here is what the list looks like with the header and trailer nodes
-   added.
-   
 Here is the implementation for the linked list class,
 named ``LList``.
 
 .. codeinclude:: Lists/LList
    :tag: LList
 
-.. inlineav:: LlistVarsCON ss
+.. inlineav:: llistVarsCON ss
    :output: show
 
-.. inlineav:: LListCons ss
+.. inlineav:: llistConsCON ss
    :output: show
 
 Implementations for most member functions of the ``list``
 class are straightforward.
 However, ``insert`` and ``remove`` should be studied carefully.
 
-.. inlineav:: LlistInsertCON ss
+.. inlineav:: llistInsertCON ss
    :output: show
    
-Special case for Linked list insertion 
+Here are some special cases for linked list insertion: Inserting at
+the end, and inserting to an empty list.
 
-.. inlineav:: LlistSpecInsertCON ss
+.. inlineav:: llistSpecialCON ss
    :output: show
    
-.. inlineav:: LlistRemoveCON ss
+.. avembed:: Exercises/Development/llistInsertPRO.html ka
+
+.. inlineav:: llistRemoveCON ss
    :output: show
    
-.. inlineav:: LlistPosCON ss
+.. avembed:: Exercises/Development/llistRemovePRO.html ka
+
+.. inlineav:: llistOtherCON ss
    :output: show
    
 Implementations for the remaining operations each require
 :math:`\Theta(1)` time.
 
-.. avembed:: Exercises/List/listLinkedInsertion.html ka
-
-.. avembed:: Exercises/List/listLinkedDeletion.html ka
-
 .. avembed:: Exercises/List/LstLnkdSumm.html ka
 
-.. odsascript:: AV/List/listLinkedCON.js
+.. odsascript:: AV/List/llistCON.js
+.. odsascript:: AV/List/llistRepCON.js
+.. odsascript:: AV/List/llistBadCON.js
+.. odsascript:: AV/List/llistBadDelCON.js
+.. odsascript:: AV/List/llistInitCON.js
+.. odsascript:: AV/List/llistHeaderCON.js
+.. odsascript:: AV/List/llistVarsCON.js
+.. odsascript:: AV/List/llistConsCON.js
+.. odsascript:: AV/List/llistInsertCON.js
+.. odsascript:: AV/List/llistSpecialCON.js
+.. odsascript:: AV/List/llistRemoveCON.js
+.. odsascript:: AV/List/llistOtherCON.js

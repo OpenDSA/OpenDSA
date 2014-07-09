@@ -65,9 +65,11 @@ representative of the behavior of the algorithm.
 However, there are rare instances where a best-case analysis is
 useful |---| in particular, when the best case has high probability of
 occurring.
-The :ref:`Shellsort <Shellsort>` and :ref:`Quicksort <Quicksort>`
+The :ref:`Shellsort <Shellsort> <Shellsort>` and
+:ref:`Quicksort <Quicksort> <Quicksort>`
 algorithms both can take advantage of the best-case running time
-of :ref:`Insertion Sort <InsertionSort>` to become more efficient.
+of :ref:`Insertion Sort <Insertion Sort> <InsertionSort>`
+to become more efficient.
 
 How about the worst case?
 The advantage to analyzing the worst case is that you know for
@@ -96,17 +98,16 @@ This is only true if the element with value :math:`K` is
 equally likely to appear in any position in the array.
 If this assumption is not correct, then the algorithm does *not*
 necessarily examine half of the array values in the average case.
-:ref:`Self-organizing lists <SelfOrg>` attempt to take advantage of
-uneven data distribution to improve on sequential search.
 
 The characteristics of a data distribution have a significant effect
 on many search algorithms, such as those based on
-:ref:`hashing <HashIntro>` and search trees such as the
-:ref:`BST <BST>`. 
+:ref:`hashing <hashing> <HashIntro>` and search trees such as the
+:ref:`BST <binary search tree> <BST>`. 
 Incorrect assumptions about data distribution can have disastrous
 consequences on a program's space or time performance.
 Unusual data distributions can also be used to advantage,
-such as is done by :ref:`self-organizing lists <SelfOrg>`.
+such as is done by
+:ref:`self-organizing lists <self-organizing list> <SelfOrg>`.
 
 In summary, for real-time applications
 we are likely to prefer a worst-case analysis of an algorithm.

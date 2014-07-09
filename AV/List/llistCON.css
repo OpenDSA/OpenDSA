@@ -1,0 +1,128 @@
+.jsavlist .jsavvalue { /* Make linked list cell values center vertically */
+  height: 30px;
+}
+
+.jsavarray .jsavvalue { /* Make array cell values center vertically */
+  height: 30px;
+}
+
+.jsavpointer .jsavlabel { 
+  margin-bottom: 2px;
+}
+
+#llistRepCON {
+  height: 60px;
+}
+
+#llistBadCON {
+  height: 230px;
+}
+
+#llistBadCON .jsavoutput.jsavline {
+  height: 75px;
+}
+
+#llistBadDelCON {
+  height: 230px;
+}
+
+#llistBadDelCON .jsavoutput.jsavline {
+  height: 70px;
+}
+
+#llistInitCON {
+  height: 110px;
+}
+
+#llistHeaderCON {
+  height: 110px;
+}
+
+#llistVarsCON {
+  height: 280px;
+}
+
+#llistVarsCON .jsavoutput.jsavline {
+  height: 70px;
+}
+
+#llistConsCON {
+  height: 420px;
+}
+
+#llistConsCON .jsavoutput.jsavline {
+  height: 80px;
+}
+
+#llistInsertCON {
+  height: 465px;
+}
+
+#llistInsertCON .jsavcode{
+  top: 150px;
+  width: 600px;
+  position: relative;
+}
+
+#llistSpecialCON {
+  height: 310px;
+}
+
+#llistSpecialCON .jsavcode{
+  margin-left: 338px;
+  width: 510px;
+}
+
+#llistRemoveCON {
+  height: 500px;
+}
+
+#llistRemoveCON .jsavcode{
+  position: relative;
+  top: 140px;
+  width: 700px;
+}
+
+#llistOtherCON {
+  height: 440px;
+}
+
+#llistOtherCON .jsavcode{
+  position: relative;
+  top: 85px;
+  width: 700px;
+}
+
+#llistOtherCON .jsavoutput.jsavline{
+  height: 55px;
+}
+
+.jsavhorizontalarray.jsavautoresize .jsavnode {
+  min-width: 35px;
+  max-width: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  line-height: 35px;
+}
+
+.jsavhorizontallist.jsavautoresize .jsavnode {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  line-height: 30px;
+  padding-right: 12px;
+}
+
+.jsavoutput.jsavline{
+  height: 30px;
+}
+
+.jsavcanvas{
+  height: 200px;
+}
+
+.jsavpointer{
+  width: 35px;
+  text-align: center;
+}

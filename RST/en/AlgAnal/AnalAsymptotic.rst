@@ -304,8 +304,8 @@ For many algorithms (or their instantiations as programs), it is easy
 to come up with the equation that defines their runtime behavior.
 The analysis for most commonly used algorithms is well understood and
 we can almost always give a :math:`\Theta` analysis for them.
-However, the class of :ref:`NP Complete <LimComp>` problems all have
-no definitive :math:`\Theta` analysis, just some
+However, the class of :ref:`NP Complete <NP Complete> <LimComp>`
+problems all have no definitive :math:`\Theta` analysis, just some
 unsatisfying big-Oh and :math:`\Omega` analyses.
 Even some "simple" programs are hard to analyze.
 Nobody currently knows the true upper or lower bounds for the

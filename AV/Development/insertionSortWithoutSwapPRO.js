@@ -45,18 +45,21 @@
       clickHandler.remove(tempArray);
       tempArray.clear();
     }
+    if ($tempLabel) {
+      $tempLabel.remove();
+    }
+    if ($arrayLabel) {
+      $arrayLabel.remove();
+    }
 
     // initialize the bar array
-    initialArray = [];
-    for (var i = 0; i < arraySize; i++) {
-      initialArray[i] = Math.floor(Math.random() * 100) + 10;
-    }
+    initialArray = JSAV.utils.rand.numKeys(10, 100, arraySize);
     barArray = av.ds.array(initialArray, {indexed: true, layout: "bar"});
     clickHandler.addArray(barArray);
 
     // initialize temp variable
     initialTempArray = [];
-    initialTempArray[0] = Math.floor(Math.random() * 100) + 10;
+    initialTempArray[0] = Math.floor(JSAV.utils.rand.random() * 100) + 10;
     tempArray = av.ds.array(initialTempArray, {indexed: false});
     clickHandler.addArray(tempArray);
 

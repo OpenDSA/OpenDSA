@@ -41,7 +41,8 @@ class HTMLTranslator(SphinxHTMLTranslator):
         self.body.append('</code>')
 
     def visit_emphasis(self, node):
-        node['classes'].append('ODSAterm')
+        if u'std-term' in node['classes']:
+          node['classes'].append('ODSAterm')
         self.body.append(self.starttag(node, 'em', '', CLASS=' '.join(node['classes'])))
 
 

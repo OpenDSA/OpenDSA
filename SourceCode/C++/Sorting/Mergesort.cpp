@@ -37,11 +37,15 @@ void mergesort(Comparable* A[], Comparable* temp[], int left, int right) {
 
 bool sorttest(int array[], int n, int threshold) {
   Comparable* A[n];
+  Comparable* temp[n];
   int i;
 
   /* Sort an array of Ints */
   for (i = 0; i < n; ++i) {
     A[i] = new Int(array[i]);
+  }
+  for (int i = 0; i < n; ++i) {
+    temp[i] = new Int(0);
   }
 
   //  for (i = 0; i < n; ++i) {
@@ -49,27 +53,36 @@ bool sorttest(int array[], int n, int threshold) {
   //  }
   //  cout << std::endl;
   
-  mergesort(A, n);
+  mergesort(A, temp, 0, n-1);
 
   if (!checkorder(A, n)) return false;
 
   for (i = 0; i < n; ++i) {
     delete A[i];
   }
+   for (int i = 0; i < n; ++i) {
+      delete temp[i];
+    }
 
   /* Sort an array of KVPairs */
   
   for (i = 0; i < n; ++i) {
     A[i] = new KVPair(array[i], &array[i]);
   }
+  for (int i = 0; i < n; ++i) {
+      temp[i] = new KVPair(0, 0);
+   }
 
-  mergesort(A, n);
+  mergesort(A, temp, 0, n-1);
 
   if (!checkorder(A, n)) return false;
 
   for (i = 0; i < n; ++i) {
     delete A[i];
   }
+  for (int i = 0; i < n; ++i) {
+      delete temp[i];
+    }
   
   delete[] array;
 
