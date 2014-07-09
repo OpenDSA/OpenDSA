@@ -87,6 +87,12 @@ The following visualization illustrates the worst case running time analysis of 
 
 .. inlineav:: InsertionSortWorstCaseCON ss
    :output: show
+   
+Testing the new directive here!
+
+.. test1::
+
+Done testing!
   
 .. TODO::
    :type: Review the Worst case analysis discussion
