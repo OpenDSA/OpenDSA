@@ -23,7 +23,7 @@ public:
     const Int& iOther = static_cast<const Int&>(other);
     return n >= iOther.n;
   }
-  Int& operator=(const Comparable& i) override{
+  Int& operator=(const Comparable& i) {
     n = static_cast<const Int&>(i).n;
     return *this;
   };

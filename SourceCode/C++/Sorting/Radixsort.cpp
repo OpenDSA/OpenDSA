@@ -1,7 +1,10 @@
 #include "utils.h"
+#include "Comparable.cpp"
+#include "KVPair.cpp"
 #include "Int.cpp"
 #include "Checkorder.cpp"
 
+//Written by Hannah Börjesson 2014 @LiU
 /* *** ODSATag: Radixsort *** */
 static void radixsort(int A[], int k, int r, int n) {
   int B[n], count[r], i, j, rtok;
@@ -29,26 +32,11 @@ static void radixsort(int A[], int k, int r, int n) {
 /* *** ODSAendTag: Radixsort *** */
 
 bool sorttest(int array[], int n, int threshold) {
-  int i;
 
-  /* Sort an array of Ints */
-  for (i = 0; i < n; ++i) {
-    A[i] = new Int(array[i]);
-  }
+  radixsort(array, 2, 256, n);
 
-  //  for (i = 0; i < n; ++i) {
-  //    cout << *A[i] << " ";
-  //  }
-  //  cout << std::endl;
-  
-  radixsort(A, 2, 256, n);
+  if (!checkorder(array, n)) return false;
 
-  if (!checkorder(A, n)) return false;
-
-  for (i = 0; i < n; ++i) {
-    delete A[i];
-  }
-  
   delete[] array;
 
   return true;

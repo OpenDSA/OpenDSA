@@ -1,12 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
+#include "utils.h"
 
-void swap(int A[], int i, int j) {
-  int tmp = A[i];
-  A[i] = A[j];
-  A[j] = tmp;
-}
 inline void Randomize()
 { srand(time(0)); }
 
