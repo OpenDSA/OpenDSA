@@ -207,23 +207,6 @@
           }
         }
       },
-      "List/Freelist": {
-        "long_name": "Freelists",
-        "exercises": {
-          "listFreeCON": {
-            "long_name": "Freelist Slideshow 1",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "FListInsertCON": {
-            "long_name": "Freelist Insert",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
-      },
       "List/ListDouble": {
         "long_name": "Doubly Linked Lists",
         "exercises": {
@@ -351,6 +334,23 @@
             "required": true,
             "points": 1,
             "threshold": 5
+          }
+        }
+      },
+      "List/Freelist": {
+        "long_name": "Freelists",
+        "exercises": {
+          "listFreeCON": {
+            "long_name": "Freelist Slideshow 1",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "FListInsertCON": {
+            "long_name": "Freelist Insert",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       },

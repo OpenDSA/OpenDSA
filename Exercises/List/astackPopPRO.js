@@ -39,7 +39,7 @@ function clickHandler(index, e) {
   if (selectedIndex === -1) { // nothing currently selected
     if (pSelected) { // He's re-setting the pointer
       topPointer.target(jsavArr, {targetIndex: index});
-      av.container.trigger("jsav-updaterelative");
+      av.step();
       topPointer.element.removeClass("highlight");
       pointerIndex = index;
       pSelected = false;

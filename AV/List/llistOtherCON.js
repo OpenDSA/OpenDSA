@@ -25,9 +25,12 @@
     // We would like to have put this at: 
     //          top: 150,
     //          left: 80
-    var pseudo_next = av.code(code[0]).hide();
-    var pseudo_prev = av.code(code[1]).hide();
-    var pseudo_pos = av.code(code[2]).hide();
+    var pseudo_next = av.code($.extend({left: 80, top: 150,
+                                        visible: false, lineNumbers: false}, code[0]));
+    var pseudo_prev = av.code($.extend({left: 80, top: 85,
+                                        visible: false, lineNumbers: false}, code[1]));
+    var pseudo_pos = av.code($.extend({left: 80, top: 85,
+                                        visible: false, lineNumbers: false}, code[2]));
 
     // Slide 1
     av.umsg(interpret("av_c1"));
