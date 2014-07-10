@@ -185,6 +185,39 @@ def update_counters(label_line, dir_type, mod_num, num_ref_map, counters):
   return (num_ref_map, counters)
 
 
+def process_ref_chap(extension, line, book_objects, start_space):
+  """
+    method responsible of converting :ref: and :chap: to :term: when 
+    reference / chapter is missing. 
+  """
+  #lower case modules names
+  lower_listed_modules = [x.lower() for x in book_objects]
+  line_t = line.strip()
+  separator = '%s|`' % extension
+  rel_tokens = re.split(separator, line_t)
+  if len(rel_tokens) == 4:
+    rel_labels = rel_tokens[2]
+    rel_tags = re.split('<|>', rel_labels)
+    #We encountered the alternate :ref:/:chap: syntax
+   
+    if len(rel_tags) == 5:
+      if rel_tags[3].strip().lower() in lower_listed_modules:
+        #module is present swith to standard :rel: syntax
+        line_t = line_t.replace('<'+ rel_tags[1] + '>', '')
+        if extension == ':chap:':
+           line_t = line_t.replace(rel_tags[0], '')
+           line_t = line_t.replace('<'+ rel_tags[3] + '>', rel_tags[3])
+      else:
+        #module absent swith to :term:
+        tmpStr = rel_tags[0]
+        line_t = line_t.replace(rel_tags[0], '')
+        line_t = line_t.replace(extension,'<anchor-text>' + tmpStr.strip() + ':' + rel_tags[1].strip()  + '</anchor-text> :term:')
+        line_t = line_t.replace('<' + rel_tags[1] + '> ', rel_tags[1].strip())
+        line_t = line_t.replace('<' + rel_tags[3]  + '>','')
+        line_t = ' ' * start_space + line_t + '\n'
+  return line_t
+
+
 class ODSA_RST_Module:
 
   def __init__(self, config, mod_path, mod_attrib = {'exercises': {} }, satisfied_requirements = [], chap = '', depth = 0, current_section_numbers = []):
@@ -276,28 +309,13 @@ class ODSA_RST_Module:
           (num_ref_map, counters) = update_counters(mod_data[i - 2], dir_type, mod_num, num_ref_map, counters)
 
         if ':ref:' in line:
-          #lower case modules names
-          lower_listed_modules = [x.lower() for x in config.listed_modules]
-          line = mod_data[i].strip()
-          rel_tokens = re.split(':ref:|`', line)
-          if len(rel_tokens) == 4:
-            rel_labels = rel_tokens[2]  
-            rel_tags = re.split('<|>', rel_labels)
-            #We encountered the alternate :ref: syntax
-            if len(rel_tags) == 5:
-              if rel_tags[3].strip().lower() in lower_listed_modules:
-                #module is present swith to standard :rel: syntax
-                line = line.replace('<'+ rel_tags[1] + '>', '')
-              else:
-                #module absent swith to :term:
-                tmpStr = rel_tags[0]
-                line = line.replace(rel_tags[0], '')
-                line = line.replace(':ref:','<anchor-text>' + tmpStr.strip() + ':' + rel_tags[1].strip()  + '</anchor-text> :term:')
-                line = line.replace('<' + rel_tags[1] + '> ', rel_tags[1].strip())
-                line = line.replace('<' + rel_tags[3]  + '>','')
-              line = ' ' * start_space + line + '\n'
-              mod_data[i] = line 
+          mod_data[i] = process_ref_chap(':ref:', line, config.listed_modules, start_space )  
           line = mod_data[i].strip().lower()
+
+        if ':chap:' in line:
+          mod_data[i] = process_ref_chap(':chap:', line, config.listed_chapters, start_space) 
+          line = mod_data[i].strip().lower()
+
       
         if ':requires:' in mod_data[i]:
           # Parse the list of prerequisite topics from the module
