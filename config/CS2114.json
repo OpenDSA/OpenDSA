@@ -30,7 +30,7 @@
         }
       }
     },
-    "List Interface & Array Lists": {
+    "List Interface & Array-based Lists": {
       "List/ListADT": {
         "long_name": "List ADT",
         "exercises": {
@@ -104,49 +104,6 @@
             "required": true,
             "points": 1,
             "threshold": 3
-          }
-        }
-      }
-    },
-    "Array-based Stacks": {
-      "List/StackArray": {
-        "long_name": "Array-based Stacks",
-          "exercises": {
-          "astackVarCON": {
-            "long_name": "Array stack variables slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "astackTopCON": {
-            "long_name": "Array stack top position slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "astackPushCON": {
-            "long_name": "Array stack push slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "astackPopCON": {
-            "long_name": "Array stack pop slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "astackPushPRO": {
-            "long_name": "Array-based Stack Push Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "astackPopPRO": {
-            "long_name": "Array-based Stack Pop Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
           }
         }
       }
@@ -235,23 +192,6 @@
             "points": 1,
             "threshold": 3
           }
-  }
-      },
-      "List/Freelist": {
-        "long_name": "Freelists",
-        "exercises": {
-          "listFreeCON": {
-            "long_name": "Freelist Slideshow 1",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "FListInsertCON": {
-            "long_name": "Freelist Insert",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          }
         }
       },
       "List/ListDouble": {
@@ -290,7 +230,96 @@
         }
       }
     },
-    "Queues and Linked Stacks": {
+    "Stacks": {
+      "List/StackArray": {
+        "long_name": "Array-based Stacks",
+          "exercises": {
+          "astackVarCON": {
+            "long_name": "Array stack variables slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackTopCON": {
+            "long_name": "Array stack top position slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackPushCON": {
+            "long_name": "Array stack push slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackPopCON": {
+            "long_name": "Array stack pop slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackPushPRO": {
+            "long_name": "Array-based Stack Push Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "astackPopPRO": {
+            "long_name": "Array-based Stack Pop Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "List/StackLinked": {
+        "long_name": "Linked Stacks",
+        "exercises": {
+          "LStackPushCON": {
+            "long_name": "Linked stack push",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LStackPopCON": {
+            "long_name": "Linked stack pop",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "listLStackPush": {
+            "long_name": "Linked Stack Push Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "listLStackPop": {
+            "long_name": "Linked Stack Pop Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "List/Freelist": {
+        "long_name": "Freelists",
+        "exercises": {
+          "listFreeCON": {
+            "long_name": "Freelist Slideshow 1",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "FListInsertCON": {
+            "long_name": "Freelist Insert",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      }
+    },
+    "Queues": {
       "List/Queue": {
         "long_name": "Queues",
         "exercises": {
@@ -374,35 +403,6 @@
           },
           "StckQSumm": {
             "long_name": "Stack/Queue Summary Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "List/StackLinked": {
-        "long_name": "Linked Stacks",
-        "exercises": {
-          "LStackPushCON": {
-            "long_name": "Linked stack push",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "LStackPopCON": {
-            "long_name": "Linked stack pop",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "listLStackPush": {
-            "long_name": "Linked Stack Push Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "listLStackPop": {
-            "long_name": "Linked Stack Pop Exercise",
             "required": true,
             "points": 1,
             "threshold": 5

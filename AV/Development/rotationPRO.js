@@ -11,10 +11,23 @@
       difficulty = PARAMS.diff || "hard",
       $layoutButton = $("#layoutButton"),
       $nullButton = $("#nullButton"),
+      $gradeButton,
+      hasCheckedModelAnswer = false,
       config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
       interpret = config.interpreter,
       code = config.code,
+      pseudo,
       av = new JSAV($("#jsavcontainer"));
+
+  if (code) {
+    pseudo = av.code($.extend({after: {element: $(".instructions")}}, code[rotationType]));
+  } else {
+    pseudo = av.code();
+  }
+
+  if (code && code.struct) {
+    av.code($.extend({after: {element: $(".instructions")}}, code.struct));
+  }
 
   function initialize() {
 
@@ -48,6 +61,13 @@
     // selected      1 
     nodeSelected = av.variable(0);
     selectedPointer = av.variable(0);
+
+    // disable the grade button and enable the layout button
+    $gradeButton = $(".jsavexercisecontrols input[name='grade']");
+    $gradeButton.attr("disabled", true);
+    $layoutButton.attr("disabled", false);
+    // set hasCheckedModelAnswer to false
+    hasCheckedModelAnswer = false;
     
     return tree;
   }
@@ -59,11 +79,36 @@
 
     jsav.displayInit();
 
-    // balance the tree
-    msTree.getUnbalancedNode(initialArray[initialArray.length - 1]).balance();
-    msTree.layout();
+    var last = initialArray[initialArray.length - 1],
+        unbalancedNode = msTree.getUnbalancedNode(last),
+        lastInserted = unbalancedNode;
 
+    while (lastInserted.left() || lastInserted.right()) {
+      if (lastInserted.value() >= last) {
+        lastInserted = lastInserted.left();
+      } else {
+        lastInserted = lastInserted.right();
+      }
+    }
+
+    // highlight the last inserted node
+    lastInserted.addClass("highlighted");
+    jsav.umsg(interpret("av_ms_last"));
     jsav.step();
+
+    // unhighlight the last inserted node and hightlight the unbalanced node
+    lastInserted.removeClass("highlighted");
+    unbalancedNode.addClass("highlighted");
+    jsav.umsg(interpret("av_ms_unbalanced"));
+    jsav.step();
+
+    // balance the tree
+    unbalancedNode.removeClass("highlighted");
+    unbalancedNode.balance();
+    msTree.layout();
+    jsav.umsg(interpret("av_ms_after_rotation"));
+
+    jsav.gradeableStep();
 
     return msTree;
   }
@@ -205,7 +250,7 @@
   }
 
   var clickHandler = function (event) {
-    if (this.value() === "jsavnull") {
+    if (this.value() === "jsavnull" || $layoutButton.attr("disabled")) {
       return;
     }
     if (nodeSelected.value()) {
@@ -254,7 +299,12 @@
       return;
     }
     tree.layout();
-    av.step();
+    exercise.gradeableStep();
+    $layoutButton.attr("disabled", true);
+    // don't enable the grade button if the user has checked the model answer
+    if (!hasCheckedModelAnswer) {
+      $gradeButton.attr("disabled", false);
+    }
   });
   $nullButton.click(function () {
     if (nodeSelected.value()) {
@@ -268,9 +318,15 @@
     }
   });
 
+  // set hasCheckedModelAnswer to true when the user opens the model answer
+  $("body").on("jsav-log-event", function (event, eventData) {
+    if (eventData.type === "jsav-exercise-model-open") {
+      hasCheckedModelAnswer = true;
+    }
+  });
+
   var exercise = av.exercise(modelSolution, initialize, {
     feedback: "atend",
-    grader: "finalStep",
     modelDialog: {width: 780}
   });
   exercise.reset();

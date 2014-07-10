@@ -17,7 +17,6 @@
     "Processing": [
       {
         "url": "../../../SourceCode/Processing/Lists/LList.pde",
-        "lineNumbers": false,
         "startAfter": "/* *** ODSATag: LListNext *** */",
         "endBefore": "/* *** ODSAendTag: LListNext *** */",
         "tags": {

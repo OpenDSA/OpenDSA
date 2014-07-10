@@ -15,17 +15,15 @@
     var leftMargin3 = (canvasWidth - arrWidth3) / 2;
     var i;
     var arrowArray = [];
-    var arr = jsav.ds.array(arrPositions, {
-      indexed: false,
-      layout: 'array'
-    }).hide();
+    var arr = jsav.ds.array(arrPositions,
+                            {indexed: false, layout: 'array'}).hide();
 
     jsav.umsg(interpret("av_c1"));
     jsav.displayInit();
     arr.show();
     for (i = 0; i < 5; i++) {
-      arrowArray[i] = jsav.g.line(leftMargin3 + 65 + 65 * i, 0,
-                                  leftMargin3 + 65 + 65 * i, 25,
+      arrowArray[i] = jsav.g.line(leftMargin3 + 77 + 60 * i, 0,
+                                  leftMargin3 + 77 + 60 * i, 25,
                                   { "arrow-end": "classic-wide-long",
                                     "opacity": 0, "stroke-width": 2 });
     }

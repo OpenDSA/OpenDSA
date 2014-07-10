@@ -917,8 +917,9 @@ Glossary
 
    header node
       Commonly used in implementations for a :term:`linked list` or
-      related structure, this node preceeds the first element of the
-      list. Its purpose is to simplify the code implementation by
+      related structure, this :term:`node` preceeds the first element
+      of the list.
+      Its purpose is to simplify the code implementation by
       reducing the number of special cases that must be programmed
       for.
 
@@ -1897,6 +1898,14 @@ Glossary
       A binary relation on a set where every pair of distinct elements
       in the set are :term:`comparable` (that is, one can determine
       which of the pair is greater than the other).
+
+   trailer node
+      Commonly used in implementations for a :term:`linked list` or
+      related structure, this :term:`node` follows the last element
+      of the list.
+      Its purpose is to simplify the code implementation by
+      reducing the number of special cases that must be programmed
+      for.
 
    transitive
       In set notation, relation :math:`R` is transitive if whenever

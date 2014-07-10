@@ -355,6 +355,41 @@
           }
         }
       },
+      "List/ListDouble": {
+        "long_name": "Doubly Linked Lists",
+        "exercises": {
+          "DLlistInsertCON": {
+            "long_name": "Doubly Linked List Insert",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "DLlistAppendCON": {
+            "long_name": "Doubly Linked List Append",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "DLlistRemoveCON": {
+            "long_name": "Doubly Linked List Remove",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "DLlistRemoveCON": {
+            "long_name": "Doubly Linked List Remove",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "DLlistPrevCON": {
+            "long_name": "Doubly Linked List Prev",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
       "List/StackArray": {
         "long_name": "Array-based Stacks",
           "exercises": {
