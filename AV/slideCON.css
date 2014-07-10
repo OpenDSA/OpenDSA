@@ -4,14 +4,17 @@
   border: 0;
   width: 850px;
 }
+
 .jsavcontainer ul li {
   background-image: none;
 }
+
 .jsavcontrols {
   margin-top: -35px;
   margin-left: 35px; /* Center on screen, despite setting button */
 
 }
+
 .jsavoutput.jsavline{
   margin-top: -5px;
   height: 55px;
@@ -34,4 +37,24 @@
 
 .jsavcodeline.jsavhighlight {
   background-color: #ccc !important;
+}
+
+.jsavnode .jsavvalue { /* Make array cell values center vertically */
+  height: 30px;
+}
+
+.jsavnode {
+  line-height: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+}
+
+.jsavlist .jsavvalue { /* Make linked list cell values center vertically */
+  height: 30px;
+}
+
+.jsavarray .jsavvalue { /* Make array cell values center vertically */
+  height: 30px;
 }

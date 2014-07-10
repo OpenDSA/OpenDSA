@@ -114,12 +114,12 @@ function addEdge(node1, node2) {
   var edge2_ty = node1.element.position().top + node1.container.position().top + nodeHeight / 3 * 2;
 
 
-  edges.topEdge = jsav.g.line(edge1_fx, edge1_fy, edge1_tx, edge1_ty, {
+  edges.topEdge = jsav.g.line(edge1_fx, edge1_fy+15, edge1_tx, edge1_ty+15, {
     'arrow-end': 'classic-wide-long',
     'stroke-width': 2,
     'stroke-dasharray': '-'
   });
-  edges.bottomEdge = jsav.g.line(edge2_fx, edge2_fy, edge2_tx, edge2_ty, {
+  edges.bottomEdge = jsav.g.line(edge2_fx, edge2_fy+15, edge2_tx, edge2_ty+15, {
     'arrow-end': 'classic-wide-long',
     'stroke-width': 2,
     'stroke-dasharray': '-'
@@ -137,10 +137,10 @@ function addEdge(node1, node2) {
 // JSAV extension
 (function ($) {
   JSAV._types.ds.DListNode.prototype.odsa_addSlash = function (type, opts) {
-    var fx = this.element.position().left + this.container.position().left + 41;
-    var fy = this.element.position().top + this.container.position().top + 32;
+    var fx = this.element.position().left + this.container.position().left + 42;
+    var fy = this.element.position().top + this.container.position().top + 47;
     if (type === 'left') {
-      fx = this.element.position().left + this.container.position().left + 1;
+      fx = this.element.position().left + this.container.position().left + 2;
     }
 
     var options = opts || {};
@@ -161,7 +161,7 @@ function addEdge(node1, node2) {
 
   JSAV._types.ds.DListNode.prototype.odsa_addVLine = function (opts) {
     var fx = this.element.position().left + this.container.position().left;
-    var fy = this.element.position().top + this.container.position().top;
+    var fy = this.element.position().top + this.container.position().top + 15;
     var nodeWidth = this.element.outerWidth();
     var nodeHeight = this.element.outerHeight();
     var nodegap = this.element.offset().left - this.prev().element.offset().left - nodeWidth;
@@ -187,7 +187,7 @@ function addEdge(node1, node2) {
   var jsav = new JSAV('DLlistDiagramCON');
   // Relative offsets
   var leftMargin = 160;
-  var topMargin = 45;
+  var topMargin = 30;
   // JSAV list
   var l = jsav.ds.dlist({
       'nodegap': 30,
@@ -205,6 +205,7 @@ function addEdge(node1, node2) {
   l.get(2).odsa_addVLine();
 }(jQuery));
 
+
 // Dlist Insertion
 (function ($) {
   var jsav = new JSAV('DLlistInsertCON');
@@ -216,11 +217,11 @@ function addEdge(node1, node2) {
     });
   // Relative offsets
   var leftMargin = 150;
-  var topMargin = 25;
+  var topMargin = 10;
   // Box "it"
   var itLabel = jsav.label('it', {
       left: 20,
-      top: 0,
+      top: -15,
       'font-size': '20px'
     });
   var itBox = jsav.ds.array(['15'], {
@@ -250,7 +251,7 @@ function addEdge(node1, node2) {
   var curr = setPointer('curr', l.get(2));
 
   setPointer('tail', l.get(5));
-  pseudo.highlight(0);
+  pseudo.highlight(1);
   jsav.umsg('The linked list before insertion. 15 is the value to be inserted.');
   jsav.displayInit();
 
@@ -276,8 +277,8 @@ function addEdge(node1, node2) {
   Vline.hide();
   Vline1.show();
   var newTailSlash = l.get(6).odsa_addSlash();
-  pseudo.unhighlight(0);
-  pseudo.highlight(1);
+  pseudo.unhighlight(1);
+  pseudo.highlight(2);
   jsav.step();
   // Step 3
   jsav.umsg('Copy the value of "it", which is 15, to the new node.');
@@ -299,8 +300,8 @@ function addEdge(node1, node2) {
   l.get(2).unhighlight();
   l.get(1).edgeToNext().show();
   longEdge.topEdge.hide();
-  pseudo.unhighlight(1);
-  pseudo.highlight(2);
+  pseudo.unhighlight(2);
+  pseudo.highlight(3);
   jsav.step();
 
   // Step 6
@@ -309,8 +310,8 @@ function addEdge(node1, node2) {
   l.get(3).edgeToPrev().show();
   l.get(1).unhighlight();
   l.get(3).highlight();
-  pseudo.unhighlight(2);
-  pseudo.highlight(3);
+  pseudo.unhighlight(3);
+  pseudo.highlight(4);
   jsav.step();
 
   // Step 7
@@ -324,8 +325,8 @@ function addEdge(node1, node2) {
 
   // Step 8
   jsav.umsg('Increase the list size by 1.');
-  pseudo.unhighlight(3);
-  pseudo.highlight(4);
+  pseudo.unhighlight(4);
+  pseudo.highlight(5);
   jsav.step();
   jsav.recorded();
 }(jQuery));
@@ -341,11 +342,11 @@ function addEdge(node1, node2) {
     });
   // Relative offsets
   var leftMargin = 150;
-  var topMargin = 25;
+  var topMargin = 10;
   // Box "it"
   var itLabel = jsav.label('it', {
       left: 20,
-      top: 0,
+      top: -15,
       'font-size': '20px'
     });
   var itBox = jsav.ds.array(['15'], {
@@ -375,7 +376,7 @@ function addEdge(node1, node2) {
   var curr = setPointer('curr', l.get(2));
   setPointer('tail', l.get(5));
   jsav.umsg('The append method works almost the same as insertion. We will insert the value 15.');
-  pseudo.highlight(0);
+  pseudo.highlight(1);
   jsav.displayInit();
 
   // Step 2
@@ -400,8 +401,8 @@ function addEdge(node1, node2) {
   Vline.hide();
   Vline1.show();
   var newTailSlash = l.get(6).odsa_addSlash();
-  pseudo.unhighlight(0);
-  pseudo.highlight(1);
+  pseudo.unhighlight(1);
+  pseudo.highlight(2);
   jsav.step();
 
   // Step 3
@@ -432,8 +433,8 @@ function addEdge(node1, node2) {
   l.get(6).unhighlight();
   l.get(4).edgeToNext().show();
   longEdge.topEdge.hide();
-  pseudo.unhighlight(1);
-  pseudo.highlight(2);
+  pseudo.unhighlight(2);
+  pseudo.highlight(3);
   jsav.step();
 
   // Step 7
@@ -448,8 +449,8 @@ function addEdge(node1, node2) {
   // Step 8
   jsav.umsg('Increase the list size by 1.');
   l.get(5).unhighlight();
-  pseudo.unhighlight(2);
-  pseudo.highlight(3);
+  pseudo.unhighlight(3);
+  pseudo.highlight(5);
   jsav.step();
   jsav.recorded();
 }(jQuery));
@@ -464,24 +465,24 @@ function addEdge(node1, node2) {
       endBefore: '/* *** ODSAendTag: DListRemove *** */'
     });
   // Relative offsets
-  var leftMargin = 10;
-  var topMargin = 45;
+  var leftMargin = 200;
+  var topMargin = 30;
   // Create a the hidden array
   var itBox = jsav.ds.array([''], {
       indexed: false,
       layout: 'array',
-      left: leftMargin + 170,
-      top: topMargin + 35
+      left: leftMargin + 70,
+      top: topMargin + 50
     }).hide();
   itBox.highlight();
 
   // "It"
   var itLabel = jsav.label('it', {
-      left: leftMargin + 103,
-      top: topMargin + 58,
+      left: leftMargin + 3,
+      top: topMargin + 53,
       'font-size': '20px'
     }).hide();
-  var arrowIt = jsav.g.line(leftMargin + 119, topMargin + 70, leftMargin + 159, topMargin + 70, {
+  var arrowIt = jsav.g.line(leftMargin + 19, topMargin + 80, leftMargin + 59, topMargin + 80, {
       'arrow-end': 'classic-wide-long',
       'opacity': 0,
       'stroke-width': 2
@@ -511,14 +512,14 @@ function addEdge(node1, node2) {
   var curr = setPointer('curr', l.get(2));
   setPointer('tail', l.get(4));
   jsav.umsg('Now we will look at the remove method. Here is the linked list before we remove the node with value 8.');
-  pseudo.highlight(0);
+  pseudo.highlight(1);
   jsav.displayInit();
 
   // Step 2
   jsav.umsg('Since curr is not at the tail position, we can proceed');
   l.get(2).highlight();
-  pseudo.unhighlight(0);
-  pseudo.highlight(1);
+  pseudo.unhighlight(1);
+  pseudo.highlight(2);
   jsav.step();
 
   // Step 3
@@ -528,8 +529,8 @@ function addEdge(node1, node2) {
   itLabel.show();
   jsav.effects.copyValue(l.get(2), itBox, 0);
   l.get(2).unhighlight();
-  pseudo.unhighlight(1);
-  pseudo.highlight(2);
+  pseudo.unhighlight(2);
+  pseudo.highlight(3);
   jsav.step();
 
   // Step 4
@@ -538,24 +539,23 @@ function addEdge(node1, node2) {
   l.get(1).edgeToNext().hide();
   Vline.hide();
   itBox.unhighlight(0);
-  pseudo.unhighlight(2);
-  pseudo.highlight(3);
+  pseudo.unhighlight(3);
+  pseudo.highlight(4);
   jsav.step();
 
   // Step 5
   jsav.umsg('<code>curr.next()</code>\'s prev field is set to point to <code>curr.prev()</code>.');
   var dashLineDown = arrowAround(l.get(2), 'down');
   l.get(3).edgeToPrev().hide();
-  pseudo.unhighlight(3);
-  pseudo.highlight(4);
+  pseudo.unhighlight(4);
+  pseudo.highlight(5);
   jsav.step();
 
   // Step 6
   jsav.umsg('Change <code>curr</code> to point to the next node.');
   curr.target(l.get(3));
-  Vline1.show();
-  pseudo.unhighlight(4);
-  pseudo.highlight(5);
+  pseudo.unhighlight(5);
+  pseudo.highlight(6);
   jsav.step();
 
   // Step 7
@@ -571,17 +571,16 @@ function addEdge(node1, node2) {
   dashLineDown.hide();
   tailSlash.hide();
   var newTailSlash = l.get(3).odsa_addSlash();
-  Vline1.hide();
   Vline.show();
-  pseudo.unhighlight(5);
-  pseudo.highlight(6);
+  pseudo.unhighlight(6);
+  pseudo.highlight(7);
   jsav.step();
 
   // Step 9
   jsav.umsg(' Return value removed.');
   itBox.highlight(0);
-  pseudo.unhighlight(6);
-  pseudo.highlight(7);
+  pseudo.unhighlight(7);
+  pseudo.highlight(8);
   jsav.step();
   jsav.recorded();
 }(jQuery));
@@ -617,7 +616,7 @@ function addEdge(node1, node2) {
   var curr = setPointer('curr', l.get(3));
   setPointer('tail', l.get(5));
   jsav.umsg('The prev method is easy.');
-  pseudo.highlight(0);
+  pseudo.highlight(1);
   jsav.displayInit();
 
   // Step 2
@@ -629,8 +628,8 @@ function addEdge(node1, node2) {
   jsav.umsg('Since the node <code>curr.prev()</code> is not <code>head</code> node, we can proceed.');
   l.get(3).unhighlight();
   l.get(2).highlight();
-  pseudo.unhighlight(0);
-  pseudo.highlight(1);
+  pseudo.unhighlight(1);
+  pseudo.highlight(2);
   jsav.step();
 
   // Step 4
@@ -638,13 +637,13 @@ function addEdge(node1, node2) {
   curr.target(l.get(2));
   Vline.hide();
   Vline1.show();
-  pseudo.unhighlight(1);
-  pseudo.highlight(2);
+  pseudo.unhighlight(2);
+  pseudo.highlight(3);
   jsav.step();
 
   // Step 5
   jsav.umsg('This takes &Theta;(1) time.');
-  pseudo.unhighlight(2);
+  pseudo.unhighlight(3);
   jsav.step();
   jsav.recorded();
 }(jQuery));
