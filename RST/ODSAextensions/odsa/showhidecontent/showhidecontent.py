@@ -1,4 +1,5 @@
 from docutils.parsers.rst import Directive
+from docutils.parsers.rst import directives
 from docutils import nodes
 import conf
 import json
@@ -17,25 +18,36 @@ def loadTable():
 	  
 def setup(app):
   app.add_directive('showhidecontent', showhidecontent)
+  
+#Define the HTML output
+anchor_html = "<a id='%s_anchor'></a>"
+button_html = '''<input type='button' 
+                   id="%s_showhide_btn" 
+                   class = 'showHideLink' value='%s %s'/>'''              
+content_html = "<div id='%s' hidden='hidden' data-type='analysis_text'>%s</div>"  
+def output(argument):
+  """Conversion function for the "showhide" option."""
+  return directives.choice(argument, ('show', 'hide', 'showhide','none'))
  
 class showhidecontent(Directive):
-  required_arguments = 0
+  required_arguments = 1
   optional_arguments = 1
   has_content = True
+  final_argument_whitespace = True
+  option_spec = {
+                 'output': output
+                }
   def run (self):
     # Load translation
     langDict = loadTable() 
-	
     res = ''
-    button_html = "<input type='button' class = 'showHideLink' value='Show/hide content'/>"
-    content_html = "<div>%s</div>" %(self.content) 
-    if len(self.arguments) == 0:
-	  res = button_html
-    elif self.arguments[0] == 'showhide':
-	  res = button_html
-    elif self.arguments[0] == "show":
-      res = content_html
-    elif self.arguments[0] == "hide":
-      pass	
+    if 'output' not in self.options:
+      res = anchor_html %(self.arguments[0]) + button_html %(self.arguments[0], langDict['show'], self.arguments[0]) 
+    elif self.options['output'] == 'showhide':  
+      res = anchor_html %(self.arguments[0]) + button_html %(self.arguments[0], langDict['show'], self.arguments[0]) + content_html %(self.arguments[0], '<br>'.join(self.content) ) 
+    elif self.options['output'] == 'show':
+      res = anchor_html %(self.arguments[0]) + content_html %(self.arguments[0], '<br>'.join(self.content))
+    elif self.options['output'] == 'hide':
+      pass 	
     return [nodes.raw('', res, format='html')]
     
