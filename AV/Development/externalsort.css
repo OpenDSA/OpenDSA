@@ -23,6 +23,11 @@
 #ExternalMergeSortExample {
  height: 300px;
 }
+
+#ExternalReplacementSelection {
+ height: 470px;
+}
+
 svg{
   stroke-width: 1;
 }
