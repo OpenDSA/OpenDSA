@@ -62,7 +62,7 @@ public:
   void siftdown(int pos) {
     if ((pos < 0) || (pos >= n)) return; // Illegal position
       while (!isLeaf(pos)) {
-        int j = leftChild(pos);
+        int j = leftchild(pos);
         std::cout << "**** POS : " << pos << " *** J:  " << j << std::endl;
         if ((j<(n-1)) && (*Heap[j] < (*Heap[j+1]))) j++; // j is now index of child with greater value
         //GOING DOWN... when pos = 9 and j = 19
