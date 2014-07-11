@@ -90,7 +90,11 @@ The following visualization illustrates the worst case running time analysis of 
    
 Testing the new directive here!
 
-.. test1::
+.. showhidecontent:: InsertionSortAnalysis
+   :output: showhide
+
+   This is the content of the directive to be tested.
+   It is required that this content can be shown/hidden.
 
 Done testing!
   

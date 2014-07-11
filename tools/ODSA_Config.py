@@ -31,6 +31,7 @@ optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_di
 lang_file = os.path.abspath('tools/language_msg.json')
 
 listed_modules = []
+listed_chapters = []
 
 # Prints the given string to standard error
 def print_err(err_msg):
@@ -183,6 +184,10 @@ def validate_module(mod_name, module, conf_data):
         print('ERROR: Language directory %s does not exist' % lang_dir)
         error_count += 1
 
+#get names of chapter
+def get_chap_names(chapters):
+  for k in chapters:
+     listed_chapters.append(k)
 
 # Validate a section
 def validate_section(section, conf_data):
@@ -269,6 +274,8 @@ def validate_config_file(config_file_path, conf_data):
       error_count += 1
 
   validate_section(conf_data['chapters'], conf_data)
+  get_chap_names(conf_data['chapters']) 
+
 
   if error_count > 0:
     print_err('Errors found: %d\n' % error_count)
@@ -484,6 +491,7 @@ class ODSA_Config:
 
     #Make the list of modules publicly available
     self['listed_modules'] = listed_modules
+    self['listed_chapters'] = listed_chapters
 
     # Saves the path to the config file used to create the book
     self.config_file_path = config_file_path

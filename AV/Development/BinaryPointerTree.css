@@ -29,6 +29,9 @@
 .jsavbinarypointertreenode.loop {
   background-color: #faa
 }
+.jsavbinarypointertreenode.highlighted {
+  box-shadow: 0 0 20px 5px #aaf;
+}
 .jsavbinarypointertree .jsavedge {
   stroke-width: 2;
 }

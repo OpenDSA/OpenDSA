@@ -1,11 +1,3 @@
-.jsavlist .jsavvalue { /* Make linked list cell values center vertically */
-  height: 30px;
-}
-
-.jsavarray .jsavvalue { /* Make array cell values center vertically */
-  height: 30px;
-}
-
 .jsavpointer .jsavlabel { 
   margin-bottom: 2px;
 }

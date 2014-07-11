@@ -1,4 +1,4 @@
-/* global ODSA, PARAMS */
+/* global ODSA, PARAMS, console */
 (function ($) {
   "use strict";
   var initialArray = [],
@@ -11,10 +11,23 @@
       difficulty = PARAMS.diff || "hard",
       $layoutButton = $("#layoutButton"),
       $nullButton = $("#nullButton"),
+      $gradeButton,
+      hasCheckedModelAnswer = false,
       config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
       interpret = config.interpreter,
       code = config.code,
+      pseudo,
       av = new JSAV($("#jsavcontainer"));
+
+  if (code) {
+    pseudo = av.code($.extend({after: {element: $(".instructions")}}, code[rotationType]));
+  } else {
+    pseudo = av.code();
+  }
+
+  if (code && code.struct) {
+    av.code($.extend({after: {element: $(".instructions")}}, code.struct));
+  }
 
   function initialize() {
 
@@ -48,6 +61,13 @@
     // selected      1 
     nodeSelected = av.variable(0);
     selectedPointer = av.variable(0);
+
+    // disable the grade button and enable the layout button
+    $gradeButton = $(".jsavexercisecontrols input[name='grade']");
+    $gradeButton.attr("disabled", true);
+    $layoutButton.attr("disabled", false);
+    // set hasCheckedModelAnswer to false
+    hasCheckedModelAnswer = false;
     
     return tree;
   }
@@ -59,11 +79,36 @@
 
     jsav.displayInit();
 
-    // balance the tree
-    msTree.getUnbalancedNode(initialArray[initialArray.length - 1]).balance();
-    msTree.layout();
+    var last = initialArray[initialArray.length - 1],
+        unbalancedNode = msTree.getUnbalancedNode(last),
+        lastInserted = unbalancedNode;
 
+    while (lastInserted.left() || lastInserted.right()) {
+      if (lastInserted.value() >= last) {
+        lastInserted = lastInserted.left();
+      } else {
+        lastInserted = lastInserted.right();
+      }
+    }
+
+    // highlight the last inserted node
+    lastInserted.addClass("highlighted");
+    jsav.umsg(interpret("av_ms_last"));
     jsav.step();
+
+    // unhighlight the last inserted node and hightlight the unbalanced node
+    lastInserted.removeClass("highlighted");
+    unbalancedNode.addClass("highlighted");
+    jsav.umsg(interpret("av_ms_unbalanced"));
+    jsav.step();
+
+    // balance the tree
+    unbalancedNode.removeClass("highlighted");
+    unbalancedNode.balance();
+    msTree.layout();
+    jsav.umsg(interpret("av_ms_after_rotation"));
+
+    jsav.gradeableStep();
 
     return msTree;
   }
@@ -79,6 +124,15 @@
     };
 
     options = $.extend({}, defaults, options);
+
+    if (["single", "double"].indexOf(options.rotationType) === -1) {
+      console.warn("Rotation type \"" + options.rotationType + "\" does not exist. Falling back to single rotation.");
+      options.rotationType = "single";
+    }
+    if (["easy", "hard"].indexOf(options.difficulty) === -1) {
+      console.warn("Difficulty \"" + options.difficulty + "\" does not exist. Falling back to hard difficulty.");
+      options.difficulty = "hard";
+    }
     
     while (true) {
       var arr = [];
@@ -204,8 +258,19 @@
     return errors;
   }
 
+  // JSAV undoable functions for enabling and disabling jQuery buttons
+  av.enableButton = JSAV.anim(
+    function (button) { button.attr("disabled", false); },
+    function (button) { button.attr("disabled", true); }
+  );
+  av.disableButton = JSAV.anim(
+    function (button) { button.attr("disabled", true); },
+    function (button) { button.attr("disabled", false); }
+  );
+
+  // click handler for binary pointer tree nodes
   var clickHandler = function (event) {
-    if (this.value() === "jsavnull") {
+    if (this.value() === "jsavnull" || $layoutButton.attr("disabled")) {
       return;
     }
     if (nodeSelected.value()) {
@@ -213,10 +278,7 @@
         selectedNode.child(selectedPointer.value(), this, {hide: false});
         selectedNode.pointers[selectedPointer.value()].layout();
         av.step();
-      } /* else if (event.target.className.indexOf(selectedPointer.value() === 0 ? "left" : "right") !== -1 && selectedNode.child(selectedPointer)) {
-        selectedNode.child(selectedPointer.value(), null, {hide: false});
-        av.step();
-      } */
+      }
       selectedNode.removeClass("selected-left");
       selectedNode.removeClass("selected-right");
       selectedNode = null;
@@ -254,7 +316,12 @@
       return;
     }
     tree.layout();
-    av.step();
+    exercise.gradeableStep();
+    av.disableButton($layoutButton);
+    // don't enable the grade button if the user has checked the model answer
+    if (!hasCheckedModelAnswer) {
+      av.enableButton($gradeButton);
+    }
   });
   $nullButton.click(function () {
     if (nodeSelected.value()) {
@@ -268,9 +335,15 @@
     }
   });
 
+  // set hasCheckedModelAnswer to true when the user opens the model answer
+  $("body").on("jsav-log-event", function (event, eventData) {
+    if (eventData.type === "jsav-exercise-model-open") {
+      hasCheckedModelAnswer = true;
+    }
+  });
+
   var exercise = av.exercise(modelSolution, initialize, {
     feedback: "atend",
-    grader: "finalStep",
     modelDialog: {width: 780}
   });
   exercise.reset();

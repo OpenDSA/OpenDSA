@@ -150,15 +150,15 @@ build/QuicksortTest/success: Sorting/Quicksort.cpp Sorting/SortTest.cpp Utils/Ch
 	$(CC) $(CFLAGS) Quicksort.o -o Quicksort; \
 	./Quicksort 1000
 
-
 Heapsort: build/HeapsortTest/success
 
-build/HeapsortTest/success: Sorting/Heapsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
+build/HeapsortTest/success: Sorting/Heapsort.cpp Sorting/SortTest.cpp Sorting/Maxheap.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
 	@echo "Heapsort Test"
 	-@rm -rf build/HeapsortTest
 	@mkdir build/HeapsortTest
 	@cp Sorting/Heapsort.cpp build/HeapsortTest
 	@cp Sorting/SortTest.cpp build/HeapsortTest
+	@cp Sorting/Maxheap.cpp build/HeapsortTest
 	@cp Utils/Checkorder.cpp build/HeapsortTest
 	@cp Utils/KVPair.cpp build/HeapsortTest
 	@cp Utils/Comparable.cpp build/HeapsortTest

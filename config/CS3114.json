@@ -501,12 +501,6 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "FListInsertCON": {
-            "long_name": "Freelist Insert",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
           }
         }
       },

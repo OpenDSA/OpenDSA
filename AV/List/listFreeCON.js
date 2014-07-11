@@ -1,83 +1,11 @@
 'use strict';
-// Various functions and variables that will be used by all of the
-// following sections of the tutorial.
-
-// Helper function for seting pointer
-function setPointer(name, node, opt) {
-  var pointerRight = {
-      anchor: 'right top',
-      myAnchor: 'left bottom',
-      left: -10,
-      top: -20
-    };
-  var pointerLeft = {
-      anchor: 'left top',
-      myAnchor: 'right bottom',
-      left: 15,
-      top: -20
-    };
-  if (opt === 'right') {
-    return node.jsav.pointer(name, node, pointerRight);
-  } else {
-    return node.jsav.pointer(name, node, pointerLeft);
-  }
-}
-
-// Helper funciton for deleting a pointer
-function delPointer(pointer) {
-  if (pointer) {
-    pointer.element.remove();
-    pointer.arrow.remove();
-  }
-}
-// JSAV extension
-(function ($) {
-  JSAV._types.ds.ListNode.prototype.odsa_addTail = function (opts) {
-    var fx = $('#' + this.id()).position().left + this.container.position().left + 33;
-    var fy = $('#' + this.id()).position().top + this.container.position().top + 32;
-    var options = opts || {};
-    if (options.left) {
-      fx += options.left;
-    }
-    if (options.top) {
-      fy += options.top;
-    }
-    if (options.visible === 'undefined') {
-      options.visible = 100;
-    }
-    return this.jsav.g.line(fx, fy, fx + 10, fy - 31, {
-      'opacity': options.visible,
-      'stroke-width': 1
-    });
-  };
-
-  JSAV._types.ds.ListNode.prototype.odsa_addVLine = function (opts) {
-    var fx = $('#' + this.id()).position().left + this.container.position().left;
-    var fy = $('#' + this.id()).position().top + this.container.position().top;
-    var options = opts || {};
-    if (options.left) {
-      fx += options.left;
-    }
-    if (options.top) {
-      fy += options.top;
-    }
-    if (options.visible === 'undefined') {
-      options.visible = 100;
-    }
-    return this.jsav.g.line(fx - 15, fy - 5, fx - 15, fy + 35, {
-      'opacity': options.visible,
-      'stroke-width': 1
-    });
-  };
-}(jQuery));
-
 //Linked list insertion
 (function ($) {
   var jsav = new JSAV('listFreeCON');
 
   // Offsets
   var leftMargin = 217;
-  var topMargin = 40;
+  var topMargin = 25;
 
   // Create a list object under control of JSAV library
   var l = jsav.ds.list({
@@ -102,13 +30,13 @@ function delPointer(pointer) {
     });
   nullLabel.css({ color: 'red' });
   // head
-  var head = setPointer('head', l.get(0));
+  var head = setPointerL('head', l.get(0));
   // curr
-  var curr = setPointer('curr', l.get(1));
+  var curr = setPointerL('curr', l.get(1));
   // Tail
-  var tail = setPointer('tail', l.get(1), 'right');
+  var tail = setPointerR('tail', l.get(1));
   // freelist poitner
-  var pfreelist = setPointer('freelist', nullLabel);
+  var pfreelist = setPointerL('freelist', nullLabel);
   jsav.umsg('We will  illustrate using a freelist by performing a series of list operations. Let\'s start from an empty singly list and a \'freelist\' variable pointing to \'null\'');
   jsav.displayInit();
 

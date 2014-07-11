@@ -1,48 +1,12 @@
-#include "utils.h"
-#include "Comparable.cpp"
-#include "KVPair.cpp"
-#include "Int.cpp"
-#include "Checkorder.cpp"
+#include "Maxheap.cpp"
 
-// With KVPair
 
-void swap(Comparable *A[], int i, int j) {
-  Comparable* tmp = A[i];
-  A[i] = A[j];
-  A[j] = tmp;
-}
+/* *** ODSAendTag: Heapsort *** */
 
-/* *** ODSATag: siftdown *** */
-void siftDown(Comparable* A[], int start, int end) {
-  int root = start;
-
-  while (root*2+1 < end) {
-    int child = 2*root + 1;
-    if ((child + 1 < end) && *A[child] < *A[child+1]) {
-    child += 1;
-  }
-    if (*A[root] < *A[child]) {
-      swap(A, child, root);
-      root = child;
-    }
-    else
-      return;
-  }
-}
-/* *** ODSAendTag: siftdown *** */
-
-/* *** ODSATag: Heapsort *** */
-void heapsort(Comparable* A[], int count) {
-  int start, end;
-  /* heapify */
-  for (start = (count-2)/2; start >= 0; start--) {
-    siftDown(A, start, count);
-  }
-  for (end = count-1; end > 0; end--) {
-    swap(A, end, 0);
-    siftDown(A, 0, end);
-  }
-
+void heapsort(Comparable* A[], int n) {
+  MaxHeap H (A,n,n);  
+  for (int i = 0; i < n; i++) 
+     H.removemax();
 }
 /* *** ODSAendTag: Heapsort *** */
 
@@ -76,7 +40,7 @@ bool sorttest(int array[], int n, int threshold) {
     A[i] = new KVPair(array[i], &array[i]);
   }
 
-  heapsort(A, n);
+  //heapsort(A, n);
 
   if (!checkorder(A, n)) return false;
 

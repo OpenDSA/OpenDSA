@@ -10,14 +10,13 @@
    :topic: Lists
 
 .. odsalink:: AV/List/dlist.css
-.. odsalink:: AV/List/listDLinkedCON.css
+.. odsalink:: AV/List/dlistCON.css
 
 
 Doubly Linked Lists
 ===================
 
-The singly linked list
-presented in Module :numref:`<ListLinked>` allows
+The :ref:`singly linked list <linked list> <ListLinked>` allows
 for direct access from a list node only to the next node in the list.
 A :term:`doubly linked list` allows convenient access from a list node
 to the next node and also to the preceding node on the list.
@@ -27,7 +26,7 @@ linked list), and a second pointer to the node preceding it.
 
 .. _DblListFig:
 
-.. inlineav:: DLlistDiagramCON dgm
+.. inlineav:: dlistDiagramCON dgm
    :align: center
    
    A doubly linked list.
@@ -41,7 +40,7 @@ Whether a list implementation is doubly or singly linked should
 be hidden from the ``List`` class user.
 
 Like our singly linked list implementation, the doubly linked list
-implementation makes use of a header node.
+implementation makes use of a :term:`header node`.
 We also add a tailer node to the end of the list.
 The tailer is similar to the header, in that it is a node that
 contains no value, and it always exists.
@@ -54,8 +53,9 @@ The purpose of these nodes is to simplify the ``insert``,
 special-case code when the list is empty, or when we insert at the
 head or tail of the list.
 
-In our implementation, ``curr`` will point to the current node (or to
-the trailer node if the current position is at the end of the list).
+In our implementation, ``curr`` will point to the
+:term:`current position` (or to the :term:`trailer node` if the
+current position is at the end of the list).
  
 Here is the complete implementation for a
 ``Link`` class to be used with doubly linked lists.
@@ -75,16 +75,16 @@ While the code for these methods might be a little longer than their
 singly linked list counterparts (since there is an exra pointer in
 each node to deal with), they tend to be simpler.
 
-.. inlineav:: DLlistInsertCON ss
+.. inlineav:: dlistInsertCON ss
    :output: show   
    
-.. inlineav:: DLlistAppendCON ss
+.. inlineav:: dlistAppendCON ss
    :output: show  
    
-.. inlineav:: DLlistRemoveCON ss
+.. inlineav:: dlistRemoveCON ss
    :output: show
    
-.. inlineav:: DLlistPrevCON ss
+.. inlineav:: dlistPrevCON ss
    :output: show
    
 The only disadvantage of the doubly linked list as compared to the
@@ -139,4 +139,9 @@ XORing the box outline a second time restores the original
 contents of the screen.
 
 .. odsascript:: AV/List/dlist.js
-.. odsascript:: AV/List/listDLinkedCON.js
+.. odsascript:: AV/List/dlistCON.js
+.. odsascript:: AV/List/dlistDiagramCON.js
+.. odsascript:: AV/List/dlistInsertCON.js
+.. odsascript:: AV/List/dlistAppendCON.js
+.. odsascript:: AV/List/dlistRemoveCON.js
+.. odsascript:: AV/List/dlistPrevCON.js

@@ -18,14 +18,14 @@
 
     // Vertical arrow in step 1
     var arrow1_x = leftMargin + 15;
-    var arrow1 = av.g.line(arrow1_x, -10, arrow1_x, 20,
+    var arrow1 = av.g.line(arrow1_x, -15, arrow1_x, 15,
 	  { "arrow-end": "classic-wide-long",
             "opacity": 100, "stroke-width": 2 });
     arrow1.hide();
 
     // Label in step 1
     var label = av.label("Insert 23", { before: arr, left: arrow1_x - 16,
-                                        top: -35 }).hide();
+                                        top: -40 }).hide();
 
     //horizontal arrow in step 2
     var arrow2 = av.g.line(leftMargin + 50, 5, leftMargin + 150, 5,

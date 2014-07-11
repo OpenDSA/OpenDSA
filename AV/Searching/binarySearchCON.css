@@ -17,3 +17,7 @@
 .yellow {
   background-color: #FFFF00;
 }
+
+.jsavindex.jsavarrow:before { 
+  left: 9px;
+}
