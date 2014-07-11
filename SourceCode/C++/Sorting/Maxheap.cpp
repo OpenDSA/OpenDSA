@@ -65,7 +65,7 @@ public:
         int j = leftChild(pos);
         std::cout << "**** POS : " << pos << " *** J:  " << j << std::endl;
         if ((j<(n-1)) && (*Heap[j] < (*Heap[j+1]))) j++; // j is now index of child with greater value
-        //HÄR KRASCHAR DET
+        //GOING DOWN... when pos = 9 and j = 19
         if (*Heap[pos] >= (*Heap[j])) return; // THIS = SEG FAULT...
         swap(Heap, pos, j);
         pos = j;  // Move down 
