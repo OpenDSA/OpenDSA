@@ -4,22 +4,21 @@ class AStack implements Stack {
   private static final int defaultSize = 10;
   private int maxSize;            // Maximum size of stack
   private int top;                // Index for top Object
-  private Object listArray[];     // Array holding stack
+  private Object stackArray[];    // Array holding stack
 
   // Constructors
   AStack(int size) {
     maxSize = size;
     top = 0; 
-    listArray = new Object[size]; // Create listArray
+    stackArray = new Object[size]; // Create stackArray
   }
-
   AStack() { this(defaultSize); }
 /* *** ODSAendTag: AStack1 *** */
 
   String toString() {
     StringBuffer out = new StringBuffer(top * 4);
     for (int i=top-1; i>=0; i--) {
-      out.append(listArray[i]);
+      out.append(stackArray[i]);
       out.append(" ");
     }
     return out.toString();
@@ -32,7 +31,7 @@ class AStack implements Stack {
 /* *** ODSATag: AStackPush *** */
   boolean push(Object it) {
     if (top >= maxSize) return false;
-    listArray[top++] = it;
+    stackArray[top++] = it;
     return true;
   }
 /* *** ODSAendTag: AStackPush *** */
@@ -41,13 +40,13 @@ class AStack implements Stack {
 /* *** ODSATag: AStackPop *** */
   Object pop() {               
     if (top == 0) return null;
-    return listArray[--top];
+    return stackArray[--top];
   }
 /* *** ODSAendTag: AStackPop *** */
 
   Object topValue() {             // Return top element
     if (top == 0) return null;
-    return listArray[top-1];
+    return stackArray[top-1];
   }
 
   int length() { return top; }    // Return stack size

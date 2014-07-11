@@ -210,31 +210,26 @@
       "List/ListDouble": {
         "long_name": "Doubly Linked Lists",
         "exercises": {
-          "DLlistInsertCON": {
+          "dlistDiagramCON": {},
+          "dlistInsertCON": {
             "long_name": "Doubly Linked List Insert",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "DLlistAppendCON": {
+          "dlistAppendCON": {
             "long_name": "Doubly Linked List Append",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "DLlistRemoveCON": {
+          "dlistRemoveCON": {
             "long_name": "Doubly Linked List Remove",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "DLlistRemoveCON": {
-            "long_name": "Doubly Linked List Remove",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "DLlistPrevCON": {
+          "dlistPrevCON": {
             "long_name": "Doubly Linked List Prev",
             "required": true,
             "points": 0.0,
@@ -311,25 +306,26 @@
       "List/StackLinked": {
         "long_name": "Linked Stacks",
         "exercises": {
-          "LStackPushCON": {
+          "lstackDiagramCON": {},
+          "lstackPushCON": {
             "long_name": "Linked stack push",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LStackPopCON": {
+          "lstackPopCON": {
             "long_name": "Linked stack pop",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listLStackPush": {
+          "lstackPush": {
             "long_name": "Linked Stack Push Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listLStackPop": {
+          "lstackPop": {
             "long_name": "Linked Stack Pop Exercise",
             "required": true,
             "points": 1,
@@ -342,12 +338,6 @@
         "exercises": {
           "listFreeCON": {
             "long_name": "Freelist Slideshow 1",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "FListInsertCON": {
-            "long_name": "Freelist Insert",
             "required": true,
             "points": 0.0,
             "threshold": 1.0

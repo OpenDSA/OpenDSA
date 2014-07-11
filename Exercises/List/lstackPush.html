@@ -17,12 +17,12 @@ Written by Junyang Chen and Cliff Shaffer
 
   <style>
     .jsavcontainer {
-      height: 130px;
+      height: 150px;
       border: 0px;
 	  margin-top: 30px;
     }
     .jsavcanvas{
-      height: 130px;
+      height: 150px;
     }
     .jsavhorizontallist.jsavautoresize .jsavnode {
       min-width: 30px;
@@ -45,7 +45,6 @@ Written by Junyang Chen and Cliff Shaffer
     }
     .jsavpointer{
       width: 40px;
-      border: 1px solid #bbb;
       text-align: center;
 	  cursor: pointer;
     }
@@ -209,8 +208,8 @@ function addTail(node){
   
     var fx = $('#' + node.id()).position().left + 34;
     var tx = $('#' + node.id()).position().left + 44;
-    var fy = $('#' + node.id()).position().top + 32 +40;
-    var ty = $('#' + node.id()).position().top + 1 +40;
+    var fy = $('#' + node.id()).position().top + 47 +40;
+    var ty = $('#' + node.id()).position().top + 16 +40;
     node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
   }
 }
@@ -238,9 +237,9 @@ function f_newnode() {
     answerOrderArr.splice(0, 0, newLinkNode.id());
 
     var x1 = left + 34;
-    var y1 = top + 31 + 40;
+    var y1 = top + 46 + 40;
     var x2 = left + 45;
-    var y2 = top + 1 + 40;
+    var y2 = top + 16 + 40;
 	
     newLinkNode.odsa_tail = jsav.g.line(x1, y1,
                           x2, y2,{"opacity": 100,"stroke-width": 1});
@@ -323,8 +322,8 @@ function f_reset() {
 	jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
   }
   // Manually add a tail for the last node
-  jsavList.get(listSize - 1).odsa_tail = jsav.g.line(34 + (listSize - 1)*74, 32 + 40,
-                          44 + (listSize - 1)*74, 1 + 40,{"opacity": 100,"stroke-width": 1});
+  jsavList.get(listSize - 1).odsa_tail = jsav.g.line(34 + (listSize - 1)*74, 47 + 40,
+                          44 + (listSize - 1)*74, 16 + 40,{"opacity": 100,"stroke-width": 1});
   // 'top' pointer
   ptop = jsav.pointer("top", jsavList.get(0),{fixed: "true",});
   ptop.click(pclick);
@@ -408,7 +407,7 @@ function checkAnswer(arr_size) {
         <input id="reset" type="button" value="Reset" />
 		<input id="NewNode" type="button" value="NewNode" />		
 		<input id="insert" type="button" value="Insert" />
-        <div id="jsav" style = "{background-color : #333}"></div>
+        <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
         <div class="guess">

@@ -9,7 +9,7 @@
    :satisfies: linked stack
    :topic: Lists
 
-.. odsalink:: AV/List/listStackLCON.css      
+.. odsalink:: AV/List/lstackCON.css      
 
 Linked Stacks
 =============
@@ -18,9 +18,6 @@ Linked Stack Implementation
 ---------------------------
 
 The linked stack implementation is quite simple.
-The freelist of Module :numref:`<Freelist>` is an example
-of a linked stack.
-
 Elements are inserted and removed only from the head of the list.
 A header node is not used because no special-case code is required
 for lists of zero or one elements.
@@ -29,22 +26,24 @@ Here is the complete linked stack implementation.
 .. codeinclude:: Lists/LStack
    :tag: LStack1,LStack2
 
+Here is a visual representation for the linked stack.
+
 .. _LStackDiagram:
 
-.. inlineav:: LStackDiagramCON dgm
+.. inlineav:: lstackDiagramCON dgm
    :align: center   
-   
-   Diagram showing a linked stack
 
-.. inlineav:: LStackPushCON ss
+Now, let's look at how ``push`` and ``pop`` work in the linked stack implementation.
+
+.. inlineav:: lstackPushCON ss
    :output: show   
    
-.. inlineav:: LStackPopCON ss
+.. inlineav:: lstackPopCON ss
    :output: show
    
-.. avembed:: Exercises/List/listLStackPush.html ka
+.. avembed:: Exercises/List/lstackPush.html ka
 
-.. avembed:: Exercises/List/listLStackPop.html ka
+.. avembed:: Exercises/List/lstackPop.html ka
 
    
 Comparison of Array-Based and Linked Stacks
@@ -79,10 +78,14 @@ quickly.
 
 .. _TwoArrayStacks:
 
-.. inlineav:: LStackTwostacksCON dgm
+.. inlineav:: lstackTwostackCON dgm
    :align: center     
 
    Two stacks implemented within in a single array, both growing
    toward the middle.
    
-.. odsascript:: AV/List/listStackLCON.js
+.. odsascript:: AV/List/lstackCON.js
+.. odsascript:: AV/List/lstackDiagramCON.js
+.. odsascript:: AV/List/lstackPushCON.js
+.. odsascript:: AV/List/lstackPopCON.js
+.. odsascript:: AV/List/lstackTwostackCON.js

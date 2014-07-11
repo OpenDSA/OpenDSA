@@ -16,17 +16,18 @@ Freelists
 
 The ``new`` operator is relatively expensive to use.
 Garbage collection is also expensive.
-If you want to know why, Chapter :chap:`Memory Management` discusses how
-general-purpose memory managers are implemented.
-The expense comes from the fact that free-store routines must be
-capable of handling requests to and from free store with no particular
-pattern, as well as memory requests of vastly different sizes.
+A :chap:`memory manager <memory manager> <Memory Management>`
+handles general-purpose memory requests.
+The expense comes from the fact that :term:`free store` routines must
+be capable of handling requests to and from free store with no
+particular pattern, as well as memory requests of vastly different
+sizes.
 This, combined with unpredictable freeing of space by the garbage
 collector, makes them inefficient compared to what might be
 implemented for more controlled patterns of memory access.
 
-List nodes are created and deleted in a linked list implementation in
-a way that allows the ``Link`` class programmer
+List nodes are created and deleted in a :term:`linked list`
+implementation in a way that allows the ``Link`` class programmer
 to provide simple but efficient memory management routines.
 Instead of making repeated calls to ``new``, 
 the ``Link`` class can handle its own :term:`freelist`.
@@ -38,6 +39,8 @@ is checked to see if a list node is available.
 If so, the node is taken from the freelist.
 If the freelist is empty, the standard ``new`` operator must then
 be called.
+So we see that the freelist is simply
+an application of a :ref:`linked stack <linked stack> <StackLinked>`.
 
 .. inlineav:: listFreeCON ss
    :output: show
@@ -95,4 +98,5 @@ Notes
 .. [#] A language like C++ could use operator overloading to redefine
    the ``new`` and ``delete`` operators.
 
+.. odsascript:: AV/List/llistCON.js
 .. odsascript:: AV/List/listFreeCON.js

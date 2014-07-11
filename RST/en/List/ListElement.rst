@@ -18,7 +18,8 @@ List Element Implementations
 .. inlineav:: listElementDataCON ss
    :output: show
 
-Whether it is more advantageous to use pointers to shared elements
+Whether it is more advantageous to use pointers to shared
+:term:`elements <element>`
 or separate copies depends on the intended application.
 In general, the larger the elements and the more they are duplicated,
 the more likely that pointers to shared elements is the
@@ -55,3 +56,6 @@ object.
    
 .. odsascript:: AV/List/dlist.js   
 .. odsascript:: AV/List/listElementCON.js
+.. odsascript:: AV/List/listElementDataCON.js
+.. odsascript:: AV/List/listElementTypeCON.js
+.. odsascript:: AV/List/listElementDeleteCON.js

@@ -2,50 +2,50 @@
 	height: 200px;
 }
 
-#DLlistDiagramCON {
+#dlistDiagramCON {
   height: 100px;
 }
 
-#DLlistDiagramCON .jsavoutput.jsavline {
+#dlistDiagramCON .jsavoutput.jsavline {
   height: 75px;
 }
 
-#DLlistInsertCON {
+#dlistInsertCON {
   height: 400px;
 }
 
-#DLlistInsertCON .jsavcode{
+#dlistInsertCON .jsavcode{
   width: 510px;
   position: relative;
   top: 115px;
 }
 
-#DLlistAppendCON {
+#dlistAppendCON {
   height: 410px;
 }
 
-#DLlistAppendCON .jsavcode{
+#dlistAppendCON .jsavcode{
   width: 510px;
   position: relative;
   top: 115px;
 }
 
-#DLlistRemoveCON {
-  height: 510px;
+#dlistRemoveCON {
+  height: 495px;
 }
 
-#DLlistRemoveCON .jsavcode{
+#dlistRemoveCON .jsavcode{
   width: 590px;
   position: relative;
-  top: 145px;
+  top: 130px;
 }
 
-#DLlistPrevCON {
-  height: 380px;
+#dlistPrevCON {
+  height: 320px;
 }
 
-#DLlistPrevCON .jsavcode{
+#dlistPrevCON .jsavcode{
   position: relative;
   width: 600px;
-  top: 140px;
+  top: 80px;
 }

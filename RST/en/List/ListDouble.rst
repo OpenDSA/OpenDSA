@@ -10,7 +10,7 @@
    :topic: Lists
 
 .. odsalink:: AV/List/dlist.css
-.. odsalink:: AV/List/listDLinkedCON.css
+.. odsalink:: AV/List/dlistCON.css
 
 
 Doubly Linked Lists
@@ -26,7 +26,7 @@ linked list), and a second pointer to the node preceding it.
 
 .. _DblListFig:
 
-.. inlineav:: DLlistDiagramCON dgm
+.. inlineav:: dlistDiagramCON dgm
    :align: center
    
    A doubly linked list.
@@ -75,16 +75,16 @@ While the code for these methods might be a little longer than their
 singly linked list counterparts (since there is an exra pointer in
 each node to deal with), they tend to be simpler.
 
-.. inlineav:: DLlistInsertCON ss
+.. inlineav:: dlistInsertCON ss
    :output: show   
    
-.. inlineav:: DLlistAppendCON ss
+.. inlineav:: dlistAppendCON ss
    :output: show  
    
-.. inlineav:: DLlistRemoveCON ss
+.. inlineav:: dlistRemoveCON ss
    :output: show
    
-.. inlineav:: DLlistPrevCON ss
+.. inlineav:: dlistPrevCON ss
    :output: show
    
 The only disadvantage of the doubly linked list as compared to the
@@ -139,4 +139,9 @@ XORing the box outline a second time restores the original
 contents of the screen.
 
 .. odsascript:: AV/List/dlist.js
-.. odsascript:: AV/List/listDLinkedCON.js
+.. odsascript:: AV/List/dlistCON.js
+.. odsascript:: AV/List/dlistDiagramCON.js
+.. odsascript:: AV/List/dlistInsertCON.js
+.. odsascript:: AV/List/dlistAppendCON.js
+.. odsascript:: AV/List/dlistRemoveCON.js
+.. odsascript:: AV/List/dlistPrevCON.js
