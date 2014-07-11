@@ -185,7 +185,7 @@ def update_counters(label_line, dir_type, mod_num, num_ref_map, counters):
   return (num_ref_map, counters)
 
 
-def process_ref_chap(extension, line, book_objects, start_space):
+def process_ref_chap(extension, line, book_objects, start_space, last):
   """
     method responsible of converting :ref: and :chap: to :term: when 
     reference / chapter is missing. 
@@ -203,19 +203,17 @@ def process_ref_chap(extension, line, book_objects, start_space):
     if len(rel_tags) == 5:
       if rel_tags[3].strip().lower() in lower_listed_modules:
         #module is present swith to standard :rel: syntax
-        line_t = line_t.replace('<'+ rel_tags[1] + '>', '')
+        newDir = '%s <%s>' %(rel_tags[0], rel_tags[3])
         if extension == ':chap:':
-           line_t = line_t.replace(rel_tags[0], '')
-           line_t = line_t.replace('<'+ rel_tags[3] + '>', rel_tags[3])
+          newDir = '%s' %(rel_tags[3])
+        line_t = line_t.replace(rel_labels, newDir)
       else:
         #module absent swith to :term:
-        tmpStr = rel_tags[0]
-        line_t = line_t.replace(rel_tags[0], '')
-        line_t = line_t.replace(extension,'<anchor-text>' + tmpStr.strip() + ':' + rel_tags[1].strip()  + '</anchor-text> :term:')
-        line_t = line_t.replace('<' + rel_tags[1] + '> ', rel_tags[1].strip())
-        line_t = line_t.replace('<' + rel_tags[3]  + '>','')
-        line_t = ' ' * start_space + line_t + '\n'
-  return line_t + '\n'
+        line_t = line_t.replace(extension,':term:') 
+        newDir = '%s <%s>' %(rel_tags[0], rel_tags[1]) 
+        line_t = line_t.replace(rel_labels, newDir)
+    line_t = ' ' * start_space + line_t + last 
+  return line_t 
 
 
 class ODSA_RST_Module:
@@ -309,11 +307,19 @@ class ODSA_RST_Module:
           (num_ref_map, counters) = update_counters(mod_data[i - 2], dir_type, mod_num, num_ref_map, counters)
 
         if ':ref:' in line:
-          mod_data[i] = process_ref_chap(':ref:', line, config.listed_modules, start_space )  
+          if mod_data[i].endswith('\n'):
+             last = '\n'
+          else:
+             last = ' ' 
+          mod_data[i] = process_ref_chap(':ref:', line, config.listed_modules, start_space, last)  
           line = mod_data[i].strip().lower()
 
         if ':chap:' in line:
-          mod_data[i] = process_ref_chap(':chap:', line, config.listed_chapters, start_space) 
+          if mod_data[i].endswith('\n'):
+             last = '\n'
+          else:
+             last = ' '
+          mod_data[i] = process_ref_chap(':chap:', line, config.listed_chapters, start_space, last) 
           line = mod_data[i].strip().lower()
 
       
