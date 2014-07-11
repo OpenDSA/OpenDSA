@@ -6,9 +6,9 @@
 void heapsort(Comparable* A[], int n) {
   std::cout << "Getting started with array:" << std::endl;
   for (int j = 0; j<n; j++)
-    std::cout << A[j] << " ";
+    std::cout << *A[j] << " ";
   std::cout << std::endl;
-  MaxHeap H (A,n,n);  
+  MaxHeap H(A,n,n);  
   std::cout << "Now, ready to unpack the heap" << std::endl;
   for (int i = 0; i < n; i++) 
      H.removemax();
