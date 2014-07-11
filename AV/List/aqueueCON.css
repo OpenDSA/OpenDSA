@@ -1,0 +1,43 @@
+#AQueueFirstNposCON {
+  height: 280px;
+}
+#AQueueFirstNposCON .jsavoutput.jsavline {
+  height: 55px;
+}
+
+#AQueueDriftposCON {
+  height: 280px;
+}
+#AQueueDriftposCON .jsavoutput.jsavline {
+  height: 75px;
+}
+#AQueueBadCON {
+  height: 280px;
+}
+#AQueueBadCON .jsavoutput.jsavline {
+  height: 75px;
+}
+#AQueueCircularCON {
+  height: 420px;
+}
+#AQueueCircularCON .jsavoutput.jsavline {
+  height: 70px;
+}
+#AQueueEmptyFullCON {
+  height: 400px;
+}
+#AQueueEmptyFullCON .jsavoutput.jsavline {
+  height: 55px;
+}
+#AQueueVarCON {
+  height: 480px;
+}
+#AQueueVarCON .jsavoutput.jsavline {
+  height: 40px;
+}
+#AQueueVarCON .jsavcode{
+  border: 1px solid;
+  border-color: white; 
+  top: -10px;
+  width:700px;
+}

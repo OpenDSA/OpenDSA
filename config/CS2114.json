@@ -294,7 +294,8 @@
             "required": true,
             "points": 1,
             "threshold": 5
-          }
+          },
+          "lstackTwostackCON": {}
         }
       },
       "List/Freelist": {
@@ -360,7 +361,12 @@
             "required": true,
             "points": 1,
             "threshold": 5
-          },
+          }
+        }
+      },
+      "List/QueueLinked": {
+        "long_name": "Linked Queues",
+        "exercises": {
           "LQueueIntroCON": {
             "long_name": "Linked Queue Intro",
             "required": true,

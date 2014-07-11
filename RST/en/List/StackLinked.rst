@@ -64,9 +64,8 @@ When multiple stacks are to be
 implemented, it is possible to take advantage of the one-way growth of
 the array-based stack.
 This can be done by using a single array to store two stacks.
-One stack grows inward from each end as illustrated by
-Figure :num:`Figure #TwoArrayStacks`, hopefully leading to less wasted
-space.
+One stack grows inward from each end as illustrated by the figure
+below, hopefully leading to less wasted space.
 However, this only works well when the space requirements of the two
 stacks are inversely correlated.
 In other words, ideally when one stack grows, the other will shrink.
@@ -81,9 +80,6 @@ quickly.
 .. inlineav:: lstackTwostackCON dgm
    :align: center     
 
-   Two stacks implemented within in a single array, both growing
-   toward the middle.
-   
 .. odsascript:: AV/List/lstackCON.js
 .. odsascript:: AV/List/lstackDiagramCON.js
 .. odsascript:: AV/List/lstackPushCON.js

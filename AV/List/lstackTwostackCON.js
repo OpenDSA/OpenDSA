@@ -1,6 +1,8 @@
 // Diagram showing Two stacks implemented within in a single array.
 (function ($) {
-  var jsav = new JSAV("LStackTwostacksCON");
+  console.log("Start Twostack");
+  var jsav = new JSAV("lstackTwostackCON");
+  console.log("Next Twostack");
   // Relative offsets
   var leftMargin = 180;
   var topMargin = 50;
@@ -11,10 +13,10 @@
     jsav.g.line(leftMargin + 376 + 31 * i, topMargin, leftMargin + 376 + 31 * i,
                 topMargin + 31);
   }
-  var top1Label = jsav.label("top1", {left : leftMargin + 20, top: topMargin - 40});
+  var top1Label = jsav.label("top1", {left : leftMargin + 20, top: topMargin - 55});
   var top1Arrow = jsav.g.line(leftMargin + 30, topMargin - 20, leftMargin + 45,
                               topMargin - 2, {'arrow-end': 'classic-wide-long', 'stroke-width' : 2});
-  var top2Label = jsav.label("top2", {left : leftMargin + 376 + 20, top: topMargin - 40});
+  var top2Label = jsav.label("top2", {left : leftMargin + 376 + 20, top: topMargin - 55});
   var top2Arrow = jsav.g.line(leftMargin + 376 + 30, topMargin - 20,
                               leftMargin + 376 + 15, topMargin - 2,
                               {'arrow-end': 'classic-wide-long', 'stroke-width' : 2});
