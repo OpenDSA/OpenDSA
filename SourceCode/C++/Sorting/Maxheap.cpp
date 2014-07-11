@@ -66,7 +66,9 @@ public:
         std::cout << "**** POS : " << pos << " *** J:  " << j << std::endl;
         if ((j<(n-1)) && (*Heap[j] < (*Heap[j+1]))) j++; // j is now index of child with greater value
         //GOING DOWN... when pos = 9 and j = 19
+        std::cout << "Now j is: " << j << std::endl;
         if (*Heap[pos] >= (*Heap[j])) return; // THIS = SEG FAULT...
+        std::cout << "Now swap" << std::endl;
         swap(Heap, pos, j);
         pos = j;  // Move down 
       }

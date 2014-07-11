@@ -167,7 +167,7 @@ build/HeapsortTest/success: Sorting/Heapsort.cpp Sorting/SortTest.cpp Sorting/Ma
 	cd build/HeapsortTest; \
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Heapsort.o Heapsort.cpp; \
 	$(CC) $(CFLAGS) Heapsort.o -o Heapsort; \
-	./Heapsort 1000
+	./Heapsort 25
 
 Radixsort: build/RadixsortTest/success
 
