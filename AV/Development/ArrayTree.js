@@ -26,7 +26,7 @@
    * Implement Array Tree data structure.
    ****************************************************************************/
 
-  var ArrayTree = function(jsav, node_len, options) {
+  var ArrayTree = function (jsav, node_len, options) {
     this.init(jsav, node_len, options);
   };
   JSAV.utils.extend(ArrayTree, JSAV._types.ds.Tree);
@@ -40,7 +40,7 @@
    * @param node_len  The length of each node in this Array Tree.
    * @param options   Options to be passed to the Array Tree structure.
    */
-  arrayTreeProto.init = function(jsav, node_len, options) {
+  arrayTreeProto.init = function (jsav, node_len, options) {
     this._layoutDone = false; // Set layout as done.
     this.jsav = jsav; // Set the JSAV object for this tree.
     this.options = options; // Set the options for the tree
@@ -86,16 +86,18 @@
       this.element.addClass("jsavautoresize");
     }
 
-    // TODO: What does this do?
+    // Handles top, left, right, bottom options and positions the given element accordingly
     JSAV.utils._helpers.handlePosition(this);
-
+    // Create an empty node and set it as the root
     this.rootnode = this.newNode(null, null);
     // TODO: Why does the child role need to be declared as root?
     this.rootnode.element.attr("data-child-role", "root");
     // TODO: What is the purpose of the IDs?
     this.element.attr({"data-root": this.rootnode.id(), "id": this.id()});
 
-    // TODO: What does this do? And why can't this be before the root node code?
+    // Shows or hides the data structure based on options.visible
+    // This is placed after the root node code, since the roots show function
+    // will be called if the tree is visible
     JSAV.utils._helpers.handleVisibility(this, this.options);
   };
   
@@ -103,7 +105,7 @@
     Creates a new Array Tree Node and sets it as the root node. If the newRoot
     parameter is not specified then, the current root node is returned.
     */
-  arrayTreeProto.root = function(newRoot, options) {
+  arrayTreeProto.root = function (newRoot, options) {
     var opts = $.extend({hide: true}, options);
     if (typeof newRoot === "undefined") {
       return this.rootnode;
@@ -131,7 +133,7 @@
    * @param options   Options to be passed to the Array Tree Node.
    * @returns {ArrayTreeNode} The newly create Array Tree Node object.
    */
-  arrayTreeProto.newNode = function(value, parent, options) {
+  arrayTreeProto.newNode = function (value, parent, options) {
     return new ArrayTreeNode(this, value, parent, options);
   };
 
@@ -139,8 +141,8 @@
    * Implement Array Tree Node for the Array Tree data structure.
    ****************************************************************************/
 
-  var ArrayTreeNode = function(container, value, parent, options) {
-    this.init(container, value,parent, options);
+  var ArrayTreeNode = function (container, value, parent, options) {
+    this.init(container, value, parent, options);
   };
   JSAV.utils.extend(ArrayTreeNode, JSAV._types.ds.TreeNode);
 
@@ -154,8 +156,7 @@
    * @param parent    The Array Tree Node parent for this Node.
    * @param options   Options to be passed to the Array Tree Node.
    */
-  arrayTreeNodeProto.init = function (container, value, parent,
-                                      options) {
+  arrayTreeNodeProto.init = function (container, value, parent, options) {
     this.jsav = container.jsav;
     this.container = container;
     this.parentnode = parent;
@@ -164,30 +165,24 @@
     var parent_options = parent ? parent.options: {};
     this.options = $.extend(true, {visible: true}, parent_options, options);
 
-    if (value == null) {
+    if (value === null) {
       value = [""];
     }
 
     // Generate element where the Array Tree Node will be placed in.
     this.element = this.options.nodeelement ||
-      $("<div><div></div></div>");
+      $("<div><ol></ol></div>");
 
     // Create array for the Array Tree Node and added to the node element.
-    this.arrayelement = $(this.element).find("div");
+    this.arrayelement = $(this.element).find("ol");
     var array_options = $.extend(
       {element: this.arrayelement}, this.options);
     this.node_array = new this.jsav.ds.array(value, array_options);
 
-    var valtype = typeof(value);
-    if (valtype === "object") {valtype = "string";}
-
     // Set classes for Array Tree Node element.
     this.element.addClass("jsavnode jsavtreenode jsavarraytreenode");
     // Set ID.
-    this.element.attr({"id": this.id(), "data-value": value,
-      "data-value-type": valtype});
-    // Attach values to DOM element.
-    this.element.data("values", value);
+    this.element.attr({"id": this.id()});
 
     // Get/Set parent ID
     if (parent) {
@@ -200,14 +195,18 @@
     // Add the Array Tree Node element to the Array Tree container.
     this.container.element.append(this.element);
     
-    // TODO: What does this line do?
+    this.node_array.layout();
+
+    // Shows or hides the data structure based on options.visible
+    // This is placed after the root node code, since the roots show function
+    // will be called if the tree is visible
     JSAV.utils._helpers.handleVisibility(this, this.options);
 
     // Draw edge from this Array Tree Node to parent Node.
     if (parent) {
       // Draw edge from the parent Array Tree Node to this node.
-      // this._edgetoparent = new JSAV._types.ds.Edge(this.jsav, this, parent);
-      this._edgetoparent = new ArrayEdge(this.jsav, this, parent);
+      this._edgetoparent = new JSAV._types.ds.Edge(this.jsav, this, parent);
+      // this._edgetoparent = new ArrayEdge(this.jsav, this, parent);
       // Draw edge label if necessary.
       if (this.options.edgeLabel) {
         this._edgetoparent.label(this.options.edgeLabel);
@@ -222,7 +221,7 @@
     Child helper function that had to be reimplemented because it has a
     reference to the ArrayTreeNode object.
     */
-  var setchildhelper = function(self, pos, node, options) {
+  var setchildhelper = function (self, pos, node, options) {
     var oldval = self.childnodes[pos],
       opts = $.extend({hide: true}, options);
     if (oldval) {
@@ -238,7 +237,7 @@
       node.parent(self);
       self._setchildnodes(newchildnodes, opts);
     } else {
-      self._setchildnodes($.map(self.childnodes, function(item, index) {
+      self._setchildnodes($.map(self.childnodes, function (item, index) {
         if (index !== pos) { return item; }
         else { return null; }
       }), opts);
@@ -246,7 +245,7 @@
     return self;
   };
 
-  arrayTreeNodeProto.child = function(pos, node, options) {
+  arrayTreeNodeProto.child = function (pos, node, options) {
     if (typeof node === "undefined") {
       return this.childnodes[pos];
     } else {
@@ -257,19 +256,29 @@
     }
   };
 
-  arrayTreeNodeProto.value = function (newValue) {
-    if (typeof(newValue) === "undefined") {
-      return this.element.data("values");
-    }
-
-    for (var i = 0; i < newValue.length; i += 1) {
-      this.node_array.value(i, newValue[i]);
+  arrayTreeNodeProto.value = function (index, newValue) {
+    if (typeof(index) === "undefined") {
+      // return all values in the array
+      return this.node_array._values;
+    } else if ($.isArray(index)) {
+      // replace all values in the array with the new array
+      // TODO: What if the new array (index) is smaller than node_array???
+      for (var i = 0; i < index.length; i ++) {
+        this.node_array.value(i, index[i]);
+      }
+      this.node_array.layout();
+      // ...
+    } else {
+      // call the array's value method
+      var result = this.node_array.value(index, newValue);
+      this.node_array.layout();
+      return result;
     }
 
     return this;
   };
 
-  var ArrayEdge = function(jsav, start, end, options) {
+  var ArrayEdge = function (jsav, start, end, options) {
     this.jsav = jsav;
     this.startnode = start;
     this.endnode = end;
@@ -277,8 +286,8 @@
     this.container = start.container;
     // console.lg(bla);
     // console.log(start.arrayelement.html());
-    var startPos = start?start.element.position():{left:0, top:0},
-        endPos = end?end.element.position():{left:0, top:0};
+    var startPos = start ? start.element.position() : {left: 0, top: 0},
+        endPos = end ? end.element.position() : {left: 0, top: 0};
     if (startPos.left === endPos.left && startPos.top === endPos.top) {
       // layout not done yet
       this.g = this.jsav.g.line(-1, -1, -1, -1, $.extend({container: this.container}, this.options));
