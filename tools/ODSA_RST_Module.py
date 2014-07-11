@@ -215,7 +215,7 @@ def process_ref_chap(extension, line, book_objects, start_space):
         line_t = line_t.replace('<' + rel_tags[1] + '> ', rel_tags[1].strip())
         line_t = line_t.replace('<' + rel_tags[3]  + '>','')
         line_t = ' ' * start_space + line_t + '\n'
-  return line_t
+  return line_t + '\n'
 
 
 class ODSA_RST_Module:
