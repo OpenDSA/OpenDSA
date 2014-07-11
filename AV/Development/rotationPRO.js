@@ -1,4 +1,4 @@
-/* global ODSA, PARAMS */
+/* global ODSA, PARAMS, console */
 (function ($) {
   "use strict";
   var initialArray = [],
@@ -124,6 +124,15 @@
     };
 
     options = $.extend({}, defaults, options);
+
+    if (["single", "double"].indexOf(options.rotationType) === -1) {
+      console.warn("Rotation type \"" + options.rotationType + "\" does not exist. Falling back to single rotation.");
+      options.rotationType = "single";
+    }
+    if (["easy", "hard"].indexOf(options.difficulty) === -1) {
+      console.warn("Difficulty \"" + options.difficulty + "\" does not exist. Falling back to hard difficulty.");
+      options.difficulty = "hard";
+    }
     
     while (true) {
       var arr = [];
@@ -249,6 +258,17 @@
     return errors;
   }
 
+  // JSAV undoable functions for enabling and disabling jQuery buttons
+  av.enableButton = JSAV.anim(
+    function (button) { button.attr("disabled", false); },
+    function (button) { button.attr("disabled", true); }
+  );
+  av.disableButton = JSAV.anim(
+    function (button) { button.attr("disabled", true); },
+    function (button) { button.attr("disabled", false); }
+  );
+
+  // click handler for binary pointer tree nodes
   var clickHandler = function (event) {
     if (this.value() === "jsavnull" || $layoutButton.attr("disabled")) {
       return;
@@ -258,10 +278,7 @@
         selectedNode.child(selectedPointer.value(), this, {hide: false});
         selectedNode.pointers[selectedPointer.value()].layout();
         av.step();
-      } /* else if (event.target.className.indexOf(selectedPointer.value() === 0 ? "left" : "right") !== -1 && selectedNode.child(selectedPointer)) {
-        selectedNode.child(selectedPointer.value(), null, {hide: false});
-        av.step();
-      } */
+      }
       selectedNode.removeClass("selected-left");
       selectedNode.removeClass("selected-right");
       selectedNode = null;
@@ -300,10 +317,10 @@
     }
     tree.layout();
     exercise.gradeableStep();
-    $layoutButton.attr("disabled", true);
+    av.disableButton($layoutButton);
     // don't enable the grade button if the user has checked the model answer
     if (!hasCheckedModelAnswer) {
-      $gradeButton.attr("disabled", false);
+      av.enableButton($gradeButton);
     }
   });
   $nullButton.click(function () {
