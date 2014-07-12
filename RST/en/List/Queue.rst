@@ -47,19 +47,19 @@ The array-based queue is somewhat tricky to implement effectively.
 A simple conversion of the array-based list implementation is not
 efficient.
 
-.. inlineav:: AQueueFirstNposCON ss
+.. inlineav:: aqueueFirstCON ss
    :output: show
 
-.. inlineav:: AQueueDriftposCON ss
+.. inlineav:: aqueueDriftCON ss
    :output: show
    
-.. inlineav:: AQueueBadCON ss
+.. inlineav:: aqueueBadCON ss
    :output: show 
    
-.. inlineav:: AQueueCircularCON ss
+.. inlineav:: aqueueCircularCON ss
    :output: show 
    
-.. inlineav:: AQueueEmptyFullCON ss
+.. inlineav:: aqueueEmptyCON ss
    :output: show 
    
 If the value of ``front`` is fixed, then :math:`n+1` different
@@ -90,7 +90,7 @@ Here is an array-based queue implementation.
 .. codeinclude:: Lists/AQueue
    :tag: AQueue1,AQueue2
 
-.. inlineav:: AQueueVarCON ss
+.. inlineav:: aqueueVarCON ss
    :output: show 
    
 In this implementation, the front of the queue is defined to be toward
@@ -101,8 +101,14 @@ Thus, ``enqueue`` increments the rear pointer (modulus ``maxSize``),
 and ``dequeue`` increments the front pointer.
 Implementation of all member functions is straightforward.
 
-.. avembed:: Exercises/List/listAQueueEnqueue.html ka
+.. avembed:: Exercises/List/aqueueEnqueue.html ka
 
-.. avembed:: Exercises/List/listAQueueDequeue.html ka
+.. avembed:: Exercises/List/aqueueDequeue.html ka
 
 .. odsascript:: AV/List/aqueueCON.js
+.. odsascript:: AV/List/aqueueFirstCON.js
+.. odsascript:: AV/List/aqueueDriftCON.js
+.. odsascript:: AV/List/aqueueBadCON.js
+.. odsascript:: AV/List/aqueueCircularCON.js
+.. odsascript:: AV/List/aqueueEmptyCON.js
+.. odsascript:: AV/List/aqueueVarCON.js

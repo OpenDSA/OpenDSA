@@ -1,34 +1,34 @@
-#LQueueIntroCON {
+#lqueueIntroCON {
   height: 575px;
 }
-#LQueueIntroCON .jsavoutput.jsavline {
+#lqueueIntroCON .jsavoutput.jsavline {
   height: 40px;
 }
-#LQueueIntroCON .jsavcode{
+#lqueueIntroCON .jsavcode{
   position: relative;
   left: 150px;
   top: -10px;
   width:535px;
 }
-#LQueueEnqueueCON {
+#lqueueEnqueueCON {
   height: 280px;
 }
-#LQueueEnqueueCON .jsavoutput.jsavline {
+#lqueueEnqueueCON .jsavoutput.jsavline {
   height: 40px;
 }
-#LQueueEnqueueCON .jsavcode{
+#lqueueEnqueueCON .jsavcode{
   position: relative;
   left: 200px;
   top: -10px;
   width:450px;
 }
-#LQueueDequeueCON {
+#lqueueDequeueCON {
   height: 340px;
 }
-#LQueueDequeueCON .jsavoutput.jsavline {
+#lqueueDequeueCON .jsavoutput.jsavline {
   height: 40px;
 }
-#LQueueDequeueCON .jsavcode{
+#lqueueDequeueCON .jsavcode{
   position: relative;
   left: 150px;
   top: -10px;

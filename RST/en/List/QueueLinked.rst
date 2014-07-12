@@ -21,13 +21,13 @@ Here is the linked queue class declaration.
 .. codeinclude:: Lists/LQueue
    :tag: LQueue1,LQueue2
 
-.. inlineav:: LQueueIntroCON ss
+.. inlineav:: lqueueIntroCON ss
    :output: show    
    
-.. inlineav:: LQueueEnqueueCON ss
+.. inlineav:: lqueueEnqueueCON ss
    :output: show   
    
-.. inlineav:: LQueueDequeueCON ss
+.. inlineav:: lqueueDequeueCON ss
    :output: show 
    
 .. avembed:: Exercises/List/listLQueueEnqueue.html ka
@@ -50,3 +50,6 @@ unless items are always transferred directly from one queue to the other.
 
 .. odsascript:: AV/List/llistCON.js
 .. odsascript:: AV/List/lqueueCON.js
+.. odsascript:: AV/List/lqueueIntroCON.js
+.. odsascript:: AV/List/lqueueEnqueueCON.js
+.. odsascript:: AV/List/lqueueDequeueCON.js

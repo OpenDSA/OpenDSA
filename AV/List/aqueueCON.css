@@ -1,41 +1,41 @@
-#AQueueFirstNposCON {
+#aqueueFirstCON {
   height: 280px;
 }
-#AQueueFirstNposCON .jsavoutput.jsavline {
+#aqueueFirstCON .jsavoutput.jsavline {
   height: 55px;
 }
 
-#AQueueDriftposCON {
+#aqueueDriftCON {
   height: 280px;
 }
-#AQueueDriftposCON .jsavoutput.jsavline {
+#aqueueDriftCON .jsavoutput.jsavline {
   height: 75px;
 }
-#AQueueBadCON {
+#aqueueBadCON {
   height: 280px;
 }
-#AQueueBadCON .jsavoutput.jsavline {
+#aqueueBadCON .jsavoutput.jsavline {
   height: 75px;
 }
-#AQueueCircularCON {
+#aqueueCircularCON {
   height: 420px;
 }
-#AQueueCircularCON .jsavoutput.jsavline {
+#aqueueCircularCON .jsavoutput.jsavline {
   height: 70px;
 }
-#AQueueEmptyFullCON {
+#aqueueEmptyCON {
   height: 400px;
 }
-#AQueueEmptyFullCON .jsavoutput.jsavline {
+#aqueueEmptyCON .jsavoutput.jsavline {
   height: 55px;
 }
-#AQueueVarCON {
+#aqueueVarCON {
   height: 480px;
 }
 #AQueueVarCON .jsavoutput.jsavline {
   height: 40px;
 }
-#AQueueVarCON .jsavcode{
+#aqueueVarCON .jsavcode{
   border: 1px solid;
   border-color: white; 
   top: -10px;
