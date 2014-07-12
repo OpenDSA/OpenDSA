@@ -30,9 +30,9 @@ Here is the linked queue class declaration.
 .. inlineav:: lqueueDequeueCON ss
    :output: show 
    
-.. avembed:: Exercises/List/listLQueueEnqueue.html ka
+.. avembed:: Exercises/List/lqueueEnqueue.html ka
 
-.. avembed:: Exercises/List/listLQueueDequeue.html ka
+.. avembed:: Exercises/List/lqueueDequeue.html ka
 
 .. avembed:: Exercises/List/StckQSumm.html ka
 

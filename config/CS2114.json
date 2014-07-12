@@ -314,50 +314,50 @@
       "List/Queue": {
         "long_name": "Queues",
         "exercises": {
-          "AQueueFirstNposCON": {
-            "long_name": "Array Queue Slideshow 1",
+          "aqueueFirstCON": {
+            "long_name": "Array-based Queue Positions Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AQueueDriftposCON": {
-            "long_name": "Array Queue Drift",
+          "aqueueDriftCON": {
+            "long_name": "Array-based Queue Drift Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AQueueBadCON": {
-            "long_name": "Array Queue Bad",
+          "aqueueBadCON": {
+            "long_name": "Array-based Queue Bad Representation Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AQueueCircularCON": {
-            "long_name": "Array Queue Circular",
+          "aqueueCircularCON": {
+            "long_name": "Circular Array-based Queue Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AQueueEmptyFullCON": {
-            "long_name": "Array Queue Empty/Full",
+          "aqueueEmptyCON": {
+            "long_name": "Empty Circular Array-based Queue Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AQueueVarCON": {
-            "long_name": "Array Queue Variables",
+          "aqueueVarCON": {
+            "long_name": "Array-based Queue Variables Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listAQueueEnqueue": {
-            "long_name": "Array Queue Enqueue Exercise",
+          "aqueueEnqueue": {
+            "long_name": "Array-based Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listAQueueDequeue": {
-            "long_name": "Array Queue Dequeue Exercise",
+          "aqueueDequeue": {
+            "long_name": "Array-based Queue Dequeue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
@@ -367,31 +367,31 @@
       "List/QueueLinked": {
         "long_name": "Linked Queues",
         "exercises": {
-          "LQueueIntroCON": {
+          "lqueueIntroCON": {
             "long_name": "Linked Queue Intro",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LQueueEnqueueCON": {
+          "lqueueEnqueueCON": {
             "long_name": "Linked Queue Enqueue",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LQueueDequeueCON": {
+          "lqueueDequeueCON": {
             "long_name": "Linked Queue Dequeue",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listLQueueEnqueue": {
+          "lqueueEnqueue": {
             "long_name": "Linked Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listLQueueDequeue": {
+          "lqueueDequeue": {
             "long_name": "Linked Queue Dequeue Exercise",
             "required": true,
             "points": 1,
@@ -401,6 +401,17 @@
             "long_name": "Stack/Queue Summary Exercise",
             "required": true,
             "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "List/ListSumm": {
+        "long_name": "List Chapter Summary",
+        "exercises": {
+          "LstChptrSumm": {
+            "long_name": "List Chapter Summary Exercise",
+            "required": true,
+            "points": 2,
             "threshold": 5
           }
         }

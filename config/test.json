@@ -422,13 +422,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "listLQueueEnqueue": {
+          "lqueueEnqueue": {
             "long_name": "Linked Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listLQueueDequeue": {
+          "lqueueDequeue": {
             "long_name": "Linked Queue Dequeue Exercise",
             "required": true,
             "points": 1,
