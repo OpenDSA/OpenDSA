@@ -24,18 +24,17 @@ understanding.
 There a good reasons to understand how recursion is implemented,
 but helping you to write recursive functions is not one of them.
 
-Perhaps the most common computer application that uses stacks is not
-even visible to its users.
+Perhaps the most common computer application that uses
+:ref:`stacks <stack> <StackArray>` is not even visible to its users.
 This is the implementation of subroutine calls in most programming
-language runtime environments.
-A subroutine call is normally implemented by placing necessary
-information about the subroutine (including the return address,
-parameters, and local variables) onto a stack.
-This information is called an
-:term:`activation record`.
+language :term:`runtime environments <runtime environment>`.
+A subroutine call is normally implemented by :term:`pushing <push>`
+necessary information about the subroutine (including the return
+address, parameters, and local variables) onto a stack.
+This information is called an :term:`activation record`.
 Further subroutine calls add to the stack.
-Each return from a subroutine pops the top activation record
-off the stack.
+Each return from a subroutine :term:`pops <pop>` the top activation
+record off the stack.
 As an example, here is a recursive implementation for the factorial
 function. 
 
@@ -56,7 +55,7 @@ Here is an illustration for how the internal processing works.
 :math:`\beta` values indicate the address of the program instruction
 to return to after completing the current function call.
 On each recursive function call to ``fact``, both the return
-address and the current value of \Cref{n} must be saved.
+address and the current value of ``n`` must be saved.
 Each return from ``fact`` pops the top activation record off the
 stack.
 
@@ -122,10 +121,11 @@ simpler and faster than the version shown in the example.
 But it is not always possible to replace recursion with iteration.
 Recursion, or some imitation of it, is necessary when implementing
 algorithms that require multiple branching such as in the Towers of
-Hanoi algorithm, or when traversing a binary tree.
-The Mergesort and Quicksort algorithms of
-Chapter :chap:`Sorting` are also examples in which recursion
-is required.
+Hanoi algorithm, or when
+:ref:`traversing a binary tree <traversal> <BinaryTreeTraversal>`.
+The :ref:`Mergesort <Mergesort> <Mergesort>` and
+:ref:`Quicksort <Quicksort> <Quicksort>` sorting algorithms
+also require recursion.
 Fortunately, it is always possible to imitate recursion with a stack.
 Let us now turn to a non-recursive version of the Towers of
 Hanoi function, which cannot be done iteratively.

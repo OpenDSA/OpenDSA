@@ -491,6 +491,115 @@
             "threshold": 1.0
           }
         }
+      },
+      "List/StackRecur": {
+        "long_name": "Implementing Recursion",
+        "exercises": {}
+      },
+      "List/Queue": {
+        "long_name": "Queues",
+        "exercises": {
+          "aqueueFirstCON": {
+            "long_name": "Array-based Queue Positions Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "aqueueDriftCON": {
+            "long_name": "Array-based Queue Drift Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "aqueueBadCON": {
+            "long_name": "Array-based Queue Bad Representation Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "aqueueCircularCON": {
+            "long_name": "Circular Array-based Queue Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "aqueueEmptyCON": {
+            "long_name": "Empty Circular Array-based Queue Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "aqueueVarCON": {
+            "long_name": "Array-based Queue Variables Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "aqueueEnqueue": {
+            "long_name": "Array-based Queue Enqueue Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "aqueueDequeue": {
+            "long_name": "Array-based Queue Dequeue Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "List/QueueLinked": {
+        "long_name": "Linked Queues",
+        "exercises": {
+          "lqueueIntroCON": {
+            "long_name": "Linked Queue Intro",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "lqueueEnqueueCON": {
+            "long_name": "Linked Queue Enqueue",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "lqueueDequeueCON": {
+            "long_name": "Linked Queue Dequeue",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "lqueueEnqueue": {
+            "long_name": "Linked Queue Enqueue Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "lqueueDequeue": {
+            "long_name": "Linked Queue Dequeue Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "StckQSumm": {
+            "long_name": "Stack/Queue Summary Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "List/ListSumm": {
+        "long_name": "List Chapter Summary",
+        "exercises": {
+          "LstChptrSumm": {
+            "long_name": "List Chapter Summary Exercise",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          }
+        }
       }
     },
     "Appendix": {

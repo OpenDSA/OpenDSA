@@ -676,65 +676,6 @@
         }
       }
     },
-    "Stubs": {
-      "hidden": true,
-      "Stubs": {
-        "long_name": "Stubs Chapter",
-        "exercises": {}
-      },
-      "Stubs/SetDef": {
-        "long_name": "Set Definitions",
-        "exercises": {}
-      },
-      "Stubs/SelfOrg": {
-        "long_name": "Self-organizing Lists",
-        "exercises": {}
-      },
-      "Stubs/Kary": {
-        "long_name": "K-ary Trees",
-        "exercises": {}
-      },
-      "Stubs/Multilists": {
-        "long_name": "Multilists",
-        "exercises": {}
-      },
-      "Stubs/Trie": {
-        "long_name": "Tries",
-        "exercises": {}
-      },
-      "Stubs/SparseMatrix": {
-        "long_name": "Sparse Matrix",
-        "exercises": {}
-      },
-      "Stubs/Spatial": {
-        "long_name": "Spatial Data Structures",
-        "exercises": {}
-      },
-      "Stubs/AdvSumm": {
-        "long_name": "Advanced Summations",
-        "exercises": {}
-      },
-      "Stubs/Recurrence": {
-        "long_name": "Solving Recurrence Relations",
-        "exercises": {}
-      },
-      "Stubs/AmortAnal": {
-        "long_name": "Amortized Analysis",
-        "exercises": {}
-      },
-      "Stubs/Reductions": {
-        "long_name": "Reductions",
-        "exercises": {}
-      },
-      "Stubs/Computability": {
-        "long_name": "Computability",
-        "exercises": {}
-      },
-      "Stubs/LimComp": {
-        "long_name": "Limits to Computing",
-        "exercises": {}
-      }
-    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",

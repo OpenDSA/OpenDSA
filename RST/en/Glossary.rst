@@ -814,7 +814,7 @@ Glossary
       :term:`memory leak`.
 
    garbage collection
-       Languages with garbage collection such
+      Languages with garbage collection such
       Java, JavaScript, Lisp, and Scheme will periodically reclaim
       :term:`garbage` and return it to :term:`free store`.
 
@@ -1655,6 +1655,14 @@ Glossary
       In a :term:`tree`, the topmost :term:`node` of the tree.
       All other nodes in the tree are :term:`descendants <descendant>`
       of the root.
+
+   runtime environment
+      The environment in which a program (of a particular programming
+      language) executes.
+      The runtime environment handles such activities as managing the
+      :term:`runtime stack`, the :term:`free store`, and the
+      :term:`garbage collector <garbage collection>`,
+      and it conducts the execution of the program.
 
    runtime stack
       The place where an :term:`activation record` is stored when a
