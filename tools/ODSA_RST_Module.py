@@ -297,7 +297,7 @@ class ODSA_RST_Module:
           else:
              break
 
-        line = mod_data[i].strip().lower()
+        line = mod_data[i].strip()
 
         # Determine the type of directive
         dir_type = get_directive_type(line)
