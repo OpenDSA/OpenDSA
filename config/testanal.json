@@ -35,7 +35,7 @@
           "InsertionSortAnalysis": {
             "long_name": "Insertion Sort Analysis",
             "showhide": "hide",
-            "remove": true
+            "remove": false
           }
         },
         "exercises" : {

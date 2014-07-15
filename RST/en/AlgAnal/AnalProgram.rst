@@ -245,9 +245,7 @@ Here is an illustration of the binary search method.
 .. inlineav:: binarySearchCON ss
    :output: show
 
-.. showhidecontent:: binsearchpro
-
-   .. avembed:: AV/Development/binarySearchPRO.html ss
+.. avembed:: AV/Development/binarySearchPRO.html ss
 
 To find the cost of this algorithm in the worst case, we can model the
 running time as a recurrence and then find the closed-form solution.

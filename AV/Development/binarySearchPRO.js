@@ -18,7 +18,8 @@
     console.log("PARAMS: " + PARAMS);
     console.log("PARAMS.JXOP-code: " + PARAMS.JXOP-code);
 
-    if (PARAMS.JXOP-code == "java") {
+    //    if (PARAMS.JXOP-code == "java") {
+    if (true) {
       var code = config.code;
     }
 

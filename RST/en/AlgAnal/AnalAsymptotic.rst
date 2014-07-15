@@ -209,27 +209,28 @@ There is no strict equality to the use of big-Oh notation.
 :math:`O(n)` is in :math:`O(n^2)`, but :math:`O(n^2)` is not in
 :math:`O(n)`.
 
-
 Lower Bounds
 ------------
 
-Big-Oh notation describes an upper bound.
-In other words, big-Oh notation states a claim about the greatest
-amount of some resource (usually time) that is required by an
-algorithm for some class of inputs of size :math:`n` (typically
-the worst such input, the average of all possible inputs, or the best
-such input).
+.. showhidecontent:: LowerBounds
 
-Similar notation is used to describe the least amount of a resource
-that an algorithm needs for some class of input.
-Like big-Oh notation, this is a measure of the algorithm's
-growth rate.
-Like big-Oh notation, it works for any resource, but
-we most often measure the least amount of time required.
-And again, like big-Oh notation, we are measuring the resource
-required for some particular class of inputs: the worst-, average-,
-or best-case input of size :math:`n`.
+   Big-Oh notation describes an upper bound.
+   In other words, big-Oh notation states a claim about the greatest
+   amount of some resource (usually time) that is required by an
+   algorithm for some class of inputs of size :math:`n` (typically
+   the worst such input, the average of all possible inputs, or the best
+   such input).
 
+   Similar notation is used to describe the least amount of a resource
+   that an algorithm needs for some class of input.
+   Like big-Oh notation, this is a measure of the algorithm's
+   growth rate.
+   Like big-Oh notation, it works for any resource, but
+   we most often measure the least amount of time required.
+   And again, like big-Oh notation, we are measuring the resource
+   required for some particular class of inputs: the worst-, average-,
+   or best-case input of size :math:`n`.
+   
 The :term:`lower bound` for an algorithm
 (or a problem, as explained later) 
 is denoted by the symbol :math:`\Omega`, pronounced "big-Omega" or
@@ -241,7 +242,6 @@ definition of big-Oh.
    :math:`\mathbf{T}(n)` is in set :math:`\Omega(g(n))` if there exist
    two positive constants :math:`c` and :math:`n_0` such that
    :math:`\mathbf{T}(n) \geq c g(n)` for all :math:`n > n_0`. [#]_
-
 
 .. _AAnalEx:
 
