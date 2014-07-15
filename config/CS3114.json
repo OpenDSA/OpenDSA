@@ -74,23 +74,13 @@
       "Background/Recursion": {
         "long_name": "Recursion",
         "exercises": {
-          "TOHfigCON": {
-            "long_name": "TOH Diagram",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          }
+          "TOHfigCON": {}
         }
       },
       "Background/Proofs": {
         "long_name": "Proofs",
         "exercises": {
-          "twoColorCON": {
-            "long_name": "Two-coloring proof Diagram",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          }
+          "twoColorCON": {}
         }
       },
       "Background/Estimation": {
@@ -188,12 +178,7 @@
       "Design/ADT": {
         "long_name": "Abstract Data Types",
         "exercises": {
-          "ADTCON": {
-            "long_name": "ADT Terminology Diagram",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          }
+          "ADTCON": {}
 	}
       }
     },
@@ -366,31 +351,26 @@
       "List/ListDouble": {
         "long_name": "Doubly Linked Lists",
         "exercises": {
-          "DLlistInsertCON": {
+          "dlistDiagramCON": {},
+          "dlistInsertCON": {
             "long_name": "Doubly Linked List Insert",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "DLlistAppendCON": {
+          "dlistAppendCON": {
             "long_name": "Doubly Linked List Append",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "DLlistRemoveCON": {
+          "dlistRemoveCON": {
             "long_name": "Doubly Linked List Remove",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "DLlistRemoveCON": {
-            "long_name": "Doubly Linked List Remove",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "DLlistPrevCON": {
+          "dlistPrevCON": {
             "long_name": "Doubly Linked List Prev",
             "required": true,
             "points": 0.0,
@@ -467,25 +447,26 @@
       "List/StackLinked": {
         "long_name": "Linked Stacks",
         "exercises": {
-          "LStackPushCON": {
+          "lstackDiagramCON": {},
+          "lstackPushCON": {
             "long_name": "Linked stack push",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LStackPopCON": {
+          "lstackPopCON": {
             "long_name": "Linked stack pop",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listLStackPush": {
+          "lstackPush": {
             "long_name": "Linked Stack Push Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listLStackPop": {
+          "lstackPop": {
             "long_name": "Linked Stack Pop Exercise",
             "required": true,
             "points": 1,
@@ -511,79 +492,84 @@
       "List/Queue": {
         "long_name": "Queues",
         "exercises": {
-          "AQueueFirstNposCON": {
-            "long_name": "Array Queue Slideshow 1",
+          "aqueueFirstCON": {
+            "long_name": "Array-based Queue Positions Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AQueueDriftposCON": {
-            "long_name": "Array Queue Drift",
+          "aqueueDriftCON": {
+            "long_name": "Array-based Queue Drift Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AQueueBadCON": {
-            "long_name": "Array Queue Bad",
+          "aqueueBadCON": {
+            "long_name": "Array-based Queue Bad Representation Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AQueueCircularCON": {
-            "long_name": "Array Queue Circular",
+          "aqueueCircularCON": {
+            "long_name": "Circular Array-based Queue Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AQueueEmptyFullCON": {
-            "long_name": "Array Queue Empty/Full",
+          "aqueueEmptyCON": {
+            "long_name": "Empty Circular Array-based Queue Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "AQueueVarCON": {
-            "long_name": "Array Queue Variables",
+          "aqueueVarCON": {
+            "long_name": "Array-based Queue Variables Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listAQueueEnqueue": {
-            "long_name": "Array Queue Enqueue Exercise",
+          "aqueueEnqueue": {
+            "long_name": "Array-based Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listAQueueDequeue": {
-            "long_name": "Array Queue Dequeue Exercise",
+          "aqueueDequeue": {
+            "long_name": "Array-based Queue Dequeue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
-          },
-          "LQueueIntroCON": {
+          }
+        }
+      },
+      "List/QueueLinked": {
+        "long_name": "Linked Queues",
+        "exercises": {
+          "lqueueIntroCON": {
             "long_name": "Linked Queue Intro",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LQueueEnqueueCON": {
+          "lqueueEnqueueCON": {
             "long_name": "Linked Queue Enqueue",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "LQueueDequeueCON": {
+          "lqueueDequeueCON": {
             "long_name": "Linked Queue Dequeue",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "listLQueueEnqueue": {
+          "lqueueEnqueue": {
             "long_name": "Linked Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "listLQueueDequeue": {
+          "lqueueDequeue": {
             "long_name": "Linked Queue Dequeue Exercise",
             "required": true,
             "points": 1,
@@ -622,9 +608,9 @@
         "long_name": "Comparing Records",
         "exercises": {
           "CompareSumm": {
-            "long_name": "Record Comparison Summary Exercise",
+            "long_name": "Record Comparison Summary",
             "required": true,
-            "points": 2,
+            "points": 1,
             "threshold": 5
           }
         }
@@ -639,7 +625,7 @@
           "DesignSumm": {
             "long_name": "Design Summary",
             "required": true,
-            "points": 2,
+            "points": 1,
             "threshold": 5
           }
         }
@@ -1770,66 +1756,6 @@
             "threshold": 0.90
           }
         }
-      }
-    },
-    "Stubs": {
-      "Stubs": {
-        "long_name": "Stubs Chapter",
-        "exercises": {}
-      },
-      "Stubs/SelfOrg": {
-        "long_name": "Self-organizing Lists",
-        "exercises": {}
-      },
-      "Stubs/Kary": {
-        "long_name": "K-ary Trees",
-        "exercises": {}
-      },
-      "Stubs/Multilists": {
-        "long_name": "Multilists",
-        "exercises": {}
-      },
-      "Stubs/Trie": {
-        "long_name": "Tries",
-        "exercises": {}
-      },
-      "Stubs/SparseMatrix": {
-        "long_name": "Sparse Matrix",
-        "exercises": {}
-      },
-      "Stubs/Spatial": {
-        "long_name": "Spatial Data Structures",
-        "exercises": {}
-      },
-      "Stubs/AdvSumm": {
-        "long_name": "Advanced Summations",
-        "exercises": {}
-      },
-      "Stubs/Recurrence": {
-        "long_name": "Solving Recurrence Relations",
-        "exercises": {}
-      },
-      "Stubs/AmortAnal": {
-        "long_name": "Amortized Analysis",
-        "exercises": {}
-      },
-      "Stubs/Reductions": {
-        "long_name": "Reductions",
-        "exercises": {}
-      },
-      "Stubs/Computability": {
-        "long_name": "Computability",
-        "exercises": {}
-      },
-      "Stubs/LimComp": {
-        "long_name": "Limits to Computing",
-        "exercises": {}
-      }
-    },
-    "Searching": {
-      "Stubs/SearchIntro": {
-        "long_name": "Searching",
-        "exercises": {}
       }
     },
     "Appendix": {

@@ -125,8 +125,7 @@ because the cost depends on the value of :math:`n`
    This algorithm is called the *largest-value sequential search*
    and is illustrated by the following function:
 
-   .. codeinclude:: Misc/Anal 
-      :tag: Largest
+   .. codeinclude:: Misc/Largest
 
    Here, the size of the problem is ``A.length``,
    the number of integers stored in array ``A``.

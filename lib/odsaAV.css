@@ -26,7 +26,6 @@ table .headerLeft {
 /* Center column of the standardized header */
 table .headerCenter {
   font-size: 2em;
-  font-weight: bold;
   text-align: center;
 }
 

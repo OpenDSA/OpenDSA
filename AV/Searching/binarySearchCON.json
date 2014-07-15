@@ -17,10 +17,8 @@
   },
   "code" : {
     "processing": {
-      "url": "../../../SourceCode/Processing/Misc/Anal.pde",
+      "url": "../../../SourceCode/Processing/Searching/bsearch.pde",
       "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: bsearch *** */",
-      "endBefore": "/* *** ODSAendTag: bsearch *** */",
       "tags": {
         "sig": 3,
         "compute": 7,

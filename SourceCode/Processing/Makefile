@@ -8,9 +8,9 @@
 PROCESS = ~/processing-2.0b9/processing-java
 
 # Use this one on Linux
- BUILD = build
+# BUILD = build
 # On Windows, I can't make it work without an absolute path
-# BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
 all: Demo Misc Lists Design Binary General Sorting Graphs
@@ -68,11 +68,14 @@ build/Fibonnaci/success: Misc/Fibonnaci.pde
 
 Anal:  build/Anal/success
 
-build/Anal/success: Misc/Anal.pde
+build/Anal/success: Misc/Anal.pde Searching/bsearch.pde Searching/Sequential.pde Misc/Largest.pde
 	@echo "Analysis Chapter Test"
 	-@rm -rf build/Anal
 	@mkdir build/Anal
 	@cp Misc/Anal.pde build/Anal
+	@cp Searching/bsearch.pde build/Anal
+	@cp Searching/Sequential.pde build/Anal
+	@cp Misc/Largest.pde build/Anal
 	@$(PROCESS) --run --sketch="$(BUILD)/Anal" --output="build/build" --force
 
 Lists: ListTest ListAlt FreeList DoubleTest StackTest QueueTest

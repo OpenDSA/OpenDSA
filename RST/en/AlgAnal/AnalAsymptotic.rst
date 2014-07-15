@@ -209,6 +209,7 @@ There is no strict equality to the use of big-Oh notation.
 :math:`O(n)` is in :math:`O(n^2)`, but :math:`O(n^2)` is not in
 :math:`O(n)`.
 
+
 Lower Bounds
 ------------
 

@@ -15,7 +15,7 @@
   },
   "chapters": {
     "Searching": {
-      "Development/BinarySearch": {
+      "Searching/BinarySearch": {
         "long_name": "Binary Search",
         "exercises": {
           "binarySearchCON": {

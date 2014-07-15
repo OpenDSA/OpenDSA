@@ -26,8 +26,7 @@ If the value is not in the array, eventually you will reach the end.
 We will call this an :term:`unsuccessful search`.
 Here is a simple implementation for sequential search.
 
-.. codeinclude:: Misc/Sequential
-   :tag: Sequential
+.. codeinclude:: Searching/Sequential
 
 It is natural to ask how long a program or algorithm will take to
 run.

@@ -4,7 +4,7 @@
   "code_dir": "SourceCode/",
   "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
-  "backend_address": "https://opendsa.cc.vt.edu/",
+  "backend_address": "",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -99,6 +99,25 @@
             "required": true,
             "points": 1.0,
             "threshold": 5
+          }
+        }
+      }
+    },
+    "Searching": {
+      "Searching/BinarySearch": {
+        "long_name": "Binary Search",
+        "exercises": {
+          "binarySearchCON": {
+            "long_name": "Binary Search Algorithm Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binarySearchPRO": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       }

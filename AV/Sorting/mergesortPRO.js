@@ -14,6 +14,7 @@
       alert(aboutstring + JSAV.version());
     }
 
+    // Set click handlers
     $('#help').click(help);
     $('#about').click(about);
 

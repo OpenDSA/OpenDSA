@@ -12,7 +12,7 @@
 .. odsalink:: AV/List/lqueueCON.css   
 
 Linked Queues
--------------
+=============
 
 The linked queue implementation is a straightforward adaptation
 of the linked list.
