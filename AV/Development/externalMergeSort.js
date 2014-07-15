@@ -23,21 +23,21 @@ var setYellow = function (index, arr) {
 
 
   av.umsg("Our approach to external sorting is derived from the Mergesort algorithm. The simplest form of external Mergesort performs a series of sequential passes over the records, merging larger and larger sublists on each pass.");
-  var inputlabel1 = av.label("Input", {left: 120, top: 0});
-  var outputlabel1 = av.label("Output", {left: 465, top: 0});
-  var inputlabel2 = av.label("Runs of length 1", {left: 70, top: 195});
-  var outputlabel2 = av.label("Runs of length 2", {left: 420, top: 195});
+  var inputlabel1 = av.label("Input", {left: 90, top: 0});
+  var outputlabel1 = av.label("Output", {left: 435, top: 0});
+  var inputlabel2 = av.label("Runs of length 1", {left: 50, top: 195});
+  var outputlabel2 = av.label("Runs of length 2", {left: 400, top: 195});
 
-  var inputline1 = av.g.line(97, 37, 97, 98, {"stroke-width": "2"});
-  var inputline2 = av.g.line(144, 37, 144, 98, {"stroke-width": "2"});
-  var inputline3 = av.g.line(190, 37, 190, 98, {"stroke-width": "2"});
+  var inputline1 = av.g.line(82, 45, 82, 76, {"stroke-width": "2"});
+  var inputline2 = av.g.line(114, 45, 114, 76, {"stroke-width": "2"});
+  var inputline3 = av.g.line(144, 45, 144, 76, {"stroke-width": "2"});
 
-  var inputline4 = av.g.line(97, 137, 97, 198, {"stroke-width": "2"});
-  var inputline5 = av.g.line(144, 137, 144, 198, {"stroke-width": "2"});
-  var inputline6 = av.g.line(190, 137, 190, 198, {"stroke-width": "2"});
+  var inputline4 = av.g.line(82, 145, 82, 176, {"stroke-width": "2"});
+  var inputline5 = av.g.line(114, 145, 114, 176, {"stroke-width": "2"});
+  var inputline6 = av.g.line(144, 145, 144, 176, {"stroke-width": "2"});
 
-  var outputline1 = av.g.line(494, 37, 494, 98, {"stroke-width": "2"});
-  var outputline2 = av.g.line(494, 137, 494, 198, {"stroke-width": "2"});
+  var outputline1 = av.g.line(464, 45, 464, 76, {"stroke-width": "2"});
+  var outputline2 = av.g.line(464, 145, 464, 176, {"stroke-width": "2"});
 
   av.displayInit();
 
