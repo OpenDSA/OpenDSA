@@ -33,7 +33,7 @@ build/UpDown/success:
 	@cp Demo/UpDown.pde build/UpDown
 	@$(PROCESS) --run --sketch="$(BUILD)/UpDown" --output="build/build" --force
 
-Misc: Fact TOH Fibonnaci Anal
+Misc: Fact TOH Fibonnaci Anal Sequential
 
 Fact: build/Fact/success
 
