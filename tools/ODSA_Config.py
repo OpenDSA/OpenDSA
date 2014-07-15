@@ -148,7 +148,7 @@ def validate_module(mod_name, module, conf_data):
   global error_count
 
   required_fields = ['exercises']
-  optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options']
+  optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections']
 
   #Get module name
   get_mod_name(mod_name)
@@ -274,7 +274,7 @@ def validate_config_file(config_file_path, conf_data):
       error_count += 1
 
   validate_section(conf_data['chapters'], conf_data)
-  get_chap_names(conf_data['chapters']) 
+  get_chap_names(conf_data['chapters'])
 
 
   if error_count > 0:
@@ -484,7 +484,7 @@ class ODSA_Config:
 
     for field in optional_fields:
       self[field] = conf_data[field] if field in conf_data else None
- 
+
     #Loads translated text
     self['text_translated'], self['lang'] = get_translated_text(self['lang'])
     self['lang_file'] = lang_file

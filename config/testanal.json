@@ -5,7 +5,7 @@
   "code_lang": {"C++": ["cpp", "h"], "Processing": ["pde"]},
   "lang": "en",
   "module_origin": "http://algoviz.org",
-  "backend_address": "https://opendsa.cc.vt.edu/",
+  "backend_address": "",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -31,6 +31,13 @@
       },
       "SortingAnal/InsertionSort": {
         "long_name": "Insertion Sort",
+        "sections": {
+          "InsertionSortAnalysis": {
+            "long_name": "Insertion Sort Analysis",
+            "showhide": "hide",
+            "remove": true
+          }
+        },
         "exercises" : {
           "InssortCON1": {
             "long_name": "Insertion Sort Slideshow 1",

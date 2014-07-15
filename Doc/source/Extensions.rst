@@ -293,6 +293,31 @@ DESCRIPTION
     The name of the chapter. It should be identical (case sensitive)
     to the one specified in the json configuration file.
 
+showhidecontent
+-------
+NAME
+    showhidecontent - creates a section of text that can be hidden or displayed.
+
+SYNOPSIS::
+
+    .. showhidecontent:: {section_id}
+       [:long_name: {string}]
+       [:showhide: show|hide|none]
+
+DESCRIPTION
+    ``.. showhidecontent:: {section_id}``
+      ``{section_id}`` is a string used to identify the section in the configuration file. Ideally, it should be descriptive and in camel-case, because if ``long_name`` is omitted, ``section_id`` will be converted to a space-delimited string and used in its place
+
+    ``:long_name: {string}``
+
+      The display name for the section that will appear on the showhide button (if applicable). If omitted, the ``section_id`` will be converted from camel-case to a space-delimited string and used in its place
+      **Added automatically by the configuration process, do NOT add manually.**
+
+    ``:showhide: show|hide|none``
+      If ``show`` then display a button to show or hide the section and make the section visible on page load.
+      If ``hide`` then display the button, but hide the section on page load.
+      If ``none`` or if the option is omitted then the section will be displayed with no button
+      **Added automatically by the configuration process, do NOT add manually.**
 
 TODO
 ----

@@ -104,9 +104,9 @@ def parse_term_relationship(line, term, line_num, cmap_dict, console_msg_prefix 
     args = re.split(':to-term:|:label:', line)
     term = term.strip().rstrip('\n')
     cmap_dict['concepts'][term] = ''
-    
-    if (args[1] not in cmap_dict['concepts']): 
-      if len(args) == 3:   
+
+    if (args[1] not in cmap_dict['concepts']):
+      if len(args) == 3:
         args[1] = args[1].strip().rstrip('\n')
         cmap_dict['concepts'][args[1]] = ''
     if args[2].replace(" ", "") not in cmap_dict['linking_phrase']:
@@ -115,8 +115,8 @@ def parse_term_relationship(line, term, line_num, cmap_dict, console_msg_prefix 
       cmap_dict['linking_phrase'][args[2].replace(" ", "").strip().rstrip('\n')] = args[2]
     size_c = len(cmap_dict['connections'])
     #cmap_dict['linking_phrase']['lp-' + str(size_lp + 1)] = args[2]
-    cmap_dict['connections']['con-' + str(size_c + 1)] = {'from': term, 'to': args[2].replace(" ", "").strip().rstrip('\n')} 
-    cmap_dict['connections']['con-' + str(size_c + 2)] = {'from': args[2].replace(" ", "").strip().rstrip('\n'), 'to': args[1]} 
+    cmap_dict['connections']['con-' + str(size_c + 1)] = {'from': term, 'to': args[2].replace(" ", "").strip().rstrip('\n')}
+    cmap_dict['connections']['con-' + str(size_c + 2)] = {'from': args[2].replace(" ", "").strip().rstrip('\n'), 'to': args[1]}
   else:
     print_err("%sWARNING: Glossary terms relationship declaration on line %d" % (console_msg_prefix, line_num))
 
@@ -187,8 +187,8 @@ def update_counters(label_line, dir_type, mod_num, num_ref_map, counters):
 
 def process_ref_chap(extension, line, book_objects, start_space, last):
   """
-    method responsible of converting :ref: and :chap: to :term: when 
-    reference / chapter is missing. 
+    method responsible of converting :ref: and :chap: to :term: when
+    reference / chapter is missing.
   """
   #lower case modules names
   lower_listed_modules = [x.lower() for x in book_objects]
@@ -199,7 +199,7 @@ def process_ref_chap(extension, line, book_objects, start_space, last):
     rel_labels = rel_tokens[2]
     rel_tags = re.split('<|>', rel_labels)
     #We encountered the alternate :ref:/:chap: syntax
-   
+
     if len(rel_tags) == 5:
       if rel_tags[3].strip().lower() in lower_listed_modules:
         #module is present swith to standard :rel: syntax
@@ -209,11 +209,11 @@ def process_ref_chap(extension, line, book_objects, start_space, last):
         line_t = line_t.replace(rel_labels, newDir)
       else:
         #module absent swith to :term:
-        line_t = line_t.replace(extension,':term:') 
-        newDir = '%s <%s>' %(rel_tags[0], rel_tags[1]) 
+        line_t = line_t.replace(extension,':term:')
+        newDir = '%s <%s>' %(rel_tags[0], rel_tags[1])
         line_t = line_t.replace(rel_labels, newDir)
-    line_t = ' ' * start_space + line_t + last 
-  return line_t 
+    line_t = ' ' * start_space + line_t + last
+  return line_t
 
 
 class ODSA_RST_Module:
@@ -310,8 +310,8 @@ class ODSA_RST_Module:
           if mod_data[i].endswith('\n'):
              last = '\n'
           else:
-             last = ' ' 
-          mod_data[i] = process_ref_chap(':ref:', line, config.listed_modules, start_space, last)  
+             last = ' '
+          mod_data[i] = process_ref_chap(':ref:', line, config.listed_modules, start_space, last)
           line = mod_data[i].strip().lower()
 
         if ':chap:' in line:
@@ -319,10 +319,10 @@ class ODSA_RST_Module:
              last = '\n'
           else:
              last = ' '
-          mod_data[i] = process_ref_chap(':chap:', line, config.listed_chapters, start_space, last) 
+          mod_data[i] = process_ref_chap(':chap:', line, config.listed_chapters, start_space, last)
           line = mod_data[i].strip().lower()
 
-      
+
         if ':requires:' in mod_data[i]:
           # Parse the list of prerequisite topics from the module
           requires = [req.strip() for req in line.replace(':requires:', '').split(';')]
@@ -344,7 +344,7 @@ class ODSA_RST_Module:
         elif line.startswith(':to-term:'):
           #process concept map relationships
           term = mod_data[i-1]
-          term_rel = line 
+          term_rel = line
           line_num = i
           # Remove concept map config from the RST file
           mod_data[i] = ''
@@ -467,6 +467,30 @@ class ODSA_RST_Module:
                 rst_options.append('   :exer_opts: %s\n' % xop_str)
 
                 mod_data[i] += ''.join(rst_options)
+        elif line.startswith('.. showhidecontent::'):
+          # Parse the arguments from the directive
+          args = parse_directive_args(mod_data[i], i, 1, console_msg_prefix)
+          section_id = args[0]
+
+          if 'sections' in mod_attrib and section_id in mod_attrib['sections']:
+            section_data = mod_attrib['sections'][section_id]
+
+            if 'remove' in section_data and section_data['remove']:
+              print '%sRemoving section: %s' % (console_msg_prefix, section_id)
+
+              # Config file states section should be removed, remove it from the RST file
+              mod_data[i] = ''
+              i += 1
+
+              while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
+                mod_data[i] = ''
+                i += 1
+
+              # Back up one line so that when 'i' is incremented at the end of the loop it will point to the next directive
+              i -= 1
+            else:
+              rst_options = ['   :%s: %s\n' % (option, value) for option, value in section_data.items()]
+              mod_data[i] += ''.join(rst_options)
         elif line.startswith('.. codeinclude::'):
           code_name = mod_data[i].split(' ')[2].strip()
 

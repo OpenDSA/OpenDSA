@@ -210,9 +210,14 @@ All are required unless otherwise specified.
 
     * **mod_options** - (optional) overrides ``glob_mod_options``, allows modules to be configured independently from one another.  Can be used to override the options set using ``glob_mod_options``. Options that should be stored in ``JSAV_OPTIONS`` should be prepended with ``JOP-`` and options that should be stored in ``JSAV_EXERCISE_OPTIONS`` should be prepended with ``JXOP-`` (can be used to override the defaults set in ``odsaUtils.js``).  All other options will be made directly available to modules in the form of a parameters object created automatically by the client-side framework (specifically whn ``parseURLParams()`` is called in ``odsaUtils.js``)
 
+    * **sections** - (optional) a collection of section objects that provide additional information for sections created using the ``showhidecontent`` directive. The ``sections`` object should contain keys that match the ``section_id`` used by the ``showhidecontent`` directive, which in turn map to a dictionary of options for that section.
+
+      * If a section is omitted, the content will appear in the module without a button to control whether it is shown or hidden (removal must be explicit)
+      * To remove the section completely, provide the option ``remove`` and set it to ``true``
+      * All options provided within a section object (with the exception of ``remove``) are appended to the directive, please see the :ref:`Extensions <ODSAExtensions>` section for a list of supported arguments
+
     * **exercises** - a collection of exercise objects representing the exercises found in the module's RST file
 
-      * Omitting an exercise from the module's "exercises" object will cause the exercise to be removed from the configured module
       * Each exercise object contains required information about that exercise including:
 
         * **exer_options** - (optional) an object containing exercise-specific configuration options for JSAV.  Can be used to override the options set using ``glob_exer_options``. Options that should be stored in ``JSAV_OPTIONS`` should be prepended with ``JOP-`` and options that should be stored in ``JSAV_EXERCISE_OPTIONS`` should be prepended with ``JXOP-`` (can be used to override the defaults set in ``odsaUtils.js``).  All other options will be made directly available to exercises in the form of a parameters object created automatically by the client-side framework (specifically whn ``parseURLParams()`` is called in ``odsaUtils.js``)

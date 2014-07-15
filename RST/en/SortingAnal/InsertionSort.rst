@@ -87,20 +87,19 @@ The following visualization illustrates the worst case running time analysis of 
 
 .. inlineav:: InsertionSortWorstCaseCON ss
    :output: show
-   
+
 Testing the new directive here!
 
 .. showhidecontent:: InsertionSortAnalysis
-   :output: showhide
 
    This is the content of the directive to be tested.
    It is required that this content can be shown/hidden.
 
 Done testing!
-  
+
 .. TODO::
    :type: Review the Worst case analysis discussion
-      
+
    The body of ``inssort`` consists of two nested
    ``for`` loops.
    The outer ``for`` loop is executed :math:`n-1` times.
@@ -119,7 +118,7 @@ Done testing!
    .. math::
 
       \sum_{i=1}^{n-1} i = \frac{n(n-1)}{2} \approx n^2/2 = \Theta(n^2).
-      
+
 This visualization illustrates the best case running time analysis of Insertion Sort.
 
 .. inlineav:: InsertionSortBestCaseCON ss
@@ -127,7 +126,7 @@ This visualization illustrates the best case running time analysis of Insertion 
 
 .. TODO::
    :type: Review the Best case analysis discussion
-   
+
    In contrast, consider the best-case cost.
    This occurs when the values occur in sorted order from lowest to
    highest.
@@ -139,7 +138,7 @@ This visualization illustrates the best case running time analysis of Insertion 
    :math:`\Theta(n)`.
 
    .. index:: ! inversion
-   
+
 Finally, the following visualization illustrates the average case running time analysis of Insertion Sort.
 
 .. inlineav:: InsertionSortAverageCaseCON ss
