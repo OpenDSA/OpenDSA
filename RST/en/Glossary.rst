@@ -55,6 +55,18 @@ Glossary
       corresponding to the row to the vertex corresponding to the
       column.
 
+   adversary argument
+      A type of :term:`lower bounds proof` for a problem where a
+      (fictional) "adversary" is assumed to control access to an
+      algorithm's input, and which yields information about that input
+      in such a way
+      that will drive the cost for any proposed algorithm to solve the
+      problem as high as possible.
+      So long as the adversary never gives an answer that conflicts
+      with any previous answer, it is permitted to do whatever
+      necessary to make the algorithm require as much cost as
+      possible.
+
    aggregate type
       A type whose :term:`members <member>` have subparts.
       For example, a typical database record.
@@ -129,13 +141,15 @@ Glossary
 
    B-tree
       A method for :term:`indexing` a large collection of records.
-      A B-tree is a tree balanced typically with high branching factor
-      (commonly as much as 100 :term:`children <child>` per internal
-      node), causing the tree to very shallow. When stored on disk,
-      the node size is selected to be same as the desired unit of I/O
-      (so some multiple of the disk :term:`sector` size). This makes
-      it easy to find a record key stored in the tree with few disk
-      fetches.
+      A B-tree is a balanced tree that typically has high branching
+      factor (commonly as much as 100 :term:`children <child>` per
+      :term:`internal node`), causing the tree to be very shallow.
+      When stored on disk, the node size is selected to be same as the
+      desired unit of I/O (so some multiple of the disk :term:`sector`
+      size).
+      This makes it easy to gain access to the record associated with
+      a given :term:`key` stored in the tree with few
+      :term:`disk fetches <disk fetch>`.
       The most commonly implemented variant of the B-tree is the
       :term:`B$^+$-tree`.
 
@@ -384,6 +398,14 @@ Glossary
       sorting routine pass in a comparator function
       to define how records in the collection are to be compared.
 
+   comparison
+      The act of comparing two :term:`keys <key>` or
+      :term:`records <record>`.
+      For many :term:`data types <data type>`, a comparison has
+      constant time cost.
+      The number of comparisons required is often used as a
+      :term:`measure of cost` for sorting and searching algorithms.
+
    complete binary tree
       A binary tree where the nodes are filled in row by row, with the
       bottom row filled in left to right.
@@ -518,6 +540,11 @@ Glossary
       for combining software components, and design patterns allow
       this design knowledge to be passed on to new programmers more quickly.
 
+   deterministic algorithm
+      An algorithm that does not involve any element of randomness,
+      and so its behavior on a given input will always be the same.
+      This is in contrast to a :term:`randomized algorithm`.
+
    dictionary
       An abstract data type or interface for a data structure or
       software subsystem that supports insertion, search, and deletion
@@ -591,6 +618,13 @@ Glossary
       The block size is 512 bytes on most disk drives.
       Disk drives and RAM are typical parts of a computer's
       :term:`memory hierarchy`.
+
+   disk fetch
+      The act of reading data from a disk drive (or other form of
+      :term:`peripheral storage`).
+      The number of times data must be read from (or written to) a
+      disk is often a good measure of cost for an algorithm that
+      involves disk I/O, since this is usually the dominant cost.
 
    divide and conquer
       A technique for designing algorithms where a solution is found
@@ -902,7 +936,8 @@ Glossary
 
    hashing
       A search method that uses a :term:`hash function` to convert a
-      :term:`key` value into a position within a :term:`hash table`.
+      :term:`search key` value into a position within a
+      :term:`hash table`. 
       In a properly implemented :term:`hash system`, that position in
       the table will have high probability of containing the record
       that matches the key value.
@@ -972,12 +1007,12 @@ Glossary
       file.
 
    indexing
-      The process of associating a :term:`key` with the location
-      of a corresponding data record.
-      The two key points to the concept of an index is the association
-      of key with record, and the fact that the index does not
-      actually store the record itself but rather it stores a
-      reference to the record.
+      The process of associating a :term:`search key` with the
+      location of a corresponding data record.
+      The two defining points to the concept of an index is the
+      association of a key with a record, and the fact that the index
+      does not actually store the record itself but rather it stores a
+      :term:`reference` to the record.
       In this way, a collection of records can be supported by
       multiple indices, typically a separate index for each key field
       in the record.
@@ -1058,8 +1093,8 @@ Glossary
 
    key-record pair
       A standard solution for solving the problem of how to relate a
-      key value to a record (or how to find the key for a given
-      record) within the context of a particular
+      :term:`key` value to a record (or how to find the key for a
+      given record) within the context of a particular
       :term:`index <indexing>`.
       The idea is to simply stores as records in the index pairs of
       keys and records.
@@ -1126,7 +1161,8 @@ Glossary
 
    linear growth rate
       For input size :math:`n`, a growth rate of :math:`cn` (for
-      :math:`c` any positive constant). In other words, the cost of
+      :math:`c` any positive constant).
+      In other words, the cost of
       the associated function is linear on the input size.
 
    linear index
@@ -1144,6 +1180,9 @@ Glossary
 
    linear order
       Another term for :term:`total order`.
+
+   linear search
+      Another name for :term:`sequential search`.
 
    linked list
       An implementation for the list ADT that uses
@@ -1213,6 +1252,20 @@ Glossary
       greater than its :term:`children <child>`.
       As a consequence, the node with maximum key value is
       at the :term:`root`.
+
+   measure of cost
+      When comparing two things, such as two algorithms, some event or
+      unit must be used as the basic unit of comparison.
+      It might be number of milliseconds needed or machine instructions
+      expended by a program, but it is usually desirable to have a way
+      to do comparison between two algorithms without writing a
+      program.
+      Thus, some other measure of cost might be used as a basis for
+      comparison between the algorithms.
+      For example, when comparing two sorting algorthms it is
+      traditional to use as a measure of cost the number of
+      :term:`comparisons <comparison>` made between the key values of
+      record pairs.
 
    mergesort
       A sorting algorithm that requires :math:`\Theta(n \log n)` in
@@ -1503,6 +1556,10 @@ Glossary
       the least) valued record. Most often implemented using the
       :term:`heap` data structure.
 
+   probabilistic algorithm
+      A form of :term:`randomized algorithm` that might yield an
+      incorrect result, or that might fail to produce a result.
+
    problem
       A task to be performed.
       It is best thought of as a :term:`function` or a mapping of
@@ -1592,6 +1649,20 @@ Glossary
       :math:`n` element is selected in such a way that each
       permutation has equal probability of being selected.
 
+   randomized algorithm
+      An algorithm that involves some form of randomness to control
+      its behavior.
+      The ultimate goal of a randomized algorithm is to improve
+      performance over a deterministic algorithm to solve the same
+      problem.
+      There are a number of variations on this theme.
+      A "Las Vegas algorithm" returns a correct result,
+      but the amount of time required might or might not improve over
+      a :term:`deterministic algorithm`.
+      A "Monte Carlo algorithm" is a form of
+      :term:`probabilistic algorithm` that is not guarenteed to return
+      a correct result, but will return a result relatively quickly.
+
    range
       The set of possible outputs for a function.
 
@@ -1636,6 +1707,15 @@ Glossary
       least as expensive as sorting, or that certain problems are
       :term:`NP Complete`.
 
+   reference
+      A value that enables a program to directly access some
+      particular data item.
+      An example might be a byte position within a file where the
+      record is stored, or a pointer to a record in memory.
+      (Note that Java makes a distinction between a reference and the
+      concept of a pointer, since it does not define a reference to
+      necessarily be a byte position in memory.)
+
    reflexive
       In set notation, binary relation :math:`R` on set :math:`S` is
       reflexive if :math:`aRa` for all :math:`a \in \mathbf{S}`.
@@ -1673,6 +1753,18 @@ Glossary
       when searching. For example, in a database of customer records,
       we might want to search by name.
       In this case the name field is used as the search key.
+
+   search lower bound
+      The problem of searching in an array has provable lower bounds
+      for specific variations of the problem.
+      For an unsorted array, it is :math:`\Omega(n)`
+      :term:`comparisons <comparison>` in the :term:`worst case`,
+      typically proved using an :term:`adversary argument`.
+      For a sorted array, it is :math:`\Omega(\log n)` in the worst
+      case, typically proved using an argument similar to the
+      :term:`sorting lower bound` proof.
+      However, it is possible to search a sorted array in the average
+      case in :math:`O(\log \log n)` time. 
 
    search tree
       A :term:`tree` data structure that makes search by :term:`key`
@@ -1788,7 +1880,7 @@ Glossary
 
    sorting problem
       Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`
-      with key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
+      with :term:`key` values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
       the sorting problem is to arrange the records into any order
       :math:`s` such that records
       :math:`r_{s_1}`, :math:`r_{s_2}`, ..., :math:`r_{s_n}`
@@ -1834,7 +1926,8 @@ Glossary
 
    stable
       A sorting algorithm is said to be stable if it does not
-      change the relative ordering of records with identical key values.
+      change the relative ordering of records with identical
+      :term:`key` values. 
 
    stack
       A list-like structure in which elements may be inserted or
@@ -1871,6 +1964,12 @@ Glossary
       includes some node :math:`R` of the tree as the subtree
       :term:`root` along with all the :term:`descendants <descendant>`
       of :math:`R`.
+
+   successful search
+      When searching for a :term:`key` value in a collection of
+      records, we might find it.
+      If so, we call this a successful search.
+      The alternative is an :term:`unsuccessful search`.
 
    summation
       The sum of costs for some :term:`function` applied to a
@@ -1969,6 +2068,17 @@ Glossary
       disjoint sets when it is determined that they are members of the
       same :term:`equivalence class` under some
       :term:`equivalence relation`.
+
+   unsuccessful search
+      When searching for a :term:`key` value in a collection of
+      records, we might not find it.
+      If so, we call this an unsuccessful search.
+      Usually we require that this means that no record in the
+      collection actually has that key value
+      (though a :term:`probabilistic algorithm` for search might not
+      require this to be true).
+      The alternative to an unsuccessful search is a
+      :term:`successful search`.
 
    upper bound
       In algorithm analysis, the upper or highest growth rate that
