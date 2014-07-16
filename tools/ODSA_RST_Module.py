@@ -441,7 +441,7 @@ class ODSA_RST_Module:
                 i += 1
             else:
               # Append module name to embedded exercise
-              mod_data[i] += '   :module: %s\n' % mod_name
+              mod_data[i] += ' '*start_space + '   :module: %s\n' % mod_name
 
               if av_name not in exercises:
                 # Add the name to a list of missing exercises
@@ -453,7 +453,7 @@ class ODSA_RST_Module:
                 # List of valid options for avembed directive
                 options = ['long_name', 'points', 'required', 'showhide', 'threshold', 'oembed_url']
 
-                rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+                rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
                 # JSAV grading options are not applicable to Khan Academy exercises or slideshows and will be ignored
                 #if av_type not in ['ka', 'ss']:
@@ -465,7 +465,7 @@ class ODSA_RST_Module:
 
                 # Convert python booleans to JavaScript booleans, URL-encode the string and append it to the RST options
                 xop_str = '&amp;'.join(['%s=%s' % (option, value) if str(value) not in ['True', 'False'] else '%s=%s' % (option, str(value).lower()) for option, value in xops.iteritems()])
-                rst_options.append('   :exer_opts: %s\n' % xop_str)
+                rst_options.append(' '*start_space +'   :exer_opts: %s\n' % xop_str)
 
                 mod_data[i] += ''.join(rst_options)
         elif line.startswith('.. showhidecontent::'):

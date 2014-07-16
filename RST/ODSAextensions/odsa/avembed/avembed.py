@@ -219,6 +219,7 @@ class avembed(Directive):
         res += BUTTON_HTML % (self.options)
 
     res += CONTAINER_HTML % (self.options)
+    
 
     return [nodes.raw('', res, format='html')]
 
