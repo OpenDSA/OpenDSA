@@ -68,8 +68,8 @@ An :term:`inorder traversal` first visits the left child
 (including its entire subtree), then visits the node, and finally
 visits the right child (including its entire
 subtree).
-The binary search tree (see Module :numref:`<BST>`) makes use of this
-traversal to print all nodes in ascending order of value.
+The :ref:`binary search tree <binary search tree> <BST>` makes use of
+this traversal to print all nodes in ascending order of value.
 
 .. topic:: Example
 
@@ -235,8 +235,7 @@ Given an arbitrary binary tree we wish to determine if,
 for every node :math:`A`, are all nodes in :math:`A`'s left
 subtree less than the value of :math:`A`, and are all nodes in
 :math:`A`'s right subtree greater than the value of :math:`A`?
-(This happens to be the definition for a binary search tree,
-see Module :numref:`<BST>`.)
+(This happens to be the definition for a binary search tree.)
 Unfortunately, to make this decision we need to know some context
 that is not available just by looking at the node's parent or
 children.

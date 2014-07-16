@@ -608,7 +608,7 @@
         "long_name": "Comparing Records",
         "exercises": {
           "CompareSumm": {
-            "long_name": "Record Comparison Summary",
+            "long_name": "Record Comparison Summary Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
@@ -620,10 +620,10 @@
         "exercises": {}
       },
       "Design/DesignSumm": {
-        "long_name": "The Dictionary ADT",
+        "long_name": "Design Chapter Summary",
         "exercises": {
           "DesignSumm": {
-            "long_name": "Design Summary",
+            "long_name": "Design Summary Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
