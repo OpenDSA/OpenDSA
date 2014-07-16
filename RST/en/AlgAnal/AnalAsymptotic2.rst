@@ -75,7 +75,8 @@ comparison can differ by a factor of 1000 or more, making the one
 with lower growth rate impractical for typical problem sizes due to
 its large constant.
 Asymptotic analysis is a form of "back of the envelope"
-:ref:`estimation <Estimation>` for algorithm resource consumption.
+:ref:`estimation <estimation> <Estimation>` for algorithm resource
+consumption.
 It provides a simplified model of the running time or
 other resource needs of an algorithm.
 This simplification usually helps you understand the behavior of your

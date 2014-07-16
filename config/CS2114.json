@@ -10,7 +10,7 @@
   "build_cmap": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
-  "assumes": "ADT",
+  "assumes": "ADT; relations",
   "chapters": {
     "Preface": {
       "Intro": {
@@ -488,6 +488,23 @@
         }
       }
     },
+    "Design": {
+      "Design/Comparison": {
+        "long_name": "Comparing Records",
+        "exercises": {
+          "CompareSumm": {
+            "long_name": "Record Comparison Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "Design/Dictionary": {
+        "long_name": "The Dictionary ADT",
+        "exercises": {}
+      }
+    },
     "Binary Trees": {
       "Development/BinaryTreeIntro": {
         "long_name": "Binary Trees Chapter Introduction",
@@ -583,6 +600,10 @@
             "threshold": 0.90
           }
         }
+      },
+      "Development/BSTDict": {
+        "long_name": "Dictionary Implementation with BST",
+        "exercises": {}
       }
     },
     "Sorting": {
@@ -604,19 +625,19 @@
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
         "exercises" : {
-          "InssortCON1": {
+          "InsertionSortP1CON": {
             "long_name": "Insertion Sort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "InssortCON2": {
+          "InsertionSortP2CON": {
             "long_name": "Insertion Sort Slideshow 2",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "InssortCON3": {
+          "InsertionSortP3CON": {
             "long_name": "Insertion Sort Slideshow 3",
             "required": false,
             "points": 0.0,

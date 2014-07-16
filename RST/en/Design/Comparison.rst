@@ -64,8 +64,9 @@ whether they are equal or not.
 That is enough to enable a sequential search through a database of
 records and find one that matches a given key.
 However, we typically would like for the keys to define a
-:term:`total order` (see Module :ref:`Set Definitions <SetDef>`), which means
-that we can always tell which of two keys is greater than the other.
+:ref:`total order <total order> <SetDef>`,
+which means that we can always tell which of two keys is greater than
+the other.
 Using key types with total orderings gives the database
 implementor the opportunity to organize a collection of records in
 a way that makes searching more efficient.

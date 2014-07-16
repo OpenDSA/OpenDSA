@@ -136,14 +136,15 @@ Glossary
       A B$^+$-tree does not store data at the internal nodes, but
       instead only stores :term:`key` values as direction finders for
       the purpose of searching through the tree.
-      Only the leaf nodes store a reference to the actual data
-      records.
+      Only the :term:`leaf nodes <leaf node>` store a reference to the
+      actual data records.
 
    B-tree
       A method for :term:`indexing` a large collection of records.
-      A B-tree is a balanced tree that typically has high branching
-      factor (commonly as much as 100 :term:`children <child>` per
-      :term:`internal node`), causing the tree to be very shallow.
+      A B-tree is a :term:`balanced tree` that typically has high
+      branching factor (commonly as much as 100
+      :term:`children <child>` per :term:`internal node`),
+      causing the tree to be very shallow.
       When stored on disk, the node size is selected to be same as the
       desired unit of I/O (so some multiple of the disk :term:`sector`
       size).
@@ -157,6 +158,10 @@ Glossary
       In set notation, a bag is a collection of elements with no order
       (like a set), but which allows for duplicate-valued elements
       (unlike a set).
+
+   balanced tree
+      A tree where the :term:`depths <depth>` of each :term:`subtree`
+      are roughly the same.
 
    base
       Synonym for :term:`radix`.
@@ -370,7 +375,7 @@ Glossary
       The concept that two objects can be compared to determine if they
       are equal or not, or to determine which one is greater than the other.
       To be reliably compared for a greater/lesser relationship,
-      the values being compared must belong to a total order.
+      the values being compared must belong to a :term:`total order`.
       ``Comparable`` is also the name of an interface in Java that
       asserts a comparable relationship between objects with a class,
       and ``.compareTo()`` is the ``Comparable`` interface method that
@@ -681,6 +686,17 @@ Glossary
 
    element
       One value or member in a set.
+
+   empirical comparison
+      An approach to comparing to things by actually seeing how they
+      perform.
+      Most typically, we are referring to the comparison of two
+      programs by running each on a suite of test data and measuring
+      the actual running times.
+      Empirical comparison is subject to many possible complications,
+      including unfair selection of test data, and inaccuracies in the
+      time measurements due to variations in the computing environment
+      between various executions of the programs.
 
    empty
       For a :term:`container` class, the state of containing no
@@ -997,6 +1013,38 @@ Glossary
       records, is it possible for the programmer to insert an integer
       onto the list instead?
 
+   Huffman coding tree
+      A Huffman coding tree is a :term:`full binary tree <full tree>`
+      that is used to represent letters (or other symbols)
+      efficiently.
+      Each letter is associated with a node in the tree, and is then
+      given a :term:`Huffman code <Huffman codes>` based on the
+      position of the associated node.
+      A Huffman coding tree is an example of a binary :term:`trie`.
+
+   Huffman codes
+      The codes given to a collection of letters (or other symbols)
+      through the process of Huffman coding.
+      Huffman coding uses a :term:`Huffman coding tree` to generate
+      the codes.
+      The codes can be of variable length, such that the letters which
+      are expected to appear most frequently are shorter.
+      Huffman coding is optimal whenever the true frequencies are
+      known, and the frequency of a letter is independent of the
+      context of that letter in the message.
+
+   image space decomposition
+      A from of :term:`key space decomposition` where the
+      :term:`key space` splitting points is predetermined (typically
+      by splitting in half).
+      For example, a :term:`Huffman coding tree` splits the letters
+      being coded into those with codes that start with 0 on the left
+      side, and those with codes that start with 1 on the right side.
+      This regular decomposition of the key space is the basis for a
+      :term:`trie` data structure.
+      An image space decomposition is in opposition to an
+      :term:`object space decomposition`.
+
    incident
       In :term:`graph` terminology, a synonym for :term:`adjacent`.
 
@@ -1064,7 +1112,7 @@ Glossary
       element :math:`X` in the series, count one inversion for each
       element to left of :math:`X` that is greater than the value of
       :math:`X` (and so must ultimately be moved to the right of
-      :math:`X` during a sorting process.
+      :math:`X` during a sorting process).
 
    irreflexive
       In set notation, binary relation :math:`R` on set :math:`S` is
@@ -1102,6 +1150,16 @@ Glossary
       along with a reference to the record.
       The other standard solution to this problem is to pass a
       comparator function to the index methods.
+
+   key space
+      The range of values that a :term:`key` value may take on.
+
+   key space decomposition
+      The idea that the range for a :term:`search key` will be split
+      into pieces.
+      There are two general approaches to this:
+      :term:`object space decomposition` and
+      :term:`image space decomposition`.
 
    Kruskal's algorithm
       :to-term: UNION/FIND :label: uses
@@ -1172,7 +1230,7 @@ Glossary
       records stored on disk, where the linear index itself might be
       on disk or in main memory.
       It allows for efficient search (including for
-      :term:`range queries <range query>`, but it is not good for
+      :term:`range queries <range query>`), but it is not good for
       inserting and deleting entries in the array.
       Therefore, it is an ideal indexing structure when the system
       needs to do range queries but the collection of records never
@@ -1267,7 +1325,7 @@ Glossary
       :term:`comparisons <comparison>` made between the key values of
       record pairs.
 
-   mergesort
+   Mergesort
       A sorting algorithm that requires :math:`\Theta(n \log n)` in
       the best, average, and worst cases.
       Conceptually it is simple:
@@ -1413,6 +1471,19 @@ Glossary
    object
       An instance of a class, that is, something that is created and
       takes up storage during the execution of a computer program.
+
+   object space decomposition
+      A from of :term:`key space decomposition` where the
+      :term:`key space` is determined
+      by the actual values of keys that are found.
+      For example, a :term:`BST` stores a key value in its root,
+      and all other values in the tree with lesser value are in the
+      left :term:`subtree`.
+      Thus, the root value has split (or decomposed) the
+      :term:`key space` for that key based on its value into left
+      and right parts.
+      An object space decomposition is in opposition to an
+      :term:`image space decomposition`.
 
    one-way list
       A synonym for a :term:`singly linked list`.
@@ -1702,7 +1773,7 @@ Glossary
       for one :term:`problem` from the asymptotic bounds of another.
       In particular, if problem A can be used to solve problem B, and
       problem A is proved to be in :math:`O(f(n))`, then problem B
-      must also be in :math:`O(f(n)`.
+      must also be in :math:`O(f(n))`.
       Reductions are often used to show that certain problems are at
       least as expensive as sorting, or that certain problems are
       :term:`NP Complete`.
@@ -1771,6 +1842,8 @@ Glossary
       value more efficient.
       A type of :term:`container`, it is common to implement an
       :term:`index <indexing>` using a search tree.
+      A good search tree implementation will guarentee that insertion,
+      deletion, and search operations are all :math:`\Theta(\log n)`.
 
    secondary key
       A key field in a record such as salary, where a particular key
@@ -2033,6 +2106,17 @@ Glossary
       each of which is a tree, and whose :term:`roots <root>`
       :math:`R_1, R_2, ..., R_n`,
       respectively, are :term:`children <child>` of :math:`R`.
+
+   trie
+      A form of :term:`search tree` where an internal node represents
+      a split in the :term:`key space` at a predetermined location,
+      rather than split based on the actual :term:`key` values seen.
+      For example, a simple binary search trie for key values in the
+      range 0 to 1023 would store all records with key values less
+      than 512 on the left side of the tree, and all records with key
+      values equal to or greater than 512 on the right side of the
+      tree.
+      A trie is always a :term:`full tree`.
 
    truth table
       In symbolic logic, a table that contains as rows all possible
