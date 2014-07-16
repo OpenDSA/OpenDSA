@@ -475,6 +475,17 @@
             "threshold": 5
           }
         }
+      },
+      "AlgAnal/AlgAnalSummCS2": {
+        "long_name": "Algorithm Analysis Summary Exercises",
+        "exercises": {
+          "AlgAnalCS2114Summ": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       }
     },
     "Binary Trees": {
