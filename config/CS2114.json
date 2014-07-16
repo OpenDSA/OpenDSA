@@ -443,21 +443,14 @@
         "long_name": "A Faster Computer, or a Faster Algorithm?",
         "exercises": {}
       },
-      "AlgAnal/AnalAsymptotic": {
+      "AlgAnal/AnalAsymptotic2": {
         "long_name": "Asymptotic Analysis",
-        "exercises": {
-          "AnalPairSumm": {
-            "long_name": "Function Pairs Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          }
-        }
+        "exercises": {}
       },
       "AlgAnal/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
         "sections": {
-          "binarysearchpro": {
+          "binsearchpro": {
             "long_name": "Binary Search Proficiency Exercise",
             "showhide": "none"
           }
@@ -480,25 +473,6 @@
             "required": true,
             "points": 1.0,
             "threshold": 5
-          }
-        }
-      }
-    },
-    "Searching": {
-      "Searching/BinarySearch": {
-        "long_name": "Binary Search",
-        "exercises": {
-          "binarySearchCON": {
-            "long_name": "Binary Search Algorithm Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "binarySearchPRO": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
           }
         }
       }

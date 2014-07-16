@@ -212,24 +212,22 @@ There is no strict equality to the use of big-Oh notation.
 Lower Bounds
 ------------
 
-.. showhidecontent:: LowerBounds
+Big-Oh notation describes an upper bound.
+In other words, big-Oh notation states a claim about the greatest
+amount of some resource (usually time) that is required by an
+algorithm for some class of inputs of size :math:`n` (typically
+the worst such input, the average of all possible inputs, or the best
+such input).
 
-   Big-Oh notation describes an upper bound.
-   In other words, big-Oh notation states a claim about the greatest
-   amount of some resource (usually time) that is required by an
-   algorithm for some class of inputs of size :math:`n` (typically
-   the worst such input, the average of all possible inputs, or the best
-   such input).
-
-   Similar notation is used to describe the least amount of a resource
-   that an algorithm needs for some class of input.
-   Like big-Oh notation, this is a measure of the algorithm's
-   growth rate.
-   Like big-Oh notation, it works for any resource, but
-   we most often measure the least amount of time required.
-   And again, like big-Oh notation, we are measuring the resource
-   required for some particular class of inputs: the worst-, average-,
-   or best-case input of size :math:`n`.
+Similar notation is used to describe the least amount of a resource
+that an algorithm needs for some class of input.
+Like big-Oh notation, this is a measure of the algorithm's
+growth rate.
+Like big-Oh notation, it works for any resource, but
+we most often measure the least amount of time required.
+And again, like big-Oh notation, we are measuring the resource
+required for some particular class of inputs: the worst-, average-,
+or best-case input of size :math:`n`.
    
 The :term:`lower bound` for an algorithm
 (or a problem, as explained later) 
