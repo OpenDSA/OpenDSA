@@ -122,7 +122,7 @@ matches a given key.
 This raises the issue of how to
 :ref:`extract the key <comparable> <Comparison>` from a record.
 We will usually assume that dictionary implementations store a
-:term:`key-record pair` so as to be able to extract the key
+:term:`key-value pair` so as to be able to extract the key
 associated with a record for this particular dictionary.
 
 The ``insert`` method of the dictionary class supports the

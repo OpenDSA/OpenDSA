@@ -1050,7 +1050,7 @@ Glossary
 
    index file
       A file whose records consist of
-      :term:`key-record pairs <key-record pair>` where the
+      :term:`key-value pairs <key-value pair>` where the
       pointers are referencing the complete records stored in another
       file.
 
@@ -1139,17 +1139,17 @@ Glossary
       for the purpose of searching or comparing.
       Another term for :term:`search key`.
 
-   key-record pair
+   key-value pair
       A standard solution for solving the problem of how to relate a
       :term:`key` value to a record (or how to find the key for a
       given record) within the context of a particular
       :term:`index <indexing>`.
-      The idea is to simply stores as records in the index pairs of
+      The idea is to simply store as records in the index pairs of
       keys and records.
       Specifically, the index will typically store a copy of the key
       along with a reference to the record.
       The other standard solution to this problem is to pass a
-      comparator function to the index methods.
+      :term:`comparator` function to the index.
 
    key space
       The range of values that a :term:`key` value may take on.
@@ -1225,7 +1225,7 @@ Glossary
 
    linear index
       A form of :term:`indexing` that stores
-      :term:`key-record pairs <key-record pair>` in a sorted array.
+      :term:`key-value pairs <key-value pair>` in a sorted array.
       Typically this is used for an index to a large collection of
       records stored on disk, where the linear index itself might be
       on disk or in main memory.
