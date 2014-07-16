@@ -457,9 +457,6 @@
       "AlgAnal/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
         "sections": {
-          "test": {
-            "remove": true
-          },
           "binarysearchpro": {
             "long_name": "Binary Search Proficiency Exercise",
             "showhide": "none"

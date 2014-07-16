@@ -11,20 +11,14 @@
         pseudo,
         config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
         interpret = config.interpreter,
-        av = new JSAV($("#container"));
+        av = new JSAV($("#container")),
+        code;
 
-    var code;
-
-    console.log("PARAMS: " + PARAMS);
-    console.log("PARAMS.JXOP-code: " + PARAMS.JXOP-code);
-
-    //    if (PARAMS.JXOP-code == "java") {
-    if (true) {
+    if (PARAMS['JXOP-code']) {
       var code = config.code;
     }
 
     av.recorded(); // we are not recording an AV with an algorithm
-
     var exercise = av.exercise(modelSolution, initialize,
                                {feedback: "atend", modelDialog: {width: 780}});
     exercise.reset();
