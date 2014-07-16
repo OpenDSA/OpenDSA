@@ -366,11 +366,12 @@ build/ShellsortTest/success: Sorting/Shellsort.pde Sorting/SortTest.pde Utils/Sw
 
 Mergesort: build/MergesortTest/success
 
-build/MergesortTest/success: Sorting/Mergesort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/Swap.pde Utils/Checkorder.pde
+build/MergesortTest/success: Sorting/Mergesort.pde Sorting/MergesortOpt.pde Sorting/SortTest.pde Utils/Swap.pde Utils/Swap.pde Utils/Checkorder.pde
 	@echo "Mergesort Test"
 	-@rm -rf build/MergesortTest
 	@mkdir build/MergesortTest
 	@cp Sorting/Mergesort.pde build/MergesortTest
+	@cp Sorting/MergesortOpt.pde build/MergesortTest
 	@cp Utils/Swap.pde build/MergesortTest
 	@cp Utils/Checkorder.pde build/MergesortTest
 	@cp Sorting/SortTest.pde build/MergesortTest/MergesortTest.pde
