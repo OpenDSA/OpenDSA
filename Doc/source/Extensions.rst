@@ -294,7 +294,7 @@ DESCRIPTION
     to the one specified in the json configuration file.
 
 showhidecontent
--------
+---------------
 NAME
     showhidecontent - creates a section of text that can be hidden or displayed.
 

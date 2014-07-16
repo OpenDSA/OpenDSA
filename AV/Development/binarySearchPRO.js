@@ -1,29 +1,7 @@
 "use strict";
-/* global ODSA, JSAV */
+/* global ODSA, JSAV, alert, PARAMS */
 (function ($) {
   $(document).ready(function () {
-    var arraySize = 20,
-        key,
-        initialArray = [],
-        array,
-        keyholder,
-        $findLabel,
-        pseudo,
-        config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
-        interpret = config.interpreter,
-        av = new JSAV($("#container")),
-        code;
-
-    if (PARAMS['JXOP-code']) {
-      var code = config.code;
-    }
-
-    av.recorded(); // we are not recording an AV with an algorithm
-    var exercise = av.exercise(modelSolution, initialize,
-                               {feedback: "atend", modelDialog: {width: 780}});
-    exercise.reset();
-
-
     // Process about button: Pop up a message with an Alert
     function about() {
       var aboutstring = interpret("aboutString");
@@ -116,7 +94,7 @@
         if (modelArray.value(mid) === key) {
           jsav.umsg(interpret("av_ms_comment4"),
                     {preserve: true, fill: {mid: mid}});
-                     paintGrey(modelArray, 0, arraySize - 1);
+          paintGrey(modelArray, 0, arraySize - 1);
         }
         jsav.stepOption("grade", true);
         jsav.step();
@@ -163,5 +141,26 @@
 
     // Set click handlers
     $('#about').click(about);
+
+    var arraySize = 20,
+        key,
+        initialArray = [],
+        array,
+        keyholder,
+        $findLabel,
+        pseudo,
+        config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
+        interpret = config.interpreter,
+        av = new JSAV($("#container")),
+        code;
+
+    if (PARAMS['JXOP-code'] !== undefined) {
+      code = config.code;
+    }
+
+    av.recorded(); // we are not recording an AV with an algorithm
+    var exercise = av.exercise(modelSolution, initialize,
+                               {feedback: "atend", modelDialog: {width: 780}});
+    exercise.reset();
   });
 }(jQuery));
