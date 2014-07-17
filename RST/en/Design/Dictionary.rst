@@ -25,14 +25,15 @@ structures.
 Loosly speaking, we can say that any data structure that supports
 insert, search, and deletion is a "dictionary".
 
-As discussed in Module :numref:`<Comparison>`, dictionaries depend on
-the concepts of a :term:`search key` and :term:`comparable` objects.
+Dictionaries depend on the concepts of a :term:`search key` and
+:ref:`comparable <comparable> <Comparison>` objects. 
 To implement the dictionary's search function, we will require that
-keys be totally ordered.
+keys be :term:`totally ordered <total order>`.
 Ordering fields that are naturally multi-dimensional, such as a point
 in two or three dimensions, present special opportunities if we wish
 to take advantage of their multidimensional nature.
-This problem is addressed in Module :numref:`<Spatial>`.
+This problem is addressed by
+:ref:`spatial data structures <spatial data structure> <Spatial>`.
 
 Here is code to define a simple abstract dictionary class.
 
@@ -110,20 +111,19 @@ ID field as the key and the other using the name field as the key.
 One problem with the example as it is written is that the dictionary
 relies on the programmer to be reasonable about being consistent with
 the keys.
-Nothing stops the programmer from inserting an integer key into the
-names dictionary, or searching with an integer search key.
+These dictionaries are intended to have 
+:ref:`homogeneous <homogeneity> <ListElement>` elements.
+But nothing stops the programmer from inserting an integer key into
+the names dictionary, or searching with an integer search key.
 This problem can be handled by using C++ templates or Java generics.
-Module :numref:`<ListElement>` discusses in more detail the concept of
-container class :term:`homogeneity`.
 
 The fundamental operation for a dictionary is finding a record that
 matches a given key.
-This raises the issue of how to extract the key from a record.
-General-purpose methods for defining and extracting key fields are
-discussed in Module :numref:`<Comparison>`.
-For reasons disucussed there, our dictionary implementations generally
-store key/value pairs so as to be able to extract the key associated
-with a record for this particular dictionary.
+This raises the issue of how to
+:ref:`extract the key <comparable> <Comparison>` from a record.
+We will usually assume that dictionary implementations store a
+:term:`key-value pair` so as to be able to extract the key
+associated with a record for this particular dictionary.
 
 The ``insert`` method of the dictionary class supports the
 key-value pair implementation because it takes two parameters,
@@ -193,6 +193,6 @@ record prior to removal, we would still need to shift down the
 remaining records in the list to fill the gap left by the
 ``remove`` operation.
 
-In Chapter :numchap:`Binary Trees`, we will see search
+:ref:`Search trees <search tree> <BST>` are search
 structures that can perform all three key operations of insert,
 search, and delete in :math:`\Theta(\log n)` time.

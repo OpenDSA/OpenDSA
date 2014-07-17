@@ -48,8 +48,8 @@ are stable, or can be made stable with minor changes.
 
 When comparing two sorting algorithms, the simplest approach would be to
 program both and measure their running times.
-An example of such timings is presented in
-Module :numref:`Empirical Comparsion of Sorting Algorithms <SortingEmpirical>`.
+This is an example of
+:ref:`empirical comparison <empirical comparison> <SortingEmpirical>`.
 However, doing fair empirical comparisons can be tricky because
 the running time for many sorting algorithms depends on specifics of
 the input values.

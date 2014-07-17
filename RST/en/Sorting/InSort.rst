@@ -37,14 +37,15 @@ use in everyday life.
 For example, a natural way to sort your cards in a bridge hand is to
 go from left to right, and place each card in turn in its correct
 position relative to the other cards that you have already sorted.
-This is the idea behind :ref:`Insertion Sort <InsertionSort>`.
+This is the idea behind
+:ref:`Insertion Sort <insertion sort> <InsertionSort>`.
 Other sorting algorithms are totally alien to how humans do things,
 having been invented to sort thousands or even millions of records
 stored on the computer.
-For example, no normal person would use :ref:`Quicksort <Quicksort>`
-to order a pile of bills by date, even though
-:ref:`Quicksort <Quicksort>` is the standard sorting algorithm of
-choice for most software libraries.
+For example, no normal person would use
+:ref:`Quicksort <Quicksort> <Quicksort>`
+to order a pile of bills by date, even though Quicksort is the
+standard sorting algorithm of choice for most software libraries.
 After years of study, there are still unsolved problems related to
 sorting.
 New algorithms are still being developed and refined for
@@ -56,25 +57,23 @@ issues in algorithm design and analysis.
 For example, the sorting algorithms in this chapter show multiple
 approaches to using :term:`divide and conquer`.
 In particular, there are multiple ways to do the dividing.
-:ref:`Mergesort <Mergesort>` divides a list in half.
-:ref:`Quicksort <Quicksort>` divides a list into big values and small
-values.
-:ref:`Radix Sort <RadixSort>` divides the problem by working on one
-digit of the key at a time.
+:ref:`Mergesort <Mergesort> <Mergesort>` divides a list in half.
+:ref:`Quicksort <Quicksort> <Quicksort>` divides a list into big
+values and small values.
+:ref:`Radix Sort <radix sort> <RadixSort>` divides the problem by
+working on one digit of the key at a time.
 Sorting algorithms can also illustrate a wide variety of
 algorithm analysis techniques.
-We will find that it is possible for an algorithm to have an
+Quicksort illustrates that it is possible for an algorithm to have an
 :term:`average case` whose growth rate is significantly smaller than
-its :term:`worst case` (:ref:`Quicksort <Quicksort>`).
-We will see how it is possible to speed up one sorting algorithm
-(:ref:`Shellsort <Shellsort>` or :ref:`Quicksort <Quicksort>`)
+its :term:`worst case`.
+It is possible to speed up one sorting algorithm
+(such as :ref:`Shellsort <Shellsort> <Shellsort>` or Quicksort)
 by taking advantage of the :term:`best case` behavior of another
-algorithm (:ref:`Insertion Sort <InsertionSort>`).
-We will see several examples of how we can tune an algorithm for
-better performance.
-We will see that special case behavior by some algorithms makes them a
+algorithm (Insertion Sort).
+Special case behavior by some sorting algorithms makes them a
 good solution for special niche applications
-(:ref:`Heapsort <Heapsort>`). 
+(:ref:`Heapsort <Heapsort> <Heapsort>`). 
 Sorting provides an example of an important technique for
 analyzing the lower bound for a problem.
 :ref:`External Sorting <external sort> <ExternalSort>` refers to the

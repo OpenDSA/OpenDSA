@@ -8,9 +8,9 @@
 PROCESS = ~/processing-2.0b9/processing-java
 
 # Use this one on Linux
-# BUILD = build
+BUILD = build
 # On Windows, I can't make it work without an absolute path
-BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+# BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
 all: Demo Misc Lists Design Binary General Sorting Graphs
@@ -366,11 +366,12 @@ build/ShellsortTest/success: Sorting/Shellsort.pde Sorting/SortTest.pde Utils/Sw
 
 Mergesort: build/MergesortTest/success
 
-build/MergesortTest/success: Sorting/Mergesort.pde Sorting/SortTest.pde Utils/Swap.pde Utils/Swap.pde Utils/Checkorder.pde
+build/MergesortTest/success: Sorting/Mergesort.pde Sorting/MergesortOpt.pde Sorting/SortTest.pde Utils/Swap.pde Utils/Swap.pde Utils/Checkorder.pde
 	@echo "Mergesort Test"
 	-@rm -rf build/MergesortTest
 	@mkdir build/MergesortTest
 	@cp Sorting/Mergesort.pde build/MergesortTest
+	@cp Sorting/MergesortOpt.pde build/MergesortTest
 	@cp Utils/Swap.pde build/MergesortTest
 	@cp Utils/Checkorder.pde build/MergesortTest
 	@cp Sorting/SortTest.pde build/MergesortTest/MergesortTest.pde

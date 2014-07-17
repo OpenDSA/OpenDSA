@@ -10,7 +10,7 @@
   "build_cmap": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
-  "assumes": "ADT",
+  "assumes": "ADT; relations",
   "chapters": {
     "Preface": {
       "Intro": {
@@ -444,23 +444,19 @@
         "exercises": {}
       },
       "AlgAnal/AnalAsymptotic": {
-        "long_name": "Asymptotic Analysis",
-        "exercises": {
-          "AnalPairSumm": {
-            "long_name": "Function Pairs Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
+        "long_name": "Asymptotic Analysis and Upper Bounds",
+        "sections": {
+          "thetadisc": {
+            "long_name": "theta disclaimer",
+            "showhide": "none"
           }
-        }
+        },
+        "exercises": {}
       },
       "AlgAnal/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
         "sections": {
-          "test": {
-            "remove": true
-          },
-          "binarysearchpro": {
+          "binsearchpro": {
             "long_name": "Binary Search Proficiency Exercise",
             "showhide": "none"
           }
@@ -485,25 +481,34 @@
             "threshold": 5
           }
         }
-      }
-    },
-    "Searching": {
-      "Searching/BinarySearch": {
-        "long_name": "Binary Search",
+      },
+      "AlgAnal/AlgAnalSummCS2": {
+        "long_name": "Algorithm Analysis Summary Exercises",
         "exercises": {
-          "binarySearchCON": {
-            "long_name": "Binary Search Algorithm Slideshow",
+          "AlgAnalCS2114Summ": {
+            "long_name": "Algorithm Analysis Summary Questions",
             "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "binarySearchPRO": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
+            "points": 1.0,
+            "threshold": 5
           }
         }
+      }
+    },
+    "Design": {
+      "Design/Comparison": {
+        "long_name": "Comparing Records",
+        "exercises": {
+          "CompareSumm": {
+            "long_name": "Record Comparison Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "Design/Dictionary": {
+        "long_name": "The Dictionary ADT",
+        "exercises": {}
       }
     },
     "Binary Trees": {
@@ -601,6 +606,10 @@
             "threshold": 0.90
           }
         }
+      },
+      "Development/BSTDict": {
+        "long_name": "Dictionary Implementation with BST",
+        "exercises": {}
       }
     },
     "Sorting": {
@@ -622,19 +631,19 @@
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
         "exercises" : {
-          "InssortCON1": {
+          "InsertionSortP1CON": {
             "long_name": "Insertion Sort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "InssortCON2": {
+          "InsertionSortP2CON": {
             "long_name": "Insertion Sort Slideshow 2",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "InssortCON3": {
+          "InsertionSortP3CON": {
             "long_name": "Insertion Sort Slideshow 3",
             "required": false,
             "points": 0.0,

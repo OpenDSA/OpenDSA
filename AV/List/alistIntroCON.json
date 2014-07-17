@@ -7,6 +7,5 @@
       "av_c4": "Random access to any element in the list quite easy. Given some position in the list, the value of the element in that position can be accessed directly.",
       "av_c5": "Thus, access to any element using the <code>moveToPos</code> method followed by the <code>getValue</code> method takes $\\Theta(1)$ time."
     }
-  },
-  "code" : {}
+  }
 }

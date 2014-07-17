@@ -19,15 +19,15 @@ Definitions and Properties
 --------------------------
 
 A :term:`binary tree` is made up of a finite set of elements
-called :term:`nodes`.
+called :term:`nodes <node>`.
 This set either is empty or consists of a node called the
 :term:`root` together with two binary trees, called the left and
 right 
-:term:`subtrees`, which are disjoint from each other and from the
-root.
+:term:`subtrees <subtree>`, which are disjoint from each other and
+from the root.
 (Disjoint means that they have no nodes in common.)
 The roots of these subtrees are
-:term:`children` of the root.
+:term:`children <child>` of the root.
 There is an :term:`edge` from a node to each of its children,
 and a node is said to be the :term:`parent` of its children.
 
@@ -50,7 +50,7 @@ deepest node in the tree.
 All nodes of depth :math:`d` are at
 :term:`level` :math:`d` in the tree.
 The root is the only node at level 0, and its depth is 0.
-A :term:`leaf` node is any node that has two empty children.
+A :term:`leaf node` is any node that has two empty children.
 An :term:`internal node` is
 any node that has at least one non-empty child.
 
@@ -107,12 +107,12 @@ trees of Figure :num:`Figure #BinDiff` are *not* the same.
 
 Two restricted forms of binary tree are sufficiently
 important to warrant special names.
-Each node in a :term:`full` binary tree
+Each node in a :term:`full <full tree>` binary tree
 is either (1) an internal node with exactly two non-empty children or
 (2) a leaf.
-A :term:`complete` binary tree has
-a restricted shape obtained by starting at the root and filling the
-tree by levels from left to right.
+A :term:`complete binary tree` has a restricted shape obtained by
+starting at the root and filling the tree by levels from left to
+right.
 In the complete binary tree of height :math:`d`, all levels
 except possibly level :math:`d-1` are completely full.
 The bottom level has its nodes filled in from the left side.
@@ -137,9 +137,9 @@ that is, the tree of Figure :num:`Figure #FullComplete` (a) is full
 but not complete while the tree of Figure :num:`Figure #FullComplete`
 (b) is 
 complete but not full.
-The heap data structure (Module :numref:`<Heaps>`) is an example
+The :ref:`heap <heap> <Heaps>` data structure is an example
 of a complete binary tree.
-The Huffman coding tree (Module :numref:`<Huffman>`)
+The :ref:`Huffman coding tree <Huffman coding tree> <Huffman>`
 is an example of a full binary tree.
 
 .. avembed:: Exercises/Binary/DprobsAll.html ka

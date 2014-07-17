@@ -151,9 +151,9 @@ goes up in proportion to the number of inversions.
 So a "nearly sorted" list will always be cheap to sort with Insertion
 Sort.
 Examples of algorithms that take advantage of Insertion Sort's
-near-best-case running time are Shellsort
-(Module :numref:`<Shellsort>`)
-and Quicksort (Module :numref:`<Quicksort>`).
+near-best-case running time are
+:ref:`Shellsort <Shellsort> <Shellsort>`
+and :ref:`Quicksort <Quicksort> <Quicksort>`.
 
 Counting comparisons or swaps yields similar results.
 Each time through the inner ``for`` loop yields both a

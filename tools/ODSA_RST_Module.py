@@ -231,6 +231,7 @@ class ODSA_RST_Module:
 
     images = []
     missing_exercises = []
+    processed_sections = []
     requirements_satisfied = []
     todo_list = []
     num_ref_map = {}
@@ -440,7 +441,7 @@ class ODSA_RST_Module:
                 i += 1
             else:
               # Append module name to embedded exercise
-              mod_data[i] += '   :module: %s\n' % mod_name
+              mod_data[i] += ' '*start_space + '   :module: %s\n' % mod_name
 
               if av_name not in exercises:
                 # Add the name to a list of missing exercises
@@ -452,7 +453,7 @@ class ODSA_RST_Module:
                 # List of valid options for avembed directive
                 options = ['long_name', 'points', 'required', 'showhide', 'threshold', 'oembed_url']
 
-                rst_options = ['   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+                rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
                 # JSAV grading options are not applicable to Khan Academy exercises or slideshows and will be ignored
                 #if av_type not in ['ka', 'ss']:
@@ -464,13 +465,15 @@ class ODSA_RST_Module:
 
                 # Convert python booleans to JavaScript booleans, URL-encode the string and append it to the RST options
                 xop_str = '&amp;'.join(['%s=%s' % (option, value) if str(value) not in ['True', 'False'] else '%s=%s' % (option, str(value).lower()) for option, value in xops.iteritems()])
-                rst_options.append('   :exer_opts: %s\n' % xop_str)
+                rst_options.append(' '*start_space +'   :exer_opts: %s\n' % xop_str)
 
                 mod_data[i] += ''.join(rst_options)
         elif line.startswith('.. showhidecontent::'):
           # Parse the arguments from the directive
           args = parse_directive_args(mod_data[i], i, 1, console_msg_prefix)
           section_id = args[0]
+
+          processed_sections.append(section_id)
 
           if 'sections' in mod_attrib and section_id in mod_attrib['sections']:
             section_data = mod_attrib['sections'][section_id]
@@ -489,7 +492,9 @@ class ODSA_RST_Module:
               # Back up one line so that when 'i' is incremented at the end of the loop it will point to the next directive
               i -= 1
             else:
-              rst_options = ['   :%s: %s\n' % (option, value) for option, value in section_data.items()]
+              # Append all options provided in the section configuration unless they are on the ignore list
+              ignore_opts = ['remove']
+              rst_options = ['   :%s: %s\n' % (option, value) for option, value in section_data.items() if option not in ignore_opts]
               mod_data[i] += ''.join(rst_options)
         elif line.startswith('.. codeinclude::'):
           code_name = mod_data[i].split(' ')[2].strip()
@@ -516,6 +521,17 @@ class ODSA_RST_Module:
 
       if not avmetadata_found:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
+
+      mod_sections = mod_attrib['sections'].keys() if 'sections' in mod_attrib else []
+
+      # Print a list of sections that appear in the config file but not the module
+      missing_sections = list(set(mod_sections) - set(processed_sections))
+
+      for section in missing_sections:
+        print_err('%sWARNING: Section "%s" not found in module' % (console_msg_prefix, section))
+
+      # TODO: Should we print the missing exercises with each module or at the end like we do now?
+
 
       # Write the contents of the module file to the output src directory
       with codecs.open(''.join([config.book_src_dir, mod_name, '.rst']),'w', 'utf-8') as mod_file:

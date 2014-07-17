@@ -55,7 +55,7 @@ We will make use of the algorithm analysis simplifying rules:
    .. codeinclude:: Misc/Anal 
       :tag: c3p3
 
-   The first line is :math:`Theta(1)`.
+   The first line is :math:`\Theta(1)`.
    The ``for`` loop is repeated :math:`n` times.
    The third line takes constant time so, by simplifying rule (4),
    the total cost for executing
@@ -245,7 +245,10 @@ Here is an illustration of the binary search method.
 .. inlineav:: binarySearchCON ss
    :output: show
 
-.. avembed:: AV/Development/binarySearchPRO.html ss
+.. showhidecontent:: binsearchpro
+
+   .. avembed:: AV/Searching/binarySearchPRO.html ss
+
 
 To find the cost of this algorithm in the worst case, we can model the
 running time as a recurrence and then find the closed-form solution.

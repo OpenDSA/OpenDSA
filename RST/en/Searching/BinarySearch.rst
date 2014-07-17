@@ -93,7 +93,7 @@ And we can only cut the value of :math:`n` in half :math:`\log n`
 times before we reach 1. [#]_
 
 
-.. avembed:: AV/Development/binarySearchPRO.html ss
+.. avembed:: AV/Searching/binarySearchPRO.html ss
 
 
 Notes

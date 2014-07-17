@@ -25,7 +25,6 @@
       },
       {
         "url": "../../../SourceCode/Processing/Lists/LList.pde",
-        "lineNumbers": false,
         "startAfter": "/* *** ODSATag: LListPrev *** */",
         "endBefore": "/* *** ODSAendTag: LListPrev *** */",
         "tags": {
@@ -36,7 +35,6 @@
       },
       {
         "url": "../../../SourceCode/Processing/Lists/LList.pde",
-        "lineNumbers": false,
         "startAfter": "/* *** ODSATag: LListPos *** */",
         "endBefore": "/* *** ODSAendTag: LListPos *** */",
         "tags": {

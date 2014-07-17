@@ -112,6 +112,9 @@ NP: min
 test: min
 	python $(CONFIG_SCRIPT) config/test.json
 
+testcmap: min
+	python $(CONFIG_SCRIPT) config/testcmap.json
+
 testanal: min
 	python $(CONFIG_SCRIPT) config/testanal.json	
 
@@ -142,7 +145,7 @@ invalid: min
 slides: min
 	python $(CONFIG_SCRIPT) -s config/slides.json
 
-allBooks: CS150 CS3114 CSCI204 CSCI102 CS5114 CS2114 OpenDSA Everything test uwosh good slides
+allBooks: CS150 CS3114 CSCI204 CSCI102 CS5114 CS2114 OpenDSA Everything test testcmap uwosh good slides
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
