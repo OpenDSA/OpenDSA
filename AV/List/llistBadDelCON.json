@@ -9,6 +9,5 @@
       "av_c6": "The node with a value of 10 is removed from the list.",
       "av_c7": "Unfortunately, this approach does not work when the current node is the last one on the list, as in this example. Here we want to delete the node with value 15. But there is no way to update the <code>next</code> pointer of the node with value 12. There is no direct way around this problem with the list as shown here."
     }
-  },
-  "code" : {}
+  }
 }
