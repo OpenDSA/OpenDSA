@@ -5,6 +5,5 @@
       "av_c2": "The list's first node is accessed from a pointer named <code>head</code>. To speed access to the end of the list, and to allow the append method to be performed in constant time, <code>tail</code> points to the last node of the list. The position of the current element is indicated by <code>curr</code>.",
       "av_c3": "Here is what we would like to have happen when we delete the current node (the one with value 10)."
     }
-  },
-  "code" : {}
+  }
 }

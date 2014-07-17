@@ -1,5 +1,5 @@
 // A problem that queue runs out of space..
-(function ($) {
+$(document).ready(function () {
   var jsav = new JSAV("aqueueBadCON");
 
   // Relative offsets
