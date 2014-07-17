@@ -1,7 +1,7 @@
 from docutils.parsers.rst import Directive
 from docutils.parsers.rst import directives
 from docutils import nodes
-from docutils.nodes import Element, Text
+from docutils.nodes import Element
 import re
 import json
 import conf
@@ -31,14 +31,6 @@ def setup(app):
   app.add_node(showhidesection, html=(html_visit_showhidecontent, html_depart_showhidecontent))
   app.add_node(containersection, html=(html_visit_containersection, html_depart_containersection))
 
-#Define the HTML output
-anchor_html = "<a id='%s_anchor'></a>"
-
-button_html = '''<input type='button'
-                   id="%s_showhide_btn"
-                   class = 'showHideLink' value='%s %s'/>'''
-
-content_html = "<div id='%s' style='display: %s' data-type='analysis_text'>%s</div>"
 
 def showhide(argument):
   """Conversion function for the "showhide" option."""
@@ -51,14 +43,18 @@ def html_depart_containersection(self, node):
     self.body.append('</div>\n')
 
 def html_visit_anchorsection(self, node):
-    self.body.append(self.starttag(node, 'a', **node.attributes))
-
+    self.body.append('<a id="%s">' %node.attributes['ids'])
 
 def html_depart_anchorsection(self, node):
     self.body.append('</a>\n')
 
 def html_visit_buttonsection(self, node):
-    self.body.append(self.starttag(node, 'input', **node.attributes))
+    atts = {}
+    atts['type'] = node.attributes['type']
+    atts['ids'] = node.attributes['ids']
+    atts['class'] = node.attributes['class']
+    atts['value'] = node.attributes['value']
+    self.body.append('<input type="%(type)s" id="%(ids)s" class="%(class)s" value="%(value)s">' %node.attributes)
 
 
 def html_depart_buttonsection(self, node):
@@ -68,9 +64,7 @@ def html_depart_buttonsection(self, node):
 
 
 def html_visit_showhidecontent(self, node):
-    print "*******MMMM*****\n" *5
-    print node
-    self.body.append(self.starttag(node, 'div', **node.attributes))
+    self.body.append('<div id="%(ids)s" style="%(style)s" data-type="analysis_text">' %node.attributes)
 
 
 def html_depart_showhidecontent(self, node):
@@ -104,15 +98,7 @@ class showhidecontent(Directive):
      #Set the content to display by default
     display = 'block'
 
-    # If 'show', then a show/hide button is displayed and the content is displayed by default
-    # If 'hide', then a show/hide button is displayed and the content is hidden by default
-    # If 'none' or showhide is omitted, then the content is displayed with no button
-    #if 'showhide' not in self.options or self.options['showhide'] == 'none':
-    #  button = ''
-    #elif self.options['showhide'] == 'show':
-    #  button = button_html % (section_id, langDict['hide'], button_text)
     if self.options['showhide'] == 'hide':
-    #  button = button_html % (section_id, langDict['show'], button_text)
       display = 'none'
 
 
@@ -123,13 +109,14 @@ class showhidecontent(Directive):
     button_node = buttonsection()
     button_node.attributes['type'] ='button'
     button_node.attributes['ids'] = "%s_showhide_btn" %section_id
+    button_node.attributes['class'] = 'showHideLink'
 
     showhide_node = showhidesection()
     showhide_node.attributes['section_id'] = section_id
     showhide_node.attributes['long_name'] = button_text
     showhide_node.attributes['showhide'] = showhide
     showhide_node.attributes['ids'] = section_id
-    showhide_node.attributes['style'] = 'display: %s' %display 
+    showhide_node.attributes['style'] = 'display:%s' %display 
     showhide_node.attributes['data-type'] ='analysis_text'
 
     super_node = containersection()
@@ -144,12 +131,8 @@ class showhidecontent(Directive):
     if self.content:
       node = nodes.Element()          # anonymous container for parsing
       self.state.nested_parse(self.content, self.content_offset, node)
-      showhide_node +=  nodes.legend('', *node)
+      showhide_node +=  nodes.description('', *node)
       super_node += showhide_node
-    return  [super_node] #[showhide_node]   
+    return  [super_node]    
 
  
-    #res = anchor_html % section_id
-    #@res += button + content_html % (section_id, display, '<br>'.join(self.content))
-
-    #return [nodes.raw('', res, format='html')]
