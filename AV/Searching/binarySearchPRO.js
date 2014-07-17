@@ -107,7 +107,7 @@
     }
 
     // a function to handle all click events on the array
-    function clickhandler(index) {
+    var clickhandler = function (index) {
       // if the clicked index is not higlighted earlier, highlight it
       // and paint the ones which are outside of the new range
       if (!this.isHighlight(index)) {
@@ -115,7 +115,7 @@
         this.highlight(index);
         exercise.gradeableStep();
       }
-    }
+    };
 
     // paints the background gray for indices [first, last].
     function paintGrey(array, first, last) {
@@ -154,7 +154,7 @@
         av = new JSAV($("#container")),
         code;
 
-    if (PARAMS['JXOP-code'] !== undefined) {
+    if (window.JSAV_EXERCISE_OPTIONS.code !== undefined) {
       code = config.code;
     }
 
