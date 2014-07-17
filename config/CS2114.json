@@ -443,8 +443,14 @@
         "long_name": "A Faster Computer, or a Faster Algorithm?",
         "exercises": {}
       },
-      "AlgAnal/AnalAsymptotic2": {
-        "long_name": "Asymptotic Analysis",
+      "AlgAnal/AnalAsymptotic": {
+        "long_name": "Asymptotic Analysis and Upper Bounds",
+        "sections": {
+          "thetadisc": {
+            "long_name": "theta disclaimer",
+            "showhide": "none"
+          }
+        },
         "exercises": {}
       },
       "AlgAnal/AnalProgram": {

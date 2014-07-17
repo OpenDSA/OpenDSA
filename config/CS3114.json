@@ -121,7 +121,17 @@
         "exercises": {}
       },
       "AlgAnal/AnalAsymptotic": {
-        "long_name": "Asymptotic Analysis",
+        "long_name": "Asymptotic Analysis and Upper Bounds",
+        "sections": {
+          "thetadisc": {
+            "long_name": "theta disclaimer",
+            "showhide": "remove"
+          }
+        },
+        "exercises": {}
+      },
+      "AlgAnal/AnalLower": {
+        "long_name": "Lower Bounds and Theta Notation",
         "exercises": {
           "AnalPairSumm": {
             "long_name": "Function Pairs Exercise",
@@ -136,7 +146,7 @@
         "sections": {
           "binsearchpro": {
             "long_name": "Binary Search Proficiency Exercise",
-            "showhide": "none"
+            "showhide": "remove"
           }
         },
         "exercises": {
