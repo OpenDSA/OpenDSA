@@ -28,6 +28,10 @@
  height: 420px;
 }
 
+#MultiMerge {
+ height: 375px;
+}
+
 svg{
   stroke-width: 1;
 }

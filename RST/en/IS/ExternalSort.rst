@@ -225,17 +225,6 @@ Figure :num:`Figure #ExMerge`.
 .. inlineav:: ExternalMergeSort ss
    :output: show
 
-   A simple external Mergesort algorithm.
-   Input records are divided equally between two input files.
-   The first runs from each input file are merged and placed into the
-   first output file.
-   The second runs from each input file are merged and placed in the
-   second output file.
-   Merging alternates between the two output files until the input
-   files are empty.
-   The roles of input and output files are then reversed, allowing
-   the runlength to be doubled with each pass.
-
 
 #. Split the original file into two equal-sized
    :term:`run files`.
@@ -403,8 +392,6 @@ This process is illustrated by Figure :num:`Figure #RSOver`.
    :align: justify
 
    Overview of replacement selection.
-
-   Overview of replacement selection.
    Input records are processed sequentially.
    Initially RAM is filled with :math:`M` records.
    As records are processed, they are written to an output buffer.
@@ -459,7 +446,7 @@ run.
 Once the first run is complete (i.e., the heap becomes empty), the
 array will be filled with records ready to be processed for the second
 run.
-Figure :num:`Figure #RepSel` illustrates part of a run being created
+Figure :num:`Figure #ReplacementSelection` illustrates part of a run being created
 by replacement selection.
 
 
@@ -468,25 +455,6 @@ by replacement selection.
 .. inlineav:: ExternalReplacementSelection ss
    :output: show
 
-.. _RepSel:
-
-.. odsafig:: Images/RepSel.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Replacement selection
-
-   Replacement selection example.
-   After building the heap, root value 12
-   is output and incoming value 16 replaces it.
-   Value 16 is output next, replaced with incoming value 29.
-   The heap is reordered, with 19 rising to the root.
-   Value 19 is output next.
-   Incoming value 14 is too small for this run and is placed at en
-   of the array, moving value 40 to the root.
-   Reordering the heap results in 21 rising to the root, which
-   is output next.
 
 It should be clear that the minimum length of a run will be :math:`M`
 records if the size of the heap is :math:`M`, because at least those
@@ -592,6 +560,11 @@ This value is removed from its run, and the process is repeated.
 When the current block for any run is exhausted, the next block from
 that run is read from disk.
 Figure :num:`Figure #MultiMrg` illustrates a multiway merge.
+
+.. _MultiMerge:
+
+.. inlineav:: MultiMerge ss
+   :output: show
 
 .. _MultiMrg:
 
@@ -770,3 +743,4 @@ following:
 .. odsascript:: AV/Development/externalMergeSort.js
 .. odsascript:: AV/Development/externalMergeSortExample.js
 .. odsascript:: AV/Development/externalReplacementSelection.js
+.. odsascript:: AV/Development/externalMultiMerge.js
