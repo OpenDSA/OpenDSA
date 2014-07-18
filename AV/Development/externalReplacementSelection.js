@@ -37,23 +37,26 @@ var startarray = [12, 19, 31, 25, 21, 56, 40];
   av.umsg("This is our starting heap:");
   av.displayInit();
 
+  // step 3
+  av.umsg("The root value 12 is output. The heap now waits for an input.");
+  highlight(0, outputarray);
+  t.value(0, "");
+  outputarray.value(0, 12);
+  // didn't use moveValue here because of some weird # of slides glitch
+  //av.effects.moveValue(t, 0, outputarray, 0);
+  av.step();
+
   // step 2
   av.umsg("We have an incoming value of 16.");
+  unhighlight(0, outputarray);
   highlight(0, inputarray);
   av.step();
 
-  // step 3
-  av.umsg("The root value 12 is output.");
-  highlight(0, outputarray);
-  av.effects.moveValue(t, 0, outputarray, 0);
-  av.step();
 
   // step 4
   av.umsg("16 is moved to the root.");
-  //av.effects.moveValue(inputarray, 0, t, 0);
   av.effects.moveValue(inputarray, 0, t._treenodes[0]);
   t.value(0, "16");
-  unhighlight(0, outputarray);
   unhighlight(0, inputarray);
   highlight(0, t);
   av.step();
@@ -63,24 +66,23 @@ var startarray = [12, 19, 31, 25, 21, 56, 40];
   unhighlight(0, t);
   av.step();
 
-  // step 6
-  av.umsg("Now we have an input value of 29.");
-  highlight(1, inputarray);
-  av.step();
-
   // step 7
   av.umsg("The root value 16 is output.");
   av.effects.moveValue(t, 0, outputarray, 1);
   highlight(1, outputarray);
   av.step();
 
+  // step 6
+  av.umsg("Now we have an input value of 29.");
+  highlight(1, inputarray);
+  unhighlight(1, outputarray);
+  av.step();
+
   // step 8
   av.umsg("29 is moved to the root. The value 29 is greater than 19 so we must sift down.");
   highlight(0, t);
-  // av.effects.moveValue(inputarray, 1, t, 0);
   av.effects.moveValue(inputarray, 1, t._treenodes[0]);
   t.value(0, "29");
-  unhighlight(1, outputarray);
   unhighlight(1, inputarray);
   av.step();
 
@@ -98,23 +100,23 @@ var startarray = [12, 19, 31, 25, 21, 56, 40];
   highlight(4, t);
   av.step();
  
-  // step 11
-  av.umsg("Now we have an input value of 14.");
-  unhighlight(1, t);
-  unhighlight(4, t);
-  highlight(2, inputarray);
-  av.step();
-
   // step 12
   av.umsg("The root value 19 is output.");
   av.effects.moveValue(t, 0, outputarray, 2);
+  unhighlight(1, t);
+  unhighlight(4, t);
   highlight(2, outputarray);
+  av.step();
+
+  // step 11
+  av.umsg("Now we have an input value of 14.");
+  highlight(2, inputarray);
+  unhighlight(2, outputarray);
   av.step();
 
   // step 13
   av.umsg("14 is too small for this run and is placed at the end of the array, moving 40 to the root.");
   inputarray.value(2, "");
-  unhighlight(2, outputarray);
   unhighlight(2, inputarray);
   t.swap(0, 6);
   highlight(0, t);
@@ -147,20 +149,19 @@ var startarray = [12, 19, 31, 25, 21, 56, 40];
   t.swap(1, 3);
   av.step();
 
-  
-  // step 17
-  av.umsg("Now we have an input value of 35.");
-  unhighlight(3, t);
-  unhighlight(1, t);
-  highlight(3, inputarray);
-  av.step();
-
   // step 18
   av.umsg("The root value 21 is output.");
   av.effects.moveValue(t, 0, outputarray, 3);
   highlight(3, outputarray);
-  av.step();
-  
+  unhighlight(3, t);
+  unhighlight(1, t);
+  av.step();  
+
+  // step 17
+  av.umsg("Now we have an input value of 35.");
+  highlight(3, inputarray);
+  unhighlight(3, outputarray);
+  av.step();  
   
   // step 19
   av.umsg("35 is moved to the root. 35 is greater than 25 and 31 so we must sift down.");
@@ -168,7 +169,6 @@ var startarray = [12, 19, 31, 25, 21, 56, 40];
   av.effects.moveValue(inputarray, 3, t._treenodes[0]);
   t.value(0, "35");
   unhighlight(3, inputarray);
-  unhighlight(3, outputarray);
   av.step();
 
   // step 20
@@ -185,23 +185,23 @@ var startarray = [12, 19, 31, 25, 21, 56, 40];
   highlight(4, t);
   av.step();
 
-  // step 22
-  av.umsg("Now we have an input value of 23.");
-  unhighlight(4, t);
-  unhighlight(1, t);
-  highlight(4, inputarray);
-  av.step();
-
   // step 23
   av.umsg("The root value 25 is output.");
   av.effects.moveValue(t, 0, outputarray, 4);
+  unhighlight(4, t);
+  unhighlight(1, t);
   highlight(4, outputarray);
+  av.step();
+
+  // step 22
+  av.umsg("Now we have an input value of 23.");
+  highlight(4, inputarray);
+  unhighlight(4, outputarray);
   av.step();
 
   // step 24
   av.umsg("23 is too small for this run and is placed at the end of the array, moving 56 to the root.");
   inputarray.value(4, "");
-  unhighlight(4, outputarray);
   unhighlight(4, inputarray);
   t.swap(0, 5);
   highlight(0, t);
