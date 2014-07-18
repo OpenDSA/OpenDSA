@@ -17,7 +17,7 @@
       jsav.step();
       for (i = 1; i < arr.size(); i++) { // Insert i'th record
         arr.highlightBlue(i);
-        jsav.umsg(interpret("av_c4"));
+        jsav.umsg(interpret("av_c4") + i);
         pseudo.setCurrentLine("outloop");
         jsav.step();
         jsav.umsg(interpret("av_c5"));

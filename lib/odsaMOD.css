@@ -5,8 +5,33 @@
   background-color: #FFC0CB;
 }
 .jsavcontainer {
+  background-color: #eed;
+  margin: 0 auto;
+  border: 0;
+  width: 850px;
   position: relative;
 }
+
+.jsavcontainer ul li {
+  background-image: none;
+}
+
+.jsavcontrols {
+  margin-top: -35px;
+  margin-left: 35px; /* Center on screen, despite setting button */
+
+}
+
+.jsavoutput.jsavline{
+  margin-top: -5px;
+  height: 55px;
+  width: 800px;
+}
+
+.ssAV {
+  font-size: 15px;
+}
+
 /* Hide flagged chapters fom the TOC */
 .hide-from-toc {
   display: none;

@@ -271,7 +271,6 @@ Here are some exercises to practice the traversals.
 
 .. avembed:: AV/Development/binarytree-inorder.html pe
 
-
 .. avembed:: AV/Development/binarytree-postorder.html pe
 
 .. avembed:: AV/Development/binarytree-preorder.html pe
