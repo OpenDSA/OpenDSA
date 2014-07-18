@@ -318,7 +318,7 @@ html_context = {"script_files": [
                   '%(eb2root)slib/odsaMOD-min.css',
                   '%(eb2root)slib/jquery-ui-1.8.24/themes/base/jquery.ui.all.css',
                   #'%(eb2root)slib/jquery-ui.css',
-                  '%(eb2root)sAV/slideCON.css'
+                  '%(eb2root)slib/odsaStyle.css'
                 ],
                 "odsa_root_path": "%(eb2root)s",
                 %(text_translated)s}

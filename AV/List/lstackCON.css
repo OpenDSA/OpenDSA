@@ -1,13 +1,9 @@
-.jsavcanvas{
-  height: 500px;
-}
-
 #lstackDiagramCON {
   height: 100px;
 }
 
 #lstackPushCON {
-  height: 230px;
+  height: 210px;
 }
 
 #lstackPushCON .jsavoutput.jsavline {
@@ -22,7 +18,7 @@
 }
 
 #lstackPopCON {
-  height: 280px;
+  height: 250px;
 }
 
 #lstackPopCON .jsavoutput.jsavline {
@@ -37,5 +33,5 @@
 }
 
 #lstackTwostackCON {
-  height: 120px;
+  height: 110px;
 }

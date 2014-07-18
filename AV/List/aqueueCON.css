@@ -1,40 +1,51 @@
 #aqueueFirstCON {
-  height: 280px;
+  height: 250px;
 }
+
 #aqueueFirstCON .jsavoutput.jsavline {
   height: 55px;
 }
 
 #aqueueDriftCON {
-  height: 280px;
+  height: 250px;
 }
+
 #aqueueDriftCON .jsavoutput.jsavline {
   height: 75px;
 }
+
 #aqueueBadCON {
-  height: 280px;
+  height: 250px;
 }
+
 #aqueueBadCON .jsavoutput.jsavline {
   height: 75px;
 }
+
 #aqueueCircularCON {
-  height: 420px;
+  height: 430px;
 }
+
 #aqueueCircularCON .jsavoutput.jsavline {
   height: 70px;
 }
+
 #aqueueEmptyCON {
-  height: 400px;
+  height: 380px;
 }
+
 #aqueueEmptyCON .jsavoutput.jsavline {
   height: 55px;
 }
+
 #aqueueVarCON {
-  height: 480px;
+  height: 390px;
 }
+
 #AQueueVarCON .jsavoutput.jsavline {
   height: 40px;
 }
+
 #aqueueVarCON .jsavcode{
   border: 1px solid;
   border-color: white; 

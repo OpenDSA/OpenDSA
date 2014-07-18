@@ -10,15 +10,9 @@ $(document).ready(function () {
   var length = arrPositions.length;
   var curr = 4;
 
-  //calculate left margin for the JSAV array object
-  var canvasWidth = $(".jsavcanvas").width();
-  var arrWidth3 = (length - 4) * 40;
-  var leftMargin3 = (canvasWidth - arrWidth3) / 2;
-
   //Hidden jsav array for copyValue animation
   var temp = [ "10", "|", "17" ];
   var arr1 = jsav.ds.array(temp, {indexed: false, layout: "array"}).hide();
-  arr1.css({left: 10});
 
   //jsav array object of the sildeshow
   var arr = jsav.ds.array(arrPositions, {indexed: false, layout: 'array'});

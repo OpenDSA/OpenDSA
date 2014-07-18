@@ -112,10 +112,6 @@ iframe {
   overflow: hidden;
 }
 
-.light {
-  color: rgb(215, 215, 215);
-}
-
 svg {
   stroke-width: 1;
 }
@@ -123,8 +119,4 @@ svg {
 .jsavcanvas {
  margin-left: auto;
  margin-right: auto;
-}
-
-.jsavcodeline { 
-  margin-bottom: 1px;
 }

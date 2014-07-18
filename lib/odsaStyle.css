@@ -30,13 +30,12 @@
   background-color: #ddf;
 }
 
-.jsavcode {
-  border: 1px solid;
-  border-color: white;
+.jsavnode.sorted {
+  background-color: #ffffcc;
 }
 
-.jsavcodeline.jsavhighlight {
-  background-color: #ccc !important;
+.light {
+  color: rgb(215, 215, 215);
 }
 
 .jsavnode .jsavvalue { /* Make array cell values center vertically */
@@ -57,4 +56,35 @@
 
 .jsavarray .jsavvalue { /* Make array cell values center vertically */
   height: 30px;
+}
+
+.jsavcode {
+  border: 1px solid;
+  border-color: white;
+}
+
+.jsavcodeline { 
+  margin-bottom: 1px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.jsavcodeline.jsavhighlight {
+  background-color: #ccc !important;
+}
+
+.jsavcodeline:hover {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 1px 10px;
+}
+
+.jsavbararray .jsavindex { 
+  background-color: #eee;
+}
+
+.jsavbararray.jsavindexed {
+  margin-bottom: 0;
 }

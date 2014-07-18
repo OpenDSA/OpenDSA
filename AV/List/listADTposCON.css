@@ -1,9 +1,5 @@
 #listADTposCON { 
-  height: 180px;
-}
-
-.jsavoutput.jsavline{
-  height: 30px;
+  height: 160px;
 }
 
 #listADTposCON .jsavnode {
@@ -17,4 +13,8 @@
   font-size: 20px;
   min-width: 65px;
   box-shadow: 0 0 0;
+}
+
+.jsavoutput.jsavline{
+  height: 30px;
 }

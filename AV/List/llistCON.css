@@ -31,7 +31,7 @@
 }
 
 #llistVarsCON {
-  height: 280px;
+  height: 260px;
 }
 
 #llistVarsCON .jsavoutput.jsavline {
@@ -39,7 +39,7 @@
 }
 
 #llistConsCON {
-  height: 420px;
+  height: 380px;
 }
 
 #llistConsCON .jsavoutput.jsavline {
@@ -47,7 +47,7 @@
 }
 
 #llistInsertCON {
-  height: 465px;
+  height: 440px;
 }
 
 #llistInsertCON .jsavcode{
@@ -57,7 +57,7 @@
 }
 
 #llistSpecialCON {
-  height: 310px;
+  height: 300px;
 }
 
 #llistSpecialCON .jsavcode{
@@ -66,7 +66,7 @@
 }
 
 #llistRemoveCON {
-  height: 500px;
+  height: 480px;
 }
 
 #llistRemoveCON .jsavcode{
@@ -76,7 +76,7 @@
 }
 
 #llistOtherCON {
-  height: 440px;
+  height: 420px;
 }
 
 #llistOtherCON .jsavcode{

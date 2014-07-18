@@ -158,6 +158,7 @@ nomin:
 	@cp lib/site.css lib/site-min.css
 	@cat lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
 	@cp lib/odsaMOD.css lib/odsaMOD-min.css
+	@cp lib/odsaStyle.css lib/odsaStyle-min.css
 	@cp lib/gradebook.css lib/gradebook-min.css
 
 pull:

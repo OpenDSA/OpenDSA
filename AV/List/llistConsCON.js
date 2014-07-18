@@ -30,13 +30,7 @@ $(document).ready(function () {
   // Slide 4
   pseudo.unhighlight("optsize");
   pseudo.unhighlight("default");
-
-  pseudo.highlight([1, 2, 3, 4, 5]);
-  //  pseudo.highlight("c1");
-  //  pseudo.highlight("c2");
-  //  pseudo.highlight("c3");
-  //  pseudo.highlight("c4");
-  //  pseudo.highlight("c5");
+  pseudo.highlight("clear");
   av.umsg(interpret("av_c4"));
   av.step();
 
