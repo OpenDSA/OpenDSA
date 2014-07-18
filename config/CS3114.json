@@ -125,8 +125,8 @@
         "sections": {
           "thetadisc": {
             "long_name": "theta disclaimer",
-            "showhide": "show",
-			"remove": true
+            "showhide": "none",
+            "remove": true
           }
         },
         "exercises": {}
@@ -147,8 +147,8 @@
         "sections": {
           "binsearchpro": {
             "long_name": "Binary Search Proficiency Exercise",
-            "showhide": "hide",
-			"remove": true
+            "showhide": "none",
+            "remove": true
           }
         },
         "exercises": {

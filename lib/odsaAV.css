@@ -147,3 +147,6 @@ form {
 .jsavnode.processing {
   background-color: #ddf;
 }
+.jsavcodeline { 
+  margin-bottom: 1px;
+}
