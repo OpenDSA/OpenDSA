@@ -17,35 +17,31 @@ $(document).ready(function () {
 
   // Slide 2
   av.umsg(interpret("av_c2"));
-  pseudo.highlight("sig");
+  pseudo.setCurrentLine("sig");
   av.step();
 
   // Slide 3
-  pseudo.unhighlight("sig");
-  pseudo.highlight("head");
+  pseudo.setCurrentLine("head");
   av.umsg(interpret("av_c3"));
   av.step();
 
   // Slide 4
-  pseudo.unhighlight("head");
-  pseudo.highlight("tail");
+  pseudo.setCurrentLine("tail");
   av.umsg(interpret("av_c4"));
   av.step();
 
   // Slide 5
-  pseudo.unhighlight("tail");
-  pseudo.highlight("curr");
+  pseudo.setCurrentLine("curr");
   av.umsg(interpret("av_c5"));
   av.step();
 
   // Slide 6
-  pseudo.unhighlight("curr");
-  pseudo.highlight("listSize");
+  pseudo.setCurrentLine("listSize");
   av.umsg(interpret("av_c6"));
   av.step();
 
   // Slide 7
-  pseudo.unhighlight("listSize");
+  pseudo.setCurrentLine(0);
   av.umsg(interpret("av_c7"));
   av.recorded();
 });

@@ -48,7 +48,7 @@ $(document).ready(function () {
   arr.highlight([1]);
   label.show();
   arrow1.show();
-  pseudo.highlight("sig");
+  pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Slide 2
@@ -57,8 +57,7 @@ $(document).ready(function () {
   av.effects.copyValue(arr, 1, arrIt, 0);
   arr.value(1, "");
   arr.unhighlight([1]);
-  pseudo.unhighlight("sig");
-  pseudo.highlight("copy");
+  pseudo.setCurrentLine("copy");
   av.umsg(interpret("av_c2"));
   av.step();
 
@@ -71,17 +70,16 @@ $(document).ready(function () {
   arr.value(itemsSize - 1, "");
   arrow2.show();
   arr.unhighlight([1]);
-  pseudo.unhighlight("copy");
-  pseudo.highlight("for");
+  pseudo.setCurrentLine("for");
   pseudo.highlight("forbody");
   arr.highlight([1, 2, 3]);
   av.umsg(interpret("av_c3"));
   av.step();
 
   // Slide 4
-  pseudo.unhighlight("for");
+  pseudo.setCurrentLine(0);   // Hack until we get multiline set method
   pseudo.unhighlight("forbody");
-  pseudo.highlight("dec");
+  pseudo.setCurrentLine("dec");
   arr.unhighlight([1, 2, 3]);
   arr.removeClass([itemsSize - 1], "not-in-list");
   av.umsg(interpret("av_c4"));
@@ -91,13 +89,12 @@ $(document).ready(function () {
   // Slide 5
   arrIt.highlight([0]);
   arr.addClass([4], "not-in-list");
-  pseudo.unhighlight("dec");
-  pseudo.highlight("return");
+  pseudo.setCurrentLine("return");
   av.umsg(interpret("av_c5"));
   av.step();
 
   // Slide 6
-  pseudo.unhighlight("return");
+  pseudo.setCurrentLine(0);
   av.umsg(interpret("av_c6"));
   av.recorded();  //
 });

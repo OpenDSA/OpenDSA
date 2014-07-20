@@ -13,13 +13,12 @@ $(document).ready(function () {
 
   // Slide 1
   av.umsg(interpret("av_c1"));
-  pseudo.highlight("comment");
+  pseudo.setCurrentLine("comment");
   av.displayInit();
 
   // Slide 2
   av.umsg(interpret("av_c2"));
-  pseudo.unhighlight("comment");
-  pseudo.highlight("optsize");
+  pseudo.setCurrentLine("optsize");
   av.step();
 
   // Slide 3
@@ -28,13 +27,14 @@ $(document).ready(function () {
   av.step();
 
   // Slide 4
-  pseudo.unhighlight("optsize");
+  pseudo.setCurrentLine(0);   // Hack due to no multi-line set
   pseudo.unhighlight("default");
   pseudo.highlight("clear");
   av.umsg(interpret("av_c4"));
   av.step();
 
   // Slide 5
+  pseudo.unhighlight("clear");
   av.umsg(interpret("av_c5"));
   av.recorded();
 });

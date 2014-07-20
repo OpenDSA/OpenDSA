@@ -36,7 +36,7 @@ Here is a visual representation for the linked stack.
 Now, let's look at how ``push`` and ``pop`` work in the linked stack implementation.
 
 .. inlineav:: lstackPushCON ss
-   :output: show   
+   :output: show
    
 .. inlineav:: lstackPopCON ss
    :output: show

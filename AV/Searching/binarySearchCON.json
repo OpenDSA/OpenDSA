@@ -21,10 +21,12 @@
       "lineNumbers": false,
       "tags": {
         "sig": 3,
+        "while": 6,
         "compute": 7,
-        "right": 8,
+        "left": 8,
 	"found": 9,
-        "left": 10
+        "right": 10,
+        "return": 12
       }
     }
   }

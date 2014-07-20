@@ -49,15 +49,14 @@ $(document).ready(function () {
   l.get(4).unhighlight();
   pseudo_next.hide();
   pseudo_prev.show();
-  pseudo_prev.highlight("sig");
+  pseudo_prev.setCurrentLine("sig");
   av.umsg(interpret("av_c4"));
   av.step();
 
   // Slide 5
   pseudo_next.hide();
   pseudo_prev.show();
-  pseudo_prev.unhighlight("sig");
-  pseudo_prev.highlight("while");
+  pseudo_prev.setCurrentLine("while");
   l.get(0).highlight();
   l.get(1).highlight();
   l.get(2).highlight();
@@ -77,8 +76,7 @@ $(document).ready(function () {
   temp.hide();
   curr.show();
   nextCurr.hide();
-  pseudo_prev.unhighlight("while");
-  pseudo_prev.highlight("curr");
+  pseudo_prev.setCurrentLine("curr");
   av.umsg(interpret("av_c7"));
   av.step();
 
@@ -86,7 +84,7 @@ $(document).ready(function () {
   l.get(3).unhighlight();
   pseudo_prev.hide();
   pseudo_pos.show();
-  pseudo_pos.highlight("sig");
+  pseudo_pos.setCurrentLine("sig");
   av.umsg(interpret("av_c8"));
   av.step();
 
@@ -97,8 +95,7 @@ $(document).ready(function () {
   l.get(4).highlight();
   curr.hide();
   nextCurr.show();
-  pseudo_pos.unhighlight("sig");
-  pseudo_pos.highlight("for");
+  pseudo_pos.setCurrentLine("for");
   av.umsg(interpret("av_c9"));
   av.step();
 
@@ -107,6 +104,7 @@ $(document).ready(function () {
   l.get(2).unhighlight();
   l.get(3).unhighlight();
   l.get(4).unhighlight();
+  pseudo_pos.setCurrentLine(0);
   av.umsg(interpret("av_c10"));
   av.recorded();
 });

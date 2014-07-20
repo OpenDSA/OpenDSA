@@ -120,13 +120,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "llistInitCON": { },
           "llistBadDelCON": {
             "long_name": "Linked List Slideshow 2",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
+          "llistInitCON": { },
           "llistHeaderCON": { },
           "llistVarsCON": {
             "long_name": "Linked List Variables Slideshow",
@@ -271,7 +271,7 @@
       "List/StackLinked": {
         "long_name": "Linked Stacks",
         "exercises": {
-          "lstackDiagramCON": {},
+          "lstackDiagramCON": { },
           "lstackPushCON": {
             "long_name": "Linked stack push",
             "required": true,

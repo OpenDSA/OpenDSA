@@ -55,7 +55,7 @@ $(document).ready(function () {
   arrow1.show();
   label.show();
   av.umsg(interpret("av_c2"));
-  pseudo.highlight("sig");
+  pseudo.setCurrentLine("sig");
   arrMS.show();
   labelMaxSize.show();
   arrLS.show();
@@ -75,8 +75,7 @@ $(document).ready(function () {
   arrow1.hide();
   arrow2.show();
   label.hide();
-  pseudo.unhighlight("sig");
-  pseudo.highlight("for");
+  pseudo.setCurrentLine("for");
   pseudo.highlight("forbody");
   av.umsg(interpret("av_c3"));
   av.step();
@@ -85,15 +84,14 @@ $(document).ready(function () {
   arr.value(0, 23);
   arr.highlight([0]);
   arrow2.hide();
-  pseudo.unhighlight("for");
+  pseudo.setCurrentLine(0);      // Hack until we get multi-line method
   pseudo.unhighlight("forbody");
-  pseudo.highlight("insert");
+  pseudo.setCurrentLine("insert");
   av.umsg(interpret("av_c4"));
   av.step();
 
   // Slide 5
-  pseudo.unhighlight("insert");
-  pseudo.highlight("incr");
+  pseudo.setCurrentLine("incr");
   arr.unhighlight([0]);
   arrLS.highlight(0);
   arrLS.value(0, 6);
@@ -101,7 +99,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 6
-  pseudo.unhighlight("incr");
+  pseudo.setCurrentLine(0);
   av.umsg(interpret("av_c6"));
   av.recorded();
 });
