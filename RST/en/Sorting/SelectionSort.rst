@@ -62,51 +62,55 @@ Now try for yourself to see if you understand how Selection Sort works.
 
 .. avembed:: Exercises/Sorting/SelsortPRO.html ka
 
-Any algorithm can be written in slightly different ways.
-For example, we could have written Selection Sort to find the smallest
-record, the next smallest, and so on.
-We wrote this version of Selection Sort to mimic the behavior of our
-Bubble Sort implementation as closely as possible.
-This shows that Selection Sort is essentially a Bubble Sort
-except that rather than repeatedly swapping adjacent values to get
-the next-largest record into place, we instead remember the position
-of the record to be selected and do one swap at the end.
-Thus, the number of comparisons is still
-:math:`\Theta(n^2)`,
-but the number of swaps is much less than that required by Bubble Sort.
-Selection Sort is particularly advantageous when the cost to do a swap
-is high, for example, when the record values are long strings or other
-large records.
-Selection Sort is more efficient than Bubble Sort (by a constant
-factor) in most other situations as well.
+Now Selection Sort's running time analysis is presented.
 
-There is another approach to keeping the cost of swapping records low,
-and it can be used by any sorting algorithm even when the records are
-large.
-This is to have each element of the array store a pointer to a record
-rather than store the record itself.
-In this implementation, a swap operation need only exchange the
-pointer values.
-The large records do not need to move.
-This technique is illustrated by Figure :num:`Figure #PointerSwap`.
-Additional space is needed to store the pointers, but the
-return is a faster swap operation.
+.. showhidecontent:: SelectionSortAnalysis
 
-.. _PointerSwap:
+   Any algorithm can be written in slightly different ways.
+   For example, we could have written Selection Sort to find the smallest
+   record, the next smallest, and so on.
+   We wrote this version of Selection Sort to mimic the behavior of our
+   Bubble Sort implementation as closely as possible.
+   This shows that Selection Sort is essentially a Bubble Sort
+   except that rather than repeatedly swapping adjacent values to get
+   the next-largest record into place, we instead remember the position
+   of the record to be selected and do one swap at the end.
+   Thus, the number of comparisons is still
+   :math:`\Theta(n^2)`,
+   but the number of swaps is much less than that required by Bubble Sort.
+   Selection Sort is particularly advantageous when the cost to do a swap
+   is high, for example, when the record values are long strings or other
+   large records.
+   Selection Sort is more efficient than Bubble Sort (by a constant
+   factor) in most other situations as well.
 
-.. odsafig:: Images/PtrSwap.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Swapping pointers to records
+   There is another approach to keeping the cost of swapping records low,
+   and it can be used by any sorting algorithm even when the records are
+   large.
+   This is to have each element of the array store a pointer to a record
+   rather than store the record itself.
+   In this implementation, a swap operation need only exchange the
+   pointer values.
+   The large records do not need to move.
+   This technique is illustrated by Figure :num:`Figure #PointerSwap`.
+   Additional space is needed to store the pointers, but the
+   return is a faster swap operation.
 
-   An example of swapping pointers to records.
-   (a) A series of four records.
-   The record with key value 42 comes before the record with key value 5.
-   (b) The four records after the top two pointers have been swapped.
-   Now the record with key value 5 comes before the record with key
-   value 42.
+   .. _PointerSwap:
+
+   .. odsafig:: Images/PtrSwap.png
+      :width: 300
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: Swapping pointers to records
+
+      An example of swapping pointers to records.
+      (a) A series of four records.
+      The record with key value 42 comes before the record with key value 5.
+      (b) The four records after the top two pointers have been swapped.
+      Now the record with key value 5 comes before the record with key
+      value 42.
 
 .. TODO::
    :type: Figure

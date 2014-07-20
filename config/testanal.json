@@ -8,42 +8,11 @@
   "backend_address": "",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
-  "suppress_todo": false,
+  "suppress_todo": true,
   "glob_exer_options": {
   "JXOP-debug": "true"
   },
   "chapters": {
-    "Algorithm Analysis": {
-      "AlgAnal/AnalProgram": {
-        "long_name": "Calculating the Running Time of a Program",
-        "sections": {
-          "binsearchpro": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "showhide": "hide"
-          }
-        },
-        "exercises": {
-          "binarySearchCON": {
-            "long_name": "Binary Search Algorithm Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "binarySearchPRO": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "AnalProgramSumm": {
-            "long_name": "Program Code Analysis Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      }
-	},
     "Sorting": {
       "SortingAnal/InSort": {
         "long_name": "Chapter Introduction: Sorting",
@@ -62,13 +31,6 @@
       },
       "SortingAnal/InsertionSort": {
         "long_name": "Insertion Sort",
-        "sections": {
-          "InsertionSortAnalysis": {
-            "long_name": "Insertion Sort Analysis",
-            "showhide": "hide",
-            "remove": false
-          }
-        },
         "exercises" : {
           "InssortCON1": {
             "long_name": "Insertion Sort Slideshow 1",
