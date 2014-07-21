@@ -364,7 +364,7 @@ class ODSA_RST_Module:
           parse_term_relationship(term_rel, term, line_num, cmap_dict, console_msg_prefix = '')
           i-= 1
 
-        elif line.startswith('.. todo::'):
+        elif line.startswith('.. todo::') or line.startswith('.. TODO::'):
           if config.suppress_todo:
             # Remove TODO directives from the RST file
             mod_data[i] = ''
