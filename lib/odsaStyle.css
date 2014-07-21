@@ -46,10 +46,12 @@
 
 .jsavcodeline:first-child {
   border-top: 1px solid #fff;
+  padding-top: 1px;
 }
 
 .jsavcodeline:last-child {
   border-bottom: 1px solid #fff;
+  padding-bottom: 1px;
 }
 
 .jsavcodeline.jsavhighlight {
