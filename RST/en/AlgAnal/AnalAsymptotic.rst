@@ -215,7 +215,8 @@ There is no strict equality to the use of big-Oh notation.
    In some of the following material, you will see use of the symbol
    :math:`\Theta`, such as :math:`\Theta(n)`.
    While they are technically somewhat different, you may interpret use
-   of :math:`\Theta` in :math:`\Theta(n)` the same as :math:`O(n)`.
+   of :math:`\Theta` in :math:`\Theta(n)` to have the same meaning as
+   :math:`O(n)`.
 
 Simplifying Rules
 -----------------

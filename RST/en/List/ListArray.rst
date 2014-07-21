@@ -13,7 +13,6 @@
 .. odsalink:: AV/List/alistInsertCON.css
 .. odsalink:: AV/List/alistAppendCON.css
 .. odsalink:: AV/List/alistRemoveCON.css
-.. odsalink:: AV/List/alistCON.css
 
 Array-Based List Implementation
 ===============================

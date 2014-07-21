@@ -43,7 +43,7 @@ $(document).ready(function () {
   labelIt.hide();
 
   // Slide 1
-  arr.addClass([5, 6, 7], "not-in-list");
+  arr.addClass([5, 6, 7], "greybg");
   av.umsg(interpret("av_c1"));
   arr.highlight([1]);
   label.show();
@@ -81,14 +81,14 @@ $(document).ready(function () {
   pseudo.unhighlight("forbody");
   pseudo.setCurrentLine("dec");
   arr.unhighlight([1, 2, 3]);
-  arr.removeClass([itemsSize - 1], "not-in-list");
+  arr.removeClass([itemsSize - 1], "greybg");
   av.umsg(interpret("av_c4"));
   arrow2.hide();
   av.step();
 
   // Slide 5
   arrIt.highlight([0]);
-  arr.addClass([4], "not-in-list");
+  arr.addClass([4], "greybg");
   pseudo.setCurrentLine("return");
   av.umsg(interpret("av_c5"));
   av.step();

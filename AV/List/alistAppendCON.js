@@ -32,7 +32,7 @@ $(document).ready(function () {
                                             left: 42, top: 109});
 
   // Slide 1
-  arr.addClass([5, 6, 7], "not-in-list");
+  arr.addClass([5, 6, 7], "greybg");
   av.umsg(interpret("av_c1"));
   av.displayInit();
 
@@ -66,7 +66,7 @@ $(document).ready(function () {
   // Slide 5
   av.umsg(interpret("av_c5"));
   arr.unhighlight(5);
-  arr.removeClass([5], "not-in-list");
+  arr.removeClass([5], "greybg");
   arrLS.unhighlight(0);
   pseudo.setCurrentLine(0);
   av.recorded();
