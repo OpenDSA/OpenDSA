@@ -24,10 +24,10 @@ sorts that are commonly known.
 It is not particularly intutitive --
 nobody is going to come naturally to Bubble Sort as a way to sort
 their Bridge hand or their pile of bills like they might with
-Insertion Sort or Selection Sort.
-However, Bubble Sort can serve as the inspiration for a better sorting
-algorithm that will be presented in
-Module :numref:`Selection Sort <SelectionSort>`.
+:ref:`Insertion Sort <insertion sort> <InsertionSort>` or
+:ref:`Selection Sort <selection sort> <SelectionSort>`.
+However, Bubble Sort can viewed as a close relative of
+Selection Sort.
 
 Like Insertion Sort, Bubble Sort consists of a simple double ``for``
 loop.

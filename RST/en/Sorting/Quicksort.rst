@@ -275,9 +275,9 @@ following equation:
    {\bf T}(n - 1 - k)],
    \quad {\bf T}(0) = {\bf T}(1) = c.
 
-This equation is in the form of a recurrence relation.
-Recurrence relations are discussed in Module :numref:`<Recurrence>`.
-This equation says that there is one chance in :math:`n` that the
+This equation is in the form of a
+:ref:`recurrence relation <recurrence relation> <Recurrence>`.
+The equation says that there is one chance in :math:`n` that the
 pivot breaks the array into subarrays of size 0 and :math:`n-1`,
 one chance in :math:`n` that the pivot breaks the array into
 subarrays of size 1 and :math:`n-2`, and so on.

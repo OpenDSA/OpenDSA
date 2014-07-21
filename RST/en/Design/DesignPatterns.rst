@@ -80,14 +80,14 @@ For example, each instance for "C" will contain a reference to the
 shared information about strokes and shapes, and it might also contain
 the exact location for that instance of the character on the page.
 
-Flyweights are used in the implementation for the PR quadtree data
-structure for storing collections of point objects, described in
-Module :numref:`<Spatial>`.
-In a PR quadtree, we again have a tree with leaf nodes.
-Many of these leaf nodes represent empty areas, and so the only
-information that they store is the fact that they are empty.
+Flyweights are used in the implementation for the
+:ref:`PR quadtree <PR quadtree> <Spatial>`
+for storing collections of point objects.
+In a PR quadtree, many of the :term:`leaf nodes <leaf node>` represent
+empty areas, and the only information that they store is the fact that
+they are empty.
 These identical nodes can be implemented using a reference to a single
-instance of the flyweight for better memory efficiency.
+instance of the flyweight to reduce memory costs.
 
 Visitor
 -------

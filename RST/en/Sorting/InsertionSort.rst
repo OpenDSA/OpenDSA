@@ -36,14 +36,17 @@ The input is an array named ``A`` that stores :math:`n` records.
    :tag: Insertionsort
 
 (Note that to make the explanation for these sorting algorithms as
-simple as possible, we will usually assume that our input is an
-integer array rather than an array of more complex records.
+simple as possible, our visualizations will show the array as though
+it stored simple integers rather than more complex records.
 But you should realize that in practice, there is rarely any point
 to sorting an array of simple integers.
 Nearly always we want to sort more complex records that each have a
 :term:`key` value.
-Module :numref:`<Comparison>` discusses ways to associate a key value
-with a record.)
+In such cases we must :ref:`have a way <comparable> <Comparison>` to
+associate a key value with a record.
+The sorting algorithms will simply assume that the records are
+:term:`comparable`.
+)
 
 Here is the start to the Insertion Sort process.
 
