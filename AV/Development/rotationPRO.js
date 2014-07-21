@@ -259,11 +259,13 @@
   }
 
   // JSAV undoable functions for enabling and disabling jQuery buttons
-  av.enableButton = JSAV.anim(
+  var enableButton = JSAV.utils.getUndoableFunction(
+    av,
     function (button) { button.attr("disabled", false); },
     function (button) { button.attr("disabled", true); }
   );
-  av.disableButton = JSAV.anim(
+  var disableButton = JSAV.utils.getUndoableFunction(
+    av,
     function (button) { button.attr("disabled", true); },
     function (button) { button.attr("disabled", false); }
   );
@@ -317,10 +319,10 @@
     }
     tree.layout();
     exercise.gradeableStep();
-    av.disableButton($layoutButton);
+    disableButton($layoutButton);
     // don't enable the grade button if the user has checked the model answer
     if (!hasCheckedModelAnswer) {
-      av.enableButton($gradeButton);
+      enableButton($gradeButton);
     }
   });
   $nullButton.click(function () {
