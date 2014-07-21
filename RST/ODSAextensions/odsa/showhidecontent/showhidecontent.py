@@ -98,7 +98,7 @@ class showhidecontent(Directive):
      #Set the content to display by default
     display = 'block'
 
-    if self.options['showhide'] == 'hide':
+    if 'showhide' in self.options and self.options['showhide'] == 'hide':
       display = 'none'
 
 
@@ -121,10 +121,10 @@ class showhidecontent(Directive):
 
     super_node = containersection()
     super_node += anchor_node
-    if self.options['showhide'] == 'show':
+    if 'showhide' in self.options and self.options['showhide'] == 'show':
       button_node.attributes['value'] = '%s %s' %( langDict['hide'], button_text)
       super_node += button_node
-    if self.options['showhide'] == 'hide':
+    if 'showhide' in self.options and self.options['showhide'] == 'hide':
       button_node.attributes['value'] = '%s %s' %( langDict['show'], button_text)
       super_node += button_node    
     

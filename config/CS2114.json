@@ -433,6 +433,12 @@
     "Algorithm Analysis": {
       "AlgAnal/AnalIntro": {
         "long_name": "Comparing Algorithms",
+        "sections": {
+          "test": {
+            "long_name": "theta disclaimer",
+            "showhide": "none"
+          }
+        },
         "exercises": {}
       },
       "AlgAnal/AnalCases": {
@@ -708,6 +714,12 @@
       },
       "Sorting/SelectionSort": {
         "long_name": "Selection Sort",
+        "sections": {
+          "SelectionSortAnalysis": {
+            "long_name": "Selection Sort Analysis",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "SelsortCON1": {
             "long_name": "Selection Sort Slideshow 1",
