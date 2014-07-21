@@ -90,9 +90,11 @@ Here is an implementation for Insertion Sort using this optimization.
 .. codeinclude:: Sorting/Insertionsort
    :tag: InsertionOpt
 
-Now, you can test whether you understand how this works.
+.. showhide:: inssortnoswap
 
-.. avembed:: AV/Development/insertionSortWithoutSwapPRO.html pe
+   Now, you can test whether you understand how this works.
+
+   .. avembed:: AV/Development/insertionSortWithoutSwapPRO.html pe
 
 The programming language that you use can have a big influence on the
 runtime for a program.

@@ -49,7 +49,7 @@ $(document).ready(function () {
   // Slide 1
   av.umsg(interpret("av_c1"));
   itBox.highlight(0);
-  pseudo.highlight("sig");
+  pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Slide 2
@@ -58,8 +58,7 @@ $(document).ready(function () {
   newNode.css({top: 60, left: 222});
   newNode.highlight();
   av.umsg(interpret("av_c2"));
-  pseudo.unhighlight("sig");
-  pseudo.highlight("setnext");
+  pseudo.setCurrentLine("setnext");
   av.step();
 
   // Slide 3
@@ -88,8 +87,7 @@ $(document).ready(function () {
   av.effects.copyValue(itBox, 0, l.get(2));
   itBox.unhighlight(0);
   av.umsg(interpret("av_c6"));
-  pseudo.unhighlight("setnext");
-  pseudo.highlight("setelem");
+  pseudo.setCurrentLine("setelem");
   av.step();
 
   // Slide 7
@@ -101,20 +99,19 @@ $(document).ready(function () {
   l.get(2).unhighlight();
   l.get(3).highlight();
   av.umsg(interpret("av_c7"));
-  pseudo.unhighlight("setelem");
-  pseudo.highlight("tail");
+  pseudo.setCurrentLine("tail");
   av.step();
 
   // Slide 8
   l.get(3).unhighlight();
   av.umsg(interpret("av_c8"));
-  pseudo.unhighlight("tail");
-  pseudo.highlight("listSize");
+  pseudo.setCurrentLine("listSize");
   av.step();
 
   // Slide 9
-  pseudo.unhighlight("listSize");
-  pseudo.highlight("sig");
+  // Reset the list for the next example
+  pseudo.setCurrentLine(0);
+  pseudo.setCurrentLine("sig");
   av.umsg(interpret("av_c9"));
   l.removeFirst();
   l.removeFirst();
@@ -139,8 +136,7 @@ $(document).ready(function () {
   newNode2.css({top: 60, left: 148});
   newNode2.highlight();
   av.umsg(interpret("av_c10"));
-  pseudo.unhighlight("sig");
-  pseudo.highlight("setnext");
+  pseudo.setCurrentLine("setnext");
   av.step();
 
   // Slide 11
@@ -169,8 +165,7 @@ $(document).ready(function () {
   av.effects.copyValue(itBox, 0, l.get(1));
   itBox.unhighlight(0);
   av.umsg(interpret("av_c14"));
-  pseudo.unhighlight("setnext");
-  pseudo.highlight("setelem");
+  pseudo.setCurrentLine("setelem");
   av.step();
 
   // Slide 15
@@ -186,14 +181,12 @@ $(document).ready(function () {
   l.get(1).unhighlight();
   l.get(2).highlight();
   av.umsg(interpret("av_c15"));
-  pseudo.unhighlight("setelem");
-  pseudo.highlight("tail");
+  pseudo.setCurrentLine("tail");
   av.step();
 
   //step 16
   l.get(2).unhighlight();
   av.umsg(interpret("av_c16"));
-  pseudo.unhighlight("tail");
-  pseudo.highlight("listSize");
+  pseudo.setCurrentLine("listSize");
   av.recorded();
 });

@@ -1,30 +1,3 @@
-.jsavcontainer {
-  background-color: #eed;
-  margin: 0 auto;
-  border: 0;
-  width: 850px;
-}
-
-.jsavcontainer ul li {
-  background-image: none;
-}
-
-.jsavcontrols {
-  margin-top: -35px;
-  margin-left: 35px; /* Center on screen, despite setting button */
-
-}
-
-.jsavoutput.jsavline{
-  margin-top: -5px;
-  height: 55px;
-  width: 800px;
-}
-
-.ssAV {
-  font-size: 15px;
-}
-
 /* CSS class to mark that a JSAV item is currently processed by the algorithm */
 .processing {
   background-color: #ddf;
@@ -58,15 +31,27 @@
   height: 30px;
 }
 
-.jsavcode {
-  border: 1px solid;
-  border-color: white;
-}
-
 .jsavcodeline { 
   margin-bottom: 1px;
   font-size: 14px;
   line-height: 16px;
+}
+
+/* Put a white border around the code block. Do it this way to
+   keep from putting border around the line numbers. */
+.jsavcodeline {
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+.jsavcodeline:first-child {
+  border-top: 1px solid #fff;
+  padding-top: 1px;
+}
+
+.jsavcodeline:last-child {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 1px;
 }
 
 .jsavcodeline.jsavhighlight {

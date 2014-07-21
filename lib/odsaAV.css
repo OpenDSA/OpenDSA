@@ -104,10 +104,9 @@ form {
 
 /* Style for the container holding proficiency exercise instructions */
 .instructions {
-  margin-top: -15px;
-  margin-right: 20px;
   padding: 10px;
   border: 1px solid black;
+  margin-top: -15px;
 }
 
 /* Style for the div containing the entire AV or exercise */

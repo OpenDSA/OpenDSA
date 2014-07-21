@@ -53,7 +53,7 @@ $(document).ready(function () {
 
   // Slide 1
   av.umsg(interpret("av_c1"));
-  pseudo.highlight("sig");
+  pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Slide 2
@@ -70,8 +70,7 @@ $(document).ready(function () {
   l.get(2).unhighlight();
   arr.highlight(0);
   av.umsg(interpret("av_c3"));
-  pseudo.unhighlight("sig");
-  pseudo.highlight("remember");
+  pseudo.setCurrentLine("remember");
   av.step();
 
   // Slide 4
@@ -79,8 +78,7 @@ $(document).ready(function () {
   l.get(2).highlight();
   arr.unhighlight(0);
   av.umsg(interpret("av_c4"));
-  pseudo.unhighlight("remember");
-  pseudo.highlight("setelem");
+  pseudo.setCurrentLine("setelem");
   av.step();
 
   // Slide 5
@@ -89,8 +87,7 @@ $(document).ready(function () {
   dashline.show();
   l.get(4).highlight();
   av.umsg(interpret("av_c5"));
-  pseudo.unhighlight("setelem");
-  pseudo.highlight("setnext");
+  pseudo.setCurrentLine("setnext");
   av.step();
 
   // Slide 6
@@ -103,14 +100,12 @@ $(document).ready(function () {
   l.get(2).unhighlight();
   l.get(3).unhighlight();
   av.umsg(interpret("av_c6"));
-  pseudo.unhighlight("setnext");
-  pseudo.highlight("listSize");
+  pseudo.setCurrentLine("listSize");
   av.step();
 
   // Slide 7
   arr.highlight();
   av.umsg(interpret("av_c7"));
-  pseudo.unhighlight("listSize");
-  pseudo.highlight("return");
+  pseudo.setCurrentLine("return");
   av.recorded();
 });

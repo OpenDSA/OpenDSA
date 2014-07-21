@@ -24,20 +24,18 @@ $(document).ready(function () {
 
   // Slide 1
   av.umsg(interpret("av_c1"));
-  pseudo.highlight("sig");
+  pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Slide 2
   av.umsg(interpret("av_c2"));
   topPointer.show();
   arr.highlight(4);
-  pseudo.unhighlight("sig");
-  pseudo.highlight("full");
+  pseudo.setCurrentLine("full");
   av.step();
 
   // Slide 3
-  pseudo.unhighlight("full");
-  pseudo.highlight("copy");
+  pseudo.setCurrentLine("copy");
   av.umsg(interpret("av_c3"));
   av.effects.copyValue(arrCopy, 0, arr, 4);
   av.step();

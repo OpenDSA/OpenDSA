@@ -12,19 +12,17 @@ $(document).ready(function () {
   var pseudo = av.code(code);
 
   // Slide 1
-  pseudo.highlight("sig");
+  pseudo.setCurrentLine("sig");
   av.umsg(interpret("av_c1"));
   av.displayInit();
 
   // Slide 2
-  pseudo.unhighlight("sig");
-  pseudo.highlight("constructor");
+  pseudo.setCurrentLine("constructor");
   av.umsg(interpret("av_c2"));
   av.step();
   
-  // Slide 2
-  pseudo.unhighlight("constructor");
-  pseudo.highlight("top");
+  // Slide 3
+  pseudo.setCurrentLine("top");
   av.umsg(interpret("av_c3"));
   av.recorded();
 });

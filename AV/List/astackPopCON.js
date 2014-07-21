@@ -27,13 +27,12 @@ $(document).ready(function () {
   // Slide 1
   av.umsg(interpret("av_c1"));
   arr.highlight(4);
-  pseudo.highlight("sig");
+  pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Slide 2
   av.umsg(interpret("av_c2"));
-  pseudo.unhighlight("sig");
-  pseudo.highlight("empty");
+  pseudo.setCurrentLine("empty");
   av.step();
 
   // Slide 3
@@ -41,8 +40,7 @@ $(document).ready(function () {
   arr.unhighlight(4);
   arr.highlight(3);
   topPointer.target(arr, {targetIndex : 3});
-  pseudo.unhighlight("empty");
-  pseudo.highlight("return");
+  pseudo.setCurrentLine("return");
   av.step();
 
   // Slide 4

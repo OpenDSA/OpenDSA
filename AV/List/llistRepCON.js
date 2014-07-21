@@ -7,4 +7,5 @@ $(document).ready(function () {
   l.addFirst("").addFirst("").addFirst("");
   l.get(2).addTail({ left: 477 });
   l.layout();
+  av.recorded();
 });

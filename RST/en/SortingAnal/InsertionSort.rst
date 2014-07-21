@@ -88,15 +88,6 @@ The following visualization illustrates the worst case running time analysis of 
 .. inlineav:: InsertionSortWorstCaseCON ss
    :output: show
 
-Testing the new directive here!
-
-.. showhidecontent:: InsertionSortAnalysis
-
-   This is the content of the directive to be tested.
-   It is required that this content can be shown/hidden.
-
-Done testing!
-
 .. TODO::
    :type: Review the Worst case analysis discussion
 

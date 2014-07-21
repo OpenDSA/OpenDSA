@@ -80,116 +80,117 @@ Now try for yourself to see if you understand how Insertion Sort works.
 
 .. avembed:: Exercises/Sorting/InssortPRO.html ka
 
-Insertion Sort Analysis
------------------------
+Now we move to the discussion of Insertion Sort analysis.
 
-The body of ``inssort`` consists of two nested
-``for`` loops.
-The outer ``for`` loop is executed :math:`n-1` times.
-The inner ``for`` loop is harder to analyze because the
-number of times it executes depends on how many records in positions
-0 to :math:`i-1` have a value less than that of the record in
-position :math:`i`.
-In the worst case, each record must make its way to the start of the
-array.
-This would occur if the records are initially arranged from highest to
-lowest, in the reverse of sorted order.
-In this case, the number of comparisons will be one the first time
-through the ``for`` loop, two the second time, and so on.
-Thus, the total number of comparisons will be
+.. showhidecontent:: InsertionSortAnalysis
 
-.. math::
-   \sum_{i=1}^{n-1} i = \frac{n(n-1)}{2} \approx n^2/2 = \Theta(n^2).
+   The body of ``inssort`` consists of two nested
+   ``for`` loops.
+   The outer ``for`` loop is executed :math:`n-1` times.
+   The inner ``for`` loop is harder to analyze because the
+   number of times it executes depends on how many records in positions
+   0 to :math:`i-1` have a value less than that of the record in
+   position :math:`i`.
+   In the worst case, each record must make its way to the start of the
+   array.
+   This would occur if the records are initially arranged from highest to
+   lowest, in the reverse of sorted order.
+   In this case, the number of comparisons will be one the first time
+   through the ``for`` loop, two the second time, and so on.
+   Thus, the total number of comparisons will be
 
-In contrast, consider the best-case cost.
-This occurs when the values occur in sorted order from lowest to
-highest.
-In this case, every test on the inner ``for`` loop will
-fail immediately, and no records will be moved.
-The total number of comparisons will be :math:`n-1`, which is the
-number of times the outer ``for`` loop executes.
-Thus, the cost for Insertion Sort in the best case is
-:math:`\Theta(n)`.
+   .. math::
+      \sum_{i=1}^{n-1} i = \frac{n(n-1)}{2} \approx n^2/2 = \Theta(n^2).
 
-.. index:: ! inversion
+   In contrast, consider the best-case cost.
+   This occurs when the values occur in sorted order from lowest to
+   highest.
+   In this case, every test on the inner ``for`` loop will
+   fail immediately, and no records will be moved.
+   The total number of comparisons will be :math:`n-1`, which is the
+   number of times the outer ``for`` loop executes.
+   Thus, the cost for Insertion Sort in the best case is
+   :math:`\Theta(n)`.
 
-What is the average-case cost of Insertion Sort?
-When record :math:`i` is processed, the number
-of times through the inner ``for`` loop depends on how far
-"out of order" the record is.
-In particular, the inner ``for`` loop is executed once for
-each value greater than the value of record :math:`i` that appears in
-array positions 0 through :math:`i-1`.
-For example, in the slideshows above the value 14 is initially
-preceded by five values greater than it.
-Each such occurrence is called an :term:`inversion`.
-The number of inversions (i.e., the number of values greater than a
-given value that occur prior to it in the array) will determine the
-number of comparisons and swaps that must take place.
-So long as all swaps are to adjacent records, 14 will have to swap at
-least six times to get to the right position.
+   .. index:: ! inversion
 
-To calculate the average cost, we want to determine what the average
-number of inversions will be for the record in position :math:`i`.
-We expect on average that half of the records in the first
-:math:`i-1` array positions will have a value greater than that of
-the record at position :math:`i`.
-Thus, the average case should be about half the cost of the worst
-case, or around :math:`n^2/4`, which is still
-:math:`\Theta(n^2)`.
-So, the average case is no better than the worst case in
-its growth rate.
+   What is the average-case cost of Insertion Sort?
+   When record :math:`i` is processed, the number
+   of times through the inner ``for`` loop depends on how far
+   "out of order" the record is.
+   In particular, the inner ``for`` loop is executed once for
+   each value greater than the value of record :math:`i` that appears in
+   array positions 0 through :math:`i-1`.
+   For example, in the slideshows above the value 14 is initially
+   preceded by five values greater than it.
+   Each such occurrence is called an :term:`inversion`.
+   The number of inversions (i.e., the number of values greater than a
+   given value that occur prior to it in the array) will determine the
+   number of comparisons and swaps that must take place.
+   So long as all swaps are to adjacent records, 14 will have to swap at
+   least six times to get to the right position.
 
-While the best case is significantly faster than the average and worst
-cases, the average and worst cases are usually more reliable
-indicators of the "typical" running time.
-However, there are situations where we can expect the input to be in
-sorted or nearly sorted order.
-One example is when an already sorted list is slightly disordered by a
-small number of additions to the list;
-restoring sorted order using Insertion Sort might be a good idea if we
-know that the disordering is slight.
-And even when the input is not perfectly sorted, Insertion Sort's cost
-goes up in proportion to the number of inversions.
-So a "nearly sorted" list will always be cheap to sort with Insertion
-Sort.
-Examples of algorithms that take advantage of Insertion Sort's
-near-best-case running time are
-:ref:`Shellsort <Shellsort> <Shellsort>`
-and :ref:`Quicksort <Quicksort> <Quicksort>`.
+   To calculate the average cost, we want to determine what the average
+   number of inversions will be for the record in position :math:`i`.
+   We expect on average that half of the records in the first
+   :math:`i-1` array positions will have a value greater than that of
+   the record at position :math:`i`.
+   Thus, the average case should be about half the cost of the worst
+   case, or around :math:`n^2/4`, which is still
+   :math:`\Theta(n^2)`.
+   So, the average case is no better than the worst case in
+   its growth rate.
 
-Counting comparisons or swaps yields similar results.
-Each time through the inner ``for`` loop yields both a
-comparison and a swap, except the last (i.e., the comparison that
-fails the inner ``for`` loop's test), which has no swap.
-Thus, the number of swaps for the entire sort operation is
-:math:`n-1` less than the number of comparisons.
-This is 0 in the best case, and :math:`\Theta(n^2)` in the
-average and worst cases.
+   While the best case is significantly faster than the average and worst
+   cases, the average and worst cases are usually more reliable
+   indicators of the "typical" running time.
+   However, there are situations where we can expect the input to be in
+   sorted or nearly sorted order.
+   One example is when an already sorted list is slightly disordered by a
+   small number of additions to the list;
+   restoring sorted order using Insertion Sort might be a good idea if we
+   know that the disordering is slight.
+   And even when the input is not perfectly sorted, Insertion Sort's cost
+   goes up in proportion to the number of inversions.
+   So a "nearly sorted" list will always be cheap to sort with Insertion
+   Sort.
+   Examples of algorithms that take advantage of Insertion Sort's
+   near-best-case running time are
+   :ref:`Shellsort <Shellsort> <Shellsort>`
+   and :ref:`Quicksort <Quicksort> <Quicksort>`.
 
-Later we will see algorithms whose growth rate is much
-better than :math:`\Theta(n^2)`.
-Thus for larger arrays, Insertion Sort will not be so good a
-performer as other algorithms.
-So Insertion Sort is not the best sorting algorithm to use in most
-situations.
-But there are special situations where it is ideal.
-We already know that Insertion Sort works great when the input is
-sorted or nearly so.
-Another good time to use Insertion Sort is when the array is very
-small, since Insertion Sort is so simple.
-The algorithms that have better asymptotic growth rates tend to be
-more complicated, which leads to larger constant factors in their
-running time.
-That means they typically need fewer comparisons for larger arrays,
-but they cost more per comparison.
-This observation might not seem that helpful, since even an algorithm
-with high cost per comparison will be fast on small input sizes.
-But there are times when we might need to do many, many sorts on very
-small arrays.
-You should spend some time right now trying to think of a situation
-where you will need to sort many small arrays.
-Actually, it happens a lot.
+   Counting comparisons or swaps yields similar results.
+   Each time through the inner ``for`` loop yields both a
+   comparison and a swap, except the last (i.e., the comparison that
+   fails the inner ``for`` loop's test), which has no swap.
+   Thus, the number of swaps for the entire sort operation is
+   :math:`n-1` less than the number of comparisons.
+   This is 0 in the best case, and :math:`\Theta(n^2)` in the
+   average and worst cases.
+
+   Later we will see algorithms whose growth rate is much
+   better than :math:`\Theta(n^2)`.
+   Thus for larger arrays, Insertion Sort will not be so good a
+   performer as other algorithms.
+   So Insertion Sort is not the best sorting algorithm to use in most
+   situations.
+   But there are special situations where it is ideal.
+   We already know that Insertion Sort works great when the input is
+   sorted or nearly so.
+   Another good time to use Insertion Sort is when the array is very
+   small, since Insertion Sort is so simple.
+   The algorithms that have better asymptotic growth rates tend to be
+   more complicated, which leads to larger constant factors in their
+   running time.
+   That means they typically need fewer comparisons for larger arrays,
+   but they cost more per comparison.
+   This observation might not seem that helpful, since even an algorithm
+   with high cost per comparison will be fast on small input sizes.
+   But there are times when we might need to do many, many sorts on very
+   small arrays.
+   You should spend some time right now trying to think of a situation
+   where you will need to sort many small arrays.
+   Actually, it happens a lot.
 
 Here are some review questions to check your understanding of
 Insertion Sort.

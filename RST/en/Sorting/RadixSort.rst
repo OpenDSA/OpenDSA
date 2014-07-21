@@ -108,86 +108,90 @@ The following visualization illustrates the process.
    that explains more clearly why this translates to
    :math:`\Theta(n \log n)`.
 
-This algorithm requires :math:`k` passes over the list of :math:`n`
-numbers in base :math:`r`, with :math:`\Theta(n + r)` work done at
-each pass.
-Thus the total work is :math:`\Theta(nk + rk)`.
-What is this in terms of :math:`n`?
-Because :math:`r` is the size of the base, it might be rather small.
-One could use base 2 or 10.
-Base 26 might be appropriate for sorting character strings.
-For now, we will treat :math:`r` as a constant value and ignore it
-for the purpose of determining asymptotic complexity,
-since this value does not change with the size of :math:`n`.
+Now we move to the running time analysis of Radix Sort.   
+   
+.. showhidecontent:: RadixSortAnalysis   
+   
+   This algorithm requires :math:`k` passes over the list of :math:`n`
+   numbers in base :math:`r`, with :math:`\Theta(n + r)` work done at
+   each pass.
+   Thus the total work is :math:`\Theta(nk + rk)`.
+   What is this in terms of :math:`n`?
+   Because :math:`r` is the size of the base, it might be rather small.
+   One could use base 2 or 10.
+   Base 26 might be appropriate for sorting character strings.
+   For now, we will treat :math:`r` as a constant value and ignore it
+   for the purpose of determining asymptotic complexity,
+   since this value does not change with the size of :math:`n`.
 
-Variable :math:`k` is related to the key range:
-It is the maximum number of digits that a
-key may have in base :math:`r`.
-In some applications we can determine :math:`k`
-to be of limited size and so might wish to consider it a constant.
-In this case, Radix Sort is :math:`\Theta(n)` in the best, average, and
-worst cases, making it the sort with best asymptotic complexity that
-we have studied (though the constant factors are high due to the
-relatively complex processing involved in extracting digits from the
-key).
+   Variable :math:`k` is related to the key range:
+   It is the maximum number of digits that a
+   key may have in base :math:`r`.
+   In some applications we can determine :math:`k`
+   to be of limited size and so might wish to consider it a constant.
+   In this case, Radix Sort is :math:`\Theta(n)` in the best, average, and
+   worst cases, making it the sort with best asymptotic complexity that
+   we have studied (though the constant factors are high due to the
+   relatively complex processing involved in extracting digits from the
+   key).
 
-**Is it really a reasonable assumption to treat** :math:`k` **as a
-constant?**
-Or is there some relationship between :math:`k` and :math:`n`?
-If the key range is limited and duplicate key values are common,
-there might be no relationship between :math:`k` and :math:`n`.
-To make this distinction more clear, use :math:`N` to denote the
-number of distinct key values used by the :math:`n` records.
-Thus, :math:`N \leq n`.
-Because it takes a minimum of :math:`\log_r N` base :math:`r` digits
-to represent :math:`N` distinct key values, we know that
-:math:`k \geq \log_r N`.
+   **Is it really a reasonable assumption to treat** :math:`k` **as a
+   constant?**
+   Or is there some relationship between :math:`k` and :math:`n`?
+   If the key range is limited and duplicate key values are common,
+   there might be no relationship between :math:`k` and :math:`n`.
+   To make this distinction more clear, use :math:`N` to denote the
+   number of distinct key values used by the :math:`n` records.
+   Thus, :math:`N \leq n`.
+   Because it takes a minimum of :math:`\log_r N` base :math:`r` digits
+   to represent :math:`N` distinct key values, we know that
+   :math:`k \geq \log_r N`.
 
-Now, consider the situation in which no keys are duplicated.
-If there are :math:`n` unique keys then :math:`n = N`.
-It would require :math:`n` distinct values to represent them.
-So now it takes a minimum of :math:`\log_r n` base :math:`r` digits to
-represent the :math:`n` distinct key values.
-This means that :math:`k \geq \log_r n`.
-Because it requires *at least* :math:`\log n` digits
-to distinguish between the :math:`n` distinct keys
-(within a constant factor |---| meaning, the number of digits is
-:math:`\Omega(\log n)`),
-:math:`k` is in :math:`\Omega(\log n)`.
-**This means that Radix Sort requires**
-:math:`\Omega(n \log n)` 
-**time to process** :math:`n` **distinct key values.**
+   Now, consider the situation in which no keys are duplicated.
+   If there are :math:`n` unique keys then :math:`n = N`.
+   It would require :math:`n` distinct values to represent them.
+   So now it takes a minimum of :math:`\log_r n` base :math:`r` digits to
+   represent the :math:`n` distinct key values.
+   This means that :math:`k \geq \log_r n`.
+   Because it requires *at least* :math:`\log n` digits
+   to distinguish between the :math:`n` distinct keys
+   (within a constant factor |---| meaning, the number of digits is
+   :math:`\Omega(\log n)`),
+   :math:`k` is in :math:`\Omega(\log n)`.
+   **This means that Radix Sort requires**
+   :math:`\Omega(n \log n)` 
+   **time to process** :math:`n` **distinct key values.**
 
-Of course the key range could be much bigger
-:math:`\log_r n` bits is merely the best case possible for :math:`n`
-distinct values.
-Thus, the :math:`\log_r n` estimate for :math:`k` could be overly
-optimistic.
-The bottom line of this analysis is that, for the general case of
-:math:`n` distinct key values, Radix Sort is at best a
-:math:`\Omega(n \log n)` sorting algorithm.
+   Of course the key range could be much bigger
+   :math:`\log_r n` bits is merely the best case possible for :math:`n`
+   distinct values.
+   Thus, the :math:`\log_r n` estimate for :math:`k` could be overly
+   optimistic.
+   The bottom line of this analysis is that, for the general case of
+   :math:`n` distinct key values, Radix Sort is at best a
+   :math:`\Omega(n \log n)` sorting algorithm.
 
-Radix Sort's running time can be much improved (by a constant factor)
-if we make base :math:`r` be as large as possible.
-This is simplest if we think about integer key values.
-Set :math:`r = 2^i` for some :math:`i`.
-In other words, the value of :math:`r` is related to the
-number of bits of the key processed on each pass.
-Each time the number of bits is doubled, the number of passes is cut
-in half.
-When processing an integer key value, setting :math:`r = 256` allows
-the key to be processed one byte at a time.
-Processing a 32-bit integer key requires only four passes.
-It is not unreasonable on most computers to use
-:math:`r = 2^{16} = 64\mbox{K}`, resulting in only two passes for a
-32-bit key.
-Of course, this requires a ``cnt`` array of size 64K.
-Performance will be good
-only if the number of records is about 64K or greater.
-In other words, the number of records must be large compared to the
-key size for Radix Sort to be efficient.
-In many sorting applications, Radix Sort can be tuned in this way to
-give better performance.
+   Radix Sort's running time can be much improved (by a constant factor)
+   if we make base :math:`r` be as large as possible.  
+   This is simplest if we think about integer key values.
+   Set :math:`r = 2^i` for some :math:`i`.
+   In other words, the value of :math:`r` is related to the
+   number of bits of the key processed on each pass.
+   Each time the number of bits is doubled, the number of passes is cut
+   in half.
+   When processing an integer key value, setting :math:`r = 256` allows
+   the key to be processed one byte at a time.
+   Processing a 32-bit integer key requires only four passes.
+   It is not unreasonable on most computers to use
+   :math:`r = 2^{16} = 64\mbox{K}`, resulting in only two passes for a
+   32-bit key.
+   Of course, this requires a ``cnt`` array of size 64K.
+   Performance will be good
+   only if the number of records is about 64K or greater.
+   In other words, the number of records must be large compared to the
+   key size for Radix Sort to be efficient.
+   In many sorting applications, Radix Sort can be tuned in this way to
+   give better performance.
 
 Radix Sort depends on the ability to make a fixed number of multiway
 choices based on a digit value, as well as random access to the bins.

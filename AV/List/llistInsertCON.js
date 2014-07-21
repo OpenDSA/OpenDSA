@@ -43,7 +43,7 @@ $(document).ready(function () {
   // Slide 1
   av.umsg(interpret("av_c1"));
   itBox.highlight(0);
-  pseudo.highlight("sig");
+  pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Slide 2
@@ -63,8 +63,7 @@ $(document).ready(function () {
   //Copy 23 to the new link node
   av.effects.copyValue(arr, 0, newNode);
   newNode.highlight();
-  pseudo.unhighlight("sig");
-  pseudo.highlight("setnext");
+  pseudo.setCurrentLine("setnext");
   av.step();
 
   // Slide 3
@@ -102,20 +101,17 @@ $(document).ready(function () {
   l.get(3).unhighlight();
   l.get(2).highlight();
   av.umsg(interpret("av_c7"));
-  pseudo.unhighlight("setnext");
-  pseudo.highlight("setelem");
+  pseudo.setCurrentLine("setelem");
   av.step();
 
   // Slide 8
   av.umsg(interpret("av_c8"));
   l.get(2).unhighlight();
-  pseudo.unhighlight("setelem");
-  pseudo.highlight("listSize");
+  pseudo.setCurrentLine("listSize");
   av.step();
 
   // Slide 9
   av.umsg(interpret("av_c9"));
-  pseudo.unhighlight("listSize");
-  pseudo.highlight("return");
+  pseudo.setCurrentLine("return");
   av.recorded();
 });

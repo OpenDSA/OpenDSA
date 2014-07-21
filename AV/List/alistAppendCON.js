@@ -39,7 +39,7 @@ $(document).ready(function () {
   // Slide 2
   arrow1.show();
   label.show();
-  pseudo.highlight("sig");
+  pseudo.setCurrentLine("sig");
   av.umsg(interpret("av_c2"));
   arr.highlight(5);
   arrMS.show();
@@ -49,8 +49,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 3
-  pseudo.unhighlight("sig");
-  pseudo.highlight("check");
+  pseudo.setCurrentLine("check");
   av.umsg(interpret("av_c3"));
   arrMS.highlight(0);
   arrLS.highlight(0);
@@ -58,8 +57,7 @@ $(document).ready(function () {
 
   // Slide 4
   av.umsg(interpret("av_c4"));
-  pseudo.unhighlight("check");
-  pseudo.highlight("assign");
+  pseudo.setCurrentLine("assign");
   arrLS.value(0, 6);
   arrMS.unhighlight(0);
   arr.value(5, "23");
@@ -70,6 +68,6 @@ $(document).ready(function () {
   arr.unhighlight(5);
   arr.removeClass([5], "not-in-list");
   arrLS.unhighlight(0);
-  pseudo.unhighlight("assign");
+  pseudo.setCurrentLine(0);
   av.recorded();
 });
