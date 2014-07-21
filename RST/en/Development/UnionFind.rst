@@ -13,15 +13,16 @@
 Union/Find and the Parent Pointer Implementation
 ================================================
 
-:term:`General trees` are trees whose internal nodes have no fixed
-number of children.
-Compared to general trees, binary trees are relatively easy to implement
-because each internal node of a binary tree can just store two
-pointers to reach its (potential) children.
+:term:`General trees <general tree>` are trees whose
+:term:`internal nodes <internal node>` have no fixed number of
+:term:`children <child>`.
+Compared to general trees, :term:`binary trees <binary tree>` are
+relatively easy to implement because each internal node of a binary
+tree can just store two pointers to reach its (potential) children.
 In a general tree, we have to deal with the fact that a given node
 might have no children or few children or many children.
 
-Even in a general tree, each node can have only one parent.
+Even in a general tree, each node can have only one :term:`parent`.
 If we didn't need to go from a node to its children, but instead only
 needed to go from a node to its parent, then implementing a node would
 be easy.
@@ -119,9 +120,10 @@ UNION/FIND array, and methods ``UNION`` and
 
 Consider the problem of assigning the members of a set to
 disjoint subsets called
-:term:`equivalence classes`.
-Recall from Section :numref:`<SetDef>` that an equivalence relation is
-reflexive, symmetric, and transitive.
+:term:`equivalence classes <equivalence class>`.
+Recall that an
+:ref:`equivalence relation <equivalence relation> <SetDef>` is 
+:term:`reflexive`, :term:`symmetric`, and :term:`transitive`.
 Thus, if objects :math:`A` and :math:`B` are equivalent, and objects
 :math:`B` and :math:`C` are equivalent, then we must be able to recognize
 that objects :math:`A` and :math:`C` are also equivalent.
@@ -161,9 +163,10 @@ A subset of equivalent (connected) edges in a graph is called a
 The goal is to quickly classify the objects
 into disjoint sets that correspond to the connected components.
 
-Another use for UNION/FIND occurs in Kruskal's algorithm for
-computing the minimal cost spanning tree for a graph
-(Module :numref:`<MCST>`).
+Another use for UNION/FIND occurs in :term:`Kruskal's algorithm` for
+computing the
+:ref:`minimal cost spanning tree <minimal cost spanning tree> <MCST>`
+for a :term:`graph`.
 That algorithm seeks to select the cheapest subset of the edges that
 still connects all of the nodes in the graph.
 It does so by processing all edges of the graph from shortest to
@@ -292,8 +295,8 @@ Notes
        The *total* amount of processing time required for :math:`n`
        operations will be :math:`\Theta(n \log^* n)`,
        yielding nearly constant time for each equivalence operation.
-       This is an example of amortized analysis, discussed
-       further in Module :numref:`<AmortAnal>`.
+       This is an example of
+       :ref:`amortized analysis <amortized analysis> <AmortAnal>`.
 
        The expression :math:`\log^* n` is closely related to the inverse of
        Ackermann's function.

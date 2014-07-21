@@ -466,7 +466,7 @@ actual data.
 Does this overhead amount to a significant use of space?
 No, because once again the high fan-out rate of the tree structure
 means that the vast majority of nodes are leaf nodes.
-Recall (from Module :numref:`<Kary>`) that a full :math:`K` -ary tree has
+A :ref:`K-ary tree <K-ary tree> <Kary>` has
 approximately :math:`1/K` of its nodes as internal nodes.
 This means that while half of a full binary tree's nodes are internal
 nodes, in a :math:`\mathrm{B}^+` tree of order 100 probably only about

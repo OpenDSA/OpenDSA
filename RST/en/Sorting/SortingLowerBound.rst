@@ -73,8 +73,8 @@ Finally, knowing a lower bound for sorting gives us a lower
 bound in turn for other problems whose solution could be made to work
 as the basis for a sorting algorithm.
 The process of deriving asymptotic bounds for one problem from the
-asymptotic bounds of another is called a :term:`reduction`,
-a concept further explored in Module :numref:`<Reductions>`.
+asymptotic bounds of another is called a
+:ref:`reduction <reduction> <Reductions>`.
 
 Except for the Radix Sort and Binsort, all of the sorting algorithms
 we have studied make decisions based on the direct comparison of two

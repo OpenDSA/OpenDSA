@@ -79,6 +79,18 @@ Glossary
       A less formal version of the term
       :term:`asymptotic algorithm analysis`.
 
+   alphabet trie
+      A :term:`trie` data structure for storing variable-length
+      strings.
+      Level :math:`i` of the tree corresponds to the letter in
+      position :math:`i` of the string.
+      The root will have potential branches on each intial letter of
+      string.
+      Thus, all strings starting with "a" will be stored in the "a"
+      branch of the tree.
+      At the second level, such strings will be separated by branching
+      on the second letter.
+
    amortized analysis
       An :term:`algorithm analysis` techique that looks at the total
       cost for a series of operations and amortizes this total cost
@@ -120,7 +132,8 @@ Glossary
 
    asymptotic analysis
       A method for estimating the efficiency of an algorithm or
-      computer program. Asymptotic analysis also gives a way to
+      computer program by identifying its :term:`growth rate`.
+      Asymptotic analysis also gives a way to
       define the inherent difficulty of a :term:`problem`.
       We frequently use the term :term:`algorithm analysis` to mean
       the same thing.
@@ -272,9 +285,9 @@ Glossary
       :to-term: algorithm :label: type of
 
       A simple sort that requires :math:`Theta(n^2)` time in best,
-      average, and worst cases. Even an optimized version will
-      normally run slower than insertion sort, so it has little to
-      recommend it.
+      average, and worst cases.
+      Even an optimized version will normally run slower than
+      :term:`insertion sort`, so it has little to recommend it.
 
    bucket sort
       A variation on the :term:`binsort`, where each bin is associated
@@ -559,7 +572,7 @@ Glossary
       Abbreviation for :term:`directed graph`.
 
    diminishing increment sort
-      Another name for Shellsort.
+      Another name for :term:`Shellsort`.
 
    direct proof
       In general, a direct proof is just a "logical explanation".
@@ -753,8 +766,10 @@ Glossary
 
    exchange sort
       A sort that relies solely on exchanges (swaps of adjacent
-      records) to reorder the list. Insertion sort and bubble sort are
-      examples of exchange sorts. All exchange sorts require
+      records) to reorder the list.
+      :term:`Insertion sort <insertion sort>` and
+      :term:`bubble sort` are examples of exchange sorts.
+      All exchange sorts require
       :math:`\Theta(n^2)` time in the worst case.
 
    exponential growth rate
@@ -975,14 +990,24 @@ Glossary
       for.
 
    heap
-      This term has two different meanings. Uncommonly, it is a
-      synonym for :term:`free store`.
+      This term has two different meanings.
+      Uncommonly, it is a synonym for :term:`free store`.
       Most often it is used to refer to a particular data structure.
       This data structure is a :term:`complete binary tree` with the
       requirement that every :term:`node` has a value greater than its
       :term:`children <child>` (called a :term:`max heap`), or else
       the requirement that every node has a value less than its
       children (called a :term:`min heap`).
+      Since it is a complete binary tree, a heap is nearly always
+      implemented using an array rather than an explicit tree
+      structure.
+      To add a new value to a heap, or to remove the extreme value
+      (the max value in a max-heap or min value in a min-heap) and
+      update the heap,
+      takes :math:`\Theta(\log n)` time in the worst case.
+      However, if given all of the values in an unordered array,
+      the values can be re-arranged to form a heap in only
+      :math:`\Theta(n)` time. 
       Due to its space and time efficiency, the heap is a
       popular choice for implementing a :term:`priority queue`.
 
@@ -1133,6 +1158,10 @@ Glossary
       indicates position within the container, with support for
       :term:`traversing <traversal>` through all
       :term:`elements <element>` in the container.
+
+   K-ary tree
+      A type of :term:`full tree` where every internal node has
+      exactly :math:`K` :term:`children <child>`.
 
    key
       A field or part of a larger record used to represent that record
@@ -1769,7 +1798,8 @@ Glossary
       A function that includes a :term:`recursive call`.
 
    reduction
-      In algorithm analysis, the process of deriving asymptotic bounds
+      In :term:`algorithm analysis`, the process of deriving
+      :term:`asymptotic bounds <asymptotic analysis>`
       for one :term:`problem` from the asymptotic bounds of another.
       In particular, if problem A can be used to solve problem B, and
       problem A is proved to be in :math:`O(f(n))`, then problem B
@@ -2117,6 +2147,12 @@ Glossary
       values equal to or greater than 512 on the right side of the
       tree.
       A trie is always a :term:`full tree`.
+      Folklore has it that the term comes from "retrieval", and should
+      be pronounced as "try" (in contrast to "tree", to distinguish
+      the differences in the space decomposition method of a search
+      tree versus a search trie).
+      The term "trie" is also sometimes used as a synonym for the
+      :term:`alphabet trie`.
 
    truth table
       In symbolic logic, a table that contains as rows all possible

@@ -202,9 +202,9 @@ then some care will be necessary in implementation.
 In particular, Radix Sort will need to be careful about deciding when
 the "last digit" has been found to distinguish among real numbers,
 or the last character in variable length strings.
-Implementing the concept of Radix Sort with the trie data
-structure (Module :numref:`<Trie>`) is most appropriate for these
-situations.
+Implementing the concept of Radix Sort with the
+:ref:`alphabet trie <trie> <Trie>` data structure is most appropriate
+for these situations.
 
 Now for some review questions.
 

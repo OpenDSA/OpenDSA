@@ -55,22 +55,27 @@ For answers to these questions, we can turn to empirical testing.
 Table :num:`#SortCompTable` shows timing results for
 actual implementations of the sorting algorithms presented in this
 chapter.
-The algorithms compared include Insertion Sort, Bubble Sort,
-Selection Sort, Shellsort, Quicksort, Mergesort, Heapsort and
-Radix Sort.
-Shellsort shows both the basic version from
-Module :numref:`<Shellsort>`
-and another with increments based on division by three.
-Mergesort shows both the basic implementation from
-Module :numref:`<MergesortImpl>` and the optimized version
-(including calls to Insertion Sort for lists of length below nine).
+The algorithms compared include
+:ref:`Insertion Sort <insertion sort> <InsertionSort>`,
+:ref:`Bubble Sort <bubble sort> <BubbleSort>`,
+:ref:`Selection Sort <selection sort> <SelectionSort>`,
+:ref:`Shellsort <Shellsort> <Shellsort>`,
+:ref:`Quicksort <Quicksort> <Quicksort>`,
+:ref:`Mergesort <Mergesort> <Mergesort>`,
+:ref:`Heapsort <Heapsort> <Heapsort>`,
+:ref:`radix sort <radix sort> <Radixsort>`.
+
+Shellsort compares times for both the basic version and a version with
+increments based on division by three.
+Mergesort compares both the basic array-based implementation and an
+optimized version (which includes calls to Insertion Sort for lists of
+length below nine).
 For Quicksort, two versions are compared: the basic implementation
-from Module :numref:`<Quicksort>` and an optimized version
-that does not partition sublists below length nine (with Insertion
-Sort performed at the end).
-The first Heapsort version uses the class definitions from
-Module :numref:`<Heaps>`.
-The second version removes all the class definitions and operates
+and an optimized version that does not partition sublists below length
+nine (with Insertion Sort performed at the end).
+The first Heapsort version uses a standard class definition with
+methods to implement access functions like "parent".
+The second version removes all the method definitions and operates
 directly on the array using inlined code for all access functions.
 
 Except for the rightmost columns,

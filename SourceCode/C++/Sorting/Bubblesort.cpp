@@ -16,7 +16,7 @@ void bubblesort(Comparable* A[], int n) {
 /* *** ODSAendTag: Bubblesort *** */
 
 // With KVPair
-/* *** ODSATag: Bubblecheckswap *** */
+/* *** ODSATag: BubblesortCheck *** */
 void bubblecheckswap(Comparable* A[], int n) {
   n = n-1;
   while (n > 0) {
@@ -32,7 +32,7 @@ void bubblecheckswap(Comparable* A[], int n) {
     if (sorted) break;
   }
 }
-/* *** ODSAendTag: Bubblecheckswap *** */
+/* *** ODSAendTag: BubblesortCheck *** */
 
 bool sorttest(int array[], int n, int threshold) {
   Comparable* A[n];
