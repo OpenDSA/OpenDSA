@@ -61,50 +61,12 @@ A complete implementation is as follows.
 .. codeinclude:: Sorting/Heapsort 
    :tag: Heapsort        
 
-Because
-:ref:`building the heap <heap> <Heaps>`
-takes :math:`\Theta(n)` time, and because :math:`n` deletions
-of the maximum-valued record each take :math:`\Theta(\log n)` time,
-we see that the entire Heapsort operation takes
-:math:`\Theta(n \log n)` time in the worst and average cases.
-If all key values were equal, then Heapsort would cost
-:math:`\Theta(n)` in be best case because every call  to ``removemax``
-would result in calls to ``siftdown`` that complete in constant time
-because the new root value never swaps with its children.
-
-While typically slower than Quicksort by a constant factor
-(because unloading the heap using ``removemax`` is somewhat slower
-than Quicksort's series of partitions), Heapsort
-has one special advantage over the other sorts studied so far.
-Building the heap is relatively cheap, requiring
-:math:`\Theta(n)` time.
-Removing the maximum-valued record from the heap requires
-:math:`\Theta(\log n)` time.
-Thus, if we wish to find the :math:`k` records with the largest
-key values in an array, we can do so in time
-:math:`\Theta(n + k \log n)`.
-If :math:`k` is small, this is a substantial improvement over the time
-required to find the :math:`k` largest-valued records using one of the
-other sorting methods described earlier (many of which would require
-sorting all of the array first).
-One situation where we are able to take advantage of this concept is
-in the implementation of 
-:ref:`Kruskal's algorithm <Kruskal's algorthm> <MCST>` for
-:term:`minimal-cost spanning trees <minimal-cost spanning tree>`.
-That algorithm requires that edges be visited in ascending
-order (so, use a min-heap), but this process stops as soon as the MST
-is complete.
-Thus, only a relatively small fraction of the edges need be sorted.
-=======
-   :tag: Heapsort 
-
 Here is Heap Sort's running time analysis
    
 .. showhidecontent:: HeapSortAnalysis   
 
-   Because building the heap takes :math:`\Theta(n)` time
-   (see Module :numref:`Heaps <Heaps>`)
-   and because :math:`n` deletions
+   Because :ref:`building the heap <heap> <Heaps>`
+   takes :math:`\Theta(n)` time, and because :math:`n` deletions
    of the maximum-valued record each take :math:`\Theta(\log n)` time,
    we see that the entire Heapsort operation takes
    :math:`\Theta(n \log n)` time in the worst and average cases.
@@ -129,8 +91,9 @@ Here is Heap Sort's running time analysis
    other sorting methods described earlier (many of which would require
    sorting all of the array first).
    One situation where we are able to take advantage of this concept is
-   in the implementation of Kruskal's minimal cost spanning tree (MST)
-   algorithm of (see Module :numref:`Minimal Cost Spanning Trees <MCST>`).
+   in the implementation of 
+   :ref:`Kruskal's algorithm <Kruskal's algorthm> <MCST>` for
+   :term:`minimal-cost spanning trees <minimal-cost spanning tree>`.
    That algorithm requires that edges be visited in ascending
    order (so, use a min-heap), but this process stops as soon as the MST
    is complete.

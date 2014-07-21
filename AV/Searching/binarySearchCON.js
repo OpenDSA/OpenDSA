@@ -34,7 +34,7 @@ $(document).ready(function () {
   av.umsg(interpret("av_c4"));
   arr.removeClass(7, "blue").addClass(7, "yellow");
   arr.removeClass(0, "yellow");
-  arr.addClass([0, 1, 2, 3, 4, 5, 6], "Light");
+  arr.addClass([0, 1, 2, 3, 4, 5, 6], "greytext");
   pseudo.setCurrentLine("right");
   av.step();
 
@@ -48,7 +48,7 @@ $(document).ready(function () {
   av.umsg(interpret("av_c6"));
   arr.removeClass(11, "blue").addClass(11, "yellow");
   arr.removeClass(15, "yellow");
-  arr.addClass([12, 13, 14, 15], "Light");
+  arr.addClass([12, 13, 14, 15], "greytext");
   pseudo.setCurrentLine("left");
   av.step();
 
@@ -62,7 +62,7 @@ $(document).ready(function () {
   av.umsg(interpret("av_c8"));
   arr.removeClass(9, "blue").addClass(9, "yellow");
   arr.removeClass(11, "yellow");
-  arr.addClass([10, 11], "Light");
+  arr.addClass([10, 11], "greytext");
   pseudo.setCurrentLine("left");
   av.step();
 
@@ -90,7 +90,7 @@ $(document).ready(function () {
   pseudo.unhighlight("while");
   pseudo.unhighlight("return");
   av.umsg(interpret("av_c12"));
-  arr.removeClass(true, "Light");
+  arr.removeClass(true, "greytext");
   arr.removeClass([7, 9], "yellow");
   arr.addClass([7, 9, 11], "pink");
   av.recorded();

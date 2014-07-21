@@ -90,7 +90,7 @@ Here is an implementation for Insertion Sort using this optimization.
 .. codeinclude:: Sorting/Insertionsort
    :tag: InsertionOpt
 
-.. showhide:: inssortnoswap
+.. showhidecontent:: inssortnoswap
 
    Now, you can test whether you understand how this works.
 

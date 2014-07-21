@@ -7,8 +7,12 @@
   background-color: #ffffcc;
 }
 
-.light {
-  color: rgb(215, 215, 215);
+.greytext {
+  color: #ccc;
+}
+
+.greybg {
+  background-color: #eee;
 }
 
 .jsavnode .jsavvalue { /* Make array cell values center vertically */
