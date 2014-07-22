@@ -59,10 +59,21 @@
         "exercises": {}
       },
       "AlgAnal/AnalAsymptotic": {
-        "long_name": "Asymptotic Analysis",
+        "long_name": "Asymptotic Analysis and Upper Bounds",
+        "sections": {
+          "thetadisc": {
+            "long_name": "theta disclaimer",
+            "showhide": "none",
+            "remove": true
+          }
+        },
+        "exercises": {}
+      },
+      "AlgAnal/AnalLower": {
+        "long_name": "Lower Bounds and Theta Notation",
         "exercises": {
           "AnalPairSumm": {
-            "long_name": "Function Pairs",
+            "long_name": "Function Pairs Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 5
@@ -71,9 +82,28 @@
       },
       "AlgAnal/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
+        "sections": {
+          "binsearchpro": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "showhide": "none",
+            "remove": true
+          }
+        },
         "exercises": {
+          "binarySearchCON": {
+            "long_name": "Binary Search Algorithm Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binarySearchPRO": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "AnalProgramSumm": {
-            "long_name": "Program Code Analysis",
+            "long_name": "Program Code Analysis Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -101,10 +131,26 @@
         "exercises": {}
       },
       "AlgAnal/AlgAnalSumm": {
-        "long_name": "Algorithm Analysis Chapter Summary",
+        "long_name": "Algorithm Analysis Summary Exercises",
+        "sections": {
+          "upperbound": {
+            "long_name": "Chapter Summary Questions",
+            "remove": true
+          },
+          "allbound": {
+            "long_name": "Chapter Summary Questions",
+            "showhide": "none"
+          }
+        },
         "exercises": {
+          "AlgAnalCS2114Summ": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "required": false,
+            "points": 0.0,
+            "threshold": 5
+          },
           "AlgAnalSumm": {
-            "long_name": "Algorithm Analysis Summary",
+            "long_name": "Algorithm Analysis Summary Questions",
             "required": true,
             "points": 1.0,
             "threshold": 5

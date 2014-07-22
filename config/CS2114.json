@@ -482,13 +482,29 @@
           }
         }
       },
-      "AlgAnal/AlgAnalSummCS2": {
+      "AlgAnal/AlgAnalSumm": {
         "long_name": "Algorithm Analysis Summary Exercises",
+        "sections": {
+          "upperbound": {
+            "long_name": "Chapter Summary Questions",
+            "showhide": "none"
+          },
+          "allbound": {
+            "long_name": "Chapter Summary Questions",
+            "remove": true
+          }
+        },
         "exercises": {
           "AlgAnalCS2114Summ": {
             "long_name": "Algorithm Analysis Summary Questions",
             "required": true,
             "points": 1.0,
+            "threshold": 5
+          },
+          "AlgAnalSumm": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "required": false,
+            "points": 0.0,
             "threshold": 5
           }
         }
