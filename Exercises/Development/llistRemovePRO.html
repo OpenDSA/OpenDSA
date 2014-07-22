@@ -14,6 +14,7 @@ Written by Junyang Chen and Cliff Shaffer
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 
   <style>
     .jsavcontainer {
@@ -29,47 +30,22 @@ Written by Junyang Chen and Cliff Shaffer
       -ms-user-select: none;
       user-select: none;
     }
-    .jsavhorizontallist.jsavautoresize .jsavnode {
-      min-width: 30px;
-      max-width: 30px;
-      min-height: 30px;
-      max-height: 30px;
-      line-height: 30px;
-      padding-right: 12px;
-    }
     .bgColor{
       font-size: 130%;
       background-color: yellow;
     }
-    .jsavlist.jsavautoresize.jsavhorizontallist{
-      height: 300px;
-    }
     .jsavcanvas svg{
       height: 300px;
     }	
-    .jsavlist .jsavvalue { /* This will get the linked list cell values to center vertically */
-      height: 30px;
-    }
-    .jsavnode .jsavvalue { /* This will get the array cell values to center vertically */
-      height: 30px;
-    }
-    .jsavnode {
-      line-height: 30px !important;
-      min-width: 30px !important;
-      max-width: 30px !important;
-      min-height: 30px !important;
-      max-height: 30px !important;
-      cursor: pointer;
-    }
     .jsavpointer{
       width: 40px;
       text-align: center;
       cursor: pointer;
     }
-    .highlight{
+    #reset { margin-right: 20px;}
+    .highlight{      /* For the pointer */
       background-color: yellow;
     }
-    #reset { margin-right: 20px;}
   </style>
 </head>
 <body>

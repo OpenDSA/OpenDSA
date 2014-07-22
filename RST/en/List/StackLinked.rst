@@ -41,9 +41,9 @@ Now, let's look at how ``push`` and ``pop`` work in the linked stack implementat
 .. inlineav:: lstackPopCON ss
    :output: show
    
-.. avembed:: Exercises/List/lstackPush.html ka
+.. avembed:: Exercises/List/lstackPushPRO.html ka
 
-.. avembed:: Exercises/List/lstackPop.html ka
+.. avembed:: Exercises/List/lstackPopPRO.html ka
 
    
 Comparison of Array-Based and Linked Stacks

@@ -284,13 +284,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "lstackPush": {
+          "lstackPushPRO": {
             "long_name": "Linked Stack Push Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "lstackPop": {
+          "lstackPopPRO": {
             "long_name": "Linked Stack Pop Exercise",
             "required": true,
             "points": 1,
@@ -351,13 +351,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "aqueueEnqueue": {
+          "aqueueEnqueuePRO": {
             "long_name": "Array-based Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "aqueueDequeue": {
+          "aqueueDequeuePRO": {
             "long_name": "Array-based Queue Dequeue Exercise",
             "required": true,
             "points": 1,
@@ -386,13 +386,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "lqueueEnqueue": {
+          "lqueueEnqueuePRO": {
             "long_name": "Linked Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "lqueueDequeue": {
+          "lqueueDequeuePRO": {
             "long_name": "Linked Queue Dequeue Exercise",
             "required": true,
             "points": 1,

@@ -8,9 +8,8 @@
 /* *** ODSATag: Insertionsort *** */
 void inssort(Comparable* A[], int n) { // Insertion Sort
   for (int i = 1; i < n; i++) // Insert i'th record
-    for (int j = i; (j > 0) && (*A[j] < *A[j-1]); j--) {
+    for (int j = i; (j > 0) && (*A[j] < *A[j-1]); j--)
       swap(A, j, j-1);
-    }
 }
 /* *** ODSAendTag: Insertionsort *** */
 

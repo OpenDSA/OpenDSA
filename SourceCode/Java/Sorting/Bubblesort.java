@@ -31,7 +31,7 @@ totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
   for(i=0; i<B.length; i++) A[i] = B[i];
   time1 = millis();
-  wikipedia(A);
+  bubblecheckswap(A);
   time2 = millis();
   checkorder(A);
 totaltime += (time2-time1);
@@ -86,19 +86,21 @@ static void bubblesortcheck2(int[] A) {
 }
 
 // Wikipedia article "optimization" to only swap up to the last swap seen
-static void wikipedia(int[] A) {
+/* *** ODSATag: BubblesortCheck *** */
+static void bubblecheckswap(Comparable[] A) {
   int n = A.length-1;
   while (n>0) {
     int newn = 0;
     for (int i=0; i<n; i++)
       /* if this pair is out of order */
-      if (A[i] > A[i+1]) {
+      if (A[i].compareTo(A[i+1]) > 0) {
         swap(A, i, i+1);
         newn = i;
       }
     n = newn;
   }
 }
+/* *** ODSAendTag: BubblesortCheck *** */
 
 // Wikipedia article "optimization" to only swap up to the last swap seen
 static void unwikipedia(int[] A) {
@@ -136,7 +138,7 @@ static void sorttest(int[] A) {
 }
 
 /* *** ODSATag: Bubblesort *** */
-static void bubblesort(int[] A) {
+static void bubblesort(Comparable[] A) {
   for (int i=0; i<A.length-1; i++) // Insert i'th record
     for (int j=1; j<A.length-i; j++)
       if (A[j-1] > A[j])

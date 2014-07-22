@@ -64,6 +64,7 @@ static void inssortshift2(int[] A) {
   }
 }
 
+/* *** ODSATag: InsertionOpt *** */
 // Instead of swapping, "shift" the values down the array
 static void inssortshift(int[] A) {
   for (int i=1; i<A.length; i++) { // Insert i'th record
@@ -74,6 +75,7 @@ static void inssortshift(int[] A) {
     A[j] = temp;
   }
 }
+/* *** ODSAendTag: InsertionOpt *** */
 
 // Same as standard insertion sort, except get rid of the swap
 // function call
@@ -90,9 +92,9 @@ static void sorttest(int[] A) {
 }
 
 /* *** ODSATag: Insertionsort *** */
-static void inssort(int[] A) {
+static void inssort(Comparable[] A) {
   for (int i=1; i<A.length; i++) // Insert i'th record
-    for (int j=i; (j>0) && (A[j] < A[j-1]); j--)
+    for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
       swap(A, j, j-1);
 }
 /* *** ODSAendTag: Insertionsort *** */
