@@ -32,6 +32,11 @@
   font-size: 15px;
 }
 
+/* Center inlineav diagrams */
+.divdgm {
+  width: 100% !important;
+}
+
 /* Hide flagged chapters fom the TOC */
 .hide-from-toc {
   display: none;
