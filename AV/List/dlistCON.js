@@ -137,10 +137,10 @@ function addEdge(node1, node2) {
 // JSAV extension
 (function ($) {
   JSAV._types.ds.DListNode.prototype.odsa_addSlash = function (type, opts) {
-    var fx = this.element.position().left + this.container.position().left + 42;
+    var fx = this.element.position().left + this.container.position().left + 41;
     var fy = this.element.position().top + this.container.position().top + 47;
     if (type === 'left') {
-      fx = this.element.position().left + this.container.position().left + 2;
+      fx = this.element.position().left + this.container.position().left + 1;
     }
 
     var options = opts || {};

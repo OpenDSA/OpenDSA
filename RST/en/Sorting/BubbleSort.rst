@@ -52,14 +52,14 @@ Here is an implementation.
 
 Consider the following array.
 
-.. inlineav:: BubsortCON1 ss
+.. inlineav:: bubblesortS1CON ss
    :output: show
 
 Now we continue with the second pass. However, since the largest
 record has "bubbled" to the very right, we will not need to look at
 it again.
 
-.. inlineav:: BubsortCON2 ss
+.. inlineav:: bubblesortS2CON ss
    :output: show
 
 Bubble Sort continues in this way until the entire array is sorted.
@@ -100,4 +100,5 @@ Insertion Sort.
  
 .. avembed:: Exercises/Sorting/BubsortSumm.html ka
 
-.. odsascript:: AV/Sorting/bubblesortCON.js
+.. odsascript:: AV/Sorting/bubblesortS1CON.js
+.. odsascript:: AV/Sorting/bubblesortS2CON.js
