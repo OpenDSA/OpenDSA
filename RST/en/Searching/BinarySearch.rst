@@ -92,9 +92,7 @@ We stop (in the worst case) when we reach a subarray of size 1.
 And we can only cut the value of :math:`n` in half :math:`\log n`
 times before we reach 1. [#]_
 
-
 .. avembed:: AV/Searching/binarySearchPRO.html ss
-
 
 Notes
 =====

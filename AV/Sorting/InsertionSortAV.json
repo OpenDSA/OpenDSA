@@ -73,6 +73,18 @@
         "swap": 4,
         "end": 5
       }
+    },
+    "java": {
+      "url": "../../SourceCode/Java/Sorting/Insertionsort.java",
+      "startAfter": "/* *** ODSATag: Insertionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
+      "tags": {
+        "sig": 1,
+        "outloop": 2,
+        "inloop": 3,
+        "swap": 4,
+        "end": 5
+      }
     }
   }
 }

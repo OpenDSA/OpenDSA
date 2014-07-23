@@ -3,6 +3,10 @@
   background-color: #ddf;
 }
 
+.redback {
+  background-color: #f00;
+}
+
 .jsavnode.sorted {
   background-color: #ffffcc;
 }
@@ -15,11 +19,11 @@
   background-color: #eee;
 }
 
-.jsavnode .jsavvalue { /* Make array cell values center vertically */
+.jsavnode .jsavhorizontalarray .jsavvalue { /* Make array cell values center vertically */
   height: 30px;
 }
 
-.jsavnode {
+.jsavhorizontalarray .jsavnode {
   line-height: 30px !important;
   min-width: 30px !important;
   max-width: 30px !important;

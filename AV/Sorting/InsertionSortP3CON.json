@@ -5,6 +5,5 @@
       "av_c2": "We will compare it to the record in position 2",
       "av_c3": "Since the record in position 2 is smaller, nothing changes and we are done with the record in position 3"
     }
-  },
-  "code" : {}
+  }
 }

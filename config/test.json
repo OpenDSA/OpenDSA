@@ -2,7 +2,11 @@
   "title": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"C++": ["cpp", "h"], "Processing": ["pde"]},
+  "code_lang": {
+    "Processing": ["pde"],
+    "C++": ["cpp"],
+    "Java": ["java"]
+  },
   "lang": "en",
   "module_origin": "http://algoviz.org",
   "backend_address": "",
@@ -76,13 +80,13 @@
       "Sorting/BubbleSort": {
         "long_name": "Bubble Sort",
         "exercises": {
-          "BubsortCON1": {
+          "bubblesortS1CON": {
             "long_name": "Bubble Sort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "BubsortCON2": {
+          "bubblesortS2CON": {
             "long_name": "Bubble Sort Slideshow 2",
             "required": false,
             "points": 0.0,
@@ -170,7 +174,7 @@
             "long_name": "Insertion Sort Without Swap Exercise Section",
             "showhide": "none"
           }
-        }
+        },
         "exercises": {
           "insertionSortWithoutSwapPRO": {
             "long_name": "Insertion Sort Without Swap Proficiency Exercise",

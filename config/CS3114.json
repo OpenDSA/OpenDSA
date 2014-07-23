@@ -6,6 +6,7 @@
     "Processing": ["pde"],
     "C++": ["cpp"]
   },
+  "lang": "en",
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
@@ -193,10 +194,26 @@
         "exercises": {}
       },
       "AlgAnal/AlgAnalSumm": {
-        "long_name": "Algorithm Analysis Chapter Summary",
+        "long_name": "Algorithm Analysis Summary Exercises",
+        "sections": {
+          "upperbound": {
+            "long_name": "Chapter Summary Questions",
+            "remove": true
+          },
+          "allbound": {
+            "long_name": "Chapter Summary Questions",
+            "showhide": "none"
+          }
+        },
         "exercises": {
+          "AlgAnalCS2114Summ": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "required": false,
+            "points": 0.0,
+            "threshold": 5
+          },
           "AlgAnalSumm": {
-            "long_name": "Algorithm Analysis Summary",
+            "long_name": "Algorithm Analysis Summary Questions",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -490,13 +507,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "lstackPush": {
+          "lstackPushPRO": {
             "long_name": "Linked Stack Push Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "lstackPop": {
+          "lstackPopPRO": {
             "long_name": "Linked Stack Pop Exercise",
             "required": true,
             "points": 1,
@@ -558,13 +575,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "aqueueEnqueue": {
+          "aqueueEnqueuePRO": {
             "long_name": "Array-based Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "aqueueDequeue": {
+          "aqueueDequeuePRO": {
             "long_name": "Array-based Queue Dequeue Exercise",
             "required": true,
             "points": 1,
@@ -593,13 +610,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "lqueueEnqueue": {
+          "lqueueEnqueuePRO": {
             "long_name": "Linked Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "lqueueDequeue": {
+          "lqueueDequeuePRO": {
             "long_name": "Linked Queue Dequeue Exercise",
             "required": true,
             "points": 1,
