@@ -5,7 +5,11 @@
 
 #info  {
   width: 100%;
-  margin-top: 30px;
+  margin-top: 15px;
+}
+
+.termBack {
+  margin-top: 15px;
 }
 
 .avcontainer{
