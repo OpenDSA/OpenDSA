@@ -89,8 +89,6 @@ Now here is a full proficiency exercise to put it all together.
 
 .. avembed:: AV/Sorting/mergesortPRO.html pe
 
-Here is MergeSort's running time analysis.
-
 .. showhidecontent:: MergeSortAnalysis
 
    Analysis of Mergesort is straightforward, despite the fact that it is

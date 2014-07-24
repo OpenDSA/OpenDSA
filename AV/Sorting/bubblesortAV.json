@@ -8,7 +8,14 @@
       "#reset": "Reset",
       "#arraysizeLabel": " List size: ",
       "#arrayValuesLabel": " Your values: ",
-      "av_arrValsPlaceholder": "Type some array values, or click 'run' to use random values"
+      "av_arrValsPlaceholder": "Type some array values, or click 'run' to use random values",
+      "av_c1": "For each pass, we will move left to right swapping adjacent elements as needed. Each pass moves the next largest element into its final position (these will be shown in yellow).",
+      "av_c2": "Starting pass ",
+      "av_c3": "For each element moving through the list",
+      "av_c4": "Compare elements",
+      "av_c5": "Swap",
+      "av_c6": "Done this pass. The last element processed is now in its final position.",
+      "av_c7": "Done sorting!"
     },
     "fi": {
       ".avTitle": "Bubble Sort Visualization",
@@ -18,7 +25,14 @@
       "#reset": "Alusta",
       "#arraysizeLabel": " Taulukon koko: ",
       "#arrayValuesLabel": " Omat arvot: ",
-      "av_arrValsPlaceholder": "Erottele arvot välilyönnillä tai jätä tyhjäksi satunnaislukuja varten"
+      "av_arrValsPlaceholder": "Erottele arvot välilyönnillä tai jätä tyhjäksi satunnaislukuja varten",
+      "av_c1": "For each pass, we will move left to right swapping adjacent elements as needed. Each pass moves the next largest element into its final position (these will be shown in yellow).",
+      "av_c2": "Starting pass ",
+      "av_c3": "For each element moving through the list",
+      "av_c4": "Compare elements",
+      "av_c5": "Swap",
+      "av_c6": "Done this pass. The last element processed is now in its final position.",
+      "av_c7": "Done sorting!"
     },
     "sv": {
       ".avTitle": "Bubble Sort Visualization",
@@ -28,7 +42,14 @@
       "#reset": "Återställ",
       "#arraysizeLabel": " Liststorlek: ",
       "#arrayValuesLabel": " Dina värden: ",
-      "av_arrValsPlaceholder": "Skriv in dina värden eller lämna blankt för att använda slumpmässiga värden"
+      "av_arrValsPlaceholder": "Skriv in dina värden eller lämna blankt för att använda slumpmässiga värden",
+      "av_c1": "For each pass, we will move left to right swapping adjacent elements as needed. Each pass moves the next largest element into its final position (these will be shown in yellow).",
+      "av_c2": "Starting pass ",
+      "av_c3": "For each element moving through the list",
+      "av_c4": "Compare elements",
+      "av_c5": "Swap",
+      "av_c6": "Done this pass. The last element processed is now in its final position.",
+      "av_c7": "Done sorting!"
     }
   },
   "code" : {

@@ -80,8 +80,6 @@ Now try for yourself to see if you understand how Insertion Sort works.
 
 .. avembed:: Exercises/Sorting/InssortPRO.html ka
 
-Now we move to the discussion of Insertion Sort analysis.
-
 .. showhidecontent:: InsertionSortAnalysis
 
    The body of ``inssort`` consists of two nested

@@ -108,8 +108,6 @@ The following visualization illustrates the process.
    that explains more clearly why this translates to
    :math:`\Theta(n \log n)`.
 
-Now we move to the running time analysis of Radix Sort.   
-   
 .. showhidecontent:: RadixSortAnalysis   
    
    This algorithm requires :math:`k` passes over the list of :math:`n`
