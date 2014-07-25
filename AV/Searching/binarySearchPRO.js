@@ -120,7 +120,7 @@ $(document).ready(function () {
   function paintGrey(array, first, last) {
     array.addClass(
       function (index) { return index >= first && index <= last; },
-      "greybg"
+      "unused"
     );
   }
 

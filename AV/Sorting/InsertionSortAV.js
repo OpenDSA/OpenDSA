@@ -12,11 +12,11 @@ $(document).ready(function () {
     av.umsg(interpret("av_c3"));
     pseudo.setCurrentLine("sig");
     arr.highlight([0]);
-    arr.addClass(1, "redback");
+    arr.addClass(1, "processing");
     arr.addClass(1, "whitetext");
     av.step();
     for (i = 1; i < arr.size(); i++) { // Insert i'th record
-      arr.addClass(i, "redback");
+      arr.addClass(i, "processing");
       arr.addClass(i, "whitetext");
       av.umsg(interpret("av_c4") + i);
       pseudo.setCurrentLine("outloop");
@@ -25,13 +25,13 @@ $(document).ready(function () {
       pseudo.setCurrentLine("inloop");
       av.step();
       for (j = i; (j > 0) && (arr.value(j) < arr.value(j - 1)); j--) {
-        arr.addClass(j, "redback");
+        arr.addClass(j, "processing");
         arr.addClass(j, "whitetext");
         arr.swap(j, j - 1); // swap the two indices
 	arr.highlight(j).unhighlight(j - 1); // set highlights correctly
-	arr.removeClass(j, "redback");
+	arr.removeClass(j, "processing");
         arr.removeClass(j, "whitetext");
-	arr.addClass(j - 1, "redback");
+	arr.addClass(j - 1, "processing");
         arr.addClass(j - 1, "whitetext");
         av.umsg(interpret("av_c6"));
         pseudo.setCurrentLine("swap");
@@ -61,7 +61,7 @@ $(document).ready(function () {
       av.displayInit();
       inssort();
       arr.unhighlight();
-      arr.removeClass(true, "redback");
+      arr.removeClass(true, "processing");
       arr.removeClass(true, "whitetext");
       av.recorded(); // mark the end
     }

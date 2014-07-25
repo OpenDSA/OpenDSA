@@ -1,25 +1,33 @@
-/* CSS class to mark that a JSAV item is currently processed by the algorithm */
+/* Mark that an item (such as an array cell) is currently being processed
+   by the algorithm. This color is a medium blue. */
 .processing {
-  background-color: #ddf;
+  background-color: #ddf !important;
 }
 
-.redback {
-  background-color: #f00;
-}
-
-.jsavnode.sorted {
-  background-color: #ffffcc;
-}
-
-.greytext {
-  color: #ccc;
-}
-
-.greybg {
+/* For array cells and the like that are unused */
+.unused {
   background-color: #eee;
 }
 
-.jsavnode .jsavhorizontalarray .jsavvalue { /* Make array cell values center vertically */
+/* For marking a node (array cell, etc) as "special". This is a light red. */
+.special {
+  background-color: #FFB6C1 !important;
+}
+
+/* For de-emphasizing the label/value of a node (array cell, etc). Light grey. */
+.deemph {
+  color: #ccc;
+}
+
+.redback {
+  background-color: #f00 !important;
+}
+
+.jsavnode.sorted {
+  background-color: #ffffcc !important;
+}
+
+.jsavnode .jsavhorizontalarray .jsavvalue { /* Center array cell values vertically */
   height: 30px;
 }
 
@@ -31,11 +39,11 @@
   max-height: 30px !important;
 }
 
-.jsavlist .jsavvalue { /* Make linked list cell values center vertically */
+.jsavlist .jsavvalue { /* Center linked list cell values vertically */
   height: 30px;
 }
 
-.jsavarray .jsavvalue { /* Make array cell values center vertically */
+.jsavarray .jsavvalue { /* Center array cell values vertically */
   height: 30px;
 }
 

@@ -10,7 +10,7 @@ $(document).ready(function () {
   var arr = av.ds.array(arrValues, {indexed: true, layout: "array"});
 
   // Slide 1
-  arr.addClass([5, 6, 7], "greybg");
+  arr.addClass([5, 6, 7], "unused");
   av.umsg(interpret("av_c1"));
   arr.highlight([0, 1, 2, 3, 4]);
   av.displayInit();

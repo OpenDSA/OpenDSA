@@ -17,7 +17,7 @@ $(document).ready(function () {
   av.umsg(interpret("av_c1"));
   arr.toggleArrow(8);
   av.displayInit();
-  arr.addClass([0, 15], "yellow");
+  arr.highlight([0, 15]);
 
   // Slide 2
   av.umsg(interpret("av_c2"));
@@ -26,56 +26,56 @@ $(document).ready(function () {
 
   // Slide 3
   av.umsg(interpret("av_c3"));
-  arr.addClass(7, "blue");
+  arr.addClass(7, "processing");
   pseudo.setCurrentLine("compute");
   av.step();
 
   // Slide 4
   av.umsg(interpret("av_c4"));
-  arr.removeClass(7, "blue").addClass(7, "yellow");
-  arr.removeClass(0, "yellow");
-  arr.addClass([0, 1, 2, 3, 4, 5, 6], "greytext");
+  arr.removeClass(7, "processing").highlight(7);
+  arr.unhighlight(0);
+  arr.addClass([0, 1, 2, 3, 4, 5, 6], "deemph");
   pseudo.setCurrentLine("right");
   av.step();
 
   // Slide 5
   av.umsg(interpret("av_c5"));
-  arr.addClass(11, "blue");
+  arr.addClass(11, "processing");
   pseudo.setCurrentLine("compute");
   av.step();
 
   // Slide 6
   av.umsg(interpret("av_c6"));
-  arr.removeClass(11, "blue").addClass(11, "yellow");
-  arr.removeClass(15, "yellow");
-  arr.addClass([12, 13, 14, 15], "greytext");
+  arr.removeClass(11, "processing").highlight(11);
+  arr.unhighlight(15);
+  arr.addClass([12, 13, 14, 15], "deemph");
   pseudo.setCurrentLine("left");
   av.step();
 
   // Slide 7
   av.umsg(interpret("av_c7"));
-  arr.addClass(9, "blue");
+  arr.addClass(9, "processing");
   pseudo.setCurrentLine("compute");
   av.step();
 
   // Slide 8
   av.umsg(interpret("av_c8"));
-  arr.removeClass(9, "blue").addClass(9, "yellow");
-  arr.removeClass(11, "yellow");
-  arr.addClass([10, 11], "greytext");
+  arr.removeClass(9, "processing").highlight(9);
+  arr.unhighlight(11);
+  arr.addClass([10, 11], "deemph");
   pseudo.setCurrentLine("left");
   av.step();
 
   // Slide 9
   av.umsg(interpret("av_c9"));
-  arr.addClass(8, "blue");
+  arr.addClass(8, "processing");
   pseudo.setCurrentLine("compute");
   av.step();
 
   // Slide 10
   av.umsg(interpret("av_c10"));
-  arr.removeClass(8, "blue");
-  arr.addClass(8, "pink");
+  arr.removeClass(8, "processing");
+  arr.addClass(8, "special");
   pseudo.setCurrentLine("found");
   av.step();
 
@@ -90,8 +90,8 @@ $(document).ready(function () {
   pseudo.unhighlight("while");
   pseudo.unhighlight("return");
   av.umsg(interpret("av_c12"));
-  arr.removeClass(true, "greytext");
-  arr.removeClass([7, 9], "yellow");
-  arr.addClass([7, 9, 11], "pink");
+  arr.removeClass(true, "deemph");
+  arr.unhighlight([7, 9]);
+  arr.addClass([7, 9, 11], "special");
   av.recorded();
 });

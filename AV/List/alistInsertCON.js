@@ -46,7 +46,7 @@ $(document).ready(function () {
   labelListSize.hide();
 
   // Slide 1: set the background of empty elements to gray
-  arr.addClass([5, 6, 7], "greybg");
+  arr.addClass([5, 6, 7], "unused");
   av.umsg(interpret("av_c1"));
   av.displayInit();
 
@@ -70,7 +70,7 @@ $(document).ready(function () {
       av.effects.copyValue(arr, i, arr, i + 1);
     }
   }
-  arr.removeClass([5], "greybg");
+  arr.removeClass([5], "unused");
   arr.value(0, "");
   arrow1.hide();
   arrow2.show();
