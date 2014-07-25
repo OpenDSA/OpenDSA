@@ -39,7 +39,7 @@
             "long_name": "Binary Search Proficiency Exercise",
             "exer_options": {
               "JXOP-feedback": "continuous",
-              "JXOP-code": ""
+              "JXOP-code": "none"
             },
             "required": true,
             "points": 0.0,

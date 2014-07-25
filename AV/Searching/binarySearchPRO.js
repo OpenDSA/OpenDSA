@@ -154,7 +154,7 @@ $(document).ready(function () {
       code;
 
   console.log("PARAMS: " + JSON.stringify(PARAMS));
-  if ((PARAMS["JXOP-code"] !== undefined) && (PARAMS["JXOP-code"] !== "")) {
+  if (PARAMS["JXOP-code"] !== undefined) {
     code = config.code;
   }
   if (PARAMS["JXOP-feedback"] === undefined) { // Default to "atend" grading

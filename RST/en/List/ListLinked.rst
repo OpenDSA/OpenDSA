@@ -144,8 +144,6 @@ the end, and inserting to an empty list.
 Implementations for the remaining operations each require
 :math:`\Theta(1)` time.
 
-.. avembed:: Exercises/List/LstLnkdSumm.html ka
-
 .. odsascript:: AV/List/llistCON.js
 .. odsascript:: AV/List/llistRepCON.js
 .. odsascript:: AV/List/llistBadCON.js

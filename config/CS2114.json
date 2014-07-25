@@ -175,12 +175,6 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "LstLnkdSumm": {
-            "long_name": "Linked List Summary Exercise",
-            "required": true,
-            "points": 2,
-            "threshold": 6
           }
         }
       },
@@ -192,6 +186,12 @@
             "required": true,
             "points": 1,
             "threshold": 3
+          },
+          "LstLnkdSumm": {
+            "long_name": "List Summary Questions",
+            "required": true,
+            "points": 2,
+            "threshold": 6
           }
         }
       },
@@ -689,13 +689,13 @@
       "Sorting/BubbleSort": {
         "long_name": "Bubble Sort",
         "exercises": {
-          "BubsortCON1": {
+          "bubblesortS1CON": {
             "long_name": "Bubble Sort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "BubsortCON2": {
+          "bubblesortS2CON": {
             "long_name": "Bubble Sort Slideshow 2",
             "required": false,
             "points": 0.0,

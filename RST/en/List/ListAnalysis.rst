@@ -155,3 +155,5 @@ quarter full.
 To analyze the overall cost of dynamic array operations over time,
 we need to use a technique known as
 :ref:`amortized analysis <amortized analysis> <AmortAnal>`.
+
+.. avembed:: Exercises/List/LstLnkdSumm.html ka

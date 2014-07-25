@@ -375,12 +375,6 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "LstLnkdSumm": {
-            "long_name": "Linked List Summary Exercise",
-            "required": true,
-            "points": 2,
-            "threshold": 6
           }
         }
       },
@@ -392,6 +386,12 @@
             "required": true,
             "points": 1,
             "threshold": 3
+          },
+          "LstLnkdSumm": {
+            "long_name": "Linked List Summary Exercise",
+            "required": true,
+            "points": 2,
+            "threshold": 6
           }
         }
       },
