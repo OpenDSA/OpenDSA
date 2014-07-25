@@ -879,12 +879,12 @@
       },
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
-		"sections": {
+        "sections": {
           "InsertionSortAnalysis": {
-            "long_name": "Insertion Sort Analysis",
+            "long_name": "Insertion Sort Analysis Discussion",
             "showhide": "hide"
           }
-		},
+        },
         "exercises" : {
           "InsertionSortP1CON": {
             "long_name": "Insertion Sort Slideshow 1",
@@ -927,20 +927,20 @@
       },
       "Sorting/BubbleSort": {
         "long_name": "Bubble Sort",
-		"sections": {
+        "sections": {
           "BubbleSortAnalysis": {
-            "long_name": "Bubble Sort Analysis",
+            "long_name": "Bubble Sort Analysis Discussion",
             "showhide": "hide"
           }
-		},
+        },
         "exercises": {
-          "BubsortCON1": {
+          "bubblesortS1CON": {
             "long_name": "Bubble Sort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "BubsortCON2": {
+          "bubblesortS2CON": {
             "long_name": "Bubble Sort Slideshow 2",
             "required": false,
             "points": 0.0,
@@ -969,12 +969,12 @@
       },
       "Sorting/SelectionSort": {
         "long_name": "Selection Sort",
-		"sections": {
+        "sections": {
           "SelectionSortAnalysis": {
-            "long_name": "Selection Sort Analysis",
+            "long_name": "Selection Sort Analysis Discussion",
             "showhide": "hide"
           }
-		},
+        },
         "exercises": {
           "SelsortCON1": {
             "long_name": "Selection Sort Slideshow 1",
@@ -1122,12 +1122,12 @@
       },
       "Sorting/Mergesort": {
         "long_name": "Mergesort Concepts",
-		"sections": {
+        "sections": {
           "MergeSortAnalysis": {
-            "long_name": "Merge Sort Analysis",
+            "long_name": "Merge Sort Analysis Discussion",
             "showhide": "hide"
           }
-		},
+        },
         "exercises": {
           "mergesortAV": {
             "long_name": "Mergesort Visualization",
@@ -1181,12 +1181,12 @@
       },
       "Sorting/Quicksort": {
         "long_name": "Quicksort",
-		"sections": {
+        "sections": {
           "QuickSortAnalysis": {
-            "long_name": "Quick Sort Analysis",
+            "long_name": "Quick Sort Analysis Discussion",
             "showhide": "hide"
           }
-		},
+        },
         "exercises": {
           "QuicksortPivotPRO": {
             "long_name": "Quicksort Pivot Proficiency Exercise",
@@ -1229,12 +1229,12 @@
       },
       "Sorting/Heapsort": {
         "long_name": "Heapsort",
-		"sections": {
+        "sections": {
           "HeapSortAnalysis": {
-            "long_name": "Heap Sort Analysis",
+            "long_name": "Heap Sort Analysis Discussion",
             "showhide": "hide"
           }
-		},
+        },
         "exercises": {
           "heapsortCON": {
             "long_name": "Heapsort Slideshow",
@@ -1265,12 +1265,12 @@
       "Sorting/BinSort": {
         "long_name": "Binsort",
         "dispModComp": true,
-		"sections": {
+        "sections": {
           "BinSortAnalysis": {
-            "long_name": "Bin Sort Analysis",
+            "long_name": "Bin Sort Analysis Discussion",
             "showhide": "hide"
           }
-		},
+        },
         "exercises": {
           "BinsortCON1": {
             "long_name": "Binsort Slideshow 1",
@@ -1288,12 +1288,12 @@
       },
       "Sorting/RadixSort": {
         "long_name": "Radix Sort",
-		"sections": {
+        "sections": {
           "RadixSortAnalysis": {
-            "long_name": "Radix Sort Analysis",
+            "long_name": "Radix Sort Analysis Discussion",
             "showhide": "hide"
           }
-		},
+        },
         "exercises": {
           "radixLinkAV": {
             "long_name": "Radix Sort Linked Visualization",

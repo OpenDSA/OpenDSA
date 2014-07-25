@@ -9,24 +9,24 @@
   // Bubble Sort
   function bubblesort() {
     var i, j;
-    av.umsg("For each pass, we will move left to right swapping adjacent elements as needed. Each pass moves the next largest element into its final position (these will be shown in lighter color).");
+    av.umsg(interpret("av_c1"));
     pseudo.setCurrentLine("sig");
     av.step();
     for (i = 0; i < arr.size() - 1; i++) {
-      av.umsg("Starting pass " + i);
+      av.umsg(interpret("av_c2") + i);
       pseudo.setCurrentLine("outloop");
       av.step();
-      av.umsg("For each element moving through the list");
+      av.umsg(interpret("av_c3"));
       pseudo.setCurrentLine("inloop");
       av.step();
       arr.addClass(0, "processing");
       for (j = 1; j < arr.size() - i; j++) {
         arr.addClass(j, "processing");
-        av.umsg("Compare elements");
+        av.umsg(interpret("av_c4"));
         pseudo.setCurrentLine("compare");
         av.step();
         if (arr.value(j - 1) > arr.value(j)) {
-          av.umsg("Swap");
+          av.umsg(interpret("av_c5"));
           pseudo.setCurrentLine("swap");
           arr.swap(j - 1, j);
           av.step();
@@ -35,10 +35,10 @@
       }
       arr.removeClass(j - 1, "processing");
       arr.highlight(j - 1);
-      av.umsg("Done this pass. The last element processed is now in its final position.");
+      av.umsg(interpret("av_c6"));
       av.step();
     }
-    av.umsg("Done sorting!");
+    av.umsg(interpret("av_c7"));
     arr.unhighlight(true);
     pseudo.setCurrentLine("end");
     av.step();
@@ -55,13 +55,10 @@
 
       // Create a new array using the layout the user has selected
       arr = av.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
-      pseudo = av.code({url: "../../SourceCode/Processing/Sorting/Bubblesort.pde",
-                          startAfter: "/* *** ODSATag: Bubblesort *** */",
-                          endBefore: "/* *** ODSAendTag: Bubblesort *** */"});
+      pseudo = av.code(code);
       av.umsg("Starting Bubble Sort");
       av.displayInit();
       bubblesort();
-      //      arr.removeClass(true, "processing");
       av.recorded(); // mark the end
     }
   }

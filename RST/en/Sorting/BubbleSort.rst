@@ -71,8 +71,6 @@ Now try for yourself to see if you understand how Bubble Sort works.
 
 .. avembed:: Exercises/Sorting/BubsortPRO.html ka
 
-Here is Bubble Sort's running time analysis
-
 .. showhidecontent:: BubbleSortAnalysis
 
    Determining number of comparisons done by Bubble Sort is easy.

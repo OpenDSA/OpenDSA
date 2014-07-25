@@ -139,7 +139,7 @@ $(document).ready(function () {
   }
 
   // Set click handlers
-  $('#about').click(about);
+  $("#about").click(about);
 
   var arraySize = 20,
       key,
@@ -148,17 +148,20 @@ $(document).ready(function () {
       keyholder,
       $findLabel,
       pseudo,
-      config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
+      config = ODSA.UTILS.loadLangData({"av_container": "jsavcontainer"}),
       interpret = config.interpreter,
       av = new JSAV($("#container")),
       code;
 
-  if (PARAMS['JXOP-code'] !== undefined) {
+  console.log("PARAMS: " + JSON.stringify(PARAMS));
+  if ((PARAMS["JXOP-code"] !== undefined) && (PARAMS["JXOP-code"] !== "")) {
     code = config.code;
   }
-
+  if (PARAMS["JXOP-feedback"] === undefined) { // Default to "atend" grading
+    window.JSAV_EXERCISE_OPTIONS.feedback = "atend";
+  }
   av.recorded(); // we are not recording an AV with an algorithm
   var exercise = av.exercise(modelSolution, initialize,
-                               {feedback: "atend", modelDialog: {width: 780}});
+                             {modelDialog: {width: 780}});
   exercise.reset();
 });

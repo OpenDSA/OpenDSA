@@ -61,8 +61,6 @@ A complete implementation is as follows.
 .. codeinclude:: Sorting/Heapsort 
    :tag: Heapsort        
 
-Here is Heap Sort's running time analysis
-   
 .. showhidecontent:: HeapSortAnalysis   
 
    Because :ref:`building the heap <heap> <Heaps>`

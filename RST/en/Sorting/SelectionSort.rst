@@ -62,8 +62,6 @@ Now try for yourself to see if you understand how Selection Sort works.
 
 .. avembed:: Exercises/Sorting/SelsortPRO.html ka
 
-Now Selection Sort's running time analysis is presented.
-
 .. showhidecontent:: SelectionSortAnalysis
 
    Any algorithm can be written in slightly different ways.

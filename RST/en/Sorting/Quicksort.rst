@@ -189,8 +189,6 @@ Quicksort.
 
 .. avembed:: AV/Sorting/quicksortPRO.html pe
 
-Here is the full running time analysis of the QuickSort Algorithm
-
 .. showhidecontent:: QuickSortAnalysis
 
    To analyze Quicksort, we first analyze the ``findpivot`` and

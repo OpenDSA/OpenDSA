@@ -80,8 +80,6 @@ values fall in the range from 0 to ``MaxKeyValue``.
 .. inlineav:: BinsortCON2 ss
    :output: show
 
-The analysis of Bin Sort is presented here.   
-   
 .. showhidecontent:: BinSortAnalysis   
 
    The total work required is simply that needed to place each record
