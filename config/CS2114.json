@@ -647,25 +647,25 @@
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
         "exercises" : {
-          "InsertionSortP1CON": {
+          "insertionsortS1CON": {
             "long_name": "Insertion Sort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "InsertionSortP2CON": {
+          "insertionsortS2CON": {
             "long_name": "Insertion Sort Slideshow 2",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "InsertionSortP3CON": {
+          "insertionsortS3CON": {
             "long_name": "Insertion Sort Slideshow 3",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "InsertionSortAV": {
+          "insertionsortAV": {
             "long_name": "Insertion Sort Visualization",
             "required": false,
             "points": 0,

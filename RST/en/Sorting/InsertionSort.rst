@@ -45,8 +45,7 @@ Nearly always we want to sort more complex records that each have a
 In such cases we must :ref:`have a way <comparable> <Comparison>` to
 associate a key value with a record.
 The sorting algorithms will simply assume that the records are
-:term:`comparable`.
-)
+:term:`comparable`.)
 
 Here is the start to the Insertion Sort process.
 
