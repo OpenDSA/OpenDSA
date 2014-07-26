@@ -892,8 +892,8 @@ Glossary
       General tree nodes tend to be harder to implement for this reason.
 
    graph
-      :to-term: edges :label: contains
-      :to-term: vertices :label: contains
+      :to-term: edges <edge> :label: contains
+      :to-term: vertices <vertex> :label: contains
       :to-term: adjacency matrix :label: implemented by
       :to-term: adjacency list :label: implemented by
       :to-term: minimal-cost spanning tree :label: problems

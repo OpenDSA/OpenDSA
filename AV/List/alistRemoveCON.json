@@ -1,12 +1,12 @@
 {
   "translations" :{
     "en": {
-      "av_c1": "Here is a list containing five elements. We will remove the value 12 in position 1 of the array, which is the current position",
-      "av_c2": "Copy  the  element to be deleted",
-      "av_c3": "Shift all elements after current element one position to the left",
-      "av_c4": "Decrease the list size by 1, from 5 to 4",
-      "av_c5": "Return the deleted element",
-      "av_c6": "Since we might have to shift all of the remaining elements, deletion from an array-based list is $\\Theta(n)$ in the worst case if there are $n$ elements in the list"
+      "av_c1": "Here is a list containing five elements. We will remove the value 12 in position 1 of the array, which is the current position.",
+      "av_c2": "Copy  the  element to be deleted.",
+      "av_c3": "Shift all elements after current element one position to the left.",
+      "av_c4": "Decrease the list size by 1, from 5 to 4.",
+      "av_c5": "Return the deleted element.",
+      "av_c6": "Since we might have to shift all of the remaining elements, deletion from an array-based list is $\\Theta(n)$ in the worst case if there are $n$ elements in the list."
     }
   },
   "code" : {

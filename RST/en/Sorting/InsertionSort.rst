@@ -50,18 +50,18 @@ The sorting algorithms will simply assume that the records are
 
 Here is the start to the Insertion Sort process.
 
-.. inlineav:: InsertionSortP1CON ss
+.. inlineav:: insertionsortS1CON ss
    :output: show
 
 Next, process the record in position 2.
 Swap it to the left until it reaches a value smaller than it is.
 
-.. inlineav:: InsertionSortP2CON ss
+.. inlineav:: insertionsortS2CON ss
    :output: show
 
 And now the record in position 3.
 
-.. inlineav:: InsertionSortP3CON ss
+.. inlineav:: insertionsortS3CON ss
    :output: show
 
 This continues on with each record in turn.
@@ -74,7 +74,7 @@ encountered, ``inssort`` is done with that record because all
 records to its left in the array must have smaller keys.
 The following visualization puts it all together.
 
-.. avembed:: AV/Sorting/InsertionSortAV.html ss
+.. avembed:: AV/Sorting/insertionsortAV.html ss
 
 Now try for yourself to see if you understand how Insertion Sort works.
 
@@ -204,6 +204,6 @@ See
 for a discussion on how the relative costs of search and insert can
 affect what is the best sort algorithm to use.
 
-.. odsascript:: AV/Sorting/InsertionSortP1CON.js
-.. odsascript:: AV/Sorting/InsertionSortP2CON.js
-.. odsascript:: AV/Sorting/InsertionSortP3CON.js
+.. odsascript:: AV/Sorting/insertionsortS1CON.js
+.. odsascript:: AV/Sorting/insertionsortS2CON.js
+.. odsascript:: AV/Sorting/insertionsortS3CON.js

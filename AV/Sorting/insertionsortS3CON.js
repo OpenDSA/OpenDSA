@@ -1,7 +1,7 @@
 /*global ODSA */
 "use strict";
 $(document).ready(function () {
-  var av_name = "InsertionSortP3CON";
+  var av_name = "insertionsortS3CON";
   var interpret = ODSA.UTILS.loadLangData({"av_name": av_name}).interpreter;
 
   var theArray3 =  [10, 15, 20, 54, 55, 11, 78, 14];

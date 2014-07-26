@@ -1,7 +1,7 @@
 /*global ODSA */
 "use strict";
 $(document).ready(function () {
-  var av_name = "InsertionSortP1CON";
+  var av_name = "insertionsortS1CON";
   var interpret = ODSA.UTILS.loadLangData({"av_name": av_name}).interpreter;
 
   var theArray1 = [20, 10, 15, 54, 55, 11, 78, 14];

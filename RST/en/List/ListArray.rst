@@ -9,10 +9,7 @@
    :satisfies: array-based list
    :topic: Lists
    
-.. odsalink:: AV/List/alistVarsCON.css
-.. odsalink:: AV/List/alistInsertCON.css
-.. odsalink:: AV/List/alistAppendCON.css
-.. odsalink:: AV/List/alistRemoveCON.css
+.. odsalink:: AV/List/alistCON.css
 
 Array-Based List Implementation
 ===============================
