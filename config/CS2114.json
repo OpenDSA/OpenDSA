@@ -731,13 +731,13 @@
           }
         },
         "exercises": {
-          "SelsortCON1": {
+          "selectionsortS1CON": {
             "long_name": "Selection Sort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "SelsortCON2": {
+          "selectionsortS2CON": {
             "long_name": "Selection Sort Slideshow 2",
             "required": false,
             "points": 0.0,

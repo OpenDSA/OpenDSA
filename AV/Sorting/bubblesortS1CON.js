@@ -11,6 +11,7 @@ $(document).ready(function () {
 
   av.umsg(interpret("av_c1"));
   av.displayInit();
+
   arr.addClass(0, "processing");
   for (j = 1; j < arr.size(); j++) {
     arr.addClass(j, "processing");

@@ -43,14 +43,14 @@ Here is an implementation for Selection Sort.
 
 Consider the example of the following array.
 
-.. inlineav:: SelsortCON1 ss
+.. inlineav:: selectionsortS1CON ss
    :output: show
 
 Now we continue with the second pass.
 However, since the largest record is already at the right end,
 we will not need to look at it again.
 
-.. inlineav:: SelsortCON2 ss
+.. inlineav:: selectionsortS2CON ss
    :output: show
 
 Selection Sort continues in this way until the entire array is sorted.
@@ -120,4 +120,5 @@ Selection Sort.
 
 .. avembed:: Exercises/Sorting/SelsortSumm.html ka
 
-.. odsascript:: AV/Sorting/selectionsortCON.js
+.. odsascript:: AV/Sorting/selectionsortS1CON.js
+.. odsascript:: AV/Sorting/selectionsortS2CON.js
