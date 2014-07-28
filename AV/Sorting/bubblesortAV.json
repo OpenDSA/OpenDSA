@@ -57,6 +57,7 @@
       "url": "../../SourceCode/Processing/Sorting/Bubblesort.pde",
       "startAfter": "/* *** ODSATag: Bubblesort *** */",
       "endBefore": "/* *** ODSAendTag: Bubblesort *** */",
+      "lineNumbers": false,
       "tags": {
         "sig": 1,
         "outloop": 2,

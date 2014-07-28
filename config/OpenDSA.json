@@ -8,6 +8,7 @@
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
+  "build_cmap": true,
   "chapters": {
     "Preface": {
       "Intro": {
@@ -161,12 +162,6 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "LstLnkdSumm": {
-            "long_name": "Linked List Summary Exercise",
-            "required": true,
-            "points": 2,
-            "threshold": 6
           }
         }
       },
@@ -178,6 +173,12 @@
             "required": true,
             "points": 1,
             "threshold": 3
+          },
+          "LstLnkdSumm": {
+            "long_name": "Linked List Summary Exercise",
+            "required": true,
+            "points": 2,
+            "threshold": 6
           }
         }
       },
@@ -293,13 +294,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "lstackPush": {
+          "lstackPushPRO": {
             "long_name": "Linked Stack Push Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "lstackPop": {
+          "lstackPopPRO": {
             "long_name": "Linked Stack Pop Exercise",
             "required": true,
             "points": 1,
@@ -361,13 +362,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "aqueueEnqueue": {
+          "aqueueEnqueuePRO": {
             "long_name": "Array-based Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "aqueueDequeue": {
+          "aqueueDequeuePRO": {
             "long_name": "Array-based Queue Dequeue Exercise",
             "required": true,
             "points": 1,
@@ -396,13 +397,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "lqueueEnqueue": {
+          "lqueueEnqueuePRO": {
             "long_name": "Linked Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "lqueueDequeue": {
+          "lqueueDequeuePRO": {
             "long_name": "Linked Queue Dequeue Exercise",
             "required": true,
             "points": 1,
@@ -603,6 +604,12 @@
       },
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
+        "sections": {
+          "InsertionSortAnalysis": {
+            "long_name": "Insertion Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises" : {
           "InsertionSortP1CON": {
             "long_name": "Insertion Sort Slideshow 1",
@@ -645,14 +652,20 @@
       },
       "Sorting/BubbleSort": {
         "long_name": "Bubble Sort",
+        "sections": {
+          "BubbleSortAnalysis": {
+            "long_name": "Bubble Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
-          "BubsortCON1": {
+          "bubblesortS1CON": {
             "long_name": "Bubble Sort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "BubsortCON2": {
+          "bubblesortS2CON": {
             "long_name": "Bubble Sort Slideshow 2",
             "required": false,
             "points": 0.0,
@@ -681,14 +694,20 @@
       },
       "Sorting/SelectionSort": {
         "long_name": "Selection Sort",
+        "sections": {
+          "SelectionSortAnalysis": {
+            "long_name": "Selection Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
-          "SelsortCON1": {
+          "selectionsortS1CON": {
             "long_name": "Selection Sort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "SelsortCON2": {
+          "selectionsortS2CON": {
             "long_name": "Selection Sort Slideshow 2",
             "required": false,
             "points": 0.0,
@@ -828,6 +847,12 @@
       },
       "Sorting/Mergesort": {
         "long_name": "Mergesort Concepts",
+        "sections": {
+          "MergeSortAnalysis": {
+            "long_name": "Merge Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "mergesortAV": {
             "long_name": "Mergesort Visualization",
@@ -881,6 +906,12 @@
       },
       "Sorting/Quicksort": {
         "long_name": "Quicksort",
+        "sections": {
+          "QuickSortAnalysis": {
+            "long_name": "Quick Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "QuicksortPivotPRO": {
             "long_name": "Quicksort Pivot Proficiency Exercise",
@@ -923,6 +954,12 @@
       },
       "Sorting/Heapsort": {
         "long_name": "Heapsort",
+        "sections": {
+          "HeapSortAnalysis": {
+            "long_name": "Heap Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "heapsortCON": {
             "long_name": "Heapsort Slideshow",
@@ -953,6 +990,12 @@
       "Sorting/BinSort": {
         "long_name": "Binsort",
         "dispModComp": true,
+        "sections": {
+          "BinSortAnalysis": {
+            "long_name": "Bin Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "BinsortCON1": {
             "long_name": "Binsort Slideshow 1",
@@ -970,6 +1013,12 @@
       },
       "Sorting/RadixSort": {
         "long_name": "Radix Sort",
+        "sections": {
+          "RadixSortAnalysis": {
+            "long_name": "Radix Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "radixLinkAV": {
             "long_name": "Radix Sort Linked Visualization",
