@@ -60,6 +60,32 @@
         bh.clear();
       }
       bh = jsav.ds.binheap(initData, { nodegap: 25, compare: function (a, b) { return a - b; }});
+      clickHandler.addTree(bh._tree, {effect: "swap"
+// was just trying some things so ignore this
+ /*,
+        onDrop: function () {
+           // grade using the clickHandler only if the evaluator won't run
+           // if the evaluator does run, it will mark the steps as gradeable
+           // clickHandler won't grade if the returned value is false
+	   // swapping from the tree to an array or within the tree
+	   //if(clickHandler.getSelected().node != null)
+	   
+           	//alert("VALUE: "+this.value()+" Swapped: "+clickHandler.getSelected().node.value()+
+ 		//" Swag: "+clickHandler.getDsIndex(bh._tree));
+           // swap within tree
+	   if(clickHandler.getDsIndex(clickHandler.getSelected().struct) == 2)
+	   {
+                alert("Index1: "+this+" Index2: "+clickHandler.getDsIndex(clickHandler.getSelected().struct));
+	   }
+	   // swap from array
+	   else
+	   {
+		
+	   }
+		//bh.swap(this, clickHandler.getSelected().index);
+           return true;
+      }
+	*/});
       clickHandler.addArray(bh, {effect: "swap"});
       swapIndex = jsav.variable(-1);
       jsav.displayInit();
@@ -169,15 +195,14 @@
 
     exercise = jsav.exercise(model, init,
                              { compare:  { css: "background-color" },
-                               controls: $('.jsavexercisecontrols'),
-                               fix: fixState });
+                               controls: $('.jsavexercisecontrols'), });
+                               //fix: fixState });
     exercise.reset();
 
-    $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function () {
-      var index = $(this).data("jsav-heap-index") - 1;
-      handleClick(index);
-
-    });
+    //$(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function () {
+    //  var index = $(this).data("jsav-heap-index") - 1;
+    //  handleClick(index);
+    //});
     $("#decrement").click(function () {
       if (bh.heapsize() === 0) {
         alert("Heapsize is already zero, cannot decrement!");
