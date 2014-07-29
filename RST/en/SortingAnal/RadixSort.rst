@@ -118,6 +118,7 @@ And the following visualization illustrates the running time of RadixSort
    
 .. TODO::
    :type: Review the discussion of RadixSort Analysis
+
    This algorithm requires :math:`k` passes over the list of :math:`n`
    numbers in base :math:`r`, with :math:`\Theta(n + r)` work done at
    each pass.
@@ -208,9 +209,9 @@ then some care will be necessary in implementation.
 In particular, Radix Sort will need to be careful about deciding when
 the "last digit" has been found to distinguish among real numbers,
 or the last character in variable length strings.
-Implementing the concept of Radix Sort with the trie data
-structure (Module :numref:`<Trie>`) is most appropriate for these
-situations.
+Implementing the concept of Radix Sort with the
+:ref:`alphabet trie <trie> <Trie>` data structure is most appropriate
+for these situations.
 
 Now for some review questions.
 

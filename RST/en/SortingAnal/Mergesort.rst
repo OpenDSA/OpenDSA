@@ -97,46 +97,5 @@ Here is a visualization that illustrates the running time analysis of Merge Sort
 .. inlineav:: MergeSortAnalysisCON ss
    :output: show
 
-.. TODO::
-   :type: Review MergeSort's analysis discussion
-   
-   Analysis of Mergesort is straightforward, despite the fact that it is
-   a recursive algorithm.
-   The merging part takes time :math:`\Theta(i)` where :math:`i`
-   is the total length of the two sublists being merged.
-
-   .. _MergeSortFig:
-
-   .. odsafig:: Images/MrgSort.png
-      :width: 250
-      :alt: Mergesort
-      :capalign: center
-      :figwidth: 90%
-      :align: center
-
-      Mergesort example to illustrate analysis.
-
-   As we can see in Figure :num:`Figure #MergeSortFig`,
-   the list to be sorted is repeatedly split in half until sublists of
-   size 1 are reached.
-   These lists of size 1 are merged to be of size 2.
-   Lists of size 2 are then merged to become sublists of size 4,
-   and so on.
-   Thus, the depth of the recursion is :math:`\log n` for :math:`n`
-   records (assume for simplicity that :math:`n` is a power of two).
-   The first level of recursion can be thought of as working on one list
-   of size :math:`n`, the next level working on two lists of size
-   :math:`n/2`, the next on four lists of size :math:`n/4`, and so on.
-   The bottom of the recursion has :math:`n` lists of size 1.
-   Thus, :math:`n` lists of size 1 are merged (requiring
-   :math:`\Theta(n)` total steps), :math:`n/2` lists of size 2
-   (again requiring :math:`\Theta(n)` total steps), :math:`n/4` lists of
-   size 4, and so on.
-   At each of the :math:`\log n` levels of recursion, :math:`\Theta(n)`
-   work is done, for a total cost of :math:`\Theta(n \log n)`.
-   This cost is unaffected by the relative order of the
-   values being sorted, thus this analysis holds for the best, average,
-   and worst cases.
-
 .. odsascript:: AV/Sorting/mergesortCON.js
 .. odsascript:: AV/Development/MergeSortAnalysisCON.js

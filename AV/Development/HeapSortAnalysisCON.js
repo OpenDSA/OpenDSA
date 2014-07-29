@@ -49,6 +49,8 @@
   av.umsg("Since most of the heap nodes are located towards the bottom of the heap, the distance from the root to the current last position in the heap will be in most cases $\\lfloor\\log{n}\\rfloor$, thus this summation is bounded by $n\\log{n}$");
   av.step();
   av.umsg("Accordingly, the total running time of heapsort is $\\theta(n+n\\log{n}) = \\theta(n\\log{n})$");
+  av.step();
+  av.umsg("If all key values were equal, then Heapsort would cost Θ(n) in be best case because every call to removemax would result in calls to siftdown that complete in constant time because the new root value never swaps with its children.");
   av.recorded();
   function swap(index1, index2){
     var treeswap = function(index1, index2) {

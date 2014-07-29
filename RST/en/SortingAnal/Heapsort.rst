@@ -40,8 +40,8 @@ available at the start.
 This means that we do not necessarily need to insert one value at a
 time into the tree structure.
 
-:term:`Heapsort` is based on the :term:`heap` data structure presented in
-Module :numref:`Heaps <Heaps>`.
+:term:`Heapsort` is based on the
+:ref:`heap <heap> <Heaps>` data structure.
 Heapsort has all of the advantages just listed.
 The complete binary tree is balanced, its array representation is
 space efficient, and we can load all values into the tree at once,
@@ -51,9 +51,9 @@ unique key values is :math:`\Theta(n \log n)` in the best, average,
 and worst cases.
 It is not as fast as Quicksort in the average case (by a constant
 factor), but Heapsort has special properties that will make it
-particularly useful when sorting data sets too large to fit in main
-memory, as discussed in
-Module :numref:`External Sorting <ExternalSort>`.
+particularly useful for
+:ref:`external sorting <external sort> <ExternalSort>` algorithms,
+used when sorting data sets too large to fit in main memory.
 
 .. inlineav:: heapsortCON ss
    :output: show
@@ -67,20 +67,6 @@ Here is a visualization illustrating the running time analysis of Heap Sort
 
 .. inlineav:: HeapSortAnalysisCON ss
    :output: show
-
-.. TODO::
-   :type: Review HeapSort's analysis discussion
-   
-   Because building the heap takes :math:`\Theta(n)` time
-   (see Module :numref:`Heaps <Heaps>`)
-   and because :math:`n` deletions
-   of the maximum-valued record each take :math:`\Theta(\log n)` time,
-   we see that the entire Heapsort operation takes
-   :math:`\Theta(n \log n)` time in the worst and average cases.
-   If all key values were equal, then Heapsort would cost
-   :math:`\Theta(n)` in be best case because every call  to ``removemax``
-   would result in calls to ``siftdown`` that complete in constant time
-   because the new root value never swaps with its children.
 
 While typically slower than Quicksort by a constant factor
 (because unloading the heap using ``removemax`` is somewhat slower
@@ -98,8 +84,9 @@ required to find the :math:`k` largest-valued records using one of the
 other sorting methods described earlier (many of which would require
 sorting all of the array first).
 One situation where we are able to take advantage of this concept is
-in the implementation of Kruskal's minimal cost spanning tree (MST)
-algorithm of (see Module :numref:`Minimal Cost Spanning Trees <MCST>`).
+in the implementation of 
+:ref:`Kruskal's algorithm <Kruskal's algorithm> <MCST>` for
+:term:`minimal-cost spanning trees <minimal-cost spanning tree>`.
 That algorithm requires that edges be visited in ascending
 order (so, use a min-heap), but this process stops as soon as the MST
 is complete.

@@ -23,6 +23,10 @@
   background-color: #f00 !important;
 }
 
+.jsavcontainer {
+  border: 0;
+}
+
 .jsavnode.sorted {
   background-color: #ffffcc !important;
 }

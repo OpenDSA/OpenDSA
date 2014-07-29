@@ -12,6 +12,7 @@
 .. index:: ! sorting; lower bounds proof
 
 .. odsalink:: AV/Development/SortingLowerBoundCON.css
+
 Lower Bounds for Sorting
 ========================
 
@@ -74,8 +75,8 @@ Finally, knowing a lower bound for sorting gives us a lower
 bound in turn for other problems whose solution could be made to work
 as the basis for a sorting algorithm.
 The process of deriving asymptotic bounds for one problem from the
-asymptotic bounds of another is called a :term:`reduction`,
-a concept further explored in Module :numref:`<Reductions>`.
+asymptotic bounds of another is called a
+:ref:`reduction <reduction> <Reductions>`.
 
 Except for the Radix Sort and Binsort, all of the sorting algorithms
 we have studied make decisions based on the direct comparison of two
@@ -152,6 +153,7 @@ that might be the eventual result of the algorithm.
 
 .. TODO::
    :type: Review the discussion of Sorting lower bound proof
+
    When :math:`n = 3`, the first comparison made by Insertion Sort
    is between the second item in the input array (Y) and the first
    item in the array (X).
@@ -176,7 +178,7 @@ that might be the eventual result of the algorithm.
    Thus, in Figure :num:`Figure #Dectree` the left child of the root
    shows YXZ above the line.
    Next, the third value in the array is compared against the second
-  (i.e., Z is compared with X).
+   (i.e., Z is compared with X).
    Again, there are two possibilities.
    If Z is less than X, then these items should be swapped (the left
    branch).
@@ -240,9 +242,10 @@ that might be the eventual result of the algorithm.
    Here are some important facts worth remembering.
 
    * A binary tree of height :math:`n` can store at most :math:`2^n-1`
-   nodes.
+     nodes.
+
    * Equivalently, a tree with :math:`n` nodes requires at least
-   :math:`\lceil \log (n+1) \rceil` levels.
+     :math:`\lceil \log (n+1) \rceil` levels.
 
    What is the minimum number of nodes that must be in the decision tree
    for any comparison-based sorting algorithm for :math:`n` values?

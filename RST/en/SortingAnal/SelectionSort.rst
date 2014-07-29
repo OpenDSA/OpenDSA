@@ -45,14 +45,14 @@ Here is an implementation for Selection Sort.
 
 Consider the example of the following array.
 
-.. inlineav:: SelsortCON1 ss
+.. inlineav:: selectionsortS1CON ss
    :output: show
 
 Now we continue with the second pass.
 However, since the largest record is already at the right end,
 we will not need to look at it again.
 
-.. inlineav:: SelsortCON2 ss
+.. inlineav:: selectionsortS2CON ss
    :output: show
 
 Selection Sort continues in this way until the entire array is sorted.
@@ -78,18 +78,6 @@ Here we present a visualization illustrating the number of comparisons and swaps
 
 .. inlineav:: SelectionSortAnalysisCON ss
    :output: show
-
-.. TODO::
-   :type: Review SelectionSort's analysis discussion
-   
-   Thus, the number of comparisons is still
-   :math:`\Theta(n^2)`,
-   but the number of swaps is much less than that required by Bubble Sort.
-   Selection Sort is particularly advantageous when the cost to do a swap
-   is high, for example, when the record values are long strings or other
-   large records.
-   Selection Sort is more efficient than Bubble Sort (by a constant
-   factor) in most other situations as well.
 
 There is another approach to keeping the cost of swapping records low,
 and it can be used by any sorting algorithm even when the records are
@@ -129,5 +117,6 @@ Selection Sort.
 
 .. avembed:: Exercises/Sorting/SelsortSumm.html ka
 
-.. odsascript:: AV/Sorting/selectionsortCON.js
+.. odsascript:: AV/Sorting/selectionsortS1CON.js
+.. odsascript:: AV/Sorting/selectionsortS2CON.js
 .. odsascript:: AV/Development/SelectionSortAnalysisCON.js

@@ -162,17 +162,10 @@ bound for the recursive calls to ``qsort`` can be determined.
 
 .. _PartitionFig:
 
-.. TODO::
-   :type: Slideshow
+And here is a visualization illustrating the running time analysis of the partition function
 
-   Explain here why the cost of Partition is linear.
-   The basic idea is that, in the worst case, there is no inward
-   movement of the ``left`` and ``right`` indices until a swap is
-   performed, at which point each has to move inward a step. So at
-   most n/2 iterations of swap and inward movement can
-   occur. Alternatively, a given inner while loop can move its pointer
-   inward multiple steps, but then that will reduce the future
-   movement that is possible.
+.. inlineav:: QuickSortPartitionAnalysisCON ss
+   :output: show
 
 Now for some partition practice.
 
@@ -192,12 +185,6 @@ Here is a complete proficiency exercise to see how well you understand
 Quicksort.
 
 .. avembed:: AV/Sorting/quicksortPRO.html pe
-
-
-And here is a visualization illustrating the running time analysis of the partition function
-
-.. inlineav:: QuickSortPartitionAnalysisCON ss
-   :output: show
 
 
 .. TODO::
@@ -237,26 +224,6 @@ Now we present a visualization illustrating the worst case running time of Quick
 .. inlineav:: QuickSortWorstCaseCON ss
    :output: show
    
-.. TODO::
-   :type: Review QuickSort's WorstCase analysis discussion
-   
-   The worst case will occur when the pivot does a poor job of breaking
-   the array, that is, when there are no records in one partition, and
-   :math:`n-1` records in the other.
-   In this case, the divide and conquer
-   strategy has done a poor job of
-   dividing, so the conquer phase will work on a subproblem only one
-   less than the size of the original problem.
-   If this happens at each partition step, then the total cost of the
-   algorithm will be
-
-   .. math::
-
-      \sum_{k=1}^n k = \Theta(n^2).
-
-   So in the worst case, Quicksort is :math:`\Theta(n^2)`.
-   
-   
 This is terrible, no better than Bubble Sort.
 When will this worst case occur?
 Only when each pivot yields a bad partitioning of the array.
@@ -271,22 +238,6 @@ Here is a visualization illustrating the Best case running time of Quick Sort
 
 .. inlineav:: QuickSortBestCaseCON ss
    :output: show
-
-.. TODO::
-   :type: Review QuickSort's BestCase analysis discussion
-
-   Quicksort's best case occurs when ``findpivot`` always breaks
-   the array into two equal halves.
-   Quicksort repeatedly splits the array into
-   smaller partitions, as shown in the visualization.
-   In the best case, the result will be :math:`\log n` levels of
-   partitions,
-   with the top level having one array of size :math:`n`, the second
-   level two arrays of size :math:`n/2`, the next with four arrays of
-   size :math:`n/4`,  and so on.
-   Thus, at each level, all partition steps for that level do a total of
-   :math:`n` work, for an overall cost of :math:`n \log n` work when
-   Quicksort finds perfect pivots.
 
 Quicksort's average-case behavior falls somewhere
 between the extremes of worst and best case.
@@ -312,25 +263,6 @@ Here is a visualization that will help you understand how this recurrence relati
 
 .. inlineav:: QuickSortAverageCaseCON ss
    :output: show
-
-.. TODO::
-   :type: Review QuickSort's AverageCase analysis discussion
-
-   This equation is in the form of a recurrence relation.
-   Recurrence relations are discussed in Module :numref:`<Recurrence>`.
-   This equation says that there is one chance in :math:`n` that the
-   pivot breaks the array into subarrays of size 0 and :math:`n-1`,
-   one chance in :math:`n` that the pivot breaks the array into
-   subarrays of size 1 and :math:`n-2`, and so on.
-   The expression ":math:`{\bf T}(k) + {\bf T}(n - 1 - k)`" is the cost
-   for the two recursive calls to Quicksort on two arrays of size
-   :math:`k` and :math:`n-1-k`.
-   The initial :math:`cn` term is the cost of doing the
-   ``findpivot`` and ``partition`` steps, for some
-   constant :math:`c`.
-   The closed-form solution to this recurrence relation is
-   :math:`\Theta(n \log n)`.
-   Thus, Quicksort has average-case cost :math:`\Theta(n \log n)`.
 
 This is an unusual situation that the average case cost and the worst
 case cost have asymptotically different growth rates.

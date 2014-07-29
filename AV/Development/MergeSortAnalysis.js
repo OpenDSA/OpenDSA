@@ -224,7 +224,9 @@
 	.addClass("rotated");
 	av.step();
 	av.umsg("Therefore, the total running time of merge sort is $\\theta(n\\log{n})$");
-	
+	av.step();
+
+        av.umsg("This cost is unaffected by the relative order of the values being sorted, thus this analysis holds for the best, average, and worst cases.");
 	av.recorded();
   }
   function merge(a1, a2, return_into){
