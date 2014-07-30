@@ -204,6 +204,12 @@
       },
       "Sorting/ExchangeSort": {
         "long_name": "The Cost of Exchange Sorting",
+        "sections": {
+          "ExchangeSortAnalysis": {
+            "long_name": "Exchange Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "FindInversionsPRO": {
             "long_name": "Inversions Proficiency Exercise",
