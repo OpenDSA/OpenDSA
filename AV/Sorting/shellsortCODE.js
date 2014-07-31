@@ -1,40 +1,31 @@
 "use strict";
 // Shared code for Shellsort: Shared between shellsortAV and shellsortCON
 
-// Convenience function for setting another type of highlight
-// (will be used for showing which elements will be compared during sort)
-var setBlue = function (arr, index) {
-  arr.addClass(index, "processing");
-};
-var unsetBlue = function (arr, index) {
-  arr.removeClass(index, "processing");
-};
-
 // Insertion sort using increments
-function inssort(av, arr, start, incr) {
+function inssort(av, arr, start, incr, interpret) {
   var i, j;
   for (i = start + incr; i < arr.size(); i += incr) {
     for (j = i; j >= incr; j -= incr) {
       arr.unhighlight([j - incr, j]);
-      setBlue(arr, [j - incr, j]);
-      av.umsg("Compare");
+      arr.addClass([j - incr, j], "processing");
+      av.umsg(interpret("av_code1"));
       av.step();
       if (arr.value(j) < arr.value(j - incr)) {
         arr.swap(j, j - incr); // swap the two indices
-        av.umsg("Swap");
+        av.umsg(interpret("av_code2"));
         av.step();
         if (j - incr > incr) {
-          unsetBlue(arr, j);
+          arr.removeClass(j, "processing");
           arr.highlight(j);
         } else {
-          unsetBlue(arr, [j - incr, j]);
+          arr.removeClass([j - incr, j], "processing");
           arr.highlight([j - incr, j]);
         }
       }
       else {
-        av.umsg("Done this element");
+        av.umsg(interpret("av_code3"));
         arr.highlight([j - incr, j]);
-        unsetBlue(arr, [j - incr, j]);
+        arr.removeClass([j - incr, j], "processing");
         break; // Done pushing element, leave for loop
       }
     }
@@ -42,10 +33,10 @@ function inssort(av, arr, start, incr) {
 }
 
 // Partial Shellsort. Sweep with the given increment
-function sweep(av, arr, incr) {
+function sweep(av, arr, incr, interpret) {
   var j = 0;
   var numElem = Math.ceil(arr.size() / incr);
-  av.umsg("Start the next increment size: " + incr);
+  av.umsg(interpret("av_code4") + incr);
   av.step();
   var highlightFunction = function (index) { return index % incr === j; };
   for (j = 0; j < incr; j++) {         // Sort each sublist
@@ -56,14 +47,14 @@ function sweep(av, arr, incr) {
     }
     if ((j + incr) === arr.size()) { // Only one element, don't process
       arr.unhighlight(highlightFunction);
-      av.umsg("Since the rest of the subarrays for this increment are of length 1, we will skip them");
+      av.umsg(interpret("av_code5"));
       av.step();
       return;
     }
-    av.umsg("Starting to sort a new subarray with " + numElem + " elements");
+    av.umsg(interpret("av_code6") + numElem + interpret("av_code7"));
     av.step();
-    inssort(av, arr, j, incr);
-    unsetBlue(arr, true);
+    inssort(av, arr, j, incr, interpret);
+    arr.removeClass(true, "processing");
     arr.unhighlight(highlightFunction);
   }
 }

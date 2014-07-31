@@ -3,9 +3,6 @@
 // Various functions and variables that will be used by all of the
 // following sections of the tutorial.
 
-// This sets the default value of the speed setting to "7"
-JSAV.ext.SPEED = 300;
-
 // The various arrays to start sweeps with or display
 var theArray = [20, 30, 44, 54, 55, 11, 78, 14, 13, 79, 12, 98];
 var theArray2 = [13, 30, 12, 54, 55, 11, 78, 14, 20, 79, 44, 98];
@@ -15,29 +12,24 @@ var theArray4 = [12, 11, 13, 14, 20, 30, 44, 54, 55, 79, 78, 98];
 var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
 var DARK = "black";                // Make array elements dark again
 
-function setLight(arr, index) {
-  arr.addClass(index, "light");
-}
-
-function usetLight(arr, index) {
-  arr.removeClass(index, "light");
-}
-
 // Display a slideshow for a sweep of "increment" steps on array "inArr"
-function doSweep(container, inArr, increment) {
-  var av = new JSAV(container);
+function doSweep(av_name, inArr, increment) {
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadLangData({"av_name": av_name});
+      interpret = config.interpreter;       // get the interpreter
+  var av = new JSAV(av_name);
   // Create an array object under control of JSAV library
   var arr = av.ds.array(inArr, {indexed: true});
   av.displayInit();
-  arr.unhighlight(); // unhighlight seems to have the side effect of
+//  arr.unhighlight(); // unhighlight seems to have the side effect of
   // making the cell dark.
-  sweep(av, arr, increment); // first sweep with increment 8
+  sweep(av, arr, increment, interpret); // first sweep with increment 8
   av.recorded();
 }
 
 // Show the differences between the original array and given array "a"
-function showDifference(container, a) {
-  var av = new JSAV(container, {"animationMode": "none"});
+function showDifference(av_name, a) {
+  var av = new JSAV(av_name, {"animationMode": "none"});
   var origarr = av.ds.array(theArray, {indexed: true});
   var origlabel = av.label("Original Array", {before: origarr});
   var arr = av.ds.array(a, {indexed: true});
@@ -46,7 +38,7 @@ function showDifference(container, a) {
                            {"color": "#0b0", "font-weight": "bold"});
 }
 
-(function ($) {
+$(document).ready(function () {
   var av = new JSAV("shellsortCON1");
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray, {indexed: true});
@@ -62,19 +54,19 @@ function showDifference(container, a) {
        .css([i - 1, i + 7], {"color": LIGHT}).highlight([i, i + 8]);
   }
   av.recorded();
-}(jQuery));
+});
 
-(function ($) {
+$(document).ready(function () {
   var arr = theArray;
   doSweep("shellsortCON2", arr, 8);
-}(jQuery));
+});
 
-(function ($) {
+$(document).ready(function () {
   var arr = theArray2;
   showDifference("shellsortCON3", arr);
-}(jQuery));
+});
 
-(function ($) {
+$(document).ready(function () {
   var av = new JSAV("shellsortCON4");
   var arr = av.ds.array(theArray2, {indexed: true});
   arr.css(function (index)
@@ -89,28 +81,29 @@ function showDifference(container, a) {
   arr.unhighlight([2, 6, 10, 14]).css([2, 6, 10, 14], {"color": LIGHT})
      .highlight([3, 7, 11, 15]);
   av.recorded();
-}(jQuery));
+});
 
-(function ($) {
+$(document).ready(function () {
   var arr = theArray2;
   doSweep("shellsortCON5", arr, 4);
-}(jQuery));
-(function ($) {
+});
+
+$(document).ready(function () {
   var arr = theArray3;
   showDifference("shellsortCON6", arr);
-}(jQuery));
+});
 
-(function ($) {
+$(document).ready(function () {
   var arr = theArray3;
   doSweep("shellsortCON7", arr, 2);
-}(jQuery));
+});
 
-(function ($) {
+$(document).ready(function () {
   var arr = theArray4;
   showDifference("shellsortCON8", arr);
-}(jQuery));
+});
 
-(function ($) {
+$(document).ready(function () {
   var arr = theArray4;
   doSweep("shellsortCON9", arr, 1);
-}(jQuery));
+});

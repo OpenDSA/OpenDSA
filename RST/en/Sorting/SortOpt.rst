@@ -33,46 +33,6 @@ Recall that Insertion Sort repeatedly moves an element toward the
 beginning of the sorted part of the list until it encounters a key
 with lesser value.
 In the original code, this is done with a series of swap operations.
-In some languages, simple way to speed things up is to replace a
-function call with the code that the function would perform.
-
-.. _OptimizeTable:
-
-.. topic:: Table
-
-   Empirical comparison of proposed optimizations to quadratic sort
-   implementations. Each sorting algorithm is run on a random integer
-   array with 10,000 items. Times are in milliseconds.
-
-   .. math::
-
-      \begin{array}{l|rrrr}
-      \hline
-      \textbf{Sort} & \textbf{Java}& \textbf{Processing} & \textbf{JavaScript}&
-      \textbf{Python}\\
-      \hline
-      \textbf{Insertion Sort}\\
-      \textrm{Basic}       &  60 &  26 & 118 & 11,220\\
-      \textrm{No swap}     &  60 &  26 & 112 &  8,672\\
-      \textrm{Shift <}     &  41 &  18 &  77 &  5,100\\
-      \textrm{Shift !=}    &  41 &  18 &  95 &  5,100\\
-      \hline
-      \textbf{Bubble Sort}\\
-      \textrm{Basic}       & 202 & 149 & 303 & 12,700\\
-      \textrm{Check Swaps} & 230 & 152 & 327 & 13,275\\
-      \hline
-      \textbf{Selection Sort}\\
-      \textrm{Basic}       & 104 &  65 & 158 &  4,000\\
-      \textrm{Check Swaps} & 104 &  65 & 155 &  4,050\\
-      \hline
-      \end{array}
-
-Table :num:`#OptimizeTable` shows the relative costs for
-a number of optimizations in four programming languages: Java,
-JavaScipt, Processing, and Python.
-Only Python had a noticeable effect from replacing the swap function
-call with inline code.
-
 There is a better alternative than continuously swapping the
 record to the left until a smaller value is found.
 This is to move the current record to a temporary
@@ -90,11 +50,47 @@ Here is an implementation for Insertion Sort using this optimization.
 .. codeinclude:: Sorting/Insertionsort
    :tag: InsertionOpt
 
-.. showhidecontent:: inssortnoswap
+.. showhidecontent:: inssortnoswapex
 
    Now, you can test whether you understand how this works.
 
    .. avembed:: AV/Development/insertionSortWithoutSwapPRO.html pe
+
+.. _OptimizeTable:
+
+.. topic:: Table
+
+   Empirical comparison of proposed optimizations to quadratic sort
+   implementations.
+   Each sorting algorithm is run on a random integer
+   array with 10,000 items. Times are in milliseconds.
+   The arrays being sorted use the Comparable interface in
+   languages that support this.
+
+   .. math::
+
+      \begin{array}{l|rrrr}
+      \hline
+      \textbf{Sort} & \textbf{Java}& \textbf{Processing} & \textbf{JavaScript}&
+      \textbf{Python}\\
+      \hline
+      \textbf{Insertion Sort}\\
+      \textrm{Standard}    &  60 &  26 & 118 & 11,220\\
+      \textrm{Shifting}    &  41 &  18 &  77 &  5,100\\
+      \hline
+      \textbf{Bubble Sort}\\
+      \textrm{Standard}    & 202 & 149 & 303 & 12,700\\
+      \textrm{Check Swaps} & 230 & 152 & 327 & 13,275\\
+      \hline
+      \textbf{Selection Sort}\\
+      \textrm{Standard}    & 104 &  65 & 158 &  4,000\\
+      \textrm{Check Swaps} & 104 &  65 & 155 &  4,050\\
+      \hline
+      \end{array}
+
+Table :num:`#OptimizeTable` shows the relative costs for
+a number of optimizations in four programming languages: Java,
+JavaScipt, Processing, and Python.
 
 The programming language that you use can have a big influence on the
 runtime for a program.
@@ -109,11 +105,10 @@ to be a big improvement.
 This is more true for the interpreted languages JavaScript and
 Python than for Java and Processing, but still an improvement
 either way.
-But the biggest effect that we see in the table is that Python takes
+But the biggest effect that we see is that Python takes
 over 100 times as long to execute the same program as Java.
 
-Lines 3 and 4 of the table illustrate how some languages have
-peculiarities that it pays to be aware of.
+Some languages have peculiarities that it pays to be aware of.
 It turns out that there is a big difference in JavaScript between
 using ``i < n`` or ``i != n`` to test termination of a loop.
 
@@ -213,3 +208,22 @@ unnecessary and it would be (trivially) faster to test.
 But in the average case, few swaps will be saved this way and the
 "optimization" might actually slow down the program (but only
 slightly).
+
+For all of these sorting algorithms, the ``swap`` function call might
+be a key part of the cost since it is called so many times.
+A simple way to speed things up is to replace this function call with
+the code that the function would perform.
+Depending on the language, compiler, and operating system, one might
+expect to save between 5 and 10 percent of the total time by doing so.
+
+Another important consideration is the type of data object being
+used.
+For Processing and Java, we use a simple Integer wrapper object that
+supports the Comparable interface.
+This means that some dereferencing of the key value from an object is
+required, which is a typical expectation in a realistic application of
+a sorting function.
+However, if we were to sort a simple array of ``int`` values, the cost
+for all sorting algorithms will be less than half that shown.
+If we use a the more complicated ``KVPair`` objects, the costs will
+more than double over those shown in the table.
