@@ -1,6 +1,8 @@
 # Run the commandline compiler and runtime for all Processing code.
-# This isn't quite running unit tests, but the effect should be similar.
+# This isn't quite running unit tests, but the effect is meant to be similar.
 
+# Processing is kinda broken, in that it insists on popping up an
+# X-windows window, even when run from the command line.
 # If you get errors that DISPLAY is not set, then do:
 # (Bash) export DISPLAY=:0.0
 # (csh/tcsh) setenv DISPLAY :0.0
@@ -8,9 +10,9 @@
 PROCESS = ~/processing-2.0b9/processing-java
 
 # Use this one on Linux
-BUILD = build
+# BUILD = build
 # On Windows, I can't make it work without an absolute path
-# BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
 all: Demo Misc Lists Design Binary General Sorting Graphs
@@ -453,6 +455,7 @@ BubblesortTime: Sorting/Bubblesort.pde Sorting/SortTime.pde Utils/Swap.pde Utils
 	@mkdir build/BubblesortTime
 	@cp Sorting/SortTime.pde build/BubblesortTime/BubblesortTime.pde
 	@cp Sorting/Bubblesort.pde build/BubblesortTime
+	@cp Utils/KVPair.pde build/BubblesortTime
 	@cp Utils/Swap.pde build/BubblesortTime
 	@cp Utils/Checkorder.pde build/BubblesortTime
 	@$(PROCESS) --run --sketch="$(BUILD)/BubblesortTime" --output="build/build" --force

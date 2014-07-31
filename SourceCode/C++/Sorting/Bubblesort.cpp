@@ -20,16 +20,15 @@ void bubblesort(Comparable* A[], int n) {
 void bubblecheckswap(Comparable* A[], int n) {
   n = n-1;
   while (n > 0) {
-    /* Assume the array is sorted */
-    bool sorted = true;
+    int newn = 0;
     for (int i = 0; i < n; i++) {
       /* if this pair is out of order */
       if (*A[i] > *A[i+1]) {
         swap(A, i, i+1);
-        sorted = false;
+        newn = i;
       }
     }
-    if (sorted) break;
+    n = newn;
   }
 }
 /* *** ODSAendTag: BubblesortCheck *** */

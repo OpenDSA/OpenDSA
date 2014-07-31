@@ -88,15 +88,16 @@ static void bubblesortcheck2(int[] A) {
 // Wikipedia article "optimization" to only swap up to the last swap seen
 /* *** ODSATag: BubblesortCheck *** */
 static void bubblecheckswap(Comparable[] A) {
-  int n = A.length-1;
-  while (n>0) {
+  int n = A.length - 1;
+  while (n > 0) {
     int newn = 0;
-    for (int i=0; i<n; i++)
+    for (int i = 0; i < n; i++) {
       /* if this pair is out of order */
       if (A[i].compareTo(A[i+1]) > 0) {
         swap(A, i, i+1);
         newn = i;
       }
+    }
     n = newn;
   }
 }
