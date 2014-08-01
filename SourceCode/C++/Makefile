@@ -12,16 +12,32 @@ CC= g++ -std=c++0x
 
 all: build sorting lists
 
-build:
+build: build
 	mkdir build
 
 clean:
 	-rm -rf build
 	mkdir build
 
+lists: ListTest
+
+ListTest: build build/ListTest/success
+
+build/ListTest/success: Lists/ListADT.h Lists/AList.h Lists/ListTest.cpp
+	@echo "Array-based List Test"
+	-@rm -rf build/ListTest
+	@mkdir build/ListTest
+	@cp Lists/ListADT.h build/ListTest
+	@cp Lists/AList.h build/ListTest
+	@cp Lists/ListTest.cpp build/ListTest
+	cd build/ListTest; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o ListTest.o ListTest.cpp; \
+	$(CC) $(CFLAGS) ListTest.o -o ListTest; \
+	./ListTest
+
 sorting: Inssort Bubblesort Selectionsort Shellsort Mergesort MergesortOpt Quicksort #Radixsort Heapsort
 
-Inssort: build/InssortTest/success
+Inssort: build build/InssortTest/success
 
 build/InssortTest/success: Sorting/Insertionsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
 	@echo "Inssort Test"
@@ -40,7 +56,7 @@ build/InssortTest/success: Sorting/Insertionsort.cpp Sorting/SortTest.cpp Utils/
 	./Insertionsort 1000
 
 
-Bubblesort: build/BubblesortTest/success
+Bubblesort: build build/BubblesortTest/success
 
 build/BubblesortTest/success: Sorting/Bubblesort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
 	@echo "Bubblesort Test"
@@ -58,7 +74,7 @@ build/BubblesortTest/success: Sorting/Bubblesort.cpp Sorting/SortTest.cpp Utils/
 	$(CC) $(CFLAGS) Bubblesort.o -o Bubblesort; \
 	./Bubblesort 1000
 
-Selectionsort: build/SelectionsortTest/success
+Selectionsort: build build/SelectionsortTest/success
 
 build/SelectionsortTest/success: Sorting/Selectionsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
 	@echo "Selectionsort Test"
@@ -76,8 +92,7 @@ build/SelectionsortTest/success: Sorting/Selectionsort.cpp Sorting/SortTest.cpp 
 	$(CC) $(CFLAGS) Selectionsort.o -o Selectionsort; \
 	./Selectionsort 1000
 
-
-Shellsort: build/ShellsortTest/success
+Shellsort: build build/ShellsortTest/success
 
 build/ShellsortTest/success: Sorting/Shellsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
 	@echo "Shellsort Test"
@@ -95,7 +110,7 @@ build/ShellsortTest/success: Sorting/Shellsort.cpp Sorting/SortTest.cpp Utils/Ch
 	$(CC) $(CFLAGS) Shellsort.o -o Shellsort; \
 	./Shellsort 1000
 
-Mergesort: build/MergesortTest/success
+Mergesort: build build/MergesortTest/success
 
 build/MergesortTest/success: Sorting/Mergesort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
 	@echo "Mergesort Test"
@@ -114,7 +129,7 @@ build/MergesortTest/success: Sorting/Mergesort.cpp Sorting/SortTest.cpp Utils/Ch
 	./Mergesort 1000
 
 
-MergesortOpt: build/MergesortOptTest/success
+MergesortOpt: build build/MergesortOptTest/success
 
 build/MergesortOptTest/success: Sorting/MergesortOpt.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
 	@echo "MergesortOpt Test"
@@ -132,7 +147,7 @@ build/MergesortOptTest/success: Sorting/MergesortOpt.cpp Sorting/SortTest.cpp Ut
 	$(CC) $(CFLAGS) MergesortOpt.o -o MergesortOpt; \
 	./MergesortOpt 1000
 
-Quicksort: build/QuicksortTest/success
+Quicksort: build build/QuicksortTest/success
 
 build/QuicksortTest/success: Sorting/Quicksort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
 	@echo "Quicksort Test"
@@ -150,7 +165,7 @@ build/QuicksortTest/success: Sorting/Quicksort.cpp Sorting/SortTest.cpp Utils/Ch
 	$(CC) $(CFLAGS) Quicksort.o -o Quicksort; \
 	./Quicksort 1000
 
-#Heapsort: build/HeapsortTest/success
+#Heapsort: build build/HeapsortTest/success
 
 #build/HeapsortTest/success: Sorting/Heapsort.cpp Sorting/SortTest.cpp Sorting/Maxheap.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
 #	@echo "Heapsort Test"
@@ -169,7 +184,7 @@ build/QuicksortTest/success: Sorting/Quicksort.cpp Sorting/SortTest.cpp Utils/Ch
 #	$(CC) $(CFLAGS) Heapsort.o -o Heapsort; \
 #	./Heapsort 25
 
-#Radixsort: build/RadixsortTest/success
+#Radixsort: build build/RadixsortTest/success
 
 #build/RadixsortTest/success: Sorting/Radixsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
 #	@echo "Radixsort Test"
@@ -187,18 +202,3 @@ build/QuicksortTest/success: Sorting/Quicksort.cpp Sorting/SortTest.cpp Utils/Ch
 #	$(CC) $(CFLAGS) Radixsort.o -o Radixsort; \
 #	./Radixsort 1000
 
-lists: ListTest
-
-ListTest: build/ListTest/success
-
-build/ListTest/success: Lists/ListADT.h Lists/AList.h Lists/ListTest.cpp
-	@echo "Array-based List Test"
-	-@rm -rf build/ListTest
-	@mkdir build/ListTest
-	@cp Lists/ListADT.h build/ListTest
-	@cp Lists/AList.h build/ListTest
-	@cp Lists/ListTest.cpp build/ListTest
-	cd build/ListTest; \
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o ListTest.o ListTest.cpp; \
-	$(CC) $(CFLAGS) ListTest.o -o ListTest; \
-	./ListTest

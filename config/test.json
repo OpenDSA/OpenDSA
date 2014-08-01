@@ -340,8 +340,8 @@
             "showhide": "none",
             "threshold": 1.0
           },
-          "mergesortCON1": {
-            "long_name": "Mergesort Concepts Slideshow 1",
+          "mergesortCON": {
+            "long_name": "Merging Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0

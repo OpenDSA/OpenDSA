@@ -9,8 +9,6 @@
    :satisfies: mergesort
    :topic: Sorting
 
-.. odsalink:: AV/Sorting/mergeCON.css
-
 .. index:: ! Mergesort
 
 Mergesort Concepts
@@ -78,7 +76,7 @@ Here is pseudocode for merge on lists::
 
 Here is a visualization for the merge operation.
 
-.. inlineav:: mergesortCON1 ss
+.. inlineav:: mergesortCON ss
    :output: show
 
 Here is a mergesort warmup exercise to practice merging.

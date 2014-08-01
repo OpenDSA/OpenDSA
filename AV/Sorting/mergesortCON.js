@@ -1,66 +1,62 @@
+/*global ODSA */
 "use strict";
-(function ($) {
-  var blockWidth = 47;  // Width of an array element
+$(document).ready(function () {
+  var av_name = "mergesortCON";
+  var interpret = ODSA.UTILS.loadLangData({"av_name": av_name}).interpreter;
 
+  var blockWidth = 47;  // Width of an array element
   var leftArray = [4, 8, 11, 25, 30];
   var rightArray = [2, 3, 17, 20];
   var empty = [];
   empty.length = 9;
-  var av = new JSAV("mergesortCON1");
+  var av = new JSAV(av_name);
 
-  // Calculate leftoffset by using the width of the container to find the center
-  // then subtracting half of the 9element long array that is centered
-  var left_offset = ($('#mergesortCON1').width() - blockWidth * 9) / 2;
+  // Calculate leftoffset: use width of the container to find center,
+  // then subtract half of the 9-element-long array width
+  var left_offset = ($("#mergesortCON").width() - blockWidth * 9) / 2;
 
   var move = function (a, o, i) {
     av.step();
-    av.umsg("Move the smaller value.");
-    av.effects.moveValue(a, i, jsavarr_answer, o);
+    av.umsg(interpret("av_c1"));
+    av.effects.moveValue(a, i, answerarr, o);
     a.unhighlight(i);
     av.step();
-    av.umsg("Compare the smallest values in each list");
+    av.umsg(interpret("av_c2"));
     a.highlight(i + 1);
   };
 
-  var jsavarr_answer = av.ds.array(empty, {indexed: true, center: true, // let this auto-center
-                                         layout: "array"});
+  var answerarr = av.ds.array(empty,   // let this auto-center
+                             {indexed: true, center: true, layout: "array"});
   // position the left array relative to the answer array
-  var jsavarr_left = av.ds.array(leftArray, {indexed: true, center: false,
-                                              layout: "array",
-                                              left: left_offset - (blockWidth / 2),
-                                              top: 75,
-                                              myAnchor: "left top",
-                                              anchor: "left bottom"
-                                            });
-  var jsavarr_right = av.ds.array(rightArray, {indexed: true, center: false,
-                                                layout: "array",
-                                                left: left_offset + blockWidth * 5.5,
-                                                top: 75,
-                                                myAnchor: "left top",
-                                                anchor: "left bottom"
-                                              });
-
-  av.umsg("We now merge two sorted lists into one.");
+  var leftarr = av.ds.array(leftArray,
+                            {indexed: true, center: false, layout: "array",
+                             left: left_offset - (blockWidth / 2), top: 75,
+				myAnchor: "left top", anchor: "left bottom"});
+  var rightarr = av.ds.array(rightArray,
+                             {indexed: true, center: false, layout: "array",
+                              left: left_offset + blockWidth * 5.5, top: 75,
+				 myAnchor: "left top", anchor: "left bottom"});
+  av.umsg(interpret("av_c3"));
   av.displayInit();
-  av.umsg("First compare the smallest values in each list");
-  jsavarr_left.highlight(0);
-  jsavarr_right.highlight(0);
+  av.umsg(interpret("av_c4"));
+  leftarr.highlight(0);
+  rightarr.highlight(0);
   av.step();
-  av.umsg("The smaller value is 2 in the right list.");
+  av.umsg(interpret("av_c5"));
   av.step();
-  av.umsg("Move it to position 0 of the output list.");
-  av.effects.moveValue(jsavarr_right, 0, jsavarr_answer, 0);
-  jsavarr_right.unhighlight(0);
+  av.umsg(interpret("av_c6"));
+  av.effects.moveValue(rightarr, 0, answerarr, 0);
+  rightarr.unhighlight(0);
   av.step();
-  av.umsg("Continue in this way, at each step comparing the smallest values in each list");
-  jsavarr_right.highlight(1);
-  move(jsavarr_right, 1, 1);
-  move(jsavarr_left, 2, 0);
-  move(jsavarr_left, 3, 1);
-  move(jsavarr_left, 4, 2);
-  move(jsavarr_right, 5, 2);
-  move(jsavarr_right, 6, 3);
-  move(jsavarr_left, 7, 3);
-  move(jsavarr_left, 8, 4);
+  av.umsg(interpret("av_c7"));
+  rightarr.highlight(1);
+  move(rightarr, 1, 1);
+  move(leftarr, 2, 0);
+  move(leftarr, 3, 1);
+  move(leftarr, 4, 2);
+  move(rightarr, 5, 2);
+  move(rightarr, 6, 3);
+  move(leftarr, 7, 3);
+  move(leftarr, 8, 4);
   av.recorded();
-}(jQuery));
+});
