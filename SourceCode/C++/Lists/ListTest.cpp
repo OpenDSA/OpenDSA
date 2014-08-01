@@ -98,6 +98,7 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
 }
 
 int main(int argc, char** argv) {
+  cout << "Starting ListTest" << endl;
   fstream successfile;
   AList AL;
   // LList LL = new LList();
