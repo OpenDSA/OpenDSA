@@ -21,11 +21,11 @@ public:
   //Initial the array
   for (int k = 0; k < MAX_SIZE; k++) listArray[k] = 0;
 } //end constructor
-
+/*
 bool isEmpty() const
 {
   return listSize == 0;
-}
+  }*/
   void clear()              // Reinitialize the list
   { listSize = curr = 0; } // Simply reinitialize values
 
@@ -44,7 +44,7 @@ bool insert(const ListItemType& newItem)
 
 /* *** ODSATag: AListAppend *** */
 //Append item to list
-bool append(int pos, const ListItemType& newItem)
+bool append(const ListItemType& newItem)
 {
   if ( listSize >= MAX_SIZE ) return false;
   listArray[listSize++] = newItem;
@@ -91,22 +91,5 @@ ListItemType getValue() {
 }
 /* *** ODSAendTag: AList *** */
 
-void print()
-{
-  cout << "List contains: " ;
-  for (int k = 0; k < MAX_SIZE; k++)
-    cout << listArray[k] << " ";
-  cout << endl;
-}//end print
-
-void retrieve(int pos)
-{
-  if( (pos < 0 ) && (MAX_SIZE < pos) )
-    cout << "Position is out of bound " << endl;
-  else {
-    if (listArray[pos] == 0) cout << "Cell is empty" << endl;
-    else cout << "item at position " << pos << " is: " <<  listArray[pos] << endl;
-  }//end if
-}//end retrieve
 };
 

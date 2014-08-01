@@ -11,56 +11,46 @@ typedef int ListItemType;
 class List { // List class ADT 
   // Remove all contents from the list, so it is once again empty
 public:
-  void clear();
+  virtual void clear() =0;
 
   // Inserts an item into the list at position index
-  bool insert(const ListItemType& newItem);
+  virtual bool insert(const ListItemType& newItem) =0;
     
   // Append "it" at the end of the list
   // The client must ensure that the list's capacity is not exceeded
-  bool append(const ListItemType& newItem);
+  virtual bool append(const ListItemType& newItem) =0;
 
   // Deletes an item from the list at a given position
-  ListItemType remove();
+  virtual ListItemType remove() =0;
 
   // Set the current position to the start of the list
-  void moveToStart();
+  virtual void moveToStart() =0;
 
   // Set the current position to the end of the list
-  void moveToEnd();
+  virtual void moveToEnd() =0;
 
    // Move the current position one step left, no change if already at beginning
-  void prev();
+  virtual void prev() =0;
 
   // Move the current position one step right, no change if already at end
-  void next();
+  virtual void next() =0;
   
   //Return the number of items stored in the list
-  int length();
+  virtual int length() =0;
 
   // Return the position of the current element
-  int currPos();
+  virtual int currPos() =0;
   
   // Set the current position to "pos"
-  bool moveToPos(int pos);
+  virtual bool moveToPos(int pos) =0;
 
   // Return true if current position is at end of the list
-  bool isAtEnd();
+  virtual bool isAtEnd() =0;
 
   // Return the current element
-  ListItemType getValue();
+  virtual ListItemType getValue() =0;
   
 /* *** ODSAendTag: ListADT *** */
-  
-  /********** NOT NEEDED ******/
-  // Return True if the List is empty
-  bool isEmpty() const;
-
-  // Retrieves a list item by position
-  void retrieve(int index);
-
-  // Output all elements
-  void print() const;
 };
 
 #endif /* ALIST H */

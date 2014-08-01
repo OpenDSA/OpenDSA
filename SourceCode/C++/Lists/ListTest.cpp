@@ -2,8 +2,9 @@
 #include "ListADT.h"
 #include <iostream>
 #include <fstream>
-#include <iostream>
+#include <sstream>
 #include <string>
+#include <cstdlib>
 
 using namespace std;
 
@@ -11,40 +12,41 @@ int testsize = 0;
 long time1, time2;
 bool SUCCESS = true;
 
-//void doSomething(ListTimeType it) { }
+void doSomething(ListItemType it) { }
 
-string toString(List L) {
+string toString(List& L) {
   // Save the current position of the list
   int oldPos = L.currPos();
-  //StringBuffer out = new StringBuffer((L.length() + 1) * 4);
 
   L.moveToStart();
-  //out.append("< ");
-  string out = "<";
+  string s = "<";
+  stringstream out;
   for (int i = 0; i < oldPos; i++) {
-    out = string(out) + to_string(L.getValue()) + " ";
+    out << L.getValue();
+    s = s + out.str() + " ";
     L.next();
   }
-  out = out + "| ";
+  s = s + "| ";
   for (int i = oldPos; i < L.length(); i++) {
-    out = string(out) + to_string(L.getValue()) + " ";
+    out << L.getValue();
+    s = s + out.str() + " ";
     L.next();
   }
-  out = out + ">";
+  s = s + ">";
   L.moveToPos(oldPos); // Reset the fence to its original position
-  return string(out);
+  return s;
 }
 
 /* *** ODSATag: listfind *** */
 // Return true if k is in list L, false otherwise
-bool find(List L, int k) {
+bool find(List& L, int k) {
   for (L.moveToStart(); !L.isAtEnd(); L.next())
     if (k == L.getValue()) return true; // Found k
   return false;                                  // k not found
 }
 /* *** ODSAendTag: listfind *** */
 
-void testAppend(List L2) {
+void testAppend(List& L2) {
   L2.append(10);
   string temp = toString(L2);
   if (!temp.compare("< | 10 >")) {
@@ -60,7 +62,7 @@ void testAppend(List L2) {
   }
 }
 
-void test(List L) {
+void test(List& L) {
   L.moveToStart();
   L.insert(5);
   L.insert(7);
@@ -77,7 +79,7 @@ void test(List L) {
 /* *** ODSATag: listiter *** */
 for (L.moveToStart(); !L.isAtEnd(); L.next()) {
   it = L.getValue();
-  //doSomething(it);
+  doSomething(it);
 }
 /* *** ODSAendTag: listiter *** */
 
@@ -111,13 +113,13 @@ int main(int argc, char** argv) {
     successfile.open("success", ios::out);
     if (!successfile) {
       cout << "Unable to open SUCCESS file :";
-      //exit(-1);
+      exit(-1);
     }
     successfile << "Success";
   }
 
   if (testsize == 0) {
-    //exit();
+    exit(-1);
     return 0;
   }
   /*
@@ -146,6 +148,8 @@ int main(int argc, char** argv) {
   time2 = millis();
   totaltime = (time2-time1);
   println("Timing test2 on " + testsize + " iterations: " + totaltime);
-  exit();*/
+  */
+
+  exit(-1);
   return 0;
 } //end main

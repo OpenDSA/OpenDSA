@@ -10,7 +10,7 @@ CC= g++ -std=c++0x
 
 #### Do the chapters #######################################################
 
-all: build sorting
+all: build sorting lists
 
 build:
 	mkdir build
@@ -19,7 +19,7 @@ clean:
 	-rm -rf build
 	mkdir build
 
-sorting: Inssort Bubblesort Selectionsort Shellsort Mergesort MergesortOpt Quicksort Heapsort Radixsort
+sorting: Inssort Bubblesort Selectionsort Shellsort Mergesort MergesortOpt Quicksort #Radixsort Heapsort
 
 Inssort: build/InssortTest/success
 
@@ -150,40 +150,55 @@ build/QuicksortTest/success: Sorting/Quicksort.cpp Sorting/SortTest.cpp Utils/Ch
 	$(CC) $(CFLAGS) Quicksort.o -o Quicksort; \
 	./Quicksort 1000
 
-Heapsort: build/HeapsortTest/success
+#Heapsort: build/HeapsortTest/success
 
-build/HeapsortTest/success: Sorting/Heapsort.cpp Sorting/SortTest.cpp Sorting/Maxheap.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
-	@echo "Heapsort Test"
-	-@rm -rf build/HeapsortTest
-	@mkdir build/HeapsortTest
-	@cp Sorting/Heapsort.cpp build/HeapsortTest
-	@cp Sorting/SortTest.cpp build/HeapsortTest
-	@cp Sorting/Maxheap.cpp build/HeapsortTest
-	@cp Utils/Checkorder.cpp build/HeapsortTest
-	@cp Utils/KVPair.cpp build/HeapsortTest
-	@cp Utils/Comparable.cpp build/HeapsortTest
-	@cp Utils/Int.cpp build/HeapsortTest
-	@cp Utils/utils.h build/HeapsortTest
-	cd build/HeapsortTest; \
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Heapsort.o Heapsort.cpp; \
-	$(CC) $(CFLAGS) Heapsort.o -o Heapsort; \
-	./Heapsort 25
+#build/HeapsortTest/success: Sorting/Heapsort.cpp Sorting/SortTest.cpp Sorting/Maxheap.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
+#	@echo "Heapsort Test"
+#	-@rm -rf build/HeapsortTest
+#	@mkdir build/HeapsortTest
+#	@cp Sorting/Heapsort.cpp build/HeapsortTest
+#	@cp Sorting/SortTest.cpp build/HeapsortTest
+#	@cp Sorting/Maxheap.cpp build/HeapsortTest
+#	@cp Utils/Checkorder.cpp build/HeapsortTest
+#	@cp Utils/KVPair.cpp build/HeapsortTest
+#	@cp Utils/Comparable.cpp build/HeapsortTest
+#	@cp Utils/Int.cpp build/HeapsortTest
+#	@cp Utils/utils.h build/HeapsortTest
+#	cd build/HeapsortTest; \
+#	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Heapsort.o Heapsort.cpp; \
+#	$(CC) $(CFLAGS) Heapsort.o -o Heapsort; \
+#	./Heapsort 25
 
-Radixsort: build/RadixsortTest/success
+#Radixsort: build/RadixsortTest/success
 
-build/RadixsortTest/success: Sorting/Radixsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
-	@echo "Radixsort Test"
-	-@rm -rf build/RadixsortTest
-	@mkdir build/RadixsortTest
-	@cp Sorting/Radixsort.cpp build/RadixsortTest
-	@cp Sorting/SortTest.cpp build/RadixsortTest
-	@cp Utils/Checkorder.cpp build/RadixsortTest
-	@cp Utils/KVPair.cpp build/RadixsortTest
-	@cp Utils/Comparable.cpp build/RadixsortTest
-	@cp Utils/Int.cpp build/RadixsortTest
-	@cp Utils/utils.h build/RadixsortTest
-	cd build/RadixsortTest; \
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Radixsort.o Radixsort.cpp; \
-	$(CC) $(CFLAGS) Radixsort.o -o Radixsort; \
-	./Radixsort 1000
+#build/RadixsortTest/success: Sorting/Radixsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
+#	@echo "Radixsort Test"
+#	-@rm -rf build/RadixsortTest
+#	@mkdir build/RadixsortTest
+#	@cp Sorting/Radixsort.cpp build/RadixsortTest
+#	@cp Sorting/SortTest.cpp build/RadixsortTest
+#	@cp Utils/Checkorder.cpp build/RadixsortTest
+#	@cp Utils/KVPair.cpp build/RadixsortTest
+#	@cp Utils/Comparable.cpp build/RadixsortTest
+#	@cp Utils/Int.cpp build/RadixsortTest
+#	@cp Utils/utils.h build/RadixsortTest
+#	cd build/RadixsortTest; \
+#	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Radixsort.o Radixsort.cpp; \
+#	$(CC) $(CFLAGS) Radixsort.o -o Radixsort; \
+#	./Radixsort 1000
 
+lists: ListTest
+
+ListTest: build/ListTest/success
+
+build/ListTest/success: Lists/ListADT.h Lists/AList.h Lists/ListTest.cpp
+	@echo "Array-based List Test"
+	-@rm -rf build/ListTest
+	@mkdir build/ListTest
+	@cp Lists/ListADT.h build/ListTest
+	@cp Lists/AList.h build/ListTest
+	@cp Lists/ListTest.cpp build/ListTest
+	cd build/ListTest; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o ListTest.o ListTest.cpp; \
+	$(CC) $(CFLAGS) ListTest.o -o ListTest; \
+	./ListTest
