@@ -6,9 +6,8 @@
 
 
 /* *** ODSATag: findpivot *** */
-int findpivot(int i, int j) { 
-  return (i+j)/2;
-}
+int findpivot(int i, int j)
+  { return (i+j)/2; }
 /* *** ODSAendTag: findpivot *** */
 
 /* *** ODSATag: partition *** */

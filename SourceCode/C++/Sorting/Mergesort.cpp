@@ -6,14 +6,11 @@
 
 // With KVPair
 /* *** ODSATag: Mergesort *** */
-
 void mergesort(Comparable* A[], Comparable* temp[], int left, int right) {
   if (left == right) return; // List has one record
   int mid = (left + right)/2; // Select midpoint
-
   mergesort(A, temp, left, mid); // Mergesort first half
   mergesort(A, temp, (mid+1), right); // Mergesort second half
-
   for (int i = left; i <= right; i++)  // Copy subarray to temp
     *temp[i] = *A[i];
   // Do the merge operation back to A
@@ -30,7 +27,6 @@ void mergesort(Comparable* A[], Comparable* temp[], int left, int right) {
       *A[curr] = *temp[i2++]; 
   }   
 }
-
 /* *** ODSAendTag: Mergesort *** */
 
 // With KVPair

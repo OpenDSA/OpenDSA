@@ -4,6 +4,8 @@
 #include "Int.cpp"
 #include "Checkorder.cpp"
 
+int THRESHOLD = 10;
+
 void inssort(Comparable* A[], int left, int right) {
   for (int i=left+1; i<=right; i++)        // Insert i'th record
     for (int j=i; ((j>left) && (*A[j] < *A[j-1])); j--)
@@ -13,7 +15,6 @@ void inssort(Comparable* A[], int left, int right) {
 /* *** ODSATag: MergesortOpt *** */
 void mergesortOpt(Comparable* A[], Comparable* temp[], int left, int right) {
   int i, j, k, mid = (left+right)/2;// Select the midpoint
-  int THRESHOLD = 50;
   if (left == right) return;          // List has one record
   if ((mid-left) >= THRESHOLD) mergesortOpt(A, temp, left, mid);
   else inssort(A, left, mid);

@@ -8,8 +8,6 @@
    :requires: mergesort
    :topic: Sorting
 
-.. odsalink:: AV/Sorting/mergeCON.css
-
 Implementing Mergesort
 ======================
 
@@ -78,7 +76,7 @@ The initial call to ``mergesort`` would be
 
 Here is a visualization for the merge step.
 
-.. inlineav:: mergeImplCON1 ss
+.. inlineav:: mergeImplS1CON ss
    :output: show
 
 An optimized Mergesort implementation is shown below.
@@ -97,11 +95,12 @@ the array is smaller than a value defined by ``THRESHOLD``.
 
 Here is a visualization for the optimized merge step.
 
-.. inlineav:: mergeImplCON2 ss
+.. inlineav:: mergeImplS2CON ss
    :output: show
 
 Now here are some review questions.
 
 .. avembed:: Exercises/Sorting/MergesortSumm.html ka
 
-.. odsascript:: AV/Sorting/mergeImplCON.js
+.. odsascript:: AV/Sorting/mergeImplS1CON.js
+.. odsascript:: AV/Sorting/mergeImplS2CON.js

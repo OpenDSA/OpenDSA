@@ -4,7 +4,7 @@ $(document).ready(function () {
   var av_name = "mergesortCON";
   var interpret = ODSA.UTILS.loadLangData({"av_name": av_name}).interpreter;
 
-  var blockWidth = 47;  // Width of an array element
+  var blockWidth = 32;  // Width of an array element
   var leftArray = [4, 8, 11, 25, 30];
   var rightArray = [2, 3, 17, 20];
   var empty = [];
@@ -36,18 +36,27 @@ $(document).ready(function () {
                              {indexed: true, center: false, layout: "array",
                               left: left_offset + blockWidth * 5.5, top: 75,
                               myAnchor: "left top", anchor: "left bottom"});
+  // Slide 1
   av.umsg(interpret("av_c3"));
   av.displayInit();
+
+  // Slide 2
   av.umsg(interpret("av_c4"));
   leftarr.highlight(0);
   rightarr.highlight(0);
   av.step();
+
+  // Slide 3
   av.umsg(interpret("av_c5"));
   av.step();
+
+  // Slide 4
   av.umsg(interpret("av_c6"));
   av.effects.moveValue(rightarr, 0, answerarr, 0);
   rightarr.unhighlight(0);
   av.step();
+
+  // Slide 5
   av.umsg(interpret("av_c7"));
   rightarr.highlight(1);
   move(rightarr, 1, 1);
