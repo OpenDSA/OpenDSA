@@ -4,24 +4,20 @@
 #include "Int.cpp"
 #include "Checkorder.cpp"
 
-// With KVPair
-/* *** ODSATag: Inssort2 *** */
-// Insertion sort for varying increment
-void inssort2(Comparable* A[], int start, int incr, int n) {
-  for (int i = start+incr; i < n; i += incr)
-    for (int j = i; ((j >= incr) && (*A[j] < *A[j-incr])); j -= incr) 
-      swap(A, j, j-incr);
-}
-/* *** ODSAendTag: Inssort2 *** */
-
-/* *** ODSATag: Shellsort *** */
-
 // Shellsort n/2 increment
+/* *** ODSATag: Shellsort *** */
 void shellsort(Comparable* A[], int n) {
   for (int i = n/2; i > 2; i /= 2)  //For each increment
     for (int j = 0; j < i; j++)  //Sort each sublist
       inssort2(A, j, i, n);
     inssort2(A, 0, 1, n);
+}
+
+// Modified Insertion Sort for varying increments
+void inssort2(Comparable* A[], int start, int incr, int n) {
+  for (int i = start+incr; i < n; i += incr)
+    for (int j = i; ((j >= incr) && (*A[j] < *A[j-incr])); j -= incr) 
+      swap(A, j, j-incr);
 }
 /* *** ODSAendTag: Shellsort *** */
 

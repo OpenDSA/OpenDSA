@@ -15,12 +15,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-
-  <style>
-    .jsavcontainer {
-      border: 0px;
-    }
-  </style>
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 </head>
 
 <body>
@@ -45,6 +40,7 @@ var clickHandler = function (index, e) {
 var initJSAV = function (arr_size) {
   userInput = false;
   jsav = new JSAV("jsav", {"animationMode": "none"});
+  jsav.recorded();
   jsavArr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, arr_size),
                           {indexed: true, center: false});
   // bind the clickHandler to handle click events on the array
@@ -72,7 +68,7 @@ var checkAnswer = function (start_pos, inc_size) {
     <var id="inc_size">randRange( 2, arr_size/2)</var>
     <var id="start_pos">randRange(0,inc_size-1)</var>
     <var id="JSAV">initJSAV(arr_size)</var>
-    <var id="sec_pos">start_pos+inc_size</var>
+    <var id="sec_pos">start_pos + inc_size</var>
   </div>
   <div class="problems">
     <div> <!-- Supresses answer box -->
@@ -96,7 +92,7 @@ var checkAnswer = function (start_pos, inc_size) {
       <div class="hints">
         <p>The first record of the sublist is at position <var>start_pos</var></p>
         <p>The subsequent records of the sublist are spaced <var>inc_size</var> positions apart from each other.</p>
-        <p>In this instance, the second records would be at position <var>sec_pos</var>, and so on.</p>
+        <p>In this instance, the second record would be at position <var>sec_pos</var>, and so on.</p>
       </div>
     </div>
   </div>

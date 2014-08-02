@@ -19,6 +19,11 @@
   color: #ccc;
 }
 
+.greentext {
+  color: #0b0;
+  font-weight: bold;
+}
+
 .redback {
   background-color: #f00 !important;
 }

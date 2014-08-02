@@ -23,7 +23,9 @@
       "av_code4": "Start the next increment size: ",
       "av_code5": "Since the rest of the subarrays for this increment are of length 1, we will skip them.",
       "av_code6": "Starting to sort a new subarray with ",
-      "av_code7": " elements."
+      "av_code7": " elements.",
+      "av_diff1": "Original Array",
+      "av_diff2": "Values in <b style='color:#0b0;'>green</b> have changed from their original positions"
     }
   }
 }

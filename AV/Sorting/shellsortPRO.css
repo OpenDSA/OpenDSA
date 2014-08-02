@@ -1,6 +1,6 @@
 #container {
   width: 800px;
-  height: 480px;
+  height: 450px;
 }
 
 #profArray {
@@ -15,4 +15,8 @@
 
 #increments {
   width: 150px;
+}
+
+.jsavindex.jsavarrow:before {
+  left: 9px;
 }

@@ -28,10 +28,10 @@ $(document).ready(function () {
         arr.addClass(j, "processing");
         arr.addClass(j, "whitetext");
         arr.swap(j, j - 1); // swap the two indices
-	arr.highlight(j).unhighlight(j - 1); // set highlights correctly
-	arr.removeClass(j, "processing");
+        arr.highlight(j).unhighlight(j - 1); // set highlights correctly
+        arr.removeClass(j, "processing");
         arr.removeClass(j, "whitetext");
-	arr.addClass(j - 1, "processing");
+        arr.addClass(j - 1, "processing");
         arr.addClass(j - 1, "whitetext");
         av.umsg(interpret("av_c6"));
         pseudo.setCurrentLine("swap");
@@ -68,14 +68,14 @@ $(document).ready(function () {
   }
 
   // Connect action callbacks to the HTML entities
-  $('#about').click(about);
-  $('#run').click(runIt);
-  $('#ssperform').submit(function (evt) {
+  $("#about").click(about);
+  $("#run").click(runIt);
+  $("#ssperform").submit(function (evt) {
     evt.stopPropagation();
     evt.preventDefault();
     runIt();
   });
-  $('#reset').click(ODSA.AV.reset);
+  $("#reset").click(ODSA.AV.reset);
 
 
   //////////////////////////////////////////////////////////////////

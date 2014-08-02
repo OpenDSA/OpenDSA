@@ -1,6 +1,6 @@
 #container {
   width: 810px;
-  height: 450px;
+  height: 400px;
 }
 
 #left {
@@ -22,4 +22,8 @@
 #arraysize {
   padding-left: 5px;
   width: 60px;
+}
+
+#increments {
+  margin-top: 5px;
 }

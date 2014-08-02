@@ -35,7 +35,7 @@ $(document).ready(function () {
   var rightarr = av.ds.array(rightArray,
                              {indexed: true, center: false, layout: "array",
                               left: left_offset + blockWidth * 5.5, top: 75,
-				 myAnchor: "left top", anchor: "left bottom"});
+                              myAnchor: "left top", anchor: "left bottom"});
   av.umsg(interpret("av_c3"));
   av.displayInit();
   av.umsg(interpret("av_c4"));
