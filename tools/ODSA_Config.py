@@ -267,6 +267,25 @@ def validate_config_file(config_file_path, conf_data):
     else:
       print_err('ERROR: "exercise_origin" does not match domain of remote "exercises_root_dir"')
 
+  mod_opts = conf_data['glob_mod_options']
+  exer_opts = conf_data['glob_exer_options']
+
+  # Use lang option to automatically set natural language for the JSAV_OPTIONS object
+  if 'JOP-lang' not in mod_opts:
+    conf_data['glob_mod_options']['JOP-lang'] = conf_data['lang']
+
+  if 'JOP-lang' not in exer_opts:
+    conf_data['glob_exer_options']['JOP-lang'] = conf_data['lang']
+
+  # Use first language provided in code_lang to set the code language attribute for JSAV_EXERCISE_OPTIONS (if code lang is not explicitly specified)
+  if len(conf_data['code_lang'].keys()) > 0:
+    if 'JXOP-code' not in mod_opts and 'JOP-code' not in mod_opts:
+      conf_data['glob_mod_options']['JXOP-code'] = conf_data['code_lang'].keys()[0].lower()
+
+    if 'JXOP-code' not in exer_opts and 'JOP-code' not in exer_opts:
+      conf_data['glob_exer_options']['JXOP-code'] = conf_data['code_lang'].keys()[0].lower()
+
+
   # Ensure the config file doesn't have any unknown fields (catches mis-spelled fields when config file is manually edited)
   for field in conf_data:
     if field not in (required_fields + optional_fields):
