@@ -8,7 +8,6 @@
         exercise,
 	inputarray,
         outputarray,
-	clickHandler,
         swapIndex;
 
       var initinput;
@@ -18,15 +17,6 @@
 
     jsav.recorded();
     function init() {
-
-    // initialize click handler
-      if (typeof clickHandler === "undefined") {
-      	clickHandler = new ClickHandler(jsav, exercise, {
-      	selectedClass: "selected"
-        //effect: "swap"
-      });
-      }
-      clickHandler.reset();
       var nodeNum = 10;
       if (bh) {
         bh.clear();
@@ -34,61 +24,25 @@
       initData = JSAV.utils.rand.numKeys(10, 100, nodeNum);
       var inputlabel = jsav.label("Input:", {left: 650, top: 250});
       var outputlabel = jsav.label("Output:", {left: 10, top: 250});
-      // create array
-      if (inputarray) {
-        clickHandler.remove(inputarray);
-        inputarray.clear();
-      }
       inputarray = jsav.ds.array(initinput, {indexed: false, left: 650, top: 290});
-      clickHandler.addArray(inputarray);
-
-      // create array
-      if (outputarray) {
-        clickHandler.remove(outputarray);
-        outputarray.clear();
-      }
       outputarray = jsav.ds.array(initoutput, {indexed: false, left: 10, top: 290});
-      clickHandler.addArray(outputarray);
 
       // Log the initial state of the exercise
       var exInitData = {};
       exInitData.gen_array = initData;
       ODSA.AV.logExerciseInit(exInitData);
-      // create array
-      if (bh) {
-        clickHandler.remove(bh);
-        bh.clear();
-      }
+
       bh = jsav.ds.binheap(initData, { nodegap: 25, compare: function (a, b) { return a - b; }});
-      clickHandler.addTree(bh._tree, {effect: "swap"
-// was just trying some things so ignore this
- /*,
-        onDrop: function () {
-           // grade using the clickHandler only if the evaluator won't run
-           // if the evaluator does run, it will mark the steps as gradeable
-           // clickHandler won't grade if the returned value is false
-	   // swapping from the tree to an array or within the tree
-	   //if(clickHandler.getSelected().node != null)
-	   
-           	//alert("VALUE: "+this.value()+" Swapped: "+clickHandler.getSelected().node.value()+
- 		//" Swag: "+clickHandler.getDsIndex(bh._tree));
-           // swap within tree
-	   if(clickHandler.getDsIndex(clickHandler.getSelected().struct) == 2)
-	   {
-                alert("Index1: "+this+" Index2: "+clickHandler.getDsIndex(clickHandler.getSelected().struct));
-	   }
-	   // swap from array
-	   else
-	   {
-		
-	   }
-		//bh.swap(this, clickHandler.getSelected().index);
-           return true;
-      }
-	*/});
-      clickHandler.addArray(bh, {effect: "swap"});
       swapIndex = jsav.variable(-1);
+      jsav._undo = [];
       jsav.displayInit();
+
+
+      // click handler
+      inputarray.click(clickHandler);
+      outputarray.click(clickHandler);
+      bh.click(clickHandler);
+
       return bh;
     }
 
@@ -166,23 +120,54 @@
       return modelbh;
     }
 
-    function handleClick(index) {
+var firstSelection, secondSelection;
+
+    function clickHandler(index, entity) {
       if (bh.heapsize() === 0 || index >= bh.heapsize()) {
         return;
       }
       jsav._redo = []; // clear the forward stack, should add a method for this in lib
       var sIndex = swapIndex.value();
       if (sIndex === -1) { // if first click
-        bh.css(index, {"font-size": "145%"});
+	firstSelection = (entity === bh) ? bh : this;
+        firstSelection.css(index, {"font-size": "145%"});
         swapIndex.value(index);
         jsav.step();
       } else if (sIndex === index) {
-        bh.css(index, {"font-size": "100%"});
-        swapIndex.value(-1);
-        jsav.step();
+	secondSelection = (entity === bh) ? bh : this;
+	if(firstSelection === secondSelection)
+	{
+        	firstSelection.css(index, {"font-size": "100%"});
+        	swapIndex.value(-1);
+        	firstSelection = null;
+        	secondSelection = null;
+        	jsav.step();
+	}
+	// different entities were selected
+	else
+	{
+		firstSelection.css(sIndex, {"font-size": "100%"});
+        	jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+        	firstSelection = null;
+        	secondSelection = null;
+        	swapIndex.value(-1);
+        	exercise.gradeableStep();
+	}
       } else { // second click will swap
-        bh.css([sIndex, index], {"font-size": "100%"});
-        bh.swap(sIndex, index, {});
+        secondSelection = (entity === bh) ? bh : this;
+	if(firstSelection === secondSelection)
+	{
+        	firstSelection.css([sIndex, index], {"font-size": "100%"});
+        	firstSelection.swap(sIndex, index, {});
+	}
+	// different entities were selected
+	else
+	{
+		firstSelection.css(sIndex, {"font-size": "100%"});
+        	jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+	}
+        firstSelection = null;
+        secondSelection = null;
         swapIndex.value(-1);
         exercise.gradeableStep();
       }
@@ -195,14 +180,16 @@
 
     exercise = jsav.exercise(model, init,
                              { compare:  { css: "background-color" },
-                               controls: $('.jsavexercisecontrols'), });
-                               //fix: fixState });
+                               controls: $('.jsavexercisecontrols'),
+                               fix: fixState });
     exercise.reset();
 
-    //$(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function () {
-    //  var index = $(this).data("jsav-heap-index") - 1;
-    //  handleClick(index);
-    //});
+    $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function () {
+      var index = $(this).data("jsav-heap-index") - 1;
+      // passes bh to the handler to tell it the tree was clicked
+      clickHandler(index, bh);
+    });
+
     $("#decrement").click(function () {
       if (bh.heapsize() === 0) {
         alert("Heapsize is already zero, cannot decrement!");
