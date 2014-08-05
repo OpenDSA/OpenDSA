@@ -16,25 +16,14 @@ Written by Gayathri Subramanian and Cliff Shaffer
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <script src="../../JSAV/extras/binaryheap.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-  <style>
-    .jsavcontainer {
-    border: 0px;
-    }
-
-    #av { width: auto;}
-    .jsavoutput.jsavline { height: 45px; margin: 0 0 0 20px;}
-    .jsavcontrols a { margin-left: 0;}
-    #reset { margin-right: 10px;}
-    #decrement { margin-right: 20px;}
-  </style>
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 </head>
 
 <body>
 <script>
 "use strict";
 var
-  jsav,           // The JSAV object
+  av,           // The JSAV object
   userInput,      // Boolean: Tells us if user ever did anything
   initData = [],  // Internal array that stores orginal problem instance
   bh,             // JSAV binary heap object (that user manipulates)
@@ -53,7 +42,6 @@ var clickHandler = function (index) {
     bh.css(selected_index, {"font-size": "100%"});
     selected_index = -1;
   }
-//  jsav.step();
   userInput = true;
 };
 
@@ -62,20 +50,21 @@ var f_reset = function () {
   userInput = false;
   selected_index = -1;
   if (bh) { bh.clear(); }
-  bh = jsav.ds.binheap(initData, {compare: function (a, b) { return b - a; }});
+  bh = av.ds.binheap(initData, {compare: function (a, b) { return b - a; }});
 };
 
 // Initialise JSAV library
 var initJSAV = function (size) {
-  jsav = new JSAV("jsav");
-  jsav.recorded();
+  av = new JSAV("jsav");
+  av.recorded();
   initData = JSAV.utils.rand.numKeys(10, 100, size);
   heap_size = size;
 
   f_reset();
 
-  // compute the answer
-  bh_clone = jsav.ds.binheap(initData,
+  // Compute the answer. This will be stored in bh_clone for later
+  // comparison with the student's answer.
+  bh_clone = av.ds.binheap(initData,
                {visible: false, compare: function (a, b) { return b - a;}});
   bh_clone.swap(0, size - 1);
   bh_clone.heapsize(size - 1);
@@ -96,7 +85,8 @@ var initJSAV = function (size) {
   // Set up handler for decrement button
   $("#decrement").click(
     function () {
-      bh.css(bh.heapsize() - 1, { "background-color": "#ddd" });
+      bh.addClass(bh.heapsize() - 1, "unused");
+//      bh.css(bh.heapsize() - 1, { "background-color": "#ddd" });
       bh.heapsize(bh.heapsize()-1);
       userInput = true;
     });
@@ -145,7 +135,8 @@ var checkAnswer = function (arr_size) {
       </div>
       <div class="hints">
 	<p> Select the maximum element and move it to the correct
-	location. Then restore the heap order.</p>
+          location. Then restore the heap order.</p>
+        <p>Don't forget to decrement the heap size.</p>
       </div>
     </div>
   </div>

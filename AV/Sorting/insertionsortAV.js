@@ -96,7 +96,6 @@ $(document).ready(function () {
 
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
-
   // add the layout setting preference
   var arrayLayout = settings.add("layout",
           {"type": "select", "options": {"bar": "Bar", "array": "Array"},

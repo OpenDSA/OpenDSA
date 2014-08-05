@@ -1,14 +1,18 @@
 #container {
   width: 800px;
-  height: 595px;
+  height: 550px;
 }
 
 #decrement {
   margin-right: 20px;
 }
 
+.jsavarray {
+  top: 20px;
+}
+
 .jsavtree {
-  top: -10px;
+  top: 10px;
 }
 
 .jsavline {

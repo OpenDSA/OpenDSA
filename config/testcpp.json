@@ -101,13 +101,13 @@
       "Sorting/MergesortImpl": {
         "long_name": "Implementing Mergesort",
         "exercises": {
-          "mergeImplCON1": {
+          "mergeImplS1CON": {
             "long_name": "Mergesort Implementation Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "mergeImplCON2": {
+          "mergeImplS2CON": {
             "long_name": "Mergesort Implementation Slideshow 2",
             "required": false,
             "points": 0.0,

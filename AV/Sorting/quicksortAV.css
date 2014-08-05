@@ -1,6 +1,6 @@
 #container {
   width: 800px;
-  height: 480px;
+  height: 430px;
   overflow-y: visible;
   overflow-x: hidden;
 }
@@ -17,17 +17,19 @@
   height: 40px;
 }
 
+.jsavindex.jsavarrow:before {
+  left: 9px;
+}
+
 /* Deprecated, should be removed once quicksort has been rewritten to use annotations */
 /* Creates a blue, left aligned arrow above an array element */
 .jsavindex.jsavarrow.leftarrow::before {
-  left: 7px;
   border-color: blue transparent transparent;
 }
 
 /* Deprecated, should be removed once quicksort has been rewritten to use annotations */
 /* Creates a red, right aligned arrow above an array element */
 .jsavindex.jsavarrow.rightarrow::before {
-  left: 27px;
   border-color: red transparent transparent;
 }
 

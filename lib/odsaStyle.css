@@ -15,11 +15,17 @@
 }
 
 /* For de-emphasizing the label/value of a node (array cell, etc). Light grey. */
-.deemph {
+.deemph .jsavvalue {
   color: #ccc;
 }
 
-.greentext {
+/* Make font bigger, used typically with click handler setting up swap */
+.enlarge .jsavvalue {
+  font-size: 120%;
+}
+
+/* Makes (just) the text of a node or array cell to be green */
+.greentext .jsavvalue {
   color: #0b0;
   font-weight: bold;
 }
@@ -46,6 +52,17 @@
   max-width: 30px !important;
   min-height: 30px !important;
   max-height: 30px !important;
+}
+
+.jsavnode.jsavtreenode {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+}
+
+.jsavnode .jsavvalue { /* Center tree node values vertically */
+  height: 30px;
 }
 
 .jsavlist .jsavvalue { /* Center linked list cell values vertically */

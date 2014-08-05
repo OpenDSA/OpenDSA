@@ -470,6 +470,7 @@
           },
           "binarySearchPRO": {
             "long_name": "Binary Search Proficiency Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 0.0,
             "threshold": 1.0

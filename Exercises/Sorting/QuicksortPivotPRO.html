@@ -1,6 +1,6 @@
 <!--
 Quicksort mini-proficiency exercise.
-Written by Gayathri Subramanian, Dan Breakiron, and Cliff Shaffer
+Written by Gayathri Subramanian, Daniel Breakiron, and Cliff Shaffer
 -->
 <!DOCTYPE html>
 <html data-require="math">
@@ -13,13 +13,7 @@ Written by Gayathri Subramanian, Dan Breakiron, and Cliff Shaffer
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-
-  <style>
-    .jsavcontainer {
-      border: 0;
-      width: 100%;
-    }
-  </style>
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 <head>
 
 <body>
@@ -45,6 +39,7 @@ var clickHandler = function (index, e) {
 // Initialize the JSAV array
 var initJSAV = function (length) {
   var jsav = new JSAV("jsav");
+  jsav.recorded();
   arr = jsav.ds.array(JSAV.utils.rand.numKeys(0, 999, length),
                       {indexed: true, center: false});
   // bind the clickHandler to handle click events on the array

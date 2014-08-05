@@ -1,8 +1,7 @@
 #include "Maxheap.cpp"
 
 
-/* *** ODSAendTag: Heapsort *** */
-
+/* *** ODSATag: Heapsort *** */
 void heapsort(Comparable* A[], int n) {
   std::cout << "Getting started with array:" << std::endl;
   for (int j = 0; j<n; j++)

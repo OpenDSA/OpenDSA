@@ -46,12 +46,15 @@ $(document).ready(function () {
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray, {indexed: true});
 
-  arr.addClass(true, "deemph").highlight([0, 8]);
+  arr.addClass(true, "deemph");
+  arr.highlight([0, 8]).removeClass([0, 8], "deemph");
   av.displayInit();
-  arr.unhighlight([0, 8]).highlight([1, 9]);
+  arr.unhighlight([0, 8]).addClass([0, 8], "deemph");
+  arr.highlight([1, 9]).removeClass([1, 9], "deemph");
   for (var i = 2; i < 4; i++) { // loop through the rest of the array sublists
     av.step();
-    arr.unhighlight([i - 1, i + 7]).highlight([i, i + 8]);
+    arr.unhighlight([i - 1, i + 7]).addClass([i - 1, i + 7], "deemph");
+    arr.highlight([i, i + 8]).removeClass([i, i + 8], "deemph");
   }
   av.recorded();
 });
@@ -69,15 +72,19 @@ $(document).ready(function () {
 $(document).ready(function () {
   var av = new JSAV("shellsortCON4");
   var arr = av.ds.array(theArray2, {indexed: true});
-  arr.addClass(true, "deemph").highlight([0, 4, 8, 12]);
+  arr.addClass(true, "deemph");
+  arr.highlight([0, 4, 8]).removeClass([0, 4, 8], "deemph");
   //  arr.css(function (index)
-  //          { return index % 4 !== 0; }, {"color": LIGHT}).highlight([0, 4, 8, 12]);
+  //          { return index % 4 !== 0; }, {"color": LIGHT}).highlight([0, 4, 8]);
   av.displayInit();
-  arr.unhighlight([0, 4, 8, 12]).highlight([1, 5, 9, 13]);
+  arr.unhighlight([0, 4, 8]).addClass([0, 4, 8], "deemph");
+  arr.highlight([1, 5, 9]).removeClass([1, 5, 9], "deemph");
   av.step();
-  arr.unhighlight([1, 5, 9, 13]).highlight([2, 6, 10, 14]);
+  arr.unhighlight([1, 5, 9]).addClass([1, 5, 9], "deemph");
+  arr.highlight([2, 6, 10]).removeClass([2, 6, 10], "deemph");
   av.step();
-  arr.unhighlight([2, 6, 10, 14]).highlight([3, 7, 11, 15]);
+  arr.unhighlight([2, 6, 10]).addClass([2, 6, 10], "deemph");
+  arr.highlight([3, 7, 11]).removeClass([3, 7, 11], "deemph");
   av.recorded();
 });
 

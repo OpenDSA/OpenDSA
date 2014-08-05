@@ -405,8 +405,8 @@
             "showhide": "none",
             "threshold": 1.0
           },
-          "QuicksortCON1": {
-            "long_name": "Quicksort Slideshow",
+          "quicksortCON": {
+            "long_name": "Quicksort Partition Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0

@@ -453,3 +453,4 @@ $(document).ready(function () {
                               fix: fixState});
   exercise.reset();
 });
+

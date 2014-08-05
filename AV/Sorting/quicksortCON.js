@@ -1,88 +1,115 @@
 "use strict";
-/*global alert*/
-// Various functions and variables that will be used by all of the
-// following sections of the tutorial.
+/*global ODSA */
+$(document).ready(function () {
+  var av_name = "quicksortCON";
+  var interpret = ODSA.UTILS.loadLangData({"av_name": av_name}).interpreter;
 
-var LIGHT = "rgb(215, 215, 215)";  // For "greying out" array elements
-
-// Randomly scramble the contents of an array
-function permute(A) {
-  for (var i = 0; i < A.length; i++) {                // for each i
-    var randompos = Math.floor(Math.random() * A.length);
-    var temp = A[i];
-    A[i] = A[randompos];
-    A[randompos] = temp;
-  }
-}
-
-(function ($) {
   var theArray = [76, 6, 57, 88, 85, 42, 83, 73, 48, 60];
-  var av = new JSAV("QuicksortCON1");
+  var av = new JSAV(av_name);
   // Create an array object under control of JSAV library
   var arr = av.ds.array(theArray, {indexed: true});
 
-  av.umsg("When we start the partition function, pivot value 60 has been moved to the right most position.");
+  // Slide 1
+  av.umsg(interpret("av_c1"));
   arr.addClass(9, "processing");
   av.displayInit();
+
+  // Slide 2
   arr.removeClass(9, "processing");
   arr.setLeftArrow(0);
   arr.setRightArrow(8);
-  av.umsg("The left and right bounds are set to positions 0 and 8, respectively");
+  av.umsg(interpret("av_c2"));
   av.step();
-  av.umsg("Now move left bound rightward as long as it is at a value less than 60. Since it starts on 72 which is greater than 60, there is no movement of the left bound at this time.");
+
+  // Slide 3
+  av.umsg(interpret("av_c3"));
   av.step();
-  av.umsg("Likewise, the right bound starts at a value less than 60, so it does not move.");
+
+  // Slide 4
+  av.umsg(interpret("av_c4"));
   av.step();
+
+  // Slide 5
   arr.swap(0, 8);
-  av.umsg("Swap the values at the bounds.");
+  av.umsg(interpret("av_c5"));
   av.step();
-  av.umsg("Now move the left bound to the right as long as it is at a value less than the pivot.");
+
+  // Slide 6
+  av.umsg(interpret("av_c6"));
   av.step();
-  av.umsg("Step.");
+
+  // Slide 7
+  av.umsg(interpret("av_c7"));
   arr.clearLeftArrow(0);
   arr.setLeftArrow(1);
   av.step();
-  av.umsg("Step.");
+
+  // Slide 8
+  av.umsg(interpret("av_c7"));
   arr.clearLeftArrow(1);
   arr.setLeftArrow(2);
   av.step();
+
+  // Slide 9
   arr.clearLeftArrow(2);
   arr.setLeftArrow(3);
-  av.umsg("Now we are at 88, which is greater than or equal to 60.");
+  av.umsg(interpret("av_c8"));
   av.step();
-  av.umsg("Now we move the right bound to the left until it reaches a value less than 60.");
+
+  // Slide 10
+  av.umsg(interpret("av_c9"));
   av.step();
-  av.umsg("Step.");
+
+  // Slide 11
+  av.umsg(interpret("av_c7"));
   arr.clearRightArrow(8);
   arr.setRightArrow(7);
   av.step();
-  av.umsg("Step.");
+
+  // Slide 12
+  av.umsg(interpret("av_c7"));
   arr.clearRightArrow(7);
   arr.setRightArrow(6);
   av.step();
+
+  // Slide 13
   arr.clearRightArrow(6);
   arr.setRightArrow(5);
-  av.umsg("Now the right bound is at 42, which is less than 60.");
+  av.umsg(interpret("av_c10"));
   av.step();
-  av.umsg("Swap.");
+
+  // Slide 14
+  av.umsg(interpret("av_c11"));
   arr.swap(3, 5);
   av.step();
-  av.umsg("Once again, move the left bound to the right.");
+
+  // Slide 15
+  av.umsg(interpret("av_c12"));
   av.step();
+
+  // Slide 16
   arr.clearLeftArrow(3);
   arr.setLeftArrow(4);
-  av.umsg("Left bound is at 85, which is bigger than the pivot value.");
+  av.umsg(interpret("av_c13"));
   av.step();
-  av.umsg("Move the right bound to the left until we reach a value that is smaller than 60.");
+
+  // Slide 17
+  av.umsg(interpret("av_c14"));
   av.step();
-  av.umsg("Step.");
+
+  // Slide 18
+  av.umsg(interpret("av_c7"));
   arr.clearRightArrow(5);
   arr.setRightArrow(4);
   av.step();
+
+  // Slide 19
   arr.clearRightArrow(4);
   arr.setRightArrow(3);
-  av.umsg("Note that the right bound has crossed over the left bound. So partition is done.");
+  av.umsg(interpret("av_c15"));
   av.step();
-  av.umsg("Since the left bound has reached position 4, this is the value returned by the partition function.");
+
+  // Slide 20
+  av.umsg(interpret("av_c16"));
   av.recorded();
 }(jQuery));
