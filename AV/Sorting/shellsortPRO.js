@@ -115,9 +115,8 @@ $(document).ready(function () {
   }
 
   // Process help button: Give a full help page for this activity
-  // We might give them another HTML page to look at.
   function help() {
-    window.open("shellsorthelpPRO.html", 'helpwindow');
+    window.open("shellsortHelpPRO.html", 'helpwindow');
   }
 
   // Process Done selecting button: change the message, array status

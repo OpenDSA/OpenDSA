@@ -15,19 +15,19 @@ Written by Gayathri Subramanian and Cliff Shaffer
   <script src="http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <style>
-    #container {
-      border: 0;
-    }
-
-    .jsavarray { position: absolute; }
-
-    #container .jsavarray {
-      height: 80px;
-    }
-
-    #reset { margin-right: 20px;}
     .jsavcanvas { height: 470px;}
+
+    /* We make the arrays bigger than the OpenDSA stylesheet standard
+       SO that we  have reasonable room for the linked lists */
+    .jsavverticalarray .jsavnode {
+      line-height: 45px !important;
+      min-width: 45px !important;
+      max-width: 45px !important;
+      min-height: 45px !important;
+      max-height: 45px !important;
+    }
   </style>
 </head>
 
@@ -90,7 +90,7 @@ function resetInit() {
                            layout: "vertical", top: 10, left: 200});
   jsavBins.click(function (index) { clickHandler(this, index); });
   for (i = 0; i < 10; i++) {
-    jsavLists[i] = jsav.ds.list({top: (11 + i * blockHeight), left: 260, nodegap: 30});
+    jsavLists[i] = jsav.ds.list({top: (16 + i * blockHeight), left: 260, nodegap: 30});
     jsavLists[i].layout({center: false});
   }
   jsav.step();
@@ -99,6 +99,7 @@ function resetInit() {
 // reset function definition
 var f_reset = function () {
   jsavInput.clear();
+  jsavBins.clear();
   for (var i = 0; i < 10; i++) {
     jsavLists[i].clear();
   }
@@ -113,6 +114,7 @@ var initJSAV = function (asize, qchoice) {
   // Do all of the one-time initializations
   arr_size = asize;
   jsav = new JSAV($("#container"));
+  jsav.recorded();
   arrdata = JSAV.utils.rand.numKeys(0, 999, arr_size);
   for (i = 0; i < 10; i++) { empty[i] = ""; }
   resetInit();

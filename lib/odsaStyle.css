@@ -50,6 +50,14 @@
   max-height: 30px !important;
 }
 
+.jsavverticalarray .jsavnode {
+  line-height: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+}
+
 .jsavnode.jsavtreenode {
   min-width: 30px;
   max-width: 30px;
@@ -67,6 +75,10 @@
 }
 
 .jsavnode .jsavhorizontalarray .jsavvalue { /* Center array cell values vertically */
+  height: 30px;
+}
+
+.jsavnode .jsavverticalarray .jsavvalue { /* Center array cell values vertically */
   height: 30px;
 }
 

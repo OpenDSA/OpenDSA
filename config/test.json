@@ -526,17 +526,6 @@
           }
         }
       },
-      "Sorting/SortingEmpirical": {
-        "long_name": "An Empirical Comparison of Sorting Algorithms",
-        "exercises": {
-          "SortAlgCompSumm": {
-            "long_name": "Sort Comparison Summary Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      },
       "Sorting/SortingLowerBound": {
         "long_name": "Lower Bounds of Sorting",
         "exercises": {
@@ -545,6 +534,17 @@
             "required": true,
             "points": 1.0,
             "threshold": 4
+          }
+        }
+      },
+      "Sorting/SortingEmpirical": {
+        "long_name": "An Empirical Comparison of Sorting Algorithms",
+        "exercises": {
+          "SortAlgCompSumm": {
+            "long_name": "Sort Comparison Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
           }
         }
       },

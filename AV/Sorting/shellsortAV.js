@@ -8,9 +8,8 @@ $(document).ready(function () {
   }
 
   // Process help button: Give a full help page for this activity
-  // We might give them another HTML page to look at.
   function help() {
-    window.open("shellsortHelpAV.html", "helpwindow");
+    window.open("shellsortAVHelp.html", "helpwindow");
   }
 
   // Validate the increment series
