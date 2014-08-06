@@ -530,7 +530,7 @@ class ODSA_Config:
     # The directory within the book directory where Sphinx will write the HTML files
     self.rel_book_output_path = 'html/'
 
-    self.rel_build_to_odsa_path = os.path.relpath(self.odsa_dir, self.book_dir + 'html/')
+    self.rel_build_to_odsa_path = os.path.relpath(self.odsa_dir, self.book_dir + 'html/') + '/'
 
 
 # Code to execute when run as a standalone program

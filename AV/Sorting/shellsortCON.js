@@ -13,8 +13,7 @@ var theArray4 = [12, 11, 13, 14, 20, 30, 44, 54, 55, 79, 78, 98];
 function doSweep(av_name, inArr, increment) {
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadLangData(
-                 {"av_name": av_name, "js_filename": "shellsortCON",
-                  "json_filename": "shellsortAV.json"});
+                 {"av_name": av_name, "json_path": "AV/Sorting/shellsortAV.json"});
   var interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
   // Create an array object under control of JSAV library
@@ -28,8 +27,7 @@ function doSweep(av_name, inArr, increment) {
 function showDifference(av_name, a) {
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadLangData(
-                 {"av_name": av_name, "js_filename": "shellsortCON",
-                  "json_filename": "shellsortAV.json"});
+                 {"av_name": av_name, "json_path": "AV/Sorting/shellsortAV.json"});
   var interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name, {"animationMode": "none"});
   var origarr = av.ds.array(theArray, {indexed: true});
