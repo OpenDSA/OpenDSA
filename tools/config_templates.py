@@ -1,4 +1,4 @@
-
+# Header prepended to every RST file, contains settings for a specific module
 rst_header = '''\
 .. _%(mod_name)s:
 
@@ -407,6 +407,7 @@ exercises_dir = '%(exercises_root_dir)s'
 translation_file = '%(odsa_dir)stools/language_msg.json'
 '''
 
+# Used to create a JS file with settings common to all modules
 config_js_template = '''\
 "use strict";
 (function () {
@@ -423,6 +424,7 @@ config_js_template = '''\
   // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
   settings.ALLOW_ANON_CREDIT = %(allow_anonymous_credit)s;
   settings.REQ_FULL_SS = %(req_full_ss)s;
+  settings.BUILD_TO_ODSA = "%(rel_build_to_odsa_path)s";
 
   window.ODSA = {};
   window.ODSA.SETTINGS = settings;

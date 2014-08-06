@@ -504,11 +504,11 @@ class ODSA_Config:
     for field in optional_fields:
       self[field] = conf_data[field] if field in conf_data else None
 
-    #Loads translated text
+    # Loads translated text
     self['text_translated'], self['lang'] = get_translated_text(self['lang'])
     self['lang_file'] = lang_file
 
-    #Make the list of modules publicly available
+    # Make the list of modules publicly available
     self['listed_modules'] = listed_modules
     self['listed_chapters'] = listed_chapters
 
@@ -529,6 +529,8 @@ class ODSA_Config:
 
     # The directory within the book directory where Sphinx will write the HTML files
     self.rel_book_output_path = 'html/'
+
+    self.rel_build_to_odsa_path = os.path.relpath(self.odsa_dir, self.book_dir + 'html/')
 
 
 # Code to execute when run as a standalone program
