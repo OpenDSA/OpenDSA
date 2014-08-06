@@ -7,7 +7,9 @@
 //Written by Hannah Börjesson 2014 @LiU
 /* *** ODSATag: Radixsort *** */
 static void radixsort(int A[], int k, int r, int n) {
-  int B[n], count[r], i, j, rtok;
+  int B[n];
+  int count[r];
+  int i, j, rtok;
   
   for (i = 0, rtok = 1; i < k; i++, rtok *= r) {  // For k digits
     for (j = 0; j < r; j++) count[j] = 0;  // Initialize count

@@ -34,7 +34,7 @@ numbers 0 through :math:`n-1`.
 .. codeinclude:: Sorting/Binsort 
    :tag: simplebinsort
 
-.. inlineav:: BinsortCON1 ss
+.. inlineav:: binsortS1CON ss
    :output: show
 
 Here the key value is used to determine the
@@ -77,7 +77,7 @@ Here is the extended Binsort algorithm.
 This version of Binsort can sort any collection of records whose key
 values fall in the range from 0 to ``MaxKeyValue``.
 
-.. inlineav:: BinsortCON2 ss
+.. inlineav:: binsortS2CON ss
    :output: show
 
 .. showhidecontent:: BinSortAnalysis   
@@ -119,4 +119,5 @@ only a small number of records into each bucket, and that a
 This is similar in spirit to the Radix Sort, which extends the
 concept of the Binsort in a practical way.
 
-.. odsascript:: AV/Sorting/binsortCON.js
+.. odsascript:: AV/Sorting/binsortS1CON.js
+.. odsascript:: AV/Sorting/binsortS2CON.js

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Radix Sort Linked Lists AV</title>
+  <title>Radix Sort: Linked Lists</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <link rel="stylesheet" href="radixLinkAV.css" type="text/css" />
 </head>
 
@@ -13,25 +14,23 @@
   <table class="headerTable">
     <tr>
       <td class="headerLeft">
-        <input type="button" id="help" name="help" value="Help" />
+        <input id="help" type="button" name="help" />
       </td>
-      <td class="headerCenter avTitle">
-        Radix Sort: Linked List
-      </td>
+      <td class="headerCenter avTitle"></td>
       <td class="headerRight">
-        <input type="button" id="about" name="about" value="About" />
-        <a id="settings" class="jsavsettings" href="#">Settings</a>
+        <input id="about" type="button" name="about" />
+        <a id="settings" class="jsavsettings" href="#"></a>
       </td>
     </tr>
   </table>
 
   <form id="ssperform">
     <p>
-      <input type="button" id="run" name="run" value="Run" />
-      <input type="button" id="reset" name="reset" value="Reset" />
-      <label for="arraysize">&nbsp;Array size:&nbsp;</label>
+      <input id="run" type="button" name="run" />
+      <input id="reset" type="button" name="reset" />
+      <label id="arraysizeLabel" for="arraysize"></label>
       <select id="arraysize"></select>
-      <label for="digitsize">&nbsp;Digits:&nbsp;</label>
+      <label id="digitsLabel" for="digitsize"></label>
       <select id="digitsize">
         <option value="1"> 1 </option>
         <option selected="selected" value="2"> 2 </option>
@@ -40,9 +39,8 @@
       </select>
     </p>
     <p>
-      <label for="arrayValues">&nbsp;Array values:&nbsp;</label>
-      <input size="60" name="arrayValues" id="arrayValues" type="text"
-         placeholder="Type space-separated values, or hit 'run' to use random values" />
+      <label id="arrayValuesLabel" for="arrayValues"></label>
+      <input id="arrayValues" size="60" name="arrayValues" type="text" />
     </p>
   </form>
   <div class="avcontainer">
@@ -59,7 +57,6 @@
 <script src="../../JSAV/build/JSAV-min.js"></script>
 <script src="../../lib/odsaUtils-min.js"></script>
 <script src="../../lib/odsaAV-min.js"></script>
-<script src="../sortUtils.js"></script>
 <script src="radixLinkAV.js"></script>
 </body>
 </html>
