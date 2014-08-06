@@ -32,7 +32,7 @@ framework.
 **Note**: AVs should not include ``odsaMOD.js`` and
 modules should not include ``odsaAV.js``.
 
-Be aware that modules an AVs actually load the minimized version of
+Be aware that modules and AVs actually load the minimized version of
 these files (such as ``odsaAV-min.js``).
 So if you edit one of the library files, be sure to run::
 
@@ -71,7 +71,9 @@ The client-side framework is responsible for:
 
 * Collecting and transmitting user interaction data to the backend server
 
-All but the last of these responsibilities are handled by
+* Dynamically configuring the natural language, code language, and default parameters of AVs at runtime
+
+All but the last two of these responsibilities are handled by
 ``odsaMOD.js``, effectively making module pages the "brains" of the
 client-side framework.  We wanted the client to be able to determine
 whether or not a user obtained proficiency with an exercise so that
@@ -195,8 +197,6 @@ We collect data about how users interact with OpenDSA for two reasons
   2. For research purposes
 
 As a user interacts with OpenDSA, a variety of events are generated.  If there is a backend server enabled, we record information about these events, buffering it in local storage and sending it to the server when a flush is triggered.  If a user is logged in, we send the event data with their session key, effectively tying interaction data to a specific user, but if no user is logged in the data is sent anonymously (using 'phantom-key' as the session key).  This ensures that we are able to collect as much interaction data as possible.
-
-.. TODO: Should this go under Client-Side Framework or Client-Side Development??
 
 Runtime Exercise Configuration Support
 ======================================
@@ -365,7 +365,8 @@ For embedded AVs, these options can be set several different ways:
     "glob_exer_options": {
       "JXOP-lang": "en",
       "JXOP-code": "c++"
-    }
+    },
+    ...,
   }
 
 **Method 4 Example**
@@ -398,7 +399,6 @@ For mini-slideshows, the first two methods from above apply, but options three a
 
 The order of precedence is such that the later methods will override the previous ones.  If the preferred natural language is not present in the configuration file, the framework will default to English.  If the preferred code language is not present, the framework will default to the first code language defined in the file.  If the code language is set to ``none`` or the code object is entirely omitted from the config file, then code display will be disabled for the AV.
 
-
 ----------
 Data Model
 ----------
@@ -421,7 +421,9 @@ Each module page creates an ``exercises`` object on page load which is used to q
 
 * uiid (unique instance identifier) - a code that uniquely identifies an instance of an exercise, used to group log events
 
-Example of ``exercises``::
+Example of ``exercises``
+
+.. code-block:: javascript
 
   {
     "shellsortCON1": {
@@ -458,14 +460,22 @@ Score Data
   * uiid - the unique instance identifier which allows an event to be tied to a specific instance of an exercise or a specific load of a module page
   * username - the username of the user who earned the score
 
-Example: localStorage["score-1377743343193-24"] = "{"exercise":"SelsortCON1","module":"SelectionSort","score":1,"steps_fixed":0,"submit_time":1360269557116,"total_time":2559,"uiid":1360269543543,"book":"d48f23e5ea5e9124cea87971036f818ca74428e8","username":"breakid"}"
+Example:
+
+.. code-block:: javascript
+
+  localStorage["score-1377743343193-24"] = '{"exercise":"SelsortCON1","module":"SelectionSort","score":1,"steps_fixed":0,"submit_time":1360269557116,"total_time":2559,"uiid":1360269543543,"book":"d48f23e5ea5e9124cea87971036f818ca74428e8","username":"breakid"}'
 
 Proficiency Data
 ================
 
 The proficiency status of each completed exercise and module is stored in local storage using a key of the form: 'prof-[username]-[bookID]-[module_or_exercise_name]'.  The prefix 'prof' identifies the data as cached proficiency data, while the username, bookID, and module / exercise name identifies what the status is related to.
 
-Example: localStorage["prof-testuser-d8a4a0d9967b6722a417e411bf13f9b99005c851-IntroDSA"] = "STORED"
+Example:
+
+.. code-block:: javascript
+
+  localStorage["prof-testuser-d8a4a0d9967b6722a417e411bf13f9b99005c851-IntroDSA"] = "STORED"
 
 Interaction / Event Data
 ========================
@@ -483,7 +493,11 @@ Interaction / Event Data
 
 Event data is stored using a key of the form: 'event-[timestamp]-[random_number]'.  The 'event' prefix identifies the object as user interaction data, while the timestamp helps make the key unique and allows the framework to quickly determine whether the associated event occurred prior to the timestamp taken when the send function was called.  The random number ensures that if two events are logged at the exact same time they will not overwrite each other.  While possible, the probability of two events being logged at the exact same time and having the same random number is negligible.
 
-Example: localStorage["event-1377743343193-8"] = "{"type":"document-ready","desc":"{\"msg\":\"User loaded the shellsortAV AV\"}","av":"shellsortAV","uiid":1377743340937,"module":"Shellsort","user":"breakid","book":"d48f23e5ea5e9124cea87971036f818ca74428e8","tstamp":1377743343193}"
+Example:
+
+.. code-block:: javascript
+
+  localStorage["event-1377743343193-8"] = '{"type":"document-ready","desc":"{\"msg\":\"User loaded the shellsortAV AV\"}","av":"shellsortAV","uiid":1377743340937,"module":"Shellsort","user":"breakid","book":"d48f23e5ea5e9124cea87971036f818ca74428e8","tstamp":1377743343193}'
 
 ----------------------------
 Implementation and Operation
