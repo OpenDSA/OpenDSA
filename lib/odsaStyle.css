@@ -42,10 +42,6 @@
   background-color: #ffffcc !important;
 }
 
-.jsavnode .jsavhorizontalarray .jsavvalue { /* Center array cell values vertically */
-  height: 30px;
-}
-
 .jsavhorizontalarray .jsavnode {
   line-height: 30px !important;
   min-width: 30px !important;
@@ -59,6 +55,19 @@
   max-width: 30px;
   min-height: 30px;
   max-height: 30px;
+}
+
+.jsavhorizontallist.jsavautoresize .jsavnode {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  line-height: 30px;
+  padding-right: 12px;
+}
+
+.jsavnode .jsavhorizontalarray .jsavvalue { /* Center array cell values vertically */
+  height: 30px;
 }
 
 .jsavnode .jsavvalue { /* Center tree node values vertically */

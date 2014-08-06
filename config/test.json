@@ -468,7 +468,6 @@
       },
       "Sorting/BinSort": {
         "long_name": "Binsort",
-        "dispModComp": true,
         "sections": {
           "BinSortAnalysis": {
             "long_name": "Bin Sort Analysis Discussion",
@@ -476,13 +475,13 @@
           }
         },
         "exercises": {
-          "BinsortCON1": {
+          "binsortS1CON": {
             "long_name": "Binsort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "BinsortCON2": {
+          "binsortS2CON": {
             "long_name": "Binsort Slideshow 2",
             "required": false,
             "points": 0.0,

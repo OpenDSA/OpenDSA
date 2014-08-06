@@ -34,17 +34,20 @@ $(document).ready(function () {
   var slash = l.get(2).addTail();
 
   //Diagonal slash for new node
-  var newNodeSlash = av.g.line(leftMargin + 255, topMargin + 105,
-                               leftMargin + 265, topMargin + 76,
+  var newNodeSlash = av.g.line(leftMargin + 256, topMargin + 105,
+                               leftMargin + 266, topMargin + 76,
                                {"opacity": 0, "stroke-width": 1});
 
   //Diagonal slash for new tail
   var newTailSlash = l.get(2).addTail({left: 74, visible: 0});
 
   //Diagonal slash for second new node
-  var newNodeSlash2 = av.g.line(leftMargin + 181, topMargin + 107,
-                                leftMargin + 191, topMargin + 76,
+  var newNodeSlash2 = av.g.line(leftMargin + 182, topMargin + 107,
+                                leftMargin + 192, topMargin + 76,
                                 {"opacity": 0, "stroke-width": 1});
+
+  var slash2 = l.get(0).addTail({left: 74});
+  slash2.hide();
 
   // Slide 1
   av.umsg(interpret("av_c1"));
@@ -121,7 +124,7 @@ $(document).ready(function () {
   l.addFirst("null");
   bar1.hide();
   itBox.highlight(0);
-  var slash2 = l.get(0).addTail({left: 74});
+  slash2.show();
   var bar2 = l.get(0).addVLine({left: 74});
   newTailSlash.hide();
   head.target(l.get(0));

@@ -18,9 +18,9 @@ function setPointerR(name, node) {
 $(document).ready(function () {
   JSAV._types.ds.ListNode.prototype.addTail = function (opts) {
     var fx = $("#" + this.id()).position().left +
-                     this.container.position().left + 33;
+                     this.container.position().left + 34;
     var fy = $("#" + this.id()).position().top +
-                     this.container.position().top + 46;
+                     this.container.position().top + 47;
     var options = opts || {};
 
     if (options.left) {

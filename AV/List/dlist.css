@@ -19,7 +19,7 @@
 }
 
 .jsavhorizontallist.jsavautoresize .jsavnode {
-  min-width: 50px !important;
-  max-height: 45px !important;
+  min-width: 50px;
+  max-width: 50px;
   padding-right: 0;
 }
