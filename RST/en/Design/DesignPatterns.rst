@@ -17,7 +17,8 @@ are abstractions for describing the design of programs |---| that is,
 the interactions of objects and classes.
 Experienced software designers learn and reuse patterns
 for combining software components.
-These have come to be referred to as :term:`design patterns`.
+These have come to be referred to as
+:term:`design patterns <design pattern>`.
 
 A design pattern embodies and generalizes important design concepts
 for a recurring problem.
@@ -41,12 +42,12 @@ application to match the various tradeoffs inherent in a given
 situation.
 
 The rest of this module introduces a few simple design patterns that
-are used in later modules.
+occur frequently in a study of data structures and algorithms.
 
 Flyweight
 ---------
 
-The Flyweight design pattern is meant to solve the following problem:
+The :term:`Flyweight` is meant to solve the following problem:
 You have an application with many objects.
 Some of these objects are identical in the information that
 they contain, and the role that they play.
@@ -94,8 +95,8 @@ Visitor
 
 Given a tree of objects to describe a page layout,
 we might wish to perform some activity on every node in the tree.
-Module :numref:`<BinaryTreeTraversal>` discusses tree traversal,
-which is the process of visiting every node in the tree in a defined
+A :ref:`tree traversal <traversal> <BinaryTreeTraversal>`
+is the process of visiting every node in the tree in a defined
 order.
 A simple example for our text composition application might be to
 count the number of nodes in the tree that represents the page.
@@ -104,19 +105,18 @@ debugging purposes.
 
 We could write a separate traversal function for each such activity
 that we intend to perform on the tree.
-A better approach would be to write a generic traversal function, and
-pass in the activity to be performed at each node.
-This organization constitutes the visitor design pattern.
-The visitor design pattern is used in
-Module :numref:`Tree Traversal <BinaryTreeTraversal>` 
-and Module :numref:`Graph Traversal <GraphTraversal>`.
+A better approach would be to write a generic traversal function,
+and pass in the activity to be performed at each node.
+This organization constitutes the :term:`visitor design pattern`.
+The visitor design pattern can also be used in
+:ref:`Graph Traversal <traversal> <GraphTraversal>`.
 
 Composite
 ---------
 
 There are two fundamental approaches to dealing with the relationship
 between a collection of actions and a hierarchy of object types.
-First consider the typical procedural approach.
+First consider the typical :term:`procedural` approach.
 Say we have a base class for page layout entities, with a subclass
 hierarchy to define specific subtypes (page, columns, rows, figures,
 characters, etc.).
@@ -131,7 +131,7 @@ Each action method contains something like a switch statement that
 defines the details of the action for each subclass in the collection
 (e.g., page, column, row, character).
 We can cut the code down some by using the
-visitor design pattern
+:term:`visitor design pattern`
 so that we only need to write the traversal once, and then write a
 visitor subroutine for each action that might be applied to the
 collection of objects.
@@ -178,9 +178,10 @@ It merely requires that we define the behavior of each activity that
 can be performed on the new subclass.
 
 This second design approach of burying the functional activity in the
-subclasses is called the Composite design pattern.
-A detailed example for using the Composite design pattern is presented
-in Module :numref:`<Composite>`.
+subclasses is called the :term:`Composite design pattern`.
+A detailed example for using the Composite design pattern
+can be seen in a discussion of the
+:ref:`Expression Tree <Expression Tree> <Composite>`.
 
 Strategy
 --------
@@ -199,9 +200,9 @@ subclasses.
 Instead, we want to pass to the subroutine performing the rendering
 action a method or class that does the appropriate rendering details
 for that output device.
-That is, we wish to hand to the object the appropriate "strategy"
+That is, we wish to hand to the object the appropriate ":term:`strategy`"
 for accomplishing the details of the rendering task.
-Thus, this approach is called the Strategy design pattern.
+Thus, this approach is called the :term:`Strategy design pattern`.
 
 The Strategy design pattern can be used to create generalized sorting
 functions.

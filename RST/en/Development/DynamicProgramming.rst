@@ -63,7 +63,7 @@ Thus, there are many times where storing a complete table of
 subresults will be useful.
 
 This approach to designing an algorithm that works by storing a table
-of results for subproblems is called dynamic programming.
+of results for subproblems is called :term:`dynamic programming`.
 The name is somewhat arcane, because it doesn't bear much obvious
 similarity to the process that is taking place when storing subproblems
 in a table.

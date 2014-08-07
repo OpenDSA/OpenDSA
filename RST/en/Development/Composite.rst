@@ -9,18 +9,16 @@
    :satisfies: composite
    :topic: Binary Trees, Design Patterns
 
-Composite Design Pattern
-========================
+Composite-based Expression Tree
+===============================
 
 There is another approach that we can take to represent separate leaf
 and internal nodes, also using a virtual base class and separate node
 classes for the two types.
-This is to implement nodes using the
-:dfn:`composite design pattern` described in
-Module :numref:`<DesignPatterns>`.
-This approach is noticeably different from the one of
-Module :numref:`<BinaryTreeImpl>` in that the node classes themselves
-implement the functionality of ``traverse``.
+This is to implement nodes using the :term:`Composite design pattern`.
+This approach is noticeably different from the
+:ref:`procedural approach <procedural> <BinaryTreeImpl>` in that the
+node classes themselves implement the functionality of ``traverse``.
 Here is the implementation.
 Base class ``VarBinNode`` declares a member function
 ``traverse`` that each subclass must implement.
@@ -61,8 +59,9 @@ But if there were many such subclasses, this could become a bigger
 problem.
 A disadvantage is that the traversal operation must not be called on a
 NULL pointer, because there is no object to catch the call.
-This problem could be avoided by using a flyweight
-(see Module :numref:`<DesignPatterns>`) to implement empty nodes.
+This problem could be avoided by using a
+:ref:`flyweight <Flyweight design pattern> <DesignPatterns>`)
+to implement empty nodes.
 
 Typically, the non-composite version would be
 preferred in this example if ``traverse`` is a member function of

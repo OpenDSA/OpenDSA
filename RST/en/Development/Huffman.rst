@@ -17,9 +17,8 @@ Huffman Coding Trees
 ====================
 
 The space/time tradeoff principle presented in
-Module :numref:`<AnalSpace>` states that one can often gain an
-improvement in space requirements in exchange for a penalty in running
-time.
+One can often gain an improvement in space requirements in exchange
+for a penalty in running time.
 There are many situations where this is a desirable tradeoff.
 A typical example is storing files on disk.
 If the files are not actively used, the owner might wish to compress
@@ -39,7 +38,7 @@ to represent the 128 symbols of the ASCII character set.
 The requirement for :math:`\left \lceil log\ n \right\rceil` bits to
 represent :math:`n` unique code values assumes that all codes will be
 the same length, as are ASCII codes.
-These are called :term:`fixed-length codes`.
+These are called :term:`fixed-length codes <fixed-length coding>`.
 If all characters were used equally often, then a fixed-length coding
 scheme is the most space efficient method.
 However, you are probably aware that not all characters are used
@@ -92,7 +91,8 @@ this might be worthwhile if such characters appear rarely enough.
 This concept is at the heart of file compression techniques in
 common use today.
 The next section presents one such approach to assigning
-:term:`variable-length codes`, called Huffman coding.
+:term:`variable-length codes <variable-length coding>`,
+called :term:`Huffman coding <Huffman codes>`.
 While it is not commonly used in its simplest form for file
 compression (there are better methods), Huffman coding gives the
 flavor of such coding schemes.

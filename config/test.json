@@ -19,6 +19,42 @@
     "JXOP-code": "c++"
   },
   "chapters": {
+    "Design 2": {
+      "Design/DesignPatterns": {
+        "long_name": "Design Patterns",
+        "exercises": {}
+      },
+      "Design/DesignAltList": {
+        "long_name": "Alternate List ADT Design",
+        "exercises": {}
+      },
+      "Design/Comparison": {
+        "long_name": "Comparing Records",
+        "exercises": {
+          "CompareSumm": {
+            "long_name": "Record Comparison Summary Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "Design/Dictionary": {
+        "long_name": "The Dictionary ADT",
+        "exercises": {}
+      },
+      "Design/DesignSumm": {
+        "long_name": "Design Chapter Summary",
+        "exercises": {
+          "DesignSumm": {
+            "long_name": "Design Summary Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      }
+    },
     "Binary Trees": {
       "Development/BinaryTreeIntro": {
         "long_name": "Binary Trees Chapter Introduction",
@@ -174,6 +210,10 @@
             "threshold": 3
           }
         }
+      },
+      "Development/Spatial": {
+        "long_name": "Spatial Data Structures",
+        "exercises": {}
       },
       "Development/Bintree": {
         "long_name": "Bintrees",
