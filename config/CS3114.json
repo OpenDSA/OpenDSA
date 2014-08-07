@@ -155,9 +155,11 @@
         "exercises": {
           "binarySearchCON": {
             "long_name": "Binary Search Algorithm Slideshow",
-            "exer_options": { "JXOP-code": "none" },
+            "exer_options": {
+              "JXOP-code": "none"
+            },
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0
           },
           "binarySearchPRO": {
@@ -1142,8 +1144,8 @@
             "showhide": "none",
             "threshold": 1.0
           },
-          "mergesortCON1": {
-            "long_name": "Mergesort Concepts Slideshow 1",
+          "mergesortCON": {
+            "long_name": "Merging Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
@@ -1165,13 +1167,13 @@
       "Sorting/MergesortImpl": {
         "long_name": "Implementing Mergesort",
         "exercises": {
-          "mergeImplCON1": {
+          "mergeImplS1CON": {
             "long_name": "Mergesort Implementation Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "mergeImplCON2": {
+          "mergeImplS2CON": {
             "long_name": "Mergesort Implementation Slideshow 2",
             "required": false,
             "points": 0.0,
@@ -1207,8 +1209,8 @@
             "showhide": "none",
             "threshold": 1.0
           },
-          "QuicksortCON1": {
-            "long_name": "Quicksort Slideshow",
+          "quicksortCON": {
+            "long_name": "Quicksort Partition Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
@@ -1278,13 +1280,13 @@
           }
         },
         "exercises": {
-          "BinsortCON1": {
+          "binsortS1CON": {
             "long_name": "Binsort Slideshow 1",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "BinsortCON2": {
+          "binsortS2CON": {
             "long_name": "Binsort Slideshow 2",
             "required": false,
             "points": 0.0,
