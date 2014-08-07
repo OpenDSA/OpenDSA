@@ -11,7 +11,7 @@
 Alternative List ADT Designs
 ============================
 
-The list ADT of Module :numref:`<ListADT>` specifies that a List
+The :ref:`list ADT <list> <ListADT>` specifies that a List
 comprises not only a collection of objects in linear order,
 but also "the current position".
 While this is a simple way to present the main concepts embodied by a

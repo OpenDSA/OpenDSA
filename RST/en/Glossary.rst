@@ -79,6 +79,15 @@ Glossary
       A less formal version of the term
       :term:`asymptotic algorithm analysis`.
 
+   all-pairs shortest paths problem
+      Given a :term:`graph` with :term:`weights <weight>` or
+      distances on the :term:`edges <edge>`,
+      find the shortest paths between every pair of
+      vertices in the graph.
+      One approach to solving this problem is
+      :term:`Floyd's algorithm`, which uses the
+      :term:`dynamic programming` algorithmic technique.
+
    alphabet trie
       A :term:`trie` data structure for storing variable-length
       strings.
@@ -232,6 +241,16 @@ Glossary
       :term:`subtrees <subtree>`, which are :term:`disjoint` from each
       other and from the :term:`root`.
 
+   bintree
+      A :term:`spatial data structure` in the form of binary
+      :term:`trie`, typically used to store point data in two or more
+      dimensions.
+      Similar to a :term:`PR quadtree` except that at each level, it
+      splits one dimension in half.
+      Since many leaf nodes of the PR quadtree will contain no data
+      points, implementation often makes use of the :term:`Flyweight`
+      :term:`design pattern`.
+
    binsort
       A sort that works by taking each record and placing it into a
       bin based on its value. The bins are then gathered up in order
@@ -337,8 +356,8 @@ Glossary
       of the list provides access to the first element of the list.
 
    class
-      In an object-oriented language, an ADT and its implementation
-      together make up a class. 
+      In the :term:`object-oriented programming paradigm`
+      an ADT and its implementation together make up a class. 
 
    client
       The user of a service.
@@ -440,6 +459,25 @@ Glossary
    complete graph
       A :term:`graph` where every :term:`vertex` connects to every
       other vertex.
+
+   Composite design pattern
+      Given a class hierarchy representing a set of objects, and a
+      container for a collection of objects, the composite
+      :term:`design pattern` addresses the relationship between the
+      object hierarchy and a bunch of behaviors on the objects.
+      In the composite design, each object is required to implement
+      the collection of behaviors.
+      This is in contrast to the procedural approach where a behavior
+      (such as a tree traversal) is implemented as a method on the
+      object collection (such as a tree).
+      Procedural tree traversal requires that the tree have a method
+      that understands what to do when it encounters any of the object
+      types (internal or leaf nodes) that the tree might contain.
+      The composite approach would have the tree call the "traversal"
+      method on its root node, which then knows how to perform the
+      "traversal" behavior.
+      This might in turn require invoking the traversal method of
+      other objects (in this case, the children of the root).
 
    composite type
       A type whose :term:`members <member>` have subparts.
@@ -571,6 +609,14 @@ Glossary
    digraph
       Abbreviation for :term:`directed graph`.
 
+   Dijkstra's algorithm
+      An algorithm to solve the
+      :term:`single-source shortest paths problem` in a :term:`graph`.
+      This is a :term:`greedy algorithm`.
+      It is nearly identical to :term:`Prim's algorithm` for finding a 
+      :term:`minimal-cost spanning tree`, with the only difference
+      being the calculation done to update the best-known distance.
+
    diminishing increment sort
       Another name for :term:`Shellsort`.
 
@@ -597,6 +643,21 @@ Glossary
       A :term:`graph` whose :term:`edges <edge>` each are directed
       from one of its defining :term:`vertices <vertex>` to the
       other.
+
+   discriminator
+      A part of a :term:`multi-dimensional search key`.
+      Certain tree data structures such as the :term:`bintree` and the
+      :term:`kd tree` operate by making branching decisions at nodes
+      of the tree based on a single attribute of the multi-dimensional
+      key, with the attribute determined by the level of the node in
+      the tree.
+      For example, in 2 dimensions, nodes at the odd levels in the
+      tree might branch based on the :math:`x` value of a coordinate,
+      while at the even levels the tree would branch based on the
+      :math:`y` value of the coordinate.
+      Thus, the :math:`x` coordinate is the discriminator for the odd
+      levels, while the :math:`y` coordinate is the discriminator for
+      the even levels.
 
    disjoint
       Two parts of a :term:`data structure` or two
@@ -683,6 +744,17 @@ Glossary
       are created from :term:`free store` as needed. When no longer
       needed, the object is either returned to :term:`free store` or
       left as :term:`garbage`, depending on the programming language.
+
+   dynamic programming
+      An approach to designing algorithms that works by storing a table
+      of results for subproblems.
+      A typical cause for excessive cost in recursive algorithms is
+      that different branches of the recursion might solve the same
+      subproblem.
+      Dynamic programming uses a table to store information about
+      which subproblems have already been solved, and uses the stored
+      information to immediately give the answer for any repeated
+      attempts to solve that subproblem.
 
    edge
       The connection that links two :term:`nodes <node>` in a
@@ -815,6 +887,14 @@ Glossary
       It is the process of moving upwards in a
       tree to find the tree's root.
 
+   fixed-length coding
+      Given a collection of objects, a fixed-length coding scheme
+      assigns a code to each object in the collection using codes that
+      are all of the same length.
+      Standard ASCII and Unicode representations for characters are
+      both examples of fixed-length coding schemes.
+      This is in contrast to :term:`variable-length coding`.
+
    floor
       Written :math:`\lfloor x \rfloor`, for real value :math:`x` the
       floor is the greatest integer :math:`\leq x`.
@@ -827,6 +907,43 @@ Glossary
       read in from :term:`secondary storage` (and the changes are
       meant to be saved), then it must be written back to that
       secondary storage.
+
+   Floyd's algorithm
+      An algorithm to solve the
+      :term:`all-pairs shortest paths problem`.
+      It uses the :term:`dynamic programming` algorithmic technique,
+      and runs in :math:`\Theta(n^3)` time.
+      As with any dynamic programming algorithm, the key issue is to
+      avoid duplicating work through proper bookkeeping on the
+      solution space.
+      The basic idea is to first find all the direct edge costs, then
+      improving those costs by allowing paths through :term:`vertex`
+      0, then the cheapest paths involving paths going through
+      vertices 0 and 1, and so on.
+
+   Flyweight
+      A :term:`design pattern` that is meant to solve the following
+      problem:
+      You have an application with many objects.
+      Some of these objects are identical in the information that
+      they contain, and the role that they play.
+      But they must be reached from various places, and conceptually they
+      really are distinct objects.
+      Because there is so much duplication of the same information,
+      we want to reduce memory cost by sharing that space. 
+      For example, in document layout, 
+      the letter "C" might be represented by an object that
+      describes that character's strokes and bounding box.
+      However, we do not want to create a separate "C" object everywhere
+      in the document that a "C" appears.
+      The solution is to allocate a single copy of the shared representation
+      for "C" objects.
+      Then, every place in the document that needs a "C" in a given font,
+      size, and typeface will reference this single copy.
+      The various instances of references to a specific form of "C" are
+      called flyweights.
+      Flyweights can also used to advantage in the implementation of the
+      :term:`bintree` and :term:`PR quadtree`.
 
    free store
       Space available to a program during runtime to be used for
@@ -1058,6 +1175,9 @@ Glossary
       known, and the frequency of a letter is independent of the
       context of that letter in the message.
 
+   Huffman tree
+      Shorter form of the term :term:`Huffman coding tree`.
+
    image space decomposition
       A from of :term:`key space decomposition` where the
       :term:`key space` splitting points is predetermined (typically
@@ -1162,6 +1282,21 @@ Glossary
    K-ary tree
       A type of :term:`full tree` where every internal node has
       exactly :math:`K` :term:`children <child>`.
+
+   kd tree
+      A :term:`spatial data structure` that uses a binary tree to
+      store a collection of data records based on their (point)
+      location in space.
+      It uses the concept of a :term:`discriminator` at each level to
+      decide which single component of the
+      :term:`multi-dimensional search key` to branch on at that level.
+      It uses a :term:`key space decomposition`, meaning that all data
+      records in the left subtree of a node have a value on the
+      corresponding discriminator that is less than that of the node,
+      while all data records in the right subtree have a greater
+      value.
+      The :term:`bintree` is the :term:`image space decomposition`
+      analog of the kd tree.
 
    key
       A field or part of a larger record used to represent that record
@@ -1430,7 +1565,8 @@ Glossary
       metaphor.
 
    method
-      In an objectect-oriented class, a method is an operation on a class.
+      In the :term:`object-oriented programming paradigm`,
+      a method is an operation on a :term:`class`.
       A synonym for :term:`member function`.
 
    MCST
@@ -1456,6 +1592,20 @@ Glossary
       The result is referred to as a :term:`tree` because it would
       never have a :term:`cycle` (since an edge could be removed from
       the cycle and still preserve connectivity).
+      Two algorithms to solve this problem are
+      :term:`Prim's algorithm` and :term:`Kruskal's algorithm`.
+
+   minimum external path weight
+      Given a collection of objects, each associated with a
+      :term:`leaf node` in a tree, the binary tree with minimum
+      external path weight is the one with the minimum sum of
+      :term:`weighted path lengths <weighted path length>` for the
+      given set of leaves.
+      This concept is used to create a :term:`Huffman coding tree`,
+      where a letter with high weight should have low depth, so that
+      it will count the least against the total path length.
+      As a result, another letter might be pushed deeper in the tree
+      if it has less weight.
 
    mod
       Another name for the :term:`modulus` function.
@@ -1465,6 +1615,26 @@ Glossary
       remainder of an integer division.
       Sometimes written :math:`n \bmod m` in mathematical expressions,
       the syntax in many programming languages is ``n % m``.
+
+   multi-dimensional search key
+      A search key containing multiple parts, that works in
+      conjunction with a :term:`multi-dimensional search structure`.
+      Most typically, a :term:`spatial` search key representing a
+      position in multi-dimensional (2 or 3 dimensions) space.
+      But a multidimensional key could be used to organize data within
+      non-spatial dimensions, such as temperature and time.
+
+   multi-dimensional search structure
+      A data structure used to support efficient search on a
+      :term:`multi-dimensional search key`.
+      The main concept here is that a multi-dimensional search
+      structure works more efficiently by considering the multiple
+      parts of the search key as a whole, rather than making
+      independent searches on each one-dimensional component of the
+      key.
+      A primary example is a :term:`spatial data structure` that can
+      efficiently represent and search for records in
+      multi-dimensional space.
 
    multilist
       A list that may contain sublists.
@@ -1500,6 +1670,14 @@ Glossary
    object
       An instance of a class, that is, something that is created and
       takes up storage during the execution of a computer program.
+      In the :term:`object-oriented programming paradigm`, objects
+      are the basic units of operation.
+      Not only do they have state (variables), but they
+      know how to perform certain actions (:term:`methods <method>`).
+
+   object-oriented programming paradigm
+      An approach to problem-solving where all computations are
+      carried out using :term:`objects <object>`.
 
    object space decomposition
       A from of :term:`key space decomposition` where the
@@ -1619,6 +1797,29 @@ Glossary
       For a :term:`set` :math:`\mathbf{S}`, the power set is the set
       of all possible :term:`subsets <subset>` for :math:`\mathbf{S}`.
 
+   PR quadtree
+      A type of :term:`quadtree` that stores point data in two
+      dimensions.
+      The root of the PR quadtree represents some square region of 2d
+      space.
+      If that space stores more than one data point, then the region
+      is decomposed into four equal subquadrants, each represented
+      recursively by a subtree of the PR quadtree.
+      Since many leaf nodes of the PR quadtree will contain no data
+      points, implementation often makes use of the :term:`Flyweight`
+      :term:`design pattern`.
+      Related to the :term:`bintree`.
+
+   prefix property
+      Given a collection of strings, the collection has the prefix
+      property if no string in the collection is a prefix for another
+      string in the collection.
+      The significance is that, given a long string composed of
+      members of the collection, it can be uniquely decomposed into
+      the constituent members.
+      An example of such a collection of strings with the prefix
+      property is a set of :term:`Huffman codes`.
+
    preorder traversal
       In a :term:`binary tree`, a :term:`traversal` that first visits
       the :term:`root`, then :term:`recursively <recursion>` visits
@@ -1649,6 +1850,10 @@ Glossary
 
       A :term:`greedy algorithm` for computing the :term:`MCST` of a
       :term:`graph`.
+      It is nearly identical to :term:`Dijkstra's algorithm` for
+      solving the :term:`single-source shortest paths problem`,
+      with the only difference being the calculation done to update
+      the best-known distance.
 
    priority queue
       An ADT whose primary operations of insert of records, and
@@ -1665,6 +1870,18 @@ Glossary
       It is best thought of as a :term:`function` or a mapping of
       inputs to outputs.
 
+   procedural
+      Typically referring to the
+      :term:`procedural programming paradigm`, in contrast to the
+      :term:`object-oriented programming paradigm`.
+
+   procedural programming paradigm
+      Procedural programming uses a list of instructions (and
+      procedure calls) that define a series of computational steps to
+      be carried out.
+      This is in contrast to the 
+      :term:`object-oriented programming paradigm`.
+     
    proof by contradiction
       A mathematical proof technique that proves a theorem by first
       assuming that the theorem is false, and then uses a chain of
@@ -1697,6 +1914,18 @@ Glossary
    quadratic growth rate
       A growth rate function of the form :math:`cn^2` where :math:`n`
       is the input size and :math:`c` is a constant.
+
+   quadtree
+      A :term:`full tree` where each internal node has four children.
+      Most typically used to store two dimensional
+      :term:`spatial data`. 
+      Related to the :term:`bintree`.
+      The difference is that the quadtree splits all dimensions
+      simultaneously, while the bintree splits one dimension at each
+      level.
+      Thus, to extend the quadtree concept to more dimensions requires
+      a rapid increase in the number of splits (for example, 8 in
+      three dimensions).
 
    queue
       A list-like structure in which elements are inserted only at one
@@ -1875,6 +2104,9 @@ Glossary
       A good search tree implementation will guarentee that insertion,
       deletion, and search operations are all :math:`\Theta(\log n)`.
 
+   search trie
+      Any :term:`search tree` that is a :term:`trie`.
+
    secondary key
       A key field in a record such as salary, where a particular key
       value might be duplicated in multiple records. A secondary key
@@ -1937,6 +2169,14 @@ Glossary
       :term:`insertion sort` to improve over :math:`\Theta(n^2)` worst
       case cost. 
 
+   shortest path
+      Given a :term:`graph` with distances or :term:`weights <weight>`
+      on the :term:`edges <edge>`, the shortest path between two nodes
+      is the path with least total distance or weight.
+      Examples of the shortest paths problems are the
+      :term:`single-source shortest paths problem` and the
+      :term:`all-pairs shortest paths problem`.
+
    sibling
       In a :term:`tree`, a sibling of :term:`node` :math:`A` is any
       other node with the same :term:`parent` as :math:`A`.
@@ -1966,6 +2206,13 @@ Glossary
       simply add the necessary program state to the stack.
       When a return would have been made from the recursive call, pop
       the previous program state off of the stack.
+
+   single-source shortest paths problem
+      Given a :term:`graph` with :term:`weights <weight>` or
+      distances on the :term:`edges <edge>`, and a designated start
+      :term:`vertex` :math:`s`, find the shortest path from :math:`s`
+      to every other vertex in the graph.
+      One algorithm to solve this problem is :term:`Dijkstra's algorithm`.
 
    singly linked list
       A :term:`linked list` implementation variant where each list
@@ -2012,10 +2259,16 @@ Glossary
       Generally, this is interpreted to mean that the :term:`degree`
       for any :term:`vertex` in the graph is relatively low.
 
+   spatial
+      Referring to a position in space.
+
+   spatial data
+      Any object or record that has a position (in space).
+
    spatial application
-      An application what has spatial aspects. In particular, an
-      application that stores records that need to be searched by
-      location.
+      An application what has spatial aspects.
+      In particular, an application that stores records that need to
+      be searched by location.
 
    spatial attribute
       An attribute of a record that has a position in space, such as
@@ -2023,9 +2276,12 @@ Glossary
 
    spatial data structure
       A data structure designed to support efficient processing when a
-      :term:`spatial attribute` is used as the key. In particular, a
-      data structure that supports efficient search by location, or
-      finds all records within a given region.
+      :term:`spatial attribute` is used as the key.
+      In particular, a data structure that supports efficient search
+      by location, or finds all records within a given region.
+      Examples of spatial data structures to store point data include
+      the :term:`bintree`, the :term:`PR quadtree` and the
+      :term:`kd tree`.
 
    stable
       A sorting algorithm is said to be stable if it does not
@@ -2035,6 +2291,29 @@ Glossary
    stack
       A list-like structure in which elements may be inserted or
       removed from only one end.
+
+   strategy
+      An approach to accomplish a task, often encapsulated as an
+      algorithm.
+
+   Strategy design pattern
+      A :term:`design pattern` that separates the algorithm for
+      performing a task from the control for applying that task to
+      each member of a collection.
+      A good example is a generic sorting function that takes a
+      collection of records (such as an array) and a "strategy" in the
+      form of an algorithm that knows how to extract the key from a
+      record in the array.
+      Only subtly different from the :term:`Visitor design pattern`,
+      where the difference is primarily one of intent rather than
+      syntax.
+      The strategy design pattern is focused on encapsulating an activity
+      that is part of a larger process, so that different ways of
+      performing that activity can be substituted.
+      The visitor design pattern is focused on encapsulating an activity that
+      will be performed on all members of a collection so that completely
+      different activities can be substituted within a generic method that
+      accesses all of the collection members.
 
    strict partial order
       In set notation, a relation that is :term:`irreflexive`,
@@ -2207,6 +2486,19 @@ Glossary
       constant number of inputs. It could be a gross over-estimate of
       the truth.
 
+   variable-length coding
+      Given a collection of objects, a variable-length coding scheme
+      assigns a code to each object in the collection using codes that
+      can be of different lengths.
+      Typically this is done in a way such that the objects that are
+      most likely to be used have the shortest codes, with the goal of
+      minimizing the total space needed to represent an actual
+      :term:`sequence` of objects, such as when representing the
+      characters in a document.
+      :term:`Huffman coding <Huffman codes>` is an example of a
+      variable-length coding scheme.
+      This is in contrast to :term:`fixed-length coding`.
+
    vector
       In set notation, another term for a :term:`sequence`.
       As a data structure, the term vector usually used as a synonym
@@ -2219,7 +2511,7 @@ Glossary
       A :term:`design pattern` where a traversal process is given a
       function (known as the visitor) that is applied to every object
       in the collection being traversed. For example, a generic tree
-      or graph traversal might be designed such that it takes a
+      or graph :term:`traversal` might be designed such that it takes a
       function parameter, where that function is applied to each node.
 
    weight
@@ -2229,6 +2521,11 @@ Glossary
    weighted graph
       A :term:`graph` whose :term:`edges <edge>` each have an
       associated :term:`weight` or cost.
+
+   weighted path length
+      Given a tree, and given a :term:`weight` for each leaf in the
+      tree, the weighted path length for a leaf is its weight
+      times its :term:`depth`.
 
    weighted union rule
       When merging two disjoint sets using the :term:`UNION/FIND`

@@ -276,8 +276,8 @@ therefore
    \sum_{i=1}^{\log n} (i-1)\frac{n}{2^i}
    = \frac{n}{2}\sum_{i=1}^{\log n} \frac{i-1}{2^{i-1}}.
 
-From Equation :numref:`equation-IHalvesSum` we know that this summation
-has a closed-form solution of approximately 2,
+This :ref:`summation is known <summation> <Summations>`
+to have a closed-form solution of approximately 2,
 so this algorithm takes :math:`\Theta(n)` time in the worst case.
 This is far better than building the heap one element at a time,
 which would cost :math:`\Theta(n \log n)` in the worst case.
@@ -324,8 +324,10 @@ efficient search for objects (such as a BST).
 Records in the auxiliary data structure will store
 the object's heap index, so that the object can be
 deleted from the heap and reinserted with its new priority.
-Modules :numref:`<GraphShortest>` and :numref:`<MCST>` present
-applications for a priority queue with priority updating.
+Priority queues can be helpful for solving graph problems such as
+:ref:`single-source shortest paths <single-source shortest paths problem> <GraphShortest>`
+and
+:ref:`minimal-cost spanning tree <minimal-cost spanning tree> <MCST>`.
 
 .. avembed:: Exercises/Binary/HeapSumm.html ka
 
