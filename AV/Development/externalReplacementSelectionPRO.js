@@ -8,11 +8,9 @@
         exercise,
 	inputarray,
         outputarray,
-        swapIndex;
-
-      var initinput;
-      var initoutput = ["", "", "", "", ""];
-      initinput = JSAV.utils.rand.numKeys(10, 100, 5);
+        swapIndex,
+        initinput,
+        initoutput;
 
 
     jsav.recorded();
@@ -21,6 +19,14 @@
       if (bh) {
         bh.clear();
       }
+      if (inputarray) {
+        inputarray.clear();
+      }
+      if (outputarray) {
+        outputarray.clear();
+      }
+      initoutput = ["", "", "", "", ""];
+      initinput = JSAV.utils.rand.numKeys(10, 100, 5);
       initData = JSAV.utils.rand.numKeys(10, 100, nodeNum);
       var inputlabel = jsav.label("Input:", {left: 650, top: 250});
       var outputlabel = jsav.label("Output:", {left: 10, top: 250});
@@ -31,6 +37,14 @@
       var exInitData = {};
       exInitData.gen_array = initData;
       ODSA.AV.logExerciseInit(exInitData);
+
+      var exInitOutput = {};
+      exInitOutput.gen_array = initoutput;
+      ODSA.AV.logExerciseInit(exInitOutput);
+
+      var exInitInput = {};
+      exInitInput.gen_array = initinput;
+      ODSA.AV.logExerciseInit(exInitInput);
 
       bh = jsav.ds.binheap(initData, { nodegap: 25, compare: function (a, b) { return a - b; }});
       swapIndex = jsav.variable(-1);
@@ -43,10 +57,29 @@
       outputarray.click(clickHandler);
       bh.click(clickHandler);
 
-      return bh;
+      return [bh, outputarray];//, inputarray];
     }
 
-    function fixState(modelHeap) {
+    function fixState(modelState) {
+      var modelHeap = modelState[0];
+      //var modelinputarray = modelState[2];
+      var modeloutputarray = modelState[1];
+      var outputsize = modeloutputarray.size();
+      //var inputsize = modelinputarray.size();
+
+      // check output
+      for (var j = 0; j < outputsize; j++) {
+        outputarray.value(j, modeloutputarray.value(j));	
+      }
+
+      // check input
+/*
+      for (var k = 0; k < inputsize; k++) {
+        inputarray.value(k, modelinputarray.value(k));
+      }
+*/
+
+      // check bh
       var size = modelHeap.size();
       swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step
       for (var i = 0; i < size; i++) {
@@ -117,7 +150,7 @@
         modelbh.heapify(1);
 	}
       }
-      return modelbh;
+      return [modelbh, modeloutputarray];//, modelinputarray];
     }
 
 var firstSelection, secondSelection;
@@ -132,7 +165,6 @@ var firstSelection, secondSelection;
 	firstSelection = (entity === bh) ? bh : this;
         firstSelection.css(index, {"font-size": "145%"});
         swapIndex.value(index);
-        jsav.step();
       } else if (sIndex === index) {
 	secondSelection = (entity === bh) ? bh : this;
 	if(firstSelection === secondSelection)
@@ -141,7 +173,6 @@ var firstSelection, secondSelection;
         	swapIndex.value(-1);
         	firstSelection = null;
         	secondSelection = null;
-        	jsav.step();
 	}
 	// different entities were selected
 	else
