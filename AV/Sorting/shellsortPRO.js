@@ -234,7 +234,7 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadLangData(),
+  var config = ODSA.UTILS.loadExerConfig(),
       interpret = config.interpreter;       // get the interpreter
 
   // settings for the AV

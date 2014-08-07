@@ -138,7 +138,7 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the config object with interpreter
-  var config = ODSA.UTILS.loadLangData(),
+  var config = ODSA.UTILS.loadExerConfig(),
       interpret = config.interpreter;       // get the interpreter
 
   var av,     // for JSAV library object

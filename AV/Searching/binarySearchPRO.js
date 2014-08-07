@@ -148,7 +148,7 @@ $(document).ready(function () {
       keyholder,
       $findLabel,
       pseudo,
-      config = ODSA.UTILS.loadLangData({"av_container": "jsavcontainer"}),
+      config = ODSA.UTILS.loadExerConfig({"av_container": "jsavcontainer"}),
       interpret = config.interpreter,
       av = new JSAV($("#container")),
       code;

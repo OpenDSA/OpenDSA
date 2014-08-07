@@ -178,7 +178,7 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
 
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadLangData(),
+  var config = ODSA.UTILS.loadExerConfig(),
       interpret = config.interpreter;       // get the interpreter
 
   // Placeholder text translation needs to be set explicitly

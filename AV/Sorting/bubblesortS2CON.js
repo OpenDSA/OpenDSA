@@ -2,7 +2,7 @@
 "use strict";
 $(document).ready(function () {
   var av_name = "bubblesortS2CON";
-  var interpret = ODSA.UTILS.loadLangData({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
 
   var theArray2 =  [10, 15, 20, 54, 11, 55, 14, 78];
   var av = new JSAV(av_name);

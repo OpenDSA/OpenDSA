@@ -9,7 +9,7 @@
       $insertLabel,
       $trieLabel,
       $nextButton,
-      interpret = ODSA.UTILS.loadLangData({av_container: "jsavcontainer"}).interpreter,
+      interpret = ODSA.UTILS.loadExerConfig({av_container: "jsavcontainer"}).interpreter,
       av = new JSAV("jsavcontainer", {autoresize: false});
 
   av.recorded(); // we are not recording an AV with an algorithm

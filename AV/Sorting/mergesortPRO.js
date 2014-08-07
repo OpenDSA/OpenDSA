@@ -419,7 +419,7 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadLangData().interpreter;
+  var interpret = ODSA.UTILS.loadExerConfig().interpreter;
 
   // Variables used by "setPosition()"
   var canvasWidth = $('#container').width();     // The width of the display

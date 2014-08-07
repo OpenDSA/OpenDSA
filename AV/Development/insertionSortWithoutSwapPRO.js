@@ -11,7 +11,7 @@
     pseudo,
     interpret,
     clickHandler,
-    config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
+    config = ODSA.UTILS.loadExerConfig({'av_container': 'jsavcontainer'}),
     av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm

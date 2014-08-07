@@ -12,7 +12,7 @@
     pivotInBound,
     pseudo,
     clickHandler,
-    config = ODSA.UTILS.loadLangData({'av_container': 'jsavcontainer'}),
+    config = ODSA.UTILS.loadExerConfig({'av_container': 'jsavcontainer'}),
     interpret = config.interpreter,
     code = config.code,
     av = new JSAV($("#jsavcontainer"));

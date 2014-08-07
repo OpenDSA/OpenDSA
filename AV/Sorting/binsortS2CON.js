@@ -2,7 +2,7 @@
 "use strict";
 $(document).ready(function () {
   var av_name = "binsortS2CON";
-  var interpret = ODSA.UTILS.loadLangData({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
 
   var maxKeyLength = 15;
   var theArray = [12, 14, 2, 7, 0];

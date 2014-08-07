@@ -4,7 +4,7 @@
 //listADT insertion
 $(document).ready(function () {
   var av_name = "listADTnoteCON";
-  var interpret = ODSA.UTILS.loadLangData({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
   var jsav = new JSAV(av_name);
   var arrPositions = ["<", 20, ",", 23, "|", 12, ",", 15, ">", "", "", "", ""];
   var length = arrPositions.length;
