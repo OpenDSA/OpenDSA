@@ -2,7 +2,15 @@
   "title": "CSE-A1140 TRAK SCI",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"Processing": ["pde"], "C++": ["cpp", "h"]},
+  "code_lang": {
+    "Processing": [
+      "pde"
+    ],
+    "C++": [
+      "cpp",
+      "h"
+    ]
+  },
   "module_origin": "https://trak.cs.hut.fi",
   "backend_address": "",
   "build_JSAV": false,
@@ -26,8 +34,7 @@
       },
       "Design/ADT": {
         "long_name": "Abstract Data Types",
-        "exercises": {
-        }
+        "exercises": {}
       }
     },
     "Mathematical Background": {
@@ -58,7 +65,7 @@
           }
         }
       },
-     "Background/MiscMath": {
+      "Background/MiscMath": {
         "long_name": "Set Definitions",
         "exercises": {}
       },
@@ -378,12 +385,6 @@
             "points": 0.1,
             "threshold": 1.0
           },
-          "DLlistRemoveCON": {
-            "long_name": "Doubly Linked List Remove",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
           "DLlistPrevCON": {
             "long_name": "Doubly Linked List Prev",
             "required": true,
@@ -614,7 +615,7 @@
       },
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
-        "exercises" : {
+        "exercises": {
           "InssortCON1": {
             "long_name": "Insertion Sort Slideshow 1",
             "required": true,
@@ -751,7 +752,7 @@
             "long_name": "Insertion Sort Without Swap Proficiency Exercise",
             "required": true,
             "points": 1.0,
-      "remove": false,
+            "remove": false,
             "threshold": 5
           }
         }
@@ -821,7 +822,7 @@
             "long_name": "Shellsort Proficiency",
             "required": true,
             "points": 1,
-            "threshold": 0.90
+            "threshold": 0.9
           },
           "shellsortPerf": {
             "long_name": "Shellsort Performance",
@@ -863,7 +864,8 @@
             "long_name": "Mergesort Proficiency",
             "required": true,
             "points": 1,
-            "threshold": 0.90
+            "threshold": 0.9,
+            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/454/"
           }
         }
       },
@@ -922,7 +924,8 @@
             "long_name": "Quicksort Proficiency",
             "required": true,
             "points": 1,
-            "threshold": 0.90
+            "threshold": 0.9,
+            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/455/"
           },
           "QuicksortSumm": {
             "long_name": "Quicksort Summary",
@@ -1116,19 +1119,19 @@
             "long_name": "Binary Tree Inorder Traversal",
             "required": true,
             "points": 1.0,
-            "threshold": 0.90
+            "threshold": 0.9
           },
           "binarytree-preorder": {
             "long_name": "Binary Tree Preorder Traversal",
             "required": true,
             "points": 1.0,
-            "threshold": 0.90
+            "threshold": 0.9
           },
           "binarytree-postorder": {
             "long_name": "Binary Tree Postorder Traversal",
             "required": true,
             "points": 1.0,
-            "threshold": 0.90
+            "threshold": 0.9
           }
         }
       },
@@ -1164,7 +1167,7 @@
             "long_name": "BST Search Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.90
+            "threshold": 0.9
           },
           "insertCON": {
             "long_name": "BST Insert Slideshow",
@@ -1176,7 +1179,7 @@
             "long_name": "BST Insert Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.90
+            "threshold": 0.9
           },
           "deletemaxCON": {
             "long_name": "BST deletemax Slideshow",
@@ -1194,7 +1197,7 @@
             "long_name": "BST Delete Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 0.9
           }
         }
       },
@@ -1214,14 +1217,14 @@
             "long_name": "Heap Insert Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 0.9
           },
           "heapbuildCON": {},
           "binheapBuildPRO": {
             "long_name": "Heap Build Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.90
+            "threshold": 0.9
           },
           "heapmaxCON": {},
           "heapdeleteCON": {},
@@ -1229,7 +1232,7 @@
             "long_name": "Heap Delete Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 0.9
           },
           "HeapSumm": {
             "long_name": "BST/Heap Summary",
@@ -1290,7 +1293,7 @@
             "long_name": "Union/Find Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 0.9
           }
         }
       },
@@ -1616,7 +1619,7 @@
             "long_name": "Hash Deletion Proficiency",
             "required": true,
             "points": 1,
-            "threshold": 0.90
+            "threshold": 0.9
           },
           "HashDelSumm": {
             "long_name": "Hash Deletion Summary",
@@ -1783,7 +1786,6 @@
         }
       }
     },
-
     "Algorithms": {
       "Development/DynamicProgramming": {
         "long_name": "Dynamic Programming",
