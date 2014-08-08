@@ -6,11 +6,11 @@
     sorted,
     av = new JSAV($("#jsavcontainer")),
     code = av.code(
-      "for i = 0 to n-2 do\n"+
-      "    min = i\n"+
-      "    for j = i+1 to n-1 do\n"+
-      "        if (a[j] < a[min]) do\n"+
-      "            min = j\n"+
+      "for i = 0 to n-2 do\n" +
+      "    min = i\n" +
+      "    for j = i+1 to n-1 do\n" +
+      "        if (a[j] < a[min]) do\n" +
+      "            min = j\n" +
       "    swap a[i] and a[min]");
 
   av.recorded(); // we are not recording an AV with an algorithm
@@ -26,7 +26,7 @@
     // generate random values for the array
     initialArray = [];
     for (var i = 0; i < arraySize; i++) {
-      initialArray[i] = Math.floor(Math.random()*100) + 10;
+      initialArray[i] = Math.floor(Math.random() * 100) + 10;
     }
     // initialize the array
     if (barArray) {
@@ -38,7 +38,7 @@
 
     // show the code
     code.show();
-    code.highlight(5);
+    code.highlight(6);
     
     return barArray;
   }
@@ -88,7 +88,7 @@
   exercise.reset();
 
   // a function to handle all click events on the array
-  function clickHandler(index) {
+  var clickHandler = function (index) {
     
     if (sorted.value() === index) {
       // clicking on the highlighted bar will turn it green and highlight the next bar
@@ -96,12 +96,12 @@
       this.addClass(index, "greenbg");
       sorted.value(sorted.value() + 1);
       if (sorted.value() !== arraySize - 1) {
-        this.highlight(index +1);
+        this.highlight(index + 1);
       } else {
         this.addClass(index + 1, "greenbg");
       }
       exercise.gradeableStep();
-    } else if (index > sorted.value()){
+    } else if (index > sorted.value()) {
       // clicking on a bar to the right of the highlighted bar will swap these two bars
       this.unhighlight(sorted.value());
       this.swap(sorted.value(), index);
@@ -123,6 +123,6 @@
       exercise.gradeableStep();
     }
     
-  }
+  };
 
 }(jQuery));
