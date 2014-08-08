@@ -4,7 +4,7 @@
 // The reason why there is a problem with naive representation of linked list
 $(document).ready(function () {
   var av_name = "llistBadDelCON";
-  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
   var av = new JSAV(av_name);
 
   // Linked list

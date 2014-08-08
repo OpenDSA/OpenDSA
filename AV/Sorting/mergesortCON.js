@@ -2,7 +2,7 @@
 "use strict";
 $(document).ready(function () {
   var av_name = "mergesortCON";
-  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
 
   var blockWidth = 32;  // Width of an array element
   var leftArray = [4, 8, 11, 25, 30];

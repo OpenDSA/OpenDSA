@@ -4,7 +4,7 @@
 // Bad representation version for linked list
 $(document).ready(function () {
   var av_name = "llistBadCON";
-  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
   var av = new JSAV(av_name);
 
   // Set up the list

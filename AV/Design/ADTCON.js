@@ -3,7 +3,7 @@
 // Written by Cliff Shaffer
 $(document).ready(function () {
   var av_name = "ADTCON";
-  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
   var av = new JSAV(av_name, {animationMode: "none"});
 
   av.g.rect(1, 1, 358, 213);

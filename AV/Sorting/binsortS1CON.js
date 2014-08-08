@@ -2,7 +2,7 @@
 "use strict";
 $(document).ready(function () {
   var av_name = "binsortS1CON";
-  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
 
   var theArray = [];
   var empty = [];

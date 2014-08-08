@@ -76,7 +76,7 @@
       pseudo; // for the pseudocode display
 
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadExerConfig(),
+  var config = ODSA.UTILS.loadConfig(),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
 

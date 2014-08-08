@@ -2,7 +2,7 @@
 /*global ODSA */
 $(document).ready(function () {
   var av_name = "quicksortCON";
-  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
 
   var theArray = [76, 6, 57, 88, 85, 42, 83, 73, 48, 60];
   var av = new JSAV(av_name);

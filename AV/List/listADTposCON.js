@@ -4,7 +4,7 @@
 //Possible positions for Array-Based list
 $(document).ready(function () {
   var av_name = "listADTposCON";
-  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
   var jsav = new JSAV(av_name);
   var arrPositions = [" ", 5, 7, 3, 9, " "];
 

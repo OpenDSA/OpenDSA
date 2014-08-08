@@ -2,7 +2,7 @@
 "use strict";
 $(document).ready(function () {
   var av_name = "insertionsortS2CON";
-  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
 
   var theArray2 =  [10, 20, 15, 54, 55, 11, 78, 14];
   var av = new JSAV(av_name);

@@ -13,7 +13,7 @@
     highIndex,
     interLine,
     pseudo,
-    config = ODSA.UTILS.loadExerConfig({'av_container': 'jsavcontainer'}),
+    config = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}),
     interpret = config.interpreter,
     code = config.code,
     av = new JSAV($("#jsavcontainer"));

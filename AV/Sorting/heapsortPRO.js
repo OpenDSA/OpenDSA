@@ -120,7 +120,7 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadExerConfig().interpreter;
+  var interpret = ODSA.UTILS.loadConfig().interpreter;
 
   var initData, bh,
       settings = new JSAV.utils.Settings($(".jsavsettings")),

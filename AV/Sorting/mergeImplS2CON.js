@@ -13,7 +13,7 @@
   };
 
   var av_name = "mergeImplS2CON";
-  var interpret = ODSA.UTILS.loadExerConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
 
   var startArray = [4, 8, 11, 25, 30, 2, 3, 17, 20];
   var tempArray = [4, 8, 11, 25, 30, 20, 17, 3, 2];

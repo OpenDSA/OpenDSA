@@ -7,7 +7,7 @@
     evaluatorArrays = [],
     stack,
     clickHandler,
-    interpret = ODSA.UTILS.loadExerConfig({'av_container': 'jsavcontainer'}).interpreter,
+    interpret = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}).interpreter,
     av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm

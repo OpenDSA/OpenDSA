@@ -6,7 +6,7 @@ $(document).ready(function () {
   var arrValues = [13, 12, 20, 8, 3, "", "", ""];
   var av_name = "alistAppendCON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadExerConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);

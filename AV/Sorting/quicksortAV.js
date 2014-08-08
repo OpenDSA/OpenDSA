@@ -152,7 +152,7 @@ $(document).ready(function () {
   var av;   // for JSAV library object
 
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadExerConfig(),
+  var config = ODSA.UTILS.loadConfig(),
       interpret = config.interpreter;       // get the interpreter
 
   // Placeholder text translation needs to be set explicitly

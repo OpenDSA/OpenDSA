@@ -12,7 +12,7 @@ var theArray4 = [12, 11, 13, 14, 20, 30, 44, 54, 55, 79, 78, 98];
 // Display a slideshow for a sweep of "increment" steps on array "inArr"
 function doSweep(av_name, inArr, increment) {
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadExerConfig(
+  var config = ODSA.UTILS.loadConfig(
                  {"av_name": av_name, "json_path": "AV/Sorting/shellsortAV.json"});
   var interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
@@ -26,7 +26,7 @@ function doSweep(av_name, inArr, increment) {
 // Show the differences between the original array and given array "a"
 function showDifference(av_name, a) {
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadExerConfig(
+  var config = ODSA.UTILS.loadConfig(
                  {"av_name": av_name, "json_path": "AV/Sorting/shellsortAV.json"});
   var interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name, {"animationMode": "none"});
