@@ -270,9 +270,9 @@
     }
     var lines = code.tags[lineTag];
     if (typeof lines === "number") {
-      av.umsg(" " + interpret("av_line"), {preserve: true, fill: {first: lines + 1}});
+      av.umsg(" " + interpret("av_line"), {preserve: true, fill: {first: lines}});
     } else if (typeof lines === "object") {
-      av.umsg(" " + interpret("av_lines"), {preserve: true, fill: {first: lines[0] + 1, second: lines[1] + 1}});
+      av.umsg(" " + interpret("av_lines"), {preserve: true, fill: {first: lines[0], second: lines[1]}});
     }
   }
 

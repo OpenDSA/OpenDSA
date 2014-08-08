@@ -1,5 +1,6 @@
-﻿"use strict";
-(function($) {
+﻿/* global BST */
+(function ($) {
+  "use strict";
   var levels = 6,
       nodeNum = Math.pow(2, levels) - 1,
       keyToFind,
@@ -13,7 +14,7 @@
   // inserts the values in the initialData[] array in level order
   function calculateInitialData(level, min, max, levelsInTotal, arrayIndex) {
     var diff = max - min;
-    var value = JSAV.utils.rand.numKey(min + Math.floor(diff / 3), max - Math.floor(diff / 3))
+    var value = JSAV.utils.rand.numKey(min + Math.floor(diff / 3), max - Math.floor(diff / 3));
     initialData[arrayIndex - 1] = value;
     if (level < levelsInTotal) {
       calculateInitialData(level + 1, min, value - 1, levelsInTotal, 2 * arrayIndex);
@@ -50,8 +51,7 @@
     $key.html("<li>" + keyToFind + "</li>");
     av.ds.array($key, {indexed: false}).css(0, {"background-color": "#ddf"}).toggleArrow(0);
 
-    av.forward();
-    av._undo = [];
+    av.container.find(".jsavcanvas").css("min-height", 455);
 
     return jsavBinaryTree;
   }
@@ -91,7 +91,7 @@
     return modelTree;
   }
 
-  function clickHandler() {
+  var clickHandler = function () {
     if (!this.isHighlight()) {
       var index = getIndex(this, jsavBinaryTree.root());
       this.removeClass("emptynode");
@@ -108,7 +108,7 @@
       jsavBinaryTree.layout();
       exercise.gradeableStep();
     }
-  }
+  };
 
   var exercise = av.exercise(modelSolution, initialize,
                              { compare: [{ "css": "background-color" }, {}],

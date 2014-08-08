@@ -1,4 +1,5 @@
-﻿(function($) {
+﻿(function ($) {
+  "use strict";
   var insertArray = [],
       binaryTree,
       stack,
@@ -8,6 +9,14 @@
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
+
+    function dataTest(array) {
+      var bst = av.ds.binarytree({visible: false});
+      bst.insert(array);
+      var result = bst.height() <= 5;
+      bst.clear();
+      return result;
+    }
 
     insertArray = JSAV.utils.rand.numKeys(10, 100, insertSize, {test: dataTest, tries: 10});
     if (stack) {
@@ -29,14 +38,7 @@
     binaryTree.click(clickHandler);
     binaryTree.layout();
 
-    function dataTest(array) {
-      var bst = av.ds.binarytree({visible: false});
-      bst.insert(array);
-      var result = bst.height() <= 5;
-      bst.clear();
-      return result;
-    }
-    av.displayInit();
+    av.container.find(".jsavcanvas").css("min-height", 455);
 
     return binaryTree;
   }
@@ -88,7 +90,7 @@
     return modelTree;
   }
 
-  function clickHandler() {
+  var clickHandler = function () {
     if (stack.size()) {
       //insert value into this node
       this.value(stack.first().value());
@@ -116,10 +118,10 @@
       //gradeable step
       exercise.gradeableStep();
     }
-  }
+  };
 
   var exercise = av.exercise(modelSolution, initialize,
                    { compare: { "css": "background-color" },
-		     controls: $(".jsavexercisecontrols") });
+                   controls: $(".jsavexercisecontrols") });
   exercise.reset();
 }(jQuery));
