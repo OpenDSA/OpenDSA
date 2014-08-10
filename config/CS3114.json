@@ -155,15 +155,13 @@
         "exercises": {
           "binarySearchCON": {
             "long_name": "Binary Search Algorithm Slideshow",
-            "exer_options": {
-              "JXOP-code": "none"
-            },
             "required": true,
-            "points": 1.0,
+            "points": 0.0,
             "threshold": 1.0
           },
           "binarySearchPRO": {
             "long_name": "Binary Search Proficiency Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 1.0
