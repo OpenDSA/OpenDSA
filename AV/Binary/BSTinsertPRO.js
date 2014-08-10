@@ -139,7 +139,7 @@ $(document).ready(function () {
   av.recorded(); // we are not recording an AV with an algorithm
 
   var exercise = av.exercise(modelSolution, initialize,
-                   { compare: { "css": "background-color" },
-                   controls: $(".jsavexercisecontrols") });
+                             {compare: {"css": "background-color"},
+                              controls: $(".jsavexercisecontrols")});
   exercise.reset();
 });

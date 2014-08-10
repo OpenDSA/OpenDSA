@@ -682,11 +682,11 @@
       }
     },
     "Binary Trees": {
-      "Development/BinaryTreeIntro": {
+      "Binary/BinaryTreeIntro": {
         "long_name": "Binary Trees Chapter Introduction",
         "exercises": {}
       },
-      "Development/BinaryTree": {
+      "Binary/BinaryTree": {
         "long_name": "Binary Tree Terminology",
         "exercises": {
           "DprobsAll": {
@@ -697,11 +697,11 @@
           }
         }
       },
-      "Development/BinaryTreeFullThm": {
+      "Binary/BinaryTreeFullThm": {
         "long_name": "Full Binary Tree Theorem",
         "exercises": {}
       },
-      "Development/BinaryTreeTraversal": {
+      "Binary/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
           "BTLeafPROG": {
@@ -710,19 +710,19 @@
             "points": 1.0,
             "threshold": 1
           },
-          "binarytree-inorder": {
+          "btTravInorderPRO": {
             "long_name": "Binary Tree Inorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
-          "binarytree-preorder": {
+          "btTravPreorderPRO": {
             "long_name": "Binary Tree Preorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
-          "binarytree-postorder": {
+          "btTravPostorderPRO": {
             "long_name": "Binary Tree Postorder Traversal Exercise",
             "required": true,
             "points": 1.0,
@@ -730,15 +730,15 @@
           }
         }
       },
-      "Development/BinaryTreeImpl": {
+      "Binary/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
         "exercises": {}
       },
-      "Development/Composite": {
+      "Binary/Composite": {
         "long_name": "Composite Design Pattern",
         "exercises": {}
       },
-      "Development/BinaryTreeNodeSpace": {
+      "Binary/BinaryTreeNodeSpace": {
         "long_name": "Full Binary Tree Node Space Requirements",
         "exercises": {
           "TreeOverheadSumm": {
@@ -749,54 +749,54 @@
           }
         }
       },
-      "Development/BST": {
+      "Binary/BST": {
         "long_name": "Binary Search Trees",
         "exercises": {
-          "searchCON": {
+          "BSTsearchCON": {
             "long_name": "BST Search Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "BST-search-proficiency": {
-            "long_name": "BST Search Exercise",
+          "BSTsearchPRO": {
+            "long_name": "BST Search Proficiency Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
-          "insertCON": {
+          "BSTinsertCON": {
             "long_name": "BST Insert Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "BST-insert-proficiency": {
-            "long_name": "BST Insert Exercise",
+          "BSTinsertPRO": {
+            "long_name": "BST Insert Proficiency Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
-          "deletemaxCON": {
+          "BSTdeletemaxCON": {
             "long_name": "BST deletemax Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "removeCON": {
+          "BSTremoveCON": {
             "long_name": "BST remove Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "BST-delete-proficiency": {
-            "long_name": "BST Delete Exercise",
+          "BSTremovePRO": {
+            "long_name": "BST Remove Proficiency Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 0.90
           }
         }
       },
-      "Development/BSTDict": {
+      "Binary/BSTDict": {
         "long_name": "Dictionary Implementation with BST",
         "exercises": {}
       },
