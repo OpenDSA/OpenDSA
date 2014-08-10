@@ -173,11 +173,12 @@ Here is the implementation for Huffman tree nodes.
 .. codeinclude:: Binary/Huffman
    :tag: HuffmanNode
 
-This implementation is similar to the ``VarBinNode``
-implementation from Module :numref:`<BinaryTreeImpl>`.
-Here there is an abstract
-base class, named ``HuffNode``, and two subclasses, named ``LeafNode``
-and ``IntlNode``. This implementation reflects the fact that leaf and
+This implementation is similar to
+a typical :ref:`class hierarchy <class hierarchy> <BinaryTreeImpl>`
+for implementing full binary trees.
+There is an abstract :term:`base class`, named ``HuffNode``, and two
+:term:`subclasses <subclass>`, named ``LeafNode`` and ``IntlNode``.
+This implementation reflects the fact that leaf and
 internal nodes contain distinctly different information.
 
 Here is the implementation for the Huffman Tree class.

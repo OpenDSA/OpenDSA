@@ -25,7 +25,7 @@ the electric bills into another pile, and so on.
 Once this initial assignment of bills to piles is done (in one pass),
 you can then sort each pile by date relatively quickly, because each
 pile is fairly small.
-This is the basic idea behind a Binsort.
+This is the basic idea behind a :term:`Binsort`.
 
 Let's start with an especially easy situation.
 Consider the following code fragment to sort a permutation of the

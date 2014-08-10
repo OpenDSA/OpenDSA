@@ -13,9 +13,10 @@
 Array Implementation for Complete Binary Trees
 ==============================================
 
-Module :numref:`<BinaryTreeImpl>` explains how a large
-fraction of the space in a typical binary tree node implementation is
-devoted to structural overhead, not to storing data.
+From the :ref:`full binary tree theorem <BinaryTreeFullThm>`, we know
+that a large fraction of the space in a typical binary tree node
+implementation is devoted to structural overhead, not to storing
+data.
 This module presents a simple, compact implementation
 for complete binary trees.
 Recall that complete binary trees have all levels except the bottom

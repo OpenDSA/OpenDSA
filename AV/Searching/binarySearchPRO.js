@@ -3,8 +3,7 @@
 $(document).ready(function () {
   // Process about button: Pop up a message with an Alert
   function about() {
-    var aboutstring = interpret("aboutString");
-    alert(aboutstring + JSAV.version());
+    alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
 
   // show the code and highlight the row where mid is calculated

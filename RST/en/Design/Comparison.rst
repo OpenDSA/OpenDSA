@@ -122,7 +122,7 @@ write a key extraction method.
 In that case, a comparator will not work. [#]_
 
 One good general-purpose solution is to explicitly store
-:index:`key-record pairs` in the data structure.
+:term:`key-value pairs <key-value pair>` in the data structure.
 For example, if we want to sort a bunch of records, we can store them
 in an array where every array entry contains both a key value for the
 record and a pointer to the record itself.
@@ -136,8 +136,8 @@ A simple class for representing key-value pairs is shown here.
    :tag: KVPair
 
 The main places where we will need to be concerned with comparing
-records and extracting keys is for various dictionary implementations
-and sorting algorithms.
+records and extracting keys is for various :term:`dictionary`
+implementations and sorting algorithms.
 To keep them clear and simple, OpenDSA will usually show sorting
 algorithms as operating on integer values stored in an array.
 But to be generally useful, a real sorting algorithm typically has to
@@ -145,7 +145,8 @@ deal with the fact that it is sorting a collection of records.
 A general-purpose sorting routine meant to operate on multiple record
 types would have to be written in a way to deal with the generic
 comparison problem.
-To illustrate, here is an example of Insertion Sort implemented to
+To illustrate, here is an example of
+:ref:`Insertion Sort <Insertion Sort> <InsertionSort>` implemented to
 work on an array that stores records that support the ``Comparable``
 interface.
 Note that since ``KVPair`` is implemented to implement the

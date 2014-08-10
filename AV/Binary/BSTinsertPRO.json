@@ -1,0 +1,11 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "BST Insert Proficiency Exercise",
+      "av_Authors": "Kasper Hellström",
+      ".instructLabel": "Instructions:",
+      ".instructions": "Use the BST Insert algorithm to insert values as they are shown at the top. Click on any empty node in the tree to place the value to be inserted there. Remember that equal values go to the left.",
+      "#about": "About"
+    }
+  }
+}

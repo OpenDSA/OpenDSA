@@ -3,7 +3,7 @@
 $(document).ready(function () {
   // Process help button: Give a full help page for this activity
   function help() {
-    window.open("mergesortHelpPRO.html", 'helpwindow');
+    window.open("mergesortHelpPRO.html", "helpwindow");
   }
 
   // Process about button: Pop up a message with an Alert
@@ -12,8 +12,8 @@ $(document).ready(function () {
   }
 
   // Set click handlers
-  $('#help').click(help);
-  $('#about').click(about);
+  $("#help").click(help);
+  $("#about").click(about);
 
 
   // Process the reset button
@@ -113,10 +113,10 @@ $(document).ready(function () {
     initArrays(mid + 1, right, level + 1, 2 * column, userAnswerDepth);
   }
 
-  // Calculate and set the appropriate 'top' and 'left' CSS values based
+  // Calculate and set the appropriate "top" and "left" CSS values based
   // on the specified array's level of recursion, column number and the
   // number of elements in the array
-  // arr - the JSAV array to set the 'top' and 'left' values for
+  // arr - the JSAV array to set the "top" and "left" values for
   // level - the level of recursion, the full-size array is level 1
   // column - the array's column number in the current row
   function setPosition(arr, level, column) {
@@ -252,8 +252,8 @@ $(document).ready(function () {
     //console.log("destDepth: " + destDepth + ", destColumn: " + destColumn + ", destIndex: " + destIndex);  // FOR TESTING
 
     // Get the sub arrays from the hash of JSAV arrays
-    var subArr1 = arrays['array_' + (destDepth + 1) + "_" + (2 * destColumn - 1)];
-    var subArr2 = arrays['array_' + (destDepth + 1) + "_" + (2 * destColumn)];
+    var subArr1 = arrays["array_" + (destDepth + 1) + "_" + (2 * destColumn - 1)];
+    var subArr2 = arrays["array_" + (destDepth + 1) + "_" + (2 * destColumn)];
 
     // Get the index of the first non-empty element in each sublist
     var subArr1Idx = -1;
@@ -295,8 +295,8 @@ $(document).ready(function () {
     } else {
       console.log("Weird stuff happened:\ndestDepth: " + destDepth + ", destColumn: " +
           destColumn + ", destIndex: " + destIndex + "\nsubArr1 ID: " +
-          subArr1.element.attr('id') + ", subArr1: " + subArr1.toString() +
-          ", subArr2 ID: " + subArr2.element.attr('id') + ", subArr2: " + subArr2.toString() +
+          subArr1.element.attr("id") + ", subArr1: " + subArr1.toString() +
+          ", subArr2 ID: " + subArr2.element.attr("id") + ", subArr2: " + subArr2.toString() +
           " subArr1Idx = " + subArr1Idx + ", subArr2Idx = " + subArr2Idx);
       return;
     }
@@ -305,7 +305,7 @@ $(document).ready(function () {
     clickHandler(srcArr, srcIndex);
 
     // Select the destination where the element should be moved
-    var destArr = arrays['array_' + destDepth + "_" + destColumn];
+    var destArr = arrays["array_" + destDepth + "_" + destColumn];
     clickHandler(destArr, destIndex);
   }
 
@@ -397,10 +397,10 @@ $(document).ready(function () {
   }
 
   // Parse the level, column and left offset from the specified array's attributes
-  // - Expects array IDs matching the following pattern: 'array_\d+_\d+'
+  // - Expects array IDs matching the following pattern: "array_\d+_\d+"
   //   where the first number is the level and the second number is the column
   //   [see setPosition()]
-  // - Expects array to have a 'data-offset' attribute which is the offset
+  // - Expects array to have a "data-offset" attribute which is the offset
   //   between indices in given array and indices in userAnswerValue array
   function parseArrData(arr) {
     var id = arr.element.attr("id");
@@ -408,8 +408,8 @@ $(document).ready(function () {
     var level = parseInt(args[1], 10);
     var column = parseInt(args[2], 10);
     var arrOffset = 0;
-    if (typeof arr.element.attr('data-offset') !== "undefined") {
-      arrOffset = parseInt(arr.element.attr('data-offset'), 10);
+    if (typeof arr.element.attr("data-offset") !== "undefined") {
+      arrOffset = parseInt(arr.element.attr("data-offset"), 10);
     }
     return [level, column, arrOffset];
   }
@@ -422,7 +422,7 @@ $(document).ready(function () {
   var interpret = ODSA.UTILS.loadConfig().interpreter;
 
   // Variables used by "setPosition()"
-  var canvasWidth = $('#container').width();     // The width of the display
+  var canvasWidth = $("#container").width();     // The width of the display
   var rowHeight = 70;        // Space required for each row to be displayed
   var blockWidth = 32;       // The width of an array element
 
@@ -438,7 +438,7 @@ $(document).ready(function () {
       initialArray = [],
       userAnswerValue = [],
       userAnswerDepth = [],
-      av = new JSAV($('.avcontainer'), {settings: settings});
+      av = new JSAV($(".avcontainer"), {settings: settings});
 
   // Stores the various JSAV arrays created for the user to enter their solution
   var arrays = {};
@@ -449,8 +449,7 @@ $(document).ready(function () {
   // (probably because it has to check that all the arrays are correct)
   var exercise = av.exercise(modelSolution, initialize,
                              {compare: [{css: "background-color"}, {}],
-                              controls: $('.jsavexercisecontrols'),
+                              controls: $(".jsavexercisecontrols"),
                               fix: fixState});
   exercise.reset();
 });
-

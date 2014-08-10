@@ -15,8 +15,13 @@ Glossary
 .. glossary::
    :sorted:
 
-   ADT
-      Abbreviation for :term:`abstract data type`.
+   2-3 tree
+      A specialized form of the :term:`b-tree` where each internal
+      node has either 2 children or 3 children.
+      Key values are ordered to maintain the
+      :term:`binary search tree property`.
+      The 2-3 tree is always height balanced, and its insert, search,
+      and remove operations all have :math:`\Theta(\log n)` cost.
 
    abstract data type
       Abreviated :term:`ADT`. The realization of a :term:`data type`
@@ -54,6 +59,9 @@ Glossary
       the matrix corresponds to an edge from the :term:`vertex`
       corresponding to the row to the vertex corresponding to the
       column.
+
+   ADT
+      Abbreviation for :term:`abstract data type`.
 
    adversary argument
       A type of :term:`lower bounds proof` for a problem where a
@@ -153,11 +161,20 @@ Glossary
       instances have equal probability of occurring, then average case
       must be calculated using a weighted average.
 
+   AVL Tree
+      A variant implementation for the :term:`BST`, which differs from
+      the standard BST in that it uses modified insert and remove
+      methods in order to keep the tree
+      :term:`balanced <balanced tree>`.
+      Similar to a :term:`Splay Tree` in that it uses the concept of
+      :term:`rotations <rotation>` in the insert and remove operations.
+
    B$^+$-tree
       The most commonly implemented form of B-tree.
-      A B$^+$-tree does not store data at the internal nodes, but
-      instead only stores :term:`key` values as direction finders for
-      the purpose of searching through the tree.
+      A B$^+$-tree does not store data at the
+      :term:`internal nodes <internal node>`, but
+      instead only stores :term:`search key` values as direction
+      finders for the purpose of searching through the tree.
       Only the :term:`leaf nodes <leaf node>` store a reference to the
       actual data records.
 
@@ -171,7 +188,7 @@ Glossary
       desired unit of I/O (so some multiple of the disk :term:`sector`
       size).
       This makes it easy to gain access to the record associated with
-      a given :term:`key` stored in the tree with few
+      a given :term:`search key` stored in the tree with few
       :term:`disk fetches <disk fetch>`.
       The most commonly implemented variant of the B-tree is the
       :term:`B$^+$-tree`.
@@ -195,6 +212,11 @@ Glossary
       the case of induction) without resorting to a recursive call
       (or the :term:`induction hypothesis`).
 
+   base class
+      In :term:`object-oriented programming <object-oriented programming paradigm>`,
+      a class from which another class :term:`inherits <inherit>`.
+      The class that inherits is called a :term:`subclass`.
+  
    base type
       The data type for the elements in a set. For example, the set
       might consist of the integer values 3, 5, and 7. In this
@@ -218,8 +240,8 @@ Glossary
 
    binary search
       A standard :term:`recursive <recursion>` algorithm for finding
-      the :term:`record` with a given :term:`key` value within a
-      sorted list.
+      the :term:`record` with a given :term:`search key` value within
+      a sorted list.
       It runs in :math:`O(\log n)` time.
       At each step, look at the middle of the current sublist, and throw
       away the half of the records whose keys are either too small or
@@ -227,19 +249,37 @@ Glossary
       
    binary search tree
       A binary tree that imposes the following constraint on its node
-      values: The :term:`key` value for any node :math:`A` must be
-      greater than the (key) values for all nodes in the left
+      values: The :term:`search key` value for any node :math:`A` must
+      be greater than the (key) values for all nodes in the left
       :term:`subtree` of :math:`A`, and less than the key values for
       all nodes in the right subtree of :math:`A`.
       Some convention must be adopted if
       multiple nodes with the same key value are permitted,
       typically these are required to be in the right subtree.
 
+   binary search tree property
+      The defining relationship between the :term:`key` values for
+      :term:`nodes <node>` in a :term:`BST`.
+      All nodes stored in the left subtree of a node whose key value
+      is :math:`K` have key values less than or equal to :math:`K`.
+      All nodes stored in the right subtree of a node whose key value
+      is :math:`K` have key values greater than :math:`K`.
+
    binary tree
       A finite set of nodes which is either empty, or else has a root
       node together two binary trees, called the left and right
       :term:`subtrees <subtree>`, which are :term:`disjoint` from each
       other and from the :term:`root`.
+
+   binary trie
+      A :term:`binary tree` whose structure is that of a :term:`trie`.
+      Generally this is an implementation for a :term:`search tree`.
+      This means that the :term:`search key` values are thought of a
+      binary digits, with the digit in the position corresponding to
+      this a node's :term:`level` in the tree indicating a left branch
+      if it is "0", or a right branch if it is "1".
+      Examples include the :term:`Huffman coding tree` and the
+      :term:`Bintree`.
 
    bintree
       A :term:`spatial data structure` in the form of binary
@@ -251,7 +291,7 @@ Glossary
       points, implementation often makes use of the :term:`Flyweight`
       :term:`design pattern`.
 
-   binsort
+   Binsort
       A sort that works by taking each record and placing it into a
       bin based on its value. The bins are then gathered up in order
       to sort the list. It is generally not practical in this form,
@@ -359,6 +399,13 @@ Glossary
       In the :term:`object-oriented programming paradigm`
       an ADT and its implementation together make up a class. 
 
+   class hierarchy
+      In :term:`object-oriented programming <object-oriented programming paradigm>`,
+      a set of classes and their interrelationships.
+      One of the classes is the :term:`base class`, and the others are
+      :term:`subclasses <subclass>` that :term:`inherit` either
+      directly or indirectly from the base class.
+
    client
       The user of a service.
       For example, the object or part of the program that calls a
@@ -405,23 +452,21 @@ Glossary
 
    comparable
       The concept that two objects can be compared to determine if they
-      are equal or not, or to determine which one is greater than the other.
+      are equal or not, or to determine which one is greater than the
+      other. 
+      In set notation, elements :math:`x` and :math:`y` of a set are
+      comparable under a given relation :math:`R` if either
+      :math:`xRy` or :math:`yRx`.
       To be reliably compared for a greater/lesser relationship,
       the values being compared must belong to a :term:`total order`.
+      In programming, the property of a data type such that two
+      elements of the type can be compared to determine if they the
+      same (a weaker version), or which of the two is larger (a
+      stronger version).
       ``Comparable`` is also the name of an interface in Java that
       asserts a comparable relationship between objects with a class,
       and ``.compareTo()`` is the ``Comparable`` interface method that
       implements the actual comparison between two objects of the class.
-
-   comparable
-      In set notation, elements :math:`x` and :math:`y` of a set are
-      comparable under a given relation :math:`R` if either
-      :math:`xRy` or :math:`yRx`.
-      In programming, the property of a data type such that two
-      elements of the type can be compared to determine if they the
-      same (a weaker version), or which of the two is larger (a
-      stronger version). This stronger version requires that the type
-      define a :term:`total order`.
 
    comparator
       A function given as a parameter to a method of a library
@@ -472,7 +517,8 @@ Glossary
       object collection (such as a tree).
       Procedural tree traversal requires that the tree have a method
       that understands what to do when it encounters any of the object
-      types (internal or leaf nodes) that the tree might contain.
+      types (:term:`internal <internal node>` or
+      :term:`leaf nodes <leaf node>`) that the tree might contain.
       The composite approach would have the tree call the "traversal"
       method on its root node, which then knows how to perform the
       "traversal" behavior.
@@ -839,14 +885,21 @@ Glossary
    exchange sort
       A sort that relies solely on exchanges (swaps of adjacent
       records) to reorder the list.
-      :term:`Insertion sort <insertion sort>` and
-      :term:`bubble sort` are examples of exchange sorts.
+      :term:`Insertion Sort <insertion sort>` and
+      :term:`Bubble Sort` are examples of exchange sorts.
       All exchange sorts require
       :math:`\Theta(n^2)` time in the worst case.
 
    exponential growth rate
       A growth rate function where :math:`n` (the input size) appears
       in the exponent. For example, :math:`2^n`.
+
+   expression tree
+      A :term:`tree` structure meant to represent a mathematical expression.
+      :term:`Internal nodes <internal node>` of the expression tree
+      are operators in the expression, with the subtrees being the
+      sub-expressions that are its operand.
+      All :term:`leaf nodes <leaf node>` are operands.
 
    external sort
       A sorting algorithm that is applied to data stored in
@@ -970,6 +1023,14 @@ Glossary
       A connected, undirected graph with no simple cycles.
       An equivalent definition is that a free tree is connected and
       has :math:`|\mathbf{V}| - 1` edges.
+
+   full binary tree theorem
+      This theorem states that 
+      the number of leaves in a non-empty full binary tree is one
+      more than the number of internal nodes.
+      Equivalently, then number of null pointers in a standard
+      :term:`pointer-based implementation for binary tree nodes`
+      is one more than the number of nodes in the binary tree.
 
    full tree
       A :term:`binary tree` is full if every :term:`node` is either a
@@ -1128,7 +1189,7 @@ Glossary
       Due to its space and time efficiency, the heap is a
       popular choice for implementing a :term:`priority queue`.
 
-   heapsort
+   Heapsort
       A sorting algorithm that costs :math:`\Theta(n \log n)` time in
       the best, average, and worst cases.
       It tends to be slower than :term:`Mergesort` and
@@ -1231,14 +1292,20 @@ Glossary
       variable.
       An induction variable must be an integer.
 
+   inherit
+      In :term:`object-oriented programming <object-oriented programming paradigm>`,
+      the process by which a :term:`subclass` gains
+      :term:`data members <data member>` and :term:`methods <method>`
+      from a :term:`base class`.
+
    inorder traversal
-      In a binary tree, a :term:`traversal` that first
-      recursively visits the left child, then visits the
-      root, an then recursively visits the right child.
+      In a :term:`binary tree`, a :term:`traversal` that first
+      recursively visits the left :term:`child`, then visits the
+      :term:`root`, an then recursively visits the right child.
       In a :term:`binary search tree`, this traversal will
       :term:`enumerate <enumeration>` the nodes in sorted order.
 
-   insertion sort
+   Insertion Sort
       A sorting algorithm with :math:`\Theta(n^2)` average and worst
       case cost, and :math:`Theta(n)` best case cost.
       This best-case cost makes it useful when we have reason to
@@ -1423,6 +1490,11 @@ Glossary
       A finite, ordered sequence of data items known as
       :term:`elements <element>`.
       This is close to the mathematical concept of a :term:`sequence`.
+      Note that "ordered" in this definition means that the list
+      elements have position.
+      It does not refer to the relationship
+      between :term:`key` values for the list elements (that is,
+      "ordered" does not mean "sorted").
 
    logarithm
       The `logarithm` of base :math:`b` for value :math:`y` is the power
@@ -1779,6 +1851,14 @@ Glossary
       A specialized term used to indicate removing an :term:`element`
       from a :term:`stack`. 
 
+   pointer-based implementation for binary tree nodes
+      A common way to implement :term:`binary tree` :term:`nodes
+      <node>`.
+      Each node stores a data value (or a reference to a data value),
+      and pointers to the left and right children.
+      If either or both of the children does not exist, then a null
+      pointer is stored.
+
    poset
       Another name for a :term:`partially ordered set`.
 
@@ -2066,6 +2146,13 @@ Glossary
       All other nodes in the tree are :term:`descendants <descendant>`
       of the root.
 
+   rotation
+      In the :term:`AVL Tree` and :term:`Splay Tree`, a rotation is a
+      local operation performed on a node, its children, and its
+      grandchildren that can result in reordering their relationship.
+      The goal of performing a rotation is to make the tree more
+      :term:`balanced <balanced tree>`.
+
    runtime environment
       The environment in which a program (of a particular programming
       language) executes.
@@ -2218,6 +2305,15 @@ Glossary
       A :term:`linked list` implementation variant where each list
       node contains access an pointer only to the next element in the list.
 
+   sorted list
+      A :term:`list` where the records stored in the list are arranged
+      so that their :term:`key` values are in ascending order.
+      If the list uses an :term:`array-based list` implementation,
+      then it can use :term:`binary search` for a cost of
+      :math:`\Theta(\log n)`.
+      But both insertion and deletion will be require
+      :math:`\Theta(n)` time.
+
    sorting lower bound
       The lower bound for the :term:`problem` of
       :term:sorting <sorting problem>` is :math:`\Omega(n \log n)`.
@@ -2283,6 +2379,19 @@ Glossary
       the :term:`bintree`, the :term:`PR quadtree` and the
       :term:`kd tree`.
 
+   Splay Tree
+      A variant implementation for the :term:`BST`, which differs from
+      the standard BST in that it uses modified insert and remove
+      methods in order to keep the tree
+      :term:`balanced <balanced tree>`.
+      Similar to an :term:`AVL Tree` in that it uses the concept of
+      :term:`rotations <rotation>` in the insert and remove operations.
+      While a Splay Tree does not guarentee that the tree is balanced,
+      it does guarentee that a series of :math:`n` operations on the
+      tree will have a total cost of :math:`\Theta(n \log n)` cost,
+      meaning that any given operation can be viewed as having
+      :term:`amortized cost` of :math:`\Theta(\log n)`.
+
    stable
       A sorting algorithm is said to be stable if it does not
       change the relative ordering of records with identical
@@ -2325,6 +2434,11 @@ Glossary
       The induction step for strong induction is:
       If **Thrm** holds for all :math:`k, c \leq k < n`, then
       **Thrm** holds for :math:`n`.
+
+   subclass
+      In :term:`object-oriented programming <object-oriented programming paradigm>`,
+      any class within a :term:`class hierarchy` that
+      :term:`inherits <inherit>` from some other class.
 
    subgraph
       A subgraph :math:`\mathbf{S}` is formed from :term:`graph`
@@ -2467,6 +2581,14 @@ Glossary
       disjoint sets when it is determined that they are members of the
       same :term:`equivalence class` under some
       :term:`equivalence relation`.
+
+   unsorted list
+      A :term:`list` where the records stored in the list can appear
+      in any order (as opposed to a :term:`sorted list`).
+      An unsorted list can support efficient (:math:`\Theta(1)`)
+      insertion time (since you can put the record anywhere
+      convenient), but requires :math:`\Theta(n)` time for both search
+      and and deletion.
 
    unsuccessful search
       When searching for a :term:`key` value in a collection of
