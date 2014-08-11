@@ -488,6 +488,32 @@ It is used when a chapter has the optional ``hidden`` field to ``true``.
 The Modules in the chapter will not be visible in the table of content.
 **It is added automatically by the configuration process, do NOT add manually.**
 
+
+ref
+---
+
+We improved  the  Sphinx ``ref`` directive.
+
+NAME
+  ref - Creates a hyperlink to a label term or a glossary term.
+
+SYNOPSIS::
+
+    :ref:`my anchor text <label>`  (1) or
+    :ref:`my anchor text <glossary term> <label>` (2)
+
+DESCRIPTION
+    ``my anchor text``
+    The anchor text of the hyperlink.
+
+    ``<label>``
+    Module name or some label in a module. If it is a module name, ``ref`` links to the module. If it is a label (such as for an Example),    the directive links to that point in the module. If ``<label>`` does not exist, then the directive shows the anchor text. 
+
+    ``<glossary term>``
+    If ``<label>`` does not exist when using sintax (2), the hyperlink directs to ``<glossary term>`` entry in the glossary webpage.
+
+
+
 topic (special case)
 --------------------
 
@@ -510,3 +536,5 @@ EXAMPLE::
 
     (2) to reference the example
     See Example :num: `Example #example1`.
+
+
