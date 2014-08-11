@@ -51,5 +51,8 @@
         "tbl_mid_gt_key": 10
       }
     }
+  },
+  "params": {
+    "JXOP-feedback": "atend"
   }
 }

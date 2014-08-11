@@ -24,5 +24,9 @@
       "#help": "Hjälp",
       "#about": "Om"
     }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "fix"
   }
 }

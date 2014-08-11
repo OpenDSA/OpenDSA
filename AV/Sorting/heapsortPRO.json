@@ -15,5 +15,9 @@
       "av_c5": "<br/>...and restore the heap property", 
       "av_c6": ""
     }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "fix"
   }
 }

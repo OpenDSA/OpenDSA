@@ -23,5 +23,9 @@
       "av_c9": "Click on array elements to highlight those that make up the first sublist. Use increment ",
       "av_c10": "Exercise is done, check your grade."
     }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "fix"
   }
 }

@@ -11,5 +11,9 @@
       "#help": "Help",
       "#about": "About"
     }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "fix"
   }
 }
