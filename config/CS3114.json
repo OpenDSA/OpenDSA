@@ -1110,7 +1110,11 @@
             "long_name": "Shellsort Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
           },
           "shellsortPerf": {
             "long_name": "Shellsort Performance Activity",
@@ -1158,7 +1162,11 @@
             "long_name": "Mergesort Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
           }
         }
       },
@@ -1223,7 +1231,11 @@
             "long_name": "Quicksort Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
           },
           "QuicksortSumm": {
             "long_name": "Quicksort Summary Exercise",
@@ -1258,7 +1270,11 @@
             "long_name": "Heapsort Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.9
+            "threshold": 0.9,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
           },
           "HeapsortSumm": {
             "long_name": "Heapsort Summary Exercise",

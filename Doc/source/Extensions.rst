@@ -492,37 +492,51 @@ The Modules in the chapter will not be visible in the table of content.
 ref
 ---
 
-We improved  the  Sphinx ``ref`` directive.
+We have modified the  Sphinx ``ref`` directive to better support the
+fact that eBook instances can vary with respect to whether given
+modules are included or not.
 
 NAME
-  ref - Creates a hyperlink to a label term or a glossary term.
+   ref - Creates a hyperlink to a module, label, or a glossary term.
 
 SYNOPSIS::
 
-    :ref:`my anchor text <label>`  (1) or
-    :ref:`my anchor text <glossary term> <label>` (2)
+   :ref:`my anchor text <label>`
+   :ref:`my anchor text <glossary term> <label>`
 
 DESCRIPTION
-    ``my anchor text``
-    The anchor text of the hyperlink.
+   ``my anchor text``
 
-    ``<label>``
-    Module name or some label in a module. If it is a module name, ``ref`` links to the module. If it is a label (such as for an Example),    the directive links to that point in the module. If ``<label>`` does not exist, then the directive shows the anchor text. 
+      The anchor text for the hyperlink.
 
-    ``<glossary term>``
-    If ``<label>`` does not exist when using sintax (2), the hyperlink directs to ``<glossary term>`` entry in the glossary webpage.
+   ``<label>``
 
+      Module name or some label within a module.
+      If it is a module name, then ``ref`` links to the module.
+      If it is a label (such as for an Example), then the directive
+      links to that point in the module.
+      If  ``<label>`` does not exist, then the directive shows only the
+      anchor text (in normal font, as though no reference were being made).
 
+   ``<glossary term>``
+
+      If ``<label>`` does not exist and the ``<glossary term>`` is given,
+      then the hyperlink directs to the ``<glossary term>`` entry in the
+      glossary.
 
 topic (special case)
 --------------------
 
-The syntax of the  ``topic`` is not changed in OpenDSA. We are using the directive to display
+The syntax of the ``topic`` directive is not changed in OpenDSA.
+We use this directive to display
 ``examples, tables, and theorems``.
-To insert an example in your module, just use the keyword ``Example`` as topic title.
-To insert a theorem in your module, just use the keyword ``Theorem`` as topic title.
-The example/table/theorem can be referenced using standard Sphinx mechanism, for numbered reference,
-use the ``:num:`` directive.
+To insert an example in your module, use the keyword ``Example`` as
+the topic title.
+To insert a theorem in your module, use the keyword ``Theorem`` as
+the topic title.
+The example/table/theorem can be referenced using the standard Sphinx
+mechanism.
+For a numbered reference, use the ``:num:`` directive.
 
 EXAMPLE::
 
@@ -536,5 +550,3 @@ EXAMPLE::
 
     (2) to reference the example
     See Example :num: `Example #example1`.
-
-

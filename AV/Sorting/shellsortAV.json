@@ -1,7 +1,7 @@
 {
   "translations" : {
     "en": {
-      ".avTitle": "Insertion Sort Visualization",
+      ".avTitle": "Shellsort Visualization",
       "av_Authors": "Cliff Shaffer and Ville Karavirta",
       "#help": "Help",
       "#about": "About",

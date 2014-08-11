@@ -4,8 +4,8 @@
   "code_dir": "SourceCode/",
   "code_lang": {
     "Processing": ["pde"],
-    "C++": ["cpp"],
-    "Java": ["java"]
+    "Java": ["java"],
+    "C++": ["cpp"]
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
@@ -15,8 +15,7 @@
   "suppress_todo": false,
   "build_cmap": true,
   "glob_exer_options": {
-    "JXOP-debug": "true",
-    "JXOP-code": "c++"
+    "JXOP-debug": "true"
   },
   "chapters": {
     "Design 2": {
@@ -88,19 +87,31 @@
             "long_name": "Binary Tree Inorder Traversal Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
           },
           "btTravPreorderPRO": {
             "long_name": "Binary Tree Preorder Traversal Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
           },
           "btTravPostorderPRO": {
             "long_name": "Binary Tree Postorder Traversal Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
           }
         }
       },
@@ -136,7 +147,10 @@
             "long_name": "BST Search Proficiency Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "atend"
+            }
           },
           "BSTinsertCON": {
             "long_name": "BST Insert Slideshow",
@@ -148,7 +162,10 @@
             "long_name": "BST Insert Proficiency Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "atend"
+            }
           },
           "BSTdeletemaxCON": {
             "long_name": "BST deletemax Slideshow",
@@ -166,7 +183,11 @@
             "long_name": "BST Remove Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "undo"
+            }
           }
         }
       },
