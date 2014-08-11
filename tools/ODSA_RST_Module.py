@@ -199,7 +199,11 @@ def process_ref_chap(extension, line, book_objects, start_space, last):
     rel_labels = rel_tokens[2]
     rel_tags = re.split('<|>', rel_labels)
     #We encountered the alternate :ref:/:chap: syntax
-
+    if len(rel_tags) == 3:
+      if not rel_tags[1].strip().lower() in lower_listed_modules: 
+        #just output anchor text
+        line_t = line_t.replace(extension,'')
+        line_t = line_t.replace('`' + rel_labels + '`', rel_tags[0])
     if len(rel_tags) == 5:
       if rel_tags[3].strip().lower() in lower_listed_modules:
         #module is present swith to standard :rel: syntax
