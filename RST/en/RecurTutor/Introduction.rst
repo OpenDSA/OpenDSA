@@ -24,16 +24,17 @@ Imagine that someone in a movie theater asks you what row you're sitting in. You
 
 To use recursion effectively, it is necessary to train yourself to stop analyzing the recursive process beyond the recursive call. The sub-problems will take care of themselves. You just worry about the base cases and how to recombine the sub-problems. Those who are unfamiliar with recursion might find it hard to accept that it is used primarily as a tool for simplifying the design and description of algorithms. A recursive algorithm usually does not yield the most efficient computer program for solving the problem because recursion involves function calls, which are typically more expensive than other alternatives such as a while loop. However, the recursive approach usually provides an algorithm that is reasonably efficient. If necessary, the clear, recursive solution can later be modified to yield a faster implementation.
 
-Let's think about recursion in a different way. Think about recursion as if you have a big task and you will do a small part of it then delegate it to another one to help you on doing this task. An example similar to the movie theater example  mentioned earlier is, suppose that you have the task of multiplying two numbers x and y. You would like to delegate this task to some friend. You will ask the friend to multiply x-1 and y. When your friend send you back the result, you will only add y to that result. Your friend will do exactly the same with another friend who will do exactly the same with a third one and so on. x will be decremented till eventually it will reach to one at the last friend. The last friend will send back the result of multiplying a one and y. The last friend will be returning back the result to the previous friend. This friend will add x to the result. This process will continue all the way back till the result of x-1 multiplied by y is back to you. You will simply add y to the result and you will be done with your task. Next visualization shows that delegation process:
-
-
+Let's think about recursion in a different way. Think about recursion as if you have a big task and you will do a small part of it then delegate it to another one to help you on doing this task. An example similar to the movie theater example  mentioned earlier is, suppose that you have the task of multiplying two numbers x and y. You would like to delegate this task to some friend. You will ask the friend to multiply x-1 and y. You will simply add y to the result and you will be done with your task. You will not think about how your friend is going to do the task as you simply know how to do your own part.  When your friend send you back the result, you will only add y to that result. Next visualization shows that delegation process.
 
 .. inlineav:: RecursionIntroCON2 ss
    :output: show  
 
+
+If you are going to think how your friend is going to do the task then you will think that your friend will do exactly the same with another friend who will do exactly the same with a third one and so on. x will be decremented till eventually it will reach to one at the last friend. The last friend will send back the result of multiplying a one and y. The last friend will be returning back the result to the previous friend. This friend will add x to the result. This process will continue all the way back till the result of x-1 multiplied by y is back to you. 
+
+
 .. inlineav:: RecursionIntroCON1 ss
    :output: show  
-
 
 In order to understand recursion, you need to understand and practice how to write and read a recursive function.
 
