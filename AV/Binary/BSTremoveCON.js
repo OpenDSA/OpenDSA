@@ -85,6 +85,8 @@ $(document).ready(function () {
   // Slide 10
   av.umsg("Now we return from the initial call to removehelp, setting the root of the tree to the result");
   rt1.arrow.addClass("thinredline");
+  // This line should not be needed, but it is here to fix Raphael bug with arrows
+  rt1.arrow.css({"stroke": "red"});
   pseudo.setCurrentLine("end");
   av.step();
 
@@ -93,6 +95,8 @@ $(document).ready(function () {
   pseudo.setCurrentLine("sig");
   pseudo.unhighlight("end");
   rt1.arrow.removeClass("thinredline");
+  // This line should not be needed, but it is here to fix Raphael bug with arrows
+  rt1.arrow.css({"stroke": "black"});
   temp.removeClass("rededge");
   temp1.removeClass("rededge");
   rt.left().right().left(30);
@@ -147,6 +151,8 @@ $(document).ready(function () {
   // Slide 19
   av.umsg("Now we return from the initial call to removehelp, setting the root of the tree to the result");
   rt1.arrow.addClass("thinredline");
+  // This line should not be needed, but it is here to fix Raphael bug with arrows
+  rt1.arrow.css({"stroke": "red"});
   pseudo.setCurrentLine("end");
   av.step();
 
@@ -155,6 +161,8 @@ $(document).ready(function () {
   pseudo.unhighlight("end");
   pseudo.setCurrentLine("sig");
   rt1.arrow.removeClass("thinredline");
+  // This line should not be needed, but it is here to fix Raphael bug with arrows
+  rt1.arrow.css({"stroke": "black"});
   temp.removeClass("rededge");
   temp1.removeClass("rededge");
   rt.left().right().left(30);
@@ -227,5 +235,7 @@ $(document).ready(function () {
   av.umsg("We are now done deleting the old root node. Removehelp will return a pointer to this tree. The calling function will then set the BST root to point to this new tree.");
   pseudo.setCurrentLine("return");
   rt1.arrow.addClass("thinredline");
+  // This line should not be needed, but it is here to fix Raphael bug with arrows
+  rt1.arrow.css({"stroke": "red"});
   av.recorded();
 });
