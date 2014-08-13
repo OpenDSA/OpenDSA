@@ -53,8 +53,8 @@ $(document).ready(function () {
     outputarray.click(clickHandler);
     bh.click(clickHandler);
 
-//    return [bh, outputarray, inputarray];
-    return [bh, outputarray];
+    return [bh, outputarray, inputarray];
+    //    return [bh, outputarray];
   }
 
   function fixState(modelState) {
@@ -106,14 +106,17 @@ $(document).ready(function () {
       modeljsav.umsg("We start by sending the root to the output.");
       modeljsav.step();
 
-      modeljsav.effects.moveValue(modelbh, 0, modeloutputarray, currentoutput);
-      currentoutput++;
+      //      modeljsav.effects.moveValue(modelbh, 0, modeloutputarray, currentoutput);
+      modeloutputarray.value(currentoutput, modelbh.value(0));
+      modelbh.value(0, "");
       modeljsav.stepOption("grade", true);
       modeljsav.step();
       // swap with last value
       if(modeloutputarray.value(currentoutput - 1) > modelinputarray.value(currentinput)) {
         modeljsav.umsg("<br/>...The heap now takes an input", {preserve: true});
-        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+	//        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+        modelbh.value(0, modelinputarray.value(currentinput));
+        modelinputarray.value(currentinput, "");
         currentinput++;
         modeljsav.stepOption("grade", true);
         modeljsav.step();
@@ -133,7 +136,9 @@ $(document).ready(function () {
       }
       else {       // normal insert
         modeljsav.umsg("<br/>...The heap now takes an input", {preserve: true});
-        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+	//        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+        modelbh.value(0, modelinputarray.value(currentinput));
+        modelinputarray.value(currentinput, "");
         currentinput++;
         modeljsav.stepOption("grade", true);
         modeljsav.step();
@@ -141,12 +146,11 @@ $(document).ready(function () {
         modelbh.heapify(1);
       }
     }
-//    return [modelbh, modeloutputarray, modelinputarray];
-    return [modelbh, modeloutputarray];
+    return [modelbh, modeloutputarray, modelinputarray];
+    //    return [modelbh, modeloutputarray];
   }
 
   function clickHandler(index, entity) {
-    console.log("Click");
     if (bh.heapsize() === 0 || index >= bh.heapsize()) {
       return;
     }
@@ -165,7 +169,9 @@ $(document).ready(function () {
         secondSelection = null;
       } else {    // different entities were selected
         firstSelection.css(sIndex, {"font-size": "100%"});
-        jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+	//        jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+        secondSelection.value(index, firstSelection.value(sIndex));
+        firstSelection.value(sIndex, "");
         firstSelection = null;
         secondSelection = null;
         swapIndex.value(-1);
@@ -179,7 +185,9 @@ $(document).ready(function () {
       }
       else {  // different entities were selected
         firstSelection.css(sIndex, {"font-size": "100%"});
-        jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+	//        jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+        secondSelection.value(index, firstSelection.value(sIndex));
+        firstSelection.value(sIndex, "");
       }
       firstSelection = null;
       secondSelection = null;
