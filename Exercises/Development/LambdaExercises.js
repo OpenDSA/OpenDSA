@@ -74,8 +74,8 @@ init_alpha = function()
 	var2 = varArr.splice(rnd, 1);
 	rnd = Math.floor(Math.random()*8);
 	var3 = varArr.splice(rnd, 1);
-	strArr = ["(\u03BB+"+var1+".\u03BB"+var2+".("+var1+" "+var2+") "+var2+")"];
-	ansArr = ["(\u03BB+"+var1+".\u03BB"+var3+".("+var1+" "+var3+") "+var2+")"];
+	strArr = ["(\u03BB"+var1+".\u03BB"+var2+".("+var1+" "+var2+") "+var2+")"];
+	ansArr = ["(\u03BB"+var1+".\u03BB"+var3+".("+var1+" "+var3+") "+var2+")"];
 	rnd = Math.floor(Math.random());
 	str = strArr[rnd];
 	ans = ansArr[rnd];
@@ -86,6 +86,7 @@ init_alpha = function()
 init_app_highlight = function()
 {
 	jsav = new JSAV("jsav", {"animationMode": "none"});
+	varArr = ["a", "b", "c", "i", "j", "k", "w", "x", "y", "z"];
 	rnd = Math.floor(Math.random()*10);
 	var1 = varArr.splice(rnd, 1);
 	rnd = Math.floor(Math.random()*9);
@@ -114,6 +115,7 @@ init_app_highlight = function()
 init_norm_highlight = function()
 {
 	jsav = new JSAV("jsav", {"animationMode": "none"});
+	varArr = ["a", "b", "c", "i", "j", "k", "w", "x", "y", "z"];
 	rnd = Math.floor(Math.random()*10);
 	var1 = varArr.splice(rnd, 1);
 	rnd = Math.floor(Math.random()*9);
@@ -142,6 +144,7 @@ init_norm_highlight = function()
 init_alpha_highlight = function()
 {
 	jsav = new JSAV("jsav", {"animationMode": "none"});
+	varArr = ["a", "b", "c", "i", "j", "k", "w", "x", "y", "z"];
 	rnd = Math.floor(Math.random()*10);
 	var1 = varArr.splice(rnd, 1);
 	rnd = Math.floor(Math.random()*9);
