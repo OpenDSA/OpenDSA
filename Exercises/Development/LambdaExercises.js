@@ -1,4 +1,4 @@
-var jsav, expr1, str, arr, ans, strArr, ansArr, varArr, var1, var2, var3, rnd, lightArr, answerArr, guessArr;
+var jsav, expr1, str, arr, ans, opt, strArr, ansArr, varArr, optArr, var1, var2, var3, rnd, lightArr, answerArr, guessArr;
 
 clickHandler = function(index, e)
 {
@@ -76,9 +76,16 @@ init_alpha = function()
 	var3 = varArr.splice(rnd, 1);
 	strArr = ["(\u03BB"+var1+".\u03BB"+var2+".("+var1+" "+var2+") "+var2+")"];
 	ansArr = ["(\u03BB"+var1+".\u03BB"+var3+".("+var1+" "+var3+") "+var2+")"];
+	optArr = 	[
+					["(\u03BB"+var1+".\u03BB"+var2+".("+var3+" "+var2+") "+var3+")", 
+					 "(\u03BB"+var3+".\u03BB"+var2+".("+var3+" "+var2+") "+var2+")", 
+					 "(\u03BB"+var1+".\u03BB"+var2+".("+var1+" "+var2+") "+var3+")",
+					 "(\u03BB"+var1+".\u03BB"+var3+".("+var1+" "+var3+") "+var2+")"]
+				];
 	rnd = Math.floor(Math.random());
 	str = strArr[rnd];
 	ans = ansArr[rnd];
+	opt = optArr[rnd];
 	jsav = new JSAV("jsav", {"animationMode": "none"});
 	expr1 = jsav.code(str, {lineNumbers: false});
 }
@@ -223,13 +230,8 @@ validate_beta_Answer = function()
 
 alphaChoice = function()
 {
-	/*var choice = rnd;
-	while(choice == rnd)
-	{
-		choice = Math.floor(Math.random()*3);
-	}
-	return str[choice];*/
-	return "^x.x";
+	rnd = Math.floor(Math.random()*opt.length);
+	return opt.splice(rnd,1);
 }
 
 genAnswer = function()
