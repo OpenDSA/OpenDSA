@@ -16,6 +16,7 @@
 	{
 		m1.css(x, y, {"background-color": "white", "color": "rgb(255, 255, 255)"});
 	}
+	m1.css(0, 8, {"text-align": "left"});
 	m1.layout();
 	av.umsg("This slideshow will go through the process of reducing a lambda calculus expression using applicative-order &#946;-reduction.");
 	av.displayInit();
