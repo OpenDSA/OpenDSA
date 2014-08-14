@@ -19,6 +19,7 @@
     function init() {
       var inputlabel1 = jsav.label("Input Runs", {left: 140, top: 200});
       var outputlabel1 = jsav.label("Output Buffer", {left: 350, top: 250});
+      var disklabel = jsav.label("Disk", {left: 475, top: 170});
       var nodeNum = 3;
       currentinvisoutput = jsav.variable(0);
       if(arr1)
@@ -144,6 +145,7 @@
       var modelinvoutputarr = modeljsav.ds.array(invoutput, {indexed: false, left: 300, top: 0, visible: true});
       var inputlabel2 = modeljsav.label("Input Runs", {left: 90, top: 0});
       var outputlabel2 = modeljsav.label("Output Buffer", {left: 300, top: 50});
+      var disklabel2 = modeljsav.label("Disk", {left: 425, top: -25});
 
       modeljsav.displayInit();
       var currentoutput = 0;
