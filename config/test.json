@@ -195,7 +195,7 @@
         "long_name": "Dictionary Implementation with BST",
         "exercises": {}
       },
-      "Development/CompleteTree": {
+      "Binary/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
         "exercises": {}
       },

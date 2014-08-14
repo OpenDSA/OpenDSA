@@ -15,23 +15,23 @@ Array Implementation for Complete Binary Trees
 
 From the :ref:`full binary tree theorem <BinaryTreeFullThm>`, we know
 that a large fraction of the space in a typical binary tree node
-implementation is devoted to structural overhead, not to storing
-data.
+implementation is devoted to structural :term:`overhead`, not to
+storing data.
 This module presents a simple, compact implementation
-for complete binary trees.
+for :term:`complete binary trees <complete binary tree>`.
 Recall that complete binary trees have all levels except the bottom
 filled out completely, and the bottom level has all of its nodes filled
 in from left to right.
-Thus, a complete binary tree of :math:`n<` nodes has only one possible
+Thus, a complete binary tree of :math:`n` nodes has only one possible
 shape.
 You might think that a complete binary tree is such an unusual
 occurrence that there is no reason to develop a special
 implementation for it.
 However, the complete binary tree has practical uses, the most
-important being the heap data structure discussed in
-Module :numref:`<Heaps>`.
-Heaps are often used to implement priority queues
-and for external sorting algorithms.
+important being the :ref:`heap <heap> <Heap>` data structure.
+Heaps are often used to implement
+:term:`priority queues <priority queue>` and for
+:ref:`external sorting algorithms <external sort> <ExternalSort>`. 
 
 We begin by assigning numbers to the node positions in the complete
 binary tree, level by level, from left to right as shown in
@@ -107,3 +107,9 @@ which must fall in the range 0 to :math:`n-1`.
 
 * Right sibling(:math:`r`) :math:`= r + 1` if :math:`r`
   is odd and :math:`r + 1 \leq n`.
+
+.. TODO::
+   :tag: Exercise
+
+   Create a KA exercise that gives an index and asks for the index of
+   some relative (if it exists).
