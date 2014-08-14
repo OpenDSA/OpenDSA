@@ -19,7 +19,7 @@ $(document).ready(function () {
     if (inputarray) {
       inputarray.clear();
     }
-    if (outputarray) {
+   if (outputarray) {
       outputarray.clear();
     }
     initoutput = ["", "", "", "", ""];
@@ -53,8 +53,8 @@ $(document).ready(function () {
     outputarray.click(clickHandler);
     bh.click(clickHandler);
 
-//    return [bh, outputarray, inputarray];
-    return [bh, outputarray];
+    return [bh, outputarray, inputarray];
+    //    return [bh, outputarray];
   }
 
   function fixState(modelState) {
@@ -66,7 +66,7 @@ $(document).ready(function () {
 
     // check output
     for (var j = 0; j < outputsize; j++) {
-      outputarray.value(j, modeloutputarray.value(j));
+      outputarray.value(j, modeloutputarray.value(j));	
     }
 
     // check input
@@ -95,7 +95,7 @@ $(document).ready(function () {
 
     var modelinputlabel = modeljsav.label("Input:", {left: 650, top: 230});
     var modeloutputlabel = modeljsav.label("Output:", {left: 10, top: 230});
-    var modelinputarray = modeljsav.ds.array(initinput, {indexed: false, left: 650, top: 270});
+    var modelinputarray = modeljsav.ds.array(initinput, {indexed: false, left: 650, top: 270}); 
     var modeloutputarray = modeljsav.ds.array(initoutput, {indexed: false, left: 10, top: 270});
     modeljsav.displayInit();
     var currentoutput = 0;
@@ -106,20 +106,21 @@ $(document).ready(function () {
       modeljsav.umsg("We start by sending the root to the output.");
       modeljsav.step();
 
-      modeljsav.effects.moveValue(modelbh, 0, modeloutputarray, currentoutput);
-      currentoutput++;
+      //      modeljsav.effects.moveValue(modelbh, 0, modeloutputarray, currentoutput);
+      modeloutputarray.value(currentoutput, modelbh.value(0));
+      modelbh.value(0, "");
       modeljsav.stepOption("grade", true);
       modeljsav.step();
       // swap with last value
-      if (modeloutputarray.value(currentoutput - 1) > modelinputarray.value(currentinput)) {
+      if(modeloutputarray.value(currentoutput - 1) > modelinputarray.value(currentinput)) {
         modeljsav.umsg("<br/>...The heap now takes an input", {preserve: true});
-	console.log("Current value of modelinputarray[" + currentinput + "]: " + 
-                    modelinputarray.value(currentinput));
-        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+	//        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+        modelbh.value(0, modelinputarray.value(currentinput));
+        modelinputarray.value(currentinput, "");
         currentinput++;
         modeljsav.stepOption("grade", true);
         modeljsav.step();
-        modeljsav.umsg("The value is too small for this run and is swapped with the end of the array");
+	modeljsav.umsg("The value is too small for this run and is swapped with the end of the array");
         modelbh.swap(0, modelbh.heapsize() - 1);
         modeljsav.stepOption("grade", true);
         modeljsav.step();
@@ -135,9 +136,9 @@ $(document).ready(function () {
       }
       else {       // normal insert
         modeljsav.umsg("<br/>...The heap now takes an input", {preserve: true});
-	console.log("Current value of modelinputarray[" + currentinput + "]: " + 
-                    modelinputarray.value(currentinput));
-        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+	//        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+        modelbh.value(0, modelinputarray.value(currentinput));
+        modelinputarray.value(currentinput, "");
         currentinput++;
         modeljsav.stepOption("grade", true);
         modeljsav.step();
@@ -145,12 +146,11 @@ $(document).ready(function () {
         modelbh.heapify(1);
       }
     }
-//    return [modelbh, modeloutputarray, modelinputarray];
-    return [modelbh, modeloutputarray];
+    return [modelbh, modeloutputarray, modelinputarray];
+    //    return [modelbh, modeloutputarray];
   }
 
   function clickHandler(index, entity) {
-    console.log("Click");
     if (bh.heapsize() === 0 || index >= bh.heapsize()) {
       return;
     }
@@ -169,7 +169,9 @@ $(document).ready(function () {
         secondSelection = null;
       } else {    // different entities were selected
         firstSelection.css(sIndex, {"font-size": "100%"});
-        jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+	//        jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+        secondSelection.value(index, firstSelection.value(sIndex));
+        firstSelection.value(sIndex, "");
         firstSelection = null;
         secondSelection = null;
         swapIndex.value(-1);
@@ -183,7 +185,9 @@ $(document).ready(function () {
       }
       else {  // different entities were selected
         firstSelection.css(sIndex, {"font-size": "100%"});
-        jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+	//        jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+        secondSelection.value(index, firstSelection.value(sIndex));
+        firstSelection.value(sIndex, "");
       }
       firstSelection = null;
       secondSelection = null;
@@ -222,7 +226,7 @@ $(document).ready(function () {
       initoutput;
   var firstSelection, secondSelection;
 
-  jsav.recorded();
+      jsav.recorded();
 
   exercise = jsav.exercise(model, init,
                              { compare:  { css: "background-color" },
