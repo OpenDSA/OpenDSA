@@ -2,7 +2,7 @@
   "title": "Recursion Tutor",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"Processing": ["pde"]},
+  "code_lang": {"Java": ["java"]},
   "module_origin": "http://algoviz.org",
   "backend_address": "https://opendsa.cc.vt.edu",
   "build_JSAV": false,
@@ -140,6 +140,11 @@
           }
         }
        },
+      "RecurTutor/HarderWrite": {
+      "long_name": "How to write a more sophisticated recursive function",
+      "exercises": {
+          }  
+      },
       "RecurTutor/HarderCodeCompletionEx": {
       "long_name": "Harder Code Completion Exercises",
       "exercises": {
@@ -312,7 +317,14 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "RecursionTraceCON8": {
+            "long_name": "Recursion Tracing Slideshow 8",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           }
+
 
         }
       },

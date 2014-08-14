@@ -141,9 +141,9 @@ $(document).ready(function () {
   av.umsg(interpret("av_c19"));
   rt1.hide();
   var root1 = av.pointer("root", bt.root(), {anchor: "right top", top: -10});
-  // We get a black arrowhead with addClass, so save original line in comment
-  //  root1.arrow.css({"stroke": "red"});
   root1.arrow.addClass("thinredline");
+  // This line should not be needed, but it is here to fix Raphael bug with arrows
+  root1.arrow.css({"stroke": "red"});
   pseudo.setCurrentLine("end");
   av.recorded();
 });

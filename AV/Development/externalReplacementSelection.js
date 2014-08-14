@@ -121,17 +121,13 @@ var startarray = [12, 19, 31, 25, 21, 56, 40];
   t.swap(0, 6);
   highlight(0, t);
   t.value(6, "14");
-  t._treenodes[6].hide();
+  t._treenodes[6].edgeToParent().hide();
   highlight(6, t);
-  var endtree = av.ds.binarytree({nodegap: 25, left:517, top:206});
-  var endroot = endtree.root("14");  
-  endroot.css({"background-color": highlight_background_color, "color": "white"});
   av.step();
 
   
   // step 14
   av.umsg("40 is greater than 21 and 31 so we must sift down.");
-  endroot.css({"background-color": unhighlight_background_color, "color": "black"});
   unhighlight(6, t);
   av.step();
 
@@ -206,16 +202,12 @@ var startarray = [12, 19, 31, 25, 21, 56, 40];
   t.swap(0, 5);
   highlight(0, t);
   t.value(5, "23");
-  t._treenodes[5].hide();
+  t._treenodes[5].edgeToParent().hide();
   highlight(5, t);
-  var endtree2 = av.ds.binarytree({nodegap: 25, left:445, top:206});
-  var endroot2 = endtree2.root("23");  
-  endroot2.css({"background-color": highlight_background_color, "color": "white"});
   av.step();
 
   // step 25
   av.umsg("56 is greater than 29 and 31 so we must sift down.");
-  endroot2.css({"background-color": unhighlight_background_color, "color": "black"});
   unhighlight(5, t);
   av.step();
 

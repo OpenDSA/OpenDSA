@@ -49,13 +49,13 @@ $(document).ready(function () {
   rt.right(rt.right().left());
   var newedge = rt.edgeToRight();
   newedge.addClass("rededge");
-  //  newedge.css({"stroke": "red"});
   bt.layout();
   av.step();
 
   // Slide 6
   av.umsg(interpret("av_c6"));
   rt1.arrow.addClass("thinredline");
-  //  rt1.arrow.css({"stroke": "red"});
+  // This line should not be needed, but it is here to fix Raphael bug with arrows
+  rt1.arrow.css({"stroke": "red"});
   av.recorded();
 });

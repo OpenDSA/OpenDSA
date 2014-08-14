@@ -53,37 +53,6 @@ Code Completion Practice Exercises
 .. avembed:: Exercises/RecurTutor/recwrcprog13.html ka
 
 
-In the previous examples and exercises, all the recursive functions has only one base case and one recursive case. A more general structure for recursion
-can have more than one base case and recursive case. The following Figure/Visualization shows how a general structure recursive function look like:
-
-.. TODO::
-   :type: Figure/Visualization::
-
-      if ( base case 1 )
-       // return some simple expression
-      else if ( base case 2 )
-       // return some simple expression
-      else if ( base case 3 )
-       // return some simple expression
-      else if ( recursive case 1 )
-      {
-       // some work before 
-       // recursive call 
-       // some work after 
-      }
-      else if ( recursive case 2 )
-      {
-       // some work before 
-       // recursive call 
-       // some work after 
-      }
-      else // recursive case 3
-      {
-       // some work before 
-       // recursive call 
-       // some work after 
-      }
-
 You need to practice harder recursive functions in order to gain more experience on recursion.
 
 

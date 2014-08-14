@@ -28,6 +28,11 @@
 	{
 		m1.css(x, y, {"background-color": "white", "color": "rgb(255, 255, 255)"});
 	}
+	m1.css(0, 8, {"text-align": "left"});
+	m1.css(1, 3, {"text-align": "left"});
+	m1.css(2, 3, {"text-align": "left"});
+	m1.css(2, 8, {"text-align": "left"});
+	m1.css(3, 4, {"text-align": "left"});
 	m1.layout();
 	av.umsg("This slideshow will go through the process of reducing a lambda calculus expression using normal-order &#946;-reduction.");
 	av.displayInit();

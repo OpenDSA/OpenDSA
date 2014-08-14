@@ -9,7 +9,7 @@
    :satisfies: BST
    :topic: Binary Trees
 
-.. odsalink:: AV/binary/BSTCON.css
+.. odsalink:: AV/Binary/BSTCON.css
 
 Binary Search Trees
 ===================
