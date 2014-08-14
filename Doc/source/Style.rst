@@ -47,7 +47,8 @@ It is better to stay under 600 pixels if possible, so that the
 show/hide button is also visible (this provides important feedback
 when working an exercise).
 
-HTML, CSS, and JavaScript should all be kept in separatea files. Each
-should pass its respective validation tools without complaint. See the
-developer's "Getting Started" guide for details on using the
+HTML, CSS, and JavaScript should all be kept in separate files.
+Each should pass its respective validation tools without
+complaint.
+See the developer's "Getting Started" guide for details on using the
 validation tools.

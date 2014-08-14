@@ -49,7 +49,7 @@ $(document).ready(function () {
   // Slide 2
   var newNode = l.newNode("");
   // Set the position for the new node
-  newNode.css({ top: 50, left: 222 });
+  newNode.css({top: 50, left: 222});
   var node = l.get(2).next();
   l.get(2).next(newNode);
   newNode.next(node);

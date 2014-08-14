@@ -1,0 +1,15 @@
+#heapbuildProofCON  {
+  height: 400px;
+}
+
+#heapbuildProofCON .jsavtree .jsavnode {
+  line-height: 15px !important;
+  min-width: 15px !important;
+  max-width: 15px !important;
+  min-height: 15px !important;
+  max-height: 15px !important;
+}
+
+#heapbuildProofCON .jsavoutput.jsavline {
+  height: 30px;
+}

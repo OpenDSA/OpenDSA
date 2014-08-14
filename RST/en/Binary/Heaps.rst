@@ -9,6 +9,8 @@
    :satisfies: heap; priority queue
    :topic: Heaps
 
+.. odsalink:: AV/Binary/heapbuildProofCON.css
+
 Heaps and Priority Queues
 =========================
 
@@ -20,14 +22,14 @@ next the "most critical" patient rather than the one who arrived
 first.
 When scheduling programs for execution in a multitasking
 operating system, at any given moment there might be several programs
-(usually called :dfn:`jobs`) ready to run.
+(usually called :term:`jobs <job>`) ready to run.
 The next job selected is the one with the highest
-:dfn:`priority`. 
+:term:`priority`. 
 Priority is indicated by a particular value associated with the job
 (and might change while the job remains in the wait list).
 
 When a collection of objects is organized by importance or priority,
-we call this a :dfn:`priority queue`.
+we call this a :term:`priority queue`.
 A normal queue data structure will not implement a priority queue
 efficiently because search for the element with highest priority will
 take :math:`\Theta(n)` time.
@@ -41,39 +43,39 @@ unbalanced, leading to bad performance.
 Instead, we would like to find a data structure that is guaranteed to
 have good performance for this special application.
 
-This section presents the :dfn:`heap` data structure. [#]_
+This section presents the :term:`heap` data structure. [#]_
 A heap is defined by two properties.
 First, it is a complete binary tree,
-so heaps are nearly always implemented using
-the array representation for complete binary trees presented
-in Module :numref:`<CompleteTree>`.
-Second, the values stored in a heap are :dfn:`partially ordered`.
+so heaps are nearly always implemented using the
+:ref:`array representation for complete binary trees <complete binary tree> <CompleteTree>`.
+Second, the values stored in a heap are
+:term:`partially ordered <partial order>`.
 This means that there is a relationship between the value stored at
 any node and the values of its children.
 There are two variants of the heap, depending on the definition of
 this relationship.
 
-A :dfn:`max-heap` has the property that every node stores a
+A :term:`max heap` has the property that every node stores a
 value that is *greater* than or equal to the value of either of
 its children.
 Because the root has a value greater than or equal to its children,
 which in turn have values greater than or equal to their children, the
 root stores the maximum of all values in the tree.
 
-A :dfn:`min-heap` has the property that every node stores a
+A :term:`min heap` has the property that every node stores a
 value that is *less* than or equal to that of its children.
 Because the root has a value less than or equal to its children, which
 in turn have values less than or equal to their children, the root
 stores the minimum of all values in the tree.
 
 Note that there is no necessary relationship between the value of a
-node and that of its sibling in either the min-heap or the max-heap.
+node and that of its sibling in either the min heap or the max heap.
 For example, it is possible that the values for all nodes in the left
 subtree of the root are greater than the values for every node of the
 right subtree.
 We can contrast BSTs and heaps by the strength of their ordering
 relationships.
-A BST defines a :dfn:`total order` on its nodes in that,
+A BST defines a :term:`total order` on its nodes in that,
 given the positions for any two nodes in the tree, the one to the
 "left" (equivalently, the one appearing earlier in an inorder
 traversal) has a smaller key value than the one to the "right".
@@ -82,11 +84,11 @@ Given their positions, we can determine the relative order for the
 key values of two nodes in the heap *only* if one is a
 descendant of the other.
 
-Min-heaps and max-heaps both have their uses.
-For example, the Heapsort uses the max-heap,
+Min heaps and max heaps both have their uses.
+For example, the Heapsort uses the max heap,
 while the Replacement Selection algorithm used for external sorting
-uses a min-heap.
-The examples in the rest of this section will use a max-heap.
+uses a min heap.
+The examples in the rest of this section will use a max heap.
 
 Be sure not to confuse the logical representation of a heap
 with its physical implementation by means of the array-based complete
@@ -98,8 +100,9 @@ uses an array.
 .. inlineav:: heapinsertCON ss
    :output: show
 
-Here is an implementation for max-heaps.
-The class uses KVPairs to support arbitrary data payloads.
+Here is an implementation for max heaps.
+The class uses records that support the Comparable interface to
+provide flexibility.
 
 .. codeinclude:: Binary/Maxheap
    :tag: Maxheap
@@ -177,6 +180,12 @@ Thus, to insert :math:`n` values into the heap, if we insert them
 one at a time, will take :math:`\Theta(n \log n)` time in the
 worst case.
 
+If all :math:`n` values are available at the beginning of the
+building process, we can build the heap faster than just
+inserting the values into the heap one by one.
+Consider this example, with two possible ways to heapify an initial
+set of values in an array.
+
 .. _HeapBuild:
 
 .. odsafig:: Images/HeapBld.png
@@ -186,15 +195,11 @@ worst case.
    :figwidth: 90%
    :alt: Two series of exchanges to build a heap
 
-   Two series of exchanges to build a max-heap.
+   Two series of exchanges to build a max heap.
    (a) This heap is built by a series of nine exchanges in the order
    (4-2), (4-1), (2-1), (5-2), (5-4), (6-3), (6-5), (7-5), (7-6).
    (b) This heap is built by a series of four exchanges in the order
    (5-2), (7-3), (7-1), (6-1).
-
-If all :math:`n` values are available at the beginning of the
-building process, we can build the heap faster than just
-inserting the values into the heap one by one.
 
 From this example, it is clear that the heap for any given
 set of numbers is not unique, and we see that some rearrangements of
@@ -205,7 +210,7 @@ So, how do we pick the best rearrangement?
 One good algorithm stems from induction.
 Suppose that the left and right subtrees of the root are already
 heaps, and :math:`R` is the name of the element at the root.
-This situation is illustrated by Figure :num:`Figure #HeapInduct`.
+This situation is illustrated by this figure:
 
 .. _HeapInduct:
 
@@ -227,7 +232,7 @@ In this case there are two possibilities.
     children. In this case, construction is complete.
 (2) :math:`R` has a value less than one or both of its children.
 
-In this case, :math:`R` should be exchanged with the child that has
+:math:`R` should be exchanged with the child that has
 greater value.
 The result will be a heap, except that :math:`R`
 might still be less than one or both of its (new) children.
@@ -285,8 +290,8 @@ It is also faster than the :math:`\Theta(n \log n)` average-case
 time and :math:`\Theta(n^2)` worst-case time required to build the
 BST.
 
-.. avembed:: AV/Development/BuildHeapVisualProof.html ss
-   :showhide: none
+.. inlineav:: heapbuildProofCON ss
+   :output: show
 
 .. inlineav:: heapmaxCON ss
    :output: show
@@ -297,7 +302,7 @@ cases.
 
 .. avembed:: AV/Development/binheapDeletePRO.html pe
 
-.. inlineav:: heapdeleteCON ss
+.. inlineav:: heapremoveCON ss
    :output: show
 
 The heap is a natural implementation for the priority queue discussed
@@ -311,7 +316,7 @@ Some applications of priority queues require the ability to change the
 priority of an object already stored in the queue.
 This might require that the object's position in the heap representation
 be updated.
-Unfortunately, a max-heap is not efficient when searching for an
+Unfortunately, a max heap is not efficient when searching for an
 arbitrary value; it is only good for finding the maximum value.
 However, if we already know the index for an object within the heap,
 it is a simple matter to update its priority (including changing its
@@ -343,4 +348,8 @@ Prince's Complaint Line
 <http://computationaltales.blogspot.com/2011/04/stacks-queues-priority-queues-and.html>`_.
 
 .. odsascript:: JSAV/extras/binaryheap.js
-.. odsascript:: AV/Development/heapsCON.js
+.. odsascript:: AV/Binary/heapinsertCON.js
+.. odsascript:: AV/Binary/heapbuildCON.js
+.. odsascript:: AV/Binary/heapbuildProofCON.js
+.. odsascript:: AV/Binary/heapmaxCON.js
+.. odsascript:: AV/Binary/heapremoveCON.js

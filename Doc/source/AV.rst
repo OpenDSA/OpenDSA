@@ -17,3 +17,34 @@ So a typical math markup within an AV or slideshow might look like::
 
    jsav.umsg("This takes $\\Theta(n)$ time.");
 
+CSS
+---
+
+Anything related to visual element style that is static should be
+defined in a CSS file.
+For example, if a JSAV array is placed at a specific location that
+never changes, then this location should be defined within a CSS file
+for your AV or slideshow.
+
+Some styling aspects are dynamic. For example, over the course of a
+visualization, nodes in a tree might need to change color to emphasize
+the action being visualized. Looking at the JSAV manual, you will
+notice that most visual elements can be styled with a ``.css()``
+method on the element.
+But in nearly all cases, we wish to avoid using that method.
+We prefer to use the ``.addClass()`` and ``.removeClass()`` methods to
+control element styling whenever possible.
+These methods will dynamically assign or remove a CSS class to the
+element in the DOM.
+You can define any necessary new class in your AV's CSS file.
+But before doing so, you should first check to see if a suitable class
+already exists in the OpenDSA style file at ``lib/odsaStyle.css``.
+Given that we have developed a lot of visualizations already, the odds
+are pretty high that whatever visual styling you want to do is
+semantically equivalent to something that we already support.
+If so, you should be using the same style definition.
+For example, if you have a cell in an array or a node in a tree that
+your AV is currently acting on, then you probably want to indicate
+this by styling it using ``mynode.addClass("processing")`` for a tree
+node object named ``mynode``, or using ``myarray.(index,
+"processing")`` for array position ``index`` in JSAV array ``myarray``.

@@ -1346,6 +1346,15 @@ Glossary
       :term:`traversing <traversal>` through all
       :term:`elements <element>` in the container.
 
+   job
+      Common name for processes or tasks to be run by an operating
+      system.
+      They typically need to be processed in order of
+      importance, and so are kept organized by a
+      :term:`priority queue`.
+      Another common use for this term is for a collection of tasks to
+      be ordered by a :term:`topological sort`.
+
    K-ary tree
       A type of :term:`full tree` where every internal node has
       exactly :math:`K` :term:`children <child>`.
@@ -1935,11 +1944,23 @@ Glossary
       with the only difference being the calculation done to update
       the best-known distance.
 
+   priority
+      A quantity assigned to each of a collection of
+      :term:`jobs <job>` or tasks that indicate importance for order
+      of processing.
+      For example, in an operating system, there could be a collection
+      of processes (jobs) ready to run.
+      The operating system must select the next task to execute, 
+      based on their priorities.
+
    priority queue
       An ADT whose primary operations of insert of records, and
       deletion of the greatest (or, in an alternative implementation,
-      the least) valued record. Most often implemented using the
-      :term:`heap` data structure.
+      the least) valued record.
+      Most often implemented using the :term:`heap` data structure.
+      The name comes from a common application where the records being
+      stored represent tasks, with the ordering values based on the
+      :term:`priorities <priority>` of the tasks.
 
    probabilistic algorithm
       A form of :term:`randomized algorithm` that might yield an
