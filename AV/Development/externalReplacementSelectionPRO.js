@@ -108,6 +108,7 @@ $(document).ready(function () {
 
       //      modeljsav.effects.moveValue(modelbh, 0, modeloutputarray, currentoutput);
       modeloutputarray.value(currentoutput, modelbh.value(0));
+      currentoutput++;
       modelbh.value(0, "");
       modeljsav.stepOption("grade", true);
       modeljsav.step();
