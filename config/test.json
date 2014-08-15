@@ -268,8 +268,8 @@
       "Binary/Huffman": {
         "long_name": "Huffman Coding Trees",
         "exercises": {
-          "huffmanCON1": {
-            "long_name": "Huffman Coding Tree Slideshow",
+          "huffmanbuildCON": {
+            "long_name": "Huffman Coding Tree Build Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0

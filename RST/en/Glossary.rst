@@ -144,6 +144,14 @@ Glossary
       Analogous to an :term:`array-based list`, this uses an array to
       store the elements when implementing the :term:`queue` ADT.
 
+   ASCII character coding
+      American Standard Code for Information Interchange.
+      A commonly used method for encoding characters using a binary code.
+      Standard ASCII uses an 8-bit code to represent upper and lower
+      case letters, digits, some punctuation, and some number of
+      non-printing characters (such as carrage return).
+      Now largely replaced by UTF-8 encoding.
+
    asymptotic algorithm analysis
       A more formal term for :term:`asymptotic analysis`.
 
@@ -1806,6 +1814,23 @@ Glossary
       This is most appropriate for solving the
       :term:`UNION/FIND` problem.
 
+   parity
+      The concept of matching even-ness or odd-ness, the basic idea
+      behind using a :term:`parity bit` for error detection.
+
+   parity bit
+      A common method for checking if transmission of a
+      sequence of bits has been performed correctly.
+      The idea is to count the number of 1 bits in the sequence, and
+      set the parity bit to 1 if this number is odd, and 0 if it is
+      even.
+      Then, the transmitted sequence of bits can be checked to see if
+      its parity matches the value of the parity bit.
+      This will catch certain types of errors, in particular if the
+      value for a single bit has been reversed.
+      This was used, for example, in early versions of
+      :term:`ASCII character coding`.
+      
    partial order
       In set notation, a binary relation is called a partial order if
       it is :term:`antisymmetric` and :term:`transitive`.

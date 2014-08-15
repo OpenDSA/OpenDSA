@@ -9,7 +9,7 @@
    :satisfies: Huffman coding tree
    :topic: BinTreeImp
 
-.. odsalink:: AV/Development/HuffmanCodingExamp.css
+.. odsalink:: AV/Binary/huffmanBuildCON.css
 .. odsalink:: AV/Development/HuffmanCON.css
 
 .. index:: ! Huffman
@@ -27,13 +27,13 @@ costs some time, but only once.
 
 We often represent a set of items in a computer program by assigning a
 unique code to each item.
-For example, the standard ASCII coding scheme assigns a unique
-eight-bit value to each character.
-It takes a certain minimum number of bits to provide unique codes for
-each character.
+For example, the standard :term:`ASCII coding <ASCII character coding>`
+scheme assigns a unique eight-bit value to each character.
+It takes a certain minimum number of bits to provide enough unique
+codes so that we have a different one for each character.
 For example, it takes :math:`\left\lceil log\ 128\right\rceil`
 or seven bits to provide the 128 unique codes needed
-to represent the 128 symbols of the ASCII character set.
+to represent the 128 symbols of the ASCII character set. [#]_
 
 The requirement for :math:`\left \lceil log\ n \right\rceil` bits to
 represent :math:`n` unique code values assumes that all codes will be
@@ -161,7 +161,7 @@ The following slideshow illustrates part of the Huffman tree
 construction process for the eight letters of
 Table :num:`Table #FreqExamp`. [#]_
 
-.. inlineav:: huffmanCON1 ss
+.. inlineav:: huffmanBuildCON ss
    :output: show
 
 Here is a complete visualization of building the Huffman tree.
@@ -358,11 +358,18 @@ root are stored in the right branch.
 Notes
 -----
 
-.. [#] Note that for clarity, the examples for building Huffman
-       trees show a sorted list to keep the letters ordered by
-       frequency.
-       But a real implementation would use a heap to implement the
-       priority queue for efficiency.
+.. [#] To keep things simple, these examples for building Huffman
+       trees uses a :term:`sorted list` to keep the partial Huffman trees
+       ordered by frequency.
+       But a real implementation would use a :term:`heap` to implement a
+       :term:`priority queue` keyed by the frequencies.
 
-.. odsascript:: AV/Development/HuffmanCodingExamp.js
+.. [#] ASCII coding actually uses 8 bits per character.
+       Seven bits are used to represent the 128 codes of the ASCII
+       character set.
+       The eigth bit as a :term:`parity` bit, that can be used to
+       check if there is a transmission error for the character.
+
+.. odsascript:: AV/Binary/huffman.js
+.. odsascript:: AV/Binary/huffmanBuildCON.js
 .. odsascript:: AV/Development/HuffmanCON.js

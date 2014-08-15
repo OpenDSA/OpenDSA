@@ -1,0 +1,16 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "Heap Delete Proficiency Exercise",
+      "av_Authors": "Ville Karavirta",
+      ".instructLabel": "Instructions:",
+      ".instructions": "Perform DeleteMin three times. After each deletion, restore the <b>min</b> heap property. Click the \"Decrement heap size\" button to remove the last position from the heap. You can swap records in the heap by first clicking one key and then another.",
+      "#about": "About",
+      "#decrement": "Decrement heapsize"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "undo"
+  }
+}
